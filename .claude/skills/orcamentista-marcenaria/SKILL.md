@@ -19,17 +19,20 @@ materiais** e um **orçamento** estruturados.
 ## Princípios
 
 - **Material base padrão: MDF melamínico.** Salvo indicação contrária, assuma
-  MDF revestido (BP) como chapa principal. Espessuras típicas e revestimentos
-  ficam na taxonomia (`referencias/chapas.md`).
-- **Precificação por demanda específica.** Não existe tabela fixa universal:
-  cada orçamento parte das condições daquela demanda (acabamento, ferragens
-  escolhidas, complexidade, prazo). Sempre **levante os dados da demanda antes
-  de precificar** — não chute valores.
+  MDF melamínico como chapa principal. Catálogo, espessuras e preços de
+  compra ficam na taxonomia (`referencias/chapas.md`).
+- **CX define margem mínima, não custo.** A complexidade (Baixo/Médio/Alto/
+  Premium) não altera o custo do item — ela estabelece o **piso de margem**.
+  O preço ao cliente sai por **markup divisor**: `valorCliente = custoDir /
+  (1 − margem)`. Ver `referencias/custos.md`.
 - **Quantitativo antes de preço.** Primeiro o levantamento físico (quantas
-  chapas, quantos metros de fita, quais e quantas ferragens); o custo vem
-  depois, aplicando os valores vigentes àquele quantitativo.
+  chapas, quantos metros de fita/acabamento, quais e quantas ferragens); o
+  custo vem depois, aplicando o motor (custo → markup → encargos → MC).
 - **Rastreabilidade.** Todo número no orçamento deve ser justificável: de onde
-  saiu a quantidade, qual peça consumiu cada material.
+  saiu a quantidade, qual peça consumiu cada material, qual produto da
+  biblioteca foi usado.
+- **Biblioteca é a fonte única de verdade.** Produtos, variações e preços de
+  compra vêm da biblioteca do Valvic OS (`fontes/`). Não invente preços.
 
 ## Fluxo de trabalho
 
@@ -52,10 +55,16 @@ materiais** e um **orçamento** estruturados.
 
 ## Referências (taxonomia)
 
-- `referencias/chapas.md` — chapas (MDF melamínico e demais), espessuras,
-  dimensões padrão, fita de borda, regra de aproveitamento.
-- `referencias/ferragens.md` — ferragens e acessórios, critérios de quantidade.
-- `referencias/custos.md` — composição de custo e variáveis de precificação.
+- `referencias/estrutura-orcamento.md` — modelo de dados (Projeto → Ambiente →
+  Item → Componente), categorias/unidades, flags, tipos de ambiente, workflow.
+- `referencias/chapas.md` — catálogo de chapas (MDF melamínico e demais),
+  portas de vidro/passagem, acabamentos e fita de bordo, com preços de compra.
+- `referencias/ferragens.md` — ferragens e acessórios (biblioteca do OS +
+  painel Bigfer/Hettich), nomenclaturas, custos e critérios de quantidade.
+- `referencias/custos.md` — motor de custo (Item → Ambiente → Projeto), CX,
+  markup divisor, encargos (NF, RT, comissões, máquinas) e saúde de margem.
+- `fontes/` — arquivos originais da Valvic (Valvic OS e Painel de Ferragens),
+  fonte única de verdade da taxonomia e da metodologia.
 
 ## Projetos resolvidos (treino)
 
