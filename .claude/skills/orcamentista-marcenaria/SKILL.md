@@ -62,6 +62,12 @@ materiais** e um **orçamento** estruturados.
 
 ## Referências (taxonomia)
 
+- `referencias/metodo-e-missao.md` — origem artesanal do conhecimento, missão do
+  agente (intuição → precisão analítica), contexto do negócio e vocabulário de
+  peças do método manual. **Comece por aqui para entender o porquê.**
+- `referencias/quantitativo.md` — extração da lista de peças (à mão) e nesting;
+  o cerne da metodologia (em construção com a Valvic).
+
 - `referencias/estrutura-orcamento.md` — modelo de dados (Projeto → Ambiente →
   Item → Componente), categorias/unidades, flags, tipos de ambiente, workflow.
 - `referencias/chapas.md` — catálogo de chapas (MDF melamínico e demais),
