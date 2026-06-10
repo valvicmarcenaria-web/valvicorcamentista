@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valvic · Base de Materiais e Custos</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+ --bg:#0D0A06;--panel:#141009;--card:#1B1208;--card2:#211608;
+ --border:rgba(160,104,56,0.16);--border2:rgba(160,104,56,0.32);
+ --gold:#A06838;--gold2:#C8914A;--sand:#C8A87A;
+ --text:#F5F0E8;--muted:rgba(245,240,232,0.55);--dim:rgba(245,240,232,0.28);
+ --green:#2ECC8A;--red:#E05555;--amber:#E09A30;--input:rgba(255,255,255,0.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;padding:0 0 60px}
+.top{position:sticky;top:0;z-index:10;background:var(--panel);border-bottom:1px solid var(--border2);padding:14px 22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.brand{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold2);letter-spacing:.04em}
+.brand small{display:block;font-family:'DM Mono',monospace;font-size:.56rem;color:var(--dim);letter-spacing:.16em;text-transform:uppercase}
+.spacer{flex:1}
+.btn{font-size:.78rem;padding:7px 14px;border-radius:4px;cursor:pointer;font-family:inherit;border:1px solid var(--border2);background:transparent;color:var(--sand)}
+.btn.primary{background:var(--gold);color:#fff;border-color:var(--gold);font-weight:600}
+.btn:hover{opacity:.85}
+.stats{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);display:flex;gap:14px}
+.stats b{color:var(--sand)}.stats .warn{color:var(--amber)}
+.search{background:var(--input);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:.8rem;padding:7px 12px;border-radius:5px;width:240px}
+.search:focus{outline:none;border-color:var(--gold)}
+.wrap{max-width:1180px;margin:18px auto;padding:0 22px}
+.cat{background:var(--card);border:1px solid var(--border);border-radius:8px;margin-bottom:16px;overflow:hidden}
+.cat-head{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--card2);border-bottom:1px solid var(--border)}
+.cat-head h2{font-size:.95rem;font-weight:600;flex:1}
+.cat-head .u{font-family:'DM Mono',monospace;font-size:.56rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;border:1px solid var(--border2);border-radius:10px;padding:2px 8px}
+table{width:100%;border-collapse:collapse}
+th{font-family:'DM Mono',monospace;font-size:.54rem;color:var(--dim);text-transform:uppercase;letter-spacing:.06em;text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+td{padding:5px 8px;border-bottom:1px solid var(--border);vertical-align:middle}
+tr.nocost{background:rgba(224,154,48,0.05)}
+tr:hover td{background:rgba(160,104,56,0.05)}
+input.cell{width:100%;background:transparent;border:1px solid transparent;color:var(--text);font-family:inherit;font-size:.8rem;padding:4px 6px;border-radius:3px}
+input.cell:hover{border-color:var(--border)}
+input.cell:focus{outline:none;border-color:var(--gold);background:var(--input)}
+input.num{font-family:'DM Mono',monospace;text-align:right}
+.cost-wrap{display:flex;align-items:center;gap:3px;font-family:'DM Mono',monospace;color:var(--sand)}
+.cost-wrap.empty{color:var(--amber)}
+.del{background:transparent;border:none;color:var(--dim);cursor:pointer;font-size:1rem}
+.del:hover{color:var(--red)}
+.add-row{padding:8px 14px}
+.add-row button{font-size:.7rem;color:var(--gold);background:transparent;border:1px dashed var(--border2);border-radius:4px;padding:5px 12px;cursor:pointer;font-family:inherit}
+.add-row button:hover{background:rgba(160,104,56,.08)}
+.note{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--dim);max-width:1180px;margin:0 auto 14px;padding:0 22px}
+.col-prod{width:26%}.col-var{width:13%}.col-cost{width:11%}.col-un{width:9%}.col-cod{width:9%}.col-linha{width:8%}.col-obs{width:20%}.col-act{width:4%}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="brand">VALVIC<small>Base de Materiais · Custos</small></div>
+  <input class="search" id="q" placeholder="buscar produto, variação, código…" oninput="render()">
+  <div class="spacer"></div>
+  <div class="stats" id="stats"></div>
+  <input type="file" id="file" accept="application/json" style="display:none" onchange="importJson(event)">
+  <button class="btn" onclick="document.getElementById('file').click()">Importar JSON</button>
+  <button class="btn" onclick="addCat()">+ Categoria</button>
+  <button class="btn primary" onclick="exportJson()">Exportar JSON</button>
+</div>
+<div class="note">custo = preço de COMPRA (não venda). Linhas em âmbar = sem custo definido. Edite, depois <b>Exportar JSON</b> e substitua <code>dados/materiais.json</code> no repositório.</div>
+<div class="wrap" id="app"></div>
+
+<script>
+const SEED = {
+ "_meta":{"titulo":"Base de Materiais e Custos — Valvic","moeda":"BRL","atualizado_em":"2026-06-10","observacoes":"custo = preço de COMPRA (não venda). null = a confirmar pela Valvic."},
+ "categorias":[
+  {"categoria":"Chapas (MDF)","unidade_padrao":"chapa","dimensao_chapa_mm":"2750x1850","itens":[
+   {"produto":"MDF Branco TX","variacao":"6mm","custo":190,"unidade":"chapa","codigo":null,"linha":"Branco","obs":"fundos"},
+   {"produto":"MDF Branco TX","variacao":"15mm","custo":220,"unidade":"chapa","codigo":null,"linha":"Branco","obs":"estrutura/portas — espessura base"},
+   {"produto":"MDF Branco TX","variacao":"18mm","custo":330,"unidade":"chapa","codigo":null,"linha":"Branco","obs":"prateleiras/portas/tamponamento"},
+   {"produto":"MDF Branco TX","variacao":"25mm","custo":420,"unidade":"chapa","codigo":null,"linha":"Branco","obs":"tampos reforçados"},
+   {"produto":"MDF Branco TX Ultra","variacao":"15mm","custo":320,"unidade":"chapa","codigo":null,"linha":"Branco","obs":"áreas úmidas"},
+   {"produto":"MDF Cor (amadeirado/unicolor)","variacao":"6mm","custo":250,"unidade":"chapa","codigo":null,"linha":"Cor","obs":"~2x o branco"},
+   {"produto":"MDF Cor (amadeirado/unicolor)","variacao":"15mm","custo":500,"unidade":"chapa","codigo":null,"linha":"Cor","obs":"~2x o branco"},
+   {"produto":"MDF Cor (amadeirado/unicolor)","variacao":"18mm","custo":580,"unidade":"chapa","codigo":null,"linha":"Cor","obs":"~2x o branco"},
+   {"produto":"MDF Especial","variacao":"6mm","custo":800,"unidade":"chapa","codigo":null,"linha":"Especial","obs":null},
+   {"produto":"MDF Especial","variacao":"15mm","custo":950,"unidade":"chapa","codigo":null,"linha":"Especial","obs":null},
+   {"produto":"MDF Especial","variacao":"18mm","custo":1200,"unidade":"chapa","codigo":null,"linha":"Especial","obs":null},
+   {"produto":"MDF com lâmina prensada + acabamento","variacao":"—","custo":2200,"unidade":"chapa","codigo":null,"linha":"Lâmina","obs":null},
+   {"produto":"Freijó Dual Syncro","variacao":"15mm","custo":null,"unidade":"chapa","codigo":null,"linha":"Cor","obs":"linha real (produção)"},
+   {"produto":"Grafite Linha Trama","variacao":"15mm","custo":null,"unidade":"chapa","codigo":"4753","linha":"Cor","obs":null},
+   {"produto":"Cinza Sagrado Essencial","variacao":"6mm","custo":null,"unidade":"chapa","codigo":"4567","linha":"Cor","obs":null},
+   {"produto":"Cinza Sagrado Essencial","variacao":"15mm","custo":null,"unidade":"chapa","codigo":"4568","linha":"Cor","obs":null},
+   {"produto":"Amêndola Rústica Linha Duna","variacao":"6mm","custo":null,"unidade":"chapa","codigo":"4168","linha":"Cor","obs":null},
+   {"produto":"Amêndola Rústica Linha Duna","variacao":"15mm","custo":null,"unidade":"chapa","codigo":"4169","linha":"Cor","obs":null},
+   {"produto":"Gianduia Linha Trama","variacao":"6mm","custo":null,"unidade":"chapa","codigo":"4733","linha":"Cor","obs":null},
+   {"produto":"Gianduia Linha Trama","variacao":"15mm","custo":null,"unidade":"chapa","codigo":"4734","linha":"Cor","obs":null},
+   {"produto":"Pau Ferro Natural Linha Cristallo","variacao":"15mm","custo":null,"unidade":"chapa","codigo":"9413","linha":"Especial","obs":null},
+   {"produto":"Nuvem Matt","variacao":"6mm","custo":null,"unidade":"chapa","codigo":null,"linha":"Cor","obs":null},
+   {"produto":"Nuvem Matt","variacao":"15mm","custo":null,"unidade":"chapa","codigo":null,"linha":"Cor","obs":null},
+   {"produto":"MDF Cru","variacao":"15mm","custo":82,"unidade":"chapa","codigo":null,"linha":"Cru","obs":"laca/pintura ou não aparente"},
+   {"produto":"MDF Cru","variacao":"18mm","custo":95,"unidade":"chapa","codigo":null,"linha":"Cru","obs":null}
+  ]},
+  {"categoria":"Fita de borda","unidade_padrao":"metro","itens":[
+   {"produto":"Fita de borda (por cor)","variacao":"22 x 0,45mm","custo":null,"unidade":"metro","codigo":null,"obs":"+10% desperdício; cor da chapa"},
+   {"produto":"Borda Branco TX","variacao":"22 x 0,45","custo":null,"unidade":"metro","codigo":"1428","obs":null}
+  ]},
+  {"categoria":"Corrediças","unidade_padrao":"par","itens":[
+   {"produto":"Corrediça Hardt Invisível P-10 (amortecimento)","variacao":"400mm","custo":null,"unidade":"par","codigo":null,"obs":"padrão oculta ~70%"},
+   {"produto":"Corrediça Hardt Invisível P-10 (amortecimento)","variacao":"450mm","custo":null,"unidade":"par","codigo":null,"obs":null},
+   {"produto":"Corrediça Hardt Invisível P-10 (amortecimento)","variacao":"550mm","custo":null,"unidade":"par","codigo":null,"obs":null},
+   {"produto":"Corrediça telescópica","variacao":"—","custo":30,"unidade":"par","codigo":null,"obs":"Linha Silver"},
+   {"produto":"Corrediça Blum Tandembox","variacao":"450mm","custo":null,"unidade":"par","codigo":null,"obs":"meta futura"}
+  ]},
+  {"categoria":"Dobradiças","unidade_padrao":"unidade","itens":[
+   {"produto":"Dobradiça Reta com amortecedor","variacao":"—","custo":null,"unidade":"unidade","codigo":"858","obs":null},
+   {"produto":"Dobradiça Curva com amortecedor","variacao":"—","custo":null,"unidade":"unidade","codigo":"859","obs":null},
+   {"produto":"Dobradiça Reta comum","variacao":"—","custo":null,"unidade":"unidade","codigo":"861","obs":"interno"}
+  ]},
+  {"categoria":"Sistemas e articuladores","unidade_padrao":"unidade","itens":[
+   {"produto":"Kit Dominus 2 Portas Leve 0-20kg","variacao":"—","custo":null,"unidade":"kit","codigo":null,"obs":"correr roupeiro"},
+   {"produto":"Trilho Inferior Dominus RM-265","variacao":"barra 3m","custo":null,"unidade":"barra","codigo":"8414","obs":null},
+   {"produto":"Trilho Superior Dominus RM-264","variacao":"barra 3m","custo":null,"unidade":"barra","codigo":"8460","obs":null},
+   {"produto":"Amortecedor Dominus 30kg","variacao":"—","custo":null,"unidade":"unidade","codigo":"8822","obs":null},
+   {"produto":"Pistão a gás força inversa","variacao":"60N","custo":null,"unidade":"unidade","codigo":"21125","obs":"básculas"},
+   {"produto":"Pistão a gás força inversa","variacao":"100N","custo":null,"unidade":"unidade","codigo":"21123","obs":null},
+   {"produto":"Sistema RO82 + trilho","variacao":"—","custo":700,"unidade":"conjunto","codigo":null,"obs":"portas de passagem"}
+  ]},
+  {"categoria":"Puxadores","unidade_padrao":"metro","itens":[
+   {"produto":"Puxador Cava 45° Parcial 15mm","variacao":"—","custo":null,"unidade":"metro","codigo":"0000","obs":"usinado, por metro"},
+   {"produto":"Puxador de perfil SP7000","variacao":"—","custo":null,"unidade":"metro","codigo":null,"obs":"perfil mais usado"}
+  ]},
+  {"categoria":"Suportes e montagem","unidade_padrao":"unidade","itens":[
+   {"produto":"Suporte Prateleira VB Zamac (furo 18mm, Uniblock)","variacao":"—","custo":null,"unidade":"unidade","codigo":"22900","obs":"~4 por prateleira"},
+   {"produto":"Suporte Pino Prateleira Metal (Pitão)","variacao":"PCT 100","custo":null,"unidade":"pacote","codigo":"7731","obs":null},
+   {"produto":"Cantoneira Reforçada 3 Furos c/ Capa","variacao":"—","custo":null,"unidade":"unidade","codigo":"9360","obs":null},
+   {"produto":"Cavilha M8 x 30 (madeira)","variacao":"—","custo":null,"unidade":"pacote","codigo":"408","obs":null},
+   {"produto":"Parafuso","variacao":"4 x 16mm","custo":null,"unidade":"pacote","codigo":"5710","obs":null},
+   {"produto":"Parafuso","variacao":"4 x 25mm","custo":null,"unidade":"pacote","codigo":"5713","obs":null},
+   {"produto":"Parafuso","variacao":"4 x 40mm","custo":null,"unidade":"pacote","codigo":"5716","obs":null},
+   {"produto":"Tapa-furo 12mm (por cor)","variacao":"—","custo":null,"unidade":"unidade","codigo":null,"obs":"cor da chapa"},
+   {"produto":"Kit Teck Bond","variacao":"—","custo":35,"unidade":"kit","codigo":null,"obs":null},
+   {"produto":"Cola","variacao":"—","custo":80,"unidade":"unidade","codigo":null,"obs":null}
+  ]},
+  {"categoria":"Iluminação","unidade_padrao":"metro","itens":[
+   {"produto":"LED Fita + perfil","variacao":"—","custo":130,"unidade":"metro","codigo":null,"obs":"arredondar pra cima"},
+   {"produto":"Sensor","variacao":"—","custo":50,"unidade":"unidade","codigo":null,"obs":null}
+  ]},
+  {"categoria":"Serviços terceirizados","unidade_padrao":"serviço","itens":[
+   {"produto":"Porta de espelho (alumínio + espelho prata segurança)","variacao":"—","custo":1200,"unidade":"unidade","codigo":null,"obs":"+~R$200 frete ≈ 1400 posto na obra"},
+   {"produto":"Serralheiro","variacao":"padrão / complexo","custo":null,"unidade":"serviço","codigo":null,"obs":null},
+   {"produto":"Vidraceiro","variacao":"padrão / complexo","custo":null,"unidade":"serviço","codigo":null,"obs":null},
+   {"produto":"Laca / Pintura","variacao":"por peça / projeto","custo":null,"unidade":"serviço","codigo":null,"obs":null}
+  ]}
+ ]
+};
+let data;
+
+function load(){
+ const ls = localStorage.getItem('valvic_materiais');
+ data = ls ? JSON.parse(ls) : JSON.parse(JSON.stringify(SEED));
+ if(!data.categorias) data.categorias=[];
+}
+function save(){ data._meta.atualizado_em = new Date().toISOString().slice(0,10);
+ localStorage.setItem('valvic_materiais', JSON.stringify(data)); renderStats(); }
+
+function renderStats(){
+ let total=0,sem=0;
+ data.categorias.forEach(c=>c.itens.forEach(i=>{total++; if(i.custo==null||i.custo==='')sem++;}));
+ document.getElementById('stats').innerHTML =
+  `<span><b>${total}</b> itens</span><span><b>${data.categorias.length}</b> categorias</span>`+
+  (sem?`<span class="warn"><b>${sem}</b> sem custo</span>`:`<span style="color:var(--green)">tudo com custo ✓</span>`);
+}
+function fmt(v){return v==null||v===''?'—':Number(v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});}
+
+function render(){
+ const q=(document.getElementById('q').value||'').toLowerCase();
+ const app=document.getElementById('app'); app.innerHTML='';
+ data.categorias.forEach((c,ci)=>{
+  const itens=c.itens.map((it,ii)=>({it,ii})).filter(({it})=>!q||
+    [it.produto,it.variacao,it.codigo,it.linha,it.obs].some(x=>(x||'').toString().toLowerCase().includes(q)));
+  if(q && itens.length===0) return;
+  const div=document.createElement('div'); div.className='cat';
+  let rows = itens.map(({it,ii})=>`
+   <tr class="${it.custo==null||it.custo===''?'nocost':''}">
+    <td><input class="cell" value="${esc(it.produto)}" onchange="upd(${ci},${ii},'produto',this.value)"></td>
+    <td><input class="cell" value="${esc(it.variacao||'')}" onchange="upd(${ci},${ii},'variacao',this.value)"></td>
+    <td><div class="cost-wrap ${it.custo==null||it.custo===''?'empty':''}">R$ <input class="cell num" value="${it.custo??''}" placeholder="—" onchange="upd(${ci},${ii},'custo',this.value)"></div></td>
+    <td><input class="cell" value="${esc(it.unidade||c.unidade_padrao||'')}" onchange="upd(${ci},${ii},'unidade',this.value)"></td>
+    <td><input class="cell" value="${esc(it.codigo||'')}" onchange="upd(${ci},${ii},'codigo',this.value)"></td>
+    <td><input class="cell" value="${esc(it.linha||'')}" onchange="upd(${ci},${ii},'linha',this.value)"></td>
+    <td><input class="cell" value="${esc(it.obs||'')}" onchange="upd(${ci},${ii},'obs',this.value)"></td>
+    <td><button class="del" title="remover" onclick="rmItem(${ci},${ii})">×</button></td>
+   </tr>`).join('');
+  div.innerHTML=`
+   <div class="cat-head">
+    <h2 contenteditable="true" onblur="upd(${ci},null,'categoria',this.textContent)">${esc(c.categoria)}</h2>
+    <span class="u">un. padrão: ${esc(c.unidade_padrao||'—')}</span>
+    <button class="del" title="remover categoria" onclick="rmCat(${ci})">🗑</button>
+   </div>
+   <table>
+    <thead><tr>
+     <th class="col-prod">Produto</th><th class="col-var">Variação</th><th class="col-cost">Custo (R$)</th>
+     <th class="col-un">Unidade</th><th class="col-cod">Código</th><th class="col-linha">Linha</th>
+     <th class="col-obs">Obs</th><th class="col-act"></th>
+    </tr></thead>
+    <tbody>${rows||''}</tbody>
+   </table>
+   <div class="add-row"><button onclick="addItem(${ci})">+ adicionar item</button></div>`;
+  app.appendChild(div);
+ });
+ renderStats();
+}
+function esc(s){return String(s).replace(/"/g,'&quot;').replace(/</g,'&lt;');}
+function upd(ci,ii,k,v){
+ if(ii==null){data.categorias[ci][k]=v;}
+ else{ if(k==='custo'){v=v.trim()===''?null:parseFloat(v.replace(',','.'));} data.categorias[ci].itens[ii][k]=v; }
+ save(); if(k==='custo'||ii==null) render();
+}
+function addItem(ci){data.categorias[ci].itens.push({produto:'Novo item',variacao:'',custo:null,unidade:data.categorias[ci].unidade_padrao||'',codigo:null,linha:'',obs:''});save();render();}
+function rmItem(ci,ii){if(confirm('Remover este item?')){data.categorias[ci].itens.splice(ii,1);save();render();}}
+function addCat(){const n=prompt('Nome da categoria:');if(n){data.categorias.push({categoria:n,unidade_padrao:'unidade',itens:[]});save();render();}}
+function rmCat(ci){if(confirm('Remover a categoria inteira?')){data.categorias.splice(ci,1);save();render();}}
+
+function exportJson(){
+ save();
+ const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='materiais.json';a.click();
+}
+function importJson(e){
+ const f=e.target.files[0];if(!f)return;const r=new FileReader();
+ r.onload=()=>{try{data=JSON.parse(r.result);if(!data.categorias)throw 0;save();render();alert('Base importada.');}
+  catch{alert('JSON inválido.');}};
+ r.readAsText(f);
+}
+load();render();
+</script>
+</body>
+</html>

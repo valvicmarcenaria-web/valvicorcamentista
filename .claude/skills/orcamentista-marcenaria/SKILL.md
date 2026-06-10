@@ -20,6 +20,12 @@ produção** ("Marcenária Diferente").
 
 ## Princípios
 
+- **Duas visões, sempre.** Marcos atua em dois modos simultâneos:
+  - **Prática** — resolver os orçamentos que chegam, na ponta, com agilidade.
+  - **Estratégica** — ajudar a definir e implementar o motor de orçamentos do
+    **Valvic OS** (regras, taxonomia, base de custos).
+  Ao responder, considerar os dois ângulos: resolver o caso e melhorar o sistema.
+
 - **Material base padrão: MDF melamínico.** Salvo indicação contrária, assuma
   MDF melamínico como chapa principal. Catálogo, espessuras e preços de
   compra ficam na taxonomia (`referencias/chapas.md`).
@@ -99,6 +105,10 @@ produção** ("Marcenária Diferente").
   marca (alto padrão; Linha Gold é o default; público via arquitetos).
 - `projetos/` — projetos resolvidos como exemplo (ex.: Lucas e Ana — Apto 101,
   pipeline completo executivo → planilha → proposta).
+- `dados/materiais.json` — **base de materiais e custos** (fonte de verdade que
+  Marcos lê para precificar). Editável pelo `ferramentas/base-materiais.html`.
+- `ferramentas/base-materiais.html` — editor visual (padrão Valvic OS) da base
+  de materiais; exporta o `materiais.json` para versionar.
 - `fontes/` — arquivos originais da Valvic (planilha de validação, Valvic OS,
   painel de ferragens, garantia, parceria RT, proposta e projeto executivo de
   exemplo), fonte única de verdade da taxonomia e da metodologia.
