@@ -60,6 +60,29 @@ Liberado → Instalação → Concluído).
 Atração → Qualificação → Briefing/Visita → Proposta → Follow-up →
 Fechamento → Pós-venda. Origens típicas: Arquiteto, Indicação, Instagram, Site.
 
+## Ferramentas e pipeline ATUAIS (estado real hoje)
+
+A Valvic gerencia orçamentos hoje em três peças (o Valvic OS é o app em
+construção que pretende unificá-las):
+
+1. **CalcMe** (`app.calcme.com.br/orcamento`) — front-end de pipeline/CRM dos
+   orçamentos. Lista com colunas: `# · Status · Data · Cliente · Entrega ·
+   Relacionamento · Valor · Ações`. Entrega normalmente "À Combinar";
+   relacionamento por WhatsApp/e-mail.
+2. **Planilha de validação** (`fontes/validacao_de_orcamentos.xlsx`) — cálculo
+   de custo/MC% por ambiente (ver `validacao-orcamento.md`).
+3. **Proposta em PDF** (Gold/Silver) — saída ao cliente (ver
+   `proposta-comercial.md`).
+
+### Status reais do orçamento no CalcMe
+
+`Novo Orçamento → Apresentação → Em negociação → Follow-up → Contrato →
+Produção`.
+
+> Volume de referência (jun/2026): orçamentos com ticket de ~R$4,5 mil a
+> R$400 mil, a maioria de alto padrão. Esse é o funil real que o agente
+> orçamentista alimenta.
+
 > Esta estrutura é o "esqueleto" que o agente preenche ao orçar: identifica o
 > ambiente (tipo), decompõe em itens, atribui CX e componentes da biblioteca,
 > marca flags e segue para o quantitativo e o custo (`custos.md`).
