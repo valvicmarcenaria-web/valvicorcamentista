@@ -54,6 +54,30 @@ A planilha valida o orçamento **de trás para frente**: dado um Investimento
 > preço ou enxugar custos; isso difere do markup bruto do app (CX 52–68%),
 > que é *antes* dos encargos.
 
+## Custo FIXO vs VARIÁVEL — o que entra (e o que NÃO entra) no orçamento
+
+> **Conceito-chave.** O orçamento contém **apenas custos variáveis** (incidem
+> por projeto). A **produção é custo FIXO** e **NÃO entra no orçamento**.
+
+- **Variáveis (entram no orçamento):** material e insumos; **comissões**
+  (vendedor, produção, programador, coordenador, marceneiro/montador); corte de
+  chapa; NF; RT; logística (carreto + equipe); máquina/parcelamento; embalagem;
+  visitas/setup; margem de erro.
+- **Fixos (NÃO entram no orçamento):** **salários de toda a equipe** (7
+  profissionais — marceneiros, montadores, etc.), galpão ~500 m², máquinas
+  (CNC, coladeira automática), administrativo. A produção é **fixa, não por
+  demanda**.
+
+**Margem de Contribuição (MC) = Preço − Custos Variáveis.** A soma das MCs de
+todos os projetos é o que **cobre os custos fixos e gera o lucro**. Por isso a
+meta de **MC 35–40%** é crítica: com a estrutura fixa que cresceu (sócio,
+galpão, CNC, coladeira, 7 fixos), a MC precisa ser robusta o bastante para
+pagar tudo isso e ainda manter caixa saudável.
+
+> ⚠ Cuidado para **não confundir**: o marceneiro tem **salário (fixo, fora do
+> orçamento)** e pode ter **comissão (variável, dentro do orçamento)**. Só a
+> comissão entra na cotação.
+
 ## Catálogo de material — preços de compra reais (R$ unitário)
 
 Organizado como na planilha. Onde há faixa, são valores vistos em projetos
