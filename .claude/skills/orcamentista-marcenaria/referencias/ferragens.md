@@ -17,6 +17,16 @@ Duas fontes compõem esta taxonomia:
 > **Blum** (pulsadores/abertura touch, Tandembox), **Häfele** e **Hardt**.
 > A garantia Linha Gold cobre estrutura e ferragens por **10 anos**.
 
+## Preferências reais de compra (informado pelo fundador)
+
+- **Corrediça oculta com slow motion** é o padrão; **~70% dos casos: Hartt**.
+  Meta futura: subir para **Blum** quando o cliente pagar a diferença de
+  qualidade (ainda não atingido).
+- **Sistema de correr de roupeiro: Dominus.**
+- **Puxador de perfil SP7000** na maioria (emergindo: puxador cava, usinagem).
+- **Portas de espelho são terceirizadas** (alumínio + espelho prata com película
+  de segurança + perfil largo); ~R$1.200 + ~R$200 frete posto na obra.
+
 ## Configuração técnica padrão (apresentada ao cliente)
 
 | Componente              | Padrão Valvic                                        |
