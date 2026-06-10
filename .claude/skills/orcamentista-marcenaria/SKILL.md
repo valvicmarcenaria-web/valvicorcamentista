@@ -75,6 +75,8 @@ materiais** e um **orçamento** estruturados.
   Projeto), CX, markup divisor, encargos e saúde de margem.
 - `referencias/proposta-comercial.md` — formato de saída ao cliente: Linha
   Gold/Silver, garantia 10 anos, prazo, pagamento e parceria RT (10% líquido).
+- `referencias/posicionamento.md` — padrão de serviço, materiais nobres e
+  marca (alto padrão; Linha Gold é o default; público via arquitetos).
 - `projetos/` — projetos resolvidos como exemplo (ex.: Lucas e Ana — Apto 101,
   pipeline completo executivo → planilha → proposta).
 - `fontes/` — arquivos originais da Valvic (planilha de validação, Valvic OS,
