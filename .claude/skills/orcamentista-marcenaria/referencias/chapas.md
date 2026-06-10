@@ -8,6 +8,9 @@ objeto `biblioteca`, a *fonte única de verdade* do sistema).
 > precificação interna. Não são preço de venda — o preço ao cliente sai do
 > motor de custo (ver `custos.md`).
 
+> **Dimensão padrão da chapa: 2750 × 1850 mm** (~5,09 m²), confirmada nos
+> planos de corte reais. O consumo é apurado por nesting — ver `quantitativo.md`.
+
 ## Categoria `Chapas` — unidade: **chapa**
 
 | Produto                     | Espessuras e preço (R$/chapa)                          |
