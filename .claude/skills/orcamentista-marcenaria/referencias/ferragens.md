@@ -27,6 +27,22 @@ Duas fontes compõem esta taxonomia:
 - **Portas de espelho são terceirizadas** (alumínio + espelho prata com película
   de segurança + perfil largo); ~R$1.200 + ~R$200 frete posto na obra.
 
+## SKUs reais usados na produção (Marcenária Diferente)
+
+Confirmados nas listas de materiais dos projetos de treino:
+
+- **Corrediça oculta:** **Hardt Invisível P-10 com amortecimento**, nos
+  comprimentos **400 / 450 / 550 mm** (par por gaveta).
+- **Dobradiças:** Reta com amortecedor · Curva com amortecedor · Reta comum.
+- **Sistema de correr Dominus:** Kit Dominus 2 Portas Leve 0–20kg · Trilho
+  Inferior **RM-265** (3m) · Trilho Superior **RM-264** (3m) · Amortecedor
+  Dominus 30kg.
+- **Pistão a gás força inversa:** 60N e 100N (básculas/aéreos).
+- **Puxador Cava 45° Parcial 15mm** — medido em **metro** (usinagem).
+- **Suportes:** VB Zamac Uniblock (furo 18mm) · Pino Pitão metal (PCT 100).
+- **Cantoneira reforçada 3 furos com capa**; **Cavilha M8×30** (montagem);
+  Parafusos 4×16 / 4×25 / 4×40mm; **tapa-furo por cor**.
+
 ## Configuração técnica padrão (apresentada ao cliente)
 
 | Componente              | Padrão Valvic                                        |

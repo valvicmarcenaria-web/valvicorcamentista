@@ -97,7 +97,51 @@ organizada por categoria. Exemplo real (Maria, Ambiente 1):
 Etiquetas → Registros de entrega`. Apps internos em `sistema_valvic/apps/`
 (ex.: `Valvic_Escopo_Venda_App.html`) geram esses documentos.
 
-> TODO: definir a **regra de estimativa de chapas no orçamento** (antes do
-> nesting) — provavelmente por m² de peças ÷ área útil da chapa × fator de
-> aproveitamento típico (~85–90% nas chapas bem aproveitadas; menor nas de
-> estrutura). Validar com a Valvic e calibrar com projetos resolvidos.
+## Calibração com projetos reais (Marcenária Diferente)
+
+Aprendido com 2 projetos completos (`projetos/treino/`): modelo maior (cozinha,
+17 chapas, cliente luiz) e modelo menor (aéreos+balcão, 6 chapas, cliente aline).
+
+### Regras de estimativa de chapas
+
+1. **Chapa = 2750 × 1850 mm** (área útil ~5,09 m²), sempre.
+2. **Agrupar peças por cor × espessura.** Cada combinação consome suas próprias
+   chapas.
+3. **Aproveitamento real:** chapas "principais" de uma cor rendem **85–92%**.
+   Mas há chapas de **cauda** (sobra de uma cor com poucas peças) que rendem
+   **2–35%**.
+4. **Cada cor distinta puxa ≥ 1 chapa**, mesmo para 1 peça só. ⇒ Projetos com
+   **muitas cores** gastam mais chapa do que a área pura sugere.
+5. **Estimativa prática:** por cor/espessura,
+   `chapas ≈ arredonda_para_cima( Σ área das peças ÷ (5,09 m² × 0,85) )`,
+   com **mínimo de 1 chapa por cor**. Para a chapa de cauda, não esperar bom
+   aproveitamento.
+
+### Fita de borda
+- Calcular o **filetamento** (metros das faces que levam fita — regras em
+  `laminacao-e-construcao.md`), por cor.
+- A **fita-material é arredondada pra cima por cor** (ex.: 40/60/140 m), acima
+  do filetamento e além dos +10% — margem de estoque. Usar múltiplos
+  generosos por cor.
+
+### Ferragens — proporções observadas
+- **Corrediça oculta = 1 par por gaveta** (Hardt Invisível P-10, no comprimento
+  da profundidade: 400/450/550mm).
+- **Dobradiças:** ~2 por porta de giro; mix Reta/Curva c/ amortecedor + Reta
+  comum (interno). Cozinha grande: 59; conjunto pequeno: 24.
+- **Pistão a gás** (60–100N) por báscula/aéreo basculante.
+- **Sistema Dominus** (correr): kit + trilho inferior RM-265 + superior RM-264
+  (barras de 3m) + amortecedores.
+- **Puxador cava:** medido em **metro** (usinado), pela extensão das frentes.
+- **Suporte de prateleira:** VB Zamac Uniblock (furo 18mm), ~4 por prateleira.
+- **Cantoneira reforçada 3 furos c/ capa** e **parafusos** (4×16/25/40mm) por
+  módulo/montagem; **tapa-furo por cor**.
+
+### Serviços de produção (sempre quantificados)
+Filetamento (m), **Rasgo (m)** — sulco do fundo por encaixe —, Furação (nº de
+furos), Marcação, Peças Cortadas, Embalagem. Úteis para dimensionar tempo de
+máquina/operação.
+
+> **Próximo passo de calibração:** comparar a estimativa manual do Marcos
+> (a partir de medidas/render) com esses números reais e ajustar os fatores
+> (aproveitamento por tipo, fita por gaveta/porta, furação por módulo).
