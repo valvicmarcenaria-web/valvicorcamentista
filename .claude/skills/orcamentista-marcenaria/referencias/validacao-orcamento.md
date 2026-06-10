@@ -42,11 +42,11 @@ A planilha valida o orçamento **de trás para frente**: dado um Investimento
 
 | Encargo                  | % do Investimento        | Observação                         |
 |--------------------------|--------------------------|------------------------------------|
-| Nota fiscal              | **7%**                   | constante nos 11 projetos          |
-| Parcelamento de máquina  | **7%** (às vezes 8%)     | taxa da maquininha/cartão          |
+| Nota fiscal              | **7%** (RT doc: 7,5%)    | constante nos 11 projetos          |
+| Parcelamento de máquina  | **7%** (às vezes 8%)     | taxa da maquininha/cartão; vira desconto à vista |
 | Comissão vendedor        | **5%** (às vezes 3%)     | 3% em alguns projetos              |
 | Comissão produção        | **5%**                   |                                    |
-| RT (parceiro/arquiteto)  | **7–8%** quando há       | 0 quando não há parceiro           |
+| RT (parceiro/arquiteto)  | **10% do líquido** (≈7–8% do bruto) | 0 quando não há parceiro; ver `proposta-comercial.md` |
 | Margem de erro           | **2%**                   |                                    |
 | Visitas                  | **R$ 250** (fixo)        | valor por visita                   |
 

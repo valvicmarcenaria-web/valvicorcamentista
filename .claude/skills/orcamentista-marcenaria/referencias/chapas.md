@@ -17,13 +17,28 @@ objeto `biblioteca`, a *fonte única de verdade* do sistema).
 | MDF Melamínico Brilhante    | 15mm 132 · 18mm 148                                     |
 | MDF Cru                     | 6mm 62 · 15mm 82 · 18mm 95 · 25mm 128                  |
 
-**Leitura de uso por espessura (padrão de marcenaria):**
-- **18 mm** — estrutura: laterais, bases, tampos, prateleiras, portas.
-- **15 mm** — estrutura alternativa / portas e fundos estruturais.
-- **6 mm** — fundos de armário e de gaveta.
-- **25 mm** — tampos reforçados, peças de destaque.
-- **MDF Cru** — quando a peça recebe laca/pintura ou não fica aparente
-  (ex.: armário de área de serviço, caixaria interna).
+### Padrão de espessuras Valvic (confirmado na proposta ao cliente)
+
+| Aplicação            | Espessura padrão            |
+|----------------------|-----------------------------|
+| Estrutura (caixaria) | **15 mm**                   |
+| Fundos               | **6 mm** (duplo revestimento) |
+| Prateleiras          | **18 / 25 mm**              |
+| Portas               | **15 mm**                   |
+| Portas de passagem   | **42 mm**                   |
+
+- **MDF Cru** — quando a peça recebe laca/pintura ou não fica aparente.
+- **branco TX Ultra** — interno de áreas úmidas (mais resistente à umidade).
+
+### Linhas de melamínico usadas em projeto (nomes comerciais reais)
+
+Vistas na proposta Lucas e Ana e na planilha — a classificação
+"branco / cor / especial" da planilha mapeia para estas linhas:
+
+- **Branco:** Branco TX · Branco TX Ultra · Branco Diamante · Branco Diamante Essencial.
+- **Cor:** Areia Guararapes · Cinza Fóssil · Carvalho Guararapes.
+- **Especial / nobre:** Freijó Puro Duratex · lâmina natural (carvalho,
+  nogueira) · com acabamento curvo/ripado/laca.
 
 ## Categoria `Portas de Vidro` — unidade: **folha**
 
@@ -53,6 +68,8 @@ objeto `biblioteca`, a *fonte única de verdade* do sistema).
 | Fita de Bordo       | Branco 22mm 2,8 · Branco 45mm 4,2 · Colorida 22mm 3,4      |
 
 ### Fita de bordo
+- Padrão Valvic: **fita de borda extra fina 0,4 mm** (laminação refinada,
+  argumento de acabamento na proposta).
 - Cobrada por **metro linear**, na largura que acompanha a espessura da chapa
   (22mm para peças de 15/18mm; 45mm para peças mais espessas).
 - Somar apenas as **bordas aparentes** de cada peça.

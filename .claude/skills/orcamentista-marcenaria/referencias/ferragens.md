@@ -12,6 +12,28 @@ Duas fontes compõem esta taxonomia:
 > Isso dá à Valvic integração técnica e cadeia de suprimento sólida nas duas
 > marcas.
 
+> **Marcas que a Valvic usa em projeto** (proposta e garantia): **Hettich**
+> (Sensys / Sensys Onix), **Rometal** (sistemas deslizantes Dominus e RO82),
+> **Blum** (pulsadores/abertura touch, Tandembox), **Häfele** e **Hardt**.
+> A garantia Linha Gold cobre estrutura e ferragens por **10 anos**.
+
+## Configuração técnica padrão (apresentada ao cliente)
+
+| Componente              | Padrão Valvic                                        |
+|-------------------------|------------------------------------------------------|
+| Corrediças              | **ocultas, fechamento suave (slow motion)** — não aparecem na lateral |
+| Dobradiças              | **Premium Hardt / Hettich**, alta tecnologia, silêncio |
+| Articuladores           | básculas com **articuladores premium** (estrutura metálica) |
+| Deslizante de roupeiro  | sistema **flutuante Dominus (Rometal)** — trilhos ocultos, duplo amortecimento |
+| Deslizante porta passagem | sistema **RO82 (Rometal)** — maior resistência de peso |
+| Abertura sem puxador    | **touch / pulsadores Blum** ou **puxador cava usinada** |
+| Iluminação              | **fita LED profissional 240 leds + perfil com difusor** |
+| Suportes/montagem       | linha profissional, suportes em aço |
+
+> **Linha Gold vs Silver:** a Linha Silver troca corrediças **ocultas** por
+> **telescópicas** (garantia 2 anos nas corrediças), reduzindo o preço. Demais
+> itens equivalentes. Ver `proposta-comercial.md`.
+
 > Preços = **custo de compra** (referência 2026), base de precificação interna.
 
 ---

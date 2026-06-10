@@ -40,22 +40,25 @@ materiais** e um **orçamento** estruturados.
 
 ## Fluxo de trabalho
 
-1. **Entender a demanda.** Ambiente, módulos, medidas (L × A × P em mm),
-   acabamento desejado, ferragens/acessórios pedidos, restrições.
-   Se faltar dado essencial, pergunte antes de calcular.
-2. **Decompor em peças.** Quebrar cada módulo nas suas peças (laterais, base,
-   tampo, fundo, prateleiras, portas, gavetas...) com dimensões e espessura.
-3. **Levantar chapas.** Agrupar peças por chapa/espessura/cor e calcular o
-   consumo. Ver `referencias/chapas.md` para padrões de chapa e regra de
-   aproveitamento/plano de corte.
-4. **Levantar fita de borda.** Metros lineares por peça conforme bordas
-   aparentes. Ver `referencias/chapas.md`.
-5. **Levantar ferragens e acessórios.** Dobradiças, corrediças, puxadores,
-   suportes, sistemas. Ver `referencias/ferragens.md`.
-6. **Compor custo.** Aplicar valores da demanda (material + ferragem + mão de
-   obra + margem) conforme `referencias/custos.md`.
-7. **Apresentar.** Quantitativo + orçamento, deixando explícito de onde veio
-   cada quantidade.
+1. **Entender a demanda.** Tipicamente a partir do **projeto executivo do
+   arquiteto** (plantas, vistas, detalhamento por ambiente). Identificar
+   ambiente, módulos, medidas (L × A × P em mm), acabamento, ferragens e
+   restrições. Se faltar dado essencial, pergunte antes de calcular.
+2. **Decompor em peças.** Quebrar cada módulo nas suas peças com dimensão e
+   espessura, usando o **padrão Valvic** (estrutura 15mm · fundos 6mm duplo ·
+   prateleiras 18/25mm · portas 15mm · porta de passagem 42mm).
+3. **Levantar chapas.** Agrupar peças por linha/espessura e calcular o consumo
+   em nº de chapas (e frações). Ver `referencias/chapas.md`.
+4. **Levantar fita de borda e acabamentos.** Metros lineares conforme bordas
+   aparentes; LED, perfis, etc. Ver `referencias/chapas.md`.
+5. **Levantar ferragens e acessórios.** Dobradiças, corrediças (ocultas/telesc.),
+   puxadores (cava/touch), sistemas (Dominus, RO82), articuladores, iluminação.
+   Ver `referencias/ferragens.md`.
+6. **Compor e validar o custo.** Material + operacional + terceirizados + venda
+   + margem de erro; conferir **MC% na faixa 35–40%**
+   (`referencias/validacao-orcamento.md`).
+7. **Apresentar a proposta.** Preço por ambiente em **Linha Gold / Silver**,
+   garantia, prazo e formas de pagamento. Ver `referencias/proposta-comercial.md`.
 
 ## Referências (taxonomia)
 
@@ -70,8 +73,13 @@ materiais** e um **orçamento** estruturados.
   material com preços de compra.
 - `referencias/custos.md` — motor de custo do app Valvic OS (Item → Ambiente →
   Projeto), CX, markup divisor, encargos e saúde de margem.
-- `fontes/` — arquivos originais da Valvic (planilha de validação, Valvic OS e
-  Painel de Ferragens), fonte única de verdade da taxonomia e da metodologia.
+- `referencias/proposta-comercial.md` — formato de saída ao cliente: Linha
+  Gold/Silver, garantia 10 anos, prazo, pagamento e parceria RT (10% líquido).
+- `projetos/` — projetos resolvidos como exemplo (ex.: Lucas e Ana — Apto 101,
+  pipeline completo executivo → planilha → proposta).
+- `fontes/` — arquivos originais da Valvic (planilha de validação, Valvic OS,
+  painel de ferragens, garantia, parceria RT, proposta e projeto executivo de
+  exemplo), fonte única de verdade da taxonomia e da metodologia.
 
 ## Projetos resolvidos (treino)
 

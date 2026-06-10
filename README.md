@@ -12,16 +12,19 @@ uma **Skill reutilizável** do Claude Code.
 ├── referencias/
 │   ├── estrutura-orcamento.md    # modelo de dados, categorias, flags, workflow
 │   ├── validacao-orcamento.md    # BASE REAL atual (planilha): MC%, % e preços
-│   ├── chapas.md                 # chapas, vidros, acabamentos, fita (c/ preços)
-│   ├── ferragens.md              # biblioteca do OS + painel Bigfer/Hettich
-│   └── custos.md                 # motor do app Valvic OS: CX, markup, MC
+│   ├── chapas.md                 # chapas, espessuras padrão, vidros, acabamentos
+│   ├── ferragens.md              # ferragens, marcas (Hettich/Rometal/Blum), config
+│   ├── custos.md                 # motor do app Valvic OS: CX, markup, MC
+│   └── proposta-comercial.md     # saída ao cliente: Gold/Silver, garantia, RT
 ├── projetos/
 │   ├── README.md                 # índice dos projetos resolvidos
-│   └── TEMPLATE.md               # formato padrão de um projeto de treino
+│   ├── TEMPLATE.md               # formato padrão de um projeto de treino
+│   └── 2025-lucas-e-ana-apto101.md  # exemplo: pipeline executivo→planilha→proposta
 └── fontes/                       # arquivos originais da Valvic (fonte de verdade)
-    ├── validacao_de_orcamentos.xlsx  # planilha de orçamento usada hoje
-    ├── valvic_os.html            # motor de orçamento + biblioteca (app)
-    └── valvic_painel_ferragens.html
+    ├── validacao_de_orcamentos.xlsx
+    ├── valvic_os.html · valvic_painel_ferragens.html
+    ├── valvic_garantia_comercial.pdf · valvic_parceria_rt_arquitetos.pdf
+    └── exemplo_proposta_lucas_e_ana_v2.pdf · exemplo_projeto_executivo_apto101.pdf
 ```
 
 ## Premissas atuais

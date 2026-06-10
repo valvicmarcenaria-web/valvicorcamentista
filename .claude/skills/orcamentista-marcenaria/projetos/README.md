@@ -14,7 +14,7 @@ de referência da metodologia do orçamentista.
 
 | Projeto | Ambiente | Arquivo |
 |---------|----------|---------|
-| _(vazio — a preencher)_ | | |
+| Lucas e Ana — Apto 101 | Apartamento completo (168 m²) | `2025-lucas-e-ana-apto101.md` |
 
 ## Projetos de referência já no Valvic OS
 
