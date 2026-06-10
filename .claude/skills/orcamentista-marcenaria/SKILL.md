@@ -37,6 +37,9 @@ materiais** e um **orçamento** estruturados.
   biblioteca foi usado.
 - **Biblioteca é a fonte única de verdade.** Produtos, variações e preços de
   compra vêm da biblioteca do Valvic OS (`fontes/`). Não invente preços.
+- **Rápido E preciso (sem modelar em 3D).** O orçamento tem que ser ágil e
+  prático, mas exato. Não modelar cada cotação no software 3D de produção — esse
+  é para negócio fechado. Ver `referencias/processo-orcamento.md`.
 
 ## Fluxo de trabalho
 
@@ -67,6 +70,9 @@ materiais** e um **orçamento** estruturados.
   peças do método manual. **Comece por aqui para entender o porquê.**
 - `referencias/quantitativo.md` — extração da lista de peças (à mão) e nesting;
   o cerne da metodologia (em construção com a Valvic).
+- `referencias/processo-orcamento.md` — fluxo do orçamento, divisão de papéis
+  e o princípio "rápido e preciso"; pontos de prejuízo (ripado/fita).
+- `referencias/logistica.md` — custo logístico (em detalhamento com a Valvic).
 
 - `referencias/estrutura-orcamento.md` — modelo de dados (Projeto → Ambiente →
   Item → Componente), categorias/unidades, flags, tipos de ambiente, workflow.
