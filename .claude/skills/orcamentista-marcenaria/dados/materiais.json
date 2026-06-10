@@ -1,125 +1,145 @@
 {
   "_meta": {
-    "titulo": "Base de Materiais e Custos — Valvic",
-    "descricao": "Fonte de verdade dos insumos e custos de compra usada pelo Marcos (orçamentista) e pelo motor do Valvic OS. Editar pelo base-materiais.html e exportar de volta para cá.",
+    "titulo": "Base de Materiais e Custos — Valvic (orçamento)",
+    "descricao": "Base MINIMALISTA para a fase de ORÇAMENTO. Categoriza por tipo de acabamento + espessura, sem cor exata e sem variáveis (reta/curva, tamanho de corrediça) — isso é resolvido depois na lista de material da Marcenária Diferente.",
     "moeda": "BRL",
     "atualizado_em": "2026-06-10",
-    "observacoes": "custo = preço de COMPRA (não venda). null = a confirmar pela Valvic. Preços variam no tempo; manter atualizado_em por item quando possível."
+    "principios": [
+      "Não separar por cor exata: centralizar no tipo (ex.: amadeirado fosco = MDF Melamínico Fosco).",
+      "Dobradiças e corrediças: só a categoria/linha, sem variável (reta/curva/tamanho).",
+      "Sistemas deslizantes: custo do SISTEMA COMPLETO com trilho de 3m, por nº de portas.",
+      "LED: fita COB + perfil já somados por metro linear; sensor/interruptor à parte.",
+      "Parafuso, cavilha, cola e afins NÃO são catalogados — entram como especulação no fechamento.",
+      "custo = preço de COMPRA. null = a confirmar pela Valvic. Sempre dá pra adicionar 'Outros'."
+    ]
   },
   "categorias": [
     {
-      "categoria": "Chapas (MDF)",
+      "categoria": "Chapas",
       "unidade_padrao": "chapa",
       "dimensao_chapa_mm": "2750x1850",
       "itens": [
-        { "produto": "MDF Branco TX", "variacao": "6mm", "custo": 190, "unidade": "chapa", "codigo": null, "linha": "Branco", "obs": "fundos" },
-        { "produto": "MDF Branco TX", "variacao": "15mm", "custo": 220, "unidade": "chapa", "codigo": null, "linha": "Branco", "obs": "estrutura/portas — espessura base" },
-        { "produto": "MDF Branco TX", "variacao": "18mm", "custo": 330, "unidade": "chapa", "codigo": null, "linha": "Branco", "obs": "prateleiras/portas/tamponamento" },
-        { "produto": "MDF Branco TX", "variacao": "25mm", "custo": 420, "unidade": "chapa", "codigo": null, "linha": "Branco", "obs": "tampos reforçados" },
-        { "produto": "MDF Branco TX Ultra", "variacao": "15mm", "custo": 320, "unidade": "chapa", "codigo": null, "linha": "Branco", "obs": "áreas úmidas (mais resistente)" },
-        { "produto": "MDF Cor (amadeirado/unicolor)", "variacao": "6mm", "custo": 250, "unidade": "chapa", "codigo": null, "linha": "Cor", "obs": "~2x o branco; confirmar por linha" },
-        { "produto": "MDF Cor (amadeirado/unicolor)", "variacao": "15mm", "custo": 500, "unidade": "chapa", "codigo": null, "linha": "Cor", "obs": "~2x o branco" },
-        { "produto": "MDF Cor (amadeirado/unicolor)", "variacao": "18mm", "custo": 580, "unidade": "chapa", "codigo": null, "linha": "Cor", "obs": "~2x o branco" },
-        { "produto": "MDF Especial", "variacao": "6mm", "custo": 800, "unidade": "chapa", "codigo": null, "linha": "Especial", "obs": null },
-        { "produto": "MDF Especial", "variacao": "15mm", "custo": 950, "unidade": "chapa", "codigo": null, "linha": "Especial", "obs": null },
-        { "produto": "MDF Especial", "variacao": "18mm", "custo": 1200, "unidade": "chapa", "codigo": null, "linha": "Especial", "obs": null },
-        { "produto": "MDF com lâmina prensada + acabamento", "variacao": "—", "custo": 2200, "unidade": "chapa", "codigo": null, "linha": "Lâmina", "obs": null },
-        { "produto": "Freijó Dual Syncro", "variacao": "15mm", "custo": null, "unidade": "chapa", "codigo": null, "linha": "Cor", "obs": "linha real vista em produção" },
-        { "produto": "Grafite Linha Trama", "variacao": "15mm", "custo": null, "unidade": "chapa", "codigo": "4753", "linha": "Cor", "obs": null },
-        { "produto": "Cinza Sagrado Essencial", "variacao": "6mm", "custo": null, "unidade": "chapa", "codigo": "4567", "linha": "Cor", "obs": null },
-        { "produto": "Cinza Sagrado Essencial", "variacao": "15mm", "custo": null, "unidade": "chapa", "codigo": "4568", "linha": "Cor", "obs": null },
-        { "produto": "Amêndola Rústica Linha Duna", "variacao": "6mm", "custo": null, "unidade": "chapa", "codigo": "4168", "linha": "Cor", "obs": null },
-        { "produto": "Amêndola Rústica Linha Duna", "variacao": "15mm", "custo": null, "unidade": "chapa", "codigo": "4169", "linha": "Cor", "obs": null },
-        { "produto": "Gianduia Linha Trama", "variacao": "6mm", "custo": null, "unidade": "chapa", "codigo": "4733", "linha": "Cor", "obs": null },
-        { "produto": "Gianduia Linha Trama", "variacao": "15mm", "custo": null, "unidade": "chapa", "codigo": "4734", "linha": "Cor", "obs": null },
-        { "produto": "Pau Ferro Natural Linha Cristallo", "variacao": "15mm", "custo": null, "unidade": "chapa", "codigo": "9413", "linha": "Especial", "obs": null },
-        { "produto": "Nuvem Matt", "variacao": "6mm", "custo": null, "unidade": "chapa", "codigo": null, "linha": "Cor", "obs": null },
-        { "produto": "Nuvem Matt", "variacao": "15mm", "custo": null, "unidade": "chapa", "codigo": null, "linha": "Cor", "obs": null },
-        { "produto": "MDF Cru", "variacao": "15mm", "custo": 82, "unidade": "chapa", "codigo": null, "linha": "Cru", "obs": "para laca/pintura ou peça não aparente" },
-        { "produto": "MDF Cru", "variacao": "18mm", "custo": 95, "unidade": "chapa", "codigo": null, "linha": "Cru", "obs": null }
+        { "produto": "MDF Branco TX", "variacao": "6mm", "custo": 190, "unidade": "chapa", "obs": "cacharia/estrutura" },
+        { "produto": "MDF Branco TX", "variacao": "9mm", "custo": null, "unidade": "chapa", "obs": null },
+        { "produto": "MDF Branco TX", "variacao": "15mm", "custo": 220, "unidade": "chapa", "obs": null },
+        { "produto": "MDF Branco TX", "variacao": "18mm", "custo": 330, "unidade": "chapa", "obs": null },
+        { "produto": "MDF Branco TX", "variacao": "25mm", "custo": 420, "unidade": "chapa", "obs": null },
+        { "produto": "MDF Melamínico Fosco", "variacao": "6mm", "custo": 250, "unidade": "chapa", "obs": "amadeirado/cor fosco centralizado aqui" },
+        { "produto": "MDF Melamínico Fosco", "variacao": "15mm", "custo": 500, "unidade": "chapa", "obs": null },
+        { "produto": "MDF Melamínico Fosco", "variacao": "18mm", "custo": 580, "unidade": "chapa", "obs": null },
+        { "produto": "MDF Melamínico Cristallo", "variacao": "6mm", "custo": null, "unidade": "chapa", "obs": null },
+        { "produto": "MDF Melamínico Cristallo", "variacao": "15mm", "custo": null, "unidade": "chapa", "obs": null },
+        { "produto": "MDF Melamínico Cristallo", "variacao": "18mm", "custo": null, "unidade": "chapa", "obs": null },
+        { "produto": "MDF Melamínico Acetinato", "variacao": "6mm", "custo": null, "unidade": "chapa", "obs": null },
+        { "produto": "MDF Melamínico Acetinato", "variacao": "15mm", "custo": null, "unidade": "chapa", "obs": null },
+        { "produto": "MDF Melamínico Acetinato", "variacao": "18mm", "custo": null, "unidade": "chapa", "obs": null },
+        { "produto": "Compensado", "variacao": "4mm", "custo": null, "unidade": "chapa", "obs": null },
+        { "produto": "Compensado", "variacao": "6mm", "custo": null, "unidade": "chapa", "obs": null },
+        { "produto": "Compensado", "variacao": "9mm", "custo": null, "unidade": "chapa", "obs": null },
+        { "produto": "Compensado", "variacao": "15mm", "custo": null, "unidade": "chapa", "obs": null },
+        { "produto": "Compensado", "variacao": "18mm", "custo": null, "unidade": "chapa", "obs": null },
+        { "produto": "Compensado", "variacao": "25mm", "custo": null, "unidade": "chapa", "obs": null },
+        { "produto": "MDF com lâmina natural (uma face)", "variacao": "6mm", "custo": null, "unidade": "chapa", "obs": null },
+        { "produto": "MDF com lâmina natural (uma face)", "variacao": "9mm", "custo": null, "unidade": "chapa", "obs": null },
+        { "produto": "MDF com lâmina natural (uma face)", "variacao": "15mm", "custo": null, "unidade": "chapa", "obs": null },
+        { "produto": "MDF com lâmina natural (uma face)", "variacao": "18mm", "custo": null, "unidade": "chapa", "obs": null },
+        { "produto": "MDF com lâmina natural (duas faces)", "variacao": "6mm", "custo": null, "unidade": "chapa", "obs": null },
+        { "produto": "MDF com lâmina natural (duas faces)", "variacao": "9mm", "custo": null, "unidade": "chapa", "obs": null },
+        { "produto": "MDF com lâmina natural (duas faces)", "variacao": "15mm", "custo": null, "unidade": "chapa", "obs": null },
+        { "produto": "MDF com lâmina natural (duas faces)", "variacao": "18mm", "custo": null, "unidade": "chapa", "obs": null },
+        { "produto": "Fórmica", "variacao": "—", "custo": null, "unidade": "chapa", "obs": "sem espessura" }
       ]
     },
     {
       "categoria": "Fita de borda",
       "unidade_padrao": "metro",
       "itens": [
-        { "produto": "Fita de borda", "variacao": "22 x 0,45mm (por cor)", "custo": null, "unidade": "metro", "codigo": null, "obs": "bitola padrão; +10% desperdício; cor acompanha a chapa. custo/m a confirmar" },
-        { "produto": "Borda Branco TX", "variacao": "22 x 0,45", "custo": null, "unidade": "metro", "codigo": "1428", "obs": null }
-      ]
-    },
-    {
-      "categoria": "Corrediças",
-      "unidade_padrao": "par",
-      "itens": [
-        { "produto": "Corrediça Hardt Invisível P-10 (amortecimento)", "variacao": "400mm", "custo": null, "unidade": "par", "codigo": null, "obs": "padrão oculta ~70%" },
-        { "produto": "Corrediça Hardt Invisível P-10 (amortecimento)", "variacao": "450mm", "custo": null, "unidade": "par", "codigo": null, "obs": null },
-        { "produto": "Corrediça Hardt Invisível P-10 (amortecimento)", "variacao": "550mm", "custo": null, "unidade": "par", "codigo": null, "obs": null },
-        { "produto": "Corrediça telescópica", "variacao": "—", "custo": 30, "unidade": "par", "codigo": null, "obs": "Linha Silver / econômica" },
-        { "produto": "Corrediça Blum Tandembox", "variacao": "450mm", "custo": null, "unidade": "par", "codigo": null, "obs": "meta futura (premium)" }
+        { "produto": "Fita de borda (acompanha a chapa)", "variacao": "—", "custo": null, "unidade": "metro", "obs": "+10% desperdício" }
       ]
     },
     {
       "categoria": "Dobradiças",
       "unidade_padrao": "unidade",
       "itens": [
-        { "produto": "Dobradiça Reta com amortecedor", "variacao": "—", "custo": null, "unidade": "unidade", "codigo": "858", "obs": null },
-        { "produto": "Dobradiça Curva com amortecedor", "variacao": "—", "custo": null, "unidade": "unidade", "codigo": "859", "obs": null },
-        { "produto": "Dobradiça Reta comum", "variacao": "—", "custo": null, "unidade": "unidade", "codigo": "861", "obs": "interno/sem amortecedor" }
+        { "produto": "Dobradiça Padrão", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
+        { "produto": "Dobradiça Bigfer Inox", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
+        { "produto": "Dobradiça Bigfer Ônix", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
+        { "produto": "Dobradiça Hartt", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
+        { "produto": "Dobradiça Häfele", "variacao": "—", "custo": null, "unidade": "unidade", "obs": "conferir transcrição 'Raffaele'" },
+        { "produto": "Dobradiça Hettich Novisys", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
+        { "produto": "Dobradiça Hettich Sensys", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
+        { "produto": "Dobradiça Hettich Sensys Onix", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
+        { "produto": "Dobradiça Hettich Sensys Black", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null }
       ]
     },
     {
-      "categoria": "Sistemas e articuladores",
+      "categoria": "Corrediças",
+      "unidade_padrao": "par",
+      "itens": [
+        { "produto": "Corrediça Telescópica", "variacao": "—", "custo": null, "unidade": "par", "obs": "sem especificar tamanho no orçamento" },
+        { "produto": "Corrediça Oculta Hartt", "variacao": "—", "custo": null, "unidade": "par", "obs": null },
+        { "produto": "Corrediça Oculta Quadro (Hettich)", "variacao": "—", "custo": null, "unidade": "par", "obs": null },
+        { "produto": "Corrediça Oculta Actro (Hettich)", "variacao": "—", "custo": null, "unidade": "par", "obs": null },
+        { "produto": "Corrediça Oculta (genérica)", "variacao": "—", "custo": null, "unidade": "par", "obs": null }
+      ]
+    },
+    {
+      "categoria": "Articuladores",
       "unidade_padrao": "unidade",
       "itens": [
-        { "produto": "Kit Dominus 2 Portas Leve 0-20kg", "variacao": "—", "custo": null, "unidade": "kit", "codigo": null, "obs": "porta de correr roupeiro" },
-        { "produto": "Trilho Inferior Dominus RM-265", "variacao": "barra 3m", "custo": null, "unidade": "barra", "codigo": "8414", "obs": null },
-        { "produto": "Trilho Superior Dominus RM-264", "variacao": "barra 3m", "custo": null, "unidade": "barra", "codigo": "8460", "obs": null },
-        { "produto": "Amortecedor Dominus 30kg", "variacao": "—", "custo": null, "unidade": "unidade", "codigo": "8822", "obs": null },
-        { "produto": "Pistão a gás força inversa", "variacao": "60N", "custo": null, "unidade": "unidade", "codigo": "21125", "obs": "básculas" },
-        { "produto": "Pistão a gás força inversa", "variacao": "100N", "custo": null, "unidade": "unidade", "codigo": "21123", "obs": null },
-        { "produto": "Sistema RO82 + trilho", "variacao": "—", "custo": 700, "unidade": "conjunto", "codigo": null, "obs": "portas de passagem (Rometal)" }
+        { "produto": "Pistão Normal", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
+        { "produto": "Pistão com amortecimento", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
+        { "produto": "Articulador Blum HK", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
+        { "produto": "Articulador Blum HS", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
+        { "produto": "Articulador Aventos (e outros)", "variacao": "—", "custo": null, "unidade": "unidade", "obs": "pouco usado; espaço para adicionar outros" }
       ]
     },
     {
-      "categoria": "Puxadores",
-      "unidade_padrao": "metro",
-      "itens": [
-        { "produto": "Puxador Cava 45° Parcial 15mm", "variacao": "—", "custo": null, "unidade": "metro", "codigo": "0000", "obs": "usinado, medido em metro linear" },
-        { "produto": "Puxador de perfil SP7000", "variacao": "—", "custo": null, "unidade": "metro", "codigo": null, "obs": "perfil mais usado" }
-      ]
-    },
-    {
-      "categoria": "Suportes e montagem",
+      "categoria": "Pulsadores",
       "unidade_padrao": "unidade",
       "itens": [
-        { "produto": "Suporte Prateleira VB Zamac (furo 18mm, Uniblock)", "variacao": "—", "custo": null, "unidade": "unidade", "codigo": "22900", "obs": "~4 por prateleira" },
-        { "produto": "Suporte Pino Prateleira Metal (Pitão)", "variacao": "PCT 100", "custo": null, "unidade": "pacote", "codigo": "7731", "obs": null },
-        { "produto": "Cantoneira Reforçada 3 Furos c/ Capa", "variacao": "—", "custo": null, "unidade": "unidade", "codigo": "9360", "obs": null },
-        { "produto": "Cavilha M8 x 30 (madeira)", "variacao": "—", "custo": null, "unidade": "pacote", "codigo": "408", "obs": null },
-        { "produto": "Parafuso", "variacao": "4 x 16mm", "custo": null, "unidade": "pacote", "codigo": "5710", "obs": null },
-        { "produto": "Parafuso", "variacao": "4 x 25mm", "custo": null, "unidade": "pacote", "codigo": "5713", "obs": null },
-        { "produto": "Parafuso", "variacao": "4 x 40mm", "custo": null, "unidade": "pacote", "codigo": "5716", "obs": null },
-        { "produto": "Tapa-furo 12mm (por cor)", "variacao": "—", "custo": null, "unidade": "unidade", "codigo": null, "obs": "cor acompanha a chapa" },
-        { "produto": "Kit Teck Bond", "variacao": "—", "custo": 35, "unidade": "kit", "codigo": null, "obs": null },
-        { "produto": "Cola", "variacao": "—", "custo": 80, "unidade": "unidade", "codigo": null, "obs": null }
+        { "produto": "Pulsador Blum (Tip-on / Servo)", "variacao": "—", "custo": null, "unidade": "unidade", "obs": "padrão; adicionar variáveis se necessário" },
+        { "produto": "Pulsador Outros", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null }
+      ]
+    },
+    {
+      "categoria": "Sistema deslizante de roupeiro",
+      "unidade_padrao": "conjunto",
+      "itens": [
+        { "produto": "SS150", "variacao": "2 portas", "custo": null, "unidade": "conjunto", "obs": "sistema completo c/ trilho 3m" },
+        { "produto": "SS150", "variacao": "3 portas", "custo": null, "unidade": "conjunto", "obs": "sistema completo c/ trilho 3m" },
+        { "produto": "RO65 (Rometal)", "variacao": "2 portas", "custo": null, "unidade": "conjunto", "obs": "completo c/ trilho 3m" },
+        { "produto": "RO65 (Rometal)", "variacao": "3 portas", "custo": null, "unidade": "conjunto", "obs": "completo c/ trilho 3m" },
+        { "produto": "Dominus (Rometal)", "variacao": "2 portas", "custo": null, "unidade": "conjunto", "obs": "completo c/ trilho 3m" },
+        { "produto": "Dominus (Rometal)", "variacao": "3 portas", "custo": null, "unidade": "conjunto", "obs": "completo c/ trilho 3m" }
+      ]
+    },
+    {
+      "categoria": "Sistemas de porta de passagem",
+      "unidade_padrao": "conjunto",
+      "itens": [
+        { "produto": "Pivô", "variacao": "—", "custo": null, "unidade": "conjunto", "obs": null },
+        { "produto": "Sistema deslizante RO82", "variacao": "—", "custo": null, "unidade": "conjunto", "obs": null },
+        { "produto": "Sistema deslizante RO82 Top (amortecimento)", "variacao": "—", "custo": null, "unidade": "conjunto", "obs": null },
+        { "produto": "Sistema deslizante SI Forma", "variacao": "—", "custo": null, "unidade": "conjunto", "obs": "raramente usado" }
       ]
     },
     {
       "categoria": "Iluminação",
       "unidade_padrao": "metro",
       "itens": [
-        { "produto": "LED Fita + perfil", "variacao": "—", "custo": 130, "unidade": "metro", "codigo": null, "obs": "perfil com difusor; arredondar pra cima" },
-        { "produto": "Sensor", "variacao": "—", "custo": 50, "unidade": "unidade", "codigo": null, "obs": null }
+        { "produto": "LED COB (fita + perfil)", "variacao": "—", "custo": 130, "unidade": "metro", "obs": "fita e perfil já somados por metro linear" },
+        { "produto": "Sensor / interruptor", "variacao": "—", "custo": 50, "unidade": "unidade", "obs": "separado da fita" }
       ]
     },
     {
       "categoria": "Serviços terceirizados",
       "unidade_padrao": "serviço",
       "itens": [
-        { "produto": "Porta de espelho (alumínio + espelho prata segurança)", "variacao": "—", "custo": 1200, "unidade": "unidade", "codigo": null, "obs": "+ ~R$200 frete = ~1400 posto na obra" },
-        { "produto": "Serralheiro", "variacao": "padrão / complexo", "custo": null, "unidade": "serviço", "codigo": null, "obs": null },
-        { "produto": "Vidraceiro", "variacao": "padrão / complexo", "custo": null, "unidade": "serviço", "codigo": null, "obs": null },
-        { "produto": "Laca / Pintura", "variacao": "por peça / projeto", "custo": null, "unidade": "serviço", "codigo": null, "obs": null }
+        { "produto": "Porta de espelho (alumínio + espelho prata segurança)", "variacao": "—", "custo": 1200, "unidade": "unidade", "obs": "+~R$200 frete ≈ 1400 posto na obra" },
+        { "produto": "Serralheiro", "variacao": "padrão / complexo", "custo": null, "unidade": "serviço", "obs": null },
+        { "produto": "Vidraceiro", "variacao": "padrão / complexo", "custo": null, "unidade": "serviço", "obs": null },
+        { "produto": "Laca / Pintura", "variacao": "por peça / projeto", "custo": null, "unidade": "serviço", "obs": null }
       ]
     }
   ]
