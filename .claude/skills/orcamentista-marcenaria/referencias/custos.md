@@ -1,5 +1,11 @@
 # Composição de custo — motor Valvic OS
 
+> **Para a base de custo ATUAL e REAL da Valvic, veja
+> `validacao-orcamento.md`** (a planilha que a Valvic usa hoje, com preços de
+> compra e percentuais reais). Este documento descreve o motor do **app Valvic
+> OS** — o sistema em construção que formaliza a mesma lógica. As duas fontes
+> são coerentes: validação por MC% no fim, custo por composição no início.
+
 Metodologia destilada do motor de orçamento (`fontes/valvic_os.html`, funções
 `calcItem` → `calcAmb` → `recalc`). O cálculo sobe em três níveis:
 **Item → Ambiente → Projeto**.

@@ -28,6 +28,10 @@ materiais** e um **orçamento** estruturados.
 - **Quantitativo antes de preço.** Primeiro o levantamento físico (quantas
   chapas, quantos metros de fita/acabamento, quais e quantas ferragens); o
   custo vem depois, aplicando o motor (custo → markup → encargos → MC).
+- **Validação por MC%.** O orçamento é validado de trás para frente: somados
+  todos os custos (material + operacional + terceirizados + venda + margem de
+  erro), a margem de contribuição deve ficar na faixa **ideal de 35–40%**
+  (`validacao-orcamento.md`).
 - **Rastreabilidade.** Todo número no orçamento deve ser justificável: de onde
   saiu a quantidade, qual peça consumiu cada material, qual produto da
   biblioteca foi usado.
@@ -61,10 +65,13 @@ materiais** e um **orçamento** estruturados.
   portas de vidro/passagem, acabamentos e fita de bordo, com preços de compra.
 - `referencias/ferragens.md` — ferragens e acessórios (biblioteca do OS +
   painel Bigfer/Hettich), nomenclaturas, custos e critérios de quantidade.
-- `referencias/custos.md` — motor de custo (Item → Ambiente → Projeto), CX,
-  markup divisor, encargos (NF, RT, comissões, máquinas) e saúde de margem.
-- `fontes/` — arquivos originais da Valvic (Valvic OS e Painel de Ferragens),
-  fonte única de verdade da taxonomia e da metodologia.
+- `referencias/validacao-orcamento.md` — **base de custo atual e real** (planilha
+  de validação): modelo MC%, percentuais reais (NF 7%, etc.) e catálogo de
+  material com preços de compra.
+- `referencias/custos.md` — motor de custo do app Valvic OS (Item → Ambiente →
+  Projeto), CX, markup divisor, encargos e saúde de margem.
+- `fontes/` — arquivos originais da Valvic (planilha de validação, Valvic OS e
+  Painel de Ferragens), fonte única de verdade da taxonomia e da metodologia.
 
 ## Projetos resolvidos (treino)
 
