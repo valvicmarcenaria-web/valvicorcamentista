@@ -14,7 +14,7 @@
         { "produto": "MDF Branco TX", "variacao": "6mm", "custo": 190, "unidade": "chapa", "obs": "fundos" },
         { "produto": "MDF Branco TX", "variacao": "9mm", "custo": 220, "unidade": "chapa", "obs": "demandas pontuais - pouco utilizado" },
         { "produto": "MDF Branco TX", "variacao": "15mm", "custo": 260, "unidade": "chapa", "obs": "estrutura/caixaria" },
-        { "produto": "MDF Branco TX", "variacao": "18mm", "custo": 330, "unidade": "chapa", "obs": "prateleiras acima de 80cm de largura/portas" },
+        { "produto": "MDF Branco TX", "variacao": "18mm", "custo": 330, "unidade": "chapa", "obs": "portas; prateleira de roupeiro com comprimento >70cm (evita empeno)" },
         { "produto": "MDF Branco TX", "variacao": "25mm", "custo": 420, "unidade": "chapa", "obs": "tampos de mesa/prateleiras * pouco usado" },
         { "produto": "MDF Melamínico Fosco", "variacao": "6mm", "custo": 300, "unidade": "chapa", "obs": "amadeirado/cor fosco centralizado aqui" },
         { "produto": "MDF Melamínico Fosco", "variacao": "15mm", "custo": 500, "unidade": "chapa", "obs": "tamponamentos/portas/estruturas" },

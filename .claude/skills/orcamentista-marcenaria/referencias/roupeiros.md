@@ -61,6 +61,7 @@ Metodologia Valvic para ler e quantificar um roupeiro. Vale para a Lavinia
 
 ## 7. Espessuras padrão do roupeiro
 - Estrutura/caixaria **15 mm**; portas **18 mm** (caso correr); fundos **6 mm**.
+- **Prateleira com comprimento > 70 cm → 18 mm** (evita empeno; ≤70 cm fica 15 mm).
 - Internamente **MDF Branco TX**; portas/frentes no acabamento de cor pedido.
 
 ## 8. Modulação construtiva — como virar o projeto em lista de peças
