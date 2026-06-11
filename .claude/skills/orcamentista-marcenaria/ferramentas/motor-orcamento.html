@@ -101,8 +101,11 @@ td.n,th.n{text-align:right;font-family:'DM Mono',monospace}
  <!-- PARAMS -->
  <div class="card">
   <h2>Parâmetros do motor</h2>
-  <div class="grid3">
-   <div><label>Aproveitamento chapa</label><input id="p_apro" type="number" step="0.01" value="0.80"></div>
+  <div class="grid2">
+   <div><label>Aproveit. 15/18mm</label><input id="p_apro" type="number" step="0.01" value="0.82"></div>
+   <div><label>Aproveit. 6mm (fundos)</label><input id="p_apro6" type="number" step="0.01" value="0.55"></div>
+  </div>
+  <div class="grid2">
    <div><label>MC alvo</label><input id="p_mc" type="number" step="0.01" value="0.38"></div>
    <div><label>Especulação (Bloco B)</label><input id="p_esp" type="number" step="0.01" value="0.02"></div>
   </div>
@@ -186,12 +189,13 @@ function calcMovel(m){
  // chapas + custo
  let custoChapa=0, chapaLinhas=[];
  for(const k in grp){const [lin,esp]=k.split('|');const area=grp[k];
-  const ch=Math.max(area>0?1:0, Math.ceil(area/(C*m.apro)));
+  const apro = esp.startsWith('6') ? m.apro6 : m.apro;
+  const ch=Math.max(area>0?1:0, Math.ceil(area/(C*apro)));
   const pr=(CHAPAS[lin]&&CHAPAS[lin][esp])||0; custoChapa+=ch*pr;
   chapaLinhas.push(`${ch}x ${lin} ${esp} (${area.toFixed(2)}m²) = ${fmt(ch*pr)}`);}
  // fita
  let fita = (m.pg>0? 2*(l + m.pg*a):0) + (2*a+2*l) + m.prat*l + (m.gav>0? m.gav*(2*(l+hg)+2*l):0);
- fita*=1.1; const custoFita=fita*FITA[m.fita];
+ fita*=1.15; const custoFita=fita*FITA[m.fita];
  // ferragens
  const nDob=m.pg*hinges(m.A); const custoDob=nDob*DOB[m.dob];
  const custoCorr=m.gav*COR[m.cor];
@@ -218,7 +222,7 @@ function addMov(){
 function rmMov(i){moveis.splice(i,1);calc();}
 
 function calc(){
- const apro=gn('p_apro'); moveis.forEach(m=>m.apro=apro);
+ const apro=gn('p_apro'),apro6=gn('p_apro6'); moveis.forEach(m=>{m.apro=apro;m.apro6=apro6;});
  let material=0; let html='';
  moveis.forEach((m,i)=>{const r=calcMovel(m); m._mat=r.material; material+=r.material;
   html+=`<div class="mov"><h3>${m.nome} <span><span class="v">${fmt(r.material)}</span> <button class="del" onclick="rmMov(${i})">×</button></span></h3>
