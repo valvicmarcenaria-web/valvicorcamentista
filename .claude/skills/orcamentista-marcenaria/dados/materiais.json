@@ -100,15 +100,37 @@
       "itens": [
         { "produto": "SS150", "variacao": "2 portas", "custo": 500, "unidade": "conjunto", "obs": null },
         { "produto": "SS150", "variacao": "3 portas", "custo": 600, "unidade": "conjunto", "obs": null },
-        { "produto": "RO65 (Rometal)", "variacao": "1 porta", "custo": 250, "unidade": "conjunto", "obs": "sem o trilho" },
+        { "produto": "RO65 (Rometal)", "variacao": "1 porta", "custo": 250, "unidade": "conjunto", "obs": "KIT UNITÁRIO (1 por porta), sem o trilho. Sustentação na base = mostra a caixaria por fora. Capacidade 60kg/porta. Trilho dimensiona pela SOMA dos vãos." },
+        { "produto": "Multi (Rometal)", "variacao": "2 portas", "custo": null, "unidade": "conjunto", "obs": "CONFIRMAR custo de compra Valvic. Suspenso/slim (sem trilho na base), esconde os trilhos = mais estético. 12-20kg/porta. Ideal porta pequena/quase quadrada (ex. faixa AC). Online ~R$90 (componente)." },
+        { "produto": "Multi (Rometal)", "variacao": "3 portas", "custo": null, "unidade": "conjunto", "obs": "CONFIRMAR custo de compra Valvic. Online ~R$120 (componente)." },
         { "produto": "Dominus (Rometal)", "variacao": "2 portas", "custo": 700, "unidade": "conjunto", "obs": null },
         { "produto": "Dominus (Rometal)", "variacao": "3 portas", "custo": 850, "unidade": "conjunto", "obs": null },
         { "produto": "Trilho RO65 Rometal 3mt", "variacao": "3mt", "custo": 80, "unidade": "conjunto", "obs": null },
         { "produto": "Trilho RO65 Rometal 2mt", "variacao": "2mt", "custo": 60, "unidade": "conjunto", "obs": null },
+        { "produto": "Trilho Multi Rometal 3mt", "variacao": "3mt", "custo": null, "unidade": "conjunto", "obs": "CONFIRMAR custo Valvic" },
+        { "produto": "Trilho Multi Rometal 2mt", "variacao": "2mt", "custo": null, "unidade": "conjunto", "obs": "CONFIRMAR custo Valvic" },
         { "produto": "Trilho SS150 3mt", "variacao": "3mt", "custo": 200, "unidade": "conjunto", "obs": null },
         { "produto": "Trilho SS150 2mt", "variacao": "2mt", "custo": 170, "unidade": "conjunto", "obs": null },
         { "produto": "Trilho Dominus 3mt", "variacao": "3mt", "custo": 350, "unidade": "conjunto", "obs": null },
-        { "produto": "Trilho Dominus 2mt", "variacao": "2mt", "custo": 300, "unidade": "conjunto", "obs": null }
+        { "produto": "Trilho Dominus 2mt", "variacao": "2mt", "custo": 300, "unidade": "conjunto", "obs": null },
+        { "produto": "Desempenador de portas", "variacao": "—", "custo": 60, "unidade": "conjunto", "obs": "anti-empeno; padrão em TODA porta deslizante. Porta ≥70cm → 2 por porta (1 em cada extremidade)." }
+      ]
+    },
+    {
+      "categoria": "Filetagem (aplicação de fita) — un: metro",
+      "unidade_padrao": "metro",
+      "_nota": "Custo de APLICAÇÃO da fita (mão de obra + coladeira), SEPARADO do custo da fita-material (categoria Fita de borda). Somar os dois no orçamento.",
+      "itens": [
+        { "produto": "Filetagem na máquina (coladeira automática)", "variacao": "mt linear", "custo": 2.5, "unidade": "metro", "obs": "padrão 15/18mm. CONFIRMAR na planilha de validação." },
+        { "produto": "Filetagem manual", "variacao": "mt linear", "custo": 4, "unidade": "metro", "obs": "ripa de 6mm e casos que não entram na máquina; mais lento. CONFIRMAR na planilha." }
+      ]
+    },
+    {
+      "categoria": "Acessórios e conforto",
+      "unidade_padrao": "unidade",
+      "itens": [
+        { "produto": "Tábua de passar embutida dobrável deslizante", "variacao": "—", "custo": 480, "unidade": "unidade", "obs": "ferragem pronta; faixa R$380-480. Demanda incomum. CONFIRMAR fornecedor/instalação." },
+        { "produto": "Cabideiro oval inox curvo", "variacao": "—", "custo": null, "unidade": "unidade", "obs": "CONFIRMAR custo Valvic" }
       ]
     },
     {

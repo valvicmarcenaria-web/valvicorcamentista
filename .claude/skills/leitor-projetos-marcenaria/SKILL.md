@@ -63,6 +63,15 @@ e estimar largura/altura pela escala/proporção, sinalizando como estimativa.
 9. **Flags de atenção:** medida a validar, ponto elétrico, usinagem especial,
    **painel ripado** (atenção redobrada à fita — fonte histórica de prejuízo).
 
+> **Roupeiro:** seguir o checklist de `referencias/roupeiros.md` (skill Marcos)
+> — sistema deslizante (RO-65 = caixaria aparente / Multi = slim, kit 2-3 portas
+> / regra de ≥50cm senão vira giro), corrediça oculta (perguntar se não
+> especificado), puxador SMP7000 (central 2 / extremidades 1), desempenador em
+> toda porta deslizante, LED acompanha o **L** (somar as duas vistas → ~1m/prat).
+> **Ripado:** calcular régua a régua (`laminacao-e-construcao.md`) — é onde mais
+> se perde dinheiro. Filetagem tem custo de aplicação à parte (máquina ~R$2,50/m,
+> manual ~R$4/m).
+
 ## Saída — quantitativo (formato que o motor consome)
 
 Para cada item, produzir:
