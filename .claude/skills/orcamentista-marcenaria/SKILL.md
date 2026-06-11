@@ -105,8 +105,13 @@ produção** ("Marcenária Diferente").
   marca (alto padrão; Linha Gold é o default; público via arquitetos).
 - `projetos/` — projetos resolvidos como exemplo (ex.: Lucas e Ana — Apto 101,
   pipeline completo executivo → planilha → proposta).
+- `referencias/parametros-orcamento.md` — parâmetros fixos: profundidades padrão,
+  Bloco A (só linha de ferragem), Bloco B (2%), C/D já no motor do Valvic OS.
 - `dados/materiais.json` — **base de materiais e custos** (fonte de verdade que
   Marcos lê para precificar). Editável pelo `ferramentas/base-materiais.html`.
+- `ferramentas/motor-orcamento.html` — **motor de orçamento standalone (v1)**:
+  decompõe o móvel, estima quantitativo, puxa custo e fecha por MC%. Para usar e
+  calibrar de forma independente.
 - `ferramentas/base-materiais.html` — editor visual (padrão Valvic OS) da base
   de materiais; exporta o `materiais.json` para versionar.
 - `fontes/` — arquivos originais da Valvic (planilha de validação, Valvic OS,

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valvic · Motor de Orçamento (v1)</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0D0A06;--panel:#141009;--card:#1B1208;--card2:#211608;--border:rgba(160,104,56,.16);--border2:rgba(160,104,56,.32);--gold:#A06838;--gold2:#C8914A;--sand:#C8A87A;--text:#F5F0E8;--muted:rgba(245,240,232,.55);--dim:rgba(245,240,232,.28);--green:#2ECC8A;--red:#E05555;--amber:#E09A30;--input:rgba(255,255,255,.04)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;padding-bottom:50px}
+.top{position:sticky;top:0;z-index:9;background:var(--panel);border-bottom:1px solid var(--border2);padding:12px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--gold2)}
+.brand small{display:block;font-family:'DM Mono',monospace;font-size:.54rem;color:var(--dim);letter-spacing:.16em;text-transform:uppercase}
+.spacer{flex:1}.tag{font-family:'DM Mono',monospace;font-size:.56rem;color:var(--amber);border:1px solid var(--border2);border-radius:10px;padding:3px 8px}
+.wrap{max-width:1240px;margin:16px auto;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.full{grid-column:1/3}
+.card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px}
+h2{font-size:.78rem;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--gold2);margin-bottom:10px}
+label{display:block;font-size:.62rem;color:var(--muted);margin:7px 0 2px}
+input,select{width:100%;background:var(--input);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:.8rem;padding:6px 8px;border-radius:4px}
+input:focus,select:focus{outline:none;border-color:var(--gold)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.btn{font-size:.76rem;padding:7px 14px;border-radius:4px;cursor:pointer;font-family:inherit;border:1px solid var(--border2);background:transparent;color:var(--sand)}
+.btn.primary{background:var(--gold);color:#fff;border-color:var(--gold);font-weight:600}.btn:hover{opacity:.85}
+table{width:100%;border-collapse:collapse;margin-top:6px}
+th{font-family:'DM Mono',monospace;font-size:.52rem;color:var(--dim);text-transform:uppercase;text-align:left;padding:5px 6px;border-bottom:1px solid var(--border)}
+td{padding:5px 6px;border-bottom:1px solid var(--border);font-size:.76rem}
+td.n,th.n{text-align:right;font-family:'DM Mono',monospace}
+.mov{border:1px solid var(--border);border-radius:6px;padding:10px 12px;margin-bottom:8px;background:var(--card2)}
+.mov h3{font-size:.86rem;display:flex;justify-content:space-between;align-items:center}
+.mov .v{font-family:'DM Mono',monospace;color:var(--sand)}
+.mem{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--dim);margin-top:6px;line-height:1.6;white-space:pre-wrap}
+.del{background:none;border:none;color:var(--dim);cursor:pointer;font-size:.95rem}.del:hover{color:var(--red)}
+.row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:.82rem}
+.row b{font-family:'DM Mono',monospace;color:var(--sand)}
+.big{font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:700}
+.mc-ok{color:var(--green)}.mc-low{color:var(--red)}.mc-hi{color:var(--amber)}
+.hint{font-size:.6rem;color:var(--dim);margin-top:3px}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}.full{grid-column:1}}
+</style>
+</head>
+<body>
+<div class="top">
+ <div class="brand">VALVIC<small>Motor de Orçamento</small></div>
+ <span class="tag">v1 · para validar e calibrar</span>
+ <div class="spacer"></div>
+ <button class="btn" onclick="exportProj()">Exportar projeto</button>
+ <button class="btn primary" onclick="addMov()">+ Adicionar móvel</button>
+</div>
+
+<div class="wrap">
+ <!-- FORM -->
+ <div class="card">
+  <h2>Novo móvel</h2>
+  <label>Nome / ambiente</label><input id="f_nome" placeholder="ex.: Cozinha — balcão inferior">
+  <div class="grid3">
+   <div><label>Tipo</label>
+    <select id="f_tipo" onchange="setDepth()">
+     <option value="coz_inf">Cozinha inferior</option>
+     <option value="coz_sup">Cozinha superior</option>
+     <option value="roupeiro">Roupeiro</option>
+     <option value="bancada">Bancada</option>
+     <option value="painel">Painel</option>
+     <option value="generico">Armário genérico</option>
+    </select></div>
+   <div><label>Largura (mm)</label><input id="f_L" type="number" value="2000"></div>
+   <div><label>Altura (mm)</label><input id="f_A" type="number" value="700"></div>
+  </div>
+  <div class="grid3">
+   <div><label>Profundidade (mm)</label><input id="f_P" type="number" value="600"></div>
+   <div><label>Nº prateleiras</label><input id="f_prat" type="number" value="1"></div>
+   <div><label>Fundo 6mm?</label><select id="f_fundo"><option value="1">Sim</option><option value="0">Não</option></select></div>
+  </div>
+  <div class="grid2">
+   <div><label>Linha estrutura</label><select id="f_le"></select></div>
+   <div><label>Esp. estrutura</label><select id="f_ee"><option>15mm</option><option>18mm</option><option>6mm</option></select></div>
+  </div>
+  <div class="grid3">
+   <div><label>Nº portas (giro)</label><input id="f_pg" type="number" value="2"></div>
+   <div><label>Linha porta</label><select id="f_lp"></select></div>
+   <div><label>Esp. porta</label><select id="f_ep"><option>18mm</option><option>15mm</option></select></div>
+  </div>
+  <div class="grid3">
+   <div><label>Dobradiça</label><select id="f_dob"></select></div>
+   <div><label>Nº gavetas</label><input id="f_gav" type="number" value="0"></div>
+   <div><label>Corrediça</label><select id="f_cor"></select></div>
+  </div>
+  <div class="grid2">
+   <div><label>Fita</label><select id="f_fita"><option value="Branco">Branco (R$2/m)</option><option value="Cor">Cor (R$3/m)</option></select></div>
+   <div><label>LED (m)</label><input id="f_led" type="number" value="0"></div>
+  </div>
+  <div class="grid3">
+   <div><label>Sistema deslizante</label><select id="f_sis"></select></div>
+   <div><label>Espelho (m²)</label><input id="f_esp" type="number" value="0"></div>
+   <div><label>Porta espelho (un)</label><input id="f_pesp" type="number" value="0"></div>
+  </div>
+  <p class="hint">Aproveitamento de chapa e folgas estão em "Parâmetros". Decomposição paramétrica v1 — ajustável.</p>
+ </div>
+
+ <!-- PARAMS -->
+ <div class="card">
+  <h2>Parâmetros do motor</h2>
+  <div class="grid3">
+   <div><label>Aproveitamento chapa</label><input id="p_apro" type="number" step="0.01" value="0.80"></div>
+   <div><label>MC alvo</label><input id="p_mc" type="number" step="0.01" value="0.38"></div>
+   <div><label>Especulação (Bloco B)</label><input id="p_esp" type="number" step="0.01" value="0.02"></div>
+  </div>
+  <div class="grid3">
+   <div><label>NF</label><input id="p_nf" type="number" step="0.01" value="0.07"></div>
+   <div><label>Com. vendedor</label><input id="p_vend" type="number" step="0.01" value="0.05"></div>
+   <div><label>Com. produção</label><input id="p_prod" type="number" step="0.01" value="0.05"></div>
+  </div>
+  <div class="grid3">
+   <div><label>Parcelamento máq.</label><input id="p_parc" type="number" step="0.01" value="0.07"></div>
+   <div><label>Margem de erro</label><input id="p_erro" type="number" step="0.01" value="0.02"></div>
+   <div><label>RT (parceiro)?</label><select id="p_rt"><option value="0">Não</option><option value="0.10">Sim (10% líq.)</option></select></div>
+  </div>
+  <div class="grid3">
+   <div><label>Carretos (qtd)</label><input id="p_carr" type="number" value="2"></div>
+   <div><label>R$/carreto</label><input id="p_carrv" type="number" value="150"></div>
+   <div><label>Logística equipe R$</label><input id="p_eq" type="number" value="0"></div>
+  </div>
+  <div class="grid2">
+   <div><label>Visitas (qtd)</label><input id="p_vis" type="number" value="1"></div>
+   <div><label>R$/visita</label><input id="p_visv" type="number" value="250"></div>
+  </div>
+  <button class="btn" style="margin-top:10px" onclick="calc()">Recalcular</button>
+ </div>
+
+ <!-- MOVEIS -->
+ <div class="card full">
+  <h2>Móveis do projeto</h2>
+  <div id="lista"></div>
+ </div>
+
+ <!-- RESUMO -->
+ <div class="card full">
+  <h2>Fechamento do orçamento</h2>
+  <div id="resumo"></div>
+ </div>
+</div>
+
+<script>
+const C = 2.75*1.85; // área útil da chapa m²
+const CHAPAS = {
+ "MDF Branco TX":{ "6mm":190,"9mm":220,"15mm":260,"18mm":330,"25mm":420 },
+ "MDF Melamínico Fosco":{ "6mm":300,"15mm":500,"18mm":600 },
+ "MDF Melamínico Cristallo":{ "6mm":400,"15mm":600,"18mm":700 },
+ "MDF Melamínico Acetinato":{ "6mm":1000,"15mm":1300,"18mm":1500 },
+ "Compensado":{ "4mm":150,"6mm":170,"9mm":200,"15mm":250,"18mm":300,"25mm":380 },
+ "Lâmina natural (1 face)":{ "6mm":700,"9mm":800,"15mm":1000,"18mm":1200 },
+ "Lâmina natural (2 faces)":{ "6mm":1200,"9mm":1300,"15mm":1400,"18mm":1600 }
+};
+const FITA={ "Branco":2,"Cor":3 };
+const DOB={ "Padrão":6,"Bigfer Inox":20,"Bigfer Ônix":15,"Hartt":8,"Häfele":20,"Hettich Novisys":10,"Hettich Sensys":35,"Hettich Sensys Onix":40,"Hettich Sensys Black":40 };
+const COR={ "—":0,"Telescópica":40,"Oculta Hartt":70,"Oculta Quadro":120,"Oculta Actro":400,"Oculta genérica":60 };
+const SIS={ "—":0,"SS150 2p (+trilho 3m)":700,"SS150 3p (+trilho 3m)":800,"Dominus 2p (+trilho 3m)":1050,"Dominus 3p (+trilho 3m)":1200,"RO65 1p (+trilho 3m)":330 };
+const DEPTH={ coz_inf:600,coz_sup:350,roupeiro:650,bancada:500,painel:120,generico:600 };
+const LED=150, SENSOR=50, ESPELHO=600, PORTA_ESP=1400;
+let moveis=[];
+
+function opts(o){return Object.keys(o).map(k=>`<option>${k}</option>`).join('');}
+function fillSelects(){
+ document.getElementById('f_le').innerHTML=opts(CHAPAS);
+ document.getElementById('f_lp').innerHTML=opts(CHAPAS);
+ document.getElementById('f_dob').innerHTML=opts(DOB);
+ document.getElementById('f_cor').innerHTML=opts(COR);
+ document.getElementById('f_sis').innerHTML=opts(SIS);
+}
+function setDepth(){const t=document.getElementById('f_tipo').value;document.getElementById('f_P').value=DEPTH[t]||600;}
+function g(id){return document.getElementById(id).value;}
+function gn(id){return parseFloat(g(id))||0;}
+function fmt(v){return 'R$ '+Math.round(v).toLocaleString('pt-BR');}
+function hinges(a){return a<900?2:a<1600?3:a<2000?4:5;}
+
+function calcMovel(m){
+ const l=m.L/1000,a=m.A/1000,p=m.P/1000,hg=0.15;
+ // áreas por (linha,esp)
+ const grp={}; const add=(lin,esp,ar)=>{const k=lin+'|'+esp;grp[k]=(grp[k]||0)+ar;};
+ const estrut = 2*(a*p) + 2*(l*p) + m.prat*(l*p);           // laterais+base+teto+prateleiras
+ add(m.le,m.ee,estrut);
+ if(m.pg>0) add(m.lp,m.ep, l*a);                            // portas de giro (face)
+ if(m.gav>0){ add(m.le,'15mm', m.gav*(2*p*hg+2*l*hg)); }    // caixa de gaveta (15mm)
+ if(m.fundo) add(m.le,'6mm', l*a + (m.gav>0? m.gav*(l*p):0));// fundo armário + fundos de gaveta
+ // chapas + custo
+ let custoChapa=0, chapaLinhas=[];
+ for(const k in grp){const [lin,esp]=k.split('|');const area=grp[k];
+  const ch=Math.max(area>0?1:0, Math.ceil(area/(C*m.apro)));
+  const pr=(CHAPAS[lin]&&CHAPAS[lin][esp])||0; custoChapa+=ch*pr;
+  chapaLinhas.push(`${ch}x ${lin} ${esp} (${area.toFixed(2)}m²) = ${fmt(ch*pr)}`);}
+ // fita
+ let fita = (m.pg>0? 2*(l + m.pg*a):0) + (2*a+2*l) + m.prat*l + (m.gav>0? m.gav*(2*(l+hg)+2*l):0);
+ fita*=1.1; const custoFita=fita*FITA[m.fita];
+ // ferragens
+ const nDob=m.pg*hinges(m.A); const custoDob=nDob*DOB[m.dob];
+ const custoCorr=m.gav*COR[m.cor];
+ const custoSis=SIS[m.sis];
+ const custoLed=m.led*LED;
+ const custoEspelho=m.esp*ESPELHO + m.pesp*PORTA_ESP;
+ const material=custoChapa+custoFita+custoDob+custoCorr+custoSis+custoLed+custoEspelho;
+ const mem=`chapas:\n ${chapaLinhas.join('\n ')}\nfita: ${fita.toFixed(1)}m x R$${FITA[m.fita]} = ${fmt(custoFita)}\n`+
+  `dobradiças: ${nDob} (${m.pg}p x ${hinges(m.A)}) x R$${DOB[m.dob]} = ${fmt(custoDob)}\n`+
+  `corrediças: ${m.gav} par x R$${COR[m.cor]} = ${fmt(custoCorr)}\n`+
+  (custoSis?`sistema: ${m.sis} = ${fmt(custoSis)}\n`:'')+
+  (custoLed?`LED: ${m.led}m x R$${LED} = ${fmt(custoLed)}\n`:'')+
+  (custoEspelho?`espelho/porta-espelho = ${fmt(custoEspelho)}\n`:'');
+ return {material,mem};
+}
+
+function addMov(){
+ const m={nome:g('f_nome')||'Móvel',tipo:g('f_tipo'),L:gn('f_L'),A:gn('f_A'),P:gn('f_P'),
+  prat:gn('f_prat'),fundo:g('f_fundo')==='1',le:g('f_le'),ee:g('f_ee'),pg:gn('f_pg'),lp:g('f_lp'),ep:g('f_ep'),
+  dob:g('f_dob'),gav:gn('f_gav'),cor:g('f_cor'),fita:g('f_fita'),led:gn('f_led'),sis:g('f_sis'),esp:gn('f_esp'),pesp:gn('f_pesp'),
+  apro:gn('p_apro')};
+ moveis.push(m); calc();
+}
+function rmMov(i){moveis.splice(i,1);calc();}
+
+function calc(){
+ const apro=gn('p_apro'); moveis.forEach(m=>m.apro=apro);
+ let material=0; let html='';
+ moveis.forEach((m,i)=>{const r=calcMovel(m); m._mat=r.material; material+=r.material;
+  html+=`<div class="mov"><h3>${m.nome} <span><span class="v">${fmt(r.material)}</span> <button class="del" onclick="rmMov(${i})">×</button></span></h3>
+   <div class="hint">${m.L}×${m.A}×${m.P}mm · ${m.le} ${m.ee} · ${m.pg} portas · ${m.gav} gavetas · ${m.prat} prat.</div>
+   <div class="mem">${r.mem}</div></div>`;});
+ document.getElementById('lista').innerHTML = html || '<p class="hint">Nenhum móvel ainda. Preencha e clique em "+ Adicionar móvel".</p>';
+
+ // fechamento
+ const espec=gn('p_esp')*material;
+ const log=gn('p_carr')*gn('p_carrv')+gn('p_eq');
+ const vis=gn('p_vis')*gn('p_visv');
+ const fixo=material+espec+log+vis;
+ const pPct=gn('p_nf')+gn('p_vend')+gn('p_prod')+gn('p_parc')+gn('p_erro');
+ const rtEff=gn('p_rt')*(1-gn('p_nf'));
+ const mcAlvo=gn('p_mc');
+ const denom=1-pPct-rtEff-mcAlvo;
+ const precoSug = denom>0 ? fixo/denom : 0;
+ // MC resultante no preço sugerido
+ const custoTotal = fixo + precoSug*(pPct+rtEff);
+ const mc = precoSug-custoTotal; const mcPct = precoSug>0?mc/precoSug*100:0;
+ const cls = mcPct<35?'mc-low':mcPct<=40?'mc-ok':'mc-hi';
+ document.getElementById('resumo').innerHTML=`
+  <div class="row"><span>Material (insumos + ferragens + terceirizados)</span><b>${fmt(material)}</b></div>
+  <div class="row"><span>Especulação fixadores (Bloco B, ${(gn('p_esp')*100).toFixed(0)}%)</span><b>${fmt(espec)}</b></div>
+  <div class="row"><span>Logística (${gn('p_carr')} carretos + equipe)</span><b>${fmt(log)}</b></div>
+  <div class="row"><span>Visitas</span><b>${fmt(vis)}</b></div>
+  <div class="row"><span>Custos % do preço (NF+vend+prod+parc+erro${rtEff?'+RT':''} = ${((pPct+rtEff)*100).toFixed(1)}%)</span><b>${fmt(precoSug*(pPct+rtEff))}</b></div>
+  <div class="row" style="border-top:1px solid var(--border2);margin-top:6px;padding-top:10px"><span><b style="color:var(--sand)">PREÇO SUGERIDO (MC alvo ${(mcAlvo*100).toFixed(0)}%)</b></span><span class="big" style="color:var(--gold2)">${fmt(precoSug)}</span></div>
+  <div class="row"><span>Margem de contribuição</span><b class="${cls}">${fmt(mc)} · ${mcPct.toFixed(1)}%</b></div>
+  <p class="hint">v1 paramétrico — calibrar a decomposição e o aproveitamento contra os modelos reais (modelo-maior/menor). Custos % do preço e logística já são os do motor Valvic OS.</p>`;
+}
+function exportProj(){const blob=new Blob([JSON.stringify({moveis,params:{apro:gn('p_apro'),mc:gn('p_mc')}},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='orcamento.json';a.click();}
+fillSelects();setDepth();calc();
+</script>
+</body>
+</html>

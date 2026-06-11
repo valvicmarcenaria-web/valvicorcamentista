@@ -1,17 +1,9 @@
 {
   "_meta": {
     "titulo": "Base de Materiais e Custos — Valvic (orçamento)",
-    "descricao": "Base MINIMALISTA para a fase de ORÇAMENTO. Categoriza por tipo de acabamento + espessura, sem cor exata e sem variáveis (reta/curva, tamanho de corrediça) — isso é resolvido depois na lista de material da Marcenária Diferente.",
     "moeda": "BRL",
-    "atualizado_em": "2026-06-10",
-    "principios": [
-      "Não separar por cor exata: centralizar no tipo (ex.: amadeirado fosco = MDF Melamínico Fosco).",
-      "Dobradiças e corrediças: só a categoria/linha, sem variável (reta/curva/tamanho).",
-      "Sistemas deslizantes: custo do SISTEMA COMPLETO com trilho de 3m, por nº de portas.",
-      "LED: fita COB + perfil já somados por metro linear; sensor/interruptor à parte.",
-      "Parafuso, cavilha, cola e afins NÃO são catalogados — entram como especulação no fechamento.",
-      "custo = preço de COMPRA. null = a confirmar pela Valvic. Sempre dá pra adicionar 'Outros'."
-    ]
+    "atualizado_em": "2026-06-11",
+    "observacoes": "Base minimalista de orçamento. custo = preço de COMPRA. null = a confirmar. Parafuso/cavilha/cola = especulação (~2% do custo total, sem categoria). Profundidades padrão: cozinha inf 60 / sup 35 cm; roupeiro 65 cm; bancada 50 cm."
   },
   "categorias": [
     {
@@ -19,116 +11,121 @@
       "unidade_padrao": "chapa",
       "dimensao_chapa_mm": "2750x1850",
       "itens": [
-        { "produto": "MDF Branco TX", "variacao": "6mm", "custo": 190, "unidade": "chapa", "obs": "cacharia/estrutura" },
-        { "produto": "MDF Branco TX", "variacao": "9mm", "custo": null, "unidade": "chapa", "obs": null },
-        { "produto": "MDF Branco TX", "variacao": "15mm", "custo": 220, "unidade": "chapa", "obs": null },
-        { "produto": "MDF Branco TX", "variacao": "18mm", "custo": 330, "unidade": "chapa", "obs": null },
-        { "produto": "MDF Branco TX", "variacao": "25mm", "custo": 420, "unidade": "chapa", "obs": null },
-        { "produto": "MDF Melamínico Fosco", "variacao": "6mm", "custo": 250, "unidade": "chapa", "obs": "amadeirado/cor fosco centralizado aqui" },
-        { "produto": "MDF Melamínico Fosco", "variacao": "15mm", "custo": 500, "unidade": "chapa", "obs": null },
-        { "produto": "MDF Melamínico Fosco", "variacao": "18mm", "custo": 580, "unidade": "chapa", "obs": null },
-        { "produto": "MDF Melamínico Cristallo", "variacao": "6mm", "custo": null, "unidade": "chapa", "obs": null },
-        { "produto": "MDF Melamínico Cristallo", "variacao": "15mm", "custo": null, "unidade": "chapa", "obs": null },
-        { "produto": "MDF Melamínico Cristallo", "variacao": "18mm", "custo": null, "unidade": "chapa", "obs": null },
-        { "produto": "MDF Melamínico Acetinato", "variacao": "6mm", "custo": null, "unidade": "chapa", "obs": null },
-        { "produto": "MDF Melamínico Acetinato", "variacao": "15mm", "custo": null, "unidade": "chapa", "obs": null },
-        { "produto": "MDF Melamínico Acetinato", "variacao": "18mm", "custo": null, "unidade": "chapa", "obs": null },
-        { "produto": "Compensado", "variacao": "4mm", "custo": null, "unidade": "chapa", "obs": null },
-        { "produto": "Compensado", "variacao": "6mm", "custo": null, "unidade": "chapa", "obs": null },
-        { "produto": "Compensado", "variacao": "9mm", "custo": null, "unidade": "chapa", "obs": null },
-        { "produto": "Compensado", "variacao": "15mm", "custo": null, "unidade": "chapa", "obs": null },
-        { "produto": "Compensado", "variacao": "18mm", "custo": null, "unidade": "chapa", "obs": null },
-        { "produto": "Compensado", "variacao": "25mm", "custo": null, "unidade": "chapa", "obs": null },
-        { "produto": "MDF com lâmina natural (uma face)", "variacao": "6mm", "custo": null, "unidade": "chapa", "obs": null },
-        { "produto": "MDF com lâmina natural (uma face)", "variacao": "9mm", "custo": null, "unidade": "chapa", "obs": null },
-        { "produto": "MDF com lâmina natural (uma face)", "variacao": "15mm", "custo": null, "unidade": "chapa", "obs": null },
-        { "produto": "MDF com lâmina natural (uma face)", "variacao": "18mm", "custo": null, "unidade": "chapa", "obs": null },
-        { "produto": "MDF com lâmina natural (duas faces)", "variacao": "6mm", "custo": null, "unidade": "chapa", "obs": null },
-        { "produto": "MDF com lâmina natural (duas faces)", "variacao": "9mm", "custo": null, "unidade": "chapa", "obs": null },
-        { "produto": "MDF com lâmina natural (duas faces)", "variacao": "15mm", "custo": null, "unidade": "chapa", "obs": null },
-        { "produto": "MDF com lâmina natural (duas faces)", "variacao": "18mm", "custo": null, "unidade": "chapa", "obs": null },
-        { "produto": "Fórmica", "variacao": "—", "custo": null, "unidade": "chapa", "obs": "sem espessura" }
+        { "produto": "MDF Branco TX", "variacao": "6mm", "custo": 190, "unidade": "chapa", "obs": "fundos" },
+        { "produto": "MDF Branco TX", "variacao": "9mm", "custo": 220, "unidade": "chapa", "obs": "demandas pontuais - pouco utilizado" },
+        { "produto": "MDF Branco TX", "variacao": "15mm", "custo": 260, "unidade": "chapa", "obs": "estrutura/caixaria" },
+        { "produto": "MDF Branco TX", "variacao": "18mm", "custo": 330, "unidade": "chapa", "obs": "prateleiras acima de 80cm de largura/portas" },
+        { "produto": "MDF Branco TX", "variacao": "25mm", "custo": 420, "unidade": "chapa", "obs": "tampos de mesa/prateleiras * pouco usado" },
+        { "produto": "MDF Melamínico Fosco", "variacao": "6mm", "custo": 300, "unidade": "chapa", "obs": "amadeirado/cor fosco centralizado aqui" },
+        { "produto": "MDF Melamínico Fosco", "variacao": "15mm", "custo": 500, "unidade": "chapa", "obs": "tamponamentos/portas/estruturas" },
+        { "produto": "MDF Melamínico Fosco", "variacao": "18mm", "custo": 600, "unidade": "chapa", "obs": "tamponamentos/portas" },
+        { "produto": "MDF Melamínico Cristallo", "variacao": "6mm", "custo": 400, "unidade": "chapa", "obs": null },
+        { "produto": "MDF Melamínico Cristallo", "variacao": "15mm", "custo": 600, "unidade": "chapa", "obs": null },
+        { "produto": "MDF Melamínico Cristallo", "variacao": "18mm", "custo": 700, "unidade": "chapa", "obs": null },
+        { "produto": "MDF Melamínico Acetinato", "variacao": "6mm", "custo": 1000, "unidade": "chapa", "obs": null },
+        { "produto": "MDF Melamínico Acetinato", "variacao": "15mm", "custo": 1300, "unidade": "chapa", "obs": null },
+        { "produto": "MDF Melamínico Acetinato", "variacao": "18mm", "custo": 1500, "unidade": "chapa", "obs": null },
+        { "produto": "Compensado", "variacao": "4mm", "custo": 150, "unidade": "chapa", "obs": "160x220" },
+        { "produto": "Compensado", "variacao": "6mm", "custo": 170, "unidade": "chapa", "obs": "160x220" },
+        { "produto": "Compensado", "variacao": "9mm", "custo": 200, "unidade": "chapa", "obs": "160x220" },
+        { "produto": "Compensado", "variacao": "15mm", "custo": 250, "unidade": "chapa", "obs": "160x220" },
+        { "produto": "Compensado", "variacao": "18mm", "custo": 300, "unidade": "chapa", "obs": "160x220" },
+        { "produto": "Compensado", "variacao": "25mm", "custo": 380, "unidade": "chapa", "obs": "160x220" },
+        { "produto": "MDF com lâmina natural (uma face)", "variacao": "6mm", "custo": 700, "unidade": "chapa", "obs": "referência carvalho; demais +30%" },
+        { "produto": "MDF com lâmina natural (uma face)", "variacao": "9mm", "custo": 800, "unidade": "chapa", "obs": null },
+        { "produto": "MDF com lâmina natural (uma face)", "variacao": "15mm", "custo": 1000, "unidade": "chapa", "obs": null },
+        { "produto": "MDF com lâmina natural (uma face)", "variacao": "18mm", "custo": 1200, "unidade": "chapa", "obs": "CONFIRMAR: veio 120 no upload (provável erro de digitação)" },
+        { "produto": "MDF com lâmina natural (duas faces)", "variacao": "6mm", "custo": 1200, "unidade": "chapa", "obs": null },
+        { "produto": "MDF com lâmina natural (duas faces)", "variacao": "9mm", "custo": 1300, "unidade": "chapa", "obs": null },
+        { "produto": "MDF com lâmina natural (duas faces)", "variacao": "15mm", "custo": 1400, "unidade": "chapa", "obs": null },
+        { "produto": "MDF com lâmina natural (duas faces)", "variacao": "18mm", "custo": 1600, "unidade": "chapa", "obs": null },
+        { "produto": "Fórmica", "variacao": "—", "custo": 400, "unidade": "chapa", "obs": "a partir de 400" }
       ]
     },
     {
       "categoria": "Fita de borda",
       "unidade_padrao": "metro",
       "itens": [
-        { "produto": "Fita de borda (acompanha a chapa)", "variacao": "—", "custo": null, "unidade": "metro", "obs": "+10% desperdício" }
+        { "produto": "Fita de borda Branco TX 22mm", "variacao": "mt linear", "custo": 2, "unidade": "metro", "obs": "+10% desperdício" },
+        { "produto": "Fita de borda Cor 22mm", "variacao": "mt linear", "custo": 3, "unidade": "metro", "obs": "+10% desperdício" }
       ]
     },
     {
       "categoria": "Dobradiças",
       "unidade_padrao": "unidade",
       "itens": [
-        { "produto": "Dobradiça Padrão", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
-        { "produto": "Dobradiça Bigfer Inox", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
-        { "produto": "Dobradiça Bigfer Ônix", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
-        { "produto": "Dobradiça Hartt", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
-        { "produto": "Dobradiça Häfele", "variacao": "—", "custo": null, "unidade": "unidade", "obs": "conferir transcrição 'Raffaele'" },
-        { "produto": "Dobradiça Hettich Novisys", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
-        { "produto": "Dobradiça Hettich Sensys", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
-        { "produto": "Dobradiça Hettich Sensys Onix", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
-        { "produto": "Dobradiça Hettich Sensys Black", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null }
+        { "produto": "Dobradiça Padrão", "variacao": "—", "custo": 6, "unidade": "unidade", "obs": null },
+        { "produto": "Dobradiça Bigfer Inox", "variacao": "—", "custo": 20, "unidade": "unidade", "obs": null },
+        { "produto": "Dobradiça Bigfer Ônix", "variacao": "—", "custo": 15, "unidade": "unidade", "obs": null },
+        { "produto": "Dobradiça Hartt", "variacao": "—", "custo": 8, "unidade": "unidade", "obs": null },
+        { "produto": "Dobradiça Häfele", "variacao": "—", "custo": 20, "unidade": "unidade", "obs": null },
+        { "produto": "Dobradiça Hettich Novisys", "variacao": "—", "custo": 10, "unidade": "unidade", "obs": null },
+        { "produto": "Dobradiça Hettich Sensys", "variacao": "—", "custo": 35, "unidade": "unidade", "obs": null },
+        { "produto": "Dobradiça Hettich Sensys Onix", "variacao": "—", "custo": 40, "unidade": "unidade", "obs": null },
+        { "produto": "Dobradiça Hettich Sensys Black", "variacao": "—", "custo": 40, "unidade": "unidade", "obs": null }
       ]
     },
     {
       "categoria": "Corrediças",
       "unidade_padrao": "par",
       "itens": [
-        { "produto": "Corrediça Telescópica", "variacao": "—", "custo": null, "unidade": "par", "obs": "sem especificar tamanho no orçamento" },
-        { "produto": "Corrediça Oculta Hartt", "variacao": "—", "custo": null, "unidade": "par", "obs": null },
-        { "produto": "Corrediça Oculta Quadro (Hettich)", "variacao": "—", "custo": null, "unidade": "par", "obs": null },
-        { "produto": "Corrediça Oculta Actro (Hettich)", "variacao": "—", "custo": null, "unidade": "par", "obs": null },
-        { "produto": "Corrediça Oculta (genérica)", "variacao": "—", "custo": null, "unidade": "par", "obs": null }
+        { "produto": "Corrediça Telescópica", "variacao": "—", "custo": 40, "unidade": "par", "obs": "sem tamanho no orçamento" },
+        { "produto": "Corrediça Oculta Hartt", "variacao": "—", "custo": 70, "unidade": "par", "obs": null },
+        { "produto": "Corrediça Oculta Quadro (Hettich)", "variacao": "—", "custo": 120, "unidade": "par", "obs": null },
+        { "produto": "Corrediça Oculta Actro (Hettich)", "variacao": "—", "custo": 400, "unidade": "par", "obs": null },
+        { "produto": "Corrediça Oculta (genérica)", "variacao": "—", "custo": 60, "unidade": "par", "obs": null }
       ]
     },
     {
       "categoria": "Articuladores",
       "unidade_padrao": "unidade",
       "itens": [
-        { "produto": "Pistão Normal", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
-        { "produto": "Pistão com amortecimento", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
-        { "produto": "Articulador Blum HK", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
-        { "produto": "Articulador Blum HS", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null },
-        { "produto": "Articulador Aventos (e outros)", "variacao": "—", "custo": null, "unidade": "unidade", "obs": "pouco usado; espaço para adicionar outros" }
+        { "produto": "Pistão Normal", "variacao": "—", "custo": 20, "unidade": "unidade", "obs": null },
+        { "produto": "Pistão com amortecimento", "variacao": "—", "custo": 30, "unidade": "unidade", "obs": null },
+        { "produto": "Articulador Blum HK-xs", "variacao": "—", "custo": 180, "unidade": "unidade", "obs": null },
+        { "produto": "Articulador Aventos (e outros)", "variacao": "—", "custo": 600, "unidade": "unidade", "obs": "pouco usado" }
       ]
     },
     {
       "categoria": "Pulsadores",
       "unidade_padrao": "unidade",
       "itens": [
-        { "produto": "Pulsador Blum (Tip-on / Servo)", "variacao": "—", "custo": null, "unidade": "unidade", "obs": "padrão; adicionar variáveis se necessário" },
-        { "produto": "Pulsador Outros", "variacao": "—", "custo": null, "unidade": "unidade", "obs": null }
+        { "produto": "Pulsador Blum (Tip-on / Servo)", "variacao": "—", "custo": 100, "unidade": "unidade", "obs": null },
+        { "produto": "Pulsador Outros", "variacao": "—", "custo": 70, "unidade": "unidade", "obs": null }
       ]
     },
     {
       "categoria": "Sistema deslizante de roupeiro",
       "unidade_padrao": "conjunto",
       "itens": [
-        { "produto": "SS150", "variacao": "2 portas", "custo": null, "unidade": "conjunto", "obs": "sistema completo c/ trilho 3m" },
-        { "produto": "SS150", "variacao": "3 portas", "custo": null, "unidade": "conjunto", "obs": "sistema completo c/ trilho 3m" },
-        { "produto": "RO65 (Rometal)", "variacao": "2 portas", "custo": null, "unidade": "conjunto", "obs": "completo c/ trilho 3m" },
-        { "produto": "RO65 (Rometal)", "variacao": "3 portas", "custo": null, "unidade": "conjunto", "obs": "completo c/ trilho 3m" },
-        { "produto": "Dominus (Rometal)", "variacao": "2 portas", "custo": null, "unidade": "conjunto", "obs": "completo c/ trilho 3m" },
-        { "produto": "Dominus (Rometal)", "variacao": "3 portas", "custo": null, "unidade": "conjunto", "obs": "completo c/ trilho 3m" }
+        { "produto": "SS150", "variacao": "2 portas", "custo": 500, "unidade": "conjunto", "obs": null },
+        { "produto": "SS150", "variacao": "3 portas", "custo": 600, "unidade": "conjunto", "obs": null },
+        { "produto": "RO65 (Rometal)", "variacao": "1 porta", "custo": 250, "unidade": "conjunto", "obs": "sem o trilho" },
+        { "produto": "Dominus (Rometal)", "variacao": "2 portas", "custo": 700, "unidade": "conjunto", "obs": null },
+        { "produto": "Dominus (Rometal)", "variacao": "3 portas", "custo": 850, "unidade": "conjunto", "obs": null },
+        { "produto": "Trilho RO65 Rometal 3mt", "variacao": "3mt", "custo": 80, "unidade": "conjunto", "obs": null },
+        { "produto": "Trilho RO65 Rometal 2mt", "variacao": "2mt", "custo": 60, "unidade": "conjunto", "obs": null },
+        { "produto": "Trilho SS150 3mt", "variacao": "3mt", "custo": 200, "unidade": "conjunto", "obs": null },
+        { "produto": "Trilho SS150 2mt", "variacao": "2mt", "custo": 170, "unidade": "conjunto", "obs": null },
+        { "produto": "Trilho Dominus 3mt", "variacao": "3mt", "custo": 350, "unidade": "conjunto", "obs": null },
+        { "produto": "Trilho Dominus 2mt", "variacao": "2mt", "custo": 300, "unidade": "conjunto", "obs": null }
       ]
     },
     {
       "categoria": "Sistemas de porta de passagem",
       "unidade_padrao": "conjunto",
       "itens": [
-        { "produto": "Pivô", "variacao": "—", "custo": null, "unidade": "conjunto", "obs": null },
-        { "produto": "Sistema deslizante RO82", "variacao": "—", "custo": null, "unidade": "conjunto", "obs": null },
-        { "produto": "Sistema deslizante RO82 Top (amortecimento)", "variacao": "—", "custo": null, "unidade": "conjunto", "obs": null },
-        { "produto": "Sistema deslizante SI Forma", "variacao": "—", "custo": null, "unidade": "conjunto", "obs": "raramente usado" }
+        { "produto": "Pivô", "variacao": "—", "custo": 120, "unidade": "conjunto", "obs": null },
+        { "produto": "Sistema deslizante RO82", "variacao": "—", "custo": 200, "unidade": "conjunto", "obs": null },
+        { "produto": "Sistema deslizante RO82 Top (amortecimento)", "variacao": "—", "custo": 400, "unidade": "conjunto", "obs": null },
+        { "produto": "Sistema deslizante SI Forma", "variacao": "—", "custo": 1200, "unidade": "conjunto", "obs": "raramente usado" }
       ]
     },
     {
       "categoria": "Iluminação",
       "unidade_padrao": "metro",
       "itens": [
-        { "produto": "LED COB (fita + perfil)", "variacao": "—", "custo": 130, "unidade": "metro", "obs": "fita e perfil já somados por metro linear" },
+        { "produto": "LED COB (fita + perfil)", "variacao": "—", "custo": 150, "unidade": "metro", "obs": "fita + perfil + usinagem, por metro linear" },
         { "produto": "Sensor / interruptor", "variacao": "—", "custo": 50, "unidade": "unidade", "obs": "separado da fita" }
       ]
     },
@@ -136,10 +133,31 @@
       "categoria": "Serviços terceirizados",
       "unidade_padrao": "serviço",
       "itens": [
-        { "produto": "Porta de espelho (alumínio + espelho prata segurança)", "variacao": "—", "custo": 1200, "unidade": "unidade", "obs": "+~R$200 frete ≈ 1400 posto na obra" },
-        { "produto": "Serralheiro", "variacao": "padrão / complexo", "custo": null, "unidade": "serviço", "obs": null },
-        { "produto": "Vidraceiro", "variacao": "padrão / complexo", "custo": null, "unidade": "serviço", "obs": null },
-        { "produto": "Laca / Pintura", "variacao": "por peça / projeto", "custo": null, "unidade": "serviço", "obs": null }
+        { "produto": "Porta de espelho (alumínio + espelho prata segurança)", "variacao": "aprox. 90x250cm", "custo": 1200, "unidade": "unidade", "obs": "+~R$200 frete ≈ 1400 posto na obra" },
+        { "produto": "Serralheiro", "variacao": "padrão / complexo", "custo": 300, "unidade": "serviço", "obs": "custo mín. sob demanda" },
+        { "produto": "Vidraceiro", "variacao": "padrão / complexo", "custo": 200, "unidade": "serviço", "obs": "custo mín. sob demanda" },
+        { "produto": "Laca / Pintura", "variacao": "m² em peça lisa", "custo": 650, "unidade": "m²", "obs": null }
+      ]
+    },
+    {
+      "categoria": "Vidros e espelhos",
+      "unidade_padrao": "m²",
+      "itens": [
+        { "produto": "Vidro incolor temperado", "variacao": "6mm", "custo": 200, "unidade": "m²", "obs": null },
+        { "produto": "Vidro incolor temperado", "variacao": "8mm", "custo": 250, "unidade": "m²", "obs": null },
+        { "produto": "Vidro incolor temperado", "variacao": "10mm", "custo": 300, "unidade": "m²", "obs": null },
+        { "produto": "Espelho prata", "variacao": "—", "custo": 600, "unidade": "m²", "obs": null },
+        { "produto": "Espelho bronze", "variacao": "—", "custo": 900, "unidade": "m²", "obs": null }
+      ]
+    },
+    {
+      "categoria": "Puxadores",
+      "unidade_padrao": "unidade",
+      "itens": [
+        { "produto": "Perfil cava Rometal RM195", "variacao": "perfil 3mt", "custo": 250, "unidade": "unidade", "obs": null },
+        { "produto": "Perfil cava RM213", "variacao": "perfil 3mt", "custo": 100, "unidade": "unidade", "obs": null },
+        { "produto": "Par de tampinhas de acab. RM213", "variacao": "—", "custo": 4, "unidade": "par", "obs": null },
+        { "produto": "Cava 35° usinada", "variacao": "—", "custo": 50, "unidade": "peça", "obs": "serviço manual" }
       ]
     }
   ]
