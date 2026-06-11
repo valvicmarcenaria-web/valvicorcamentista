@@ -54,6 +54,24 @@ A planilha valida o orçamento **de trás para frente**: dado um Investimento
 > preço ou enxugar custos; isso difere do markup bruto do app (CX 52–68%),
 > que é *antes* dos encargos.
 
+## Situação de caixa — perguntar em TODA nova demanda
+
+> **Antes de fechar o preço, perguntar ao Jonathan como está o caixa.** Com caixa
+> baixo aceita-se uma MC menor para gerar fluxo; com caixa folgado, segura-se a
+> margem. A MC mínima aceitável muda conforme a situação.
+
+| Situação        | MC          | Leitura                                   |
+|-----------------|-------------|-------------------------------------------|
+| **Crítico**     | até **25%** | só para gerar caixa urgente               |
+| **Ruim**        | até **30%** | aperta, mas passa                         |
+| **Normal**      | **30–37%**  | faixa de trabalho saudável                |
+| **Bom**         | **37–45%**  | margem confortável                        |
+| **Ótimo**       | **acima de 45%** | excelente                            |
+
+> No projeto da Camila o Jonathan fechou com MC propositalmente menor (caixa
+> baixo, precisando de recursos). Variável embutida no app `validacao-orcamento.html`
+> (seletor "Situação de caixa" + sinalização de piso na MC).
+
 ## Custo FIXO vs VARIÁVEL — o que entra (e o que NÃO entra) no orçamento
 
 > **Conceito-chave.** O orçamento contém **apenas custos variáveis** (incidem

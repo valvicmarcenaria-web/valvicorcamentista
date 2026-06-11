@@ -179,7 +179,7 @@
         { "produto": "Perfil cava Rometal RM195", "variacao": "perfil 3mt", "custo": 250, "unidade": "unidade", "obs": null },
         { "produto": "Perfil cava RM213", "variacao": "perfil 3mt", "custo": 100, "unidade": "unidade", "obs": null },
         { "produto": "Par de tampinhas de acab. RM213", "variacao": "—", "custo": 4, "unidade": "par", "obs": null },
-        { "produto": "Cava 35° usinada", "variacao": "—", "custo": 50, "unidade": "peça", "obs": "serviço manual" },
+        { "produto": "Cava 35° usinada", "variacao": "—", "custo": 50, "unidade": "peça", "obs": "PUXADOR de pega (não confundir com friso decorativo). Friso decorativo = usinagem CNC, custo/m de corte ainda não levantado → por ora dentro da margem operacional." },
         { "produto": "Puxador Traço Metal/Couro Enlevo (Oruy)", "variacao": "—", "custo": 60, "unidade": "unidade", "obs": "metal + couro legítimo pespontado; 3 tamanhos; varejo ~R$60. Premium." }
       ]
     },

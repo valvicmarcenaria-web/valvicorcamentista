@@ -93,11 +93,22 @@ details summary{cursor:pointer;font-size:.7rem;color:var(--gold2);font-family:'D
 
  <!-- PROJETO + KPIs -->
  <div class="card">
-  <div class="grid g4" style="margin-bottom:14px">
+  <div class="grid g4" style="margin-bottom:10px">
    <div><label>Cliente</label><input id="cliente" value="Camila" oninput="save()"></div>
    <div><label>Projeto</label><input id="projeto" value="Closet" oninput="save()"></div>
    <div><label>Versão</label><input id="versao" value="001" oninput="save()"></div>
    <div><label>Investimento bruto R$</label><input id="inv" class="n" type="number" value="0" oninput="recalc()"></div>
+  </div>
+  <div class="grid g4" style="margin-bottom:14px">
+   <div><label>Situação de caixa (define MC mínima)</label>
+    <select id="caixa" onchange="recalc()">
+     <option value="25">Crítico — aceita até MC 25%</option>
+     <option value="30">Ruim — aceita até MC 30%</option>
+     <option value="37" selected>Normal — MC 30 a 37%</option>
+     <option value="45">Bom — MC 37 a 45%</option>
+     <option value="100">Ótimo — MC acima de 45%</option>
+    </select></div>
+   <div style="grid-column:2/5;display:flex;align-items:flex-end"><p class="hint" style="margin:0">Pergunte ao Jonathan a situação de caixa em <b>toda nova demanda</b>: com caixa baixo aceita-se MC menor para gerar fluxo; com caixa folgado, segura-se margem. O painel de MC sinaliza a faixa atingida.</p></div>
   </div>
   <div class="kpis" id="kpis"></div>
   <div style="margin-top:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
@@ -264,6 +275,13 @@ function compute(inv){
  return {material,terc,venda,operac,erro,custo,mc,mcPct,liq,
   cats:{Material:material,Operacional:operac,Venda:venda,Terceirizados:terc,"Margem de erro":erro}};
 }
+function caixaTier(p){
+ if(p<=25) return {t:'caixa CRÍTICO',c:'mc-low'};
+ if(p<=30) return {t:'caixa ruim',c:'mc-hi'};
+ if(p<=37) return {t:'caixa normal',c:'mc-ok'};
+ if(p<=45) return {t:'caixa bom',c:'mc-ok'};
+ return {t:'caixa ÓTIMO',c:'mc-ok'};
+}
 function suggest(){
  const p=S.p,t=S.t;const material=materialTotal();const terc=t.vid+t.ser+t.pin+t.est+t.laq;
  const fixedR=material+terc+p.log+p.vis+p.outv;
@@ -282,10 +300,12 @@ function recalc(){
  p.prog=n('p_prog');p.coord=n('p_coord');p.marc=n('p_marc');p.serra=n('p_serra');p.manut=n('p_manut');p.log=n('p_log');p.erro=n('p_erro');
  const t=S.t;t.vid=n('t_vid');t.ser=n('t_ser');t.pin=n('t_pin');t.est=n('t_est');t.laq=n('t_laq');
  const inv=S.inv;const r=compute(inv);
- // KPIs
- const cls=r.mcPct<35?'mc-low':r.mcPct<=40?'mc-ok':'mc-hi';
+ // KPIs + situação de caixa
+ const piso=parseFloat(document.getElementById('caixa').value)||37;
+ const tier=caixaTier(r.mcPct);
+ const cls=inv<=0?'':(r.mcPct<piso?'mc-low':tier.c);
  document.getElementById('kpis').innerHTML=`
-  <div class="kpi mc ${inv>0?cls:''}"><div class="lbl">Margem de contribuição</div><div class="val ${inv>0?cls:''}">${inv>0?r.mcPct.toFixed(1)+'%':'—'}</div><div class="sub">${fmt(r.mc)} ${inv>0?'· alvo 35–40%':''}</div></div>
+  <div class="kpi mc ${cls}"><div class="lbl">Margem de contribuição</div><div class="val ${cls}">${inv>0?r.mcPct.toFixed(1)+'%':'—'}</div><div class="sub">${fmt(r.mc)}${inv>0?' · '+tier.t:''}${inv>0&&r.mcPct<piso?' ⚠ abaixo do piso':''}</div></div>
   <div class="kpi"><div class="lbl">Investimento bruto</div><div class="val">${fmt(inv)}</div><div class="sub">líquido ${fmt(r.liq)}</div></div>
   <div class="kpi"><div class="lbl">Custo total</div><div class="val">${fmt(r.custo)}</div><div class="sub">${inv>0?(r.custo/inv*100).toFixed(1)+'% do inv.':''}</div></div>
   <div class="kpi"><div class="lbl">Material</div><div class="val">${fmt(r.material)}</div><div class="sub">${inv>0?(r.material/inv*100).toFixed(1)+'% do inv.':''}</div></div>`;
