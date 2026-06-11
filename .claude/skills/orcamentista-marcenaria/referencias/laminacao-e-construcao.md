@@ -2,38 +2,85 @@
 
 Regras **gerais** do método Valvic, válidas para todos os móveis. A laminação é
 ponto crítico de precisão — **subestimar fita já gerou prejuízo** (ver painel
-ripado em `processo-orcamento.md`).
+ripado abaixo).
 
-## Fita de borda — qual face leva fita, por tipo de peça
+## Construção da gaveta — 6 peças
 
-| Peça                        | Faces que recebem fita                                  |
+Toda gaveta Valvic é composta por **6 peças**:
+
+| Peça           | Qtd | Espessura | Fita de borda                                    |
+|----------------|-----|-----------|--------------------------------------------------|
+| **Laterais**   | 2   | 15 mm     | **cima E embaixo** (2 bordas maiores) — proteção ao transporte e limpeza |
+| **Contra-frente** | 1 | 15 mm   | **só em cima** (1 borda)                        |
+| **Contra-fundo**  | 1 | 15 mm   | **só em cima** (1 borda)                        |
+| **Frente**     | 1   | 15 mm     | **4 lados** (face visível) — exceto quando há puxador de perfil/cava (ver abaixo) |
+| **Fundo**      | 1   | 6 mm*     | **sem fita** (fundo por encaixe/rasgo)           |
+
+> *Espessura do fundo: ver **regra 6 mm vs 15 mm** abaixo.
+
+**Frente de gaveta + puxador:**
+- **Sem puxador de perfil/cabo** → frente laminada nos **4 lados**.
+- **Com puxador de barra/traço** (ex. Enlevo) → também **4 lados** (puxador
+  aparafusa por cima da frente).
+- **Vão entre gavetas como puxador** (espaçamento ~2 cm entre gavetas) → frente
+  laminada nos **4 lados** também — **não há ferragem de puxador**, só as peças
+  filetadas/acabadas. Ex.: gaveteiro do roupeiro deste treino.
+- **Puxador de cava usinada ou perfil embutido** → pode mudar (a borda que recebe
+  a cava não leva fita). Tratar caso a caso.
+
+## Regra do fundo da gaveta: 6 mm vs 15 mm
+
+> **Decisão por aproveitamento de chapa**, não por regra fixa. A lógica é
+> não abrir uma chapa de 6 mm pra aproveitar menos da metade dela.
+
+| Situação                                              | Fundo usa       |
+|-------------------------------------------------------|-----------------|
+| Área total de fundos ≥ 50% de 1 chapa de 6 mm (ou ≥70% para segurança) | **6 mm** (chapa própria) |
+| Área total de fundos < 50% de 1 chapa de 6 mm        | **15 mm** (incorpora à chapa da estrutura) |
+
+**Exemplos práticos:**
+- **Ilha** (5 gavetas pequenas, projeto isolado) → poucos fundos → abaixo de
+  50% de 1 chapa de 6 mm → **tudo em 15 mm** (fundo + estrutura na mesma chapa).
+- **Roupeiro** (4 gavetas + fundos dos módulos) → muito 6 mm → **6 mm separado**
+  (tanto fundos dos módulos quanto fundos das gavetas).
+
+> Regra de bom senso, não lei. Objetivo: otimizar custo e evitar chapa ociosa.
+
+## Fita de borda — resumo por tipo de peça
+
+| Peça                        | Faces com fita                                          |
 |-----------------------------|---------------------------------------------------------|
-| **Gaveta — laterais**       | os **dois lados maiores** (cima e embaixo)              |
-| **Gaveta — frente e contra-frente** | **um lado maior só** (só o de cima)             |
-| **Frente de gaveta** (face visível) | **4 lados** — *exceto* puxador de cava (usinagem, outra regra) |
+| **Gaveta — laterais**       | **cima + embaixo** (2 bordas maiores)                   |
+| **Gaveta — contra-frente e contra-fundo** | **só em cima** (1 borda)              |
+| **Gaveta — frente**         | **4 lados** (salvo puxador de cava embutido)            |
+| **Gaveta — fundo**          | **nenhuma**                                             |
 | **Porta**                   | **4 lados**                                             |
-| **Estrutura** (laterais/verticais, base, teto) | **um lado maior** (a borda frontal aparente) |
-| **Fundo**                   | **não recebe fita**                                     |
-| **Tamponamento**            | frente / lado maior (cima e embaixo) — proteção e transporte |
+| **Estrutura** (laterais, base, teto) | **1 lado** (a borda frontal aparente)          |
+| **Fundo de módulo**         | **nenhuma** (por encaixe/rasgo)                         |
+| **Tamponamento**            | frente + cima e embaixo (proteção/transporte)           |
+| **Prateleira**              | **1 lado** (borda frontal) — às vezes frente + fundo se visível dos dois lados |
+| **Ilha / peça solta**       | **4 lados em todas as faces visíveis** — fundo posterior TAMBÉM é acabado |
 
-> Ao quantificar a fita: somar os **metros lineares reais** das faces acima,
-> peça por peça, e aplicar **+10% de desperdício** (ver `quantitativo.md`).
-> Bitola usual **22 × 0,45 mm**, na cor da chapa.
+> Ao quantificar: somar os metros lineares reais das faces acima, peça a peça,
+> e aplicar **× 1,15 de buffer** (real: filetamento 85 m → 100 m comprado).
+> Bitola padrão **22 × 0,45 mm**, na cor da chapa.
 
 ## Regras construtivas
 
-- **Fundo por encaixe (não parafusado).** Faz-se um **rasgo** nas laterais e no
-  pé de base, e o fundo **encaixa**. Padrão em praticamente todos os armários.
-  - **Exceção:** armários de banheiro **superiores** (fininhos) — fundo
-    **parafusado**.
-- **Gaveteiro = módulo independente.** Tem caixaria própria (laterais, teto,
-  base); **o módulo do gaveteiro não tem fundo** (o fundo do armário serve),
-  mas **as gavetas têm fundo**. Depois encaixa-se o módulo na estrutura.
-- **Tamponamento** = peça de acabamento nas laterais do armário. Geralmente
-  **18 mm** (às vezes 15 mm), laminado na frente / lado maior.
+- **Fundo por encaixe (não parafusado).** Rasgo nas laterais e na base;
+  o fundo **encaixa**. Padrão em praticamente todos os armários.
+  - **Exceção:** banheiro superior (armário fininho) → fundo **parafusado**.
+- **Gaveteiro = módulo independente.** Caixaria própria (laterais, teto, base);
+  o módulo do gaveteiro **não tem fundo próprio** (o fundo do armário serve),
+  mas **cada gaveta tem seu fundo**. Encaixa-se o módulo inteiro na estrutura.
+- **Tamponamento** = acabamento lateral do armário. Geralmente **18 mm**
+  (às vezes 15 mm), laminado na frente e lado maior.
+- **Ilha / peça solta:** a **face posterior também é acabada** (vista "posterior"
+  no projeto). Fundo NÃO é 6 mm cru — é peça na cor/acabamento do projeto, com
+  fita. Custo de chapa e fita maior que num móvel encostado à parede.
 
-> Espessuras seguem o padrão Valvic (estrutura e gavetas 15 mm; portas 18 mm no
-> caso de correr/Dominus; fundos 6 mm) — ver `chapas.md`. Confirmar caso a caso.
+> Espessuras padrão Valvic: estrutura e gavetas **15 mm**; portas correr **18 mm**;
+> fundos **6 mm** (quando justificado — ver regra acima). Confirmar por projeto.
 
 ## Ripado — o maior gargalo de fita (onde mais se perde dinheiro)
 

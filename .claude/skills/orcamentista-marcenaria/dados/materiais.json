@@ -188,9 +188,8 @@
       "unidade_padrao": "serviço",
       "_nota": "Alta CX, SEM tabela fechada — confirmar custo de compra/terceirizado por projeto. Onde mora o prejuízo se chutar baixo.",
       "itens": [
-        { "produto": "Pés/base em metalon 2x2 laca champagne", "variacao": "—", "custo": null, "unidade": "conjunto", "obs": "CONFIRMAR. Serralheria sob medida + laca metalizado champagne (pintor especial). Dois custos somados. Sem tabela." },
-        { "produto": "Divisória/forramento em veludo (sob medida)", "variacao": "—", "custo": null, "unidade": "gaveta", "obs": "CONFIRMAR custo do terceirizado de veludo. Ref. mercado 'gaveta planejada c/ divisórias' a partir de R$850 (teto)." },
-        { "produto": "Bandeja de veludo (suporte avulso)", "variacao": "—", "custo": null, "unidade": "unidade", "obs": "CONFIRMAR. Mini-estrutura metalon laca champagne + bandeja forrada em veludo." }
+        { "produto": "Base/suporte metalon laca champagne (ilha ou peça especial)", "variacao": "—", "custo": null, "unidade": "conjunto", "obs": "CONFIRMAR. Serralheria sob medida (pés + suporte/bandeja) + laca metalizado champagne (pintor). Unificar base + suporte num único item de terceirizado por projeto. Sem tabela fixa — orçar por demanda." },
+        { "produto": "Divisória/forramento em veludo (sob medida)", "variacao": "—", "custo": null, "unidade": "gaveta", "obs": "CONFIRMAR custo do terceirizado de veludo. Ref. mercado 'gaveta planejada c/ divisórias' a partir de R$850 (teto)." }
       ]
     }
   ]
