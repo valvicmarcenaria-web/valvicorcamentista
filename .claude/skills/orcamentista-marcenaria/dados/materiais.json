@@ -100,7 +100,7 @@
       "itens": [
         { "produto": "SS150", "variacao": "2 portas", "custo": 500, "unidade": "conjunto", "obs": null },
         { "produto": "SS150", "variacao": "3 portas", "custo": 600, "unidade": "conjunto", "obs": null },
-        { "produto": "RO65 (Rometal)", "variacao": "1 porta", "custo": 250, "unidade": "conjunto", "obs": "KIT UNITÁRIO (1 por porta), sem o trilho. Sustentação na base = mostra a caixaria por fora. Capacidade 60kg/porta. Trilho dimensiona pela SOMA dos vãos." },
+        { "produto": "RO65 (Rometal)", "variacao": "1 porta", "custo": 60, "unidade": "conjunto", "obs": "KIT UNITÁRIO (1 por porta), sem o trilho. Sustentação na base = mostra a caixaria por fora. Capacidade 60kg/porta. Trilho dimensiona pela SOMA dos vãos." },
         { "produto": "Multi (Rometal)", "variacao": "2 portas", "custo": null, "unidade": "conjunto", "obs": "CONFIRMAR custo de compra Valvic. Suspenso/slim (sem trilho na base), esconde os trilhos = mais estético. 12-20kg/porta. Ideal porta pequena/quase quadrada (ex. faixa AC). Online ~R$90 (componente)." },
         { "produto": "Multi (Rometal)", "variacao": "3 portas", "custo": null, "unidade": "conjunto", "obs": "CONFIRMAR custo de compra Valvic. Online ~R$120 (componente)." },
         { "produto": "Dominus (Rometal)", "variacao": "2 portas", "custo": 700, "unidade": "conjunto", "obs": null },

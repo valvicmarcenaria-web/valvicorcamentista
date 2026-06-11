@@ -37,8 +37,8 @@ MC %                    = MC / Investimento                → IDEAL 35–40%
 
 ## Catálogo — divergências e correções flagradas
 
-- **RO65 (Rometal):** custo correto **R$ 250** (kit unitário). Na seção
-  Roupeiro da planilha veio **R$ 60** (provável erro) — corrigido no preenchido.
+- **RO65 (Rometal):** custo correto **R$ 60** (kit unitário). Confirmado pelo
+  Jonathan — a planilha estava certa; eu é que tinha guardado R$ 250 por engano.
 - **Custo material do topo (B17)** só somava o Roupeiro (B52); a Ilha (B191)
   ficava de fora. **Corrigido para `=B52+B191`** no arquivo preenchido.
 - **Terceirizados** (vidraceiro/serralheiro/pintor/estofador/laqueamento) estão
