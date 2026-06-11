@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valvic · Tabela de Valores</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#f4efe6;color:#2a2018;padding:28px;font-size:13px}
+.sheet{max-width:900px;margin:0 auto;background:#fff;border:1px solid #e0d3bb;border-radius:10px;padding:30px 34px;box-shadow:0 6px 30px rgba(124,79,42,.12)}
+.head{display:flex;align-items:flex-end;justify-content:space-between;border-bottom:2px solid #A06838;padding-bottom:12px;margin-bottom:6px}
+.brand{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:#7c4f2a}
+.brand small{display:block;font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:#A06838}
+.meta{text-align:right;font-family:'DM Mono',monospace;font-size:.62rem;color:#9a7a52}
+.intro{font-size:.7rem;color:#9a7a52;margin:10px 0 18px}
+h2{font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:#7c4f2a;margin:18px 0 6px;padding-bottom:4px;border-bottom:1px solid #ead9bf}
+table{width:100%;border-collapse:collapse;margin-bottom:6px}
+th{font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.06em;text-transform:uppercase;color:#b09469;text-align:left;padding:4px 8px;border-bottom:1px solid #ead9bf}
+td{padding:4px 8px;border-bottom:1px solid #f1e7d6;font-size:.78rem}
+td.n,th.n{text-align:right;font-family:'DM Mono',monospace}
+td.c{color:#7c4f2a;font-weight:600}
+tr:nth-child(even) td{background:#faf6ee}
+.obs{color:#a89472;font-size:.66rem}
+.foot{margin-top:18px;font-family:'DM Mono',monospace;font-size:.58rem;color:#b09469;border-top:1px solid #ead9bf;padding-top:8px}
+@media print{body{background:#fff;padding:0}.sheet{box-shadow:none;border:none}}
+</style>
+</head>
+<body>
+<div class="sheet">
+ <div class="head">
+  <div class="brand">VALVIC<small>Marcenaria · Tabela de Valores</small></div>
+  <div class="meta">Custos de COMPRA · base de orçamento<br>Atualizado: 11/06/2026</div>
+ </div>
+ <div class="intro">Valores de referência interna (preço de compra, não de venda). Base minimalista de orçamento — sem cor exata; variáveis resolvidas na produção. Fixadores/cola/cavilha = especulação (~2% do custo total).</div>
+ <div id="app"></div>
+ <div class="foot">VALVIC MARCENARIA · documento interno de precificação · gerado da base materiais.json</div>
+</div>
+<script>
+const DATA={"categorias":[
+ {"categoria":"Chapas (2750×1850mm) — un: chapa","itens":[
+  ["MDF Branco TX","6mm",190,"fundos"],["MDF Branco TX","9mm",220,"pouco usado"],["MDF Branco TX","15mm",260,"estrutura/caixaria"],["MDF Branco TX","18mm",330,"prateleiras >80cm/portas"],["MDF Branco TX","25mm",420,"tampos *pouco usado"],
+  ["MDF Melamínico Fosco","6mm",300,"amadeirado/cor fosco"],["MDF Melamínico Fosco","15mm",500,"portas/estruturas"],["MDF Melamínico Fosco","18mm",600,"tamponamentos/portas"],
+  ["MDF Melamínico Cristallo","6mm",400,""],["MDF Melamínico Cristallo","15mm",600,""],["MDF Melamínico Cristallo","18mm",700,""],
+  ["MDF Melamínico Acetinato","6mm",1000,""],["MDF Melamínico Acetinato","15mm",1300,""],["MDF Melamínico Acetinato","18mm",1500,""],
+  ["Compensado (160×220)","4mm",150,""],["Compensado (160×220)","6mm",170,""],["Compensado (160×220)","9mm",200,""],["Compensado (160×220)","15mm",250,""],["Compensado (160×220)","18mm",300,""],["Compensado (160×220)","25mm",380,""],
+  ["Lâmina natural (1 face)","6mm",700,"ref. carvalho; demais +30%"],["Lâmina natural (1 face)","9mm",800,""],["Lâmina natural (1 face)","15mm",1000,""],["Lâmina natural (1 face)","18mm",1200,"confirmar (veio 120)"],
+  ["Lâmina natural (2 faces)","6mm",1200,""],["Lâmina natural (2 faces)","9mm",1300,""],["Lâmina natural (2 faces)","15mm",1400,""],["Lâmina natural (2 faces)","18mm",1600,""],
+  ["Fórmica","—",400,"a partir de 400"]]},
+ {"categoria":"Fita de borda — un: metro (+10% desperdício)","itens":[
+  ["Fita Branco TX 22mm","mt linear",2,""],["Fita Cor 22mm","mt linear",3,""]]},
+ {"categoria":"Dobradiças — un: unidade","itens":[
+  ["Padrão","—",6,""],["Bigfer Inox","—",20,""],["Bigfer Ônix","—",15,""],["Hartt","—",8,""],["Häfele","—",20,""],["Hettich Novisys","—",10,""],["Hettich Sensys","—",35,""],["Hettich Sensys Onix","—",40,""],["Hettich Sensys Black","—",40,""]]},
+ {"categoria":"Corrediças — un: par","itens":[
+  ["Telescópica","—",40,""],["Oculta Hartt","—",70,""],["Oculta Quadro (Hettich)","—",120,""],["Oculta Actro (Hettich)","—",400,""],["Oculta genérica","—",60,""]]},
+ {"categoria":"Articuladores — un: unidade","itens":[
+  ["Pistão Normal","—",20,""],["Pistão com amortecimento","—",30,""],["Articulador Blum HK-xs","—",180,""],["Articulador Aventos (e outros)","—",600,"pouco usado"]]},
+ {"categoria":"Pulsadores — un: unidade","itens":[
+  ["Blum (Tip-on/Servo)","—",100,""],["Outros","—",70,""]]},
+ {"categoria":"Sistema deslizante de roupeiro — un: conjunto","itens":[
+  ["SS150","2 portas",500,""],["SS150","3 portas",600,""],["RO65 (Rometal)","1 porta",250,"sem trilho"],["Dominus (Rometal)","2 portas",700,""],["Dominus (Rometal)","3 portas",850,""],
+  ["Trilho RO65 Rometal","3mt",80,""],["Trilho RO65 Rometal","2mt",60,""],["Trilho SS150","3mt",200,""],["Trilho SS150","2mt",170,""],["Trilho Dominus","3mt",350,""],["Trilho Dominus","2mt",300,""]]},
+ {"categoria":"Sistemas de porta de passagem — un: conjunto","itens":[
+  ["Pivô","—",120,""],["Deslizante RO82","—",200,""],["Deslizante RO82 Top (amort.)","—",400,""],["Deslizante SI Forma","—",1200,"raramente usado"]]},
+ {"categoria":"Iluminação","itens":[
+  ["LED COB (fita + perfil)","metro",150,"fita+perfil+usinagem por m linear"],["Sensor / interruptor","unidade",50,""]]},
+ {"categoria":"Serviços terceirizados","itens":[
+  ["Porta de espelho (alum.+prata seg.)","~90×250cm",1200,"+~R$200 frete ≈ 1400 na obra"],["Serralheiro","padrão/complexo",300,"mín. sob demanda"],["Vidraceiro","padrão/complexo",200,"mín. sob demanda"],["Laca / Pintura","m² peça lisa",650,""]]},
+ {"categoria":"Vidros e espelhos — un: m²","itens":[
+  ["Vidro incolor temperado","6mm",200,""],["Vidro incolor temperado","8mm",250,""],["Vidro incolor temperado","10mm",300,""],["Espelho prata","—",600,""],["Espelho bronze","—",900,""]]},
+ {"categoria":"Puxadores","itens":[
+  ["Perfil cava Rometal RM195","perfil 3mt",250,""],["Perfil cava RM213","perfil 3mt",100,""],["Par tampinhas acab. RM213","par",4,""],["Cava 35° usinada","peça",50,"serviço manual"]]}
+]};
+const fmt=v=>'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+let h='';
+DATA.categorias.forEach(c=>{
+ h+=`<h2>${c.categoria}</h2><table><thead><tr><th>Produto</th><th>Variação</th><th class="n">Custo</th><th>Obs</th></tr></thead><tbody>`;
+ c.itens.forEach(it=>{h+=`<tr><td>${it[0]}</td><td>${it[1]}</td><td class="n c">${fmt(it[2])}</td><td class="obs">${it[3]||''}</td></tr>`;});
+ h+='</tbody></table>';
+});
+document.getElementById('app').innerHTML=h;
+</script>
+</body>
+</html>
