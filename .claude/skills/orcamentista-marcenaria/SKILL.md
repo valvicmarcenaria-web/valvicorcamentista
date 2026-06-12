@@ -69,6 +69,11 @@ e estimar pela escala, sinalizando.
    por gaveta — perguntar se não especificado; sistema deslizante por nº portas).
 9. **Flags:** ripado (gargalo de fita), friso (perguntar: **vazado/funcional** na
    CNC ou **decorativo** de superfície?), painel especial, terceirizados.
+10. **Porta de vidro sem referência → especificar e PERGUNTAR ao fornecedor**
+    (Renolfh/Alumindoor) antes de orçar. Especificação: tipo (basculante/giro),
+    qtd, medida L×A, vidro (reflecta bronze…), perfil/cor, puxador, furos. Gravar
+    a resposta no projeto e em `materiais.json` (ref. ~R$660-710/m² reflecta
+    bronze + perfil bronze, base Kenia&Fábio).
 
 > Calibração: erra para cima de propósito (melhor sobrar 1 chapa). Ver
 > `projetos/treino/` e `projetos/treino/calibracao-camila.md` (onde o olhar
