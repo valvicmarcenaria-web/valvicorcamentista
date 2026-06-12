@@ -110,5 +110,19 @@ Metodologia Valvic para ler e quantificar um roupeiro. Vale para a Lavinia
 - Contar pelas medidas: **cabideiros retos** + **cabideiros curvos** (o curvo
   acompanha o canto em L; ver `materiais.json` › cabideiro inox curvo).
 
+## 11. Prateleiras e suportes — cross-check de contagem
+- Prateleira **móvel** apoia em **1 cj4 (4 pinos)**. Logo:
+  **nº de cj4 = nº de prateleiras móveis.**
+- **Conferência obrigatória:** o nº de suportes (cj4) tem que **bater** com o nº
+  de prateleiras usado no cálculo de chapa. Se não bate, a contagem de prateleira
+  está errada em um dos dois (erro clássico: subestimar prateleiras nas DUAS).
+- Roupeiro em L tem **muito mais prateleira do que parece** — contar vão a vão,
+  nas duas vistas (ex.: Camila ≈ 21 prateleiras).
+
+## 12. Otimização de custo (sempre em paralelo)
+- Para os pontos caros (ripado, sistema deslizante, terceirizado), gerar
+  alternativas mais enxutas — ver `otimizacao-custos.md`. Oferecer ao cliente a
+  versão **assinada** (premium) e a **inteligente** (enxuta) com a economia explícita.
+
 > **Estado:** v1 — destilado do treino do roupeiro em L (face 321 + retorno 146,
 > faixa AC ripada em Cumaru). Calibrar com mais projetos.
