@@ -27,19 +27,27 @@ sem perder função nem estética. Não esperar o cliente pedir — propor.
 | # | Solução | Custo | Ventila? | Trade-off |
 |---|---------|-------|----------|-----------|
 | **A** | Ripado vazado + Multi (original) | 💰💰💰 | ✅ natural | mais caro; fita régua a régua |
-| **B** | Báscula **frisada** (friso 6mm) + pistão | 💰💰 | ⚠️ **não** (maciça) | precisa rasgo/furo de ventilação oculto |
-| **C** | Painel **ranhurado/fresado** (falso ripado, 1 chapa) + rasgo de ventilação oculto | 💰 | ✅ c/ rasgo | sem o relevo real do ripado, mas visual quase igual e **sem fita por régua** |
+| **B** | Báscula **frisada VAZADA** (friso passante na CNC) + pistão | 💰💰 | ✅ **sim** (o vazado é a entrada de ar) | custo = tempo de CNC; visual moderno |
+| **C** | Painel **ranhurado** (friso decorativo de superfície, 1 chapa) + rasgo de ventilação | 💰 | ⚠️ só com rasgo | sem o vazado real; mais barato em CNC |
 | **D** | **Veneziana/grelha de alumínio** (terceirizado) | 💰–💰💰 | ✅ ótima | estética industrial; depende do serralheiro |
 | **E** | **Painel fixo** ripado decorativo + **trecho removível** (ímã/parafuso oculto) só no acesso | 💰 | ✅ | acesso menos "fino"; sem sistema de porta |
 | **F** | **Nicho aberto** com fundo ripado fixo (sem porta) | 💸 mínimo | ✅ total | abre mão de fechar a faixa |
 
+> **Friso: dois tipos — não confundir.**
+> - **Friso vazado / funcional** (caso Camila V2): corte **passante** na CNC →
+>   ventila + decora. Custo = **tempo de CNC** (corte vazado), não fita por régua.
+> - **Friso decorativo** (sulco de superfície): só estética, não atravessa, não
+>   ventila. Custo de usinagem leve.
+> Ambos hoje entram na **margem operacional** (custo/m de corte ainda a levantar).
+
 **Leitura da Lavinia:**
-- O **C (ranhurado/fresado)** é o melhor custo-benefício pra manter o look ripado:
-  vira **1 painel usinado** em vez de dezenas de réguas fitadas → mata o gargalo
-  de fita, que é onde o ripado sangra. Só precisa de um rasgo de ventilação.
+- O **B (V2, friso vazado)** é uma solução **forte**: cumpre ventilação + acesso +
+  estética e foge do gargalo de fita do ripado (vira corte de CNC). Boa "versão
+  inteligente" sem parecer econômica.
+- O **C** (friso só de superfície) é ainda mais barato em CNC, mas **não ventila**
+  sozinho — exige rasgo. Só usar onde a faixa não precisa respirar.
 - O **E/F** são os mais competitivos quando o cliente topa abrir mão de "porta":
   eliminam quase toda a ferragem.
-- O **B (V2)** só é honesto **com** entrada de ar — senão não cumpre a função.
 
 > **Próximo nível:** sempre oferecer 2 versões ao cliente — a **assinada**
 > (premium, ex. A) e a **inteligente** (enxuta, ex. C/E) — deixando a economia
