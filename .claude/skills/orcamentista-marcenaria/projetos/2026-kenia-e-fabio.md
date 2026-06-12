@@ -17,9 +17,8 @@ perfil bronze, puxador sotille (referência, a definir), furos de dobradiça.**
 | 1 | M20 (sobre bancada) | basculante | 4 | 0,96 × 0,41 m | **R$ 1.120 total** (R$ 280/un · ~R$711/m²) |
 | 2 | M21 (cristaleira piso-teto) | de giro | 1 | 2,00 × 0,36 m | **R$ 475** (~R$660/m²) |
 
-> **Total portas de vidro = R$ 1.595** (compra).
-> Interpretei R$1.120 como total das 4 básculas (consistência ~R$700/m² com a
-> cristaleira). **Confirmar com o Jonathan.**
+> **Total portas de vidro = R$ 1.595** (compra). Valores **confirmados** pelo
+> Jonathan: R$1.120 é o total das 4 básculas (R$280/un).
 
 ## Pendências para o orçamento completo
 - Levantar quantitativo de chapa/fita/ferragens dos módulos M20, M21, M55, torre.

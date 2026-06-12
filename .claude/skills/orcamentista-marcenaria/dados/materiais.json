@@ -177,7 +177,7 @@
       "unidade_padrao": "unidade",
       "_nota": "Porta de vidro = terceirizado. SEM referência → especificar (tipo, qtd, medida LxA, vidro, perfil/cor, puxador, furos) e PERGUNTAR ao Renolfh antes de orçar. Escala de referência: ~R$660-710/m² para reflecta bronze + perfil bronze + puxador sotille + furos de dobradiça (preço de COMPRA).",
       "itens": [
-        { "produto": "Porta de vidro basculante (reflecta bronze, perfil bronze, puxador sotille, furos dobradiça)", "variacao": "~0,96x0,41m", "custo": 280, "unidade": "unidade", "obs": "ref. Kenia&Fábio 12/06/2026: 4 un = R$1.120 (R$280/un); ~R$711/m². CONFIRMAR se 1.120 é total das 4." },
+        { "produto": "Porta de vidro basculante (reflecta bronze, perfil bronze, puxador sotille, furos dobradiça)", "variacao": "~0,96x0,41m", "custo": 280, "unidade": "unidade", "obs": "ref. confirmada Kenia&Fábio 12/06/2026: 4 un = R$1.120 total (R$280/un); ~R$711/m²." },
         { "produto": "Porta de vidro de giro / cristaleira (reflecta bronze, perfil bronze, puxador sotille, furos dobradiça)", "variacao": "~2,00x0,36m", "custo": 475, "unidade": "unidade", "obs": "ref. Kenia&Fábio 12/06/2026: 1 un = R$475; ~R$660/m²." }
       ]
     },
