@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Instala as skills da Valvic (Marcos + Lavinia) na BASE GERAL do Claude Code
-# (~/.claude/skills), deixando-as disponíveis em todos os seus projetos.
+# Instala a skill da Valvic (Orçamentista Estratégico) na BASE GERAL do Claude
+# Code (~/.claude/skills), deixando-a disponível em todos os seus projetos.
 #
 # Copia apenas o essencial — exclui fontes/ (arquivos pesados de referência
 # que ficam no repositório, não precisam ir para a base pessoal).
@@ -8,12 +8,12 @@
 # Uso (na SUA máquina, dentro do repositório):
 #   bash install-skills.sh
 #
-# Depois, reinicie o Claude Code se as skills não aparecerem de imediato.
+# Depois, reinicie o Claude Code se a skill não aparecer de imediato.
 set -euo pipefail
 
 DEST="$HOME/.claude/skills"
 SRC="$(cd "$(dirname "$0")" && pwd)/.claude/skills"
-SKILLS=("orcamentista-marcenaria" "leitor-projetos-marcenaria")
+SKILLS=("orcamentista-marcenaria")
 
 mkdir -p "$DEST"
 echo "Instalando skills da Valvic em: $DEST"
