@@ -24,7 +24,9 @@ pela situação de caixa.
 
 > Em uma frase do Rodrigo: *o método está calibrado para uma empresa que não
 > existe.* O "35–40%" é resquício de uma referência antiga e **se for seguido na
-> média, afunda a operação** — exatamente a doença que gerou os R$300k de dívida.
+> média, afunda a operação** — foi a doença que gerou a dívida antiga de R$300k
+> (já quitada) e que **não pode se repetir** com as dívidas atuais (máquinas,
+> capital de giro, empréstimo do Paulo).
 
 **Tratamento.**
 1. **Resetar a meta de MC** no método e no app: **piso = equilíbrio (~43%)**,
@@ -46,28 +48,28 @@ ociosa), nunca como padrão. O **default** do mês deve ser **≥ equilíbrio**.
 Calibrar **preço mínimo por projeto** para nenhum mês depender de um contrato
 grande (foi o que mascarou junho com 1 projeto de R$92k).
 
-## 🟠 Achado nº 3 — falta o "painel do mês" (os poucos números que importam)
+## 🟠 Achado nº 3 — o "painel do mês" é escopo do Valvic OS, não do app
 
-**Sintoma.** O app mede MC% **por projeto**, mas não acumula o **mês**.
+**Sintoma.** O app mede MC% **por projeto**, mas não acumula o **mês** (Σ MC vs
+custo fixo R$67k). Maio/junho furaram o equilíbrio **sem alarme**.
 
-**Causa raiz.** Sem ver a **soma das MCs do mês vs o custo fixo (R$67k)**, não há
-previsibilidade — decide-se projeto a projeto sem saber se o mês já pagou o fixo.
-Maio/junho ficaram abaixo do equilíbrio **sem alarme**.
+**Causa raiz.** Esse é um indicador **de empresa**, não de um orçamento isolado.
 
-**Tratamento.** Adicionar um **painel mensal**: Σ MC do mês vs R$67k (ponto de
-equilíbrio mensal) + nº de projetos fechados. Os 3 números do Rodrigo: **MC%**,
-**equilíbrio do mês**, **caixa**.
+**Tratamento.** Fica **no Valvic OS**, onde o Rodrigo audita a empresa toda e
+cruza: Σ MC do mês vs custo fixo, nº de projetos, caixa. O **app de orçamento
+segue focado em precificação**; ele só **alimenta** o OS com a MC de cada projeto.
 
-## 🟡 Achado nº 4 — ciclo de caixa não está no modelo
+## 🟡 Achado nº 4 — ciclo de caixa: também no Valvic OS
 
 **Sintoma.** O método precifica bem (custo→MC), mas só captura o **custo** do
-parcelamento (8%), não o **tempo** entre receber e pagar.
+parcelamento (8%), não o **tempo** entre receber e pagar — nem o serviço das
+dívidas atuais (máquinas, Paulo).
 
-**Causa raiz.** Capital de giro / fluxo é o **pilar 3** do Rodrigo e a origem do
-aperto de caixa mesmo vendendo bem. Hoje invisível no método.
+**Causa raiz.** Capital de giro / fluxo é o **pilar 3** do Rodrigo; é dado de
+empresa, não de orçamento.
 
-**Tratamento (próximo passo).** Modelar **prazo de recebimento × pagamento**
-(chapa, ferragem, terceirizados) e um **caixa projetado**.
+**Tratamento.** Modelar **recebimento × pagamento** e **caixa projetado** **no
+Valvic OS** (com os cruzamentos da empresa), não no app de orçamento.
 
 ## ✅ O que o método já faz CERTO (manter)
 - **Preço projeto a projeto, vivo, com MC em cada venda** = pilar 2 do Rodrigo na
@@ -81,11 +83,17 @@ aperto de caixa mesmo vendendo bem. Hoje invisível no método.
 O **motor de precificação é bom**; a **régua de margem está errada**. Não é
 problema de ferramenta nem de venda — é de **meta**. Subir a meta de MC de
 "35–40%" para **piso 43% / alvo 48–50%** é a alavanca que transforma ~R$3,5k de
-lucro/mês em R$11–14k **sem vender nada a mais** — e começa a matar os R$300k.
+lucro/mês em R$11–14k **sem vender nada a mais** — caixa que sustenta a operação e
+amortiza as dívidas atuais (máquinas, giro, Paulo), sem repetir o erro que gerou
+a dívida (já quitada) de R$300k.
 
 ## Ações priorizadas
-1. **Recalibrar a meta de MC** (método + app): piso ~43%, alvo 48–50%.
-2. **Linha de break-even** por orçamento (alerta visual).
-3. **Painel do mês** (Σ MC vs R$67k).
-4. **Preço mínimo por projeto** (não depender de contrato grande).
-5. **Ciclo de caixa** (próxima fronteira).
+**No app de orçamento (precificação):**
+1. **Recalibrar a meta de MC**: piso ~43%, alvo 48–50%.
+2. **Linha de break-even** por orçamento (alerta visual quando MC < equilíbrio).
+3. **Preço mínimo por projeto** (não depender de contrato grande).
+
+**No Valvic OS (auditoria de empresa — o Rodrigo cruza tudo):**
+4. **Painel do mês** (Σ MC vs custo fixo R$67k + caixa).
+5. **Ciclo de caixa** e **serviço das dívidas atuais** (break-even de caixa real).
+6. **Composição do custo fixo** e **capacidade produtiva**.

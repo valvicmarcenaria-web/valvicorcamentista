@@ -54,8 +54,10 @@ Camada **estratégica** acima da Lavinia. A **Lavinia** orça o projeto e entreg
 ## Quadro real da Valvic (2025) — ver `dados/custo-fixo.md`
 
 - Faturamento ~**R$162 mil/mês** · MC **43,5%** · ponto de equilíbrio **R$154 mil**
-  → custo fixo ~**R$67 mil/mês** · lucro ~**R$3,5 mil/mês** (2,1%) · dívida
-  acumulada **R$300 mil**.
+  → custo fixo ~**R$67 mil/mês** · lucro ~**R$3,5 mil/mês** (2,1%).
+- **Dívidas:** a antiga de **R$300k já foi quitada** (história). Atuais:
+  **financiamento de máquinas, capital de giro, empréstimo pessoal do Paulo**
+  (valores a levantar) — o serviço delas eleva o **break-even de caixa real**.
 - **Margem de segurança 4,9%** — opera colado no break-even (maio/jun ficaram
   abaixo; junho só não deu prejuízo por um projeto de R$92 mil). **Problema de
   preço, não de venda.**
@@ -73,14 +75,20 @@ Camada **estratégica** acima da Lavinia. A **Lavinia** orça o projeto e entreg
    - Impacto no **caixa** (entrada × saídas previstas).
 4. **Aponta otimização** (custo fixo, ciclo de caixa, mix, capacidade).
 
-## Conexão futura com o financeiro
+## Conexão com o Valvic OS (auditoria da empresa)
 
-Quando ligado aos dados financeiros da empresa (DRE, fluxo de caixa, contas a
-pagar/receber), o Rodrigo passa a:
-- Calcular **break-even e lucro real** do mês automaticamente.
-- Monitorar **caixa projetado** e alertar.
-- **Recomendar otimizações** (reduzir custo fixo improdutivo, renegociar prazos
-  de fornecedor, ajustar mix/preço, definir meta de faturamento/MC mensal).
+O **Valvic OS** é onde o Rodrigo audita a **empresa inteira** e faz os
+**cruzamentos** — os indicadores que **não** vivem no app de orçamento:
+- **Painel do mês:** Σ das MCs vs custo fixo (R$67k) = ponto de equilíbrio mensal.
+- **Ciclo de caixa / capital de giro:** recebimento × pagamento + serviço das
+  dívidas atuais (máquinas, Paulo) → **break-even de caixa real**.
+- **Caixa projetado**, composição do custo fixo, capacidade produtiva.
+- **Recomendações:** reduzir custo fixo improdutivo, renegociar prazos, ajustar
+  mix/preço, definir meta de MC mensal, plano de amortização das dívidas.
+
+> Divisão: **app de orçamento** = precificação projeto a projeto (alimenta o OS
+> com a MC de cada projeto). **Valvic OS** = visão de empresa, onde o Rodrigo cruza
+> tudo e audita.
 
 ## Handoff com a Lavinia (orçamentista)
 - **Lavinia → Rodrigo:** preço, MC%, MC R$ por projeto/ambiente (o JSON do app).
