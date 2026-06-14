@@ -185,15 +185,6 @@ body.light .btn.primary{color:#fff}
     </div>
     <div class="hint">Comissão produção = (programador + coordenador + marceneiros) sobre o líquido.</div>
    </details>
-   <details open><summary>Terceirizados R$ (material + serviço estimado)</summary>
-    <div class="grid g3">
-     <div><label>Vidraceiro</label><input id="t_vid" class="n" type="number" value="0" oninput="recalc()"></div>
-     <div><label>Serralheiro</label><input id="t_ser" class="n" type="number" value="0" oninput="recalc()"></div>
-     <div><label>Pintor</label><input id="t_pin" class="n" type="number" value="0" oninput="recalc()"></div>
-     <div><label>Estofador</label><input id="t_est" class="n" type="number" value="0" oninput="recalc()"></div>
-     <div><label>Laqueamento</label><input id="t_laq" class="n" type="number" value="0" oninput="recalc()"></div>
-    </div>
-   </details>
    <details><summary>Outros</summary>
     <div class="grid g2">
      <div><label>Margem de erro %</label><input id="p_erro" class="n" type="number" step="0.1" value="2" oninput="recalc()"></div>
@@ -206,6 +197,17 @@ body.light .btn.primary{color:#fff}
  <div class="card">
   <h2>Material por ambiente <span class="mini">preencha a coluna Quant — o custo soma automaticamente</span></h2>
   <div class="amb-tabs" id="ambTabs"></div>
+  <div class="card" style="background:var(--card2);margin-bottom:12px">
+   <h2 style="margin-bottom:8px">Serviços terceirizados <span class="mini">deste ambiente (R$) — alocados ao item, não no geral</span></h2>
+   <div class="grid g3">
+    <div><label>Vidraceiro</label><input id="tc_vid" class="n" type="number" value="0" oninput="setTerc('vid',this.value)"></div>
+    <div><label>Serralheiro</label><input id="tc_ser" class="n" type="number" value="0" oninput="setTerc('ser',this.value)"></div>
+    <div><label>Pintor</label><input id="tc_pin" class="n" type="number" value="0" oninput="setTerc('pin',this.value)"></div>
+    <div><label>Estofador</label><input id="tc_est" class="n" type="number" value="0" oninput="setTerc('est',this.value)"></div>
+    <div><label>Laqueamento</label><input id="tc_laq" class="n" type="number" value="0" oninput="setTerc('laq',this.value)"></div>
+    <div style="display:flex;align-items:flex-end"><span class="hint" id="tcTot" style="margin:0"></span></div>
+   </div>
+  </div>
   <div class="srch" style="display:flex;gap:8px">
    <input id="srch" placeholder="Filtrar itens (ex.: mdf, oculta, led)…" oninput="renderLib()">
    <button class="btn sm" onclick="collapseAll(true)" title="recolher todas">▸ recolher</button>
@@ -240,17 +242,26 @@ function defaultLib(){return [
 
 /* ===== Estado ===== */
 let S=null;
-function blankAmb(n){return {nome:n,q:{}};}
+function blankTerc(){return {vid:0,ser:0,pin:0,est:0,laq:0};}
+function blankAmb(n){return {nome:n,q:{},terc:blankTerc()};}
+function normalize(){
+ if(!S.lib)S.lib=defaultLib();
+ if(!S.collapsed)S.collapsed={};
+ if(S.diretrizes===undefined)S.diretrizes="";
+ if(S.rodrigo===undefined)S.rodrigo="";
+ (S.ambientes||[]).forEach(a=>{if(!a.terc)a.terc=blankTerc();});
+ // migra eventual terceirizado global antigo para o 1º ambiente
+ if(S.t&&S.ambientes&&S.ambientes[0]){const g=S.t;["vid","ser","pin","est","laq"].forEach(k=>{if(g[k])S.ambientes[0].terc[k]=(S.ambientes[0].terc[k]||0)+g[k];});delete S.t;}
+}
 function defaultState(){return {
  cliente:"Camila",projeto:"Closet",versao:"001",inv:0,mcAlvo:38,
  p:{nf:4,parc:8,vend:3,rt:10,vis:250,outv:0,prog:0.8,coord:1,marc:2.5,serra:0.5,manut:0.5,log:0,erro:2},
- t:{vid:0,ser:0,pin:0,est:0,laq:0},
  lib:defaultLib(),
  ambientes:[blankAmb("Roupeiro"),blankAmb("Ilha")],
  ativo:0, collapsed:{}, theme:'dark', diretrizes:"", rodrigo:""
 };}
 function saveNotes(){S.diretrizes=document.getElementById('diretrizes').value;S.rodrigo=document.getElementById('rodrigo').value;save();}
-function load(){try{const r=localStorage.getItem('valvic_orc');if(r){S=JSON.parse(r);if(!S.lib)S.lib=defaultLib();}}catch(e){}if(!S)S=defaultState();}
+function load(){try{const r=localStorage.getItem('valvic_orc');if(r){S=JSON.parse(r);}}catch(e){}if(!S)S=defaultState();normalize();}
 function save(){S.cliente=v('cliente');S.projeto=v('projeto');S.versao=v('versao');localStorage.setItem('valvic_orc',JSON.stringify(S));}
 function v(id){return document.getElementById(id).value;}
 function n(id){return parseFloat(document.getElementById(id).value)||0;}
@@ -263,7 +274,12 @@ function renderTabs(){
  h+=`<button class="amb-tab" onclick="addAmb()" style="border-style:dashed">+ ambiente</button>`;
  document.getElementById('ambTabs').innerHTML=h;
 }
-function setAtivo(i){S.ativo=i;renderTabs();renderLib();}
+function setAtivo(i){S.ativo=i;renderTabs();renderTerc();renderLib();}
+const TERC=["vid","ser","pin","est","laq"];
+function tercAmb(a){return TERC.reduce((s,k)=>s+((a.terc&&a.terc[k])||0),0);}
+function tercTotal(){return S.ambientes.reduce((s,a)=>s+tercAmb(a),0);}
+function setTerc(k,v){const a=S.ambientes[S.ativo];if(!a.terc)a.terc=blankTerc();a.terc[k]=parseFloat(v)||0;document.getElementById('tcTot').textContent='Terceirizados deste ambiente: '+fmt(tercAmb(a));recalc();}
+function renderTerc(){const a=S.ambientes[S.ativo];if(!a.terc)a.terc=blankTerc();TERC.forEach(k=>{document.getElementById('tc_'+k).value=a.terc[k]||0;});document.getElementById('tcTot').textContent='Terceirizados deste ambiente: '+fmt(tercAmb(a));}
 function addAmb(){const nm=prompt('Nome do ambiente:','Ambiente '+(S.ambientes.length+1));if(nm){S.ambientes.push(blankAmb(nm));S.ativo=S.ambientes.length-1;renderTabs();renderLib();save();}}
 function rmAmb(i){if(S.ambientes.length<=1){alert('Mantenha ao menos um ambiente.');return;}if(!confirm('Remover ambiente "'+S.ambientes[i].nome+'"?'))return;S.ambientes.splice(i,1);if(S.ativo>=S.ambientes.length)S.ativo=S.ambientes.length-1;renderTabs();renderLib();recalc();}
 
@@ -304,9 +320,9 @@ function materialAmb(amb){let s=0;S.lib.forEach(cat=>{cat[1].forEach(it=>{s+=(am
 function materialTotal(){let s=0;S.ambientes.forEach(a=>s+=materialAmb(a));return s;}
 
 function compute(inv){
- const p=S.p,t=S.t;
+ const p=S.p;
  const material=materialTotal();
- const terc=t.vid+t.ser+t.pin+t.est+t.laq;
+ const terc=tercTotal();
  // % sobre investimento bruto
  const aPct=(p.nf+p.parc+p.vend+p.erro+p.serra+p.manut)/100;
  // líquido = inv - NF - parcelamento
@@ -329,7 +345,7 @@ function caixaTier(p){
  return {t:'caixa ÓTIMO',c:'mc-ok'};
 }
 function suggest(){
- const p=S.p,t=S.t;const material=materialTotal();const terc=t.vid+t.ser+t.pin+t.est+t.laq;
+ const p=S.p;const material=materialTotal();const terc=tercTotal();
  const fixedR=material+terc+p.log+p.vis+p.outv;
  const a=(p.nf+p.parc+p.vend+p.erro+p.serra+p.manut)/100;
  const liqF=1-(p.nf+p.parc)/100;
@@ -344,7 +360,6 @@ function recalc(){
  // sync params
  const p=S.p;p.nf=n('p_nf');p.parc=n('p_parc');p.vend=n('p_vend');p.rt=n('p_rt');p.vis=n('p_vis');p.outv=n('p_outv');
  p.prog=n('p_prog');p.coord=n('p_coord');p.marc=n('p_marc');p.serra=n('p_serra');p.manut=n('p_manut');p.log=n('p_log');p.erro=n('p_erro');
- const t=S.t;t.vid=n('t_vid');t.ser=n('t_ser');t.pin=n('t_pin');t.est=n('t_est');t.laq=n('t_laq');
  const inv=S.inv;const r=compute(inv);
  // KPIs + situação de caixa
  const piso=parseFloat(document.getElementById('caixa').value)||37;
@@ -362,8 +377,9 @@ function recalc(){
  const mcpc=inv>0?r.mcPct:0;
  bh+=`<div class="bar"><div class="top2"><span class="nm" style="color:var(--green)">Margem (MC)</span><span class="pc" style="color:var(--green)">${fmt(r.mc)} · ${mcpc.toFixed(1)}%</span></div><div class="track"><div class="fill f-mc" style="width:${Math.min(Math.max(mcpc,0),100)}%"></div></div></div>`;
  document.getElementById('bars').innerHTML=bh;
- // fechamento
- let amb='';S.ambientes.forEach(a=>{const m=materialAmb(a);amb+=`<div class="row"><span>Material · ${a.nome}</span><b>${fmt(m)}</b></div>`;});
+ // fechamento — por ambiente: material + terceirizado alocado
+ let amb='';S.ambientes.forEach(a=>{const m=materialAmb(a),tc=tercAmb(a);
+  amb+=`<div class="row"><span>${a.nome} <span style="color:var(--dim);font-size:.7rem">(mat ${fmt(m)}${tc?' · terc '+fmt(tc):''})</span></span><b>${fmt(m+tc)}</b></div>`;});
  document.getElementById('fechamento').innerHTML=amb+`
   <div class="row"><span>Material (total)</span><b>${fmt(r.material)}</b></div>
   <div class="row"><span>Terceirizados</span><b>${fmt(r.terc)}</b></div>
@@ -381,7 +397,7 @@ function toggleTheme(){S.theme=(S.theme==='light')?'dark':'light';applyTheme();s
 
 /* ===== Import / export / reset ===== */
 function exportJSON(){recalc();const blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`orcamento-${S.cliente}-${S.projeto}.json`.replace(/\s+/g,'_');a.click();}
-function importJSON(e){const f=e.target.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{try{S=JSON.parse(rd.result);if(!S.lib)S.lib=defaultLib();boot();}catch(err){alert('JSON inválido');}};rd.readAsText(f);}
+function importJSON(e){const f=e.target.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{try{S=JSON.parse(rd.result);normalize();boot();}catch(err){alert('JSON inválido');}};rd.readAsText(f);}
 function resetAll(){if(confirm('Restaurar tudo ao padrão? (apaga o orçamento atual)')){S=defaultState();boot();}}
 
 /* ===== Boot ===== */
@@ -390,9 +406,8 @@ function boot(){
  document.getElementById('inv').value=S.inv||0;document.getElementById('mcAlvo').value=S.mcAlvo||38;
  const p=S.p;document.getElementById('p_nf').value=p.nf;document.getElementById('p_parc').value=p.parc;document.getElementById('p_vend').value=p.vend;document.getElementById('p_rt').value=p.rt;document.getElementById('p_vis').value=p.vis;document.getElementById('p_outv').value=p.outv;
  document.getElementById('p_prog').value=p.prog;document.getElementById('p_coord').value=p.coord;document.getElementById('p_marc').value=p.marc;document.getElementById('p_serra').value=p.serra;document.getElementById('p_manut').value=p.manut;document.getElementById('p_log').value=p.log;document.getElementById('p_erro').value=p.erro;
- const t=S.t;document.getElementById('t_vid').value=t.vid;document.getElementById('t_ser').value=t.ser;document.getElementById('t_pin').value=t.pin;document.getElementById('t_est').value=t.est;document.getElementById('t_laq').value=t.laq;
  document.getElementById('diretrizes').value=S.diretrizes||'';document.getElementById('rodrigo').value=S.rodrigo||'';
- applyTheme();updTag();renderTabs();recalc();
+ applyTheme();updTag();renderTabs();renderTerc();recalc();
 }
 load();boot();
 </script>
