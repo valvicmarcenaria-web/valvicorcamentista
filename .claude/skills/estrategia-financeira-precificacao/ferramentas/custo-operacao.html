@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valvic · Custo da Operação</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0D0A06;--panel:#141009;--card:#1B1208;--card2:#211608;--border:rgba(160,104,56,.16);--border2:rgba(160,104,56,.32);--gold:#A06838;--gold2:#C8914A;--sand:#C8A87A;--text:#F5F0E8;--muted:rgba(245,240,232,.55);--dim:rgba(245,240,232,.28);--green:#2ECC8A;--red:#E05555;--amber:#E09A30;--blue:#5AA6D6;--input:rgba(255,255,255,.04)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;padding-bottom:60px}
+.top{position:sticky;top:0;z-index:20;background:var(--panel);border-bottom:1px solid var(--border2);padding:11px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold2);line-height:1}
+.brand small{display:block;font-family:'DM Mono',monospace;font-size:.52rem;color:var(--dim);letter-spacing:.16em;text-transform:uppercase;margin-top:2px}
+.spacer{flex:1}
+.wrap{max-width:1180px;margin:16px auto;padding:0 20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:9px;padding:15px 17px;margin-bottom:16px}
+h2{font-size:.74rem;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--gold2);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+h2 .mini{font-size:.56rem;color:var(--dim);font-weight:400;letter-spacing:.06em;text-transform:none}
+label{display:block;font-size:.6rem;color:var(--muted);margin:6px 0 2px;text-transform:uppercase;letter-spacing:.04em}
+input,select{background:var(--input);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:.82rem;padding:5px 7px;border-radius:4px}
+input:focus,select:focus{outline:none;border-color:var(--gold)}
+input.n{font-family:'DM Mono',monospace;text-align:right}
+.btn{font-size:.72rem;padding:6px 12px;border-radius:4px;cursor:pointer;font-family:inherit;border:1px solid var(--border2);background:transparent;color:var(--sand)}
+.btn.primary{background:var(--gold);color:#fff;border-color:var(--gold);font-weight:600}
+.btn.sm{font-size:.62rem;padding:3px 8px}
+.btn:hover{opacity:.85}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:4px}
+.kpi{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
+.kpi .lbl{font-size:.56rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.kpi .val{font-family:'DM Mono',monospace;font-size:1.45rem;font-weight:700;margin-top:4px;color:var(--sand)}
+.kpi .sub{font-size:.56rem;color:var(--dim);font-family:'DM Mono',monospace;margin-top:3px}
+.kpi.fixo .val{color:var(--amber)} .kpi.var .val{color:var(--blue)} .kpi.tot .val{color:var(--gold2)}
+.bar{margin-bottom:8px}
+.bar .t{display:flex;justify-content:space-between;font-size:.7rem;margin-bottom:3px}
+.bar .t .pc{font-family:'DM Mono',monospace;color:var(--sand)}
+.track{height:9px;background:rgba(255,255,255,.05);border-radius:5px;overflow:hidden}
+.fill{height:100%;border-radius:5px;background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+/* árvore */
+.centro{border:1px solid var(--border2);border-radius:8px;margin-bottom:12px;overflow:hidden}
+.centro>.head{background:var(--card2);padding:9px 12px;display:flex;align-items:center;gap:8px}
+.centro>.head .nm{font-family:'DM Mono',monospace;font-size:.8rem;color:var(--gold2);font-weight:600;letter-spacing:.04em;flex:1;text-transform:uppercase}
+.centro>.head . tot{font-family:'DM Mono',monospace;color:var(--sand)}
+.cat{border-top:1px solid var(--border)}
+.cat>.head{padding:7px 12px 7px 20px;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.015)}
+.cat>.head .nm{font-size:.78rem;color:var(--text);flex:1;font-weight:600}
+.cat>.head .ct{font-family:'DM Mono',monospace;color:var(--sand);font-size:.72rem}
+.itrow{display:flex;align-items:center;gap:6px;padding:3px 12px 3px 30px;border-top:1px solid rgba(255,255,255,.03)}
+.itrow .nm{flex:1;font-size:.78rem}
+.itrow input.v{width:96px}
+.itrow select.tp{font-size:.62rem;padding:3px 4px}
+.itrow select.mv{font-size:.6rem;padding:3px 4px;max-width:120px;color:var(--muted)}
+.tag{font-family:'DM Mono',monospace;font-size:.5rem;border-radius:8px;padding:1px 6px;border:1px solid var(--border2)}
+.ic{cursor:pointer;color:var(--dim);font-size:.85rem;padding:0 2px}.ic:hover{color:var(--sand)}
+.ic.del:hover{color:var(--red)}
+.muted{color:var(--muted)} .hint{font-size:.6rem;color:var(--dim);margin-top:8px;line-height:1.5}
+.topcosts li{display:flex;justify-content:space-between;font-size:.74rem;padding:3px 0;border-bottom:1px solid var(--border)}
+.topcosts b{font-family:'DM Mono',monospace;color:var(--sand)}
+@media(max-width:900px){.kpis{grid-template-columns:1fr 1fr}.cols2{grid-template-columns:1fr}}
+body.light{--bg:#F4EFE6;--panel:#fff;--card:#fff;--card2:#F7F1E6;--border:rgba(124,79,42,.18);--border2:rgba(124,79,42,.34);--gold2:#7c4f2a;--sand:#8a5a30;--text:#2a2018;--muted:rgba(42,32,24,.62);--dim:rgba(42,32,24,.4);--input:rgba(124,79,42,.05)}
+@media print{
+ .top,.btn,.ic,.itrow select.mv,.no-print{display:none!important}
+ body{background:#fff;color:#000;padding:0;font-size:11px}
+ .card,.centro{border:1px solid #ccc;box-shadow:none;break-inside:avoid}
+ input,select{border:none;background:none;color:#000;-webkit-appearance:none;appearance:none}
+ .kpi{border:1px solid #ccc}
+}
+</style>
+</head>
+<body>
+<div class="top">
+ <div class="brand">VALVIC<small>Custo da Operação · base p/ o Rodrigo</small></div>
+ <span class="spacer"></span>
+ <button class="btn sm" id="themeBtn" onclick="toggleTheme()">☀ Tema claro</button>
+ <button class="btn sm" onclick="document.getElementById('imp').click()">Importar</button>
+ <input type="file" id="imp" accept=".json" style="display:none" onchange="importJSON(event)">
+ <button class="btn sm" onclick="exportJSON()">Exportar JSON</button>
+ <button class="btn sm" onclick="window.print()">Exportar PDF</button>
+ <button class="btn sm" onclick="resetAll()">Restaurar padrão</button>
+</div>
+
+<div class="wrap">
+ <div class="card no-print">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+   <div><label>Empresa</label><input id="empresa" style="width:100%" oninput="save()"></div>
+   <div><label>Mês de referência</label><input id="mesref" style="width:100%" placeholder="ex.: jun/2026" oninput="save()"></div>
+   <div><label>Observação</label><input id="obs" style="width:100%" placeholder="opcional" oninput="save()"></div>
+  </div>
+ </div>
+
+ <div class="card">
+  <h2>Indicadores <span class="mini">custo mensal da operação</span></h2>
+  <div class="kpis" id="kpis"></div>
+  <div class="cols2" style="margin-top:14px">
+   <div>
+    <h2 style="margin-bottom:8px">% por centro de custo</h2>
+    <div id="bars"></div>
+   </div>
+   <div>
+    <h2 style="margin-bottom:8px">Maiores custos</h2>
+    <ul class="topcosts" id="top"></ul>
+    <div class="card" style="background:var(--card2);margin:12px 0 0;padding:11px 13px">
+     <h2 style="margin-bottom:8px">Ponto de equilíbrio <span class="mini">(Rodrigo)</span></h2>
+     <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:end">
+      <div><label>MC% média</label><input id="mc" class="n" type="number" step="0.5" value="43.5" style="width:80px" oninput="render()"></div>
+      <div><label>Faturamento/mês R$</label><input id="fat" class="n" type="number" value="162000" style="width:120px" oninput="render()"></div>
+     </div>
+     <div id="be" style="margin-top:10px"></div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <div class="card">
+  <h2>Estrutura de custos <span class="mini">tudo editável: renomear, adicionar, excluir, mover</span>
+   <span class="spacer"></span>
+   <button class="btn sm primary no-print" onclick="addCentro()">+ centro de custo</button>
+  </h2>
+  <div id="tree"></div>
+  <p class="hint no-print">Cada item: valor mensal (R$), tipo (Fixo/Variável) e "mover para" outra categoria. Fixo = base do break-even. Custo anual? lance o valor/12 ou crie uma categoria "provisões".</p>
+ </div>
+</div>
+
+<script>
+const TIPOS=["Fixo","Variável"];
+function defaultData(){return {
+ empresa:"Valvic Marcenaria", mesref:"", obs:"", theme:"dark", mc:43.5, fat:162000,
+ centros:[
+  {nome:"Sócios", cats:[
+    {nome:"Pró-labore", itens:[I("Pró-labore Jonathan","Fixo"),I("Pró-labore Paulo","Fixo")]}
+  ]},
+  {nome:"Produção", cats:[
+    {nome:"Folha (produção)", itens:[I("Marceneiros","Fixo"),I("Montadores","Fixo"),I("Ajudantes","Fixo"),I("Acabamento / pintura","Fixo"),I("Programador CNC","Fixo")]},
+    {nome:"Encargos s/ folha", itens:[I("INSS patronal","Fixo"),I("FGTS","Fixo"),I("Provisão 13º","Fixo"),I("Provisão férias","Fixo"),I("Vale transporte","Fixo"),I("Vale alimentação","Fixo"),I("EPIs / uniformes","Fixo")]},
+    {nome:"Galpão / instalações", itens:[I("Aluguel","Fixo"),I("IPTU","Fixo"),I("Condomínio","Fixo"),I("Energia elétrica","Variável"),I("Água","Fixo"),I("Internet / telefone fixo","Fixo"),I("Segurança / alarme","Fixo"),I("Limpeza","Fixo"),I("Manutenção predial","Fixo")]},
+    {nome:"Máquinas e ferramentas", itens:[I("Manutenção CNC","Fixo"),I("Manutenção coladeira","Fixo"),I("Manutenção seccionadora / serras","Fixo"),I("Consumíveis de oficina (serras, fresas, lixas)","Variável"),I("Software de produção (nesting/3D)","Fixo"),I("Depreciação de máquinas","Fixo")]},
+    {nome:"Insumos variáveis (por projeto)", itens:[I("Chapas (MDF/comp.)","Variável"),I("Fita de borda / cola","Variável"),I("Ferragens","Variável"),I("Terceirizados (vidro/serralh./pintura/estofado)","Variável"),I("Embalagem","Variável"),I("Parafusos / fixadores","Variável")]}
+  ]},
+  {nome:"Comercial", cats:[
+    {nome:"Equipe comercial", itens:[I("Salário vendedor","Fixo"),I("Comissão vendedor","Variável")]},
+    {nome:"Marketing", itens:[I("Tráfego pago / anúncios","Fixo"),I("Social media / conteúdo","Fixo"),I("Fotografia / portfólio","Fixo"),I("Brindes / material de venda","Variável")]},
+    {nome:"Parcerias", itens:[I("RT arquitetos / decoradores","Variável")]}
+  ]},
+  {nome:"Logística / Entrega", cats:[
+    {nome:"Veículos", itens:[I("Combustível","Variável"),I("Manutenção de veículos","Variável"),I("IPVA / seguro","Fixo"),I("Financiamento de veículo","Fixo")]},
+    {nome:"Entrega / montagem", itens:[I("Frete terceirizado","Variável"),I("Pedágio / estacionamento","Variável"),I("Diária de ajudante de obra","Variável")]}
+  ]},
+  {nome:"Administrativo", cats:[
+    {nome:"Serviços", itens:[I("Contador","Fixo"),I("Jurídico","Fixo"),I("Consultoria (ex.: Rodrigo)","Fixo")]},
+    {nome:"Sistemas", itens:[I("ERP / gestão","Fixo"),I("Nuvem / assinaturas","Fixo"),I("Telefonia móvel","Fixo")]},
+    {nome:"Escritório", itens:[I("Material de escritório","Fixo"),I("Café / copa","Fixo")]},
+    {nome:"Tarifas bancárias", itens:[I("Tarifas de conta","Fixo"),I("Taxa de maquininha / cartão","Variável")]}
+  ]},
+  {nome:"Tributos", cats:[
+    {nome:"Impostos", itens:[I("Simples Nacional / DAS","Variável"),I("Nota fiscal","Variável"),I("Taxas e licenças","Fixo")]}
+  ]},
+  {nome:"Financeiro / Dívidas", cats:[
+    {nome:"Financiamentos e empréstimos", itens:[I("Financiamento de máquinas (parcela)","Fixo"),I("Capital de giro / empréstimo (parcela)","Fixo"),I("Empréstimo do Paulo (devolução)","Fixo")]},
+    {nome:"Encargos financeiros", itens:[I("Juros / IOF / tarifas","Fixo")]}
+  ]}
+ ]
+};}
+function I(nome,tipo){return {nome,valor:0,tipo};}
+
+let D=null;
+function load(){try{const r=localStorage.getItem('valvic_custo');if(r)D=JSON.parse(r);}catch(e){}if(!D)D=defaultData();}
+function save(){D.empresa=val('empresa');D.mesref=val('mesref');D.obs=val('obs');localStorage.setItem('valvic_custo',JSON.stringify(D));}
+function val(id){return document.getElementById(id).value;}
+function fmt(x){return 'R$ '+Math.round(x).toLocaleString('pt-BR');}
+function pct(x){return (x).toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+'%';}
+
+/* ---- cálculos ---- */
+function itTotal(it){return +it.valor||0;}
+function catTotal(c){return c.itens.reduce((s,i)=>s+itTotal(i),0);}
+function centroTotal(c){return c.cats.reduce((s,k)=>s+catTotal(k),0);}
+function totalGeral(){return D.centros.reduce((s,c)=>s+centroTotal(c),0);}
+function totalTipo(tp){let s=0;D.centros.forEach(c=>c.cats.forEach(k=>k.itens.forEach(i=>{if(i.tipo===tp)s+=itTotal(i);})));return s;}
+function allItens(){const a=[];D.centros.forEach((c,ci)=>c.cats.forEach((k,ki)=>k.itens.forEach((i,ii)=>a.push({i,centro:c.nome,cat:k.nome})))); return a;}
+
+/* ---- render ---- */
+function render(){
+ const total=totalGeral(),fixo=totalTipo("Fixo"),vary=totalTipo("Variável");
+ D.mc=+val('mc')||0; D.fat=+val('fat')||0;
+ document.getElementById('kpis').innerHTML=`
+  <div class="kpi tot"><div class="lbl">Custo total / mês</div><div class="val">${fmt(total)}</div><div class="sub">${D.centros.length} centros de custo</div></div>
+  <div class="kpi fixo"><div class="lbl">Custo FIXO / mês</div><div class="val">${fmt(fixo)}</div><div class="sub">${total?pct(fixo/total*100):'—'} do total · base do break-even</div></div>
+  <div class="kpi var"><div class="lbl">Custo VARIÁVEL / mês</div><div class="val">${fmt(vary)}</div><div class="sub">${total?pct(vary/total*100):'—'} do total</div></div>
+  <div class="kpi"><div class="lbl">Maior centro de custo</div><div class="val" style="font-size:1rem">${maiorCentro()}</div><div class="sub">veja o ranking ao lado</div></div>`;
+ // barras por centro
+ let bh='';const cs=D.centros.map(c=>({nome:c.nome,v:centroTotal(c)})).sort((a,b)=>b.v-a.v);
+ cs.forEach(c=>{const p=total?c.v/total*100:0;bh+=`<div class="bar"><div class="t"><span>${c.nome}</span><span class="pc">${fmt(c.v)} · ${pct(p)}</span></div><div class="track"><div class="fill" style="width:${Math.min(p,100)}%"></div></div></div>`;});
+ document.getElementById('bars').innerHTML=bh||'<p class="hint">Sem custos lançados.</p>';
+ // maiores custos (top 8 itens)
+ const top=allItens().filter(x=>itTotal(x.i)>0).sort((a,b)=>itTotal(b.i)-itTotal(a.i)).slice(0,8);
+ document.getElementById('top').innerHTML=top.map(x=>`<li><span>${x.i.nome} <span class="muted" style="font-size:.62rem">· ${x.centro}</span></span><b>${fmt(itTotal(x.i))}</b></li>`).join('')||'<li class="muted">—</li>';
+ // break-even
+ const mc=D.mc/100, fat=D.fat;
+ const be = mc>0? fixo/mc : 0;
+ const mcRs = fat*mc, sobra = mcRs - fixo;
+ document.getElementById('be').innerHTML=`
+  <div class="bar"><div class="t"><span>Ponto de equilíbrio (faturamento)</span><span class="pc">${fmt(be)}</span></div></div>
+  <div class="bar"><div class="t"><span>MC no faturamento informado</span><span class="pc">${fmt(mcRs)}</span></div></div>
+  <div class="bar"><div class="t"><span>Resultado (MC − custo fixo)</span><span class="pc" style="color:${sobra>=0?'var(--green)':'var(--red)'}">${fmt(sobra)}/mês</span></div></div>
+  <p class="hint">MC% mínima p/ empatar no faturamento atual: <b style="color:var(--sand)">${fat?pct(fixo/fat*100):'—'}</b>. Acima disso = lucro.</p>`;
+ renderTree();save();
+}
+function maiorCentro(){let m={nome:'—',v:-1};D.centros.forEach(c=>{const v=centroTotal(c);if(v>m.v)m={nome:c.nome,v};});return m.nome;}
+
+function catOptions(selCi,selKi){let o='';D.centros.forEach((c,ci)=>c.cats.forEach((k,ki)=>{const sel=(ci===selCi&&ki===selKi)?'selected':'';o+=`<option value="${ci}-${ki}" ${sel}>${c.nome} › ${k.nome}</option>`;}));return o;}
+
+function renderTree(){
+ let h='';
+ D.centros.forEach((c,ci)=>{
+  h+=`<div class="centro"><div class="head">
+    <span class="ic no-print" onclick="moveCentro(${ci},-1)">↑</span><span class="ic no-print" onclick="moveCentro(${ci},1)">↓</span>
+    <span class="nm">${c.nome}</span>
+    <span class="ct" style="font-family:'DM Mono';color:var(--sand)">${fmt(centroTotal(c))}</span>
+    <span class="ic no-print" title="renomear" onclick="renCentro(${ci})">✎</span>
+    <span class="ic no-print" title="+ categoria" onclick="addCat(${ci})">＋</span>
+    <span class="ic del no-print" title="excluir" onclick="delCentro(${ci})">🗑</span>
+   </div>`;
+  c.cats.forEach((k,ki)=>{
+   h+=`<div class="cat"><div class="head">
+     <span class="ic no-print" onclick="moveCat(${ci},${ki},-1)">↑</span><span class="ic no-print" onclick="moveCat(${ci},${ki},1)">↓</span>
+     <span class="nm">${k.nome}</span>
+     <span class="ct">${fmt(catTotal(k))}</span>
+     <span class="ic no-print" title="renomear" onclick="renCat(${ci},${ki})">✎</span>
+     <span class="ic no-print" title="+ item" onclick="addItem(${ci},${ki})">＋</span>
+     <span class="ic del no-print" title="excluir" onclick="delCat(${ci},${ki})">🗑</span>
+    </div>`;
+   k.itens.forEach((it,ii)=>{
+    h+=`<div class="itrow">
+      <span class="ic no-print" onclick="moveItem(${ci},${ki},${ii},-1)">↑</span><span class="ic no-print" onclick="moveItem(${ci},${ki},${ii},1)">↓</span>
+      <span class="nm">${it.nome}</span>
+      <select class="tp" onchange="setTipo(${ci},${ki},${ii},this.value)">${TIPOS.map(t=>`<option ${t===it.tipo?'selected':''}>${t}</option>`).join('')}</select>
+      <input class="v n" type="number" step="any" value="${it.valor||''}" placeholder="0" oninput="setVal(${ci},${ki},${ii},this.value)">
+      <select class="mv no-print" title="mover para" onchange="reparent(${ci},${ki},${ii},this.value)">${catOptions(ci,ki)}</select>
+      <span class="ic no-print" title="renomear" onclick="renItem(${ci},${ki},${ii})">✎</span>
+      <span class="ic del no-print" title="excluir" onclick="delItem(${ci},${ki},${ii})">🗑</span>
+     </div>`;
+   });
+   h+=`</div>`;
+  });
+  h+=`</div>`;
+ });
+ document.getElementById('tree').innerHTML=h;
+}
+
+/* ---- edição ---- */
+function setVal(ci,ki,ii,v){D.centros[ci].cats[ki].itens[ii].valor=parseFloat(v)||0;render();}
+function setTipo(ci,ki,ii,v){D.centros[ci].cats[ki].itens[ii].tipo=v;render();}
+function renItem(ci,ki,ii){const it=D.centros[ci].cats[ki].itens[ii];const n=prompt('Renomear item:',it.nome);if(n!==null&&n.trim()){it.nome=n.trim();render();}}
+function delItem(ci,ki,ii){if(confirm('Excluir item?')){D.centros[ci].cats[ki].itens.splice(ii,1);render();}}
+function addItem(ci,ki){const n=prompt('Nome do item:');if(n&&n.trim()){D.centros[ci].cats[ki].itens.push(I(n.trim(),"Fixo"));render();}}
+function moveItem(ci,ki,ii,d){const a=D.centros[ci].cats[ki].itens;const j=ii+d;if(j<0||j>=a.length)return;[a[ii],a[j]]=[a[j],a[ii]];render();}
+function reparent(ci,ki,ii,target){const [tci,tki]=target.split('-').map(Number);if(tci===ci&&tki===ki)return;const it=D.centros[ci].cats[ki].itens.splice(ii,1)[0];D.centros[tci].cats[tki].itens.push(it);render();}
+function addCat(ci){const n=prompt('Nome da categoria:');if(n&&n.trim()){D.centros[ci].cats.push({nome:n.trim(),itens:[]});render();}}
+function renCat(ci,ki){const k=D.centros[ci].cats[ki];const n=prompt('Renomear categoria:',k.nome);if(n!==null&&n.trim()){k.nome=n.trim();render();}}
+function delCat(ci,ki){if(confirm('Excluir categoria e seus itens?')){D.centros[ci].cats.splice(ki,1);render();}}
+function moveCat(ci,ki,d){const a=D.centros[ci].cats;const j=ki+d;if(j<0||j>=a.length)return;[a[ki],a[j]]=[a[j],a[ki]];render();}
+function addCentro(){const n=prompt('Nome do centro de custo:');if(n&&n.trim()){D.centros.push({nome:n.trim(),cats:[]});render();}}
+function renCentro(ci){const c=D.centros[ci];const n=prompt('Renomear centro de custo:',c.nome);if(n!==null&&n.trim()){c.nome=n.trim();render();}}
+function delCentro(ci){if(confirm('Excluir centro de custo inteiro?')){D.centros.splice(ci,1);render();}}
+function moveCentro(ci,d){const j=ci+d;if(j<0||j>=D.centros.length)return;[D.centros[ci],D.centros[j]]=[D.centros[j],D.centros[ci]];render();}
+
+/* ---- tema / io ---- */
+function applyTheme(){const l=D.theme==='light';document.body.classList.toggle('light',l);document.getElementById('themeBtn').textContent=l?'☾ Tema escuro':'☀ Tema claro';}
+function toggleTheme(){D.theme=(D.theme==='light')?'dark':'light';applyTheme();save();}
+function exportJSON(){save();const b=new Blob([JSON.stringify(D,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`custo-operacao-valvic.json`;a.click();}
+function importJSON(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{D=JSON.parse(r.result);boot();}catch(x){alert('JSON inválido');}};r.readAsText(f);}
+function resetAll(){if(confirm('Restaurar a base padrão? (apaga o preenchido)')){D=defaultData();boot();}}
+
+function boot(){
+ document.getElementById('empresa').value=D.empresa||'';document.getElementById('mesref').value=D.mesref||'';document.getElementById('obs').value=D.obs||'';
+ document.getElementById('mc').value=D.mc??43.5;document.getElementById('fat').value=D.fat??0;
+ applyTheme();render();
+}
+load();boot();
+</script>
+</body>
+</html>
