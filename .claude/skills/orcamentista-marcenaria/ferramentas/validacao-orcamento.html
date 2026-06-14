@@ -19,8 +19,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);fon
 h2{font-size:.74rem;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--gold2);margin-bottom:12px;display:flex;align-items:center;gap:8px}
 h2 .mini{font-size:.56rem;color:var(--dim);font-weight:400;letter-spacing:.06em}
 label{display:block;font-size:.6rem;color:var(--muted);margin:6px 0 2px;text-transform:uppercase;letter-spacing:.04em}
-input,select{width:100%;background:var(--input);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:.82rem;padding:6px 8px;border-radius:4px}
-input:focus,select:focus{outline:none;border-color:var(--gold)}
+input,select,textarea{width:100%;background:var(--input);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:.82rem;padding:6px 8px;border-radius:4px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold)}
+textarea{resize:vertical;min-height:84px;line-height:1.5}
+.note-rodrigo{border-color:rgba(90,166,214,.4)}
+.note-rodrigo:focus{border-color:var(--blue)}
 input.n{font-family:'DM Mono',monospace;text-align:right}
 .btn{font-size:.74rem;padding:7px 13px;border-radius:4px;cursor:pointer;font-family:inherit;border:1px solid var(--border2);background:transparent;color:var(--sand)}
 .btn.primary{background:var(--gold);color:#fff;border-color:var(--gold);font-weight:600}
@@ -130,6 +133,21 @@ body.light .btn.primary{color:#fff}
   </div>
  </div>
 
+ <!-- DIRETRIZES & DIRECIONAMENTOS (histórico do orçamento) -->
+ <div class="card">
+  <h2>Diretrizes & Direcionamentos <span class="mini">salvos no histórico deste orçamento (vão no JSON)</span></h2>
+  <div class="grid g2">
+   <div>
+    <label>Diretrizes específicas deste orçamento</label>
+    <textarea id="diretrizes" placeholder="Ex.: prazo apertado; cliente pediu Cumaru; tudo em Areia (banheiro); substituições aprovadas; granito por conta da marmoraria..." oninput="saveNotes()"></textarea>
+   </div>
+   <div>
+    <label>Direcionamentos do Rodrigo (financeiro estratégico)</label>
+    <textarea id="rodrigo" class="note-rodrigo" placeholder="Ex.: piso de MC 45% este mês (operar acima do break-even R$154k); priorizar caixa; não deixar o mês depender de um projeto grande..." oninput="saveNotes()"></textarea>
+   </div>
+  </div>
+ </div>
+
  <div class="cols">
   <!-- ESQUERDA: composição -->
   <div>
@@ -229,8 +247,9 @@ function defaultState(){return {
  t:{vid:0,ser:0,pin:0,est:0,laq:0},
  lib:defaultLib(),
  ambientes:[blankAmb("Roupeiro"),blankAmb("Ilha")],
- ativo:0, collapsed:{}, theme:'dark'
+ ativo:0, collapsed:{}, theme:'dark', diretrizes:"", rodrigo:""
 };}
+function saveNotes(){S.diretrizes=document.getElementById('diretrizes').value;S.rodrigo=document.getElementById('rodrigo').value;save();}
 function load(){try{const r=localStorage.getItem('valvic_orc');if(r){S=JSON.parse(r);if(!S.lib)S.lib=defaultLib();}}catch(e){}if(!S)S=defaultState();}
 function save(){S.cliente=v('cliente');S.projeto=v('projeto');S.versao=v('versao');localStorage.setItem('valvic_orc',JSON.stringify(S));}
 function v(id){return document.getElementById(id).value;}
@@ -372,6 +391,7 @@ function boot(){
  const p=S.p;document.getElementById('p_nf').value=p.nf;document.getElementById('p_parc').value=p.parc;document.getElementById('p_vend').value=p.vend;document.getElementById('p_rt').value=p.rt;document.getElementById('p_vis').value=p.vis;document.getElementById('p_outv').value=p.outv;
  document.getElementById('p_prog').value=p.prog;document.getElementById('p_coord').value=p.coord;document.getElementById('p_marc').value=p.marc;document.getElementById('p_serra').value=p.serra;document.getElementById('p_manut').value=p.manut;document.getElementById('p_log').value=p.log;document.getElementById('p_erro').value=p.erro;
  const t=S.t;document.getElementById('t_vid').value=t.vid;document.getElementById('t_ser').value=t.ser;document.getElementById('t_pin').value=t.pin;document.getElementById('t_est').value=t.est;document.getElementById('t_laq').value=t.laq;
+ document.getElementById('diretrizes').value=S.diretrizes||'';document.getElementById('rodrigo').value=S.rodrigo||'';
  applyTheme();updTag();renderTabs();recalc();
 }
 load();boot();
