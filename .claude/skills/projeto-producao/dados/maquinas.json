@@ -1,35 +1,59 @@
 {
   "_meta": {
     "titulo": "Parque de máquinas da Valvic — produção",
-    "atualizado_em": null,
-    "status": "ESQUELETO — aguardando fotos dos equipamentos",
-    "observacoes": "null = a confirmar. Cada máquina define limites que governam modelagem e corte."
+    "atualizado_em": "2026-06-15",
+    "status": "v1 — identificado por fotos; specs marcadas null a confirmar",
+    "observacoes": "null = a confirmar. Cada máquina define limites que governam modelagem e corte. Marcas/modelos lidos das fotos IMG_7611..7615."
   },
   "maquinas": [
     {
       "nome": "Router CNC de nesting",
-      "funcao": "Corte das chapas a partir dos DXF do Marcenária Diferente (1 DXF por chapa)",
+      "marca": "Raizen",
+      "modelo": null,
+      "funcao": "Corte das chapas a partir dos DXF do Marcenária Diferente (1 DXF por chapa). Mesa com grade a vácuo + gantry.",
       "software": null,
       "area_util_mm": null,
       "espessura_min_max_mm": null,
+      "spindle_potencia": null,
       "ferramentas": null,
-      "limitacoes": null
+      "limitacoes": null,
+      "obs": "IMG_7612. CONFIRMAR: modelo, área útil da mesa, software de comando (entra o DXF do MD), potência/ferramentas do spindle."
     },
     {
       "nome": "CNC (Aspire / Vectric)",
-      "funcao": "Cortes especiais que o MD não entrega: friso de LED, friso de dobra (V-groove), corte curvo",
+      "marca": null,
+      "funcao": "Cortes especiais que o MD não entrega: friso de LED, friso de dobra (V-groove), corte curvo.",
       "software": "Aspire (Vectric)",
-      "area_util_mm": null,
-      "raio_minimo_curva_mm": null,
-      "ferramentas": null,
-      "limitacoes": null
+      "obs": "CONFIRMAR: o Aspire roda no MESMO router Raizen ou em outra máquina? Raio mínimo de curva, ferramentas (fresa V, fresa reta)."
     },
     {
       "nome": "Coladeira de borda",
-      "funcao": "Filetagem (aplicação de fita)",
-      "modelo": null,
+      "marca": "SCM",
+      "modelo": "me 25",
+      "funcao": "Filetagem automática (aplicação de fita de borda). Filetagem na máquina ~R$2,5/m (base de custos).",
       "espessura_fita_min_max": null,
-      "limitacoes": null
+      "limitacoes": null,
+      "obs": "IMG_7614. CONFIRMAR: espessura de fita suportada, se faz pré-fresa/raspagem/lixa."
+    },
+    {
+      "nome": "Esquadrejadeira",
+      "marca": "Raizen",
+      "modelo": "RZN 3200P",
+      "funcao": "Corte esquadrejado de chapas e peças (serra de bancada com carro esquadrejador ~3200mm).",
+      "obs": "IMG_7611. CONFIRMAR: altura máxima de corte, diâmetro do disco, se tem riscador."
+    },
+    {
+      "nome": "Tupia / fresadora",
+      "marca": null,
+      "funcao": "Usinagem de perfis/cavas com cabeçotes de fresa; também escova/brunidora vista ao lado.",
+      "obs": "IMG_7613. CONFIRMAR marca/modelo e cabeçotes disponíveis (puxador cava 45°, etc.)."
+    },
+    {
+      "nome": "Serra de esquadria / destopadeira",
+      "marca": null,
+      "inversor": "Razi",
+      "funcao": "Cortes de topo / destopo; discos de grande diâmetro.",
+      "obs": "IMG_7615. CONFIRMAR marca/modelo e diâmetro dos discos."
     }
   ]
 }

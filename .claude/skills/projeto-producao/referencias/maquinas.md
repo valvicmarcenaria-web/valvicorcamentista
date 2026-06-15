@@ -1,21 +1,29 @@
-# Parque de máquinas da Valvic (a preencher com as fotos)
+# Parque de máquinas da Valvic
 
 > Define o que a fábrica **consegue** fazer e seus **limites** — toda regra de
-> modelagem e de corte depende disso. A preencher quando o Jonathan enviar as
-> fotos dos equipamentos. Dados estruturados em `dados/maquinas.json`.
+> modelagem e de corte depende disso. Identificado por fotos (jun/2026); specs
+> detalhadas a confirmar. Dados estruturados em `dados/maquinas.json`.
 
-Por máquina, levantar:
-- **Tipo / marca / modelo.**
-- **Software** que a comanda (ex.: router de nesting ← DXF do MD; **Aspire** ←
-  cortes especiais).
-- **Capacidade útil:** área de trabalho, espessura mín/máx, ferramentas/brocas
-  disponíveis, raio mínimo de curva.
-- **Limitações conhecidas** (o que costuma dar errado / não entra na máquina).
+## Inventário (v1 — identificado por fotos IMG_7611..7615)
 
-## Máquinas citadas (a confirmar/expandir)
-- **Router CNC de nesting** — corta as chapas a partir dos DXF do Marcenária
-  Diferente (1 DXF por chapa).
-- **CNC via Aspire** — frisos de LED, frisos de dobra de MDF (V-groove), cortes
-  curvos (o que o MD não entrega).
-- **Coladeira** (filetagem na máquina ~R$2,5/m — ver base de custos).
-- Esquadrejadeira, furadeira, demais — a inventariar.
+| Máquina | Marca / modelo | Função |
+|---|---|---|
+| **Router CNC de nesting** | Raizen (modelo a confirmar) | Corta as chapas a partir dos **DXF do MD** (1 por chapa). Mesa a vácuo + gantry. |
+| **Coladeira de borda** | **SCM me 25** | Filetagem automática (~R$2,5/m). |
+| **Esquadrejadeira** | **Raizen RZN 3200P** | Corte esquadrejado; carro ~3200mm. |
+| **Tupia / fresadora** | a confirmar | Usinagem de perfis/cavas (cabeçotes de fresa). |
+| **Serra de esquadria** | inversor Razi | Destopo; discos de grande diâmetro. |
+| **CNC via Aspire** | a confirmar (mesmo router?) | Frisos de LED, friso de dobra (V-groove), curvas. |
+
+## A confirmar (specs que governam modelagem e corte)
+- **Router CNC:** modelo, **área útil da mesa**, software de comando (entra o
+  DXF do MD), potência/ferramentas do spindle, espessura máx.
+- **Aspire:** roda no mesmo router Raizen ou em outra máquina? Raio mínimo de
+  curva, fresas disponíveis (V para dobra, reta para friso LED).
+- **Coladeira SCM me 25:** espessura de fita suportada; faz pré-fresa/raspagem/lixa?
+- **Esquadrejadeira / serra de esquadria:** diâmetro dos discos, altura de corte.
+- **Tupia:** marca/modelo e cabeçotes (ex.: cava 45° de puxador).
+
+> **Implicação para a skill:** o fluxo de corte é **MD → DXF → router Raizen**
+> (nesting) e **filetagem na SCM me 25**. O Aspire é o track paralelo de cortes
+> especiais (Degrau 4).
