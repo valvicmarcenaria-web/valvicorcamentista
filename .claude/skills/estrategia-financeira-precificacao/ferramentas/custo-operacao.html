@@ -188,7 +188,7 @@ function totalContr(ct){let s=0;D.centros.forEach(c=>c.cats.forEach(k=>k.itens.f
 function allItens(){const a=[];D.centros.forEach(c=>c.cats.forEach(k=>k.itens.forEach(i=>a.push({i,centro:c.nome}))));return a;}
 function maiorCentro(){let m={nome:'—',v:-1};D.centros.forEach(c=>{const v=centroTotal(c);if(v>m.v)m={nome:c.nome,v};});return m.nome;}
 
-function render(){
+function renderDash(){
  const total=totalGeral(),fixo=totalTipo("Fixo"),vary=totalTipo("Variável");
  if(document.getElementById('mc')){D.mc=+val('mc')||0;D.fat=+val('fat')||0;}
  document.getElementById('kpis').innerHTML=`
@@ -208,22 +208,23 @@ function render(){
   <div class="bar"><div class="t"><span>MC no faturamento informado</span><span class="pc">${fmt(mcRs)}</span></div></div>
   <div class="bar"><div class="t"><span>Resultado (MC − custo fixo)</span><span class="pc" style="color:${sobra>=0?'var(--green)':'var(--red)'}">${fmt(sobra)}/mês</span></div></div>
   <p class="hint">MC% mínima p/ empatar no faturamento atual: <b style="color:var(--sand)">${fat?pct(fixo/fat*100):'—'}</b>. Acima disso = lucro.</p>`;
- renderTree();save();
 }
+function render(){renderDash();renderTree();save();}
+function refreshTotals(){D.centros.forEach((c,ci)=>{const e=document.getElementById('ct-c'+ci);if(e)e.textContent=fmt(centroTotal(c));c.cats.forEach((k,ki)=>{const ek=document.getElementById('ct-k'+ci+'-'+ki);if(ek)ek.textContent=fmt(catTotal(k));});});}
 function catOptions(selCi,selKi){let o='';D.centros.forEach((c,ci)=>c.cats.forEach((k,ki)=>{o+=`<option value="${ci}-${ki}" ${(ci===selCi&&ki===selKi)?'selected':''}>${c.nome} › ${k.nome}</option>`;}));return o;}
 function renderTree(){
  let h='';
  D.centros.forEach((c,ci)=>{
   h+=`<div class="centro"><div class="chead">
     <span class="ic no-print" onclick="moveCentro(${ci},-1)">↑</span><span class="ic no-print" onclick="moveCentro(${ci},1)">↓</span>
-    <span class="nm">${c.nome}</span><span class="ct">${fmt(centroTotal(c))}</span>
+    <span class="nm">${c.nome}</span><span class="ct" id="ct-c${ci}">${fmt(centroTotal(c))}</span>
     <span class="ic no-print" title="renomear" onclick="renCentro(${ci})">✎</span>
     <span class="ic no-print" title="+ categoria" onclick="addCat(${ci})">＋</span>
     <span class="ic del no-print" title="excluir" onclick="delCentro(${ci})">🗑</span></div>`;
   c.cats.forEach((k,ki)=>{
    h+=`<div class="cat"><div class="khead">
      <span class="ic no-print" onclick="moveCat(${ci},${ki},-1)">↑</span><span class="ic no-print" onclick="moveCat(${ci},${ki},1)">↓</span>
-     <span class="nm">${k.nome}</span><span class="ct">${fmt(catTotal(k))}</span>
+     <span class="nm">${k.nome}</span><span class="ct" id="ct-k${ci}-${ki}">${fmt(catTotal(k))}</span>
      <span class="ic no-print" title="renomear" onclick="renCat(${ci},${ki})">✎</span>
      <span class="ic no-print" title="+ item" onclick="addItem(${ci},${ki})">＋</span>
      <span class="ic del no-print" title="excluir" onclick="delCat(${ci},${ki})">🗑</span></div>`;
@@ -252,7 +253,7 @@ function modalClose(v){document.getElementById('modal').style.display='none';con
 function askText(t,d){return openModal(t,true,d);}
 function askConfirm(t){return openModal(t,false);}
 
-function setVal(ci,ki,ii,v){D.centros[ci].cats[ki].itens[ii].valor=parseFloat(v)||0;render();}
+function setVal(ci,ki,ii,v){D.centros[ci].cats[ki].itens[ii].valor=parseFloat(v)||0;renderDash();refreshTotals();save();}
 function setF(ci,ki,ii,f,v){D.centros[ci].cats[ki].itens[ii][f]=v;render();}
 async function renItem(ci,ki,ii){const it=D.centros[ci].cats[ki].itens[ii];const n=await askText('Renomear item:',it.nome);if(n!==null&&n.trim()){it.nome=n.trim();render();}}
 async function delItem(ci,ki,ii){if(await askConfirm('Excluir este item?')){D.centros[ci].cats[ki].itens.splice(ii,1);render();}}
