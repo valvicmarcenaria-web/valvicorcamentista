@@ -156,6 +156,14 @@ Jonathan** (espelho colado no MDF? esquadria de alumínio?). São custos diferen
 - É o **mesmo fornecedor que cotou a porta de vidro reflecta**; a calibração de
   valor segue a **mesma dinâmica** daquele orçamento.
 
+### Valores de referência cravados (jun/2026)
+Calibrados com o Jonathan e gravados na biblioteca (`Vidros e espelhos (m²)`):
+- **Vidro reflecta bronze 6mm: R$350/m²** · **8mm: R$450/m²**
+- Espelho prata R$600 · Espelho bronze R$900 (já existiam)
+- Logística do espelho colado: **R$150** (categoria *Especiais › Logística específica*)
+- *Especiais*: Estrutura de serralheria R$150 · Gaveta especial R$900
+- Removidos placeholders zerados (Especial 2, mini fix, Outros, Item especial, Bandeja).
+
 > Regra geral aprendida: "porta de espelho" não é sinônimo de vidraceiro. Definir
 > primeiro a construção (colado no MDF × esquadria de alumínio) e só então o custo.
 
