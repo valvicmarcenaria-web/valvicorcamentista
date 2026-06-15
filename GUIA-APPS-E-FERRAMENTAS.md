@@ -5,6 +5,28 @@ armadilhas já encontradas e regras de entrega.
 
 ---
 
+## Regra nº 0 — toda ferramenta é um ARTEFATO autocontido
+
+Decisão do Jonathan (jun/2026): **toda ferramenta que criamos é um artefato.**
+Na prática isso significa **dois entregáveis para o mesmo arquivo**:
+
+1. **Fonte de verdade no repositório** — o `.html` versionado em `ferramentas/`.
+   É onde editamos, testamos e commitamos.
+2. **Artefato pronto para rodar** — o mesmo arquivo entregue ao Jonathan para
+   abrir na hora (enviado no chat / colável como Artifact no Claude.ai).
+
+Requisitos que tornam isso possível (NUNCA quebrar):
+- **HTML único e autocontido**: tudo em um arquivo `.html` — CSS e JS inline.
+- **Sem build, sem dependências locais, sem backend.** Fontes via CDN (Google
+  Fonts) são aceitas; a ferramenta funciona offline mesmo sem elas.
+- **Persistência só com `localStorage`** + import/export JSON. Nada de servidor.
+- **Abre com duplo-clique** no navegador e funciona igual em qualquer máquina.
+
+> Ao concluir/atualizar uma ferramenta: commitar no repo **e** enviar o arquivo
+> ao Jonathan (SendUserFile) para ele ter o artefato em mãos.
+
+---
+
 ## Ferramentas existentes
 
 | Arquivo | Skill | Função |
