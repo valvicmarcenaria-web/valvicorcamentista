@@ -139,6 +139,28 @@ Dois tipos principais:
 
 ---
 
+## Portas de espelho — REGRA (Kenia & Fábio, jun/2026)
+
+⚠️ **Quando o projeto não especifica como é a porta de espelho, PERGUNTAR ao
+Jonathan** (espelho colado no MDF? esquadria de alumínio?). São custos diferentes.
+
+### Caso 1 — espelho colado no MDF
+- O espelho é **insumo de material**, **NÃO** mão de obra de vidraceiro.
+- Lançar pela **base de custo por m²** (categoria *Vidros e espelhos*: Espelho
+  prata / Espelho bronze).
+- **Somar custo logístico do item: R$150** (frete do espelho até a fábrica) —
+  lançar como item de logística/especial daquele ambiente.
+
+### Caso 2 — porta com esquadria de alumínio
+- Envolve **fornecedor terceirizado** — **NÃO** o vidraceiro.
+- É o **mesmo fornecedor que cotou a porta de vidro reflecta**; a calibração de
+  valor segue a **mesma dinâmica** daquele orçamento.
+
+> Regra geral aprendida: "porta de espelho" não é sinônimo de vidraceiro. Definir
+> primeiro a construção (colado no MDF × esquadria de alumínio) e só então o custo.
+
+---
+
 ## Terceirizados — por ambiente, não global
 
 Cada ambiente tem seu próprio bloco de terceirizados:
