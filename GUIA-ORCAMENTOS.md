@@ -242,7 +242,54 @@ preço mudar permanentemente.
 - Armário espelho: espelho prata (m²) + estrutura MDF 18mm.
 - Aço inox em detalhes: serralheiro como terceirizado.
 
+### Regina Godinho (Home office — arq. Carolina Godinho, jun/2026)
+- Bancada em L suspensa + gaveteiro (3 gav + 1 porta) + bandejas guarda-folhas; painel de 14 nichos aéreo.
+- Material Blush (Duratex) = **MDF cor (R$500)**. Projeto inteiro em **15mm** (ver método bancada).
+- Nicho: **interno todo na cor, contorno dos 4 lados em branco** (gargalo de material — ver regra abaixo).
+- Sem RT de arquiteto. Custo R$7.442 → preço MC 43% = R$13.100.
+
 ### Regra geral aprendida
 Sempre perguntar ao Jonathan **situação de caixa** antes de fechar qualquer
 proposta. A MC mínima aceitável muda conforme o mês — é o Rodrigo quem define o
 piso estratégico.
+
+---
+
+## Método Valvic — bancada/tampo suspenso (REGRA, jun/2026)
+
+Tampo flutuante grande (ex.: escrivaninha em L) **flete só com MDF**. Forma usual da Valvic:
+1. Tampo em **MDF 15mm** (não 18mm).
+2. **Enchimento com sobras de material** até dar ~**50mm de espessura livre** (usa retalho, custo zero de chapa).
+3. **Estrutura de serralheria em metalon 30×50mm** para sustentar → terceirizado, **~R$350 + logística dedicada (~R$150)**.
+4. **Chapa de 6mm embaixo** para fechar = "bancada toda acabada", sem estrutura aparente.
+
+> Consequência de orçamento: projetos com esse tampo saem **todos em 15mm** (+ 6mm de acabamento), nunca 18mm.
+
+---
+
+## Medida: o que prevalece
+
+A **tabela de mapeamento** do projeto é só **referência de apoio** (para dar andamento
+quando falta info). **A medida cotada no projeto SEMPRE prevalece** sobre a tabela.
+Quando houver divergência, seguir o desenho técnico.
+
+---
+
+## Composição de material (gargalo crítico) — perguntar face a face
+
+"Tudo na cor" × "branco por fora, cor por dentro" **inverte o plano de corte, a
+metragem de cada chapa e a laminação**. Se vazar errado pro programador, vira peça
+refeita. **Sempre confirmar a composição descrevendo a peça superfície por superfície**
+(ex.: "moldura externa branca, interior e frente dos nichos na cor — é isso?"). Essa
+decisão tem que ficar **registrada no painel de dúvidas** e seguir até a produção.
+
+---
+
+## Estratégia de proposta (alinhado com o Rodrigo)
+
+- **Ancoramos na proposta o que está sendo vendido.** Orça-se o que o projeto especifica
+  (ex.: todas as corrediças ocultas Hartt) — **sem "otimização escondida"**.
+- **Downgrade é carta de negociação**, usada só **quando o cliente chora preço** — não é
+  premissa de orçamento. Ex.: trocar bandejas de oculta Hartt → telescópica.
+- Proposta ancorada no **piso real de MC (~43%)**; abaixo disso, só com aval do Rodrigo
+  (caixa baixo pode aceitar 37%).
