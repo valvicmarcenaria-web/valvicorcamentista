@@ -89,11 +89,18 @@ body.light{--bg:#F4EFE6;--panel:#fff;--card:#fff;--card2:#F7F1E6;--border:rgba(1
 body.light .card{box-shadow:0 2px 12px rgba(124,79,42,.07)}
 body.light .track{background:rgba(124,79,42,.1)}
 body.light .btn.primary{color:#fff}
+/* ===== MODAL ===== */
+#modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.65);align-items:center;justify-content:center}
+#modal.show{display:flex}
+.md-box{background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:24px 28px;min-width:320px;max-width:440px;width:90%}
+.md-title{font-size:.88rem;margin-bottom:14px;color:var(--sand);line-height:1.4}
+#mdInp{margin-bottom:14px}
+.md-row{display:flex;gap:10px;justify-content:flex-end}
 </style>
 </head>
 <body>
 <div class="top">
- <div class="brand">VALVIC<small>Validação de Orçamento · Marcos</small></div>
+ <div class="brand">VALVIC<small>Validação de Orçamento · Lavinia</small></div>
  <span class="tag" id="mcTag">MC alvo 35–40%</span>
  <div class="spacer"></div>
  <button class="btn sm" id="themeBtn" onclick="toggleTheme()">☀ Tema claro</button>
@@ -111,11 +118,11 @@ body.light .btn.primary{color:#fff}
    <div><label>Cliente</label><input id="cliente" value="Camila" oninput="save()"></div>
    <div><label>Projeto</label><input id="projeto" value="Closet" oninput="save()"></div>
    <div><label>Versão</label><input id="versao" value="001" oninput="save()"></div>
-   <div><label>Investimento bruto R$</label><input id="inv" class="n" type="number" value="0" oninput="recalc()"></div>
+   <div><label>Investimento bruto R$</label><input id="inv" class="n" type="number" value="0" oninput="recalcDash()"></div>
   </div>
   <div class="grid g4" style="margin-bottom:14px">
    <div><label>Situação de caixa (define MC mínima)</label>
-    <select id="caixa" onchange="recalc()">
+    <select id="caixa" onchange="recalcDash()">
      <option value="25">Crítico — aceita até MC 25%</option>
      <option value="30">Ruim — aceita até MC 30%</option>
      <option value="37" selected>Normal — MC 30 a 37%</option>
@@ -166,28 +173,28 @@ body.light .btn.primary{color:#fff}
    <h2>Parâmetros (editáveis)</h2>
    <details open><summary>Custos de venda</summary>
     <div class="grid g3">
-     <div><label>NF %</label><input id="p_nf" class="n" type="number" step="0.1" value="4" oninput="recalc()"></div>
-     <div><label>Parcelamento %</label><input id="p_parc" class="n" type="number" step="0.1" value="8" oninput="recalc()"></div>
-     <div><label>Com. vendedor %</label><input id="p_vend" class="n" type="number" step="0.1" value="3" oninput="recalc()"></div>
-     <div><label>RT % (s/ líquido)</label><input id="p_rt" class="n" type="number" step="0.1" value="10" oninput="recalc()"></div>
-     <div><label>Visitas R$</label><input id="p_vis" class="n" type="number" value="250" oninput="recalc()"></div>
-     <div><label>Projeto/impr./brindes R$</label><input id="p_outv" class="n" type="number" value="0" oninput="recalc()"></div>
+     <div><label>NF %</label><input id="p_nf" class="n" type="number" step="0.1" value="4" oninput="recalcDash()"></div>
+     <div><label>Parcelamento %</label><input id="p_parc" class="n" type="number" step="0.1" value="8" oninput="recalcDash()"></div>
+     <div><label>Com. vendedor %</label><input id="p_vend" class="n" type="number" step="0.1" value="3" oninput="recalcDash()"></div>
+     <div><label>RT % (s/ líquido)</label><input id="p_rt" class="n" type="number" step="0.1" value="10" oninput="recalcDash()"></div>
+     <div><label>Visitas R$</label><input id="p_vis" class="n" type="number" value="250" oninput="recalcDash()"></div>
+     <div><label>Projeto/impr./brindes R$</label><input id="p_outv" class="n" type="number" value="0" oninput="recalcDash()"></div>
     </div>
    </details>
    <details open><summary>Custos operacionais</summary>
     <div class="grid g3">
-     <div><label>Programador %</label><input id="p_prog" class="n" type="number" step="0.1" value="0.8" oninput="recalc()"></div>
-     <div><label>Coordenador %</label><input id="p_coord" class="n" type="number" step="0.1" value="1" oninput="recalc()"></div>
-     <div><label>Marceneiros %</label><input id="p_marc" class="n" type="number" step="0.1" value="2.5" oninput="recalc()"></div>
-     <div><label>Desg. serra/fresa %</label><input id="p_serra" class="n" type="number" step="0.1" value="0.5" oninput="recalc()"></div>
-     <div><label>Manut. máquinas %</label><input id="p_manut" class="n" type="number" step="0.1" value="0.5" oninput="recalc()"></div>
-     <div><label>Logística R$</label><input id="p_log" class="n" type="number" value="0" oninput="recalc()"></div>
+     <div><label>Programador %</label><input id="p_prog" class="n" type="number" step="0.1" value="0.8" oninput="recalcDash()"></div>
+     <div><label>Coordenador %</label><input id="p_coord" class="n" type="number" step="0.1" value="1" oninput="recalcDash()"></div>
+     <div><label>Marceneiros %</label><input id="p_marc" class="n" type="number" step="0.1" value="2.5" oninput="recalcDash()"></div>
+     <div><label>Desg. serra/fresa %</label><input id="p_serra" class="n" type="number" step="0.1" value="0.5" oninput="recalcDash()"></div>
+     <div><label>Manut. máquinas %</label><input id="p_manut" class="n" type="number" step="0.1" value="0.5" oninput="recalcDash()"></div>
+     <div><label>Logística R$</label><input id="p_log" class="n" type="number" value="0" oninput="recalcDash()"></div>
     </div>
     <div class="hint">Comissão produção = (programador + coordenador + marceneiros) sobre o líquido.</div>
    </details>
    <details><summary>Outros</summary>
     <div class="grid g2">
-     <div><label>Margem de erro %</label><input id="p_erro" class="n" type="number" step="0.1" value="2" oninput="recalc()"></div>
+     <div><label>Margem de erro %</label><input id="p_erro" class="n" type="number" step="0.1" value="2" oninput="recalcDash()"></div>
     </div>
    </details>
   </div>
@@ -220,6 +227,18 @@ body.light .btn.primary{color:#fff}
 
 </div>
 
+<!-- MODAL in-page (substitui prompt/confirm/alert) -->
+<div id="modal">
+ <div class="md-box">
+  <div class="md-title" id="mdTitle"></div>
+  <input id="mdInp" type="text" onkeydown="if(event.key==='Enter')closeModal(true);if(event.key==='Escape')closeModal(false)">
+  <div class="md-row">
+   <button class="btn sm" id="mdCancel" onclick="closeModal(false)">Cancelar</button>
+   <button class="btn sm primary" id="mdOk" onclick="closeModal(true)">OK</button>
+  </div>
+ </div>
+</div>
+
 <script>
 /* ===== Biblioteca padrão (da planilha Valvic) ===== */
 function defaultLib(){return [
@@ -240,6 +259,28 @@ function defaultLib(){return [
  ["Especiais",[["Logística específica",150],["Item especial",0],["Bandeja",0],["Estrutura de serralheria",0],["Gaveta especial",0]]]
 ];}
 
+/* ===== Modal in-page ===== */
+let _resolve=null;
+function openModal(title,withInput,def){
+ return new Promise(r=>{
+  _resolve=r;
+  document.getElementById('mdTitle').textContent=title;
+  const inp=document.getElementById('mdInp');
+  inp.style.display=withInput?'':'none';
+  inp.value=def||'';
+  document.getElementById('mdOk').textContent=withInput?'OK':'Confirmar';
+  document.getElementById('modal').classList.add('show');
+  if(withInput)setTimeout(()=>inp.focus(),40);
+ });
+}
+function closeModal(ok){
+ const val=ok?document.getElementById('mdInp').value:null;
+ document.getElementById('modal').classList.remove('show');
+ if(_resolve){_resolve(val);_resolve=null;}
+}
+function askText(t,d){return openModal(t,true,d);}
+function askConfirm(t){return openModal(t,false);}
+
 /* ===== Estado ===== */
 let S=null;
 function blankTerc(){return {vid:0,ser:0,pin:0,est:0,laq:0};}
@@ -250,7 +291,6 @@ function normalize(){
  if(S.diretrizes===undefined)S.diretrizes="";
  if(S.rodrigo===undefined)S.rodrigo="";
  (S.ambientes||[]).forEach(a=>{if(!a.terc)a.terc=blankTerc();});
- // migra eventual terceirizado global antigo para o 1º ambiente
  if(S.t&&S.ambientes&&S.ambientes[0]){const g=S.t;["vid","ser","pin","est","laq"].forEach(k=>{if(g[k])S.ambientes[0].terc[k]=(S.ambientes[0].terc[k]||0)+g[k];});delete S.t;}
 }
 function defaultState(){return {
@@ -278,10 +318,28 @@ function setAtivo(i){S.ativo=i;renderTabs();renderTerc();renderLib();}
 const TERC=["vid","ser","pin","est","laq"];
 function tercAmb(a){return TERC.reduce((s,k)=>s+((a.terc&&a.terc[k])||0),0);}
 function tercTotal(){return S.ambientes.reduce((s,a)=>s+tercAmb(a),0);}
-function setTerc(k,v){const a=S.ambientes[S.ativo];if(!a.terc)a.terc=blankTerc();a.terc[k]=parseFloat(v)||0;document.getElementById('tcTot').textContent='Terceirizados deste ambiente: '+fmt(tercAmb(a));recalc();}
+
+/* value changes: update state + targeted totals only, no DOM rebuild */
+function setTerc(k,val){
+ const a=S.ambientes[S.ativo];
+ if(!a.terc)a.terc=blankTerc();
+ a.terc[k]=parseFloat(val)||0;
+ document.getElementById('tcTot').textContent='Terceirizados deste ambiente: '+fmt(tercAmb(a));
+ recalcDash();
+}
 function renderTerc(){const a=S.ambientes[S.ativo];if(!a.terc)a.terc=blankTerc();TERC.forEach(k=>{document.getElementById('tc_'+k).value=a.terc[k]||0;});document.getElementById('tcTot').textContent='Terceirizados deste ambiente: '+fmt(tercAmb(a));}
-function addAmb(){const nm=prompt('Nome do ambiente:','Ambiente '+(S.ambientes.length+1));if(nm){S.ambientes.push(blankAmb(nm));S.ativo=S.ambientes.length-1;renderTabs();renderLib();save();}}
-function rmAmb(i){if(S.ambientes.length<=1){alert('Mantenha ao menos um ambiente.');return;}if(!confirm('Remover ambiente "'+S.ambientes[i].nome+'"?'))return;S.ambientes.splice(i,1);if(S.ativo>=S.ambientes.length)S.ativo=S.ambientes.length-1;renderTabs();renderLib();recalc();}
+
+async function addAmb(){
+ const nm=await askText('Nome do ambiente:','Ambiente '+(S.ambientes.length+1));
+ if(!nm)return;
+ S.ambientes.push(blankAmb(nm));S.ativo=S.ambientes.length-1;renderTabs();renderLib();save();
+}
+async function rmAmb(i){
+ if(S.ambientes.length<=1){await askConfirm('Mantenha ao menos um ambiente.');return;}
+ const ok=await askConfirm('Remover ambiente "'+S.ambientes[i].nome+'"?');
+ if(!ok)return;
+ S.ambientes.splice(i,1);if(S.ativo>=S.ambientes.length)S.ativo=S.ambientes.length-1;renderTabs();renderLib();recalcDash();
+}
 
 function renderLib(){
  const amb=S.ambientes[S.ativo];const f=(document.getElementById('srch').value||'').toLowerCase();
@@ -291,44 +349,91 @@ function renderLib(){
   const items=cat[1].map((it,ii)=>({nm:it[0],unit:it[1],ci,ii})).filter(it=>!f||it.nm.toLowerCase().includes(f)||cat[0].toLowerCase().includes(f));
   if(!items.length)return;
   let ctot=0;items.forEach(it=>{ctot+=(amb.q[key(cat[0],it.nm)]||0)*it.unit;});
-  const col=!f&&S.collapsed[cat[0]];   // ao filtrar, sempre expande
+  const col=!f&&S.collapsed[cat[0]];
   h+=`<tr class="catrow"><td colspan="5" onclick="toggleCat(${ci})"><span class="car">${col?'▸':'▾'}</span>${cat[0]}`+
      `<span class="addln" onclick="event.stopPropagation();addLine(${ci})">+ linha</span>`+
-     `<span class="ct">${ctot>0?fmt(ctot):''}</span></td></tr>`;
+     `<span class="ct" id="cttot-${ci}">${ctot>0?fmt(ctot):''}</span></td></tr>`;
   if(col)return;
   items.forEach(it=>{
    const q=amb.q[key(cat[0],it.nm)]||0;const tot=q*it.unit;
-   h+=`<tr class="${q>0?'has':'zero'}"><td>${it.nm}</td>
+   h+=`<tr id="row-${it.ci}-${it.ii}" class="${q>0?'has':'zero'}"><td>${it.nm}</td>
     <td class="n"><input class="qin n" type="number" step="any" value="${q||''}" placeholder="0" oninput="setQ(${it.ci},${it.ii},this.value)"></td>
     <td class="n"><input class="uin n" type="number" step="any" value="${it.unit}" oninput="setU(${it.ci},${it.ii},this.value)"></td>
-    <td class="n">${tot>0?fmt(tot):'—'}</td>
+    <td class="n" id="rtot-${it.ci}-${it.ii}">${tot>0?fmt(tot):'—'}</td>
     <td class="n"><span class="del-it" title="remover linha" onclick="rmLine(${it.ci},${it.ii})">×</span></td></tr>`;
   });
  });
  document.getElementById('libBody').innerHTML=h;
 }
-function setQ(ci,ii,val){const cat=S.lib[ci];const nm=cat[1][ii][0];const amb=S.ambientes[S.ativo];const q=parseFloat(val)||0;if(q)amb.q[key(cat[0],nm)]=q;else delete amb.q[key(cat[0],nm)];recalc();}
-function setU(ci,ii,val){S.lib[ci][1][ii][1]=parseFloat(val)||0;recalc();}
+
+/* targeted update of row + category totals without rebuilding DOM */
+function refreshLibTotals(){
+ const amb=S.ambientes[S.ativo];
+ S.lib.forEach((cat,ci)=>{
+  let ctot=0;
+  cat[1].forEach((it,ii)=>{
+   const q=amb.q[key(cat[0],it[0])]||0;
+   const tot=q*it[1];
+   ctot+=tot;
+   const rtEl=document.getElementById('rtot-'+ci+'-'+ii);
+   if(rtEl)rtEl.textContent=tot>0?fmt(tot):'—';
+   const rowEl=document.getElementById('row-'+ci+'-'+ii);
+   if(rowEl){rowEl.className=q>0?'has':'zero';}
+  });
+  const ctEl=document.getElementById('cttot-'+ci);
+  if(ctEl)ctEl.textContent=ctot>0?fmt(ctot):'';
+ });
+}
+
+function setQ(ci,ii,val){
+ const cat=S.lib[ci];const nm=cat[1][ii][0];const amb=S.ambientes[S.ativo];
+ const q=parseFloat(val)||0;
+ if(q)amb.q[key(cat[0],nm)]=q;else delete amb.q[key(cat[0],nm)];
+ refreshLibTotals();
+ recalcDash();
+}
+function setU(ci,ii,val){
+ S.lib[ci][1][ii][1]=parseFloat(val)||0;
+ refreshLibTotals();
+ recalcDash();
+}
 function toggleCat(ci){const c=S.lib[ci][0];if(!S.collapsed)S.collapsed={};S.collapsed[c]=!S.collapsed[c];renderLib();save();}
 function collapseAll(state){if(!S.collapsed)S.collapsed={};S.lib.forEach(c=>S.collapsed[c[0]]=state);renderLib();save();}
-function addCat(){const nm=prompt('Nome da nova categoria:');if(!nm)return;if(S.lib.some(c=>c[0]===nm)){alert('Já existe.');return;}S.lib.push([nm,[]]);if(!S.collapsed)S.collapsed={};S.collapsed[nm]=false;renderLib();save();}
-function addLine(ci){const nm=prompt('Nome do item:');if(!nm)return;const u=parseFloat(prompt('Custo unitário R$:','0'))||0;S.lib[ci][1].push([nm,u]);S.collapsed[S.lib[ci][0]]=false;renderLib();save();}
-function rmLine(ci,ii){const cat=S.lib[ci];const nm=cat[1][ii][0];if(!confirm('Remover "'+nm+'" da biblioteca?'))return;S.ambientes.forEach(a=>{delete a.q[key(cat[0],nm)];});cat[1].splice(ii,1);recalc();}
+async function addCat(){
+ const nm=await askText('Nome da nova categoria:','');
+ if(!nm)return;
+ if(S.lib.some(c=>c[0]===nm)){await askConfirm('Categoria "'+nm+'" já existe.');return;}
+ S.lib.push([nm,[]]);if(!S.collapsed)S.collapsed={};S.collapsed[nm]=false;renderLib();save();
+}
+async function addLine(ci){
+ const nm=await askText('Nome do item:','');
+ if(!nm)return;
+ const uStr=await askText('Custo unitário R$:','0');
+ const u=parseFloat(uStr)||0;
+ S.lib[ci][1].push([nm,u]);S.collapsed[S.lib[ci][0]]=false;renderLib();save();
+}
+async function rmLine(ci,ii){
+ const cat=S.lib[ci];const nm=cat[1][ii][0];
+ const ok=await askConfirm('Remover "'+nm+'" da biblioteca?');
+ if(!ok)return;
+ S.ambientes.forEach(a=>{delete a.q[key(cat[0],nm)];});cat[1].splice(ii,1);renderLib();recalcDash();
+}
 
 /* ===== Cálculo ===== */
 function materialAmb(amb){let s=0;S.lib.forEach(cat=>{cat[1].forEach(it=>{s+=(amb.q[key(cat[0],it[0])]||0)*it[1];});});return s;}
 function materialTotal(){let s=0;S.ambientes.forEach(a=>s+=materialAmb(a));return s;}
 
+function syncParams(){
+ S.inv=n('inv');S.mcAlvo=n('mcAlvo');
+ const p=S.p;
+ p.nf=n('p_nf');p.parc=n('p_parc');p.vend=n('p_vend');p.rt=n('p_rt');p.vis=n('p_vis');p.outv=n('p_outv');
+ p.prog=n('p_prog');p.coord=n('p_coord');p.marc=n('p_marc');p.serra=n('p_serra');p.manut=n('p_manut');p.log=n('p_log');p.erro=n('p_erro');
+}
 function compute(inv){
  const p=S.p;
  const material=materialTotal();
  const terc=tercTotal();
- // % sobre investimento bruto
- const aPct=(p.nf+p.parc+p.vend+p.erro+p.serra+p.manut)/100;
- // líquido = inv - NF - parcelamento
  const liq=inv*(1-(p.nf+p.parc)/100);
- const bPct=(p.prog+p.coord+p.marc+p.rt)/100; // sobre líquido
- const fixedR=material+terc+p.log+p.vis+p.outv;
  const venda=inv*(p.nf+p.vend)/100 + liq*p.rt/100 + inv*p.parc/100 + p.vis + p.outv;
  const operac=liq*(p.prog+p.coord+p.marc)/100 + inv*(p.serra+p.manut)/100 + p.log;
  const erro=inv*p.erro/100;
@@ -347,21 +452,18 @@ function caixaTier(p){
 function suggest(){
  const p=S.p;const material=materialTotal();const terc=tercTotal();
  const fixedR=material+terc+p.log+p.vis+p.outv;
- const a=(p.nf+p.parc+p.vend+p.erro+p.serra+p.manut)/100;
  const liqF=1-(p.nf+p.parc)/100;
+ const a=(p.nf+p.parc+p.vend+p.erro+p.serra+p.manut)/100;
  const b=(p.prog+p.coord+p.marc+p.rt)/100;
  const mc=S.mcAlvo/100;
  const denom=1-a-liqF*b-mc;
  return denom>0?fixedR/denom:0;
 }
 
-function recalc(){
- S.inv=n('inv');S.mcAlvo=n('mcAlvo');
- // sync params
- const p=S.p;p.nf=n('p_nf');p.parc=n('p_parc');p.vend=n('p_vend');p.rt=n('p_rt');p.vis=n('p_vis');p.outv=n('p_outv');
- p.prog=n('p_prog');p.coord=n('p_coord');p.marc=n('p_marc');p.serra=n('p_serra');p.manut=n('p_manut');p.log=n('p_log');p.erro=n('p_erro');
+/* recalcDash: atualiza KPIs / barras / fechamento sem rebuildar a library */
+function recalcDash(){
+ syncParams();
  const inv=S.inv;const r=compute(inv);
- // KPIs + situação de caixa
  const piso=parseFloat(document.getElementById('caixa').value)||37;
  const tier=caixaTier(r.mcPct);
  const cls=inv<=0?'':(r.mcPct<piso?'mc-low':tier.c);
@@ -370,14 +472,12 @@ function recalc(){
   <div class="kpi"><div class="lbl">Investimento bruto</div><div class="val">${fmt(inv)}</div><div class="sub">líquido ${fmt(r.liq)}</div></div>
   <div class="kpi"><div class="lbl">Custo total</div><div class="val">${fmt(r.custo)}</div><div class="sub">${inv>0?(r.custo/inv*100).toFixed(1)+'% do inv.':''}</div></div>
   <div class="kpi"><div class="lbl">Material</div><div class="val">${fmt(r.material)}</div><div class="sub">${inv>0?(r.material/inv*100).toFixed(1)+'% do inv.':''}</div></div>`;
- // barras
  const order=[["Material","f-mat"],["Operacional","f-ope"],["Venda","f-ven"],["Terceirizados","f-ter"],["Margem de erro","f-err"]];
  let bh='';order.forEach(([k,c])=>{const val=r.cats[k];const pc=inv>0?val/inv*100:0;
   bh+=`<div class="bar"><div class="top2"><span class="nm">${k}</span><span class="pc">${fmt(val)} · ${pc.toFixed(1)}%</span></div><div class="track"><div class="fill ${c}" style="width:${Math.min(pc,100)}%"></div></div></div>`;});
  const mcpc=inv>0?r.mcPct:0;
  bh+=`<div class="bar"><div class="top2"><span class="nm" style="color:var(--green)">Margem (MC)</span><span class="pc" style="color:var(--green)">${fmt(r.mc)} · ${mcpc.toFixed(1)}%</span></div><div class="track"><div class="fill f-mc" style="width:${Math.min(Math.max(mcpc,0),100)}%"></div></div></div>`;
  document.getElementById('bars').innerHTML=bh;
- // fechamento — por ambiente: material + terceirizado alocado
  let amb='';S.ambientes.forEach(a=>{const m=materialAmb(a),tc=tercAmb(a);
   amb+=`<div class="row"><span>${a.nome} <span style="color:var(--dim);font-size:.7rem">(mat ${fmt(m)}${tc?' · terc '+fmt(tc):''})</span></span><b>${fmt(m+tc)}</b></div>`;});
  document.getElementById('fechamento').innerHTML=amb+`
@@ -388,17 +488,33 @@ function recalc(){
   <div class="row"><span>Margem de erro</span><b>${fmt(r.erro)}</b></div>
   <div class="row tot"><span><b style="color:var(--sand)">Custo total</b></span><b>${fmt(r.custo)}</b></div>
   <div class="row tot"><span><b style="color:var(--gold2)">MC (margem de contribuição)</b></span><b class="${inv>0?cls:''}" style="font-size:1.05rem">${fmt(r.mc)} · ${inv>0?r.mcPct.toFixed(1)+'%':'—'}</b></div>`;
- renderLib();save();
+ save();
 }
-function sugerir(){const s=suggest();document.getElementById('inv').value=Math.round(s);recalc();}
-function updTag(){document.getElementById('mcTag').textContent='MC alvo '+n('mcAlvo')+'%';recalc();}
+
+/* recalc: full rebuild (structural changes — add/remove item/ambiente) */
+function recalc(){recalcDash();renderLib();}
+
+function sugerir(){const s=suggest();document.getElementById('inv').value=Math.round(s);recalcDash();}
+function updTag(){document.getElementById('mcTag').textContent='MC alvo '+n('mcAlvo')+'%';recalcDash();}
 function applyTheme(){const light=S.theme==='light';document.body.classList.toggle('light',light);document.getElementById('themeBtn').textContent=light?'☾ Tema escuro':'☀ Tema claro';}
 function toggleTheme(){S.theme=(S.theme==='light')?'dark':'light';applyTheme();save();}
 
 /* ===== Import / export / reset ===== */
-function exportJSON(){recalc();const blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`orcamento-${S.cliente}-${S.projeto}.json`.replace(/\s+/g,'_');a.click();}
-function importJSON(e){const f=e.target.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{try{S=JSON.parse(rd.result);normalize();boot();}catch(err){alert('JSON inválido');}};rd.readAsText(f);}
-function resetAll(){if(confirm('Restaurar tudo ao padrão? (apaga o orçamento atual)')){S=defaultState();boot();}}
+function exportJSON(){recalcDash();const blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`orcamento-${S.cliente}-${S.projeto}.json`.replace(/\s+/g,'_');a.click();}
+function importJSON(e){
+ const f=e.target.files[0];if(!f)return;
+ const rd=new FileReader();
+ rd.onload=()=>{
+  try{const parsed=JSON.parse(rd.result);S=parsed;normalize();boot();}
+  catch(err){askConfirm('JSON inválido — arquivo não pôde ser importado.');}
+ };
+ rd.readAsText(f);
+}
+async function resetAll(){
+ const ok=await askConfirm('Restaurar tudo ao padrão? (apaga o orçamento atual)');
+ if(!ok)return;
+ S=defaultState();boot();
+}
 
 /* ===== Boot ===== */
 function boot(){
