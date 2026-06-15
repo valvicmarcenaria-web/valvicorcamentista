@@ -2,38 +2,40 @@
   "_meta": {
     "titulo": "Parque de máquinas da Valvic — produção",
     "atualizado_em": "2026-06-15",
-    "status": "v1 — identificado por fotos; specs marcadas null a confirmar",
-    "observacoes": "null = a confirmar. Cada máquina define limites que governam modelagem e corte. Marcas/modelos lidos das fotos IMG_7611..7615."
+    "status": "v2 — Raizen SolidTAF e SCM me 25 com specs confirmadas (fonte: fabricante/web)",
+    "observacoes": "null = a confirmar. Cada máquina define limites que governam modelagem e corte. Marcas/modelos lidos das fotos IMG_7611..7615; specs do router e da coladeira confirmadas por fonte."
   },
   "maquinas": [
     {
-      "nome": "Router CNC de nesting",
+      "nome": "Router CNC (nesting + cortes especiais)",
       "marca": "Raizen",
-      "modelo": null,
-      "funcao": "Corte das chapas a partir dos DXF do Marcenária Diferente (1 DXF por chapa). Mesa com grade a vácuo + gantry.",
-      "software": null,
-      "area_util_mm": null,
-      "espessura_min_max_mm": null,
-      "spindle_potencia": null,
-      "ferramentas": null,
-      "limitacoes": null,
-      "obs": "IMG_7612. CONFIRMAR: modelo, área útil da mesa, software de comando (entra o DXF do MD), potência/ferramentas do spindle."
-    },
-    {
-      "nome": "CNC (Aspire / Vectric)",
-      "marca": null,
-      "funcao": "Cortes especiais que o MD não entrega: friso de LED, friso de dobra (V-groove), corte curvo.",
-      "software": "Aspire (Vectric)",
-      "obs": "CONFIRMAR: o Aspire roda no MESMO router Raizen ou em outra máquina? Raio mínimo de curva, ferramentas (fresa V, fresa reta)."
+      "modelo": "Solid TAF",
+      "funcao": "Corta as chapas (nesting) a partir dos DXF do Marcenária Diferente E executa cortes especiais (friso LED, friso de dobra/V-groove, curva) via Aspire. UMA máquina, dois caminhos de software.",
+      "area_util_mm": { "x": 2800, "y": 1900, "z": 200 },
+      "cabe_chapa_inteira": "SIM — 2800x1900 acomoda a chapa de 2750x1850",
+      "spindle": { "potencia_kw": 9, "potencia_cv": 12, "rpm": "12000-24000", "frequencia_hz": "400-800", "cone": "ISO 30", "pinca": "ER 32", "refrigeracao": "ventilação elétrica" },
+      "vacuo": { "bomba_kw": 7.5, "camaras": 4, "acionamento": "manual" },
+      "troca_ferramenta": { "tipo": "automática (ATC)", "magazine": "linear", "capacidade": 10 },
+      "estrutura": "aço estrutural usinado, ~1500 kg",
+      "software_comando": null,
+      "obs": "CONFIRMAR: controlador/CAM que recebe o DXF do MD e o post do Aspire. Fonte specs: raizenmachine.com.br/solidtaf."
     },
     {
       "nome": "Coladeira de borda",
       "marca": "SCM",
+      "linha": "minimax",
       "modelo": "me 25",
       "funcao": "Filetagem automática (aplicação de fita de borda). Filetagem na máquina ~R$2,5/m (base de custos).",
-      "espessura_fita_min_max": null,
-      "limitacoes": null,
-      "obs": "IMG_7614. CONFIRMAR: espessura de fita suportada, se faz pré-fresa/raspagem/lixa."
+      "fita_usada_hoje": "0,4mm melamínica (a única usada na Valvic; a 22x0,45 da base de custos)",
+      "fita_capacidade": "melamínica/PVC/ABS 0,4–3mm; tiras de madeira até 5mm (NÃO usadas hoje)",
+      "painel": { "espessura_min_max_mm": "12-50", "comprimento_min_mm": 190 },
+      "mesa_mm": "2600 x 530 (altura 904)",
+      "velocidade_avanco_m_min": 7,
+      "cola": { "tipo": "EVA hot-melt (pellets)", "pote": "teflonado, aquecimento rápido", "temp_trabalho_C": "20–190 (operação melamina ~180–190)" },
+      "funcoes": "colagem + refile de topo (serra) + refile (trimming); opcional raspador e escova",
+      "producao_paineis_h": "20–50",
+      "alimentacao": "trifásico 220V",
+      "obs": "Hoje a Valvic usa só a fita fina (~0,4mm). 'Tempo de passagem' = comprimento da peça ÷ 7 m/min. Fonte: SCM Group / revendas."
     },
     {
       "nome": "Esquadrejadeira",
