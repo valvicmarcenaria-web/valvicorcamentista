@@ -165,6 +165,37 @@ grep -n "prompt(\|confirm(\|alert(" ferramentas/nome-do-app.html
 
 ---
 
+## Lançamentos especiais — Parcela e Depreciação (custo-operacao)
+
+A unidade do item não é só R$/%. Há dois modos que **espalham um valor grande
+em mensalidades** — para nunca lançar o saldo inteiro de uma dívida como custo
+do mês:
+
+- **Parcela**: campos `total`, `n` (nº de parcelas), `pagas`. Mensal = `total/n`.
+  Mostra `mensal · pagas/n · faltam · saldo`. Usar em financiamentos e empréstimos.
+- **Depreç.**: campos `bem`, `residual`, `vida` (meses). Mensal =
+  `(bem − residual) / vida` (depreciação linear). Vidas úteis de referência:
+  máquinas 120m, veículos 60m, móveis 120m, computadores 60m.
+
+O `valor` do item fica calculado (input bloqueado, sub-row com os campos reais).
+`itTotal(it)` resolve o mensal conforme `it.unidade`. Sempre criar `it.parc` e
+`it.dep` no `normalize()`.
+
+## Break-even com MC líquida (Opção B — Rodrigo, jun/2026)
+
+Comissões/RT em **%** incidem sobre o faturamento → **corroem a MC antes** de
+sobrar algo para o custo fixo. Por isso o ponto de equilíbrio usa **MC líquida**:
+
+```
+MC líquida    = MC bruta − Σ(alíquotas % de comissões/RT)
+Custo fixo BE = Σ(itens Fixo em R$, EXCLUINDO os itens em %)
+Break-even    = Custo fixo BE ÷ (MC líquida / 100)
+```
+
+`pctAliquotas()` soma todos os itens com `unidade==='%'`; `fixoBE()` soma os
+fixos em R$ ignorando os %. Se MC líquida ≤ 0, as comissões consomem toda a
+margem (impossível empatar) — sinalizar em vermelho.
+
 ## Schema normalize — prevenção de tela branca
 
 Sempre que o estado é carregado do `localStorage` ou de um JSON importado, validar

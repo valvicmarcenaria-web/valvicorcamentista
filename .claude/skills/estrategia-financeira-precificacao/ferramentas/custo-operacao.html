@@ -32,6 +32,8 @@ input.n{font-family:'DM Mono',monospace;text-align:right}
 .kpi.fixo .val{color:var(--amber)} .kpi.var .val{color:var(--blue)} .kpi.tot .val{color:var(--gold2)}
 .pess{font-family:'DM Mono',monospace;font-size:.66rem;color:var(--muted);margin-top:10px}
 .pess b{color:var(--sand)}
+.mcline{display:flex;justify-content:space-between;font-size:.72rem;padding:2px 0}
+.mcline .pc{font-family:'DM Mono',monospace}
 .bar{margin-bottom:8px}
 .bar .t{display:flex;justify-content:space-between;font-size:.7rem;margin-bottom:3px}
 .bar .t .pc{font-family:'DM Mono',monospace;color:var(--sand)}
@@ -55,6 +57,12 @@ input.n{font-family:'DM Mono',monospace;text-align:right}
 .itrow.enc-row .nm{flex:1;font-size:.7rem;font-style:italic;color:var(--muted);min-width:0}
 .enc-tag{font-family:'DM Mono',monospace;font-size:.55rem;background:rgba(224,154,48,.16);color:var(--amber);padding:1px 6px;border-radius:6px;margin-left:6px;font-style:normal;cursor:help}
 .enc-val{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--amber)}
+.itrow .calc-lock{width:100px;text-align:right;font-family:'DM Mono',monospace;font-size:.64rem;color:var(--dim)}
+.itrow.sub-row{padding-top:1px;padding-bottom:7px;padding-left:46px;border-top:none}
+.itrow.sub-row .nm{flex:0 0 auto;font-size:.7rem;font-style:italic;color:var(--muted);min-width:0;margin-right:6px}
+.subf{display:flex;flex-direction:column;font-size:.5rem;text-transform:uppercase;letter-spacing:.04em;color:var(--dim);margin:0}
+.subf input.sn{width:88px;font-family:'DM Mono',monospace;text-align:right;font-size:.74rem;padding:3px 5px;margin-top:2px}
+.sub-info{font-family:'DM Mono',monospace;font-size:.64rem;color:var(--blue);margin-left:6px}
 .ic{cursor:pointer;color:var(--dim);font-size:.85rem;padding:0 2px}.ic:hover{color:var(--sand)}
 .ic.del:hover{color:var(--red)}
 .muted{color:var(--muted)} .hint{font-size:.6rem;color:var(--dim);margin-top:8px;line-height:1.5}
@@ -116,7 +124,7 @@ body.light{--bg:#F4EFE6;--panel:#fff;--card:#fff;--card2:#F7F1E6;--border:rgba(1
    <button class="btn sm primary no-print" onclick="addCentro()">+ centro de custo</button>
   </h2>
   <div id="tree"></div>
-  <p class="hint no-print">Cada item: valor, tipo (Fixo/Variável), contratação (CLT/PJ/—) e unidade (R$/%). <b>CLT</b> gera <b>automaticamente</b> a linha de encargos abaixo (taxa editável nos indicadores); PJ é valor cheio. <b>Comissões e RT já vêm em %</b> — o valor digitado é a alíquota e o app calcula o R$/mês sobre o faturamento informado. "Mover para" troca o item de categoria.</p>
+  <p class="hint no-print">Cada item: valor, tipo (Fixo/Variável), contratação (CLT/PJ/—) e unidade. <b>CLT</b> gera <b>automaticamente</b> a linha de encargos abaixo (taxa editável nos indicadores); PJ é valor cheio. <b>Comissões e RT (%)</b>: o valor é a alíquota e o app calcula o R$/mês sobre o faturamento. <b>Parcela</b>: informe o total da dívida e o nº de parcelas — o app lança só a mensalidade (não o saldo inteiro) e mostra quanto falta. <b>Depreç.</b>: valor do bem − residual ÷ vida útil em meses = depreciação linear mensal. "Mover para" troca o item de categoria.</p>
  </div>
 </div>
 <div id="modal" class="modal-bg" style="display:none" onclick="if(event.target===this)modalCancel()">
@@ -129,7 +137,8 @@ body.light{--bg:#F4EFE6;--panel:#fff;--card:#fff;--card2:#F7F1E6;--border:rgba(1
 <script>
 const TIPOS=["Fixo","Variável"];
 const CONTR=["—","CLT","PJ"];
-const UNID=["R$","%"];
+const UNID=["R$","%","Parcela","Depreç."];
+const VIDA_REF="Máquinas 120m · Veículos 60m · Móveis 120m · Computadores 60m";
 const ENC_BREAKDOWN="FGTS 8% + 13º 8,33% + férias+1/3 11,11%";
 function I(nome,tipo,contr,unidade){return {nome,valor:0,tipo:tipo||"Fixo",contr:contr||"—",unidade:unidade||"R$"};}
 function defaultData(){return {
@@ -142,7 +151,7 @@ function defaultData(){return {
     {nome:"Folha (produção)",itens:[I("Marceneiros","Fixo","CLT"),I("Montadores","Fixo","CLT"),I("Ajudantes","Fixo","CLT"),I("Acabamento / pintura","Fixo","CLT"),I("Programador CNC","Fixo","CLT"),I("Coordenador","Fixo","CLT")]},
     {nome:"Benefícios e EPIs (CLT)",itens:[I("Vale transporte","Fixo"),I("Vale alimentação","Fixo"),I("Plano de saúde","Fixo"),I("EPIs / uniformes","Fixo")]},
     {nome:"Comissões (produção)",itens:[I("Comissão marceneiros","Variável","—","%"),I("Comissão programador","Variável","—","%"),I("Comissão coordenador","Variável","—","%")]},
-    {nome:"Máquinas e ferramentas",itens:[I("Manutenção CNC","Fixo"),I("Manutenção coladeira","Fixo"),I("Manutenção seccionadora / serras","Fixo"),I("Consumíveis de oficina (serras, fresas, lixas)","Variável"),I("Software de produção (nesting/3D)","Fixo"),I("Depreciação de máquinas","Fixo")]},
+    {nome:"Máquinas e ferramentas",itens:[I("Manutenção CNC","Fixo"),I("Manutenção coladeira","Fixo"),I("Manutenção seccionadora / serras","Fixo"),I("Consumíveis de oficina (serras, fresas, lixas)","Variável"),I("Software de produção (nesting/3D)","Fixo"),I("Depreciação de máquinas","Fixo","—","Depreç.")]},
     {nome:"Insumos variáveis (por projeto)",itens:[I("Chapas (MDF/comp.)","Variável"),I("Fita de borda / cola","Variável"),I("Ferragens","Variável"),I("Terceirizados (vidro/serralh./pintura/estofado)","Variável"),I("Embalagem","Variável"),I("Parafusos / fixadores","Variável")]}
   ]},
   {nome:"Instalações (Galpão)",cats:[
@@ -169,7 +178,7 @@ function defaultData(){return {
     {nome:"Impostos",itens:[I("Simples Nacional / DAS","Variável"),I("Nota fiscal","Variável"),I("Taxas e licenças","Fixo")]}
   ]},
   {nome:"Financeiro / Dívidas",cats:[
-    {nome:"Financiamentos e empréstimos",itens:[I("Financiamento de máquinas (parcela)","Fixo"),I("Capital de giro / empréstimo (parcela)","Fixo"),I("Empréstimo do Paulo (devolução)","Fixo")]},
+    {nome:"Financiamentos e empréstimos",itens:[I("Financiamento de máquinas","Fixo","—","Parcela"),I("Capital de giro / empréstimo","Fixo","—","Parcela"),I("Empréstimo de sócio (devolução)","Fixo","—","Parcela")]},
     {nome:"Encargos financeiros",itens:[I("Juros / IOF / tarifas","Fixo")]}
   ]}
  ]
@@ -180,15 +189,23 @@ function normalize(){
  if(!D||!Array.isArray(D.centros))D=defaultData();
  if(D.theme!=='light')D.theme=D.theme||'dark';
  if(D.encargoCLT===undefined)D.encargoCLT=27.44;
- D.centros.forEach(c=>{c.cats=Array.isArray(c.cats)?c.cats:[];c.cats.forEach(k=>{k.itens=Array.isArray(k.itens)?k.itens:[];k.itens.forEach(it=>{if(it.contr===undefined)it.contr='—';if(it.tipo===undefined)it.tipo='Fixo';if(it.valor===undefined)it.valor=0;if(it.unidade===undefined)it.unidade='R$';});});});
+ D.centros.forEach(c=>{c.cats=Array.isArray(c.cats)?c.cats:[];c.cats.forEach(k=>{k.itens=Array.isArray(k.itens)?k.itens:[];k.itens.forEach(it=>{if(it.contr===undefined)it.contr='—';if(it.tipo===undefined)it.tipo='Fixo';if(it.valor===undefined)it.valor=0;if(it.unidade===undefined)it.unidade='R$';if(!it.parc)it.parc={total:0,n:0,pagas:0};if(!it.dep)it.dep={bem:0,residual:0,vida:0};});});});
 }
 function load(){try{const r=localStorage.getItem('valvic_custo');if(r){const p=JSON.parse(r);if(p&&Array.isArray(p.centros))D=p;}}catch(e){}normalize();}
 function save(){if(document.getElementById('empresa')){D.empresa=val('empresa');D.mesref=val('mesref');D.obs=val('obs');}try{localStorage.setItem('valvic_custo',JSON.stringify(D));}catch(e){}}
 function val(id){return document.getElementById(id).value;}
 function fmt(x){return 'R$ '+Math.round(x||0).toLocaleString('pt-BR');}
 function pct(x){return (x).toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+'%';}
+function parcText(pi){if(!pi.n)return '<span class="muted">informe nº de parcelas</span>';return `= ${fmt(pi.mensal)}/mês · ${pi.pagas}/${pi.n} pagas · faltam ${pi.faltam} · saldo ${fmt(pi.saldo)}`;}
 
-function itTotal(it){const v=+it.valor||0;return it.unidade==='%'?(+D.fat||0)*v/100:v;}
+function itTotal(it){
+ if(it.unidade==='Parcela'){const p=it.parc||{};const n=+p.n||0;return n>0?(+p.total||0)/n:0;}
+ if(it.unidade==='Depreç.'){const d=it.dep||{};const vi=+d.vida||0;return vi>0?Math.max((+d.bem||0)-(+d.residual||0),0)/vi:0;}
+ const v=+it.valor||0;return it.unidade==='%'?(+D.fat||0)*v/100:v;
+}
+function parcInfo(it){const p=it.parc||{};const n=+p.n||0,pagas=Math.min(+p.pagas||0,n),mensal=itTotal(it),faltam=Math.max(n-pagas,0);return {n,pagas,mensal,faltam,saldo:mensal*faltam};}
+function pctAliquotas(){let s=0;D.centros.forEach(c=>c.cats.forEach(k=>k.itens.forEach(i=>{if(i.unidade==='%')s+=+i.valor||0;})));return s;}
+function fixoBE(){let s=0;D.centros.forEach(c=>c.cats.forEach(k=>k.itens.forEach(i=>{if(i.tipo==='Fixo'&&i.unidade!=='%')s+=itTotal(i)+encargoOf(i);})));return s;}
 function encargoOf(it){return it.contr==='CLT'?itTotal(it)*(+D.encargoCLT||0)/100:0;}
 function catTotal(c){return c.itens.reduce((s,i)=>s+itTotal(i)+encargoOf(i),0);}
 function centroTotal(c){return c.cats.reduce((s,k)=>s+catTotal(k),0);}
@@ -215,15 +232,20 @@ function renderDash(){
  document.getElementById('bars').innerHTML=bh||'<p class="hint">Sem custos lançados.</p>';
  const top=allItens().filter(x=>itTotal(x.i)>0).sort((a,b)=>itTotal(b.i)-itTotal(a.i)).slice(0,8);
  document.getElementById('top').innerHTML=top.map(x=>`<li><span>${x.i.nome} <span class="muted" style="font-size:.62rem">· ${x.centro}</span></span><b>${fmt(itTotal(x.i))}</b></li>`).join('')||'<li class="muted">—</li>';
- const mc=D.mc/100,fat=D.fat,be=mc>0?fixo/mc:0,mcRs=fat*mc,sobra=mcRs-fixo;
+ const fixoBe=fixoBE(),pctCom=pctAliquotas(),mcBruta=D.mc,mcLiq=mcBruta-pctCom;
+ const be=mcLiq>0?fixoBe/(mcLiq/100):0,fat=D.fat;
+ const mcRsLiq=fat*mcLiq/100,sobra=mcRsLiq-fixoBe;
  document.getElementById('be').innerHTML=`
-  <div class="bar"><div class="t"><span>Ponto de equilíbrio (faturamento)</span><span class="pc">${fmt(be)}</span></div></div>
-  <div class="bar"><div class="t"><span>MC no faturamento informado</span><span class="pc">${fmt(mcRs)}</span></div></div>
-  <div class="bar"><div class="t"><span>Resultado (MC − custo fixo)</span><span class="pc" style="color:${sobra>=0?'var(--green)':'var(--red)'}">${fmt(sobra)}/mês</span></div></div>
-  <p class="hint">MC% mínima p/ empatar no faturamento atual: <b style="color:var(--sand)">${fat?pct(fixo/fat*100):'—'}</b>. Acima disso = lucro.</p>`;
+  <div class="mcline"><span>MC bruta</span><span class="pc">${pct(mcBruta)}</span></div>
+  <div class="mcline"><span>− Comissões / RT (% s/ faturamento)</span><span class="pc" style="color:var(--red)">−${pct(pctCom)}</span></div>
+  <div class="mcline" style="border-top:1px solid var(--border2);padding-top:5px"><span><b>= MC líquida</b> <span class="muted" style="font-size:.6rem">(o que sobra p/ cobrir fixo)</span></span><span class="pc" style="color:${mcLiq>0?'var(--gold2)':'var(--red)'}"><b>${pct(mcLiq)}</b></span></div>
+  <div class="bar" style="margin-top:10px"><div class="t"><span>Ponto de equilíbrio (faturamento) <span class="muted" style="font-size:.6rem">= fixo ÷ MC líquida</span></span><span class="pc">${mcLiq>0?fmt(be):'—'}</span></div></div>
+  <div class="bar"><div class="t"><span>Custo fixo a cobrir (R$, sem %)</span><span class="pc">${fmt(fixoBe)}</span></div></div>
+  <div class="bar"><div class="t"><span>Resultado no faturamento informado</span><span class="pc" style="color:${sobra>=0?'var(--green)':'var(--red)'}">${fmt(sobra)}/mês</span></div></div>
+  <p class="hint">Cada comissão em % reduz a MC disponível. ${mcLiq<=0?'<b style="color:var(--red)">MC líquida ≤ 0: as comissões consomem toda a margem — impossível empatar.</b>':`Para empatar, faturar <b style="color:var(--sand)">${fmt(be)}/mês</b>; abaixo disso = prejuízo.`}</p>`;
 }
 function render(){renderDash();renderTree();save();}
-function refreshTotals(){D.centros.forEach((c,ci)=>{const e=document.getElementById('ct-c'+ci);if(e)e.textContent=fmt(centroTotal(c));c.cats.forEach((k,ki)=>{const ek=document.getElementById('ct-k'+ci+'-'+ki);if(ek)ek.textContent=fmt(catTotal(k));k.itens.forEach((it,ii)=>{const ca=document.getElementById('calc-'+ci+'-'+ki+'-'+ii);if(ca)ca.textContent=it.unidade==='%'?'= '+fmt(itTotal(it))+'/mês':'';const en=document.getElementById('enc-'+ci+'-'+ki+'-'+ii);if(en)en.textContent=fmt(encargoOf(it));});});});}
+function refreshTotals(){D.centros.forEach((c,ci)=>{const e=document.getElementById('ct-c'+ci);if(e)e.textContent=fmt(centroTotal(c));c.cats.forEach((k,ki)=>{const ek=document.getElementById('ct-k'+ci+'-'+ki);if(ek)ek.textContent=fmt(catTotal(k));k.itens.forEach((it,ii)=>{const ca=document.getElementById('calc-'+ci+'-'+ki+'-'+ii);if(ca)ca.textContent=it.unidade!=='R$'?'= '+fmt(itTotal(it))+'/mês':'';const en=document.getElementById('enc-'+ci+'-'+ki+'-'+ii);if(en)en.textContent=fmt(encargoOf(it));const sb=document.getElementById('sub-'+ci+'-'+ki+'-'+ii);if(sb){if(it.unidade==='Parcela')sb.innerHTML=parcText(parcInfo(it));else if(it.unidade==='Depreç.')sb.textContent='= '+fmt(itTotal(it))+'/mês';}});});});}
 function catOptions(selCi,selKi){let o='';D.centros.forEach((c,ci)=>c.cats.forEach((k,ki)=>{o+=`<option value="${ci}-${ki}" ${(ci===selCi&&ki===selKi)?'selected':''}>${c.nome} › ${k.nome}</option>`;}));return o;}
 function renderTree(){
  let h='';
@@ -242,18 +264,39 @@ function renderTree(){
      <span class="ic no-print" title="+ item" onclick="addItem(${ci},${ki})">＋</span>
      <span class="ic del no-print" title="excluir" onclick="delCat(${ci},${ki})">🗑</span></div>`;
    k.itens.forEach((it,ii)=>{
-    const isPct=it.unidade==='%';
+    const special=(it.unidade==='Parcela'||it.unidade==='Depreç.');
+    const valCell=special
+      ? `<span class="v calc-lock" title="valor calculado abaixo">↓ calc.</span>`
+      : `<input class="v n" type="number" step="any" value="${it.valor||''}" placeholder="0" oninput="setVal(${ci},${ki},${ii},this.value)">`;
     h+=`<div class="itrow">
       <span class="ic no-print" onclick="moveItem(${ci},${ki},${ii},-1)">↑</span><span class="ic no-print" onclick="moveItem(${ci},${ki},${ii},1)">↓</span>
       <span class="nm">${it.nome}</span>
       <select class="tp" onchange="setF(${ci},${ki},${ii},'tipo',this.value)">${TIPOS.map(t=>`<option ${t===it.tipo?'selected':''}>${t}</option>`).join('')}</select>
       <select class="cn" title="contratação" onchange="setF(${ci},${ki},${ii},'contr',this.value)">${CONTR.map(t=>`<option ${t===it.contr?'selected':''}>${t}</option>`).join('')}</select>
-      <input class="v n" type="number" step="any" value="${it.valor||''}" placeholder="0" oninput="setVal(${ci},${ki},${ii},this.value)">
+      ${valCell}
       <select class="un" title="unidade" onchange="setF(${ci},${ki},${ii},'unidade',this.value)">${UNID.map(t=>`<option ${t===it.unidade?'selected':''}>${t}</option>`).join('')}</select>
-      <span class="calc" id="calc-${ci}-${ki}-${ii}">${isPct?'= '+fmt(itTotal(it))+'/mês':''}</span>
+      <span class="calc" id="calc-${ci}-${ki}-${ii}">${it.unidade!=='R$'?'= '+fmt(itTotal(it))+'/mês':''}</span>
       <select class="mv no-print" title="mover para" onchange="reparent(${ci},${ki},${ii},this.value)">${catOptions(ci,ki)}</select>
       <span class="ic no-print" title="renomear" onclick="renItem(${ci},${ki},${ii})">✎</span>
       <span class="ic del no-print" title="excluir" onclick="delItem(${ci},${ki},${ii})">🗑</span></div>`;
+    if(it.unidade==='Parcela'){
+     const p=it.parc||{},pi=parcInfo(it);
+     h+=`<div class="itrow sub-row">
+       <span class="nm">↳ Parcelamento</span>
+       <label class="subf">Total dívida R$<input class="sn" type="number" step="any" value="${p.total||''}" placeholder="0" oninput="setParc(${ci},${ki},${ii},'total',this.value)"></label>
+       <label class="subf">Nº parcelas<input class="sn" type="number" step="1" value="${p.n||''}" placeholder="0" oninput="setParc(${ci},${ki},${ii},'n',this.value)"></label>
+       <label class="subf">Pagas<input class="sn" type="number" step="1" value="${p.pagas||''}" placeholder="0" oninput="setParc(${ci},${ki},${ii},'pagas',this.value)"></label>
+       <span class="sub-info" id="sub-${ci}-${ki}-${ii}">${parcText(pi)}</span></div>`;
+    }
+    if(it.unidade==='Depreç.'){
+     const d=it.dep||{};
+     h+=`<div class="itrow sub-row">
+       <span class="nm">↳ Depreciação linear</span>
+       <label class="subf">Valor do bem R$<input class="sn" type="number" step="any" value="${d.bem||''}" placeholder="0" oninput="setDep(${ci},${ki},${ii},'bem',this.value)"></label>
+       <label class="subf">Residual R$<input class="sn" type="number" step="any" value="${d.residual||''}" placeholder="0" oninput="setDep(${ci},${ki},${ii},'residual',this.value)"></label>
+       <label class="subf" title="${VIDA_REF}">Vida útil (meses) ⓘ<input class="sn" type="number" step="1" value="${d.vida||''}" placeholder="120" oninput="setDep(${ci},${ki},${ii},'vida',this.value)"></label>
+       <span class="sub-info" id="sub-${ci}-${ki}-${ii}">= ${fmt(itTotal(it))}/mês</span></div>`;
+    }
     if(it.contr==='CLT'){
      h+=`<div class="itrow enc-row">
        <span class="nm">↳ Encargos CLT <span class="enc-tag" title="${ENC_BREAKDOWN}">auto · ${pct(D.encargoCLT)}</span></span>
@@ -275,6 +318,8 @@ function askText(t,d){return openModal(t,true,d);}
 function askConfirm(t){return openModal(t,false);}
 
 function setVal(ci,ki,ii,v){D.centros[ci].cats[ki].itens[ii].valor=parseFloat(v)||0;renderDash();refreshTotals();save();}
+function setParc(ci,ki,ii,f,v){const it=D.centros[ci].cats[ki].itens[ii];it.parc=it.parc||{};it.parc[f]=parseFloat(v)||0;renderDash();refreshTotals();save();}
+function setDep(ci,ki,ii,f,v){const it=D.centros[ci].cats[ki].itens[ii];it.dep=it.dep||{};it.dep[f]=parseFloat(v)||0;renderDash();refreshTotals();save();}
 function setF(ci,ki,ii,f,v){D.centros[ci].cats[ki].itens[ii][f]=v;render();}
 async function renItem(ci,ki,ii){const it=D.centros[ci].cats[ki].itens[ii];const n=await askText('Renomear item:',it.nome);if(n!==null&&n.trim()){it.nome=n.trim();render();}}
 async function delItem(ci,ki,ii){if(await askConfirm('Excluir este item?')){D.centros[ci].cats[ki].itens.splice(ii,1);render();}}
