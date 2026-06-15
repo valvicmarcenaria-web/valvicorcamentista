@@ -58,6 +58,11 @@ input.n{font-family:'DM Mono',monospace;text-align:right}
 @media(max-width:900px){.kpis{grid-template-columns:1fr 1fr}.cols2{grid-template-columns:1fr}}
 body.light{--bg:#F4EFE6;--panel:#fff;--card:#fff;--card2:#F7F1E6;--border:rgba(124,79,42,.18);--border2:rgba(124,79,42,.34);--gold2:#7c4f2a;--sand:#8a5a30;--text:#2a2018;--muted:rgba(42,32,24,.62);--dim:rgba(42,32,24,.4);--input:rgba(124,79,42,.05)}
 @media print{.top,.btn,.ic,.itrow select.mv,.no-print{display:none!important}body{background:#fff;color:#000;padding:0;font-size:11px}.card,.centro{border:1px solid #ccc;box-shadow:none;break-inside:avoid}input,select{border:none;background:none;color:#000;-webkit-appearance:none;appearance:none}.kpi{border:1px solid #ccc}}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:50}
+.modal{background:var(--card);border:1px solid var(--border2);border-radius:10px;padding:18px 20px;width:min(420px,90vw);box-shadow:0 12px 44px rgba(0,0,0,.5)}
+.modal .m-title{font-size:.9rem;color:var(--text);margin-bottom:12px;font-weight:600}
+.modal input{width:100%;font-size:.92rem;padding:8px 10px}
+.modal .m-btns{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
 </style>
 </head>
 <body>
@@ -106,6 +111,13 @@ body.light{--bg:#F4EFE6;--panel:#fff;--card:#fff;--card2:#F7F1E6;--border:rgba(1
   </h2>
   <div id="tree"></div>
   <p class="hint no-print">Cada item: valor mensal (R$), tipo (Fixo/Variável) e contratação (CLT/PJ/—). Pessoal CLT gera encargos (lance na categoria "Encargos"); PJ é valor cheio. Comissões entram como itens Variáveis. "Mover para" troca o item de categoria.</p>
+ </div>
+</div>
+<div id="modal" class="modal-bg" style="display:none" onclick="if(event.target===this)modalCancel()">
+ <div class="modal">
+  <div class="m-title" id="m_title"></div>
+  <input id="m_input" onkeydown="if(event.key==='Enter')modalOK();else if(event.key==='Escape')modalCancel()">
+  <div class="m-btns"><button class="btn" onclick="modalCancel()">Cancelar</button><button class="btn primary" onclick="modalOK()">OK</button></div>
  </div>
 </div>
 <script>
@@ -232,26 +244,34 @@ function renderTree(){
  });
  document.getElementById('tree').innerHTML=h;
 }
+let _resolve=null,_withInput=false;
+function openModal(title,withInput,def){return new Promise(r=>{_resolve=r;_withInput=withInput;document.getElementById('m_title').textContent=title;const inp=document.getElementById('m_input');inp.style.display=withInput?'block':'none';inp.value=def||'';document.getElementById('modal').style.display='flex';if(withInput)setTimeout(()=>{inp.focus();inp.select&&inp.select();},20);});}
+function modalOK(){modalClose(_withInput?document.getElementById('m_input').value:true);}
+function modalCancel(){modalClose(_withInput?null:false);}
+function modalClose(v){document.getElementById('modal').style.display='none';const r=_resolve;_resolve=null;if(r)r(v);}
+function askText(t,d){return openModal(t,true,d);}
+function askConfirm(t){return openModal(t,false);}
+
 function setVal(ci,ki,ii,v){D.centros[ci].cats[ki].itens[ii].valor=parseFloat(v)||0;render();}
 function setF(ci,ki,ii,f,v){D.centros[ci].cats[ki].itens[ii][f]=v;render();}
-function renItem(ci,ki,ii){const it=D.centros[ci].cats[ki].itens[ii];const n=prompt('Renomear item:',it.nome);if(n!==null&&n.trim()){it.nome=n.trim();render();}}
-function delItem(ci,ki,ii){if(confirm('Excluir item?')){D.centros[ci].cats[ki].itens.splice(ii,1);render();}}
-function addItem(ci,ki){const n=prompt('Nome do item:');if(n&&n.trim()){D.centros[ci].cats[ki].itens.push(I(n.trim(),"Fixo"));render();}}
+async function renItem(ci,ki,ii){const it=D.centros[ci].cats[ki].itens[ii];const n=await askText('Renomear item:',it.nome);if(n!==null&&n.trim()){it.nome=n.trim();render();}}
+async function delItem(ci,ki,ii){if(await askConfirm('Excluir este item?')){D.centros[ci].cats[ki].itens.splice(ii,1);render();}}
+async function addItem(ci,ki){const n=await askText('Nome do novo item:','');if(n&&n.trim()){D.centros[ci].cats[ki].itens.push(I(n.trim(),"Fixo"));render();}}
 function moveItem(ci,ki,ii,d){const a=D.centros[ci].cats[ki].itens,j=ii+d;if(j<0||j>=a.length)return;[a[ii],a[j]]=[a[j],a[ii]];render();}
 function reparent(ci,ki,ii,t){const[tci,tki]=t.split('-').map(Number);if(tci===ci&&tki===ki){render();return;}const it=D.centros[ci].cats[ki].itens.splice(ii,1)[0];D.centros[tci].cats[tki].itens.push(it);render();}
-function addCat(ci){const n=prompt('Nome da categoria:');if(n&&n.trim()){D.centros[ci].cats.push({nome:n.trim(),itens:[]});render();}}
-function renCat(ci,ki){const k=D.centros[ci].cats[ki];const n=prompt('Renomear categoria:',k.nome);if(n!==null&&n.trim()){k.nome=n.trim();render();}}
-function delCat(ci,ki){if(confirm('Excluir categoria e seus itens?')){D.centros[ci].cats.splice(ki,1);render();}}
+async function addCat(ci){const n=await askText('Nome da nova categoria:','');if(n&&n.trim()){D.centros[ci].cats.push({nome:n.trim(),itens:[]});render();}}
+async function renCat(ci,ki){const k=D.centros[ci].cats[ki];const n=await askText('Renomear categoria:',k.nome);if(n!==null&&n.trim()){k.nome=n.trim();render();}}
+async function delCat(ci,ki){if(await askConfirm('Excluir esta categoria e seus itens?')){D.centros[ci].cats.splice(ki,1);render();}}
 function moveCat(ci,ki,d){const a=D.centros[ci].cats,j=ki+d;if(j<0||j>=a.length)return;[a[ki],a[j]]=[a[j],a[ki]];render();}
-function addCentro(){const n=prompt('Nome do centro de custo:');if(n&&n.trim()){D.centros.push({nome:n.trim(),cats:[]});render();}}
-function renCentro(ci){const c=D.centros[ci];const n=prompt('Renomear centro de custo:',c.nome);if(n!==null&&n.trim()){c.nome=n.trim();render();}}
-function delCentro(ci){if(confirm('Excluir centro de custo inteiro?')){D.centros.splice(ci,1);render();}}
+async function addCentro(){const n=await askText('Nome do novo centro de custo:','');if(n&&n.trim()){D.centros.push({nome:n.trim(),cats:[]});render();}}
+async function renCentro(ci){const c=D.centros[ci];const n=await askText('Renomear centro de custo:',c.nome);if(n!==null&&n.trim()){c.nome=n.trim();render();}}
+async function delCentro(ci){if(await askConfirm('Excluir o centro de custo inteiro?')){D.centros.splice(ci,1);render();}}
 function moveCentro(ci,d){const j=ci+d;if(j<0||j>=D.centros.length)return;[D.centros[ci],D.centros[j]]=[D.centros[j],D.centros[ci]];render();}
 function applyTheme(){const l=D.theme==='light';document.body.classList.toggle('light',l);document.getElementById('themeBtn').textContent=l?'☾ Tema escuro':'☀ Tema claro';}
 function toggleTheme(){D.theme=(D.theme==='light')?'dark':'light';applyTheme();save();}
 function exportJSON(){save();const b=new Blob([JSON.stringify(D,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='custo-operacao-valvic.json';a.click();}
 function importJSON(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const p=JSON.parse(r.result);if(!p||!Array.isArray(p.centros)){alert('Esse JSON não é uma base de custos válida.');return;}D=p;normalize();boot();}catch(x){alert('JSON inválido');}};r.readAsText(f);}
-function resetAll(){if(confirm('Restaurar a base padrão? (apaga o preenchido)')){D=defaultData();boot();}}
+async function resetAll(){if(await askConfirm('Restaurar a base padrão? (apaga o que foi preenchido)')){D=defaultData();boot();}}
 function boot(){
  document.getElementById('empresa').value=D.empresa||'';document.getElementById('mesref').value=D.mesref||'';document.getElementById('obs').value=D.obs||'';
  document.getElementById('mc').value=D.mc==null?43.5:D.mc;document.getElementById('fat').value=D.fat==null?0:D.fat;
