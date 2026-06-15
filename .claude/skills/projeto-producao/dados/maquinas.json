@@ -1,0 +1,35 @@
+{
+  "_meta": {
+    "titulo": "Parque de máquinas da Valvic — produção",
+    "atualizado_em": null,
+    "status": "ESQUELETO — aguardando fotos dos equipamentos",
+    "observacoes": "null = a confirmar. Cada máquina define limites que governam modelagem e corte."
+  },
+  "maquinas": [
+    {
+      "nome": "Router CNC de nesting",
+      "funcao": "Corte das chapas a partir dos DXF do Marcenária Diferente (1 DXF por chapa)",
+      "software": null,
+      "area_util_mm": null,
+      "espessura_min_max_mm": null,
+      "ferramentas": null,
+      "limitacoes": null
+    },
+    {
+      "nome": "CNC (Aspire / Vectric)",
+      "funcao": "Cortes especiais que o MD não entrega: friso de LED, friso de dobra (V-groove), corte curvo",
+      "software": "Aspire (Vectric)",
+      "area_util_mm": null,
+      "raio_minimo_curva_mm": null,
+      "ferramentas": null,
+      "limitacoes": null
+    },
+    {
+      "nome": "Coladeira de borda",
+      "funcao": "Filetagem (aplicação de fita)",
+      "modelo": null,
+      "espessura_fita_min_max": null,
+      "limitacoes": null
+    }
+  ]
+}
