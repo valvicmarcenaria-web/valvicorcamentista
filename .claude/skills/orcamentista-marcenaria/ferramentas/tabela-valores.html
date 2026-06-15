@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valvic · Tabela de Valores</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0D0A06;--panel:#141009;--card:#1B1208;--card2:#211608;--border:rgba(160,104,56,.16);--border2:rgba(160,104,56,.32);--gold:#A06838;--gold2:#C8914A;--sand:#C8A87A;--text:#F5F0E8;--muted:rgba(245,240,232,.55);--dim:rgba(245,240,232,.28);--green:#2ECC8A;--red:#E05555;--amber:#E09A30;--input:rgba(255,255,255,.04)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;padding-bottom:60px}
+.top{position:sticky;top:0;z-index:20;background:var(--panel);border-bottom:1px solid var(--border2);padding:11px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold2);line-height:1}
+.brand small{display:block;font-family:'DM Mono',monospace;font-size:.52rem;color:var(--dim);letter-spacing:.16em;text-transform:uppercase;margin-top:2px}
+.spacer{flex:1}
+.btn{font-size:.72rem;padding:6px 12px;border-radius:4px;cursor:pointer;font-family:inherit;border:1px solid var(--border2);background:transparent;color:var(--sand)}
+.btn.primary{background:var(--gold);color:#fff;border-color:var(--gold);font-weight:600}
+.btn.sm{font-size:.62rem;padding:3px 8px}.btn:hover{opacity:.85}
+.wrap{max-width:920px;margin:16px auto;padding:0 20px}
+.intro{background:var(--card);border:1px solid var(--border);border-radius:9px;padding:13px 16px;margin-bottom:16px;font-size:.78rem;color:var(--muted)}
+.intro b{color:var(--sand)}
+.summary{display:flex;gap:18px;flex-wrap:wrap;margin-top:9px;font-family:'DM Mono',monospace;font-size:.7rem}
+.summary span b{color:var(--gold2)}
+.cat{border:1px solid var(--border2);border-radius:8px;margin-bottom:12px;overflow:hidden}
+.chead{background:var(--card2);padding:9px 12px;display:flex;align-items:center;gap:8px}
+.chead .nm{font-family:'DM Mono',monospace;font-size:.82rem;color:var(--gold2);font-weight:600;letter-spacing:.03em;flex:1}
+.chead .ct{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--dim)}
+table{width:100%;border-collapse:collapse}
+tbody tr{border-top:1px solid rgba(255,255,255,.04)}
+td{padding:4px 12px}
+td.item input{width:100%;background:transparent;border:none;color:var(--text);font-family:inherit;font-size:.8rem;padding:3px 2px;border-bottom:1px solid transparent}
+td.item input:focus{outline:none;border-bottom-color:var(--border2)}
+td.price{width:130px;text-align:right;white-space:nowrap}
+td.price .rs{color:var(--dim);font-family:'DM Mono',monospace;font-size:.7rem;margin-right:2px}
+td.price input{width:84px;background:var(--input);border:1px solid var(--border);color:var(--text);font-family:'DM Mono',monospace;text-align:right;font-size:.8rem;padding:4px 6px;border-radius:4px}
+td.price input:focus{outline:none;border-color:var(--gold)}
+tr.zero td.price input{border-color:var(--amber);color:var(--amber)}
+td.act{width:30px;text-align:center}
+.ic{cursor:pointer;color:var(--dim);font-size:.85rem}.ic:hover{color:var(--red)}
+.addrow{padding:6px 12px;background:rgba(255,255,255,.012)}
+.zero-flag{font-size:.55rem;color:var(--amber);font-family:'DM Mono',monospace;margin-left:6px}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:50}
+.modal-bg.show{display:flex}
+.modal{background:var(--card);border:1px solid var(--border2);border-radius:10px;padding:18px 20px;width:min(420px,90vw);box-shadow:0 12px 44px rgba(0,0,0,.5)}
+.modal .m-title{font-size:.9rem;color:var(--text);margin-bottom:12px;font-weight:600}
+.modal input{width:100%;font-size:.92rem;padding:8px 10px;background:var(--input);border:1px solid var(--border);color:var(--text);border-radius:4px;font-family:inherit}
+.modal .m-btns{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
+body.light{--bg:#F4EFE6;--panel:#fff;--card:#fff;--card2:#F7F1E6;--border:rgba(124,79,42,.18);--border2:rgba(124,79,42,.34);--gold2:#7c4f2a;--sand:#8a5a30;--text:#2a2018;--muted:rgba(42,32,24,.62);--dim:rgba(42,32,24,.4);--input:rgba(124,79,42,.05)}
+</style>
+</head>
+<body>
+<div class="top">
+ <div class="brand">VALVIC<small>Tabela de Valores · biblioteca da Lavinia</small></div>
+ <span class="spacer"></span>
+ <button class="btn sm" id="themeBtn" onclick="toggleTheme()">☀ Tema claro</button>
+ <button class="btn sm" onclick="document.getElementById('imp').click()">Importar JSON</button>
+ <input type="file" id="imp" accept=".json" style="display:none" onchange="importJSON(event)">
+ <button class="btn sm primary" onclick="exportJSON()">Exportar JSON</button>
+ <button class="btn sm" onclick="resetAll()">Restaurar padrão</button>
+</div>
+<div class="wrap">
+ <div class="intro">
+  Edite os preços (R$ unitário). Clique no nome para renomear, 🗑 para excluir, <b>+ item</b> e <b>+ categoria</b> para incluir. Tudo salva sozinho. Ao terminar, <b>Exportar JSON</b> e me devolva — eu cravo na biblioteca da Lavinia. Linhas em <span style="color:var(--amber)">âmbar</span> estão zeradas.
+  <div class="summary" id="summary"></div>
+ </div>
+ <div id="cats"></div>
+ <button class="btn sm primary" onclick="addCat()">+ categoria</button>
+</div>
+<div id="modal" class="modal-bg" onclick="if(event.target===this)closeModal(false)">
+ <div class="modal">
+  <div class="m-title" id="mdTitle"></div>
+  <input id="mdInp" onkeydown="if(event.key==='Enter')closeModal(true);else if(event.key==='Escape')closeModal(false)">
+  <div class="m-btns"><button class="btn" onclick="closeModal(false)">Cancelar</button><button class="btn primary" onclick="closeModal(true)">OK</button></div>
+ </div>
+</div>
+<script>
+function defaultLib(){return [
+ ["MDF",[["mdf branco 6",190],["mdf branco 15",260],["mdf branco 18",320],["mdf branco 25",420],["mdf cor 6",300],["mdf cor 15",500],["mdf cor 18",600],["mdf cristallo 6",400],["mdf cristallo 15",600],["mdf cristallo 18",700],["mdf Acetinato 6",1000],["mdf Acetinato 15",1300],["mdf Acetinato 18",1500],["mdf com lâmina prensada +acab.",2200],["Palha sintética",600],["Compensado flexível",400]]],
+ ["Cola e fita",[["Colagem - mt linear - máquina",2.5],["Colagem - mt linear - manual",4.0],["Fita de borda - branco tx - mt",2.0],["Fita de borda - cor - mt",3.0],["Demandas pontuais - espec.",50]]],
+ ["Dobradiças",[["Padrão",6],["Bigfer Inox",20],["Bigfer Ônix",15],["Hartt",8],["Häfele",20],["Hettich Novisys",10],["Hettich Sensys",35],["Hettich Sensys Onix",40],["Hettich Sensys Black",40]]],
+ ["Corrediças",[["Telescópica",40],["Oculta Hartt",70],["Oculta Quadro (Hettich)",120],["Oculta Actro (Hettich)",400],["Blum",300]]],
+ ["Sistema portas roupeiros",[["SS150 - 2 portas",500],["SS150 - 3 portas",600],["RO65 (Rometal)",60],["Dominus - 2 portas",700],["Dominus - 3 portas",850],["Trilho RO65 - 3mt",80],["Trilho RO65 - 2mt",60],["Trilho SS150 - 3mt",200],["Trilho SS150 - 2mt",170],["Trilho Dominus - 3mt",350],["Trilho Dominus - 2mt",300],["Desempenador sobrepor - par",100],["Desempenador embutido - par",150]]],
+ ["Sistema portas rack e suspenso",[["Ro21",50],["Multi 2 portas",300],["Multi 3 portas",380],["Linea 1 porta",200],["Linea 2 portas",500],["Trilho ro21 3mt",40],["Trilho Multi 3mt",200],["Trilho Linea 3mt - 2 portas",150],["Trilho Linea 3mt - 1 porta",90]]],
+ ["Articuladores",[["Pistão Normal",20],["Pistão com amortecimento",30],["Blum HK-xs",180],["Aventos (e outros)",600]]],
+ ["Sistema porta de passagem",[["Pivô 80k",60],["Pivô 200k",180],["Pivô no marco",150],["Sistema RO82",200],["Sistema RO82 top",400],["Trilho RO82 - 2mt",200],["Trilho RO82 - 3mt",380],["Sistema Volare",150],["Dobradiças ocultas basic",120],["Dobradiças ocultas häfele",250]]],
+ ["Puxadores",[["SP7000 anodizado",70],["SP7000 bronze",90],["Perfil cava RM195 - 3mt",250],["Perfil cava RM213 - 3mt",100],["Par tampinhas RM213",4],["Cava 35° usinada - mt",50],["Slim luna rometal",20],["Concha shell Zen",80],["Ponto Zen",70],["Especial 1 - Traço Metal/Couro Enlevo",60],["Especial 2",0]]],
+ ["Suportes",[["Suporte espada",25],["Suporte oculto",20],["Serralheria prat. simples",25],["Serralheria bancada",50]]],
+ ["Parafusos / dispositivos / montagem",[["Parafusos gerais - especulação",25],["Conj. parafuso e bucha",1.8],["Sup. prateleiras - cj4",3],["Sist. montagem (mini fix)",0],["Cola kit Teck bond",35],["PUR / PU",50],["Silicone acabamento",30],["Outros 1 - tábua de passar",500],["Outros 2",0]]],
+ ["Iluminação",[["LED - fita + perfil - mt",150],["Sensor",50],["Outros 1",0]]],
+ ["Vidros e espelhos (m²)",[["Vidro incolor temperado 6mm",200],["Vidro incolor temperado 8mm",250],["Vidro incolor temperado 10mm",300],["Espelho prata",600],["Espelho bronze",900],["Vidro reflecta bronze 6mm",0],["Vidro reflecta bronze 8mm",0]]],
+ ["Limpeza / embalagem",[["Tinner (litro)",12],["Estopa (pacote)",10],["Strech",4],["Cantoneira",0.5],["Embalagem",50]]],
+ ["Especiais",[["Logística específica",150],["Item especial",0],["Bandeja",0],["Estrutura de serralheria",0],["Gaveta especial",0]]]
+];}
+
+let LIB=null, theme='dark';
+function load(){
+ try{const r=localStorage.getItem('valvic_tabela');if(r){const p=JSON.parse(r);if(p&&Array.isArray(p.lib))LIB=p.lib;if(p&&p.theme)theme=p.theme;}}catch(e){}
+ if(!LIB)LIB=defaultLib();
+ normalize();
+}
+function normalize(){
+ if(!Array.isArray(LIB))LIB=defaultLib();
+ LIB=LIB.filter(c=>Array.isArray(c)).map(c=>[String(c[0]||'—'),(Array.isArray(c[1])?c[1]:[]).filter(it=>Array.isArray(it)).map(it=>[String(it[0]||'—'),+it[1]||0])]);
+}
+function save(){try{localStorage.setItem('valvic_tabela',JSON.stringify({lib:LIB,theme}));}catch(e){}}
+function fmt(x){return (x||0).toLocaleString('pt-BR',{minimumFractionDigits:(x%1?2:0),maximumFractionDigits:2});}
+
+function counts(){let items=0,zeros=0;LIB.forEach(c=>c[1].forEach(it=>{items++;if(!it[1])zeros++;}));return {cats:LIB.length,items,zeros};}
+function refreshSummary(){const c=counts();document.getElementById('summary').innerHTML=`<span>Categorias: <b>${c.cats}</b></span><span>Itens: <b>${c.items}</b></span><span>Zerados: <b style="color:var(--amber)">${c.zeros}</b></span>`;}
+
+function render(){
+ let h='';
+ LIB.forEach((cat,ci)=>{
+  const zc=cat[1].filter(it=>!it[1]).length;
+  h+=`<div class="cat"><div class="chead">
+    <span class="nm" style="cursor:pointer" title="renomear" onclick="renCat(${ci})">${cat[0]}</span>
+    <span class="ct">${cat[1].length} itens${zc?` · <span style="color:var(--amber)">${zc} zerados</span>`:''}</span>
+    <span class="ic" title="excluir categoria" onclick="delCat(${ci})">🗑</span></div>
+   <table><tbody>`;
+  cat[1].forEach((it,ii)=>{
+   h+=`<tr id="row-${ci}-${ii}" class="${it[1]?'':'zero'}">
+     <td class="item"><input value="${it[0].replace(/"/g,'&quot;')}" onchange="setName(${ci},${ii},this.value)"></td>
+     <td class="price"><span class="rs">R$</span><input type="number" step="any" value="${it[1]||''}" placeholder="0" oninput="setPrice(${ci},${ii},this.value)"></td>
+     <td class="act"><span class="ic" title="excluir" onclick="delItem(${ci},${ii})">🗑</span></td></tr>`;
+  });
+  h+=`</tbody></table><div class="addrow"><button class="btn sm" onclick="addItem(${ci})">+ item</button></div></div>`;
+ });
+ document.getElementById('cats').innerHTML=h;
+ refreshSummary();
+}
+function setPrice(ci,ii,v){LIB[ci][1][ii][1]=parseFloat(v)||0;const row=document.getElementById('row-'+ci+'-'+ii);if(row)row.className=LIB[ci][1][ii][1]?'':'zero';refreshSummary();save();}
+function setName(ci,ii,v){LIB[ci][1][ii][0]=v.trim()||'—';save();}
+
+let _resolve=null;
+function openModal(title,def){return new Promise(r=>{_resolve=r;document.getElementById('mdTitle').textContent=title;const inp=document.getElementById('mdInp');inp.value=def||'';document.getElementById('modal').classList.add('show');setTimeout(()=>{inp.focus();inp.select();},30);});}
+function closeModal(ok){const v=ok?document.getElementById('mdInp').value:null;document.getElementById('modal').classList.remove('show');const r=_resolve;_resolve=null;if(r)r(v);}
+function askText(t,d){return openModal(t,d);}
+async function askConfirm(t){const r=await openModal(t+'\n(OK confirma)','');return r!==null;}
+
+async function addItem(ci){const n=await askText('Nome do novo item:','');if(n&&n.trim()){LIB[ci][1].push([n.trim(),0]);render();save();}}
+async function delItem(ci,ii){if(await askConfirm('Excluir "'+LIB[ci][1][ii][0]+'"?')){LIB[ci][1].splice(ii,1);render();save();}}
+async function addCat(){const n=await askText('Nome da nova categoria:','');if(n&&n.trim()){LIB.push([n.trim(),[]]);render();save();}}
+async function renCat(ci){const n=await askText('Renomear categoria:',LIB[ci][0]);if(n!==null&&n.trim()){LIB[ci][0]=n.trim();render();save();}}
+async function delCat(ci){if(await askConfirm('Excluir a categoria "'+LIB[ci][0]+'" inteira?')){LIB.splice(ci,1);render();save();}}
+
+function exportJSON(){const b=new Blob([JSON.stringify({lib:LIB},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='tabela-valores-valvic.json';a.click();}
+function importJSON(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const p=JSON.parse(r.result);const lib=Array.isArray(p)?p:p.lib;if(!Array.isArray(lib)){alert('JSON não tem uma tabela válida (esperado {"lib":[...]}).');return;}LIB=lib;normalize();render();save();}catch(x){alert('JSON inválido.');}};r.readAsText(f);}
+async function resetAll(){if(await askConfirm('Restaurar a tabela padrão? (descarta edições)')){LIB=defaultLib();render();save();}}
+function applyTheme(){const l=theme==='light';document.body.classList.toggle('light',l);document.getElementById('themeBtn').textContent=l?'☾ Tema escuro':'☀ Tema claro';}
+function toggleTheme(){theme=(theme==='light')?'dark':'light';applyTheme();save();}
+
+load();applyTheme();render();
+</script>
+</body>
+</html>
