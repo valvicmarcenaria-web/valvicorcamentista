@@ -83,6 +83,21 @@ tr.has td{opacity:1}
 .srch{margin-bottom:8px}
 .libwrap{max-height:420px;overflow:auto;border:1px solid var(--border);border-radius:6px}
 details summary{cursor:pointer;font-size:.7rem;color:var(--gold2);font-family:'DM Mono',monospace;padding:6px 0}
+/* ===== Dúvidas & Decisões ===== */
+.duv-head-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.duv-count{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted)}
+.duv-count b{color:var(--amber)}
+.duv{border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:7px;padding:10px 12px;margin-bottom:9px;background:var(--card2)}
+.duv.resolvida{border-left-color:var(--green);opacity:.72}
+.duv-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.duv-txt{flex:1;min-width:160px;font-size:.86rem;color:var(--text)}
+.duv.resolvida .duv-txt{text-decoration:line-through;text-decoration-color:var(--dim)}
+.duv select.ds{width:auto;font-size:.64rem;padding:3px 5px}
+.duv-dec{margin-top:8px;font-size:.8rem}
+.duv .del-it{font-size:1.05rem}
+.duv-divider{font-family:'DM Mono',monospace;font-size:.58rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin:14px 0 8px;border-top:1px dashed var(--border);padding-top:8px}
+.internal-flag{font-family:'DM Mono',monospace;font-size:.52rem;color:var(--red);border:1px solid rgba(224,85,85,.4);border-radius:8px;padding:2px 8px;letter-spacing:.05em}
+@media print{.no-print{display:none!important}}
 @media(max-width:980px){.cols{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}.g4{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr}}
 /* ===== TEMA CLARO ===== */
 body.light{--bg:#F4EFE6;--panel:#fff;--card:#fff;--card2:#F7F1E6;--border:rgba(124,79,42,.18);--border2:rgba(124,79,42,.34);--gold:#A06838;--gold2:#7c4f2a;--sand:#8a5a30;--text:#2a2018;--muted:rgba(42,32,24,.62);--dim:rgba(42,32,24,.4);--input:rgba(124,79,42,.05)}
@@ -153,6 +168,19 @@ body.light .btn.primary{color:#fff}
     <textarea id="rodrigo" class="note-rodrigo" placeholder="Ex.: piso de MC 45% este mês (operar acima do break-even R$154k); priorizar caixa; não deixar o mês depender de um projeto grande..." oninput="saveNotes()"></textarea>
    </div>
   </div>
+ </div>
+
+ <!-- DÚVIDAS & DECISÕES (pré-orçamento) — INTERNO: nunca incluir em proposta/export voltado ao cliente -->
+ <div class="card no-print">
+  <h2>Dúvidas &amp; Decisões <span class="mini">perguntas que destravam o orçamento · viram briefing para medição e programação</span></h2>
+  <div class="duv-head-row">
+   <button class="btn sm primary" onclick="addDuv()">+ dúvida</button>
+   <span class="duv-count" id="duvCount"></span>
+   <span class="spacer"></span>
+   <span class="internal-flag">⚠ uso interno — não enviar ao cliente</span>
+  </div>
+  <div id="duvList"></div>
+  <p class="hint">Registre aqui o que falta definir com o <b>cliente / arquiteto / Jonathan</b> (ex.: porta de espelho colada ou alumínio? sistema de corrediça? ponto de gás na parede?). Ao resolver, escreva a <b>decisão</b> — ela acompanha o orçamento no JSON e vira o briefing que o Paulo (medição) e o Filipe (programação) herdam quando o contrato fechar.</p>
  </div>
 
  <div class="cols">
@@ -290,6 +318,8 @@ function normalize(){
  if(!S.collapsed)S.collapsed={};
  if(S.diretrizes===undefined)S.diretrizes="";
  if(S.rodrigo===undefined)S.rodrigo="";
+ if(!Array.isArray(S.duvidas))S.duvidas=[];
+ S.duvidas.forEach(d=>{if(!d.para)d.para='Cliente';if(!d.cat)d.cat='material';if(!d.status)d.status='aberta';if(d.decisao===undefined)d.decisao='';});
  (S.ambientes||[]).forEach(a=>{if(!a.terc)a.terc=blankTerc();});
  if(S.t&&S.ambientes&&S.ambientes[0]){const g=S.t;["vid","ser","pin","est","laq"].forEach(k=>{if(g[k])S.ambientes[0].terc[k]=(S.ambientes[0].terc[k]||0)+g[k];});delete S.t;}
 }
@@ -298,7 +328,7 @@ function defaultState(){return {
  p:{nf:4,parc:8,vend:3,rt:10,vis:250,outv:0,prog:0.8,coord:1,marc:2.5,serra:0.5,manut:0.5,log:0,erro:2},
  lib:defaultLib(),
  ambientes:[blankAmb("Roupeiro"),blankAmb("Ilha")],
- ativo:0, collapsed:{}, theme:'dark', diretrizes:"", rodrigo:""
+ ativo:0, collapsed:{}, theme:'dark', diretrizes:"", rodrigo:"", duvidas:[]
 };}
 function saveNotes(){S.diretrizes=document.getElementById('diretrizes').value;S.rodrigo=document.getElementById('rodrigo').value;save();}
 function load(){try{const r=localStorage.getItem('valvic_orc');if(r){S=JSON.parse(r);}}catch(e){}if(!S)S=defaultState();normalize();}
@@ -419,6 +449,40 @@ async function rmLine(ci,ii){
  S.ambientes.forEach(a=>{delete a.q[key(cat[0],nm)];});cat[1].splice(ii,1);renderLib();recalcDash();
 }
 
+/* ===== Dúvidas & Decisões (INTERNO — vira briefing p/ produção) ===== */
+const DUV_PARA=["Cliente","Arquiteto","Jonathan"];
+const DUV_CAT=["medida","material","sistema","acabamento","outro"];
+function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function renderDuvidas(){
+ const el=document.getElementById('duvList');if(!el)return;
+ const list=S.duvidas||[];
+ const abertas=[],resolvidas=[];
+ list.forEach((d,i)=>{(d.status==='resolvida'?resolvidas:abertas).push(i);});
+ const cnt=document.getElementById('duvCount');
+ if(cnt)cnt.innerHTML=`<b>${abertas.length} aberta(s)</b> · ${resolvidas.length} resolvida(s)`;
+ if(!list.length){el.innerHTML='<p class="hint" style="margin:0">Nenhuma dúvida registrada. Use "+ dúvida" ao encontrar algo que precise definir antes de fechar.</p>';return;}
+ const card=i=>{const d=S.duvidas[i];const res=d.status==='resolvida';
+  return `<div class="duv ${res?'resolvida':''}">
+   <div class="duv-top">
+    <span class="duv-txt">${esc(d.texto)}</span>
+    <select class="ds" title="para quem" onchange="setDuv(${i},'para',this.value)">${DUV_PARA.map(o=>`<option ${o===d.para?'selected':''}>${o}</option>`).join('')}</select>
+    <select class="ds" title="categoria" onchange="setDuv(${i},'cat',this.value)">${DUV_CAT.map(o=>`<option ${o===d.cat?'selected':''}>${o}</option>`).join('')}</select>
+    <select class="ds" title="status" onchange="setDuv(${i},'status',this.value)"><option value="aberta" ${!res?'selected':''}>aberta</option><option value="resolvida" ${res?'selected':''}>resolvida</option></select>
+    <span class="del-it" title="editar texto" onclick="renDuv(${i})">✎</span>
+    <span class="del-it" title="remover" onclick="rmDuv(${i})">×</span>
+   </div>
+   <input class="duv-dec" placeholder="Decisão registrada (vira briefing p/ produção)…" value="${esc(d.decisao||'')}" oninput="setDuvDec(${i},this.value)">
+  </div>`;};
+ let h='';abertas.forEach(i=>h+=card(i));
+ if(resolvidas.length){h+='<div class="duv-divider">Resolvidas — briefing para produção</div>';resolvidas.forEach(i=>h+=card(i));}
+ el.innerHTML=h;
+}
+async function addDuv(){const t=await askText('Qual a dúvida? (o que falta definir)','');if(!t||!t.trim())return;if(!S.duvidas)S.duvidas=[];S.duvidas.push({texto:t.trim(),para:'Cliente',cat:'material',status:'aberta',decisao:''});renderDuvidas();save();}
+function setDuv(i,f,val){S.duvidas[i][f]=val;renderDuvidas();save();}
+function setDuvDec(i,val){S.duvidas[i].decisao=val;save();} /* sem re-render: preserva o foco ao digitar */
+async function renDuv(i){const t=await askText('Editar a dúvida:',S.duvidas[i].texto);if(t!==null&&t.trim()){S.duvidas[i].texto=t.trim();renderDuvidas();save();}}
+async function rmDuv(i){const ok=await askConfirm('Remover esta dúvida?');if(!ok)return;S.duvidas.splice(i,1);renderDuvidas();save();}
+
 /* ===== Cálculo ===== */
 function materialAmb(amb){let s=0;S.lib.forEach(cat=>{cat[1].forEach(it=>{s+=(amb.q[key(cat[0],it[0])]||0)*it[1];});});return s;}
 function materialTotal(){let s=0;S.ambientes.forEach(a=>s+=materialAmb(a));return s;}
@@ -523,7 +587,7 @@ function boot(){
  const p=S.p;document.getElementById('p_nf').value=p.nf;document.getElementById('p_parc').value=p.parc;document.getElementById('p_vend').value=p.vend;document.getElementById('p_rt').value=p.rt;document.getElementById('p_vis').value=p.vis;document.getElementById('p_outv').value=p.outv;
  document.getElementById('p_prog').value=p.prog;document.getElementById('p_coord').value=p.coord;document.getElementById('p_marc').value=p.marc;document.getElementById('p_serra').value=p.serra;document.getElementById('p_manut').value=p.manut;document.getElementById('p_log').value=p.log;document.getElementById('p_erro').value=p.erro;
  document.getElementById('diretrizes').value=S.diretrizes||'';document.getElementById('rodrigo').value=S.rodrigo||'';
- applyTheme();updTag();renderTabs();renderTerc();recalc();
+ applyTheme();updTag();renderTabs();renderTerc();renderDuvidas();recalc();
 }
 load();boot();
 </script>

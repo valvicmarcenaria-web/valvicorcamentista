@@ -68,7 +68,43 @@ input.n{font-family:'DM Mono',monospace;text-align:right}
 .muted{color:var(--muted)} .hint{font-size:.6rem;color:var(--dim);margin-top:8px;line-height:1.5}
 .topcosts li{display:flex;justify-content:space-between;font-size:.74rem;padding:3px 0;border-bottom:1px solid var(--border)}
 .topcosts b{font-family:'DM Mono',monospace;color:var(--sand)}
-@media(max-width:900px){.kpis{grid-template-columns:1fr 1fr}.cols2{grid-template-columns:1fr}}
+/* ===== Dashboard visual (hero / gauge / cascata / donut) ===== */
+.ind-inputs{display:flex;gap:10px;flex-wrap:wrap;align-items:end;margin-bottom:14px}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:16px;align-items:stretch;margin-bottom:16px}
+.verdict{border-radius:12px;padding:18px 20px;position:relative;overflow:hidden;border:1px solid var(--border2)}
+.verdict.pos{background:linear-gradient(135deg,rgba(46,204,138,.10),rgba(46,204,138,.02));border-color:rgba(46,204,138,.35)}
+.verdict.warn{background:linear-gradient(135deg,rgba(224,154,48,.12),rgba(224,154,48,.02));border-color:rgba(224,154,48,.4)}
+.verdict.neg{background:linear-gradient(135deg,rgba(224,85,85,.12),rgba(224,85,85,.02));border-color:rgba(224,85,85,.4)}
+.verdict .vlbl{font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.verdict .vbig{font-family:'DM Mono',monospace;font-size:2.9rem;font-weight:700;line-height:1;margin:6px 0 4px}
+.verdict .vbig.pos{color:var(--green)}.verdict .vbig.neg{color:var(--red)}.verdict .vbig.warn{color:var(--amber)}
+.verdict .vphrase{font-size:.86rem;color:var(--text);max-width:94%}
+.verdict .vsub{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);margin-top:9px}
+.mcchip{display:inline-block;font-family:'DM Mono',monospace;font-size:.58rem;padding:2px 8px;border-radius:10px;margin-top:9px;letter-spacing:.04em}
+.statcol{display:grid;grid-template-rows:repeat(3,1fr);gap:9px}
+.stat{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:8px 13px;display:flex;align-items:center;justify-content:space-between}
+.stat .sl{font-size:.58rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.stat .sv{font-family:'DM Mono',monospace;font-size:1rem;color:var(--sand);font-weight:600}
+.stat .sv.amber{color:var(--amber)}.stat .sv.blue{color:var(--blue)}
+.grid3{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:16px;align-items:start;margin-top:6px}
+.center{display:flex;flex-direction:column;align-items:center}
+.gnum{font-family:'DM Mono',monospace;text-align:center;margin-top:2px}
+.gnum .gv{font-size:1.3rem;font-weight:700;color:var(--sand)}
+.gnum .gl{font-size:.56rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.glegend{display:flex;gap:12px;margin-top:7px;font-size:.56rem;color:var(--muted);flex-wrap:wrap;justify-content:center}
+.glegend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;vertical-align:middle}
+.wf-row{display:flex;align-items:center;gap:8px;margin:4px 0;font-size:.7rem}
+.wf-row .wlbl{width:118px;color:var(--muted);text-align:right;flex-shrink:0}
+.wf-bar-wrap{flex:1;height:20px;position:relative;background:rgba(255,255,255,.03);border-radius:4px}
+.wf-bar{position:absolute;height:100%;border-radius:4px}
+.wf-val{font-family:'DM Mono',monospace;font-size:.62rem;white-space:nowrap}
+.dlegend{margin-top:10px;width:100%}
+.dlegend li{display:flex;align-items:center;gap:7px;font-size:.64rem;padding:1px 0}
+.dlegend .dot{width:9px;height:9px;border-radius:3px;flex-shrink:0}
+.dlegend .dn{flex:1;color:var(--text)}
+.dlegend .dv{font-family:'DM Mono',monospace;color:var(--sand)}
+.dlegend .dp{font-family:'DM Mono',monospace;color:var(--muted);width:44px;text-align:right}
+@media(max-width:900px){.kpis{grid-template-columns:1fr 1fr}.cols2{grid-template-columns:1fr}.hero{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}}
 body.light{--bg:#F4EFE6;--panel:#fff;--card:#fff;--card2:#F7F1E6;--border:rgba(124,79,42,.18);--border2:rgba(124,79,42,.34);--gold2:#7c4f2a;--sand:#8a5a30;--text:#2a2018;--muted:rgba(42,32,24,.62);--dim:rgba(42,32,24,.4);--input:rgba(124,79,42,.05)}
 @media print{.top,.btn,.ic,.itrow select.mv,.no-print{display:none!important}body{background:#fff;color:#000;padding:0;font-size:11px}.card,.centro{border:1px solid #ccc;box-shadow:none;break-inside:avoid}input,select{border:none;background:none;color:#000;-webkit-appearance:none;appearance:none}.kpi{border:1px solid #ccc}}
 .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:50}
@@ -98,24 +134,33 @@ body.light{--bg:#F4EFE6;--panel:#fff;--card:#fff;--card2:#F7F1E6;--border:rgba(1
   </div>
  </div>
  <div class="card">
-  <h2>Indicadores <span class="mini">custo mensal da operação</span></h2>
-  <div class="kpis" id="kpis"></div>
-  <div class="pess" id="pess"></div>
-  <div class="cols2" style="margin-top:14px">
-   <div><h2 style="margin-bottom:8px">% por centro de custo</h2><div id="bars"></div></div>
-   <div>
-    <h2 style="margin-bottom:8px">Maiores custos</h2>
-    <ul class="topcosts" id="top"></ul>
-    <div class="card" style="background:var(--card2);margin:12px 0 0;padding:11px 13px">
-     <h2 style="margin-bottom:8px">Ponto de equilíbrio <span class="mini">(Rodrigo)</span></h2>
-     <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:end">
-      <div><label>MC% média</label><input id="mc" class="n" type="number" step="0.5" value="43.5" style="width:70px" oninput="render()"></div>
-      <div><label>Faturamento/mês R$</label><input id="fat" class="n" type="number" value="162000" style="width:110px" oninput="render()"></div>
-      <div><label title="FGTS 8% + 13º 8,33% + férias+1/3 11,11%">% encargos CLT ⓘ</label><input id="encCLT" class="n" type="number" step="0.01" value="27.44" style="width:80px" oninput="render()"></div>
-     </div>
-     <div id="be" style="margin-top:10px"></div>
-    </div>
+  <h2>Leitura do mês <span class="mini">base do Rodrigo · validação de margem</span></h2>
+  <div class="ind-inputs">
+   <div><label>MC% média</label><input id="mc" class="n" type="number" step="0.5" value="43.5" style="width:70px" oninput="render()"></div>
+   <div><label>Faturamento/mês R$</label><input id="fat" class="n" type="number" value="162000" style="width:120px" oninput="render()"></div>
+   <div><label title="FGTS 8% + 13º 8,33% + férias+1/3 11,11%">% encargos CLT ⓘ</label><input id="encCLT" class="n" type="number" step="0.01" value="27.44" style="width:80px" oninput="render()"></div>
+  </div>
+  <div class="hero" id="hero"></div>
+  <div class="grid3">
+   <div class="center">
+    <h2 style="align-self:flex-start">Velocímetro <span class="mini">break-even</span></h2>
+    <svg id="gauge" width="240" height="150" viewBox="0 0 240 150"></svg>
+    <div class="gnum" id="gaugeNum"></div>
+    <div class="glegend"><span><i style="background:var(--red)"></i>prejuízo</span><span><i style="background:var(--green)"></i>lucro</span><span><i style="background:var(--sand)"></i>equilíbrio</span></div>
    </div>
+   <div>
+    <h2>Cascata <span class="mini">para onde vai o dinheiro</span></h2>
+    <div id="waterfall"></div>
+   </div>
+   <div class="center">
+    <h2 style="align-self:flex-start">Composição <span class="mini">por centro</span></h2>
+    <svg id="donut" width="180" height="180" viewBox="0 0 180 180"></svg>
+    <ul class="dlegend" id="dlegend"></ul>
+   </div>
+  </div>
+  <div class="cols2" style="margin-top:14px">
+   <div><h2 style="margin-bottom:8px">Maiores custos</h2><ul class="topcosts" id="top"></ul></div>
+   <div><h2 style="margin-bottom:8px">Pessoal</h2><div class="pess" id="pess"></div></div>
   </div>
  </div>
  <div class="card">
@@ -216,33 +261,86 @@ function totalEncargos(){let s=0;D.centros.forEach(c=>c.cats.forEach(k=>k.itens.
 function allItens(){const a=[];D.centros.forEach(c=>c.cats.forEach(k=>k.itens.forEach(i=>a.push({i,centro:c.nome}))));return a;}
 function maiorCentro(){let m={nome:'—',v:-1};D.centros.forEach(c=>{const v=centroTotal(c);if(v>m.v)m={nome:c.nome,v};});return m.nome;}
 
+function mcBand(mc){if(mc<30)return{c:'var(--red)',bg:'rgba(224,85,85,.16)',t:'crítica'};if(mc<43)return{c:'var(--amber)',bg:'rgba(224,154,48,.16)',t:'atenção'};return{c:'var(--green)',bg:'rgba(46,204,138,.16)',t:'saudável'};}
 function renderDash(){
  if(document.getElementById('mc')){D.mc=+val('mc')||0;D.fat=+val('fat')||0;}
  if(document.getElementById('encCLT'))D.encargoCLT=+val('encCLT')||0;
- const total=totalGeral(),fixo=totalTipo("Fixo"),vary=totalTipo("Variável");
- document.getElementById('kpis').innerHTML=`
-  <div class="kpi tot"><div class="lbl">Custo total / mês</div><div class="val">${fmt(total)}</div><div class="sub">${D.centros.length} centros de custo</div></div>
-  <div class="kpi fixo"><div class="lbl">Custo FIXO / mês</div><div class="val">${fmt(fixo)}</div><div class="sub">${total?pct(fixo/total*100):'—'} · base do break-even</div></div>
-  <div class="kpi var"><div class="lbl">Custo VARIÁVEL / mês</div><div class="val">${fmt(vary)}</div><div class="sub">${total?pct(vary/total*100):'—'} do total</div></div>
-  <div class="kpi"><div class="lbl">Maior centro de custo</div><div class="val" style="font-size:1rem">${maiorCentro()}</div><div class="sub">ranking ao lado</div></div>`;
- const cltSal=totalContr('CLT'),enc=totalEncargos();
- document.getElementById('pess').innerHTML=`Pessoal → <b>CLT salários: ${fmt(cltSal)}</b> + <b style="color:var(--amber)">encargos (auto ${pct(D.encargoCLT)}): ${fmt(enc)}</b> = <b>custo CLT ${fmt(cltSal+enc)}</b> &nbsp;·&nbsp; <b>PJ: ${fmt(totalContr('PJ'))}</b> <span class="muted" style="font-size:.6rem">(PJ é valor cheio, sem encargos)</span>`;
- let bh='';const cs=D.centros.map(c=>({nome:c.nome,v:centroTotal(c)})).sort((a,b)=>b.v-a.v);
- cs.forEach(c=>{const p=total?c.v/total*100:0;bh+=`<div class="bar"><div class="t"><span>${c.nome}</span><span class="pc">${fmt(c.v)} · ${pct(p)}</span></div><div class="track"><div class="fill" style="width:${Math.min(p,100)}%"></div></div></div>`;});
- document.getElementById('bars').innerHTML=bh||'<p class="hint">Sem custos lançados.</p>';
+ const total=totalGeral();
+ const fixoBe=fixoBE(),pctCom=pctAliquotas(),mcBruta=D.mc,mcLiq=mcBruta-pctCom,fat=D.fat;
+ const margemBruta=fat*mcBruta/100,comissoesRs=fat*pctCom/100,margemLiq=fat*mcLiq/100;
+ const resultado=margemLiq-fixoBe,be=mcLiq>0?fixoBe/(mcLiq/100):0;
+ const cltSal=totalContr('CLT'),enc=totalEncargos(),pj=totalContr('PJ');
+ // HERO veredito
+ const thin=fat*0.02;
+ const cls=mcLiq<=0||resultado<0?'neg':(resultado<thin?'warn':'pos');
+ const band=mcBand(mcBruta);
+ let phrase;
+ if(mcLiq<=0)phrase='As comissões consomem <b>toda a margem</b> — impossível empatar neste faturamento.';
+ else if(resultado<0)phrase=`No <b>vermelho</b>: falta faturar <b>${fmt(be-fat)}</b> para chegar ao ponto de equilíbrio.`;
+ else if(resultado<thin)phrase='No azul, mas <b>por um triz</b> — cobre o custo fixo e sobra quase nada.';
+ else phrase='<b>Saudável</b> — a margem líquida cobre o custo fixo com folga.';
+ document.getElementById('hero').innerHTML=`
+  <div class="verdict ${cls}">
+   <div class="vlbl">Resultado no faturamento de ${fmt(fat)}/mês</div>
+   <div class="vbig ${cls}">${resultado>=0?'+':''}${fmt(resultado)}</div>
+   <div class="vphrase">${phrase}</div>
+   <div class="vsub">Ponto de equilíbrio: ${mcLiq>0?fmt(be):'—'} · faturamento atual: ${fmt(fat)}</div>
+   <span class="mcchip" style="background:${band.bg};color:${band.c}">MC bruta ${pct(mcBruta)} · ${band.t} &nbsp;|&nbsp; líquida ${pct(mcLiq)}</span>
+  </div>
+  <div class="statcol">
+   <div class="stat"><span class="sl">Custo total / mês</span><span class="sv">${fmt(total)}</span></div>
+   <div class="stat"><span class="sl">Custo fixo (base BE)</span><span class="sv amber">${fmt(fixoBe)}</span></div>
+   <div class="stat"><span class="sl">Pessoal (CLT+enc · PJ)</span><span class="sv blue">${fmt(cltSal+enc+pj)}</span></div>
+  </div>`;
+ renderGauge(fat,be,mcLiq);
+ renderWaterfall(fat,margemBruta,comissoesRs,margemLiq,fixoBe,resultado);
+ renderDonut();
+ const gn=document.getElementById('gaugeNum');if(gn)gn.innerHTML=`<div class="gv">${fmt(fat)}</div><div class="gl">faturamento atual</div>`;
  const top=allItens().filter(x=>itTotal(x.i)>0).sort((a,b)=>itTotal(b.i)-itTotal(a.i)).slice(0,8);
  document.getElementById('top').innerHTML=top.map(x=>`<li><span>${x.i.nome} <span class="muted" style="font-size:.62rem">· ${x.centro}</span></span><b>${fmt(itTotal(x.i))}</b></li>`).join('')||'<li class="muted">—</li>';
- const fixoBe=fixoBE(),pctCom=pctAliquotas(),mcBruta=D.mc,mcLiq=mcBruta-pctCom;
- const be=mcLiq>0?fixoBe/(mcLiq/100):0,fat=D.fat;
- const mcRsLiq=fat*mcLiq/100,sobra=mcRsLiq-fixoBe;
- document.getElementById('be').innerHTML=`
-  <div class="mcline"><span>MC bruta</span><span class="pc">${pct(mcBruta)}</span></div>
-  <div class="mcline"><span>− Comissões / RT (% s/ faturamento)</span><span class="pc" style="color:var(--red)">−${pct(pctCom)}</span></div>
-  <div class="mcline" style="border-top:1px solid var(--border2);padding-top:5px"><span><b>= MC líquida</b> <span class="muted" style="font-size:.6rem">(o que sobra p/ cobrir fixo)</span></span><span class="pc" style="color:${mcLiq>0?'var(--gold2)':'var(--red)'}"><b>${pct(mcLiq)}</b></span></div>
-  <div class="bar" style="margin-top:10px"><div class="t"><span>Ponto de equilíbrio (faturamento) <span class="muted" style="font-size:.6rem">= fixo ÷ MC líquida</span></span><span class="pc">${mcLiq>0?fmt(be):'—'}</span></div></div>
-  <div class="bar"><div class="t"><span>Custo fixo a cobrir (R$, sem %)</span><span class="pc">${fmt(fixoBe)}</span></div></div>
-  <div class="bar"><div class="t"><span>Resultado no faturamento informado</span><span class="pc" style="color:${sobra>=0?'var(--green)':'var(--red)'}">${fmt(sobra)}/mês</span></div></div>
-  <p class="hint">Cada comissão em % reduz a MC disponível. ${mcLiq<=0?'<b style="color:var(--red)">MC líquida ≤ 0: as comissões consomem toda a margem — impossível empatar.</b>':`Para empatar, faturar <b style="color:var(--sand)">${fmt(be)}/mês</b>; abaixo disso = prejuízo.`}</p>`;
+ document.getElementById('pess').innerHTML=`<b>CLT salários: ${fmt(cltSal)}</b> + <b style="color:var(--amber)">encargos (auto ${pct(D.encargoCLT)}): ${fmt(enc)}</b> = <b>custo CLT ${fmt(cltSal+enc)}</b><br><b>PJ: ${fmt(pj)}</b> <span class="muted" style="font-size:.6rem">(valor cheio, sem encargos)</span>`;
+}
+function renderGauge(fat,be,mcLiq){
+ const el=document.getElementById('gauge');if(!el)return;
+ const cx=120,cy=140,r=100,max=Math.max(fat,be,1)*1.35;
+ const a=v=>Math.PI-(Math.min(v,max)/max)*Math.PI;
+ const pt=(ang,rad)=>[cx+rad*Math.cos(ang),cy-rad*Math.sin(ang)];
+ const arc=(v0,v1,rad)=>{const[x0,y0]=pt(a(v0),rad),[x1,y1]=pt(a(v1),rad);const large=(a(v0)-a(v1))>Math.PI?1:0;return `M ${x0.toFixed(1)} ${y0.toFixed(1)} A ${rad} ${rad} 0 ${large} 1 ${x1.toFixed(1)} ${y1.toFixed(1)}`;};
+ const redTo=(mcLiq>0&&be>0)?Math.min(be,max):max;
+ let s=`<path d="${arc(0,max,r)}" stroke="rgba(160,104,56,.14)" stroke-width="18" fill="none"/>`;
+ s+=`<path d="${arc(0,redTo,r)}" stroke="#E05555" stroke-width="18" fill="none"/>`;
+ if(mcLiq>0&&be>0&&be<max)s+=`<path d="${arc(be,max,r)}" stroke="#2ECC8A" stroke-width="18" fill="none"/>`;
+ if(mcLiq>0&&be>0){const[bx,by]=pt(a(be),r+13),[bx2,by2]=pt(a(be),r-13);s+=`<line x1="${bx.toFixed(1)}" y1="${by.toFixed(1)}" x2="${bx2.toFixed(1)}" y2="${by2.toFixed(1)}" stroke="var(--sand)" stroke-width="2.5"/>`;}
+ const[nx,ny]=pt(a(fat),r-4);
+ s+=`<line x1="${cx}" y1="${cy}" x2="${nx.toFixed(1)}" y2="${ny.toFixed(1)}" stroke="var(--text)" stroke-width="3" stroke-linecap="round"/><circle cx="${cx}" cy="${cy}" r="6" fill="var(--text)"/>`;
+ el.innerHTML=s;
+}
+function renderWaterfall(fat,mb,com,ml,fixo,res){
+ const el=document.getElementById('waterfall');if(!el)return;
+ const max=Math.max(fat,1);
+ const row=(lbl,start,len,col,val)=>{const left=Math.max(start,0)/max*100,w=Math.max(Math.abs(len)/max*100,0.5);return `<div class="wf-row"><span class="wlbl">${lbl}</span><div class="wf-bar-wrap"><div class="wf-bar" style="left:${left.toFixed(1)}%;width:${Math.min(w,100-left).toFixed(1)}%;background:${col}"></div></div><span class="wf-val" style="color:${col}">${val}</span></div>`;};
+ let h='';
+ h+=row('Faturamento',0,fat,'var(--gold2)',fmt(fat));
+ h+=row('Margem bruta',0,mb,'var(--sand)',fmt(mb));
+ h+=row('− Comissões/RT',mb-com,com,'var(--red)','−'+fmt(com));
+ h+=row('= Margem líquida',0,ml,'var(--amber)',fmt(ml));
+ h+=row('− Custo fixo',Math.max(ml-fixo,0),Math.min(fixo,ml),'var(--red)','−'+fmt(fixo));
+ const resCol=res>=0?'var(--green)':'var(--red)';
+ h+=row('= Resultado',0,Math.max(Math.abs(res),max*0.005),resCol,(res>=0?'+':'')+fmt(res));
+ el.innerHTML=h;
+}
+function renderDonut(){
+ const el=document.getElementById('donut');if(!el)return;
+ const COLORS=['#C8914A','#E05555','#5AA6D6','#2ECC8A','#E09A30','#A06838','#9b6bd6','#888888','#66c2c2','#cc6699'];
+ let data=D.centros.map(c=>({n:c.nome,v:centroTotal(c)})).filter(d=>d.v>0).sort((a,b)=>b.v-a.v);
+ data.forEach((d,i)=>d.c=COLORS[i%COLORS.length]);
+ const tot=data.reduce((s,d)=>s+d.v,0)||1,cx=90,cy=90,r=66,sw=26;
+ let ang=-Math.PI/2,s='';
+ if(data.length===0){s=`<circle cx="90" cy="90" r="66" stroke="rgba(160,104,56,.14)" stroke-width="26" fill="none"/>`;}
+ data.forEach(d=>{const frac=d.v/tot;let a2=ang+(frac>=0.999?1.999:frac*2)*Math.PI;const x0=cx+r*Math.cos(ang),y0=cy+r*Math.sin(ang),x1=cx+r*Math.cos(a2),y1=cy+r*Math.sin(a2);const large=frac>0.5?1:0;s+=`<path d="M ${x0.toFixed(1)} ${y0.toFixed(1)} A ${r} ${r} 0 ${large} 1 ${x1.toFixed(1)} ${y1.toFixed(1)}" stroke="${d.c}" stroke-width="${sw}" fill="none"/>`;ang=a2;});
+ s+=`<text x="90" y="86" text-anchor="middle" fill="var(--sand)" font-family="DM Mono" font-size="14" font-weight="700">${fmt(tot)}</text><text x="90" y="101" text-anchor="middle" fill="var(--muted)" font-family="DM Sans" font-size="8" letter-spacing="1">CUSTO TOTAL</text>`;
+ el.innerHTML=s;
+ const lg=document.getElementById('dlegend');if(lg)lg.innerHTML=data.map(d=>`<li><span class="dot" style="background:${d.c}"></span><span class="dn">${d.n}</span><span class="dv">${fmt(d.v)}</span><span class="dp">${(d.v/tot*100).toFixed(1)}%</span></li>`).join('');
 }
 function render(){renderDash();renderTree();save();}
 function refreshTotals(){D.centros.forEach((c,ci)=>{const e=document.getElementById('ct-c'+ci);if(e)e.textContent=fmt(centroTotal(c));c.cats.forEach((k,ki)=>{const ek=document.getElementById('ct-k'+ci+'-'+ki);if(ek)ek.textContent=fmt(catTotal(k));k.itens.forEach((it,ii)=>{const ca=document.getElementById('calc-'+ci+'-'+ki+'-'+ii);if(ca)ca.textContent=it.unidade!=='R$'?'= '+fmt(itTotal(it))+'/mês':'';const en=document.getElementById('enc-'+ci+'-'+ki+'-'+ii);if(en)en.textContent=fmt(encargoOf(it));const sb=document.getElementById('sub-'+ci+'-'+ki+'-'+ii);if(sb){if(it.unidade==='Parcela')sb.innerHTML=parcText(parcInfo(it));else if(it.unidade==='Depreç.')sb.textContent='= '+fmt(itTotal(it))+'/mês';}});});});}

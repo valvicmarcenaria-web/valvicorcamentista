@@ -196,6 +196,24 @@ Break-even    = Custo fixo BE ÷ (MC líquida / 100)
 fixos em R$ ignorando os %. Se MC líquida ≤ 0, as comissões consomem toda a
 margem (impossível empatar) — sinalizar em vermelho.
 
+## Dashboard visual em SVG puro (custo-operacao — Rodrigo)
+
+A "Leitura do mês" usa 4 módulos desenhados à mão (sem biblioteca externa, mantém offline):
+- **Hero veredito** (`#hero`): Resultado R$ +/− com cor por faixa (`neg`/`warn`/`pos`); `warn` quando 0 < resultado < 2% do faturamento ("no azul por um triz"). Chip de MC com `mcBand()` (vermelho <30%, âmbar 30-43%, verde >43%).
+- **Velocímetro** (`renderGauge`): semicírculo SVG, zona vermelha 0→break-even, verde BE→max. Ponteiro = faturamento. **Usar `var(--text)`/`var(--sand)` nos traços** (não cores fixas) senão o ponteiro some no tema claro.
+- **Cascata** (`renderWaterfall`): Faturamento → Margem bruta → −Comissões → Margem líquida → −Custo fixo → Resultado. Barras com `left%`/`width%`.
+- **Rosca** (`renderDonut`): anel por centro de custo + legenda R$/%.
+
+Todos chamados dentro de `renderDash()` → recalculam ao vivo. Em SVG inline, custom properties CSS (`var(--…)`) funcionam para `stroke`/`fill` e respeitam o tema.
+
+## Painel "Dúvidas & Decisões" (validacao-orcamento — Lavinia) — INTERNO
+
+Registra perguntas que **destravam o orçamento** (para Cliente/Arquiteto/Jonathan) e a **decisão** que vira briefing herdado pela produção. Estado em `S.duvidas=[]` (item: `{texto,para,cat,status,decisao}`).
+- Abertas no topo, resolvidas abaixo de divider (`renderDuvidas` ordena).
+- `setDuvDec` salva **sem re-render** (preserva foco ao digitar a decisão); selects (`setDuv`) re-renderizam (reordenam por status).
+- `esc()` em todo texto do usuário (anti-XSS no template string).
+- **REGRA:** marcado `no-print` + flag visual "uso interno — não enviar ao cliente". O validador hoje só exporta JSON (uso interno); se um dia houver proposta para cliente, este painel e o alerta de MC ficam de fora.
+
 ## Schema normalize — prevenção de tela branca
 
 Sempre que o estado é carregado do `localStorage` ou de um JSON importado, validar
