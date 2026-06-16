@@ -1,9 +1,13 @@
 # Dúvidas para a arquiteta — Marcenaria Kênia & Fábio
 
-> Para enviar à **Inédita Arquitetura** (Flávia · @ineditaarquitetura).
+> ✅ **RESOLVIDO — 16/06/2026.** Todas as 5 dúvidas respondidas pela Flávia (Inédita
+> Arquitetura). Profundidades atualizadas em `2026-kenia-e-fabio-casa-completa.md`.
+> Plano de corte pode avançar.
+
+> ~~Para enviar à **Inédita Arquitetura** (Flávia · @ineditaarquitetura).
 > Geradas no levantamento do orçamento (Valvic, jun/2026), a partir do executivo
 > RES.KF_*_R01 (rev. 02). São pontos onde o desenho ficou ambíguo para fechar o
-> plano de corte. O restante do projeto está claro.
+> plano de corte. O restante do projeto está claro.~~
 
 ---
 
@@ -53,5 +57,10 @@ Obrigada! Assim que confirmar a gente fecha o orçamento. 😊
 > ~35, sapateira ~30). Cor/ambiente de todos confirmados pela tabela-mestra F02.
 > M26 (Circulação, Itapuã) já resolvido — não precisa perguntar.
 
-**Status:** aguardando retorno da arquiteta. Quando responder, atualizar a tabela
-de profundidades em `2026-kenia-e-fabio-casa-completa.md` e liberar o plano de corte.
+**Status:** ✅ **FECHADO — 16/06/2026.** Respostas da Flávia:
+- Q1 (identidades M20/M21/M22): ✅ Todas corretas.
+- Q2 (M20 prof.): **60 cm** (era 42 na leitura).
+- Q3 (M21 prof.): **85 cm** (confirmado manter).
+- Q4 (M23 prof.): **35 cm** (era ~100, que era a largura).
+- Q5 (M24 prof.): **39 cm** (era ~100, que era a largura).
+Tabela de profundidades atualizada em `2026-kenia-e-fabio-casa-completa.md`. Plano de corte liberado.

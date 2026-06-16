@@ -3,9 +3,10 @@
 > **PROJETO GRANDE — orçamento da marcenaria da casa inteira.** Executivo
 > `RES.KF_*_R01` (Inédita Arquitetura, rev. 02, 22/04/2026). 3 pavimentos
 > (subsolo, térreo, 1º pavimento). 84 pranchas no Drive.
-> **Status: Fase 1 quase concluída — TODAS as 28 pranchas DET MARC (F56–F84)
-> extraídas (~60 módulos M01–M68 + P##/S##).** Próximo: consolidar plano de corte
-> por ambiente → app → MC. Lavinia, jun/2026.
+> **Status: Fase 1 ✅ CONCLUÍDA — 28 pranchas DET MARC (F56–F84) extraídas
+> (~60 módulos M01–M68 + P##/S##). Profundidades confirmadas pela arquiteta
+> (16/06/2026).** Próximo: consolidar plano de corte por cor de MDF → app → MC.
+> Lavinia, jun/2026.
 
 Pasta Drive: `16JhpcFk8z9IiuBOrYwn_rRxxmsg1_jTO`
 
@@ -34,6 +35,11 @@ da casa, espelhos prontos (E##), metais/louças, forro de gesso/muxarabi.
 
 > Regra prática: se o item está **dentro/sobre/sustentando um móvel Valvic** → nosso.
 > Se é acabamento da obra (bancada de pedra, box, guarda-corpo, forro) → terceiro do cliente.
+
+> ⛔ **REGRA JONATHAN (16/06/2026):** **Nunca levar pedras em consideração no orçamento.**
+> Marmoraria é SEMPRE responsabilidade do cliente — granito, mármore, travertino, sóculos
+> e escadas de pedra estão fora do escopo Valvic em qualquer hipótese. Nossos móveis
+> *recebem* a pedra (M07/M19/M20/M22/M35/M52/M53/M54 etc.), mas a pedra em si é terceiro.
 
 #### Marmoraria do projeto (F01 — TERCEIRO, NÃO orçar; só p/ saber o que casa com nossos móveis)
 19 bancadas/peças de pedra (B01–B19): **Granito Bege Bahia** (I.S. Subsolo B01,
@@ -380,42 +386,42 @@ Banho Semi Suíte, Quarto Hóspedes, Rouparia, Banho Suíte 01.
 ---
 
 ## Próximos passos
+
+### ✅ FASE 1 — CONCLUÍDA (16/06/2026)
 1. ~~Concluir extração F57–F84~~ ✅ **FEITO** (28 pranchas, ~60 módulos).
-2. **Resolver pendências de medida** (via TABELA-MESTRA F02 + VISTAS):
-   - ~~Numeração duplicada **M22**~~ → ✅ RESOLVIDO: **M22 NÃO é duplicado**. Existe 1×
-     na tabela (Gourmet, Areia). A confusão veio de o agente ter rotulado a F66 como
-     "cozinha" — é **Gourmet** (M22/M23/M24). Cozinha = M18/M19/M20/M21/M55/M68.
-   - ~~Cor do M26~~ → ✅ RESOLVIDO: **Itapuã**, ambiente **Circulação**.
-   - ~~Ambientes "DIVERSOS"~~ → ✅ RESOLVIDO: ver TABELA-MESTRA (todos mapeados).
-   - Módulos repetidos a contar 1×: **P06/M50** (mesmo elemento — M50 = P06 na tab.
-     de portas), **M40** (F71/F74), conjunto **M15/M16/M17** (F62=F63). *(M40/M41
-     da tabela são módulos DISTINTOS da Suíte 02 — não confundir com o "M41" que o
-     agente viu repetido em F70/F73; conferir na consolidação.)*
-   - ✅/⚠️ **Profundidades** (lidas nos cortes — ver tabela abaixo):
+2. ~~Resolver pendências de medida~~ ✅ **FEITO** (arquiteta confirmou 16/06/2026):
+   - ~~Numeração duplicada **M22**~~ → ✅ Não é duplicado. M22 = Gourmet (Areia). Confirmado.
+   - ~~Cor do M26~~ → ✅ Itapuã, Circulação.
+   - ~~Ambientes "DIVERSOS"~~ → ✅ Todos mapeados pela tabela-mestra.
+   - ~~Identidades M20/M21/M22~~ → ✅ Confirmadas pela arquiteta.
+   - Módulos repetidos a contar 1×: **P06/M50**, **M40** (F71/F74), **M15/M16/M17** (F62=F63).
+   - ✅ **Profundidades — TODAS CONFIRMADAS** (arquiteta Flávia/Inédita, 16/06/2026):
 
-| Módulo | Prof. lida | Confiança | Observação |
+| Módulo | Prof. confirmada | Fonte | Observação |
 |---|---|---|---|
-| M19 (ilha cozinha) | **~60 cm** | ✅ boa | base sob bancada M68; 58 interno + 2. Padrão. |
-| M20 (torre eletros) | 42 cm | ⚠️ suspeita | torre de eletros costuma ter ~60; 42 pode ser só a báscula. Conferir. |
-| M21 (cristaleira piso-teto) | 85 cm | ⚠️ suspeita | incomum; prateleiras de vidro. Conferir corte. |
-| M22 (Gourmet sob bancada) | **~72 cm** | ✅ boa | bate com bancada Gourmet B06 (75cm). |
-| M23 (Gourmet prateleira) | ~100 cm | 🔴 duvidosa | prateleira iluminada não teria 100 de prof. — provável largura. Reler. |
-| M24 (Gourmet alto ripado) | ~100 cm | 🔴 duvidosa | armário alto normalmente ~35. Reler. |
-| M31 (sapateira Suíte 03) | **~29–30 cm** | ✅ boa | coerente c/ sapateira. |
+| M19 (ilha cozinha) | **60 cm** | ✅ leitura prancha | base sob bancada M68. Padrão. |
+| M20 (torre eletros) | **60 cm** | ✅ arquiteta | era 42 na leitura; confirmado 60 pela Flávia. |
+| M21 (cristaleira piso-teto) | **85 cm** | ✅ arquiteta | incomum mas correto — confirmado manter 85. |
+| M22 (Gourmet sob bancada) | **~72 cm** | ✅ leitura prancha | bate com bancada Gourmet B06 (75cm). |
+| M23 (Gourmet prateleira iluminada) | **35 cm** | ✅ arquiteta | era ~100 (lido como largura); prof. real = 35. |
+| M24 (Gourmet alto ripado) | **39 cm** | ✅ arquiteta | era ~100 (lido como largura); prof. real = 39. |
+| M31 (sapateira Suíte 03) | **~30 cm** | ✅ leitura prancha | coerente c/ sapateira. |
 
-> ⚠️ **Inconsistência de numeração cozinha/Gourmet:** as pranchas F65/F66 rotulam
-> M20/M21/M22 de forma cruzada vs a tabela-mestra. **Vale a tabela-mestra F02.**
-> Antes do plano de corte, **confirmar com a arquiteta** as profundidades 🔴/⚠️
-> (M20, M21, M23, M24) — ou medir in loco (as próprias pranchas pedem "conferir no local").
-> Para o restante dos módulos, adotar profundidades-padrão Valvic: base sob bancada
-> ~60, armário alto/superior ~35, prateleira conforme nicho.
+> ✅ **Identidades M20/M21/M22 confirmadas pela arquiteta (16/06/2026):**
+> M20 = torre de eletros (cozinha) · M21 = cristaleira piso-teto c/ vidro reflecta bronze (cozinha)
+> · M22 = armário sob bancada c/ gaveta porta-espetos (Gourmet). Tudo correto conforme tabela-mestra F02.
+> Demais módulos: profundidades-padrão Valvic (base sob bancada ~60, alto/superior ~35,
+> sapateira ~30). **Nenhuma dúvida de medida aberta — plano de corte pode avançar.**
+### 🔴 FASE 2 — A FAZER (próxima sessão)
 3. **Consolidar plano de corte por cor de MDF** (Areia / Itapuã / Branco TX /
-   Azul Profundo) e por espessura → m² de chapa + fita + ferragens.
+   Azul Profundo) e por espessura → m² de chapa + fita + ferragens por cor.
 4. **Lançar no app** (validacao-orcamento.html) por ambiente.
-5. **Fechar por MC (Fase 2):** projeto grande → **MC ≥ 40% + entrada 40%** (Rodrigo).
-   Terceiros que entram com markup: vidros/espelhos, serralheria de apoio (metalon
-   champagne M17, perfis "L"), LED. Fora: marmoraria, cofre, elevador, box.
-6. Estratégia/proposta (Fase 3) com o Vitor.
+5. **Fechar por MC:** projeto grande → **MC ≥ 40% + entrada 40%** (Rodrigo — caixa crítico).
+   Terceiros com markup: vidros/espelhos (R$1.595 já cotados), serralheria de apoio
+   (metalon champagne M17, perfis "L"), LED. Fora do escopo: marmoraria ⛔, cofre, elevador, box.
+
+### 🟡 FASE 3 — Proposta
+6. Estratégia/proposta com o Vitor (comercial).
 
 ## Inventário de módulos (por pavimento/ambiente — para o app)
 > ~60 módulos extraídos. Organização para lançamento (refinar profundidades antes do corte):
