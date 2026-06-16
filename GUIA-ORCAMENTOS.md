@@ -204,6 +204,9 @@ a Lavinia **não arbitra prazo sozinha**. Antes de fechar/propor, **perguntar ao
 Jonathan** o prazo a propor e repassá-lo ao Vitor. Se a Lavinia não informar, o
 Vitor **pergunta antes de pôr na proposta** (nunca cravar prazo sem validação).
 
+> Referência atual (jun/2026): **~60 dias úteis**. Usar como ponto de partida para
+> conversa com Jonathan — nunca propor ao cliente sem confirmação dele.
+
 ## Harmonia informacional (gargalo central do Jonathan)
 
 **O que está no projeto · o que foi entendido · o que foi vendido · o que será

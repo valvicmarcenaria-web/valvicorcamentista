@@ -1,20 +1,31 @@
 # Método de vendas do Vitor — da proposta ao fechamento
 
-## Princípio: o cliente é o herói, a Valvic é o guia
+## Princípio central: Vitor vende EXECUÇÃO
 
-A narrativa começa no **sonho/dor do cliente** (casa organizada, ambiente dos
-sonhos), não na empresa. A Valvic é quem **guia** até lá. Evitar abrir a proposta
-com "A Valvic tem o compromisso…" — abrir com o cliente.
+**O projeto é do arquiteto e do cliente. A Valvic vende a capacidade de executá-lo.**
+
+O cliente já quer o ambiente — a pergunta que ele ainda não respondeu é: *quem eu
+confio para fazer isso acontecer?* O Vitor responde essa pergunta, não a pergunta
+"você vai ficar feliz com o resultado" (isso é pressuposto).
+
+- ❌ Errado: "Você vai ter um escritório lindo e produtivo" → vende o projeto (papel do arquiteto)
+- ✅ Certo: "A bancada em L de 3,5m que a Carolina projetou exige encaixe milimétrico e
+  estrutura de serralheria — é o tipo de peça que testa a marcenaria. A nossa faz com margem."
+- ✅ Certo: "Cada gaveta desse gaveteiro roda em corrediça oculta Hardt testada em 80k ciclos.
+  A garantia de 5 anos que damos é porque sabemos o que colocamos dentro."
+
+**O cliente precisa sair da conversa convicto de que a Valvic é a marcenaria certa para
+executar aquele projeto específico** — não entusiasmado com o projeto em si.
 
 ## Estrutura persuasiva da proposta (ordem que converte)
 
 1. **Capa** — "proposta especial para [Nome]" + render do projeto dele.
-2. **Conexão** — o sonho/contexto do cliente + 1-2 frases ESPECÍFICAS do projeto
-   (o conceito da arquiteta, o desafio daquele ambiente). Personalização real.
-3. **Autoridade técnica** — configuração dos móveis (ferragens, sistemas, espessuras)
-   traduzida em valor.
-4. **Prova social** — cases de desafios resolvidos (ver valor-do-produto).
-5. **Processo** — linha do tempo (transmite segurança e organização).
+2. **Conexão** — o desafio técnico DO PROJETO deles + como a Valvic está equipada para ele.
+   (não "o sonho", mas "o que torna ESSE projeto exigente e por que somos a escolha certa")
+3. **Autoridade de execução** — configuração dos móveis (ferragens, sistemas, espessuras)
+   como prova de competência técnica. Cada feature = prova de que sabemos executar.
+4. **Prova social** — cases de desafios técnicos resolvidos (não "ficou bonito", mas "foi complexo e fizemos").
+5. **Processo** — linha do tempo (transmite organização e segurança de quem já fez isso antes).
 6. **Investimento** — versões ancoradas (cara → essencial) + condições.
 7. **Garantia** — conforme a ferragem (reforça confiança bem ao lado do preço).
 8. **Próximo passo (CTA)** — uma ação clara + validade (urgência).
@@ -47,8 +58,8 @@ Quanto mais o cliente antecipa, maior o desconto. Puxa caixa sem destruir margem
 
 ## Roteiro de fechamento (apresentação da proposta)
 
-1. **Recapitular o sonho** do cliente (mostra que escutou).
-2. **Passear pelo valor** antes do preço (autoridade + cases).
+1. **Recapitular o projeto** — mostra que leu com cuidado (desafio técnico específico, não elogio genérico).
+2. **Demonstrar domínio da execução** — "esse tipo de peça exige X, e a gente faz assim…" (antes do preço).
 3. **Apresentar o investimento** com naturalidade, ancorando na versão completa.
 4. **Silêncio após o preço** — quem fala primeiro perde. Deixar o cliente reagir.
 5. **Conduzir para a condição** (qual forma de pagamento faz mais sentido pra você?)
