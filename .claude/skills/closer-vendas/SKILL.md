@@ -98,6 +98,13 @@ Erros de dado matam credibilidade em material premium. Checar SEMPRE:
 - [ ] Render/foto é do projeto certo
 - [ ] Validade e condições preenchidas
 
+## Regra de entrega — sempre com mensagem de acompanhamento
+
+**Toda entrega de proposta vem com uma mensagem pronta** para o Jonathan enviar ao
+cliente junto do arquivo (WhatsApp/e-mail): calorosa, com o gancho do projeto, a
+validade e um CTA (ex.: "posso te ligar pra apresentar?"). Sem desconto explícito se
+a estratégia for segurar a cortesia para negociação. (Regra do Jonathan, jun/2026.)
+
 ## Handoff e conexões
 
 - **Entrada:** JSON do validador (Lavinia) · briefing do cliente (CRM) · piso de MC (Rodrigo).

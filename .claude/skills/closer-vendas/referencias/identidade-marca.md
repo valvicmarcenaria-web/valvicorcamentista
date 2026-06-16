@@ -70,3 +70,19 @@ Projeto completo de casa (multi-ambiente). Estrutura de 6+ páginas:
 ## Ativos
 - **Master:** `proposta_bruna_ferreira` (Canva).
 - **Logo/fontes exatas:** não há manual — confirmar fontes com Jonathan quando possível.
+
+## Acervo de imagens de serviços (Drive) — fonte para as propostas
+
+Pasta-raiz do acervo (fotos reais de projetos executados, para compor propostas):
+**https://drive.google.com/drive/folders/1eUnLV1GsOo4X5SSxNzbVLVfL4Wgjf2OM**
+(ID `1eUnLV1GsOo4X5SSxNzbVLVfL4Wgjf2OM`)
+
+Subpastas úteis (ambiente → onde buscar):
+- **Home office / escritório:** `leyde_contagem` (apto Contagem, ~20 fotos), `Escritório Marco Túlio`, `Mesas corporativas`, `marco_tulio`
+- **Equipe / institucional:** `Fotos _equipe`, `insititucionais`, `Bastidores`
+- **Casas completas (cases):** `casa_richard_fazendas_da_serra`, `Casa graciane`, etc.
+
+> Imagens são `image/jpeg`. O `read_file_content` **não descreve** fotos (volta vazio);
+> para escolher visualmente, baixar via `download_file_content` (base64) e abrir, ou
+> pedir ao Jonathan o nº da foto. Para inserir no Canva: `upload-asset-from-url` com
+> URL direta `https://drive.google.com/uc?export=download&id=<FILE_ID>` → `update_fill`.
