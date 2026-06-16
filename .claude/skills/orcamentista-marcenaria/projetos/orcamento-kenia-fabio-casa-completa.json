@@ -7,7 +7,7 @@
   "p": {
     "nf": 7,
     "parc": 7,
-    "vend": 5,
+    "vend": 0,
     "rt": 10,
     "vis": 250,
     "outv": 0,
@@ -948,34 +948,5 @@
   "theme": "dark",
   "diretrizes": "ORÇAMENTO CASA COMPLETA — Kênia & Fábio (arq. Inédita/Flávia). ~60 módulos, 3 pavimentos, 15 ambientes.\nLevantamento Fase 1 (estimativa que erra p/ cima) — refinar com plano de corte real antes de produção.\nREGRA JONATHAN: pedra/marmoraria NUNCA entra (cliente). Bancadas, sóculos e escadas de pedra = fora.\nEscopo Valvic: MDF + ferragens + vidros/espelhos dos móveis + serralheria de apoio + LED embutido.\nREGRA JONATHAN (rev2): chapa INTEIRA por ambiente — fração arredonda SEMPRE pra cima (3,8 = 4).\nESTRUTURA INTERNA EM BRANCO TX em TODOS os ambientes: ~50% do 15mm (corpo/caixa) vai p/ Branco TX,\n  ~50% (portas/faces aparentes) fica na cor; fundos 6mm em Branco TX (acento decorativo p.ex. Azul fica na cor).\n  >> SPLIT 50/50 é ESTIMATIVA Fase 1 — Jonathan vai validar o quantitativo da Lavinia antes de fechar.\nPuxador = CAVA 35° USINADA (não perfil). Ferragens Hettich (dobradiça Novisys, corrediça Oculta Quadro).\nLogística POR AMBIENTE: R$300 (material bruto) + R$400 (equipe) = R$700. Portas de vidro = ESQUADRIA.\n  Itapuã/Areia/Azul = \"MDF cor\" R$500/15mm, R$300/6mm; Branco TX R$260/15mm, R$190/6mm.\nConfirmar antes do corte: (1) corrediça telescópica vs oculta (custo/garantia); (2) M12 18 vs 20mm;\n(3) RT da arquiteta (10% líq. embutido — se não houver parceria, MC sobe ~+4 pts).",
   "rodrigo": "Rodrigo (jun/2026, caixa CRÍTICO): projeto grande (>R$80k) -> MC mínima 40% + ENTRADA 40% antes de produção,\nparcelas vinculadas a etapas de entrega. Alvo deste orçamento = 42% (margem p/ Vitor negociar até o piso 40%).\nNÃO ceder abaixo de 40%. Sem entrada real, não fecha. Encargos com NF 7%, parcelamento 7%, comissão Vitor 5%, RT 10%.\nANCORAGEM (Vitor): apresentar o TOTAL da casa primeiro (âncora); só então abrir por ambiente. Pacote completo\notimiza corte/frete -> melhor custo por m² que ambiente avulso. Suíte Master é o ambiente de maior valor (âncora interna).",
-  "duvidas": [
-    {
-      "texto": "Corrediça: telescópica reforçada c/ amortecedor (padrão) ou oculta? Muda custo (40 vs 70/par) e garantia.",
-      "para": "Jonathan",
-      "cat": "sistema",
-      "status": "resolvida",
-      "decisao": "Hettich Oculta Quadro (R$120) — padrão do projeto."
-    },
-    {
-      "texto": "Prateleiras da despensa (M12): manter 20mm do projeto ou padronizar 18mm Valvic?",
-      "para": "Jonathan",
-      "cat": "material",
-      "status": "aberta",
-      "decisao": ""
-    },
-    {
-      "texto": "RT da arquiteta (Inédita/Flávia): há parceria com RT de 10%? Se não, retirar (MC sobe ~+4 pts).",
-      "para": "Jonathan",
-      "cat": "acabamento",
-      "status": "aberta",
-      "decisao": ""
-    },
-    {
-      "texto": "Painel estofado em linho cinza (M44, cabeceira em U): tapeçaria por conta da Valvic (markup) ou direto do cliente?",
-      "para": "Arquiteto",
-      "cat": "acabamento",
-      "status": "aberta",
-      "decisao": ""
-    }
-  ]
+  "duvidas": []
 }
