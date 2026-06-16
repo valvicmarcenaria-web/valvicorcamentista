@@ -191,6 +191,9 @@
       content: 'DETALHE DO ACABAMENTO';
       font-size: 8px; letter-spacing: .3em; color: rgba(196,154,74,.25); font-family: var(--fb);
     }
+    #p2-url-row { display: none; position: absolute; bottom: 8px; left: 8px; right: 8px; z-index: 5; }
+    #p2-url-row input { width: 100%; padding: 6px 10px; background: rgba(0,0,0,.7); border: 1px solid var(--gold); border-radius: 4px; color: var(--gold); font-size: 10px; font-family: var(--fm); outline: none; }
+    #p2-url-row input::placeholder { color: var(--gold-40); }
     /* SVG callout overlay */
     #p2 .callout-svg {
       position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
@@ -268,7 +271,12 @@
     /* ================================================================
        PAGE 4 — LINHA DO TEMPO
     ================================================================ */
-    #p4 { background: var(--graphite); display: flex; flex-direction: column; height: var(--ph); }
+    #p4 { background: var(--graphite); display: flex; flex-direction: column; height: var(--ph); position: relative; }
+    #p4-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .18; display: none; z-index: 0; }
+    #p4 > *:not(#p4-bg) { position: relative; z-index: 1; }
+    #p4-url-row { display: none; position: absolute; bottom: 58px; left: 60px; right: 60px; z-index: 10; }
+    #p4-url-row input { width: 100%; padding: 6px 10px; background: rgba(0,0,0,.7); border: 1px solid var(--gold); border-radius: 4px; color: var(--gold); font-size: 10px; font-family: var(--fm); outline: none; }
+    #p4-url-row input::placeholder { color: var(--gold-40); }
 
     #p4 .p4-head { padding: 52px 60px 36px; border-bottom: 1px solid rgba(196,154,74,.1); }
     #p4 .p4-eyebrow { font-size: 9px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: rgba(196,154,74,.6); margin-bottom: 10px; }
@@ -509,6 +517,9 @@
     <div class="photo-col">
       <img id="p2-img" src="" alt="Detalhe" />
       <div id="p2-ph" class="photo-ph"></div>
+      <div id="p2-url-row">
+        <input type="text" id="tk-p2-url" placeholder="URL da foto (detalhe de acabamento)" oninput="setP2(this.value)" />
+      </div>
       <!-- Callout SVG overlay -->
       <svg class="callout-svg" viewBox="0 0 397 480" xmlns="http://www.w3.org/2000/svg">
         <g opacity=".65">
@@ -560,12 +571,12 @@
 
       <div class="dif">
         <div class="dif-ico">
-          <svg viewBox="0 0 24 24"><path d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z"/><path d="M9 9h.01M15 9h.01M9 15h6"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
         </div>
         <div>
-          <div class="dif-title">Fita de borda 0,4 mm sem emenda</div>
-          <div class="dif-spec">ABS COLADO A LASER · ACABAMENTO EUROPEU</div>
-          <div class="dif-desc">O detalhe que você toca todo dia. Borda sem cola aparente, sem fio de separação. A marcenaria que envelhece bem.</div>
+          <div class="dif-title">Acabamento de laca aplicado em cabine</div>
+          <div class="dif-spec">LACA PU · LIXAMENTO ENTRE DEMÃOS · SUPERFÍCIE UNIFORME</div>
+          <div class="dif-desc">O acabamento que você vê e toca todo dia. Pintura em cabine própria, com lixamento entre camadas, para uma superfície aveludada e uniforme — sem casca de laranja, sem retoque amador.</div>
         </div>
       </div>
 
@@ -681,6 +692,10 @@
      PAGE 4 — LINHA DO TEMPO
 ================================================================ -->
 <section class="page" id="p4">
+  <img id="p4-bg" src="" alt="" />
+  <div id="p4-url-row">
+    <input type="text" id="tk-p4-url" placeholder="URL da foto de fundo (opcional)" oninput="setP4(this.value)" />
+  </div>
 
   <div class="p4-head">
     <div class="p4-eyebrow">Daqui em diante</div>
@@ -932,8 +947,38 @@
 
 
 <script>
-  const SK = 'valvic_excellence_v2';
-  const S  = loadS();
+  const SK = 'valvic_excellence_fabio';
+
+  const DEFAULTS = {
+    NOME_CLIENTE:   'Fábio',
+    PROJETO:        'Projeto Fábio',
+    DATA_PROPOSTA:  '16/06/2026',
+    FERRAGEM:       'Hettich Quadro',
+    MATERIAL:       'MDF 18mm',
+    ACABAMENTO:     'Laca PU fosca',
+    DEPOIMENTO:     'Eu estou apaixonada... e não é só pela beleza... mas o comprometimento e dedicação desde o orçamento, até execução e entrega. Indico de olhos fechados!!! Muitíssimo obrigada...',
+    DEP_AUTOR:      'Graciene',
+    DEP_PROJETO:    'Vale dos Cristais',
+    DEP_CAPTION:    'Projeto executado · Vale dos Cristais',
+    PRAZO:          '45',
+    GARANTIA_ANOS:  '10',
+    HERO_URL:   'https://drive.google.com/thumbnail?id=1tIPkB_fxt1DYWHcj3-s5tdVyM7jocaTa&sz=w1200',
+    P2_URL:     'https://drive.google.com/thumbnail?id=1SQriQN8H4RD2yjHQoLm84HQ65DCoQE1p&sz=w1200',
+    RENDER_URL: 'https://drive.google.com/thumbnail?id=1uvflYxeVe0QkPMfWEOml6xPmR48f90ZY&sz=w1200',
+    P4_URL:     'https://drive.google.com/thumbnail?id=1-viTHOJ1WZz9fJTX4PmUoADpZcf1ZOVR&sz=w1200',
+    P5_URL:     'https://drive.google.com/thumbnail?id=1MsmhniA_z1HXRBw_bQ7D-VgujrDDxLNH&sz=w1200',
+  };
+
+  const S = Object.assign({}, DEFAULTS, loadS());
+
+  function driveThumb(url) {
+    if (!url) return url;
+    const m = url.match(/\/file\/d\/([^\/\?]+)/);
+    if (m) return `https://drive.google.com/thumbnail?id=${m[1]}&sz=w1200`;
+    const m2 = url.match(/[?&]id=([^&]+)/);
+    if (m2) return `https://drive.google.com/thumbnail?id=${m2[1]}&sz=w1200`;
+    return url;
+  }
 
   function init() {
     document.querySelectorAll('.token[data-key]').forEach(el => {
@@ -941,7 +986,9 @@
       if (S[k]) el.textContent = S[k];
     });
     if (S.HERO_URL)   { document.getElementById('tk-hero-url').value   = S.HERO_URL;   setHero(S.HERO_URL); }
+    if (S.P2_URL)     { document.getElementById('tk-p2-url').value     = S.P2_URL;     setP2(S.P2_URL); }
     if (S.RENDER_URL) { document.getElementById('tk-render-url').value = S.RENDER_URL; setRender(S.RENDER_URL); }
+    if (S.P4_URL)     { document.getElementById('tk-p4-url').value     = S.P4_URL;     setP4(S.P4_URL); }
     if (S.P5_URL)     { document.getElementById('tk-p5-url').value     = S.P5_URL;     setP5(S.P5_URL); }
     if (S.rows_c)     restoreRows('completa',  S.rows_c);
     if (S.rows_e)     restoreRows('essencial', S.rows_e);
@@ -951,7 +998,7 @@
     const on = document.body.classList.toggle('edit-mode');
     document.getElementById('btn-edit').textContent = on ? '✓ Concluir' : '✏ Editar';
     document.querySelectorAll('.token[data-key], .editable-cell').forEach(el => { el.contentEditable = on; });
-    ['hero-url-row','render-url-row','p5-url-row'].forEach(id => {
+    ['hero-url-row','p2-url-row','render-url-row','p4-url-row','p5-url-row'].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.style.display = on ? 'block' : 'none';
     });
@@ -973,20 +1020,32 @@
   }, true);
 
   function setHero(url) {
-    const img = document.getElementById('hero-img'), ph = document.getElementById('hero-ph');
-    if (url && url.trim()) { img.src = url.trim(); img.style.display = 'block'; ph.style.display = 'none'; S.HERO_URL = url.trim(); saveS(); }
+    const t = driveThumb(url); const img = document.getElementById('hero-img'), ph = document.getElementById('hero-ph');
+    if (t && t.trim()) { img.src = t.trim(); img.style.display = 'block'; ph.style.display = 'none'; S.HERO_URL = t.trim(); saveS(); }
+    else { img.style.display = 'none'; ph.style.display = 'flex'; }
+  }
+
+  function setP2(url) {
+    const t = driveThumb(url); const img = document.getElementById('p2-img'), ph = document.getElementById('p2-ph');
+    if (t && t.trim()) { img.src = t.trim(); img.style.display = 'block'; ph.style.display = 'none'; S.P2_URL = t.trim(); saveS(); }
     else { img.style.display = 'none'; ph.style.display = 'flex'; }
   }
 
   function setRender(url) {
-    const img = document.getElementById('render-img'), ph = document.getElementById('render-ph');
-    if (url && url.trim()) { img.src = url.trim(); img.style.display = 'block'; ph.style.display = 'none'; S.RENDER_URL = url.trim(); saveS(); }
+    const t = driveThumb(url); const img = document.getElementById('render-img'), ph = document.getElementById('render-ph');
+    if (t && t.trim()) { img.src = t.trim(); img.style.display = 'block'; ph.style.display = 'none'; S.RENDER_URL = t.trim(); saveS(); }
     else { img.style.display = 'none'; ph.style.display = 'flex'; }
   }
 
+  function setP4(url) {
+    const t = driveThumb(url); const img = document.getElementById('p4-bg');
+    if (t && t.trim()) { img.src = t.trim(); img.style.display = 'block'; S.P4_URL = t.trim(); saveS(); }
+    else { img.style.display = 'none'; }
+  }
+
   function setP5(url) {
-    const img = document.getElementById('p5-img'), ph = document.getElementById('p5-ph');
-    if (url && url.trim()) { img.src = url.trim(); img.style.display = 'block'; ph.style.display = 'none'; S.P5_URL = url.trim(); saveS(); }
+    const t = driveThumb(url); const img = document.getElementById('p5-img'), ph = document.getElementById('p5-ph');
+    if (t && t.trim()) { img.src = t.trim(); img.style.display = 'block'; ph.style.display = 'none'; S.P5_URL = t.trim(); saveS(); }
     else { img.style.display = 'none'; ph.style.display = 'flex'; }
   }
 
