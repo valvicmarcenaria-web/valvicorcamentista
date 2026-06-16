@@ -98,7 +98,96 @@ Banho Semi Suíte, Quarto Hóspedes, Rouparia, Banho Suíte 01.
 > c/ amortecedor; gavetas telescópicas reforçadas c/ amortecedor; puxador cava (ver
 > detalhe); conferir tomadas para recorte; **CONFERIR MEDIDAS NO LOCAL** (sempre).
 
-*(F57–F84: em extração)*
+*(F57–F70: em extração — 2 agentes)*
+
+### F71–F77 — extraído (✅)
+
+> ⚠️ **Anti-duplicação:** os módulos **M40** (F71/F74) e **P06** (F71/F74/F77) se
+> repetem entre pranchas — são o mesmo elemento em vistas/cortes diferentes.
+> Contar UMA vez no orçamento.
+
+**F71 — Escritório + passagem**
+- **M32** — Painel cortineiro iluminado + espelho jateado + escrivaninha embutida ~130×195, tampo a 75, P~27. MDF **Areia**. Gaveteiro lateral; cortineiro LED; espelho película jateada (LED frontal, prever troca da fita).
+- **M40** — Espelho jateado dentro do M32 (vão 102×181). LED. *(repete em F74)*
+- **M34/P06** — Painel piso-teto c/ porta de correr mimetizada + bandeira fixa ~155×270. MDF **Areia**. Porta correr 72×210 esp.4, puxador cava 5, tranca+chave. Perfil metálico "L" no piso. *(P06 repete F74/F77)*
+
+**F72 — Suíte casal**
+- **M38** — Cabeceira curva iluminada ~365×120 (topo curvo R30). MDF **Areia**. LED embutido **3000K** (sanca em rebaixo).
+- **M37** — Armário closet 3 portas correr (1 c/ espelho) ~232×270×60. MDF **Areia**. Prateleiras + ~8 gavetas internas sem puxador + cabideiros. Puxador SLIM metálico **preto H30**.
+
+**F73 — Escritório (escrivaninha pé curvo)**
+- **M39** — Escrivaninha gaveteiro + armário baixo ~322×75×32. MDF **Areia**. 6 portas giro + 6 gavetas; puxador cava; caixa de tomada embutida.
+- **M41** — Tampo + estrutura pé curvo (R40) + armário lateral ~302×75×55. MDF **Areia**. 1 porta giro **fecho-toque** (sem puxador); fundo p/ esconder fios; tomadas embutidas.
+
+**F74 — Escritório + passagem**
+- **M40** — Cortineiro + espelho jateado + escrivaninha embutida ~130×270. MDF **Areia**. *(mesmo M40 do F71)*
+- **M42/P06** — Painel piso-teto c/ porta correr mimetizada ~155×270. MDF **Areia**. Porta 72×210 esp.4, puxador cava 5, tranca+chave. *(P06 = mesmo de F71)*
+
+**F75 — Quarto/suíte (infantil?)**
+- **M43** — Guarda-roupa 3 portas correr (central espelho) ~232×270×60. MDF **Areia**. Prateleiras + cabideiros + 4 gavetas vazadas. Puxador SLIM preto H30.
+- **M45** — Escrivaninha/penteadeira tampo em L 263×228, corpo ~168×75. MDF **Azul Profundo** (corpo/tampo). 3 gavetas; puxadores usinados em MDF **Itapuã**.
+- **M46** — 4 baús de brinquedo c/ rodízios ~45×41×35 cada. MDF **Azul Profundo** 15mm; puxador Itapuã. 4 rodízios/baú.
+
+**F76 — Suíte casal (cabeceira em U)**
+- **M44** — Cabeceira em "U" (3 lados): cabeceira 412×90, janela 318×100, escrivaninha 280×25. MDF **Itapuã**. Painel estofado central 5 gomos de 32 (**linho cinza — terceiro tapeçaria**) + laterais MDF. LED **3000K** embutido; perfil "L" no piso.
+- **M49** — Mesa "U" invertido ~98×50×45. MDF **Azul Profundo**. Friso 1cm.
+
+**F77 — Escritório/home office**
+- **M50/P06** — Painel piso-teto c/ porta correr mimetizada ~190×270. MDF **Areia**. Porta 72×210 esp.4, puxador cava 5, tranca+chave. *(P06 = mesmo de F71)*
+- **M48** — Estante fixa em metalon Ø2 preto (serralheria) ~50×195×35. MDF **Azul Profundo**. 3 prateleiras chanfradas esp.3; fita LED **3000K** por prateleira.
+- **M47** — Escrivaninha parede 4 gavetas + armário 2 portas giro ~280×75×55. MDF **Itapuã**. Puxador cava; caixa tomada embutida; perfil "L" no piso. Interface c/ M45 (peça em Azul Profundo).
+
+### F78–F84 — extraído (✅)
+
+**F78 — Lavabo / Banho (bancada, espelheira)**
+- **M51 + M52** — Armário sob bancada ~127×60×60. MDF **Azul Profundo** (puxador Itapuã).
+  3 gavetas (1 falsa) + 3 gavetões; prateleira Itapuã c/ LED embutido; nicho p/ papel.
+  Corrediças telescópicas c/ amortecedor. Bancada/nicho = granito (terceiro).
+- **M35 + M36** — Armário sob bancada ~160×60×57. MDF **Areia**. 3 gavetas (1 falsa) +
+  3 portas giro; puxador **cava**; dobradiça giro 90° c/ amort. Nicho granito (terceiro).
+  *(já levantado antes — material R$3.445)*
+- **M66** — Espelheira ~58–70×118–130, cristal moldura preta, LED frontal **4000K** (espelho = terceiro).
+- **Espelheira c/ armário (lavabo)** — MDF Areia ~152L. 2 portas giro espelho prata + 2 fixos;
+  LED inferior **3000K**; puxador passante.
+
+**F79 — Banho (gabinete duplo + espelheiras)**
+- **M53 + M54** — Gabinete sob bancada **ripado** ~290×70×57. MDF **Itapuã**, portas ripadas.
+  6 gavetas + 4 portas giro; puxador cava; telescópicas + giro c/ amort.
+- **M53/M54 (espelheira)** — Armário MDF Itapuã, porta espelho prata + prateleiras.
+  Estrutura **metalon 2×2 champagne** (teto+lateral); fundo MDF c/ LED nas 4 bordas; puxador cava.
+
+**F80 — Closet**
+- **M59** — Armário piso-teto ~295×270×60. MDF **Areia**. **3 portas de correr vidro Reflecta,
+  estrutura metálica Bronze**. 7 gavetas, calceiro, 2 araras; prateleiras c/ LED. Kit correr bronze (serralheria).
+
+**F81 — Closet**
+- **M60** — Armário piso-teto ~290×270×60. MDF **Areia**. **3 portas correr vidro Reflecta bronze**.
+  5 gavetas, 2 cabideiros + 2 calceiros; prateleiras c/ LED; perfil LED c/ acrílico leitoso. Kit correr bronze.
+- **P08/M67** — Porta de correr embutida **70×270×4** MDF Areia; painel piso-teto esp. 6cm;
+  puxador cava 5cm; **prever tranca e chave**.
+
+**F82 — Closet**
+- **M56 + M57** — Closet/escrivaninha ~132L. MDF **Areia**. M57 = escrivaninha ~132×50, 2 gavetas
+  puxador passante, painel curvo; espelho c/ película jateada p/ LED frontal (prever troca da fita).
+- **M58** — Armário piso-teto ~223×270. MDF **Areia**. **3 portas correr vidro Reflecta bronze**.
+  ~12 sapateiras deslizantes + gavetas + prateleiras. Kit correr bronze + corrediças sapateira.
+
+**F83 — Suíte Master (cabeceira + painel TV)**
+- **M61 (rack) + M62 (painel TV)** — Painel TV em "L" MDF **Itapuã**, frisos 1×1, espelho bronze
+  moldura bronze ~310×270. Rack MDF **Areia**, cantos raio 20, 5 portas giro, puxador cava.
+  Perfil metálico "L" no piso. Mesa/rack = mármore Travertino (terceiro).
+- **M63 + M64 + M65** — Mesas de cabeceira MDF **Itapuã**, bordas raio 5, 1 gaveta passante cada.
+  Caixa de tomada embutida; painel ripado 2×2 Itapuã atrás c/ LED. Cabeceira = mármore Travertino (terceiro).
+
+**F84 — Serralheria/decorativo (NÃO é chapa)**
+- **S01** — Muxarabi piso-teto vazado 5×5, estrutura metálica 2×2 + 6 prateleiras metálicas,
+  tinta eletrostática ~299×270. Painel/rack = mármore Travertino (terceiro).
+- **S02** — Muxarabi 5×5 estrutura metálica 2×2, fixo teto/forro, tinta eletrostática ~198×103.
+  LED embutido no forro de gesso.
+- ⚠️ **F84 = serralheria/metalon pintado**, não marcenaria MDF → tratar como serralheria de apoio.
+
+> Cores novas detectadas: **Azul Profundo** (M51/M52) e **Travertino Romano** (mármore, terceiro).
+> Várias cotas internas (sapateiras M58, prateleiras M59/M60) lidas por aproximação — conferir antes do plano de corte.
 
 ---
 
