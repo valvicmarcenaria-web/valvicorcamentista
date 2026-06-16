@@ -98,7 +98,49 @@ Banho Semi Suíte, Quarto Hóspedes, Rouparia, Banho Suíte 01.
 > c/ amortecedor; gavetas telescópicas reforçadas c/ amortecedor; puxador cava (ver
 > detalhe); conferir tomadas para recorte; **CONFERIR MEDIDAS NO LOCAL** (sempre).
 
-*(F57–F70: em extração — 2 agentes)*
+*(F57–F63: em extração — 1 agente)*
+
+### F64–F70 — extraído (✅)
+
+> ⚠️ **Conferir:** **M41** aparece em F70 e F73 (mesmo armário lateral da escrivaninha
+> — contar 1×). **M22** veio com 2 descrições (F65 cristaleira piso-teto vs F66 armário
+> inferior) — possível reaproveitamento de numeração; conferir na prancha.
+
+**F64 — Cozinha**
+- **M18** — Painel/forro MDF **Itapuã** fixo no gesso, LED embutido, esp.5 ~469×246 (faixa ~184).
+- **M19** — Armário ilha sob bancada ~290×90. MDF **Areia**. 2 portas giro + 4 gavetas + gavetão (lixeira deslizante 30L Tramontina) + gaveta porta-temperos; puxador cava. Cooktop embutido.
+- **M68** — Tampo/mesa cozinha ~300×80, bordas R10. MDF **Itapuã**. Bancada esculpida = mármore Travertino (terceiro).
+- **M25** — Prateleira ~135×45 esp.10. MDF **Itapuã**. Rodapé.
+
+**F65 — Cozinha**
+- **M20** — Armário inferior sob bancada ~504×92. MDF **Areia**. 4 portas giro + 4 gavetas; puxador cava. Bancada = pedra (terceiro). *(já tinha portas de vidro cotadas)*
+- **M21** — Torre de eletros ~544×270. MDF **Areia** + seção **Itapuã**. ~10 portas giro + 1 gaveta + 4 basculantes vidro reflecta bronze; prever ventilação forno/micro; LED inferior. *(básculas de vidro já cotadas R$1.120)*
+- **M22** — Cristaleira piso-teto ~208×270. MDF **Itapuã**. 7 portas giro + cristaleira porta vidro reflecta bronze; prateleiras de vidro c/ LED. *(porta de vidro M21/cristaleira já cotada R$475)*
+- **M55** — Módulo gavetas/portas integrado à bancada (vista M20). Cotas ILEGÍVEL. Puxador cava.
+
+**F66 — Cozinha**
+- **M22 (inferior)** — Armário inferior ~280×75 (+10 sócolo). MDF **Areia**. 4 portas giro + 4 gavetas + gaveta porta-espetos; puxador cava. Bancada = pedra (terceiro). ⚠️ numeração M22 duplicada.
+- **M23** — Armário alto portas ripadas (2×2) ~180. MDF **Areia**. LED inferior.
+- **M24** — Prateleira/nicho iluminado ~180. MDF **Areia**. LED perfil embutido; ripas 2×2.
+
+**F67 — Sala/circulação + escada**
+- **M27** — Rack ripado pontas curvas R20, painel em L ~154×30×52. MDF **Itapuã**. 4 portas giro ripadas; puxador cava; fixação invisível; recorte p/ elevador.
+- **M26** — Portal/painel ripado da escada ~302 (pé-direito alto até 381). MDF cor ILEGÍVEL. Vão porta 78 (72×210); perfil "L" no piso (serralheria).
+
+**F68 — Armário-cofre / closet**
+- **M28** — Armário piso-teto em L, 4 portas giro ~125×270. MDF **Branco TX**. ~5 prateleiras + nicho-cofre c/ tranca e chave. Cofre = terceiro.
+
+**F69 — Suíte/Closet**
+- **M30** — Armário/cabeceira curva iluminada, 3 portas correr (1 espelho) ~365×250×60. MDF **Areia**. Cabideiros + gavetas vazadas; LED 3000K; puxador slim preto H30.
+- **M29** — Closet 3 portas correr ~232×270×60. MDF **Areia**. Prateleiras + cabideiros + 4+ gavetas; interruptor lateral a 120. Cotas internas parc. ILEGÍVEL.
+
+**F70 — Closet / home office**
+- **M31** — Sapateira ~263/322×50. MDF **Areia**. 6 portas giro + 6 gavetas + portas inferiores; puxador cava; caixa de tomada embutida.
+- **M33** — Escrivaninha pé curvo, tampo ~302×36, corpo 55×75. MDF **Areia**. 1 gaveta + 1 prateleira + 1 porta giro central; puxador cava/fecho-toque; tomadas embutidas.
+- **M41** — Armário lateral da escrivaninha. MDF **Areia**. 1 prateleira + 1 porta giro; puxador cava. Cotas ILEGÍVEL. *(repete em F73)*
+
+> Terceiros F64–F70: mármore Travertino (M20/M22/M68), cofre (M28), perfil "L" escada (M26).
+> Profundidades de M19/M20/M21/M22/M23/M24/M31 lidas com baixa confiança — conferir na F01 TABELAS.
 
 ### F71–F77 — extraído (✅)
 
