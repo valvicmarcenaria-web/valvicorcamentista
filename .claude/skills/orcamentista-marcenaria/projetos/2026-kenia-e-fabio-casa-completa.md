@@ -391,8 +391,24 @@ Banho Semi Suíte, Quarto Hóspedes, Rouparia, Banho Suíte 01.
      de portas), **M40** (F71/F74), conjunto **M15/M16/M17** (F62=F63). *(M40/M41
      da tabela são módulos DISTINTOS da Suíte 02 — não confundir com o "M41" que o
      agente viu repetido em F70/F73; conferir na consolidação.)*
-   - ⏳ **Profundidades** de M19, M20, M21, M22, M23, M24, M31 — agente B relendo as
-     pranchas com zoom (tabela-mestra não traz medidas).
+   - ✅/⚠️ **Profundidades** (lidas nos cortes — ver tabela abaixo):
+
+| Módulo | Prof. lida | Confiança | Observação |
+|---|---|---|---|
+| M19 (ilha cozinha) | **~60 cm** | ✅ boa | base sob bancada M68; 58 interno + 2. Padrão. |
+| M20 (torre eletros) | 42 cm | ⚠️ suspeita | torre de eletros costuma ter ~60; 42 pode ser só a báscula. Conferir. |
+| M21 (cristaleira piso-teto) | 85 cm | ⚠️ suspeita | incomum; prateleiras de vidro. Conferir corte. |
+| M22 (Gourmet sob bancada) | **~72 cm** | ✅ boa | bate com bancada Gourmet B06 (75cm). |
+| M23 (Gourmet prateleira) | ~100 cm | 🔴 duvidosa | prateleira iluminada não teria 100 de prof. — provável largura. Reler. |
+| M24 (Gourmet alto ripado) | ~100 cm | 🔴 duvidosa | armário alto normalmente ~35. Reler. |
+| M31 (sapateira Suíte 03) | **~29–30 cm** | ✅ boa | coerente c/ sapateira. |
+
+> ⚠️ **Inconsistência de numeração cozinha/Gourmet:** as pranchas F65/F66 rotulam
+> M20/M21/M22 de forma cruzada vs a tabela-mestra. **Vale a tabela-mestra F02.**
+> Antes do plano de corte, **confirmar com a arquiteta** as profundidades 🔴/⚠️
+> (M20, M21, M23, M24) — ou medir in loco (as próprias pranchas pedem "conferir no local").
+> Para o restante dos módulos, adotar profundidades-padrão Valvic: base sob bancada
+> ~60, armário alto/superior ~35, prateleira conforme nicho.
 3. **Consolidar plano de corte por cor de MDF** (Areia / Itapuã / Branco TX /
    Azul Profundo) e por espessura → m² de chapa + fita + ferragens.
 4. **Lançar no app** (validacao-orcamento.html) por ambiente.
