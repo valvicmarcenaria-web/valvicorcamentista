@@ -105,8 +105,26 @@ Mesmo quantitativo, **MC alvo 38%** (+5% da curva no painel → **43%**). Fórmu
 
 - **MC R$ ≈ 15.600** · **MC% ≈ 38,7%** → faixa **bom** (37–45%).
 - **Alternativa flat 38%** (sem +5% no painel) = **≈ R$ 39.500** · MC 38,0%.
-- JSON do app: **`projetos/orcamento-samara-v2-mc38.json`** (vigente) ·
+- JSON do app: **`projetos/orcamento-samara-v2-mc38.json`** ·
   `orcamento-samara-v1-mc40.json` (histórico).
+
+### v3 — VIGENTE (leitura do fundador 16/06 no app)
+
+Fundador refez a leitura: **painel = 2 chapas + 5m LED** (+R$800), roupeiro
+enxugado (−R$380), e **estrutura de custo de parceiro**: `vend 0` (lead da Luana) ·
+`nf 5` · `marc 5` · `serra/manut 0,2` → **encargos ≈ 30%** (divisor 0,70).
+
+| Pacote | Material | Preço (aloc.) |
+|--------|---------:|-------------:|
+| 1 · Painel cabeceira | R$ 1.966 | R$ 6.530 |
+| 2 · Cama + prateleiras | R$ 1.956 | R$ 6.495 |
+| 3 · Bancada + armário inferior | R$ 1.877 | R$ 6.230 |
+| 4 · Roupeiro + nicho | R$ 5.067 | R$ 16.820 |
+| **TOTAL** | **R$ 10.866** | **R$ 36.074** |
+
+- **MC real ≈ 39,2%** ao preço de R$ 36.074 (`mcAlvo` marcado 40).
+- **Levers (encargos 30%):** 40% flat = **R$ 37.055** · 38% flat = **R$ 34.739**.
+- JSON: **`projetos/orcamento-samara-v3-mc40.json`** (vigente).
 
 ## 4. Flags / riscos do orçamento (erra pra cima)
 

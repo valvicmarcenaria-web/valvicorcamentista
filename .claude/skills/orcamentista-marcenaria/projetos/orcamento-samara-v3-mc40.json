@@ -1,0 +1,594 @@
+{
+ "cliente": "Samara",
+ "projeto": "Quarto dos Irmãos (consultoria Rizzi / Luana Rizzi)",
+ "versao": "003",
+ "inv": 36074,
+ "mcAlvo": 40,
+ "_nota": "Leitura do fundador 16/06/2026. Encargos ~30% (parceiro Luana -> vend=0). inv 36.074 -> MC real 39,2%. Painel = 2 chapas + 5m LED. Levers: 40% flat=37.055 | 38% flat=34.739.",
+ "p": {
+  "nf": 5,
+  "parc": 7,
+  "vend": 0,
+  "rt": 10,
+  "vis": 250,
+  "outv": 0,
+  "prog": 0.8,
+  "coord": 1,
+  "marc": 5,
+  "serra": 0.2,
+  "manut": 0.2,
+  "log": 0,
+  "erro": 2
+ },
+ "lib": [
+  [
+   "MDF",
+   [
+    [
+     "mdf branco 6",
+     190
+    ],
+    [
+     "mdf branco 15",
+     260
+    ],
+    [
+     "mdf branco 18",
+     320
+    ],
+    [
+     "mdf branco 25",
+     420
+    ],
+    [
+     "mdf cor 6",
+     300
+    ],
+    [
+     "mdf cor 15",
+     500
+    ],
+    [
+     "mdf cor 18",
+     600
+    ],
+    [
+     "mdf cristallo 6",
+     400
+    ],
+    [
+     "mdf cristallo 15",
+     600
+    ],
+    [
+     "mdf cristallo 18",
+     700
+    ],
+    [
+     "mdf Acetinato 6",
+     1000
+    ],
+    [
+     "mdf Acetinato 15",
+     1300
+    ],
+    [
+     "mdf Acetinato 18",
+     1500
+    ],
+    [
+     "mdf com lâmina prensada +acab.",
+     2200
+    ],
+    [
+     "Palha sintética",
+     600
+    ],
+    [
+     "Compensado flexível",
+     400
+    ]
+   ]
+  ],
+  [
+   "Cola e fita",
+   [
+    [
+     "Colagem - mt linear - máquina",
+     2.5
+    ],
+    [
+     "Colagem - mt linear - manual",
+     4
+    ],
+    [
+     "Fita de borda - branco tx - mt",
+     2
+    ],
+    [
+     "Fita de borda - cor - mt",
+     3
+    ],
+    [
+     "Demandas pontuais - espec.",
+     50
+    ]
+   ]
+  ],
+  [
+   "Dobradiças",
+   [
+    [
+     "Padrão",
+     6
+    ],
+    [
+     "Bigfer Inox",
+     20
+    ],
+    [
+     "Bigfer Ônix",
+     15
+    ],
+    [
+     "Hardt",
+     8
+    ],
+    [
+     "Häfele",
+     20
+    ],
+    [
+     "Hettich Novisys",
+     10
+    ],
+    [
+     "Hettich Sensys",
+     35
+    ],
+    [
+     "Hettich Sensys Onix",
+     40
+    ],
+    [
+     "Hettich Sensys Black",
+     40
+    ]
+   ]
+  ],
+  [
+   "Corrediças",
+   [
+    [
+     "Telescópica",
+     40
+    ],
+    [
+     "Oculta Hardt",
+     70
+    ],
+    [
+     "Oculta Quadro (Hettich)",
+     120
+    ],
+    [
+     "Oculta Actro (Hettich)",
+     400
+    ],
+    [
+     "Blum",
+     300
+    ]
+   ]
+  ],
+  [
+   "Sistema portas roupeiros",
+   [
+    [
+     "SS150 - 2 portas",
+     500
+    ],
+    [
+     "SS150 - 3 portas",
+     600
+    ],
+    [
+     "RO65 (Rometal)",
+     60
+    ],
+    [
+     "Dominus - 2 portas",
+     700
+    ],
+    [
+     "Dominus - 3 portas",
+     850
+    ],
+    [
+     "Trilho RO65 - 3mt",
+     80
+    ],
+    [
+     "Trilho RO65 - 2mt",
+     60
+    ],
+    [
+     "Trilho SS150 - 3mt",
+     200
+    ],
+    [
+     "Trilho SS150 - 2mt",
+     170
+    ],
+    [
+     "Trilho Dominus - 3mt",
+     350
+    ],
+    [
+     "Trilho Dominus - 2mt",
+     300
+    ],
+    [
+     "Desempenador sobrepor - par",
+     100
+    ],
+    [
+     "Desempenador embutido - par",
+     150
+    ]
+   ]
+  ],
+  [
+   "Articuladores",
+   [
+    [
+     "Pistão Normal",
+     20
+    ],
+    [
+     "Pistão com amortecimento",
+     30
+    ],
+    [
+     "Blum HK-xs",
+     180
+    ],
+    [
+     "Aventos (e outros)",
+     600
+    ]
+   ]
+  ],
+  [
+   "Puxadores",
+   [
+    [
+     "SP7000 anodizado",
+     70
+    ],
+    [
+     "SP7000 bronze",
+     90
+    ],
+    [
+     "Perfil cava RM195 - 3mt",
+     250
+    ],
+    [
+     "Perfil cava RM213 - 3mt",
+     100
+    ],
+    [
+     "Par tampinhas RM213",
+     4
+    ],
+    [
+     "Cava 35° usinada - mt",
+     50
+    ],
+    [
+     "Puxador bolinha",
+     15
+    ],
+    [
+     "Concha shell Zen",
+     80
+    ],
+    [
+     "Ponto Zen",
+     70
+    ],
+    [
+     "Especial 1 - Traço Metal/Couro Enlevo",
+     60
+    ]
+   ]
+  ],
+  [
+   "Suportes",
+   [
+    [
+     "Suporte espada",
+     25
+    ],
+    [
+     "Suporte oculto",
+     20
+    ],
+    [
+     "Serralheria prat. simples",
+     25
+    ],
+    [
+     "Serralheria bancada",
+     50
+    ]
+   ]
+  ],
+  [
+   "Parafusos / dispositivos / montagem",
+   [
+    [
+     "Parafusos gerais - especulação",
+     25
+    ],
+    [
+     "Conj. parafuso e bucha",
+     1.8
+    ],
+    [
+     "Sup. prateleiras - cj4",
+     3
+    ],
+    [
+     "Sist. montagem (mini fix)",
+     0
+    ],
+    [
+     "Cola kit Teck bond",
+     35
+    ],
+    [
+     "PUR / PU",
+     50
+    ],
+    [
+     "Silicone acabamento",
+     30
+    ]
+   ]
+  ],
+  [
+   "Iluminação",
+   [
+    [
+     "LED - fita + perfil - mt",
+     150
+    ],
+    [
+     "Sensor",
+     50
+    ]
+   ]
+  ],
+  [
+   "Vidros e espelhos (m²)",
+   [
+    [
+     "Vidro incolor temperado 6mm",
+     200
+    ],
+    [
+     "Vidro incolor temperado 8mm",
+     250
+    ],
+    [
+     "Vidro incolor temperado 10mm",
+     300
+    ],
+    [
+     "Espelho prata",
+     600
+    ],
+    [
+     "Espelho bronze",
+     900
+    ]
+   ]
+  ],
+  [
+   "Limpeza / embalagem",
+   [
+    [
+     "Tinner (litro)",
+     12
+    ],
+    [
+     "Estopa (pacote)",
+     10
+    ],
+    [
+     "Strech",
+     4
+    ],
+    [
+     "Cantoneira",
+     0.5
+    ],
+    [
+     "Embalagem",
+     50
+    ]
+   ]
+  ],
+  [
+   "Especiais",
+   [
+    [
+     "Logística específica",
+     150
+    ],
+    [
+     "Cabideiro oval",
+     150
+    ],
+    [
+     "Rodízio trundle",
+     8
+    ],
+    [
+     "Estrutura de serralheria",
+     350
+    ],
+    [
+     "Gaveta especial",
+     900
+    ]
+   ]
+  ]
+ ],
+ "ambientes": [
+  {
+   "nome": "1 - Painel cabeceira (CURVA · MC 43%)",
+   "q": {
+    "MDF¦mdf cor 15": 2,
+    "Iluminação¦LED - fita + perfil - mt": 5,
+    "Iluminação¦Sensor": 1,
+    "Cola e fita¦Fita de borda - cor - mt": 9,
+    "Cola e fita¦Colagem - mt linear - máquina": 8,
+    "Parafusos / dispositivos / montagem¦Cola kit Teck bond": 1,
+    "Parafusos / dispositivos / montagem¦Parafusos gerais - especulação": 1,
+    "Parafusos / dispositivos / montagem¦Silicone acabamento": 1,
+    "Limpeza / embalagem¦Strech": 2,
+    "Limpeza / embalagem¦Tinner (litro)": 0.5,
+    "Limpeza / embalagem¦Estopa (pacote)": 1,
+    "Limpeza / embalagem¦Cantoneira": 10
+   },
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
+   }
+  },
+  {
+   "nome": "2 - Cama com prateleiras (MC 38%)",
+   "q": {
+    "MDF¦mdf cor 15": 3,
+    "Suportes¦Suporte espada": 4,
+    "Especiais¦Rodízio trundle": 4,
+    "Cola e fita¦Fita de borda - cor - mt": 28,
+    "Cola e fita¦Colagem - mt linear - máquina": 25,
+    "Parafusos / dispositivos / montagem¦Cola kit Teck bond": 2,
+    "Parafusos / dispositivos / montagem¦Parafusos gerais - especulação": 2,
+    "Parafusos / dispositivos / montagem¦Conj. parafuso e bucha": 10,
+    "Limpeza / embalagem¦Strech": 4,
+    "Limpeza / embalagem¦Tinner (litro)": 1,
+    "Limpeza / embalagem¦Estopa (pacote)": 1,
+    "Limpeza / embalagem¦Cantoneira": 4
+   },
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
+   }
+  },
+  {
+   "nome": "3 - Bancada + armário inferior (MC 38%)",
+   "q": {
+    "MDF¦mdf cor 15": 2,
+    "MDF¦mdf branco 6": 1,
+    "Dobradiças¦Padrão": 4,
+    "Corrediças¦Telescópica": 1,
+    "Puxadores¦Cava 35° usinada - mt": 2,
+    "Puxadores¦Puxador bolinha": 1,
+    "Vidros e espelhos (m²)¦Vidro incolor temperado 6mm": 0.3,
+    "Especiais¦Logística específica": 1,
+    "Suportes¦Serralheria bancada": 1,
+    "Cola e fita¦Fita de borda - cor - mt": 20,
+    "Cola e fita¦Colagem - mt linear - máquina": 18,
+    "Parafusos / dispositivos / montagem¦Parafusos gerais - especulação": 1,
+    "Parafusos / dispositivos / montagem¦Conj. parafuso e bucha": 10,
+    "Parafusos / dispositivos / montagem¦Cola kit Teck bond": 1,
+    "Parafusos / dispositivos / montagem¦Silicone acabamento": 1,
+    "Limpeza / embalagem¦Strech": 3,
+    "Limpeza / embalagem¦Tinner (litro)": 1,
+    "Limpeza / embalagem¦Estopa (pacote)": 1,
+    "Limpeza / embalagem¦Cantoneira": 2
+   },
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
+   }
+  },
+  {
+   "nome": "4 - Roupeiro + nicho (MC 38%)",
+   "q": {
+    "MDF¦mdf cor 15": 2,
+    "MDF¦mdf cor 18": 1,
+    "MDF¦mdf cor 6": 1,
+    "MDF¦mdf branco 18": 1,
+    "MDF¦mdf branco 15": 3,
+    "MDF¦mdf branco 6": 2,
+    "Dobradiças¦Padrão": 16,
+    "Corrediças¦Telescópica": 5,
+    "Puxadores¦Cava 35° usinada - mt": 4,
+    "Especiais¦Cabideiro oval": 1,
+    "Parafusos / dispositivos / montagem¦Sup. prateleiras - cj4": 12,
+    "Iluminação¦LED - fita + perfil - mt": 2,
+    "Iluminação¦Sensor": 1,
+    "Cola e fita¦Fita de borda - cor - mt": 49,
+    "Cola e fita¦Fita de borda - branco tx - mt": 27,
+    "Cola e fita¦Colagem - mt linear - máquina": 70,
+    "Parafusos / dispositivos / montagem¦Parafusos gerais - especulação": 4,
+    "Parafusos / dispositivos / montagem¦Conj. parafuso e bucha": 20,
+    "Parafusos / dispositivos / montagem¦Cola kit Teck bond": 1,
+    "Parafusos / dispositivos / montagem¦Silicone acabamento": 1,
+    "Limpeza / embalagem¦Embalagem": 1,
+    "Limpeza / embalagem¦Strech": 4,
+    "Limpeza / embalagem¦Tinner (litro)": 1
+   },
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
+   }
+  }
+ ],
+ "ativo": 3,
+ "collapsed": {
+  "MDF": true,
+  "Cola e fita": true,
+  "Dobradiças": true,
+  "Corrediças": true,
+  "Sistema portas roupeiros": true,
+  "Articuladores": true,
+  "Puxadores": true,
+  "Suportes": true,
+  "Parafusos / dispositivos / montagem": true,
+  "Iluminação": true,
+  "Vidros e espelhos (m²)": true,
+  "Limpeza / embalagem": true,
+  "Especiais": true
+ },
+ "diretrizes": "",
+ "rodrigo": "",
+ "duvidas": [],
+ "theme": "light"
+}

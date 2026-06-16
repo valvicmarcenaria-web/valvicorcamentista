@@ -81,8 +81,13 @@ preço (inv) = (custo_material_direto + visita) / (0,651 − MC%)
 
 - Ex.: material R$ 5.697 e MC alvo 40% → inv = 5.697 / (0,651 − 0,40) = **R$ 22.700**.
 - **Sem parceiro (RT = 0):** encargos caem ~8,6 pts → divisor `0,737 − MC%`.
+- **Lead vindo do parceiro (decorador/arquiteto):** quem "vende" é a RT — **não há
+  comissão de vendedor interno** (`vend = 0`). Com isso os encargos caem de ~34,9%
+  para **≈ 30%** (divisor `0,70 − MC%`). Caso real: Samara/Luana Rizzi 06/2026
+  (`vend 0`, `nf 5`, `marc 5`).
 - **Atenção:** estimar encargos "no olho" em 33% subprecifica ~2 pts de MC — usar
-  os 34,9% reais quando há RT. (Aprendizado Samara: R$40,6k "a 40%" dava 38,8%.)
+  os reais conforme o cenário (35% c/ vendedor · 30% c/ parceiro). (Aprendizado
+  Samara: R$40,6k "a 40%" dava 38,8%.)
 
 ## Situação de caixa — perguntar em TODA nova demanda
 
