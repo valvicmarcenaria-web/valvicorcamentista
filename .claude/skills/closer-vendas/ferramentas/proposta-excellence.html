@@ -341,13 +341,35 @@
     #p5-url-row input { width: 100%; padding: 6px 10px; background: rgba(0,0,0,.7); border: 1px solid var(--gold); border-radius: 4px; color: var(--gold); font-size: 10px; font-family: var(--fm); outline: none; }
 
     /* ================================================================
-       PAGE 6 — INVESTIMENTO (aprovada — visual elevado)
+       PAGE 6 — INVESTIMENTO
     ================================================================ */
-    #p6 { background: var(--sand); padding: 52px 56px 44px; min-height: var(--ph); }
+    #p6 { background: var(--sand); display: grid; grid-template-rows: auto 1fr; min-height: var(--ph); }
 
-    #p6 .inv-head { margin-bottom: 32px; }
-    #p6 .inv-title { font-family: var(--fd); font-size: 44px; font-weight: 300; color: var(--graphite); line-height: 1.05; margin-top: 8px; }
-    #p6 .inv-rule  { width: 48px; height: 1px; background: var(--gold); margin: 14px 0; }
+    /* dark header — mesmo padrão dos outras páginas */
+    #p6 .inv-dark-head {
+      background: var(--graphite);
+      padding: 44px 56px 36px;
+      position: relative;
+    }
+    #p6 .inv-dark-head::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold) 25%, var(--gold) 75%, transparent);
+    }
+    #p6 .inv-eyebrow {
+      font-size: 9px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase;
+      color: rgba(196,154,74,.6); margin-bottom: 10px;
+    }
+    #p6 .inv-title {
+      font-family: var(--fd); font-size: 44px; font-weight: 300; color: var(--white); line-height: 1.05;
+    }
+    #p6 .inv-sub {
+      font-size: 12px; color: rgba(255,255,255,.38); margin-top: 10px; letter-spacing: .02em;
+    }
+
+    /* conteúdo sand */
+    #p6 .inv-body { padding: 36px 56px 44px; }
+    #p6 .inv-rule  { display: none; }
 
     /* tables */
     .inv-block { margin-bottom: 22px; }
@@ -782,11 +804,14 @@
 ================================================================ -->
 <section class="page" id="p6">
 
-  <div class="inv-head">
-    <div class="eyebrow">Transparência Total</div>
+  <!-- cabeçalho escuro — mesmo padrão visual das outras páginas -->
+  <div class="inv-dark-head">
+    <div class="inv-eyebrow">Transparência Total</div>
     <div class="inv-title">Seu Investimento.</div>
-    <div class="inv-rule"></div>
+    <div class="inv-sub">Duas versões. Condições claras. Nenhuma surpresa.</div>
   </div>
+
+  <div class="inv-body">
 
   <!-- Tabela Completa -->
   <div class="inv-block">
@@ -901,6 +926,7 @@
     </div>
   </div>
 
+  </div><!-- /inv-body -->
 </section>
 
 
