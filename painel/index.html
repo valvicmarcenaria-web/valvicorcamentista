@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valvic · Painel Financeiro</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<style>
+:root{--bg:#0D0A06;--panel:#141009;--card:#1B1208;--card2:#211608;--border:rgba(160,104,56,.16);--border2:rgba(160,104,56,.32);--gold:#A06838;--gold2:#C8914A;--sand:#C8A87A;--text:#F5F0E8;--muted:rgba(245,240,232,.55);--dim:rgba(245,240,232,.28);--green:#2ECC8A;--red:#E05555;--amber:#E09A30;--blue:#5AA6D6;--input:rgba(255,255,255,.04);--radius:8px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;min-height:100vh}
+a{color:var(--gold2);text-decoration:none}
+/* ── Scrollbar ── */
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:var(--panel)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+
+/* ── Top bar ── */
+.top{position:sticky;top:0;z-index:30;background:var(--panel);border-bottom:1px solid var(--border2);padding:10px 24px;display:flex;align-items:center;gap:12px}
+.brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold2);line-height:1;white-space:nowrap}
+.brand small{display:block;font-family:'DM Mono',monospace;font-size:.5rem;color:var(--dim);letter-spacing:.18em;text-transform:uppercase;margin-top:2px}
+.top-meta{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
+.spacer{flex:1}
+.btn{display:inline-flex;align-items:center;gap:5px;font-size:.7rem;font-family:'DM Sans',sans-serif;padding:6px 12px;border-radius:5px;cursor:pointer;border:1px solid var(--border2);background:transparent;color:var(--sand);transition:all .15s;white-space:nowrap}
+.btn:hover{border-color:var(--gold2);color:var(--text)}
+.btn-primary{background:var(--gold);border-color:var(--gold);color:#fff;font-weight:600}
+.btn-primary:hover{background:var(--gold2);border-color:var(--gold2)}
+.btn-sm{font-size:.62rem;padding:4px 9px}
+.btn-icon{padding:6px 8px;font-size:.8rem}
+
+/* ── Layout ── */
+.wrap{max-width:1240px;margin:0 auto;padding:20px 24px 60px}
+
+/* ── KPI cards ── */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.kpis{grid-template-columns:1fr}}
+.kpi{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;position:relative;overflow:hidden}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold) 0%,transparent 100%)}
+.kpi.red::before{background:linear-gradient(90deg,var(--red) 0%,transparent 100%)}
+.kpi.green::before{background:linear-gradient(90deg,var(--green) 0%,transparent 100%)}
+.kpi.amber::before{background:linear-gradient(90deg,var(--amber) 0%,transparent 100%)}
+.kpi-label{font-size:.55rem;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:6px}
+.kpi-value{font-family:'DM Mono',monospace;font-size:1.5rem;font-weight:700;color:var(--sand);line-height:1}
+.kpi-value.neg{color:var(--red)}
+.kpi-value.pos{color:var(--green)}
+.kpi-sub{font-size:.6rem;color:var(--muted);margin-top:4px}
+
+/* ── Chart ── */
+.section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;margin-bottom:16px}
+.section-title{font-size:.62rem;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--gold2);margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.section-title-right{color:var(--dim);font-size:.55rem;font-weight:400;letter-spacing:.04em}
+.chart-wrap{position:relative;height:180px}
+
+/* ── Projects list ── */
+.month-group{margin-bottom:12px}
+.month-header{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);margin-bottom:8px}
+.month-name{font-size:.62rem;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--gold2);min-width:80px}
+.month-total{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--sand);margin-left:auto}
+.month-badge{font-size:.5rem;padding:2px 6px;border-radius:3px;border:1px solid;font-family:'DM Mono',monospace;letter-spacing:.04em;text-transform:uppercase}
+.month-badge.empty{border-color:var(--red);color:var(--red)}
+.month-badge.ok{border-color:var(--green);color:var(--green)}
+.month-empty{font-size:.65rem;color:var(--dim);padding:8px 0;display:flex;align-items:center;gap:6px}
+.month-empty span{color:var(--red)}
+
+.project-row{display:grid;grid-template-columns:1fr 1fr auto auto auto;gap:8px;align-items:center;padding:8px 10px;border-radius:5px;border:1px solid var(--border);margin-bottom:5px;background:var(--card2);transition:border-color .15s}
+.project-row:hover{border-color:var(--border2)}
+@media(max-width:768px){.project-row{grid-template-columns:1fr auto auto}}
+.proj-main{}
+.proj-client{font-size:.78rem;font-weight:500;color:var(--text)}
+.proj-name{font-size:.62rem;color:var(--muted);margin-top:1px}
+.proj-pay{font-size:.6rem;color:var(--dim);margin-top:2px}
+.proj-value{text-align:right}
+.proj-total{font-family:'DM Mono',monospace;font-size:.82rem;color:var(--sand);font-weight:500}
+.proj-outstanding{font-family:'DM Mono',monospace;font-size:.6rem;margin-top:2px}
+.proj-outstanding.owed{color:var(--amber)}
+.proj-outstanding.paid{color:var(--green)}
+.proj-dots{display:flex;gap:4px;align-items:center}
+.dot{width:8px;height:8px;border-radius:50%;cursor:pointer;transition:transform .1s;flex-shrink:0;border:1px solid rgba(255,255,255,.1)}
+.dot:hover{transform:scale(1.3)}
+.dot.received{background:var(--green)}
+.dot.pending{background:var(--amber)}
+.dot.empty{background:rgba(255,255,255,.08)}
+.proj-actions{display:flex;gap:4px}
+
+/* ── Modal ── */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:100;align-items:flex-start;justify-content:center;padding:24px 16px;overflow-y:auto;backdrop-filter:blur(4px)}
+.overlay.open{display:flex}
+.modal{background:var(--card);border:1px solid var(--border2);border-radius:10px;width:100%;max-width:660px;margin:auto;box-shadow:0 24px 80px rgba(0,0,0,.6)}
+.modal-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border)}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold2)}
+.modal-close{background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer;padding:2px 6px;border-radius:4px}
+.modal-close:hover{color:var(--text)}
+.modal-body{padding:20px}
+.modal-foot{padding:12px 20px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end}
+
+/* ── Form ── */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px}
+.form-grid.cols3{grid-template-columns:1fr 1fr 1fr}
+.form-full{grid-column:1/-1}
+.field{display:flex;flex-direction:column;gap:3px}
+label{font-size:.57rem;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+input,select,textarea{background:var(--input);border:1px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.8rem;padding:7px 9px;border-radius:5px;width:100%;transition:border-color .15s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);background:rgba(160,104,56,.06)}
+select option{background:#1B1208}
+.input-mono{font-family:'DM Mono',monospace}
+.parcelas-section{margin-top:14px}
+.parcelas-title{font-size:.57rem;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--gold2);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.parcelas-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.parcela-row{display:grid;grid-template-columns:120px 1fr 1fr auto;gap:6px;align-items:end;margin-bottom:6px}
+.parcela-check{display:flex;align-items:center;justify-content:center;padding-bottom:7px}
+.parcela-check input[type=checkbox]{width:14px;height:14px;cursor:pointer;accent-color:var(--green)}
+.add-parcela{font-size:.62rem;color:var(--gold2);background:none;border:1px dashed var(--border);border-radius:4px;padding:4px 10px;cursor:pointer;width:100%;margin-top:4px;font-family:inherit}
+.add-parcela:hover{border-color:var(--gold);color:var(--gold2)}
+.remove-parcela{background:none;border:none;color:var(--dim);font-size:.85rem;cursor:pointer;padding:0 2px;line-height:1}
+.remove-parcela:hover{color:var(--red)}
+.form-divider{grid-column:1/-1;height:1px;background:var(--border);margin:6px 0}
+
+/* ── Setup screen ── */
+.setup{display:none;min-height:100vh;align-items:center;justify-content:center;padding:24px}
+.setup.open{display:flex}
+.setup-card{background:var(--card);border:1px solid var(--border2);border-radius:12px;max-width:560px;width:100%;padding:32px}
+.setup-logo{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--gold2);margin-bottom:4px}
+.setup-sub{font-size:.62rem;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.16em;color:var(--dim);margin-bottom:28px}
+.setup-step{display:flex;gap:10px;margin-bottom:10px;font-size:.75rem;color:var(--muted);line-height:1.5}
+.setup-step strong{font-family:'DM Mono',monospace;color:var(--gold2);min-width:18px}
+.setup-steps{background:rgba(0,0,0,.3);border-radius:6px;padding:14px;margin-bottom:20px}
+
+/* ── Alerts & badges ── */
+.alert{display:flex;gap:8px;align-items:flex-start;padding:10px 12px;border-radius:5px;font-size:.7rem;line-height:1.5;margin-bottom:12px}
+.alert.red{background:rgba(224,85,85,.08);border:1px solid rgba(224,85,85,.25);color:rgba(224,85,85,.9)}
+.alert.amber{background:rgba(224,154,48,.08);border:1px solid rgba(224,154,48,.25);color:rgba(224,154,48,.9)}
+.alert.green{background:rgba(46,204,138,.08);border:1px solid rgba(46,204,138,.25);color:rgba(46,204,138,.9)}
+.alert-icon{font-size:.9rem;flex-shrink:0;margin-top:1px}
+
+/* ── Progress bar ── */
+.progress-wrap{background:rgba(255,255,255,.06);border-radius:3px;height:4px;margin-top:8px;overflow:hidden}
+.progress-bar{height:100%;border-radius:3px;transition:width .6s ease;background:linear-gradient(90deg,var(--gold),var(--gold2))}
+
+/* ── Chips ── */
+.chip{display:inline-flex;align-items:center;gap:3px;font-size:.52rem;padding:2px 6px;border-radius:3px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.04em}
+.chip.green{background:rgba(46,204,138,.12);color:var(--green);border:1px solid rgba(46,204,138,.2)}
+.chip.red{background:rgba(224,85,85,.12);color:var(--red);border:1px solid rgba(224,85,85,.2)}
+.chip.amber{background:rgba(224,154,48,.12);color:var(--amber);border:1px solid rgba(224,154,48,.2)}
+
+/* ── Empty state ── */
+.empty-state{text-align:center;padding:48px 24px;color:var(--dim)}
+.empty-state .icon{font-size:2rem;margin-bottom:12px}
+.empty-state p{font-size:.75rem;line-height:1.6}
+
+/* ── Loading ── */
+.loading{display:flex;align-items:center;justify-content:center;gap:8px;padding:32px;color:var(--muted);font-size:.72rem}
+.spinner{width:16px;height:16px;border:2px solid var(--border2);border-top-color:var(--gold2);border-radius:50%;animation:spin .6s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── Toast ── */
+.toast{position:fixed;bottom:20px;right:20px;padding:10px 16px;border-radius:6px;font-size:.72rem;z-index:200;animation:toastIn .2s ease;pointer-events:none}
+.toast.ok{background:#1a3d2b;border:1px solid rgba(46,204,138,.4);color:var(--green)}
+.toast.err{background:#3d1a1a;border:1px solid rgba(224,85,85,.4);color:var(--red)}
+@keyframes toastIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── Config modal ── */
+.config-row{display:flex;gap:8px;align-items:flex-end}
+.config-row input{flex:1}
+
+/* ── Print ── */
+@media print{.top,.btn,.proj-actions,.add-parcela{display:none!important}.overlay{display:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     SETUP SCREEN (primeira vez)
+══════════════════════════════════════════════ -->
+<div class="setup" id="setup">
+  <div class="setup-card">
+    <div class="setup-logo">Valvic</div>
+    <div class="setup-sub">Painel Financeiro · Configuração inicial</div>
+
+    <div class="setup-steps">
+      <div class="setup-step"><strong>1</strong> Abra sua planilha no Google Sheets</div>
+      <div class="setup-step"><strong>2</strong> Menu: <em>Extensões → Apps Script</em></div>
+      <div class="setup-step"><strong>3</strong> Cole o conteúdo do arquivo <code>Code.gs</code> e salve</div>
+      <div class="setup-step"><strong>4</strong> Clique em <em>Implementar → Nova implementação</em></div>
+      <div class="setup-step"><strong>5</strong> Tipo: Web App · Executar como: <em>Eu</em> · Acesso: <em>Qualquer pessoa</em></div>
+      <div class="setup-step"><strong>6</strong> Copie a URL gerada e cole abaixo</div>
+    </div>
+
+    <div class="field" style="margin-bottom:12px">
+      <label>URL do Apps Script Web App</label>
+      <input id="setup-url" type="url" placeholder="https://script.google.com/macros/s/.../exec" autocomplete="off">
+    </div>
+    <div class="field" style="margin-bottom:20px">
+      <label>Meta anual (R$) — opcional, padrão R$ 1.800.000</label>
+      <input id="setup-meta" type="number" value="1800000" class="input-mono">
+    </div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="saveSetup()">Começar →</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     MAIN APP
+══════════════════════════════════════════════ -->
+<div id="app" style="display:none">
+
+  <!-- Top bar -->
+  <div class="top">
+    <div class="brand">Valvic <small>Painel Financeiro</small></div>
+    <div class="top-meta" id="top-ano">2026</div>
+    <div class="spacer"></div>
+    <button class="btn btn-sm" onclick="showConfigModal()">⚙ Config</button>
+    <button class="btn btn-primary btn-sm" onclick="openNewProject()">+ Novo Projeto</button>
+  </div>
+
+  <div class="wrap">
+
+    <!-- Alerts -->
+    <div id="alerts-area"></div>
+
+    <!-- KPIs -->
+    <div class="kpis" id="kpis"></div>
+
+    <!-- Chart -->
+    <div class="section">
+      <div class="section-title">
+        Faturamento contratado por mês
+        <span class="section-title-right" id="chart-subtitle"></span>
+      </div>
+      <div class="chart-wrap"><canvas id="chart"></canvas></div>
+    </div>
+
+    <!-- Projects -->
+    <div class="section">
+      <div class="section-title">
+        Projetos <span id="total-projects" style="color:var(--dim);font-size:.55rem"></span>
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-sm btn-icon" onclick="toggleYear('prev')" title="Ano anterior">‹</button>
+          <span id="year-display" style="color:var(--sand);font-family:'DM Mono',monospace;font-size:.7rem;align-self:center"></span>
+          <button class="btn btn-sm btn-icon" onclick="toggleYear('next')" title="Próximo ano">›</button>
+        </div>
+      </div>
+      <div id="projects-list"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     MODAL — Novo Projeto
+══════════════════════════════════════════════ -->
+<div class="overlay" id="modal-project">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-title" id="modal-project-title">Novo Projeto</div>
+      <button class="modal-close" onclick="closeModal('modal-project')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="field">
+          <label>Mês de referência *</label>
+          <select id="f-mes" class="input-mono">
+            <option value="01">01 — Janeiro</option>
+            <option value="02">02 — Fevereiro</option>
+            <option value="03">03 — Março</option>
+            <option value="04">04 — Abril</option>
+            <option value="05">05 — Maio</option>
+            <option value="06">06 — Junho</option>
+            <option value="07">07 — Julho</option>
+            <option value="08">08 — Agosto</option>
+            <option value="09">09 — Setembro</option>
+            <option value="10">10 — Outubro</option>
+            <option value="11">11 — Novembro</option>
+            <option value="12">12 — Dezembro</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Ano *</label>
+          <input id="f-ano" type="number" value="2026" class="input-mono" min="2023" max="2030">
+        </div>
+        <div class="field form-full">
+          <label>Cliente *</label>
+          <input id="f-cliente" type="text" placeholder="Nome do cliente" autocomplete="off">
+        </div>
+        <div class="field form-full">
+          <label>Projeto *</label>
+          <input id="f-projeto" type="text" placeholder="Ex: Casa completa, Cozinha e lavanderia…">
+        </div>
+        <div class="field">
+          <label>Valor fechado (R$) *</label>
+          <input id="f-valor" type="number" placeholder="0" class="input-mono" min="0" step="0.01">
+        </div>
+        <div class="field">
+          <label>Forma de pagamento</label>
+          <input id="f-forma" type="text" placeholder="Ex: 50% + 10x cartão">
+        </div>
+      </div>
+
+      <!-- Parcelas -->
+      <div class="parcelas-section">
+        <div class="parcelas-title">Parcelas</div>
+        <div style="display:grid;grid-template-columns:110px 1fr 1fr auto;gap:4px;margin-bottom:4px">
+          <label style="font-size:.52rem">Valor (R$)</label>
+          <label style="font-size:.52rem">Data prevista</label>
+          <label style="font-size:.52rem">Forma (pix, cartão…)</label>
+          <label style="font-size:.52rem;text-align:center">Receb.</label>
+        </div>
+        <div id="parcelas-list"></div>
+        <button class="add-parcela" id="add-parcela-btn" onclick="addParcelaRow()">+ adicionar parcela</button>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn" onclick="closeModal('modal-project')">Cancelar</button>
+      <button class="btn btn-primary" onclick="saveProject()">Salvar projeto</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     MODAL — Configuração
+══════════════════════════════════════════════ -->
+<div class="overlay" id="modal-config">
+  <div class="modal" style="max-width:480px">
+    <div class="modal-head">
+      <div class="modal-title">Configuração</div>
+      <button class="modal-close" onclick="closeModal('modal-config')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="field" style="margin-bottom:12px">
+        <label>URL do Apps Script Web App</label>
+        <div class="config-row">
+          <input id="cfg-url" type="url" placeholder="https://script.google.com/macros/s/.../exec">
+          <button class="btn btn-sm" onclick="testConnection()">Testar</button>
+        </div>
+      </div>
+      <div class="field" style="margin-bottom:12px">
+        <label>Meta anual (R$)</label>
+        <input id="cfg-meta" type="number" class="input-mono">
+      </div>
+      <div class="field" style="margin-bottom:4px">
+        <label>Ano ativo</label>
+        <input id="cfg-ano" type="number" class="input-mono" min="2023" max="2030">
+      </div>
+      <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
+        <button class="btn btn-sm" style="color:var(--red);border-color:rgba(224,85,85,.3)" onclick="clearAllData()">⚠ Limpar todos os dados locais</button>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn" onclick="closeModal('modal-config')">Cancelar</button>
+      <button class="btn btn-primary" onclick="saveConfig()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════════ -->
+<script>
+// ─── Constants ───────────────────────────────────────────────────────
+const STORAGE_KEY = 'valvic_painel_v2';
+const MONTHS = ['','Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const MONTHS_SHORT = ['','JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'];
+
+// ─── State ───────────────────────────────────────────────────────────
+let S = loadState();
+let chartInstance = null;
+let editingId = null;
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch(e) {}
+  return { scriptUrl: '', metaAnual: 1800000, anoAtivo: 2026, projects: [] };
+}
+
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(S));
+}
+
+// ─── Init ─────────────────────────────────────────────────────────────
+async function init() {
+  if (!S.scriptUrl) {
+    document.getElementById('setup').classList.add('open');
+    return;
+  }
+  document.getElementById('app').style.display = 'block';
+  document.getElementById('year-display').textContent = S.anoAtivo;
+  document.getElementById('top-ano').textContent = S.anoAtivo;
+  showLoading();
+  await loadFromScript();
+  render();
+}
+
+function showLoading() {
+  document.getElementById('projects-list').innerHTML =
+    '<div class="loading"><div class="spinner"></div>Carregando projetos…</div>';
+}
+
+// ─── Remote ───────────────────────────────────────────────────────────
+async function loadFromScript() {
+  if (!S.scriptUrl) return;
+  try {
+    const res = await fetch(S.scriptUrl + '?action=getData', {cache:'no-store'});
+    const data = await res.json();
+    if (Array.isArray(data)) {
+      S.projects = data.map(normalizeProject);
+      saveState();
+    }
+  } catch(e) {
+    showToast('Erro ao conectar ao Google Sheets: ' + e.message, 'err');
+  }
+}
+
+async function pushProject(p) {
+  if (!S.scriptUrl) return;
+  try {
+    await fetch(S.scriptUrl, {
+      method: 'POST',
+      headers: {'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify(p)
+    });
+  } catch(e) {
+    showToast('Projeto salvo localmente. Sync com Sheets falhou: ' + e.message, 'err');
+  }
+}
+
+async function pushPaymentUpdate(id, pagIndex, received) {
+  if (!S.scriptUrl) return;
+  try {
+    await fetch(`${S.scriptUrl}?action=updatePayment&id=${encodeURIComponent(id)}&pag=${pagIndex}&received=${received}`);
+  } catch(e) {}
+}
+
+async function pushDelete(id) {
+  if (!S.scriptUrl) return;
+  try {
+    await fetch(`${S.scriptUrl}?action=deleteProject&id=${encodeURIComponent(id)}`);
+  } catch(e) {}
+}
+
+// ─── Normalize ────────────────────────────────────────────────────────
+function normalizeProject(p) {
+  const parcelas = [];
+  for (let i = 1; i <= 5; i++) {
+    const v = Number(p[`p${i}Valor`]) || 0;
+    if (v) {
+      parcelas.push({
+        valor: v,
+        data: p[`p${i}Data`] || '',
+        desc: p[`p${i}Desc`] || '',
+        recebido: p[`p${i}Recebido`] === true || p[`p${i}Recebido`] === 'true' || p[`p${i}Recebido`] === 'TRUE'
+      });
+    }
+  }
+  return {
+    id: String(p.id || genId()),
+    cliente: p.cliente || '',
+    projeto: p.projeto || '',
+    investimento: Number(p.investimento) || 0,
+    formaPag: p.formaPag || '',
+    mesRef: String(p.mesRef || '01').padStart(2,'0'),
+    anoRef: String(p.anoRef || '2026'),
+    parcelas
+  };
+}
+
+function projectToFlat(p) {
+  const flat = {
+    id: p.id,
+    cliente: p.cliente,
+    projeto: p.projeto,
+    investimento: p.investimento,
+    formaPag: p.formaPag,
+    mesRef: p.mesRef,
+    anoRef: p.anoRef
+  };
+  for (let i = 0; i < 5; i++) {
+    const parc = p.parcelas[i] || {};
+    flat[`p${i+1}Valor`] = parc.valor || '';
+    flat[`p${i+1}Data`] = parc.data || '';
+    flat[`p${i+1}Desc`] = parc.desc || '';
+    flat[`p${i+1}Recebido`] = parc.recebido || false;
+  }
+  return flat;
+}
+
+// ─── Calculations ─────────────────────────────────────────────────────
+function projectsByYear(year) {
+  return S.projects.filter(p => String(p.anoRef) === String(year));
+}
+
+function totalContratado(projects) {
+  return projects.reduce((s, p) => s + p.investimento, 0);
+}
+
+function totalAReceber(projects) {
+  return projects.reduce((s, p) => {
+    const recebido = p.parcelas.filter(x => x.recebido).reduce((a, x) => a + x.valor, 0);
+    return s + Math.max(0, p.investimento - recebido);
+  }, 0);
+}
+
+function totalRecebido(projects) {
+  return projects.reduce((s, p) =>
+    s + p.parcelas.filter(x => x.recebido).reduce((a, x) => a + x.valor, 0), 0);
+}
+
+function monthlyContratado(projects, year) {
+  const months = {};
+  for (let m = 1; m <= 12; m++) months[String(m).padStart(2,'0')] = 0;
+  projects.filter(p => String(p.anoRef) === String(year))
+    .forEach(p => { months[p.mesRef] = (months[p.mesRef] || 0) + p.investimento; });
+  return months;
+}
+
+function monthlyRecebido(projects, year) {
+  // Sum of received parcelas whose date falls in a given month/year
+  const months = {};
+  for (let m = 1; m <= 12; m++) months[String(m).padStart(2,'0')] = 0;
+  projects.filter(p => String(p.anoRef) === String(year))
+    .forEach(p => {
+      p.parcelas.filter(x => x.recebido && x.data).forEach(x => {
+        // Try to parse date as dd/mm or dd/mm/yyyy
+        const parts = x.data.split('/');
+        if (parts.length >= 2) {
+          const mStr = parts[1].padStart(2,'0');
+          if (months[mStr] !== undefined) months[mStr] += x.valor;
+        }
+      });
+    });
+  return months;
+}
+
+// ─── Render ───────────────────────────────────────────────────────────
+function render() {
+  const year = S.anoAtivo;
+  const projects = projectsByYear(year);
+
+  renderAlerts(projects);
+  renderKPIs(projects);
+  renderChart(projects, year);
+  renderProjects(projects, year);
+  document.getElementById('total-projects').textContent = `(${projects.length})`;
+  document.getElementById('year-display').textContent = year;
+  document.getElementById('top-ano').textContent = year;
+}
+
+function renderAlerts(projects) {
+  const container = document.getElementById('alerts-area');
+  const alerts = [];
+
+  // Check H2 pipeline (current year)
+  const year = S.anoAtivo;
+  const today = new Date();
+  const currentMonth = today.getMonth() + 1;
+
+  if (year === today.getFullYear()) {
+    const h2months = ['07','08','09','10','11','12'];
+    const h2total = projects.filter(p => h2months.includes(p.mesRef))
+      .reduce((s, p) => s + p.investimento, 0);
+    if (h2total === 0) {
+      alerts.push(`<div class="alert red"><span class="alert-icon">⚠</span>
+        <span><strong>Pipeline H2 zerado.</strong> Nenhum projeto contratado para Jul–Dez/${year}. Acionar Vitor imediatamente.</span></div>`);
+    }
+
+    // Cash alert — check if current month has outstanding parcelas
+    const aReceber = totalAReceber(projects);
+    if (aReceber > 0) {
+      alerts.push(`<div class="alert amber"><span class="alert-icon">○</span>
+        <span><strong>${fmt(aReceber)} a receber.</strong> Acompanhar cobranças prioritárias antes do fim do mês.</span></div>`);
+    }
+  }
+
+  container.innerHTML = alerts.join('');
+}
+
+function renderKPIs(projects) {
+  const total = totalContratado(projects);
+  const aReceber = totalAReceber(projects);
+  const recebido = totalRecebido(projects);
+  const meta = S.metaAnual || 1800000;
+  const pct = meta > 0 ? (total / meta * 100) : 0;
+
+  // H2 pipeline
+  const h2 = projects.filter(p => ['07','08','09','10','11','12'].includes(p.mesRef))
+    .reduce((s, p) => s + p.investimento, 0);
+
+  document.getElementById('kpis').innerHTML = `
+    <div class="kpi">
+      <div class="kpi-label">Total contratado ${S.anoAtivo}</div>
+      <div class="kpi-value">${fmt(total)}</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:${Math.min(100,pct)}%"></div></div>
+      <div class="kpi-sub">${pct.toFixed(1)}% da meta de ${fmt(meta)}</div>
+    </div>
+    <div class="kpi ${aReceber > 50000 ? 'amber' : 'green'}">
+      <div class="kpi-label">A receber</div>
+      <div class="kpi-value ${aReceber > 0 ? '' : 'pos'}">${fmt(aReceber)}</div>
+      <div class="kpi-sub">Recebido: ${fmt(recebido)}</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Meta mensal necessária</div>
+      <div class="kpi-value">${fmt(Math.max(0, (meta - total) / Math.max(1, 12 - (new Date().getMonth()))))}
+      </div>
+      <div class="kpi-sub">para atingir ${fmt(meta)} no ano</div>
+    </div>
+    <div class="kpi ${h2 === 0 ? 'red' : 'green'}">
+      <div class="kpi-label">Pipeline Jul–Dez</div>
+      <div class="kpi-value ${h2 === 0 ? 'neg' : 'pos'}">${h2 === 0 ? 'Vazio' : fmt(h2)}</div>
+      <div class="kpi-sub">${h2 === 0 ? '⚠ Sem projetos contratados para H2' : projects.filter(p=>['07','08','09','10','11','12'].includes(p.mesRef)).length + ' projeto(s) contratado(s)'}</div>
+    </div>
+  `;
+}
+
+function renderChart(projects, year) {
+  const monthly = monthlyContratado(projects, year);
+  const monthlyRec = monthlyRecebido(projects, year);
+  const labels = Object.keys(monthly).map(m => MONTHS_SHORT[parseInt(m)]);
+  const valuesContratado = Object.values(monthly);
+  const valuesRecebido = Object.values(monthlyRec);
+
+  const avg = valuesContratado.reduce((a,b)=>a+b,0) / 12;
+  document.getElementById('chart-subtitle').textContent =
+    'Média: ' + fmt(avg) + '/mês';
+
+  const ctx = document.getElementById('chart').getContext('2d');
+  if (chartInstance) chartInstance.destroy();
+
+  chartInstance = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: 'Contratado',
+          data: valuesContratado,
+          backgroundColor: valuesContratado.map(v =>
+            v === 0 ? 'rgba(224,85,85,.18)' : 'rgba(160,104,56,.55)'),
+          borderColor: valuesContratado.map(v =>
+            v === 0 ? 'rgba(224,85,85,.5)' : '#A06838'),
+          borderWidth: 1,
+          borderRadius: 4,
+        },
+        {
+          label: 'Recebido',
+          data: valuesRecebido,
+          backgroundColor: 'rgba(46,204,138,.25)',
+          borderColor: 'rgba(46,204,138,.6)',
+          borderWidth: 1,
+          borderRadius: 4,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          labels: {
+            color: 'rgba(245,240,232,.55)',
+            font: { family: 'DM Mono', size: 10 },
+            boxWidth: 10
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: ctx => ' ' + ctx.dataset.label + ': ' + fmt(ctx.parsed.y)
+          },
+          backgroundColor: '#141009',
+          borderColor: 'rgba(160,104,56,.4)',
+          borderWidth: 1,
+          titleColor: '#C8914A',
+          bodyColor: '#F5F0E8',
+          titleFont: { family: 'DM Mono', size: 11 },
+          bodyFont: { family: 'DM Mono', size: 11 }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: 'rgba(160,104,56,.07)' },
+          ticks: { color: 'rgba(245,240,232,.4)', font: { family: 'DM Mono', size: 10 } }
+        },
+        y: {
+          grid: { color: 'rgba(160,104,56,.07)' },
+          ticks: {
+            color: 'rgba(245,240,232,.4)',
+            font: { family: 'DM Mono', size: 10 },
+            callback: v => 'R$' + (v >= 1000 ? (v/1000).toFixed(0)+'k' : v)
+          }
+        }
+      }
+    }
+  });
+}
+
+function renderProjects(projects, year) {
+  const container = document.getElementById('projects-list');
+  if (projects.length === 0) {
+    container.innerHTML = `<div class="empty-state">
+      <div class="icon">📋</div>
+      <p>Nenhum projeto cadastrado para ${year}.<br>
+      Clique em <strong>+ Novo Projeto</strong> para começar.</p>
+    </div>`;
+    return;
+  }
+
+  // Group by month
+  const groups = {};
+  for (let m = 1; m <= 12; m++) {
+    const key = String(m).padStart(2,'0');
+    groups[key] = projects.filter(p => p.mesRef === key);
+  }
+
+  let html = '';
+  for (let m = 1; m <= 12; m++) {
+    const key = String(m).padStart(2,'0');
+    const list = groups[key];
+    const monthTotal = list.reduce((s, p) => s + p.investimento, 0);
+    const isEmpty = list.length === 0;
+
+    html += `<div class="month-group">
+      <div class="month-header">
+        <span class="month-name">${MONTHS_SHORT[m]}</span>
+        <span class="month-badge ${isEmpty ? 'empty' : 'ok'}">${isEmpty ? 'Vazio' : list.length + ' projeto' + (list.length>1?'s':'')}</span>
+        <span class="month-total">${monthTotal > 0 ? fmt(monthTotal) : '—'}</span>
+      </div>`;
+
+    if (isEmpty) {
+      html += `<div class="month-empty">
+        <span>○</span> Nenhum projeto contratado em ${MONTHS[m]}
+        ${m >= 7 ? '<span style="color:var(--red);margin-left:4px">Pipeline vazio</span>' : ''}
+      </div>`;
+    } else {
+      list.forEach(p => {
+        const outstanding = p.investimento - p.parcelas.filter(x=>x.recebido).reduce((a,x)=>a+x.valor,0);
+        const dots = renderDots(p);
+        html += `<div class="project-row" id="proj-${p.id}">
+          <div class="proj-main">
+            <div class="proj-client">${esc(p.cliente)}</div>
+            <div class="proj-name">${esc(p.projeto)}</div>
+            ${p.formaPag ? `<div class="proj-pay">${esc(p.formaPag)}</div>` : ''}
+          </div>
+          <div class="proj-value">
+            <div class="proj-total">${fmt(p.investimento)}</div>
+            <div class="proj-outstanding ${outstanding > 0 ? 'owed' : 'paid'}">
+              ${outstanding > 0 ? '− ' + fmt(outstanding) + ' a receber' : '✓ pago'}
+            </div>
+          </div>
+          <div class="proj-dots" title="Clique nas parcelas para marcar como recebida">${dots}</div>
+          <div class="proj-actions">
+            <button class="btn btn-sm btn-icon" title="Editar" onclick="editProject('${p.id}')">✎</button>
+            <button class="btn btn-sm btn-icon" style="color:var(--dim)" title="Excluir" onclick="deleteProject('${p.id}')">✕</button>
+          </div>
+        </div>`;
+      });
+    }
+
+    html += '</div>';
+  }
+
+  container.innerHTML = html;
+}
+
+function renderDots(p) {
+  if (p.parcelas.length === 0) return '<span style="color:var(--dim);font-size:.6rem">sem parcelas</span>';
+  return p.parcelas.map((parc, i) => {
+    const cls = parc.recebido ? 'received' : parc.data ? 'pending' : 'empty';
+    const title = `Parcela ${i+1}: ${fmt(parc.valor)}${parc.data ? ' · ' + parc.data : ''}${parc.desc ? ' (' + parc.desc + ')' : ''}`;
+    return `<div class="dot ${cls}" title="${title}" onclick="togglePayment('${p.id}',${i})"></div>`;
+  }).join('');
+}
+
+// ─── Interactions ─────────────────────────────────────────────────────
+async function togglePayment(projectId, parcelaIndex) {
+  const proj = S.projects.find(p => p.id === projectId);
+  if (!proj || !proj.parcelas[parcelaIndex]) return;
+  proj.parcelas[parcelaIndex].recebido = !proj.parcelas[parcelaIndex].recebido;
+  saveState();
+  render();
+  await pushPaymentUpdate(projectId, parcelaIndex, proj.parcelas[parcelaIndex].recebido);
+  showToast(proj.parcelas[parcelaIndex].recebido ? 'Pagamento marcado como recebido ✓' : 'Pagamento desmarcado', 'ok');
+}
+
+async function deleteProject(id) {
+  if (!confirm('Excluir este projeto?')) return;
+  S.projects = S.projects.filter(p => p.id !== id);
+  saveState();
+  render();
+  await pushDelete(id);
+  showToast('Projeto excluído', 'ok');
+}
+
+function editProject(id) {
+  const proj = S.projects.find(p => p.id === id);
+  if (!proj) return;
+  editingId = id;
+  document.getElementById('modal-project-title').textContent = 'Editar Projeto';
+  // Fill form
+  document.getElementById('f-mes').value = proj.mesRef;
+  document.getElementById('f-ano').value = proj.anoRef;
+  document.getElementById('f-cliente').value = proj.cliente;
+  document.getElementById('f-projeto').value = proj.projeto;
+  document.getElementById('f-valor').value = proj.investimento;
+  document.getElementById('f-forma').value = proj.formaPag;
+  // Fill parcelas
+  const list = document.getElementById('parcelas-list');
+  list.innerHTML = '';
+  parcelaCount = 0;
+  proj.parcelas.forEach(p => addParcelaRow(p));
+  openModal('modal-project');
+}
+
+function toggleYear(dir) {
+  S.anoAtivo = dir === 'prev' ? S.anoAtivo - 1 : S.anoAtivo + 1;
+  saveState();
+  render();
+}
+
+// ─── New project form ──────────────────────────────────────────────────
+let parcelaCount = 0;
+
+function openNewProject() {
+  editingId = null;
+  document.getElementById('modal-project-title').textContent = 'Novo Projeto';
+  document.getElementById('f-mes').value = String(new Date().getMonth() + 1).padStart(2,'0');
+  document.getElementById('f-ano').value = S.anoAtivo;
+  document.getElementById('f-cliente').value = '';
+  document.getElementById('f-projeto').value = '';
+  document.getElementById('f-valor').value = '';
+  document.getElementById('f-forma').value = '';
+  document.getElementById('parcelas-list').innerHTML = '';
+  parcelaCount = 0;
+  addParcelaRow();
+  openModal('modal-project');
+}
+
+function addParcelaRow(data = {}) {
+  if (parcelaCount >= 5) { showToast('Máximo de 5 parcelas','err'); return; }
+  parcelaCount++;
+  const i = parcelaCount;
+  const row = document.createElement('div');
+  row.className = 'parcela-row';
+  row.id = `parc-row-${i}`;
+  row.innerHTML = `
+    <div class="field">
+      <input type="number" id="parc-valor-${i}" placeholder="0,00" class="input-mono"
+        value="${data.valor || ''}" min="0" step="0.01">
+    </div>
+    <div class="field">
+      <input type="text" id="parc-data-${i}" placeholder="dd/mm/aaaa"
+        value="${data.data || ''}">
+    </div>
+    <div class="field">
+      <input type="text" id="parc-desc-${i}" placeholder="pix / cartão / dinheiro"
+        value="${data.desc || ''}">
+    </div>
+    <div class="parcela-check">
+      <input type="checkbox" id="parc-recv-${i}" ${data.recebido ? 'checked' : ''}
+        title="Recebida?">
+    </div>
+  `;
+  document.getElementById('parcelas-list').appendChild(row);
+  if (parcelaCount >= 5) document.getElementById('add-parcela-btn').style.display = 'none';
+  else document.getElementById('add-parcela-btn').style.display = '';
+}
+
+function readParcelas() {
+  const parcelas = [];
+  for (let i = 1; i <= parcelaCount; i++) {
+    const v = parseFloat(document.getElementById(`parc-valor-${i}`)?.value) || 0;
+    if (v > 0) {
+      parcelas.push({
+        valor: v,
+        data: document.getElementById(`parc-data-${i}`)?.value || '',
+        desc: document.getElementById(`parc-desc-${i}`)?.value || '',
+        recebido: document.getElementById(`parc-recv-${i}`)?.checked || false
+      });
+    }
+  }
+  return parcelas;
+}
+
+async function saveProject() {
+  const cliente = document.getElementById('f-cliente').value.trim();
+  const projeto = document.getElementById('f-projeto').value.trim();
+  const investimento = parseFloat(document.getElementById('f-valor').value) || 0;
+
+  if (!cliente || !projeto || !investimento) {
+    showToast('Preencha cliente, projeto e valor', 'err');
+    return;
+  }
+
+  const parcelas = readParcelas();
+
+  if (editingId) {
+    // Update existing
+    const proj = S.projects.find(p => p.id === editingId);
+    if (proj) {
+      proj.cliente = cliente;
+      proj.projeto = projeto;
+      proj.investimento = investimento;
+      proj.formaPag = document.getElementById('f-forma').value.trim();
+      proj.mesRef = document.getElementById('f-mes').value;
+      proj.anoRef = document.getElementById('f-ano').value;
+      proj.parcelas = parcelas;
+      saveState();
+      render();
+      closeModal('modal-project');
+      showToast('Projeto atualizado ✓', 'ok');
+      await pushProject(projectToFlat(proj));
+    }
+  } else {
+    const p = {
+      id: genId(),
+      cliente,
+      projeto,
+      investimento,
+      formaPag: document.getElementById('f-forma').value.trim(),
+      mesRef: document.getElementById('f-mes').value,
+      anoRef: document.getElementById('f-ano').value,
+      parcelas
+    };
+    S.projects.push(p);
+    saveState();
+    render();
+    closeModal('modal-project');
+    showToast('Projeto salvo ✓', 'ok');
+    await pushProject(projectToFlat(p));
+  }
+}
+
+// ─── Setup & Config ───────────────────────────────────────────────────
+function saveSetup() {
+  const url = document.getElementById('setup-url').value.trim();
+  const meta = parseFloat(document.getElementById('setup-meta').value) || 1800000;
+  if (!url) { showToast('Informe a URL do Apps Script', 'err'); return; }
+  S.scriptUrl = url;
+  S.metaAnual = meta;
+  saveState();
+  document.getElementById('setup').classList.remove('open');
+  document.getElementById('app').style.display = 'block';
+  showLoading();
+  loadFromScript().then(() => render());
+}
+
+function showConfigModal() {
+  document.getElementById('cfg-url').value = S.scriptUrl || '';
+  document.getElementById('cfg-meta').value = S.metaAnual || 1800000;
+  document.getElementById('cfg-ano').value = S.anoAtivo || 2026;
+  openModal('modal-config');
+}
+
+async function testConnection() {
+  const url = document.getElementById('cfg-url').value.trim();
+  if (!url) { showToast('Informe a URL primeiro', 'err'); return; }
+  try {
+    const res = await fetch(url + '?action=getData', {cache:'no-store'});
+    const data = await res.json();
+    if (Array.isArray(data)) showToast('Conexão OK · ' + data.length + ' projeto(s) na planilha', 'ok');
+    else showToast('Resposta inesperada: ' + JSON.stringify(data).slice(0,80), 'err');
+  } catch(e) {
+    showToast('Falha: ' + e.message, 'err');
+  }
+}
+
+function saveConfig() {
+  S.scriptUrl = document.getElementById('cfg-url').value.trim();
+  S.metaAnual = parseFloat(document.getElementById('cfg-meta').value) || 1800000;
+  S.anoAtivo = parseInt(document.getElementById('cfg-ano').value) || 2026;
+  saveState();
+  closeModal('modal-config');
+  showToast('Configuração salva ✓', 'ok');
+  showLoading();
+  loadFromScript().then(() => render());
+}
+
+function clearAllData() {
+  if (!confirm('Apagar TODOS os dados locais? (a planilha do Google não é afetada)')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  location.reload();
+}
+
+// ─── Modal helpers ────────────────────────────────────────────────────
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+// Close on overlay click
+document.querySelectorAll('.overlay').forEach(el => {
+  el.addEventListener('click', e => { if (e.target === el) closeModal(el.id); });
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.querySelectorAll('.overlay.open').forEach(el => closeModal(el.id));
+});
+
+// ─── Utils ────────────────────────────────────────────────────────────
+function fmt(n) {
+  return 'R$ ' + Number(n || 0).toLocaleString('pt-BR', {minimumFractionDigits:0, maximumFractionDigits:0});
+}
+
+function esc(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function genId() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2,6);
+}
+
+let toastTimer;
+function showToast(msg, type = 'ok') {
+  if (toastTimer) clearTimeout(toastTimer);
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.textContent = msg;
+  document.body.appendChild(t);
+  toastTimer = setTimeout(() => t.remove(), 3500);
+}
+
+// ─── Boot ─────────────────────────────────────────────────────────────
+init();
+</script>
+</body>
+</html>
