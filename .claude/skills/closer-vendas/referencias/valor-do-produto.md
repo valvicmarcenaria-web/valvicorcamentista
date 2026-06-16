@@ -29,7 +29,7 @@ A ferragem é onde a Valvic mostra nível. Cada tier carrega uma garantia (ver S
 | Linha | Discurso de valor | Garantia |
 |---|---|---|
 | Telescópica / dobradiça padrão | "Solução eficiente e funcional" | 2 anos |
-| **Hartt** | "Ferragem premium, fechamento suave, durabilidade real" | 5 anos |
+| **Hardt** | "Ferragem premium, fechamento suave, durabilidade real" | 5 anos |
 | **Hettich** | "Engenharia alemã, precisão e durabilidade de referência mundial" | 10 anos |
 | **Blum** | "O ápice: a melhor ferragem do mundo, garantia vitalícia" | vitalícia |
 

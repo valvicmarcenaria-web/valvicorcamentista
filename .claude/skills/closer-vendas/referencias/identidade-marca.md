@@ -62,7 +62,7 @@ Projeto completo de casa (multi-ambiente). Estrutura de 6+ páginas:
 ## Melhorias a aplicar no template (já acordadas)
 1. QA de nome em todas as páginas (já vazou "Vargas Decor" em outra proposta).
 2. Garantia dinâmica (não fixar "10 anos" no template).
-3. Corrigir typos técnicos: "Premiun"→Premium, "harth"/"Hardt"→**Hartt**.
+3. Corrigir typos técnicos: "Premiun"→Premium, "harth"/"Hardt"→**Hardt**.
 4. Abrir a pág. 2 no cliente (conexão) antes do institucional.
 5. Versões/ambientes nomeados por valor; ancorar do maior para o menor.
 6. Validade por perfil (premium 5–7 dias / rápido 48h).

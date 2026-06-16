@@ -57,7 +57,7 @@ O total fechou perto, mas as linhas se **compensaram**. Onde errei e a correçã
   não dobra tudo — medir o trecho realmente iluminado.
 
 ## ✅ Onde acertei em cheio (manter)
-- **Ferragens:** Hartt 8=8 · Oculta Hartt 4=4 · RO65 3=3 · Trilho RO65 1=1 ·
+- **Ferragens:** Hardt 8=8 · Oculta Hardt 4=4 · RO65 3=3 · Trilho RO65 1=1 ·
   Multi 2p 1=1 · Multi 3p 1=1 · SP7000 6=6. Desempenador 4×3 (perto).
 - **Sistemas deslizantes e puxadores:** leitura cravada.
 - **Ilha:** Enlevo 5=5 · Oculta 5=5 · serralheria/bandeja/gaveta especial 1/1/1.

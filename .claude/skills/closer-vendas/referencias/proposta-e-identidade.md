@@ -54,7 +54,7 @@ briefing do cliente (nome, conceito, renders).
 1. **QA de dados** — eliminar resíduos de template (já vazou "Vargas Decor"); um
    campo de nome único propagado em todas as páginas.
 2. **Garantia dinâmica** por ferragem (2/5/10/vitalícia) — não fixar "10 anos".
-3. **Corrigir termos:** "Premiun"→Premium, "harth"→**Hartt**.
+3. **Corrigir termos:** "Premiun"→Premium, "harth"→**Hardt**.
 4. **Abrir no cliente** (conexão), não na empresa.
 5. **Versões nomeadas por valor** e ordenadas cara→barata.
 6. **Validade por perfil** (premium 5–7 dias / rápido 48h).
@@ -69,7 +69,7 @@ briefing do cliente (nome, conceito, renders).
 
 Base: cópia da `proposta_bruna_ferreira` (`DAHKUR7n8Yo`). Ambos já têm placeholders
 `{{NOME DO CLIENTE}}`, `garantia - {{ANOS}} anos`, `Investimento total - R$ {{TOTAL}}`
-e typos corrigidos (Premium, Hartt, Laminação, Espessuras de painéis).
+e typos corrigidos (Premium, Hardt, Laminação, Espessuras de painéis).
 
 ### Element IDs reutilizáveis (para autofill via MCP)
 - Capa nome: `PB2PRdKRTQVKcmq8-LBRmKPSmH1SKzz2l`

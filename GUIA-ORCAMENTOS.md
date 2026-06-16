@@ -83,7 +83,7 @@ Ferramenta principal: `ferramentas/validacao-orcamento.html`.
 - [ ] Sistema de porta definido (deslizante / articulada / sem porta)
 - [ ] Trilho(s) cotados (superior + inferior se deslizante)
 - [ ] Desempenador cotado (portas altas)
-- [ ] Tipo de corrediça das gavetas (telescópica / oculta Hartt / Hettich)
+- [ ] Tipo de corrediça das gavetas (telescópica / oculta Hardt / Hettich)
 - [ ] Prateleiras > 70cm → 18mm
 - [ ] Fita de borda por metro calculada (incluir gavetas)
 - [ ] Iluminação LED (se solicitada)
@@ -109,7 +109,7 @@ Estrutura padrão (6 peças de MDF):
 
 Corrediças:
 - **Telescópica** (R$40) — padrão / econômico.
-- **Oculta Hartt** (R$70) — intermediário.
+- **Oculta Hardt** (R$70) — intermediário.
 - **Oculta Quadro Hettich** (R$120) — alto padrão com amortecimento.
 - **Oculta Actro Hettich** (R$400) / **Blum** (R$300) — premium.
 
@@ -288,8 +288,8 @@ decisão tem que ficar **registrada no painel de dúvidas** e seguir até a prod
 ## Estratégia de proposta (alinhado com o Rodrigo)
 
 - **Ancoramos na proposta o que está sendo vendido.** Orça-se o que o projeto especifica
-  (ex.: todas as corrediças ocultas Hartt) — **sem "otimização escondida"**.
+  (ex.: todas as corrediças ocultas Hardt) — **sem "otimização escondida"**.
 - **Downgrade é carta de negociação**, usada só **quando o cliente chora preço** — não é
-  premissa de orçamento. Ex.: trocar bandejas de oculta Hartt → telescópica.
+  premissa de orçamento. Ex.: trocar bandejas de oculta Hardt → telescópica.
 - Proposta ancorada no **piso real de MC (~43%)**; abaixo disso, só com aval do Rodrigo
   (caixa baixo pode aceitar 37%).

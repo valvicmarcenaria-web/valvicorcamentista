@@ -41,7 +41,7 @@ Serve de base para Marcos estimar roupeiros semelhantes.
 
 - **Sistema Dominus** (correr).
 - **Corrediças ocultas** com **slow motion** (fechamento suave — característico
-  da oculta). **~70% dos casos: Hartt.** *(Meta futura: subir para Blum quando
+  da oculta). **~70% dos casos: Hardt.** *(Meta futura: subir para Blum quando
   o cliente pagar a diferença de qualidade — ainda não atingido.)*
 - **Puxador de perfil SP7000** na maioria. (Emergindo: puxador cava, porta
   provençal/usinada — tratar depois.)
@@ -66,6 +66,6 @@ fundo por encaixe via rasgo; tamponamento laminado na frente).
 
 ## Pontos a confirmar (transcrição)
 
-- Marca da corrediça oculta além da Hartt ("Rede"/Rometal?).
+- Marca da corrediça oculta além da Hardt ("Rede"/Rometal?).
 - "SP7000" — confirmar código/linha do puxador de perfil.
 - Profundidade padrão do roupeiro de correr.

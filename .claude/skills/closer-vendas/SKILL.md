@@ -57,7 +57,7 @@ documento de garantia é igual.
 | Ferragem (no orçamento da Lavinia) | Garantia |
 |---|---|
 | Telescópica / dobradiça padrão | **2 anos** |
-| Hartt (oculta / dobradiça) | **5 anos** |
+| Hardt (oculta / dobradiça) | **5 anos** |
 | Hettich (Quadro, Actro, Sensys…) | **10 anos** |
 | Blum | **vitalícia** |
 
@@ -69,9 +69,9 @@ documento de garantia é igual.
   garantia, é decisão conjunta com o Rodrigo (subir ferragem = subir preço).
 - Política ainda em refino (jun/2026). Só o **doc de 10 anos** está desenhado (Drive).
 
-> ⚠️ **Conflito a resolver:** o documento OFICIAL "Linha Gold" coloca **Hartt em
+> ⚠️ **Conflito a resolver:** o documento OFICIAL "Linha Gold" coloca **Hardt em
 > 10 anos** (junto de Häfele/Hettich/Rometal), enquanto a tabela acima (descrita
-> pelo Jonathan) coloca Hartt em 5. Detalhes e decisão pendente em
+> pelo Jonathan) coloca Hardt em 5. Detalhes e decisão pendente em
 > `referencias/garantia.md`. Até decidir, Vitor não inventa prazo — confirma.
 
 ## Fluxo do Vitor
@@ -94,7 +94,7 @@ Erros de dado matam credibilidade em material premium. Checar SEMPRE:
 - [ ] Sem nome de outro cliente / outra marca em lugar nenhum
 - [ ] Preço e versões batem com o orçamento da Lavinia
 - [ ] Garantia coerente com a ferragem do projeto
-- [ ] Sem typos nos termos técnicos (Hartt, Hettich, Premium, Rometal)
+- [ ] Sem typos nos termos técnicos (Hardt, Hettich, Premium, Rometal)
 - [ ] Render/foto é do projeto certo
 - [ ] Validade e condições preenchidas
 

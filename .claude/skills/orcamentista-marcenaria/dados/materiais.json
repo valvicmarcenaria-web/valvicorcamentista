@@ -57,7 +57,7 @@
         { "produto": "Dobradiça Padrão", "variacao": "—", "custo": 6, "unidade": "unidade", "obs": null },
         { "produto": "Dobradiça Bigfer Inox", "variacao": "—", "custo": 20, "unidade": "unidade", "obs": null },
         { "produto": "Dobradiça Bigfer Ônix", "variacao": "—", "custo": 15, "unidade": "unidade", "obs": null },
-        { "produto": "Dobradiça Hartt", "variacao": "—", "custo": 8, "unidade": "unidade", "obs": null },
+        { "produto": "Dobradiça Hardt", "variacao": "—", "custo": 8, "unidade": "unidade", "obs": null },
         { "produto": "Dobradiça Häfele", "variacao": "—", "custo": 20, "unidade": "unidade", "obs": null },
         { "produto": "Dobradiça Hettich Novisys", "variacao": "—", "custo": 10, "unidade": "unidade", "obs": null },
         { "produto": "Dobradiça Hettich Sensys", "variacao": "—", "custo": 35, "unidade": "unidade", "obs": null },
@@ -70,7 +70,7 @@
       "unidade_padrao": "par",
       "itens": [
         { "produto": "Corrediça Telescópica", "variacao": "—", "custo": 40, "unidade": "par", "obs": "sem tamanho no orçamento" },
-        { "produto": "Corrediça Oculta Hartt", "variacao": "—", "custo": 70, "unidade": "par", "obs": null },
+        { "produto": "Corrediça Oculta Hardt", "variacao": "—", "custo": 70, "unidade": "par", "obs": null },
         { "produto": "Corrediça Oculta Quadro (Hettich)", "variacao": "—", "custo": 120, "unidade": "par", "obs": null },
         { "produto": "Corrediça Oculta Actro (Hettich)", "variacao": "—", "custo": 400, "unidade": "par", "obs": null },
         { "produto": "Corrediça Oculta (genérica)", "variacao": "—", "custo": 60, "unidade": "par", "obs": null }

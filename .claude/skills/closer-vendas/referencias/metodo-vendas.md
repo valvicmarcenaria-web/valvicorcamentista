@@ -62,3 +62,26 @@ Quanto mais o cliente antecipa, maior o desconto. Puxa caixa sem destruir margem
 - Expor custo/MC/dados internos.
 - Prometer prazo/garantia fora da política.
 - Enviar proposta sem o QA (ver SKILL).
+
+---
+
+## Cliente recorrente — abordagem de relacionamento
+
+Quando o cliente já fechou com a Valvic antes (2º, 3º projeto…), **não venda como
+se fosse a primeira vez.** A confiança já existe — o jogo é **reconhecimento e
+continuidade**, não convencimento.
+
+- **Reconheça a história na capa/conexão:** "mais um projeto nosso juntos", citar
+  o nº do projeto / o ambiente anterior. Faz o cliente se sentir lembrado.
+- **Menos prova social, mais intimidade:** os cases e o "quem somos" podem ser
+  encurtados — ele já conhece a empresa. Priorize o projeto dele e a relação.
+- **Gatilho de fidelidade (alinhar com Rodrigo):** uma condição/cortesia de cliente
+  recorrente pode substituir o desconto genérico ("porque já é de casa") — entra como
+  reconhecimento, não como o cliente "chorando preço".
+- **Tom:** caloroso e próximo, mesmo em projeto premium. Trata-se de manter, não de
+  conquistar.
+- **Continuidade técnica:** referir o padrão já entregue ("mantendo o mesmo nível de
+  acabamento/ferragem dos seus outros ambientes") reforça coerência e confiança.
+
+> Registrar no briefing/CRM se o cliente é recorrente, para o Vitor ativar essa
+> abordagem automaticamente. Ex.: **Regina Godinho = 3º projeto.**

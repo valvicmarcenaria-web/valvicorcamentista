@@ -19,7 +19,7 @@ Duas fontes compõem esta taxonomia:
 
 ## Preferências reais de compra (informado pelo fundador)
 
-- **Corrediça oculta com slow motion** é o padrão; **~70% dos casos: Hartt**.
+- **Corrediça oculta com slow motion** é o padrão; **~70% dos casos: Hardt**.
   Meta futura: subir para **Blum** quando o cliente pagar a diferença de
   qualidade (ainda não atingido).
 - **Sistema de correr de roupeiro: Dominus.**

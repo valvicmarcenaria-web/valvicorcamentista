@@ -9,7 +9,7 @@
 | Ferragem (lida do orçamento da Lavinia) | Garantia |
 |---|---|
 | Telescópica / dobradiça padrão | **2 anos** |
-| Hartt (oculta / dobradiça) | **5 anos** |
+| Hardt (oculta / dobradiça) | **5 anos** |
 | Hettich (Quadro, Actro, Sensys…) | **10 anos** |
 | Blum | **vitalícia** |
 
@@ -19,7 +19,7 @@ Regra de projeto: a garantia do conjunto segue a **ferragem de menor tier presen
 
 ## Documento a revisar — Termo "Linha Gold" (v5, Drive)
 
-O doc atual coloca ferragens de movimento (Hartt/Häfele/Hettich/Rometal) todas em
+O doc atual coloca ferragens de movimento (Hardt/Häfele/Hettich/Rometal) todas em
 10 anos. **Pendência:** criar as variações do termo por tier (2/5/10/vitalícia),
 mantendo a mesma estrutura (muda só o tempo e o nome da linha). O restante do termo
 permanece:

@@ -37,7 +37,7 @@ aplicação de branco seria mínima). **Caixa normal → MC 35%.**
 | Chapa Areia 15mm (2) + 6mm (1) | R$ 1.300 |
 | Espelho prata (~1,76 m²) | R$ 1.056 |
 | Fita cor + colagem (~46 m) | R$ 253 |
-| Dobradiças Hartt (12) + corrediças ocultas (2) | R$ 236 |
+| Dobradiças Hardt (12) + corrediças ocultas (2) | R$ 236 |
 | Puxador passante + cava | R$ 175 |
 | LED 3000K + sensor | R$ 275 |
 | Consumíveis | R$ 150 |
