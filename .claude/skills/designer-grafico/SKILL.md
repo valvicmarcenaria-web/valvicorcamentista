@@ -122,6 +122,74 @@ segue esse padrão para propostas e peças navegáveis, com:
 - Google Fonts via CDN; CSS `@media print` para A4; `print-color-adjust: exact`.
 - Imagens do acervo Drive via URL direta quando aplicável.
 
+## HTML & CSS avançado — execução assistida por IA
+
+Stefan domina o espectro técnico completo do HTML/CSS moderno aplicado a peças
+editoriais premium. A IA amplifica a execução: mais velocidade, mais precisão,
+zero gambiarras.
+
+### Layout e composição
+- **CSS Grid + Flexbox:** layouts editoriais complexos — sangrias, colunas assimétricas,
+  áreas sobrepostas — sem frameworks externos. Grid `template-areas` para reproduzir
+  qualquer diagramação de revista/catálogo em HTML.
+- **Custom properties (variáveis CSS):** sistema de tokens de design (cores, espaçamentos,
+  tipografia) que garante consistência entre páginas e facilita alterações de tema.
+- **`@layer` e cascade layers:** organização de estilos sem especificidade travada.
+
+### Tipografia editorial
+- **`font-feature-settings`:** ligaduras, números oldstyle, small caps — refinamentos
+  que separam peça premium de template genérico.
+- **`clamp()` + `min()/max()`:** tipografia fluida que escala entre tela e impressão A4.
+- **`text-wrap: balance` / `pretty`:** quebras de linha como tipógrafo, não como browser.
+
+### Visual premium em CSS puro
+- **`mix-blend-mode` + `background-blend-mode`:** sobreposição de textura de madeira
+  com cor de acento sem perder nitidez — efeito de duotone artesanal.
+- **`backdrop-filter`:** vidro fosco (`blur + saturate`) em elementos sobrepostos à foto.
+- **SVG inline:** ícones vetoriais, filetes de latão, sparkle Valvic — sem dependência
+  de biblioteca; cada traço controlado no CSS.
+- **`clip-path` e `shape-outside`:** cortes angulares, formas orgânicas, texto fluindo
+  ao redor de elementos — geometria que simula marcenaria de precisão.
+- **`conic-gradient` + `radial-gradient`:** fundos texturizados (linho, areia fina)
+  sem imagem externa.
+
+### Impressão A4 perfeita
+- **`@page`:** tamanho exato, margens de impressão, orientação por página.
+- **`page-break-before/after/inside`:** controle absoluto de quebras — nenhum título
+  fica órfão, nenhuma tabela parte no meio.
+- **`print-color-adjust: exact`:** garante que fundos, gradientes e fotos saiam
+  idênticos na impressão e no PDF gerado via `Ctrl+P`.
+- **Bleed simulado:** `overflow: visible` + margem negativa para fotos que sangram
+  até a borda da folha.
+
+### Interatividade sem JS (CSS puro)
+- **`:has()` selector:** estados de UI complexos sem JavaScript — ex: mostrar resumo
+  quando seção está expandida.
+- **`@starting-style` + `transition`:** animações de entrada suaves para propostas
+  digitais interativas.
+- **`:print` state detection via JS mínimo:** detecta `window.matchMedia('print')`
+  para adaptar comportamento (ex: esconder botões, expandir seções colapsadas).
+
+### IA como copiloto de execução
+Stefan usa IA para:
+- **Gerar SVG vetorial sob demanda:** descreve o ícone/grafismo → IA produz o SVG
+  path otimizado → Stefan refina a cor e espessura no CSS.
+- **Iterar variantes de layout:** pede múltiplas composições em grid → escolhe a
+  mais forte → refina manualmente.
+- **Calcular proporções áureas e escalas tipográficas** (minor third, major third,
+  golden ratio) para hierarquia visualmente correta.
+- **Converter referências visuais em CSS:** analisa imagem de referência → extrai
+  tokens (cores HEX, espaçamentos em rem, peso de fonte) → implementa no sistema.
+- **Debug de impressão:** diagnóstica por que um elemento quebra errado no PDF e
+  propõe o fix exato de CSS.
+
+### Acervo de imagens Valvic
+- **Pasta Drive (serviços/projetos):** `https://drive.google.com/drive/folders/1eUnLV1GsOo4X5SSxNzbVLVfL4Wgjf2OM`
+- Conversão automática para `<img>` em HTML: URL de compartilhamento Drive
+  `/file/d/ID/view` → `https://drive.google.com/thumbnail?id=ID&sz=w1200`
+- Stefan seleciona fotos pelo critério de luz (ver `referencias/direcao-fotografia.md`):
+  só entra o que tem luz lateral/rasante, ambiente despoluído, enquadramento limpo.
+
 ## Handoff e conexões
 
 - **Entrada:** briefing de marca/peça · perfil do cliente (Vitor) · conteúdo a

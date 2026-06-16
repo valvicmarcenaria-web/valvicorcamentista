@@ -10,7 +10,7 @@ pode ler e escrever aqui. Formato livre — marcar data e agente responsável.
 ### [2026-06-16] Redesenho dos templates de proposta — Stefan
 **Solicitante:** Jonathan  
 **Agente:** Stefan (designer-grafico)  
-**Status:** 🔴 Pendente — skill criada, aguardando início do redesign
+**Status:** 🟡 Em andamento — v1 do redesign entregue, aguardando aprovação de Jonathan
 
 **Contexto:**  
 O Template Excellence (HTML) feito pelo Vitor foi **reprovado** por Jonathan:
@@ -30,6 +30,7 @@ grife (Ornare/Florense), antes de retomar o Vitor.
 - Skill: `.claude/skills/designer-grafico/`
 - Template reprovado: `.claude/skills/closer-vendas/ferramentas/proposta-excellence.html`
 - Conteúdo da linha do tempo: `closer-vendas/referencias/linha-do-tempo.md`
+- **Acervo de imagens Valvic (projetos executados):** `https://drive.google.com/drive/folders/1eUnLV1GsOo4X5SSxNzbVLVfL4Wgjf2OM`
 
 ---
 

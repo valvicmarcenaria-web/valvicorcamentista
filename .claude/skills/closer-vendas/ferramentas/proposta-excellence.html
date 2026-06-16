@@ -4,1738 +4,1015 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Valvic Marcenaria — Proposta Excellence</title>
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    /* ============================================================
-       RESET & TOKENS
-    ============================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream:  #FDF6E3;
-      --gold:   #E0A521;
-      --gold-light: #F0C050;
-      --gold-dark:  #B8861A;
-      --dark:   #1A1A1A;
-      --navy:   #1A1A2E;
-      --navy-mid: #22223E;
-      --white:  #FFFFFF;
-      --text-muted: #6B6B5A;
-
-      --font-display: 'Cormorant Garamond', Georgia, serif;
-      --font-body:    'DM Sans', system-ui, sans-serif;
-
-      /* A4 in pixels at 96dpi */
-      --page-w: 794px;
-      --page-h: 1123px;
+      --sand:       #F2ECDE;
+      --sand-d:     #E8E0CC;
+      --gold:       #C49A4A;
+      --gold-l:     #D4AA60;
+      --gold-10:    rgba(196,154,74,.10);
+      --gold-20:    rgba(196,154,74,.20);
+      --gold-40:    rgba(196,154,74,.40);
+      --graphite:   #2B2B28;
+      --graphite-60:rgba(43,43,40,.6);
+      --graphite-15:rgba(43,43,40,.15);
+      --navy:       #1A1A2E;
+      --navy-m:     #22223E;
+      --white:      #FFFFFF;
+      --warm-wh:    #FBF8F4;
+      --muted:      #7A7A6A;
+      --fd:         'Cormorant Garamond', Georgia, serif;
+      --fb:         'Inter', system-ui, sans-serif;
+      --fm:         'Space Mono', 'Courier New', monospace;
+      --pw:         794px;
+      --ph:         1123px;
     }
 
     html, body {
-      background: #E8E0D0;
-      font-family: var(--font-body);
-      color: var(--dark);
+      background: #CEC6B8;
+      font-family: var(--fb);
+      color: var(--graphite);
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
 
-    /* ============================================================
-       FLOATING CONTROLS (hidden on print)
-    ============================================================ */
+    /* ── CONTROLS ── */
     #controls {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      position: fixed; top: 24px; right: 24px; z-index: 9999;
+      display: flex; flex-direction: column; gap: 10px;
     }
-
     .ctrl-btn {
-      padding: 10px 18px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-family: var(--font-body);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      transition: all 0.2s;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+      padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer;
+      font-family: var(--fb); font-size: 12px; font-weight: 600;
+      letter-spacing: .06em; text-transform: uppercase;
+      box-shadow: 0 4px 16px rgba(0,0,0,.25); transition: all .2s;
     }
+    #btn-edit  { background: var(--navy); color: var(--gold); border: 1px solid var(--gold-40); }
+    #btn-edit:hover { background: var(--navy-m); }
+    #btn-print { background: var(--gold); color: var(--navy); }
+    #btn-print:hover { background: var(--gold-l); }
+    @media print { #controls { display: none !important; } }
 
-    #btn-edit {
-      background: var(--navy);
-      color: var(--gold);
-      border: 1px solid var(--gold);
-    }
-    #btn-edit:hover { background: var(--navy-mid); }
-
-    #btn-print {
-      background: var(--gold);
-      color: var(--navy);
-    }
-    #btn-print:hover { background: var(--gold-light); }
-
-    /* ============================================================
-       PAGE WRAPPER — each section is an A4 page
-    ============================================================ */
+    /* ── PAGE ── */
     .page {
-      width: var(--page-w);
-      min-height: var(--page-h);
-      margin: 0 auto 28px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.35);
+      width: var(--pw); min-height: var(--ph);
+      margin: 0 auto 32px; position: relative; overflow: hidden;
+      background: var(--sand); box-shadow: 0 8px 48px rgba(0,0,0,.28);
+    }
+    @media print {
+      @page { size: A4; margin: 0; }
+      .page { margin: 0; box-shadow: none; page-break-after: always; page-break-inside: avoid; }
     }
 
-    /* ============================================================
-       EDITABLE TOKENS
-    ============================================================ */
-    .token {
-      display: inline;
-      border-bottom: 1.5px dashed var(--gold);
-      min-width: 60px;
-      outline: none;
-      transition: background 0.2s;
-      cursor: text;
-    }
-    .token:focus {
-      background: rgba(224, 165, 33, 0.15);
-      border-radius: 2px;
-    }
-    /* Hide edit decoration when NOT in edit mode */
-    body:not(.edit-mode) .token {
-      border-bottom: none;
-      cursor: default;
-    }
-    body.edit-mode .token { cursor: text; }
+    /* ── TOKENS ── */
+    .token { display: inline; outline: none; cursor: default; transition: background .15s; }
+    body.edit-mode .token { border-bottom: 1.5px dashed var(--gold); cursor: text; }
+    body.edit-mode .token:focus { background: rgba(196,154,74,.1); border-radius: 2px; }
 
-    /* ============================================================
-       UTILITY
-    ============================================================ */
-    .gold { color: var(--gold); }
-    .navy { color: var(--navy); }
-    .white { color: var(--white); }
-
-    .gold-line {
-      width: 80px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 0 auto;
+    /* ── SHARED ── */
+    .eyebrow {
+      font-family: var(--fb); font-size: 9px; font-weight: 600;
+      letter-spacing: .3em; text-transform: uppercase; color: var(--gold);
     }
+    .rule-gold { width: 48px; height: 1px; background: var(--gold); margin: 14px 0; }
 
-    .gold-line-left {
-      width: 60px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--gold), transparent);
-      margin: 12px 0 0 0;
-    }
-
-    /* ============================================================
+    /* ================================================================
        PAGE 1 — CAPA
-    ============================================================ */
+    ================================================================ */
     #p1 {
-      background: var(--navy);
-      display: flex;
-      flex-direction: column;
-      height: var(--page-h);
+      background: var(--graphite);
+      display: grid;
+      grid-template-rows: 76px 1fr auto;
+      height: var(--ph);
     }
 
-    /* Logo bar */
-    #p1 .logo-bar {
-      padding: 36px 52px 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
+    /* topbar */
+    #p1 .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 52px; border-bottom: 1px solid rgba(196,154,74,.1);
+    }
+    #p1 .logo {
+      display: flex; align-items: center; gap: 9px;
+    }
+    #p1 .logo svg { width: 11px; height: 11px; fill: var(--gold); opacity: .75; }
+    #p1 .logo-name {
+      font-family: var(--fd); font-size: 20px; font-weight: 600;
+      letter-spacing: .2em; color: var(--gold); text-transform: uppercase;
+    }
+    #p1 .badge {
+      font-family: var(--fb); font-size: 8px; font-weight: 600;
+      letter-spacing: .28em; text-transform: uppercase;
+      color: rgba(196,154,74,.5); border: 1px solid rgba(196,154,74,.2);
+      padding: 4px 12px; border-radius: 2px;
     }
 
-    #p1 .logo-text {
-      font-family: var(--font-display);
-      font-size: 28px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      color: var(--gold);
-      text-transform: uppercase;
-    }
-
-    #p1 .logo-sparkle {
-      font-size: 18px;
-      color: var(--gold);
-      opacity: 0.75;
-    }
-
-    #p1 .logo-tagline {
-      font-family: var(--font-body);
-      font-size: 9px;
-      letter-spacing: 0.22em;
-      color: rgba(224, 165, 33, 0.55);
-      text-transform: uppercase;
-      margin-left: 2px;
-    }
-
-    /* Hero image area */
+    /* hero */
     #p1 .hero {
-      flex: 1;
-      position: relative;
-      margin: 24px 52px;
-      border-radius: 4px;
-      overflow: hidden;
-      min-height: 0;
+      position: relative; margin: 24px 52px; border-radius: 2px; overflow: hidden;
     }
-
-    #p1 .hero-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+    #p1 .hero img { width: 100%; height: 100%; object-fit: cover; display: none; }
+    #p1 .hero-ph {
+      width: 100%; height: 100%; min-height: 528px;
+      background: linear-gradient(145deg,#3C3630 0%,#28221C 50%,#1E1A16 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
     }
-
-    #p1 .hero-placeholder {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #1A1A3E 0%, #0D0D20 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 48px;
-      color: rgba(224, 165, 33, 0.3);
+    #p1 .hero-ph svg { width: 40px; height: 40px; opacity: .25; }
+    #p1 .hero-ph span { font-size: 9px; letter-spacing: .28em; color: var(--gold-40); text-transform: uppercase; }
+    #hero-url-row {
+      display: none; position: absolute; bottom: 10px; left: 10px; right: 10px; z-index: 5;
     }
-
-    #p1 .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top,
-        rgba(10, 10, 30, 0.88) 0%,
-        rgba(10, 10, 30, 0.30) 50%,
-        rgba(10, 10, 30, 0.08) 100%);
+    #hero-url-row input {
+      width: 100%; padding: 7px 12px;
+      background: rgba(0,0,0,.65); border: 1px solid var(--gold); border-radius: 4px;
+      color: var(--gold); font-size: 11px; font-family: var(--fm); outline: none;
     }
+    #hero-url-row input::placeholder { color: var(--gold-40); }
 
-    #p1 .hero-text {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 36px 44px;
+    /* identity block */
+    #p1 .identity {
+      padding: 28px 52px 44px;
+      display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 20px;
     }
-
-    #p1 .hero-eyebrow {
-      font-family: var(--font-body);
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 0.32em;
-      color: var(--gold);
-      text-transform: uppercase;
-      margin-bottom: 10px;
+    #p1 .prep { font-size: 8px; font-weight: 500; letter-spacing: .28em; text-transform: uppercase; color: rgba(196,154,74,.45); margin-bottom: 10px; }
+    #p1 .client-name {
+      font-family: var(--fd); font-size: 46px; font-weight: 300;
+      color: var(--white); letter-spacing: .01em; line-height: 1.08; margin-bottom: 10px;
     }
-
-    #p1 .hero-client {
-      font-family: var(--font-display);
-      font-size: 42px;
-      font-weight: 600;
-      color: var(--white);
-      line-height: 1.05;
-      letter-spacing: 0.02em;
+    #p1 .proj-label { font-size: 11px; color: rgba(255,255,255,.35); letter-spacing: .08em; margin-bottom: 3px; }
+    #p1 .proj-desc {
+      font-family: var(--fd); font-size: 16px; font-weight: 400; font-style: italic;
+      color: rgba(255,255,255,.55);
     }
+    #p1 .meta { text-align: right; }
+    #p1 .meta-date { font-family: var(--fm); font-size: 10px; color: rgba(196,154,74,.45); letter-spacing: .06em; margin-bottom: 5px; }
+    #p1 .meta-ref  { font-family: var(--fm); font-size: 9px; color: rgba(255,255,255,.18); letter-spacing: .05em; }
+    #p1 .gold-bar  { height: 3px; background: linear-gradient(90deg,transparent,var(--gold) 25%,var(--gold) 75%,transparent); position: absolute; bottom: 0; left: 0; right: 0; }
 
-    #p1 .hero-client .token {
-      color: var(--white);
-    }
+    /* ================================================================
+       PAGE 2 — DIFERENCIAIS
+    ================================================================ */
+    #p2 { display: flex; flex-direction: column; height: var(--ph); }
 
-    #p1 .hero-sub {
-      margin-top: 10px;
-      font-family: var(--font-display);
-      font-size: 15px;
-      font-weight: 300;
-      font-style: italic;
-      color: rgba(224, 165, 33, 0.8);
-      letter-spacing: 0.06em;
-    }
-
-    /* Cover footer */
-    #p1 .cover-footer {
-      padding: 16px 52px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
+    #p2 .p2-head {
+      padding: 52px 60px 36px;
+      border-bottom: 1px solid var(--gold-20);
       flex-shrink: 0;
     }
-
-    #p1 .cover-footer .cf-label {
-      font-size: 8px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(224, 165, 33, 0.5);
-      margin-bottom: 3px;
+    #p2 .p2-headline {
+      font-family: var(--fd); font-size: 46px; font-weight: 300;
+      color: var(--graphite); letter-spacing: -.01em; line-height: 1.06; margin-top: 10px;
+    }
+    #p2 .p2-headline em { font-style: italic; color: var(--gold); }
+    #p2 .p2-sub {
+      font-size: 12px; color: var(--muted); margin-top: 12px;
+      line-height: 1.65; max-width: 500px; letter-spacing: .01em;
     }
 
-    #p1 .cover-footer .cf-value {
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.75);
-      letter-spacing: 0.05em;
+    #p2 .p2-body {
+      flex: 1; display: grid; grid-template-columns: 1fr 1fr; min-height: 0;
     }
 
-    #p1 .cover-footer .cf-value .token {
-      color: rgba(255, 255, 255, 0.85);
+    /* left photo col */
+    #p2 .photo-col {
+      position: relative; background: #22201C; overflow: hidden;
+    }
+    #p2 .photo-col img { width: 100%; height: 100%; object-fit: cover; display: none; opacity: .8; }
+    #p2 .photo-ph {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg,#2C2820 0%,#1E1C18 55%,#28221A 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    #p2 .photo-ph::after {
+      content: 'DETALHE DO ACABAMENTO';
+      font-size: 8px; letter-spacing: .3em; color: rgba(196,154,74,.25); font-family: var(--fb);
+    }
+    /* SVG callout overlay */
+    #p2 .callout-svg {
+      position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
     }
 
-    #p1 .cover-footer-right {
-      text-align: right;
+    /* right diferenciais */
+    #p2 .dif-col {
+      padding: 36px 36px 36px 40px;
+      display: flex; flex-direction: column; justify-content: center; gap: 24px;
+      background: var(--sand);
+    }
+    #p2 .dif-col-label { font-size: 8px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
+
+    .dif {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding-bottom: 20px; border-bottom: 1px solid var(--graphite-15);
+    }
+    .dif:last-child { border-bottom: none; padding-bottom: 0; }
+    .dif-ico {
+      flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%;
+      border: 1px solid var(--gold-40);
+      display: flex; align-items: center; justify-content: center; margin-top: 1px;
+    }
+    .dif-ico svg { width: 15px; height: 15px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .dif-title { font-family: var(--fd); font-size: 16px; font-weight: 500; color: var(--graphite); margin-bottom: 2px; }
+    .dif-spec  { font-family: var(--fm); font-size: 8px; color: var(--gold); letter-spacing: .08em; margin-bottom: 3px; }
+    .dif-desc  { font-size: 11px; color: var(--muted); line-height: 1.55; }
+
+    /* ================================================================
+       PAGE 3 — O PROJETO
+    ================================================================ */
+    #p3 { display: grid; grid-template-rows: auto 1fr auto; height: var(--ph); background: var(--warm-wh); }
+
+    #p3 .p3-head { padding: 48px 60px 0; }
+    #p3 .p3-title { font-family: var(--fd); font-size: 42px; font-weight: 300; color: var(--graphite); line-height: 1.06; margin-top: 8px; }
+    #p3 .p3-sub { font-family: var(--fd); font-size: 16px; font-style: italic; color: var(--muted); margin-top: 6px; }
+    #p3 .p3-rule { width: 48px; height: 1px; background: var(--gold); margin: 18px 0 0; }
+
+    #p3 .p3-body { padding: 28px 60px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: start; }
+
+    /* render box */
+    .render-box { position: relative; background: var(--sand); border: 1px solid var(--gold-20); border-radius: 2px; overflow: hidden; aspect-ratio: 4/3; }
+    .render-box img { width: 100%; height: 100%; object-fit: cover; display: none; }
+    .render-ph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 24px; }
+    .render-ph svg { width: 40px; height: 40px; opacity: .3; }
+    .render-ph span { font-size: 9px; letter-spacing: .25em; color: var(--gold-40); text-transform: uppercase; text-align: center; }
+    .render-url-row { display: none; position: absolute; bottom: 8px; left: 8px; right: 8px; }
+    .render-url-row input {
+      width: 100%; padding: 6px 10px;
+      background: rgba(43,43,40,.85); border: 1px solid var(--gold); border-radius: 4px;
+      color: var(--gold); font-size: 10px; font-family: var(--fm); outline: none;
     }
 
-    /* ============================================================
-       PAGE 2 — CONEXÃO
-    ============================================================ */
-    #p2 {
-      background: var(--cream);
-      padding: 72px 80px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      min-height: var(--page-h);
+    /* ambientes */
+    .specs-label { font-size: 8px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+    .amb {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 11px 0; border-bottom: 1px solid var(--graphite-15);
     }
+    .amb:first-of-type { border-top: 1px solid var(--graphite-15); }
+    .amb-ico { flex-shrink: 0; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .amb-ico svg { width: 15px; height: 15px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; }
+    .amb-name { font-family: var(--fd); font-size: 15px; font-weight: 500; color: var(--graphite); margin-bottom: 2px; }
+    .amb-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
 
-    .section-eyebrow {
-      font-family: var(--font-body);
-      font-size: 8.5px;
-      font-weight: 600;
-      letter-spacing: 0.30em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 12px;
-    }
+    /* tech specs footer */
+    #p3 .p3-foot { padding: 0 60px 44px; }
+    .specs-grid { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid var(--gold-20); border-radius: 2px; overflow: hidden; }
+    .spec-cell { padding: 14px 18px; border-right: 1px solid var(--gold-20); }
+    .spec-cell:last-child { border-right: none; }
+    .spec-label { font-size: 7.5px; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
+    .spec-val { font-family: var(--fm); font-size: 11px; color: var(--graphite); letter-spacing: .03em; }
 
-    .section-heading {
-      font-family: var(--font-display);
-      font-size: 38px;
-      font-weight: 600;
-      color: var(--navy);
-      line-height: 1.1;
-      letter-spacing: 0.02em;
-    }
+    /* ================================================================
+       PAGE 4 — LINHA DO TEMPO
+    ================================================================ */
+    #p4 { background: var(--graphite); display: flex; flex-direction: column; height: var(--ph); }
 
-    #p2 .conexao-body {
-      margin-top: 36px;
-      font-family: var(--font-display);
-      font-size: 19px;
-      font-weight: 300;
-      color: var(--dark);
-      line-height: 1.75;
-      letter-spacing: 0.01em;
-      max-width: 560px;
-    }
+    #p4 .p4-head { padding: 52px 60px 36px; border-bottom: 1px solid rgba(196,154,74,.1); }
+    #p4 .p4-eyebrow { font-size: 9px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: rgba(196,154,74,.6); margin-bottom: 10px; }
+    #p4 .p4-title { font-family: var(--fd); font-size: 42px; font-weight: 300; color: var(--white); line-height: 1.06; }
+    #p4 .p4-title em { font-style: italic; color: rgba(255,255,255,.4); }
+    #p4 .p4-sub { font-size: 12px; color: rgba(255,255,255,.38); margin-top: 10px; line-height: 1.6; max-width: 440px; }
 
-    #p2 .conexao-body .token {
-      font-family: var(--font-display);
-      font-size: 19px;
-      font-weight: 300;
-      color: var(--dark);
-      white-space: pre-wrap;
-    }
-
-    #p2 .anchor-phrase {
-      margin-top: 48px;
-      padding: 28px 36px;
-      border-left: 3px solid var(--gold);
-      background: rgba(224, 165, 33, 0.06);
-      border-radius: 0 6px 6px 0;
-    }
-
-    #p2 .anchor-phrase p {
-      font-family: var(--font-display);
-      font-size: 22px;
-      font-style: italic;
-      font-weight: 400;
-      color: var(--navy);
-      line-height: 1.45;
-    }
-
-    #p2 .anchor-source {
-      margin-top: 10px;
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      color: var(--gold);
-      text-transform: uppercase;
-    }
-
-    #p2 .decor-line {
-      margin-top: 52px;
-    }
-
-    /* ============================================================
-       PAGE 3 — CONFIGURAÇÃO TÉCNICA
-    ============================================================ */
-    #p3 {
-      background: var(--cream);
-      padding: 64px 64px 48px;
-      min-height: var(--page-h);
-    }
-
-    #p3 .tech-header {
-      margin-bottom: 40px;
-    }
-
-    .tech-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .tech-card {
-      background: var(--white);
-      border: 1px solid rgba(224, 165, 33, 0.18);
-      border-radius: 8px;
-      padding: 22px 20px 20px;
-      position: relative;
-      overflow: hidden;
-      transition: box-shadow 0.2s;
-    }
-
-    .tech-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--gold), var(--gold-light));
-    }
-
-    .tech-card .tc-icon {
-      font-size: 22px;
-      margin-bottom: 10px;
-      display: block;
-    }
-
-    .tech-card .tc-title {
-      font-family: var(--font-display);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      color: var(--navy);
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    .tech-card .tc-desc {
-      font-family: var(--font-body);
-      font-size: 11.5px;
-      color: var(--text-muted);
-      line-height: 1.55;
-    }
-
-    /* ============================================================
-       PAGE 4 — TIMELINE
-    ============================================================ */
-    #p4 {
-      background: var(--navy);
-      padding: 64px 52px 52px;
-      min-height: var(--page-h);
-      display: flex;
-      flex-direction: column;
-    }
-
-    #p4 .tl-header {
-      text-align: center;
-      margin-bottom: 52px;
-    }
-
-    #p4 .tl-eyebrow {
-      font-size: 8.5px;
-      font-weight: 600;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: rgba(224, 165, 33, 0.65);
-      margin-bottom: 12px;
-    }
-
-    #p4 .tl-title {
-      font-family: var(--font-display);
-      font-size: 36px;
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: 0.04em;
-    }
-
-    .tl-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      position: relative;
-      margin-bottom: 32px;
-    }
-
-    .tl-row::before {
-      content: '';
-      position: absolute;
-      top: 28px;
-      left: 7%;
-      right: 7%;
-      height: 1.5px;
-      background: linear-gradient(90deg, var(--gold), rgba(224, 165, 33, 0.3));
-    }
+    /* 4×2 grid */
+    .tl-grid { flex: 1; display: grid; grid-template-columns: repeat(4,1fr); grid-template-rows: 1fr 1fr; }
 
     .tl-step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 0 8px;
-      position: relative;
+      padding: 24px 20px 20px;
+      display: flex; flex-direction: column; align-items: flex-start;
+      border-left: 1px solid rgba(196,154,74,.1); position: relative;
     }
+    .tl-step:nth-child(n+5) { border-top: 1px solid rgba(196,154,74,.1); }
 
     .tl-circle {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 14px;
-      position: relative;
-      z-index: 1;
-      box-shadow: 0 4px 16px rgba(224, 165, 33, 0.35);
-      flex-shrink: 0;
+      width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--gold);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 14px; flex-shrink: 0;
     }
+    .tl-num { font-family: var(--fd); font-size: 17px; font-weight: 400; color: var(--gold); }
+    .tl-name { font-family: var(--fd); font-size: 15px; font-weight: 500; color: var(--white); line-height: 1.2; margin-bottom: 8px; }
+    .tl-arg  { font-size: 10.5px; color: rgba(255,255,255,.42); line-height: 1.55; }
 
-    .tl-num {
-      font-family: var(--font-display);
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--navy);
+    /* horizontal connector inside row (except last of each row) */
+    .tl-step:not(:nth-child(4)):not(:nth-child(8)) .tl-conn {
+      position: absolute; top: 43px; right: 0;
+      width: 50%; height: 1px;
+      background: linear-gradient(90deg, rgba(196,154,74,.35), rgba(196,154,74,.05));
     }
+    .tl-step:nth-child(4) .tl-conn,
+    .tl-step:nth-child(8) .tl-conn { display: none; }
 
-    .tl-emoji {
-      font-size: 10px;
-      position: absolute;
-      bottom: 0; right: 0;
-      background: var(--navy);
-      border-radius: 50%;
-      width: 22px;
-      height: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1.5px solid var(--gold);
+    /* footer */
+    #p4 .p4-foot {
+      padding: 18px 60px 32px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(196,154,74,.1);
     }
-
-    .tl-label {
-      font-family: var(--font-display);
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: 0.04em;
-      margin-bottom: 5px;
-      line-height: 1.25;
+    #p4 .foot-brand { font-family: var(--fd); font-size: 14px; font-weight: 500; letter-spacing: .14em; color: rgba(196,154,74,.45); text-transform: uppercase; }
+    .socials { display: flex; gap: 22px; }
+    .soc {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 10px; color: rgba(255,255,255,.38); text-decoration: none; letter-spacing: .04em;
     }
+    .soc svg { width: 13px; height: 13px; fill: rgba(196,154,74,.5); }
 
-    .tl-desc {
-      font-family: var(--font-body);
-      font-size: 10px;
-      color: rgba(255, 255, 255, 0.5);
-      line-height: 1.45;
-    }
+    /* ================================================================
+       PAGE 5 — DEPOIMENTO
+    ================================================================ */
+    #p5 { display: grid; grid-template-columns: 1fr 1fr; height: var(--ph); background: var(--sand); }
 
-    #p4 .tl-footer {
-      margin-top: auto;
-      text-align: center;
-      padding-top: 32px;
-      border-top: 1px solid rgba(224, 165, 33, 0.2);
-    }
+    /* quote col */
+    #p5 .quote-col { padding: 72px 48px 60px; display: flex; flex-direction: column; justify-content: center; }
+    #p5 .q-label { font-size: 8px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; }
+    #p5 .q-mark { font-family: var(--fd); font-size: 110px; color: var(--gold-20); line-height: .55; font-weight: 300; margin-bottom: 20px; }
+    #p5 .q-text { font-family: var(--fd); font-size: 21px; font-style: italic; font-weight: 300; color: var(--graphite); line-height: 1.55; }
+    #p5 .q-rule { width: 40px; height: 1px; background: var(--gold); margin: 28px 0; }
+    #p5 .q-author { font-family: var(--fd); font-size: 15px; font-weight: 500; color: var(--graphite); margin-bottom: 3px; }
+    #p5 .q-proj { font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 
-    #p4 .tl-footer p {
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      color: rgba(224, 165, 33, 0.65);
-    }
+    /* photo col */
+    #p5 .p5-photo { position: relative; background: var(--graphite); overflow: hidden; }
+    #p5 .p5-photo img { width: 100%; height: 100%; object-fit: cover; display: none; opacity: .82; }
+    #p5 .p5-ph { width: 100%; height: 100%; background: linear-gradient(155deg,#2C2A22 0%,#1C1A16 55%,#28241C 100%); display: flex; align-items: center; justify-content: center; }
+    #p5 .p5-ph::after { content: 'FOTO DO PROJETO'; font-size: 8px; letter-spacing: .28em; color: rgba(196,154,74,.25); font-family: var(--fb); }
+    #p5 .p5-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 24px; background: linear-gradient(0deg,rgba(26,26,46,.65) 0%,transparent 100%); }
+    #p5 .p5-caption { font-family: var(--fm); font-size: 9px; color: rgba(255,255,255,.45); letter-spacing: .1em; text-transform: uppercase; }
+    #p5-url-row { display: none; position: absolute; bottom: 8px; left: 8px; right: 8px; }
+    #p5-url-row input { width: 100%; padding: 6px 10px; background: rgba(0,0,0,.7); border: 1px solid var(--gold); border-radius: 4px; color: var(--gold); font-size: 10px; font-family: var(--fm); outline: none; }
 
-    /* ============================================================
-       PAGE 5 — CASES
-    ============================================================ */
-    #p5 {
-      background: var(--cream);
-      padding: 72px 64px;
-      min-height: var(--page-h);
-    }
+    /* ================================================================
+       PAGE 6 — INVESTIMENTO (aprovada — visual elevado)
+    ================================================================ */
+    #p6 { background: var(--sand); padding: 52px 56px 44px; min-height: var(--ph); }
 
-    #p5 .cases-header {
-      margin-bottom: 44px;
-    }
+    #p6 .inv-head { margin-bottom: 32px; }
+    #p6 .inv-title { font-family: var(--fd); font-size: 44px; font-weight: 300; color: var(--graphite); line-height: 1.05; margin-top: 8px; }
+    #p6 .inv-rule  { width: 48px; height: 1px; background: var(--gold); margin: 14px 0; }
 
-    .cases-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
+    /* tables */
+    .inv-block { margin-bottom: 22px; }
+    .inv-block-label { font-size: 8px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
+    .inv-note { font-family: var(--fd); font-size: 12px; font-style: italic; color: var(--muted); margin-bottom: 6px; }
 
-    .case-card {
-      background: var(--white);
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid rgba(224, 165, 33, 0.15);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-    }
+    .inv-tbl { width: 100%; border-collapse: collapse; font-family: var(--fb); }
+    .inv-tbl thead tr { background: var(--navy); }
+    .inv-tbl thead th { padding: 10px 15px; text-align: left; font-size: 8px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+    .inv-tbl tbody tr { border-bottom: 1px solid rgba(196,154,74,.09); }
+    .inv-tbl tbody tr:nth-child(even) { background: rgba(196,154,74,.04); }
+    .inv-tbl tbody td { padding: 9px 15px; font-size: 12px; color: var(--graphite); }
+    .inv-tbl tbody td.val-cell { text-align: right; font-family: var(--fm); font-size: 11px; font-weight: 500; }
+    .inv-tbl tbody td.rm-cell { width: 32px; padding: 0 6px; text-align: right; }
+    .inv-tbl .total-row { background: var(--navy) !important; border-bottom: none !important; }
+    .inv-tbl .total-row td { padding: 13px 15px; font-family: var(--fd); font-size: 15px; font-weight: 600; color: var(--white); }
+    .inv-tbl .total-row td.val-cell { color: var(--gold); font-size: 17px; font-family: var(--fm); }
 
-    .case-photo {
-      height: 220px;
-      background: linear-gradient(135deg, var(--navy) 0%, #22223E 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(224, 165, 33, 0.4);
-      font-size: 42px;
-      position: relative;
-      overflow: hidden;
-    }
+    .btn-add-row { margin-top: 7px; padding: 5px 14px; background: transparent; border: 1px dashed var(--gold-40); border-radius: 3px; color: var(--gold); font-size: 10px; font-family: var(--fb); cursor: pointer; transition: background .2s; }
+    .btn-add-row:hover { background: var(--gold-10); }
+    .btn-rm { background: none; border: none; color: var(--gold-40); font-size: 16px; cursor: pointer; padding: 2px 4px; line-height: 1; }
+    .btn-rm:hover { color: #c0392b; }
+    @media print { .btn-add-row, .btn-rm, .rm-cell { display: none !important; } }
 
-    .case-photo::after {
-      content: 'FOTO DO PROJETO';
-      position: absolute;
-      bottom: 14px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: var(--font-body);
-      font-size: 8px;
-      letter-spacing: 0.22em;
-      color: rgba(224, 165, 33, 0.4);
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
+    /* payment */
+    .pay-block { margin-bottom: 20px; }
+    .pay-label { font-size: 8px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
+    .pay-tbl { width: 100%; border-collapse: collapse; font-size: 11px; font-family: var(--fb); }
+    .pay-tbl thead tr { background: rgba(196,154,74,.1); }
+    .pay-tbl thead th { padding: 8px 14px; text-align: left; font-size: 8px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+    .pay-tbl tbody td { padding: 8px 14px; color: var(--graphite); border-bottom: 1px solid rgba(196,154,74,.09); }
+    .pay-tbl tbody td:last-child { text-align: right; font-family: var(--fm); font-size: 10px; color: var(--gold); font-weight: 600; }
+    .pay-tbl .hi td { background: rgba(196,154,74,.05); font-weight: 500; }
 
-    .case-body {
-      padding: 24px 22px;
-    }
-
-    .case-tag {
-      display: inline-block;
-      background: rgba(224, 165, 33, 0.12);
-      color: var(--gold-dark);
-      font-size: 8px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border-radius: 20px;
-      margin-bottom: 12px;
-    }
-
-    .case-item {
-      margin-bottom: 12px;
-    }
-
-    .case-item-label {
-      font-size: 8px;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 3px;
-    }
-
-    .case-item-text {
-      font-family: var(--font-display);
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--dark);
-      line-height: 1.5;
-    }
-
-    .case-result {
-      margin-top: 14px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(224, 165, 33, 0.2);
-    }
-
-    .case-result .case-item-label {
-      color: var(--navy);
-    }
-
-    .case-result .case-item-text {
-      font-weight: 500;
-      color: var(--navy);
-    }
-
-    /* ============================================================
-       PAGE 6 — INVESTIMENTO
-    ============================================================ */
-    #p6 {
-      background: var(--cream);
-      padding: 56px 64px 48px;
-      min-height: var(--page-h);
-    }
-
-    #p6 .inv-header {
-      margin-bottom: 36px;
-    }
-
-    /* Investment tables */
-    .inv-table-block {
-      margin-bottom: 28px;
-    }
-
-    .inv-table-label {
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-
-    .inv-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-family: var(--font-body);
-    }
-
-    .inv-table thead tr {
-      background: var(--navy);
-    }
-
-    .inv-table thead th {
-      padding: 12px 16px;
-      text-align: left;
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .inv-table thead th:last-child {
-      text-align: right;
-    }
-
-    .inv-table tbody tr {
-      border-bottom: 1px solid rgba(224, 165, 33, 0.12);
-    }
-
-    .inv-table tbody tr:nth-child(even) {
-      background: rgba(224, 165, 33, 0.04);
-    }
-
-    .inv-table tbody td {
-      padding: 10px 16px;
-      font-size: 12px;
-      color: var(--dark);
-    }
-
-    .inv-table tbody td:last-child {
-      text-align: right;
-      font-weight: 500;
-    }
-
-    .inv-table tbody td.td-remove {
-      width: 32px;
-      padding: 0 6px;
-    }
-
-    .inv-table .total-row {
-      background: linear-gradient(90deg, var(--navy) 0%, var(--navy-mid) 100%) !important;
-      border-bottom: none !important;
-    }
-
-    .inv-table .total-row td {
-      padding: 14px 16px;
-      font-family: var(--font-display);
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: 0.04em;
-    }
-
-    .inv-table .total-row td:last-child {
-      color: var(--gold);
-      font-size: 18px;
-    }
-
-    /* Essencial note */
-    .inv-essencial-note {
-      margin-bottom: 8px;
-      font-family: var(--font-display);
-      font-size: 13px;
-      font-style: italic;
-      color: var(--text-muted);
-    }
-
-    /* Add row button */
-    .btn-add-row {
-      margin-top: 8px;
-      padding: 6px 16px;
-      background: transparent;
-      border: 1.5px dashed rgba(224, 165, 33, 0.45);
-      border-radius: 4px;
-      color: var(--gold-dark);
-      font-size: 11px;
-      font-family: var(--font-body);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .btn-add-row:hover {
-      background: rgba(224, 165, 33, 0.08);
-      border-color: var(--gold);
-    }
-
-    /* Remove row button */
-    .btn-remove-row {
-      background: none;
-      border: none;
-      color: rgba(200, 60, 60, 0.6);
-      cursor: pointer;
-      font-size: 14px;
-      padding: 0;
-      line-height: 1;
-      display: none;
-    }
-
-    body.edit-mode .btn-remove-row { display: inline; }
-    body.edit-mode .btn-add-row { display: inline-block; }
-    body:not(.edit-mode) .btn-add-row { display: none; }
-
-    /* Payment conditions */
-    .payment-section {
-      margin-bottom: 24px;
-    }
-
-    .payment-label {
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-
-    .payment-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-family: var(--font-body);
-      font-size: 12px;
-    }
-
-    .payment-table th {
-      background: rgba(224, 165, 33, 0.1);
-      padding: 9px 14px;
-      text-align: left;
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold-dark);
-      border-bottom: 2px solid rgba(224, 165, 33, 0.25);
-    }
-
-    .payment-table td {
-      padding: 9px 14px;
-      color: var(--dark);
-      border-bottom: 1px solid rgba(224, 165, 33, 0.1);
-    }
-
-    .payment-table td:last-child {
-      font-weight: 600;
-      color: var(--navy);
-    }
-
-    .payment-table tr.highlight-row td {
-      background: rgba(26, 26, 46, 0.04);
-    }
-
-    /* Prazo + Garantia + Validade row */
-    .inv-meta-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .inv-meta-card {
-      padding: 16px 18px;
-      border-radius: 6px;
-      text-align: center;
-    }
-
-    .inv-meta-card.navy-bg {
-      background: var(--navy);
-    }
-
-    .inv-meta-card.gold-bg {
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-    }
-
-    .inv-meta-card.cream-bd {
-      background: var(--white);
-      border: 1.5px solid rgba(224, 165, 33, 0.35);
-    }
-
-    .inv-meta-label {
-      font-size: 7.5px;
-      font-weight: 600;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    .inv-meta-card.navy-bg .inv-meta-label { color: rgba(224, 165, 33, 0.6); }
-    .inv-meta-card.gold-bg .inv-meta-label { color: rgba(26, 26, 46, 0.7); }
-    .inv-meta-card.cream-bd .inv-meta-label { color: var(--text-muted); }
-
-    .inv-meta-value {
-      font-family: var(--font-display);
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 1.2;
-    }
-
-    .inv-meta-card.navy-bg .inv-meta-value { color: var(--white); }
-    .inv-meta-card.gold-bg .inv-meta-value { color: var(--navy); }
-    .inv-meta-card.cream-bd .inv-meta-value { color: var(--navy); }
-
-    .inv-meta-value .token {
-      font-family: var(--font-display);
-      font-size: 18px;
-      color: inherit;
-    }
-
-    .inv-meta-sub {
-      font-size: 9px;
-      margin-top: 3px;
-    }
-
-    .inv-meta-card.navy-bg .inv-meta-sub { color: rgba(255,255,255,0.45); }
-    .inv-meta-card.gold-bg .inv-meta-sub { color: rgba(26,26,46,0.55); }
+    /* meta cards */
+    .meta-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 22px; }
+    .meta-card { padding: 16px 18px; border-radius: 2px; text-align: center; }
+    .mc-navy { background: var(--navy); }
+    .mc-gold  { background: var(--gold); }
+    .mc-cream { background: var(--warm-wh); border: 1px solid var(--gold-20); }
+    .mc-label { font-size: 8px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; margin-bottom: 6px; }
+    .mc-navy .mc-label { color: rgba(196,154,74,.55); }
+    .mc-gold  .mc-label { color: rgba(26,26,46,.65); }
+    .mc-cream .mc-label { color: var(--muted); }
+    .mc-val   { font-family: var(--fd); font-size: 24px; font-weight: 500; }
+    .mc-navy .mc-val { color: var(--white); }
+    .mc-gold  .mc-val { color: var(--navy); }
+    .mc-cream .mc-val { color: var(--graphite); }
+    .mc-sub   { font-size: 9px; margin-top: 3px; letter-spacing: .06em; }
+    .mc-navy .mc-sub { color: rgba(255,255,255,.38); }
+    .mc-gold  .mc-sub { color: rgba(26,26,46,.5); }
+    .mc-cream .mc-sub { color: var(--muted); }
 
     /* CTA */
-    .cta-section {
-      padding: 22px 28px;
-      background: var(--navy);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .cta-left h3 {
-      font-family: var(--font-display);
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 5px;
-    }
-
-    .cta-left p {
-      font-size: 11px;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.45;
-    }
-
-    .cta-right {
-      flex-shrink: 0;
-      text-align: center;
-    }
-
-    .cta-sig-label {
-      font-size: 8px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(224, 165, 33, 0.55);
-      margin-bottom: 6px;
-    }
-
-    .cta-sig-line {
-      width: 160px;
-      height: 1px;
-      background: rgba(224, 165, 33, 0.45);
-    }
-
-    .cta-sig-name {
-      margin-top: 5px;
-      font-family: var(--font-display);
-      font-size: 13px;
-      font-style: italic;
-      color: rgba(255,255,255,0.65);
-    }
-
-    /* ============================================================
-       PRINT STYLES
-    ============================================================ */
-    @media print {
-      @page {
-        size: A4 portrait;
-        margin: 0;
-      }
-
-      html, body {
-        background: transparent;
-        width: 210mm;
-      }
-
-      #controls {
-        display: none !important;
-      }
-
-      .page {
-        width: 210mm;
-        min-height: 297mm;
-        margin: 0;
-        page-break-after: always;
-        break-after: page;
-        box-shadow: none;
-      }
-
-      .page:last-of-type {
-        page-break-after: avoid;
-        break-after: avoid;
-      }
-
-      .btn-add-row,
-      .btn-remove-row {
-        display: none !important;
-      }
-
-      /* Force background colors in print */
-      #p1, #p4 {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-        background-color: var(--navy) !important;
-      }
-
-      #p2, #p3, #p5, #p6 {
-        background-color: var(--cream) !important;
-      }
-    }
+    .cta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: end; padding-top: 20px; border-top: 1px solid var(--gold-20); }
+    .cta-row h3 { font-family: var(--fd); font-size: 20px; font-weight: 400; color: var(--graphite); margin-bottom: 8px; }
+    .cta-row p  { font-size: 11px; color: var(--muted); line-height: 1.65; }
+    .sig-label { font-size: 8px; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .sig-line  { border-bottom: 1px solid var(--graphite-15); margin-bottom: 8px; }
+    .sig-name  { font-family: var(--fd); font-size: 13px; color: var(--muted); letter-spacing: .06em; }
   </style>
 </head>
-
 <body>
 
-  <!-- ============================================================
-       FLOATING CONTROLS
-  ============================================================ -->
-  <div id="controls">
-    <button class="ctrl-btn" id="btn-edit" onclick="toggleEdit()">✏ Editar</button>
-    <button class="ctrl-btn" id="btn-print" onclick="printPDF()">🖨 Gerar PDF</button>
+<!-- CONTROLS -->
+<div id="controls">
+  <button class="ctrl-btn" id="btn-edit" onclick="toggleEdit()">✏ Editar</button>
+  <button class="ctrl-btn" id="btn-print" onclick="printPDF()">⬡ Imprimir PDF</button>
+</div>
+
+
+<!-- ================================================================
+     PAGE 1 — CAPA
+================================================================ -->
+<section class="page" id="p1">
+
+  <div class="topbar">
+    <div class="logo">
+      <svg viewBox="0 0 12 12"><path d="M6 0L7 5.2L12 6L7 6.8L6 12L5 6.8L0 6L5 5.2Z"/></svg>
+      <span class="logo-name">Valvic</span>
+    </div>
+    <span class="badge">Excellence · Hettich</span>
   </div>
 
-  <!-- ============================================================
-       PAGE 1 — CAPA
-  ============================================================ -->
-  <section class="page" id="p1">
+  <div class="hero">
+    <img id="hero-img" src="" alt="Projeto" />
+    <div id="hero-ph" class="hero-ph">
+      <svg viewBox="0 0 40 40" fill="none" stroke="#C49A4A" stroke-width="1.5" stroke-linecap="round">
+        <rect x="4" y="8" width="32" height="22" rx="1.5"/>
+        <circle cx="13" cy="16" r="3.5"/>
+        <path d="M4 23L13 15L20 22L26 17L36 26"/>
+      </svg>
+      <span>foto do projeto — inserir URL no modo edição</span>
+    </div>
+    <div id="hero-url-row">
+      <input type="text" id="tk-hero-url" placeholder="URL da foto (Drive thumbnail ou link direto)" oninput="setHero(this.value)" />
+    </div>
+  </div>
 
-    <div class="logo-bar">
-      <div>
-        <div class="logo-text">Valvic <span class="logo-sparkle">✦</span></div>
-        <div class="logo-tagline">Marcenaria · Belo Horizonte</div>
+  <div class="identity">
+    <div>
+      <div class="prep">Proposta preparada para</div>
+      <div class="client-name">
+        <span class="token" contenteditable="false" data-key="NOME_CLIENTE" data-placeholder="Nome do Cliente">{{NOME_CLIENTE}}</span>
+      </div>
+      <div class="proj-label">Projeto de marcenaria sob medida</div>
+      <div class="proj-desc">
+        <span class="token" contenteditable="false" data-key="PROJETO" data-placeholder="Descrição do projeto">{{PROJETO}}</span>
       </div>
     </div>
+    <div class="meta">
+      <div class="meta-date">
+        <span class="token" contenteditable="false" data-key="DATA_PROPOSTA" data-placeholder="DD/MM/AAAA">{{DATA_PROPOSTA}}</span>
+      </div>
+      <div class="meta-ref">Ref. Excellence · Hettich</div>
+    </div>
+  </div>
 
-    <div class="hero" id="hero-container">
-      <!-- Hero image — shows img if URL provided, else placeholder -->
-      <img class="hero-img" id="hero-img" src="" alt="Render do projeto" style="display:none;" />
-      <div class="hero-placeholder" id="hero-placeholder">✦</div>
+  <div class="gold-bar"></div>
+</section>
 
-      <div class="hero-overlay"></div>
 
-      <div class="hero-text">
-        <div class="hero-eyebrow">Proposta Especial Para</div>
-        <div class="hero-client">
-          <span class="token"
-                id="tk-nome"
-                contenteditable="false"
-                data-key="NOME_CLIENTE"
-                data-placeholder="Nome do Cliente">{{NOME_CLIENTE}}</span>
+<!-- ================================================================
+     PAGE 2 — DIFERENCIAIS
+================================================================ -->
+<section class="page" id="p2">
+
+  <div class="p2-head">
+    <div class="eyebrow">Por que Valvic</div>
+    <div class="p2-headline">O detalhe<br><em>que você não vê</em><br>é o que faz a diferença.</div>
+    <div class="p2-sub">Marcenaria é precisão milimétrica. Esta proposta existe porque você merece entender exatamente o que está comprando — e por que vale o que vale.</div>
+  </div>
+
+  <div class="p2-body">
+
+    <div class="photo-col">
+      <img id="p2-img" src="" alt="Detalhe" />
+      <div id="p2-ph" class="photo-ph"></div>
+      <!-- Callout SVG overlay -->
+      <svg class="callout-svg" viewBox="0 0 397 480" xmlns="http://www.w3.org/2000/svg">
+        <g opacity=".65">
+          <circle cx="310" cy="78"  r="3" fill="#C49A4A"/>
+          <line  x1="313" y1="78"  x2="390" y2="78"  stroke="#C49A4A" stroke-width=".8"/>
+          <circle cx="280" cy="195" r="3" fill="#C49A4A" opacity=".7"/>
+          <line  x1="283" y1="195" x2="390" y2="175" stroke="#C49A4A" stroke-width=".8" opacity=".7"/>
+          <circle cx="200" cy="340" r="3" fill="#C49A4A" opacity=".55"/>
+          <line  x1="203" y1="340" x2="390" y2="300" stroke="#C49A4A" stroke-width=".8" opacity=".55"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="dif-col">
+      <div class="dif-col-label">5 razões que definem a entrega</div>
+
+      <div class="dif">
+        <div class="dif-ico">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.5 6.5L22 9.3l-5 4.8 1.2 6.9L12 17.8 5.8 21 7 14.1 2 9.3l6.5-.8Z"/></svg>
         </div>
-        <div class="hero-sub">Móveis planejados com excelência, entregues com cuidado</div>
-      </div>
-    </div>
-
-    <div class="cover-footer">
-      <div>
-        <div class="cf-label">Data da Proposta</div>
-        <div class="cf-value">
-          <span class="token"
-                id="tk-data"
-                contenteditable="false"
-                data-key="DATA"
-                data-placeholder="DD/MM/AAAA">{{DATA}}</span>
-        </div>
-      </div>
-      <div class="cover-footer-right">
-        <div class="cf-label">Validade</div>
-        <div class="cf-value">
-          Até&nbsp;<span class="token"
-                id="tk-validade1"
-                contenteditable="false"
-                data-key="VALIDADE"
-                data-placeholder="DD/MM/AAAA">{{VALIDADE}}</span>
-        </div>
-      </div>
-    </div>
-
-  </section><!-- /p1 -->
-
-
-  <!-- ============================================================
-       PAGE 2 — CONEXÃO
-  ============================================================ -->
-  <section class="page" id="p2">
-
-    <div class="section-eyebrow">Sobre o Projeto</div>
-    <div class="section-heading">O Seu Projeto</div>
-    <div class="gold-line-left"></div>
-
-    <div class="conexao-body">
-      <span class="token"
-            id="tk-conexao"
-            contenteditable="false"
-            data-key="CONEXAO_TEXTO"
-            data-placeholder="Escreva aqui o texto de conexão com o projeto do cliente — o que foi ouvido, o que importa, o que vai ser transformado. Quanto mais personalizado, mais forte o impacto."
-            style="display:block; min-height:120px;">{{CONEXAO_TEXTO}}</span>
-    </div>
-
-    <div class="anchor-phrase">
-      <p>"A diferença entre fazer um móvel e viver um projeto."</p>
-      <div class="anchor-source">✦ Valvic Marcenaria</div>
-    </div>
-
-    <div class="decor-line">
-      <div class="gold-line"></div>
-    </div>
-
-    <!-- Render URL input (only visible in edit mode) -->
-    <div id="render-edit-row" style="margin-top:32px; display:none;">
-      <div class="section-eyebrow">URL da Imagem (Render / Foto)</div>
-      <input type="url"
-             id="tk-render-url"
-             placeholder="https://... (Cole a URL da imagem do projeto)"
-             data-key="RENDER_URL"
-             style="width:100%; padding:10px 14px; font-family:var(--font-body); font-size:13px;
-                    border:1.5px dashed rgba(224,165,33,0.5); border-radius:6px; background:var(--white);
-                    color:var(--dark); outline:none; margin-top:6px;"
-             oninput="updateRenderImage(this.value)" />
-    </div>
-
-  </section><!-- /p2 -->
-
-
-  <!-- ============================================================
-       PAGE 3 — CONFIGURAÇÃO TÉCNICA
-  ============================================================ -->
-  <section class="page" id="p3">
-
-    <div class="tech-header">
-      <div class="section-eyebrow">Qualidade que você pode ver e sentir</div>
-      <div class="section-heading">Como Seus Móveis São Feitos</div>
-      <div class="gold-line-left"></div>
-    </div>
-
-    <div class="tech-grid">
-
-      <div class="tech-card">
-        <span class="tc-icon">🔩</span>
-        <div class="tc-title">Dobradiças Hettich</div>
-        <div class="tc-desc">Fechamento suave, silencioso e que dura décadas. A mesma marca usada pelas maiores marcenarias da Europa.</div>
-      </div>
-
-      <div class="tech-card">
-        <span class="tc-icon">🗄️</span>
-        <div class="tc-title">Corrediças Hettich Quadro</div>
-        <div class="tc-desc">Gavetas que deslizam em silêncio e abrem por completo. Zero folga, zero barulho.</div>
-      </div>
-
-      <div class="tech-card">
-        <span class="tc-icon">🔼</span>
-        <div class="tc-title">Articuladores</div>
-        <div class="tc-desc">Portas basculantes que sobem e descem com leveza. Conforto e elegância em cada abertura.</div>
-      </div>
-
-      <div class="tech-card">
-        <span class="tc-icon">🚪</span>
-        <div class="tc-title">Deslizante Roupeiro</div>
-        <div class="tc-desc">Portas que flutuam sobre o piso sem trilho aparente. Design limpo e sofisticado.</div>
-      </div>
-
-      <div class="tech-card">
-        <span class="tc-icon">📐</span>
-        <div class="tc-title">Espessura 15–18 mm</div>
-        <div class="tc-desc">Estrutura robusta, feita pra durar gerações. Rigidez que você sente ao tocar.</div>
-      </div>
-
-      <div class="tech-card">
-        <span class="tc-icon">✨</span>
-        <div class="tc-title">Laminação Duratex</div>
-        <div class="tc-desc">Superfície nobre, resistente a risco e umidade. Estética premium que não envelhece.</div>
-      </div>
-
-      <div class="tech-card">
-        <span class="tc-icon">🔲</span>
-        <div class="tc-title">Fita de Borda 0,4 mm</div>
-        <div class="tc-desc">Acabamento sem emendas visíveis — parece peça única. Detalhe que separa o amador do profissional.</div>
-      </div>
-
-      <div class="tech-card">
-        <span class="tc-icon">👷</span>
-        <div class="tc-title">Equipe Própria</div>
-        <div class="tc-desc">Do corte à montagem, tudo Valvic. Sem terceirização, sem surpresas — responsabilidade total.</div>
-      </div>
-
-      <div class="tech-card">
-        <span class="tc-icon">💻</span>
-        <div class="tc-title">Engenharia CNC</div>
-        <div class="tc-desc">Seu projeto vira software especializado antes de virar móvel. Precisão milimétrica em cada peça.</div>
-      </div>
-
-    </div>
-
-  </section><!-- /p3 -->
-
-
-  <!-- ============================================================
-       PAGE 4 — LINHA DO TEMPO
-  ============================================================ -->
-  <section class="page" id="p4">
-
-    <div class="tl-header">
-      <div class="tl-eyebrow">Da visita à entrega</div>
-      <div class="tl-title">Como Trabalhamos</div>
-      <div class="gold-line" style="margin:16px auto 0;"></div>
-    </div>
-
-    <!-- Row 1: Steps 1–4 -->
-    <div class="tl-row">
-
-      <div class="tl-step">
-        <div class="tl-circle">
-          <span class="tl-num">1</span>
-          <span class="tl-emoji">🏠</span>
-        </div>
-        <div class="tl-label">Visita &amp; Escuta</div>
-        <div class="tl-desc">Medimos in loco, ouvimos cada detalhe do seu estilo de vida</div>
-      </div>
-
-      <div class="tl-step">
-        <div class="tl-circle">
-          <span class="tl-num">2</span>
-          <span class="tl-emoji">📐</span>
-        </div>
-        <div class="tl-label">Projeto &amp; Orçamento</div>
-        <div class="tl-desc">Transparência total, sem surpresas durante a execução</div>
-      </div>
-
-      <div class="tl-step">
-        <div class="tl-circle">
-          <span class="tl-num">3</span>
-          <span class="tl-emoji">💻</span>
-        </div>
-        <div class="tl-label">Engenharia</div>
-        <div class="tl-desc">Software especializado antes do primeiro corte</div>
-      </div>
-
-      <div class="tl-step">
-        <div class="tl-circle">
-          <span class="tl-num">4</span>
-          <span class="tl-emoji">✅</span>
-        </div>
-        <div class="tl-label">Análise Técnica</div>
-        <div class="tl-desc">Toda equipe valida o projeto antes de produzir</div>
-      </div>
-
-    </div>
-
-    <!-- Row 2: Steps 5–8 -->
-    <div class="tl-row" style="margin-bottom: 0;">
-
-      <div class="tl-step">
-        <div class="tl-circle">
-          <span class="tl-num">5</span>
-          <span class="tl-emoji">🔨</span>
-        </div>
-        <div class="tl-label">Produção com POP</div>
-        <div class="tl-desc">Protocolo de qualidade em cada peça, sem exceção</div>
-      </div>
-
-      <div class="tl-step">
-        <div class="tl-circle">
-          <span class="tl-num">6</span>
-          <span class="tl-emoji">📦</span>
-        </div>
-        <div class="tl-label">Conferência &amp; Embalagem</div>
-        <div class="tl-desc">Testado e protegido antes de sair da fábrica</div>
-      </div>
-
-      <div class="tl-step">
-        <div class="tl-circle">
-          <span class="tl-num">7</span>
-          <span class="tl-emoji">🚚</span>
-        </div>
-        <div class="tl-label">Entrega &amp; Montagem</div>
-        <div class="tl-desc">Equipe própria do início ao fim, sem terceiros</div>
-      </div>
-
-      <div class="tl-step">
-        <div class="tl-circle">
-          <span class="tl-num">8</span>
-          <span class="tl-emoji">🛡️</span>
-        </div>
-        <div class="tl-label">Garantia &amp; Suporte</div>
-        <div class="tl-desc">Estamos aqui depois da entrega — sempre</div>
-      </div>
-
-    </div>
-
-    <div class="tl-footer">
-      <p>📷 @valvic_marcenaria &nbsp;·&nbsp; 🎥 @Valvic_Marcenaria</p>
-    </div>
-
-  </section><!-- /p4 -->
-
-
-  <!-- ============================================================
-       PAGE 5 — CASES
-  ============================================================ -->
-  <section class="page" id="p5">
-
-    <div class="cases-header">
-      <div class="section-eyebrow">Realize o que imaginou</div>
-      <div class="section-heading">Projetos que Inspiram</div>
-      <div class="gold-line-left"></div>
-    </div>
-
-    <div class="cases-grid">
-
-      <!-- Case 1 -->
-      <div class="case-card">
-        <div class="case-photo">🏡</div>
-        <div class="case-body">
-          <span class="case-tag">Case 01</span>
-          <div class="case-item">
-            <div class="case-item-label">O Desafio</div>
-            <div class="case-item-text">Apartamento compacto que precisava de armários funcionais sem perder a amplitude do ambiente.</div>
-          </div>
-          <div class="case-item">
-            <div class="case-item-label">A Solução</div>
-            <div class="case-item-text">Painel integrado do piso ao teto com nichos embutidos e iluminação indireta em LED.</div>
-          </div>
-          <div class="case-result">
-            <div class="case-item-label">O Resultado</div>
-            <div class="case-item-text">"Parece que o apartamento dobrou de tamanho."</div>
-          </div>
+        <div>
+          <div class="dif-title">Ferragem Hettich de origem alemã</div>
+          <div class="dif-spec">CORREDIÇAS FULL-EXTENSION · SOFT-CLOSE · 10 ANOS</div>
+          <div class="dif-desc">Nenhuma peça nacional de substituição. Você compra o que foi projetado para durar uma vida com o uso diário.</div>
         </div>
       </div>
 
-      <!-- Case 2 -->
-      <div class="case-card">
-        <div class="case-photo">🛋️</div>
-        <div class="case-body">
-          <span class="case-tag">Case 02</span>
-          <div class="case-item">
-            <div class="case-item-label">O Desafio</div>
-            <div class="case-item-text">Cozinha de alto padrão com bancadas de 4 metros e acabamento prime em dois tons.</div>
-          </div>
-          <div class="case-item">
-            <div class="case-item-label">A Solução</div>
-            <div class="case-item-text">Fresados CNC em todos os perfis, puxadores embutidos e gavetas com fechamento suave Hettich.</div>
-          </div>
-          <div class="case-result">
-            <div class="case-item-label">O Resultado</div>
-            <div class="case-item-text">"A cozinha virou o centro social da casa."</div>
-          </div>
+      <div class="dif">
+        <div class="dif-ico">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+        </div>
+        <div>
+          <div class="dif-title">Engenharia digital antes do corte</div>
+          <div class="dif-spec">SOFTWARE ESPECIALIZADO · APROVAÇÃO PRÉVIA</div>
+          <div class="dif-desc">Seu projeto existe em software de marcenaria antes de qualquer chapa ser cortada. Zero improviso em obra.</div>
+        </div>
+      </div>
+
+      <div class="dif">
+        <div class="dif-ico">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <div class="dif-title">Equipe própria do início ao fim</div>
+          <div class="dif-spec">SEM TERCEIRIZAÇÃO · RESPONSABILIDADE TOTAL</div>
+          <div class="dif-desc">Quem projeta é quem produz é quem instala. Não há elo solto na cadeia — a responsabilidade não muda de mão.</div>
+        </div>
+      </div>
+
+      <div class="dif">
+        <div class="dif-ico">
+          <svg viewBox="0 0 24 24"><path d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z"/><path d="M9 9h.01M15 9h.01M9 15h6"/></svg>
+        </div>
+        <div>
+          <div class="dif-title">Fita de borda 0,4 mm sem emenda</div>
+          <div class="dif-spec">ABS COLADO A LASER · ACABAMENTO EUROPEU</div>
+          <div class="dif-desc">O detalhe que você toca todo dia. Borda sem cola aparente, sem fio de separação. A marcenaria que envelhece bem.</div>
+        </div>
+      </div>
+
+      <div class="dif">
+        <div class="dif-ico">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92V19a2 2 0 01-2.18 2A19.79 19.79 0 013.07 5.18 2 2 0 015 3h2.09a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 18z"/></svg>
+        </div>
+        <div>
+          <div class="dif-title">Suporte real pós-entrega</div>
+          <div class="dif-spec">GARANTIA EM CONTRATO · VISITA DE ACOMPANHAMENTO</div>
+          <div class="dif-desc">Garantia formal assinada. Não sumimos após o pagamento — estamos aqui quando você precisar.</div>
         </div>
       </div>
 
     </div>
+  </div>
 
-  </section><!-- /p5 -->
+</section>
 
 
-  <!-- ============================================================
-       PAGE 6 — INVESTIMENTO
-  ============================================================ -->
-  <section class="page" id="p6">
+<!-- ================================================================
+     PAGE 3 — O PROJETO
+================================================================ -->
+<section class="page" id="p3">
 
-    <div class="inv-header">
-      <div class="section-eyebrow">Transparência Total</div>
-      <div class="section-heading">Seu Investimento</div>
-      <div class="gold-line-left"></div>
+  <div class="p3-head">
+    <div class="eyebrow">O Projeto</div>
+    <div class="p3-title">O que vamos<br>executar para você.</div>
+    <div class="p3-sub">
+      <span class="token" contenteditable="false" data-key="NOME_CLIENTE" data-placeholder="Nome do Cliente">{{NOME_CLIENTE}}</span>
+      &nbsp;—&nbsp;
+      <span class="token" contenteditable="false" data-key="PROJETO" data-placeholder="Descrição do projeto">{{PROJETO}}</span>
     </div>
+    <div class="p3-rule"></div>
+  </div>
 
-    <!-- ── TABELA COMPLETA ── -->
-    <div class="inv-table-block">
-      <div class="inv-table-label">Versão Completa</div>
-      <table class="inv-table" id="table-completa">
-        <thead>
-          <tr>
-            <th>Ambiente</th>
-            <th>Descrição</th>
-            <th>Investimento</th>
-            <th class="td-remove" style="color:transparent; font-size:1px;">·</th>
-          </tr>
-        </thead>
-        <tbody id="tbody-completa">
-          <!-- Rows injected by JS from ITENS placeholder / user -->
-          <tr data-table="completa">
-            <td><span class="token editable-cell" contenteditable="false" data-placeholder="Ambiente">Quarto Casal</span></td>
-            <td><span class="token editable-cell" contenteditable="false" data-placeholder="Descrição">Roupeiro 4 portas + painel TV + criado</span></td>
-            <td><span class="token editable-cell" contenteditable="false" data-placeholder="R$ 0,00">R$ {{ITENS}}</span></td>
-            <td class="td-remove"><button class="btn-remove-row" onclick="removeRow(this)" title="Remover linha">×</button></td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr class="total-row">
-            <td colspan="2">Total · Versão Completa</td>
-            <td>R$&nbsp;<span class="token"
-                              id="tk-total-completa"
-                              contenteditable="false"
-                              data-key="TOTAL_COMPLETA"
-                              data-placeholder="0,00">{{TOTAL_COMPLETA}}</span></td>
-            <td></td>
-          </tr>
-        </tfoot>
-      </table>
-      <button class="btn-add-row" onclick="addRow('completa')">+ Ambiente</button>
-    </div>
+  <div class="p3-body">
 
-    <!-- ── TABELA ESSENCIAL ── -->
-    <div class="inv-table-block">
-      <div class="inv-table-label">Versão Essencial</div>
-      <div class="inv-essencial-note">Mantém a qualidade de execução e ferragem. Ajuste no [especificar o ambiente ou item].</div>
-      <table class="inv-table" id="table-essencial">
-        <thead>
-          <tr>
-            <th>Ambiente</th>
-            <th>Descrição</th>
-            <th>Investimento</th>
-            <th class="td-remove" style="color:transparent; font-size:1px;">·</th>
-          </tr>
-        </thead>
-        <tbody id="tbody-essencial">
-          <tr data-table="essencial">
-            <td><span class="token editable-cell" contenteditable="false" data-placeholder="Ambiente">Quarto Casal</span></td>
-            <td><span class="token editable-cell" contenteditable="false" data-placeholder="Descrição">Roupeiro 4 portas (sem painel TV)</span></td>
-            <td><span class="token editable-cell" contenteditable="false" data-placeholder="R$ 0,00">R$ —</span></td>
-            <td class="td-remove"><button class="btn-remove-row" onclick="removeRow(this)" title="Remover linha">×</button></td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr class="total-row">
-            <td colspan="2">Total · Versão Essencial</td>
-            <td>R$&nbsp;<span class="token"
-                              id="tk-total-essencial"
-                              contenteditable="false"
-                              data-key="TOTAL_ESSENCIAL"
-                              data-placeholder="0,00">{{TOTAL_ESSENCIAL}}</span></td>
-            <td></td>
-          </tr>
-        </tfoot>
-      </table>
-      <button class="btn-add-row" onclick="addRow('essencial')">+ Ambiente</button>
-    </div>
-
-    <!-- ── CONDIÇÕES DE PAGAMENTO ── -->
-    <div class="payment-section">
-      <div class="payment-label">Condições de Pagamento</div>
-      <table class="payment-table">
-        <thead>
-          <tr>
-            <th>Condição</th>
-            <th>Desconto</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Entrada 30% + até 10× no cartão</td>
-            <td>Padrão</td>
-          </tr>
-          <tr class="highlight-row">
-            <td>Entrada 50% + até 8× no cartão</td>
-            <td>3% de desconto</td>
-          </tr>
-          <tr>
-            <td>Entrada 70% + até 6× no cartão</td>
-            <td>5% de desconto</td>
-          </tr>
-          <tr class="highlight-row">
-            <td>Entrada 70% + transferência à vista</td>
-            <td>7% de desconto</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- ── META: PRAZO | GARANTIA | VALIDADE ── -->
-    <div class="inv-meta-row">
-
-      <div class="inv-meta-card navy-bg">
-        <div class="inv-meta-label">Prazo de Entrega</div>
-        <div class="inv-meta-value">
-          <span class="token"
-                id="tk-prazo"
-                contenteditable="false"
-                data-key="PRAZO"
-                data-placeholder="30">{{PRAZO}}</span>
-        </div>
-        <div class="inv-meta-sub">dias úteis após assinatura</div>
+    <div class="render-box">
+      <img id="render-img" src="" alt="Render" />
+      <div id="render-ph" class="render-ph">
+        <svg viewBox="0 0 40 40" fill="none" stroke="#C49A4A" stroke-width="1.5" stroke-linecap="round" opacity=".35">
+          <rect x="4" y="9" width="32" height="22" rx="1.5"/>
+          <circle cx="13" cy="16" r="3.5"/>
+          <path d="M4 24L13 16L21 23L27 18L36 27"/>
+        </svg>
+        <span>render ou foto do projeto<br>inserir URL no modo edição</span>
       </div>
-
-      <div class="inv-meta-card gold-bg">
-        <div class="inv-meta-label">✦ Garantia ✦</div>
-        <div class="inv-meta-value">
-          <span class="token"
-                id="tk-garantia"
-                contenteditable="false"
-                data-key="GARANTIA_ANOS"
-                data-placeholder="3">{{GARANTIA_ANOS}}</span> anos
-        </div>
-        <div class="inv-meta-sub">cobertura completa</div>
+      <div class="render-url-row" id="render-url-row">
+        <input type="text" id="tk-render-url" placeholder="URL do render/foto do projeto" oninput="setRender(this.value)" />
       </div>
-
-      <div class="inv-meta-card cream-bd">
-        <div class="inv-meta-label">Validade da Proposta</div>
-        <div class="inv-meta-value">
-          <span class="token"
-                id="tk-validade2"
-                contenteditable="false"
-                data-key="VALIDADE"
-                data-placeholder="DD/MM/AAAA">{{VALIDADE}}</span>
-        </div>
-        <div class="inv-meta-sub" style="color:var(--text-muted);">após esta data, recotamos</div>
-      </div>
-
     </div>
 
-    <!-- ── CTA ── -->
-    <div class="cta-section">
-      <div class="cta-left">
-        <h3>Qual o próximo passo?</h3>
-        <p>Quer agendar uma conversa para tirar dúvidas?<br/>Estou à disposição — vamos tornar esse projeto realidade.</p>
-      </div>
-      <div class="cta-right">
-        <div class="cta-sig-label">Assinatura do Cliente</div>
-        <div class="cta-sig-line"></div>
-        <div class="cta-sig-name">
-          <span class="token"
-                id="tk-nome2"
-                contenteditable="false"
-                data-key="NOME_CLIENTE"
-                data-placeholder="Nome do Cliente">{{NOME_CLIENTE}}</span>
+    <div>
+      <div class="specs-label">Ambientes incluídos</div>
+
+      <div class="amb">
+        <div class="amb-ico"><svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></svg></div>
+        <div>
+          <div class="amb-name"><span class="token editable-cell" contenteditable="false" data-placeholder="Ambiente">Quarto Casal</span></div>
+          <div class="amb-desc"><span class="token editable-cell" contenteditable="false" data-placeholder="Descrição">Roupeiro 6 portas · Painel TV · 2 criados-mudos</span></div>
         </div>
       </div>
+
+      <div class="amb">
+        <div class="amb-ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+        <div>
+          <div class="amb-name"><span class="token editable-cell" contenteditable="false" data-placeholder="Ambiente">Sala de Estar</span></div>
+          <div class="amb-desc"><span class="token editable-cell" contenteditable="false" data-placeholder="Descrição">Painel TV · Rack integrado · Nicho decorativo</span></div>
+        </div>
+      </div>
+
+      <div class="amb">
+        <div class="amb-ico"><svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V9M20 20V9M4 9a8 8 0 0116 0"/></svg></div>
+        <div>
+          <div class="amb-name"><span class="token editable-cell" contenteditable="false" data-placeholder="Ambiente">Cozinha</span></div>
+          <div class="amb-desc"><span class="token editable-cell" contenteditable="false" data-placeholder="Descrição">Armários aéreos · Balcão baixo · Ilha central</span></div>
+        </div>
+      </div>
+
+      <div class="amb">
+        <div class="amb-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div>
+          <div class="amb-name"><span class="token editable-cell" contenteditable="false" data-placeholder="Ambiente">Home Office</span></div>
+          <div class="amb-desc"><span class="token editable-cell" contenteditable="false" data-placeholder="Descrição">Bancada · Estante modular · Painel organizador</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="p3-foot">
+    <div class="specs-grid">
+      <div class="spec-cell">
+        <div class="spec-label">Ferragem</div>
+        <div class="spec-val"><span class="token" contenteditable="false" data-key="FERRAGEM" data-placeholder="Hettich Quadro">Hettich Quadro</span></div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">Material</div>
+        <div class="spec-val"><span class="token" contenteditable="false" data-key="MATERIAL" data-placeholder="MDF 18mm">MDF 18mm</span></div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">Acabamento</div>
+        <div class="spec-val"><span class="token" contenteditable="false" data-key="ACABAMENTO" data-placeholder="Laca fosca">Laca fosca</span></div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ================================================================
+     PAGE 4 — LINHA DO TEMPO
+================================================================ -->
+<section class="page" id="p4">
+
+  <div class="p4-head">
+    <div class="p4-eyebrow">Nosso processo</div>
+    <div class="p4-title">Do projeto à entrega,<br><em>cada etapa com protocolo.</em></div>
+    <div class="p4-sub">8 etapas documentadas. Você acompanha tudo. Nenhuma surpresa no caminho.</div>
+  </div>
+
+  <div class="tl-grid">
+
+    <div class="tl-step">
+      <div class="tl-circle"><span class="tl-num">1</span></div>
+      <div class="tl-name">Visita &amp; Escuta</div>
+      <div class="tl-arg">Medição presencial para garantir precisão total.</div>
+      <div class="tl-conn"></div>
     </div>
 
-  </section><!-- /p6 -->
+    <div class="tl-step">
+      <div class="tl-circle"><span class="tl-num">2</span></div>
+      <div class="tl-name">Projeto &amp; Orçamento</div>
+      <div class="tl-arg">Transparência completa — sem surpresas no caminho.</div>
+      <div class="tl-conn"></div>
+    </div>
+
+    <div class="tl-step">
+      <div class="tl-circle"><span class="tl-num">3</span></div>
+      <div class="tl-name">Engenharia de Produto</div>
+      <div class="tl-arg">Seu projeto vira software especializado antes de virar móvel.</div>
+      <div class="tl-conn"></div>
+    </div>
+
+    <div class="tl-step">
+      <div class="tl-circle"><span class="tl-num">4</span></div>
+      <div class="tl-name">Análise Técnica</div>
+      <div class="tl-arg">Validação por toda a equipe antes do primeiro corte.</div>
+    </div>
+
+    <div class="tl-step">
+      <div class="tl-circle"><span class="tl-num">5</span></div>
+      <div class="tl-name">Produção com Padrão</div>
+      <div class="tl-arg">Cada peça produzida com protocolo documentado de qualidade.</div>
+      <div class="tl-conn"></div>
+    </div>
+
+    <div class="tl-step">
+      <div class="tl-circle"><span class="tl-num">6</span></div>
+      <div class="tl-name">Conferência &amp; Embalagem</div>
+      <div class="tl-arg">Testado e protegido antes de sair da fábrica.</div>
+      <div class="tl-conn"></div>
+    </div>
+
+    <div class="tl-step">
+      <div class="tl-circle"><span class="tl-num">7</span></div>
+      <div class="tl-name">Entrega &amp; Montagem</div>
+      <div class="tl-arg">Equipe própria do início ao fim — não terceirizamos.</div>
+      <div class="tl-conn"></div>
+    </div>
+
+    <div class="tl-step">
+      <div class="tl-circle"><span class="tl-num">8</span></div>
+      <div class="tl-name">Garantia &amp; Suporte</div>
+      <div class="tl-arg">Estamos aqui depois da entrega — garantia por ferragem.</div>
+    </div>
+
+  </div>
+
+  <div class="p4-foot">
+    <div class="foot-brand">Valvic Marcenaria</div>
+    <div class="socials">
+      <a class="soc" href="https://www.instagram.com/valvic_marcenaria" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        @valvic_marcenaria
+      </a>
+      <a class="soc" href="https://www.youtube.com/@Valvic_Marcenaria" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        @Valvic_Marcenaria
+      </a>
+    </div>
+  </div>
+
+</section>
 
 
-  <!-- ============================================================
-       JAVASCRIPT
-  ============================================================ -->
-  <script>
-    /* ---------------------------------------------------------------
-       STORAGE KEY
-    --------------------------------------------------------------- */
-    const STORAGE_KEY = 'valvic_proposta_excellence_v1';
+<!-- ================================================================
+     PAGE 5 — DEPOIMENTO
+================================================================ -->
+<section class="page" id="p5">
 
-    /* ---------------------------------------------------------------
-       PLACEHOLDER MAP — maps data-key → current value
-    --------------------------------------------------------------- */
-    const state = loadState();
+  <div class="quote-col">
+    <div class="q-label">Quem já viveu</div>
+    <div class="q-mark">"</div>
+    <div class="q-text">
+      <span class="token" contenteditable="false" data-key="DEPOIMENTO"
+        data-placeholder="Depoimento do cliente — editar no modo edição">Escolhi a Valvic depois de ver o acabamento na casa de uma amiga. A diferença está nos detalhes que a maioria das marcenarias nem menciona. Cada gaveta abre no silêncio certo.</span>
+    </div>
+    <div class="q-rule"></div>
+    <div class="q-author">
+      <span class="token" contenteditable="false" data-key="DEP_AUTOR" data-placeholder="Nome">Mariana Costa</span>
+    </div>
+    <div class="q-proj">
+      <span class="token" contenteditable="false" data-key="DEP_PROJETO" data-placeholder="Projeto · Cidade">Cozinha + Sala · São Paulo</span>
+    </div>
+  </div>
 
-    /* ---------------------------------------------------------------
-       INIT — fill tokens from state on load
-    --------------------------------------------------------------- */
-    function init() {
-      document.querySelectorAll('.token[data-key]').forEach(el => {
-        const key = el.getAttribute('data-key');
-        if (state[key]) {
-          el.textContent = state[key];
-          // Special: sync linked tokens (e.g., NOME_CLIENTE in p1 and p6)
-        }
-      });
+  <div class="p5-photo">
+    <img id="p5-img" src="" alt="Projeto" />
+    <div id="p5-ph" class="p5-ph"></div>
+    <div class="p5-overlay">
+      <div class="p5-caption">
+        <span class="token" contenteditable="false" data-key="DEP_CAPTION" data-placeholder="Legenda da foto">Projeto executado · Residência particular</span>
+      </div>
+    </div>
+    <div id="p5-url-row">
+      <input type="text" id="tk-p5-url" placeholder="URL da foto do depoimento" oninput="setP5(this.value)" />
+    </div>
+  </div>
 
-      // Restore render URL
-      if (state['RENDER_URL']) {
-        document.getElementById('tk-render-url').value = state['RENDER_URL'];
-        updateRenderImage(state['RENDER_URL']);
-      }
+</section>
 
-      // Restore table rows
-      if (state['rows_completa']) restoreRows('completa', state['rows_completa']);
-      if (state['rows_essencial']) restoreRows('essencial', state['rows_essencial']);
-    }
 
-    /* ---------------------------------------------------------------
-       TOGGLE EDIT MODE
-    --------------------------------------------------------------- */
-    function toggleEdit() {
-      const isEdit = document.body.classList.toggle('edit-mode');
-      const btn = document.getElementById('btn-edit');
-      btn.textContent = isEdit ? '✓ Concluir' : '✏ Editar';
+<!-- ================================================================
+     PAGE 6 — INVESTIMENTO
+================================================================ -->
+<section class="page" id="p6">
 
-      document.querySelectorAll('.token[data-key]').forEach(el => {
-        el.contentEditable = isEdit ? 'true' : 'false';
-      });
+  <div class="inv-head">
+    <div class="eyebrow">Transparência Total</div>
+    <div class="inv-title">Seu Investimento.</div>
+    <div class="inv-rule"></div>
+  </div>
 
-      document.querySelectorAll('.editable-cell').forEach(el => {
-        el.contentEditable = isEdit ? 'true' : 'false';
-      });
+  <!-- Tabela Completa -->
+  <div class="inv-block">
+    <div class="inv-block-label">Versão Completa</div>
+    <table class="inv-tbl" id="tbl-completa">
+      <thead>
+        <tr>
+          <th>Ambiente</th>
+          <th>Descrição</th>
+          <th style="text-align:right">Investimento</th>
+          <th class="rm-cell" style="opacity:0;font-size:1px">·</th>
+        </tr>
+      </thead>
+      <tbody id="tbody-completa">
+        <tr data-table="completa">
+          <td><span class="token editable-cell" contenteditable="false" data-placeholder="Ambiente">Quarto Casal</span></td>
+          <td><span class="token editable-cell" contenteditable="false" data-placeholder="Descrição">Roupeiro 4 portas + painel TV + criado</span></td>
+          <td class="val-cell"><span class="token editable-cell" contenteditable="false" data-placeholder="R$ 0,00">R$ {{ITENS}}</span></td>
+          <td class="rm-cell"><button class="btn-rm" onclick="removeRow(this)">×</button></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="total-row">
+          <td colspan="2">Total · Versão Completa</td>
+          <td class="val-cell">R$&nbsp;<span class="token" id="tk-total-c" contenteditable="false" data-key="TOTAL_COMPLETA" data-placeholder="0,00">{{TOTAL_COMPLETA}}</span></td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+    <button class="btn-add-row" onclick="addRow('completa')">+ Ambiente</button>
+  </div>
 
-      // Show/hide render URL input
-      document.getElementById('render-edit-row').style.display = isEdit ? 'block' : 'none';
+  <!-- Tabela Essencial -->
+  <div class="inv-block">
+    <div class="inv-block-label">Versão Essencial</div>
+    <div class="inv-note">Mantém a qualidade de execução e ferragem. Ajuste no
+      <span class="token" contenteditable="false" data-key="ESSENCIAL_AJUSTE" data-placeholder="[especificar]">[especificar o ambiente ou item]</span>.
+    </div>
+    <table class="inv-tbl" id="tbl-essencial">
+      <thead>
+        <tr>
+          <th>Ambiente</th>
+          <th>Descrição</th>
+          <th style="text-align:right">Investimento</th>
+          <th class="rm-cell" style="opacity:0;font-size:1px">·</th>
+        </tr>
+      </thead>
+      <tbody id="tbody-essencial">
+        <tr data-table="essencial">
+          <td><span class="token editable-cell" contenteditable="false" data-placeholder="Ambiente">Quarto Casal</span></td>
+          <td><span class="token editable-cell" contenteditable="false" data-placeholder="Descrição">Roupeiro 4 portas (sem painel TV)</span></td>
+          <td class="val-cell"><span class="token editable-cell" contenteditable="false" data-placeholder="R$ 0,00">R$ —</span></td>
+          <td class="rm-cell"><button class="btn-rm" onclick="removeRow(this)">×</button></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="total-row">
+          <td colspan="2">Total · Versão Essencial</td>
+          <td class="val-cell">R$&nbsp;<span class="token" id="tk-total-e" contenteditable="false" data-key="TOTAL_ESSENCIAL" data-placeholder="0,00">{{TOTAL_ESSENCIAL}}</span></td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+    <button class="btn-add-row" onclick="addRow('essencial')">+ Ambiente</button>
+  </div>
 
-      if (isEdit) {
-        // Focus first token that still has placeholder text
-        const first = document.querySelector('.token[data-key]');
-        if (first) first.focus();
-      }
-    }
+  <!-- Condições -->
+  <div class="pay-block">
+    <div class="pay-label">Condições de Pagamento</div>
+    <table class="pay-tbl">
+      <thead><tr><th>Condição</th><th>Desconto</th></tr></thead>
+      <tbody>
+        <tr><td>Entrada 30% + até 10× no cartão</td><td>Padrão</td></tr>
+        <tr class="hi"><td>Entrada 50% + até 8× no cartão</td><td>3%</td></tr>
+        <tr><td>Entrada 70% + até 6× no cartão</td><td>5%</td></tr>
+        <tr class="hi"><td>Entrada 70% + transferência à vista</td><td>7%</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-    /* ---------------------------------------------------------------
-       SAVE ON CHANGE
-    --------------------------------------------------------------- */
-    document.addEventListener('input', function(e) {
-      const el = e.target;
-      if (el.classList.contains('token') && el.dataset.key) {
-        const key = el.dataset.key;
-        const value = el.textContent.trim();
-        state[key] = value;
+  <!-- Meta cards -->
+  <div class="meta-row">
+    <div class="meta-card mc-navy">
+      <div class="mc-label">Prazo de Entrega</div>
+      <div class="mc-val"><span class="token" contenteditable="false" data-key="PRAZO" data-placeholder="30">{{PRAZO}}</span></div>
+      <div class="mc-sub">dias úteis após assinatura</div>
+    </div>
+    <div class="meta-card mc-gold">
+      <div class="mc-label">✦ Garantia ✦</div>
+      <div class="mc-val"><span class="token" contenteditable="false" data-key="GARANTIA_ANOS" data-placeholder="10">{{GARANTIA_ANOS}}</span> anos</div>
+      <div class="mc-sub">cobertura completa Hettich</div>
+    </div>
+    <div class="meta-card mc-cream">
+      <div class="mc-label">Validade da Proposta</div>
+      <div class="mc-val"><span class="token" contenteditable="false" data-key="VALIDADE" data-placeholder="DD/MM">{{VALIDADE}}</span></div>
+      <div class="mc-sub">após esta data, recotamos</div>
+    </div>
+  </div>
 
-        // Sync all tokens with same key
-        document.querySelectorAll(`.token[data-key="${key}"]`).forEach(t => {
-          if (t !== el) t.textContent = value;
-        });
+  <!-- CTA -->
+  <div class="cta-row">
+    <div>
+      <h3>Qual o próximo passo?</h3>
+      <p>Quer agendar uma conversa para tirar dúvidas?<br>Estou à disposição — vamos tornar esse projeto realidade.</p>
+    </div>
+    <div>
+      <div class="sig-label">Assinatura do Cliente</div>
+      <div class="sig-line">&nbsp;</div>
+      <div class="sig-name">
+        <span class="token" contenteditable="false" data-key="NOME_CLIENTE" data-placeholder="Nome do Cliente">{{NOME_CLIENTE}}</span>
+      </div>
+    </div>
+  </div>
 
-        saveState();
-      }
+</section>
 
-      if (el.classList.contains('editable-cell')) {
-        saveTableRows();
-      }
+
+<script>
+  const SK = 'valvic_excellence_v2';
+  const S  = loadS();
+
+  function init() {
+    document.querySelectorAll('.token[data-key]').forEach(el => {
+      const k = el.dataset.key;
+      if (S[k]) el.textContent = S[k];
     });
+    if (S.HERO_URL)   { document.getElementById('tk-hero-url').value   = S.HERO_URL;   setHero(S.HERO_URL); }
+    if (S.RENDER_URL) { document.getElementById('tk-render-url').value = S.RENDER_URL; setRender(S.RENDER_URL); }
+    if (S.P5_URL)     { document.getElementById('tk-p5-url').value     = S.P5_URL;     setP5(S.P5_URL); }
+    if (S.rows_c)     restoreRows('completa',  S.rows_c);
+    if (S.rows_e)     restoreRows('essencial', S.rows_e);
+  }
 
-    document.addEventListener('blur', function(e) {
-      if (e.target.classList.contains('token') || e.target.classList.contains('editable-cell')) {
-        saveState();
-        saveTableRows();
-      }
-    }, true);
+  function toggleEdit() {
+    const on = document.body.classList.toggle('edit-mode');
+    document.getElementById('btn-edit').textContent = on ? '✓ Concluir' : '✏ Editar';
+    document.querySelectorAll('.token[data-key], .editable-cell').forEach(el => { el.contentEditable = on; });
+    ['hero-url-row','render-url-row','p5-url-row'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = on ? 'block' : 'none';
+    });
+  }
 
-    /* ---------------------------------------------------------------
-       RENDER IMAGE
-    --------------------------------------------------------------- */
-    function updateRenderImage(url) {
-      const img = document.getElementById('hero-img');
-      const ph  = document.getElementById('hero-placeholder');
-      if (url && url.trim()) {
-        img.src = url.trim();
-        img.style.display = 'block';
-        ph.style.display  = 'none';
-        state['RENDER_URL'] = url.trim();
-        saveState();
-      } else {
-        img.style.display = 'none';
-        ph.style.display  = 'flex';
-      }
+  document.addEventListener('input', e => {
+    const el = e.target;
+    if (el.classList.contains('token') && el.dataset.key) {
+      const k = el.dataset.key, v = el.textContent.trim();
+      S[k] = v;
+      document.querySelectorAll(`.token[data-key="${k}"]`).forEach(t => { if (t !== el) t.textContent = v; });
+      saveS();
     }
+    if (el.classList.contains('editable-cell')) saveRows();
+  });
 
-    /* ---------------------------------------------------------------
-       TABLE ROWS
-    --------------------------------------------------------------- */
-    function addRow(tableId) {
-      const tbody = document.getElementById('tbody-' + tableId);
+  document.addEventListener('blur', e => {
+    if (e.target.classList.contains('token') || e.target.classList.contains('editable-cell')) { saveS(); saveRows(); }
+  }, true);
+
+  function setHero(url) {
+    const img = document.getElementById('hero-img'), ph = document.getElementById('hero-ph');
+    if (url && url.trim()) { img.src = url.trim(); img.style.display = 'block'; ph.style.display = 'none'; S.HERO_URL = url.trim(); saveS(); }
+    else { img.style.display = 'none'; ph.style.display = 'flex'; }
+  }
+
+  function setRender(url) {
+    const img = document.getElementById('render-img'), ph = document.getElementById('render-ph');
+    if (url && url.trim()) { img.src = url.trim(); img.style.display = 'block'; ph.style.display = 'none'; S.RENDER_URL = url.trim(); saveS(); }
+    else { img.style.display = 'none'; ph.style.display = 'flex'; }
+  }
+
+  function setP5(url) {
+    const img = document.getElementById('p5-img'), ph = document.getElementById('p5-ph');
+    if (url && url.trim()) { img.src = url.trim(); img.style.display = 'block'; ph.style.display = 'none'; S.P5_URL = url.trim(); saveS(); }
+    else { img.style.display = 'none'; ph.style.display = 'flex'; }
+  }
+
+  function addRow(tid) {
+    const tbody = document.getElementById('tbody-' + tid);
+    const on = document.body.classList.contains('edit-mode');
+    const tr = document.createElement('tr');
+    tr.dataset.table = tid;
+    tr.innerHTML = `
+      <td><span class="token editable-cell" contenteditable="${on}" data-placeholder="Ambiente">Novo Ambiente</span></td>
+      <td><span class="token editable-cell" contenteditable="${on}" data-placeholder="Descrição">Descrição do item</span></td>
+      <td class="val-cell"><span class="token editable-cell" contenteditable="${on}" data-placeholder="R$ 0,00">R$ 0,00</span></td>
+      <td class="rm-cell"><button class="btn-rm" onclick="removeRow(this)">×</button></td>`;
+    tbody.appendChild(tr);
+    saveRows();
+  }
+
+  function removeRow(btn) { btn.closest('tr').remove(); saveRows(); }
+
+  function saveRows() {
+    ['completa','essencial'].forEach(tid => {
+      const rows = [];
+      document.querySelectorAll(`#tbody-${tid} tr`).forEach(tr => {
+        const c = tr.querySelectorAll('.editable-cell');
+        rows.push([c[0]?.textContent||'', c[1]?.textContent||'', c[2]?.textContent||'']);
+      });
+      S['rows_' + tid[0]] = rows;
+    });
+    saveS();
+  }
+
+  function restoreRows(tid, rows) {
+    const tbody = document.getElementById('tbody-' + tid);
+    tbody.innerHTML = '';
+    rows.forEach(([a,d,v]) => {
       const tr = document.createElement('tr');
-      tr.setAttribute('data-table', tableId);
+      tr.dataset.table = tid;
       tr.innerHTML = `
-        <td><span class="token editable-cell" contenteditable="true" data-placeholder="Ambiente">Novo Ambiente</span></td>
-        <td><span class="token editable-cell" contenteditable="true" data-placeholder="Descrição">Descrição do item</span></td>
-        <td><span class="token editable-cell" contenteditable="true" data-placeholder="R$ 0,00">R$ 0,00</span></td>
-        <td class="td-remove"><button class="btn-remove-row" onclick="removeRow(this)" title="Remover linha">×</button></td>
-      `;
+        <td><span class="token editable-cell" contenteditable="false" data-placeholder="Ambiente">${esc(a)}</span></td>
+        <td><span class="token editable-cell" contenteditable="false" data-placeholder="Descrição">${esc(d)}</span></td>
+        <td class="val-cell"><span class="token editable-cell" contenteditable="false" data-placeholder="R$ 0,00">${esc(v)}</span></td>
+        <td class="rm-cell"><button class="btn-rm" onclick="removeRow(this)">×</button></td>`;
       tbody.appendChild(tr);
-      saveTableRows();
-    }
+    });
+  }
 
-    function removeRow(btn) {
-      const tr = btn.closest('tr');
-      tr.remove();
-      saveTableRows();
-    }
+  function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function saveS() { try { localStorage.setItem(SK, JSON.stringify(S)); } catch(e) {} }
+  function loadS() { try { const r = localStorage.getItem(SK); return r ? JSON.parse(r) : {}; } catch(e) { return {}; } }
+  function printPDF() { if (document.body.classList.contains('edit-mode')) toggleEdit(); setTimeout(() => window.print(), 150); }
 
-    function saveTableRows() {
-      ['completa', 'essencial'].forEach(id => {
-        const rows = [];
-        document.querySelectorAll(`#tbody-${id} tr`).forEach(tr => {
-          const cells = tr.querySelectorAll('.editable-cell');
-          rows.push([
-            cells[0] ? cells[0].textContent : '',
-            cells[1] ? cells[1].textContent : '',
-            cells[2] ? cells[2].textContent : '',
-          ]);
-        });
-        state['rows_' + id] = rows;
-      });
-      saveState();
-    }
-
-    function restoreRows(tableId, rows) {
-      const tbody = document.getElementById('tbody-' + tableId);
-      tbody.innerHTML = '';
-      rows.forEach(([amb, desc, val]) => {
-        const tr = document.createElement('tr');
-        tr.setAttribute('data-table', tableId);
-        tr.innerHTML = `
-          <td><span class="token editable-cell" contenteditable="false" data-placeholder="Ambiente">${escHtml(amb)}</span></td>
-          <td><span class="token editable-cell" contenteditable="false" data-placeholder="Descrição">${escHtml(desc)}</span></td>
-          <td><span class="token editable-cell" contenteditable="false" data-placeholder="R$ 0,00">${escHtml(val)}</span></td>
-          <td class="td-remove"><button class="btn-remove-row" onclick="removeRow(this)" title="Remover linha">×</button></td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
-    function escHtml(str) {
-      return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;');
-    }
-
-    /* ---------------------------------------------------------------
-       PERSIST STATE
-    --------------------------------------------------------------- */
-    function saveState() {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-      } catch(e) { /* file:// may block — silent */ }
-    }
-
-    function loadState() {
-      try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        return raw ? JSON.parse(raw) : {};
-      } catch(e) {
-        return {};
-      }
-    }
-
-    /* ---------------------------------------------------------------
-       PRINT
-    --------------------------------------------------------------- */
-    function printPDF() {
-      // Exit edit mode before printing
-      if (document.body.classList.contains('edit-mode')) toggleEdit();
-      setTimeout(() => window.print(), 150);
-    }
-
-    /* ---------------------------------------------------------------
-       BOOT
-    --------------------------------------------------------------- */
-    init();
-  </script>
+  init();
+</script>
 
 </body>
 </html>
