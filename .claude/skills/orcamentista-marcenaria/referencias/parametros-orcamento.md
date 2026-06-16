@@ -11,6 +11,22 @@ Definições do fundador para o motor operar com agilidade.
 | Roupeiro           | 65 cm        |
 | Bancada            | 50 cm        |
 
+## Móveis com CURVA — regra do fundador (perda + margem)
+
+Todo móvel que tem **curva** (recorte orgânico, raio, painel curvo, lateral
+arredondada) carrega muito mais **trabalho operacional** — recorte, lixamento,
+fita acompanhando o raio, encaixe. Regra fixa, registrada para todo o time:
+
+- **Perda de material:** considerar **+15%** (aprox.) sobre a peça/área curva —
+  além do desperdício normal de aproveitamento. O raio "come" chapa.
+- **Margem de lucro:** subir a MC em **+5%** (pelo menos) sobre o piso do projeto
+  — a curva é mão de obra embutida que não aparece no material.
+
+> **Propagar:** vale para a **Lavinia** (quantitativo + piso de MC), para o
+> **Rodrigo** (margem/saúde financeira — curva puxa o piso pra cima) e para o
+> **Vitor** (descrição da proposta — registrar que a peça é curva e por que custa
+> mais). Em treinamento contínuo: calibrar o fator a cada projeto com curva.
+
 ## O que o orçamentista informa vs. o que vem do projeto (Bloco A)
 
 - **Marcos só informa a LINHA de ferragem** (dobradiça/corrediça/sistema).
