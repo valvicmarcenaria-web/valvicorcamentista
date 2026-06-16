@@ -71,24 +71,29 @@ padrão**. Caixa **bom** → MC alvo **40%**, **+5% nos itens com curva** (só o
 | Visita/setup | R$ 250 | — |
 | **Custo direto total** | **R$ 10.720** | — |
 
-## 3. Fechamento (modelo validação — encargos ≈ 33% do inv)
+## 3. Fechamento (modelo validação — encargos reais ≈ 34,9% do inv)
+
+> **Correção pós-validação no app:** o cálculo manual usava 33% de encargos, mas a
+> fórmula real dá **34,9%** — RT 10% do líquido = **8,6% do bruto** (líquido = inv −
+> NF − parcelamento). Por isso o preço subiu de R$40,6k (que dava só 38,8%) para o
+> valor abaixo, que segura os 40%/45% de verdade.
 
 Encargos sobre o investimento: NF 7% · parcelamento 7% · comissão vendedor 5% ·
-comissão produção 5% · margem de erro 2% · **RT 10% do líquido (≈7,5% bruto)** =
-**≈ 33%**. Preço por markup divisor: `inv = custo_direto / (1 − MC% − 33%)`
-→ ×3,70 (MC 40%) · ×4,55 (MC 45%, painel).
+comissão produção 5% · margem de erro 2% = **26,3% straight** · **+ RT 8,6%** =
+**≈ 34,9%**. Preço por markup divisor: `inv = (material + visita) / (0,651 − MC%)`.
 
-| Pacote | Preço cliente | MC% |
-|--------|-------------:|:---:|
-| 1 · Painel cabeceira | R$ 5.300 | 45% |
-| 2 · Cama + prateleiras | R$ 7.200 | 40% |
-| 3 · Bancada + armário inferior | R$ 7.000 | 40% |
-| 4 · Roupeiro + nicho | R$ 20.200 | 40% |
-| Visita diluída | ~R$ 900 | — |
-| **TOTAL** | **≈ R$ 40.600** | **~40,5%** |
+| Pacote | Material | Preço cliente | MC% |
+|--------|---------:|-------------:|:---:|
+| 1 · Painel cabeceira (curva) | R$ 1.166 | R$ 5.800 | 45% |
+| 2 · Cama + prateleiras | R$ 1.956 | R$ 7.800 | 40% |
+| 3 · Bancada + armário inferior | R$ 1.877 | R$ 7.500 | 40% |
+| 4 · Roupeiro + nicho (+ visita) | R$ 5.697 | R$ 22.700 | 40% |
+| **TOTAL** | **R$ 10.696** | **≈ R$ 43.800** | **~40,7%** |
 
-- **MC R$ ≈ 16.500** · **MC% ≈ 40,5%** → faixa **bom** (37–45%), saudável p/ cobrir
+- **MC R$ ≈ 17.800** · **MC% ≈ 40,7%** → faixa **bom** (37–45%), saudável p/ cobrir
   o fixo (sócio, galpão, CNC, coladeira, 7 fixos). Alinhado ao Rodrigo.
+- JSON do app: `projetos/orcamento-samara-v1-mc40.json` (importar no
+  `validacao-orcamento.html`).
 
 ## 4. Flags / riscos do orçamento (erra pra cima)
 
