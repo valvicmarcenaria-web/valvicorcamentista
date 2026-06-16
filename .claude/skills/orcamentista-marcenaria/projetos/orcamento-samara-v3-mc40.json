@@ -2,9 +2,9 @@
  "cliente": "Samara",
  "projeto": "Quarto dos Irmãos (consultoria Rizzi / Luana Rizzi)",
  "versao": "003",
- "inv": 36074,
+ "inv": 37500,
  "mcAlvo": 40,
- "_nota": "Leitura do fundador 16/06/2026. Encargos ~30% (parceiro Luana -> vend=0). inv 36.074 -> MC real 39,2%. Painel = 2 chapas + 5m LED. Levers: 40% flat=37.055 | 38% flat=34.739.",
+ "_nota": "Leitura do fundador 16/06/2026, TRAVADA. Encargos ~30% (parceiro Luana -> vend=0). inv 37.500 -> MC real ~40,4%. Painel = 2 chapas + 5m LED. Percentuais viraram padrão da base.",
  "p": {
   "nf": 5,
   "parc": 7,

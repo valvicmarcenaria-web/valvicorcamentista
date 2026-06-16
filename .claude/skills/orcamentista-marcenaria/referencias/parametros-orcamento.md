@@ -59,6 +59,8 @@ O motor já dispõe destes (não recriar; apenas referenciar/usar):
 - **Custo de chapa** (comissão de corte por chapa).
 - **Logística** (carreto + equipe) e setup/visitas.
 
-> Percentuais de referência (da planilha): NF 7% · parcelamento de máquina 7–8% ·
-> comissão vendedor 5% (às vezes 3%) · comissão produção 5% · RT 10% do líquido
-> (quando há parceiro) · margem de erro 2% · visita R$250. Meta **MC 35–40%**.
+> Percentuais de referência (padrão 06/2026): NF **5%** · parcelamento 7–8% ·
+> comissão vendedor 5% (**0 quando o lead vem de parceiro**) · comissão produção
+> **~7,2%** (marc 5%) · RT 10% do líquido (quando há parceiro) · margem de erro 2% ·
+> visita R$250. Meta **MC 35–40%**. Detalhe e divisor de preço em
+> `validacao-orcamento.md`.

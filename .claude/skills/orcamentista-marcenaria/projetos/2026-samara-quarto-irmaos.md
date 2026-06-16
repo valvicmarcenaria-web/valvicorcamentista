@@ -116,15 +116,16 @@ enxugado (−R$380), e **estrutura de custo de parceiro**: `vend 0` (lead da Lua
 
 | Pacote | Material | Preço (aloc.) |
 |--------|---------:|-------------:|
-| 1 · Painel cabeceira | R$ 1.966 | R$ 6.530 |
-| 2 · Cama + prateleiras | R$ 1.956 | R$ 6.495 |
-| 3 · Bancada + armário inferior | R$ 1.877 | R$ 6.230 |
-| 4 · Roupeiro + nicho | R$ 5.067 | R$ 16.820 |
-| **TOTAL** | **R$ 10.866** | **R$ 36.074** |
+| 1 · Painel cabeceira | R$ 1.966 | R$ 6.785 |
+| 2 · Cama + prateleiras | R$ 1.956 | R$ 6.752 |
+| 3 · Bancada + armário inferior | R$ 1.877 | R$ 6.477 |
+| 4 · Roupeiro + nicho | R$ 5.067 | R$ 17.486 |
+| **TOTAL** | **R$ 10.866** | **R$ 37.500** |
 
-- **MC real ≈ 39,2%** ao preço de R$ 36.074 (`mcAlvo` marcado 40).
-- **Levers (encargos 30%):** 40% flat = **R$ 37.055** · 38% flat = **R$ 34.739**.
-- JSON: **`projetos/orcamento-samara-v3-mc40.json`** (vigente).
+- **TRAVADO em R$ 37.500 → MC real ≈ 40,4%** (valor cheio, preferência do fundador).
+- Encargos ~30% (parceiro Luana → `vend = 0`); percentuais agora **padrão da base**.
+- JSON: **`projetos/orcamento-samara-v3-mc40.json`** (vigente, travado). Próximo
+  passo: Vitor monta a proposta (Gold/Silver) a partir desta alocação.
 
 ## 4. Flags / riscos do orçamento (erra pra cima)
 

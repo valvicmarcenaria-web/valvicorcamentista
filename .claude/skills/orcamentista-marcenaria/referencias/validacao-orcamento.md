@@ -38,15 +38,19 @@ A planilha valida o orçamento **de trás para frente**: dado um Investimento
 
 **5. Margem de erro** — contingência.
 
-## Percentuais reais (sobre o Investimento) — inferidos de 11 projetos
+## Percentuais reais (sobre o Investimento) — padrão atualizado 06/2026
+
+> Padrão revisado pelo fundador em 06/2026 (projeto Samara). Mudou: NF 7→**5%**,
+> comissão produção ~5→**7,2%** (marceneiro 5%), e **vendedor = 0 quando o lead vem
+> de parceiro**.
 
 | Encargo                  | % do Investimento        | Observação                         |
 |--------------------------|--------------------------|------------------------------------|
-| Nota fiscal              | **7%** (RT doc: 7,5%)    | constante nos 11 projetos          |
+| Nota fiscal              | **5%** (era 7%)          | padrão atual 06/2026               |
 | Parcelamento de máquina  | **7%** (às vezes 8%)     | taxa da maquininha/cartão; vira desconto à vista |
-| Comissão vendedor        | **5%** (às vezes 3%)     | 3% em alguns projetos              |
-| Comissão produção        | **5%**                   |                                    |
-| RT (parceiro/arquiteto)  | **10% do líquido** (≈7–8% do bruto) | 0 quando não há parceiro; ver `proposta-comercial.md` |
+| Comissão vendedor        | **5%** · **0** c/ parceiro | quem "vende" é a RT do parceiro  |
+| Comissão produção        | **~7,2%**                | prog 0,8 + coord 1 + **marc 5** + serra 0,2 + manut 0,2 |
+| RT (parceiro/arquiteto)  | **10% do líquido** (≈8,8% do bruto) | 0 quando não há parceiro; ver `proposta-comercial.md` |
 | Margem de erro           | **2%**                   |                                    |
 | Visitas                  | **R$ 250** (fixo)        | valor por visita                   |
 
@@ -59,35 +63,32 @@ A planilha valida o orçamento **de trás para frente**: dado um Investimento
 > Atalho para chegar ao **preço** a partir do **custo direto** e da **MC alvo**,
 > sem ir e voltar no app. Validado contra projetos reais (Camila, Samara 06/2026).
 
-Os encargos que incidem **% sobre o investimento** somam, no padrão Valvic com
-parceiro (RT), **≈ 34,9%**:
+Componentes do encargo (padrão 06/2026), **% sobre o investimento**:
 
 | Bloco | % do inv |
 |-------|---------:|
-| NF | 7% |
+| NF | 5% |
 | Parcelamento de máquina | 7% |
-| Comissão vendedor | 5% |
-| Comissão produção (prog+coord+marc+serra+manut) | ~5% (5,3) |
+| Comissão vendedor | 5% (**0** c/ parceiro) |
+| Comissão produção (prog 0,8 + coord 1 + **marc 5** + serra 0,2 + manut 0,2) | 7,2% |
 | Margem de erro | 2% |
-| **Subtotal "straight"** | **26,3%** |
-| **RT 10% do líquido** (líquido = inv − NF − cartão ≈ 0,855·inv) | **≈ 8,6% do bruto** |
-| **TOTAL encargos** | **≈ 34,9%** |
+| RT 10% do líquido (líquido = inv − NF − cartão ≈ 0,88·inv) | ≈ 8,8% do bruto (0 sem parceiro) |
 
-Logo, com `1 − 0,349 = 0,651`:
+**Dois cenários** (definem o divisor):
+
+| Cenário | Vendedor | RT | Encargos | Divisor |
+|---------|:-------:|:--:|:--------:|:-------:|
+| **Venda direta** (sem parceiro) | 5% | 0 | **26,2%** | `0,738 − MC%` |
+| **Lead de parceiro** (decorador/arquiteto) | 0 | 8,8% | **30,0%** | `0,70 − MC%` |
 
 ```
-preço (inv) = (custo_material_direto + visita) / (0,651 − MC%)
+preço (inv) = (custo_material_direto + visita) / (divisor − MC%)
 ```
 
-- Ex.: material R$ 5.697 e MC alvo 40% → inv = 5.697 / (0,651 − 0,40) = **R$ 22.700**.
-- **Sem parceiro (RT = 0):** encargos caem ~8,6 pts → divisor `0,737 − MC%`.
-- **Lead vindo do parceiro (decorador/arquiteto):** quem "vende" é a RT — **não há
-  comissão de vendedor interno** (`vend = 0`). Com isso os encargos caem de ~34,9%
-  para **≈ 30%** (divisor `0,70 − MC%`). Caso real: Samara/Luana Rizzi 06/2026
-  (`vend 0`, `nf 5`, `marc 5`).
-- **Atenção:** estimar encargos "no olho" em 33% subprecifica ~2 pts de MC — usar
-  os reais conforme o cenário (35% c/ vendedor · 30% c/ parceiro). (Aprendizado
-  Samara: R$40,6k "a 40%" dava 38,8%.)
+- Ex. parceiro: material R$ 10.866 + visita 250, MC 40% → inv = 11.116 / (0,70 − 0,40)
+  = **R$ 37.055** (Samara/Luana 06/2026).
+- **Atenção:** estimar encargos "no olho" subprecifica MC — usar o divisor do
+  cenário certo. (Aprendizado Samara: R$40,6k "a 40%" com encargo errado dava 38,8%.)
 
 ## Situação de caixa — perguntar em TODA nova demanda
 
