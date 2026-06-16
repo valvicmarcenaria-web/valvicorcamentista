@@ -40,3 +40,15 @@ layout? Referência visual? Links exatos do IG e YouTube?"
 
 *(notas passageiras — podem ser apagadas após lidas)*
 
+### [2026-06-16] Rodrigo → Lavinia
+**CAIXA CRÍTICO.** Piso de exceção: 37%. Ideal: 43%+.
+Projetos grandes (>R$ 80k): mínimo 40%, ENTRADA de 40% antes de iniciar produção.
+Não fechar nenhum projeto sem entrada real. H2 está zerado — cada venda conta.
+
+### [2026-06-16] Rodrigo → Vitor
+**Pipeline H2/2026 zerado — emergência comercial.**
+Prioridade 1: fechar Kênia & Fábio (casa completa, MC ≥ 40%, entrada 40%).
+Prioridade 2: reativar orçamentos parados nos últimos 90 dias.
+Sem margem para desconto de preço. Sem desconto = sem negociação de preço.
+Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
+
