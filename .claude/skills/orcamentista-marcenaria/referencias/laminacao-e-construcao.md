@@ -82,6 +82,31 @@ Toda gaveta Valvic é composta por **6 peças**:
 > Espessuras padrão Valvic: estrutura e gavetas **15 mm**; portas correr **18 mm**;
 > fundos **6 mm** (quando justificado — ver regra acima). Confirmar por projeto.
 
+## Painéis e cabeceiras — fixação macho-fêmea (French cleat)
+
+> Painel decorativo / cabeceira / armário suspenso pesado: a Valvic prende com
+> **fixação macho-fêmea** — sarrafo chanfrado a 45°, um parafusado na parede
+> (fêmea) e o espelho colado nas costas do painel (macho); o painel **encaixa e
+> desce**. Firme, nivelável e some o fixador.
+
+- **Os sarrafos do cleat saem de SOBRA de material** (scrap de 15/18 mm) → **quase
+  não puxam chapa nova**. O custo aqui é **mão de obra** (chanfro, montagem), não
+  material — não orçar chapa extra pro cleat.
+- **Standoff de 5 cm** entre painel e parede quando há **LED embutido** lavando a
+  parede (luz indireta). Esse vão é o que o cleat cria.
+- **Topo/recorte curvo** no painel → aplica a **regra da curva** (`parametros-orcamento.md`:
+  +15% material na peça curva, +5% MC). A fita acompanha o raio (mais lenta).
+
+## Prateleira aparente espessa (efeito "bloco")
+
+> Prateleira que aparece dos dois lados e quer **espessura cheia** (ex.: 20 cm de
+> "altura" de borda) **não** se faz em chapa única.
+
+- Monta-se com **2 peças de 15 mm** (caixa oca / sanduíche) → dá o volume sem
+  empenar e sem chapa de 30 mm.
+- Sustentação: **2 suportes espada** por prateleira (haste de aço embutida na
+  parede; ver `materiais.json` / lib "Suportes" ~R$25/un).
+
 ## Ripado — o maior gargalo de fita (onde mais se perde dinheiro)
 
 > **Regra de ouro:** ripado consome **muito mais fita** do que parece. Calcular

@@ -54,6 +54,36 @@ A planilha valida o orçamento **de trás para frente**: dado um Investimento
 > preço ou enxugar custos; isso difere do markup bruto do app (CX 52–68%),
 > que é *antes* dos encargos.
 
+## Fórmula de preço (markup divisor) — validada
+
+> Atalho para chegar ao **preço** a partir do **custo direto** e da **MC alvo**,
+> sem ir e voltar no app. Validado contra projetos reais (Camila, Samara 06/2026).
+
+Os encargos que incidem **% sobre o investimento** somam, no padrão Valvic com
+parceiro (RT), **≈ 34,9%**:
+
+| Bloco | % do inv |
+|-------|---------:|
+| NF | 7% |
+| Parcelamento de máquina | 7% |
+| Comissão vendedor | 5% |
+| Comissão produção (prog+coord+marc+serra+manut) | ~5% (5,3) |
+| Margem de erro | 2% |
+| **Subtotal "straight"** | **26,3%** |
+| **RT 10% do líquido** (líquido = inv − NF − cartão ≈ 0,855·inv) | **≈ 8,6% do bruto** |
+| **TOTAL encargos** | **≈ 34,9%** |
+
+Logo, com `1 − 0,349 = 0,651`:
+
+```
+preço (inv) = (custo_material_direto + visita) / (0,651 − MC%)
+```
+
+- Ex.: material R$ 5.697 e MC alvo 40% → inv = 5.697 / (0,651 − 0,40) = **R$ 22.700**.
+- **Sem parceiro (RT = 0):** encargos caem ~8,6 pts → divisor `0,737 − MC%`.
+- **Atenção:** estimar encargos "no olho" em 33% subprecifica ~2 pts de MC — usar
+  os 34,9% reais quando há RT. (Aprendizado Samara: R$40,6k "a 40%" dava 38,8%.)
+
 ## Situação de caixa — perguntar em TODA nova demanda
 
 > **Antes de fechar o preço, perguntar ao Jonathan como está o caixa.** Com caixa

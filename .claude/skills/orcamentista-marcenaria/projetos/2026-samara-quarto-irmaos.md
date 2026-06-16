@@ -88,12 +88,25 @@ comissão produção 5% · margem de erro 2% = **26,3% straight** · **+ RT 8,6%
 | 2 · Cama + prateleiras | R$ 1.956 | R$ 7.800 | 40% |
 | 3 · Bancada + armário inferior | R$ 1.877 | R$ 7.500 | 40% |
 | 4 · Roupeiro + nicho (+ visita) | R$ 5.697 | R$ 22.700 | 40% |
-| **TOTAL** | **R$ 10.696** | **≈ R$ 43.800** | **~40,7%** |
+| **TOTAL (v1)** | **R$ 10.696** | **≈ R$ 43.800** | **~40,7%** |
 
-- **MC R$ ≈ 17.800** · **MC% ≈ 40,7%** → faixa **bom** (37–45%), saudável p/ cobrir
-  o fixo (sócio, galpão, CNC, coladeira, 7 fixos). Alinhado ao Rodrigo.
-- JSON do app: `projetos/orcamento-samara-v1-mc40.json` (importar no
-  `validacao-orcamento.html`).
+### v2 — VIGENTE (novo alinhamento: MC 38%)
+
+Mesmo quantitativo, **MC alvo 38%** (+5% da curva no painel → **43%**). Fórmula
+`inv = (material + visita) / (0,651 − MC%)`.
+
+| Pacote | Material | Preço cliente | MC% |
+|--------|---------:|-------------:|:---:|
+| 1 · Painel cabeceira (curva) | R$ 1.166 | R$ 5.300 | 43% |
+| 2 · Cama + prateleiras | R$ 1.956 | R$ 7.200 | 38% |
+| 3 · Bancada + armário inferior | R$ 1.877 | R$ 6.900 | 38% |
+| 4 · Roupeiro + nicho (+ visita) | R$ 5.697 | R$ 21.000 | 38% |
+| **TOTAL (v2)** | **R$ 10.696** | **≈ R$ 40.400** | **~38,7%** |
+
+- **MC R$ ≈ 15.600** · **MC% ≈ 38,7%** → faixa **bom** (37–45%).
+- **Alternativa flat 38%** (sem +5% no painel) = **≈ R$ 39.500** · MC 38,0%.
+- JSON do app: **`projetos/orcamento-samara-v2-mc38.json`** (vigente) ·
+  `orcamento-samara-v1-mc40.json` (histórico).
 
 ## 4. Flags / riscos do orçamento (erra pra cima)
 

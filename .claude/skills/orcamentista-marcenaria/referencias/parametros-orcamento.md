@@ -27,6 +27,20 @@ fita acompanhando o raio, encaixe. Regra fixa, registrada para todo o time:
 > **Vitor** (descrição da proposta — registrar que a peça é curva e por que custa
 > mais). Em treinamento contínuo: calibrar o fator a cada projeto com curva.
 
+## LED da marcenaria — padrão (incluir por default)
+
+Todo LED **da marcenaria** (cabeceira, nicho, prateleira, sob bancada) é
+**fornecimento Valvic** e entra **por padrão** no orçamento — fita + perfil +
+usinagem (lib "Iluminação", ~R$150/m) + sensor/interruptor quando houver.
+**Só remover se o cliente pedir** (ou sob exceção sinalizada pelo fundador). Não
+confundir com LED de teto/sanca/espelho comprado, que é da elétrica/decoração.
+
+## Tampo de vidro / penteadeira
+
+Tampo de vidro (ex.: sobre penteadeira) = **item de vidro** (lib "Vidros e
+espelhos", por m²) **+ logística dedicada de R$ 150** (lib "Especiais ¦ Logística
+específica") — o vidro vem de terceirizado e exige entrega/manuseio próprios.
+
 ## O que o orçamentista informa vs. o que vem do projeto (Bloco A)
 
 - **Marcos só informa a LINHA de ferragem** (dobradiça/corrediça/sistema).
