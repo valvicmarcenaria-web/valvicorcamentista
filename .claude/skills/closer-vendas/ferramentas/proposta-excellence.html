@@ -962,22 +962,26 @@
     DEP_CAPTION:    'Projeto executado · Vale dos Cristais',
     PRAZO:          '45',
     GARANTIA_ANOS:  '10',
-    HERO_URL:   'https://drive.google.com/thumbnail?id=1tIPkB_fxt1DYWHcj3-s5tdVyM7jocaTa&sz=w1200',
-    P2_URL:     'https://drive.google.com/thumbnail?id=1SQriQN8H4RD2yjHQoLm84HQ65DCoQE1p&sz=w1200',
-    RENDER_URL: 'https://drive.google.com/thumbnail?id=1uvflYxeVe0QkPMfWEOml6xPmR48f90ZY&sz=w1200',
-    P4_URL:     'https://drive.google.com/thumbnail?id=1-viTHOJ1WZz9fJTX4PmUoADpZcf1ZOVR&sz=w1200',
-    P5_URL:     'https://drive.google.com/thumbnail?id=1MsmhniA_z1HXRBw_bQ7D-VgujrDDxLNH&sz=w1200',
+    HERO_URL:   'https://lh3.googleusercontent.com/d/1tIPkB_fxt1DYWHcj3-s5tdVyM7jocaTa=w1600',
+    P2_URL:     'https://lh3.googleusercontent.com/d/1SQriQN8H4RD2yjHQoLm84HQ65DCoQE1p=w1600',
+    RENDER_URL: 'https://lh3.googleusercontent.com/d/1uvflYxeVe0QkPMfWEOml6xPmR48f90ZY=w1600',
+    P4_URL:     'https://lh3.googleusercontent.com/d/1-viTHOJ1WZz9fJTX4PmUoADpZcf1ZOVR=w1600',
+    P5_URL:     'https://lh3.googleusercontent.com/d/1MsmhniA_z1HXRBw_bQ7D-VgujrDDxLNH=w1600',
   };
 
   const S = Object.assign({}, DEFAULTS, loadS());
 
+  // Normaliza qualquer link do Google Drive para o CDN de imagem (lh3),
+  // o formato mais confiável para embutir em <img>.
   function driveThumb(url) {
     if (!url) return url;
-    const m = url.match(/\/file\/d\/([^\/\?]+)/);
-    if (m) return `https://drive.google.com/thumbnail?id=${m[1]}&sz=w1200`;
-    const m2 = url.match(/[?&]id=([^&]+)/);
-    if (m2) return `https://drive.google.com/thumbnail?id=${m2[1]}&sz=w1200`;
-    return url;
+    let id = null;
+    let m = url.match(/\/file\/d\/([^\/\?]+)/);           // .../file/d/ID/view
+    if (m) id = m[1];
+    if (!id) { m = url.match(/[?&]id=([^&]+)/); if (m) id = m[1]; }   // ?id=ID
+    if (!id) { m = url.match(/lh3\.googleusercontent\.com\/d\/([^=\/?]+)/); if (m) id = m[1]; }
+    if (!id) { m = url.match(/\/d\/([^=\/?]+)/); if (m) id = m[1]; }
+    return id ? `https://lh3.googleusercontent.com/d/${id}=w1600` : url;
   }
 
   function init() {
