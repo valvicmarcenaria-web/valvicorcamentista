@@ -32,6 +32,17 @@ grife (Ornare/Florense), antes de retomar o Vitor.
 - Conteúdo da linha do tempo: `closer-vendas/referencias/linha-do-tempo.md`
 - **Acervo de imagens Valvic (projetos executados):** `https://drive.google.com/drive/folders/1eUnLV1GsOo4X5SSxNzbVLVfL4Wgjf2OM`
 
+**Versão Canva (editável por Jonathan) — 2026-06-16:**  
+A proposta foi levada ao Canva via **import de PDF** (o import de HTML achata o
+layout; o de PDF preserva A4 e converte texto em caixas editáveis). Fonte:
+`proposta-excellence.pdf` (gerado do HTML, commitado no repo).
+- ✅ **Design bom (6 págs A4, texto editável):** `DAHMxT1mbIE` — editar: https://www.canva.com/d/ZAvl9HRyLSu9_p-
+- ⚠️ **Import quebrado (ignorar/excluir):** `DAHMxR1GnbQ` (HTML achatou em 1 pág paisagem)
+- Limite técnico confirmado: a API de edição do Canva só EDITA elementos
+  existentes (texto/cor/imagem) — não CRIA caixas/formas do zero. Por isso o
+  caminho é PDF→import, não construção nativa via MCP.
+- Fluxo de atualização: editar texto no HTML → gerar PDF → reimportar no Canva.
+
 ---
 
 ### [2026-06-16] Novo layout de proposta — Vitor
