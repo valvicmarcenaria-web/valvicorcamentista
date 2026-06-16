@@ -27,8 +27,8 @@ A casa é apresentada como **conjunto único** (toda a marcenaria dos 3 paviment
 ## 2. Condições comerciais
 
 - **Pagamento (sem cartão):** **40%** na assinatura · **30%** na entrega da 1ª etapa (ambientes definidos com o cliente) · **30%** na entrega final.
-- **Garantia:** 10 anos (Linha Premium / Hettich) ou 5 anos (Linha Essencial / Hardt). *[confirmar política Hardt antes de cravar]*
-- **Prazo de entrega:** *[A CONFIRMAR com Jonathan — referência ~60 dias úteis; nunca cravar sem validação da produção]*
+- **Garantia:** 10 anos (Linha Premium / Hettich) ou 5 anos (Linha Essencial / Hardt). ✅ confirmado
+- **Prazo de entrega:** **90 a 100 dias.** ✅ confirmado
 - **Validade da proposta:** *[preencher]*
 
 ---
@@ -160,8 +160,9 @@ A casa é apresentada como **conjunto único** (toda a marcenaria dos 3 paviment
 ## 6. Checklist QA (antes de enviar — Vitor)
 - [ ] Nome "Kênia & Fábio" correto em todas as páginas (sem vazar nome de outro cliente/template)
 - [ ] Preços batem com os JSONs (V1 345 / V2 359 / V3 317 / V4 340)
-- [ ] Garantia coerente com a linha (Hettich 10 / Hardt 5 — confirmar política Hardt)
-- [ ] Prazo de entrega confirmado com Jonathan
+- [x] Garantia coerente com a linha (Hettich 10 / Hardt 5) ✅ confirmado
+- [x] Prazo de entrega: 90 a 100 dias ✅ confirmado
+- [x] RT da arquiteta presente nos preços ✅ confirmado
 - [ ] Descritivo de cada item em harmonia com o projeto da arquiteta
 - [ ] Sem medidas; com riqueza técnica
 - [ ] Validade e condições preenchidas
