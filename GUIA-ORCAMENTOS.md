@@ -197,6 +197,30 @@ Estes são os padrões; o app permite editar por orçamento.
 
 ---
 
+## Prazo de entrega — SEMPRE perguntar ao Jonathan (regra, jun/2026)
+
+O **prazo de entrega proposto ao cliente está diretamente ligado à produção** —
+a Lavinia **não arbitra prazo sozinha**. Antes de fechar/propor, **perguntar ao
+Jonathan** o prazo a propor e repassá-lo ao Vitor. Se a Lavinia não informar, o
+Vitor **pergunta antes de pôr na proposta** (nunca cravar prazo sem validação).
+
+## Harmonia informacional (gargalo central do Jonathan)
+
+**O que está no projeto · o que foi entendido · o que foi vendido · o que será
+produzido — tudo precisa estar em perfeita harmonia.** Toda decisão de material/
+composição que destrava o orçamento vira registro (painel de dúvidas) e segue
+idêntica até a produção. Na dúvida, **perguntar** — nunca assumir.
+> Ex. real (Regina): o **interno dos nichos é Blush (cor)**; só o **contorno dos 4
+> lados é branco**. Não descrever o interno como branco em lugar nenhum.
+
+## Organização no Drive — pasta única por cliente
+
+- **Uma pasta por cliente** em `CLIENTES VALVIC` (ex.: "Regina Godinho"). **Evitar
+  muitas subpastas** — dificulta o acesso rápido. Orçamento (JSON) + proposta + docs
+  ficam soltos na mesma pasta.
+- A Lavinia cria a pasta e deposita o **orçamento (JSON)**; o **Vitor** adiciona a
+  **parte dele** (proposta/links) na mesma pasta.
+
 ## Fluxo de orçamento
 
 1. **Receber o briefing** (planta, fotos, referências do cliente).

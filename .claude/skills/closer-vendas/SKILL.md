@@ -94,9 +94,16 @@ Erros de dado matam credibilidade em material premium. Checar SEMPRE:
 - [ ] Sem nome de outro cliente / outra marca em lugar nenhum
 - [ ] Preço e versões batem com o orçamento da Lavinia
 - [ ] Garantia coerente com a ferragem do projeto
+- [ ] **Prazo de entrega confirmado com o Jonathan** — NUNCA cravar prazo sem validar
+      (ligado à produção). Se a Lavinia não informou, **perguntar antes de propor. Sempre.**
+- [ ] **Descritivo do item em harmonia com projeto/orçamento** — o que está no projeto =
+      o que foi entendido = o que foi vendido = o que será produzido. Ex.: nicho com
+      **interior Blush** (cor) e **contorno branco** — não descrever interno como branco.
+      Na dúvida, **validar com a Lavinia**.
 - [ ] Sem typos nos termos técnicos (Hardt, Hettich, Premium, Rometal)
 - [ ] Render/foto é do projeto certo
 - [ ] Validade e condições preenchidas
+- [ ] Proposta arquivada na **pasta única do cliente** no Drive (a parte do Vitor)
 
 ## Regra de entrega — sempre com mensagem de acompanhamento
 
