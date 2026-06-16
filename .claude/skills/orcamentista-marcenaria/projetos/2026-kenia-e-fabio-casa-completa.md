@@ -35,11 +35,104 @@ da casa, espelhos prontos (E##), metais/louças, forro de gesso/muxarabi.
 > Regra prática: se o item está **dentro/sobre/sustentando um móvel Valvic** → nosso.
 > Se é acabamento da obra (bancada de pedra, box, guarda-corpo, forro) → terceiro do cliente.
 
+#### Marmoraria do projeto (F01 — TERCEIRO, NÃO orçar; só p/ saber o que casa com nossos móveis)
+19 bancadas/peças de pedra (B01–B19): **Granito Bege Bahia** (I.S. Subsolo B01,
+Semissuíte B12, Banho Master B13, Banho Suíte01 B14), **Granito Preto São Gabriel**
+(Lavanderia B02/B03, Banho Sauna B04/B19, Gourmet churrasq. B07, Cozinha B09/B10),
+**Mármore Travertino Romano** (Lavabo Piscina B05, Gourmet B06/B08, Lavabo Sala B11,
+Circulação B15, Piscina B16, Suíte Master mesa/rack B17 + cabeceira B18). Sóculos e
+escadas em pedra também são terceiros. ⚠️ Nossos móveis que **recebem** essas pedras:
+M07/M19/M20/M22/M35/M52/M53/M54 (sob bancada), M61/M63/M64/M65 (encostam na pedra Master).
+
 ### Pranchas-fonte da marcenaria
 - **DET MARC: F56–F84** (29 pranchas) — detalhamento dos módulos com medidas. ← FONTE PRINCIPAL
 - **VISTAS: F25–F44** (20 pranchas) — elevações; conferência cruzada.
 - F01–F02 TABELAS — acabamentos gerais (lidas: contexto de cores/ambientes).
 - CADERNO IMAGENS — renders.
+
+---
+
+## ⭐ TABELA-MESTRA DE MARCENARIA (F02 TABELAS — FONTE AUTORITATIVA)
+
+> Extraída da tabela oficial do projeto (F02, aba MARCENARIA). **Esta é a verdade
+> para CÓDIGO → COR DE MDF → AMBIENTE.** Onde a extração por prancha (mais abaixo)
+> divergir de ambiente/cor, vale ESTA tabela. A tabela do projeto NÃO traz medidas
+> por módulo (só M66 = 140×70) — as dimensões vêm das pranchas DET MARC.
+
+| M## | Descrição curta | Cor MDF | Ambiente |
+|---|---|---|---|
+| M01 | Armário sob bancada, 3 gav (1 falsa) + 3 portas giro | Itapuã | I.S. Subsolo |
+| M02 | Porta de correr | Areia | I.S. Subsolo |
+| M03 | Painel TV c/ porta correr | Areia | Quarto Hóspedes |
+| M04 | Rack suspenso, curva R35 | Itapuã | Quarto Hóspedes |
+| M05 | Armário 3 portas correr, slim preto H30 | Areia | Quarto Hóspedes |
+| M06 | Cabeceira, frisos 1×1 | Itapuã | Quarto Hóspedes |
+| M07 | Armário sob bancada, 7 gavetões + 2 giro + 1 gav | Areia | Lavanderia |
+| M08 | Armário alto 6 giro + 6 básculas + 3 prat. curvas | Areia + Itapuã | Lavanderia |
+| M09 | Armário sob bancada, cabideiro retrátil + 2 gavetões | Areia | Lavanderia |
+| M10 | Armário alto 2 nichos + arara cromada | Itapuã | Lavanderia |
+| M11 | Armário piso-teto 3 portas correr, slim preto H30 | Areia | Lavanderia |
+| M12 | 6 prateleiras | Branco TX | Despensa |
+| M13 | Armário sob escada, 4 portas giro | Itapuã | Sala |
+| M14 | Painel c/ porta giro mimetizada, tranca+chave, recorte elevador | Itapuã | Sala |
+| M15 | Painel TV | Itapuã | Sala |
+| M16 | Rack ripado curva R35, portas ripadas, passante, LED 3000K | Itapuã | Sala |
+| M17 | Rack ripado R35 + 4 prat. curvas em metalon champagne, LED 3000K | Itapuã | Sala |
+| M18 | Painel/forro fixo no gesso, LED embutido | Itapuã | Cozinha |
+| M19 | Armário ilha, gavetão lixeira + 2 giro + gavetas + gav tempero | Areia | Cozinha |
+| M20 | Torre eletros 10 giro + báscula 4 vidro reflecta bronze | Areia + Itapuã | Cozinha |
+| M21 | Piso-teto 7 giro + cristaleira vidro reflecta bronze, prat. LED | Itapuã | Cozinha |
+| M22 | Armário sob bancada, 5 giro + 4 gav + gav porta-espetos | Areia | **Gourmet** |
+| M23 | Prateleira iluminada | Areia | **Gourmet** |
+| M24 | Armário alto portas ripadas, LED inferior | Areia | **Gourmet** |
+| M25 | Prateleira | Itapuã | Lavabo Piscina |
+| M26 | Painel c/ porta giro mimetizada, recorte elevador, friso 1×1 | Itapuã | Circulação |
+| M27 | Rack ripado curva R20, portas ripadas, passante | Itapuã | Circulação |
+| M28 | Armário 4 portas giro + nicho-cofre tranca+chave | Branco TX | Rouparia |
+| M29 | Armário 3 portas correr (meio espelho prata), slim preto H30 | Areia | Suíte 03 |
+| M30 | Cabeceira curva LED 3000K | Areia | Suíte 03 |
+| M31 | Sapateira 6 giro + 6 gavetas | Areia | Suíte 03 |
+| M32 | Espelho película jateada, base MDF | Areia | Suíte 03 |
+| M33 | Escrivaninha pé curvo, caixa tomada embutida | Areia | Suíte 03 |
+| M34 | Painel porta correr mimetizada + bandeira | Areia | Suíte 03 |
+| M35 | Armário sob bancada, 3 gav (1 falsa) + 3 giro | Areia | Semissuíte |
+| M36 | Espelheira c/ armário, 2 giro espelhadas + 2 fixas, LED 3000K | Areia | Semissuíte |
+| M37 | Armário 3 portas correr (meio espelho prata), slim preto H30 | Areia | Suíte 02 |
+| M38 | Cabeceira curva LED 3000K | Areia | Suíte 02 |
+| M39 | Sapateira 6 giro + 6 gavetas | Areia | Suíte 02 |
+| M40 | Espelho película jateada, base MDF | Areia | Suíte 02 |
+| M41 | Escrivaninha pé curvo, caixa tomada embutida | Areia | Suíte 02 |
+| M42 | Painel porta correr mimetizada + bandeira | Areia | Suíte 02 |
+| M43 | Armário 3 portas correr (meio espelho prata), slim preto H30 | Areia | Suíte 01 |
+| M44 | Cabeceira em "U" LED 3000K | Itapuã | Suíte 01 |
+| M45 | Armário tampo em L, prat + 3 gav, puxador Itapuã | Azul Profundo + Itapuã | Suíte 01 |
+| M46 | 4 baús de brinquedo c/ rodízios | Azul Profundo + Itapuã | Suíte 01 |
+| M47 | Escrivaninha 3 gav + armário 2 giro, caixa tomada | Itapuã | Suíte 01 |
+| M48 | Estante metalon preto, 3 prat. chanfradas LED 3000K | Azul Profundo | Suíte 01 |
+| M49 | Mesa | Azul Profundo | Suíte 01 |
+| M50 | Painel porta correr mimetizada + bandeira, tranca+chave (=P06 na tab. portas) | Areia | Suíte 01 |
+| M51 | Prateleira c/ LED embutido | Itapuã | I.S. Suíte 01 |
+| M52 | Armário sob bancada, 3 gav (1 falsa) + 3 gavetões, puxador Itapuã | Azul Profundo + Itapuã | I.S. Suíte 01 |
+| M53 | Armário porta espelho prata, quadro metalon 2×2 champagne, LED | Itapuã | Banho Master |
+| M54 | Armário sob bancada portas ripadas, 6 gav + 4 giro | Itapuã | Banho Master |
+| M55 | Armário ilha, 4 giro + 4 gav + 4 gavetões | Areia | Cozinha |
+| M56 | Painel curvo ripado 2×2, espelho película jateada LED frontal | Areia | Suíte Master |
+| M57 | Escrivaninha 2 gav, passante | Areia | Suíte Master |
+| M58 | Piso-teto 3 portas correr vidro reflecta bronze + sapateiras | Areia | Suíte Master |
+| M59 | Piso-teto 3 correr vidro reflecta bronze, calceiro + 2 araras | Areia | Suíte Master |
+| M60 | Piso-teto 3 correr vidro reflecta bronze, 2 gav calceiro + 2 araras | Areia | Suíte Master |
+| M61 | Painel TV em L, frisos bronze + moldura bronze | Itapuã | Suíte Master |
+| M62 | Rack curva R20, 5 portas giro, passante | Areia | Suíte Master |
+| M63 | Painel ripado 2×2 | Itapuã | Suíte Master |
+| M64 | Mesa cabeceira borda R5, 1 gav passante, caixa tomada | Itapuã | Suíte Master |
+| M65 | Mesa cabeceira borda R5, 1 gav passante, caixa tomada | Itapuã | Suíte Master |
+| M66 | Espelho cristal moldura preta, LED frontal 4000K — **140×70cm** | (espelho) | Banho Suíte 01 |
+| M67 | Painel piso-teto c/ porta correr | Areia | Suíte Master |
+| M68 | Mesa bordas curvas | Itapuã | Cozinha |
+
+**Serralheria (NÃO é MDF — terceiro):** S01 muxarabi piso-teto 5×5 + estrutura metálica
+2×2 + 6 prateleiras, tinta Coral Cinza Intenso (Gourmet); S02 muxarabi 5×5 no teto,
+Coral Cinza Intenso (Lavabo Piscina). ⚠️ Esses S## da serralheria ≠ S## de sóculos de pedra da F01.
 
 ---
 
@@ -51,7 +144,7 @@ Circulação, Escada, Closet, Suíte Master, Banho Master, Suíte 01/02/03, Semi
 Banho Semi Suíte, Quarto Hóspedes, Rouparia, Banho Suíte 01.
 
 > Nem todo ambiente tem marcenaria. O levantamento abaixo é por MÓDULO (M##) das
-> pranchas DET MARC.
+> pranchas DET MARC. **Para ambiente/cor confiável, ver a TABELA-MESTRA acima.**
 
 ---
 
@@ -288,12 +381,18 @@ Banho Semi Suíte, Quarto Hóspedes, Rouparia, Banho Suíte 01.
 
 ## Próximos passos
 1. ~~Concluir extração F57–F84~~ ✅ **FEITO** (28 pranchas, ~60 módulos).
-2. **Resolver pendências de medida** (cruzar com VISTAS F25–F44 / TABELAS F01):
-   - Profundidades de baixa confiança: M19, M20, M21, M22, M23, M24, M31.
-   - Numeração duplicada **M22** (F65 cristaleira × F66 inferior) — confirmar.
-   - Módulos repetidos a contar 1×: **P06** (F57/F71/F74/F77), **M40** (F71/F74),
-     **M41** (F70/F73), conjunto **M15/M16/M17** (F62=F63).
-   - Cor do MDF do M26 (portal escada) — ILEGÍVEL.
+2. **Resolver pendências de medida** (via TABELA-MESTRA F02 + VISTAS):
+   - ~~Numeração duplicada **M22**~~ → ✅ RESOLVIDO: **M22 NÃO é duplicado**. Existe 1×
+     na tabela (Gourmet, Areia). A confusão veio de o agente ter rotulado a F66 como
+     "cozinha" — é **Gourmet** (M22/M23/M24). Cozinha = M18/M19/M20/M21/M55/M68.
+   - ~~Cor do M26~~ → ✅ RESOLVIDO: **Itapuã**, ambiente **Circulação**.
+   - ~~Ambientes "DIVERSOS"~~ → ✅ RESOLVIDO: ver TABELA-MESTRA (todos mapeados).
+   - Módulos repetidos a contar 1×: **P06/M50** (mesmo elemento — M50 = P06 na tab.
+     de portas), **M40** (F71/F74), conjunto **M15/M16/M17** (F62=F63). *(M40/M41
+     da tabela são módulos DISTINTOS da Suíte 02 — não confundir com o "M41" que o
+     agente viu repetido em F70/F73; conferir na consolidação.)*
+   - ⏳ **Profundidades** de M19, M20, M21, M22, M23, M24, M31 — agente B relendo as
+     pranchas com zoom (tabela-mestra não traz medidas).
 3. **Consolidar plano de corte por cor de MDF** (Areia / Itapuã / Branco TX /
    Azul Profundo) e por espessura → m² de chapa + fita + ferragens.
 4. **Lançar no app** (validacao-orcamento.html) por ambiente.
