@@ -229,10 +229,11 @@
     #p3 .p3-sub { font-family: var(--fd); font-size: 16px; font-style: italic; color: var(--muted); margin-top: 6px; }
     #p3 .p3-rule { width: 48px; height: 1px; background: var(--gold); margin: 18px 0 0; }
 
-    #p3 .p3-body { padding: 28px 60px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: start; }
+    #p3 .p3-body { padding: 32px 60px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: stretch; }
 
     /* render box */
-    .render-box { position: relative; background: var(--sand); border: 1px solid var(--gold-20); border-radius: 2px; overflow: hidden; aspect-ratio: 4/3; }
+    .render-box { position: relative; background: var(--sand); border: 1px solid var(--gold-20); border-radius: 2px; overflow: hidden; min-height: 480px; }
+    .amb-col { display: flex; flex-direction: column; justify-content: center; }
     .render-box img { width: 100%; height: 100%; object-fit: cover; display: none; }
     .render-ph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 24px; }
     .render-ph svg { width: 40px; height: 40px; opacity: .3; }
@@ -248,7 +249,7 @@
     .specs-label { font-size: 8px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
     .amb {
       display: flex; align-items: flex-start; gap: 12px;
-      padding: 11px 0; border-bottom: 1px solid var(--graphite-15);
+      padding: 16px 0; border-bottom: 1px solid var(--graphite-15);
     }
     .amb:first-of-type { border-top: 1px solid var(--graphite-15); }
     .amb-ico { flex-shrink: 0; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
@@ -618,7 +619,7 @@
       </div>
     </div>
 
-    <div>
+    <div class="amb-col">
       <div class="specs-label">Ambientes incluídos</div>
 
       <div class="amb">
@@ -808,7 +809,7 @@
   <div class="inv-dark-head">
     <div class="inv-eyebrow">Transparência Total</div>
     <div class="inv-title">Seu Investimento.</div>
-    <div class="inv-sub">Duas versões. Condições claras. Nenhuma surpresa.</div>
+    <div class="inv-sub">Duas versões. Condições claras. Você escolhe o caminho.</div>
   </div>
 
   <div class="inv-body">
@@ -829,7 +830,7 @@
         <tr data-table="completa">
           <td><span class="token editable-cell" contenteditable="false" data-placeholder="Ambiente">Quarto Casal</span></td>
           <td><span class="token editable-cell" contenteditable="false" data-placeholder="Descrição">Roupeiro 4 portas + painel TV + criado</span></td>
-          <td class="val-cell"><span class="token editable-cell" contenteditable="false" data-placeholder="R$ 0,00">R$ {{ITENS}}</span></td>
+          <td class="val-cell"><span class="token editable-cell" contenteditable="false" data-placeholder="R$ 0,00">R$ 0,00</span></td>
           <td class="rm-cell"><button class="btn-rm" onclick="removeRow(this)">×</button></td>
         </tr>
       </tbody>
