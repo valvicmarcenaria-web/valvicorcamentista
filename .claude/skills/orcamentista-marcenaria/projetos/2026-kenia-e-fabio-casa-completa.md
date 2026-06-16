@@ -3,10 +3,9 @@
 > **PROJETO GRANDE — orçamento da marcenaria da casa inteira.** Executivo
 > `RES.KF_*_R01` (Inédita Arquitetura, rev. 02, 22/04/2026). 3 pavimentos
 > (subsolo, térreo, 1º pavimento). 84 pranchas no Drive.
-> **Status: Fase 1 ✅ CONCLUÍDA — 28 pranchas DET MARC (F56–F84) extraídas
-> (~60 módulos M01–M68 + P##/S##). Profundidades confirmadas pela arquiteta
-> (16/06/2026).** Próximo: consolidar plano de corte por cor de MDF → app → MC.
-> Lavinia, jun/2026.
+> **Status: Fase 2 ✅ ORÇADO — preço fechado R$ 481.000, MC 42,0%** (~60 módulos,
+> 15 ambientes). Lançado no app: `orcamento-kenia-fabio-casa-completa.json`. Pronto
+> para o Vitor montar a proposta com ancoragem. Lavinia, 16/06/2026.
 
 Pasta Drive: `16JhpcFk8z9IiuBOrYwn_rRxxmsg1_jTO`
 
@@ -725,28 +724,50 @@ Banho Semi Suíte, Quarto Hóspedes, Rouparia, Banho Suíte 01.
 > sem surpresa no final."
 
 ### Tabela de ambientes para apresentação ao cliente
-*(preencher com preços após lançamento no app — manter esta estrutura)*
+> **Preços = alocação proporcional a (material+terceiros) do preço total.** Orçamento
+> lançado no app (`orcamento-kenia-fabio-casa-completa.json`). Total **R$ 481.000**,
+> **MC 42,0%** (piso Rodrigo 40%; ~2 pts de folga p/ o Vitor negociar). Levantamento
+> Fase 1 (erra p/ cima) — refinar com plano de corte real antes de produção.
+> Ordem de apresentação = âncora primeiro (total), depois abre por ambiente.
 
-| # | Ambiente | Módulos | Cor principal | Preço (app) | Prioridade |
+| # | Ambiente | Módulos | Cor principal | Preço | Prioridade |
 |---|---|---|---|---|---|
-| 1 | Cozinha | M18/19/20/21/55/68 | Areia + Itapuã | — | ⭐ alta |
-| 2 | Gourmet | M22/23/24 | Areia | — | ⭐ alta |
-| 3 | Sala / Estar | M13/14/15/16/17/27 | Itapuã | — | ⭐ alta |
-| 4 | Suíte Master | M56-65/67 | Areia + Itapuã | — | ⭐⭐ âncora |
-| 5 | Closets Master | M58/59/60 | Areia | — | ⭐⭐ |
-| 6 | Lavanderia | M07/08/09/10/11 | Areia + Itapuã | — | média |
-| 7 | Suíte 01 (infantil) | M43-50 | Areia + Azul Profundo | — | média |
-| 8 | Suíte 02 | M37/38/39/40/41/42 | Areia | — | média |
-| 9 | Suíte 03 | M29/30/31/32/33/34 | Areia | — | média |
-| 10 | Semissuíte + Banheiro | M35/36 | Areia | — | média |
-| 11 | Banho Master | M53/54 | Itapuã | — | média |
-| 12 | Quarto Hóspedes | M03/04/05/06 | Areia + Itapuã | — | baixa |
-| 13 | Subsolo / Despensa | M01/02/12/P06 | Itapuã + Areia + Branco | — | baixa |
-| 14 | Lavabo / Circulação | M25/26/27 | Itapuã | — | baixa |
-| 15 | I.S. Suíte 01 | M51/52/66 | Azul Profundo + Itapuã | — | baixa |
-| 16 | Rouparia | M28 | Branco TX | — | baixa |
-| **TOTAL** | **Casa completa** | **~60 módulos** | | **—** | |
+| 1 | **Suíte Master** | M56-65/67 (inclui 3 closets vidro bronze) | Areia + Itapuã | **R$ 100.500** | ⭐⭐ âncora |
+| 2 | Cozinha | M18/19/20/21/55/68 | Areia + Itapuã | **R$ 59.900** | ⭐ alta |
+| 3 | Suíte 01 (infantil) | M43-50 | Areia + Itapuã + Azul | **R$ 45.100** | média |
+| 4 | Suíte 03 | M29/30/31/32/33/34 | Areia | **R$ 43.700** | média |
+| 5 | Lavanderia | M07/08/09/10/11 | Areia + Itapuã | **R$ 38.500** | média |
+| 6 | Suíte 02 | M37/38/39/40/41/42 | Areia | **R$ 38.300** | média |
+| 7 | Sala / Estar | M13/14/15/16/17/27 | Itapuã | **R$ 35.100** | ⭐ alta |
+| 8 | Quarto Hóspedes | M03/04/05/06 | Areia + Itapuã | **R$ 28.000** | baixa |
+| 9 | Banho Master | M53/54 | Itapuã | **R$ 22.900** | média |
+| 10 | Semissuíte + Banheiro | M35/36 | Areia | **R$ 14.600** | média |
+| 11 | Subsolo / Despensa | M01/02/12/P06 | Itapuã + Areia + Branco | **R$ 14.000** | baixa |
+| 12 | Gourmet | M22/23/24 | Areia | **R$ 13.900** | ⭐ alta |
+| 13 | I.S. Suíte 01 | M51/52/66 | Azul Profundo + Itapuã | **R$ 13.300** | baixa |
+| 14 | Lavabo / Circulação | M25/26 | Itapuã | **R$ 6.800** | baixa |
+| 15 | Rouparia | M28 | Branco TX | **R$ 6.700** | baixa |
+| **TOTAL** | **Casa completa** | **~60 módulos · 15 ambientes** | | **R$ 481.000** | **MC 42%** |
 
-> **Próximo passo:** lançar cada ambiente no `validacao-orcamento.html`, calcular m²
-> de chapa + fita + ferragens + terceiros, fechar preço com **MC ≥ 40%** e preencher
-> a coluna "Preço (app)" acima. Depois, somar o total e construir a apresentação Vitor.
+> ⚠️ **Correção:** "Closets Master" não é ambiente separado — M58/M59/M60 já estão
+> dentro da Suíte Master (os 3 closets de vidro reflecta bronze são o maior terceiro
+> do projeto: ~R$ 12.750). Por isso a Master concentra o maior valor (âncora).
+
+### Composição do preço (visão interna — NÃO mostrar ao cliente)
+| Bloco | R$ | % do preço |
+|---|---|---|
+| Material (chapa+fita+ferragem+LED) | ~R$ 85.641 | 17,8% |
+| Terceiros (vidros/espelhos/serralheria de apoio/estofado) | ~R$ 26.121 | 5,4% |
+| Custos de venda (NF 7% + parc 7% + Vitor 5% + RT 10% líq + visita) | — | ~24% |
+| Operacional (comissões produção + serra/manut + logística) | — | ~6% |
+| Margem de erro | — | 2% |
+| **Custo total** | **~R$ 278.986** | **58,0%** |
+| **MC (margem de contribuição)** | **~R$ 202.014** | **42,0%** |
+
+> Pedra/marmoraria **fora** (regra Jonathan). Alavancas de MC se precisar subir:
+> retirar RT (+~4 pts se não houver parceria com a arquiteta), versão enxuta de
+> ferragens (telescópica vs oculta), padronizar acabamentos.
+
+> **Próximo passo:** importar `orcamento-kenia-fabio-casa-completa.json` no app,
+> conferir ambiente a ambiente, e passar para o Vitor (closer) montar a proposta
+> visual com a ancoragem. Regenerar com `node projetos/gerar-orcamento-kf.js`.
