@@ -29,7 +29,9 @@ A casa é apresentada como **conjunto único** (toda a marcenaria dos 3 paviment
 - **Pagamento (sem cartão):** **40%** na assinatura · **30%** na entrega da 1ª etapa (ambientes definidos com o cliente) · **30%** na entrega final.
 - **Garantia:** 10 anos (Linha Premium / Hettich) ou 5 anos (Linha Essencial / Hardt). ✅ confirmado
 - **Prazo de entrega:** **90 a 100 dias.** ✅ confirmado
-- **Validade da proposta:** *[preencher]*
+- **Validade dos valores:** **10 dias.**
+- **Validade do prazo de entrega:** **3 dias** (a janela de 90–100 dias depende da agenda de produção; após 3 dias pode ser repactuada).
+- ⚠️ **AVISO IMPORTANTE:** haverá **reajuste de tabela em julho/2026**. Fechando dentro da validade, o cliente **garante os valores atuais** (usar como gatilho de urgência no fechamento).
 
 ---
 
@@ -165,5 +167,6 @@ A casa é apresentada como **conjunto único** (toda a marcenaria dos 3 paviment
 - [x] RT da arquiteta presente nos preços ✅ confirmado
 - [ ] Descritivo de cada item em harmonia com o projeto da arquiteta
 - [ ] Sem medidas; com riqueza técnica
-- [ ] Validade e condições preenchidas
+- [x] Validade: valores 10 dias · prazo de entrega 3 dias
+- [ ] Aviso de reajuste de julho incluído na proposta
 - [ ] Arquivo na pasta única do cliente no Drive
