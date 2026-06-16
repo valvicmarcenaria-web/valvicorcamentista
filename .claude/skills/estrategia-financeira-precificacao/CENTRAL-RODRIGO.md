@@ -22,43 +22,103 @@ Ver método completo: `referencias/metodo-rodrigo.md`
 
 ## 2. Quadro financeiro real — ATUALIZADO 16/06/2026
 
-### Dados DRE Jan–Jun/2026 (Calcme)
+### ⚠️ BREAK-EVEN REAL (custo-operacao.html — fonte de verdade)
+
+> Fonte: JSON exportado do `custo-operacao.html` em 16/06/2026.
+> Faturamento de referência configurado pelo Jonathan: **R$ 246.000/mês**
+
+| Indicador | Valor |
+|---|---|
+| **Custo fixo total (fixoBE)** | **R$ 83.518/mês** |
+| → do qual: dívidas/parcelas | R$ 20.700/mês |
+| → do qual: folha + encargos | R$ 43.456/mês |
+| Comissões em % (variáveis) | **9,5%** do faturamento |
+| **MC líquida disponível p/ fixo** | **34%** (43,5% MC − 9,5% comissões) |
+| **BREAK-EVEN FATURAMENTO** | **R$ 245.642/mês (~R$ 246k)** |
+| Lucro no break-even | R$ 122/mês (literalmente zero) |
+
+### Custo por centro (mensal, no faturamento de R$ 246k)
+
+| Centro | R$/mês |
+|---|---|
+| Sócios (pró-labore + ajuda custo) | R$ 15.400 |
+| Folha produção (PJ + CLT + encargos) | R$ 23.256 |
+| Benefícios CLT (VT, EPIs) | R$ 2.650 |
+| Comissões produção (5+0,5+1%+vendedor 3%) | R$ 23.370 |
+| Máquinas e ferramentas (manutenção + depreç.) | R$ 3.933 |
+| Instalações (aluguel + util. + conservação) | R$ 8.280 |
+| Comercial (assistente + marketing) | R$ 5.449 |
+| Logística / veículos | R$ 5.050 |
+| Administrativo (contador, jurídico, sistemas, IA) | R$ 4.950 |
+| Tributos (Simples Nacional) | R$ 1.500 |
+| **Financeiro / Dívidas (parcelas)** | **R$ 20.700** |
+| **TOTAL** | **~R$ 114.538** |
+
+### Dívidas ativas — LEVANTADAS
+
+| Dívida | Total | Parcelas | R$/mês |
+|---|---|---|---|
+| Financiamento de máquinas | R$ 24.000 | 5x | **R$ 4.800** |
+| Capital de giro / empréstimo | R$ 37.000 | 4x | **R$ 9.250** |
+| Empréstimo Paulo (devolução) | R$ 30.000 | 5x | **R$ 6.000** |
+| Aporte Paulo — compra CNC | R$ 65.000 | 100x | **R$ 650** |
+| **TOTAL DÍVIDAS** | **R$ 156.000** | — | **R$ 20.700/mês** |
+
+### Simulação de resultado por faturamento
+
+| Faturamento | MC (43,5%) | − Comissões (9,5%) | MC Líquida | − Fixo R$83,5k | **Resultado** |
+|---|---|---|---|---|---|
+| R$ 82k (DRE atual) | R$ 35,7k | −R$ 7,8k | R$ 27,9k | −R$ 83,5k | 🔴 **−R$ 55,6k/mês** |
+| R$ 148k (planilha H1) | R$ 64,4k | −R$ 14,1k | R$ 50,3k | −R$ 83,5k | 🔴 **−R$ 33,2k/mês** |
+| R$ 180k | R$ 78,3k | −R$ 17,1k | R$ 61,2k | −R$ 83,5k | 🔴 **−R$ 22,3k/mês** |
+| R$ 200k | R$ 87,0k | −R$ 19,0k | R$ 68,0k | −R$ 83,5k | 🔴 **−R$ 15,5k/mês** |
+| **R$ 246k** | **R$ 107,0k** | **−R$ 23,4k** | **R$ 83,6k** | **−R$ 83,5k** | ✅ **ZERO (break-even)** |
+
+> **DIAGNÓSTICO DEFINITIVO:** O problema NÃO é MC%. É VOLUME.
+> A empresa precisa de R$ 246k/mês para quebrar o zero. Qualquer faturamento
+> abaixo disso gera prejuízo estrutural — independentemente da MC%.
+> Dezembro/2025 (−R$ 54k acumulado) e Junho/2026 (−R$ 33k) são CONSEQUÊNCIA
+> direta de meses com faturamento muito abaixo de R$ 246k.
+
+### Equipe atual (10 pessoas)
+| Pessoa | Função | Contratação | R$/mês |
+|---|---|---|---|
+| Jonathan | Sócio | — | R$ 7.700 (pró-labore + ajuda) |
+| Paulo | Sócio | — | R$ 7.700 (pró-labore + ajuda) |
+| Jackson | Marceneiro | PJ | R$ 3.600 |
+| Samuel | Marceneiro | PJ | R$ 3.900 |
+| Joelson | Operador CNC/coladeira | CLT | R$ 2.500 + enc. |
+| Deivson | Coordenador | PJ | R$ 4.000 |
+| Filipe | Programador | PJ | R$ 3.600 |
+| Jomar | Marceneiro Jr | CLT | R$ 1.950 + enc. |
+| Davi | Ajudante | CLT | R$ 1.950 + enc. |
+| (Assistente admin) | Administrativo | CLT | R$ 2.000 + enc. |
+
+### Comissões ativas (9,5% total sobre faturamento)
+| Comissão | % | Tipo |
+|---|---|---|
+| Marceneiros | 5,0% | Variável |
+| Programador | 0,5% | Variável |
+| Coordenador | 1,0% | Variável |
+| Vendedor | 3,0% | Fixo (classificado) |
+| **TOTAL** | **9,5%** | — |
+
+### Dados DRE Jan–Jun/2026 (Calcme — visão contábil)
 
 | Indicador | 6 meses | Média/mês |
 |---|---|---|
-| Receita Bruta | R$ 493.029 | **R$ 82.171** |
-| Deduções (comissões + impostos) | -R$ 23.012 | -R$ 3.835 |
+| Receita Bruta reconhecida | R$ 493.029 | R$ 82.171 |
 | Receita Líquida | R$ 470.017 | R$ 78.336 |
-| CPV (materiais variáveis) | -R$ 166.719 | -R$ 27.786 |
-| **Lucro Bruto (MC real DRE)** | **R$ 303.298** | **R$ 50.550 — 64,5% da RL** |
-| Despesas Fixas (Adm + Operac.) | -R$ 283.315 | **-R$ 47.219/mês** |
-| **Lucro Operacional** | **R$ 19.983** | **R$ 3.330 (4%)** |
-| Investimentos em máquinas | -R$ 34.966 | — |
-| Empréstimos/Dívidas | -R$ 2.336 | — |
-| **RESULTADO FINAL** | **-R$ 34.340** | **-R$ 5.723/mês** |
+| CPV (materiais) | −R$ 166.719 | −R$ 27.786 |
+| Despesas Operacionais | −R$ 283.315 | −R$ 47.219 |
+| Lucro Operacional | R$ 19.983 | R$ 3.330 (4%) |
+| **Resultado Final** | **−R$ 34.340** | **−R$ 5.723/mês** |
 
-> **Reconciliação MC%:** A MC% do DRE (64,5%) difere da MC% do orçamento (43,5%)
-> porque o DRE considera CPV apenas materiais; a mão de obra direta (7 fixos)
-> está em "Despesas Administrativas". As duas visões são válidas para propósitos
-> diferentes: Lavinia usa 43,5% (MC de projeto); Rodrigo usa a estrutura do DRE
-> para o break-even da empresa.
-
-### Custo fixo confirmado (DRE)
-| Rubrica | Valor 6 meses | Média/mês |
-|---|---|---|
-| Despesas Comerciais | R$ 16.455 | R$ 2.742 |
-| Despesas Administrativas | R$ 232.477 | R$ 38.746 |
-| Despesas Operacionais | R$ 34.384 | R$ 5.731 |
-| **TOTAL FIXO** | **R$ 283.316** | **~R$ 47.219** |
-
-> ⚠️ Break-even de CAIXA é mais alto — o serviço das dívidas ativas (máquinas +
-> Paulo) é saída adicional. Levantar valores com Jonathan.
-
-### Break-even operacional real
-- Fórmula DRE: R$ 47.219 / 64,5% = **~R$ 73.200/mês de faturamento**
-- Fórmula orçamento (Lavinia): R$ 47.219 / 43,5% = **~R$ 108.550/mês**
-- Faturamento médio 2026: R$ 82.171/mês → opera acima do break-even operacional
-- Problema: resultado positivo é consumido por investimentos + ciclo de caixa ruim
+> Nota: DRE mostra despesas menores (R$ 47k) que o custo-operacao (R$ 83,5k)
+> porque: (1) parcelas de dívidas passam por contas não totalmente registradas;
+> (2) alguns pagamentos saem pelo conta-sócios; (3) comissões em % calculadas
+> sobre faturamento contratado (R$ 246k referência), não sobre o reconhecido.
+> Usar o custo-operacao.html como fonte de verdade para decisões estratégicas.
 
 ### Status de caixa (Fluxo Mensal Jul/2025–Jun/2026)
 
