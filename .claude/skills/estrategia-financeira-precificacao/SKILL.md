@@ -97,15 +97,16 @@ O **Valvic OS** é onde o Rodrigo audita a **empresa inteira** e faz os
   fundamentada).
 
 ## Referências
-- `referencias/metodo-rodrigo.md` — método do Rodrigo Finanças (filosofia, 4
-  pilares, aplicação, os poucos números que importam).
-- `referencias/auditoria-metodo.md` — auditoria do método de orçamento (achado
-  crítico: meta de MC abaixo do break-even).
-- `dados/custo-fixo.md` — números reais da Valvic + pendências a levantar.
-- `ferramentas/custo-operacao.html` — **app de levantamento de custos da
-  operação** (centro de custo → categoria → item; tudo editável; dashboard de %,
-  fixo×variável, maiores custos e ponto de equilíbrio; export JSON/PDF). Base
-  para o Jonathan preencher e repassar ao Rodrigo.
+
+> **⚡ Começar sempre pela `CENTRAL-RODRIGO.md`** (mesmo diretório) — estado atual
+> do caixa, pipeline de projetos e pendências abertas. Auto-suficiente para uma
+> nova sessão.
+
+- `CENTRAL-RODRIGO.md` — **estado atual + pipeline + pendências** (ler primeiro).
+- `referencias/metodo-rodrigo.md` — método do Rodrigo Finanças (filosofia, 4 pilares).
+- `referencias/auditoria-metodo.md` — auditoria do método (meta de MC abaixo do break-even).
+- `dados/custo-fixo.md` — números reais da Valvic + alavanca do preço.
+- `ferramentas/custo-operacao.html` — app de custos da operação (dashboard, break-even, export JSON).
 - Base compartilhada: `orcamentista-marcenaria/referencias/validacao-orcamento.md`.
 
 > **Estado:** v1 operacional — método do Rodrigo absorvido e quadro real 2025.
