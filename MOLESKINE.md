@@ -7,6 +7,32 @@ pode ler e escrever aqui. Formato livre — marcar data e agente responsável.
 
 ## Tarefas abertas
 
+### [2026-06-16] Redesenho dos templates de proposta — Stefan
+**Solicitante:** Jonathan  
+**Agente:** Stefan (designer-grafico)  
+**Status:** 🔴 Pendente — skill criada, aguardando início do redesign
+
+**Contexto:**  
+O Template Excellence (HTML) feito pelo Vitor foi **reprovado** por Jonathan:
+"não conversa com o público; as páginas estão fracas". Só a **página de
+Investimento** foi aprovada. Criada a skill **Stefan** (diretor de arte
+especialista em marcenaria) para redesenhar as propostas do zero, com padrão de
+grife (Ornare/Florense), antes de retomar o Vitor.
+
+**O que fazer:**  
+- Diagnóstico de design do Excellence atual (o que não funciona e por quê)
+- Redesenhar os 4 templates por perfil (Signature/Excellence/Essencial/Family)
+  usando o sistema visual de Stefan (`designer-grafico/referencias/sistema-visual.md`)
+- Reaproveitar o conteúdo já definido (8 etapas da linha do tempo, social links)
+- Manter o conteúdo da página de Investimento (aprovado), elevar o visual
+
+**Arquivos:**  
+- Skill: `.claude/skills/designer-grafico/`
+- Template reprovado: `.claude/skills/closer-vendas/ferramentas/proposta-excellence.html`
+- Conteúdo da linha do tempo: `closer-vendas/referencias/linha-do-tempo.md`
+
+---
+
 ### [2026-06-16] Novo layout de proposta — Vitor
 **Solicitante:** Jonathan  
 **Agente:** Vitor  
