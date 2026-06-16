@@ -1,46 +1,34 @@
 # Política de garantia Valvic
 
-> ⚠️ Há um **conflito a resolver** entre (A) o documento oficial existente e (B) a
-> política escalonada que o Jonathan descreveu. Registrado para decisão.
+> **DECISÃO (Jonathan, jun/2026): garantia ESCALONADA POR FERRAGEM** é a política
+> oficial. O Termo "Linha Gold" (10 anos) deve ser **revisado** para refletir os
+> tiers abaixo. Até a revisão do doc, o Vitor já aplica os tempos por ferragem.
 
-## (A) Documento OFICIAL existente — Termo de Garantia "Linha Gold" (v5, Drive)
+## Política oficial — escalonada por ferragem
 
-Cobertura escalonada por componente:
-
-| Componente | Prazo |
+| Ferragem (lida do orçamento da Lavinia) | Garantia |
 |---|---|
-| Ferragens de movimento (corrediças, dobradiças, trilhos, deslizantes) — **Hartt, Häfele, Hettich, Rometal** | **10 anos** |
-| Estrutura (caixas, tampos, laterais, bases, divisórias) | **10 anos** |
-| Instalações e regulagens (nivelamento, ajustes) | **2 anos** |
-| Iluminação LED | **sem garantia** (nota técnica) |
+| Telescópica / dobradiça padrão | **2 anos** |
+| Hartt (oculta / dobradiça) | **5 anos** |
+| Hettich (Quadro, Actro, Sensys…) | **10 anos** |
+| Blum | **vitalícia** |
 
-Atendimento: **24h** para retorno, **3 dias úteis** para visita técnica, custo zero
-dentro do prazo. Documentos: Termo assinado na entrega + peça comercial comparativa
-(Valvic vs mercado) + guia de conservação. Inclui obrigações do contratante e
-situações que suspendem a garantia.
+Regra de projeto: a garantia do conjunto segue a **ferragem de menor tier presente**
+(elo mais fraco). Ferragem mista → oportunidade de upsell (subir tier = subir garantia
+= subir preço, alinhar com Rodrigo). Estrutura dos móveis acompanha o tier da linha.
 
-## (B) Política ESCALONADA por ferragem (descrita pelo Jonathan — a refinar)
+## Documento a revisar — Termo "Linha Gold" (v5, Drive)
 
-| Ferragem | Garantia |
-|---|---|
-| Telescópica / dobradiça padrão | 2 anos |
-| Hartt | 5 anos |
-| Hettich | 10 anos |
-| Blum | vitalícia |
+O doc atual coloca ferragens de movimento (Hartt/Häfele/Hettich/Rometal) todas em
+10 anos. **Pendência:** criar as variações do termo por tier (2/5/10/vitalícia),
+mantendo a mesma estrutura (muda só o tempo e o nome da linha). O restante do termo
+permanece:
+- Instalações e regulagens: **2 anos**
+- Iluminação LED: **sem garantia** (nota técnica)
+- Atendimento: 24h retorno / 3 dias úteis visita / custo zero no prazo
+- Termo assinado na entrega + guia de conservação + obrigações do contratante.
 
-## O conflito
-- No doc Gold, **Hartt está em 10 anos** (junto de Häfele/Hettich/Rometal).
-- Na política (B), **Hartt = 5 anos** e só Hettich = 10.
-- O doc Gold não prevê **vitalícia (Blum)** nem o tier **2 anos para telescópica**.
-
-> A "Linha Gold" parece ser a **linha premium** (projetos com ferragem alta). A
-> política escalonada é a **segmentação por linha** que o Jonathan quer criar.
-> **Decisão pendente do Jonathan** (ver pergunta na conversa).
-
-## Como o Vitor usa (até a decisão)
-- Projeto com ferragem premium (Hettich/Blum) → **Linha Gold, 10 anos** (doc atual).
-- Vitor **deriva o tempo da ferragem do orçamento da Lavinia** e, em caso de
-  ferragem mista ou tier inferior, **NÃO inventa** — confirma com o Jonathan.
-- Só existe documento desenhado para **10 anos (Gold)**. Variações (2/5/vitalícia)
-  serão criadas a partir dele (muda só o tempo e a linha) após a decisão.
+## Como o Vitor usa
+- **Deriva o tempo da ferragem** do orçamento da Lavinia (tier mais baixo presente).
 - Garantia tem **custo de provisão** → impacta MC (alinhar com Rodrigo ao subir tier).
+- Só o documento de **10 anos** está desenhado; as variações serão geradas a partir dele.

@@ -60,10 +60,42 @@ briefing do cliente (nome, conceito, renders).
 6. **Validade por perfil** (premium 5–7 dias / rápido 48h).
 7. **Personalização** com frase específica do projeto.
 
+## Templates no Canva (criados jun/2026)
+
+| Template | Canva ID | Uso |
+|---|---|---|
+| **MODELO — Proposta Valvic (Vitor)** | `DAHMsJxsuhE` ([ver](https://www.canva.com/d/DOc6GSXnxk33_kc)) | Projetos grandes / casa inteira |
+| **MODELO ENXUTO — Proposta Valvic (Vitor)** | `DAHMsEfQNas` ([ver](https://www.canva.com/d/Z4tsP3oAXOpXLCb)) | Projetos pequenos (1–2 ambientes, ex.: Regina) |
+
+Base: cópia da `proposta_bruna_ferreira` (`DAHKUR7n8Yo`). Ambos já têm placeholders
+`{{NOME DO CLIENTE}}`, `garantia - {{ANOS}} anos`, `Investimento total - R$ {{TOTAL}}`
+e typos corrigidos (Premium, Hartt, Laminação, Espessuras de painéis).
+
+### Element IDs reutilizáveis (para autofill via MCP)
+- Capa nome: `PB2PRdKRTQVKcmq8-LBRmKPSmH1SKzz2l`
+- Garantia (selo): `PBxslyLM2wlZc8Yx-LBC987f5h8kznwRY`
+- Investimento total: `PBxslyLM2wlZc8Yx-LBBLKCF5rH9q1YJd`
+- Validade/prazo: `PBxslyLM2wlZc8Yx-LBQGXh0pwsSjBv2n`
+- Tabela investimento (pág. 6): TABLE `PBxslyLM2wlZc8Yx-LBLlQw4sLNxvkzB0` (células via replace_text)
+
+### LIMITAÇÃO conhecida (Canva MCP)
+A API **não adiciona nem remove linhas de tabela** — só edita texto de célula. Logo:
+- Gerar proposta = preencher células + nome/garantia/total/validade (automatizável).
+- **Reduzir linhas** (master grande → 1 ambiente) exige ajuste manual único. Por isso
+  o **MODELO ENXUTO**: o Jonathan apara as linhas extras **uma vez** (deixa 1–2), e o
+  Vitor autofila projetos pequenos sem trabalho manual.
+
+### Fluxo de geração (por cliente)
+1. Escolher master (grande/enxuto) pelo porte → `copy-design` → "proposta_[cliente]".
+2. `start-editing-transaction` → `perform-editing-operations` (nome, células, garantia
+   derivada da ferragem, total, validade) → aprovação → `commit-editing-transaction`.
+3. `export-design` (PDF) → QA → enviar.
+
 ## Ativos pendentes (do Jonathan / Drive)
 
-- **Proposta-mestre** a designar (qual vira o Brand Template).
-- **Documento de garantia** (só o de **10 anos** está desenhado — Drive). Criar as
-  variações 2/5 anos e vitalícia a partir dele (muda só o tempo).
-- **Logo, paleta exata e fontes** oficiais (confirmar com o Jonathan para fixar o
-  brand system; hoje inferido das propostas).
+- **MODELO ENXUTO:** aparar a tabela para 1–2 linhas (ajuste manual único no Canva).
+- **Documento de garantia:** só o de **10 anos** (Gold) está desenhado. Criar as
+  variações **2 / 5 anos / vitalícia** a partir dele (muda o tempo e a linha) — ver
+  `garantia.md` (política escalonada por ferragem).
+- **Logo, paleta exata e fontes** oficiais: não há Brand Office — identidade hoje
+  inferida das propostas (`identidade-marca.md`).
