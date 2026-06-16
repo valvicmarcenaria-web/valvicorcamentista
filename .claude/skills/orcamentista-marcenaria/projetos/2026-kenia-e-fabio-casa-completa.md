@@ -3,7 +3,9 @@
 > **PROJETO GRANDE — orçamento da marcenaria da casa inteira.** Executivo
 > `RES.KF_*_R01` (Inédita Arquitetura, rev. 02, 22/04/2026). 3 pavimentos
 > (subsolo, térreo, 1º pavimento). 84 pranchas no Drive.
-> **Status: EM LEVANTAMENTO (Fase 1 — quantitativo).** Lavinia, jun/2026.
+> **Status: Fase 1 quase concluída — TODAS as 28 pranchas DET MARC (F56–F84)
+> extraídas (~60 módulos M01–M68 + P##/S##).** Próximo: consolidar plano de corte
+> por ambiente → app → MC. Lavinia, jun/2026.
 
 Pasta Drive: `16JhpcFk8z9IiuBOrYwn_rRxxmsg1_jTO`
 
@@ -98,7 +100,42 @@ Banho Semi Suíte, Quarto Hóspedes, Rouparia, Banho Suíte 01.
 > c/ amortecedor; gavetas telescópicas reforçadas c/ amortecedor; puxador cava (ver
 > detalhe); conferir tomadas para recorte; **CONFERIR MEDIDAS NO LOCAL** (sempre).
 
-*(F57–F63: em extração — 1 agente)*
+### F57–F63 — extraído (✅)
+
+> ⚠️ **Anti-duplicação:** F62 e F63 descrevem o MESMO conjunto **M15/M16/M17** (F63
+> é o detalhe ampliado do M17). Orçar uma vez. **P06** repete (mesmo da passagem).
+
+**F57 — Painel de TV (sala)**
+- **M03** — Painel TV piso-teto c/ porta correr embutida ~371×213. MDF **Areia**. Friso 1cm; perfil "L" no piso.
+- **P06** — Porta correr mimetizada 72×210 esp.4. MDF **Areia**. Puxador cava 5; tranca+chave. *(mesmo P06 da passagem)*
+- **M04** — Prateleira do rack ~180 esp.3,5. MDF **Itapuã**.
+
+**F58 — Suíte/dormitório**
+- **M05** — Guarda-roupa 3 portas correr (central espelho prata) ~185×280×60. MDF **Areia**. Prateleiras + cabideiro + 4 gavetas; puxador slim preto H30.
+- **M06** — Cabeceira ~313×120/130. MDF **Itapuã 20mm** estrut. sarrafo 15; friso; perfil "L" 2×2 no piso.
+
+**F59 — Lavanderia/área de serviço**
+- **M07 + M08** — Armário inferior + superior ~447×280. Corpos MDF **Areia**, básculas/prateleiras **Itapuã**. Superior: 6 portas giro + 3 basculantes + 4 prateleiras curvas. Inferior: 7 gavetões + 2 portas giro + 1 gaveta; puxador cava. **Vão p/ máquina de lavar**. Bancada granito (terceiro).
+
+**F60 — Closet/suíte**
+- **M11** — Armário piso-teto 3 portas correr (**trilho triplo**) ~207×280×60. MDF **Areia**. Prateleiras + 2 gavetas + nichos; puxador cava.
+- **M10** — Armário alto 2 nichos vazados + arara cromada ~130×80. MDF **Itapuã**. Puxador cava.
+- **M09** — Bancada base 2 portas giro + **calceiro deslizante** (corrediça 50) ~124. MDF **Areia**.
+
+**F61 — Hall/escada**
+- **M13** — Armário sob escada 4 portas giro escamoteáveis + 2 gavetas ~237×164–208. MDF **Itapuã**. Puxador **fecho-toque**. Altura depende dos degraus (medir in loco).
+- **M14** — Painel piso-teto do elevador c/ porta giro embutida (P02) ~453×208. MDF **Itapuã**. Frisos 1×1; perfil "L" 2×2; tranca+chave. Elevador = terceiro.
+
+**F62 — Painel de TV + rack ripado (sala)**
+- **M15** — Painel TV piso-teto c/ porta embutida ~370×190, frisos 1cm. MDF **Itapuã**. Vão TV 75".
+- **M16** — Rack ripado suspenso iluminado ~370×45×50, cantos R35. MDF **Itapuã**. Portas giro frente **ripada 2×2** vazada (ventilação), esp.4; puxador **passante**; LED **3000K** inferior.
+- **M17** — Estante 4 prateleiras curvas em **tubo metalon Ø2 champagne** (serralheria) ~111×24 cada; LED **3000K** em perfil c/ chanfro 45°.
+
+**F63 — Detalhe do M17** *(mesmo conjunto da F62 — não duplicar)*
+- **M17** — Detalhamento ampliado: rack ripado 370 + prateleiras curvas metalon champagne + LED 3000K; caixa de tomada c/ tampa giro amortecida no tampo.
+
+> Cores F57–F63: **Areia** (M03/P06/M05/corpos M07-08/M11/M09) e **Itapuã** (M04/M06/básculas/M10/M13/M14/M15/M16/M17).
+> Terceiros: granito lavanderia (M07/08), elevador (M14), tomadas embutidas.
 
 ### F64–F70 — extraído (✅)
 
@@ -250,7 +287,31 @@ Banho Semi Suíte, Quarto Hóspedes, Rouparia, Banho Suíte 01.
 ---
 
 ## Próximos passos
-1. Concluir extração F57–F84 (módulos + medidas + acabamento + ferragens).
-2. Cruzar com VISTAS (F25–F44) onde houver dúvida de medida/composição.
-3. Consolidar quantitativo por ambiente → lançar no app (validacao-orcamento.html).
-4. Fechar por MC (Fase 2) e estratégia/proposta (Fase 3) — com caixa confirmado.
+1. ~~Concluir extração F57–F84~~ ✅ **FEITO** (28 pranchas, ~60 módulos).
+2. **Resolver pendências de medida** (cruzar com VISTAS F25–F44 / TABELAS F01):
+   - Profundidades de baixa confiança: M19, M20, M21, M22, M23, M24, M31.
+   - Numeração duplicada **M22** (F65 cristaleira × F66 inferior) — confirmar.
+   - Módulos repetidos a contar 1×: **P06** (F57/F71/F74/F77), **M40** (F71/F74),
+     **M41** (F70/F73), conjunto **M15/M16/M17** (F62=F63).
+   - Cor do MDF do M26 (portal escada) — ILEGÍVEL.
+3. **Consolidar plano de corte por cor de MDF** (Areia / Itapuã / Branco TX /
+   Azul Profundo) e por espessura → m² de chapa + fita + ferragens.
+4. **Lançar no app** (validacao-orcamento.html) por ambiente.
+5. **Fechar por MC (Fase 2):** projeto grande → **MC ≥ 40% + entrada 40%** (Rodrigo).
+   Terceiros que entram com markup: vidros/espelhos, serralheria de apoio (metalon
+   champagne M17, perfis "L"), LED. Fora: marmoraria, cofre, elevador, box.
+6. Estratégia/proposta (Fase 3) com o Vitor.
+
+## Inventário de módulos (por pavimento/ambiente — para o app)
+> ~60 módulos extraídos. Organização para lançamento (refinar profundidades antes do corte):
+- **Subsolo:** M01 (I.S.), M12 (prateleiras), P06 (porta), M13 (sob escada), M14 (elevador).
+- **Cozinha:** M18 (forro), M19 (ilha), M68 (tampo/3º), M25, M20, M21 (torre eletros),
+  M22 (cristaleira), M55, M23, M24.
+- **Lavanderia/serviço:** M07+M08 (armário c/ vão máquina).
+- **Sala/estar:** M03+M04 (painel TV 1), M15+M16+M17 (painel TV 2 + rack ripado), M27 (rack).
+- **Lavabos/banhos:** M35+M36, M51+M52, M66 (espelheira), M53+M54 (gabinete duplo).
+- **Suítes/quartos:** M05+M06, M37+M38, M30, M29, M43+M45+M46 (quarto infantil),
+  M44+M49 (suíte casal), M61+M62+M63+M64+M65 (suíte master).
+- **Closets:** M09+M10+M11, M56+M57+M58, M59, M60, M67/P08, M31 (sapateira).
+- **Escritórios/home office:** M32+M34, M39+M41, M40+M42, M47+M48+M50, M33, M28 (cofre).
+- **Serralheria de apoio (S):** S01, S02 (muxarabi metalon), tubo M17, perfis "L".
