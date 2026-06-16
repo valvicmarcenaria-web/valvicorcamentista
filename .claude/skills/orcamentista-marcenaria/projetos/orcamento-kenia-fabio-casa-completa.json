@@ -590,8 +590,9 @@
     {
       "nome": "Gourmet",
       "q": {
-        "MDF¦MDF Areia 15mm (Guararapes)": 3,
-        "MDF¦MDF Areia 6mm": 2,
+        "MDF¦MDF Areia 15mm (Guararapes)": 2,
+        "MDF¦mdf branco 15": 2,
+        "MDF¦mdf branco 6": 2,
         "Cola e fita¦Fita de borda - cor - mt": 60,
         "Cola e fita¦Colagem - mt linear - máquina": 60,
         "Dobradiças¦Hettich Novisys": 18,
@@ -613,8 +614,9 @@
     {
       "nome": "Sala / Estar",
       "q": {
-        "MDF¦MDF Itapuã 15mm (Duratex)": 6,
-        "MDF¦MDF Itapuã 6mm": 3,
+        "MDF¦MDF Itapuã 15mm (Duratex)": 3,
+        "MDF¦mdf branco 15": 3,
+        "MDF¦mdf branco 6": 3,
         "Cola e fita¦Fita de borda - cor - mt": 150,
         "Cola e fita¦Colagem - mt linear - máquina": 150,
         "Dobradiças¦Hettich Novisys": 48,
@@ -636,10 +638,10 @@
     {
       "nome": "Lavanderia",
       "q": {
-        "MDF¦MDF Areia 15mm (Guararapes)": 5,
-        "MDF¦MDF Itapuã 15mm (Duratex)": 2,
-        "MDF¦MDF Areia 6mm": 3,
-        "MDF¦MDF Itapuã 6mm": 1,
+        "MDF¦MDF Areia 15mm (Guararapes)": 3,
+        "MDF¦MDF Itapuã 15mm (Duratex)": 1,
+        "MDF¦mdf branco 15": 4,
+        "MDF¦mdf branco 6": 4,
         "Cola e fita¦Fita de borda - cor - mt": 160,
         "Cola e fita¦Colagem - mt linear - máquina": 160,
         "Dobradiças¦Hettich Novisys": 60,
@@ -664,9 +666,8 @@
       "q": {
         "MDF¦MDF Itapuã 15mm (Duratex)": 1,
         "MDF¦MDF Areia 15mm (Guararapes)": 1,
-        "MDF¦mdf branco 15": 2,
-        "MDF¦MDF Areia 6mm": 1,
-        "MDF¦mdf branco 6": 1,
+        "MDF¦mdf branco 15": 3,
+        "MDF¦mdf branco 6": 2,
         "Cola e fita¦Fita de borda - cor - mt": 42,
         "Cola e fita¦Fita de borda - branco tx - mt": 48,
         "Cola e fita¦Colagem - mt linear - máquina": 90,
@@ -688,7 +689,8 @@
     {
       "nome": "Lavabo / Circulação",
       "q": {
-        "MDF¦MDF Itapuã 15mm (Duratex)": 2,
+        "MDF¦MDF Itapuã 15mm (Duratex)": 1,
+        "MDF¦mdf branco 15": 1,
         "Cola e fita¦Fita de borda - cor - mt": 40,
         "Cola e fita¦Colagem - mt linear - máquina": 40,
         "Suportes¦Suporte oculto": 4,
@@ -707,8 +709,9 @@
     {
       "nome": "Semissuíte (Banheiro)",
       "q": {
-        "MDF¦MDF Areia 15mm (Guararapes)": 2,
-        "MDF¦MDF Areia 6mm": 2,
+        "MDF¦MDF Areia 15mm (Guararapes)": 1,
+        "MDF¦mdf branco 15": 1,
+        "MDF¦mdf branco 6": 2,
         "Cola e fita¦Fita de borda - cor - mt": 46,
         "Cola e fita¦Colagem - mt linear - máquina": 46,
         "Dobradiças¦Hettich Novisys": 14,
@@ -730,8 +733,9 @@
     {
       "nome": "Banho Master",
       "q": {
-        "MDF¦MDF Itapuã 15mm (Duratex)": 3,
-        "MDF¦MDF Itapuã 6mm": 2,
+        "MDF¦MDF Itapuã 15mm (Duratex)": 2,
+        "MDF¦mdf branco 15": 2,
+        "MDF¦mdf branco 6": 2,
         "Cola e fita¦Fita de borda - cor - mt": 65,
         "Cola e fita¦Colagem - mt linear - máquina": 65,
         "Dobradiças¦Hettich Novisys": 24,
@@ -753,9 +757,10 @@
     {
       "nome": "I.S. Suíte 01",
       "q": {
-        "MDF¦MDF Azul Profundo 15mm": 2,
+        "MDF¦MDF Azul Profundo 15mm": 1,
         "MDF¦MDF Itapuã 15mm (Duratex)": 1,
         "MDF¦MDF Azul Profundo 6mm": 2,
+        "MDF¦mdf branco 15": 1,
         "Cola e fita¦Fita de borda - cor - mt": 42,
         "Cola e fita¦Colagem - mt linear - máquina": 42,
         "Dobradiças¦Hettich Novisys": 9,
@@ -777,10 +782,10 @@
     {
       "nome": "Quarto Hóspedes",
       "q": {
-        "MDF¦MDF Areia 15mm (Guararapes)": 3,
-        "MDF¦MDF Itapuã 15mm (Duratex)": 2,
-        "MDF¦MDF Areia 6mm": 2,
-        "MDF¦MDF Itapuã 6mm": 1,
+        "MDF¦MDF Areia 15mm (Guararapes)": 2,
+        "MDF¦MDF Itapuã 15mm (Duratex)": 1,
+        "MDF¦mdf branco 15": 3,
+        "MDF¦mdf branco 6": 3,
         "Cola e fita¦Fita de borda - cor - mt": 110,
         "Cola e fita¦Colagem - mt linear - máquina": 110,
         "Dobradiças¦Hettich Novisys": 6,
@@ -824,8 +829,9 @@
     {
       "nome": "Suíte 03",
       "q": {
-        "MDF¦MDF Areia 15mm (Guararapes)": 5,
-        "MDF¦MDF Areia 6mm": 3,
+        "MDF¦MDF Areia 15mm (Guararapes)": 3,
+        "MDF¦mdf branco 15": 3,
+        "MDF¦mdf branco 6": 3,
         "Cola e fita¦Fita de borda - cor - mt": 115,
         "Cola e fita¦Colagem - mt linear - máquina": 115,
         "Dobradiças¦Hettich Novisys": 10,
@@ -852,8 +858,9 @@
     {
       "nome": "Suíte 02",
       "q": {
-        "MDF¦MDF Areia 15mm (Guararapes)": 5,
-        "MDF¦MDF Areia 6mm": 3,
+        "MDF¦MDF Areia 15mm (Guararapes)": 3,
+        "MDF¦mdf branco 15": 3,
+        "MDF¦mdf branco 6": 3,
         "Cola e fita¦Fita de borda - cor - mt": 115,
         "Cola e fita¦Colagem - mt linear - máquina": 115,
         "Dobradiças¦Hettich Novisys": 10,
@@ -880,11 +887,12 @@
     {
       "nome": "Suíte 01 (infantil)",
       "q": {
-        "MDF¦MDF Areia 15mm (Guararapes)": 2,
-        "MDF¦MDF Itapuã 15mm (Duratex)": 2,
-        "MDF¦MDF Azul Profundo 15mm": 2,
-        "MDF¦MDF Areia 6mm": 2,
+        "MDF¦MDF Areia 15mm (Guararapes)": 1,
+        "MDF¦MDF Itapuã 15mm (Duratex)": 1,
+        "MDF¦MDF Azul Profundo 15mm": 1,
         "MDF¦MDF Azul Profundo 6mm": 2,
+        "MDF¦mdf branco 15": 3,
+        "MDF¦mdf branco 6": 2,
         "Cola e fita¦Fita de borda - cor - mt": 140,
         "Cola e fita¦Colagem - mt linear - máquina": 140,
         "Dobradiças¦Hettich Novisys": 12,
@@ -911,10 +919,10 @@
     {
       "nome": "Suíte Master",
       "q": {
-        "MDF¦MDF Areia 15mm (Guararapes)": 6,
-        "MDF¦MDF Itapuã 15mm (Duratex)": 4,
-        "MDF¦MDF Areia 6mm": 4,
-        "MDF¦MDF Itapuã 6mm": 1,
+        "MDF¦MDF Areia 15mm (Guararapes)": 3,
+        "MDF¦MDF Itapuã 15mm (Duratex)": 2,
+        "MDF¦mdf branco 15": 5,
+        "MDF¦mdf branco 6": 5,
         "Cola e fita¦Fita de borda - cor - mt": 220,
         "Cola e fita¦Colagem - mt linear - máquina": 220,
         "Dobradiças¦Hettich Novisys": 30,
@@ -938,7 +946,7 @@
   "ativo": 0,
   "collapsed": {},
   "theme": "dark",
-  "diretrizes": "ORÇAMENTO CASA COMPLETA — Kênia & Fábio (arq. Inédita/Flávia). ~60 módulos, 3 pavimentos, 15 ambientes.\nLevantamento Fase 1 (estimativa que erra p/ cima) — refinar com plano de corte real antes de produção.\nREGRA JONATHAN: pedra/marmoraria NUNCA entra (cliente). Bancadas, sóculos e escadas de pedra = fora.\nEscopo Valvic: MDF + ferragens + vidros/espelhos dos móveis + serralheria de apoio + LED embutido.\nREGRA JONATHAN (rev.): chapa é INTEIRA por ambiente — fração arredonda SEMPRE pra cima (3,8 = 4 chapas).\nCorpo/caixa interna em Branco TX; portas e faces aparentes na cor. Fundos 6mm em Branco TX.\nPuxador = CAVA 35° USINADA (não perfil). Ferragens Hettich (dobradiça Novisys, corrediça Oculta Quadro).\nLogística POR AMBIENTE: R$300 (material bruto) + R$400 (equipe) = R$700. Portas de vidro = ESQUADRIA.\n  Itapuã/Areia/Azul = \"MDF cor\" R$500/15mm, R$300/6mm; Branco TX R$260/15mm, R$190/6mm.\nConfirmar antes do corte: (1) corrediça telescópica vs oculta (custo/garantia); (2) M12 18 vs 20mm;\n(3) RT da arquiteta (10% líq. embutido — se não houver parceria, MC sobe ~+4 pts).",
+  "diretrizes": "ORÇAMENTO CASA COMPLETA — Kênia & Fábio (arq. Inédita/Flávia). ~60 módulos, 3 pavimentos, 15 ambientes.\nLevantamento Fase 1 (estimativa que erra p/ cima) — refinar com plano de corte real antes de produção.\nREGRA JONATHAN: pedra/marmoraria NUNCA entra (cliente). Bancadas, sóculos e escadas de pedra = fora.\nEscopo Valvic: MDF + ferragens + vidros/espelhos dos móveis + serralheria de apoio + LED embutido.\nREGRA JONATHAN (rev2): chapa INTEIRA por ambiente — fração arredonda SEMPRE pra cima (3,8 = 4).\nESTRUTURA INTERNA EM BRANCO TX em TODOS os ambientes: ~50% do 15mm (corpo/caixa) vai p/ Branco TX,\n  ~50% (portas/faces aparentes) fica na cor; fundos 6mm em Branco TX (acento decorativo p.ex. Azul fica na cor).\n  >> SPLIT 50/50 é ESTIMATIVA Fase 1 — Jonathan vai validar o quantitativo da Lavinia antes de fechar.\nPuxador = CAVA 35° USINADA (não perfil). Ferragens Hettich (dobradiça Novisys, corrediça Oculta Quadro).\nLogística POR AMBIENTE: R$300 (material bruto) + R$400 (equipe) = R$700. Portas de vidro = ESQUADRIA.\n  Itapuã/Areia/Azul = \"MDF cor\" R$500/15mm, R$300/6mm; Branco TX R$260/15mm, R$190/6mm.\nConfirmar antes do corte: (1) corrediça telescópica vs oculta (custo/garantia); (2) M12 18 vs 20mm;\n(3) RT da arquiteta (10% líq. embutido — se não houver parceria, MC sobe ~+4 pts).",
   "rodrigo": "Rodrigo (jun/2026, caixa CRÍTICO): projeto grande (>R$80k) -> MC mínima 40% + ENTRADA 40% antes de produção,\nparcelas vinculadas a etapas de entrega. Alvo deste orçamento = 42% (margem p/ Vitor negociar até o piso 40%).\nNÃO ceder abaixo de 40%. Sem entrada real, não fecha. Encargos com NF 7%, parcelamento 7%, comissão Vitor 5%, RT 10%.\nANCORAGEM (Vitor): apresentar o TOTAL da casa primeiro (âncora); só então abrir por ambiente. Pacote completo\notimiza corte/frete -> melhor custo por m² que ambiente avulso. Suíte Master é o ambiente de maior valor (âncora interna).",
   "duvidas": [
     {
