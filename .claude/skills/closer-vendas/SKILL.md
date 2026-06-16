@@ -69,6 +69,11 @@ documento de garantia é igual.
   garantia, é decisão conjunta com o Rodrigo (subir ferragem = subir preço).
 - Política ainda em refino (jun/2026). Só o **doc de 10 anos** está desenhado (Drive).
 
+> ⚠️ **Conflito a resolver:** o documento OFICIAL "Linha Gold" coloca **Hartt em
+> 10 anos** (junto de Häfele/Hettich/Rometal), enquanto a tabela acima (descrita
+> pelo Jonathan) coloca Hartt em 5. Detalhes e decisão pendente em
+> `referencias/garantia.md`. Até decidir, Vitor não inventa prazo — confirma.
+
 ## Fluxo do Vitor
 
 1. **Receber** o orçamento (JSON da Lavinia) + briefing do cliente + piso do Rodrigo.
