@@ -42,6 +42,30 @@ A casa é apresentada como **conjunto único** (toda a marcenaria dos 3 paviment
 
 ---
 
+## 3b. Valores por ambiente (rateio do total)
+> Para o Vitor abrir no total (âncora) e destrinchar por ambiente. Rateio proporcional ao custo de cada ambiente (margem uniforme); soma exata ao total de cada versão. Arredondado a R$500.
+
+| Ambiente | V1 Branco+Hettich | V2 Cor+Hettich | V3 Branco+Hardt | V4 Cor+Hardt |
+|---|---:|---:|---:|---:|
+| Cozinha | 42.000 | 43.500 | 36.500 | 39.000 |
+| Gourmet | 12.500 | 12.500 | 11.500 | 12.000 |
+| Sala / Estar | 21.500 | 23.500 | 20.000 | 23.000 |
+| Lavanderia | 26.500 | 28.500 | 24.000 | 26.500 |
+| Subsolo / Despensa | 12.000 | 11.500 | 11.500 | 11.000 |
+| Lavabo / Circulação | 6.000 | 6.500 | 6.000 | 6.500 |
+| Semissuíte (Banheiro) | 11.500 | 12.500 | 11.000 | 12.000 |
+| Banho Master | 17.500 | 18.000 | 16.500 | 17.000 |
+| I.S. Suíte 01 | 13.000 | 13.500 | 12.000 | 12.500 |
+| Quarto Hóspedes | 20.500 | 21.000 | 19.000 | 20.500 |
+| Rouparia | 6.000 | 6.000 | 6.000 | 6.000 |
+| Suíte 03 | 31.500 | 32.000 | 28.500 | 30.000 |
+| Suíte 02 | 28.000 | 28.500 | 25.000 | 26.500 |
+| Suíte 01 (infantil) | 31.500 | 33.500 | 29.500 | 32.000 |
+| Suíte Master | 65.000 | 68.000 | 60.000 | 65.500 |
+| **TOTAL** | **345.000** | **359.000** | **317.000** | **340.000** |
+
+---
+
 ## 4. Descritivo técnico por ambiente
 > Códigos (M##) conforme projeto da arquiteta. Acabamentos por módulo. Sem medidas — riqueza técnica do item.
 
