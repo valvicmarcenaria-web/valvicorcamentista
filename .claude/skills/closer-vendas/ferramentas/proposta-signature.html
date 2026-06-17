@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valvic Marcenaria — Assinatura de Proposta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sand:        #F3EEE4;
+      --sand-d:      #E9E1D2;
+      --gold:        #B07A56;
+      --gold-l:      #C08C66;
+      --gold-10:     rgba(176,122,86,.10);
+      --gold-20:     rgba(176,122,86,.22);
+      --gold-40:     rgba(176,122,86,.42);
+      --acc2:        #C49A4A;
+      --graphite:    #2B2B28;
+      --graphite-60: rgba(43,43,40,.6);
+      --graphite-15: rgba(43,43,40,.15);
+      --navy:        #3D2A1C;
+      --navy-m:      #4A3422;
+      --white:       #FFFFFF;
+      --warm-wh:     #FBF8F2;
+      --muted:       #8A8472;
+      --fd:          'Cormorant Garamond', Georgia, serif;
+      --fb:          'Inter', system-ui, sans-serif;
+      --fm:          'Space Mono', 'Courier New', monospace;
+      --pw:          794px;
+      --ph:          1123px;
+    }
+
+    html, body {
+      background: #CEC6B8;
+      font-family: var(--fb);
+      color: var(--graphite);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* ── CONTROLS ── */
+    #controls {
+      position: fixed; top: 24px; right: 24px; z-index: 9999;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .ctrl-btn {
+      padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer;
+      font-family: var(--fb); font-size: 12px; font-weight: 600;
+      letter-spacing: .06em; text-transform: uppercase;
+      box-shadow: 0 4px 16px rgba(0,0,0,.25); transition: all .2s;
+    }
+    #btn-edit  { background: var(--navy); color: var(--gold); border: 1px solid var(--gold-40); }
+    #btn-edit:hover { background: var(--navy-m); }
+    #btn-print { background: var(--gold); color: var(--navy); }
+    #btn-print:hover { background: var(--gold-l); }
+    @media print { #controls { display: none !important; } }
+
+    /* ── PAGE ── */
+    .page {
+      width: var(--pw); min-height: var(--ph);
+      margin: 0 auto 32px; position: relative; overflow: hidden;
+      background: var(--warm-wh); box-shadow: 0 8px 48px rgba(0,0,0,.28);
+    }
+    @media print {
+      @page { size: A4; margin: 0; }
+      .page { margin: 0; box-shadow: none; page-break-after: always; page-break-inside: avoid; }
+    }
+
+    /* ── TOKENS ── */
+    .token { display: inline; outline: none; cursor: default; transition: background .15s; }
+    body.edit-mode .token { border-bottom: 1.5px dashed var(--gold); cursor: text; }
+    body.edit-mode .token:focus { background: rgba(196,154,74,.1); border-radius: 2px; }
+
+    /* ── SHARED ── */
+    .eyebrow {
+      font-family: var(--fb); font-size: 9px; font-weight: 600;
+      letter-spacing: .3em; text-transform: uppercase; color: var(--gold);
+    }
+    .rule-gold { width: 48px; height: 1px; background: var(--gold); margin: 14px 0; }
+
+    /* ================================================================
+       SIGNATURE PAGE LAYOUT
+    ================================================================ */
+    #sig-page {
+      display: grid;
+      grid-template-rows: 76px 1fr auto;
+      height: var(--ph);
+    }
+
+    /* topbar */
+    #sig-page .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 52px; border-bottom: 1px solid var(--gold-20);
+      flex-shrink: 0;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 9px;
+    }
+    .logo svg { width: 11px; height: 11px; fill: var(--gold); opacity: .75; }
+    .logo-name {
+      font-family: var(--fd); font-size: 20px; font-weight: 600;
+      letter-spacing: .2em; color: var(--gold); text-transform: uppercase;
+    }
+    .badge {
+      font-family: var(--fb); font-size: 8px; font-weight: 600;
+      letter-spacing: .28em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid var(--gold-40);
+      padding: 4px 12px; border-radius: 2px;
+    }
+
+    /* ── BODY ── */
+    .sig-body {
+      flex: 1;
+      padding: 52px 60px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* intro */
+    .sig-intro { margin-bottom: 40px; }
+    .sig-intro .sig-eyebrow {
+      font-family: var(--fb); font-size: 9px; font-weight: 600;
+      letter-spacing: .3em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .sig-intro h2 {
+      font-family: var(--fd); font-size: 38px; font-weight: 300;
+      color: var(--graphite); letter-spacing: -.01em; line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .sig-intro h2 em { font-style: italic; color: var(--gold); }
+    .sig-intro p {
+      font-size: 12px; color: var(--muted); line-height: 1.7;
+      max-width: 520px; letter-spacing: .01em;
+    }
+
+    /* summary strip */
+    .sig-summary {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--gold-20); border-radius: 2px;
+      overflow: hidden; margin-bottom: 40px;
+    }
+    .sum-cell {
+      padding: 18px 22px;
+      border-right: 1px solid var(--gold-20);
+    }
+    .sum-cell:last-child { border-right: none; }
+    .sum-label {
+      font-size: 7.5px; font-weight: 600; letter-spacing: .25em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 7px;
+    }
+    .sum-val {
+      font-family: var(--fd); font-size: 22px; font-weight: 500;
+      color: var(--graphite); line-height: 1.1;
+    }
+    .sum-sub {
+      font-size: 10px; color: var(--muted); margin-top: 4px; letter-spacing: .03em;
+    }
+
+    /* acceptance declaration */
+    .acceptance-box {
+      background: var(--sand);
+      border: 1px solid var(--gold-20);
+      border-radius: 2px;
+      padding: 28px 32px;
+      margin-bottom: 36px;
+    }
+    .acceptance-label {
+      font-size: 8px; font-weight: 600; letter-spacing: .28em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
+    }
+    .acceptance-text {
+      font-family: var(--fd); font-size: 14px; font-weight: 300; font-style: italic;
+      color: var(--graphite-60); line-height: 1.75;
+    }
+    .acceptance-text strong {
+      font-style: normal; font-weight: 500; color: var(--graphite);
+    }
+
+    /* signature grid */
+    .sig-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 40px; margin-bottom: 36px;
+    }
+
+    .sig-block {}
+    .sig-block-label {
+      font-size: 8px; font-weight: 600; letter-spacing: .25em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 28px;
+    }
+    .sig-line-area {
+      border-bottom: 1px solid var(--graphite-15);
+      margin-bottom: 10px; min-height: 48px;
+      display: flex; align-items: flex-end;
+    }
+    .sig-name {
+      font-family: var(--fd); font-size: 14px; font-weight: 500;
+      color: var(--graphite); letter-spacing: .04em; padding-bottom: 8px;
+    }
+    .sig-role {
+      font-size: 9px; color: var(--muted); letter-spacing: .1em;
+      text-transform: uppercase; margin-bottom: 4px;
+    }
+    .sig-cpf {
+      font-family: var(--fm); font-size: 9px; color: var(--muted);
+      letter-spacing: .06em;
+    }
+    .sig-date-row {
+      margin-top: 12px; display: flex; align-items: center; gap: 12px;
+    }
+    .sig-date-label {
+      font-size: 9px; color: var(--muted); letter-spacing: .08em;
+      text-transform: uppercase; white-space: nowrap;
+    }
+    .sig-date-line {
+      flex: 1; border-bottom: 1px solid var(--graphite-15); height: 18px;
+    }
+
+    /* guarantee strip */
+    .guarantee-strip {
+      background: var(--navy);
+      border-radius: 2px;
+      padding: 20px 28px;
+      display: flex; align-items: center; gap: 24px;
+      margin-bottom: 32px;
+    }
+    .guarantee-icon {
+      flex-shrink: 0; width: 44px; height: 44px;
+      border: 1.5px solid var(--gold-40); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .guarantee-icon svg {
+      width: 20px; height: 20px;
+      stroke: var(--gold); fill: none; stroke-width: 1.5;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .guarantee-text {}
+    .guarantee-title {
+      font-family: var(--fd); font-size: 16px; font-weight: 500;
+      color: var(--white); margin-bottom: 3px;
+    }
+    .guarantee-desc {
+      font-size: 10.5px; color: rgba(251,248,242,.55); line-height: 1.55;
+    }
+    .guarantee-badge {
+      margin-left: auto; flex-shrink: 0; text-align: center;
+    }
+    .guarantee-years {
+      font-family: var(--fd); font-size: 36px; font-weight: 400;
+      color: var(--gold); line-height: 1;
+    }
+    .guarantee-years-label {
+      font-size: 8px; font-weight: 600; letter-spacing: .2em;
+      text-transform: uppercase; color: rgba(196,154,74,.55);
+      margin-top: 2px;
+    }
+
+    /* terms */
+    .terms-row {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-bottom: 0;
+    }
+    .term-item {
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .term-bullet {
+      flex-shrink: 0; width: 5px; height: 5px;
+      border-radius: 50%; background: var(--gold); margin-top: 5px;
+    }
+    .term-text {
+      font-size: 10px; color: var(--muted); line-height: 1.6;
+    }
+    .term-text strong {
+      display: block; font-weight: 600; color: var(--graphite);
+      letter-spacing: .03em; margin-bottom: 1px;
+    }
+
+    /* ── FOOTER ── */
+    .sig-footer {
+      padding: 20px 52px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--gold-20); flex-shrink: 0;
+      margin-top: auto;
+    }
+    .foot-brand {
+      font-family: var(--fd); font-size: 14px; font-weight: 600;
+      letter-spacing: .14em; color: var(--gold); text-transform: uppercase;
+    }
+    .foot-contact {
+      display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
+    }
+    .foot-contact a, .foot-contact span {
+      font-family: var(--fm); font-size: 9px; color: var(--muted);
+      letter-spacing: .05em; text-decoration: none;
+    }
+    .foot-contact a:hover { color: var(--gold); }
+    .socials { display: flex; gap: 18px; align-items: center; }
+    .soc {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 10px; color: var(--muted); text-decoration: none; letter-spacing: .04em;
+    }
+    .soc svg { width: 13px; height: 13px; fill: var(--gold); }
+
+    /* gold bar */
+    .gold-bar {
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold) 25%, var(--gold) 75%, transparent);
+      position: absolute; bottom: 0; left: 0; right: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- CONTROLS -->
+<div id="controls">
+  <button class="ctrl-btn" id="btn-edit" onclick="toggleEdit()">Editar</button>
+  <button class="ctrl-btn" id="btn-print" onclick="printPDF()">Imprimir PDF</button>
+</div>
+
+
+<!-- ================================================================
+     SIGNATURE PAGE — ACEITE E ASSINATURA
+================================================================ -->
+<section class="page" id="sig-page">
+
+  <!-- topbar -->
+  <div class="topbar">
+    <div class="logo">
+      <svg viewBox="0 0 12 12"><path d="M6 0L7 5.2L12 6L7 6.8L6 12L5 6.8L0 6L5 5.2Z"/></svg>
+      <span class="logo-name">Valvic</span>
+    </div>
+    <span class="badge">Aceite &amp; Assinatura</span>
+  </div>
+
+  <!-- body -->
+  <div class="sig-body">
+
+    <!-- intro -->
+    <div class="sig-intro">
+      <div class="sig-eyebrow">Formalizando o projeto</div>
+      <h2>Seu espaço começa<br><em>com esta assinatura.</em></h2>
+      <p>
+        Ao assinar abaixo,
+        <strong class="token" contenteditable="false" data-key="NOME_CLIENTE" data-placeholder="Nome do Cliente">{{NOME_CLIENTE}}</strong>
+        confirma que leu e concorda com o escopo, valores e condições descritos nesta proposta —
+        e a Valvic Marcenaria assume o compromisso formal de entregar o projeto nos termos aqui definidos.
+      </p>
+    </div>
+
+    <!-- summary strip -->
+    <div class="sig-summary">
+      <div class="sum-cell">
+        <div class="sum-label">Projeto</div>
+        <div class="sum-val">
+          <span class="token" contenteditable="false" data-key="PROJETO" data-placeholder="Descrição do projeto">{{PROJETO}}</span>
+        </div>
+        <div class="sum-sub">escopo aprovado</div>
+      </div>
+      <div class="sum-cell">
+        <div class="sum-label">Investimento Total</div>
+        <div class="sum-val">R$&nbsp;<span class="token" contenteditable="false" data-key="TOTAL" data-placeholder="0,00">{{TOTAL}}</span></div>
+        <div class="sum-sub">
+          conforme versão <span class="token" contenteditable="false" data-key="VERSAO" data-placeholder="Completa">{{VERSAO}}</span>
+        </div>
+      </div>
+      <div class="sum-cell">
+        <div class="sum-label">Prazo de Entrega</div>
+        <div class="sum-val">
+          <span class="token" contenteditable="false" data-key="PRAZO" data-placeholder="90">{{PRAZO}}</span> dias
+        </div>
+        <div class="sum-sub">úteis após 1.ª parcela</div>
+      </div>
+    </div>
+
+    <!-- acceptance declaration -->
+    <div class="acceptance-box">
+      <div class="acceptance-label">Declaração de aceite</div>
+      <div class="acceptance-text">
+        Declaro que fui devidamente informado/a sobre todos os aspectos desta proposta comercial,
+        incluindo escopo, materiais, ferragens, prazos e condições de pagamento. Autorizo a
+        <strong>Valvic Marcenaria</strong> a dar início ao processo de detalhamento técnico e
+        programação da produção, conforme as condições acordadas, com entrada de
+        <strong class="token" contenteditable="false" data-key="ENTRADA_VALOR" data-placeholder="R$ 0,00">{{ENTRADA_VALOR}}</strong>
+        a ser realizada em
+        <strong class="token" contenteditable="false" data-key="ENTRADA_DATA" data-placeholder="__/__/____">{{ENTRADA_DATA}}</strong>.
+      </div>
+    </div>
+
+    <!-- signature grid -->
+    <div class="sig-grid">
+
+      <!-- client -->
+      <div class="sig-block">
+        <div class="sig-block-label">Assinatura do Cliente</div>
+        <div class="sig-line-area"></div>
+        <div class="sig-name">
+          <span class="token" contenteditable="false" data-key="NOME_CLIENTE" data-placeholder="Nome do Cliente">{{NOME_CLIENTE}}</span>
+        </div>
+        <div class="sig-role">Cliente</div>
+        <div class="sig-cpf">
+          CPF: <span class="token" contenteditable="false" data-key="CPF_CLIENTE" data-placeholder="000.000.000-00">{{CPF_CLIENTE}}</span>
+        </div>
+        <div class="sig-date-row">
+          <span class="sig-date-label">Data</span>
+          <div class="sig-date-line"></div>
+        </div>
+      </div>
+
+      <!-- valvic -->
+      <div class="sig-block">
+        <div class="sig-block-label">Assinatura Valvic Marcenaria</div>
+        <div class="sig-line-area"></div>
+        <div class="sig-name">Vitor Alcântara</div>
+        <div class="sig-role">Responsável Comercial · Valvic Marcenaria</div>
+        <div class="sig-cpf">CNPJ: 28.304.219/0001-67</div>
+        <div class="sig-date-row">
+          <span class="sig-date-label">Data</span>
+          <div class="sig-date-line"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- guarantee strip -->
+    <div class="guarantee-strip">
+      <div class="guarantee-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="guarantee-text">
+        <div class="guarantee-title">Garantia Hardt inclusa nesta proposta</div>
+        <div class="guarantee-desc">
+          Ferragens Hardt cobertas por
+          <strong style="color:var(--gold)"><span class="token" contenteditable="false" data-key="GARANTIA_ANOS" data-placeholder="5">{{GARANTIA_ANOS}}</span> anos</strong>
+          de garantia contratual. Estrutura e acabamento Valvic: 1 ano.
+          Qualquer defeito de fabricação ou montagem será solucionado sem custo adicional.
+        </div>
+      </div>
+      <div class="guarantee-badge">
+        <div class="guarantee-years">
+          <span class="token" contenteditable="false" data-key="GARANTIA_ANOS" data-placeholder="5">{{GARANTIA_ANOS}}</span>
+        </div>
+        <div class="guarantee-years-label">anos</div>
+      </div>
+    </div>
+
+    <!-- terms -->
+    <div class="terms-row">
+      <div class="term-item">
+        <div class="term-bullet"></div>
+        <div class="term-text">
+          <strong>Condição de pagamento</strong>
+          <span class="token" contenteditable="false" data-key="CONDICAO_PAGAMENTO" data-placeholder="Entrada 30% + saldo">{{CONDICAO_PAGAMENTO}}</span>
+        </div>
+      </div>
+      <div class="term-item">
+        <div class="term-bullet"></div>
+        <div class="term-text">
+          <strong>Validade desta proposta</strong>
+          Até <span class="token" contenteditable="false" data-key="VALIDADE" data-placeholder="__/__/____">{{VALIDADE}}</span>.
+          Após esta data, os valores são reajustados.
+        </div>
+      </div>
+      <div class="term-item">
+        <div class="term-bullet"></div>
+        <div class="term-text">
+          <strong>Foro</strong>
+          Belo Horizonte — MG. Regido pelo Código Civil Brasileiro e CDC.
+        </div>
+      </div>
+      <div class="term-item">
+        <div class="term-bullet"></div>
+        <div class="term-text">
+          <strong>Ferragem</strong>
+          <span class="token" contenteditable="false" data-key="FERRAGEM" data-placeholder="Hardt">{{FERRAGEM}}</span>
+          — padrão desta proposta.
+        </div>
+      </div>
+      <div class="term-item">
+        <div class="term-bullet"></div>
+        <div class="term-text">
+          <strong>Material</strong>
+          <span class="token" contenteditable="false" data-key="MATERIAL" data-placeholder="MDF 18mm">{{MATERIAL}}</span>
+          · <span class="token" contenteditable="false" data-key="ACABAMENTO" data-placeholder="Laca PU fosca">{{ACABAMENTO}}</span>.
+        </div>
+      </div>
+      <div class="term-item">
+        <div class="term-bullet"></div>
+        <div class="term-text">
+          <strong>Início da produção</strong>
+          Após confirmação da entrada e aprovação do projeto técnico.
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /sig-body -->
+
+  <!-- footer -->
+  <div class="sig-footer">
+    <div class="foot-brand">Valvic Marcenaria</div>
+    <div class="socials">
+      <a class="soc" href="https://www.instagram.com/valvic_marcenaria" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        @valvic_marcenaria
+      </a>
+      <a class="soc" href="https://www.youtube.com/@Valvic_Marcenaria" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        @Valvic_Marcenaria
+      </a>
+    </div>
+    <div class="foot-contact">
+      <span>valvicmarcenaria@gmail.com</span>
+      <span>Belo Horizonte — MG</span>
+    </div>
+  </div>
+
+  <div class="gold-bar"></div>
+
+</section>
+
+
+<script>
+  const SK = 'valvic_signature_modelo';
+
+  const DEFAULTS = {
+    NOME_CLIENTE:        'Nome do Cliente',
+    PROJETO:             'Descrição do projeto',
+    TOTAL:               '0,00',
+    VERSAO:              'Completa',
+    PRAZO:               '90',
+    ENTRADA_VALOR:       'R$ 0,00',
+    ENTRADA_DATA:        '__/__/____',
+    CPF_CLIENTE:         '000.000.000-00',
+    GARANTIA_ANOS:       '5',
+    CONDICAO_PAGAMENTO:  'Entrada 30% + saldo em 10× no cartão',
+    VALIDADE:            '__/__/____',
+    FERRAGEM:            'Hardt',
+    MATERIAL:            'MDF 18mm',
+    ACABAMENTO:          'Laca PU fosca',
+  };
+
+  const S = Object.assign({}, DEFAULTS, loadS());
+
+  function init() {
+    document.querySelectorAll('.token[data-key]').forEach(el => {
+      const k = el.dataset.key;
+      if (S[k]) el.textContent = S[k];
+    });
+  }
+
+  function toggleEdit() {
+    const on = document.body.classList.toggle('edit-mode');
+    document.getElementById('btn-edit').textContent = on ? 'Concluir' : 'Editar';
+    document.querySelectorAll('.token[data-key]').forEach(el => { el.contentEditable = on; });
+  }
+
+  document.addEventListener('input', e => {
+    const el = e.target;
+    if (el.classList.contains('token') && el.dataset.key) {
+      const k = el.dataset.key, v = el.textContent.trim();
+      S[k] = v;
+      document.querySelectorAll(`.token[data-key="${k}"]`).forEach(t => { if (t !== el) t.textContent = v; });
+      saveS();
+    }
+  });
+
+  document.addEventListener('blur', e => {
+    if (e.target.classList.contains('token')) { saveS(); }
+  }, true);
+
+  function saveS() { try { localStorage.setItem(SK, JSON.stringify(S)); } catch(e) {} }
+  function loadS() { try { const r = localStorage.getItem(SK); return r ? JSON.parse(r) : {}; } catch(e) { return {}; } }
+  function printPDF() { if (document.body.classList.contains('edit-mode')) toggleEdit(); setTimeout(() => window.print(), 150); }
+
+  init();
+</script>
+
+</body>
+</html>
