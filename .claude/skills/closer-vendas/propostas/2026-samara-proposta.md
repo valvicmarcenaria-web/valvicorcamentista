@@ -36,23 +36,27 @@
 
 ### 5. Investimento
 
-| Ambiente | Investimento |
+> **Ajuste comercial Jonathan (17/06):** cama corrigida ao mercado (R$ 5.500) e spread
+> entre versões ampliado p/ R$ 3.000 (o +R$ 1.000 era pouco pro salto 2→5 anos).
+> Números redondos. **Valores VIGENTES abaixo.**
+
+| Ambiente (Linha Essencial) | Investimento |
 |---|---:|
-| Painel de cabeceira | R$ 6.785 |
-| Cama com prateleiras | R$ 6.752 |
-| Bancada + armário inferior | R$ 6.477 |
-| Roupeiro + nicho iluminado | R$ 17.486 |
-| *(escopo idêntico nas duas linhas — o que muda é a ferragem e a garantia)* | |
+| Painel de cabeceira | R$ 6.800 |
+| Cama com prateleiras | R$ 5.500 |
+| Bancada + armário inferior | R$ 6.500 |
+| Roupeiro + nicho iluminado | R$ 17.200 |
+| **Total — Linha Essencial** | **R$ 36.000** |
 
-**Escolha sua linha:**
+**Escolha sua linha** *(escopo idêntico; muda a ferragem e a garantia):*
 
-| Linha | Ferragem | Garantia | Investimento |
-|---|---|:---:|---:|
-| ⭐ **Conforto** *(recomendada)* | Corrediças **ocultas Hardt** com soft-close (deslizam e fecham sozinhas, em silêncio) + dobradiças Hardt | **5 anos** | **R$ 38.500** |
-| **Essencial** | Corrediças telescópicas + dobradiças padrão (funcional) | 2 anos | R$ 37.500 |
+| Linha | Ferragem | Garantia | Investimento | MC |
+|---|---|:---:|---:|:--:|
+| ⭐ **Conforto** *(recomendada)* | Toda a marcenaria em **Hardt** (ocultas soft-close) | **5 anos** | **R$ 39.000** | 40,9% |
+| **Essencial** | Telescópicas + dobradiças padrão | 2 anos | R$ 36.000 | 39,1% |
 
-> Por **+R$ 1.000** a marcenaria sai com **mais que o dobro de garantia** e o
-> conforto das gavetas soft-close — num quarto usado todo dia por anos, vale.
+> Spread **R$ 3.000**: a Conforto eleva **toda** a marcenaria para Hardt e **mais que
+> dobra a garantia (2→5 anos)** — salto de benefício que justifica o degrau de preço.
 
 **Condições (quanto mais antecipa, melhor)** — sobre a linha escolhida:
 

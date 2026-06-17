@@ -124,8 +124,18 @@ enxugado (−R$380), e **estrutura de custo de parceiro**: `vend 0` (lead da Lua
 
 - **TRAVADO em R$ 37.500 → MC real ≈ 40,4%** (valor cheio, preferência do fundador).
 - Encargos ~30% (parceiro Luana → `vend = 0`); percentuais agora **padrão da base**.
-- JSON: **`projetos/orcamento-samara-v3-mc40.json`** (vigente, travado). Próximo
-  passo: Vitor monta a proposta (Gold/Silver) a partir desta alocação.
+- JSON: **`projetos/orcamento-samara-v3-mc40.json`** (vigente, travado).
+
+### v4 — Ajuste comercial do Jonathan (17/06, via Vitor)
+
+Reprecificação comercial sobre a v3 (não muda quantitativo/material):
+- **Cama corrigida ao mercado: R$ 5.500** (estava 6.752 — item ficava caro p/ o mercado;
+  margem do item cai p/ ~30%, absorvida pelo mix).
+- **Duas linhas com spread de R$ 3.000** (Gold/Silver mais distinto):
+  **Essencial R$ 36.000** (MC 39,1%) · **Conforto/Hardt R$ 39.000** (MC 40,9%).
+- Alocação Essencial: Painel 6.800 · Cama 5.500 · Bancada 6.500 · Roupeiro 17.200.
+- Se fechar na **Conforto**, travar v4 Hardt (corrediças ocultas + dobradiças Hardt).
+- Proposta final (PDF, 2 versões): `closer-vendas/propostas/Proposta-Samara-Quarto-dos-Irmaos.pdf`.
 
 ## 4. Flags / riscos do orçamento (erra pra cima)
 
