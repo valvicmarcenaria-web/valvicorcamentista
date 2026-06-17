@@ -23,12 +23,10 @@ const AMB = [
     ['M16','Rack ripado suspenso','Cantos curvos R35, portas ripadas, puxador passante, LED 3000K.','Itapuã'],
     ['M17','Estante','4 prateleiras curvas em metalon champagne (serralheria) + LED 3000K em perfil chanfrado.','Itapuã'],
   ]],
-  ['Circulação / Escada', [
-    ['M26','Painel com porta de giro mimetizada','Friso 1×1; recorte para elevador.','Itapuã'],
-    ['M27','Rack ripado','Cantos curvos R20, portas ripadas, puxador passante.','Itapuã'],
-  ]],
-  ['Lavabo (Piscina)', [
-    ['M25','Prateleira','Apoio em MDF.','Itapuã'],
+  ['Lavabo / Circulação', [
+    ['M25','Prateleira (Lavabo Piscina)','Apoio em MDF.','Itapuã'],
+    ['M26','Painel com porta de giro mimetizada','Friso 1×1; recorte para elevador. Circulação.','Itapuã'],
+    ['M27','Rack ripado','Cantos curvos R20, portas ripadas, puxador passante. Circulação.','Itapuã'],
   ]],
   ['Lavanderia', [
     ['M07','Armário sob bancada','7 gavetões + 2 portas de giro + 1 gaveta; vão para máquina de lavar. Puxador cava usinada.','Areia'],
@@ -115,7 +113,7 @@ const totalItens = AMB.reduce((a,[,it])=>a+it.length,0);
 
 // ---- paginação determinística em páginas A4 ----
 function itemH(desc){ return 24 + Math.ceil((desc.length||1)/56)*15; }
-function buildDescr(client, project, specsLine){
+function buildDescr(client, project, specsLine, vals = {}){
   const PAGE = 1000, FIRST = 1000 - 175;
   const pages = []; let cur = []; let rem = FIRST;
   for (const [name, items] of AMB){
@@ -136,7 +134,7 @@ function buildDescr(client, project, specsLine){
       <div class="descr-cont"><span>Descritivo técnico</span><span class="descr-cont-pg">continuação</span></div>`;
     const body = groups.map(([name, items]) => `
       <div class="amb-group">
-        <div class="amb-head"><div class="amb-title">${esc(name)}</div><div class="amb-count">${items.length} ${items.length>1?'itens':'item'}</div></div>
+        <div class="amb-head"><div class="amb-title">${esc(name)}</div><div class="amb-count">${items.length} ${items.length>1?'itens':'item'}</div>${vals[name]?`<div class="amb-val">R$ ${esc(vals[name])}</div>`:''}</div>
         ${items.map(([code,nm,desc,cor]) => `
           <div class="d-item">
             <div class="d-code">${esc(code)}</div>
@@ -164,6 +162,7 @@ const DESCR_CSS = `
     .amb-head { display: flex; align-items: baseline; gap: 12px; border-bottom: 1px solid var(--graphite-15); padding-bottom: 6px; margin-bottom: 9px; }
     .amb-title { font-family: var(--fd); font-size: 17px; font-weight: 600; color: var(--graphite); letter-spacing: .04em; text-transform: uppercase; }
     .amb-count { font-family: var(--fm); font-size: 9px; color: var(--gold); letter-spacing: .04em; }
+    .amb-val { font-family: var(--fm); font-size: 10.5px; font-weight: 700; color: var(--graphite); margin-left: auto; letter-spacing: -.01em; }
     .d-item { display: flex; gap: 14px; padding: 5px 0; align-items: baseline; }
     .d-code { font-family: var(--fm); font-size: 10px; font-weight: 700; color: var(--gold); min-width: 46px; flex-shrink: 0; }
     .d-body { flex: 1; font-size: 11.5px; line-height: 1.5; }
@@ -243,18 +242,57 @@ const DEPO = {
   url: 'https://lh3.googleusercontent.com/d/1MsmhniA_z1HXRBw_bQ7D-VgujrDDxLNH=w1600'
 };
 
+// Valores por ambiente (fonte: Lavinia, rateio proporcional ao custo, arredondado a R$500)
+// Referência: versão "Tudo na cor" de cada linha (V2 para Premium, V4 para Essencial)
+const VALS_PREMIUM = {
+  'Cozinha':                           '43.500',
+  'Gourmet':                           '12.500',
+  'Sala / Estar':                      '23.500',
+  'Lavabo / Circulação':               '6.500',
+  'Lavanderia':                        '28.500',
+  'Subsolo / Despensa / I.S. Subsolo': '11.500',
+  'Rouparia':                          '6.000',
+  'Quarto Hóspedes':                   '21.000',
+  'Semissuíte (Banheiro)':             '12.500',
+  'Suíte 03':                          '32.000',
+  'Suíte 02':                          '28.500',
+  'Suíte 01 (Infantil)':               '33.500',
+  'I.S. Suíte 01':                     '13.500',
+  'Banho Master':                      '18.000',
+  'Suíte Master':                      '68.000',
+};
+const VALS_ESSENCIAL = {
+  'Cozinha':                           '39.000',
+  'Gourmet':                           '12.000',
+  'Sala / Estar':                      '23.000',
+  'Lavabo / Circulação':               '6.500',
+  'Lavanderia':                        '26.500',
+  'Subsolo / Despensa / I.S. Subsolo': '11.000',
+  'Rouparia':                          '6.000',
+  'Quarto Hóspedes':                   '20.500',
+  'Semissuíte (Banheiro)':             '12.000',
+  'Suíte 03':                          '30.000',
+  'Suíte 02':                          '26.500',
+  'Suíte 01 (Infantil)':               '32.000',
+  'I.S. Suíte 01':                     '12.500',
+  'Banho Master':                      '17.000',
+  'Suíte Master':                      '65.500',
+};
+
 const DOCS = [
   {
     out: 'proposta-kenia-fabio-premium.html', tmpl: 'proposta-excellence.html',
     sk: 'valvic_kf_premium', badge: 'Premium · Hettich', ferragem: 'Hettich',
     garantia: '10', precoCor: '359.000', precoBranco: '345.000',
     specsLine: 'Ferragens Hettich · MDF 18mm · Amadeirado Itapuã / Areia · Laca · Garantia 10 anos',
+    vals: VALS_PREMIUM,
   },
   {
     out: 'proposta-kenia-fabio-essencial.html', tmpl: 'proposta-essencial.html',
     sk: 'valvic_kf_essencial', badge: 'Essencial · Hardt', ferragem: 'Hardt',
     garantia: '5', precoCor: '340.000', precoBranco: '317.000',
     specsLine: 'Ferragens Hardt · MDF 18mm · Amadeirado Itapuã / Areia · Laca · Garantia 5 anos',
+    vals: VALS_ESSENCIAL,
   },
 ];
 
@@ -266,7 +304,7 @@ for (const cfg of DOCS){
 
   // 2) reordena: linha do tempo (p4) vem ANTES do descritivo
   //    extrai p4, remove-o do lugar original, injeta antes do descritivo na posição de p3
-  const descrPages = buildDescr(CLIENT, PROJECT, cfg.specsLine);
+  const descrPages = buildDescr(CLIENT, PROJECT, cfg.specsLine, cfg.vals);
   const p4Match = html.match(/<section class="page" id="p4">[\s\S]*?<\/section>/);
   const p4Html = p4Match ? p4Match[0] : '';
   html = html.replace(/<section class="page" id="p4">[\s\S]*?<\/section>/, '');
