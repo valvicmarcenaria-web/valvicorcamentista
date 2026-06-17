@@ -3,31 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Valvic Marcenaria — Assinatura de Proposta</title>
+  <title>Valvic Marcenaria — Proposta Signature</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --sand:        #F3EEE4;
-      --sand-d:      #E9E1D2;
-      --gold:        #B07A56;
-      --gold-l:      #C08C66;
-      --gold-10:     rgba(176,122,86,.10);
-      --gold-20:     rgba(176,122,86,.22);
-      --gold-40:     rgba(176,122,86,.42);
-      --acc2:        #C49A4A;
-      --graphite:    #2B2B28;
-      --graphite-60: rgba(43,43,40,.6);
-      --graphite-15: rgba(43,43,40,.15);
-      --navy:        #3D2A1C;
-      --navy-m:      #4A3422;
-      --white:       #FFFFFF;
-      --warm-wh:     #FBF8F2;
-      --muted:       #8A8472;
-      --fd:          'Cormorant Garamond', Georgia, serif;
+      --obs:         #1C1C1A;
+      --obs-l:       #252523;
+      --obs-ll:      #2E2E2C;
+      --brass:       #A8895C;
+      --brass-l:     #BEA070;
+      --brass-10:    rgba(168,137,92,.10);
+      --brass-20:    rgba(168,137,92,.20);
+      --brass-40:    rgba(168,137,92,.40);
+      --cream:       #F4F0E8;
+      --cream-d:     #EAE4D8;
+      --off-wh:      #EDE8DD;
+      --muted:       rgba(237,232,221,.42);
+      --muted-l:     rgba(237,232,221,.22);
+      --fd:          'Playfair Display', Georgia, serif;
       --fb:          'Inter', system-ui, sans-serif;
       --fm:          'Space Mono', 'Courier New', monospace;
       --pw:          794px;
@@ -35,9 +32,9 @@
     }
 
     html, body {
-      background: #CEC6B8;
+      background: #111110;
       font-family: var(--fb);
-      color: var(--graphite);
+      color: var(--off-wh);
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
@@ -51,19 +48,19 @@
       padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer;
       font-family: var(--fb); font-size: 12px; font-weight: 600;
       letter-spacing: .06em; text-transform: uppercase;
-      box-shadow: 0 4px 16px rgba(0,0,0,.25); transition: all .2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,.5); transition: all .2s;
     }
-    #btn-edit  { background: var(--navy); color: var(--gold); border: 1px solid var(--gold-40); }
-    #btn-edit:hover { background: var(--navy-m); }
-    #btn-print { background: var(--gold); color: var(--navy); }
-    #btn-print:hover { background: var(--gold-l); }
+    #btn-edit  { background: var(--obs-ll); color: var(--brass); border: 1px solid var(--brass-40); }
+    #btn-edit:hover { background: #363634; }
+    #btn-print { background: var(--brass); color: var(--obs); }
+    #btn-print:hover { background: var(--brass-l); }
     @media print { #controls { display: none !important; } }
 
     /* ── PAGE ── */
     .page {
       width: var(--pw); min-height: var(--ph);
       margin: 0 auto 32px; position: relative; overflow: hidden;
-      background: var(--warm-wh); box-shadow: 0 8px 48px rgba(0,0,0,.28);
+      background: var(--obs); box-shadow: 0 8px 48px rgba(0,0,0,.7);
     }
     @media print {
       @page { size: A4; margin: 0; }
@@ -72,435 +69,670 @@
 
     /* ── TOKENS ── */
     .token { display: inline; outline: none; cursor: default; transition: background .15s; }
-    body.edit-mode .token { border-bottom: 1.5px dashed var(--gold); cursor: text; }
-    body.edit-mode .token:focus { background: rgba(196,154,74,.1); border-radius: 2px; }
+    body.edit-mode .token { border-bottom: 1.5px dashed var(--brass); cursor: text; }
+    body.edit-mode .token:focus { background: var(--brass-10); border-radius: 2px; }
 
     /* ── SHARED ── */
     .eyebrow {
       font-family: var(--fb); font-size: 9px; font-weight: 600;
-      letter-spacing: .3em; text-transform: uppercase; color: var(--gold);
+      letter-spacing: .3em; text-transform: uppercase; color: var(--brass);
     }
-    .rule-gold { width: 48px; height: 1px; background: var(--gold); margin: 14px 0; }
+    .rule-brass { width: 48px; height: 1px; background: var(--brass); margin: 14px 0; }
+
+    /* ── TOPO SVG (canvas per page, filled via JS) ── */
+    .topo-canvas {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+    }
+    .topo-canvas path {
+      fill: none; stroke: var(--brass); stroke-width: .6;
+      opacity: .09;
+    }
 
     /* ================================================================
-       SIGNATURE PAGE LAYOUT
+       PAGE 1 — CAPA
     ================================================================ */
-    #sig-page {
+    #p1 {
       display: grid;
       grid-template-rows: 76px 1fr auto;
       height: var(--ph);
     }
 
-    /* topbar */
-    #sig-page .topbar {
+    #p1 .topbar {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 52px; border-bottom: 1px solid var(--gold-20);
-      flex-shrink: 0;
+      padding: 0 52px; border-bottom: 1px solid var(--brass-10);
+      position: relative; z-index: 1;
     }
-    .logo {
-      display: flex; align-items: center; gap: 9px;
+    #p1 .logo { display: flex; align-items: center; gap: 9px; }
+    #p1 .logo svg { width: 11px; height: 11px; fill: var(--brass); opacity: .8; }
+    #p1 .logo-name {
+      font-family: var(--fd); font-size: 20px; font-weight: 500;
+      letter-spacing: .22em; color: var(--brass); text-transform: uppercase;
     }
-    .logo svg { width: 11px; height: 11px; fill: var(--gold); opacity: .75; }
-    .logo-name {
-      font-family: var(--fd); font-size: 20px; font-weight: 600;
-      letter-spacing: .2em; color: var(--gold); text-transform: uppercase;
-    }
-    .badge {
+    #p1 .badge {
       font-family: var(--fb); font-size: 8px; font-weight: 600;
       letter-spacing: .28em; text-transform: uppercase;
-      color: var(--gold); border: 1px solid var(--gold-40);
+      color: rgba(168,137,92,.45); border: 1px solid rgba(168,137,92,.18);
       padding: 4px 12px; border-radius: 2px;
     }
 
-    /* ── BODY ── */
-    .sig-body {
-      flex: 1;
-      padding: 52px 60px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
+    #p1 .hero {
+      position: relative; margin: 24px 52px; border-radius: 1px; overflow: hidden; z-index: 1;
+    }
+    #p1 .hero img { width: 100%; height: 100%; object-fit: cover; display: none; }
+    #p1 .hero-ph {
+      width: 100%; min-height: 528px;
+      background: linear-gradient(145deg,#282624 0%,#1A1816 50%,#201E1C 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+    }
+    #p1 .hero-ph svg { width: 40px; height: 40px; opacity: .18; }
+    #p1 .hero-ph span { font-size: 9px; letter-spacing: .3em; color: var(--brass-40); text-transform: uppercase; }
+    #hero-url-row {
+      display: none; position: absolute; bottom: 10px; left: 10px; right: 10px; z-index: 5;
+    }
+    #hero-url-row input {
+      width: 100%; padding: 7px 12px;
+      background: rgba(0,0,0,.7); border: 1px solid var(--brass); border-radius: 4px;
+      color: var(--brass); font-size: 11px; font-family: var(--fm); outline: none;
+    }
+    #hero-url-row input::placeholder { color: var(--brass-40); }
+
+    #p1 .identity {
+      padding: 28px 52px 44px; z-index: 1;
+      display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 20px;
+    }
+    #p1 .prep { font-size: 8px; font-weight: 500; letter-spacing: .28em; text-transform: uppercase; color: rgba(168,137,92,.4); margin-bottom: 10px; }
+    #p1 .client-name {
+      font-family: var(--fd); font-size: 52px; font-weight: 300;
+      color: var(--off-wh); letter-spacing: -.01em; line-height: 1.06; margin-bottom: 10px;
+    }
+    #p1 .proj-label { font-size: 11px; color: var(--muted); letter-spacing: .08em; margin-bottom: 3px; }
+    #p1 .proj-desc {
+      font-family: var(--fd); font-size: 16px; font-weight: 400; font-style: italic;
+      color: rgba(237,232,221,.45);
+    }
+    #p1 .meta { text-align: right; }
+    #p1 .meta-date { font-family: var(--fm); font-size: 10px; color: rgba(168,137,92,.4); letter-spacing: .06em; margin-bottom: 5px; }
+    #p1 .meta-ref  { font-family: var(--fm); font-size: 9px; color: var(--muted-l); letter-spacing: .05em; }
+    #p1 .brass-bar { height: 2px; background: linear-gradient(90deg,transparent,var(--brass) 20%,var(--brass) 80%,transparent); position: absolute; bottom: 0; left: 0; right: 0; z-index: 1; }
+
+    /* ================================================================
+       PAGE 2 — DIFERENCIAIS
+    ================================================================ */
+    #p2 { display: flex; flex-direction: column; height: var(--ph); }
+
+    #p2 .p2-head {
+      padding: 52px 60px 36px;
+      border-bottom: 1px solid var(--brass-10);
+      flex-shrink: 0; position: relative; z-index: 1;
+    }
+    #p2 .p2-headline {
+      font-family: var(--fd); font-size: 46px; font-weight: 300;
+      color: var(--off-wh); letter-spacing: -.01em; line-height: 1.06; margin-top: 10px;
+    }
+    #p2 .p2-headline em { font-style: italic; color: var(--brass); }
+    #p2 .p2-sub {
+      font-size: 12px; color: var(--muted); margin-top: 12px;
+      line-height: 1.65; max-width: 500px; letter-spacing: .01em;
     }
 
-    /* intro */
-    .sig-intro { margin-bottom: 40px; }
-    .sig-intro .sig-eyebrow {
-      font-family: var(--fb); font-size: 9px; font-weight: 600;
-      letter-spacing: .3em; text-transform: uppercase; color: var(--gold);
-      margin-bottom: 12px;
-    }
-    .sig-intro h2 {
-      font-family: var(--fd); font-size: 38px; font-weight: 300;
-      color: var(--graphite); letter-spacing: -.01em; line-height: 1.1;
-      margin-bottom: 14px;
-    }
-    .sig-intro h2 em { font-style: italic; color: var(--gold); }
-    .sig-intro p {
-      font-size: 12px; color: var(--muted); line-height: 1.7;
-      max-width: 520px; letter-spacing: .01em;
+    #p2 .p2-body {
+      flex: 1; display: grid; grid-template-columns: 1fr 1fr; min-height: 0;
     }
 
-    /* summary strip */
-    .sig-summary {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      border: 1px solid var(--gold-20); border-radius: 2px;
-      overflow: hidden; margin-bottom: 40px;
+    #p2 .photo-col {
+      position: relative; background: #141412; overflow: hidden;
     }
-    .sum-cell {
-      padding: 18px 22px;
-      border-right: 1px solid var(--gold-20);
-    }
-    .sum-cell:last-child { border-right: none; }
-    .sum-label {
-      font-size: 7.5px; font-weight: 600; letter-spacing: .25em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 7px;
-    }
-    .sum-val {
-      font-family: var(--fd); font-size: 22px; font-weight: 500;
-      color: var(--graphite); line-height: 1.1;
-    }
-    .sum-sub {
-      font-size: 10px; color: var(--muted); margin-top: 4px; letter-spacing: .03em;
-    }
-
-    /* acceptance declaration */
-    .acceptance-box {
-      background: var(--sand);
-      border: 1px solid var(--gold-20);
-      border-radius: 2px;
-      padding: 28px 32px;
-      margin-bottom: 36px;
-    }
-    .acceptance-label {
-      font-size: 8px; font-weight: 600; letter-spacing: .28em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
-    }
-    .acceptance-text {
-      font-family: var(--fd); font-size: 14px; font-weight: 300; font-style: italic;
-      color: var(--graphite-60); line-height: 1.75;
-    }
-    .acceptance-text strong {
-      font-style: normal; font-weight: 500; color: var(--graphite);
-    }
-
-    /* signature grid */
-    .sig-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 40px; margin-bottom: 36px;
-    }
-
-    .sig-block {}
-    .sig-block-label {
-      font-size: 8px; font-weight: 600; letter-spacing: .25em;
-      text-transform: uppercase; color: var(--muted); margin-bottom: 28px;
-    }
-    .sig-line-area {
-      border-bottom: 1px solid var(--graphite-15);
-      margin-bottom: 10px; min-height: 48px;
-      display: flex; align-items: flex-end;
-    }
-    .sig-name {
-      font-family: var(--fd); font-size: 14px; font-weight: 500;
-      color: var(--graphite); letter-spacing: .04em; padding-bottom: 8px;
-    }
-    .sig-role {
-      font-size: 9px; color: var(--muted); letter-spacing: .1em;
-      text-transform: uppercase; margin-bottom: 4px;
-    }
-    .sig-cpf {
-      font-family: var(--fm); font-size: 9px; color: var(--muted);
-      letter-spacing: .06em;
-    }
-    .sig-date-row {
-      margin-top: 12px; display: flex; align-items: center; gap: 12px;
-    }
-    .sig-date-label {
-      font-size: 9px; color: var(--muted); letter-spacing: .08em;
-      text-transform: uppercase; white-space: nowrap;
-    }
-    .sig-date-line {
-      flex: 1; border-bottom: 1px solid var(--graphite-15); height: 18px;
-    }
-
-    /* guarantee strip */
-    .guarantee-strip {
-      background: var(--navy);
-      border-radius: 2px;
-      padding: 20px 28px;
-      display: flex; align-items: center; gap: 24px;
-      margin-bottom: 32px;
-    }
-    .guarantee-icon {
-      flex-shrink: 0; width: 44px; height: 44px;
-      border: 1.5px solid var(--gold-40); border-radius: 50%;
+    #p2 .photo-col img { width: 100%; height: 100%; object-fit: cover; display: none; opacity: .85; }
+    #p2 .photo-ph {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg,#201E1A 0%,#141210 55%,#1A1816 100%);
       display: flex; align-items: center; justify-content: center;
     }
-    .guarantee-icon svg {
-      width: 20px; height: 20px;
-      stroke: var(--gold); fill: none; stroke-width: 1.5;
-      stroke-linecap: round; stroke-linejoin: round;
+    #p2 .photo-ph::after {
+      content: 'DETALHE DO ACABAMENTO';
+      font-size: 8px; letter-spacing: .3em; color: var(--brass-40); font-family: var(--fb);
     }
-    .guarantee-text {}
-    .guarantee-title {
-      font-family: var(--fd); font-size: 16px; font-weight: 500;
-      color: var(--white); margin-bottom: 3px;
-    }
-    .guarantee-desc {
-      font-size: 10.5px; color: rgba(251,248,242,.55); line-height: 1.55;
-    }
-    .guarantee-badge {
-      margin-left: auto; flex-shrink: 0; text-align: center;
-    }
-    .guarantee-years {
-      font-family: var(--fd); font-size: 36px; font-weight: 400;
-      color: var(--gold); line-height: 1;
-    }
-    .guarantee-years-label {
-      font-size: 8px; font-weight: 600; letter-spacing: .2em;
-      text-transform: uppercase; color: rgba(196,154,74,.55);
-      margin-top: 2px;
+    #p2-url-row { display: none; position: absolute; bottom: 8px; left: 8px; right: 8px; z-index: 5; }
+    #p2-url-row input { width: 100%; padding: 6px 10px; background: rgba(0,0,0,.8); border: 1px solid var(--brass); border-radius: 4px; color: var(--brass); font-size: 10px; font-family: var(--fm); outline: none; }
+
+    #p2 .callout-svg {
+      position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
     }
 
-    /* terms */
-    .terms-row {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 16px; margin-bottom: 0;
+    #p2 .dif-col {
+      padding: 36px 36px 36px 40px;
+      display: flex; flex-direction: column; justify-content: center; gap: 22px;
+      background: var(--obs-l);
     }
-    .term-item {
-      display: flex; align-items: flex-start; gap: 10px;
+    #p2 .dif-col-label { font-size: 8px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--brass); }
+
+    .dif {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding-bottom: 20px; border-bottom: 1px solid rgba(237,232,221,.07);
     }
-    .term-bullet {
-      flex-shrink: 0; width: 5px; height: 5px;
-      border-radius: 50%; background: var(--gold); margin-top: 5px;
+    .dif:last-child { border-bottom: none; padding-bottom: 0; }
+    .dif-ico {
+      flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%;
+      border: 1px solid var(--brass-40);
+      display: flex; align-items: center; justify-content: center; margin-top: 1px;
     }
-    .term-text {
-      font-size: 10px; color: var(--muted); line-height: 1.6;
-    }
-    .term-text strong {
-      display: block; font-weight: 600; color: var(--graphite);
-      letter-spacing: .03em; margin-bottom: 1px;
+    .dif-ico svg { width: 15px; height: 15px; stroke: var(--brass); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .dif-title { font-family: var(--fd); font-size: 16px; font-weight: 500; color: var(--off-wh); margin-bottom: 2px; }
+    .dif-spec  { font-family: var(--fm); font-size: 8px; color: var(--brass); letter-spacing: .08em; margin-bottom: 3px; }
+    .dif-desc  { font-size: 11px; color: var(--muted); line-height: 1.55; }
+
+    /* ================================================================
+       PAGE 3 — O PROJETO
+    ================================================================ */
+    #p3 { display: grid; grid-template-rows: auto 1fr auto; height: var(--ph); background: var(--obs-l); }
+
+    #p3 .p3-head { padding: 48px 60px 0; position: relative; z-index: 1; }
+    #p3 .p3-title { font-family: var(--fd); font-size: 42px; font-weight: 300; color: var(--off-wh); line-height: 1.06; margin-top: 8px; }
+    #p3 .p3-sub { font-family: var(--fd); font-size: 16px; font-style: italic; color: var(--muted); margin-top: 6px; }
+    #p3 .p3-rule { width: 48px; height: 1px; background: var(--brass); margin: 18px 0 0; }
+
+    #p3 .p3-body { padding: 32px 60px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: stretch; position: relative; z-index: 1; }
+
+    .render-box { position: relative; background: #141412; border: 1px solid var(--brass-20); border-radius: 1px; overflow: hidden; min-height: 480px; }
+    .amb-col { display: flex; flex-direction: column; justify-content: center; }
+    .render-box img { width: 100%; height: 100%; object-fit: cover; display: none; }
+    .render-ph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 24px; }
+    .render-ph svg { width: 40px; height: 40px; opacity: .25; }
+    .render-ph span { font-size: 9px; letter-spacing: .25em; color: var(--brass-40); text-transform: uppercase; text-align: center; }
+    .render-url-row { display: none; position: absolute; bottom: 8px; left: 8px; right: 8px; }
+    .render-url-row input {
+      width: 100%; padding: 6px 10px;
+      background: rgba(0,0,0,.8); border: 1px solid var(--brass); border-radius: 4px;
+      color: var(--brass); font-size: 10px; font-family: var(--fm); outline: none;
     }
 
-    /* ── FOOTER ── */
-    .sig-footer {
-      padding: 20px 52px 32px;
+    .specs-label { font-size: 8px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--brass); margin-bottom: 18px; }
+    .amb {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 16px 0; border-bottom: 1px solid rgba(237,232,221,.08);
+    }
+    .amb:first-of-type { border-top: 1px solid rgba(237,232,221,.08); }
+    .amb-ico { flex-shrink: 0; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .amb-ico svg { width: 15px; height: 15px; stroke: var(--brass); fill: none; stroke-width: 1.5; stroke-linecap: round; }
+    .amb-name { font-family: var(--fd); font-size: 15px; font-weight: 500; color: var(--off-wh); margin-bottom: 2px; }
+    .amb-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+    #p3 .p3-foot { padding: 0 60px 44px; position: relative; z-index: 1; }
+    .specs-grid { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid var(--brass-20); border-radius: 1px; overflow: hidden; }
+    .spec-cell { padding: 14px 18px; border-right: 1px solid var(--brass-20); background: var(--obs); }
+    .spec-cell:last-child { border-right: none; }
+    .spec-label { font-size: 7.5px; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: var(--brass); margin-bottom: 5px; }
+    .spec-val { font-family: var(--fm); font-size: 11px; color: var(--off-wh); letter-spacing: .03em; }
+
+    /* ================================================================
+       PAGE 4 — LINHA DO TEMPO
+    ================================================================ */
+    #p4 { display: flex; flex-direction: column; height: var(--ph); position: relative; }
+    #p4-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .12; display: none; z-index: 0; }
+    #p4 > *:not(#p4-bg):not(.topo-canvas) { position: relative; z-index: 1; }
+    #p4-url-row { display: none; position: absolute; bottom: 58px; left: 60px; right: 60px; z-index: 10; }
+    #p4-url-row input { width: 100%; padding: 6px 10px; background: rgba(0,0,0,.8); border: 1px solid var(--brass); border-radius: 4px; color: var(--brass); font-size: 10px; font-family: var(--fm); outline: none; }
+
+    #p4 .p4-head { padding: 52px 60px 36px; border-bottom: 1px solid var(--brass-10); }
+    #p4 .p4-eyebrow { font-size: 9px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: rgba(168,137,92,.55); margin-bottom: 10px; }
+    #p4 .p4-title { font-family: var(--fd); font-size: 42px; font-weight: 300; color: var(--off-wh); line-height: 1.06; }
+    #p4 .p4-title em { font-style: italic; color: var(--muted); }
+    #p4 .p4-sub { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.6; max-width: 440px; }
+
+    .tl-grid { flex: 1; display: grid; grid-template-columns: repeat(4,1fr); grid-template-rows: 1fr 1fr; }
+    .tl-step {
+      padding: 24px 20px 20px;
+      display: flex; flex-direction: column; align-items: flex-start;
+      border-left: 1px solid var(--brass-10); position: relative;
+    }
+    .tl-step:nth-child(n+5) { border-top: 1px solid var(--brass-10); }
+    .tl-circle {
+      width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--brass);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 14px; flex-shrink: 0;
+    }
+    .tl-num { font-family: var(--fd); font-size: 17px; font-weight: 400; color: var(--brass); }
+    .tl-name { font-family: var(--fd); font-size: 15px; font-weight: 500; color: var(--off-wh); line-height: 1.2; margin-bottom: 8px; }
+    .tl-arg  { font-size: 10.5px; color: var(--muted); line-height: 1.55; }
+    .tl-step:not(:nth-child(4)):not(:nth-child(8)) .tl-conn {
+      position: absolute; top: 43px; right: 0;
+      width: 50%; height: 1px;
+      background: linear-gradient(90deg, rgba(168,137,92,.3), rgba(168,137,92,.03));
+    }
+    .tl-step:nth-child(4) .tl-conn, .tl-step:nth-child(8) .tl-conn { display: none; }
+
+    #p4 .p4-foot {
+      padding: 18px 60px 32px; flex-shrink: 0;
       display: flex; align-items: center; justify-content: space-between;
-      border-top: 1px solid var(--gold-20); flex-shrink: 0;
-      margin-top: auto;
+      border-top: 1px solid var(--brass-10);
     }
-    .foot-brand {
-      font-family: var(--fd); font-size: 14px; font-weight: 600;
-      letter-spacing: .14em; color: var(--gold); text-transform: uppercase;
-    }
-    .foot-contact {
-      display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
-    }
-    .foot-contact a, .foot-contact span {
-      font-family: var(--fm); font-size: 9px; color: var(--muted);
-      letter-spacing: .05em; text-decoration: none;
-    }
-    .foot-contact a:hover { color: var(--gold); }
-    .socials { display: flex; gap: 18px; align-items: center; }
+    #p4 .foot-brand { font-family: var(--fd); font-size: 14px; font-weight: 500; letter-spacing: .14em; color: rgba(168,137,92,.4); text-transform: uppercase; }
+    .socials { display: flex; gap: 22px; }
     .soc {
-      display: flex; align-items: center; gap: 6px;
+      display: flex; align-items: center; gap: 7px;
       font-size: 10px; color: var(--muted); text-decoration: none; letter-spacing: .04em;
     }
-    .soc svg { width: 13px; height: 13px; fill: var(--gold); }
+    .soc svg { width: 13px; height: 13px; fill: var(--brass-40); }
 
-    /* gold bar */
-    .gold-bar {
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--gold) 25%, var(--gold) 75%, transparent);
-      position: absolute; bottom: 0; left: 0; right: 0;
+    /* ================================================================
+       PAGE 5 — DEPOIMENTO
+    ================================================================ */
+    #p5 { display: grid; grid-template-columns: 1fr 1fr; height: var(--ph); background: var(--obs-l); }
+
+    #p5 .quote-col { padding: 72px 48px 60px; display: flex; flex-direction: column; justify-content: center; }
+    #p5 .q-label { font-size: 8px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--brass); margin-bottom: 32px; }
+    #p5 .q-mark { font-family: var(--fd); font-size: 110px; color: var(--brass-20); line-height: .55; font-weight: 300; margin-bottom: 20px; }
+    #p5 .q-text { font-family: var(--fd); font-size: 21px; font-style: italic; font-weight: 300; color: var(--off-wh); line-height: 1.55; }
+    #p5 .q-rule { width: 40px; height: 1px; background: var(--brass); margin: 28px 0; }
+    #p5 .q-author { font-family: var(--fd); font-size: 15px; font-weight: 500; color: var(--off-wh); margin-bottom: 3px; }
+    #p5 .q-proj { font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+
+    #p5 .p5-photo { position: relative; background: #0E0E0C; overflow: hidden; }
+    #p5 .p5-photo img { width: 100%; height: 100%; object-fit: cover; display: none; opacity: .85; }
+    #p5 .p5-ph { width: 100%; height: 100%; background: linear-gradient(155deg,#201E1A 0%,#141210 55%,#1E1C18 100%); display: flex; align-items: center; justify-content: center; }
+    #p5 .p5-ph::after { content: 'FOTO DO PROJETO'; font-size: 8px; letter-spacing: .28em; color: var(--brass-40); font-family: var(--fb); }
+    #p5 .p5-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 24px; background: linear-gradient(0deg,rgba(18,18,16,.7) 0%,transparent 100%); }
+    #p5 .p5-caption { font-family: var(--fm); font-size: 9px; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; }
+    #p5-url-row { display: none; position: absolute; bottom: 8px; left: 8px; right: 8px; }
+    #p5-url-row input { width: 100%; padding: 6px 10px; background: rgba(0,0,0,.8); border: 1px solid var(--brass); border-radius: 4px; color: var(--brass); font-size: 10px; font-family: var(--fm); outline: none; }
+
+    /* ================================================================
+       PAGE 6 — INVESTIMENTO
+    ================================================================ */
+    #p6 { background: var(--obs); display: grid; grid-template-rows: auto 1fr; min-height: var(--ph); }
+
+    #p6 .inv-dark-head {
+      background: #111110;
+      padding: 44px 56px 36px;
+      position: relative;
     }
+    #p6 .inv-dark-head::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--brass) 20%, var(--brass) 80%, transparent);
+    }
+    #p6 .inv-eyebrow { font-size: 9px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: rgba(168,137,92,.55); margin-bottom: 10px; }
+    #p6 .inv-title { font-family: var(--fd); font-size: 44px; font-weight: 300; color: var(--off-wh); line-height: 1.05; }
+    #p6 .inv-sub { font-size: 12px; color: var(--muted); margin-top: 10px; letter-spacing: .02em; }
+
+    #p6 .inv-body { padding: 36px 56px 44px; }
+
+    .inv-block { margin-bottom: 22px; }
+    .inv-block-label { font-size: 8px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: rgba(237,232,221,.35); margin-bottom: 7px; }
+    .inv-note { font-family: var(--fd); font-size: 12px; font-style: italic; color: var(--muted); margin-bottom: 6px; }
+
+    .inv-tbl { width: 100%; border-collapse: collapse; font-family: var(--fb); }
+    .inv-tbl thead tr { background: #111110; }
+    .inv-tbl thead th { padding: 10px 15px; text-align: left; font-size: 8px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--brass); }
+    .inv-tbl tbody tr { border-bottom: 1px solid rgba(168,137,92,.07); }
+    .inv-tbl tbody tr:nth-child(even) { background: rgba(168,137,92,.03); }
+    .inv-tbl tbody td { padding: 9px 15px; font-size: 12px; color: var(--off-wh); }
+    .inv-tbl tbody td.val-cell { text-align: right; font-family: var(--fm); font-size: 11px; font-weight: 500; }
+    .inv-tbl tbody td.rm-cell { width: 32px; padding: 0 6px; text-align: right; }
+    .inv-tbl .total-row { background: #111110 !important; border-bottom: none !important; }
+    .inv-tbl .total-row td { padding: 13px 15px; font-family: var(--fd); font-size: 15px; font-weight: 600; color: var(--off-wh); }
+    .inv-tbl .total-row td.val-cell { color: var(--brass); font-size: 17px; font-family: var(--fm); }
+
+    .btn-add-row { margin-top: 7px; padding: 5px 14px; background: transparent; border: 1px dashed var(--brass-40); border-radius: 3px; color: var(--brass); font-size: 10px; font-family: var(--fb); cursor: pointer; transition: background .2s; }
+    .btn-add-row:hover { background: var(--brass-10); }
+    .btn-rm { background: none; border: none; color: var(--brass-40); font-size: 16px; cursor: pointer; padding: 2px 4px; line-height: 1; }
+    .btn-rm:hover { color: #c0392b; }
+    @media print { .btn-add-row, .btn-rm, .rm-cell { display: none !important; } }
+
+    .pay-block { margin-bottom: 20px; }
+    .pay-label { font-size: 8px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: rgba(237,232,221,.35); margin-bottom: 7px; }
+    .pay-tbl { width: 100%; border-collapse: collapse; font-size: 11px; font-family: var(--fb); }
+    .pay-tbl thead tr { background: rgba(168,137,92,.08); }
+    .pay-tbl thead th { padding: 8px 14px; text-align: left; font-size: 8px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: rgba(237,232,221,.35); }
+    .pay-tbl tbody td { padding: 8px 14px; color: var(--off-wh); border-bottom: 1px solid rgba(168,137,92,.07); }
+    .pay-tbl tbody td:last-child { text-align: right; font-family: var(--fm); font-size: 10px; color: var(--brass); font-weight: 600; }
+    .pay-tbl .hi td { background: rgba(168,137,92,.05); font-weight: 500; }
+
+    .meta-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 22px; }
+    .meta-card { padding: 16px 18px; border-radius: 1px; text-align: center; }
+    .mc-dark   { background: #111110; border: 1px solid var(--brass-20); }
+    .mc-brass  { background: var(--brass); }
+    .mc-obs    { background: var(--obs-l); border: 1px solid var(--brass-20); }
+    .mc-label  { font-size: 8px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; margin-bottom: 6px; }
+    .mc-dark .mc-label  { color: rgba(168,137,92,.5); }
+    .mc-brass .mc-label { color: rgba(28,28,26,.6); }
+    .mc-obs .mc-label   { color: rgba(237,232,221,.35); }
+    .mc-val { font-family: var(--fd); font-size: 24px; font-weight: 500; }
+    .mc-dark .mc-val  { color: var(--off-wh); }
+    .mc-brass .mc-val { color: var(--obs); }
+    .mc-obs .mc-val   { color: var(--off-wh); }
+    .mc-sub { font-size: 9px; margin-top: 3px; letter-spacing: .06em; }
+    .mc-dark .mc-sub  { color: var(--muted); }
+    .mc-brass .mc-sub { color: rgba(28,28,26,.5); }
+    .mc-obs .mc-sub   { color: var(--muted); }
+
+    .cta-row { padding-top: 20px; border-top: 1px solid var(--brass-20); }
+    .cta-row h3 { font-family: var(--fd); font-size: 20px; font-weight: 400; color: var(--off-wh); margin-bottom: 8px; }
+    .cta-row p  { font-size: 11px; color: var(--muted); line-height: 1.65; max-width: 560px; }
   </style>
 </head>
 <body>
 
 <!-- CONTROLS -->
 <div id="controls">
-  <button class="ctrl-btn" id="btn-edit" onclick="toggleEdit()">Editar</button>
-  <button class="ctrl-btn" id="btn-print" onclick="printPDF()">Imprimir PDF</button>
+  <button class="ctrl-btn" id="btn-edit" onclick="toggleEdit()">✏ Editar</button>
+  <button class="ctrl-btn" id="btn-print" onclick="printPDF()">⬡ Imprimir PDF</button>
 </div>
 
 
 <!-- ================================================================
-     SIGNATURE PAGE — ACEITE E ASSINATURA
+     PAGE 1 — CAPA
 ================================================================ -->
-<section class="page" id="sig-page">
+<section class="page" id="p1">
+  <svg class="topo-canvas" id="topo1" viewBox="0 0 794 1123" xmlns="http://www.w3.org/2000/svg"></svg>
 
-  <!-- topbar -->
   <div class="topbar">
     <div class="logo">
       <svg viewBox="0 0 12 12"><path d="M6 0L7 5.2L12 6L7 6.8L6 12L5 6.8L0 6L5 5.2Z"/></svg>
       <span class="logo-name">Valvic</span>
     </div>
-    <span class="badge">Aceite &amp; Assinatura</span>
+    <span class="badge">Signature · Blum</span>
   </div>
 
-  <!-- body -->
-  <div class="sig-body">
-
-    <!-- intro -->
-    <div class="sig-intro">
-      <div class="sig-eyebrow">Formalizando o projeto</div>
-      <h2>Seu espaço começa<br><em>com esta assinatura.</em></h2>
-      <p>
-        Ao assinar abaixo,
-        <strong class="token" contenteditable="false" data-key="NOME_CLIENTE" data-placeholder="Nome do Cliente">{{NOME_CLIENTE}}</strong>
-        confirma que leu e concorda com o escopo, valores e condições descritos nesta proposta —
-        e a Valvic Marcenaria assume o compromisso formal de entregar o projeto nos termos aqui definidos.
-      </p>
+  <div class="hero">
+    <img id="hero-img" src="" alt="Projeto" />
+    <div id="hero-ph" class="hero-ph">
+      <svg viewBox="0 0 40 40" fill="none" stroke="#A8895C" stroke-width="1.5" stroke-linecap="round">
+        <rect x="4" y="8" width="32" height="22" rx="1.5"/>
+        <circle cx="13" cy="16" r="3.5"/>
+        <path d="M4 23L13 15L20 22L26 17L36 26"/>
+      </svg>
+      <span>foto do projeto — inserir URL no modo edição</span>
     </div>
+    <div id="hero-url-row">
+      <input type="text" id="tk-hero-url" placeholder="URL da foto (Drive thumbnail ou link direto)" oninput="setHero(this.value)" />
+    </div>
+  </div>
 
-    <!-- summary strip -->
-    <div class="sig-summary">
-      <div class="sum-cell">
-        <div class="sum-label">Projeto</div>
-        <div class="sum-val">
-          <span class="token" contenteditable="false" data-key="PROJETO" data-placeholder="Descrição do projeto">{{PROJETO}}</span>
-        </div>
-        <div class="sum-sub">escopo aprovado</div>
+  <div class="identity">
+    <div>
+      <div class="prep">Proposta preparada para</div>
+      <div class="client-name">
+        <span class="token" contenteditable="false" data-key="NOME_CLIENTE" data-placeholder="Nome do Cliente">{{NOME_CLIENTE}}</span>
       </div>
-      <div class="sum-cell">
-        <div class="sum-label">Investimento Total</div>
-        <div class="sum-val">R$&nbsp;<span class="token" contenteditable="false" data-key="TOTAL" data-placeholder="0,00">{{TOTAL}}</span></div>
-        <div class="sum-sub">
-          conforme versão <span class="token" contenteditable="false" data-key="VERSAO" data-placeholder="Completa">{{VERSAO}}</span>
-        </div>
-      </div>
-      <div class="sum-cell">
-        <div class="sum-label">Prazo de Entrega</div>
-        <div class="sum-val">
-          <span class="token" contenteditable="false" data-key="PRAZO" data-placeholder="90">{{PRAZO}}</span> dias
-        </div>
-        <div class="sum-sub">úteis após 1.ª parcela</div>
+      <div class="proj-label">Projeto de marcenaria sob medida</div>
+      <div class="proj-desc">
+        <span class="token" contenteditable="false" data-key="PROJETO" data-placeholder="Descrição do projeto">{{PROJETO}}</span>
       </div>
     </div>
+    <div class="meta">
+      <div class="meta-date">
+        <span class="token" contenteditable="false" data-key="DATA_PROPOSTA" data-placeholder="DD/MM/AAAA">{{DATA_PROPOSTA}}</span>
+      </div>
+      <div class="meta-ref">Ref. Signature · Blum</div>
+    </div>
+  </div>
 
-    <!-- acceptance declaration -->
-    <div class="acceptance-box">
-      <div class="acceptance-label">Declaração de aceite</div>
-      <div class="acceptance-text">
-        Declaro que fui devidamente informado/a sobre todos os aspectos desta proposta comercial,
-        incluindo escopo, materiais, ferragens, prazos e condições de pagamento. Autorizo a
-        <strong>Valvic Marcenaria</strong> a dar início ao processo de detalhamento técnico e
-        programação da produção, conforme as condições acordadas, com entrada de
-        <strong class="token" contenteditable="false" data-key="ENTRADA_VALOR" data-placeholder="R$ 0,00">{{ENTRADA_VALOR}}</strong>
-        a ser realizada em
-        <strong class="token" contenteditable="false" data-key="ENTRADA_DATA" data-placeholder="__/__/____">{{ENTRADA_DATA}}</strong>.
+  <div class="brass-bar"></div>
+</section>
+
+
+<!-- ================================================================
+     PAGE 2 — DIFERENCIAIS
+================================================================ -->
+<section class="page" id="p2">
+
+  <div class="p2-head">
+    <div class="eyebrow">Por que Valvic Signature</div>
+    <div class="p2-headline">Quando o detalhe<br><em>não pode ser negociado.</em></div>
+    <div class="p2-sub">Signature é o nível onde cada peça opera com silêncio absoluto, tolerância milimétrica e engenharia que dura gerações. Blum não fabrica o segundo melhor.</div>
+  </div>
+
+  <div class="p2-body">
+
+    <div class="photo-col">
+      <img id="p2-img" src="" alt="Detalhe" />
+      <div id="p2-ph" class="photo-ph"></div>
+      <div id="p2-url-row">
+        <input type="text" id="tk-p2-url" placeholder="URL da foto (detalhe de acabamento)" oninput="setP2(this.value)" />
+      </div>
+      <svg class="callout-svg" viewBox="0 0 397 480" xmlns="http://www.w3.org/2000/svg">
+        <g opacity=".6">
+          <circle cx="310" cy="78"  r="3" fill="#A8895C"/>
+          <line  x1="313" y1="78"  x2="390" y2="78"  stroke="#A8895C" stroke-width=".8"/>
+          <circle cx="280" cy="195" r="3" fill="#A8895C" opacity=".7"/>
+          <line  x1="283" y1="195" x2="390" y2="175" stroke="#A8895C" stroke-width=".8" opacity=".7"/>
+          <circle cx="200" cy="340" r="3" fill="#A8895C" opacity=".5"/>
+          <line  x1="203" y1="340" x2="390" y2="300" stroke="#A8895C" stroke-width=".8" opacity=".5"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="dif-col">
+      <div class="dif-col-label">5 razões que definem a entrega</div>
+
+      <div class="dif">
+        <div class="dif-ico">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.5 6.5L22 9.3l-5 4.8 1.2 6.9L12 17.8 5.8 21 7 14.1 2 9.3l6.5-.8Z"/></svg>
+        </div>
+        <div>
+          <div class="dif-title">Ferragem Blum — austríaca, vitalícia</div>
+          <div class="dif-spec">MOVENTO BLUMOTION · FEATHER-TOUCH · GARANTIA VITALÍCIA</div>
+          <div class="dif-desc">Blum desenvolve cada sistema há décadas. O resultado é um movimento que parece inevitável — você fecha a gaveta e ela termina o caminho sozinha, sem esforço, sem barulho.</div>
+        </div>
+      </div>
+
+      <div class="dif">
+        <div class="dif-ico">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+        </div>
+        <div>
+          <div class="dif-title">Engenharia digital antes do corte</div>
+          <div class="dif-spec">SOFTWARE ESPECIALIZADO · APROVAÇÃO PRÉVIA · TOLERÂNCIA ±0,3MM</div>
+          <div class="dif-desc">Seu projeto existe em software de marcenaria antes de qualquer chapa ser cortada. Zero improviso em obra.</div>
+        </div>
+      </div>
+
+      <div class="dif">
+        <div class="dif-ico">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <div class="dif-title">Equipe própria do início ao fim</div>
+          <div class="dif-spec">SEM TERCEIRIZAÇÃO · RESPONSABILIDADE TOTAL</div>
+          <div class="dif-desc">Quem projeta é quem produz é quem instala. Não há elo solto na cadeia — a responsabilidade não muda de mão.</div>
+        </div>
+      </div>
+
+      <div class="dif">
+        <div class="dif-ico">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <div>
+          <div class="dif-title">Acabamento em cabine própria</div>
+          <div class="dif-spec">LACA PU · LIXAMENTO ENTRE DEMÃOS · SUPERFÍCIE AVELUDADA</div>
+          <div class="dif-desc">Pintura em cabine própria, com lixamento entre camadas. Superfície uniforme — sem casca de laranja, sem retoque amador.</div>
+        </div>
+      </div>
+
+      <div class="dif">
+        <div class="dif-ico">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92V19a2 2 0 01-2.18 2A19.79 19.79 0 013.07 5.18 2 2 0 015 3h2.09a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 18z"/></svg>
+        </div>
+        <div>
+          <div class="dif-title">Suporte real pós-entrega</div>
+          <div class="dif-spec">GARANTIA EM CONTRATO · VISITA DE ACOMPANHAMENTO</div>
+          <div class="dif-desc">Garantia formal assinada. Não sumimos após o pagamento — estamos aqui quando você precisar.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ================================================================
+     PAGE 3 — O PROJETO
+================================================================ -->
+<section class="page" id="p3">
+
+  <div class="p3-head">
+    <div class="eyebrow">O Projeto</div>
+    <div class="p3-title">O que vamos<br>executar para você.</div>
+    <div class="p3-sub">
+      <span class="token" contenteditable="false" data-key="NOME_CLIENTE" data-placeholder="Nome do Cliente">{{NOME_CLIENTE}}</span>
+      &nbsp;—&nbsp;
+      <span class="token" contenteditable="false" data-key="PROJETO" data-placeholder="Descrição do projeto">{{PROJETO}}</span>
+    </div>
+    <div class="p3-rule"></div>
+  </div>
+
+  <div class="p3-body">
+
+    <div class="render-box">
+      <img id="render-img" src="" alt="Render" />
+      <div id="render-ph" class="render-ph">
+        <svg viewBox="0 0 40 40" fill="none" stroke="#A8895C" stroke-width="1.5" stroke-linecap="round" opacity=".3">
+          <rect x="4" y="9" width="32" height="22" rx="1.5"/>
+          <circle cx="13" cy="16" r="3.5"/>
+          <path d="M4 24L13 16L21 23L27 18L36 27"/>
+        </svg>
+        <span>render ou foto do projeto<br>inserir URL no modo edição</span>
+      </div>
+      <div class="render-url-row" id="render-url-row">
+        <input type="text" id="tk-render-url" placeholder="URL do render/foto do projeto" oninput="setRender(this.value)" />
       </div>
     </div>
 
-    <!-- signature grid -->
-    <div class="sig-grid">
+    <div class="amb-col">
+      <div class="specs-label">Ambientes incluídos</div>
 
-      <!-- client -->
-      <div class="sig-block">
-        <div class="sig-block-label">Assinatura do Cliente</div>
-        <div class="sig-line-area"></div>
-        <div class="sig-name">
-          <span class="token" contenteditable="false" data-key="NOME_CLIENTE" data-placeholder="Nome do Cliente">{{NOME_CLIENTE}}</span>
-        </div>
-        <div class="sig-role">Cliente</div>
-        <div class="sig-cpf">
-          CPF: <span class="token" contenteditable="false" data-key="CPF_CLIENTE" data-placeholder="000.000.000-00">{{CPF_CLIENTE}}</span>
-        </div>
-        <div class="sig-date-row">
-          <span class="sig-date-label">Data</span>
-          <div class="sig-date-line"></div>
+      <div class="amb">
+        <div class="amb-ico"><svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></svg></div>
+        <div>
+          <div class="amb-name"><span class="token editable-cell" contenteditable="false" data-placeholder="Ambiente">Quarto Casal</span></div>
+          <div class="amb-desc"><span class="token editable-cell" contenteditable="false" data-placeholder="Descrição">Roupeiro 6 portas · Painel TV · 2 criados-mudos</span></div>
         </div>
       </div>
 
-      <!-- valvic -->
-      <div class="sig-block">
-        <div class="sig-block-label">Assinatura Valvic Marcenaria</div>
-        <div class="sig-line-area"></div>
-        <div class="sig-name">Vitor Alcântara</div>
-        <div class="sig-role">Responsável Comercial · Valvic Marcenaria</div>
-        <div class="sig-cpf">CNPJ: 28.304.219/0001-67</div>
-        <div class="sig-date-row">
-          <span class="sig-date-label">Data</span>
-          <div class="sig-date-line"></div>
+      <div class="amb">
+        <div class="amb-ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+        <div>
+          <div class="amb-name"><span class="token editable-cell" contenteditable="false" data-placeholder="Ambiente">Sala de Estar</span></div>
+          <div class="amb-desc"><span class="token editable-cell" contenteditable="false" data-placeholder="Descrição">Painel TV · Rack integrado · Nicho decorativo</span></div>
+        </div>
+      </div>
+
+      <div class="amb">
+        <div class="amb-ico"><svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V9M20 20V9M4 9a8 8 0 0116 0"/></svg></div>
+        <div>
+          <div class="amb-name"><span class="token editable-cell" contenteditable="false" data-placeholder="Ambiente">Cozinha</span></div>
+          <div class="amb-desc"><span class="token editable-cell" contenteditable="false" data-placeholder="Descrição">Armários aéreos · Balcão baixo · Ilha central</span></div>
+        </div>
+      </div>
+
+      <div class="amb">
+        <div class="amb-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div>
+          <div class="amb-name"><span class="token editable-cell" contenteditable="false" data-placeholder="Ambiente">Home Office</span></div>
+          <div class="amb-desc"><span class="token editable-cell" contenteditable="false" data-placeholder="Descrição">Bancada · Estante modular · Painel organizador</span></div>
         </div>
       </div>
 
     </div>
+  </div>
 
-    <!-- guarantee strip -->
-    <div class="guarantee-strip">
-      <div class="guarantee-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+  <div class="p3-foot">
+    <div class="specs-grid">
+      <div class="spec-cell">
+        <div class="spec-label">Ferragem</div>
+        <div class="spec-val"><span class="token" contenteditable="false" data-key="FERRAGEM" data-placeholder="Blum Movento">Blum Movento</span></div>
       </div>
-      <div class="guarantee-text">
-        <div class="guarantee-title">Garantia Hardt inclusa nesta proposta</div>
-        <div class="guarantee-desc">
-          Ferragens Hardt cobertas por
-          <strong style="color:var(--gold)"><span class="token" contenteditable="false" data-key="GARANTIA_ANOS" data-placeholder="5">{{GARANTIA_ANOS}}</span> anos</strong>
-          de garantia contratual. Estrutura e acabamento Valvic: 1 ano.
-          Qualquer defeito de fabricação ou montagem será solucionado sem custo adicional.
-        </div>
+      <div class="spec-cell">
+        <div class="spec-label">Material</div>
+        <div class="spec-val"><span class="token" contenteditable="false" data-key="MATERIAL" data-placeholder="MDF 18mm">MDF 18mm</span></div>
       </div>
-      <div class="guarantee-badge">
-        <div class="guarantee-years">
-          <span class="token" contenteditable="false" data-key="GARANTIA_ANOS" data-placeholder="5">{{GARANTIA_ANOS}}</span>
-        </div>
-        <div class="guarantee-years-label">anos</div>
+      <div class="spec-cell">
+        <div class="spec-label">Acabamento</div>
+        <div class="spec-val"><span class="token" contenteditable="false" data-key="ACABAMENTO" data-placeholder="Laca PU fosca">Laca PU fosca</span></div>
       </div>
     </div>
+  </div>
 
-    <!-- terms -->
-    <div class="terms-row">
-      <div class="term-item">
-        <div class="term-bullet"></div>
-        <div class="term-text">
-          <strong>Condição de pagamento</strong>
-          <span class="token" contenteditable="false" data-key="CONDICAO_PAGAMENTO" data-placeholder="Entrada 30% + saldo">{{CONDICAO_PAGAMENTO}}</span>
-        </div>
-      </div>
-      <div class="term-item">
-        <div class="term-bullet"></div>
-        <div class="term-text">
-          <strong>Validade desta proposta</strong>
-          Até <span class="token" contenteditable="false" data-key="VALIDADE" data-placeholder="__/__/____">{{VALIDADE}}</span>.
-          Após esta data, os valores são reajustados.
-        </div>
-      </div>
-      <div class="term-item">
-        <div class="term-bullet"></div>
-        <div class="term-text">
-          <strong>Foro</strong>
-          Belo Horizonte — MG. Regido pelo Código Civil Brasileiro e CDC.
-        </div>
-      </div>
-      <div class="term-item">
-        <div class="term-bullet"></div>
-        <div class="term-text">
-          <strong>Ferragem</strong>
-          <span class="token" contenteditable="false" data-key="FERRAGEM" data-placeholder="Hardt">{{FERRAGEM}}</span>
-          — padrão desta proposta.
-        </div>
-      </div>
-      <div class="term-item">
-        <div class="term-bullet"></div>
-        <div class="term-text">
-          <strong>Material</strong>
-          <span class="token" contenteditable="false" data-key="MATERIAL" data-placeholder="MDF 18mm">{{MATERIAL}}</span>
-          · <span class="token" contenteditable="false" data-key="ACABAMENTO" data-placeholder="Laca PU fosca">{{ACABAMENTO}}</span>.
-        </div>
-      </div>
-      <div class="term-item">
-        <div class="term-bullet"></div>
-        <div class="term-text">
-          <strong>Início da produção</strong>
-          Após confirmação da entrada e aprovação do projeto técnico.
-        </div>
-      </div>
+</section>
+
+
+<!-- ================================================================
+     PAGE 4 — LINHA DO TEMPO
+================================================================ -->
+<section class="page" id="p4">
+  <svg class="topo-canvas" id="topo4" viewBox="0 0 794 1123" xmlns="http://www.w3.org/2000/svg"></svg>
+  <img id="p4-bg" src="" alt="" />
+  <div id="p4-url-row">
+    <input type="text" id="tk-p4-url" placeholder="URL da foto de fundo (opcional)" oninput="setP4(this.value)" />
+  </div>
+
+  <div class="p4-head">
+    <div class="p4-eyebrow">Daqui em diante</div>
+    <div class="p4-title">Quem faz, responde —<br><em>do aceite à montagem.</em></div>
+    <div class="p4-sub">Equipe própria, processo documentado, compromisso com cada detalhe — do primeiro contato ao pós-entrega.</div>
+  </div>
+
+  <div class="tl-grid">
+
+    <div class="tl-step">
+      <div class="tl-circle"><span class="tl-num">1</span></div>
+      <div class="tl-name">Visita & Escuta</div>
+      <div class="tl-arg">Medição presencial para garantir precisão total. O ambiente é entendido antes de qualquer número.</div>
+      <div class="tl-conn"></div>
     </div>
 
-  </div><!-- /sig-body -->
+    <div class="tl-step">
+      <div class="tl-circle"><span class="tl-num">2</span></div>
+      <div class="tl-name">Projeto & Orçamento</div>
+      <div class="tl-arg">Transparência completa — sem surpresas no caminho. O projeto do arquiteto vira instrução de fábrica.</div>
+      <div class="tl-conn"></div>
+    </div>
 
-  <!-- footer -->
-  <div class="sig-footer">
+    <div class="tl-step">
+      <div class="tl-circle"><span class="tl-num">3</span></div>
+      <div class="tl-name">Engenharia de Produto</div>
+      <div class="tl-arg">Seu projeto vira software especializado antes de virar móvel. Tolerância ±0,3mm garantida.</div>
+      <div class="tl-conn"></div>
+    </div>
+
+    <div class="tl-step">
+      <div class="tl-circle"><span class="tl-num">4</span></div>
+      <div class="tl-name">Análise Técnica</div>
+      <div class="tl-arg">Validação por toda a equipe antes do primeiro corte. Zero improviso em obra.</div>
+    </div>
+
+    <div class="tl-step">
+      <div class="tl-circle"><span class="tl-num">5</span></div>
+      <div class="tl-name">Produção com Padrão</div>
+      <div class="tl-arg">Cada peça produzida com protocolo documentado de qualidade. Corte, montagem e furação precisos.</div>
+      <div class="tl-conn"></div>
+    </div>
+
+    <div class="tl-step">
+      <div class="tl-circle"><span class="tl-num">6</span></div>
+      <div class="tl-name">Conferência & Embalagem</div>
+      <div class="tl-arg">Testado e protegido antes de sair da fábrica. Cada ferragem montada e verificada.</div>
+      <div class="tl-conn"></div>
+    </div>
+
+    <div class="tl-step">
+      <div class="tl-circle"><span class="tl-num">7</span></div>
+      <div class="tl-name">Entrega & Montagem</div>
+      <div class="tl-arg">Equipe própria do início ao fim — não terceirizamos. Do caminhão ao parafuso final.</div>
+      <div class="tl-conn"></div>
+    </div>
+
+    <div class="tl-step">
+      <div class="tl-circle"><span class="tl-num">8</span></div>
+      <div class="tl-name">Garantia & Suporte</div>
+      <div class="tl-arg">Estamos aqui depois da entrega. Blum: garantia vitalícia. Valvic: garantia em contrato.</div>
+    </div>
+
+  </div>
+
+  <div class="p4-foot">
     <div class="foot-brand">Valvic Marcenaria</div>
     <div class="socials">
       <a class="soc" href="https://www.instagram.com/valvic_marcenaria" target="_blank">
@@ -512,14 +744,163 @@
         @Valvic_Marcenaria
       </a>
     </div>
-    <div class="foot-contact">
-      <span>valvicmarcenaria@gmail.com</span>
-      <span>Belo Horizonte — MG</span>
+  </div>
+
+</section>
+
+
+<!-- ================================================================
+     PAGE 5 — DEPOIMENTO
+================================================================ -->
+<section class="page" id="p5">
+
+  <div class="quote-col">
+    <div class="q-label">Quem já viveu</div>
+    <div class="q-mark">"</div>
+    <div class="q-text">
+      <span class="token" contenteditable="false" data-key="DEPOIMENTO"
+        data-placeholder="Depoimento do cliente">Eu estou apaixonada... e não é só pela beleza... mas o comprometimento e dedicação desde o orçamento, até execução e entrega. Indico de olhos fechados!!! Muitíssimo obrigada...</span>
+    </div>
+    <div class="q-rule"></div>
+    <div class="q-author">
+      <span class="token" contenteditable="false" data-key="DEP_AUTOR" data-placeholder="Nome">Graciene</span>
+    </div>
+    <div class="q-proj">
+      <span class="token" contenteditable="false" data-key="DEP_PROJETO" data-placeholder="Projeto · Cidade">Vale dos Cristais</span>
     </div>
   </div>
 
-  <div class="gold-bar"></div>
+  <div class="p5-photo">
+    <img id="p5-img" src="" alt="Projeto" />
+    <div id="p5-ph" class="p5-ph"></div>
+    <div class="p5-overlay">
+      <div class="p5-caption">
+        <span class="token" contenteditable="false" data-key="DEP_CAPTION" data-placeholder="Legenda da foto">Projeto executado · Residência particular</span>
+      </div>
+    </div>
+    <div id="p5-url-row">
+      <input type="text" id="tk-p5-url" placeholder="URL da foto do depoimento" oninput="setP5(this.value)" />
+    </div>
+  </div>
 
+</section>
+
+
+<!-- ================================================================
+     PAGE 6 — INVESTIMENTO
+================================================================ -->
+<section class="page" id="p6">
+
+  <div class="inv-dark-head">
+    <div class="inv-eyebrow">Transparência Total</div>
+    <div class="inv-title">Seu Investimento.</div>
+    <div class="inv-sub">Duas versões. Condições claras. Você escolhe o caminho.</div>
+  </div>
+
+  <div class="inv-body">
+
+    <div class="inv-block">
+      <div class="inv-block-label">Versão Completa</div>
+      <table class="inv-tbl" id="tbl-completa">
+        <thead>
+          <tr>
+            <th>Ambiente</th>
+            <th>Descrição</th>
+            <th style="text-align:right">Investimento</th>
+            <th class="rm-cell" style="opacity:0;font-size:1px">·</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-completa">
+          <tr data-table="completa">
+            <td><span class="token editable-cell" contenteditable="false" data-placeholder="Ambiente">Quarto Casal</span></td>
+            <td><span class="token editable-cell" contenteditable="false" data-placeholder="Descrição">Roupeiro 4 portas + painel TV + criado</span></td>
+            <td class="val-cell"><span class="token editable-cell" contenteditable="false" data-placeholder="R$ 0,00">R$ 0,00</span></td>
+            <td class="rm-cell"><button class="btn-rm" onclick="removeRow(this)">×</button></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row">
+            <td colspan="2">Total · Versão Completa</td>
+            <td class="val-cell">R$&nbsp;<span class="token" id="tk-total-c" contenteditable="false" data-key="TOTAL_COMPLETA" data-placeholder="0,00">{{TOTAL_COMPLETA}}</span></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+      <button class="btn-add-row" onclick="addRow('completa')">+ Ambiente</button>
+    </div>
+
+    <div class="inv-block">
+      <div class="inv-block-label">Versão Essencial</div>
+      <div class="inv-note">Mantém a qualidade de execução e ferragem. Ajuste no
+        <span class="token" contenteditable="false" data-key="ESSENCIAL_AJUSTE" data-placeholder="[especificar]">[especificar o ambiente ou item]</span>.
+      </div>
+      <table class="inv-tbl" id="tbl-essencial">
+        <thead>
+          <tr>
+            <th>Ambiente</th>
+            <th>Descrição</th>
+            <th style="text-align:right">Investimento</th>
+            <th class="rm-cell" style="opacity:0;font-size:1px">·</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-essencial">
+          <tr data-table="essencial">
+            <td><span class="token editable-cell" contenteditable="false" data-placeholder="Ambiente">Quarto Casal</span></td>
+            <td><span class="token editable-cell" contenteditable="false" data-placeholder="Descrição">Roupeiro 4 portas (sem painel TV)</span></td>
+            <td class="val-cell"><span class="token editable-cell" contenteditable="false" data-placeholder="R$ 0,00">R$ —</span></td>
+            <td class="rm-cell"><button class="btn-rm" onclick="removeRow(this)">×</button></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row">
+            <td colspan="2">Total · Versão Essencial</td>
+            <td class="val-cell">R$&nbsp;<span class="token" id="tk-total-e" contenteditable="false" data-key="TOTAL_ESSENCIAL" data-placeholder="0,00">{{TOTAL_ESSENCIAL}}</span></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+      <button class="btn-add-row" onclick="addRow('essencial')">+ Ambiente</button>
+    </div>
+
+    <div class="pay-block">
+      <div class="pay-label">Condições de Pagamento</div>
+      <table class="pay-tbl">
+        <thead><tr><th>Condição</th><th>Desconto</th></tr></thead>
+        <tbody>
+          <tr><td>Entrada 40% · saldo em 2× (30/30 dias)</td><td>Padrão</td></tr>
+          <tr class="hi"><td>Entrada 50% + até 8× no cartão</td><td>3%</td></tr>
+          <tr><td>Entrada 70% + até 6× no cartão</td><td>5%</td></tr>
+          <tr class="hi"><td>Entrada 70% + transferência à vista</td><td>7%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="meta-row">
+      <div class="meta-card mc-dark">
+        <div class="mc-label">Prazo de Entrega</div>
+        <div class="mc-val"><span class="token" contenteditable="false" data-key="PRAZO" data-placeholder="90">{{PRAZO}}</span></div>
+        <div class="mc-sub">dias úteis após assinatura</div>
+      </div>
+      <div class="meta-card mc-brass">
+        <div class="mc-label">✦ Garantia ✦</div>
+        <div class="mc-val"><span class="token" contenteditable="false" data-key="GARANTIA_ANOS" data-placeholder="Vitalícia">{{GARANTIA_ANOS}}</span></div>
+        <div class="mc-sub">cobertura Blum vitalícia</div>
+      </div>
+      <div class="meta-card mc-obs">
+        <div class="mc-label">Validade da Proposta</div>
+        <div class="mc-val"><span class="token" contenteditable="false" data-key="VALIDADE" data-placeholder="DD/MM">{{VALIDADE}}</span></div>
+        <div class="mc-sub">após esta data, recotamos</div>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <div>
+        <h3>Qual o próximo passo?</h3>
+        <p>Quer agendar uma conversa para tirar dúvidas? Estou à disposição — vamos tornar esse projeto realidade com o nível de execução que ele merece.</p>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 
@@ -527,35 +908,97 @@
   const SK = 'valvic_signature_modelo';
 
   const DEFAULTS = {
-    NOME_CLIENTE:        'Nome do Cliente',
-    PROJETO:             'Descrição do projeto',
-    TOTAL:               '0,00',
-    VERSAO:              'Completa',
-    PRAZO:               '90',
-    ENTRADA_VALOR:       'R$ 0,00',
-    ENTRADA_DATA:        '__/__/____',
-    CPF_CLIENTE:         '000.000.000-00',
-    GARANTIA_ANOS:       '5',
-    CONDICAO_PAGAMENTO:  'Entrada 30% + saldo em 10× no cartão',
-    VALIDADE:            '__/__/____',
-    FERRAGEM:            'Hardt',
-    MATERIAL:            'MDF 18mm',
-    ACABAMENTO:          'Laca PU fosca',
+    NOME_CLIENTE:    'Cliente',
+    PROJETO:         'Projeto de marcenaria sob medida',
+    DATA_PROPOSTA:   '17/06/2026',
+    FERRAGEM:        'Blum Movento',
+    MATERIAL:        'MDF 18mm',
+    ACABAMENTO:      'Laca PU fosca',
+    ESSENCIAL_AJUSTE:'[especificar o ambiente ou item]',
+    DEPOIMENTO:      'Eu estou apaixonada... e não é só pela beleza... mas o comprometimento e dedicação desde o orçamento, até execução e entrega. Indico de olhos fechados!!! Muitíssimo obrigada...',
+    DEP_AUTOR:       'Graciene',
+    DEP_PROJETO:     'Vale dos Cristais',
+    DEP_CAPTION:     'Projeto executado · Residência particular',
+    PRAZO:           '90 a 100',
+    GARANTIA_ANOS:   'Vitalícia',
+    VALIDADE:        '10',
+    TOTAL_COMPLETA:  '0,00',
+    TOTAL_ESSENCIAL: '0,00',
+    HERO_URL:   'https://lh3.googleusercontent.com/d/1tIPkB_fxt1DYWHcj3-s5tdVyM7jocaTa=w1600',
+    P2_URL:     'https://lh3.googleusercontent.com/d/1SQriQN8H4RD2yjHQoLm84HQ65DCoQE1p=w1600',
+    RENDER_URL: 'https://lh3.googleusercontent.com/d/1uvflYxeVe0QkPMfWEOml6xPmR48f90ZY=w1600',
+    P4_URL:     '',
+    P5_URL:     'https://lh3.googleusercontent.com/d/1MsmhniA_z1HXRBw_bQ7D-VgujrDDxLNH=w1600',
   };
 
   const S = Object.assign({}, DEFAULTS, loadS());
 
+  /* ── Topographic SVG contour lines ── */
+  function buildTopo(svgEl, cfg) {
+    cfg = Object.assign({ lines: 18, seed: 42, w: 794, h: 1123 }, cfg);
+    const { lines, seed, w, h } = cfg;
+    let r = seed;
+    function rand() { r = (r * 1664525 + 1013904223) & 0xFFFFFFFF; return (r >>> 0) / 0xFFFFFFFF; }
+    function nr(lo, hi) { return lo + rand() * (hi - lo); }
+
+    const paths = [];
+    for (let i = 0; i < lines; i++) {
+      const t = i / (lines - 1);
+      const cy = h * (0.05 + t * 0.9);
+      const amp = nr(60, 180);
+      const freq1 = nr(0.003, 0.008);
+      const freq2 = nr(0.007, 0.016);
+      const phase1 = nr(0, Math.PI * 2);
+      const phase2 = nr(0, Math.PI * 2);
+      const pts = [];
+      const steps = 80;
+      for (let s = 0; s <= steps; s++) {
+        const x = (s / steps) * w;
+        const y = cy + amp * Math.sin(freq1 * x + phase1) + (amp * 0.45) * Math.sin(freq2 * x + phase2);
+        pts.push(s === 0 ? `M${x.toFixed(1)},${y.toFixed(1)}` : `L${x.toFixed(1)},${y.toFixed(1)}`);
+      }
+      const p = document.createElementNS('http://www.w3.org/2000/svg','path');
+      p.setAttribute('d', pts.join(' '));
+      svgEl.appendChild(p);
+    }
+  }
+
+  function driveThumb(url) {
+    if (!url) return url;
+    let id = null;
+    let m = url.match(/\/file\/d\/([^\/\?]+)/);
+    if (m) id = m[1];
+    if (!id) { m = url.match(/[?&]id=([^&]+)/); if (m) id = m[1]; }
+    if (!id) { m = url.match(/lh3\.googleusercontent\.com\/d\/([^=\/?]+)/); if (m) id = m[1]; }
+    if (!id) { m = url.match(/\/d\/([^=\/?]+)/); if (m) id = m[1]; }
+    return id ? `https://lh3.googleusercontent.com/d/${id}=w1600` : url;
+  }
+
   function init() {
+    buildTopo(document.getElementById('topo1'), { seed: 17 });
+    buildTopo(document.getElementById('topo4'), { seed: 91 });
+
     document.querySelectorAll('.token[data-key]').forEach(el => {
       const k = el.dataset.key;
-      if (S[k]) el.textContent = S[k];
+      if (S[k] !== undefined) el.textContent = S[k];
     });
+    if (S.HERO_URL)   { document.getElementById('tk-hero-url').value   = S.HERO_URL;   setHero(S.HERO_URL); }
+    if (S.P2_URL)     { document.getElementById('tk-p2-url').value     = S.P2_URL;     setP2(S.P2_URL); }
+    if (S.RENDER_URL) { document.getElementById('tk-render-url').value = S.RENDER_URL; setRender(S.RENDER_URL); }
+    if (S.P4_URL)     { document.getElementById('tk-p4-url').value     = S.P4_URL;     setP4(S.P4_URL); }
+    if (S.P5_URL)     { document.getElementById('tk-p5-url').value     = S.P5_URL;     setP5(S.P5_URL); }
+    if (S.rows_c)     restoreRows('completa',  S.rows_c);
+    if (S.rows_e)     restoreRows('essencial', S.rows_e);
   }
 
   function toggleEdit() {
     const on = document.body.classList.toggle('edit-mode');
-    document.getElementById('btn-edit').textContent = on ? 'Concluir' : 'Editar';
-    document.querySelectorAll('.token[data-key]').forEach(el => { el.contentEditable = on; });
+    document.getElementById('btn-edit').textContent = on ? '✓ Concluir' : '✏ Editar';
+    document.querySelectorAll('.token[data-key], .editable-cell').forEach(el => { el.contentEditable = on; });
+    ['hero-url-row','p2-url-row','render-url-row','p4-url-row','p5-url-row'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = on ? 'block' : 'none';
+    });
   }
 
   document.addEventListener('input', e => {
@@ -566,12 +1009,83 @@
       document.querySelectorAll(`.token[data-key="${k}"]`).forEach(t => { if (t !== el) t.textContent = v; });
       saveS();
     }
+    if (el.classList.contains('editable-cell')) saveRows();
   });
 
   document.addEventListener('blur', e => {
-    if (e.target.classList.contains('token')) { saveS(); }
+    if (e.target.classList.contains('token') || e.target.classList.contains('editable-cell')) { saveS(); saveRows(); }
   }, true);
 
+  function setHero(url) {
+    const t = driveThumb(url); const img = document.getElementById('hero-img'), ph = document.getElementById('hero-ph');
+    if (t && t.trim()) { img.src = t.trim(); img.style.display = 'block'; ph.style.display = 'none'; S.HERO_URL = t.trim(); saveS(); }
+    else { img.style.display = 'none'; ph.style.display = 'flex'; }
+  }
+  function setP2(url) {
+    const t = driveThumb(url); const img = document.getElementById('p2-img'), ph = document.getElementById('p2-ph');
+    if (t && t.trim()) { img.src = t.trim(); img.style.display = 'block'; ph.style.display = 'none'; S.P2_URL = t.trim(); saveS(); }
+    else { img.style.display = 'none'; ph.style.display = 'flex'; }
+  }
+  function setRender(url) {
+    const t = driveThumb(url); const img = document.getElementById('render-img'), ph = document.getElementById('render-ph');
+    if (t && t.trim()) { img.src = t.trim(); img.style.display = 'block'; ph.style.display = 'none'; S.RENDER_URL = t.trim(); saveS(); }
+    else { img.style.display = 'none'; ph.style.display = 'flex'; }
+  }
+  function setP4(url) {
+    const t = driveThumb(url); const img = document.getElementById('p4-bg');
+    if (t && t.trim()) { img.src = t.trim(); img.style.display = 'block'; S.P4_URL = t.trim(); saveS(); }
+    else { img.style.display = 'none'; }
+  }
+  function setP5(url) {
+    const t = driveThumb(url); const img = document.getElementById('p5-img'), ph = document.getElementById('p5-ph');
+    if (t && t.trim()) { img.src = t.trim(); img.style.display = 'block'; ph.style.display = 'none'; S.P5_URL = t.trim(); saveS(); }
+    else { img.style.display = 'none'; ph.style.display = 'flex'; }
+  }
+
+  function addRow(tid) {
+    const tbody = document.getElementById('tbody-' + tid);
+    const on = document.body.classList.contains('edit-mode');
+    const tr = document.createElement('tr');
+    tr.dataset.table = tid;
+    tr.innerHTML = `
+      <td><span class="token editable-cell" contenteditable="${on}" data-placeholder="Ambiente">Novo Ambiente</span></td>
+      <td><span class="token editable-cell" contenteditable="${on}" data-placeholder="Descrição">Descrição do item</span></td>
+      <td class="val-cell"><span class="token editable-cell" contenteditable="${on}" data-placeholder="R$ 0,00">R$ 0,00</span></td>
+      <td class="rm-cell"><button class="btn-rm" onclick="removeRow(this)">×</button></td>`;
+    tbody.appendChild(tr);
+    saveRows();
+  }
+
+  function removeRow(btn) { btn.closest('tr').remove(); saveRows(); }
+
+  function saveRows() {
+    ['completa','essencial'].forEach(tid => {
+      const rows = [];
+      document.querySelectorAll(`#tbody-${tid} tr`).forEach(tr => {
+        const c = tr.querySelectorAll('.editable-cell');
+        rows.push([c[0]?.textContent||'', c[1]?.textContent||'', c[2]?.textContent||'']);
+      });
+      S['rows_' + tid[0]] = rows;
+    });
+    saveS();
+  }
+
+  function restoreRows(tid, rows) {
+    const tbody = document.getElementById('tbody-' + tid);
+    tbody.innerHTML = '';
+    rows.forEach(([a,d,v]) => {
+      const tr = document.createElement('tr');
+      tr.dataset.table = tid;
+      tr.innerHTML = `
+        <td><span class="token editable-cell" contenteditable="false" data-placeholder="Ambiente">${esc(a)}</span></td>
+        <td><span class="token editable-cell" contenteditable="false" data-placeholder="Descrição">${esc(d)}</span></td>
+        <td class="val-cell"><span class="token editable-cell" contenteditable="false" data-placeholder="R$ 0,00">${esc(v)}</span></td>
+        <td class="rm-cell"><button class="btn-rm" onclick="removeRow(this)">×</button></td>`;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
   function saveS() { try { localStorage.setItem(SK, JSON.stringify(S)); } catch(e) {} }
   function loadS() { try { const r = localStorage.getItem(SK); return r ? JSON.parse(r) : {}; } catch(e) { return {}; } }
   function printPDF() { if (document.body.classList.contains('edit-mode')) toggleEdit(); setTimeout(() => window.print(), 150); }
