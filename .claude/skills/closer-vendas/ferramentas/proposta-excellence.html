@@ -433,7 +433,8 @@
     .mc-cream .mc-sub { color: var(--muted); }
 
     /* CTA */
-    .cta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: end; padding-top: 20px; border-top: 1px solid var(--gold-20); }
+    .cta-row { padding-top: 20px; border-top: 1px solid var(--gold-20); }
+    .cta-row p { max-width: 560px; }
     .cta-row h3 { font-family: var(--fd); font-size: 20px; font-weight: 400; color: var(--graphite); margin-bottom: 8px; }
     .cta-row p  { font-size: 11px; color: var(--muted); line-height: 1.65; }
     .sig-label { font-size: 8px; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
@@ -931,14 +932,7 @@
   <div class="cta-row">
     <div>
       <h3>Qual o próximo passo?</h3>
-      <p>Quer agendar uma conversa para tirar dúvidas?<br>Estou à disposição — vamos tornar esse projeto realidade.</p>
-    </div>
-    <div>
-      <div class="sig-label">Assinatura do Cliente</div>
-      <div class="sig-line">&nbsp;</div>
-      <div class="sig-name">
-        <span class="token" contenteditable="false" data-key="NOME_CLIENTE" data-placeholder="Nome do Cliente">{{NOME_CLIENTE}}</span>
-      </div>
+      <p>Quer agendar uma conversa para tirar dúvidas? Estou à disposição — vamos tornar esse projeto realidade.</p>
     </div>
   </div>
 
