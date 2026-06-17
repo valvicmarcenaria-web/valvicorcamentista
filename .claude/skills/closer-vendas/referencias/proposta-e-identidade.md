@@ -71,6 +71,17 @@ Base: cópia da `proposta_bruna_ferreira` (`DAHKUR7n8Yo`). Ambos já têm placeh
 `{{NOME DO CLIENTE}}`, `garantia - {{ANOS}} anos`, `Investimento total - R$ {{TOTAL}}`
 e typos corrigidos (Premium, Hardt, Laminação, Espessuras de painéis).
 
+### Linha Family — layout HTML→PDF (alternativa ao Canva)
+
+Layout próprio (não-Canva) para **projetos residenciais / perfil consultivo**, que
+resolve o que o mestre do Canva não faz: **duas versões num arquivo só** e **números
+redondos**, sem depender de Canva pago. Nasceu da proposta da **Samara** (jun/2026).
+- Template + doc: **`layouts/linha-family.html`** e **`layouts/README.md`**.
+- Exemplos reais: `propostas/proposta-samara*.html` (+ PDFs).
+- Gera com `weasyprint` (HTML→PDF). 4 páginas: capa · conexão+escopo · investimento
+  com 2 versões · pagamento+garantia+CTA.
+- Usar a Family no enxuto/familiar; o MODELO Canva no premium/casa inteira com cases.
+
 ### Element IDs reutilizáveis (para autofill via MCP)
 - Capa nome: `PB2PRdKRTQVKcmq8-LBRmKPSmH1SKzz2l`
 - Garantia (selo): `PBxslyLM2wlZc8Yx-LBC987f5h8kznwRY`
