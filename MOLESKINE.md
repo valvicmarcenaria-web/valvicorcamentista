@@ -51,14 +51,15 @@ header de investimento em **espresso `#3D2A1C`**. Capa e linha do tempo CLARAS
 Hardt", garantia 5 anos, ferragem Hardt, 1º diferencial adaptado (Hardt soft-
 close, sem citar Hettich). Storage key `valvic_essencial_modelo`.
 
-**Pendente — propostas Kênia & Fábio (Casa Completa):**  
+**Propostas Kênia & Fábio (Casa Completa) — GERADAS 2026-06-17:**  
 Pasta Drive: `https://drive.google.com/drive/folders/1phUShb6q29uXp4vWzHQYM_TmBmtTs85a`
-- DOC 1 Premium (Hettich, 10a): V2 cor R$359k · V1 branco R$345k → template Excellence
-- DOC 2 Essencial (Hardt, 5a): V4 cor R$340k · V3 branco R$317k → template Essencial
-- ~60 móveis / 18 ambientes, 3 pavimentos, arquiteta Inédita/Flávia
-- Aviso de reajuste julho/2026 (gatilho de urgência) deve entrar nas propostas
-- Condições: 40/30/30 sem cartão · prazo 90–100 dias · RT embutida · validade
-  valores 10 dias / prazo 3 dias
+- ✅ `proposta-kenia-fabio-premium.html` (Excellence/Hettich): Tudo na cor R$359k · Branco interno R$345k · 10 anos
+- ✅ `proposta-kenia-fabio-essencial.html` (Essencial/Hardt): Tudo na cor R$340k · Branco interno R$317k · 5 anos
+- 9 págs cada: capa · diferenciais · **descritivo técnico (4 págs, 69 itens M## por ambiente)** · linha do tempo · depoimento (Graciene) · investimento
+- Descritivo item-a-item com códigos M## da arquiteta, sem medidas (escolha do Jonathan)
+- Investimento: 2 versões (cor/branco) + aviso reajuste julho/2026 + 40/30/30 sem cartão + 90–100 dias + sem assinatura
+- Gerador versionado: `gerar-kenia-fabio.cjs` (dados do descritivo + monta os 2 docs a partir dos templates)
+- ⏳ Pendentes: foto da capa (placeholder) · revisão do Jonathan · export PDF · salvar FINAL na pasta Drive
 
 ---
 
