@@ -42,24 +42,38 @@
 | Cama com prateleiras | R$ 6.752 |
 | Bancada + armário inferior | R$ 6.477 |
 | Roupeiro + nicho iluminado | R$ 17.486 |
-| **Total** | **R$ 37.500** |
+| *(escopo idêntico nas duas linhas — o que muda é a ferragem e a garantia)* | |
 
-**Condições (quanto mais antecipa, melhor):**
+**Escolha sua linha:**
 
-| Condição | Você paga |
-|---|---:|
-| 30% entrada + saldo em até 10× no cartão | R$ 37.500 |
-| 50% entrada + saldo em até 8× *(3% off)* | R$ 36.375 |
-| 70% entrada + saldo em até 6× *(5% off)* | R$ 35.625 |
-| 70% entrada + saldo via transferência *(7% off)* | **R$ 34.875** |
+| Linha | Ferragem | Garantia | Investimento |
+|---|---|:---:|---:|
+| ⭐ **Conforto** *(recomendada)* | Corrediças **ocultas Hardt** com soft-close (deslizam e fecham sozinhas, em silêncio) + dobradiças Hardt | **5 anos** | **R$ 38.500** |
+| **Essencial** | Corrediças telescópicas + dobradiças padrão (funcional) | 2 anos | R$ 37.500 |
+
+> Por **+R$ 1.000** a marcenaria sai com **mais que o dobro de garantia** e o
+> conforto das gavetas soft-close — num quarto usado todo dia por anos, vale.
+
+**Condições (quanto mais antecipa, melhor)** — sobre a linha escolhida:
+
+| Condição | Desconto |
+|---|:---:|
+| 30% entrada + saldo em até 10× no cartão | — |
+| 50% entrada + saldo em até 8× | 3% |
+| 70% entrada + saldo em até 6× | 5% |
+| 70% entrada + saldo via transferência | **7%** |
+
+*(Ex.: Linha Conforto via transferência, 7% off = **R$ 35.805**.)*
 
 ### 6. Garantia
-**2 anos** — estrutura e ferragens · instalações e regulagens 2 anos.
-*(Iluminação LED: nota técnica, sem garantia.)*
+**Conforme a ferragem da linha** (política Valvic escalonada):
+- **Conforto (Hardt): 5 anos** · **Essencial: 2 anos** — estrutura e ferragens.
+- Instalações e regulagens: 2 anos · Iluminação LED: nota técnica (sem garantia).
+
 Atendimento: retorno em 24h · visita técnica em 3 dias úteis · custo zero no prazo.
 
 ### 7. Prazo e validade
-- **Entrega:** `[A CONFIRMAR COM O JONATHAN]` (ref. ~60 dias úteis).
+- **Entrega:** **60 a 70 dias úteis** (a partir da aprovação e medição final).
 - **Validade da proposta:** 2 dias úteis.
 
 ### 8. Próximo passo (CTA)
@@ -69,16 +83,18 @@ Reservar a vaga na agenda de produção com a entrada — e seguimos para o cron
 
 ## CAMADA INTERNA (NÃO vai ao cliente)
 
-- **RT Luana Rizzi:** ~**R$ 3.300** (10% do líquido R$ 33.000) — provisionado no preço,
-  repassar conforme cronograma.
-- **⚠️ Upsell de garantia (recomendo levar):** hoje 2 anos (telescópica/padrão). Subindo
-  as **corrediças para Hardt → 5 anos**; para **Hettich → 10 anos**. Custo incremental
-  baixo, valor percebido alto — pedir reprecificação à Lavinia e alinhar piso com o
-  Rodrigo. **Decisão do Jonathan.**
-- **Lever de baixo (se o cliente travar no preço):** a Lavinia já tem a **versão enxuta**
-  (nicho menor/sem LED, menos gavetas, fundo único) ~**R$ 3–5k** mais barata — viver como
-  "Linha Essencial". Não fabriquei preço; pedir à Lavinia se precisar ancorar.
-- **QA pendente:** prazo (Jonathan) · garantia (confirmar se mantém 2 anos ou sobe ferragem).
+- **RT Luana Rizzi:** Essencial ~**R$ 3.300** (líq. 33.000) · Conforto ~**R$ 3.388**
+  (líq. 33.880) — 10% do líquido, provisionado no preço, repasse conforme cronograma.
+- **Upsell Hardt (ofertado):** delta material só **R$ 220** (6 corrediças telescópicas→
+  ocultas Hardt + 20 dobradiças padrão→Hardt), precificado a **+R$ 1.000** → R$ 38.500
+  (MC 40,6%). Sobe a garantia 2→**5 anos** (elo mais fraco passa a ser Hardt). **Se a
+  cliente fechar na Conforto, pedir à Lavinia pra travar a v4 (Hardt).** Hettich (10
+  anos) fica como degrau futuro se quiser subir mais.
+- **MC das duas linhas:** Essencial 40,4% · Conforto 40,6% — ambas saudáveis (faixa bom).
+- **Lever de baixo (se travar no preço):** a Lavinia tem a **versão enxuta** (~R$ 3–5k
+  menor). Não fabriquei preço; pedir à Lavinia se precisar ancorar pra baixo.
+- **QA:** prazo ✅ (60–70 úteis) · garantia ✅ (2/5 anos por linha) · nome cliente ✅ ·
+  preço ✅ · termos técnicos (Hardt) ✅. Falta: arquivar na pasta do cliente no Drive.
 
 ---
 
@@ -88,6 +104,7 @@ Reservar a vaga na agenda de produção com a entrada — e seguimos para o cron
 > aqui a proposta da Valvic pra executar ele com todo o capricho que um quarto de
 > criança merece. Tá tudo detalhado no anexo: cada móvel, as condições e a garantia.
 > A curva iluminada da cabeceira e o guarda-roupa do teto ao chão ficaram um show.
+> Deixei **duas opções de ferragem** pra você escolher o nível de conforto e garantia.
 > Posso te ligar pra apresentar e tirar qualquer dúvida? A proposta vale por 2 dias
 > úteis. 🤍
 
