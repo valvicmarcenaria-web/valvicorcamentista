@@ -155,6 +155,15 @@ para Vitor calibrar o tom e o jeito dele.
 
 ---
 
+## Regras permanentes de proposta
+
+> Válido para todos os templates e todos os agentes. Não mudar sem OK do Jonathan.
+
+- **NUNCA mencionar RT de arquiteto** nos valores: "RT da arquiteta inclusa nos preços" ou qualquer variação gera atrito sério entre cliente e arquiteta. Fora de toda proposta.
+- **NUNCA dizer "sem cartão"** nas condições de pagamento: o cliente já vê que cartão não está listado. Mencionar cria objeção desnecessária. Usar apenas "Condições de pagamento" como título.
+
+---
+
 ## Recados rápidos
 
 *(notas passageiras — podem ser apagadas após lidas)*

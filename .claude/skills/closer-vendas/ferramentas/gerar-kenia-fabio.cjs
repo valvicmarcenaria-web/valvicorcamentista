@@ -207,7 +207,7 @@ function buildInv(cfg){
     </div>
 
     <div class="pay-block">
-      <div class="pay-label">Condições de pagamento · sem cartão</div>
+      <div class="pay-label">Condições de pagamento</div>
       <table class="pay-tbl">
         <tbody>
           <tr><td>40% na assinatura do contrato</td><td>entrada</td></tr>
@@ -223,7 +223,7 @@ function buildInv(cfg){
       <div class="meta-card mc-cream"><div class="mc-label">Validade dos valores</div><div class="mc-val">10</div><div class="mc-sub">dias corridos</div></div>
     </div>
 
-    <p class="inv-foot"><b>Escopo Valvic:</b> marcenaria sob medida · ferragens · vidros e espelhos dos móveis · serralheria de apoio · iluminação LED embutida. RT da arquiteta inclusa nos valores. (Pedra/marmoraria por conta do cliente.)</p>
+    <p class="inv-foot"><b>Escopo Valvic:</b> marcenaria sob medida · ferragens · vidros e espelhos dos móveis · serralheria de apoio · iluminação LED embutida. (Pedra/marmoraria por conta do cliente.)</p>
 
     <div class="cta-row">
       <div>
@@ -264,9 +264,13 @@ for (const cfg of DOCS){
   // 1) injeta CSS do descritivo + investimento antes do </style>
   html = html.replace('</style>', DESCR_CSS + '\n  </style>');
 
-  // 2) substitui a seção p3 (O Projeto) pelas páginas de descritivo
+  // 2) reordena: linha do tempo (p4) vem ANTES do descritivo
+  //    extrai p4, remove-o do lugar original, injeta antes do descritivo na posição de p3
   const descrPages = buildDescr(CLIENT, PROJECT, cfg.specsLine);
-  html = html.replace(/<section class="page" id="p3">[\s\S]*?<\/section>/, descrPages);
+  const p4Match = html.match(/<section class="page" id="p4">[\s\S]*?<\/section>/);
+  const p4Html = p4Match ? p4Match[0] : '';
+  html = html.replace(/<section class="page" id="p4">[\s\S]*?<\/section>/, '');
+  html = html.replace(/<section class="page" id="p3">[\s\S]*?<\/section>/, p4Html + '\n' + descrPages);
 
   // 3) substitui o conteúdo do investimento
   html = html.replace(/<div class="inv-body">[\s\S]*?<\/div><!-- \/inv-body -->/, buildInv(cfg));
