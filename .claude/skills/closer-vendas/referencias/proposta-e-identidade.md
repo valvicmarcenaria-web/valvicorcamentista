@@ -94,6 +94,15 @@ A API **não adiciona nem remove linhas de tabela** — só edita texto de célu
 ## Ativos pendentes (do Jonathan / Drive)
 
 - **MODELO ENXUTO:** aparar a tabela para 1–2 linhas (ajuste manual único no Canva).
+- **Campos faltando no template-mestre** (achados na geração da Samara 06/2026 — criar
+  como elementos/placeholders pra virar autofill e parar de exigir trabalho manual):
+  - `projeto_titulo` (ex.: "Quarto dos Irmãos") · `data` · `conexao_texto` (parágrafo
+    personalizado) — hoje a pág. 2 tem texto institucional FIXO, não editável por campo.
+  - **Comparativo de versões** (Conforto × Essencial + frase de upsell) — o template só
+    tem 1 campo de total/garantia, então a 2ª linha não entra (vai só a recomendada).
+  - **Tabela de itens com linhas fixas:** API do Canva não deleta linha → sobram linhas
+    vazias com bullet "•" quando o projeto tem menos itens que o template. Mestre
+    precisa de versão com menos linhas OU apagar manualmente as excedentes.
 - **Documento de garantia:** só o de **10 anos** (Gold) está desenhado. Criar as
   variações **2 / 5 anos / vitalícia** a partir dele (muda o tempo e a linha) — ver
   `garantia.md` (política escalonada por ferragem).
