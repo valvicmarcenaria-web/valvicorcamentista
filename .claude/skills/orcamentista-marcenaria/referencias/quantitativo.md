@@ -47,6 +47,27 @@ Cada peça carrega seu papel: `Função - Grupo - Módulo`. Vistos no plano de c
 > Espessuras seguem o padrão Valvic (estrutura 15mm, fundos 6mm, etc. — ver
 > `chapas.md`).
 
+## ⛔ Itens que NUNCA entram por "área de painel" — orçar como ITEM PRÓPRIO (cravado 17/06/2026)
+
+> **Erro cravado:** na estimativa Fase-1 do Junior (Lagoa Santa) eu diluí as
+> **portas de passagem** na área de painel raso (multiplicador genérico). Subdimensiona.
+> Porta de passagem **não é painel liso** — é um conjunto à parte.
+
+**Porta de passagem (giro/pivotante/correr embutida no painel) = 1 item por porta:**
+- **Folha** ~72×210 (ou piso-teto até 273), **espessura ~4 cm** (quadro
+  sarrafeado/2 faces) — consome mais que chapa única;
+- **Marco (~3 cm) + alizar (~5 cm)** em todo o vão;
+- **Laminada nas 2 faces** (aparece dos dois ambientes) → fita nos 4 lados × 2 faces;
+- **Ferragem própria:** kit/dobradiça **pivotante** (especial) ou trilho se correr;
+  **puxador cava**; **tranca + chave** quando o projeto pede;
+- Montagem no local.
+
+> Custo típico **~R$ 1,5–2,5k/porta** (material+ferragem), não ~R$ 0,8k de painel.
+> O **painel** piso-teto em volta é orçado **à parte** (a folha é item separado).
+> Mesma lógica para qualquer item com ferragem/estrutura especial embutida num
+> painel (ex.: báscula de vidro, nicho-cofre): **destacar como item, não diluir em m²**.
+
+
 ## Lista de materiais — auto-gerada a partir do corte
 
 Do mesmo projeto sai a **lista de materiais/ferragens** (com códigos de SKU),

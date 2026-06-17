@@ -88,6 +88,15 @@ Toda gaveta Valvic é composta por **6 peças**:
 > régua a régua, sempre. Subestimar aqui = prejuízo na certa. São **três
 > construções** distintas — identificar qual é antes de quantificar.
 
+> ⛔ **NUNCA orçar ripado por multiplicador de área de painel (cravado 17/06/2026).**
+> Erro real (Junior/Lagoa Santa): tratei o ripado como painel raso (1,4 × área
+> frontal) e ignorei a fita. Um único painel **3,50 × 2,73 m** (passo 4,5 cm) tem
+> **78 réguas = 213 m de fita** → R$ ~1.170 só de fita+filetagem **naquele painel**;
+> meu orçamento de fita pra **casa inteira** tinha sido ~2.320 m. Sempre:
+> `nº réguas = largura útil ÷ passo` → `fita = nº réguas × comprimento da régua`
+> → somar **filetagem** (máquina R$ 2,50/m; manual/6 mm R$ 4,00/m) → somar **chapa
+> das ripas + painel de fundo** → somar **colagem/lixamento** (mão de obra).
+
 **Geometria comum:** cada régua tem **largura** (ex. 3 cm) + **espaçamento**
 entre réguas (ex. 1–2 cm). O **passo = largura + espaçamento**.
 → **nº de réguas ≈ largura útil do vão ÷ passo.**
