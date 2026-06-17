@@ -36,6 +36,21 @@ layout? Referência visual? Links exatos do IG e YouTube?"
 
 ---
 
+## Aprendizados cravados (NÃO apagar)
+
+### [2026-06-17] Lavinia — RT/repasse nunca entra no divisor de margem
+**Para todos (Lavinia, Rodrigo, Vitor):** RT (10% do líquido) e qualquer **repasse
+puro** é dinheiro que passa pelo caixa e vai para o terceiro/arquiteto — **não se
+cobra MC em cima dele**. Embutir o RT nos encargos % com a MC% travada faz o divisor
+inflar tudo: num caso real de R$ 324k o preço subiu **+R$ 100k** (→ R$ 424k), sendo
+que ~R$ 40k disso era margem extra que a Valvic ganharia "só por pagar o arquiteto".
+**Errado.** O certo: fechar o preço na MC-alvo SEM RT e somar o RT por cima
+(`Preço_final = Preço_semRT / (1 − 0,093)`). Impacto real do RT ≈ **+9,3% do preço**
+(no caso, +R$ 33k), e a MC em R$ da Valvic não muda. Detalhe na base da Lavinia:
+`.claude/skills/orcamentista-marcenaria/referencias/validacao-orcamento.md`.
+
+---
+
 ## Recados rápidos
 
 *(notas passageiras — podem ser apagadas após lidas)*

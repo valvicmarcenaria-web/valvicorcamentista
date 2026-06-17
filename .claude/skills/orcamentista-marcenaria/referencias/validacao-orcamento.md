@@ -54,6 +54,29 @@ A planilha valida o orçamento **de trás para frente**: dado um Investimento
 > preço ou enxugar custos; isso difere do markup bruto do app (CX 52–68%),
 > que é *antes* dos encargos.
 
+## ⛔ RT (e todo REPASSE) NUNCA entra no divisor de margem — erro cravado 17/06/2026
+
+> **Erro real cometido:** num projeto de R$ 324k, embutir o RT junto dos encargos %
+> e segurar a MC% fixa em 40% inflou o preço em **+R$ 100k** (R$ 324k → R$ 424k).
+> Absurdo. Causa: o divisor `1/((1−encargos)−MC)` faz qualquer custo % "remarcar"
+> também a **própria margem** (a MC em R$ saltava +R$ 40k) e os demais % (NF, comissões).
+> Ou seja: eu estaria **ganhando margem só por pagar o arquiteto**. Jamais repetir.
+
+**Regra de ouro:** RT (10% do líquido) é dinheiro que **passa pelo caixa e vai para o
+arquiteto** — não se cobra MC em cima dele. Todo **repasse puro** (terceiro sem
+agregação de valor nosso, RT, etc.) entra **POR CIMA** do preço já fechado na MC, e
+**nunca dentro** do divisor de margem.
+
+```
+1. Fecha o preço na MC-alvo  SEM o RT.
+2. Soma o RT por cima:  Preço_final = Preço_semRT / (1 − 0,093)
+   (RT 10% do líquido ≈ 9,3% do bruto)
+3. RT em R$ ≈ 9,3% do preço final.
+```
+
+> No exemplo: o RT pesa **+R$ 33k** (repasse), não +R$ 100k. A MC em R$ da Valvic
+> permanece a mesma com ou sem RT — como tem que ser.
+
 ## Situação de caixa — perguntar em TODA nova demanda
 
 > **Antes de fechar o preço, perguntar ao Jonathan como está o caixa.** Com caixa
