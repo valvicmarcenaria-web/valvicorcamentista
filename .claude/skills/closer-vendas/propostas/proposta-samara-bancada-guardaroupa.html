@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root{ --mostarda:#E0A521; --ouro:#B8860B; --preto:#1A1A1A; --creme:#FDF6E3; --cinza:#6b6b6b; }
+  body { font-family: "Helvetica Neue", Arial, sans-serif; color:var(--preto); font-size:11pt; line-height:1.5; }
+  .page { width:210mm; min-height:297mm; padding:18mm 20mm; position:relative; page-break-after:always; background:#fff; }
+  .page:last-child{ page-break-after:auto; }
+  .serif{ font-family:Georgia,"Times New Roman",serif; }
+  h1,h2,h3{ font-family:Georgia,serif; font-weight:normal; }
+  .gold{ color:var(--ouro); }
+  .spark{ color:var(--mostarda); letter-spacing:4px; }
+  .wordmark{ font-family:Georgia,serif; font-size:20pt; letter-spacing:1px; }
+  .cover{ background:var(--creme); display:flex; flex-direction:column; justify-content:center; }
+  .cover .band{ position:absolute; top:0; left:0; right:0; height:14mm; background:var(--mostarda); }
+  .cover .band-b{ top:auto; bottom:0; }
+  .cover .eyebrow{ letter-spacing:6px; font-size:11pt; color:var(--ouro); text-transform:uppercase; }
+  .cover .name{ font-size:54pt; line-height:1.05; margin:6mm 0 4mm; }
+  .cover .proj{ font-size:20pt; color:var(--cinza); font-style:italic; }
+  .cover .foot{ position:absolute; bottom:22mm; left:20mm; right:20mm; display:flex; justify-content:space-between; align-items:flex-end; }
+  .sec-h{ font-size:10pt; letter-spacing:5px; text-transform:uppercase; color:var(--ouro); border-bottom:1.5px solid var(--mostarda); padding-bottom:3mm; margin-bottom:7mm; }
+  .lead{ font-size:15pt; line-height:1.55; }
+  .muted{ color:var(--cinza); }
+  .cards{ display:flex; flex-wrap:wrap; gap:5mm; margin-top:6mm; }
+  .card{ width:100%; background:var(--creme); border-left:3px solid var(--mostarda); padding:6mm 7mm; }
+  .card h3{ font-size:14pt; margin-bottom:2mm; }
+  .card p{ font-size:11pt; color:#444; }
+  table{ width:100%; border-collapse:collapse; margin-top:4mm; }
+  th{ text-align:left; font-size:9pt; letter-spacing:2px; text-transform:uppercase; color:var(--cinza); padding:3mm 2mm; border-bottom:1.5px solid var(--mostarda); }
+  td{ padding:3.5mm 2mm; border-bottom:1px solid #e8ddc2; font-size:11pt; vertical-align:top; }
+  td.val{ text-align:right; white-space:nowrap; font-family:Georgia,serif; }
+  tr.total td{ border-bottom:none; font-family:Georgia,serif; font-size:12pt; padding-top:4mm; }
+  .versions{ display:flex; gap:6mm; margin-top:7mm; }
+  .v{ flex:1; border:1.5px solid #e0d6bb; border-radius:3mm; padding:7mm 6mm; }
+  .v.reco{ border:2px solid var(--mostarda); background:var(--creme); position:relative; }
+  .v .badge{ position:absolute; top:-3.5mm; right:6mm; background:var(--mostarda); color:#fff; font-size:8pt; letter-spacing:2px; padding:1.5mm 3mm; border-radius:2mm; text-transform:uppercase;}
+  .v .vname{ font-family:Georgia,serif; font-size:16pt; }
+  .v .vferr{ font-size:9.5pt; color:var(--cinza); min-height:13mm; margin:2mm 0 4mm; }
+  .v .vprice{ font-family:Georgia,serif; font-size:24pt; }
+  .v .vwarr{ font-size:10pt; margin-top:2mm; }
+  .v .vwarr b{ color:var(--ouro); }
+  .info{ display:flex; gap:6mm; margin-top:8mm; }
+  .info > div{ flex:1; }
+  .info .k{ font-size:9pt; letter-spacing:2px; text-transform:uppercase; color:var(--ouro); }
+  .info .vv{ font-size:12pt; font-family:Georgia,serif; margin-top:1mm; }
+  .pay td{ font-size:10.5pt; }
+  .pay .disc{ text-align:right; font-family:Georgia,serif; color:var(--ouro); }
+  .cta{ margin-top:9mm; background:var(--preto); color:#fff; padding:7mm; border-radius:3mm; }
+  .cta .spark{ color:var(--mostarda); }
+  .pfoot{ position:absolute; bottom:12mm; left:20mm; right:20mm; font-size:8.5pt; color:var(--cinza); display:flex; justify-content:space-between; border-top:1px solid #e8ddc2; padding-top:3mm;}
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="page cover">
+  <div class="band"></div>
+  <div class="band band-b"></div>
+  <div class="spark">✦ ✦ ✦</div>
+  <div class="eyebrow">Proposta especial para</div>
+  <div class="name serif">Samara</div>
+  <div class="proj serif">Quarto dos Irmãos · Bancada e Guarda-roupa</div>
+  <div class="foot">
+    <span class="wordmark">valvic</span>
+    <span class="muted" style="font-size:9pt;">Marcenaria sob medida · Projeto: Rizzi Interiores</span>
+  </div>
+</div>
+
+<!-- CONEXAO + EXECUCAO -->
+<div class="page">
+  <div class="sec-h">O seu projeto</div>
+  <p class="lead">Duas peças organizam a rotina no quarto dos seus filhos: a
+  <b>bancada</b> que serve de estudo e penteadeira, e o <b>guarda-roupa do piso ao
+  teto</b>. São justamente as peças que mais exigem precisão de marcenaria.</p>
+  <p class="lead" style="margin-top:5mm;"><b>É aí que a Valvic faz diferença:</b>
+  estrutura que não cede, encaixe milimétrico e acabamento impecável — para durar
+  anos do jeito que foi entregue.</p>
+
+  <div class="sec-h" style="margin-top:14mm;">O que entregamos</div>
+  <div class="cards">
+    <div class="card"><h3>Bancada + armário inferior</h3><p>Bancada suspensa que vira
+      penteadeira e escrivaninha, com tampo de vidro e leveza visual. Peça suspensa exige
+      fixação precisa para não ceder — domínio de estrutura que temos. Armário inferior
+      com puxador embutido e sóculo.</p></div>
+    <div class="card"><h3>Roupeiro + nicho iluminado</h3><p>Guarda-roupa do piso ao teto
+      (2,60 m), aproveitando cada centímetro: gavetas, sapateira, cabideiros e
+      prateleiras, com nicho iluminado em LED. Organização completa que cresce com as
+      crianças.</p></div>
+  </div>
+
+  <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Proposta para Samara — Bancada e Guarda-roupa</span></div>
+</div>
+
+<!-- INVESTIMENTO -->
+<div class="page">
+  <div class="sec-h">Investimento</div>
+  <p class="muted" style="font-size:10.5pt;">O escopo é o mesmo nas duas linhas — o que
+  muda é a ferragem (e, com ela, o conforto e a garantia).</p>
+
+  <table>
+    <tr><th>Ambiente</th><th style="text-align:right;">Investimento</th></tr>
+    <tr><td>Bancada + armário inferior</td><td class="val">R$ 6.500</td></tr>
+    <tr><td>Roupeiro + nicho iluminado</td><td class="val">R$ 17.200</td></tr>
+    <tr class="total"><td>Total — Linha Essencial</td><td class="val">R$ 23.700</td></tr>
+  </table>
+
+  <div class="sec-h" style="margin-top:12mm;">Escolha a sua linha</div>
+  <div class="versions">
+    <div class="v reco">
+      <span class="badge">Recomendada</span>
+      <div class="vname">Linha Conforto</div>
+      <div class="vferr">Bancada e guarda-roupa em ferragem <b>Hardt</b>: corrediças
+        ocultas com soft-close — gavetas que deslizam e fecham sozinhas, em silêncio.</div>
+      <div class="vprice">R$ 26.700</div>
+      <div class="vwarr">Garantia <b>5 anos</b></div>
+    </div>
+    <div class="v">
+      <div class="vname">Linha Essencial</div>
+      <div class="vferr">Corrediças telescópicas e dobradiças padrão — solução eficiente
+        e funcional para o dia a dia.</div>
+      <div class="vprice">R$ 23.700</div>
+      <div class="vwarr">Garantia <b>2 anos</b></div>
+    </div>
+  </div>
+  <p class="muted" style="font-size:10pt; margin-top:5mm;">A <b>Linha Conforto</b> eleva
+  as duas peças para ferragem Hardt — gavetas que fecham sozinhas, em silêncio — e
+  <b>mais que dobra a garantia, de 2 para 5 anos</b>. É a diferença entre um móvel
+  funcional e um que encanta no uso de todo dia.</p>
+
+  <div class="info">
+    <div><div class="k">Prazo de entrega</div><div class="vv">60 a 70 dias úteis</div></div>
+    <div><div class="k">Validade da proposta</div><div class="vv">2 dias úteis</div></div>
+    <div><div class="k">Atendimento</div><div class="vv">24h retorno · visita em 3 dias úteis</div></div>
+  </div>
+
+  <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Proposta para Samara — Bancada e Guarda-roupa</span></div>
+</div>
+
+<!-- PAGAMENTO + FECHAMENTO -->
+<div class="page">
+  <div class="sec-h">Condições de pagamento</div>
+  <p class="muted" style="font-size:10.5pt;">Quanto mais você antecipa, maior o desconto —
+  sobre a linha escolhida.</p>
+  <table class="pay">
+    <tr><th>Condição</th><th style="text-align:right;">Vantagem</th></tr>
+    <tr><td>30% de entrada + saldo em até 10× no cartão</td><td class="disc">—</td></tr>
+    <tr><td>50% de entrada + saldo em até 8×</td><td class="disc">3% de desconto</td></tr>
+    <tr><td>70% de entrada + saldo em até 6×</td><td class="disc">5% de desconto</td></tr>
+    <tr><td>70% de entrada + saldo via transferência</td><td class="disc">7% de desconto</td></tr>
+  </table>
+
+  <div class="sec-h" style="margin-top:12mm;">Garantia Valvic</div>
+  <p class="lead" style="font-size:13pt;">Sua marcenaria sai com garantia de
+  <b class="gold">5 anos</b> na Linha Conforto (ou 2 anos na Essencial), cobrindo
+  estrutura e ferragens. Instalações e regulagens: 2 anos.</p>
+  <p class="muted" style="font-size:10pt; margin-top:3mm;">Atendimento de garantia: retorno
+  em 24h, visita técnica em até 3 dias úteis e custo zero ao cliente dentro do prazo.</p>
+
+  <div class="cta">
+    <span class="spark">✦</span>&nbsp; <b class="serif" style="font-size:14pt;">Vamos começar?</b><br>
+    <span style="font-size:10.5pt;">Reservamos a sua vaga na agenda de produção com a entrada —
+    e seguimos para a medição final e o cronograma. Estou à disposição para apresentar a proposta e tirar qualquer dúvida.</span>
+  </div>
+
+  <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Proposta para Samara — Bancada e Guarda-roupa</span></div>
+</div>
+
+</body>
+</html>
