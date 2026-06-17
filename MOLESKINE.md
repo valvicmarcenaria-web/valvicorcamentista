@@ -43,6 +43,23 @@ layout; o de PDF preserva A4 e converte texto em caixas editáveis). Fonte:
   caminho é PDF→import, não construção nativa via MCP.
 - Fluxo de atualização: editar texto no HTML → gerar PDF → reimportar no Canva.
 
+**Modelo ESSENCIAL (Hardt) — 2026-06-17:**  
+Criado `proposta-essencial.html` (variante do Excellence). Território visual
+"Confiança limpa": fundo branco quente `#FBF8F2`, acento **terracota `#B07A56`**,
+header de investimento em **espresso `#3D2A1C`**. Capa e linha do tempo CLARAS
+(onde o Excellence é grafite escuro) — "premium sem peso". Badge "Essencial ·
+Hardt", garantia 5 anos, ferragem Hardt, 1º diferencial adaptado (Hardt soft-
+close, sem citar Hettich). Storage key `valvic_essencial_modelo`.
+
+**Pendente — propostas Kênia & Fábio (Casa Completa):**  
+Pasta Drive: `https://drive.google.com/drive/folders/1phUShb6q29uXp4vWzHQYM_TmBmtTs85a`
+- DOC 1 Premium (Hettich, 10a): V2 cor R$359k · V1 branco R$345k → template Excellence
+- DOC 2 Essencial (Hardt, 5a): V4 cor R$340k · V3 branco R$317k → template Essencial
+- ~60 móveis / 18 ambientes, 3 pavimentos, arquiteta Inédita/Flávia
+- Aviso de reajuste julho/2026 (gatilho de urgência) deve entrar nas propostas
+- Condições: 40/30/30 sem cartão · prazo 90–100 dias · RT embutida · validade
+  valores 10 dias / prazo 3 dias
+
 ---
 
 ### [2026-06-16] Novo layout de proposta — Vitor
