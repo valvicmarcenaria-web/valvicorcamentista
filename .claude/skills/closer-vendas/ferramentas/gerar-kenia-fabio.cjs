@@ -327,6 +327,9 @@ for (const cfg of DOCS){
     DEP_CAPTION:    '${DEPO.cap}',
     PRAZO:          '90',
     GARANTIA_ANOS:  '${cfg.garantia}',
+    HERO_URL:       'https://lh3.googleusercontent.com/d/1tIPkB_fxt1DYWHcj3-s5tdVyM7jocaTa=w1600',
+    P2_URL:         'https://lh3.googleusercontent.com/d/1SQriQN8H4RD2yjHQoLm84HQ65DCoQE1p=w1600',
+    P4_URL:         'https://lh3.googleusercontent.com/d/1-viTHOJ1WZz9fJTX4PmUoADpZcf1ZOVR=w1600',
     P5_URL:         '${DEPO.url}',
   };`;
   html = html.replace(/const DEFAULTS = \{[\s\S]*?\};/, defaults);
