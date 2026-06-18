@@ -580,7 +580,7 @@
       "terc": {
         "vid": 0,
         "esq": 1595,
-        "ser": 0,
+        "ser": 900,
         "pin": 0,
         "est": 0,
         "laq": 0,
@@ -946,7 +946,7 @@
   "ativo": 0,
   "collapsed": {},
   "theme": "dark",
-  "diretrizes": "V3 · Branco interno + Hardt (garantia 5 anos)\nPAGAMENTO (sem cartão): 40% assinatura + 30% entrega 1ª etapa (ambientes a definir c/ cliente) + 30% entrega final.\nConcorrente referência R$348k. Quantitativo Fase 1 (a validar).\nESTRUTURA INTERNA BRANCO TX em todos (exceto versões 'tudo na cor'). Puxador cava usinada. Logística R$700/amb.",
+  "diretrizes": "V3 · Branco interno + Hardt (garantia 5 anos)\nPAGAMENTO (sem cartão): 40% assinatura + 30% entrega 1ª etapa (ambientes a definir c/ cliente) + 30% entrega final.\nConcorrente referência R$348k. Quantitativo Fase 1 (a validar).\nESTRUTURA INTERNA BRANCO TX em todos (exceto versões 'tudo na cor'). Puxador cava usinada. Logística R$700/amb.\nSerralheria estrutural da cozinha: R$900 (item especial, terc ser).",
   "rodrigo": "Rodrigo (jun/2026, caixa CRÍTICO): projeto grande (>R$80k) -> MC mínima 40% + ENTRADA 40% antes de produção,\nparcelas vinculadas a etapas de entrega. Alvo deste orçamento = 42% (margem p/ Vitor negociar até o piso 40%).\nNÃO ceder abaixo de 40%. Sem entrada real, não fecha. Encargos com NF 7%, parcelamento 7%, comissão Vitor 5%, RT 10%.\nANCORAGEM (Vitor): apresentar o TOTAL da casa primeiro (âncora); só então abrir por ambiente. Pacote completo\notimiza corte/frete -> melhor custo por m² que ambiente avulso. Suíte Master é o ambiente de maior valor (âncora interna).",
   "duvidas": []
 }

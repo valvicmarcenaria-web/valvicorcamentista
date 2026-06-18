@@ -8,6 +8,8 @@
 
 A casa é apresentada como **conjunto único** (toda a marcenaria dos 3 pavimentos). O que muda entre as versões são **dois eixos**: o acabamento interno dos móveis e a linha de ferragens — esta última define a **garantia**.
 
+> **DECISÃO (jun/2026): linha de trabalho = HETTICH (Documento 1 — garantia 10 anos).** Foco em V1 (branco interno, R$345k) e V2 (tudo na cor, R$359k). O Documento 2 (Hardt) fica como alternativa/carta na manga, só se houver pressão de preço.
+
 ### 📘 Documento 1 — Linha Premium (ferragens **Hettich** · garantia 10 anos)
 | Versão | Acabamento | **Investimento** |
 |---|---|---|
@@ -47,21 +49,21 @@ A casa é apresentada como **conjunto único** (toda a marcenaria dos 3 paviment
 
 | Ambiente | V1 Branco+Hettich | V2 Cor+Hettich | V3 Branco+Hardt | V4 Cor+Hardt |
 |---|---:|---:|---:|---:|
-| Cozinha | 42.000 | 43.500 | 36.500 | 39.000 |
+| Cozinha | 44.000 | 45.500 | 38.500 | 41.500 |
 | Gourmet | 12.500 | 12.500 | 11.500 | 12.000 |
-| Sala / Estar | 21.500 | 23.500 | 20.000 | 23.000 |
-| Lavanderia | 26.500 | 28.500 | 24.000 | 26.500 |
+| Sala / Estar | 21.000 | 23.500 | 20.000 | 22.500 |
+| Lavanderia | 26.500 | 28.000 | 24.000 | 26.000 |
 | Subsolo / Despensa | 12.000 | 11.500 | 11.500 | 11.000 |
 | Lavabo / Circulação | 6.000 | 6.500 | 6.000 | 6.500 |
-| Semissuíte (Banheiro) | 11.500 | 12.500 | 11.000 | 12.000 |
-| Banho Master | 17.500 | 18.000 | 16.500 | 17.000 |
+| Semissuíte (Banheiro) | 11.500 | 12.500 | 10.500 | 12.000 |
+| Banho Master | 17.500 | 17.500 | 16.000 | 16.500 |
 | I.S. Suíte 01 | 13.000 | 13.500 | 12.000 | 12.500 |
-| Quarto Hóspedes | 20.500 | 21.000 | 19.000 | 20.500 |
+| Quarto Hóspedes | 20.000 | 21.000 | 19.000 | 20.500 |
 | Rouparia | 6.000 | 6.000 | 6.000 | 6.000 |
-| Suíte 03 | 31.500 | 32.000 | 28.500 | 30.000 |
-| Suíte 02 | 28.000 | 28.500 | 25.000 | 26.500 |
-| Suíte 01 (infantil) | 31.500 | 33.500 | 29.500 | 32.000 |
-| Suíte Master | 65.000 | 68.000 | 60.000 | 65.500 |
+| Suíte 03 | 31.000 | 32.000 | 28.000 | 29.500 |
+| Suíte 02 | 27.500 | 28.500 | 25.000 | 26.500 |
+| Suíte 01 (infantil) | 31.500 | 33.000 | 29.000 | 31.500 |
+| Suíte Master | 65.000 | 67.500 | 60.000 | 65.500 |
 | **TOTAL** | **345.000** | **359.000** | **317.000** | **340.000** |
 
 ---
@@ -173,6 +175,7 @@ A casa é apresentada como **conjunto único** (toda a marcenaria dos 3 paviment
 ### Serralheria de apoio (acompanha a marcenaria)
 - **S01 — Muxarabi piso-teto (5×5)** + estrutura metálica 2×2 + 6 prateleiras, pintura Coral Cinza Intenso (Gourmet).
 - **S02 — Muxarabi no teto (5×5)**, Coral Cinza Intenso (Lavabo Piscina).
+- **S03 — Estrutura metálica de apoio da Cozinha** (item especial, ~R$900 de custo — já incluído nos valores).
 
 ---
 
