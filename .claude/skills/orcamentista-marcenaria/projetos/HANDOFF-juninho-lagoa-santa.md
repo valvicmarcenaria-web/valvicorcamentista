@@ -66,7 +66,7 @@
 ## ✅ RESOLUÇÃO (18/06/2026 — Lavinia + Jonathan)
 - **Item 6 (valor total) RESPONDIDO** e preço **DEFINIDO pelo Jonathan**:
   - **Versão B — Branco interno (armários fechados): R$ 370.000**
-  - **Versão A — Tudo na cor: R$ 393.939 (~R$ 394k)**
+  - **Versão A — Tudo na cor: R$ 395.000**
   - Diferença = material do interno na cor propagado pela margem (~R$ 24k).
 - **MC real (lançamento ambiente a ambiente): ~36% (B) / ~38% (A)** — **abaixo**
   do piso de 40% de projeto grande. **Jonathan optou conscientemente por manter os

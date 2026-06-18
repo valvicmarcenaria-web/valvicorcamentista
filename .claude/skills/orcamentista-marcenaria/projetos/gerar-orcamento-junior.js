@@ -82,7 +82,7 @@ function build(versaoNome, inv, branco){
 }
 
 const vB = build("B — Branco interno (fechados)", 370000, true);
-const vA = build("A — Tudo na cor", 393939, false);
+const vA = build("A — Tudo na cor", 395000, false);
 fs.writeFileSync("projetos/orcamento-junior-vB-branco-interno.json", JSON.stringify(vB,null,2));
 fs.writeFileSync("projetos/orcamento-junior-vA-tudo-na-cor.json", JSON.stringify(vA,null,2));
 console.log("OK — 2 arquivos gerados.");
