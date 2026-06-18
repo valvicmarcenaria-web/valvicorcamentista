@@ -66,7 +66,8 @@
     }
     @media print {
       @page { size: A4; margin: 0; }
-      .page { margin: 0; box-shadow: none; page-break-after: always; page-break-inside: avoid; }
+      html, body { margin: 0; padding: 0; background: white !important; }
+      .page { width: 210mm; min-height: 297mm; margin: 0; box-shadow: none; page-break-after: always; page-break-inside: avoid; break-after: page; }
     }
 
     /* ── TOKENS ── */
@@ -1236,7 +1237,7 @@
     </div>
 
     <div class="meta-row">
-      <div class="meta-card mc-navy"><div class="mc-label">Prazo de entrega</div><div class="mc-val">90–100</div><div class="mc-sub">dias · validade 3 dias</div></div>
+      <div class="meta-card mc-navy"><div class="mc-label">Prazo de entrega</div><div class="mc-val">100–120</div><div class="mc-sub">dias · validade 3 dias</div></div>
       <div class="meta-card mc-gold"><div class="mc-label">Garantia</div><div class="mc-val">10 anos</div><div class="mc-sub">ferragens Hettich</div></div>
       <div class="meta-card mc-cream"><div class="mc-label">Validade dos valores</div><div class="mc-val">10</div><div class="mc-sub">dias corridos</div></div>
     </div>
@@ -1267,7 +1268,7 @@
     DEP_AUTOR:      'Graciene',
     DEP_PROJETO:    'Vale dos Cristais',
     DEP_CAPTION:    'Projeto executado · Vale dos Cristais',
-    PRAZO:          '90',
+    PRAZO:          '100–120',
     GARANTIA_ANOS:  '10',
     HERO_URL:       'https://lh3.googleusercontent.com/d/1tIPkB_fxt1DYWHcj3-s5tdVyM7jocaTa=w1600',
     P2_URL:         'https://lh3.googleusercontent.com/d/1SQriQN8H4RD2yjHQoLm84HQ65DCoQE1p=w1600',
