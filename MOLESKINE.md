@@ -1,7 +1,181 @@
-# Moleskine Digital — Valvic
+# Moleskine Digital — Valvic · Centro Único de Aprendizado
 
-Arquivo de tarefas e recados entre sessões. Qualquer agente (Lavinia, Rodrigo, Vitor…)
-pode ler e escrever aqui. Formato livre — marcar data e agente responsável.
+> **Este arquivo é o cérebro compartilhado da Valvic.** Todo agente — **Lavinia**
+> (orçamento), **Rodrigo** (finanças), **Vitor** (vendas), **Stefan** (design) e
+> **Wallison/W** (marketing) — **lê antes** de qualquer tarefa e **registra
+> depois** todo aprendizado novo. Finalidade: evitar erros recorrentes, otimizar
+> processos, promover melhorias e mais assertividade em todas as atividades.
+
+## 🧭 Protocolo (vale para TODOS os agentes)
+
+1. **CONSULTAR ANTES.** Em toda nova tarefa — orçamento, proposta, peça visual,
+   campanha ou demanda estratégica — ler este arquivo primeiro (a seção do
+   próprio agente + o bloco "❌ Erros recorrentes — nunca repetir").
+2. **EVOLUIR SEMPRE.** Incorporar os registros ao raciocínio: cada entrada torna
+   o agente mais profundo no negócio Valvic. Quem lê o Moleskine deve sair mais
+   especialista do que entrou.
+3. **REGISTRAR DEPOIS (automático).** Todo erro cometido, acerto validado,
+   direcionamento do Jonathan ou padrão descoberto entra aqui na hora — com
+   **data** e **agente** — sem esperar ser pedido.
+
+---
+
+## 🎓 CENTRO DE APRENDIZADO
+
+_Consolidado em 2026-06-18 pela equipe (Vitor coordenando). Cada seção foi
+minerada pelo próprio especialista a partir de todo o histórico do repositório._
+
+### ❌ Erros recorrentes — nunca repetir (cross-área · leitura obrigatória)
+
+- **[Lavinia] Fita de cor/ripado** é o erro nº 1 de orçamento — subestimada ~2× a 2,7×. Ripado calcula-se régua a régua (perímetro de cada ripa); buffer real **×1,15**, não ×1,10.
+- **[Lavinia] Prateleira longa (>70 cm) = 18 mm** (anti-flambagem), não 15 mm. E **contar prateleiras vão a vão nas duas vistas** — nunca "de olho" (ex.: Camila ≈ 21, não 8).
+- **[Lavinia] "Porta de espelho" ≠ vidraceiro** — definir a construção: espelho colado no MDF (insumo/m² + ~R$150 logística) vs esquadria de alumínio (terceirizado).
+- **[Rodrigo] MC 35–40% está ABAIXO do break-even (~43%)** — vender nessa faixa é prejuízo estrutural (foi a raiz da dívida antiga). Piso = equilíbrio (~43%); alvo saudável **48–50%**.
+- **[Vitor] Nome de outro cliente vazando** (caso "Vargas Decor", de template antigo) — QA: nome correto em TODAS as páginas; zero nome de outra marca/cliente.
+- **[Vitor] NUNCA "RT da arquiteta" e NUNCA "sem cartão"** nas propostas — geram, respectivamente, atrito com a arquiteta e objeção desnecessária.
+- **[Vitor] Prazo NUNCA cravado sem o Jonathan** (ligado à produção); se a Lavinia não informou, perguntar antes de propor.
+- **[Stefan] HTML→import no Canva achata o layout** (vira 1 página paisagem) — sempre **PDF→import**. Impressão A4 exige reset de background/margin no `@media print` + `print-color-adjust: exact` (com `-webkit-`).
+- **[Geral] Perguntar a situação de caixa em TODA demanda** (define a MC mínima) e manter **harmonia descritivo ↔ projeto ↔ orçamento ↔ produção** (confirmar composição face a face: "moldura branca, interior na cor — é isso?").
+
+---
+
+### 🪚 Aprendizados — Lavinia (Orçamento & Quantitativo)
+
+**✅ Acertos (o que funciona, manter):**
+- **Quantitativo SEMPRE antes de preço**, e validação por **MC%** de trás para frente. Preço por markup divisor `valorCliente = custoDir / (1 − margem)` — a margem incide sobre o preço, não sobre o custo.
+- **Roupeiro em L = dois ambientes no app** (trecho a trecho) para rastrear material; o fechamento consolida. Rodar o checklist do roupeiro (sistema de porta, trilho sup+inf, desempenador, corrediça, prateleira >70cm, fita c/ gavetas, LED, tábua de passar, espelho).
+- **Sempre lançar consumíveis (baseline, nunca zero):** tinner, estopa, strech, cantoneira, embalagem, parafuso+bucha, cola Teck, silicone + cj4 (suportes). Fixadores/cola ≈ **2% do custo**.
+- **Otimização em paralelo:** para todo ponto caro gerar a versão **assinada** (premium) e a **inteligente** (enxuta) com a economia explícita — atacar a **mão de obra embutida**, não o material.
+
+**❌ Erros & correções (nunca repetir):**
+- **Fita de cor/ripado — subestimei ~2× a 2,7×.** Ripado régua a régua; faixa ripada ≈ dobrar a estimativa simples; peça solta de cor ≈ 2,5× perímetro. Buffer **×1,15**.
+- **Prateleira longa (>70cm) é 18mm, não 15mm**; e contar prateleiras vão a vão nas DUAS vistas.
+- **"Porta de espelho" ≠ vidraceiro.** Espelho colado no MDF = insumo/m² + R$150 logística; esquadria de alumínio = terceirizado.
+- **RO65 custa R$60** (não R$250). **LED em L:** medir só o trecho iluminado.
+
+**🧭 Direcionamentos do Jonathan:**
+- **Perguntar a situação de caixa em TODA demanda** e **nunca cravar prazo sozinha** — perguntar ao Jonathan e repassar ao Vitor. Margem estratégica é decisão do Rodrigo.
+- **Composição de material é gargalo crítico — confirmar superfície por superfície** e registrar no painel de dúvidas (ex. Regina: interno do nicho Blush, só o contorno branco).
+- **Ancorar a proposta no que está sendo vendido — sem "otimização escondida".** Downgrade (ex.: oculta Hardt → telescópica) é carta de negociação só quando o cliente chora preço. Uma pasta por cliente no Drive. A medida cotada no projeto prevalece sobre a tabela de mapeamento.
+
+**📌 Regras técnicas / descobertas:**
+- **Piso real de MC ~43% (break-even), alvo 48–50%** — o "ideal 35–40%" do método antigo fica abaixo do break-even. Produção é custo FIXO e **não entra** no orçamento (só a comissão do marceneiro).
+- **Chapa 2750×1850 (~5,09 m²);** aproveitamento 15/18mm ≈ 0,82 e 6mm ≈ 0,55; cada cor distinta puxa ≥1 chapa. Fita tem **dois custos**: insumo (branco ~R$2/m, cor ~R$3/m) + filetagem (máquina ~R$2,5/m, manual ~R$4/m). Gaveta = 6 peças.
+- **Método bancada/tampo suspenso:** tudo em **15mm** + enchimento com sobras + metalon (~R$350 + ~R$150 logística) + 6mm embaixo — nunca 18mm. **Reflecta bronze: R$350/m² (6mm) · R$450/m² (8mm)**; espelho prata R$600, bronze R$900 (jun/2026).
+
+---
+
+### 💰 Aprendizados — Rodrigo (Finanças & Precificação Estratégica)
+
+**✅ Acertos (princípios que guiam, manter):**
+- **MC paga o FIXO primeiro, lucro só depois.** A MC (Preço − Variáveis) cobre o custo fixo (~R$67k/mês); lucro é o que sobra ACIMA disso.
+- **Ponto de equilíbrio é a régua real:** `Σ MC do mês = Custo Fixo`. Para a Valvic exige **MC% médio ≥ 41,4%** só para empatar.
+- **Alavanca de preço é contextual:** capacidade ociosa + caixa apertado → aceitar MC menor pontualmente; capacidade cheia → segurar margem.
+- **O gargalo é hora-fábrica, não dinheiro** → priorizar por **MC por unidade de capacidade**, não só por MC%.
+- **Ciclo de caixa pesa tanto quanto a margem** (recebimento × pagamento). **Diagnóstico antes do tratamento**; recomendar sempre com número.
+
+**❌ Erros & armadilhas (nunca repetir):**
+- **Meta "ideal 35–40%" está ABAIXO do break-even (~43%)** — foi a doença que gerou a dívida de R$300k. 35% = −R$10,3k/mês.
+- **Piso de caixa (MC 25–30%) como HÁBITO vira a própria doença** — vale como exceção consciente, nunca default.
+- **Depender de um único contrato grande para fechar o mês** (junho só não deu prejuízo por 1 projeto de R$92k) — calibrar preço mínimo por projeto.
+
+**🧭 Direcionamentos do Jonathan:**
+- **Perguntar a situação de caixa em TODA nova demanda** antes de fechar preço (define a MC mínima).
+- **Levantar (pendente):** composição do custo fixo, parcelas das dívidas atuais, ciclo de caixa real, capacidade produtiva (hora-fábrica/mês).
+- **Escopo:** app de orçamento = projeto a projeto; **Valvic OS** = visão de empresa (break-even de caixa, custo fixo, capacidade).
+
+**📌 Números/indicadores que importam:**
+- **Quadro 2025:** faturamento ~R$162k/mês · MC **43,5%** · break-even R$154k · custo fixo ~**R$67k** · lucro ~R$3,5k/mês (2,1%) · margem de segurança 4,9%.
+- **A alavanca:** **+1 ponto de MC% = +R$1,62k/mês (~R$19k/ano)** sem vender mais. 43,5%→50% **quadruplica** o lucro.
+- **Break-even de CAIXA > contábil:** serviço das dívidas é saída adicional ao fixo → reforça exigir MC **48–50%**.
+
+---
+
+### 🤝 Aprendizados — Vitor (Vendas & Propostas)
+
+**✅ Acertos (o que converte, manter):**
+- Abrir a proposta no CLIENTE (sonho/dor + frase específica do projeto), não na empresa — cliente é herói, Valvic é guia.
+- Traduzir SEMPRE feature→valor→emoção ("corrediça soft-close" → "gavetas que fecham sozinhas, sem batida"); nunca expor custo/MC/dados internos.
+- Garantia derivada da ferragem (telescópica/padrão 2a · Hardt 5a · Hettich 10a · Blum vitalícia), ao lado do preço; projeto misto = elo mais fraco + sinalizar upsell ao Jonathan.
+- Entrega sempre com mensagem de acompanhamento pronta (gancho + validade + CTA) e proposta arquivada na pasta única do cliente no Drive.
+
+**❌ Erros & correções (nunca repetir):**
+- Vazamento de "Vargas Decor" — QA: nome correto em TODAS as páginas, zero nome de outra marca/cliente.
+- Bug de impressão PDF: fundos sumiam / layout achatava — corrigido no `@media print` (reset background/margin, ocultar toolbar, dimensões em mm, `print-color-adjust: exact`).
+- Typos técnicos matam credibilidade premium ("Premiun"→Premium, "harth"→Hardt). Conferir Hardt, Hettich, Rometal.
+- Template Excellence reprovado ("não conversa com o público") — não fixar "10 anos" no template; garantia é dinâmica.
+
+**🧭 Direcionamentos do Jonathan (regras dele):**
+- NUNCA mencionar RT de arquiteto nos valores — atrito sério com a arquiteta.
+- NUNCA escrever "sem cartão" — cria objeção; usar só "Condições de pagamento".
+- Garantia ESCALONADA POR FERRAGEM é a política oficial — conflito pendente: Hardt 5a (Jonathan) vs 10a no Termo "Linha Gold"; até decidir, confirmar, não inventar.
+- Descritivo item-a-item com códigos M## da arquiteta, SEM medidas; harmonia descritivo↔projeto↔produção.
+
+**📌 Técnicas de proposta / fechamento:**
+- Ancoragem: versões nomeadas por valor (Completa→Essencial), cara→barata; diferença explicada em valor (downgrade vem da Lavinia), nunca corte cego de margem.
+- Escada de pagamento casada com o caixa do Rodrigo (+antecipação = +desconto; ex. K&F 40/30/30) + aviso de reajuste (julho/2026) como urgência; validade por perfil.
+- Objeções: acolher→reenquadrar→conduzir; silêncio após o preço; nunca dar desconto antes de pedido (e só por antecipação). Cliente recorrente = reconhecimento, não convencimento.
+
+---
+
+### 🎨 Aprendizados — Stefan (Design & Identidade Visual)
+
+**✅ Acertos (o que eleva a percepção, manter):**
+- **Respiro generoso + uma ideia por bloco** (margem ~8% em A4, 1 título dominante) — espaço negativo lê como confiança e alto padrão.
+- **Madeira/luz como protagonista, dourado como acento pontual** (latão, filete 1px), nunca faixa de cor; foto-herói com bleed e luz rasante carrega a capa.
+- **Tipografia editorial:** display serifada de alto contraste (Playfair/Cormorant) + corpo Inter + Space Mono no detalhe técnico (engenharia/autoridade).
+- **Cor decorre do território, não do gosto:** Signature obsidian+brass, Excellence sand+gold, Essencial branco quente+terracota, Family creme+mostarda. **Sistema de tokens reutilizável** (mesma espinha, troca paleta/fonte por perfil).
+
+**❌ Erros & correções (nunca repetir):**
+- **Excellence reprovado: "páginas fracas"** — diagnóstico antes do pixel; cada página precisa de função e foco.
+- **Dourado mostarda + serifa + faixas = "premium genérico"** — corrigido com respiro, madeira protagonista e dourado contido.
+- **Import de HTML no Canva achata** — sempre PDF→import.
+- **Nunca "promoção/50% OFF", clipart, fontes datadas, sombra/bevel** — destroem percepção de valor.
+
+**🧭 Direcionamentos do Jonathan:**
+- Excellence reprovado; redesenhar do zero mantendo só a página de Investimento.
+- Sem medidas no descritivo técnico (códigos M##).
+- Regras permanentes: nunca citar RT, nunca "sem cartão".
+
+**📌 Técnico (Canva/MCP, impressão, sistema visual):**
+- **API do Canva (MCP) só EDITA elementos existentes** — não cria caixas: editar no HTML → gerar PDF → reimportar (design bom = `DAHMxT1mbIE`).
+- **Impressão A4:** `@page{size:A4;margin:0}`, `page-break-after:always` + `page-break-inside:avoid`, **`print-color-adjust:exact` com `-webkit-`**, `#controls` escondido no `@media print`.
+- **HTML auto-contido** (Google Fonts CDN, abre no browser, PDF via Ctrl+P) com spans `.token` editáveis — padrão de toda ferramenta Valvic.
+
+---
+
+### 📣 Aprendizados — Wallison / W (Marketing) — FUNDAÇÃO
+
+**✅ Princípios que adoto desde já:**
+- Marketing que não gera lead qualificado e venda é decoração cara — toda ação sai com número-alvo, nunca "post por postar".
+- Padrão premium inegociável: jamais gritar "promoção/desconto"; comunicar valor, precisão, acabamento e legado (ao lado de grifes).
+- Qualidade de lead > volume: calibrar tráfego para perfil de ticket alto. Avaliar o time por critério e número, nunca por "achismo".
+
+**🧭 Direcionamentos do negócio que assimilei:**
+- 3 frentes com funis próprios: Marcenaria (planejados), Decoração (ambientes/ML), Clube do Planejado (educação/vendas para o setor).
+- Ticket ~R$40 mil, MC ~43,5% → posso pagar CAC alto por lead QUALIFICADO, monitorando para não comer a margem.
+- Regras permanentes de proposta impactam meu copy de funil (coerência da mensagem): nunca RT, nunca "sem cartão".
+
+**📌 Como vou operar (funil + time + número-alvo):**
+- Penso o sistema completo: impressão → lead → atendimento → venda; anúncio bate com landing, que bate com o discurso do Vitor.
+- Dirijo Social Media (pauta com função no funil), Stefan (briefing visual + validação premium) e Tráfego (objetivo, verba, públicos, CPL-alvo/ROAS).
+- Handoff: meu funil entrega o lead qualificado → Lavinia (orça) → Rodrigo (piso) → Vitor (proposta/fechamento). Leitura mensal de funil que vira decisão.
+
+**🔜 Primeiras perguntas a fechar com o Jonathan:**
+- Objetivo PRIORITÁRIO do trimestre por frente (leads Marcenaria? produto/ML? turma do Clube?).
+- Verba mensal de tráfego e distribuição entre frentes; existe CPL/CAC histórico (baseline)?
+- Capacidade produtiva (para o tráfego não gerar mais demanda do que se entrega — alinhar com Rodrigo).
+- Acessos/ativos: Meta/Google Ads, GA/pixels, CRM/origem de lead, acervo de imagens no Drive.
+- Definição de "lead qualificado" (perfil, ticket mínimo, região) para calibrar tráfego e cobrar a social.
+
+---
+
+### 🔗 A consolidar (aprendizado que vive em outras branches)
+
+Para o centro ficar 100% completo, falta trazer (decisão do Jonathan — exige merge):
+- **Téo** (skill `projeto-producao`, persona de produção) — branches `loving-dirac`, `gallant-franklin`.
+- **CENTRAL-RODRIGO.md + app custo-operacao** (DRE jun/2026, break-even R$246k real) — branches `happy-ritchie`, `gallant-franklin`.
+- **Propostas Samara (R$37,5k + R$23,7k), Mônica (R$17k)** — branch `hopeful-hawking`; **Júnior (R$395k)** — registrado via `charming-johnson`.
 
 ---
 
@@ -57,7 +231,7 @@ Pasta Drive: `https://drive.google.com/drive/folders/1phUShb6q29uXp4vWzHQYM_TmBm
 - ✅ `proposta-kenia-fabio-essencial.html` (Essencial/Hardt): Tudo na cor R$340k · Branco interno R$317k · 5 anos
 - 9 págs cada: capa · diferenciais · **descritivo técnico (4 págs, 69 itens M## por ambiente)** · linha do tempo · depoimento (Graciene) · investimento
 - Descritivo item-a-item com códigos M## da arquiteta, sem medidas (escolha do Jonathan)
-- Investimento: 2 versões (cor/branco) + aviso reajuste julho/2026 + 40/30/30 sem cartão + 90–100 dias + sem assinatura
+- Investimento: 2 versões (cor/branco) + aviso reajuste julho/2026 + 40/30/30 sem cartão + 100–120 dias + sem assinatura
 - Gerador versionado: `gerar-kenia-fabio.cjs` (dados do descritivo + monta os 2 docs a partir dos templates)
 - ⏳ Pendentes: foto da capa (placeholder) · revisão do Jonathan · export PDF · salvar FINAL na pasta Drive
 
@@ -147,6 +321,11 @@ para Vitor calibrar o tom e o jeito dele.
 ---
 
 ## Tarefas concluídas
+
+### [2026-06-18] Centro único de aprendizado + novo membro Wallison (W) ✅
+- Protocolo Moleskine (consultar antes · evoluir · registrar depois) inserido em TODAS as skills.
+- Criada a skill **gestor-marketing** (persona **Wallison/W**), 5º membro do time.
+- Os 5 especialistas mineraram e registraram seus aprendizados aqui (seção Centro de Aprendizado).
 
 ### [2026-06-16] Proposta Regina Godinho — Escritório ✅
 - Proposta montada no Canva (MODELO ENXUTO)
