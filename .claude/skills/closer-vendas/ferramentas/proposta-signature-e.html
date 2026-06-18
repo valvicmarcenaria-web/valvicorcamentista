@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Signature · Matéria — Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─────────────────────────────────────────────────── */
+:root {
+  --mogno:    #2C1F15;
+  --mogno-l:  #3D2B1F;
+  --linho:    #F0E4C8;
+  --linho-d:  #DDD0B0;
+  --terra:    #C4714A;
+  --terra-l:  #D4896A;
+  --terra-10: rgba(196,113,74,.10);
+  --musgo:    #8FAB8E;
+  --muted:    rgba(240,228,200,.45);
+  --pw:       794px;
+  --ph:       1123px;
+
+  /* wood-grain texture util */
+  --grain: linear-gradient(175deg, rgba(240,228,200,.03) 0%, transparent 60%),
+           repeating-linear-gradient(175deg,
+             transparent 0px, transparent 8px,
+             rgba(240,228,200,.015) 8px, rgba(240,228,200,.015) 9px);
+}
+
+/* ─── RESET ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #1a1210;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  color: var(--linho);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ─── PAGES ──────────────────────────────────────────────────── */
+.page {
+  width: var(--pw);
+  min-height: var(--ph);
+  margin: 0 auto 32px;
+  overflow: hidden;
+  position: relative;
+  background: var(--linho);
+  box-shadow: 0 8px 48px rgba(0,0,0,.55);
+}
+.page.dark {
+  background: var(--grain), var(--mogno);
+  color: var(--linho);
+}
+.page.light {
+  background: var(--linho);
+  color: var(--mogno);
+}
+
+/* ─── EDIT TOOLBAR ───────────────────────────────────────────── */
+#toolbar {
+  position: fixed; top: 16px; right: 16px; z-index: 9999;
+  display: flex; gap: 8px;
+}
+#toolbar button {
+  background: var(--terra); color: var(--linho);
+  border: none; border-radius: 4px;
+  padding: 8px 14px; font-family: 'Lato', sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: .06em;
+  cursor: pointer; text-transform: uppercase;
+  transition: background .2s;
+}
+#toolbar button:hover { background: var(--terra-l); }
+#toolbar button.sec {
+  background: var(--mogno); border: 1px solid var(--terra);
+}
+#toolbar button.sec:hover { background: var(--mogno-l); }
+
+/* ─── EDIT PANEL ──────────────────────────────────────────────── */
+#edit-panel {
+  display: none;
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(44,31,21,.92);
+  z-index: 9000;
+  overflow-y: auto;
+  padding: 24px;
+}
+#edit-panel.open { display: block; }
+#edit-inner {
+  max-width: 720px; margin: 0 auto;
+  background: var(--mogno-l);
+  border-radius: 8px;
+  padding: 32px;
+  border: 1px solid rgba(240,228,200,.15);
+}
+#edit-inner h2 {
+  font-family: 'Zilla Slab', serif;
+  font-size: 22px; color: var(--linho);
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--terra);
+  padding-bottom: 12px;
+}
+.edit-section { margin-bottom: 28px; }
+.edit-section h3 {
+  font-family: 'Lato', sans-serif; font-weight: 700;
+  font-size: 10px; text-transform: uppercase;
+  letter-spacing: .12em; color: var(--terra);
+  margin-bottom: 12px;
+}
+.field-row { margin-bottom: 10px; }
+.field-row label {
+  display: block; font-size: 11px; color: var(--linho-d);
+  margin-bottom: 4px; font-weight: 400; letter-spacing: .04em;
+}
+.field-row input, .field-row textarea {
+  width: 100%; background: rgba(240,228,200,.08);
+  border: 1px solid rgba(240,228,200,.2);
+  border-radius: 4px; padding: 8px 10px;
+  color: var(--linho); font-family: 'Lato', sans-serif;
+  font-size: 13px; font-weight: 300;
+  outline: none; transition: border-color .2s;
+}
+.field-row input:focus, .field-row textarea:focus {
+  border-color: var(--terra);
+}
+.field-row textarea { min-height: 70px; resize: vertical; }
+.edit-actions {
+  display: flex; gap: 10px; margin-top: 24px;
+  padding-top: 20px; border-top: 1px solid rgba(240,228,200,.12);
+}
+.edit-actions button {
+  padding: 10px 20px; border-radius: 4px;
+  border: none; cursor: pointer;
+  font-family: 'Lato', sans-serif; font-weight: 700;
+  font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+}
+.btn-save { background: var(--terra); color: var(--linho); }
+.btn-cancel { background: transparent; color: var(--linho-d); border: 1px solid rgba(240,228,200,.2) !important; }
+
+/* ────────────────────────────────────────────────────────────────
+   PAGE 1 — CAPA
+──────────────────────────────────────────────────────────────── */
+#p1 { display: flex; height: var(--ph); }
+
+.p1-left {
+  width: 60%; height: 100%;
+  position: relative; overflow: hidden;
+}
+.p1-left img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block;
+}
+.p1-left::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 70%, var(--mogno) 100%);
+}
+
+.p1-right {
+  width: 40%; height: 100%;
+  background: var(--grain), var(--mogno);
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 48px 40px 40px;
+  position: relative;
+}
+
+.p1-logo {
+  position: absolute; top: 36px; left: 40px;
+  display: flex; align-items: center; gap: 8px;
+}
+.p1-logo-spark { width: 18px; height: 18px; color: var(--linho); }
+.p1-logo-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-weight: 400;
+  font-size: 16px; color: var(--linho);
+  letter-spacing: .18em; text-transform: uppercase;
+}
+
+.p1-tag-wrap {
+  margin-bottom: 20px;
+  margin-left: -40px;
+  position: relative;
+}
+.p1-tag {
+  display: inline-block;
+  background: var(--terra);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+  padding: 7px 36px 7px 40px;
+  font-family: 'Lato', sans-serif;
+  font-size: 9px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--linho);
+}
+
+.p1-client {
+  font-family: 'Zilla Slab', serif;
+  font-weight: 700; font-size: 48px;
+  color: var(--linho); line-height: 1.1;
+  margin-bottom: 14px;
+}
+.p1-project {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 17px;
+  color: var(--linho-d); margin-bottom: 36px;
+  line-height: 1.5;
+}
+.p1-meta {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300; font-size: 10px;
+  color: var(--muted); letter-spacing: .08em;
+  line-height: 1.9;
+}
+.p1-divider {
+  width: 40px; height: 2px;
+  background: var(--terra); margin-bottom: 28px;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   PAGE 2 — DIFERENCIAIS
+──────────────────────────────────────────────────────────────── */
+#p2 { display: flex; height: var(--ph); background: var(--linho); }
+
+.p2-left {
+  width: 40%; height: 100%;
+  background: var(--grain), var(--mogno);
+  display: flex; flex-direction: column;
+  padding: 52px 36px 40px;
+}
+.p2-overline {
+  font-family: 'Lato', sans-serif; font-weight: 700;
+  font-size: 9px; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--terra);
+  margin-bottom: 20px;
+}
+.p2-title {
+  font-family: 'Zilla Slab', serif;
+  font-weight: 700; font-size: 34px;
+  color: var(--linho); line-height: 1.2;
+  margin-bottom: 40px;
+}
+.p2-title em {
+  font-style: normal;
+  color: var(--terra);
+  border-bottom: 2px solid var(--terra);
+  padding-bottom: 1px;
+}
+.p2-cards { display: flex; flex-direction: column; gap: 12px; }
+.p2-card {
+  border-left: 3px solid var(--terra);
+  padding: 12px 14px;
+  background: rgba(240,228,200,.06);
+  border-radius: 0 4px 4px 0;
+}
+.p2-card-title {
+  font-family: 'Lato', sans-serif; font-weight: 700;
+  font-size: 11px; color: var(--linho);
+  letter-spacing: .04em; margin-bottom: 3px;
+}
+.p2-card-body {
+  font-family: 'Lato', sans-serif; font-weight: 300;
+  font-size: 11px; color: var(--linho-d);
+  line-height: 1.55;
+}
+
+.p2-right {
+  width: 60%; height: 100%;
+  position: relative; overflow: hidden;
+}
+.p2-right img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block;
+}
+.p2-right::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to right, var(--mogno) 0%, transparent 30%);
+}
+
+/* ────────────────────────────────────────────────────────────────
+   PAGE 3 — O PROJETO
+──────────────────────────────────────────────────────────────── */
+#p3 {
+  background: var(--grain), var(--mogno);
+  padding: 0;
+  min-height: var(--ph);
+  display: flex; flex-direction: column;
+}
+
+.p3-header {
+  background: var(--terra);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), 0 100%);
+  padding: 32px 48px 50px;
+}
+.p3-header-over {
+  font-family: 'Lato', sans-serif; font-weight: 700;
+  font-size: 9px; letter-spacing: .22em;
+  text-transform: uppercase; color: rgba(240,228,200,.7);
+  margin-bottom: 6px;
+}
+.p3-header-title {
+  font-family: 'Zilla Slab', serif;
+  font-weight: 700; font-size: 32px;
+  color: var(--linho);
+}
+
+.p3-body {
+  flex: 1; display: flex; gap: 0;
+  padding: 40px 48px 0;
+}
+.p3-render {
+  width: 50%; position: relative;
+}
+.p3-render img {
+  width: 100%; height: 360px;
+  object-fit: cover; display: block;
+  border-left: 3px solid var(--terra);
+}
+.p3-specs-col {
+  width: 50%; padding: 0 0 0 36px;
+}
+.p3-spec-label {
+  font-family: 'Lato', sans-serif; font-weight: 700;
+  font-size: 9px; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--terra);
+  margin-bottom: 20px;
+}
+.p3-spec-item {
+  display: flex; gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(240,228,200,.1);
+}
+.p3-spec-item:last-child { border-bottom: none; }
+.p3-spec-key {
+  font-family: 'Lato', sans-serif; font-weight: 400;
+  font-size: 10px; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--muted);
+  width: 90px; flex-shrink: 0; padding-top: 1px;
+}
+.p3-spec-val {
+  font-family: 'Lato', sans-serif; font-weight: 300;
+  font-size: 13px; color: var(--linho); line-height: 1.5;
+}
+
+.p3-footer {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: rgba(240,228,200,.1);
+  margin: 36px 48px 0;
+}
+.p3-footer-card {
+  background: var(--mogno-l);
+  padding: 0 0 20px;
+  overflow: hidden;
+}
+.p3-footer-card-top {
+  height: 4px; background: var(--terra);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+  margin-bottom: 14px;
+}
+.p3-footer-card-inner { padding: 0 18px; }
+.p3-footer-card-label {
+  font-family: 'Lato', sans-serif; font-weight: 700;
+  font-size: 9px; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--terra);
+  margin-bottom: 5px;
+}
+.p3-footer-card-val {
+  font-family: 'Zilla Slab', serif; font-weight: 600;
+  font-size: 15px; color: var(--linho);
+}
+
+/* ────────────────────────────────────────────────────────────────
+   PAGE 4 — LINHA DO TEMPO
+──────────────────────────────────────────────────────────────── */
+#p4 {
+  background: var(--linho);
+  min-height: var(--ph);
+  display: flex; flex-direction: column;
+  color: var(--mogno);
+}
+
+.p4-header {
+  background: var(--grain), var(--mogno);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), 0 100%);
+  padding: 36px 48px 56px;
+}
+.p4-header-over {
+  font-family: 'Lato', sans-serif; font-weight: 700;
+  font-size: 9px; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--terra);
+  margin-bottom: 8px;
+}
+.p4-header-title {
+  font-family: 'Zilla Slab', serif; font-weight: 700;
+  font-size: 34px; color: var(--linho);
+}
+
+.p4-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; flex: 1;
+  padding: 48px 48px 0;
+}
+.p4-row-divider {
+  grid-column: 1/-1;
+  height: 1px; background: var(--terra);
+  opacity: .35; margin: 8px 0 32px;
+}
+.p4-step {
+  padding: 0 20px 36px 0;
+}
+.p4-step:nth-child(even) { padding: 0 0 36px 20px; }
+.p4-step-circle {
+  width: 36px; height: 36px;
+  background: var(--terra);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Zilla Slab', serif; font-weight: 700;
+  font-size: 15px; color: var(--mogno);
+  margin-bottom: 12px;
+}
+.p4-step-name {
+  font-family: 'Zilla Slab', serif; font-weight: 600;
+  font-size: 16px; color: var(--mogno);
+  margin-bottom: 6px;
+}
+.p4-step-desc {
+  font-family: 'Lato', sans-serif; font-weight: 300;
+  font-size: 12px; color: #6B5240;
+  line-height: 1.65;
+}
+
+.p4-footer {
+  margin-top: auto;
+  padding: 28px 48px;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  background: var(--grain), var(--mogno);
+}
+.p4-footer-logo {
+  display: flex; align-items: center; gap: 8px;
+}
+.p4-footer-logo-spark { width: 16px; height: 16px; color: var(--linho); }
+.p4-footer-logo-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 15px;
+  color: var(--linho); letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.p4-footer-social {
+  display: flex; align-items: center; gap: 16px;
+}
+.p4-footer-social a {
+  display: flex; align-items: center; gap: 5px;
+  text-decoration: none;
+  font-family: 'Lato', sans-serif; font-size: 10px;
+  font-weight: 400; letter-spacing: .06em;
+  color: var(--linho-d);
+}
+.p4-footer-social svg { width: 14px; height: 14px; }
+
+/* ────────────────────────────────────────────────────────────────
+   PAGE 5 — DEPOIMENTO
+──────────────────────────────────────────────────────────────── */
+#p5 {
+  background: var(--grain), var(--mogno);
+  min-height: var(--ph);
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+}
+.p5-bg-photo {
+  position: absolute; right: 0; top: 0;
+  width: 45%; height: 100%;
+}
+.p5-bg-photo img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block;
+  mix-blend-mode: multiply;
+  opacity: .55;
+}
+.p5-bg-photo::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, var(--mogno) 0%, rgba(196,113,74,.35) 100%);
+}
+
+.p5-content {
+  position: relative; z-index: 2;
+  flex: 1; display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 80px 56px 60px;
+  max-width: 65%;
+}
+.p5-quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-weight: 200;
+  font-size: 120px; line-height: .7;
+  color: var(--terra); margin-bottom: 20px;
+  display: block;
+}
+.p5-quote-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-weight: 400;
+  font-size: 22px; color: var(--linho);
+  line-height: 1.7; margin-bottom: 40px;
+}
+.p5-author {
+  font-family: 'Lato', sans-serif; font-weight: 400;
+  font-size: 13px; color: var(--linho);
+  letter-spacing: .14em; text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.p5-proj {
+  font-family: 'Lato', sans-serif; font-weight: 300;
+  font-size: 11px; color: var(--terra-l);
+  letter-spacing: .08em;
+}
+.p5-caption {
+  font-family: 'Lato', sans-serif; font-weight: 300;
+  font-size: 10px; color: var(--muted);
+  margin-top: 2px;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   PAGE 6 — INVESTIMENTO
+──────────────────────────────────────────────────────────────── */
+#p6 {
+  background: var(--linho);
+  min-height: var(--ph);
+  display: flex; flex-direction: column;
+  color: var(--mogno);
+}
+
+.p6-header {
+  background: var(--grain), var(--mogno);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), 0 100%);
+  padding: 34px 48px 52px;
+}
+.p6-header-over {
+  font-family: 'Lato', sans-serif; font-weight: 700;
+  font-size: 9px; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--terra);
+  margin-bottom: 8px;
+}
+.p6-header-title {
+  font-family: 'Zilla Slab', serif; font-weight: 700;
+  font-size: 32px; color: var(--linho);
+}
+
+.p6-body { padding: 40px 48px; flex: 1; }
+
+.p6-section-title {
+  font-family: 'Zilla Slab', serif; font-weight: 700;
+  font-size: 17px; color: var(--mogno);
+  margin-bottom: 10px; margin-top: 28px;
+  display: flex; align-items: center; gap: 10px;
+}
+.p6-section-title:first-child { margin-top: 0; }
+.p6-section-title::before {
+  content: '';
+  display: inline-block; width: 6px; height: 18px;
+  background: var(--terra); flex-shrink: 0;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 4px), 0 100%);
+}
+
+table.inv-table {
+  width: 100%; border-collapse: collapse;
+  margin-bottom: 8px;
+}
+table.inv-table th {
+  font-family: 'Lato', sans-serif; font-weight: 700;
+  font-size: 9px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--mogno);
+  border-bottom: 2px solid var(--mogno);
+  padding: 8px 10px; text-align: left;
+}
+table.inv-table td {
+  font-family: 'Lato', sans-serif; font-weight: 300;
+  font-size: 12px; color: var(--mogno);
+  border-bottom: 1px solid rgba(44,31,21,.12);
+  padding: 8px 10px; vertical-align: top;
+}
+table.inv-table td:last-child { text-align: right; white-space: nowrap; }
+table.inv-table td input {
+  background: transparent; border: none;
+  border-bottom: 1px dashed rgba(44,31,21,.3);
+  color: var(--mogno); font-family: 'Lato', sans-serif;
+  font-weight: 300; font-size: 12px; width: 100%;
+  outline: none; padding: 1px 2px;
+}
+table.inv-table td input:focus { border-bottom-color: var(--terra); }
+table.inv-table tr.total-row td {
+  font-weight: 700; font-size: 14px;
+  border-top: 2px solid var(--mogno);
+  border-bottom: none;
+}
+table.inv-table tr.total-row td:last-child { color: var(--terra); }
+
+.inv-table-actions {
+  display: flex; gap: 8px; margin-bottom: 18px;
+}
+.inv-table-actions button {
+  background: transparent;
+  border: 1px solid var(--terra);
+  color: var(--terra);
+  border-radius: 3px;
+  padding: 4px 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  cursor: pointer; transition: all .2s;
+}
+.inv-table-actions button:hover {
+  background: var(--terra); color: var(--linho);
+}
+
+.p6-metas {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 12px; margin-top: 28px;
+}
+.p6-meta-card {
+  background: var(--terra-10);
+  border-top: 3px solid var(--terra);
+  padding: 14px 16px;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+}
+.p6-meta-label {
+  font-family: 'Lato', sans-serif; font-weight: 700;
+  font-size: 9px; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--terra);
+  margin-bottom: 5px;
+}
+.p6-meta-val {
+  font-family: 'Zilla Slab', serif; font-weight: 700;
+  font-size: 18px; color: var(--mogno);
+}
+.p6-meta-sub {
+  font-family: 'Lato', sans-serif; font-weight: 300;
+  font-size: 10px; color: #6B5240; margin-top: 2px;
+}
+
+.p6-payment {
+  margin-top: 28px;
+  border: 1px solid rgba(44,31,21,.2);
+  border-radius: 4px; overflow: hidden;
+}
+.p6-payment-head {
+  background: var(--grain), var(--mogno);
+  padding: 12px 20px;
+}
+.p6-payment-head-title {
+  font-family: 'Zilla Slab', serif; font-weight: 600;
+  font-size: 14px; color: var(--linho);
+}
+.p6-payment-body { padding: 16px 20px; }
+.p6-payment-row {
+  display: flex; align-items: center;
+  gap: 10px; margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(44,31,21,.1);
+  font-family: 'Lato', sans-serif; font-weight: 300;
+  font-size: 12px; color: var(--mogno);
+}
+.p6-payment-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.p6-payment-row::before {
+  content: ''; display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--terra); border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.p6-footer {
+  margin-top: 24px;
+  padding: 18px 48px;
+  background: var(--terra-10);
+  border-top: 1px solid rgba(196,113,74,.3);
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Lato', sans-serif; font-weight: 300;
+  font-size: 10px; color: #6B5240; line-height: 1.6;
+}
+.p6-footer strong { font-weight: 700; color: var(--mogno); }
+
+/* ─── PRINT ──────────────────────────────────────────────────── */
+@media print {
+  @page { size: A4 portrait; margin: 0; }
+  body { background: none; }
+  #toolbar, #edit-panel { display: none !important; }
+  .page {
+    margin: 0; box-shadow: none;
+    page-break-after: always;
+  }
+  .page:last-of-type { page-break-after: auto; }
+  .inv-table-actions { display: none !important; }
+  table.inv-table td input {
+    border-bottom: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── TOOLBAR ─────────────────────────────────────────────── -->
+<div id="toolbar">
+  <button onclick="toggleEdit()">✏ Editar</button>
+  <button class="sec" onclick="printPDF()">⎙ Imprimir PDF</button>
+</div>
+
+<!-- ─── EDIT PANEL ───────────────────────────────────────────── -->
+<div id="edit-panel">
+  <div id="edit-inner">
+    <h2>Personalizar Proposta</h2>
+
+    <div class="edit-section">
+      <h3>Identificação</h3>
+      <div class="field-row"><label>Nome do Cliente</label><input id="f-NOME_CLIENTE"></div>
+      <div class="field-row"><label>Projeto</label><input id="f-PROJETO"></div>
+      <div class="field-row"><label>Data da Proposta</label><input id="f-DATA_PROPOSTA"></div>
+    </div>
+
+    <div class="edit-section">
+      <h3>Especificações Técnicas</h3>
+      <div class="field-row"><label>Ferragem</label><input id="f-FERRAGEM"></div>
+      <div class="field-row"><label>Material</label><input id="f-MATERIAL"></div>
+      <div class="field-row"><label>Acabamento</label><input id="f-ACABAMENTO"></div>
+    </div>
+
+    <div class="edit-section">
+      <h3>Condições Comerciais</h3>
+      <div class="field-row"><label>Prazo de Produção (dias)</label><input id="f-PRAZO"></div>
+      <div class="field-row"><label>Garantia</label><input id="f-GARANTIA_ANOS"></div>
+      <div class="field-row"><label>Validade da Proposta (dias)</label><input id="f-VALIDADE"></div>
+      <div class="field-row"><label>Versão Essencial — Ajuste</label><input id="f-ESSENCIAL_AJUSTE"></div>
+    </div>
+
+    <div class="edit-section">
+      <h3>Depoimento</h3>
+      <div class="field-row"><label>Texto do Depoimento</label><textarea id="f-DEPOIMENTO"></textarea></div>
+      <div class="field-row"><label>Autor</label><input id="f-DEP_AUTOR"></div>
+      <div class="field-row"><label>Projeto do Autor</label><input id="f-DEP_PROJETO"></div>
+      <div class="field-row"><label>Legenda</label><input id="f-DEP_CAPTION"></div>
+    </div>
+
+    <div class="edit-section">
+      <h3>Fotos (URL Google Drive / direto)</h3>
+      <div class="field-row"><label>Foto Capa (P1)</label><input id="f-HERO_URL" placeholder="https://..."></div>
+      <div class="field-row"><label>Foto Diferenciais (P2)</label><input id="f-P2_URL" placeholder="https://..."></div>
+      <div class="field-row"><label>Render / Projeto (P3)</label><input id="f-RENDER_URL" placeholder="https://..."></div>
+      <div class="field-row"><label>Foto Linha do Tempo (P4 — opcional)</label><input id="f-P4_URL" placeholder="https://..."></div>
+      <div class="field-row"><label>Foto Depoimento (P5)</label><input id="f-P5_URL" placeholder="https://..."></div>
+    </div>
+
+    <div class="edit-actions">
+      <button class="btn-save" onclick="saveFromPanel()">Salvar</button>
+      <button class="btn-cancel" onclick="toggleEdit()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE 1 — CAPA
+══════════════════════════════════════════════════════════════ -->
+<div class="page dark" id="p1">
+  <div class="p1-left">
+    <img id="img-hero" src="" alt="Projeto Valvic">
+  </div>
+  <div class="p1-right">
+    <div class="p1-logo">
+      <svg class="p1-logo-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M12 2L14.09 8.26L21 9.27L16.5 13.64L17.82 21L12 17.77L6.18 21L7.5 13.64L3 9.27L9.91 8.26L12 2Z"/>
+        <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/>
+      </svg>
+      <span class="p1-logo-name">Valvic</span>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+      <div class="p1-tag-wrap">
+        <span class="p1-tag">Proposta Exclusiva</span>
+      </div>
+      <div class="p1-divider"></div>
+      <div class="p1-client" id="txt-NOME_CLIENTE">Cliente</div>
+      <div class="p1-project" id="txt-PROJETO">Projeto de marcenaria sob medida</div>
+      <div class="p1-meta" id="txt-meta">
+        Data&nbsp;&nbsp;<span id="txt-DATA_PROPOSTA">17/06/2026</span><br>
+        Ref.&nbsp;&nbsp;VALVIC · Proposta Signature
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE 2 — DIFERENCIAIS
+══════════════════════════════════════════════════════════════ -->
+<div class="page light" id="p2">
+  <div class="p2-left">
+    <div class="p2-overline">Por que a Valvic</div>
+    <div class="p2-title">Cada detalhe<br>tem <em>intenção</em>.</div>
+    <div class="p2-cards">
+      <div class="p2-card">
+        <div class="p2-card-title">Blum MOVENTO BLUMOTION · FEATHER-TOUCH · GARANTIA VITALÍCIA</div>
+        <div class="p2-card-body">Ferragens premium Blum com sistema de fechamento silencioso e toque suave. Garantia vitalícia pelo fabricante.</div>
+      </div>
+      <div class="p2-card">
+        <div class="p2-card-title">Engenharia digital 3D</div>
+        <div class="p2-card-body">Projeto executivo completo com modelagem tridimensional — você aprova cada detalhe antes de cortar a primeira peça.</div>
+      </div>
+      <div class="p2-card">
+        <div class="p2-card-title">Equipe própria</div>
+        <div class="p2-card-body">Carpinteiros, instaladores e supervisores diretamente na folha da Valvic. Zero terceirização de execução.</div>
+      </div>
+      <div class="p2-card">
+        <div class="p2-card-title">Acabamento em cabine</div>
+        <div class="p2-card-body">Pintura e laca aplicadas em ambiente controlado, livre de poeira — resultado uniforme e durável.</div>
+      </div>
+      <div class="p2-card">
+        <div class="p2-card-title">Suporte pós-entrega</div>
+        <div class="p2-card-body">Visita técnica de revisão 60 dias após a instalação. Ajustes e regulagens inclusos na garantia.</div>
+      </div>
+    </div>
+  </div>
+  <div class="p2-right">
+    <img id="img-p2" src="" alt="Ambiente Valvic">
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE 3 — O PROJETO
+══════════════════════════════════════════════════════════════ -->
+<div class="page dark" id="p3">
+  <div class="p3-header">
+    <div class="p3-header-over">O Projeto</div>
+    <div class="p3-header-title" id="txt-p3-title">Projeto de marcenaria sob medida</div>
+  </div>
+  <div class="p3-body">
+    <div class="p3-render">
+      <img id="img-render" src="" alt="Render do projeto">
+    </div>
+    <div class="p3-specs-col">
+      <div class="p3-spec-label">Especificações</div>
+      <div class="p3-spec-item">
+        <span class="p3-spec-key">Cliente</span>
+        <span class="p3-spec-val" id="txt-spec-cliente">Cliente</span>
+      </div>
+      <div class="p3-spec-item">
+        <span class="p3-spec-key">Projeto</span>
+        <span class="p3-spec-val" id="txt-spec-projeto">Projeto de marcenaria sob medida</span>
+      </div>
+      <div class="p3-spec-item">
+        <span class="p3-spec-key">Material</span>
+        <span class="p3-spec-val" id="txt-spec-material">MDF 18mm</span>
+      </div>
+      <div class="p3-spec-item">
+        <span class="p3-spec-key">Acabamento</span>
+        <span class="p3-spec-val" id="txt-spec-acabamento">Laca PU fosca</span>
+      </div>
+      <div class="p3-spec-item">
+        <span class="p3-spec-key">Ferragem</span>
+        <span class="p3-spec-val" id="txt-spec-ferragem">Blum Movento</span>
+      </div>
+      <div class="p3-spec-item">
+        <span class="p3-spec-key">Prazo</span>
+        <span class="p3-spec-val" id="txt-spec-prazo">90 a 100 dias úteis</span>
+      </div>
+      <div class="p3-spec-item">
+        <span class="p3-spec-key">Garantia</span>
+        <span class="p3-spec-val" id="txt-spec-garantia">Vitalícia</span>
+      </div>
+    </div>
+  </div>
+  <div class="p3-footer">
+    <div class="p3-footer-card">
+      <div class="p3-footer-card-top"></div>
+      <div class="p3-footer-card-inner">
+        <div class="p3-footer-card-label">Ferragem</div>
+        <div class="p3-footer-card-val" id="txt-fc-ferragem">Blum Movento</div>
+      </div>
+    </div>
+    <div class="p3-footer-card">
+      <div class="p3-footer-card-top"></div>
+      <div class="p3-footer-card-inner">
+        <div class="p3-footer-card-label">Material Base</div>
+        <div class="p3-footer-card-val" id="txt-fc-material">MDF 18mm</div>
+      </div>
+    </div>
+    <div class="p3-footer-card">
+      <div class="p3-footer-card-top"></div>
+      <div class="p3-footer-card-inner">
+        <div class="p3-footer-card-label">Acabamento</div>
+        <div class="p3-footer-card-val" id="txt-fc-acabamento">Laca PU fosca</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE 4 — LINHA DO TEMPO
+══════════════════════════════════════════════════════════════ -->
+<div class="page light" id="p4">
+  <div class="p4-header">
+    <div class="p4-header-over">Processo de Trabalho</div>
+    <div class="p4-header-title">Do briefing<br>à entrega.</div>
+  </div>
+
+  <div class="p4-grid">
+    <div class="p4-step">
+      <div class="p4-step-circle">1</div>
+      <div class="p4-step-name">Briefing e Visita</div>
+      <div class="p4-step-desc">Levantamento completo do espaço, entendimento das necessidades e do estilo de vida. Medição técnica e análise estrutural do ambiente.</div>
+    </div>
+    <div class="p4-step">
+      <div class="p4-step-circle">2</div>
+      <div class="p4-step-name">Projeto 3D</div>
+      <div class="p4-step-desc">Modelagem digital completa com apresentação de renders realistas. Você aprova cada detalhe — dimensões, cores, ferragens — antes da produção.</div>
+    </div>
+
+    <div class="p4-row-divider"></div>
+
+    <div class="p4-step">
+      <div class="p4-step-circle">3</div>
+      <div class="p4-step-name">Produção em Fábrica</div>
+      <div class="p4-step-desc">Corte CNC de precisão, aplicação de borda em fita ABS, pintura em cabine controlada. Controle de qualidade em cada etapa.</div>
+    </div>
+    <div class="p4-step">
+      <div class="p4-step-circle">4</div>
+      <div class="p4-step-name">Montagem e Entrega</div>
+      <div class="p4-step-desc">Equipe própria de instalação. Limpeza do espaço, regulagem final de ferragens e entrega com checklist completo. Revisão em 60 dias.</div>
+    </div>
+
+    <div class="p4-row-divider"></div>
+
+    <div class="p4-step">
+      <div class="p4-step-circle">5</div>
+      <div class="p4-step-name">Acompanhamento</div>
+      <div class="p4-step-desc">Canal direto com a equipe durante toda a execução. Você recebe atualizações fotográficas do andamento da produção.</div>
+    </div>
+    <div class="p4-step">
+      <div class="p4-step-circle">6</div>
+      <div class="p4-step-name">Pós-Obra</div>
+      <div class="p4-step-desc">Suporte técnico contínuo, garantia vitalícia das ferragens Blum e atendimento prioritário para clientes Valvic.</div>
+    </div>
+  </div>
+
+  <div class="p4-footer">
+    <div class="p4-footer-logo">
+      <svg class="p4-footer-logo-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M12 2L14.09 8.26L21 9.27L16.5 13.64L17.82 21L12 17.77L6.18 21L7.5 13.64L3 9.27L9.91 8.26L12 2Z"/>
+        <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/>
+      </svg>
+      <span class="p4-footer-logo-name">Valvic Marcenaria</span>
+    </div>
+    <div class="p4-footer-social">
+      <a href="https://instagram.com/valvicmarcenaria" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>
+        </svg>
+        @valvicmarcenaria
+      </a>
+      <a href="https://youtube.com/@valvicmarcenaria" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 1.97C5.12 20 12 20 12 20s6.88 0 8.6-.45a2.78 2.78 0 0 0 1.94-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+          <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/>
+        </svg>
+        YouTube
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE 5 — DEPOIMENTO
+══════════════════════════════════════════════════════════════ -->
+<div class="page dark" id="p5">
+  <div class="p5-bg-photo">
+    <img id="img-p5" src="" alt="Projeto executado">
+  </div>
+  <div class="p5-content">
+    <span class="p5-quote-mark">&ldquo;</span>
+    <div class="p5-quote-text" id="txt-DEPOIMENTO">Eu estou apaixonada... e não é só pela beleza... mas o comprometimento e dedicação desde o orçamento, até execução e entrega. Indico de olhos fechados!!! Muitíssimo obrigada...</div>
+    <div class="p5-author" id="txt-DEP_AUTOR">Graciene</div>
+    <div class="p5-proj" id="txt-DEP_PROJETO">Vale dos Cristais</div>
+    <div class="p5-caption" id="txt-DEP_CAPTION">Projeto executado · Residência particular</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE 6 — INVESTIMENTO
+══════════════════════════════════════════════════════════════ -->
+<div class="page light" id="p6">
+  <div class="p6-header">
+    <div class="p6-header-over">Investimento</div>
+    <div class="p6-header-title">Proposta Comercial</div>
+  </div>
+  <div class="p6-body">
+
+    <!-- VERSÃO COMPLETA -->
+    <div class="p6-section-title">Versão Completa</div>
+    <div class="inv-table-actions" id="act-t-completa">
+      <button onclick="addRow('t-completa')">+ Adicionar item</button>
+      <button onclick="removeLastRow('t-completa')">− Remover último</button>
+    </div>
+    <table class="inv-table" id="t-completa">
+      <thead>
+        <tr>
+          <th style="width:55%">Descrição</th>
+          <th style="width:15%">Qtd</th>
+          <th style="width:30%">Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input value="Marcenaria sob medida — projeto completo" /></td>
+          <td><input value="1 vb" /></td>
+          <td><input value="R$ 0,00" /></td>
+        </tr>
+        <tr>
+          <td><input value="Ferragens Blum Movento BLUMOTION" /></td>
+          <td><input value="incluso" /></td>
+          <td><input value="—" /></td>
+        </tr>
+        <tr>
+          <td><input value="Projeto executivo 3D" /></td>
+          <td><input value="incluso" /></td>
+          <td><input value="—" /></td>
+        </tr>
+        <tr>
+          <td><input value="Instalação com equipe própria" /></td>
+          <td><input value="incluso" /></td>
+          <td><input value="—" /></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="total-row">
+          <td colspan="2">Total Versão Completa</td>
+          <td id="td-total-completa">R$ <span id="txt-TOTAL_COMPLETA">0,00</span></td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <!-- VERSÃO ESSENCIAL -->
+    <div class="p6-section-title" style="margin-top:24px;">Versão Essencial</div>
+    <div style="font-family:'Lato',sans-serif;font-weight:300;font-size:11px;color:#6B5240;margin-bottom:10px;">
+      Mantém a essência do projeto com ajuste em: <em id="txt-ESSENCIAL_AJUSTE">[especificar o ambiente ou item]</em>
+    </div>
+    <div class="inv-table-actions" id="act-t-essencial">
+      <button onclick="addRow('t-essencial')">+ Adicionar item</button>
+      <button onclick="removeLastRow('t-essencial')">− Remover último</button>
+    </div>
+    <table class="inv-table" id="t-essencial">
+      <thead>
+        <tr>
+          <th style="width:55%">Descrição</th>
+          <th style="width:15%">Qtd</th>
+          <th style="width:30%">Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input value="Marcenaria sob medida — versão essencial" /></td>
+          <td><input value="1 vb" /></td>
+          <td><input value="R$ 0,00" /></td>
+        </tr>
+        <tr>
+          <td><input value="Ferragens Blum conforme escopo ajustado" /></td>
+          <td><input value="incluso" /></td>
+          <td><input value="—" /></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="total-row">
+          <td colspan="2">Total Versão Essencial</td>
+          <td>R$ <span id="txt-TOTAL_ESSENCIAL">0,00</span></td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <!-- META CARDS -->
+    <div class="p6-metas">
+      <div class="p6-meta-card">
+        <div class="p6-meta-label">Prazo de Produção</div>
+        <div class="p6-meta-val"><span id="txt-meta-prazo">90 a 100</span> dias</div>
+        <div class="p6-meta-sub">após aprovação e entrada</div>
+      </div>
+      <div class="p6-meta-card">
+        <div class="p6-meta-label">Garantia</div>
+        <div class="p6-meta-val" id="txt-meta-garantia">Vitalícia</div>
+        <div class="p6-meta-sub">ferragens Blum + mão de obra</div>
+      </div>
+      <div class="p6-meta-card">
+        <div class="p6-meta-label">Validade da Proposta</div>
+        <div class="p6-meta-val"><span id="txt-meta-validade">10</span> dias</div>
+        <div class="p6-meta-sub">a partir da data de emissão</div>
+      </div>
+    </div>
+
+    <!-- CONDIÇÕES DE PAGAMENTO -->
+    <div class="p6-payment">
+      <div class="p6-payment-head">
+        <div class="p6-payment-head-title">Condições de Pagamento</div>
+      </div>
+      <div class="p6-payment-body">
+        <div class="p6-payment-row">40% na aprovação e assinatura do contrato</div>
+        <div class="p6-payment-row">30% no início da produção (emissão de OS)</div>
+        <div class="p6-payment-row">20% na entrega dos móveis para instalação</div>
+        <div class="p6-payment-row">10% na conclusão e vistoria final</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="p6-footer">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:16px;height:16px;flex-shrink:0;color:#C4714A;">
+      <path d="M12 2L14.09 8.26L21 9.27L16.5 13.64L17.82 21L12 17.77L6.18 21L7.5 13.64L3 9.27L9.91 8.26L12 2Z"/>
+    </svg>
+    <span><strong>Valvic Marcenaria</strong> · valvicmarcenaria@gmail.com · Proposta emitida em <span id="txt-footer-date">17/06/2026</span>. Todos os valores em BRL. Proposta personalizada e intransferível.</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════════════ -->
+<script>
+const SK = 'valvic_signature_terroso';
+
+const DEFAULTS = {
+  NOME_CLIENTE:     'Cliente',
+  PROJETO:          'Projeto de marcenaria sob medida',
+  DATA_PROPOSTA:    '17/06/2026',
+  FERRAGEM:         'Blum Movento',
+  MATERIAL:         'MDF 18mm',
+  ACABAMENTO:       'Laca PU fosca',
+  ESSENCIAL_AJUSTE: '[especificar o ambiente ou item]',
+  DEPOIMENTO:       'Eu estou apaixonada... e não é só pela beleza... mas o comprometimento e dedicação desde o orçamento, até execução e entrega. Indico de olhos fechados!!! Muitíssimo obrigada...',
+  DEP_AUTOR:        'Graciene',
+  DEP_PROJETO:      'Vale dos Cristais',
+  DEP_CAPTION:      'Projeto executado · Residência particular',
+  PRAZO:            '90 a 100',
+  GARANTIA_ANOS:    'Vitalícia',
+  VALIDADE:         '10',
+  TOTAL_COMPLETA:   '0,00',
+  TOTAL_ESSENCIAL:  '0,00',
+  HERO_URL:   'https://lh3.googleusercontent.com/d/1tIPkB_fxt1DYWHcj3-s5tdVyM7jocaTa=w1600',
+  P2_URL:     'https://lh3.googleusercontent.com/d/1SQriQN8H4RD2yjHQoLm84HQ65DCoQE1p=w1600',
+  RENDER_URL: 'https://lh3.googleusercontent.com/d/1uvflYxeVe0QkPMfWfWEOml6xPmR48f90ZY=w1600',
+  P4_URL:     '',
+  P5_URL:     'https://lh3.googleusercontent.com/d/1MsmhniA_z1HXRBw_bQ7D-VgujrDDxLNH=w1600',
+};
+
+function loadS() {
+  try {
+    const raw = localStorage.getItem(SK);
+    return raw ? JSON.parse(raw) : {};
+  } catch(e) { return {}; }
+}
+
+function saveS() {
+  try { localStorage.setItem(SK, JSON.stringify(S)); } catch(e) {}
+}
+
+const S = Object.assign({}, DEFAULTS, loadS());
+
+/* ── esc ─────────────────────────────────────────────────────── */
+function esc(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+/* ── driveThumb ──────────────────────────────────────────────── */
+function driveThumb(url) {
+  if (!url) return '';
+  // handle /d/ID/view and /d/ID=w... patterns
+  const m = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+  if (m) {
+    return 'https://drive.google.com/thumbnail?id=' + m[1] + '&sz=w1600';
+  }
+  // already a direct lh3 URL
+  if (url.includes('lh3.googleusercontent.com')) return url;
+  return url;
+}
+
+/* ── Photo setters ───────────────────────────────────────────── */
+function setHero() {
+  const img = document.getElementById('img-hero');
+  const url = driveThumb(S.HERO_URL);
+  if (url) img.src = url;
+}
+function setP2() {
+  const img = document.getElementById('img-p2');
+  const url = driveThumb(S.P2_URL);
+  if (url) img.src = url;
+}
+function setRender() {
+  const img = document.getElementById('img-render');
+  const url = driveThumb(S.RENDER_URL);
+  if (url) img.src = url;
+}
+function setP4() {
+  /* P4 has no dedicated image slot in this design; reserved for future use */
+}
+function setP5() {
+  const img = document.getElementById('img-p5');
+  const url = driveThumb(S.P5_URL);
+  if (url) img.src = url;
+}
+
+/* ── Text binding ────────────────────────────────────────────── */
+function applyTokens() {
+  // P1
+  setText('txt-NOME_CLIENTE',  S.NOME_CLIENTE);
+  setText('txt-PROJETO',       S.PROJETO);
+  setText('txt-DATA_PROPOSTA', S.DATA_PROPOSTA);
+  setText('txt-footer-date',   S.DATA_PROPOSTA);
+  // P3 header
+  setText('txt-p3-title', S.PROJETO);
+  // P3 specs
+  setText('txt-spec-cliente',   S.NOME_CLIENTE);
+  setText('txt-spec-projeto',   S.PROJETO);
+  setText('txt-spec-material',  S.MATERIAL);
+  setText('txt-spec-acabamento',S.ACABAMENTO);
+  setText('txt-spec-ferragem',  S.FERRAGEM);
+  setText('txt-spec-prazo',     S.PRAZO + ' dias úteis');
+  setText('txt-spec-garantia',  S.GARANTIA_ANOS);
+  // P3 footer cards
+  setText('txt-fc-ferragem',   S.FERRAGEM);
+  setText('txt-fc-material',   S.MATERIAL);
+  setText('txt-fc-acabamento', S.ACABAMENTO);
+  // P5 depoimento
+  setText('txt-DEPOIMENTO', S.DEPOIMENTO);
+  setText('txt-DEP_AUTOR',  S.DEP_AUTOR);
+  setText('txt-DEP_PROJETO',S.DEP_PROJETO);
+  setText('txt-DEP_CAPTION',S.DEP_CAPTION);
+  // P6 metas
+  setText('txt-meta-prazo',    S.PRAZO);
+  setText('txt-meta-garantia', S.GARANTIA_ANOS);
+  setText('txt-meta-validade', S.VALIDADE);
+  // P6 totals
+  setText('txt-TOTAL_COMPLETA',  S.TOTAL_COMPLETA);
+  setText('txt-TOTAL_ESSENCIAL', S.TOTAL_ESSENCIAL);
+  // P6 essencial ajuste
+  setText('txt-ESSENCIAL_AJUSTE', S.ESSENCIAL_AJUSTE);
+}
+
+function setText(id, val) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = val;
+}
+
+/* ── Table row management ────────────────────────────────────── */
+function addRow(tid) {
+  const tb = document.querySelector('#' + tid + ' tbody');
+  if (!tb) return;
+  const tr = document.createElement('tr');
+  tr.innerHTML =
+    '<td><input value="" placeholder="Descrição" /></td>' +
+    '<td><input value="" placeholder="Qtd" /></td>' +
+    '<td><input value="" placeholder="R$ 0,00" /></td>';
+  tb.appendChild(tr);
+  saveRows();
+}
+
+function removeLastRow(tid) {
+  const tb = document.querySelector('#' + tid + ' tbody');
+  if (!tb) return;
+  if (tb.rows.length > 1) tb.removeChild(tb.lastElementChild);
+  saveRows();
+}
+
+function removeRow(btn) {
+  const tr = btn.closest('tr');
+  if (tr) tr.remove();
+  saveRows();
+}
+
+function saveRows() {
+  ['t-completa', 't-essencial'].forEach(tid => {
+    const rows = [];
+    document.querySelectorAll('#' + tid + ' tbody tr').forEach(tr => {
+      const inputs = tr.querySelectorAll('input');
+      rows.push([inputs[0]?.value||'', inputs[1]?.value||'', inputs[2]?.value||'']);
+    });
+    S['rows_' + tid] = rows;
+  });
+  saveS();
+}
+
+function restoreRows(tid, rows) {
+  if (!rows || !rows.length) return;
+  const tb = document.querySelector('#' + tid + ' tbody');
+  if (!tb) return;
+  // clear existing rows
+  tb.innerHTML = '';
+  rows.forEach(r => {
+    const tr = document.createElement('tr');
+    tr.innerHTML =
+      '<td><input value="' + esc(r[0]||'') + '" /></td>' +
+      '<td><input value="' + esc(r[1]||'') + '" /></td>' +
+      '<td><input value="' + esc(r[2]||'') + '" /></td>';
+    tb.appendChild(tr);
+  });
+  // Wire change events
+  tb.querySelectorAll('input').forEach(inp => {
+    inp.addEventListener('change', saveRows);
+    inp.addEventListener('blur', saveRows);
+  });
+}
+
+/* ── Edit panel ──────────────────────────────────────────────── */
+function toggleEdit() {
+  const panel = document.getElementById('edit-panel');
+  if (panel.classList.contains('open')) {
+    panel.classList.remove('open');
+  } else {
+    // Populate fields
+    const fields = [
+      'NOME_CLIENTE','PROJETO','DATA_PROPOSTA',
+      'FERRAGEM','MATERIAL','ACABAMENTO',
+      'ESSENCIAL_AJUSTE','DEPOIMENTO','DEP_AUTOR','DEP_PROJETO','DEP_CAPTION',
+      'PRAZO','GARANTIA_ANOS','VALIDADE',
+      'HERO_URL','P2_URL','RENDER_URL','P4_URL','P5_URL'
+    ];
+    fields.forEach(k => {
+      const el = document.getElementById('f-' + k);
+      if (el) el.value = S[k] || '';
+    });
+    panel.classList.add('open');
+  }
+}
+
+function saveFromPanel() {
+  const fields = [
+    'NOME_CLIENTE','PROJETO','DATA_PROPOSTA',
+    'FERRAGEM','MATERIAL','ACABAMENTO',
+    'ESSENCIAL_AJUSTE','DEPOIMENTO','DEP_AUTOR','DEP_PROJETO','DEP_CAPTION',
+    'PRAZO','GARANTIA_ANOS','VALIDADE',
+    'HERO_URL','P2_URL','RENDER_URL','P4_URL','P5_URL'
+  ];
+  fields.forEach(k => {
+    const el = document.getElementById('f-' + k);
+    if (el) S[k] = el.value;
+  });
+  saveS();
+  applyTokens();
+  setHero(); setP2(); setRender(); setP4(); setP5();
+  document.getElementById('edit-panel').classList.remove('open');
+}
+
+/* ── Print ────────────────────────────────────────────────────── */
+function printPDF() {
+  saveRows();
+  window.print();
+}
+
+/* ── Init ────────────────────────────────────────────────────── */
+function init() {
+  applyTokens();
+  setHero(); setP2(); setRender(); setP4(); setP5();
+
+  // Restore table rows if saved
+  if (S.rows_t_completa)  restoreRows('t-completa',  S['rows_t-completa']  || S.rows_t_completa);
+  if (S['rows_t-essencial']) restoreRows('t-essencial', S['rows_t-essencial']);
+  else if (S.rows_t_essencial) restoreRows('t-essencial', S.rows_t_essencial);
+
+  // Wire table change events
+  document.querySelectorAll('.inv-table tbody input').forEach(inp => {
+    inp.addEventListener('change', saveRows);
+    inp.addEventListener('blur', saveRows);
+  });
+
+  // Close edit panel on overlay click
+  document.getElementById('edit-panel').addEventListener('click', function(e) {
+    if (e.target === this) toggleEdit();
+  });
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
