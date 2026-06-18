@@ -170,9 +170,11 @@ A casa é apresentada como **conjunto único** (toda a marcenaria dos 3 paviment
 - **M64 / M65 — Mesas de cabeceira:** borda R5, 1 gaveta com puxador passante, caixa de tomada. Itapuã.
 - **M67 — Painel piso-teto com porta de correr.** Areia.
 
-### Serralheria de apoio (acompanha a marcenaria)
-- **S01 — Muxarabi piso-teto (5×5)** + estrutura metálica 2×2 + 6 prateleiras, pintura Coral Cinza Intenso (Gourmet).
-- **S02 — Muxarabi no teto (5×5)**, Coral Cinza Intenso (Lavabo Piscina).
+### Serralheria de apoio — ❌ REMOVIDA da proposta do cliente (jun/2026)
+> Decisão: NÃO incluir a serralheria de apoio (muxarabis) na proposta do cliente.
+> Escopo dos muxarabis ainda a definir (gesseiro do cliente × Valvic). Mantido aqui só como registro.
+> - S01 — Muxarabi piso-teto (5×5) + estrutura metálica 2×2 + 6 prateleiras, Coral Cinza Intenso (Gourmet).
+> - S02 — Muxarabi no teto (5×5), Coral Cinza Intenso (Lavabo Piscina).
 
 ---
 
