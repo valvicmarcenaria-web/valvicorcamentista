@@ -551,6 +551,14 @@
         [
           "Gaveta especial",
           900
+        ],
+        [
+          "Perfil alumínio base - mt",
+          15
+        ],
+        [
+          "Metalon barra (porta passagem)",
+          100
         ]
       ]
     ]
@@ -572,7 +580,8 @@
         "Parafusos / dispositivos / montagem¦Conj. parafuso e bucha": 50,
         "Parafusos / dispositivos / montagem¦Sup. prateleiras - cj4": 12,
         "Iluminação¦LED - fita + perfil - mt": 12,
-        "Iluminação¦Sensor": 2
+        "Iluminação¦Sensor": 2,
+        "Especiais¦Perfil alumínio base - mt": 3
       },
       "terc": {
         "vid": 0,
@@ -618,7 +627,8 @@
         "Iluminação¦LED - fita + perfil - mt": 5,
         "Iluminação¦Sensor": 1,
         "Puxadores¦Cava 35° usinada - mt": 15,
-        "Corrediças¦Oculta Quadro (Hettich)": 4
+        "Corrediças¦Oculta Quadro (Hettich)": 4,
+        "Especiais¦Perfil alumínio base - mt": 5
       },
       "terc": {
         "vid": 0,
@@ -670,7 +680,8 @@
         "Dobradiças¦Hettich Novisys": 9,
         "Sistema porta de passagem¦Sistema RO82": 2,
         "Puxadores¦Cava 35° usinada - mt": 6,
-        "Corrediças¦Oculta Quadro (Hettich)": 3
+        "Corrediças¦Oculta Quadro (Hettich)": 3,
+        "Especiais¦Metalon barra (porta passagem)": 4
       },
       "terc": {
         "vid": 0,
@@ -689,7 +700,8 @@
         "Cola e fita¦Fita de borda - cor - mt": 40,
         "Cola e fita¦Colagem - mt linear - máquina": 40,
         "Suportes¦Suporte oculto": 4,
-        "Puxadores¦Cava 35° usinada - mt": 3
+        "Puxadores¦Cava 35° usinada - mt": 3,
+        "Especiais¦Perfil alumínio base - mt": 2
       },
       "terc": {
         "vid": 0,
@@ -786,7 +798,8 @@
         "Sistema portas roupeiros¦Desempenador embutido - par": 3,
         "Puxadores¦Slim luna rometal": 3,
         "Puxadores¦Cava 35° usinada - mt": 6,
-        "Corrediças¦Oculta Quadro (Hettich)": 4
+        "Corrediças¦Oculta Quadro (Hettich)": 4,
+        "Especiais¦Perfil alumínio base - mt": 2
       },
       "terc": {
         "vid": 1080,
@@ -834,7 +847,9 @@
         "Iluminação¦LED - fita + perfil - mt": 4,
         "Iluminação¦Sensor": 2,
         "Puxadores¦Cava 35° usinada - mt": 12,
-        "Corrediças¦Oculta Quadro (Hettich)": 14
+        "Corrediças¦Oculta Quadro (Hettich)": 14,
+        "Especiais¦Metalon barra (porta passagem)": 2,
+        "Especiais¦Perfil alumínio base - mt": 1.5
       },
       "terc": {
         "vid": 1380,
@@ -862,7 +877,9 @@
         "Iluminação¦LED - fita + perfil - mt": 4,
         "Iluminação¦Sensor": 2,
         "Puxadores¦Cava 35° usinada - mt": 12,
-        "Corrediças¦Oculta Quadro (Hettich)": 14
+        "Corrediças¦Oculta Quadro (Hettich)": 14,
+        "Especiais¦Metalon barra (porta passagem)": 2,
+        "Especiais¦Perfil alumínio base - mt": 1.5
       },
       "terc": {
         "vid": 1380,
@@ -893,7 +910,9 @@
         "Iluminação¦LED - fita + perfil - mt": 2,
         "Iluminação¦Sensor": 1,
         "Puxadores¦Cava 35° usinada - mt": 9,
-        "Corrediças¦Oculta Quadro (Hettich)": 10
+        "Corrediças¦Oculta Quadro (Hettich)": 10,
+        "Especiais¦Metalon barra (porta passagem)": 2,
+        "Especiais¦Perfil alumínio base - mt": 1.5
       },
       "terc": {
         "vid": 1080,
@@ -919,7 +938,9 @@
         "Iluminação¦LED - fita + perfil - mt": 8,
         "Iluminação¦Sensor": 2,
         "Puxadores¦Cava 35° usinada - mt": 18,
-        "Corrediças¦Oculta Quadro (Hettich)": 12
+        "Corrediças¦Oculta Quadro (Hettich)": 12,
+        "Especiais¦Metalon barra (porta passagem)": 2,
+        "Especiais¦Perfil alumínio base - mt": 10
       },
       "terc": {
         "vid": 12750,
@@ -935,7 +956,7 @@
   "ativo": 0,
   "collapsed": {},
   "theme": "dark",
-  "diretrizes": "V2 · Tudo na cor + Hettich (garantia 10 anos)\nPAGAMENTO (sem cartão): 40% assinatura + 30% entrega 1ª etapa (ambientes a definir c/ cliente) + 30% entrega final.\nConcorrente referência R$348k. Quantitativo Fase 1 (a validar).\nESTRUTURA INTERNA BRANCO TX em todos (exceto versões 'tudo na cor'). Puxador cava usinada. Logística R$700/amb.\nSerralheria estrutural da cozinha: R$900 (item especial, terc ser).",
+  "diretrizes": "V2 · Tudo na cor + Hettich (garantia 10 anos)\nConcorrente referência R$348k. Quantitativo Fase 1 (a validar).\nESTRUTURA INTERNA BRANCO TX em todos (exceto versões 'tudo na cor'). Puxador cava usinada. Logística R$700/amb.\nSerralheria estrutural da cozinha: R$900 (item especial, terc ser).\nPAGAMENTO ESPECIAL (este cliente): entrada 30% + 4 boletos (60/90/120/150 dias).\nVALIDADE DA PROPOSTA: até 22/06/2026.\nFERRAGEM DEFINIDA: Hettich (linha única). Hardt descartado.\nPerfil alumínio na base de painéis no chão (R$15/mt, metragem Fase 1 a confirmar). Porta de passagem: 2 MDF15 + 2 metalon (R$100/barra).",
   "rodrigo": "Rodrigo (jun/2026, caixa CRÍTICO): projeto grande (>R$80k) -> MC mínima 40% + ENTRADA 40% antes de produção,\nparcelas vinculadas a etapas de entrega. Alvo deste orçamento = 42% (margem p/ Vitor negociar até o piso 40%).\nNÃO ceder abaixo de 40%. Sem entrada real, não fecha. Encargos com NF 7%, parcelamento 7%, comissão Vitor 5%, RT 10%.\nANCORAGEM (Vitor): apresentar o TOTAL da casa primeiro (âncora); só então abrir por ambiente. Pacote completo\notimiza corte/frete -> melhor custo por m² que ambiente avulso. Suíte Master é o ambiente de maior valor (âncora interna).",
   "duvidas": []
 }
