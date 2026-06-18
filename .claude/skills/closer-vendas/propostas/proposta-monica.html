@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root{ --mostarda:#E0A521; --ouro:#B8860B; --preto:#1A1A1A; --creme:#FDF6E3; --cinza:#6b6b6b; }
+  body { font-family: "Helvetica Neue", Arial, sans-serif; color:var(--preto); font-size:11pt; line-height:1.5; }
+  .page { width:210mm; min-height:297mm; padding:18mm 20mm; position:relative; page-break-after:always; background:#fff; }
+  .page:last-child{ page-break-after:auto; }
+  .serif{ font-family:Georgia,"Times New Roman",serif; }
+  h1,h2,h3{ font-family:Georgia,serif; font-weight:normal; }
+  .gold{ color:var(--ouro); }
+  .spark{ color:var(--mostarda); letter-spacing:4px; }
+  .wordmark{ font-family:Georgia,serif; font-size:20pt; letter-spacing:1px; }
+  .cover{ background:var(--creme); display:flex; flex-direction:column; justify-content:center; }
+  .cover .band{ position:absolute; top:0; left:0; right:0; height:14mm; background:var(--mostarda); }
+  .cover .band-b{ top:auto; bottom:0; }
+  .cover .eyebrow{ letter-spacing:6px; font-size:11pt; color:var(--ouro); text-transform:uppercase; }
+  .cover .name{ font-size:54pt; line-height:1.05; margin:6mm 0 4mm; }
+  .cover .proj{ font-size:18pt; color:var(--cinza); font-style:italic; }
+  .cover .foot{ position:absolute; bottom:22mm; left:20mm; right:20mm; display:flex; justify-content:space-between; align-items:flex-end; }
+  .sec-h{ font-size:10pt; letter-spacing:5px; text-transform:uppercase; color:var(--ouro); border-bottom:1.5px solid var(--mostarda); padding-bottom:3mm; margin-bottom:7mm; }
+  .lead{ font-size:14.5pt; line-height:1.55; }
+  .muted{ color:var(--cinza); }
+  .cards{ display:flex; flex-wrap:wrap; gap:5mm; margin-top:6mm; }
+  .card{ width:calc(50% - 2.5mm); background:var(--creme); border-left:3px solid var(--mostarda); padding:6mm; }
+  .card h3{ font-size:13pt; margin-bottom:2mm; }
+  .card p{ font-size:10pt; color:#444; }
+  .special{ margin-top:7mm; border:1.5px solid var(--mostarda); border-radius:3mm; padding:6mm 7mm; background:#fffdf6; }
+  .special h3{ font-size:13pt; margin-bottom:3mm; }
+  .special ul{ list-style:none; font-size:10.5pt; }
+  .special li{ padding:1.5mm 0 1.5mm 7mm; position:relative; }
+  .special li:before{ content:"✦"; color:var(--mostarda); position:absolute; left:0; }
+  .special .tag{ margin-top:3mm; font-size:10pt; font-style:italic; color:var(--ouro); }
+  table{ width:100%; border-collapse:collapse; margin-top:4mm; }
+  th{ text-align:left; font-size:9pt; letter-spacing:2px; text-transform:uppercase; color:var(--cinza); padding:3mm 2mm; border-bottom:1.5px solid var(--mostarda); }
+  td{ padding:3.5mm 2mm; border-bottom:1px solid #e8ddc2; font-size:11pt; }
+  td.val{ text-align:right; white-space:nowrap; font-family:Georgia,serif; }
+  tr.sub td{ color:var(--cinza); border-bottom:none; padding-top:4mm; font-size:10.5pt; }
+  .deal{ margin-top:6mm; background:var(--preto); color:#fff; border-radius:3mm; padding:7mm; display:flex; justify-content:space-between; align-items:center; }
+  .deal .l small{ color:var(--mostarda); letter-spacing:3px; text-transform:uppercase; font-size:8.5pt; }
+  .deal .l div{ font-family:Georgia,serif; font-size:15pt; margin-top:1mm; }
+  .deal .r{ text-align:right; }
+  .deal .r .big{ font-family:Georgia,serif; font-size:30pt; line-height:1; }
+  .deal .r .eco{ color:var(--mostarda); font-size:10pt; margin-top:1mm; }
+  .info{ display:flex; gap:6mm; margin-top:8mm; }
+  .info > div{ flex:1; }
+  .info .k{ font-size:9pt; letter-spacing:2px; text-transform:uppercase; color:var(--ouro); }
+  .info .vv{ font-size:12pt; font-family:Georgia,serif; margin-top:1mm; }
+  .pay td{ font-size:10.5pt; }
+  .pay .disc{ text-align:right; font-family:Georgia,serif; color:var(--ouro); }
+  .cta{ margin-top:9mm; background:var(--preto); color:#fff; padding:7mm; border-radius:3mm; }
+  .cta .spark{ color:var(--mostarda); }
+  .pfoot{ position:absolute; bottom:12mm; left:20mm; right:20mm; font-size:8.5pt; color:var(--cinza); display:flex; justify-content:space-between; border-top:1px solid #e8ddc2; padding-top:3mm;}
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="page cover">
+  <div class="band"></div>
+  <div class="band band-b"></div>
+  <div class="spark">✦ ✦ ✦</div>
+  <div class="eyebrow">Proposta especial para</div>
+  <div class="name serif">Mônica</div>
+  <div class="proj serif">Banheiros Social e Suíte</div>
+  <div class="foot">
+    <span class="wordmark">valvic</span>
+    <span class="muted" style="font-size:9pt;">Marcenaria sob medida · Projeto: Rubia Nascimento</span>
+  </div>
+</div>
+
+<!-- CONEXAO + ENTREGA -->
+<div class="page">
+  <div class="sec-h">O seu projeto</div>
+  <p class="lead">Dois banheiros, um padrão só de acabamento. O projeto que a Rubia
+  desenhou pede marcenaria precisa — em MDF Freijó, com detalhes especiais como o
+  <b>painel em corte a laser</b> e a <b>estrutura metálica</b>.</p>
+  <p class="lead" style="margin-top:5mm;"><b>E a Valvic cuida de tudo:</b> além da
+  marcenaria, coordenamos os serviços especiais (laser, serralheria, iluminação) —
+  você tem um interlocutor só e um acabamento só, do começo ao fim.</p>
+
+  <div class="sec-h" style="margin-top:13mm;">O que entregamos</div>
+  <div class="cards">
+    <div class="card"><h3>Banheiro Social</h3><p>Armário superior com espelho, nichos
+      internos, LED 3000K e painel quadriculado em corte a laser; gabinete da bancada
+      com gavetas, tudo em MDF Freijó Imperial.</p></div>
+    <div class="card"><h3>Banheiro Suíte</h3><p>Armário superior com espelho, LED, painel
+      a laser e estrutura metálica; gabinete da bancada com gaveta e prateleiras, em MDF
+      Freijó Imperial.</p></div>
+  </div>
+
+  <div class="special">
+    <h3>✦ Itens especiais — a Valvic coordena pra você</h3>
+    <ul>
+      <li><b>Painel quadriculado em corte a laser</b> — peça decorativa de precisão, nos dois armários superiores.</li>
+      <li><b>Estrutura de metalon com acabamento em pintura eletrostática preto fosco</b> — no armário superior da suíte.</li>
+      <li><b>Iluminação em LED 3000K</b> embutida na marcenaria.</li>
+    </ul>
+    <div class="tag">Um fornecedor só para tudo: você não corre atrás de marceneiro, serralheiro e laser separados — nós entregamos o conjunto pronto.</div>
+  </div>
+
+  <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Proposta para Mônica — Banheiros Social e Suíte</span></div>
+</div>
+
+<!-- INVESTIMENTO -->
+<div class="page">
+  <div class="sec-h">Investimento</div>
+
+  <table>
+    <tr><th>Ambiente</th><th style="text-align:right;">Investimento individual</th></tr>
+    <tr><td>Banheiro Social — marcenaria completa</td><td class="val">R$ 8.600</td></tr>
+    <tr><td>Banheiro Suíte — marcenaria completa</td><td class="val">R$ 8.800</td></tr>
+    <tr class="sub"><td>Soma dos dois ambientes, executados separadamente</td><td class="val">R$ 17.400</td></tr>
+  </table>
+
+  <div class="deal">
+    <div class="l"><small>Fechando os dois juntos</small>
+      <div>Um único projeto,<br>um único padrão de acabamento</div></div>
+    <div class="r"><div class="big">R$ 15.400</div>
+      <div class="eco">você economiza R$ 2.000</div></div>
+  </div>
+
+  <p class="muted" style="font-size:10.5pt; margin-top:6mm;">Executando os <b>dois
+  ambientes no mesmo projeto</b>, otimizamos o <b>aproveitamento das chapas</b>, a
+  <b>logística</b> e o deslocamento dos <b>serviços especiais</b> (laser e serralheria) —
+  e repassamos essa economia diretamente para você. Por isso o conjunto sai mais
+  vantajoso do que contratar cada banheiro por vez.</p>
+
+  <div class="info">
+    <div><div class="k">Prazo de entrega</div><div class="vv">a confirmar</div></div>
+    <div><div class="k">Validade da proposta</div><div class="vv">2 dias úteis</div></div>
+    <div><div class="k">Garantia</div><div class="vv">2 anos · estrutura e ferragens</div></div>
+  </div>
+
+  <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Proposta para Mônica — Banheiros Social e Suíte</span></div>
+</div>
+
+<!-- PAGAMENTO + FECHAMENTO -->
+<div class="page">
+  <div class="sec-h">Condições de pagamento</div>
+  <p class="muted" style="font-size:10.5pt;">Quanto mais você antecipa, maior o desconto.</p>
+  <table class="pay">
+    <tr><th>Condição</th><th style="text-align:right;">Vantagem</th></tr>
+    <tr><td>30% de entrada + saldo em até 10× no cartão</td><td class="disc">—</td></tr>
+    <tr><td>50% de entrada + saldo em até 8×</td><td class="disc">3% de desconto</td></tr>
+    <tr><td>70% de entrada + saldo em até 6×</td><td class="disc">5% de desconto</td></tr>
+    <tr><td>70% de entrada + saldo via transferência</td><td class="disc">7% de desconto</td></tr>
+  </table>
+
+  <div class="sec-h" style="margin-top:12mm;">Garantia Valvic</div>
+  <p class="lead" style="font-size:13pt;">Marcenaria com garantia de <b class="gold">2 anos</b>
+  (estrutura e ferragens). Instalações e regulagens: 2 anos.</p>
+  <p class="muted" style="font-size:10pt; margin-top:3mm;">Atendimento de garantia: retorno
+  em 24h, visita técnica em até 3 dias úteis e custo zero ao cliente dentro do prazo.</p>
+
+  <div class="cta">
+    <span class="spark">✦</span>&nbsp; <b class="serif" style="font-size:14pt;">Vamos começar?</b><br>
+    <span style="font-size:10.5pt;">Reservamos a sua vaga na agenda de produção com a entrada —
+    e seguimos para a medição final e o cronograma. Os dois banheiros, com o melhor custo, num projeto só.</span>
+  </div>
+
+  <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Proposta para Mônica — Banheiros Social e Suíte</span></div>
+</div>
+
+</body>
+</html>
