@@ -6,7 +6,7 @@
 
 ## 1. Estrutura da proposta — 2 documentos, 4 configurações
 
-A casa é apresentada como **conjunto único** (toda a marcenaria dos 3 pavimentos). O que muda entre as versões são **dois eixos**: o acabamento interno dos móveis e a linha de ferragens — esta última define a **garantia**.
+A casa é apresentada como **conjunto único** (toda a marcenaria dos 3 pavimentos). **Garantia de 10 anos em todas as versões.** O que muda entre elas são **dois eixos**: o acabamento interno dos móveis e a linha de ferragens.
 
 ### 📘 Documento 1 — Linha Premium (ferragens **Hettich** · garantia 10 anos)
 | Versão | Acabamento | **Investimento** |
@@ -14,20 +14,20 @@ A casa é apresentada como **conjunto único** (toda a marcenaria dos 3 paviment
 | **V2 — Tudo na cor** | Interior dos móveis no mesmo acabamento amadeirado das frentes | **R$ 359.000** |
 | **V1 — Branco interno** | Interior em Branco TX, frentes no amadeirado | **R$ 345.000** |
 
-### 📗 Documento 2 — Linha Essencial (ferragens **Hardt** · garantia 5 anos)
+### 📗 Documento 2 — Linha Essencial (ferragens **Hardt** · garantia 10 anos)
 | Versão | Acabamento | **Investimento** |
 |---|---|---|
 | **V4 — Tudo na cor** | Interior no acabamento amadeirado | **R$ 340.000** |
 | **V3 — Branco interno** | Interior em Branco TX | **R$ 317.000** |
 
-> **Ancoragem (uso interno do Vitor):** abrir pelo Documento 1, versão Tudo na cor (R$359k) como referência de topo; conduzir para a Branco interno (R$345k) como a escolha inteligente. O Documento 2 (Hardt) é a carta na manga — só entra se houver pressão de preço, deixando claro o trade-off de garantia (10 → 5 anos).
+> **Ancoragem (uso interno do Vitor):** abrir pelo Documento 1, versão Tudo na cor (R$359k) como referência de topo; conduzir para a Branco interno (R$345k) como a escolha inteligente. O Documento 2 (Hardt) é a carta na manga — só entra se houver pressão de preço (garantia de 10 anos em ambos).
 
 ---
 
 ## 2. Condições comerciais
 
 - **Pagamento (condição especial, sem cartão de crédito):** **entrada de 30%** + **4 boletos** (60 / 90 / 120 / 150 dias).
-- **Garantia:** 10 anos (Linha Premium / Hettich) ou 5 anos (Linha Essencial / Hardt). ✅ confirmado
+- **Garantia:** **10 anos** (todas as versões). ✅ confirmado
 - **Prazo de entrega:** **90 a 100 dias.** ✅ confirmado
 - **Validade dos valores:** **10 dias.**
 - **Validade do prazo de entrega:** **3 dias** (a janela de 90–100 dias depende da agenda de produção; após 3 dias pode ser repactuada).
@@ -186,7 +186,7 @@ A casa é apresentada como **conjunto único** (toda a marcenaria dos 3 paviment
 ## 6. Checklist QA (antes de enviar — Vitor)
 - [ ] Nome "Kênia & Fábio" correto em todas as páginas (sem vazar nome de outro cliente/template)
 - [ ] Preços batem com os JSONs (V1 345 / V2 359 / V3 317 / V4 340)
-- [x] Garantia coerente com a linha (Hettich 10 / Hardt 5) ✅ confirmado
+- [x] Garantia: 10 anos (todas as versões) ✅ confirmado
 - [x] Prazo de entrega: 90 a 100 dias ✅ confirmado
 - [x] RT da arquiteta presente nos preços ✅ confirmado
 - [ ] Descritivo de cada item em harmonia com o projeto da arquiteta
