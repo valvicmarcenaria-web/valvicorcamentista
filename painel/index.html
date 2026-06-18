@@ -431,6 +431,40 @@ const STORAGE_KEY = 'valvic_painel_v2';
 const MONTHS = ['','Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 const MONTHS_SHORT = ['','JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'];
 
+// ─── Dados históricos (importados da planilha) ─────────────────────────
+const HISTORICO_MENSAL = {
+  '2023':{'01':20100,'02':0,'03':130550,'04':14500,'05':23100,'06':138100,'07':3600,'08':47950,'09':63190,'10':180924,'11':31500,'12':57370},
+  '2024':{'01':70200,'02':275780,'03':109500,'04':12350,'05':149000,'06':37300,'07':49600,'08':34520,'09':42900,'10':90350,'11':45920,'12':118560},
+  '2025':{'01':131326,'02':46220,'03':81950,'04':146870,'05':13350,'06':124095,'07':182380,'08':15250,'09':572850,'10':50000,'11':110000,'12':29850}
+};
+
+const SEED_2026 = [
+  {id:'s26-01',cliente:'Luiz',projeto:'Casa completa',investimento:87680,formaPag:'10x sem juros no cartão',mesRef:'01',anoRef:'2026',parcelas:[{valor:87680,data:'14/01/2026',desc:'cartão',recebido:false}]},
+  {id:'s26-02',cliente:'Raquel',projeto:'Quarto',investimento:22600,formaPag:'50% + 5x cartão',mesRef:'01',anoRef:'2026',parcelas:[{valor:11300,data:'26/01/2026',desc:'pix',recebido:false},{valor:11300,data:'17/04/2026',desc:'pix',recebido:false}]},
+  {id:'s26-03',cliente:'Matheus',projeto:'Painel',investimento:9180,formaPag:'50% + 50%',mesRef:'02',anoRef:'2026',parcelas:[{valor:4590,data:'05/02/2026',desc:'pix',recebido:false},{valor:4590,data:'09/03/2026',desc:'pix',recebido:false}]},
+  {id:'s26-04',cliente:'Bibiane',projeto:'Casa completa',investimento:68000,formaPag:'30k entrada + restante no final',mesRef:'02',anoRef:'2026',parcelas:[{valor:30000,data:'09/02/2026',desc:'pix',recebido:false},{valor:10000,data:'18/03/2026',desc:'pix',recebido:false},{valor:10000,data:'25/03/2026',desc:'pix',recebido:false},{valor:18000,data:'28/04/2026',desc:'pix',recebido:false}]},
+  {id:'s26-05',cliente:'Bruna',projeto:'Quarto filha',investimento:10150,formaPag:'50% + 10x cartão',mesRef:'02',anoRef:'2026',parcelas:[{valor:5000,data:'12/02/2026',desc:'pix',recebido:false},{valor:5150,data:'26/04/2026',desc:'cartão',recebido:false}]},
+  {id:'s26-06',cliente:'Augusto',projeto:'Apt',investimento:90000,formaPag:'Entrada 70% + final 30%',mesRef:'02',anoRef:'2026',parcelas:[{valor:63000,data:'19/02/2026',desc:'pix',recebido:false}]},
+  {id:'s26-07',cliente:'Sylvia',projeto:'Painel e quarto filhas',investimento:24345,formaPag:'30% + 10x',mesRef:'02',anoRef:'2026',parcelas:[{valor:17045,data:'03/03/2026',desc:'cartão',recebido:false},{valor:7300,data:'12/03/2026',desc:'pix',recebido:false}]},
+  {id:'s26-08',cliente:'Rosemary',projeto:'Closet',investimento:15300,formaPag:'30% + 10x',mesRef:'03',anoRef:'2026',parcelas:[{valor:11270,data:'09/03/2026',desc:'cartão',recebido:false},{valor:4030,data:'09/03/2026',desc:'dinheiro/pix',recebido:false}]},
+  {id:'s26-09',cliente:'Matheus',projeto:'Cozinha e lavanderia',investimento:22850,formaPag:'70% + 30%',mesRef:'03',anoRef:'2026',parcelas:[{valor:16000,data:'09/03/2026',desc:'pix',recebido:false},{valor:3500,data:'02/06/2026',desc:'pix',recebido:false},{valor:3350,data:'02/06/2026',desc:'',recebido:false}]},
+  {id:'s26-10',cliente:'Isaias e Nubia',projeto:'Painel de TV',investimento:16900,formaPag:'cartão + parcelas',mesRef:'03',anoRef:'2026',parcelas:[{valor:8000,data:'27/03/2026',desc:'cartão',recebido:false},{valor:5000,data:'15/05/2026',desc:'pix',recebido:false},{valor:3900,data:'06/06/2026',desc:'',recebido:false}]},
+  {id:'s26-11',cliente:'Reginaldo',projeto:'Escritório',investimento:14530,formaPag:'entrada + 4x',mesRef:'03',anoRef:'2026',parcelas:[{valor:7000,data:'07/03/2026',desc:'cartão',recebido:false}]},
+  {id:'s26-12',cliente:'Marcelo Maciel',projeto:'Consultório',investimento:28880,formaPag:'70+30',mesRef:'03',anoRef:'2026',parcelas:[{valor:20280,data:'23/03/2026',desc:'pix',recebido:false},{valor:8600,data:'16/06/2026',desc:'pix',recebido:false}]},
+  {id:'s26-13',cliente:'Maria',projeto:'Casa Vale dos Cristais',investimento:117738,formaPag:'50+50',mesRef:'03',anoRef:'2026',parcelas:[{valor:58869,data:'31/03/2026',desc:'pix',recebido:false}]},
+  {id:'s26-14',cliente:'Gisele',projeto:'Cozinha',investimento:20300,formaPag:'50% + 50%',mesRef:'04',anoRef:'2026',parcelas:[{valor:10000,data:'16/04/2026',desc:'espécie',recebido:false},{valor:10300,data:'29/05/2026',desc:'pix',recebido:false}]},
+  {id:'s26-15',cliente:'Andre Alphaville',projeto:'Casa (investimento incorporadora)',investimento:70800,formaPag:'investimento',mesRef:'04',anoRef:'2026',parcelas:[]},
+  {id:'s26-16',cliente:'Yasmin',projeto:'Cozinha',investimento:26000,formaPag:'70%+30%',mesRef:'04',anoRef:'2026',parcelas:[{valor:18000,data:'13/05/2026',desc:'pix',recebido:false}]},
+  {id:'s26-17',cliente:'Cristiane',projeto:'Casa completa',investimento:101700,formaPag:'',mesRef:'04',anoRef:'2026',parcelas:[{valor:22500,data:'05/05/2026',desc:'pix',recebido:false}]},
+  {id:'s26-18',cliente:'Rejane',projeto:'Cozinha',investimento:35600,formaPag:'40%+9x cartão',mesRef:'04',anoRef:'2026',parcelas:[{valor:14240,data:'24/04/2026',desc:'pix',recebido:false}]},
+  {id:'s26-19',cliente:'Leyde',projeto:'Sala e banheiro',investimento:9990,formaPag:'100% à vista',mesRef:'04',anoRef:'2026',parcelas:[{valor:9990,data:'21/04/2026',desc:'pix',recebido:false}]},
+  {id:'s26-20',cliente:'Daniel',projeto:'Escritório',investimento:11200,formaPag:'30% + cartão',mesRef:'05',anoRef:'2026',parcelas:[{valor:3360,data:'12/05/2026',desc:'pix',recebido:false},{valor:7840,data:'13/05/2026',desc:'cartão',recebido:false}]},
+  {id:'s26-21',cliente:'Marina Borges',projeto:'Casa nova',investimento:25500,formaPag:'',mesRef:'05',anoRef:'2026',parcelas:[{valor:15500,data:'25/05/2026',desc:'pix',recebido:false}]},
+  {id:'s26-22',cliente:'Maria - Vale dos Cristais',projeto:'Painel hall garagem',investimento:18100,formaPag:'50% + 50%',mesRef:'05',anoRef:'2026',parcelas:[{valor:9050,data:'13/05/2026',desc:'pix',recebido:false}]},
+  {id:'s26-23',cliente:'Marcelo e Simony',projeto:'Apt novo',investimento:34850,formaPag:'30% + 10x cartão',mesRef:'05',anoRef:'2026',parcelas:[]},
+  {id:'s26-24',cliente:'Fábio',projeto:'Consultório',investimento:9200,formaPag:'',mesRef:'06',anoRef:'2026',parcelas:[{valor:5000,data:'02/06/2026',desc:'pix',recebido:false}]},
+];
+
 // ─── State ───────────────────────────────────────────────────────────
 let S = loadState();
 let chartInstance = null;
@@ -447,13 +481,16 @@ function loadState() {
       if (s.commPct == null) s.commPct = 9.5;
       if (s.fixedCost == null) s.fixedCost = 83518;
       if (!s.historico) s.historico = { '2023': 645614, '2024': 1035980, '2025': 1504141 };
+      if (!s.historicoMensal) s.historicoMensal = HISTORICO_MENSAL;
       return s;
     }
   } catch(e) {}
   return {
-    scriptUrl: '', metaAnual: 1800000, anoAtivo: 2026, projects: [],
+    scriptUrl: '', metaAnual: 1800000, anoAtivo: 2026,
+    projects: SEED_2026.map(p => ({...p, parcelas: p.parcelas.map(x => ({...x}))})),
     mcPct: 43.5, commPct: 9.5, fixedCost: 83518,
-    historico: { '2023': 645614, '2024': 1035980, '2025': 1504141 }
+    historico: { '2023': 645614, '2024': 1035980, '2025': 1504141 },
+    historicoMensal: HISTORICO_MENSAL
   };
 }
 
@@ -463,15 +500,17 @@ function saveState() {
 
 // ─── Init ─────────────────────────────────────────────────────────────
 async function init() {
-  if (!S.scriptUrl) {
+  if (!S.scriptUrl && !S.projects.length) {
     document.getElementById('setup').classList.add('open');
     return;
   }
   document.getElementById('app').style.display = 'block';
   document.getElementById('year-display').textContent = S.anoAtivo;
   document.getElementById('top-ano').textContent = S.anoAtivo;
-  showLoading();
-  await loadFromScript();
+  if (S.scriptUrl) {
+    showLoading();
+    await loadFromScript();
+  }
   render();
 }
 
@@ -486,7 +525,7 @@ async function loadFromScript() {
   try {
     const res = await fetch(S.scriptUrl + '?action=getData', {cache:'no-store'});
     const data = await res.json();
-    if (Array.isArray(data)) {
+    if (Array.isArray(data) && data.length > 0) {
       S.projects = data.map(normalizeProject);
       saveState();
     }
@@ -655,6 +694,11 @@ function renderAlerts(projects) {
       alerts.push(`<div class="alert amber"><span class="alert-icon">○</span>
         <span><strong>${fmt(aReceber)} a receber.</strong> Acompanhar cobranças prioritárias antes do fim do mês.</span></div>`);
     }
+  }
+
+  if (!S.scriptUrl) {
+    alerts.unshift(`<div class="alert amber"><span class="alert-icon">○</span>
+      <span><strong>Modo offline.</strong> Dados carregados da planilha. Configure Apps Script em ⚙ Config para sincronizar novas entradas com o Google Sheets.</span></div>`);
   }
 
   container.innerHTML = alerts.join('');
@@ -1128,9 +1172,22 @@ function renderResultadoMensal(projects, year) {
   document.getElementById('resultado-subtitle').textContent =
     'MC ' + mcPct + '%  −  Com. ' + commPct + '%  =  ' + (mcPct - commPct).toFixed(1) + '% líq.';
 
-  const monthly    = monthlyContratado(projects, year);
-  const months     = Object.keys(monthly).sort();
-  const valores    = months.map(m => monthly[m]);
+  // Usa historicoMensal para anos sem projetos cadastrados
+  const hm = S.historicoMensal ? S.historicoMensal[String(year)] : null;
+  let monthly;
+  if (projects.length > 0) {
+    monthly = monthlyContratado(projects, year);
+  } else if (hm) {
+    monthly = {};
+    for (let m = 1; m <= 12; m++) {
+      const key = String(m).padStart(2,'0');
+      monthly[key] = hm[key] || 0;
+    }
+  } else {
+    monthly = monthlyContratado(projects, year);
+  }
+  const months  = Object.keys(monthly).sort();
+  const valores = months.map(m => monthly[m]);
   const resultados = valores.map(fat => fat * mcLiqPct - fixedCost);
 
   const ctx = document.getElementById('chart-resultado').getContext('2d');
