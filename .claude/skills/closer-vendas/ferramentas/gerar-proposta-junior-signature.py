@@ -78,11 +78,11 @@ s=s.replace(pay_old,pay_new)
 # placeholders
 ph={"{{NOME_CLIENTE}}":"Júnior","{{PROJETO}}":"Residência Bouganville · Lagoa Santa",
  "{{DATA_PROPOSTA}}":"18 / 06 / 2026","{{TOTAL_COMPLETA}}":"395.000","{{TOTAL_ESSENCIAL}}":"370.000",
- "{{PRAZO}}":"45–60","{{GARANTIA_ANOS}}":"10 anos","{{VALIDADE}}":"22 / 06"}
+ "{{PRAZO}}":"30","{{GARANTIA_ANOS}}":"10 anos","{{VALIDADE}}":"22 / 06"}
 for k,v in ph.items(): s=s.replace(k,v)
 
 # print: esconder controles de edição
-s=s.replace("</style>","  @media print{.rm-cell,.btn-add-row,#controls{display:none!important} #p6{height:auto!important;min-height:0!important;overflow:visible!important;display:block!important}}\n  </style>",1)
+s=s.replace("</style>","  @media print{.rm-cell,.btn-add-row,#controls{display:none!important}}\n  </style>",1)
 
 # ---- HTML para navegador (fontes do Google mantidas) ----
 out_html=".claude/skills/closer-vendas/ferramentas/proposta-junior-signature.html"
@@ -92,7 +92,7 @@ print("HTML:",out_html)
 # ---- cópia para WeasyPrint (sem rede + patches A4) ----
 r=re.sub(r'<link[^>]*fonts\.g[^>]*>','',s); r=re.sub(r'<link[^>]*gstatic[^>]*>','',r)
 r=r.replace('page-break-inside: avoid;','')
-r=r.replace('@page { size: A4; margin: 0; }','@page { size: 794px 1123px; margin: 0; } *,*::before,*::after{box-sizing:border-box;} .page{overflow:hidden !important;} #p6{overflow:visible!important;height:auto!important;min-height:1123px!important;display:block!important;} .rm-cell,.btn-add-row,#controls{display:none!important;}')
+r=r.replace('@page { size: A4; margin: 0; }','@page { size: 794px 1123px; margin: 0; } *,*::before,*::after{box-sizing:border-box;} .page{overflow:hidden !important;} .rm-cell,.btn-add-row,#controls{display:none!important;}')
 open("/tmp/junior_render.html","w",encoding="utf-8").write(r)
 weasyprint.HTML("/tmp/junior_render.html").write_pdf("/home/user/valvicorcamentista/proposta-junior-signature.pdf")
 print("PDF: proposta-junior-signature.pdf")
