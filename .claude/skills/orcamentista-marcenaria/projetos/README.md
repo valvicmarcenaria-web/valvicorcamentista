@@ -15,6 +15,8 @@ de referência da metodologia do orçamentista.
 | Projeto | Ambiente | Arquivo |
 |---------|----------|---------|
 | Lucas e Ana — Apto 101 | Apartamento completo (168 m²) | `2025-lucas-e-ana-apto101.md` |
+| Kênia & Fábio | Casa completa (R$ 481k, MC 42%) | `2026-kenia-e-fabio-casa-completa.md` |
+| **Júnior — Lagoa Santa** | Casa completa (R$ 395k/370k) — orçado + proposta | `2026-junior-lagoa-santa.md` |
 
 ## Projetos de referência já no Valvic OS
 
