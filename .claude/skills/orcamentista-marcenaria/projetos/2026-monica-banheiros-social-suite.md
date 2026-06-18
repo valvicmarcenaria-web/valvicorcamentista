@@ -54,6 +54,24 @@ Louças/metais/cuba/espelho antiembaçante = compra do cliente.
 
 - RT Rubia ≈ R$ 1.496 (10% do líquido). Caixa baixo → 37% aceito (faixa normal/bom).
 
+### v2 — VIGENTE (otimização de pacote, opção B)
+
+Fechando os dois banheiros juntos, capturei 2 economias (repassadas ao preço):
+- **Logística:** corte a laser das **2 frentes numa viagem só** → −1 logística dedicada (−R$ 150 custo).
+- **Material:** os **fundos de 6mm** (painéis grandes: 160×100 + 135×100 + 2× ~90×55)
+  **nestam em 1 chapa só** de 6mm (o fator 0,55 superestimava) → −1 chapa (−R$ 300 custo).
+- *(Já estava embutido no pacote: chapas de 15mm compartilhadas — 3 vs 4 separadas — e 1 visita única.)*
+
+| | v1 | **v2 (vigente)** |
+|---|---:|---:|
+| Custo direto | R$ 5.337 | **R$ 4.816** |
+| **Preço** | R$ 17.000 | **R$ 15.400** |
+| MC | 37,6% | **37,1%** |
+
+- Split equilibrado: **~R$ 7.700 por banheiro**.
+- **Valor do pacote:** vs 2 orçamentos separados (~R$ 19.200) o cliente economiza **~R$ 3.800** — gancho de fechamento pro Vitor.
+- JSON: **`orcamento-monica-v2-mc37.json`** (vigente) · `orcamento-monica-v1-mc37.json` (histórico).
+
 ## 5. Flags / premissas (sinalizadas)
 - **Puxador Alça Phenix** lançado como nosso fornecimento (3 un); se for compra do
   cliente, abate ~R$ 180.
