@@ -1,8 +1,8 @@
 {
   "cliente": "Kênia & Fábio",
-  "projeto": "Casa Completa — V2 · Tudo na cor + Hettich (garantia 10 anos)",
+  "projeto": "Casa Completa — V4 · Tudo na cor + Hardt (garantia 5 anos)",
   "versao": "001",
-  "inv": 359000,
+  "inv": 340000,
   "mcAlvo": 40,
   "p": {
     "nf": 4,
@@ -565,14 +565,14 @@
         "MDF¦MDF Itapuã 6mm": 2,
         "Cola e fita¦Fita de borda - cor - mt": 220,
         "Cola e fita¦Colagem - mt linear - máquina": 220,
-        "Dobradiças¦Hettich Novisys": 72,
-        "Corrediças¦Oculta Quadro (Hettich)": 16,
-        "Articuladores¦Blum HK-xs": 4,
         "Puxadores¦Cava 35° usinada - mt": 27,
         "Parafusos / dispositivos / montagem¦Conj. parafuso e bucha": 50,
         "Parafusos / dispositivos / montagem¦Sup. prateleiras - cj4": 12,
         "Iluminação¦LED - fita + perfil - mt": 12,
-        "Iluminação¦Sensor": 2
+        "Iluminação¦Sensor": 2,
+        "Dobradiças¦Hardt": 72,
+        "Corrediças¦Oculta Hardt": 16,
+        "Articuladores¦Pistão com amortecimento": 4
       },
       "terc": {
         "vid": 0,
@@ -591,11 +591,11 @@
         "MDF¦MDF Areia 6mm": 2,
         "Cola e fita¦Fita de borda - cor - mt": 60,
         "Cola e fita¦Colagem - mt linear - máquina": 60,
-        "Dobradiças¦Hettich Novisys": 18,
         "Iluminação¦LED - fita + perfil - mt": 4,
         "Iluminação¦Sensor": 1,
         "Puxadores¦Cava 35° usinada - mt": 6,
-        "Corrediças¦Oculta Quadro (Hettich)": 4
+        "Dobradiças¦Hardt": 18,
+        "Corrediças¦Oculta Hardt": 4
       },
       "terc": {
         "vid": 0,
@@ -614,11 +614,11 @@
         "MDF¦MDF Itapuã 6mm": 3,
         "Cola e fita¦Fita de borda - cor - mt": 150,
         "Cola e fita¦Colagem - mt linear - máquina": 150,
-        "Dobradiças¦Hettich Novisys": 48,
         "Iluminação¦LED - fita + perfil - mt": 5,
         "Iluminação¦Sensor": 1,
         "Puxadores¦Cava 35° usinada - mt": 15,
-        "Corrediças¦Oculta Quadro (Hettich)": 4
+        "Dobradiças¦Hardt": 48,
+        "Corrediças¦Oculta Hardt": 4
       },
       "terc": {
         "vid": 0,
@@ -639,12 +639,12 @@
         "MDF¦MDF Itapuã 6mm": 1,
         "Cola e fita¦Fita de borda - cor - mt": 160,
         "Cola e fita¦Colagem - mt linear - máquina": 160,
-        "Dobradiças¦Hettich Novisys": 60,
         "Sistema portas roupeiros¦SS150 - 3 portas": 1,
         "Sistema portas roupeiros¦Trilho SS150 - 3mt": 1,
         "Sistema portas roupeiros¦Desempenador embutido - par": 3,
         "Puxadores¦Cava 35° usinada - mt": 15,
-        "Corrediças¦Oculta Quadro (Hettich)": 12
+        "Dobradiças¦Hardt": 60,
+        "Corrediças¦Oculta Hardt": 12
       },
       "terc": {
         "vid": 0,
@@ -667,10 +667,10 @@
         "Cola e fita¦Fita de borda - cor - mt": 42,
         "Cola e fita¦Fita de borda - branco tx - mt": 48,
         "Cola e fita¦Colagem - mt linear - máquina": 90,
-        "Dobradiças¦Hettich Novisys": 9,
         "Sistema porta de passagem¦Sistema RO82": 2,
         "Puxadores¦Cava 35° usinada - mt": 6,
-        "Corrediças¦Oculta Quadro (Hettich)": 3
+        "Dobradiças¦Hardt": 9,
+        "Corrediças¦Oculta Hardt": 3
       },
       "terc": {
         "vid": 0,
@@ -708,11 +708,11 @@
         "MDF¦MDF Areia 6mm": 2,
         "Cola e fita¦Fita de borda - cor - mt": 46,
         "Cola e fita¦Colagem - mt linear - máquina": 46,
-        "Dobradiças¦Hettich Novisys": 14,
         "Iluminação¦LED - fita + perfil - mt": 1.5,
         "Iluminação¦Sensor": 1,
         "Puxadores¦Cava 35° usinada - mt": 6,
-        "Corrediças¦Oculta Quadro (Hettich)": 3
+        "Dobradiças¦Hardt": 14,
+        "Corrediças¦Oculta Hardt": 3
       },
       "terc": {
         "vid": 1056,
@@ -731,11 +731,11 @@
         "MDF¦MDF Itapuã 6mm": 2,
         "Cola e fita¦Fita de borda - cor - mt": 65,
         "Cola e fita¦Colagem - mt linear - máquina": 65,
-        "Dobradiças¦Hettich Novisys": 24,
         "Iluminação¦LED - fita + perfil - mt": 3,
         "Iluminação¦Sensor": 1,
         "Puxadores¦Cava 35° usinada - mt": 9,
-        "Corrediças¦Oculta Quadro (Hettich)": 6
+        "Dobradiças¦Hardt": 24,
+        "Corrediças¦Oculta Hardt": 6
       },
       "terc": {
         "vid": 700,
@@ -755,11 +755,11 @@
         "MDF¦MDF Azul Profundo 6mm": 2,
         "Cola e fita¦Fita de borda - cor - mt": 42,
         "Cola e fita¦Colagem - mt linear - máquina": 42,
-        "Dobradiças¦Hettich Novisys": 9,
         "Iluminação¦LED - fita + perfil - mt": 1.5,
         "Iluminação¦Sensor": 1,
         "Puxadores¦Cava 35° usinada - mt": 6,
-        "Corrediças¦Oculta Quadro (Hettich)": 6
+        "Dobradiças¦Hardt": 9,
+        "Corrediças¦Oculta Hardt": 6
       },
       "terc": {
         "vid": 600,
@@ -780,13 +780,13 @@
         "MDF¦MDF Itapuã 6mm": 1,
         "Cola e fita¦Fita de borda - cor - mt": 110,
         "Cola e fita¦Colagem - mt linear - máquina": 110,
-        "Dobradiças¦Hettich Novisys": 6,
         "Sistema portas roupeiros¦SS150 - 3 portas": 1,
         "Sistema portas roupeiros¦Trilho SS150 - 3mt": 1,
         "Sistema portas roupeiros¦Desempenador embutido - par": 3,
         "Puxadores¦Slim luna rometal": 3,
         "Puxadores¦Cava 35° usinada - mt": 6,
-        "Corrediças¦Oculta Quadro (Hettich)": 4
+        "Dobradiças¦Hardt": 6,
+        "Corrediças¦Oculta Hardt": 4
       },
       "terc": {
         "vid": 1080,
@@ -805,8 +805,8 @@
         "MDF¦mdf branco 6": 2,
         "Cola e fita¦Fita de borda - branco tx - mt": 50,
         "Cola e fita¦Colagem - mt linear - máquina": 50,
-        "Dobradiças¦Hettich Novisys": 12,
-        "Puxadores¦Cava 35° usinada - mt": 6
+        "Puxadores¦Cava 35° usinada - mt": 6,
+        "Dobradiças¦Hardt": 12
       },
       "terc": {
         "vid": 0,
@@ -825,7 +825,6 @@
         "MDF¦MDF Areia 6mm": 3,
         "Cola e fita¦Fita de borda - cor - mt": 115,
         "Cola e fita¦Colagem - mt linear - máquina": 115,
-        "Dobradiças¦Hettich Novisys": 10,
         "Sistema portas roupeiros¦SS150 - 3 portas": 2,
         "Sistema portas roupeiros¦Trilho SS150 - 3mt": 2,
         "Sistema portas roupeiros¦Desempenador embutido - par": 6,
@@ -834,7 +833,8 @@
         "Iluminação¦LED - fita + perfil - mt": 4,
         "Iluminação¦Sensor": 2,
         "Puxadores¦Cava 35° usinada - mt": 12,
-        "Corrediças¦Oculta Quadro (Hettich)": 14
+        "Dobradiças¦Hardt": 10,
+        "Corrediças¦Oculta Hardt": 14
       },
       "terc": {
         "vid": 1380,
@@ -853,7 +853,6 @@
         "MDF¦MDF Areia 6mm": 3,
         "Cola e fita¦Fita de borda - cor - mt": 115,
         "Cola e fita¦Colagem - mt linear - máquina": 115,
-        "Dobradiças¦Hettich Novisys": 10,
         "Sistema portas roupeiros¦SS150 - 3 portas": 1,
         "Sistema portas roupeiros¦Trilho SS150 - 3mt": 1,
         "Sistema portas roupeiros¦Desempenador embutido - par": 3,
@@ -862,7 +861,8 @@
         "Iluminação¦LED - fita + perfil - mt": 4,
         "Iluminação¦Sensor": 2,
         "Puxadores¦Cava 35° usinada - mt": 12,
-        "Corrediças¦Oculta Quadro (Hettich)": 14
+        "Dobradiças¦Hardt": 10,
+        "Corrediças¦Oculta Hardt": 14
       },
       "terc": {
         "vid": 1380,
@@ -884,7 +884,6 @@
         "MDF¦MDF Azul Profundo 6mm": 2,
         "Cola e fita¦Fita de borda - cor - mt": 140,
         "Cola e fita¦Colagem - mt linear - máquina": 140,
-        "Dobradiças¦Hettich Novisys": 12,
         "Sistema portas roupeiros¦SS150 - 3 portas": 1,
         "Sistema portas roupeiros¦Trilho SS150 - 3mt": 1,
         "Sistema portas roupeiros¦Desempenador embutido - par": 3,
@@ -893,7 +892,8 @@
         "Iluminação¦LED - fita + perfil - mt": 2,
         "Iluminação¦Sensor": 1,
         "Puxadores¦Cava 35° usinada - mt": 9,
-        "Corrediças¦Oculta Quadro (Hettich)": 10
+        "Dobradiças¦Hardt": 12,
+        "Corrediças¦Oculta Hardt": 10
       },
       "terc": {
         "vid": 1080,
@@ -914,12 +914,12 @@
         "MDF¦MDF Itapuã 6mm": 1,
         "Cola e fita¦Fita de borda - cor - mt": 220,
         "Cola e fita¦Colagem - mt linear - máquina": 220,
-        "Dobradiças¦Hettich Novisys": 30,
         "Sistema porta de passagem¦Sistema RO82": 1,
         "Iluminação¦LED - fita + perfil - mt": 8,
         "Iluminação¦Sensor": 2,
         "Puxadores¦Cava 35° usinada - mt": 18,
-        "Corrediças¦Oculta Quadro (Hettich)": 12
+        "Dobradiças¦Hardt": 30,
+        "Corrediças¦Oculta Hardt": 12
       },
       "terc": {
         "vid": 12750,
@@ -935,7 +935,7 @@
   "ativo": 0,
   "collapsed": {},
   "theme": "dark",
-  "diretrizes": "V2 · Tudo na cor + Hettich (garantia 10 anos)\nPAGAMENTO (sem cartão): 40% assinatura + 30% entrega 1ª etapa (ambientes a definir c/ cliente) + 30% entrega final.\nConcorrente referência R$348k. Quantitativo Fase 1 (a validar).\nESTRUTURA INTERNA BRANCO TX em todos (exceto versões 'tudo na cor'). Puxador cava usinada. Logística R$700/amb.",
+  "diretrizes": "V4 · Tudo na cor + Hardt (garantia 5 anos)\nPAGAMENTO (sem cartão): 40% assinatura + 30% entrega 1ª etapa (ambientes a definir c/ cliente) + 30% entrega final.\nConcorrente referência R$348k. Quantitativo Fase 1 (a validar).\nESTRUTURA INTERNA BRANCO TX em todos (exceto versões 'tudo na cor'). Puxador cava usinada. Logística R$700/amb.",
   "rodrigo": "Rodrigo (jun/2026, caixa CRÍTICO): projeto grande (>R$80k) -> MC mínima 40% + ENTRADA 40% antes de produção,\nparcelas vinculadas a etapas de entrega. Alvo deste orçamento = 42% (margem p/ Vitor negociar até o piso 40%).\nNÃO ceder abaixo de 40%. Sem entrada real, não fecha. Encargos com NF 7%, parcelamento 7%, comissão Vitor 5%, RT 10%.\nANCORAGEM (Vitor): apresentar o TOTAL da casa primeiro (âncora); só então abrir por ambiente. Pacote completo\notimiza corte/frete -> melhor custo por m² que ambiente avulso. Suíte Master é o ambiente de maior valor (âncora interna).",
   "duvidas": []
 }

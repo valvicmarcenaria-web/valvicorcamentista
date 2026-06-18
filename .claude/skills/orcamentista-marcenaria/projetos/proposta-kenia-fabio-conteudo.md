@@ -4,26 +4,34 @@
 
 ---
 
-## 1. Estrutura da proposta — 2 versões (ferragem Hettich · garantia 10 anos)
+## 1. Estrutura da proposta — 2 documentos, 4 configurações
 
-A casa é apresentada como **conjunto único** (toda a marcenaria dos 3 pavimentos). **Ferragem definida: Hettich** (garantia 10 anos) nas duas versões. O que muda entre elas é **um único eixo: o acabamento interno dos móveis.**
+A casa é apresentada como **conjunto único** (toda a marcenaria dos 3 pavimentos). O que muda entre as versões são **dois eixos**: o acabamento interno dos móveis e a linha de ferragens — esta última define a **garantia**.
 
+### 📘 Documento 1 — Linha Premium (ferragens **Hettich** · garantia 10 anos)
 | Versão | Acabamento | **Investimento** |
 |---|---|---|
 | **V2 — Tudo na cor** | Interior dos móveis no mesmo acabamento amadeirado das frentes | **R$ 359.000** |
 | **V1 — Branco interno** | Interior em Branco TX, frentes no amadeirado | **R$ 345.000** |
 
-> **Ancoragem (uso interno do Vitor):** abrir pela V2 (Tudo na cor, R$359k) como referência de topo e conduzir para a V1 (Branco interno, R$345k) como a escolha inteligente — sempre puxando os benefícios do "tudo na cor" (ver nota estratégica no fim).
+### 📗 Documento 2 — Linha Essencial (ferragens **Hardt** · garantia 5 anos)
+| Versão | Acabamento | **Investimento** |
+|---|---|---|
+| **V4 — Tudo na cor** | Interior no acabamento amadeirado | **R$ 340.000** |
+| **V3 — Branco interno** | Interior em Branco TX | **R$ 317.000** |
+
+> **Ancoragem (uso interno do Vitor):** abrir pelo Documento 1, versão Tudo na cor (R$359k) como referência de topo; conduzir para a Branco interno (R$345k) como a escolha inteligente. O Documento 2 (Hardt) é a carta na manga — só entra se houver pressão de preço, deixando claro o trade-off de garantia (10 → 5 anos).
 
 ---
 
 ## 2. Condições comerciais
 
-- **Pagamento (especial deste cliente):** **entrada de 30%** + **4 boletos** (60 / 90 / 120 / 150 dias).
-- **Garantia:** **10 anos** (Hettich). ✅ confirmado
+- **Pagamento (sem cartão):** **40%** na assinatura · **30%** na entrega da 1ª etapa (ambientes definidos com o cliente) · **30%** na entrega final.
+- **Garantia:** 10 anos (Linha Premium / Hettich) ou 5 anos (Linha Essencial / Hardt). ✅ confirmado
 - **Prazo de entrega:** **90 a 100 dias.** ✅ confirmado
-- **Validade da proposta:** **até 22/06/2026.**
-- ⚠️ **AVISO IMPORTANTE:** haverá **reajuste de tabela em julho/2026**. Fechando dentro da validade, o cliente **garante os valores atuais** (gatilho de urgência no fechamento).
+- **Validade dos valores:** **10 dias.**
+- **Validade do prazo de entrega:** **3 dias** (a janela de 90–100 dias depende da agenda de produção; após 3 dias pode ser repactuada).
+- ⚠️ **AVISO IMPORTANTE:** haverá **reajuste de tabela em julho/2026**. Fechando dentro da validade, o cliente **garante os valores atuais** (usar como gatilho de urgência no fechamento).
 
 ---
 
@@ -37,24 +45,24 @@ A casa é apresentada como **conjunto único** (toda a marcenaria dos 3 paviment
 ## 3b. Valores por ambiente (rateio do total)
 > Para o Vitor abrir no total (âncora) e destrinchar por ambiente. Rateio proporcional ao custo de cada ambiente (margem uniforme); soma exata ao total de cada versão. Arredondado a R$500.
 
-| Ambiente | V1 Branco interno (345k) | V2 Tudo na cor (359k) |
-|---|---:|---:|
-| Cozinha | 43.500 | 45.000 |
-| Gourmet | 12.000 | 12.500 |
-| Sala / Estar | 21.000 | 23.500 |
-| Lavanderia | 26.000 | 28.000 |
-| Subsolo / Despensa | 13.000 | 12.500 |
-| Lavabo / Circulação | 6.000 | 6.500 |
-| Semissuíte (Banheiro) | 11.500 | 12.500 |
-| Banho Master | 17.500 | 17.500 |
-| I.S. Suíte 01 | 13.000 | 13.000 |
-| Quarto Hóspedes | 20.000 | 21.000 |
-| Rouparia | 6.000 | 6.000 |
-| Suíte 03 | 31.500 | 32.000 |
-| Suíte 02 | 28.000 | 28.500 |
-| Suíte 01 (infantil) | 31.500 | 33.500 |
-| Suíte Master | 64.500 | 67.000 |
-| **TOTAL** | **345.000** | **359.000** |
+| Ambiente | V1 Branco+Hettich | V2 Cor+Hettich | V3 Branco+Hardt | V4 Cor+Hardt |
+|---|---:|---:|---:|---:|
+| Cozinha | 42.000 | 43.500 | 36.500 | 39.000 |
+| Gourmet | 12.500 | 12.500 | 11.500 | 12.000 |
+| Sala / Estar | 21.500 | 23.500 | 20.000 | 23.000 |
+| Lavanderia | 26.500 | 28.500 | 24.000 | 26.500 |
+| Subsolo / Despensa | 12.000 | 11.500 | 11.500 | 11.000 |
+| Lavabo / Circulação | 6.000 | 6.500 | 6.000 | 6.500 |
+| Semissuíte (Banheiro) | 11.500 | 12.500 | 11.000 | 12.000 |
+| Banho Master | 17.500 | 18.000 | 16.500 | 17.000 |
+| I.S. Suíte 01 | 13.000 | 13.500 | 12.000 | 12.500 |
+| Quarto Hóspedes | 20.500 | 21.000 | 19.000 | 20.500 |
+| Rouparia | 6.000 | 6.000 | 6.000 | 6.000 |
+| Suíte 03 | 31.500 | 32.000 | 28.500 | 30.000 |
+| Suíte 02 | 28.000 | 28.500 | 25.000 | 26.500 |
+| Suíte 01 (infantil) | 31.500 | 33.500 | 29.500 | 32.000 |
+| Suíte Master | 65.000 | 68.000 | 60.000 | 65.500 |
+| **TOTAL** | **345.000** | **359.000** | **317.000** | **340.000** |
 
 ---
 
@@ -165,39 +173,24 @@ A casa é apresentada como **conjunto único** (toda a marcenaria dos 3 paviment
 ### Serralheria de apoio (acompanha a marcenaria)
 - **S01 — Muxarabi piso-teto (5×5)** + estrutura metálica 2×2 + 6 prateleiras, pintura Coral Cinza Intenso (Gourmet).
 - **S02 — Muxarabi no teto (5×5)**, Coral Cinza Intenso (Lavabo Piscina).
-- **S03 — Estrutura metálica de apoio da Cozinha** (item especial, ~R$900 de custo — já incluído nos valores).
-
-### Detalhes construtivos (diferenciais Valvic — opcional citar como qualidade)
-- **Proteção de base:** painéis apoiados no chão recebem **perfil de alumínio na base** (proteção contra umidade/impacto).
-- **Portas de passagem reforçadas:** estrutura interna em **metalon** (duas barras) entre duas chapas de MDF 15 mm — robustez e durabilidade.
 
 ---
 
 ## 5. Mensagem de acompanhamento (para enviar com o arquivo)
 > Rascunho — ajustar tom com Jonathan.
 
-"Kênia e Fábio, que projeto especial o de vocês! Preparamos a proposta da marcenaria completa da casa com muito cuidado — pensada para executar com precisão cada detalhe que a Flávia desenhou, dos closets em vidro reflecta bronze da suíte master à cozinha com a torre de eletros e a cristaleira iluminada. Montamos duas versões para vocês escolherem com tranquilidade, com garantia de 10 anos e condição de pagamento facilitada. Importante: nossa tabela será reajustada em julho — fechando até 22/06, vocês garantem os valores desta proposta. Posso ligar para apresentar pessoalmente e tirar todas as dúvidas? Fico à disposição."
+"Kênia e Fábio, que projeto especial o de vocês! Preparamos a proposta da marcenaria completa da casa com muito cuidado — pensada para executar com precisão cada detalhe que a Flávia desenhou, dos closets em vidro reflecta bronze da suíte master à cozinha com a torre de eletros e a cristaleira iluminada. Montamos duas linhas para vocês escolherem com tranquilidade, com condição de pagamento facilitada e garantia robusta. Posso ligar para apresentar pessoalmente e tirar todas as dúvidas? Fico à disposição."
 
 ---
 
 ## 6. Checklist QA (antes de enviar — Vitor)
 - [ ] Nome "Kênia & Fábio" correto em todas as páginas (sem vazar nome de outro cliente/template)
-- [ ] Preços batem com os JSONs (V1 345 / V2 359)
-- [x] Ferragem Hettich · garantia 10 anos
-- [x] Prazo de entrega: 90 a 100 dias
-- [x] RT da arquiteta presente nos preços
+- [ ] Preços batem com os JSONs (V1 345 / V2 359 / V3 317 / V4 340)
+- [x] Garantia coerente com a linha (Hettich 10 / Hardt 5) ✅ confirmado
+- [x] Prazo de entrega: 90 a 100 dias ✅ confirmado
+- [x] RT da arquiteta presente nos preços ✅ confirmado
 - [ ] Descritivo de cada item em harmonia com o projeto da arquiteta
 - [ ] Sem medidas; com riqueza técnica
-- [x] Pagamento: entrada 30% + 4 boletos (60/90/120/150)
-- [x] Validade: até 22/06/2026
+- [x] Validade: valores 10 dias · prazo de entrega 3 dias
 - [ ] Aviso de reajuste de julho incluído na proposta
-- [ ] Arquivo final salvo na pasta do cliente no Drive
-
----
-
-## 7. NOTA ESTRATÉGICA — uso interno do Vitor (NÃO vai na proposta)
-> Contexto confidencial para conduzir o fechamento. Não expor ao cliente.
-
-- **O objetivo desta casa é ser VENDIDA.** Manter esse cenário em vista o tempo todo.
-- **Frisar, de forma sutil e estratégica**, o benefício do mobiliário **"tudo na cor" (V2)**: além do acabamento mais sofisticado, **aumenta a percepção de valor dos móveis** — e, por consequência, o valor percebido do imóvel na hora da venda. É o argumento que naturalmente puxa o cliente para a V2.
-- Não transformar isso em discurso explícito de "vai valorizar pra revenda"; é um fio condutor da conversa, não uma frase de efeito na proposta.
+- [ ] Arquivo na pasta única do cliente no Drive
