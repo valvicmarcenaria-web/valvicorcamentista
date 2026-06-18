@@ -1,0 +1,364 @@
+{
+  "cliente": "Júnior (Bouganville)",
+  "projeto": "Casa Completa — Lagoa Santa",
+  "versao": "A — Tudo na cor",
+  "inv": 393939,
+  "mcAlvo": 42,
+  "p": {
+    "nf": 7,
+    "parc": 7,
+    "vend": 5,
+    "rt": 0,
+    "vis": 250,
+    "outv": 0,
+    "prog": 0.8,
+    "coord": 1,
+    "marc": 2.5,
+    "serra": 0.5,
+    "manut": 0.5,
+    "log": 4500,
+    "erro": 2
+  },
+  "lib": [
+    [
+      "MDF",
+      [
+        [
+          "mdf branco 6",
+          190
+        ],
+        [
+          "mdf branco 15",
+          260
+        ],
+        [
+          "mdf branco 18",
+          320
+        ],
+        [
+          "MDF cor 15mm (Metallic Suede/Cacao/Areia/Chiaro/Volakas)",
+          500
+        ],
+        [
+          "MDF cor 6mm",
+          300
+        ],
+        [
+          "MDF cor 18mm",
+          600
+        ],
+        [
+          "MDF Ripado Chumbo 18mm (Berneck)",
+          600
+        ],
+        [
+          "MDF 30mm louçaria (prat+montante)",
+          800
+        ]
+      ]
+    ],
+    [
+      "Cola e fita",
+      [
+        [
+          "Colagem - mt linear - máquina",
+          2.5
+        ],
+        [
+          "Colagem - mt linear - manual",
+          4
+        ],
+        [
+          "Fita de borda - cor - mt",
+          3
+        ],
+        [
+          "Fita de borda - branco tx - mt",
+          2
+        ]
+      ]
+    ],
+    [
+      "Dobradiças",
+      [
+        [
+          "Hettich c/ amortecedor",
+          18
+        ],
+        [
+          "Hettich Sensys",
+          25
+        ]
+      ]
+    ],
+    [
+      "Corrediças",
+      [
+        [
+          "Hettich oculta soft",
+          150
+        ],
+        [
+          "Hettich telescópica",
+          40
+        ]
+      ]
+    ],
+    [
+      "Puxadores",
+      [
+        [
+          "Perfil cava - mt",
+          40
+        ]
+      ]
+    ],
+    [
+      "Iluminação",
+      [
+        [
+          "LED - fita + perfil - mt",
+          130
+        ],
+        [
+          "Fonte/driver",
+          80
+        ],
+        [
+          "Sensor",
+          50
+        ]
+      ]
+    ],
+    [
+      "Serralheria/metais",
+      [
+        [
+          "Metalon - barra (porta passagem)",
+          100
+        ],
+        [
+          "Perfil alumínio base - mt",
+          15
+        ],
+        [
+          "Serralheria cozinha (item)",
+          900
+        ]
+      ]
+    ]
+  ],
+  "ambientes": [
+    {
+      "nome": "Cozinha",
+      "q": {
+        "MDF¦MDF cor 15mm (Metallic Suede/Cacao/Areia/Chiaro/Volakas)": 14,
+        "MDF¦mdf branco 6": 9.39,
+        "Cola e fita¦Fita de borda - cor - mt": 369,
+        "Cola e fita¦Colagem - mt linear - máquina": 369,
+        "Dobradiças¦Hettich c/ amortecedor": 32,
+        "Corrediças¦Hettich oculta soft": 13,
+        "Puxadores¦Perfil cava - mt": 18,
+        "Iluminação¦LED - fita + perfil - mt": 18,
+        "Iluminação¦Fonte/driver": 3,
+        "Serralheria/metais¦Perfil alumínio base - mt": 2,
+        "Serralheria/metais¦Serralheria cozinha (item)": 1
+      },
+      "terc": {
+        "vid": 3000,
+        "ser": 3400,
+        "pin": 0,
+        "est": 0,
+        "laq": 0
+      }
+    },
+    {
+      "nome": "Sala de TV",
+      "q": {
+        "MDF¦MDF cor 15mm (Metallic Suede/Cacao/Areia/Chiaro/Volakas)": 6.81,
+        "MDF¦mdf branco 6": 4.57,
+        "Cola e fita¦Fita de borda - cor - mt": 220,
+        "Cola e fita¦Colagem - mt linear - máquina": 220,
+        "Dobradiças¦Hettich c/ amortecedor": 16,
+        "Corrediças¦Hettich oculta soft": 6,
+        "Puxadores¦Perfil cava - mt": 9,
+        "Iluminação¦LED - fita + perfil - mt": 4,
+        "Iluminação¦Fonte/driver": 1,
+        "MDF¦MDF Ripado Chumbo 18mm (Berneck)": 1.08,
+        "Serralheria/metais¦Perfil alumínio base - mt": 4,
+        "Serralheria/metais¦Metalon - barra (porta passagem)": 4
+      },
+      "terc": {
+        "vid": 800,
+        "ser": 0,
+        "pin": 0,
+        "est": 0,
+        "laq": 0
+      }
+    },
+    {
+      "nome": "Quarto de serviço",
+      "q": {
+        "MDF¦MDF cor 15mm (Metallic Suede/Cacao/Areia/Chiaro/Volakas)": 3.79,
+        "MDF¦mdf branco 6": 2.54,
+        "Cola e fita¦Fita de borda - cor - mt": 160,
+        "Cola e fita¦Colagem - mt linear - máquina": 160,
+        "Dobradiças¦Hettich c/ amortecedor": 9,
+        "Corrediças¦Hettich oculta soft": 3,
+        "Puxadores¦Perfil cava - mt": 5,
+        "Iluminação¦LED - fita + perfil - mt": 2,
+        "Iluminação¦Fonte/driver": 1,
+        "MDF¦MDF Ripado Chumbo 18mm (Berneck)": 1.3599999999999999
+      },
+      "terc": {
+        "vid": 0,
+        "ser": 0,
+        "pin": 0,
+        "est": 0,
+        "laq": 0
+      }
+    },
+    {
+      "nome": "Louçaria + Lavabo",
+      "q": {
+        "MDF¦MDF cor 15mm (Metallic Suede/Cacao/Areia/Chiaro/Volakas)": 7.53,
+        "MDF¦mdf branco 6": 5.05,
+        "Cola e fita¦Fita de borda - cor - mt": 199,
+        "Cola e fita¦Colagem - mt linear - máquina": 199,
+        "Dobradiças¦Hettich c/ amortecedor": 17,
+        "Corrediças¦Hettich oculta soft": 7,
+        "Puxadores¦Perfil cava - mt": 9,
+        "Iluminação¦LED - fita + perfil - mt": 6,
+        "Iluminação¦Fonte/driver": 1,
+        "MDF¦MDF 30mm louçaria (prat+montante)": 2.5
+      },
+      "terc": {
+        "vid": 600,
+        "ser": 0,
+        "pin": 0,
+        "est": 0,
+        "laq": 0
+      }
+    },
+    {
+      "nome": "Despensa",
+      "q": {
+        "MDF¦MDF cor 15mm (Metallic Suede/Cacao/Areia/Chiaro/Volakas)": 5.8,
+        "MDF¦mdf branco 6": 3.89,
+        "Cola e fita¦Fita de borda - cor - mt": 153,
+        "Cola e fita¦Colagem - mt linear - máquina": 153,
+        "Dobradiças¦Hettich c/ amortecedor": 13,
+        "Corrediças¦Hettich oculta soft": 5,
+        "Puxadores¦Perfil cava - mt": 7,
+        "Iluminação¦LED - fita + perfil - mt": 4,
+        "Iluminação¦Fonte/driver": 1
+      },
+      "terc": {
+        "vid": 400,
+        "ser": 0,
+        "pin": 0,
+        "est": 0,
+        "laq": 0
+      }
+    },
+    {
+      "nome": "Suíte 1",
+      "q": {
+        "MDF¦MDF cor 15mm (Metallic Suede/Cacao/Areia/Chiaro/Volakas)": 7.29,
+        "MDF¦mdf branco 6": 4.89,
+        "Cola e fita¦Fita de borda - cor - mt": 192,
+        "Cola e fita¦Colagem - mt linear - máquina": 192,
+        "Dobradiças¦Hettich c/ amortecedor": 17,
+        "Corrediças¦Hettich oculta soft": 7,
+        "Puxadores¦Perfil cava - mt": 9,
+        "Iluminação¦LED - fita + perfil - mt": 8,
+        "Iluminação¦Fonte/driver": 1,
+        "Serralheria/metais¦Perfil alumínio base - mt": 4,
+        "Serralheria/metais¦Metalon - barra (porta passagem)": 4
+      },
+      "terc": {
+        "vid": 1500,
+        "ser": 0,
+        "pin": 0,
+        "est": 1800,
+        "laq": 0
+      }
+    },
+    {
+      "nome": "Suíte 2",
+      "q": {
+        "MDF¦MDF cor 15mm (Metallic Suede/Cacao/Areia/Chiaro/Volakas)": 13.14,
+        "MDF¦mdf branco 6": 8.81,
+        "Cola e fita¦Fita de borda - cor - mt": 497,
+        "Cola e fita¦Colagem - mt linear - máquina": 497,
+        "Dobradiças¦Hettich c/ amortecedor": 30,
+        "Corrediças¦Hettich oculta soft": 12,
+        "Puxadores¦Perfil cava - mt": 16,
+        "Iluminação¦LED - fita + perfil - mt": 8,
+        "Iluminação¦Fonte/driver": 1,
+        "MDF¦MDF Ripado Chumbo 18mm (Berneck)": 2.66,
+        "Serralheria/metais¦Perfil alumínio base - mt": 4,
+        "Serralheria/metais¦Metalon - barra (porta passagem)": 8
+      },
+      "terc": {
+        "vid": 1500,
+        "ser": 0,
+        "pin": 0,
+        "est": 1500,
+        "laq": 0
+      }
+    },
+    {
+      "nome": "Suíte 3",
+      "q": {
+        "MDF¦MDF cor 15mm (Metallic Suede/Cacao/Areia/Chiaro/Volakas)": 9.49,
+        "MDF¦mdf branco 6": 6.37,
+        "Cola e fita¦Fita de borda - cor - mt": 400,
+        "Cola e fita¦Colagem - mt linear - máquina": 400,
+        "Dobradiças¦Hettich c/ amortecedor": 22,
+        "Corrediças¦Hettich oculta soft": 9,
+        "Puxadores¦Perfil cava - mt": 12,
+        "Iluminação¦LED - fita + perfil - mt": 8,
+        "Iluminação¦Fonte/driver": 1,
+        "MDF¦MDF Ripado Chumbo 18mm (Berneck)": 2.66,
+        "Serralheria/metais¦Perfil alumínio base - mt": 4,
+        "Serralheria/metais¦Metalon - barra (porta passagem)": 8
+      },
+      "terc": {
+        "vid": 1500,
+        "ser": 0,
+        "pin": 0,
+        "est": 1500,
+        "laq": 0
+      }
+    },
+    {
+      "nome": "Suíte Master",
+      "q": {
+        "MDF¦MDF cor 15mm (Metallic Suede/Cacao/Areia/Chiaro/Volakas)": 20.14,
+        "MDF¦mdf branco 6": 13.51,
+        "Cola e fita¦Fita de borda - cor - mt": 651,
+        "Cola e fita¦Colagem - mt linear - máquina": 651,
+        "Dobradiças¦Hettich c/ amortecedor": 46,
+        "Corrediças¦Hettich oculta soft": 18,
+        "Puxadores¦Perfil cava - mt": 25,
+        "Iluminação¦LED - fita + perfil - mt": 16,
+        "Iluminação¦Fonte/driver": 3,
+        "MDF¦MDF Ripado Chumbo 18mm (Berneck)": 2.23,
+        "Serralheria/metais¦Perfil alumínio base - mt": 6,
+        "Serralheria/metais¦Metalon - barra (porta passagem)": 8
+      },
+      "terc": {
+        "vid": 3000,
+        "ser": 0,
+        "pin": 0,
+        "est": 1800,
+        "laq": 0
+      }
+    }
+  ],
+  "ativo": 0,
+  "collapsed": {},
+  "theme": "dark",
+  "diretrizes": "ORÇAMENTO JÚNIOR (Lagoa Santa) — A — Tudo na cor. Fase-1 (cotas ±15%, refinar ambiente a ambiente). Ferragens HETTICH (sem versão Hardt). RT=0 (sem RT). Louçaria prat+montante 30mm. Interno: TUDO NA COR. Portas de passagem = 2x MDF15 + 2 metalon. Perfil de alumínio na base de painéis no chão. Pagamento: 30% entrada + 4 boletos (60/90/120/150). Validade 22/06/2026. [Vitor, NÃO expor] valorizar mobiliário na cor — a casa é pra vender."
+}
