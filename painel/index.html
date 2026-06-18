@@ -472,6 +472,12 @@ let chartResultado = null;
 let chartCrescimento = null;
 let editingId = null;
 
+const SEED_VERSION = 1; // incrementar quando SEED_2026 mudar
+
+function cloneSeed() {
+  return SEED_2026.map(p => ({...p, parcelas: p.parcelas.map(x => ({...x}))}));
+}
+
 function loadState() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -482,15 +488,27 @@ function loadState() {
       if (s.fixedCost == null) s.fixedCost = 83518;
       if (!s.historico) s.historico = { '2023': 645614, '2024': 1035980, '2025': 1504141 };
       if (!s.historicoMensal) s.historicoMensal = HISTORICO_MENSAL;
+      if (!Array.isArray(s.projects)) s.projects = [];
+
+      // Seed versionado: injeta os projetos de 2026 da planilha se ainda não
+      // foram aplicados (cobre estados antigos salvos vazios). Não duplica:
+      // só adiciona os ids 's26-*' que ainda não existirem.
+      if ((s.seedVersion || 0) < SEED_VERSION) {
+        const existentes = new Set(s.projects.map(p => String(p.id)));
+        cloneSeed().forEach(p => { if (!existentes.has(p.id)) s.projects.push(p); });
+        s.seedVersion = SEED_VERSION;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
+      }
       return s;
     }
   } catch(e) {}
   return {
     scriptUrl: '', metaAnual: 1800000, anoAtivo: 2026,
-    projects: SEED_2026.map(p => ({...p, parcelas: p.parcelas.map(x => ({...x}))})),
+    projects: cloneSeed(),
     mcPct: 43.5, commPct: 9.5, fixedCost: 83518,
     historico: { '2023': 645614, '2024': 1035980, '2025': 1504141 },
-    historicoMensal: HISTORICO_MENSAL
+    historicoMensal: HISTORICO_MENSAL,
+    seedVersion: SEED_VERSION
   };
 }
 
