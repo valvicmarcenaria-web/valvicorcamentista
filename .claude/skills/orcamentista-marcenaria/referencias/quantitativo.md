@@ -54,8 +54,9 @@ Cada peça carrega seu papel: `Função - Grupo - Módulo`. Vistos no plano de c
 > Porta de passagem **não é painel liso** — é um conjunto à parte.
 
 **Porta de passagem (giro/pivotante/correr embutida no painel) = 1 item por porta:**
-- **Folha** ~72×210 (ou piso-teto até 273), **espessura ~4 cm** (quadro
-  sarrafeado/2 faces) — consome mais que chapa única;
+- **Folha** ~72×210 (ou piso-teto até 273), **espessura ~4 cm** = **2× MDF 15 mm
+  + 2 barras de metalon internas** (reforço); **metalon R$ 100/barra → R$ 200 de
+  metalon por porta**, além do MDF;
 - **Marco (~3 cm) + alizar (~5 cm)** em todo o vão;
 - **Laminada nas 2 faces** (aparece dos dois ambientes) → fita nos 4 lados × 2 faces;
 - **Ferragem própria:** kit/dobradiça **pivotante** (especial) ou trilho se correr;

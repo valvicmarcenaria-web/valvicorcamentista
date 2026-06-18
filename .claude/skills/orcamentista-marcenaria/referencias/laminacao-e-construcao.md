@@ -78,6 +78,15 @@ Toda gaveta Valvic é composta por **6 peças**:
 - **Ilha / peça solta:** a **face posterior também é acabada** (vista "posterior"
   no projeto). Fundo NÃO é 6 mm cru — é peça na cor/acabamento do projeto, com
   fita. Custo de chapa e fita maior que num móvel encostado à parede.
+- **Painel apoiado direto no chão → perfil de alumínio de proteção na base.**
+  Lançar **perfil de alumínio na base — R$ 15,00 / metro linear** (proteção contra
+  umidade/impacto). Quantidade = largura do painel em metros. *(regra geral
+  Jonathan, handoff Juninho 18/06/2026)*
+- **Porta de passagem — composição de custo (item próprio, nunca diluir em painel):**
+  cada porta = **2× MDF 15 mm + 2 barras de metalon internas** (reforço) +
+  sistema/dobradiças + (marco/alizar, puxador, tranca quando pede). **Metalon =
+  R$ 100,00 / barra → R$ 200 de metalon por porta**, além do MDF e da ferragem.
+  *(regra geral Jonathan, handoff Juninho 18/06/2026)*
 
 > Espessuras padrão Valvic: estrutura e gavetas **15 mm**; portas correr **18 mm**;
 > fundos **6 mm** (quando justificado — ver regra acima). Confirmar por projeto.
