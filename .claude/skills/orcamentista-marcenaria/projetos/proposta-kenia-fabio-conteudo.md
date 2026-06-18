@@ -26,7 +26,7 @@ A casa é apresentada como **conjunto único** (toda a marcenaria dos 3 paviment
 
 ## 2. Condições comerciais
 
-- **Pagamento (sem cartão):** **40%** na assinatura · **30%** na entrega da 1ª etapa (ambientes definidos com o cliente) · **30%** na entrega final.
+- **Pagamento (condição especial, sem cartão de crédito):** **entrada de 30%** + **4 boletos** (60 / 90 / 120 / 150 dias).
 - **Garantia:** 10 anos (Linha Premium / Hettich) ou 5 anos (Linha Essencial / Hardt). ✅ confirmado
 - **Prazo de entrega:** **90 a 100 dias.** ✅ confirmado
 - **Validade dos valores:** **10 dias.**
