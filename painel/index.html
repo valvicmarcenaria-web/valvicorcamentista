@@ -166,6 +166,33 @@ select option{background:#1B1208}
 
 /* ── Print ── */
 @media print{.top,.btn,.proj-actions,.add-parcela{display:none!important}.overlay{display:none!important}}
+
+/* ── Resultado Mensal ── */
+.result-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:.67rem;font-family:'DM Mono',monospace}
+.result-table th{font-size:.5rem;text-transform:uppercase;letter-spacing:.07em;color:var(--dim);padding:5px 8px;text-align:right;border-bottom:1px solid var(--border);font-weight:500;white-space:nowrap}
+.result-table th:first-child{text-align:left}
+.result-table td{padding:4px 8px;text-align:right;border-bottom:1px solid rgba(160,104,56,.05);color:var(--muted);white-space:nowrap}
+.result-table td:first-child{text-align:left;color:var(--gold2);font-size:.58rem;letter-spacing:.05em}
+.result-table tr:hover td{background:rgba(160,104,56,.04)}
+.result-table .pos{color:var(--green)}
+.result-table .neg{color:var(--red)}
+.result-table tfoot td{border-top:1px solid var(--border2);color:var(--sand);font-size:.68rem;padding-top:6px}
+.be-label{display:inline-flex;align-items:center;gap:7px;font-size:.59rem;color:var(--amber);font-family:'DM Mono',monospace;margin-bottom:8px;opacity:.9}
+.be-label::before{content:'';display:inline-block;width:22px;height:2px;background:var(--amber);border-radius:1px;flex-shrink:0}
+
+/* ── Crescimento Ano a Ano ── */
+.growth-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+@media(max-width:700px){.growth-grid{grid-template-columns:repeat(2,1fr)}}
+.growth-card{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius);padding:14px 12px;text-align:center;position:relative;overflow:hidden}
+.growth-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold) 0%,transparent 100%)}
+.growth-card.up::before{background:linear-gradient(90deg,var(--green) 0%,transparent 100%)}
+.growth-card.current::before{background:linear-gradient(90deg,var(--blue) 0%,transparent 100%)}
+.growth-yr{font-size:.5rem;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:5px}
+.growth-val{font-family:'DM Mono',monospace;font-size:.85rem;color:var(--sand);font-weight:600;line-height:1}
+.growth-pct{font-size:.62rem;font-family:'DM Mono',monospace;margin-top:5px;font-weight:500}
+.growth-pct.pos{color:var(--green)}
+.growth-pct.neg{color:var(--red)}
+.growth-pct.base{color:var(--dim)}
 </style>
 </head>
 <body>
@@ -241,6 +268,24 @@ select option{background:#1B1208}
         </div>
       </div>
       <div id="projects-list"></div>
+    </div>
+
+    <!-- Resultado Mês a Mês -->
+    <div class="section">
+      <div class="section-title">
+        Resultado Mês a Mês
+        <span class="section-title-right" id="resultado-subtitle"></span>
+      </div>
+      <div class="be-label" id="be-label"></div>
+      <div class="chart-wrap" style="height:150px"><canvas id="chart-resultado"></canvas></div>
+      <div id="resultado-table-wrap" style="overflow-x:auto;margin-top:2px"></div>
+    </div>
+
+    <!-- Crescimento Ano a Ano -->
+    <div class="section">
+      <div class="section-title">Crescimento Ano a Ano</div>
+      <div class="growth-grid" id="growth-cards"></div>
+      <div class="chart-wrap" style="height:150px"><canvas id="chart-crescimento"></canvas></div>
     </div>
 
   </div>
@@ -342,6 +387,31 @@ select option{background:#1B1208}
         <input id="cfg-ano" type="number" class="input-mono" min="2023" max="2030">
       </div>
       <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
+        <div style="font-size:.52rem;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--gold2);margin-bottom:10px">Parâmetros P&amp;L</div>
+        <div class="form-grid cols3" style="gap:8px 12px">
+          <div class="field">
+            <label>MC Bruta (%)</label>
+            <input id="cfg-mc" type="number" class="input-mono" step="0.1" min="0" max="100" placeholder="43.5">
+          </div>
+          <div class="field">
+            <label>Comissões (%)</label>
+            <input id="cfg-comm" type="number" class="input-mono" step="0.1" min="0" max="100" placeholder="9.5">
+          </div>
+          <div class="field">
+            <label>Custo Fixo (R$/mês)</label>
+            <input id="cfg-fixedcost" type="number" class="input-mono" step="100" placeholder="83518">
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+        <div style="font-size:.52rem;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--gold2);margin-bottom:10px">Faturamento Histórico</div>
+        <div class="form-grid cols3" style="gap:8px 12px">
+          <div class="field"><label>2023 (R$)</label><input id="cfg-h2023" type="number" class="input-mono"></div>
+          <div class="field"><label>2024 (R$)</label><input id="cfg-h2024" type="number" class="input-mono"></div>
+          <div class="field"><label>2025 (R$)</label><input id="cfg-h2025" type="number" class="input-mono"></div>
+        </div>
+      </div>
+      <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
         <button class="btn btn-sm" style="color:var(--red);border-color:rgba(224,85,85,.3)" onclick="clearAllData()">⚠ Limpar todos os dados locais</button>
       </div>
     </div>
@@ -364,14 +434,27 @@ const MONTHS_SHORT = ['','JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','
 // ─── State ───────────────────────────────────────────────────────────
 let S = loadState();
 let chartInstance = null;
+let chartResultado = null;
+let chartCrescimento = null;
 let editingId = null;
 
 function loadState() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw);
+    if (raw) {
+      const s = JSON.parse(raw);
+      if (s.mcPct == null) s.mcPct = 43.5;
+      if (s.commPct == null) s.commPct = 9.5;
+      if (s.fixedCost == null) s.fixedCost = 83518;
+      if (!s.historico) s.historico = { '2023': 645614, '2024': 1035980, '2025': 1504141 };
+      return s;
+    }
   } catch(e) {}
-  return { scriptUrl: '', metaAnual: 1800000, anoAtivo: 2026, projects: [] };
+  return {
+    scriptUrl: '', metaAnual: 1800000, anoAtivo: 2026, projects: [],
+    mcPct: 43.5, commPct: 9.5, fixedCost: 83518,
+    historico: { '2023': 645614, '2024': 1035980, '2025': 1504141 }
+  };
 }
 
 function saveState() {
@@ -541,6 +624,8 @@ function render() {
   renderKPIs(projects);
   renderChart(projects, year);
   renderProjects(projects, year);
+  renderResultadoMensal(projects, year);
+  renderCrescimentoAnual();
   document.getElementById('total-projects').textContent = `(${projects.length})`;
   document.getElementById('year-display').textContent = year;
   document.getElementById('top-ano').textContent = year;
@@ -947,6 +1032,13 @@ function showConfigModal() {
   document.getElementById('cfg-url').value = S.scriptUrl || '';
   document.getElementById('cfg-meta').value = S.metaAnual || 1800000;
   document.getElementById('cfg-ano').value = S.anoAtivo || 2026;
+  document.getElementById('cfg-mc').value = S.mcPct != null ? S.mcPct : 43.5;
+  document.getElementById('cfg-comm').value = S.commPct != null ? S.commPct : 9.5;
+  document.getElementById('cfg-fixedcost').value = S.fixedCost || 83518;
+  const h = S.historico || {};
+  document.getElementById('cfg-h2023').value = h['2023'] || 645614;
+  document.getElementById('cfg-h2024').value = h['2024'] || 1035980;
+  document.getElementById('cfg-h2025').value = h['2025'] || 1504141;
   openModal('modal-config');
 }
 
@@ -967,6 +1059,14 @@ function saveConfig() {
   S.scriptUrl = document.getElementById('cfg-url').value.trim();
   S.metaAnual = parseFloat(document.getElementById('cfg-meta').value) || 1800000;
   S.anoAtivo = parseInt(document.getElementById('cfg-ano').value) || 2026;
+  S.mcPct = parseFloat(document.getElementById('cfg-mc').value) || 43.5;
+  S.commPct = parseFloat(document.getElementById('cfg-comm').value) || 9.5;
+  S.fixedCost = parseFloat(document.getElementById('cfg-fixedcost').value) || 83518;
+  S.historico = {
+    '2023': parseFloat(document.getElementById('cfg-h2023').value) || 645614,
+    '2024': parseFloat(document.getElementById('cfg-h2024').value) || 1035980,
+    '2025': parseFloat(document.getElementById('cfg-h2025').value) || 1504141
+  };
   saveState();
   closeModal('modal-config');
   showToast('Configuração salva ✓', 'ok');
@@ -1013,6 +1113,218 @@ function showToast(msg, type = 'ok') {
   t.textContent = msg;
   document.body.appendChild(t);
   toastTimer = setTimeout(() => t.remove(), 3500);
+}
+
+// ─── Resultado Mês a Mês ──────────────────────────────────────────────
+function renderResultadoMensal(projects, year) {
+  const mcPct     = S.mcPct   != null ? S.mcPct   : 43.5;
+  const commPct   = S.commPct != null ? S.commPct : 9.5;
+  const fixedCost = S.fixedCost || 83518;
+  const mcLiqPct  = (mcPct - commPct) / 100;
+  const breakEven = Math.round(fixedCost / mcLiqPct);
+
+  document.getElementById('be-label').textContent =
+    'Break-even: ' + fmt(breakEven) + '/mês  ·  acima desta linha = lucro';
+  document.getElementById('resultado-subtitle').textContent =
+    'MC ' + mcPct + '%  −  Com. ' + commPct + '%  =  ' + (mcPct - commPct).toFixed(1) + '% líq.';
+
+  const monthly    = monthlyContratado(projects, year);
+  const months     = Object.keys(monthly).sort();
+  const valores    = months.map(m => monthly[m]);
+  const resultados = valores.map(fat => fat * mcLiqPct - fixedCost);
+
+  const ctx = document.getElementById('chart-resultado').getContext('2d');
+  if (chartResultado) chartResultado.destroy();
+
+  chartResultado = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: months.map(m => MONTHS_SHORT[parseInt(m)]),
+      datasets: [{
+        label: 'Resultado',
+        data: resultados,
+        backgroundColor: resultados.map(r => r >= 0 ? 'rgba(46,204,138,.35)' : 'rgba(224,85,85,.3)'),
+        borderColor:     resultados.map(r => r >= 0 ? 'rgba(46,204,138,.65)' : 'rgba(224,85,85,.65)'),
+        borderWidth: 1,
+        borderRadius: 4,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            title: items => MONTHS[parseInt(months[items[0].dataIndex])],
+            label: item => {
+              const fat = valores[item.dataIndex];
+              const r   = item.parsed.y;
+              return [' Fat.: ' + fmt(fat), ' Resultado: ' + (r >= 0 ? '+' : '') + fmt(Math.round(r))];
+            }
+          },
+          backgroundColor: '#141009', borderColor: 'rgba(160,104,56,.4)', borderWidth: 1,
+          titleColor: '#C8914A', bodyColor: '#F5F0E8',
+          titleFont: { family: 'DM Mono', size: 11 }, bodyFont: { family: 'DM Mono', size: 11 }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: 'rgba(160,104,56,.07)' },
+          ticks: { color: 'rgba(245,240,232,.4)', font: { family: 'DM Mono', size: 10 } }
+        },
+        y: {
+          grid: { color: 'rgba(160,104,56,.07)' },
+          ticks: {
+            color: 'rgba(245,240,232,.4)', font: { family: 'DM Mono', size: 10 },
+            callback: v => {
+              const abs = Math.abs(v);
+              const str = abs >= 1000 ? (abs / 1000).toFixed(0) + 'k' : String(abs);
+              return (v >= 0 ? '+' : '−') + 'R$' + str;
+            }
+          }
+        }
+      }
+    }
+  });
+
+  // Tabela detalhada
+  let totalFat = 0, totalResult = 0, monthsWithData = 0;
+  let rows = '';
+  months.forEach((m, idx) => {
+    const fat = valores[idx];
+    if (fat === 0) return;
+    monthsWithData++;
+    const mcBruta = fat * mcPct   / 100;
+    const comm    = fat * commPct / 100;
+    const mcLiq   = fat * mcLiqPct;
+    const result  = mcLiq - fixedCost;
+    totalFat    += fat;
+    totalResult += result;
+    rows += `<tr>
+      <td>${MONTHS_SHORT[parseInt(m)]}</td>
+      <td>${fmt(fat)}</td>
+      <td>${fmt(Math.round(mcBruta))}</td>
+      <td style="color:var(--red)">−${fmt(Math.round(comm))}</td>
+      <td>${fmt(Math.round(mcLiq))}</td>
+      <td style="color:var(--dim)">−${fmt(fixedCost)}</td>
+      <td class="${result >= 0 ? 'pos' : 'neg'}">${result >= 0 ? '+' : ''}${fmt(Math.round(result))}</td>
+    </tr>`;
+  });
+
+  const totalMcBruta = totalFat * mcPct / 100;
+  const totalComm    = totalFat * commPct / 100;
+  const totalMcLiq   = totalFat * mcLiqPct;
+
+  document.getElementById('resultado-table-wrap').innerHTML = `
+    <table class="result-table">
+      <thead><tr>
+        <th>Mês</th><th>Faturamento</th>
+        <th>MC ${mcPct}%</th><th>Com. ${commPct}%</th>
+        <th>MC Líq. ${(mcPct - commPct).toFixed(1)}%</th>
+        <th>Custo Fixo</th><th>Resultado</th>
+      </tr></thead>
+      <tbody>${rows || '<tr><td colspan="7" style="text-align:center;padding:14px;color:var(--dim)">Nenhum projeto para ' + year + '</td></tr>'}</tbody>
+      ${totalFat > 0 ? `<tfoot><tr>
+        <td>TOTAL</td>
+        <td>${fmt(totalFat)}</td>
+        <td>${fmt(Math.round(totalMcBruta))}</td>
+        <td style="color:var(--red)">−${fmt(Math.round(totalComm))}</td>
+        <td>${fmt(Math.round(totalMcLiq))}</td>
+        <td style="color:var(--dim)">−${fmt(fixedCost * monthsWithData)}</td>
+        <td class="${totalResult >= 0 ? 'pos' : 'neg'}">${totalResult >= 0 ? '+' : ''}${fmt(Math.round(totalResult))}</td>
+      </tr></tfoot>` : ''}
+    </table>`;
+}
+
+// ─── Crescimento Ano a Ano ────────────────────────────────────────────
+function renderCrescimentoAnual() {
+  const hist = S.historico || { '2023': 645614, '2024': 1035980, '2025': 1504141 };
+  const anos = ['2023', '2024', '2025'];
+  if (!anos.includes(String(S.anoAtivo))) anos.push(String(S.anoAtivo));
+
+  const totais = {};
+  anos.forEach(a => { totais[a] = hist[a] != null ? hist[a] : 0; });
+  totais[String(S.anoAtivo)] = projectsByYear(S.anoAtivo).reduce((s, p) => s + p.investimento, 0);
+
+  // Cards
+  let cardsHtml = '';
+  anos.forEach((a, idx) => {
+    const val  = totais[a] || 0;
+    const prev = idx > 0 ? (totais[anos[idx - 1]] || 0) : 0;
+    const isCurrent = a === String(S.anoAtivo);
+    let pctHtml = '<div class="growth-pct base">Base</div>';
+    if (idx > 0 && prev > 0) {
+      const pct = ((val - prev) / prev) * 100;
+      pctHtml = `<div class="growth-pct ${pct >= 0 ? 'pos' : 'neg'}">${pct >= 0 ? '▲' : '▼'} ${Math.abs(pct).toFixed(1)}%</div>`;
+    } else if (idx > 0) {
+      pctHtml = '<div class="growth-pct base">—</div>';
+    }
+    cardsHtml += `<div class="growth-card ${isCurrent ? 'current' : val > 0 ? 'up' : ''}">
+      <div class="growth-yr">${a}${isCurrent ? ' · atual' : ''}</div>
+      <div class="growth-val">${val > 0 ? fmt(val) : '—'}</div>
+      ${pctHtml}
+    </div>`;
+  });
+  document.getElementById('growth-cards').innerHTML = cardsHtml;
+
+  // Chart
+  const ctx = document.getElementById('chart-crescimento').getContext('2d');
+  if (chartCrescimento) chartCrescimento.destroy();
+
+  const data = anos.map(a => totais[a] || 0);
+  chartCrescimento = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: anos,
+      datasets: [{
+        data,
+        backgroundColor: anos.map(a =>
+          a === String(S.anoAtivo) ? 'rgba(90,166,214,.45)' : 'rgba(160,104,56,.5)'),
+        borderColor: anos.map(a =>
+          a === String(S.anoAtivo) ? 'rgba(90,166,214,.85)' : '#A06838'),
+        borderWidth: 1,
+        borderRadius: 6,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: item => {
+              const val  = item.parsed.y;
+              const prev = item.dataIndex > 0 ? data[item.dataIndex - 1] : 0;
+              const pct  = prev > 0 ? ((val - prev) / prev * 100).toFixed(1) : null;
+              const lines = [' ' + fmt(val)];
+              if (pct !== null) lines.push(' vs anterior: ' + (pct >= 0 ? '+' : '') + pct + '%');
+              return lines;
+            }
+          },
+          backgroundColor: '#141009', borderColor: 'rgba(160,104,56,.4)', borderWidth: 1,
+          titleColor: '#C8914A', bodyColor: '#F5F0E8',
+          titleFont: { family: 'DM Mono', size: 11 }, bodyFont: { family: 'DM Mono', size: 11 }
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { color: 'rgba(245,240,232,.55)', font: { family: 'DM Mono', size: 11 } }
+        },
+        y: {
+          grid: { color: 'rgba(160,104,56,.07)' },
+          ticks: {
+            color: 'rgba(245,240,232,.4)', font: { family: 'DM Mono', size: 10 },
+            callback: v =>
+              v >= 1000000 ? 'R$' + (v / 1000000).toFixed(1) + 'M' :
+              v >= 1000    ? 'R$' + (v / 1000).toFixed(0) + 'k' : 'R$' + v
+          }
+        }
+      }
+    }
+  });
 }
 
 // ─── Boot ─────────────────────────────────────────────────────────────
