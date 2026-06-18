@@ -4,7 +4,7 @@
  "versao": "001",
  "inv": 17000,
  "mcAlvo": 37,
- "_nota": "Parceira Rubia Nascimento (RT 10% -> vend=0, encargos ~30%). Caixa baixo, MC 37%. 2 ambientes. Freijo Imperial = mdf cor. Especiais: painel laser 280/frente + log 150; metalon 350 + log 150. Split: Social 7.900 / Suite 9.100.",
+ "_nota": "Parceira Rubia (RT10 -> vend0, encargos ~30%). Caixa baixo MC37. Freijo=mdf cor. Especiais: laser 280/frente +150 log; metalon 350 +150 log. Split Social 7.900/Suite 9.100.",
  "p": {
   "nf": 5,
   "parc": 7,
@@ -19,13 +19,6 @@
   "manut": 0.2,
   "log": 0,
   "erro": 2
- },
- "t": {
-  "vid": 0,
-  "ser": 0,
-  "pin": 0,
-  "est": 0,
-  "laq": 0
  },
  "lib": [
   [
@@ -436,20 +429,28 @@
      150
     ],
     [
-     "Painel corte a laser (frente)",
-     280
-    ],
-    [
-     "Estrutura metalon - pint. eletrostatica preto fosco",
-     350
-    ],
-    [
      "Cabideiro oval",
      150
     ],
     [
      "Rodízio trundle",
      8
+    ],
+    [
+     "Estrutura de serralheria",
+     350
+    ],
+    [
+     "Gaveta especial",
+     900
+    ],
+    [
+     "Painel corte a laser (frente)",
+     280
+    ],
+    [
+     "Estrutura metalon - pint. eletrostatica preto fosco",
+     350
     ]
    ]
   ]
@@ -474,6 +475,15 @@
     "Limpeza / embalagem¦Strech": 2,
     "Especiais¦Painel corte a laser (frente)": 1,
     "Especiais¦Logística específica": 1
+   },
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
    }
   },
   {
@@ -497,8 +507,36 @@
     "Especiais¦Painel corte a laser (frente)": 1,
     "Especiais¦Logística específica": 2,
     "Especiais¦Estrutura metalon - pint. eletrostatica preto fosco": 1
+   },
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
    }
   }
  ],
- "ativo": 0
+ "ativo": 0,
+ "collapsed": {
+  "MDF": true,
+  "Cola e fita": true,
+  "Dobradiças": true,
+  "Corrediças": true,
+  "Sistema portas roupeiros": true,
+  "Articuladores": true,
+  "Puxadores": true,
+  "Suportes": true,
+  "Parafusos / dispositivos / montagem": true,
+  "Iluminação": true,
+  "Vidros e espelhos (m²)": true,
+  "Limpeza / embalagem": true,
+  "Especiais": true
+ },
+ "diretrizes": "",
+ "rodrigo": "",
+ "duvidas": [],
+ "theme": "light"
 }
