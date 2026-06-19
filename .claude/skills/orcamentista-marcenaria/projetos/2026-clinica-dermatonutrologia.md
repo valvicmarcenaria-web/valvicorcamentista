@@ -73,6 +73,23 @@ Pego pelo fundador. Duas correções:
 
 - JSON: **`orcamento-clinica-dermatonutro-v2-mc42.json`** (vigente) · v1 (histórico).
 
+### v3 — CORREÇÃO FINAL (parede-painel completa) + lição
+
+O fundador pegou que a v2 ainda subestimava: as **3 chapas eram só as PORTAS (folhas)**;
+o **painel liso** (≠ ripado) é material **à parte** (+3 chapas + backing); e os **sistemas
+de porta camuflada** (dobradiça oculta + tip-on/pivô, ~R$ 1.700) eu não tinha lançado.
+
+| | v1 | v2 | **v3 (vigente)** |
+|---|---:|---:|---:|
+| Custo direto | R$ 8.740 | R$ 11.310 | **R$ 14.300** |
+| **Preço** | R$ 32.500 | R$ 41.600 | **≈ R$ 52.900** |
+| MC | 42,3% | 42,7% | **42,6%** |
+
+**Lição (registrada na base):** se a v1 (R$ 32.500) tivesse sido aprovada com o custo
+real, a MC desabaria pra **25,3%** — **~R$ 14.300 de margem evaporada**, job vira lucro
+quase zero/prejuízo. **Preço travado = o erro de levantamento sai inteiro da MC.**
+- JSON: **`orcamento-clinica-dermatonutro-v3-mc42.json`** (vigente).
+
 ## 4. Flags / próximos passos
 - **Estimativa preliminar** — posso **firmar qualquer ambiente** lendo a prancha de detalhe
   (P19 aparador · P20 Q.D. · P21 DML · P22 copa · P23-24 consultório · P25 móvel/nicho).

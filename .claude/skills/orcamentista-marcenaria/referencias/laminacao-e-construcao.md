@@ -82,6 +82,22 @@ Toda gaveta Valvic é composta por **6 peças**:
 > Espessuras padrão Valvic: estrutura e gavetas **15 mm**; portas correr **18 mm**;
 > fundos **6 mm** (quando justificado — ver regra acima). Confirmar por projeto.
 
+## Painel com PORTAS camufladas — orçar em 3 partes (nunca esquecer)
+
+> Parede de marcenaria com portas embutidas/camufladas (comum em clínica, recepção,
+> circulação). **Erro caro:** contar só uma. São **três itens distintos** — somar os três:
+
+1. **Portas (folhas)** — a área das folhas já consome chapa por si (ex.: parede da
+   clínica Dermato-Nutro 06/2026 = **3 chapas só de portas**).
+2. **Painel** — o painel/parede em volta e atrás das folhas é material **à parte**
+   (+chapas + backing 6mm). **Painel liso ≠ ripado** (ripado tem o gargalo de fita à parte).
+3. **Sistemas de porta** — porta camuflada NÃO usa dobradiça comum: **dobradiça oculta
+   (Hettich/Blum) + tip-on/pivô** (push-to-open, sem puxador). ~R$ 100–150/porta só no
+   sistema, fora as dobradiças.
+
+> Caso real: esquecer painel + sistemas subestimou o orçamento em ~R$ 20 mil. Lição de
+> margem em `validacao-orcamento.md`.
+
 ## Painéis e cabeceiras — fixação macho-fêmea (French cleat)
 
 > Painel decorativo / cabeceira / armário suspenso pesado: a Valvic prende com

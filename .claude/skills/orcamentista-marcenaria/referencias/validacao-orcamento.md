@@ -90,6 +90,23 @@ preço (inv) = (custo_material_direto + visita) / (divisor − MC%)
 - **Atenção:** estimar encargos "no olho" subprecifica MC — usar o divisor do
   cenário certo. (Aprendizado Samara: R$40,6k "a 40%" com encargo errado dava 38,8%.)
 
+## Subestimar custo = preço travado = MARGEM VIRA PREJUÍZO
+
+> Lição cara (clínica Dermato-Nutro 06/2026). O preço é **travado com o cliente**; se o
+> levantamento subestima o custo, **o erro sai inteiro da MC** — a empresa financia a obra.
+
+Os encargos (~30%) são **% do preço** (fixos). Quem absorve um custo direto maior é só a
+MC. Exemplo real (custo direto subestimado em R$ 8.740, real ~R$ 14.300):
+
+| Preço enviado | Custo real | MC real | vs alvo 42% |
+|---|---:|:---:|---|
+| R$ 32.500 (errado) | R$ 14.300 | **25,3%** | −17 pts · ~R$ 14 mil de MC perdida |
+| R$ 52.900 (correto) | R$ 14.300 | 42,6% | ✅ |
+
+**Regra:** na dúvida, **erra o custo PRA CIMA**. Um orçamento aprovado barato demais não
+é "venda" — é prejuízo contratado. Conferir omissões clássicas antes de fechar: painel com
+portas (3 partes), curva (+15%/+5%), sistemas de porta, terceirizados, fita de ripado.
+
 ## Situação de caixa — perguntar em TODA nova demanda
 
 > **Antes de fechar o preço, perguntar ao Jonathan como está o caixa.** Com caixa
