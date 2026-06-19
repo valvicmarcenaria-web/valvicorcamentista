@@ -3,92 +3,71 @@
 > **Levantamento dos 3 móveis da sala em 2 versões de acabamento.** Arquiteta
 > **Giovanna Camisassa** (parceira, **RT 10% líquido** → encargos de parceiro ~30%,
 > vendedor = 0, **divisor 0,70**). **MC alvo 38%** · prazo **100–120 dias**.
-> Laca e vidro são **nossos** (terceirizado coordenado, logística unificada).
-> Ferragens **Hettich** (Novisys + corrediça Quadro). Puxador = **cava redonda usinada** (M00).
+> Laca e vidro são **nossos** (terceirizado coordenado). Ferragens **Hettich**
+> (Novisys + corrediça Quadro). Puxador = **cava redonda usinada** (M00).
 >
-> ⚠️ **Status: áreas por escalímetro (resolução das plantas) — CONFERIR in loco antes de cortar.**
-> O **aparador** foi decomposto e validado com o fundador; **estante e cristaleira** estão em
-> estimativa de escalímetro (largura/alturas vêm do projeto; profundidade e faces são estimadas).
-> Os **drivers de custo** a confirmar estão marcados 🔶.
+> ⚠️ **Status: áreas por escalímetro — CONFERIR in loco antes de cortar.**
 
 ## Resumo executivo (2 versões)
 
-| Versão | Acabamento dos móveis | Material direto | Investimento (MC 38%) |
+| Versão | Acabamento | Material | **Investimento (MC 38%)** |
 |---|---|---:|---:|
-| **V1 · Melamínico** | Madeirado Freijó (melamínico) | R$ 17.136 | **≈ R$ 54.500** |
-| **V2 · Lâmina natural Freijó** | Lâmina natural 2 faces + acabamento face a face | R$ 29.591 | **≈ R$ 93.500** |
+| **V1 · Melamínico Freijó** | madeirado (melamínico) | R$ 14.677 | **≈ R$ 46.500** |
+| **V2 · Lâmina natural Freijó** | lâmina 2 faces + acabamento face a face | R$ 26.261 | **≈ R$ 83.000** |
 
-> Números completos no app (`orcamento-sala-V1-melaminico.json` / `-V2-lamina-freijo.json`),
-> com consumíveis (parafuso, cola, embalagem). As tabelas detalhadas abaixo trazem só os
-> grandes blocos — o material total inclui ~R$ 1.000 de consumíveis por versão.
-
-> Em ambas: **estante e torre do aparador são laqueadas** (igual nos dois cenários).
-> Só mudam **credenza do aparador** e **corpo da cristaleira** (madeirado × lâmina).
-
-> 🚩 **Recado do Rodrigo (Passo 0):** projeto **> R$ 80k → piso de MC 40% + entrada de 40%**.
-> A **V2 (lâmina) cai nessa faixa** → a MC 38% **não atende o piso**. A 40% a V2 vai a
-> **≈ R$ 99.500**. **Decisão do fundador necessária:** manter 38% (exceção) ou subir a 40%.
+> 🚩 **Recado do Rodrigo (Passo 0):** projeto **> R$ 80k → piso de MC 40% + entrada 40%**.
+> A **V2 (lâmina) fica no limite** (R$ 83k a 38%). A **40%, a V2 vai a ≈ R$ 88.500**.
+> **Decisão do fundador:** manter 38% (exceção) ou subir a 40%.
 
 ## Inventário (arq. Giovanna Camisassa)
 
-| Móvel | Medidas | Acabamento |
-|---|---|---|
-| **M01 · Aparador** | credenza em **L** ~240+90cm · H35 ×D40 + **torre H125** no canto · módulos 40cm · portas de vidro | credenza **TOM 01** (muda) · torre **laca** · vidro |
-| **M02 · Estante** | **277cm** larg · alturas 30/90/120cm · gavetas + nichos · **recorte circular Ø20 + R10** | **Laca** (nas 2 versões) |
-| **M03 · Cristaleira** | **130cm** · portas superiores em **vidro temperado jateado incolor** | corpo **TOM 01** (muda) · portas vidro |
+| Móvel | O que é | Laca | Vidro |
+|---|---|:--:|:--:|
+| **M01 · Aparador** | móvel **baixo em L** (~240+90cm · H35 · D40) com portas · **tudo 15mm** · TOM 01 | ❌ | ❌ |
+| **M02 · Estante** | **277cm** · alturas 30/90/120cm · gavetas + nichos · **recorte circular Ø20+R10** | ✅ (2 versões) | ❌ |
+| **M03 · Cristaleira** | **130cm** · corpo TOM 01 · **portas superiores em vidro temperado jateado** | ❌ | ✅ |
 
-## Mapa de TOM (o que muda entre versões)
-
-| Móvel | TOM 01 (madeirado × lâmina) | Laca (igual nas 2) | Vidro |
-|---|---|---|---|
-| **M01 Aparador** | credenza baixa H35 | torre do canto H125 | porta da torre |
-| **M02 Estante** | — | **tudo (laca)** ✓ | — |
-| **M03 Cristaleira** | corpo | — | portas superiores |
+> **TOM 01** = a peça que muda entre versões (madeirado V1 × lâmina natural Freijó V2).
+> **Laca existe só na estante; vidro existe só na cristaleira; o aparador é TOM 01 puro.**
 
 ## Regras de construção aplicadas (confirmadas pelo fundador)
 
-- **V1 Melamínico:** onde o projeto mostra **25mm → chapa dobrada 30mm** (2× a área em
-  chapa de 15mm). Madeirado = MDF cor/melamínico **R$500/chapa**.
-- **V2 Lâmina:** **MDF 25mm só onde o projeto pede** (tampo); **resto = 15mm**. Chapa
-  revestida lâmina natural 2 faces: **25mm R$1.500 · 15mm R$1.400**. Fundo = **6mm cru
+- **Aparador = tudo 15mm** (sem tampo grosso de 25mm), TOM 01.
+- **V1 Melamínico:** madeirado = MDF cor/melamínico **R$500/chapa**. (Regra 25mm→30mm
+  dobrada **não se aplica** aqui — não há peça de 25mm.)
+- **V2 Lâmina:** chapa revestida lâmina natural 2 faces **15mm R$1.400**; fundo = **6mm cru
   revestido lâmina 1 face R$1.000**. **Acabamento R$350/m² POR FACE**, contado **face a
-  face** (porta = 2 faces · lateral aparente = 2 · fundo/teto/base = 1). **Logística
-  dedicada da lâmina R$400.**
-- **Laca** (estante + torre): substrato **MDF cru** (25mm R$500 / 15mm) + **laca R$650/m²
-  por face**. Logística laca R$150.
-- **Vidro:** temperado **jateado 6mm R$300/m²** + **logística R$150** (à parte).
-- **Estante = corte CIRCULAR, NÃO curva** → recorte Ø20 + R10 é **usinagem CNC dentro da
-  margem operacional, SEM +15%/+5%** (correção do fundador — registrada na regra de curva).
+  face**. **Logística dedicada da lâmina R$400** (uma vez no projeto).
+- **Laca** (só estante): substrato **MDF cru 15/6mm** + **laca R$650/m² por face**. Logística R$150.
+- **Vidro** (só cristaleira): temperado **jateado 6mm R$300/m²** + **logística R$150**.
+- **Estante = corte CIRCULAR, NÃO curva** → Ø20 + R10 é **usinagem CNC dentro da margem
+  operacional, SEM +15%/+5%**.
+- **Logística unificada (uma vez por material):** lâmina no M01 · laca no M02 · vidro no M03.
 
-## Quantitativo e custo — chapa INTEIRA (arredondada no nível do PROJETO)
+## Material por móvel
 
-### V1 · Melamínico — material R$ 16.090
-| Item | Área | Chapas/qtd | Custo |
-|---|---:|---|---:|
-| MDF madeirado 15mm (credenza + tampo dobrado + cristaleira) | 12,9 m² | 4 chapas ×500 | 2.000 |
-| MDF madeirado 6mm (fundos) | 2,5 m² | 1 chapa ×300 | 300 |
-| 🔶 MDF cru 15mm (substrato laca: torre + estante) | 11,6 m² | 3 chapas ×300 | 900 |
-| 🔶 MDF cru 6mm (substrato laca, fundos) | 3,5 m² | 2 chapas ×190 | 380 |
-| 🔶 **Laca** (faces — torre 2,8 + estante 14) | 16,8 m² | ×650/m² | **10.920** |
-| Vidro jateado 6mm (aparador + cristaleira) | 1,7 m² | ×300 + log 150 | 660 |
-| Dobradiça Hettich Novisys | — | ×30 ×10 | 300 |
-| Corrediça oculta Quadro (gavetas estante) | — | ×4 ×120 | 480 |
-| Logística dedicada (laca) | — | — | 150 |
+| Móvel | V1 Melamínico | V2 Lâmina |
+|---|---:|---:|
+| **M01 Aparador** (15mm + fundo 6mm + ferragens) | R$ 1.942 | R$ 9.645 |
+| **M02 Estante** (cru + laca 14 m² + ferragens) | R$ 11.351 | R$ 11.351 |
+| **M03 Cristaleira** (corpo + vidro jateado 1,2 m²) | R$ 1.384 | R$ 5.265 |
+| **Material direto** | **R$ 14.677** | **R$ 26.261** |
 
-### V2 · Lâmina natural Freijó — material R$ 28.779
-| Item | Área | Chapas/qtd | Custo |
-|---|---:|---|---:|
-| Chapa lâmina 15mm 2 faces (credenza + cristaleira) | 10,3 m² | 3 chapas ×1.400 | 4.200 |
-| Chapa lâmina 25mm 2 faces (tampo) | 1,3 m² | 1 chapa ×1.500 | 1.500 |
-| Fundo lâmina 6mm 1 face | 2,5 m² | 1 chapa ×1.000 | 1.000 |
-| 🔶 **Acabamento lâmina** (face a face) | 22,5 m² | ×350/m² | **7.889** |
-| 🔶 MDF cru 15mm (substrato laca) | 11,6 m² | 3 chapas ×300 | 900 |
-| 🔶 MDF cru 6mm (substrato laca) | 3,5 m² | 2 chapas ×190 | 380 |
-| 🔶 **Laca** (torre + estante) | 16,8 m² | ×650/m² | **10.920** |
-| Vidro jateado 6mm | 1,7 m² | ×300 + log 150 | 660 |
-| Dobradiça Hettich Novisys | — | ×30 ×10 | 300 |
-| Corrediça oculta Quadro | — | ×4 ×120 | 480 |
-| Logística dedicada (laca + lâmina) | — | — | 550 |
+> A estante (laca) **não muda** entre versões — é o maior bloco isolado (laca 14 m² × R$650).
+
+## Quantitativo — chapa INTEIRA (arredondada no nível do PROJETO)
+
+| Material | V1 (área → chapas) | V2 (área → chapas) |
+|---|---|---|
+| TOM 01 15mm (aparador 7,1 + cristaleira 4,5 = 11,6 m²) | 3 ch. madeirado ×500 | 3 ch. lâmina 2f ×1.400 |
+| TOM 01 fundo 6mm (1,3 + 1,2 = 2,5 m²) | 1 ch. madeirado ×300 | 1 ch. lâmina fundo ×1.000 |
+| Acabamento lâmina (face a face) | — | 22,9 m² ×350 |
+| MDF cru 15mm (estante) | 3 ch. ×300 | 3 ch. ×300 |
+| MDF cru 6mm (estante) | 2 ch. ×190 | 2 ch. ×190 |
+| Laca (estante) | 14 m² ×650 | 14 m² ×650 |
+| Vidro jateado 6mm (cristaleira) | 1,2 m² ×300 + log 150 | idem |
+| Ferragens Hettich Novisys / Quadro | 30 dobr. + 4 corr. | idem |
+| Logística (lâmina/laca/vidro) | laca 150 + vidro 150 | lâmina 400 + laca 150 + vidro 150 |
 
 ## Fechamento (markup divisor — parceiro, divisor 0,70)
 
@@ -96,22 +75,21 @@
 
 | Versão | Material | MC | Investimento |
 |---|---:|:--:|---:|
-| V1 Melamínico | 17.136 | 38% | (17.386)/0,32 = **R$ 54.330** → **R$ 54.500** |
-| V2 Lâmina | 29.591 | 38% | (29.841)/0,32 = **R$ 93.253** → **R$ 93.500** |
-| V2 Lâmina | 29.591 | **40%** (piso Rodrigo >R$80k) | (29.841)/0,30 = **R$ 99.470** → **R$ 99.500** |
+| V1 Melamínico | 14.677 | 38% | (14.927)/0,32 = R$ 46.647 → **R$ 46.500** |
+| V2 Lâmina | 26.261 | 38% | (26.511)/0,32 = R$ 82.847 → **R$ 83.000** |
+| V2 Lâmina | 26.261 | **40%** (piso Rodrigo) | (26.511)/0,30 = R$ 88.370 → **R$ 88.500** |
 
-## 🔶 A confirmar antes de fechar a proposta (drivers de custo)
-1. **Área de laca da estante** (estimei 14 m² de face) — é o maior driver isolado.
-2. **Área de laca da torre** do aparador (2,8 m²).
-3. **Acabamento de lâmina** V2 (22,5 m² face — multiplicador de faces sobre as peças TOM 01).
-4. **Profundidade real** da estante e da cristaleira (usei ~35cm).
-5. **Nº de gavetas** da estante (4) e **nº de portas** (Novisys 30 no total).
-6. **MC da V2:** 38% (pedido) vs **40%** (piso do Rodrigo para >R$80k).
+## 🔶 A confirmar (drivers de custo)
+1. **Área de laca da estante** (14 m² de face) — maior driver isolado.
+2. **Acabamento de lâmina V2** (aparador 14,1 + cristaleira 8,8 = 22,9 m²).
+3. **Profundidade real** da estante e da cristaleira (usei ~35cm) e nº de gavetas/portas.
+4. **MC da V2:** 38% (pedido) vs **40%** (piso do Rodrigo para >R$80k).
 
 ## Notas para o Vitor (proposta)
-- **Lâmina natural Freijó** = peça nobre, **acabamento face a face** (verniz/selador em cada
-  face aparente) → justifica o salto de preço da V2. Madeira natural, não impressão.
+- **Lâmina natural Freijó** = madeira natural, **acabamento face a face** → justifica o salto
+  da V2 (~1,8× a V1). Não é impressão melamínica.
 - **Estante laqueada** com **recorte circular** (Ø20 + R10) — detalhe de usinagem CNC.
-- **Cristaleira** com portas em **vidro temperado jateado** — leveza + proteção.
-- **Coordenamos laca + vidro** (terceirizado): um interlocutor só, logística unificada.
+- **Cristaleira** com **portas de vidro temperado jateado** — leveza + proteção.
+- **Coordenamos laca + vidro** (terceirizado): um interlocutor só.
 - Ferragem **Hettich** (Novisys + corrediça oculta Quadro) — premium, soft-close.
+- JSONs do app: `orcamento-sala-V1-melaminico.json` / `orcamento-sala-V2-lamina-freijo.json`.

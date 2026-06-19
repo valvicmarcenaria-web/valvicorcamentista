@@ -31,7 +31,10 @@ Itens pontuais → +30% **só quando o fundador pontuar** (não automático). Ma
 **Erros que NÃO repito:** fração de chapa · chutar preço (especificar+perguntar) · não ler
 descritivo · puxador genérico/contagem errada · esquecer painel/sistemas no painel-com-portas ·
 "erra pra cima" · +30% automático · texto de proposta com exagero/mentira · entregar sem checklist ·
-**criar arquivo duplicado sem conferir o que já existe** (criei 2 moleskines — nunca mais).
+**criar arquivo duplicado sem conferir o que já existe** (criei 2 moleskines — nunca mais) ·
+**inventar peça/material que não está no projeto** (pus uma "torre laca + porta de vidro" no aparador
+da Sala que não existia — o aparador era só o móvel baixo em L, TOM 01) · **usar jargão que não está
+no projeto** (chamei o aparador de "credenza" — confunde o fundador; uso o nome do projeto).
 
 > Detalhes completos nas referências da skill: `checklist-fechamento.md`, `parametros-orcamento.md`,
 > `validacao-orcamento.md`, `laminacao-e-construcao.md`.
@@ -94,6 +97,9 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
 - Lâmina: 25mm só onde o projeto pede, resto 15mm; melamínico: 25mm→30mm dobrada. Laca/vidro nossos.
 - Preços novos na base: lâmina 25mm 2f R$1.500 · fundo lâmina 6mm R$1.000 · MDF cru 25mm R$500 ·
   acabamento lâmina R$350/m²/face · vidro jateado 6mm R$300/m² + log 150.
-- Resultado (escalímetro, **confere in loco**): V1 ≈ R$ 51.000 · V2 ≈ R$ 90.500. **V2 > R$80k →
-  piso Rodrigo 40% (≈R$96.500) + entrada 40%** — decisão do fundador pendente. Base em
+- **Correção do fundador:** eu tinha inventado uma "torre laca + porta de vidro" no aparador —
+  não existe. Aparador = só móvel baixo em L, tudo 15mm, TOM 01 puro. **Laca só na estante,
+  vidro só na cristaleira.** Refeito.
+- Resultado (escalímetro, **confere in loco**): V1 ≈ R$ 46.500 · V2 ≈ R$ 83.000. **V2 no limite
+  de R$80k → piso Rodrigo 40% (≈R$88.500) + entrada 40%** — decisão do fundador pendente. Base em
   `projetos/2026-sala-bia-e-matheus-BASE.md`.
