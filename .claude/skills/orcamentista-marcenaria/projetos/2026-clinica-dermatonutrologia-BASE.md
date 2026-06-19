@@ -31,7 +31,7 @@
 
 ## Detalhe por ambiente (medidas reais das pranchas)
 
-### A · Recepção / Espera — R$ 9.500  ⚠️ CURVA (MC 47%)
+### A · Recepção / Espera — R$ 8.100  ⚠️ CURVA (MC 43%)
 - **Aparador Itapuã Duratex 140×40×100** (P19), com **tampo de vidro extra clear com laca
   off-white** (terceirizado) + possibilidade de gavetas ocultas. **Base curva → +15% material / +5% MC.**
   - **Custo do vidro (corrigido — antes eu chutei R$400):** tampo ~140×40 = **0,56 m²** ×
@@ -59,13 +59,13 @@
 **Cenário 1 — SÓ AS PORTAS (alto investimento):** **sem revestimento de parede, sem
 painel** — apenas as 3 portas, em **MDF cru Ultra 15mm laminado a 30mm** (área de chapa
 **dobrada**) + **laminado de alta pressão (HPL) nas 2 faces** + cola de contato
-(R$50/porta) + **RO82 Top + FE 9009** (R$400+R$100/porta). → item B ≈ **R$ 16.000**.
+(R$50/porta) + **RO82 Top + FE 9009** (R$400+R$100/porta). → item B ≈ **R$ 14.000**.
 
 **Cenário 2 — PORTAS + PAINEL (médio investimento):** **portas em MDF melamínico Itapuã
 Ultra** (mesmos componentes RO82 Top + FE 9009) **+ paredes revestidas em MDF melamínico
 Itapuã Ultra 6mm + rodapé de alumínio 5cm**, fixação **Cascola + adesivo de alta aderência
 + 2 tubos Monta Fix por chapa** (não negociamos qualidade da instalação).
-→ item B ≈ **R$ 20.000**.
+→ item B ≈ **R$ 17.500**.
 
 > **Resumo da diferença:** os DOIS têm as 3 portas. **C1 = só as portas** (núcleo cru +
 > HPL premium, sem painel). **C2 = portas (melamínico) + painel de parede revestido (6mm)**.
@@ -74,21 +74,21 @@ Itapuã Ultra 6mm + rodapé de alumínio 5cm**, fixação **Cascola + adesivo de
 Itapuã Ultra 15mm R$600 · HPL R$600/chapa · MDF cru Ultra 15mm R$300 · RO82 Top R$400 · FE 9009 R$100.
 
 
-### C · Consultório — R$ 14.200
+### C · Consultório — R$ 12.400
 - **Mesa de trabalho** (P23/24): tampo quartzito Gaya = marmoraria; **contra-tampo + móvel de
   apoio em MDF Itapuã** (nosso) + **prateleiras Itapuã com nano-LED 1×1cm embutido**.
 - **Móvel em Titânio Cristallo sob bancada de mármore existente** (P25): 80×84, gaveta+porta,
   nicho p/ mini-frigobar. + **móvel de apoio em Titânio Cristallo**.
 
-### D · Copa — R$ 7.100
+### D · Copa — R$ 6.200
 - **Básculas aéreas** (MDF Ultra Premium / Titânio Trama) com articuladores + **LED embutido sob
   prateleira**; **bancada inferior** sob pedra sintética (pedra = marmoraria), portas/gavetas; lixeira.
 
-### E · DML — R$ 4.000
+### E · DML — R$ 3.500
 - **Armário D.M.L. 213 cm** + **armário aéreo** + **armário de vassouras (sem porta)** + **armário
   p/ lixeira**, MDF **Ultra Premium branco TX** (P21).
 
-### F · Circulação — R$ 3.600
+### F · Circulação — R$ 3.200
 - **Armário Quadro de Distribuição 50×280×46** (Itapuã, P20): esconde o quadro de energia,
   prateleiras internas, **friso 0,5×0,5cm**.
 
@@ -98,7 +98,7 @@ mini-frigobares/frigobar inox · louças/metais. *(O tampo de vidro extraclear d
 nosso, via vidraçaria + logística.)*
 
 ## Notas estratégicas para o Vitor
-- **Herói da proposta = Painéis com 3 portas (C1 R$ 16.000 / C2 R$ 20.000):** vender como **"sistema de portas
+- **Herói da proposta = Painéis com 3 portas (C1 R$ 14.000 / C2 R$ 17.500):** vender como **"sistema de portas
   camufladas"** — clínica limpa, sem dobradiça aparente, portas que somem no painel. Engenharia
   que marcenaria comum não faz. É o item que justifica o ticket.
 - **"Cuidamos de tudo":** coordenamos vidro extraclear, LED nano e a interface com a marmoraria
