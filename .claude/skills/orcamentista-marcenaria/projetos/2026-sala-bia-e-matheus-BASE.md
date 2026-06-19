@@ -15,15 +15,19 @@
 
 | Versão | Acabamento dos móveis | Material direto | Investimento (MC 38%) |
 |---|---|---:|---:|
-| **V1 · Melamínico** | Madeirado Freijó (melamínico) | R$ 16.090 | **≈ R$ 51.000** |
-| **V2 · Lâmina natural Freijó** | Lâmina natural 2 faces + acabamento face a face | R$ 28.779 | **≈ R$ 90.500** |
+| **V1 · Melamínico** | Madeirado Freijó (melamínico) | R$ 17.136 | **≈ R$ 54.500** |
+| **V2 · Lâmina natural Freijó** | Lâmina natural 2 faces + acabamento face a face | R$ 29.591 | **≈ R$ 93.500** |
+
+> Números completos no app (`orcamento-sala-V1-melaminico.json` / `-V2-lamina-freijo.json`),
+> com consumíveis (parafuso, cola, embalagem). As tabelas detalhadas abaixo trazem só os
+> grandes blocos — o material total inclui ~R$ 1.000 de consumíveis por versão.
 
 > Em ambas: **estante e torre do aparador são laqueadas** (igual nos dois cenários).
 > Só mudam **credenza do aparador** e **corpo da cristaleira** (madeirado × lâmina).
 
 > 🚩 **Recado do Rodrigo (Passo 0):** projeto **> R$ 80k → piso de MC 40% + entrada de 40%**.
 > A **V2 (lâmina) cai nessa faixa** → a MC 38% **não atende o piso**. A 40% a V2 vai a
-> **≈ R$ 96.500**. **Decisão do fundador necessária:** manter 38% (exceção) ou subir a 40%.
+> **≈ R$ 99.500**. **Decisão do fundador necessária:** manter 38% (exceção) ou subir a 40%.
 
 ## Inventário (arq. Giovanna Camisassa)
 
@@ -92,9 +96,9 @@
 
 | Versão | Material | MC | Investimento |
 |---|---:|:--:|---:|
-| V1 Melamínico | 16.090 | 38% | (16.340)/0,32 = **R$ 51.063** → **R$ 51.000** |
-| V2 Lâmina | 28.779 | 38% | (29.029)/0,32 = **R$ 90.716** → **R$ 90.500** |
-| V2 Lâmina | 28.779 | **40%** (piso Rodrigo >R$80k) | (29.029)/0,30 = **R$ 96.763** → **R$ 96.500** |
+| V1 Melamínico | 17.136 | 38% | (17.386)/0,32 = **R$ 54.330** → **R$ 54.500** |
+| V2 Lâmina | 29.591 | 38% | (29.841)/0,32 = **R$ 93.253** → **R$ 93.500** |
+| V2 Lâmina | 29.591 | **40%** (piso Rodrigo >R$80k) | (29.841)/0,30 = **R$ 99.470** → **R$ 99.500** |
 
 ## 🔶 A confirmar antes de fechar a proposta (drivers de custo)
 1. **Área de laca da estante** (estimei 14 m² de face) — é o maior driver isolado.

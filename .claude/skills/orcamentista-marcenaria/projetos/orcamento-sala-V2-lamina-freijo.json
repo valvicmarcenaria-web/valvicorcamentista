@@ -1,0 +1,291 @@
+{
+ "cliente": "Sala Bia & Matheus (arq. Giovanna Camisassa)",
+ "projeto": "Sala — 3 móveis (aparador + estante + cristaleira)",
+ "versao": "V2-lamina-freijo",
+ "inv": 93500,
+ "mcAlvo": 38,
+ "_nota": "V2 lâmina natural Freijó, acabamento face a face. Chapas inteiras (projeto).",
+ "p": {
+  "nf": 5,
+  "parc": 7,
+  "vend": 0,
+  "rt": 10,
+  "vis": 250,
+  "outv": 0,
+  "prog": 0.8,
+  "coord": 1,
+  "marc": 5,
+  "serra": 0.2,
+  "manut": 0.2,
+  "log": 0,
+  "erro": 2
+ },
+ "lib": [
+  [
+   "MDF",
+   [
+    [
+     "mdf cor 15 (madeirado Freijó)",
+     500
+    ],
+    [
+     "mdf cor 6 (madeirado)",
+     300
+    ],
+    [
+     "mdf cru 25 (substrato laca)",
+     500
+    ],
+    [
+     "mdf cru 15 (substrato laca)",
+     300
+    ],
+    [
+     "mdf cru 6 (substrato laca/fundo)",
+     190
+    ],
+    [
+     "mdf lâmina natural 2 faces 15 (Freijó)",
+     1400
+    ],
+    [
+     "mdf lâmina natural 2 faces 25 (Freijó)",
+     1500
+    ],
+    [
+     "mdf lâmina natural fundo 6 (1 face)",
+     1000
+    ]
+   ]
+  ],
+  [
+   "Acabamentos (m²)",
+   [
+    [
+     "Laca (m² por face)",
+     650
+    ],
+    [
+     "Acabamento lâmina natural (m² por face)",
+     350
+    ]
+   ]
+  ],
+  [
+   "Dobradiças",
+   [
+    [
+     "Hettich Novisys",
+     10
+    ],
+    [
+     "Padrão",
+     6
+    ]
+   ]
+  ],
+  [
+   "Corrediças",
+   [
+    [
+     "Oculta Quadro (Hettich)",
+     120
+    ],
+    [
+     "Telescópica",
+     40
+    ]
+   ]
+  ],
+  [
+   "Puxadores",
+   [
+    [
+     "Cava redonda usinada",
+     30
+    ]
+   ]
+  ],
+  [
+   "Vidros (m²)",
+   [
+    [
+     "Vidro temperado jateado incolor 6mm",
+     300
+    ]
+   ]
+  ],
+  [
+   "Cola e fita",
+   [
+    [
+     "Fita de borda - cor - mt",
+     3
+    ],
+    [
+     "Colagem - mt linear - máquina",
+     2.5
+    ]
+   ]
+  ],
+  [
+   "Parafusos / dispositivos / montagem",
+   [
+    [
+     "Parafusos gerais - especulação",
+     25
+    ],
+    [
+     "Conj. parafuso e bucha",
+     1.8
+    ],
+    [
+     "Cola kit Teck bond",
+     35
+    ],
+    [
+     "Silicone acabamento",
+     30
+    ]
+   ]
+  ],
+  [
+   "Limpeza / embalagem",
+   [
+    [
+     "Embalagem",
+     50
+    ],
+    [
+     "Strech",
+     4
+    ],
+    [
+     "Tinner (litro)",
+     12
+    ],
+    [
+     "Estopa (pacote)",
+     10
+    ]
+   ]
+  ],
+  [
+   "Especiais",
+   [
+    [
+     "Logística dedicada laca",
+     150
+    ],
+    [
+     "Logística dedicada lâmina",
+     400
+    ],
+    [
+     "Logística dedicada vidro",
+     150
+    ]
+   ]
+  ]
+ ],
+ "ambientes": [
+  {
+   "nome": "M01 · Aparador (credenza lâmina + torre laca + vidro)",
+   "q": {
+    "MDF¦mdf lâmina natural 2 faces 15 (Freijó)": 2,
+    "MDF¦mdf lâmina natural 2 faces 25 (Freijó)": 1,
+    "MDF¦mdf lâmina natural fundo 6 (1 face)": 1,
+    "Acabamentos (m²)¦Acabamento lâmina natural (m² por face)": 13.7,
+    "MDF¦mdf cru 15 (substrato laca)": 1,
+    "MDF¦mdf cru 6 (substrato laca/fundo)": 1,
+    "Acabamentos (m²)¦Laca (m² por face)": 2.8,
+    "Vidros (m²)¦Vidro temperado jateado incolor 6mm": 0.5,
+    "Dobradiças¦Hettich Novisys": 16,
+    "Puxadores¦Cava redonda usinada": 8,
+    "Especiais¦Logística dedicada laca": 1,
+    "Especiais¦Logística dedicada lâmina": 1,
+    "Especiais¦Logística dedicada vidro": 1,
+    "Parafusos / dispositivos / montagem¦Parafusos gerais - especulação": 1,
+    "Parafusos / dispositivos / montagem¦Cola kit Teck bond": 1,
+    "Limpeza / embalagem¦Embalagem": 1
+   },
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
+   }
+  },
+  {
+   "nome": "M02 · Estante 277cm (laca · corte circular Ø20+R10)",
+   "q": {
+    "MDF¦mdf cru 15 (substrato laca)": 2,
+    "MDF¦mdf cru 6 (substrato laca/fundo)": 1,
+    "Acabamentos (m²)¦Laca (m² por face)": 14,
+    "Corrediças¦Oculta Quadro (Hettich)": 4,
+    "Dobradiças¦Hettich Novisys": 6,
+    "Puxadores¦Cava redonda usinada": 6,
+    "Parafusos / dispositivos / montagem¦Parafusos gerais - especulação": 1,
+    "Parafusos / dispositivos / montagem¦Conj. parafuso e bucha": 12,
+    "Limpeza / embalagem¦Embalagem": 1,
+    "Limpeza / embalagem¦Strech": 1
+   },
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
+   }
+  },
+  {
+   "nome": "M03 · Cristaleira 130cm (corpo lâmina + portas vidro jateado)",
+   "q": {
+    "MDF¦mdf lâmina natural 2 faces 15 (Freijó)": 1,
+    "MDF¦mdf lâmina natural fundo 6 (1 face)": 0,
+    "Acabamentos (m²)¦Acabamento lâmina natural (m² por face)": 8.8,
+    "Vidros (m²)¦Vidro temperado jateado incolor 6mm": 1.2,
+    "Dobradiças¦Hettich Novisys": 8,
+    "Puxadores¦Cava redonda usinada": 4,
+    "Parafusos / dispositivos / montagem¦Parafusos gerais - especulação": 1,
+    "Limpeza / embalagem¦Embalagem": 1
+   },
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
+   }
+  }
+ ],
+ "ativo": 0,
+ "collapsed": {
+  "MDF": true,
+  "Acabamentos (m²)": true,
+  "Dobradiças": true,
+  "Corrediças": true,
+  "Puxadores": true,
+  "Vidros (m²)": true,
+  "Cola e fita": true,
+  "Parafusos / dispositivos / montagem": true,
+  "Limpeza / embalagem": true,
+  "Especiais": true
+ },
+ "diretrizes": "Parceira Giovanna (RT 10%). Laca e vidro nossos. Ferragem Hettich. Chapa inteira (projeto). Corte circular da estante = usinagem CNC, sem %. Áreas por escalímetro — conferir in loco.",
+ "rodrigo": "Atenção: V2 (lâmina) > R$80k → piso de MC 40% + entrada 40% (recado Rodrigo). MC 38% é exceção a decidir.",
+ "duvidas": [
+  "Confirmar área de laca da estante (14 m²) e da torre (2,8 m²).",
+  "Confirmar acabamento lâmina V2 (22,5 m² face).",
+  "Profundidade/gavetas/portas reais.",
+  "MC V2: 38% ou 40% (piso >R$80k)."
+ ],
+ "theme": "light"
+}
