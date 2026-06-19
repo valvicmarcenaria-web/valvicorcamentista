@@ -2,9 +2,9 @@
  "cliente": "Sala Bia & Matheus (arq. Giovanna Camisassa)",
  "projeto": "Sala — 3 móveis (aparador + estante + cristaleira)",
  "versao": "V2-lamina-freijo",
- "inv": 83000,
- "mcAlvo": 38,
- "_nota": "V2 lâmina natural Freijó (acabamento face a face). Aparador TOM 01 (tudo 15mm). Chapas inteiras (projeto).",
+ "inv": 66583,
+ "mcAlvo": 31,
+ "_nota": "V2 lâmina natural Freijó. Aparador TOM 01 (tudo 15mm). Laca R$450 (negociado). Preço proposital.",
  "p": {
   "nf": 5,
   "parc": 7,
@@ -55,7 +55,7 @@
    [
     [
      "Laca (m² por face)",
-     650
+     450
     ],
     [
      "Acabamento lâmina natural (m² por face)",
@@ -190,8 +190,7 @@
     "MDF¦mdf cru 15 (substrato laca)": 3,
     "MDF¦mdf cru 6 (substrato laca/fundo)": 2,
     "Acabamentos (m²)¦Laca (m² por face)": 14,
-    "Corrediças¦Oculta Quadro (Hettich)": 4,
-    "Dobradiças¦Hettich Novisys": 6,
+    "Corrediças¦Oculta Quadro (Hettich)": 2,
     "Puxadores¦Cava redonda usinada": 6,
     "Especiais¦Logística dedicada laca": 1,
     "Parafusos / dispositivos / montagem¦Parafusos gerais - especulação": 1,
@@ -215,7 +214,6 @@
     "MDF¦mdf lâmina natural 2 faces 15 (Freijó)": 1,
     "Acabamentos (m²)¦Acabamento lâmina natural (m² por face)": 8.8,
     "Vidros (m²)¦Vidro temperado jateado incolor 6mm": 1.2,
-    "Dobradiças¦Hettich Novisys": 8,
     "Puxadores¦Cava redonda usinada": 4,
     "Especiais¦Logística dedicada vidro": 1,
     "Parafusos / dispositivos / montagem¦Parafusos gerais - especulação": 1,
@@ -245,13 +243,12 @@
   "Limpeza / embalagem": true,
   "Especiais": true
  },
- "diretrizes": "Parceira Giovanna (RT 10%). Aparador = TOM 01 puro (sem laca/vidro). Laca só na estante. Vidro só na cristaleira. Ferragem Hettich. Chapa inteira (projeto). Corte circular da estante = usinagem CNC, sem %. Áreas por escalímetro — conferir in loco.",
- "rodrigo": "Atenção: V2 (lâmina) > R$80k → piso de MC 40% + entrada 40% (recado Rodrigo). MC 38% é exceção a decidir.",
+ "diretrizes": "Parceira Giovanna (RT 10%). Aparador = TOM 01 puro (sem laca/vidro). Laca só na estante (R$450/m² — preço NEGOCIADO só deste projeto, base segue 650). Vidro só na cristaleira. DOBRADIÇA só no aparador (Novisys). Estante = 2 gavetas. Corte circular = usinagem CNC, sem %. Chapa inteira (projeto). Áreas por escalímetro — conferir in loco.",
+ "rodrigo": "Preço proposital. MC real ~35.0% — abaixo do piso de exceção 37% (autorizado pelo fundador para este fechamento).",
  "duvidas": [
-  "Confirmar área de laca da estante (14 m²).",
-  "Confirmar acabamento lâmina V2 (aparador 14,1 + cristaleira 8,8 m²).",
-  "Profundidade/gavetas/portas reais.",
-  "MC V2: 38% ou 40% (piso >R$80k)."
+  "Confirmar área de laca da estante (14 m²) e acabamento lâmina V2 (aparador 14,1 + cristaleira 8,8 m²).",
+  "Profundidade real da estante/cristaleira (~35cm).",
+  "Preços PROPOSITAIS abaixo do piso 37% (decisão do fundador)."
  ],
  "theme": "light"
 }

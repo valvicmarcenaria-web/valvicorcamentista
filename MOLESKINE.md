@@ -100,6 +100,9 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
 - **Correção do fundador:** eu tinha inventado uma "torre laca + porta de vidro" no aparador —
   não existe. Aparador = só móvel baixo em L, tudo 15mm, TOM 01 puro. **Laca só na estante,
   vidro só na cristaleira.** Refeito.
-- Resultado (escalímetro, **confere in loco**): V1 ≈ R$ 46.500 · V2 ≈ R$ 83.000. **V2 no limite
-  de R$80k → piso Rodrigo 40% (≈R$88.500) + entrada 40%** — decisão do fundador pendente. Base em
-  `projetos/2026-sala-bia-e-matheus-BASE.md`.
+- Ajustes do fundador no app (06/19): **laca R$450/m²** (negociado, SÓ este projeto — base segue
+  650); **dobradiça só no aparador** (estante/cristaleira não têm); **estante = 2 gavetas**.
+- Preços **PROPOSITAIS** abaixo do piso 37% (decisão do fundador p/ fechar): **V1 R$ 34.264
+  (MC 35,7%) · V2 R$ 66.583 (MC 35,0%)**. Base em `projetos/2026-sala-bia-e-matheus-BASE.md`.
+  *Aprendizado: o fundador é a fonte de verdade do app — sincronizo os arquivos do repo às edições
+  dele; preço proposital abaixo do piso é decisão dele, não recalculo pra cima sem ordem.*

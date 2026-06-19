@@ -10,14 +10,15 @@
 
 ## Resumo executivo (2 versões)
 
-| Versão | Acabamento | Material | **Investimento (MC 38%)** |
-|---|---|---:|---:|
-| **V1 · Melamínico Freijó** | madeirado (melamínico) | R$ 14.677 | **≈ R$ 46.500** |
-| **V2 · Lâmina natural Freijó** | lâmina 2 faces + acabamento face a face | R$ 26.261 | **≈ R$ 83.000** |
+| Versão | Acabamento | Material | **Investimento** | MC |
+|---|---|---:|---:|:--:|
+| **V1 · Melamínico Freijó** | madeirado (melamínico) | R$ 11.497 | **R$ 34.264** | 35,7% |
+| **V2 · Lâmina natural Freijó** | lâmina 2 faces + acabamento face a face | R$ 23.081 | **R$ 66.583** | 35,0% |
 
-> 🚩 **Recado do Rodrigo (Passo 0):** projeto **> R$ 80k → piso de MC 40% + entrada 40%**.
-> A **V2 (lâmina) fica no limite** (R$ 83k a 38%). A **40%, a V2 vai a ≈ R$ 88.500**.
-> **Decisão do fundador:** manter 38% (exceção) ou subir a 40%.
+> **Preços PROPOSITAIS** (decisão do fundador 06/2026): fechados **abaixo do piso de
+> exceção 37%** do Rodrigo para viabilizar o fechamento. **Laca a R$450/m² = preço
+> NEGOCIADO só deste projeto** (a base segue R$650). **Dobradiça só no aparador.**
+> **Estante = 2 gavetas.**
 
 ## Inventário (arq. Giovanna Camisassa)
 
@@ -38,7 +39,10 @@
 - **V2 Lâmina:** chapa revestida lâmina natural 2 faces **15mm R$1.400**; fundo = **6mm cru
   revestido lâmina 1 face R$1.000**. **Acabamento R$350/m² POR FACE**, contado **face a
   face**. **Logística dedicada da lâmina R$400** (uma vez no projeto).
-- **Laca** (só estante): substrato **MDF cru 15/6mm** + **laca R$650/m² por face**. Logística R$150.
+- **Laca** (só estante): substrato **MDF cru 15/6mm** + **laca R$450/m² por face** (preço
+  NEGOCIADO só deste projeto; base segue R$650). Logística R$150.
+- **Dobradiça (Hettich Novisys) só no aparador** (×16). Estante e cristaleira não levam.
+- **Estante = 2 gavetas** (corrediça oculta Quadro ×2).
 - **Vidro** (só cristaleira): temperado **jateado 6mm R$300/m²** + **logística R$150**.
 - **Estante = corte CIRCULAR, NÃO curva** → Ø20 + R10 é **usinagem CNC dentro da margem
   operacional, SEM +15%/+5%**.
@@ -48,12 +52,14 @@
 
 | Móvel | V1 Melamínico | V2 Lâmina |
 |---|---:|---:|
-| **M01 Aparador** (15mm + fundo 6mm + ferragens) | R$ 1.942 | R$ 9.645 |
-| **M02 Estante** (cru + laca 14 m² + ferragens) | R$ 11.351 | R$ 11.351 |
-| **M03 Cristaleira** (corpo + vidro jateado 1,2 m²) | R$ 1.384 | R$ 5.265 |
-| **Material direto** | **R$ 14.677** | **R$ 26.261** |
+| **M01 Aparador** (15mm + fundo 6mm + Novisys ×16) | R$ 1.942 | R$ 9.645 |
+| **M02 Estante** (cru + laca 14 m² × R$450 + 2 gavetas) | R$ 8.251 | R$ 8.251 |
+| **M03 Cristaleira** (corpo + vidro jateado 1,2 m²) | R$ 1.304 | R$ 5.185 |
+| **Material direto** | **R$ 11.497** | **R$ 23.081** |
 
-> A estante (laca) **não muda** entre versões — é o maior bloco isolado (laca 14 m² × R$650).
+> A estante (laca) **não muda** entre versões — é o maior bloco isolado (laca 14 m² × R$450).
+> **Dobradiça (Novisys) só no aparador**; estante (gavetas/nichos) e cristaleira (portas de
+> vidro) não levam Novisys.
 
 ## Quantitativo — chapa INTEIRA (arredondada no nível do PROJETO)
 
@@ -73,17 +79,18 @@
 
 `inv = (material + visita R$250) / (0,70 − MC)`
 
-| Versão | Material | MC | Investimento |
-|---|---:|:--:|---:|
-| V1 Melamínico | 14.677 | 38% | (14.927)/0,32 = R$ 46.647 → **R$ 46.500** |
-| V2 Lâmina | 26.261 | 38% | (26.511)/0,32 = R$ 82.847 → **R$ 83.000** |
-| V2 Lâmina | 26.261 | **40%** (piso Rodrigo) | (26.511)/0,30 = R$ 88.370 → **R$ 88.500** |
+| Versão | Material | Investimento (proposital) | MC real |
+|---|---:|---:|:--:|
+| V1 Melamínico | 11.497 | **R$ 34.264** | **35,7%** |
+| V2 Lâmina | 23.081 | **R$ 66.583** | **35,0%** |
 
-## 🔶 A confirmar (drivers de custo)
+> Preços definidos pelo fundador (propositais, abaixo do piso 37%). Não recalcular pra cima
+> sem nova ordem.
+
+## 🔶 A confirmar (drivers de custo) — restantes
 1. **Área de laca da estante** (14 m² de face) — maior driver isolado.
 2. **Acabamento de lâmina V2** (aparador 14,1 + cristaleira 8,8 = 22,9 m²).
-3. **Profundidade real** da estante e da cristaleira (usei ~35cm) e nº de gavetas/portas.
-4. **MC da V2:** 38% (pedido) vs **40%** (piso do Rodrigo para >R$80k).
+3. **Profundidade real** da estante e da cristaleira (usei ~35cm).
 
 ## Notas para o Vitor (proposta)
 - **Lâmina natural Freijó** = madeira natural, **acabamento face a face** → justifica o salto
