@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=794"/>
+<title>Valvic · Proposta de Parceria — Karla</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --pw: 794px;
+    --ph: 1123px;
+
+    --paper:   #F7F1E4;
+    --paper-2: #FCF8F0;
+    --paper-3: #F1E9D8;
+    --ink:     #211C14;
+    --ink-2:   #463E32;
+    --ink-soft:#6A6052;
+    --gold:    #B0843A;
+    --gold-d:  #946C2A;
+    --gold-l:  #C79A4E;
+    --line:    rgba(33,28,20,.13);
+    --line-2:  rgba(33,28,20,.07);
+    --gold-12: rgba(176,132,58,.12);
+    --gold-22: rgba(176,132,58,.22);
+    --gold-40: rgba(176,132,58,.40);
+
+    --cover:   #16130D;
+    --cover-2: #1F1A12;
+    --cov-sand:#EEE6D4;
+    --cov-soft:#9A8F79;
+    --cov-gold:#CBA659;
+
+    --fd: 'Playfair Display', Georgia, serif;
+    --fc: 'Cormorant Garamond', Georgia, serif;
+    --fb: 'Inter', system-ui, sans-serif;
+  }
+
+  html, body {
+    background: #4a4a4a;
+    font-family: var(--fb);
+    color: var(--ink);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ── PAGE ── */
+  .page {
+    width: var(--pw);
+    height: var(--ph);
+    margin: 0 auto 30px;
+    background: var(--paper);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 18px 60px rgba(0,0,0,.4);
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media print {
+    @page { size: A4; margin: 0; }
+    html, body { background: #fff !important; margin: 0; padding: 0; }
+    .page { width: 210mm; height: 297mm; margin: 0; box-shadow: none; page-break-after: always; }
+    .page:last-child { page-break-after: auto; }
+  }
+
+  /* paper grain */
+  .page::after {
+    content: '';
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      repeating-linear-gradient(90deg, rgba(120,90,40,.012) 0 1px, transparent 1px 26px),
+      repeating-linear-gradient(0deg, rgba(120,90,40,.010) 0 1px, transparent 1px 26px);
+  }
+  .page > * { position: relative; z-index: 1; }
+
+  /* ════════ COVER ════════ */
+  .cover {
+    background: var(--cover);
+    color: var(--cov-sand);
+    padding: 0;
+    justify-content: space-between;
+  }
+  .cover::before {
+    content: '';
+    position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
+    width: 900px; height: 620px; z-index: 0;
+    background: radial-gradient(ellipse at center, rgba(203,166,89,.10) 0%, transparent 70%);
+  }
+  .cover::after {
+    content: '';
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      repeating-linear-gradient(90deg, rgba(255,255,255,.008) 0 1px, transparent 1px 24px),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.006) 0 1px, transparent 1px 46px);
+  }
+  .cover-top-rule { height: 4px; background: linear-gradient(90deg, var(--cov-gold), rgba(203,166,89,.25)); z-index:2; }
+
+  .cover-hdr {
+    padding: 52px 64px 0;
+    display: flex; align-items: flex-start; justify-content: space-between;
+  }
+  .wordmark { font-family: var(--fd); font-weight: 800; font-size: 30px; letter-spacing: .14em; line-height: 1; }
+  .wordmark .v1 { color: var(--cov-sand); }
+  .wordmark .v2 { color: var(--cov-gold); }
+  .wordmark-sub { margin-top: 9px; font-size: 8.5px; font-weight: 500; letter-spacing: .42em; color: var(--cov-soft); text-transform: uppercase; }
+  .cover-hdr-r { text-align: right; font-size: 9px; font-weight: 500; letter-spacing: .3em; line-height: 1.9; color: var(--cov-soft); text-transform: uppercase; }
+  .cover-hdr-r .accent { color: var(--cov-gold); }
+
+  .cover-body { padding: 0 64px; }
+  .cover-eyebrow {
+    font-size: 10px; font-weight: 600; letter-spacing: .5em; text-transform: uppercase;
+    color: var(--cov-gold); margin-bottom: 26px;
+  }
+  .cover-hero {
+    font-family: var(--fd); font-weight: 500; font-size: 64px; line-height: 1.04;
+    letter-spacing: -.01em; color: var(--cov-sand);
+  }
+  .cover-hero .name {
+    font-style: italic; font-weight: 600; color: var(--cov-gold);
+  }
+  .cover-role {
+    font-family: var(--fc); font-style: italic; font-weight: 400; font-size: 22px;
+    color: var(--cov-soft); margin-top: 20px;
+  }
+  .cover-role strong { color: var(--cov-sand); font-weight: 600; font-style: normal; }
+  .cover-hr { width: 56px; height: 1px; background: var(--cov-gold); opacity: .6; margin: 30px 0; }
+  .cover-intro {
+    font-family: var(--fc); font-weight: 400; font-size: 17px; line-height: 1.62;
+    color: #C8BEAA; max-width: 600px;
+  }
+
+  .cover-ft {
+    padding: 0 64px 52px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 9px; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; color: var(--cov-soft);
+  }
+  .cover-ft .dot { color: var(--cov-gold); }
+
+  /* ════════ RUNNING HEADER / FOOTER ════════ */
+  .rhead {
+    padding: 40px 56px 0;
+    display: flex; align-items: flex-start; justify-content: space-between;
+  }
+  .rhead .wm { font-family: var(--fd); font-weight: 800; font-size: 20px; letter-spacing: .12em; line-height: 1; }
+  .rhead .wm .v1 { color: var(--ink); } .rhead .wm .v2 { color: var(--gold); }
+  .rhead .wm-sub { margin-top: 6px; font-size: 7px; font-weight: 600; letter-spacing: .36em; color: var(--ink-soft); text-transform: uppercase; }
+  .rhead-r { text-align: right; font-size: 8px; font-weight: 600; letter-spacing: .26em; line-height: 1.9; color: var(--ink-soft); text-transform: uppercase; }
+  .rhead-r .accent { color: var(--gold); }
+  .rhead-rule { margin: 16px 56px 0; height: 2px; background: linear-gradient(90deg, var(--gold), var(--gold-22) 70%, transparent); }
+
+  .rfoot {
+    margin-top: auto;
+    padding: 0 56px 30px;
+  }
+  .rfoot-rule { height: 1px; background: var(--line); margin-bottom: 12px; }
+  .rfoot-row { display: flex; align-items: center; justify-content: space-between; font-size: 7.5px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--ink-soft); }
+
+  /* ════════ CONTENT WRAP ════════ */
+  .content { padding: 28px 56px 0; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .content.top { justify-content: flex-start; }
+
+  /* section head */
+  .sec { margin-bottom: 22px; }
+  .sec:first-child { margin-top: 4px; }
+  .sec-eyebrow {
+    font-size: 9px; font-weight: 600; letter-spacing: .4em; color: var(--gold);
+    margin-bottom: 9px;
+  }
+  .sec-title {
+    font-family: var(--fd); font-weight: 600; font-size: 30px; line-height: 1.08;
+    letter-spacing: -.01em; color: var(--ink);
+  }
+  .sec-title em { font-style: italic; font-weight: 500; color: var(--gold); }
+
+  p.body {
+    font-size: 12px; line-height: 1.66; color: var(--ink-2); margin-top: 13px; max-width: 640px;
+  }
+  p.body strong { font-weight: 700; color: var(--ink); }
+  p.body em { font-style: italic; color: var(--gold-d); }
+
+  /* callout (sec 01) */
+  .callout {
+    margin: 18px 0 6px; padding: 20px 26px;
+    background: var(--paper-2);
+    border: 1px solid var(--gold-22);
+    border-left: 3px solid var(--gold);
+    border-radius: 2px;
+  }
+  .callout .l1 { font-family: var(--fc); font-style: italic; font-weight: 500; font-size: 18px; color: var(--ink); line-height: 1.35; }
+  .callout .l2 { font-family: var(--fc); font-weight: 400; font-size: 16px; color: var(--ink-2); line-height: 1.4; margin-top: 6px; }
+
+  /* responsibilities grid (sec 02) */
+  .resp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 40px; margin-top: 18px; }
+  .resp { display: flex; gap: 11px; align-items: flex-start; }
+  .resp .dash { flex-shrink: 0; margin-top: 8px; width: 14px; height: 1px; background: var(--gold); }
+  .resp .txt { font-size: 11px; line-height: 1.5; color: var(--ink-soft); }
+  .resp .txt b { color: var(--ink); font-weight: 700; }
+
+  /* phases (sec 03) */
+  .phase-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-top: 20px; }
+  .phase {
+    background: var(--paper-2); border: 1px solid var(--line); border-radius: 2px;
+    padding: 18px 16px 18px; position: relative; overflow: hidden;
+  }
+  .phase::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background: var(--gold-40); }
+  .phase.lead { background: var(--cover); border-color: var(--cover); }
+  .phase.lead::before { background: var(--cov-gold); }
+  .phase .ph-tag { font-size: 8px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-d); }
+  .phase.lead .ph-tag { color: var(--cov-gold); }
+  .phase .ph-val { font-family: var(--fd); font-weight: 700; font-size: 27px; color: var(--ink); margin: 13px 0 8px; letter-spacing: -.01em; }
+  .phase.lead .ph-val { color: var(--cov-sand); }
+  .phase .ph-note { font-size: 9.5px; line-height: 1.4; color: var(--ink-soft); }
+  .phase.lead .ph-note { color: var(--cov-soft); }
+
+  /* benefits (sec 04) */
+  .ben-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 18px; }
+  .ben {
+    background: var(--paper-2); border: 1px solid var(--line); border-radius: 2px; padding: 18px 18px 17px;
+    position: relative; overflow: hidden;
+  }
+  .ben::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background: var(--gold-40); }
+  .ben.total { background: var(--cover); border-color: var(--cover); }
+  .ben.total::before { background: var(--cov-gold); }
+  .ben .b-tag { font-size: 8px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-d); }
+  .ben.total .b-tag { color: var(--cov-gold); }
+  .ben .b-val { font-family: var(--fd); font-weight: 700; font-size: 25px; color: var(--ink); margin: 12px 0 7px; }
+  .ben.total .b-val { color: var(--cov-gold); }
+  .ben .b-note { font-size: 9.5px; line-height: 1.4; color: var(--ink-soft); }
+  .ben.total .b-note { color: var(--cov-soft); }
+
+  /* commission box */
+  .commission {
+    margin-top: 16px; padding: 22px 26px;
+    background: linear-gradient(180deg, var(--paper-2), var(--paper-3));
+    border: 1px solid var(--gold-22); border-radius: 3px;
+  }
+  .commission .c-tag { font-size: 9px; font-weight: 700; letter-spacing: .26em; text-transform: uppercase; color: var(--gold-d); }
+  .commission .c-tag .star { color: var(--gold); }
+  .commission .c-head { font-family: var(--fd); font-weight: 600; font-size: 19px; color: var(--ink); margin: 10px 0 10px; line-height: 1.2; }
+  .commission .c-txt { font-size: 11px; line-height: 1.6; color: var(--ink-2); }
+  .commission .c-txt b { font-weight: 700; color: var(--ink); }
+
+  .footnote { margin-top: 14px; font-family: var(--fc); font-style: italic; font-size: 12px; line-height: 1.5; color: var(--ink-soft); }
+
+  /* 90 days (sec 05) */
+  .days-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 13px; margin-top: 20px; }
+  .day {
+    background: var(--paper-2); border: 1px solid var(--line); border-radius: 2px; padding: 18px 18px 18px;
+    position: relative; overflow: hidden;
+  }
+  .day::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background: var(--gold-40); }
+  .day .d-tag { font-size: 8.5px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-d); }
+  .day .d-title { font-family: var(--fd); font-weight: 600; font-size: 18px; color: var(--ink); margin: 10px 0 13px; }
+  .day ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .day li { display: flex; gap: 8px; align-items: flex-start; font-size: 10.5px; line-height: 1.4; color: var(--ink-soft); }
+  .day li .bp { color: var(--gold); flex-shrink: 0; line-height: 1.4; }
+
+  /* expectations (sec 06) */
+  .exp-list { display: flex; flex-direction: column; gap: 14px; margin-top: 20px; }
+  .exp { display: flex; gap: 16px; align-items: flex-start; }
+  .exp .exp-n {
+    flex-shrink: 0; width: 26px; height: 26px; border: 1px solid var(--gold-40); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--fd); font-size: 12px; font-weight: 600; color: var(--gold-d);
+  }
+  .exp .exp-t { font-size: 12.5px; line-height: 1.5; color: var(--ink-2); padding-top: 3px; }
+  .exp .exp-t b { color: var(--ink); font-weight: 700; }
+
+  /* closing quote */
+  .closing { margin: 40px 56px 0; padding: 0 30px; text-align: center; }
+  .closing-mark { font-family: var(--fd); font-size: 64px; font-weight: 800; color: var(--gold); opacity: .35; line-height: .6; }
+  .closing-q {
+    font-family: var(--fc); font-style: italic; font-weight: 500; font-size: 25px; line-height: 1.45;
+    color: var(--ink); margin-top: 6px;
+  }
+  .closing-q em { color: var(--gold-d); font-weight: 600; }
+  .closing-hr { width: 50px; height: 1px; background: var(--gold); margin: 28px auto 22px; opacity: .65; }
+  .closing-by { font-family: var(--fd); font-weight: 700; font-size: 19px; color: var(--ink); }
+  .closing-role { font-size: 9px; font-weight: 600; letter-spacing: .32em; text-transform: uppercase; color: var(--gold-d); margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ PAGE 1 · COVER ══════════════ -->
+<section class="page cover">
+  <div class="cover-top-rule"></div>
+
+  <div class="cover-hdr">
+    <div>
+      <div class="wordmark"><span class="v1">VAL</span><span class="v2">VIC</span></div>
+      <div class="wordmark-sub">Construindo Legado</div>
+    </div>
+    <div class="cover-hdr-r">
+      Proposta de Parceria<br/>
+      <span class="accent">Belo Horizonte · Junho 2026</span>
+    </div>
+  </div>
+
+  <div class="cover-body">
+    <div class="cover-eyebrow">// Proposta de Parceria</div>
+    <h1 class="cover-hero">É um prazer<br/>te receber, <span class="name">Karla</span></h1>
+    <div class="cover-role">para o cargo de <strong>Assistente Operacional</strong></div>
+    <div class="cover-hr"></div>
+    <p class="cover-intro">Este documento reúne tudo o que conversamos contigo até aqui sobre o cargo, a proposta financeira, os benefícios e como será sua entrada na Valvic. Foi pensado para que você tenha em mãos uma referência clara de tudo o que está sendo combinado — e para que possa ler com calma, conversar com quem precisa, e decidir o seu próximo passo com tranquilidade.</p>
+  </div>
+
+  <div class="cover-ft">
+    <span>Valvic Marcenaria <span class="dot">·</span> BH/MG</span>
+    <span>Documento Confidencial</span>
+  </div>
+</section>
+
+<!-- ══════════════ PAGE 2 · 01 + 02 ══════════════ -->
+<section class="page">
+  <div class="rhead">
+    <div>
+      <div class="wm"><span class="v1">VAL</span><span class="v2">VIC</span></div>
+      <div class="wm-sub">Construindo Legado</div>
+    </div>
+    <div class="rhead-r">Proposta de Parceria<br/><span class="accent">Karla · Assistente Operacional</span></div>
+  </div>
+  <div class="rhead-rule"></div>
+
+  <div class="content top">
+
+    <div class="sec">
+      <div class="sec-eyebrow">— 01 —</div>
+      <h2 class="sec-title">A Valvic, <em>neste momento</em></h2>
+      <p class="body">A Valvic é uma marcenaria de alto padrão em Belo Horizonte, conduzida por dois sócios — eu (Jonathan) e o Paulo. Estamos num momento de organização e estruturação interna, e é importante que você saiba disso desde o início.</p>
+      <div class="callout">
+        <div class="l1">Não vou te vender estrutura que ainda estamos construindo.</div>
+        <div class="l2">O que temos é compromisso, clareza de onde queremos chegar — e disposição para construir junto.</div>
+      </div>
+      <p class="body">Eu e o Paulo somos os sócios e estamos pessoalmente envolvidos no desenvolvimento de cada pessoa que entra aqui. Quem entra agora ajuda a desenhar como a empresa funciona daqui pra frente. Isso significa mais acesso, menos burocracia, e a chance real de construir algo junto com a gente.</p>
+    </div>
+
+    <div class="sec">
+      <div class="sec-eyebrow">— 02 —</div>
+      <h2 class="sec-title">O cargo de <em>Assistente Operacional</em></h2>
+      <p class="body">O cargo foi criado com uma intenção clara: <strong>liberar Jonathan para vender e Paulo para gerir a produção</strong>, sem que nenhum dos dois precise se envolver na execução rotineira do dia a dia. A Assistente Operacional é o <em>pivô que conecta toda a operação</em> — do comercial à produção, do financeiro à logística, da comunicação ao atendimento de clientes.</p>
+
+      <div class="resp-grid">
+        <div class="resp"><span class="dash"></span><div class="txt"><b>Administrativo e comercial</b> — contratos, atendimento de leads inbound, follow-up de propostas, gestão de pastas no Google Drive</div></div>
+        <div class="resp"><span class="dash"></span><div class="txt"><b>Financeiro operacional</b> — fluxo de caixa, pedidos de materiais, cotações estratégicas, cobranças, emissão de boletos</div></div>
+        <div class="resp"><span class="dash"></span><div class="txt"><b>Logística e estoque</b> — agendamento de carretos, conferência de mercadorias, gestão progressiva do estoque</div></div>
+        <div class="resp"><span class="dash"></span><div class="txt"><b>Interface entre comercial e produção</b> — atualização do Calme, transmissão de demandas entre Jonathan e Paulo/Deivson</div></div>
+        <div class="resp"><span class="dash"></span><div class="txt"><b>Apoio em RH</b> — triagem inicial de currículos, agendamento de entrevistas para vagas abertas</div></div>
+        <div class="resp"><span class="dash"></span><div class="txt"><b>Comunicação e social media</b> — registros fotográficos no chão de fábrica, apoio na criação de conteúdo, organização do portfólio</div></div>
+        <div class="resp"><span class="dash"></span><div class="txt"><b>Experiência de atendimento</b> — quando solicitada, preparar a estrutura para receber clientes na fábrica</div></div>
+        <div class="resp"><span class="dash"></span><div class="txt"><b>Aprendizado contínuo</b> — orientações teóricas conduzidas por Jonathan e Paulo conforme as demandas do dia surgirem</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rfoot">
+    <div class="rfoot-rule"></div>
+    <div class="rfoot-row"><span>Valvic Marcenaria · BH/MG</span><span>Proposta de Parceria · Karla</span><span>Documento Confidencial</span></div>
+  </div>
+</section>
+
+<!-- ══════════════ PAGE 3 · 03 + 04 ══════════════ -->
+<section class="page">
+  <div class="rhead">
+    <div>
+      <div class="wm"><span class="v1">VAL</span><span class="v2">VIC</span></div>
+      <div class="wm-sub">Construindo Legado</div>
+    </div>
+    <div class="rhead-r">Proposta de Parceria<br/><span class="accent">Karla · Assistente Operacional</span></div>
+  </div>
+  <div class="rhead-rule"></div>
+
+  <div class="content top">
+
+    <div class="sec">
+      <div class="sec-eyebrow">— 03 —</div>
+      <h2 class="sec-title">Plano de evolução salarial <em>em 4 fases</em></h2>
+      <p class="body">Sua entrada começa na Fase 1. Cada piso é um <strong>compromisso firme</strong> — o ponto de partida garantido daquela fase. A evolução para o teto de cada fase depende do seu desempenho e do ciclo financeiro da empresa, revisado a cada trimestre. <strong>O piso, uma vez alcançado, nunca regride.</strong></p>
+
+      <div class="phase-grid">
+        <div class="phase lead">
+          <div class="ph-tag">Fase 1 · Entrada</div>
+          <div class="ph-val">R$ 1.800</div>
+          <div class="ph-note">Sua entrada na Valvic</div>
+        </div>
+        <div class="phase">
+          <div class="ph-tag">Fase 2 · Júnior</div>
+          <div class="ph-val">R$ 2.100</div>
+          <div class="ph-note">Domínio das rotinas validado</div>
+        </div>
+        <div class="phase">
+          <div class="ph-tag">Fase 3 · Pleno</div>
+          <div class="ph-val">R$ 2.500</div>
+          <div class="ph-note">Autonomia operacional</div>
+        </div>
+        <div class="phase">
+          <div class="ph-tag">Fase 4 · Sênior</div>
+          <div class="ph-val">R$ 2.900</div>
+          <div class="ph-note">Atribuições ampliadas</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-eyebrow">— 04 —</div>
+      <h2 class="sec-title">Benefícios</h2>
+
+      <div class="ben-grid">
+        <div class="ben">
+          <div class="b-tag">Vale Refeição</div>
+          <div class="b-val">R$ 550 / mês</div>
+          <div class="b-note">R$ 25 por dia útil, sem desconto.</div>
+        </div>
+        <div class="ben">
+          <div class="b-tag">Vale Transporte</div>
+          <div class="b-val">R$ 500 / mês</div>
+          <div class="b-note">Linha 5503 + Metrô, conforme CLT.</div>
+        </div>
+        <div class="ben total">
+          <div class="b-tag">Total em Benefícios</div>
+          <div class="b-val">R$ 1.050</div>
+          <div class="b-note">por mês, além do salário base.</div>
+        </div>
+      </div>
+
+      <div class="commission">
+        <div class="c-tag"><span class="star">★</span> Comissão por Indicação</div>
+        <div class="c-head">1% sobre o valor da venda de clientes que você trouxer</div>
+        <div class="c-txt">A partir da Fase 2 (após 90 dias de entrada), você passa a ter direito a <b>comissão de 1% sobre o valor de venda de cada cliente que você trouxer para a Valvic por esforço próprio, sem intervenção da empresa</b>. O pagamento acompanha o fluxo de recebimento do cliente — proporcional ao que ele paga. Para evitar dúvidas futuras, a indicação precisa ser registrada formalmente antes do primeiro contato comercial. Sem teto.</div>
+      </div>
+
+      <p class="footnote">Conforme o regime CLT, é aplicável o desconto de até 6% do salário base referente ao Vale Transporte — padrão previsto em lei. Diferencial real: a Estação Horto do metrô fica literalmente em frente à fábrica.</p>
+    </div>
+
+  </div>
+
+  <div class="rfoot">
+    <div class="rfoot-rule"></div>
+    <div class="rfoot-row"><span>Valvic Marcenaria · BH/MG</span><span>Proposta de Parceria · Karla</span><span>Documento Confidencial</span></div>
+  </div>
+</section>
+
+<!-- ══════════════ PAGE 4 · 05 ══════════════ -->
+<section class="page">
+  <div class="rhead">
+    <div>
+      <div class="wm"><span class="v1">VAL</span><span class="v2">VIC</span></div>
+      <div class="wm-sub">Construindo Legado</div>
+    </div>
+    <div class="rhead-r">Proposta de Parceria<br/><span class="accent">Karla · Assistente Operacional</span></div>
+  </div>
+  <div class="rhead-rule"></div>
+
+  <div class="content">
+
+    <div class="sec">
+      <div class="sec-eyebrow">— 05 —</div>
+      <h2 class="sec-title">Como serão seus <em>primeiros 90 dias</em></h2>
+      <p class="body">Sua entrada é <strong>produtiva desde a primeira semana</strong>. Não há fase de "só observar" — você começa fazendo, com supervisão próxima, conteúdo guiado por Jonathan e Paulo conforme as demandas do dia, e responsabilidades que crescem conforme você ganha domínio das rotinas.</p>
+
+      <div class="days-grid">
+        <div class="day">
+          <div class="d-tag">Dias 1–30</div>
+          <div class="d-title">Entrada Produtiva</div>
+          <ul>
+            <li><span class="bp">·</span>Pedidos simples de materiais</li>
+            <li><span class="bp">·</span>Cotações em planilha padrão</li>
+            <li><span class="bp">·</span>Agendamentos de Uber e carretos</li>
+            <li><span class="bp">·</span>Preenchimento de contratos</li>
+            <li><span class="bp">·</span>Separação de ferragens orientadas</li>
+            <li><span class="bp">·</span>Lançamentos no fluxo de caixa</li>
+            <li><span class="bp">·</span>Apoio à social media</li>
+            <li><span class="bp">·</span>Registros fotográficos da fábrica</li>
+            <li><span class="bp">·</span>Organização do Google Drive</li>
+          </ul>
+        </div>
+        <div class="day">
+          <div class="d-tag">Dias 31–60</div>
+          <div class="d-title">Ampliação de Frentes</div>
+          <ul>
+            <li><span class="bp">·</span>Atendimento de leads no WhatsApp</li>
+            <li><span class="bp">·</span>Follow-up de propostas</li>
+            <li><span class="bp">·</span>Conferência de mercadorias</li>
+            <li><span class="bp">·</span>Cobranças e emissão de boletos</li>
+            <li><span class="bp">·</span>Envio de feedback a clientes</li>
+            <li><span class="bp">·</span>Triagem de currículos</li>
+            <li><span class="bp">·</span>Conciliação de pagamentos no Calme</li>
+          </ul>
+        </div>
+        <div class="day">
+          <div class="d-tag">Dias 61–90</div>
+          <div class="d-title">Sustentação</div>
+          <ul>
+            <li><span class="bp">·</span>Apoio na montagem de propostas</li>
+            <li><span class="bp">·</span>Atualização do Calme com marcos</li>
+            <li><span class="bp">·</span>Gestão do arquivo de portfólio</li>
+            <li><span class="bp">·</span>Antecipação de demandas</li>
+            <li><span class="bp">·</span>Conversa formal de 90 dias</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rfoot">
+    <div class="rfoot-rule"></div>
+    <div class="rfoot-row"><span>Valvic Marcenaria · BH/MG</span><span>Proposta de Parceria · Karla</span><span>Documento Confidencial</span></div>
+  </div>
+</section>
+
+<!-- ══════════════ PAGE 5 · 06 + ENCERRAMENTO ══════════════ -->
+<section class="page">
+  <div class="rhead">
+    <div>
+      <div class="wm"><span class="v1">VAL</span><span class="v2">VIC</span></div>
+      <div class="wm-sub">Construindo Legado</div>
+    </div>
+    <div class="rhead-r">Proposta de Parceria<br/><span class="accent">Karla · Assistente Operacional</span></div>
+  </div>
+  <div class="rhead-rule"></div>
+
+  <div class="content">
+
+    <div class="sec">
+      <div class="sec-eyebrow">— 06 —</div>
+      <h2 class="sec-title">O que esperamos <em>de você</em></h2>
+
+      <div class="exp-list">
+        <div class="exp"><div class="exp-n">1</div><div class="exp-t"><b>Resposta rápida.</b> Leads inbound atendidos em até 2 horas úteis.</div></div>
+        <div class="exp"><div class="exp-n">2</div><div class="exp-t"><b>Follow-up sem falhas.</b> Toda proposta com acompanhamento em D+2, D+5 e D+10.</div></div>
+        <div class="exp"><div class="exp-n">3</div><div class="exp-t"><b>Precisão financeira.</b> Zero erros de lançamento, todas as cotações documentadas.</div></div>
+        <div class="exp"><div class="exp-n">4</div><div class="exp-t"><b>Calme atualizado.</b> Todos os marcos dos projetos refletidos no sistema.</div></div>
+        <div class="exp"><div class="exp-n">5</div><div class="exp-t"><b>Conversas a cada 90 dias.</b> Avaliação formal sobre caminho percorrido e próximos passos.</div></div>
+      </div>
+    </div>
+
+    <div class="closing">
+      <div class="closing-mark">&ldquo;</div>
+      <div class="closing-q">O que oferecemos é mais do que um cargo — <em>é a chance de construir algo junto, desde o início.</em> Esperamos que você queira trilhar essa caminhada com a gente.</div>
+      <div class="closing-hr"></div>
+      <div class="closing-by">Jonathan &amp; Paulo</div>
+      <div class="closing-role">Sócios · Valvic Marcenaria</div>
+    </div>
+
+  </div>
+
+  <div class="rfoot">
+    <div class="rfoot-rule"></div>
+    <div class="rfoot-row"><span>Valvic Marcenaria · BH/MG</span><span>Proposta de Parceria · Karla</span><span>Documento Confidencial</span></div>
+  </div>
+</section>
+
+</body>
+</html>
