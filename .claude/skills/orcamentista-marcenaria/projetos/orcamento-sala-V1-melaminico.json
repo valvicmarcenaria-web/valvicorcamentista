@@ -213,7 +213,7 @@
    }
   },
   {
-   "nome": "M03 · Cristaleira 130cm (corpo madeirado + portas vidro jateado)",
+   "nome": "M03 · Cristaleira 130cm (corpo madeirado + portas de correr vidro jateado)",
    "q": {
     "MDF¦mdf cor 15 (madeirado Freijó)": 1,
     "Vidros (m²)¦Vidro temperado jateado incolor 6mm": 1.2,
@@ -250,12 +250,11 @@
   "Limpeza / embalagem": true,
   "Especiais": true
  },
- "diretrizes": "Parceira Giovanna (RT 10%). Aparador = TOM 01 puro (sem laca/vidro). Laca só na estante (R$450/m² — preço NEGOCIADO só deste projeto, base segue 650). Vidro só na cristaleira. DOBRADIÇA só no aparador (Novisys). Estante = 2 gavetas. Corte circular = usinagem CNC, sem %. Chapa inteira (projeto). Áreas por escalímetro — conferir in loco.",
- "rodrigo": "Preço fechado a MC ~36.3% (valor cheio). RT 10% parceira Giovanna.",
+ "diretrizes": "Parceira Giovanna (RT 10%). Aparador = TOM 01 puro (sem laca/vidro). Laca só na estante (R$450/m² — preço NEGOCIADO só deste projeto, base segue 650). Vidro só na cristaleira (portas superiores DE CORRER). Dobradiça Novisys no aparador (×16) e na cristaleira (×8). Cristaleira: 3 fecha-toque Blum nas portas do corpo. Estante = 2 gavetas. Corte circular = usinagem CNC, sem %. Chapa inteira (projeto). Áreas por escalímetro — conferir in loco.",
+ "rodrigo": "Fechado a MC ~36.3% (valor cheio), RT 10% parceira Giovanna.",
  "duvidas": [
   "Confirmar área de laca da estante (14 m²) e acabamento lâmina V2 (aparador 14,1 + cristaleira 8,8 m²).",
-  "Profundidade real da estante/cristaleira (~35cm).",
-  "Preços PROPOSITAIS abaixo do piso 37% (decisão do fundador)."
+  "Profundidade real da estante/cristaleira (~35cm)."
  ],
  "theme": "light"
 }
