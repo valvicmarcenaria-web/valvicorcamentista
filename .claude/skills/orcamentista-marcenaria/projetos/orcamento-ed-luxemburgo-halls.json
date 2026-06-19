@@ -1,8 +1,8 @@
 {
  "cliente": "Condomínio Ed. Luxemburgo",
  "projeto": "Reforma Halls (Arq. Rosana Miraglia)",
- "versao": "001-unitario-semRT",
- "inv": 35962,
+ "versao": "002-fechamento-Hardt-semRT",
+ "inv": 35295,
  "mcAlvo": 37,
  "p": {
   "nf": 4,
@@ -566,7 +566,7 @@
     ],
     [
      "Consumíveis/fixação (cola, parafuso, desperdício fita)",
-     207
+     202
     ]
    ]
   ]
@@ -579,7 +579,7 @@
     "MDF¦mdf branco 15": 1,
     "Cola e fita¦Fita de borda - cor - mt": 25,
     "Cola e fita¦Colagem - mt linear - máquina": 25,
-    "Dobradiças¦Hettich Sensys": 4,
+    "Dobradiças¦Hardt": 4,
     "Especiais¦Imã de toque / pulsador (acesso quadros)": 2,
     "Iluminação¦LED - fita + perfil - mt": 6,
     "Iluminação¦Sensor": 1,
@@ -593,7 +593,7 @@
     "MDF¦mdf branco 15": 1.5,
     "Cola e fita¦Fita de borda - cor - mt": 35,
     "Cola e fita¦Colagem - mt linear - máquina": 35,
-    "Dobradiças¦Hettich Sensys": 6,
+    "Dobradiças¦Hardt": 6,
     "Especiais¦Imã de toque / pulsador (acesso quadros)": 3,
     "Iluminação¦LED - fita + perfil - mt": 10,
     "Iluminação¦Sensor": 1,
@@ -617,5 +617,5 @@
   }
  ],
  "ativo": 0,
- "_obs": "Preço UNITARIO (1 hall de cada tipo); halls 2/4 apt repetem por pavimento. SEM RT (condominio direto). Espelhos=linha separada MC37%. Areas de painel medidas por pixel nas elevacoes 1:20. Exclui madeira de demolicao, granito, portas prontas, papel, pintura, porcelanato, rodape poliestireno, gesso, blindex, arandelas. Frisos na CNC (operacional). Per-hall: 2apt R$9.334 / 4apt R$13.114 / social-marcenaria R$4.780 / espelhos R$8.734."
+ "_obs": "FECHAMENTO: versão única ferragem HARDT (garantia 5 anos). Preço UNITARIO (1 hall de cada). SEM RT. Espelhos linha separada MC37%. Per-hall Hardt: 2apt R$9.070 / 4apt R$12.710 / social R$4.780 / espelhos R$8.730. Prazo 100-120 dias uteis. Pagamento 40% entrada + 30% entrega + 30% boleto 30d apos entrega. Validade 7 dias. Proposta: proposta-ed-luxemburgo.pdf"
 }

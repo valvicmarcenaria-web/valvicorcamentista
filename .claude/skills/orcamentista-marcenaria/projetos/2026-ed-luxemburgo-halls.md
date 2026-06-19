@@ -46,8 +46,8 @@ Conferido contra cálculo manual (parede dos elevadores do hall 2 apt = ~4,5 m²
 
 | Hall | Amadeirado (mel. fosco) | Branco 15mm | Fita cor | Filetagem | LED | Ferragens |
 |------|-------------------------|-------------|----------|-----------|-----|-----------|
-| 2 aptos | 3 ch. 15mm | 1 ch. | ~25 m | ~25 m | ~6 m + sensor | 4 dobr. Sensys + 2 imã toque |
-| 4 aptos | 4 ch. 15mm | 1,5 ch. | ~35 m | ~35 m | ~10 m + sensor | 6 dobr. Sensys + 3 imã toque |
+| 2 aptos | 3 ch. 15mm | 1 ch. | ~25 m | ~25 m | ~6 m + sensor | 4 dobr. Hardt + 2 imã toque |
+| 4 aptos | 4 ch. 15mm | 1,5 ch. | ~35 m | ~35 m | ~10 m + sensor | 6 dobr. Hardt + 3 imã toque |
 | Social A+B | 1 ch. 18mm (moldura) | 2 ch. (fundo espelho) | ~30 m | ~30 m | — | — |
 
 Espelho cristal prata (à parte): **~6 m²** (A 3,4 + B ~2,5 — *confirmar em obra*).
@@ -61,23 +61,40 @@ Espelho cristal prata (à parte): **~6 m²** (A 3,4 + B ~2,5 — *confirmar em o
 | Visitas | 250 | 250 | 250 | — |
 | **Custo direto (fixedR)** | **3.847** | **5.405** | **1.970** | **3.600** |
 
-## 5. Preço final — MC 37%, sem RT
+## 5. Preço final — MC 37%, sem RT, **ferragem Hardt** (versão fechada)
 
 Fórmula da planilha de validação: `Inv = fixedR / (1 − a − liqF·b − mc)`,
 com `a`=18% (NF4+parc8+vend3+erro2+serra0,5+manut0,5), `liqF`=0,88,
 `b`=4,3% (comissão produção; RT=0), `mc`=0,37 → divisor **0,41216**.
 
-| Item | Preço (sem RT) | (referência com RT 10%) |
-|------|---------------:|------------------------:|
-| Hall 2 aptos | **R$ 9.334** | R$ 11.868 |
-| Hall 4 aptos | **R$ 13.114** | R$ 16.674 |
-| Hall social A+B (marcenaria) | **R$ 4.780** | R$ 6.077 |
-| Espelhos (linha separada) | **R$ 8.734** | R$ 11.106 |
-| **Total de 1 de cada + espelhos** | **R$ 35.962** | R$ 45.725 |
+| Item | Preço (sem RT) |
+|------|---------------:|
+| Hall 2 aptos | **R$ 9.070** |
+| Hall 4 aptos | **R$ 12.710** |
+| Hall social A+B (marcenaria) | **R$ 4.780** |
+| **Subtotal marcenaria** | **R$ 26.560** |
+| Espelhos cristal prata (linha separada) | **R$ 8.730** |
+| **Total de 1 de cada + espelhos** | **R$ 35.295** |
 
 > MC verificada = **37,0%** em cada item e no total.
 > **Para o total do prédio:** multiplicar hall 2 apt e hall 4 apt pelo nº de
 > pavimentos de cada tipo; hall social é único (térreo A+B).
+> **Variante Hettich (10 anos):** +R$ 264 no hall 2 apt e +R$ 393 no hall 4 apt
+> (dobradiça Sensys no lugar da Hardt) — upsell de garantia.
+
+## 7. Fechamento (proposta — Vitor)
+
+Decisão de fechamento (Jonathan, jun/2026):
+
+- **Versão única, ferragem Hardt → garantia 5 anos** (LED sem garantia; instalação/regulagem 2 anos).
+- **Escopo da proposta:** 1 hall de cada tipo + hall social (A+B) + espelhos (linha separada). Sem RT.
+- **Prazo:** 100 a 120 dias úteis. **Validade:** 7 dias.
+- **Pagamento:** 40% entrada (assinatura) + 30% na entrega + 30% em boleto 30 dias após a entrega.
+  *(o "30 dias" foi assumido a partir de instrução abreviada — confirmar com o Jonathan.)*
+- **Cliente:** Condomínio Edifício Luxemburgo (contato Igor, 31 98814-4127).
+- **Proposta gerada:** `proposta-ed-luxemburgo.html` + `.pdf` (5 págs, identidade Valvic,
+  capa com painel amadeirado/frisos/LED em CSS). Render via weasyprint.
+- Pendência Vitor: arquivar a proposta na pasta única do cliente no Drive.
 
 ## 6. Notas de metodologia / pendências
 
