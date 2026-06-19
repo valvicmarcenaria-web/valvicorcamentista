@@ -11,13 +11,13 @@
 | # | Ambiente / pacote | Móveis | Preço | MC |
 |---|---|---|---:|:--:|
 | **A** | **Recepção / Espera** | Aparador **curvo** Itapuã (tampo vidro extraclear) + prateleiras LED | **R$ 7.500** | 47% |
-| **B** | **Painéis com 3 portas** *(2 cenários)* | C1: portas HPL 30mm + RO82 · C2: paredes 6mm + portas Itapuã | **C1 R$ 16.000 / C2 R$ 19.100** | 42% |
+| **B** | **Painéis com 3 portas** *(2 cenários)* | C1: só portas HPL 30mm + RO82 · C2: portas Itapuã + painel 6mm | **C1 R$ 16.000 / C2 R$ 20.000** | 42% |
 | **C** | **Consultório** | Mesa (contra-tampo Itapuã) + móvel apoio + prateleiras nano-LED + 2 móveis Cristallo | **R$ 10.800** | 42% |
 | **D** | **Copa** | Básculas aéreas + bancada inferior (sob pedra sint.) + LED + lixeira | **R$ 7.200** | 42% |
 | **E** | **DML** | Armário DML 213 + aéreo + vassouras + lixeira (MDF Ultra branco) | **R$ 4.300** | 42% |
 | **F** | **Circulação** | Armário Q.D. 50×280 (Itapuã) com friso | **R$ 4.600** | 42% |
-| | **TOTAL Cenário 1** | (portas premium HPL) | **R$ 50.400** | 42% |
-| | **TOTAL Cenário 2** | (paredes revestidas) | **R$ 53.500** | 42% |
+| | **TOTAL Cenário 1** | (só portas premium HPL) | **R$ 50.400** | 42% |
+| | **TOTAL Cenário 2** | (portas + painel revestido) | **R$ 54.400** | 42% |
 
 ## Diferenciais de qualidade — PEDIR AO VITOR EXPOR NA PROPOSTA
 - **Portas de correr camufladas RO82 Top (Rometal)** — soft-close, suportam até 150kg,
@@ -56,10 +56,13 @@ painel** — apenas as 3 portas, em **MDF cru Ultra 15mm laminado a 30mm** (áre
 Ultra** (mesmos componentes RO82 Top + FE 9009) **+ paredes revestidas em MDF melamínico
 Itapuã Ultra 6mm + rodapé de alumínio 5cm**, fixação **Cascola + adesivo de alta aderência
 + 2 tubos Monta Fix por chapa** (não negociamos qualidade da instalação).
-→ item B ≈ **R$ 19.100**.
+→ item B ≈ **R$ 20.000**.
 
 > **Resumo da diferença:** os DOIS têm as 3 portas. **C1 = só as portas** (núcleo cru +
 > HPL premium, sem painel). **C2 = portas (melamínico) + painel de parede revestido (6mm)**.
+
+**Preços (confirmados pelo fundador):** rodapé alumínio R$20/m · Itapuã Ultra 6mm R$350 ·
+Itapuã Ultra 15mm R$600 · HPL R$600/chapa · MDF cru Ultra 15mm R$300 · RO82 Top R$400 · FE 9009 R$100.
 
 **Preços a confirmar (pergunta/alinha, não chutar):** rodapé de alumínio (assumi R$45/m) ·
 MDF Itapuã Ultra 6mm e 15mm (assumi R$300/R$500) · laminado HPL R$600/chapa (dado).
