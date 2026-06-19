@@ -10,6 +10,9 @@
       6mm ≈ 2,80 m²) → **arredondar PRA CIMA** = chapas inteiras compradas. **Nunca fração**
       (ninguém compra 0,18 de chapa). A sobra é real (plano de corte alimenta outros móveis).
       A divisão por ambiente é só **alocação de PREÇO**, não compra.
+      - **Nuance (confirmado pelo fundador):** isso vale para **CHAPA (MDF)**. Itens vendidos
+        por **m²** (vidro, laca, espelho) ou por **metro** (fita, LED, perfil) **podem ser
+        decimais** (ex.: vidro 0,6 m²). Só a chapa é inteira.
 - [ ] **Ler o descritivo até o fim** — espessura, código, fixação. Incoerência mata caixa
       (ex.: "MDF Itapuã 1,3mm" = **laminado**, não chapa de MDF).
 - [ ] **Acabamento/cor certos** mapeados na base (não inventar preço).
