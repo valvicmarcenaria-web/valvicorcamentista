@@ -106,3 +106,8 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
   (MC 35,7%) · V2 R$ 66.583 (MC 35,0%)**. Base em `projetos/2026-sala-bia-e-matheus-BASE.md`.
   *Aprendizado: o fundador é a fonte de verdade do app — sincronizo os arquivos do repo às edições
   dele; preço proposital abaixo do piso é decisão dele, não recalculo pra cima sem ordem.*
+- **Fechamento (06/19):** ambas a **MC 36%** (valores cheios): **V1 R$ 36.000 · V2 R$ 70.000**.
+  Cristaleira mantém dobradiças (Novisys ×8) + **3 fecha-toque Blum** (R$100). **Vitor** montou a
+  proposta única com os 2 cenários (Linha Essencial melamínico / Linha Natural lâmina Freijó),
+  garantia 10 anos (Hettich) + Blum vitalícia → `closer-vendas/propostas/proposta-sala-bia-matheus.html`
+  + PDF. Destaques: lâmina natural face a face, fecha-toque Blum, vidro jateado, Hettich, recorte CNC.
