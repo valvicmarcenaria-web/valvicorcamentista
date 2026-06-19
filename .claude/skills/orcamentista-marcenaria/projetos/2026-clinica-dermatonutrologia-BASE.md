@@ -47,16 +47,19 @@
 > 40–150 kg) + guia embutida **FE 9009** (esconde o ferragem, espessura mín. 25mm → portas
 > de 30mm). Visual limpo, portas que somem na parede.
 
-**Cenário 1 — Portas premium (alto investimento):** 3 portas em **MDF cru Ultra 15mm
-laminado a 30mm** (área de chapa **dobrada**) + **laminado de alta pressão (HPL) nas 2
-faces** + cola de contato (R$50/porta) + **RO82 Top + FE 9009** (R$400+R$100/porta).
-→ item B ≈ **R$ 16.000**.
+**Cenário 1 — SÓ AS PORTAS (alto investimento):** **sem revestimento de parede, sem
+painel** — apenas as 3 portas, em **MDF cru Ultra 15mm laminado a 30mm** (área de chapa
+**dobrada**) + **laminado de alta pressão (HPL) nas 2 faces** + cola de contato
+(R$50/porta) + **RO82 Top + FE 9009** (R$400+R$100/porta). → item B ≈ **R$ 16.000**.
 
-**Cenário 2 — Paredes revestidas (médio investimento):** **paredes revestidas em MDF
-melamínico Itapuã Ultra 6mm + rodapé de alumínio 5cm**, fixação **Cascola + adesivo de
-alta aderência + 2 tubos Monta Fix por chapa** (não negociamos qualidade da instalação);
-**portas em MDF Itapuã Ultra** + mesmos componentes (RO82 Top + FE 9009).
+**Cenário 2 — PORTAS + PAINEL (médio investimento):** **portas em MDF melamínico Itapuã
+Ultra** (mesmos componentes RO82 Top + FE 9009) **+ paredes revestidas em MDF melamínico
+Itapuã Ultra 6mm + rodapé de alumínio 5cm**, fixação **Cascola + adesivo de alta aderência
++ 2 tubos Monta Fix por chapa** (não negociamos qualidade da instalação).
 → item B ≈ **R$ 19.100**.
+
+> **Resumo da diferença:** os DOIS têm as 3 portas. **C1 = só as portas** (núcleo cru +
+> HPL premium, sem painel). **C2 = portas (melamínico) + painel de parede revestido (6mm)**.
 
 **Preços a confirmar (pergunta/alinha, não chutar):** rodapé de alumínio (assumi R$45/m) ·
 MDF Itapuã Ultra 6mm e 15mm (assumi R$300/R$500) · laminado HPL R$600/chapa (dado).
