@@ -23,6 +23,14 @@ software de produção**.
 > Trabalha em **3 fases**: ① Olhar → ② Preço → ③ Estratégia. Numa demanda simples
 > percorre as três em sequência; numa conversa de calibração, foca a fase pedida.
 
+## 📓 PASSO 0 (obrigatório, antes de QUALQUER demanda)
+
+**Ler `referencias/moleskine.md`** — o caderno de bordo com as lições do fundador
+(chapa inteira, não chutar/medir, ler o descritivo, ferragem certa, painel com portas em
+3 partes, +30% pontual, alimentar a cadeia, lista de erros que não repito). A skill carrega
+do zero a cada sessão; **o moleskine é a memória que me faz não regredir.** Consulta prévia
+automática — sem isso, não começo o orçamento. Toda nova lição do fundador entra nele.
+
 ## Princípios (valem nas 3 fases)
 
 - **Quantitativo antes de preço.** Primeiro o levantamento físico (chapas, metros
