@@ -5,146 +5,256 @@
 <style>
   @page { size: A4; margin: 0; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  :root{ --mostarda:#E0A521; --ouro:#B8860B; --preto:#1A1A1A; --creme:#FDF6E3; --cinza:#6b6b6b; }
-  body { font-family: "Helvetica Neue", Arial, sans-serif; color:var(--preto); font-size:11pt; line-height:1.5; }
-  .page { width:210mm; min-height:297mm; padding:18mm 20mm; position:relative; page-break-after:always; background:#fff; }
+  :root{
+    --mostarda:#E0A521; --ouro:#B0892F; --carvao:#241F1B; --creme:#FBF4E4;
+    --creme2:#F4E9CF; --taupe:#8C7E69; --linha:#E3D6B6; --texto:#2C2722;
+  }
+  body { font-family:"Helvetica Neue",Arial,sans-serif; color:var(--texto); font-size:10.5pt; line-height:1.55; -weasy-hyphens:none; }
+  .page { width:210mm; min-height:297mm; padding:20mm 22mm; position:relative; page-break-after:always; background:#fff; overflow:hidden; }
   .page:last-child{ page-break-after:auto; }
   .serif{ font-family:Georgia,"Times New Roman",serif; }
   h1,h2,h3{ font-family:Georgia,serif; font-weight:normal; }
-  .gold{ color:var(--ouro); } .spark{ color:var(--mostarda); letter-spacing:4px; }
-  .wordmark{ font-family:Georgia,serif; font-size:20pt; letter-spacing:1px; }
-  .cover{ background:var(--creme); display:flex; flex-direction:column; justify-content:center; }
-  .cover .band{ position:absolute; top:0; left:0; right:0; height:14mm; background:var(--mostarda); }
-  .cover .band-b{ top:auto; bottom:0; }
-  .cover .eyebrow{ letter-spacing:6px; font-size:11pt; color:var(--ouro); text-transform:uppercase; }
-  .cover .name{ font-size:50pt; line-height:1.05; margin:6mm 0 4mm; }
-  .cover .proj{ font-size:18pt; color:var(--cinza); font-style:italic; }
-  .cover .foot{ position:absolute; bottom:22mm; left:20mm; right:20mm; display:flex; justify-content:space-between; align-items:flex-end; }
-  .sec-h{ font-size:10pt; letter-spacing:5px; text-transform:uppercase; color:var(--ouro); border-bottom:1.5px solid var(--mostarda); padding-bottom:3mm; margin-bottom:7mm; }
-  .lead{ font-size:14.5pt; line-height:1.55; } .muted{ color:var(--cinza); }
-  .cards{ display:flex; flex-wrap:wrap; gap:5mm; margin-top:6mm; }
-  .card{ width:calc(50% - 2.5mm); background:var(--creme); border-left:3px solid var(--mostarda); padding:6mm; }
-  .card.full{ width:100%; }
-  .card h3{ font-size:13pt; margin-bottom:2mm; } .card p{ font-size:10pt; color:#444; }
-  .hl{ margin-top:5mm; }
-  .hl .row{ display:flex; gap:5mm; padding:4mm 0; border-bottom:1px solid #ece2c6; }
-  .hl .ic{ color:var(--mostarda); font-size:14pt; width:8mm; flex-shrink:0; text-align:center; }
-  .hl .tx b{ font-family:Georgia,serif; font-size:12pt; } .hl .tx span{ font-size:10pt; color:#555; }
-  .versions{ display:flex; gap:6mm; margin-top:7mm; }
-  .v{ flex:1; border:1.5px solid #e0d6bb; border-radius:3mm; padding:7mm 6mm; }
-  .v.reco{ border:2px solid var(--mostarda); background:var(--creme); position:relative; }
-  .v .badge{ position:absolute; top:-3.5mm; right:6mm; background:var(--mostarda); color:#fff; font-size:8pt; letter-spacing:2px; padding:1.5mm 3mm; border-radius:2mm; text-transform:uppercase;}
-  .v .vname{ font-family:Georgia,serif; font-size:17pt; } .v .vsub{ font-size:9.5pt; color:var(--cinza); margin:1mm 0 3mm; }
-  .v .vdesc{ font-size:9.7pt; color:#444; min-height:34mm; margin:3mm 0; }
-  .v .vprice{ font-family:Georgia,serif; font-size:25pt; }
-  .v .vwarr{ font-size:10pt; margin-top:2mm; } .v .vwarr b{ color:var(--ouro); }
-  table{ width:100%; border-collapse:collapse; margin-top:4mm; }
-  th{ text-align:left; font-size:9pt; letter-spacing:2px; text-transform:uppercase; color:var(--cinza); padding:3mm 2mm; border-bottom:1.5px solid var(--mostarda); }
-  td{ padding:3.5mm 2mm; border-bottom:1px solid #e8ddc2; font-size:11pt; vertical-align:top; }
-  td.val{ text-align:right; white-space:nowrap; font-family:Georgia,serif; }
+  .muted{ color:var(--taupe); }
+  .gold{ color:var(--ouro); }
+
+  /* ---- marcadores de seção (editorial) ---- */
+  .kicker{ display:flex; align-items:baseline; gap:7mm; margin-bottom:8mm; }
+  .kicker .num{ font-family:Georgia,serif; font-size:30pt; color:var(--linha); line-height:1; }
+  .kicker .lbl{ font-size:9.5pt; letter-spacing:5px; text-transform:uppercase; color:var(--ouro); padding-bottom:1mm; border-bottom:1px solid var(--mostarda); }
+
+  /* ---- CAPA ---- */
+  .cover{ background:var(--creme); display:flex; flex-direction:column; justify-content:space-between; padding:24mm 22mm; }
+  .cover .ring{ position:absolute; width:150mm; height:150mm; border:1.2px solid var(--mostarda); border-radius:50%; right:-46mm; top:46mm; opacity:.55; }
+  .cover .ring2{ position:absolute; width:64mm; height:64mm; border:1.2px solid var(--ouro); border-radius:50%; right:24mm; top:18mm; opacity:.5; }
+  .cover .top{ display:flex; justify-content:space-between; align-items:center; z-index:2; }
+  .cover .wordmark{ font-family:Georgia,serif; font-size:21pt; letter-spacing:2px; }
+  .cover .tag{ font-size:8.5pt; letter-spacing:3px; text-transform:uppercase; color:var(--taupe); }
+  .cover .mid{ z-index:2; }
+  .intro{ display:flex; flex-direction:column; }
+  .intro .ringi{ position:absolute; width:118mm; height:118mm; border:1.1px solid var(--linha); border-radius:50%; right:-38mm; bottom:34mm; }
+  .idx{ position:absolute; left:22mm; right:22mm; bottom:26mm; display:flex; gap:6mm; z-index:2; }
+  .idx .it{ flex:1; border-top:2px solid var(--mostarda); padding-top:3mm; }
+  .idx .it .n{ font-family:Georgia,serif; font-size:9pt; color:var(--ouro); }
+  .idx .it h4{ font-family:Georgia,serif; font-size:13pt; font-weight:normal; margin:1mm 0; }
+  .idx .it p{ font-size:8.6pt; color:var(--taupe); }
+  .cover .eyebrow{ letter-spacing:7px; font-size:10.5pt; color:var(--ouro); text-transform:uppercase; }
+  .cover .name{ font-size:58pt; line-height:1.0; margin:7mm 0 5mm; letter-spacing:.5px; }
+  .cover .proj{ font-size:17pt; color:var(--taupe); font-style:italic; }
+  .cover .foot{ z-index:2; display:flex; justify-content:space-between; align-items:flex-end; border-top:1px solid var(--linha); padding-top:5mm; }
+  .cover .foot .k{ font-size:8pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); }
+  .cover .foot .v{ font-family:Georgia,serif; font-size:11pt; }
+
+  .lead{ font-size:14pt; line-height:1.6; }
+  .lead.big{ font-size:17pt; line-height:1.5; }
+
+  /* ---- peças (ilustração + texto) ---- */
+  .piece{ display:flex; gap:9mm; align-items:center; padding:7mm 0; border-bottom:1px solid var(--linha); }
+  .piece:last-of-type{ border-bottom:none; }
+  .piece .art{ width:46mm; flex-shrink:0; height:40mm; display:flex; align-items:center; justify-content:center; background:var(--creme); border-radius:2mm; }
+  .piece .art svg{ width:38mm; height:34mm; }
+  .piece .tx h3{ font-size:14.5pt; margin-bottom:1.5mm; }
+  .piece .tx .spec{ font-size:8.5pt; letter-spacing:1px; text-transform:uppercase; color:var(--ouro); margin-bottom:2.5mm; }
+  .piece .tx p{ font-size:10pt; color:#4a443c; }
+
+  /* ---- diferenciais grid ---- */
+  .grid{ display:flex; flex-wrap:wrap; gap:6mm; margin-top:2mm; }
+  .feat{ width:calc(50% - 3mm); background:var(--creme); border-radius:2mm; padding:6mm 6mm 6mm 6mm; border-top:2px solid var(--mostarda); }
+  .feat .fi{ font-size:13pt; color:var(--ouro); }
+  .feat h3{ font-size:12.5pt; margin:1mm 0 1.5mm; }
+  .feat p{ font-size:9.3pt; color:#4a443c; }
+
+  /* ---- versões ---- */
+  .versions{ display:flex; gap:7mm; margin-top:2mm; }
+  .v{ flex:1; border:1px solid var(--linha); border-radius:3mm; padding:8mm 7mm; position:relative; }
+  .v.reco{ border:1.6px solid var(--mostarda); background:var(--creme); }
+  .v.reco .woodgrain{ position:absolute; inset:0; border-radius:3mm; opacity:.5;
+    background:repeating-linear-gradient(95deg, rgba(176,137,47,.00) 0, rgba(176,137,47,.05) 2px, rgba(176,137,47,.00) 5px, rgba(176,137,47,.07) 9px); }
+  .v .inner{ position:relative; z-index:2; }
+  .v .badge{ position:absolute; top:-3.4mm; left:7mm; background:var(--mostarda); color:#fff; font-size:7.5pt; letter-spacing:2px; padding:1.5mm 3mm; border-radius:2mm; text-transform:uppercase; z-index:3;}
+  .v .vname{ font-family:Georgia,serif; font-size:18pt; }
+  .v .vsub{ font-size:9pt; letter-spacing:1px; text-transform:uppercase; color:var(--ouro); margin:1.5mm 0 4mm; }
+  .v .vdesc{ font-size:9.5pt; color:#4a443c; min-height:30mm; }
+  .v .vprice{ font-family:Georgia,serif; font-size:27pt; margin-top:2mm; }
+  .v .vwarr{ font-size:9.5pt; color:var(--taupe); margin-top:2mm; }
+  .v .vwarr b{ color:var(--ouro); }
+
+  table{ width:100%; border-collapse:collapse; }
+  .pay th{ text-align:left; font-size:8.5pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); padding:3mm 2mm; border-bottom:1px solid var(--mostarda); }
+  .pay td{ padding:3.4mm 2mm; border-bottom:1px solid var(--linha); font-size:10.5pt; }
   .pay .disc{ text-align:right; font-family:Georgia,serif; color:var(--ouro); }
-  .info{ display:flex; gap:6mm; margin-top:8mm; } .info>div{flex:1;}
-  .info .k{ font-size:9pt; letter-spacing:2px; text-transform:uppercase; color:var(--ouro);} .info .vv{ font-size:12pt; font-family:Georgia,serif; margin-top:1mm;}
-  .cta{ margin-top:9mm; background:var(--preto); color:#fff; padding:7mm; border-radius:3mm; }
-  .cta .spark{ color:var(--mostarda); }
-  .pfoot{ position:absolute; bottom:12mm; left:20mm; right:20mm; font-size:8.5pt; color:var(--cinza); display:flex; justify-content:space-between; border-top:1px solid #e8ddc2; padding-top:3mm;}
+
+  .info{ display:flex; gap:7mm; margin-top:8mm; }
+  .info>div{ flex:1; border-left:2px solid var(--mostarda); padding-left:4mm; }
+  .info .k{ font-size:8.5pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe);}
+  .info .vv{ font-size:11.5pt; font-family:Georgia,serif; margin-top:1mm;}
+
+  .cta{ margin-top:9mm; background:var(--carvao); color:#F6ECD6; padding:8mm; border-radius:3mm; position:relative; overflow:hidden; }
+  .cta .ringc{ position:absolute; width:60mm; height:60mm; border:1px solid rgba(224,165,33,.35); border-radius:50%; right:-18mm; top:-18mm; }
+  .cta b{ color:#fff; } .cta .spark{ color:var(--mostarda); letter-spacing:3px; }
+  .pfoot{ position:absolute; bottom:13mm; left:22mm; right:22mm; font-size:8pt; color:var(--taupe); display:flex; justify-content:space-between; border-top:1px solid var(--linha); padding-top:3mm;}
+  .signoff{ font-family:Georgia,serif; font-style:italic; color:var(--taupe); font-size:11pt; margin-top:6mm; }
 </style>
 </head>
 <body>
 
-<!-- PÁGINA 1 — CAPA -->
+<!-- ===== 1 · CAPA ===== -->
 <div class="page cover">
-  <div class="band"></div><div class="band band-b"></div>
-  <div class="spark">✦ ✦ ✦</div>
-  <div class="eyebrow">Proposta especial para</div>
-  <div class="name serif">Bia &amp; Matheus</div>
-  <div class="proj serif">Sala de Estar &amp; Jantar</div>
-  <div class="foot"><span class="wordmark">valvic</span>
-    <span class="muted" style="font-size:9pt;">Marcenaria sob medida · Projeto: Giovanna Camisassa</span></div>
-</div>
-
-<!-- PÁGINA 2 — CONEXÃO + O QUE ENTREGAMOS -->
-<div class="page">
-  <div class="sec-h">O seu projeto</div>
-  <p class="lead">A sala que a <b>Giovanna</b> desenhou tem peças que pedem mão de marcenaria
-  de verdade: um aparador em L de encaixe limpo, uma estante de quase 3 metros com recorte
-  curvo, e uma cristaleira de vidro que precisa ser leve e precisa ao mesmo tempo.</p>
-  <p class="lead" style="margin-top:5mm;"><b>A Valvic executa as três peças com o mesmo padrão
-  de acabamento</b> — do desenho à instalação — para que cada detalhe do projeto chegue exatamente
-  como foi imaginado.</p>
-
-  <div class="sec-h" style="margin-top:13mm;">O que entregamos</div>
-  <div class="cards">
-    <div class="card"><h3>Aparador em L</h3><p>Móvel baixo em L com portas e puxador
-      <b>cava redonda usinado no próprio corpo</b> — sem ferragem aparente, linha contínua e limpa.</p></div>
-    <div class="card"><h3>Estante 2,77 m</h3><p>Estante laqueada com nichos e gavetas em
-      <b>corrediça oculta Hettich</b>, e um <b>recorte circular usinado em CNC</b> — fresagem de precisão.</p></div>
-    <div class="card"><h3>Cristaleira</h3><p>Portas superiores em <b>vidro temperado jateado</b>
-      com <b>fecha-toque Blum</b>: abrem ao toque, sem puxador. Corpo no mesmo acabamento da sala.</p></div>
-    <div class="card"><h3>Padrão único</h3><p>As três peças saem com o <b>mesmo acabamento</b>,
-      a mesma ferragem premium e a mesma equipe — um conjunto coerente, instalado por nós.</p></div>
+  <div class="ring"></div><div class="ring2"></div>
+  <div class="top">
+    <span class="wordmark">valvic</span>
+    <span class="tag">marcenaria sob medida</span>
   </div>
-  <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Proposta para Bia &amp; Matheus — Sala de Estar</span></div>
-</div>
-
-<!-- PÁGINA 3 — DIFERENCIAIS -->
-<div class="page">
-  <div class="sec-h">Os diferenciais deste projeto</div>
-  <p class="muted" style="font-size:10.5pt;">Detalhes que separam uma marcenaria comum de uma marcenaria fina:</p>
-  <div class="hl">
-    <div class="row"><div class="ic">✦</div><div class="tx"><b>Lâmina natural de Freijó</b> <span>(versão Natural)</span><br><span>Madeira real — folha natural de Freijó aplicada sobre a estrutura, com o <b>acabamento feito face a face</b> (frente, verso e laterais aparentes). Cada peça mostra o veio da madeira, não uma impressão.</span></div></div>
-    <div class="row"><div class="ic">✦</div><div class="tx"><b>Fecha-toque Blum</b><br><span>As portas da cristaleira abrem <b>ao toque</b>, sem puxador, no sistema <b>Tip-On da Blum</b> — referência mundial em ferragem, com garantia vitalícia do mecanismo.</span></div></div>
-    <div class="row"><div class="ic">✦</div><div class="tx"><b>Vidro temperado jateado</b><br><span>As portas da cristaleira em vidro <b>temperado</b> (resistente) e <b>jateado</b> (translúcido, fosco) — leveza visual com proteção real do conteúdo.</span></div></div>
-    <div class="row"><div class="ic">✦</div><div class="tx"><b>Ferragem Hettich premium</b><br><span>Dobradiças <b>Novisys</b> e corrediças <b>ocultas Quadro</b> com <b>soft-close</b> (fechamento suave e silencioso) — durabilidade que sustenta a garantia de 10 anos.</span></div></div>
-    <div class="row"><div class="ic">✦</div><div class="tx"><b>Recorte circular usinado</b><br><span>O detalhe curvo da estante é <b>fresado em CNC</b> — precisão que a marcenaria manual não alcança com a mesma limpeza.</span></div></div>
-    <div class="row"><div class="ic">✦</div><div class="tx"><b>Laca lisa premium</b><br><span>A estante é <b>laqueada</b> — superfície uniforme, sem emendas aparentes, no tom do projeto.</span></div></div>
+  <div class="mid">
+    <div class="eyebrow">Proposta exclusiva</div>
+    <div class="name serif">Bia<br>&amp; Matheus</div>
+    <div class="proj serif">Sala de Estar &amp; Jantar — três peças sob medida</div>
   </div>
-  <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Proposta para Bia &amp; Matheus — Sala de Estar</span></div>
+  <div class="foot">
+    <div><div class="k">Projeto</div><div class="v">Giovanna Camisassa</div></div>
+    <div><div class="k">Execução</div><div class="v">Valvic Marcenaria</div></div>
+    <div><div class="k">Ano</div><div class="v">2026</div></div>
+  </div>
 </div>
 
-<!-- PÁGINA 4 — INVESTIMENTO + 2 VERSÕES -->
+<!-- ===== 2 · O PROJETO ===== -->
+<div class="page intro">
+  <div class="ringi"></div>
+  <div class="kicker"><span class="num serif">01</span><span class="lbl">O seu projeto</span></div>
+  <p class="lead big">Três peças que conversam entre si — e que pedem mão de marcenaria de
+  verdade: um <b>aparador em L</b> de encaixe limpo, uma <b>estante</b> de quase três metros
+  com um recorte curvo, e uma <b>cristaleira</b> de vidro, leve e precisa.</p>
+  <p class="lead" style="margin-top:7mm; color:#4a443c;">O projeto é da Giovanna. O nosso ofício
+  é <b>executá-lo com maestria</b> — do desenho à instalação, com um padrão único de acabamento
+  para que cada detalhe chegue exatamente como foi imaginado. É isso que esta proposta apresenta:
+  não um móvel, mas a <b>certeza de quem vai construí-lo</b>.</p>
+
+  <div class="idx">
+    <div class="it"><div class="n">i</div><h4>Aparador em L</h4><p>móvel baixo · puxador cava redonda</p></div>
+    <div class="it"><div class="n">ii</div><h4>Estante 2,77 m</h4><p>laqueada · recorte circular · 2 gavetas</p></div>
+    <div class="it"><div class="n">iii</div><h4>Cristaleira</h4><p>vidro jateado · fecha-toque Blum</p></div>
+  </div>
+  <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Bia &amp; Matheus — Sala de Estar</span></div>
+</div>
+
+<!-- ===== 2b · AS TRÊS PEÇAS ===== -->
 <div class="page">
-  <div class="sec-h">Investimento</div>
-  <p class="muted" style="font-size:10.5pt;">As três peças, a mesma ferragem premium e a mesma
-  garantia nas duas versões. <b>O que muda é o acabamento</b> — e, com ele, a presença da madeira na sala.</p>
+  <div class="kicker"><span class="num serif">02</span><span class="lbl">As três peças</span></div>
+  <div class="piece">
+    <div class="art"><svg viewBox="0 0 220 120" fill="none" stroke="#B0892F" stroke-width="2" stroke-linejoin="round">
+      <path d="M8 44 H212 V96 H8 Z"/>
+      <path d="M2 44 H218"/>
+      <path d="M75 44 V96 M145 44 V96"/>
+      <circle cx="66" cy="60" r="3.4" stroke-width="1.8"/><circle cx="136" cy="60" r="3.4" stroke-width="1.8"/><circle cx="200" cy="60" r="3.4" stroke-width="1.8"/>
+      <path d="M22 96 V108 H40 M198 96 V108 H180" stroke-width="1.6"/>
+    </svg></div>
+    <div class="tx"><h3>Aparador em L</h3>
+      <div class="spec">Móvel baixo · portas · puxador cava redonda</div>
+      <p>Linha contínua e limpa: o puxador é uma <b>cava redonda usinada no próprio corpo</b> —
+      nada de ferragem aparente. Encaixe preciso, base recuada, presença discreta.</p></div>
+  </div>
+  <div class="piece">
+    <div class="art"><svg viewBox="0 0 150 120" fill="none" stroke="#B0892F" stroke-width="2" stroke-linejoin="round">
+      <path d="M12 8 H138 V112 H12 Z"/>
+      <path d="M12 44 H138 M12 78 H138 M86 8 V44"/>
+      <circle cx="113" cy="26" r="12" stroke-width="1.8"/>
+      <path d="M12 96 H138"/><path d="M52 96 V112 M98 96 V112"/>
+      <circle cx="32" cy="104" r="2.6" stroke-width="1.5"/><circle cx="118" cy="104" r="2.6" stroke-width="1.5"/>
+    </svg></div>
+    <div class="tx"><h3>Estante 2,77 m · laqueada</h3>
+      <div class="spec">Nichos · 2 gavetas ocultas · recorte circular</div>
+      <p>Superfície <b>laqueada lisa</b>, nichos abertos e duas gavetas em <b>corrediça oculta
+      Hettich</b>. O <b>recorte circular</b> é fresado em CNC — o detalhe que dá assinatura à peça.</p></div>
+  </div>
+  <div class="piece">
+    <div class="art"><svg viewBox="0 0 130 120" fill="none" stroke="#B0892F" stroke-width="2" stroke-linejoin="round">
+      <path d="M14 8 H116 V112 H14 Z"/><path d="M14 74 H116 M65 8 V74"/>
+      <path d="M22 16 L58 66 M40 16 L58 42 M22 40 L46 70" stroke-width="1" opacity=".7"/>
+      <path d="M72 16 L108 66 M90 16 L108 42 M72 40 L96 70" stroke-width="1" opacity=".7"/>
+      <circle cx="58" cy="45" r="2.4" stroke-width="1.4"/><circle cx="72" cy="45" r="2.4" stroke-width="1.4"/>
+      <path d="M14 96 H116"/>
+    </svg></div>
+    <div class="tx"><h3>Cristaleira</h3>
+      <div class="spec">Vidro temperado jateado · fecha-toque Blum</div>
+      <p>Portas superiores em <b>vidro temperado jateado</b> que <b>abrem ao toque</b>
+      (sistema fecha-toque Blum, sem puxador). Leveza no alto, corpo fechado embaixo.</p></div>
+  </div>
+  <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Bia &amp; Matheus — Sala de Estar</span></div>
+</div>
+
+<!-- ===== 3 · DIFERENCIAIS ===== -->
+<div class="page">
+  <div class="kicker"><span class="num serif">03</span><span class="lbl">Os diferenciais</span></div>
+  <p class="lead" style="color:#4a443c; margin-bottom:8mm;">O que separa uma marcenaria comum de
+  uma marcenaria fina está nos detalhes — e eles definem como a sala vai envelhecer ao longo dos anos.</p>
+  <div class="grid">
+    <div class="feat"><div class="fi">✦</div><h3>Lâmina natural de Freijó</h3>
+      <p>Na linha Natural, <b>madeira real</b>: folha de Freijó com <b>acabamento feito face a
+      face</b> (frente, verso e laterais aparentes). O veio vivo da madeira, não uma impressão.</p></div>
+    <div class="feat"><div class="fi">✦</div><h3>Fecha-toque Blum</h3>
+      <p>As portas da cristaleira abrem <b>ao toque</b>, sem puxador — sistema <b>Tip-On da Blum</b>,
+      referência mundial, com <b>garantia vitalícia</b> do mecanismo.</p></div>
+    <div class="feat"><div class="fi">✦</div><h3>Vidro temperado jateado</h3>
+      <p>Portas em vidro <b>temperado</b> (resistente) e <b>jateado</b> (fosco, translúcido):
+      leveza visual com proteção real do que fica guardado.</p></div>
+    <div class="feat"><div class="fi">✦</div><h3>Ferragem Hettich</h3>
+      <p>Dobradiças <b>Novisys</b> e corrediças <b>ocultas Quadro</b> com <b>soft-close</b> —
+      fechamento suave e silencioso. É o que sustenta a garantia de 10 anos.</p></div>
+    <div class="feat"><div class="fi">✦</div><h3>Recorte circular em CNC</h3>
+      <p>A curva da estante é <b>fresada em CNC</b>: precisão e limpeza de borda que a execução
+      manual não alcança. O detalhe que vira a assinatura da peça.</p></div>
+    <div class="feat"><div class="fi">✦</div><h3>Laca lisa premium</h3>
+      <p>A estante é <b>laqueada</b>: superfície uniforme, sem emendas aparentes, no tom exato do
+      projeto da Giovanna.</p></div>
+  </div>
+  <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Bia &amp; Matheus — Sala de Estar</span></div>
+</div>
+
+<!-- ===== 4 · INVESTIMENTO ===== -->
+<div class="page">
+  <div class="kicker"><span class="num serif">04</span><span class="lbl">Investimento</span></div>
+  <p class="lead" style="color:#4a443c; margin-bottom:3mm;">As três peças, a mesma ferragem premium
+  e a mesma garantia nas duas linhas. <b>O que muda é o acabamento</b> — e, com ele, a presença da
+  madeira na sala.</p>
 
   <div class="versions">
-    <div class="v reco">
+    <div class="v reco"><div class="woodgrain"></div>
       <span class="badge">Assinada</span>
-      <div class="vname">Linha Natural</div>
-      <div class="vsub">Lâmina natural de Freijó</div>
-      <div class="vdesc"><b>Madeira real</b> nas peças do projeto: folha natural de Freijó com
-        acabamento <b>face a face</b>. O veio, o tom e a textura da madeira viva — o acabamento
-        mais nobre da marcenaria, para a sala ser o ponto alto da casa.</div>
-      <div class="vprice">R$ 70.000</div>
-      <div class="vwarr">Garantia <b>10 anos</b> · estrutura e ferragens</div>
+      <div class="inner">
+        <div class="vname">Linha Natural</div>
+        <div class="vsub">Lâmina natural de Freijó</div>
+        <div class="vdesc"><b>Madeira real</b> nas peças do projeto: folha natural de Freijó com
+          acabamento <b>face a face</b>. O veio, o tom e a textura da madeira viva — o acabamento
+          mais nobre da marcenaria, para a sala ser o ponto alto da casa.</div>
+        <div class="vprice">R$ 70.000</div>
+        <div class="vwarr">Garantia <b>10 anos</b> · estrutura e ferragens</div>
+      </div>
     </div>
     <div class="v">
       <div class="vname">Linha Essencial</div>
       <div class="vsub">Melamínico amadeirado Freijó</div>
-      <div class="vdesc">A <b>reprodução amadeirada Freijó</b> em melamínico de alta resistência —
-        superfície estável, fácil de manter e com ótimo custo-benefício. O mesmo desenho, a mesma
-        ferragem e a mesma garantia da Natural.</div>
+      <div class="vdesc">A <b>estética amadeirada Freijó</b> em melamínico de alta resistência —
+        superfície estável, fácil de manter, excelente custo-benefício. O <b>mesmo desenho, a mesma
+        ferragem e a mesma garantia</b> da linha Natural.</div>
       <div class="vprice">R$ 36.000</div>
       <div class="vwarr">Garantia <b>10 anos</b> · estrutura e ferragens</div>
     </div>
   </div>
-  <p class="muted" style="font-size:10pt; margin-top:5mm;">A diferença entre as linhas é o acabamento:
-  a <b>Natural</b> traz madeira de verdade (lâmina de Freijó com acabamento manual em cada face); a
-  <b>Essencial</b> entrega o mesmo projeto com a estética amadeirada em melamínico.</p>
 
   <div class="info">
     <div><div class="k">Prazo de entrega</div><div class="vv">100 a 120 dias úteis</div></div>
-    <div><div class="k">Validade da proposta</div><div class="vv">7 dias úteis</div></div>
-    <div><div class="k">Atendimento</div><div class="vv">Retorno em 24h · visita em 3 dias úteis</div></div>
+    <div><div class="k">Validade</div><div class="vv">7 dias úteis</div></div>
+    <div><div class="k">Atendimento</div><div class="vv">Retorno 24h · visita 3 dias</div></div>
   </div>
-  <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Proposta para Bia &amp; Matheus — Sala de Estar</span></div>
+  <p class="signoff">A diferença entre as linhas é só o acabamento — o projeto, a engenharia e o
+  cuidado da execução são exatamente os mesmos.</p>
+  <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Bia &amp; Matheus — Sala de Estar</span></div>
 </div>
 
-<!-- PÁGINA 5 — PAGAMENTO + GARANTIA + CTA -->
+<!-- ===== 5 · CONDIÇÕES + GARANTIA + CTA ===== -->
 <div class="page">
-  <div class="sec-h">Condições de pagamento</div>
-  <p class="muted" style="font-size:10.5pt;">Quanto mais você antecipa, maior o desconto — sobre a linha escolhida.</p>
+  <div class="kicker"><span class="num serif">05</span><span class="lbl">Condições &amp; garantia</span></div>
+  <h3 style="font-size:13pt; margin-bottom:1mm;">Pagamento</h3>
+  <p class="muted" style="font-size:10pt;">Quanto mais você antecipa, maior o desconto — sobre a linha escolhida.</p>
   <table class="pay">
     <tr><th>Condição</th><th style="text-align:right;">Vantagem</th></tr>
     <tr><td>30% de entrada + saldo em até 10× no cartão</td><td class="disc">—</td></tr>
@@ -153,20 +263,20 @@
     <tr><td>70% de entrada + saldo via transferência</td><td class="disc">7% de desconto</td></tr>
   </table>
 
-  <div class="sec-h" style="margin-top:12mm;">Garantia Valvic</div>
-  <p class="lead" style="font-size:13pt;">A sua sala sai com garantia de <b class="gold">10 anos</b>
-  em estrutura e ferragens (linha Hettich), e o <b>fecha-toque Blum</b> tem garantia vitalícia do
-  mecanismo. Instalações e regulagens: 2 anos.</p>
-  <p class="muted" style="font-size:10pt; margin-top:3mm;">Atendimento de garantia: retorno em 24h,
-  visita técnica em até 3 dias úteis e custo zero ao cliente dentro do prazo.</p>
+  <h3 style="font-size:13pt; margin:12mm 0 1mm;">Garantia Valvic</h3>
+  <p class="lead" style="font-size:12.5pt; color:#4a443c;">A sua sala sai com <b class="gold">10 anos
+  de garantia</b> em estrutura e ferragens (linha Hettich), e o <b>fecha-toque Blum</b> com
+  <b>garantia vitalícia</b> do mecanismo. Instalações e regulagens: 2 anos. Retorno em 24h,
+  visita técnica em até 3 dias úteis e custo zero dentro do prazo.</p>
 
-  <div class="cta">
-    <span class="spark">✦</span>&nbsp; <b class="serif" style="font-size:14pt;">Vamos começar?</b><br>
+  <div class="cta"><div class="ringc"></div>
+    <div class="spark">✦ ✦ ✦</div>
+    <b class="serif" style="font-size:16pt; display:block; margin:3mm 0 2mm;">Vamos começar?</b>
     <span style="font-size:10.5pt;">Reservamos a sua vaga na agenda de produção com a entrada — e
-    seguimos para a medição final e o cronograma. Estou à disposição para apresentar a proposta e
-    tirar qualquer dúvida.</span>
+    seguimos para a medição final e o cronograma. Estou à disposição para apresentar a proposta
+    pessoalmente e tirar qualquer dúvida.</span>
   </div>
-  <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Proposta para Bia &amp; Matheus — Sala de Estar</span></div>
+  <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Bia &amp; Matheus — Sala de Estar</span></div>
 </div>
 
 </body>
