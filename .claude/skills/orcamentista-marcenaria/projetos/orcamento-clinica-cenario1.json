@@ -2,7 +2,7 @@
  "cliente": "Clínica Dermato-Nutrologia (Dra. Esther / Dra. Sarah)",
  "projeto": "Marcenaria — BASE p/ proposta (6 ambientes)",
  "versao": "05-cenario1",
- "inv": 50400,
+ "inv": 54400,
  "mcAlvo": 42,
  "_nota": "cenario1. Vidro extra clear laca off-white (8mm assumido, espessura nao cotada). Puxadores corrigidos: copa=cava 45, consultorio=Livorno de embutir (PRECO A CONFIRMAR ~130). Parceira Paula RT10, MC 42%, aparador curvo 47%.",
  "p": {
@@ -323,8 +323,8 @@
      52
     ],
     [
-     "Puxador Livorno de Embutir (A CONFIRMAR)",
-     130
+     "Puxador Livorno de Embutir Zen 98x98mm (+30% pontual)",
+     302
     ]
    ]
   ],
@@ -600,7 +600,7 @@
     "Parafusos / dispositivos / montagem¦Cola kit Teck bond": 3,
     "Parafusos / dispositivos / montagem¦Conj. parafuso e bucha": 20,
     "Parafusos / dispositivos / montagem¦Silicone acabamento": 2,
-    "Puxadores¦Puxador Livorno de Embutir (A CONFIRMAR)": 4
+    "Puxadores¦Puxador Livorno de Embutir Zen 98x98mm (+30% pontual)": 4
    },
    "terc": {
     "vid": 0,

@@ -10,14 +10,14 @@
 
 | # | Ambiente / pacote | Móveis | Preço | MC |
 |---|---|---|---:|:--:|
-| **A** | **Recepção / Espera** | Aparador **curvo** Itapuã (tampo vidro extraclear) + prateleiras LED | **R$ 7.500** | 47% |
+| **A** | **Recepção / Espera** | Aparador **curvo** Itapuã (tampo vidro extraclear) + prateleiras LED | **R$ 9.500** | 47% |
 | **B** | **Painéis com 3 portas** *(2 cenários)* | C1: só portas HPL 30mm + RO82 · C2: portas Itapuã + painel 6mm | **C1 R$ 16.000 / C2 R$ 20.000** | 42% |
-| **C** | **Consultório** | Mesa (contra-tampo Itapuã) + móvel apoio + prateleiras nano-LED + 2 móveis Cristallo | **R$ 10.800** | 42% |
-| **D** | **Copa** | Básculas aéreas + bancada inferior (sob pedra sint.) + LED + lixeira | **R$ 7.200** | 42% |
-| **E** | **DML** | Armário DML 213 + aéreo + vassouras + lixeira (MDF Ultra branco) | **R$ 4.300** | 42% |
-| **F** | **Circulação** | Armário Q.D. 50×280 (Itapuã) com friso | **R$ 4.600** | 42% |
-| | **TOTAL Cenário 1** | (só portas premium HPL) | **R$ 50.400** | 42% |
-| | **TOTAL Cenário 2** | (portas + painel revestido) | **R$ 54.400** | 42% |
+| **C** | **Consultório** | Mesa (contra-tampo Itapuã) + móvel apoio + prateleiras nano-LED + 2 móveis Cristallo | **R$ 14.200** | 42% |
+| **D** | **Copa** | Básculas aéreas + bancada inferior (sob pedra sint.) + LED + lixeira | **R$ 7.100** | 42% |
+| **E** | **DML** | Armário DML 213 + aéreo + vassouras + lixeira (MDF Ultra branco) | **R$ 4.000** | 42% |
+| **F** | **Circulação** | Armário Q.D. 50×280 (Itapuã) com friso | **R$ 3.600** | 42% |
+| | **TOTAL Cenário 1** | (só portas premium HPL) | **R$ 54.400** | 42% |
+| | **TOTAL Cenário 2** | (portas + painel revestido) | **R$ 58.400** | 42% |
 
 ## Diferenciais de qualidade — PEDIR AO VITOR EXPOR NA PROPOSTA
 - **Portas de correr camufladas RO82 Top (Rometal)** — soft-close, suportam até 150kg,
@@ -31,7 +31,7 @@
 
 ## Detalhe por ambiente (medidas reais das pranchas)
 
-### A · Recepção / Espera — R$ 7.500  ⚠️ CURVA (MC 47%)
+### A · Recepção / Espera — R$ 9.500  ⚠️ CURVA (MC 47%)
 - **Aparador Itapuã Duratex 140×40×100** (P19), com **tampo de vidro extra clear com laca
   off-white** (terceirizado) + possibilidade de gavetas ocultas. **Base curva → +15% material / +5% MC.**
   - **Custo do vidro (corrigido — antes eu chutei R$400):** tampo ~140×40 = **0,56 m²** ×
@@ -40,8 +40,8 @@
 - **Prateleiras Itapuã com LED embutido.**
 
 ## ⚠️ Revisão de PUXADORES (corrigida — eu tinha usado cava 35° genérica)
-- **Consultório (C):** projeto pede **Puxador Livorno de Embutir** (P23/P25) — perfil de
-  alumínio embutido. **Preço não catalogado → A CONFIRMAR** (placeholder R$130/un na base).
+- **Consultório (C):** projeto pede **Puxador Livorno de Embutir** = **concha Zen 98×98mm**
+  (P23/P25). Custo R$232 **+30% (item pontual) = R$302/un**. (Pesquisado, não chutado.)
 - **Copa (D):** projeto pede **cava a 45°** (P22) — corrigido (R$52).
 - *(Aparador e Q.D. têm gavetas ocultas/friso; DML utilitário — mantidos.)*
 
@@ -73,24 +73,22 @@ Itapuã Ultra 6mm + rodapé de alumínio 5cm**, fixação **Cascola + adesivo de
 **Preços (confirmados pelo fundador):** rodapé alumínio R$20/m · Itapuã Ultra 6mm R$350 ·
 Itapuã Ultra 15mm R$600 · HPL R$600/chapa · MDF cru Ultra 15mm R$300 · RO82 Top R$400 · FE 9009 R$100.
 
-**Preços a confirmar (pergunta/alinha, não chutar):** rodapé de alumínio (assumi R$45/m) ·
-MDF Itapuã Ultra 6mm e 15mm (assumi R$300/R$500) · laminado HPL R$600/chapa (dado).
 
-### C · Consultório — R$ 10.800
+### C · Consultório — R$ 14.200
 - **Mesa de trabalho** (P23/24): tampo quartzito Gaya = marmoraria; **contra-tampo + móvel de
   apoio em MDF Itapuã** (nosso) + **prateleiras Itapuã com nano-LED 1×1cm embutido**.
 - **Móvel em Titânio Cristallo sob bancada de mármore existente** (P25): 80×84, gaveta+porta,
   nicho p/ mini-frigobar. + **móvel de apoio em Titânio Cristallo**.
 
-### D · Copa — R$ 7.200
+### D · Copa — R$ 7.100
 - **Básculas aéreas** (MDF Ultra Premium / Titânio Trama) com articuladores + **LED embutido sob
   prateleira**; **bancada inferior** sob pedra sintética (pedra = marmoraria), portas/gavetas; lixeira.
 
-### E · DML — R$ 4.300
+### E · DML — R$ 4.000
 - **Armário D.M.L. 213 cm** + **armário aéreo** + **armário de vassouras (sem porta)** + **armário
   p/ lixeira**, MDF **Ultra Premium branco TX** (P21).
 
-### F · Circulação — R$ 4.600
+### F · Circulação — R$ 3.600
 - **Armário Quadro de Distribuição 50×280×46** (Itapuã, P20): esconde o quadro de energia,
   prateleiras internas, **friso 0,5×0,5cm**.
 
@@ -100,7 +98,7 @@ mini-frigobares/frigobar inox · louças/metais. *(O tampo de vidro extraclear d
 nosso, via vidraçaria + logística.)*
 
 ## Notas estratégicas para o Vitor
-- **Herói da proposta = Painéis com portas (R$ 19.900):** vender como **"sistema de portas
+- **Herói da proposta = Painéis com 3 portas (C1 R$ 16.000 / C2 R$ 20.000):** vender como **"sistema de portas
   camufladas"** — clínica limpa, sem dobradiça aparente, portas que somem no painel. Engenharia
   que marcenaria comum não faz. É o item que justifica o ticket.
 - **"Cuidamos de tudo":** coordenamos vidro extraclear, LED nano e a interface com a marmoraria

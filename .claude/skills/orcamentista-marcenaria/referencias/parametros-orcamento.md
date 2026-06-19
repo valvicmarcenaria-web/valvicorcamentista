@@ -27,6 +27,16 @@ fita acompanhando o raio, encaixe. Regra fixa, registrada para todo o time:
 > **Vitor** (descrição da proposta — registrar que a peça é curva e por que custa
 > mais). Em treinamento contínuo: calibrar o fator a cada projeto com curva.
 
+## Itens específicos e pontuais — +30% no custo (regra fixa)
+
+Item comprado **especificamente para um projeto**, em **baixo volume** e fora do estoque
+padrão — ex.: **puxador especial** (como o Livorno de embutir), ferragem importada,
+perfil/peça sob encomenda, sistema específico — **leva +30% sobre o custo**. É buffer
+contra o markup de compra pontual, prazo de fornecedor e variação de preço (não é "erra
+pra cima" genérico — é fator fixo, calculado, só nos pontuais). Sinalizar ao **Vitor** como
+item premium/especificado na proposta. *(Não vale para commodities de estoque: chapa, fita,
+parafuso.)*
+
 ## LED da marcenaria — padrão (incluir por default)
 
 Todo LED **da marcenaria** (cabeceira, nicho, prateleira, sob bancada) é
