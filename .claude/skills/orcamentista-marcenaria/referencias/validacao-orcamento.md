@@ -103,9 +103,12 @@ MC. Exemplo real (custo direto subestimado em R$ 8.740, real ~R$ 14.300):
 | R$ 32.500 (errado) | R$ 14.300 | **25,3%** | −17 pts · ~R$ 14 mil de MC perdida |
 | R$ 52.900 (correto) | R$ 14.300 | 42,6% | ✅ |
 
-**Regra:** na dúvida, **erra o custo PRA CIMA**. Um orçamento aprovado barato demais não
-é "venda" — é prejuízo contratado. Conferir omissões clássicas antes de fechar: painel com
-portas (3 partes), curva (+15%/+5%), sistemas de porta, terceirizados, fita de ripado.
+**Regra:** isto **não** quer dizer "na dúvida erra o custo pra cima" — padding é muleta
+(encarece e perde venda, ou esconde levantamento mal feito). **Lidamos com matemática: dá
+para medir.** Na dúvida, **pergunta, alinha e aprende a fazer certo** — e **mede** (cotas
+do projeto, ou **escalímetro** usando a medida de um móvel conhecido como referência para
+achar portas/paredes). Conferir omissões clássicas antes de fechar: painel com portas (3
+partes), curva (+15%/+5%), sistemas de porta, terceirizados, fita de ripado.
 
 ## Situação de caixa — perguntar em TODA nova demanda
 
