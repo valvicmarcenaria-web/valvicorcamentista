@@ -15,6 +15,7 @@ de referência da metodologia do orçamentista.
 | Projeto | Ambiente | Arquivo |
 |---------|----------|---------|
 | Lucas e Ana — Apto 101 | Apartamento completo (168 m²) | `2025-lucas-e-ana-apto101.md` |
+| Cond. Ed. Luxemburgo (Arq. Rosana Miraglia) | Reforma de halls (2 apt, 4 apt, social A+B) — revestimento MDF amadeirado | `2026-ed-luxemburgo-halls.md` |
 
 ## Projetos de referência já no Valvic OS
 
