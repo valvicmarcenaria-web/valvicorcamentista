@@ -48,6 +48,11 @@ software de produção**.
   enxuta (Fase 3) — propor, não esperar o cliente pedir.
 - **Rápido E preciso (sem modelar em 3D).** O 3D de produção é só para negócio
   fechado.
+- **Portão de QA — NÃO entregar sem o checklist.** Antes de fechar QUALQUER orçamento,
+  rodar `referencias/checklist-fechamento.md`: **chapa inteira** (nunca fração), medido (não
+  chutado), descritivo lido até o fim, puxador/ferragem como o projeto pede, curva, terceirizado
+  fora, MC validada no app. Cada correção do fundador vira uma linha nesse checklist — **é assim
+  que a Lavinia evolui** (a skill carrega do zero a cada sessão; só o que está escrito persiste).
 
 ---
 
