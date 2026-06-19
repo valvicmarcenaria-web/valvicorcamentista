@@ -12,8 +12,8 @@
 
 | Versão | Acabamento | Material | **Investimento** | MC |
 |---|---|---:|---:|:--:|
-| **V1 · Melamínico Freijó** | madeirado (melamínico) | R$ 11.497 | **R$ 34.264** | 35,7% |
-| **V2 · Lâmina natural Freijó** | lâmina 2 faces + acabamento face a face | R$ 23.081 | **R$ 66.583** | 35,0% |
+| **V1 · Melamínico Freijó** | madeirado (melamínico) | R$ 11.877 | **R$ 34.264** | 34,6% |
+| **V2 · Lâmina natural Freijó** | lâmina 2 faces + acabamento face a face | R$ 23.461 | **R$ 66.583** | 34,4% |
 
 > **Preços PROPOSITAIS** (decisão do fundador 06/2026): fechados **abaixo do piso de
 > exceção 37%** do Rodrigo para viabilizar o fechamento. **Laca a R$450/m² = preço
@@ -41,7 +41,8 @@
   face**. **Logística dedicada da lâmina R$400** (uma vez no projeto).
 - **Laca** (só estante): substrato **MDF cru 15/6mm** + **laca R$450/m² por face** (preço
   NEGOCIADO só deste projeto; base segue R$650). Logística R$150.
-- **Dobradiça (Hettich Novisys) só no aparador** (×16). Estante e cristaleira não levam.
+- **Dobradiça (Hettich Novisys)** no aparador (×16) e na cristaleira (×8). Estante não leva.
+- **Cristaleira: 3 fecha-toque Blum Tip-On** (R$100/un) nas portas.
 - **Estante = 2 gavetas** (corrediça oculta Quadro ×2).
 - **Vidro** (só cristaleira): temperado **jateado 6mm R$300/m²** + **logística R$150**.
 - **Estante = corte CIRCULAR, NÃO curva** → Ø20 + R10 é **usinagem CNC dentro da margem
@@ -54,12 +55,12 @@
 |---|---:|---:|
 | **M01 Aparador** (15mm + fundo 6mm + Novisys ×16) | R$ 1.942 | R$ 9.645 |
 | **M02 Estante** (cru + laca 14 m² × R$450 + 2 gavetas) | R$ 8.251 | R$ 8.251 |
-| **M03 Cristaleira** (corpo + vidro jateado 1,2 m²) | R$ 1.304 | R$ 5.185 |
-| **Material direto** | **R$ 11.497** | **R$ 23.081** |
+| **M03 Cristaleira** (corpo + vidro jateado + Novisys ×8 + 3 fecha-toque Blum) | R$ 1.684 | R$ 5.565 |
+| **Material direto** | **R$ 11.877** | **R$ 23.461** |
 
 > A estante (laca) **não muda** entre versões — é o maior bloco isolado (laca 14 m² × R$450).
-> **Dobradiça (Novisys) só no aparador**; estante (gavetas/nichos) e cristaleira (portas de
-> vidro) não levam Novisys.
+> **Dobradiça (Novisys) no aparador (×16) e na cristaleira (×8)**; a estante (gavetas/nichos)
+> não leva. **Cristaleira tem 3 fecha-toque Blum Tip-On (R$100/un)** para as portas.
 
 ## Quantitativo — chapa INTEIRA (arredondada no nível do PROJETO)
 
@@ -81,8 +82,8 @@
 
 | Versão | Material | Investimento (proposital) | MC real |
 |---|---:|---:|:--:|
-| V1 Melamínico | 11.497 | **R$ 34.264** | **35,7%** |
-| V2 Lâmina | 23.081 | **R$ 66.583** | **35,0%** |
+| V1 Melamínico | 11.877 | **R$ 34.264** | **34,6%** |
+| V2 Lâmina | 23.461 | **R$ 66.583** | **34,4%** |
 
 > Preços definidos pelo fundador (propositais, abaixo do piso 37%). Não recalcular pra cima
 > sem nova ordem.

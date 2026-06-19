@@ -156,6 +156,10 @@
     [
      "Logística dedicada vidro",
      150
+    ],
+    [
+     "Blum Tip-On (fecha-toque)",
+     100
     ]
    ]
   ]
@@ -218,7 +222,9 @@
     "Cola e fita¦Fita de borda - cor - mt": 18,
     "Cola e fita¦Colagem - mt linear - máquina": 18,
     "Parafusos / dispositivos / montagem¦Parafusos gerais - especulação": 1,
-    "Limpeza / embalagem¦Embalagem": 1
+    "Limpeza / embalagem¦Embalagem": 1,
+    "Dobradiças¦Hettich Novisys": 8,
+    "Especiais¦Blum Tip-On (fecha-toque)": 3
    },
    "terc": {
     "vid": 0,
@@ -245,7 +251,7 @@
   "Especiais": true
  },
  "diretrizes": "Parceira Giovanna (RT 10%). Aparador = TOM 01 puro (sem laca/vidro). Laca só na estante (R$450/m² — preço NEGOCIADO só deste projeto, base segue 650). Vidro só na cristaleira. DOBRADIÇA só no aparador (Novisys). Estante = 2 gavetas. Corte circular = usinagem CNC, sem %. Chapa inteira (projeto). Áreas por escalímetro — conferir in loco.",
- "rodrigo": "Preço proposital. MC real ~35.7% — abaixo do piso de exceção 37% (autorizado pelo fundador para este fechamento).",
+ "rodrigo": "Preço proposital. MC real ~34.6% — abaixo do piso de exceção 37% (autorizado pelo fundador para este fechamento).",
  "duvidas": [
   "Confirmar área de laca da estante (14 m²) e acabamento lâmina V2 (aparador 14,1 + cristaleira 8,8 m²).",
   "Profundidade real da estante/cristaleira (~35cm).",
