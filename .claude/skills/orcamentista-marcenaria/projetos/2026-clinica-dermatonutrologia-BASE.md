@@ -32,9 +32,18 @@
 ## Detalhe por ambiente (medidas reais das pranchas)
 
 ### A · Recepção / Espera — R$ 7.500  ⚠️ CURVA (MC 47%)
-- **Aparador Itapuã Duratex 140×40×100** (P19), com **tampo de vidro extraclear off-white**
-  (terceirizado) + possibilidade de gavetas ocultas. **Base curva → +15% material / +5% MC.**
-- **Prateleiras Itapuã com LED embutido** (a definir inf/sup com o cliente).
+- **Aparador Itapuã Duratex 140×40×100** (P19), com **tampo de vidro extra clear com laca
+  off-white** (terceirizado) + possibilidade de gavetas ocultas. **Base curva → +15% material / +5% MC.**
+  - **Custo do vidro (corrigido — antes eu chutei R$400):** tampo ~140×40 = **0,56 m²** ×
+    extra clear temperado **8mm R$520/m²** + **laca R$300/m²** + **2× logística R$100**
+    (vidro + laca) ≈ **R$ 659**. ⚠️ **espessura não cotada no projeto — assumi 8mm, confirmar.**
+- **Prateleiras Itapuã com LED embutido.**
+
+## ⚠️ Revisão de PUXADORES (corrigida — eu tinha usado cava 35° genérica)
+- **Consultório (C):** projeto pede **Puxador Livorno de Embutir** (P23/P25) — perfil de
+  alumínio embutido. **Preço não catalogado → A CONFIRMAR** (placeholder R$130/un na base).
+- **Copa (D):** projeto pede **cava a 45°** (P22) — corrigido (R$52).
+- *(Aparador e Q.D. têm gavetas ocultas/friso; DML utilitário — mantidos.)*
 
 ### B · Painéis com portas — **3 portas** · DOIS CENÁRIOS de investimento
 
