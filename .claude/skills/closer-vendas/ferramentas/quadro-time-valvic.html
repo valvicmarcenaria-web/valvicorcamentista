@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=1122"/>
+  <title>Valvic — O Time</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pw: 1122px;
+      --ph: 1587px;
+      --ink:     #0B0A08;
+      --ink-l:   #131210;
+      --ink-ll:  #1A1815;
+      --ink-lll: #201D19;
+      --gold:    #C09A52;
+      --gold-l:  #D4B068;
+      --gold-05: rgba(192,154,82,.05);
+      --gold-10: rgba(192,154,82,.10);
+      --gold-18: rgba(192,154,82,.18);
+      --gold-35: rgba(192,154,82,.35);
+      --gold-60: rgba(192,154,82,.60);
+      --sand:    #EEE6D6;
+      --sand-m:  #C4B9A8;
+      --muted:   #706660;
+      --fb: 'Inter', system-ui, sans-serif;
+      --fd: 'Playfair Display', Georgia, serif;
+      --fc: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    html, body {
+      background: #444;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      font-family: var(--fb);
+    }
+
+    @media print {
+      @page { size: A3 portrait; margin: 0; }
+      html, body { background: transparent !important; margin: 0; padding: 0; }
+      .poster { box-shadow: none !important; width: 297mm !important; height: 420mm !important; }
+    }
+
+    /* ─── POSTER ─── */
+    .poster {
+      width: var(--pw);
+      height: var(--ph);
+      background: var(--ink);
+      margin: 0 auto;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 0 32px 100px rgba(0,0,0,.7);
+    }
+
+    /* Radial glow behind title */
+    .poster::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: 50%;
+      transform: translateX(-50%);
+      width: 900px; height: 500px;
+      background: radial-gradient(ellipse at center, rgba(192,154,82,.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Grain texture */
+    .poster::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(90deg,
+          rgba(255,255,255,.007) 0, rgba(255,255,255,.007) 1px,
+          transparent 1px, transparent 22px),
+        repeating-linear-gradient(0deg,
+          rgba(255,255,255,.005) 0, rgba(255,255,255,.005) 1px,
+          transparent 1px, transparent 44px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Corner marks */
+    .corner { position: absolute; z-index: 2; }
+    .corner svg { display: block; }
+    .c-tl { top: 18px; left: 18px; }
+    .c-tr { top: 18px; right: 18px; transform: scaleX(-1); }
+    .c-bl { bottom: 18px; left: 18px; transform: scaleY(-1); }
+    .c-br { bottom: 18px; right: 18px; transform: scale(-1); }
+
+    .poster > .inner { position: relative; z-index: 1; display: flex; flex-direction: column; height: 100%; }
+
+    /* ─── HEADER ─── */
+    .hdr {
+      padding: 48px 72px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .logo-name {
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: .52em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .logo-sep { width: 1px; height: 15px; background: var(--gold-35); }
+
+    .logo-sub {
+      font-size: 8.5px;
+      font-weight: 400;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hdr-right {
+      font-size: 8.5px;
+      font-weight: 400;
+      letter-spacing: .26em;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .rule-a {
+      margin: 24px 72px 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold) 18%, var(--gold) 82%, transparent);
+      opacity: .38;
+    }
+
+    /* ─── TITLE ─── */
+    .title-sec {
+      padding: 42px 72px 0;
+    }
+
+    .eyebrow {
+      font-size: 8.5px;
+      font-weight: 600;
+      letter-spacing: .56em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: .75;
+      margin-bottom: 16px;
+    }
+
+    .hero {
+      font-family: var(--fd);
+      font-size: 96px;
+      font-weight: 900;
+      color: var(--sand);
+      line-height: .88;
+      letter-spacing: -.025em;
+    }
+
+    .hero em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold-l);
+    }
+
+    .tagline {
+      font-family: var(--fc);
+      font-size: 14.5px;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--sand-m);
+      margin-top: 22px;
+      line-height: 1.62;
+      max-width: 590px;
+    }
+
+    .rule-b {
+      margin: 34px 72px 0;
+      height: 1px;
+      background: var(--gold-18);
+    }
+
+    /* ─── TEAM GRID ─── */
+    .team {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      margin: 26px 72px 0;
+      gap: 1px;
+    }
+
+    .row {
+      display: flex;
+      gap: 1px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    /* ─── CARD ─── */
+    .card {
+      flex: 1;
+      min-width: 0;
+      background: var(--ink-ll);
+      padding: 26px 26px 22px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Top gold bar */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold) 0%, rgba(192,154,82,.25) 70%, transparent 100%);
+    }
+
+    /* Subtle inner gradient */
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at top left, rgba(192,154,82,.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Alternate card shades */
+    .card.alt { background: var(--ink-lll); }
+
+    .card-num {
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: .44em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: .55;
+      margin-bottom: 12px;
+    }
+
+    .card-name {
+      font-family: var(--fd);
+      font-weight: 700;
+      color: var(--sand);
+      line-height: .92;
+      letter-spacing: -.015em;
+      font-size: 52px; /* row 1 default */
+    }
+
+    .row-2 .card-name {
+      font-size: 42px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 13px;
+      padding: 5px 10px 5px 8px;
+      border: 1px solid var(--gold-18);
+      border-radius: 2px;
+      width: fit-content;
+    }
+
+    .badge-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .badge-label {
+      font-size: 7.5px;
+      font-weight: 600;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gold-l);
+    }
+
+    .card-rule {
+      height: 1px;
+      background: var(--gold-18);
+      margin: 16px 0 14px;
+    }
+
+    .card-mission {
+      font-family: var(--fc);
+      font-size: 11.5px;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--sand-m);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .row-2 .card-mission {
+      font-size: 10.5px;
+      margin-bottom: 12px;
+    }
+
+    .obj-list {
+      list-style: none;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 9px;
+    }
+
+    .obj-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      font-size: 10.5px;
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 1.48;
+    }
+
+    .row-2 .obj-list li {
+      font-size: 10px;
+      gap: 7px;
+    }
+
+    .obj-list li .dash {
+      flex-shrink: 0;
+      margin-top: 6px;
+      width: 14px;
+      height: 1px;
+      background: var(--gold);
+      opacity: .55;
+    }
+
+    .row-2 .obj-list li .dash { width: 12px; }
+
+    /* Ghost initial */
+    .ghost {
+      position: absolute;
+      bottom: -18px;
+      right: -4px;
+      font-family: var(--fd);
+      font-size: 148px;
+      font-weight: 900;
+      font-style: italic;
+      color: rgba(192,154,82,.038);
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+    }
+
+    .row-2 .ghost { font-size: 115px; }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      margin: 24px 72px 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-l {
+      font-size: 8.5px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .footer-l strong {
+      display: block;
+      color: var(--sand-m);
+      font-weight: 600;
+      letter-spacing: .2em;
+    }
+
+    .footer-c {
+      font-family: var(--fc);
+      font-size: 12px;
+      font-style: italic;
+      color: var(--gold);
+      opacity: .65;
+      text-align: center;
+    }
+
+    .footer-r {
+      font-size: 8.5px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: right;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- corner marks -->
+  <div class="corner c-tl">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <path d="M1 22 L1 1 L22 1" stroke="rgba(192,154,82,.30)" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="corner c-tr">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <path d="M1 22 L1 1 L22 1" stroke="rgba(192,154,82,.30)" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="corner c-bl">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <path d="M1 22 L1 1 L22 1" stroke="rgba(192,154,82,.30)" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="corner c-br">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <path d="M1 22 L1 1 L22 1" stroke="rgba(192,154,82,.30)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <div class="inner">
+
+    <!-- HEADER -->
+    <header class="hdr">
+      <div class="logo-group">
+        <!-- V diamond mark -->
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+          <polygon points="6.5,0 13,6.5 6.5,13 0,6.5" stroke="#C09A52" stroke-width="1" fill="none"/>
+          <polygon points="6.5,3 10,6.5 6.5,10 3,6.5" fill="rgba(192,154,82,.18)"/>
+        </svg>
+        <span class="logo-name">Valvic</span>
+        <span class="logo-sep"></span>
+        <span class="logo-sub">Marcenaria · Belo Horizonte</span>
+      </div>
+      <div class="hdr-right">2026 · Uso interno</div>
+    </header>
+
+    <div class="rule-a"></div>
+
+    <!-- TITLE -->
+    <section class="title-sec">
+      <div class="eyebrow">O Time Valvic · Inteligência Operacional</div>
+      <h1 class="hero">O <em>Time</em></h1>
+      <p class="tagline">
+        Cinco especialistas com funções precisas — do primeiro metro de chapa
+        ao fechamento da proposta. Um único propósito: entregar marcenaria que
+        vale cada centavo investido.
+      </p>
+    </section>
+
+    <div class="rule-b"></div>
+
+    <!-- TEAM GRID -->
+    <div class="team">
+
+      <!-- ROW 1 : Lavinia + Rodrigo -->
+      <div class="row row-1">
+
+        <div class="card">
+          <div class="card-num">01 · Orçamento</div>
+          <div class="card-name">Lavinia</div>
+          <div class="badge">
+            <div class="badge-dot"></div>
+            <span class="badge-label">Orçamentista Estratégica</span>
+          </div>
+          <div class="card-rule"></div>
+          <p class="card-mission">
+            Transforma qualquer projeto em quantitativo preciso e preço estratégico —
+            com olhar de marceneiro e exatidão de software de produção.
+          </p>
+          <ul class="obj-list">
+            <li><span class="dash"></span><span>Levanta quantitativo completo: chapas por cor e espessura, fita, ferragens e terceirizados</span></li>
+            <li><span class="dash"></span><span>Precifica com MC% real (piso ~43%), nunca abaixo do break-even da empresa</span></li>
+            <li><span class="dash"></span><span>Gera versões completa e enxuta para dar alavanca estratégica ao fechamento</span></li>
+          </ul>
+          <div class="ghost">L</div>
+        </div>
+
+        <div class="card alt">
+          <div class="card-num">02 · Finanças</div>
+          <div class="card-name">Rodrigo</div>
+          <div class="badge">
+            <div class="badge-dot"></div>
+            <span class="badge-label">Estrategista Financeiro</span>
+          </div>
+          <div class="card-rule"></div>
+          <p class="card-mission">
+            Garante que cada venda cubra o custo fixo e construa lucro real —
+            elevando a decisão de preço do tático para o estratégico.
+          </p>
+          <ul class="obj-list">
+            <li><span class="dash"></span><span>Define o piso de MC do mês pela situação real de caixa e capacidade produtiva</span></li>
+            <li><span class="dash"></span><span>Monitora break-even (~R$67k/mês), ciclo de caixa e alavanca de preço</span></li>
+            <li><span class="dash"></span><span>Transforma o orçamento em decisão de empresa, não só de projeto isolado</span></li>
+          </ul>
+          <div class="ghost">R</div>
+        </div>
+
+      </div>
+
+      <!-- ROW 2 : Vitor + Stefan + Wallison -->
+      <div class="row row-2">
+
+        <div class="card">
+          <div class="card-num">03 · Vendas</div>
+          <div class="card-name">Vitor</div>
+          <div class="badge">
+            <div class="badge-dot"></div>
+            <span class="badge-label">Closer de Vendas</span>
+          </div>
+          <div class="card-rule"></div>
+          <p class="card-mission">
+            Transforma o orçamento em proposta que encanta e conduz o fechamento
+            com método — sem desconto reflexo.
+          </p>
+          <ul class="obj-list">
+            <li><span class="dash"></span><span>Monta propostas premium com ancoragem, garantia por ferragem e copy de conversão</span></li>
+            <li><span class="dash"></span><span>Conduz o fechamento: silêncio após o preço, escada de condições, urgência real</span></li>
+            <li><span class="dash"></span><span>Garante que a promessa vendida seja idêntica ao que será produzido e entregue</span></li>
+          </ul>
+          <div class="ghost">V</div>
+        </div>
+
+        <div class="card alt">
+          <div class="card-num">04 · Design</div>
+          <div class="card-name">Stefan</div>
+          <div class="badge">
+            <div class="badge-dot"></div>
+            <span class="badge-label">Diretor de Arte</span>
+          </div>
+          <div class="card-rule"></div>
+          <p class="card-mission">
+            Faz tudo que a Valvic entrega ser percebido como grife — do template
+            de proposta ao post de produto.
+          </p>
+          <ul class="obj-list">
+            <li><span class="dash"></span><span>Cria e mantém o sistema visual da marca (templates, paleta, tipografia)</span></li>
+            <li><span class="dash"></span><span>Garante que cada peça comunique valor, autoridade e precisão técnica</span></li>
+            <li><span class="dash"></span><span>Eleva a Valvic ao padrão visual de grifes de design (Ornare, Florense)</span></li>
+          </ul>
+          <div class="ghost">S</div>
+        </div>
+
+        <div class="card">
+          <div class="card-num">05 · Marketing</div>
+          <div class="card-name">Wallison</div>
+          <div class="badge">
+            <div class="badge-dot"></div>
+            <span class="badge-label">Gestor de Marketing</span>
+          </div>
+          <div class="card-rule"></div>
+          <p class="card-mission">
+            Entrega leads qualificados ao time comercial — não volume, mas perfil
+            de ticket alto alinhado à margem da Valvic.
+          </p>
+          <ul class="obj-list">
+            <li><span class="dash"></span><span>Dirige Social Media, Stefan e Tráfego num funil coeso e orientado a resultado</span></li>
+            <li><span class="dash"></span><span>Garante coerência da mensagem do anúncio até o atendimento do Vitor</span></li>
+            <li><span class="dash"></span><span>Monitora CPL, ROAS e CAC para que o custo de aquisição nunca coma a margem</span></li>
+          </ul>
+          <div class="ghost">W</div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-l">
+        <strong>Jonathan de Oliveira Vargas</strong>
+        Fundador &amp; Diretor · Valvic
+      </div>
+      <div class="footer-c">
+        "Faturamento é vaidade — construímos margem."
+      </div>
+      <div class="footer-r">
+        @valvic_marcenaria<br/>
+        Belo Horizonte · MG
+      </div>
+    </footer>
+
+  </div><!-- /inner -->
+</div><!-- /poster -->
+</body>
+</html>
