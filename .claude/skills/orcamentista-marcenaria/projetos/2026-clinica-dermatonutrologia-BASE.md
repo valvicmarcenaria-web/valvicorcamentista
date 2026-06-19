@@ -11,7 +11,7 @@
 | # | Ambiente / pacote | Móveis | Preço | MC |
 |---|---|---|---:|:--:|
 | **A** | **Recepção / Espera** | Aparador **curvo** Itapuã (tampo vidro extraclear) + prateleiras LED | **R$ 8.100** | 43% |
-| **B** | **Painéis com 3 portas** *(2 cenários)* | C1: só portas HPL 30mm + RO82 · C2: portas Itapuã + painel 6mm | **C1 R$ 14.000 / C2 R$ 17.500** | 42% |
+| **B** | **Painéis com 3 portas** *(2 cenários)* | C1: só portas HPL 30mm + RO82 · C2: portas Itapuã + painel 6mm | **C1 R$ 14.000 / C2 R$ 17.500** | 38% |
 | **C** | **Consultório** | Mesa (contra-tampo Itapuã) + móvel apoio + prateleiras nano-LED + 2 móveis Cristallo | **R$ 12.400** | 38% |
 | **D** | **Copa** | Básculas aéreas + bancada inferior (sob pedra sint.) + LED + lixeira | **R$ 6.200** | 38% |
 | **E** | **DML** | Armário DML 213 + aéreo + vassouras + lixeira (MDF Ultra branco) | **R$ 3.500** | 38% |
