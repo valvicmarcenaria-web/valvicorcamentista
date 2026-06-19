@@ -2,7 +2,7 @@
 
 > **Levantamento completo, do zero, medido** (cotas das pranchas P12–P25 + escalímetro).
 > Designer **Paula Galante** (parceira RT 10%). Nova Lima/MG. **Marcenaria apenas** —
-> toda pedra/mármore/quartzito = marmoraria (terceiro). **MC alvo 42%** (caixa permite).
+> toda pedra/mármore/quartzito = marmoraria (terceiro). **MC alvo 38%** (caixa permite).
 > Encargos de parceiro ~30% (vend = 0). Base **organizada por ambiente** para o Vitor
 > precificar e fechar.
 
@@ -10,14 +10,14 @@
 
 | # | Ambiente / pacote | Móveis | Preço | MC |
 |---|---|---|---:|:--:|
-| **A** | **Recepção / Espera** | Aparador **curvo** Itapuã (tampo vidro extraclear) + prateleiras LED | **R$ 9.500** | 47% |
-| **B** | **Painéis com 3 portas** *(2 cenários)* | C1: só portas HPL 30mm + RO82 · C2: portas Itapuã + painel 6mm | **C1 R$ 16.000 / C2 R$ 20.000** | 42% |
-| **C** | **Consultório** | Mesa (contra-tampo Itapuã) + móvel apoio + prateleiras nano-LED + 2 móveis Cristallo | **R$ 14.200** | 42% |
-| **D** | **Copa** | Básculas aéreas + bancada inferior (sob pedra sint.) + LED + lixeira | **R$ 7.100** | 42% |
-| **E** | **DML** | Armário DML 213 + aéreo + vassouras + lixeira (MDF Ultra branco) | **R$ 4.000** | 42% |
-| **F** | **Circulação** | Armário Q.D. 50×280 (Itapuã) com friso | **R$ 3.600** | 42% |
-| | **TOTAL Cenário 1** | (só portas premium HPL) | **R$ 54.400** | 42% |
-| | **TOTAL Cenário 2** | (portas + painel revestido) | **R$ 58.400** | 42% |
+| **A** | **Recepção / Espera** | Aparador **curvo** Itapuã (tampo vidro extraclear) + prateleiras LED | **R$ 8.100** | 43% |
+| **B** | **Painéis com 3 portas** *(2 cenários)* | C1: só portas HPL 30mm + RO82 · C2: portas Itapuã + painel 6mm | **C1 R$ 14.000 / C2 R$ 17.500** | 42% |
+| **C** | **Consultório** | Mesa (contra-tampo Itapuã) + móvel apoio + prateleiras nano-LED + 2 móveis Cristallo | **R$ 12.400** | 38% |
+| **D** | **Copa** | Básculas aéreas + bancada inferior (sob pedra sint.) + LED + lixeira | **R$ 6.200** | 38% |
+| **E** | **DML** | Armário DML 213 + aéreo + vassouras + lixeira (MDF Ultra branco) | **R$ 3.500** | 38% |
+| **F** | **Circulação** | Armário Q.D. 50×280 (Itapuã) com friso | **R$ 3.200** | 38% |
+| | **TOTAL Cenário 1** | (só portas premium HPL) | **R$ 47.400** | 38% |
+| | **TOTAL Cenário 2** | (portas + painel revestido) | **R$ 50.900** | 38% |
 
 ## Diferenciais de qualidade — PEDIR AO VITOR EXPOR NA PROPOSTA
 - **Portas de correr camufladas RO82 Top (Rometal)** — soft-close, suportam até 150kg,

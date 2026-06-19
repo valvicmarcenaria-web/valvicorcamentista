@@ -2,9 +2,9 @@
  "cliente": "Clínica Dermato-Nutrologia (Dra. Esther / Dra. Sarah)",
  "projeto": "Marcenaria — BASE p/ proposta (6 ambientes)",
  "versao": "05-cenario2",
- "inv": 58400,
- "mcAlvo": 42,
- "_nota": "cenario2. Vidro extra clear laca off-white (8mm assumido, espessura nao cotada). Puxadores corrigidos: copa=cava 45, consultorio=Livorno de embutir (PRECO A CONFIRMAR ~130). Parceira Paula RT10, MC 42%, aparador curvo 47%.",
+ "inv": 50900,
+ "mcAlvo": 38,
+ "_nota": "cenario2. Vidro extra clear laca off-white (8mm assumido, espessura nao cotada). Puxadores corrigidos: copa=cava 45, consultorio=Livorno de embutir (PRECO A CONFIRMAR ~130). Parceira Paula RT10, MC 38%, aparador curvo 47%. [MC ajustada p/ 38%]",
  "p": {
   "nf": 5,
   "parc": 7,
