@@ -24,7 +24,8 @@ pode ler e escrever aqui. Formato livre — marcar data e agente responsável.
 7. **Portão de QA:** não entrego sem rodar `orcamentista-marcenaria/referencias/checklist-fechamento.md`.
 
 **Atalhos de cálculo:** markup divisor `inv = (material+visita)/(divisor − MC%)`; parceiro
-(RT, vend=0) ~30% → 0,70; venda direta ~26% → 0,738. Curva → +15% material e +5% MC.
+(RT, vend=0) ~30% → 0,70; venda direta ~26% → 0,738. **Curva** (móvel/peça curva) → +15%
+material e +5% MC; **corte circular** (furo/nicho redondo em peça reta) = usinagem CNC, **sem %**.
 Itens pontuais → +30% **só quando o fundador pontuar** (não automático). Marmoraria = fora.
 
 **Erros que NÃO repito:** fração de chapa · chutar preço (especificar+perguntar) · não ler
@@ -84,3 +85,15 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
   (erro do 0,18), +30% pontual, vidro extra clear. Proposta única com 2 cenários (R$ 43.200
   / R$ 47.000, MC 30%). Pastas no Drive (Samara, Mônica, Clínica) em "Orçamentos Valvic".
 - Criados: `checklist-fechamento.md` (portão de QA) e este bloco de aprendizados.
+
+### [2026-06-19] Lavinia — Sala Bia & Matheus (Giovanna Camisassa RT10)
+- 3 móveis (aparador L + torre · estante 277cm · cristaleira 130cm) em **2 versões**:
+  V1 melamínico Freijó, V2 lâmina natural Freijó (acabamento **face a face** R$350/m²). MC 38%.
+- **Nova regra:** **corte circular ≠ curva** — recorte Ø/nicho redondo em peça reta = usinagem CNC
+  (sem +15%/+5%); só **móvel/peça curva** leva o %. Registrado em `parametros-orcamento.md` + mandamentos.
+- Lâmina: 25mm só onde o projeto pede, resto 15mm; melamínico: 25mm→30mm dobrada. Laca/vidro nossos.
+- Preços novos na base: lâmina 25mm 2f R$1.500 · fundo lâmina 6mm R$1.000 · MDF cru 25mm R$500 ·
+  acabamento lâmina R$350/m²/face · vidro jateado 6mm R$300/m² + log 150.
+- Resultado (escalímetro, **confere in loco**): V1 ≈ R$ 51.000 · V2 ≈ R$ 90.500. **V2 > R$80k →
+  piso Rodrigo 40% (≈R$96.500) + entrada 40%** — decisão do fundador pendente. Base em
+  `projetos/2026-sala-bia-e-matheus-BASE.md`.

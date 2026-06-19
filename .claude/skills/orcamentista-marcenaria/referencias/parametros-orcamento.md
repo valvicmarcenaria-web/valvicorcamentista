@@ -27,6 +27,14 @@ fita acompanhando o raio, encaixe. Regra fixa, registrada para todo o time:
 > **Vitor** (descrição da proposta — registrar que a peça é curva e por que custa
 > mais). Em treinamento contínuo: calibrar o fator a cada projeto com curva.
 
+> ⚠️ **CURVA ≠ CORTE CIRCULAR (correção do fundador — Sala Bia & Matheus).**
+> O +15%/+5% vale para a **PEÇA/MÓVEL curvo** (corpo arredondado, lateral em raio,
+> painel curvo — a chapa inteira acompanha a curva, com perda e lixamento). **NÃO**
+> vale para um **corte/recorte circular** (furo redondo, nicho circular, recorte de
+> abertura) numa peça reta — isso é **usinagem CNC** que já cai na **margem
+> operacional**, sem % extra. Ex.: estante reta com nichos circulares = corte
+> circular (sem %); aparador com base curva = móvel curvo (com %).
+
 ## Itens específicos e pontuais — +30% no custo (NÃO automático)
 
 Alguns itens comprados **especificamente para um projeto**, em **baixo volume / sob
