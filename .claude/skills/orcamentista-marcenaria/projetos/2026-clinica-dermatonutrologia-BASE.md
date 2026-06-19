@@ -11,14 +11,23 @@
 | # | Ambiente / pacote | Móveis | Preço | MC |
 |---|---|---|---:|:--:|
 | **A** | **Recepção / Espera** | Aparador **curvo** Itapuã (tampo vidro extraclear) + prateleiras LED | **R$ 7.500** | 47% |
-| **B** | **Painéis com portas** *(sistema)* | 6–7 portas camufladas 210 + painel liso + sistemas oculta/tip-on | **R$ 19.900** | 42% |
+| **B** | **Painéis com 3 portas** *(2 cenários)* | C1: portas HPL 30mm + RO82 · C2: paredes 6mm + portas Itapuã | **C1 R$ 16.000 / C2 R$ 19.100** | 42% |
 | **C** | **Consultório** | Mesa (contra-tampo Itapuã) + móvel apoio + prateleiras nano-LED + 2 móveis Cristallo | **R$ 10.800** | 42% |
 | **D** | **Copa** | Básculas aéreas + bancada inferior (sob pedra sint.) + LED + lixeira | **R$ 7.200** | 42% |
 | **E** | **DML** | Armário DML 213 + aéreo + vassouras + lixeira (MDF Ultra branco) | **R$ 4.300** | 42% |
 | **F** | **Circulação** | Armário Q.D. 50×280 (Itapuã) com friso | **R$ 4.600** | 42% |
-| | **TOTAL** | | **R$ 54.300** | **42,6%** |
+| | **TOTAL Cenário 1** | (portas premium HPL) | **R$ 50.400** | 42% |
+| | **TOTAL Cenário 2** | (paredes revestidas) | **R$ 53.500** | 42% |
 
-- **Custo direto total R$ 14.609** · MC R$ ~23.100 · **MC 42,6%** (faixa bom).
+## Diferenciais de qualidade — PEDIR AO VITOR EXPOR NA PROPOSTA
+- **Portas de correr camufladas RO82 Top (Rometal)** — soft-close, suportam até 150kg,
+  ferragem **embutida (FE 9009) que some** → portas que deslizam e desaparecem na parede.
+- **Cenário 1:** **laminado de alta pressão (HPL) nas 2 faces** sobre núcleo de 30mm —
+  superfície ultra-resistente (clínica), durabilidade superior ao melamínico.
+- **Cenário 2:** revestimento amadeirado contínuo com **rodapé de alumínio** + fixação
+  premium (**Cascola + adesivo de alta aderência + Monta Fix**) — *"não negociamos a
+  qualidade e a eficácia da instalação"*.
+- **Aparador curvo** assinado (recepção) · **nano-LED 1×1cm** embutido (consultório).
 
 ## Detalhe por ambiente (medidas reais das pranchas)
 
@@ -27,11 +36,30 @@
   (terceirizado) + possibilidade de gavetas ocultas. **Base curva → +15% material / +5% MC.**
 - **Prateleiras Itapuã com LED embutido** (a definir inf/sup com o cliente).
 
-### B · Painéis com portas (sistema) — R$ 19.900  ← PEÇA-CHAVE
-- **Portas camufladas: 6–7 folhas de 210 cm** (medido na Vista BB, porta = 210) = **3 chapas**.
-- **Painel liso** (NÃO ripado) em volta/atrás + estrutura/caixas das portas (~2,5 chapas + backing).
-- **Sistemas:** dobradiça oculta (Hettich) + **tip-on/pivô** por porta (push, sem puxador).
-- *Unificado num pacote* porque é um sistema único que percorre circulação/consultório/ambientes.
+### B · Painéis com portas — **3 portas** · DOIS CENÁRIOS de investimento
+
+> **Incoerência de material identificada:** o descritivo diz "MDF Itapuã" mas com
+> **espessura 1,3 mm (código PP-5711) + adesivo de contato + juntas de dilatação entre
+> chapas** → isso é **LAMINADO/revestimento, NÃO MDF** (chapa é 15/18mm). Resolvido nos
+> dois cenários abaixo. **São 3 portas** (não 6-7).
+>
+> **Portas = de CORRER camufladas** no sistema **Rometal RO82 Top** (deslizante, soft-close,
+> 40–150 kg) + guia embutida **FE 9009** (esconde o ferragem, espessura mín. 25mm → portas
+> de 30mm). Visual limpo, portas que somem na parede.
+
+**Cenário 1 — Portas premium (alto investimento):** 3 portas em **MDF cru Ultra 15mm
+laminado a 30mm** (área de chapa **dobrada**) + **laminado de alta pressão (HPL) nas 2
+faces** + cola de contato (R$50/porta) + **RO82 Top + FE 9009** (R$400+R$100/porta).
+→ item B ≈ **R$ 16.000**.
+
+**Cenário 2 — Paredes revestidas (médio investimento):** **paredes revestidas em MDF
+melamínico Itapuã Ultra 6mm + rodapé de alumínio 5cm**, fixação **Cascola + adesivo de
+alta aderência + 2 tubos Monta Fix por chapa** (não negociamos qualidade da instalação);
+**portas em MDF Itapuã Ultra** + mesmos componentes (RO82 Top + FE 9009).
+→ item B ≈ **R$ 19.100**.
+
+**Preços a confirmar (pergunta/alinha, não chutar):** rodapé de alumínio (assumi R$45/m) ·
+MDF Itapuã Ultra 6mm e 15mm (assumi R$300/R$500) · laminado HPL R$600/chapa (dado).
 
 ### C · Consultório — R$ 10.800
 - **Mesa de trabalho** (P23/24): tampo quartzito Gaya = marmoraria; **contra-tampo + móvel de

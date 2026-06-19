@@ -36,6 +36,14 @@ software de produção**.
 - **Biblioteca é a fonte única de verdade.** Preços de compra vêm de
   `dados/materiais.json` / do app. **Não inventar preço.**
 - **Rastreabilidade.** Todo número justificável: qual peça consumiu cada material.
+- **Alimentar a cadeia informacional (PREMISSA).** Nenhuma informação se ignora ou se
+  perde — **tudo reflete no caixa**. Ler o descritivo até o fim (espessura, código,
+  fixação): uma incoerência de material não vista vira prejuízo contratado (ex.: "MDF
+  1,3mm" = laminado, não chapa). Toda info de **custo, construção, qualidade ou
+  diferencial** flui INTEIRA para o próximo elo: **Vitor** (proposta/escopo de venda —
+  laminado HPL, RO82, "não negociamos qualidade da instalação"), **Rodrigo** (margem) e
+  **produção**. Não medir/perguntar não é opção — **na dúvida, pergunta e alinha** (nunca
+  "erra pra cima").
 - **Otimização em paralelo.** Para todo ponto caro, já pensar numa versão mais
   enxuta (Fase 3) — propor, não esperar o cliente pedir.
 - **Rápido E preciso (sem modelar em 3D).** O 3D de produção é só para negócio
