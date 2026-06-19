@@ -55,9 +55,27 @@ branco 6mm ×2 · cor 6mm ×1 → **R$ 4.960**
 | Circulação (armário Q.D.) | ~R$ 2.500 |
 | **TOTAL** | **R$ 32.500** |
 
+### v2 — CORREÇÃO (faltavam painéis com portas + curva)
+
+Pego pelo fundador. Duas correções:
+- **Painéis de marcenaria com portas camufladas** (espera/circulação/consultório) — não
+  estavam no v1. Adicionado: **+3 chapas cor 15mm** + folhas/ferragem de porta + fita/ripado
+  (+R$ ~2.600 de custo direto).
+- **Regra da curva** no **aparador/balcão da espera** (frente curva, "base curva" no projeto):
+  **+15% material + +5% MC** → essa peça precificada a **47%** (as demais a 42%).
+
+| | v1 | **v2 (vigente)** |
+|---|---:|---:|
+| Material | R$ 4.960 | **R$ 7.560** |
+| Custo direto | R$ 8.740 | **R$ 11.310** |
+| **Preço** | R$ 32.500 | **≈ R$ 41.600** |
+| MC | 42,3% | **42,7%** |
+
+- JSON: **`orcamento-clinica-dermatonutro-v2-mc42.json`** (vigente) · v1 (histórico).
+
 ## 4. Flags / próximos passos
 - **Estimativa preliminar** — posso **firmar qualquer ambiente** lendo a prancha de detalhe
-  correspondente (P19 aparador · P20 Q.D. · P21 DML · P22 copa · P23-24 consultório · P25 móvel/nicho).
-- Várias **básculas** na copa → pistões com amortecimento (conferir quantidade nas vistas).
+  (P19 aparador · P20 Q.D. · P21 DML · P22 copa · P23-24 consultório · P25 móvel/nicho).
+  O **painel com portas** é o maior variável — vale firmar a metragem real dele.
+- Várias **básculas** na copa → pistões com amortecimento (conferir quantidade).
 - LED só das **prateleiras** é nosso; LED de forro/sanca é civil.
-- JSON do app: `orcamento-clinica-dermatonutro-v1-mc42.json`.
