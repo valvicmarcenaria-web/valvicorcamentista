@@ -141,6 +141,23 @@ minerada pelo próprio especialista a partir de todo o histórico do repositóri
 - **API do Canva (MCP) só EDITA elementos existentes** — não cria caixas: editar no HTML → gerar PDF → reimportar (design bom = `DAHMxT1mbIE`).
 - **Impressão A4:** `@page{size:A4;margin:0}`, `page-break-after:always` + `page-break-inside:avoid`, **`print-color-adjust:exact` com `-webkit-`**, `#controls` escondido no `@media print`.
 - **HTML auto-contido** (Google Fonts CDN, abre no browser, PDF via Ctrl+P) com spans `.token` editáveis — padrão de toda ferramenta Valvic.
+- **[2026-06-21] Logo errada vetorizada** — Stefan usou uma estrela/compass rose inventada; logo real é **wordmark tipográfico** em Aurora-Regular. Corrigido. ❌ NUNCA inventar marca sem ver o arquivo oficial primeiro.
+
+**🏷️ MARCA VALVIC — REGISTRO OFICIAL (Stefan · 2026-06-21)**
+- **Tipo:** Wordmark tipográfico puro — **sem símbolo/ícone separado**.
+- **Font do wordmark:** `Aurora-Regular` (CID TrueType, embutida nos arquivos Canva).
+- **Font dos subtítulos:** `Assistant-Regular` (MARCENARIA, DECORAÇÕES, EM TERRITÓRIO NACIONAL, GROUP).
+- **Variantes oficiais (em ordem de uso):**
+  1. `GROUP Valvic` + tagline "MARCENARIA - MOBILIA - DECORAÇOES" — para comunicação do grupo
+  2. `Valvic MARCENARIA` — identidade principal da unidade de marcenaria
+  3. `Valvic DECORAÇÕES` — unidade de decorações
+  4. `Valvic` puro — uso em contextos limpos, redes sociais, carimbo
+  5. `V lettermark` — símbolo isolado (forma de U largo) para ícone/favicon/bordado
+- **Cores na logo:** PRETO `#000000` sobre branco; BRANCO `#FFFFFF` sobre preto. Não usa ouro na marca — ouro (#C09A52) é acento em documentos, não na identidade primária.
+- **Arquivo no Canva:** `logo_valvic` (id `DAGv0H7Gwdk`, 13 páginas); `marca_valvic` (id `DAGto3AJ9hE`, 24 páginas — apresentação de identidade).
+- **SVGs vetorizados:** `.claude/skills/closer-vendas/ferramentas/valvic-logo-vetorizado/` (8 arquivos SVG extraídos do PDF oficial via `pdftocairo`).
+- **Vetorização:** paths extraídos com `pdffonts` → fonte identificada como Aurora-Regular → `pdftocairo -svg` página a página → 100% fiel ao original, sem recriação manual.
+- **Regra permanente:** Qualquer uso da logo em documentos HTML deve referenciar os arquivos da pasta `valvic-logo-vetorizado/` ou os tokens CSS já definidos — nunca reinventar.
 
 ---
 
