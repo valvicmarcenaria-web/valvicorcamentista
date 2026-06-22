@@ -4,7 +4,7 @@
  "versao": "v1",
  "inv": 20000,
  "mcAlvo": 40,
- "_nota": "Valdenir&Maria: Cabeceira couro R$13.500 (MC40%) + Lavanderia R$6.500. Combinado R$20.000, MC ~37%. Lavanderia = ESTIMATIVA sem medidas (MC ~27-31%, abaixo do piso — confirmar dims/preço).",
+ "_nota": "Valdenir&Maria (Paula Galante). DOIS itens adicionais de projeto: Cabeceira em couro R$13.500 (MC40%) + Lavanderia e apoio R$6.500 (preço fechado pelo fundador). Combinado R$20.000.",
  "p": {
   "nf": 5,
   "parc": 7,
@@ -146,7 +146,7 @@
    }
   },
   {
-   "nome": "Lavanderia e apoio (2 arm. inf. 3 portas + 1 sup. 2 portas) — ESTIMATIVA s/ medidas",
+   "nome": "Lavanderia e apoio (2 arm. inf. 3 portas + 1 sup. 2 portas)",
    "q": {
     "MDF¦mdf Gianduia Trama Ultra 15": 2,
     "MDF¦mdf branco 6 (fundo)": 1,
@@ -173,13 +173,12 @@
   "Estofaria (m²)": true,
   "Terceirizado / especiais": true
  },
- "diretrizes": "Paula Galante parceira (RT 10% líq). Couro+tapeçaria=terceirizados NOSSOS (coordenados). LED fornecido pelo CLIENTE (especificar na proposta). Couro: 9 m² a forrar × 1,20 perda. Espuma/manta = estimativa de pesquisa, confirmar na compra. Painel reto (sem curva). Macho-fêmea. Conferir medidas no local.",
- "rodrigo": "ATENÇÃO: Lavanderia a R$6.500 dá MC ~27-31% na minha ESTIMATIVA (sem medidas), abaixo do piso 37%. Combinado fica ~37% (cabeceira puxa). Confirmar medidas/preço da lavanderia.",
+ "diretrizes": "Paula Galante parceira (RT 10% líq). Couro+tapeçaria=terceirizados NOSSOS (coordenados). LED fornecido pelo CLIENTE (especificar na proposta). Couro: 9 m² a forrar × 1,20 perda. Espuma/manta = estimativa de pesquisa, confirmar na compra. Painel reto (sem curva). Macho-fêmea. Conferir medidas no local. Cabeceira e Lavanderia = itens adicionais de projeto (Valdenir&Maria/Paula Galante). Lavanderia: preço fechado R$6.500 (estimativa de material sem medidas).",
+ "rodrigo": "Itens adicionais de projeto. Cabeceira MC 40%. Lavanderia R$6.500 = preço fechado pelo fundador. Combinado ~37%.",
  "duvidas": [
-  "Espuma D33 45mm (R$90/m²) e manta (R$18/m²) = estimativa — confirmar na compra.",
-  "Conferir medidas no local (nota do projeto).",
-  "Lavanderia SEM medidas — MC estimada abaixo do piso a R$6.500. Pedir projeto/dims.",
-  "Perfil cava Rometal RM185: confirmar preço/rendimento."
+  "Espuma D33 45mm + manta = estimativa, confirmar na compra.",
+  "Conferir medidas no local.",
+  "Lavanderia: medidas não fornecidas (material estimado); preço fechado pelo fundador."
  ],
  "theme": "light"
 }
