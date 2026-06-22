@@ -462,7 +462,11 @@ const SEED_2026 = [
   {id:'s26-21',cliente:'Marina Borges',projeto:'Casa nova',investimento:25500,formaPag:'',mesRef:'05',anoRef:'2026',parcelas:[{valor:15500,data:'25/05/2026',desc:'pix',recebido:false}]},
   {id:'s26-22',cliente:'Maria - Vale dos Cristais',projeto:'Painel hall garagem',investimento:18100,formaPag:'50% + 50%',mesRef:'05',anoRef:'2026',parcelas:[{valor:9050,data:'13/05/2026',desc:'pix',recebido:false}]},
   {id:'s26-23',cliente:'Marcelo e Simony',projeto:'Apt novo',investimento:34850,formaPag:'30% + 10x cartão',mesRef:'05',anoRef:'2026',parcelas:[]},
-  {id:'s26-24',cliente:'Fábio',projeto:'Consultório',investimento:9200,formaPag:'',mesRef:'06',anoRef:'2026',parcelas:[{valor:5000,data:'02/06/2026',desc:'pix',recebido:false}]},
+  {id:'s26-24',cliente:'Fábio',projeto:'Consultório',investimento:9200,formaPag:'50% + 50%',mesRef:'06',anoRef:'2026',parcelas:[{valor:5000,data:'02/06/2026',desc:'pix',recebido:false}]},
+  {id:'s26-25',cliente:'Alexandrina',projeto:'Lavanderia',investimento:4500,formaPag:'na entrega',mesRef:'06',anoRef:'2026',parcelas:[]},
+  {id:'s26-26',cliente:'Bernardo',projeto:'Cozinha e banheiro',investimento:12900,formaPag:'',mesRef:'06',anoRef:'2026',parcelas:[{valor:3900,data:'12/06/2026',desc:'pix',recebido:false}]},
+  {id:'s26-27',cliente:'Carla',projeto:'Cozinha',investimento:27000,formaPag:'50% + 50%',mesRef:'06',anoRef:'2026',parcelas:[{valor:13500,data:'17/06/2026',desc:'pix',recebido:false}]},
+  {id:'s26-28',cliente:'Lucas Mello',projeto:'Casa',investimento:46000,formaPag:'',mesRef:'06',anoRef:'2026',parcelas:[{valor:24000,data:'06/11/2026',desc:'pix',recebido:false}]},
 ];
 
 // ─── State ───────────────────────────────────────────────────────────
@@ -472,7 +476,7 @@ let chartResultado = null;
 let chartCrescimento = null;
 let editingId = null;
 
-const SEED_VERSION = 1; // incrementar quando SEED_2026 mudar
+const SEED_VERSION = 2; // v2: adicionados 4 projetos Jun/2026 (Alexandrina, Bernardo, Carla, Lucas Mello)
 
 function cloneSeed() {
   return SEED_2026.map(p => ({...p, parcelas: p.parcelas.map(x => ({...x}))}));

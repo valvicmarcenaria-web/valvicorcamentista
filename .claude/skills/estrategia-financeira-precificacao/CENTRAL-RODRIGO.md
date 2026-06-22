@@ -146,37 +146,55 @@ Ver método completo: `referencias/metodo-rodrigo.md`
 
 ## 3. Pipeline de projetos (planilha backup + Calcme)
 
-### Projetos 2026 — valor contratado por mês
+### Projetos 2026 — valor contratado por mês (ATUALIZADO 22/06/2026 — planilha atualizada.xlsx)
 
-| Mês | Contratado | Situação |
-|---|---|---|
-| Janeiro | R$ 110.280 | ✅ Em andamento |
-| Fevereiro | R$ 201.675 | ✅ Em andamento |
-| Março | R$ 216.198 | ✅ Em andamento |
-| Abril | R$ 264.390 | ✅ Em andamento |
-| Maio | R$ 89.650 | ✅ Em andamento |
-| Junho | R$ 9.200 | ✅ Em andamento |
-| **TOTAL H1** | **R$ 891.393** | |
-| Julho–Dezembro | **R$ 0,00** | 🔴 **PIPELINE ZERADO** |
+| Mês | Contratado | Projetos | Situação |
+|---|---|---|---|
+| Janeiro | R$ 110.280 | Luiz (casa R$87,7k), Raquel (quarto R$22,6k) | ✅ Concluído |
+| Fevereiro | R$ 201.675 | Matheus (painel), Bibiane (casa R$68k), Bruna, Augusto (apt R$90k), Sylvia | ✅ Em andamento |
+| Março | R$ 216.198 | Rosemary, Matheus (cozinha), Isaias/Nubia, Reginaldo, Marcelo Maciel, **Maria Casa VDC R$117.738** | ✅ Em andamento |
+| Abril | R$ 264.390 | Gisele, **Andre Alphaville R$70,8k**, Yasmin, **Cristiane casa R$101,7k**, Rejane, Leyde | ⚠️ Recebíveis críticos |
+| Maio | R$ 89.650 | Daniel, Marina Borges, Maria VDC hall, Marcelo+Simony (apt) | ✅ Em andamento |
+| Junho | R$ 99.600 | Fábio, Alexandrina, Bernardo, Carla (coz R$27k), **Lucas Mello casa R$46k** | ✅ Em andamento |
+| **TOTAL H1** | **R$ 981.793** | **28 projetos** | |
+| Julho–Dezembro | **R$ 0,00** | — | 🔴 **PIPELINE ZERADO** |
 
-> **ALERTA CRÍTICO:** H2/2026 sem nenhum projeto vendido. Com custo fixo de
-> R$ 47k/mês, 6 meses vazios = -R$ 280k. Ação imediata necessária.
+> **ALERTA CRÍTICO:** H2/2026 sem nenhum projeto vendido. Break-even R$246k/mês ×
+> 6 meses = R$1,47M em custo. Com pipeline zero, a empresa perde R$83k/mês (custo
+> fixo puro). Ação comercial imediata é questão de sobrevivência.
 
-### Recebíveis em aberto — R$ 330.859
+> **Meta 2026:** R$3.000.000 (declarada na planilha) | Meta lucro: R$600.000
+> **Realidade:** R$981.793 em 6 meses = média R$163,6k/mês
+> **Projeção H2 mantendo ritmo:** +R$981k → Total 2026 ≈ R$1,96M (65% da meta)
+> **Para atingir R$3M:** precisa R$2.018.207 em Jul–Dez = R$336k/mês (impossível sem Walton ou projeto âncora)
+
+### Recebíveis em aberto — R$ 366.709 (planilha 22/06/2026)
 
 **Maiores pendências (a cobrar com urgência):**
 
 | Cliente | Projeto | Valor Aberto | Observação |
 |---|---|---|---|
-| Cristiane | Casa completa | **R$ 79.200** | Abr/2026 |
-| Andre Alphaville | Casa | **R$ 70.800** | Abr/2026 — NÃO pagou nada |
-| Maria - Vale dos Cristais | Casa | **R$ 58.869** | Mar/2026 |
-| Marcelo e Simony | Apt novo | **R$ 34.850** | Mai/2026 — NÃO pagou nada |
-| Augusto | Apt | **R$ 27.000** | Fev/2026 |
+| Cristiane | Casa completa | **R$ 79.200** | Abr/2026 — parcela única de R$22,5k recebida |
+| Andre Alphaville | Casa | **R$ 70.800** | Abr/2026 — **ZERO recebido** ⚠️ |
+| Maria - Vale dos Cristais | Casa | **R$ 58.869** | Mar/2026 — 2ª parcela pendente |
+| Lucas Mello | Casa | **R$ 22.000** | Jun/2026 — parcela futura |
+| Marcelo e Simony | Apt novo | **R$ 21.700** | Mai/2026 — zero recebido registrado |
 | Rejane | Cozinha | **R$ 21.360** | Abr/2026 |
+| Augusto | Apt | **R$ 27.000** | Fev/2026 |
+| Marina Borges | Casa nova | **R$ 10.000** | Mai/2026 |
+| Maria VDC hall | Painel hall garagem | **R$ 9.050** | Mai/2026 |
 
-> ⚠️ Andre Alphaville e Marcelo e Simony têm zero pagamentos registrados.
-> Verificar se são parcelas com data futura ou inadimplência real.
+> ⚠️ **Andre Alphaville R$70,8k sem recebimento** — verificar: é prazo contratual
+> (pagamento na entrega) ou inadimplência? Se inadimplência, cobrar imediatamente.
+> ⚠️ **Cristiane R$79,2k pendente** — maior risco individual. Contrato assinado?
+
+### Nota interna: análise de comissões de marceneiros (planilha)
+Jonathan está analisando reajuste na base de cálculo da comissão dos marceneiros:
+- Atual: 5% sobre faturamento bruto → R$150k/ano sobre meta de R$3M
+- Proposta: 5% sobre (faturamento − custos de venda: NF 7,5% + vendedor 4% + RT 5% = 16,5%)
+  → base reduzida para R$2.505.000 → comissão R$125.250
+  → **economia de R$24.750/ano = R$2.062/mês**
+- Impacto: moderado (−2k/mês), mas alinha incentivo (marceneiro ganha mais quando custo de venda é menor)
 
 ### Crescimento histórico
 
