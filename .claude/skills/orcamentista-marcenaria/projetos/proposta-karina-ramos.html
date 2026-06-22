@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;700&display=swap');
+
+:root{
+  --gold:#C8901E; --gold-soft:#D9B25A; --gold-deep:#9C6B12;
+  --ink:#1A1A1A; --ink-soft:#4a463f; --cream:#FDF6E3; --cream-2:#F6ECD3;
+  --wood-a:#B68B4E; --wood-b:#8C6736; --wood-c:#6f5128; --line:#E4D8B8;
+}
+@page{ size:A4; margin:0; }
+*{ box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body{ margin:0; font-family:'DM Sans','Liberation Sans',Arial,sans-serif; color:var(--ink); font-size:10.5pt; line-height:1.62; }
+.serif{ font-family:'Cormorant Garamond','Georgia',serif; }
+.page{ position:relative; width:210mm; min-height:297mm; padding:16mm 18mm; page-break-after:always; overflow:hidden; background:#fff; }
+.page:last-child{ page-break-after:auto; }
+h1,h2,h3{ margin:0; font-weight:600; }
+p{ margin:8px 0; }
+.eyebrow{ font-family:'DM Sans',sans-serif; letter-spacing:.32em; text-transform:uppercase; font-size:8pt; font-weight:700; color:var(--gold-deep); }
+.spark{ color:var(--gold); }
+.rule{ height:2px; width:54px; background:var(--gold); border:0; margin:14px 0; }
+
+/* ---------- COVER ---------- */
+.cover{ padding:0; background:var(--cream); }
+.cover .frame{ position:absolute; inset:9mm; border:1px solid var(--gold-soft); }
+.cover .inner{ position:relative; padding:22mm 20mm; height:297mm; display:flex; flex-direction:column; }
+.brand{ font-family:'Cormorant Garamond',serif; font-size:30pt; font-weight:700; letter-spacing:.18em; color:var(--ink); }
+.brand .dot{ color:var(--gold); }
+.brand-sub{ letter-spacing:.5em; font-size:8pt; font-weight:700; color:var(--gold-deep); margin-top:2px; }
+
+/* hero: home office abstrato (aéreo + LED + bancada + torre de nichos) */
+.cover .hero{ margin:13mm 0 11mm; height:86mm; border-radius:3px; position:relative;
+  background:#7d5a2b; box-shadow:0 10px 28px rgba(80,55,20,.30); overflow:hidden; }
+.hero .wall{ position:absolute; inset:0; background:#8a6634; }
+.hero .aereo{ position:absolute; left:8mm; right:46mm; top:9mm; height:20mm; background:#a17b41; border:1.1mm solid #6f5128; display:flex; }
+.hero .aereo i{ flex:1; border-right:.5mm solid rgba(36,22,5,.5); }
+.hero .aereo i:nth-child(even){ background:#b88f51; }
+.hero .led{ position:absolute; left:8mm; right:46mm; top:30mm; height:2.2mm;
+  background:linear-gradient(90deg, rgba(255,240,200,0), #FFF4D6 18%, #FFF4D6 82%, rgba(255,240,200,0));
+  box-shadow:0 0 9mm 1.5mm rgba(255,236,180,.6); }
+.hero .desk{ position:absolute; left:8mm; right:30mm; top:50mm; height:5mm; background:#caa05c; border:.8mm solid #6f5128; box-shadow:0 5mm 10mm rgba(20,12,2,.25); }
+.hero .leg{ position:absolute; left:9mm; top:55mm; width:4mm; height:22mm; background:#a17b41; border:.7mm solid #6f5128; }
+.hero .base{ position:absolute; left:30mm; right:30mm; top:70mm; height:7mm; background:#a17b41; border:1mm solid #6f5128; }
+.hero .tower{ position:absolute; right:8mm; top:9mm; width:30mm; bottom:6mm; background:#7a5a2c; border:1.2mm solid #5e451f; display:flex; flex-direction:column; }
+.hero .tower b{ flex:1; margin:1.6mm; background:#9c7637; border:.6mm solid #5e451f; display:block; }
+.hero .tower b:nth-child(odd){ background:#caa05c; }
+.cover .hero .cap{ position:absolute; left:9mm; bottom:5mm; color:#fff; font-size:8pt; letter-spacing:.24em; text-transform:uppercase; opacity:.92; }
+
+.cover .for{ letter-spacing:.34em; text-transform:uppercase; font-size:9pt; font-weight:700; color:var(--gold-deep); }
+.cover .client{ font-family:'Cormorant Garamond',serif; font-size:36pt; font-weight:700; line-height:1.05; margin:5px 0 4px; color:var(--ink); }
+.cover .proj{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15pt; color:var(--ink-soft); }
+.cover .foot{ margin-top:auto; display:flex; justify-content:space-between; align-items:flex-end; font-size:8.5pt; color:var(--ink-soft); letter-spacing:.06em; }
+.sparkles{ font-size:13pt; color:var(--gold); letter-spacing:.4em; }
+
+/* ---------- SECTIONS ---------- */
+.section-h{ font-family:'Cormorant Garamond',serif; font-size:23pt; font-weight:700; color:var(--ink); line-height:1.1; margin-top:4px; }
+.lead{ font-family:'Cormorant Garamond',serif; font-size:13.5pt; font-style:italic; color:var(--ink-soft); line-height:1.5; }
+.band{ background:var(--ink); color:var(--cream); border-radius:4px; padding:7mm 9mm; margin:8mm 0; }
+.band .serif{ color:#fff; }
+
+/* cards */
+.cards{ display:flex; flex-wrap:wrap; gap:6mm; margin-top:7mm; }
+.card{ width:calc(50% - 3mm); background:var(--cream); border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:3px; padding:5mm 5.5mm; }
+.card .k{ font-family:'Cormorant Garamond',serif; font-size:13.5pt; font-weight:600; color:var(--ink); }
+.card .v{ font-size:9.3pt; color:var(--ink-soft); margin-top:3px; }
+
+/* versions */
+.vers{ display:flex; gap:6mm; margin-top:7mm; }
+.ver{ flex:1; border:1px solid var(--line); border-radius:5px; overflow:hidden; }
+.ver .hd{ padding:5mm 5.5mm 4mm; }
+.ver.full .hd{ background:var(--ink); color:var(--cream); }
+.ver.ess .hd{ background:var(--cream-2); color:var(--ink); }
+.ver .nm{ font-family:'Cormorant Garamond',serif; font-size:18pt; font-weight:700; }
+.ver.full .nm{ color:#fff; }
+.ver .pr{ font-family:'Cormorant Garamond',serif; font-size:23pt; font-weight:700; margin-top:1mm; }
+.ver.full .pr{ color:var(--gold-soft); }
+.ver.ess .pr{ color:var(--gold-deep); }
+.ver .tagln{ font-size:8.4pt; letter-spacing:.04em; opacity:.9; margin-top:1mm; }
+.ver .bd{ padding:4.5mm 5.5mm; }
+.ver .bd ul{ margin:0; padding-left:5mm; }
+.ver .bd li{ font-size:9.2pt; color:var(--ink-soft); margin:1.8mm 0; }
+.ver .war{ margin-top:3mm; font-size:7.8pt; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-deep); font-weight:700; }
+
+/* conditions strip */
+.terms{ display:flex; gap:5mm; margin-top:7mm; flex-wrap:wrap; }
+.term{ flex:1; min-width:38mm; background:var(--cream); border:1px solid var(--line); border-radius:3px; padding:4.5mm; text-align:center; }
+.term .t{ font-size:7.6pt; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-deep); font-weight:700; }
+.term .b{ font-family:'Cormorant Garamond',serif; font-size:15pt; font-weight:700; margin-top:3px; }
+.seal{ display:inline-flex; align-items:center; gap:3mm; background:var(--ink); color:var(--cream); border-radius:40px; padding:3mm 7mm; font-weight:700; letter-spacing:.04em; }
+.seal .yrs{ font-family:'Cormorant Garamond',serif; font-size:17pt; color:var(--gold-soft); }
+
+.pay{ margin:3mm 0 0; }
+.pay li{ margin:2.4mm 0; font-size:9.6pt; }
+.scope{ display:flex; gap:6mm; margin-top:5mm; }
+.scope > div{ flex:1; }
+.scope h3{ font-size:8pt; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:3mm; }
+.scope ul{ margin:0; padding-left:5mm; font-size:9.2pt; color:var(--ink-soft); }
+.scope li{ margin:2mm 0; }
+.aviso{ background:var(--cream-2); border:1px solid var(--gold-soft); border-radius:4px; padding:4.5mm 5.5mm; font-size:9.2pt; margin-top:6mm; }
+
+.desc h3{ font-family:'Cormorant Garamond',serif; font-size:14pt; color:var(--ink); margin:6mm 0 1mm; }
+.desc ul{ margin:0; padding-left:5mm; }
+.desc li{ margin:1.6mm 0; font-size:9.6pt; color:var(--ink-soft); }
+
+.close{ background:var(--ink); color:var(--cream); border-radius:5px; padding:9mm; margin-top:8mm; }
+.close .serif{ color:#fff; font-size:16pt; }
+.close p{ color:#e9e1cd; }
+.pfoot{ position:absolute; left:18mm; right:18mm; bottom:11mm; display:flex; justify-content:space-between; font-size:7.6pt; color:#9a9080; letter-spacing:.12em; border-top:1px solid var(--line); padding-top:3mm; }
+.brandline{ font-family:'Cormorant Garamond',serif; font-weight:700; letter-spacing:.12em; }
+.brandline .dot{ color:var(--gold); }
+</style></head>
+<body>
+
+<!-- ============ PAGE 1 — CAPA ============ -->
+<div class="page cover">
+  <div class="frame"></div>
+  <div class="inner">
+    <div>
+      <div class="brand">valvic<span class="dot">.</span></div>
+      <div class="brand-sub">MARCENARIA</div>
+    </div>
+
+    <div class="hero">
+      <div class="wall"></div>
+      <div class="aereo"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="led"></div>
+      <div class="desk"></div>
+      <div class="leg"></div>
+      <div class="base"></div>
+      <div class="tower"><b></b><b></b><b></b><b></b><b></b></div>
+      <div class="cap">Aparador · bancada · aéreo · torre de nichos · LED embutido</div>
+    </div>
+
+    <div class="sparkles">✦ ✦ ✦</div>
+    <div class="for">Proposta especial para</div>
+    <div class="client serif">Karina Ramos</div>
+    <div class="proj serif">Escritório — Home Office em dois amadeirados</div>
+
+    <div class="foot">
+      <div>Projeto de interiores: <b>Arq. Ionah Pinho</b><br>Junho de 2026</div>
+      <div style="text-align:right">Proposta nº KR-2026-001<br>Validade: 7 dias</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 2 — CONEXÃO ============ -->
+<div class="page">
+  <div class="eyebrow">O lugar do foco</div>
+  <h1 class="section-h">O escritório é onde o dia<br>rende — ou não.</h1>
+  <hr class="rule">
+  <p class="lead">Um home office bem resolvido não é só bonito: é o que separa o trabalho que flui
+  do dia disperso. Tudo à mão, cada coisa no seu lugar, e um ambiente que dá vontade de sentar e produzir.</p>
+
+  <p>O projeto da arquiteta <b>Ionah Pinho</b> desenha exatamente isso: um conjunto em <b>L</b> que
+  combina dois amadeirados — <b>Linho Belga</b> e <b>Savana</b> — num diálogo quente e sóbrio. O
+  aparador-bancada com baú e gavetas, a superfície de trabalho que se apoia nele, o armário aéreo
+  com prateleira iluminada e a <b>torre de nichos do piso ao teto</b> formam uma estação de trabalho
+  completa. A <b>Valvic</b> existe para <b>executar esse desenho com a precisão que ele exige</b> —
+  porque dois amadeirados só conversam quando o veio alinha, a cava da pega corre limpa no próprio MDF
+  e a torre de nichos sobe no prumo perfeito, sem um milímetro de torção.</p>
+
+  <div class="band">
+    <div class="eyebrow" style="color:var(--gold-soft)">O que estamos propondo</div>
+    <h2 class="serif" style="font-size:19pt; margin-top:3px;">Não vendemos o projeto. Vendemos a sua execução impecável.</h2>
+    <p style="color:#e9e1cd; margin-top:6px;">A marcenaria sob medida do escritório — aparador-baú,
+    bancada de trabalho, armário aéreo com torre de nichos e prateleira iluminada, e armário suspenso
+    com nicho — em MDF amadeirado, com pegas usinadas no próprio painel, iluminação LED embutida e
+    instalação por equipe própria, com acabamento de obra fina.</p>
+  </div>
+
+  <p>Cada peça sai do nosso galpão usinada em <b>CNC</b>, com bordas em <b>coladeira automática</b> e
+  montagem conferida. É o que garante que a pega sem puxador, a tampa basculante do baú e a fiação
+  escondida funcionem de verdade — e continuem funcionando daqui a muitos anos.</p>
+
+  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Karina Ramos · Escritório · 2026</span></div>
+</div>
+
+<!-- ============ PAGE 3 — CONFIGURAÇÃO TÉCNICA ============ -->
+<div class="page">
+  <div class="eyebrow">Configuração técnica</div>
+  <h1 class="section-h">A competência por trás<br>de cada peça.</h1>
+  <hr class="rule">
+  <p>Cada item abaixo é uma decisão de execução — não de catálogo. É o que separa um móvel que
+  alinha e dura de um que empena, descola e desregula em poucos meses.</p>
+
+  <div class="cards">
+    <div class="card"><div class="k">Dois amadeirados em diálogo</div>
+      <div class="v">Linho Belga na estrutura e portas, Savana nos nichos e na bancada — modulação e sentido do veio calculados para os dois conversarem, sem emenda improvisada.</div></div>
+    <div class="card"><div class="k">Pega em cava no próprio MDF</div>
+      <div class="v">Sem puxador aparente: a pega é esculpida e escurecida no próprio painel (e chanfro no topo das portas). Desenho limpo, usinado em CNC.</div></div>
+    <div class="card"><div class="k">Baú com tampa basculante</div>
+      <div class="v">A tampa do baú sobe com pistão amortecido — abre leve, para onde você deixar e fecha sem bater. Espaço de guardar que some no tampo.</div></div>
+    <div class="card"><div class="k">Corrediças ocultas Hardt</div>
+      <div class="v">Nas gavetas (versão Completa): deslizam em silêncio e fecham sozinhas (soft-close). Ferragem premium — a base da garantia de 5 anos.</div></div>
+    <div class="card"><div class="k">Iluminação LED embutida</div>
+      <div class="v">Recuo usinado para a fita de LED com perfil e difusor na prateleira do aéreo — luz indireta, uniforme, sem ponto quente nem perfil aparente.</div></div>
+    <div class="card"><div class="k">Torre de nichos do piso ao teto</div>
+      <div class="v">Estrutura dimensionada para subir aprumada e estável; nichos em Savana recuados, com armário fechado na base. Estante que é arquitetura.</div></div>
+    <div class="card"><div class="k">Fiação pensada</div>
+      <div class="v">Caixa de tomada com tampa articulada embutida no tampo e energia conduzida para o LED — tecnologia à mão, fios fora de vista.</div></div>
+    <div class="card"><div class="k">Bordas e estrutura</div>
+      <div class="v">Faces aparentes com fita de borda na cor do amadeirado, em coladeira automática — acabamento sem emenda à vista. Estrutura que mantém tudo plano.</div></div>
+  </div>
+
+  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Karina Ramos · Escritório · 2026</span></div>
+</div>
+
+<!-- ============ PAGE 4 — INVESTIMENTO ============ -->
+<div class="page">
+  <div class="eyebrow">Investimento</div>
+  <h1 class="section-h">Duas formas de viver<br>o mesmo projeto.</h1>
+  <hr class="rule">
+  <p>O escritório completo — aparador-baú, bancada, armário aéreo com torre de nichos e armário
+  suspenso — nas duas linhas. A diferença está na <b>ferragem</b> e no nível de acabamento; o desenho
+  da arquiteta é o mesmo nas duas.</p>
+
+  <div class="vers">
+    <div class="ver full">
+      <div class="hd">
+        <div class="nm">Linha Completa</div>
+        <div class="pr">R$ 21.500</div>
+        <div class="tagln">Ferragem premium Hardt · acabamento pleno</div>
+      </div>
+      <div class="bd">
+        <ul>
+          <li>Gavetas com <b>corrediça oculta Hardt</b> (soft-close)</li>
+          <li>Bancada com tampo de <b>dupla espessura</b> (~4 cm), robusto</li>
+          <li>Nichos da torre <b>forrados em Savana</b>, recuados</li>
+          <li>Iluminação LED embutida na <b>prateleira e no nicho</b></li>
+        </ul>
+        <div class="war">Garantia 5 anos · ferragens Hardt</div>
+      </div>
+    </div>
+    <div class="ver ess">
+      <div class="hd">
+        <div class="nm">Linha Essencial</div>
+        <div class="pr">R$ 17.500</div>
+        <div class="tagln">Mesmo desenho · solução eficiente</div>
+      </div>
+      <div class="bd">
+        <ul>
+          <li>Gavetas com <b>corrediça telescópica</b>, funcional</li>
+          <li>Bancada 18 mm com <b>borda reforçada</b></li>
+          <li>Nichos da torre com <b>fundo em Savana</b></li>
+          <li>Iluminação LED embutida na <b>prateleira</b></li>
+        </ul>
+        <div class="war">Garantia 2 anos · corrediça telescópica</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="terms">
+    <div class="term"><div class="t">Prazo de entrega</div><div class="b">60–70<br><span style="font-size:9pt">dias úteis</span></div></div>
+    <div class="term"><div class="t">Validade</div><div class="b">7 dias</div></div>
+    <div class="term"><div class="t">Garantia</div><div class="b">até 5 anos</div></div>
+  </div>
+
+  <h2 class="serif" style="font-size:14pt; margin-top:7mm;">Condições de pagamento</h2>
+  <ul class="pay">
+    <li><b>30%</b> de entrada + restante em até <b>10× no cartão</b></li>
+    <li><b>50%</b> de entrada + restante em até 8× no cartão — <b>3% de desconto</b></li>
+    <li><b>70%</b> de entrada + restante em até 6× no cartão — <b>5% de desconto</b></li>
+    <li><b>70%</b> à vista + restante por transferência — <b>7% de desconto</b> (Linha Completa à vista ≈ <b>R$ 20.000</b>)</li>
+  </ul>
+
+  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Karina Ramos · Escritório · 2026</span></div>
+</div>
+
+<!-- ============ PAGE 5 — ESCOPO + DESCRITIVO + FECHAMENTO ============ -->
+<div class="page">
+  <div class="eyebrow">Escopo</div>
+  <h1 class="section-h">O que está incluído.</h1>
+  <hr class="rule">
+
+  <div class="scope">
+    <div>
+      <h3>✦ Marcenaria Valvic (incluso)</h3>
+      <ul>
+        <li>Aparador-baú com tampa basculante, 3 gavetas e porta de correr</li>
+        <li>Bancada de trabalho com pé de apoio lateral</li>
+        <li>Armário aéreo + torre de nichos do piso ao teto + prateleira com LED</li>
+        <li>Armário suspenso com nicho lateral</li>
+        <li>Pegas usinadas no próprio MDF, ferragens e fita de borda na cor</li>
+        <li>Caixa de tomada com tampa articulada no tampo · instalação por equipe própria</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Não contemplado (outros fornecedores)</h3>
+      <ul>
+        <li>Ponto de energia / tomada nova (eletricista)</li>
+        <li>Cadeira, poltrona e objetos de decoração</li>
+        <li>Pintura, papel de parede e revestimento das paredes</li>
+        <li>Persianas, cortinas e forro de gesso</li>
+        <li>Aparelhos eletrônicos e iluminação de teto</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="desc">
+    <h3>Aparador-baú + bancada de trabalho</h3>
+    <ul>
+      <li>Aparador baixo de 2,55 m em Linho Belga: baú com tampa basculante, coluna de 3 gavetas e porta de correr sobre prateleira — pegas em cava no próprio painel.</li>
+      <li>Bancada em Savana apoiada no aparador e num pé lateral, com caixa de tomada de tampa articulada embutida no tampo.</li>
+    </ul>
+    <h3>Armário aéreo + torre de nichos + armário suspenso</h3>
+    <ul>
+      <li>Aéreo de 4 portas com prateleira inferior iluminada (LED embutido) e torre de nichos do piso ao teto, em Savana, com armário fechado na base.</li>
+      <li>Armário suspenso de 3 portas com nicho lateral em Savana, abertura por chanfro no topo (sem puxador).</li>
+    </ul>
+  </div>
+
+  <div class="close">
+    <div class="eyebrow" style="color:var(--gold-soft)">Por que a Valvic</div>
+    <p class="serif">Galpão próprio, CNC, coladeira automática e equipe especializada — estrutura para entregar cada detalhe do projeto com o padrão que ele merece.</p>
+    <p>Será uma honra executar o seu escritório, Karina. Ficamos à disposição para apresentar a
+    proposta pessoalmente e detalhar cada etapa com você e com a arquiteta Ionah.</p>
+    <p style="margin-top:6mm;"><span class="brandline" style="color:#fff; font-size:13pt;">valvic<span class="dot">.</span> marcenaria</span></p>
+  </div>
+
+  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Proposta nº KR-2026-001 · validade 7 dias</span></div>
+</div>
+
+</body></html>
