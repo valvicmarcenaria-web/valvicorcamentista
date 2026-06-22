@@ -153,7 +153,7 @@ Ver método completo: `referencias/metodo-rodrigo.md`
 | Janeiro | R$ 110.280 | Luiz (casa R$87,7k), Raquel (quarto R$22,6k) | ✅ Concluído |
 | Fevereiro | R$ 201.675 | Matheus (painel), Bibiane (casa R$68k), Bruna, Augusto (apt R$90k), Sylvia | ✅ Em andamento |
 | Março | R$ 216.198 | Rosemary, Matheus (cozinha), Isaias/Nubia, Reginaldo, Marcelo Maciel, **Maria Casa VDC R$117.738** | ✅ Em andamento |
-| Abril | R$ 264.390 | Gisele, **Andre Alphaville R$70,8k**, Yasmin, **Cristiane casa R$101,7k**, Rejane, Leyde | ⚠️ Recebíveis críticos |
+| Abril | R$ 264.390 | Gisele, **Andre Alphaville R$70,8k (investimento dos sócios)**, Yasmin, **Cristiane casa R$101,7k**, Rejane, Leyde | ⚠️ Recebíveis críticos |
 | Maio | R$ 89.650 | Daniel, Marina Borges, Maria VDC hall, Marcelo+Simony (apt) | ✅ Em andamento |
 | Junho | R$ 99.600 | Fábio, Alexandrina, Bernardo, Carla (coz R$27k), **Lucas Mello casa R$46k** | ✅ Em andamento |
 | **TOTAL H1** | **R$ 981.793** | **28 projetos** | |
@@ -168,14 +168,13 @@ Ver método completo: `referencias/metodo-rodrigo.md`
 > **Projeção H2 mantendo ritmo:** +R$981k → Total 2026 ≈ R$1,96M (65% da meta)
 > **Para atingir R$3M:** precisa R$2.018.207 em Jul–Dez = R$336k/mês (impossível sem Walton ou projeto âncora)
 
-### Recebíveis em aberto — R$ 366.709 (planilha 22/06/2026)
+### Recebíveis em aberto — R$ 295.909 a cobrar (planilha mostra R$ 366.709)
 
 **Maiores pendências (a cobrar com urgência):**
 
 | Cliente | Projeto | Valor Aberto | Observação |
 |---|---|---|---|
 | Cristiane | Casa completa | **R$ 79.200** | Abr/2026 — parcela única de R$22,5k recebida |
-| Andre Alphaville | Casa | **R$ 70.800** | Abr/2026 — **ZERO recebido** ⚠️ |
 | Maria - Vale dos Cristais | Casa | **R$ 58.869** | Mar/2026 — 2ª parcela pendente |
 | Lucas Mello | Casa | **R$ 22.000** | Jun/2026 — parcela futura |
 | Marcelo e Simony | Apt novo | **R$ 21.700** | Mai/2026 — zero recebido registrado |
@@ -184,8 +183,11 @@ Ver método completo: `referencias/metodo-rodrigo.md`
 | Marina Borges | Casa nova | **R$ 10.000** | Mai/2026 |
 | Maria VDC hall | Painel hall garagem | **R$ 9.050** | Mai/2026 |
 
-> ⚠️ **Andre Alphaville R$70,8k sem recebimento** — verificar: é prazo contratual
-> (pagamento na entrega) ou inadimplência? Se inadimplência, cobrar imediatamente.
+> ℹ️ **Andre Alphaville (R$ 70.800) NÃO é recebível de cliente.** É um **projeto
+> de INVESTIMENTO dos sócios** (Jonathan e Paulo) — capital próprio aplicado, não
+> venda a receber. Por isso não há pagamento a cobrar. Sai da régua de cobrança e
+> reduz o "a receber real" de R$366.709 (planilha) para **R$ 295.909**. Tratar
+> como aporte/investimento na contabilidade gerencial, não como inadimplência.
 > ⚠️ **Cristiane R$79,2k pendente** — maior risco individual. Contrato assinado?
 
 ### Nota interna: análise de comissões de marceneiros (planilha)
@@ -230,7 +232,7 @@ Jonathan está analisando reajuste na base de cálculo da comissão dos marcenei
 ## 5. Plano de ação vigente (jun/2026)
 
 ### 🔴 URGENTE — Esta semana
-1. Cobrar os R$ 330.859 em aberto (prioridade: Cristiane, Andre, Maria)
+1. Cobrar os R$ 295.909 em aberto (prioridade: Cristiane, Maria, Marcelo e Simony — Andre NÃO entra: é investimento dos sócios)
 2. Investigar composição dos R$ 107k de pagamentos em dez/2025
 3. Investigar R$ 101k de pagamentos previstos em jun/2026 — o que é postergável?
 4. Fechar Kênia & Fábio (casa completa): MC ≥ 40%, entrada 40% obrigatória
@@ -358,7 +360,8 @@ unidade controla a conversa.**
 - Composição dos R$ 107k de pagamentos em dez/2025 (o que causou o buraco?)
 - Composição dos R$ 101k previstos em jun/2026
 - Parcelas mensais das dívidas ativas: máquinas CNC/coladeira + empréstimo Paulo
-- Status de Andre Alphaville (R$ 70.800) e Marcelo e Simony (R$ 34.850) — inadimplência ou parcela futura?
+- ~~Status de Andre Alphaville (R$ 70.800)~~ ✅ Esclarecido: é projeto de **investimento dos sócios**, não recebível de cliente.
+- Status de Marcelo e Simony (R$ 21.700) — inadimplência ou parcela futura?
 
 ### 🟢 Concluído
 - Painel HTML financeiro (Demanda 2) — entregue com resultado mês a mês,

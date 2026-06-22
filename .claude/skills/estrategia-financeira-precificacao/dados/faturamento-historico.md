@@ -58,7 +58,7 @@
 | Cliente | Projeto | Valor | Pendente | Alerta |
 |---|---|---|---|---|
 | Gisele | Cozinha | R$ 20.300 | — | |
-| Andre Alphaville | Casa | R$ 70.800 | **R$ 70.800** | ⚠️ ZERO RECEBIDO |
+| Andre Alphaville | Casa | R$ 70.800 | — | ℹ️ INVESTIMENTO DOS SÓCIOS (não é venda a receber) |
 | Yasmin | Cozinha | R$ 26.000 | R$ 8.000 | |
 | Cristiane | Casa completa | R$ 101.700 | **R$ 79.200** | ⚠️ CRÍTICO |
 | Rejane | Cozinha | R$ 35.600 | R$ 21.360 | |
@@ -181,11 +181,16 @@ Nova base: R$ 3.000.000 × (1 − 0,165) = R$ 2.505.000
 
 ### 🔴 Recebíveis críticos — cobrança imediata
 
-1. **Andre Alphaville** — R$ 70.800 sem nenhum recebimento registrado
-2. **Cristiane** — R$ 79.200 pendente (de R$ 101.700 total)
-3. **Maria Casa VDC** — R$ 58.869 (2ª parcela do contrato de R$117k)
+1. **Cristiane** — R$ 79.200 pendente (de R$ 101.700 total)
+2. **Maria Casa VDC** — R$ 58.869 (2ª parcela do contrato de R$117k)
+3. **Augusto (Apt)** — R$ 27.000 (Fev/2026)
 
-> Total dos 3 maiores: R$ 208.869 — praticamente 2,5 meses de custo fixo
+> Total dos 3 maiores: R$ 165.069 — quase 2 meses de custo fixo
+
+> ℹ️ **Andre Alphaville (R$ 70.800) NÃO é recebível.** É **projeto de investimento
+> dos sócios** (Jonathan e Paulo) — capital próprio aplicado, sem pagamento de
+> cliente a cobrar. Por isso o "a receber real" cai de R$ 366.709 (planilha) para
+> **R$ 295.909**. Registrar como aporte/investimento, não como inadimplência.
 
 ### 🔴 Pipeline H2 — vazio
 Nenhum projeto para julho–dezembro. Ação comercial urgente.

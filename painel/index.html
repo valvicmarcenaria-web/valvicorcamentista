@@ -453,7 +453,7 @@ const SEED_2026 = [
   {id:'s26-12',cliente:'Marcelo Maciel',projeto:'Consultório',investimento:28880,formaPag:'70+30',mesRef:'03',anoRef:'2026',parcelas:[{valor:20280,data:'23/03/2026',desc:'pix',recebido:false},{valor:8600,data:'16/06/2026',desc:'pix',recebido:false}]},
   {id:'s26-13',cliente:'Maria',projeto:'Casa Vale dos Cristais',investimento:117738,formaPag:'50+50',mesRef:'03',anoRef:'2026',parcelas:[{valor:58869,data:'31/03/2026',desc:'pix',recebido:false}]},
   {id:'s26-14',cliente:'Gisele',projeto:'Cozinha',investimento:20300,formaPag:'50% + 50%',mesRef:'04',anoRef:'2026',parcelas:[{valor:10000,data:'16/04/2026',desc:'espécie',recebido:false},{valor:10300,data:'29/05/2026',desc:'pix',recebido:false}]},
-  {id:'s26-15',cliente:'Andre Alphaville',projeto:'Casa (investimento incorporadora)',investimento:70800,formaPag:'investimento',mesRef:'04',anoRef:'2026',parcelas:[]},
+  {id:'s26-15',cliente:'Andre Alphaville',projeto:'Casa (projeto de investimento dos sócios)',investimento:70800,formaPag:'investimento dos sócios — não é venda a receber',mesRef:'04',anoRef:'2026',parcelas:[]},
   {id:'s26-16',cliente:'Yasmin',projeto:'Cozinha',investimento:26000,formaPag:'70%+30%',mesRef:'04',anoRef:'2026',parcelas:[{valor:18000,data:'13/05/2026',desc:'pix',recebido:false}]},
   {id:'s26-17',cliente:'Cristiane',projeto:'Casa completa',investimento:101700,formaPag:'',mesRef:'04',anoRef:'2026',parcelas:[{valor:22500,data:'05/05/2026',desc:'pix',recebido:false}]},
   {id:'s26-18',cliente:'Rejane',projeto:'Cozinha',investimento:35600,formaPag:'40%+9x cartão',mesRef:'04',anoRef:'2026',parcelas:[{valor:14240,data:'24/04/2026',desc:'pix',recebido:false}]},
@@ -476,7 +476,7 @@ let chartResultado = null;
 let chartCrescimento = null;
 let editingId = null;
 
-const SEED_VERSION = 2; // v2: adicionados 4 projetos Jun/2026 (Alexandrina, Bernardo, Carla, Lucas Mello)
+const SEED_VERSION = 3; // v3: Andre Alphaville (s26-15) reclassificado como investimento dos sócios
 
 function cloneSeed() {
   return SEED_2026.map(p => ({...p, parcelas: p.parcelas.map(x => ({...x}))}));
@@ -500,6 +500,12 @@ function loadState() {
       if ((s.seedVersion || 0) < SEED_VERSION) {
         const existentes = new Set(s.projects.map(p => String(p.id)));
         cloneSeed().forEach(p => { if (!existentes.has(p.id)) s.projects.push(p); });
+        // Correção v3: reclassifica Andre Alphaville como investimento dos sócios
+        const andre = s.projects.find(p => String(p.id) === 's26-15');
+        if (andre) {
+          andre.projeto = 'Casa (projeto de investimento dos sócios)';
+          andre.formaPag = 'investimento dos sócios — não é venda a receber';
+        }
         s.seedVersion = SEED_VERSION;
         localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
       }

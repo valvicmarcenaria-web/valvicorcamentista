@@ -71,5 +71,6 @@ Com os dados reais do custo-operacao.html:
 Prioridade 1: fechar Kênia & Fábio (casa completa, MC ≥ 40%, entrada 40%).
 Prioridade 2: reativar orçamentos parados nos últimos 90 dias.
 Sem margem para desconto de preço. Sem desconto = sem negociação de preço.
-Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
+Cobrar Marcelo e Simony (R$ 21.700) e demais recebíveis em aberto.
+(Andre Alphaville R$ 70.800 NÃO é cobrança: é projeto de investimento dos sócios.)
 
