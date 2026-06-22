@@ -859,7 +859,7 @@
 
     .s8-bg {
       position: absolute; inset: 0;
-      background: url('https://drive.google.com/thumbnail?id=1p9VAPhVTptxWRP7Ph3OB0-ymayi71UJC&sz=w2000') center 28% / cover no-repeat;
+      background: url('https://drive.google.com/thumbnail?id=1p9VAPhVTptxWRP7vh3OB0-ymayi71UJC&sz=w2000') center 28% / cover no-repeat;
       filter: brightness(.22);
     }
 
@@ -1172,6 +1172,60 @@
       color: rgba(245,239,224,.6);
       text-transform: uppercase;
     }
+
+    /* ══════════════════════════════════════════════
+       BOTÃO BAIXAR PDF
+    ══════════════════════════════════════════════ */
+    .pdf-btn {
+      position: fixed;
+      bottom: 20px; left: 24px;
+      z-index: 300;
+      display: flex; align-items: center; gap: 8px;
+      padding: 9px 16px;
+      background: var(--gold2);
+      color: var(--dark);
+      border: none; border-radius: 2px;
+      font-family: var(--mono);
+      font-size: 10px; letter-spacing: .14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      opacity: .85;
+      transition: opacity .25s, transform .25s;
+      box-shadow: 0 4px 18px rgba(0,0,0,.35);
+    }
+    .pdf-btn:hover { opacity: 1; transform: translateY(-1px); }
+    .pdf-btn svg { width: 14px; height: 14px; stroke: var(--dark); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ══════════════════════════════════════════════
+       IMPRESSÃO / EXPORTAÇÃO PDF
+       Cada slide vira uma página paisagem (16:9).
+    ══════════════════════════════════════════════ */
+    @page { size: 1600px 900px; margin: 0; }
+
+    @media print {
+      html, body {
+        width: auto; height: auto;
+        overflow: visible;
+        background: #000;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .deck { width: auto; height: auto; position: static; }
+      .nav-dots, .nav-prev, .nav-next, .slide-ctr, .zone, .pdf-btn { display: none !important; }
+      .slide {
+        position: relative !important;
+        inset: auto !important;
+        width: 1600px; height: 900px;
+        opacity: 1 !important;
+        transform: none !important;
+        pointer-events: auto !important;
+        page-break-after: always;
+        break-after: page;
+        overflow: hidden;
+      }
+      .slide:last-child { page-break-after: avoid; break-after: avoid; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    }
   </style>
 </head>
 <body>
@@ -1249,7 +1303,7 @@
       <div class="s3-photo" style="background-image:url('https://drive.google.com/thumbnail?id=1wwOpRknx4WrSIhxAIVQgDTZwFlYTD4gr&sz=w2000');"></div>
       <div class="s3-text">
         <div class="s3-role">Sócio · Comercial &amp; Projetos</div>
-        <h3 class="s3-name">Jonathan<br>Teles</h3>
+        <h3 class="s3-name">Jonathan<br>Vargas</h3>
         <span class="gl gl--sm gl--gold"></span>
         <p class="s3-bio">Responsável pela frente comercial, relacionamento com arquitetos e gestão de projetos. Da apresentação ao contrato — com foco em proposta de valor, nunca em preço.</p>
         <div class="s3-tags">
@@ -1263,7 +1317,7 @@
       <div class="s3-photo" style="background-image:url('https://drive.google.com/thumbnail?id=1JSO9e6d4YX8ydJyx2VPZ_czDt3q3aPLB&sz=w2000');"></div>
       <div class="s3-text">
         <div class="s3-role">Sócio · Produção &amp; Engenharia</div>
-        <h3 class="s3-name">Paulo<br>Valverde</h3>
+        <h3 class="s3-name">Paulo Henrique<br>Teixeira</h3>
         <span class="gl gl--sm"></span>
         <p class="s3-bio">10+ anos de marcenaria premium. Antes da Valvic, liderou produção na Monte Negro — entregando projetos acima de R$ 500k para os maiores nomes de BH.</p>
         <div class="s3-hl">
@@ -1511,7 +1565,7 @@
       <div class="s10-foot">
         <div class="s10-contact">
           <div class="s10-clabel">Contato</div>
-          <div class="s10-cname">Jonathan Teles</div>
+          <div class="s10-cname">Jonathan Vargas</div>
           <div class="s10-cinfo">valvicmarcenaria@gmail.com</div>
         </div>
         <div class="s10-logo">Valvic</div>
@@ -1520,6 +1574,12 @@
   </div>
 
 </div><!-- /deck -->
+
+<!-- Baixar PDF -->
+<button class="pdf-btn" id="btnPdf" aria-label="Baixar PDF">
+  <svg viewBox="0 0 24 24"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/></svg>
+  Baixar PDF
+</button>
 
 <!-- Nav dots -->
 <div class="nav-dots" id="navDots"></div>
@@ -1582,6 +1642,7 @@
 
   document.getElementById('btnNext').addEventListener('click', next);
   document.getElementById('btnPrev').addEventListener('click', prev);
+  document.getElementById('btnPdf').addEventListener('click', () => window.print());
   document.getElementById('zoneR').addEventListener('click', next);
   document.getElementById('zoneL').addEventListener('click', prev);
 
