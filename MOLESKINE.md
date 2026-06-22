@@ -157,3 +157,11 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
   real do designer (extraído do PDF) eleva muito a proposta. Pedir/extrair sempre que houver.
 - **APROVADO pelo fundador (06/22):** garantia 5 anos estrutura / 1 ano revestimento; prazo 45–60. Proposta
   premium fechada. Arquivos no Drive (pasta "Cabeceira em couro — Valdenir & Maria" em Orçamentos Valvic).
+
+### [2026-06-22] Nota — LOGO da Valvic
+- A logo está no Drive: pasta **"Valvic — Logo Vetorizado (EPS · AI · CorelDraw)"** (variações:
+  group-valvic claro/escuro, wordmark-simples, valvic-marcenaria, v-lettermark claro/escuro).
+- ⚠️ **Só tem vetor (EPS/AI/CDR) — NÃO dá pra embutir no PDF nem rasterizar aqui** (sem Ghostscript;
+  LibreOffice não lê esse PostScript do Cairo). **Para usar nas propostas, preciso de PNG (fundo
+  transparente) ou SVG** — o fundador exporta do Corel/AI e sobe num Drive (eu baixo via MCP, igual o Freijó).
+- Fonte do wordmark = **Aurora-Regular** (custom). Hoje as propostas usam "valvic" em Georgia (aproximação).
