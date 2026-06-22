@@ -2,7 +2,7 @@
   "_meta": {
     "titulo": "Base de Materiais e Custos — Valvic (orçamento)",
     "moeda": "BRL",
-    "atualizado_em": "2026-06-19",
+    "atualizado_em": "2026-06-22",
     "observacoes": "Base minimalista de orçamento. custo = preço de COMPRA. null = a confirmar. Parafuso/cavilha/cola = especulação (~2% do custo total, sem categoria). Profundidades padrão: cozinha inf 60 / sup 35 cm; roupeiro 65 cm; bancada 50 cm."
   },
   "categorias": [
@@ -803,6 +803,40 @@
           "custo": null,
           "unidade": "gaveta",
           "obs": "CONFIRMAR custo do terceirizado de veludo. Ref. mercado 'gaveta planejada c/ divisórias' a partir de R$850 (teto)."
+        }
+      ]
+    },
+    {
+      "categoria": "Estofaria / couro",
+      "unidade_padrao": "m²",
+      "itens": [
+        {
+          "produto": "Couro vaqueta La Novità (branco)",
+          "variacao": "m²",
+          "custo": 112,
+          "unidade": "m²",
+          "obs": "preço fornecedor (Valdenir&Maria 06/2026); +20% perda (pele irregular) + frete ~R$250/compra."
+        },
+        {
+          "produto": "Espuma D33",
+          "variacao": "45mm (~5cm)",
+          "custo": 90,
+          "unidade": "m²",
+          "obs": "ESTIMATIVA de pesquisa (BH ~R$80-100/m²) — confirmar na compra. Largura rolo 1,90-2,03m."
+        },
+        {
+          "produto": "Manta acrílica",
+          "variacao": "—",
+          "custo": 18,
+          "unidade": "m²",
+          "obs": "ESTIMATIVA de pesquisa (~R$15-20/m²) — confirmar."
+        },
+        {
+          "produto": "Tapeçaria (estofador parceiro) - serviço",
+          "variacao": "por painel/serviço",
+          "custo": null,
+          "unidade": "serviço",
+          "obs": "orçar por demanda; ref. cabeceira 5,5m = R$800 + log dedicada R$150 (leva+busca). Mão de obra terceirizada."
         }
       ]
     }

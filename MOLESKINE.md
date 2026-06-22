@@ -129,3 +129,19 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
   2. **Não usar imagem com logo de outra marca** na proposta (descartei a "Welspun/Natura MATT"). Regra de QA do Vitor.
   3. **Apresentar o conceito de design antes de aplicar** quando o fundador pede algo mais criativo.
 - Fotos reais de Freijó versionadas em `closer-vendas/propostas/img/`. Proposta = **7 páginas**.
+
+### [2026-06-22] Lavinia — Cabeceira em couro (Valdenir & Maria · Paula Galante RT10)
+- **Tipo novo: painel ESTOFADO em couro** (não é orçamento de chapa). 5,5×1,2m, 6 módulos almofadados,
+  vaqueta La Novità, LED embutido no topo. **A marcenaria é só o esqueleto (MDF oculto); o custo está
+  em couro + tapeçaria (terceirizados NOSSOS, coordenados).**
+- **Método p/ painel estofado:** estrutura MDF + espuma + manta + **couro** + **tapeçaria (mão de obra
+  terceirizada)** + fixação macho-fêmea + logística dedicada (leva+busca no tapeceiro).
+- **Couro:** área a forrar = **frente + bordas/dobras** dos módulos (não só a frente!) → 6,6 + 2,3 ≈ 9 m²,
+  aí ×**1,20 de perda** (vaqueta = pele irregular). Preço **validado com fornecedor** (não chutar). + **frete** à parte.
+- **Base nova** (`materiais.json` → categoria *Estofaria/couro*): couro vaqueta La Novità R$112/m² ·
+  espuma D33 45mm ~R$90/m² *(estimativa)* · manta acrílica ~R$18/m² *(estimativa)* · tapeçaria por serviço.
+- **LED fornecido pelo cliente** → R$0 no custo, mas **especificar na proposta** (escopo do cliente).
+- **Fechado:** material R$ 3.752 · **MC 40% · R$ 13.500**. Painel reto (sem curva). Base em
+  `projetos/2026-cabeceira-couro-valdenir-maria-BASE.md` + JSON.
+- *Aprendizado: pra item novo (couro/estofaria) eu pesquiso o que não tenho (espuma/manta) e marco como
+  estimativa a confirmar; o que o fundador valida com fornecedor entra como custo firme.*

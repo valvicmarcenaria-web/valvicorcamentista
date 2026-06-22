@@ -1,0 +1,114 @@
+{
+ "cliente": "Valdenir & Maria (designer Paula Galante)",
+ "projeto": "Cabeceira em couro — Vale dos Cristais",
+ "versao": "v1",
+ "inv": 13500,
+ "mcAlvo": 40,
+ "_nota": "Painel cabeceira estofado em couro vaqueta La Novità. 5,5×1,2m, 6 módulos. Material R$3752, MC 40%.",
+ "p": {
+  "nf": 5,
+  "parc": 7,
+  "vend": 0,
+  "rt": 10,
+  "vis": 250,
+  "outv": 0,
+  "prog": 0.8,
+  "coord": 1,
+  "marc": 5,
+  "serra": 0.2,
+  "manut": 0.2,
+  "log": 0,
+  "erro": 2
+ },
+ "lib": [
+  [
+   "MDF",
+   [
+    [
+     "mdf branco 15 (estrutura oculta)",
+     260
+    ]
+   ]
+  ],
+  [
+   "Estofaria (m²)",
+   [
+    [
+     "Couro vaqueta La Novità",
+     112
+    ],
+    [
+     "Espuma D33 45mm",
+     90
+    ],
+    [
+     "Manta acrílica",
+     18
+    ]
+   ]
+  ],
+  [
+   "Terceirizado / especiais",
+   [
+    [
+     "Tapeçaria - serviço (estofador)",
+     800
+    ],
+    [
+     "Frete do couro",
+     250
+    ],
+    [
+     "Logística dedicada (leva+busca tapeceiro)",
+     150
+    ],
+    [
+     "Fixação macho-fêmea + parafusos",
+     60
+    ],
+    [
+     "Consumíveis (cola/grampo/embalagem)",
+     50
+    ]
+   ]
+  ]
+ ],
+ "ambientes": [
+  {
+   "nome": "Cabeceira em couro (5,5×1,2m · 6 módulos)",
+   "q": {
+    "MDF¦mdf branco 15 (estrutura oculta)": 2,
+    "Estofaria (m²)¦Couro vaqueta La Novità": 10.8,
+    "Estofaria (m²)¦Espuma D33 45mm": 6.6,
+    "Estofaria (m²)¦Manta acrílica": 6.6,
+    "Terceirizado / especiais¦Tapeçaria - serviço (estofador)": 1,
+    "Terceirizado / especiais¦Frete do couro": 1,
+    "Terceirizado / especiais¦Logística dedicada (leva+busca tapeceiro)": 1,
+    "Terceirizado / especiais¦Fixação macho-fêmea + parafusos": 1,
+    "Terceirizado / especiais¦Consumíveis (cola/grampo/embalagem)": 1
+   },
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
+   }
+  }
+ ],
+ "ativo": 0,
+ "collapsed": {
+  "MDF": true,
+  "Estofaria (m²)": true,
+  "Terceirizado / especiais": true
+ },
+ "diretrizes": "Paula Galante parceira (RT 10% líq). Couro+tapeçaria=terceirizados NOSSOS (coordenados). LED fornecido pelo CLIENTE (especificar na proposta). Couro: 9 m² a forrar × 1,20 perda. Espuma/manta = estimativa de pesquisa, confirmar na compra. Painel reto (sem curva). Macho-fêmea. Conferir medidas no local.",
+ "rodrigo": "MC 40% (situação normal, acima do piso 37%). RT 10% parceira Paula.",
+ "duvidas": [
+  "Espuma D33 45mm (R$90/m²) e manta (R$18/m²) = estimativa — confirmar na compra.",
+  "Conferir medidas no local (nota do projeto)."
+ ],
+ "theme": "light"
+}
