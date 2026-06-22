@@ -3,7 +3,17 @@
 > **Painel de cabeceira ESTOFADO em couro.** Designer **Paula Galante** (parceira, **RT 10%
 > líquido** → divisor 0,70). Obra **Vale dos Cristais**, Nova Lima/MG. Situação de caixa **normal**.
 > **MC 40% · Investimento R$ 13.500.** Prazo **45–60 dias úteis**. Conferir medidas no local (nota do projeto).
+> **Projeto Valdenir & Maria = 2 itens:** Cabeceira em couro **R$ 13.500** (MC 40%) + Lavanderia
+> **R$ 6.500** → **combinado R$ 20.000 (MC ~37%)**. Prazo 45–60 dias. Conferir medidas no local.
 > **Garantia (aprovada):** 5 anos estrutura/fixação · 1 ano revestimento (couro/espuma/costura).
+
+## ⚠️ Lavanderia e apoio — R$ 6.500 (preço do fundador) · ESTIMATIVA s/ medidas
+- 2 armários inferiores (3 portas de giro, puxador **perfil cava Rometal RM185**) + 1 armário superior
+  (2 portas de giro, 2 prateleiras internas). Estrutura **MDF Gianduia Trama Ultra Premium**, dobradiças **Hettich**.
+- **Custo estimado ~R$ 2.555** (2 chapas Gianduia + fundo + 10 Sensys + cava RM185 + fita + consumíveis).
+- 🚩 **Sem medidas, a MC nesse preço fica ~27–31% — abaixo do piso 37% do Rodrigo.** Combinado com a
+  cabeceira (40%) o projeto sobe pra ~37%. **Pedir o projeto/medidas da lavanderia** pra firmar custo e MC,
+  ou confirmar se R$ 6.500 é fechado (pacote/caixa). Confirmar preço do **perfil RM185**.
 
 ## O que é
 - Painel **5,5 m × 1,2 m**, dividido em **6 módulos almofadados** (69 · 100 · 106 · 106 · 100 · 69 cm).

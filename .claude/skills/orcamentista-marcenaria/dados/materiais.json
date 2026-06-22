@@ -234,6 +234,13 @@
           "custo": 500,
           "unidade": "chapa",
           "obs": "base p/ laca/lâmina onde projeto pede 25mm; ref. Sala Bia & Matheus 06/2026."
+        },
+        {
+          "produto": "MDF Gianduia Trama Ultra Premium",
+          "variacao": "15mm",
+          "custo": 700,
+          "unidade": "chapa",
+          "obs": "melamínico premium Duratex Ultra; ref. lavanderia Valdenir&Maria 06/2026 (estimativa, confirmar)."
         }
       ]
     },
@@ -782,6 +789,13 @@
           "custo": 60,
           "unidade": "unidade",
           "obs": "metal + couro legítimo pespontado; 3 tamanhos; varejo ~R$60. Premium."
+        },
+        {
+          "produto": "Perfil cava Rometal RM185",
+          "variacao": "barra 3m",
+          "custo": 150,
+          "unidade": "barra",
+          "obs": "estimativa — confirmar preço/rendimento."
         }
       ]
     },
