@@ -2,7 +2,8 @@
 
 > **Painel de cabeceira ESTOFADO em couro.** Designer **Paula Galante** (parceira, **RT 10%
 > líquido** → divisor 0,70). Obra **Vale dos Cristais**, Nova Lima/MG. Situação de caixa **normal**.
-> **MC 40% · Investimento R$ 13.500.** Conferir medidas no local (nota do projeto).
+> **MC 40% · Investimento R$ 13.500.** Prazo **45–60 dias úteis**. Conferir medidas no local (nota do projeto).
+> **Garantia (aprovada):** 5 anos estrutura/fixação · 1 ano revestimento (couro/espuma/costura).
 
 ## O que é
 - Painel **5,5 m × 1,2 m**, dividido em **6 módulos almofadados** (69 · 100 · 106 · 106 · 100 · 69 cm).
@@ -39,7 +40,9 @@ A marcenaria é só o **esqueleto** (MDF oculto). O custo está em **couro + tap
 - **6 módulos almofadados** com **LED embutido no topo** (LED do cliente — alinhar fornecimento).
 - **Coordenamos a tapeçaria** (estofador parceiro) + a compra do couro → um interlocutor só.
 - Fixação **macho-fêmea** (sistema embutido, painel "flutua" na parede).
-- **Garantia:** sem ferragem de tier (estofado) — alinhar com Jonathan (estrutura/costura).
+- **Garantia (aprovada):** 5 anos estrutura/fixação · 1 ano revestimento (couro/espuma/costura) —
+  exclui desgaste natural/mau uso/limpeza errada. Prazo 45–60 dias úteis.
+- **LED:** fora do nosso escopo (fornecimento e instalação por conta do cliente).
 
 ## 🔶 A confirmar
 1. **Espuma D33 45mm (R$90/m²) + manta (R$18/m²)** = estimativa de pesquisa — confirmar na compra (único custo não validado).

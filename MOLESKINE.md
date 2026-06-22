@@ -155,3 +155,5 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
   uso → revestimento curto protege a empresa.) Prazo cabeceira: 45–60 dias úteis. LED = do cliente (fora do escopo).
 - **Aprendizado: render de ambientação do projeto > ilustração esquemática** — pra item premium, o render
   real do designer (extraído do PDF) eleva muito a proposta. Pedir/extrair sempre que houver.
+- **APROVADO pelo fundador (06/22):** garantia 5 anos estrutura / 1 ano revestimento; prazo 45–60. Proposta
+  premium fechada. Arquivos no Drive (pasta "Cabeceira em couro — Valdenir & Maria" em Orçamentos Valvic).
