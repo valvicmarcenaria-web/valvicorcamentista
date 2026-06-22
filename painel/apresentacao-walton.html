@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valvic — Apresentação Estratégica 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:   #0A0806;
+      --dark2:  #110E0B;
+      --dark3:  #1C1712;
+      --gold:   #A06838;
+      --gold2:  #C8914A;
+      --gold3:  #E0A521;
+      --cream:  #F5EFE0;
+      --cream2: #FDFAF4;
+      --text:   #1A1A1A;
+      --tmid:   #3D3530;
+      --tlight: #6B5E53;
+      --serif:  'Cormorant Garamond', Georgia, serif;
+      --sans:   'DM Sans', system-ui, sans-serif;
+      --mono:   'DM Mono', monospace;
+      --ease:   cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html, body {
+      width: 100%; height: 100%;
+      overflow: hidden;
+      background: var(--dark);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── SLIDE SYSTEM ── */
+    .deck {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .75s var(--ease), transform .75s var(--ease);
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+      z-index: 1;
+    }
+
+    .slide.exit {
+      opacity: 0;
+      transform: translateY(-20px);
+      z-index: 0;
+    }
+
+    /* ── NAVIGATION UI ── */
+    .nav-dots {
+      position: fixed;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      z-index: 200;
+    }
+
+    .dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(200,145,74,.45);
+      background: transparent;
+      cursor: pointer;
+      transition: all .3s;
+    }
+
+    .dot.active {
+      background: var(--gold2);
+      border-color: var(--gold2);
+      transform: scale(1.5);
+    }
+
+    .dot:hover { border-color: var(--gold2); }
+
+    .nav-btn {
+      position: fixed;
+      z-index: 200;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 14px;
+      opacity: .45;
+      transition: opacity .25s;
+    }
+    .nav-btn:hover { opacity: 1; }
+    .nav-btn svg { width: 26px; height: 26px; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    .nav-prev { left: 14px; top: 50%; transform: translateY(-50%); }
+    .nav-next { right: 48px; top: 50%; transform: translateY(-50%); }
+
+    .deck[data-t="dark"]  .nav-btn svg { stroke: var(--gold2); }
+    .deck[data-t="light"] .nav-btn svg { stroke: var(--gold); }
+
+    .slide-ctr {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .22em;
+      z-index: 200;
+      opacity: .4;
+      transition: color .4s;
+    }
+
+    .deck[data-t="dark"]  .slide-ctr { color: var(--cream); }
+    .deck[data-t="light"] .slide-ctr { color: var(--tmid); }
+
+    .zone { position: fixed; top: 0; bottom: 0; z-index: 50; cursor: pointer; }
+    .zone-l { left: 0;  width: 18%; }
+    .zone-r { right: 0; width: 18%; }
+
+    /* ── UTILITIES ── */
+    .gl { display: block; width: 48px; height: 1px; background: var(--gold2); }
+    .gl--gold { background: var(--gold); }
+    .gl--sm { width: 32px; }
+
+    /* ══════════════════════════════════════════════
+       S1 — CAPA
+    ══════════════════════════════════════════════ */
+    .s1 {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .s1-bg {
+      position: absolute; inset: 0;
+      background: url('https://drive.google.com/thumbnail?id=1JOaSn6DqBLB0ZuChtoE9wMxEttbw_Fv_&sz=w2000') center 30% / cover no-repeat;
+      filter: brightness(.42);
+    }
+
+    .s1-ov {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom,
+        rgba(10,8,6,.25) 0%,
+        rgba(10,8,6,.08) 35%,
+        rgba(10,8,6,.55) 75%,
+        rgba(10,8,6,.97) 100%);
+    }
+
+    .s1-wrap {
+      position: relative; z-index: 2;
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 48px 60px 52px;
+    }
+
+    .s1-logo {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 300;
+      letter-spacing: .38em;
+      text-transform: uppercase;
+      color: var(--cream);
+      opacity: .85;
+    }
+
+    .s1-body { max-width: 700px; }
+
+    .s1-tag {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: .28em;
+      color: var(--gold2);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .s1-title {
+      font-family: var(--serif);
+      font-size: clamp(54px, 7.5vw, 100px);
+      font-weight: 300;
+      line-height: 1.0;
+      color: var(--cream);
+      margin: 16px 0 18px;
+    }
+
+    .s1-title em { font-style: italic; color: var(--gold2); }
+
+    .s1-sub {
+      font-family: var(--sans);
+      font-size: 14.5px;
+      font-weight: 300;
+      letter-spacing: .03em;
+      color: rgba(245,239,224,.6);
+    }
+
+    .s1-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .s1-conf {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: .22em;
+      color: rgba(245,239,224,.28);
+      text-transform: uppercase;
+    }
+
+    .s1-city {
+      font-family: var(--serif);
+      font-size: 13px;
+      font-weight: 300;
+      letter-spacing: .1em;
+      color: rgba(245,239,224,.35);
+    }
+
+    /* ══════════════════════════════════════════════
+       S2 — TRAJETÓRIA
+    ══════════════════════════════════════════════ */
+    .s2 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      background: var(--dark);
+    }
+
+    .s2-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 55% 55% at 85% 50%, rgba(160,104,56,.07) 0%, transparent 70%);
+    }
+
+    .s2-wrap {
+      position: relative; z-index: 2;
+      padding: 64px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 52px;
+    }
+
+    .s2-head { max-width: 540px; }
+
+    .s2-tag {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: .25em;
+      color: var(--gold2);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .s2-title {
+      font-family: var(--serif);
+      font-size: clamp(36px, 4.8vw, 64px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--cream);
+      margin-top: 16px;
+    }
+
+    .s2-title em { font-style: italic; color: var(--gold2); }
+
+    .s2-nums {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .s2-yr {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .s2-yr::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 1px; height: 100%;
+      background: rgba(200,145,74,.12);
+    }
+
+    .s2-yr:last-child::after { display: none; }
+
+    .s2-yc {
+      padding: 28px 36px 28px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .s2-yr:not(:first-child) .s2-yc { padding-left: 36px; }
+
+    .s2-ylabel {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .2em;
+      color: rgba(245,239,224,.38);
+    }
+
+    .s2-yval {
+      font-family: var(--serif);
+      font-size: clamp(30px, 3.6vw, 50px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1;
+    }
+
+    .s2-yval.hi { color: var(--gold2); }
+
+    .s2-ygrow {
+      font-family: var(--sans);
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--gold3);
+    }
+
+    .s2-ynote {
+      font-family: var(--sans);
+      font-size: 11.5px;
+      font-weight: 300;
+      color: rgba(245,239,224,.36);
+    }
+
+    .s2-quote {
+      border-left: 1px solid var(--gold2);
+      padding-left: 26px;
+      max-width: 560px;
+    }
+
+    .s2-qtext {
+      font-family: var(--serif);
+      font-size: clamp(19px, 2.2vw, 27px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.45;
+    }
+
+    .s2-qattr {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: .2em;
+      color: rgba(245,239,224,.35);
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+
+    /* ══════════════════════════════════════════════
+       S3 — QUEM CONDUZ
+    ══════════════════════════════════════════════ */
+    .s3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .s3-col {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .s3-photo {
+      flex: 0 0 56%;
+      background-size: cover;
+      background-position: center top;
+    }
+
+    .s3-text {
+      flex: 1;
+      min-height: 0;
+      padding: 32px 44px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow: hidden;
+    }
+
+    .s3-col--a .s3-text { background: var(--cream2); }
+    .s3-col--b .s3-text { background: var(--dark3); }
+
+    .s3-role {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .24em;
+      color: var(--gold2);
+      text-transform: uppercase;
+    }
+
+    .s3-name {
+      font-family: var(--serif);
+      font-size: clamp(28px, 3.2vw, 44px);
+      font-weight: 300;
+      line-height: 1.1;
+    }
+
+    .s3-col--a .s3-name { color: var(--text); }
+    .s3-col--b .s3-name { color: var(--cream); }
+
+    .s3-bio {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    .s3-col--a .s3-bio { color: var(--tmid); }
+    .s3-col--b .s3-bio { color: rgba(245,239,224,.72); }
+
+    .s3-hl {
+      padding: 14px 18px;
+      background: rgba(160,104,56,.13);
+      border-left: 2px solid var(--gold2);
+    }
+
+    .s3-hl-text {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(245,239,224,.88);
+      line-height: 1.6;
+    }
+
+    .s3-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .s3-tag {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: .1em;
+      padding: 4px 10px;
+      border: 1px solid rgba(200,145,74,.25);
+    }
+
+    .s3-col--a .s3-tag { color: var(--tlight); border-color: rgba(160,104,56,.2); }
+    .s3-col--b .s3-tag { color: rgba(245,239,224,.5); }
+
+    /* ══════════════════════════════════════════════
+       S4 — O OFÍCIO
+    ══════════════════════════════════════════════ */
+    .s4 {
+      position: relative;
+      display: flex;
+    }
+
+    .s4-bg {
+      position: absolute; inset: 0;
+      background: url('https://drive.google.com/thumbnail?id=1pSR9SjBdFa7KoWUZqT5lIRXsu6UyBvXD&sz=w2000') center / cover no-repeat;
+      filter: brightness(.32);
+    }
+
+    .s4-ov {
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg,
+        rgba(10,8,6,.9) 0%,
+        rgba(10,8,6,.35) 55%,
+        rgba(10,8,6,.0) 100%);
+    }
+
+    .s4-wrap {
+      position: relative; z-index: 2;
+      width: 54%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 72px 80px;
+      gap: 28px;
+    }
+
+    .s4-tag {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: .25em;
+      color: var(--gold2);
+      text-transform: uppercase;
+    }
+
+    .s4-title {
+      font-family: var(--serif);
+      font-size: clamp(42px, 5.2vw, 76px);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--cream);
+    }
+
+    .s4-title em { font-style: italic; color: var(--gold2); }
+
+    .s4-body {
+      font-family: var(--sans);
+      font-size: 14.5px;
+      font-weight: 300;
+      line-height: 1.72;
+      color: rgba(245,239,224,.72);
+      max-width: 420px;
+    }
+
+    .s4-specs { display: flex; flex-direction: column; gap: 11px; }
+
+    .s4-spec { display: flex; align-items: flex-start; gap: 14px; }
+
+    .s4-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--gold2);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    .s4-stxt {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(245,239,224,.62);
+      line-height: 1.55;
+    }
+
+    .s4-stxt strong {
+      font-weight: 500;
+      color: rgba(245,239,224,.88);
+    }
+
+    /* ══════════════════════════════════════════════
+       S5 — PORTFÓLIO
+    ══════════════════════════════════════════════ */
+    .s5 {
+      display: flex;
+      flex-direction: column;
+      background: var(--cream2);
+    }
+
+    .s5-head {
+      padding: 48px 64px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-shrink: 0;
+    }
+
+    .s5-tag {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: .25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .s5-title {
+      font-family: var(--serif);
+      font-size: clamp(34px, 4.2vw, 56px);
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.1;
+    }
+
+    .s5-title em { font-style: italic; color: var(--gold); }
+
+    .s5-sub {
+      font-family: var(--sans);
+      font-size: 12.5px;
+      font-weight: 300;
+      color: var(--tlight);
+      max-width: 240px;
+      text-align: right;
+      line-height: 1.55;
+    }
+
+    .s5-grid {
+      flex: 1;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 1fr;
+      gap: 2px;
+      padding: 0 2px 2px;
+    }
+
+    .s5-case {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .s5-img {
+      position: absolute; inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform .6s var(--ease);
+    }
+
+    .s5-case:hover .s5-img { transform: scale(1.04); }
+
+    .s5-ov {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,8,6,.88) 0%, rgba(10,8,6,.08) 55%, transparent 100%);
+    }
+
+    .s5-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 22px 26px;
+    }
+
+    .s5-cname {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.2;
+    }
+
+    .s5-cenv {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: .2em;
+      color: var(--gold2);
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ══════════════════════════════════════════════
+       S6 — CASE: FAZENDAS DA SERRA
+    ══════════════════════════════════════════════ */
+    .s6 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 3px;
+      background: var(--dark);
+    }
+
+    .s6-main {
+      grid-row: 1 / 3;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .s6-s1, .s6-s2 {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .s6-img {
+      position: absolute; inset: 0;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .s6-main-img {
+      background-image: url('https://drive.google.com/thumbnail?id=1U8nEdnPhpjgtdbgeuQXF15Q1JMVuQUVA&sz=w2000');
+      filter: brightness(.65);
+    }
+
+    .s6-s1-img {
+      background-image: url('https://drive.google.com/thumbnail?id=1vt8rMbuPr_3bZ9KB4LqejDPUsUk8VGa8&sz=w2000');
+      filter: brightness(.6);
+    }
+
+    .s6-s2-img {
+      background-image: url('https://drive.google.com/thumbnail?id=1c_VLa-_jAE3LOEXI2Dd6jwAGrUFfgCLn&sz=w2000');
+      filter: brightness(.6);
+    }
+
+    .s6-cap {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 16px 22px;
+      background: linear-gradient(to top, rgba(10,8,6,.85) 0%, transparent 100%);
+    }
+
+    .s6-cap-txt {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: .2em;
+      color: rgba(245,239,224,.5);
+      text-transform: uppercase;
+    }
+
+    .s6-info {
+      position: absolute; inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 38px 42px;
+      background: linear-gradient(to top, rgba(10,8,6,.92) 0%, rgba(10,8,6,.18) 55%, transparent 100%);
+    }
+
+    .s6-ctag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .28em;
+      color: var(--gold2);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .s6-ctitle {
+      font-family: var(--serif);
+      font-size: clamp(26px, 3.4vw, 46px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.1;
+    }
+
+    .s6-ctitle em { font-style: italic; color: var(--gold2); }
+
+    .s6-cdesc {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(245,239,224,.62);
+      line-height: 1.62;
+      margin-top: 12px;
+      max-width: 380px;
+    }
+
+    /* ══════════════════════════════════════════════
+       S7 — PROCESSO
+    ══════════════════════════════════════════════ */
+    .s7 {
+      display: flex;
+      flex-direction: column;
+      background: var(--cream2);
+    }
+
+    .s7-head {
+      padding: 48px 64px 36px;
+      flex-shrink: 0;
+    }
+
+    .s7-tag {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: .25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .s7-title {
+      font-family: var(--serif);
+      font-size: clamp(34px, 4vw, 54px);
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.1;
+      margin-top: 14px;
+    }
+
+    .s7-title em { font-style: italic; color: var(--gold); }
+
+    .s7-steps {
+      flex: 1;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      padding: 0 64px;
+      align-items: start;
+    }
+
+    .s7-step {
+      padding: 16px 28px 16px 0;
+      position: relative;
+    }
+
+    .s7-step::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 1px; height: 55%;
+      background: rgba(160,104,56,.14);
+    }
+
+    .s7-step:last-child::after { display: none; }
+
+    .s7-snum {
+      font-family: var(--serif);
+      font-size: 52px;
+      font-weight: 300;
+      color: rgba(160,104,56,.1);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .s7-stitle {
+      font-family: var(--sans);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .s7-sdesc {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--tlight);
+      line-height: 1.62;
+    }
+
+    .s7-stats {
+      flex-shrink: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid rgba(160,104,56,.1);
+    }
+
+    .s7-stat {
+      padding: 24px 64px;
+      border-right: 1px solid rgba(160,104,56,.08);
+    }
+
+    .s7-stat:last-child { border-right: none; }
+
+    .s7-sv {
+      font-family: var(--serif);
+      font-size: clamp(22px, 2.6vw, 34px);
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .s7-sl {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: .14em;
+      color: var(--tlight);
+      text-transform: uppercase;
+    }
+
+    /* ══════════════════════════════════════════════
+       S8 — CAPACIDADE
+    ══════════════════════════════════════════════ */
+    .s8 {
+      position: relative;
+      display: flex;
+    }
+
+    .s8-bg {
+      position: absolute; inset: 0;
+      background: url('https://drive.google.com/thumbnail?id=1p9VAPhVTptxWRP7Ph3OB0-ymayi71UJC&sz=w2000') center 28% / cover no-repeat;
+      filter: brightness(.22);
+    }
+
+    .s8-ov {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg,
+        rgba(10,8,6,.96) 0%,
+        rgba(10,8,6,.55) 100%);
+    }
+
+    .s8-wrap {
+      position: relative; z-index: 2;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 72px 80px;
+      gap: 48px;
+    }
+
+    .s8-tag {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: .25em;
+      color: var(--gold2);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .s8-title {
+      font-family: var(--serif);
+      font-size: clamp(40px, 5.2vw, 70px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.05;
+    }
+
+    .s8-title em { font-style: italic; color: var(--gold2); }
+
+    .s8-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .s8-metric {
+      padding: 32px 36px;
+      background: rgba(245,239,224,.04);
+      border: 1px solid rgba(200,145,74,.08);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .s8-mv {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 300;
+      color: var(--gold2);
+      line-height: 1;
+    }
+
+    .s8-ml {
+      font-family: var(--sans);
+      font-size: 12.5px;
+      font-weight: 300;
+      color: rgba(245,239,224,.5);
+      line-height: 1.5;
+    }
+
+    .s8-assets {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .s8-asset { display: flex; align-items: center; gap: 10px; }
+
+    .s8-adot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--gold2);
+      opacity: .55;
+    }
+
+    .s8-atxt {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(245,239,224,.45);
+    }
+
+    /* ══════════════════════════════════════════════
+       S9 — O QUE TRAZEMOS
+    ══════════════════════════════════════════════ */
+    .s9 {
+      display: flex;
+      flex-direction: column;
+      background: var(--cream2);
+    }
+
+    .s9-head {
+      padding: 48px 64px 36px;
+      flex-shrink: 0;
+    }
+
+    .s9-tag {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: .25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .s9-title {
+      font-family: var(--serif);
+      font-size: clamp(34px, 4vw, 54px);
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.1;
+      margin-top: 14px;
+    }
+
+    .s9-title em { font-style: italic; color: var(--gold); }
+
+    .s9-cols {
+      flex: 1;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      padding: 0 2px;
+    }
+
+    .s9-col {
+      padding: 36px 52px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      overflow: hidden;
+    }
+
+    .s9-col--a { background: var(--dark); }
+    .s9-col--b { background: rgba(160,104,56,.05); border: 1px solid rgba(160,104,56,.1); }
+
+    .s9-clabel {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .24em;
+      color: var(--gold2);
+      text-transform: uppercase;
+    }
+
+    .s9-ctitle {
+      font-family: var(--serif);
+      font-size: clamp(24px, 2.8vw, 36px);
+      font-weight: 300;
+      line-height: 1.18;
+    }
+
+    .s9-col--a .s9-ctitle { color: var(--cream); }
+    .s9-col--b .s9-ctitle { color: var(--text); }
+
+    .s9-col--a .s9-ctitle em { font-style: italic; color: var(--gold2); }
+    .s9-col--b .s9-ctitle em { font-style: italic; color: var(--gold); }
+
+    .s9-cdesc {
+      font-family: var(--sans);
+      font-size: 13.5px;
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    .s9-col--a .s9-cdesc { color: rgba(245,239,224,.68); }
+    .s9-col--b .s9-cdesc { color: var(--tlight); }
+
+    .s9-items { display: flex; flex-direction: column; gap: 9px; }
+
+    .s9-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    .s9-col--a .s9-item { color: rgba(245,239,224,.62); }
+    .s9-col--b .s9-item { color: var(--tlight); }
+
+    .s9-item::before {
+      content: '—';
+      color: var(--gold2);
+      flex-shrink: 0;
+      font-family: var(--sans);
+    }
+
+    .s9-bridge {
+      flex-shrink: 0;
+      padding: 26px 64px;
+      background: var(--dark3);
+      border-top: 1px solid rgba(200,145,74,.08);
+    }
+
+    .s9-btext {
+      font-family: var(--serif);
+      font-size: clamp(17px, 2vw, 24px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .s9-btext strong {
+      font-style: normal;
+      color: var(--gold2);
+      font-weight: 400;
+    }
+
+    /* ══════════════════════════════════════════════
+       S10 — ENCERRAMENTO
+    ══════════════════════════════════════════════ */
+    .s10 {
+      position: relative;
+      display: flex;
+    }
+
+    .s10-bg {
+      position: absolute; inset: 0;
+      background: url('https://drive.google.com/thumbnail?id=1-ORK1ZwG1CbkV3p8DENwWc_7BCphqdc7&sz=w2000') center 38% / cover no-repeat;
+      filter: brightness(.38);
+    }
+
+    .s10-ov {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom,
+        rgba(10,8,6,.15) 0%,
+        rgba(10,8,6,.55) 55%,
+        rgba(10,8,6,.97) 100%);
+    }
+
+    .s10-wrap {
+      position: relative; z-index: 2;
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 56px 80px 60px;
+      gap: 32px;
+    }
+
+    .s10-quote { max-width: 720px; }
+
+    .s10-qtxt {
+      font-family: var(--serif);
+      font-size: clamp(30px, 3.8vw, 56px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.25;
+    }
+
+    .s10-qtxt em {
+      font-style: normal;
+      color: var(--gold2);
+    }
+
+    .s10-sep {
+      width: 52px; height: 1px;
+      background: var(--gold2);
+    }
+
+    .s10-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .s10-contact { display: flex; flex-direction: column; gap: 5px; }
+
+    .s10-clabel {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: .22em;
+      color: rgba(245,239,224,.35);
+      text-transform: uppercase;
+    }
+
+    .s10-cname {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--cream);
+    }
+
+    .s10-cinfo {
+      font-family: var(--sans);
+      font-size: 12.5px;
+      font-weight: 300;
+      color: rgba(245,239,224,.5);
+    }
+
+    .s10-logo {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 300;
+      letter-spacing: .34em;
+      color: rgba(245,239,224,.6);
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<div class="deck" id="deck" data-t="dark">
+
+  <!-- 01 — CAPA -->
+  <div class="slide s1 active" data-t="dark">
+    <div class="s1-bg"></div>
+    <div class="s1-ov"></div>
+    <div class="s1-wrap">
+      <div class="s1-logo">Valvic</div>
+      <div class="s1-body">
+        <div class="s1-tag">Apresentação Estratégica · 2026</div>
+        <span class="gl gl--sm"></span>
+        <h1 class="s1-title">Marcenaria<br>de <em>Alto Padrão</em></h1>
+        <p class="s1-sub">Uma conversa sobre o próximo nível.</p>
+      </div>
+      <div class="s1-footer">
+        <span class="s1-conf">Confidencial — uso restrito</span>
+        <span class="s1-city">Belo Horizonte · 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 — TRAJETÓRIA -->
+  <div class="slide s2" data-t="dark">
+    <div class="s2-bg"></div>
+    <div class="s2-wrap">
+      <div class="s2-head">
+        <div class="s2-tag">02 — Crescimento</div>
+        <span class="gl gl--sm"></span>
+        <h2 class="s2-title">Triplicamos<br>em <em>3 anos.</em><br>Sem capital externo.</h2>
+      </div>
+      <div class="s2-nums">
+        <div class="s2-yr">
+          <div class="s2-yc">
+            <div class="s2-ylabel">2023</div>
+            <div class="s2-yval">R$ 645k</div>
+            <div class="s2-ynote">início de operação</div>
+          </div>
+        </div>
+        <div class="s2-yr">
+          <div class="s2-yc">
+            <div class="s2-ylabel">2024</div>
+            <div class="s2-yval">R$ 1,03M</div>
+            <div class="s2-ygrow">+60%</div>
+          </div>
+        </div>
+        <div class="s2-yr">
+          <div class="s2-yc">
+            <div class="s2-ylabel">2025</div>
+            <div class="s2-yval">R$ 1,5M</div>
+            <div class="s2-ygrow">+45%</div>
+          </div>
+        </div>
+        <div class="s2-yr">
+          <div class="s2-yc">
+            <div class="s2-ylabel">2026 · H1</div>
+            <div class="s2-yval hi">R$ 981k</div>
+            <div class="s2-ynote">jan – jun · 28 contratos</div>
+          </div>
+        </div>
+      </div>
+      <div class="s2-quote">
+        <p class="s2-qtext">"Nosso pico em um único mês foi R$ 572k. A estrutura está pronta. O que falta é combustível."</p>
+        <div class="s2-qattr">Setembro / 2025 — maior mês da história</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 — QUEM CONDUZ -->
+  <div class="slide s3" data-t="light">
+    <div class="s3-col s3-col--a">
+      <div class="s3-photo" style="background-image:url('https://drive.google.com/thumbnail?id=1wwOpRknx4WrSIhxAIVQgDTZwFlYTD4gr&sz=w2000');"></div>
+      <div class="s3-text">
+        <div class="s3-role">Sócio · Comercial &amp; Projetos</div>
+        <h3 class="s3-name">Jonathan<br>Teles</h3>
+        <span class="gl gl--sm gl--gold"></span>
+        <p class="s3-bio">Responsável pela frente comercial, relacionamento com arquitetos e gestão de projetos. Da apresentação ao contrato — com foco em proposta de valor, nunca em preço.</p>
+        <div class="s3-tags">
+          <span class="s3-tag">Gestão de Projetos</span>
+          <span class="s3-tag">Arquitetura</span>
+          <span class="s3-tag">Vendas Premium</span>
+        </div>
+      </div>
+    </div>
+    <div class="s3-col s3-col--b">
+      <div class="s3-photo" style="background-image:url('https://drive.google.com/thumbnail?id=1JSO9e6d4YX8ydJyx2VPZ_czDt3q3aPLB&sz=w2000');"></div>
+      <div class="s3-text">
+        <div class="s3-role">Sócio · Produção &amp; Engenharia</div>
+        <h3 class="s3-name">Paulo<br>Valverde</h3>
+        <span class="gl gl--sm"></span>
+        <p class="s3-bio">10+ anos de marcenaria premium. Antes da Valvic, liderou produção na Monte Negro — entregando projetos acima de R$ 500k para os maiores nomes de BH.</p>
+        <div class="s3-hl">
+          <p class="s3-hl-text">Luciana Rajão · Emive · Tambasa · Copoplast · Advocacias de elite · <strong style="color:var(--gold2)">Showrooms Caparaó</strong></p>
+        </div>
+        <div class="s3-tags">
+          <span class="s3-tag">Monte Negro</span>
+          <span class="s3-tag">CNC &amp; Engenharia</span>
+          <span class="s3-tag">10 anos premium</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 — O OFÍCIO -->
+  <div class="slide s4" data-t="dark">
+    <div class="s4-bg"></div>
+    <div class="s4-ov"></div>
+    <div class="s4-wrap">
+      <div class="s4-tag">04 — Craft</div>
+      <span class="gl gl--sm"></span>
+      <h2 class="s4-title">O nosso<br><em>ofício</em></h2>
+      <p class="s4-body">Não entregamos apenas móveis — entregamos projetos que existiram décadas no imaginário do cliente e que duraram toda a vida no espaço que ele habita.</p>
+      <div class="s4-specs">
+        <div class="s4-spec">
+          <div class="s4-dot"></div>
+          <div class="s4-stxt"><strong>Lâmina natural seriada</strong> — painéis de 15–25m com padrão uniforme de veio, corte a corte</div>
+        </div>
+        <div class="s4-spec">
+          <div class="s4-dot"></div>
+          <div class="s4-stxt"><strong>Ferragens Hettich &amp; Blum</strong> — engenharia alemã e austríaca, garantia de 10 anos a vitalícia</div>
+        </div>
+        <div class="s4-spec">
+          <div class="s4-dot"></div>
+          <div class="s4-stxt"><strong>MDF melamínico Duratex</strong> — superfície premium, resistente a risco e umidade</div>
+        </div>
+        <div class="s4-spec">
+          <div class="s4-dot"></div>
+          <div class="s4-stxt"><strong>Equipe própria do corte à montagem</strong> — sem terceirizar o núcleo</div>
+        </div>
+        <div class="s4-spec">
+          <div class="s4-dot"></div>
+          <div class="s4-stxt"><strong>Fidelidade ao projeto</strong> — o que o arquiteto desenhou é o que se entrega</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 — PORTFÓLIO -->
+  <div class="slide s5" data-t="light">
+    <div class="s5-head">
+      <div>
+        <div class="s5-tag">05 — Portfólio</div>
+        <h2 class="s5-title">Projetos que<br><em>falam por si.</em></h2>
+      </div>
+      <p class="s5-sub">Residências e corporativo de alto padrão em Belo Horizonte e região.</p>
+    </div>
+    <div class="s5-grid">
+      <div class="s5-case">
+        <div class="s5-img" style="background-image:url('https://drive.google.com/thumbnail?id=1oNysOf-wZ5M7x035h0UOAJNB4bCrRtMV&sz=w2000');"></div>
+        <div class="s5-ov"></div>
+        <div class="s5-info">
+          <div class="s5-cname">Fazendas da Serra</div>
+          <div class="s5-cenv">Residência · Lâmina Natural</div>
+        </div>
+      </div>
+      <div class="s5-case">
+        <div class="s5-img" style="background-image:url('https://drive.google.com/thumbnail?id=1PgHzp_dbECtDgkj_qIalnbYolOTKI48N&sz=w2000');"></div>
+        <div class="s5-ov"></div>
+        <div class="s5-info">
+          <div class="s5-cname">Casa Graciane</div>
+          <div class="s5-cenv">Sala Cinema · Home Theater</div>
+        </div>
+      </div>
+      <div class="s5-case">
+        <div class="s5-img" style="background-image:url('https://drive.google.com/thumbnail?id=14C2ZCfFpyZmK0JUM7k3n0CG8ILSdN1Lq&sz=w2000');"></div>
+        <div class="s5-ov"></div>
+        <div class="s5-info">
+          <div class="s5-cname">Escritório Marco Túlio</div>
+          <div class="s5-cenv">Corporativo · Alto Padrão</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 — CASE: FAZENDAS DA SERRA -->
+  <div class="slide s6" data-t="dark">
+    <div class="s6-main">
+      <div class="s6-img s6-main-img"></div>
+      <div class="s6-info">
+        <div class="s6-ctag">06 — Case em destaque</div>
+        <h2 class="s6-ctitle">Residência<br><em>Fazendas da Serra</em></h2>
+        <p class="s6-cdesc">Casa completa com painéis de lâmina natural seriada, portas coplanares e system deslizante importado para portas de 100kg+. Cada ambiente projetado para ser único — e executado para durar décadas.</p>
+      </div>
+    </div>
+    <div class="s6-s1">
+      <div class="s6-img s6-s1-img"></div>
+      <div class="s6-cap">
+        <div class="s6-cap-txt">Escritório · Lâmina natural</div>
+      </div>
+    </div>
+    <div class="s6-s2">
+      <div class="s6-img s6-s2-img"></div>
+      <div class="s6-cap">
+        <div class="s6-cap-txt">Sala · Marcenaria integrada</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 — PROCESSO -->
+  <div class="slide s7" data-t="light">
+    <div class="s7-head">
+      <div class="s7-tag">07 — Processo</div>
+      <span class="gl gl--sm gl--gold"></span>
+      <h2 class="s7-title">Do conceito<br><em>à entrega.</em></h2>
+    </div>
+    <div class="s7-steps">
+      <div class="s7-step">
+        <div class="s7-snum">01</div>
+        <div class="s7-stitle">Briefing</div>
+        <p class="s7-sdesc">Absorção do projeto do arquiteto. Levantamento técnico in loco. Alinhamento de expectativas antes de qualquer corte.</p>
+      </div>
+      <div class="s7-step">
+        <div class="s7-snum">02</div>
+        <div class="s7-stitle">Projeto</div>
+        <p class="s7-sdesc">Proposta técnica com especificação completa de materiais, ferragens e acabamentos. Sem surpresas no meio do caminho.</p>
+      </div>
+      <div class="s7-step">
+        <div class="s7-snum">03</div>
+        <div class="s7-stitle">Produção CNC</div>
+        <p class="s7-sdesc">Corte e usinagem no galpão próprio. CNC de precisão. Coladeira de borda automática para acabamento sem emendas.</p>
+      </div>
+      <div class="s7-step">
+        <div class="s7-snum">04</div>
+        <div class="s7-stitle">Montagem</div>
+        <p class="s7-sdesc">Equipe própria em campo. Controle de qualidade direto do Paulo em cada etapa. Sem terceirização do núcleo.</p>
+      </div>
+      <div class="s7-step">
+        <div class="s7-snum">05</div>
+        <div class="s7-stitle">Entrega</div>
+        <p class="s7-sdesc">Vistoria final com o cliente e o arquiteto. Garantia registrada. Relacionamento que continua após a chave entregue.</p>
+      </div>
+    </div>
+    <div class="s7-stats">
+      <div class="s7-stat">
+        <div class="s7-sv">10</div>
+        <div class="s7-sl">pessoas na equipe</div>
+      </div>
+      <div class="s7-stat">
+        <div class="s7-sv">28</div>
+        <div class="s7-sl">projetos em H1 / 2026</div>
+      </div>
+      <div class="s7-stat">
+        <div class="s7-sv">Hettich · Blum</div>
+        <div class="s7-sl">ferragens certificadas</div>
+      </div>
+      <div class="s7-stat">
+        <div class="s7-sv">Próprio</div>
+        <div class="s7-sl">galpão · CNC · coladeira</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 08 — CAPACIDADE -->
+  <div class="slide s8" data-t="dark">
+    <div class="s8-bg"></div>
+    <div class="s8-ov"></div>
+    <div class="s8-wrap">
+      <div>
+        <div class="s8-tag">08 — Capacidade &amp; Escala</div>
+        <span class="gl gl--sm"></span>
+        <h2 class="s8-title">A estrutura<br><em>está pronta.</em></h2>
+      </div>
+      <div class="s8-metrics">
+        <div class="s8-metric">
+          <div class="s8-mv">R$ 572k</div>
+          <div class="s8-ml">pico em um único mês<br>setembro / 2025</div>
+        </div>
+        <div class="s8-metric">
+          <div class="s8-mv">R$ 981k</div>
+          <div class="s8-ml">faturado em 6 meses<br>H1 / 2026</div>
+        </div>
+        <div class="s8-metric">
+          <div class="s8-mv">R$ 3M</div>
+          <div class="s8-ml">meta 2026<br>com o parceiro certo</div>
+        </div>
+      </div>
+      <div class="s8-assets">
+        <div class="s8-asset"><div class="s8-adot"></div><div class="s8-atxt">Galpão próprio em BH</div></div>
+        <div class="s8-asset"><div class="s8-adot"></div><div class="s8-atxt">CNC de precisão</div></div>
+        <div class="s8-asset"><div class="s8-adot"></div><div class="s8-atxt">Coladeira de borda automática</div></div>
+        <div class="s8-asset"><div class="s8-adot"></div><div class="s8-atxt">Equipe de 10 profissionais</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 09 — O QUE TRAZEMOS À MESA -->
+  <div class="slide s9" data-t="light">
+    <div class="s9-head">
+      <div class="s9-tag">09 — A proposta</div>
+      <span class="gl gl--sm gl--gold"></span>
+      <h2 class="s9-title">O que trazemos<br><em>à mesa.</em></h2>
+    </div>
+    <div class="s9-cols">
+      <div class="s9-col s9-col--a">
+        <div class="s9-clabel">O que a Valvic traz</div>
+        <span class="gl gl--sm"></span>
+        <h3 class="s9-ctitle">Marca, estrutura e<br><em>crescimento comprovado.</em></h3>
+        <p class="s9-cdesc">Não é uma aposta em sonho. É uma curva de crescimento que já existe — construída sem sócio investidor, sem atalho.</p>
+        <div class="s9-items">
+          <div class="s9-item">Marca premium consolidada junto a arquitetos de BH</div>
+          <div class="s9-item">Capacidade instalada: galpão, CNC, equipe de 10</div>
+          <div class="s9-item">R$ 645k → R$ 1,5M em 3 anos, orgânico</div>
+          <div class="s9-item">Equipe de produção com 10+ anos de marcenaria premium</div>
+          <div class="s9-item">Processos e controle de qualidade rodando</div>
+        </div>
+      </div>
+      <div class="s9-col s9-col--b">
+        <div class="s9-clabel">O que o parceiro certo abre</div>
+        <span class="gl gl--sm" style="background:var(--gold);"></span>
+        <h3 class="s9-ctitle">O acesso que<br><em>multiplica a escala.</em></h3>
+        <p class="s9-cdesc">A Valvic tem a capacidade de execução. O que falta é o parceiro que abre portas para contratos maiores e recorrentes — o que uma rede estratégica traz.</p>
+        <div class="s9-items">
+          <div class="s9-item">Capital de giro para absorver contratos de ciclo longo</div>
+          <div class="s9-item">Acesso a clientes e projetos além do alcance atual</div>
+          <div class="s9-item">Visibilidade em novos mercados e nichos de alto valor</div>
+          <div class="s9-item">Credibilidade para contratos de seis dígitos ou mais</div>
+        </div>
+      </div>
+    </div>
+    <div class="s9-bridge">
+      <p class="s9-btext">A Valvic tem a <strong>marca premium</strong> e a <strong>capacidade de escalar.</strong> O que falta é combustível e acesso — que é exatamente o que o parceiro certo traz.</p>
+    </div>
+  </div>
+
+  <!-- 10 — ENCERRAMENTO -->
+  <div class="slide s10" data-t="dark">
+    <div class="s10-bg"></div>
+    <div class="s10-ov"></div>
+    <div class="s10-wrap">
+      <div class="s10-quote">
+        <p class="s10-qtxt">"A diferença entre<br>fazer um móvel<br>e <em>viver um projeto.</em>"</p>
+      </div>
+      <div class="s10-sep"></div>
+      <div class="s10-foot">
+        <div class="s10-contact">
+          <div class="s10-clabel">Contato</div>
+          <div class="s10-cname">Jonathan Teles</div>
+          <div class="s10-cinfo">valvicmarcenaria@gmail.com</div>
+        </div>
+        <div class="s10-logo">Valvic</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /deck -->
+
+<!-- Nav dots -->
+<div class="nav-dots" id="navDots"></div>
+
+<!-- Prev / Next buttons -->
+<button class="nav-btn nav-prev" id="btnPrev" aria-label="Slide anterior">
+  <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+</button>
+<button class="nav-btn nav-next" id="btnNext" aria-label="Próximo slide">
+  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+</button>
+
+<!-- Counter -->
+<div class="slide-ctr" id="ctr">01 / 10</div>
+
+<!-- Click zones -->
+<div class="zone zone-l" id="zoneL"></div>
+<div class="zone zone-r" id="zoneR"></div>
+
+<script>
+(function () {
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const deck   = document.getElementById('deck');
+  const dotsEl = document.getElementById('navDots');
+  const ctrEl  = document.getElementById('ctr');
+  const N      = slides.length;
+  let cur = 0, busy = false;
+
+  // Build dots
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', `Slide ${i + 1}`);
+    d.addEventListener('click', () => go(i));
+    dotsEl.appendChild(d);
+  });
+
+  const dots = Array.from(dotsEl.querySelectorAll('.dot'));
+
+  function update() {
+    dots.forEach((d, i) => d.classList.toggle('active', i === cur));
+    ctrEl.textContent = `${String(cur + 1).padStart(2,'0')} / ${String(N).padStart(2,'0')}`;
+    deck.dataset.t = slides[cur].dataset.t || 'dark';
+  }
+
+  function go(idx) {
+    if (idx === cur || busy) return;
+    busy = true;
+    slides[cur].classList.remove('active');
+    slides[cur].classList.add('exit');
+    const prev = slides[cur];
+    cur = ((idx % N) + N) % N;
+    slides[cur].classList.add('active');
+    update();
+    setTimeout(() => { prev.classList.remove('exit'); busy = false; }, 800);
+  }
+
+  const next = () => go((cur + 1) % N);
+  const prev = () => go((cur - 1 + N) % N);
+
+  document.getElementById('btnNext').addEventListener('click', next);
+  document.getElementById('btnPrev').addEventListener('click', prev);
+  document.getElementById('zoneR').addEventListener('click', next);
+  document.getElementById('zoneL').addEventListener('click', prev);
+
+  document.addEventListener('keydown', e => {
+    if (['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)) { e.preventDefault(); next(); }
+    else if (['ArrowLeft','ArrowUp','PageUp'].includes(e.key))     { e.preventDefault(); prev(); }
+    else if (e.key === 'Home') { e.preventDefault(); go(0); }
+    else if (e.key === 'End')  { e.preventDefault(); go(N - 1); }
+    else if (e.key >= '1' && e.key <= '9') { go(parseInt(e.key) - 1); }
+    else if (e.key === '0') { go(9); }
+  });
+
+  let tx = 0, ty = 0;
+  document.addEventListener('touchstart', e => {
+    tx = e.changedTouches[0].screenX;
+    ty = e.changedTouches[0].screenY;
+  }, { passive: true });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].screenX - tx;
+    const dy = e.changedTouches[0].screenY - ty;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) dx < 0 ? next() : prev();
+  }, { passive: true });
+
+  update();
+})();
+</script>
+</body>
+</html>
