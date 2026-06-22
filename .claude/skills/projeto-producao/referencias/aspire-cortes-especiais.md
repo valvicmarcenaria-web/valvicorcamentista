@@ -37,12 +37,16 @@ sacrifício além de 0,1 = estraga a chapa de sacrifício, a fresa e arrisca a m
 > "corte passante" não terminar em Z=−0,1, **parar e perguntar** — provável erro
 > de Z-zero/espessura (a causa clássica de furar o sacrifício ou cortar raso).
 
-## Ferramentas (magazine)
+## Ferramentas (magazine de 10)
 
-| Posição | Ferramenta | Raio | Usada em |
-|---|---|---|---|
-| **T2** | **Fresa reta 6mm** | 3mm | corte de contorno/passante (os dois exemplos) |
-| outras | a confirmar | | (V-bit p/ dobra, fresa de friso LED, etc.) |
+Por ora, testes só com **T2** e **T7**. As outras 8 (finalidade, offsets/descontos)
+o Jonathan informa depois.
+
+| Posição | Ferramenta | Raio | Usada em | Status |
+|---|---|---|---|---|
+| **T2** | **Fresa reta 6mm** | 3mm | contorno/corte passante (os dois exemplos) | em uso |
+| **T7** | **Fresa reta 3mm** | 1,5mm | cortes finos/detalhe (a detalhar) | em uso |
+| T1, T3–T6, T8–T10 | a informar | | (V-bit p/ dobra, friso LED, etc.) | pendente |
 
 > O `M6T<n>` + `G43 H<n>` sempre casam o nº da ferramenta com o nº do offset (H).
 > Em contorno externo com fresa de 6mm, os cantos saem com **arco de raio 3mm**
