@@ -111,3 +111,21 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
   proposta única com os 2 cenários (Linha Essencial melamínico / Linha Natural lâmina Freijó),
   garantia 10 anos (Hettich) + Blum vitalícia → `closer-vendas/propostas/proposta-sala-bia-matheus.html`
   + PDF. Destaques: lâmina natural face a face, fecha-toque Blum, vidro jateado, Hettich, recorte CNC.
+
+### [2026-06-22] Vitor/Stefan — Sala: refino da proposta (processo da lâmina + imagens)
+- **Cristaleira:** portas superiores são **DE CORRER** em vidro jateado (não "abrem ao toque");
+  fecha-toque Blum fica nas portas do **corpo**. Sistema de correr do vidro: sem custo extra (decisão do fundador).
+- **Tabela de preço por móvel** (2 cenários) no Investimento: Aparador 6.200/28.900 · **Estante 24.500
+  igual nas duas** (laqueada, não muda) · Cristaleira 5.300/16.600. A estante igual mostra que a
+  diferença R$36k→70k é só o acabamento (lâmina) do aparador+cristaleira — ótimo argumento.
+- **Página nova "O processo da lâmina natural"**: galeria full-bleed + timeline com ícones. Processo
+  **validado pelo fundador** (vale p/ todo projeto em lâmina): seleção folha a folha → **casamento do
+  veio** (continuidade entre peças; eles fazem) → prensagem **cola PVA** (nem sempre a quente) →
+  lixamento (sentido do veio) → **acabamento face a face: selador + verniz fosco ou tonalizado**.
+  *(A secagem precede a seleção e fica fora do documento.)*
+- **Aprendizados de workflow (importantes):**
+  1. **Imagem COLADA no chat NÃO chega como arquivo** pra mim — só vejo, não acesso. Pedir como
+     **anexo de arquivo** OU por **link do Drive** (baixo via MCP: download → base64 → decode no disco). Funcionou.
+  2. **Não usar imagem com logo de outra marca** na proposta (descartei a "Welspun/Natura MATT"). Regra de QA do Vitor.
+  3. **Apresentar o conceito de design antes de aplicar** quando o fundador pede algo mais criativo.
+- Fotos reais de Freijó versionadas em `closer-vendas/propostas/img/`. Proposta = **7 páginas**.
