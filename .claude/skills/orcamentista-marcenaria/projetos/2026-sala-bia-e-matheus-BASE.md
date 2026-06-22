@@ -12,13 +12,12 @@
 
 | Versão | Acabamento | Material | **Investimento** | MC |
 |---|---|---:|---:|:--:|
-| **V1 · Melamínico Freijó** | madeirado (melamínico) | R$ 11.877 | **R$ 34.264** | 34,6% |
-| **V2 · Lâmina natural Freijó** | lâmina 2 faces + acabamento face a face | R$ 23.461 | **R$ 66.583** | 34,4% |
+| **V1 · Melamínico Freijó** | madeirado (melamínico) | R$ 11.877 | **R$ 36.000** | 36,3% |
+| **V2 · Lâmina natural Freijó** | lâmina 2 faces + acabamento face a face | R$ 23.461 | **R$ 70.000** | 36,1% |
 
-> **Preços PROPOSITAIS** (decisão do fundador 06/2026): fechados **abaixo do piso de
-> exceção 37%** do Rodrigo para viabilizar o fechamento. **Laca a R$450/m² = preço
-> NEGOCIADO só deste projeto** (a base segue R$650). **Dobradiça só no aparador.**
-> **Estante = 2 gavetas.**
+> **Fechado a MC ~36%** (valores cheios, decisão do fundador 06/2026 — um pouco abaixo do piso de
+> exceção 37% do Rodrigo, autorizado para fechar). **Laca a R$450/m² = preço NEGOCIADO só deste
+> projeto** (a base segue R$650). **Dobradiça no aparador e na cristaleira.** **Estante = 2 gavetas.**
 
 ## Inventário (arq. Giovanna Camisassa)
 
@@ -26,7 +25,7 @@
 |---|---|:--:|:--:|
 | **M01 · Aparador** | móvel **baixo em L** (~240+90cm · H35 · D40) com portas · **tudo 15mm** · TOM 01 | ❌ | ❌ |
 | **M02 · Estante** | **277cm** · alturas 30/90/120cm · gavetas + nichos · **recorte circular Ø20+R10** | ✅ (2 versões) | ❌ |
-| **M03 · Cristaleira** | **130cm** · corpo TOM 01 · **portas superiores em vidro temperado jateado** | ❌ | ✅ |
+| **M03 · Cristaleira** | **130cm** · corpo TOM 01 · **portas superiores DE CORRER em vidro temperado jateado** · fecha-toque Blum no corpo | ❌ | ✅ |
 
 > **TOM 01** = a peça que muda entre versões (madeirado V1 × lâmina natural Freijó V2).
 > **Laca existe só na estante; vidro existe só na cristaleira; o aparador é TOM 01 puro.**
@@ -84,7 +83,7 @@
 | Acabamento lâmina (face a face) | — | 22,9 m² ×350 |
 | MDF cru 15mm (estante) | 3 ch. ×300 | 3 ch. ×300 |
 | MDF cru 6mm (estante) | 2 ch. ×190 | 2 ch. ×190 |
-| Laca (estante) | 14 m² ×650 | 14 m² ×650 |
+| Laca (estante) | 14 m² ×450 | 14 m² ×450 |
 | Vidro jateado 6mm (cristaleira) | 1,2 m² ×300 + log 150 | idem |
 | Ferragens Hettich Novisys / Quadro | 30 dobr. + 4 corr. | idem |
 | Logística (lâmina/laca/vidro) | laca 150 + vidro 150 | lâmina 400 + laca 150 + vidro 150 |
@@ -93,13 +92,12 @@
 
 `inv = (material + visita R$250) / (0,70 − MC)`
 
-| Versão | Material | Investimento (proposital) | MC real |
+| Versão | Material | Investimento (fechado) | MC real |
 |---|---:|---:|:--:|
-| V1 Melamínico | 11.877 | **R$ 34.264** | **34,6%** |
-| V2 Lâmina | 23.461 | **R$ 66.583** | **34,4%** |
+| V1 Melamínico | 11.877 | **R$ 36.000** | **36,3%** |
+| V2 Lâmina | 23.461 | **R$ 70.000** | **36,1%** |
 
-> Preços definidos pelo fundador (propositais, abaixo do piso 37%). Não recalcular pra cima
-> sem nova ordem.
+> Preços fechados pelo fundador a MC ~36% (valores cheios). Não recalcular sem nova ordem.
 
 ## 🔶 A confirmar (drivers de custo) — restantes
 1. **Área de laca da estante** (14 m² de face) — maior driver isolado.
