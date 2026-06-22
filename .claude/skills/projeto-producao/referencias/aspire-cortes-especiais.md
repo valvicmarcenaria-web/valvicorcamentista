@@ -13,19 +13,29 @@
    material). Post errado ou Z trocado bate o spindle / estraga a chapa.
 3. **Nunca inventar os M-codes próprios do JRG** (ver abaixo) — copiar verbatim.
 
-## ⭐ Referência de Z — a regra que muda tudo
+## ⭐ Referência de Z — a regra que muda tudo (CONFIRMADO pelo Jonathan)
 
-**O Z-zero está na MESA (spoilboard), NÃO no topo da chapa.** Consequências:
-- O **topo da chapa** fica em `Z = +espessura` (ex.: chapa 15mm → topo em Z+15).
-- **Corte passante** = descer até **Z-0,100** (0,1mm dentro do sacrifício, garante
-  atravessar). Ex.: chapa 15mm → descida total de **15,1mm** (de +15 a −0,1).
+Na mesa há uma **chapa de sacrifício**; o **eixo Z é sempre zerado sobre ela**
+(Z-zero = topo do sacrifício). A chapa a cortar fica **em cima** do sacrifício.
+
+### 🚨 INVARIANTE DE SEGURANÇA — Z NUNCA passa de −0,100
+O ponto mais fundo de **qualquer** toolpath é **Z = −0,100** (0,1mm dentro do
+sacrifício). **Nunca mais que isso**, seja qual for a espessura. Furar o
+sacrifício além de 0,1 = estraga a chapa de sacrifício, a fresa e arrisca a mesa.
+
+- **Topo da chapa** fica em `Z = +espessura` (chapa 15mm → topo em Z+15).
+- **Corte passante** = descer até **Z−0,100**. Descida total = espessura + 0,1:
+  - 15mm → 15,1 · 18mm → 18,1 · 6mm → 6,1 (sempre terminando em Z−0,1).
+- **Corte parcial** (friso, V-groove, rebaixo) = `Z = espessura − profundidade`
+  (ex.: friso de 5mm numa chapa de 15mm → fundo em **Z+10**). Nunca passar de −0,1.
 - **Altura de segurança (clearance)** = topo da chapa + **5,08mm** (0,2", padrão
-  Aspire). ⇒ **dá para inferir/conferir a espessura:** `espessura = clearanceZ − 5,08`.
+  Aspire). ⇒ **conferir a espessura:** `espessura = clearanceZ − 5,08`.
   - Exemplos reais: clearance 11,080 → 6mm · clearance 20,080 → 15mm.
 
-> **Caça-erro do Téo:** se a clearance não bater com a espessura declarada, ou se
-> um "corte passante" não terminar em Z≈−0,1, **parar e perguntar** — provável erro
-> de Z-zero (a causa clássica de cortar raso/fundo demais).
+> **Caça-erro / trava do Téo:** ao gerar ou conferir qualquer `.tap`, validar que
+> **nenhum Z < −0,1**. Se a clearance não bater com a espessura declarada, ou um
+> "corte passante" não terminar em Z=−0,1, **parar e perguntar** — provável erro
+> de Z-zero/espessura (a causa clássica de furar o sacrifício ou cortar raso).
 
 ## Ferramentas (magazine)
 
@@ -93,7 +103,8 @@ Os M-codes **M158/M162** (liga) e **M159/M163** (desliga) são do JRG (provável
 vácuo da mesa + aspiração). **Sempre em par, sempre presentes, nunca inventados.**
 
 ## A confirmar (para gerar corte com segurança total)
-- **Confirmar o Z-zero na mesa** (deduzido, não dito) e o **datum 0,0** na chapa.
+- ✅ **Z-zero na chapa de sacrifício** — CONFIRMADO. Z mín. = −0,1 (ver acima).
+- **Datum 0,0** na chapa (onde fica o canto de referência na mesa).
 - **Passada única × múltiplas:** até que espessura corta em cheio numa passada só?
   Acima disso, de quanto é o passo em Z?
 - O que cada M-code (M158/M159/M162/M163) realmente aciona.

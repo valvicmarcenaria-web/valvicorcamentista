@@ -18,7 +18,7 @@
       "troca_ferramenta": { "tipo": "automática (ATC)", "magazine": "linear", "capacidade": 10 },
       "estrutura": "aço estrutural usinado, ~1500 kg",
       "software_comando": "Controlador JRG · post-processador Vectric Aspire 'JRG CNC SOLID TAF'",
-      "dialeto_gcode": "mm, absoluto (G90 implícito); Z-ZERO NA MESA (corte passante = Z-0.100; clearance = espessura+5.08mm); N# incremento 1; G00/G1/G2-G3 com I/J; spindle M3S24000; troca M6T<n>+G43 H<n>; M-codes próprios M158/M162 (liga) e M159/M163 (desliga) — par obrigatório, não inventar. Decodificado em referencias/aspire-cortes-especiais.md (exemplos reais em referencias/exemplos/).",
+      "dialeto_gcode": "mm, absoluto (G90 implícito); Z-ZERO NA CHAPA DE SACRIFÍCIO (CONFIRMADO) — INVARIANTE: Z nunca < -0.100; corte passante = Z-0.100 (descida = espessura+0.1); corte parcial = Z = espessura-profundidade; clearance = espessura+5.08mm; N# incremento 1; G00/G1/G2-G3 com I/J; spindle M3S24000; troca M6T<n>+G43 H<n>; M-codes próprios M158/M162 (liga) e M159/M163 (desliga) — par obrigatório, não inventar. Decodificado em referencias/aspire-cortes-especiais.md (exemplos reais em referencias/exemplos/).",
       "ferramentas": [
         { "posicao": 2, "tipo": "fresa reta", "diametro_mm": 6, "raio_mm": 3, "uso": "contorno/corte passante" }
       ],
