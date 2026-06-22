@@ -113,15 +113,16 @@ b = encargos s/ líquido (4,3% + **RT 10% = 14,3%**), liqF = 1 − NF − parc (
 
 | Linha | Descrição | Preço |
 |-------|-----------|-------|
-| **Gold** | Build cheio: corrediça **oculta Hardt**, tampo em chapa dupla, nichos forrados em Savana, LED na prateleira e no nicho. Garantia 10 anos. | **R$ 21.500** |
-| **Silver** | Build enxuto: corrediça **telescópica** (garantia 2 anos na corrediça), tampo **18 mm c/ engrossamento de borda**, nichos **só com fundo Savana**, LED só na prateleira. | **R$ 17.500** |
+| **Gold** | Build cheio: corrediça **oculta Hardt**, tampo em chapa dupla, nichos forrados em Savana, LED na prateleira e nos nichos. Garantia **5 anos (Hardt)**. | **R$ 21.500** |
+| **Silver** | Build enxuto: corrediça **telescópica** (garantia 2 anos na corrediça), tampo **18 mm c/ engrossamento de borda**, nichos **só com fundo Savana**. **LED na prateleira E nos nichos** (igual ao Gold — exigência do projeto). | **R$ 17.500** |
 
 Diferença Gold↔Silver: **R$ 4.000 (−19%)** — justificada por escopo real, não só margem.
 
 **Pagamento** (tabela Valvic): 30% entrada + 10× cartão · 50%+8× (−3%) · 70%+6×
 (−5%) · **70% à vista + transferência (−7%)** → Gold ≈ **R$ 20.000**.
-**Prazo:** **60–70 dias úteis**. **Garantia:** 10 anos (estrutura + ferragens).
-**Validade:** 2 dias úteis. **RT** repassada à arquiteta conforme cronograma.
+**Prazo:** **60–70 dias úteis**. **Garantia:** **até 5 anos** (Hardt, na Completa) /
+2 anos (telescópica, na Essencial) — política escalonada por ferragem.
+**Validade:** 7 dias. **RT** repassada à arquiteta conforme cronograma.
 
 ## 8. Diferença construtiva Gold × Silver (o que muda o custo)
 
@@ -130,7 +131,10 @@ Diferença Gold↔Silver: **R$ 4.000 (−19%)** — justificada por escopo real,
 | Corrediça (3 gavetas M1) | Oculta Hardt | Telescópica | ~R$90 |
 | Tampo da bancada (M2) | Chapa dupla (~4 cm) | 18 mm + engrossamento de borda | ~½ chapa |
 | Forro dos nichos (M3) | Caixa forrada em Savana recuada | Só fundo em Savana | ~1 chapa Savana 15 + fita |
-| LED | Prateleira + nicho | Só prateleira | ~1 m LED |
+
+> **LED igual nas duas versões** (prateleira + nichos) — está no escopo de ambas, não é
+> diferencial (correção: o projeto exige LED também nos nichos). Já estava no custo do Silver,
+> então a MC de 25,1% não muda.
 
 ## 9. Notas de metodologia
 
