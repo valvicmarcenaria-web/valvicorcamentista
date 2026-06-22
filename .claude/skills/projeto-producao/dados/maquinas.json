@@ -17,8 +17,8 @@
       "vacuo": { "bomba_kw": 7.5, "camaras": 4, "acionamento": "manual" },
       "troca_ferramenta": { "tipo": "automática (ATC)", "magazine": "linear", "capacidade": 10 },
       "estrutura": "aço estrutural usinado, ~1500 kg",
-      "software_comando": null,
-      "obs": "CONFIRMAR: controlador/CAM que recebe o DXF do MD e o post do Aspire. Fonte specs: raizenmachine.com.br/solidtaf."
+      "software_comando": "Controlador JRG · post-processador Vectric Aspire 'JRG CNC SOLID TAF'",
+      "obs": "Recebe o DXF do MD e o post do Aspire. Controlador JRG (dialeto de G-code pouco documentado publicamente — usar o arquivo .pp real como fonte da verdade). Fonte specs: raizenmachine.com.br/solidtaf."
     },
     {
       "nome": "Coladeira de borda",

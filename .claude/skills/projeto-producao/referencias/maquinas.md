@@ -19,6 +19,9 @@
 - **Spindle:** 9 kW (12 CV), 12.000–24.000 RPM, cone ISO 30, pinça ER 32.
 - **Vácuo:** bomba 7,5 kW, mesa de **4 câmaras** (acionamento manual).
 - **Troca automática de ferramenta:** magazine linear, **10 ferramentas**.
+- **Controlador:** **JRG** · post-processador Aspire = **"JRG CNC SOLID TAF"**.
+  Dialeto pouco documentado publicamente → o **arquivo `.pp`** é a fonte da
+  verdade para gerar G-code com segurança.
 - Estrutura em aço, ~1500 kg.
 
 > **Descoberta importante:** com ATC de 10 ferramentas + Z200, **o nesting e os
