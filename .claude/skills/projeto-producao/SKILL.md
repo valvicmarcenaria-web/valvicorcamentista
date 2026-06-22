@@ -107,6 +107,7 @@ para não errar. Hoje essa ponte não existe; é onde a informação se perde.
   friso de dobra de MDF (V-groove), cortes curvos.
 - **UPmob:** futuro (a integrar quando entrar).
 
-> **Status:** skill nova, em construção colaborativa. Persona a nomear. Próximo
-> material esperado: fotos das máquinas + 1 conferência de obra real para calibrar
-> o Contrato de Informação contra um caso vivido.
+> **Status:** skill nova (persona = **Téo**), em construção colaborativa. Estado
+> atual: Degrau 1 montado + parque de máquinas mapeado + saber de marceneiro
+> iniciado. Próximo material esperado: 1 conferência de obra real e os casos do
+> Paulo (modos de falha) para calibrar.
