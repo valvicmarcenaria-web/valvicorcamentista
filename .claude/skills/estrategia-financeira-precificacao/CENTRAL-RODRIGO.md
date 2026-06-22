@@ -271,6 +271,11 @@ Jonathan está analisando reajuste na base de cálculo da comissão dos marcenei
 
 ## 9. FRENTE INVESTIDOR — Walton (aberta 11–17/06/2026)
 
+> 📄 **Registro completo desta frente:** `dados/dossie-investidor-walton.md`
+> (personagens, áudios, blocos de diligência, cenários de deal A–D, links de
+> estudo, resposta-modelo ao teste de escala e roteiro da reunião de terça).
+> O resumo abaixo é o essencial; o dossiê é a fonte completa.
+
 ### Personagens
 - **Walton** — investidor. Multi-setorial (construtora, avião, gado, locadora de
   veículos). Da igreja do Otávio. Conhece donos de construtora — citou **Caparaó
@@ -371,6 +376,8 @@ unidade controla a conversa.**
 | `referencias/metodo-rodrigo.md` | Método Rodrigo Almeida (4 pilares, sequência) |
 | `referencias/auditoria-metodo.md` | Auditoria da meta de MC |
 | `dados/custo-fixo.md` | Números reais — atualizar com DRE jun/2026 |
+| `dados/faturamento-historico.md` | Faturamento mês a mês 2023–2026 (planilha) |
+| `dados/dossie-investidor-walton.md` | Frente do investidor Walton — registro completo |
 | `ferramentas/custo-operacao.html` | App de levantamento de custos operacionais |
 | `SKILL.md` | Persona completa do Rodrigo |
 | `../../GUIA-ORCAMENTOS.md` | Guia da Lavinia |
