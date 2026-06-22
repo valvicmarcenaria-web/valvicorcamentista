@@ -737,116 +737,121 @@
     /* ══════════════════════════════════════════════
        S7 — PROCESSO
     ══════════════════════════════════════════════ */
+    /* 2-col: dark left (title + stats) | cream right (5 steps vertical) */
     .s7 {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 36% 64%;
       background: var(--cream2);
     }
 
-    .s7-head {
-      padding: 48px 64px 36px;
-      flex-shrink: 0;
+    .s7-left {
+      background: var(--dark3);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 56px 48px 32px 60px;
+    }
+
+    .s7-right {
+      display: flex;
+      flex-direction: column;
     }
 
     .s7-tag {
       font-family: var(--mono);
       font-size: 10.5px;
       letter-spacing: .25em;
-      color: var(--gold);
+      color: var(--gold2);
       text-transform: uppercase;
       margin-bottom: 12px;
     }
 
     .s7-title {
       font-family: var(--serif);
-      font-size: clamp(34px, 4vw, 54px);
+      font-size: clamp(36px, 4.5vw, 62px);
       font-weight: 300;
-      color: var(--text);
-      line-height: 1.1;
-      margin-top: 14px;
+      color: var(--cream);
+      line-height: 1.06;
+      margin-top: 16px;
     }
 
-    .s7-title em { font-style: italic; color: var(--gold); }
+    .s7-title em { font-style: italic; color: var(--gold2); }
 
     .s7-steps {
       flex: 1;
       min-height: 0;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      padding: 0 64px;
-      align-items: start;
+      display: flex;
+      flex-direction: column;
     }
 
     .s7-step {
-      padding: 16px 28px 16px 0;
-      position: relative;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 0 52px 0 52px;
+      border-bottom: 1px solid rgba(160,104,56,.1);
     }
 
-    .s7-step::after {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 1px; height: 55%;
-      background: rgba(160,104,56,.14);
-    }
-
-    .s7-step:last-child::after { display: none; }
+    .s7-step:last-child { border-bottom: none; }
 
     .s7-snum {
-      font-family: var(--serif);
-      font-size: 52px;
-      font-weight: 300;
-      color: rgba(160,104,56,.1);
-      line-height: 1;
-      margin-bottom: 10px;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: .18em;
+      color: var(--gold2);
+      opacity: .55;
+      flex-shrink: 0;
+      width: 22px;
     }
+
+    .s7-scontent { display: flex; flex-direction: column; gap: 5px; }
 
     .s7-stitle {
       font-family: var(--sans);
       font-size: 11.5px;
       font-weight: 600;
       color: var(--text);
-      letter-spacing: .05em;
+      letter-spacing: .06em;
       text-transform: uppercase;
-      margin-bottom: 7px;
     }
 
     .s7-sdesc {
       font-family: var(--sans);
-      font-size: 12px;
+      font-size: 13.5px;
       font-weight: 300;
       color: var(--tlight);
-      line-height: 1.62;
+      line-height: 1.6;
     }
 
     .s7-stats {
-      flex-shrink: 0;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid rgba(160,104,56,.1);
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid rgba(200,145,74,.1);
     }
 
     .s7-stat {
-      padding: 24px 64px;
-      border-right: 1px solid rgba(160,104,56,.08);
+      padding: 22px 0 26px;
+      border-right: 1px solid rgba(200,145,74,.07);
     }
 
-    .s7-stat:last-child { border-right: none; }
+    .s7-stat:nth-child(even) { border-right: none; padding-left: 24px; }
+    .s7-stat:nth-child(odd)  { padding-right: 24px; }
 
     .s7-sv {
       font-family: var(--serif);
-      font-size: clamp(22px, 2.6vw, 34px);
+      font-size: clamp(16px, 1.9vw, 24px);
       font-weight: 300;
-      color: var(--gold);
-      line-height: 1.1;
+      color: var(--gold2);
+      line-height: 1.15;
       margin-bottom: 4px;
     }
 
     .s7-sl {
       font-family: var(--mono);
-      font-size: 9.5px;
-      letter-spacing: .14em;
-      color: var(--tlight);
+      font-size: 9px;
+      letter-spacing: .13em;
+      color: rgba(245,239,224,.38);
       text-transform: uppercase;
     }
 
@@ -1429,54 +1434,68 @@
 
   <!-- 07 — PROCESSO -->
   <div class="slide s7" data-t="light">
-    <div class="s7-head">
-      <div class="s7-tag">07 — Processo</div>
-      <span class="gl gl--sm gl--gold"></span>
-      <h2 class="s7-title">Do conceito<br><em>à entrega.</em></h2>
-    </div>
-    <div class="s7-steps">
-      <div class="s7-step">
-        <div class="s7-snum">01</div>
-        <div class="s7-stitle">Briefing</div>
-        <p class="s7-sdesc">Absorção do projeto do arquiteto. Levantamento técnico in loco. Alinhamento de expectativas antes de qualquer corte.</p>
+    <div class="s7-left">
+      <div>
+        <div class="s7-tag">07 — Processo</div>
+        <span class="gl gl--sm"></span>
+        <h2 class="s7-title">Do conceito<br><em>à entrega.</em></h2>
       </div>
-      <div class="s7-step">
-        <div class="s7-snum">02</div>
-        <div class="s7-stitle">Projeto</div>
-        <p class="s7-sdesc">Proposta técnica com especificação completa de materiais, ferragens e acabamentos. Sem surpresas no meio do caminho.</p>
-      </div>
-      <div class="s7-step">
-        <div class="s7-snum">03</div>
-        <div class="s7-stitle">Produção CNC</div>
-        <p class="s7-sdesc">Corte e usinagem no galpão próprio. CNC de precisão. Coladeira de borda automática para acabamento sem emendas.</p>
-      </div>
-      <div class="s7-step">
-        <div class="s7-snum">04</div>
-        <div class="s7-stitle">Montagem</div>
-        <p class="s7-sdesc">Equipe própria em campo. Controle de qualidade direto do Paulo em cada etapa. Sem terceirização do núcleo.</p>
-      </div>
-      <div class="s7-step">
-        <div class="s7-snum">05</div>
-        <div class="s7-stitle">Entrega</div>
-        <p class="s7-sdesc">Vistoria final com o cliente e o arquiteto. Garantia registrada. Relacionamento que continua após a chave entregue.</p>
+      <div class="s7-stats">
+        <div class="s7-stat">
+          <div class="s7-sv">10</div>
+          <div class="s7-sl">pessoas na equipe</div>
+        </div>
+        <div class="s7-stat">
+          <div class="s7-sv">28</div>
+          <div class="s7-sl">projetos H1 / 2026</div>
+        </div>
+        <div class="s7-stat">
+          <div class="s7-sv">Hettich · Blum</div>
+          <div class="s7-sl">ferragens</div>
+        </div>
+        <div class="s7-stat">
+          <div class="s7-sv">Próprio</div>
+          <div class="s7-sl">galpão · CNC</div>
+        </div>
       </div>
     </div>
-    <div class="s7-stats">
-      <div class="s7-stat">
-        <div class="s7-sv">10</div>
-        <div class="s7-sl">pessoas na equipe</div>
-      </div>
-      <div class="s7-stat">
-        <div class="s7-sv">28</div>
-        <div class="s7-sl">projetos em H1 / 2026</div>
-      </div>
-      <div class="s7-stat">
-        <div class="s7-sv">Hettich · Blum</div>
-        <div class="s7-sl">ferragens certificadas</div>
-      </div>
-      <div class="s7-stat">
-        <div class="s7-sv">Próprio</div>
-        <div class="s7-sl">galpão · CNC · coladeira</div>
+    <div class="s7-right">
+      <div class="s7-steps">
+        <div class="s7-step">
+          <div class="s7-snum">01</div>
+          <div class="s7-scontent">
+            <div class="s7-stitle">Briefing</div>
+            <p class="s7-sdesc">Absorção do projeto do arquiteto. Levantamento técnico in loco. Alinhamento de expectativas antes de qualquer corte.</p>
+          </div>
+        </div>
+        <div class="s7-step">
+          <div class="s7-snum">02</div>
+          <div class="s7-scontent">
+            <div class="s7-stitle">Projeto</div>
+            <p class="s7-sdesc">Proposta técnica com especificação completa de materiais, ferragens e acabamentos. Sem surpresas no meio do caminho.</p>
+          </div>
+        </div>
+        <div class="s7-step">
+          <div class="s7-snum">03</div>
+          <div class="s7-scontent">
+            <div class="s7-stitle">Produção CNC</div>
+            <p class="s7-sdesc">Corte e usinagem no galpão próprio. CNC de precisão. Coladeira de borda automática para acabamento sem emendas.</p>
+          </div>
+        </div>
+        <div class="s7-step">
+          <div class="s7-snum">04</div>
+          <div class="s7-scontent">
+            <div class="s7-stitle">Montagem</div>
+            <p class="s7-sdesc">Equipe própria em campo. Controle de qualidade direto do Paulo em cada etapa. Sem terceirização do núcleo.</p>
+          </div>
+        </div>
+        <div class="s7-step">
+          <div class="s7-snum">05</div>
+          <div class="s7-scontent">
+            <div class="s7-stitle">Entrega</div>
+            <p class="s7-sdesc">Vistoria final com o cliente e o arquiteto. Garantia registrada. Relacionamento que continua após a chave entregue.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
