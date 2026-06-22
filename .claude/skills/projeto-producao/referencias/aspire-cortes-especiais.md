@@ -26,8 +26,10 @@ sacrifício além de 0,1 = estraga a chapa de sacrifício, a fresa e arrisca a m
 - **Topo da chapa** fica em `Z = +espessura` (chapa 15mm → topo em Z+15).
 - **Corte passante** = descer até **Z−0,100**. Descida total = espessura + 0,1:
   - 15mm → 15,1 · 18mm → 18,1 · 6mm → 6,1 (sempre terminando em Z−0,1).
-- **Corte parcial** (friso, V-groove, rebaixo) = `Z = espessura − profundidade`
-  (ex.: friso de 5mm numa chapa de 15mm → fundo em **Z+10**). Nunca passar de −0,1.
+- **Corte parcial** (friso, V-groove, rebaixo, **vinco de dobra**) =
+  `Z = espessura − profundidade` (ex.: friso de 5mm numa chapa de 15mm → fundo em
+  **Z+10**; dobra deixando pele de 1mm em 15mm → **Z+1**). Nunca passar de −0,1.
+  Validado no exemplo de dobra — ver `dobra-de-mdf.md`.
 - **Altura de segurança (clearance)** = topo da chapa + **5,08mm** (0,2", padrão
   Aspire). ⇒ **conferir a espessura:** `espessura = clearanceZ − 5,08`.
   - Exemplos reais: clearance 11,080 → 6mm · clearance 20,080 → 15mm.

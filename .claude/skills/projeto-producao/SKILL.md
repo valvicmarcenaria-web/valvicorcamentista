@@ -96,7 +96,10 @@ para não errar. Hoje essa ponte não existe; é onde a informação se perde.
   herda `orcamentista-marcenaria/referencias/quantitativo.md` e `chapas.md`).
 - `maquinas.md` / `dados/maquinas.json` — parque de máquinas e seus limites
   (a preencher com as fotos dos equipamentos).
-- `aspire-cortes-especiais.md` — geração de DXF paramétrico (Degrau 4; a iniciar).
+- `aspire-cortes-especiais.md` — dialeto G-code do JRG + workflow Aspire + trava
+  de segurança de Z (Degrau 4).
+- `dobra-de-mdf.md` — técnica de curvar MDF por vincos (kerf bending), com os
+  parâmetros reais e a fórmula parametrizável.
 
 ## Software de produção (contexto)
 
