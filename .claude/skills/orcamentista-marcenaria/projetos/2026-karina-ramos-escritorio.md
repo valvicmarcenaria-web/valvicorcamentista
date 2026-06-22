@@ -33,10 +33,9 @@ Medidas em **cm** (L × A × P). Lidas das elevações/cortes (esc. 1/20).
 | M3 | Aéreo + torre de nichos | 140 + 55 | até 255 | 36 | LB (estrutura/portas) + Savana (nichos/prateleira) | aéreo 4 portas de giro + prateleira c/ LED + torre de nichos piso-teto (4 nichos) + armário embaixo (1 porta) |
 | M4 | Armário suspenso + nicho | 150 + 50 | 85 | 42 | LB (armário) + Savana (nicho) | 3 portas de giro + nicho lateral (2 vãos) |
 
-> ⚠ **Confirmar (não trava o orçamento, ajusta ±1 chapa):** altura do **aéreo do
-> M3** — as cotas do corte se sobrepõem ao 76 da bancada; adotei **70 cm**.
-> Forramento dos nichos do M3 adotado como **caixa em Savana recuada 2 cm**
-> (interpretação de "nichos recuados 2 cm em relação à estrutura").
+> ✅ **Confirmado pelo cliente:** altura do **aéreo do M3 = 70 cm**; **tampo da
+> bancada (M2) = chapa dupla (~4 cm)**; forramento dos nichos do M3 = **caixa em
+> Savana recuada 2 cm**. Estes parâmetros são o **build Gold (cheio)**.
 
 ## 3. Quantitativo de chapas (estimativa de orçamento)
 
@@ -81,61 +80,73 @@ Fita-material: 110 × R$3 = **R$ 330** · Filetagem (máquina, R$2,5/m): **R$ 27
 
 ## 6. Composição de custo e fechamento (validação por MC%)
 
-Caixa/estratégia: **projeto pequeno → MC alvo 30%** (decisão do Jonathan).
-RT = **0** (sem acordo de RT com a arquiteta; ver nota). Percentuais calibrados
-(planilha recente): NF 4% · parcelamento 8% · vendedor 3% · comissão produção
-4,3% (prog 0,8 + coord 1,0 + marc 2,5) · serra 0,5% · manut. 0,5% · erro 2% ·
-visita R$250.
+Caixa/estratégia: projeto pequeno. **RT = 10% sobre o líquido** (acordo com a
+arq. Ionah Pinho — **confirmado**). Percentuais calibrados (planilha recente):
+NF 4% · parcelamento 8% · vendedor 3% · comissão produção 4,3% (prog 0,8 + coord
+1,0 + marc 2,5) · serra 0,5% · manut. 0,5% · erro 2% · visita R$250.
 
-| Componente | R$ |
-|------------|----|
-| Material (chapas + fita + filetagem + ferragens + LED) | ~6.560 |
-| Consumíveis/fixação (~2%) | 200 |
-| Logística (carretos + equipe, BH/Funcionários) | 600 |
-| Embalagem | 50 |
-| Visitas | 250 |
-| **fixedR (base do markup)** | **~8.400** |
-| Terceirizados (vidro/serralheria) | 0 |
+| Componente | Gold (cheio) | Silver (enxuto) |
+|------------|------|------|
+| Material (chapas + fita + filetagem + ferragens + LED) | ~6.560 | ~5.910 |
+| Consumíveis/fixação (~2%) | 200 | 200 |
+| Logística (BH/Funcionários) | 600 | 600 |
+| Embalagem + Visitas | 300 | 300 |
+| **fixedR** | **~8.400** | **~7.750** |
+| Terceirizados | 0 | 0 |
 
-**Fórmula:** `Inv = fixedR / (1 − a − liqF·b − mc)`, a = encargos s/ bruto (18%),
-b = encargos s/ líquido (4,3%), liqF = 1 − NF − parc (0,88), mc = 0,30.
+**Fórmula:** MC = (Inv − custo total)/Inv, com a = encargos s/ bruto (18%),
+b = encargos s/ líquido (4,3% + **RT 10% = 14,3%**), liqF = 1 − NF − parc (0,88).
 
-→ **Preço cheio (Gold) ≈ R$ 17.500 · MC 30,0%.**
+→ **Preços fechados** (MC subida +4 pts em cada versão) e MC% real **com RT**:
+
+| Linha | Preço | MC% real (c/ RT) |
+|-------|-------|------------------|
+| **Gold** (build cheio) | **R$ 21.500** | **30,4%** |
+| **Silver** (build enxuto) | **R$ 17.500** | **25,1%** |
+
+> **Leitura:** com RT, o Gold a R$21.500 recompõe a MC saudável (**30,4%**,
+> dentro da faixa ideal); o Silver a R$17.500 fica em **25,1%** (piso "ruim" —
+> aceitável como versão de entrada/indicação). O RT (~10% do líquido) é repassado
+> à arquiteta. Subir +4 pts custou ~R$2.000 no Gold e ~R$1.500 no Silver de preço.
 
 ## 7. Proposta (preço ao cliente)
 
 | Linha | Descrição | Preço |
 |-------|-----------|-------|
-| **Gold** | Corrediça oculta Hardt, garantia 10 anos | **R$ 17.500** |
-| **Silver** | Corrediça telescópica (garantia 2 anos na corrediça); demais igual | **~R$ 16.450** |
+| **Gold** | Build cheio: corrediça **oculta Hardt**, tampo em chapa dupla, nichos forrados em Savana, LED na prateleira e no nicho. Garantia 10 anos. | **R$ 21.500** |
+| **Silver** | Build enxuto: corrediça **telescópica** (garantia 2 anos na corrediça), tampo **18 mm c/ engrossamento de borda**, nichos **só com fundo Savana**, LED só na prateleira. | **R$ 17.500** |
+
+Diferença Gold↔Silver: **R$ 4.000 (−19%)** — justificada por escopo real, não só margem.
 
 **Pagamento** (tabela Valvic): 30% entrada + 10× cartão · 50%+8× (−3%) · 70%+6×
-(−5%) · **70% à vista + transferência (−7%) ≈ R$ 16.275**.
-**Prazo:** 45–60 dias úteis. **Garantia:** 10 anos (estrutura + ferragens).
-**Validade:** 2 dias úteis.
+(−5%) · **70% à vista + transferência (−7%)** → Gold ≈ **R$ 20.000**.
+**Prazo:** **60–70 dias úteis**. **Garantia:** 10 anos (estrutura + ferragens).
+**Validade:** 2 dias úteis. **RT** repassada à arquiteta conforme cronograma.
 
-> **Cenário com RT 10% (se houver acordo com a IONAH PINHO):** preço cheio sobe
-> para **≈ R$ 21.300** mantendo MC 30%.
+## 8. Diferença construtiva Gold × Silver (o que muda o custo)
 
-## 8. Otimização (versão inteligente, se precisar baixar)
-
-- **Tampo da bancada (M2):** 4 cm em dupla chapa → fazer **18 mm com
-  engrossamento só na borda aparente** (economiza ~½ chapa Savana).
-- **Forro dos nichos (M3):** nichos com **fundo em Savana** apenas (em vez de
-  caixa forrada recuada) → economiza ~1 chapa Savana 15 mm + fita.
-- **Porta de correr (M1):** manter; sistema leve já é econômico.
-- LED: manter só na prateleira do M3 (corta o LED do nicho).
+| Item | Gold (cheio) | Silver (enxuto) | Economia |
+|------|--------------|-----------------|----------|
+| Corrediça (3 gavetas M1) | Oculta Hardt | Telescópica | ~R$90 |
+| Tampo da bancada (M2) | Chapa dupla (~4 cm) | 18 mm + engrossamento de borda | ~½ chapa |
+| Forro dos nichos (M3) | Caixa forrada em Savana recuada | Só fundo em Savana | ~1 chapa Savana 15 + fita |
+| LED | Prateleira + nicho | Só prateleira | ~1 m LED |
 
 ## 9. Notas de metodologia
 
 - **Dois amadeirados de cores diferentes** (Linho Belga + Savana) → cada cor puxa
   suas chapas; a Savana, mesmo com pouca área, abre chapa própria por cor (regra
   "cada cor ≥ 1 chapa") e ainda sofre **cauda** por serem muitas peças pequenas
-  (forro de nicho) → arredondei a Savana 15 mm para 2 chapas.
+  (forro de nicho) → no Gold arredondei a Savana 15 mm para 2 chapas; o Silver
+  (nicho só com fundo) volta a 1 chapa.
 - **Pegas integradas (cava/chanfro)** zeram o custo de puxador-ferragem, mas são
   **usinagem CNC** — hoje dentro da margem operacional (lancei só a cava usinada
   do M1 como referência).
-- **Projeto de arquiteta ≠ RT automático.** Precedente Ed. Luxemburgo (arq.
-  envolvida, RT = 0). Tratar RT como decisão comercial, não premissa.
-- **Tampo "4 cm" e baú basculante**: confirmar se o tampo é chapa dupla cheia ou
-  engrossamento de borda — muda ~½ chapa.
+- **RT em projeto pequeno corrói MC.** O RT (10% do líquido ≈ R$2 mil) derrubaria
+  a MC de ~30% para ~26% (Gold) se o preço ficasse em R$19.500. Decisão: **subir o
+  preço** para recompor a margem (Gold R$21.500 → MC 30,4%; Silver R$17.500 → MC
+  25,1%). Aprendizado: em projeto pequeno com RT, repassar o RT no preço — não
+  absorver na margem.
+- **Build Gold vs Silver como alavanca de gap:** abrir a diferença de preço entre
+  versões fica saudável quando o Silver é **realmente** mais enxuto (escopo), não
+  só desconto — senão a MC do Silver desaba (17,5% no mesmo build vs 21,0% enxuto).

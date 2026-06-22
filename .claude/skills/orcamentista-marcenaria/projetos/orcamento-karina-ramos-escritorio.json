@@ -1,14 +1,14 @@
 {
  "cliente": "Karina Ramos",
  "projeto": "Escritório / Home Office (Arq. Ionah Pinho)",
- "versao": "001-fechamento-MC30-Hardt-semRT",
- "inv": 17500,
+ "versao": "002-fechamento-Gold-Hardt-comRT-MC30",
+ "inv": 21500,
  "mcAlvo": 30,
  "p": {
   "nf": 4,
   "parc": 8,
   "vend": 3,
-  "rt": 0,
+  "rt": 10,
   "vis": 250,
   "outv": 0,
   "prog": 0.8,
@@ -119,5 +119,5 @@
   }
  ],
  "ativo": 0,
- "_obs": "FECHAMENTO MC30% (projeto pequeno), ferragem HARDT (garantia 5 anos / oculta), SEM RT. Dois amadeirados foscos (cor): Linho Belga Duratex (estrutura/portas) + Savana Guararapes (nichos/tampo/prateleiras). 12 chapas. Gold R$17.500 / Silver ~R$16.450 / a vista transf. -7% ~R$16.275. RT 10% (se houver acordo c/ arq. Ionah Pinho) -> ~R$21.300. CONFIRMAR: altura aereo M3 (adotado 70cm); tampo bancada chapa dupla vs engrossamento; forro nichos M3 (caixa Savana recuada). Fonte: projeto-karina-ramos-escritorio.pdf. Doc: 2026-karina-ramos-escritorio.md"
+ "_obs": "FECHAMENTO COM RT 10% (acordo arq. Ionah Pinho). Build ativo = GOLD cheio (oculta Hardt, tampo chapa dupla, nichos forrados Savana, LED prat.+nicho), 12 chapas, R$21.500 -> MC 30,4%. SILVER enxuto (telescópica + tampo engrossamento + nichos só fundo Savana + LED só prat.), R$17.500 -> MC 25,1% (build menor: ~-1 chapa Savana15, -fita, -corrediça). Gap R$4.000 (-19%). MC subida +4 pts vs versão anterior. A vista transf. -7% (Gold) ~R$20.000. Prazo 60-70 dias uteis. Validade 2 dias uteis. CONFIRMADOS: aereo M3=70cm; tampo bancada chapa dupla; nichos M3 caixa Savana recuada. Dois amadeirados foscos (cor): Linho Belga Duratex + Savana Guararapes. Fonte: projeto-karina-ramos-escritorio.pdf. Doc: 2026-karina-ramos-escritorio.md"
 }
