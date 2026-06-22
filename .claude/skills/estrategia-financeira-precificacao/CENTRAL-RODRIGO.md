@@ -168,13 +168,14 @@ Ver método completo: `referencias/metodo-rodrigo.md`
 > **Projeção H2 mantendo ritmo:** +R$981k → Total 2026 ≈ R$1,96M (65% da meta)
 > **Para atingir R$3M:** precisa R$2.018.207 em Jul–Dez = R$336k/mês (impossível sem Walton ou projeto âncora)
 
-### Recebíveis em aberto — R$ 295.909 a cobrar (planilha mostra R$ 366.709)
+### Recebíveis em aberto — R$ 366.709 (planilha 22/06/2026)
 
 **Maiores pendências (a cobrar com urgência):**
 
 | Cliente | Projeto | Valor Aberto | Observação |
 |---|---|---|---|
 | Cristiane | Casa completa | **R$ 79.200** | Abr/2026 — parcela única de R$22,5k recebida |
+| **Andre Alphaville** | **Casa** | **R$ 70.800** | Abr/2026 — **projeto de investimento dos sócios** (não é venda a cliente — recebimento retorna conforme o investimento se realizar) |
 | Maria - Vale dos Cristais | Casa | **R$ 58.869** | Mar/2026 — 2ª parcela pendente |
 | Lucas Mello | Casa | **R$ 22.000** | Jun/2026 — parcela futura |
 | Marcelo e Simony | Apt novo | **R$ 21.700** | Mai/2026 — zero recebido registrado |
@@ -183,12 +184,9 @@ Ver método completo: `referencias/metodo-rodrigo.md`
 | Marina Borges | Casa nova | **R$ 10.000** | Mai/2026 |
 | Maria VDC hall | Painel hall garagem | **R$ 9.050** | Mai/2026 |
 
-> ℹ️ **Andre Alphaville (R$ 70.800) NÃO é recebível de cliente.** É um **projeto
-> de INVESTIMENTO dos sócios** (Jonathan e Paulo) — capital próprio aplicado, não
-> venda a receber. Por isso não há pagamento a cobrar. Sai da régua de cobrança e
-> reduz o "a receber real" de R$366.709 (planilha) para **R$ 295.909**. Tratar
-> como aporte/investimento na contabilidade gerencial, não como inadimplência.
 > ⚠️ **Cristiane R$79,2k pendente** — maior risco individual. Contrato assinado?
+> ℹ️ **Andre Alphaville** permanece no faturamento e no total a receber. Não é
+> inadimplência — é recebível de investimento dos próprios sócios.
 
 ### Nota interna: análise de comissões de marceneiros (planilha)
 Jonathan está analisando reajuste na base de cálculo da comissão dos marceneiros:
@@ -232,7 +230,7 @@ Jonathan está analisando reajuste na base de cálculo da comissão dos marcenei
 ## 5. Plano de ação vigente (jun/2026)
 
 ### 🔴 URGENTE — Esta semana
-1. Cobrar os R$ 295.909 em aberto (prioridade: Cristiane, Maria, Marcelo e Simony — Andre NÃO entra: é investimento dos sócios)
+1. Cobrar os R$ 295.909 em aberto de clientes (prioridade: Cristiane R$79,2k, Maria VDC R$58,9k, Augusto R$27k — Andre Alphaville R$70,8k é investimento dos sócios, não cobrança a cliente)
 2. Investigar composição dos R$ 107k de pagamentos em dez/2025
 3. Investigar R$ 101k de pagamentos previstos em jun/2026 — o que é postergável?
 4. Fechar Kênia & Fábio (casa completa): MC ≥ 40%, entrada 40% obrigatória
