@@ -251,7 +251,85 @@ Ver método completo: `referencias/metodo-rodrigo.md`
 
 ---
 
-## 7. Pendências abertas para o Rodrigo
+## 9. FRENTE INVESTIDOR — Walton (aberta 11–17/06/2026)
+
+### Personagens
+- **Walton** — investidor. Multi-setorial (construtora, avião, gado, locadora de
+  veículos). Da igreja do Otávio. Conhece donos de construtora — citou **Caparaó
+  e Terraza**. Método: entra como **sócio investidor** em empresa que JÁ tem
+  atuação no mercado, aporta **dinheiro + contatos** (ex.: entrou numa locadora
+  pequena e escalou com contato + capital). Quer marcenaria focada em **luxo +
+  construtora + incorporação**, galpão/escritório no Jardim Canadá. Lema dele:
+  *"trabalhar com rico, com crise ou sem crise."* Está fazendo diligência séria
+  (pediu levantamento das maiores marcas de marcenaria do Brasil/BH).
+- **Otávio** — intermediário. Cliente antigo da Valvic (casa na Fazenda da Serra),
+  demitido do laboratório em 01/abr, hoje trabalha com o Walton. Incentivo dele é
+  FECHAR o negócio (novo emprego) — pode supervalorizar para os dois lados.
+- **Alternativa do Walton:** um "menino de Governador Valadares" que cresceu em
+  marcenaria (greenfield). Mas exige mudança de cidade/família — mais sensível.
+  **Vantagem da Valvic:** já é empresa estabelecida — encaixa no método do Walton
+  (entrar em quem já roda) melhor que começar do zero.
+
+### ⚠️ INSIGHT CENTRAL — a ilusão de margem
+Walton entrou na tese por um MAL-ENTENDIDO: viu um orçamento de R$ 280k onde
+"R$ 80k era material e R$ 200k era margem". **Ele acha que marcenaria de luxo tem
+~70% de margem.** Realidade Valvic: MC bruta 43,5%, MC líquida 34%, lucro ~2%,
+break-even R$ 246k/mês. Risco: se entrar achando 70% e descobrir 2%, sai ou
+aperta. Oportunidade: a tese dele está certa pelo motivo errado — a conta só
+fecha em **VOLUME**, e ele traz volume. Reposicionar de "caçador de margem" para
+"sócio de volume". **Postura decidida pelo Jonathan: na reunião 1, ESCUTAR
+primeiro, não tocar em margem até ele pedir número.**
+
+### A obsessão do Walton: ESCALA + CAPACIDADE PRODUTIVA
+Roteiro de diligência que o Otávio mandou (os "blocos"):
+- **Bloco 1 — Capacidade atual:** projetos/mês, ambientes/projeto, faturamento
+  máximo num mês, quando a fábrica chegou no limite, maior volume entregue,
+  capacidade ociosa.
+- **Cadeia de valor:** quem mede / projeta / vende / instala; equipe própria ou
+  terceirizada; gargalo; retrabalho; prazo médio; reclamações.
+- **Bloco 8 — Teste de escala:** 10 aptos/mês? 20? construtora com 50/trimestre?
+  Pegadinha explícita: *"observe se responde com NÚMEROS ou só com confiança.
+  Empresário preparado responde: pessoas necessárias, investimento, prazo de
+  adaptação, impacto no caixa."*
+
+### Decisão estratégica a alinhar Jonathan+Paulo ANTES da reunião
+Tese do Walton (volume padronizado p/ construtora) ≠ modelo atual (bespoke, "a
+marcenaria como ela é", projeto do arquiteto). Jonathan já sacou no áudio: *"não
+sou uma Marcato"*. **Recomendação Rodrigo: MODELO DE DUAS PISTAS** — manter
+bespoke premium (marca + margem) E criar linha incorporação modular/padronizada
+(absorve o volume do Walton). É onde o capital dele faz sentido: financiar a
+pista industrial sem trair a identidade. Conecta ao diagnóstico de sempre:
+capacidade instalada já paga + ociosa + volume do investidor = projeto
+incremental altamente lucrativo.
+
+### Resposta-modelo ao teste de escala (terça)
+Não responder sim/não. "Capacidade se mede em unidades de produção, não em aptos.
+Me define o padrão (m², ambientes, laca/lâmina, complexidade) que eu te digo
+capacidade, pessoas, investimento e prazo. Hoje entregamos ~R$150k/mês, pico de
+R$260k. Para 10 aptos do padrão X: +N pessoas, +máquina Y, R$Z, W meses de
+ramp-up + capital de giro (material compra antes de receber)." **Quem define a
+unidade controla a conversa.**
+
+### Apetite definido pelo Jonathan
+- Formato: **ABERTO a sociedade (equity), COM PROTEÇÕES** — valuation justo +
+  vesting atrelado ao pipeline + cláusulas de controle (tag/drag along, preferência).
+- ⚠️ Não dar equity barato. Capital sem pipeline = revenue share, não sociedade.
+- Valvic tem 2º pretendente (cliente da Fazenda da Serra, parado pq mãe adoeceu)
+  = alavanca de "não dependo dessa mesa".
+
+### Pendências desta frente
+- 🔴 **Levantar com Paulo (operacional p/ reunião):** projetos produzidos/mês,
+  ambientes/projeto, cadeia (medição/projeto/venda/instalação), própria×terceira,
+  gargalo, retrabalho, prazo médio, reclamações, maior volume entregue.
+- 🔴 Alinhar Jonathan+Paulo na tese "duas pistas" antes de terça.
+- 🟠 Produzir material da reunião (deck visual e/ou roteiro de bolso) — pendente
+  de definição do Jonathan.
+- ⚖️ LEMBRAR: Rodrigo é consultor financeiro, NÃO advogado. Sociedade exige
+  advogado societário antes de assinar.
+
+---
+
+## 10. Pendências abertas para o Rodrigo
 
 ### 🔴 Dados a levantar com Jonathan
 - Composição dos R$ 107k de pagamentos em dez/2025 (o que causou o buraco?)
@@ -259,13 +337,16 @@ Ver método completo: `referencias/metodo-rodrigo.md`
 - Parcelas mensais das dívidas ativas: máquinas CNC/coladeira + empréstimo Paulo
 - Status de Andre Alphaville (R$ 70.800) e Marcelo e Simony (R$ 34.850) — inadimplência ou parcela futura?
 
+### 🟢 Concluído
+- Painel HTML financeiro (Demanda 2) — entregue com resultado mês a mês,
+  crescimento ano a ano e dados reais da planilha importados (offline + seed).
+
 ### 🟠 Em construção
-- Painel HTML financeiro (Demanda 2 — Jonathan solicitou em 16/06/2026)
-- Integração planilha Google Sheets ↔ painel dinâmico
+- Integração planilha Google Sheets ↔ painel (Apps Script — setup em andamento)
 
 ---
 
-## 8. Referências
+## 11. Referências
 
 | Arquivo | O que é |
 |---|---|
