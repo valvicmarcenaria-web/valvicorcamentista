@@ -157,6 +157,12 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
   real do designer (extraído do PDF) eleva muito a proposta. Pedir/extrair sempre que houver.
 - **APROVADO pelo fundador (06/22):** garantia 5 anos estrutura / 1 ano revestimento; prazo 45–60. Proposta
   premium fechada. Arquivos no Drive (pasta "Cabeceira em couro — Valdenir & Maria" em Orçamentos Valvic).
+- **+ Lavanderia e apoio (item adicional de projeto):** 2 arm. inferiores (3 portas de giro, puxador
+  **perfil cava Rometal RM185**) + 1 superior (2 portas, 2 prateleiras). **MDF Gianduia Trama Ultra Premium**,
+  dobradiças **Hettich**. **Preço FECHADO pelo fundador R$ 6.500** (sem medidas — "apenas considerar o valor",
+  não validar MC). Base nova: Gianduia Trama Ultra (~R$700) + cava RM185 (~R$150/barra, confirmar).
+  **Projeto Valdenir & Maria = 2 itens adicionais: Cabeceira R$13.500 + Lavanderia R$6.500 = R$20.000.**
+  *Conceito: "item adicional de projeto" = add-on a um projeto existente; preço pode vir fechado do fundador.*
 
 ### [2026-06-22] Nota — LOGO da Valvic
 - A logo está no Drive: pasta **"Valvic — Logo Vetorizado (EPS · AI · CorelDraw)"** (variações:
