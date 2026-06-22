@@ -164,10 +164,14 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
   **Projeto Valdenir & Maria = 2 itens adicionais: Cabeceira R$13.500 + Lavanderia R$6.500 = R$20.000.**
   *Conceito: "item adicional de projeto" = add-on a um projeto existente; preço pode vir fechado do fundador.*
 
-### [2026-06-22] Nota — LOGO da Valvic
-- A logo está no Drive: pasta **"Valvic — Logo Vetorizado (EPS · AI · CorelDraw)"** (variações:
-  group-valvic claro/escuro, wordmark-simples, valvic-marcenaria, v-lettermark claro/escuro).
-- ⚠️ **Só tem vetor (EPS/AI/CDR) — NÃO dá pra embutir no PDF nem rasterizar aqui** (sem Ghostscript;
-  LibreOffice não lê esse PostScript do Cairo). **Para usar nas propostas, preciso de PNG (fundo
-  transparente) ou SVG** — o fundador exporta do Corel/AI e sobe num Drive (eu baixo via MCP, igual o Freijó).
-- Fonte do wordmark = **Aurora-Regular** (custom). Hoje as propostas usam "valvic" em Georgia (aproximação).
+### [2026-06-22] LOGO da Valvic — RESOLVIDO ✅
+- Logo no Drive: pasta **"Valvic — Logo Vetorizado"** → tem subpasta **"Valvic — Logo PNG"** (8 variações:
+  group claro/escuro, wordmark-simples, valvic-marcenaria, v-lettermark claro/escuro etc.). *(Lição: abrir
+  SUBPASTAS — não parar no 1º nível; tinha `nextPageToken` e subpastas que eu não vi de primeira.)*
+- **Aplicado nas propostas:** baixei `02-group-valvic-claro.png` (via MCP), deixei **fundo transparente +
+  recorte** → `closer-vendas/propostas/img/logo-valvic.png`. Vai na **capa** (topo esquerdo) das propostas.
+- **Bônus — fonte real extraída:** o wordmark usa a fonte **Aurora-Regular**; extraí a fonte embutida do EPS
+  (sfnts) + montei cmap com fonttools → `closer-vendas/propostas/aurora-valvic.ttf` (só glifos V·a·l·v·i·c).
+  Uso `@font-face` pra escrever **"Valvic"** na fonte real nos **rodapés**. (EPS não rasteriza aqui — sem gs —
+  mas dá pra extrair a fonte e/ou usar o PNG.)
+- Sala e Cabeceira já regeradas com o logo real.
