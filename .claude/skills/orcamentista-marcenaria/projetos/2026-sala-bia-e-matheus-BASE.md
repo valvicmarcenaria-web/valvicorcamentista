@@ -62,6 +62,19 @@
 > **Dobradiça (Novisys) no aparador (×16) e na cristaleira (×8)**; a estante (gavetas/nichos)
 > não leva. **Cristaleira tem 3 fecha-toque Blum Tip-On (R$100/un)** para as portas.
 
+## Preço por móvel (alocação) — 2 cenários
+
+> Investimento alocado por móvel (proporcional ao material; pacote dilui visita/setup).
+> **Estante mantida igual nas duas versões** (é laqueada, não muda) — a diferença de cenário
+> fica toda no aparador e na cristaleira (peças TOM 01: melamínico → lâmina).
+
+| Móvel | V1 · Melamínico | V2 · Lâmina Freijó |
+|---|---:|---:|
+| **M01 · Aparador** (em L) | R$ 6.200 | R$ 28.900 |
+| **M02 · Estante 2,77 m** (laqueada) | R$ 24.500 | R$ 24.500 |
+| **M03 · Cristaleira** | R$ 5.300 | R$ 16.600 |
+| **TOTAL** | **R$ 36.000** | **R$ 70.000** |
+
 ## Quantitativo — chapa INTEIRA (arredondada no nível do PROJETO)
 
 | Material | V1 (área → chapas) | V2 (área → chapas) |
