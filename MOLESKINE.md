@@ -146,6 +146,12 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
 - *Aprendizado: pra item novo (couro/estofaria) eu pesquiso o que não tenho (espuma/manta) e marco como
   estimativa a confirmar; o que o fundador valida com fornecedor entra como custo firme.*
 - **Vitor — proposta PREMIUM** (não Family): item único de alto padrão → layout enxuto/autoral, couro e
-  ofício em evidência, preço em bloco carvão, sem comparação de versão. 4 páginas →
-  `closer-vendas/propostas/proposta-cabeceira-couro.html` + PDF. **Pendente p/ liberar ao cliente:
-  PRAZO (nunca cravar sem Jonathan) + política de GARANTIA do estofado.**
+  ofício em evidência, preço em bloco carvão, sem comparação de versão. **Capa com render foto-realista
+  do projeto** (extraído do PDF da designer via `pdfimages -j`) = padrão do serviço. 4 páginas →
+  `closer-vendas/propostas/proposta-cabeceira-couro.html` + PDF.
+- **GARANTIA p/ estofados (regra de mercado pesquisada — reutilizável):** CDC mínimo legal 90 dias;
+  mercado de planejados 1–5 anos. **Recomendação Valvic: 5 anos estrutura/fixação · 1 ano revestimento
+  (couro/espuma/costura), excluindo desgaste natural/mau uso/limpeza errada.** (Couro natural varia com
+  uso → revestimento curto protege a empresa.) Prazo cabeceira: 45–60 dias úteis. LED = do cliente (fora do escopo).
+- **Aprendizado: render de ambientação do projeto > ilustração esquemática** — pra item premium, o render
+  real do designer (extraído do PDF) eleva muito a proposta. Pedir/extrair sempre que houver.
