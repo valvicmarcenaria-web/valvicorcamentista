@@ -149,7 +149,7 @@
 
     .s1-bg {
       position: absolute; inset: 0;
-      background: url('https://drive.google.com/thumbnail?id=1JOaSn6DqBLB0ZuChtoE9wMxEttbw_Fv_&sz=w2000') center 30% / cover no-repeat;
+      background: url('https://drive.google.com/thumbnail?id=1MsmhniA_z1HXRBw_bQ7D-VgujrDDxLNH&sz=w2000') center 30% / cover no-repeat;
       filter: brightness(.42);
     }
 
@@ -365,37 +365,39 @@
 
     /* ══════════════════════════════════════════════
        S3 — QUEM CONDUZ
+       Layout: blocos empilhados esq. | foto inteira dir.
     ══════════════════════════════════════════════ */
     .s3 {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 42% 58%;
     }
 
-    .s3-col {
+    .s3-left {
       display: flex;
       flex-direction: column;
-      position: relative;
-      overflow: hidden;
     }
 
-    .s3-photo {
-      flex: 0 0 56%;
-      background-size: cover;
-      background-position: center top;
-    }
-
-    .s3-text {
+    .s3-block {
       flex: 1;
       min-height: 0;
-      padding: 32px 44px 36px;
+      padding: 32px 48px 32px 52px;
       display: flex;
       flex-direction: column;
       gap: 10px;
       overflow: hidden;
     }
 
-    .s3-col--a .s3-text { background: var(--cream2); }
-    .s3-col--b .s3-text { background: var(--dark3); }
+    .s3-block--a {
+      background: var(--cream2);
+      border-bottom: 1px solid rgba(160,104,56,.1);
+    }
+
+    .s3-block--b { background: var(--dark3); }
+
+    .s3-photo-right {
+      background-size: cover;
+      background-position: center;
+    }
 
     .s3-role {
       font-family: var(--mono);
@@ -466,7 +468,7 @@
 
     .s4-bg {
       position: absolute; inset: 0;
-      background: url('https://drive.google.com/thumbnail?id=1pSR9SjBdFa7KoWUZqT5lIRXsu6UyBvXD&sz=w2000') center / cover no-repeat;
+      background: url('https://drive.google.com/thumbnail?id=15N-tCGReMmFGkjJDW9MgtW4R6qw4lzwD&sz=w2000') center / cover no-repeat;
       filter: brightness(.32);
     }
 
@@ -667,17 +669,17 @@
     }
 
     .s6-main-img {
-      background-image: url('https://drive.google.com/thumbnail?id=1U8nEdnPhpjgtdbgeuQXF15Q1JMVuQUVA&sz=w2000');
+      background-image: url('https://drive.google.com/thumbnail?id=1xK0M3o-RHZWWAxuwC2AcTeSkLRx685d0&sz=w2000');
       filter: brightness(.65);
     }
 
     .s6-s1-img {
-      background-image: url('https://drive.google.com/thumbnail?id=1vt8rMbuPr_3bZ9KB4LqejDPUsUk8VGa8&sz=w2000');
+      background-image: url('https://drive.google.com/thumbnail?id=1P9XtxgD5QCG-rjhQ-7687deiSIXJh5RR&sz=w2000');
       filter: brightness(.6);
     }
 
     .s6-s2-img {
-      background-image: url('https://drive.google.com/thumbnail?id=1c_VLa-_jAE3LOEXI2Dd6jwAGrUFfgCLn&sz=w2000');
+      background-image: url('https://drive.google.com/thumbnail?id=14C2ZCfFpyZmK0JUM7k3n0CG8ILSdN1Lq&sz=w2000');
       filter: brightness(.6);
     }
 
@@ -864,7 +866,7 @@
 
     .s8-bg {
       position: absolute; inset: 0;
-      background: url('https://drive.google.com/thumbnail?id=1p9VAPhVTptxWRP7vh3OB0-ymayi71UJC&sz=w2000') center 28% / cover no-repeat;
+      background: url('https://drive.google.com/thumbnail?id=12EjQ-PKJX05UBKWMTX0g_BE-UJikdFGJ&sz=w2000') center 28% / cover no-repeat;
       filter: brightness(.22);
     }
 
@@ -1096,7 +1098,7 @@
 
     .s10-bg {
       position: absolute; inset: 0;
-      background: url('https://drive.google.com/thumbnail?id=1-ORK1ZwG1CbkV3p8DENwWc_7BCphqdc7&sz=w2000') center 38% / cover no-repeat;
+      background: url('https://drive.google.com/thumbnail?id=16KMgNDwk2pUejRMTQwusJ_Z_Q_eEOh6X&sz=w2000') center 38% / cover no-repeat;
       filter: brightness(.38);
     }
 
@@ -1304,37 +1306,34 @@
 
   <!-- 03 — QUEM CONDUZ -->
   <div class="slide s3" data-t="light">
-    <div class="s3-col s3-col--a">
-      <div class="s3-photo" style="background-image:url('https://drive.google.com/thumbnail?id=1wwOpRknx4WrSIhxAIVQgDTZwFlYTD4gr&sz=w2000');"></div>
-      <div class="s3-text">
-        <div class="s3-role">Sócio · Comercial &amp; Projetos</div>
-        <h3 class="s3-name">Jonathan<br>Vargas</h3>
+    <div class="s3-left">
+      <div class="s3-block s3-block--a">
+        <div class="s3-role">Sócio · Comercial / Financeiro e Tecnologia</div>
+        <h3 class="s3-name" style="color:var(--text)">Jonathan<br>Vargas</h3>
         <span class="gl gl--sm gl--gold"></span>
-        <p class="s3-bio">Responsável pela frente comercial, relacionamento com arquitetos e gestão de projetos. Da apresentação ao contrato — com foco em proposta de valor, nunca em preço.</p>
+        <p class="s3-bio" style="color:var(--tmid)">Responsável pela frente comercial, financeiro e tecnologia. Da apresentação ao contrato — com foco em proposta de valor, nunca em preço.</p>
         <div class="s3-tags">
-          <span class="s3-tag">Gestão de Projetos</span>
-          <span class="s3-tag">Arquitetura</span>
-          <span class="s3-tag">Vendas Premium</span>
+          <span class="s3-tag" style="color:var(--tlight);border-color:rgba(160,104,56,.2)">Comercial</span>
+          <span class="s3-tag" style="color:var(--tlight);border-color:rgba(160,104,56,.2)">Financeiro</span>
+          <span class="s3-tag" style="color:var(--tlight);border-color:rgba(160,104,56,.2)">Tecnologia</span>
         </div>
       </div>
-    </div>
-    <div class="s3-col s3-col--b">
-      <div class="s3-photo" style="background-image:url('https://drive.google.com/thumbnail?id=1JSO9e6d4YX8ydJyx2VPZ_czDt3q3aPLB&sz=w2000');"></div>
-      <div class="s3-text">
-        <div class="s3-role">Sócio · Produção &amp; Engenharia</div>
-        <h3 class="s3-name">Paulo Henrique<br>Teixeira</h3>
+      <div class="s3-block s3-block--b">
+        <div class="s3-role">Sócio · Produto &amp; Processos</div>
+        <h3 class="s3-name" style="color:var(--cream)">Paulo Henrique<br>Teixeira</h3>
         <span class="gl gl--sm"></span>
-        <p class="s3-bio">10+ anos de marcenaria premium. Antes da Valvic, liderou produção na Monte Negro — entregando projetos acima de R$ 500k para os maiores nomes de BH.</p>
+        <p class="s3-bio" style="color:rgba(245,239,224,.72)">20 anos de marcenaria. Responsável pelo desenvolvimento de produto e processos.</p>
         <div class="s3-hl">
           <p class="s3-hl-text">Luciana Rajão · Emive · Tambasa · Copoplast · Advocacias de elite · <strong style="color:var(--gold2)">Showrooms Caparaó</strong></p>
         </div>
         <div class="s3-tags">
           <span class="s3-tag">Monte Negro</span>
           <span class="s3-tag">CNC &amp; Engenharia</span>
-          <span class="s3-tag">10 anos premium</span>
+          <span class="s3-tag">20 anos marcenaria</span>
         </div>
       </div>
     </div>
+    <div class="s3-photo-right" style="background-image:url('https://drive.google.com/thumbnail?id=1REsjKTpCOhoxP7iZc-lqVOHQVjrMK5OC&sz=w2000');"></div>
   </div>
 
   <!-- 04 — O OFÍCIO -->
@@ -1354,10 +1353,6 @@
         <div class="s4-spec">
           <div class="s4-dot"></div>
           <div class="s4-stxt"><strong>Ferragens Hettich &amp; Blum</strong> — engenharia alemã e austríaca, garantia de 10 anos a vitalícia</div>
-        </div>
-        <div class="s4-spec">
-          <div class="s4-dot"></div>
-          <div class="s4-stxt"><strong>MDF melamínico Duratex</strong> — superfície premium, resistente a risco e umidade</div>
         </div>
         <div class="s4-spec">
           <div class="s4-dot"></div>
@@ -1390,11 +1385,11 @@
         </div>
       </div>
       <div class="s5-case">
-        <div class="s5-img" style="background-image:url('https://drive.google.com/thumbnail?id=1PgHzp_dbECtDgkj_qIalnbYolOTKI48N&sz=w2000');"></div>
+        <div class="s5-img" style="background-image:url('https://drive.google.com/thumbnail?id=17nvhoMMb_1eEu0HMLHXdaVwXccVxh8z1&sz=w2000');"></div>
         <div class="s5-ov"></div>
         <div class="s5-info">
           <div class="s5-cname">Casa Graciane</div>
-          <div class="s5-cenv">Sala Cinema · Home Theater</div>
+          <div class="s5-cenv">Painéis Decorativos · Detalhes Especiais</div>
         </div>
       </div>
       <div class="s5-case">
@@ -1408,26 +1403,26 @@
     </div>
   </div>
 
-  <!-- 06 — CASE: FAZENDAS DA SERRA -->
+  <!-- 06 — CASE: MARCO TÚLIO -->
   <div class="slide s6" data-t="dark">
     <div class="s6-main">
       <div class="s6-img s6-main-img"></div>
       <div class="s6-info">
         <div class="s6-ctag">06 — Case em destaque</div>
-        <h2 class="s6-ctitle">Residência<br><em>Fazendas da Serra</em></h2>
-        <p class="s6-cdesc">Casa completa com painéis de lâmina natural seriada, portas coplanares e system deslizante importado para portas de 100kg+. Cada ambiente projetado para ser único — e executado para durar décadas.</p>
+        <h2 class="s6-ctitle">Escritório<br><em>Marco Túlio</em></h2>
+        <p class="s6-cdesc">Corporativo de alto padrão com mobiliário completo sob medida, painéis decorativos e detalhes especiais de acabamento. Cada peça projetada para refletir identidade e autoridade — e executada para durar décadas.</p>
       </div>
     </div>
     <div class="s6-s1">
       <div class="s6-img s6-s1-img"></div>
       <div class="s6-cap">
-        <div class="s6-cap-txt">Escritório · Lâmina natural</div>
+        <div class="s6-cap-txt">Mobiliário · Detalhes especiais</div>
       </div>
     </div>
     <div class="s6-s2">
       <div class="s6-img s6-s2-img"></div>
       <div class="s6-cap">
-        <div class="s6-cap-txt">Sala · Marcenaria integrada</div>
+        <div class="s6-cap-txt">Painéis decorativos · Acabamento</div>
       </div>
     </div>
   </div>
@@ -1454,7 +1449,7 @@
           <div class="s7-sl">ferragens</div>
         </div>
         <div class="s7-stat">
-          <div class="s7-sv">Próprio</div>
+          <div class="s7-sv">450m²</div>
           <div class="s7-sl">galpão · CNC</div>
         </div>
       </div>
@@ -1465,7 +1460,7 @@
           <div class="s7-snum">01</div>
           <div class="s7-scontent">
             <div class="s7-stitle">Briefing</div>
-            <p class="s7-sdesc">Absorção do projeto do arquiteto. Levantamento técnico in loco. Alinhamento de expectativas antes de qualquer corte.</p>
+            <p class="s7-sdesc">Absorção do projeto do arquiteto. Levantamento técnico do projeto. Alinhamento de expectativas antes de qualquer corte.</p>
           </div>
         </div>
         <div class="s7-step">
@@ -1479,7 +1474,7 @@
           <div class="s7-snum">03</div>
           <div class="s7-scontent">
             <div class="s7-stitle">Produção CNC</div>
-            <p class="s7-sdesc">Corte e usinagem no galpão próprio. CNC de precisão. Coladeira de borda automática para acabamento sem emendas.</p>
+            <p class="s7-sdesc">Corte e usinagem no galpão. CNC de precisão. Coladeira de borda automática para acabamento sem emendas.</p>
           </div>
         </div>
         <div class="s7-step">
@@ -1525,7 +1520,7 @@
         </div>
       </div>
       <div class="s8-assets">
-        <div class="s8-asset"><div class="s8-adot"></div><div class="s8-atxt">Galpão próprio em BH</div></div>
+        <div class="s8-asset"><div class="s8-adot"></div><div class="s8-atxt">Galpão de 450m² em BH</div></div>
         <div class="s8-asset"><div class="s8-adot"></div><div class="s8-atxt">CNC de precisão</div></div>
         <div class="s8-asset"><div class="s8-adot"></div><div class="s8-atxt">Coladeira de borda automática</div></div>
         <div class="s8-asset"><div class="s8-adot"></div><div class="s8-atxt">Equipe de 10 profissionais</div></div>
@@ -1533,46 +1528,7 @@
     </div>
   </div>
 
-  <!-- 09 — O QUE TRAZEMOS À MESA -->
-  <div class="slide s9" data-t="light">
-    <div class="s9-head">
-      <div class="s9-tag">09 — A proposta</div>
-      <span class="gl gl--sm gl--gold"></span>
-      <h2 class="s9-title">O que trazemos<br><em>à mesa.</em></h2>
-    </div>
-    <div class="s9-cols">
-      <div class="s9-col s9-col--a">
-        <div class="s9-clabel">O que a Valvic traz</div>
-        <span class="gl gl--sm"></span>
-        <h3 class="s9-ctitle">Marca, estrutura e<br><em>crescimento comprovado.</em></h3>
-        <p class="s9-cdesc">Não é uma aposta em sonho. É uma curva de crescimento que já existe — construída sem sócio investidor, sem atalho.</p>
-        <div class="s9-items">
-          <div class="s9-item">Marca premium consolidada junto a arquitetos de BH</div>
-          <div class="s9-item">Capacidade instalada: galpão, CNC, equipe de 10</div>
-          <div class="s9-item">R$ 645k → R$ 1,5M em 3 anos, orgânico</div>
-          <div class="s9-item">Equipe de produção com 10+ anos de marcenaria premium</div>
-          <div class="s9-item">Processos e controle de qualidade rodando</div>
-        </div>
-      </div>
-      <div class="s9-col s9-col--b">
-        <div class="s9-clabel">O que o parceiro certo abre</div>
-        <span class="gl gl--sm" style="background:var(--gold);"></span>
-        <h3 class="s9-ctitle">O acesso que<br><em>multiplica a escala.</em></h3>
-        <p class="s9-cdesc">A Valvic tem a capacidade de execução. O que falta é o parceiro que abre portas para contratos maiores e recorrentes — o que uma rede estratégica traz.</p>
-        <div class="s9-items">
-          <div class="s9-item">Capital de giro para absorver contratos de ciclo longo</div>
-          <div class="s9-item">Acesso a clientes e projetos além do alcance atual</div>
-          <div class="s9-item">Visibilidade em novos mercados e nichos de alto valor</div>
-          <div class="s9-item">Credibilidade para contratos de seis dígitos ou mais</div>
-        </div>
-      </div>
-    </div>
-    <div class="s9-bridge">
-      <p class="s9-btext">A Valvic tem a <strong>marca premium</strong> e a <strong>capacidade de escalar.</strong> O que falta é combustível e acesso — que é exatamente o que o parceiro certo traz.</p>
-    </div>
-  </div>
-
-  <!-- 10 — ENCERRAMENTO -->
+  <!-- 09 — ENCERRAMENTO -->
   <div class="slide s10" data-t="dark">
     <div class="s10-bg"></div>
     <div class="s10-ov"></div>
@@ -1585,6 +1541,7 @@
         <div class="s10-contact">
           <div class="s10-clabel">Contato</div>
           <div class="s10-cname">Jonathan Vargas</div>
+          <div class="s10-cname">Paulo Henrique Teixeira</div>
           <div class="s10-cinfo">valvicmarcenaria@gmail.com</div>
         </div>
         <div class="s10-logo">Valvic</div>
@@ -1612,7 +1569,7 @@
 </button>
 
 <!-- Counter -->
-<div class="slide-ctr" id="ctr">01 / 10</div>
+<div class="slide-ctr" id="ctr">01 / 09</div>
 
 <!-- Click zones -->
 <div class="zone zone-l" id="zoneL"></div>
