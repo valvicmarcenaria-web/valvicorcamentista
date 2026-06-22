@@ -64,26 +64,23 @@
   .feat p{ font-size:9.3pt; color:#4a443c; }
 
   /* ---- processo da lâmina ---- */
-  .swatches{ display:flex; gap:5mm; margin:5mm 0 2mm; }
-  .sw{ flex:1; height:46mm; border-radius:3mm; box-shadow:inset 0 0 0 1px rgba(60,40,20,.12), 0 1mm 3mm rgba(60,40,20,.10); }
-  .sw1{ background-color:#d9b888;
-    background-image:repeating-linear-gradient(90deg, rgba(150,110,62,.14) 0 1px, rgba(0,0,0,0) 1px 5px),
-      radial-gradient(140% 80% at 38% 28%, rgba(228,200,160,.65), rgba(185,145,95,.25) 72%); }
-  .sw2{ background-color:#c2894a;
-    background-image:repeating-linear-gradient(90deg, rgba(110,70,30,.20) 0 1px, rgba(0,0,0,0) 1px 4px),
-      repeating-linear-gradient(91deg, rgba(150,100,50,.12) 0 2px, rgba(0,0,0,0) 2px 11px),
-      radial-gradient(150% 75% at 42% 32%, rgba(206,154,86,.7), rgba(150,95,42,.35) 70%); }
-  .sw3{ background-color:#6f4c30;
-    background-image:repeating-linear-gradient(90deg, rgba(40,24,10,.30) 0 1px, rgba(0,0,0,0) 1px 5px),
-      radial-gradient(140% 80% at 40% 30%, rgba(120,84,52,.6), rgba(70,46,28,.5) 72%); }
-  .swcap{ font-size:9pt; color:var(--taupe); font-style:italic; text-align:center; margin-bottom:7mm; }
-  .swcap b{ font-style:normal; color:var(--ouro); }
-  .steps .step{ display:flex; gap:6mm; padding:3.6mm 0; border-bottom:1px solid var(--linha); align-items:baseline; }
-  .steps .step:last-child{ border-bottom:none; }
-  .steps .sn{ font-family:Georgia,serif; font-size:16pt; color:var(--mostarda); width:13mm; flex-shrink:0; }
-  .steps .st > b{ font-family:Georgia,serif; font-size:12.5pt; }
-  .steps .st span{ font-size:9.5pt; color:#4a443c; display:block; margin-top:.5mm; }
-  .steps .st span b{ font-family:"Helvetica Neue",Arial,sans-serif; font-size:9.5pt; font-weight:700; color:#2C2722; }
+  .gallery{ margin:7mm -22mm 0; height:76mm; display:flex; position:relative; }
+  .gallery img{ height:100%; object-fit:cover; display:block; }
+  .gallery .g1{ flex:1; } .gallery .g2{ flex:1.45; } .gallery .g3{ flex:1; }
+  .galcap{ position:absolute; left:0; right:0; bottom:0; background:rgba(20,14,8,.52); color:#F3E7CE;
+    font-size:8.5pt; letter-spacing:1.2px; text-transform:uppercase; padding:2.8mm 22mm; display:flex; justify-content:space-between; align-items:center; }
+  .galcap b{ color:#fff; } .galcap em{ color:var(--mostarda); font-style:normal; letter-spacing:0; text-transform:none; font-family:Georgia,serif; }
+  .journey{ position:relative; margin-top:11mm; padding-left:20mm; }
+  .journey:before{ content:""; position:absolute; left:7mm; top:7mm; bottom:7mm; width:1.5px; background:var(--linha); }
+  .jstep{ position:relative; padding:0 0 6mm 0; }
+  .jstep:last-child{ padding-bottom:0; }
+  .med{ position:absolute; left:-20mm; top:-1mm; width:14mm; height:14mm; border-radius:50%;
+    border:1.4px solid var(--mostarda); background:#fff; display:flex; align-items:center; justify-content:center; }
+  .med svg{ width:7.2mm; height:7.2mm; }
+  .jstep .sn{ font-size:8pt; letter-spacing:2px; color:var(--ouro); }
+  .jstep h3{ font-family:Georgia,serif; font-size:13.5pt; font-weight:normal; margin:.3mm 0 1mm; }
+  .jstep p{ font-size:9.6pt; color:#4a443c; }
+  .jstep p b{ color:var(--texto); }
   /* ---- tabela por móvel (investimento) ---- */
   .breakdown{ width:100%; border-collapse:collapse; margin-top:7mm; }
   .breakdown th{ text-align:left; font-size:8pt; letter-spacing:1.5px; text-transform:uppercase; color:var(--taupe); padding:2.5mm 2mm; border-bottom:1px solid var(--mostarda); }
@@ -244,16 +241,41 @@
 <div class="page">
   <div class="kicker"><span class="num serif">04</span><span class="lbl">O processo da lâmina natural</span></div>
   <p class="lead" style="color:#4a443c; margin-bottom:1mm;">Na <b>Linha Natural</b>, cada peça é
-  revestida com <b>folha de madeira natural de Freijó</b> — madeira de verdade, trabalhada à mão,
-  folha a folha. Um processo de marcenaria fina que dá à sala uma presença que a reprodução não alcança.</p>
-  <div class="swatches"><div class="sw sw1"></div><div class="sw sw2"></div><div class="sw sw3"></div></div>
-  <div class="swcap"><b>Cada folha é única</b> — o veio da madeira natural nunca se repete.</div>
-  <div class="steps">
-    <div class="step"><div class="sn">01</div><div class="st"><b>Seleção da lâmina</b><span>As folhas de Freijó são escolhidas <b>uma a uma</b> — veio, textura e tom. Madeira de fibra densa, de crescimento lento.</span></div></div>
-    <div class="step"><div class="sn">02</div><div class="st"><b>Casamento do veio</b><span>As folhas são <b>casadas folha a folha</b> para o veio ter <b>continuidade entre as peças</b> — como se o móvel tivesse nascido de um único tronco. É o detalhe que distingue a alta marcenaria.</span></div></div>
-    <div class="step"><div class="sn">03</div><div class="st"><b>Prensagem sobre o painel</b><span>A lâmina é colada (cola PVA) e prensada sobre o MDF — o visual da madeira maciça com a <b>estabilidade</b> do painel, que não trabalha com o tempo.</span></div></div>
-    <div class="step"><div class="sn">04</div><div class="st"><b>Lixamento</b><span>Lixas progressivamente mais finas, sempre no <b>sentido do veio</b> — o toque liso e contínuo da marcenaria fina.</span></div></div>
-    <div class="step"><div class="sn">05</div><div class="st"><b>Acabamento face a face</b><span><b>Selador e verniz</b> (fosco ou tonalizado) em várias demãos, aplicados em <b>cada face aparente</b> — proteção e profundidade de cor que duram.</span></div></div>
+  revestida com <b>folha de madeira natural de Freijó</b> — madeira de verdade, trabalhada à mão, folha a folha.</p>
+
+  <div class="gallery">
+    <img class="g1" src="img/veneer-panels.jpg" alt="">
+    <img class="g2" src="img/lamina-freijo.jpg" alt="">
+    <img class="g3" src="img/wood-studies.jpg" alt="">
+    <div class="galcap"><span><b>Lâmina natural de Freijó</b> · madeira real</span><em>cada folha é única — o veio nunca se repete</em></div>
+  </div>
+
+  <div class="journey">
+    <div class="jstep">
+      <div class="med"><svg viewBox="0 0 24 24" fill="none" stroke="#B0892F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M8 7c3 1.2 5 1.2 8 0M8 12c3 1.2 5 1.2 8 0M8 17c3 1.2 5 1.2 8 0"/></svg></div>
+      <div class="sn">ETAPA 01</div><h3>Seleção da lâmina</h3>
+      <p>As folhas de Freijó são escolhidas <b>uma a uma</b> — veio, textura e tom. Madeira de fibra densa, de crescimento lento.</p>
+    </div>
+    <div class="jstep">
+      <div class="med"><svg viewBox="0 0 24 24" fill="none" stroke="#B0892F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M10.5 6.5c-2 1-4 1.6-6.5 2M10.5 11c-2 1-4 1.6-6.5 2M10.5 15.5c-2 1-4 1.6-6.5 2"/><path d="M13.5 6.5c2 1 4 1.6 6.5 2M13.5 11c2 1 4 1.6 6.5 2M13.5 15.5c2 1 4 1.6 6.5 2"/></svg></div>
+      <div class="sn">ETAPA 02</div><h3>Casamento do veio</h3>
+      <p>As folhas são <b>casadas folha a folha</b> para o veio ter <b>continuidade entre as peças</b> — como se o móvel tivesse nascido de um único tronco. É o detalhe que distingue a alta marcenaria.</p>
+    </div>
+    <div class="jstep">
+      <div class="med"><svg viewBox="0 0 24 24" fill="none" stroke="#B0892F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="4" rx="1"/><path d="M4 6h16M4 18h16"/><path d="M8 6v4M16 6v4M8 14v4M16 14v4"/></svg></div>
+      <div class="sn">ETAPA 03</div><h3>Prensagem sobre o painel</h3>
+      <p>A lâmina é colada (<b>cola PVA</b>) e prensada sobre o MDF — o visual da madeira maciça com a <b>estabilidade</b> do painel, que não trabalha com o tempo.</p>
+    </div>
+    <div class="jstep">
+      <div class="med"><svg viewBox="0 0 24 24" fill="none" stroke="#B0892F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="9" width="14" height="5" rx="1"/><path d="M9 9V7.2M15 9V7.2"/><path d="M3 18.5h18"/><path d="M6.5 16.2 5 18M17.5 16.2 19 18M12 16.2V18"/></svg></div>
+      <div class="sn">ETAPA 04</div><h3>Lixamento</h3>
+      <p>Lixas progressivamente mais finas, sempre no <b>sentido do veio</b> — o toque liso e contínuo da marcenaria fina.</p>
+    </div>
+    <div class="jstep">
+      <div class="med"><svg viewBox="0 0 24 24" fill="none" stroke="#B0892F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 3.2l6.3 6.3-2.7 2.7-6.3-6.3z"/><path d="M11.8 5.9l-6.6 6.6c-1.1 1.1-1.1 2.9 0 4"/><path d="M5.2 16.5c-1.2.9-2.3.9-3.2.9.1-.9.1-2 .9-3.2"/></svg></div>
+      <div class="sn">ETAPA 05</div><h3>Acabamento face a face</h3>
+      <p><b>Selador e verniz</b> (fosco ou tonalizado) em várias demãos, aplicados em <b>cada face aparente</b> — proteção e profundidade de cor que duram.</p>
+    </div>
   </div>
   <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Bia &amp; Matheus — Sala de Estar</span></div>
 </div>
