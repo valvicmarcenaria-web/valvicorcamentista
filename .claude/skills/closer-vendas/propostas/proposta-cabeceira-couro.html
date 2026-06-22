@@ -26,6 +26,7 @@
   .cover .wmrow{ display:flex; justify-content:space-between; align-items:center; }
   .cover .wordmark{ font-family:Georgia,serif; font-size:21pt; letter-spacing:2px; }
   .cover .logo{ height:14mm; display:block; }
+  .cover .brandmark{ font-family:"Aurora Valvic"; font-size:28pt; color:var(--carvao); line-height:1; letter-spacing:0; }
   .fw{ font-family:"Aurora Valvic"; letter-spacing:0; }
   .cover .tag{ font-size:8.5pt; letter-spacing:3px; text-transform:uppercase; color:var(--taupe); }
   .cover .eyebrow{ letter-spacing:7px; font-size:10.5pt; color:var(--ouro); text-transform:uppercase; margin-top:18mm; }
@@ -55,6 +56,14 @@
   .price .pl{ font-size:9pt; letter-spacing:3px; text-transform:uppercase; color:var(--mostarda); }
   .price .pv{ font-family:Georgia,serif; font-size:34pt; margin-top:2mm; }
   .price .pd{ color:#d8c9a8; margin-top:2mm; font-size:9.5pt; }
+  .price .ptab{ width:100%; border-collapse:collapse; position:relative; z-index:2; }
+  .price .ptab td{ padding:3.6mm 0; border-bottom:1px solid rgba(224,165,33,.22); vertical-align:baseline; }
+  .price .ptab .pi{ font-family:Georgia,serif; font-size:13pt; color:#F5ECDA; }
+  .price .ptab .pi span{ display:block; font-family:"Helvetica Neue",Arial,sans-serif; font-size:8.3pt; color:#cbbd9d; margin-top:1mm; }
+  .price .ptab .pp{ text-align:right; font-family:Georgia,serif; font-size:16pt; color:#fff; white-space:nowrap; }
+  .price .ptab .ptot td{ border-bottom:none; padding-top:5mm; }
+  .price .ptab .ptot .pi{ font-size:13pt; color:var(--mostarda); }
+  .price .ptab .ptot .pp{ font-size:23pt; color:var(--mostarda); }
   .info{ display:flex; gap:7mm; margin-top:7mm; } .info>div{ flex:1; border-left:2px solid var(--mostarda); padding-left:4mm; }
   .info .k{ font-size:8.5pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe);} .info .vv{ font-size:11.5pt; font-family:Georgia,serif; margin-top:1mm;}
   .gnote{ font-size:8.7pt; color:var(--taupe); margin-top:3mm; }
@@ -69,7 +78,7 @@
 <!-- CAPA -->
 <div class="page cover">
   <div class="ctop">
-    <div class="wmrow"><img class="logo" src="img/logo-valvic.png" alt="Valvic"></div>
+    <div class="wmrow"><span class="brandmark">Valvic</span></div>
     <div class="eyebrow">Proposta exclusiva</div>
     <div class="name serif">Cabeceira<br>em couro natural</div>
     <div class="proj serif">Suíte do casal · Vale dos Cristais</div>
@@ -145,22 +154,24 @@
 <!-- 03 · INVESTIMENTO -->
 <div class="page">
   <div class="kicker"><span class="num serif">03</span><span class="lbl">Investimento</span></div>
-  <p class="lead" style="margin-bottom:2mm;">A cabeceira completa — estrutura, couro natural, tapeçaria
-  e instalação — <b>executada e coordenada pela Valvic</b>.</p>
+  <p class="lead" style="margin-bottom:3mm;">A suíte completa — <b>cabeceira em couro</b> e
+  <b>lavanderia de apoio</b> — executada e coordenada pela Valvic, com um interlocutor só.</p>
 
   <div class="price"><div class="ringc"></div>
-    <div class="pl">Cabeceira em couro · 550 × 120 cm · 6 módulos</div>
-    <div class="pv">R$ 13.500</div>
-    <div class="pd">Couro natural vaqueta La Novità · espuma D33 · tapeçaria · fixação macho-fêmea · instalação.</div>
+    <table class="ptab">
+      <tr><td class="pi">Cabeceira em couro<span>550 × 120 cm · 6 módulos · couro natural vaqueta La Novità · fixação macho-fêmea</span></td><td class="pp">R$ 13.500</td></tr>
+      <tr><td class="pi">Lavanderia e apoio<span>2 armários inferiores (3 portas) + 1 superior · MDF Gianduia Trama Ultra · ferragens Hettich</span></td><td class="pp">R$ 6.500</td></tr>
+      <tr class="ptot"><td class="pi">Investimento total</td><td class="pp">R$ 20.000</td></tr>
+    </table>
   </div>
 
   <div class="info">
     <div><div class="k">Prazo de entrega</div><div class="vv">45 a 60 dias úteis</div></div>
     <div><div class="k">Validade</div><div class="vv">7 dias úteis</div></div>
-    <div><div class="k">Garantia</div><div class="vv">5 anos · estrutura</div></div>
+    <div><div class="k">Garantia</div><div class="vv">5 a 10 anos</div></div>
   </div>
-  <p class="gnote">Garantia: <b>5 anos</b> na estrutura e fixação · <b>1 ano</b> no revestimento (couro, espuma e costura).
-  Não cobre desgaste natural, mau uso ou limpeza inadequada do couro.</p>
+  <p class="gnote"><b>Cabeceira:</b> 5 anos estrutura e fixação · 1 ano revestimento (couro, espuma, costura).
+  <b>Lavanderia:</b> 10 anos estrutura e ferragens Hettich. Não cobre desgaste natural, mau uso ou limpeza inadequada do couro.</p>
 
   <div class="kicker" style="margin:12mm 0 5mm;"><span class="num serif">04</span><span class="lbl">Condições</span></div>
   <table class="pay">

@@ -163,15 +163,17 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
   não validar MC). Base nova: Gianduia Trama Ultra (~R$700) + cava RM185 (~R$150/barra, confirmar).
   **Projeto Valdenir & Maria = 2 itens adicionais: Cabeceira R$13.500 + Lavanderia R$6.500 = R$20.000.**
   *Conceito: "item adicional de projeto" = add-on a um projeto existente; preço pode vir fechado do fundador.*
+- **Proposta inclui os DOIS itens** (correção): página de Investimento com tabela Cabeceira + Lavanderia +
+  total R$20.000. Garantia mista: cabeceira 5a estrutura/1a revestimento · lavanderia 10a (Hettich).
 
 ### [2026-06-22] LOGO da Valvic — RESOLVIDO ✅
 - Logo no Drive: pasta **"Valvic — Logo Vetorizado"** → tem subpasta **"Valvic — Logo PNG"** (8 variações:
   group claro/escuro, wordmark-simples, valvic-marcenaria, v-lettermark claro/escuro etc.). *(Lição: abrir
   SUBPASTAS — não parar no 1º nível; tinha `nextPageToken` e subpastas que eu não vi de primeira.)*
-- **Aplicado nas propostas:** baixei `02-group-valvic-claro.png` (via MCP), deixei **fundo transparente +
-  recorte** → `closer-vendas/propostas/img/logo-valvic.png`. Vai na **capa** (topo esquerdo) das propostas.
-- **Bônus — fonte real extraída:** o wordmark usa a fonte **Aurora-Regular**; extraí a fonte embutida do EPS
-  (sfnts) + montei cmap com fonttools → `closer-vendas/propostas/aurora-valvic.ttf` (só glifos V·a·l·v·i·c).
-  Uso `@font-face` pra escrever **"Valvic"** na fonte real nos **rodapés**. (EPS não rasteriza aqui — sem gs —
-  mas dá pra extrair a fonte e/ou usar o PNG.)
-- Sala e Cabeceira já regeradas com o logo real.
+- **Decisão do fundador:** usar **só o wordmark "Valvic"** (não o group com GROUP/tagline). Solução:
+  extraí a fonte embutida do EPS (**Aurora-Regular**, sfnts) + montei cmap com fonttools →
+  `closer-vendas/propostas/aurora-valvic.ttf` (glifos V·a·l·v·i·c). Uso `@font-face` pra escrever
+  **"Valvic"** na fonte real na **capa** (grande) e nos **rodapés** das propostas. Vetorial, nítido, sem PNG.
+- (EPS não rasteriza aqui — sem Ghostscript; LibreOffice não lê. Mas dá pra extrair a fonte. PNGs existem na
+  subpasta "Valvic — Logo PNG" se precisar do símbolo/group.)
+- Sala e Cabeceira regeradas com o wordmark real.
