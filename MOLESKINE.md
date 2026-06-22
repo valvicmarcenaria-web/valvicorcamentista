@@ -145,3 +145,7 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
   `projetos/2026-cabeceira-couro-valdenir-maria-BASE.md` + JSON.
 - *Aprendizado: pra item novo (couro/estofaria) eu pesquiso o que não tenho (espuma/manta) e marco como
   estimativa a confirmar; o que o fundador valida com fornecedor entra como custo firme.*
+- **Vitor — proposta PREMIUM** (não Family): item único de alto padrão → layout enxuto/autoral, couro e
+  ofício em evidência, preço em bloco carvão, sem comparação de versão. 4 páginas →
+  `closer-vendas/propostas/proposta-cabeceira-couro.html` + PDF. **Pendente p/ liberar ao cliente:
+  PRAZO (nunca cravar sem Jonathan) + política de GARANTIA do estofado.**
