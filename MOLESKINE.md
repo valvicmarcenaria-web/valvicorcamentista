@@ -156,6 +156,11 @@ minerada pelo próprio especialista a partir de todo o histórico do repositóri
 - **Cores na logo:** PRETO `#000000` sobre branco; BRANCO `#FFFFFF` sobre preto. Não usa ouro na marca — ouro (#C09A52) é acento em documentos, não na identidade primária.
 - **Arquivo no Canva:** `logo_valvic` (id `DAGv0H7Gwdk`, 13 páginas); `marca_valvic` (id `DAGto3AJ9hE`, 24 páginas — apresentação de identidade).
 - **SVGs vetorizados:** `.claude/skills/closer-vendas/ferramentas/valvic-logo-vetorizado/` (8 arquivos SVG extraídos do PDF oficial via `pdftocairo`).
+- **PDFs individuais:** `.claude/skills/closer-vendas/ferramentas/valvic-logo-vetorizado-pdf/` (8 PDFs gerados via `cairosvg` a partir dos SVGs).
+- **PNGs 1500×1500px:** `.claude/skills/closer-vendas/ferramentas/valvic-logo-vetorizado-png/` (8 PNGs @4× gerados via `cairosvg`).
+- **Google Drive (pasta raiz EPS/AI/CorelDraw):** `18zR8r5uVXAdIhtqj6JyHLcRleN8IgbJw`
+  - **Subpasta PDF:** `1VxyAxR-950p9jRFbKov9kU2yb-9rlgWz` ("Valvic — Logo PDF")
+  - **Subpasta PNG:** `1pAVKpKP0MgbwMI_-mFu0Zir-flDJxBaK` ("Valvic — Logo PNG")
 - **Vetorização:** paths extraídos com `pdffonts` → fonte identificada como Aurora-Regular → `pdftocairo -svg` página a página → 100% fiel ao original, sem recriação manual.
 - **Regra permanente:** Qualquer uso da logo em documentos HTML deve referenciar os arquivos da pasta `valvic-logo-vetorizado/` ou os tokens CSS já definidos — nunca reinventar.
 
