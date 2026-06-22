@@ -31,10 +31,41 @@ espaçamento `s` (ex.: 12mm), fresa Ø`d`:
 - Cada ranhura é um corte reto de comprimento `L` no Z da pele; transição de `s` em
   X entre ranhuras; **sempre validar Z ≥ −0,1**.
 
+## Fluxo completo da peça curva (a "cambota")
+
+A dobra não vive sozinha — ela **veste uma estrutura**. O conjunto de teste
+(`exemplos/jrg-exemplo-curva-completa-estrutura-mais-painel.tap`) mostra tudo num
+arquivo só, em 3 operações na ordem certa:
+
+1. **Estrutura** (contornos passantes Z−0,1): **base + teto** (dois painéis ~900mm
+   de largura com uma **quina curva de R203mm**) + **4 réguas** (~55×353mm) que
+   unem base e teto. As bordas têm pequenos **encaixes/abas** (os detalhes em
+   G2/G3) para montagem por encaixe.
+2. **Ranhuras de dobra** (parcial, Z+1) no **painel de revestimento**.
+3. **Corte de separação** (passante Z−0,1) que **solta o painel** por último.
+
+A **cambota** = a estrutura curva (base/teto + réguas) que dá a forma; o **painel
+ranhurado** é o MDF curvado que a veste. O painel tem **parte plana + parte
+ranhurada**: a plana cobre os trechos retos, a ranhurada (~324mm) abraça a quina
+de R203.
+
+## ⭐ Calibração raio ↔ espaçamento (DADO REAL deste conjunto)
+
+- **Quina da cambota: R203mm** (arco de 90° → comprimento ≈ **318,8mm**).
+- **Zona ranhurada do painel: ~324mm**, espaçamento **12mm**, pele **1mm**, 15mm.
+- **Nº de ranhuras ≈ comprimento do arco ÷ espaçamento** → 318,8 ÷ 12 ≈ **27** ✓
+  (bate com as ~27 ranhuras do arquivo).
+
+> **Regra emergente (a generalizar):** a zona ranhurada = comprimento do arco
+> (`ângulo × raio`); nº de vincos ≈ arco ÷ espaçamento. Para esta receita
+> (12mm / pele 1mm / 15mm) o raio fechado é **R≈203mm**. Falta confirmar se o
+> espaçamento muda o raio mínimo, ou se o raio é definido só pela cambota e o
+> espaçamento é fixo (12mm) por suavidade.
+
 ## A confirmar / calibrar
-- **Raio × espaçamento:** que **raio de curva** esse padrão (12mm, pele 1mm, 15mm)
-  produz? A relação raio→espaçamento é o que falta para o Téo projetar uma curva
-  de raio-alvo. (Regra prática a levantar com o Paulo: "pra raio X, uso espaçamento Y".)
+- **Raio mínimo:** R203 funcionou com folga? Qual o menor raio sem quebrar a pele
+  de 1mm? O espaçamento de 12mm muda esse limite?
+- **Espaçamento é sempre 12mm** ou varia conforme o raio/acabamento?
 - **Pele por espessura:** 1mm vale para 15mm. E para 18mm? E 6mm? (provável manter
   ~1mm, confirmar.)
 - **Lado da pele:** confirmar que a pele (face lisa) vai sempre para **fora** da

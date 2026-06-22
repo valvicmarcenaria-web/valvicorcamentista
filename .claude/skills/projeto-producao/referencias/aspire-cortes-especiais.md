@@ -108,6 +108,28 @@ N.. M30
 Os M-codes **M158/M162** (liga) e **M159/M163** (desliga) são do JRG (provável
 vácuo da mesa + aspiração). **Sempre em par, sempre presentes, nunca inventados.**
 
+## Estrutura multi-operação (vários cortes num arquivo)
+
+Um `.tap` pode ter **vários cortes/operações** em sequência, com **um único
+cabeçalho e rodapé**. Cada operação:
+1. é separada por um comentário `(Corte N)` + `()`;
+2. faz: `G00` posiciona → `G00 Z<clearance>` → `G1 Z<prof> F2500` mergulho →
+   contorno (G1/G2/G3) no Z da operação → `G00 Z<clearance>` retrai;
+3. **pode ter Z diferente** entre operações (ex.: contornos passantes em Z−0,1 e
+   ranhuras de dobra em Z+1 no mesmo arquivo).
+4. troca de ferramenta (`M6T<n>`) só aparece se a operação seguinte mudar de
+   fresa — nos exemplos atuais é tudo T2.
+
+### 🔑 Regra de sequência (ordem das operações)
+**Operações parciais/internas primeiro (peça ainda presa à chapa = firme); o corte
+passante que SOLTA a peça vem por ÚLTIMO.** Visto no exemplo completo de curva:
+1º os contornos da estrutura, 2º as **ranhuras de dobra** (parcial, Z+1) no painel,
+3º o **contorno que solta** o painel (Z−0,1). Se soltasse antes, a peça se mexeria
+e estragaria. (Vácuo M158/M162 segura as peças já soltas.)
+
+> Exemplo de referência: `exemplos/jrg-exemplo-curva-completa-estrutura-mais-painel.tap`
+> (estrutura + ranhuras + corte de separação, 3 operações, tudo T2).
+
 ## A confirmar (para gerar corte com segurança total)
 - ✅ **Z-zero na chapa de sacrifício** — CONFIRMADO. Z mín. = −0,1 (ver acima).
 - **Datum 0,0** na chapa (onde fica o canto de referência na mesa).
