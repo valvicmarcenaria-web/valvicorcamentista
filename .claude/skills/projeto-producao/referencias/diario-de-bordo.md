@@ -28,6 +28,15 @@
 - **Decisões minhas a confirmar:** aba 30×15mm (ombro 10mm); rasgos a 70mm do
   centro; réguas como 4 aletas radiais separadas (≠ entrelaçadas com meia-madeira).
 
+### Regras novas gravadas (16/06, fim do dia)
+- 🔩 **Osso de cão (dogbone) em TODA quina de encaixe** (raio = raio da fresa).
+  Sem ele, aba de canto vivo não assenta. Ver `aspire-cortes-especiais.md`.
+- 📐 **Folga de 7mm também da borda da chapa** (margem de nesting = 7mm, não 10).
+- Gabarito recebido: `exemplos/cilindro-ajustado-encaixe-dogbone.crv3d` (Aspire,
+  binário — não editável por mim, guardado como referência do encaixe correto).
+- ⚠️ **Pendência de implementação:** atualizar geradores para (a) margem 7mm e
+  (b) gerar dogbones automáticos nos rasgos de encaixe.
+
 ### Perguntas em aberto (puxar quando der)
 1. **Caso real de retrabalho do Paulo** — o maior combustível (modos de falha →
    regras). Ainda não veio.

@@ -108,6 +108,27 @@ N.. M30
 Os M-codes **M158/M162** (liga) e **M159/M163** (desliga) são do JRG (provável
 vácuo da mesa + aspiração). **Sempre em par, sempre presentes, nunca inventados.**
 
+## 🔩 Regras de ENCAIXE e NESTING (obrigatórias)
+
+> Definidas pelo Jonathan (16/06). Valem para **todo** projeto com encaixe/nesting.
+> Referência visual: `exemplos/cilindro-ajustado-encaixe-dogbone.crv3d` (projeto
+> Aspire corrigido — arquivo binário, não editável por mim, guardado como gabarito).
+
+### 1. Osso de cão (dogbone) em TODA quina de encaixe
+A fresa é redonda → deixa o **canto interno arredondado** (raio = raio da fresa),
+e a aba de **canto vivo NÃO entra até o fundo**. Solução: em cada quina interna do
+rasgo/fenda de encaixe, adicionar um **osso de cão** = sobrecorte circular no canto.
+- **Raio do osso de cão = raio da fresa** usada no encaixe (T2 → 3mm; T7 → 1,5mm).
+- Centro do círculo deslocado na **diagonal**, pra dentro do material que será
+  removido, liberando o canto para a aba quadrada assentar 100%.
+- **Regra:** todo rasgo de encaixe (camada ENCAIXE) sai **com dogbone nas quinas**.
+  Ao gerar DXF/G-code de encaixe, incluir os ossos de cão automaticamente.
+
+### 2. Folga de 7mm também na BORDA da chapa
+A mesma folga de **7mm entre peças** vale **da borda da chapa**: nenhuma peça a
+menos de **7mm da borda**. ⇒ no nesting, **margem = 7mm** (não 10mm). Atualizar os
+geradores (`gerados/gen_dxf2_encaixe.py`: `MARG = 7.0`).
+
 ## Estrutura multi-operação (vários cortes num arquivo)
 
 Um `.tap` pode ter **vários cortes/operações** em sequência, com **um único
