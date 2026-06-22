@@ -63,6 +63,36 @@
   .feat h3{ font-size:12.5pt; margin:1mm 0 1.5mm; }
   .feat p{ font-size:9.3pt; color:#4a443c; }
 
+  /* ---- processo da lâmina ---- */
+  .swatches{ display:flex; gap:5mm; margin:5mm 0 2mm; }
+  .sw{ flex:1; height:46mm; border-radius:3mm; box-shadow:inset 0 0 0 1px rgba(60,40,20,.12), 0 1mm 3mm rgba(60,40,20,.10); }
+  .sw1{ background-color:#d9b888;
+    background-image:repeating-linear-gradient(90deg, rgba(150,110,62,.14) 0 1px, rgba(0,0,0,0) 1px 5px),
+      radial-gradient(140% 80% at 38% 28%, rgba(228,200,160,.65), rgba(185,145,95,.25) 72%); }
+  .sw2{ background-color:#c2894a;
+    background-image:repeating-linear-gradient(90deg, rgba(110,70,30,.20) 0 1px, rgba(0,0,0,0) 1px 4px),
+      repeating-linear-gradient(91deg, rgba(150,100,50,.12) 0 2px, rgba(0,0,0,0) 2px 11px),
+      radial-gradient(150% 75% at 42% 32%, rgba(206,154,86,.7), rgba(150,95,42,.35) 70%); }
+  .sw3{ background-color:#6f4c30;
+    background-image:repeating-linear-gradient(90deg, rgba(40,24,10,.30) 0 1px, rgba(0,0,0,0) 1px 5px),
+      radial-gradient(140% 80% at 40% 30%, rgba(120,84,52,.6), rgba(70,46,28,.5) 72%); }
+  .swcap{ font-size:9pt; color:var(--taupe); font-style:italic; text-align:center; margin-bottom:7mm; }
+  .swcap b{ font-style:normal; color:var(--ouro); }
+  .steps .step{ display:flex; gap:6mm; padding:3.6mm 0; border-bottom:1px solid var(--linha); align-items:baseline; }
+  .steps .step:last-child{ border-bottom:none; }
+  .steps .sn{ font-family:Georgia,serif; font-size:16pt; color:var(--mostarda); width:13mm; flex-shrink:0; }
+  .steps .st > b{ font-family:Georgia,serif; font-size:12.5pt; }
+  .steps .st span{ font-size:9.5pt; color:#4a443c; display:block; margin-top:.5mm; }
+  .steps .st span b{ font-family:"Helvetica Neue",Arial,sans-serif; font-size:9.5pt; font-weight:700; color:#2C2722; }
+  /* ---- tabela por móvel (investimento) ---- */
+  .breakdown{ width:100%; border-collapse:collapse; margin-top:7mm; }
+  .breakdown th{ text-align:left; font-size:8pt; letter-spacing:1.5px; text-transform:uppercase; color:var(--taupe); padding:2.5mm 2mm; border-bottom:1px solid var(--mostarda); }
+  .breakdown th.r,.breakdown td.r{ text-align:right; }
+  .breakdown td{ padding:2.8mm 2mm; border-bottom:1px solid var(--linha); font-size:10pt; }
+  .breakdown td.r{ font-family:Georgia,serif; }
+  .breakdown tr.tot td{ border-bottom:none; border-top:1.5px solid var(--mostarda); font-family:Georgia,serif; font-size:11.5pt; padding-top:3mm; }
+  .breakdown .same{ color:var(--taupe); font-size:8pt; }
+
   /* ---- versões ---- */
   .versions{ display:flex; gap:7mm; margin-top:2mm; }
   .v{ flex:1; border:1px solid var(--linha); border-radius:3mm; padding:8mm 7mm; position:relative; }
@@ -210,9 +240,27 @@
   <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Bia &amp; Matheus — Sala de Estar</span></div>
 </div>
 
-<!-- ===== 4 · INVESTIMENTO ===== -->
+<!-- ===== 4 · PROCESSO DA LÂMINA NATURAL ===== -->
 <div class="page">
-  <div class="kicker"><span class="num serif">04</span><span class="lbl">Investimento</span></div>
+  <div class="kicker"><span class="num serif">04</span><span class="lbl">O processo da lâmina natural</span></div>
+  <p class="lead" style="color:#4a443c; margin-bottom:1mm;">Na <b>Linha Natural</b>, cada peça é
+  revestida com <b>folha de madeira natural de Freijó</b> — madeira de verdade, trabalhada à mão,
+  folha a folha. Um processo de marcenaria fina que dá à sala uma presença que a reprodução não alcança.</p>
+  <div class="swatches"><div class="sw sw1"></div><div class="sw sw2"></div><div class="sw sw3"></div></div>
+  <div class="swcap"><b>Cada folha é única</b> — o veio da madeira natural nunca se repete.</div>
+  <div class="steps">
+    <div class="step"><div class="sn">01</div><div class="st"><b>Seleção da lâmina</b><span>As folhas de Freijó são escolhidas <b>uma a uma</b> — veio, textura e tom. Madeira de fibra densa, de crescimento lento.</span></div></div>
+    <div class="step"><div class="sn">02</div><div class="st"><b>Casamento do veio</b><span>As folhas são <b>casadas folha a folha</b> para o veio ter <b>continuidade entre as peças</b> — como se o móvel tivesse nascido de um único tronco. É o detalhe que distingue a alta marcenaria.</span></div></div>
+    <div class="step"><div class="sn">03</div><div class="st"><b>Prensagem sobre o painel</b><span>A lâmina é colada (cola PVA) e prensada sobre o MDF — o visual da madeira maciça com a <b>estabilidade</b> do painel, que não trabalha com o tempo.</span></div></div>
+    <div class="step"><div class="sn">04</div><div class="st"><b>Lixamento</b><span>Lixas progressivamente mais finas, sempre no <b>sentido do veio</b> — o toque liso e contínuo da marcenaria fina.</span></div></div>
+    <div class="step"><div class="sn">05</div><div class="st"><b>Acabamento face a face</b><span><b>Selador e verniz</b> (fosco ou tonalizado) em várias demãos, aplicados em <b>cada face aparente</b> — proteção e profundidade de cor que duram.</span></div></div>
+  </div>
+  <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Bia &amp; Matheus — Sala de Estar</span></div>
+</div>
+
+<!-- ===== 5 · INVESTIMENTO ===== -->
+<div class="page">
+  <div class="kicker"><span class="num serif">05</span><span class="lbl">Investimento</span></div>
   <p class="lead" style="color:#4a443c; margin-bottom:3mm;">As três peças, a mesma ferragem premium
   e a mesma garantia nas duas linhas. <b>O que muda é o acabamento</b> — e, com ele, a presença da
   madeira na sala.</p>
@@ -241,19 +289,26 @@
     </div>
   </div>
 
+  <table class="breakdown">
+    <tr><th>Peça</th><th class="r">Linha Essencial</th><th class="r">Linha Natural</th></tr>
+    <tr><td>Aparador em L</td><td class="r">R$ 6.200</td><td class="r">R$ 28.900</td></tr>
+    <tr><td>Estante 2,77 m <span class="same">· laqueada, igual nas duas</span></td><td class="r">R$ 24.500</td><td class="r">R$ 24.500</td></tr>
+    <tr><td>Cristaleira</td><td class="r">R$ 5.300</td><td class="r">R$ 16.600</td></tr>
+    <tr class="tot"><td>Total</td><td class="r">R$ 36.000</td><td class="r">R$ 70.000</td></tr>
+  </table>
+  <p class="muted" style="font-size:9pt; margin-top:3mm;">A <b>estante</b> é a mesma nas duas linhas (laqueada) — a diferença de investimento está no <b>aparador</b> e na <b>cristaleira</b>, que ganham a lâmina natural de Freijó.</p>
+
   <div class="info">
     <div><div class="k">Prazo de entrega</div><div class="vv">100 a 120 dias úteis</div></div>
     <div><div class="k">Validade</div><div class="vv">7 dias úteis</div></div>
-    <div><div class="k">Atendimento</div><div class="vv">Retorno 24h · visita 3 dias</div></div>
+    <div><div class="k">Garantia</div><div class="vv">10 anos</div></div>
   </div>
-  <p class="signoff">A diferença entre as linhas é só o acabamento — o projeto, a engenharia e o
-  cuidado da execução são exatamente os mesmos.</p>
   <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Bia &amp; Matheus — Sala de Estar</span></div>
 </div>
 
-<!-- ===== 5 · CONDIÇÕES + GARANTIA + CTA ===== -->
+<!-- ===== 6 · CONDIÇÕES + GARANTIA + CTA ===== -->
 <div class="page">
-  <div class="kicker"><span class="num serif">05</span><span class="lbl">Condições &amp; garantia</span></div>
+  <div class="kicker"><span class="num serif">06</span><span class="lbl">Condições &amp; garantia</span></div>
   <h3 style="font-size:13pt; margin-bottom:1mm;">Pagamento</h3>
   <p class="muted" style="font-size:10pt;">Quanto mais você antecipa, maior o desconto — sobre a linha escolhida.</p>
   <table class="pay">
