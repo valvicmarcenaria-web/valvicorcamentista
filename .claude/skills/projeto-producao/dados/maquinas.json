@@ -18,7 +18,8 @@
       "troca_ferramenta": { "tipo": "automática (ATC)", "magazine": "linear", "capacidade": 10 },
       "estrutura": "aço estrutural usinado, ~1500 kg",
       "software_comando": "Controlador JRG · post-processador Vectric Aspire 'JRG CNC SOLID TAF'",
-      "obs": "Recebe o DXF do MD e o post do Aspire. Controlador JRG (dialeto de G-code pouco documentado publicamente — usar o arquivo .pp real como fonte da verdade). Fonte specs: raizenmachine.com.br/solidtaf."
+      "dialeto_gcode": "mm, absoluto (G90 implícito); N# incremento 1; G00/G1/G2/G3 com I/J; spindle M3S24000; troca M6T<n>+G43 H<n>; M-codes próprios M158/M162 (liga) e M159/M163 (desliga) — par obrigatório, não inventar. Decodificado em referencias/aspire-cortes-especiais.md (exemplo real em referencias/exemplos/jrg-exemplo-marcacao.tap).",
+      "obs": "Recebe o DXF do MD e o post do Aspire. Eixos: Y longo (~2800), X curto (~1900); estaciona em Y2840 X51 Z50. Fonte specs: raizenmachine.com.br/solidtaf; dialeto de .tap real comprovado."
     },
     {
       "nome": "Coladeira de borda",
