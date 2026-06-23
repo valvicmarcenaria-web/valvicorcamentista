@@ -130,11 +130,11 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
   3. **Apresentar o conceito de design antes de aplicar** quando o fundador pede algo mais criativo.
 - Fotos reais de Freijó versionadas em `closer-vendas/propostas/img/`. Proposta = **7 páginas**.
 - **[06/23] Linha ESSENCIAL — estante de Laca → MDF Branco TX** (premium mantém laca). Estante Branco TX =
-  material **R$1.906** (vs R$8.251 laca). **Estante precificada pelo fundador a R$8.500** (acima do
-  proporcional — é a maior peça, recorte CNC + gavetas). Por-móvel V1: aparador 6.000 · **estante 8.500** ·
-  cristaleira 5.100 = **R$19.600** (MC **~40,5%**). V2 premium intacta (laca, R$70.000). Agora a estante MUDA
-  entre linhas. *Flag: essencial fica com estante branca + aparador/cristaleira amadeirado — contraste a confirmar.*
-  *Aprendizado: preço por móvel NÃO precisa ser proporcional ao material — o fundador valoriza a peça (mão de obra).*
+  material **R$1.906** (vs R$8.251 laca), **precificada a R$8.500** pelo fundador. **Aparador (6.200) e
+  cristaleira (5.300) mantêm o valor cheio ORIGINAL** — NÃO redistribuir o "desconto". V1 essencial =
+  6.200 + 8.500 + 5.300 = **R$20.000 (MC ~41,1%)**. V2 premium intacta (laca, R$70.000). Agora a estante
+  MUDA entre linhas. *Flag: essencial fica com estante branca + aparador/cristaleira amadeirado — contraste a confirmar.*
+  *Aprendizado: mudar 1 item NÃO redistribui os outros — mantém os valores cheios já fechados e só soma a diferença.*
 
 ### [2026-06-22] Lavinia — Cabeceira em couro (Valdenir & Maria · Paula Galante RT10)
 - **Tipo novo: painel ESTOFADO em couro** (não é orçamento de chapa). 5,5×1,2m, 6 módulos almofadados,

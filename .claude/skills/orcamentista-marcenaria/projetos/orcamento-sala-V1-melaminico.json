@@ -2,9 +2,9 @@
  "cliente": "Sala Bia & Matheus (arq. Giovanna Camisassa)",
  "projeto": "Sala — 3 móveis (aparador + estante + cristaleira)",
  "versao": "V1-melaminico",
- "inv": 19600,
+ "inv": 20000,
  "mcAlvo": 40,
- "_nota": "V1 ESSENCIAL melamínico Freijó. Estante MDF Branco TX (preço 8.500, acima do proporcional). Aparador/cristaleira amadeirado. Total R$19.600, MC ~41%.",
+ "_nota": "V1 ESSENCIAL. Aparador 6.200 + Estante Branco TX 8.500 + Cristaleira 5.300 = R$20.000 (MC ~41%). Aparador/cristaleira mantêm valor cheio original; mudou só a estante (laca->Branco TX).",
  "p": {
   "nf": 5,
   "parc": 7,
@@ -263,7 +263,7 @@
   "Especiais": true
  },
  "diretrizes": "Parceira Giovanna (RT 10%). Aparador = TOM 01 puro (sem laca/vidro). Estante na V1 ESSENCIAL = MDF Branco TX (sem laca). Laca fica só na V2 PREMIUM. Vidro só na cristaleira (portas superiores DE CORRER). Dobradiça Novisys no aparador (×16) e na cristaleira (×8). Cristaleira: 3 fecha-toque Blum nas portas do corpo. Estante = 2 gavetas. Corte circular = usinagem CNC, sem %. Chapa inteira (projeto). Áreas por escalímetro — conferir in loco.",
- "rodrigo": "V1 essencial: estante Branco TX precificada a R$8.500 (material só R$1.906 → margem boa). Total R$19.600, MC ~40.5%.",
+ "rodrigo": "V1 essencial R$20.000 (MC ~41.1%). Estante Branco TX a R$8.500; aparador/cristaleira no valor cheio original (sem redistribuir).",
  "duvidas": [
   "Estante essencial = Branco TX branco (aparador/cristaleira seguem amadeirado Freijó) — confirmar o contraste estético.",
   "Profundidade real da estante/cristaleira (~35cm)."

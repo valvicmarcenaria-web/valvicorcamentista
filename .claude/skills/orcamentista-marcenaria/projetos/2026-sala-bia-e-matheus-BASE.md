@@ -12,7 +12,7 @@
 
 | Versão | Acabamento | Material | **Investimento** | MC |
 |---|---|---:|---:|:--:|
-| **V1 · Essencial (melamínico)** | madeirado Freijó + **estante MDF Branco TX** | R$ 5.532 | **R$ 19.600** | 40,5% |
+| **V1 · Essencial (melamínico)** | madeirado Freijó + **estante MDF Branco TX** | R$ 5.532 | **R$ 20.000** | 41,1% |
 | **V2 · Premium (lâmina Freijó)** | lâmina 2 faces + face a face + **estante laca** | R$ 23.461 | **R$ 70.000** | 36,1% |
 
 > **Fechado a MC ~36%** (valores cheios, decisão do fundador 06/2026 — um pouco abaixo do piso de
@@ -72,13 +72,13 @@
 
 | Móvel | V1 · Essencial | V2 · Premium |
 |---|---:|---:|
-| **M01 · Aparador** (em L) | R$ 6.000 | R$ 28.900 |
+| **M01 · Aparador** (em L) | R$ 6.200 | R$ 28.900 |
 | **M02 · Estante 2,77 m** | R$ 8.500 *(Branco TX)* | R$ 24.500 *(laca)* |
-| **M03 · Cristaleira** | R$ 5.100 | R$ 16.600 |
-| **TOTAL** | **R$ 19.600** | **R$ 70.000** |
+| **M03 · Cristaleira** | R$ 5.300 | R$ 16.600 |
+| **TOTAL** | **R$ 20.000** | **R$ 70.000** |
 
-> Estante essencial **precificada a R$ 8.500** (acima do proporcional ao material R$1.906): é a maior
-> peça — 2,77m, recorte CNC, gavetas + nichos — então carrega mão de obra. Isso leva a **V1 a MC ~40,5%**.
+> Aparador e cristaleira da essencial **mantêm o valor cheio original** (6.200 / 5.300, da proposta
+> anterior); mudou **só a estante** (laca → Branco TX, a R$8.500). V1 essencial = **R$ 20.000, MC ~41%**.
 
 ## Quantitativo — chapa INTEIRA (arredondada no nível do PROJETO)
 
@@ -100,11 +100,11 @@
 
 | Versão | Material | Investimento (fechado) | MC real |
 |---|---:|---:|:--:|
-| V1 Essencial (estante Branco TX) | 5.532 | **R$ 19.600** | **40,5%** |
+| V1 Essencial (estante Branco TX) | 5.532 | **R$ 20.000** | **41,1%** |
 | V2 Premium (estante laca) | 23.461 | **R$ 70.000** | **36,1%** |
 
-> Preços fechados pelo fundador (valores cheios). V1 essencial a MC ~40% (estante Branco TX precificada
-> a R$8.500); V2 premium a MC ~36%. Não recalcular sem nova ordem.
+> Preços fechados (valores cheios): V1 essencial **R$ 20.000** (MC ~41%) = aparador 6.200 + estante Branco TX
+> 8.500 + cristaleira 5.300 (aparador/cristaleira no valor original, mudou só a estante); V2 premium R$ 70.000 (MC ~36%).
 
 ## 🔶 A confirmar (drivers de custo) — restantes
 1. **Área de laca da estante** (14 m² de face) — maior driver isolado.
