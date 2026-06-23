@@ -224,3 +224,26 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
   Proposta regerada (capa "Cabeceira sob medida", investimento com 3 acabamentos + lavanderia R$6.500, garantia mista).
 - *Aprendizado: "incluir versões" = novos JSONs + atualizar BASE + reescrever a página de investimento da proposta
   como ESCOLHA (não soma) + garantir que o detalhe de design pedido apareça visualmente, não só em texto.*
+
+### [2026-06-23] Vitor — Proposta MANUTENÇÃO & acabamentos (Luciana & Marcelo · arq. NB Projetos)
+- **Cliente ESTRATÉGICA** (Luciana Rajão): cliente antiga, alto padrão, círculo que pode expor a Valvic a muitos
+  potenciais clientes. Mobiliário original feito pelo **Paulo / Marcenaria Monte Negro**; academia recente ela
+  fechou com **outra** empresa (cotamos contra Monte Negro + 2). Agora a **manutenção** voltou pra nós.
+- **Valvic NÃO trabalha com manutenção** — atendemos **por exceção, por ser cliente estratégica** (relacionamento
+  > regra). *Aprendizado: às vezes o valor não é a margem do serviço, é a porta que o cliente abre.*
+- Escopo da manutenção = mesmo da proposta concorrente (**Hände Móveis**, ORC HM nº176-2025, valor deles oculto):
+  9 ambientes, reparos pontuais (trocar amortecedores deslizante, batentes, calçar puxador, recolar roda-teto,
+  ajuste de porta em fábrica, perfil de alumínio). **Nosso valor fechado pelo fundador: R$ 8.350.**
+- **Adicionais (preços fechados pelo fundador):** Rouparia — marco novo em MDF Ultra Premium + **lâmina natural de
+  carvalho ebanizado** + verniz fosco + repintura da porta atual = **R$ 2.400** · Academia — acabamentos em **MDF
+  carvalho Malva Ultra** = **R$ 830** · Sala — troca de 2 painéis em tecido, base MDF Ultra (**tecido do cliente**)
+  = **R$ 690** · **Estrutura de fundo infinito = A DEFINIR** (escopo pendente). Total definido **R$ 12.270**.
+- **Condições:** 3 boletos 30/60/90 · entrega total em até 60 dias · execução/faturamento **fracionado** conforme
+  acordo entre as partes. **Garantia NÃO especificada pelo fundador → deixei fora da proposta** (não cravo sem
+  confirmar; é serviço de reparo em móvel de terceiro/Monte Negro — flaguei pra ele decidir).
+- **Pedido do fundador: "sem muita enrolação, aspecto mais sofisticado e organizado"** → layout editorial/sóbrio
+  (3 págs): capa tipográfica creme (wordmark Aurora, sem hero), escopo por ambiente em 2 colunas com bullets-anel,
+  adicionais com descrição + preço, investimento em bloco carvão RESUMIDO (manutenção / adicionais agrupados /
+  total / "a definir"), condições em 3 colunas. `closer-vendas/propostas/proposta-luciana-rajao.html` + PDF.
+- *Aprendizado: proposta "sofisticada e sem enrolação" = MENOS copy, MAIS organização/whitespace/tipografia.
+  Resumo de investimento NÃO precisa repetir cada linha dos adicionais — agrupar é mais elegante e poupa página.*
