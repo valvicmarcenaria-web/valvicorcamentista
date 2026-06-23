@@ -1,0 +1,93 @@
+{
+ "cliente": "Valdenir & Maria (designer Paula Galante)",
+ "projeto": "Cabeceira — versão MELAMÍNICO Cinza Sagrado (Vale dos Cristais)",
+ "versao": "melaminico",
+ "inv": 8500,
+ "mcAlvo": 45,
+ "_nota": "Cabeceira painel rígido em MELAMÍNICO cor Cinza Sagrado (chapa cor normal). Frisos 5mm. Prazo 12 dias. Material R$1802, MC 46%.",
+ "p": {
+  "nf": 5,
+  "parc": 7,
+  "vend": 0,
+  "rt": 10,
+  "vis": 250,
+  "outv": 0,
+  "prog": 0.8,
+  "coord": 1,
+  "marc": 5,
+  "serra": 0.2,
+  "manut": 0.2,
+  "log": 0,
+  "erro": 2
+ },
+ "lib": [
+  [
+   "MDF",
+   [
+    [
+     "mdf cor 15 (cinza sagrado)",
+     500
+    ]
+   ]
+  ],
+  [
+   "Cola e fita",
+   [
+    [
+     "Fita de borda cor - mt",
+     3
+    ],
+    [
+     "Colagem - mt máquina",
+     2.5
+    ]
+   ]
+  ],
+  [
+   "Especiais",
+   [
+    [
+     "Fixação macho-fêmea + parafusos",
+     60
+    ],
+    [
+     "Consumíveis (cola/grampo/embalagem)",
+     50
+    ]
+   ]
+  ]
+ ],
+ "ambientes": [
+  {
+   "nome": "Cabeceira em melamínico Cinza Sagrado (5,5×1,2m · 6 módulos · frisos 5mm)",
+   "q": {
+    "MDF¦mdf cor 15 (cinza sagrado)": 3,
+    "Cola e fita¦Fita de borda cor - mt": 35,
+    "Cola e fita¦Colagem - mt máquina": 35,
+    "Especiais¦Fixação macho-fêmea + parafusos": 1,
+    "Especiais¦Consumíveis (cola/grampo/embalagem)": 1
+   },
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
+   }
+  }
+ ],
+ "ativo": 0,
+ "collapsed": {
+  "MDF": true,
+  "Cola e fita": true,
+  "Especiais": true
+ },
+ "diretrizes": "Paula Galante parceira RT10. Painel RÍGIDO melamínico cor (Cinza Sagrado). Frisos 5mm entre os 6 painéis (EXPOR na proposta). Fixação macho-fêmea. LED do cliente. MC alvo 45%.",
+ "rodrigo": "Melamínico MC ~45.9% (R$8.500). Prazo 12 dias.",
+ "duvidas": [
+  "Áreas por estimativa — conferir no local."
+ ],
+ "theme": "light"
+}

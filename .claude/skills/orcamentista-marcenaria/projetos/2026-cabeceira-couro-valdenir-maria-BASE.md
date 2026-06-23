@@ -1,22 +1,38 @@
-# BASE PARA PROPOSTA — Cabeceira em couro (Valdenir & Maria)
+# BASE PARA PROPOSTA — Cabeceira Valdenir & Maria (3 acabamentos + Lavanderia)
 
-> **Painel de cabeceira ESTOFADO em couro.** Designer **Paula Galante** (parceira, **RT 10%
-> líquido** → divisor 0,70). Obra **Vale dos Cristais**, Nova Lima/MG. Situação de caixa **normal**.
-> **MC 40% · Investimento R$ 13.500.** Prazo **45–60 dias úteis**. Conferir medidas no local (nota do projeto).
-> **Projeto Valdenir & Maria = 2 itens:** Cabeceira em couro **R$ 13.500** (MC 40%) + Lavanderia
-> **R$ 6.500** → **combinado R$ 20.000 (MC ~37%)**. Prazo 45–60 dias. Conferir medidas no local.
-> **Garantia (aprovada):** 5 anos estrutura/fixação · 1 ano revestimento (couro/espuma/costura).
+> **Painel de cabeceira 5,5×1,2m · 6 módulos · frisos de 5mm entre painéis.** Designer **Paula Galante**
+> (parceira, RT 10% líq → divisor 0,70). Obra **Vale dos Cristais**. Caixa normal. LED = do cliente.
+> Oferecida em **3 acabamentos** (cliente escolhe 1) + a **Lavanderia** (item adicional). Conferir medidas no local.
 
-## Lavanderia e apoio — R$ 6.500 (item adicional de projeto · preço fechado pelo fundador)
-- 2 armários inferiores (3 portas de giro, puxador **perfil cava Rometal RM185**) + 1 armário superior
-  (2 portas de giro, 2 prateleiras internas). Estrutura **MDF Gianduia Trama Ultra Premium**, dobradiças **Hettich**.
-- Material estimado ~R$ 2.555 (sem medidas fornecidas — quantitativo a firmar no projeto executivo).
-- **Cabeceira e Lavanderia = itens adicionais de projeto** (Valdenir & Maria / Paula Galante). Combinado R$ 20.000.
+## Cabeceira — 3 ACABAMENTOS (cliente escolhe 1)
 
-## O que é
-- Painel **5,5 m × 1,2 m**, dividido em **6 módulos almofadados** (69 · 100 · 106 · 106 · 100 · 69 cm).
-- Revestimento em **couro branco — vaqueta La Novità** (ou similar).
-- Almofadado **liso** (sem capitonê/botão), espessura ~5 cm. **Perfil de LED embutido** no topo (LED = do cliente).
+| Acabamento | Construção | **Investimento** | MC | Prazo |
+|---|---|---:|:--:|:--:|
+| **Melamínico Cinza Sagrado** | painel rígido · chapa de cor | **R$ 8.500** | 46% | 12 dias úteis |
+| **Couro** (vaqueta La Novità) | estofado (espuma + couro + tapeçaria) | **R$ 13.500** | 40% | 30–45 dias úteis |
+| **Laca acetinada** | painel rígido · laca frente + topos | **R$ 16.000** | ~40% | 45–50 dias úteis |
+
+> **Frisos de 5mm entre os 6 painéis** — detalhe de design, **EXPOR na proposta**.
+> **Laca/melamínico = painel RÍGIDO** (relevo dos módulos, sem almofadado). **Couro = estofado.**
+> Fixação **macho-fêmea** em todos. **Garantia:** couro 5a estrutura/1a revestimento; laca/melamínico 5a estrutura.
+
+### Material por acabamento
+- **Melamínico:** 3 chapas cor 15mm (Cinza Sagrado, R$500) + fita + fixação ≈ **R$ 1.802** → R$ 8.500 (MC 45,9%).
+- **Couro:** ver custo detalhado abaixo ≈ **R$ 3.752** → R$ 13.500 (MC 40%).
+- **Laca acetinada:** 3 chapas cru 15mm + **laca 7,5 m² × R$450** (frente+topos) + **log dedicada R$200** + fixação ≈ **R$ 4.585** → R$ 16.000 (MC ~40%).
+
+> **Insight:** a laca acetinada (R$650 base) ficaria ~R$21k; com o R$450 negociado, fica R$16.000 — ainda acima do
+> couro (laca densa pesa). O **melamínico** é a porta de entrada (R$8.500). Couro = meio-termo nobre.
+
+## Lavanderia e apoio — R$ 6.500 (item adicional · preço fechado pelo fundador)
+- 2 armários inferiores (3 portas de giro, puxador **perfil cava Rometal RM185**) + 1 superior (2 portas, 2 prateleiras).
+  **MDF Gianduia Trama Ultra Premium**, dobradiças **Hettich**. Material estimado ~R$ 2.555.
+- **Suíte = cabeceira (acabamento à escolha) + lavanderia.** Ex.: couro R$13.500 + lavanderia R$6.500 = R$ 20.000.
+
+## A cabeceira (vale para todos os acabamentos)
+- Painel **5,5 m × 1,2 m**, **6 módulos** (69·100·106·106·100·69), **frisos de 5 mm** entre painéis.
+- **Couro:** almofadado liso ~5cm (vaqueta La Novità). **Laca/melamínico:** painel rígido com relevo dos módulos.
+- **LED embutido no topo = do cliente** (fora do escopo). Fixação **macho-fêmea** (painel "flutua").
 
 ## A virada de chave — não é orçamento de chapa
 A marcenaria é só o **esqueleto** (MDF oculto). O custo está em **couro + tapeçaria**, que são

@@ -196,3 +196,31 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
 - Exemplos em `referencias/exemplos-croqui/` (corte SVG canônico, perspectiva, croqui à mão, técnica de PF) +
   **template SVG** (`template_vista-frontal.svg.html`) e um exemplo GERADO por mim (vista frontal armário 2 portas)
   pra provar que a competência está viva. Render: SVG em HTML → weasyprint → PDF → PNG.
+
+### [2026-06-23] Lavinia — Sala B&M: estante essencial Laca → MDF Branco TX
+- Fundador pediu trocar a estante da **V1 essencial** de Laca → **MDF Branco TX** (premium V2 mantém Laca).
+  Lib: branco TX 15mm R$260 · 6mm R$190 · fita branco tx R$2/mt. Estante essencial = **R$ 1.906** (era R$ 8.251 laca).
+- **Preço da estante subido para R$ 8.500** (decisão do fundador, não proporcional ao material — preço por móvel
+  é estratégico, não custo+markup direto).
+- **REGRA (reforçada): mudar 1 item NÃO redistribui o desconto nos outros.** Aparador (R$6.200) e cristaleira
+  (R$5.300) **mantêm o valor cheio original** da proposta anterior; muda **só a estante**. V1 = **R$ 20.000 (MC ~41%)**.
+  *Aprendizado: ao revisar um item, mexer só nele; não rebalancear o pacote inteiro sem o fundador pedir.*
+
+### [2026-06-23] Lavinia — Cabeceira: + 3 ACABAMENTOS (couro + laca + melamínico)
+- Fundador pediu oferecer a cabeceira em **3 acabamentos** (cliente escolhe 1), além do couro já fechado:
+  | Acabamento | Construção | Investimento | MC | Prazo |
+  |---|---|---:|:--:|:--:|
+  | **Melamínico Cinza Sagrado** | painel rígido · chapa de cor | **R$ 8.500** | 45,9% | 12 dias úteis |
+  | **Couro** vaqueta La Novità | estofado | **R$ 13.500** | 40% | 30–45 dias úteis |
+  | **Laca acetinada** | painel rígido · laca frente+topos | **R$ 16.000** | ~40% | 45–50 dias úteis |
+- **Laca:** cru 15mm ×3 + **laca 7,5 m² × R$450** (frente+topos, preço negociado) + **log dedicada R$200** + fixação
+  ≈ R$ 4.585 → R$ 16.000. **Melamínico:** 3 chapas cor (Cinza Sagrado R$500) + fita + fixação ≈ R$ 1.802 → R$ 8.500.
+- **Insight:** laca densa pesa — a laca acetinada (R$16k) fica **acima** do couro (R$13,5k); melamínico é a porta
+  de entrada. Mesma peça, leitura de preço muito diferente conforme o acabamento.
+- **Frisos de 5mm entre os 6 painéis** = detalhe de design → **EXPOSTO na proposta** (lead pág.1 + croqui SVG com
+  linhas mostarda + legenda + caption). Couro = estofado almofadado; laca/melamínico = painel RÍGIDO com relevo.
+- **LED = do cliente** (mantido fora do escopo). Prazos por item (couro 30–45 / laca 45–50 / melamínico 12 dias).
+- JSONs novos: `orcamento-cabeceira-laca.json` · `orcamento-cabeceira-melaminico.json` (couro mantém o seu).
+  Proposta regerada (capa "Cabeceira sob medida", investimento com 3 acabamentos + lavanderia R$6.500, garantia mista).
+- *Aprendizado: "incluir versões" = novos JSONs + atualizar BASE + reescrever a página de investimento da proposta
+  como ESCOLHA (não soma) + garantir que o detalhe de design pedido apareça visualmente, não só em texto.*
