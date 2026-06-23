@@ -2,9 +2,9 @@
  "cliente": "Sala Bia & Matheus (arq. Giovanna Camisassa)",
  "projeto": "Sala — 3 móveis (aparador + estante + cristaleira)",
  "versao": "V1-melaminico",
- "inv": 17000,
- "mcAlvo": 36,
- "_nota": "V1 ESSENCIAL melamínico Freijó. Estante em MDF Branco TX (essencial); aparador/cristaleira amadeirado Freijó. Laca só na V2 premium. Fechado MC ~36%.",
+ "inv": 19600,
+ "mcAlvo": 40,
+ "_nota": "V1 ESSENCIAL melamínico Freijó. Estante MDF Branco TX (preço 8.500, acima do proporcional). Aparador/cristaleira amadeirado. Total R$19.600, MC ~41%.",
  "p": {
   "nf": 5,
   "parc": 7,
@@ -263,7 +263,7 @@
   "Especiais": true
  },
  "diretrizes": "Parceira Giovanna (RT 10%). Aparador = TOM 01 puro (sem laca/vidro). Estante na V1 ESSENCIAL = MDF Branco TX (sem laca). Laca fica só na V2 PREMIUM. Vidro só na cristaleira (portas superiores DE CORRER). Dobradiça Novisys no aparador (×16) e na cristaleira (×8). Cristaleira: 3 fecha-toque Blum nas portas do corpo. Estante = 2 gavetas. Corte circular = usinagem CNC, sem %. Chapa inteira (projeto). Áreas por escalímetro — conferir in loco.",
- "rodrigo": "V1 essencial com estante Branco TX. Fechado MC ~36.0% (R$17,000).",
+ "rodrigo": "V1 essencial: estante Branco TX precificada a R$8.500 (material só R$1.906 → margem boa). Total R$19.600, MC ~40.5%.",
  "duvidas": [
   "Estante essencial = Branco TX branco (aparador/cristaleira seguem amadeirado Freijó) — confirmar o contraste estético.",
   "Profundidade real da estante/cristaleira (~35cm)."
