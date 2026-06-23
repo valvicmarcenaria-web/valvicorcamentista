@@ -1207,7 +1207,7 @@
        IMPRESSÃO / EXPORTAÇÃO PDF
        Cada slide vira uma página paisagem (16:9).
     ══════════════════════════════════════════════ */
-    @page { size: 1600px 900px; margin: 0; }
+    @page { size: landscape; margin: 0; }
 
     @media print {
       html, body {
@@ -1222,7 +1222,8 @@
       .slide {
         position: relative !important;
         inset: auto !important;
-        width: 1600px; height: 900px;
+        width: 1600px !important;
+        height: 900px !important;
         opacity: 1 !important;
         transform: none !important;
         pointer-events: auto !important;
@@ -1319,7 +1320,7 @@
         </div>
       </div>
       <div class="s3-block s3-block--b">
-        <div class="s3-role">Sócio · Produto &amp; Processos</div>
+        <div class="s3-role">Sócio · Gestor de Produção</div>
         <h3 class="s3-name" style="color:var(--cream)">Paulo Henrique<br>Teixeira</h3>
         <span class="gl gl--sm"></span>
         <p class="s3-bio" style="color:rgba(245,239,224,.72)">20 anos de marcenaria. Responsável pelo desenvolvimento de produto e processos.</p>
@@ -1618,7 +1619,18 @@
 
   document.getElementById('btnNext').addEventListener('click', next);
   document.getElementById('btnPrev').addEventListener('click', prev);
-  document.getElementById('btnPdf').addEventListener('click', () => window.print());
+  document.getElementById('btnPdf').addEventListener('click', () => {
+    // Scale 1600×900 content to fit the actual paper width before printing
+    const probe = document.createElement('div');
+    probe.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:0;visibility:hidden;pointer-events:none;';
+    document.body.appendChild(probe);
+    const paperW = probe.offsetWidth;
+    document.body.removeChild(probe);
+    const scale = paperW > 200 ? paperW / 1600 : 0.7;
+    document.documentElement.style.zoom = scale;
+    window.print();
+    document.documentElement.style.zoom = '';
+  });
   document.getElementById('zoneR').addEventListener('click', next);
   document.getElementById('zoneL').addEventListener('click', prev);
 
