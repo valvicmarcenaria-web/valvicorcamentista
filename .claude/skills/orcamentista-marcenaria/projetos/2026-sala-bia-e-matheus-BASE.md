@@ -12,8 +12,8 @@
 
 | Versão | Acabamento | Material | **Investimento** | MC |
 |---|---|---:|---:|:--:|
-| **V1 · Melamínico Freijó** | madeirado (melamínico) | R$ 11.877 | **R$ 36.000** | 36,3% |
-| **V2 · Lâmina natural Freijó** | lâmina 2 faces + acabamento face a face | R$ 23.461 | **R$ 70.000** | 36,1% |
+| **V1 · Essencial (melamínico)** | madeirado Freijó + **estante MDF Branco TX** | R$ 5.532 | **R$ 17.000** | 36,0% |
+| **V2 · Premium (lâmina Freijó)** | lâmina 2 faces + face a face + **estante laca** | R$ 23.461 | **R$ 70.000** | 36,1% |
 
 > **Fechado a MC ~36%** (valores cheios, decisão do fundador 06/2026 — um pouco abaixo do piso de
 > exceção 37% do Rodrigo, autorizado para fechar). **Laca a R$450/m² = preço NEGOCIADO só deste
@@ -24,7 +24,7 @@
 | Móvel | O que é | Laca | Vidro |
 |---|---|:--:|:--:|
 | **M01 · Aparador** | móvel **baixo em L** (~240+90cm · H35 · D40) com portas · **tudo 15mm** · TOM 01 | ❌ | ❌ |
-| **M02 · Estante** | **277cm** · alturas 30/90/120cm · gavetas + nichos · **recorte circular Ø20+R10** | ✅ (2 versões) | ❌ |
+| **M02 · Estante** | **277cm** · alturas 30/90/120cm · gavetas + nichos · **recorte circular Ø20+R10** | ✅ só V2 · V1 = **Branco TX** | ❌ |
 | **M03 · Cristaleira** | **130cm** · corpo TOM 01 · **portas superiores DE CORRER em vidro temperado jateado** · fecha-toque Blum no corpo | ❌ | ✅ |
 
 > **TOM 01** = a peça que muda entre versões (madeirado V1 × lâmina natural Freijó V2).
@@ -38,8 +38,11 @@
 - **V2 Lâmina:** chapa revestida lâmina natural 2 faces **15mm R$1.400**; fundo = **6mm cru
   revestido lâmina 1 face R$1.000**. **Acabamento R$350/m² POR FACE**, contado **face a
   face**. **Logística dedicada da lâmina R$400** (uma vez no projeto).
-- **Laca** (só estante): substrato **MDF cru 15/6mm** + **laca R$450/m² por face** (preço
-  NEGOCIADO só deste projeto; base segue R$650). Logística R$150.
+- **Laca** (só estante da **V2 PREMIUM**): substrato MDF cru 15/6mm + **laca R$450/m² por face**
+  (preço NEGOCIADO só deste projeto; base segue R$650). Logística R$150.
+- **V1 ESSENCIAL — estante em MDF Branco TX** (sem laca): chapas Branco TX 15mm (R$260) + fundo 6mm
+  (R$190) + fita de borda branco TX. Estante essencial = **R$ 1.906** (vs R$ 8.251 laqueada). O aparador e a
+  cristaleira da V1 seguem amadeirado Freijó → na essencial a **estante fica branca** (confirmar o contraste).
 - **Dobradiça (Hettich Novisys)** no aparador (×16) e na cristaleira (×8). Estante não leva.
 - **Cristaleira: 3 fecha-toque Blum Tip-On** (R$100/un) nas portas.
 - **Estante = 2 gavetas** (corrediça oculta Quadro ×2).
@@ -53,26 +56,26 @@
 | Móvel | V1 Melamínico | V2 Lâmina |
 |---|---:|---:|
 | **M01 Aparador** (15mm + fundo 6mm + Novisys ×16) | R$ 1.942 | R$ 9.645 |
-| **M02 Estante** (cru + laca 14 m² × R$450 + 2 gavetas) | R$ 8.251 | R$ 8.251 |
+| **M02 Estante** (V1 **Branco TX** · V2 cru + laca 14 m²) | R$ 1.906 | R$ 8.251 |
 | **M03 Cristaleira** (corpo + vidro jateado + Novisys ×8 + 3 fecha-toque Blum) | R$ 1.684 | R$ 5.565 |
-| **Material direto** | **R$ 11.877** | **R$ 23.461** |
+| **Material direto** | **R$ 5.532** | **R$ 23.461** |
 
-> A estante (laca) **não muda** entre versões — é o maior bloco isolado (laca 14 m² × R$450).
-> **Dobradiça (Novisys) no aparador (×16) e na cristaleira (×8)**; a estante (gavetas/nichos)
-> não leva. **Cristaleira tem 3 fecha-toque Blum Tip-On (R$100/un)** para as portas.
+> A estante **MUDA entre versões agora:** V1 essencial = **MDF Branco TX (R$ 1.906)** · V2 premium =
+> **laca (R$ 8.251)**. A laca era o maior bloco isolado — trocá-la por Branco TX é o que derruba a essencial.
+> **Dobradiça (Novisys) no aparador (×16) e na cristaleira (×8)**; a estante não leva.
+> **Cristaleira: 3 fecha-toque Blum Tip-On.**
 
 ## Preço por móvel (alocação) — 2 cenários
 
 > Investimento alocado por móvel (proporcional ao material; pacote dilui visita/setup).
-> **Estante mantida igual nas duas versões** (é laqueada, não muda) — a diferença de cenário
-> fica toda no aparador e na cristaleira (peças TOM 01: melamínico → lâmina).
+> **A estante agora MUDA:** V1 essencial em **Branco TX** (barata) × V2 premium em **laca**.
 
-| Móvel | V1 · Melamínico | V2 · Lâmina Freijó |
+| Móvel | V1 · Essencial | V2 · Premium |
 |---|---:|---:|
-| **M01 · Aparador** (em L) | R$ 6.200 | R$ 28.900 |
-| **M02 · Estante 2,77 m** (laqueada) | R$ 24.500 | R$ 24.500 |
-| **M03 · Cristaleira** | R$ 5.300 | R$ 16.600 |
-| **TOTAL** | **R$ 36.000** | **R$ 70.000** |
+| **M01 · Aparador** (em L) | R$ 6.000 | R$ 28.900 |
+| **M02 · Estante 2,77 m** | R$ 5.900 *(Branco TX)* | R$ 24.500 *(laca)* |
+| **M03 · Cristaleira** | R$ 5.100 | R$ 16.600 |
+| **TOTAL** | **R$ 17.000** | **R$ 70.000** |
 
 ## Quantitativo — chapa INTEIRA (arredondada no nível do PROJETO)
 
