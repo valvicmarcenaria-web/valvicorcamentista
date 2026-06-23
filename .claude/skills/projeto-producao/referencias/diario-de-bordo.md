@@ -4,7 +4,23 @@
 > estado, o que está pendente e as perguntas em aberto. Atualizar ao fim de cada
 > sessão de trabalho.
 
-## Última sessão: 2026-06-16
+## Última sessão: 2026-06-23
+
+### Regra NOVA do Jonathan (gravar pra não esquecer mais) 🚨
+- 🔩 **Osso de cão (dogbone) em APENAS UMA peça do par** — ou na **estrutura** (a
+  aba/peça que encaixa) **ou** no **buraco** que a recebe. **NUNCA nas duas**, senão
+  tira material a mais e o encaixe fica frouxo.
+- **Padrão Valvic / cilindro:** osso de cão **na ESTRUTURA** (nos ombros das abas das
+  4 réguas — 16 ossos no total) e o **buraco/rasgo sai LIMPO** (discos do tampo
+  redondo sem dogbone). Ver `aspire-cortes-especiais.md` §1.
+- Outro erro corrigido nesta sessão (v3): **ranhuras de dobra eram linhas soltas** →
+  a fresa saía da peça entre passadas e quebrava as quinas. Agora **zigzag contínuo**
+  (1 entrada / 1 saída), avanço de **10mm fora da peça** em cima e embaixo.
+- **Entregue hoje:** `gerados/cilindro_r200_h500_encaixe_v4_teo.dxf` (gerador
+  `gen_dxf4.py`). Estilo do osso de cão deixado como está, a pedido do Jonathan.
+- **AGUARDANDO:** Jonathan importar o **v4** no Aspire e dizer se o encaixe bate.
+
+## Sessão anterior: 2026-06-16
 
 ### O que já está consolidado (✅)
 - **Persona Téo** definida: marceneiro raiz 25 anos + programador.
@@ -34,8 +50,8 @@
 - 📐 **Folga de 7mm também da borda da chapa** (margem de nesting = 7mm, não 10).
 - Gabarito recebido: `exemplos/cilindro-ajustado-encaixe-dogbone.crv3d` (Aspire,
   binário — não editável por mim, guardado como referência do encaixe correto).
-- ⚠️ **Pendência de implementação:** atualizar geradores para (a) margem 7mm e
-  (b) gerar dogbones automáticos nos rasgos de encaixe.
+- ✅ **RESOLVIDO em 23/06 (v3/v4):** geradores atualizados com (a) margem 7mm e
+  (b) dogbones — agora só na estrutura (réguas), não nos discos. Ver topo do arquivo.
 
 ### Perguntas em aberto (puxar quando der)
 1. **Caso real de retrabalho do Paulo** — o maior combustível (modos de falha →
