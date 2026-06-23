@@ -6,6 +6,25 @@
 
 ## Última sessão: 2026-06-23
 
+### Técnica: bisel de 45° mais grosso que a fresa alcança 🪚
+- **Problema:** fresa de 45° corta no máx **18mm** de profundidade. Bisel de 45°
+  atravessando **30mm** precisaria de 30mm de profundidade → não alcança.
+- **Solução:** dividir em **2 chapas de 15mm**, biselar cada uma e empilhar. Como
+  45° = **1:1**, cada 15mm de profundidade anda 15mm no raio → as duas faces de 45°
+  ficam na mesma reta = **um cone contínuo**, sem degrau.
+- 🎯 **A regra que importa:** a **diferença de RAIO entre os dois círculos = a
+  espessura da chapa** (15mm). Isso garante o cone contínuo **mesmo se a calibração
+  do kerf variar** (o kerf é da mesma fresa nas 2 peças → se cancela; só muda o Ø
+  final em ~1mm). Geral: dif. de raio = espessura da chapa de cima.
+- **Kerf do Jonathan:** fresa de 45° "come" **+3mm no diâmetro** → desenhar Ø+3 pra
+  sobrar o tamanho certo.
+- **Risco único = alinhamento.** Colar torto cria degrau no bisel na linha da emenda.
+  Solução: **furo de centro Ø8 nas 2 peças** (mesma origem na CNC) + **cavilha** pra
+  centralizar. Sempre fazer **corte de teste** numa sobra pra conferir o +3mm.
+- **Caso real (tampo Ø300, 23/06):** desenhar **cima Ø303 / baixo Ø273**; final =
+  topo 300 → emenda 270 → base 240. Gerador: `gerados/gen_tampo_redondo_300_bisel45.py`,
+  saída `gerados/tampo_redondo_300_bisel45_teo.dxf`.
+
 ### Regra NOVA do Jonathan (gravar pra não esquecer mais) 🚨
 - 🔩 **Osso de cão (dogbone) em APENAS UMA peça do par** — ou na **estrutura** (a
   aba/peça que encaixa) **ou** no **buraco** que a recebe. **NUNCA nas duas**, senão
