@@ -114,15 +114,18 @@ vácuo da mesa + aspiração). **Sempre em par, sempre presentes, nunca inventad
 > Referência visual: `exemplos/cilindro-ajustado-encaixe-dogbone.crv3d` (projeto
 > Aspire corrigido — arquivo binário, não editável por mim, guardado como gabarito).
 
-### 1. Osso de cão (dogbone) em TODA quina de encaixe
+### 1. Osso de cão (dogbone) em encaixe — em UM lado só
 A fresa é redonda → deixa o **canto interno arredondado** (raio = raio da fresa),
-e a aba de **canto vivo NÃO entra até o fundo**. Solução: em cada quina interna do
-rasgo/fenda de encaixe, adicionar um **osso de cão** = sobrecorte circular no canto.
+e a aba de **canto vivo NÃO entra até o fundo**. Solução: **osso de cão** =
+sobrecorte circular no canto.
 - **Raio do osso de cão = raio da fresa** usada no encaixe (T2 → 3mm; T7 → 1,5mm).
-- Centro do círculo deslocado na **diagonal**, pra dentro do material que será
-  removido, liberando o canto para a aba quadrada assentar 100%.
-- **Regra:** todo rasgo de encaixe (camada ENCAIXE) sai **com dogbone nas quinas**.
-  Ao gerar DXF/G-code de encaixe, incluir os ossos de cão automaticamente.
+- 🚨 **Fazer em APENAS UMA das duas peças do par** — ou na **estrutura** (a peça que
+  encaixa / a aba) **ou** no **buraco** que a recebe. **NUNCA nas duas** (senão tira
+  material a mais e o encaixe fica frouxo).
+- **Padrão Valvic / neste caso: na ESTRUTURA** (nos ombros das abas das réguas), e o
+  **buraco/rasgo sai LIMPO** (ex.: tampo redondo / discos sem osso de cão).
+- Implementado em `gerados/gen_dxf4.py`: osso de cão nos 4 ombros de cada régua
+  (índices 1,4,7,10 do contorno); rasgos dos discos sem osso de cão.
 
 ### 2. Folga de 7mm também na BORDA da chapa
 A mesma folga de **7mm entre peças** vale **da borda da chapa**: nenhuma peça a
