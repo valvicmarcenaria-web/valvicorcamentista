@@ -126,8 +126,19 @@ rasgo/fenda de encaixe, adicionar um **osso de cão** = sobrecorte circular no c
 
 ### 2. Folga de 7mm também na BORDA da chapa
 A mesma folga de **7mm entre peças** vale **da borda da chapa**: nenhuma peça a
-menos de **7mm da borda**. ⇒ no nesting, **margem = 7mm** (não 10mm). Atualizar os
-geradores (`gerados/gen_dxf2_encaixe.py`: `MARG = 7.0`).
+menos de **7mm da borda**. ⇒ no nesting, **margem = 7mm** (não 10mm).
+
+### 3. Ranhuras de dobra: AVANÇO + ZIGZAG contínuo
+🚨 Erro pego pelo Jonathan (DXF v2): ranhuras desenhadas como linhas soltas fazem
+a fresa **sair da peça entre passadas → quebra/lasca as quinas** do MDF.
+- As ranhuras **avançam 10mm para fora da peça** em CIMA e EMBAIXO (passam da borda
+  do painel) — dobra limpa até a extremidade.
+- Devem ser **ligadas num ÚNICO ZIGZAG** (serpentina): a fresa entra **1 vez**,
+  percorre tudo e sai **1 vez**. As voltas do zigzag ficam na sobra (fora da peça).
+- ⚠️ Nesting: o avanço de 10mm precisa de **folga ≥10mm** nas pontas ranhuradas
+  (não basta 7mm). Posicionar o painel com ~12mm livres nas extremidades.
+- Implementado em `gerados/gen_dxf3.py` (v3): polilinha aberta serpentina na camada
+  RANHURAS, `OVER=10`.
 
 ## Estrutura multi-operação (vários cortes num arquivo)
 
