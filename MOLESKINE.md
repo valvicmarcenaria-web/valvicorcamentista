@@ -177,3 +177,16 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
 - (EPS não rasteriza aqui — sem Ghostscript; LibreOffice não lê. Mas dá pra extrair a fonte. PNGs existem na
   subpasta "Valvic — Logo PNG" se precisar do símbolo/group.)
 - Sala e Cabeceira regeradas com o wordmark real.
+
+### [2026-06-23] Lavinia — NOVO MÓDULO: Croqui Técnico
+- Jonathan adicionou à skill a competência de **gerar e interpretar croqui** (`referencias/croqui-tecnico.md`),
+  anexada à **Fase ① (Olhar)**. Croqui é ENTRADA (interpretar desenho → quantitativo) e SAÍDA (demanda → SVG).
+- **Duas mãos:** GERAR (SVG vetorial→PNG: elevação, corte, perspectiva, explodido, detalhe) · INTERPRETAR
+  (ler cotas, método construtivo, extrair quantitativo). Desenho e conta nascem juntos.
+- **Convenções Valvic:** hachura = corte (só em seção, NÃO em elevação) · cota em cm/ferrugem com setas ·
+  linha vista cheia / oculta tracejada · bloco de título + leitura técnica + quantitativo derivado · fundo creme.
+- **Restrições:** nunca inventar medida ("a confirmar") · nunca croqui de método sem leitura técnica ·
+  nunca croqui de orçamento sem quantitativo · vista adequada ao objetivo.
+- Exemplos em `referencias/exemplos-croqui/` (corte SVG canônico, perspectiva, croqui à mão, técnica de PF) +
+  **template SVG** (`template_vista-frontal.svg.html`) e um exemplo GERADO por mim (vista frontal armário 2 portas)
+  pra provar que a competência está viva. Render: SVG em HTML → weasyprint → PDF → PNG.

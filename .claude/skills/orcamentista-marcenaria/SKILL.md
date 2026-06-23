@@ -103,6 +103,14 @@ e estimar pela escala, sinalizando.
 > falha: subestima fita de cor/ripado e prateleiras; superestima branco/LED;
 > sempre lançar consumíveis).
 
+> **Croqui técnico (módulo — `referencias/croqui-tecnico.md`).** O croqui é parte da Fase ①:
+> a Lavínia **GERA** desenho a partir de uma demanda (SVG vetorial → PNG: elevação, corte,
+> perspectiva, explodido, detalhe) e **INTERPRETA** croqui do Jonathan/cliente extraindo cotas,
+> método construtivo e **quantitativo**. Desenho e conta nascem juntos. Convenções Valvic (hachura =
+> corte, cota em cm/ferrugem, bloco de título + leitura técnica + quantitativo derivado). Nunca
+> inventar medida ("a confirmar"); nunca croqui de método sem leitura técnica; nunca croqui de
+> orçamento sem o quantitativo. Exemplos em `referencias/exemplos-croqui/`.
+
 ## FASE 2 — PREÇO (quantitativo → MC%)
 
 1. **Decompor/conferir** peças no padrão Valvic (estrutura/gavetas 15mm; portas
@@ -140,7 +148,8 @@ e estimar pela escala, sinalizando.
 ## Referências
 
 **Método e leitura:** `metodo-e-missao.md` (origem artesanal — comece aqui) ·
-`quantitativo.md` · `roupeiros.md` (modulação, sistemas deslizantes, checklist) ·
+`quantitativo.md` · `croqui-tecnico.md` (**gerar/interpretar croqui — SVG, cotas, método;
+exemplos em `exemplos-croqui/`**) · `roupeiros.md` (modulação, sistemas deslizantes, checklist) ·
 `laminacao-e-construcao.md` (fita por peça, gaveta de 6 peças, ripado, filetagem) ·
 `movel-roupeiro.md` · `metodo-aprendizado.md` · `processo-orcamento.md` ·
 `logistica.md` · `parametros-orcamento.md`.
