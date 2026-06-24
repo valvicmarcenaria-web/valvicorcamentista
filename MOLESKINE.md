@@ -224,6 +224,9 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
   Proposta regerada (capa "Cabeceira sob medida", investimento com 3 acabamentos + lavanderia R$6.500, garantia mista).
 - *Aprendizado: "incluir versões" = novos JSONs + atualizar BASE + reescrever a página de investimento da proposta
   como ESCOLHA (não soma) + garantir que o detalhe de design pedido apareça visualmente, não só em texto.*
+- **[06/23 add] + Complemento de painel no hall do elevador — R$ 1.350** (3º item adicional, preço fechado pelo
+  fundador, escopo a detalhar). Reagrupei lavanderia + hall sob um bloco **"Complementos do projeto"** (2 linhas, mesmo
+  peso dos acabamentos) — mais limpo que dois headers separados. Projeto completo ex.: couro+lav+hall = **R$ 21.350**.
 
 ### [2026-06-23] Vitor — Proposta MANUTENÇÃO & acabamentos (Luciana & Marcelo · arq. NB Projetos)
 - **Cliente ESTRATÉGICA** (Luciana Rajão): cliente antiga, alto padrão, círculo que pode expor a Valvic a muitos

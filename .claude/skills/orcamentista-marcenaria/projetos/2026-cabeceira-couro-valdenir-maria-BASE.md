@@ -1,8 +1,9 @@
-# BASE PARA PROPOSTA — Cabeceira Valdenir & Maria (3 acabamentos + Lavanderia)
+# BASE PARA PROPOSTA — Cabeceira Valdenir & Maria (3 acabamentos + complementos)
 
 > **Painel de cabeceira 5,5×1,2m · 6 módulos · frisos de 5mm entre painéis.** Designer **Paula Galante**
 > (parceira, RT 10% líq → divisor 0,70). Obra **Vale dos Cristais**. Caixa normal. LED = do cliente.
-> Oferecida em **3 acabamentos** (cliente escolhe 1) + a **Lavanderia** (item adicional). Conferir medidas no local.
+> Oferecida em **3 acabamentos** (cliente escolhe 1) + **complementos** do projeto (Lavanderia + painel do hall
+> do elevador, itens adicionais). Conferir medidas no local.
 
 ## Cabeceira — 3 ACABAMENTOS (cliente escolhe 1)
 
@@ -24,10 +25,13 @@
 > **Insight:** a laca acetinada (R$650 base) ficaria ~R$21k; com o R$450 negociado, fica R$16.000 — ainda acima do
 > couro (laca densa pesa). O **melamínico** é a porta de entrada (R$8.500). Couro = meio-termo nobre.
 
-## Lavanderia e apoio — R$ 6.500 (item adicional · preço fechado pelo fundador)
-- 2 armários inferiores (3 portas de giro, puxador **perfil cava Rometal RM185**) + 1 superior (2 portas, 2 prateleiras).
-  **MDF Gianduia Trama Ultra Premium**, dobradiças **Hettich**. Material estimado ~R$ 2.555.
-- **Suíte = cabeceira (acabamento à escolha) + lavanderia.** Ex.: couro R$13.500 + lavanderia R$6.500 = R$ 20.000.
+## Complementos do projeto (itens adicionais · preços fechados pelo fundador)
+- **Lavanderia e apoio — R$ 6.500:** 2 armários inferiores (3 portas de giro, puxador **perfil cava Rometal RM185**)
+  + 1 superior (2 portas, 2 prateleiras). **MDF Gianduia Trama Ultra Premium**, dobradiças **Hettich**. Material ~R$ 2.555.
+- **Complemento de painel no hall do elevador — R$ 1.350:** painel complementar de marcenaria (preço fechado pelo
+  fundador; escopo/medidas a detalhar no local). Item adicional do projeto.
+- **Projeto completo = cabeceira (acabamento à escolha) + lavanderia R$6.500 + complemento hall R$1.350.**
+  Ex.: couro R$13.500 + lavanderia R$6.500 + hall R$1.350 = **R$ 21.350**.
 
 ## A cabeceira (vale para todos os acabamentos)
 - Painel **5,5 m × 1,2 m**, **6 módulos** (69·100·106·106·100·69), **frisos de 5 mm** entre painéis.
