@@ -2,7 +2,7 @@
 
 > Como a Valvic curva chapa de MDF: ranhuras (fendas) paralelas que removem quase
 > toda a espessura, deixando uma **pele fina** que dobra. Decodificado de `.tap`
-> real (`exemplos/jrg-exemplo-dobra-mdf-kerf.tap`) + explicação do Jonathan.
+> real (`exemplos/jrg-exemplo-dobra-mdf-kerf.tap`) + explicação do Paulo.
 > Técnica construtiva **e** parametrizável para gerar G-code (Degrau 4).
 
 ## Princípio

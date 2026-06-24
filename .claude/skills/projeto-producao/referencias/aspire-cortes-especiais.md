@@ -13,7 +13,7 @@
    material). Post errado ou Z trocado bate o spindle / estraga a chapa.
 3. **Nunca inventar os M-codes próprios do JRG** (ver abaixo) — copiar verbatim.
 
-## ⭐ Referência de Z — a regra que muda tudo (CONFIRMADO pelo Jonathan)
+## ⭐ Referência de Z — a regra que muda tudo (CONFIRMADO pelo Paulo)
 
 Na mesa há uma **chapa de sacrifício**; o **eixo Z é sempre zerado sobre ela**
 (Z-zero = topo do sacrifício). A chapa a cortar fica **em cima** do sacrifício.
@@ -42,7 +42,7 @@ sacrifício além de 0,1 = estraga a chapa de sacrifício, a fresa e arrisca a m
 ## Ferramentas (magazine de 10)
 
 Por ora, testes só com **T2** e **T7**. As outras 8 (finalidade, offsets/descontos)
-o Jonathan informa depois.
+o Paulo informa depois.
 
 | Posição | Ferramenta | Raio | Usada em | Status |
 |---|---|---|---|---|
@@ -110,7 +110,7 @@ vácuo da mesa + aspiração). **Sempre em par, sempre presentes, nunca inventad
 
 ## 🔩 Regras de ENCAIXE e NESTING (obrigatórias)
 
-> Definidas pelo Jonathan (16/06). Valem para **todo** projeto com encaixe/nesting.
+> Definidas pelo Paulo (16/06). Valem para **todo** projeto com encaixe/nesting.
 > Referência visual: `exemplos/cilindro-ajustado-encaixe-dogbone.crv3d` (projeto
 > Aspire corrigido — arquivo binário, não editável por mim, guardado como gabarito).
 
@@ -132,7 +132,7 @@ A mesma folga de **7mm entre peças** vale **da borda da chapa**: nenhuma peça 
 menos de **7mm da borda**. ⇒ no nesting, **margem = 7mm** (não 10mm).
 
 ### 3. Ranhuras de dobra: AVANÇO + ZIGZAG contínuo
-🚨 Erro pego pelo Jonathan (DXF v2): ranhuras desenhadas como linhas soltas fazem
+🚨 Erro pego pelo Paulo (DXF v2): ranhuras desenhadas como linhas soltas fazem
 a fresa **sair da peça entre passadas → quebra/lasca as quinas** do MDF.
 - As ranhuras **avançam 10mm para fora da peça** em CIMA e EMBAIXO (passam da borda
   do painel) — dobra limpa até a extremidade.

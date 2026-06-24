@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # DXF v4 (R12, mm) cilindro R200 x H500.
-# CORRECAO desta versao (regra do Jonathan): OSSO DE CAO em APENAS UMA peca do par.
+# CORRECAO desta versao (regra do Paulo): OSSO DE CAO em APENAS UMA peca do par.
 #  -> osso de cao vai na ESTRUTURA (ombros das abas das reguas), NAO nos rasgos
 #     dos discos. Nunca nas duas (senao folga demais).
 # Mantem: ranhuras em zigzag continuo + avanco 10mm; margem 7mm.

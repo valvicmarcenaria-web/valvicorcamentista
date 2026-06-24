@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # DXF (R12, mm) — TAMPO DE MESA REDONDO Ø300 com bisel 45 atravessando 30mm.
-# Problema do Jonathan: fresa de 45 corta no max 18mm. Solucao: 2 chapas de 15mm,
+# Problema do Paulo: fresa de 45 corta no max 18mm. Solucao: 2 chapas de 15mm,
 # cada uma com bisel de 45; empilhadas o bisel vira UM cone continuo (45 = 1:1, cada
 # 15mm de profundidade anda 15mm no raio).
 #
-# Calibracao do Jonathan: desenhar +3mm no DIAMETRO (a fresa "come" 3mm).
+# Calibracao do Paulo: desenhar +3mm no DIAMETRO (a fresa "come" 3mm).
 #   -> topo final desejado = 300  => desenhar 303
 #   -> chave do encaixe: DIFERENCA DE RAIO entre os 2 circulos = espessura (15mm).
 #      Isso garante o cone continuo mesmo se o +3mm estiver um pouco fora.
@@ -18,7 +18,7 @@
 import math
 
 THICK   = 15.0          # espessura de cada chapa
-KERF_D  = 3.0           # "come" no diametro (calibracao do Jonathan)
+KERF_D  = 3.0           # "come" no diametro (calibracao do Paulo)
 TOP_FIN = 300.0         # diametro final do topo desejado
 PIN_D   = 8.0           # furo de centro p/ cavilha de alinhamento
 

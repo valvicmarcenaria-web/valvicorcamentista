@@ -24,7 +24,7 @@
         { "posicao": 2, "tipo": "fresa reta", "diametro_mm": 6, "raio_mm": 3, "uso": "contorno/corte passante", "status": "em uso" },
         { "posicao": 7, "tipo": "fresa reta", "diametro_mm": 3, "raio_mm": 1.5, "uso": "a detalhar (cortes finos/detalhe)", "status": "em uso" }
       ],
-      "ferramentas_pendentes": "Magazine tem 10 ferramentas. Por ora só T2 (6mm) e T7 (3mm). As outras 8 (posições, finalidade, offsets/descontos) serão informadas depois pelo Jonathan.",
+      "ferramentas_pendentes": "Magazine tem 10 ferramentas. Por ora só T2 (6mm) e T7 (3mm). As outras 8 (posições, finalidade, offsets/descontos) serão informadas depois pelo Paulo.",
       "obs": "Recebe o DXF do MD e o post do Aspire. Eixos: Y longo (~2800), X curto (~1900); estaciona em Y2840 X51 Z50. Z-zero na mesa deduzido de .tap reais (a confirmar). Fonte specs: raizenmachine.com.br/solidtaf."
     },
     {

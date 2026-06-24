@@ -4,6 +4,16 @@
 > estado, o que está pendente e as perguntas em aberto. Atualizar ao fim de cada
 > sessão de trabalho.
 
+## 👥 COM QUEM EU FALO (a conta do Gmail é compartilhada — ler sempre)
+A mesma conta (`valvicmarcenaria@gmail.com`) é usada por mais de uma pessoa. Quem
+está digitando muda. Para não trocar os nomes:
+- **Paulo** = sócio, marceneiro 20 anos. **TODA programação de Aspire e conversa de
+  chão de fábrica é com o Paulo.** Se o assunto é Aspire/CNC/corte/encaixe/ferramenta
+  /máquina e a pessoa não disse quem é → **é o Paulo**.
+- **Jonathan** = quando for ele, **ele avisa** ("aqui é o Jonathan").
+- **Lavinia** = orçamento · **Rodrigo** = finanças (outros skills).
+- Na dúvida sobre quem está falando num assunto de produção, assumir **Paulo**.
+
 ## Última sessão: 2026-06-23
 
 ### Técnica: bisel de 45° mais grosso que a fresa alcança 🪚
@@ -16,7 +26,7 @@
   espessura da chapa** (15mm). Isso garante o cone contínuo **mesmo se a calibração
   do kerf variar** (o kerf é da mesma fresa nas 2 peças → se cancela; só muda o Ø
   final em ~1mm). Geral: dif. de raio = espessura da chapa de cima.
-- **Kerf do Jonathan:** fresa de 45° "come" **+3mm no diâmetro** → desenhar Ø+3 pra
+- **Kerf do Paulo:** fresa de 45° "come" **+3mm no diâmetro** → desenhar Ø+3 pra
   sobrar o tamanho certo.
 - **Risco único = alinhamento.** Colar torto cria degrau no bisel na linha da emenda.
   Solução: **furo de centro Ø8 nas 2 peças** (mesma origem na CNC) + **cavilha** pra
@@ -25,7 +35,7 @@
   topo 300 → emenda 270 → base 240. Gerador: `gerados/gen_tampo_redondo_300_bisel45.py`,
   saída `gerados/tampo_redondo_300_bisel45_teo.dxf`.
 
-### Regra NOVA do Jonathan (gravar pra não esquecer mais) 🚨
+### Regra NOVA do Paulo (gravar pra não esquecer mais) 🚨
 - 🔩 **Osso de cão (dogbone) em APENAS UMA peça do par** — ou na **estrutura** (a
   aba/peça que encaixa) **ou** no **buraco** que a recebe. **NUNCA nas duas**, senão
   tira material a mais e o encaixe fica frouxo.
@@ -36,8 +46,8 @@
   a fresa saía da peça entre passadas e quebrava as quinas. Agora **zigzag contínuo**
   (1 entrada / 1 saída), avanço de **10mm fora da peça** em cima e embaixo.
 - **Entregue hoje:** `gerados/cilindro_r200_h500_encaixe_v4_teo.dxf` (gerador
-  `gen_dxf4.py`). Estilo do osso de cão deixado como está, a pedido do Jonathan.
-- **AGUARDANDO:** Jonathan importar o **v4** no Aspire e dizer se o encaixe bate.
+  `gen_dxf4.py`). Estilo do osso de cão deixado como está, a pedido do Paulo.
+- **AGUARDANDO:** Paulo importar o **v4** no Aspire e dizer se o encaixe bate.
 
 ## Sessão anterior: 2026-06-16
 
@@ -58,7 +68,7 @@
 
 ### EM ANDAMENTO — Teste do cilindro R200 × H500
 - Entreguei o **DXF v2 com encaixe** (`cilindro_r200_h500_encaixe_teo.dxf`).
-- **AGUARDANDO:** Jonathan importar no Aspire e dizer se a geometria bate (2 discos
+- **AGUARDANDO:** Paulo importar no Aspire e dizer se a geometria bate (2 discos
   com "+" de rasgos, 4 réguas com abas, painel com 105 vincos).
 - **Decisões minhas a confirmar:** aba 30×15mm (ombro 10mm); rasgos a 70mm do
   centro; réguas como 4 aletas radiais separadas (≠ entrelaçadas com meia-madeira).
