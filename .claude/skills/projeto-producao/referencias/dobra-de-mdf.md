@@ -92,23 +92,33 @@ de R203.
 - **Vincos:** raios mais fechados / quando facetar é aceitável (a pele entre costelas
   é que dobra). Foi o caso do cilindro (R203 com 27 vincos).
 
-## Parâmetros do caso real (CONFIRMADOS — criado-mudo, 24/06)
-- **Raio da curva:** **R120 mm**.
-- **Pele:** **1 mm** (mesma da dobra por vincos).
-- **Largura da zona de dobra (bolso):** **95 mm** (9,5 cm).
-- **Ferramenta:** "FRESA 6 MM CORTE" (T2) — lida do `.crv3d`.
-- **Chapa:** 15 mm (A CONFIRMAR) → bolso de ~14 mm deixando 1 mm de pele.
+## Parâmetros do caso real (MEDIDOS do `.tap` — criado-mudo, 24/06)
+> Fonte: `exemplos/2026-06-24_criado-mudo-curvo_teo.tap` (G-code real do Aspire).
+- **Raio da curva:** **R60 mm = Ø120**. No G-code o arco é **R63** = R60 + 3mm da
+  fresa (corta por fora da linha). 🚨 **O "120" do projeto é o DIÂMETRO, não o raio.**
+- **Canto:** **90°**.
+- **Pele:** **1 mm**. Deformação ≈ 1 ÷ (2×60) = **0,83%** → tranquilo, não trinca.
+- **Largura da zona de dobra (bolso):** **~95 mm (9,5 cm)** ✅ **e está CERTO**:
+  arco de 90° a R60 = 94,2 mm. (No `.tap`: span dos centros das ranhuras 89 mm +
+  Ø6 da fresa ≈ 95 mm.)
+- **Ferramenta:** T2, fresa 6 mm. **Ossos de cão R3** (= raio da fresa) nos encaixes.
+- **Z:** pele/dobra **Z+1,0** · estrutura passante **Z−0,1** · clearance 20,08.
+- **Chapa:** 15 mm (provável) → bolso ~14 mm deixando 1 mm de pele.
 
-## ⭐ Fórmula geral da zona de dobra (vale para bolso E para vincos)
-> **largura da zona de dobra = ângulo da curva (rad) × raio**
-> (equivalente: **ângulo = largura ÷ raio**)
+## ⭐ Como o bolso vira CONTÍNUO (truque do acabamento liso)
+Ranhuras paralelas espaçadas **~5,7 mm** com fresa de **6 mm** → as passadas **se
+sobrepõem** (5,7 < 6) e o fundo sai **liso, sem costela** = bolso contínuo.
+(No cilindro era 12 mm > 6 → facetava. Aqui aperta o passo **abaixo do Ø da fresa**
+pra ficar liso.)
 
-Conferindo o criado: 95 mm ÷ 120 mm = **0,79 rad ≈ 45°**.
-> ⚠️ Ou seja, este teste é de um canto de **~45°**, **não 90°**. Um canto de 90° a
-> R120 precisaria de zona ≈ **188 mm** (π/2 × 120). A CONFIRMAR com o Paulo se o
-> canto do criado é mesmo ~45° (ou se ele mede o raio de outro jeito).
+## ⭐ Fórmula da zona de dobra (vale p/ bolso E p/ vincos)
+> **zona de dobra = comprimento do arco = 2π × R × (ângulo°/360) = R × ângulo(rad)**
+- Criado (R60, 90°): `2π × 60 ÷ 4 =` **94,2 mm** ≈ os 95 mm usados. ✅
+- Tabela (multiplicar pelo **raio**): **90° → ×1,571** · **45° → ×0,785** ·
+  **180° → ×3,142** · qualquer ângulo → **R × ângulo° × 0,01745**.
+- 🚨 **Raio × diâmetro:** usar sempre o **raio** na fórmula. Foi a confusão deste caso
+  (120 era diâmetro → R60). Com R120 *de verdade* a zona seria ~18,8 cm.
 
 ## Checagem de segurança da pele (fold-to-skin)
-- Deformação na pele ≈ **espessura da pele ÷ (2 × raio)**.
-- Criado: 1 ÷ (2×120) = **0,42%** → folgadíssimo, pele de 1 mm não trinca em R120.
-- (Regra de bolso: quanto maior o raio, mais tranquila a pele.)
+- Deformação na pele ≈ **espessura da pele ÷ (2 × raio)** → quanto maior o raio, mais
+  folgada a pele. Criado (R60, pele 1mm) = 0,83%, bem dentro do seguro.

@@ -25,16 +25,18 @@ Peças no arquivo:
 Dobra aqui é por **rebaixo até a pele** (bolso) — diferente dos **vincos/zigzag**
 usados na dobra do cilindro (`dobra-de-mdf.md`). [A CONFIRMAR — ver §3]
 
-## 3. Confirmados (24/06)
-1. ✅ **9,5 cm = largura da zona de dobra.**
-2. ✅ **Bolso contínuo** (uma área só rebaixada até a pele), **não** vincos.
-3. ✅ **Raio R120 mm**, **pele 1 mm**. (Deformação da pele ≈0,42% → não trinca.)
+## 3. Resolvido pelo `.tap` (24/06) — fonte: `..._criado-mudo-curvo_teo.tap`
+- ✅ **Raio real = R60 (Ø120).** O arco no G-code é R63 = R60 + 3mm da fresa. O "120"
+  do projeto era o **DIÂMETRO** — daí a confusão de cálculo.
+- ✅ **Canto de 90°.** Arco = 94,2 mm → bate com os **95 mm (9,5 cm)** da zona de
+  dobra. **O 9,5 cm do Paulo estava certo;** quem errou foi o Téo (assumiu R120).
+- ✅ **Bolso contínuo** feito por ranhuras a **~5,7 mm** (< Ø6 da fresa → sobrepõe →
+  fundo liso). Pele **1 mm** (deformação 0,83% → ok).
+- ✅ **T2 (6mm), ossos de cão R3, Z+1,0 dobra / Z−0,1 passante.** Um canto neste teste.
 
 ### Ainda em aberto
-- **Espessura da chapa** (15 mm?) → define a profundidade do bolso (15−1 = 14 mm).
-- **Ângulo do canto:** a geometria diz que 95 mm a R120 = **~45°**, não 90°. Confirmar
-  se o canto é mesmo ~45° (ou se o raio é medido de outro jeito).
-- O painel envolve **um canto só** ou **vários** numa tira só?
+- **Espessura da chapa** (15 mm?) → profundidade do bolso (15−1 = 14 mm).
+- Confirmar com o Paulo que **120 = diâmetro** (o `.tap` indica R60).
 
 > **Achado-chave:** largura da zona de dobra = **ângulo(rad) × raio**. Registrado em
 > `dobra-de-mdf.md` (Variante 2 — bolso contínuo fold-to-skin).
