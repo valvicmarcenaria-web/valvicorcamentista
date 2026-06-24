@@ -1,22 +1,10 @@
 {
   "empresa": "Valvic Marcenaria",
-  "mesref": "base 2025 (média)",
-  "obs": "Folha preenchida com valores REAIS dos manifestos de RH (jun/2026). MEI ja inclui provisoes (FGTS equiv/ferias/13/aviso) no total -> lancados como contr '—' para nao duplicar encargos. CLT (Jomar/Davi) lancado pelo total investido. Custos nao-folha (galpao, maquinas, energia, dividas) ainda a levantar. Custo fixo agregado: ~R$67 mil/mes.",
-  "theme": "dark",
+  "mesref": "",
+  "obs": "",
+  "theme": "light",
   "mc": 43.5,
-  "fat": 162000,
-  "encargoCLT": 27.44,
-  "_indicadores_conhecidos": {
-    "faturamento_medio_mes": 162000,
-    "mc_percent": 43.5,
-    "mc_rs_mes": 70500,
-    "custo_fixo_mes_estimado": 67000,
-    "ponto_equilibrio_faturamento": 154000,
-    "lucro_medio_mes": 3500,
-    "margem_seguranca_percent": 4.9,
-    "break_even_caixa_obs": "MC alvo 48-50% para cobrir operacao E amortizar dividas (maquinas, giro, Paulo)",
-    "fonte": "custo-fixo.md · compilado Rodrigo Financas · 2025"
-  },
+  "fat": 246000,
   "centros": [
     {
       "nome": "Sócios",
@@ -24,8 +12,74 @@
         {
           "nome": "Pró-labore",
           "itens": [
-            { "nome": "Pró-labore Jonathan", "valor": 6500, "tipo": "Fixo", "contr": "—", "unidade": "R$", "obs": "+ 1,5% s/ vendas (variável, ver Comercial)" },
-            { "nome": "Pró-labore Paulo", "valor": 6500, "tipo": "Fixo", "contr": "—", "unidade": "R$", "obs": "+ comissão (variável)" }
+            {
+              "nome": "Pró-labore Jonathan",
+              "valor": 6500,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Pró-labore Paulo",
+              "valor": 6500,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Ajuda de custo Paulo",
+              "valor": 1200,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Ajuda de custo Jonathan",
+              "valor": 1200,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            }
           ]
         }
       ]
@@ -34,54 +88,380 @@
       "nome": "Produção",
       "cats": [
         {
-          "nome": "Folha (produção) — valores reais dos manifestos",
+          "nome": "Folha (produção)",
           "itens": [
-            { "nome": "Deivson — Coordenador de Produção (MEI)", "valor": 2800, "tipo": "Fixo", "contr": "—", "unidade": "R$", "obs": "base; + comissões + 1% equipe → ~R$5.900/mês com variável" },
-            { "nome": "Filipe — Programador CNC (MEI, Fase 1)", "valor": 3600, "tipo": "Fixo", "contr": "—", "unidade": "R$", "obs": "base 2.600 + transp 350 + provisões 650; + 0,4% projetos" },
-            { "nome": "Joelson — Operador CNC & Máquinas (MEI)", "valor": 3500, "tipo": "Fixo", "contr": "—", "unidade": "R$", "obs": "base + transporte + provisões; + R$2/chapa" },
-            { "nome": "Samuel — Marceneiro Sênior (MEI)", "valor": 3900, "tipo": "Fixo", "contr": "—", "unidade": "R$", "obs": "base 2.700 + transp 350 + provisões 850; + 2,5% mont + 2,5% inst" },
-            { "nome": "Jackson — Marceneiro Pleno (MEI)", "valor": 3600, "tipo": "Fixo", "contr": "—", "unidade": "R$", "obs": "base 2.500 + transp 350 + provisões 750; + 2,5% mont + 2,5% inst" },
-            { "nome": "Jomar — Marceneiro (CLT)", "valor": 2300, "tipo": "Fixo", "contr": "—", "unidade": "R$", "obs": "base 1.950 + transp 350 (total investido; em avaliação 90d)" },
-            { "nome": "Davi — Ajudante de Produção (CLT)", "valor": 2300, "tipo": "Fixo", "contr": "—", "unidade": "R$", "obs": "base 1.950 + transp 350 (total investido)" }
+            {
+              "nome": "Marceneiro - Jackson",
+              "valor": 3600,
+              "tipo": "Fixo",
+              "contr": "PJ",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Marceneiro Samuel",
+              "valor": 3900,
+              "tipo": "Fixo",
+              "contr": "PJ",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Operador Router/coladeira - Joelson",
+              "valor": 2500,
+              "tipo": "Fixo",
+              "contr": "CLT",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Coordenador - Deivson",
+              "valor": 4000,
+              "tipo": "Fixo",
+              "contr": "PJ",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Programador - Filipe",
+              "valor": 3600,
+              "tipo": "Fixo",
+              "contr": "PJ",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Marceneiro Junior - Jomar",
+              "valor": 1950,
+              "tipo": "Fixo",
+              "contr": "CLT",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Ajudante - Davi",
+              "valor": 1950,
+              "tipo": "Fixo",
+              "contr": "CLT",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            }
           ]
         },
         {
-          "nome": "Benefícios e EPIs (CLT)",
+          "nome": "Encargos s/ folha (CLT)",
           "itens": [
-            { "nome": "Vale transporte", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" },
-            { "nome": "Vale alimentação", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" },
-            { "nome": "Plano de saúde", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" },
-            { "nome": "EPIs / uniformes", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" }
+            {
+              "nome": "Vale transporte",
+              "valor": 2500,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Vale alimentação",
+              "valor": 0,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "EPIs / uniformes",
+              "valor": 150,
+              "tipo": "Variável",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            }
           ]
         },
         {
           "nome": "Comissões (produção)",
           "itens": [
-            { "nome": "Comissão marceneiros", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "%" },
-            { "nome": "Comissão programador", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "%" },
-            { "nome": "Comissão coordenador", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "%" }
+            {
+              "nome": "Comissão marceneiros",
+              "valor": 5,
+              "tipo": "Variável",
+              "contr": "—",
+              "unidade": "%",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Comissão programador",
+              "valor": 0.5,
+              "tipo": "Variável",
+              "contr": "—",
+              "unidade": "%",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Comissão coordenador",
+              "valor": 1,
+              "tipo": "Variável",
+              "contr": "—",
+              "unidade": "%",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Vendedor",
+              "valor": 3,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "%",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            }
           ]
         },
         {
           "nome": "Máquinas e ferramentas",
           "itens": [
-            { "nome": "Manutenção CNC", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" },
-            { "nome": "Manutenção coladeira", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" },
-            { "nome": "Manutenção seccionadora / serras", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" },
-            { "nome": "Consumíveis de oficina (serras, fresas, lixas)", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "R$" },
-            { "nome": "Software de produção (nesting/3D)", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" },
-            { "nome": "Depreciação de máquinas", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "Depreç." }
-          ]
-        },
-        {
-          "nome": "Insumos variáveis (por projeto)",
-          "itens": [
-            { "nome": "Chapas (MDF/comp.)", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "R$" },
-            { "nome": "Fita de borda / cola", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "R$" },
-            { "nome": "Ferragens", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "R$" },
-            { "nome": "Terceirizados (vidro/serralh./pintura/estofado)", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "R$" },
-            { "nome": "Embalagem", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "R$" },
-            { "nome": "Parafusos / fixadores", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "R$" }
+            {
+              "nome": "Manutenção CNC",
+              "valor": 200,
+              "tipo": "Variável",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Manutenção coladeira",
+              "valor": 150,
+              "tipo": "Variável",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Manutenção seccionadora / serras",
+              "valor": 150,
+              "tipo": "Variável",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Consumíveis de oficina (serras, fresas, lixas)",
+              "valor": 500,
+              "tipo": "Variável",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Software de produção (nesting/3D)",
+              "valor": 300,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Depreciação CNC/ESQ/COL",
+              "valor": 0,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "Depreç.",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 220000,
+                "residual": 80000,
+                "vida": 60
+              }
+            },
+            {
+              "nome": "Depreciação carro",
+              "valor": 0,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "Depreç.",
+              "dep": {
+                "bem": 50000,
+                "residual": 35000,
+                "vida": 50
+              },
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              }
+            }
           ]
         }
       ]
@@ -92,25 +472,169 @@
         {
           "nome": "Ocupação",
           "itens": [
-            { "nome": "Aluguel", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$", "obs": "galpao ~450-500m²" },
-            { "nome": "IPTU", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" },
-            { "nome": "Condomínio", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" }
+            {
+              "nome": "Aluguel",
+              "valor": 5000,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "IPTU",
+              "valor": 0,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Condomínio",
+              "valor": 0,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            }
           ]
         },
         {
           "nome": "Utilidades",
           "itens": [
-            { "nome": "Energia elétrica", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "R$" },
-            { "nome": "Água", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" },
-            { "nome": "Internet / telefone", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" }
+            {
+              "nome": "Energia elétrica",
+              "valor": 1800,
+              "tipo": "Variável",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Água",
+              "valor": 150,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Internet / telefone",
+              "valor": 130,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            }
           ]
         },
         {
           "nome": "Conservação",
           "itens": [
-            { "nome": "Segurança / alarme", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" },
-            { "nome": "Limpeza", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" },
-            { "nome": "Manutenção predial", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" }
+            {
+              "nome": "Segurança / alarme",
+              "valor": 400,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Limpeza",
+              "valor": 600,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Manutenção predial",
+              "valor": 200,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            }
           ]
         }
       ]
@@ -121,23 +645,62 @@
         {
           "nome": "Equipe comercial",
           "itens": [
-            { "nome": "Vendedor (salário)", "valor": 0, "tipo": "Fixo", "contr": "CLT", "unidade": "R$" },
-            { "nome": "Comissão vendedor", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "%" }
+            {
+              "nome": "Assistente administrativo",
+              "valor": 2000,
+              "tipo": "Fixo",
+              "contr": "CLT",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            }
           ]
         },
         {
           "nome": "Marketing",
           "itens": [
-            { "nome": "Tráfego pago / anúncios", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" },
-            { "nome": "Social media / conteúdo", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" },
-            { "nome": "Fotografia / portfólio", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" },
-            { "nome": "Brindes / material de venda", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "R$" }
-          ]
-        },
-        {
-          "nome": "Parcerias",
-          "itens": [
-            { "nome": "RT arquitetos / decoradores", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "%" }
+            {
+              "nome": "Tráfego pago / anúncios",
+              "valor": 1500,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Social media / conteúdo",
+              "valor": 1400,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            }
           ]
         }
       ]
@@ -148,18 +711,74 @@
         {
           "nome": "Veículos",
           "itens": [
-            { "nome": "Combustível", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "R$" },
-            { "nome": "Manutenção de veículos", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "R$" },
-            { "nome": "IPVA / seguro", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" },
-            { "nome": "Financiamento de veículo", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" }
-          ]
-        },
-        {
-          "nome": "Entrega / montagem",
-          "itens": [
-            { "nome": "Frete terceirizado", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "R$" },
-            { "nome": "Pedágio / estacionamento", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "R$" },
-            { "nome": "Diária de ajudante de obra", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "R$" }
+            {
+              "nome": "Combustível",
+              "valor": 3000,
+              "tipo": "Variável",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Manutenção de veículos",
+              "valor": 200,
+              "tipo": "Variável",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "IPVA / seguro",
+              "valor": 350,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Financiamento de veículo",
+              "valor": 1500,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            }
           ]
         }
       ]
@@ -170,31 +789,208 @@
         {
           "nome": "Serviços",
           "itens": [
-            { "nome": "Contador", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" },
-            { "nome": "Jurídico", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" },
-            { "nome": "Consultoria (ex.: Rodrigo)", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" }
+            {
+              "nome": "Contador",
+              "valor": 1000,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Jurídico",
+              "valor": 1500,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Consultoria (ex.: Rodrigo)",
+              "valor": 800,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            }
           ]
         },
         {
           "nome": "Sistemas",
           "itens": [
-            { "nome": "ERP / gestão", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$", "obs": "Calme" },
-            { "nome": "Nuvem / assinaturas", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" },
-            { "nome": "Telefonia móvel", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" }
+            {
+              "nome": "ERP / gestão",
+              "valor": 500,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Nuvem / assinaturas",
+              "valor": 150,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Telefonia móvel",
+              "valor": 0,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Pacote de ferramentas de IA",
+              "valor": 700,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            }
           ]
         },
         {
           "nome": "Escritório",
           "itens": [
-            { "nome": "Material de escritório", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" },
-            { "nome": "Café / copa", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" }
+            {
+              "nome": "Material de escritório",
+              "valor": 100,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Café / copa",
+              "valor": 200,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            }
           ]
         },
         {
           "nome": "Tarifas bancárias",
           "itens": [
-            { "nome": "Tarifas de conta", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" },
-            { "nome": "Taxa de maquininha / cartão", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "R$" }
+            {
+              "nome": "Tarifas de conta",
+              "valor": 0,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Taxa de maquininha / cartão",
+              "valor": 0,
+              "tipo": "Variável",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            }
           ]
         }
       ]
@@ -205,9 +1001,57 @@
         {
           "nome": "Impostos",
           "itens": [
-            { "nome": "Simples Nacional / DAS", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "R$" },
-            { "nome": "Nota fiscal", "valor": 0, "tipo": "Variável", "contr": "—", "unidade": "R$" },
-            { "nome": "Taxas e licenças", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" }
+            {
+              "nome": "Simples Nacional / DAS",
+              "valor": 1500,
+              "tipo": "Variável",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Nota fiscal",
+              "valor": 0,
+              "tipo": "Variável",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Taxas e licenças",
+              "valor": 0,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            }
           ]
         }
       ]
@@ -218,18 +1062,99 @@
         {
           "nome": "Financiamentos e empréstimos",
           "itens": [
-            { "nome": "Financiamento de máquinas", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "Parcela", "obs": "CNC, coladeira — parcela mensal a levantar" },
-            { "nome": "Capital de giro / empréstimo", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "Parcela" },
-            { "nome": "Empréstimo de sócio (devolução)", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "Parcela", "obs": "devolução ao Paulo" }
+            {
+              "nome": "Financiamento de máquinas (parcela)",
+              "valor": 6000,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "Parcela",
+              "parc": {
+                "total": 24000,
+                "n": 5,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Capital de giro / empréstimo (parcela)",
+              "valor": 0,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "Parcela",
+              "parc": {
+                "total": 37000,
+                "n": 4,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Empréstimo do Paulo (devolução)",
+              "valor": 0,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "Parcela",
+              "parc": {
+                "total": 30000,
+                "n": 5,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            },
+            {
+              "nome": "Aporte Paulo (compra cnc)",
+              "valor": 0,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "Parcela",
+              "parc": {
+                "total": 65000,
+                "n": 100
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            }
           ]
         },
         {
           "nome": "Encargos financeiros",
           "itens": [
-            { "nome": "Juros / IOF / tarifas", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" }
+            {
+              "nome": "Juros / IOF / tarifas",
+              "valor": 0,
+              "tipo": "Fixo",
+              "contr": "—",
+              "unidade": "R$",
+              "parc": {
+                "total": 0,
+                "n": 0,
+                "pagas": 0
+              },
+              "dep": {
+                "bem": 0,
+                "residual": 0,
+                "vida": 0
+              }
+            }
           ]
         }
       ]
     }
-  ]
+  ],
+  "encargoCLT": 27.44
 }
