@@ -103,7 +103,14 @@ de R203.
   Ø6 da fresa ≈ 95 mm.)
 - **Ferramenta:** T2, fresa 6 mm. **Ossos de cão R3** (= raio da fresa) nos encaixes.
 - **Z:** pele/dobra **Z+1,0** · estrutura passante **Z−0,1** · clearance 20,08.
-- **Chapa:** 15 mm (provável) → bolso ~14 mm deixando 1 mm de pele.
+- **Chapa:** **15 mm (CONFIRMADO)** → bolso ~14 mm deixando 1 mm de pele.
+
+## Caso de teste 2 — lateral parametrizada (Téo gerou, 24/06)
+> `gerados/lateral_criado_r80_teste_teo.dxf` (gerador `gen_lateral_criado_r80_teste.py`).
+Dados CONFIRMADOS pelo Paulo: **R80 (raio, Ø160)**, canto 90°, altura 350, aba 600 +
+retorno 200, chapa 15 mm. Bolso de dobra = arco = 80×π/2 = **125,66 mm**; rebaixo 14 mm,
+pele 1 mm (deformação 0,62%). Comprimento desenvolvido 925,7 mm. **AGUARDANDO:** Paulo
+importar no Aspire e dizer se a geometria bate.
 
 ## ⭐ Como o bolso vira CONTÍNUO (truque do acabamento liso)
 Ranhuras paralelas espaçadas **~5,7 mm** com fresa de **6 mm** → as passadas **se

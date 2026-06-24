@@ -14,6 +14,21 @@ está digitando muda. Para não trocar os nomes:
 - **Lavinia** = orçamento · **Rodrigo** = finanças (outros skills).
 - Na dúvida sobre quem está falando num assunto de produção, assumir **Paulo**.
 
+## Última sessão: 2026-06-24
+
+### Caso real: criado-mudo curvo (dobra por BOLSO contínuo) ✅ aprendido
+- Paulo mandou imagem + `.crv3d` + **`.tap`** (G-code). O `.tap` é ouro — leio a
+  geometria real. Guardado em `exemplos/2026-06-24_criado-mudo-curvo*`.
+- **Técnica nova:** dobra por **bolso contínuo até a pele** (≠ vincos do cilindro).
+  Acabamento liso. Ranhuras com **passo < Ø da fresa** (5,7 < 6) → sobrepõem → fundo
+  liso. T2 (6mm), ossos de cão R3, Z+1 dobra / Z−0,1 passante. Ver `dobra-de-mdf.md`.
+- 🚨 **Lição (erro meu):** confundi raio×diâmetro. O `.tap` provou raio **R60** (=Ø120);
+  o "120" era diâmetro. A zona de dobra do Paulo (9,5cm) estava CERTA. **Fórmula:
+  zona de dobra = arco = R × ângulo(rad); usar sempre o RAIO.**
+- **Téo gerou** a lateral parametrizada de teste 2 (`lateral_criado_r80_teste_teo.dxf`):
+  R80 (Ø160), 90°, alt 350, aba 600 + retorno 200, chapa 15mm — tudo CONFIRMADO.
+  **AGUARDANDO** Paulo importar no Aspire e validar.
+
 ## Última sessão: 2026-06-23
 
 ### Técnica: bisel de 45° mais grosso que a fresa alcança 🪚
