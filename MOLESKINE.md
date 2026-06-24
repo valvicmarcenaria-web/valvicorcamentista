@@ -287,6 +287,17 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
   tombamento (outrigger+mão-francesa) e racking (diagonal) ANTES da chapa.*
 - *Aprendizado nº2: o fundador cobrou "trazer as referências da pesquisa" — não basta citar no chat; entregar uma
   PRANCHA visual de referências (o que cada uma ensina + fonte) faz parte do estudo.*
-- **PENDÊNCIAS:** (a) **Teo (marceneiro) NÃO existe como skill** — consultei como subagente; OFERECER formalizar o Teo
-  como 4º membro da equipe (Lavinia/Rodrigo/Vitor/**Teo**), foco em método construtivo/produção. (b) Ref. do **Pinterest**
-  que o fundador mandou = **403/login wall, não consigo abrir**; pedir print colado no chat (imagem no chat eu VEJO).
+- **[06/24 CORREÇÃO] O TÉO EXISTE SIM** — eu errei dizendo que não. Téo = skill **`projeto-producao`** (engenheiro de
+  produção: marceneiro raiz 25 anos + programador; gera DXF/G-code pro Aspire). Ele só **NÃO está nesta branch**
+  (`hopeful-hawking-7fun1g`) — está na **`loving-dirac-bck5vm`**. *(Lição forte: "revisar a branch inteira" =
+  conferir TODAS as branches do remoto, não só a minha; `git ls-tree origin/<branch>` antes de afirmar que algo não existe.)*
+- **MAPA DAS BRANCHES (skills espalhadas):** minha (`hopeful-hawking`) = closer-vendas, estrategia, orcamentista (3).
+  `loving-dirac` = estrategia, orcamentista, **projeto-producao (Téo)**. `charming-johnson` = +**designer-grafico**
+  +**gestor-marketing**. Equipe real ≈ 6 skills, fragmentada. **PENDÊNCIA: consolidar** (decisão do fundador).
+- **O Téo real MUDA a curva:** a Valvic curva MDF por **vincos / fold-to-skin no CNC** (`dobra-de-mdf.md`): deixa
+  **pele ~1mm**, fold-to-skin dá superfície **lisa** (melhor que vincos facetados). **Zona de dobra = raio × ângulo**
+  (90° = R×1,571); cambota (gabarito curvo) dá a forma + pele dobrada a veste; **Téo gera o DXF (Aspire)**. Corrigi o
+  croqui (detalhe C, bitolas, erros): "2× flexível 6mm sobre costelas" → "cambota CNC + pele MDF dobrada fold-to-skin
+  (raio grande aceita flexível; raio fechado = kerf no CNC)". Meu subagente-Teo improvisado acertou a estrutura, mas
+  o método de curva real é o do Téo (CNC), não chapa flexível genérica.
+- **Pinterest** que o fundador mandou = **403/login wall, não abro**; pedir print colado no chat (imagem no chat eu VEJO).

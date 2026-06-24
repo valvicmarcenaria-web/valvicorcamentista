@@ -47,7 +47,7 @@
   <div class="tb">
     <div><div class="brand">Valvic</div>
       <div class="tt serif">Fundo infinito branco · desmontável</div>
-      <div class="ts">Estudo construtivo · rev. com o Teo (marceneiro) · 1 — referências</div></div>
+      <div class="ts">Estudo construtivo · rev. com o Téo (produção · projeto-producao) · 1 — referências</div></div>
     <div class="meta"><div>Cliente <b>Luciana &amp; Marcelo</b></div><div>Pesquisa de método (cyclorama / infinity cove)</div><div>jun · 2026</div></div>
   </div>
 
@@ -81,9 +81,10 @@
         <path d="M30 16 L30 48 A22 22 0 0 0 52 70 L98 70" stroke="#243B45" stroke-width="2"/>
         <path d="M36 16 L36 48 A16 16 0 0 0 52 64 L98 64" stroke="#7C8A8F" stroke-width="2"/>
       </svg>
-      <div><h4>Pele em 2 camadas finas</h4>
-        <p><b>2× flexível 6 mm</b> colados (= casca 12 mm). Uma camada só barriga e marca parafuso; duas estabilizam e dão face lisa pra laca.</p>
-        <div class="src">ephotozine.com</div></div>
+      <div><h4>Casca da curva — método Valvic (Téo)</h4>
+        <p>Raio grande aceita <b>MDF flexível</b>; raio fechado = <b>dobra por vincos / fold-to-skin no CNC</b>
+        (pele ~1 mm, lisa). O Téo decide pelo raio e <b>gera o DXF</b> (Aspire).</p>
+        <div class="src">skill projeto-producao · dobra-de-mdf.md</div></div>
     </div>
 
     <div class="ref">
@@ -247,19 +248,20 @@
 
   <div class="two">
     <div>
-      <div class="cap">C · Detalhe da curva (casca s/ costelas)</div>
+      <div class="cap">C · Detalhe da curva (cambota + pele dobrada)</div>
       <svg viewBox="0 0 300 200" fill="none">
-        <!-- costela -->
+        <!-- cambota (gabarito curvo) -->
         <path d="M60 30 L60 110 A60 60 0 0 0 120 170 L260 170" stroke="#243B45" stroke-width="6" opacity=".25"/>
-        <!-- sarrafos longitudinais (pontos ao longo da curva) -->
+        <!-- réguas/gabaritos ao longo da curva -->
         <g fill="#7C8A8F" stroke="none"><circle cx="60" cy="60" r="3"/><circle cx="60" cy="92" r="3"/><circle cx="74" cy="128" r="3"/><circle cx="104" cy="158" r="3"/><circle cx="150" cy="170" r="3"/><circle cx="200" cy="170" r="3"/></g>
-        <!-- 2 camadas de flexível -->
-        <path d="M68 30 L68 110 A52 52 0 0 0 120 162 L260 162" stroke="#B8927A" stroke-width="2"/>
-        <path d="M72 30 L72 110 A48 48 0 0 0 120 158 L260 158" stroke="#9c6f54" stroke-width="2"/>
+        <!-- pele de MDF dobrada (fold-to-skin) -->
+        <path d="M70 30 L70 110 A50 50 0 0 0 120 160 L260 160" stroke="#9c6f54" stroke-width="2.4"/>
+        <!-- vincos sugeridos na zona da curva -->
+        <g stroke="#B8927A" stroke-width="0.8"><path d="M71 116 l6 -2"/><path d="M77 128 l6 -2"/><path d="M86 139 l6 -3"/><path d="M98 149 l5 -4"/><path d="M111 156 l5 -4"/></g>
         <g fill="#243B45" font-family="Arial" font-size="9" stroke="none">
-          <text x="86" y="70">costela MDF 18 mm</text>
-          <text x="120" y="120">sarrafos 18×40 @15 cm</text>
-          <text x="120" y="150">2× flexível 6 mm (cola; 2ª s/ parafuso)</text>
+          <text x="86" y="70">cambota MDF 18 mm (gabarito CNC)</text>
+          <text x="120" y="120">réguas de travamento</text>
+          <text x="120" y="150">pele de MDF dobrada · pele ~1 mm</text>
         </g>
       </svg>
       <div class="cap" style="margin-top:3mm;">D · Junta desmontável (sem degrau na laca)</div>
@@ -293,9 +295,9 @@
         <tr><td>Esqueleto</td><td>metalon <b>40×40 · 1,5 mm</b></td></tr>
         <tr><td>Montantes vert.</td><td>@ 40–50 cm</td></tr>
         <tr><td>Travessas</td><td>@ 50–60 cm</td></tr>
-        <tr><td>Costelas (curva)</td><td>MDF 18 mm <b>@ 30 cm</b> · raio 70</td></tr>
-        <tr><td>Sarrafos long.</td><td>18×40 mm @ 15 cm</td></tr>
-        <tr><td>Casca da curva</td><td><b>2× flexível 6 mm</b> colados</td></tr>
+        <tr><td>Cambota (curva)</td><td>MDF 18 mm <b>@ 30 cm</b> · raio 70 (gabarito CNC)</td></tr>
+        <tr><td>Réguas</td><td>travam a cambota · @ 15 cm</td></tr>
+        <tr><td>Pele da curva</td><td><b>MDF dobrado · fold-to-skin (pele ~1 mm)</b> ou flexível</td></tr>
         <tr><td>Fundo / base</td><td>MDF 18 mm (2×15 se corpo inteiro)</td></tr>
         <tr><td>Base pisável</td><td>vigas @40 cm · pés @50–60 cm</td></tr>
         <tr><td>Contravento</td><td>diagonal/tirante traseira + base</td></tr>
@@ -309,8 +311,8 @@
   <div class="lt">
     <h4>Erros de bancada que o método já evita (Teo)</h4>
     <ul>
-      <li><b>Casca em camada única</b> barriga e marca parafuso → <b>2× 6 mm colados</b>.</li>
-      <li><b>Costela espaçada demais</b> ondula sob luz rasante → <b>@30 cm na curva</b>.</li>
+      <li><b>Curva pela técnica certa:</b> raio grande = flexível; raio fechado = <b>fold-to-skin no CNC</b> (pele ~1 mm, lisa). Zona de dobra = raio × ângulo (90° = R×1,571). <b>Téo gera o DXF (Aspire).</b></li>
+      <li><b>Cambota espaçada demais</b> ondula sob luz rasante → <b>@30 cm na curva</b>.</li>
       <li><b>Lacar módulos separados</b> não casa o branco → <b>lacar montado, desmontar depois</b>; emenda sacrificial reaplicável.</li>
       <li><b>Só parafuso</b> = degrau na remontagem → <b>pino-luva alinha</b> toda junta vista.</li>
       <li><b>Sem diagonal</b> = bambo e tomba; <b>vão grande na base</b> = estala (apoio @40–50 cm); PU elástico na interface aço-madeira mata o rangido.</li>
