@@ -1,7 +1,7 @@
 {
   "empresa": "Valvic Marcenaria",
   "mesref": "base 2025 (média)",
-  "obs": "Indicadores reais consolidados. Linhas de custo a preencher (composicao por rubrica e PENDENCIA documentada no custo-fixo.md). Custo fixo agregado conhecido: ~R$67 mil/mes.",
+  "obs": "Folha preenchida com valores REAIS dos manifestos de RH (jun/2026). MEI ja inclui provisoes (FGTS equiv/ferias/13/aviso) no total -> lancados como contr '—' para nao duplicar encargos. CLT (Jomar/Davi) lancado pelo total investido. Custos nao-folha (galpao, maquinas, energia, dividas) ainda a levantar. Custo fixo agregado: ~R$67 mil/mes.",
   "theme": "dark",
   "mc": 43.5,
   "fat": 162000,
@@ -24,8 +24,8 @@
         {
           "nome": "Pró-labore",
           "itens": [
-            { "nome": "Pró-labore Jonathan", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" },
-            { "nome": "Pró-labore Paulo", "valor": 0, "tipo": "Fixo", "contr": "—", "unidade": "R$" }
+            { "nome": "Pró-labore Jonathan", "valor": 6500, "tipo": "Fixo", "contr": "—", "unidade": "R$", "obs": "+ 1,5% s/ vendas (variável, ver Comercial)" },
+            { "nome": "Pró-labore Paulo", "valor": 6500, "tipo": "Fixo", "contr": "—", "unidade": "R$", "obs": "+ comissão (variável)" }
           ]
         }
       ]
@@ -34,14 +34,15 @@
       "nome": "Produção",
       "cats": [
         {
-          "nome": "Folha (produção)",
+          "nome": "Folha (produção) — valores reais dos manifestos",
           "itens": [
-            { "nome": "Marceneiros", "valor": 0, "tipo": "Fixo", "contr": "CLT", "unidade": "R$" },
-            { "nome": "Montadores", "valor": 0, "tipo": "Fixo", "contr": "CLT", "unidade": "R$" },
-            { "nome": "Ajudantes", "valor": 0, "tipo": "Fixo", "contr": "CLT", "unidade": "R$" },
-            { "nome": "Acabamento / pintura", "valor": 0, "tipo": "Fixo", "contr": "CLT", "unidade": "R$" },
-            { "nome": "Programador CNC", "valor": 0, "tipo": "Fixo", "contr": "CLT", "unidade": "R$" },
-            { "nome": "Coordenador", "valor": 0, "tipo": "Fixo", "contr": "CLT", "unidade": "R$" }
+            { "nome": "Deivson — Coordenador de Produção (MEI)", "valor": 2800, "tipo": "Fixo", "contr": "—", "unidade": "R$", "obs": "base; + comissões + 1% equipe → ~R$5.900/mês com variável" },
+            { "nome": "Filipe — Programador CNC (MEI, Fase 1)", "valor": 3600, "tipo": "Fixo", "contr": "—", "unidade": "R$", "obs": "base 2.600 + transp 350 + provisões 650; + 0,4% projetos" },
+            { "nome": "Joelson — Operador CNC & Máquinas (MEI)", "valor": 3500, "tipo": "Fixo", "contr": "—", "unidade": "R$", "obs": "base + transporte + provisões; + R$2/chapa" },
+            { "nome": "Samuel — Marceneiro Sênior (MEI)", "valor": 3900, "tipo": "Fixo", "contr": "—", "unidade": "R$", "obs": "base 2.700 + transp 350 + provisões 850; + 2,5% mont + 2,5% inst" },
+            { "nome": "Jackson — Marceneiro Pleno (MEI)", "valor": 3600, "tipo": "Fixo", "contr": "—", "unidade": "R$", "obs": "base 2.500 + transp 350 + provisões 750; + 2,5% mont + 2,5% inst" },
+            { "nome": "Jomar — Marceneiro (CLT)", "valor": 2300, "tipo": "Fixo", "contr": "—", "unidade": "R$", "obs": "base 1.950 + transp 350 (total investido; em avaliação 90d)" },
+            { "nome": "Davi — Ajudante de Produção (CLT)", "valor": 2300, "tipo": "Fixo", "contr": "—", "unidade": "R$", "obs": "base 1.950 + transp 350 (total investido)" }
           ]
         },
         {
