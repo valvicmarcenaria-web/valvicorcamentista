@@ -250,3 +250,24 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
   total / "a definir"), condições em 3 colunas. `closer-vendas/propostas/proposta-luciana-rajao.html` + PDF.
 - *Aprendizado: proposta "sofisticada e sem enrolação" = MENOS copy, MAIS organização/whitespace/tipografia.
   Resumo de investimento NÃO precisa repetir cada linha dos adicionais — agrupar é mais elegante e poupa página.*
+
+### [2026-06-24] Lavinia — Fundo infinito desmontável (Luciana · resolve o "a definir")
+- **Demanda nova (não-móvel):** Luciana quer um **fundo infinito branco fixo em marcenaria**, com **suporte**, que
+  **desmonte**, podendo envolver **estrutura metálica**. Mandou foto do ambiente + referência (um "fundo móvel"
+  de compensado sobre cavalete c/ rodízios). É o item **"estrutura de fundo infinito — a definir"** da proposta dela.
+- **Teste do fundador:** interpretar demanda → **pesquisar muitas referências** → **esboçar croqui** de solução.
+- **Pesquisa (cyclorama / infinity cove):** o fundo infinito elimina o horizonte (curva contínua parede→piso).
+  **Raio da curva por uso:** ~45–50cm produto · ~75cm meio corpo · 100–150cm corpo inteiro (**maior raio = luz mais
+  fácil**, sem sombra na quina). Sistemas pro (Pro Cyc, UNISET) = **freestanding modular, peças parafusadas, pernas
+  de aço** — valida marcenaria+metal desmontável. **Curva:** MDF flexível/ranhurado (Neatform) sobre **costelas**
+  (gabaritos), ou método "fatias de pizza". **Acabamento:** laca branca **fosca** (sem reflexo), junta c/ massa
+  flexível + **folga 1–2mm** p/ dilatação. (Refs: archwaysandceilings, procyc, petapixel, studiosteffler/newbornbrasil.)
+- **Solução proposta:** esqueleto **metalon 40×40 parafusado** (freestanding, desmonta em **3 módulos A fundo /
+  B curva / C base**) + pele de marcenaria (fundo+base MDF 15mm, **curva MDF flexível 6mm** s/ costelas) + laca
+  branca fosca. Rodízios travados/pés niveladores. Croqui técnico (corte lateral c/ geometria da curva + perspectiva
+  freestanding + tabela de raio + materiais): `projetos/croqui-fundo-infinito-luciana.html` + PDF.
+- **Para fechar o preço (ainda "a definir"):** ① uso principal (define raio/largura) · ② medidas do local · ③ fixo
+  vs. precisa rodar/guardar · ④ só fundo+base (1 curva) ou curvas laterais (cove em U).
+- *Aprendizado: croqui não é só p/ móvel — interpretar uma demanda "estranha" (cyclorama), pesquisar o método real
+  e devolver um corte com geometria + leitura técnica é exatamente a MÃO 1 (gerar) da competência de croqui. Variável-
+  chave primeiro (aqui: o RAIO depende do uso) → travar o uso trava o orçamento.*
