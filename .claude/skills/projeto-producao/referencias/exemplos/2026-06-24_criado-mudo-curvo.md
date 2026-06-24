@@ -25,13 +25,19 @@ Peças no arquivo:
 Dobra aqui é por **rebaixo até a pele** (bolso) — diferente dos **vincos/zigzag**
 usados na dobra do cilindro (`dobra-de-mdf.md`). [A CONFIRMAR — ver §3]
 
-## 3. A confirmar com o Paulo (perguntas em aberto)
-1. **"9,5 cm" do rebaixo** = largura da zona de dobra (comprimento que enrola na
-   curva)? Ou outra medida?
-2. **Rebaixo contínuo (bolso) ou vincos?** E a pele que sobrou tem quantos **mm**?
-3. **Raio da curva** do canto + espessura da chapa (15 mm?) — pra saber se a pele
-   aguenta o raio.
-4. O painel envolve **um canto só** ou **vários cantos** numa tira só?
+## 3. Confirmados (24/06)
+1. ✅ **9,5 cm = largura da zona de dobra.**
+2. ✅ **Bolso contínuo** (uma área só rebaixada até a pele), **não** vincos.
+3. ✅ **Raio R120 mm**, **pele 1 mm**. (Deformação da pele ≈0,42% → não trinca.)
+
+### Ainda em aberto
+- **Espessura da chapa** (15 mm?) → define a profundidade do bolso (15−1 = 14 mm).
+- **Ângulo do canto:** a geometria diz que 95 mm a R120 = **~45°**, não 90°. Confirmar
+  se o canto é mesmo ~45° (ou se o raio é medido de outro jeito).
+- O painel envolve **um canto só** ou **vários** numa tira só?
+
+> **Achado-chave:** largura da zona de dobra = **ângulo(rad) × raio**. Registrado em
+> `dobra-de-mdf.md` (Variante 2 — bolso contínuo fold-to-skin).
 
 ## 4. Ferramenta(s) e máquina
 - Ferramenta lida do `.crv3d`: **"FRESA 6 MM CORTE"** (= T2, fresa 6 mm).

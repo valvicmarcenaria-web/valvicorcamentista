@@ -76,3 +76,39 @@ de R203.
 
 > **Status:** técnica capturada e parametrizável. Falta a **relação raio↔espaçamento**
 > (a calibrar com casos reais) para o Téo projetar uma dobra a partir do raio desejado.
+
+---
+
+# Variante 2 — Dobra por BOLSO contínuo até a pele (fold-to-skin)
+
+> Caso real do Paulo: criado-mudo curvo (`exemplos/2026-06-24_criado-mudo-curvo.*`).
+> Em vez de vários vincos, abre-se **um único bolso (área rebaixada)** até deixar a
+> pele. A pele dobra **lisa** (sem facetas), formando a lateral curva que **envolve**
+> teto e base. **Melhor acabamento que os vincos** — superfície externa contínua.
+
+## Quando usar bolso contínuo × vincos
+- **Bolso contínuo:** raio **suave/grande**, acabamento externo liso aparente. A pele
+  de 1mm dobra inteira. Foi o caso do criado (R120 — raio gentil).
+- **Vincos:** raios mais fechados / quando facetar é aceitável (a pele entre costelas
+  é que dobra). Foi o caso do cilindro (R203 com 27 vincos).
+
+## Parâmetros do caso real (CONFIRMADOS — criado-mudo, 24/06)
+- **Raio da curva:** **R120 mm**.
+- **Pele:** **1 mm** (mesma da dobra por vincos).
+- **Largura da zona de dobra (bolso):** **95 mm** (9,5 cm).
+- **Ferramenta:** "FRESA 6 MM CORTE" (T2) — lida do `.crv3d`.
+- **Chapa:** 15 mm (A CONFIRMAR) → bolso de ~14 mm deixando 1 mm de pele.
+
+## ⭐ Fórmula geral da zona de dobra (vale para bolso E para vincos)
+> **largura da zona de dobra = ângulo da curva (rad) × raio**
+> (equivalente: **ângulo = largura ÷ raio**)
+
+Conferindo o criado: 95 mm ÷ 120 mm = **0,79 rad ≈ 45°**.
+> ⚠️ Ou seja, este teste é de um canto de **~45°**, **não 90°**. Um canto de 90° a
+> R120 precisaria de zona ≈ **188 mm** (π/2 × 120). A CONFIRMAR com o Paulo se o
+> canto do criado é mesmo ~45° (ou se ele mede o raio de outro jeito).
+
+## Checagem de segurança da pele (fold-to-skin)
+- Deformação na pele ≈ **espessura da pele ÷ (2 × raio)**.
+- Criado: 1 ÷ (2×120) = **0,42%** → folgadíssimo, pele de 1 mm não trinca em R120.
+- (Regra de bolso: quanto maior o raio, mais tranquila a pele.)
