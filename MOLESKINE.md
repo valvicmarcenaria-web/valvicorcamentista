@@ -271,3 +271,22 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
 - *Aprendizado: croqui não é só p/ móvel — interpretar uma demanda "estranha" (cyclorama), pesquisar o método real
   e devolver um corte com geometria + leitura técnica é exatamente a MÃO 1 (gerar) da competência de croqui. Variável-
   chave primeiro (aqui: o RAIO depende do uso) → travar o uso trava o orçamento.*
+- **[06/24 rev] CRÍTICA do fundador: "só vi a CHAPA, falta a SUSTENTAÇÃO; questões construtivas".** Certíssimo — meu
+  1º croqui mostrou a pele, não como para em pé. **Levei a demanda ao "Teo" (marceneiro)** — direção de bancada:
+  cyclorama é peça de ESTRUTURA, a marcenaria é só a pele. Bitolas: metalon **40×40 1,5mm**; montantes @40–50cm;
+  travessas @50–60cm; **costelas MDF 18mm @30cm** (raio **70cm** recomendado); sarrafos long. 18×40 @15cm; casca da
+  curva = **2× flexível 6mm colados** (1 camada barriga/marca parafuso); base pisável tampo 18mm + vigas @40cm.
+  **Anti-tombamento = "L" rígido:** base (≥1,35m) é o outrigger (quem pisa = contrapeso) + **mãos-francesas** traseiras
+  + **diagonal/tirante** em todo retângulo de metalon (senão racking). Regra: **altura ÷ base ≤ 1,8**. **Junta:**
+  pino-luva (alinha) + cantoneira M8 (segura) + garra excêntrica; **emenda da laca VERTICAL no plano reto**, massa
+  flexível reaplicável (lacar MONTADO e desmontar depois — branco não casa se lacar separado). **Pés niveladores c/
+  feltro, NÃO rodízio** (piso espinha de peixe não pode marcar/arranhar).
+- **Croqui REV (3 págs):** 1 prancha de **referências** (8 cards c/ fonte — faltou isso no 1º) · 2 **corte estrutural**
+  (esqueleto, mão-francesa, contraventamento) · 3 **detalhes** (curva, junta, base) + bitolas. `croqui-fundo-infinito-luciana`.
+- *Aprendizado nº1: croqui de estrutura mostra QUEM SUSTENTA, não só a pele. Para vertical alto freestanding: pensar
+  tombamento (outrigger+mão-francesa) e racking (diagonal) ANTES da chapa.*
+- *Aprendizado nº2: o fundador cobrou "trazer as referências da pesquisa" — não basta citar no chat; entregar uma
+  PRANCHA visual de referências (o que cada uma ensina + fonte) faz parte do estudo.*
+- **PENDÊNCIAS:** (a) **Teo (marceneiro) NÃO existe como skill** — consultei como subagente; OFERECER formalizar o Teo
+  como 4º membro da equipe (Lavinia/Rodrigo/Vitor/**Teo**), foco em método construtivo/produção. (b) Ref. do **Pinterest**
+  que o fundador mandou = **403/login wall, não consigo abrir**; pedir print colado no chat (imagem no chat eu VEJO).
