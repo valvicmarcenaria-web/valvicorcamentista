@@ -21,6 +21,15 @@
   (detalhe em `dados/maquinas.json`)
 - **Veículos:** 1 Chevrolet Montana 2020 (caçamba pequena) — insuficiente p/ dobrar.
 
+## Decisões de arquitetura da linha (CONFIRMADO 24/06)
+- **Não desfazer de NENHUMA máquina atual.** Todas continuam, com papel novo.
+- **CNC nova (a adquirir):** nesting principal.
+- **Raizen Solid TAF (atual):** passa a ser **só usinagens especiais** (Aspire).
+- **Coladeira nova/maior (a adquirir):** filetagem principal.
+- **SCM me 25 (atual):** vira **backup** (entra quando a principal parar/manutenção).
+- Ganhos p/ o deck: fim do gargalo (Solid TAF não briga mais entre nesting×especiais)
+  + **redundância/uptime** (sem ponto único de falha).
+
 ## Conta de retorno (modelo)
 - Ganho-teto ao dobrar = +R$60 mil/mês (MC 30% sobre +R$200 mil).
 - Lucro novo = R$60 mil − **custo fixo incremental** (folha nova + veículo + energia…).
