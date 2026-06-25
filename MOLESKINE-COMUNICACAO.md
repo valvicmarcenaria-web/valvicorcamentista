@@ -169,6 +169,28 @@ respingo de vetorização no PNG `04-valvic-marcenaria`.
 
 ---
 
+## 🗒️ Registro vivo (erros, acertos, direcionamentos — com data)
+
+### [2026-06-25] Wallison — Projeto Vale dos Cristais (quarto infantil) · série de Stories
+**Cliente:** alto padrão, **CONFIDENCIAL** — empresário dono de uma grande rede (S.A.).
+❌ **NUNCA** expor o nome do cliente nem da empresa em qualquer comunicação pública. Casa
+em reforma no Vale dos Cristais (Nova Lima); a Valvic executa **demandas pontuais** de
+marcenaria (apenas peças **novas**, não o quarto todo).
+**Ambiente:** quarto do filho (~2 anos) — forte apelo emocional, história afetiva.
+**Privacidade de menor:** evitar o nome real da criança em post público (só "um menino de 2
+anos"), salvo liberação da família.
+**Parceira:** decoradora **Paula Galante** (layout lúdico) — **creditar e valorizar a
+assinatura dela** (postura de parceria com especificador).
+**Materiais (premium — citar com propriedade):** couro natural tonalizado **La Novità**,
+laca, móveis curvos, **cabeceira curva** com acabamento artesanal/orgânico, iluminação LED
+integrada. Tecnologia + perspicácia técnica.
+**Abordagem de copy (Stories):** emoção (memória/legado) **+** autoridade técnica (curvar
+madeira, materiais nobres) — não falar só de produto. Tom elegante, aspiracional, humano.
+Fechamento com tagline "Precisão e alma em cada centímetro". _Status: roteiro de 7 frames
+entregue ao Jonathan; aguardando imagens e @ dos parceiros para finalizar._
+
+---
+
 ## 🔜 A fechar com o Jonathan (abre os funis)
 - Objetivo PRIORITÁRIO do trimestre por frente (leads Marcenaria? produto/ML? turma do Clube?).
 - Verba mensal de tráfego e distribuição entre frentes; CPL/CAC baseline histórico.
