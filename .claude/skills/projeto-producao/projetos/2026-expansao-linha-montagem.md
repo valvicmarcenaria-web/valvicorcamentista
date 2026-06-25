@@ -219,6 +219,16 @@ oposto (base):**
 - **Lado oposto:** **7 bancadas** com área generosa de **pré-montagem** em volta de cada uma.
 - **Expedição** (peças embaladas) no **fim da linha de bancadas**, perto do portão de saída.
 - v1 (caixas coloridas) foi descartada por ficar amadora; v3 = estilo planta baixa.
+
+### v4 — EM ESCALA REAL (medidas do Paulo, 25/06)
+Medidas reais (C × L, em m): **gaiola 3×4 · nesting 10×2,5 · Solid TAF 3×2 ·
+esquadrejadeira 3×2 · coladeira 4×1 · furação 3×1**. **3 m entre TODAS as máquinas**
+(confirmado que CABE nos 40 m de comprimento). **Compressor fica EXTERNO, coberto**
+(fora do galpão). Esquadrejadeira adicionada (faltava). Área em volta das bancadas
+reduzida. Solid TAF + esquadrejadeira no cluster de corte, abaixo do nesting.
+Referências de layout (web): fluxo linear recepção→corte→colagem→furação→montagem→
+expedição; corredor mínimo ~0,8 m (3 m do Paulo é folgado/seguro p/ carrinho).
+Fontes: promob.com, habitusbrasil.com, cpt.com.br.
 - **Bancadas:** 7 un. de **2,70 × 0,90 × 0,90 m (alt)**.
 - **Carrinhos:** 8 un. de **2,00 × 0,50 × 0,90 m (alt)** p/ transportar peças cortadas.
 - Gaiola de chapas no recebimento; pré-montagem separada por marceneiro; expedição
