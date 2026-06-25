@@ -153,17 +153,28 @@ arredondador**, **velocidade ~igual** à 7GT, e os **R$ 180k são a PRAZO**.
 - **Preço:** R$ 90.000 a prazo · **R$ 82.000 à vista**.
 - Valor p/ o deck: + capacidade interna, − retrabalho, − terceirização.
 
-## 💰 Investimento em MÁQUINAS (parcial — falta veículos/infra/giro)
-Usando o **cenário recomendado** e preços **à vista** (o aporte deve comprar à vista):
+## Compressor — Techto Autentic AT 10HP (5ª máquina / infra de ar)
+- **Função:** alimenta o ar comprimido de TODA a linha (coladeira, furadeira, fixações,
+  pistolas). Infra essencial.
+- **Specs:** parafuso, Direct Drive · **10 HP / 7,5 kW** · **8,5 bar** (123 PSI) ·
+  vazão **38 PCM / 1,08 m³/min** · 380V trifásico 60Hz · IHM touch · cabine acústica ·
+  separador de óleo · reservatório ~230L · 24h contínuo · 182 kg · garantia 1 ano.
+- **Preço:** R$ 23.677,68 parcelado · **R$ 21.309,91 à vista** (Loja do Mecânico).
+- ⚠️ Validar se 1,08 m³/min atende a demanda somada das máquinas novas (pode precisar
+  de um 2º/ maior se a furadeira + coladeira + pistolas rodarem juntas).
+
+## 💰 Investimento em MÁQUINAS (à vista — o aporte compra à vista)
+Cenário **recomendado**:
 | Máquina | Escolha | À vista |
 |---|---|---|
-| CNC nesting | **Giben** (palete inteiro) | R$ 490.000 *(confirmar se à vista)* |
+| CNC nesting | **Giben** (palete inteiro) | R$ 490.000 *(confirmar à vista)* |
 | Coladeira | **Giben KG268** (arredondador) | ~R$ 162.000 *(à vista a confirmar; prazo 180k)* |
 | Furação horizontal | **Raizen 3S** | R$ 82.000 |
-| **Subtotal máquinas** | | **≈ R$ 734.000** |
-- Alternativa 100% Raizen (à vista): Vision One 468 + 7GT 162 + 3S 82 = **R$ 712.000**.
-- Sobra do aporte R$ 1,55 mi − ~R$ 730k máquinas ≈ **~R$ 820k** p/ **veículos + infra do
-  galpão + capital de giro** (estoque/ WIP da produção dobrada). Folga saudável.
+| Compressor | **Techto Autentic AT 10HP** | R$ 21.310 |
+| **Subtotal máquinas** | | **≈ R$ 755.000** |
+- Alternativa 100% Raizen (à vista): Vision One 468 + 7GT 162 + 3S 82 + compressor 21 = **R$ 733.000**.
+- Sobra do aporte R$ 1,55 mi − ~R$ 755k máquinas ≈ **~R$ 795k** p/ **veículos + infra do
+  galpão + capital de giro** (estoque/WIP da produção dobrada). Folga saudável.
 
 ## A RECEBER do Paulo (pendências)
 - [ ] Máquinas a adquirir (foto + modelo + valor + função/capacidade).
