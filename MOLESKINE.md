@@ -72,7 +72,7 @@ layout? Referência visual? Links exatos do IG e YouTube?"
 **Dívidas ativas (saída de caixa mensal):**
 | Dívida | Total | Parcelas | Mensal est. |
 |---|---|---|---|
-| Financ. máquinas | R$ 24.000 | 5 | R$ 4.800 |
+| Financ. máquinas (CNC + ESQ · RAIZEN) | **R$ 36.600** | **6** | **R$ 6.100** |
 | Capital de giro | R$ 37.000 | 4 | R$ 9.250 |
 | Empréstimo Paulo | R$ 30.000 | 5 | R$ 6.000 |
 | Aporte Paulo (CNC) | R$ 65.000 | 100 | R$ 650 |
@@ -80,8 +80,15 @@ layout? Referência visual? Links exatos do IG e YouTube?"
 
 **Break-even (MC 43,5%):**
 - Contábil (operacional): R$ 68.135 ÷ 43,5% ≈ **R$ 156.600/mês**
-- De caixa (com dívidas): R$ 88.835 ÷ 43,5% ≈ **R$ 204.200/mês**
+- De caixa (com dívidas): R$ 89.435 ÷ 43,5% ≈ **R$ 205.600/mês** *(corrigido: financ. máquinas real R$6.100/mês)*
 - Fat. de referência no JSON: **R$ 246.000/mês** (teto necessário para gerar caixa positivo)
+
+**Confirmação RAIZEN Financeiro (25/06/2026 via WhatsApp):**
+- NF 2509 (Esquadrejadeira): **6 títulos restantes** · 07/06/26 → 07/11/26 · R$2.350/mês = R$14.100 total
+- NF 2403 (CNC Solid Taf): **6 títulos restantes** · 17/06/26 → 17/11/26 · R$3.750/mês = R$22.500 total
+- **Saldo total confirmado: R$36.600** (quitação: nov/2026)
+- Raizen **não pratica desconto por antecipação**
+- Parcela de jun/26 de ambas agendada p/ pagamento em 01/07
 
 **Depreciações contábeis registradas:**
 - CNC/ESQ/COL: bem R$220k, residual R$80k, vida 60m → **R$2.333/mês**

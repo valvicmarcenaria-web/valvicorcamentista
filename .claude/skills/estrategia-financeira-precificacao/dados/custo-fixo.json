@@ -1064,13 +1064,13 @@
           "itens": [
             {
               "nome": "Financiamento de máquinas (parcela)",
-              "valor": 6000,
+              "valor": 6100,
               "tipo": "Fixo",
               "contr": "—",
               "unidade": "Parcela",
               "parc": {
-                "total": 24000,
-                "n": 5,
+                "total": 36600,
+                "n": 6,
                 "pagas": 0
               },
               "dep": {
