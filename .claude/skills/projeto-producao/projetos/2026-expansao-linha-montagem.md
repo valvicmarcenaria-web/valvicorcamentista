@@ -5,8 +5,9 @@
 > Iniciado 24/06/2026.
 
 ## Objetivo
-**Dobrar a produção: R$200 mil/mês → R$400 mil/mês**, com estrutura robusta
-(máquinas + veículos + pessoal + espaço).
+**Dobrar a produção: R$200 mil/mês → R$400 mil/mês** (imediato), com estrutura robusta
+(máquinas + veículos + pessoal + espaço). **Visão: com tudo rodando, chegar a
+R$1 milhão/mês** (a capacidade das máquinas comporta).
 
 ## Estado atual (CONFIRMADO pelo Paulo)
 - **Faturamento:** ~R$200 mil/mês · **Margem de contribuição:** ~30% (→ R$60 mil/mês).
@@ -190,6 +191,26 @@ Cenário **recomendado**:
 - [ ] 2º turno entra no plano? (S/N)
 - [ ] Espaço: galpão atual cabe ou precisa área nova? (m² atuais)
 - [ ] Confirmar aporte (R$1,55 mi?) e contrapartida ao investidor (% / empréstimo).
+
+## 👥 Pessoal — contratações (CONFIRMADO Paulo 25/06)
+| Cargo | Qtd | Salário base | Subtotal |
+|---|---|---|---|
+| Marceneiro | 2 | R$ 5.000 | R$ 10.000 |
+| Ajudante | 2 | R$ 2.500 | R$ 5.000 |
+| Auxiliar administrativo | 1 | R$ 4.000 | R$ 4.000 |
+| Projetista | 1 | R$ 5.000 | R$ 5.000 |
+| **Total novas contratações** | **6** | | **R$ 24.000/mês (base)** |
+- Com encargos (~70%: FGTS, INSS, 13º, férias, benefícios) → **~R$ 40.800/mês** (confirmar c/ contador).
+
+## 💵 Retorno / Payback
+- **Ganho ao dobrar:** +R$ 200k/mês × MC 30% = **+R$ 60.000/mês** de margem de contribuição.
+- **− folha nova** (com encargos) ≈ R$ 40.800 → **sobra ≈ R$ 19.000/mês** (antes de
+  outros fixos novos: galpão, energia, combustível — a estimar).
+- **Investimento (capex):** máquinas ~R$ 755k + Kia Bongo ~R$ 100k = **~R$ 855k**.
+- **Payback (cenário dobrar, só folha):** 855k ÷ 19k ≈ **~45 meses (~3,7 anos)**.
+- **🚀 Upside (R$ 1 mi/mês):** +R$ 800k/mês × 30% = **+R$ 240k/mês** de MC. Com a
+  capacidade instalada (nesting 1.430 chapas/mês etc.), o retorno acelera muito —
+  payback cai p/ menos de 1 ano no pico. Alavancagem operacional + ganho de escala na MC.
 
 ## Faseamento (CONFIRMADO Paulo 25/06)
 - **Fase 1 — JÁ:** adquirir a **coladeira** pra começar a girar (start do negócio).
