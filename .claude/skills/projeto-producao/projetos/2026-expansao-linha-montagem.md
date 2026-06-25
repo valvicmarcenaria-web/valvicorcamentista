@@ -142,15 +142,28 @@ arredondador**, **velocidade ~igual** à 7GT, e os **R$ 180k são a PRAZO**.
   (≤ ~R$ 165k). Se a Giben à vista vier bem acima de 162k, reabrir vs 7GT.
 - **Única pendência:** preço **à vista** da Giben KG268.
 
-## Centro de furação HORIZONTAL (4ª máquina a adquirir)
+## Centro de furação HORIZONTAL — Raizen CNC Horizontal 3S (4ª máquina)
 - **Função:** furar o **topo/borda** do MDF — furo de **dispositivo** (cavilha/minifix),
-  **furo de fechadura** e **dobradiça** em porta de passagem, etc.
-- **Por quê:** a CNC fura na vertical (face); o **topo** é horizontal → a CNC NÃO faz.
-  Hoje provavelmente é manual/gabarito (lento, sujeito a erro). Máquina destrava também
-  **produção de portas de passagem** internamente.
+  **fechadura** e **dobradiça** em porta de passagem. A CNC de nesting fura só a face
+  (vertical) → o topo é horizontal e ela NÃO faz. Destrava produção de portas internas.
+- **Specs (ficha Raizen):** material máx **C 2800 × L 1300 × A 50 mm** · **3 áreas de
+  trabalho** · **3 spindles 2,2 kW ER25 18.000 RPM** · servo 750W/400W · tração fuso de
+  esfera (X/Z) + cremalheira helicoidal (Y) · 60 m/min · Touch 7" · G-Code · 900 kg ·
+  380V · 9,6 kW · ar 6–8 bar.
+- **Preço:** R$ 90.000 a prazo · **R$ 82.000 à vista**.
 - Valor p/ o deck: + capacidade interna, − retrabalho, − terceirização.
-- ❗ **Ficha técnica + preço: A RECEBER** (modelo, nº de mandris/brocas, eixos,
-  comando, capacidade).
+
+## 💰 Investimento em MÁQUINAS (parcial — falta veículos/infra/giro)
+Usando o **cenário recomendado** e preços **à vista** (o aporte deve comprar à vista):
+| Máquina | Escolha | À vista |
+|---|---|---|
+| CNC nesting | **Giben** (palete inteiro) | R$ 490.000 *(confirmar se à vista)* |
+| Coladeira | **Giben KG268** (arredondador) | ~R$ 162.000 *(à vista a confirmar; prazo 180k)* |
+| Furação horizontal | **Raizen 3S** | R$ 82.000 |
+| **Subtotal máquinas** | | **≈ R$ 734.000** |
+- Alternativa 100% Raizen (à vista): Vision One 468 + 7GT 162 + 3S 82 = **R$ 712.000**.
+- Sobra do aporte R$ 1,55 mi − ~R$ 730k máquinas ≈ **~R$ 820k** p/ **veículos + infra do
+  galpão + capital de giro** (estoque/ WIP da produção dobrada). Folga saudável.
 
 ## A RECEBER do Paulo (pendências)
 - [ ] Máquinas a adquirir (foto + modelo + valor + função/capacidade).
