@@ -74,12 +74,12 @@
 - **Cor decorre do território, não do gosto** — sistema de tokens reutilizável (mesma
   espinha, troca paleta/fonte por perfil).
 
-### Acervo de imagens (fonte das peças)
-- Pasta-raiz no Drive (fotos reais de projetos executados):
-  `1eUnLV1GsOo4X5SSxNzbVLVfL4Wgjf2OM`.
-- Subpastas por ambiente (home office: `leyde_contagem`, `Escritório Marco Túlio`; equipe:
-  `Fotos _equipe`, `insititucionais`, `Bastidores`; cases: `casa_richard_fazendas_da_serra`).
-- Para inserir no Canva: `upload-asset-from-url` com `https://drive.google.com/uc?export=download&id=<FILE_ID>`.
+### Acervo de imagens — pasta "Profissionais" (fonte das peças)
+- **Índice completo e navegável no repo: `ACERVO-PROFISSIONAIS.md` (raiz)** — ~40 projetos
+  entregues + institucional/equipe/bastidores/processo, com ID e link de cada subpasta.
+  **Sempre consultar este índice** para achar foto de projeto ou subsídio visual.
+- Pasta-raiz no Drive: `Profissionais` · `1eUnLV1GsOo4X5SSxNzbVLVfL4Wgjf2OM`.
+- Inserir no Canva: `upload-asset-from-url` com `https://drive.google.com/uc?export=download&id=<FILE_ID>`.
 
 ---
 
