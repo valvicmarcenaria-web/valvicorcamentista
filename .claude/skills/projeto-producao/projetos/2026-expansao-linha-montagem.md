@@ -126,17 +126,19 @@ móvel c/ 2 reservatórios, copiador nesting, lubrificação automática, 380V t
 - Vista no vídeo (coladeira branca, touchscreen, bobina de fita).
 - **"A mais usada pelas madeireiras de BH"** → proven, **suporte/peças/operadores
   abundantes na região** (baixo risco, fácil achar técnico que conhece).
-- ❗ **SEM ficha técnica e SEM preço ainda** — pedir (grupos, velocidade, arredondador?,
-  fita máx, colas, valor à vista/prazo).
+- **Preço:** R$ 180.000 (⚠️ confirmar se à vista ou a prazo).
+- ❗ **SEM ficha técnica ainda** — pedir grupos, velocidade, arredondador?, fita máx, colas.
 
-### Comparação / decisão (pendente Giben + plano de fita)
-- **6GT × 7GT:** diferença = **arredondador** + **velocidade** (20 vs 14 m/min), por
-  ~R$ 35k a mais. Como a coladeira vira o **gargalo** depois da CNC nova, **velocidade
-  importa** p/ dobrar. O arredondador só se justifica se for usar **fita grossa** (1–3mm).
-- **Giben KG268:** o trunfo é **ubiquidade/suporte local em BH** — ótimo p/ uptime.
-  Decidir só com a ficha e o preço dela.
-- ❓ A confirmar com o Paulo: **vão passar a usar fita grossa (PVC/ABS 1–3mm)?** Isso
-  decide se o arredondador (7GT) vale. E **ficha + preço da Giben KG268**.
+### Comparação / decisão (25/06 — DECIDIDO usar fita de 1 mm)
+**Fita de 1 mm → ARREDONDADOR é necessário** (canto vivo de 1 mm fica pobre/cortante).
+- **6GT (sem arredondador): cai de cotação** p/ o plano — colaria a fita de 1 mm mas
+  não arredonda o canto. Só voltaria se o custo falasse muito alto.
+- **7GT (R$ 162k à vista):** tem **arredondador** + é a **mais rápida** (20 m/min) →
+  encaixa na fita de 1 mm E ajuda no gargalo. **Front-runner.**
+- **Giben KG268 (R$ 180k):** trunfo = suporte/peças/operador em BH. Só compete se
+  **tiver arredondador** e a um preço próximo. ⚠️ confirmar arredondador + se 180k é
+  à vista ou a prazo (7GT a prazo também é 180k).
+- **Pendência:** ficha da Giben (tem arredondador? velocidade? fita máx?) + à vista/prazo.
 
 ## A RECEBER do Paulo (pendências)
 - [ ] Máquinas a adquirir (foto + modelo + valor + função/capacidade).
