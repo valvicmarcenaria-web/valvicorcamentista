@@ -59,7 +59,8 @@
 - **2 bombas de vácuo 11,7 CV.**
 - **Automação:** alimentação de chapas + **etiquetamento** + **descarga automática**.
 - **Preço:** R$ 520.000 a prazo · **R$ 468.000 à vista**.
-- Mesma marca da atual (Raizen) → sinergia de suporte/peças/treino.
+- Mesma marca da atual (Raizen) → sinergia de treino do Felipe.
+- **Fabricada na China** (confirmado Paulo 25/06) — igual à Giben/KDT.
 - ⚠️ Comando **Syntec** (≠ JRG da Solid TAF) → meu conhecimento de G-code JRG não
   transfere direto; a programação da nova usa post Syntec.
 
@@ -76,13 +77,15 @@
 - ❗ **SEM ficha técnica ainda** — pedir (furação múltipla? etiquetamento/descarga
   automática? comando? vácuo?) p/ comparar maçã com maçã com a Vision One.
 
-### Comparação (capacidade é EMPATE; decisão = marca/automação/preço)
-- **Capacidade:** as 3 cortam ~**1.430 chapas/mês** (empate). Não é o fator de decisão.
-- **Preço:** Vision One à vista **R$ 468k** < Giben/KDT **R$ 490k** < Vision a prazo **R$ 520k**.
-- **A favor da Vision One (Raizen):** automação conhecida (etiqueta+descarga+furação 9
-  brocas), mesma marca da atual (suporte/peças/treino), mais barata à vista.
-- **A favor da Giben/KDT:** marca premium, carga de palete inteiro. Mas falta a ficha
-  p/ saber se traz a mesma automação — e definir se é a Itália (R$?) ou China (R$490k).
+### Comparação (25/06 — máquinas quase equivalentes)
+EMPATARAM: **capacidade** (~1.430 chapas/mês), **automação** (etiquetagem + furação +
+9 brocas iguais nas duas) e **procedência** (ambas China). Sobram 3 fatores de decisão:
+- **Preço:** Vision One **R$ 468k à vista** (520k a prazo) × Giben/KDT **R$ 490k**.
+  → Raizen ~R$ 22k mais barata à vista.
+- **Carga de chapa:** Giben carrega **palete inteiro** × Raizen **meio palete** (CONFIRMAR
+  se ainda vale). Vale uptime/menos mão de obra — pesar contra os R$ 22k.
+- **Suporte/garantia no Brasil:** decisivo p/ máquina china → quem dá assistência,
+  prazo de garantia, estoque de peças de cada uma? (A CONFIRMAR.)
 
 > **Capacidade × tese:** ~1.430 chapas/mês já é >2× a Solid TAF (660). Com a nova só no
 > nesting + Solid TAF só nos especiais, capacidade de corte deixa de ser o gargalo.
