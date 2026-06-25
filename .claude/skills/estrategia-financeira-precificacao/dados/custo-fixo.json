@@ -216,7 +216,7 @@
           "itens": [
             {
               "nome": "Vale transporte",
-              "valor": 2500,
+              "valor": 3000,
               "tipo": "Fixo",
               "contr": "—",
               "unidade": "R$",
@@ -233,7 +233,7 @@
             },
             {
               "nome": "Vale alimentação",
-              "valor": 0,
+              "valor": 500,
               "tipo": "Fixo",
               "contr": "—",
               "unidade": "R$",
@@ -323,7 +323,7 @@
             },
             {
               "nome": "Vendedor",
-              "valor": 3,
+              "valor": 0,
               "tipo": "Fixo",
               "contr": "—",
               "unidade": "%",
@@ -548,7 +548,7 @@
             {
               "nome": "Água",
               "valor": 150,
-              "tipo": "Fixo",
+              "tipo": "Variável",
               "contr": "—",
               "unidade": "R$",
               "parc": {
@@ -604,7 +604,7 @@
             {
               "nome": "Limpeza",
               "valor": 600,
-              "tipo": "Fixo",
+              "tipo": "Variável",
               "contr": "—",
               "unidade": "R$",
               "parc": {
@@ -621,7 +621,7 @@
             {
               "nome": "Manutenção predial",
               "valor": 200,
-              "tipo": "Fixo",
+              "tipo": "Variável",
               "contr": "—",
               "unidade": "R$",
               "parc": {
@@ -670,7 +670,7 @@
             {
               "nome": "Tráfego pago / anúncios",
               "valor": 1500,
-              "tipo": "Fixo",
+              "tipo": "Variável",
               "contr": "—",
               "unidade": "R$",
               "parc": {
@@ -825,7 +825,7 @@
             },
             {
               "nome": "Consultoria (ex.: Rodrigo)",
-              "valor": 800,
+              "valor": 0,
               "tipo": "Fixo",
               "contr": "—",
               "unidade": "R$",
@@ -921,7 +921,7 @@
             {
               "nome": "Material de escritório",
               "valor": 100,
-              "tipo": "Fixo",
+              "tipo": "Variável",
               "contr": "—",
               "unidade": "R$",
               "parc": {
@@ -937,8 +937,8 @@
             },
             {
               "nome": "Café / copa",
-              "valor": 200,
-              "tipo": "Fixo",
+              "valor": 300,
+              "tipo": "Variável",
               "contr": "—",
               "unidade": "R$",
               "parc": {

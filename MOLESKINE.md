@@ -36,6 +36,59 @@ layout? Referência visual? Links exatos do IG e YouTube?"
 
 ---
 
+## Base de dados atualizada
+
+### [2026-06-25] custo-fixo.json — versão atualizada (Rodrigo)
+**Arquivo:** `.claude/skills/estrategia-financeira-precificacao/dados/custo-fixo.json`  
+**Faturamento de referência:** R$ 246.000/mês · MC% padrão: 43,5% · encargoCLT: 27,44%
+
+**Folha bruta (sócios + produção + comercial):**
+| Pessoa | Regime | Valor |
+|---|---|---|
+| Jonathan (pró-labore + ajuda) | — | R$ 7.700 |
+| Paulo (pró-labore + ajuda) | — | R$ 7.700 |
+| Jackson (marceneiro) | PJ | R$ 3.600 |
+| Samuel (marceneiro) | PJ | R$ 3.900 |
+| Joelson (operador CNC) | CLT | R$ 2.500 |
+| Deivson (coordenador) | PJ | R$ 4.000 |
+| Filipe (programador) | PJ | R$ 3.600 |
+| Jomar (marceneiro jr.) | CLT | R$ 1.950 |
+| Davi (ajudante) | CLT | R$ 1.950 |
+| Assistente adm. | CLT | R$ 2.000 |
+| **Total folha bruta** | | **R$ 38.900** |
+| Encargos CLT (27,44% s/ R$8.400) | | + R$ 2.305 |
+| VT R$3k + VA R$500 + EPIs R$150 | | + R$ 3.650 |
+| **Total pessoal** | | **≈ R$ 44.855** |
+
+**Custos estruturais mensais (sem dívidas):**
+- Galpão (aluguel R$5k + utilidades + conservação): **R$ 8.280**
+- Máquinas (manut. + consumíveis + software): **R$ 1.300** *(+ deprec. contábil R$2.633)*
+- Logística (combustível + veículo): **R$ 5.050**
+- Comercial/mktg (tráfego + social media): **R$ 2.900**
+- Administrativo (contador + jurídico + sistemas): **R$ 4.250**
+- Tributos (DAS est.): **R$ 1.500**
+- **Total operacional (caixa, sem dívidas): ≈ R$ 68.135**
+
+**Dívidas ativas (saída de caixa mensal):**
+| Dívida | Total | Parcelas | Mensal est. |
+|---|---|---|---|
+| Financ. máquinas | R$ 24.000 | 5 | R$ 4.800 |
+| Capital de giro | R$ 37.000 | 4 | R$ 9.250 |
+| Empréstimo Paulo | R$ 30.000 | 5 | R$ 6.000 |
+| Aporte Paulo (CNC) | R$ 65.000 | 100 | R$ 650 |
+| **Total dívidas/mês** | **R$ 156.000** | | **R$ 20.700** |
+
+**Break-even (MC 43,5%):**
+- Contábil (operacional): R$ 68.135 ÷ 43,5% ≈ **R$ 156.600/mês**
+- De caixa (com dívidas): R$ 88.835 ÷ 43,5% ≈ **R$ 204.200/mês**
+- Fat. de referência no JSON: **R$ 246.000/mês** (teto necessário para gerar caixa positivo)
+
+**Depreciações contábeis registradas:**
+- CNC/ESQ/COL: bem R$220k, residual R$80k, vida 60m → **R$2.333/mês**
+- Carro: bem R$50k, residual R$35k, vida 50m → **R$300/mês**
+
+---
+
 ## Recados rápidos
 
 *(notas passageiras — podem ser apagadas após lidas)*
