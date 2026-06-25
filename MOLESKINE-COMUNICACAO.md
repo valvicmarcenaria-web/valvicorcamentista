@@ -28,6 +28,10 @@
 
 ## 🎯 FUNDAÇÃO — o que a comunicação Valvic já sabe
 
+> **Base completa da empresa: `SOBRE-A-VALVIC.md` (raiz)** — história, sócios, estrutura
+> do grupo, posicionamento, visão/legado, modelo de negócio, o "sistema Valvic" e as
+> implicações para comunicação. **Leitura obrigatória** para entender quem é a Valvic.
+
 ### Posicionamento & tom de voz (inegociável)
 - **Alto padrão.** A Valvic se posiciona ao lado de **grifes de design** (Ornare, Florense,
   Vitra, Herman Miller), não de marcenaria amadora.

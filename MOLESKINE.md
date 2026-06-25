@@ -6,6 +6,9 @@
 > depois** todo aprendizado novo. Finalidade: evitar erros recorrentes, otimizar
 > processos, promover melhorias e mais assertividade em todas as atividades.
 
+> 📘 **Quem é a Valvic:** base completa da empresa em **`SOBRE-A-VALVIC.md`** (raiz) —
+> história, sócios, estrutura do grupo, posicionamento, visão/legado e o "sistema Valvic".
+
 ## 🧭 Protocolo (vale para TODOS os agentes)
 
 1. **CONSULTAR ANTES.** Em toda nova tarefa — orçamento, proposta, peça visual,
