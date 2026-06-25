@@ -51,6 +51,19 @@ pintura, porcelanato, rodapé poliestireno, blindex, arandelas e **madeira de de
   `proposta-ed-luxemburgo.html`/`.pdf`. Proposta subida ao Drive (pasta do cliente).
 - **Pendências:** confirmar prazo do boleto (assumido 30 dias); ver recado p/ Rodrigo.
 
+### [2026-06-25] Orçamento + Proposta — Camila (Closet) — Lavinia + Vitor
+**Solicitante:** Jonathan · **Status:** 🟢 Concluído
+Closet = Roupeiro em L + Ilha central. **Duas versões** pelo módulo superior do roupeiro:
+**V1 correr ripado** (fiel ao projeto, R$ 37.530) × **V2 básculas** (R$ 33.890) — ambas
+MC 32%, RT 10% embutido, Hardt → garantia 5 anos. Ilha idêntica (serralheria + tampo de
+vidro + gaveta especial + puxador Enlevo).
+- **Arquivos:** `orcamento-camila-v1/v2-mc32.json`, `orcamento-camila-closet.html/.pdf`,
+  `proposta-camila.html/.pdf`.
+- **Proposta:** 2 cenários COMPLETOS lado a lado (Linha Projeto × Linha Otimizada,
+  economia R$ 3.640) · validade 7 dias. Drive: Doc do orçamento na pasta "Camila"; PDFs no chat.
+- **Pendências:** confirmar prazo (usei 60–70 dias úteis); báscula = mudança do projeto →
+  validar com a arquiteta; trocar render da capa por foto real.
+
 ---
 
 ## Aprendizados
@@ -75,6 +88,16 @@ pintura, porcelanato, rodapé poliestireno, blindex, arandelas e **madeira de de
 - **Canva:** brand-template **autofill exige plano pago** (bloqueado nesta conta).
   Fallback oficial = **HTML→PDF** (precedente K&F). A API do Canva **não adiciona/remove
   linhas de tabela** — limita reaproveitar os masters p/ nº de itens diferente.
+
+### [2026-06-25] Proposta — clareza para o cliente (Vitor) — regra do Jonathan
+- **Quanto mais conta o cliente tem que fazer sozinho, pior; quanto mais claro,
+  organizado e objetivo, melhor.** Na proposta, mostrar SEMPRE o total que o cliente
+  paga, pronto — nada de "some o roupeiro + a ilha". Cada cenário/opção já traz o
+  conjunto COMPLETO num total único + o valor à vista.
+- **Comparativo de versões na proposta:** quando há duas formas de executar (ex. módulo
+  superior em correr ripado × báscula — closet da Camila), apresentar as duas como
+  CENÁRIOS COMPLETOS lado a lado (roupeiro + ilha em cada), com a economia explícita —
+  não só o item que muda.
 
 ---
 
