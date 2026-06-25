@@ -208,12 +208,17 @@ Estimativa por zona (footprint + operação + circulação + WIP):
 ➡️ **RECOMENDAÇÃO: ~700 m²** (confortável p/ dobrar e ainda crescer). Mínimo
 operável ~500 m² (apertado).
 
-### ✅ DECIDIDO (Paulo 25/06): galpão de 1.000 m² — layout desenhado
+### ✅ DECIDIDO (Paulo 25/06): galpão de 1.000 m² — layout desenhado (v3)
 Planta em escala (40 × 25 m) em `projetos/Valvic_Layout_Galpao_1000m2.pdf/.png`.
-Inclui, na sequência do fluxo: **gaiola de chapas**, CNC nesting, coladeira principal
-+ backup, CNC especiais, auxiliares, furação 3S, compressor/casa de máquinas, **pátio
-com 8 carrinhos**, **marcenaria com 7 bancadas** + **pré-montagem (1 área/marceneiro)**,
-montagem/conferência e **expedição (peças embaladas)**.
+**Arranjo definido pelo Paulo — MÁQUINAS TODAS EM LINHA (topo) e BANCADAS no lado
+oposto (base):**
+1. Entrada de caminhão (esq) → 2. Gaiola de chapas → 3. CNC Nesting + CNC atual
+   (Solid TAF) ao lado → 4. Coladeira (+ backup me25) → 5. Furação 3S (+ compressor/
+   casa de máquinas) → fim da linha: **armazenagem de peças cortadas/prontas + carrinhos**.
+- **Corredor central:** trânsito dos **8 carrinhos** levando as peças cortadas até as bancadas.
+- **Lado oposto:** **7 bancadas** com área generosa de **pré-montagem** em volta de cada uma.
+- **Expedição** (peças embaladas) no **fim da linha de bancadas**, perto do portão de saída.
+- v1 (caixas coloridas) foi descartada por ficar amadora; v3 = estilo planta baixa.
 - **Bancadas:** 7 un. de **2,70 × 0,90 × 0,90 m (alt)**.
 - **Carrinhos:** 8 un. de **2,00 × 0,50 × 0,90 m (alt)** p/ transportar peças cortadas.
 - Gaiola de chapas no recebimento; pré-montagem separada por marceneiro; expedição
