@@ -63,23 +63,30 @@
 - ⚠️ Comando **Syntec** (≠ JRG da Solid TAF) → meu conhecimento de G-code JRG não
   transfere direto; a programação da nova usa post Syntec.
 
-### [NOVA — NESTING] Opção B: Giben G2 1929 (marca premium, Itália)
-- Vista nos vídeos (Giben G2 1929). **Marca melhor posicionada** (durabilidade/precisão).
-- **Diferencial:** única que carrega **PALETE INTEIRO** na mesa de abastecimento (as
-  outras só meio palete) → menos paradas p/ reabastecer, menos mão de obra na chapa.
-- **Preço:** R$ 490.000.
-- ❗ **SEM ficha técnica ainda** — pedir ao vendedor (capacidade chapas/mês, furação,
-  etiquetamento/descarga automática, comando, vácuo) p/ comparar maçã com maçã.
+### [NOVA — NESTING] Opção B: Giben G2 1929 / KDT (premium)
+- Vista nos vídeos (**Giben G2 1929** real + animação **KDT**).
+- **Paulo (25/06):** **KDT = a mesma Giben, fábrica na China**; corta o **mesmo volume
+  de chapa da Raizen** (~1.430 chapas/mês). → Giben (Itália) e KDT (China) = mesma linha,
+  procedências diferentes.
+- **Marca melhor posicionada** (durabilidade/precisão).
+- **Diferencial:** carrega **PALETE INTEIRO** na mesa de abastecimento (as outras só
+  meio palete) → menos paradas p/ reabastecer, menos mão de obra na chapa.
+- **Preço:** R$ 490.000. ⚠️ **CONFIRMAR:** esse valor é da Giben (Itália) ou da KDT
+  (China)? Há diferença de preço entre as duas procedências?
+- ❗ **SEM ficha técnica ainda** — pedir (furação múltipla? etiquetamento/descarga
+  automática? comando? vácuo?) p/ comparar maçã com maçã com a Vision One.
 
-### Comparação rápida (preço)
-- Vision One à vista **R$ 468k** < Giben **R$ 490k** < Vision One a prazo **R$ 520k**.
-- Decisão depende da ficha da Giben: se ela inclui a mesma automação (etiquetamento +
-  descarga + furação múltipla), o pequeno prêmio + carga de palete inteiro pode
-  compensar pela marca. Se for nesting "puro", a Vision One entrega mais automação/R$.
+### Comparação (capacidade é EMPATE; decisão = marca/automação/preço)
+- **Capacidade:** as 3 cortam ~**1.430 chapas/mês** (empate). Não é o fator de decisão.
+- **Preço:** Vision One à vista **R$ 468k** < Giben/KDT **R$ 490k** < Vision a prazo **R$ 520k**.
+- **A favor da Vision One (Raizen):** automação conhecida (etiqueta+descarga+furação 9
+  brocas), mesma marca da atual (suporte/peças/treino), mais barata à vista.
+- **A favor da Giben/KDT:** marca premium, carga de palete inteiro. Mas falta a ficha
+  p/ saber se traz a mesma automação — e definir se é a Itália (R$?) ou China (R$490k).
 
-> **Capacidade × tese:** qualquer das duas (1.430 chapas/mês na Vision One) já é >2× a
-> Solid TAF (660). Com a nova só no nesting + Solid TAF só nos especiais, capacidade de
-> corte deixa de ser o gargalo. O limite passa a ser coladeira / pessoal / espaço / giro.
+> **Capacidade × tese:** ~1.430 chapas/mês já é >2× a Solid TAF (660). Com a nova só no
+> nesting + Solid TAF só nos especiais, capacidade de corte deixa de ser o gargalo.
+> O limite passa a ser **coladeira / pessoal / espaço / capital de giro**.
 
 ## A RECEBER do Paulo (pendências)
 - [ ] Máquinas a adquirir (foto + modelo + valor + função/capacidade).
