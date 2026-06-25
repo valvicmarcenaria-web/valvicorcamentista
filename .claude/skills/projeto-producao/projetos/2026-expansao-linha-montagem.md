@@ -50,7 +50,36 @@
 > divide tempo entre nesting e especiais. Com a CNC nova só pro nesting + esta só
 > pros especiais, a capacidade de nesting dá um salto (base do "dobrar produção").
 
-<!-- próximas fichas: CNC nova, coladeira nova, veículo(s), etc. -->
+### [NOVA — NESTING] Opção A: Raizen Vision One Nesting Plus
+- **Centro de usinagem nesting industrial.** Área útil 2.800 × 1.900 mm (cabe chapa inteira).
+- **Capacidade: 65 chapas/dia · 1.430 chapas/mês** (~26 peças/chapa).
+- Comando **CNC Syntec** · spindle 9 kW (12 CV) 24.000 RPM · **60 m/min** ·
+  precisão ±0,06 mm/2000 mm · monobloco aço.
+- **Magazine 18 ferramentas** no pórtico · **cabeçote de furação 9 brocas verticais**.
+- **2 bombas de vácuo 11,7 CV.**
+- **Automação:** alimentação de chapas + **etiquetamento** + **descarga automática**.
+- **Preço:** R$ 520.000 a prazo · **R$ 468.000 à vista**.
+- Mesma marca da atual (Raizen) → sinergia de suporte/peças/treino.
+- ⚠️ Comando **Syntec** (≠ JRG da Solid TAF) → meu conhecimento de G-code JRG não
+  transfere direto; a programação da nova usa post Syntec.
+
+### [NOVA — NESTING] Opção B: Giben G2 1929 (marca premium, Itália)
+- Vista nos vídeos (Giben G2 1929). **Marca melhor posicionada** (durabilidade/precisão).
+- **Diferencial:** única que carrega **PALETE INTEIRO** na mesa de abastecimento (as
+  outras só meio palete) → menos paradas p/ reabastecer, menos mão de obra na chapa.
+- **Preço:** R$ 490.000.
+- ❗ **SEM ficha técnica ainda** — pedir ao vendedor (capacidade chapas/mês, furação,
+  etiquetamento/descarga automática, comando, vácuo) p/ comparar maçã com maçã.
+
+### Comparação rápida (preço)
+- Vision One à vista **R$ 468k** < Giben **R$ 490k** < Vision One a prazo **R$ 520k**.
+- Decisão depende da ficha da Giben: se ela inclui a mesma automação (etiquetamento +
+  descarga + furação múltipla), o pequeno prêmio + carga de palete inteiro pode
+  compensar pela marca. Se for nesting "puro", a Vision One entrega mais automação/R$.
+
+> **Capacidade × tese:** qualquer das duas (1.430 chapas/mês na Vision One) já é >2× a
+> Solid TAF (660). Com a nova só no nesting + Solid TAF só nos especiais, capacidade de
+> corte deixa de ser o gargalo. O limite passa a ser coladeira / pessoal / espaço / giro.
 
 ## A RECEBER do Paulo (pendências)
 - [ ] Máquinas a adquirir (foto + modelo + valor + função/capacidade).
