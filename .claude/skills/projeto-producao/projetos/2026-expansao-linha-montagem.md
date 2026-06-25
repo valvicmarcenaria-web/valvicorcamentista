@@ -176,6 +176,14 @@ Cenário **recomendado**:
 - Sobra do aporte R$ 1,55 mi − ~R$ 755k máquinas ≈ **~R$ 795k** p/ **veículos + infra do
   galpão + capital de giro** (estoque/WIP da produção dobrada). Folga saudável.
 
+## 🚚 Veículos
+- **ATUAL:** Chevrolet Montana 2020 (caçamba pequena) — corridas rápidas / pequenas entregas.
+- **A ADQUIRIR:** **Kia Bongo** (caminhão leve com baú) — entrega + montagem do volume
+  dobrado. Carga ~1,5 t; leva móvel embalado com segurança e libera a Montana.
+  - **Preço:** R$ 80–120 mil (estimativa Paulo, usados). Orçar **~R$ 100k** no plano.
+- **Investimento atualizado:** máquinas ~R$ 755k + veículo ~R$ 100k = **~R$ 855k** →
+  sobram **~R$ 695k** do aporte p/ infra do galpão + capital de giro.
+
 ## A RECEBER do Paulo (pendências)
 - [ ] Máquinas a adquirir (foto + modelo + valor + função/capacidade).
 - [ ] Pessoal a contratar (cargos + salários estimados) → custo fixo incremental.
