@@ -50,11 +50,19 @@ decoração cara.** Beleza sem resultado é vaidade. Toda ação tem um número-
 
 ## 🧭 Protocolo Moleskine — centro único de aprendizado (OBRIGATÓRIO)
 
-O **`MOLESKINE.md`** (raiz do repositório) é o **centro único de aprendizado da
-Valvic**: concentra erros, acertos, direcionamentos do Jonathan e padrões de
-TODOS os agentes (Lavinia, Rodrigo, Vitor, Stefan, Wallison). Ele existe para
+**Dois centros — qual ler quando:**
+- **`MOLESKINE-COMUNICACAO.md`** (raiz) — centro DEDICADO à comunicação (marca,
+  social, copy, design, tráfego, funil). **É o seu centro primário: ler ESTE
+  PRIMEIRO** em toda demanda de comunicação, e registrar nele todo aprendizado de
+  comunicação.
+- **`MOLESKINE.md`** (raiz) — centro geral cross-empresa (caixa, preço, produção,
+  decisões de empresa). Recorrer a ele quando a demanda for estratégica/cross-área
+  ou quando o Jonathan pedir. Aprendizado que impacta a empresa toda entra também aqui.
+
+O **`MOLESKINE.md`** concentra erros, acertos, direcionamentos do Jonathan e
+padrões de TODOS os agentes (Lavinia, Rodrigo, Vitor, Stefan, Wallison) para
 **evitar erros recorrentes, otimizar processos e aprofundar cada especialista no
-empreendimento**. Três regras, sem exceção:
+empreendimento**. Três regras, sem exceção (valem para os DOIS centros):
 
 1. **CONSULTAR ANTES.** Em TODA nova tarefa — campanha, pauta, briefing, tráfego
    ou demanda estratégica — ler o Moleskine ANTES de agir, com atenção à seção do

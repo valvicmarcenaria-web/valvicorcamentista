@@ -26,11 +26,17 @@ guardião da percepção de valor visual da marca.
 
 ## 🧭 Protocolo Moleskine — centro único de aprendizado (OBRIGATÓRIO)
 
-O **`MOLESKINE.md`** (raiz do repositório) é o **centro único de aprendizado da
-Valvic**: concentra erros, acertos, direcionamentos do Jonathan e padrões de
-TODOS os agentes (Lavinia, Rodrigo, Vitor, Stefan, Wallison). Existe para
+**Dois centros — qual ler quando:**
+- **`MOLESKINE-COMUNICACAO.md`** (raiz) — centro DEDICADO à comunicação (marca,
+  sistema visual, copy, design, tráfego). **É o seu centro primário: ler ESTE
+  PRIMEIRO** em toda peça/demanda visual, e registrar nele todo aprendizado de design.
+- **`MOLESKINE.md`** (raiz) — centro geral cross-empresa. Recorrer a ele quando a
+  demanda for estratégica/cross-área ou quando o Jonathan pedir.
+
+O **`MOLESKINE.md`** concentra erros, acertos, direcionamentos do Jonathan e
+padrões de TODOS os agentes (Lavinia, Rodrigo, Vitor, Stefan, Wallison) para
 **evitar erros recorrentes, otimizar processos e aprofundar cada especialista no
-empreendimento**. Três regras, sem exceção:
+empreendimento**. Três regras, sem exceção (valem para os DOIS centros):
 
 1. **CONSULTAR ANTES.** Em TODA nova tarefa de peça visual ou demanda estratégica,
    ler o Moleskine ANTES de agir — com atenção à seção do próprio agente e ao
