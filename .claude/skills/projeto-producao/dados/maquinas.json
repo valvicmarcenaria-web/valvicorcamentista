@@ -1,8 +1,8 @@
 {
   "_meta": {
     "titulo": "Parque de máquinas da Valvic — produção",
-    "atualizado_em": "2026-06-15",
-    "status": "v2 — Raizen SolidTAF e SCM me 25 com specs confirmadas (fonte: fabricante/web)",
+    "atualizado_em": "2026-06-24",
+    "status": "v3 — Solid TAF com folha do fabricante (Paulo): eixos corrigidos (Y2800/X1900), vácuo 11,7CV, peso 1720kg, capacidade 35 chapas/dia · 660/mês. Na expansão vira só especiais.",
     "observacoes": "null = a confirmar. Cada máquina define limites que governam modelagem e corte. Marcas/modelos lidos das fotos IMG_7611..7615; specs do router e da coladeira confirmadas por fonte."
   },
   "maquinas": [
@@ -11,12 +11,17 @@
       "marca": "Raizen",
       "modelo": "Solid TAF",
       "funcao": "Corta as chapas (nesting) a partir dos DXF do Marcenária Diferente E executa cortes especiais (friso LED, friso de dobra/V-groove, curva) via Aspire. UMA máquina, dois caminhos de software.",
-      "area_util_mm": { "x": 2800, "y": 1900, "z": 200 },
-      "cabe_chapa_inteira": "SIM — 2800x1900 acomoda a chapa de 2750x1850",
+      "area_util_mm": { "x": 1900, "y": 2800, "z": 200 },
+      "cabe_chapa_inteira": "SIM — 1900x2800 acomoda a chapa de 1850x2750 (Y é o eixo longo)",
+      "velocidade_maxima_m_min": 40,
+      "capacidade": { "chapas_dia": 35, "chapas_mes": 660, "pecas_por_chapa_media": 26, "fonte": "folha do fabricante Solid TAF" },
+      "movimentacao": "guias lineares; lubrificação automática centralizada; redutor planetário Shimpo; servo motores Leadshine; fim de curso anticolisão eletrônico; painel de operação móvel; volante MPG com emergência",
+      "tensao": "380V 60Hz trifásica",
+      "papel_na_expansao": "passa a ser SÓ usinagens especiais (Aspire); o nesting vai p/ a CNC nova",
       "spindle": { "potencia_kw": 9, "potencia_cv": 12, "rpm": "12000-24000", "frequencia_hz": "400-800", "cone": "ISO 30", "pinca": "ER 32", "refrigeracao": "ventilação elétrica" },
-      "vacuo": { "bomba_kw": 7.5, "camaras": 4, "acionamento": "manual" },
+      "vacuo": { "bomba_cv": 11.7, "camaras": 4, "acionamento": "manual" },
       "troca_ferramenta": { "tipo": "automática (ATC)", "magazine": "linear", "capacidade": 10 },
-      "estrutura": "aço estrutural usinado, ~1500 kg",
+      "estrutura": "monobloco em aço estrutural, ~1720 kg",
       "software_comando": "Controlador JRG · post-processador Vectric Aspire 'JRG CNC SOLID TAF'",
       "dialeto_gcode": "mm, absoluto (G90 implícito); Z-ZERO NA CHAPA DE SACRIFÍCIO (CONFIRMADO) — INVARIANTE: Z nunca < -0.100; corte passante = Z-0.100 (descida = espessura+0.1); corte parcial = Z = espessura-profundidade; clearance = espessura+5.08mm; N# incremento 1; G00/G1/G2-G3 com I/J; spindle M3S24000; troca M6T<n>+G43 H<n>; M-codes próprios M158/M162 (liga) e M159/M163 (desliga) — par obrigatório, não inventar. Decodificado em referencias/aspire-cortes-especiais.md (exemplos reais em referencias/exemplos/).",
       "magazine_capacidade": 10,

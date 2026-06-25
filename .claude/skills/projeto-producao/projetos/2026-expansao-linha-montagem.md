@@ -37,6 +37,21 @@
 - Alavancas a favor: alavancagem operacional (fixos atuais já pagos) + MC sobe na
   escala (compra de chapa em volume).
 
+## Fichas de máquina (para o portfólio)
+
+### [ATUAL] Raizen Solid TAF — Centro de Usinagem (→ vira especiais)
+- Área útil **Y 2800 × X 1900 × Z 200 mm** (cabe chapa inteira 1850×2750).
+- **Capacidade: 35 chapas/dia · 660 chapas/mês** (~26 peças/chapa).
+- Spindle 9 kW (12 CV) 24.000 RPM ISO30 · vácuo 11,7 CV (4 câmaras) · guias lineares ·
+  servo Leadshine · redutor Shimpo · 40 m/min · ATC 10 ferramentas · ~1720 kg · 380V tri.
+- **Papel na linha nova:** usinagens especiais (Aspire). Valor: ativo já existente.
+
+> Benchmark p/ a conta: a CNC atual sozinha faz até **660 chapas/mês**. Hoje ela
+> divide tempo entre nesting e especiais. Com a CNC nova só pro nesting + esta só
+> pros especiais, a capacidade de nesting dá um salto (base do "dobrar produção").
+
+<!-- próximas fichas: CNC nova, coladeira nova, veículo(s), etc. -->
+
 ## A RECEBER do Paulo (pendências)
 - [ ] Máquinas a adquirir (foto + modelo + valor + função/capacidade).
 - [ ] Pessoal a contratar (cargos + salários estimados) → custo fixo incremental.
