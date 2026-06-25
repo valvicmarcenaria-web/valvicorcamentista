@@ -11,7 +11,7 @@ R$1 milhão/mês** (a capacidade das máquinas comporta).
 
 ## Estado atual (CONFIRMADO pelo Paulo)
 - **Faturamento:** ~R$200 mil/mês · **Margem de contribuição:** ~30% (→ R$60 mil/mês).
-- **Aporte pretendido:** ~R$1,55 milhão (a confirmar valor exato e contrapartida).
+- **Aporte:** ABERTO — o investidor define quanto quer aportar e a contrapartida (não fixar valor no deck).
 - **Turno:** 1 só.
 - **Time produção:** 1 operador (CNC+coladeira) · 1 encarregado (também produz) ·
   2 ajudantes · 2 marceneiros · (+Paulo às vezes — quer sair da produção).
@@ -174,16 +174,16 @@ Cenário **recomendado**:
 | Compressor | **Techto Autentic AT 10HP** | R$ 21.310 |
 | **Subtotal máquinas** | | **≈ R$ 755.000** |
 - Alternativa 100% Raizen (à vista): Vision One 468 + 7GT 162 + 3S 82 + compressor 21 = **R$ 733.000**.
-- Sobra do aporte R$ 1,55 mi − ~R$ 755k máquinas ≈ **~R$ 795k** p/ **veículos + infra do
-  galpão + capital de giro** (estoque/WIP da produção dobrada). Folga saudável.
+- Compõe o investimento em estrutura junto com veículo (~R$100k) e infra do galpão (R$200k).
 
 ## 🚚 Veículos
 - **ATUAL:** Chevrolet Montana 2020 (caçamba pequena) — corridas rápidas / pequenas entregas.
 - **A ADQUIRIR:** **Kia Bongo** (caminhão leve com baú) — entrega + montagem do volume
   dobrado. Carga ~1,5 t; leva móvel embalado com segurança e libera a Montana.
   - **Preço:** R$ 80–120 mil (estimativa Paulo, usados). Orçar **~R$ 100k** no plano.
-- **Investimento atualizado:** máquinas ~R$ 755k + veículo ~R$ 100k = **~R$ 855k** →
-  sobram **~R$ 695k** do aporte p/ infra do galpão + capital de giro.
+- **Investimento em estrutura:** máquinas ~R$ 755k + veículo ~R$ 100k + **infra do galpão
+  novo R$ 200k** = **~R$ 1.055.000** (+ capital de giro a dimensionar). **Aporte: o
+  investidor decide o valor.**
 
 ## A RECEBER do Paulo (pendências)
 - [ ] Máquinas a adquirir (foto + modelo + valor + função/capacidade).
@@ -206,8 +206,9 @@ Cenário **recomendado**:
 - **Ganho ao dobrar:** +R$ 200k/mês × MC 30% = **+R$ 60.000/mês** de margem de contribuição.
 - **− folha nova** (com encargos) ≈ R$ 40.800 → **sobra ≈ R$ 19.000/mês** (antes de
   outros fixos novos: galpão, energia, combustível — a estimar).
-- **Investimento (capex):** máquinas ~R$ 755k + Kia Bongo ~R$ 100k = **~R$ 855k**.
-- **Payback (cenário dobrar, só folha):** 855k ÷ 19k ≈ **~45 meses (~3,7 anos)**.
+- **Investimento em estrutura:** máquinas ~R$ 755k + Kia Bongo ~R$ 100k + infra galpão
+  R$ 200k = **~R$ 1.055.000** (+ capital de giro). **Aporte definido pelo investidor.**
+- **Payback (cenário dobrar, só folha):** ~R$1.055M ÷ 19k ≈ **~55 meses (~4,6 anos)**.
 - **🚀 Upside (R$ 1 mi/mês):** +R$ 800k/mês × 30% = **+R$ 240k/mês** de MC. Com a
   capacidade instalada (nesting 1.430 chapas/mês etc.), o retorno acelera muito —
   payback cai p/ menos de 1 ano no pico. Alavancagem operacional + ganho de escala na MC.
