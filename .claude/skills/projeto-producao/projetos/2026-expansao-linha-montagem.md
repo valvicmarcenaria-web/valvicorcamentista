@@ -103,6 +103,41 @@ preço (Raizen ~R$22k mais barata à vista) × **carga de palete inteiro (só a 
 > nesting + Solid TAF só nos especiais, capacidade de corte deixa de ser o gargalo.
 > O limite passa a ser **coladeira / pessoal / espaço / capital de giro**.
 
+## Coladeira de borda nova (3 opções) — a me 25 vira backup
+
+Comum às Spectra (Raizen): fita **0,4–3,0 mm** (hoje a Valvic só usa 0,4 → ganho de
+poder colar fita grossa PVC/ABS), painel esp. 10–45 mm, colas **EVA/PO/PUR** (PUR =
+linha de cola invisível, premium), 4 rolos pressores, tela Delta 7", coleiro híbrido
+móvel c/ 2 reservatórios, copiador nesting, lubrificação automática, 380V trifásica.
+
+### [NOVA — COLADEIRA] Opção A: Raizen Spectra 6GT
+- **6 grupos:** tupia entrada · coleiro · destopador · refilador · raspador · polidor.
+- **Velocidade:** 14 m/min (fixa). Potência 18 kW · 1.200 kg.
+- **Preço:** R$ 142.000 a prazo · **R$ 127.000 à vista**.
+
+### [NOVA — COLADEIRA] Opção B: Raizen Spectra 7GT
+- **7 grupos:** os 6 acima **+ grupo ARREDONDADOR** (arredonda o canto da fita —
+  acabamento premium, essencial p/ fita grossa PVC/ABS).
+- **Velocidade:** **14-16-20 m/min** (selecionável → ~43% mais rápida que a 6GT).
+  Potência 20 kW · 1.300 kg.
+- **Preço:** R$ 180.000 a prazo · **R$ 162.000 à vista**.
+
+### [NOVA — COLADEIRA] Opção C: Giben KG268 (KG 268J)
+- Vista no vídeo (coladeira branca, touchscreen, bobina de fita).
+- **"A mais usada pelas madeireiras de BH"** → proven, **suporte/peças/operadores
+  abundantes na região** (baixo risco, fácil achar técnico que conhece).
+- ❗ **SEM ficha técnica e SEM preço ainda** — pedir (grupos, velocidade, arredondador?,
+  fita máx, colas, valor à vista/prazo).
+
+### Comparação / decisão (pendente Giben + plano de fita)
+- **6GT × 7GT:** diferença = **arredondador** + **velocidade** (20 vs 14 m/min), por
+  ~R$ 35k a mais. Como a coladeira vira o **gargalo** depois da CNC nova, **velocidade
+  importa** p/ dobrar. O arredondador só se justifica se for usar **fita grossa** (1–3mm).
+- **Giben KG268:** o trunfo é **ubiquidade/suporte local em BH** — ótimo p/ uptime.
+  Decidir só com a ficha e o preço dela.
+- ❓ A confirmar com o Paulo: **vão passar a usar fita grossa (PVC/ABS 1–3mm)?** Isso
+  decide se o arredondador (7GT) vale. E **ficha + preço da Giben KG268**.
+
 ## A RECEBER do Paulo (pendências)
 - [ ] Máquinas a adquirir (foto + modelo + valor + função/capacidade).
 - [ ] Pessoal a contratar (cargos + salários estimados) → custo fixo incremental.
