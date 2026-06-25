@@ -129,16 +129,18 @@ móvel c/ 2 reservatórios, copiador nesting, lubrificação automática, 380V t
 - **Preço:** R$ 180.000 (⚠️ confirmar se à vista ou a prazo).
 - ❗ **SEM ficha técnica ainda** — pedir grupos, velocidade, arredondador?, fita máx, colas.
 
-### Comparação / decisão (25/06 — DECIDIDO usar fita de 1 mm)
-**Fita de 1 mm → ARREDONDADOR é necessário** (canto vivo de 1 mm fica pobre/cortante).
-- **6GT (sem arredondador): cai de cotação** p/ o plano — colaria a fita de 1 mm mas
-  não arredonda o canto. Só voltaria se o custo falasse muito alto.
-- **7GT (R$ 162k à vista):** tem **arredondador** + é a **mais rápida** (20 m/min) →
-  encaixa na fita de 1 mm E ajuda no gargalo. **Front-runner.**
-- **Giben KG268 (R$ 180k):** trunfo = suporte/peças/operador em BH. Só compete se
-  **tiver arredondador** e a um preço próximo. ⚠️ confirmar arredondador + se 180k é
-  à vista ou a prazo (7GT a prazo também é 180k).
-- **Pendência:** ficha da Giben (tem arredondador? velocidade? fita máx?) + à vista/prazo.
+### ✅ DECISÃO COLADEIRA (25/06) — DECIDIDO usar fita de 1 mm
+Fita 1 mm → **arredondador necessário**. Confirmado pelo Paulo: Giben KG268 **tem
+arredondador**, **velocidade ~igual** à 7GT, e os **R$ 180k são a PRAZO**.
+- **6GT — fora** (sem arredondador, não serve p/ fita de 1 mm).
+- **7GT × Giben KG268 — EMPATAM** em arredondador, velocidade e preço (a prazo as duas
+  = R$ 180k; à vista 7GT = R$ 162k, Giben a confirmar mas ~próximo).
+- **Desempate = suporte local.** A **Giben KG268 é a mais usada pelas madeireiras de
+  BH** → peça/técnico/operador fáceis na região = **menos máquina parada**. Pra uma
+  coladeira que vira **gargalo** numa operação dobrando, uptime é o que mais vale.
+- **➡️ RECOMENDAÇÃO: Giben KG268**, desde que o **preço à vista** fique ≈ o da 7GT
+  (≤ ~R$ 165k). Se a Giben à vista vier bem acima de 162k, reabrir vs 7GT.
+- **Única pendência:** preço **à vista** da Giben KG268.
 
 ## A RECEBER do Paulo (pendências)
 - [ ] Máquinas a adquirir (foto + modelo + valor + função/capacidade).
