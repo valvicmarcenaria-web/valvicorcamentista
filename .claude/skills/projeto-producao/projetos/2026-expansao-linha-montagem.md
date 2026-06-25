@@ -142,6 +142,16 @@ arredondador**, **velocidade ~igual** à 7GT, e os **R$ 180k são a PRAZO**.
   (≤ ~R$ 165k). Se a Giben à vista vier bem acima de 162k, reabrir vs 7GT.
 - **Única pendência:** preço **à vista** da Giben KG268.
 
+## Centro de furação HORIZONTAL (4ª máquina a adquirir)
+- **Função:** furar o **topo/borda** do MDF — furo de **dispositivo** (cavilha/minifix),
+  **furo de fechadura** e **dobradiça** em porta de passagem, etc.
+- **Por quê:** a CNC fura na vertical (face); o **topo** é horizontal → a CNC NÃO faz.
+  Hoje provavelmente é manual/gabarito (lento, sujeito a erro). Máquina destrava também
+  **produção de portas de passagem** internamente.
+- Valor p/ o deck: + capacidade interna, − retrabalho, − terceirização.
+- ❗ **Ficha técnica + preço: A RECEBER** (modelo, nº de mandris/brocas, eixos,
+  comando, capacidade).
+
 ## A RECEBER do Paulo (pendências)
 - [ ] Máquinas a adquirir (foto + modelo + valor + função/capacidade).
 - [ ] Pessoal a contratar (cargos + salários estimados) → custo fixo incremental.
