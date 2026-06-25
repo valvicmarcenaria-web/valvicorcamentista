@@ -206,7 +206,18 @@ Estimativa por zona (footprint + operação + circulação + WIP):
 | **TOTAL** | **≈ 600–800 m²** |
 
 ➡️ **RECOMENDAÇÃO: ~700 m²** (confortável p/ dobrar e ainda crescer). Mínimo
-operável ~500 m² (apertado). 
+operável ~500 m² (apertado).
+
+### ✅ DECIDIDO (Paulo 25/06): galpão de 1.000 m² — layout desenhado
+Planta em escala (40 × 25 m) em `projetos/Valvic_Layout_Galpao_1000m2.pdf/.png`.
+Inclui, na sequência do fluxo: **gaiola de chapas**, CNC nesting, coladeira principal
++ backup, CNC especiais, auxiliares, furação 3S, compressor/casa de máquinas, **pátio
+com 8 carrinhos**, **marcenaria com 7 bancadas** + **pré-montagem (1 área/marceneiro)**,
+montagem/conferência e **expedição (peças embaladas)**.
+- **Bancadas:** 7 un. de **2,70 × 0,90 × 0,90 m (alt)**.
+- **Carrinhos:** 8 un. de **2,00 × 0,50 × 0,90 m (alt)** p/ transportar peças cortadas.
+- Gaiola de chapas no recebimento; pré-montagem separada por marceneiro; expedição
+  p/ peças embaladas (perto do portão de saída).
 
 ### Requisitos de infra (além do m²)
 - **Pé-direito ≥ 6 m** (estoque vertical de chapa + dutos de exaustão).
