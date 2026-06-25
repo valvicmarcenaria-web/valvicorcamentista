@@ -64,8 +64,8 @@ def panel(ox, kind, titulo, sub):
     trilho_hidden=(kind=="tampa")
     rect(bp0-2,Y(TRIL[1]),xF-(bp0-2),Y(TRIL[0])-Y(TRIL[1]),fill=("none" if trilho_hidden else "url(#trk)"),col=(GRAY if trilho_hidden else INK),wd=1.2,dash=("3 2" if trilho_hidden else None))
     # ---- PORTAS INFERIORES RO-65 (2 planos), encaixadas no módulo (base->trilho) ----
-    rect(bp0,Y(LB[1]+0.5),dt,Y(TRIL[0])-Y(LB[1]+0.5),fill=BACK,col=INK)   # plano traseiro
-    rect(fp0,Y(LB[1]+0.5),dt,Y(TRIL[0])-Y(LB[1]+0.5),fill=WOOD,col=INK)   # plano dianteiro (face em xF)
+    rect(bp0,Y(TRIL[0]),dt,Y(LB[1]+0.5)-Y(TRIL[0]),fill=BACK,col=INK)   # plano traseiro
+    rect(fp0,Y(TRIL[0]),dt,Y(LB[1]+0.5)-Y(TRIL[0]),fill=WOOD,col=INK)   # plano dianteiro (face em xF) (face em xF)
     circ(bp0+dt/2,Y(LB[1])+3,2.4,fill="#fff",col=INK); circ(fp0+dt/2,Y(LB[1])+3,2.4,fill="#fff",col=INK)
     line(fp0+dt,Y(95),cx,Y(95),GDEEP,1,dash="3 3"); t(cx,Y(95)-4,"RO-65 (base)",12,GDEEP,"start","700")
     t(cx,Y(95)+11,"portas encaixadas no",10,INK); t(cx,Y(95)+25,"módulo · 2 planos · 60 kg",10,INK); t(cx,Y(95)+39,"→ transpasso",10,GDEEP,"start","700")
@@ -75,8 +75,8 @@ def panel(ox, kind, titulo, sub):
     # ---- MÓDULO SUPERIOR ----
     if kind=="multi":
         rect(bp0-2,Y(MTRIL[1]),xF-(bp0-2),Y(MTRIL[0])-Y(MTRIL[1]),fill="url(#trk)",col=INK,wd=1.0)  # trilho multi sob teto sup
-        rect(bp0,Y(UBASE[1]+0.5),dt,Y(MTRIL[0])-Y(UBASE[1]+0.5),fill=BACK,col=INK)
-        rect(fp0,Y(UBASE[1]+0.5),dt,Y(MTRIL[0])-Y(UBASE[1]+0.5),fill=WOOD,col=INK)
+        rect(bp0,Y(MTRIL[0]),dt,Y(UBASE[1]+0.5)-Y(MTRIL[0]),fill=BACK,col=INK)
+        rect(fp0,Y(MTRIL[0]),dt,Y(UBASE[1]+0.5)-Y(MTRIL[0]),fill=WOOD,col=INK)
         line(fp0+dt,Y(220),cx,Y(220),GDEEP,1,dash="3 3"); t(cx,Y(220)-4,"Multi (Rometal)",12,GDEEP,"start","700")
         t(cx,Y(220)+11,"módulo independente:",10,INK); t(cx,Y(220)+25,"porta corre SOBRE a base,",10,INK)
         t(cx,Y(220)+39,"trilho sob o teto · 2 planos",10,INK); t(cx,Y(220)+53,"(transpasso)",10,GDEEP,"start","700")
