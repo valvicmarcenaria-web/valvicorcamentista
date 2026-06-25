@@ -84,8 +84,20 @@ EMPATARAM: **capacidade** (~1.430 chapas/mês), **automação** (etiquetagem + f
   → Raizen ~R$ 22k mais barata à vista.
 - **Carga de chapa:** Giben carrega **palete inteiro** × Raizen **meio palete** (CONFIRMAR
   se ainda vale). Vale uptime/menos mão de obra — pesar contra os R$ 22k.
-- **Suporte/garantia no Brasil:** decisivo p/ máquina china → quem dá assistência,
-  prazo de garantia, estoque de peças de cada uma? (A CONFIRMAR.)
+- **Suporte/garantia no Brasil:** TODAS têm suporte e garantia no Brasil (confirmado
+  Paulo 25/06) → fator EMPATADO.
+
+### ✅ RECOMENDAÇÃO (25/06): Giben
+Como capacidade, automação, procedência e suporte/garantia EMPATARAM, sobram 2 fatores:
+preço (Raizen ~R$22k mais barata à vista) × **carga de palete inteiro (só a Giben)**.
+- **Recomendo a Giben.** O prêmio de ~R$22k (4,7%) é pequeno perto do ganho de
+  **palete inteiro**: metade das paradas p/ reabastecer + menos mão de obra carregando
+  chapa — exatamente o que a tese ("dobrar com equipe enxuta") precisa. Também é ganho
+  de **ergonomia/segurança** (menos peso manual) e **uptime** (bom argumento p/ investidor).
+- A favor da Raizen ficaria só o preço; a "mesma marca da atual" pesa pouco (a Solid TAF
+  é JRG e a Vision One é Syntec — comando diferente de qualquer jeito).
+- ⚠️ CONFIRMAR antes de bater o martelo: o **R$490k da Giben é à vista**? (comparar
+  à vista × à vista, já que o aporte deve comprar à vista). Pedir desconto à vista na Giben.
 
 > **Capacidade × tese:** ~1.430 chapas/mês já é >2× a Solid TAF (660). Com a nova só no
 > nesting + Solid TAF só nos especiais, capacidade de corte deixa de ser o gargalo.
