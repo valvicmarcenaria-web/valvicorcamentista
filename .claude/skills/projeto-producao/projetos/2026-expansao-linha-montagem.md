@@ -183,6 +183,43 @@ Cenário **recomendado**:
 - [ ] Espaço: galpão atual cabe ou precisa área nova? (m² atuais)
 - [ ] Confirmar aporte (R$1,55 mi?) e contrapartida ao investidor (% / empréstimo).
 
+## Faseamento (CONFIRMADO Paulo 25/06)
+- **Fase 1 — JÁ:** adquirir a **coladeira** pra começar a girar (start do negócio).
+- **Fase 2:** montar a estrutura toda no **galpão novo** rodando todas as máquinas.
+
+## 🏭 Galpão — dimensionamento (parque completo)
+Estimativa por zona (footprint + operação + circulação + WIP):
+| Zona | m² aprox |
+|---|---|
+| Recebimento + estoque de chapas | 50–60 |
+| Nesting (CNC, com palete entrada/saída) | 55–70 |
+| Coladeira principal + backup (me25) | 60–80 |
+| Furação horizontal (3S) | 20–25 |
+| Usinagens especiais (Solid TAF) | 30–40 |
+| Auxiliares (esquadrejadeira/serra/tupia) | 40–50 |
+| Marcenaria / bancadas | 50–70 |
+| Montagem + conferência | 70–90 |
+| Expedição (móvel pronto) | 40–60 |
+| Compressor + casa de máquinas (ar/exaustão/elétrica) | 20–25 |
+| Apoio (escritório/refeitório/banheiro/vestiário) | 40–60 |
+| Circulação (~18%) | ~110 |
+| **TOTAL** | **≈ 600–800 m²** |
+
+➡️ **RECOMENDAÇÃO: ~700 m²** (confortável p/ dobrar e ainda crescer). Mínimo
+operável ~500 m² (apertado). 
+
+### Requisitos de infra (além do m²)
+- **Pé-direito ≥ 6 m** (estoque vertical de chapa + dutos de exaustão).
+- **Piso industrial reforçado** (máquinas de 1–2 t).
+- **Energia trifásica:** soma das cargas instaladas (Giben CNC ~30 kW + coladeira ~20 +
+  furação 9,6 + compressor 7,5 + Solid TAF ~20 + auxiliares + aspiração) → entrada
+  estimada **~150 kVA** (CONFIRMAR com eletricista).
+- **Aspiração central de pó** dimensionada p/ CNC + coladeira + serras.
+- **Rede de ar comprimido (anel)** a partir do compressor.
+- **Doca/acesso de caminhão** (baú) + área de manobra; idealmente empilhadeira.
+- **Layout em FLUXO** (recebimento→nesting→coladeira→furação→marcenaria→montagem→
+  expedição): peça nunca anda pra trás.
+
 ## A FAZER (Téo)
 - [ ] Dimensionar galpão (footprints + fluxo + estoque) quando vier a lista.
 - [ ] Layout da linha de montagem (recebimento → nesting → coladeira → marcenaria →
