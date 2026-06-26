@@ -1,8 +1,8 @@
 {
  "cliente": "Camila",
  "projeto": "Closet",
- "versao": "003-sem-modulo-superior-usinado-giro",
- "inv": 24700,
+ "versao": "003-final-sem-modulo-superior-usinado",
+ "inv": 27500,
  "mcAlvo": 32,
  "p": {
   "nf": 4,
@@ -557,6 +557,10 @@
      350
     ],
     [
+     "Estrutura de serralheria (base)",
+     100
+    ],
+    [
      "Gaveta especial",
      900
     ]
@@ -570,15 +574,15 @@
     "MDF¦mdf branco 6": 3,
     "MDF¦mdf branco 15": 5,
     "MDF¦mdf branco 18": 1,
-    "MDF¦mdf cor 15": 3,
-    "Cola e fita¦Colagem - mt linear - máquina": 95,
+    "MDF¦mdf cor 15": 4,
+    "Cola e fita¦Colagem - mt linear - máquina": 105,
     "Cola e fita¦Fita de borda - branco tx - mt": 50,
-    "Cola e fita¦Fita de borda - cor - mt": 35,
-    "Dobradiças¦Hardt": 12,
+    "Cola e fita¦Fita de borda - cor - mt": 40,
+    "Dobradiças¦Hardt": 8,
     "Corrediças¦Oculta Hardt": 4,
-    "Sistema portas roupeiros¦RO65 (Rometal)": 1,
+    "Sistema portas roupeiros¦RO65 (Rometal)": 3,
     "Sistema portas roupeiros¦Trilho RO65 - 3mt": 1,
-    "Sistema portas roupeiros¦Desempenador embutido - par": 1,
+    "Sistema portas roupeiros¦Desempenador embutido - par": 3,
     "Puxadores¦SP7000 anodizado": 6,
     "Puxadores¦Cava 35° usinada - mt": 3.6,
     "Parafusos / dispositivos / montagem¦Parafusos gerais - especulação": 3,
@@ -609,10 +613,11 @@
     "Limpeza / embalagem¦Estopa (pacote)": 1,
     "Limpeza / embalagem¦Strech": 2,
     "Limpeza / embalagem¦Embalagem": 1,
+    "Especiais¦Estrutura de serralheria (base)": 1,
     "Especiais¦Logística específica": 1
    }
   }
  ],
  "ativo": 0,
- "_obs": "AJUSTE: roupeiro SEM módulo superior (porta principal vai até em cima), acabamento USINADO (nao ripado) em 2 cores (cinza + amadeirado Cumaru usinado); 2 portas cinza viram de GIRO (eram de correr) na virada do L, cinza ate em cima, sem amadeirado na virada; eliminados bascula/Multi e tabua de passar. ILHA: gaveta especial vira COMUM; removidos suporte de joias (bandeja) e sua estrutura de serralheria. Material total R$9.008 (12+2 chapas). Investimento R$24.700 (MC ~32%, RT 10%). Roupeiro ~R$18.200 / Ilha ~R$6.500. A vista -7% ~R$23.010. PREMISSAS A CONFIRMAR: (1) serralheria R$350 era do suporte de joias (removida) e nao a base da ilha; (2) 2 de 3 portas viram giro (RO65 3->1); (3) cor 4->3 chapas e fita cor 70->35 pelo usinado. Supersede comparativo correr x bascula e o croqui do modulo superior."
+ "_obs": "AJUSTE FINAL (Jonathan). ROUPEIRO: sem modulo superior, porta principal PISO-TETO; acabamento USINADO (friso CNC na margem, nao ripado), 2 cores cinza+amadeirado Cumaru; 3 portas de CORRER permanecem (RO-65 x3, piso-teto); so as 2 menores (43cm) viram de GIRO, cinza, na virada do L (sem amadeirado na virada). Eliminados bascula/Multi e tabua de passar. ILHA: gaveta especial -> comum; removido o suporte de joias (bandeja); estrutura de serralheria fica SO DA BASE = R$250 total c/ logistica. Material R$10.036 (13 roup + 2 ilha = 15 chapas). Investimento R$27.500 (MC ~32%, RT 10%). Roupeiro ~R$20.700 / Ilha ~R$6.800. A vista -7% ~R$25.565. Supersede comparativo correr x bascula e o croqui do modulo superior (nao ha mais modulo superior). Flag menor: cor 15 mantido em 4 chapas com portas piso-teto; se faltar, +1 chapa (~+R$650)."
 }
