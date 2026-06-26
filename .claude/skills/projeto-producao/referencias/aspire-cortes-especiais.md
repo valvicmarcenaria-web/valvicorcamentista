@@ -181,20 +181,26 @@ e estragaria. (Vácuo M158/M162 segura as peças já soltas.)
 
 ---
 
-## ⭐ Fresa de 45° (T8) — chanfro / bisel  (Paulo, 26/06)
-- **Ferramenta:** **T8 = fresa de 45°** (magazine pos. 8).
-- **Método:** desenhar uma **LINHA** e mandar a T8 **correr sobre a linha** (corte na
-  linha, sem offset).
-- **Z (profundidade) = espessura + 0,1** para o **chanfro completo** (atravessa):
-  - peça 18 mm → entra **18,1**; peça 15 mm → entra **15,1**; e assim por diante.
-- **Compensação dimensional:** cada lado chanfrado **"come" 0,3 mm**.
-  - **4 lados:** desenhar a peça **+0,6** na medida (ex.: quadrado final 50×50 → desenhar **50,6 × 50,6**).
-  - **1 lado:** **+0,3** só naquela medida (ex.: **50,3 × 50,0**).
+## ⭐ Fresa de 45° — chanfro / bisel  (Paulo, 26/06)
+> 🚨 **Paulo fala/desenha em CENTÍMETROS.** "50,6" = 50,6 cm = **506 mm**. (Erro meu
+> anterior: tinha lido como 0,6 mm — era 6 mm na medida = 3 mm/lado.)
+- **Ferramenta:** **T8 = fresa de 45°** (CONFIRMADO Paulo, magazine pos. 8).
+  🚨 **Atenção:** o `.tap` de teste exportou **`M6T7`** (não T8). Verificar no Aspire o
+  **nº da ferramenta** do percurso 45° → tem que sair **T8**, senão a máquina troca pela
+  fresa errada (T7 = reta 3 mm). Conferir mapeamento Aspire nº ↔ magazine.
+- **Método:** desenhar uma **LINHA** e mandar a 45° **correr sobre a linha** (sem offset).
+- **Z = espessura + 0,1** p/ **chanfro completo** (atravessa): peça 18→**18,1**; 15→**15,1**.
+  (No `.tap` o Z foi **8,900** = chanfro PARCIAL; falta a espessura da chapa do teste.)
+- **Compensação = a 45° "come" por lado ≈ a PROFUNDIDADE do chanfro** (45° → horizontal =
+  vertical). **NÃO é número fixo:**
+  - **Quadrado do `.tap`:** desenhado **506×506** → final **500×500** = **3 mm/lado**.
+  - **Tampo redondo:** Ø303 → Ø300 = **1,5 mm/lado** (chanfro mais raso).
+  - **Regra:** 4 lados → desenhar **+2×come** em cada medida; 1 lado → **+come** só nela.
 - **Fluxo do chanfro em 1 lado só:**
-  1. Desenha o retângulo (com +0,3 no lado a chanfrar) **+ uma linha extra** sobre esse lado.
-  2. Passa a **T8 só nessa linha** (faz o 45°).
+  1. Desenha o retângulo (com a compensação no lado a chanfrar) **+ uma linha extra** sobre ele.
+  2. Passa a 45° **só nessa linha**.
   3. Troca pela **T2 (fresa 6 mm)** e corta o **contorno por fora** do retângulo.
-- ⚠️ **A CONFIRMAR (discrepância):** no TAMPO redondo o Paulo disse que a 45° "come 3 mm
-  no diâmetro" (desenhar Ø303 p/ Ø300) = **1,5 mm/lado**; aqui no quadrado deu **0,3 mm/lado**.
-  Provável diferença por causa da PROFUNDIDADE do bisel (tampo = bisel fundo/grande;
-  quadrado = quebra de canto). Confirmar com o Paulo a regra por profundidade.
+- **Dados do `.tap`:** T7 · S13500 · 1 passe **Z8,900** · mergulho F2000 / corte F4000 ·
+  quadrado 506×506 (X39,24/Y46,39 → X545,24/Y552,39) · clearance Z20,08.
+- **A CONFIRMAR:** (1) T7 ou T8? (2) espessura da chapa do teste → fecha
+  **come/lado = profundidade = espessura − Z**.
