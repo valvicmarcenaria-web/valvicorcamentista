@@ -76,7 +76,8 @@ está digitando muda. Para não trocar os nomes:
 - **Dialeto G-code JRG** decodificado de `.tap` reais (`aspire-cortes-especiais.md`).
 - 🚨 **Trava de Z:** Z-zero na chapa de sacrifício; **nunca Z < −0,1**. Passante =
   espessura+0,1; parcial = espessura − profundidade.
-- **Ferramentas em uso:** T2 (fresa 6mm), T7 (fresa 3mm). Magazine tem 10.
+- **Ferramentas em uso:** T2 (fresa reta 6mm), **T7 (fresa 45° — CORRIGIDO 26/06**, antes
+  estava errado como "reta 3mm"). Magazine tem 10. (45° = chanfro; ver aspire-cortes-especiais.)
 - **Dobra de MDF (kerf bending)** capturada (`dobra-de-mdf.md`): vincos 12mm, pele
   1mm, Z+1 em chapa 15mm; fluxo estrutura→ranhuras→separação (multi-operação).
 - **Calibração:** quina cambota **R203** ↔ espaçamento **12mm** (≈27 vincos/90°).

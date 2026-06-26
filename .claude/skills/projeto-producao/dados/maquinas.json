@@ -27,10 +27,9 @@
       "magazine_capacidade": 10,
       "ferramentas": [
         { "posicao": 2, "tipo": "fresa reta", "diametro_mm": 6, "raio_mm": 3, "uso": "contorno/corte passante", "status": "em uso" },
-        { "posicao": 7, "tipo": "fresa reta", "diametro_mm": 3, "raio_mm": 1.5, "uso": "a detalhar (cortes finos/detalhe)", "status": "em uso" },
-        { "posicao": 8, "tipo": "fresa 45 graus (chanfro/bisel)", "uso": "corre SOBRE uma linha; Z = espessura+0,1 p/ chanfro completo; compensação ~0,3mm por lado chanfrado (4 lados = +0,6 na medida)", "fluxo_parcial": "chanfro em 1 lado: linha extra + T8 só nela; depois T2 corta o contorno por fora", "status": "em uso" }
+        { "posicao": 7, "tipo": "fresa 45 graus (chanfro/bisel)", "uso": "corre SOBRE uma linha (sem offset), S13500; come por lado = profundidade do chanfro (45 graus -> horizontal=vertical); Z=espessura+0,1 p/ chanfro completo", "fluxo_parcial": "chanfro em 1 lado: linha extra + T7 so nela; depois T2 corta o contorno por fora", "status": "em uso", "obs": "CONFIRMADO via .tap (M6T7) + Paulo 26/06. ANTES estava anotada errado como fresa reta 3mm." }
       ],
-      "ferramentas_pendentes": "Magazine tem 10 ferramentas. Em uso: T2 (6mm), T7 (3mm), T8 (45°). As outras 7 (posições, finalidade, offsets/descontos) serão informadas depois pelo Paulo.",
+      "ferramentas_pendentes": "Magazine tem 10 ferramentas. Em uso confirmadas: T2 (reta 6mm), T7 (45 graus). A antiga anotacao 'T7=reta 3mm' estava ERRADA. Onde fica a fresa de 3mm (se houver) e as demais posicoes: a confirmar com o Paulo.",
       "obs": "Recebe o DXF do MD e o post do Aspire. Eixos: Y longo (~2800), X curto (~1900); estaciona em Y2840 X51 Z50. Z-zero na mesa deduzido de .tap reais (a confirmar). Fonte specs: raizenmachine.com.br/solidtaf."
     },
     {

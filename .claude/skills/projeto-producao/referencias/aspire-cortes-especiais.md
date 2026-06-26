@@ -184,10 +184,9 @@ e estragaria. (Vácuo M158/M162 segura as peças já soltas.)
 ## ⭐ Fresa de 45° — chanfro / bisel  (Paulo, 26/06)
 > 🚨 **Paulo fala/desenha em CENTÍMETROS.** "50,6" = 50,6 cm = **506 mm**. (Erro meu
 > anterior: tinha lido como 0,6 mm — era 6 mm na medida = 3 mm/lado.)
-- **Ferramenta:** **T8 = fresa de 45°** (CONFIRMADO Paulo, magazine pos. 8).
-  🚨 **Atenção:** o `.tap` de teste exportou **`M6T7`** (não T8). Verificar no Aspire o
-  **nº da ferramenta** do percurso 45° → tem que sair **T8**, senão a máquina troca pela
-  fresa errada (T7 = reta 3 mm). Conferir mapeamento Aspire nº ↔ magazine.
+- **Ferramenta:** **T7 = fresa de 45°** (CONFIRMADO Paulo + `.tap` `M6T7`, 26/06).
+  A anotação antiga "T7 = fresa reta 3 mm" estava **ERRADA** — corrigida. Lição: o que
+  sai no `.tap` é a verdade; confiar nele.
 - **Método:** desenhar uma **LINHA** e mandar a 45° **correr sobre a linha** (sem offset).
 - **Z = espessura + 0,1** p/ **chanfro completo** (atravessa): peça 18→**18,1**; 15→**15,1**.
   (No `.tap` o Z foi **8,900** = chanfro PARCIAL; falta a espessura da chapa do teste.)
