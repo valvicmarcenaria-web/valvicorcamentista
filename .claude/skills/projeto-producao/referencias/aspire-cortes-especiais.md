@@ -203,3 +203,16 @@ e estragaria. (Vácuo M158/M162 segura as peças já soltas.)
   quadrado 506×506 (X39,24/Y46,39 → X545,24/Y552,39) · clearance Z20,08.
 - **A CONFIRMAR:** (1) T7 ou T8? (2) espessura da chapa do teste → fecha
   **come/lado = profundidade = espessura − Z**.
+
+### Chanfro 45° em 1 LADO — `.tap` real (26/06)
+Fonte: `exemplos/2026-06-26_teste-45-graus-1lado.tap`. **Dois cortes num arquivo:**
+1. **T7 (45°, S13500):** corta a **linha do lado a chanfrar** — aqui o topo (Y546,393),
+   X39,24→542,24 = **503 mm**, em **Z−0,100 (passante)**, F2000/F4000. (É a "linha a mais"
+   que o Paulo desenha em cima do lado.)
+2. **T2 (6 mm, S24000):** corta o **contorno por fora** (centro 3 mm além da peça →
+   **cantos arredondados R3**, G2 I/J=3), Z−0,100, F2500/F10000. Peça final **503 × 500**.
+- Confirma a regra do Paulo: **1 lado → desenhar 50,3 × 50,0 cm** (503 × 500 mm).
+- ⚠️ **Profundidade:** este 1-lado foi **Z−0,1 (passante)**; o teste de 4 lados foi **Z8,9
+  (parcial)** — mas **os dois "comem" ~3 mm/lado**. → a come **NÃO é = profundidade**
+  (hipótese anterior caiu); parece **fixa ~3 mm/lado** pela geometria da fresa.
+- 🔁 Rever o TAMPO (que deu 1,5 mm/lado): por que diferente? (curva? outra profundidade?)
