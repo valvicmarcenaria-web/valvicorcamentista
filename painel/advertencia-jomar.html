@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Advertência — Jomar · Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:#1b2733; background:#d9dde3; font-size:11.5px; line-height:1.7; }
+
+  .sheet{
+    position:relative; width:210mm; height:297mm; background:#fff;
+    margin:18px auto; box-shadow:0 10px 40px rgba(11,22,40,.22);
+    overflow:hidden; padding:22mm 24mm;
+    display:flex; flex-direction:column;
+  }
+  .sheet:last-child{ page-break-after:auto; }
+
+  /* cabeçalho */
+  .head{ display:flex; align-items:center; gap:14px; border-bottom:2px solid #0E2038; padding-bottom:16px; }
+  .mark{
+    width:48px; height:48px; flex-shrink:0; background:#0E2038; color:#C2A05A;
+    border-radius:5px; display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:18px; letter-spacing:-1px;
+  }
+  .head .co{ font-size:16px; font-weight:700; letter-spacing:.5px; color:#0E2038; }
+  .head .cd{ font-size:9.5px; color:#6c7785; margin-top:2px; }
+
+  .doctype{ text-align:center; margin:26px 0 22px; }
+  .doctype .t{ font-size:18px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E2038; }
+  .doctype .s{ font-size:10px; color:#b0413f; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; margin-top:4px; }
+
+  /* metadados */
+  .meta{ border:1px solid #e0e0e0; border-radius:6px; overflow:hidden; margin-bottom:22px; }
+  .meta .row{ display:grid; grid-template-columns:140px 1fr; border-bottom:1px solid #ededed; }
+  .meta .row:last-child{ border-bottom:none; }
+  .meta .k{ background:#f6f6f4; padding:8px 14px; font-weight:600; font-size:10px; text-transform:uppercase; letter-spacing:.6px; color:#41505d; }
+  .meta .v{ padding:8px 14px; font-weight:500; }
+
+  /* corpo */
+  .body p{ margin-bottom:14px; text-align:justify; }
+  .body b{ color:#0E2038; }
+  .lead{ font-weight:500; }
+
+  /* assinaturas */
+  .signs{ margin-top:auto; display:grid; grid-template-columns:1fr 1fr; gap:50px; padding-top:30px; }
+  .sign{ text-align:center; }
+  .sign .line{ border-top:1px solid #1b2733; padding-top:7px; font-size:10.5px; }
+  .sign .nm{ font-weight:700; color:#0E2038; }
+  .sign .rl{ font-size:9px; color:#6c7785; margin-top:1px; }
+  .sign .dt{ font-size:9px; color:#6c7785; margin-top:10px; }
+
+  .foot{ margin-top:18px; border-top:1px solid #ededed; padding-top:10px; font-size:8.5px; color:#9aa3ad; text-align:center; letter-spacing:.3px; }
+
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } }
+</style>
+</head>
+<body>
+<section class="sheet">
+  <div class="head">
+    <div class="mark">V</div>
+    <div>
+      <div class="co">Valvic Marcenaria</div>
+      <div class="cd">Vargas Decor Ltda &nbsp;·&nbsp; CNPJ 17.269.304/0001-51 &nbsp;·&nbsp; Belo Horizonte / MG</div>
+    </div>
+  </div>
+
+  <div class="doctype">
+    <div class="t">Advertência por Escrito</div>
+    <div class="s">Documento disciplinar — uso interno</div>
+  </div>
+
+  <div class="meta">
+    <div class="row"><div class="k">Colaborador</div><div class="v">Jomar</div></div>
+    <div class="row"><div class="k">Data</div><div class="v">26 de junho de 2026</div></div>
+    <div class="row"><div class="k">Assunto</div><div class="v">Falta de atenção na montagem de módulos — Projeto Yasmin</div></div>
+  </div>
+
+  <div class="body">
+    <p class="lead">Por meio deste documento, a <b>Valvic Marcenaria</b> registra formalmente advertência ao colaborador <b>Jomar</b>, em razão de <b>falha de atenção na montagem dos módulos da cozinha do Projeto Yasmin</b>, que resultou em <b>retrabalho e prejuízo direto à empresa</b>.</p>
+
+    <p>A montagem incorreta dos módulos, originada por descuido no processo de execução, gerou a necessidade de desmontagem parcial e correção do serviço já executado — impactando prazo de entrega e custo de mão de obra.</p>
+
+    <p>A Valvic Marcenaria preza pela <b>qualidade e atenção em cada etapa da montagem</b>, sendo a conferência do projeto antes e durante a execução responsabilidade inerente à função.</p>
+
+    <p>Esta advertência tem caráter <b>educativo e preventivo</b>. Reincidências ou erros da mesma natureza poderão acarretar medidas disciplinares mais severas, nos termos da CLT e do regulamento interno da empresa.</p>
+
+    <p>O colaborador declara estar ciente do conteúdo deste documento ao assiná-lo abaixo.</p>
+  </div>
+
+  <div class="signs">
+    <div class="sign">
+      <div class="line">
+        <div class="nm">Valvic Marcenaria</div>
+        <div class="rl">Representante da empresa</div>
+        <div class="dt">Data: ____ / ____ / 2026</div>
+      </div>
+    </div>
+    <div class="sign">
+      <div class="line">
+        <div class="nm">Jomar</div>
+        <div class="rl">Colaborador</div>
+        <div class="dt">Data: ____ / ____ / 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">Documento de uso interno · Valvic Marcenaria — Vargas Decor Ltda · Belo Horizonte / MG</div>
+</section>
+</body>
+</html>
