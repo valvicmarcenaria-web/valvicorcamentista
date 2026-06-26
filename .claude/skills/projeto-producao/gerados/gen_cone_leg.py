@@ -44,12 +44,20 @@ arc("PERIMETRO",CX,CY,Sr,math.degrees(a0),math.degrees(a1))   # arco interno (to
 for a in (a0,a1):
     p1=pol(a,Sr); p2=pol(a,SR); line("PERIMETRO",p1[0],p1[1],p2[0],p2[1])
 
-# ---- VINCOS radiais (RANHURAS), passo ~12mm no arco externo ----
+# ---- VINCOS radiais (RANHURAS) em ZIGZAG CONTÍNUO, saindo 10mm fora da peça ----
+OVER=10.0
 dang=KERF_PITCH/SR
 n=max(1,int(round(ang/dang)))
-for k in range(1,n):           # internos (não em cima das bordas)
-    a=a0+ k*(ang/n)
-    p1=pol(a,Sr); p2=pol(a,SR); line("RANHURAS",p1[0],p1[1],p2[0],p2[1])
+def P_out(a): return pol(a, SR+OVER)   # 10mm além do arco externo (base)
+def P_in(a):  return pol(a, Sr-OVER)   # 10mm além do arco interno (topo)
+zz=[]
+for k in range(n):
+    a=a0+(k+0.5)*(ang/n)               # vincos centrados (sem cair nas bordas)
+    zz += [P_out(a),P_in(a)] if k%2==0 else [P_in(a),P_out(a)]
+ents.extend(["0","POLYLINE","8","RANHURAS","66","1","70","0"])
+for px,py in zz:
+    ents.extend(["0","VERTEX","8","RANHURAS","10",f"{px:.4f}","20",f"{py:.4f}","30","0.0"])
+ents.extend(["0","SEQEND"])
 
 text("TEXTO",CX-120,CY+SR+25,26,f"PLANIFICACAO LATERAL (revestir cone) - geratriz {L:.0f}mm - {n} vincos")
 text("TEXTO",CX-120,CY+Sr-30,20,f"topo O250  ->  base O600   (vincos passo ~{KERF_PITCH:.0f}mm, pele {PELE:.0f}mm)")
@@ -76,8 +84,8 @@ ax.plot([CX+SR*math.cos(t) for t in ts],[CY+SR*math.sin(t) for t in ts],color="#
 ax.plot([CX+Sr*math.cos(t) for t in ts],[CY+Sr*math.sin(t) for t in ts],color="#1F618D",lw=2)
 for a in (a0,a1):
     ax.plot([CX+Sr*math.cos(a),CX+SR*math.cos(a)],[CY+Sr*math.sin(a),CY+SR*math.sin(a)],color="#1F618D",lw=2)
-for k in range(1,n):
-    a=a0+k*(ang/n); ax.plot([CX+Sr*math.cos(a),CX+SR*math.cos(a)],[CY+Sr*math.sin(a),CY+SR*math.sin(a)],color="#C0392B",lw=0.3)
+zx=[p[0] for p in zz]; zy=[p[1] for p in zz]
+ax.plot(zx,zy,color="#C0392B",lw=0.4)
 th=np.linspace(0,2*math.pi,80)
 ax.plot([350+r_top*math.cos(t) for t in th],[400+r_top*math.sin(t) for t in th],color="#1F618D",lw=2)
 ax.plot([1100+r_bot*math.cos(t) for t in th],[400+r_bot*math.sin(t) for t in th],color="#1F618D",lw=2)
