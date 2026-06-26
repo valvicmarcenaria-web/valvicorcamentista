@@ -52,16 +52,21 @@ def dxf_polyline(layer,x,y,w,h):
     return s
 def dxf_text(layer,x,y,h,txt):
     return ["0","TEXT","8",layer,"10",f"{x:.3f}","20",f"{y:.3f}","30","0.0","40",f"{h:.3f}","1",txt]
+OFFSET_INT=50.0   # offset interno de 5 cm (50 mm) dentro de cada peça
 def write_dxf(path,W,L,placed):
     ents=[]
     ents+=dxf_polyline("CHAPA",0,0,W,L)
     for p,x,y in placed:
         ents+=dxf_polyline("PECAS",x,y,p["w"],p["h"])
+        o=OFFSET_INT
+        if p["w"]>2*o and p["h"]>2*o:
+            ents+=dxf_polyline("OFFSET",x+o,y+o,p["w"]-2*o,p["h"]-2*o)
         ents+=dxf_text("TEXTO",x+8,y+p["h"]/2,28,f'{p["name"]} {p["w"]:.0f}x{p["h"]:.0f}')
     dxf=["0","SECTION","2","HEADER","9","$INSUNITS","70","4","0","ENDSEC",
-     "0","SECTION","2","TABLES","0","TABLE","2","LAYER","70","3",
+     "0","SECTION","2","TABLES","0","TABLE","2","LAYER","70","4",
      "0","LAYER","2","CHAPA","70","0","62","5","6","CONTINUOUS",
      "0","LAYER","2","PECAS","70","0","62","7","6","CONTINUOUS",
+     "0","LAYER","2","OFFSET","70","0","62","6","6","CONTINUOUS",
      "0","LAYER","2","TEXTO","70","0","62","3","6","CONTINUOUS",
      "0","ENDTAB","0","ENDSEC","0","SECTION","2","ENTITIES"]+ents+["0","ENDSEC","0","EOF"]
     open(path,"w").write("\n".join(dxf)+"\n")
@@ -75,6 +80,9 @@ def preview(placed,W,L,title,path):
     ax.add_patch(Rectangle((0,0),W,L,facecolor="#f7f7f7",edgecolor="#222",lw=2))
     for p,x,y in placed:
         ax.add_patch(Rectangle((x,y),p["w"],p["h"],facecolor="#AED6F1",edgecolor="#1F618D",lw=1.2))
+        o=50.0
+        if p["w"]>2*o and p["h"]>2*o:
+            ax.add_patch(Rectangle((x+o,y+o),p["w"]-2*o,p["h"]-2*o,facecolor="none",edgecolor="#C0398C",lw=1.0,ls=(0,(4,2))))
         ax.text(x+p["w"]/2,y+p["h"]/2,f'{p["name"]}\n{p["w"]:.0f}x{p["h"]:.0f}',ha="center",va="center",fontsize=8,weight="bold")
     ax.set_xlim(-30,W+30); ax.set_ylim(-30,L+30); ax.set_aspect("equal"); ax.axis("off")
     ax.set_title(title,fontsize=11,weight="bold")
