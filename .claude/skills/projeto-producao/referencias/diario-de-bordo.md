@@ -15,6 +15,7 @@ está digitando muda. Para não trocar os nomes:
 - Na dúvida sobre quem está falando num assunto de produção, assumir **Paulo**.
 
 📌 Plano da NOVA ESTRUTURA (expansão) consolidado em `projetos/Nova-estrutura.md`.
+📌 **Logo Valvic = wordmark "VALVIC" serifado** (APROVADA pelo Paulo). DXF pronto em `gerados/logo_valvic_wordmark.dxf` (contornos fechados, escalável).
 📌 Projeto **LUCAS E ANA — móvel da TV (living, em L)**: fazer COMPLETO **por partes**.
    Tudo guardado em `projetos/lucas-e-ana-living/` (README + pranchas). Construção: MDF
    15mm, fundo 6mm, frentes cortadas, parafuso oculto, tampo/base passante, gaveta
