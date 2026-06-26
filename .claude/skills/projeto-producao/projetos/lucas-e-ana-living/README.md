@@ -54,3 +54,13 @@ Proposta do Téo (confirmar c/ Paulo):
 - Espelho 109 → **2 gavetas** iguais (~52 cm/vão).
 - Construção: MDF 15 (fundo 6), **tampo+base passantes**, parafuso oculto.
 - ⏳ AGUARDANDO Paulo confirmar: prof 40 / alt 45 / nº de portas / gavetas lado-a-lado / folga 1,8.
+
+## ⏸️ STATUS (26/06) — aguardando modelo do Paulo
+- **Caixaria reta OK:** laterais, divisórias e fundos (6mm) estão certos
+  (`gerados/lucas-e-ana/balcao_caixaria_15mm_chapa2` + fundos).
+- **TAMPO e BASE: PENDENTE.** Saíram RETOS (errado) — têm que ser em **L com as curvas**
+  (cantos R39 externos, R16 interno). Minha tentativa de traçar o L ficou ERRADA
+  (geometria do contorno/curvas não bateu com a planta).
+- **Paulo vai fazer um MODELO e mandar (amanhã)** → o Téo aprende a forma certa do L
+  com esse exemplo e refaz tampo+base, depois re-nesta tudo.
+- Raio CONFIRMADO: cantos externos R39, interno R16.
