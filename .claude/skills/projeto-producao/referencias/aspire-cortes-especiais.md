@@ -178,3 +178,23 @@ e estragaria. (Vácuo M158/M162 segura as peças já soltas.)
 > **Status:** dialeto calibrado com 2 cortes passantes reais (6mm e 15mm). Falta
 > 1 exemplo de **friso/V-groove** (corte parcial em profundidade) para fechar a
 > lógica de cortes especiais e múltiplas passadas em Z.
+
+---
+
+## ⭐ Fresa de 45° (T8) — chanfro / bisel  (Paulo, 26/06)
+- **Ferramenta:** **T8 = fresa de 45°** (magazine pos. 8).
+- **Método:** desenhar uma **LINHA** e mandar a T8 **correr sobre a linha** (corte na
+  linha, sem offset).
+- **Z (profundidade) = espessura + 0,1** para o **chanfro completo** (atravessa):
+  - peça 18 mm → entra **18,1**; peça 15 mm → entra **15,1**; e assim por diante.
+- **Compensação dimensional:** cada lado chanfrado **"come" 0,3 mm**.
+  - **4 lados:** desenhar a peça **+0,6** na medida (ex.: quadrado final 50×50 → desenhar **50,6 × 50,6**).
+  - **1 lado:** **+0,3** só naquela medida (ex.: **50,3 × 50,0**).
+- **Fluxo do chanfro em 1 lado só:**
+  1. Desenha o retângulo (com +0,3 no lado a chanfrar) **+ uma linha extra** sobre esse lado.
+  2. Passa a **T8 só nessa linha** (faz o 45°).
+  3. Troca pela **T2 (fresa 6 mm)** e corta o **contorno por fora** do retângulo.
+- ⚠️ **A CONFIRMAR (discrepância):** no TAMPO redondo o Paulo disse que a 45° "come 3 mm
+  no diâmetro" (desenhar Ø303 p/ Ø300) = **1,5 mm/lado**; aqui no quadrado deu **0,3 mm/lado**.
+  Provável diferença por causa da PROFUNDIDADE do bisel (tampo = bisel fundo/grande;
+  quadrado = quebra de canto). Confirmar com o Paulo a regra por profundidade.

@@ -27,9 +27,10 @@
       "magazine_capacidade": 10,
       "ferramentas": [
         { "posicao": 2, "tipo": "fresa reta", "diametro_mm": 6, "raio_mm": 3, "uso": "contorno/corte passante", "status": "em uso" },
-        { "posicao": 7, "tipo": "fresa reta", "diametro_mm": 3, "raio_mm": 1.5, "uso": "a detalhar (cortes finos/detalhe)", "status": "em uso" }
+        { "posicao": 7, "tipo": "fresa reta", "diametro_mm": 3, "raio_mm": 1.5, "uso": "a detalhar (cortes finos/detalhe)", "status": "em uso" },
+        { "posicao": 8, "tipo": "fresa 45 graus (chanfro/bisel)", "uso": "corre SOBRE uma linha; Z = espessura+0,1 p/ chanfro completo; compensação ~0,3mm por lado chanfrado (4 lados = +0,6 na medida)", "fluxo_parcial": "chanfro em 1 lado: linha extra + T8 só nela; depois T2 corta o contorno por fora", "status": "em uso" }
       ],
-      "ferramentas_pendentes": "Magazine tem 10 ferramentas. Por ora só T2 (6mm) e T7 (3mm). As outras 8 (posições, finalidade, offsets/descontos) serão informadas depois pelo Paulo.",
+      "ferramentas_pendentes": "Magazine tem 10 ferramentas. Em uso: T2 (6mm), T7 (3mm), T8 (45°). As outras 7 (posições, finalidade, offsets/descontos) serão informadas depois pelo Paulo.",
       "obs": "Recebe o DXF do MD e o post do Aspire. Eixos: Y longo (~2800), X curto (~1900); estaciona em Y2840 X51 Z50. Z-zero na mesa deduzido de .tap reais (a confirmar). Fonte specs: raizenmachine.com.br/solidtaf."
     },
     {
