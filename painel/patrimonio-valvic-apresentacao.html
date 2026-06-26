@@ -161,7 +161,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0a1526;font-family:
   </div>
   <div class="s1-aside">
     <div class="s1-al">Ativo bruto total</div>
-    <div class="s1-av">499k</div>
+    <div class="s1-av">506k</div>
     <div class="s1-as">em equipamentos, estrutura e infraestrutura</div>
   </div>
 </div>
@@ -174,7 +174,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0a1526;font-family:
     <div class="kpi3">
       <div class="kcard g">
         <div class="kl">Ativo Bruto Total</div>
-        <div class="kn g">R$ 499.900</div>
+        <div class="kn g">R$ 506.200</div>
         <div class="kd">6 categorias · 35+ itens inventariados</div>
       </div>
       <div class="kcard r">
@@ -184,28 +184,85 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0a1526;font-family:
       </div>
       <div class="kcard b">
         <div class="kl">Patrimônio Líquido</div>
-        <div class="kn b">R$ 271.035</div>
-        <div class="kd">54,2% do ativo — capital próprio sólido</div>
+        <div class="kn b">R$ 277.335</div>
+        <div class="kd">54,8% do ativo — capital próprio sólido</div>
       </div>
     </div>
     <div class="bdwrap">
-      <div class="bdlbl">Composição do ativo — R$ 499.900</div>
+      <div class="bdlbl">Composição do ativo — R$ 506.200</div>
       <div class="bdbar">
-        <div class="bdseg" style="width:49.3%;background:#1565c0"></div>
-        <div class="bdseg" style="width:18.6%;background:#1e88e5"></div>
-        <div class="bdseg" style="width:3.6%;background:#42a5f5"></div>
-        <div class="bdseg" style="width:11%;background:#C9A255"></div>
-        <div class="bdseg" style="width:5.1%;background:#5c6bc0"></div>
-        <div class="bdseg" style="width:12.4%;background:#26a69a"></div>
+        <div class="bdseg" style="width:48.7%;background:#1565c0"></div>
+        <div class="bdseg" style="width:19.2%;background:#1e88e5"></div>
+        <div class="bdseg" style="width:3.5%;background:#42a5f5"></div>
+        <div class="bdseg" style="width:10.9%;background:#C9A255"></div>
+        <div class="bdseg" style="width:5.5%;background:#5c6bc0"></div>
+        <div class="bdseg" style="width:12.2%;background:#26a69a"></div>
       </div>
       <div class="bdleg">
-        <div class="bdli"><div class="bddot" style="background:#1565c0"></div>Maquinário Industrial R$246.500 (49,3%)</div>
-        <div class="bdli"><div class="bddot" style="background:#1e88e5"></div>Ferramentas e Equipamentos R$93.100 (18,6%)</div>
-        <div class="bdli"><div class="bddot" style="background:#42a5f5"></div>Infraestrutura Galpão R$17.800 (3,6%)</div>
-        <div class="bdli"><div class="bddot" style="background:#C9A255"></div>Logística / Veículos R$55.000 (11,0%)</div>
-        <div class="bdli"><div class="bddot" style="background:#5c6bc0"></div>TI e Informática R$25.500 (5,1%)</div>
-        <div class="bdli"><div class="bddot" style="background:#26a69a"></div>Escritório e Benfeitorias R$62.000 (12,4%)</div>
+        <div class="bdli"><div class="bddot" style="background:#1565c0"></div>Maquinário Industrial R$246.500 (48,7%)</div>
+        <div class="bdli"><div class="bddot" style="background:#1e88e5"></div>Ferramentas e Equipamentos R$97.100 (19,2%)</div>
+        <div class="bdli"><div class="bddot" style="background:#42a5f5"></div>Infraestrutura Galpão R$17.800 (3,5%)</div>
+        <div class="bdli"><div class="bddot" style="background:#C9A255"></div>Logística / Veículos R$55.000 (10,9%)</div>
+        <div class="bdli"><div class="bddot" style="background:#5c6bc0"></div>TI e Informática R$27.800 (5,5%)</div>
+        <div class="bdli"><div class="bddot" style="background:#26a69a"></div>Escritório e Benfeitorias R$62.000 (12,2%)</div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CRESCIMENTO HISTÓRICO ═══════════════════ -->
+<div class="sl" id="sgrow" style="background:linear-gradient(160deg,#0d1e38 0%,#091522 100%)">
+  <div class="inner">
+    <div class="tag">Trajetória</div>
+    <div class="h1">Crescimento Ano a Ano</div>
+    <div class="sub" style="margin-bottom:32px">Evolução da receita bruta — Valvic Marcenaria</div>
+
+    <div id="grow-chart" style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:0">
+      <!-- linhas do gráfico de barras horizontais -->
+    </div>
+
+    <style>
+      .gbar-row{display:grid;grid-template-columns:56px 1fr 80px;align-items:center;gap:14px;margin-bottom:14px}
+      .gbar-year{font-size:11px;font-weight:700;color:rgba(255,255,255,.45);letter-spacing:1px;text-align:right}
+      .gbar-track{height:32px;background:rgba(255,255,255,.06);border-radius:6px;overflow:hidden;position:relative}
+      .gbar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:12px;font-size:12px;font-weight:700;color:#fff;transition:width .6s ease}
+      .gbar-val{font-size:13px;font-weight:700;color:rgba(255,255,255,.75);font-variant-numeric:tabular-nums;text-align:right}
+      .gbar-val.pnd{color:rgba(255,255,255,.28);font-style:italic;font-size:11px}
+      .grow-note{margin-top:20px;font-size:9.5px;color:rgba(255,255,255,.28);line-height:1.8;border-top:1px solid rgba(255,255,255,.07);padding-top:14px}
+      .grow-note strong{color:rgba(255,255,255,.45)}
+    </style>
+
+    <div>
+      <!-- Preencher com os valores reais de cada ano -->
+      <div class="gbar-row">
+        <div class="gbar-year">2022</div>
+        <div class="gbar-track"><div class="gbar-fill" style="width:VAR%;background:linear-gradient(90deg,#1565c0,#1e88e5)">—</div></div>
+        <div class="gbar-val pnd">a confirmar</div>
+      </div>
+      <div class="gbar-row">
+        <div class="gbar-year">2023</div>
+        <div class="gbar-track"><div class="gbar-fill" style="width:VAR%;background:linear-gradient(90deg,#1565c0,#1e88e5)">—</div></div>
+        <div class="gbar-val pnd">a confirmar</div>
+      </div>
+      <div class="gbar-row">
+        <div class="gbar-year">2024</div>
+        <div class="gbar-track"><div class="gbar-fill" style="width:VAR%;background:linear-gradient(90deg,#1565c0,#1e88e5)">—</div></div>
+        <div class="gbar-val pnd">a confirmar</div>
+      </div>
+      <div class="gbar-row">
+        <div class="gbar-year">2025</div>
+        <div class="gbar-track"><div class="gbar-fill" style="width:VAR%;background:linear-gradient(90deg,#1565c0,#1e88e5)">—</div></div>
+        <div class="gbar-val pnd">a confirmar</div>
+      </div>
+      <div class="gbar-row">
+        <div class="gbar-year" style="color:#C9A255">2026</div>
+        <div class="gbar-track"><div class="gbar-fill" style="width:VAR%;background:linear-gradient(90deg,#9a7830,#C9A255)">—</div></div>
+        <div class="gbar-val pnd">projeção</div>
+      </div>
+    </div>
+
+    <div class="grow-note">
+      <strong>Nota:</strong> Slide aguarda os valores de receita bruta por ano para ser finalizado. Assim que você confirmar os números (2022–2026), as barras são preenchidas com os percentuais e valores reais.
     </div>
   </div>
 </div>
@@ -291,12 +348,12 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0a1526;font-family:
         <tr><td class="id">F05</td><td>Secador de ar</td><td class="sm">—</td><td class="r">4.000</td></tr>
         <tr><td class="id">F06</td><td>Compressores de ar</td><td class="sm">—</td><td class="r">11.000</td></tr>
         <tr><td class="id">F07</td><td>Furador de bancada</td><td class="sm">—</td><td class="r">1.300</td></tr>
-        <tr><td class="id">F08</td><td>Sistema pneumático</td><td class="sm">Valor aproximado</td><td class="r">3.000</td></tr>
+        <tr><td class="id">F08</td><td>Sistema pneumático</td><td class="sm">—</td><td class="r">7.000</td></tr>
         <tr><td class="id">F09</td><td>Fresas variadas + pinças</td><td class="sm">—</td><td class="r">8.000</td></tr>
         <tr><td class="id">F10</td><td>Ferramentas manuais de pequeno porte</td><td class="sm">Parafusadeiras, furadeiras, tico-tico etc. — diversas marcas</td><td class="r">40.000</td></tr>
         <tr class="stot">
           <td colspan="3"><strong>Subtotal — Ferramentas e Equipamentos</strong></td>
-          <td class="r"><strong>93.100</strong></td>
+          <td class="r"><strong>97.100</strong></td>
         </tr>
       </tbody>
     </table>
@@ -323,7 +380,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0a1526;font-family:
         <tr class="gcap"><td colspan="4">TI e Informática</td></tr>
         <tr><td class="id">T01</td><td>Computador produção</td><td class="sm">—</td><td class="r">2.000</td></tr>
         <tr><td class="id">T02</td><td>Tablet produção</td><td class="sm">—</td><td class="r">1.000</td></tr>
-        <tr><td class="id">T03</td><td>Mac escritório</td><td class="sm">Apple 2011 · valor de mercado atual</td><td class="r">500</td></tr>
+        <tr><td class="id">T03</td><td>iMac escritório</td><td class="sm">Apple 2015</td><td class="r">2.800</td></tr>
         <tr><td class="id">T04</td><td>iPad Pro</td><td class="sm">Apple</td><td class="r">5.000</td></tr>
         <tr><td class="id">T05</td><td>Notebook programação</td><td class="sm">—</td><td class="r">7.000</td></tr>
         <tr><td class="id">T06</td><td>Desktop programação</td><td class="sm">—</td><td class="r">3.700</td></tr>
@@ -332,8 +389,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0a1526;font-family:
         <tr class="gcap"><td colspan="4">Escritório e Benfeitorias</td></tr>
         <tr><td class="id">E01</td><td>Ambientes de escritório — mobiliário e benfeitorias</td><td class="sm">Escritório de baixo R$40k + sala de programação R$20k + cozinha R$2k</td><td class="r">62.000</td></tr>
         <tr class="stot">
-          <td colspan="3"><strong>Subtotal — Galpão R$17.800 · TI R$25.500 · Escritório R$62.000</strong></td>
-          <td class="r"><strong>105.300</strong></td>
+          <td colspan="3"><strong>Subtotal — Galpão R$17.800 · TI R$27.800 · Escritório R$62.000</strong></td>
+          <td class="r"><strong>107.600</strong></td>
         </tr>
       </tbody>
     </table>
@@ -359,7 +416,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0a1526;font-family:
           </td>
           <td class="sm">Ano 2019/2020 · Placa QUY4166 · Renavam 1208242803</td>
           <td class="r"><strong>55.000</strong></td>
-          <td><span class="bx bx-att">Atenção</span></td>
+          <td><span class="bx bx-fin">Financ.</span></td>
         </tr>
         <tr class="stot">
           <td colspan="3"><strong>Subtotal — Logística / Veículos</strong></td>
@@ -431,7 +488,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0a1526;font-family:
       </div>
       <div class="dsi">
         <div class="dsil">Alavancagem s/ Ativo</div>
-        <div class="dsiv" style="color:#ffcc80">45,8%</div>
+        <div class="dsiv" style="color:#ffcc80">45,2%</div>
       </div>
       <div class="dsi">
         <div class="dsil">RAIZEN quitação</div>
@@ -450,14 +507,14 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0a1526;font-family:
       <div>
         <div class="bar"></div>
         <div class="fi"><div class="fil">Maquinário Industrial</div><div class="fiv g">R$ 246.500</div></div>
-        <div class="fi"><div class="fil">Ferramentas e Equipamentos</div><div class="fiv g">R$ 93.100</div></div>
+        <div class="fi"><div class="fil">Ferramentas e Equipamentos</div><div class="fiv g">R$ 97.100</div></div>
         <div class="fi"><div class="fil">Infraestrutura do Galpão</div><div class="fiv g">R$ 17.800</div></div>
         <div class="fi"><div class="fil">Logística / Veículos</div><div class="fiv o">R$ 55.000</div></div>
-        <div class="fi"><div class="fil">TI e Informática</div><div class="fiv g">R$ 25.500</div></div>
+        <div class="fi"><div class="fil">TI e Informática</div><div class="fiv g">R$ 27.800</div></div>
         <div class="fi"><div class="fil">Escritório e Benfeitorias</div><div class="fiv g">R$ 62.000</div></div>
         <div class="fi" style="border-bottom:none">
           <div class="fil" style="font-weight:700;color:rgba(255,255,255,.8)">Total Ativo Bruto</div>
-          <div class="fiv g" style="font-size:21px">R$ 499.900</div>
+          <div class="fiv g" style="font-size:21px">R$ 506.200</div>
         </div>
         <div class="fi" style="border-top:1px solid rgba(255,255,255,.12);margin-top:6px;padding-top:14px">
           <div class="fil" style="color:#ef9a9a">Total Passivo</div>
@@ -466,19 +523,19 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0a1526;font-family:
         <div class="fnet">
           <div>
             <div class="fnl">Patrimônio Líquido</div>
-            <div class="fns">54,2% do ativo · capital próprio</div>
+            <div class="fns">54,8% do ativo · capital próprio</div>
           </div>
-          <div class="fnv">R$ 271.035</div>
+          <div class="fnv">R$ 277.335</div>
         </div>
       </div>
       <div>
         <div style="font-size:9px;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.3);margin-bottom:14px">Distribuição do ativo</div>
         <div class="pcwrap">
           <div class="pci"><div class="pcl">Maquinário Industrial</div><div class="pcb"><div class="pcf" style="width:49.3%;background:#1565c0"></div></div><div class="pcv">R$ 246.500</div></div>
-          <div class="pci"><div class="pcl">Ferramentas</div><div class="pcb"><div class="pcf" style="width:18.6%;background:#1e88e5"></div></div><div class="pcv">R$ 93.100</div></div>
+          <div class="pci"><div class="pcl">Ferramentas</div><div class="pcb"><div class="pcf" style="width:19.2%;background:#1e88e5"></div></div><div class="pcv">R$ 97.100</div></div>
           <div class="pci"><div class="pcl">Escritório e Benfeitorias</div><div class="pcb"><div class="pcf" style="width:12.4%;background:#26a69a"></div></div><div class="pcv">R$ 62.000</div></div>
           <div class="pci"><div class="pcl">Logística / Veículos</div><div class="pcb"><div class="pcf" style="width:11%;background:#C9A255"></div></div><div class="pcv">R$ 55.000</div></div>
-          <div class="pci"><div class="pcl">TI e Informática</div><div class="pcb"><div class="pcf" style="width:5.1%;background:#5c6bc0"></div></div><div class="pcv">R$ 25.500</div></div>
+          <div class="pci"><div class="pcl">TI e Informática</div><div class="pcb"><div class="pcf" style="width:5.5%;background:#5c6bc0"></div></div><div class="pcv">R$ 27.800</div></div>
           <div class="pci"><div class="pcl">Infraestrutura Galpão</div><div class="pcb"><div class="pcf" style="width:3.6%;background:#42a5f5"></div></div><div class="pcv">R$ 17.800</div></div>
         </div>
         <div class="note-sm">
