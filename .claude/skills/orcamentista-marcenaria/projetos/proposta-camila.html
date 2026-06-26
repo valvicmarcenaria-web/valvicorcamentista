@@ -2,93 +2,69 @@
 <html lang="pt-BR"><head><meta charset="utf-8">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;700&display=swap');
-:root{
-  --gold:#C8901E; --gold-soft:#D9B25A; --gold-deep:#9C6B12;
-  --ink:#1A1A1A; --ink-soft:#4a463f; --cream:#FDF6E3; --cream-2:#F6ECD3; --line:#E4D8B8;
-}
-@page{ size:A4; margin:0; }
-*{ box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-body{ margin:0; font-family:'DM Sans','Liberation Sans',Arial,sans-serif; color:var(--ink); font-size:10.5pt; line-height:1.62; }
-.serif{ font-family:'Cormorant Garamond','Georgia',serif; }
-.page{ position:relative; width:210mm; min-height:297mm; padding:16mm 18mm; page-break-after:always; overflow:hidden; background:#fff; }
-.page:last-child{ page-break-after:auto; }
-h1,h2,h3{ margin:0; font-weight:600; }
-p{ margin:8px 0; }
-.eyebrow{ letter-spacing:.32em; text-transform:uppercase; font-size:8pt; font-weight:700; color:var(--gold-deep); }
-.rule{ height:2px; width:54px; background:var(--gold); border:0; margin:14px 0; }
-
-/* COVER */
-.cover{ padding:0; background:var(--cream); }
-.cover .frame{ position:absolute; inset:9mm; border:1px solid var(--gold-soft); }
-.cover .inner{ position:relative; padding:22mm 20mm; height:297mm; display:flex; flex-direction:column; }
-.brand{ font-family:'Cormorant Garamond',serif; font-size:30pt; font-weight:700; letter-spacing:.18em; color:var(--ink); }
-.brand .dot{ color:var(--gold); }
-.brand-sub{ letter-spacing:.5em; font-size:8pt; font-weight:700; color:var(--gold-deep); margin-top:2px; }
-.cover .hero{ margin:13mm 0 11mm; height:86mm; border-radius:3px; position:relative; background:#7d5a2b; box-shadow:0 10px 28px rgba(80,55,20,.30); overflow:hidden; }
-.hero .wall{ position:absolute; inset:0; background:#8a6634; }
-.hero .closet{ position:absolute; left:7mm; right:7mm; top:7mm; bottom:30mm; display:flex; gap:2mm; }
-.hero .closet i{ flex:1; background:#a17b41; border:1mm solid #6f5128; }
-.hero .closet i:nth-child(even){ background:#9c7637; }
-.hero .closet i.rip{ background:repeating-linear-gradient(90deg,#7a5320,#7a5320 1.4mm,#9c7637 1.4mm,#9c7637 3mm); }
-.hero .led{ position:absolute; left:7mm; right:7mm; top:9mm; height:2mm;
-  background:linear-gradient(90deg, rgba(255,240,200,0), #FFF4D6 18%, #FFF4D6 82%, rgba(255,240,200,0)); box-shadow:0 0 8mm 1.5mm rgba(255,236,180,.55); }
-.hero .island{ position:absolute; left:30mm; right:30mm; bottom:8mm; height:20mm; background:#b88f51; border:1mm solid #5e451f; }
-.hero .island b{ position:absolute; left:0; right:0; top:0; height:3mm; background:rgba(220,240,255,.45); border-bottom:.5mm solid rgba(255,255,255,.4); display:block; }
-.hero .island i{ position:absolute; left:6mm; right:6mm; height:.6mm; background:rgba(40,25,6,.5); }
-.hero .island i:nth-child(2){ top:9mm; } .hero .island i:nth-child(3){ top:13mm; } .hero .island i:nth-child(4){ top:17mm; }
-.cover .hero .cap{ position:absolute; left:9mm; bottom:3mm; color:#fff; font-size:8pt; letter-spacing:.24em; text-transform:uppercase; opacity:.92; }
-.cover .for{ letter-spacing:.34em; text-transform:uppercase; font-size:9pt; font-weight:700; color:var(--gold-deep); }
-.cover .client{ font-family:'Cormorant Garamond',serif; font-size:38pt; font-weight:700; line-height:1.05; margin:5px 0 4px; color:var(--ink); }
-.cover .proj{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15pt; color:var(--ink-soft); }
-.cover .foot{ margin-top:auto; display:flex; justify-content:space-between; align-items:flex-end; font-size:8.5pt; color:var(--ink-soft); letter-spacing:.06em; }
-.sparkles{ font-size:13pt; color:var(--gold); letter-spacing:.4em; }
-
-/* SECTIONS */
-.section-h{ font-family:'Cormorant Garamond',serif; font-size:23pt; font-weight:700; color:var(--ink); line-height:1.1; margin-top:4px; }
-.lead{ font-family:'Cormorant Garamond',serif; font-size:13.5pt; font-style:italic; color:var(--ink-soft); line-height:1.5; }
-.band{ background:var(--ink); color:var(--cream); border-radius:4px; padding:7mm 9mm; margin:8mm 0; }
-.band .serif{ color:#fff; }
-.cards{ display:flex; flex-wrap:wrap; gap:6mm; margin-top:7mm; }
-.card{ width:calc(50% - 3mm); background:var(--cream); border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:3px; padding:5mm 5.5mm; }
-.card .k{ font-family:'Cormorant Garamond',serif; font-size:13.5pt; font-weight:600; color:var(--ink); }
-.card .v{ font-size:9.3pt; color:var(--ink-soft); margin-top:3px; }
-table{ width:100%; border-collapse:collapse; margin:6mm 0; font-size:10pt; }
-th,td{ padding:3mm 4mm; text-align:left; border-bottom:1px solid var(--line); }
-thead th{ background:var(--ink); color:var(--cream); font-size:8pt; letter-spacing:.16em; text-transform:uppercase; font-weight:700; border:0; }
-td.r,th.r{ text-align:right; }
-.amb-name{ font-family:'Cormorant Garamond',serif; font-size:13pt; font-weight:600; }
-.grand td{ background:var(--gold); color:#1a1a1a; font-weight:700; font-size:12pt; border:0; }
-.grand .serif{ font-size:14pt; }
-.terms{ display:flex; gap:5mm; margin-top:6mm; flex-wrap:wrap; }
-.term{ flex:1; min-width:38mm; background:var(--cream); border:1px solid var(--line); border-radius:3px; padding:4.5mm; text-align:center; }
-.term .t{ font-size:7.6pt; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-deep); font-weight:700; }
-.term .b{ font-family:'Cormorant Garamond',serif; font-size:15pt; font-weight:700; margin-top:3px; }
-.seal{ display:inline-flex; align-items:center; gap:3mm; background:var(--ink); color:var(--cream); border-radius:40px; padding:3mm 7mm; font-weight:700; }
-.seal .yrs{ font-family:'Cormorant Garamond',serif; font-size:17pt; color:var(--gold-soft); }
-.vers{ display:flex; gap:6mm; margin-top:6mm; }
-.ver{ flex:1; border:1px solid var(--line); border-radius:5px; overflow:hidden; }
-.ver .hd{ padding:5mm 5.5mm 4mm; }
-.ver.full .hd{ background:var(--ink); color:var(--cream); }
-.ver.ess .hd{ background:var(--cream-2); color:var(--ink); }
-.ver .nm{ font-family:'Cormorant Garamond',serif; font-size:17pt; font-weight:700; }
-.ver.full .nm{ color:#fff; }
-.ver .pr{ font-family:'Cormorant Garamond',serif; font-size:23pt; font-weight:700; margin-top:1mm; }
-.ver.full .pr{ color:var(--gold-soft); } .ver.ess .pr{ color:var(--gold-deep); }
-.ver .tagln{ font-size:8.4pt; line-height:1.35; opacity:.92; margin-top:1.5mm; }
-.ver .bd{ padding:4.5mm 5.5mm; } .ver .bd ul{ margin:0; padding-left:5mm; }
-.ver .bd li{ font-size:9.2pt; color:var(--ink-soft); margin:1.8mm 0; }
-.ver .war{ margin-top:3mm; font-size:8pt; letter-spacing:.04em; color:var(--gold-deep); font-weight:700; }
-.ver .brk{ display:flex; justify-content:space-between; align-items:baseline; font-size:9.2pt; color:var(--ink-soft); padding:1.7mm 0; border-bottom:1px dotted var(--line); }
-.ver .brk b{ font-family:'Cormorant Garamond',serif; font-size:12pt; color:var(--ink); }
-.ver .brk small{ color:#8a8170; font-size:7.6pt; }
-.pay{ margin:3mm 0 0; } .pay li{ margin:2.4mm 0; font-size:9.6pt; }
-.scope{ display:flex; gap:6mm; margin-top:5mm; } .scope > div{ flex:1; }
-.scope h3{ font-size:8pt; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:3mm; }
-.scope ul{ margin:0; padding-left:5mm; font-size:9.2pt; color:var(--ink-soft); } .scope li{ margin:2mm 0; }
-.close{ background:var(--ink); color:var(--cream); border-radius:5px; padding:9mm; margin-top:8mm; }
-.close .serif{ color:#fff; font-size:16pt; } .close p{ color:#e9e1cd; }
-.pfoot{ position:absolute; left:18mm; right:18mm; bottom:11mm; display:flex; justify-content:space-between; font-size:7.6pt; color:#9a9080; letter-spacing:.12em; border-top:1px solid var(--line); padding-top:3mm; }
-.brandline{ font-family:'Cormorant Garamond',serif; font-weight:700; letter-spacing:.12em; } .brandline .dot{ color:var(--gold); }
+:root{--gold:#C8901E;--gold-soft:#D9B25A;--gold-deep:#9C6B12;--ink:#1A1A1A;--ink-soft:#4a463f;--cream:#FDF6E3;--cream-2:#F6ECD3;--line:#E4D8B8;}
+@page{size:A4;margin:0;}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;color:var(--ink);font-size:10.5pt;line-height:1.62;}
+.serif{font-family:'Cormorant Garamond','Georgia',serif;}
+.page{position:relative;width:210mm;min-height:297mm;padding:16mm 18mm;page-break-after:always;overflow:hidden;background:#fff;}
+.page:last-child{page-break-after:auto;}
+h1,h2,h3{margin:0;font-weight:600;}
+p{margin:8px 0;}
+.eyebrow{letter-spacing:.32em;text-transform:uppercase;font-size:8pt;font-weight:700;color:var(--gold-deep);}
+.rule{height:2px;width:54px;background:var(--gold);border:0;margin:14px 0;}
+.cover{padding:0;background:var(--cream);}
+.cover .frame{position:absolute;inset:9mm;border:1px solid var(--gold-soft);}
+.cover .inner{position:relative;padding:22mm 20mm;height:297mm;display:flex;flex-direction:column;}
+.brand{font-family:'Cormorant Garamond',serif;font-size:30pt;font-weight:700;letter-spacing:.18em;color:var(--ink);}
+.brand .dot{color:var(--gold);}
+.brand-sub{letter-spacing:.5em;font-size:8pt;font-weight:700;color:var(--gold-deep);margin-top:2px;}
+.cover .hero{margin:13mm 0 11mm;height:86mm;border-radius:3px;position:relative;background:#7d5a2b;box-shadow:0 10px 28px rgba(80,55,20,.30);overflow:hidden;}
+.hero .wall{position:absolute;inset:0;background:#8a6634;}
+.hero .closet{position:absolute;left:7mm;right:46mm;top:7mm;bottom:7mm;display:flex;gap:2mm;}
+.hero .closet i{flex:1;background:#a17b41;border:1mm solid #6f5128;}
+.hero .closet i:nth-child(even){background:#9c7637;}
+.hero .closet i.us{background:repeating-linear-gradient(90deg,#7a5320,#7a5320 1.1mm,#a37d42 1.1mm,#a37d42 4mm);}
+.hero .gray{background:#8d8c8a !important;}
+.hero .island{position:absolute;right:7mm;top:34mm;width:33mm;bottom:9mm;background:#b88f51;border:1mm solid #5e451f;}
+.hero .island b{position:absolute;left:0;right:0;top:0;height:3mm;background:rgba(220,240,255,.45);border-bottom:.5mm solid rgba(255,255,255,.4);display:block;}
+.hero .island i{position:absolute;left:5mm;right:5mm;height:.6mm;background:rgba(40,25,6,.5);}
+.hero .island i:nth-child(2){top:10mm;}.hero .island i:nth-child(3){top:15mm;}.hero .island i:nth-child(4){top:20mm;}
+.cover .hero .cap{position:absolute;left:9mm;bottom:3mm;color:#fff;font-size:8pt;letter-spacing:.24em;text-transform:uppercase;opacity:.92;}
+.cover .for{letter-spacing:.34em;text-transform:uppercase;font-size:9pt;font-weight:700;color:var(--gold-deep);}
+.cover .client{font-family:'Cormorant Garamond',serif;font-size:38pt;font-weight:700;line-height:1.05;margin:5px 0 4px;color:var(--ink);}
+.cover .proj{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15pt;color:var(--ink-soft);}
+.cover .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;font-size:8.5pt;color:var(--ink-soft);letter-spacing:.06em;}
+.sparkles{font-size:13pt;color:var(--gold);letter-spacing:.4em;}
+.section-h{font-family:'Cormorant Garamond',serif;font-size:23pt;font-weight:700;color:var(--ink);line-height:1.1;margin-top:4px;}
+.lead{font-family:'Cormorant Garamond',serif;font-size:13.5pt;font-style:italic;color:var(--ink-soft);line-height:1.5;}
+.band{background:var(--ink);color:var(--cream);border-radius:4px;padding:7mm 9mm;margin:8mm 0;}
+.band .serif{color:#fff;}
+.cards{display:flex;flex-wrap:wrap;gap:6mm;margin-top:7mm;}
+.card{width:calc(50% - 3mm);background:var(--cream);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:3px;padding:5mm 5.5mm;}
+.card .k{font-family:'Cormorant Garamond',serif;font-size:13.5pt;font-weight:600;color:var(--ink);}
+.card .v{font-size:9.3pt;color:var(--ink-soft);margin-top:3px;}
+table{width:100%;border-collapse:collapse;margin:6mm 0;font-size:10pt;}
+th,td{padding:3mm 4mm;text-align:left;border-bottom:1px solid var(--line);}
+thead th{background:var(--ink);color:var(--cream);font-size:8pt;letter-spacing:.16em;text-transform:uppercase;font-weight:700;border:0;}
+td.r,th.r{text-align:right;}
+.amb-name{font-family:'Cormorant Garamond',serif;font-size:13pt;font-weight:600;}
+.grand td{background:var(--gold);color:#1a1a1a;font-weight:700;font-size:12pt;border:0;}
+.grand .serif{font-size:14pt;}
+.terms{display:flex;gap:5mm;margin-top:6mm;flex-wrap:wrap;}
+.term{flex:1;min-width:38mm;background:var(--cream);border:1px solid var(--line);border-radius:3px;padding:4.5mm;text-align:center;}
+.term .t{font-size:7.6pt;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;}
+.term .b{font-family:'Cormorant Garamond',serif;font-size:15pt;font-weight:700;margin-top:3px;}
+.seal{display:inline-flex;align-items:center;gap:3mm;background:var(--ink);color:var(--cream);border-radius:40px;padding:3mm 7mm;font-weight:700;}
+.seal .yrs{font-family:'Cormorant Garamond',serif;font-size:17pt;color:var(--gold-soft);}
+.pay{margin:3mm 0 0;}.pay li{margin:2.4mm 0;font-size:9.6pt;}
+.scope{display:flex;gap:6mm;margin-top:5mm;}.scope>div{flex:1;}
+.scope h3{font-size:8pt;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:3mm;}
+.scope ul{margin:0;padding-left:5mm;font-size:9.2pt;color:var(--ink-soft);}.scope li{margin:2mm 0;}
+.close{background:var(--ink);color:var(--cream);border-radius:5px;padding:9mm;margin-top:8mm;}
+.close .serif{color:#fff;font-size:16pt;}.close p{color:#e9e1cd;}
+.pfoot{position:absolute;left:18mm;right:18mm;bottom:11mm;display:flex;justify-content:space-between;font-size:7.6pt;color:#9a9080;letter-spacing:.12em;border-top:1px solid var(--line);padding-top:3mm;}
+.brandline{font-family:'Cormorant Garamond',serif;font-weight:700;letter-spacing:.12em;}.brandline .dot{color:var(--gold);}
 </style></head>
 <body>
 
@@ -99,10 +75,9 @@ td.r,th.r{ text-align:right; }
     <div><div class="brand">valvic<span class="dot">.</span></div><div class="brand-sub">MARCENARIA</div></div>
     <div class="hero">
       <div class="wall"></div>
-      <div class="led"></div>
-      <div class="closet"><i></i><i class="rip"></i><i></i><i></i><i class="rip"></i><i></i></div>
+      <div class="closet"><i class="us"></i><i></i><i class="us"></i><i class="gray"></i><i class="gray"></i></div>
       <div class="island"><b></b><i></i><i></i><i></i></div>
-      <div class="cap">Roupeiro em L · painel ripado · ilha com tampo de vidro</div>
+      <div class="cap">Roupeiro em L piso-teto · usinado em Cumaru · ilha com tampo de vidro</div>
     </div>
     <div class="sparkles">✦ ✦ ✦</div>
     <div class="for">Proposta especial para</div>
@@ -122,15 +97,15 @@ td.r,th.r{ text-align:right; }
   <hr class="rule">
   <p class="lead">É onde o dia começa e termina. Um closet bem executado transforma o vestir num ritual — tudo visível, tudo à mão, cada peça com o seu lugar.</p>
 
-  <p>O seu projeto desenha um <b>roupeiro em L</b> que abraça o canto e aproveita cada centímetro até o teto, em painel ripado <b>Cumaru</b> e portas em cinza sobre o interior claro. No centro, uma <b>ilha</b> com tampo de vidro e gaveta especial — a peça que dá ao ambiente cara de boutique. A <b>Valvic</b> existe para <b>executar esse desenho com a precisão que ele exige</b> — porque um roupeiro em L só fica perfeito quando os dois braços encontram a quina sem desalinhar, cada porta corre ou bascula com suavidade, e a ilha se sustenta firme, sem coluna no meio atrapalhando.</p>
+  <p>O seu projeto desenha um <b>roupeiro em L do piso ao teto</b>, em duas cores — <b>cinza</b> e o amadeirado <b>Cumaru usinado</b> — num diálogo quente e sóbrio. As portas grandes correm leves; nas duas menores da quina, o giro. No centro, uma <b>ilha</b> com tampo de vidro — a peça que dá ao ambiente cara de boutique. A <b>Valvic</b> existe para <b>executar esse desenho com a precisão que ele exige</b> — porque um roupeiro em L do chão ao teto só fica perfeito quando os dois braços encontram a quina sem desalinhar, as portas correm suaves por anos e o friso usinado corre reto, idêntico, painel a painel.</p>
 
   <div class="band">
     <div class="eyebrow" style="color:var(--gold-soft)">O que estamos propondo</div>
-    <h2 class="serif" style="font-size:19pt; margin-top:3px;">Não vendemos o projeto. Vendemos a sua execução impecável.</h2>
-    <p style="color:#e9e1cd; margin-top:6px;">O closet sob medida — roupeiro em L (com o módulo superior à sua escolha) e ilha central com estrutura metálica, tampo de vidro e gaveta especial — com ferragens premium, iluminação embutida e instalação por equipe própria, com acabamento de obra fina.</p>
+    <h2 class="serif" style="font-size:19pt;margin-top:3px;">Não vendemos o projeto. Vendemos a sua execução impecável.</h2>
+    <p style="color:#e9e1cd;margin-top:6px;">O closet sob medida — roupeiro em L piso-teto (portas de correr + duas de giro) e ilha central com estrutura metálica e tampo de vidro — com ferragens premium, acabamento usinado, iluminação embutida e instalação por equipe própria, com acabamento de obra fina.</p>
   </div>
 
-  <p>Cada peça sai do nosso galpão usinada em <b>CNC</b>, com bordas em <b>coladeira automática</b> e montagem conferida. É o que garante que a porta corra leve e alinhada, a gaveta feche sozinha em silêncio e a ilha receba o tampo de vidro no esquadro exato.</p>
+  <p>Cada peça sai do nosso galpão usinada em <b>CNC</b>, com bordas em <b>coladeira automática</b> e montagem conferida. É o que garante que o friso fique reto, a porta corra leve e a ilha receba o tampo de vidro no esquadro exato.</p>
 
   <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Camila · Closet · 2026</span></div>
 </div>
@@ -143,22 +118,22 @@ td.r,th.r{ text-align:right; }
   <p>Cada item abaixo é uma decisão de execução — não de catálogo. É o que separa um closet que alinha e dura de um que empena, descola e desregula em poucos meses.</p>
 
   <div class="cards">
-    <div class="card"><div class="k">Módulo superior à sua escolha</div>
-      <div class="v">Portas de correr ripadas em Cumaru (como no projeto) ou básculas que abrem para cima com pistão amortecido — duas formas de executar, detalhadas no investimento.</div></div>
-    <div class="card"><div class="k">Portas de correr leves</div>
-      <div class="v">Sistema deslizante (Rometal) com desempenadores anti-empeno: as portas correm leves por anos, sem sair do prumo nem raspar.</div></div>
+    <div class="card"><div class="k">Portas do piso ao teto</div>
+      <div class="v">Sem faixa superior: as portas vão do chão ao teto, num visual contínuo e amplo. Exige prumo e modulação perfeitos — é onde a execução aparece.</div></div>
+    <div class="card"><div class="k">Sistema de correr RO-65 (Rometal)</div>
+      <div class="v">As portas grandes correm leves em dois planos que se cruzam (transpasso), com sustentação na base e 60 kg de capacidade. Deslizam por anos sem desalinhar.</div></div>
+    <div class="card"><div class="k">Duas portas de giro</div>
+      <div class="v">Na quina do L, as duas portas menores em cinza abrem em giro, com dobradiça premium de fechamento suave.</div></div>
+    <div class="card"><div class="k">Usinagem em Cumaru</div>
+      <div class="v">A textura do amadeirado é feita por <b>friso usinado na CNC</b> — corte preciso, repetido idêntico em todos os painéis, sem emendas. Acabamento de máquina.</div></div>
+    <div class="card"><div class="k">Duas cores em diálogo</div>
+      <div class="v">Cinza e o amadeirado Cumaru: contraste sóbrio, modulação calculada para os dois conversarem ao longo de todo o L.</div></div>
     <div class="card"><div class="k">Gavetas com corrediça oculta Hardt</div>
-      <div class="v">Deslizam em silêncio e fecham sozinhas (soft-close), com a lateral limpa — ferragem premium. A base da garantia de 5 anos.</div></div>
-    <div class="card"><div class="k">Painel ripado em Cumaru</div>
-      <div class="v">Ritmo e calor da madeira, com réguas usinadas e laminadas uma a uma — o tipo de acabamento que exige rigor de fábrica para ficar perfeito.</div></div>
-    <div class="card"><div class="k">Ilha com estrutura de serralheria</div>
-      <div class="v">Base metálica sob medida que sustenta a ilha firme, sem coluna no meio — engenharia de marcenaria que a maioria não encara.</div></div>
-    <div class="card"><div class="k">Tampo de vidro + gaveta especial</div>
-      <div class="v">Tampo em vidro temperado para exibir, e gaveta especial com divisórias e puxador Traço Enlevo em metal e couro legítimo — a joia do closet.</div></div>
-    <div class="card"><div class="k">Iluminação LED embutida</div>
-      <div class="v">Recuo usinado para a fita de LED com perfil e difusor — luz uniforme para enxergar as cores certas e valorizar o conjunto.</div></div>
-    <div class="card"><div class="k">Bordas e estrutura</div>
-      <div class="v">Faces aparentes com fita de borda na cor, em coladeira automática — acabamento sem emenda à vista. Prateleiras dimensionadas para não arquear.</div></div>
+      <div class="v">Deslizam em silêncio e fecham sozinhas (soft-close), com a lateral limpa. Ferragem premium — a base da garantia de 5 anos.</div></div>
+    <div class="card"><div class="k">Ilha com serralheria + vidro</div>
+      <div class="v">Base metálica sob medida que sustenta a ilha firme, tampo em vidro temperado, gavetas em corrediça oculta e puxador Enlevo (metal + couro legítimo).</div></div>
+    <div class="card"><div class="k">LED, bordas e estrutura</div>
+      <div class="v">Iluminação LED embutida; faces aparentes com fita de borda na cor em coladeira automática; prateleiras dimensionadas para não arquear.</div></div>
   </div>
 
   <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Camila · Closet · 2026</span></div>
@@ -167,45 +142,25 @@ td.r,th.r{ text-align:right; }
 <!-- PAGE 4 — INVESTIMENTO -->
 <div class="page">
   <div class="eyebrow">Investimento</div>
-  <h1 class="section-h">Duas formas de fazer<br>o seu closet.</h1>
+  <h1 class="section-h">Proposta de investimento.</h1>
   <hr class="rule">
-  <p>As duas opções incluem o <b>closet completo — roupeiro em L + ilha central</b>, com ferragem premium <b>Hardt</b> e o mesmo acabamento. A <b>ilha central (R$ 10.290) é idêntica nas duas</b>; muda só o <b>módulo superior do roupeiro</b>.</p>
+  <p>O closet completo — roupeiro em L do piso ao teto e ilha central — com ferragem premium <b>Hardt</b> e acabamento usinado.</p>
 
-  <div class="vers">
-    <div class="ver full">
-      <div class="hd">
-        <div class="nm">Linha Projeto</div>
-        <div class="pr">R$ 37.530</div>
-        <div class="tagln">Módulo superior em <b>portas de correr ripadas</b> em Cumaru — fiel ao desenho da arquiteta</div>
-      </div>
-      <div class="bd">
-        <div class="brk"><span>Roupeiro em L <small>(superior correr ripado)</small></span><b>R$ 27.240</b></div>
-        <div class="brk"><span>Ilha central</span><b>R$ 10.290</b></div>
-        <ul>
-          <li>Superior em <b>correr ripado</b> em Cumaru, contínuo</li>
-          <li>Gavetas oculta Hardt · portas em cinza · LED embutido</li>
-          <li>Ilha com serralheria, tampo de vidro e gaveta especial</li>
-        </ul>
-        <div class="war">À vista (−7%) R$ 34.900 · garantia 5 anos</div>
-      </div>
-    </div>
-    <div class="ver ess">
-      <div class="hd">
-        <div class="nm">Linha Otimizada</div>
-        <div class="pr">R$ 33.890</div>
-        <div class="tagln">Módulo superior em <b>básculas</b> que abrem para cima — economia de R$ 3.640</div>
-      </div>
-      <div class="bd">
-        <div class="brk"><span>Roupeiro em L <small>(superior báscula)</small></span><b>R$ 23.600</b></div>
-        <div class="brk"><span>Ilha central</span><b>R$ 10.290</b></div>
-        <ul>
-          <li>Superior em <b>báscula</b> com pistão amortecido (abre pra cima)</li>
-          <li>Gavetas oculta Hardt · portas em cinza · LED embutido</li>
-          <li>Ilha com serralheria, tampo de vidro e gaveta especial</li>
-        </ul>
-        <div class="war">À vista (−7%) R$ 31.520 · garantia 5 anos · economia R$ 3.640</div>
-      </div>
-    </div>
+  <table>
+    <thead><tr><th>Ambiente</th><th>Escopo</th><th class="r">Investimento</th></tr></thead>
+    <tbody>
+      <tr><td class="amb-name">Roupeiro em L</td>
+          <td>Piso-teto, em duas cores (cinza + Cumaru usinado): portas de correr (RO-65) e duas de giro, gavetas em corrediça oculta Hardt e iluminação LED</td>
+          <td class="r"><b>R$ 20.700</b></td></tr>
+      <tr><td class="amb-name">Ilha central</td>
+          <td>Estrutura de serralheria na base, tampo em vidro temperado, gavetas em corrediça oculta e puxador Enlevo (metal + couro)</td>
+          <td class="r"><b>R$ 6.800</b></td></tr>
+      <tr class="grand"><td colspan="2"><span class="serif">Investimento total</span></td><td class="r"><span class="serif">R$ 27.500</span></td></tr>
+    </tbody>
+  </table>
+
+  <div style="text-align:center;margin:6mm 0 2mm;">
+    <span class="seal">GARANTIA <span class="yrs">5 anos</span> ferragens Hardt</span>
   </div>
 
   <div class="terms">
@@ -214,12 +169,12 @@ td.r,th.r{ text-align:right; }
     <div class="term"><div class="t">Garantia</div><div class="b">5 anos</div></div>
   </div>
 
-  <h2 class="serif" style="font-size:14pt; margin-top:6mm;">Condições de pagamento</h2>
+  <h2 class="serif" style="font-size:14pt;margin-top:6mm;">Condições de pagamento</h2>
   <ul class="pay">
     <li><b>30%</b> de entrada + restante em até <b>10× no cartão</b></li>
     <li><b>50%</b> de entrada + restante em até 8× no cartão — <b>3% de desconto</b></li>
     <li><b>70%</b> de entrada + restante em até 6× no cartão — <b>5% de desconto</b></li>
-    <li><b>70%</b> à vista + restante por transferência — <b>7% de desconto</b> (valor à vista indicado em cada opção acima)</li>
+    <li><b>70%</b> à vista + restante por transferência — <b>7% de desconto</b> (à vista ≈ <b>R$ 25.575</b>)</li>
   </ul>
 
   <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Camila · Closet · 2026</span></div>
@@ -235,12 +190,12 @@ td.r,th.r{ text-align:right; }
     <div>
       <h3>✦ Marcenaria Valvic (incluso)</h3>
       <ul>
-        <li>Roupeiro em L com portas de correr e módulo superior à escolha (correr ripado ou báscula)</li>
+        <li>Roupeiro em L do piso ao teto, em cinza + Cumaru usinado</li>
+        <li>Portas de correr (RO-65) + duas portas de giro (quina do L)</li>
         <li>Gavetas com corrediça oculta Hardt (soft-close)</li>
-        <li>Painel ripado em Cumaru e portas em cinza</li>
-        <li>Ilha com estrutura de serralheria e tampo em vidro temperado</li>
-        <li>Gaveta especial com divisórias + puxador Enlevo</li>
-        <li>Iluminação LED embutida, fita de borda na cor e instalação por equipe própria</li>
+        <li>Usinagem dos painéis (friso na CNC) e iluminação LED embutida</li>
+        <li>Ilha com estrutura de serralheria, tampo de vidro e puxador Enlevo</li>
+        <li>Fita de borda na cor e instalação por equipe própria</li>
       </ul>
     </div>
     <div>
@@ -257,9 +212,9 @@ td.r,th.r{ text-align:right; }
 
   <div class="close">
     <div class="eyebrow" style="color:var(--gold-soft)">Por que a Valvic</div>
-    <p class="serif">Galpão próprio, CNC, coladeira automática e equipe especializada — estrutura para entregar cada detalhe do projeto, da báscula à ilha de serralheria, com o padrão que ele merece.</p>
+    <p class="serif">Galpão próprio, CNC, coladeira automática e equipe especializada — estrutura para entregar cada detalhe, do friso usinado à ilha de serralheria, com o padrão que o projeto merece.</p>
     <p>Será uma honra executar o seu closet, Camila. Ficamos à disposição para apresentar a proposta pessoalmente e detalhar cada etapa com você.</p>
-    <p style="margin-top:6mm;"><span class="brandline" style="color:#fff; font-size:13pt;">valvic<span class="dot">.</span> marcenaria</span></p>
+    <p style="margin-top:6mm;"><span class="brandline" style="color:#fff;font-size:13pt;">valvic<span class="dot">.</span> marcenaria</span></p>
   </div>
 
   <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Proposta nº CAM-2026-001 · validade 7 dias</span></div>
