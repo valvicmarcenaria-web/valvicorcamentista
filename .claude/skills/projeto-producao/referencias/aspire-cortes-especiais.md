@@ -46,9 +46,12 @@ o Paulo informa depois.
 
 | Posição | Ferramenta | Raio | Usada em | Status |
 |---|---|---|---|---|
-| **T2** | **Fresa reta 6mm** | 3mm | contorno/corte passante (os dois exemplos) | em uso |
-| **T7** | **Fresa reta 3mm** | 1,5mm | cortes finos/detalhe (a detalhar) | em uso |
-| T1, T3–T6, T8–T10 | a informar | | (V-bit p/ dobra, friso LED, etc.) | pendente |
+| **T2** | **Fresa reta 6mm** | 3mm | contorno/corte passante | em uso |
+| **T7** | **Fresa de 45° (chanfro/bisel)** | — | chanfro/bisel correndo sobre linha (S13500) | em uso |
+| T1, T3–T6, T8–T10 | a informar | | (fresa 3mm, friso LED, etc.) | pendente |
+
+> ⚠️ Correção 26/06: a **T7 é a fresa de 45°** (confirmado por `.tap` + Paulo). A
+> anotação antiga "T7 = reta 3mm" estava ERRADA.
 
 > O `M6T<n>` + `G43 H<n>` sempre casam o nº da ferramenta com o nº do offset (H).
 > Em contorno externo com fresa de 6mm, os cantos saem com **arco de raio 3mm**
@@ -118,7 +121,7 @@ vácuo da mesa + aspiração). **Sempre em par, sempre presentes, nunca inventad
 A fresa é redonda → deixa o **canto interno arredondado** (raio = raio da fresa),
 e a aba de **canto vivo NÃO entra até o fundo**. Solução: **osso de cão** =
 sobrecorte circular no canto.
-- **Raio do osso de cão = raio da fresa** usada no encaixe (T2 → 3mm; T7 → 1,5mm).
+- **Raio do osso de cão = raio da fresa** usada no encaixe (T2 6mm → R3mm).
 - 🚨 **Fazer em APENAS UMA das duas peças do par** — ou na **estrutura** (a peça que
   encaixa / a aba) **ou** no **buraco** que a recebe. **NUNCA nas duas** (senão tira
   material a mais e o encaixe fica frouxo).
@@ -216,3 +219,10 @@ Fonte: `exemplos/2026-06-26_teste-45-graus-1lado.tap`. **Dois cortes num arquivo
   (parcial)** — mas **os dois "comem" ~3 mm/lado**. → a come **NÃO é = profundidade**
   (hipótese anterior caiu); parece **fixa ~3 mm/lado** pela geometria da fresa.
 - 🔁 Rever o TAMPO (que deu 1,5 mm/lado): por que diferente? (curva? outra profundidade?)
+
+### 🚨 NESTING com 45°: 30 mm de folga no lado chanfrado (Paulo, 26/06)
+Quando tiver **mais de uma peça** e alguma levar **45°**, as peças precisam ficar a
+**30 mm (3 cm) de distância** umas das outras **no lado onde o 45° vai ser executado**
+— por causa da **largura da fresa de 45°** (ela é larga no topo e invade a peça vizinha).
+- Vale **só no(s) lado(s) com chanfro**; os demais lados seguem a folga normal (7 mm).
+- ⇒ No gerador de nesting: parâmetro de folga **30 mm nas bordas chanfradas**, 7 mm no resto.
