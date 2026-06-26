@@ -191,6 +191,7 @@ Cenário **recomendado**:
 - [ ] 2º turno entra no plano? (S/N)
 - [ ] Espaço: galpão atual cabe ou precisa área nova? (m² atuais)
 - [ ] Confirmar aporte (R$1,55 mi?) e contrapartida ao investidor (% / empréstimo).
+- [ ] Orçar setup dos novos postos (Fase 1): 2 kits de ferramentas (R$4–5k cada) + posto do aux. adm. (PC + celular + cadeira) + 7 cadeiras de escritório (~R$18–20k, CAPEX único).
 
 ## 👥 Pessoal — contratações (CONFIRMADO Paulo 25/06)
 | Cargo | Qtd | Salário base | Subtotal |
@@ -201,6 +202,12 @@ Cenário **recomendado**:
 | Projetista | 1 | R$ 5.000 | R$ 5.000 |
 | **Total novas contratações** | **6** | | **R$ 24.000/mês (base)** |
 - Com encargos (~70%: FGTS, INSS, 13º, férias, benefícios) → **~R$ 40.800/mês** (confirmar c/ contador).
+
+### Setup de entrada por novo posto (CAPEX único — fora do salário)
+- **Kit de ferramentas** (parafusadeira, furadeira, manuais, medição): **R$ 4–5k por marceneiro e por ajudante** → Fase 1 = 2 kits (~R$ 9k).
+- **Auxiliar administrativo:** computador + celular + cadeira (1 posto completo, a orçar).
+- **Cadeiras de escritório (geral):** faltam **+7 cadeiras no total** — incluir no setup.
+- **Total setup Fase 1:** ~R$ 18–20k (desembolso de entrada, somar ao investimento da Fase 1).
 
 ## 💵 Retorno / Payback
 - **Ganho ao dobrar:** +R$ 200k/mês × MC 30% = **+R$ 60.000/mês** de margem de contribuição.

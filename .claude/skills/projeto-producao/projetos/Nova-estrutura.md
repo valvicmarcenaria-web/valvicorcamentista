@@ -147,6 +147,21 @@ Organograma: [`Valvic_Organograma.png`](Valvic_Organograma.png).
 - Com encargos (~70%: FGTS, INSS, 13º, férias, benefícios) → **~R$ 40.800/mês**
   (confirmar com contador).
 
+### Infraestrutura por novo colaborador (setup de entrada — CAPEX único)
+Cada contratação exige **equipar o posto de trabalho** — desembolso único, à parte do salário:
+
+| Item | Para quem | Custo | Fase 1 |
+|---|---|---|---|
+| **Kit de ferramentas** (parafusadeira, furadeira, manuais, medição) | cada marceneiro e ajudante | **R$ 4.000–5.000/un** | 2 kits (1 marceneiro + 1 ajudante) |
+| **Computador + celular + cadeira** | auxiliar administrativo | a orçar | 1 posto completo |
+
+> **Cadeiras de escritório (geral):** além da cadeira do aux. adm., o escritório precisa de
+> **+7 cadeiras no total** (ampliação/reposição dos postos) — incluir no setup.
+
+- **Setup Fase 1 (CAPEX único, estimativa):** 2 kits de ferramentas (~R$ 9k) + posto do aux. adm.
+  (PC + celular + cadeira) + 7 cadeiras de escritório → **a orçar (~R$ 18–20 mil)**. Não é folha
+  mensal: é desembolso de entrada — somar ao investimento da Fase 1.
+
 ---
 
 ## 6. Investimento
@@ -163,6 +178,8 @@ Organograma: [`Valvic_Organograma.png`](Valvic_Organograma.png).
 
 - Composição geral: máquinas ~R$ 755k + veículo ~R$ 100k + infra do galpão R$ 200k
   (+ capital de giro a dimensionar).
+- **Setup de pessoal (Fase 1):** equipar os novos postos — 2 kits de ferramentas + posto do
+  aux. adm. + 7 cadeiras de escritório → **~R$ 18–20k** (CAPEX único, somar ao start da Fase 1).
 - **APORTE: definido pelo investidor** — não fixar valor no deck. O aporte compra à vista.
 
 ---
@@ -205,3 +222,4 @@ Organograma: [`Valvic_Organograma.png`](Valvic_Organograma.png).
 - [ ] 2º turno entra no plano? (S/N).
 - [ ] Conta de payback final com outros fixos novos (galpão, energia, combustível) — puxar Rodrigo/financeiro.
 - [ ] Confirmar encargos da folha com contador (~70%).
+- [ ] Orçar **setup dos novos postos (Fase 1)**: 2 kits de ferramentas (R$ 4–5k cada) + posto do aux. adm. (PC + celular + cadeira) + **7 cadeiras** de escritório (~R$ 18–20k, CAPEX único).
