@@ -14,6 +14,8 @@ está digitando muda. Para não trocar os nomes:
 - **Lavinia** = orçamento · **Rodrigo** = finanças (outros skills).
 - Na dúvida sobre quem está falando num assunto de produção, assumir **Paulo**.
 
+📌 Plano da NOVA ESTRUTURA (expansão) consolidado em `projetos/Nova-estrutura.md`.
+
 ## Última sessão: 2026-06-24
 
 ### Caso real: criado-mudo curvo (dobra por BOLSO contínuo) ✅ aprendido
