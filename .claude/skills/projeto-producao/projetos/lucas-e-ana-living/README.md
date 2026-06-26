@@ -31,7 +31,9 @@ Formato em **L**, freijó por fora / branco por dentro, cantos arredondados:
 - Freijó externo / branco interno · cantos arredondados · puxador passante (DET 01).
 
 ## Plano — por PARTES (revisar antes de cortar cada uma)
-1. [ ] **Caixaria do balcão TV** (base, tampo passantes + laterais + 3 divisórias + fundo 6mm)
+1. [x] **Caixaria do balcão (TV+espelho)** — FEITA (`gerados/lucas-e-ana/balcao_caixaria_*`)
+   - TV 223×55×45 + espelho 109×40×45; tampo/base passante; fundo 6mm; folga gaveta 18mm total.
+1b. [ ] (orig) Caixaria do balcão TV (base, tampo passantes + laterais + 3 divisórias + fundo 6mm)
 2. [ ] **4 portas basculantes** (frentes freijó)
 3. [ ] **Módulo espelho** (caixaria + 2 gavetas: caixas + frentes)
 4. [ ] **Tampos de prateleira em MDF** (se houver)
