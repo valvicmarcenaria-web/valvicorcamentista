@@ -1,517 +1,543 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Relatório Patrimonial — Valvic Marcenaria · Jun/2026</title>
-  <style>
-    @page { size: A4 portrait; margin: 0; }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Relatório Patrimonial — Valvic Marcenaria · Jun/2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      font-size: 10.5px;
-      line-height: 1.45;
-      color: #1a1a1a;
-      background: #dde2e8;
-    }
+  :root{
+    --navy:#0E2038;
+    --navy2:#16314f;
+    --navy-soft:#1d3b5e;
+    --gold:#C2A05A;
+    --gold-soft:#d8bd80;
+    --cream:#FBFAF7;
+    --ink:#1b2733;
+    --muted:#6c7785;
+    --line:#e8e3d8;
+    --line2:#dfdacd;
+    --green:#2f7d4f;
+    --red:#b0413f;
+    --blue:#2f5d8c;
+  }
 
-    /* ── Page shell ─────────────────────────── */
-    .page {
-      width: 210mm;
-      min-height: 297mm;
-      background: #fff;
-      margin: 20px auto;
-      box-shadow: 0 6px 28px rgba(0,0,0,.18);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      page-break-after: always;
-    }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{
+    font-family:'Inter','Helvetica Neue',Arial,sans-serif;
+    color:var(--ink);
+    background:#d9dde3;
+    font-size:10.2px;
+    line-height:1.45;
+    -webkit-font-smoothing:antialiased;
+  }
+  .num{ font-variant-numeric:tabular-nums; font-feature-settings:"tnum" 1; }
+  .serif{ font-family:'Cormorant Garamond',Georgia,serif; }
 
-    /* ── Header ─────────────────────────────── */
-    .ph {
-      background: #162847;
-      color: #fff;
-      padding: 26px 36px 20px;
-    }
-    .ph-top { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
-    .logotag {
-      width: 42px; height: 42px;
-      background: #C9A255;
-      border-radius: 5px;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 900; font-size: 17px; color: #162847; letter-spacing: -1px;
-      flex-shrink: 0;
-    }
-    .ph-co { font-size: 19px; font-weight: 700; }
-    .ph-cnpj { font-size: 9.5px; color: rgba(255,255,255,.5); margin-top: 2px; }
-    .ph-divider { width: 1px; height: 36px; background: rgba(255,255,255,.2); flex-shrink:0; }
-    .ph-doc { font-size: 13px; font-weight: 700; color: #C9A255; text-transform: uppercase; letter-spacing: 1.5px; }
-    .ph-period { font-size: 10px; color: rgba(255,255,255,.45); margin-top: 3px; }
+  /* ── Sheet ───────────────────────────── */
+  .sheet{
+    position:relative;
+    width:210mm; height:297mm;
+    background:var(--cream);
+    margin:18px auto;
+    box-shadow:0 10px 40px rgba(11,22,40,.22);
+    overflow:hidden;
+    page-break-after:always;
+  }
+  .sheet:last-child{ page-break-after:auto; }
 
-    /* ── Kpi cards ───────────────────────────── */
-    .kpi-row {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 10px;
-      padding: 16px 36px 0;
-    }
-    .kpi {
-      border-radius: 6px;
-      padding: 12px 14px;
-      border-left: 3px solid #162847;
-    }
-    .kpi.g { border-color: #2a7d3f; background: #f0faf2; }
-    .kpi.r { border-color: #b71c1c; background: #fff5f5; }
-    .kpi.b { border-color: #162847; background: #f3f6fb; }
-    .kpi-label { font-size: 8.5px; text-transform: uppercase; letter-spacing: 1px; color: #666; }
-    .kpi-val { font-size: 20px; font-weight: 800; margin-top: 2px; }
-    .kpi.g .kpi-val { color: #2a7d3f; }
-    .kpi.r .kpi-val { color: #b71c1c; }
-    .kpi.b .kpi-val { color: #162847; }
-    .kpi-sub { font-size: 8.5px; color: #888; margin-top: 2px; }
+  /* ════════ COVER ════════ */
+  .cover{
+    background:
+      radial-gradient(120% 80% at 80% -10%, #1b3a5e 0%, rgba(27,58,94,0) 55%),
+      linear-gradient(160deg,#0E2038 0%,#0b1a2e 60%,#0a1626 100%);
+    color:#fff;
+    display:flex; flex-direction:column;
+    padding:0;
+  }
+  .cv-frame{
+    position:absolute; inset:13mm;
+    border:1px solid rgba(194,160,90,.38);
+    pointer-events:none;
+  }
+  .cv-frame::before{
+    content:""; position:absolute; inset:5px;
+    border:1px solid rgba(194,160,90,.14);
+  }
+  .cv-inner{ position:relative; z-index:2; flex:1; display:flex; flex-direction:column; padding:24mm 22mm; }
 
-    /* ── Section title ───────────────────────── */
-    .sec {
-      font-size: 9px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 1.8px;
-      color: #162847;
-      border-bottom: 2px solid #162847;
-      padding-bottom: 5px;
-      margin: 18px 36px 10px;
-    }
+  .cv-brand{ display:flex; align-items:center; gap:14px; }
+  .cv-mono{
+    width:54px; height:54px; flex-shrink:0;
+    border:1.5px solid var(--gold);
+    border-radius:3px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Cormorant Garamond',serif; font-weight:700; font-size:25px;
+    color:var(--gold); letter-spacing:1px;
+  }
+  .cv-co{ font-size:17px; font-weight:700; letter-spacing:3px; text-transform:uppercase; }
+  .cv-sub{ font-size:9px; color:rgba(255,255,255,.5); letter-spacing:.5px; margin-top:3px; }
 
-    /* ── Tables ──────────────────────────────── */
-    table { width: 100%; border-collapse: collapse; font-size: 10px; margin: 0 36px; width: calc(100% - 72px); }
+  .cv-center{ margin-top:auto; margin-bottom:auto; }
+  .cv-kicker{ font-size:10px; letter-spacing:5px; text-transform:uppercase; color:var(--gold); }
+  .cv-rule{ width:60px; height:2px; background:var(--gold); margin:18px 0 22px; }
+  .cv-title{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:62px; line-height:1.02; letter-spacing:-.5px; }
+  .cv-title span{ color:var(--gold-soft); font-style:italic; }
+  .cv-desc{ font-size:12px; color:rgba(255,255,255,.62); margin-top:18px; max-width:380px; line-height:1.7; font-weight:300; }
 
-    thead tr { background: #162847; color: #fff; }
-    thead th {
-      padding: 6px 10px; text-align: left;
-      font-weight: 600; font-size: 8.5px;
-      text-transform: uppercase; letter-spacing: .5px;
-    }
-    th.r, td.r { text-align: right; font-variant-numeric: tabular-nums; }
+  .cv-stats{ display:flex; gap:0; margin-top:30px; border-top:1px solid rgba(255,255,255,.14); padding-top:22px; }
+  .cv-stat{ flex:1; padding-right:18px; }
+  .cv-stat + .cv-stat{ border-left:1px solid rgba(255,255,255,.12); padding-left:22px; }
+  .cv-stat .l{ font-size:8px; letter-spacing:1.6px; text-transform:uppercase; color:rgba(255,255,255,.5); }
+  .cv-stat .v{ font-size:24px; font-weight:700; margin-top:6px; }
+  .cv-stat .v.g{ color:#7fd6a0; }
+  .cv-stat .v.r{ color:#e89a98; }
+  .cv-stat .v.gold{ color:var(--gold-soft); }
 
-    tbody tr:nth-child(even) { background: #f8f9fb; }
+  .cv-foot{ display:flex; justify-content:space-between; align-items:flex-end; margin-top:30px; }
+  .cv-conf{ font-size:8.5px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.4); }
+  .cv-date{ font-size:9.5px; color:rgba(255,255,255,.55); text-align:right; letter-spacing:.5px; }
 
-    td {
-      padding: 5.5px 10px;
-      border-bottom: 1px solid #ebebeb;
-      vertical-align: middle;
-    }
-    td.sm { font-size: 9px; color: #777; font-style: italic; }
+  /* ════════ CONTENT HEADER ════════ */
+  .ph{
+    background:var(--navy);
+    color:#fff;
+    padding:13mm 16mm 7mm;
+    display:flex; justify-content:space-between; align-items:flex-end;
+  }
+  .ph .l .kx{ font-size:8px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); }
+  .ph .l .tt{ font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:600; margin-top:4px; line-height:1; }
+  .ph .r{ text-align:right; }
+  .ph .r .co{ font-size:10px; letter-spacing:2px; text-transform:uppercase; font-weight:600; }
+  .ph .r .pg{ font-size:8.5px; color:rgba(255,255,255,.5); margin-top:3px; letter-spacing:1px; }
 
-    .cat td {
-      background: #e8edf4; color: #162847;
-      font-weight: 700; font-size: 9px;
-      text-transform: uppercase; letter-spacing: .5px;
-      border-bottom: 1px solid #c8d2e0;
-      padding: 5px 10px;
-    }
-    .sub td {
-      background: #e8edf4; font-weight: 700; color: #162847;
-      border-top: 1.5px solid #c8d2e0; border-bottom: 1.5px solid #c8d2e0;
-    }
-    .tot td {
-      background: #162847; color: #fff; font-weight: 700;
-      font-size: 11px; border: none;
-    }
+  .body{ padding:9mm 16mm 0; }
 
-    /* ── Badges ──────────────────────────────── */
-    .b-ok  { display:inline-block; padding:1px 6px; border-radius:3px; font-size:7.5px; font-weight:700; text-transform:uppercase; background:#e8f5e9; color:#2a7d3f; }
-    .b-fin { background:#fff3e0; color:#e65100; }
-    .b-att { background:#ffebee; color:#b71c1c; }
-    .b-pnd { background:#fffde7; color:#f57f17; }
+  /* ── Section label ── */
+  .sec{ display:flex; align-items:center; gap:10px; margin:0 0 9px; }
+  .sec:not(:first-child){ margin-top:16px; }
+  .sec .bar{ width:16px; height:2px; background:var(--gold); }
+  .sec .tx{ font-size:9.5px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:var(--navy); }
+  .sec .ct{ margin-left:auto; font-size:8.5px; color:var(--muted); letter-spacing:.5px; }
 
-    /* ── Colour values ───────────────────────── */
-    .vr { color:#b71c1c; font-weight:700; }
-    .vg { color:#2a7d3f; font-weight:700; }
-    .vb { color:#1565c0; font-weight:700; }
-    .vo { color:#e65100; font-weight:700; }
+  /* ── Tables ── */
+  table{ width:100%; border-collapse:collapse; }
+  thead th{
+    background:var(--navy); color:#fff;
+    font-size:7.6px; font-weight:600; letter-spacing:.7px; text-transform:uppercase;
+    padding:6px 9px; text-align:left;
+  }
+  th.r,td.r{ text-align:right; }
+  tbody td{ padding:5.4px 9px; border-bottom:1px solid var(--line); vertical-align:middle; }
+  tbody tr:nth-child(even) td{ background:#f4f1ea; }
+  .id{ font-size:8.4px; font-weight:700; color:var(--gold); letter-spacing:.5px; }
+  td .nm{ font-weight:600; color:var(--ink); }
+  td .dt{ color:var(--muted); font-size:9px; }
+  td.note{ color:var(--muted); font-size:8.6px; }
 
-    /* ── Note box ────────────────────────────── */
-    .note {
-      margin: 12px 36px 0;
-      background: #fffde7;
-      border-left: 3px solid #f9a825;
-      padding: 8px 12px;
-      font-size: 8.5px; color: #555;
-      border-radius: 0 4px 4px 0;
-      line-height: 1.6;
-    }
-    .note strong { color: #e65100; }
+  tr.stot td{
+    background:#eceadf !important; font-weight:700; color:var(--navy);
+    border-top:1.5px solid var(--line2); border-bottom:1.5px solid var(--line2);
+    font-size:10px; letter-spacing:.3px;
+  }
+  tr.grand td{
+    background:var(--navy) !important; color:#fff; font-weight:700;
+    font-size:12px; padding:9px; border:none; letter-spacing:.5px;
+  }
+  tr.grand td .gv{ color:var(--gold-soft); }
 
-    /* ── Footer ──────────────────────────────── */
-    .pf {
-      margin-top: auto;
-      background: #f3f6fb;
-      border-top: 1px solid #dde3ec;
-      padding: 9px 36px;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .pf-note { font-size: 7.5px; color: #aaa; }
-    .pf-pg   { font-size: 9px; font-weight: 700; color: #162847; }
+  /* ── Badges ── */
+  .bx{ display:inline-block; padding:1.5px 7px; border-radius:20px; font-size:7px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; border:1px solid transparent; }
+  .bx-fin{ background:#fbf1df; color:#9a6b18; border-color:#eedcb6; }
+  .bx-ok{ background:#eaf4ee; color:var(--green); border-color:#cfe6d8; }
+  .bx-att{ background:#fbecea; color:var(--red); border-color:#f0d2cf; }
 
-    /* ── Print / PDF ─────────────────────────── */
-    .btn-pdf {
-      position: fixed; top: 18px; right: 18px;
-      background: #162847; color: #fff; border: none;
-      padding: 9px 18px; border-radius: 6px; cursor: pointer;
-      font-size: 12px; font-weight: 600; z-index: 999;
-      box-shadow: 0 2px 8px rgba(0,0,0,.25);
-    }
-    .btn-pdf:hover { background: #1e3a63; }
+  /* ── KPI cards ── */
+  .kpis{ display:grid; grid-template-columns:repeat(3,1fr); gap:11px; }
+  .kpi{ background:#fff; border:1px solid var(--line); border-radius:7px; padding:14px 15px 15px; position:relative; overflow:hidden; }
+  .kpi::before{ content:""; position:absolute; top:0; left:0; right:0; height:3px; }
+  .kpi.g::before{ background:var(--green); }
+  .kpi.r::before{ background:var(--red); }
+  .kpi.b::before{ background:var(--gold); }
+  .kpi .kl{ font-size:8px; letter-spacing:1.4px; text-transform:uppercase; color:var(--muted); }
+  .kpi .kv{ font-size:27px; font-weight:800; margin-top:6px; letter-spacing:-.5px; }
+  .kpi.g .kv{ color:var(--green); }
+  .kpi.r .kv{ color:var(--red); }
+  .kpi.b .kv{ color:var(--navy); }
+  .kpi .ks{ font-size:8.4px; color:var(--muted); margin-top:5px; line-height:1.4; }
 
-    @media print {
-      body { background: #fff; }
-      .page { margin: 0; box-shadow: none; }
-      .btn-pdf { display: none; }
-    }
-  </style>
+  /* ── Charts row ── */
+  .charts{ display:grid; grid-template-columns:200px 1fr; gap:26px; margin-top:18px; align-items:center; }
+  .donut-wrap{ display:flex; flex-direction:column; align-items:center; }
+  .donut{
+    width:172px; height:172px; border-radius:50%;
+    background:conic-gradient(var(--green) 0 54.2%, var(--red) 54.2% 100%);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .donut::after{
+    content:""; position:absolute; width:108px; height:108px; border-radius:50%;
+    background:var(--cream); box-shadow:inset 0 0 0 1px var(--line);
+  }
+  .donut .dc{ position:relative; z-index:2; text-align:center; }
+  .donut .dc .dn{ font-size:23px; font-weight:800; color:var(--navy); }
+  .donut .dc .dl{ font-size:7.5px; letter-spacing:1.2px; text-transform:uppercase; color:var(--muted); }
+  .donut-leg{ display:flex; gap:16px; margin-top:12px; }
+  .donut-leg div{ font-size:8.2px; color:var(--ink); display:flex; align-items:center; gap:5px; }
+  .donut-leg i{ width:9px; height:9px; border-radius:2px; display:inline-block; }
+
+  .bars .bt{ font-size:8.4px; letter-spacing:1.4px; text-transform:uppercase; color:var(--muted); margin-bottom:11px; }
+  .bar-row{ display:grid; grid-template-columns:96px 1fr 62px; align-items:center; gap:9px; margin-bottom:8px; }
+  .bar-row .bl{ font-size:8.7px; color:var(--ink); font-weight:500; text-align:right; }
+  .bar-track{ height:13px; background:#ece8de; border-radius:3px; overflow:hidden; }
+  .bar-fill{ height:100%; border-radius:3px; }
+  .bar-row .bv{ font-size:8.7px; font-weight:700; color:var(--navy); text-align:right; }
+
+  /* ── Exec summary text ── */
+  .exec{ margin-top:20px; background:#fff; border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:0 7px 7px 0; padding:15px 18px; }
+  .exec .et{ font-size:8.5px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:7px; }
+  .exec p{ font-family:'Cormorant Garamond',serif; font-size:14.5px; line-height:1.55; color:#2a3744; }
+  .exec p b{ color:var(--navy); font-weight:700; }
+
+  /* ── Debt two-col ── */
+  .dgrid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .dcard{ background:#fff; border:1px solid var(--line); border-radius:7px; overflow:hidden; }
+  .dcard .dh{ padding:8px 13px; font-size:8.4px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#fff; display:flex; justify-content:space-between; align-items:center; }
+  .dcard.ext .dh{ background:var(--navy); }
+  .dcard.soc .dh{ background:var(--navy-soft); }
+  .dcard .dh .dt{ font-size:12px; }
+  .drow{ display:flex; justify-content:space-between; align-items:flex-start; padding:8px 13px; border-bottom:1px solid var(--line); gap:10px; }
+  .drow:last-child{ border-bottom:none; }
+  .drow .di .dn{ font-weight:600; font-size:9.6px; }
+  .drow .di .dd{ color:var(--muted); font-size:8.2px; margin-top:1px; }
+  .drow .dv{ font-weight:700; font-size:10.4px; white-space:nowrap; }
+  .drow .dv.r{ color:var(--red); }
+  .drow .dv.b{ color:var(--blue); }
+
+  .summary-strip{ display:grid; grid-template-columns:repeat(3,1fr); gap:11px; margin-top:14px; }
+  .ss{ border-radius:7px; padding:11px 14px; color:#fff; }
+  .ss .l{ font-size:7.5px; letter-spacing:1.2px; text-transform:uppercase; opacity:.8; }
+  .ss .v{ font-size:18px; font-weight:800; margin-top:3px; }
+  .ss.a{ background:linear-gradient(135deg,#2f7d4f,#256340); }
+  .ss.b{ background:linear-gradient(135deg,#b0413f,#8f3331); }
+  .ss.c{ background:linear-gradient(135deg,#16314f,#0E2038); }
+
+  /* ── Notes ── */
+  .notes{ margin-top:14px; background:#f6f3ec; border:1px solid var(--line); border-radius:7px; padding:12px 15px; }
+  .notes .nt{ font-size:8.2px; letter-spacing:1.6px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:7px; }
+  .notes ol{ margin:0; padding-left:15px; }
+  .notes li{ font-size:8.7px; color:#41505d; line-height:1.6; margin-bottom:4px; }
+  .notes li b{ color:var(--navy); }
+
+  /* ── Footer ── */
+  .pf{
+    position:absolute; bottom:0; left:0; right:0;
+    border-top:1px solid var(--line2);
+    background:#f4f1ea;
+    padding:6px 16mm;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .pf .pl{ font-size:7px; color:var(--muted); letter-spacing:.4px; }
+  .pf .pr{ font-size:8px; color:var(--navy); font-weight:700; letter-spacing:1px; }
+  .pf .pr span{ color:var(--gold); }
+
+  /* ── PDF button (screen only) ── */
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,.3); }
+  .btn:hover{ background:var(--navy2); }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
 </head>
 <body>
 
-<button class="btn-pdf" onclick="window.print()">Exportar PDF</button>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
 
-<!-- ═══════════════════════════════════════════════
-     PÁGINA 1 — ATIVOS
-     ═══════════════════════════════════════════════ -->
-<div class="page">
-
-  <div class="ph">
-    <div class="ph-top">
-      <div class="logotag">VC</div>
-      <div class="ph-divider"></div>
+<!-- ══════════════ PÁGINA 1 — CAPA ══════════════ -->
+<section class="sheet cover">
+  <div class="cv-frame"></div>
+  <div class="cv-inner">
+    <div class="cv-brand">
+      <div class="cv-mono">V</div>
       <div>
-        <div class="ph-co">Valvic Marcenaria</div>
-        <div class="ph-cnpj">Vargas Decor Ltda &nbsp;·&nbsp; CNPJ 17.269.304/0001-51 &nbsp;·&nbsp; Belo Horizonte / MG</div>
+        <div class="cv-co">Valvic Marcenaria</div>
+        <div class="cv-sub">Vargas Decor Ltda &nbsp;·&nbsp; CNPJ 17.269.304/0001-51 &nbsp;·&nbsp; Belo Horizonte / MG</div>
       </div>
     </div>
-    <div class="ph-doc">Relatório Patrimonial</div>
-    <div class="ph-period">Levantamento · Junho de 2026 &nbsp;·&nbsp; Documento Confidencial</div>
-  </div>
 
-  <!-- KPI -->
-  <div class="kpi-row">
-    <div class="kpi g">
-      <div class="kpi-label">Ativo Bruto Total</div>
-      <div class="kpi-val">R$ 499.900</div>
-      <div class="kpi-sub">6 categorias · 35+ itens inventariados</div>
-    </div>
-    <div class="kpi r">
-      <div class="kpi-label">Passivo Total</div>
-      <div class="kpi-val">R$ 228.865</div>
-      <div class="kpi-sub">Externo R$133.865 · Aportes sócios R$95.000</div>
-    </div>
-    <div class="kpi b">
-      <div class="kpi-label">Patrimônio Líquido</div>
-      <div class="kpi-val">R$ 271.035</div>
-      <div class="kpi-sub">54,2% do ativo — alavancagem controlada</div>
-    </div>
-  </div>
+    <div class="cv-center">
+      <div class="cv-kicker">Relatório Confidencial</div>
+      <div class="cv-rule"></div>
+      <h1 class="cv-title">Demonstrativo<br><span>Patrimonial</span></h1>
+      <p class="cv-desc">Levantamento completo de ativos produtivos, infraestrutura e estrutura de passivos da empresa — base para a conversa de sociedade.</p>
 
-  <!-- MAQUINÁRIO INDUSTRIAL -->
-  <div class="sec">Maquinário Industrial</div>
-  <table>
-    <thead><tr>
-      <th style="width:36px">ID</th>
-      <th>Item</th>
-      <th>Marca / Modelo</th>
-      <th class="r" style="width:80px">Valor R$</th>
-      <th style="width:52px">Financ.</th>
-      <th>Referência / Nota</th>
-    </tr></thead>
-    <tbody>
-      <tr>
-        <td>M01</td>
-        <td><strong>Router CNC</strong></td>
-        <td>RAIZEN Solid TAF 2819 · 380V · 3 eixos</td>
-        <td class="r"><strong>125.000</strong></td>
-        <td><span class="b-ok b-fin">Sim</span></td>
-        <td class="sm">Adq. jun/2025 · NF-e 2.403 · Contrato 4788</td>
-      </tr>
-      <tr>
-        <td>M02</td>
-        <td><strong>Esquadrejadeira de Precisão</strong></td>
-        <td>RAIZEN ALP RZ 3200P-A45 · 7,5CV</td>
-        <td class="r"><strong>44.000</strong></td>
-        <td><span class="b-ok b-fin">Sim</span></td>
-        <td class="sm">Adq. jul/2025 · NF-e 2.509 · Contrato 5014</td>
-      </tr>
-      <tr>
-        <td>M03</td>
-        <td><strong>Coladeira de Borda (principal)</strong></td>
-        <td>SCM minimax me 25 · filetagem automática</td>
-        <td class="r"><strong>60.000</strong></td>
-        <td><span class="b-ok">Não</span></td>
-        <td class="sm">Confirmado · registro técnico do Téo</td>
-      </tr>
-      <tr>
-        <td>M04</td>
-        <td>Coladeira de Borda (auxiliar)</td>
-        <td>Mineli H4100</td>
-        <td class="r">11.000</td>
-        <td><span class="b-ok">Não</span></td>
-        <td class="sm">Quitado</td>
-      </tr>
-      <tr>
-        <td>M05</td>
-        <td>Refiladora</td>
-        <td>Mineli MRF1000</td>
-        <td class="r">6.500</td>
-        <td><span class="b-ok">Não</span></td>
-        <td class="sm">Quitado</td>
-      </tr>
-      <tr class="sub">
-        <td colspan="3">Subtotal — Maquinário Industrial</td>
-        <td class="r">246.500</td>
-        <td colspan="2"></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <!-- FERRAMENTAS -->
-  <div class="sec">Ferramentas e Equipamentos de Produção</div>
-  <table>
-    <thead><tr>
-      <th style="width:36px">ID</th>
-      <th>Item</th>
-      <th>Detalhe</th>
-      <th class="r" style="width:80px">Valor R$</th>
-      <th colspan="2">Obs.</th>
-    </tr></thead>
-    <tbody>
-      <tr><td>F01</td><td>Tupia estacionária</td><td>Marca não identificada (equipamento antigo)</td><td class="r">5.000</td><td colspan="2" class="sm">Quitado</td></tr>
-      <tr><td>F02</td><td>Serra de esquadria</td><td>DeWalt DW714</td><td class="r">1.800</td><td colspan="2" class="sm">Quitado</td></tr>
-      <tr><td>F03</td><td>Coletores de pó (3 unidades)</td><td>—</td><td class="r">15.000</td><td colspan="2" class="sm">Valor aprox.</td></tr>
-      <tr><td>F04</td><td>Transformador de energia</td><td>—</td><td class="r">4.000</td><td colspan="2" class="sm">Quitado</td></tr>
-      <tr><td>F05</td><td>Secador de ar</td><td>—</td><td class="r">4.000</td><td colspan="2" class="sm">Quitado</td></tr>
-      <tr><td>F06</td><td>Compressores de ar</td><td>—</td><td class="r">11.000</td><td colspan="2" class="sm">Quitado</td></tr>
-      <tr><td>F07</td><td>Furador de bancada</td><td>—</td><td class="r">1.300</td><td colspan="2" class="sm">Quitado</td></tr>
-      <tr><td>F08</td><td>Sistema pneumático</td><td>—</td><td class="r">3.000</td><td colspan="2" class="sm">Valor aprox.</td></tr>
-      <tr><td>F09</td><td>Fresas variadas + pinças</td><td>—</td><td class="r">8.000</td><td colspan="2" class="sm">Quitado</td></tr>
-      <tr><td>F10</td><td>Ferramentas manuais de pequeno porte</td><td>Parafusadeiras, furadeiras, tico-tico etc. — diversas marcas</td><td class="r">40.000</td><td colspan="2" class="sm">Conjunto</td></tr>
-      <tr class="sub">
-        <td colspan="3">Subtotal — Ferramentas e Equipamentos</td>
-        <td class="r">93.100</td>
-        <td colspan="2"></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <!-- INFRAESTRUTURA -->
-  <div class="sec">Infraestrutura do Galpão</div>
-  <table>
-    <thead><tr><th style="width:36px">ID</th><th>Item</th><th>Detalhe</th><th class="r" style="width:80px">Valor R$</th><th colspan="2">Obs.</th></tr></thead>
-    <tbody>
-      <tr><td>G01</td><td>Estruturas de armazenamento e montagem</td><td>Gaiolas de chapas, bancadas de trabalho, carrinhos de movimentação — serralheria</td><td class="r">12.000</td><td colspan="2" class="sm">Quitado</td></tr>
-      <tr><td>G02</td><td>Carrinho de transporte de chapa</td><td>—</td><td class="r">1.500</td><td colspan="2" class="sm">Quitado</td></tr>
-      <tr><td>G03</td><td>Bebedouro</td><td>—</td><td class="r">1.300</td><td colspan="2" class="sm">Quitado</td></tr>
-      <tr><td>G04</td><td>Ventiladores</td><td>—</td><td class="r">1.600</td><td colspan="2" class="sm">Quitado</td></tr>
-      <tr><td>G05</td><td>Etiquetadora</td><td>—</td><td class="r">1.400</td><td colspan="2" class="sm">Quitado</td></tr>
-      <tr class="sub">
-        <td colspan="3">Subtotal — Infraestrutura do Galpão</td>
-        <td class="r">17.800</td>
-        <td colspan="2"></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="pf">
-    <div class="pf-note">Confidencial · Valvic Marcenaria · Junho/2026 · Valores em R$ (mercado atual ou custo histórico)</div>
-    <div class="pf-pg">01 / 02</div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════════════
-     PÁGINA 2 — CONTINUAÇÃO ATIVOS + DÍVIDAS + RESUMO
-     ═══════════════════════════════════════════════ -->
-<div class="page">
-
-  <div class="ph">
-    <div style="display:flex; justify-content:space-between; align-items:flex-end;">
-      <div>
-        <div class="ph-doc">Relatório Patrimonial — Continuação</div>
-        <div class="ph-period">Valvic Marcenaria · Junho de 2026 · Confidencial</div>
+      <div class="cv-stats">
+        <div class="cv-stat">
+          <div class="l">Ativo Total</div>
+          <div class="v g num">R$ 499.900</div>
+        </div>
+        <div class="cv-stat">
+          <div class="l">Passivo Total</div>
+          <div class="v r num">R$ 228.865</div>
+        </div>
+        <div class="cv-stat">
+          <div class="l">Patrimônio Líquido</div>
+          <div class="v gold num">R$ 271.035</div>
+        </div>
       </div>
-      <div style="font-size:20px;font-weight:900;color:#C9A255;letter-spacing:-1px;">VC</div>
+    </div>
+
+    <div class="cv-foot">
+      <div class="cv-conf">Uso restrito &nbsp;·&nbsp; não circular</div>
+      <div class="cv-date">Belo Horizonte<br>Junho de 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PÁGINA 2 — SUMÁRIO EXECUTIVO ══════════════ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l">
+      <div class="kx">Visão Geral</div>
+      <div class="tt">Sumário Executivo</div>
+    </div>
+    <div class="r">
+      <div class="co">Valvic Marcenaria</div>
+      <div class="pg">Patrimônio · Jun 2026</div>
     </div>
   </div>
 
-  <!-- LOGÍSTICA -->
-  <div class="sec">Logística / Veículos</div>
-  <table>
-    <thead><tr><th style="width:36px">ID</th><th>Item</th><th>Identificação</th><th class="r" style="width:80px">Valor R$</th><th style="width:52px">Financ.</th><th>Nota</th></tr></thead>
-    <tbody>
-      <tr>
-        <td>L01</td>
-        <td><strong>Chevrolet Montana LS 1.4 8V Eco 2P</strong><br><span style="font-size:9px;color:#777">Ativo de uso da empresa</span></td>
-        <td>Ano 2019/2020 · Placa QUY4166 · Renavam 1208242803</td>
-        <td class="r"><strong>55.000</strong></td>
-        <td><span class="b-ok b-att">Atenção</span></td>
-        <td class="sm">Financiamento no nome do sócio Paulo H. Teixeira · 45 parc. restantes × R$1.494,78 · quitação mar/2030</td>
-      </tr>
-      <tr class="sub"><td colspan="3">Subtotal — Logística / Veículos</td><td class="r">55.000</td><td colspan="2"></td></tr>
-    </tbody>
-  </table>
-
-  <!-- TI -->
-  <div class="sec">TI e Informática</div>
-  <table>
-    <thead><tr><th style="width:36px">ID</th><th>Item</th><th>Modelo</th><th class="r" style="width:80px">Valor R$</th><th colspan="2">Obs.</th></tr></thead>
-    <tbody>
-      <tr><td>T01</td><td>Computador produção</td><td>—</td><td class="r">2.000</td><td colspan="2" class="sm">Quitado</td></tr>
-      <tr><td>T02</td><td>Tablet produção</td><td>—</td><td class="r">1.000</td><td colspan="2" class="sm">Quitado</td></tr>
-      <tr><td>T03</td><td>Mac escritório</td><td>Apple 2011</td><td class="r">500</td><td colspan="2" class="sm">Valor de mercado atual</td></tr>
-      <tr><td>T04</td><td>iPad Pro</td><td>Apple</td><td class="r">5.000</td><td colspan="2" class="sm">Quitado</td></tr>
-      <tr><td>T05</td><td>Notebook programação</td><td>—</td><td class="r">7.000</td><td colspan="2" class="sm">Quitado</td></tr>
-      <tr><td>T06</td><td>Desktop programação</td><td>—</td><td class="r">3.700</td><td colspan="2" class="sm">Quitado</td></tr>
-      <tr><td>T07</td><td>Impressora</td><td>Brother HL-T4000DW</td><td class="r">4.300</td><td colspan="2" class="sm">Quitado</td></tr>
-      <tr><td>T08</td><td>Monitor especial programação</td><td>—</td><td class="r">2.000</td><td colspan="2" class="sm">Quitado</td></tr>
-      <tr class="sub"><td colspan="3">Subtotal — TI e Informática</td><td class="r">25.500</td><td colspan="2"></td></tr>
-    </tbody>
-  </table>
-
-  <!-- ESCRITÓRIO -->
-  <div class="sec">Escritório e Benfeitorias</div>
-  <table>
-    <thead><tr><th style="width:36px">ID</th><th>Item</th><th>Descrição</th><th class="r" style="width:80px">Valor R$</th><th colspan="2">Obs.</th></tr></thead>
-    <tbody>
-      <tr>
-        <td>E01</td>
-        <td><strong>Ambientes de escritório — mobiliário e benfeitorias completas</strong></td>
-        <td>Escritório de baixo (R$40.000) + sala de programação (R$20.000) + cozinha/copa (R$2.000)</td>
-        <td class="r"><strong>62.000</strong></td>
-        <td colspan="2" class="sm">Avaliação conjunta dos ambientes</td>
-      </tr>
-      <tr class="sub"><td colspan="3">Subtotal — Escritório e Benfeitorias</td><td class="r">62.000</td><td colspan="2"></td></tr>
-    </tbody>
-  </table>
-  <table style="margin-top:1px;">
-    <tbody>
-      <tr class="tot">
-        <td style="width:36px"></td>
-        <td><strong>TOTAL ATIVO BRUTO</strong></td>
-        <td></td>
-        <td class="r" style="width:80px;font-size:13px;"><strong>499.900</strong></td>
-        <td colspan="2"></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <!-- ─── DÍVIDAS ─────────────────────────────── -->
-  <div class="sec">Estrutura de Dívidas e Passivos</div>
-  <table>
-    <thead><tr>
-      <th>Natureza</th>
-      <th>Credor / Origem</th>
-      <th>Destino dos Recursos</th>
-      <th class="r" style="width:80px">Saldo R$</th>
-      <th style="width:110px">Condição</th>
-    </tr></thead>
-    <tbody>
-      <tr class="cat"><td colspan="5">▸ Financiamentos Externos</td></tr>
-      <tr>
-        <td>Financiamento</td>
-        <td>RAIZEN Machine Ltda</td>
-        <td>Router CNC Solid TAF (M01)</td>
-        <td class="r vo">22.500</td>
-        <td class="sm">6 × R$3.750 · até nov/2026</td>
-      </tr>
-      <tr>
-        <td>Financiamento</td>
-        <td>RAIZEN Machine Ltda</td>
-        <td>Esquadrejadeira ALP RZ (M02)</td>
-        <td class="r vo">14.100</td>
-        <td class="sm">6 × R$2.350 · até nov/2026</td>
-      </tr>
-      <tr>
-        <td>Financiamento pessoal sócio</td>
-        <td>Paulo H. Teixeira (nome pessoal)</td>
-        <td>Chevrolet Montana — uso da empresa (L01)</td>
-        <td class="r vr">67.265</td>
-        <td class="sm">45 × R$1.494,78 · até mar/2030</td>
-      </tr>
-      <tr>
-        <td>Crédito bancário</td>
-        <td>Banco Itaú</td>
-        <td>Capital de giro operacional</td>
-        <td class="r vo">30.000</td>
-        <td class="sm">A liquidar</td>
-      </tr>
-      <tr class="sub">
-        <td colspan="3"><strong>Subtotal — Financiamentos Externos</strong></td>
-        <td class="r vr">133.865</td>
-        <td></td>
-      </tr>
-
-      <tr class="cat"><td colspan="5">▸ Aportes dos Sócios (a regularizar com remuneração de mercado)</td></tr>
-      <tr>
-        <td>Aporte sócio</td>
-        <td>Paulo Henrique Teixeira</td>
-        <td>Contribuição à aquisição do CNC Router</td>
-        <td class="r vb">65.000</td>
-        <td class="sm">+ juros de mercado a acordar</td>
-      </tr>
-      <tr>
-        <td>Aporte sócio</td>
-        <td>Paulo Henrique Teixeira</td>
-        <td>Fortalecimento de caixa operacional</td>
-        <td class="r vb">30.000</td>
-        <td class="sm">+ juros de mercado a acordar</td>
-      </tr>
-      <tr class="sub">
-        <td colspan="3"><strong>Subtotal — Aportes dos Sócios</strong></td>
-        <td class="r vb">95.000</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <table style="margin-top:1px;">
-    <tbody>
-      <tr class="tot">
-        <td><strong>TOTAL PASSIVO</strong></td>
-        <td></td>
-        <td></td>
-        <td class="r" style="font-size:13px;"><strong>228.865</strong></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <!-- ─── RESUMO CONSOLIDADO ───────────────────── -->
-  <div class="kpi-row" style="margin-top:14px;">
-    <div class="kpi g">
-      <div class="kpi-label">Ativo Bruto</div>
-      <div class="kpi-val">R$ 499.900</div>
-      <div class="kpi-sub">68% em maquinário + ferramentas</div>
+  <div class="body">
+    <div class="kpis">
+      <div class="kpi g">
+        <div class="kl">Ativo Bruto</div>
+        <div class="kv num">R$ 499.900</div>
+        <div class="ks">6 categorias · 30+ itens inventariados a valor de mercado/custo.</div>
+      </div>
+      <div class="kpi r">
+        <div class="kl">Passivo Total</div>
+        <div class="kv num">R$ 228.865</div>
+        <div class="ks">Externo R$ 133.865 · Aportes dos sócios R$ 95.000.</div>
+      </div>
+      <div class="kpi b">
+        <div class="kl">Patrimônio Líquido</div>
+        <div class="kv num">R$ 271.035</div>
+        <div class="ks">54,2% do ativo — capital próprio acima da alavancagem.</div>
+      </div>
     </div>
-    <div class="kpi r">
-      <div class="kpi-label">Passivo Total</div>
-      <div class="kpi-val">R$ 228.865</div>
-      <div class="kpi-sub">45,8% de alavancagem sobre o ativo</div>
-    </div>
-    <div class="kpi b">
-      <div class="kpi-label">Patrimônio Líquido</div>
-      <div class="kpi-val">R$ 271.035</div>
-      <div class="kpi-sub">54,2% — capital próprio sólido</div>
-    </div>
-  </div>
 
-  <div class="note">
-    <strong>Notas:</strong>
-    (1) <strong>Coladeira M03</strong>: <strong>SCM minimax me 25</strong> (filetagem automática) — confirmado no registro técnico do Téo (marceneiro programador). Valor de referência R$60.000.
-    (2) <strong>Montana L01</strong>: ativo de uso integral da empresa; o financiamento está formalizado no nome do sócio Paulo H. Teixeira — regularização societária a equacionar.
-    (3) <strong>Aportes do sócio Paulo</strong> (R$65k CNC + R$30k caixa = R$95.000): valores sem juros contabilizados — remuneração de mercado a ser acordada em momento oportuno.
-    (4) <strong>Assistente administrativo</strong> (R$2.000/mês): profissional em processo de transição, ingresso previsto em agosto/2026 — não impacta o ativo, impacta o custo fixo a partir de ago.
-    (5) Valores apresentados a preço de mercado atual ou custo histórico de aquisição quando não há cotação disponível.
+    <div class="charts">
+      <div class="donut-wrap">
+        <div class="donut">
+          <div class="dc">
+            <div class="dn num">54%</div>
+            <div class="dl">Capital Próprio</div>
+          </div>
+        </div>
+        <div class="donut-leg">
+          <div><i style="background:var(--green)"></i> PL 54,2%</div>
+          <div><i style="background:var(--red)"></i> Dívida 45,8%</div>
+        </div>
+      </div>
+
+      <div class="bars">
+        <div class="bt">Composição do Ativo</div>
+        <div class="bar-row"><div class="bl">Maquinário</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(90deg,#16314f,#2f5d8c)"></div></div><div class="bv num">246.500</div></div>
+        <div class="bar-row"><div class="bl">Ferramentas</div><div class="bar-track"><div class="bar-fill" style="width:37.8%;background:#2f5d8c"></div></div><div class="bv num">93.100</div></div>
+        <div class="bar-row"><div class="bl">Escritório</div><div class="bar-track"><div class="bar-fill" style="width:25.2%;background:#3f73a6"></div></div><div class="bv num">62.000</div></div>
+        <div class="bar-row"><div class="bl">Logística</div><div class="bar-track"><div class="bar-fill" style="width:22.3%;background:var(--gold)"></div></div><div class="bv num">55.000</div></div>
+        <div class="bar-row"><div class="bl">TI</div><div class="bar-track"><div class="bar-fill" style="width:10.3%;background:#5c6bc0"></div></div><div class="bv num">25.500</div></div>
+        <div class="bar-row"><div class="bl">Infra galpão</div><div class="bar-track"><div class="bar-fill" style="width:7.2%;background:#7aa0c4"></div></div><div class="bv num">17.800</div></div>
+      </div>
+    </div>
+
+    <div class="exec">
+      <div class="et">Leitura</div>
+      <p>A Valvic opera sobre um <b>parque produtivo de quase meio milhão de reais</b>, com a metade do ativo (R$ 246,5 mil) concentrada em <b>maquinário industrial instalado e em produção</b>. O endividamento é majoritariamente de <b>curto prazo e atrelado a equipamento</b> — a parcela RAIZEN quita em <b>novembro de 2026</b> — e R$ 95 mil do passivo são <b>aportes dos próprios sócios</b>. Resultado: patrimônio líquido de <b>R$ 271 mil</b> e alavancagem controlada de 45,8%.</p>
+    </div>
   </div>
 
   <div class="pf">
-    <div class="pf-note">Documento de uso interno e restrito · Valvic Marcenaria · Jun/2026 · Elaborado por Rodrigo (Estratégia Financeira)</div>
-    <div class="pf-pg">02 / 02</div>
+    <div class="pl">Confidencial · Valvic Marcenaria · Vargas Decor Ltda · Junho/2026</div>
+    <div class="pr">02 <span>/</span> 05</div>
   </div>
-</div>
+</section>
+
+<!-- ══════════════ PÁGINA 3 — ATIVOS: MAQUINÁRIO + FERRAMENTAS ══════════════ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l">
+      <div class="kx">Ativos · I</div>
+      <div class="tt">Maquinário & Ferramentas</div>
+    </div>
+    <div class="r">
+      <div class="co">Valvic Marcenaria</div>
+      <div class="pg">Patrimônio · Jun 2026</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Maquinário Industrial</span><span class="ct">Subtotal R$ 246.500</span></div>
+    <table>
+      <thead><tr><th style="width:34px">ID</th><th>Equipamento</th><th>Marca / Modelo</th><th class="r" style="width:74px">Valor R$</th><th style="width:70px">Situação</th></tr></thead>
+      <tbody>
+        <tr><td class="id">M01</td><td><span class="nm">Router CNC</span><div class="dt">NF-e 2.403 · jun/2025 · contrato 4788</div></td><td>RAIZEN Solid TAF · 380V · 3 eixos</td><td class="r num"><b>125.000</b></td><td><span class="bx bx-fin">Financiado</span></td></tr>
+        <tr><td class="id">M02</td><td><span class="nm">Esquadrejadeira de precisão</span><div class="dt">NF-e 2.509 · jul/2025 · contrato 5014</div></td><td>RAIZEN ALP RZ 3200P-A45 · 7,5 CV</td><td class="r num"><b>44.000</b></td><td><span class="bx bx-fin">Financiado</span></td></tr>
+        <tr><td class="id">M03</td><td><span class="nm">Coladeira de borda (principal)</span><div class="dt">Filetagem automática · fita 0,4 mm · cola EVA</div></td><td>SCM minimax me 25</td><td class="r num"><b>60.000</b></td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">M04</td><td><span class="nm">Coladeira de borda (auxiliar)</span></td><td>Mineli H4100</td><td class="r num">11.000</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">M05</td><td><span class="nm">Refiladora</span></td><td>Mineli MRF1000</td><td class="r num">6.500</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr class="stot"><td colspan="3">Subtotal — Maquinário Industrial</td><td class="r num">246.500</td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Ferramentas & Equipamentos de Produção</span><span class="ct">Subtotal R$ 93.100</span></div>
+    <table>
+      <thead><tr><th style="width:34px">ID</th><th>Item</th><th>Detalhe</th><th class="r" style="width:74px">Valor R$</th><th style="width:70px">Obs.</th></tr></thead>
+      <tbody>
+        <tr><td class="id">F01</td><td><span class="nm">Tupia estacionária</span></td><td class="note">Equipamento antigo, marca não identificada</td><td class="r num">5.000</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">F02</td><td><span class="nm">Serra de esquadria</span></td><td class="note">DeWalt DW714</td><td class="r num">1.800</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">F03</td><td><span class="nm">Coletores de pó (3 un.)</span></td><td class="note">Exaustão de oficina</td><td class="r num">15.000</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">F04</td><td><span class="nm">Transformador de energia</span></td><td class="note">—</td><td class="r num">4.000</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">F05</td><td><span class="nm">Secador de ar</span></td><td class="note">—</td><td class="r num">4.000</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">F06</td><td><span class="nm">Compressores de ar</span></td><td class="note">—</td><td class="r num">11.000</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">F07</td><td><span class="nm">Furador de bancada</span></td><td class="note">—</td><td class="r num">1.300</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">F08</td><td><span class="nm">Sistema pneumático</span></td><td class="note">—</td><td class="r num">3.000</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">F09</td><td><span class="nm">Fresas variadas + pinças</span></td><td class="note">—</td><td class="r num">8.000</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">F10</td><td><span class="nm">Ferramentas manuais (conjunto)</span></td><td class="note">Parafusadeiras, furadeiras, tico-tico etc.</td><td class="r num">40.000</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr class="stot"><td colspan="3">Subtotal — Ferramentas & Equipamentos</td><td class="r num">93.100</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pf">
+    <div class="pl">Confidencial · Valvic Marcenaria · Vargas Decor Ltda · Junho/2026</div>
+    <div class="pr">03 <span>/</span> 05</div>
+  </div>
+</section>
+
+<!-- ══════════════ PÁGINA 4 — ATIVOS: INFRA, LOGÍSTICA, TI, ESCRITÓRIO ══════════════ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l">
+      <div class="kx">Ativos · II</div>
+      <div class="tt">Infraestrutura & Frota</div>
+    </div>
+    <div class="r">
+      <div class="co">Valvic Marcenaria</div>
+      <div class="pg">Patrimônio · Jun 2026</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Infraestrutura do Galpão</span><span class="ct">Subtotal R$ 17.800</span></div>
+    <table>
+      <thead><tr><th style="width:34px">ID</th><th>Item</th><th>Detalhe</th><th class="r" style="width:74px">Valor R$</th><th style="width:70px">Obs.</th></tr></thead>
+      <tbody>
+        <tr><td class="id">G01</td><td><span class="nm">Estruturas de armazenamento e montagem</span></td><td class="note">Gaiolas de chapas, bancadas, carrinhos — serralheria</td><td class="r num">12.000</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">G02</td><td><span class="nm">Carrinho de transporte de chapa</span></td><td class="note">—</td><td class="r num">1.500</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">G03</td><td><span class="nm">Bebedouro</span></td><td class="note">—</td><td class="r num">1.300</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">G04</td><td><span class="nm">Ventiladores</span></td><td class="note">—</td><td class="r num">1.600</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">G05</td><td><span class="nm">Etiquetadora</span></td><td class="note">—</td><td class="r num">1.400</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr class="stot"><td colspan="3">Subtotal — Infraestrutura do Galpão</td><td class="r num">17.800</td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Logística & Veículos</span><span class="ct">Subtotal R$ 55.000</span></div>
+    <table>
+      <thead><tr><th style="width:34px">ID</th><th>Veículo</th><th>Identificação</th><th class="r" style="width:74px">Valor R$</th><th style="width:70px">Situação</th></tr></thead>
+      <tbody>
+        <tr><td class="id">L01</td><td><span class="nm">Chevrolet Montana LS 1.4 8V Eco 2P</span><div class="dt">Ativo de uso da empresa · 45 parc. × R$ 1.494,78 · até mar/2030</div></td><td>2019/2020 · placa QUY4166 · Renavam 1208242803</td><td class="r num"><b>55.000</b></td><td><span class="bx bx-att">Regularizar</span></td></tr>
+        <tr class="stot"><td colspan="3">Subtotal — Logística & Veículos</td><td class="r num">55.000</td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">TI, Informática & Escritório</span><span class="ct">Subtotal R$ 87.500</span></div>
+    <table>
+      <thead><tr><th style="width:34px">ID</th><th>Item</th><th>Modelo / Descrição</th><th class="r" style="width:74px">Valor R$</th><th style="width:70px">Obs.</th></tr></thead>
+      <tbody>
+        <tr><td class="id">T01</td><td><span class="nm">Computador de produção</span></td><td class="note">—</td><td class="r num">2.000</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">T02</td><td><span class="nm">Tablet de produção</span></td><td class="note">—</td><td class="r num">1.000</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">T03</td><td><span class="nm">Mac de escritório</span></td><td class="note">Apple 2011 · valor de mercado atual</td><td class="r num">500</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">T04</td><td><span class="nm">iPad Pro</span></td><td class="note">Apple</td><td class="r num">5.000</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">T05</td><td><span class="nm">Notebook de programação</span></td><td class="note">—</td><td class="r num">7.000</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">T06</td><td><span class="nm">Desktop de programação</span></td><td class="note">—</td><td class="r num">3.700</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">T07</td><td><span class="nm">Impressora</span></td><td class="note">Brother HL-T4000DW</td><td class="r num">4.300</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">T08</td><td><span class="nm">Monitor especial de programação</span></td><td class="note">—</td><td class="r num">2.000</td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr><td class="id">E01</td><td><span class="nm">Ambientes de escritório — mobiliário e benfeitorias</span></td><td class="note">Escritório (R$40k) + sala de programação (R$20k) + cozinha (R$2k)</td><td class="r num"><b>62.000</b></td><td><span class="bx bx-ok">Quitado</span></td></tr>
+        <tr class="stot"><td colspan="3">Subtotal — TI, Informática & Escritório</td><td class="r num">87.500</td><td></td></tr>
+        <tr class="grand"><td colspan="3">TOTAL DO ATIVO BRUTO</td><td class="r num"><span class="gv">499.900</span></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pf">
+    <div class="pl">Confidencial · Valvic Marcenaria · Vargas Decor Ltda · Junho/2026</div>
+    <div class="pr">04 <span>/</span> 05</div>
+  </div>
+</section>
+
+<!-- ══════════════ PÁGINA 5 — PASSIVOS + CONSOLIDADO ══════════════ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l">
+      <div class="kx">Passivos & Consolidação</div>
+      <div class="tt">Estrutura de Capital</div>
+    </div>
+    <div class="r">
+      <div class="co">Valvic Marcenaria</div>
+      <div class="pg">Patrimônio · Jun 2026</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Dívidas & Passivos</span><span class="ct">Total R$ 228.865</span></div>
+    <div class="dgrid">
+      <div class="dcard ext">
+        <div class="dh"><span>Financiamentos Externos</span><span class="dt num">R$ 133.865</span></div>
+        <div class="drow"><div class="di"><div class="dn">RAIZEN — Router CNC (M01)</div><div class="dd">6 × R$ 3.750 · quitação nov/2026</div></div><div class="dv r num">22.500</div></div>
+        <div class="drow"><div class="di"><div class="dn">RAIZEN — Esquadrejadeira (M02)</div><div class="dd">6 × R$ 2.350 · quitação nov/2026</div></div><div class="dv r num">14.100</div></div>
+        <div class="drow"><div class="di"><div class="dn">Montana — uso da empresa (L01)</div><div class="dd">no nome do sócio Paulo · 45 × R$ 1.494,78</div></div><div class="dv r num">67.265</div></div>
+        <div class="drow"><div class="di"><div class="dn">Banco Itaú — capital de giro</div><div class="dd">a liquidar</div></div><div class="dv r num">30.000</div></div>
+      </div>
+      <div class="dcard soc">
+        <div class="dh"><span>Aportes dos Sócios</span><span class="dt num">R$ 95.000</span></div>
+        <div class="drow"><div class="di"><div class="dn">Paulo H. Teixeira — aquisição do CNC</div><div class="dd">+ juros de mercado a acordar</div></div><div class="dv b num">65.000</div></div>
+        <div class="drow"><div class="di"><div class="dn">Paulo H. Teixeira — caixa</div><div class="dd">fortalecimento operacional · + juros a acordar</div></div><div class="dv b num">30.000</div></div>
+        <div class="drow" style="background:#f6f3ec"><div class="di"><div class="dn" style="color:var(--navy)">Capital próprio comprometido</div><div class="dd">"skin in the game" dos sócios</div></div><div class="dv b num">—</div></div>
+      </div>
+    </div>
+
+    <div class="summary-strip">
+      <div class="ss a"><div class="l">Ativo Bruto</div><div class="v num">R$ 499.900</div></div>
+      <div class="ss b"><div class="l">Passivo Total</div><div class="v num">R$ 228.865</div></div>
+      <div class="ss c"><div class="l">Patrimônio Líquido</div><div class="v num">R$ 271.035</div></div>
+    </div>
+
+    <div class="exec" style="margin-top:16px">
+      <div class="et">Conclusão</div>
+      <p>Descontados todos os passivos, o <b>patrimônio líquido da Valvic é de R$ 271.035</b> — equivalente a <b>54,2% do ativo</b>. A estrutura produtiva para escalar já está instalada e, na maior parte, paga; a dívida remanescente é curta e ligada a equipamento. <b>O que destrava o próximo nível é capital de giro</b> — não investimento em máquina-base.</p>
+    </div>
+
+    <div class="notes">
+      <div class="nt">Notas técnicas</div>
+      <ol>
+        <li><b>Coladeira M03:</b> SCM minimax me 25 (filetagem automática) — confirmado no registro técnico do Téo (marceneiro programador).</li>
+        <li><b>Montana (L01):</b> ativo de uso integral da empresa; financiamento formalizado no nome do sócio Paulo H. Teixeira — regularização societária mapeada.</li>
+        <li><b>Aportes do sócio Paulo</b> (R$ 65k CNC + R$ 30k caixa = R$ 95.000): sem juros contabilizados — remuneração de mercado a acordar.</li>
+        <li><b>Assistente administrativo</b> (R$ 2.000/mês): ingresso previsto para agosto/2026 — impacta custo fixo, não o ativo.</li>
+        <li>Valores a preço de mercado atual ou custo histórico de aquisição, quando não há cotação disponível.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="pf">
+    <div class="pl">Documento de uso interno e restrito · Elaborado pela área de Estratégia Financeira</div>
+    <div class="pr">05 <span>/</span> 05</div>
+  </div>
+</section>
 
 </body>
 </html>
