@@ -73,7 +73,7 @@
       <div class="metric"><div class="ml">Área total</div><div class="mv num">≈ 154 <span class="u">m²</span></div></div>
       <div class="metric"><div class="ml">Fábrica útil</div><div class="mv num">≈ 18 × 6,7 <span class="u">m</span></div></div>
       <div class="metric"><div class="ml">Largura livre (crítica)</div><div class="mv num">6,7 <span class="u">m</span></div></div>
-      <div class="metric"><div class="ml">Mudança na Fase 1</div><div class="mv" style="color:var(--green);font-size:12px">Só a coladeira (oeste)</div></div>
+      <div class="metric"><div class="ml">Mudança na Fase 1</div><div class="mv" style="color:var(--green);font-size:12px">Só a coladeira (parede norte)</div></div>
     </div>
 
     <div class="draw">
@@ -115,65 +115,76 @@
           <text x="956" y="142" text-anchor="middle" font-size="10" font-weight="700" fill="#8a8475">DEPÓSITO</text>
           <text x="956" y="157" text-anchor="middle" font-size="8" fill="#a39d8e">Chapas / estoque</text>
 
-          <!-- ===================== MÁQUINAS ===================== -->
-          <!-- escala 44px/m, x medido a partir da parede oeste do prédio -->
+          <!-- ===== Orientação: escritório/oeste à esq · depósito/leste à dir ===== -->
+          <text x="110" y="-26" text-anchor="middle" font-size="8" font-weight="700" fill="var(--muted)">◄ ESCRITÓRIO (oeste · de onde as fotos foram tiradas)</text>
+          <text x="956" y="-26" text-anchor="middle" font-size="8" font-weight="700" fill="var(--muted)">DEPÓSITO / chapas (leste) ►</text>
+          <text x="558" y="-26" text-anchor="middle" font-size="7.5" fill="#a39d8e" font-style="italic">parede norte = lateral esquerda nas fotos</text>
 
-          <!-- NOVA Coladeira Giben KG268: 4x1m, parede norte, x5.4 (=237) y0.3 -->
-          <rect x="237" y="13" width="176" height="46" rx="3" fill="#eaf4ee" stroke="var(--green)" stroke-width="2.4"/>
-          <text x="325" y="32" text-anchor="middle" font-size="9.5" font-weight="800" fill="var(--green)">COLADEIRA GIBEN KG268</text>
-          <text x="325" y="45" text-anchor="middle" font-size="8" fill="#2f7d4f">NOVA · 4,0 × 1,0 m · arredondador</text>
-          <text x="325" y="55" text-anchor="middle" font-size="7" fill="#5a8a6e">substitui as coladeiras antigas</text>
-
-          <!-- ghost: coladeiras antigas removidas (mesma faixa, abaixo) -->
-          <rect x="237" y="66" width="176" height="20" rx="2" fill="none" stroke="var(--red)" stroke-width="1.4" stroke-dasharray="5 4"/>
-          <text x="325" y="79" text-anchor="middle" font-size="7.2" font-weight="600" fill="var(--red)">SCM me25 + Mineli + refiladora — removidas/realocadas</text>
-
-          <!-- KEEP Esquadrejadeira Raizen RZN 3200P: 3x2m, x6 (264) y sul -->
-          <rect x="264" y="200" width="132" height="88" rx="3" fill="#eef1f6" stroke="var(--navy)" stroke-width="2.2"/>
-          <text x="330" y="238" text-anchor="middle" font-size="9" font-weight="800" fill="var(--navy)">ESQUADREJADEIRA</text>
-          <text x="330" y="251" text-anchor="middle" font-size="8" fill="var(--navy2)">Raizen RZN 3200P · 3×2 m</text>
-          <text x="330" y="263" text-anchor="middle" font-size="7.5" font-weight="700" fill="var(--blue)">PERMANECE NA POSIÇÃO</text>
-
-          <!-- KEEP CNC Solid TAF: 3x2m, central x9.6 (422) -->
-          <rect x="430" y="120" width="132" height="100" rx="3" fill="#eef1f6" stroke="var(--navy)" stroke-width="2.2"/>
-          <text x="496" y="158" text-anchor="middle" font-size="9" font-weight="800" fill="var(--navy)">CNC SOLID TAF</text>
-          <text x="496" y="171" text-anchor="middle" font-size="8" fill="var(--navy2)">Raizen · centro usinagem · 3×2 m</text>
-          <text x="496" y="183" text-anchor="middle" font-size="7.5" font-weight="700" fill="var(--blue)">PERMANECE NA POSIÇÃO</text>
-
-          <!-- Coletor de pó (existente) pequeno -->
-          <rect x="430" y="13" width="46" height="40" rx="3" fill="#f3f0e9" stroke="#9a948a" stroke-width="1.4"/>
-          <text x="453" y="30" text-anchor="middle" font-size="6.5" fill="#6c7785">Coletor</text>
-          <text x="453" y="39" text-anchor="middle" font-size="6.5" fill="#6c7785">de pó</text>
-          <text x="453" y="48" text-anchor="middle" font-size="6" fill="#9a948a">existe</text>
-
-          <!-- Auxiliares: tupia + serra (keep) -->
-          <rect x="486" y="13" width="52" height="40" rx="3" fill="#f3f0e9" stroke="#9a948a" stroke-width="1.4"/>
-          <text x="512" y="30" text-anchor="middle" font-size="6.5" fill="#6c7785">Tupia +</text>
-          <text x="512" y="39" text-anchor="middle" font-size="6.5" fill="#6c7785">serra esq.</text>
-          <text x="512" y="48" text-anchor="middle" font-size="6" fill="#9a948a">permanece</text>
-
-          <!-- Bancadas de montagem (direita da rampa) x14-20 -->
+          <!-- ================= ZONA OESTE: MONTAGEM (perto do escritório) ================= -->
+          <!-- x220-548 (5,0–12,6 m) -->
           <g fill="#faf6ec" stroke="#caa64f" stroke-width="1.6">
-            <rect x="600" y="30" width="150" height="34" rx="3"/>
-            <rect x="600" y="80" width="150" height="34" rx="3"/>
-            <rect x="770" y="30" width="120" height="34" rx="3"/>
-            <rect x="770" y="80" width="120" height="34" rx="3"/>
+            <rect x="240" y="16" width="120" height="34" rx="3"/>
+            <rect x="240" y="245" width="120" height="34" rx="3"/>
+            <rect x="392" y="16" width="120" height="34" rx="3"/>
+            <rect x="392" y="245" width="120" height="34" rx="3"/>
           </g>
-          <text x="745" y="180" text-anchor="middle" font-size="10" font-weight="800" fill="#9a7d2e">ÁREA DE MONTAGEM</text>
-          <text x="745" y="194" text-anchor="middle" font-size="8" fill="#a8863f">Bancadas · pré-montagem · acabamento</text>
+          <text x="378" y="135" text-anchor="middle" font-size="11" font-weight="800" fill="#9a7d2e">ÁREA DE MONTAGEM</text>
+          <text x="378" y="150" text-anchor="middle" font-size="8.2" fill="#a8863f">Bancadas · pré-montagem · acabamento · móveis prontos</text>
+          <text x="378" y="164" text-anchor="middle" font-size="7.5" fill="#b0aa9b" font-style="italic">(primeiro plano das fotos — encostada no escritório)</text>
 
-          <!-- ===== Compressor NOVO externo coberto (acima da parede norte) ===== -->
-          <rect x="300" y="-38" width="70" height="30" rx="3" fill="#faf0d9" stroke="var(--gold)" stroke-width="2.2"/>
-          <text x="335" y="-25" text-anchor="middle" font-size="7.5" font-weight="800" fill="#a8863f">COMPRESSOR</text>
-          <text x="335" y="-15" text-anchor="middle" font-size="6.8" fill="#a8863f">Techto 10HP · NOVO · externo coberto</text>
-          <line x1="335" y1="-8" x2="335" y2="13" stroke="var(--gold)" stroke-width="1.4" stroke-dasharray="3 3"/>
+          <!-- ================= ZONA LESTE: MÁQUINAS (centro/leste) ================= -->
+          <!-- x568-900 (12,9–20,5 m) -->
 
-          <!-- ===== Fluxo funcional (setas) ===== -->
-          <!-- CNC -> Coladeira (oeste) -->
-          <path d="M 430 90 L 360 90 L 360 62" fill="none" stroke="var(--gold)" stroke-width="2" marker-end="url(#arr)" opacity="0.85"/>
-          <!-- Coladeira -> Montagem (leste) -->
-          <path d="M 415 40 L 470 40 M 575 95 L 595 95" fill="none" stroke="var(--gold)" stroke-width="2" marker-end="url(#arr)" opacity="0.7"/>
-          <text x="640" y="250" text-anchor="middle" font-size="7.5" fill="var(--muted)" font-style="italic">Fluxo: Corte (CNC) → Colagem de borda → Montagem → Expedição</text>
+          <!-- NOVA Coladeira Giben KG268: parede NORTE (esquerda), oeste do conjunto -->
+          <rect x="586" y="12" width="176" height="46" rx="3" fill="#eaf4ee" stroke="var(--green)" stroke-width="2.4"/>
+          <text x="674" y="30" text-anchor="middle" font-size="9" font-weight="800" fill="var(--green)">COLADEIRA GIBEN KG268</text>
+          <text x="674" y="43" text-anchor="middle" font-size="7.6" fill="#2f7d4f">NOVA · 4,0 × 1,0 m · arredondador</text>
+          <text x="674" y="53" text-anchor="middle" font-size="6.8" fill="#5a8a6e">substitui a coladeira atual (parede esquerda)</text>
+          <!-- ghost removida -->
+          <rect x="586" y="62" width="176" height="17" rx="2" fill="none" stroke="var(--red)" stroke-width="1.3" stroke-dasharray="5 4"/>
+          <text x="674" y="74" text-anchor="middle" font-size="6.8" font-weight="600" fill="var(--red)">coladeira atual + coletor "Razi" — removidos</text>
+
+          <!-- KEEP CNC Solid TAF: parede NORTE/fundo, leste -->
+          <rect x="775" y="12" width="120" height="92" rx="3" fill="#eef1f6" stroke="var(--navy)" stroke-width="2.2"/>
+          <text x="835" y="44" text-anchor="middle" font-size="8.5" font-weight="800" fill="var(--navy)">CNC SOLID TAF</text>
+          <text x="835" y="57" text-anchor="middle" font-size="7.2" fill="var(--navy2)">Raizen · centro usinagem</text>
+          <text x="835" y="68" text-anchor="middle" font-size="7.2" fill="var(--navy2)">flatbed · 3×2 m</text>
+          <text x="835" y="83" text-anchor="middle" font-size="7" font-weight="700" fill="var(--blue)">PERMANECE</text>
+          <text x="835" y="93" text-anchor="middle" font-size="7" font-weight="700" fill="var(--blue)">NA POSIÇÃO</text>
+
+          <!-- KEEP Esquadrejadeira RZN: centro-sul, à frente da CNC -->
+          <rect x="640" y="160" width="180" height="80" rx="3" fill="#eef1f6" stroke="var(--navy)" stroke-width="2.2"/>
+          <text x="730" y="190" text-anchor="middle" font-size="8.5" font-weight="800" fill="var(--navy)">ESQUADREJADEIRA</text>
+          <text x="730" y="203" text-anchor="middle" font-size="7.4" fill="var(--navy2)">Raizen RZN 3200P · 3×2 m + mesa</text>
+          <text x="730" y="217" text-anchor="middle" font-size="7" font-weight="700" fill="var(--blue)">PERMANECE NA POSIÇÃO</text>
+          <text x="730" y="231" text-anchor="middle" font-size="6.6" fill="#8a93a0" font-style="italic">mesa esquadrejadora desliza p/ oeste</text>
+
+          <!-- Coletores de pó (sul/leste) -->
+          <rect x="833" y="190" width="60" height="52" rx="3" fill="#f3f0e9" stroke="#9a948a" stroke-width="1.4"/>
+          <text x="863" y="212" text-anchor="middle" font-size="6.6" fill="#6c7785">Coletores</text>
+          <text x="863" y="222" text-anchor="middle" font-size="6.6" fill="#6c7785">de pó</text>
+          <text x="863" y="233" text-anchor="middle" font-size="6" fill="#9a948a">existentes</text>
+
+          <!-- Bancada de ferramentas + tupia/serra (sul) -->
+          <rect x="586" y="200" width="46" height="42" rx="3" fill="#f3f0e9" stroke="#9a948a" stroke-width="1.4"/>
+          <text x="609" y="218" text-anchor="middle" font-size="6.2" fill="#6c7785">Tupia /</text>
+          <text x="609" y="227" text-anchor="middle" font-size="6.2" fill="#6c7785">serra +</text>
+          <text x="609" y="236" text-anchor="middle" font-size="6.2" fill="#6c7785">ferram.</text>
+
+          <text x="730" y="262" text-anchor="middle" font-size="8.5" font-weight="700" fill="#5a6470">ZONA DE MÁQUINAS (corte · usinagem · colagem)</text>
+
+          <!-- ===== Compressor NOVO externo coberto (parede norte, junto às máquinas) ===== -->
+          <rect x="640" y="-20" width="120" height="22" rx="3" fill="#faf0d9" stroke="var(--gold)" stroke-width="2.2"/>
+          <text x="700" y="-9" text-anchor="middle" font-size="7.4" font-weight="800" fill="#a8863f">COMPRESSOR Techto 10HP · NOVO · externo coberto</text>
+          <line x1="700" y1="2" x2="700" y2="12" stroke="var(--gold)" stroke-width="1.4" stroke-dasharray="3 3"/>
+
+          <!-- ===== Fluxo (chapa entra leste → produto sai oeste) ===== -->
+          <!-- chapa: depósito -> CNC -->
+          <path d="M 905 130 L 850 130 L 850 108" fill="none" stroke="var(--gold)" stroke-width="2" marker-end="url(#arr)" opacity="0.8"/>
+          <text x="905" y="125" text-anchor="end" font-size="6.6" fill="#a8863f">chapa</text>
+          <!-- produto: máquinas -> montagem (oeste) -->
+          <path d="M 600 300 L 250 300" fill="none" stroke="var(--gold)" stroke-width="2" marker-end="url(#arr)" opacity="0.7"/>
+          <text x="430" y="296" text-anchor="middle" font-size="7" fill="#a8863f" font-style="italic">fluxo do produto → montagem → expedição (escritório/oeste)</text>
 
           <!-- ===== Cotas ===== -->
           <!-- comprimento total -->
@@ -208,7 +219,7 @@
       <div class="lg"><i style="background:#faf0d9;border:2px solid var(--gold)"></i> Novo externo (compressor)</div>
       <div class="lg"><i style="background:#fff;border:1.4px dashed var(--red)"></i> Removida / realocada</div>
       <div class="lg"><i style="background:url(#hatch);border:1px solid #b9b3a4"></i> Área sem alteração</div>
-      <div class="lg note">Medidas conferidas na planta 1/50 · <b>conferir no local</b> antes da instalação.</div>
+      <div class="lg note">Posições das máquinas conforme as fotos (jun/2026) · medidas do galpão da planta 1/50 · <b>conferir no local</b>.</div>
     </div>
   </div>
 
