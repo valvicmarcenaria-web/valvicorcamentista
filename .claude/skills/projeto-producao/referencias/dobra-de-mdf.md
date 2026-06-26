@@ -129,3 +129,16 @@ pra ficar liso.)
 ## Checagem de segurança da pele (fold-to-skin)
 - Deformação na pele ≈ **espessura da pele ÷ (2 × raio)** → quanto maior o raio, mais
   folgada a pele. Criado (R60, pele 1mm) = 0,83%, bem dentro do seguro.
+
+---
+
+# ⭐ REGRA GERAL DOS VINCOS (vale p/ TODA peça com ranhura)
+1. **Sair 10 mm para FORA da peça** nas duas pontas de cada vinco (avanço no vazio).
+2. **Ligar tudo em ZIGZAG CONTÍNUO** = **uma única polilinha** → a fresa **entra uma
+   vez e sai uma vez**; não levanta entre passadas (senão quebra as quinas).
+- **Cilindro / cinta reta:** vincos **paralelos** (verticais), passo ao longo do comprimento.
+  Ex.: `gen_criado_fabinho_M55` (cinta) e cilindro v3/v4.
+- **Cone (tronco):** vincos **radiais** convergindo ao ápice; saem 10 mm além do arco
+  interno (Sr−10) e do externo (SR+10); zigzag contínuo. Ex.: `gen_cone_leg`
+  (`gerados/pe_mesa_cone_O250_O600.dxf`).
+- Confirmado pelo Paulo em 26/06 ("as linhas da ranhura saem 1 cm pra fora e ligam em zigzag").
