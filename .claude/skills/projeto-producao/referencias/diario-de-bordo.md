@@ -16,7 +16,40 @@ está digitando muda. Para não trocar os nomes:
 
 📌 Plano da NOVA ESTRUTURA (expansão) consolidado em `projetos/Nova-estrutura.md`.
 
-## Última sessão: 2026-06-24
+## Última sessão: 2026-06-26
+
+### 🪚 AULA DA FRESA DE 45° (Paulo) — gravado em `aspire-cortes-especiais.md`
+- **T7 = fresa de 45°** (NÃO é "reta 3mm" — corrigi o erro antigo em todo lugar).
+  Confirmado pelos `.tap` reais (`exemplos/2026-06-26_teste-45-graus-*.tap`). S13500.
+  🚨 **Lição:** o que sai no `.tap` é a VERDADE — confiar nele (o código dizia T7 e eu
+  insisti em T8; o código estava certo).
+- **Método:** desenha uma LINHA e manda a T7 correr SOBRE ela (sem offset).
+- **Z = espessura + 0,1** p/ chanfro completo (passante). Pode ser parcial (Z maior).
+- **Compensação:** a 45° "come" **~3 mm por lado** (0,3 cm). Paulo fala em **CM**!
+  - 4 lados → desenhar **+0,6 cm na medida** (50→50,6 cm = 506 mm; 600 final → **606**).
+  - 1 lado → **+0,3 cm** só naquela medida (50,3 × 50,0).
+  - (Tampo redondo deu 1,5/lado — rever por quê; come parece ~fixa pela fresa, não = profundidade.)
+- **Fluxo 1 lado (`.tap`):** T7 corta a linha do lado (Z−0,1) → troca T2 (6mm) corta o
+  contorno POR FORA (cantos R3). Peça final ex.: 503×500.
+- 🚨 **Nesting com 45°:** peças a **30 mm (3 cm)** de distância **no lado chanfrado**
+  (a fresa de 45° é larga e invade a vizinha). Outros lados: 7 mm normal.
+- ✅ **Teste passado:** 2 quadrados 600 final → desenhei **606×606**, **30 mm** entre eles
+  (`gerados/dois_quadrados_600_45graus.dxf`). Paulo aprovou ("perfeito").
+
+### DXFs entregues nesta sessão
+- **Criado redondo M55 (Fabinho):** tampo+base Ø500 + cinta 1571×420 c/ vincos zigzag,
+  MDF branco 15mm (`gerados/criado_redondo_fabinho_M55.dxf`). ⚠️ Ø500 = palpite, confirmar.
+- **Pé de mesa cônico** Ø250→Ø600: planificação do tronco de cone + vincos radiais
+  zigzag (`gerados/pe_mesa_cone_O250_O600.dxf`). ⚠️ Altura = 700mm palpite, confirmar.
+- **Nesting** 11 peças em 2 chapas + **offset interno 50mm** por peça.
+- Regra dos vincos gravada: **saem 10mm fora + zigzag contínuo** (reta e radial).
+
+### Pendências
+- Confirmar **espessura da chapa do teste 45°** (Z8,9 no teste de 4 lados) e por que o
+  tampo deu 1,5mm/lado vs 3mm/lado do quadrado.
+- Confirmar **Ø do criado M55** (500?) e **altura do cone** (700?).
+
+## Sessão anterior: 2026-06-24
 
 ### Caso real: criado-mudo curvo (dobra por BOLSO contínuo) ✅ aprendido
 - Paulo mandou imagem + `.crv3d` + **`.tap`** (G-code). O `.tap` é ouro — leio a
