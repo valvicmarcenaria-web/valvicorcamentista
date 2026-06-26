@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Proposta de Expansão — Valvic Marcenaria · 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{
+    --navy:#0E2038; --navy2:#16314f; --navy-soft:#1d3b5e;
+    --gold:#C2A05A; --gold-soft:#d8bd80; --gold-pale:#f5edd8;
+    --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785;
+    --line:#e8e3d8; --line2:#dfdacd;
+    --green:#2f7d4f; --green2:#256340;
+    --red:#b0413f; --blue:#2f5d8c;
+    --amber:#c47d0e; --amber-pale:#fef3dc;
+  }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{
+    font-family:'Inter','Helvetica Neue',Arial,sans-serif;
+    color:var(--ink); background:#cfd3d9;
+    font-size:10px; line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .num{ font-variant-numeric:tabular-nums; font-feature-settings:"tnum" 1; }
+  .serif{ font-family:'Cormorant Garamond',Georgia,serif; }
+
+  /* ── Sheet ── */
+  .sheet{
+    position:relative; width:210mm; height:297mm;
+    background:var(--cream); margin:16px auto;
+    box-shadow:0 12px 48px rgba(11,22,40,.26);
+    overflow:hidden; page-break-after:always;
+  }
+  .sheet:last-child{ page-break-after:auto; }
+
+  /* ════ CAPA ════ */
+  .cover{
+    background:
+      radial-gradient(ellipse 130% 70% at 110% 110%, #1b3a5e 0%, transparent 55%),
+      radial-gradient(ellipse 80% 60% at -10% 20%, #0d1e35 0%, transparent 50%),
+      linear-gradient(150deg,#0a1626 0%,#0E2038 50%,#091523 100%);
+    color:#fff; display:flex; flex-direction:column; padding:0;
+  }
+  .cv-frame{ position:absolute; inset:12mm; border:1px solid rgba(194,160,90,.35); pointer-events:none; }
+  .cv-frame::before{ content:""; position:absolute; inset:5px; border:1px solid rgba(194,160,90,.12); }
+  .cv-inner{ position:relative; z-index:2; flex:1; display:flex; flex-direction:column; padding:22mm 20mm; }
+
+  .cv-brand{ display:flex; align-items:center; gap:13px; }
+  .cv-mono{
+    width:52px; height:52px; flex-shrink:0; border:1.5px solid var(--gold);
+    border-radius:4px; display:flex; align-items:center; justify-content:center;
+    font-family:'Cormorant Garamond',serif; font-weight:700; font-size:24px; color:var(--gold);
+  }
+  .cv-co{ font-size:16px; font-weight:700; letter-spacing:3px; text-transform:uppercase; }
+  .cv-sub{ font-size:8.5px; color:rgba(255,255,255,.45); letter-spacing:.4px; margin-top:3px; }
+
+  .cv-center{ margin:auto 0; }
+  .cv-label{ font-size:9px; letter-spacing:5px; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+  .cv-rule{ width:56px; height:2px; background:var(--gold); margin-bottom:20px; }
+  .cv-title{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:56px; line-height:1.0; letter-spacing:-.5px; }
+  .cv-title em{ color:var(--gold-soft); font-style:italic; }
+  .cv-tagline{ font-size:13px; color:rgba(255,255,255,.58); margin-top:16px; line-height:1.7; font-weight:300; max-width:360px; }
+
+  .cv-phases{ display:flex; gap:0; margin-top:28px; padding-top:22px; border-top:1px solid rgba(255,255,255,.13); }
+  .cv-phase{ flex:1; padding-right:16px; }
+  .cv-phase + .cv-phase{ border-left:1px solid rgba(255,255,255,.1); padding-left:20px; }
+  .cv-phase .pl{ font-size:7.5px; letter-spacing:1.8px; text-transform:uppercase; color:rgba(255,255,255,.45); margin-bottom:5px; }
+  .cv-phase .pv{ font-size:20px; font-weight:700; }
+  .cv-phase .pv.g{ color:#7fd6a0; }
+  .cv-phase .pv.gold{ color:var(--gold-soft); }
+  .cv-phase .pd{ font-size:8px; color:rgba(255,255,255,.45); margin-top:3px; }
+
+  .cv-foot{ display:flex; justify-content:space-between; align-items:flex-end; margin-top:28px; }
+  .cv-conf{ font-size:8px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.35); }
+  .cv-date{ font-size:9px; color:rgba(255,255,255,.5); text-align:right; }
+
+  /* ════ CONTENT HEADER ════ */
+  .ph{
+    background:var(--navy); color:#fff;
+    padding:11mm 16mm 6mm;
+    display:flex; justify-content:space-between; align-items:flex-end;
+  }
+  .ph .l .kx{ font-size:7.5px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); }
+  .ph .l .tt{ font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:600; margin-top:3px; line-height:1; }
+  .ph .r{ text-align:right; }
+  .ph .r .co{ font-size:9.5px; letter-spacing:2px; text-transform:uppercase; font-weight:600; }
+  .ph .r .pg{ font-size:8px; color:rgba(255,255,255,.5); margin-top:3px; letter-spacing:1px; }
+
+  .body{ padding:8mm 16mm 0; }
+
+  /* ── Section label ── */
+  .sec{ display:flex; align-items:center; gap:10px; margin:0 0 8px; }
+  .sec:not(:first-child){ margin-top:14px; }
+  .sec .bar{ width:14px; height:2px; background:var(--gold); flex-shrink:0; }
+  .sec .tx{ font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--navy); }
+  .sec .ct{ margin-left:auto; font-size:8px; color:var(--muted); }
+
+  /* ── Tables ── */
+  table{ width:100%; border-collapse:collapse; }
+  thead th{ background:var(--navy); color:#fff; font-size:7.4px; font-weight:600; letter-spacing:.6px; text-transform:uppercase; padding:5.5px 9px; text-align:left; }
+  th.r,td.r{ text-align:right; }
+  tbody td{ padding:5px 9px; border-bottom:1px solid var(--line); vertical-align:middle; font-size:9.5px; }
+  tbody tr:nth-child(even) td{ background:#f4f1ea; }
+  td .nm{ font-weight:600; color:var(--ink); }
+  td .dt{ color:var(--muted); font-size:8.4px; }
+  td.note{ color:var(--muted); font-size:8.4px; }
+  tr.stot td{ background:#eceadf !important; font-weight:700; color:var(--navy); border-top:1.5px solid var(--line2); border-bottom:1.5px solid var(--line2); font-size:9.5px; }
+  tr.grand td{ background:var(--navy) !important; color:#fff; font-weight:700; font-size:11px; padding:8px 9px; border:none; }
+  tr.grand td .gv{ color:var(--gold-soft); }
+  tr.highlight td{ background:var(--gold-pale) !important; font-weight:600; color:var(--navy); }
+
+  /* ── KPI cards ── */
+  .kpis{ display:grid; gap:11px; }
+  .kpis.c3{ grid-template-columns:repeat(3,1fr); }
+  .kpis.c2{ grid-template-columns:repeat(2,1fr); }
+  .kpi{ background:#fff; border:1px solid var(--line); border-radius:7px; padding:13px 14px 14px; position:relative; overflow:hidden; }
+  .kpi::before{ content:""; position:absolute; top:0; left:0; right:0; height:3px; }
+  .kpi.g::before{ background:var(--green); }
+  .kpi.r::before{ background:var(--red); }
+  .kpi.b::before{ background:var(--navy); }
+  .kpi.gold::before{ background:var(--gold); }
+  .kpi .kl{ font-size:7.5px; letter-spacing:1.3px; text-transform:uppercase; color:var(--muted); }
+  .kpi .kv{ font-size:24px; font-weight:800; margin-top:5px; letter-spacing:-.5px; }
+  .kpi.g .kv{ color:var(--green); }
+  .kpi.r .kv{ color:var(--red); }
+  .kpi.b .kv{ color:var(--navy); }
+  .kpi.gold .kv{ color:var(--amber); }
+  .kpi .ks{ font-size:8px; color:var(--muted); margin-top:4px; line-height:1.45; }
+
+  /* ── Exec box ── */
+  .exec{ background:#fff; border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:0 7px 7px 0; padding:13px 16px; }
+  .exec .et{ font-size:8px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:6px; }
+  .exec p{ font-family:'Cormorant Garamond',serif; font-size:14px; line-height:1.55; color:#2a3744; }
+  .exec p b{ color:var(--navy); font-weight:700; }
+
+  /* ── Phase cards ── */
+  .phases{ display:grid; grid-template-columns:1fr 1fr; gap:13px; }
+  .pcard{ border-radius:8px; overflow:hidden; border:1px solid var(--line); }
+  .pcard .ph2{ padding:10px 14px; color:#fff; }
+  .pcard.f1 .ph2{ background:linear-gradient(135deg,#2f7d4f,#256340); }
+  .pcard.f2 .ph2{ background:linear-gradient(135deg,#0E2038,#16314f); }
+  .pcard .ph2 .pt{ font-size:8px; letter-spacing:2px; text-transform:uppercase; opacity:.75; }
+  .pcard .ph2 .pn{ font-size:18px; font-weight:800; margin-top:2px; }
+  .pcard .ph2 .ps{ font-size:9px; opacity:.8; margin-top:2px; }
+  .pcard .pb{ padding:10px 14px; background:#fff; }
+  .pcard .pb li{ font-size:9px; color:var(--ink); margin-bottom:5px; padding-left:12px; position:relative; list-style:none; }
+  .pcard .pb li::before{ content:"→"; position:absolute; left:0; color:var(--gold); font-weight:700; }
+  .pcard .pb .ptot{ margin-top:8px; padding-top:8px; border-top:1px solid var(--line); font-size:11px; font-weight:800; color:var(--navy); }
+  .pcard.f1 .pb .ptot{ color:var(--green); }
+
+  /* ── Arrow flow ── */
+  .flow{ display:flex; align-items:center; gap:0; margin:14px 0; }
+  .flow-step{ flex:1; text-align:center; }
+  .flow-box{
+    background:var(--navy); color:#fff; border-radius:6px;
+    padding:8px 6px; font-size:8px; font-weight:700; letter-spacing:.5px;
+    text-transform:uppercase; line-height:1.35;
+  }
+  .flow-box.active{ background:var(--green); }
+  .flow-box.future{ background:var(--navy-soft); }
+  .flow-arr{ font-size:14px; color:var(--gold); padding:0 4px; flex-shrink:0; font-weight:700; }
+  .flow-step .fl{ font-size:7.5px; color:var(--muted); margin-top:4px; }
+
+  /* ── Machine cards ── */
+  .mcards{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .mcard{ background:#fff; border:1px solid var(--line); border-radius:7px; overflow:hidden; }
+  .mcard .mh{ background:var(--navy); color:#fff; padding:7px 11px; }
+  .mcard .mh .mid{ font-size:7.5px; letter-spacing:1.5px; color:var(--gold); text-transform:uppercase; }
+  .mcard .mh .mn{ font-size:12px; font-weight:700; margin-top:1px; }
+  .mcard .mb{ padding:8px 11px; }
+  .mcard .mb .mv{ font-size:19px; font-weight:800; color:var(--green); }
+  .mcard .mb .ms{ font-size:8px; color:var(--muted); margin-top:3px; line-height:1.4; }
+  .mcard .mb .mt{ display:inline-block; margin-top:6px; font-size:7px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; padding:2px 8px; border-radius:20px; }
+  .mcard .mb .mt.star{ background:#fff8e6; color:var(--amber); border:1px solid #eed8a0; }
+  .mcard .mb .mt.ok{ background:#eaf4ee; color:var(--green); border:1px solid #cfe6d8; }
+
+  /* ── Org row ── */
+  .org-row{ display:grid; gap:8px; margin-bottom:8px; }
+  .org-row.c3{ grid-template-columns:repeat(3,1fr); }
+  .org-row.c2{ grid-template-columns:1fr 1fr; }
+  .org-card{ background:#fff; border:1px solid var(--line); border-radius:7px; padding:10px 12px; }
+  .org-card.new{ border-left:3px solid var(--green); }
+  .org-card.f2{ border-left:3px solid var(--navy-soft); }
+  .org-card .ot{ font-size:7.5px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); }
+  .org-card .on{ font-size:11px; font-weight:700; color:var(--navy); margin-top:2px; }
+  .org-card .os{ font-size:8.5px; color:var(--green); font-weight:600; margin-top:2px; }
+  .org-card .os.f2c{ color:var(--navy-soft); }
+  .org-card .od{ font-size:8px; color:var(--muted); margin-top:2px; }
+
+  /* ── Summary strip ── */
+  .sstrip{ display:grid; gap:10px; margin-top:12px; }
+  .sstrip.c3{ grid-template-columns:repeat(3,1fr); }
+  .sstrip.c2{ grid-template-columns:1fr 1fr; }
+  .ss{ border-radius:7px; padding:10px 13px; color:#fff; }
+  .ss .sl{ font-size:7px; letter-spacing:1.2px; text-transform:uppercase; opacity:.8; }
+  .ss .sv{ font-size:16px; font-weight:800; margin-top:2px; }
+  .ss.na{ background:linear-gradient(135deg,#2f7d4f,#256340); }
+  .ss.nb{ background:linear-gradient(135deg,#b0413f,#8f3331); }
+  .ss.nc{ background:linear-gradient(135deg,#16314f,#0E2038); }
+  .ss.nd{ background:linear-gradient(135deg,#C2A05A,#a8863f); }
+
+  /* ── Payback bar ── */
+  .pb-vis{ margin:10px 0 6px; }
+  .pb-track{ height:24px; background:#ece8de; border-radius:5px; overflow:hidden; }
+  .pb-fill{ height:100%; border-radius:5px; display:flex; align-items:center; padding-left:10px; }
+  .pb-fill span{ font-size:8px; font-weight:700; color:#fff; letter-spacing:.4px; }
+
+  /* ── Notes ── */
+  .notes{ background:#f6f3ec; border:1px solid var(--line); border-radius:7px; padding:11px 14px; margin-top:12px; }
+  .notes .nt{ font-size:7.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+  .notes ol,.notes ul{ margin:0; padding-left:14px; }
+  .notes li{ font-size:8.4px; color:#41505d; line-height:1.55; margin-bottom:3px; }
+  .notes li b{ color:var(--navy); }
+
+  /* ── Badge ── */
+  .bx{ display:inline-block; padding:1.5px 7px; border-radius:20px; font-size:7px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; border:1px solid transparent; }
+  .bx-g{ background:#eaf4ee; color:var(--green); border-color:#cfe6d8; }
+  .bx-b{ background:#e6ecf4; color:var(--blue); border-color:#c6d5e8; }
+  .bx-gold{ background:#fff3dc; color:var(--amber); border-color:#f0d99a; }
+  .bx-att{ background:#fbecea; color:var(--red); border-color:#f0d2cf; }
+
+  /* ── Upside box ── */
+  .upside{
+    background:linear-gradient(135deg,#0E2038 0%,#16314f 100%);
+    border-radius:8px; padding:16px 18px; color:#fff; margin-top:12px;
+  }
+  .upside .ut{ font-size:7.5px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+  .upside p{ font-family:'Cormorant Garamond',serif; font-size:15px; line-height:1.6; color:rgba(255,255,255,.88); }
+  .upside p b{ color:#7fd6a0; }
+  .upside p .gold{ color:var(--gold-soft); }
+
+  /* ── Footer ── */
+  .pf{
+    position:absolute; bottom:0; left:0; right:0;
+    border-top:1px solid var(--line2); background:#f4f1ea;
+    padding:5px 16mm;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .pf .pl{ font-size:7px; color:var(--muted); letter-spacing:.3px; }
+  .pf .pr{ font-size:8px; color:var(--navy); font-weight:700; letter-spacing:1px; }
+  .pf .pr span{ color:var(--gold); }
+
+  .btn{ position:fixed; top:14px; right:14px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:9px 16px; border-radius:6px; font-size:11px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<!-- ══════════════ PÁG 1 — CAPA ══════════════ -->
+<section class="sheet cover">
+  <div class="cv-frame"></div>
+  <div class="cv-inner">
+    <div class="cv-brand">
+      <div class="cv-mono">V</div>
+      <div>
+        <div class="cv-co">Valvic Marcenaria</div>
+        <div class="cv-sub">Vargas Decor Ltda &nbsp;·&nbsp; CNPJ 17.269.304/0001-51 &nbsp;·&nbsp; Belo Horizonte / MG</div>
+      </div>
+    </div>
+
+    <div class="cv-center">
+      <div class="cv-label">Proposta Confidencial · Novo Sócio</div>
+      <div class="cv-rule"></div>
+      <h1 class="cv-title">Plano de<br><em>Expansão</em><br>2026–2027</h1>
+      <p class="cv-tagline">De R$ 200 mil/mês para R$ 1 milhão/mês — com a estrutura, a equipe e o capital certos.</p>
+    </div>
+
+    <div class="cv-phases">
+      <div class="cv-phase">
+        <div class="pl">Fase 1 — Start</div>
+        <div class="pv g num">R$ 250k</div>
+        <div class="pd">Coladeira · compressor · camionete · equipe inicial</div>
+      </div>
+      <div class="cv-phase">
+        <div class="pl">Fase 2 — Estrutura completa</div>
+        <div class="pv gold num">R$ 872k</div>
+        <div class="pd">CNC nesting · furação · galpão · logística · equipe</div>
+      </div>
+      <div class="cv-phase">
+        <div class="pl">Potencial de receita (pico)</div>
+        <div class="pv gold num">R$ 1 M/mês</div>
+        <div class="pd">Capacidade instalada das novas máquinas</div>
+      </div>
+    </div>
+
+    <div class="cv-foot">
+      <div class="cv-conf">Uso restrito &nbsp;·&nbsp; não circular</div>
+      <div class="cv-date">Belo Horizonte<br>Junho de 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PÁG 2 — ONDE ESTAMOS ══════════════ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Ponto de partida</div><div class="tt">Onde a Valvic está hoje</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Expansão · Jun 2026</div></div>
+  </div>
+  <div class="body">
+    <div class="exec" style="margin-bottom:16px">
+      <div class="et">A empresa que o investidor entra</div>
+      <p>A Valvic é uma marcenaria industrial com <b>parque produtivo de R$ 506 mil instalado e operando</b>. Em 3 anos cresceu <b>133%</b> — de R$ 645 mil (2023) para R$ 1,5 milhão (2025) — sem aporte externo de capital. Hoje opera 1 turno com capacidade parcial. <b>O gargalo não é máquina: é capital para completar a linha.</b></p>
+    </div>
+
+    <div class="kpis c3" style="margin-bottom:16px">
+      <div class="kpi g">
+        <div class="kl">Receita mensal atual</div>
+        <div class="kv num">~R$ 200k</div>
+        <div class="ks">1 turno · capacidade parcial da linha atual.</div>
+      </div>
+      <div class="kpi b">
+        <div class="kl">Margem de contribuição</div>
+        <div class="kv num">~30%</div>
+        <div class="ks">≈ R$ 60k/mês de MC sobre a receita atual.</div>
+      </div>
+      <div class="kpi gold">
+        <div class="kl">CAGR 2023–2025</div>
+        <div class="kv num">+53%</div>
+        <div class="ks">Crescimento composto em 2 anos sem capital externo.</div>
+      </div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Ativos instalados e operando</span><span class="ct">Inventário Jun/2026</span></div>
+    <table>
+      <thead><tr><th>Máquina</th><th>Papel atual</th><th style="width:100px">Papel na nova linha</th><th style="width:60px">Situação</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Raizen Solid TAF (CNC)</span><div class="dt">Centro de usinagem · 380V · 3 eixos · 35 chapas/dia</div></td><td class="note">Nesting + especiais (divide tempo)</td><td class="note">Só usinagens especiais (Aspire)</td><td><span class="bx bx-g">Quitado</span></td></tr>
+        <tr><td><span class="nm">SCM minimax me 25 (coladeira)</span><div class="dt">Filetagem automática · fita 0,4 mm · cola EVA</div></td><td class="note">Coladeira principal</td><td class="note">Vira backup da nova</td><td><span class="bx bx-g">Quitado</span></td></tr>
+        <tr><td><span class="nm">Raizen RZN 3200P (esquadrejadeira)</span></td><td class="note">Cluster de corte</td><td class="note">Mantém — corte</td><td><span class="bx bx-g">Quitado</span></td></tr>
+        <tr><td><span class="nm">Ferramentas, compressores, estrutura</span><div class="dt">Tupia · serra · coletores · pneumático · bancadas</div></td><td class="note">Apoio de produção</td><td class="note">Mantém + compressor novo</td><td><span class="bx bx-g">Quitado</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="notes" style="margin-top:14px">
+      <div class="nt">Princípio-chave</div>
+      <ul>
+        <li><b>Nenhuma máquina atual será vendida ou descartada.</b> Cada equipamento ganha um papel novo na linha expandida: a Solid TAF deixa de brigar entre nesting e especiais, a me 25 vira backup e garante uptime — sem ponto único de falha.</li>
+        <li>O ganho imediato da expansão: <b>o corte deixa de ser o gargalo</b>. Com a nova CNC nesting dedicada, o limite passa a ser coladeira → pessoal → capital de giro — variáveis que o plano de expansão já mapeia.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pl">Confidencial · Valvic Marcenaria · Junho/2026</div>
+    <div class="pr">02 <span>/</span> 08</div>
+  </div>
+</section>
+
+<!-- ══════════════ PÁG 3 — A TESE ══════════════ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Visão</div><div class="tt">A Tese de Expansão</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Expansão · Jun 2026</div></div>
+  </div>
+  <div class="body">
+
+    <!-- Trajetória de receita -->
+    <div class="sec"><span class="bar"></span><span class="tx">Trajetória de receita</span><span class="ct">Atual → Meta</span></div>
+    <div style="margin-bottom:18px">
+      <div style="display:grid;grid-template-columns:80px 1fr 120px;align-items:center;gap:10px;margin-bottom:10px">
+        <div style="font-size:10px;font-weight:700;color:var(--muted);text-align:right">Hoje</div>
+        <div style="height:34px;background:#ece8de;border-radius:4px;overflow:hidden">
+          <div style="width:20%;height:100%;background:linear-gradient(90deg,#6c7785,#8a95a0);border-radius:4px;display:flex;align-items:center;padding-left:9px">
+            <span style="color:#fff;font-size:8px;font-weight:700">1 turno</span>
+          </div>
+        </div>
+        <div style="font-size:16px;font-weight:800;color:var(--muted)">R$ 200k/mês</div>
+      </div>
+      <div style="display:grid;grid-template-columns:80px 1fr 120px;align-items:center;gap:10px;margin-bottom:10px">
+        <div style="font-size:10px;font-weight:700;color:var(--green);text-align:right">Fase 1</div>
+        <div style="height:34px;background:#ece8de;border-radius:4px;overflow:hidden">
+          <div style="width:40%;height:100%;background:linear-gradient(90deg,var(--green),#256340);border-radius:4px;display:flex;align-items:center;padding-left:9px">
+            <span style="color:#fff;font-size:8px;font-weight:700">dobrar a produção</span>
+          </div>
+        </div>
+        <div style="font-size:16px;font-weight:800;color:var(--green)">R$ 400k/mês</div>
+      </div>
+      <div style="display:grid;grid-template-columns:80px 1fr 120px;align-items:center;gap:10px">
+        <div style="font-size:10px;font-weight:700;color:var(--gold);text-align:right">Visão</div>
+        <div style="height:34px;background:#ece8de;border-radius:4px;overflow:hidden">
+          <div style="width:100%;height:100%;background:linear-gradient(90deg,var(--gold),#a8863f);border-radius:4px;display:flex;align-items:center;padding-left:9px">
+            <span style="color:#fff;font-size:8px;font-weight:700">capacidade total das máquinas novas</span>
+          </div>
+        </div>
+        <div style="font-size:16px;font-weight:800;color:var(--amber)">R$ 1 M/mês</div>
+      </div>
+    </div>
+
+    <!-- Fluxo de produção -->
+    <div class="sec"><span class="bar"></span><span class="tx">Fluxo de produção na nova linha</span><span class="ct">Layout galpão 1.000 m²</span></div>
+    <div class="flow" style="margin-bottom:16px">
+      <div class="flow-step"><div class="flow-box active" style="background:#4a7c59;font-size:7px">Recebimento<br>chapas</div><div class="fl">gaiola 3×4m</div></div>
+      <div class="flow-arr">›</div>
+      <div class="flow-step"><div class="flow-box" style="background:#16314f;font-size:7px">CNC Nesting<br>(nova)</div><div class="fl">etiqueta + fura</div></div>
+      <div class="flow-arr">›</div>
+      <div class="flow-step"><div class="flow-box" style="font-size:7px">Coladeira<br>(nova KG268)</div><div class="fl">borda 1 mm</div></div>
+      <div class="flow-arr">›</div>
+      <div class="flow-step"><div class="flow-box" style="font-size:7px">Furação<br>horizontal</div><div class="fl">cavilha / minifix</div></div>
+      <div class="flow-arr">›</div>
+      <div class="flow-step"><div class="flow-box" style="background:#4a7c59;font-size:7px">Montagem<br>7 bancadas</div><div class="fl">8 carrinhos</div></div>
+      <div class="flow-arr">›</div>
+      <div class="flow-step"><div class="flow-box active" style="background:var(--gold);color:var(--navy);font-size:7px">Expedição</div><div class="fl">portão saída</div></div>
+    </div>
+
+    <!-- Phases -->
+    <div class="sec"><span class="bar"></span><span class="tx">Faseamento</span><span class="ct">Validado com sócio Paulo · 25/06</span></div>
+    <div class="phases">
+      <div class="pcard f1">
+        <div class="ph2">
+          <div class="pt">Fase 1 · Imediato</div>
+          <div class="pn">Start do negócio</div>
+          <div class="ps">Girar com o essencial — já</div>
+        </div>
+        <div class="pb">
+          <ul>
+            <li>Nova <b>coladeira de borda</b> (Giben KG268) — arredondador fita 1 mm</li>
+            <li>Novo <b>compressor</b> Techto 10 HP — alimenta a nova linha</li>
+            <li><b>Camionete usada</b> — reforço de logística imediato</li>
+            <li>+1 <b>marceneiro</b> + +1 <b>auxiliar adm.</b> + +1 <b>ajudante</b></li>
+            <li>Setup de postos: 2 kits ferramentas + móveis</li>
+          </ul>
+          <div class="ptot num">≈ R$ 250.000</div>
+        </div>
+      </div>
+      <div class="pcard f2">
+        <div class="ph2">
+          <div class="pt">Fase 2 · Estrutura completa</div>
+          <div class="pn">Galpão novo</div>
+          <div class="ps">Todas as máquinas rodando</div>
+        </div>
+        <div class="pb">
+          <ul>
+            <li>Nova <b>CNC nesting</b> (Giben) — capacidade 2× a Solid TAF</li>
+            <li><b>Furação horizontal</b> (Raizen 3S) — portas, cavilhas, fechaduras</li>
+            <li><b>Galpão 1.000 m²</b> — 40×25 m com doca de caminhão</li>
+            <li><b>Kia Bongo baú</b> — carga 1,5 t para volume dobrado</li>
+            <li>+1 marceneiro + +1 ajudante + +1 projetista</li>
+          </ul>
+          <div class="ptot num" style="color:#7fd6a0">≈ R$ 872.000</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pl">Confidencial · Valvic Marcenaria · Junho/2026</div>
+    <div class="pr">03 <span>/</span> 08</div>
+  </div>
+</section>
+
+<!-- ══════════════ PÁG 4 — MÁQUINAS ══════════════ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Investimento · Produção</div><div class="tt">Máquinas a Adquirir</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Expansão · Jun 2026</div></div>
+  </div>
+  <div class="body">
+    <div class="exec" style="margin-bottom:16px">
+      <div class="et">Por que à vista</div>
+      <p>O aporte <b>compra as máquinas à vista</b>, desbloqueando <b>desconto de 10–15%</b> que financia parte do próprio processo — e elimina parcelas mensais que pressionariam o caixa durante a rampa de produção.</p>
+    </div>
+
+    <div class="mcards" style="margin-bottom:14px">
+      <div class="mcard">
+        <div class="mh"><div class="mid">CNC Nesting · Fase 2</div><div class="mn">Giben (modelo G2 1929)</div></div>
+        <div class="mb">
+          <div class="mv num">R$ 490.000</div>
+          <div class="ms">Capacidade ~1.430 chapas/mês (2× a Solid TAF) · etiquetagem + furação automática · 9 brocas · <b>carga de palete inteiro</b> — 50% menos paradas p/ abastecimento.</div>
+          <span class="mt star">Por que Giben: carga de palete completo</span>
+        </div>
+      </div>
+      <div class="mcard">
+        <div class="mh"><div class="mid">Coladeira · Fase 1</div><div class="mn">Giben KG268</div></div>
+        <div class="mb">
+          <div class="mv num">~R$ 162.000</div>
+          <div class="ms">Grupo arredondador · fita 1 mm · suporte local em BH (peça/técnico fáceis — crítico: coladeira é gargalo). SCM me 25 atual vira backup — zero downtime.</div>
+          <span class="mt star">Por que KG268: suporte BH · arredondador</span>
+        </div>
+      </div>
+      <div class="mcard">
+        <div class="mh"><div class="mid">Furação horizontal · Fase 2</div><div class="mn">Raizen CNC Horizontal 3S</div></div>
+        <div class="mb">
+          <div class="mv num">R$ 82.000</div>
+          <div class="ms">Fura topo/borda do MDF (cavilha, minifix, fechadura, dobradiça) — a CNC nesting só fura a face. Destrava portas internas, reduz retrabalho e terceirização.</div>
+          <span class="mt ok">Destrava produção de portas</span>
+        </div>
+      </div>
+      <div class="mcard">
+        <div class="mh"><div class="mid">Compressor · Fase 1</div><div class="mn">Techto Autentic AT 10HP</div></div>
+        <div class="mb">
+          <div class="mv num">R$ 21.310</div>
+          <div class="ms">10 HP / 7,5 kW · 8,5 bar · 1,08 m³/min · cabine acústica. Alimenta toda a linha nova (coladeira + furadeira + fixações + pistolas). Instalação externa coberta.</div>
+          <span class="mt ok">Alimenta toda a nova linha</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Consolidado de máquinas</span></div>
+    <table>
+      <thead><tr><th>Máquina</th><th>Fornecedor</th><th>Fase</th><th class="r" style="width:90px">Valor R$</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">CNC Nesting</span></td><td>Giben G2 1929</td><td><span class="bx bx-b">Fase 2</span></td><td class="r num"><b>490.000</b></td></tr>
+        <tr><td><span class="nm">Coladeira de borda</span></td><td>Giben KG268</td><td><span class="bx bx-g">Fase 1</span></td><td class="r num"><b>162.000</b></td></tr>
+        <tr><td><span class="nm">Furação horizontal</span></td><td>Raizen CNC 3S</td><td><span class="bx bx-b">Fase 2</span></td><td class="r num">82.000</td></tr>
+        <tr><td><span class="nm">Compressor</span></td><td>Techto Autentic AT 10HP</td><td><span class="bx bx-g">Fase 1</span></td><td class="r num">21.310</td></tr>
+        <tr class="grand"><td colspan="3">Total em máquinas novas</td><td class="r num"><span class="gv">≈ 755.000</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="notes" style="margin-top:12px">
+      <div class="nt">Pendências de confirmação</div>
+      <ul>
+        <li><b>Giben CNC R$ 490k:</b> confirmar se é preço à vista; solicitar desconto para pagamento à vista.</li>
+        <li><b>Giben KG268 ~R$ 162k:</b> confirmar preço à vista — se acima de R$ 165k, reabrir avaliação vs Raizen Spectra 7GT (R$ 162k).</li>
+        <li><b>Compressor 10HP:</b> validar se vazão de 1,08 m³/min atende a demanda somada de todas as máquinas simultâneas.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pl">Confidencial · Valvic Marcenaria · Junho/2026</div>
+    <div class="pr">04 <span>/</span> 08</div>
+  </div>
+</section>
+
+<!-- ══════════════ PÁG 5 — GALPÃO & LOGÍSTICA ══════════════ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Infraestrutura</div><div class="tt">Galpão & Logística</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Expansão · Jun 2026</div></div>
+  </div>
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Galpão industrial — 1.000 m²</span><span class="ct">Decisão confirmada Paulo · 25/06</span></div>
+
+    <table style="margin-bottom:14px">
+      <thead><tr><th>Característica</th><th>Especificação</th><th>Por quê</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Área total</span></td><td>1.000 m² (40 × 25 m)</td><td class="note">Comporta todas as máquinas + bancadas + corredor + expedição</td></tr>
+        <tr><td><span class="nm">Pé-direito</span></td><td>≥ 6 m</td><td class="note">Estoque vertical de chapa + dutos de exaustão</td></tr>
+        <tr><td><span class="nm">Piso</span></td><td>Industrial reforçado</td><td class="note">Máquinas de 1–2 t (CNC nesting, esquadrejadeira)</td></tr>
+        <tr><td><span class="nm">Energia</span></td><td>Trifásica ~150 kVA</td><td class="note">Soma das cargas: CNC ~30 kW + coladeira ~20 + furação 9,6 + compressor 7,5 + Solid TAF ~20 + auxiliares</td></tr>
+        <tr><td><span class="nm">Acesso de carga</span></td><td>Doca + área de manobra</td><td class="note">Recebimento de caminhão de chapas + expedição Bongo</td></tr>
+        <tr><td><span class="nm">Utilidades</span></td><td>Aspiração central + anel de ar</td><td class="note">CNC + coladeira + serras — pó e ar comprimido centralizados</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Arranjo produtivo (fluxo linear)</span></div>
+    <div style="background:#fff;border:1px solid var(--line);border-radius:7px;padding:11px 14px;margin-bottom:14px">
+      <div style="font-size:8px;color:var(--muted);margin-bottom:10px;letter-spacing:.5px">ENTRADA → PRODUÇÃO → SAÍDA — a peça nunca anda para trás</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:16px;height:16px;background:var(--green);border-radius:3px;flex-shrink:0"></div>
+          <div style="font-size:9px;color:var(--ink)"><b>Topo do galpão (linha de máquinas):</b> Entrada caminhão → Gaiola de chapas → CNC Nesting + Solid TAF → Esquadrejadeira → Coladeira KG268 + backup me25 → Furação 3S → Estoque peças prontas</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:16px;height:16px;background:var(--blue);border-radius:3px;flex-shrink:0"></div>
+          <div style="font-size:9px;color:var(--ink)"><b>Corredor central:</b> 8 carrinhos (2,00×0,50 m) transportam peças cortadas até as bancadas de montagem</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:16px;height:16px;background:var(--navy-soft);border-radius:3px;flex-shrink:0"></div>
+          <div style="font-size:9px;color:var(--ink)"><b>Lado oposto (montagem):</b> 7 bancadas 2,70×0,90 m com área de pré-montagem → Expedição (portão de saída)</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:16px;height:16px;background:var(--gold);border-radius:3px;flex-shrink:0"></div>
+          <div style="font-size:9px;color:var(--ink)"><b>Externo, coberto:</b> Compressor Techto — fora do galpão (acústica + segurança)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Logística — frota</span></div>
+    <table>
+      <thead><tr><th>Veículo</th><th>Fase</th><th>Função</th><th class="r" style="width:80px">Custo R$</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Chevrolet Montana 2020</span><div class="dt">Caçamba · placa QUY4166 · já em uso</div></td><td><span class="bx bx-g">Atual</span></td><td class="note">Corridas rápidas · pequenas entregas</td><td class="r num">—</td></tr>
+        <tr><td><span class="nm">Camionete usada</span></td><td><span class="bx bx-g">Fase 1</span></td><td class="note">Reforço imediato de logística</td><td class="r num">50–60k</td></tr>
+        <tr><td><span class="nm">Kia Bongo (baú)</span><div class="dt">Carga ~1,5 t · usados BH</div></td><td><span class="bx bx-b">Fase 2</span></td><td class="note">Entregas do volume dobrado · libera a Montana</td><td class="r num">~100k</td></tr>
+        <tr class="stot"><td colspan="3">Total novos veículos</td><td class="r num">~150–160k</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sstrip c2" style="margin-top:14px">
+      <div class="ss na"><div class="sl">Galpão — custo mensal (aluguel)</div><div class="sv">A definir</div></div>
+      <div class="ss nc"><div class="sl">Infra galpão (reforma + install.)</div><div class="sv">≈ R$ 200.000</div></div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pl">Confidencial · Valvic Marcenaria · Junho/2026</div>
+    <div class="pr">05 <span>/</span> 08</div>
+  </div>
+</section>
+
+<!-- ══════════════ PÁG 6 — EQUIPE ══════════════ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Pessoas</div><div class="tt">Expansão da Equipe</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Expansão · Jun 2026</div></div>
+  </div>
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Time atual</span></div>
+    <div class="org-row c3" style="margin-bottom:14px">
+      <div class="org-card">
+        <div class="ot">Sócio / Comercial</div>
+        <div class="on">Jonathan Vargas</div>
+        <div class="od">Comercial · projetos · estratégia</div>
+      </div>
+      <div class="org-card">
+        <div class="ot">Sócio / Gestão</div>
+        <div class="on">Paulo</div>
+        <div class="od">Gestão · quer sair da produção direta</div>
+      </div>
+      <div class="org-card">
+        <div class="ot">CNC · Programação</div>
+        <div class="on">Felipe</div>
+        <div class="od">Programação CNC · suporte técnico</div>
+      </div>
+      <div class="org-card">
+        <div class="ot">Operador</div>
+        <div class="on">Operador CNC / Coladeira</div>
+        <div class="od">Máquinas · produção</div>
+      </div>
+      <div class="org-card">
+        <div class="ot">Encarregado</div>
+        <div class="on">Encarregado</div>
+        <div class="od">Supervisão + produção direta</div>
+      </div>
+      <div class="org-card">
+        <div class="ot">Produção</div>
+        <div class="on">2 Marceneiros + 2 Ajudantes</div>
+        <div class="od">Montagem · acabamento</div>
+      </div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Novas contratações</span><span class="ct">Confirmado Paulo · 25/06</span></div>
+    <table style="margin-bottom:12px">
+      <thead><tr><th>Cargo</th><th>Qtd</th><th>Salário base</th><th>Fase</th><th class="r" style="width:80px">Subtotal/mês</th></tr></thead>
+      <tbody>
+        <tr class="highlight"><td><span class="nm">Marceneiro</span></td><td>+2</td><td>R$ 5.000</td><td><span class="bx bx-g">F1</span> + <span class="bx bx-b">F2</span></td><td class="r num">R$ 10.000</td></tr>
+        <tr class="highlight"><td><span class="nm">Ajudante</span></td><td>+2</td><td>R$ 2.500</td><td><span class="bx bx-g">F1</span> + <span class="bx bx-b">F2</span></td><td class="r num">R$ 5.000</td></tr>
+        <tr class="highlight"><td><span class="nm">Auxiliar administrativo</span></td><td>+1</td><td>R$ 4.000</td><td><span class="bx bx-g">F1</span></td><td class="r num">R$ 4.000</td></tr>
+        <tr class="highlight"><td><span class="nm">Projetista</span></td><td>+1</td><td>R$ 5.000</td><td><span class="bx bx-b">F2</span></td><td class="r num">R$ 5.000</td></tr>
+        <tr class="stot"><td colspan="4">Total folha base (6 novos)</td><td class="r num">R$ 24.000/mês</td></tr>
+        <tr class="grand"><td colspan="4">Com encargos (~70%: FGTS, INSS, 13º, férias)</td><td class="r num"><span class="gv">~R$ 40.800/mês</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Setup de entrada por novo posto</span><span class="ct">CAPEX único — fora do salário</span></div>
+    <table>
+      <thead><tr><th>Item</th><th>Para quem</th><th>Fase 1</th><th class="r" style="width:100px">Estimativa R$</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Kit de ferramentas</span><div class="dt">Parafusadeira, furadeira, manuais, medição</div></td><td>Cada marceneiro e ajudante</td><td>2 kits (marceneiro + ajudante)</td><td class="r num">R$ 4–5k/un</td></tr>
+        <tr><td><span class="nm">Posto auxiliar adm.</span><div class="dt">Computador + celular + cadeira</div></td><td>Auxiliar administrativo</td><td>1 posto completo</td><td class="r num">A orçar</td></tr>
+        <tr><td><span class="nm">Cadeiras de escritório</span></td><td>Ampliação/reposição geral</td><td>+7 cadeiras</td><td class="r num">A orçar</td></tr>
+        <tr class="stot"><td colspan="3">Setup Fase 1 (CAPEX único estimado)</td><td class="r num">~R$ 18–20.000</td></tr>
+      </tbody>
+    </table>
+
+    <div class="notes" style="margin-top:11px">
+      <div class="nt">Observações</div>
+      <ul>
+        <li>Encargos estimados em ~70% — confirmar valor exato com contador (FGTS + INSS patronal + 13º + férias + auxílios).</li>
+        <li>O setup de entrada é <b>CAPEX único de ingresso</b> — não confundir com custo fixo mensal; somar ao investimento da Fase 1.</li>
+        <li>Paulo sai da produção direta ao longo da Fase 1, liberado para gestão e comercial com a chegada dos novos colaboradores.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pl">Confidencial · Valvic Marcenaria · Junho/2026</div>
+    <div class="pr">06 <span>/</span> 08</div>
+  </div>
+</section>
+
+<!-- ══════════════ PÁG 7 — INVESTIMENTO TOTAL ══════════════ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Capital Necessário</div><div class="tt">Mapa do Investimento</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Expansão · Jun 2026</div></div>
+  </div>
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Fase 1 — investimento inicial</span><span class="ct">Start imediato</span></div>
+    <table style="margin-bottom:14px">
+      <thead><tr><th>Item</th><th>Detalhe</th><th class="r" style="width:100px">Valor R$</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Coladeira Giben KG268</span></td><td class="note">Principal — arredondador + fita 1 mm</td><td class="r num"><b>~162.000</b></td></tr>
+        <tr><td><span class="nm">Compressor Techto AT 10HP</span></td><td class="note">Alimenta toda a nova linha</td><td class="r num">21.310</td></tr>
+        <tr><td><span class="nm">Camionete usada</span></td><td class="note">Reforço de logística</td><td class="r num">50–60.000</td></tr>
+        <tr><td><span class="nm">Setup de pessoal (CAPEX único)</span></td><td class="note">2 kits ferramentas + posto adm. + 7 cadeiras</td><td class="r num">~18–20.000</td></tr>
+        <tr class="stot"><td colspan="2">Total Fase 1</td><td class="r num">≈ R$ 251–263.000</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Fase 2 — estrutura completa</span><span class="ct">Galpão novo rodando</span></div>
+    <table style="margin-bottom:14px">
+      <thead><tr><th>Item</th><th>Detalhe</th><th class="r" style="width:100px">Valor R$</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">CNC Nesting (Giben G2 1929)</span></td><td class="note">~1.430 chapas/mês · palete inteiro</td><td class="r num"><b>490.000</b></td></tr>
+        <tr><td><span class="nm">Furação horizontal (Raizen 3S)</span></td><td class="note">Portas · cavilha · minifix</td><td class="r num">82.000</td></tr>
+        <tr><td><span class="nm">Kia Bongo (baú)</span></td><td class="note">Entrega do volume dobrado · 1,5 t</td><td class="r num">~100.000</td></tr>
+        <tr><td><span class="nm">Infraestrutura do galpão</span></td><td class="note">Reforma · install. elétrica 150 kVA · aspiração · ar comprimido</td><td class="r num">~200.000</td></tr>
+        <tr class="stot"><td colspan="2">Total Fase 2</td><td class="r num">≈ R$ 872.000</td></tr>
+      </tbody>
+    </table>
+
+    <table style="margin-bottom:14px">
+      <tbody>
+        <tr class="grand"><td colspan="2"><b>INVESTIMENTO TOTAL (Fase 1 + Fase 2)</b></td><td class="r num"><span class="gv">≈ R$ 1.100.000</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sstrip c3">
+      <div class="ss na"><div class="sl">Fase 1 · Start</div><div class="sv num">≈ R$ 260k</div></div>
+      <div class="ss nc"><div class="sl">Fase 2 · Completo</div><div class="sv num">≈ R$ 872k</div></div>
+      <div class="ss nd"><div class="sl">Total geral</div><div class="sv num">≈ R$ 1,1 M</div></div>
+    </div>
+
+    <div class="notes" style="margin-top:12px">
+      <div class="nt">Estrutura do aporte</div>
+      <ul>
+        <li><b>Aporte:</b> valor e contrapartida (% societária / empréstimo com remuneração) a definir com o investidor — não fixado neste documento intencionalmente.</li>
+        <li><b>Pagamento à vista</b> das máquinas: desconto de 10–15% vs. parcelado — o próprio desconto reduz o investimento líquido efetivo.</li>
+        <li><b>Custo mensal do galpão</b> (aluguel) ainda a definir — impacta o ponto de equilíbrio final; a incluir no modelo financeiro detalhado.</li>
+        <li>Capital de giro operacional (materiais + gap de faturamento durante rampa) não incluído — a dimensionar junto ao financeiro.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pl">Confidencial · Valvic Marcenaria · Junho/2026</div>
+    <div class="pr">07 <span>/</span> 08</div>
+  </div>
+</section>
+
+<!-- ══════════════ PÁG 8 — RETORNO ══════════════ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Retorno ao Investidor</div><div class="tt">Financeiro & Payback</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Expansão · Jun 2026</div></div>
+  </div>
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Cenários de retorno</span></div>
+
+    <!-- Cenário 1 -->
+    <div style="background:#fff;border:1px solid var(--line);border-radius:7px;overflow:hidden;margin-bottom:10px">
+      <div style="background:linear-gradient(90deg,#2f7d4f,#256340);color:#fff;padding:8px 14px;display:flex;justify-content:space-between;align-items:center">
+        <div><div style="font-size:7.5px;letter-spacing:1.5px;text-transform:uppercase;opacity:.8">Cenário 1 · Conservador</div><div style="font-size:14px;font-weight:700;margin-top:2px">Dobrar: R$ 200k → R$ 400k/mês</div></div>
+        <div style="font-size:20px;font-weight:800">~55 meses</div>
+      </div>
+      <div style="padding:10px 14px">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:8px">
+          <div style="text-align:center"><div style="font-size:7.5px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase">Receita nova</div><div style="font-size:14px;font-weight:800;color:var(--navy);margin-top:3px">+R$ 200k</div><div style="font-size:8px;color:var(--muted)">/mês adicional</div></div>
+          <div style="text-align:center"><div style="font-size:7.5px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase">MC 30%</div><div style="font-size:14px;font-weight:800;color:var(--green);margin-top:3px">+R$ 60k</div><div style="font-size:8px;color:var(--muted)">MC adicional/mês</div></div>
+          <div style="text-align:center"><div style="font-size:7.5px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase">Folha nova</div><div style="font-size:14px;font-weight:800;color:var(--red);margin-top:3px">−R$ 41k</div><div style="font-size:8px;color:var(--muted)">c/ encargos/mês</div></div>
+          <div style="text-align:center"><div style="font-size:7.5px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase">Sobra líquida</div><div style="font-size:14px;font-weight:800;color:var(--navy);margin-top:3px">≈R$ 19k</div><div style="font-size:8px;color:var(--muted)">/mês (sem fixos novos)</div></div>
+        </div>
+        <div class="pb-vis">
+          <div style="font-size:7.5px;color:var(--muted);margin-bottom:4px">Payback sobre R$ 1,1M investido (sobra de R$ 19k/mês)</div>
+          <div class="pb-track"><div class="pb-fill" style="width:100%;background:linear-gradient(90deg,#2f7d4f,#256340)"><span>~55 meses · ~4,6 anos</span></div></div>
+        </div>
+        <div style="font-size:7.5px;color:var(--muted);font-style:italic">* Antes de fixos novos (aluguel + energia + combustível), ainda a incluir — reduz o saldo e alonga o payback.</div>
+      </div>
+    </div>
+
+    <!-- Cenário 2 -->
+    <div style="background:#fff;border:1px solid var(--line);border-radius:7px;overflow:hidden;margin-bottom:12px">
+      <div style="background:linear-gradient(90deg,#C2A05A,#a8863f);color:#fff;padding:8px 14px;display:flex;justify-content:space-between;align-items:center">
+        <div><div style="font-size:7.5px;letter-spacing:1.5px;text-transform:uppercase;opacity:.8">Cenário 2 · Upside · Capacidade instalada</div><div style="font-size:14px;font-weight:700;margin-top:2px">R$ 1 milhão/mês — teto das máquinas novas</div></div>
+        <div style="font-size:20px;font-weight:800">&lt; 12 meses</div>
+      </div>
+      <div style="padding:10px 14px">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:8px">
+          <div style="text-align:center"><div style="font-size:7.5px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase">Receita nova</div><div style="font-size:14px;font-weight:800;color:var(--navy);margin-top:3px">+R$ 800k</div><div style="font-size:8px;color:var(--muted)">/mês adicional</div></div>
+          <div style="text-align:center"><div style="font-size:7.5px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase">MC 30%</div><div style="font-size:14px;font-weight:800;color:var(--green);margin-top:3px">+R$ 240k</div><div style="font-size:8px;color:var(--muted)">MC adicional/mês</div></div>
+          <div style="text-align:center"><div style="font-size:7.5px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase">Investimento</div><div style="font-size:14px;font-weight:800;color:var(--red);margin-top:3px">R$ 1,1M</div><div style="font-size:8px;color:var(--muted)">total estrutura</div></div>
+          <div style="text-align:center"><div style="font-size:7.5px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase">Payback pico</div><div style="font-size:14px;font-weight:800;color:var(--amber);margin-top:3px">&lt; 1 ano</div><div style="font-size:8px;color:var(--muted)">alavancagem operacional</div></div>
+        </div>
+        <div class="pb-vis">
+          <div style="font-size:7.5px;color:var(--muted);margin-bottom:4px">Payback sobre R$ 1,1M com MC de R$ 240k/mês adicional</div>
+          <div class="pb-track"><div class="pb-fill" style="width:42%;background:linear-gradient(90deg,var(--gold),#a8863f)"><span>&lt; 5 meses no pico</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="upside">
+      <div class="ut">A alavancagem operacional da Valvic</div>
+      <p>Com a estrutura instalada, o custo fixo cresce <b class="gold">de forma linear</b> enquanto a capacidade de faturamento cresce <b>de forma exponencial</b>. A mesma folha, o mesmo galpão, as mesmas máquinas que produzem R$ 400k/mês são as que chegam a <b>R$ 1 milhão/mês</b> — o diferencial vira <b>capital de giro e carteira comercial</b>.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pl">Documento de uso restrito · Valvic Marcenaria — Vargas Decor Ltda · Belo Horizonte / MG</div>
+    <div class="pr">08 <span>/</span> 08</div>
+  </div>
+</section>
+
+</body>
+</html>
