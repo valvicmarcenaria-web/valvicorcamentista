@@ -1080,13 +1080,13 @@
               }
             },
             {
-              "nome": "Capital de giro / empréstimo (parcela)",
+              "nome": "Capital de giro Itaú (parcela)",
               "valor": 0,
               "tipo": "Fixo",
               "contr": "—",
               "unidade": "Parcela",
               "parc": {
-                "total": 37000,
+                "total": 30000,
                 "n": 4,
                 "pagas": 0
               },
