@@ -37,8 +37,18 @@ Formato em **L**, freijó por fora / branco por dentro, cantos arredondados:
 4. [ ] **Tampos de prateleira em MDF** (se houver)
 5. [ ] **Nesting** final de tudo em chapas 1850×2750 (margem 7mm)
 
-## Pendências de cota (ler nas pranchas ao iniciar cada parte)
-- Profundidade do balcão TV e do módulo espelho.
-- Altura do balcão; altura/divisão das 4 portas; larguras das portas.
-- Alturas das 2 gavetas; vão do espelho.
-- Folga da corrediça oculta (definir modelo: Blum/FGV/etc.).
+## Cotas LIDAS das pranchas (42/43)
+- **Balcão (bancada baixa em L):** profundidade **40 cm**, altura **45 cm** (40 porta/gaveta
+  + 5 base), suspenso ("hack").
+- **Lado TV (projeto 280):** 4 portas basculantes — .25 + 4×.58 + .25.
+- **Lado espelho (projeto 240):** 2 gavetas (.70/.30 no projeto) + espelho 2,15 acima.
+- Almofada 5 cm (linho cinza) sobre o balcão · cantos arredondados (tampo freijó).
+- Puxador **passante** (DET 01).
+- **Corrediça:** Hardt **oculta + amortecedor**, **folga 1,8** (confirmar total ou por lado).
+
+## DECISÃO DE DIVISÃO (real ≠ projeto: TV 223 / espelho 109 — re-proporcionar)
+Proposta do Téo (confirmar c/ Paulo):
+- TV 223 → **4 portas basculantes** iguais (~53,9 cm/vão; 2 laterais + 3 divisórias 15mm).
+- Espelho 109 → **2 gavetas** iguais (~52 cm/vão).
+- Construção: MDF 15 (fundo 6), **tampo+base passantes**, parafuso oculto.
+- ⏳ AGUARDANDO Paulo confirmar: prof 40 / alt 45 / nº de portas / gavetas lado-a-lado / folga 1,8.
