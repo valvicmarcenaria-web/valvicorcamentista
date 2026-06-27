@@ -51,22 +51,23 @@ pintura, porcelanato, rodapé poliestireno, blindex, arandelas e **madeira de de
   `proposta-ed-luxemburgo.html`/`.pdf`. Proposta subida ao Drive (pasta do cliente).
 - **Pendências:** confirmar prazo do boleto (assumido 30 dias); ver recado p/ Rodrigo.
 
-### [2026-06-25] Orçamento + Proposta — Camila (Closet) — Lavinia + Vitor
+### [2026-06-25] Orçamento + Proposta — Camila (Closet) — Lavinia + Vitor · rev. 27/06
 **Solicitante:** Jonathan · **Status:** 🟢 Concluído
-Closet = Roupeiro em L + Ilha central. **Duas versões** pelo módulo superior do roupeiro:
-**V1 correr ripado** (fiel ao projeto, R$ 37.530) × **V2 básculas** (R$ 33.890) — ambas
-MC 32%, RT 10% embutido, Hardt → garantia 5 anos. Ilha idêntica (serralheria + tampo de
-vidro + gaveta especial + puxador Enlevo).
-- **Arquivos:** `orcamento-camila-v1/v2-mc32.json`, `orcamento-camila-closet.html/.pdf`,
-  `proposta-camila.html/.pdf`.
-- **Proposta:** 2 cenários COMPLETOS lado a lado (Linha Projeto × Linha Otimizada,
-  economia R$ 3.640) · validade 7 dias. Drive: Doc do orçamento na pasta "Camila"; PDFs no chat.
-- **Pendências:** confirmar prazo (usei 60–70 dias úteis); báscula = mudança do projeto →
-  validar com a arquiteta; trocar render da capa por foto real.
-- ⚠️ **Esta entrada está DESATUALIZADA:** o projeto evoluiu depois para **config única**
-  (sem módulo superior, roupeiro piso-teto usinado Cumaru+cinza, ilha sem gaveta especial)
-  fechada em **R$ 27.500** (MC 32%, RT 10%) — ver `orcamento-camila-v3-mc32.json` e os Docs
-  ATUAL na pasta "Camila". Os 2 Docs antigos do Drive devem ser apagados pelo Jonathan.
+Closet = **Roupeiro em L (piso-teto) + Ilha**. Fechou em **config única** (evoluiu de 2
+versões — correr ripado × básculas — que foram descartadas). **R$ 27.500** · MC **32%** ·
+RT **10%** embutido · ferragem **Hardt** → garantia 5 anos · material ≈ R$ 10.036.
+- **Roupeiro** (piso-teto, 2 cores cinza + Cumaru **USINADO**, não ripado): 3 portas de
+  correr **RO-65 piso-teto** (trilho 3 m + desempenadores) + 2 portas menores (43 cm) de
+  **giro** (dobradiças Hardt). Gavetas em corrediça oculta Hardt + puxador SP7000. LED +
+  sensor. **Eliminados:** módulo superior, báscula/Multi, tábua de passar.
+- **Ilha:** serralheria **só da base** + tampo de vidro temperado 8 mm + corrediça oculta
+  Hardt + puxador Enlevo. **Eliminados:** gaveta especial (virou comum) e suporte de joias.
+- **Alocação:** Roupeiro ≈ R$ 20.700 · Ilha ≈ R$ 6.800 (proporcional ao material).
+- **Arquivos:** `orcamento-camila-v3-mc32.json`, `orcamento-camila-closet.html/.pdf`,
+  `proposta-camila.html/.pdf` (proposta de config única).
+- **Drive (pasta "Camila"):** Docs **ATUAL** (proposta + orçamento interno v3). ⚠️ Há **2 Docs
+  antigos** (das versões 2-cenários) a **apagar** pelo Jonathan — o Drive MCP não deleta.
+- **Pendências:** confirmar prazo (usei 60–70 dias úteis); trocar render da capa por foto real.
 
 ### [2026-06-27] Orçamento + Proposta — Raquel (Roupeiro Branco TX) — Lavinia + Vitor
 **Solicitante:** Jonathan · **Status:** 🟢 Concluído
