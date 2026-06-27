@@ -1,7 +1,7 @@
 {
  "cliente": "Raquel",
  "projeto": "Roupeiro branco TX — parede 6,30 m (portas de giro)",
- "versao": "002-branco-tx-giro-MC30-2opcoes",
+ "versao": "003-branco-tx-giro-2opcoes-essencialMC30-premiumMC35",
  "inv": 25000,
  "mcAlvo": 30,
  "p": {
@@ -601,5 +601,5 @@
   }
  ],
  "ativo": 0,
- "_obs": "NOVO roupeiro (cliente a definir). Parede 6,30 x 2,40 x 0,60, TODO branco TX, portas de GIRO 15mm com puxador Liveri IL955 192mm (Zamac ~R$40 - confirmar compra). Inclui ATE 25 unidades de gavetas/sapateiras DESLIZANTES (puxadores espacados, sem cava). Sem LED. RT 0. MC 30%. ~25 chapas branco TX. DUAS OPCOES DE FERRAGEM (mesma estrutura/portas): (A) ESSENCIAL = telescopica + dobradica padrao -> garantia 2 anos -> R$25.000 (ATIVO no JSON); (B) PREMIUM = corrediça OCULTA HARDT + dobradica HARDT -> garantia 5 anos -> R$26.800 (trocar Corrediças Telescopica->Oculta Hardt e Dobradiças Padrao->Hardt). Prazo 60 dias CORRIDOS. Validade ate 30/06/2026. A confirmar na elevacao das portas: 14 portas de giro, nº de chapas (nesting). Proposta: proposta-roupeiro-branco-tx.html/pdf."
+ "_obs": "NOVO roupeiro (cliente a definir). Parede 6,30 x 2,40 x 0,60, TODO branco TX, portas de GIRO 15mm com puxador Liveri IL955 192mm (Zamac ~R$40 - confirmar compra). Inclui ATE 25 unidades de gavetas/sapateiras DESLIZANTES (puxadores espacados, sem cava). Sem LED. RT 0. MC 30%. ~25 chapas branco TX. DUAS OPCOES DE FERRAGEM (mesma estrutura/portas): (A) ESSENCIAL = telescopica + dobradica padrao -> garantia 2 anos -> R$25.000 (ATIVO no JSON); (B) PREMIUM = corrediça OCULTA HARDT + dobradica HARDT -> garantia 5 anos -> R$30.000 (MC 35,2% / ANCORA; trocar Corrediças Telescopica->Oculta Hardt 25un e Dobradiças Padrao->Hardt 65un; material R$12.655). Ancoragem maior pedida pelo Jonathan 27/06: gap 25k x 30k = R$5.000. Prazo 60 dias CORRIDOS. Validade ate 30/06/2026. A confirmar na elevacao das portas: 14 portas de giro, nº de chapas (nesting). Proposta: proposta-roupeiro-branco-tx.html/pdf."
 }
