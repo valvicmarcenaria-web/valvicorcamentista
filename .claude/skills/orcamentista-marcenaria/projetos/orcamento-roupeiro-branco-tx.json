@@ -1,9 +1,9 @@
 {
  "cliente": "(a definir)",
  "projeto": "Roupeiro branco TX — parede 6,30 m (portas de giro)",
- "versao": "001-branco-tx-giro-economico",
- "inv": 29000,
- "mcAlvo": 35,
+ "versao": "002-branco-tx-giro-MC30-2opcoes",
+ "inv": 25000,
+ "mcAlvo": 30,
  "p": {
   "nf": 4,
   "parc": 8,
@@ -581,17 +581,17 @@
  ],
  "ambientes": [
   {
-   "nome": "Roupeiro (6,30 x 2,40 x 0,60)",
+   "nome": "Roupeiro (6,30 x 2,40 x 0,60) — Essencial (ativo)",
    "q": {
-    "MDF¦mdf branco 15": 17,
+    "MDF¦mdf branco 15": 16,
     "MDF¦mdf branco 18": 2,
     "MDF¦mdf branco 6": 7,
-    "Cola e fita¦Fita de borda - branco tx - mt": 260,
-    "Cola e fita¦Colagem - mt linear - máquina": 260,
+    "Cola e fita¦Fita de borda - branco tx - mt": 250,
+    "Cola e fita¦Colagem - mt linear - máquina": 250,
     "Dobradiças¦Padrão": 65,
-    "Corrediças¦Telescópica": 28,
+    "Corrediças¦Telescópica": 25,
     "Puxadores¦Liveri IL955 192mm (Italy Line)": 14,
-    "Puxadores¦Puxador gaveta interna (simples)": 28,
+    "Puxadores¦Puxador gaveta interna (simples)": 25,
     "Especiais¦Cabideiro/vara oval (un)": 7,
     "Suportes¦Suporte oculto": 8,
     "Especiais¦Logística específica": 6,
@@ -601,5 +601,5 @@
   }
  ],
  "ativo": 0,
- "_obs": "NOVO roupeiro (cliente a definir). Parede 6,30m x 2,40 alt x 0,60 prof. TODO branco TX, portas de GIRO 15mm com puxador Liveri IL955 192mm (Zamac, ~R$40/un - CONFIRMAR compra). Ferragem economica: corrediça TELESCOPICA + dobradiça PADRAO. Gavetas internas (28) com puxadores espacados, sem cava. Sem LED. RT 0. ~26 chapas branco TX (15x17+18x2+6x7). Material+log R$12.300. Investimento R$29.000 (MC ~35%). A vista -7% ~R$27.000. ESTIMATIVAS p/ confirmar com a elevacao das portas: 14 portas de giro; layout interno some ~5,60m mas orcado p/ 6,30m; cor=branco TX; 18mm so nas prateleiras largas (>70cm) anti-empeno. Fonte: layout interno (jpeg) + puxador (IMG_7763/7764)."
+ "_obs": "NOVO roupeiro (cliente a definir). Parede 6,30 x 2,40 x 0,60, TODO branco TX, portas de GIRO 15mm com puxador Liveri IL955 192mm (Zamac ~R$40 - confirmar compra). Inclui ATE 25 unidades de gavetas/sapateiras DESLIZANTES (puxadores espacados, sem cava). Sem LED. RT 0. MC 30%. ~25 chapas branco TX. DUAS OPCOES DE FERRAGEM (mesma estrutura/portas): (A) ESSENCIAL = telescopica + dobradica padrao -> garantia 2 anos -> R$25.000 (ATIVO no JSON); (B) PREMIUM = corrediça OCULTA HARDT + dobradica HARDT -> garantia 5 anos -> R$26.800 (trocar Corrediças Telescopica->Oculta Hardt e Dobradiças Padrao->Hardt). Prazo 60 dias CORRIDOS. Validade ate 30/06/2026. A confirmar na elevacao das portas: 14 portas de giro, nº de chapas (nesting). Proposta: proposta-roupeiro-branco-tx.html/pdf."
 }
