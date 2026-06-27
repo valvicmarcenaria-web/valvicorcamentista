@@ -63,6 +63,24 @@ vidro + gaveta especial + puxador Enlevo).
   economia R$ 3.640) · validade 7 dias. Drive: Doc do orçamento na pasta "Camila"; PDFs no chat.
 - **Pendências:** confirmar prazo (usei 60–70 dias úteis); báscula = mudança do projeto →
   validar com a arquiteta; trocar render da capa por foto real.
+- ⚠️ **Esta entrada está DESATUALIZADA:** o projeto evoluiu depois para **config única**
+  (sem módulo superior, roupeiro piso-teto usinado Cumaru+cinza, ilha sem gaveta especial)
+  fechada em **R$ 27.500** (MC 32%, RT 10%) — ver `orcamento-camila-v3-mc32.json` e os Docs
+  ATUAL na pasta "Camila". Os 2 Docs antigos do Drive devem ser apagados pelo Jonathan.
+
+### [2026-06-27] Orçamento + Proposta — Raquel (Roupeiro Branco TX) — Lavinia + Vitor
+**Solicitante:** Jonathan · **Status:** 🟢 Concluído
+Roupeiro piso-teto de **6,30 m**, todo em **MDF Branco TX 15 mm**, **portas de giro** com
+puxador **Liveri IL955 192 mm** (Italy Line), interior completo (cabideiros, prateleiras e
+**até 25 gavetas/sapateiras deslizantes** — puxadores espaçados, sem cava). **Sem LED.**
+- **Duas linhas de ferragem** (mesma estrutura/portas): **Premium** (corrediça oculta Hardt
+  + dobradiça Hardt → 5 anos) **R$ 30.000** (MC **35,2%** — ÂNCORA) × **Essencial**
+  (telescópica + dobradiça padrão → 2 anos) **R$ 25.000** (MC **30%**). RT 0. Gap = R$ 5.000.
+- **Arquivos:** `orcamento-roupeiro-branco-tx.json` (v003), `proposta-roupeiro-branco-tx.html/.pdf`.
+- **Proposta:** 5 páginas, 2 opções lado a lado · prazo **60 dias corridos** · validade
+  **30/06/2026**. Drive: pasta **"Raquel"** criada + **Doc nativo** da proposta; PDF visual no chat.
+- **Pendências:** confirmar custo de compra do **Liveri IL955** (usei R$ 40/un); confirmar
+  nº de chapas na **elevação das portas** (~14 portas de giro; ±2-3 chapas no nesting).
 
 ---
 
@@ -98,6 +116,16 @@ vidro + gaveta especial + puxador Enlevo).
   superior em correr ripado × báscula — closet da Camila), apresentar as duas como
   CENÁRIOS COMPLETOS lado a lado (roupeiro + ilha em cada), com a economia explícita —
   não só o item que muda.
+
+### [2026-06-27] Ancoragem de preço por MC, não só por custo (Vitor/Lavinia) — Raquel
+- **Diferenciar as versões pela MARGEM, não apenas pelo custo da ferragem.** No roupeiro da
+  Raquel as duas linhas usam a mesma estrutura; a Premium custa só **+R$ 880** de ferragem
+  (oculta Hardt vs telescópica). Precificada na mesma MC, o gap fica pequeno (~R$ 1.800).
+  Subindo a **Premium para 35% de MC** (× Essencial 30%), o gap vira **R$ 5.000** — âncora
+  forte que faz a Essencial parecer o "negócio certo".
+- **Usar números redondos como âncora** (R$ 30.000 × R$ 25.000): mais memorável e o salto de
+  qualidade (telescópica/2 anos → oculta Hardt/5 anos) fica nítido. Fechar o investimento na
+  MC alvo e arredondar pra cima (motor confirma a MC realizada — Premium 35,2%).
 
 ---
 
