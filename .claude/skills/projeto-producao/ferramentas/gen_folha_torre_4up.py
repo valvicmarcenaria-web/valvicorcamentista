@@ -31,7 +31,7 @@ def card(ox,oy,cw,ch):
     c.drawString(ox+p,y,"Pedido:"); fline(ox+p+13*mm,y-0.5,ox+p+38*mm)
     c.drawString(ox+p+42*mm,y,"Módulo:"); fline(ox+p+56*mm,y-0.5,ox+cw-p)
     # ===== DESENHO 3D iso — TORRE (armário alto vertical, paredes finas MDF) =====
-    w_,h_=25*mm,45*mm; ddx,ddy=8*mm,5*mm; t=1.2*mm
+    w_,h_=24*mm,40*mm; ddx,ddy=8*mm,5*mm; t=1.2*mm
     bx=ox+(cw-(w_+ddx))/2; by=y-6*mm-(h_+ddy)
     A=(bx,by);B=(bx+w_,by);Cc=(bx+w_,by+h_);D=(bx,by+h_)
     A2=(bx+ddx,by+ddy);B2=(bx+w_+ddx,by+ddy);C2=(bx+w_+ddx,by+h_+ddy);D2=(bx+ddx,by+h_+ddy)
@@ -48,12 +48,6 @@ def card(ox,oy,cw,ch):
     c.rect(bx,by,w_,h_)                              # contorno externo da frente
     c.setLineWidth(0.4); c.setStrokeColor(colors.HexColor("#888"))
     c.rect(bx+t,by+t,w_-2*t,h_-2*t)                 # contorno interno = espessura
-    # prateleiras / divisões internas (tracejado) — sugerem nichos de torre
-    c.setDash(2,2); c.setLineWidth(0.4); c.setStrokeColor(colors.HexColor("#999"))
-    for frac in (0.34,0.62,0.80):
-        yy=by+t+ (h_-2*t)*frac
-        c.line(bx+t,yy,bx+w_-t,yy)
-    c.setDash()
     y=by-6*mm
     # ===== MEDIDAS =====
     c.setFont("Helvetica-Bold",7); c.setFillColor(colors.black)
@@ -61,7 +55,7 @@ def card(ox,oy,cw,ch):
     c.drawString(ox+p+27*mm,y,"Larg"); fline(ox+p+37*mm,y-0.5,ox+p+53*mm)
     c.drawString(ox+p+56*mm,y,"Prof"); fline(ox+p+66*mm,y-0.5,ox+cw-p-6*mm)
     c.setFont("Helvetica",6); c.setFillColor(GREY); c.drawRightString(ox+cw-p,y,"mm")
-    g=7.5*mm
+    g=7.3*mm
     y-=g; c.setFillColor(colors.black)
     c.setFont("Helvetica-Bold",6.8); c.drawString(ox+p,y,"Tamponam.:")
     c.setFont("Helvetica",6.5); c.drawString(ox+p+20*mm,y,"L"); fline(ox+p+23*mm,y-0.5,ox+p+32*mm)
@@ -73,13 +67,18 @@ def card(ox,oy,cw,ch):
     c.drawString(ox+p+33*mm,y,"C"); fline(ox+p+36*mm,y-0.5,ox+p+45*mm)
     xx=chk(ox+p+48*mm,y-1.5,"15"); xx=chk(xx,y-1.5,"6"); chk(xx,y-1.5,"18")
     y-=g
-    c.setFont("Helvetica-Bold",6.8); c.drawString(ox+p,y,"Nichos:")
-    xx=chk(ox+p+13*mm,y-1.5,"Forno"); xx=chk(xx,y-1.5,"Microondas"); chk(xx,y-1.5,"Cooktop")
+    c.setFont("Helvetica-Bold",6.8); c.drawString(ox+p,y,"Vão Forno:")
+    fline(ox+p+18*mm,y-0.5,ox+cw-p-6*mm)
+    c.setFont("Helvetica",6); c.setFillColor(GREY); c.drawRightString(ox+cw-p,y,"mm")
+    c.setFillColor(colors.black)
+    y-=g
+    c.setFont("Helvetica-Bold",6.8); c.drawString(ox+p,y,"Vão Microond.:")
+    fline(ox+p+24*mm,y-0.5,ox+cw-p-6*mm)
+    c.setFont("Helvetica",6); c.setFillColor(GREY); c.drawRightString(ox+cw-p,y,"mm")
+    c.setFillColor(colors.black)
     y-=g
     c.setFont("Helvetica-Bold",6.8); c.drawString(ox+p,y,"Fundo:")
-    xx=chk(ox+p+12*mm,y-1.5,"Sim"); xx=chk(xx,y-1.5,"Não")
-    c.setFont("Helvetica-Bold",6.8); c.drawString(xx+1*mm,y,"LED:")
-    xx=chk(xx+9*mm,y-1.5,"Sim"); chk(xx,y-1.5,"Não")
+    xx=chk(ox+p+12*mm,y-1.5,"Sim"); chk(xx,y-1.5,"Não")
     y-=g
     c.setFont("Helvetica-Bold",6.8); c.drawString(ox+p,y,"Prat/Div:")
     xx=chk(ox+p+16*mm,y-1.5,"15"); xx=chk(xx,y-1.5,"18")
