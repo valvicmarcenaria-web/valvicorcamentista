@@ -66,6 +66,10 @@ def card(ox,oy,cw,ch):
     c.drawString(ox+p+33*mm,y,"C"); fline(ox+p+36*mm,y-0.5,ox+p+45*mm)
     xx=chk(ox+p+48*mm,y-1.5,"15"); xx=chk(xx,y-1.5,"6"); chk(xx,y-1.5,"18")
     y-=8.6*mm
+    c.setFont("Helvetica-Bold",6.8); c.drawString(ox+p,y,"Porta:")
+    fline(ox+p+11*mm,y-0.5,ox+p+30*mm)
+    xx=chk(ox+p+33*mm,y-1.5,"15"); xx=chk(xx,y-1.5,"18"); xx=chk(xx,y-1.5,"Provençal"); chk(xx,y-1.5,"Vidro")
+    y-=8.6*mm
     c.setFont("Helvetica-Bold",6.8); c.drawString(ox+p,y,"Fundo:")
     xx=chk(ox+p+12*mm,y-1.5,"Sim"); xx=chk(xx,y-1.5,"Não")
     c.setFont("Helvetica-Bold",6.8); c.drawString(xx+1*mm,y,"LED:")
