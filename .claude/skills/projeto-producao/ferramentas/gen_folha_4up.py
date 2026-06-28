@@ -32,8 +32,8 @@ def card(ox,oy,cw,ch):
     c.drawString(ox+p,y,"Pedido:"); fline(ox+p+13*mm,y-0.5,ox+p+38*mm)
     c.drawString(ox+p+42*mm,y,"Módulo:"); fline(ox+p+56*mm,y-0.5,ox+cw-p)
     # ===== DESENHO 3D iso — caixa ABERTA de paredes finas (MDF), ~½ do tamanho =====
-    w_,h_=20*mm,12*mm; ddx,ddy=5*mm,3.5*mm; t=1.0*mm
-    bx=ox+(cw-(w_+ddx))/2; by=y-6*mm-(h_+ddy)
+    w_,h_=30*mm,17*mm; ddx,ddy=7*mm,5*mm; t=1.1*mm
+    bx=ox+(cw-(w_+ddx))/2; by=y-7*mm-(h_+ddy)
     A=(bx,by);B=(bx+w_,by);C=(bx+w_,by+h_);D=(bx,by+h_)
     A2=(bx+ddx,by+ddy);B2=(bx+w_+ddx,by+ddy);C2=(bx+w_+ddx,by+h_+ddy);D2=(bx+ddx,by+h_+ddy)
     quad([A2,B2,C2,D2],colors.HexColor("#f3f3f3"))   # fundo (parede de trás)
@@ -48,38 +48,39 @@ def card(ox,oy,cw,ch):
     c.rect(bx,by,w_,h_)                              # contorno externo da frente
     c.setLineWidth(0.4); c.setStrokeColor(colors.HexColor("#888"))
     c.rect(bx+t,by+t,w_-2*t,h_-2*t)                 # contorno interno (a 1mm) = espessura
-    y=by-5*mm
+    y=by-7*mm
     # ===== MEDIDAS =====
     c.setFont("Helvetica-Bold",7); c.setFillColor(colors.black)
     c.drawString(ox+p,y,"Alt"); fline(ox+p+8*mm,y-0.5,ox+p+24*mm)
     c.drawString(ox+p+27*mm,y,"Larg"); fline(ox+p+37*mm,y-0.5,ox+p+53*mm)
     c.drawString(ox+p+56*mm,y,"Prof"); fline(ox+p+66*mm,y-0.5,ox+cw-p-6*mm)
     c.setFont("Helvetica",6); c.setFillColor(GREY); c.drawRightString(ox+cw-p,y,"mm")
-    y-=6*mm; c.setFillColor(colors.black)
+    y-=8.6*mm; c.setFillColor(colors.black)
     c.setFont("Helvetica-Bold",6.8); c.drawString(ox+p,y,"Tamponam.:")
     c.setFont("Helvetica",6.5); c.drawString(ox+p+20*mm,y,"L"); fline(ox+p+23*mm,y-0.5,ox+p+32*mm)
     c.drawString(ox+p+33*mm,y,"C"); fline(ox+p+36*mm,y-0.5,ox+p+45*mm)
     xx=chk(ox+p+48*mm,y-1.5,"15"); xx=chk(xx,y-1.5,"6"); chk(xx,y-1.5,"18")
-    y-=6*mm
+    y-=8.6*mm
     c.setFont("Helvetica-Bold",6.8); c.drawString(ox+p,y,"Acabam.:")
     c.setFont("Helvetica",6.5); c.drawString(ox+p+20*mm,y,"L"); fline(ox+p+23*mm,y-0.5,ox+p+32*mm)
     c.drawString(ox+p+33*mm,y,"C"); fline(ox+p+36*mm,y-0.5,ox+p+45*mm)
     xx=chk(ox+p+48*mm,y-1.5,"15"); xx=chk(xx,y-1.5,"6"); chk(xx,y-1.5,"18")
-    y-=6*mm
+    y-=8.6*mm
     c.setFont("Helvetica-Bold",6.8); c.drawString(ox+p,y,"Fundo:")
     xx=chk(ox+p+12*mm,y-1.5,"Sim"); xx=chk(xx,y-1.5,"Não")
     c.setFont("Helvetica-Bold",6.8); c.drawString(xx+1*mm,y,"LED:")
     xx=chk(xx+9*mm,y-1.5,"Sim"); chk(xx,y-1.5,"Não")
-    y-=6*mm
+    y-=8.6*mm
     c.setFont("Helvetica-Bold",6.8); c.drawString(ox+p,y,"Prat/Div:")
     chk(ox+p+16*mm,y-1.5,"15");
     xx=chk(ox+p+16*mm,y-1.5,"15"); chk(xx,y-1.5,"18")
-    y-=6*mm
+    y-=8.6*mm
     c.setFont("Helvetica-Bold",6.8); c.drawString(ox+p,y,"Puxador:"); fline(ox+p+15*mm,y-0.5,ox+cw-p)
-    y-=6*mm
+    y-=8.6*mm
     c.setFont("Helvetica-Bold",6.8); c.drawString(ox+p,y,"Ferragens:"); fline(ox+p+17*mm,y-0.5,ox+cw-p)
-    y-=6*mm
+    y-=8.6*mm
     c.setFont("Helvetica-Bold",6.8); c.drawString(ox+p,y,"Obs:"); fline(ox+p+9*mm,y-0.5,ox+cw-p)
+    fline(ox+p,y-8.6*mm,ox+cw-p)
 
 cw,ch=W/2,H/2
 for cx in (0,cw):
