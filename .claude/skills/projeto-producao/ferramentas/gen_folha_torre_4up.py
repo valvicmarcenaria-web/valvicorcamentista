@@ -31,7 +31,7 @@ def card(ox,oy,cw,ch):
     c.drawString(ox+p,y,"Pedido:"); fline(ox+p+13*mm,y-0.5,ox+p+38*mm)
     c.drawString(ox+p+42*mm,y,"Módulo:"); fline(ox+p+56*mm,y-0.5,ox+cw-p)
     # ===== DESENHO 3D iso — TORRE (armário alto vertical, paredes finas MDF) =====
-    w_,h_=23*mm,35*mm; ddx,ddy=7*mm,4.5*mm; t=1.2*mm
+    w_,h_=22*mm,30*mm; ddx,ddy=7*mm,4.5*mm; t=1.2*mm
     bx=ox+(cw-(w_+ddx))/2; by=y-6*mm-(h_+ddy)
     A=(bx,by);B=(bx+w_,by);Cc=(bx+w_,by+h_);D=(bx,by+h_)
     A2=(bx+ddx,by+ddy);B2=(bx+w_+ddx,by+ddy);C2=(bx+w_+ddx,by+h_+ddy);D2=(bx+ddx,by+h_+ddy)
@@ -55,7 +55,7 @@ def card(ox,oy,cw,ch):
     c.drawString(ox+p+27*mm,y,"Larg"); fline(ox+p+37*mm,y-0.5,ox+p+53*mm)
     c.drawString(ox+p+56*mm,y,"Prof"); fline(ox+p+66*mm,y-0.5,ox+cw-p-6*mm)
     c.setFont("Helvetica",6); c.setFillColor(GREY); c.drawRightString(ox+cw-p,y,"mm")
-    g=7.3*mm
+    g=7.0*mm
     y-=g; c.setFillColor(colors.black)
     c.setFont("Helvetica-Bold",6.8); c.drawString(ox+p,y,"Tamponam.:")
     c.setFont("Helvetica",6.5); c.drawString(ox+p+20*mm,y,"L"); fline(ox+p+23*mm,y-0.5,ox+p+32*mm)
@@ -81,8 +81,14 @@ def card(ox,oy,cw,ch):
     c.setFont("Helvetica",6); c.setFillColor(GREY); c.drawRightString(ox+cw-p,y,"mm")
     c.setFillColor(colors.black)
     y-=g
-    c.setFont("Helvetica-Bold",6.8); c.drawString(ox+p,y,"Fundo:")
-    xx=chk(ox+p+12*mm,y-1.5,"Sim"); chk(xx,y-1.5,"Não")
+    c.setFont("Helvetica-Bold",6.8); c.drawString(ox+p,y,"Gaveteiro:")
+    xx=chk(ox+p+17*mm,y-1.5,"Sim"); xx=chk(xx,y-1.5,"Não")
+    c.setFont("Helvetica-Bold",6.8); c.drawString(xx+1*mm,y,"Qtd gav.:"); fline(xx+17*mm,y-0.5,ox+cw-p)
+    y-=g
+    c.setFont("Helvetica-Bold",6.8); c.drawString(ox+p,y,"Sapateira:")
+    xx=chk(ox+p+17*mm,y-1.5,"Sim"); xx=chk(xx,y-1.5,"Não")
+    c.setFont("Helvetica-Bold",6.8); c.drawString(xx+1*mm,y,"Fundo:")
+    xx=chk(xx+11*mm,y-1.5,"Sim"); chk(xx,y-1.5,"Não")
     y-=g
     c.setFont("Helvetica-Bold",6.8); c.drawString(ox+p,y,"Prat/Div:")
     xx=chk(ox+p+16*mm,y-1.5,"15"); xx=chk(xx,y-1.5,"18")
