@@ -32,7 +32,7 @@ def card(ox,oy,cw,ch):
     c.drawString(ox+p,y,"Pedido:"); fline(ox+p+13*mm,y-0.5,ox+p+38*mm)
     c.drawString(ox+p+42*mm,y,"Módulo:"); fline(ox+p+56*mm,y-0.5,ox+cw-p)
     # ===== DESENHO 3D iso — caixa ABERTA de paredes finas (MDF), ~½ do tamanho =====
-    w_,h_=30*mm,17*mm; ddx,ddy=7*mm,5*mm; t=1.1*mm
+    w_,h_=40*mm,23*mm; ddx,ddy=9*mm,6.5*mm; t=1.2*mm
     bx=ox+(cw-(w_+ddx))/2; by=y-7*mm-(h_+ddy)
     A=(bx,by);B=(bx+w_,by);C=(bx+w_,by+h_);D=(bx,by+h_)
     A2=(bx+ddx,by+ddy);B2=(bx+w_+ddx,by+ddy);C2=(bx+w_+ddx,by+h_+ddy);D2=(bx+ddx,by+h_+ddy)
