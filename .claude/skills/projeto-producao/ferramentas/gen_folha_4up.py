@@ -20,7 +20,7 @@ def fline(xx,yy,x2):
 def quad(pts,fill):
     p=c.beginPath(); p.moveTo(*pts[0])
     for q in pts[1:]: p.lineTo(*q)
-    p.close(); c.setFillColor(fill); c.setStrokeColor(colors.HexColor("#7d7d7d")); c.setLineWidth(0.8); c.drawPath(p,fill=1,stroke=1)
+    p.close(); c.setFillColor(fill); c.setStrokeColor(colors.HexColor("#9a9a9a")); c.setLineWidth(0.5); c.drawPath(p,fill=1,stroke=1)
 
 def card(ox,oy,cw,ch):
     p=4*mm
@@ -31,16 +31,23 @@ def card(ox,oy,cw,ch):
     c.setFont("Helvetica",7); c.setFillColor(colors.black)
     c.drawString(ox+p,y,"Pedido:"); fline(ox+p+13*mm,y-0.5,ox+p+38*mm)
     c.drawString(ox+p+42*mm,y,"Módulo:"); fline(ox+p+56*mm,y-0.5,ox+cw-p)
-    # ===== DESENHO 3D (iso) estreito, sem escritas =====
-    fw,fh=38*mm,21*mm; ddx,ddy=9*mm,6*mm
-    bx=ox+(cw-(fw+ddx))/2; by=y-7*mm-(fh+ddy)
-    # topo e lateral (atrás)
-    quad([(bx,by+fh),(bx+fw,by+fh),(bx+fw+ddx,by+fh+ddy),(bx+ddx,by+fh+ddy)],TOPF)         # topo
-    quad([(bx+fw,by),(bx+fw+ddx,by+ddy),(bx+fw+ddx,by+fh+ddy),(bx+fw,by+fh)],SIDEF)         # lateral dir
-    # frente (caixa aberta -> mostra fundo recuado)
-    c.setFillColor(colors.white); c.setStrokeColor(colors.black); c.setLineWidth(1.1); c.rect(bx,by,fw,fh,fill=1)
-    inn=3.0*mm
-    c.setStrokeColor(colors.HexColor("#aaaaaa")); c.setLineWidth(0.6); c.rect(bx+inn,by+inn,fw-2*inn,fh-2*inn)
+    # ===== DESENHO 3D iso — caixa ABERTA de paredes finas (MDF), ~½ do tamanho =====
+    w_,h_=20*mm,12*mm; ddx,ddy=5*mm,3.5*mm; t=1.0*mm
+    bx=ox+(cw-(w_+ddx))/2; by=y-6*mm-(h_+ddy)
+    A=(bx,by);B=(bx+w_,by);C=(bx+w_,by+h_);D=(bx,by+h_)
+    A2=(bx+ddx,by+ddy);B2=(bx+w_+ddx,by+ddy);C2=(bx+w_+ddx,by+h_+ddy);D2=(bx+ddx,by+h_+ddy)
+    quad([A2,B2,C2,D2],colors.HexColor("#f3f3f3"))   # fundo (parede de trás)
+    quad([A,B,B2,A2],colors.HexColor("#e7e7e7"))     # base (chão interno)
+    quad([A,D,D2,A2],colors.HexColor("#eeeeee"))     # lateral esq (interna)
+    quad([B,C,C2,B2],colors.HexColor("#dcdcdc"))     # lateral dir
+    # arestas de trás
+    c.setStrokeColor(colors.HexColor("#666")); c.setLineWidth(0.5)
+    for a,b in [(B,B2),(C,C2),(D,D2)]: c.line(*a,*b)
+    # frente = abertura, com a ESPESSURA fina da chapa (parece MDF)
+    c.setLineWidth(0.6); c.setStrokeColor(colors.HexColor("#555"))
+    c.rect(bx,by,w_,h_)                              # contorno externo da frente
+    c.setLineWidth(0.4); c.setStrokeColor(colors.HexColor("#888"))
+    c.rect(bx+t,by+t,w_-2*t,h_-2*t)                 # contorno interno (a 1mm) = espessura
     y=by-5*mm
     # ===== MEDIDAS =====
     c.setFont("Helvetica-Bold",7); c.setFillColor(colors.black)
