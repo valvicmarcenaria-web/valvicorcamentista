@@ -20,6 +20,26 @@ está digitando muda. Para não trocar os nomes:
    Tudo guardado em `projetos/lucas-e-ana-living/` (README + pranchas). Construção: MDF
    15mm, fundo 6mm, frentes cortadas, parafuso oculto, tampo/base passante, gaveta
    corrediça oculta+amortecedor. TV 223 / espelho 109. Próxima parte: caixaria do balcão TV.
+📌 **FOLHAS DE MODULAÇÃO** (formulários que o marceneiro preenche à mão) — família em
+   construção, **a lapidar com o tempo**: inferior, torre (4up/2up), painel, canto.
+   Tudo documentado em `referencias/folhas-de-modulacao.md`. Geradores + PDFs em
+   `ferramentas/` (caminhos relativos; logo em `ferramentas/logo_clean.png`).
+   Falta: aéreo/superior e gaveteiro. Painel ripado → `referencias/painel-ripado.md`.
+
+## Última sessão: 2026-06-29
+
+### 📝 Folhas de modulação — família criada (a lapidar com o tempo)
+- Criadas/ajustadas as folhas que o **marceneiro preenche à mão**: **inferior** (4up),
+  **torre** (4up compacta + 2up completa), **painel** (2up), **armário de canto** (2up).
+- Tudo documentado em `referencias/folhas-de-modulacao.md` (campos, convenções de
+  layout, desenho por tipo, preferências do Paulo, pendências).
+- 🔧 **Reprodutibilidade arrumada:** geradores passaram a usar caminho RELATIVO
+  (`__file__`) e o **logo foi salvo no repo** (`ferramentas/logo_clean.png`) — antes
+  apontava p/ a scratchpad (sumia entre sessões). Regerar: `python3 gen_folha_*.py`.
+- 🆕 **Painel ripado** pesquisado e gravado em `referencias/painel-ripado.md`
+  (friso ~3cm, ripa >1,5cm, lâminas Freijó/Nogueira/Imbuia/Cumaru, rodapé alu/MDF Ultra).
+- **Pendências:** folha de **aéreo/superior** e **gaveteiro**; alinhar Base/LED nas
+  versões 4up. Paulo: "vamos continuar lapidando isso ao longo do tempo".
 
 ## Última sessão: 2026-06-26
 

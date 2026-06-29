@@ -4,8 +4,10 @@ from reportlab.lib.units import mm
 from reportlab.lib import colors
 from reportlab.pdfgen import canvas
 from reportlab.lib.utils import ImageReader
-OUT="/home/user/valvicorcamentista/.claude/skills/projeto-producao/ferramentas/folha_modulacao_torre_2up.pdf"
-LOGO="/tmp/claude-0/-home-user-valvicorcamentista/1d917bda-5670-5e8e-99d3-c980f393e67a/scratchpad/logo_clean.png"
+import os
+_B=os.path.dirname(os.path.abspath(__file__))
+OUT=os.path.join(_B,"folha_modulacao_torre_2up.pdf")
+LOGO=os.path.join(_B,"logo_clean.png")
 W,H=A4
 NAVY=colors.HexColor("#1F3A5F"); GREY=colors.HexColor("#777"); LINE=colors.HexColor("#c4c4c4")
 c=canvas.Canvas(OUT,pagesize=A4)
