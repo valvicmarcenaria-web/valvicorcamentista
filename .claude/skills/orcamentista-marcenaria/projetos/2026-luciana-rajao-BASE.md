@@ -1,4 +1,4 @@
-# ORÇAMENTO — Luciana & Marcelo (cliente estratégica · arq. NB Projetos)
+# ORÇAMENTO — Luciana & Marcelo (cliente estratégica)
 
 > **Consolidado e atualizado.** Venda **direta** (sem parceiro) → divisor **0,738**.
 > Manutenção + adicionais = **preços FECHADOS pelo fundador** = **R$ 12.270**. **Fundo infinito FORA do orçamento**
