@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Modelo Econômico & Alavancagem — Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{
+    --navy:#0E2038; --navy2:#16314f; --navy-soft:#1d3b5e;
+    --gold:#C2A05A; --gold-soft:#d8bd80; --gold-pale:#f5edd8;
+    --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785;
+    --line:#e8e3d8; --line2:#dfdacd;
+    --green:#2f7d4f; --green2:#256340; --red:#b0413f; --blue:#2f5d8c; --amber:#c47d0e;
+  }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:10.2px; line-height:1.45; -webkit-font-smoothing:antialiased; }
+  .num{ font-variant-numeric:tabular-nums; }
+  .serif{ font-family:'Cormorant Garamond',Georgia,serif; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:18px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; page-break-after:always; }
+  .sheet:last-child{ page-break-after:auto; }
+  .cover{ background:radial-gradient(120% 80% at 80% -10%, #1b3a5e 0%, rgba(27,58,94,0) 55%),linear-gradient(160deg,#0E2038 0%,#0b1a2e 60%,#0a1626 100%); color:#fff; display:flex; flex-direction:column; }
+  .cv-frame{ position:absolute; inset:13mm; border:1px solid rgba(194,160,90,.38); pointer-events:none; }
+  .cv-frame::before{ content:""; position:absolute; inset:5px; border:1px solid rgba(194,160,90,.14); }
+  .cv-inner{ position:relative; z-index:2; flex:1; display:flex; flex-direction:column; padding:24mm 22mm; }
+  .cv-brand{ display:flex; align-items:center; gap:14px; }
+  .cv-mono{ width:54px; height:54px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:3px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:25px; color:var(--gold); }
+  .cv-co{ font-size:17px; font-weight:700; letter-spacing:3px; text-transform:uppercase; }
+  .cv-sub{ font-size:9px; color:rgba(255,255,255,.5); letter-spacing:.5px; margin-top:3px; }
+  .cv-center{ margin:auto 0; }
+  .cv-kicker{ font-size:10px; letter-spacing:5px; text-transform:uppercase; color:var(--gold); }
+  .cv-rule{ width:60px; height:2px; background:var(--gold); margin:18px 0 22px; }
+  .cv-title{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:52px; line-height:1.04; letter-spacing:-.5px; }
+  .cv-title span{ color:var(--gold-soft); font-style:italic; }
+  .cv-desc{ font-size:12px; color:rgba(255,255,255,.62); margin-top:18px; max-width:410px; line-height:1.7; font-weight:300; }
+  .cv-foot{ display:flex; justify-content:space-between; align-items:flex-end; margin-top:30px; }
+  .cv-conf{ font-size:8.5px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.4); }
+  .cv-date{ font-size:9.5px; color:rgba(255,255,255,.55); text-align:right; }
+  .ph{ background:var(--navy); color:#fff; padding:13mm 16mm 7mm; display:flex; justify-content:space-between; align-items:flex-end; }
+  .ph .kx{ font-size:8px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:600; margin-top:4px; line-height:1; }
+  .ph .r{ text-align:right; }
+  .ph .co{ font-size:10px; letter-spacing:2px; text-transform:uppercase; font-weight:600; }
+  .ph .pg{ font-size:8.5px; color:rgba(255,255,255,.5); margin-top:3px; }
+  .body{ padding:9mm 16mm 0; }
+  .sec{ display:flex; align-items:center; gap:10px; margin:0 0 9px; }
+  .sec:not(:first-child){ margin-top:15px; }
+  .sec .bar{ width:16px; height:2px; background:var(--gold); }
+  .sec .tx{ font-size:9.5px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:var(--navy); }
+  .sec .ct{ margin-left:auto; font-size:8.5px; color:var(--muted); }
+  table{ width:100%; border-collapse:collapse; }
+  thead th{ background:var(--navy); color:#fff; font-size:7.6px; font-weight:600; letter-spacing:.7px; text-transform:uppercase; padding:6px 9px; text-align:left; }
+  th.r,td.r{ text-align:right; }
+  tbody td{ padding:5.4px 9px; border-bottom:1px solid var(--line); vertical-align:middle; }
+  tbody tr:nth-child(even) td{ background:#f4f1ea; }
+  td .nm{ font-weight:600; color:var(--ink); }
+  td .dt{ color:var(--muted); font-size:8.6px; }
+  tr.stot td{ background:#eceadf !important; font-weight:700; color:var(--navy); border-top:1.5px solid var(--line2); border-bottom:1.5px solid var(--line2); }
+  tr.hot td{ background:#eef4f0 !important; font-weight:700; color:var(--green2); }
+  tr.grand td{ background:var(--navy) !important; color:#fff; font-weight:700; font-size:11px; padding:8px 9px; border:none; }
+  tr.grand td .gv{ color:var(--gold-soft); }
+  .kpis{ display:grid; grid-template-columns:repeat(3,1fr); gap:11px; }
+  .kpi{ background:#fff; border:1px solid var(--line); border-radius:7px; padding:13px 14px; position:relative; overflow:hidden; }
+  .kpi::before{ content:""; position:absolute; top:0; left:0; right:0; height:3px; }
+  .kpi.g::before{ background:var(--green); } .kpi.b::before{ background:var(--navy); } .kpi.gold::before{ background:var(--gold); }
+  .kpi .kl{ font-size:8px; letter-spacing:1.4px; text-transform:uppercase; color:var(--muted); }
+  .kpi .kv{ font-size:25px; font-weight:800; margin-top:5px; letter-spacing:-.5px; }
+  .kpi.g .kv{ color:var(--green); } .kpi.b .kv{ color:var(--navy); } .kpi.gold .kv{ color:var(--amber); }
+  .kpi .ks{ font-size:8.2px; color:var(--muted); margin-top:4px; line-height:1.4; }
+  .exec{ background:#fff; border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:0 7px 7px 0; padding:14px 17px; }
+  .exec .et{ font-size:8.5px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:6px; }
+  .exec p{ font-family:'Cormorant Garamond',serif; font-size:14.5px; line-height:1.55; color:#2a3744; }
+  .exec p b{ color:var(--navy); font-weight:700; }
+  .upside{ background:linear-gradient(135deg,#0E2038 0%,#16314f 100%); border-radius:8px; padding:16px 18px; color:#fff; }
+  .upside .ut{ font-size:8px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+  .upside p{ font-family:'Cormorant Garamond',serif; font-size:15px; line-height:1.55; color:rgba(255,255,255,.9); }
+  .upside p b{ color:#7fd6a0; } .upside p .gold{ color:var(--gold-soft); }
+  .notes{ margin-top:13px; background:#f6f3ec; border:1px solid var(--line); border-radius:7px; padding:12px 15px; }
+  .notes .nt{ font-size:8.2px; letter-spacing:1.6px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:7px; }
+  .notes ul{ margin:0; padding-left:15px; }
+  .notes li{ font-size:8.7px; color:#41505d; line-height:1.55; margin-bottom:4px; }
+  .notes li b{ color:var(--navy); }
+  .pf{ position:absolute; bottom:0; left:0; right:0; border-top:1px solid var(--line2); background:#f4f1ea; padding:6px 16mm; display:flex; justify-content:space-between; align-items:center; }
+  .pf .pl{ font-size:7px; color:var(--muted); } .pf .pr{ font-size:8px; color:var(--navy); font-weight:700; letter-spacing:1px; } .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<!-- PÁG 1 — CAPA -->
+<section class="sheet cover">
+  <div class="cv-frame"></div>
+  <div class="cv-inner">
+    <div class="cv-brand">
+      <div class="cv-mono">V</div>
+      <div><div class="cv-co">Valvic Marcenaria</div><div class="cv-sub">Vargas Decor Ltda &nbsp;·&nbsp; CNPJ 17.269.304/0001-51 &nbsp;·&nbsp; Belo Horizonte / MG</div></div>
+    </div>
+    <div class="cv-center">
+      <div class="cv-kicker">Apresentação ao Sócio Investidor</div>
+      <div class="cv-rule"></div>
+      <h1 class="cv-title">Modelo Econômico<br>& <span>Alavancagem<br>Operacional</span></h1>
+      <p class="cv-desc">Como uma estrutura produtiva já instalada e paga transforma cada real de volume novo em retorno desproporcional — e por que volume é a única alavanca que falta.</p>
+    </div>
+    <div class="cv-foot">
+      <div class="cv-conf">Confidencial &nbsp;·&nbsp; uso restrito</div>
+      <div class="cv-date">Belo Horizonte<br>Junho de 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- PÁG 2 — O ATIVO CONSTRUÍDO -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">O que já existe</div><div class="tt">A Máquina Já Está Construída</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Modelo Econômico · Jun 2026</div></div>
+  </div>
+  <div class="body">
+    <div class="exec" style="margin-bottom:16px">
+      <div class="et">A tese em uma frase</div>
+      <p>A Valvic não é uma promessa a construir — é uma <b>operação pronta, instalada e paga</b>, com unidade econômica saudável e histórico de crescimento. O que ela tem de capacidade hoje supera o que ela fatura. <b>Falta um único insumo: volume.</b></p>
+    </div>
+
+    <div class="kpis" style="margin-bottom:16px">
+      <div class="kpi b"><div class="kl">Parque produtivo instalado</div><div class="kv num">R$ 506k</div><div class="ks">máquinas, ferramentas e infraestrutura — em grande parte quitado.</div></div>
+      <div class="kpi g"><div class="kl">Crescimento 2023→2025</div><div class="kv num">+133%</div><div class="ks">de R$ 645k para R$ 1,5M/ano — sem capital externo.</div></div>
+      <div class="kpi gold"><div class="kl">Margem de contribuição</div><div class="kv num">43,5%</div><div class="ks">unidade econômica saudável para o segmento de planejados.</div></div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Os quatro ativos que o capital não compra rápido</span></div>
+    <table>
+      <thead><tr><th style="width:150px">Ativo</th><th>Por que vale</th><th style="width:96px">Status</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Parque de máquinas</span></td><td class="dt">CNC, esquadrejadeira, coladeiras, exaustão — corte e usinagem industriais</td><td><span class="num">instalado · pago</span></td></tr>
+        <tr><td><span class="nm">Equipe formada</span></td><td class="dt">10 pessoas · marceneiros, operadores, programador, coordenação</td><td class="num">em operação</td></tr>
+        <tr><td><span class="nm">Marca & carteira</span></td><td class="dt">Reputação de planejados sob medida em BH · base de clientes recorrente</td><td class="num">ativa</td></tr>
+        <tr><td><span class="nm">Processo & track record</span></td><td class="dt">Dobrou de tamanho em 2 anos sozinha — sabe produzir e entregar</td><td class="num">comprovado</td></tr>
+      </tbody>
+    </table>
+
+    <div class="notes">
+      <div class="nt">Leitura</div>
+      <ul>
+        <li>Um concorrente que quisesse partir do zero precisaria desembolsar <b>~R$ 500 mil só em máquinas</b> e <b>2 anos para provar a operação</b>. A Valvic já tem os dois.</li>
+        <li>A margem de contribuição de <b>43,5%</b> é o motor: cada projeto contribui com 43 centavos de cada real para cobrir a estrutura e gerar lucro. A unidade econômica é boa — <b>o que limita o resultado não é a margem, é a quantidade de projetos.</b></li>
+      </ul>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Confidencial · Valvic Marcenaria · Junho/2026</div><div class="pr">02 <span>/</span> 04</div></div>
+</section>
+
+<!-- PÁG 3 — ALAVANCAGEM OPERACIONAL -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">O motor do retorno</div><div class="tt">Alavancagem Operacional</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Modelo Econômico · Jun 2026</div></div>
+  </div>
+  <div class="body">
+    <div class="exec" style="margin-bottom:14px">
+      <div class="et">O princípio</div>
+      <p>A estrutura da Valvic é <b>majoritariamente fixa</b> — as mesmas máquinas, o mesmo galpão e a mesma equipe-base atendem um volume bem maior que o atual. Por isso, depois de cobrir o custo fixo, <b>cada real adicional de faturamento converte ~34 centavos direto em resultado.</b> É a definição de alavancagem operacional — e a Valvic está sentada sobre <b>capacidade ociosa</b>.</p>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">O que cada nível de volume gera</span><span class="ct">MC líquida 34% · estrutura atual</span></div>
+    <table>
+      <thead><tr><th>Faturamento / mês</th><th class="r">Margem gerada</th><th class="r">Resultado/mês</th><th class="r" style="width:110px">Resultado/ano</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">~R$ 163k</span> <span class="dt">posição atual · capacidade ociosa</span></td><td class="r num">R$ 55k</td><td class="r num" style="color:var(--muted)">limiar</td><td class="r num" style="color:var(--muted)">—</td></tr>
+        <tr class="stot"><td><span class="nm">R$ 246k</span> — ponto de equilíbrio</td><td class="r num">R$ 84k</td><td class="r num">R$ 0</td><td class="r num">break-even</td></tr>
+        <tr><td><span class="nm">R$ 300k</span></td><td class="r num">R$ 102k</td><td class="r num" style="color:var(--green);font-weight:700">+R$ 18,5k</td><td class="r num" style="color:var(--green);font-weight:700">+R$ 222k</td></tr>
+        <tr class="hot"><td><span class="nm">R$ 400k</span> — meta Fase 1 (dobrar)</td><td class="r num">R$ 136k</td><td class="r num">+R$ 52,5k</td><td class="r num">+R$ 630k</td></tr>
+        <tr><td><span class="nm">R$ 600k</span></td><td class="r num">R$ 204k</td><td class="r num" style="color:var(--green);font-weight:700">+R$ 120k</td><td class="r num" style="color:var(--green);font-weight:700">+R$ 1,4M</td></tr>
+        <tr class="grand"><td>R$ 1.000k — visão (Fase 2)</td><td class="r num">R$ 340k</td><td class="r num"><span class="gv">+R$ 256k</span></td><td class="r num"><span class="gv">+R$ 3,1M</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:8px;color:var(--muted);margin-top:6px;font-style:italic">Até ~R$ 400k/mês a estrutura atual absorve o volume com custo fixo praticamente constante. De R$ 400k a R$ 1M, a Fase 2 (novas máquinas + galpão) adiciona capacidade — é exatamente onde o capital do sócio é aplicado.</p>
+
+    <div class="sec"><span class="bar"></span><span class="tx">A curva do resultado</span></div>
+    <div style="background:#fff;border:1px solid var(--line);border-radius:7px;padding:14px 16px">
+      <div style="display:grid;grid-template-columns:70px 1fr 86px;align-items:center;gap:10px;margin-bottom:9px">
+        <div style="font-size:9px;font-weight:700;color:var(--muted);text-align:right">163k</div>
+        <div style="height:22px;background:#ece8de;border-radius:4px;overflow:hidden;position:relative"><div style="width:16%;height:100%;background:#b0413f;border-radius:4px"></div></div>
+        <div style="font-size:9.5px;font-weight:700;color:var(--red);text-align:right">limiar</div>
+      </div>
+      <div style="display:grid;grid-template-columns:70px 1fr 86px;align-items:center;gap:10px;margin-bottom:9px">
+        <div style="font-size:9px;font-weight:700;color:var(--muted);text-align:right">246k</div>
+        <div style="height:22px;background:#ece8de;border-radius:4px;overflow:hidden;position:relative"><div style="width:24%;height:100%;background:#9aa3ad;border-radius:4px"></div></div>
+        <div style="font-size:9.5px;font-weight:700;color:var(--muted);text-align:right">R$ 0</div>
+      </div>
+      <div style="display:grid;grid-template-columns:70px 1fr 86px;align-items:center;gap:10px;margin-bottom:9px">
+        <div style="font-size:9px;font-weight:700;color:var(--navy);text-align:right">400k</div>
+        <div style="height:22px;background:#ece8de;border-radius:4px;overflow:hidden;position:relative"><div style="width:50%;height:100%;background:linear-gradient(90deg,#2f7d4f,#256340);border-radius:4px"></div></div>
+        <div style="font-size:9.5px;font-weight:800;color:var(--green);text-align:right">+R$ 52,5k</div>
+      </div>
+      <div style="display:grid;grid-template-columns:70px 1fr 86px;align-items:center;gap:10px">
+        <div style="font-size:9px;font-weight:700;color:var(--amber);text-align:right">1.000k</div>
+        <div style="height:22px;background:#ece8de;border-radius:4px;overflow:hidden;position:relative"><div style="width:100%;height:100%;background:linear-gradient(90deg,var(--gold),#a8863f);border-radius:4px"></div></div>
+        <div style="font-size:9.5px;font-weight:800;color:var(--amber);text-align:right">+R$ 256k</div>
+      </div>
+      <div style="font-size:7.8px;color:var(--muted);margin-top:8px;text-align:center;font-style:italic">Faturamento mensal × resultado mensal — a inclinação acelera porque o custo fixo já está coberto.</div>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Confidencial · Valvic Marcenaria · Junho/2026</div><div class="pr">03 <span>/</span> 04</div></div>
+</section>
+
+<!-- PÁG 4 — A OPORTUNIDADE -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Onde o sócio entra</div><div class="tt">A Oportunidade</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Modelo Econômico · Jun 2026</div></div>
+  </div>
+  <div class="body">
+    <div class="exec" style="margin-bottom:16px">
+      <div class="et">O ponto de inflexão</div>
+      <p>A Valvic está hoje <b>no limiar do equilíbrio</b>: toda a estrutura montada e paga, operando logo abaixo do ponto onde a alavancagem dispara. É a posição mais valiosa para um sócio entrar — <b>não se paga pelo potencial a construir, e sim por destravar um potencial já instalado.</b></p>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">O encaixe — o que cada lado traz</span></div>
+    <table>
+      <thead><tr><th style="width:170px">A Valvic já tem</th><th>O sócio aporta</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Capacidade instalada e paga</span></td><td class="dt">Capital para a Fase 2 (novas máquinas + galpão) que eleva o teto de R$ 400k para R$ 1M/mês</td></tr>
+        <tr><td><span class="nm">Operação que sabe entregar</span></td><td class="dt">Pipeline / demanda — o insumo que falta para encher a capacidade ociosa</td></tr>
+        <tr><td><span class="nm">Margem saudável (43,5%)</span></td><td class="dt">Capital de giro para subsidiar orçamentos e acelerar o ciclo comercial</td></tr>
+      </tbody>
+    </table>
+
+    <div class="upside" style="margin-top:16px">
+      <div class="ut">A matemática do encaixe</div>
+      <p>A capacidade ociosa custa o mesmo cheia ou vazia — o custo fixo já está pago. Quando o <b class="gold">volume e o pipeline</b> do sócio enchem essa capacidade, a operação cruza o ponto de equilíbrio e cada real novo gera <b>~34 centavos de resultado</b>. No cenário de R$ 1M/mês, isso é <b>+R$ 3,1 milhões de resultado por ano</b> — gerado por uma estrutura que <span class="gold">já existe e que o sócio ajuda a completar</span>.</p>
+    </div>
+
+    <div class="notes">
+      <div class="nt">O que isto NÃO é — e o que é</div>
+      <ul>
+        <li><b>Não é uma aposta em margem.</b> A margem já é boa e conhecida. É uma <b>aposta em volume e escala</b> — o terreno onde capital e pipeline rendem mais.</li>
+        <li><b>Não é começar do zero.</b> É entrar numa empresa que <b>já cresce, já produz e já tem marca</b> — e acelerar o que já funciona.</li>
+        <li><b>O caminho:</b> manter o <b>bespoke premium</b> (marca + margem) e abrir uma <b>linha modular para incorporação/construtora</b> que absorve o volume — duas pistas, sem trair a identidade.</li>
+      </ul>
+    </div>
+
+    <div style="margin-top:13px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--navy);font-style:italic;line-height:1.5">
+      "O combustível é do sócio. O carro, a estrada e o motorista são da Valvic."
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Documento de uso restrito · Valvic Marcenaria — Vargas Decor Ltda · Belo Horizonte / MG</div><div class="pr">04 <span>/</span> 04</div></div>
+</section>
+
+</body>
+</html>
