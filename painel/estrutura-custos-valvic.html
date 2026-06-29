@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Estrutura de Custos — Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{
+    --navy:#0E2038; --navy2:#16314f; --navy-soft:#1d3b5e;
+    --gold:#C2A05A; --gold-soft:#d8bd80; --gold-pale:#f5edd8;
+    --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785;
+    --line:#e8e3d8; --line2:#dfdacd;
+    --green:#2f7d4f; --red:#b0413f; --blue:#2f5d8c; --amber:#c47d0e;
+  }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:10.2px; line-height:1.45; -webkit-font-smoothing:antialiased; }
+  .num{ font-variant-numeric:tabular-nums; }
+  .serif{ font-family:'Cormorant Garamond',Georgia,serif; }
+
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:18px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; page-break-after:always; }
+  .sheet:last-child{ page-break-after:auto; }
+
+  /* COVER */
+  .cover{ background:radial-gradient(120% 80% at 80% -10%, #1b3a5e 0%, rgba(27,58,94,0) 55%),linear-gradient(160deg,#0E2038 0%,#0b1a2e 60%,#0a1626 100%); color:#fff; display:flex; flex-direction:column; }
+  .cv-frame{ position:absolute; inset:13mm; border:1px solid rgba(194,160,90,.38); pointer-events:none; }
+  .cv-frame::before{ content:""; position:absolute; inset:5px; border:1px solid rgba(194,160,90,.14); }
+  .cv-inner{ position:relative; z-index:2; flex:1; display:flex; flex-direction:column; padding:24mm 22mm; }
+  .cv-brand{ display:flex; align-items:center; gap:14px; }
+  .cv-mono{ width:54px; height:54px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:3px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:25px; color:var(--gold); }
+  .cv-co{ font-size:17px; font-weight:700; letter-spacing:3px; text-transform:uppercase; }
+  .cv-sub{ font-size:9px; color:rgba(255,255,255,.5); letter-spacing:.5px; margin-top:3px; }
+  .cv-center{ margin:auto 0; }
+  .cv-kicker{ font-size:10px; letter-spacing:5px; text-transform:uppercase; color:var(--gold); }
+  .cv-rule{ width:60px; height:2px; background:var(--gold); margin:18px 0 22px; }
+  .cv-title{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:58px; line-height:1.02; letter-spacing:-.5px; }
+  .cv-title span{ color:var(--gold-soft); font-style:italic; }
+  .cv-desc{ font-size:12px; color:rgba(255,255,255,.62); margin-top:18px; max-width:400px; line-height:1.7; font-weight:300; }
+  .cv-foot{ display:flex; justify-content:space-between; align-items:flex-end; margin-top:30px; }
+  .cv-conf{ font-size:8.5px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.4); }
+  .cv-date{ font-size:9.5px; color:rgba(255,255,255,.55); text-align:right; }
+
+  /* HEADER */
+  .ph{ background:var(--navy); color:#fff; padding:13mm 16mm 7mm; display:flex; justify-content:space-between; align-items:flex-end; }
+  .ph .kx{ font-size:8px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:600; margin-top:4px; line-height:1; }
+  .ph .r{ text-align:right; }
+  .ph .co{ font-size:10px; letter-spacing:2px; text-transform:uppercase; font-weight:600; }
+  .ph .pg{ font-size:8.5px; color:rgba(255,255,255,.5); margin-top:3px; }
+  .body{ padding:9mm 16mm 0; }
+
+  .sec{ display:flex; align-items:center; gap:10px; margin:0 0 9px; }
+  .sec:not(:first-child){ margin-top:16px; }
+  .sec .bar{ width:16px; height:2px; background:var(--gold); }
+  .sec .tx{ font-size:9.5px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:var(--navy); }
+  .sec .ct{ margin-left:auto; font-size:8.5px; color:var(--muted); }
+
+  table{ width:100%; border-collapse:collapse; }
+  thead th{ background:var(--navy); color:#fff; font-size:7.6px; font-weight:600; letter-spacing:.7px; text-transform:uppercase; padding:6px 9px; text-align:left; }
+  th.r,td.r{ text-align:right; }
+  tbody td{ padding:5.4px 9px; border-bottom:1px solid var(--line); vertical-align:middle; }
+  tbody tr:nth-child(even) td{ background:#f4f1ea; }
+  td .nm{ font-weight:600; color:var(--ink); }
+  td .dt{ color:var(--muted); font-size:8.8px; }
+  td.note{ color:var(--muted); font-size:8.8px; }
+  tr.stot td{ background:#eceadf !important; font-weight:700; color:var(--navy); border-top:1.5px solid var(--line2); border-bottom:1.5px solid var(--line2); font-size:10px; }
+  tr.grand td{ background:var(--navy) !important; color:#fff; font-weight:700; font-size:11.5px; padding:9px; border:none; }
+  tr.grand td .gv{ color:var(--gold-soft); }
+
+  .tag{ display:inline-block; padding:1.5px 7px; border-radius:20px; font-size:7px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; border:1px solid transparent; }
+  .tag-ok{ background:#eaf4ee; color:var(--green); border-color:#cfe6d8; }
+  .tag-est{ background:#fff3dc; color:var(--amber); border-color:#f0d99a; }
+  .tag-conf{ background:#fbecea; color:var(--red); border-color:#f0d2cf; }
+
+  /* KPI */
+  .kpis{ display:grid; grid-template-columns:repeat(3,1fr); gap:11px; }
+  .kpi{ background:#fff; border:1px solid var(--line); border-radius:7px; padding:13px 14px; position:relative; overflow:hidden; }
+  .kpi::before{ content:""; position:absolute; top:0; left:0; right:0; height:3px; }
+  .kpi.v::before{ background:var(--red); }
+  .kpi.f::before{ background:var(--blue); }
+  .kpi.m::before{ background:var(--green); }
+  .kpi .kl{ font-size:8px; letter-spacing:1.4px; text-transform:uppercase; color:var(--muted); }
+  .kpi .kv{ font-size:26px; font-weight:800; margin-top:5px; letter-spacing:-.5px; }
+  .kpi.v .kv{ color:var(--red); }
+  .kpi.f .kv{ color:var(--blue); }
+  .kpi.m .kv{ color:var(--green); }
+  .kpi .ks{ font-size:8.2px; color:var(--muted); margin-top:4px; line-height:1.4; }
+
+  .exec{ background:#fff; border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:0 7px 7px 0; padding:14px 17px; }
+  .exec .et{ font-size:8.5px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:6px; }
+  .exec p{ font-family:'Cormorant Garamond',serif; font-size:14px; line-height:1.55; color:#2a3744; }
+  .exec p b{ color:var(--navy); font-weight:700; }
+
+  /* waterfall model */
+  .model{ display:flex; flex-direction:column; gap:8px; margin-top:6px; }
+  .mrow{ display:grid; grid-template-columns:160px 1fr 96px; align-items:center; gap:12px; }
+  .mrow .ml{ font-size:10px; font-weight:600; text-align:right; color:var(--ink); }
+  .mrow .ml small{ display:block; font-size:7.5px; color:var(--muted); font-weight:500; }
+  .mbar{ height:30px; border-radius:5px; display:flex; align-items:center; padding-left:12px; color:#fff; font-size:10px; font-weight:700; }
+  .mrow .mv{ font-size:12px; font-weight:800; text-align:right; }
+
+  .disc{ background:#fff7ea; border:1px solid #f0d99a; border-radius:7px; padding:11px 14px; margin-top:12px; }
+  .disc .dt{ font-size:8px; letter-spacing:1.4px; text-transform:uppercase; color:var(--amber); font-weight:700; margin-bottom:5px; }
+  .disc p{ font-size:8.8px; color:#7a5a12; line-height:1.5; }
+  .disc p b{ color:#5e4408; }
+
+  .notes{ margin-top:13px; background:#f6f3ec; border:1px solid var(--line); border-radius:7px; padding:12px 15px; }
+  .notes .nt{ font-size:8.2px; letter-spacing:1.6px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:7px; }
+  .notes ol,.notes ul{ margin:0; padding-left:15px; }
+  .notes li{ font-size:8.7px; color:#41505d; line-height:1.55; margin-bottom:4px; }
+  .notes li b{ color:var(--navy); }
+
+  .pf{ position:absolute; bottom:0; left:0; right:0; border-top:1px solid var(--line2); background:#f4f1ea; padding:6px 16mm; display:flex; justify-content:space-between; align-items:center; }
+  .pf .pl{ font-size:7px; color:var(--muted); }
+  .pf .pr{ font-size:8px; color:var(--navy); font-weight:700; letter-spacing:1px; }
+  .pf .pr span{ color:var(--gold); }
+
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<!-- PÁG 1 — CAPA -->
+<section class="sheet cover">
+  <div class="cv-frame"></div>
+  <div class="cv-inner">
+    <div class="cv-brand">
+      <div class="cv-mono">V</div>
+      <div>
+        <div class="cv-co">Valvic Marcenaria</div>
+        <div class="cv-sub">Vargas Decor Ltda &nbsp;·&nbsp; CNPJ 17.269.304/0001-51 &nbsp;·&nbsp; Belo Horizonte / MG</div>
+      </div>
+    </div>
+    <div class="cv-center">
+      <div class="cv-kicker">Modelo Econômico · Confidencial</div>
+      <div class="cv-rule"></div>
+      <h1 class="cv-title">Estrutura<br>de <span>Custos</span></h1>
+      <p class="cv-desc">Classificação dos custos variáveis e fixos da operação — base para precificação estratégica, ponto de equilíbrio e a conversa com o investidor.</p>
+    </div>
+    <div class="cv-foot">
+      <div class="cv-conf">Uso restrito &nbsp;·&nbsp; não circular</div>
+      <div class="cv-date">Belo Horizonte<br>Junho de 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- PÁG 2 — O MODELO -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Como o dinheiro se comporta</div><div class="tt">O Modelo Econômico</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Estrutura de Custos · Jun 2026</div></div>
+  </div>
+  <div class="body">
+    <div class="exec" style="margin-bottom:16px">
+      <div class="et">A lógica em uma frase</div>
+      <p>Toda venda paga primeiro os <b>custos variáveis</b> (o que só existe quando há produção — material, ferragens, terceiros, impostos). O que sobra é a <b>margem de contribuição (MC ≈ 30%)</b>. É a MC acumulada do mês que paga os <b>custos fixos</b> (folha, aluguel, energia). O que passar disso é <b>lucro</b>.</p>
+    </div>
+
+    <div class="kpis" style="margin-bottom:16px">
+      <div class="kpi v"><div class="kl">Custos Variáveis</div><div class="kv num">≈ 70%</div><div class="ks">da receita · proporcional à produção (material, ferragens, terceiros, impostos, comissão).</div></div>
+      <div class="kpi m"><div class="kl">Margem de Contribuição</div><div class="kv num">≈ 30%</div><div class="ks">sobra de cada R$1 vendido para cobrir o fixo e gerar lucro.</div></div>
+      <div class="kpi f"><div class="kl">Custos Fixos</div><div class="kv num">a apurar</div><div class="ks">independem do volume · folha, pró-labore, aluguel, energia, etc.</div></div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Cascata da receita (a cada R$ 100 vendidos)</span></div>
+    <div class="model">
+      <div class="mrow">
+        <div class="ml">Receita de venda</div>
+        <div class="mbar" style="width:100%;background:linear-gradient(90deg,#16314f,#2f5d8c)">R$ 100,00</div>
+        <div class="mv" style="color:var(--navy)">100%</div>
+      </div>
+      <div class="mrow">
+        <div class="ml">(−) Custos variáveis<small>material · ferragens · terceiros · impostos · comissão</small></div>
+        <div class="mbar" style="width:70%;background:linear-gradient(90deg,#b0413f,#c86663)">R$ 70,00</div>
+        <div class="mv" style="color:var(--red)">−70%</div>
+      </div>
+      <div class="mrow">
+        <div class="ml">(=) Margem de contribuição</div>
+        <div class="mbar" style="width:30%;background:linear-gradient(90deg,#2f7d4f,#256340)">R$ 30,00</div>
+        <div class="mv" style="color:var(--green)">30%</div>
+      </div>
+      <div class="mrow">
+        <div class="ml">(−) Custos fixos<small>rateados por venda — depende do faturamento do mês</small></div>
+        <div class="mbar" style="width:21%;background:linear-gradient(90deg,#2f5d8c,#5b86b3)">a apurar</div>
+        <div class="mv" style="color:var(--blue)">?</div>
+      </div>
+      <div class="mrow">
+        <div class="ml" style="font-weight:800;color:var(--navy)">(=) Resultado (lucro)</div>
+        <div class="mbar" style="width:9%;background:linear-gradient(90deg,#C2A05A,#a8863f)">lucro</div>
+        <div class="mv" style="color:var(--amber)">→</div>
+      </div>
+    </div>
+
+    <div class="disc">
+      <div class="dt">⚠ Como ler este documento</div>
+      <p>A <b>estrutura</b> (quais custos são variáveis e quais são fixos) está completa e correta. Os <b>valores</b> seguem três status: <span class="tag tag-ok">confirmado</span> dado real conhecido · <span class="tag tag-est">estimativa</span> referência a validar · <span class="tag tag-conf">a confirmar</span> depende do dado real da empresa. Preencher os campos "a confirmar" fecha o ponto de equilíbrio com precisão.</p>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Confidencial · Valvic Marcenaria · Junho/2026</div><div class="pr">02 <span>/</span> 04</div></div>
+</section>
+
+<!-- PÁG 3 — CUSTOS VARIÁVEIS -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Proporcional à produção</div><div class="tt">Custos Variáveis</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Estrutura de Custos · Jun 2026</div></div>
+  </div>
+  <div class="body">
+    <div class="exec" style="margin-bottom:14px">
+      <div class="et">Definição</div>
+      <p>Custos que <b>só existem quando há um projeto sendo produzido</b>. Sobem e descem junto com o faturamento. A soma deles consome ~70% de cada venda — o complemento da MC de 30%.</p>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Composição dos custos variáveis</span><span class="ct">% sobre a receita</span></div>
+    <table>
+      <thead><tr><th>Componente</th><th>O que inclui</th><th class="r" style="width:62px">% venda</th><th style="width:74px">Status</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Matéria-prima — chapas</span></td><td class="note">MDF / MDP por cor e espessura · fita de borda</td><td class="r num">~40%</td><td><span class="tag tag-est">estimativa</span></td></tr>
+        <tr><td><span class="nm">Ferragens & acessórios</span></td><td class="note">Corrediças, dobradiças, puxadores, perfis, pistões</td><td class="r num">~11%</td><td><span class="tag tag-est">estimativa</span></td></tr>
+        <tr><td><span class="nm">Terceirizados</span></td><td class="note">Vidro/espelho, mármore, serralheria, iluminação, pintura especial</td><td class="r num">~9%</td><td><span class="tag tag-est">estimativa</span></td></tr>
+        <tr><td><span class="nm">Impostos sobre venda</span></td><td class="note">Simples Nacional (alíquota a confirmar com contador)</td><td class="r num">~7%</td><td><span class="tag tag-conf">a confirmar</span></td></tr>
+        <tr><td><span class="nm">Comissão de vendas</span></td><td class="note">Sobre projetos fechados (quando aplicável)</td><td class="r num">~3%</td><td><span class="tag tag-conf">a confirmar</span></td></tr>
+        <tr><td><span class="nm">Frete / entrega / instalação</span></td><td class="note">Parcela variável por obra (combustível, montagem externa)</td><td class="r num">~2%</td><td><span class="tag tag-est">estimativa</span></td></tr>
+        <tr class="stot"><td colspan="2">Total custos variáveis</td><td class="r num">≈ 70%</td><td><span class="tag tag-ok">ancorado</span></td></tr>
+        <tr class="grand"><td colspan="2">MARGEM DE CONTRIBUIÇÃO (100% − variáveis)</td><td class="r num"><span class="gv">≈ 30%</span></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="notes">
+      <div class="nt">Notas — variáveis</div>
+      <ul>
+        <li>O <b>total de 70% está ancorado</b> na MC real de 30% que a empresa já pratica. A <b>divisão interna entre as linhas é estimativa</b> de mercado para marcenaria de planejados — ajustar com as compras reais (basta abrir o custo médio de 2–3 projetos recentes).</li>
+        <li><b>Matéria-prima</b> é o maior componente e o de maior alavanca: ganho de escala na compra de chapas (Fase 2) reduz este % e <b>aumenta a MC diretamente</b>.</li>
+        <li>A <b>fonte única de verdade</b> dos preços de material é o <code>materiais.json</code> da base da Lavinia — manter atualizado mantém este quadro fiel.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Confidencial · Valvic Marcenaria · Junho/2026</div><div class="pr">03 <span>/</span> 04</div></div>
+</section>
+
+<!-- PÁG 4 — CUSTOS FIXOS + PONTO DE EQUILÍBRIO -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Independem do volume</div><div class="tt">Custos Fixos & Equilíbrio</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Estrutura de Custos · Jun 2026</div></div>
+  </div>
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Folha de pagamento (equipe atual)</span><span class="ct">Salários de referência · com encargos ~70%</span></div>
+    <table>
+      <thead><tr><th>Cargo</th><th class="r" style="width:48px">Qtd</th><th class="r" style="width:74px">Base R$</th><th class="r" style="width:84px">Subtotal R$</th><th style="width:64px">Status</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Marceneiro</span></td><td class="r num">2</td><td class="r num">5.000</td><td class="r num">10.000</td><td><span class="tag tag-est">ref.</span></td></tr>
+        <tr><td><span class="nm">Ajudante</span></td><td class="r num">2</td><td class="r num">2.500</td><td class="r num">5.000</td><td><span class="tag tag-est">ref.</span></td></tr>
+        <tr><td><span class="nm">Operador (CNC + coladeira)</span></td><td class="r num">1</td><td class="r num">4.000</td><td class="r num">4.000</td><td><span class="tag tag-conf">conf.</span></td></tr>
+        <tr><td><span class="nm">Encarregado (também produz)</span></td><td class="r num">1</td><td class="r num">4.500</td><td class="r num">4.500</td><td><span class="tag tag-conf">conf.</span></td></tr>
+        <tr><td><span class="nm">Programação CNC (Felipe)</span></td><td class="r num">1</td><td class="r num">5.000</td><td class="r num">5.000</td><td><span class="tag tag-conf">conf.</span></td></tr>
+        <tr class="stot"><td colspan="3">Subtotal base</td><td class="r num">28.500</td><td></td></tr>
+        <tr><td colspan="3"><span class="nm">(+) Encargos ~70%</span> <span class="note">FGTS, INSS, 13º, férias, benefícios</span></td><td class="r num">~19.950</td><td><span class="tag tag-conf">conf.</span></td></tr>
+        <tr class="stot"><td colspan="3">Folha com encargos (equipe atual)</td><td class="r num">≈ 48.450</td><td></td></tr>
+        <tr><td colspan="3"><span class="nm">(+) Pró-labore dos sócios</span> <span class="note">Jonathan + Paulo</span></td><td class="r num">a confirmar</td><td><span class="tag tag-conf">conf.</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Demais custos fixos (mensais)</span></div>
+    <table>
+      <thead><tr><th>Item</th><th>Observação</th><th class="r" style="width:84px">R$ / mês</th><th style="width:64px">Status</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Aluguel do galpão</span></td><td class="note">Galpão atual</td><td class="r num">a confirmar</td><td><span class="tag tag-conf">conf.</span></td></tr>
+        <tr><td><span class="nm">Energia elétrica</span></td><td class="note">Trifásica · relevante com as máquinas</td><td class="r num">a confirmar</td><td><span class="tag tag-conf">conf.</span></td></tr>
+        <tr><td><span class="nm">Água · internet · telefone</span></td><td class="note">Utilidades</td><td class="r num">a confirmar</td><td><span class="tag tag-conf">conf.</span></td></tr>
+        <tr><td><span class="nm">Contador</span></td><td class="note">Honorários mensais</td><td class="r num">a confirmar</td><td><span class="tag tag-conf">conf.</span></td></tr>
+        <tr><td><span class="nm">Software</span></td><td class="note">Projeto/CNC (Promob, Aspire), gestão</td><td class="r num">a confirmar</td><td><span class="tag tag-conf">conf.</span></td></tr>
+        <tr><td><span class="nm">Manutenção de máquinas</span></td><td class="note">Preventiva + corretiva (média)</td><td class="r num">a confirmar</td><td><span class="tag tag-conf">conf.</span></td></tr>
+        <tr><td><span class="nm">Logística fixa</span></td><td class="note">Parcela Montana (R$ 1.494,78) + custos fixos de veículo</td><td class="r num">~1.495 +</td><td><span class="tag tag-est">parcial</span></td></tr>
+        <tr><td><span class="nm">Administrativo / limpeza / outros</span></td><td class="note">Material de escritório, EPI, diversos</td><td class="r num">a confirmar</td><td><span class="tag tag-conf">conf.</span></td></tr>
+        <tr class="grand"><td colspan="2">TOTAL CUSTO FIXO MENSAL</td><td class="r num"><span class="gv">a fechar</span></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Ponto de equilíbrio — a fórmula</span></div>
+    <div class="exec" style="border-left-color:var(--blue)">
+      <div class="et" style="color:var(--blue)">Quanto a Valvic precisa faturar para não ter prejuízo</div>
+      <p><b>Faturamento de equilíbrio = Custo Fixo Total ÷ 30% (MC)</b>. &nbsp;Exemplo: se o custo fixo total for de R$ 60 mil/mês, o equilíbrio é <b>R$ 60.000 ÷ 0,30 = R$ 200 mil/mês</b> — exatamente o patamar atual. Cada real acima disso gera <b>R$ 0,30 de lucro</b>; cada real abaixo, R$ 0,30 de prejuízo. <i>(valor ilustrativo — fecha quando o custo fixo real for preenchido.)</i></p>
+    </div>
+
+    <div class="disc">
+      <div class="dt">Para finalizar este documento</div>
+      <p>Preencher: <b>pró-labore dos sócios · aluguel · energia · água/internet · contador · software · manutenção · administrativo</b> e confirmar os salários marcados. Com isso, fecho o custo fixo total, o ponto de equilíbrio exato e a margem de segurança — números que sustentam tanto a precificação quanto a mesa de negociação com o investidor.</p>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Documento de uso interno e restrito · Elaborado pela área de Estratégia Financeira</div><div class="pr">04 <span>/</span> 04</div></div>
+</section>
+
+</body>
+</html>
