@@ -144,9 +144,9 @@
       <div class="mrow"><div class="ml" style="font-weight:800;color:var(--navy)">(=) Resultado</div><div class="mbar" style="width:10%;background:linear-gradient(90deg,#C2A05A,#a8863f)">→</div><div class="mv" style="color:var(--amber)">lucro/prej.</div></div>
     </div>
 
-    <div class="alert">
-      <div class="at">⚠ O número que mais importa</div>
-      <p>Com MC líquida de 34% e custo fixo de R$ 83,5 mil, a Valvic só empata quando fatura <b>R$ 246 mil/mês</b>. A média real do 1º semestre de 2026 foi <b>~R$ 163 mil/mês</b> — ou seja, a operação está rodando <b>abaixo do ponto de equilíbrio</b>. O problema central não é a margem; é o <b>volume</b>.</p>
+    <div class="exec">
+      <div class="et">O ponto de equilíbrio</div>
+      <p>Com MC líquida de 34% e custo fixo de R$ 83,5 mil, o <b>ponto de equilíbrio é R$ 246 mil/mês</b>. Acima desse patamar, cada real adicional de faturamento converte <b>~R$ 0,34 direto em resultado</b> — a estrutura é majoritariamente fixa e a capacidade instalada comporta volume bem maior. É a base da <b>alavancagem operacional</b>.</p>
     </div>
   </div>
   <div class="pf"><div class="pl">Uso interno e restrito · Valvic Marcenaria · Fonte: custo-operação 16/06/2026</div><div class="pr">02 <span>/</span> 05</div></div>
@@ -182,7 +182,7 @@
       <div class="nt">Notas — variáveis</div>
       <ul>
         <li><b>MC bruta 43,5% e MC líquida 34% são dados reais</b> (custo-operação 16/06). O material (~34%) vem do CPV da DRE; a divisão terceiros/insumos é a melhor estimativa do restante dos 56,5%.</li>
-        <li><b>Comissões são o 2º maior dreno variável (9,5%).</b> Há estudo em curso de mudar a base de cálculo do marceneiro (de faturamento bruto para líquido de custos de venda) — economia de ~R$ 2 mil/mês e melhor alinhamento de incentivo.</li>
+        <li><b>Comissões são o 2º maior componente variável (9,5%).</b> Há um estudo de alinhamento da base de cálculo (de faturamento bruto para líquido de custos de venda) que melhora o incentivo e otimiza o custo.</li>
         <li>A <b>alavanca de MC</b> está na precificação e na compra de material em escala — cada +1 ponto de MC ≈ +R$ 1,6 mil de lucro/mês sem vender nada a mais.</li>
       </ul>
     </div>
@@ -217,7 +217,7 @@
     </table>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:11px">
       <div class="kpi f" style="padding:11px 13px"><div class="kl">Custo FIXO (independe do volume)</div><div class="kv num" style="font-size:21px">R$ 83.518</div><div class="ks">o que a MC líquida precisa cobrir todo mês.</div></div>
-      <div class="kpi v" style="padding:11px 13px"><div class="kl">Dívidas dentro do fixo</div><div class="kv num" style="font-size:21px">R$ 20.700</div><div class="ks">R$156k em 4 dívidas — pressão extra de caixa.</div></div>
+      <div class="kpi f" style="padding:11px 13px"><div class="kl">Financeiro (dentro do fixo)</div><div class="kv num" style="font-size:21px">R$ 20.700</div><div class="ks">serviço de financiamentos (máquinas, giro, sócio).</div></div>
     </div>
 
     <div class="sec"><span class="bar"></span><span class="tx">Equipe atual</span><span class="ct">10 pessoas</span></div>
@@ -248,36 +248,35 @@
   </div>
   <div class="body">
     <div class="kpis" style="margin-bottom:14px">
-      <div class="kpi w"><div class="kl">Break-even (faturamento)</div><div class="kv num">R$ 246k</div><div class="ks">custo fixo R$ 83,5k ÷ MC líquida 34%.</div></div>
-      <div class="kpi v"><div class="kl">Faturamento médio real</div><div class="kv num">R$ 163k</div><div class="ks">H1/2026 · R$ 83k abaixo do equilíbrio.</div></div>
-      <div class="kpi f"><div class="kl">Resultado médio</div><div class="kv num">negativo</div><div class="ks">7 de 12 meses com caixa negativo.</div></div>
+      <div class="kpi w"><div class="kl">Ponto de equilíbrio</div><div class="kv num">R$ 246k</div><div class="ks">custo fixo R$ 83,5k ÷ MC líquida 34%.</div></div>
+      <div class="kpi g"><div class="kl">Cada R$ acima do equilíbrio</div><div class="kv num">+R$ 0,34</div><div class="ks">converte direto em resultado — alavancagem pura.</div></div>
+      <div class="kpi g"><div class="kl">Meta Fase 1 (R$ 400k)</div><div class="kv num">+R$ 52,5k</div><div class="ks">de resultado/mês · ~R$ 630k/ano com a estrutura atual.</div></div>
     </div>
 
     <div class="sec"><span class="bar"></span><span class="tx">Simulação de resultado por faturamento</span><span class="ct">MC líquida 34% · fixo R$ 83,5k</span></div>
     <table>
       <thead><tr><th>Faturamento/mês</th><th class="r">MC bruta 43,5%</th><th class="r">− Comissões 9,5%</th><th class="r">MC líquida</th><th class="r">− Fixo 83,5k</th><th class="r" style="width:84px">Resultado</th></tr></thead>
       <tbody>
-        <tr><td><span class="nm">R$ 82k</span> <span class="dt">(DRE atual)</span></td><td class="r num">35,7k</td><td class="r num">−7,8k</td><td class="r num">27,9k</td><td class="r num">−83,5k</td><td class="r num" style="color:var(--red);font-weight:700">−55,6k</td></tr>
-        <tr><td><span class="nm">R$ 163k</span> <span class="dt">(média real)</span></td><td class="r num">70,9k</td><td class="r num">−15,5k</td><td class="r num">55,4k</td><td class="r num">−83,5k</td><td class="r num" style="color:var(--red);font-weight:700">−28,1k</td></tr>
-        <tr><td><span class="nm">R$ 200k</span></td><td class="r num">87,0k</td><td class="r num">−19,0k</td><td class="r num">68,0k</td><td class="r num">−83,5k</td><td class="r num" style="color:var(--red);font-weight:700">−15,5k</td></tr>
-        <tr class="stot"><td><span class="nm">R$ 246k</span> (break-even)</td><td class="r num">107,0k</td><td class="r num">−23,4k</td><td class="r num">83,6k</td><td class="r num">−83,5k</td><td class="r num" style="color:var(--green)">≈ ZERO</td></tr>
+        <tr class="stot"><td><span class="nm">R$ 246k</span> (ponto de equilíbrio)</td><td class="r num">107,0k</td><td class="r num">−23,4k</td><td class="r num">83,6k</td><td class="r num">−83,5k</td><td class="r num" style="color:var(--green)">≈ ZERO</td></tr>
         <tr><td><span class="nm">R$ 300k</span></td><td class="r num">130,5k</td><td class="r num">−28,5k</td><td class="r num">102,0k</td><td class="r num">−83,5k</td><td class="r num" style="color:var(--green);font-weight:700">+18,5k</td></tr>
-        <tr><td><span class="nm">R$ 400k</span></td><td class="r num">174,0k</td><td class="r num">−38,0k</td><td class="r num">136,0k</td><td class="r num">−83,5k</td><td class="r num" style="color:var(--green);font-weight:700">+52,5k</td></tr>
+        <tr class="hot"><td><span class="nm">R$ 400k</span> — meta Fase 1</td><td class="r num">174,0k</td><td class="r num">−38,0k</td><td class="r num">136,0k</td><td class="r num">−83,5k</td><td class="r num" style="color:var(--green);font-weight:700">+52,5k</td></tr>
+        <tr><td><span class="nm">R$ 600k</span></td><td class="r num">261,0k</td><td class="r num">−57,0k</td><td class="r num">204,0k</td><td class="r num">−83,5k</td><td class="r num" style="color:var(--green);font-weight:700">+120k</td></tr>
+        <tr class="grand"><td>R$ 1.000k — visão (Fase 2)</td><td class="r num">435k</td><td class="r num">−95k</td><td class="r num">340k</td><td class="r num">−83,5k</td><td class="r num"><span class="gv">+256k</span></td></tr>
       </tbody>
     </table>
 
-    <div class="alert">
-      <div class="at">Diagnóstico definitivo (Rodrigo)</div>
-      <p>O gargalo da Valvic <b>não é a margem</b> — é o <b>volume</b>. A empresa precisa de R$ 246 mil/mês só para empatar e fatura ~R$ 163 mil. Cada real <b>acima</b> de R$ 246k vira R$ 0,34 de lucro; é alavancagem operacional pura. <b>É exatamente isso que o aporte e o pipeline do Walton resolvem</b> — não a margem, e sim encher a capacidade que já está instalada e paga.</p>
+    <div class="exec" style="margin-top:14px">
+      <div class="et">A leitura</div>
+      <p>A unidade econômica da Valvic é sólida: MC líquida de 34% sobre uma estrutura instalada e em grande parte paga. <b>Volume é a alavanca de resultado</b> — encher a capacidade já existente eleva o lucro <b>sem aumentar o custo fixo</b>. De R$ 400k a R$ 1M/mês, a Fase 2 adiciona capacidade, e a alavancagem se mantém em escala.</p>
     </div>
 
     <div class="notes">
       <div class="nt">O que move o resultado</div>
       <ul>
-        <li><b>Volume é a alavanca nº 1:</b> de R$163k para R$300k/mês, o resultado salta de −R$28k para +R$18,5k. A capacidade instalada comporta — falta demanda (pipeline).</li>
-        <li><b>Pipeline H2/2026 hoje está zerado</b> — emergência comercial. O break-even × 6 meses = R$1,47M que precisa entrar.</li>
-        <li><b>Política de entrada ≥ 40%</b> em todo contrato corrige a raiz dos meses de caixa negativo (projetos pagos só no fim).</li>
-        <li><b>Dívidas (R$20,7k/mês)</b> pressionam o caixa acima do break-even contábil — quitá-las libera resultado direto.</li>
+        <li><b>Volume é a alavanca nº 1:</b> a capacidade instalada comporta faturamento bem acima do atual; cada real novo acima do equilíbrio gera R$ 0,34 de resultado.</li>
+        <li><b>Precificação:</b> cada +1 ponto de MC ≈ +R$ 1,6 mil de lucro/mês — sem vender nada a mais.</li>
+        <li><b>Política de entrada ≥ 40%</b> em todo contrato fortalece o fluxo de caixa ao longo da execução.</li>
+        <li><b>Capacidade instalada e paga</b> é o diferencial: a estrutura para escalar já está montada.</li>
       </ul>
     </div>
   </div>
