@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Memória de Custos — Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{
+    --navy:#0E2038; --navy2:#16314f; --navy-soft:#1d3b5e;
+    --gold:#C2A05A; --gold-soft:#d8bd80; --gold-pale:#f5edd8;
+    --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785;
+    --line:#e8e3d8; --line2:#dfdacd;
+    --green:#2f7d4f; --red:#b0413f; --blue:#2f5d8c; --amber:#c47d0e;
+  }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:10px; line-height:1.45; -webkit-font-smoothing:antialiased; }
+  .num{ font-variant-numeric:tabular-nums; }
+  .serif{ font-family:'Cormorant Garamond',Georgia,serif; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:18px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; page-break-after:always; }
+  .sheet:last-child{ page-break-after:auto; }
+  .cover{ background:radial-gradient(120% 80% at 80% -10%, #1b3a5e 0%, rgba(27,58,94,0) 55%),linear-gradient(160deg,#0E2038 0%,#0b1a2e 60%,#0a1626 100%); color:#fff; display:flex; flex-direction:column; }
+  .cv-frame{ position:absolute; inset:13mm; border:1px solid rgba(194,160,90,.38); pointer-events:none; }
+  .cv-frame::before{ content:""; position:absolute; inset:5px; border:1px solid rgba(194,160,90,.14); }
+  .cv-inner{ position:relative; z-index:2; flex:1; display:flex; flex-direction:column; padding:24mm 22mm; }
+  .cv-brand{ display:flex; align-items:center; gap:14px; }
+  .cv-mono{ width:54px; height:54px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:3px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:25px; color:var(--gold); }
+  .cv-co{ font-size:17px; font-weight:700; letter-spacing:3px; text-transform:uppercase; }
+  .cv-sub{ font-size:9px; color:rgba(255,255,255,.5); letter-spacing:.5px; margin-top:3px; }
+  .cv-center{ margin:auto 0; }
+  .cv-kicker{ font-size:10px; letter-spacing:5px; text-transform:uppercase; color:var(--gold); }
+  .cv-rule{ width:60px; height:2px; background:var(--gold); margin:18px 0 22px; }
+  .cv-title{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:54px; line-height:1.02; letter-spacing:-.5px; }
+  .cv-title span{ color:var(--gold-soft); font-style:italic; }
+  .cv-desc{ font-size:12px; color:rgba(255,255,255,.62); margin-top:18px; max-width:410px; line-height:1.7; font-weight:300; }
+  .cv-foot{ display:flex; justify-content:space-between; align-items:flex-end; margin-top:30px; }
+  .cv-conf{ font-size:8.5px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.4); }
+  .cv-date{ font-size:9.5px; color:rgba(255,255,255,.55); text-align:right; }
+  .ph{ background:var(--navy); color:#fff; padding:12mm 16mm 6mm; display:flex; justify-content:space-between; align-items:flex-end; }
+  .ph .kx{ font-size:8px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:600; margin-top:4px; line-height:1; }
+  .ph .r{ text-align:right; }
+  .ph .co{ font-size:9.5px; letter-spacing:2px; text-transform:uppercase; font-weight:600; }
+  .ph .pg{ font-size:8px; color:rgba(255,255,255,.5); margin-top:3px; }
+  .body{ padding:7mm 16mm 0; }
+  .sec{ display:flex; align-items:center; gap:10px; margin:0 0 8px; }
+  .sec:not(:first-child){ margin-top:13px; }
+  .sec .bar{ width:16px; height:2px; background:var(--gold); }
+  .sec .tx{ font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--navy); }
+  .sec .ct{ margin-left:auto; font-size:8px; color:var(--muted); }
+  table{ width:100%; border-collapse:collapse; }
+  thead th{ background:var(--navy); color:#fff; font-size:7.4px; font-weight:600; letter-spacing:.6px; text-transform:uppercase; padding:5.5px 9px; text-align:left; }
+  th.r,td.r{ text-align:right; }
+  tbody td{ padding:5px 9px; border-bottom:1px solid var(--line); vertical-align:top; }
+  tbody tr:nth-child(even) td{ background:#f4f1ea; }
+  td .nm{ font-weight:700; color:var(--ink); }
+  td .ds{ color:var(--muted); font-size:8.4px; line-height:1.4; display:block; margin-top:1px; }
+  tr.stot td{ background:#eceadf !important; font-weight:700; color:var(--navy); border-top:1.5px solid var(--line2); border-bottom:1.5px solid var(--line2); font-size:9.6px; }
+  tr.grand td{ background:var(--navy) !important; color:#fff; font-weight:700; font-size:10.6px; padding:7px 9px; border:none; }
+  tr.grand td .gv{ color:var(--gold-soft); }
+  .tag{ display:inline-block; padding:1px 6px; border-radius:20px; font-size:6.6px; font-weight:700; letter-spacing:.3px; text-transform:uppercase; }
+  .tag-v{ background:#fbecea; color:var(--red); } .tag-f{ background:#e6ecf4; color:var(--blue); }
+  .note{ margin-top:11px; background:#f6f3ec; border:1px solid var(--line); border-radius:7px; padding:10px 14px; }
+  .note .nt{ font-size:7.6px; letter-spacing:1.4px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:5px; }
+  .note p, .note li{ font-size:8.4px; color:#41505d; line-height:1.5; }
+  .note ul{ margin:0; padding-left:14px; }
+  .note li{ margin-bottom:3px; } .note li b{ color:var(--navy); }
+  .pf{ position:absolute; bottom:0; left:0; right:0; border-top:1px solid var(--line2); background:#f4f1ea; padding:6px 16mm; display:flex; justify-content:space-between; align-items:center; }
+  .pf .pl{ font-size:7px; color:var(--muted); } .pf .pr{ font-size:8px; color:var(--navy); font-weight:700; letter-spacing:1px; } .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<!-- PÁG 1 — CAPA -->
+<section class="sheet cover">
+  <div class="cv-frame"></div>
+  <div class="cv-inner">
+    <div class="cv-brand">
+      <div class="cv-mono">V</div>
+      <div><div class="cv-co">Valvic Marcenaria</div><div class="cv-sub">Vargas Decor Ltda &nbsp;·&nbsp; CNPJ 17.269.304/0001-51 &nbsp;·&nbsp; Belo Horizonte / MG</div></div>
+    </div>
+    <div class="cv-center">
+      <div class="cv-kicker">Documento Pessoal · Jonathan</div>
+      <div class="cv-rule"></div>
+      <h1 class="cv-title">Memória<br>de <span>Custos</span></h1>
+      <p class="cv-desc">Detalhamento de cada custo da operação — variáveis, fixos, folha e dívidas, com descrição rubrica a rubrica. Caderno de referência para gestão e precificação.</p>
+    </div>
+    <div class="cv-foot">
+      <div class="cv-conf">Uso pessoal &nbsp;·&nbsp; não circular</div>
+      <div class="cv-date">Belo Horizonte<br>Junho de 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- PÁG 2 — CUSTOS VARIÁVEIS -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Proporcionais ao faturamento</div><div class="tt">Custos Variáveis — detalhe</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Memória de Custos · Jun 2026</div></div>
+  </div>
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Cada componente variável, descrito</span><span class="ct">% sobre o faturamento</span></div>
+    <table>
+      <thead><tr><th style="width:150px">Componente</th><th>Descrição</th><th class="r" style="width:58px">% venda</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Material (CPV)</span></td><td><span class="ds">Chapas de MDF/MDP por cor e espessura, fita de borda e adesivo/cola. É o maior componente do custo e o principal alvo de ganho por escala de compra (comprar mais barato sobe a margem).</span></td><td class="r num">30,0%</td></tr>
+        <tr><td><span class="nm">Terceirizados & insumos</span></td><td><span class="ds">Itens e serviços contratados de terceiros: vidro e espelho, serralheria (estruturas metálicas), iluminação/LED, ferragens especiais e pintura especial. Variam conforme o escopo de cada projeto.</span></td><td class="r num">11,5%</td></tr>
+        <tr><td><span class="nm">Nota fiscal (impostos)</span></td><td><span class="ds">Tributos sobre a venda no regime Simples Nacional. Incidem sobre cada nota emitida — por isso são variáveis (sobem e descem com o faturamento), não fixos.</span></td><td class="r num">7,5%</td></tr>
+        <tr><td><span class="nm">Comissões</span></td><td><span class="ds">Pagas sobre o faturamento de cada projeto fechado: marceneiros 5% · vendedor 3% · coordenador 1% · programador 0,5%.</span></td><td class="r num">9,5%</td></tr>
+        <tr><td><span class="nm">Margem de erro / contingência</span></td><td><span class="ds">Provisão para desvios de orçamento, retrabalho, perdas de material e imprevistos de obra. Torna o modelo conservador.</span></td><td class="r num">1,5%</td></tr>
+        <tr class="stot"><td colspan="2">Total dos custos variáveis</td><td class="r num">60,0%</td></tr>
+        <tr class="grand"><td colspan="2">MARGEM DE CONTRIBUIÇÃO LÍQUIDA (o que sobra para o fixo)</td><td class="r num"><span class="gv">40,0%</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note">
+      <div class="nt">Como ler</div>
+      <ul>
+        <li>De cada R$ 100 faturados, <b>R$ 60 vão para custos variáveis</b> e <b>R$ 40 ficam de margem de contribuição</b> para cobrir o custo fixo e gerar lucro.</li>
+        <li>As comissões (9,5%) e a nota fiscal (7,5%) só existem quando há venda — por isso entram aqui, e não no custo fixo.</li>
+        <li>A composição de material/terceiros é a estrutura-alvo; vale validar com 2–3 projetos reais para travar cada percentual.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Uso pessoal · Valvic Marcenaria · Fonte: custo-operação 16/06/2026</div><div class="pr">02 <span>/</span> 05</div></div>
+</section>
+
+<!-- PÁG 3 — CUSTOS FIXOS -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Independem do faturamento</div><div class="tt">Custos Fixos — detalhe</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Memória de Custos · Jun 2026</div></div>
+  </div>
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Cada rubrica fixa, descrita</span><span class="ct">R$ / mês</span></div>
+    <table>
+      <thead><tr><th style="width:150px">Rubrica</th><th>Descrição</th><th class="r" style="width:62px">R$/mês</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Pró-labore dos sócios</span></td><td><span class="ds">Retirada mensal + ajuda de custo de Jonathan e Paulo (R$ 7.700 cada).</span></td><td class="r num">15.400</td></tr>
+        <tr><td><span class="nm">Folha de produção</span></td><td><span class="ds">Salários e encargos da equipe técnica: marceneiros, ajudante, operador de CNC/coladeira, coordenador e programador (PJ + CLT + encargos).</span></td><td class="r num">23.256</td></tr>
+        <tr><td><span class="nm">Benefícios CLT</span></td><td><span class="ds">Vale-transporte e EPIs dos colaboradores CLT.</span></td><td class="r num">2.650</td></tr>
+        <tr><td><span class="nm">Instalações</span></td><td><span class="ds">Aluguel do galpão (~500 m²), energia e água de base, internet e conservação predial.</span></td><td class="r num">8.280</td></tr>
+        <tr><td><span class="nm">Administrativo</span></td><td><span class="ds">Assistente administrativo + honorários do contador + assessoria jurídica + sistemas e ferramentas de IA.</span></td><td class="r num">6.950</td></tr>
+        <tr><td><span class="nm">Logística / veículos</span></td><td><span class="ds">Custos fixos do veículo (Montana), combustível e entregas recorrentes.</span></td><td class="r num">5.050</td></tr>
+        <tr><td><span class="nm">Comercial / marketing</span></td><td><span class="ds">Mídia, materiais de venda e ações comerciais.</span></td><td class="r num">3.449</td></tr>
+        <tr><td><span class="nm">Máquinas & ferramentas</span></td><td><span class="ds">Manutenção preventiva/corretiva e depreciação do parque de máquinas.</span></td><td class="r num">3.933</td></tr>
+        <tr><td><span class="nm">Financeiro / dívidas</span></td><td><span class="ds">Parcelas mensais dos financiamentos e empréstimos (detalhe na pág. 5).</span></td><td class="r num">20.700</td></tr>
+        <tr class="stot"><td colspan="2">Custo fixo operacional total</td><td class="r num">89.668</td></tr>
+        <tr class="grand"><td colspan="2">CUSTO FIXO DE CAIXA (base do break-even)</td><td class="r num"><span class="gv">≈ 83.518</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note">
+      <div class="nt">Observações</div>
+      <ul>
+        <li><b>Total operacional R$ 89.668</b> inclui a depreciação das máquinas (não é saída de caixa). O <b>custo fixo de caixa para o break-even é ~R$ 83.518</b> (exclui depreciação e ajustes de alocação).</li>
+        <li>A maior rubrica é a <b>folha de produção (R$ 23.256)</b>, seguida do <b>serviço das dívidas (R$ 20.700)</b> — quitar dívidas libera resultado direto.</li>
+        <li>Break-even com MC líquida de 40%: R$ 83.518 ÷ 0,40 = <b>~R$ 209 mil/mês</b>.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Uso pessoal · Valvic Marcenaria · Fonte: custo-operação 16/06/2026</div><div class="pr">03 <span>/</span> 05</div></div>
+</section>
+
+<!-- PÁG 4 — FOLHA / EQUIPE -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Pessoas</div><div class="tt">Folha & Comissões — detalhe</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Memória de Custos · Jun 2026</div></div>
+  </div>
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Equipe atual — pessoa a pessoa</span><span class="ct">10 pessoas</span></div>
+    <table>
+      <thead><tr><th style="width:96px">Pessoa</th><th>Função / o que faz</th><th style="width:48px">Vínculo</th><th class="r" style="width:72px">R$/mês</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Jonathan</span></td><td><span class="ds">Sócio — comercial, projetos e estratégia.</span></td><td>Sócio</td><td class="r num">7.700</td></tr>
+        <tr><td><span class="nm">Paulo</span></td><td><span class="ds">Sócio — gestão e operação (em transição para sair da produção direta).</span></td><td>Sócio</td><td class="r num">7.700</td></tr>
+        <tr><td><span class="nm">Deivson</span></td><td><span class="ds">Coordenador — supervisão de produção.</span></td><td>PJ</td><td class="r num">4.000</td></tr>
+        <tr><td><span class="nm">Samuel</span></td><td><span class="ds">Marceneiro — montagem e acabamento.</span></td><td>PJ</td><td class="r num">3.900</td></tr>
+        <tr><td><span class="nm">Jackson</span></td><td><span class="ds">Marceneiro — montagem e acabamento.</span></td><td>PJ</td><td class="r num">3.600</td></tr>
+        <tr><td><span class="nm">Filipe</span></td><td><span class="ds">Programador — programação de CNC e plano de corte.</span></td><td>PJ</td><td class="r num">3.600</td></tr>
+        <tr><td><span class="nm">Joelson</span></td><td><span class="ds">Operador — CNC e coladeira.</span></td><td>CLT</td><td class="r num">2.500 +enc.</td></tr>
+        <tr><td><span class="nm">Assistente adm.</span></td><td><span class="ds">Administrativo — rotinas de escritório, compras e apoio.</span></td><td>CLT</td><td class="r num">2.000 +enc.</td></tr>
+        <tr><td><span class="nm">Jomar</span></td><td><span class="ds">Marceneiro Jr — produção.</span></td><td>CLT</td><td class="r num">1.950 +enc.</td></tr>
+        <tr><td><span class="nm">Davi</span></td><td><span class="ds">Ajudante — apoio à produção.</span></td><td>CLT</td><td class="r num">1.950 +enc.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Comissões — quem recebe e quanto</span><span class="ct">9,5% sobre o faturamento</span></div>
+    <table>
+      <thead><tr><th style="width:150px">Comissão</th><th>Descrição</th><th class="r" style="width:58px">%</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Marceneiros</span></td><td><span class="ds">Incentivo de produção rateado entre os marceneiros, sobre o faturamento do projeto.</span></td><td class="r num">5,0%</td></tr>
+        <tr><td><span class="nm">Vendedor</span></td><td><span class="ds">Comissão de venda sobre o projeto fechado.</span></td><td class="r num">3,0%</td></tr>
+        <tr><td><span class="nm">Coordenador</span></td><td><span class="ds">Incentivo de coordenação da produção.</span></td><td class="r num">1,0%</td></tr>
+        <tr><td><span class="nm">Programador</span></td><td><span class="ds">Incentivo sobre o projeto programado/produzido.</span></td><td class="r num">0,5%</td></tr>
+        <tr class="grand"><td colspan="2">TOTAL DE COMISSÕES (variável)</td><td class="r num"><span class="gv">9,5%</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note">
+      <div class="nt">Nota</div>
+      <p>Há um estudo de mudar a base de cálculo da comissão dos marceneiros (de faturamento bruto para líquido de custos de venda), o que alinha o incentivo e reduz levemente o custo. Os encargos dos CLT (~70%) estão embutidos na folha de produção.</p>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Uso pessoal · Valvic Marcenaria · Fonte: custo-operação 16/06/2026</div><div class="pr">04 <span>/</span> 05</div></div>
+</section>
+
+<!-- PÁG 5 — DÍVIDAS + CONSOLIDAÇÃO -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Serviço da dívida</div><div class="tt">Dívidas & Consolidação</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Memória de Custos · Jun 2026</div></div>
+  </div>
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Dívidas ativas — uma a uma</span><span class="ct">parcela mensal dentro do custo fixo</span></div>
+    <table>
+      <thead><tr><th style="width:160px">Dívida</th><th>Descrição</th><th class="r" style="width:54px">Saldo</th><th class="r" style="width:42px">Parc.</th><th class="r" style="width:58px">R$/mês</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Financiamento de máquinas</span></td><td><span class="ds">Crédito para aquisição de equipamento.</span></td><td class="r num">24.000</td><td class="r num">5x</td><td class="r num">4.800</td></tr>
+        <tr><td><span class="nm">Capital de giro / empréstimo</span></td><td><span class="ds">Crédito de giro para a operação.</span></td><td class="r num">37.000</td><td class="r num">4x</td><td class="r num">9.250</td></tr>
+        <tr><td><span class="nm">Empréstimo do Paulo</span></td><td><span class="ds">Recurso do sócio injetado na empresa — devolução em andamento.</span></td><td class="r num">30.000</td><td class="r num">5x</td><td class="r num">6.000</td></tr>
+        <tr><td><span class="nm">Aporte do Paulo — CNC</span></td><td><span class="ds">Aporte do sócio para compra do centro de usinagem.</span></td><td class="r num">65.000</td><td class="r num">100x</td><td class="r num">650</td></tr>
+        <tr class="grand"><td colspan="2">TOTAL DAS DÍVIDAS</td><td class="r num"><span class="gv">156.000</span></td><td class="r num">—</td><td class="r num"><span class="gv">20.700</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Consolidação do modelo</span></div>
+    <table>
+      <thead><tr><th>Indicador</th><th>Como se calcula</th><th class="r" style="width:90px">Valor</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Custos variáveis</span></td><td><span class="ds">Material + terceiros + NF + comissões + contingência</span></td><td class="r num">60% da venda</td></tr>
+        <tr><td><span class="nm">Margem de contribuição líquida</span></td><td><span class="ds">100% − variáveis</span></td><td class="r num" style="color:var(--green);font-weight:700">40% da venda</td></tr>
+        <tr><td><span class="nm">Custo fixo de caixa</span></td><td><span class="ds">Soma das rubricas fixas (ex-depreciação)</span></td><td class="r num">R$ 83.518/mês</td></tr>
+        <tr class="stot"><td>Ponto de equilíbrio</td><td>Custo fixo ÷ MC líquida (40%)</td><td class="r num">R$ 209 mil/mês</td></tr>
+        <tr class="grand"><td colspan="2">Acima do equilíbrio, cada R$ 100 mil de venda gera</td><td class="r num"><span class="gv">+R$ 40 mil</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note">
+      <div class="nt">Para fechar com precisão (quando puder levantar)</div>
+      <ul>
+        <li>Validar o <b>split de material × terceiros</b> com 2–3 projetos recentes.</li>
+        <li>Confirmar a <b>alíquota efetiva do Simples</b> com o contador (ajusta a linha de NF).</li>
+        <li>Conferir o <b>aluguel e as utilidades</b> reais (rubrica de instalações).</li>
+        <li>Acompanhar o <b>cronograma de quitação das dívidas</b> — cada parcela encerrada reduz o custo fixo e baixa o break-even.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Documento pessoal · Valvic Marcenaria — Vargas Decor Ltda · não circular</div><div class="pr">05 <span>/</span> 05</div></div>
+</section>
+
+</body>
+</html>
