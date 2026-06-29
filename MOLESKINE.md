@@ -301,3 +301,10 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
   (raio grande aceita flexível; raio fechado = kerf no CNC)". Meu subagente-Teo improvisado acertou a estrutura, mas
   o método de curva real é o do Téo (CNC), não chapa flexível genérica.
 - **Pinterest** que o fundador mandou = **403/login wall, não abro**; pedir print colado no chat (imagem no chat eu VEJO).
+- **[06/24] Orçamento consolidado da Luciana** (`projetos/2026-luciana-rajao-BASE.md`, doc que faltava): itens firmes
+  **R$ 12.270** (manutenção 8.350 + rouparia 2.400 + academia 830 + sala 690) + **fundo infinito ESTIMATIVA preliminar
+  por uso** (produto ~R$20k · meio corpo ~R$31k · corpo inteiro ~R$52k). **Driver = área de laca** (R$650/m²); **metal =
+  serralheria sob orçamento** (base sem preço, cat.15) → não fecho sem cotação. Venda direta → divisor 0,738, MC 40%.
+- *Aprendizado: o fundo infinito DOBRA o projeto (~R$31k no cenário médio vs R$12k dos firmes) — laca em ~9m² pesa.
+  Não é adicional pequeno. Travar o USO primeiro (muda de R$20k a R$52k). Proposta ao cliente só muda o fundo após o
+  fundador aprovar o valor; hoje segue "a definir".*
