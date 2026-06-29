@@ -29,19 +29,13 @@ def card(ox,oy,cw,ch):
     c.setFont("Helvetica",9); c.setFillColor(colors.black)
     c.drawString(ox+p,y,"Pedido:"); fline(ox+p+16*mm,y-0.5,ox+p+50*mm)
     c.drawString(ox+p+55*mm,y,"Módulo:"); fline(ox+p+72*mm,y-0.5,ox+cw-p)
-    # ===== DESENHO — PAINEL RIPADO numa CHAPA DE MDF (plano, sem caixa) =====
-    w_,h_=54*mm,70*mm
+    # ===== DESENHO — CHAPA DE MDF LISA (espaço p/ o marceneiro desenhar a ripa) =====
+    w_,h_=64*mm,80*mm
     bx=ox+(cw-w_)/2; by=y-8*mm-h_
-    c.setFillColor(colors.HexColor("#c4c4c4")); c.setStrokeColor(colors.HexColor("#555")); c.setLineWidth(0.9)
-    c.rect(bx,by,w_,h_,fill=1,stroke=1)                       # a chapa (fundo = sombra dos frisos)
-    m=2.6*mm; n=10; fr=1.4*mm
-    uw=w_-2*m; rw=(uw-(n-1)*fr)/n
-    c.setStrokeColor(colors.HexColor("#9b9b9b")); c.setLineWidth(0.4)
-    for k in range(n):
-        rx=bx+m+k*(rw+fr)
-        c.setFillColor(colors.HexColor("#efefef")); c.rect(rx,by+m,rw,h_-2*m,fill=1,stroke=1)  # ripas
+    c.setFillColor(colors.HexColor("#efe9df")); c.setStrokeColor(colors.HexColor("#555")); c.setLineWidth(1.0)
+    c.rect(bx,by,w_,h_,fill=1,stroke=1)                       # chapa lisa
     y=by-8*mm
-    g=14.5*mm
+    g=14*mm
     # ===== MEDIDAS =====
     lab(ox+p,y,"Alt"); fline(ox+p+9*mm,y-0.5,ox+p+24*mm)
     lab(ox+p+27*mm,y,"Larg"); fline(ox+p+38*mm,y-0.5,ox+p+52*mm)
