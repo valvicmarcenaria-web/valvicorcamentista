@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Custos Variáveis — Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{ --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd; --green:#2f7d4f; --red:#b0413f; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:10.2px; line-height:1.42; -webkit-font-smoothing:antialiased; }
+  .num{ font-variant-numeric:tabular-nums; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:18px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; }
+  .ph{ background:var(--navy); color:#fff; padding:13mm 16mm 9mm; }
+  .ph .top{ display:flex; align-items:center; gap:12px; margin-bottom:15px; }
+  .ph .mono{ width:44px; height:44px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:21px; color:var(--gold); }
+  .ph .co{ font-size:12px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; }
+  .ph .sub{ font-size:8px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
+  .ph .kx{ font-size:8px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:29px; font-weight:600; margin-top:4px; line-height:1.04; }
+  .ph .desc{ font-size:9.2px; color:rgba(255,255,255,.6); margin-top:8px; max-width:480px; line-height:1.55; }
+  .body{ flex:1; padding:9mm 16mm 0; display:flex; flex-direction:column; }
+  table{ width:100%; border-collapse:collapse; }
+  thead th{ background:var(--navy2); color:#fff; font-size:7.4px; font-weight:600; letter-spacing:.7px; text-transform:uppercase; padding:7px 12px; text-align:left; }
+  th.r,td.r{ text-align:right; }
+  tbody td{ padding:8px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+  tbody tr:nth-child(even) td{ background:#f4f1ea; }
+  td .nm{ font-weight:700; color:var(--ink); font-size:11px; }
+  td .ds{ color:var(--muted); font-size:8.8px; display:block; margin-top:1px; line-height:1.4; }
+  td .pct{ font-weight:800; font-size:13px; color:var(--navy); }
+  .idx{ display:inline-flex; width:19px; height:19px; border-radius:4px; background:var(--gold-soft); color:var(--navy); font-size:9px; font-weight:800; align-items:center; justify-content:center; margin-right:9px; }
+  tr.sub td{ background:#eceadf !important; font-weight:700; color:var(--navy); font-size:9.6px; }
+  .mc{ margin-top:14px; background:linear-gradient(135deg,#2f7d4f,#256340); border-radius:9px; padding:16px 20px; display:flex; justify-content:space-between; align-items:center; color:#fff; }
+  .mc .l .tl{ font-size:8.5px; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,.85); }
+  .mc .l .ts{ font-size:8.5px; color:rgba(255,255,255,.7); margin-top:3px; }
+  .mc .v{ font-size:32px; font-weight:800; letter-spacing:-.5px; }
+  .foot-notes{ margin-top:12px; display:flex; gap:10px; }
+  .fn{ flex:1; background:#fff; border:1px solid var(--line); border-radius:7px; padding:10px 13px; }
+  .fn .h{ font-size:7.4px; letter-spacing:1.2px; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:4px; }
+  .fn .t{ font-size:8.4px; color:#41505d; line-height:1.45; } .fn .t b{ color:var(--navy); }
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:6px 16mm; display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf .pl{ font-size:7px; color:var(--muted); } .pf .pr{ font-size:8px; color:var(--navy); font-weight:700; letter-spacing:1px; } .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<section class="sheet">
+  <div class="ph">
+    <div class="top">
+      <div class="mono">V</div>
+      <div><div class="co">Valvic Marcenaria</div><div class="sub">Vargas Decor Ltda &nbsp;·&nbsp; CNPJ 17.269.304/0001-51 &nbsp;·&nbsp; Belo Horizonte / MG</div></div>
+    </div>
+    <div class="kx">Proporcionais ao Faturamento</div>
+    <div class="tt">Custos Variáveis</div>
+    <div class="desc">Custos que só existem quando há projeto sendo produzido — sobem e descem com o faturamento. Percentuais sobre cada real vendido.</div>
+  </div>
+
+  <div class="body">
+    <table>
+      <thead><tr><th>Componente</th><th class="r" style="width:80px">% da venda</th></tr></thead>
+      <tbody>
+        <tr><td><span class="idx">1</span><span class="nm">Material (CPV)</span><span class="ds">Chapas de MDF/MDP por cor e espessura, fita de borda e cola. Maior componente — principal alavanca de ganho por escala de compra.</span></td><td class="r"><span class="pct num">30,0%</span></td></tr>
+        <tr><td><span class="idx">2</span><span class="nm">Terceirizados & insumos</span><span class="ds">Vidro e espelho, serralheria, iluminação/LED, ferragens especiais e pintura especial. Variam conforme o escopo do projeto.</span></td><td class="r"><span class="pct num">11,5%</span></td></tr>
+        <tr><td><span class="idx">3</span><span class="nm">Nota fiscal (impostos s/ venda)</span><span class="ds">Tributos no Simples Nacional, incidentes sobre cada nota emitida — proporcionais ao faturamento.</span></td><td class="r"><span class="pct num">7,5%</span></td></tr>
+        <tr><td><span class="idx">4</span><span class="nm">Comissões</span><span class="ds">Marceneiros 5% · vendedor 3% · coordenador 1% · programador 0,5%, sobre o faturamento de cada projeto fechado.</span></td><td class="r"><span class="pct num">9,5%</span></td></tr>
+        <tr><td><span class="idx">5</span><span class="nm">Margem de erro / contingência</span><span class="ds">Provisão para desvios de orçamento, retrabalho e perdas de material. Torna o modelo conservador.</span></td><td class="r"><span class="pct num">1,5%</span></td></tr>
+        <tr class="sub"><td>Total dos custos variáveis</td><td class="r num">60,0%</td></tr>
+      </tbody>
+    </table>
+
+    <div class="mc">
+      <div class="l"><div class="tl">Margem de Contribuição Líquida</div><div class="ts">O que sobra de cada venda para cobrir o custo fixo e gerar resultado</div></div>
+      <div class="v num">40,0%</div>
+    </div>
+
+    <div class="foot-notes">
+      <div class="fn"><div class="h">Como ler</div><div class="t">De cada <b>R$ 100 faturados</b>, R$ 60 vão para custos variáveis e <b>R$ 40 ficam de margem</b> de contribuição.</div></div>
+      <div class="fn"><div class="h">A alavanca</div><div class="t">Comprar material em <b>escala</b> reduz o maior componente (30%) e <b>sobe a margem</b> sobre o mesmo faturamento.</div></div>
+      <div class="fn"><div class="h">A confirmar</div><div class="t">Validar o split <b>material × terceiros</b> com 2–3 projetos reais e a <b>alíquota efetiva</b> do Simples com o contador.</div></div>
+    </div>
+  </div>
+
+  <div class="pf"><div class="pl">Documento de uso interno · Valvic Marcenaria — Vargas Decor Ltda · Junho/2026</div><div class="pr">CUSTO VARIÁVEL <span>·</span> OPERAÇÃO</div></div>
+</section>
+
+</body>
+</html>

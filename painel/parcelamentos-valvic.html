@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Parcelamentos & Compromissos — Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{ --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd; --green:#2f7d4f; --red:#b0413f; --blue:#2f5d8c; --amber:#c47d0e; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:10px; line-height:1.4; -webkit-font-smoothing:antialiased; }
+  .num{ font-variant-numeric:tabular-nums; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:18px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; }
+  .ph{ background:var(--navy); color:#fff; padding:12mm 16mm 8mm; }
+  .ph .top{ display:flex; align-items:center; gap:12px; margin-bottom:13px; }
+  .ph .mono{ width:42px; height:42px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:20px; color:var(--gold); }
+  .ph .co{ font-size:12px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; }
+  .ph .sub{ font-size:8px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
+  .ph .kx{ font-size:8px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:27px; font-weight:600; margin-top:4px; line-height:1.04; }
+  .ph .desc{ font-size:9px; color:rgba(255,255,255,.6); margin-top:7px; max-width:485px; line-height:1.5; }
+  .body{ flex:1; padding:7mm 16mm 0; display:flex; flex-direction:column; }
+  .sec{ display:flex; align-items:center; gap:10px; margin:0 0 7px; }
+  .sec .bar{ width:15px; height:2px; background:var(--gold); }
+  .sec .tx{ font-size:8.6px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:var(--navy); }
+  table{ width:100%; border-collapse:collapse; }
+  thead th{ background:var(--navy2); color:#fff; font-size:7px; font-weight:600; letter-spacing:.6px; text-transform:uppercase; padding:6px 10px; text-align:left; }
+  th.r,td.r{ text-align:right; }
+  tbody td{ padding:6.5px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  tbody tr:nth-child(even) td{ background:#f4f1ea; }
+  td .nm{ font-weight:700; color:var(--ink); font-size:10px; }
+  td .ds{ color:var(--muted); font-size:8px; display:block; margin-top:1px; line-height:1.35; }
+  td.r .num{ font-weight:700; color:var(--navy); }
+  .pend{ display:inline-block; padding:0 6px; border-radius:10px; font-size:6.6px; font-weight:700; letter-spacing:.3px; text-transform:uppercase; }
+  .pend.a{ background:#fff3dc; color:var(--amber); } .pend.b{ background:#e6ecf4; color:var(--blue); } .pend.g{ background:#eaf4ee; color:var(--green); }
+  tr.grand td{ background:var(--navy) !important; color:#fff; font-weight:700; font-size:10px; padding:8px 10px; border:none; }
+  tr.grand td .gv{ color:var(--gold-soft); }
+  .kpis{ display:flex; gap:10px; margin-top:11px; }
+  .kpi{ flex:1; background:#fff; border:1px solid var(--line); border-radius:7px; padding:10px 13px; }
+  .kpi .kl{ font-size:7.4px; letter-spacing:1.2px; text-transform:uppercase; color:var(--muted); }
+  .kpi .kv{ font-size:18px; font-weight:800; color:var(--navy); margin-top:2px; }
+  .kpi .ks{ font-size:7.6px; color:var(--muted); margin-top:2px; }
+  .signal{ margin-top:12px; background:#fffaf0; border:1px solid #eed9a8; border-radius:8px; padding:11px 14px; }
+  .signal .st{ font-size:8px; letter-spacing:1.6px; text-transform:uppercase; color:var(--amber); font-weight:700; margin-bottom:8px; }
+  .signal .cols{ display:flex; gap:18px; }
+  .signal .col{ flex:1; }
+  .signal .ch{ font-size:8px; font-weight:700; color:var(--navy); text-transform:uppercase; letter-spacing:.6px; margin-bottom:5px; padding-bottom:3px; border-bottom:1px solid #eedfbd; }
+  .signal .row{ display:flex; justify-content:space-between; gap:8px; font-size:8.6px; color:#41505d; margin-bottom:3px; }
+  .signal .row b{ color:var(--navy); font-weight:700; }
+  .signal .sub{ display:flex; justify-content:space-between; font-size:8.6px; font-weight:800; color:var(--amber); margin-top:4px; padding-top:4px; border-top:1px solid #eedfbd; }
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:6px 16mm; display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf .pl{ font-size:7px; color:var(--muted); } .pf .pr{ font-size:8px; color:var(--navy); font-weight:700; letter-spacing:1px; } .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<section class="sheet">
+  <div class="ph">
+    <div class="top">
+      <div class="mono">V</div>
+      <div><div class="co">Valvic Marcenaria</div><div class="sub">Vargas Decor Ltda &nbsp;·&nbsp; CNPJ 17.269.304/0001-51 &nbsp;·&nbsp; Belo Horizonte / MG</div></div>
+    </div>
+    <div class="kx">Compromissos Financeiros</div>
+    <div class="tt">Parcelamentos & Dívidas</div>
+    <div class="desc">Financiamentos, crédito bancário, aportes do sócio e consórcio — com saldo, forma de pagamento e parcela mensal. Tratados à parte dos custos fixos e variáveis.</div>
+  </div>
+
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Compromissos ativos</span></div>
+    <table>
+      <thead><tr><th>Compromisso</th><th>Forma de pagamento / situação</th><th class="r" style="width:62px">Saldo R$</th><th class="r" style="width:62px">R$/mês</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Financiamento de máquinas</span><span class="ds">Crédito para aquisição de equipamento</span></td><td><span class="pend b">5 parcelas</span></td><td class="r"><span class="num">24.000</span></td><td class="r"><span class="num">4.800</span></td></tr>
+        <tr><td><span class="nm">Itaú — cheque especial</span><span class="ds">Capital de giro</span></td><td><span class="pend a">quitação integral até 05/07</span></td><td class="r"><span class="num">14.000</span></td><td class="r"><span class="num">à vista</span></td></tr>
+        <tr><td><span class="nm">Itaú — conta garantia</span><span class="ds">Capital de giro · conforme o cenário, paga à vista e parcela material com fornecedores</span></td><td><span class="pend b">até 5×</span></td><td class="r"><span class="num">15.000</span></td><td class="r"><span class="num">~3.000</span></td></tr>
+        <tr><td><span class="nm">Aporte do Paulo — CNC</span><span class="ds">Recurso do sócio para compra do centro de usinagem</span></td><td><span class="pend g">forma a combinar + juros justos</span></td><td class="r"><span class="num">65.000</span></td><td class="r"><span class="num">a definir</span></td></tr>
+        <tr><td><span class="nm">Empréstimo do Paulo</span><span class="ds">Recurso do sócio injetado na empresa</span></td><td><span class="pend g">forma a combinar + juros justos</span></td><td class="r"><span class="num">30.000</span></td><td class="r"><span class="num">a definir</span></td></tr>
+        <tr><td><span class="nm">Consórcio imobiliário</span><span class="ds">Carta de crédito imobiliária da empresa</span></td><td><span class="pend b">prestação mensal</span></td><td class="r"><span class="num">350.000</span></td><td class="r"><span class="num">1.100</span></td></tr>
+        <tr class="grand"><td colspan="2">TOTAL</td><td class="r"><span class="gv num">498.000</span></td><td class="r"><span class="gv num">8.900 *</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="kpis">
+      <div class="kpi"><div class="kl">Parcela mensal recorrente</div><div class="kv num">R$ 8.900</div><div class="ks">máquinas R$4.800 + conta garantia ~R$3.000 + consórcio R$1.100</div></div>
+      <div class="kpi"><div class="kl">A quitar em julho</div><div class="kv num">R$ 14.000</div><div class="ks">cheque especial — pagamento integral até 05/07</div></div>
+      <div class="kpi"><div class="kl">Sócio (Paulo) — a estruturar</div><div class="kv num">R$ 95.000</div><div class="ks">CNC R$65k + empréstimo R$30k · forma + juros a combinar</div></div>
+    </div>
+    <p style="font-size:7.4px;color:var(--muted);margin-top:5px;font-style:italic">* Parcela recorrente das dívidas com forma já definida. Não inclui o cheque especial (quitação única) nem os valores do sócio (forma a combinar).</p>
+
+    <div class="signal">
+      <div class="st">⚑ Pontos a sinalizar — fora dos cálculos</div>
+      <div class="cols">
+        <div class="col">
+          <div class="ch">Demandas de contratação (folha futura)</div>
+          <div class="row"><span>2 marceneiros — R$ 5.000 cada <i style="color:var(--muted)">(estimado)</i></span><b>R$ 10.000/mês</b></div>
+          <div class="row"><span>2 ajudantes — R$ 2.000 cada</span><b>R$ 4.000/mês</b></div>
+          <div class="sub"><span>Subtotal folha futura</span><span>R$ 14.000/mês</span></div>
+        </div>
+        <div class="col">
+          <div class="ch">Investimentos pontuais (CAPEX único)</div>
+          <div class="row"><span>Kit de ferramentas — R$ 3.000/dupla × 2 <i style="color:var(--muted)">(est.)</i></span><b>R$ 6.000</b></div>
+          <div class="row"><span>Estrutura da assistente adm. (cadeira, PC, celular) <i style="color:var(--muted)">(est.)</i></span><b>R$ 4.000</b></div>
+          <div class="row"><span>Ampliação do mezanino <i style="color:var(--muted)">(est.)</i></span><b>R$ 22.000</b></div>
+          <div class="sub"><span>Subtotal CAPEX</span><span>R$ 32.000</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf"><div class="pl">Documento de uso interno · Valvic Marcenaria — Vargas Decor Ltda · Junho/2026</div><div class="pr">PARCELAMENTOS <span>·</span> COMPROMISSOS</div></div>
+</section>
+
+</body>
+</html>
