@@ -308,3 +308,15 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
 - *Aprendizado: o fundo infinito DOBRA o projeto (~R$31k no cenário médio vs R$12k dos firmes) — laca em ~9m² pesa.
   Não é adicional pequeno. Travar o USO primeiro (muda de R$20k a R$52k). Proposta ao cliente só muda o fundo após o
   fundador aprovar o valor; hoje segue "a definir".*
+
+### [2026-06-30] Lavinia — ADITIVO Carla do Val Dressler (cama + painel)
+- **Conceito novo: ADITIVO a projeto em andamento** → **NÃO entra setup, logística, visita nem RT**; encargos de
+  produção/impostos mantidos (~21,2%) → **divisor 0,788**. `inv = material / (0,788 − MC)`. MC por item (fundador): cama 30% · painel 35%.
+- **Cama (R$ 4.200):** colchão 96×203, **2 gavetões = comprimento da cama ÷ 2** (1 com divisória em **cruz/4 partes**, 1 liso),
+  **SEM corrediça → rodízios de silicone industrial R$15/un, 4 por gaveta (8 no total)**. Melamínico fosco (cor a definir).
+- **Painel (R$ 4.200):** cabeceira de canto, 2 laterais 2,0m × h1,20m, **LED no comprimento** (orçado como nosso, confirmar).
+  Melamínico fosco (cor a definir). **Aditivo total R$ 8.400.** Doc: `projetos/2026-carla-aditivo-BASE.md`.
+- *Aprendizado: li "4 rodízio para tirar ela debaixo da cama" como BICAMA (cama auxiliar) — ERRADO; o fundador esclareceu
+  que são os GAVETÕES sobre rodízios. Lição: quando o cliente fala de "tirar de baixo da cama", pode ser gaveta sobre
+  rodízio (não bicama) — confirmar antes de assumir. E: rodízio de silicone pode substituir corrediça (mais barato).*
+- *Carla NÃO está no repo (projeto em outra branch/sessão) — este aditivo vive solto aqui; quando achar o projeto dela, anexar.*
