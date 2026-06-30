@@ -48,8 +48,23 @@ Cozinha 10,88 m² · Lavabo 2,06 m² · Lavanderia/Área serviço 4,17 m² · Sa
 - Lavabo: jr_12 (parede verde, espelho oval) · jr_8 (gabinete gavetas)
 - ⚠️ Há ~35 renders na pasta; a maioria é de quartos/suíte/closet/varanda (fora de escopo).
 
-## Próximos passos
-1. Localizar renders de Cozinha e Área de serviço.
-2. Fase 1: quantitativo por ambiente (chapas/cor, fita, ferragens, LED, terceirizados).
-3. Fase 2: custo + MC Gold/Essencial (5 pts de diferença), caixa normal, sem RT.
+## Parâmetros TRAVADOS (Jonathan, 30/06)
+- **Gold = Hettich** (oculta + báscula articulador + LED + puxador perfil).
+- **Essencial = Hardt** (mesma marcenaria; corrediça/abertura mais econômica).
+- **Diferença de MC entre linhas = 5 pontos** → alvo **Gold ~40% / Essencial ~35%** (Essencial mais agressiva).
+- **Escopo Valvic:** marcenaria + ferragens + vidros/espelhos dos móveis + LED.
+  **Por conta do cliente:** tampo de pedra, eletros, cuba, torneira.
+- **Caixa NORMAL.** **Sem RT.** **Comissão de vendedor = 3%.** Sem desconto de preço.
+
+## ⚠️ DIRETRIZ DE MÉTODO (Jonathan)
+> **Levantamento por PLANO DE CORTE — NUNCA orçar por m².**
+> Decompor cada móvel em PEÇAS (C×L×qtd) por **cor × espessura** → nº de chapas por
+> nesting/aproveitamento (Σárea ÷ (5,09×0,85), **mín. 1 chapa por cor**) → fita por
+> filetagem (faces, +10%) → ferragens por contagem. Dimensões de módulo estimadas do
+> footprint da planta + renders + profundidades-padrão (anteprojeto), sinalizando "a conferir no local".
+
+## Status / próximos passos
+1. ✅ Fase 1 (Olhar) — planta + renders lidos, 4 ambientes mapeados.
+2. 🔄 **Em andamento:** plano de corte (peça a peça) por ambiente — NÃO apresentar ao Jonathan por enquanto.
+3. Fase 2: custo + MC Gold/Essencial (5 pts), caixa normal, sem RT, vend 3%.
 4. Fase 3: proposta (2 linhas) + condição com entrada.
