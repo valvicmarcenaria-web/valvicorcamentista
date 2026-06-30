@@ -2,7 +2,8 @@
 
 > **Aditivo** a um projeto já em iniciação. **NÃO entra:** setup, logística, visita, **RT**.
 > Encargos de produção/impostos mantidos (~21,2%) → **divisor 0,788**. `inv = material / (0,788 − MC)`.
-> **Acabamento dos dois: melamínico FOSCO — cor a definir.** Medidas a conferir no detalhamento.
+> **Acabamento dos dois: melamínico FOSCO, MESMA cor nos dois (a definir), orçado como chapa de cor (R$ 500/chapa).**
+> **LED = nosso (confirmado).** Medidas a conferir no detalhamento.
 
 ## Item 1 — A CAMA (MC 30%)
 
@@ -25,7 +26,7 @@ industrial** (R$ 15/un) → **8 rodízios**. Melamínico fosco (cor a definir).
 ## Item 2 — O PAINEL (MC 35%)
 
 Cabeceira que envolve o canto: **2 laterais de 2,0 m** (total 4,0 m) · **altura 1,20 m** ·
-**LED no comprimento** (orçado como **nosso** — confirmar). Melamínico fosco (cor a definir).
+**LED no comprimento** (**nosso — confirmado**). Melamínico fosco (chapa de cor, mesma cor da cama).
 
 | Componente | Cálculo | Custo |
 |---|---|---:|
@@ -47,10 +48,9 @@ Cabeceira que envolve o canto: **2 laterais de 2,0 m** (total 4,0 m) · **altura
 | **Aditivo total** | | | **R$ 8.400** |
 
 ## 🔶 A confirmar (não trava o valor, ajusta no detalhamento)
-1. **Cor do melamínico fosco** (a definir) — igual nos dois ou diferente.
-2. **LED é nosso ou do cliente?** Orcei como nosso (R$ 600 no painel); se for do cliente, painel cai ~R$ 1.370.
-3. **Medidas finais** da cama (externa, a partir do colchão 96×203) e **profundidade dos gavetões** → confirma a contagem de chapa (~3 na cama, ~2 no painel).
-4. **Quantidade de chapa** é estimativa de área; fecho no plano de corte do detalhamento.
+1. **Cor exata** do melamínico fosco (definição da cor; mesma nos dois · chapa de cor R$ 500). ✅ LED nosso · ✅ chapa de cor.
+2. **Medidas finais** da cama (externa, a partir do colchão 96×203) e **profundidade dos gavetões** → confirma a contagem de chapa (~3 na cama, ~2 no painel).
+3. **Quantidade de chapa** é estimativa de área; fecho no plano de corte do detalhamento.
 
 > Base de cálculo (aditivo): **sem setup, sem logística, sem visita, sem RT**; encargos de produção/impostos
 > mantidos (divisor 0,788). MCs definidos pelo fundador: cama 30% · painel 35%.
