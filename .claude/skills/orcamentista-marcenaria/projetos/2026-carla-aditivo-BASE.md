@@ -1,56 +1,80 @@
-# ADITIVO DE ORÇAMENTO — Carla do Val Dressler (projeto em andamento)
+# ADITIVO DE ORÇAMENTO — Carla do Val Dressler & Beto (cliente recorrente)
 
-> **Aditivo** a um projeto já em iniciação. **NÃO entra:** setup, logística, visita, **RT**.
-> Encargos de produção/impostos mantidos (~21,2%) → **divisor 0,788**. `inv = material / (0,788 − MC)`.
-> **Acabamento dos dois: melamínico FOSCO, MESMA cor nos dois (a definir), orçado como chapa de cor (R$ 500/chapa).**
-> **LED = nosso (confirmado).** Medidas a conferir no detalhamento.
+> **Aditivo** a um projeto **em andamento** (Rua Palermo 1186, Bandeirantes/BH · arq. Fátima Bastos / Luana Rizzi).
+> **NÃO entra:** setup, logística, visita, **RT**. Encargos de produção/impostos mantidos (~21,2%) → **divisor 0,788**.
+> `inv = material / (0,788 − MC)`. Chapa comprada inteira. Cuba/torneira = louça do cliente (fora da marcenaria).
 
-## Item 1 — A CAMA (MC 30%)
+## Resumo — 4 itens · **R$ 23.100**
 
-Cama para colchão **96 × 203** (cliente fornece o colchão), estilo da referência Tok&Stok "Young".
-**2 gavetões** embaixo (cada um = **comprimento da cama ÷ 2** ≈ 105 cm) — **1 com divisória em cruz
-(4 partes iguais)**, **1 liso**. **Sem corrediça:** cada gavetão corre sobre **4 rodízios de silicone
-industrial** (R$ 15/un) → **8 rodízios**. Melamínico fosco (cor a definir).
+| # | Item | MC | **Investimento** |
+|---|---|:--:|---:|
+| 1 | **Cama** (colchão 96×203 · 2 gavetões · rodízio silicone) | 30% | **R$ 3.800** |
+| 2 | **Painel de cabeceira** (canto · 2 laterais 2,0 m · h1,20 · LED) | 35% | **R$ 4.200** |
+| 3 | **Armário Banho Yasmim** (Ultra) | 35% | **R$ 7.000** |
+| 4 | **Armário Banho Master** (Carvalho Am. Arauco) | 35% | **R$ 8.100** |
+| | **Total do aditivo** | | **R$ 23.100** |
 
-| Componente | Cálculo | Custo |
-|---|---|---:|
-| MDF melamínico (estrutura + 2 gavetões + cruz) | ~3 chapas ×500 | R$ 1.500 |
-| Rodízios de silicone industrial | 8 × R$ 15 | R$ 120 |
-| Fita de borda | ~50 m × 3 | R$ 150 |
-| Colagem | ~50 m × 2,5 | R$ 125 |
-| Estrado/sarrafos + parafusos + consumíveis | — | R$ 160 |
-| **Material** | | **R$ 2.055** |
+---
 
-`inv = 2.055 / (0,788 − 0,30)` = R$ 4.211 → **R$ 4.200 (MC 30%)**
+## Item 1 — CAMA (MC 30% · **preço fechado pelo fundador R$ 3.800**)
+Colchão **96×203** · **2 gavetões** (cada = comprimento ÷ 2 ≈ 105 cm; **1 com divisória em cruz/4 partes**, 1 liso)
+· **sem corrediça → rodízios de silicone industrial** (R$ 15/un, 4 por gaveta = 8) · melamínico fosco (chapa de cor).
+Material ~R$ 2.055. *(computado a MC 30% daria R$ 4.211; fundador fechou em **R$ 3.800**.)*
 
-## Item 2 — O PAINEL (MC 35%)
-
-Cabeceira que envolve o canto: **2 laterais de 2,0 m** (total 4,0 m) · **altura 1,20 m** ·
-**LED no comprimento** (**nosso — confirmado**). Melamínico fosco (chapa de cor, mesma cor da cama).
+## Item 2 — PAINEL DE CABECEIRA (MC 35% · R$ 4.200)
+Cabeceira de canto · **2 laterais de 2,0 m** · altura **1,20 m** · **LED no comprimento (nosso)** · melamínico fosco.
 
 | Componente | Cálculo | Custo |
 |---|---|---:|
 | MDF melamínico (painel 4,8 m²) | ~2 chapas ×500 | R$ 1.000 |
 | Estrutura de fixação / sarrafos | — | R$ 100 |
-| LED no comprimento | 4,0 m × R$ 150 | R$ 600 |
-| Fita + colagem | ~12 m | R$ 66 |
-| Parafusos / consumíveis | — | R$ 84 |
+| LED no comprimento | 4,0 m × 150 | R$ 600 |
+| Fita + colagem · parafusos/consumíveis | — | R$ 150 |
 | **Material** | | **R$ 1.850** |
 
-`inv = 1.850 / (0,788 − 0,35)` = R$ 4.224 → **R$ 4.200 (MC 35%)**
+`inv = 1.850 / (0,788 − 0,35)` = R$ 4.224 → **R$ 4.200**
 
-## Total do aditivo
+## Item 3 — ARMÁRIO BANHO YASMIM (Ultra · MC 35% · R$ 7.000)
+Espelheira: **porta-espelho deslizante (Sistema Linea/Rometal)** + nichos com prateleiras + **LED perfil "G" c/ difusor**
+(cima e baixo, driver 12 VDC). Gabinete: **4 gavetas (corrediça Hettich)** + **1 gaveta especial** (ex-roupa suja).
+Material **Ultra: 1 chapa 15mm + 1 chapa 6mm**.
 
-| Item | Material | MC | **Investimento** |
-|---|---:|:--:|---:|
-| Cama (colchão 96×203 · 2 gavetões · rodízio silicone) | R$ 2.055 | 30% | **R$ 4.200** |
-| Painel (2 laterais 2,0 m · h 1,20 · LED) | R$ 1.850 | 35% | **R$ 4.200** |
-| **Aditivo total** | | | **R$ 8.400** |
+| Componente | Qtd | Custo |
+|---|---|---:|
+| MDF Ultra 15mm | 1 chapa | R$ 700 |
+| MDF Ultra 6mm *(não tabelado — estimado)* | 1 chapa | R$ 450 |
+| Fita de borda cor + colagem | ~35 m | R$ 195 |
+| Corrediças Hettich (4 gavetas + 1 gaveta especial) | 5 pares ×120 | R$ 600 |
+| Sistema deslizante Linea 1 porta + trilho (Rometal, *a validar*) | 1 conj. | R$ 180 |
+| Espelho (terceirizado — nosso) | ~0,95 m² | R$ 350 |
+| LED (nossa tabela) | ~3,5 m ×150 | R$ 525 |
+| Consumíveis | — | R$ 80 |
+| **Material** | | **~R$ 3.080** |
 
-## 🔶 A confirmar (não trava o valor, ajusta no detalhamento)
-1. **Cor exata** do melamínico fosco (definição da cor; mesma nos dois · chapa de cor R$ 500). ✅ LED nosso · ✅ chapa de cor.
-2. **Medidas finais** da cama (externa, a partir do colchão 96×203) e **profundidade dos gavetões** → confirma a contagem de chapa (~3 na cama, ~2 no painel).
-3. **Quantidade de chapa** é estimativa de área; fecho no plano de corte do detalhamento.
+`inv = 3.080 / (0,788 − 0,35)` = R$ 7.032 → **R$ 7.000**
 
-> Base de cálculo (aditivo): **sem setup, sem logística, sem visita, sem RT**; encargos de produção/impostos
-> mantidos (divisor 0,788). MCs definidos pelo fundador: cama 30% · painel 35%.
+## Item 4 — ARMÁRIO BANHO MASTER (Carvalho Am. Arauco · MC 35% · R$ 8.100)
+Espelheira: porta-espelho (Sistema Linea) + prateleiras e nichos + **LED perfil "G"**. Gabinete: gavetas em
+**corrediça oculta Hettich** + **1 gaveta especial**. Material **2 chapas 15mm + 1 chapa 6mm**. Prof. 42 cm.
+
+| Componente | Qtd | Custo |
+|---|---|---:|
+| MDF 15mm (Carvalho Am. Arauco / melamínico fosco) | 2 chapas ×500 | R$ 1.000 |
+| MDF 6mm (fundo) | 1 chapa | R$ 300 |
+| Fita de borda cor + colagem | ~55 m | R$ 305 |
+| Corrediças Hettich ocultas (gavetas + gaveta especial) | 6 pares ×120 | R$ 720 |
+| Sistema deslizante Linea 1 porta + trilho (*a validar*) | 1 conj. | R$ 180 |
+| Espelho (terceirizado — nosso) | ~1,0 m² | R$ 400 |
+| LED (nossa tabela) | ~3,5 m ×150 | R$ 525 |
+| Consumíveis | — | R$ 100 |
+| **Material** | | **~R$ 3.530** |
+
+`inv = 3.530 / (0,788 − 0,35)` = R$ 8.059 → **R$ 8.100**
+
+## 🔶 A confirmar (não trava o valor)
+- **Ultra 6mm** (estimei R$ 450 — não tabelado) · **Master = Carvalho Am. Arauco** a R$ 500/chapa · **espelho nosso**.
+- **Sistema Linea + trilho** (Rometal) ~R$ 180 — validar preço final na compra (lojas bloquearam a consulta online).
+- **Medidas** a conferir no local (as pranchas da Atma/Rizzi pedem "conferir medida no local").
+- **Cor exata** do melamínico fosco (cama/painel) e confirmação do decor Ultra (Yasmim).
+
+Proposta ao cliente: `closer-vendas/propostas/proposta-carla-aditivo.html` + PDF.

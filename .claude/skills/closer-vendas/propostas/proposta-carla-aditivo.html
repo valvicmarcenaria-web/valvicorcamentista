@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4; margin: 0; }
+  @font-face{ font-family:"Aurora Valvic"; src:url("aurora-valvic.ttf"); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root{ --mostarda:#E0A521; --ouro:#B0892F; --carvao:#201C18; --creme:#F4ECDD; --ivory:#FBF6EC;
+    --taupe:#8C7E69; --linha:#E5D9BE; --texto:#2A2520; }
+  body{ font-family:"Helvetica Neue",Arial,sans-serif; color:var(--texto); font-size:10.5pt; line-height:1.6; }
+  .page{ width:210mm; min-height:297mm; padding:22mm 24mm; position:relative; background:#fff; page-break-after:always; }
+  .page:last-child{ page-break-after:auto; }
+  .serif{ font-family:Georgia,"Times New Roman",serif; }
+  h1,h2,h3{ font-family:Georgia,serif; font-weight:normal; }
+  .muted{ color:var(--taupe); } .gold{ color:var(--ouro); }
+  .fw{ font-family:"Aurora Valvic"; letter-spacing:0; }
+  .kicker{ display:flex; align-items:baseline; gap:7mm; margin-bottom:8mm; }
+  .kicker .num{ font-family:Georgia,serif; font-size:26pt; color:var(--linha); line-height:1; }
+  .kicker .lbl{ font-size:9pt; letter-spacing:5px; text-transform:uppercase; color:var(--ouro); padding-bottom:1mm; border-bottom:1px solid var(--mostarda); }
+  .lead{ font-size:12.5pt; line-height:1.6; color:#4a443c; } .lead b{ color:var(--texto); }
+
+  .cover{ background:var(--creme); display:flex; flex-direction:column; justify-content:space-between; padding:26mm; }
+  .cover .brandmark{ font-family:"Aurora Valvic"; font-size:30pt; color:var(--carvao); line-height:1; }
+  .cover .eyebrow{ letter-spacing:7px; font-size:10pt; color:var(--ouro); text-transform:uppercase; margin-top:34mm; }
+  .cover .name{ font-size:40pt; line-height:1.08; margin:6mm 0 5mm; }
+  .cover .proj{ font-size:13.5pt; color:var(--taupe); font-style:italic; }
+  .cover .rule{ height:1px; background:var(--linha); margin:0 0 5mm; }
+  .cover .cfoot{ display:flex; justify-content:space-between; align-items:flex-end; }
+  .cover .cfoot .k{ font-size:8pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); }
+  .cover .cfoot .v{ font-family:Georgia,serif; font-size:11.5pt; }
+
+  .add{ margin-top:1mm; }
+  .add .row{ display:flex; justify-content:space-between; align-items:baseline; gap:8mm; padding:5mm 0; border-bottom:1px solid var(--linha); }
+  .add .row:last-child{ border-bottom:none; }
+  .add .at{ font-family:Georgia,serif; font-size:13pt; color:var(--texto); }
+  .add .ad{ font-size:9.5pt; color:var(--taupe); margin-top:1.5mm; max-width:132mm; line-height:1.5; }
+  .add .ap{ font-family:Georgia,serif; font-size:15pt; color:var(--ouro); white-space:nowrap; }
+
+  .price{ margin:3mm 0 0; background:var(--carvao); color:#F5ECDA; border-radius:3mm; padding:8mm 10mm; position:relative; overflow:hidden; }
+  .price .ringc{ position:absolute; width:60mm; height:60mm; border:1px solid rgba(224,165,33,.3); border-radius:50%; right:-20mm; top:-22mm; }
+  .price .pl{ font-size:9pt; letter-spacing:3px; text-transform:uppercase; color:var(--mostarda); margin-bottom:2mm; }
+  .ptab{ width:100%; border-collapse:collapse; position:relative; z-index:2; }
+  .ptab td{ padding:3mm 0; border-bottom:1px solid rgba(224,165,33,.22); vertical-align:baseline; }
+  .ptab .pi{ font-family:Georgia,serif; font-size:12pt; color:#F5ECDA; }
+  .ptab .pi span{ display:block; font-family:"Helvetica Neue",Arial,sans-serif; font-size:8pt; color:#cbbd9d; margin-top:.5mm; }
+  .ptab .pp{ text-align:right; font-family:Georgia,serif; font-size:14pt; color:#fff; white-space:nowrap; }
+  .ptab .ptot td{ border-bottom:none; padding-top:5mm; }
+  .ptab .ptot .pi{ font-size:12.5pt; color:var(--mostarda); }
+  .ptab .ptot .pp{ font-size:23pt; color:var(--mostarda); }
+
+  .cond{ display:flex; gap:8mm; margin-top:8mm; }
+  .cond>div{ flex:1; border-left:2px solid var(--mostarda); padding-left:4mm; }
+  .cond .k{ font-size:8.5pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); }
+  .cond .v{ font-size:11pt; font-family:Georgia,serif; margin-top:1.5mm; line-height:1.4; }
+  .note{ font-size:8.7pt; color:var(--taupe); margin-top:6mm; line-height:1.5; }
+  .cta{ margin-top:10mm; font-size:11pt; } .cta b{ font-family:Georgia,serif; font-size:13.5pt; }
+  .pfoot{ position:absolute; bottom:14mm; left:24mm; right:24mm; font-size:8pt; color:var(--taupe); display:flex; justify-content:space-between; border-top:1px solid var(--linha); padding-top:3mm; }
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="page cover">
+  <div><span class="brandmark">Valvic</span></div>
+  <div>
+    <div class="eyebrow">Aditivo ao projeto</div>
+    <div class="name serif">Novos itens<br>do seu projeto</div>
+    <div class="proj serif">Residência Carla &amp; Beto · projeto em andamento</div>
+  </div>
+  <div>
+    <div class="rule"></div>
+    <div class="cfoot">
+      <div><div class="k">Para</div><div class="v">Carla &amp; Beto</div></div>
+      <div><div class="k">Emissão</div><div class="v">Julho de 2026</div></div>
+      <div><div class="k">Validade</div><div class="v">15 dias</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 · OS NOVOS ITENS -->
+<div class="page">
+  <div class="kicker"><span class="num serif">01</span><span class="lbl">Os novos itens</span></div>
+  <p class="lead" style="margin-bottom:7mm;">Quatro peças a mais para o seu projeto — <b>executadas e
+  coordenadas pela Valvic</b>, no mesmo padrão do que já está em andamento.</p>
+
+  <div class="add">
+    <div class="row">
+      <div><div class="at">Cama com gavetões</div>
+        <div class="ad">Cama para colchão 96 × 203 com <b>dois gavetões amplos</b> que deslizam sobre
+        <b>rodízios de silicone industrial</b> (sem trilho aparente) — um deles com organização interna em cruz.
+        Acabamento melamínico fosco.</div></div>
+      <div class="ap">R$ 3.800</div>
+    </div>
+    <div class="row">
+      <div><div class="at">Painel de cabeceira</div>
+        <div class="ad">Painel que envolve o canto do quarto: <b>duas laterais de 2,0 m</b>, altura 1,20 m,
+        com <b>fita de LED no comprimento</b>. Acabamento melamínico fosco.</div></div>
+      <div class="ap">R$ 4.200</div>
+    </div>
+    <div class="row">
+      <div><div class="at">Armário · Banho Yasmim</div>
+        <div class="ad">Espelheira com <b>porta-espelho deslizante</b> e nichos iluminados por <b>LED com perfil
+        difusor</b> (luz para cima e para baixo); gabinete com quatro gavetas em <b>corrediças Hettich</b> e uma
+        gaveta especial. Acabamento <b>linha Ultra</b>.</div></div>
+      <div class="ap">R$ 7.000</div>
+    </div>
+    <div class="row">
+      <div><div class="at">Armário · Banho Master</div>
+        <div class="ad">Espelheira com porta-espelho, prateleiras e nichos, com o mesmo <b>LED com difusor</b>;
+        gabinete com gavetas em <b>corrediças ocultas Hettich</b> e gaveta especial. Acabamento
+        <b>Carvalho Americano</b>.</div></div>
+      <div class="ap">R$ 8.100</div>
+    </div>
+  </div>
+  <div class="pfoot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Carla &amp; Beto — Aditivo ao projeto</span></div>
+</div>
+
+<!-- 02 · INVESTIMENTO -->
+<div class="page">
+  <div class="kicker"><span class="num serif">02</span><span class="lbl">Investimento</span></div>
+  <p class="lead" style="margin-bottom:3mm;">Os quatro itens somados ao seu projeto — cada um com o seu valor,
+  para você escolher incluir todos ou por etapa.</p>
+
+  <div class="price"><div class="ringc"></div>
+    <div class="pl">Aditivo</div>
+    <table class="ptab">
+      <tr><td class="pi">Cama com gavetões<span>colchão 96×203 · rodízios de silicone</span></td><td class="pp">R$ 3.800</td></tr>
+      <tr><td class="pi">Painel de cabeceira<span>canto · 2 laterais 2,0 m · LED</span></td><td class="pp">R$ 4.200</td></tr>
+      <tr><td class="pi">Armário · Banho Yasmim<span>porta-espelho deslizante · LED difusor · linha Ultra</span></td><td class="pp">R$ 7.000</td></tr>
+      <tr><td class="pi">Armário · Banho Master<span>corrediças ocultas Hettich · Carvalho Americano</span></td><td class="pp">R$ 8.100</td></tr>
+      <tr class="ptot"><td class="pi">Investimento total</td><td class="pp">R$ 23.100</td></tr>
+    </table>
+  </div>
+
+  <div class="cond">
+    <div><div class="k">Formato</div><div class="v">Aditivo ao projeto<br>em andamento</div></div>
+    <div><div class="k">Condições</div><div class="v">Alinhadas ao<br>contrato vigente</div></div>
+    <div><div class="k">Ferragens</div><div class="v">Hettich<br>garantia 10 anos</div></div>
+  </div>
+  <p class="note">Valores incorporados ao seu projeto atual — podem ser executados juntos ou por etapa, conforme o
+  cronograma. Iluminação (LED) inclusa. Louças e metais (cuba/torneira) por conta do cliente. Medidas conferidas no
+  local antes da produção. Valores válidos por 15 dias.</p>
+
+  <p class="cta"><span class="gold serif" style="font-size:13pt;">✦</span>
+  &nbsp;<b>Seguimos com esses também?</b><br>
+  <span class="muted">É só confirmar quais entram que eu já encaixo no cronograma do seu projeto. Obrigado pela
+  confiança de sempre.</span></p>
+  <div class="pfoot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Carla &amp; Beto — Aditivo ao projeto</span></div>
+</div>
+
+</body>
+</html>

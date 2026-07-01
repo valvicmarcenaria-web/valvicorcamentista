@@ -320,3 +320,16 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
   que são os GAVETÕES sobre rodízios. Lição: quando o cliente fala de "tirar de baixo da cama", pode ser gaveta sobre
   rodízio (não bicama) — confirmar antes de assumir. E: rodízio de silicone pode substituir corrediça (mais barato).*
 - *Carla NÃO está no repo (projeto em outra branch/sessão) — este aditivo vive solto aqui; quando achar o projeto dela, anexar.*
+- **[06/30] Cliente confirmada: Carla do Val Dressler & Beto** (Rua Palermo 1186, BH · arq. **Fátima Bastos / Luana Rizzi** ·
+  Atma Design/Rizzi). **+2 armários de banheiro** (pranchas executivas): **Yasmim** (Ultra · 1×15+1×6) e **Master/Casal**
+  (Carvalho Am. Arauco · 2×15+1×6). Cada: espelheira c/ porta-espelho + nichos + **LED perfil "G" c/ difusor** (driver 12VDC),
+  gabinete c/ gavetas + **gaveta especial** (ex-cesto de roupa suja aramado — fundador mandou trocar o cesto por gaveta).
+- **Aprendizados de base:** **MDF Ultra 15mm = R$700** (Gianduia/Duratex Ultra); **Hettich oculta (Quadro) = R$120/par**;
+  **Sistema deslizante Linea = ROMETAL** (aéreo, 1–2 portas até 30kg, amortecedor, trilho RM-314) — kit+trilho ~R$180 (lojas
+  bloqueiam consulta online, validar na compra). **Cuba/torneira = louça do cliente, NÃO é marcenaria** (não descrever).
+  **LED sempre pela nossa tabela (R$150/m).** Fundador dá a contagem de chapa direto ("gasto 1 de 15 e 1 de 6") — uso a dele.
+- **LOTE FECHADO (aditivo Carla, sem RT, divisor 0,788):** Cama **R$ 3.800** (fundador fechou, abaixo do computado 4.211) ·
+  Painel **R$ 4.200** (MC35) · Yasmim **R$ 7.000** (MC35) · Master **R$ 8.100** (MC35) = **R$ 23.100**. Proposta fechada
+  com tom de **cliente recorrente / aditivo ao projeto**: `closer-vendas/propostas/proposta-carla-aditivo.html` + PDF (3 págs).
+- *Aprendizado: aditivo a cliente recorrente = proposta enxuta "novos itens do seu projeto", condições "alinhadas ao contrato
+  vigente", CTA agradece a confiança. Preços SEPARADOS por item (cliente escolhe incluir todos ou por etapa).*
