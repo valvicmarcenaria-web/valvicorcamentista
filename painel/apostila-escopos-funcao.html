@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Apostila de Escopos de Função — Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{
+    --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-pale:#f5edd8;
+    --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd;
+    --green:#2f7d4f; --blue:#2f5d8c; --amber:#c47d0e; --red:#b0413f;
+  }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:10px; line-height:1.45; -webkit-font-smoothing:antialiased; }
+  .serif{ font-family:'Cormorant Garamond',Georgia,serif; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:16px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; page-break-after:always; display:flex; flex-direction:column; }
+  .sheet:last-child{ page-break-after:auto; }
+
+  /* cover */
+  .cover{ background:radial-gradient(120% 80% at 80% -10%, #1b3a5e 0%, rgba(27,58,94,0) 55%),linear-gradient(160deg,#0E2038 0%,#0b1a2e 60%,#0a1626 100%); color:#fff; }
+  .cv-frame{ position:absolute; inset:13mm; border:1px solid rgba(194,160,90,.38); pointer-events:none; }
+  .cv-frame::before{ content:""; position:absolute; inset:5px; border:1px solid rgba(194,160,90,.14); }
+  .cv-inner{ position:relative; z-index:2; flex:1; display:flex; flex-direction:column; padding:24mm 22mm; }
+  .cv-brand{ display:flex; align-items:center; gap:14px; }
+  .cv-mono{ width:54px; height:54px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:3px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:25px; color:var(--gold); }
+  .cv-co{ font-size:17px; font-weight:700; letter-spacing:3px; text-transform:uppercase; }
+  .cv-sub{ font-size:9px; color:rgba(255,255,255,.5); letter-spacing:.5px; margin-top:3px; }
+  .cv-center{ margin:auto 0; }
+  .cv-kicker{ font-size:10px; letter-spacing:5px; text-transform:uppercase; color:var(--gold); }
+  .cv-rule{ width:60px; height:2px; background:var(--gold); margin:18px 0 22px; }
+  .cv-title{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:52px; line-height:1.03; letter-spacing:-.5px; }
+  .cv-title span{ color:var(--gold-soft); font-style:italic; }
+  .cv-desc{ font-size:12px; color:rgba(255,255,255,.62); margin-top:18px; max-width:420px; line-height:1.7; font-weight:300; }
+  .cv-foot{ display:flex; justify-content:space-between; align-items:flex-end; margin-top:30px; }
+  .cv-conf{ font-size:8.5px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.4); }
+  .cv-date{ font-size:9.5px; color:rgba(255,255,255,.55); text-align:right; }
+
+  /* person header band */
+  .ph{ color:#fff; padding:11mm 16mm 7mm; display:flex; justify-content:space-between; align-items:flex-end; }
+  .ph.op{ background:linear-gradient(120deg,#0E2038,#16314f); }
+  .ph.tec{ background:linear-gradient(120deg,#16314f,#2f5d8c); }
+  .ph.marc{ background:linear-gradient(120deg,#14361f,#2f7d4f); }
+  .ph.com{ background:linear-gradient(120deg,#5a3d0c,#a8863f); }
+  .ph .area{ font-size:7.6px; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,.7); }
+  .ph .nm{ font-family:'Cormorant Garamond',serif; font-size:30px; font-weight:600; margin-top:2px; line-height:1; }
+  .ph .cargo{ font-size:10px; letter-spacing:1px; margin-top:4px; color:rgba(255,255,255,.82); text-transform:uppercase; font-weight:600; }
+  .ph .r{ text-align:right; } .ph .co{ font-size:9px; letter-spacing:2px; text-transform:uppercase; font-weight:600; } .ph .pg{ font-size:8px; color:rgba(255,255,255,.55); margin-top:3px; }
+
+  .body{ flex:1; padding:7mm 16mm 0; display:flex; flex-direction:column; }
+  .meta{ display:flex; gap:0; border:1px solid var(--line); border-radius:7px; overflow:hidden; background:#fff; margin-bottom:11px; }
+  .meta .m{ flex:1; padding:7px 13px; } .meta .m + .m{ border-left:1px solid var(--line); }
+  .meta .ml{ font-size:7px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); } .meta .mv{ font-size:10px; font-weight:700; color:var(--navy); margin-top:2px; }
+
+  .prop{ background:#fff; border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:0 7px 7px 0; padding:11px 15px; margin-bottom:12px; }
+  .prop .pt{ font-size:7.6px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:4px; }
+  .prop p{ font-family:'Cormorant Garamond',serif; font-size:13.5px; line-height:1.5; color:#2a3744; } .prop p b{ color:var(--navy); font-weight:700; }
+
+  .sec{ display:flex; align-items:center; gap:9px; margin:11px 0 7px; }
+  .sec .bar{ width:14px; height:2px; background:var(--gold); } .sec .tx{ font-size:8.6px; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:var(--navy); }
+  .grp{ margin-bottom:8px; }
+  .grp .gh{ font-size:8px; font-weight:700; letter-spacing:.6px; text-transform:uppercase; color:var(--blue); margin-bottom:3px; }
+  ul.resp{ list-style:none; margin:0; padding:0; }
+  ul.resp li{ font-size:9px; color:#37424e; line-height:1.5; padding-left:13px; position:relative; margin-bottom:2.5px; }
+  ul.resp li::before{ content:"›"; position:absolute; left:0; color:var(--gold); font-weight:700; }
+  ul.resp li b{ color:var(--navy); }
+
+  table{ width:100%; border-collapse:collapse; }
+  thead th{ background:var(--navy2); color:#fff; font-size:7.2px; font-weight:600; letter-spacing:.6px; text-transform:uppercase; padding:5px 10px; text-align:left; }
+  th.r,td.r{ text-align:right; }
+  tbody td{ padding:4.6px 10px; border-bottom:1px solid var(--line); font-size:8.8px; vertical-align:top; }
+  tbody tr:nth-child(even) td{ background:#f4f1ea; }
+  td .in{ font-weight:600; color:var(--ink); } td .me{ color:var(--navy); font-weight:700; }
+
+  .rules{ margin-top:9px; background:#fbecea; border:1px solid #f0d2cf; border-radius:7px; padding:9px 13px; }
+  .rules .rt{ font-size:7.4px; letter-spacing:1.2px; text-transform:uppercase; color:var(--red); font-weight:700; margin-bottom:4px; }
+  .rules li{ font-size:8.6px; color:#5e2a28; line-height:1.45; margin-bottom:2px; list-style:none; padding-left:12px; position:relative; }
+  .rules li::before{ content:"⚠"; position:absolute; left:0; font-size:7px; }
+
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:6px 16mm; display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf .pl{ font-size:7px; color:var(--muted); } .pf .pr{ font-size:8px; color:var(--navy); font-weight:700; letter-spacing:1px; } .pf .pr span{ color:var(--gold); }
+
+  /* index / org */
+  .ih{ background:var(--navy); color:#fff; padding:11mm 16mm 7mm; }
+  .ih .kx{ font-size:7.6px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); } .ih .tt{ font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:600; margin-top:3px; }
+  .org{ display:flex; flex-direction:column; gap:7px; }
+  .orgrow{ display:grid; grid-template-columns:150px 1fr; gap:12px; align-items:flex-start; }
+  .orgrow .al{ font-size:8px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#fff; padding:6px 10px; border-radius:5px; text-align:center; }
+  .orgrow .people{ display:flex; flex-wrap:wrap; gap:6px; }
+  .chip{ background:#fff; border:1px solid var(--line); border-radius:6px; padding:5px 10px; font-size:8.8px; }
+  .chip b{ color:var(--navy); } .chip span{ color:var(--muted); font-size:7.6px; display:block; }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<!-- CAPA -->
+<section class="sheet cover">
+  <div class="cv-frame"></div>
+  <div class="cv-inner">
+    <div class="cv-brand">
+      <div class="cv-mono">V</div>
+      <div><div class="cv-co">Valvic Marcenaria</div><div class="cv-sub">Construindo Legado &nbsp;·&nbsp; Belo Horizonte / MG</div></div>
+    </div>
+    <div class="cv-center">
+      <div class="cv-kicker">Manual de Consulta · Uso Interno</div>
+      <div class="cv-rule"></div>
+      <h1 class="cv-title">Apostila de<br>Escopos de <span>Função</span></h1>
+      <p class="cv-desc">O escopo de cada colaborador — responsabilidades, linha de reporte e critérios de avaliação — reunidos em uma ferramenta prática para acompanhar o cumprimento dos acordos.</p>
+    </div>
+    <div class="cv-foot">
+      <div class="cv-conf">Consulta de Jonathan, Paulo &amp; Deivson &nbsp;·&nbsp; sem dados financeiros</div>
+      <div class="cv-date">Base: manifestos 2026<br>Junho de 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO USAR + ORGANOGRAMA -->
+<section class="sheet">
+  <div class="ih"><div class="kx">Como usar · Estrutura da equipe</div><div class="tt">Guia & Organograma</div></div>
+  <div class="body">
+    <div class="prop" style="margin-top:2px">
+      <div class="pt">Como usar esta apostila</div>
+      <p>Cada colaborador tem uma página com <b>o que ele faz</b> (responsabilidades acordadas) e <b>como é avaliado</b> (indicadores e metas). Use na conversa de acompanhamento: se a entrega bate com o escopo, o acordo está sendo cumprido; se não, o desvio fica objetivo. Avaliações a cada <b>90 dias</b>, conduzidas por Deivson e validadas por Paulo. <b>Sem informações financeiras</b> — o foco é função e desempenho.</p>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Organograma da operação</span></div>
+    <div class="org">
+      <div class="orgrow"><div class="al" style="background:var(--navy)">Direção</div><div class="people">
+        <div class="chip"><b>Jonathan</b><span>Dir. Comercial &amp; Experiência</span></div>
+        <div class="chip"><b>Paulo</b><span>Dir. Operações &amp; Tecnologia</span></div>
+      </div></div>
+      <div class="orgrow"><div class="al" style="background:#16314f">Coordenação</div><div class="people">
+        <div class="chip"><b>Deivson</b><span>Coordenador de Produção</span></div>
+      </div></div>
+      <div class="orgrow"><div class="al" style="background:var(--blue)">Tecnologia CNC</div><div class="people">
+        <div class="chip"><b>Filipe</b><span>Programador CNC &amp; Tecnologia</span></div>
+        <div class="chip"><b>Joelson</b><span>Operador CNC &amp; Máquinas</span></div>
+      </div></div>
+      <div class="orgrow"><div class="al" style="background:var(--green)">Marcenaria</div><div class="people">
+        <div class="chip"><b>Samuel</b><span>Marceneiro Sênior</span></div>
+        <div class="chip"><b>Jackson</b><span>Marceneiro Pleno</span></div>
+        <div class="chip"><b>Jomar</b><span>Marceneiro</span></div>
+        <div class="chip"><b>Davi</b><span>Ajudante de Produção</span></div>
+      </div></div>
+      <div class="orgrow"><div class="al" style="background:var(--amber)">Comercial &amp; Adm.</div><div class="people">
+        <div class="chip"><b>Assistente Executivo Operacional</b><span>a contratar · reporta a Jonathan</span></div>
+        <div class="chip"><b>Estagiária de Arquitetura</b><span>trilha de formação</span></div>
+      </div></div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Regras que valem para todos</span></div>
+    <ul class="resp">
+      <li><b>Ensinar é pré-requisito de avanço:</b> ninguém sobe de nível sem ter ensinado algo ao nível abaixo.</li>
+      <li><b>Comunicar antes, não depois:</b> problema técnico, impedimento ou risco de prazo → avisar antes de executar.</li>
+      <li><b>Não alterar projeto no campo</b> sem autorização de Deivson ou Paulo.</li>
+      <li><b>Pontualidade:</b> ausências justificadas com pelo menos 24h de antecedência.</li>
+      <li><b>Padrão de organização:</b> deixar o ambiente igual ou melhor do que encontrou (referência: área CNC do Joelson).</li>
+    </ul>
+  </div>
+  <div class="pf"><div class="pl">Uso interno · Valvic Marcenaria · Junho/2026</div><div class="pr">GUIA <span>·</span> 02</div></div>
+</section>
+
+<!-- DEIVSON -->
+<section class="sheet">
+  <div class="ph op"><div class="l"><div class="area">Operações &amp; Gestão</div><div class="nm">Deivson</div><div class="cargo">Coordenador de Produção</div></div><div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Escopo de Função</div></div></div>
+  <div class="body">
+    <div class="meta"><div class="m"><div class="ml">Vínculo</div><div class="mv">MEI · Equipe de Produção</div></div><div class="m"><div class="ml">Reporta a</div><div class="mv">Paulo</div></div><div class="m"><div class="ml">Coordena</div><div class="mv">Joelson, Samuel, Jackson, Jomar, Davi</div></div></div>
+    <div class="prop"><div class="pt">Propósito do cargo</div><p>É o <b>elo entre a liderança e o chão de fábrica</b>: garante que o planejado em projeto acontece na produção — no prazo, no padrão técnico e com a equipe coesa. Tem a visão do todo e resolve antes de o problema aparecer.</p></div>
+    <div class="sec"><span class="bar"></span><span class="tx">Responsabilidades</span></div>
+    <div class="grp"><div class="gh">Coordenação da equipe</div><ul class="resp">
+      <li>Distribuir as tarefas diárias conforme o planejamento; garantir que cada um sabe <b>o quê, como e quando</b> entregar.</li>
+      <li>Identificar gargalos antes de virarem problema de prazo; ser o 1º ponto de contato para dúvidas técnicas.</li>
+      <li>Registrar presença, produtividade e ocorrências; reportar o status dos projetos diariamente.</li>
+      <li>Reunião semanal com Paulo; antecipar riscos avisando <b>com 24h</b>; nunca alterar escopo por conta própria.</li>
+    </ul></div>
+    <div class="grp"><div class="gh">Controle de qualidade</div><ul class="resp">
+      <li>Conferir cada serviço antes de avançar; validar a montagem na fábrica antes de liberar para instalação.</li>
+      <li><b>Barrar qualquer entrega fora do padrão</b> Valvic (decisão final é do Paulo); documentar não conformidades.</li>
+      <li>Ser o guardião do padrão técnico no chão de fábrica.</li>
+    </ul></div>
+    <div class="grp"><div class="gh">Formação da equipe</div><ul class="resp">
+      <li>Apoiar tecnicamente as montagens complexas; <b>ensinar é pré-requisito do cargo</b>.</li>
+      <li>Identificar lacunas de habilidade e reportar ao Paulo; ser referência técnica para Jomar e Davi.</li>
+    </ul></div>
+    <div class="sec"><span class="bar"></span><span class="tx">Como é avaliado · a cada 90 dias</span></div>
+    <table><thead><tr><th>Indicador</th><th class="r" style="width:150px">Meta</th></tr></thead><tbody>
+      <tr><td><span class="in">Projetos entregues no prazo</span></td><td class="r"><span class="me">≥ 90%</span></td></tr>
+      <tr><td><span class="in">Retrabalho identificado pós-montagem</span></td><td class="r"><span class="me">≤ 5%</span></td></tr>
+      <tr><td><span class="in">Aprovação na vistoria final</span></td><td class="r"><span class="me">dentro do padrão</span></td></tr>
+      <tr><td><span class="in">Antecipação de riscos ao Paulo</span></td><td class="r"><span class="me">≥ 24h de aviso</span></td></tr>
+    </tbody></table>
+  </div>
+  <div class="pf"><div class="pl">Uso interno · Valvic Marcenaria · Junho/2026</div><div class="pr">OPERAÇÕES <span>·</span> 03</div></div>
+</section>
+
+<!-- JOELSON -->
+<section class="sheet">
+  <div class="ph tec"><div class="l"><div class="area">Tecnologia CNC</div><div class="nm">Joelson</div><div class="cargo">Operador CNC &amp; Máquinas</div></div><div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Escopo de Função</div></div></div>
+  <div class="body">
+    <div class="meta"><div class="m"><div class="ml">Vínculo</div><div class="mv">MEI · Centro de Produção CNC</div></div><div class="m"><div class="ml">Reporta a</div><div class="mv">Deivson e Paulo</div></div><div class="m"><div class="ml">Foco</div><div class="mv">Router CNC + coladeira de borda</div></div></div>
+    <div class="prop"><div class="pt">Propósito do cargo</div><p>Operação <b>correta, segura e eficiente</b> da router CNC e da coladeira de borda — os dois equipamentos que definem a precisão e o acabamento de todos os projetos. Sem corte, não há produção.</p></div>
+    <div class="sec"><span class="bar"></span><span class="tx">Responsabilidades</span></div>
+    <div class="grp"><div class="gh">Operação da router CNC — principal</div><ul class="resp">
+      <li>Receber o arquivo do Filipe e <b>conferir antes de cortar</b> — nunca executar arquivo com dúvida.</li>
+      <li>Preparar a máquina (fixação, ferramentas, calibração); executar o corte com precisão — velocidade não justifica erro.</li>
+      <li>Conferir as peças cortadas antes de liberar; <b>registrar o nº de chapas no mesmo dia</b>; comunicar divergências.</li>
+    </ul></div>
+    <div class="grp"><div class="gh">Coladeira de borda &amp; conservação</div><ul class="resp">
+      <li>Operar conforme temperatura/velocidade/fita de cada material; verificar a qualidade da colagem (sem bolhas/rebarbas).</li>
+      <li>Limpeza diária das máquinas; verificação semanal de ferramentas; registrar anomalias; manutenção preventiva básica.</li>
+    </ul></div>
+    <div class="grp"><div class="gh">Montagem na fábrica — secundária</div><ul class="resp">
+      <li>Quando alocado por Deivson em ociosidade, executa montagem com autonomia — mas <b>a máquina tem prioridade absoluta</b>.</li>
+    </ul></div>
+    <div class="rules"><div class="rt">Regras inegociáveis</div>
+      <li>Nunca iniciar corte com arquivo não validado pelo Filipe — a urgência não muda a regra.</li>
+      <li>Nunca ajustar parâmetros do software, velocidade ou profundidade sem comunicar o Filipe.</li>
+    </div>
+    <div class="sec"><span class="bar"></span><span class="tx">Como é avaliado · a cada 90 dias</span></div>
+    <table><thead><tr><th>Indicador</th><th class="r" style="width:150px">Meta</th></tr></thead><tbody>
+      <tr><td><span class="in">Peças com erro de operação</span></td><td class="r"><span class="me">≤ 1% do volume</span></td></tr>
+      <tr><td><span class="in">Limpeza e conservação das máquinas</span></td><td class="r"><span class="me">100%</span></td></tr>
+      <tr><td><span class="in">Registro diário de chapas cortadas</span></td><td class="r"><span class="me">100% · sem atraso</span></td></tr>
+      <tr><td><span class="in">Comunicação de problemas</span></td><td class="r"><span class="me">antes da parada</span></td></tr>
+    </tbody></table>
+  </div>
+  <div class="pf"><div class="pl">Uso interno · Valvic Marcenaria · Junho/2026</div><div class="pr">TECNOLOGIA <span>·</span> 04</div></div>
+</section>
+
+<!-- FILIPE -->
+<section class="sheet">
+  <div class="ph tec"><div class="l"><div class="area">Tecnologia CNC</div><div class="nm">Filipe</div><div class="cargo">Programador CNC &amp; Tecnologia</div></div><div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Escopo de Função</div></div></div>
+  <div class="body">
+    <div class="meta"><div class="m"><div class="ml">Vínculo</div><div class="mv">MEI · Centro de Programação</div></div><div class="m"><div class="ml">Reporta a</div><div class="mv">Paulo</div></div><div class="m"><div class="ml">Fase atual</div><div class="mv">Programador em formação · c/ supervisão</div></div></div>
+    <div class="prop"><div class="pt">Propósito do cargo</div><p>Converter os projetos aprovados em <b>arquivos de programação para a router CNC</b> — garantindo que o desenhado saia cortado corretamente, com o <b>menor desperdício de chapa</b> possível.</p></div>
+    <div class="sec"><span class="bar"></span><span class="tx">Responsabilidades</span></div>
+    <div class="grp"><div class="gh">Fase atual — com supervisão do Paulo</div><ul class="resp">
+      <li>Receber os projetos e convertê-los; programar baixa/média complexidade <b>com validação do Paulo antes do corte</b>.</li>
+      <li>Registrar cada programação (tempo, nº de chapas, observações); <b>identificar erros no projeto antes de programar</b>.</li>
+    </ul></div>
+    <div class="grp"><div class="gh">Evolução — autonomia crescente</div><ul class="resp">
+      <li>Programar todos os tipos de projeto (Paulo valida, não executa); <b>otimizar o aproveitamento de chapas</b>.</li>
+      <li>Sugerir melhorias no processo; tornar-se a referência técnica de programação CNC.</li>
+    </ul></div>
+    <div class="grp"><div class="gh">Permanente — desde o 1º dia</div><ul class="resp">
+      <li><b>Nunca liberar arquivo para corte sem validação</b> — em dúvida, parar e perguntar.</li>
+      <li>Documentar todo projeto (software, tempo, versão, obs.); manter o Drive organizado; comunicar problemas na router.</li>
+    </ul></div>
+    <div class="sec"><span class="bar"></span><span class="tx">Como é avaliado · a cada 90 dias</span></div>
+    <table><thead><tr><th>Indicador</th><th class="r" style="width:150px">Meta</th></tr></thead><tbody>
+      <tr><td><span class="in">Taxa de erro de programação</span></td><td class="r"><span class="me">≤ 3% dos projetos</span></td></tr>
+      <tr><td><span class="in">Aproveitamento médio de chapas</span></td><td class="r"><span class="me">≥ 90% (fase 1-2) · ≥ 92% (fase 3+)</span></td></tr>
+      <tr><td><span class="in">Documentação dos arquivos no Drive</span></td><td class="r"><span class="me">100%</span></td></tr>
+      <tr><td><span class="in">Arquivos liberados sem validação</span></td><td class="r"><span class="me">zero</span></td></tr>
+    </tbody></table>
+  </div>
+  <div class="pf"><div class="pl">Uso interno · Valvic Marcenaria · Junho/2026</div><div class="pr">TECNOLOGIA <span>·</span> 05</div></div>
+</section>
+
+<!-- SAMUEL -->
+<section class="sheet">
+  <div class="ph marc"><div class="l"><div class="area">Marcenaria</div><div class="nm">Samuel</div><div class="cargo">Marceneiro Sênior</div></div><div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Escopo de Função</div></div></div>
+  <div class="body">
+    <div class="meta"><div class="m"><div class="ml">Vínculo</div><div class="mv">MEI · Equipe de Produção</div></div><div class="m"><div class="ml">Reporta a</div><div class="mv">Deivson e Paulo</div></div><div class="m"><div class="ml">Referência de</div><div class="mv">Acabamento · para Jackson, Jomar, Davi</div></div></div>
+    <div class="prop"><div class="pt">Propósito do cargo</div><p>É a <b>referência técnica de acabamento</b> da equipe — o profissional que eleva o padrão de entrega e cuja qualidade define a percepção do cliente sobre o que é a Valvic. O nível Sênior é conquistado e mantido com consistência.</p></div>
+    <div class="sec"><span class="bar"></span><span class="tx">Responsabilidades</span></div>
+    <div class="grp"><div class="gh">Execução técnica de alto padrão</div><ul class="resp">
+      <li>Montagem e instalação no <b>padrão de acabamento que define o nível Sênior</b>; ser referência de qualidade para a equipe.</li>
+      <li>Dominar as especificações de cada projeto antes de iniciar; apoiar tecnicamente o Jackson nos casos de maior complexidade.</li>
+      <li>Identificar e reportar peças/serviços fora do padrão <b>antes</b> de prosseguir.</li>
+    </ul></div>
+    <div class="grp"><div class="gh">Conduta em obra &amp; comunicação</div><ul class="resp">
+      <li>Ambiente do cliente sempre organizado; deixar o espaço igual ou melhor; respeito com cliente, parceiro e arquiteto.</li>
+      <li>Reportar status proativamente; sinalizar peça para ajuste <b>antes de instalar</b>; comunicar riscos de prazo com antecedência.</li>
+      <li>Não alterar o projeto no campo sem autorização de Deivson ou Paulo.</li>
+    </ul></div>
+    <div class="sec"><span class="bar"></span><span class="tx">Critérios do nível Sênior · a cada 90 dias</span></div>
+    <table><thead><tr><th>Critério</th><th class="r" style="width:150px">Expectativa</th></tr></thead><tbody>
+      <tr><td><span class="in">Qualidade de acabamento</span></td><td class="r"><span class="me">referência da equipe</span></td></tr>
+      <tr><td><span class="in">Índice de retrabalho</span></td><td class="r"><span class="me">≤ 5% dos projetos</span></td></tr>
+      <tr><td><span class="in">Aprovação em 1ª vistoria</span></td><td class="r"><span class="me">≥ 85%</span></td></tr>
+      <tr><td><span class="in">Proatividade em comunicação</span></td><td class="r"><span class="me">reporta sem ser cobrado</span></td></tr>
+      <tr><td><span class="in">Organização do ambiente de obra</span></td><td class="r"><span class="me">sempre</span></td></tr>
+    </tbody></table>
+  </div>
+  <div class="pf"><div class="pl">Uso interno · Valvic Marcenaria · Junho/2026</div><div class="pr">MARCENARIA <span>·</span> 06</div></div>
+</section>
+
+<!-- JACKSON -->
+<section class="sheet">
+  <div class="ph marc"><div class="l"><div class="area">Marcenaria</div><div class="nm">Jackson</div><div class="cargo">Marceneiro Pleno</div></div><div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Escopo de Função</div></div></div>
+  <div class="body">
+    <div class="meta"><div class="m"><div class="ml">Vínculo</div><div class="mv">MEI · Equipe de Produção</div></div><div class="m"><div class="ml">Reporta a</div><div class="mv">Deivson e Paulo</div></div><div class="m"><div class="ml">Orienta</div><div class="mv">Jomar e Davi</div></div></div>
+    <div class="prop"><div class="pt">Propósito do cargo</div><p>Responsável pela <b>montagem completa de ambientes</b> na fábrica e pela <b>instalação em obra — com autonomia</b>, sem supervisão constante. O Pleno é a espinha dorsal da produção: quem de fato executa o serviço que chega ao cliente.</p></div>
+    <div class="sec"><span class="bar"></span><span class="tx">Responsabilidades</span></div>
+    <div class="grp"><div class="gh">Execução de projetos</div><ul class="resp">
+      <li>Montagem completa de ambientes (armários, roupeiros, cozinhas); instalação aprovada na vistoria do Deivson.</li>
+      <li><b>Leitura e interpretação autônoma</b> de projetos e fichas técnicas; conferir o próprio serviço antes da vistoria.</li>
+    </ul></div>
+    <div class="grp"><div class="gh">Conduta em obra &amp; comunicação</div><ul class="resp">
+      <li>Ambiente organizado e limpo; deixar melhor do que encontrou; respeito profissional; não alterar o projeto sem autorização.</li>
+      <li>Comunicar problemas <b>antes de executar</b>; reportar status ao Deivson; sinalizar peça para ajuste antes de instalar.</li>
+    </ul></div>
+    <div class="grp"><div class="gh">Desenvolvimento da equipe</div><ul class="resp">
+      <li>Orientar ativamente Jomar e Davi durante a execução — <b>ensinar é parte do cargo</b>.</li>
+    </ul></div>
+    <div class="sec"><span class="bar"></span><span class="tx">Como é avaliado · a cada 90 dias</span></div>
+    <table><thead><tr><th>Indicador</th><th class="r" style="width:150px">Meta</th></tr></thead><tbody>
+      <tr><td><span class="in">Índice de retrabalho</span></td><td class="r"><span class="me">≤ 5% dos projetos</span></td></tr>
+      <tr><td><span class="in">Aprovação na vistoria em 1ª análise</span></td><td class="r"><span class="me">≥ 85%</span></td></tr>
+      <tr><td><span class="in">Organização do ambiente de obra</span></td><td class="r"><span class="me">sempre</span></td></tr>
+      <tr><td><span class="in">Proatividade em comunicação</span></td><td class="r"><span class="me">reporta sem ser cobrado</span></td></tr>
+    </tbody></table>
+  </div>
+  <div class="pf"><div class="pl">Uso interno · Valvic Marcenaria · Junho/2026</div><div class="pr">MARCENARIA <span>·</span> 07</div></div>
+</section>
+
+<!-- JOMAR -->
+<section class="sheet">
+  <div class="ph marc"><div class="l"><div class="area">Marcenaria</div><div class="nm">Jomar</div><div class="cargo">Marceneiro</div></div><div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Escopo de Função</div></div></div>
+  <div class="body">
+    <div class="meta"><div class="m"><div class="ml">Vínculo</div><div class="mv">CLT · Equipe de Produção</div></div><div class="m"><div class="ml">Reporta a</div><div class="mv">Deivson e Paulo</div></div><div class="m"><div class="ml">Natureza</div><div class="mv">Cargo de formação</div></div></div>
+    <div class="prop"><div class="pt">Propósito do cargo</div><p>Executa <b>tarefas técnicas de apoio</b> à produção sob orientação — montagem de estruturas simples, acabamentos básicos e suporte operacional — e é responsável pela <b>manutenção das condições do ambiente</b>. O avanço para Pleno depende de evolução técnica documentada.</p></div>
+    <div class="sec"><span class="bar"></span><span class="tx">Responsabilidades</span></div>
+    <div class="grp"><div class="gh">Manutenção do ambiente — pré-requisito diário</div><ul class="resp">
+      <li>Limpeza e organização de toda a fábrica no <b>início e fim de cada turno</b>; conservação de áreas comuns durante o dia.</li>
+      <li>Descarte correto de resíduos e aparas; guarda adequada de ferramentas e insumos. <b>Referência: área CNC do Joelson.</b></li>
+    </ul></div>
+    <div class="grp"><div class="gh">Suporte operacional à produção</div><ul class="resp">
+      <li>Movimentação e separação de chapas, peças e insumos; apoio na montagem básica sob supervisão direta.</li>
+      <li>Embalagem e preparação para transporte; cortes de apoio conforme especificação — <b>sem decisão própria de medidas</b>.</li>
+      <li>Perguntar antes de executar qualquer tarefa com dúvida — nunca improvisar; comunicar impedimentos antes.</li>
+    </ul></div>
+    <div class="sec"><span class="bar"></span><span class="tx">Avaliação formal · 90 dias (Deivson → Paulo)</span></div>
+    <table><thead><tr><th>Critério avaliado</th><th class="r" style="width:150px">Expectativa</th></tr></thead><tbody>
+      <tr><td><span class="in">Manutenção do ambiente</span></td><td class="r"><span class="me">fábrica limpa sem ser solicitado</span></td></tr>
+      <tr><td><span class="in">Execução das tarefas atribuídas</span></td><td class="r"><span class="me">corretas e no prazo</span></td></tr>
+      <tr><td><span class="in">Pontualidade e presença</span></td><td class="r"><span class="me">sem ocorrências reiteradas</span></td></tr>
+      <tr><td><span class="in">Evolução técnica</span></td><td class="r"><span class="me">progresso mensurável</span></td></tr>
+    </tbody></table>
+  </div>
+  <div class="pf"><div class="pl">Uso interno · Valvic Marcenaria · Junho/2026</div><div class="pr">MARCENARIA <span>·</span> 08</div></div>
+</section>
+
+<!-- DAVI -->
+<section class="sheet">
+  <div class="ph marc"><div class="l"><div class="area">Marcenaria</div><div class="nm">Davi</div><div class="cargo">Ajudante de Produção</div></div><div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Escopo de Função</div></div></div>
+  <div class="body">
+    <div class="meta"><div class="m"><div class="ml">Vínculo</div><div class="mv">CLT · Equipe de Produção</div></div><div class="m"><div class="ml">Reporta a</div><div class="mv">Deivson e Paulo</div></div><div class="m"><div class="ml">Natureza</div><div class="mv">Ponto de partida · forma o marceneiro</div></div></div>
+    <div class="prop"><div class="pt">Propósito do cargo</div><p>Apoia a equipe de marcenaria na execução dos projetos e <b>desenvolve habilidades técnicas de forma progressiva</b>, sob orientação dos níveis acima. Davi já demonstra capacidade acima do nível — o foco é consolidar de forma consistente e documentada.</p></div>
+    <div class="sec"><span class="bar"></span><span class="tx">Responsabilidades</span></div>
+    <div class="grp"><div class="gh">Execução técnica em desenvolvimento</div><ul class="resp">
+      <li><b>Aplicação de laminação</b> — habilidade já demonstrada, a aprofundar e documentar; apoio na montagem de estruturas básicas sob orientação.</li>
+      <li>Execução de acabamentos simples no padrão Valvic; movimentação e preparação de material conforme a demanda do dia.</li>
+      <li>Nunca executar tarefa técnica ainda não dominada sem supervisão autorizada.</li>
+    </ul></div>
+    <div class="grp"><div class="gh">Desenvolvimento e aprendizado ativo</div><ul class="resp">
+      <li>Absorver as técnicas ensinadas (observar, perguntar, aplicar); <b>registrar com o Deivson as habilidades dominadas</b>.</li>
+      <li>Receber orientações com abertura; comunicar dificuldade técnica <b>antes de executar</b> — não depois de errar.</li>
+    </ul></div>
+    <div class="sec"><span class="bar"></span><span class="tx">Como é avaliado · a cada 90 dias</span></div>
+    <table><thead><tr><th>Indicador</th><th class="r" style="width:150px">Meta</th></tr></thead><tbody>
+      <tr><td><span class="in">Qualidade das aplicações de laminação</span></td><td class="r"><span class="me">aprovação do Deivson</span></td></tr>
+      <tr><td><span class="in">Habilidades técnicas novas documentadas</span></td><td class="r"><span class="me">≥ 1 por ciclo</span></td></tr>
+      <tr><td><span class="in">Pontualidade e presença</span></td><td class="r"><span class="me">ausências justificadas 24h antes</span></td></tr>
+      <tr><td><span class="in">Proatividade no aprendizado</span></td><td class="r"><span class="me">iniciativa demonstrada</span></td></tr>
+    </tbody></table>
+  </div>
+  <div class="pf"><div class="pl">Uso interno · Valvic Marcenaria · Junho/2026</div><div class="pr">MARCENARIA <span>·</span> 09</div></div>
+</section>
+
+<!-- ASSISTENTE EXECUTIVO -->
+<section class="sheet">
+  <div class="ph com"><div class="l"><div class="area">Comercial &amp; Administrativo</div><div class="nm">Assistente Executivo</div><div class="cargo">Operacional · a contratar</div></div><div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Escopo de Função</div></div></div>
+  <div class="body">
+    <div class="meta"><div class="m"><div class="ml">Vínculo</div><div class="mv">CLT · Presencial</div></div><div class="m"><div class="ml">Reporta a</div><div class="mv">Jonathan</div></div><div class="m"><div class="ml">Interface diária</div><div class="mv">Paulo e Deivson</div></div></div>
+    <div class="prop"><div class="pt">Propósito do cargo</div><p>Manter a <b>máquina administrativa e operacional</b> funcionando com precisão — <b>o pivô que conecta toda a operação</b>, liberando Jonathan para vender e Paulo para gerir a produção. Cargo de execução ativa e antecipação de demandas.</p></div>
+    <div class="sec"><span class="bar"></span><span class="tx">Responsabilidades — blocos de atuação</span></div>
+    <div class="grp"><div class="gh">1 · Administrativo &amp; comercial</div><ul class="resp">
+      <li>Organizar contratos, termos e autos no Drive (<b>pasta do cliente em até 24h</b>); cadastrar clientes/projetos no ERP Calme.</li>
+      <li>Atender leads no WhatsApp com scripts (<b>resposta em 2h úteis</b>); follow-up de propostas em D+2, D+5 e D+10; apoio a orçamentos.</li>
+    </ul></div>
+    <div class="grp"><div class="gh">2 · Financeiro operacional (autonomia progressiva)</div><ul class="resp">
+      <li>Cotações (mín. 3 fornecedores acima de R$500, documentadas); emissão de NF; alertar vencimentos <b>com 5 dias</b>; conciliar no Calme.</li>
+    </ul></div>
+    <div class="grp"><div class="gh">3 · Logística &amp; estoque · 4 · Interface com a produção</div><ul class="resp">
+      <li>Agendar transporte; conferir mercadorias recebidas; gestão do estoque a partir da Fase 3; antecipar demandas entre Deivson e Paulo.</li>
+      <li>Ser o elo comercial↔produção transmitindo demandas <b>com fidelidade</b>; atualizar status no Calme; gerir o portfólio de fotos/vídeos.</li>
+    </ul></div>
+    <div class="rules"><div class="rt">Limites permanentes de atuação</div>
+      <li>Zero autonomia comercial: qualquer valor, desconto ou condição → acionar Jonathan imediatamente.</li>
+      <li>Pagamento acima do limite da fase → autorização prévia por escrito de Jonathan ou Paulo.</li>
+      <li>Problema técnico em projeto entregue → registrar, agradecer e acionar Jonathan no mesmo momento.</li>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Uso interno · Valvic Marcenaria · Junho/2026</div><div class="pr">COMERCIAL &amp; ADM <span>·</span> 10</div></div>
+</section>
+
+<!-- ESTAGIÁRIA -->
+<section class="sheet">
+  <div class="ph com"><div class="l"><div class="area">Comercial &amp; Administrativo</div><div class="nm">Estagiária</div><div class="cargo">Arquitetura &amp; Projetos</div></div><div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Escopo de Função</div></div></div>
+  <div class="body">
+    <div class="meta"><div class="m"><div class="ml">Vínculo</div><div class="mv">Estágio · 25h/sem · híbrido</div></div><div class="m"><div class="ml">Supervisão</div><div class="mv">A definir + Jonathan (validação)</div></div><div class="m"><div class="ml">Natureza</div><div class="mv">Trilha de formação → efetivação</div></div></div>
+    <div class="prop"><div class="pt">Propósito do cargo</div><p>Formação de um profissional estratégico que resolve três gargalos: <b>suporte à precificação, projetos para clientes sem arquiteto e comunicação dos modelos para a CNC</b>. Efetivação por desempenho — não por prazo fixo.</p></div>
+    <div class="sec"><span class="bar"></span><span class="tx">Escopo por frente</span></div>
+    <div class="grp"><div class="gh">Suporte comercial &amp; projetual</div><ul class="resp">
+      <li>Levantamentos quantitativos (com supervisão → autonomia crescente); apoio ao processo de precificação sob supervisão.</li>
+      <li>Execução de projetos para <b>clientes sem arquiteto</b>, com validação da liderança antes do envio.</li>
+    </ul></div>
+    <div class="grp"><div class="gh">Engenharia / CNC &amp; conteúdo</div><ul class="resp">
+      <li>Modelagem em <b>SketchUp + Upmob</b> no padrão Valvic; produção faz a conferência final — contribui para reduzir gargalo.</li>
+      <li>Conteúdo 'Fala Estagiária' nas redes (experimental, sem pressão de volume).</li>
+    </ul></div>
+    <div class="sec"><span class="bar"></span><span class="tx">Trilha de desenvolvimento</span></div>
+    <table><thead><tr><th>Estágio</th><th>Foco</th></tr></thead><tbody>
+      <tr><td><span class="in">I · meses 1–4</span></td><td>Integração e calibragem — imersão no padrão Valvic, primeiros projetos com validação</td></tr>
+      <tr><td><span class="in">II · meses 4–8</span></td><td>Autonomia supervisionada — levantamentos e projetos com autonomia crescente</td></tr>
+      <tr><td><span class="in">III · 8–12m+</span></td><td>Consolidação → efetivação CLT conforme desempenho comprovado</td></tr>
+    </tbody></table>
+  </div>
+  <div class="pf"><div class="pl">Uso interno · Valvic Marcenaria · Junho/2026</div><div class="pr">COMERCIAL &amp; ADM <span>·</span> 11</div></div>
+</section>
+
+</body>
+</html>
