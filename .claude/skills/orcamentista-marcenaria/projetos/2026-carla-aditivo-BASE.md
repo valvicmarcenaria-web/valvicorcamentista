@@ -52,6 +52,7 @@ Material **Ultra: 1 chapa 15mm + 1 chapa 6mm**.
 | **Material** | | **~R$ 3.080** |
 
 `inv = 3.080 / (0,788 − 0,35)` = R$ 7.032 → **R$ 7.000**
+> **Separação inferior/superior (proporção ~52/48):** gabinete inferior **R$ 3.600** · espelheira (superior) **R$ 3.400**.
 
 ## Item 4 — ARMÁRIO BANHO MASTER (Carvalho Am. Arauco · MC 35% · R$ 8.100)
 Espelheira: porta-espelho (Sistema Linea) + prateleiras e nichos + **LED perfil "G"**. Gabinete: gavetas em
@@ -70,6 +71,7 @@ Espelheira: porta-espelho (Sistema Linea) + prateleiras e nichos + **LED perfil 
 | **Material** | | **~R$ 3.530** |
 
 `inv = 3.530 / (0,788 − 0,35)` = R$ 8.059 → **R$ 8.100**
+> **Separação inferior/superior (proporção ~52/48):** gabinete inferior **R$ 4.200** · espelheira (superior) **R$ 3.900**.
 
 ## 🔶 A confirmar (não trava o valor)
 - **Ultra 6mm** (estimei R$ 450 — não tabelado) · **Master = Carvalho Am. Arauco** a R$ 500/chapa · **espelho nosso**.

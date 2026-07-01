@@ -333,3 +333,21 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
   com tom de **cliente recorrente / aditivo ao projeto**: `closer-vendas/propostas/proposta-carla-aditivo.html` + PDF (3 págs).
 - *Aprendizado: aditivo a cliente recorrente = proposta enxuta "novos itens do seu projeto", condições "alinhadas ao contrato
   vigente", CTA agradece a confiança. Preços SEPARADOS por item (cliente escolhe incluir todos ou por etapa).*
+
+### [2026-07-01] Lavinia — NOVA COMPETÊNCIA: Descritivo Técnico (para CONTRATO)
+> Regras nascidas das correções do fundador no descritivo do roupeiro da Camila. **Não repetir esses erros.**
+- **Descritivo técnico ≠ orçamento.** No descritivo para contrato **NÃO vão:** custo, MC, **nem quantidades de insumo**
+  (nº de chapas, metros de fita, nº de dobradiças, metros de LED). É **descrição TÉCNICA do item**, não quantitativo.
+  Ex.: LED = "fita de LED com perfil + sensor" (SEM os metros); porta de giro = descrição do item, SEM contagem.
+- **NUNCA inventar/assumir o que não está confirmado no projeto** (mandamento reforçado):
+  - **Suportes de prateleira:** padrão = **FIXOS**. Não escrever "reguláveis" sem especificação.
+  - **Cor:** não cravar nem inventar (inventei "ripado Cumaru" que NÃO existia → erro). Cor = **"conforme projeto +
+    validação in loco com o cliente"**.
+  - **Acessórios:** não inventar (pus "tábua de passar" e "cabideiros" sem confirmação). Só o que está no escopo.
+  - **Portas:** confirmar se **inteiriças**; **não assumir básculas/basculantes**.
+- **Descrever a característica construtiva real quando confirmada** (isso SIM entra): porta de correr **dual color**
+  (bicolor) com **usinagem especial CNC vazado**, **friso sem acabamento** (corte aparente); porta de giro **unicolor**.
+- **Puxador:** não inventar (cava usinada/SP7000). Usar o do projeto. Gaveta interna = **puxador por espaçamento**.
+- **Não incluir seção "Exclusões"** se o fundador achar desnecessário (achou). Manter só "medidas conferidas no local".
+- *Regra-mãe: o descritivo de contrato diz **O QUE É** o móvel, limpo e técnico, sem número de insumo; o que não está
+  confirmado no projeto vira "conforme projeto / validação in loco", nunca invenção.* Modelo: `projetos/descritivo-tecnico-roupeiro-camila.md`.
