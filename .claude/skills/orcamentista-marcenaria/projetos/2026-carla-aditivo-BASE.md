@@ -46,7 +46,7 @@ Material **Ultra: 1 chapa 15mm + 1 chapa 6mm**.
 | Fita de borda cor + colagem | ~35 m | R$ 195 |
 | Corrediças Hettich (4 gavetas + 1 gaveta especial) | 5 pares ×120 | R$ 600 |
 | Sistema deslizante Linea 1 porta + trilho (Rometal, *a validar*) | 1 conj. | R$ 180 |
-| Espelho (terceirizado — nosso) | ~0,95 m² | R$ 350 |
+| Espelho c/ esquadria de alumínio (terceirizado — nosso) | ~0,95 m² | R$ 350 |
 | LED (nossa tabela) | ~3,5 m ×150 | R$ 525 |
 | Consumíveis | — | R$ 80 |
 | **Material** | | **~R$ 3.080** |
@@ -65,7 +65,7 @@ Espelheira: porta-espelho (Sistema Linea) + prateleiras e nichos + **LED perfil 
 | Fita de borda cor + colagem | ~55 m | R$ 305 |
 | Corrediças Hettich ocultas (gavetas + gaveta especial) | 6 pares ×120 | R$ 720 |
 | Sistema deslizante Linea 1 porta + trilho (*a validar*) | 1 conj. | R$ 180 |
-| Espelho (terceirizado — nosso) | ~1,0 m² | R$ 400 |
+| Espelho c/ esquadria de alumínio (terceirizado — nosso) | ~1,0 m² | R$ 400 |
 | LED (nossa tabela) | ~3,5 m ×150 | R$ 525 |
 | Consumíveis | — | R$ 100 |
 | **Material** | | **~R$ 3.530** |
