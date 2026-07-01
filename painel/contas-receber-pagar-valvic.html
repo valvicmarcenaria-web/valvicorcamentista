@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contas a Receber & a Pagar — Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{
+    --navy:#0E2038; --navy2:#16314f; --navy-soft:#1d3b5e; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-pale:#f5edd8;
+    --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd;
+    --green:#2f7d4f; --green2:#256340; --red:#b0413f; --blue:#2f5d8c; --amber:#c47d0e;
+  }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:10px; line-height:1.42; -webkit-font-smoothing:antialiased; }
+  .num{ font-variant-numeric:tabular-nums; }
+  .serif{ font-family:'Cormorant Garamond',Georgia,serif; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:16px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; page-break-after:always; display:flex; flex-direction:column; }
+  .sheet:last-child{ page-break-after:auto; }
+  /* cover */
+  .cover{ background:radial-gradient(120% 80% at 80% -10%, #1b3a5e 0%, rgba(27,58,94,0) 55%),linear-gradient(160deg,#0E2038 0%,#0b1a2e 60%,#0a1626 100%); color:#fff; }
+  .cv-frame{ position:absolute; inset:13mm; border:1px solid rgba(194,160,90,.38); pointer-events:none; }
+  .cv-frame::before{ content:""; position:absolute; inset:5px; border:1px solid rgba(194,160,90,.14); }
+  .cv-inner{ position:relative; z-index:2; flex:1; display:flex; flex-direction:column; padding:24mm 22mm; }
+  .cv-brand{ display:flex; align-items:center; gap:14px; }
+  .cv-mono{ width:54px; height:54px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:3px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:25px; color:var(--gold); }
+  .cv-co{ font-size:17px; font-weight:700; letter-spacing:3px; text-transform:uppercase; }
+  .cv-sub{ font-size:9px; color:rgba(255,255,255,.5); letter-spacing:.5px; margin-top:3px; }
+  .cv-center{ margin:auto 0; }
+  .cv-kicker{ font-size:10px; letter-spacing:5px; text-transform:uppercase; color:var(--gold); }
+  .cv-rule{ width:60px; height:2px; background:var(--gold); margin:18px 0 22px; }
+  .cv-title{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:52px; line-height:1.04; letter-spacing:-.5px; }
+  .cv-title span{ color:var(--gold-soft); font-style:italic; }
+  .cv-desc{ font-size:12px; color:rgba(255,255,255,.62); margin-top:18px; max-width:410px; line-height:1.7; font-weight:300; }
+  .cv-idx{ margin-top:26px; padding-top:20px; border-top:1px solid rgba(255,255,255,.14); display:flex; gap:0; }
+  .cv-idx .it{ flex:1; padding-right:16px; } .cv-idx .it + .it{ border-left:1px solid rgba(255,255,255,.1); padding-left:20px; }
+  .cv-idx .n{ font-size:8px; letter-spacing:1.6px; text-transform:uppercase; color:rgba(255,255,255,.5); } .cv-idx .v{ font-size:18px; font-weight:800; margin-top:5px; } .cv-idx .v.g{ color:#7fd6a0; } .cv-idx .v.r{ color:#e89a98; } .cv-idx .v.gold{ color:var(--gold-soft); }
+  .cv-foot{ display:flex; justify-content:space-between; align-items:flex-end; margin-top:26px; }
+  .cv-conf{ font-size:8.5px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.4); }
+  .cv-date{ font-size:9.5px; color:rgba(255,255,255,.55); text-align:right; }
+  /* header */
+  .ph{ background:var(--navy); color:#fff; padding:11mm 16mm 7mm; display:flex; justify-content:space-between; align-items:flex-end; }
+  .ph .kx{ font-size:7.6px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:600; margin-top:3px; line-height:1; }
+  .ph .r{ text-align:right; } .ph .co{ font-size:9.5px; letter-spacing:2px; text-transform:uppercase; font-weight:600; } .ph .pg{ font-size:8px; color:rgba(255,255,255,.5); margin-top:3px; }
+  .body{ flex:1; padding:8mm 16mm 0; display:flex; flex-direction:column; }
+  .intro{ font-size:9px; color:var(--muted); margin-bottom:9px; line-height:1.45; } .intro b{ color:var(--navy); }
+  .sec{ display:flex; align-items:center; gap:10px; margin:0 0 8px; } .sec:not(:first-child){ margin-top:14px; }
+  .sec .bar{ width:15px; height:2px; background:var(--gold); } .sec .tx{ font-size:9px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:var(--navy); } .sec .ct{ margin-left:auto; font-size:8px; color:var(--muted); }
+  table{ width:100%; border-collapse:collapse; }
+  thead th{ background:var(--navy2); color:#fff; font-size:7.4px; font-weight:600; letter-spacing:.6px; text-transform:uppercase; padding:6px 10px; text-align:left; }
+  th.r,td.r{ text-align:right; }
+  tbody td{ padding:5.6px 10px; border-bottom:1px solid var(--line); vertical-align:middle; }
+  tbody tr:nth-child(even) td{ background:#f4f1ea; }
+  td .nm{ font-weight:600; color:var(--ink); }
+  td .dt{ color:var(--muted); font-size:8px; }
+  tr.stot td{ background:#eceadf !important; font-weight:700; color:var(--navy); border-top:1.5px solid var(--line2); font-size:9.6px; }
+  tr.grand td{ background:var(--navy) !important; color:#fff; font-weight:700; font-size:11px; padding:8px 10px; border:none; } tr.grand td .gv{ color:var(--gold-soft); }
+  .kpis{ display:flex; gap:11px; } .kpi{ flex:1; background:#fff; border:1px solid var(--line); border-radius:7px; padding:13px 15px; position:relative; overflow:hidden; }
+  .kpi::before{ content:""; position:absolute; top:0; left:0; right:0; height:3px; background:var(--gold); }
+  .kpi.g::before{ background:var(--green); } .kpi.r::before{ background:var(--red); } .kpi.b::before{ background:var(--navy); }
+  .kpi .kl{ font-size:8px; letter-spacing:1.3px; text-transform:uppercase; color:var(--muted); } .kpi .kv{ font-size:23px; font-weight:800; margin-top:5px; letter-spacing:-.5px; color:var(--navy); }
+  .kpi.g .kv{ color:var(--green); } .kpi.r .kv{ color:var(--red); } .kpi .ks{ font-size:8px; color:var(--muted); margin-top:4px; line-height:1.4; }
+  .bars2 .row{ display:grid; grid-template-columns:90px 1fr 78px; align-items:center; gap:10px; margin-bottom:9px; }
+  .bars2 .bl{ font-size:9px; font-weight:600; text-align:right; color:var(--ink); } .bars2 .bl small{ display:block; font-size:7.4px; color:var(--muted); font-weight:500; }
+  .track{ height:22px; background:#ece8de; border-radius:4px; overflow:hidden; display:flex; } .fill{ height:100%; }
+  .bars2 .bv{ font-size:10px; font-weight:800; text-align:right; }
+  .exec{ background:#fff; border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:0 7px 7px 0; padding:13px 16px; margin-top:12px; }
+  .exec .et{ font-size:8px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:6px; }
+  .exec p{ font-family:'Cormorant Garamond',serif; font-size:13.5px; line-height:1.55; color:#2a3744; } .exec p b{ color:var(--navy); font-weight:700; }
+  .notes{ margin-top:12px; background:#f6f3ec; border:1px solid var(--line); border-radius:7px; padding:11px 14px; }
+  .notes .nt{ font-size:7.8px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+  .notes ul{ margin:0; padding-left:14px; } .notes li{ font-size:8.6px; color:#41505d; line-height:1.55; margin-bottom:3px; } .notes li b{ color:var(--navy); }
+  .catbar{ display:inline-block; height:9px; border-radius:2px; vertical-align:middle; margin-right:6px; }
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:6px 16mm; display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf .pl{ font-size:7px; color:var(--muted); } .pf .pr{ font-size:8px; color:var(--navy); font-weight:700; letter-spacing:1px; } .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<!-- PÁG 1 — CAPA -->
+<section class="sheet cover">
+  <div class="cv-frame"></div>
+  <div class="cv-inner">
+    <div class="cv-brand">
+      <div class="cv-mono">V</div>
+      <div><div class="cv-co">Valvic Marcenaria</div><div class="cv-sub">Vargas Decor Ltda &nbsp;·&nbsp; CNPJ 17.269.304/0001-51 &nbsp;·&nbsp; Belo Horizonte / MG</div></div>
+    </div>
+    <div class="cv-center">
+      <div class="cv-kicker">Posição por Categorias · Confidencial</div>
+      <div class="cv-rule"></div>
+      <h1 class="cv-title">Contas a Receber<br>& a <span>Pagar</span></h1>
+      <p class="cv-desc">Recebíveis e pagamentos com vencimento entre <b style="color:#fff;font-weight:600">julho e outubro de 2026</b>, organizados por categoria — a fotografia do caixa do próximo quadrimestre.</p>
+      <div class="cv-idx">
+        <div class="it"><div class="n">A Receber</div><div class="v g num">R$ 392.357</div></div>
+        <div class="it"><div class="n">A Pagar</div><div class="v r num">R$ 341.202</div></div>
+        <div class="it"><div class="n">Saldo do período</div><div class="v gold num">+R$ 51.155</div></div>
+      </div>
+    </div>
+    <div class="cv-foot">
+      <div class="cv-conf">Uso restrito &nbsp;·&nbsp; posição 30/06/2026</div>
+      <div class="cv-date">Belo Horizonte<br>Junho de 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- PÁG 2 — VISÃO GERAL -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Julho a Outubro · 2026</div><div class="tt">Visão Geral do Período</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Contas · posição 30/06</div></div>
+  </div>
+  <div class="body">
+    <div class="kpis">
+      <div class="kpi g"><div class="kl">A Receber (Jul–Out)</div><div class="kv num">R$ 392.357</div><div class="ks">18 recebíveis em aberto · vendas contratadas.</div></div>
+      <div class="kpi r"><div class="kl">A Pagar (Jul–Out)</div><div class="kv num">R$ 341.202</div><div class="ks">Obrigações do período · todas as categorias.</div></div>
+      <div class="kpi b"><div class="kl">Saldo do período</div><div class="kv num" style="color:var(--green)">+R$ 51.155</div><div class="ks">Recebíveis superam pagamentos no quadrimestre.</div></div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Fluxo líquido mês a mês</span><span class="ct">A receber − a pagar</span></div>
+    <div class="bars2">
+      <div class="row"><div class="bl">Julho<small>rec. 108,9k · pag. 124,4k</small></div><div class="track" style="justify-content:flex-start"><div class="fill" style="width:14%;background:var(--red)"></div></div><div class="bv" style="color:var(--red)">−R$ 15,5k</div></div>
+      <div class="row"><div class="bl">Agosto<small>rec. 188,5k · pag. 84,6k</small></div><div class="track"><div class="fill" style="width:100%;background:linear-gradient(90deg,#2f7d4f,#256340)"></div></div><div class="bv" style="color:var(--green)">+R$ 103,8k</div></div>
+      <div class="row"><div class="bl">Setembro<small>rec. 91,0k · pag. 72,8k</small></div><div class="track"><div class="fill" style="width:18%;background:var(--green)"></div></div><div class="bv" style="color:var(--green)">+R$ 18,2k</div></div>
+      <div class="row"><div class="bl">Outubro<small>rec. 4,0k · pag. 59,4k</small></div><div class="track" style="justify-content:flex-start"><div class="fill" style="width:53%;background:var(--red)"></div></div><div class="bv" style="color:var(--red)">−R$ 55,4k</div></div>
+    </div>
+
+    <div class="exec">
+      <div class="et">Leitura do período</div>
+      <p>No quadrimestre, os recebíveis (<b>R$ 392 mil</b>) superam as obrigações (<b>R$ 341 mil</b>) — saldo positivo de <b>R$ 51 mil</b>. Mas a distribuição é <b>irregular</b>: <b>agosto</b> concentra o caixa (+R$ 104 mil) enquanto <b>julho e, sobretudo, outubro</b> fecham negativos. A gestão de caixa do período depende de <b>antecipar recebíveis</b> e <b>escalonar pagamentos</b> para atravessar os meses apertados.</p>
+    </div>
+
+    <div class="notes">
+      <div class="nt">Como ler</div>
+      <ul>
+        <li><b>A Receber:</b> valores contratados com clientes, ainda não recebidos, por mês de vencimento.</li>
+        <li><b>A Pagar:</b> todas as obrigações do período — folha, sócios, materiais, ocupação, veículos, etc.</li>
+        <li>Posição consolidada em <b>30/06/2026</b>; janela de análise: vencimentos de julho a outubro.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Uso interno e restrito · Valvic Marcenaria · Posição 30/06/2026</div><div class="pr">02 <span>/</span> 05</div></div>
+</section>
+
+<!-- PÁG 3 — A RECEBER -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Entradas · Jul–Out 2026</div><div class="tt">Contas a Receber</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Contas · posição 30/06</div></div>
+  </div>
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Recebíveis por mês de vencimento</span><span class="ct">Total R$ 392.357</span></div>
+    <table>
+      <thead><tr><th>Mês de vencimento</th><th>Distribuição</th><th class="r" style="width:96px">Valor R$</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Julho / 2026</span></td><td><span class="catbar" style="width:58%;background:#3f73a6"></span></td><td class="r num">108.888</td></tr>
+        <tr><td><span class="nm">Agosto / 2026</span></td><td><span class="catbar" style="width:100%;background:#16314f"></span></td><td class="r num"><b>188.469</b></td></tr>
+        <tr><td><span class="nm">Setembro / 2026</span></td><td><span class="catbar" style="width:48%;background:#5c6bc0"></span></td><td class="r num">91.000</td></tr>
+        <tr><td><span class="nm">Outubro / 2026</span></td><td><span class="catbar" style="width:2%;background:#7aa0c4"></span></td><td class="r num">4.000</td></tr>
+        <tr class="grand"><td colspan="2">TOTAL A RECEBER (Jul–Out)</td><td class="r num"><span class="gv">392.357</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Principais recebíveis por cliente</span><span class="ct">Top 10 · 91% do total</span></div>
+    <table>
+      <thead><tr><th style="width:34px">#</th><th>Cliente / projeto</th><th class="r" style="width:90px">Valor R$</th></tr></thead>
+      <tbody>
+        <tr><td class="num" style="color:var(--gold);font-weight:700">1</td><td><span class="nm">André Alphaville</span> <span class="dt">· investimento dos sócios*</span></td><td class="r num"><b>87.000</b></td></tr>
+        <tr><td class="num" style="color:var(--gold);font-weight:700">2</td><td><span class="nm">Cristiane F. C. Teixeira</span></td><td class="r num"><b>79.200</b></td></tr>
+        <tr><td class="num" style="color:var(--gold);font-weight:700">3</td><td><span class="nm">Maria — Vale dos Cristais</span></td><td class="r num"><b>58.869</b></td></tr>
+        <tr><td class="num">4</td><td><span class="nm">Projeto Augusto</span></td><td class="r num">27.000</td></tr>
+        <tr><td class="num">5</td><td><span class="nm">Simony F. S. G. da Silva</span></td><td class="r num">24.400</td></tr>
+        <tr><td class="num">6</td><td><span class="nm">Lucas Mello</span></td><td class="r num">24.000</td></tr>
+        <tr><td class="num">7</td><td><span class="nm">Rejane M. de Carvalho</span></td><td class="r num">21.360</td></tr>
+        <tr><td class="num">8</td><td><span class="nm">Carla Seler</span></td><td class="r num">13.500</td></tr>
+        <tr><td class="num">9</td><td><span class="nm">Luciana Rajão (Vale dos Cristais)</span></td><td class="r num">12.000</td></tr>
+        <tr><td class="num">10</td><td><span class="nm">Marina A. M. Borges</span></td><td class="r num">10.000</td></tr>
+        <tr><td class="num" style="color:var(--muted)">—</td><td><span class="nm" style="color:var(--muted)">Demais clientes (8)</span></td><td class="r num">35.028</td></tr>
+        <tr class="stot"><td colspan="2">Total</td><td class="r num">392.357</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:7.6px;color:var(--muted);margin-top:5px;font-style:italic">* André Alphaville (R$ 87.000): projeto de investimento dos próprios sócios — não é recebível de cliente comum; o retorno acompanha a realização do investimento.</p>
+  </div>
+  <div class="pf"><div class="pl">Uso interno e restrito · Valvic Marcenaria · Posição 30/06/2026</div><div class="pr">03 <span>/</span> 05</div></div>
+</section>
+
+<!-- PÁG 4 — A PAGAR -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Saídas · Jul–Out 2026</div><div class="tt">Contas a Pagar</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Contas · posição 30/06</div></div>
+  </div>
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Obrigações por categoria</span><span class="ct">Total R$ 341.202</span></div>
+    <table>
+      <thead><tr><th>Categoria</th><th>O que inclui</th><th class="r" style="width:56px">% </th><th class="r" style="width:82px">Valor R$</th></tr></thead>
+      <tbody>
+        <tr><td><span class="catbar" style="width:14px;background:#16314f"></span><span class="nm">Folha & pessoal</span></td><td class="dt">Salários, adiantamentos, comissões, 13º, VT/VA, encargos</td><td class="r num">34,2%</td><td class="r num"><b>116.733</b></td></tr>
+        <tr><td><span class="catbar" style="width:14px;background:#2f5d8c"></span><span class="nm">Sócios</span></td><td class="dt">Pró-labore, comissão de sócios, empréstimos, INSS/GPS</td><td class="r num">26,3%</td><td class="r num"><b>89.790</b></td></tr>
+        <tr><td><span class="catbar" style="width:14px;background:#b0413f"></span><span class="nm">Produção & materiais</span></td><td class="dt">Materiais aplicados, corte, terceirizados, ferramentas</td><td class="r num">18,3%</td><td class="r num"><b>62.596</b></td></tr>
+        <tr><td><span class="catbar" style="width:14px;background:#3f73a6"></span><span class="nm">Instalações & ocupação</span></td><td class="dt">Aluguel, energia, água, internet, limpeza, vigilância</td><td class="r num">8,2%</td><td class="r num">27.890</td></tr>
+        <tr><td><span class="catbar" style="width:14px;background:#5c6bc0"></span><span class="nm">Máquinas & equip.</span></td><td class="dt">Máquinas, manutenção, computadores, móveis</td><td class="r num">5,4%</td><td class="r num">18.389</td></tr>
+        <tr><td><span class="catbar" style="width:14px;background:var(--gold)"></span><span class="nm">Veículos & logística</span></td><td class="dt">Leasing, combustível, manutenção, seguros, fretes</td><td class="r num">2,3%</td><td class="r num">7.970</td></tr>
+        <tr><td><span class="catbar" style="width:14px;background:#c47d0e"></span><span class="nm">Marketing</span></td><td class="dt">Mídia, publicidade, brindes, representações</td><td class="r num">2,0%</td><td class="r num">6.975</td></tr>
+        <tr><td><span class="catbar" style="width:14px;background:#7aa0c4"></span><span class="nm">Administrativo & serviços</span></td><td class="dt">Contador, software, jurídico, escritório</td><td class="r num">1,9%</td><td class="r num">6.500</td></tr>
+        <tr><td><span class="catbar" style="width:14px;background:#2f7d4f"></span><span class="nm">Imóveis</span></td><td class="dt">Terrenos</td><td class="r num">1,3%</td><td class="r num">4.360</td></tr>
+        <tr class="grand"><td colspan="2">TOTAL A PAGAR (Jul–Out)</td><td class="r num"></td><td class="r num"><span class="gv">341.202</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Pagamentos por mês de vencimento</span></div>
+    <table>
+      <thead><tr><th>Mês</th><th>Distribuição</th><th class="r" style="width:96px">Valor R$</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Julho / 2026</span></td><td><span class="catbar" style="width:100%;background:#b0413f"></span></td><td class="r num"><b>124.353</b></td></tr>
+        <tr><td><span class="nm">Agosto / 2026</span></td><td><span class="catbar" style="width:68%;background:#c05c5a"></span></td><td class="r num">84.622</td></tr>
+        <tr><td><span class="nm">Setembro / 2026</span></td><td><span class="catbar" style="width:59%;background:#c86663"></span></td><td class="r num">72.823</td></tr>
+        <tr><td><span class="nm">Outubro / 2026</span></td><td><span class="catbar" style="width:48%;background:#d98d8b"></span></td><td class="r num">59.405</td></tr>
+        <tr class="stot"><td colspan="2">Total</td><td class="r num">341.202</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pf"><div class="pl">Uso interno e restrito · Valvic Marcenaria · Posição 30/06/2026</div><div class="pr">04 <span>/</span> 05</div></div>
+</section>
+
+<!-- PÁG 5 — CONSOLIDAÇÃO -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Visão única · Jul–Out 2026</div><div class="tt">Consolidação & Fluxo</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Contas · posição 30/06</div></div>
+  </div>
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Fluxo do período — mês a mês</span></div>
+    <table>
+      <thead><tr><th>Mês</th><th class="r">A Receber</th><th class="r">A Pagar</th><th class="r" style="width:96px">Saldo do mês</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Julho / 2026</span></td><td class="r num">108.888</td><td class="r num">124.353</td><td class="r num" style="color:var(--red);font-weight:700">−15.465</td></tr>
+        <tr><td><span class="nm">Agosto / 2026</span></td><td class="r num">188.469</td><td class="r num">84.622</td><td class="r num" style="color:var(--green);font-weight:700">+103.847</td></tr>
+        <tr><td><span class="nm">Setembro / 2026</span></td><td class="r num">91.000</td><td class="r num">72.823</td><td class="r num" style="color:var(--green);font-weight:700">+18.177</td></tr>
+        <tr><td><span class="nm">Outubro / 2026</span></td><td class="r num">4.000</td><td class="r num">59.405</td><td class="r num" style="color:var(--red);font-weight:700">−55.405</td></tr>
+        <tr class="grand"><td>TOTAL JUL–OUT</td><td class="r num"><span class="gv">392.357</span></td><td class="r num"><span class="gv">341.202</span></td><td class="r num"><span class="gv">+51.155</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="kpis" style="margin-top:14px">
+      <div class="kpi g"><div class="kl">Melhor mês</div><div class="kv num">Agosto</div><div class="ks">+R$ 103,8k · concentra o caixa do período.</div></div>
+      <div class="kpi r"><div class="kl">Meses de atenção</div><div class="kv num">Jul · Out</div><div class="ks">−R$ 15,5k e −R$ 55,4k · caixa apertado.</div></div>
+      <div class="kpi b"><div class="kl">Maior obrigação</div><div class="kv num">Folha</div><div class="ks">R$ 116,7k (34%) · seguida de sócios (R$ 89,8k).</div></div>
+    </div>
+
+    <div class="exec">
+      <div class="et">Diagnóstico & ações (Rodrigo)</div>
+      <p>O período fecha <b>positivo em R$ 51 mil</b>, mas com dois meses no vermelho. Três recebíveis — <b>André Alphaville, Cristiane e Maria (VDC)</b> — somam <b>R$ 225 mil (57%)</b>: cobrar/destravar esses é a prioridade nº 1. Do lado das saídas, <b>folha e sócios</b> pesam R$ 207 mil (61%); parte do pró-labore/empréstimo de sócios pode ser <b>escalonada</b> para aliviar julho e outubro.</p>
+    </div>
+
+    <div class="notes">
+      <div class="nt">Ações recomendadas</div>
+      <ul>
+        <li><b>Antecipar recebíveis de agosto/setembro</b> para cobrir o buraco de julho e outubro.</li>
+        <li><b>Priorizar a cobrança</b> de Cristiane (R$ 79,2k) e Maria VDC (R$ 58,9k) — maiores recebíveis de cliente.</li>
+        <li><b>Escalonar pró-labore/empréstimos de sócios</b> nos meses apertados — flexibilidade que o quadro de custeio de vida já sinaliza.</li>
+        <li><b>Política de entrada ≥ 40%</b> em novos contratos evita concentração de recebíveis no fim da obra.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Documento de uso interno e restrito · Elaborado pela área de Estratégia Financeira (Rodrigo)</div><div class="pr">05 <span>/</span> 05</div></div>
+</section>
+
+</body>
+</html>
