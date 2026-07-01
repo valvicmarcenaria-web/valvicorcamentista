@@ -36,6 +36,21 @@ layout? Referência visual? Links exatos do IG e YouTube?"
 
 ---
 
+## Aprendizados (Lavinia)
+
+### [2026-06-30] Orçar por render — 2 regras
+1. **Item arquitetônico ambíguo** (forro/revestimento de madeira, painéis colados na parede) →
+   **PERGUNTAR antes de incluir**, nunca assumir que é marcenaria nossa. (Erro no orç. Juliana:
+   inventei "aparador ripado curvo" e "divisória curva" que eram revestimento / vinham de outro projeto.)
+2. **Isolar renders por cliente/data** antes de ler — misturar pastas gera **móveis fantasma**
+   (renders da Kênia & Fábio contaminaram a leitura da Juliana).
+3. **Nunca orçar por m²** — sempre plano de corte (peça a peça por cor×espessura). Diretriz do Jonathan.
+
+### [2026-06-30] Orçamento Juliana (Kairon & Juliana) — em proposta
+4 ambientes (Cozinha, Área serviço, Lavabo, Sala). Anteprojeto Caio Oliveira. Caixa normal, sem RT, vend 3%.
+**Gold R$ 55.800 (MC 42%) · Essencial R$ 49.200 (MC 37%).** Registro: `projetos/2026-kairon-juliana.md`.
+Falta: definir pagamento/validade e montar a proposta 2 linhas.
+
 ## Recados rápidos
 
 *(notas passageiras — podem ser apagadas após lidas)*

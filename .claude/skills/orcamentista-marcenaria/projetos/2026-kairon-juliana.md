@@ -63,8 +63,25 @@ Cozinha 10,88 m² · Lavabo 2,06 m² · Lavanderia/Área serviço 4,17 m² · Sa
 > filetagem (faces, +10%) → ferragens por contagem. Dimensões de módulo estimadas do
 > footprint da planta + renders + profundidades-padrão (anteprojeto), sinalizando "a conferir no local".
 
-## Status / próximos passos
-1. ✅ Fase 1 (Olhar) — planta + renders lidos, 4 ambientes mapeados.
-2. 🔄 **Em andamento:** plano de corte (peça a peça) por ambiente — NÃO apresentar ao Jonathan por enquanto.
-3. Fase 2: custo + MC Gold/Essencial (5 pts), caixa normal, sem RT, vend 3%.
-4. Fase 3: proposta (2 linhas) + condição com entrada.
+## ORÇAMENTO FINAL — confirmado pelo Jonathan (30/06)
+> Itens verificados render a render (renders separados J00–J33; contaminação K&F removida).
+> **Nada ripado no projeto. Forro de madeira NÃO é nosso.** Espelho orgânico do lavabo NÃO entra.
+> Gold MC **42%** · Essencial MC **37%** (5 pts). Gabinete do lavabo com MC 10 pts menor (Gold 32/Ess 27).
+
+| Ambiente | Itens | GOLD | ESSENCIAL |
+|---|---|--:|--:|
+| **Cozinha** | Coluna eletros · aéreos (3 faces) · balcões+gavetões · prat. flutuantes · tamponamento geladeira | 22.700 | 20.100 |
+| **Área de serviço** | Aéreos LED · báscula (articulador) · bancada+gabinete · torre despensa | 9.400 | 8.300 |
+| **Lavabo** | Gabinete suspenso amadeirado (cuba do cliente) | 2.000 | 1.800 |
+| **Sala** | Rack TV comprido · prat. flutuantes · cristaleira (vidro reflecta bronze) · estante/nichos jantar | 21.700 | 19.000 |
+| **TOTAL** | | **R$ 55.800** | **R$ 49.200** |
+
+**Fora (cliente):** tampos de pedra, revestimentos, forro de madeira, eletros, cubas, torneiras.
+**Renders por ambiente:** Cozinha J18/J20/J29/J30/J31 · Área J09 · Lavabo J06/J33 · Sala J00/J08/J10/J12/J19/J21/J22/J23.
+⚠️ Estimativa de anteprojeto — conferir medidas no local antes do contrato.
+
+## APRENDIZADO (registrar no moleskine/skill)
+> Item arquitetônico ambíguo (forro/revestimento de madeira, painéis) = **PERGUNTAR antes de incluir**, não assumir que é marcenaria.
+> Ao baixar renders de um projeto, **isolar por cliente/data** — não misturar com outro projeto (contaminação K&F→Juliana gerou móveis fantasma).
+
+## Próximo: Fase 3 — proposta 2 linhas (Gold/Essencial)
