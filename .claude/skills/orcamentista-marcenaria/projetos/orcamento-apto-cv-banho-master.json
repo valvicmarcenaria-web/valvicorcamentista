@@ -2,7 +2,7 @@
  "cliente": "Ana Carolina Valente (Apto CV)",
  "projeto": "Apto CV — Banho Master (arq. Bruna Rezende / Estúdio Gráza)",
  "versao": "R00-v3-calibrado",
- "inv": 7700,
+ "inv": 7500,
  "mcAlvo": 37,
  "_nota": "CORRIGIDO (calibracao Apto CV): estrutura/fundos/prateleiras internas em MDF BRANCO (barato); so as faces aparentes/portas madeirado em COR. Contagem de chapa enxuta; espelho/LED reais. Marcenaria: gabinete de bancada (portas cava + gaveta + GAVETA TULHA ripada) + espelheira (portas de abrir espelhadas) + armarios altos de correr espelhados + nichos + LED. Espelho = nosso. FORA (regra): bancada QUARTZO branco (marmoraria); cuba Deca + bica Docol + bacia (loucas/metais); porcelanato (obra). Estimativa sobre executivo R00; valor a validar com o fundador.",
  "p": {
@@ -130,5 +130,5 @@
   "Se Master > Social, ajustar (usei ~igual)."
  ],
  "theme": "light",
- "_valorReal": "CALIBRADO ao fundador: material ~R$ 2.300 por banheiro -> (2.300+250)/0,33 = R$ 7.700. (Minhas estimativas anteriores 32.600 e depois 19.100 estavam ALTAS: inflei espelho e armarios de correr espelhados. Ver calibracao-apto-cv.md.)"
+ "_valorReal": "VALOR FINAL fechado pelo fundador = R$ 7500. (Calibração: material ~R$ 2.300; meu furo recorrente foi inflar espelho/mirror cabinetry — ver calibracao-apto-cv.md.)"
 }

@@ -33,10 +33,10 @@
 | Lavanderia / Área de Serviço | R$ 11.500 | fundador |
 | Lavabo | R$ 4.700 | fundador |
 | **Subtotal SEM banheiros** | **R$ 99.800** | *(→ R$ 90.800 à vista, desconto do fundador)* |
-| Banho Master | R$ 7.700 | Lavinia (calibrado ~R$ 2.300 mat.) |
-| Banho Social | R$ 7.700 | Lavinia (calibrado ~R$ 2.300 mat.) |
-| **Banheiros** | **R$ 15.400** | Lavinia (calibrado) |
-| **TOTAL DO APÊ** | **R$ 115.200** | |
+| Banho Master | R$ 7.500 | fundador (final) |
+| Banho Social | R$ 6.900 | fundador (final) |
+| **Banheiros** | **R$ 14.400** | fundador (final) |
+| **TOTAL DO APÊ** | **R$ 114.200** | |
 
 > ⚠️ As seções detalhadas mais abaixo eram as **estimativas antigas superestimadas** (~2–3× altas). Os JSONs foram
 > atualizados: não-banheiros com o **valor real do fundador**; banheiros com o **cálculo corrigido**. Fica a lição
