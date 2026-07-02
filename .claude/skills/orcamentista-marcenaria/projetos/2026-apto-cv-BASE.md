@@ -26,7 +26,7 @@
 | 3 | **Banho Master** *(gabinete+tulha + espelheira + 2 armários correr espelhados)* | ~R$ 10.500 | **~R$ 32.600** | ✅ estimado |
 | 4 | **Banho Social** *(vanity tulha basculante + 2 armários correr espelhados)* | ~R$ 8.700 | **~R$ 27.100** | ✅ estimado |
 | 5 | **Circulação Íntima** *(armário raso + porta embutida + estante)* | ~R$ 2.800 | **~R$ 9.200** | ✅ estimado |
-| 6 | Cozinha | — | — | ⏳ |
+| 6 | **Cozinha** *(U + ilha + torres + cristaleira vidro canelado)* | ~R$ 23.000 | **~R$ 70.500** | ✅ estimado |
 | 7 | Sala *(SEM o rack)* | — | — | ⏳ |
 
 ---
@@ -116,3 +116,21 @@ Marcenaria rasa de corredor (~40 cm): armário ~325×215 (2 portas branco + prat
 
 `preço = (2.800 + 250) / (0,70 − 0,37)` = 3.050 / 0,33 = **~R$ 9.200** (MC 37%).
 > **06 = pintura branco neve** = obra (parede). JSON: `orcamento-apto-cv-circulacao.json`.
+
+## 6 · COZINHA — material ~R$ 23.000 → **~R$ 70.500**
+Cozinha completa: base madeirado (U) + aéreos bege + **cristaleira aérea (frente vidro canelado)** + armário com **portas de vidro** + **torres de geladeira (2) e forno/microondas** + **ilha/península** + **porta de correr 3 folhas madeirado** + gaveteiros especiais (talheres/panelas/temperos divididos) + LED + friso bit 5×5mm.
+
+| Bloco | Estimativa | Custo |
+|---|---|---:|
+| MDF cor 15 (madeirado 01 + bege 05) | 24 chapas | R$ 12.000 |
+| MDF cor 6 (fundos) | 7 chapas | R$ 2.100 |
+| Corrediças ocultas (16) + dobradiças (50) + articuladores aéreos (5) | — | R$ 2.270 |
+| Sistema porta de correr 3 folhas + puxador cava (~18 m) | — | R$ 1.500 |
+| Vidro canelado + portas de vidro + prat. vidro (vidraceiro nosso) | ~3 m² | R$ 1.305 |
+| LED (~8 m) + gavetas especiais (talheres/panelas/temperos) | — | R$ 1.800 |
+| Fita cor + colagem + consumíveis | ~280 m | R$ 2.040 |
+| **Material** | | **~R$ 23.000** |
+
+`preço = (23.000 + 250) / (0,70 − 0,37)` = 23.250 / 0,33 = **~R$ 70.500** (MC 37%).
+> **Fora (regra):** bancada + rodabanca + prat. temperos em **quartzito nacarado** (marmoraria) · cuba Tramontina + torneiras + triturador (louças/metais) · **cooktop/forno/coifa/lava-louças/geladeiras = eletro do cliente** · mureta alvenaria + porcelanato (obra).
+> Estimativa sobre planta + elev. A/B/C; ilha/península (pág.5) contemplada. JSON: `orcamento-apto-cv-cozinha.json`.
