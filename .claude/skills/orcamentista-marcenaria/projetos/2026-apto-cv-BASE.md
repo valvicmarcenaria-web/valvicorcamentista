@@ -27,7 +27,7 @@
 | 4 | **Banho Social** *(vanity tulha basculante + 2 armários correr espelhados)* | ~R$ 8.700 | **~R$ 27.100** | ✅ estimado |
 | 5 | **Circulação Íntima** *(armário raso + porta embutida + estante)* | ~R$ 2.800 | **~R$ 9.200** | ✅ estimado |
 | 6 | **Cozinha** *(U + ilha + torres + cristaleira vidro canelado)* | ~R$ 23.000 | **~R$ 70.500** | ✅ estimado |
-| 7 | Sala *(SEM o rack)* | — | — | ⏳ |
+| 7 | **Sala** *(SEM o rack · painel madeirado + louceiro)* | ~R$ 4.300 | **~R$ 13.800** | ✅ estimado |
 
 ---
 
@@ -134,3 +134,19 @@ Cozinha completa: base madeirado (U) + aéreos bege + **cristaleira aérea (fren
 `preço = (23.000 + 250) / (0,70 − 0,37)` = 23.250 / 0,33 = **~R$ 70.500** (MC 37%).
 > **Fora (regra):** bancada + rodabanca + prat. temperos em **quartzito nacarado** (marmoraria) · cuba Tramontina + torneiras + triturador (louças/metais) · **cooktop/forno/coifa/lava-louças/geladeiras = eletro do cliente** · mureta alvenaria + porcelanato (obra).
 > Estimativa sobre planta + elev. A/B/C; ilha/península (pág.5) contemplada. JSON: `orcamento-apto-cv-cozinha.json`.
+
+## 7 · SALA DE ESTAR (SEM O RACK) — material ~R$ 4.300 → **~R$ 13.800**
+Parede (elev. A) = painel inteiro em MDF madeirado integrando porta camuflada + **rack/TV (EXCLUÍDO)** + porta de correr 3 folhas (**já na Cozinha**) + **louceiro** (gavetas + nicho + armário bege) sob bancada de pedra.
+Orçado aqui: **painel de parede madeirado** (fora o rack e a porta de correr) + **louceiro** + porta camuflada.
+
+| Bloco | Estimativa | Custo |
+|---|---|---:|
+| MDF cor 15 (painel madeirado + louceiro bege/madeirado) | 5 chapas | R$ 2.500 |
+| MDF cor 6 (fundo) | 2 chapas | R$ 600 |
+| Porta camuflada (dobradiça oculta/pivô) + dobradiças + corrediças (louceiro) | — | R$ 462 |
+| Puxador cava + fita + colagem + consumíveis | ~60 m | R$ 590 |
+| **Material** | | **~R$ 4.300** |
+
+`preço = (4.300 + 250) / (0,70 − 0,37)` = 4.550 / 0,33 = **~R$ 13.800** (MC 37%).
+> **Fora (regra):** bancada do louceiro em **quartzito nacarado** (marmoraria).
+> 🔶 **FLAG — limite do "rack":** orcei o **painel de parede + louceiro** (excluindo só o móvel de TV). Se o "rack" excluir também o **painel da parede de TV**, cai para **~R$ 8.600 (só louceiro)**. A **porta de correr 3 folhas** ficou na Cozinha (não dupliquei). JSON: `orcamento-apto-cv-sala.json`.
