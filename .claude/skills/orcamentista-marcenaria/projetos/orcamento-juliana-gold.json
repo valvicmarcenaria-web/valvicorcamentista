@@ -1,8 +1,8 @@
 {
   "cliente": "Juliana (Kairon & Juliana)",
-  "projeto": "Juliana — Linha GOLD (Hettich) — 8 ambientes (4 iniciais enxutos + Quarto/Closet/Banheiros/Roupeiro)",
-  "versao": "gold-002",
-  "inv": 127443,
+  "projeto": "Juliana — GOLD (Hettich) — 8 ambientes (4 iniciais valor original + 4 novos)",
+  "versao": "gold-final",
+  "inv": 123954,
   "mcAlvo": 40,
   "p": {
     "nf": 4,
@@ -803,8 +803,8 @@
     "Especiais": true
   },
   "theme": "dark",
-  "diretrizes": "Juliana GOLD (Hettich, gar. 10 anos). Caixa normal, sem RT, vend 3%. 4 iniciais nas quantidades originais enxutas + 4 novos. Anteprojeto Caio Oliveira - conferir no local. Nada ripado.",
-  "rodrigo": "MC Gold 40% / Essencial 37%. Closet pesado (~24 chapas) - revisar quantidade.",
+  "diretrizes": "Juliana GOLD. 4 iniciais fixados no valor da 1a versao (Coz 22.700/Área 9.400/Lavabo 2.000/Sala 21.700 = 55.800). 4 novos ao MC 40. Total 123.954. Closet mantido conforme cliente.",
+  "rodrigo": "MC alvo GOLD 42% / ESSENCIAL 37% (5 pts de diferença). Sem desconto de preço.",
   "duvidas": [
     "Puxador redondo dourado - confirmar SKU exato",
     "Armário em L x Armário sozinho - confirmar leiaute do closet"
