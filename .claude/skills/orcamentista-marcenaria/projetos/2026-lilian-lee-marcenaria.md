@@ -2,7 +2,7 @@
 
 **Cliente:** Lilian Lee · **Decoradora:** Jessica Sollero · **Data caderno:** 01/07/2026
 **Local de execução:** Belo Horizonte (orçamento normal) · **logística Vila Velha/ES à parte**
-**Fechamento:** **3 linhas por ferragem** · RT 0 — Essencial R$ 89.000 (2 anos/35%) · Conforto R$ 96.000 (5 anos/37%) · Premium R$ 124.000 (10 anos/42%)
+**Fechamento:** **3 linhas por ferragem** · RT 0 · erro 2% — Essencial R$ 91.000 (2 anos/35%) · Conforto R$ 98.000 (5 anos/37%) · Premium R$ 126.000 (10 anos/42%)
 **Unidade de comunicação:** CHAPAS (a pedido do Jonathan)
 
 > Caderno: `LILIAN_LEE__CADERNO_MARCENARIA` (28 pranchas). Provençais **medidas**;
@@ -45,16 +45,18 @@ filetada e colada MANUAL**, borda externa na coladeira automática.
 - **Terceirizado:** vidro reflecta bronze 0,65 m² + mão de obra ripado (2 cabeceiras).
 
 ## Fechamento (motor Valvic — BH) — 3 LINHAS POR FERRAGEM
-Material fixo (chapas+fita+consumíveis+usinagem+puxadores Jador+LED) = **R$ 35.012** (igual nas 3).
+Material fixo (igual nas 3) = **R$ 35.808**: chapas 25.370 + fita/colagem 3.000 + fixação/cola/parafusos
+1.180 + usinagem moldura 122 + puxadores Jador/cabideiro/LED 5.340 + **limpeza+embalagem (rateio) 796**.
+**Limpeza+embalagem:** tinner 96 · estopa 120 · strech 120 · cantoneira 60 · embalagem 400.
 Só muda a ferragem variável (160 dobradiças + 24 corrediças) → garantia → margem.
 
 | Linha | Ferragem (dobradiça + corrediça) | Garantia | MC | Material | **Preço** |
 |---|---|---|--:|--:|--:|
-| **Essencial** | Padrão + Telescópica (soft-close) | **2 anos** | 35% | 36.932 | **R$ 89.000** |
-| **Conforto** | Hardt + Oculta Hardt | **5 anos** | 37% | 37.972 | **R$ 96.000** |
-| **Premium** | Hettich Sensys + Oculta Quadro | **10 anos** | 42% | 43.492 | **R$ 124.000** |
+| **Essencial** | Padrão + Telescópica (soft-close) | **2 anos** | 35% | 37.728 | **R$ 91.000** |
+| **Conforto** | Hardt + Oculta Hardt | **5 anos** | 37% | 38.768 | **R$ 98.000** |
+| **Premium** | Hettich Sensys + Oculta Quadro | **10 anos** | 42% | 44.288 | **R$ 126.000** |
 
-`inv = fixedR / (1 − 0,18 − 0,88·0,043 − MC)` · RT 0 · visitas R$ 250 · terceir. R$ 1.264.
+`inv = fixedR / (1 − 0,18 − 0,88·0,043 − MC)` · RT 0 · **margem de erro 2%** (≥ piso 1,5%) · visitas R$ 250 · terceir. R$ 1.264.
 (Nomes das linhas provisórios — ajustar com o Jonathan/Vitor.)
 
 ## Logística Vila Velha/ES — LINHA SEPARADA (não entra no preço BH)
