@@ -23,7 +23,7 @@
 |---|---|---:|---:|:--:|
 | 1 | **Área de Serviço** | R$ 8.856 | **R$ 27.600** | ✅ estimado |
 | 2 | **Lavabo** *(gabinete curvo + revest. parede)* | ~R$ 4.700 | **~R$ 15.000** | ✅ estimado |
-| 3 | Banho Master | — | — | ⏳ |
+| 3 | **Banho Master** *(gabinete+tulha + espelheira + 2 armários correr espelhados)* | ~R$ 10.500 | **~R$ 32.600** | ✅ estimado |
 | 4 | Banho Social | — | — | ⏳ |
 | 5 | Circulação Íntima | — | — | ⏳ |
 | 6 | Cozinha | — | — | ⏳ |
@@ -31,7 +31,7 @@
 
 ---
 
-## 1 · ÁREA DE SERVIÇO — material ~R$ 8.650 → **~R$ 13.700**
+## 1 · ÁREA DE SERVIÇO — material R$ 8.856 → **R$ 27.600**
 Marcenaria wrap-around (3–4 paredes até o teto): gabinete inferior + torre alta + aéreos + nichos + prateleiras.
 
 | Bloco | Estimativa | Custo |
@@ -68,3 +68,21 @@ Marcenaria: **revestimento de parede em MDF madeirado** + **gabinete CURVO** sob
 > **Fora (regra):** cuba esculpida + tampo em **quartzito Allure** (marmoraria) · torneira/porta-toalha/papeleira/arandela.
 > **Curva:** gabinete curvo leva +15% material; avaliar +5% MC na peça curva (mantive MC 37 no ambiente).
 > JSON: `orcamento-apto-cv-lavabo.json`.
+
+## 3 · BANHO MASTER — material ~R$ 10.500 → **~R$ 32.600**
+Banho grande, muita marcenaria espelhada em 3 paredes.
+
+| Bloco | Estimativa | Custo |
+|---|---|---:|
+| MDF madeirado (01/02) — gabinete bancada + espelheira + 2 armários altos de correr + nichos | 8 ch. 15mm + 3 ch. 6mm | R$ 4.900 |
+| **Espelho** (portas de abrir + de correr espelhadas — nosso) | ~4,5 m² | R$ 2.700 |
+| Sistema de portas de correr espelhadas (2 conj. + trilho) | 2 | R$ 580 |
+| LED fita+perfil embutido (várias paredes) | ~5 m | R$ 750 |
+| Dobradiças (Hardt) + corrediças + puxador cava | — | R$ 536 |
+| Gaveta tulha ripada (ripas + fita extra) | — | R$ 200 |
+| Fita cor + colagem + consumíveis + toalheiro | ~90 m | R$ 895 |
+| **Material** | | **~R$ 10.500** |
+
+`preço = (10.500 + 250) / (0,70 − 0,37)` = 10.750 / 0,33 = **~R$ 32.600** (MC 37%).
+> **Fora (regra):** bancada **quartzo branco** (marmoraria) · cuba Deca + bica Docol + bacia (louças/metais) · porcelanato (obra).
+> **Gaveta tulha** = ripado (consome fita em dobro — lição Camila). JSON: `orcamento-apto-cv-banho-master.json`.

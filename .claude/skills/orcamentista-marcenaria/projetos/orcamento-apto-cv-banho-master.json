@@ -1,0 +1,44 @@
+{
+ "cliente": "Ana Carolina Valente (Apto CV)",
+ "projeto": "Apto CV — Banho Master (arq. Bruna Rezende / Estúdio Gráza)",
+ "versao": "R00-v1",
+ "inv": 32600,
+ "mcAlvo": 37,
+ "_nota": "Parceria RT Bruna -> divisor 0,70. Marcenaria (madeirado 01/02): gabinete de bancada suspenso (portas cava + gaveta + GAVETA TULHA ripada) + armario ESPELHEIRA sobre bancada (portas de abrir espelhadas, contornando janela) + 2 armarios altos com PORTAS DE CORRER ESPELHADAS (elev. B e D) + nichos madeirado + LED perfil embutido (varias paredes) + toalheiro fixo na marcenaria. Espelho = nosso (~4,5 m2 nas portas espelhadas). FORA (regra): bancada QUARTZO branco = marmoraria; cuba Deca + bica Docol + bacia = loucas/metais; porcelanato = obra. Gaveta tulha = ripado (devora fita). Medidas conferidas no local.",
+ "p": {"nf": 5, "parc": 7, "vend": 0, "rt": 10, "vis": 250, "outv": 0, "prog": 0.8, "coord": 1, "marc": 5, "serra": 0.2, "manut": 0.2, "log": 0, "erro": 2},
+ "lib": [
+  ["MDF", [["mdf cor 15 (madeirado)", 500], ["mdf cor 6 (fundo)", 300]]],
+  ["Cola e fita", [["Fita de borda - cor - mt", 3], ["Colagem - mt linear - máquina", 2.5]]],
+  ["Dobradiças", [["Hardt", 8]]],
+  ["Corrediças", [["Oculta Hardt", 70]]],
+  ["Sistema portas correr espelhadas", [["Linea/RO65 + trilho (conj.)", 290]]],
+  ["Puxadores", [["Cava 35° usinada - mt", 50]]],
+  ["Iluminação", [["LED - fita + perfil - mt", 150]]],
+  ["Vidros e espelhos (m²)", [["Espelho prata", 600]]],
+  ["Especiais", [["Gaveta tulha ripada (ripas + fita extra)", 200], ["Consumíveis + toalheiro fixação", 250]]]
+ ],
+ "ambientes": [
+  {
+   "nome": "Banho Master",
+   "q": {
+    "MDF¦mdf cor 15 (madeirado)": 8,
+    "MDF¦mdf cor 6 (fundo)": 3,
+    "Cola e fita¦Fita de borda - cor - mt": 90,
+    "Cola e fita¦Colagem - mt linear - máquina": 90,
+    "Dobradiças¦Hardt": 12,
+    "Corrediças¦Oculta Hardt": 2,
+    "Sistema portas correr espelhadas¦Linea/RO65 + trilho (conj.)": 2,
+    "Puxadores¦Cava 35° usinada - mt": 6,
+    "Iluminação¦LED - fita + perfil - mt": 5,
+    "Vidros e espelhos (m²)¦Espelho prata": 4.5,
+    "Especiais¦Gaveta tulha ripada (ripas + fita extra)": 1,
+    "Especiais¦Consumíveis + toalheiro fixação": 1
+   },
+   "terc": {"vid": 0, "esq": 0, "ser": 0, "pin": 0, "est": 0, "laq": 0, "log": 0}
+  }
+ ],
+ "ativo": 0,
+ "diretrizes": "Parceria RT Bruna (0,70). MC 37%. Espelho nosso. Dobradiça Hardt. PEDRA (bancada quartzo) + louças/metais FORA (regra). Gaveta tulha ripada. Estimativa sobre executivo R00.",
+ "duvidas": ["Contagem de chapa estimada (2 armários de correr + espelheira + gabinete).", "Área real de espelho (~4,5 m²).", "Sistema de correr espelhado: Linea/RO65 (a validar)."],
+ "theme": "light"
+}
