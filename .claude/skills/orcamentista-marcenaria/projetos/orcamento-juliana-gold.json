@@ -2,20 +2,21 @@
   "cliente": "Juliana (Kairon & Juliana)",
   "projeto": "Casa Completa — Linha GOLD (Hettich) — Cozinha, Área, Lavabo, Sala, Quarto, Closet, Banheiros, Roupeiro",
   "versao": "gold-001",
-  "inv": 99750,
-  "mcAlvo": 42,
+  "inv": 134808,
+  "mcAlvo": 40,
   "p": {
     "nf": 4,
-    "parc": 2,
+    "parc": 6,
     "vend": 3,
     "rt": 0,
-    "vis": 80,
+    "vis": 400,
     "prog": 0.8,
     "coord": 1,
     "marc": 5,
     "serra": 0.2,
     "manut": 0.2,
-    "erro": 2
+    "erro": 2,
+    "outv": 0
   },
   "lib": [
     [
@@ -325,7 +326,7 @@
         ],
         [
           "Blum HK-xs",
-          180
+          200
         ],
         [
           "Aventos (e outros)",
@@ -427,7 +428,7 @@
         ],
         [
           "Puxador redondo dourado (metal)",
-          40
+          70
         ]
       ]
     ],
@@ -581,11 +582,11 @@
         ],
         [
           "Esquadria alumínio + espelho roupeiro (terceiro)",
-          1200
+          900
         ],
         [
           "Estofado cabeceira (terceiro)",
-          3200
+          1800
         ]
       ]
     ]
@@ -594,9 +595,9 @@
     {
       "nome": "Cozinha",
       "q": {
-        "MDF¦mdf cor 15": 5,
-        "MDF¦mdf cor 6": 4,
-        "MDF¦MDF Itapuã 15mm (Duratex)": 1,
+        "MDF¦mdf cor 15": 3,
+        "MDF¦mdf cor 6": 2,
+        "MDF¦MDF Itapuã 15mm (Duratex)": 2,
         "Cola e fita¦Fita de borda - cor - mt": 120,
         "Cola e fita¦Colagem - mt linear - máquina": 120,
         "Dobradiças¦Hettich Novisys": 36,
@@ -604,7 +605,20 @@
         "Puxadores¦Cava 35° usinada - mt": 18,
         "Iluminação¦LED - fita + perfil - mt": 6,
         "Iluminação¦Sensor": 1,
-        "Parafusos / dispositivos / montagem¦Conj. parafuso e bucha": 40
+        "Parafusos / dispositivos / montagem¦Conj. parafuso e bucha": 40,
+        "MDF¦mdf branco 6": 3,
+        "MDF¦mdf branco 15": 5,
+        "MDF¦mdf cor 18": 1,
+        "Articuladores¦Blum HK-xs": 1,
+        "Parafusos / dispositivos / montagem¦Parafusos gerais - especulação": 2,
+        "Parafusos / dispositivos / montagem¦Cola kit Teck bond": 1,
+        "Parafusos / dispositivos / montagem¦Silicone acabamento": 1,
+        "Parafusos / dispositivos / montagem¦Sup. prateleiras - cj4": 5,
+        "Limpeza / embalagem¦Tinner (litro)": 1,
+        "Limpeza / embalagem¦Estopa (pacote)": 2,
+        "Limpeza / embalagem¦Strech": 3,
+        "Limpeza / embalagem¦Cantoneira": 20,
+        "Limpeza / embalagem¦Embalagem": 2
       },
       "terc": {
         "vid": 0,
@@ -620,14 +634,15 @@
       "nome": "Área de serviço",
       "q": {
         "MDF¦mdf cor 15": 3,
-        "MDF¦mdf cor 6": 2,
         "Cola e fita¦Fita de borda - cor - mt": 60,
         "Cola e fita¦Colagem - mt linear - máquina": 60,
-        "Dobradiças¦Hettich Novisys": 10,
+        "Dobradiças¦Hettich Novisys": 26,
         "Articuladores¦Blum HK-xs": 1,
         "Corrediças¦Oculta Quadro (Hettich)": 1,
         "Puxadores¦Cava 35° usinada - mt": 6,
-        "Iluminação¦LED - fita + perfil - mt": 3
+        "Iluminação¦LED - fita + perfil - mt": 3,
+        "MDF¦mdf branco 6": 2,
+        "MDF¦mdf branco 15": 4
       },
       "terc": {
         "vid": 0,
@@ -685,16 +700,16 @@
     {
       "nome": "Quarto de casal",
       "q": {
-        "MDF¦mdf branco 15": 2,
-        "MDF¦mdf cor 18": 1,
-        "MDF¦mdf branco 6": 1,
         "Cola e fita¦Fita de borda - cor - mt": 25,
         "Cola e fita¦Fita de borda - branco tx - mt": 22,
         "Cola e fita¦Colagem - mt linear - máquina": 47,
-        "Corrediças¦Oculta Quadro (Hettich)": 2,
+        "Corrediças¦Oculta Quadro (Hettich)": 4,
         "Puxadores¦Puxador redondo dourado (metal)": 2,
         "Sistema porta de passagem¦Sistema RO82 completo (porta+trilho)": 1,
-        "Especiais¦Estofado cabeceira (terceiro)": 1
+        "Especiais¦Estofado cabeceira (terceiro)": 1,
+        "MDF¦mdf cor 15": 4,
+        "Iluminação¦LED - fita + perfil - mt": 3,
+        "Iluminação¦Sensor": 1
       },
       "terc": {
         "vid": 0,
@@ -709,18 +724,24 @@
     {
       "nome": "Closet",
       "q": {
-        "MDF¦mdf branco 15": 4,
-        "MDF¦mdf branco 6": 1,
+        "MDF¦mdf branco 15": 10,
+        "MDF¦mdf branco 6": 5,
         "MDF¦MDF Vermelho melamínico 15mm": 2,
         "MDF¦MDF Vermelho melamínico 6mm": 1,
-        "Cola e fita¦Fita de borda - branco tx - mt": 22,
-        "Cola e fita¦Fita de borda - cor - mt": 25,
-        "Cola e fita¦Colagem - mt linear - máquina": 47,
-        "Dobradiças¦Hettich Novisys": 21,
-        "Corrediças¦Oculta Quadro (Hettich)": 6,
-        "Puxadores¦Puxador redondo dourado (metal)": 9,
-        "Vidros e espelhos (m²)¦Espelho c/ LED perimetral (kit)": 1,
-        "Vidros e espelhos (m²)¦Tampo de vidro p/ cômoda": 1
+        "Cola e fita¦Fita de borda - branco tx - mt": 50,
+        "Cola e fita¦Fita de borda - cor - mt": 120,
+        "Dobradiças¦Hettich Novisys": 50,
+        "Corrediças¦Oculta Quadro (Hettich)": 18,
+        "Puxadores¦Puxador redondo dourado (metal)": 10,
+        "Vidros e espelhos (m²)¦Tampo de vidro p/ cômoda": 1,
+        "MDF¦mdf cor 18": 3,
+        "MDF¦mdf cor 15": 3,
+        "Cola e fita¦Colagem - mt linear - máquina": 170,
+        "Limpeza / embalagem¦Tinner (litro)": 2,
+        "Limpeza / embalagem¦Estopa (pacote)": 3,
+        "Limpeza / embalagem¦Strech": 4,
+        "Limpeza / embalagem¦Cantoneira": 30,
+        "Limpeza / embalagem¦Embalagem": 2
       },
       "terc": {
         "vid": 0,
@@ -760,8 +781,11 @@
         "MDF¦mdf branco 6": 1,
         "Cola e fita¦Fita de borda - branco tx - mt": 22,
         "Cola e fita¦Colagem - mt linear - máquina": 22,
-        "Sistema portas roupeiros¦Trilho correr espelhado - kit 2 portas": 1,
-        "Especiais¦Esquadria alumínio + espelho roupeiro (terceiro)": 1
+        "Especiais¦Esquadria alumínio + espelho roupeiro (terceiro)": 2,
+        "Dobradiças¦Hettich Novisys": 10,
+        "Limpeza / embalagem¦Tinner (litro)": 2,
+        "Limpeza / embalagem¦Estopa (pacote)": 1,
+        "Limpeza / embalagem¦Strech": 2
       },
       "terc": {
         "vid": 0,
@@ -774,8 +798,24 @@
       }
     }
   ],
-  "ativo": 0,
-  "collapsed": {},
+  "ativo": 7,
+  "collapsed": {
+    "MDF": true,
+    "Cola e fita": true,
+    "Dobradiças": true,
+    "Corrediças": true,
+    "Sistema portas roupeiros": true,
+    "Sistema portas rack e suspenso": true,
+    "Articuladores": true,
+    "Sistema porta de passagem": true,
+    "Puxadores": true,
+    "Suportes": true,
+    "Parafusos / dispositivos / montagem": true,
+    "Iluminação": true,
+    "Vidros e espelhos (m²)": true,
+    "Limpeza / embalagem": true,
+    "Especiais": true
+  },
   "theme": "dark",
   "diretrizes": "Juliana - Linha GOLD (Hettich, garantia 10 anos). Caixa normal, sem RT, vend 3%.\nAnteprojeto Caio Oliveira - medidas a conferir no local. Nada ripado.\nCabeceira estofada e esquadria/espelho do roupeiro = terceiros (custo direto informado).",
   "rodrigo": "MC alvo GOLD 42% / ESSENCIAL 37% (5 pts de diferença). Sem desconto de preço.",
