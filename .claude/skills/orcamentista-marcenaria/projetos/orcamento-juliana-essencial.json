@@ -1,8 +1,8 @@
 {
   "cliente": "Juliana (Kairon & Juliana)",
-  "projeto": "Juliana — Linha ESSENCIAL (Hardt) — 8 ambientes (4 iniciais enxutos + Quarto/Closet/Banheiros/Roupeiro)",
-  "versao": "essencial-002",
-  "inv": 109137,
+  "projeto": "Juliana — ESSENCIAL (Hardt) — 8 ambientes (4 iniciais valor original + 4 novos)",
+  "versao": "essencial-final",
+  "inv": 107121,
   "mcAlvo": 37,
   "p": {
     "nf": 4,
@@ -600,8 +600,8 @@
         "MDF¦MDF Itapuã 15mm (Duratex)": 1,
         "Cola e fita¦Fita de borda - cor - mt": 120,
         "Cola e fita¦Colagem - mt linear - máquina": 120,
-        "Dobradiças¦Hardt": 36,
-        "Corrediças¦Telescópica": 10,
+        "Dobradiças¦Hettich Novisys": 36,
+        "Corrediças¦Oculta Quadro (Hettich)": 10,
         "Puxadores¦Cava 35° usinada - mt": 18,
         "Iluminação¦LED - fita + perfil - mt": 6,
         "Iluminação¦Sensor": 1,
@@ -624,9 +624,9 @@
         "MDF¦mdf cor 6": 2,
         "Cola e fita¦Fita de borda - cor - mt": 60,
         "Cola e fita¦Colagem - mt linear - máquina": 60,
-        "Dobradiças¦Hardt": 10,
-        "Articuladores¦Pistão com amortecimento": 1,
-        "Corrediças¦Telescópica": 1,
+        "Dobradiças¦Hettich Novisys": 10,
+        "Articuladores¦Blum HK-xs": 1,
+        "Corrediças¦Oculta Quadro (Hettich)": 1,
         "Puxadores¦Cava 35° usinada - mt": 6,
         "Iluminação¦LED - fita + perfil - mt": 3
       },
@@ -647,7 +647,7 @@
         "MDF¦mdf cor 6": 1,
         "Cola e fita¦Fita de borda - cor - mt": 15,
         "Cola e fita¦Colagem - mt linear - máquina": 15,
-        "Corrediças¦Telescópica": 1,
+        "Corrediças¦Oculta Quadro (Hettich)": 1,
         "Puxadores¦Cava 35° usinada - mt": 2
       },
       "terc": {
@@ -667,8 +667,8 @@
         "MDF¦mdf cor 6": 3,
         "Cola e fita¦Fita de borda - cor - mt": 100,
         "Cola e fita¦Colagem - mt linear - máquina": 100,
-        "Dobradiças¦Hardt": 14,
-        "Corrediças¦Telescópica": 4,
+        "Dobradiças¦Hettich Novisys": 14,
+        "Corrediças¦Oculta Quadro (Hettich)": 4,
         "Puxadores¦Cava 35° usinada - mt": 10,
         "Iluminação¦LED - fita + perfil - mt": 6,
         "Vidros e espelhos (m²)¦Vidro reflecta bronze 6mm": 3
@@ -803,8 +803,8 @@
     "Especiais": true
   },
   "theme": "dark",
-  "diretrizes": "Juliana GOLD (Hettich, gar. 10 anos). Caixa normal, sem RT, vend 3%. 4 iniciais nas quantidades originais enxutas + 4 novos. Anteprojeto Caio Oliveira - conferir no local. Nada ripado.",
-  "rodrigo": "MC Gold 40% / Essencial 37%. Closet pesado (~24 chapas) - revisar quantidade.",
+  "diretrizes": "Juliana GOLD. 4 iniciais fixados no valor da 1a versao (Coz 22.700/Área 9.400/Lavabo 2.000/Sala 21.700 = 55.800). 4 novos ao MC 40. Total 123.954. Closet mantido conforme cliente.",
+  "rodrigo": "MC alvo GOLD 42% / ESSENCIAL 37% (5 pts de diferença). Sem desconto de preço.",
   "duvidas": [
     "Puxador redondo dourado - confirmar SKU exato",
     "Armário em L x Armário sozinho - confirmar leiaute do closet"
