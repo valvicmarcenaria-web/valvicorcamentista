@@ -4,9 +4,10 @@
 > executivo R00, 12/02/2026. **Parceria com RT da Bruna.**
 
 ## Premissas travadas (fundador)
-- **Preço = custo TOTAL / (1 − MC)** *(divisor ignorado — foco na MC)*. **MC = 37%** → `custo total / 0,63`.
-  **Custo total = material + insumos + ferragens + terceirizados + visita** (tudo custeável em R$).
-  🔶 *A confirmar: mão de obra/produção entra no "custo total"? (antes vinha no divisor ~7%.)*
+- **Método padrão do validador** (markup divisor). Parceiro c/ **RT Bruna** → **divisor 0,70**
+  (encargos ~30%: NF 5 + parcelamento 7 + produção 7,2 + erro 2 + RT 8,8; **vendedor = 0**). **MC alvo 37%.**
+  `preço = (custo_material_direto + visita 250) / (0,70 − MC)` = `(material + 250) / 0,33`.
+  Params p{}: nf 5 · parc 7 · vend 0 · rt 10 · prog 0,8 · coord 1 · marc 5 · serra 0,2 · manut 0,2 · erro 2 · vis 250.
 - **Cores "à definir"** (MDF madeirado / bege / etc.) → lanço como **MDF cor/melamínico padrão (R$ 500/chapa 15mm,
   R$ 300/6mm)**; cor confirmada depois.
 - **Dobradiça padrão = Hardt** (R$ 8).
@@ -20,7 +21,7 @@
 
 | # | Ambiente | Material | **Preço (MC 37%)** | Status |
 |---|---|---:|---:|:--:|
-| 1 | **Área de Serviço** | ~R$ 8.900* | **~R$ 14.100** | ✅ estimado |
+| 1 | **Área de Serviço** | R$ 8.856 | **R$ 27.600** | ✅ estimado |
 | 2 | Lavabo | — | — | ⏳ |
 | 3 | Banho Master | — | — | ⏳ |
 | 4 | Banho Social | — | — | ⏳ |
@@ -42,10 +43,10 @@ Marcenaria wrap-around (3–4 paredes até o teto): gabinete inferior + torre al
 | Corrediças + cabideiro fixo + suportes de prateleira | — | R$ 240 |
 | Fita de borda cor + colagem | ~120 m | R$ 660 |
 | Consumíveis / parafusos / limpeza / embalagem | baseline | R$ 250 |
-| **Material/insumos** | | **~R$ 8.650** |
+| **Material/insumos** | | **R$ 8.856** |
 | + Visita | | R$ 250 |
-| **Custo total** | | **~R$ 8.900** |
+| **Custo total (+ visita 250)** | | **R$ 9.106** |
 
-`preço = 8.900 / (1 − 0,37)` = **~R$ 14.100** (MC 37%).
+`preço = 9.106 / (0,70 − 0,37)` = 9.106 / 0,33 = **R$ 27.600** (divisor 0,70 · MC 37,0%).
 > **Fora (sinalizado):** bancada + rodabanca nanoglass/quartzo (marmoraria) · cuba-tanque + torneira (louças/metais).
 > **Detalhe:** friso "bit 5×5mm" nas laterais (usinagem CNC). Frisos/cava usinada = puxador embutido.
