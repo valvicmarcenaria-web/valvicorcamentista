@@ -1,0 +1,95 @@
+{
+ "cliente": "Lilian Lee",
+ "decoradora": "Jessica Sollero",
+ "projeto": "Marcenaria completa (apto) — execução BH",
+ "versao": "001-BH-MC45-1apass",
+ "local": "Belo Horizonte (logística Vila Velha à parte)",
+ "mcAlvo": 45,
+ "rt": 0,
+ "investimento": 119000,
+ "unidade_comunicacao": "chapas",
+ "bom_chapas": {
+  "Cozinha": {
+   "cor15": 6,
+   "branco15": 8,
+   "cor6": 3,
+   "branco6": 3,
+   "cor18": 1
+  },
+  "Sala (painel+rack)": {
+   "cor15": 6,
+   "branco15": 2,
+   "cor6": 1,
+   "branco6": 1,
+   "cor18": 1
+  },
+  "Quarto Hóspede": {
+   "cor15": 6,
+   "branco15": 4,
+   "cor6": 1,
+   "branco6": 1,
+   "cor18": 0
+  },
+  "Quarto Suíte": {
+   "cor15": 6,
+   "branco15": 5,
+   "cor6": 1,
+   "branco6": 1,
+   "cor18": 0
+  },
+  "Varanda": {
+   "cor15": 3,
+   "branco15": 3,
+   "cor6": 1,
+   "branco6": 1,
+   "cor18": 0
+  },
+  "Banho Suíte": {
+   "cor15": 1,
+   "branco15": 1,
+   "cor6": 0,
+   "branco6": 0,
+   "cor18": 0
+  },
+  "Banho Social": {
+   "cor15": 1,
+   "branco15": 1,
+   "cor6": 0,
+   "branco6": 0,
+   "cor18": 0
+  }
+ },
+ "chapas_total": {
+  "cor15": 29,
+  "branco15": 24,
+  "cor6": 7,
+  "branco6": 7,
+  "cor18": 2,
+  "total": 69
+ },
+ "provencais_medido": {
+  "pecas_com_moldura": 49,
+  "chapas_6mm_moldura": 6,
+  "fita_interna_manual_m": 131.1,
+  "fita_externa_maq_m": 157.0,
+  "usinagem_R": 122.5,
+  "vidro_reflecta_R": 464
+ },
+ "custos": {
+  "chapas": 25370,
+  "fita_colagem": 3000,
+  "ferragens_led": 8300,
+  "consumiveis": 1180,
+  "usinagem": 122.5,
+  "terceirizados": 1264,
+  "visitas": 250,
+  "material_compra": 37972.5
+ },
+ "fechamento": {
+  "fixedR": 39486,
+  "mcAlvo": 45,
+  "inv": 119000,
+  "mc_realizada": 45.0
+ },
+ "obs": "1a passada. Provençais MEDIDAS (método B moldura colada). Estrutura/corpo ESTIMADA por extensao das elevacoes (erra p/ cima). Ferragem assumida Hardt soft-close (garantia 5 anos) - confirmar marca. Puxadores Jador Decore estimados R$50-70. Logistica Vila Velha (~R$3,4-6k frete + ~22m3 toco) fica em linha SEPARADA. RT 0. Refino: levantamento peca-a-peca no app."
+}
