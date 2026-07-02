@@ -2,7 +2,7 @@
 
 **Cliente:** Lilian Lee · **Decoradora:** Jessica Sollero · **Data caderno:** 01/07/2026
 **Local de execução:** Belo Horizonte (orçamento normal) · **logística Vila Velha/ES à parte**
-**Fechamento:** **3 linhas por ferragem** · **RT arquiteta 10%** · erro 2% · + extras (logística/HE/montagem) — **Essencial R$ 128.500** (2 anos/35%) · **Conforto R$ 138.500** (5 anos/37%) · **Premium R$ 182.500** (10 anos/42%)
+**Fechamento (v006 — análise precisa):** **3 linhas por ferragem** · **RT arquiteta 10%** · erro 2% · + extras — **Essencial R$ 127.000** (2 anos/35%) · **Conforto R$ 137.000** (5 anos/37%) · **Premium R$ 180.500** (10 anos/42%)
 **Unidade de comunicação:** CHAPAS (a pedido do Jonathan)
 
 > Caderno: `LILIAN_LEE__CADERNO_MARCENARIA` (28 pranchas). Provençais **medidas**;
@@ -55,9 +55,11 @@ Só muda a ferragem variável (160 dobradiças + 24 corrediças) → garantia �
 
 | Linha | Ferragem (dob. + corr.) | Garantia | MC | **Marcenaria** (RT10%+MC) | + Extras | **TOTAL** |
 |---|---|:--:|:--:|--:|--:|--:|
-| **Essencial** | Padrão + Telescópica | **2 anos** | 35% | 118.000 | +10.500 | **R$ 128.500** |
-| **Conforto** | Hardt + Oculta Hardt | **5 anos** | 37% | 128.000 | +10.500 | **R$ 138.500** |
-| **Premium** | Hettich Sensys + Oculta Quadro | **10 anos** | 42% | 172.000 | +10.500 | **R$ 182.500** |
+| **Essencial** | Padrão + Telescópica | **2 anos** | 35% | 116.500 | +10.500 | **R$ 127.000** |
+| **Conforto** | Hardt + Oculta Hardt | **5 anos** | 37% | 126.500 | +10.500 | **R$ 137.000** |
+| **Premium** | Hettich Sensys + Oculta Quadro | **10 anos** | 42% | 170.000 | +10.500 | **R$ 180.500** |
+
+**Análise precisa (v006):** levantamento peça-a-peça → **~60 chapas** (cor15 17 · br15 22 · cor6 6 · br6 12 · cor18 2 · br18 1), com **fator de veio 1,15** no amadeirado. **Terceirizados corrigidos → R$ 6.364** (achados que faltavam: **estofado do painel da sala** R$ 1.800 · **espelho preto** sala R$ 1.800 · **espelhos dos 2 banhos** R$ 1.500 · vidro reflecta 464 · ripado 800). Resultado **confirma o 1º corte** (variação ~1%). **Prazo 100–120 dias úteis CONFIRMADO** pelo Jonathan.
 
 **Extras (totais fixos, SEM RT e SEM MC — pass-through):** Logística **R$ 7.000** + Hora extra **R$ 1.500** + Montagem extra **R$ 2.000** = **R$ 10.500**.
 RT p/ arquiteta embutida: ~R$ 10,4k (Ess.) · ~R$ 11,3k (Conf.) · ~R$ 15,1k (Prem.).
