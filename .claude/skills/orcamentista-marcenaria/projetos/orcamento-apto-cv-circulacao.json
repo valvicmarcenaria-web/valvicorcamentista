@@ -2,18 +2,100 @@
  "cliente": "Ana Carolina Valente (Apto CV)",
  "projeto": "Apto CV — Circulação Íntima (arq. Bruna Rezende / Estúdio Gráza)",
  "versao": "R00-v1",
- "inv": 9200,
+ "inv": 3900,
  "mcAlvo": 37,
  "_nota": "Parceria RT Bruna -> divisor 0,70. Marcenaria rasa de corredor (~40cm prof): armario ~325x215 com 2 portas (MDF branco 10) + prat. internas + PORTA DE ACESSO EMBUTIDA a sala de estar (MDF bege 05, com dobradica oculta/pivo) + secao de prateleiras abertas. Elev. B: estante alta ~52x215 com ~5 prateleiras. Cores mistas: MDF branco (10) + MDF bege fosco (05); 06 = pintura branco neve (parede/obra). Medidas conferidas no local.",
- "p": {"nf": 5, "parc": 7, "vend": 0, "rt": 10, "vis": 250, "outv": 0, "prog": 0.8, "coord": 1, "marc": 5, "serra": 0.2, "manut": 0.2, "log": 0, "erro": 2},
+ "p": {
+  "nf": 5,
+  "parc": 7,
+  "vend": 0,
+  "rt": 10,
+  "vis": 250,
+  "outv": 0,
+  "prog": 0.8,
+  "coord": 1,
+  "marc": 5,
+  "serra": 0.2,
+  "manut": 0.2,
+  "log": 0,
+  "erro": 2
+ },
  "lib": [
-  ["MDF", [["mdf branco 15 (portas 10)", 260], ["mdf cor 15 (bege 05)", 500], ["mdf branco 6 (fundo)", 190]]],
-  ["Cola e fita", [["Fita de borda - cor/branco - mt", 2.5], ["Colagem - mt linear - máquina", 2.5]]],
-  ["Dobradiças", [["Hardt", 8]]],
-  ["Sistema porta de acesso embutida", [["Dobradiça oculta / pivô (porta camuflada)", 150]]],
-  ["Puxadores", [["Cava 35° usinada - mt", 50]]],
-  ["Suportes", [["Sup. prateleiras - cj4", 3]]],
-  ["Especiais", [["Consumíveis + montagem", 120]]]
+  [
+   "MDF",
+   [
+    [
+     "mdf branco 15 (portas 10)",
+     260
+    ],
+    [
+     "mdf cor 15 (bege 05)",
+     500
+    ],
+    [
+     "mdf branco 6 (fundo)",
+     190
+    ]
+   ]
+  ],
+  [
+   "Cola e fita",
+   [
+    [
+     "Fita de borda - cor/branco - mt",
+     2.5
+    ],
+    [
+     "Colagem - mt linear - máquina",
+     2.5
+    ]
+   ]
+  ],
+  [
+   "Dobradiças",
+   [
+    [
+     "Hardt",
+     8
+    ]
+   ]
+  ],
+  [
+   "Sistema porta de acesso embutida",
+   [
+    [
+     "Dobradiça oculta / pivô (porta camuflada)",
+     150
+    ]
+   ]
+  ],
+  [
+   "Puxadores",
+   [
+    [
+     "Cava 35° usinada - mt",
+     50
+    ]
+   ]
+  ],
+  [
+   "Suportes",
+   [
+    [
+     "Sup. prateleiras - cj4",
+     3
+    ]
+   ]
+  ],
+  [
+   "Especiais",
+   [
+    [
+     "Consumíveis + montagem",
+     120
+    ]
+   ]
+  ]
  ],
  "ambientes": [
   {
@@ -30,11 +112,23 @@
     "Suportes¦Sup. prateleiras - cj4": 10,
     "Especiais¦Consumíveis + montagem": 1
    },
-   "terc": {"vid": 0, "esq": 0, "ser": 0, "pin": 0, "est": 0, "laq": 0, "log": 0}
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
+   }
   }
  ],
  "ativo": 0,
  "diretrizes": "Parceria RT Bruna (0,70). MC 37%. Porta de acesso embutida (camuflada) a sala. Cores mistas branco/bege. Pintura (06) = obra. Estimativa sobre executivo R00.",
- "duvidas": ["Porta de acesso: dobradiça oculta ou pivô? (usei ~R$150).", "Puxador cava ou push-open nas portas."],
- "theme": "light"
+ "duvidas": [
+  "Porta de acesso: dobradiça oculta ou pivô? (usei ~R$150).",
+  "Puxador cava ou push-open nas portas."
+ ],
+ "theme": "light",
+ "_valorReal": "VALOR REAL do fundador (proposta v2) = R$ 3900. Item: Circulação. (Estimativa anterior da Lavinia era R$ 9200 — superestimada; ver calibracao-apto-cv.md.)"
 }

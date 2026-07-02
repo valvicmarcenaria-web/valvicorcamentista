@@ -17,18 +17,30 @@
 - Orçamento **sobre o executivo**; medidas conferidas no local (obs. das pranchas).
 - Método: **um ambiente por vez**, estimativa de material sobre o executivo (contagem fina de chapa = plano de corte).
 
-## Ambientes (7) — status
+## Orçamento consolidado — VALORES REAIS (fundador) + banheiros calculados
 
-| # | Ambiente | Material | **Preço (MC 37%)** | Status |
-|---|---|---:|---:|:--:|
-| 1 | **Área de Serviço** | R$ 8.856 | **R$ 27.600** | ✅ estimado |
-| 2 | **Lavabo** *(gabinete curvo + revest. parede)* | ~R$ 4.700 | **~R$ 15.000** | ✅ estimado |
-| 3 | **Banho Master** *(gabinete+tulha + espelheira + 2 armários correr espelhados)* | ~R$ 10.500 | **~R$ 32.600** | ✅ estimado |
-| 4 | **Banho Social** *(vanity tulha basculante + 2 armários correr espelhados)* | ~R$ 8.700 | **~R$ 27.100** | ✅ estimado |
-| 5 | **Circulação Íntima** *(armário raso + porta embutida + estante)* | ~R$ 2.800 | **~R$ 9.200** | ✅ estimado |
-| 6 | **Cozinha** *(U + ilha + torres + cristaleira vidro canelado)* | ~R$ 23.000 | **~R$ 70.500** | ✅ estimado |
-| 7 | **Sala** *(SEM o rack · painel madeirado + louceiro)* | ~R$ 4.300 | **~R$ 13.800** | ✅ estimado |
-| | **TOTAL DO APÊ (7 ambientes)** | ~R$ 76.750 | **~R$ 195.800** |
+> Não-banheiros = **valores reais da proposta do fundador (v2)**. Banheiros = **cálculo corrigido da Lavinia**
+> (estrutura interna em MDF branco; só o aparente em cor; contagem enxuta). Ver `treino/calibracao-apto-cv.md`.
+
+| Item | **Investimento** | Fonte |
+|---|---:|---|
+| Painel de TV (rack) | R$ 8.900 | fundador |
+| Painel Hall (2 portas pivotantes reforço metalon) | R$ 9.800 | fundador |
+| Portas divisores (3 deslizantes mão-amiga + amortec.) | R$ 16.900 | fundador |
+| Sala elevação B (louceiro) | R$ 10.600 | fundador |
+| Cozinha | R$ 33.500 | fundador |
+| Circulação | R$ 3.900 | fundador |
+| Lavanderia / Área de Serviço | R$ 11.500 | fundador |
+| Lavabo | R$ 4.700 | fundador |
+| **Subtotal SEM banheiros** | **R$ 99.800** | *(→ R$ 90.800 à vista, desconto do fundador)* |
+| Banho Master | R$ 19.100 | Lavinia (corrigido) |
+| Banho Social | R$ 15.200 | Lavinia (corrigido) |
+| **Banheiros** | **R$ 34.300** | Lavinia (corrigido) |
+| **TOTAL DO APÊ** | **R$ 134.100** | |
+
+> ⚠️ As seções detalhadas mais abaixo eram as **estimativas antigas superestimadas** (~2–3× altas). Os JSONs foram
+> atualizados: não-banheiros com o **valor real do fundador**; banheiros com o **cálculo corrigido**. Fica a lição
+> registrada na calibração.
 
 ---
 

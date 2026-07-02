@@ -1,13 +1,13 @@
 {
  "cliente": "Ana Carolina Valente (Apto CV)",
  "projeto": "Apto CV — Banho Social (arq. Bruna Rezende / Estúdio Gráza)",
- "versao": "R00-v1",
- "inv": 27100,
+ "versao": "R00-v2-corrigido",
+ "inv": 15200,
  "mcAlvo": 37,
- "_nota": "Parceria RT Bruna -> divisor 0,70. Marcenaria (madeirado 01/02): gabinete de bancada (TULHA BASCULANTE 45 graus + porta de abrir + 3 gavetas, todos puxador cava) + 2 armarios altos com PORTAS DE CORRER ESPELHADAS (parede C ~265cm envolvendo a porta + parede A/D ~133cm) + prat. int + nichos madeirado + espelheira. Espelho = nosso (~4 m2). FORA (regra): bancada GRANITO vermelho EXISTENTE (marmoraria) · cuba Deca + misturador Docol + valvula/ducha (loucas/metais) · box de vidro = vidraceiro · porcelanato = obra. Medidas conferidas no local.",
+ "_nota": "CORRIGIDO (calibracao Apto CV): estrutura/fundos internos em MDF BRANCO; so aparente em COR. Contagem enxuta; espelho/LED reais. Marcenaria: gabinete (TULHA BASCULANTE 45 + porta + 3 gavetas cava) + armarios altos de correr espelhados + nichos. Espelho = nosso. FORA (regra): bancada GRANITO vermelho EXISTENTE (marmoraria); cuba Deca + misturador Docol + valvula/ducha (loucas/metais); box de vidro (vidraceiro); porcelanato (obra). Valor a validar com o fundador.",
  "p": {"nf": 5, "parc": 7, "vend": 0, "rt": 10, "vis": 250, "outv": 0, "prog": 0.8, "coord": 1, "marc": 5, "serra": 0.2, "manut": 0.2, "log": 0, "erro": 2},
  "lib": [
-  ["MDF", [["mdf cor 15 (madeirado)", 500], ["mdf cor 6 (fundo)", 300]]],
+  ["MDF", [["mdf cor 15 (faces/portas aparentes)", 500], ["mdf branco 15 (estrutura)", 260], ["mdf branco 6 (fundos)", 190]]],
   ["Cola e fita", [["Fita de borda - cor - mt", 3], ["Colagem - mt linear - máquina", 2.5]]],
   ["Dobradiças", [["Hardt", 8]]],
   ["Corrediças", [["Oculta Hardt", 70]]],
@@ -21,23 +21,24 @@
   {
    "nome": "Banho Social",
    "q": {
-    "MDF¦mdf cor 15 (madeirado)": 7,
-    "MDF¦mdf cor 6 (fundo)": 3,
-    "Cola e fita¦Fita de borda - cor - mt": 90,
-    "Cola e fita¦Colagem - mt linear - máquina": 90,
+    "MDF¦mdf cor 15 (faces/portas aparentes)": 2,
+    "MDF¦mdf branco 15 (estrutura)": 2,
+    "MDF¦mdf branco 6 (fundos)": 2,
+    "Cola e fita¦Fita de borda - cor - mt": 60,
+    "Cola e fita¦Colagem - mt linear - máquina": 60,
     "Dobradiças¦Hardt": 6,
     "Corrediças¦Oculta Hardt": 3,
     "Articuladores¦Pistão amortecido (tulha basculante)": 1,
     "Sistema portas correr espelhadas¦Linea/RO65 + trilho (conj.)": 2,
-    "Puxadores¦Cava 35° usinada - mt": 6,
-    "Vidros e espelhos (m²)¦Espelho prata": 4,
+    "Puxadores¦Cava 35° usinada - mt": 5,
+    "Vidros e espelhos (m²)¦Espelho prata": 2,
     "Especiais¦Consumíveis + montagem": 1
    },
    "terc": {"vid": 0, "esq": 0, "ser": 0, "pin": 0, "est": 0, "laq": 0, "log": 0}
   }
  ],
  "ativo": 0,
- "diretrizes": "Parceria RT Bruna (0,70). MC 37%. Espelho nosso. Dobradiça Hardt. Tulha basculante (articulador). PEDRA (granito existente) + louças/metais + box de vidro FORA (regra). Estimativa sobre executivo R00.",
- "duvidas": ["Contagem de chapa estimada (2 armários de correr + vanity).", "Área real de espelho (~4 m²)."],
+ "diretrizes": "CORRIGIDO. Estrutura interna = branco; aparente = cor. MC 37%. Espelho nosso ~2 m². Tulha basculante (articulador). PEDRA (granito existente) + louças/metais + box de vidro FORA.",
+ "duvidas": ["Área real de espelho (usei ~2 m²).", "Validar valor com o fundador."],
  "theme": "light"
 }
