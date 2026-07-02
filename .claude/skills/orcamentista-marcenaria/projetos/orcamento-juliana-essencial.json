@@ -1,8 +1,8 @@
 {
   "cliente": "Juliana (Kairon & Juliana)",
-  "projeto": "Casa Completa — Linha ESSENCIAL (Hardt) — Cozinha, Área, Lavabo, Sala, Quarto, Closet, Banheiros, Roupeiro",
-  "versao": "essencial-001",
-  "inv": 115482,
+  "projeto": "Juliana — Linha ESSENCIAL (Hardt) — 8 ambientes (4 iniciais enxutos + Quarto/Closet/Banheiros/Roupeiro)",
+  "versao": "essencial-002",
+  "inv": 109137,
   "mcAlvo": 37,
   "p": {
     "nf": 4,
@@ -595,9 +595,9 @@
     {
       "nome": "Cozinha",
       "q": {
-        "MDF¦mdf cor 15": 3,
-        "MDF¦mdf cor 6": 2,
-        "MDF¦MDF Itapuã 15mm (Duratex)": 2,
+        "MDF¦mdf cor 15": 5,
+        "MDF¦mdf cor 6": 4,
+        "MDF¦MDF Itapuã 15mm (Duratex)": 1,
         "Cola e fita¦Fita de borda - cor - mt": 120,
         "Cola e fita¦Colagem - mt linear - máquina": 120,
         "Dobradiças¦Hardt": 36,
@@ -605,20 +605,7 @@
         "Puxadores¦Cava 35° usinada - mt": 18,
         "Iluminação¦LED - fita + perfil - mt": 6,
         "Iluminação¦Sensor": 1,
-        "Parafusos / dispositivos / montagem¦Conj. parafuso e bucha": 40,
-        "MDF¦mdf branco 6": 3,
-        "MDF¦mdf branco 15": 5,
-        "MDF¦mdf cor 18": 1,
-        "Articuladores¦Pistão com amortecimento": 1,
-        "Parafusos / dispositivos / montagem¦Parafusos gerais - especulação": 2,
-        "Parafusos / dispositivos / montagem¦Cola kit Teck bond": 1,
-        "Parafusos / dispositivos / montagem¦Silicone acabamento": 1,
-        "Parafusos / dispositivos / montagem¦Sup. prateleiras - cj4": 5,
-        "Limpeza / embalagem¦Tinner (litro)": 1,
-        "Limpeza / embalagem¦Estopa (pacote)": 2,
-        "Limpeza / embalagem¦Strech": 3,
-        "Limpeza / embalagem¦Cantoneira": 20,
-        "Limpeza / embalagem¦Embalagem": 2
+        "Parafusos / dispositivos / montagem¦Conj. parafuso e bucha": 40
       },
       "terc": {
         "vid": 0,
@@ -634,15 +621,14 @@
       "nome": "Área de serviço",
       "q": {
         "MDF¦mdf cor 15": 3,
+        "MDF¦mdf cor 6": 2,
         "Cola e fita¦Fita de borda - cor - mt": 60,
         "Cola e fita¦Colagem - mt linear - máquina": 60,
-        "Dobradiças¦Hardt": 26,
+        "Dobradiças¦Hardt": 10,
         "Articuladores¦Pistão com amortecimento": 1,
         "Corrediças¦Telescópica": 1,
         "Puxadores¦Cava 35° usinada - mt": 6,
-        "Iluminação¦LED - fita + perfil - mt": 3,
-        "MDF¦mdf branco 6": 2,
-        "MDF¦mdf branco 15": 4
+        "Iluminação¦LED - fita + perfil - mt": 3
       },
       "terc": {
         "vid": 0,
@@ -817,8 +803,8 @@
     "Especiais": true
   },
   "theme": "dark",
-  "diretrizes": "Juliana - Linha GOLD (Hettich, garantia 10 anos). Caixa normal, sem RT, vend 3%.\nAnteprojeto Caio Oliveira - medidas a conferir no local. Nada ripado.\nCabeceira estofada e esquadria/espelho do roupeiro = terceiros (custo direto informado).",
-  "rodrigo": "MC alvo GOLD 42% / ESSENCIAL 37% (5 pts de diferença). Sem desconto de preço.",
+  "diretrizes": "Juliana GOLD (Hettich, gar. 10 anos). Caixa normal, sem RT, vend 3%. 4 iniciais nas quantidades originais enxutas + 4 novos. Anteprojeto Caio Oliveira - conferir no local. Nada ripado.",
+  "rodrigo": "MC Gold 40% / Essencial 37%. Closet pesado (~24 chapas) - revisar quantidade.",
   "duvidas": [
     "Puxador redondo dourado - confirmar SKU exato",
     "Armário em L x Armário sozinho - confirmar leiaute do closet"
