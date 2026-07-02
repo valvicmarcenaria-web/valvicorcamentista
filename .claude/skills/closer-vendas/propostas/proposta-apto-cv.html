@@ -6,177 +6,416 @@
   @page { size: A4; margin: 0; }
   @font-face{ font-family:"Aurora Valvic"; src:url("aurora-valvic.ttf"); }
   * { margin:0; padding:0; box-sizing:border-box; }
-  :root{ --mostarda:#E0A521; --ouro:#B0892F; --carvao:#201C18; --creme:#F4ECDD; --ivory:#FBF6EC;
-    --taupe:#8C7E69; --linha:#E5D9BE; --texto:#2A2520; }
+  :root{ --mostarda:#E0A521; --ouro:#B0892F; --carvao:#201C18; --carvao2:#2A2520; --creme:#F4ECDD;
+    --ivory:#FBF6EC; --taupe:#8C7E69; --linha:#E5D9BE; --texto:#2A2520; }
   body{ font-family:"Helvetica Neue",Arial,sans-serif; color:var(--texto); font-size:10.5pt; line-height:1.6; }
-  .page{ width:210mm; min-height:297mm; padding:22mm 24mm; position:relative; background:#fff; page-break-after:always; }
+  .page{ width:210mm; min-height:297mm; padding:20mm 22mm; position:relative; background:#fff; page-break-after:always; overflow:hidden; }
   .page:last-child{ page-break-after:auto; }
-  .serif{ font-family:Georgia,"Times New Roman",serif; }
+  .serif{ font-family:Georgia,"Times New Roman",serif; font-weight:normal; }
   h1,h2,h3{ font-family:Georgia,serif; font-weight:normal; }
-  .muted{ color:var(--taupe); } .gold{ color:var(--ouro); }
+  .muted{ color:var(--taupe); } .gold{ color:var(--ouro); } .ital{ font-style:italic; }
   .fw{ font-family:"Aurora Valvic"; letter-spacing:0; }
-  .kicker{ display:flex; align-items:baseline; gap:7mm; margin-bottom:8mm; }
-  .kicker .num{ font-family:Georgia,serif; font-size:26pt; color:var(--linha); line-height:1; }
-  .kicker .lbl{ font-size:9pt; letter-spacing:5px; text-transform:uppercase; color:var(--ouro); padding-bottom:1mm; border-bottom:1px solid var(--mostarda); }
-  .lead{ font-size:12.5pt; line-height:1.6; color:#4a443c; } .lead b{ color:var(--texto); }
+  .eyebrow{ letter-spacing:5px; font-size:8.5pt; text-transform:uppercase; color:var(--ouro); }
+  .mono{ font-family:"Courier New",monospace; letter-spacing:1px; }
 
-  .cover{ background:var(--creme); display:flex; flex-direction:column; justify-content:space-between; padding:26mm; }
-  .cover .brandmark{ font-family:"Aurora Valvic"; font-size:30pt; color:var(--carvao); line-height:1; }
-  .cover .eyebrow{ letter-spacing:7px; font-size:10pt; color:var(--ouro); text-transform:uppercase; margin-top:34mm; }
-  .cover .name{ font-size:40pt; line-height:1.08; margin:6mm 0 5mm; }
-  .cover .proj{ font-size:13pt; color:var(--taupe); font-style:italic; }
-  .cover .rule{ height:1px; background:var(--linha); margin:0 0 5mm; }
-  .cover .cfoot{ display:flex; justify-content:space-between; align-items:flex-end; }
-  .cover .cfoot .k{ font-size:8pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); }
-  .cover .cfoot .v{ font-family:Georgia,serif; font-size:11.5pt; }
+  /* ---------- CAPA ---------- */
+  .cover{ padding:0; background:var(--creme); display:flex; flex-direction:column; }
+  .cover .top{ display:flex; justify-content:space-between; align-items:center; padding:12mm 18mm 8mm; }
+  .cover .brandmark{ font-size:20pt; color:var(--carvao); }
+  .cover .brandmark .st{ color:var(--ouro); font-family:Georgia,serif; margin-right:2mm; }
+  .cover .brandmark .fwv{ font-family:"Aurora Valvic"; }
+  .cover .badge{ font-size:8pt; letter-spacing:3px; text-transform:uppercase; color:var(--ouro);
+    border:1px solid var(--mostarda); border-radius:2mm; padding:2mm 5mm; }
+  .cover .hero{ margin:0 18mm; height:150mm; background:#3a332a; position:relative; overflow:hidden; }
+  .cover .hero img{ width:100%; height:100%; object-fit:cover; opacity:.62; }
+  .cover .heroband{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(32,28,24,.55),rgba(32,28,24,.15)); }
+  .cover .foot{ padding:11mm 18mm 14mm; }
+  .cover .foot .rule{ height:1px; background:var(--linha); margin-bottom:8mm; }
+  .cover .name{ font-size:44pt; line-height:1.02; color:var(--carvao); margin:2mm 0 3mm; }
+  .cover .sub{ font-size:12pt; color:var(--texto); }
+  .cover .proj{ font-size:12pt; color:var(--taupe); font-style:italic; margin-top:1.5mm; }
+  .cover .meta{ text-align:right; font-family:"Courier New",monospace; font-size:9pt; color:var(--taupe);
+    letter-spacing:1px; }
+  .cover .frow{ display:flex; justify-content:space-between; align-items:flex-end; }
 
-  .grid{ display:flex; flex-wrap:wrap; gap:6mm; margin-top:4mm; }
-  .feat{ width:calc(50% - 3mm); background:var(--creme); border-radius:2mm; padding:6mm; border-top:2px solid var(--mostarda); }
-  .feat .fi{ font-size:13pt; color:var(--ouro); } .feat h3{ font-size:12.5pt; margin:1mm 0 1.5mm; } .feat p{ font-size:9.3pt; color:#4a443c; }
+  /* ---------- PÁGINA POR QUE VALVIC ---------- */
+  .hl{ font-family:Georgia,serif; font-size:30pt; line-height:1.12; color:var(--carvao); }
+  .hl .it{ font-style:italic; color:var(--ouro); }
+  .lead{ font-size:10.5pt; color:#5b5347; line-height:1.6; max-width:150mm; margin-top:5mm; }
+  .split{ display:flex; gap:10mm; margin-top:11mm; align-items:stretch; }
+  .split .imgcol{ width:74mm; background:#2a2520; border-radius:1mm; overflow:hidden; }
+  .split .imgcol img{ width:100%; height:100%; object-fit:cover; min-height:150mm; }
+  .split .rz{ flex:1; }
+  .reasons .rh{ font-size:8pt; letter-spacing:3px; text-transform:uppercase; color:var(--ouro); margin-bottom:7mm; }
+  .reason{ display:flex; gap:5mm; padding:5mm 0; border-top:1px solid var(--linha); }
+  .reason:first-of-type{ border-top:none; padding-top:0; }
+  .reason .ic{ width:9mm; height:9mm; min-width:9mm; border-radius:50%; border:1px solid var(--mostarda);
+    color:var(--ouro); display:flex; align-items:center; justify-content:center; font-size:10pt; }
+  .reason .rt{ font-family:Georgia,serif; font-size:13pt; color:var(--carvao); }
+  .reason .rk{ font-family:"Courier New",monospace; font-size:7pt; letter-spacing:1px; color:var(--ouro);
+    text-transform:uppercase; margin:1mm 0 1.5mm; }
+  .reason .rd{ font-size:9pt; color:#5b5347; line-height:1.45; }
 
-  .price{ margin:3mm 0 0; background:var(--carvao); color:#F5ECDA; border-radius:3mm; padding:8mm 10mm; position:relative; overflow:hidden; }
-  .price .ringc{ position:absolute; width:60mm; height:60mm; border:1px solid rgba(224,165,33,.3); border-radius:50%; right:-20mm; top:-22mm; }
-  .price .pl{ font-size:9pt; letter-spacing:3px; text-transform:uppercase; color:var(--mostarda); margin-bottom:2mm; }
-  .ptab{ width:100%; border-collapse:collapse; position:relative; z-index:2; }
-  .ptab td{ padding:2.5mm 0; border-bottom:1px solid rgba(224,165,33,.22); vertical-align:baseline; }
-  .ptab .pi{ font-family:Georgia,serif; font-size:11.5pt; color:#F5ECDA; }
-  .ptab .pi span{ display:block; font-family:"Helvetica Neue",Arial,sans-serif; font-size:7.8pt; color:#cbbd9d; margin-top:.4mm; }
-  .ptab .pp{ text-align:right; font-family:Georgia,serif; font-size:13pt; color:#fff; white-space:nowrap; }
-  .ptab .ptot td{ border-bottom:none; padding-top:4mm; }
-  .ptab .ptot .pi{ font-size:12.5pt; color:var(--mostarda); }
-  .ptab .ptot .pp{ font-size:22pt; color:var(--mostarda); }
+  /* ---------- PÁGINA PROCESSO (dark) ---------- */
+  .dark{ background:var(--carvao); color:#EFE7D6; }
+  .dark .hl{ color:#F3ECDD; } .dark .hl .it{ color:#B0892F; }
+  .dark .lead{ color:#b6ab97; }
+  .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:9mm 7mm; margin-top:12mm; }
+  .step .sn{ width:11mm; height:11mm; border-radius:50%; border:1px solid rgba(224,165,33,.55); color:var(--mostarda);
+    font-family:Georgia,serif; font-size:11pt; display:flex; align-items:center; justify-content:center; margin-bottom:4mm; }
+  .step .stt{ font-family:Georgia,serif; font-size:12pt; color:#F3ECDD; margin-bottom:2mm; }
+  .step .sd{ font-size:8.3pt; color:#9c917d; line-height:1.45; }
+  .dfoot{ position:absolute; bottom:14mm; left:22mm; right:22mm; display:flex; justify-content:space-between;
+    align-items:center; border-top:1px solid rgba(224,165,33,.25); padding-top:4mm; }
+  .dfoot .l{ font-family:"Aurora Valvic"; font-size:13pt; color:var(--taupe); letter-spacing:3px; }
+  .dfoot .r{ font-size:8pt; color:#9c917d; letter-spacing:1px; }
 
-  .deal{ margin-top:6mm; background:var(--ivory); border:1px solid var(--mostarda); border-left:4px solid var(--mostarda); border-radius:2mm; padding:6mm 7mm; display:flex; justify-content:space-between; align-items:center; gap:8mm; }
-  .deal .dl{ font-size:8.5pt; letter-spacing:2.5px; text-transform:uppercase; color:var(--ouro); }
-  .deal .dt{ font-family:Georgia,serif; font-size:12pt; color:var(--texto); margin-top:2mm; line-height:1.45; max-width:112mm; }
-  .deal .dt b{ color:var(--ouro); }
-  .deal .dv{ text-align:right; white-space:nowrap; }
-  .deal .dv .old{ font-size:10pt; color:var(--taupe); text-decoration:line-through; }
-  .deal .dv .new{ font-family:Georgia,serif; font-size:26pt; color:var(--ouro); line-height:1.05; }
-  .deal .dv .save{ font-size:8pt; color:var(--taupe); }
+  /* ---------- DESCRITIVO ---------- */
+  .subline{ font-family:Georgia,serif; font-style:italic; font-size:11pt; color:var(--taupe); margin-top:3mm; }
+  .noteline{ font-family:"Courier New",monospace; font-size:7.5pt; letter-spacing:.5px; color:var(--ouro);
+    text-transform:uppercase; padding:3mm 0; border-top:1px solid var(--linha); border-bottom:1px solid var(--linha); margin:5mm 0 2mm; }
+  .amb{ margin-top:4.5mm; }
+  .amb .ah{ display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid var(--carvao);
+    padding-bottom:1.6mm; }
+  .amb .an{ font-family:Georgia,serif; font-size:13.5pt; color:var(--carvao); text-transform:uppercase; letter-spacing:.5px; }
+  .amb .an small{ font-family:"Courier New",monospace; font-size:8pt; color:var(--taupe); text-transform:none; letter-spacing:.5px; margin-left:3mm; }
+  .amb .ap{ font-family:"Courier New",monospace; font-size:8.5pt; color:var(--carvao); text-align:right; line-height:1.25; }
+  .amb .ap b{ font-family:Georgia,serif; font-size:12pt; }
+  .item{ display:flex; align-items:baseline; gap:4mm; padding:1.9mm 0; border-bottom:1px solid #f0eadd; }
+  .item .in{ font-family:"Courier New",monospace; font-size:8pt; color:var(--ouro); width:6mm; }
+  .item .id{ flex:1; font-size:9.3pt; color:#5b5347; }
+  .item .id b{ color:var(--carvao); font-weight:600; }
+  .item .tag{ font-family:"Courier New",monospace; font-size:7pt; letter-spacing:.5px; color:var(--taupe); text-transform:uppercase; white-space:nowrap; }
 
-  .cond{ display:flex; gap:8mm; margin-top:8mm; } .cond>div{ flex:1; border-left:2px solid var(--mostarda); padding-left:4mm; }
-  .cond .k{ font-size:8.5pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); } .cond .v{ font-size:11pt; font-family:Georgia,serif; margin-top:1.5mm; line-height:1.4; }
-  .note{ font-size:8.7pt; color:var(--taupe); margin-top:6mm; line-height:1.5; }
-  .cta{ margin-top:9mm; font-size:11pt; } .cta b{ font-family:Georgia,serif; font-size:13.5pt; }
-  .pfoot{ position:absolute; bottom:14mm; left:24mm; right:24mm; font-size:8pt; color:var(--taupe); display:flex; justify-content:space-between; border-top:1px solid var(--linha); padding-top:3mm; }
+  /* ---------- DEPOIMENTO ---------- */
+  .quotepg{ padding:0; display:flex; height:297mm; }
+  .quotepg .ql{ width:50%; background:var(--creme); padding:34mm 16mm; display:flex; flex-direction:column; justify-content:center; }
+  .quotepg .qr{ width:50%; background:#2a2520; overflow:hidden; }
+  .quotepg .qr img{ display:block; width:100%; height:297mm; object-fit:cover; }
+  .quotepg .qeye{ font-size:8pt; letter-spacing:4px; text-transform:uppercase; color:var(--ouro); }
+  .quotepg .qmark{ font-family:Georgia,serif; font-size:44pt; color:var(--mostarda); line-height:.6; margin:6mm 0 4mm; }
+  .quotepg .qt{ font-family:Georgia,serif; font-style:italic; font-size:15pt; line-height:1.55; color:var(--carvao); }
+  .quotepg .qrule{ width:22mm; height:1px; background:var(--ouro); margin:8mm 0 5mm; }
+  .quotepg .qn{ font-family:Georgia,serif; font-size:12pt; color:var(--carvao); }
+  .quotepg .qm{ font-size:8pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); margin-top:1mm; }
+
+  /* ---------- INVESTIMENTO ---------- */
+  .invhead{ background:var(--carvao); color:#EFE7D6; margin:-20mm -22mm 4mm; padding:8mm 22mm 5mm; }
+  .invhead .eyebrow{ color:var(--mostarda); }
+  .invhead h2{ font-size:21pt; color:#F3ECDD; margin:1mm 0 1mm; }
+  .invhead p{ color:#b6ab97; font-size:9.5pt; }
+  .cards{ display:flex; gap:6mm; margin-bottom:3mm; }
+  .card{ flex:1; border:1px solid var(--linha); border-radius:2mm; padding:3.5mm 5.5mm; background:var(--ivory); }
+  .card.reco{ border:1.6px solid var(--mostarda); background:#fff; }
+  .card .ck{ font-size:7.5pt; letter-spacing:2.5px; text-transform:uppercase; color:var(--taupe); }
+  .card.reco .ck{ color:var(--ouro); }
+  .card .cn{ font-family:Georgia,serif; font-size:15pt; color:var(--carvao); margin:1mm 0 1mm; }
+  .card .cd{ font-size:8.4pt; color:#5b5347; line-height:1.4; min-height:8mm; }
+  .card .cd b{ color:var(--carvao); }
+  .card .cv{ font-family:"Courier New",monospace; font-size:17pt; color:var(--taupe); letter-spacing:1px; margin-top:1.5mm; }
+  .card.reco .cv{ color:var(--ouro); }
+  .invtab{ width:100%; border-collapse:collapse; }
+  .invtab .th td{ font-size:7.5pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe);
+    padding:2mm 3mm; border-bottom:1px solid var(--mostarda); }
+  .invtab td{ padding:1.45mm 3mm; font-size:9.3pt; border-bottom:1px solid #f0eadd; }
+  .invtab .g{ text-align:right; font-family:"Courier New",monospace; color:var(--carvao); white-space:nowrap; }
+  .invtab .e{ text-align:right; font-family:"Courier New",monospace; color:var(--taupe); white-space:nowrap; }
+  .invtab .tot td{ border-bottom:none; border-top:1.4px solid var(--mostarda); background:var(--ivory);
+    font-family:Georgia,serif; font-size:11pt; padding-top:2.6mm; padding-bottom:2.6mm; }
+  .invtab .tot .g{ color:var(--ouro); font-size:12pt; }
+  .th2{ font-size:7.5pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); margin:3.5mm 0 .5mm; }
+  .paytab{ width:100%; border-collapse:collapse; }
+  .paytab td{ padding:1.6mm 3mm; font-size:9.3pt; border-bottom:1px solid #f0eadd; }
+  .paytab .d{ text-align:right; font-family:"Courier New",monospace; font-size:8.5pt; letter-spacing:.5px; color:var(--ouro); white-space:nowrap; }
+  .paytab .dn{ color:var(--taupe); }
+  .boxes{ display:flex; gap:5mm; margin-top:4mm; }
+  .box{ flex:1; text-align:center; border-radius:2mm; padding:3mm 4mm; }
+  .box.dk{ background:var(--carvao); color:#EFE7D6; } .box.gd{ background:var(--ouro); color:#fff; }
+  .box.lt{ background:var(--ivory); color:var(--carvao); border:1px solid var(--linha); }
+  .box .bk{ font-size:7pt; letter-spacing:2.5px; text-transform:uppercase; opacity:.75; }
+  .box .bv{ font-family:Georgia,serif; font-size:17pt; margin:.8mm 0 .5mm; }
+  .box .bs{ font-size:7.5pt; opacity:.8; }
+  .escopo{ font-size:8pt; color:var(--taupe); margin-top:3.5mm; line-height:1.4; border-top:1px solid var(--linha); padding-top:2.5mm; }
+  .escopo b{ color:var(--carvao); }
+
+  .cta h2{ font-size:24pt; color:var(--carvao); }
+  .cta .ctd{ font-size:10.5pt; color:#5b5347; margin-top:3mm; max-width:120mm; }
+  .pfoot{ position:absolute; bottom:14mm; left:22mm; right:22mm; font-size:8pt; color:var(--taupe);
+    display:flex; justify-content:space-between; border-top:1px solid var(--linha); padding-top:3mm; }
 </style>
 </head>
 <body>
 
-<!-- CAPA -->
+<!-- ============ 1 · CAPA ============ -->
 <div class="page cover">
-  <div><span class="brandmark">Valvic</span></div>
-  <div>
-    <div class="eyebrow">Proposta comercial</div>
-    <div class="name serif">Marcenaria<br>completa</div>
-    <div class="proj serif">Apartamento CV · Residência Ana Carolina Valente<br>Projeto: Estúdio Gráza — Bruna Rezende</div>
+  <div class="top">
+    <span class="brandmark"><span class="st">✦</span><span class="fwv">Valvic</span></span>
+    <span class="badge">Essencial · Gold</span>
   </div>
-  <div>
+  <div class="hero">
+    <img src="img/render-ambientacao.jpg" alt="">
+    <div class="heroband"></div>
+  </div>
+  <div class="foot">
     <div class="rule"></div>
-    <div class="cfoot">
-      <div><div class="k">Para</div><div class="v">Ana Carolina Valente</div></div>
-      <div><div class="k">Emissão</div><div class="v">Julho de 2026</div></div>
-      <div><div class="k">Validade</div><div class="v">7 dias</div></div>
+    <div class="frow">
+      <div>
+        <div class="eyebrow">Proposta preparada para</div>
+        <div class="name serif">Ana Carolina</div>
+        <div class="sub">Marcenaria completa sob medida</div>
+        <div class="proj serif">10 ambientes · Estúdio Gráza — Arquiteta Bruna Rezende</div>
+      </div>
+      <div class="meta">02/07/2026<br>Ref. Essencial · Gold</div>
     </div>
   </div>
 </div>
 
-<!-- 01 · O PROJETO -->
+<!-- ============ 2 · POR QUE VALVIC ============ -->
 <div class="page">
-  <div class="kicker"><span class="num serif">01</span><span class="lbl">O projeto</span></div>
-  <p class="lead" style="margin-bottom:6mm;">A marcenaria do apartamento inteiro — <b>executada e coordenada
-  pela Valvic</b>, fielmente ao projeto do Estúdio Gráza, com insumos premium e acabamento impecável.</p>
+  <div class="eyebrow" style="margin-bottom:6mm;">Por que Valvic</div>
+  <div class="hl">O detalhe<br><span class="it">que você não vê</span><br>é o que faz a diferença.</div>
+  <p class="lead">Marcenaria é precisão milimétrica. Esta proposta existe porque você merece entender
+  exatamente o que está comprando — e por que vale o que vale.</p>
 
-  <div class="grid">
-    <div class="feat"><div class="fi">✦</div><h3>Cozinha completa</h3>
-      <p>Layout em U com <b>ilha</b>, torres de geladeira e forno, <b>cristaleira aérea em vidro canelado</b>,
-      gaveteiros especiais (talheres, panelas, temperos) e iluminação em LED embutido.</p></div>
-    <div class="feat"><div class="fi">✦</div><h3>Portas divisoras</h3>
-      <p><b>Três portas deslizantes</b> separando sala e cozinha — sistema de mão-amiga com amortecimento e
-      trilho embutido no gesso, para um deslizar suave e silencioso.</p></div>
-    <div class="feat"><div class="fi">✦</div><h3>Painéis & louceiro</h3>
-      <p>Painel de TV e <b>painel do hall</b> com portas pivotantes (reforço em metalon), <b>louceiro</b> na
-      sala e <b>portas de acesso camufladas</b> — marcenaria que integra e esconde.</p></div>
-    <div class="feat"><div class="fi">✦</div><h3>Banhos & lavabo</h3>
-      <p>Gabinetes de bancada com <b>gaveta tulha</b>, espelheiras e nichos; <b>lavabo com gabinete curvo</b>
-      e espelho. Puxadores em cava usinada.</p></div>
-    <div class="feat"><div class="fi">✦</div><h3>Área de serviço</h3>
-      <p>Armários inferiores, <b>torre</b> e aéreos até o teto, com nichos e prateleiras — tudo aproveitado,
-      do piso ao forro.</p></div>
-    <div class="feat"><div class="fi">✦</div><h3>Circulação íntima</h3>
-      <p>Armário de corredor com prateleiras e a <b>porta de acesso integrada</b> ao painel, sem quebra na
-      leitura da parede.</p></div>
+  <div class="split">
+    <div class="imgcol"><img src="img/veneer-panels.jpg" alt=""></div>
+    <div class="rz reasons">
+      <div class="rh">4 razões que definem a entrega</div>
+      <div class="reason">
+        <div class="ic">★</div>
+        <div><div class="rt">Ferragem Hettich de origem alemã</div>
+          <div class="rk">Corrediças full-extension · soft-close · 10 anos</div>
+          <div class="rd">Na linha Gold, nenhuma peça nacional de substituição. Você compra o que foi
+          projetado para durar uma vida com o uso diário.</div></div>
+      </div>
+      <div class="reason">
+        <div class="ic">■</div>
+        <div><div class="rt">Engenharia digital antes do corte</div>
+          <div class="rk">Software especializado · aprovação prévia</div>
+          <div class="rd">O projeto do Estúdio Gráza vira marcenaria em software antes de qualquer chapa
+          ser cortada. Zero improviso em obra.</div></div>
+      </div>
+      <div class="reason">
+        <div class="ic">◆</div>
+        <div><div class="rt">Equipe própria do início ao fim</div>
+          <div class="rk">Sem terceirização · responsabilidade total</div>
+          <div class="rd">Quem projeta é quem produz é quem instala. Não há elo solto na cadeia — a
+          responsabilidade não muda de mão.</div></div>
+      </div>
+      <div class="reason">
+        <div class="ic">☎</div>
+        <div><div class="rt">Suporte real pós-entrega</div>
+          <div class="rk">Garantia em contrato · acompanhamento</div>
+          <div class="rd">Garantia formal assinada em contrato (10 anos na linha Gold). Não sumimos após o
+          pagamento — estamos aqui quando você precisar.</div></div>
+      </div>
+    </div>
   </div>
   <div class="pfoot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Apto CV — Ana Carolina Valente</span></div>
 </div>
 
-<!-- 02 · INVESTIMENTO -->
-<div class="page">
-  <div class="kicker"><span class="num serif">02</span><span class="lbl">Investimento</span></div>
-  <p class="lead" style="margin-bottom:3mm;">Cada ambiente com o seu valor — você fecha o apartamento completo
-  ou por etapa, no seu cronograma.</p>
-
-  <div class="price"><div class="ringc"></div>
-    <div class="pl">Marcenaria por ambiente</div>
-    <table class="ptab">
-      <tr><td class="pi">Cozinha<span>U + ilha + torres + cristaleira vidro canelado + LED</span></td><td class="pp">R$ 33.500</td></tr>
-      <tr><td class="pi">Portas divisoras<span>3 deslizantes · mão-amiga · amortecimento</span></td><td class="pp">R$ 16.900</td></tr>
-      <tr><td class="pi">Área de serviço / Lavanderia<span>inferiores + torre + aéreos até o teto</span></td><td class="pp">R$ 11.500</td></tr>
-      <tr><td class="pi">Sala · louceiro<span>louceiro + porta de acesso integrada</span></td><td class="pp">R$ 10.600</td></tr>
-      <tr><td class="pi">Painel Hall<span>painel + 2 portas pivotantes · cava</span></td><td class="pp">R$ 9.800</td></tr>
-      <tr><td class="pi">Painel de TV<span>painel liso em madeirado fosco</span></td><td class="pp">R$ 8.900</td></tr>
-      <tr><td class="pi">Banho Master<span>gabinete + gaveta tulha + espelheira + LED</span></td><td class="pp">R$ 7.500</td></tr>
-      <tr><td class="pi">Banho Social<span>gabinete + tulha basculante + gavetas</span></td><td class="pp">R$ 6.900</td></tr>
-      <tr><td class="pi">Lavabo<span>gabinete curvo + espelho</span></td><td class="pp">R$ 4.700</td></tr>
-      <tr><td class="pi">Circulação íntima<span>armário + porta de acesso integrada</span></td><td class="pp">R$ 3.900</td></tr>
-      <tr class="ptot"><td class="pi">Investimento total</td><td class="pp">R$ 114.200</td></tr>
-    </table>
+<!-- ============ 3 · PROCESSO (dark) ============ -->
+<div class="page dark">
+  <div class="eyebrow" style="margin-bottom:6mm;">Daqui em diante</div>
+  <div class="hl">Quem faz, responde —<br><span class="it">do aceite à montagem.</span></div>
+  <p class="lead">Anos de fábrica, equipe própria, compromisso com cada detalhe — do primeiro contato ao
+  pós-entrega.</p>
+  <div class="steps">
+    <div class="step"><div class="sn">1</div><div class="stt">Alinhamento</div><div class="sd">Entendemos o escopo e o ambiente antes de qualquer número. A visita define o que será executado.</div></div>
+    <div class="step"><div class="sn">2</div><div class="stt">Detalhamento Técnico</div><div class="sd">O projeto do arquiteto vira instrução de fábrica. Cada medida verificada para encaixar com precisão.</div></div>
+    <div class="step"><div class="sn">3</div><div class="stt">Programação</div><div class="sd">Data de produção definida antes de iniciar. Entrada em fila com prazo comunicado.</div></div>
+    <div class="step"><div class="sn">4</div><div class="stt">Produção</div><div class="sd">Corte, montagem e furação com os processos acumulados em anos de fábrica.</div></div>
+    <div class="step"><div class="sn">5</div><div class="stt">Acabamento</div><div class="sd">Borda e detalhe de superfície revisados antes do módulo entrar em embalagem.</div></div>
+    <div class="step"><div class="sn">6</div><div class="stt">Conferência</div><div class="sd">Cada peça testada, cada ferragem montada e verificada antes de sair da fábrica.</div></div>
+    <div class="step"><div class="sn">7</div><div class="stt">Entrega &amp; Montagem</div><div class="sd">Equipe própria. Do caminhão ao parafuso final — sem terceirização de montagem.</div></div>
+    <div class="step"><div class="sn">8</div><div class="stt">Compromisso Contínuo</div><div class="sd">Ferragem tem garantia. Dúvida tem resposta. A relação não encerra na entrega.</div></div>
   </div>
-  <p class="note">Valores para a marcenaria conforme o projeto do Estúdio Gráza. <b>Pedras, louças, metais e
-  eletrodomésticos não estão inclusos</b> (fornecimento do cliente). Condições e o upgrade Hettich na próxima página.</p>
+  <div class="dfoot"><span class="l">Valvic Marcenaria</span><span class="r">◉ @valvic_marcenaria&nbsp;&nbsp;·&nbsp;&nbsp;▶ Valvic_Marcenaria</span></div>
+</div>
+
+<!-- ============ 4 · DESCRITIVO pt1 ============ -->
+<div class="page">
+  <div class="eyebrow" style="margin-bottom:6mm;">O projeto · descritivo</div>
+  <div class="hl">O que vamos<br>executar para você.</div>
+  <div class="subline">Apto CV — 10 ambientes · Arquiteta Bruna Rezende / Estúdio Gráza</div>
+  <div class="noteline">Gold (Hettich · garantia 10 anos) · Essencial (Hardt · garantia 2 anos) — mesma marcenaria · LED incluso</div>
+
+  <div class="amb">
+    <div class="ah"><div class="an">Cozinha <small>5 itens</small></div><div class="ap">Gold <b>R$ 37.300</b><br>Essencial R$ 33.500</div></div>
+    <div class="item"><span class="in">01</span><span class="id"><b>Balcões em U + gavetões</b> — Inclui o trecho do cooktop.</span><span class="tag">Fosco</span></div>
+    <div class="item"><span class="in">02</span><span class="id"><b>Ilha central</b> — Com gavetões e apoio.</span><span class="tag">Fosco</span></div>
+    <div class="item"><span class="in">03</span><span class="id"><b>Torres de eletros + despensa</b> — Forno e micro embutidos, nichos, LED.</span><span class="tag">Fosco</span></div>
+    <div class="item"><span class="in">04</span><span class="id"><b>Aéreos até o teto</b> — Portas com cava usinada.</span><span class="tag">Fosco</span></div>
+    <div class="item"><span class="in">05</span><span class="id"><b>Cristaleira</b> — Portas de vidro canelado + LED.</span><span class="tag">Vidro</span></div>
+  </div>
+
+  <div class="amb">
+    <div class="ah"><div class="an">Portas Divisoras <small>1 item</small></div><div class="ap">Gold <b>R$ 18.500</b><br>Essencial R$ 16.900</div></div>
+    <div class="item"><span class="in">01</span><span class="id"><b>3 portas deslizantes</b> — Sistema mão-amiga + amortecimento; trilho embutido no gesso.</span><span class="tag">Fosco</span></div>
+  </div>
+
+  <div class="amb">
+    <div class="ah"><div class="an">Área de Serviço <small>3 itens</small></div><div class="ap">Gold <b>R$ 13.400</b><br>Essencial R$ 11.500</div></div>
+    <div class="item"><span class="in">01</span><span class="id"><b>Inferiores + tanque</b> — Gabinete para o tanque (louça do cliente).</span><span class="tag">Branco</span></div>
+    <div class="item"><span class="in">02</span><span class="id"><b>Torre piso-teto</b> — Despensa / vassoureiro.</span><span class="tag">Branco</span></div>
+    <div class="item"><span class="in">03</span><span class="id"><b>Aéreos até o teto</b> — Com LED inferior.</span><span class="tag">Fosco</span></div>
+  </div>
+
+  <div class="amb">
+    <div class="ah"><div class="an">Sala · Louceiro <small>2 itens</small></div><div class="ap">Gold <b>R$ 12.100</b><br>Essencial R$ 10.600</div></div>
+    <div class="item"><span class="in">01</span><span class="id"><b>Louceiro</b> — Gavetas + nicho + armário sob bancada (pedra do cliente).</span><span class="tag">Fosco</span></div>
+    <div class="item"><span class="in">02</span><span class="id"><b>Porta de acesso camuflada</b> — Integrada ao painel, dobradiça oculta.</span><span class="tag">Fosco</span></div>
+  </div>
+
+  <div class="amb">
+    <div class="ah"><div class="an">Painel Hall <small>1 item</small></div><div class="ap">Gold <b>R$ 10.700</b><br>Essencial R$ 9.800</div></div>
+    <div class="item"><span class="in">01</span><span class="id"><b>Painel parede + teto</b> — 2 portas pivotantes com reforço metalon + cava.</span><span class="tag">Fosco</span></div>
+  </div>
+
   <div class="pfoot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Apto CV — Ana Carolina Valente</span></div>
 </div>
 
-<!-- 03 · UPGRADE + CONDIÇÕES -->
+<!-- ============ 5 · DESCRITIVO pt2 ============ -->
 <div class="page">
-  <div class="kicker"><span class="num serif">03</span><span class="lbl">Upgrade & condições</span></div>
+  <div class="amb" style="margin-top:0;">
+    <div class="ah"><div class="an">Painel de TV <small>1 item</small></div><div class="ap">Gold <b>R$ 9.400</b><br>Essencial R$ 8.900</div></div>
+    <div class="item"><span class="in">01</span><span class="id"><b>Painel de TV</b> — Painel liso em madeirado fosco, com passagem de fiação.</span><span class="tag">Fosco</span></div>
+  </div>
 
-  <p class="lead" style="margin-bottom:2mm;">Um passo a mais de sofisticação: toda a ferragem em <b>Hettich</b>
-  (linha alemã) — o toque de fechamento mais suave e a durabilidade do topo de mercado.</p>
+  <div class="amb">
+    <div class="ah"><div class="an">Banho Master <small>3 itens</small></div><div class="ap">Gold <b>R$ 8.900</b><br>Essencial R$ 7.500</div></div>
+    <div class="item"><span class="in">01</span><span class="id"><b>Gabinete de bancada</b> — Portas cava + gaveta tulha ripada.</span><span class="tag">Fosco</span></div>
+    <div class="item"><span class="in">02</span><span class="id"><b>Espelheira</b> — Portas de abrir espelhadas + LED.</span><span class="tag">Espelho</span></div>
+    <div class="item"><span class="in">03</span><span class="id"><b>Armários altos de correr</b> — Espelhados, com nichos.</span><span class="tag">Espelho</span></div>
+  </div>
 
-  <div class="deal">
-    <div>
-      <div class="dl">Upgrade — ferragens Hettich (alemãs)</div>
-      <div class="dt"><b>Dobradiças Sensys</b> e <b>corrediças ocultas Quadro</b> em todo o apartamento —
-      soft-close premium, regulagem fina e <b>garantia estendida da ferragem</b>. Sobre o total à vista.</div>
+  <div class="amb">
+    <div class="ah"><div class="an">Banho Social <small>2 itens</small></div><div class="ap">Gold <b>R$ 8.200</b><br>Essencial R$ 6.900</div></div>
+    <div class="item"><span class="in">01</span><span class="id"><b>Gabinete</b> — Tulha basculante 45° + porta + 3 gavetas cava.</span><span class="tag">Fosco</span></div>
+    <div class="item"><span class="in">02</span><span class="id"><b>Armários altos de correr</b> — Espelhados, com nichos.</span><span class="tag">Espelho</span></div>
+  </div>
+
+  <div class="amb">
+    <div class="ah"><div class="an">Lavabo <small>1 item</small></div><div class="ap">Gold <b>R$ 5.300</b><br>Essencial R$ 4.700</div></div>
+    <div class="item"><span class="in">01</span><span class="id"><b>Gabinete curvo suspenso</b> — Com espelho (cuba e torneira do cliente).</span><span class="tag">Fosco</span></div>
+  </div>
+
+  <div class="amb">
+    <div class="ah"><div class="an">Circulação Íntima <small>1 item</small></div><div class="ap">Gold <b>R$ 4.800</b><br>Essencial R$ 3.900</div></div>
+    <div class="item"><span class="in">01</span><span class="id"><b>Armário + porta de acesso</b> — Integrada, com dobradiça oculta.</span><span class="tag">Fosco</span></div>
+  </div>
+
+  <div style="margin-top:12mm; padding:7mm 8mm; background:var(--ivory); border-left:3px solid var(--mostarda); border-radius:1mm;">
+    <div class="eyebrow" style="margin-bottom:3mm;">A diferença entre as linhas</div>
+    <p style="font-size:9.5pt; color:#5b5347; line-height:1.6;"><b class="serif" style="color:var(--carvao);">A marcenaria é exatamente a mesma</b> — mesmos ambientes, mesmas medidas, mesmo
+    acabamento fosco. A <b style="color:var(--ouro);">linha Gold</b> troca as ferragens por <b>Hettich alemãs</b>
+    (corrediças ocultas full-extension com soft-close, dobradiças de precisão) e leva a <b>garantia de 10 anos em contrato</b>.
+    A <b>linha Essencial</b> usa ferragens <b>Hardt</b>, nacionais e confiáveis, com garantia de 2 anos.</p>
+  </div>
+  <div class="pfoot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Apto CV — Ana Carolina Valente</span></div>
+</div>
+
+<!-- ============ 6 · DEPOIMENTO ============ -->
+<div class="page quotepg">
+  <div class="ql">
+    <div class="qeye">Quem já viveu</div>
+    <div class="qmark">&#8221;</div>
+    <div class="qt">Eu estou apaixonada… e não é só pela beleza… mas o comprometimento e dedicação desde o
+    orçamento, até execução e entrega. Indico de olhos fechados!!!</div>
+    <div class="qrule"></div>
+    <div class="qn serif">Graciene</div>
+    <div class="qm">Projeto executado · BH</div>
+  </div>
+  <div class="qr"><img src="img/render-ambientacao.jpg" alt=""></div>
+</div>
+
+<!-- ============ 7 · INVESTIMENTO ============ -->
+<div class="page">
+  <div class="invhead">
+    <div class="eyebrow">Transparência total</div>
+    <h2 class="serif">Seu Investimento.</h2>
+    <p>Duas linhas, a mesma marcenaria. Condições claras — você escolhe o caminho.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="ck">Sua proposta</div>
+      <div class="cn serif">Linha Essencial</div>
+      <div class="cd">Ferragens <b>Hardt</b> — nacionais e confiáveis, corrediças telescópicas.
+      <b>Garantia de 2 anos.</b></div>
+      <div class="cv">R$ 114.200</div>
     </div>
-    <div class="dv">
-      <div class="old">de série: Hardt / Rometal</div>
-      <div class="new">+ R$ 14.400</div>
-      <div class="save">apê com Hettich · R$ 118.300 à vista</div>
+    <div class="card reco">
+      <div class="ck">Upgrade recomendado</div>
+      <div class="cn serif">Linha Gold</div>
+      <div class="cd">Ferragens <b>Hettich alemãs</b> — corrediças ocultas full-extension soft-close.
+      <b>Garantia de 10 anos.</b></div>
+      <div class="cv">R$ 128.600</div>
     </div>
   </div>
 
-  <table style="width:100%; border-collapse:collapse; margin-top:6mm;">
-    <tr><th style="text-align:left; font-size:8.5pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); padding:3mm 2mm; border-bottom:1px solid var(--mostarda);">Forma de pagamento</th><th style="text-align:right; font-size:8.5pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); padding:3mm 2mm; border-bottom:1px solid var(--mostarda);">Condição</th></tr>
-    <tr><td style="padding:3.4mm 2mm; border-bottom:1px solid var(--linha); font-size:10.5pt;"><b>À vista</b> — 50% no início + 50% na entrega</td><td style="padding:3.4mm 2mm; border-bottom:1px solid var(--linha); text-align:right; font-family:Georgia,serif; color:var(--ouro); font-size:12.5pt;">R$ 103.900</td></tr>
-    <tr><td style="padding:3.4mm 2mm; border-bottom:1px solid var(--linha); font-size:10.5pt;">Entrada 50% + saldo <b>em até 6× no cartão</b></td><td style="padding:3.4mm 2mm; border-bottom:1px solid var(--linha); text-align:right; font-family:Georgia,serif; color:var(--taupe); font-size:12.5pt;">R$ 114.200</td></tr>
+  <div class="th2">Investimento por ambiente</div>
+  <table class="invtab">
+    <tr class="th"><td>Ambiente</td><td style="text-align:right;">Essencial</td><td style="text-align:right;">Gold</td></tr>
+    <tr><td>Cozinha</td><td class="e">R$ 33.500</td><td class="g">R$ 37.300</td></tr>
+    <tr><td>Portas divisoras</td><td class="e">R$ 16.900</td><td class="g">R$ 18.500</td></tr>
+    <tr><td>Área de serviço</td><td class="e">R$ 11.500</td><td class="g">R$ 13.400</td></tr>
+    <tr><td>Sala · louceiro</td><td class="e">R$ 10.600</td><td class="g">R$ 12.100</td></tr>
+    <tr><td>Painel Hall</td><td class="e">R$ 9.800</td><td class="g">R$ 10.700</td></tr>
+    <tr><td>Painel de TV</td><td class="e">R$ 8.900</td><td class="g">R$ 9.400</td></tr>
+    <tr><td>Banho Master</td><td class="e">R$ 7.500</td><td class="g">R$ 8.900</td></tr>
+    <tr><td>Banho Social</td><td class="e">R$ 6.900</td><td class="g">R$ 8.200</td></tr>
+    <tr><td>Lavabo</td><td class="e">R$ 4.700</td><td class="g">R$ 5.300</td></tr>
+    <tr><td>Circulação íntima</td><td class="e">R$ 3.900</td><td class="g">R$ 4.800</td></tr>
+    <tr class="tot"><td>Total</td><td class="e" style="font-family:Georgia,serif; font-size:11pt;">R$ 114.200</td><td class="g">R$ 128.600</td></tr>
   </table>
 
-  <div class="cond" style="margin-top:8mm;">
-    <div><div class="k">Garantia</div><div class="v">10 anos</div></div>
-    <div><div class="k">Entrega</div><div class="v">60 a 70<br>dias úteis</div></div>
-    <div><div class="k">Execução</div><div class="v">Coordenada<br>pela Valvic</div></div>
-  </div>
-  <p class="note">Valores para a marcenaria conforme o projeto do Estúdio Gráza. <b>Pedras (quartzito/quartzo),
-  louças, metais e eletrodomésticos não estão inclusos</b> (fornecimento do cliente). Medidas conferidas no local
-  antes da produção. Iluminação (LED) inclusa. Proposta válida por 7 dias.</p>
+  <div class="th2">Formas de pagamento</div>
+  <table class="paytab">
+    <tr><td>Entrada 30% + saldo em até 10× no cartão</td><td class="d dn">—</td></tr>
+    <tr><td>Entrada 50% + saldo em até 8× no cartão</td><td class="d">3% desconto</td></tr>
+    <tr><td>Entrada 70% + saldo em até 6× no cartão</td><td class="d">5% desconto</td></tr>
+    <tr><td>À vista · transferência&nbsp;&nbsp;(Essencial R$ 103.900 · Gold R$ 117.000)</td><td class="d">9% desconto</td></tr>
+  </table>
 
-  <p class="cta"><span class="gold serif" style="font-size:13pt;">✦</span>
-  &nbsp;<b>Vamos executar o seu apartamento?</b><br>
-  <span class="muted">Com o aceite, reservamos a agenda de produção e seguimos para a medição final no local.
-  Estou à disposição para apresentar a proposta pessoalmente.</span></p>
+  <div class="boxes">
+    <div class="box dk"><div class="bk">Prazo de entrega</div><div class="bv serif">60–70</div><div class="bs">dias úteis</div></div>
+    <div class="box gd"><div class="bk">Garantia Gold</div><div class="bv serif">10 anos</div><div class="bs">estrutura e ferragens · Essencial: 2 anos</div></div>
+    <div class="box lt"><div class="bk">Validade</div><div class="bv serif">7</div><div class="bs">dias</div></div>
+  </div>
+
+  <p class="escopo"><b>Escopo Valvic:</b> marcenaria + ferragens + vidros/espelhos dos móveis + LED. <b>Por conta do
+  cliente:</b> pedras, louças e metais, eletrodomésticos, revestimentos e obra. Valores estimados sobre o executivo
+  R00 — medidas a conferir no local.</p>
+</div>
+
+<!-- ============ 8 · CTA ============ -->
+<div class="page">
+  <div class="eyebrow" style="margin-bottom:6mm;">O próximo passo</div>
+  <div class="cta">
+    <h2 class="serif">Qual o próximo passo?</h2>
+    <p class="ctd">Podemos apresentar a proposta pessoalmente e agendar a conferência de medidas no local.
+    Ficamos à disposição para ajustar a linha (Essencial ou Gold) e o cronograma ao seu momento.</p>
+  </div>
+
+  <div style="margin-top:14mm; display:flex; gap:8mm;">
+    <div style="flex:1; border-top:2px solid var(--mostarda); padding-top:4mm;">
+      <div class="eyebrow" style="margin-bottom:2mm;">Recomendação</div>
+      <p style="font-size:9.5pt; color:#5b5347; line-height:1.55;">Para um apartamento completo desse padrão, a
+      <b style="color:var(--ouro);">linha Gold</b> é o investimento que se paga no uso diário — a diferença de
+      <b>R$ 14.400</b> distribui-se por 10 ambientes e traz <b>8 anos a mais de garantia</b>.</p>
+    </div>
+    <div style="flex:1; border-top:2px solid var(--linha); padding-top:4mm;">
+      <div class="eyebrow" style="margin-bottom:2mm;">Fechamento</div>
+      <p style="font-size:9.5pt; color:#5b5347; line-height:1.55;">Na melhor condição — <b>à vista, transferência</b> —
+      a linha Gold sai por <b style="color:var(--carvao);">R$ 117.000</b> e a Essencial por <b style="color:var(--carvao);">R$ 103.900</b>.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:16mm; text-align:center;">
+    <div style="font-size:22pt; color:var(--carvao); letter-spacing:2px;"><span class="serif" style="color:var(--ouro); margin-right:2mm;">✦</span><span class="fw">Valvic</span></div>
+    <div style="font-size:8.5pt; letter-spacing:2px; color:var(--taupe); text-transform:uppercase; margin-top:2mm;">Marcenaria sob medida · Belo Horizonte</div>
+  </div>
   <div class="pfoot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Apto CV — Ana Carolina Valente</span></div>
 </div>
 
