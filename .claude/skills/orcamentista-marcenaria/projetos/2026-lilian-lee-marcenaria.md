@@ -2,7 +2,7 @@
 
 **Cliente:** Lilian Lee · **Decoradora:** Jessica Sollero · **Data caderno:** 01/07/2026
 **Local de execução:** Belo Horizonte (orçamento normal) · **logística Vila Velha/ES à parte**
-**Fechamento:** **3 linhas por ferragem** · RT 0 · erro 2% — Essencial R$ 91.000 (2 anos/35%) · Conforto R$ 98.000 (5 anos/37%) · Premium R$ 126.000 (10 anos/42%)
+**Fechamento:** **3 linhas por ferragem** · **RT arquiteta 10%** · erro 2% · + extras (logística/HE/montagem) — **Essencial R$ 128.500** (2 anos/35%) · **Conforto R$ 138.500** (5 anos/37%) · **Premium R$ 182.500** (10 anos/42%)
 **Unidade de comunicação:** CHAPAS (a pedido do Jonathan)
 
 > Caderno: `LILIAN_LEE__CADERNO_MARCENARIA` (28 pranchas). Provençais **medidas**;
@@ -50,14 +50,27 @@ Material fixo (igual nas 3) = **R$ 35.808**: chapas 25.370 + fita/colagem 3.000 
 **Limpeza+embalagem:** tinner 96 · estopa 120 · strech 120 · cantoneira 60 · embalagem 400.
 Só muda a ferragem variável (160 dobradiças + 24 corrediças) → garantia → margem.
 
-| Linha | Ferragem (dobradiça + corrediça) | Garantia | MC | Material | **Preço** |
-|---|---|---|--:|--:|--:|
-| **Essencial** | Padrão + Telescópica (soft-close) | **2 anos** | 35% | 37.728 | **R$ 91.000** |
-| **Conforto** | Hardt + Oculta Hardt | **5 anos** | 37% | 38.768 | **R$ 98.000** |
-| **Premium** | Hettich Sensys + Oculta Quadro | **10 anos** | 42% | 44.288 | **R$ 126.000** |
+**+ Colagem manual da moldura** (colar 6 mm na 15 mm, ~R$ 25/porta × 49 = **R$ 1.225**) → custo de produto (leva RT + MC).
+**RT arquiteta 10% sobre o líquido** → incide **só na marcenaria** (não na logística, hora extra ou montagem).
 
-`inv = fixedR / (1 − 0,18 − 0,88·0,043 − MC)` · RT 0 · **margem de erro 2%** (≥ piso 1,5%) · visitas R$ 250 · terceir. R$ 1.264.
+| Linha | Ferragem (dob. + corr.) | Garantia | MC | **Marcenaria** (RT10%+MC) | + Extras | **TOTAL** |
+|---|---|:--:|:--:|--:|--:|--:|
+| **Essencial** | Padrão + Telescópica | **2 anos** | 35% | 118.000 | +10.500 | **R$ 128.500** |
+| **Conforto** | Hardt + Oculta Hardt | **5 anos** | 37% | 128.000 | +10.500 | **R$ 138.500** |
+| **Premium** | Hettich Sensys + Oculta Quadro | **10 anos** | 42% | 172.000 | +10.500 | **R$ 182.500** |
+
+**Extras (totais fixos, SEM RT e SEM MC — pass-through):** Logística **R$ 7.000** + Hora extra **R$ 1.500** + Montagem extra **R$ 2.000** = **R$ 10.500**.
+RT p/ arquiteta embutida: ~R$ 10,4k (Ess.) · ~R$ 11,3k (Conf.) · ~R$ 15,1k (Prem.).
+`marcenaria = fixedR / (1 − 0,18 − 0,88·0,143 − MC)` · erro 2% (≥ 1,5%) · visitas R$ 250 · terceir. R$ 1.264.
 (Nomes das linhas provisórios — ajustar com o Jonathan/Vitor.)
+
+## Briefing da PROPOSTA — p/ Vitor + Stephen
+Layout deve **traduzir o projeto da Jéssica Sollero** (decoradora) e **criar valor pela execução**:
+1. **Refletir o projeto da Jéssica** — identidade/estética do caderno, ambientes, acabamentos Arauco (Frevo/Kashmir/Louro/Frejó).
+2. **Linha de processo — MOLDURA (portas emolduradas):** evidenciar a **complexidade** do método B — recorte da moldura em 6 mm na CNC → filetagem manual da borda interna → **colagem manual** da moldura sobre a porta 15 mm → laminação externa na coladeira automática → acabamento. Mostrar que é **obra fina**, não porta de catálogo.
+3. **Linha de processo — EXECUÇÃO da marcenaria:** galpão próprio, CNC, coladeira automática, montagem conferida.
+4. **Logística interestadual em destaque:** empenho da Valvic não é só fabricar — é **transportar com segurança de BH a Vila Velha/ES** (módulos montados, embalagem/proteção), **instalar** e **garantir eficiência + garantia de longo prazo** (2/5/10 anos por linha).
+5. Amarrar tudo às **3 linhas** (Essencial/Conforto/Premium) com a garantia como diferencial.
 
 ## Logística Vila Velha/ES — LINHA SEPARADA (não entra no preço BH)
 Módulos **montados** ≈ 16,8 m³ → ~22 m³ de carga → **toco baú**. Frete BH→Vila Velha (~510 km):
