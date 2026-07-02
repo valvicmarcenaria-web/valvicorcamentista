@@ -28,6 +28,7 @@
 | 5 | **Circulação Íntima** *(armário raso + porta embutida + estante)* | ~R$ 2.800 | **~R$ 9.200** | ✅ estimado |
 | 6 | **Cozinha** *(U + ilha + torres + cristaleira vidro canelado)* | ~R$ 23.000 | **~R$ 70.500** | ✅ estimado |
 | 7 | **Sala** *(SEM o rack · painel madeirado + louceiro)* | ~R$ 4.300 | **~R$ 13.800** | ✅ estimado |
+| | **TOTAL DO APÊ (7 ambientes)** | ~R$ 76.750 | **~R$ 195.800** |
 
 ---
 
