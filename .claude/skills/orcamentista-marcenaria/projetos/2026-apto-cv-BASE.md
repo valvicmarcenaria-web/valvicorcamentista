@@ -24,7 +24,7 @@
 | 1 | **Área de Serviço** | R$ 8.856 | **R$ 27.600** | ✅ estimado |
 | 2 | **Lavabo** *(gabinete curvo + revest. parede)* | ~R$ 4.700 | **~R$ 15.000** | ✅ estimado |
 | 3 | **Banho Master** *(gabinete+tulha + espelheira + 2 armários correr espelhados)* | ~R$ 10.500 | **~R$ 32.600** | ✅ estimado |
-| 4 | Banho Social | — | — | ⏳ |
+| 4 | **Banho Social** *(vanity tulha basculante + 2 armários correr espelhados)* | ~R$ 8.700 | **~R$ 27.100** | ✅ estimado |
 | 5 | Circulação Íntima | — | — | ⏳ |
 | 6 | Cozinha | — | — | ⏳ |
 | 7 | Sala *(SEM o rack)* | — | — | ⏳ |
@@ -86,3 +86,19 @@ Banho grande, muita marcenaria espelhada em 3 paredes.
 `preço = (10.500 + 250) / (0,70 − 0,37)` = 10.750 / 0,33 = **~R$ 32.600** (MC 37%).
 > **Fora (regra):** bancada **quartzo branco** (marmoraria) · cuba Deca + bica Docol + bacia (louças/metais) · porcelanato (obra).
 > **Gaveta tulha** = ripado (consome fita em dobro — lição Camila). JSON: `orcamento-apto-cv-banho-master.json`.
+
+## 4 · BANHO SOCIAL — material ~R$ 8.700 → **~R$ 27.100**
+Vanity (tulha basculante 45° + porta + 3 gavetas, todos cava) + 2 armários altos de correr espelhadas (parede C ~265cm + parede A/D ~133cm) + nichos.
+
+| Bloco | Estimativa | Custo |
+|---|---|---:|
+| MDF madeirado (01/02) — vanity + 2 armários de correr + nichos | 7 ch. 15mm + 3 ch. 6mm | R$ 4.400 |
+| **Espelho** (portas de correr espelhadas — nosso) | ~4 m² | R$ 2.400 |
+| Sistema de correr espelhado (2 conj. + trilho) | 2 | R$ 580 |
+| Articulador (tulha basculante) + dobradiças + corrediças (3 gavetas) | — | R$ 358 |
+| Puxador cava + fita cor + colagem + consumíveis | ~90 m | R$ 945 |
+| **Material** | | **~R$ 8.700** |
+
+`preço = (8.700 + 250) / (0,70 − 0,37)` = 8.950 / 0,33 = **~R$ 27.100** (MC 37%).
+> **Fora (regra):** bancada **granito vermelho EXISTENTE** (marmoraria) · cuba Deca + misturador Docol + válvula/ducha (louças/metais) · **box de vidro** (vidraceiro) · porcelanato (obra).
+> JSON: `orcamento-apto-cv-banho-social.json`.
