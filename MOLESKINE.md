@@ -31,7 +31,15 @@ Itens pontuais → +30% **só quando o fundador pontuar** (não automático).
 quartzo/nanoglass/mármore) = terceirizado, **nunca é nossa** · LOUÇAS E METAIS (cuba/tanque/torneira) = do
 cliente · pintura/piso/revestimento/forro/elétrica/hidráulica = obra. **Eu sinalizo, mas NÃO orço e NÃO pergunto.**
 
-**Erros que NÃO repito:** fração de chapa · chutar preço (especificar+perguntar) · não ler
+**⭐ CHAPA — classificar a cor por PEÇA (regra dura, calibração Apto CV 07/2026):** **estrutura interna,
+fundos, laterais, prateleiras internas e base = MDF BRANCO** (branco 15 ~R$260 · branco TX Ultra ~R$320 ·
+fundo branco 6 ~R$190) — **barato**. **Só a face aparente / portas / frentes = MDF cor/fosco (R$500).**
+NUNCA precificar caixaria interna em "cor". (Superestimei o Apto CV ~2–3× por pôr tudo em cor + contar
+chapa demais — o material inteiro em cor infla ~40%.) Contar chapa com **parcimônia** (caixaria enxuta).
+
+**Erros que NÃO repito:** fração de chapa · **precificar caixaria interna em "cor" (é branco!)** ·
+**contar chapa demais / superestimar material (Apto CV ~2–3× alto)** · **diluir item especial dentro de
+outro ambiente** (painel hall, portas divisoras, painel de TV = linhas próprias) · chutar preço (especificar+perguntar) · não ler
 descritivo · puxador genérico/contagem errada · esquecer painel/sistemas no painel-com-portas ·
 "erra pra cima" · +30% automático · texto de proposta com exagero/mentira · entregar sem checklist ·
 **criar arquivo duplicado sem conferir o que já existe** (criei 2 moleskines — nunca mais) ·
@@ -354,3 +362,15 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
 - **Não incluir seção "Exclusões"** se o fundador achar desnecessário (achou). Manter só "medidas conferidas no local".
 - *Regra-mãe: o descritivo de contrato diz **O QUE É** o móvel, limpo e técnico, sem número de insumo; o que não está
   confirmado no projeto vira "conforme projeto / validação in loco", nunca invenção.* Modelo: `projetos/descritivo-tecnico-roupeiro-camila.md`.
+
+### [2026-07-02] Lavinia — CALIBRAÇÃO Apto CV (superestimei ~2–3×) ⚠️
+- Orcei o Apto CV (Ana Carolina Valente / arq. Bruna Rezende) sobre o executivo e o **fundador mostrou a proposta real**
+  (sem banheiros): minhas estimativas ficaram **~2 a 3× ALTAS**. Real: Lavanderia R$11.500 (eu 27,6k) · Lavabo R$4.700
+  (eu 15k) · Circulação R$3.900 (eu 9,2k) · Cozinha R$33.500 (eu 70,5k) · Sala/louceiro R$10.600 (eu 13,8k).
+- **Causa nº1:** precifiquei **TODA chapa em cor R$500**; o certo é **estrutura/fundos/prateleiras em MDF BRANCO** (barato),
+  **só o aparente em cor**. Causa nº2: **contei chapa demais**. Causa nº3: espelho/LED/ferragem a mais.
+- **Itens que separei errado:** faltou **Painel Hall (R$9.800)**; **Portas divisores (R$16.900)** eu diluí na cozinha;
+  Painel de TV/rack R$8.900. Fundador cobra esses como **linhas próprias**. Fechamento dele (s/ banho) R$99.800→90.800.
+- Detalhe completo em `projetos/treino/calibracao-apto-cv.md`. Regra dura da chapa registrada nos mandamentos.
+- *Aprendizado: material é onde eu mais erro (Camila subestimei fita; aqui superestimei chapa). Sempre classificar a
+  chapa certa por peça (branco interno / cor aparente) e contar enxuto. Minhas estimativas do apê precisam cair ~2×.*
