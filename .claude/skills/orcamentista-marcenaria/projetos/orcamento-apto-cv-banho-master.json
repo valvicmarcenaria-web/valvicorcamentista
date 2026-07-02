@@ -1,45 +1,134 @@
 {
  "cliente": "Ana Carolina Valente (Apto CV)",
  "projeto": "Apto CV — Banho Master (arq. Bruna Rezende / Estúdio Gráza)",
- "versao": "R00-v2-corrigido",
- "inv": 19100,
+ "versao": "R00-v3-calibrado",
+ "inv": 7700,
  "mcAlvo": 37,
  "_nota": "CORRIGIDO (calibracao Apto CV): estrutura/fundos/prateleiras internas em MDF BRANCO (barato); so as faces aparentes/portas madeirado em COR. Contagem de chapa enxuta; espelho/LED reais. Marcenaria: gabinete de bancada (portas cava + gaveta + GAVETA TULHA ripada) + espelheira (portas de abrir espelhadas) + armarios altos de correr espelhados + nichos + LED. Espelho = nosso. FORA (regra): bancada QUARTZO branco (marmoraria); cuba Deca + bica Docol + bacia (loucas/metais); porcelanato (obra). Estimativa sobre executivo R00; valor a validar com o fundador.",
- "p": {"nf": 5, "parc": 7, "vend": 0, "rt": 10, "vis": 250, "outv": 0, "prog": 0.8, "coord": 1, "marc": 5, "serra": 0.2, "manut": 0.2, "log": 0, "erro": 2},
+ "p": {
+  "nf": 5,
+  "parc": 7,
+  "vend": 0,
+  "rt": 10,
+  "vis": 250,
+  "outv": 0,
+  "prog": 0.8,
+  "coord": 1,
+  "marc": 5,
+  "serra": 0.2,
+  "manut": 0.2,
+  "log": 0,
+  "erro": 2
+ },
  "lib": [
-  ["MDF", [["mdf cor 15 (faces/portas aparentes)", 500], ["mdf branco 15 (estrutura)", 260], ["mdf branco 6 (fundos)", 190]]],
-  ["Cola e fita", [["Fita de borda - cor - mt", 3], ["Colagem - mt linear - máquina", 2.5]]],
-  ["Dobradiças", [["Hardt", 8]]],
-  ["Corrediças", [["Oculta Hardt", 70]]],
-  ["Sistema portas correr espelhadas", [["Linea/RO65 + trilho (conj.)", 290]]],
-  ["Puxadores", [["Cava 35° usinada - mt", 50]]],
-  ["Iluminação", [["LED - fita + perfil - mt", 150]]],
-  ["Vidros e espelhos (m²)", [["Espelho prata", 600]]],
-  ["Especiais", [["Gaveta tulha ripada", 150], ["Consumíveis + toalheiro", 200]]]
+  [
+   "MDF",
+   [
+    [
+     "mdf cor 15 (faces/portas aparentes)",
+     500
+    ],
+    [
+     "mdf branco 15 (estrutura)",
+     260
+    ],
+    [
+     "mdf branco 6 (fundos)",
+     190
+    ]
+   ]
+  ],
+  [
+   "Cola e fita",
+   [
+    [
+     "Fita de borda - cor - mt",
+     3
+    ],
+    [
+     "Colagem - mt linear - máquina",
+     2.5
+    ]
+   ]
+  ],
+  [
+   "Dobradiças",
+   [
+    [
+     "Hardt",
+     8
+    ]
+   ]
+  ],
+  [
+   "Corrediças",
+   [
+    [
+     "Oculta Hardt",
+     70
+    ]
+   ]
+  ],
+  [
+   "Puxadores",
+   [
+    [
+     "Cava 35° usinada - mt",
+     50
+    ]
+   ]
+  ],
+  [
+   "Vidros e espelhos (m²)",
+   [
+    [
+     "Espelho prata",
+     600
+    ]
+   ]
+  ],
+  [
+   "Especiais",
+   [
+    [
+     "Consumíveis + montagem",
+     150
+    ]
+   ]
+  ]
  ],
  "ambientes": [
   {
    "nome": "Banho Master",
    "q": {
-    "MDF¦mdf cor 15 (faces/portas aparentes)": 3,
-    "MDF¦mdf branco 15 (estrutura)": 2,
-    "MDF¦mdf branco 6 (fundos)": 2,
-    "Cola e fita¦Fita de borda - cor - mt": 70,
-    "Cola e fita¦Colagem - mt linear - máquina": 70,
-    "Dobradiças¦Hardt": 12,
-    "Corrediças¦Oculta Hardt": 2,
-    "Sistema portas correr espelhadas¦Linea/RO65 + trilho (conj.)": 2,
-    "Puxadores¦Cava 35° usinada - mt": 6,
-    "Iluminação¦LED - fita + perfil - mt": 4,
-    "Vidros e espelhos (m²)¦Espelho prata": 2,
-    "Especiais¦Gaveta tulha ripada": 1,
-    "Especiais¦Consumíveis + toalheiro": 1
+    "MDF¦mdf cor 15 (faces/portas aparentes)": 2,
+    "MDF¦mdf branco 15 (estrutura)": 1,
+    "MDF¦mdf branco 6 (fundos)": 1,
+    "Cola e fita¦Fita de borda - cor - mt": 35,
+    "Cola e fita¦Colagem - mt linear - máquina": 35,
+    "Dobradiças¦Hardt": 6,
+    "Corrediças¦Oculta Hardt": 1,
+    "Puxadores¦Cava 35° usinada - mt": 2,
+    "Vidros e espelhos (m²)¦Espelho prata": 0.7,
+    "Especiais¦Consumíveis + montagem": 1
    },
-   "terc": {"vid": 0, "esq": 0, "ser": 0, "pin": 0, "est": 0, "laq": 0, "log": 0}
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
+   }
   }
  ],
  "ativo": 0,
  "diretrizes": "CORRIGIDO. Estrutura interna = branco; aparente = cor. MC 37%. Espelho nosso ~2 m². PEDRA + louças/metais FORA.",
- "duvidas": ["Área real de espelho (usei ~2 m²).", "Nº de armários de correr espelhados (usei 2).", "Validar valor com o fundador (banhos não vieram na proposta v2)."],
- "theme": "light"
+ "duvidas": [
+  "Material calibrado ao numero do fundador (~R$2.300). O espelho e a quantidade de mirror cabinetry sao o meu furo recorrente — medir o real.",
+  "Se Master > Social, ajustar (usei ~igual)."
+ ],
+ "theme": "light",
+ "_valorReal": "CALIBRADO ao fundador: material ~R$ 2.300 por banheiro -> (2.300+250)/0,33 = R$ 7.700. (Minhas estimativas anteriores 32.600 e depois 19.100 estavam ALTAS: inflei espelho e armarios de correr espelhados. Ver calibracao-apto-cv.md.)"
 }

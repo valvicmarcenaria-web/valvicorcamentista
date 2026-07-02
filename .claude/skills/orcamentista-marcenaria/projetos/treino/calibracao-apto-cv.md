@@ -50,3 +50,10 @@
 
 > Par pedagógico com `calibracao-camila.md`: lá eu **subestimei fita de ripado**; aqui **superestimei chapa (tudo cor)**.
 > Os dois furos moram no material — a regra é sempre **medir e classificar a chapa certa por peça**, não arredondar.
+
+## ⭐ Atualização (banheiros) — meu furo RECORRENTE: ESPELHO / mirror cabinetry
+- Fundador: **material de CADA banheiro ~R$ 2.300** → `(2.300+250)/0,33` = **~R$ 7.700/banheiro**.
+- Eu tinha estimado material R$ 6.050 (Master) e R$ 4.770 (Social) — **ainda ~2× altos** mesmo após a 1ª correção.
+- **Causa:** li **espelho demais** (2–4,5 m²) e **"armários de correr espelhados" demais**. Banheiro real = poucos m²
+  de espelho + caixaria simples (muito branco). **Regra:** espelho e mirror cabinetry são **caros e eu inflo sempre** —
+  medir o m² real de espelho (baixo!) e não multiplicar armário espelhado. Banheiro típico deste porte: **~R$ 2.300 material**.
