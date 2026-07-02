@@ -2,11 +2,14 @@
  "cliente": "Lilian Lee",
  "decoradora": "Jessica Sollero",
  "projeto": "Marcenaria completa (apto) — execução BH",
- "versao": "001-BH-MC45-1apass",
+ "versao": "002-BH-3linhas",
  "local": "Belo Horizonte (logística Vila Velha à parte)",
- "mcAlvo": 45,
+ "mcAlvo": [
+  35,
+  37,
+  42
+ ],
  "rt": 0,
- "investimento": 119000,
  "unidade_comunicacao": "chapas",
  "bom_chapas": {
   "Cozinha": {
@@ -85,11 +88,37 @@
   "visitas": 250,
   "material_compra": 37972.5
  },
- "fechamento": {
-  "fixedR": 39486,
-  "mcAlvo": 45,
-  "inv": 119000,
-  "mc_realizada": 45.0
- },
- "obs": "1a passada. Provençais MEDIDAS (método B moldura colada). Estrutura/corpo ESTIMADA por extensao das elevacoes (erra p/ cima). Ferragem assumida Hardt soft-close (garantia 5 anos) - confirmar marca. Puxadores Jador Decore estimados R$50-70. Logistica Vila Velha (~R$3,4-6k frete + ~22m3 toco) fica em linha SEPARADA. RT 0. Refino: levantamento peca-a-peca no app."
+ "obs": "1a passada. Provençais MEDIDAS (método B moldura colada). Estrutura/corpo ESTIMADA por extensao das elevacoes (erra p/ cima). Ferragem assumida Hardt soft-close (garantia 5 anos) - confirmar marca. Puxadores Jador Decore estimados R$50-70. Logistica Vila Velha (~R$3,4-6k frete + ~22m3 toco) fica em linha SEPARADA. RT 0. Refino: levantamento peca-a-peca no app.",
+ "linhas_3": {
+  "Essencial (2 anos)": {
+   "garantia": "2 anos",
+   "mc_alvo": 35,
+   "dobradica": "Padrão",
+   "corrediça": "Telescópica",
+   "material": 36932,
+   "fixedR": 38446,
+   "inv": 89000,
+   "mc_real": 35.0
+  },
+  "Conforto (5 anos)": {
+   "garantia": "5 anos",
+   "mc_alvo": 37,
+   "dobradica": "Hardt",
+   "corrediça": "Oculta Hardt",
+   "material": 37972,
+   "fixedR": 39486,
+   "inv": 96000,
+   "mc_real": 37.1
+  },
+  "Premium (10 anos)": {
+   "garantia": "10 anos",
+   "mc_alvo": 42,
+   "dobradica": "Hettich Sensys",
+   "corrediça": "Oculta Quadro Hettich",
+   "material": 43492,
+   "fixedR": 45006,
+   "inv": 124000,
+   "mc_real": 41.9
+  }
+ }
 }
