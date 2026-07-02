@@ -25,7 +25,7 @@
 | 2 | **Lavabo** *(gabinete curvo + revest. parede)* | ~R$ 4.700 | **~R$ 15.000** | ✅ estimado |
 | 3 | **Banho Master** *(gabinete+tulha + espelheira + 2 armários correr espelhados)* | ~R$ 10.500 | **~R$ 32.600** | ✅ estimado |
 | 4 | **Banho Social** *(vanity tulha basculante + 2 armários correr espelhados)* | ~R$ 8.700 | **~R$ 27.100** | ✅ estimado |
-| 5 | Circulação Íntima | — | — | ⏳ |
+| 5 | **Circulação Íntima** *(armário raso + porta embutida + estante)* | ~R$ 2.800 | **~R$ 9.200** | ✅ estimado |
 | 6 | Cozinha | — | — | ⏳ |
 | 7 | Sala *(SEM o rack)* | — | — | ⏳ |
 
@@ -102,3 +102,17 @@ Vanity (tulha basculante 45° + porta + 3 gavetas, todos cava) + 2 armários alt
 `preço = (8.700 + 250) / (0,70 − 0,37)` = 8.950 / 0,33 = **~R$ 27.100** (MC 37%).
 > **Fora (regra):** bancada **granito vermelho EXISTENTE** (marmoraria) · cuba Deca + misturador Docol + válvula/ducha (louças/metais) · **box de vidro** (vidraceiro) · porcelanato (obra).
 > JSON: `orcamento-apto-cv-banho-social.json`.
+
+## 5 · CIRCULAÇÃO ÍNTIMA — material ~R$ 2.800 → **~R$ 9.200**
+Marcenaria rasa de corredor (~40 cm): armário ~325×215 (2 portas branco + prat. + **porta de acesso embutida/camuflada** à sala) + estante de prateleiras (Elev. B). Cores mistas MDF branco (10) + bege (05).
+
+| Bloco | Estimativa | Custo |
+|---|---|---:|
+| MDF branco 15 (portas 10) + cor bege 15 (05) + fundo 6mm | 2+2 ch. 15mm + 2 ch. 6mm | R$ 1.900 |
+| Porta de acesso embutida (dobradiça oculta/pivô) | 1 | R$ 150 |
+| Dobradiças + puxador cava + suportes de prateleira | — | R$ 494 |
+| Fita + colagem + consumíveis | ~50 m | R$ 370 |
+| **Material** | | **~R$ 2.800** |
+
+`preço = (2.800 + 250) / (0,70 − 0,37)` = 3.050 / 0,33 = **~R$ 9.200** (MC 37%).
+> **06 = pintura branco neve** = obra (parede). JSON: `orcamento-apto-cv-circulacao.json`.
