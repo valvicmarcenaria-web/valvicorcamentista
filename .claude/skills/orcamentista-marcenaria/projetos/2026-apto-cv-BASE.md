@@ -22,7 +22,7 @@
 | # | Ambiente | Material | **Preço (MC 37%)** | Status |
 |---|---|---:|---:|:--:|
 | 1 | **Área de Serviço** | R$ 8.856 | **R$ 27.600** | ✅ estimado |
-| 2 | Lavabo | — | — | ⏳ |
+| 2 | **Lavabo** *(gabinete curvo + revest. parede)* | ~R$ 4.700 | **~R$ 15.000** | ✅ estimado |
 | 3 | Banho Master | — | — | ⏳ |
 | 4 | Banho Social | — | — | ⏳ |
 | 5 | Circulação Íntima | — | — | ⏳ |
@@ -50,3 +50,21 @@ Marcenaria wrap-around (3–4 paredes até o teto): gabinete inferior + torre al
 `preço = 9.106 / (0,70 − 0,37)` = 9.106 / 0,33 = **R$ 27.600** (divisor 0,70 · MC 37,0%).
 > **Fora (sinalizado):** bancada + rodabanca nanoglass/quartzo (marmoraria) · cuba-tanque + torneira (louças/metais).
 > **Detalhe:** friso "bit 5×5mm" nas laterais (usinagem CNC). Frisos/cava usinada = puxador embutido.
+
+## 2 · LAVABO — material ~R$ 4.700 → **~R$ 15.000**
+Marcenaria: **revestimento de parede em MDF madeirado** + **gabinete CURVO** sob a cuba (2 portas + prat. interna) + espelho + LED perfil.
+
+| Bloco | Estimativa | Custo |
+|---|---|---:|
+| MDF madeirado (01) — revest. parede (~3 ch.) + gabinete curvo (~2 ch.) | 5 ch. 15mm + 1 ch. 6mm | R$ 2.800 |
+| **Adicional CURVA** (+15% material do gabinete) | — | R$ 165 |
+| Espelho (terceirizado — nosso, confirmar) | ~1,5 m² | R$ 900 |
+| LED fita+perfil (atrás do espelho) | ~2 m | R$ 300 |
+| Dobradiças (Hardt) + puxador cava usinada | 4 + ~3 m | R$ 182 |
+| Fita cor + colagem + consumíveis | ~40 m | R$ 370 |
+| **Material** | | **~R$ 4.700** |
+
+`preço = (4.700 + 250) / (0,70 − 0,37)` = 4.950 / 0,33 = **~R$ 15.000** (MC 37%).
+> **Fora (regra):** cuba esculpida + tampo em **quartzito Allure** (marmoraria) · torneira/porta-toalha/papeleira/arandela.
+> **Curva:** gabinete curvo leva +15% material; avaliar +5% MC na peça curva (mantive MC 37 no ambiente).
+> JSON: `orcamento-apto-cv-lavabo.json`.
