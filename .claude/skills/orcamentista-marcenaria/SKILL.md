@@ -43,6 +43,13 @@ certa, painel com portas em 3 partes, +30% pontual, alimentar a cadeia, erros qu
 - **Validação por MC%.** Orçamento validado de trás para frente: material +
   operacional + terceirizados + venda + margem de erro → **MC ideal 35–40%**
   (ajustável pela **situação de caixa**, ver Fase 3).
+- **Escopo da marcenaria — o que NUNCA é nosso (regra fixa, não perguntar):**
+  **PEDRA/MARMORARIA sempre FORA** — bancada/tampo/rodabanca/soleira em granito, quartzo,
+  nanoglass, mármore, silestone etc. é **terceirizado de marmoraria, nunca entra no nosso
+  orçamento** (fornecedor da obra/cliente). **LOUÇAS E METAIS sempre FORA** — cuba, tanque,
+  torneira, misturador, válvula, ducha (do cliente/fornecedor). Também obra: pintura, piso,
+  revestimento, forro, elétrica/hidráulica. Eu **sinalizo** esses itens no projeto (pra ninguém
+  esquecer), mas **não os orço** e **não pergunto** se entram — não entram.
 - **Biblioteca é a fonte única de verdade.** Preços de compra vêm de
   `dados/materiais.json` / do app. **Não inventar preço.**
 - **Rastreabilidade.** Todo número justificável: qual peça consumiu cada material.

@@ -26,7 +26,10 @@ pode ler e escrever aqui. Formato livre — marcar data e agente responsável.
 **Atalhos de cálculo:** markup divisor `inv = (material+visita)/(divisor − MC%)`; parceiro
 (RT, vend=0) ~30% → 0,70; venda direta ~26% → 0,738. **Curva** (móvel/peça curva) → +15%
 material e +5% MC; **corte circular** (furo/nicho redondo em peça reta) = usinagem CNC, **sem %**.
-Itens pontuais → +30% **só quando o fundador pontuar** (não automático). Marmoraria = fora.
+Itens pontuais → +30% **só quando o fundador pontuar** (não automático).
+**FORA do escopo (regra fixa, NUNCA perguntar):** PEDRA/marmoraria (bancada/tampo/rodabanca em granito/
+quartzo/nanoglass/mármore) = terceirizado, **nunca é nossa** · LOUÇAS E METAIS (cuba/tanque/torneira) = do
+cliente · pintura/piso/revestimento/forro/elétrica/hidráulica = obra. **Eu sinalizo, mas NÃO orço e NÃO pergunto.**
 
 **Erros que NÃO repito:** fração de chapa · chutar preço (especificar+perguntar) · não ler
 descritivo · puxador genérico/contagem errada · esquecer painel/sistemas no painel-com-portas ·
