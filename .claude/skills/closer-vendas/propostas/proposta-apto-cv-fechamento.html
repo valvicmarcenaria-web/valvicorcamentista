@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4; margin: 0; }
+  @font-face{ font-family:"Aurora Valvic"; src:url("aurora-valvic.ttf"); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root{ --mostarda:#E0A521; --ouro:#B0892F; --carvao:#201C18; --carvao2:#2A2520; --creme:#F4ECDD;
+    --ivory:#FBF6EC; --taupe:#8C7E69; --linha:#E5D9BE; --texto:#2A2520; }
+  body{ font-family:"Helvetica Neue",Arial,sans-serif; color:var(--texto); font-size:10.5pt; line-height:1.6; }
+  .page{ width:210mm; min-height:297mm; padding:20mm 22mm; position:relative; background:#fff; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+  .serif{ font-family:Georgia,"Times New Roman",serif; font-weight:normal; }
+  h1,h2,h3{ font-family:Georgia,serif; font-weight:normal; }
+  .muted{ color:var(--taupe); } .gold{ color:var(--ouro); } .ital{ font-style:italic; }
+  .fw{ font-family:"Aurora Valvic"; letter-spacing:0; }
+  .eyebrow{ letter-spacing:5px; font-size:8.5pt; text-transform:uppercase; color:var(--ouro); }
+  .mono{ font-family:"Courier New",monospace; letter-spacing:1px; }
+
+  /* ---------- CAPA ---------- */
+  .cover{ padding:0; background:var(--creme); display:flex; flex-direction:column; }
+  .cover .top{ display:flex; justify-content:space-between; align-items:center; padding:12mm 18mm 8mm; }
+  .cover .brandmark{ font-size:20pt; color:var(--carvao); }
+  .cover .brandmark .st{ color:var(--ouro); font-family:Georgia,serif; margin-right:2mm; }
+  .cover .brandmark .fwv{ font-family:"Aurora Valvic"; }
+  .cover .badge{ font-size:8pt; letter-spacing:3px; text-transform:uppercase; color:var(--ouro);
+    border:1px solid var(--mostarda); border-radius:2mm; padding:2mm 5mm; }
+  .cover .hero{ margin:0 18mm; height:150mm; background:#3a332a; position:relative; overflow:hidden; }
+  .cover .hero img{ width:100%; height:100%; object-fit:cover; opacity:.62; }
+  .cover .heroband{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(32,28,24,.55),rgba(32,28,24,.15)); }
+  .cover .foot{ padding:11mm 18mm 14mm; }
+  .cover .foot .rule{ height:1px; background:var(--linha); margin-bottom:8mm; }
+  .cover .name{ font-size:44pt; line-height:1.02; color:var(--carvao); margin:2mm 0 3mm; }
+  .cover .sub{ font-size:12pt; color:var(--texto); }
+  .cover .proj{ font-size:12pt; color:var(--taupe); font-style:italic; margin-top:1.5mm; }
+  .cover .meta{ text-align:right; font-family:"Courier New",monospace; font-size:9pt; color:var(--taupe);
+    letter-spacing:1px; }
+  .cover .frow{ display:flex; justify-content:space-between; align-items:flex-end; }
+
+  /* ---------- PÁGINA POR QUE VALVIC ---------- */
+  .hl{ font-family:Georgia,serif; font-size:30pt; line-height:1.12; color:var(--carvao); }
+  .hl .it{ font-style:italic; color:var(--ouro); }
+  .lead{ font-size:10.5pt; color:#5b5347; line-height:1.6; max-width:150mm; margin-top:5mm; }
+  .split{ display:flex; gap:10mm; margin-top:11mm; align-items:stretch; }
+  .split .imgcol{ width:74mm; background:#2a2520; border-radius:1mm; overflow:hidden; }
+  .split .imgcol img{ width:100%; height:100%; object-fit:cover; min-height:150mm; }
+  .split .rz{ flex:1; }
+  .reasons .rh{ font-size:8pt; letter-spacing:3px; text-transform:uppercase; color:var(--ouro); margin-bottom:7mm; }
+  .reason{ display:flex; gap:5mm; padding:5mm 0; border-top:1px solid var(--linha); }
+  .reason:first-of-type{ border-top:none; padding-top:0; }
+  .reason .ic{ width:9mm; height:9mm; min-width:9mm; border-radius:50%; border:1px solid var(--mostarda);
+    color:var(--ouro); display:flex; align-items:center; justify-content:center; font-size:10pt; }
+  .reason .rt{ font-family:Georgia,serif; font-size:13pt; color:var(--carvao); }
+  .reason .rk{ font-family:"Courier New",monospace; font-size:7pt; letter-spacing:1px; color:var(--ouro);
+    text-transform:uppercase; margin:1mm 0 1.5mm; }
+  .reason .rd{ font-size:9pt; color:#5b5347; line-height:1.45; }
+
+  /* ---------- PÁGINA PROCESSO (dark) ---------- */
+  .dark{ background:var(--carvao); color:#EFE7D6; }
+  .dark .hl{ color:#F3ECDD; } .dark .hl .it{ color:#B0892F; }
+  .dark .lead{ color:#b6ab97; }
+  .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:17mm 8mm; margin-top:16mm; }
+  .step .sn{ width:11mm; height:11mm; border-radius:50%; border:1px solid rgba(224,165,33,.55); color:var(--mostarda);
+    font-family:Georgia,serif; font-size:11pt; display:flex; align-items:center; justify-content:center; margin-bottom:4mm; }
+  .step .stt{ font-family:Georgia,serif; font-size:12pt; color:#F3ECDD; margin-bottom:2mm; min-height:12mm; }
+  .step .sd{ font-size:8.3pt; color:#9c917d; line-height:1.45; }
+  .dclose{ margin-top:18mm; border-top:1px solid rgba(224,165,33,.3); padding-top:6mm; display:flex; align-items:baseline; gap:5mm; }
+  .dclose .di{ font-family:Georgia,serif; font-size:20pt; color:var(--mostarda); line-height:.8; }
+  .dclose .dt{ font-family:Georgia,serif; font-style:italic; font-size:12.5pt; color:#c9bda4; line-height:1.5; }
+
+  /* ---------- DESCRITIVO ---------- */
+  .subline{ font-family:Georgia,serif; font-style:italic; font-size:11pt; color:var(--taupe); margin-top:3mm; }
+  .noteline{ font-family:"Courier New",monospace; font-size:7.5pt; letter-spacing:.5px; color:var(--ouro);
+    text-transform:uppercase; padding:3mm 0; border-top:1px solid var(--linha); border-bottom:1px solid var(--linha); margin:5mm 0 2mm; }
+  .amb{ margin-top:4.5mm; }
+  .amb .ah{ display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid var(--carvao);
+    padding-bottom:1.6mm; }
+  .amb .an{ font-family:Georgia,serif; font-size:13.5pt; color:var(--carvao); text-transform:uppercase; letter-spacing:.5px; }
+  .amb .an small{ font-family:"Courier New",monospace; font-size:8pt; color:var(--taupe); text-transform:none; letter-spacing:.5px; margin-left:3mm; }
+  .amb .ap{ font-family:"Courier New",monospace; font-size:8.5pt; color:var(--carvao); text-align:right; line-height:1.25; }
+  .amb .ap b{ font-family:Georgia,serif; font-size:12pt; }
+  .item{ display:flex; align-items:baseline; gap:4mm; padding:1.9mm 0; border-bottom:1px solid #f0eadd; }
+  .item .in{ font-family:"Courier New",monospace; font-size:8pt; color:var(--ouro); width:6mm; }
+  .item .id{ flex:1; font-size:9.3pt; color:#5b5347; }
+  .item .id b{ color:var(--carvao); font-weight:600; }
+  .item .tag{ font-family:"Courier New",monospace; font-size:7pt; letter-spacing:.5px; color:var(--taupe); text-transform:uppercase; white-space:nowrap; }
+  .drow{ display:flex; justify-content:space-between; align-items:baseline; gap:8mm; padding:2.7mm 0; border-bottom:1px solid var(--linha); }
+  .drow:last-of-type{ border-bottom:none; }
+  .dn{ font-family:Georgia,serif; font-size:13pt; color:var(--carvao); text-transform:uppercase; letter-spacing:.5px; }
+  .dd{ font-size:8.8pt; color:#6a6155; margin-top:1mm; max-width:140mm; line-height:1.35; }
+  .dprice{ font-family:"Courier New",monospace; font-size:8.5pt; color:var(--carvao); text-align:right; line-height:1.35; white-space:nowrap; }
+  .dprice b{ font-family:Georgia,serif; font-size:13pt; }
+  .totline{ display:flex; justify-content:space-between; align-items:center; margin-top:6mm; padding:5mm 7mm; background:var(--carvao); color:#F3ECDD; border-radius:2mm; }
+  .totline .tll{ font-family:Georgia,serif; font-size:13pt; color:var(--mostarda); display:block; }
+  .totline .tls{ font-size:8pt; color:#b6ab97; display:block; margin-top:1mm; }
+  .totline .tlv{ font-family:Georgia,serif; font-size:24pt; color:var(--mostarda); white-space:nowrap; }
+  .incl{ font-size:8.7pt; color:var(--taupe); margin-top:4mm; line-height:1.5; }
+  .incl b{ color:var(--carvao); }
+
+  /* ---------- DEPOIMENTO ---------- */
+  .quotepg{ padding:0; display:flex; height:297mm; }
+  .quotepg .ql{ width:50%; background:var(--creme); padding:34mm 16mm; display:flex; flex-direction:column; justify-content:center; }
+  .quotepg .qr{ width:50%; background:#2a2520; overflow:hidden; }
+  .quotepg .qr img{ display:block; width:100%; height:297mm; object-fit:cover; }
+  .quotepg .qeye{ font-size:8pt; letter-spacing:4px; text-transform:uppercase; color:var(--ouro); }
+  .quotepg .qmark{ font-family:Georgia,serif; font-size:44pt; color:var(--mostarda); line-height:.6; margin:6mm 0 4mm; }
+  .quotepg .qt{ font-family:Georgia,serif; font-style:italic; font-size:15pt; line-height:1.55; color:var(--carvao); }
+  .quotepg .qrule{ width:22mm; height:1px; background:var(--ouro); margin:8mm 0 5mm; }
+  .quotepg .qn{ font-family:Georgia,serif; font-size:12pt; color:var(--carvao); }
+  .quotepg .qm{ font-size:8pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); margin-top:1mm; }
+
+  /* ---------- INVESTIMENTO ---------- */
+  .invhead{ background:var(--carvao); color:#EFE7D6; margin:-20mm -22mm 4mm; padding:8mm 22mm 5mm; }
+  .invhead .eyebrow{ color:var(--mostarda); }
+  .invhead h2{ font-size:21pt; color:#F3ECDD; margin:1mm 0 1mm; }
+  .invhead p{ color:#b6ab97; font-size:9.5pt; }
+  .cards{ display:flex; gap:6mm; margin-bottom:3mm; }
+  .card{ flex:1; border:1px solid var(--linha); border-radius:2mm; padding:3.5mm 5.5mm; background:var(--ivory); }
+  .card.reco{ border:1.6px solid var(--mostarda); background:#fff; }
+  .card .ck{ font-size:7.5pt; letter-spacing:2.5px; text-transform:uppercase; color:var(--taupe); }
+  .card.reco .ck{ color:var(--ouro); }
+  .card .cn{ font-family:Georgia,serif; font-size:15pt; color:var(--carvao); margin:1mm 0 1mm; }
+  .card .cd{ font-size:8.4pt; color:#5b5347; line-height:1.4; min-height:8mm; }
+  .card .cd b{ color:var(--carvao); }
+  .card .cv{ font-family:"Courier New",monospace; font-size:17pt; color:var(--taupe); letter-spacing:1px; margin-top:1.5mm; }
+  .card.reco .cv{ color:var(--ouro); }
+  .invtab{ width:100%; border-collapse:collapse; }
+  .invtab .th td{ font-size:7.5pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe);
+    padding:2mm 3mm; border-bottom:1px solid var(--mostarda); }
+  .invtab td{ padding:1.45mm 3mm; font-size:9.3pt; border-bottom:1px solid #f0eadd; }
+  .invtab .g{ text-align:right; font-family:"Courier New",monospace; color:var(--carvao); white-space:nowrap; }
+  .invtab .e{ text-align:right; font-family:"Courier New",monospace; color:var(--taupe); white-space:nowrap; }
+  .invtab .tot td{ border-bottom:none; border-top:1.4px solid var(--mostarda); background:var(--ivory);
+    font-family:Georgia,serif; font-size:11pt; padding-top:2.6mm; padding-bottom:2.6mm; }
+  .invtab .tot .g{ color:var(--ouro); font-size:12pt; }
+  .th2{ font-size:7.5pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); margin:3.5mm 0 .5mm; }
+  .paytab{ width:100%; border-collapse:collapse; }
+  .paytab td{ padding:1.6mm 3mm; font-size:9.3pt; border-bottom:1px solid #f0eadd; }
+  .paytab .d{ text-align:right; font-family:"Courier New",monospace; font-size:8.5pt; letter-spacing:.5px; color:var(--ouro); white-space:nowrap; }
+  .paytab .dn{ color:var(--taupe); }
+  .boxes{ display:flex; gap:5mm; margin-top:4mm; }
+  .box{ flex:1; text-align:center; border-radius:2mm; padding:3mm 4mm; }
+  .box.dk{ background:var(--carvao); color:#EFE7D6; } .box.gd{ background:var(--ouro); color:#fff; }
+  .box.lt{ background:var(--ivory); color:var(--carvao); border:1px solid var(--linha); }
+  .box .bk{ font-size:7pt; letter-spacing:2.5px; text-transform:uppercase; opacity:.75; }
+  .box .bv{ font-family:Georgia,serif; font-size:17pt; margin:.8mm 0 .5mm; }
+  .box .bs{ font-size:7.5pt; opacity:.8; }
+  .escopo{ font-size:8pt; color:var(--taupe); margin-top:3.5mm; line-height:1.4; border-top:1px solid var(--linha); padding-top:2.5mm; }
+  .escopo b{ color:var(--carvao); }
+  /* deal de fechamento */
+  .dealbox{ border:1.6px solid var(--mostarda); border-radius:3mm; overflow:hidden; margin-bottom:6mm; }
+  .dealtop{ display:flex; justify-content:space-between; align-items:center; padding:6mm 9mm; background:var(--ivory); gap:8mm; }
+  .dealtop .dtk{ font-size:8pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); margin-bottom:2mm; }
+  .dealtop .dtold{ font-family:Georgia,serif; font-size:15pt; color:var(--taupe); text-decoration:line-through; }
+  .dealtop .dtdisc{ font-family:"Courier New",monospace; font-size:8.5pt; letter-spacing:.5px; color:var(--ouro); margin-top:2mm; }
+  .dealtop .dt-r{ text-align:right; } .dealtop .dtkr{ font-size:8pt; letter-spacing:2px; text-transform:uppercase; color:var(--ouro); margin-bottom:1mm; }
+  .dealtop .dtnew{ font-family:Georgia,serif; font-size:30pt; color:var(--ouro); line-height:1; }
+  .dealpay{ display:flex; align-items:center; justify-content:center; gap:9mm; padding:8mm 9mm; background:var(--carvao); }
+  .dealpay .pp{ text-align:center; } .dealpay .ppk{ font-size:8pt; letter-spacing:1.5px; text-transform:uppercase; color:#b6ab97; margin-bottom:2.5mm; }
+  .dealpay .ppv{ font-family:Georgia,serif; font-size:19pt; color:#F3ECDD; } .dealpay .pp.big .ppv{ font-size:26pt; color:var(--mostarda); }
+  .dealpay .ppv span{ font-family:"Helvetica Neue",Arial,sans-serif; font-size:9pt; color:#b6ab97; letter-spacing:.5px; }
+  .dealpay .ppplus{ font-family:Georgia,serif; font-size:22pt; color:var(--mostarda); }
+  .dealnote{ text-align:center; font-size:8.5pt; color:var(--taupe); padding:3.5mm; background:var(--ivory); border-top:1px solid var(--linha); }
+
+  /* diferença entre as linhas — comparação visual */
+  .diff{ margin-top:5mm; }
+  .diff .de{ font-size:8.5pt; letter-spacing:2px; text-transform:uppercase; color:var(--ouro); }
+  .diff .dp{ font-size:9pt; color:#6a6155; margin:1.5mm 0 3mm; }
+  .diffcols{ display:flex; gap:5mm; align-items:stretch; }
+  .diffcol{ flex:1; border:1px solid var(--linha); border-radius:2mm; padding:3.2mm 5mm; background:#fff; }
+  .diffcol.g{ border:1.5px solid var(--mostarda); background:var(--ivory); }
+  .diffcol .dcn{ font-family:Georgia,serif; font-size:12.5pt; color:var(--carvao); }
+  .diffcol.g .dcn{ color:var(--ouro); }
+  .diffcol .dck{ font-family:"Courier New",monospace; font-size:7pt; letter-spacing:.5px; text-transform:uppercase; color:var(--taupe); margin:.5mm 0 2.5mm; }
+  .diffcol .dcf{ font-size:8.7pt; color:#5b5347; line-height:1.55; }
+  .diffcol .dcf b{ color:var(--carvao); } .diffcol.g .dcf b{ color:var(--ouro); }
+
+  /* CTA */
+  .cta h2{ font-size:24pt; color:var(--carvao); }
+  .cta .ctd{ font-size:10.5pt; color:#5b5347; margin-top:3mm; max-width:120mm; }
+  .warranty{ margin-top:12mm; background:var(--carvao); border-radius:3mm; padding:9mm 10mm; display:flex; gap:9mm;
+    align-items:center; position:relative; overflow:hidden; }
+  .warranty .wring{ position:absolute; width:70mm; height:70mm; border:1px solid rgba(224,165,33,.22); border-radius:50%; right:-24mm; top:-26mm; }
+  .warranty .wshield{ width:28mm; min-width:28mm; text-align:center; position:relative; z-index:2; }
+  .warranty .wshield svg{ width:26mm; height:auto; }
+  .warranty .wbody{ position:relative; z-index:2; }
+  .warranty .weye{ font-size:8pt; letter-spacing:3px; text-transform:uppercase; color:var(--mostarda); }
+  .warranty .wt{ font-family:Georgia,serif; font-size:23pt; color:#F3ECDD; margin:2mm 0 3mm; }
+  .warranty .wd{ font-size:10pt; color:#c9bda4; line-height:1.55; max-width:120mm; }
+  .warranty .wd b{ color:var(--mostarda); }
+  .closecols{ display:flex; gap:8mm; margin-top:11mm; }
+  .closecols > div{ flex:1; padding-top:4mm; }
+  .closecols .l1{ border-top:2px solid var(--mostarda); } .closecols .l2{ border-top:2px solid var(--linha); }
+  .closecols .ce{ font-size:8pt; letter-spacing:3px; text-transform:uppercase; color:var(--ouro); margin-bottom:2mm; }
+  .closecols p{ font-size:9.5pt; color:#5b5347; line-height:1.55; }
+</style>
+</head>
+<body>
+
+<!-- ============ 1 · CAPA ============ -->
+<div class="page cover">
+  <div class="top">
+    <span class="brandmark"><span class="st">✦</span><span class="fwv">Valvic</span></span>
+    <span class="badge">Fechamento · Linha Essencial</span>
+  </div>
+  <div class="hero">
+    <img src="img/cv-hero.jpg" alt="">
+    <div class="heroband"></div>
+  </div>
+  <div class="foot">
+    <div class="rule"></div>
+    <div class="frow">
+      <div>
+        <div class="eyebrow">Proposta de fechamento</div>
+        <div class="name serif">Ana Carolina</div>
+        <div class="sub">Marcenaria completa sob medida — 10 ambientes</div>
+        <div class="proj serif">Estúdio Gráza — Arquiteta Bruna Rezende</div>
+      </div>
+      <div class="meta">02/07/2026<br>Ref. Linha Essencial</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 2 · POR QUE VALVIC ============ -->
+<div class="page">
+  <div class="eyebrow" style="margin-bottom:6mm;">Parabéns pela decisão</div>
+  <div class="hl">Você escolheu<br><span class="it">quem faz com cuidado</span><br>cada detalhe.</div>
+  <p class="lead">Ana Carolina, é uma alegria ter o seu sim. A partir de agora, o seu apartamento passa a ser
+  cuidado por quem projeta, produz e instala — a Valvic inteira a serviço da sua escolha.</p>
+
+  <div class="split">
+    <div class="imgcol"><img src="img/cv-cozinha.jpg" alt=""></div>
+    <div class="rz reasons">
+      <div class="rh">4 razões que confirmam a sua escolha</div>
+      <div class="reason">
+        <div class="ic">★</div>
+        <div><div class="rt">Ferragem oculta com soft-close</div>
+          <div class="rk">Corrediças ocultas Hardt · garantia de 5 anos</div>
+          <div class="rd">Movimento suave e silencioso em todas as gavetas e portas, com ferragens de
+          qualidade e garantia formal de 5 anos em contrato.</div></div>
+      </div>
+      <div class="reason">
+        <div class="ic">■</div>
+        <div><div class="rt">Engenharia digital antes do corte</div>
+          <div class="rk">Software especializado · aprovação prévia</div>
+          <div class="rd">O projeto do Estúdio Gráza vira marcenaria em software antes de qualquer chapa
+          ser cortada. Zero improviso em obra.</div></div>
+      </div>
+      <div class="reason">
+        <div class="ic">◆</div>
+        <div><div class="rt">Equipe própria do início ao fim</div>
+          <div class="rk">Sem terceirização · responsabilidade total</div>
+          <div class="rd">Quem projeta é quem produz é quem instala. Não há elo solto na cadeia — a
+          responsabilidade não muda de mão.</div></div>
+      </div>
+      <div class="reason">
+        <div class="ic">☎</div>
+        <div><div class="rt">Suporte real pós-entrega</div>
+          <div class="rk">Garantia em contrato · acompanhamento</div>
+          <div class="rd">Garantia formal de 5 anos assinada em contrato. Não sumimos após o
+          pagamento — estamos aqui quando você precisar.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 3 · PROCESSO (dark) ============ -->
+<div class="page dark">
+  <div class="eyebrow" style="margin-bottom:6mm;">Daqui em diante</div>
+  <div class="hl">Quem faz, responde —<br><span class="it">do aceite à montagem.</span></div>
+  <p class="lead">Anos de fábrica, equipe própria, compromisso com cada detalhe — do primeiro contato ao
+  pós-entrega.</p>
+  <div class="steps">
+    <div class="step"><div class="sn">1</div><div class="stt">Alinhamento</div><div class="sd">Entendemos o escopo e o ambiente antes de qualquer número. A visita define o que será executado.</div></div>
+    <div class="step"><div class="sn">2</div><div class="stt">Detalhamento Técnico</div><div class="sd">O projeto do arquiteto vira instrução de fábrica. Cada medida verificada para encaixar com precisão.</div></div>
+    <div class="step"><div class="sn">3</div><div class="stt">Programação</div><div class="sd">Data de produção definida antes de iniciar. Entrada em fila com prazo comunicado.</div></div>
+    <div class="step"><div class="sn">4</div><div class="stt">Produção</div><div class="sd">Corte, montagem e furação com os processos acumulados em anos de fábrica.</div></div>
+    <div class="step"><div class="sn">5</div><div class="stt">Acabamento</div><div class="sd">Borda e detalhe de superfície revisados antes do módulo entrar em embalagem.</div></div>
+    <div class="step"><div class="sn">6</div><div class="stt">Conferência</div><div class="sd">Cada peça testada, cada ferragem montada e verificada antes de sair da fábrica.</div></div>
+    <div class="step"><div class="sn">7</div><div class="stt">Entrega &amp; Montagem</div><div class="sd">Equipe própria. Do caminhão ao parafuso final — sem terceirização de montagem.</div></div>
+    <div class="step"><div class="sn">8</div><div class="stt">Compromisso Contínuo</div><div class="sd">Ferragem tem garantia. Dúvida tem resposta. A relação não encerra na entrega.</div></div>
+  </div>
+  <div class="dclose"><span class="di">✦</span><span class="dt">Do primeiro contato ao pós-entrega, cada etapa é conduzida por quem vai executar — sem terceirização.</span></div>
+</div>
+
+<!-- ============ 4 · DESCRITIVO pt1 ============ -->
+<div class="page">
+  <div class="eyebrow" style="margin-bottom:4mm;">O projeto · descritivo</div>
+  <div class="hl" style="font-size:25pt;">O que vamos executar para você.</div>
+  <div class="subline" style="margin-top:2mm;">Apto CV — 10 ambientes · Arquiteta Bruna Rezende / Estúdio Gráza</div>
+  <div class="noteline" style="margin:4mm 0 1mm;">Linha Essencial — ferragens ocultas Hardt · garantia de 5 anos · iluminação LED inclusa</div>
+
+  <div style="margin-top:4mm;">
+    <div class="drow"><div><div class="dn">Cozinha</div><div class="dd">Em U + ilha central + torres de eletros e despensa + cristaleira canelada, com LED.</div></div><div class="dprice"><b>R$ 33.500</b></div></div>
+    <div class="drow"><div><div class="dn">Portas Divisoras</div><div class="dd">3 portas deslizantes: sistema mão-amiga, amortecimento e trilho embutido no gesso.</div></div><div class="dprice"><b>R$ 16.900</b></div></div>
+    <div class="drow"><div><div class="dn">Área de Serviço</div><div class="dd">Inferiores para o tanque + torre piso-teto (despensa) + aéreos até o teto com LED.</div></div><div class="dprice"><b>R$ 11.500</b></div></div>
+    <div class="drow"><div><div class="dn">Sala · Louceiro</div><div class="dd">Louceiro com gavetas e nichos sob bancada + porta de acesso camuflada no painel.</div></div><div class="dprice"><b>R$ 10.600</b></div></div>
+    <div class="drow"><div><div class="dn">Painel Hall</div><div class="dd">Painel de parede e teto com 2 portas pivotantes (reforço metalon) e puxador cava.</div></div><div class="dprice"><b>R$ 9.800</b></div></div>
+    <div class="drow"><div><div class="dn">Painel de TV</div><div class="dd">Painel liso em madeirado fosco, com passagem de fiação.</div></div><div class="dprice"><b>R$ 8.900</b></div></div>
+    <div class="drow"><div><div class="dn">Banho Master</div><div class="dd">Gabinete (gaveta tulha ripada) + espelheira + armários de correr espelhados, com LED.</div></div><div class="dprice"><b>R$ 7.500</b></div></div>
+    <div class="drow"><div><div class="dn">Banho Social</div><div class="dd">Gabinete com tulha basculante 45° e gavetas + armários de correr espelhados.</div></div><div class="dprice"><b>R$ 6.900</b></div></div>
+    <div class="drow"><div><div class="dn">Lavabo</div><div class="dd">Gabinete curvo suspenso com espelho e LED.</div></div><div class="dprice"><b>R$ 4.700</b></div></div>
+    <div class="drow"><div><div class="dn">Circulação Íntima</div><div class="dd">Armário com prateleiras + porta de acesso integrada.</div></div><div class="dprice"><b>R$ 3.900</b></div></div>
+  </div>
+
+  <div class="totline">
+    <div><span class="tll">Investimento total</span><span class="tls">Marcenaria dos 10 ambientes · linha Essencial</span></div>
+    <div class="tlv">R$ 114.200</div>
+  </div>
+  <p class="incl"><b>Tudo incluso:</b> marcenaria, ferragens ocultas Hardt, vidros e espelhos dos móveis e
+  <b>iluminação LED</b>. Garantia de 5 anos em contrato.</p>
+</div>
+
+<!-- ============ 6 · DEPOIMENTO ============ -->
+<div class="page quotepg">
+  <div class="ql">
+    <div class="qeye">Quem já viveu</div>
+    <div class="qmark">&#8221;</div>
+    <div class="qt">Eu estou apaixonada… e não é só pela beleza… mas o comprometimento e dedicação desde o
+    orçamento, até execução e entrega. Indico de olhos fechados!!!</div>
+    <div class="qrule"></div>
+    <div class="qn serif">Graciene</div>
+    <div class="qm">Projeto executado · BH</div>
+  </div>
+  <div class="qr"><img src="img/cv-depo.jpg" alt=""></div>
+</div>
+
+<!-- ============ 7 · INVESTIMENTO ============ -->
+<div class="page">
+  <div class="invhead">
+    <div class="eyebrow">Condição de fechamento</div>
+    <h2 class="serif">Sua condição especial.</h2>
+    <p>A decisão está tomada — e ela merece a melhor condição de pagamento.</p>
+  </div>
+
+  <div class="dealbox">
+    <div class="dealtop">
+      <div class="dt-l">
+        <div class="dtk">Investimento · linha Essencial</div>
+        <div class="dtold">R$ 114.200</div>
+        <div class="dtdisc">Desconto de fechamento · 5% &nbsp;=&nbsp; −R$ 5.710</div>
+      </div>
+      <div class="dt-r">
+        <div class="dtkr">Total com desconto</div>
+        <div class="dtnew">R$ 108.490</div>
+      </div>
+    </div>
+    <div class="dealpay">
+      <div class="pp"><div class="ppk">Entrada · 30%</div><div class="ppv">R$ 32.547</div></div>
+      <div class="ppplus">+</div>
+      <div class="pp big"><div class="ppk">Cartão · sem juros</div><div class="ppv">10× R$ 7.594<span>&nbsp;/mês</span></div></div>
+    </div>
+    <div class="dealnote">Saldo de <b>R$ 75.943</b> parcelado em <b>10× sem juros</b> no cartão de crédito. Desconto de 5% aplicado sobre o investimento total.</div>
+  </div>
+
+  <div class="boxes">
+    <div class="box dk"><div class="bk">Prazo de entrega</div><div class="bv serif">60–70</div><div class="bs">dias úteis</div></div>
+    <div class="box gd"><div class="bk">Garantia</div><div class="bv serif">5 anos</div><div class="bs">estrutura e ferragens · em contrato</div></div>
+    <div class="box lt"><div class="bk">Validade</div><div class="bv serif">7</div><div class="bs">dias</div></div>
+  </div>
+
+  <p class="escopo"><b>Incluso (por nossa conta):</b> marcenaria, ferragens ocultas Hardt, vidros/espelhos dos móveis e
+  <b>iluminação LED</b>. <b>Por conta do cliente:</b> pedras, louças e metais, eletrodomésticos, revestimentos e obra
+  civil. Valores estimados sobre o executivo R00 — medidas a conferir no local.</p>
+</div>
+
+<!-- ============ 8 · CTA ============ -->
+<div class="page">
+  <div class="eyebrow" style="margin-bottom:6mm;">Bem-vinda à Valvic</div>
+  <div class="cta">
+    <h2 class="serif">Obrigado pela sua confiança, Ana Carolina.</h2>
+    <p class="ctd">É uma honra transformar o projeto do Estúdio Gráza em realidade dentro da sua casa. A partir
+    daqui, cada etapa é conduzida com o cuidado que a sua decisão merece.</p>
+  </div>
+
+  <div class="warranty">
+    <div class="wring"></div>
+    <div class="wshield">
+      <svg viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg">
+        <path d="M24 2 L44 10 V27 C44 40 35 50 24 54 C13 50 4 40 4 27 V10 Z" fill="rgba(224,165,33,0.14)" stroke="#E0A521" stroke-width="2"/>
+        <path d="M15 28 l6 6 l12 -14" fill="none" stroke="#E0A521" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="wbody">
+      <div class="weye">A sua escolha, protegida</div>
+      <div class="wt">Garantia de 5 anos em contrato.</div>
+      <div class="wd">Ferragens ocultas com <b>abertura suave e silenciosa</b>, marcenaria feita por quem projeta,
+      produz e instala — tudo <b>coberto por 5 anos</b> em contrato. Não sumimos após a entrega: seguimos com você.</div>
+    </div>
+  </div>
+
+  <div class="closecols">
+    <div class="l1">
+      <div class="ce">Próximos passos</div>
+      <p>Confirmação da condição · agendamento da <b>conferência de medidas no local</b> · assinatura do contrato
+      e entrada em produção.</p>
+    </div>
+    <div class="l2">
+      <div class="ce">A sua condição</div>
+      <p><b style="color:var(--carvao);">R$ 108.490</b> com 5% de desconto — <b>entrada de R$ 32.547</b> e
+      <b>10× de R$ 7.594 sem juros</b> no cartão.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
