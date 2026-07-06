@@ -130,7 +130,12 @@
   .lam .frame::before{ content:""; position:absolute; inset:0; background:radial-gradient(circle at 30% 25%, rgba(194,160,90,.10), transparent 55%); }
   .lam .frame .mimg{ width:78%; height:auto; color:var(--navy); position:relative; z-index:1; }
   .lam .frame .ph-tag{ position:absolute; bottom:12px; left:14px; font-size:8.5px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); z-index:2; }
-  .lam .frame .price-fx{ position:absolute; top:14px; right:16px; text-align:right; z-index:2; }
+  /* slot de foto real: se o arquivo existir, cobre a ilustração; se não, o onerror remove e a ilustração aparece */
+  .lam .frame .photo, .duo .item .iframe .photo{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:3; }
+  .lam .frame.has-photo .mimg, .lam .frame.has-photo .frame::before, .duo .item .iframe.has-photo .mimg{ display:none; }
+  .lam .frame.has-photo .ph-tag{ display:none; }
+  .lam .frame .price-fx{ position:absolute; top:14px; right:16px; text-align:right; z-index:6; background:rgba(251,250,247,.92); padding:6px 12px; border-radius:9px; }
+  .duo .item .iframe{ position:relative; overflow:hidden; }
   .lam .frame .price-fx .pl{ font-size:8.5px; letter-spacing:1.4px; text-transform:uppercase; color:var(--muted); }
   .lam .frame .price-fx .pv{ font-family:'Cormorant Garamond',serif; font-size:34px; font-weight:700; color:var(--navy); line-height:1; }
   .lam .info{ flex:1; display:flex; flex-direction:column; min-width:0; }
@@ -400,7 +405,7 @@
   </div>
   <div class="body">
     <div class="lam">
-      <div class="visual"><div class="frame">
+      <div class="visual"><div class="frame"><img class="photo" src="img-maquinas/raizen-spectra-7gt.jpg" alt="Raizen Spectra 7GT" onerror="this.remove()" onload="this.closest('.frame,.iframe').classList.add('has-photo')">
         <div class="price-fx"><div class="pl">Valor de feira</div><div class="pv">R$ 160 mil</div></div>
         <svg class="mimg" viewBox="0 0 320 180" fill="none"><rect x="20" y="100" width="240" height="36" rx="3" stroke="currentColor" stroke-width="2.4"/><line x1="42" y1="136" x2="42" y2="166" stroke="currentColor" stroke-width="2.4"/><line x1="238" y1="136" x2="238" y2="166" stroke="currentColor" stroke-width="2.4"/><rect x="0" y="110" width="120" height="12" fill="currentColor" opacity="0.13"/><rect x="200" y="110" width="120" height="12" fill="currentColor" opacity="0.13"/><rect x="62" y="68" width="150" height="20" rx="5" stroke="currentColor" stroke-width="2.4"/><circle cx="84" cy="78" r="6" stroke="currentColor" stroke-width="2"/><circle cx="112" cy="78" r="6" stroke="currentColor" stroke-width="2"/><circle cx="140" cy="78" r="6" stroke="currentColor" stroke-width="2"/><circle cx="168" cy="78" r="6" stroke="currentColor" stroke-width="2"/><circle cx="196" cy="78" r="6" stroke="currentColor" stroke-width="2"/><rect x="266" y="48" width="40" height="88" rx="3" stroke="currentColor" stroke-width="2.4"/><rect x="274" y="58" width="24" height="18" rx="2" fill="currentColor" opacity="0.22"/><circle cx="278" cy="90" r="3" fill="currentColor"/><circle cx="290" cy="90" r="3" fill="currentColor"/><circle cx="40" cy="58" r="18" stroke="currentColor" stroke-width="2.4"/><circle cx="40" cy="58" r="5" fill="currentColor"/></svg>
         <div class="ph-tag">Ilustração esquemática · coladeira de bordas</div>
@@ -436,7 +441,7 @@
   </div>
   <div class="body">
     <div class="lam">
-      <div class="visual"><div class="frame">
+      <div class="visual"><div class="frame"><img class="photo" src="img-maquinas/usikraft-pegasus-1100.jpg" alt="Usikraft Pegasus 1100" onerror="this.remove()" onload="this.closest('.frame,.iframe').classList.add('has-photo')">
         <div class="price-fx"><div class="pl">Valor de feira</div><div class="pv">R$ 200 mil</div></div>
         <svg class="mimg" viewBox="0 0 320 180" fill="none"><rect x="16" y="100" width="252" height="38" rx="3" stroke="currentColor" stroke-width="2.4"/><line x1="40" y1="138" x2="40" y2="168" stroke="currentColor" stroke-width="2.4"/><line x1="244" y1="138" x2="244" y2="168" stroke="currentColor" stroke-width="2.4"/><rect x="0" y="110" width="110" height="12" fill="currentColor" opacity="0.13"/><rect x="210" y="110" width="110" height="12" fill="currentColor" opacity="0.13"/><rect x="52" y="62" width="176" height="22" rx="5" stroke="currentColor" stroke-width="2.4"/><circle cx="72" cy="73" r="6.5" stroke="currentColor" stroke-width="2"/><circle cx="98" cy="73" r="6.5" stroke="currentColor" stroke-width="2"/><circle cx="124" cy="73" r="6.5" stroke="currentColor" stroke-width="2"/><circle cx="150" cy="73" r="6.5" stroke="currentColor" stroke-width="2"/><circle cx="176" cy="73" r="6.5" stroke="currentColor" stroke-width="2"/><circle cx="202" cy="73" r="6.5" stroke="currentColor" stroke-width="2"/><rect x="272" y="46" width="42" height="92" rx="3" stroke="currentColor" stroke-width="2.4"/><rect x="280" y="56" width="26" height="20" rx="2" fill="currentColor" opacity="0.22"/><circle cx="285" cy="92" r="3" fill="currentColor"/><circle cx="298" cy="92" r="3" fill="currentColor"/><circle cx="36" cy="56" r="17" stroke="currentColor" stroke-width="2.4"/><circle cx="36" cy="56" r="5" fill="currentColor"/></svg>
         <div class="ph-tag">Ilustração esquemática · coladeira de bordas</div>
@@ -472,7 +477,7 @@
   </div>
   <div class="body">
     <div class="lam">
-      <div class="visual"><div class="frame">
+      <div class="visual"><div class="frame"><img class="photo" src="img-maquinas/giben-kg668.jpg" alt="Giben KG668" onerror="this.remove()" onload="this.closest('.frame,.iframe').classList.add('has-photo')">
         <div class="price-fx"><div class="pl">Valor de feira</div><div class="pv">R$ 260 mil</div></div>
         <svg class="mimg" viewBox="0 0 320 180" fill="none"><rect x="14" y="98" width="262" height="40" rx="3" stroke="currentColor" stroke-width="2.6"/><line x1="40" y1="138" x2="40" y2="168" stroke="currentColor" stroke-width="2.6"/><line x1="252" y1="138" x2="252" y2="168" stroke="currentColor" stroke-width="2.6"/><rect x="0" y="108" width="108" height="13" fill="currentColor" opacity="0.14"/><rect x="212" y="108" width="108" height="13" fill="currentColor" opacity="0.14"/><rect x="48" y="58" width="188" height="24" rx="5" stroke="currentColor" stroke-width="2.6"/><circle cx="70" cy="70" r="7" stroke="currentColor" stroke-width="2"/><circle cx="98" cy="70" r="7" stroke="currentColor" stroke-width="2"/><circle cx="126" cy="70" r="7" stroke="currentColor" stroke-width="2"/><circle cx="154" cy="70" r="7" stroke="currentColor" stroke-width="2"/><circle cx="182" cy="70" r="7" stroke="currentColor" stroke-width="2"/><circle cx="210" cy="70" r="7" stroke="currentColor" stroke-width="2"/><rect x="280" y="44" width="40" height="94" rx="3" stroke="currentColor" stroke-width="2.6"/><rect x="288" y="54" width="24" height="20" rx="2" fill="currentColor" opacity="0.22"/><rect x="34" y="44" width="18" height="10" fill="currentColor" opacity=".2"/><circle cx="34" cy="54" r="16" stroke="currentColor" stroke-width="2.6"/><circle cx="34" cy="54" r="5" fill="currentColor"/></svg>
         <div class="ph-tag">Ilustração esquemática · coladeira de bordas</div>
@@ -508,7 +513,7 @@
   </div>
   <div class="body">
     <div class="lam">
-      <div class="visual"><div class="frame">
+      <div class="visual"><div class="frame"><img class="photo" src="img-maquinas/giben-kg712.jpg" alt="Giben KG712" onerror="this.remove()" onload="this.closest('.frame,.iframe').classList.add('has-photo')">
         <div class="price-fx"><div class="pl">Valor de feira</div><div class="pv">R$ 410 mil</div></div>
         <svg class="mimg" viewBox="0 0 320 180" fill="none"><rect x="12" y="98" width="266" height="42" rx="3" stroke="currentColor" stroke-width="2.6"/><line x1="38" y1="140" x2="38" y2="168" stroke="currentColor" stroke-width="2.6"/><line x1="256" y1="140" x2="256" y2="168" stroke="currentColor" stroke-width="2.6"/><rect x="0" y="108" width="104" height="13" fill="currentColor" opacity="0.14"/><rect x="216" y="108" width="104" height="13" fill="currentColor" opacity="0.14"/><rect x="46" y="54" width="196" height="26" rx="5" stroke="currentColor" stroke-width="2.6"/><circle cx="68" cy="67" r="7" stroke="currentColor" stroke-width="2"/><circle cx="98" cy="67" r="7" stroke="currentColor" stroke-width="2"/><circle cx="128" cy="67" r="7" stroke="currentColor" stroke-width="2"/><circle cx="158" cy="67" r="7" stroke="currentColor" stroke-width="2"/><circle cx="188" cy="67" r="7" stroke="currentColor" stroke-width="2"/><circle cx="218" cy="67" r="7" stroke="currentColor" stroke-width="2"/><rect x="282" y="40" width="38" height="100" rx="3" stroke="currentColor" stroke-width="2.6"/><rect x="289" y="50" width="24" height="22" rx="2" fill="var(--gold)" opacity="0.5"/><circle cx="294" cy="90" r="3" fill="currentColor"/><circle cx="305" cy="90" r="3" fill="currentColor"/><g><rect x="20" y="34" width="46" height="30" rx="3" stroke="var(--gold)" stroke-width="2.2"/><line x1="30" y1="42" x2="56" y2="42" stroke="var(--gold)" stroke-width="1.6"/><line x1="30" y1="49" x2="56" y2="49" stroke="var(--gold)" stroke-width="1.6"/><line x1="30" y1="56" x2="56" y2="56" stroke="var(--gold)" stroke-width="1.6"/></g></svg>
         <div class="ph-tag">Ilustração esquemática · magazine de 4 fitas em destaque</div>
@@ -545,7 +550,7 @@
   </div>
   <div class="body">
     <div class="lam">
-      <div class="visual"><div class="frame">
+      <div class="visual"><div class="frame"><img class="photo" src="img-maquinas/giben-puxadores.jpg" alt="Coladeira de Puxadores Giben" onerror="this.remove()" onload="this.closest('.frame,.iframe').classList.add('has-photo')">
         <div class="price-fx"><div class="pl">Valor de feira</div><div class="pv">R$ 420 mil</div></div>
         <svg class="mimg" viewBox="0 0 320 180" fill="none"><rect x="30" y="86" width="260" height="46" stroke="currentColor" stroke-width="2.6"/><path d="M30 86 H118 Q136 86 136 66 L184 66 Q202 66 202 86 H290" stroke="var(--gold)" stroke-width="4" fill="none"/><path d="M30 132 H290" stroke="currentColor" stroke-width="1.4" opacity=".4"/><text x="160" y="112" text-anchor="middle" fill="currentColor" font-family="Inter" font-size="12" font-weight="700" opacity=".55">painel MDF</text><path d="M136 66 L136 52 M184 66 L184 52" stroke="var(--gold)" stroke-width="1.4" stroke-dasharray="3 3"/><text x="160" y="46" text-anchor="middle" fill="var(--gold-dk)" font-family="Inter" font-size="11" font-weight="700">puxador integrado</text><circle cx="160" cy="150" r="4" fill="var(--gold)"/></svg>
         <div class="ph-tag">Ilustração esquemática · perfil de puxador usinado no próprio painel</div>
@@ -581,7 +586,7 @@
   </div>
   <div class="body">
     <div class="lam">
-      <div class="visual"><div class="frame">
+      <div class="visual"><div class="frame"><img class="photo" src="img-maquinas/nesting-giben.jpg" alt="Nesting Giben" onerror="this.remove()" onload="this.closest('.frame,.iframe').classList.add('has-photo')">
         <div class="price-fx"><div class="pl">Valor de feira</div><div class="pv">R$ 530 mil</div></div>
         <svg class="mimg" viewBox="0 0 320 180" fill="none"><rect x="28" y="48" width="264" height="98" rx="4" stroke="currentColor" stroke-width="2.6"/><rect x="44" y="62" width="232" height="70" fill="currentColor" opacity="0.08"/><rect x="118" y="30" width="34" height="128" rx="3" stroke="currentColor" stroke-width="2.6"/><rect x="126" y="80" width="18" height="26" rx="2" fill="var(--gold)" opacity="0.45"/><rect x="54" y="72" width="46" height="46" stroke="currentColor" stroke-width="1.5" opacity=".5"/><rect x="180" y="72" width="60" height="24" stroke="currentColor" stroke-width="1.5" opacity=".5"/><rect x="180" y="100" width="28" height="20" stroke="currentColor" stroke-width="1.5" opacity=".5"/><rect x="214" y="100" width="26" height="20" stroke="currentColor" stroke-width="1.5" opacity=".5"/></svg>
         <div class="ph-tag">Ilustração esquemática · mesa nesting com peças aninhadas</div>
@@ -617,7 +622,7 @@
   </div>
   <div class="body">
     <div class="lam">
-      <div class="visual"><div class="frame">
+      <div class="visual"><div class="frame"><img class="photo" src="img-maquinas/giben-flexdrill.jpg" alt="Giben Flexdrill" onerror="this.remove()" onload="this.closest('.frame,.iframe').classList.add('has-photo')">
         <div class="price-fx"><div class="pl">Valor de feira</div><div class="pv">R$ 360 mil</div></div>
         <svg class="mimg" viewBox="0 0 320 180" fill="none"><rect x="26" y="94" width="268" height="34" rx="3" stroke="currentColor" stroke-width="2.6"/><rect x="60" y="100" width="200" height="20" fill="currentColor" opacity="0.10"/><line x1="46" y1="128" x2="46" y2="158" stroke="currentColor" stroke-width="2.6"/><line x1="274" y1="128" x2="274" y2="158" stroke="currentColor" stroke-width="2.6"/><rect x="104" y="30" width="112" height="40" rx="3" stroke="currentColor" stroke-width="2.6"/><rect x="112" y="38" width="96" height="10" fill="var(--gold)" opacity=".4"/><line x1="120" y1="70" x2="120" y2="92" stroke="currentColor" stroke-width="2.6"/><line x1="138" y1="70" x2="138" y2="92" stroke="currentColor" stroke-width="2.6"/><line x1="156" y1="70" x2="156" y2="92" stroke="currentColor" stroke-width="2.6"/><line x1="174" y1="70" x2="174" y2="92" stroke="currentColor" stroke-width="2.6"/><line x1="192" y1="70" x2="192" y2="92" stroke="currentColor" stroke-width="2.6"/></svg>
         <div class="ph-tag">Ilustração esquemática · cabeçote de furação múltipla</div>
@@ -655,7 +660,7 @@
   <div class="body">
     <div class="duo">
       <div class="item">
-        <div class="iframe"><svg class="mimg" viewBox="0 0 320 120" fill="none"><rect x="24" y="52" width="272" height="18" rx="9" stroke="currentColor" stroke-width="2.6"/><circle cx="44" cy="61" r="12" stroke="currentColor" stroke-width="2.6"/><circle cx="276" cy="61" r="12" stroke="currentColor" stroke-width="2.6"/><line x1="70" y1="61" x2="250" y2="61" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 8" opacity=".5"/><rect x="128" y="36" width="44" height="16" fill="currentColor" opacity="0.16"/><path d="M300 61 l-10 -5 v10 z" fill="currentColor" opacity=".5"/></svg></div>
+        <div class="iframe"><img class="photo" src="img-maquinas/esteira-retorno.jpg" alt="Esteira de retorno" onerror="this.remove()" onload="this.closest('.frame,.iframe').classList.add('has-photo')"><svg class="mimg" viewBox="0 0 320 120" fill="none"><rect x="24" y="52" width="272" height="18" rx="9" stroke="currentColor" stroke-width="2.6"/><circle cx="44" cy="61" r="12" stroke="currentColor" stroke-width="2.6"/><circle cx="276" cy="61" r="12" stroke="currentColor" stroke-width="2.6"/><line x1="70" y1="61" x2="250" y2="61" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 8" opacity=".5"/><rect x="128" y="36" width="44" height="16" fill="currentColor" opacity="0.16"/><path d="M300 61 l-10 -5 v10 z" fill="currentColor" opacity=".5"/></svg></div>
         <div class="ib">
           <div class="it">Esteira de retorno</div>
           <div class="ip">R$ 60 mil</div>
@@ -664,7 +669,7 @@
         </div>
       </div>
       <div class="item">
-        <div class="iframe"><svg class="mimg" viewBox="0 0 320 140" fill="none"><rect x="96" y="46" width="140" height="72" rx="4" stroke="currentColor" stroke-width="2.6"/><path d="M96 68 H236" stroke="currentColor" stroke-width="1.5" opacity=".45"/><path d="M166 46 V118" stroke="currentColor" stroke-width="1.5" opacity=".45"/><circle cx="44" cy="60" r="20" stroke="currentColor" stroke-width="2.6"/><circle cx="44" cy="60" r="6" fill="currentColor" opacity=".3"/><line x1="64" y1="62" x2="96" y2="72" stroke="currentColor" stroke-width="2.2"/></svg></div>
+        <div class="iframe"><img class="photo" src="img-maquinas/embaladora.jpg" alt="Embaladora" onerror="this.remove()" onload="this.closest('.frame,.iframe').classList.add('has-photo')"><svg class="mimg" viewBox="0 0 320 140" fill="none"><rect x="96" y="46" width="140" height="72" rx="4" stroke="currentColor" stroke-width="2.6"/><path d="M96 68 H236" stroke="currentColor" stroke-width="1.5" opacity=".45"/><path d="M166 46 V118" stroke="currentColor" stroke-width="1.5" opacity=".45"/><circle cx="44" cy="60" r="20" stroke="currentColor" stroke-width="2.6"/><circle cx="44" cy="60" r="6" fill="currentColor" opacity=".3"/><line x1="64" y1="62" x2="96" y2="72" stroke="currentColor" stroke-width="2.2"/></svg></div>
         <div class="ib">
           <div class="it">Embaladora</div>
           <div class="ip">a partir de R$ 60 mil</div>
