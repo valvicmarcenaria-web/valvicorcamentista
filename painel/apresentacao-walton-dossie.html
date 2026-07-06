@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dossiê Técnico de Expansão — Valvic Marcenaria (A4)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  :root{
+    --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f;
+    --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd;
+    --green:#2f7d4f; --red:#b0413f; --blue:#2f5d8c; --amber:#c47d0e;
+  }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:10px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+  .num{ font-variant-numeric:tabular-nums; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:18px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; }
+  .ph{ background:var(--navy); color:#fff; padding:12mm 16mm 9mm; position:relative; }
+  .ph::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:2.5px; background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 42%,transparent 100%); }
+  .ph .top{ display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+  .ph .mono{ width:40px; height:40px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:20px; color:var(--gold); }
+  .ph .co{ font-size:11.5px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; }
+  .ph .sub{ font-size:8px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
+  .ph .kx{ font-size:8px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:600; margin-top:3px; line-height:1.04; }
+  .ph .desc{ font-size:9px; color:rgba(255,255,255,.62); margin-top:7px; max-width:520px; line-height:1.55; }
+  .body{ flex:1; padding:8mm 16mm 0; display:flex; flex-direction:column; min-height:0; }
+  .sec{ display:flex; align-items:center; gap:10px; margin:0 0 9px; }
+  .sec:not(:first-child){ margin-top:15px; }
+  .sec .bar{ width:16px; height:2px; background:var(--gold); }
+  .sec .tx{ font-size:8.6px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:var(--navy); }
+  .sec .tx small{ color:var(--muted); font-weight:600; letter-spacing:.5px; text-transform:none; }
+  p.tx{ font-size:10px; line-height:1.62; color:#33404d; margin-bottom:9px; }
+  p.tx b{ color:var(--navy); }
+  p.tx.lead{ font-size:11px; color:#2a3742; }
+  .drop::first-letter{ initial-letter:2; font-family:'Cormorant Garamond',serif; font-weight:700; color:var(--gold-dk); margin-right:6px; }
+  table{ width:100%; border-collapse:collapse; }
+  thead th{ background:var(--navy2); color:#fff; font-size:7px; font-weight:600; letter-spacing:.6px; text-transform:uppercase; padding:6px 10px; text-align:left; }
+  th.r,td.r{ text-align:right; }
+  tbody td{ padding:5.5px 10px; border-bottom:1px solid var(--line); vertical-align:top; font-size:9.4px; }
+  tbody tr:nth-child(even) td{ background:#f4f1ea; }
+  td .nm{ font-weight:700; color:var(--ink); }
+  td .ds{ color:var(--muted); font-size:8px; display:block; margin-top:1px; line-height:1.3; }
+  td.r .num{ font-weight:700; color:var(--navy); }
+  tr.tot td{ background:var(--navy) !important; color:#fff; font-weight:700; padding:7px 10px; border:none; }
+  tr.tot td .gv{ color:var(--gold-soft); }
+  .badge{ display:inline-block; padding:1px 7px; border-radius:10px; font-size:7px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; }
+  .b-navy{ background:var(--navy); color:#fff; } .b-gold{ background:#f6edd6; color:var(--gold-dk); } .b-green{ background:#eaf4ee; color:var(--green); } .b-blue{ background:#e6ecf4; color:var(--blue); } .b-amber{ background:#fbeecf; color:var(--amber); } .b-red{ background:#f6e6e5; color:var(--red); }
+  .note{ background:#fffaf0; border:1px solid #eed9a8; border-radius:7px; padding:9px 12px; margin:9px 0; }
+  .note .nh{ font-size:7.6px; letter-spacing:1.4px; text-transform:uppercase; color:var(--amber); font-weight:700; margin-bottom:4px; }
+  .note p{ font-size:9px; line-height:1.55; color:#5a4a2c; } .note p b{ color:var(--navy); }
+  .note.navy{ background:var(--navy); border:none; } .note.navy .nh{ color:var(--gold); } .note.navy p{ color:rgba(255,255,255,.88); } .note.navy p b{ color:#fff; }
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:6px 16mm; display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf .pl{ font-size:7px; color:var(--muted); } .pf .pr{ font-size:8px; color:var(--navy); font-weight:700; letter-spacing:1px; } .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+
+  /* degrau block */
+  .degrau{ border:1px solid var(--line); border-radius:9px; overflow:hidden; margin-bottom:11px; }
+  .degrau .dh{ display:flex; align-items:center; gap:12px; padding:9px 14px; background:#f4f1ea; border-bottom:1px solid var(--line); }
+  .degrau .dh .dn{ font-size:7px; letter-spacing:1.4px; text-transform:uppercase; color:var(--muted); }
+  .degrau .dh .df{ font-family:'Cormorant Garamond',serif; font-size:23px; font-weight:700; color:var(--navy); line-height:1; }
+  .degrau .dh .df small{ font-size:11px; color:var(--muted); font-weight:600; font-family:'Inter'; }
+  .degrau .dh .dtag{ margin-left:auto; }
+  .degrau .db{ padding:11px 14px; }
+  .degrau .db p{ font-size:9.4px; line-height:1.55; color:#33404d; margin-bottom:7px; } .degrau .db p b{ color:var(--navy); }
+  .degrau .grid3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-top:4px; }
+  .degrau .mini{ background:#faf8f2; border:1px solid var(--line); border-radius:6px; padding:7px 10px; }
+  .degrau .mini .ml{ font-size:7px; letter-spacing:1px; text-transform:uppercase; color:var(--gold-dk); font-weight:700; margin-bottom:3px; }
+  .degrau .mini .mt{ font-size:8.8px; color:#3a4650; line-height:1.4; } .degrau .mini .mt b{ color:var(--navy); }
+
+  /* ficha técnica de máquina */
+  .ficha{ border:1px solid var(--line); border-radius:9px; overflow:hidden; margin-bottom:11px; }
+  .ficha .fh{ display:flex; align-items:flex-start; gap:12px; padding:10px 14px; background:var(--navy); color:#fff; }
+  .ficha .fh .fico{ width:40px; height:40px; flex-shrink:0; border:1px solid var(--gold); border-radius:6px; display:flex; align-items:center; justify-content:center; }
+  .ficha .fh .fico svg{ width:30px; color:var(--gold); }
+  .ficha .fh .fname{ font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:600; line-height:1.05; }
+  .ficha .fh .fcat{ font-size:8px; color:rgba(255,255,255,.6); letter-spacing:.4px; margin-top:2px; }
+  .ficha .fh .fprice{ margin-left:auto; text-align:right; }
+  .ficha .fh .fprice .fl{ font-size:7px; letter-spacing:1px; text-transform:uppercase; color:var(--gold); }
+  .ficha .fh .fprice .fv{ font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700; line-height:1; }
+  .ficha .fb{ display:flex; gap:0; }
+  .ficha .fspecs{ flex:0 0 40%; padding:10px 14px; border-right:1px solid var(--line); }
+  .ficha .fspecs .row{ display:flex; justify-content:space-between; gap:8px; font-size:8.6px; padding:3px 0; border-bottom:1px dotted var(--line2); }
+  .ficha .fspecs .row:last-child{ border-bottom:none; }
+  .ficha .fspecs .row .k{ color:var(--muted); } .ficha .fspecs .row .v{ color:var(--navy); font-weight:700; text-align:right; }
+  .ficha .ftext{ flex:1; padding:10px 14px; }
+  .ficha .ftext p{ font-size:8.8px; line-height:1.5; color:#3a4650; margin-bottom:6px; } .ficha .ftext p b{ color:var(--navy); }
+  .ficha .ftext .pcrow{ display:flex; gap:10px; margin-top:4px; }
+  .ficha .ftext .pcrow .c{ flex:1; }
+  .ficha .ftext .pcrow .ch{ font-size:7px; letter-spacing:.8px; text-transform:uppercase; font-weight:700; margin-bottom:2px; }
+  .ficha .ftext .pcrow .c.p .ch{ color:var(--green); } .ficha .ftext .pcrow .c.n .ch{ color:var(--red); }
+  .ficha .ftext .pcrow li{ list-style:none; font-size:8.2px; line-height:1.4; padding-left:10px; position:relative; color:#3a4650; margin-bottom:2px; }
+  .ficha .ftext .pcrow .c.p li::before{ content:"+"; position:absolute; left:0; color:var(--green); font-weight:800; }
+  .ficha .ftext .pcrow .c.n li::before{ content:"−"; position:absolute; left:0; color:var(--red); font-weight:800; }
+
+  /* cover */
+  .cover{ background:var(--navy); color:#fff; padding:0; }
+  .cover .cv-top{ padding:18mm 16mm 0; display:flex; justify-content:space-between; align-items:flex-start; }
+  .cover .cv-mono{ width:56px; height:56px; border:2px solid var(--gold); border-radius:5px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:30px; color:var(--gold); }
+  .cover .cv-co{ text-align:right; } .cover .cv-co .n{ font-size:13px; font-weight:700; letter-spacing:3px; text-transform:uppercase; } .cover .cv-co .s{ font-size:8px; color:rgba(255,255,255,.5); letter-spacing:.6px; margin-top:3px; }
+  .cover .cv-mid{ padding:14mm 16mm 0; }
+  .cover .cv-kx{ font-size:9px; letter-spacing:6px; text-transform:uppercase; color:var(--gold); margin-bottom:11px; }
+  .cover .cv-title{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:50px; line-height:1.02; }
+  .cover .cv-title span{ color:var(--gold-soft); }
+  .cover .cv-lead{ font-size:10.5px; color:rgba(255,255,255,.66); margin-top:15px; max-width:440px; line-height:1.7; }
+  .cover .toc{ margin:20mm 16mm 0; border-top:1px solid rgba(255,255,255,.14); padding-top:12px; }
+  .cover .toc .tl{ font-size:8px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+  .cover .toc .titem{ display:flex; align-items:baseline; gap:10px; padding:5px 0; border-bottom:1px solid rgba(255,255,255,.08); font-size:9.6px; }
+  .cover .toc .titem .tnum{ font-family:'Cormorant Garamond',serif; font-size:14px; font-weight:700; color:var(--gold-soft); width:22px; }
+  .cover .toc .titem .tname{ color:#fff; font-weight:600; } .cover .toc .titem .tdesc{ color:rgba(255,255,255,.5); margin-left:auto; font-size:8.4px; }
+  .cover .cv-foot{ margin-top:auto; padding:12px 16mm 16mm; display:flex; justify-content:space-between; align-items:flex-end; border-top:1px solid rgba(255,255,255,.1); }
+  .cover .cv-foot .fl{ font-size:8px; color:rgba(255,255,255,.5); } .cover .cv-foot .fr{ font-size:8px; color:var(--gold); letter-spacing:2px; text-transform:uppercase; }
+
+  .two{ display:grid; grid-template-columns:1fr 1fr; gap:11px; }
+  .cardbox{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:11px 13px; }
+  .cardbox .cbh{ font-size:8px; letter-spacing:1.2px; text-transform:uppercase; color:var(--gold-dk); font-weight:700; margin-bottom:6px; padding-bottom:5px; border-bottom:1px solid var(--line); }
+  .cardbox p{ font-size:9px; line-height:1.55; color:#33404d; } .cardbox p b{ color:var(--navy); }
+  .cardbox ul{ list-style:none; margin-top:5px; } .cardbox ul li{ font-size:8.8px; line-height:1.45; padding-left:12px; position:relative; color:#3a4650; margin-bottom:3px; } .cardbox ul li::before{ content:""; position:absolute; left:0; top:6px; width:5px; height:5px; border-radius:50%; background:var(--gold); }
+  .kpis{ display:flex; gap:9px; margin:10px 0; }
+  .kpi{ flex:1; background:#fff; border:1px solid var(--line); border-radius:7px; padding:9px 12px; }
+  .kpi .kl{ font-size:7px; letter-spacing:1.1px; text-transform:uppercase; color:var(--muted); }
+  .kpi .kv{ font-size:16px; font-weight:800; color:var(--navy); margin-top:2px; }
+  .kpi .ks{ font-size:7.4px; color:var(--muted); margin-top:2px; line-height:1.3; }
+
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<!-- =============== CAPA + SUMÁRIO =============== -->
+<section class="sheet cover" style="display:flex;flex-direction:column">
+  <div class="cv-top">
+    <div class="cv-mono">V</div>
+    <div class="cv-co"><div class="n">Valvic Marcenaria</div><div class="s">Vargas Decor Ltda · CNPJ 17.269.304/0001-51 · Belo Horizonte / MG</div></div>
+  </div>
+  <div class="cv-mid">
+    <div class="cv-kx">Dossiê Técnico · Complemento</div>
+    <h1 class="cv-title">Caminhos de<br><span>Expansão</span></h1>
+    <p class="cv-lead">O complemento descritivo da apresentação visual. Aqui estão os degraus destrinchados, os custos abertos item a item, as fichas técnicas de cada máquina e a leitura financeira-âncora — o material de leitura e consulta para sustentar a conversa.</p>
+  </div>
+  <div class="toc">
+    <div class="tl">Neste dossiê</div>
+    <div class="titem"><span class="tnum">01</span><span class="tname">O horizonte & o método dos degraus</span><span class="tdesc">por que degrau a degrau</span></div>
+    <div class="titem"><span class="tnum">02</span><span class="tname">Os degraus em detalhe</span><span class="tdesc">250 · 300 · 400 · 600 · 1 mi</span></div>
+    <div class="titem"><span class="tnum">03</span><span class="tname">Galpão atual × novo</span><span class="tdesc">custos abertos e trade-offs</span></div>
+    <div class="titem"><span class="tnum">04</span><span class="tname">Fichas técnicas das máquinas</span><span class="tdesc">coladeiras, linha industrial, apoio</span></div>
+    <div class="titem"><span class="tnum">05</span><span class="tname">Diferencial: puxadores</span><span class="tdesc">margem por posicionamento</span></div>
+    <div class="titem"><span class="tnum">06</span><span class="tname">Prestação de serviços</span><span class="tdesc">monetizar a capacidade</span></div>
+    <div class="titem"><span class="tnum">07</span><span class="tname">Síntese & próximos passos</span><span class="tdesc">o que validar em cada degrau</span></div>
+  </div>
+  <div class="cv-foot"><div class="fl">Documento de trabalho · uso restrito · Julho / 2026</div><div class="fr">Dossiê Técnico · A4</div></div>
+</section>
+
+<!-- =============== 01 · HORIZONTE & MÉTODO =============== -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Dossiê Técnico de Expansão · seção 01</div></div></div>
+    <div class="kx">O Método</div>
+    <div class="tt">O horizonte e a lógica dos degraus</div>
+    <div class="desc">Por que crescer por estágios validados, e não por um salto único — e como cada degrau se conecta ao seguinte.</div>
+  </div>
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">O horizonte</span></div>
+    <p class="tx lead drop">O objetivo de longo prazo é levar a Valvic a <b>R$ 1 milhão de faturamento e produção por mês</b>. Esse número é um <b>horizonte aspiracional</b>, não um compromisso de data. A empresa opera hoje próxima do seu teto — cerca de R$ 250 mil por mês — e o caminho até o milhão passa por uma sequência de estágios, cada um com uma exigência própria de gente, estrutura e máquina.</p>
+    <p class="tx">A escolha por uma <b>escada</b> — e não por um salto direto — é deliberada. Cada degrau é uma hipótese que precisa se confirmar na prática antes que o próximo investimento seja feito. Assim, o capital entra na medida em que a demanda real o justifica, e o risco fica distribuído no tempo em vez de concentrado numa aposta única.</p>
+
+    <div class="sec"><span class="bar"></span><span class="tx">A lógica de validação</span></div>
+    <p class="tx">Subir um degrau significa três coisas ao mesmo tempo: a demanda se sustentou acima do patamar anterior; o gargalo que limitava a produção ficou evidente; e o investimento seguinte ataca exatamente esse gargalo. Enquanto essas três condições não se encontram, não se sobe — o degrau atual continua sendo o lugar certo.</p>
+    <div class="two">
+      <div class="cardbox"><div class="cbh">O que cada degrau carrega</div><ul><li><b>Gatilho</b> — a condição de demanda que autoriza o passo</li><li><b>Gargalo</b> — o que limita a produção naquele patamar</li><li><b>Investimento</b> — gente, estrutura e/ou máquina</li><li><b>Ganho</b> — a capacidade adicional destravada</li></ul></div>
+      <div class="cardbox"><div class="cbh">O fio condutor financeiro</div><p>A referência que atravessa todos os degraus é a <b>margem de contribuição de ~40%</b>. Cada passo só se justifica se o faturamento adicional <b>preservar essa margem</b> — cobrindo o custo fixo que ele mesmo cria e ainda ampliando o resultado. Os números deste dossiê são <b>âncoras</b>: ordem de grandeza para orientar a decisão, não um orçamento fechado.</p></div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Como ler os degraus</span></div>
+    <p class="tx">Nas próximas páginas, cada degrau aparece com a mesma estrutura: uma descrição do momento, o gatilho que o autoriza, o investimento discriminado e o ganho de capacidade esperado. Os valores de máquina são <b>de feira</b> — referências de negociação, a confirmar na proposta final de cada fornecedor.</p>
+    <div class="note navy">
+      <div class="nh">Leitura de conjunto</div>
+      <p>A escada não é um cronograma rígido. É um <b>mapa de decisão</b>: mostra a ordem natural dos investimentos e o que cada um destrava. O ritmo real — quanto tempo em cada degrau — é ditado pela demanda, não pelo documento.</p>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Dossiê Técnico de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">O MÉTODO <span>·</span> 02</div></div>
+</section>
+
+<!-- =============== 02 · DEGRAUS I (250, 300) =============== -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Dossiê Técnico de Expansão · seção 02 (I de III)</div></div></div>
+    <div class="kx">Os Degraus em Detalhe</div>
+    <div class="tt">Ponto de partida e primeiro passo</div>
+    <div class="desc">O teto atual de R$ 250 mil e o degrau de R$ 300 mil — crescimento por mão de obra, sem nenhuma máquina nova.</div>
+  </div>
+  <div class="body">
+    <div class="degrau">
+      <div class="dh"><div><div class="dn">Hoje · ponto de partida</div><div class="df">R$ 250<small> mil / mês</small></div></div><div class="dtag"><span class="badge b-navy">Estrutura atual</span></div></div>
+      <div class="db">
+        <p>É o patamar que a Valvic sustenta com a <b>equipe e a estrutura de hoje</b>, operando próximo do limite. A capacidade de produção está saturada: aumentar o volume sem adicionar recursos passa a comprometer prazo e qualidade. É o piso a partir do qual toda a escada se constrói.</p>
+        <div class="grid3">
+          <div class="mini"><div class="ml">Gargalo</div><div class="mt">Capacidade da equipe e do espaço já no teto.</div></div>
+          <div class="mini"><div class="ml">Investimento</div><div class="mt"><b>Nenhum</b> — é o ponto de partida.</div></div>
+          <div class="mini"><div class="ml">Ganho</div><div class="mt">—</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="degrau">
+      <div class="dh"><div><div class="dn">Degrau 1</div><div class="df">R$ 300<small> mil / mês</small></div></div><div class="dtag"><span class="badge b-blue">+ Mão de obra · zero máquina</span></div></div>
+      <div class="db">
+        <p>O primeiro passo <b>não é de máquina, é de gente</b>. Com a estrutura física atual ainda comportando mais produção, o salto de 250 para 300 mil vem de <b>reforçar a mão de obra</b> e a logística: duas duplas ganham braços e um veículo a mais dá vazão às entregas. Nenhum equipamento novo entra aqui.</p>
+        <div class="grid3">
+          <div class="mini"><div class="ml">Gatilho</div><div class="mt">Demanda sustentada <b>acima do teto atual</b>, com carteira firme.</div></div>
+          <div class="mini"><div class="ml">Investimento</div><div class="mt">+1 marceneiro · +2 ajudantes · +1 carro. <b>Folha ~R$ 9 mil/mês</b> + veículo.</div></div>
+          <div class="mini"><div class="ml">Ganho</div><div class="mt">+20% de capacidade sem tocar na estrutura.</div></div>
+        </div>
+        <table style="margin-top:9px">
+          <thead><tr><th>Investimento do degrau 1</th><th>Tipo</th><th class="r" style="width:80px">Referência</th></tr></thead>
+          <tbody>
+            <tr><td><span class="nm">1 marceneiro</span></td><td>Folha mensal</td><td class="r"><span class="num">~R$ 5.000/mês</span></td></tr>
+            <tr><td><span class="nm">2 ajudantes</span><span class="ds">R$ 2.000 cada</span></td><td>Folha mensal</td><td class="r"><span class="num">~R$ 4.000/mês</span></td></tr>
+            <tr><td><span class="nm">1 veículo utilitário</span><span class="ds">logística de entregas</span></td><td>CAPEX único</td><td class="r"><span class="num">a definir</span></td></tr>
+            <tr class="tot"><td colspan="2">Acréscimo recorrente de folha</td><td class="r"><span class="gv num">~R$ 9.000/mês</span></td></tr>
+          </tbody>
+        </table>
+        <div class="note"><div class="nh">Leitura financeira-âncora</div><p>Com MC ~40%, os R$ 50 mil adicionais de faturamento geram cerca de <b>R$ 20 mil de margem de contribuição</b> — folga confortável sobre os ~R$ 9 mil de folha nova. É o degrau de <b>melhor relação ganho/risco</b>: não exige máquina nem obra.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Dossiê Técnico de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">DEGRAUS I <span>·</span> 03</div></div>
+</section>
+
+<!-- =============== 02 · DEGRAUS II (400, 600) =============== -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Dossiê Técnico de Expansão · seção 02 (II de III)</div></div></div>
+    <div class="kx">Os Degraus em Detalhe</div>
+    <div class="tt">A entrada das máquinas</div>
+    <div class="desc">R$ 400 mil (primeira coladeira) e R$ 600 mil (coladeira melhor + reorganização do galpão).</div>
+  </div>
+  <div class="body">
+    <div class="degrau">
+      <div class="dh"><div><div class="dn">Degrau 2</div><div class="df">R$ 400<small> mil / mês</small></div></div><div class="dtag"><span class="badge b-gold">+ 1ª Coladeira + infra</span></div></div>
+      <div class="db">
+        <p>Aqui entra a <b>primeira máquina</b>. O gargalo passou a ser a <b>colagem manual de bordas</b> — lenta, dependente de mão de obra qualificada e limitadora do volume. Uma coladeira de bordas automatiza esse ponto e libera a equipe. Para operá-la, o galpão precisa de uma <b>infraestrutura de habilitação</b> (ar comprimido, exaustão, elétrica), válida para qualquer coladeira escolhida.</p>
+        <div class="grid3">
+          <div class="mini"><div class="ml">Gatilho</div><div class="mt">300 mil validado + <b>gargalo na finalização manual</b>.</div></div>
+          <div class="mini"><div class="ml">Investimento</div><div class="mt">Coladeira R$ 160–260k + <b>infra ~R$ 56–61k</b>.</div></div>
+          <div class="mini"><div class="ml">Ganho</div><div class="mt">Remove o gargalo da colagem; libera M.O. para produzir.</div></div>
+        </div>
+        <table style="margin-top:9px">
+          <thead><tr><th>Infra de habilitação da coladeira (galpão atual)</th><th class="r" style="width:90px">Referência</th></tr></thead>
+          <tbody>
+            <tr><td><span class="nm">Compressor maior</span><span class="ds">ar comprimido para a máquina</span></td><td class="r"><span class="num">R$ 25.000</span></td></tr>
+            <tr><td><span class="nm">Exaustor 5 cv</span><span class="ds">exaustão de pó/vapores</span></td><td class="r"><span class="num">R$ 6.000</span></td></tr>
+            <tr><td><span class="nm">Rede elétrica</span><span class="ds">a confirmar</span></td><td class="r"><span class="num">~R$ 5.000</span></td></tr>
+            <tr><td><span class="nm">Transformador</span><span class="ds">possível, conforme carga</span></td><td class="r"><span class="num">~R$ 5.000</span></td></tr>
+            <tr><td><span class="nm">Frete + instalação</span></td><td class="r"><span class="num">~R$ 20.000</span></td></tr>
+            <tr class="tot"><td>Total de habilitação</td><td class="r"><span class="gv num">R$ 56–61 mil</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="degrau">
+      <div class="dh"><div><div class="dn">Degrau 3</div><div class="df">R$ 600<small> mil / mês</small></div></div><div class="dtag"><span class="badge b-gold">+ Coladeira melhor + reorg.</span></div></div>
+      <div class="db">
+        <p>O volume agora exige <b>mais automação e um galpão reorganizado</b>. Entra uma coladeira superior (com regulagem e troca de fita automáticas) e o espaço passa por uma reorganização para comportar o fluxo maior — mezanino, elétrica, circulação de peças. Somam-se <b>duas duplas</b> e um separador de peças de baixo custo.</p>
+        <div class="grid3">
+          <div class="mini"><div class="ml">Gatilho</div><div class="mt">400 mil validado, coladeira de entrada no limite.</div></div>
+          <div class="mini"><div class="ml">Investimento</div><div class="mt">Coladeira superior + <b>reorg. ~R$ 60–90k</b> + 2 duplas.</div></div>
+          <div class="mini"><div class="ml">Ganho</div><div class="mt">Fluxo contínuo; base para o salto industrial.</div></div>
+        </div>
+        <div class="note"><div class="nh">Leitura financeira-âncora</div><p>Os investimentos deste degrau (coladeira + obra) são majoritariamente <b>CAPEX</b>; a folha das 2 duplas soma ~R$ 14 mil/mês. Com MC ~40%, o salto de 400 para 600 mil adiciona ~R$ 80 mil de margem de contribuição — que precisa <b>cobrir a nova folha e amortizar o CAPEX</b> em prazo confortável. Detalhe da reorganização na seção do galpão.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Dossiê Técnico de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">DEGRAUS II <span>·</span> 04</div></div>
+</section>
+
+<!-- =============== 02 · DEGRAU III (1M) + QUADRO =============== -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Dossiê Técnico de Expansão · seção 02 (III de III)</div></div></div>
+    <div class="kx">Os Degraus em Detalhe</div>
+    <div class="tt">O horizonte industrial</div>
+    <div class="desc">R$ 1 milhão / mês — galpão maior e linha de máquinas interligadas — e o quadro-resumo de toda a escada.</div>
+  </div>
+  <div class="body">
+    <div class="degrau">
+      <div class="dh"><div><div class="dn">Horizonte</div><div class="df" style="color:var(--gold-dk)">R$ 1<small> milhão / mês</small></div></div><div class="dtag"><span class="badge b-gold">Linha industrial</span></div></div>
+      <div class="db">
+        <p>O milhão não cabe no galpão atual. Ele exige um <b>galpão maior</b> e uma <b>linha de máquinas interligadas</b>: corte nesting, colagem e furação falando a mesma língua, com bipagem e integração entre etapas. Deixa de ser "uma máquina a mais" e passa a ser um <b>sistema de produção</b> — o modelo de linha industrial (referência Giben).</p>
+        <div class="grid3">
+          <div class="mini"><div class="ml">Gatilho</div><div class="mt">600 mil validado + <b>decisão de galpão</b> tomada.</div></div>
+          <div class="mini"><div class="ml">Investimento</div><div class="mt">Novo galpão + nesting (R$ 530k) + furação (R$ 360k) + coladeira.</div></div>
+          <div class="mini"><div class="ml">Ganho</div><div class="mt">Produção em linha, escalável e rastreável.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Quadro-resumo da escada <small>· valores-âncora</small></span></div>
+    <table>
+      <thead><tr><th>Degrau</th><th>O que entra</th><th>Investimento-âncora</th><th class="r" style="width:66px">Gatilho</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">R$ 250 mil</span><span class="ds">hoje</span></td><td>Estrutura atual</td><td>—</td><td class="r"><span class="ds">ponto de partida</span></td></tr>
+        <tr><td><span class="nm">R$ 300 mil</span><span class="ds">degrau 1</span></td><td>+1 marceneiro, +2 ajudantes, +1 carro</td><td>Folha ~R$ 9k/mês + veículo</td><td class="r"><span class="ds">demanda &gt; teto</span></td></tr>
+        <tr><td><span class="nm">R$ 400 mil</span><span class="ds">degrau 2</span></td><td>1ª coladeira + infra de habilitação</td><td>R$ 160–260k + R$ 56–61k</td><td class="r"><span class="ds">300 validado</span></td></tr>
+        <tr><td><span class="nm">R$ 600 mil</span><span class="ds">degrau 3</span></td><td>Coladeira melhor + reorg. + 2 duplas</td><td>Coladeira + R$ 60–90k + folha ~R$ 14k/mês</td><td class="r"><span class="ds">400 validado</span></td></tr>
+        <tr><td><span class="nm">R$ 1 milhão</span><span class="ds">horizonte</span></td><td>Galpão novo + linha interligada</td><td>Galpão + nesting + furação + coladeira</td><td class="r"><span class="ds">600 validado</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note navy"><div class="nh">O papel da margem</div><p>Em todos os degraus, a régua é a mesma: <b>preservar a MC de ~40%</b>. Cada salto de faturamento deve cobrir o custo fixo que ele cria e amortizar o CAPEX em prazo saudável. É isso que mantém o crescimento <b>financeiramente sustentável</b>, e não apenas maior.</p></div>
+  </div>
+  <div class="pf"><div class="pl">Dossiê Técnico de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">DEGRAUS III <span>·</span> 05</div></div>
+</section>
+
+<!-- =============== 03 · GALPÃO ATUAL × NOVO =============== -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Dossiê Técnico de Expansão · seção 03</div></div></div>
+    <div class="kx">Infraestrutura</div>
+    <div class="tt">Galpão atual × galpão novo</div>
+    <div class="desc">Os dois caminhos para a mesma meta, com os custos abertos. Sem recomendação — a decisão fica na mesa.</div>
+  </div>
+  <div class="body">
+    <p class="tx lead drop">A expansão pode acontecer por <b>dois caminhos de infraestrutura</b>, e a diferença entre eles é sobretudo de <b>capital e de risco</b>. No Caminho A, a empresa sobe os degraus dentro do galpão atual, adequando o espaço aos poucos, e só migra para um galpão maior quando o milhão exigir. No Caminho B, dá o salto direto para o galpão novo já com a linha industrial. Nenhum é "o certo" — são perfis diferentes de exposição.</p>
+
+    <div class="two">
+      <div class="cardbox"><div class="cbh">Caminho A · escada no atual</div><p><b>Ramp gradual.</b> Cheque menor por etapa, capital diluído no tempo, validação real da demanda antes do grande salto. Em contrapartida, <b>parte da obra civil não migra</b> — vira custo afundado ao mudar de galpão — e o teto físico do atual fica em ~600 mil.</p></div>
+      <div class="cardbox"><div class="cbh">Caminho B · salto ao novo</div><p><b>Sem retrabalho.</b> Nenhuma obra afundada, a estrutura já nasce para o milhão e chega ao topo mais rápido. Em contrapartida, o <b>cheque de largada é grande</b> e concentrado, e exige demanda/pipeline já engatilhada para não ociar a capacidade instalada.</p></div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Custos abertos · reorganização do galpão atual <small>(Caminho A, degrau 600)</small></span></div>
+    <table>
+      <thead><tr><th>Item</th><th>Natureza</th><th class="r" style="width:84px">Referência</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Mezanino no fundo</span><span class="ds">área adicional de apoio/estoque</span></td><td>Obra civil</td><td class="r"><span class="num">~R$ 25.000</span></td></tr>
+        <tr><td><span class="nm">Elétrica / iluminação / ventilação</span></td><td>Instalação</td><td class="r"><span class="num">R$ 12–15.000</span></td></tr>
+        <tr><td><span class="nm">Patamar + rampa</span><span class="ds">OU descer a esquadrejadeira (alternativa)</span></td><td>Obra civil</td><td class="r"><span class="num">a definir</span></td></tr>
+        <tr><td><span class="nm">Reposicionar a gaiola</span></td><td>Mão de obra</td><td class="r"><span class="num">interno</span></td></tr>
+        <tr><td><span class="nm">Carrinhos / esteira interna</span><span class="ds">circulação de peças</span></td><td>Equipamento</td><td class="r"><span class="num">~R$ 8.000</span></td></tr>
+        <tr><td><span class="nm">Rede pneumática</span></td><td>Instalação</td><td class="r"><span class="num">~R$ 5.000</span></td></tr>
+        <tr><td><span class="nm">Piso usinado</span><span class="ds">opcional</span></td><td>Obra civil</td><td class="r"><span class="num">~R$ 12.000</span></td></tr>
+        <tr><td><span class="nm">Opção 2: esquadrejadeira menor + elevador de peças</span><span class="ds">alternativa de layout</span></td><td>Equipamento</td><td class="r"><span class="num">~R$ 15.000 +</span></td></tr>
+        <tr class="tot"><td colspan="2">Faixa total da reorganização (não migra)</td><td class="r"><span class="gv num">R$ 90–120 mil</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="kpis">
+      <div class="kpi"><div class="kl">Caminho A · obra no atual</div><div class="kv num">R$ 90–120k</div><div class="ks">diluído entre os degraus 2 e 3 · não migra</div></div>
+      <div class="kpi"><div class="kl">Caminho B · cheque de largada</div><div class="kv num">R$ 1,5–2 mi</div><div class="ks">galpão + linha de máquinas · concentrado</div></div>
+      <div class="kpi"><div class="kl">Teto do galpão atual</div><div class="kv num">~R$ 600k</div><div class="ks">o milhão exige a mudança de qualquer forma</div></div>
+    </div>
+    <div class="note"><div class="nh">⚑ Ponto de contexto (fato, não recomendação)</div><p>As <b>máquinas Giben migram e têm revenda/troca</b> — acompanham a empresa para o galpão novo. Já a <b>obra civil é específica de cada galpão</b> e não se muda. Onde o capital é alocado — em ativo que migra ou em estrutura fixa — pesa de forma diferente em cada caminho. <b>A escolha é do investidor.</b></p></div>
+  </div>
+  <div class="pf"><div class="pl">Dossiê Técnico de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">GALPÃO <span>·</span> 06</div></div>
+</section>
+
+<!-- =============== 04 · FICHAS: COLADEIRAS DE ENTRADA =============== -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Dossiê Técnico de Expansão · seção 04 (I)</div></div></div>
+    <div class="kx">Fichas Técnicas · Coladeiras</div>
+    <div class="tt">Entrada e custo-benefício</div>
+    <div class="desc">Raizen Spectra 7GT e Usikraft Pegasus 1100 — as opções de menor cheque para destravar o degrau de R$ 400 mil.</div>
+  </div>
+  <div class="body">
+    <div class="ficha">
+      <div class="fh"><div class="fico"><svg viewBox="0 0 320 160" fill="none"><rect x="20" y="90" width="220" height="30" rx="3" stroke="currentColor" stroke-width="4"/><rect x="56" y="60" width="140" height="16" rx="4" stroke="currentColor" stroke-width="4"/><circle cx="80" cy="68" r="5" stroke="currentColor" stroke-width="3"/><circle cx="120" cy="68" r="5" stroke="currentColor" stroke-width="3"/><circle cx="160" cy="68" r="5" stroke="currentColor" stroke-width="3"/><rect x="248" y="46" width="34" height="74" rx="3" stroke="currentColor" stroke-width="4"/><circle cx="40" cy="52" r="15" stroke="currentColor" stroke-width="4"/></svg></div><div><div class="fname">Raizen Spectra 7GT</div><div class="fcat">Coladeira de bordas · fabricante brasileiro</div></div><div class="fprice"><div class="fl">Valor de feira</div><div class="fv">R$ 160k</div></div></div>
+      <div class="fb">
+        <div class="fspecs">
+          <div class="row"><span class="k">Categoria</span><span class="v">Coladeira de bordas</span></div>
+          <div class="row"><span class="k">Grupos de trabalho</span><span class="v">7 grupos</span></div>
+          <div class="row"><span class="k">Origem</span><span class="v">Nacional</span></div>
+          <div class="row"><span class="k">Automação</span><span class="v">Manual · a confirmar</span></div>
+          <div class="row"><span class="k">Pega usada na troca</span><span class="v">Não</span></div>
+          <div class="row"><span class="k">Entra no degrau</span><span class="v">2 · R$ 400 mil</span></div>
+        </div>
+        <div class="ftext">
+          <p>A opção de <b>menor investimento</b> da categoria e de uma marca que a equipe já conhece e opera. Habilita o degrau de 400 mil com o menor cheque possível.</p>
+          <div class="pcrow"><div class="c p"><div class="ch">A favor</div><li>Menor cheque de entrada</li><li>Marca já operada pela casa</li></div><div class="c n"><div class="ch">A ponderar</div><li>Depreciação alta · revenda fraca</li><li>Não pega usada na troca; vira custo afundado ao migrar</li></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ficha">
+      <div class="fh"><div class="fico"><svg viewBox="0 0 320 160" fill="none"><rect x="18" y="90" width="230" height="32" rx="3" stroke="currentColor" stroke-width="4"/><rect x="50" y="58" width="160" height="18" rx="4" stroke="currentColor" stroke-width="4"/><circle cx="74" cy="67" r="5" stroke="currentColor" stroke-width="3"/><circle cx="110" cy="67" r="5" stroke="currentColor" stroke-width="3"/><circle cx="146" cy="67" r="5" stroke="currentColor" stroke-width="3"/><circle cx="182" cy="67" r="5" stroke="currentColor" stroke-width="3"/><rect x="256" y="44" width="36" height="78" rx="3" stroke="currentColor" stroke-width="4"/><circle cx="38" cy="52" r="14" stroke="currentColor" stroke-width="4"/></svg></div><div><div class="fname">Usikraft Pegasus 1100</div><div class="fcat">Coladeira de bordas · 12 grupos operacionais</div></div><div class="fprice"><div class="fl">Valor de feira</div><div class="fv">R$ 200k</div></div></div>
+      <div class="fb">
+        <div class="fspecs">
+          <div class="row"><span class="k">Grupos operacionais</span><span class="v">12 grupos</span></div>
+          <div class="row"><span class="k">Fita de borda</span><span class="v">PVC/ABS até 3 mm</span></div>
+          <div class="row"><span class="k">Motores acabamento</span><span class="v">2 × 1 cv · 12.000 rpm</span></div>
+          <div class="row"><span class="k">Pressão</span><span class="v">6 rolos pneumáticos</span></div>
+          <div class="row"><span class="k">Pega usada na troca</span><span class="v">Não</span></div>
+          <div class="row"><span class="k">Entra no degrau</span><span class="v">2 · R$ 400 mil</span></div>
+        </div>
+        <div class="ftext">
+          <p>Um <b>meio-termo de acabamento</b>: mais grupos operacionais que a de entrada, boa relação entre preço e qualidade de colagem, e fita até 3 mm que cobre a linha premium de bordas.</p>
+          <div class="pcrow"><div class="c p"><div class="ch">A favor</div><li>12 grupos · bordas mais limpas</li><li>Bom custo-benefício</li></div><div class="c n"><div class="ch">A ponderar</div><li>Sem bipagem/telemetria</li><li>Não pega usada na troca · assistência a confirmar</li></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="note"><div class="nh">Nota</div><p>Ambas resolvem o mesmo gargalo — a colagem manual — com <b>cheque menor</b>. A diferença para as Giben está em <b>revenda, assistência local e capacidade de migração</b> para o galpão novo, detalhadas na página seguinte.</p></div>
+  </div>
+  <div class="pf"><div class="pl">Dossiê Técnico de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">FICHAS · COLADEIRAS I <span>·</span> 07</div></div>
+</section>
+
+<!-- =============== 04 · FICHAS: GIBEN KG668, KG712, PUXADORES =============== -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Dossiê Técnico de Expansão · seção 04 (II)</div></div></div>
+    <div class="kx">Fichas Técnicas · Linha Giben</div>
+    <div class="tt">Conceituadas, automatizadas e de assinatura</div>
+    <div class="desc">As coladeiras Giben — KG668 e KG712 — e a máquina de puxadores, marca moveleira com suporte e revenda em BH.</div>
+  </div>
+  <div class="body">
+    <div class="ficha">
+      <div class="fh"><div class="fico"><svg viewBox="0 0 320 160" fill="none"><rect x="16" y="90" width="234" height="34" rx="3" stroke="currentColor" stroke-width="4"/><rect x="48" y="56" width="170" height="20" rx="4" stroke="currentColor" stroke-width="4"/><circle cx="74" cy="66" r="6" stroke="currentColor" stroke-width="3"/><circle cx="114" cy="66" r="6" stroke="currentColor" stroke-width="3"/><circle cx="154" cy="66" r="6" stroke="currentColor" stroke-width="3"/><circle cx="194" cy="66" r="6" stroke="currentColor" stroke-width="3"/><rect x="258" y="42" width="36" height="82" rx="3" stroke="currentColor" stroke-width="4"/><circle cx="36" cy="50" r="14" stroke="currentColor" stroke-width="4"/></svg></div><div><div class="fname">Giben KG668</div><div class="fcat">Coladeira de bordas · 22 m/min · moveleira</div></div><div class="fprice"><div class="fl">Valor de feira</div><div class="fv">R$ 260k</div></div></div>
+      <div class="fb">
+        <div class="fspecs">
+          <div class="row"><span class="k">Velocidade</span><span class="v">22 m/min</span></div>
+          <div class="row"><span class="k">Regulagens finas</span><span class="v">Manuais</span></div>
+          <div class="row"><span class="k">Manutenção</span><span class="v">Simples</span></div>
+          <div class="row"><span class="k">Suporte</span><span class="v">Showroom + técnico · BH</span></div>
+          <div class="row"><span class="k">Pega usada na troca</span><span class="v">Sim</span></div>
+        </div>
+        <div class="ftext">
+          <p>Marca moveleira <b>muito conceituada</b>, que preserva valor. Pega a usada na troca, migra para o galpão novo e conta com <b>assistência, showroom e treinamento na própria BH</b>.</p>
+          <div class="pcrow"><div class="c p"><div class="ch">A favor</div><li>Preserva valor · migra · revenda boa</li><li>Suporte local em BH</li></div><div class="c n"><div class="ch">A ponderar</div><li>Regulagens ainda manuais</li><li>Sem bipagem/telemetria</li></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ficha">
+      <div class="fh"><div class="fico"><svg viewBox="0 0 320 160" fill="none"><rect x="16" y="90" width="234" height="34" rx="3" stroke="currentColor" stroke-width="4"/><rect x="48" y="54" width="172" height="22" rx="4" stroke="currentColor" stroke-width="4"/><circle cx="74" cy="65" r="6" stroke="currentColor" stroke-width="3"/><circle cx="114" cy="65" r="6" stroke="currentColor" stroke-width="3"/><circle cx="154" cy="65" r="6" stroke="currentColor" stroke-width="3"/><circle cx="194" cy="65" r="6" stroke="currentColor" stroke-width="3"/><rect x="258" y="40" width="36" height="84" rx="3" stroke="currentColor" stroke-width="4"/><rect x="20" y="34" width="40" height="26" rx="3" stroke="currentColor" stroke-width="3.5"/></svg></div><div><div class="fname">Giben KG712</div><div class="fcat">Coladeira automatizada · bipagem + telemetria</div></div><div class="fprice"><div class="fl">Valor de feira</div><div class="fv">R$ 410k</div></div></div>
+      <div class="fb">
+        <div class="fspecs">
+          <div class="row"><span class="k">Regulagens finas</span><span class="v">Automáticas</span></div>
+          <div class="row"><span class="k">Magazine de fitas</span><span class="v">4 · troca automática</span></div>
+          <div class="row"><span class="k">Rastreabilidade</span><span class="v">Bipagem de peça</span></div>
+          <div class="row"><span class="k">Telemetria</span><span class="v">Metros colados</span></div>
+          <div class="row"><span class="k">Entra no degrau</span><span class="v">3 · R$ 600 mil</span></div>
+        </div>
+        <div class="ftext">
+          <p>O <b>topo automatizado</b>: regula sozinha por tipo de MDF, troca entre 4 fitas sem parar e registra cada peça. A telemetria (metros colados) é o <b>insumo para precificar serviços por peça</b>.</p>
+          <div class="pcrow"><div class="c p"><div class="ch">A favor</div><li>Zero setup manual · agilidade de mix</li><li>Dados por peça · base p/ serviços</li></div><div class="c n"><div class="ch">A ponderar</div><li>Maior cheque das coladeiras</li><li>Retorno pede volume + mix alto</li></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ficha">
+      <div class="fh" style="background:linear-gradient(110deg,#12253f,#0E2038 60%,#3a2f16 150%)"><div class="fico" style="border-color:var(--gold)"><svg viewBox="0 0 320 160" fill="none"><rect x="40" y="80" width="240" height="40" stroke="currentColor" stroke-width="4"/><path d="M40 80 H124 Q142 80 142 60 L178 60 Q196 60 196 80 H280" stroke="var(--gold)" stroke-width="5" fill="none"/></svg></div><div><div class="fname">Coladeira de Puxadores Giben</div><div class="fcat">Usina puxador/perfil integrado · diferencial de mercado ★</div></div><div class="fprice"><div class="fl">Valor de feira</div><div class="fv">R$ 420k</div></div></div>
+      <div class="fb">
+        <div class="fspecs">
+          <div class="row"><span class="k">Função</span><span class="v">Puxador integrado</span></div>
+          <div class="row"><span class="k">Elimina</span><span class="v">Ferragem comprada</span></div>
+          <div class="row"><span class="k">Ganho</span><span class="v">Linha assinatura</span></div>
+          <div class="row"><span class="k">Retorno</span><span class="v">Posicionamento/margem</span></div>
+          <div class="row"><span class="k">Detalhe</span><span class="v">Seção 05</span></div>
+        </div>
+        <div class="ftext">
+          <p>Usina o <b>puxador integrado direto na peça</b> — cria um produto que o concorrente não tem, elimina ferragem de terceiros e eleva a percepção de valor. Diferencial detalhado na seção 05.</p>
+          <div class="pcrow"><div class="c p"><div class="ch">A favor</div><li>Produto de assinatura · margem premium</li><li>Elimina custo/prazo de ferragem</li></div><div class="c n"><div class="ch">A ponderar</div><li>Retorno por posicionamento, não escala</li><li>Exige comunicar o diferencial</li></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Dossiê Técnico de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">FICHAS · LINHA GIBEN <span>·</span> 08</div></div>
+</section>
+
+<!-- =============== 04 · FICHAS: LINHA INDUSTRIAL + COMPLEMENTARES =============== -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Dossiê Técnico de Expansão · seção 04 (III)</div></div></div>
+    <div class="kx">Fichas Técnicas · Linha Industrial</div>
+    <div class="tt">Corte, furação e apoio</div>
+    <div class="desc">As máquinas do horizonte de R$ 1 milhão — nesting e centro de usinagem — e os equipamentos complementares.</div>
+  </div>
+  <div class="body">
+    <div class="ficha">
+      <div class="fh"><div class="fico"><svg viewBox="0 0 320 160" fill="none"><rect x="28" y="48" width="264" height="90" rx="4" stroke="currentColor" stroke-width="4"/><rect x="120" y="30" width="30" height="118" rx="3" stroke="currentColor" stroke-width="4"/><rect x="54" y="66" width="44" height="44" stroke="currentColor" stroke-width="2.5"/><rect x="188" y="66" width="56" height="22" stroke="currentColor" stroke-width="2.5"/></svg></div><div><div class="fname">Nesting Giben</div><div class="fcat">Centro de corte nesting · bipagem</div></div><div class="fprice"><div class="fl">Valor de feira</div><div class="fv">R$ 530k</div></div></div>
+      <div class="fb">
+        <div class="fspecs">
+          <div class="row"><span class="k">Função</span><span class="v">Corte nesting</span></div>
+          <div class="row"><span class="k">Rastreabilidade</span><span class="v">Bipagem</span></div>
+          <div class="row"><span class="k">Aproveitamento</span><span class="v">Plano otimizado</span></div>
+          <div class="row"><span class="k">Integração</span><span class="v">Coladeira + furação</span></div>
+          <div class="row"><span class="k">Entra no degrau</span><span class="v">Horizonte · 1 mi</span></div>
+        </div>
+        <div class="ftext">
+          <p>Substitui o corte tradicional por um fluxo <b>automatizado e rastreável</b>, com menos desperdício de chapa. É a <b>porta de entrada da linha interligada</b> do horizonte de 1 milhão.</p>
+          <div class="pcrow"><div class="c p"><div class="ch">A favor</div><li>Corte repetível · menos desperdício</li><li>Bipagem integra o fluxo</li></div><div class="c n"><div class="ch">A ponderar</div><li>Cheque elevado · só no salto industrial</li><li>Pede galpão maior + demanda engatilhada</li></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ficha">
+      <div class="fh"><div class="fico"><svg viewBox="0 0 320 160" fill="none"><rect x="26" y="86" width="268" height="30" rx="3" stroke="currentColor" stroke-width="4"/><rect x="104" y="30" width="112" height="36" rx="3" stroke="currentColor" stroke-width="4"/><line x1="124" y1="66" x2="124" y2="86" stroke="currentColor" stroke-width="4"/><line x1="150" y1="66" x2="150" y2="86" stroke="currentColor" stroke-width="4"/><line x1="176" y1="66" x2="176" y2="86" stroke="currentColor" stroke-width="4"/><line x1="196" y1="66" x2="196" y2="86" stroke="currentColor" stroke-width="4"/></svg></div><div><div class="fname">Giben Flexdrill</div><div class="fcat">Centro de usinagem / furação CNC · bipagem</div></div><div class="fprice"><div class="fl">Valor de feira</div><div class="fv">R$ 360k</div></div></div>
+      <div class="fb">
+        <div class="fspecs">
+          <div class="row"><span class="k">Função</span><span class="v">Furação CNC</span></div>
+          <div class="row"><span class="k">Rastreabilidade</span><span class="v">Bipagem</span></div>
+          <div class="row"><span class="k">Precisão</span><span class="v">Programada, repetível</span></div>
+          <div class="row"><span class="k">Integração</span><span class="v">Fecha o trio</span></div>
+          <div class="row"><span class="k">Entra no degrau</span><span class="v">Horizonte · 1 mi</span></div>
+        </div>
+        <div class="ftext">
+          <p>Fecha o <b>trio da linha</b>: a peça sai cortada, colada e <b>furada</b>, pronta para montar. Menos retrabalho e montagem mais rápida — o que sustenta o volume do milhão.</p>
+          <div class="pcrow"><div class="c p"><div class="ch">A favor</div><li>Furação precisa · elimina marcação manual</li><li>Completa a linha para montagem rápida</li></div><div class="c n"><div class="ch">A ponderar</div><li>Ganho pleno só com nesting + coladeira juntos</li></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Complementares <small>· apoio de fluxo e expedição</small></span></div>
+    <table>
+      <thead><tr><th>Equipamento</th><th>Papel</th><th>Entra quando</th><th class="r" style="width:74px">Referência</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Esteira de retorno</span></td><td>Devolve a peça ao operador após a colagem · reduz deslocamento</td><td>Reorg. (degrau 3+)</td><td class="r"><span class="num">R$ 60.000</span></td></tr>
+        <tr><td><span class="nm">Embaladora</span></td><td>Protege e padroniza a peça na expedição · menos avaria</td><td>Linha industrial</td><td class="r"><span class="num">a partir de R$ 60.000</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pf"><div class="pl">Dossiê Técnico de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">FICHAS · INDUSTRIAL <span>·</span> 09</div></div>
+</section>
+
+<!-- =============== 05 · DIFERENCIAL PUXADORES =============== -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Dossiê Técnico de Expansão · seção 05</div></div></div>
+    <div class="kx">Diferencial de Mercado</div>
+    <div class="tt">A máquina de puxadores</div>
+    <div class="desc">Por que um único equipamento pode reposicionar o produto Valvic — e ampliar margem por percepção de valor, não por volume.</div>
+  </div>
+  <div class="body">
+    <p class="tx lead drop">Entre todas as máquinas deste dossiê, a coladeira de puxadores é a única cujo retorno não vem de <b>produzir mais</b>, e sim de <b>produzir diferente</b>. Ela usina o puxador — o perfil de pega — <b>integrado à própria peça</b>, eliminando a ferragem comprada de terceiros. O resultado é um móvel de linhas limpas, sem puxador aparente, com um acabamento que o cliente percebe imediatamente como superior.</p>
+
+    <div class="two">
+      <div class="cardbox"><div class="cbh">O que ela cria</div><ul><li><b>Um produto que o concorrente não tem</b> — puxador integrado como assinatura da marca</li><li>Elimina o <b>custo e o prazo</b> da ferragem de puxador</li><li>Eleva a <b>percepção de valor</b> e, com ela, o preço praticável</li><li>Abre uma <b>linha premium</b> dentro do portfólio Valvic</li></ul></div>
+      <div class="cardbox"><div class="cbh">Por que importa para o investidor</div><p>As demais máquinas ampliam <b>capacidade</b>; esta amplia <b>a marca</b>. Num mercado de móveis planejados onde a concorrência disputa preço, um diferencial de <b>design proprietário</b> muda o eixo da conversa com o cliente — de "quanto custa" para "isto só a Valvic faz".</p><p style="margin-top:6px">É um módulo que <b>se paga em posicionamento</b>: cada projeto premium carrega margem maior, e a marca ganha um motivo de escolha que não depende de desconto.</p></div>
+    </div>
+
+    <div class="note navy"><div class="nh">Leitura estratégica</div><p>A máquina de puxadores <b>não compete com as coladeiras de produção</b> — ela as complementa. Enquanto a linha industrial resolve o <b>volume</b>, os puxadores resolvem o <b>valor</b>. Juntas, sustentam um crescimento que é ao mesmo tempo maior e mais rentável, com uma assinatura visual difícil de copiar.</p></div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Em uma frase</span></div>
+    <p class="tx">Transforma o móvel Valvic em <b>produto de assinatura</b> — e a marca em algo que se escolhe por desejo, não só por orçamento.</p>
+  </div>
+  <div class="pf"><div class="pl">Dossiê Técnico de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">PUXADORES <span>·</span> 10</div></div>
+</section>
+
+<!-- =============== 06 · PRESTAÇÃO DE SERVIÇOS =============== -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Dossiê Técnico de Expansão · seção 06</div></div></div>
+    <div class="kx">Cenário Adicional</div>
+    <div class="tt">Prestação de serviços</div>
+    <div class="desc">Como a linha industrial vira um segundo motor de receita — e por que isso reduz o risco de todo o investimento.</div>
+  </div>
+  <div class="body">
+    <p class="tx lead drop">Uma linha industrial dimensionada para R$ 1 milhão de produção própria dificilmente estará <b>100% ocupada o tempo todo</b>. Essa folga — que num modelo tradicional seria custo ocioso — pode virar <b>receita</b>. Com nesting, coladeira e furação equipados com bipagem, a Valvic passa a poder <b>vender capacidade de produção</b> a terceiros: corte, colagem e furação para marcenarias que não têm CNC próprio.</p>
+
+    <div class="sec"><span class="bar"></span><span class="tx">O modelo</span></div>
+    <div class="two">
+      <div class="cardbox"><div class="cbh">Capacidade ociosa vira receita</div><p>A mesma linha que produz o móvel Valvic presta <b>serviço B2B</b> nas janelas livres. O cliente é a marcenaria menor, sem máquina, que precisa de corte e colagem de qualidade industrial. A Valvic vende <b>a própria capacidade</b>, não só o produto final.</p></div>
+      <div class="cardbox"><div class="cbh">Preenche os vales de demanda</div><p>Nos meses de produção própria mais fraca, o serviço <b>preenche o buraco de caixa</b>. A operação deixa de depender exclusivamente do ciclo de vendas de móveis planejados e ganha uma <b>receita mais estável</b> ao longo do ano.</p></div>
+    </div>
+    <div class="two" style="margin-top:11px">
+      <div class="cardbox"><div class="cbh">Margem alta e precificável</div><p>A <b>telemetria</b> da coladeira mede o metro colado real; a bipagem conta as peças. Isso permite <b>precificar por peça / metro</b> — cobrança justa, transparente e auditável, medida pela própria máquina, sem estimativa grosseira.</p></div>
+      <div class="cardbox"><div class="cbh">De-risca o investimento</div><p>Este é o ponto central para o investidor: a prestação de serviços <b>transforma o CAPEX em ativo que fatura mesmo com a produção própria não cheia</b>. A linha industrial passa a se pagar por <b>dois caminhos</b>, não um só.</p></div>
+    </div>
+
+    <div class="note"><div class="nh">Síntese do cenário</div><p>Não é um negócio paralelo que disputa foco — é o <b>aproveitamento inteligente</b> de uma capacidade que, de outro modo, ficaria parada. Receita de margem alta, que estabiliza o caixa e reduz o risco de todo o investimento em máquinas.</p></div>
+  </div>
+  <div class="pf"><div class="pl">Dossiê Técnico de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">PRESTAÇÃO DE SERVIÇOS <span>·</span> 11</div></div>
+</section>
+
+<!-- =============== 07 · SÍNTESE & PRÓXIMOS PASSOS =============== -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Dossiê Técnico de Expansão · seção 07</div></div></div>
+    <div class="kx">Síntese</div>
+    <div class="tt">Os caminhos e o que validar</div>
+    <div class="desc">O resumo das decisões na mesa e os próximos passos factuais — sem recomendação, para uma escolha consciente.</div>
+  </div>
+  <div class="body">
+    <p class="tx lead drop">Este dossiê apresenta <b>caminhos e realidades</b>, de forma organizada — não uma recomendação. Cada degrau tem o seu gatilho, cada máquina o seu momento, cada galpão o seu trade-off. As decisões ficam na mesa, para quem tem os números na ponta da língua.</p>
+
+    <div class="sec"><span class="bar"></span><span class="tx">As decisões abertas</span></div>
+    <table>
+      <thead><tr><th style="width:120px">Decisão</th><th>O que está em jogo</th><th>Extremos na mesa</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Ritmo</span></td><td>Subir degrau a degrau, cada um validado — o 1 milhão como horizonte, não prazo.</td><td>Gradual (menor risco) ↔ acelerado (chega antes)</td></tr>
+        <tr><td><span class="nm">Galpão</span></td><td>Onde a expansão acontece e como o capital é exposto.</td><td>Atual (obra ~R$90–120k) ↔ novo (cheque R$1,5–2mi)</td></tr>
+        <tr><td><span class="nm">Coladeira</span></td><td>Cheque menor agora × capital que preserva valor e migra.</td><td>Raizen R$160k ↔ Giben KG668 R$260k</td></tr>
+        <tr><td><span class="nm">Alavancas</span></td><td>Diferenciação e monetização da capacidade instalada.</td><td>Puxadores (margem) + serviços (de-risca)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Próximos passos factuais <small>· o que validar em cada degrau</small></span></div>
+    <div class="two">
+      <div class="cardbox"><div class="cbh">Antes de subir cada degrau</div><ul><li>Confirmar <b>demanda sustentada</b> acima do patamar atual</li><li>Identificar o <b>gargalo real</b> que o investimento vai atacar</li><li>Checar que o salto <b>preserva a MC de ~40%</b></li></ul></div>
+      <div class="cardbox"><div class="cbh">Para fechar números</div><ul><li>Obter <b>propostas finais</b> das máquinas (valores de feira → firmes)</li><li>Orçar a <b>infra/obra</b> com fornecedores locais</li><li>Definir a <b>forma de aporte</b> e o payback aceitável por etapa</li></ul></div>
+    </div>
+
+    <div class="note navy"><div class="nh">Fechamento</div><p>O material existe para que a decisão seja <b>informada e consciente</b>. Os caminhos estão postos, com custos e trade-offs abertos. <b>A escolha — do ritmo, do galpão, da coladeira e das alavancas — fica na mesa.</b></p></div>
+  </div>
+  <div class="pf"><div class="pl">Dossiê Técnico de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">SÍNTESE <span>·</span> 12</div></div>
+</section>
+
+</body>
+</html>
