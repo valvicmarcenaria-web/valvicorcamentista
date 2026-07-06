@@ -20,7 +20,6 @@
   .num{ font-variant-numeric:tabular-nums; }
   .serif{ font-family:'Cormorant Garamond',serif; }
   .sheet{ position:relative; width:420mm; height:297mm; background:var(--cream); margin:20px auto; box-shadow:0 12px 48px rgba(11,22,40,.26); overflow:hidden; display:flex; flex-direction:column; }
-  /* ---------- shared header ---------- */
   .ph{ background:var(--navy); color:#fff; padding:14mm 20mm 11mm; position:relative; }
   .ph::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:3px; background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 40%,transparent 100%); }
   .ph .top{ display:flex; align-items:center; gap:15px; margin-bottom:12px; }
@@ -29,8 +28,9 @@
   .ph .sub{ font-size:10px; color:rgba(255,255,255,.55); letter-spacing:.5px; margin-top:3px; }
   .ph .kx{ font-size:10px; letter-spacing:6px; text-transform:uppercase; color:var(--gold); }
   .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:38px; font-weight:600; margin-top:3px; line-height:1.02; }
-  .ph .desc{ font-size:12px; color:rgba(255,255,255,.62); margin-top:9px; max-width:900px; line-height:1.55; }
+  .ph .desc{ font-size:12px; color:rgba(255,255,255,.62); margin-top:9px; max-width:920px; line-height:1.55; }
   .body{ flex:1; padding:11mm 20mm 0; display:flex; flex-direction:column; min-height:0; }
+  .body.vcenter{ justify-content:center; }
   .sec{ display:flex; align-items:center; gap:12px; margin:0 0 12px; }
   .sec .bar{ width:22px; height:2.5px; background:var(--gold); }
   .sec .tx{ font-size:12px; font-weight:700; letter-spacing:2.4px; text-transform:uppercase; color:var(--navy); }
@@ -39,6 +39,8 @@
   .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:11px 20px; border-radius:6px; font-size:13px; font-weight:600; cursor:pointer; }
   .badge{ display:inline-block; padding:1px 9px; border-radius:11px; font-size:9px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; }
   .b-navy{ background:var(--navy); color:#fff; } .b-gold{ background:#f6edd6; color:var(--gold-dk); } .b-green{ background:#eaf4ee; color:var(--green); } .b-blue{ background:#e6ecf4; color:var(--blue); } .b-amber{ background:#fbeecf; color:var(--amber); } .b-red{ background:#f6e6e5; color:var(--red); }
+  .seal{ display:inline-flex; align-items:center; gap:4px; padding:1px 8px; border-radius:5px; font-size:8px; font-weight:800; letter-spacing:.6px; text-transform:uppercase; background:#eef1f6; color:var(--navy2); border:1px solid #d6dde8; }
+  .seal.u{ background:#f0ece0; color:var(--gold-dk); border:1px solid #e3d6b6; }
 
   /* ================= CAPA ================= */
   .cover{ background:var(--navy); color:#fff; justify-content:space-between; padding:0; }
@@ -62,7 +64,7 @@
   .cover .cv-foot .fl{ font-size:10.5px; color:rgba(255,255,255,.5); letter-spacing:.4px; }
   .cover .cv-foot .fr{ font-size:10.5px; color:var(--gold); letter-spacing:3px; text-transform:uppercase; }
 
-  /* ================= ESCADA (journey) ================= */
+  /* ================= ESCADA ================= */
   .stair{ display:flex; align-items:flex-end; gap:14px; flex:1; min-height:0; }
   .step{ flex:1; display:flex; flex-direction:column; align-items:stretch; height:100%; justify-content:flex-end; }
   .step .cap{ text-align:center; margin-bottom:8px; }
@@ -84,65 +86,97 @@
   .step .meta .inv{ font-size:10px; font-weight:700; color:var(--navy); margin-top:8px; padding-top:6px; border-top:1px dashed var(--line2); }
   .step .meta .inv span{ color:var(--muted); font-weight:600; font-size:8.5px; display:block; text-transform:uppercase; letter-spacing:.6px; }
 
-  /* ================= FORK (galpão) ================= */
-  .fork{ display:flex; gap:22px; flex:1; min-height:0; }
-  .path{ flex:1; background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; }
-  .path .ph2{ padding:16px 20px; color:#fff; }
-  .path.a .ph2{ background:var(--navy2); } .path.b .ph2{ background:var(--gold-dk); }
-  .path .ph2 .pk{ font-size:10px; letter-spacing:2px; text-transform:uppercase; opacity:.8; }
-  .path .ph2 .pn{ font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:600; margin-top:2px; line-height:1.05; }
-  .path .pbody{ padding:16px 20px 18px; display:flex; flex-direction:column; flex:1; }
-  .path .line{ display:flex; gap:10px; font-size:11.5px; margin-bottom:9px; align-items:flex-start; }
-  .path .line .ic{ flex-shrink:0; width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; margin-top:1px; }
-  .path .line.pro .ic{ background:#eaf4ee; color:var(--green); } .path .line.con .ic{ background:#f6e6e5; color:var(--red); }
-  .path .line b{ color:var(--navy); }
-  .path .whenfit{ margin-top:16px; background:#f6f3ec; border-left:3px solid var(--gold); border-radius:0 7px 7px 0; padding:11px 14px; }
-  .path .whenfit .wl{ font-size:9px; letter-spacing:1.4px; text-transform:uppercase; color:var(--gold-dk); font-weight:700; margin-bottom:3px; }
-  .path .whenfit .wt{ font-size:11px; color:#41505d; line-height:1.5; }
-  .path .whenfit .wt b{ color:var(--navy); }
-  .path .cheque{ margin-top:auto; padding-top:14px; }
-  .path .cheque .cl{ font-size:9px; letter-spacing:1.4px; text-transform:uppercase; color:var(--muted); }
-  .path .cheque .cv{ font-family:'Cormorant Garamond',serif; font-size:30px; font-weight:700; color:var(--navy); line-height:1; margin-top:2px; }
-  .path .cheque .cd{ font-size:10px; color:var(--muted); margin-top:3px; }
-  .neutralbar{ margin-top:14px; background:#fffaf0; border:1px solid #eed9a8; border-radius:9px; padding:12px 18px; display:flex; gap:16px; align-items:center; }
-  .neutralbar .nk{ font-size:10px; letter-spacing:1.6px; text-transform:uppercase; color:var(--amber); font-weight:700; flex-shrink:0; }
-  .neutralbar .nt{ font-size:11.5px; color:#5a4a2c; line-height:1.5; }
-  .neutralbar .nt b{ color:var(--navy); }
+  /* ================= GALPÃO ================= */
+  .gcompare{ display:flex; gap:22px; flex:1; min-height:0; }
+  .gcol{ flex:1; background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; }
+  .gcol .gh{ padding:14px 20px; color:#fff; }
+  .gcol.atual .gh{ background:var(--navy2); } .gcol.novo .gh{ background:var(--gold-dk); }
+  .gcol .gh .gk{ font-size:10px; letter-spacing:2px; text-transform:uppercase; opacity:.82; }
+  .gcol .gh .gn{ font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:600; margin-top:2px; line-height:1.05; }
+  .gcol .gb{ padding:15px 20px 18px; flex:1; display:flex; flex-direction:column; }
+  .gcol .gdesc{ font-size:11.5px; color:#41505d; line-height:1.5; margin-bottom:12px; }
+  .gcol .gdesc b{ color:var(--navy); }
+  .itens{ }
+  .itens .igrp{ font-size:9px; letter-spacing:1.2px; text-transform:uppercase; color:var(--gold-dk); font-weight:700; margin:8px 0 5px; }
+  .itens .irow{ display:flex; justify-content:space-between; gap:10px; font-size:10.5px; padding:3.5px 0; border-bottom:1px dotted var(--line2); }
+  .itens .irow .k{ color:#41505d; } .itens .irow .v{ color:var(--navy); font-weight:700; white-space:nowrap; }
+  .gtot{ margin-top:10px; background:var(--navy); color:#fff; border-radius:8px; padding:11px 15px; display:flex; align-items:center; justify-content:space-between; }
+  .gtot .tl{ font-size:9px; letter-spacing:1.2px; text-transform:uppercase; color:var(--gold-soft); } .gtot .tl small{ display:block; color:rgba(255,255,255,.55); font-size:8px; letter-spacing:.4px; text-transform:none; margin-top:2px; }
+  .gtot .tv{ font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:700; }
+  .gmeta{ margin-top:auto; padding-top:12px; display:flex; gap:10px; }
+  .gmeta .gm{ flex:1; background:#f6f3ec; border-radius:7px; padding:9px 12px; }
+  .gmeta .gm .ml{ font-size:8.5px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); } .gmeta .gm .mv{ font-size:12px; font-weight:800; color:var(--navy); margin-top:2px; }
+  .gnote{ margin-top:14px; background:#fffaf0; border:1px solid #eed9a8; border-radius:9px; padding:11px 18px; display:flex; gap:16px; align-items:center; }
+  .gnote .nk{ font-size:10px; letter-spacing:1.6px; text-transform:uppercase; color:var(--amber); font-weight:700; flex-shrink:0; }
+  .gnote .nt{ font-size:11.5px; color:#5a4a2c; line-height:1.5; } .gnote .nt b{ color:var(--navy); }
 
-  /* ================= COMPARATIVO COLADEIRAS ================= */
+  /* ================= COMPARATIVO ================= */
   .cmp{ width:100%; border-collapse:separate; border-spacing:0; flex:1; }
-  .cmp th{ text-align:left; vertical-align:bottom; padding:0 14px 12px; }
-  .cmp th.rowh{ width:150px; }
-  .cmp th .mname{ font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; color:var(--navy); line-height:1.05; }
-  .cmp th .mprice{ font-size:14px; font-weight:800; color:var(--gold-dk); margin-top:2px; }
-  .cmp th .mtag{ font-size:8.5px; letter-spacing:.6px; text-transform:uppercase; color:var(--muted); margin-top:3px; }
-  .cmp td{ padding:9px 14px; border-top:1px solid var(--line); font-size:11px; vertical-align:top; }
-  .cmp td.rowh{ font-size:9.5px; font-weight:700; letter-spacing:.8px; text-transform:uppercase; color:var(--muted); background:#f4f1ea; }
-  .cmp col.hl{ background:#fbf7ec; }
+  .cmp th{ text-align:left; vertical-align:bottom; padding:0 12px 11px; }
+  .cmp th.rowh{ width:132px; }
+  .cmp th .mname{ font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:700; color:var(--navy); line-height:1.05; }
+  .cmp th .mprice{ font-size:13px; font-weight:800; color:var(--gold-dk); margin-top:2px; }
+  .cmp th .mtag{ font-size:8px; letter-spacing:.5px; text-transform:uppercase; color:var(--muted); margin-top:3px; }
+  .cmp td{ padding:7px 12px; border-top:1px solid var(--line); font-size:10px; vertical-align:top; }
+  .cmp td.rowh{ font-size:9px; font-weight:700; letter-spacing:.6px; text-transform:uppercase; color:var(--muted); background:#f4f1ea; }
+  .cmp col.feat{ background:#faf4e8; }
   .cmp tr:last-child td{ border-bottom:1px solid var(--line); }
   .cmp .yes{ color:var(--green); font-weight:700; } .cmp .no{ color:var(--red); font-weight:700; } .cmp .mid{ color:var(--amber); font-weight:700; }
-  .cmphead-note{ font-size:10px; color:var(--muted); margin-bottom:10px; font-style:italic; }
+  .cmpnote{ font-size:10px; color:var(--muted); margin-bottom:9px; font-style:italic; }
+  .cmpnote b{ color:var(--navy); font-style:normal; }
 
-  /* ================= LÂMINA DE MÁQUINA ================= */
+  /* ================= LÂMINAS 2-UP ================= */
+  .lam2{ display:flex; flex-direction:column; gap:16px; flex:1; min-height:0; }
+  .lam2 .m{ flex:1; display:flex; background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; min-height:0; }
+  .lam2 .m .visual{ flex:0 0 30%; position:relative; background:linear-gradient(160deg,#fff 0%,#f4f1ea 100%); border-right:1px solid var(--line); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .lam2 .m .visual::before{ content:""; position:absolute; inset:0; background:radial-gradient(circle at 30% 25%, rgba(194,160,90,.10), transparent 55%); }
+  .lam2 .m .visual .photo{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:3; }
+  .lam2 .m .visual.has-photo .mimg, .lam2 .m .visual.has-photo::before{ display:none; }
+  .lam2 .m .visual .mimg{ width:82%; color:var(--navy); position:relative; z-index:1; }
+  .lam2 .m .visual .price{ position:absolute; top:12px; right:12px; z-index:6; background:rgba(251,250,247,.94); border-radius:8px; padding:5px 11px; text-align:right; }
+  .lam2 .m .visual .price .pl{ font-size:7.5px; letter-spacing:1.2px; text-transform:uppercase; color:var(--muted); }
+  .lam2 .m .visual .price .pv{ font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:700; color:var(--navy); line-height:1; }
+  .lam2 .m .visual .cap{ position:absolute; bottom:9px; left:12px; z-index:2; font-size:7.5px; letter-spacing:.8px; text-transform:uppercase; color:var(--muted); }
+  .lam2 .m .visual.has-photo .cap{ display:none; }
+  .lam2 .m .info{ flex:1; padding:13px 18px; display:flex; flex-direction:column; min-width:0; }
+  .lam2 .m .info .mt{ font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:600; color:var(--navy); line-height:1.02; }
+  .lam2 .m .info .ms{ font-size:10px; color:var(--muted); margin-top:2px; }
+  .lam2 .m .info .tags{ display:flex; flex-wrap:wrap; gap:5px; margin:8px 0; }
+  .lam2 .m .info .mid{ display:flex; gap:16px; flex:1; min-height:0; }
+  .lam2 .m .info .specs{ flex:0 0 40%; }
+  .lam2 .m .info .specs .sp{ display:flex; justify-content:space-between; gap:8px; font-size:9.5px; padding:3px 0; border-bottom:1px dotted var(--line2); }
+  .lam2 .m .info .specs .sp:last-child{ border-bottom:none; }
+  .lam2 .m .info .specs .sp .k{ color:var(--muted); } .lam2 .m .info .specs .sp .v{ color:var(--navy); font-weight:700; text-align:right; }
+  .lam2 .m .info .pc{ flex:1; display:flex; gap:12px; }
+  .lam2 .m .info .pc .c{ flex:1; }
+  .lam2 .m .info .pc .ch{ font-size:8px; letter-spacing:.8px; text-transform:uppercase; font-weight:700; margin-bottom:3px; }
+  .lam2 .m .info .pc .c.p .ch{ color:var(--green); } .lam2 .m .info .pc .c.n .ch{ color:var(--red); }
+  .lam2 .m .info .pc li{ list-style:none; font-size:9px; line-height:1.4; padding-left:11px; position:relative; color:#3a4650; margin-bottom:2px; }
+  .lam2 .m .info .pc .c.p li::before{ content:"+"; position:absolute; left:0; color:var(--green); font-weight:800; }
+  .lam2 .m .info .pc .c.n li::before{ content:"−"; position:absolute; left:0; color:var(--red); font-weight:800; }
+  .lam2 .m .info .foot{ margin-top:9px; padding-top:8px; border-top:1px solid var(--line); display:flex; align-items:center; gap:8px; }
+  .lam2 .m .info .foot .fl{ font-size:8.5px; letter-spacing:1.2px; text-transform:uppercase; color:var(--muted); } .lam2 .m .info .foot .fv{ font-size:11px; font-weight:800; color:var(--gold-dk); }
+  .lam2 .m .info .foot .op{ margin-left:auto; font-size:9.5px; color:#41505d; max-width:52%; text-align:right; line-height:1.35; } .lam2 .m .info .foot .op b{ color:var(--navy); }
+
+  /* ================= PUXADORES (destaque) ================= */
+  .sheet.feature .ph{ background:linear-gradient(120deg,#12253f 0%,#0E2038 55%,#3a2f16 140%); }
+  .featflag{ position:absolute; top:14mm; right:20mm; background:var(--gold); color:var(--navy); font-size:10px; font-weight:800; letter-spacing:2px; text-transform:uppercase; padding:6px 14px; border-radius:20px; z-index:5; }
   .lam{ display:flex; gap:26px; flex:1; min-height:0; }
-  .lam .visual{ flex:0 0 46%; display:flex; flex-direction:column; }
-  .lam .frame{ flex:1; background:linear-gradient(160deg,#fff 0%,#f4f1ea 100%); border:1px solid var(--line); border-radius:14px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
-  .lam .frame::before{ content:""; position:absolute; inset:0; background:radial-gradient(circle at 30% 25%, rgba(194,160,90,.10), transparent 55%); }
-  .lam .frame .mimg{ width:78%; height:auto; color:var(--navy); position:relative; z-index:1; }
+  .lam .visual{ flex:0 0 44%; display:flex; flex-direction:column; }
+  .lam .frame{ flex:1; background:linear-gradient(160deg,#fff 0%,#f4f1ea 100%); border:2px solid var(--gold); border-radius:14px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+  .lam .frame::before{ content:""; position:absolute; inset:0; background:radial-gradient(circle at 30% 25%, rgba(194,160,90,.12), transparent 55%); }
+  .lam .frame .photo{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:3; }
+  .lam .frame.has-photo .mimg, .lam .frame.has-photo::before, .lam .frame.has-photo .ph-tag{ display:none; }
+  .lam .frame .mimg{ width:80%; height:auto; color:var(--navy); position:relative; z-index:1; }
   .lam .frame .ph-tag{ position:absolute; bottom:12px; left:14px; font-size:8.5px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); z-index:2; }
-  /* slot de foto real: se o arquivo existir, cobre a ilustração; se não, o onerror remove e a ilustração aparece */
-  .lam .frame .photo, .duo .item .iframe .photo{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:3; }
-  .lam .frame.has-photo .mimg, .lam .frame.has-photo .frame::before, .duo .item .iframe.has-photo .mimg{ display:none; }
-  .lam .frame.has-photo .ph-tag{ display:none; }
   .lam .frame .price-fx{ position:absolute; top:14px; right:16px; text-align:right; z-index:6; background:rgba(251,250,247,.92); padding:6px 12px; border-radius:9px; }
-  .duo .item .iframe{ position:relative; overflow:hidden; }
   .lam .frame .price-fx .pl{ font-size:8.5px; letter-spacing:1.4px; text-transform:uppercase; color:var(--muted); }
-  .lam .frame .price-fx .pv{ font-family:'Cormorant Garamond',serif; font-size:34px; font-weight:700; color:var(--navy); line-height:1; }
+  .lam .frame .price-fx .pv{ font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:700; color:var(--navy); line-height:1; }
   .lam .info{ flex:1; display:flex; flex-direction:column; min-width:0; }
-  .lam .mtitle{ font-family:'Cormorant Garamond',serif; font-size:34px; font-weight:600; color:var(--navy); line-height:1.02; }
+  .lam .mtitle{ font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:600; color:var(--navy); line-height:1.02; }
   .lam .msub{ font-size:11.5px; color:var(--muted); margin-top:3px; letter-spacing:.3px; }
-  .lam .tags{ display:flex; flex-wrap:wrap; gap:6px; margin:12px 0 14px; }
-  .lam .specs{ display:grid; grid-template-columns:1fr 1fr; gap:8px 14px; margin-bottom:14px; }
+  .lam .tags{ display:flex; flex-wrap:wrap; gap:6px; margin:12px 0 13px; }
+  .lam .specs{ display:grid; grid-template-columns:1fr 1fr; gap:8px 14px; margin-bottom:13px; }
   .lam .specs .sp{ background:#fff; border:1px solid var(--line); border-radius:7px; padding:8px 11px; }
   .lam .specs .sp .sl{ font-size:8.5px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); }
   .lam .specs .sp .sv{ font-size:12.5px; font-weight:700; color:var(--navy); margin-top:2px; line-height:1.2; }
@@ -152,58 +186,53 @@
   .lam .pc .box.con{ background:#faedec; border:1px solid #ecc9c6; }
   .lam .pc .box .bh{ font-size:9px; font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:5px; }
   .lam .pc .box.pro .bh{ color:var(--green); } .lam .pc .box.con .bh{ color:var(--red); }
-  .lam .pc .box li{ list-style:none; font-size:10.5px; line-height:1.45; padding-left:13px; position:relative; margin-bottom:3px; color:#3a4650; }
+  .lam .pc .box li{ list-style:none; font-size:10px; line-height:1.42; padding-left:13px; position:relative; margin-bottom:3px; color:#3a4650; }
   .lam .pc .box.pro li::before{ content:"+"; position:absolute; left:0; color:var(--green); font-weight:800; }
   .lam .pc .box.con li::before{ content:"−"; position:absolute; left:0; color:var(--red); font-weight:800; }
   .lam .oper{ background:var(--navy); color:#fff; border-radius:9px; padding:12px 16px; margin-top:auto; }
   .lam .oper .oh{ font-size:9px; letter-spacing:1.6px; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }
-  .lam .oper .ot{ font-size:11.5px; line-height:1.5; color:rgba(255,255,255,.9); }
-  .lam .oper .ot b{ color:#fff; }
+  .lam .oper .ot{ font-size:11.5px; line-height:1.5; color:rgba(255,255,255,.9); } .lam .oper .ot b{ color:#fff; }
   .lam .enters{ display:flex; align-items:center; gap:8px; margin-top:11px; }
-  .lam .enters .el{ font-size:9px; letter-spacing:1.4px; text-transform:uppercase; color:var(--muted); }
-  .lam .enters .ev{ font-size:12px; font-weight:800; color:var(--gold-dk); }
-  /* destaque puxadores */
-  .sheet.feature .ph{ background:linear-gradient(120deg,#12253f 0%,#0E2038 55%,#3a2f16 140%); }
-  .sheet.feature .lam .frame{ border:2px solid var(--gold); }
-  .featflag{ position:absolute; top:14mm; right:20mm; background:var(--gold); color:var(--navy); font-size:10px; font-weight:800; letter-spacing:2px; text-transform:uppercase; padding:6px 14px; border-radius:20px; z-index:5; }
+  .lam .enters .el{ font-size:9px; letter-spacing:1.4px; text-transform:uppercase; color:var(--muted); } .lam .enters .ev{ font-size:12px; font-weight:800; color:var(--gold-dk); }
 
-  /* ================= COMPLEMENTARES ================= */
+  /* ================= COMPLEMENTARES / GRID CARDS ================= */
   .duo{ display:flex; gap:24px; flex:1; }
   .duo .item{ flex:1; background:#fff; border:1px solid var(--line); border-radius:12px; display:flex; flex-direction:column; overflow:hidden; }
-  .duo .item .iframe{ height:44%; background:linear-gradient(160deg,#fff,#f4f1ea); display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--line); }
-  .duo .item .iframe .mimg{ width:60%; color:var(--navy); }
-  .duo .item .ib{ padding:16px 20px; flex:1; display:flex; flex-direction:column; }
-  .duo .item .it{ font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; color:var(--navy); }
-  .duo .item .ip{ font-size:15px; font-weight:800; color:var(--gold-dk); margin-top:1px; }
-  .duo .item .id{ font-size:11.5px; color:#41505d; line-height:1.55; margin-top:10px; }
+  .duo .item .iframe{ height:42%; position:relative; overflow:hidden; background:linear-gradient(160deg,#fff,#f4f1ea); display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--line); }
+  .duo .item .iframe .photo{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:3; }
+  .duo .item .iframe.has-photo .mimg{ display:none; }
+  .duo .item .iframe .mimg{ width:58%; color:var(--navy); }
+  .duo .item .ib{ padding:15px 20px; flex:1; display:flex; flex-direction:column; }
+  .duo .item .it{ font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:600; color:var(--navy); }
+  .duo .item .ip{ font-size:14px; font-weight:800; color:var(--gold-dk); margin-top:1px; }
+  .duo .item .id{ font-size:11px; color:#41505d; line-height:1.5; margin-top:9px; }
 
-  /* ================= SÍNTESE ================= */
-  .synth{ display:flex; flex-direction:column; flex:1; gap:14px; }
-  .roadmap{ display:flex; align-items:stretch; gap:0; }
+  .cards{ display:flex; gap:16px; }
+  .card{ flex:1; background:#fff; border:1px solid var(--line); border-radius:11px; padding:18px 20px; display:flex; flex-direction:column; }
+  .card .ch{ display:flex; align-items:center; gap:9px; margin-bottom:11px; }
+  .card .ch .ci{ width:30px; height:30px; border-radius:7px; background:#f6edd6; color:var(--gold-dk); display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; }
+  .card .ch .ct{ font-size:13px; font-weight:700; color:var(--navy); letter-spacing:.4px; }
+  .card p{ font-size:11.5px; color:#41505d; line-height:1.6; }
+  .card ul{ list-style:none; margin:12px 0 0; }
+  .card ul li{ font-size:10.5px; color:#3a4650; line-height:1.4; padding:0 0 8px 16px; position:relative; }
+  .card ul li::before{ content:""; position:absolute; left:0; top:6px; width:6px; height:6px; border-radius:50%; background:var(--gold); }
+  .card ul li b{ color:var(--navy); }
+  .card .kv{ margin-top:auto; padding-top:12px; display:flex; gap:10px; }
+  .card .kv .k{ flex:1; background:#f6f3ec; border-radius:6px; padding:8px 10px; }
+  .card .kv .k .kl{ font-size:8px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); }
+  .card .kv .k .kt{ font-size:11px; font-weight:800; color:var(--navy); margin-top:2px; line-height:1.15; }
+  .closing{ background:var(--navy); color:#fff; border-radius:11px; padding:16px 22px; display:flex; align-items:center; gap:18px; margin-top:14px; }
+  .closing .qm{ font-family:'Cormorant Garamond',serif; font-size:48px; color:var(--gold); line-height:.6; }
+  .closing .qt{ font-size:13px; line-height:1.6; color:rgba(255,255,255,.9); } .closing .qt b{ color:var(--gold-soft); }
+
+  /* ================= SÍNTESE roadmap ================= */
+  .roadmap{ display:flex; align-items:stretch; gap:0; margin-bottom:14px; }
   .roadmap .rstep{ flex:1; position:relative; padding:0 10px; }
   .roadmap .rstep .dot{ width:16px; height:16px; border-radius:50%; background:var(--gold); margin:0 auto 10px; position:relative; z-index:2; box-shadow:0 0 0 4px #f6edd6; }
   .roadmap .rstep::before{ content:""; position:absolute; top:7px; left:-50%; width:100%; height:2px; background:var(--line2); z-index:1; }
   .roadmap .rstep:first-child::before{ display:none; }
   .roadmap .rstep .rf{ font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700; color:var(--navy); text-align:center; line-height:1; }
   .roadmap .rstep .rt{ font-size:10px; color:var(--muted); text-align:center; margin-top:5px; line-height:1.4; }
-  .synth .cards{ display:flex; gap:16px; flex:1; }
-  .synth .card{ flex:1; background:#fff; border:1px solid var(--line); border-radius:11px; padding:18px 20px; display:flex; flex-direction:column; }
-  .synth .card .ch{ display:flex; align-items:center; gap:9px; margin-bottom:11px; }
-  .synth .card .ch .ci{ width:30px; height:30px; border-radius:7px; background:#f6edd6; color:var(--gold-dk); display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; }
-  .synth .card .ch .ct{ font-size:13px; font-weight:700; color:var(--navy); letter-spacing:.4px; }
-  .synth .card p{ font-size:11.5px; color:#41505d; line-height:1.6; }
-  .synth .card ul{ list-style:none; margin:13px 0 0; }
-  .synth .card ul li{ font-size:10.5px; color:#3a4650; line-height:1.4; padding:0 0 8px 16px; position:relative; }
-  .synth .card ul li::before{ content:""; position:absolute; left:0; top:6px; width:6px; height:6px; border-radius:50%; background:var(--gold); }
-  .synth .card ul li b{ color:var(--navy); }
-  .synth .card .kv{ margin-top:auto; padding-top:12px; display:flex; gap:10px; }
-  .synth .card .kv .k{ flex:1; background:#f6f3ec; border-radius:6px; padding:8px 10px; }
-  .synth .card .kv .k .kl{ font-size:8px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); }
-  .synth .card .kv .k .kt{ font-size:11px; font-weight:800; color:var(--navy); margin-top:2px; line-height:1.15; }
-  .synth .closing{ background:var(--navy); color:#fff; border-radius:11px; padding:16px 22px; display:flex; align-items:center; gap:18px; }
-  .synth .closing .qm{ font-family:'Cormorant Garamond',serif; font-size:48px; color:var(--gold); line-height:.6; }
-  .synth .closing .qt{ font-size:13px; line-height:1.6; color:rgba(255,255,255,.9); }
-  .synth .closing .qt b{ color:var(--gold-soft); }
 
   @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
 </style>
@@ -220,12 +249,11 @@
   <div class="cv-mid">
     <div class="cv-kx">Cenários & Realidades de Expansão</div>
     <h1 class="cv-title">Caminhos de<br><span>Crescimento</span></h1>
-    <p class="cv-lead">Um panorama visual dos caminhos possíveis para escalar a produção — de R$ 250 mil a R$ 1 milhão por mês — com os degraus de validação, o investimento em máquinas e a leitura de galpão. Material de apoio para uma decisão informada, sem pressa e sem atalhos.</p>
+    <p class="cv-lead">Um panorama visual dos caminhos possíveis para escalar a produção — de R$ 250 mil a R$ 1 milhão por mês — com os degraus, o investimento em máquinas e a leitura de galpão. Material de apoio para uma conversa informada.</p>
     <div class="cv-strip">
-      <div class="cv-cell"><div class="cl">Horizonte</div><div class="cv">R$ 1 mi / mês</div><div class="cd">meta aspiracional · validada por degraus</div></div>
-      <div class="cv-cell"><div class="cl">Método</div><div class="cv">Degrau a degrau</div><div class="cd">cada estágio se prova antes do próximo</div></div>
+      <div class="cv-cell"><div class="cl">Horizonte</div><div class="cv">R$ 1 mi / mês</div><div class="cd">meta aspiracional</div></div>
       <div class="cv-cell"><div class="cl">Ponto de partida</div><div class="cv">R$ 250 mil / mês</div><div class="cd">teto da estrutura atual</div></div>
-      <div class="cv-cell"><div class="cl">Natureza</div><div class="cv">Caminhos, não decisão</div><div class="cd">as escolhas ficam na mesa</div></div>
+      <div class="cv-cell"><div class="cl">Estrutura</div><div class="cv">Escada de degraus</div><div class="cd">gente, máquina e galpão</div></div>
     </div>
   </div>
   <div class="cv-foot">
@@ -239,11 +267,11 @@
   <div class="ph">
     <div class="top">
       <div class="mono">V</div>
-      <div><div class="co">Valvic Marcenaria</div><div class="sub">Mapa da jornada de produção · degraus de validação</div></div>
+      <div><div class="co">Valvic Marcenaria</div><div class="sub">Mapa da jornada de produção</div></div>
     </div>
     <div class="kx">A Escada de Produção</div>
     <div class="tt">Do teto atual ao horizonte de R$ 1 milhão</div>
-    <div class="desc">Cada degrau tem um gatilho: só se sobe quando o anterior está validado e sustentado. A altura das colunas representa o faturamento-alvo; abaixo, o que entra de gente, veículo e máquina, e o investimento-âncora de cada passo.</div>
+    <div class="desc">Cada degrau tem o seu gatilho de demanda e o seu investimento. A altura das colunas representa o faturamento-alvo; abaixo, o que entra de gente, veículo e máquina. Investimentos de galpão e máquina são CAPEX único (feito uma vez), sinalizados com o selo <b>· único</b>.</div>
   </div>
   <div class="body">
     <div class="stair">
@@ -251,7 +279,7 @@
         <div class="cap"><div class="lv">Hoje</div><div class="fx">250<small> mil</small></div></div>
         <div class="col" style="height:24%"><div class="role">Estrutura atual</div></div>
         <div class="meta">
-          <span class="chip"><b>Sem adição.</b> Equipe e estrutura de hoje no limite.</span>
+          <span class="chip"><b>Coladeira atual: SCM ME25.</b> Atende até ~300 mil e <b>não entrega 100% finalizado</b> — exige acabamento manual.</span>
           <div class="trig"><b>Situação</b>Teto da capacidade atual de produção.</div>
           <div class="inv"><span>Investimento</span>—</div>
         </div>
@@ -262,30 +290,30 @@
         <div class="meta">
           <span class="chip">+2 ajudantes · +1 marceneiro</span>
           <span class="chip">+1 carro (logística)</span>
-          <span class="chip"><b>Zero máquina.</b></span>
-          <div class="trig"><b>Gatilho</b>Demanda sustentada acima do teto atual.</div>
-          <div class="inv"><span>Investimento-âncora</span>Equipe + 1 veículo</div>
+          <span class="chip"><b>Zero máquina.</b> Ainda com a ME25.</span>
+          <div class="trig"><b>Gatilho</b>Demanda puxando acima do teto atual.</div>
+          <div class="inv"><span>Investimento</span>Folha ~R$ 9 mil/mês + veículo</div>
         </div>
       </div>
       <div class="step s4">
         <div class="cap"><div class="lv">Degrau 2</div><div class="fx">400<small> mil</small></div></div>
-        <div class="col" style="height:50%"><div class="role">+ 1ª Coladeira</div></div>
+        <div class="col" style="height:50%"><div class="role">+ Upgrade de coladeira</div></div>
         <div class="meta">
-          <span class="chip">+ Coladeira de bordas <b>(tira a colagem manual)</b></span>
-          <span class="chip">+ Infra de habilitação no galpão</span>
-          <div class="trig"><b>Gatilho</b>300 mil validado + gargalo na finalização manual.</div>
-          <div class="inv"><span>Investimento-âncora</span>Coladeira R$160–260k + infra ~R$56–61k</div>
+          <span class="chip"><b>Upgrade de coladeira</b> — a ME25 não passa de 300 mil nem finaliza 100%.</span>
+          <span class="chip">Habilitação no galpão <span class="seal u">CAPEX único</span></span>
+          <div class="trig"><b>Gatilho</b>Demanda acima de 300 mil + gargalo no acabamento.</div>
+          <div class="inv"><span>Investimento</span>Coladeira R$160–480k + frete/instalação · habilitação (única)</div>
         </div>
       </div>
       <div class="step s6">
         <div class="cap"><div class="lv">Degrau 3</div><div class="fx">600<small> mil</small></div></div>
-        <div class="col" style="height:72%"><div class="role">+ Coladeira melhor + reorg.</div></div>
+        <div class="col" style="height:72%"><div class="role">+ Reorg. galpão + equipe</div></div>
         <div class="meta">
-          <span class="chip">+ Coladeira superior (automação)</span>
-          <span class="chip">+ Reorganização do galpão</span>
+          <span class="chip">Reorganização do galpão <span class="seal u">CAPEX único</span></span>
           <span class="chip">+2 duplas · +1 separador de peças</span>
-          <div class="trig"><b>Gatilho</b>400 mil validado.</div>
-          <div class="inv"><span>Investimento-âncora</span>Coladeira + reorg. ~R$60–90k</div>
+          <span class="chip"><b>Coladeira do degrau 2 segue</b> (se bem escolhida).</span>
+          <div class="trig"><b>Gatilho</b>Demanda acima de 400 mil.</div>
+          <div class="inv"><span>Investimento</span>Reorg. galpão (única) + folha ~R$ 14 mil/mês</div>
         </div>
       </div>
       <div class="step s10">
@@ -295,8 +323,8 @@
           <span class="chip" style="border-left-color:var(--gold-dk)"><b>Galpão maior</b></span>
           <span class="chip" style="border-left-color:var(--gold-dk)">Linha interligada: coladeira + nesting + furação</span>
           <span class="chip" style="border-left-color:var(--gold-dk)">Bipagem e integração entre máquinas</span>
-          <div class="trig"><b>Gatilho</b>600 mil validado + salto de galpão.</div>
-          <div class="inv"><span>Investimento-âncora</span>Novo galpão + linha de máquinas</div>
+          <div class="trig"><b>Gatilho</b>Demanda acima de 600 mil + mudança de galpão.</div>
+          <div class="inv"><span>Investimento</span>Novo galpão + linha de máquinas</div>
         </div>
       </div>
     </div>
@@ -304,58 +332,67 @@
   <div class="pf"><div class="pl">Caminhos de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">A ESCADA <span>·</span> 02</div></div>
 </section>
 
-<!-- ============================= FORK GALPÃO ============================= -->
+<!-- ============================= GALPÃO ============================= -->
 <section class="sheet">
   <div class="ph">
     <div class="top">
       <div class="mono">V</div>
-      <div><div class="co">Valvic Marcenaria</div><div class="sub">Decisão de infraestrutura · onde a expansão acontece</div></div>
+      <div><div class="co">Valvic Marcenaria</div><div class="sub">Onde a expansão acontece · o investimento no galpão</div></div>
     </div>
-    <div class="kx">Galpão Atual × Galpão Novo</div>
-    <div class="tt">Dois caminhos para a mesma meta</div>
-    <div class="desc">Ambos chegam ao mesmo horizonte por rotas diferentes de capital e de risco. Não há resposta certa aqui — há trade-offs. Os dois estão postos lado a lado, com custos e implicações, para uma escolha consciente.</div>
+    <div class="kx">Galpão: Adaptar o Atual ou Mudar</div>
+    <div class="tt">O investimento no espaço, item a item</div>
+    <div class="desc">Há dois caminhos de espaço. Adaptar o galpão atual — um investimento único que o prepara para até ~R$ 600 mil/mês. Ou mudar para um galpão maior, desenhado para a linha industrial completa, necessário para o R$ 1 milhão. Abaixo, os dois com os números abertos.</div>
   </div>
   <div class="body">
-    <div class="fork">
-      <div class="path a">
-        <div class="ph2"><div class="pk">Caminho A</div><div class="pn">Escada no galpão atual</div></div>
-        <div class="pbody">
-          <div class="line pro"><span class="ic">+</span><span><b>Ramp gradual.</b> Sobe degrau a degrau (400 → 600), cada etapa se pagando antes da próxima.</span></div>
-          <div class="line pro"><span class="ic">+</span><span><b>Cheque menor por etapa.</b> Capital diluído no tempo, menor exposição inicial.</span></div>
-          <div class="line pro"><span class="ic">+</span><span><b>Validação real</b> da demanda antes do grande salto.</span></div>
-          <div class="line con"><span class="ic">−</span><span>Parte da <b>obra civil não migra</b> (mezanino, patamar, piso, elétrica, frete) — vira custo afundado ao mudar.</span></div>
-          <div class="line con"><span class="ic">−</span><span>Teto físico do galpão atual em ~600 mil — o 1 milhão exige a mudança de qualquer forma.</span></div>
-          <div class="whenfit"><div class="wl">Quando faz sentido</div><div class="wt">Quando a prioridade é <b>diluir o cheque</b> e <b>validar a demanda</b> na prática antes de assumir o compromisso do galpão industrial.</div></div>
-          <div class="cheque">
-            <div class="cl">Obra civil no atual (não migra)</div>
-            <div class="cv num">R$ 90–120 mil</div>
-            <div class="cd">reorganização + adequações · diluído entre os degraus 2 e 3</div>
+    <div class="gcompare">
+      <div class="gcol atual">
+        <div class="gh"><div class="gk">Caminho 1 · Adaptar</div><div class="gn">Galpão atual</div></div>
+        <div class="gb">
+          <div class="gdesc">Aproveita o espaço que já temos, adaptado para comportar mais produção. O investimento é <b>feito uma vez só</b> (CAPEX) — não se repete a cada degrau.</div>
+          <div class="itens">
+            <div class="igrp">Habilitação da coladeira <span class="seal u" style="margin-left:4px">degrau 2</span></div>
+            <div class="irow"><span class="k">Compressor maior</span><span class="v">R$ 25.000</span></div>
+            <div class="irow"><span class="k">Exaustor 5 cv</span><span class="v">R$ 6.000</span></div>
+            <div class="irow"><span class="k">Rede elétrica + transformador</span><span class="v">~R$ 10.000</span></div>
+            <div class="igrp">Reorganização do espaço <span class="seal u" style="margin-left:4px">degrau 3</span></div>
+            <div class="irow"><span class="k">Mezanino no fundo</span><span class="v">~R$ 25.000</span></div>
+            <div class="irow"><span class="k">Elétrica / iluminação / ventilação</span><span class="v">R$ 12–15.000</span></div>
+            <div class="irow"><span class="k">Carrinhos / esteira / pneumática</span><span class="v">~R$ 13.000</span></div>
+            <div class="irow"><span class="k">Piso usinado (opcional)</span><span class="v">~R$ 12.000</span></div>
+          </div>
+          <div class="gtot"><div class="tl">Investimento único total<small>habilitação + reorganização · não migra ao mudar</small></div><div class="tv num">R$ 90–120k</div></div>
+          <div class="gmeta">
+            <div class="gm"><div class="ml">Prepara para</div><div class="mv">até R$ 600k/mês</div></div>
+            <div class="gm"><div class="ml">Quando</div><div class="mv">Degraus 2 e 3</div></div>
           </div>
         </div>
       </div>
-      <div class="path b">
-        <div class="ph2"><div class="pk">Caminho B</div><div class="pn">Salto direto ao galpão novo</div></div>
-        <div class="pbody">
-          <div class="line pro"><span class="ic">+</span><span><b>Sem retrabalho.</b> Nenhuma obra afundada — a estrutura já nasce para o 1 milhão.</span></div>
-          <div class="line pro"><span class="ic">+</span><span><b>Chega ao topo mais rápido</b> — a linha industrial montada de uma vez.</span></div>
-          <div class="line pro"><span class="ic">+</span><span>Layout desenhado para a <b>linha interligada</b> (coladeira + nesting + furação).</span></div>
-          <div class="line con"><span class="ic">−</span><span><b>Cheque de largada grande</b> e concentrado logo no início.</span></div>
-          <div class="line con"><span class="ic">−</span><span>Exige <b>demanda / pipeline já engatilhada</b> para não ociar a capacidade instalada.</span></div>
-          <div class="whenfit"><div class="wl">Quando faz sentido</div><div class="wt">Quando a <b>demanda já está engatilhada</b> e o objetivo é chegar ao 1 milhão <b>sem retrabalho</b>, com a estrutura já nascendo pronta para a linha industrial.</div></div>
-          <div class="cheque">
-            <div class="cl">Cheque de largada estimado</div>
-            <div class="cv num">R$ 1,5–2 mi</div>
-            <div class="cd">galpão + linha de máquinas · exposição concentrada</div>
+      <div class="gcol novo">
+        <div class="gh"><div class="gk">Caminho 2 · Mudar</div><div class="gn">Galpão novo</div></div>
+        <div class="gb">
+          <div class="gdesc">Espaço maior, desenhado para a <b>linha industrial completa</b> (corte + colagem + furação interligados). É o passo que o R$ 1 milhão exige — não cabe no galpão atual.</div>
+          <div class="itens">
+            <div class="igrp">Composição do investimento</div>
+            <div class="irow"><span class="k">Galpão maior (locação / adequação)</span><span class="v">a definir</span></div>
+            <div class="irow"><span class="k">Nesting Giben</span><span class="v">R$ 530.000</span></div>
+            <div class="irow"><span class="k">Centro de usinagem Flexdrill</span><span class="v">R$ 360.000</span></div>
+            <div class="irow"><span class="k">Coladeira (migra do atual)</span><span class="v">já adquirida</span></div>
+            <div class="irow"><span class="k">Esteira + embaladora + integração</span><span class="v">~R$ 120.000+</span></div>
+          </div>
+          <div class="gtot"><div class="tl">Cheque de largada estimado<small>galpão + linha de máquinas · concentrado</small></div><div class="tv num">R$ 1,5–2 mi</div></div>
+          <div class="gmeta">
+            <div class="gm"><div class="ml">Necessário para</div><div class="mv">R$ 1 milhão/mês</div></div>
+            <div class="gm"><div class="ml">Quando</div><div class="mv">Salto industrial</div></div>
           </div>
         </div>
       </div>
     </div>
-    <div class="neutralbar">
+    <div class="gnote">
       <div class="nk">⚑ Ponto de contexto</div>
-      <div class="nt">Um fato que atravessa a decisão, sem apontar vencedor: <b>máquinas Giben migram e têm revenda/troca</b> — acompanham a empresa para o galpão novo. Já a <b>obra civil é específica de cada galpão</b> e não se muda. Onde o capital vai — em ativo que migra ou em estrutura fixa — pesa diferente em cada caminho. <b>A escolha é do investidor.</b></div>
+      <div class="nt">As <b>máquinas Giben migram e têm revenda/troca</b> — acompanham a empresa para o galpão novo. Já a <b>obra civil do galpão atual (~R$ 90–120k) é específica</b> e não se muda. Onde o capital vai — em máquina que migra ou em obra que fica — pesa diferente em cada caminho.</div>
     </div>
   </div>
-  <div class="pf"><div class="pl">Caminhos de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">GALPÃO · A × B <span>·</span> 03</div></div>
+  <div class="pf"><div class="pl">Caminhos de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">GALPÃO <span>·</span> 03</div></div>
 </section>
 
 <!-- ============================= COMPARATIVO COLADEIRAS ============================= -->
@@ -363,290 +400,269 @@
   <div class="ph">
     <div class="top">
       <div class="mono">V</div>
-      <div><div class="co">Valvic Marcenaria</div><div class="sub">O coração da expansão · comparativo das coladeiras de bordas</div></div>
+      <div><div class="co">Valvic Marcenaria</div><div class="sub">O coração da expansão · comparativo das coladeiras</div></div>
     </div>
     <div class="kx">Comparativo de Coladeiras</div>
-    <div class="tt">Da entrada ao industrial — lado a lado</div>
-    <div class="desc">A coladeira de bordas é a máquina que destrava a produção: tira a colagem manual, que hoje consome mão de obra e limita o volume. Quatro opções, do menor cheque ao mais automatizado. Nenhuma é "a certa" — cada uma serve a um momento.</div>
+    <div class="tt">As opções de upgrade, lado a lado</div>
+    <div class="desc">A coladeira de bordas é a máquina que destrava a produção. A atual (SCM ME25) atende até ~R$ 300 mil e não finaliza 100% — por isso o upgrade no degrau 2. Cinco opções, da entrada ao diferencial de mercado.</div>
   </div>
   <div class="body">
-    <div class="cmphead-note">Valores de feira · specs a confirmar na proposta final de cada fornecedor.</div>
+    <div class="cmpnote"><b>Valores de feira.</b> Logística/instalação e specs a confirmar na proposta final de cada fornecedor. A coladeira de puxadores (KG398J) tem propósito distinto — diferencial, não volume.</div>
     <table class="cmp">
-      <colgroup><col class="rowh"><col><col><col class="hl"><col></colgroup>
+      <colgroup><col class="rowh"><col><col><col><col><col class="feat"></colgroup>
       <thead>
         <tr>
           <th class="rowh"></th>
           <th><div class="mname">Raizen<br>Spectra 7GT</div><div class="mprice">R$ 160 mil</div><div class="mtag">entrada</div></th>
           <th><div class="mname">Usikraft<br>Pegasus 1100</div><div class="mprice">R$ 200 mil</div><div class="mtag">custo-benefício</div></th>
-          <th><div class="mname">Giben<br>KG668</div><div class="mprice">R$ 260 mil</div><div class="mtag">conceituada</div></th>
+          <th><div class="mname">Giben<br>KG668</div><div class="mprice">R$ 260 mil</div><div class="mtag">referência</div></th>
           <th><div class="mname">Giben<br>KG712</div><div class="mprice">R$ 410 mil</div><div class="mtag">automatizada</div></th>
+          <th><div class="mname">Giben KG398J<br>Puxadores</div><div class="mprice">R$ 480 mil</div><div class="mtag">diferencial ★</div></th>
         </tr>
       </thead>
       <tbody>
-        <tr><td class="rowh">Posição</td><td>Menor cheque de entrada</td><td>Meio-termo de acabamento</td><td>Referência do mercado moveleiro</td><td>Topo — automação plena</td></tr>
-        <tr><td class="rowh">Grupos / recursos</td><td>7 grupos de trabalho</td><td>12 grupos · fita PVC/ABS até 3 mm · 6 rolos de pressão pneumática</td><td>22 m/min · regulagens finas manuais · manutenção simples</td><td>Regulagens automáticas · magazine de 4 fitas com troca automática</td></tr>
-        <tr><td class="rowh">Bipagem / telemetria</td><td class="no">Não</td><td class="no">Não</td><td class="no">Não</td><td class="yes">Sim — bipagem de peça + telemetria (metros colados)</td></tr>
-        <tr><td class="rowh">Pega a usada na troca</td><td class="no">Não</td><td class="no">Não</td><td class="yes">Sim</td><td class="yes">Sim (linha Giben)</td></tr>
-        <tr><td class="rowh">Assistência / revenda</td><td class="no">Fraca — marca não-moveleira</td><td class="mid">Média</td><td class="yes">Forte — showroom, técnico e treinamento em BH</td><td class="yes">Forte — rede Giben</td></tr>
-        <tr><td class="rowh">Migra p/ galpão novo</td><td class="mid">Migra, mas revenda ruim</td><td class="mid">Migra</td><td class="yes">Migra e preserva valor</td><td class="yes">Migra e preserva valor</td></tr>
-        <tr><td class="rowh">Entra no degrau</td><td>Degrau 2 (400 mil)</td><td>Degrau 2 (400 mil)</td><td>Degrau 2–3 (400–600 mil)</td><td>Degrau 3 (600 mil)</td></tr>
+        <tr><td class="rowh">Posição</td><td>Menor cheque de entrada</td><td>Meio-termo de acabamento</td><td>Referência do mercado moveleiro</td><td>Topo — automação plena</td><td>Puxador integrado · lançamento</td></tr>
+        <tr><td class="rowh">Recursos</td><td>7 grupos de trabalho</td><td>12 grupos · fita até 3 mm · 6 rolos pneum.</td><td>Regulagens finas manuais · manut. simples</td><td>Regulagens automáticas · magazine 4 fitas</td><td>Usina puxador / perfil integrado na peça</td></tr>
+        <tr><td class="rowh">Filetagem (peça reta)</td><td>a confirmar</td><td>a confirmar</td><td class="yes">22 m/min</td><td>a confirmar (alta)</td><td class="mid">8 m/min (baixa)</td></tr>
+        <tr><td class="rowh">Bipagem / telemetria</td><td class="no">Não</td><td class="no">Não</td><td class="no">Não</td><td class="yes">Sim</td><td>a confirmar</td></tr>
+        <tr><td class="rowh">Pega a usada na troca</td><td class="no">Não</td><td class="no">Não</td><td class="yes">Sim</td><td class="yes">Sim</td><td class="yes">Sim (Giben)</td></tr>
+        <tr><td class="rowh">Assistência / revenda</td><td class="no">Fraca</td><td class="mid">Média</td><td class="yes">Forte · BH</td><td class="yes">Forte</td><td class="yes">Forte · Giben</td></tr>
+        <tr><td class="rowh">Logística + instalação</td><td>~R$ 20 mil</td><td>~R$ 20 mil</td><td>~R$ 20 mil</td><td>~R$ 20 mil</td><td>~R$ 20 mil</td></tr>
+        <tr><td class="rowh">Atende até R$ 600k sem troca</td><td class="no">Provável que não</td><td class="mid">Meio-termo</td><td class="yes">Sim</td><td class="yes">Sim</td><td>Diferencial · não é a de volume</td></tr>
+        <tr><td class="rowh">Entra no degrau</td><td>2 (400 mil)</td><td>2 (400 mil)</td><td>2–3 (400–600 mil)</td><td>3 (600 mil)</td><td>Diferencial · qualquer fase</td></tr>
       </tbody>
     </table>
   </div>
   <div class="pf"><div class="pl">Caminhos de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">COLADEIRAS <span>·</span> 04</div></div>
 </section>
 
-<!-- ============================= LÂMINA 1 · RAIZEN ============================= -->
+<!-- ============================= LÂMINAS 2-UP · RAIZEN + USIKRAFT ============================= -->
 <section class="sheet">
   <div class="ph">
-    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Lâmina técnica · coladeira de bordas de entrada</div></div></div>
-    <div class="kx">Máquina 01 · Coladeira</div>
-    <div class="tt">Raizen — Spectra 7GT</div>
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Lâminas técnicas · coladeiras de entrada e custo-benefício</div></div></div>
+    <div class="kx">Coladeiras · Degrau 2</div>
+    <div class="tt">Raizen Spectra 7GT · Usikraft Pegasus 1100</div>
   </div>
   <div class="body">
-    <div class="lam">
-      <div class="visual"><div class="frame"><img class="photo" src="img-maquinas/raizen-spectra-7gt.jpg" alt="Raizen Spectra 7GT" onerror="this.remove()" onload="this.closest('.frame,.iframe').classList.add('has-photo')">
-        <div class="price-fx"><div class="pl">Valor de feira</div><div class="pv">R$ 160 mil</div></div>
-        <svg class="mimg" viewBox="0 0 320 180" fill="none"><rect x="20" y="100" width="240" height="36" rx="3" stroke="currentColor" stroke-width="2.4"/><line x1="42" y1="136" x2="42" y2="166" stroke="currentColor" stroke-width="2.4"/><line x1="238" y1="136" x2="238" y2="166" stroke="currentColor" stroke-width="2.4"/><rect x="0" y="110" width="120" height="12" fill="currentColor" opacity="0.13"/><rect x="200" y="110" width="120" height="12" fill="currentColor" opacity="0.13"/><rect x="62" y="68" width="150" height="20" rx="5" stroke="currentColor" stroke-width="2.4"/><circle cx="84" cy="78" r="6" stroke="currentColor" stroke-width="2"/><circle cx="112" cy="78" r="6" stroke="currentColor" stroke-width="2"/><circle cx="140" cy="78" r="6" stroke="currentColor" stroke-width="2"/><circle cx="168" cy="78" r="6" stroke="currentColor" stroke-width="2"/><circle cx="196" cy="78" r="6" stroke="currentColor" stroke-width="2"/><rect x="266" y="48" width="40" height="88" rx="3" stroke="currentColor" stroke-width="2.4"/><rect x="274" y="58" width="24" height="18" rx="2" fill="currentColor" opacity="0.22"/><circle cx="278" cy="90" r="3" fill="currentColor"/><circle cx="290" cy="90" r="3" fill="currentColor"/><circle cx="40" cy="58" r="18" stroke="currentColor" stroke-width="2.4"/><circle cx="40" cy="58" r="5" fill="currentColor"/></svg>
-        <div class="ph-tag">Ilustração esquemática · coladeira de bordas</div>
-      </div></div>
-      <div class="info">
-        <div class="mtitle">Raizen Spectra 7GT</div>
-        <div class="msub">Coladeira de bordas · fabricante brasileiro · 7 grupos de trabalho</div>
-        <div class="tags"><span class="badge b-navy">Entrada</span><span class="badge b-gold">Menor cheque</span><span class="badge b-blue">Marca já usada na casa</span></div>
-        <div class="specs">
-          <div class="sp"><div class="sl">Categoria</div><div class="sv">Coladeira de bordas</div></div>
-          <div class="sp"><div class="sl">Grupos de trabalho</div><div class="sv">7 grupos</div></div>
-          <div class="sp"><div class="sl">Origem</div><div class="sv">Nacional (Raizen Machine)</div></div>
-          <div class="sp"><div class="sl">Automação</div><div class="sv">Manual · a confirmar</div></div>
+    <div class="lam2">
+      <div class="m">
+        <div class="visual"><img class="photo" src="img-maquinas/raizen-spectra-7gt.jpg" alt="Raizen Spectra 7GT" onerror="this.remove()" onload="this.closest('.visual').classList.add('has-photo')">
+          <div class="price"><div class="pl">Valor de feira</div><div class="pv">R$ 160k</div></div>
+          <svg class="mimg" viewBox="0 0 320 180" fill="none"><rect x="20" y="100" width="240" height="36" rx="3" stroke="currentColor" stroke-width="2.4"/><line x1="42" y1="136" x2="42" y2="166" stroke="currentColor" stroke-width="2.4"/><line x1="238" y1="136" x2="238" y2="166" stroke="currentColor" stroke-width="2.4"/><rect x="0" y="110" width="120" height="12" fill="currentColor" opacity="0.13"/><rect x="200" y="110" width="120" height="12" fill="currentColor" opacity="0.13"/><rect x="62" y="68" width="150" height="20" rx="5" stroke="currentColor" stroke-width="2.4"/><circle cx="84" cy="78" r="6" stroke="currentColor" stroke-width="2"/><circle cx="112" cy="78" r="6" stroke="currentColor" stroke-width="2"/><circle cx="140" cy="78" r="6" stroke="currentColor" stroke-width="2"/><circle cx="168" cy="78" r="6" stroke="currentColor" stroke-width="2"/><circle cx="196" cy="78" r="6" stroke="currentColor" stroke-width="2"/><rect x="266" y="48" width="40" height="88" rx="3" stroke="currentColor" stroke-width="2.4"/><circle cx="40" cy="58" r="18" stroke="currentColor" stroke-width="2.4"/><circle cx="40" cy="58" r="5" fill="currentColor"/></svg>
+          <div class="cap">Ilustração esquemática</div>
         </div>
-        <div class="pc">
-          <div class="box pro"><div class="bh">A favor</div><ul><li>Menor investimento de entrada da categoria</li><li>Marca já conhecida e operada pela equipe</li><li>Habilita o degrau de 400 mil com o menor cheque</li></ul></div>
-          <div class="box con"><div class="bh">A ponderar</div><ul><li>Alta depreciação · revenda fraca (marca não-moveleira)</li><li>Não pega a usada na troca por um modelo superior</li><li>Vira quase custo afundado numa futura mudança</li></ul></div>
+        <div class="info">
+          <div class="mt">Raizen Spectra 7GT</div>
+          <div class="ms">Coladeira de bordas · fabricante brasileiro · 7 grupos</div>
+          <div class="tags"><span class="badge b-navy">Entrada</span><span class="badge b-gold">Menor cheque</span><span class="badge b-blue">Marca já usada na casa</span></div>
+          <div class="mid">
+            <div class="specs">
+              <div class="sp"><span class="k">Grupos</span><span class="v">7 grupos</span></div>
+              <div class="sp"><span class="k">Origem</span><span class="v">Nacional</span></div>
+              <div class="sp"><span class="k">Automação</span><span class="v">Manual · a confirmar</span></div>
+              <div class="sp"><span class="k">Logíst.+instal.</span><span class="v">~R$ 20 mil</span></div>
+            </div>
+            <div class="pc">
+              <div class="c p"><div class="ch">A favor</div><li>Menor investimento de entrada</li><li>Marca já operada pela equipe</li></div>
+              <div class="c n"><div class="ch">A ponderar</div><li>Depreciação alta · revenda fraca</li><li>Não pega usada na troca · não deve bastar até 600</li></div>
+            </div>
+          </div>
+          <div class="foot"><span class="fl">Entra no degrau</span><span class="fv">2 · R$ 400 mil</span><span class="op"><b>Tira a colagem manual</b> — remove o gargalo de acabamento.</span></div>
         </div>
-        <div class="oper"><div class="oh">O que muda na operação</div><div class="ot">Elimina a <b>colagem manual de bordas</b>, hoje o gargalo que consome mão de obra e limita o volume. Libera a equipe para produzir mais com a mesma folha.</div></div>
-        <div class="enters"><span class="el">Entra no degrau</span><span class="ev">2 · R$ 400 mil / mês</span></div>
+      </div>
+      <div class="m">
+        <div class="visual"><img class="photo" src="img-maquinas/usikraft-pegasus-1100.jpg" alt="Usikraft Pegasus 1100" onerror="this.remove()" onload="this.closest('.visual').classList.add('has-photo')">
+          <div class="price"><div class="pl">Valor de feira</div><div class="pv">R$ 200k</div></div>
+          <svg class="mimg" viewBox="0 0 320 180" fill="none"><rect x="16" y="100" width="252" height="38" rx="3" stroke="currentColor" stroke-width="2.4"/><line x1="40" y1="138" x2="40" y2="168" stroke="currentColor" stroke-width="2.4"/><line x1="244" y1="138" x2="244" y2="168" stroke="currentColor" stroke-width="2.4"/><rect x="0" y="110" width="110" height="12" fill="currentColor" opacity="0.13"/><rect x="210" y="110" width="110" height="12" fill="currentColor" opacity="0.13"/><rect x="52" y="62" width="176" height="22" rx="5" stroke="currentColor" stroke-width="2.4"/><circle cx="72" cy="73" r="6.5" stroke="currentColor" stroke-width="2"/><circle cx="98" cy="73" r="6.5" stroke="currentColor" stroke-width="2"/><circle cx="124" cy="73" r="6.5" stroke="currentColor" stroke-width="2"/><circle cx="150" cy="73" r="6.5" stroke="currentColor" stroke-width="2"/><circle cx="176" cy="73" r="6.5" stroke="currentColor" stroke-width="2"/><circle cx="202" cy="73" r="6.5" stroke="currentColor" stroke-width="2"/><rect x="272" y="46" width="42" height="92" rx="3" stroke="currentColor" stroke-width="2.4"/><circle cx="36" cy="56" r="17" stroke="currentColor" stroke-width="2.4"/><circle cx="36" cy="56" r="5" fill="currentColor"/></svg>
+          <div class="cap">Ilustração esquemática</div>
+        </div>
+        <div class="info">
+          <div class="mt">Usikraft Pegasus 1100</div>
+          <div class="ms">Coladeira de bordas · 12 grupos operacionais · bom acabamento</div>
+          <div class="tags"><span class="badge b-navy">Meio-termo</span><span class="badge b-gold">Custo-benefício</span><span class="badge b-blue">Fita até 3 mm</span></div>
+          <div class="mid">
+            <div class="specs">
+              <div class="sp"><span class="k">Grupos</span><span class="v">12 grupos</span></div>
+              <div class="sp"><span class="k">Fita</span><span class="v">PVC/ABS até 3 mm</span></div>
+              <div class="sp"><span class="k">Motores</span><span class="v">2 × 1 cv · 12.000 rpm</span></div>
+              <div class="sp"><span class="k">Logíst.+instal.</span><span class="v">~R$ 20 mil</span></div>
+            </div>
+            <div class="pc">
+              <div class="c p"><div class="ch">A favor</div><li>12 grupos · bordas mais limpas</li><li>Bom custo-benefício · fita premium</li></div>
+              <div class="c n"><div class="ch">A ponderar</div><li>Sem bipagem · não pega usada na troca</li><li>Assistência a confirmar na região</li></div>
+            </div>
+          </div>
+          <div class="foot"><span class="fl">Entra no degrau</span><span class="fv">2 · R$ 400 mil</span><span class="op"><b>Mais grupos de acabamento</b> — bordas uniformes, padrão premium.</span></div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="pf"><div class="pl">Caminhos de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">MÁQUINA 01 <span>·</span> 05</div></div>
+  <div class="pf"><div class="pl">Caminhos de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">COLADEIRAS · ENTRADA <span>·</span> 05</div></div>
 </section>
 
-<!-- ============================= LÂMINA 2 · USIKRAFT ============================= -->
+<!-- ============================= LÂMINAS 2-UP · GIBEN KG668 + KG712 ============================= -->
 <section class="sheet">
   <div class="ph">
-    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Lâmina técnica · coladeira de bordas custo-benefício</div></div></div>
-    <div class="kx">Máquina 02 · Coladeira</div>
-    <div class="tt">Usikraft — Pegasus 1100</div>
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Lâminas técnicas · coladeiras Giben (moveleira, com suporte em BH)</div></div></div>
+    <div class="kx">Coladeiras · Linha Giben</div>
+    <div class="tt">Giben KG668 · Giben KG712</div>
   </div>
   <div class="body">
-    <div class="lam">
-      <div class="visual"><div class="frame"><img class="photo" src="img-maquinas/usikraft-pegasus-1100.jpg" alt="Usikraft Pegasus 1100" onerror="this.remove()" onload="this.closest('.frame,.iframe').classList.add('has-photo')">
-        <div class="price-fx"><div class="pl">Valor de feira</div><div class="pv">R$ 200 mil</div></div>
-        <svg class="mimg" viewBox="0 0 320 180" fill="none"><rect x="16" y="100" width="252" height="38" rx="3" stroke="currentColor" stroke-width="2.4"/><line x1="40" y1="138" x2="40" y2="168" stroke="currentColor" stroke-width="2.4"/><line x1="244" y1="138" x2="244" y2="168" stroke="currentColor" stroke-width="2.4"/><rect x="0" y="110" width="110" height="12" fill="currentColor" opacity="0.13"/><rect x="210" y="110" width="110" height="12" fill="currentColor" opacity="0.13"/><rect x="52" y="62" width="176" height="22" rx="5" stroke="currentColor" stroke-width="2.4"/><circle cx="72" cy="73" r="6.5" stroke="currentColor" stroke-width="2"/><circle cx="98" cy="73" r="6.5" stroke="currentColor" stroke-width="2"/><circle cx="124" cy="73" r="6.5" stroke="currentColor" stroke-width="2"/><circle cx="150" cy="73" r="6.5" stroke="currentColor" stroke-width="2"/><circle cx="176" cy="73" r="6.5" stroke="currentColor" stroke-width="2"/><circle cx="202" cy="73" r="6.5" stroke="currentColor" stroke-width="2"/><rect x="272" y="46" width="42" height="92" rx="3" stroke="currentColor" stroke-width="2.4"/><rect x="280" y="56" width="26" height="20" rx="2" fill="currentColor" opacity="0.22"/><circle cx="285" cy="92" r="3" fill="currentColor"/><circle cx="298" cy="92" r="3" fill="currentColor"/><circle cx="36" cy="56" r="17" stroke="currentColor" stroke-width="2.4"/><circle cx="36" cy="56" r="5" fill="currentColor"/></svg>
-        <div class="ph-tag">Ilustração esquemática · coladeira de bordas</div>
-      </div></div>
-      <div class="info">
-        <div class="mtitle">Usikraft Pegasus 1100</div>
-        <div class="msub">Coladeira de bordas · 12 grupos operacionais · bom acabamento</div>
-        <div class="tags"><span class="badge b-navy">Meio-termo</span><span class="badge b-gold">Custo-benefício</span><span class="badge b-blue">Bom acabamento</span></div>
-        <div class="specs">
-          <div class="sp"><div class="sl">Grupos operacionais</div><div class="sv">12 grupos</div></div>
-          <div class="sp"><div class="sl">Fita de borda</div><div class="sv">PVC / ABS até 3 mm</div></div>
-          <div class="sp"><div class="sl">Motores de acabamento</div><div class="sv">2 × 1 cv · 12.000 rpm</div></div>
-          <div class="sp"><div class="sl">Pressão</div><div class="sv">6 rolos pneumáticos</div></div>
+    <div class="lam2">
+      <div class="m">
+        <div class="visual"><img class="photo" src="img-maquinas/giben-kg668.jpg" alt="Giben KG668" onerror="this.remove()" onload="this.closest('.visual').classList.add('has-photo')">
+          <div class="price"><div class="pl">Valor de feira</div><div class="pv">R$ 260k</div></div>
+          <svg class="mimg" viewBox="0 0 320 180" fill="none"><rect x="14" y="98" width="262" height="40" rx="3" stroke="currentColor" stroke-width="2.6"/><line x1="40" y1="138" x2="40" y2="168" stroke="currentColor" stroke-width="2.6"/><line x1="252" y1="138" x2="252" y2="168" stroke="currentColor" stroke-width="2.6"/><rect x="0" y="108" width="108" height="13" fill="currentColor" opacity="0.14"/><rect x="212" y="108" width="108" height="13" fill="currentColor" opacity="0.14"/><rect x="48" y="58" width="188" height="24" rx="5" stroke="currentColor" stroke-width="2.6"/><circle cx="70" cy="70" r="7" stroke="currentColor" stroke-width="2"/><circle cx="98" cy="70" r="7" stroke="currentColor" stroke-width="2"/><circle cx="126" cy="70" r="7" stroke="currentColor" stroke-width="2"/><circle cx="154" cy="70" r="7" stroke="currentColor" stroke-width="2"/><circle cx="182" cy="70" r="7" stroke="currentColor" stroke-width="2"/><circle cx="210" cy="70" r="7" stroke="currentColor" stroke-width="2"/><rect x="280" y="44" width="40" height="94" rx="3" stroke="currentColor" stroke-width="2.6"/><circle cx="34" cy="54" r="16" stroke="currentColor" stroke-width="2.6"/><circle cx="34" cy="54" r="5" fill="currentColor"/></svg>
+          <div class="cap">Ilustração esquemática</div>
         </div>
-        <div class="pc">
-          <div class="box pro"><div class="bh">A favor</div><ul><li>12 grupos — mais recursos de acabamento que a de entrada</li><li>Bom equilíbrio entre preço e qualidade de colagem</li><li>Fita até 3 mm cobre linha premium de bordas</li></ul></div>
-          <div class="box con"><div class="bh">A ponderar</div><ul><li>Não pega a usada na troca</li><li>Sem bipagem / telemetria</li><li>Revenda / assistência a confirmar na região</li></ul></div>
+        <div class="info">
+          <div class="mt">Giben KG668</div>
+          <div class="ms">Coladeira de bordas · 22 m/min · marca moveleira italiana</div>
+          <div class="tags"><span class="badge b-green">Pega usada na troca</span><span class="badge b-gold">Suporte em BH</span><span class="badge b-blue">Atende até 600k</span></div>
+          <div class="mid">
+            <div class="specs">
+              <div class="sp"><span class="k">Filetagem</span><span class="v">22 m/min</span></div>
+              <div class="sp"><span class="k">Regulagens</span><span class="v">Manuais</span></div>
+              <div class="sp"><span class="k">Suporte</span><span class="v">Showroom+técnico BH</span></div>
+              <div class="sp"><span class="k">Logíst.+instal.</span><span class="v">~R$ 20 mil</span></div>
+            </div>
+            <div class="pc">
+              <div class="c p"><div class="ch">A favor</div><li>Preserva valor · migra · revenda boa</li><li>Atende até 600 sem nova troca</li></div>
+              <div class="c n"><div class="ch">A ponderar</div><li>Regulagens ainda manuais</li><li>Sem bipagem / telemetria</li></div>
+            </div>
+          </div>
+          <div class="foot"><span class="fl">Entra no degrau</span><span class="fv">2–3 · R$ 400–600 mil</span><span class="op"><b>Capital que se preserva</b> — acompanha a mudança de galpão.</span></div>
         </div>
-        <div class="oper"><div class="oh">O que muda na operação</div><div class="ot">Mesmo salto da colagem manual para a automática, com <b>mais grupos de acabamento</b> — bordas mais limpas e uniformes, útil para o padrão premium da Valvic.</div></div>
-        <div class="enters"><span class="el">Entra no degrau</span><span class="ev">2 · R$ 400 mil / mês</span></div>
+      </div>
+      <div class="m">
+        <div class="visual"><img class="photo" src="img-maquinas/giben-kg712.jpg" alt="Giben KG712" onerror="this.remove()" onload="this.closest('.visual').classList.add('has-photo')">
+          <div class="price"><div class="pl">Valor de feira</div><div class="pv">R$ 410k</div></div>
+          <svg class="mimg" viewBox="0 0 320 180" fill="none"><rect x="12" y="98" width="266" height="42" rx="3" stroke="currentColor" stroke-width="2.6"/><line x1="38" y1="140" x2="38" y2="168" stroke="currentColor" stroke-width="2.6"/><line x1="256" y1="140" x2="256" y2="168" stroke="currentColor" stroke-width="2.6"/><rect x="0" y="108" width="104" height="13" fill="currentColor" opacity="0.14"/><rect x="216" y="108" width="104" height="13" fill="currentColor" opacity="0.14"/><rect x="46" y="54" width="196" height="26" rx="5" stroke="currentColor" stroke-width="2.6"/><circle cx="68" cy="67" r="7" stroke="currentColor" stroke-width="2"/><circle cx="98" cy="67" r="7" stroke="currentColor" stroke-width="2"/><circle cx="128" cy="67" r="7" stroke="currentColor" stroke-width="2"/><circle cx="158" cy="67" r="7" stroke="currentColor" stroke-width="2"/><circle cx="188" cy="67" r="7" stroke="currentColor" stroke-width="2"/><circle cx="218" cy="67" r="7" stroke="currentColor" stroke-width="2"/><rect x="282" y="40" width="38" height="100" rx="3" stroke="currentColor" stroke-width="2.6"/><rect x="20" y="34" width="46" height="30" rx="3" stroke="var(--gold)" stroke-width="2.2"/><line x1="30" y1="44" x2="56" y2="44" stroke="var(--gold)" stroke-width="1.6"/><line x1="30" y1="51" x2="56" y2="51" stroke="var(--gold)" stroke-width="1.6"/></svg>
+          <div class="cap">Ilustração · magazine de 4 fitas</div>
+        </div>
+        <div class="info">
+          <div class="mt">Giben KG712</div>
+          <div class="ms">Coladeira automatizada · bipagem + telemetria · topo de linha</div>
+          <div class="tags"><span class="badge b-navy">Automação plena</span><span class="badge b-amber">Bipagem</span><span class="badge b-green">Telemetria</span></div>
+          <div class="mid">
+            <div class="specs">
+              <div class="sp"><span class="k">Regulagens</span><span class="v">Automáticas</span></div>
+              <div class="sp"><span class="k">Magazine</span><span class="v">4 fitas · troca auto</span></div>
+              <div class="sp"><span class="k">Telemetria</span><span class="v">Metros colados</span></div>
+              <div class="sp"><span class="k">Logíst.+instal.</span><span class="v">~R$ 20 mil</span></div>
+            </div>
+            <div class="pc">
+              <div class="c p"><div class="ch">A favor</div><li>Zero setup manual · agilidade de mix</li><li>Dados por peça · base p/ serviços</li></div>
+              <div class="c n"><div class="ch">A ponderar</div><li>Maior cheque das coladeiras de volume</li><li>Retorno pede volume + mix alto</li></div>
+            </div>
+          </div>
+          <div class="foot"><span class="fl">Entra no degrau</span><span class="fv">3 · R$ 600 mil</span><span class="op"><b>Dados por peça</b> — base para precificar a prestação de serviços.</span></div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="pf"><div class="pl">Caminhos de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">MÁQUINA 02 <span>·</span> 06</div></div>
+  <div class="pf"><div class="pl">Caminhos de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">COLADEIRAS · GIBEN <span>·</span> 06</div></div>
 </section>
 
-<!-- ============================= LÂMINA 3 · GIBEN KG668 ============================= -->
-<section class="sheet">
-  <div class="ph">
-    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Lâmina técnica · coladeira de bordas moveleira</div></div></div>
-    <div class="kx">Máquina 03 · Coladeira</div>
-    <div class="tt">Giben — KG668</div>
-  </div>
-  <div class="body">
-    <div class="lam">
-      <div class="visual"><div class="frame"><img class="photo" src="img-maquinas/giben-kg668.jpg" alt="Giben KG668" onerror="this.remove()" onload="this.closest('.frame,.iframe').classList.add('has-photo')">
-        <div class="price-fx"><div class="pl">Valor de feira</div><div class="pv">R$ 260 mil</div></div>
-        <svg class="mimg" viewBox="0 0 320 180" fill="none"><rect x="14" y="98" width="262" height="40" rx="3" stroke="currentColor" stroke-width="2.6"/><line x1="40" y1="138" x2="40" y2="168" stroke="currentColor" stroke-width="2.6"/><line x1="252" y1="138" x2="252" y2="168" stroke="currentColor" stroke-width="2.6"/><rect x="0" y="108" width="108" height="13" fill="currentColor" opacity="0.14"/><rect x="212" y="108" width="108" height="13" fill="currentColor" opacity="0.14"/><rect x="48" y="58" width="188" height="24" rx="5" stroke="currentColor" stroke-width="2.6"/><circle cx="70" cy="70" r="7" stroke="currentColor" stroke-width="2"/><circle cx="98" cy="70" r="7" stroke="currentColor" stroke-width="2"/><circle cx="126" cy="70" r="7" stroke="currentColor" stroke-width="2"/><circle cx="154" cy="70" r="7" stroke="currentColor" stroke-width="2"/><circle cx="182" cy="70" r="7" stroke="currentColor" stroke-width="2"/><circle cx="210" cy="70" r="7" stroke="currentColor" stroke-width="2"/><rect x="280" y="44" width="40" height="94" rx="3" stroke="currentColor" stroke-width="2.6"/><rect x="288" y="54" width="24" height="20" rx="2" fill="currentColor" opacity="0.22"/><rect x="34" y="44" width="18" height="10" fill="currentColor" opacity=".2"/><circle cx="34" cy="54" r="16" stroke="currentColor" stroke-width="2.6"/><circle cx="34" cy="54" r="5" fill="currentColor"/></svg>
-        <div class="ph-tag">Ilustração esquemática · coladeira de bordas</div>
-      </div></div>
-      <div class="info">
-        <div class="mtitle">Giben KG668</div>
-        <div class="msub">Coladeira de bordas · 22 m/min · marca moveleira italiana</div>
-        <div class="tags"><span class="badge b-green">Pega a usada na troca</span><span class="badge b-gold">Suporte em BH</span><span class="badge b-blue">Migra p/ galpão novo</span></div>
-        <div class="specs">
-          <div class="sp"><div class="sl">Velocidade</div><div class="sv">22 metros / minuto</div></div>
-          <div class="sp"><div class="sl">Regulagens finas</div><div class="sv">Manuais</div></div>
-          <div class="sp"><div class="sl">Manutenção</div><div class="sv">Simples</div></div>
-          <div class="sp"><div class="sl">Suporte</div><div class="sv">Showroom + técnico + treino · BH</div></div>
-        </div>
-        <div class="pc">
-          <div class="box pro"><div class="bh">A favor</div><ul><li>Marca moveleira muito conceituada · preserva valor</li><li>Pega a usada na troca e migra para o galpão novo</li><li>Assistência, showroom e treinamento na própria BH</li></ul></div>
-          <div class="box con"><div class="bh">A ponderar</div><ul><li>Regulagens finas ainda manuais (sem automação)</li><li>Sem bipagem / telemetria</li><li>Cheque acima das opções de entrada</li></ul></div>
-        </div>
-        <div class="oper"><div class="oh">O que muda na operação</div><div class="ot">Salto de qualidade e <b>confiabilidade de marca</b>: 22 m/min com manutenção simples e suporte local. Capital que <b>se preserva</b> — acompanha a empresa na mudança de galpão.</div></div>
-        <div class="enters"><span class="el">Entra no degrau</span><span class="ev">2–3 · R$ 400–600 mil / mês</span></div>
-      </div>
-    </div>
-  </div>
-  <div class="pf"><div class="pl">Caminhos de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">MÁQUINA 03 <span>·</span> 07</div></div>
-</section>
-
-<!-- ============================= LÂMINA 4 · GIBEN KG712 ============================= -->
-<section class="sheet">
-  <div class="ph">
-    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Lâmina técnica · coladeira automatizada</div></div></div>
-    <div class="kx">Máquina 04 · Coladeira</div>
-    <div class="tt">Giben — KG712</div>
-  </div>
-  <div class="body">
-    <div class="lam">
-      <div class="visual"><div class="frame"><img class="photo" src="img-maquinas/giben-kg712.jpg" alt="Giben KG712" onerror="this.remove()" onload="this.closest('.frame,.iframe').classList.add('has-photo')">
-        <div class="price-fx"><div class="pl">Valor de feira</div><div class="pv">R$ 410 mil</div></div>
-        <svg class="mimg" viewBox="0 0 320 180" fill="none"><rect x="12" y="98" width="266" height="42" rx="3" stroke="currentColor" stroke-width="2.6"/><line x1="38" y1="140" x2="38" y2="168" stroke="currentColor" stroke-width="2.6"/><line x1="256" y1="140" x2="256" y2="168" stroke="currentColor" stroke-width="2.6"/><rect x="0" y="108" width="104" height="13" fill="currentColor" opacity="0.14"/><rect x="216" y="108" width="104" height="13" fill="currentColor" opacity="0.14"/><rect x="46" y="54" width="196" height="26" rx="5" stroke="currentColor" stroke-width="2.6"/><circle cx="68" cy="67" r="7" stroke="currentColor" stroke-width="2"/><circle cx="98" cy="67" r="7" stroke="currentColor" stroke-width="2"/><circle cx="128" cy="67" r="7" stroke="currentColor" stroke-width="2"/><circle cx="158" cy="67" r="7" stroke="currentColor" stroke-width="2"/><circle cx="188" cy="67" r="7" stroke="currentColor" stroke-width="2"/><circle cx="218" cy="67" r="7" stroke="currentColor" stroke-width="2"/><rect x="282" y="40" width="38" height="100" rx="3" stroke="currentColor" stroke-width="2.6"/><rect x="289" y="50" width="24" height="22" rx="2" fill="var(--gold)" opacity="0.5"/><circle cx="294" cy="90" r="3" fill="currentColor"/><circle cx="305" cy="90" r="3" fill="currentColor"/><g><rect x="20" y="34" width="46" height="30" rx="3" stroke="var(--gold)" stroke-width="2.2"/><line x1="30" y1="42" x2="56" y2="42" stroke="var(--gold)" stroke-width="1.6"/><line x1="30" y1="49" x2="56" y2="49" stroke="var(--gold)" stroke-width="1.6"/><line x1="30" y1="56" x2="56" y2="56" stroke="var(--gold)" stroke-width="1.6"/></g></svg>
-        <div class="ph-tag">Ilustração esquemática · magazine de 4 fitas em destaque</div>
-      </div></div>
-      <div class="info">
-        <div class="mtitle">Giben KG712</div>
-        <div class="msub">Coladeira automatizada · bipagem + telemetria · topo de linha</div>
-        <div class="tags"><span class="badge b-navy">Automação plena</span><span class="badge b-amber">Bipagem</span><span class="badge b-green">Telemetria</span></div>
-        <div class="specs">
-          <div class="sp"><div class="sl">Regulagens finas</div><div class="sv">Automáticas (programa por MDF)</div></div>
-          <div class="sp"><div class="sl">Magazine de fitas</div><div class="sv">4 fitas · troca automática</div></div>
-          <div class="sp"><div class="sl">Rastreabilidade</div><div class="sv">Bipagem de peça</div></div>
-          <div class="sp"><div class="sl">Telemetria</div><div class="sv">Metros de fita colados</div></div>
-        </div>
-        <div class="pc">
-          <div class="box pro"><div class="bh">A favor</div><ul><li>Regulagem automática por tipo de MDF — zero setup manual</li><li>Troca automática entre 4 fitas · agilidade de mix</li><li>Bipagem + telemetria: base para precificar por peça</li></ul></div>
-          <div class="box con"><div class="bh">A ponderar</div><ul><li>Maior cheque entre as coladeiras</li><li>Retorno depende de volume alto e mix variado</li><li>Faz mais sentido já mirando 600 mil / linha industrial</li></ul></div>
-        </div>
-        <div class="oper"><div class="oh">O que muda na operação</div><div class="ot">De coladeira para <b>estação inteligente</b>: troca de fita e regulagem sem parada, e <b>dados por peça</b> — o insumo que torna possível a prestação de serviços precificada por metro colado.</div></div>
-        <div class="enters"><span class="el">Entra no degrau</span><span class="ev">3 · R$ 600 mil / mês</span></div>
-      </div>
-    </div>
-  </div>
-  <div class="pf"><div class="pl">Caminhos de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">MÁQUINA 04 <span>·</span> 08</div></div>
-</section>
-
-<!-- ============================= LÂMINA 5 · PUXADORES (DESTAQUE) ============================= -->
+<!-- ============================= LÂMINA PUXADORES (DESTAQUE) ============================= -->
 <section class="sheet feature">
   <div class="featflag">★ Diferencial de mercado</div>
   <div class="ph">
-    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Lâmina técnica · usinagem de puxador / perfil integrado</div></div></div>
-    <div class="kx">Máquina 05 · Puxadores</div>
-    <div class="tt">Giben — Coladeira de Puxadores</div>
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Lâmina técnica · usinagem de puxador / perfil integrado · LANÇAMENTO</div></div></div>
+    <div class="kx">Máquina de Puxadores</div>
+    <div class="tt">Giben — KG398J</div>
   </div>
   <div class="body">
     <div class="lam">
-      <div class="visual"><div class="frame"><img class="photo" src="img-maquinas/giben-puxadores.jpg" alt="Coladeira de Puxadores Giben" onerror="this.remove()" onload="this.closest('.frame,.iframe').classList.add('has-photo')">
-        <div class="price-fx"><div class="pl">Valor de feira</div><div class="pv">R$ 420 mil</div></div>
+      <div class="visual"><div class="frame"><img class="photo" src="img-maquinas/giben-puxadores.jpg" alt="Giben KG398J Puxadores" onerror="this.remove()" onload="this.closest('.frame').classList.add('has-photo')">
+        <div class="price-fx"><div class="pl">Valor de feira</div><div class="pv">R$ 480 mil</div></div>
         <svg class="mimg" viewBox="0 0 320 180" fill="none"><rect x="30" y="86" width="260" height="46" stroke="currentColor" stroke-width="2.6"/><path d="M30 86 H118 Q136 86 136 66 L184 66 Q202 66 202 86 H290" stroke="var(--gold)" stroke-width="4" fill="none"/><path d="M30 132 H290" stroke="currentColor" stroke-width="1.4" opacity=".4"/><text x="160" y="112" text-anchor="middle" fill="currentColor" font-family="Inter" font-size="12" font-weight="700" opacity=".55">painel MDF</text><path d="M136 66 L136 52 M184 66 L184 52" stroke="var(--gold)" stroke-width="1.4" stroke-dasharray="3 3"/><text x="160" y="46" text-anchor="middle" fill="var(--gold-dk)" font-family="Inter" font-size="11" font-weight="700">puxador integrado</text><circle cx="160" cy="150" r="4" fill="var(--gold)"/></svg>
         <div class="ph-tag">Ilustração esquemática · perfil de puxador usinado no próprio painel</div>
       </div></div>
       <div class="info">
-        <div class="mtitle">Coladeira de Puxadores Giben</div>
-        <div class="msub">Usina o puxador / perfil integrado direto na peça — sem ferragem de terceiros</div>
-        <div class="tags"><span class="badge b-gold">Diferencial premium</span><span class="badge b-navy">Assinatura Valvic</span><span class="badge b-green">Margem + posicionamento</span></div>
+        <div class="mtitle">Giben KG398J · Puxadores</div>
+        <div class="msub">Usina o puxador / perfil integrado direto na peça — modelo de lançamento</div>
+        <div class="tags"><span class="badge b-amber">Lançamento</span><span class="badge b-gold">Ninguém tem em MG</span><span class="badge b-navy">Diferencial premium</span></div>
         <div class="specs">
+          <div class="sp"><div class="sl">Modelo</div><div class="sv">KG398J · lançamento</div></div>
           <div class="sp"><div class="sl">Função</div><div class="sv">Puxador / perfil integrado</div></div>
-          <div class="sp"><div class="sl">Elimina</div><div class="sv">Ferragem de puxador comprada</div></div>
-          <div class="sp"><div class="sl">Ganho</div><div class="sv">Design limpo · linha assinatura</div></div>
-          <div class="sp"><div class="sl">Posicionamento</div><div class="sv">Produto premium diferenciado</div></div>
+          <div class="sp"><div class="sl">Filetagem</div><div class="sv">8 m/min (baixa) · diferencial, não volume</div></div>
+          <div class="sp"><div class="sl">Exclusividade</div><div class="sv">Inédita em Minas Gerais</div></div>
         </div>
         <div class="pc">
-          <div class="box pro"><div class="bh">Por que se destaca</div><ul><li>Cria um <b>produto que o concorrente não tem</b> — puxador integrado, acabamento sem ferragem aparente</li><li>Elimina custo e prazo de ferragem de terceiros</li><li>Eleva a percepção de valor e a margem, não só o volume</li></ul></div>
-          <div class="box con"><div class="bh">A ponderar</div><ul><li>Retorno vem por posicionamento / preço, não por escala</li><li>Exige comunicação do diferencial ao cliente final</li></ul></div>
+          <div class="box pro"><div class="bh">Por que se destaca</div><ul><li><b>Ninguém em MG tem essa máquina ainda</b> — possivelmente alguém no Sul de Minas venha a ter (segundo vendedores do ramo)</li><li>Em SP, um proprietário está <b>amplamente abastecido de demanda</b> de arquitetas e marcenarias do entorno</li><li>Cria um <b>produto de assinatura</b> que o concorrente não tem — margem por posicionamento</li></ul></div>
+          <div class="box con"><div class="bh">A ponderar</div><ul><li>Fileta 8 m/min (relativamente baixo) — <b>não é a coladeira de volume</b> em peças retas</li><li>O ideal em produtividade: uma coladeira <b>rápida para retas</b> (ex.: KG668) + esta como diferencial competitivo</li></ul></div>
         </div>
-        <div class="oper"><div class="oh">Leitura estratégica</div><div class="ot">Módulo que <b>se paga em percepção de valor</b>. Enquanto as outras máquinas ampliam capacidade, esta amplia <b>a marca</b> — transforma o móvel Valvic em produto de assinatura, com margem premium.</div></div>
-        <div class="enters"><span class="el">Entra como</span><span class="ev">Diferenciador · qualquer degrau premium</span></div>
+        <div class="oper"><div class="oh">Leitura estratégica</div><div class="ot">Não compete com as coladeiras de produção — <b>complementa</b>. Enquanto elas resolvem o volume, a KG398J resolve o <b>valor e o ineditismo</b>: um diferencial de mercado que, sendo inédito em MG, posiciona a Valvic à frente.</div></div>
+        <div class="enters"><span class="el">Entra como</span><span class="ev">Diferenciador · qualquer fase premium</span></div>
       </div>
     </div>
   </div>
-  <div class="pf"><div class="pl">Caminhos de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">MÁQUINA 05 · DESTAQUE <span>·</span> 09</div></div>
+  <div class="pf"><div class="pl">Caminhos de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">PUXADORES · KG398J <span>·</span> 07</div></div>
 </section>
 
-<!-- ============================= LÂMINA 6 · NESTING ============================= -->
+<!-- ============================= LÂMINAS 2-UP · NESTING + FLEXDRILL ============================= -->
 <section class="sheet">
   <div class="ph">
-    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Lâmina técnica · corte nesting para a linha industrial</div></div></div>
-    <div class="kx">Máquina 06 · Corte</div>
-    <div class="tt">Nesting Giben</div>
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Lâminas técnicas · máquinas da linha industrial (horizonte de 1 mi)</div></div></div>
+    <div class="kx">Linha Industrial · Rumo ao 1 Milhão</div>
+    <div class="tt">Nesting Giben · Centro de Usinagem Flexdrill</div>
   </div>
   <div class="body">
-    <div class="lam">
-      <div class="visual"><div class="frame"><img class="photo" src="img-maquinas/nesting-giben.jpg" alt="Nesting Giben" onerror="this.remove()" onload="this.closest('.frame,.iframe').classList.add('has-photo')">
-        <div class="price-fx"><div class="pl">Valor de feira</div><div class="pv">R$ 530 mil</div></div>
-        <svg class="mimg" viewBox="0 0 320 180" fill="none"><rect x="28" y="48" width="264" height="98" rx="4" stroke="currentColor" stroke-width="2.6"/><rect x="44" y="62" width="232" height="70" fill="currentColor" opacity="0.08"/><rect x="118" y="30" width="34" height="128" rx="3" stroke="currentColor" stroke-width="2.6"/><rect x="126" y="80" width="18" height="26" rx="2" fill="var(--gold)" opacity="0.45"/><rect x="54" y="72" width="46" height="46" stroke="currentColor" stroke-width="1.5" opacity=".5"/><rect x="180" y="72" width="60" height="24" stroke="currentColor" stroke-width="1.5" opacity=".5"/><rect x="180" y="100" width="28" height="20" stroke="currentColor" stroke-width="1.5" opacity=".5"/><rect x="214" y="100" width="26" height="20" stroke="currentColor" stroke-width="1.5" opacity=".5"/></svg>
-        <div class="ph-tag">Ilustração esquemática · mesa nesting com peças aninhadas</div>
-      </div></div>
-      <div class="info">
-        <div class="mtitle">Nesting Giben</div>
-        <div class="msub">Centro de corte nesting com bipagem · base da linha do 1 milhão</div>
-        <div class="tags"><span class="badge b-navy">Linha industrial</span><span class="badge b-amber">Bipagem</span><span class="badge b-blue">Rumo ao 1 mi</span></div>
-        <div class="specs">
-          <div class="sp"><div class="sl">Função</div><div class="sv">Corte nesting de chapas</div></div>
-          <div class="sp"><div class="sl">Rastreabilidade</div><div class="sv">Bipagem de peça</div></div>
-          <div class="sp"><div class="sl">Aproveitamento</div><div class="sv">Otimização de plano de corte</div></div>
-          <div class="sp"><div class="sl">Integração</div><div class="sv">Interliga com coladeira e furação</div></div>
+    <div class="lam2">
+      <div class="m">
+        <div class="visual"><img class="photo" src="img-maquinas/nesting-giben.jpg" alt="Nesting Giben" onerror="this.remove()" onload="this.closest('.visual').classList.add('has-photo')">
+          <div class="price"><div class="pl">Valor de feira</div><div class="pv">R$ 530k</div></div>
+          <svg class="mimg" viewBox="0 0 320 180" fill="none"><rect x="28" y="48" width="264" height="98" rx="4" stroke="currentColor" stroke-width="2.6"/><rect x="44" y="62" width="232" height="70" fill="currentColor" opacity="0.08"/><rect x="118" y="30" width="34" height="128" rx="3" stroke="currentColor" stroke-width="2.6"/><rect x="126" y="80" width="18" height="26" rx="2" fill="var(--gold)" opacity="0.45"/><rect x="54" y="72" width="46" height="46" stroke="currentColor" stroke-width="1.5" opacity=".5"/><rect x="180" y="72" width="60" height="24" stroke="currentColor" stroke-width="1.5" opacity=".5"/><rect x="180" y="100" width="28" height="20" stroke="currentColor" stroke-width="1.5" opacity=".5"/></svg>
+          <div class="cap">Ilustração esquemática</div>
         </div>
-        <div class="pc">
-          <div class="box pro"><div class="bh">A favor</div><ul><li>Corte otimizado e repetível · menos desperdício de chapa</li><li>Bipagem integra o fluxo com colagem e furação</li><li>Peça-chave da linha interligada do horizonte de 1 mi</li></ul></div>
-          <div class="box con"><div class="bh">A ponderar</div><ul><li>Cheque elevado — só se justifica no salto industrial</li><li>Pede galpão maior e demanda já engatilhada</li></ul></div>
+        <div class="info">
+          <div class="mt">Nesting Giben</div>
+          <div class="ms">Centro de corte nesting com bipagem · base da linha</div>
+          <div class="tags"><span class="badge b-navy">Linha industrial</span><span class="badge b-amber">Bipagem</span><span class="badge b-blue">Horizonte 1 mi</span></div>
+          <div class="mid">
+            <div class="specs">
+              <div class="sp"><span class="k">Função</span><span class="v">Corte nesting</span></div>
+              <div class="sp"><span class="k">Rastreab.</span><span class="v">Bipagem de peça</span></div>
+              <div class="sp"><span class="k">Aproveit.</span><span class="v">Plano otimizado</span></div>
+              <div class="sp"><span class="k">Integração</span><span class="v">Coladeira + furação</span></div>
+            </div>
+            <div class="pc">
+              <div class="c p"><div class="ch">A favor</div><li>Corte repetível · menos desperdício</li><li>Porta de entrada da linha interligada</li></div>
+              <div class="c n"><div class="ch">A ponderar</div><li>Cheque alto · só no salto industrial</li><li>Pede galpão maior + demanda pronta</li></div>
+            </div>
+          </div>
+          <div class="foot"><span class="fl">Entra no</span><span class="fv">Horizonte · 1 milhão</span><span class="op">Substitui o corte tradicional por <b>fluxo automatizado e rastreável</b>.</span></div>
         </div>
-        <div class="oper"><div class="oh">O que muda na operação</div><div class="ot">Substitui o corte tradicional por um fluxo <b>automatizado e rastreável</b>. É a porta de entrada da <b>linha interligada</b> — corte, colagem e furação falando a mesma língua.</div></div>
-        <div class="enters"><span class="el">Entra no degrau</span><span class="ev">Horizonte · R$ 1 milhão / mês</span></div>
+      </div>
+      <div class="m">
+        <div class="visual"><img class="photo" src="img-maquinas/giben-flexdrill.jpg" alt="Giben Flexdrill" onerror="this.remove()" onload="this.closest('.visual').classList.add('has-photo')">
+          <div class="price"><div class="pl">Valor de feira</div><div class="pv">R$ 360k</div></div>
+          <svg class="mimg" viewBox="0 0 320 180" fill="none"><rect x="26" y="94" width="268" height="34" rx="3" stroke="currentColor" stroke-width="2.6"/><rect x="60" y="100" width="200" height="20" fill="currentColor" opacity="0.10"/><line x1="46" y1="128" x2="46" y2="158" stroke="currentColor" stroke-width="2.6"/><line x1="274" y1="128" x2="274" y2="158" stroke="currentColor" stroke-width="2.6"/><rect x="104" y="30" width="112" height="40" rx="3" stroke="currentColor" stroke-width="2.6"/><rect x="112" y="38" width="96" height="10" fill="var(--gold)" opacity=".4"/><line x1="120" y1="70" x2="120" y2="92" stroke="currentColor" stroke-width="2.6"/><line x1="138" y1="70" x2="138" y2="92" stroke="currentColor" stroke-width="2.6"/><line x1="156" y1="70" x2="156" y2="92" stroke="currentColor" stroke-width="2.6"/><line x1="174" y1="70" x2="174" y2="92" stroke="currentColor" stroke-width="2.6"/><line x1="192" y1="70" x2="192" y2="92" stroke="currentColor" stroke-width="2.6"/></svg>
+          <div class="cap">Ilustração esquemática</div>
+        </div>
+        <div class="info">
+          <div class="mt">Centro de Usinagem Flexdrill</div>
+          <div class="ms">Furação / usinagem CNC com bipagem · fecha o trio</div>
+          <div class="tags"><span class="badge b-navy">Linha industrial</span><span class="badge b-amber">Bipagem</span><span class="badge b-blue">Furação CNC</span></div>
+          <div class="mid">
+            <div class="specs">
+              <div class="sp"><span class="k">Função</span><span class="v">Furação CNC</span></div>
+              <div class="sp"><span class="k">Rastreab.</span><span class="v">Bipagem de peça</span></div>
+              <div class="sp"><span class="k">Precisão</span><span class="v">Programada, repetível</span></div>
+              <div class="sp"><span class="k">Integração</span><span class="v">Fecha corte–colagem–furação</span></div>
+            </div>
+            <div class="pc">
+              <div class="c p"><div class="ch">A favor</div><li>Furação precisa · elimina marcação manual</li><li>Montagem mais rápida · menos retrabalho</li></div>
+              <div class="c n"><div class="ch">A ponderar</div><li>Ganho pleno só com nesting + coladeira juntos</li></div>
+            </div>
+          </div>
+          <div class="foot"><span class="fl">Entra no</span><span class="fv">Horizonte · 1 milhão</span><span class="op">A peça sai <b>cortada, colada e furada</b>, pronta para montar.</span></div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="pf"><div class="pl">Caminhos de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">MÁQUINA 06 <span>·</span> 10</div></div>
-</section>
-
-<!-- ============================= LÂMINA 7 · FLEXDRILL ============================= -->
-<section class="sheet">
-  <div class="ph">
-    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Lâmina técnica · centro de usinagem / furação CNC</div></div></div>
-    <div class="kx">Máquina 07 · Furação</div>
-    <div class="tt">Centro de Usinagem Giben Flexdrill</div>
-  </div>
-  <div class="body">
-    <div class="lam">
-      <div class="visual"><div class="frame"><img class="photo" src="img-maquinas/giben-flexdrill.jpg" alt="Giben Flexdrill" onerror="this.remove()" onload="this.closest('.frame,.iframe').classList.add('has-photo')">
-        <div class="price-fx"><div class="pl">Valor de feira</div><div class="pv">R$ 360 mil</div></div>
-        <svg class="mimg" viewBox="0 0 320 180" fill="none"><rect x="26" y="94" width="268" height="34" rx="3" stroke="currentColor" stroke-width="2.6"/><rect x="60" y="100" width="200" height="20" fill="currentColor" opacity="0.10"/><line x1="46" y1="128" x2="46" y2="158" stroke="currentColor" stroke-width="2.6"/><line x1="274" y1="128" x2="274" y2="158" stroke="currentColor" stroke-width="2.6"/><rect x="104" y="30" width="112" height="40" rx="3" stroke="currentColor" stroke-width="2.6"/><rect x="112" y="38" width="96" height="10" fill="var(--gold)" opacity=".4"/><line x1="120" y1="70" x2="120" y2="92" stroke="currentColor" stroke-width="2.6"/><line x1="138" y1="70" x2="138" y2="92" stroke="currentColor" stroke-width="2.6"/><line x1="156" y1="70" x2="156" y2="92" stroke="currentColor" stroke-width="2.6"/><line x1="174" y1="70" x2="174" y2="92" stroke="currentColor" stroke-width="2.6"/><line x1="192" y1="70" x2="192" y2="92" stroke="currentColor" stroke-width="2.6"/></svg>
-        <div class="ph-tag">Ilustração esquemática · cabeçote de furação múltipla</div>
-      </div></div>
-      <div class="info">
-        <div class="mtitle">Giben Flexdrill</div>
-        <div class="msub">Centro de usinagem / furação CNC com bipagem</div>
-        <div class="tags"><span class="badge b-navy">Linha industrial</span><span class="badge b-amber">Bipagem</span><span class="badge b-blue">Furação CNC</span></div>
-        <div class="specs">
-          <div class="sp"><div class="sl">Função</div><div class="sv">Furação / usinagem CNC</div></div>
-          <div class="sp"><div class="sl">Rastreabilidade</div><div class="sv">Bipagem de peça</div></div>
-          <div class="sp"><div class="sl">Precisão</div><div class="sv">Furação programada repetível</div></div>
-          <div class="sp"><div class="sl">Integração</div><div class="sv">Fecha o trio corte–colagem–furação</div></div>
-        </div>
-        <div class="pc">
-          <div class="box pro"><div class="bh">A favor</div><ul><li>Furação precisa e repetível · elimina marcação manual</li><li>Bipagem mantém a rastreabilidade da peça no fluxo</li><li>Completa a linha interligada para montagem rápida</li></ul></div>
-          <div class="box con"><div class="bh">A ponderar</div><ul><li>Investimento de linha industrial · degrau final</li><li>Ganho pleno só com nesting + coladeira no mesmo fluxo</li></ul></div>
-        </div>
-        <div class="oper"><div class="oh">O que muda na operação</div><div class="ot">Fecha o <b>trio da linha</b>: a peça sai cortada, colada e <b>furada</b> pronta para montar. Menos retrabalho, montagem mais rápida — o que sustenta o volume de 1 milhão.</div></div>
-        <div class="enters"><span class="el">Entra no degrau</span><span class="ev">Horizonte · R$ 1 milhão / mês</span></div>
-      </div>
-    </div>
-  </div>
-  <div class="pf"><div class="pl">Caminhos de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">MÁQUINA 07 <span>·</span> 11</div></div>
+  <div class="pf"><div class="pl">Caminhos de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">LINHA INDUSTRIAL <span>·</span> 08</div></div>
 </section>
 
 <!-- ============================= COMPLEMENTARES ============================= -->
@@ -660,7 +676,7 @@
   <div class="body">
     <div class="duo">
       <div class="item">
-        <div class="iframe"><img class="photo" src="img-maquinas/esteira-retorno.jpg" alt="Esteira de retorno" onerror="this.remove()" onload="this.closest('.frame,.iframe').classList.add('has-photo')"><svg class="mimg" viewBox="0 0 320 120" fill="none"><rect x="24" y="52" width="272" height="18" rx="9" stroke="currentColor" stroke-width="2.6"/><circle cx="44" cy="61" r="12" stroke="currentColor" stroke-width="2.6"/><circle cx="276" cy="61" r="12" stroke="currentColor" stroke-width="2.6"/><line x1="70" y1="61" x2="250" y2="61" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 8" opacity=".5"/><rect x="128" y="36" width="44" height="16" fill="currentColor" opacity="0.16"/><path d="M300 61 l-10 -5 v10 z" fill="currentColor" opacity=".5"/></svg></div>
+        <div class="iframe"><img class="photo" src="img-maquinas/esteira-retorno.jpg" alt="Esteira de retorno" onerror="this.remove()" onload="this.closest('.iframe').classList.add('has-photo')"><svg class="mimg" viewBox="0 0 320 120" fill="none"><rect x="24" y="52" width="272" height="18" rx="9" stroke="currentColor" stroke-width="2.6"/><circle cx="44" cy="61" r="12" stroke="currentColor" stroke-width="2.6"/><circle cx="276" cy="61" r="12" stroke="currentColor" stroke-width="2.6"/><line x1="70" y1="61" x2="250" y2="61" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 8" opacity=".5"/><rect x="128" y="36" width="44" height="16" fill="currentColor" opacity="0.16"/></svg></div>
         <div class="ib">
           <div class="it">Esteira de retorno</div>
           <div class="ip">R$ 60 mil</div>
@@ -669,7 +685,7 @@
         </div>
       </div>
       <div class="item">
-        <div class="iframe"><img class="photo" src="img-maquinas/embaladora.jpg" alt="Embaladora" onerror="this.remove()" onload="this.closest('.frame,.iframe').classList.add('has-photo')"><svg class="mimg" viewBox="0 0 320 140" fill="none"><rect x="96" y="46" width="140" height="72" rx="4" stroke="currentColor" stroke-width="2.6"/><path d="M96 68 H236" stroke="currentColor" stroke-width="1.5" opacity=".45"/><path d="M166 46 V118" stroke="currentColor" stroke-width="1.5" opacity=".45"/><circle cx="44" cy="60" r="20" stroke="currentColor" stroke-width="2.6"/><circle cx="44" cy="60" r="6" fill="currentColor" opacity=".3"/><line x1="64" y1="62" x2="96" y2="72" stroke="currentColor" stroke-width="2.2"/></svg></div>
+        <div class="iframe"><img class="photo" src="img-maquinas/embaladora.jpg" alt="Embaladora" onerror="this.remove()" onload="this.closest('.iframe').classList.add('has-photo')"><svg class="mimg" viewBox="0 0 320 140" fill="none"><rect x="96" y="46" width="140" height="72" rx="4" stroke="currentColor" stroke-width="2.6"/><path d="M96 68 H236" stroke="currentColor" stroke-width="1.5" opacity=".45"/><path d="M166 46 V118" stroke="currentColor" stroke-width="1.5" opacity=".45"/><circle cx="44" cy="60" r="20" stroke="currentColor" stroke-width="2.6"/><circle cx="44" cy="60" r="6" fill="currentColor" opacity=".3"/><line x1="64" y1="62" x2="96" y2="72" stroke="currentColor" stroke-width="2.2"/></svg></div>
         <div class="ib">
           <div class="it">Embaladora</div>
           <div class="ip">a partir de R$ 60 mil</div>
@@ -679,7 +695,7 @@
       </div>
     </div>
   </div>
-  <div class="pf"><div class="pl">Caminhos de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">COMPLEMENTARES <span>·</span> 12</div></div>
+  <div class="pf"><div class="pl">Caminhos de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">COMPLEMENTARES <span>·</span> 09</div></div>
 </section>
 
 <!-- ============================= PRESTAÇÃO DE SERVIÇOS ============================= -->
@@ -688,54 +704,50 @@
     <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Cenário adicional · monetizar a capacidade instalada</div></div></div>
     <div class="kx">Prestação de Serviços</div>
     <div class="tt">A máquina que fatura mesmo sem obra própria</div>
-    <div class="desc">A linha industrial cria capacidade que nem sempre estará 100% ocupada pela produção Valvic. Essa folga pode virar receita: corte, colagem e furação com bipagem, prestados a marcenarias que não têm CNC.</div>
+    <div class="desc">A linha industrial cria capacidade que nem sempre estará 100% ocupada pela produção Valvic. Essa folga pode virar receita: corte, colagem e furação com bipagem, prestados a marcenarias que não têm CNC — e isso muda até a estratégia de localização.</div>
   </div>
-  <div class="body">
-    <div class="synth" style="gap:16px">
-      <div class="cards">
-        <div class="card"><div class="ch"><div class="ci">◱</div><div class="ct">Capacidade ociosa vira receita</div></div><p>Nesting + coladeira + furação com bipagem formam um serviço vendável. Marcenarias sem CNC precisam de corte e colagem de qualidade — a Valvic passa a vender <b>a própria capacidade</b>, não só o móvel.</p><ul><li>A <b>mesma linha</b> que produz o móvel Valvic</li><li>Corte, colagem e furação <b>sob demanda</b></li><li>Cliente: marcenarias <b>sem CNC próprio</b></li></ul><div class="kv"><div class="k"><div class="kl">Ativo</div><div class="kt">Dupla função</div></div><div class="k"><div class="kl">Cliente</div><div class="kt">B2B moveleiro</div></div></div></div>
-        <div class="card"><div class="ch"><div class="ci">↺</div><div class="ct">Preenche os vales de demanda</div></div><p>Nos meses de produção própria mais fraca, o serviço B2B <b>preenche o buraco de caixa</b>. A operação deixa de depender só do ciclo de vendas de móveis planejados.</p><ul><li>Receita <b>independe</b> do ciclo de móveis</li><li>Ativa a máquina nos <b>meses fracos</b></li><li><b>Suaviza</b> o fluxo de caixa ao longo do ano</li></ul><div class="kv"><div class="k"><div class="kl">Ganho</div><div class="kt">Caixa mais estável</div></div><div class="k"><div class="kl">Quando</div><div class="kt">Baixa produção própria</div></div></div></div>
-        <div class="card"><div class="ch"><div class="ci">◈</div><div class="ct">Margem alta e precificável</div></div><p>Receita B2B de <b>margem alta</b>, com a telemetria da coladeira permitindo <b>precificar por peça / metro colado</b> — cobrança justa e transparente, medida pela própria máquina.</p><ul><li>Telemetria mede o <b>metro colado</b> real</li><li>Preço por peça — <b>justo e auditável</b></li><li>Sem custo de venda de projeto / montagem</li></ul><div class="kv"><div class="k"><div class="kl">Precificação</div><div class="kt">Por peça / metro</div></div><div class="k"><div class="kl">Margem</div><div class="kt">Alta (B2B)</div></div></div></div>
-      </div>
-      <div class="closing">
-        <div class="qm">“</div>
-        <div class="qt">O ponto para o investidor: a prestação de serviços <b>transforma o CAPEX em ativo que fatura mesmo com a produção própria não cheia</b>. É o que <b>de-risca o investimento</b> — a linha industrial se paga por dois caminhos, não um só.</div>
-      </div>
+  <div class="body vcenter">
+    <div class="cards">
+      <div class="card"><div class="ch"><div class="ci">◱</div><div class="ct">Capacidade ociosa vira receita</div></div><p>Nesting + coladeira + furação com bipagem formam um serviço vendável. A Valvic passa a vender <b>a própria capacidade</b>, não só o móvel.</p><ul><li>A <b>mesma linha</b> que produz o móvel Valvic</li><li>Corte, colagem e furação <b>sob demanda</b></li><li>Cliente: marcenarias <b>sem CNC próprio</b></li></ul><div class="kv"><div class="k"><div class="kl">Ativo</div><div class="kt">Dupla função</div></div><div class="k"><div class="kl">Cliente</div><div class="kt">B2B moveleiro</div></div></div></div>
+      <div class="card"><div class="ch"><div class="ci">↺</div><div class="ct">Preenche os vales de demanda</div></div><p>Nos meses de produção própria mais fraca, o serviço B2B <b>preenche o buraco de caixa</b> e reduz a dependência do ciclo de móveis.</p><ul><li>Receita <b>independe</b> do ciclo de móveis</li><li>Ativa a máquina nos <b>meses fracos</b></li><li><b>Suaviza</b> o caixa ao longo do ano</li></ul><div class="kv"><div class="k"><div class="kl">Ganho</div><div class="kt">Caixa mais estável</div></div><div class="k"><div class="kl">Quando</div><div class="kt">Baixa produção própria</div></div></div></div>
+      <div class="card"><div class="ch"><div class="ci">◎</div><div class="ct">Muda a estratégia de localização</div></div><p>Se o serviço mirar a demanda de <b>BH, Contagem e entornos</b>, a <b>localização do galpão vira fator estratégico</b> — perto dos clientes B2B, muda a escolha do endereço.</p><ul><li>Telemetria precifica <b>por peça / metro colado</b></li><li>Receita B2B de <b>margem alta</b></li><li>Proximidade dos clientes = <b>vantagem logística</b></li></ul><div class="kv"><div class="k"><div class="kl">Precificação</div><div class="kt">Por peça / metro</div></div><div class="k"><div class="kl">Localização</div><div class="kt">Fator estratégico</div></div></div></div>
+    </div>
+    <div class="closing">
+      <div class="qm">“</div>
+      <div class="qt">O ponto para o investidor: a prestação de serviços <b>transforma o CAPEX em ativo que fatura mesmo com a produção própria não cheia</b>. É o que <b>de-risca o investimento</b> — a linha industrial se paga por dois caminhos, não um só.</div>
     </div>
   </div>
-  <div class="pf"><div class="pl">Caminhos de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">PRESTAÇÃO DE SERVIÇOS <span>·</span> 13</div></div>
+  <div class="pf"><div class="pl">Caminhos de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">PRESTAÇÃO DE SERVIÇOS <span>·</span> 10</div></div>
 </section>
 
 <!-- ============================= SÍNTESE ============================= -->
 <section class="sheet">
   <div class="ph">
-    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Síntese dos caminhos · os degraus e as escolhas na mesa</div></div></div>
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Síntese dos caminhos · os degraus e as alavancas</div></div></div>
     <div class="kx">Síntese</div>
     <div class="tt">Os caminhos, lado a lado</div>
-    <div class="desc">Um resumo de tudo em uma página: a jornada, as decisões abertas e o que cada uma preserva. Nada aqui decide por ninguém — o material existe para que a decisão seja consciente.</div>
+    <div class="desc">Um resumo de tudo em uma página: a jornada, as escolhas em aberto e o que cada uma preserva.</div>
   </div>
-  <div class="body">
-    <div class="synth">
-      <div class="roadmap">
-        <div class="rstep"><div class="dot"></div><div class="rf">250 mil</div><div class="rt">Hoje · estrutura atual</div></div>
-        <div class="rstep"><div class="dot"></div><div class="rf">300 mil</div><div class="rt">+ Equipe + carro · zero máquina</div></div>
-        <div class="rstep"><div class="dot"></div><div class="rf">400 mil</div><div class="rt">+ 1ª coladeira + infra</div></div>
-        <div class="rstep"><div class="dot"></div><div class="rf">600 mil</div><div class="rt">+ Coladeira melhor + reorg. galpão</div></div>
-        <div class="rstep"><div class="dot" style="background:var(--gold-dk);box-shadow:0 0 0 4px #efd9a8"></div><div class="rf" style="color:var(--gold-dk)">1 milhão</div><div class="rt">Galpão novo + linha interligada</div></div>
-      </div>
-      <div class="cards">
-        <div class="card"><div class="ch"><div class="ci">①</div><div class="ct">Ritmo</div></div><p>Subir <b>degrau a degrau</b>, cada um validado antes do próximo — o 1 milhão é horizonte, não prazo. Menos risco, capital diluído no tempo, cada estágio se pagando antes do salto seguinte.</p><ul><li><b>5 degraus</b> encadeados: 250 → 300 → 400 → 600 → 1 mi</li><li>Cada degrau tem <b>gatilho próprio</b> de validação</li><li>Só sobe quando o anterior <b>sustenta</b> o resultado</li></ul><div class="kv"><div class="k"><div class="kl">Risco</div><div class="kt">Menor · diluído</div></div><div class="k"><div class="kl">Prazo</div><div class="kt">Sem data fixa</div></div></div></div>
-        <div class="card"><div class="ch"><div class="ci">②</div><div class="ct">Galpão</div></div><p><b>Atual × novo:</b> ramp gradual com parte da obra afundada, ou salto direto com cheque grande e sem retrabalho. Os dois caminhos postos com custos — a <b>escolha é do investidor</b>.</p><ul><li><b>A:</b> parte da obra civil não migra ao mudar</li><li><b>B:</b> estrutura já nasce pronta para o 1 milhão</li><li>Máquinas <b>Giben migram</b> nos dois caminhos</li></ul><div class="kv"><div class="k"><div class="kl">Caminho A</div><div class="kt">Obra ~R$90–120k</div></div><div class="k"><div class="kl">Caminho B</div><div class="kt">Cheque R$1,5–2mi</div></div></div></div>
-        <div class="card"><div class="ch"><div class="ci">③</div><div class="ct">Coladeira</div></div><p><b>Menor preço (Raizen)</b> ou <b>preserva valor + suporte (Giben)</b>. Cheque menor agora × capital que migra e tem revenda depois. Ambas ficam na mesa, com prós e contras abertos.</p><ul><li><b>Raizen:</b> menor cheque · revenda fraca</li><li><b>Giben:</b> preserva valor · suporte em BH</li><li><b>Usikraft:</b> meio-termo (R$ 200 mil)</li></ul><div class="kv"><div class="k"><div class="kl">Raizen 7GT</div><div class="kt">R$ 160 mil</div></div><div class="k"><div class="kl">Giben KG668</div><div class="kt">R$ 260 mil</div></div></div></div>
-        <div class="card"><div class="ch"><div class="ci">④</div><div class="ct">Alavancas extras</div></div><p><b>Puxadores</b> = margem por posicionamento, um produto de assinatura que o concorrente não tem. <b>Prestação de serviços</b> = capacidade ociosa que fatura e de-risca o investimento.</p><ul><li><b>Puxadores:</b> produto de assinatura, sem ferragem</li><li><b>Serviços:</b> fatura a capacidade ociosa (B2B)</li><li>Ambos elevam <b>margem</b>, não só volume</li></ul><div class="kv"><div class="k"><div class="kl">Puxadores</div><div class="kt">Margem premium</div></div><div class="k"><div class="kl">Serviços</div><div class="kt">De-risca CAPEX</div></div></div></div>
-      </div>
-      <div class="closing">
-        <div class="qm">“</div>
-        <div class="qt">Este material apresenta <b>caminhos e realidades</b>, de forma organizada — não uma recomendação. Cada degrau tem seu gatilho, cada máquina seu momento, cada galpão seu trade-off. <b>As decisões ficam na mesa, para quem tem os números na ponta da língua.</b></div>
-      </div>
+  <div class="body vcenter">
+    <div class="roadmap">
+      <div class="rstep"><div class="dot"></div><div class="rf">250 mil</div><div class="rt">Hoje · estrutura + ME25</div></div>
+      <div class="rstep"><div class="dot"></div><div class="rf">300 mil</div><div class="rt">+ Equipe + carro · zero máquina</div></div>
+      <div class="rstep"><div class="dot"></div><div class="rf">400 mil</div><div class="rt">Upgrade de coladeira + habilitação</div></div>
+      <div class="rstep"><div class="dot"></div><div class="rf">600 mil</div><div class="rt">Reorg. galpão + 2 duplas</div></div>
+      <div class="rstep"><div class="dot" style="background:var(--gold-dk);box-shadow:0 0 0 4px #efd9a8"></div><div class="rf" style="color:var(--gold-dk)">1 milhão</div><div class="rt">Galpão novo + linha interligada</div></div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="ch"><div class="ci">①</div><div class="ct">Ritmo</div></div><p>Crescer <b>por etapas, na medida da demanda</b> — cada degrau destrava uma capacidade e prepara a próxima. O 1 milhão é o horizonte; o ritmo é ditado pelo mercado.</p><ul><li><b>5 degraus</b>: 250 → 300 → 400 → 600 → 1 mi</li><li>Cada degrau tem <b>gatilho de demanda</b> próprio</li><li>Investimentos de galpão/máquina são <b>CAPEX único</b></li></ul><div class="kv"><div class="k"><div class="kl">Risco</div><div class="kt">Diluído no tempo</div></div><div class="k"><div class="kl">Prazo</div><div class="kt">Ditado pela demanda</div></div></div></div>
+      <div class="card"><div class="ch"><div class="ci">②</div><div class="ct">Galpão</div></div><p><b>Adaptar o atual × mudar para o novo.</b> Investimento único de R$ 90–120k prepara o atual até 600 mil; o novo (R$ 1,5–2 mi) é o passo do 1 milhão.</p><ul><li><b>Atual:</b> obra única, teto ~600 mil</li><li><b>Novo:</b> linha industrial, rumo ao 1 mi</li><li>Máquinas <b>Giben migram</b>; a obra não migra</li></ul><div class="kv"><div class="k"><div class="kl">Adaptar</div><div class="kt">R$ 90–120k</div></div><div class="k"><div class="kl">Mudar</div><div class="kt">R$ 1,5–2mi</div></div></div></div>
+      <div class="card"><div class="ch"><div class="ci">③</div><div class="ct">Coladeira</div></div><p>A atual (<b>SCM ME25</b>) não passa de 300 mil. O upgrade do degrau 2 define o resto: <b>menor preço</b> (Raizen) ou <b>preserva valor + atende até 600</b> (Giben).</p><ul><li><b>Raizen:</b> menor cheque · revenda fraca</li><li><b>Giben KG668:</b> atende até 600 · suporte BH</li><li><b>Usikraft:</b> meio-termo (R$ 200 mil)</li></ul><div class="kv"><div class="k"><div class="kl">Raizen 7GT</div><div class="kt">R$ 160 mil</div></div><div class="k"><div class="kl">Giben KG668</div><div class="kt">R$ 260 mil</div></div></div></div>
+      <div class="card"><div class="ch"><div class="ci">④</div><div class="ct">Alavancas extras</div></div><p><b>Puxadores (KG398J):</b> diferencial de mercado, inédito em MG. <b>Prestação de serviços:</b> fatura a capacidade ociosa e de-risca o investimento.</p><ul><li><b>Puxadores:</b> produto de assinatura · margem</li><li><b>Serviços:</b> capacidade ociosa vira receita B2B</li><li>Ambos elevam <b>margem</b>, não só volume</li></ul><div class="kv"><div class="k"><div class="kl">Puxadores</div><div class="kt">Margem premium</div></div><div class="k"><div class="kl">Serviços</div><div class="kt">De-risca CAPEX</div></div></div></div>
+    </div>
+    <div class="closing">
+      <div class="qm">“</div>
+      <div class="qt">Este material apresenta <b>caminhos e realidades</b>, de forma organizada. Cada degrau tem o seu gatilho, cada máquina o seu momento, cada galpão o seu trade-off — postos lado a lado, com custos e implicações abertos.</div>
     </div>
   </div>
-  <div class="pf"><div class="pl">Caminhos de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">SÍNTESE <span>·</span> 14</div></div>
+  <div class="pf"><div class="pl">Caminhos de Expansão · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">SÍNTESE <span>·</span> 11</div></div>
 </section>
 
 </body>
