@@ -3,7 +3,7 @@
  "arquiteta": "Marina Dolabella Dubal (DAD)",
  "projeto": "Reforma Hall/Lobby — escopo marcenaria Valvic",
  "obra": "Betim/MG (comercial)",
- "versao": "001-1apassada",
+ "versao": "002-MC40-RT10-buffetNOVO",
  "local": "execução Betim/MG",
  "escopo_valvic": {
   "nichos": {
@@ -20,7 +20,7 @@
    "caixaria": "Acetinatta Preto",
    "portas_giro": "Acetinatta Graffite",
    "puxador": "cava",
-   "obs": "verificar aproveitar movel existente"
+   "obs": "NOVO (não reaproveitar) — material PREMIUM Acetinatta; deixar explícito na proposta"
   }
  },
  "fora_escopo": [
@@ -46,8 +46,11 @@
  },
  "fechamento": {
   "fixedR": 9710,
-  "mc_sugerida": 42,
-  "inv_42pct": 27000
+  "mcAlvo": 40,
+  "rt": 10,
+  "inv": 33000,
+  "mc_real": 40.0,
+  "rt_arquiteta": 2904
  },
  "notas_arquiteta": [
   "ferragens FGV ou Häfele c/ amortecedor",
@@ -57,10 +60,12 @@
   "validar amostras"
  ],
  "flags": [
-  "contagem de nichos ~12 (confirmar na elevação)",
-  "buffet: NOVO ou reface do existente? (muda Acetinatta)",
-  "MC alvo a definir (usei 42% comercial)",
-  "meia-esquadria = CX alto, mão de obra premium",
-  "RT 0 (arquiteta sem RT definido)"
- ]
+  "contagem nichos ~12 (OK Jonathan)",
+  "buffet NOVO premium Acetinatta (OK)",
+  "MC 40% (OK)",
+  "RT 10% DAD (OK)",
+  "conferir medidas no local; validar amostras"
+ ],
+ "p_rt": 10,
+ "mcAlvo": 40
 }
