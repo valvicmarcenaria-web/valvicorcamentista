@@ -162,8 +162,12 @@ bagagem de chão de fábrica:
 - `ferramentas/painel-gestao-template.html` — template de painel de gestão Valvic (KPIs, gráficos, tabela).
 - `referencias/operacoes-drive.md` — estrutura, nomenclatura, permissões e sigilo no Drive.
 - `referencias/vivencia-marcenaria.md` — fluxo de produção e linguagem de chão de fábrica.
+- `referencias/mapa-fluxo-e-documentos.md` — **fluxo de trabalho ponta a ponta + registro de
+  documentos/POPs (existe × criar) + melhorias**. Deliverable central de padronização.
 - `dados/estrutura-empresa.md` — organograma, papéis e contexto da empresa.
-- `dados/mapa-documentos.md` — inventário de todos os documentos da empresa e o que cada um é.
+- `dados/mapa-documentos.md` — inventário dos documentos produzidos (pasta `painel/`).
+- `dados/valvic-conhecimento-drive.md` — **conhecimento absorvido do Google Drive** (estratégia,
+  holding, funil comercial, financeiro real, pessoas, produção, Academy, gargalo-raiz, história).
 - Skills vizinhas: `estrategia-financeira-precificacao` (Rodrigo), `orcamentista-marcenaria`
   (Lavinia), `closer-vendas`.
 

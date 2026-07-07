@@ -30,6 +30,9 @@
 | 4 | Colocar fotos reais das máquinas nos slots (`painel/img-maquinas/`) | *a definir* | *a definir* | ⚪ |
 | 5 | Rodar o ciclo de 90 dias da equipe (avaliação Deivson → Paulo) | Deivson | *a definir* | ⚪ |
 | 6 | Reparo do painel de TV (Maria e Valdenir · Vale dos Cristais) — agendar pintor + acesso à obra; definir quem cobre o custo (dano de terceiros) | *a definir* | *a definir* | 🟡 |
+| 7 | Obter **export (PDF/PNG) do fluxograma do Miro** — miro.com bloqueado pela rede; sem o export, o fluxo é inferido do Drive | Jonathan | *a definir* | 🔴 |
+| 8 | Escrever os **POPs prioritários** (Escopo de Venda, checklist de qualidade, montagem/entrega) — ver `referencias/mapa-fluxo-e-documentos.md` | *a definir* | *a definir* | ⚪ |
+| 9 | **Financeiro:** montar DRE + fluxo de caixa + contas a pagar + break-even (handoff ao Rodrigo) | Rodrigo | *a definir* | ⚪ |
 
 > *Substituir/expandir com o Jonathan na primeira sessão. Toda tarefa precisa de dono e data.*
 

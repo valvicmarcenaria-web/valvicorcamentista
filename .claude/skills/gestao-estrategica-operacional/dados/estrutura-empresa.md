@@ -6,6 +6,11 @@
   Estação Horto do metrô em frente).
 - **Posicionamento:** marcenaria de **alto padrão** (móveis planejados sob medida),
   em fase de **estruturação interna e crescimento**. Lema institucional: *"Construindo Legado"*.
+- **Holding familiar (3 unidades):** Valvic Marcenaria (core, ticket R$100–500k) · Valvic
+  Decorações (e-commerce, ex-Bellodori) · Valvic Mobília (autoral seriado, em concepção).
+- **Faturamento** médio ~R$ 200 mil/mês · **meta 2026 R$ 3 mi/ano (~R$ 288 mil/mês), lucro-alvo
+  R$ 600 mil** · **MC ideal 35–40%** · horizonte de longo prazo **R$ 1 mi/mês** (projeto Walton).
+  Histórico: 2023 R$645k · 2024 R$1,04 mi · 2025 R$1,50 mi. Detalhe em `dados/valvic-conhecimento-drive.md`.
 
 ## Sociedade & direção
 - **Jonathan** — sócio · Diretor **Comercial & Experiência** (vende, relacionamento, visão).
