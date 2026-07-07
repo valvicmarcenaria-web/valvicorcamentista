@@ -6,23 +6,70 @@
 > — o Miro dá a sequência exata e a ordem-fim das etapas/POPs.
 > Legenda: ✓ existe · ☐ criar · ⚑ prioridade alta.
 
-## O fluxo de trabalho, ponta a ponta
+## O fluxo de trabalho, ponta a ponta (CONFIRMADO pelo fluxograma do Miro)
 
-```
-COMERCIAL (funil 7 etapas · 2 canais: direto / via arquiteto)
-  1 Atração → 2 Qualificação (SDR, score) → 3 Briefing/Visita técnica →
-  4 Proposta (Gold/Prime) → 5 Follow-up → 6 Fechamento (contrato+garantia+Autentique) → 7 Pós-venda
-        │
-        └──►  ESCOPO DE VENDA  (handoff Jonathan → produção · GARGALO-RAIZ de informação)
-                    │
-PRODUÇÃO
-  1 Conferência técnica/medição (Paulo/Deivson) → 2 Conferência de programação/pré-CNC (Filipe) →
-  3 Compras / Lista de materiais → 4 Produção (CNC/router · coladeira · furação) →
-  5 Conferência de fabricação/qualidade (Deivson) → 6 Pré-montagem → 7 Montagem em obra →
-  8 Entrega + vistoria-aceite assinada → 9 Pós-venda / Garantia (10 anos)
+Cadeia de **5 macro-etapas** encadeadas por handoffs (o "Fim" de uma = o "Início" da próxima).
+Entre `[colchetes]` está o **artefato que o Miro anota em cada passo** — é daqui que sai o checklist.
 
-TRANSVERSAL (gestão): Precificação MC% · Financeiro · Pessoas/90 dias · Academy · Reunião semanal de sócios
-```
+**1 · COMERCIAL / VENDA** — *Jonathan / SDR / vendedor*
+Contato (WhatsApp/redes/parceiros) → Qualificação `[check list]` → «projeto aprovado?» —
+(não: Visita `[check list]` → Projeta → «validou?»/ajuste no esboço) · (sim: «visita prévia?» →
+Realizar visita `[relatório Calcme]`) → **Elaborar orçamento** `[POP + proposta]` → Agendamento de
+apresentação `[relatório Calcme]` → «orçamento aprovado?» — (não: «negociação possível?» → Negociar /
+Encerrar `[relatório Calcme]`) → **Contrato e Financeiro** `[cadastro completo Calcme + PDP]` →
+Inserção no quadro de entrega → **Etapa 1: Escopo de venda + projeto atualizado**.
+
+**2 · ENGENHARIA / PROJETO** — *Paulo, Deivson, programadores, Jonathan*
+Conferência técnica `[fotos+medição no Drive · check list / PDP]` → «tudo apto p/ produção?»
+(sim / parcial / não → **realinhamento de cronograma formalizado c/ cliente** `[documentação formal
+visual+textual]`) → Planejamento de produção `[plano de ações]` → Análise técnica (olhar de produção) →
+«validou?» / adequação (formaliza alteração c/ cliente) → Engenharia de produto → Programação (software) →
+conferência → «validou?» / correção → upload de arquivos no Drive → encaminha p/ Aquisição.
+
+**3 · AQUISIÇÃO DE COMPRAS** — *Paulo / ADM · Jonathan / ADM*
+Listagem de insumos `[lista]` → «insumos disponíveis?» — (não/parcial: lista de compra → Cotação →
+Demandar fornecedores → Validar pagamento c/ financeiro → Requisição → Faturamento `[lançar Calcme]`) ·
+(sim: separar no box do cliente → baixa no sistema) → aguarda recepção.
+
+**4 · RECEPÇÃO / CONFERÊNCIA / ARMAZENAGEM** — *Deivson / Joelson / ADM*
+Receber insumos `[Mapa de produção + Nota fiscal]` → «tudo correto?» — (não: acionar responsável `[POP]` →
+«resolvido?» → sinalizar pendência / notificar comprador+financeiro) → Separação → «pertence a projeto?» —
+(sim: alocação no projeto → baixa no pedido) · (não: almoxarifado → atualização de estoque no Calcme).
+
+**5 · PRODUÇÃO** — *Deivson · Paulo/Jonathan · Jomar · Samuel*
+Execução de fabricação `[Mapa de produção + POP]` → «cabível de pré-montagem?» → pré-montagem →
+Conferência `[check list]` → «validou?»/correções → **Execução POP de qualidade** `[check list]` →
+«validou?»/correções → Embalagem `[POP]` → Envio para entrega → Fim.
+
+> **Sistemas no fluxo:** o **Calcme** é o transacional recorrente (relatório de visita/agendamento/
+> encerramento, cadastro completo, faturamento, estoque) + **Drive** (fotos/medição, upload de arquivos).
+> O Miro **não** cita Canva/Autentique/SketchUp/Upmob — esses aparecem no relato do processo *atual*
+> (base histórica). O Miro é o **processo-alvo**, centrado em **Calcme + POPs + check lists + Mapa de produção**.
+> **Termos a confirmar:** **PDP** (aparece em Contrato/Financeiro e Conferência técnica — plano/pedido de
+> produção?); a fase de "Programação (software)" não nomeia o software; e há a caixa "Est.2" na conferência técnica.
+
+## Artefatos exigidos pelo próprio fluxo (Miro) × status
+Cada linha é um documento que o processo **explicitamente pede**. Onde já há um app na pasta `apps`, o
+que falta é o **POP escrito / template que o rege**.
+| Artefato (etapa) | Já existe? | O que falta criar |
+|---|---|---|
+| **Check list de Qualificação** (com score) | ✓ (comercial) | — (validar contra o Miro) |
+| **Check list de Visita** | parcial | Formulário de visita padrão |
+| **Proposta / Orçamento** | ✓ template Lavinia (custeio) | **Template de proposta (Gold/Prime)** + **POP de elaboração de orçamento** |
+| **Relatório no Calcme** (visita/agend./encerr.) | ✓ (campos no Calcme) | Padrão do que registrar em cada ponto |
+| **Escopo de venda + projeto atualizado** (Etapa 1) | ✓ app | ⚑ **POP do Escopo de Venda** (contrato de informação) |
+| **PDP** (contrato/financeiro e conf. técnica) | ? | Definir o que é e o **template do PDP** |
+| **Check list de Conferência técnica** (Est.2) | ✓ app | POP + check list impresso |
+| **Documentação de realinhamento de cronograma** | ✓ modelo (doc de ocorrência já feito serve de base) | Template de comunicação formal c/ cliente |
+| **Plano de ações / Planejamento de produção** | ? | Template do plano de produção |
+| **Mapa de produção** (recepção→envio) | ? (central no fluxo) | ⚑ **Template do Mapa de Produção** (documento que atravessa 4 etapas) |
+| **POP de recepção / acionar responsável** | ☐ | ⚑ POP de recebimento + tratativa de não conformidade |
+| **POP de execução de fabricação** | ☐ | ⚑ POP de fabricação |
+| **Check list de Conferência (produção)** | ✓ app conferência fabricação | check list impresso + POP |
+| **POP de Qualidade** ("Execução POP de qualidade") | ☐ | ⚑ POP + check list de qualidade |
+| **POP de Embalagem** | ☐ | POP de embalagem |
+| **Check list / relatório de Envio-Entrega** | ☐ | Relatório de entrega + vistoria-aceite |
+| **Listas** (insumos / compra / pendências) | parcial | Templates de lista |
 
 ## Registro de documentos — o que JÁ EXISTE (✓)
 **Comercial:** Funil de Vendas 2026 · Checklists de qualificação (Lead Direto / Via Arquiteto, com score) ·
@@ -96,5 +143,7 @@ Matriz de Crescimento · academia de vendas · validação de orçamento · cust
    revisar na cadência mensal.
 
 ## Pendências deste mapa
-- ⚑ **Fluxograma do Miro** — obter o export (PDF/PNG) para confirmar a **sequência exata** e a ordem de
-  prioridade dos POPs contra o processo real desenhado. Sem ele, a ordem acima é a melhor inferência do Drive.
+- ✓ **Fluxograma do Miro** — obtido via 3 screenshots no Drive e transcrito; fluxo acima já é o do Miro.
+- ⚑ **Confirmar com o Jonathan:** o que é **PDP**; o software da etapa "Programação"; e o que é o **Mapa de
+  Produção** hoje (documento? planilha? app?) — é o artefato mais central do fluxo (atravessa 4 etapas).
+- Próximo: escrever os POPs na **ordem do fluxo**, começando pelo **Escopo de Venda** (Etapa 1, o gargalo).
