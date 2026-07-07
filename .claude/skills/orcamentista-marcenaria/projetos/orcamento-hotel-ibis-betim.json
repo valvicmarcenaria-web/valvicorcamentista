@@ -3,14 +3,14 @@
  "arquiteta": "Marina Dolabella Dubal (DAD)",
  "projeto": "Reforma Hall/Lobby — escopo marcenaria Valvic",
  "obra": "Betim/MG (comercial)",
- "versao": "004-MC33-split",
+ "versao": "005-quantitativo-revisado",
  "local": "execução Betim/MG",
  "escopo_valvic": {
   "nichos": {
-   "qtd": 12,
+   "qtd": 11,
    "material": "MDF Duratex Carvalho Hanover",
    "meia_esquadria": true,
-   "prof_cm": "20/30"
+   "prof_cm": "20"
   },
   "molduras_sinalizacao": {
    "placas": 3,
@@ -31,31 +31,29 @@
   "2 unidades marcenaria EXISTENTE"
  ],
  "chapas": {
-  "carvalho_hanover": 5,
-  "acetinatta": 2
+  "carvalho_hanover": 4,
+  "acetinatta": 3,
+  "fundo6_branco": 1
  },
  "custos": {
-  "chapas": 5100,
-  "fita": 1800,
-  "meia_esquadria_labor": 1500,
-  "ferragens": 610,
-  "consumiveis": 600,
-  "material": 9610,
-  "visitas": 250,
-  "terceirizados": 0
+  "nichos_molduras": 2650,
+  "balcao": 5394,
+  "material": 8044,
+  "visitas": 250
  },
  "fechamento": {
   "fixedR": 9860,
   "mcAlvo": 33,
   "rt": 10,
-  "inv": 27000,
+  "inv": 23000,
   "mc_real": 40.0,
   "rt_arquiteta": 2376,
   "garantia": "10 anos",
   "split": {
-   "nichos_molduras": 14400,
-   "balcao": 12600
-  }
+   "nichos_molduras": 7500,
+   "balcao": 15500
+  },
+  "mc_note": "material revisado: fita e meia-esquadria corrigidos; balcão = 3 chapas Acetinatta (premium)"
  },
  "notas_arquiteta": [
   "ferragens FGV ou Häfele c/ amortecedor",
