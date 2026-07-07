@@ -3,7 +3,7 @@
  "arquiteta": "Marina Dolabella Dubal (DAD)",
  "projeto": "Reforma Hall/Lobby — escopo marcenaria Valvic",
  "obra": "Betim/MG (comercial)",
- "versao": "006-sem-cartao-5050-MC31",
+ "versao": "007-balcao-interior-branco",
  "local": "execução Betim/MG",
  "escopo_valvic": {
   "nichos": {
@@ -20,7 +20,8 @@
    "caixaria": "Acetinatta Preto",
    "portas_giro": "Acetinatta Graffite",
    "puxador": "cava",
-   "obs": "NOVO (não reaproveitar) — material PREMIUM Acetinatta; deixar explícito na proposta"
+   "obs": "NOVO (não reaproveitar) — material PREMIUM Acetinatta; deixar explícito na proposta",
+   "interior": "MDF branco (faces aparentes e portas em Acetinatta) — DESVIO da spec (arquiteta pediu caixaria Acetinatta Preto): registrar na proposta"
   }
  },
  "fora_escopo": [
@@ -32,26 +33,27 @@
  ],
  "chapas": {
   "carvalho_hanover": 4,
-  "acetinatta": 3,
+  "acetinatta": 2,
+  "branco15_balcao": 2,
   "fundo6_branco": 1
  },
  "custos": {
   "nichos_molduras": 2650,
-  "balcao": 5394,
-  "material": 8044,
+  "balcao": 4614,
+  "material": 7264,
   "visitas": 250
  },
  "fechamento": {
   "fixedR": 9860,
   "mcAlvo": 31,
   "rt": 10,
-  "inv": 18500,
+  "inv": 16500,
   "mc_real": 40.0,
-  "rt_arquiteta": 1776,
+  "rt_arquiteta": 1584,
   "garantia": "10 anos",
   "split": {
    "nichos_molduras": 6000,
-   "balcao": 12500
+   "balcao": 10500
   },
   "mc_note": "material revisado: fita e meia-esquadria corrigidos; balcão = 3 chapas Acetinatta (premium)"
  },
