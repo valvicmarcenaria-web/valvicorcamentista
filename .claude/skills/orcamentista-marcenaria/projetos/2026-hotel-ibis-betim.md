@@ -2,7 +2,8 @@
 
 **Cliente:** Hotel Ibis Betim (Accor) · **Arquiteta:** Marina Dolabella Dubal — DAD (Dubal Arq. & Design)
 **Obra:** Betim/MG · **Projeto:** executivo "análise e orçamento" (R00, 12/06/2026) · comercial
-**Fechamento (v005 — quantitativo revisado):** MC **33%** · **RT 10% (DAD)** · **R$ 23.000** — Nichos+molduras **R$ 7.500** · Balcão novo **R$ 15.500** · Hettich → **garantia 10 anos** · Acetinatta premium
+**Fechamento (v006):** MC **31%** · **RT 10% (DAD)** · **sem parcelamento no cartão** (parc 0) · **R$ 18.500** — Nichos+molduras **R$ 6.000** · Balcão **R$ 12.500** · Hettich → 10 anos · Acetinatta premium
+**Pagamento:** **50% entrada + 50% na entrega** (transferência) — sem cartão. Eliminar o parcelamento tirou o custo de 8% do modelo → grande parte da queda R$ 23.000 → R$ 18.500 (o resto veio da MC 33%→31%).
 **Revisão de material:** nichos prof. **20 cm** · corrigidos **fita** (era R$ 1.800 → ~R$ 700) e removida a linha avulsa de **meia-esquadria** (R$ 1.500 — já na operação/MC). Balcão reavaliado: **~4,4 m, ~7 portas → 3 chapas Acetinatta** (premium, era 2). Material R$ 9.610 → **R$ 8.044**. Balcão passa a ser o item mais caro (Acetinatta premium + Hettich).
 **Fonte:** pasta Drive "hotel_ibis" (EXp.5 planta detalhamento · EXp.6/7 elevações · MD apresentação).
 

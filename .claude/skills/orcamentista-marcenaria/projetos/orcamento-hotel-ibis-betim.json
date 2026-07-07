@@ -3,7 +3,7 @@
  "arquiteta": "Marina Dolabella Dubal (DAD)",
  "projeto": "Reforma Hall/Lobby — escopo marcenaria Valvic",
  "obra": "Betim/MG (comercial)",
- "versao": "005-quantitativo-revisado",
+ "versao": "006-sem-cartao-5050-MC31",
  "local": "execução Betim/MG",
  "escopo_valvic": {
   "nichos": {
@@ -43,15 +43,15 @@
  },
  "fechamento": {
   "fixedR": 9860,
-  "mcAlvo": 33,
+  "mcAlvo": 31,
   "rt": 10,
-  "inv": 23000,
+  "inv": 18500,
   "mc_real": 40.0,
-  "rt_arquiteta": 2376,
+  "rt_arquiteta": 1776,
   "garantia": "10 anos",
   "split": {
-   "nichos_molduras": 7500,
-   "balcao": 15500
+   "nichos_molduras": 6000,
+   "balcao": 12500
   },
   "mc_note": "material revisado: fita e meia-esquadria corrigidos; balcão = 3 chapas Acetinatta (premium)"
  },
@@ -70,6 +70,8 @@
   "conferir medidas no local; validar amostras"
  ],
  "p_rt": 10,
- "mcAlvo": 33,
- "ferragem": "Hettich Sensys (dobradiças) -> garantia 10 anos"
+ "mcAlvo": 31,
+ "ferragem": "Hettich Sensys (dobradiças) -> garantia 10 anos",
+ "p_parc": 0,
+ "pagamento": "50% entrada + 50% na entrega (sem parcelamento no cartão)"
 }
