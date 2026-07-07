@@ -8,7 +8,8 @@ está, cria os novos no padrão da casa, e mantém o ecossistema organizado.
   (HTML + PDF gerado). É a "gráfica" da Valvic. Inventário em `dados/mapa-documentos.md`.
 - **Projetos de cliente, contratos, orçamentos** → Google Drive, **uma pasta por cliente**
   (padrão: criar a pasta em até 24h após o fechamento — responsabilidade da Assistente
-  Operacional). ERP **Calme** guarda o cadastro e os marcos do projeto.
+  Operacional). ERP **Calcme** guarda o cadastro e os marcos do projeto (ver
+  `referencias/sistema-calcme.md`).
 - **Escopos e gestão de equipe** → apostila (`painel/apostila-escopos-funcao.html`).
 - **Skills (conhecimento da empresa)** → `.claude/skills/` (Rodrigo, Lavinia, Closer, Helena).
 

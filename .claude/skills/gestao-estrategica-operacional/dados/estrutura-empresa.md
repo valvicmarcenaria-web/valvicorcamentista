@@ -42,8 +42,10 @@
 - **Prestação de serviços** (B2B) como segundo motor de receita que de-risca o CAPEX.
 
 ## Ferramentas & sistemas
-- **Google Drive** (documentos, pastas de cliente) · **ERP Calme** (cadastro, marcos,
-  conciliação) · **SketchUp + Upmob** (projeto/modelagem) · **WhatsApp** (leads inbound).
+- **Google Drive** (documentos, pastas de cliente) · **ERP Calcme** — calcme.com.br, às
+  vezes chamado "Calme" internamente (orçamento→pedido, PCP/produção, estoque, financeiro,
+  boletos, NF, relatórios) · **SketchUp + Upmob** (projeto/modelagem) · **WhatsApp** (leads
+  inbound). A Helena opera Calcme, planilhas, relatórios e Drive (ver `referencias/`).
 
 ## Skills-irmãs (o ecossistema de agentes Valvic)
 - **Rodrigo** — finanças & precificação estratégica (`estrategia-financeira-precificacao`).
