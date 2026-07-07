@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Registro de Ocorrência & Custos de Reparo — Maria e Valdenir</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  :root{ --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f; --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd; --green:#2f7d4f; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:10.5px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+  .num{ font-variant-numeric:tabular-nums; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:18px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; }
+  .ph{ background:var(--navy); color:#fff; padding:13mm 17mm 10mm; position:relative; }
+  .ph::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:2.5px; background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 42%,transparent 100%); }
+  .ph .top{ display:flex; align-items:center; gap:13px; margin-bottom:14px; }
+  .ph .mono{ width:44px; height:44px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:22px; color:var(--gold); }
+  .ph .co{ font-size:12.5px; font-weight:700; letter-spacing:2.6px; text-transform:uppercase; }
+  .ph .sub{ font-size:8px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
+  .ph .kx{ font-size:8.5px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:31px; font-weight:600; margin-top:4px; line-height:1.05; }
+  .ph .desc{ font-size:9.5px; color:rgba(255,255,255,.62); margin-top:8px; max-width:520px; line-height:1.55; }
+  .body{ flex:1; padding:9mm 17mm 0; display:flex; flex-direction:column; }
+  .idbar{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:1px solid var(--line); border-radius:9px; overflow:hidden; margin-bottom:15px; }
+  .idbar .c{ padding:9px 13px; border-right:1px solid var(--line); }
+  .idbar .c:last-child{ border-right:none; }
+  .idbar .l{ font-size:7.4px; letter-spacing:1.1px; text-transform:uppercase; color:var(--muted); }
+  .idbar .v{ font-size:11px; font-weight:700; color:var(--navy); margin-top:2px; line-height:1.25; }
+  .sec{ display:flex; align-items:center; gap:10px; margin:0 0 8px; }
+  .sec .bar{ width:16px; height:2px; background:var(--gold); }
+  .sec .tx{ font-size:9px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:var(--navy); }
+  p.tx{ font-size:10.5px; line-height:1.7; color:#33404d; margin-bottom:14px; }
+  p.tx b{ color:var(--navy); }
+  ul.esc{ list-style:none; margin-bottom:15px; }
+  ul.esc li{ font-size:10.5px; line-height:1.5; padding:5px 0 5px 22px; position:relative; color:#33404d; border-bottom:1px dotted var(--line2); }
+  ul.esc li:last-child{ border-bottom:none; }
+  ul.esc li::before{ content:""; position:absolute; left:4px; top:11px; width:7px; height:7px; border-radius:50%; background:var(--gold); }
+  ul.esc li b{ color:var(--navy); }
+  table{ width:100%; border-collapse:collapse; }
+  thead th{ background:var(--navy2); color:#fff; font-size:7.6px; font-weight:600; letter-spacing:.6px; text-transform:uppercase; padding:7px 12px; text-align:left; }
+  th.r,td.r{ text-align:right; }
+  tbody td{ padding:8px 12px; border-bottom:1px solid var(--line); vertical-align:top; font-size:10.5px; }
+  tbody tr:nth-child(even) td{ background:#f4f1ea; }
+  td .nm{ font-weight:700; color:var(--ink); } td .ds{ color:var(--muted); font-size:8.5px; display:block; margin-top:1px; }
+  td.r .num{ font-weight:700; color:var(--navy); }
+  .cort{ color:var(--green); font-weight:800; font-size:9.5px; letter-spacing:.4px; text-transform:uppercase; }
+  tr.tot td{ background:var(--navy) !important; color:#fff; font-weight:700; padding:10px 12px; border:none; font-size:12px; white-space:nowrap; }
+  tr.tot td .gv{ color:var(--gold-soft); font-size:16px; white-space:nowrap; }
+  .note{ background:#fffaf0; border:1px solid #eed9a8; border-radius:8px; padding:10px 14px; margin-top:15px; }
+  .note .nh{ font-size:7.8px; letter-spacing:1.4px; text-transform:uppercase; color:var(--gold-dk); font-weight:700; margin-bottom:5px; }
+  .note ul{ list-style:none; } .note li{ font-size:9.4px; line-height:1.55; color:#5a4a2c; padding-left:12px; position:relative; margin-bottom:2px; }
+  .note li::before{ content:"—"; position:absolute; left:0; color:var(--gold-dk); }
+  .note li b{ color:var(--navy); }
+  .sign{ margin-top:auto; padding-top:16px; display:flex; justify-content:space-between; align-items:flex-end; }
+  .sign .l{ font-size:9px; color:var(--muted); } .sign .l b{ color:var(--navy); font-size:11px; display:block; font-family:'Cormorant Garamond',serif; font-weight:700; }
+  .sign .r{ text-align:right; } .sign .r .line{ width:190px; border-top:1px solid var(--navy2); margin-bottom:4px; } .sign .r .cap{ font-size:8px; color:var(--muted); letter-spacing:.5px; }
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:6px 17mm; display:flex; justify-content:space-between; align-items:center; }
+  .pf .pl{ font-size:7px; color:var(--muted); } .pf .pr{ font-size:8px; color:var(--navy); font-weight:700; letter-spacing:1px; } .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<section class="sheet">
+  <div class="ph">
+    <div class="top">
+      <div class="mono">V</div>
+      <div><div class="co">Valvic Marcenaria</div><div class="sub">Vargas Decor Ltda &nbsp;·&nbsp; CNPJ 17.269.304/0001-51 &nbsp;·&nbsp; Belo Horizonte / MG</div></div>
+    </div>
+    <div class="kx">Registro de Ocorrência</div>
+    <div class="tt">Ocorrência em Obra & Custos de Reparo</div>
+    <div class="desc">Documento formal que registra o dano ocorrido ao painel de TV laqueado na obra dos clientes Maria e Valdenir e apresenta o escopo e os custos da correção in loco.</div>
+  </div>
+
+  <div class="body">
+    <div class="idbar">
+      <div class="c"><div class="l">Clientes</div><div class="v">Maria e Valdenir</div></div>
+      <div class="c"><div class="l">Obra / Local</div><div class="v">Vale dos Cristais · Nova Lima/MG</div></div>
+      <div class="c"><div class="l">Item afetado</div><div class="v">Painel de TV laqueado</div></div>
+      <div class="c"><div class="l">Data do registro</div><div class="v">07 / 07 / 2026</div></div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Contexto da ocorrência</span></div>
+    <p class="tx">Durante o andamento da obra dos clientes <b>Maria e Valdenir</b>, no <b>Vale dos Cristais</b>, o <b>painel de TV laqueado</b> — item fornecido e instalado pela Valvic Marcenaria — foi <b>danificado por outra equipe envolvida na obra</b>, alheia à marcenaria. Zelando pela integridade da entrega e pela experiência dos clientes, a Valvic organizou a solução do reparo, a ser executado <b>in loco</b> por profissional de pintura especializado, com acompanhamento técnico de um marceneiro da casa. Este documento formaliza o ocorrido e apresenta os custos envolvidos na correção.</p>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Escopo do reparo</span></div>
+    <ul class="esc">
+      <li><b>Deslocamento</b> do profissional de pintura e de seu equipamento até a obra, no Vale dos Cristais.</li>
+      <li><b>Correção in loco</b> do laqueado do painel de TV, restabelecendo o acabamento no padrão original Valvic.</li>
+      <li><b>Acompanhamento técnico</b> de um marceneiro da Valvic durante toda a execução do reparo.</li>
+    </ul>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Custos do reparo</span></div>
+    <table>
+      <thead><tr><th>Item</th><th>Descrição</th><th class="r" style="width:112px">Valor</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Logística</span></td><td><span class="ds">Deslocamento do profissional e do equipamento até a obra</span></td><td class="r"><span class="num">R$ 250,00</span></td></tr>
+        <tr><td><span class="nm">Profissional de pintura</span></td><td><span class="ds">Diária do profissional especializado · correção in loco</span></td><td class="r"><span class="num">R$ 350,00</span></td></tr>
+        <tr><td><span class="nm">Material</span></td><td><span class="ds">Insumos de laqueação e acabamento</span></td><td class="r"><span class="num">R$ 150,00</span></td></tr>
+        <tr><td><span class="nm">Marceneiro acompanhante</span></td><td><span class="ds">Acompanhamento técnico da Valvic durante o reparo</span></td><td class="r"><span class="cort">Cortesia</span></td></tr>
+        <tr class="tot"><td colspan="2">TOTAL DO REPARO</td><td class="r"><span class="gv num">R$ 750,00</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="note">
+      <div class="nh">Observações</div>
+      <ul>
+        <li>O <b>acompanhamento do marceneiro da Valvic</b> é oferecido como <b>cortesia da marcenaria</b>, sem custo.</li>
+        <li>Os valores acima referem-se <b>exclusivamente ao reparo</b> do dano causado por terceiros na obra.</li>
+        <li>Execução mediante <b>agendamento</b> com o profissional de pintura e alinhamento de acesso à obra.</li>
+      </ul>
+    </div>
+
+    <div class="sign">
+      <div class="l">Documento emitido por<br><b>Valvic Marcenaria — Vargas Decor Ltda</b>Belo Horizonte / MG · 07 de julho de 2026</div>
+      <div class="r"><div class="line"></div><div class="cap">Ciência / De acordo</div></div>
+    </div>
+  </div>
+
+  <div class="pf"><div class="pl">Documento formal · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">OCORRÊNCIA · REPARO <span>·</span> MARIA E VALDENIR</div></div>
+</section>
+
+</body>
+</html>

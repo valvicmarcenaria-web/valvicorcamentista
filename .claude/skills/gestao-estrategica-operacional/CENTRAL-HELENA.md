@@ -29,6 +29,7 @@
 | 3 | Fechar a contratação da Assistente Operacional (Karla) | Jonathan | *a definir* | 🟡 |
 | 4 | Colocar fotos reais das máquinas nos slots (`painel/img-maquinas/`) | *a definir* | *a definir* | ⚪ |
 | 5 | Rodar o ciclo de 90 dias da equipe (avaliação Deivson → Paulo) | Deivson | *a definir* | ⚪ |
+| 6 | Reparo do painel de TV (Maria e Valdenir · Vale dos Cristais) — agendar pintor + acesso à obra; definir quem cobre o custo (dano de terceiros) | *a definir* | *a definir* | 🟡 |
 
 > *Substituir/expandir com o Jonathan na primeira sessão. Toda tarefa precisa de dono e data.*
 
@@ -65,6 +66,7 @@
 - **Apostila de escopos de função:** `painel/Valvic_Apostila_Escopos_Funcao.pdf` (10 pág.)
 - **Relatório patrimonial:** `painel/Valvic_Relatorio_Patrimonial_2026.pdf`
 - **Contas a receber/pagar (jul–out):** `painel/Valvic_Contas_Receber_Pagar_2026.pdf`
+- **Ocorrência & reparo (Maria e Valdenir):** `painel/Valvic_Ocorrencia_Reparo_Maria_Valdenir.pdf` — total do reparo R$ 750 (marceneiro cortesia)
 - **Estrutura de custos / financeira / parcelamentos:** ver `dados/mapa-documentos.md`.
 
 ---
