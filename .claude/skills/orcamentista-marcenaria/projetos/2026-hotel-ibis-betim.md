@@ -2,7 +2,7 @@
 
 **Cliente:** Hotel Ibis Betim (Accor) · **Arquiteta:** Marina Dolabella Dubal — DAD (Dubal Arq. & Design)
 **Obra:** Betim/MG · **Projeto:** executivo "análise e orçamento" (R00, 12/06/2026) · comercial
-**Fechamento (v002):** MC **40%** · **RT 10% (DAD)** · **R$ 33.000** · buffet **NOVO** (Acetinatta premium) · unidade: chapas
+**Fechamento (v003):** MC **40%** · **RT 10% (DAD)** · **R$ 33.500** · ferragem **Hettich → garantia 10 anos** · buffet **NOVO** (Acetinatta premium)
 **Fonte:** pasta Drive "hotel_ibis" (EXp.5 planta detalhamento · EXp.6/7 elevações · MD apresentação).
 
 ## Escopo VALVIC (só a marcenaria MDF)
