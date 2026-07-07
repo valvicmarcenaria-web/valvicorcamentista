@@ -1,0 +1,66 @@
+{
+ "cliente": "Hotel Ibis Betim",
+ "arquiteta": "Marina Dolabella Dubal (DAD)",
+ "projeto": "Reforma Hall/Lobby — escopo marcenaria Valvic",
+ "obra": "Betim/MG (comercial)",
+ "versao": "001-1apassada",
+ "local": "execução Betim/MG",
+ "escopo_valvic": {
+  "nichos": {
+   "qtd": 12,
+   "material": "MDF Duratex Carvalho Hanover",
+   "meia_esquadria": true,
+   "prof_cm": "20/30"
+  },
+  "molduras_sinalizacao": {
+   "placas": 3,
+   "material": "Carvalho Hanover"
+  },
+  "buffet": {
+   "caixaria": "Acetinatta Preto",
+   "portas_giro": "Acetinatta Graffite",
+   "puxador": "cava",
+   "obs": "verificar aproveitar movel existente"
+  }
+ },
+ "fora_escopo": [
+  "serralheria (pilares, chapa perfurada, cestos)",
+  "estofados (bancos)",
+  "placas adesivo",
+  "portas/paineis vidro",
+  "2 unidades marcenaria EXISTENTE"
+ ],
+ "chapas": {
+  "carvalho_hanover": 5,
+  "acetinatta": 2
+ },
+ "custos": {
+  "chapas": 5100,
+  "fita": 1800,
+  "meia_esquadria_labor": 1500,
+  "ferragens": 460,
+  "consumiveis": 600,
+  "material": 9460,
+  "visitas": 250,
+  "terceirizados": 0
+ },
+ "fechamento": {
+  "fixedR": 9710,
+  "mc_sugerida": 42,
+  "inv_42pct": 27000
+ },
+ "notas_arquiteta": [
+  "ferragens FGV ou Häfele c/ amortecedor",
+  "todas bordas fitadas (mesmo ocultas)",
+  "marcenaria modular sem içamento",
+  "conferir medidas no local",
+  "validar amostras"
+ ],
+ "flags": [
+  "contagem de nichos ~12 (confirmar na elevação)",
+  "buffet: NOVO ou reface do existente? (muda Acetinatta)",
+  "MC alvo a definir (usei 42% comercial)",
+  "meia-esquadria = CX alto, mão de obra premium",
+  "RT 0 (arquiteta sem RT definido)"
+ ]
+}
