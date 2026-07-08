@@ -29,6 +29,7 @@ quando criar/revisar documentos.
 | Documento | O que é / para quem | Arquivos |
 |---|---|---|
 | **Apostila de escopos de função** | Escopo + avaliação de cada colaborador · **sem dados financeiros** · consulta de Jonathan/Paulo/Deivson · 10 pág. | `apostila-escopos-funcao.html` · `Valvic_Apostila_Escopos_Funcao.pdf` |
+| **Escopo — Ajudante de Marcenaria (entrada)** | Documento de admissão do 1º degrau da trilha: empresa + papel + escopo denso (fábrica e obra) + avaliação 90d + remuneração (sal. mínimo + VR 300 + VT 400) + contrato de experiência 3m → CLT + plano de carreira · 6 pág. | `escopo-ajudante-marcenaria.html` · `Valvic_Escopo_Ajudante_Marcenaria.pdf` |
 | **Layout do galpão (Fase 1)** | Layout do galpão atual | `layout-fase1-galpao-atual.html` · `Valvic_Layout_Fase1_Galpao_Atual.pdf` · `layout_galpao_1000m2.png` |
 | **Advertência (RH)** | Documento disciplinar (exemplo Jomar/Projeto Yasmin) | `advertencia-jomar.html` · `Advertencia_Jomar_Projeto_Yasmin.pdf` |
 | **Ocorrência & reparo — Maria e Valdenir** | Registro formal de dano ao painel de TV laqueado (Vale dos Cristais, dano de terceiros) + custos do reparo in loco (total R$ 750, marceneiro cortesia) | `ocorrencia-reparo-maria-valdenir.html` · `Valvic_Ocorrencia_Reparo_Maria_Valdenir.pdf` |

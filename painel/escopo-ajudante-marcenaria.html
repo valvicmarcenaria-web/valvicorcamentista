@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Escopo de Função — Ajudante de Marcenaria (Nível de Entrada) · Valvic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  :root{ --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f; --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd; --green:#2f7d4f; --red:#b0413f; --blue:#2f5d8c; --amber:#c47d0e; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:10px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+  .num{ font-variant-numeric:tabular-nums; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:18px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; }
+  .ph{ background:var(--navy); color:#fff; padding:12mm 16mm 9mm; position:relative; }
+  .ph::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:2.5px; background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 42%,transparent 100%); }
+  .ph .top{ display:flex; align-items:center; gap:12px; margin-bottom:11px; }
+  .ph .mono{ width:40px; height:40px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:20px; color:var(--gold); }
+  .ph .co{ font-size:11.5px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; }
+  .ph .sub{ font-size:8px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
+  .ph .kx{ font-size:8px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; margin-top:3px; line-height:1.05; }
+  .ph .desc{ font-size:9px; color:rgba(255,255,255,.62); margin-top:7px; max-width:520px; line-height:1.5; }
+  .body{ flex:1; padding:8mm 16mm 0; display:flex; flex-direction:column; min-height:0; }
+  .sec{ display:flex; align-items:center; gap:10px; margin:0 0 8px; }
+  .sec:not(:first-child){ margin-top:13px; }
+  .sec .bar{ width:16px; height:2px; background:var(--gold); }
+  .sec .tx{ font-size:8.6px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:var(--navy); }
+  p.tx{ font-size:10px; line-height:1.62; color:#33404d; margin-bottom:9px; } p.tx b{ color:var(--navy); }
+  .meta{ display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--line); border-radius:9px; overflow:hidden; margin-bottom:13px; }
+  .meta .m{ padding:8px 12px; border-right:1px solid var(--line); } .meta .m:last-child{ border-right:none; }
+  .meta .ml{ font-size:7.2px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); } .meta .mv{ font-size:10px; font-weight:700; color:var(--navy); margin-top:2px; line-height:1.25; }
+  .prop{ background:#fff; border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:0 8px 8px 0; padding:11px 15px; margin-bottom:12px; }
+  .prop .pt{ font-size:8px; letter-spacing:1.4px; text-transform:uppercase; color:var(--gold-dk); font-weight:700; margin-bottom:5px; }
+  .prop p{ font-size:10px; line-height:1.6; color:#33404d; } .prop p b{ color:var(--navy); }
+  /* grade de blocos de escopo */
+  .blocos{ display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+  .bloco{ background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden; break-inside:avoid; }
+  .bloco .bh{ display:flex; align-items:center; gap:7px; padding:6px 11px; background:#f4f1ea; border-bottom:1px solid var(--line); }
+  .bloco .bh .ic{ font-size:12px; } .bloco .bh .bt{ font-size:9px; font-weight:800; letter-spacing:.3px; color:var(--navy); text-transform:uppercase; }
+  .bloco ul{ list-style:none; padding:8px 11px 9px; }
+  .bloco li{ font-size:8.9px; line-height:1.4; padding:0 0 4px 12px; position:relative; color:#3a4650; }
+  .bloco li:last-child{ padding-bottom:0; }
+  .bloco li::before{ content:""; position:absolute; left:2px; top:6px; width:4px; height:4px; border-radius:50%; background:var(--gold); }
+  .bloco li b{ color:var(--navy); }
+  .bloco.wide{ grid-column:1 / -1; } .bloco.wide ul{ columns:2; column-gap:22px; }
+  .bloco.safe .bh{ background:#faedec; } .bloco.safe .bh .bt{ color:var(--red); } .bloco.safe li::before{ background:var(--red); }
+  table{ width:100%; border-collapse:collapse; }
+  thead th{ background:var(--navy2); color:#fff; font-size:7.4px; font-weight:600; letter-spacing:.6px; text-transform:uppercase; padding:6px 11px; text-align:left; }
+  th.r,td.r{ text-align:right; }
+  tbody td{ padding:6.5px 11px; border-bottom:1px solid var(--line); vertical-align:top; font-size:9.4px; }
+  tbody tr:nth-child(even) td{ background:#f4f1ea; }
+  td .nm{ font-weight:700; color:var(--ink); } td .ds{ color:var(--muted); font-size:8px; display:block; margin-top:1px; }
+  td.r .num{ font-weight:700; color:var(--navy); }
+  tr.tot td{ background:var(--navy) !important; color:#fff; font-weight:700; padding:8px 11px; border:none; font-size:10px; } tr.tot td .gv{ color:var(--gold-soft); }
+  .note{ background:#fffaf0; border:1px solid #eed9a8; border-radius:8px; padding:9px 13px; margin-top:11px; }
+  .note .nh{ font-size:7.6px; letter-spacing:1.4px; text-transform:uppercase; color:var(--gold-dk); font-weight:700; margin-bottom:4px; }
+  .note p{ font-size:9px; line-height:1.55; color:#5a4a2c; } .note p b{ color:var(--navy); }
+  .note.navy{ background:var(--navy); border:none; } .note.navy .nh{ color:var(--gold); } .note.navy p{ color:rgba(255,255,255,.9); } .note.navy p b{ color:#fff; }
+  .two{ display:grid; grid-template-columns:1fr 1fr; gap:11px; }
+  .cardbox{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:11px 13px; }
+  .cardbox .cbh{ font-size:8px; letter-spacing:1.2px; text-transform:uppercase; color:var(--gold-dk); font-weight:700; margin-bottom:6px; padding-bottom:5px; border-bottom:1px solid var(--line); }
+  .cardbox p{ font-size:9px; line-height:1.55; color:#33404d; } .cardbox p b{ color:var(--navy); }
+  /* escada de carreira */
+  .ladder{ display:flex; flex-direction:column; gap:0; }
+  .rung{ display:flex; align-items:center; gap:12px; padding:9px 0; border-bottom:1px dashed var(--line2); }
+  .rung .lvl{ width:26px; height:26px; flex-shrink:0; border-radius:50%; background:#f4f1ea; color:var(--muted); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:11px; border:1px solid var(--line); }
+  .rung .body2{ flex:1; } .rung .rc{ font-size:11px; font-weight:700; color:var(--navy); } .rung .rd{ font-size:8.6px; color:var(--muted); margin-top:1px; }
+  .rung.here{ background:#f6edd6; border-radius:8px; padding-left:10px; padding-right:10px; border-bottom:none; }
+  .rung.here .lvl{ background:var(--gold); color:#fff; border-color:var(--gold-dk); } .rung.here .rc{ color:var(--gold-dk); }
+  .rung.here .tag{ margin-left:auto; font-size:8px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:var(--gold-dk); background:#fff; border:1px solid var(--gold-soft); border-radius:10px; padding:2px 9px; }
+  .signrow{ margin-top:auto; padding-top:14px; display:flex; justify-content:space-between; align-items:flex-end; }
+  .signrow .col{ width:46%; } .signrow .line{ border-top:1px solid var(--navy2); margin-bottom:4px; } .signrow .cap{ font-size:8px; color:var(--muted); letter-spacing:.4px; }
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:6px 16mm; display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf .pl{ font-size:7px; color:var(--muted); } .pf .pr{ font-size:8px; color:var(--navy); font-weight:700; letter-spacing:1px; } .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  /* capa */
+  .cover{ background:var(--navy); color:#fff; padding:0; }
+  .cover .cv-top{ padding:20mm 18mm 0; display:flex; justify-content:space-between; align-items:flex-start; }
+  .cover .cv-mono{ width:56px; height:56px; border:2px solid var(--gold); border-radius:5px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:30px; color:var(--gold); }
+  .cover .cv-co{ text-align:right; } .cover .cv-co .n{ font-size:13px; font-weight:700; letter-spacing:3px; text-transform:uppercase; } .cover .cv-co .s{ font-size:8px; color:rgba(255,255,255,.5); letter-spacing:.6px; margin-top:3px; }
+  .cover .cv-mid{ padding:24mm 18mm 0; flex:1; }
+  .cover .cv-kx{ font-size:10px; letter-spacing:7px; text-transform:uppercase; color:var(--gold); margin-bottom:12px; }
+  .cover .cv-title{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:52px; line-height:1.02; } .cover .cv-title span{ color:var(--gold-soft); }
+  .cover .cv-sub{ font-size:12px; color:rgba(255,255,255,.7); margin-top:10px; letter-spacing:.5px; }
+  .cover .cv-lead{ font-size:10.5px; color:rgba(255,255,255,.6); margin-top:20px; max-width:430px; line-height:1.7; }
+  .cover .cv-foot{ padding:14px 18mm 18mm; display:flex; justify-content:space-between; align-items:flex-end; border-top:1px solid rgba(255,255,255,.12); }
+  .cover .cv-foot .fl{ font-size:8px; color:rgba(255,255,255,.5); } .cover .cv-foot .fr{ font-size:8px; color:var(--gold); letter-spacing:2px; text-transform:uppercase; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<!-- ============ CAPA ============ -->
+<section class="sheet cover" style="display:flex;flex-direction:column">
+  <div class="cv-top">
+    <div class="cv-mono">V</div>
+    <div class="cv-co"><div class="n">Valvic Marcenaria</div><div class="s">Vargas Decor Ltda · CNPJ 17.269.304/0001-51 · Belo Horizonte / MG</div></div>
+  </div>
+  <div class="cv-mid">
+    <div class="cv-kx">Escopo de Função</div>
+    <h1 class="cv-title">Ajudante de<br><span>Marcenaria</span></h1>
+    <div class="cv-sub">Nível de Entrada · o primeiro degrau da trilha de produção</div>
+    <p class="cv-lead">Este documento apresenta quem é a Valvic, o seu papel dentro da empresa, tudo o que se espera da função, a remuneração e o modelo de contratação, e o plano de carreira. É o combinado — para você ter clareza de onde entra e para onde pode ir.</p>
+  </div>
+  <div class="cv-foot"><div class="fl">Documento de escopo de função · uso interno · Julho / 2026</div><div class="fr">Valvic · Trilha de Produção</div></div>
+</section>
+
+<!-- ============ A EMPRESA + O SEU PAPEL ============ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Escopo de Função · Ajudante de Marcenaria</div></div></div>
+    <div class="kx">Contexto</div>
+    <div class="tt">A empresa & o seu papel nela</div>
+  </div>
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Quem é a Valvic</span></div>
+    <p class="tx">A <b>Valvic</b> é uma marcenaria de <b>alto padrão</b> de Belo Horizonte, que projeta e fabrica móveis planejados sob medida para clientes exigentes — muitos com projeto de arquiteto. Trabalhamos com <b>ferragens de primeira linha</b> (Häfele, Hettich, Hardt, Rometal), CNC próprio e uma <b>garantia de até 10 anos</b> por componente. Nossos valores são <b>Legado, Sinergia e Excelência</b>: aqui não se busca vender muito, e sim <b>vender bem e entregar melhor ainda</b>. Cada peça carrega o nome da casa.</p>
+    <p class="tx">A empresa vive um momento de <b>estruturação e crescimento</b> — cada pessoa que entra ajuda a construir como a Valvic funciona daqui pra frente. Isso significa mais acesso, menos burocracia e a chance real de crescer junto.</p>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Quem é você aqui</span></div>
+    <div class="meta">
+      <div class="m"><div class="ml">Cargo</div><div class="mv">Ajudante de Marcenaria</div></div>
+      <div class="m"><div class="ml">Nível</div><div class="mv">Entrada · 1º degrau</div></div>
+      <div class="m"><div class="ml">Área</div><div class="mv">Produção / Marcenaria</div></div>
+      <div class="m"><div class="ml">Reporta a</div><div class="mv">Marceneiro / líder e Deivson (Coord. de Produção)</div></div>
+    </div>
+    <div class="prop">
+      <div class="pt">Propósito do cargo</div>
+      <p>Você é a <b>base que sustenta a produção</b>. Garante que a fábrica esteja limpa, organizada e abastecida, que o material seja tratado com cuidado, e apoia cada etapa — do corte à montagem, da bancada à obra. É o <b>primeiro degrau da marcenaria</b>: quem entra aqui aprende o ofício na prática, observando, perguntando e executando sob orientação, com o objetivo de <b>evoluir para marceneiro</b>. Sua régua não é só o que você faz, mas o <b>cuidado</b> com que faz — porque material perdido e retrabalho são prejuízo, e o padrão Valvic começa na organização.</p>
+    </div>
+    <div class="note navy"><div class="nh">O que mais pesa aqui</div><p>Três coisas definem um bom ajudante na Valvic: <b>cuidado com o material</b> (MDF é caro), <b>segurança</b> (EPI sempre, máquina só com autorização) e <b>comunicação cedo</b> (avisar antes de errar, nunca depois). Quem domina isso, sobe.</p></div>
+  </div>
+  <div class="pf"><div class="pl">Escopo de Função · Ajudante de Marcenaria · Valvic Marcenaria — Vargas Decor Ltda</div><div class="pr">CONTEXTO <span>·</span> 02</div></div>
+</section>
+
+<!-- ============ ESCOPO — NA FÁBRICA ============ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Escopo de Função · Ajudante de Marcenaria</div></div></div>
+    <div class="kx">Escopo · Parte 1</div>
+    <div class="tt">O que esperamos de você — na fábrica</div>
+    <div class="desc">Tudo o que faz parte do dia a dia dentro do galpão. Sempre sob orientação do marceneiro ou do líder.</div>
+  </div>
+  <div class="body">
+    <div class="blocos">
+      <div class="bloco"><div class="bh"><span class="ic">🧹</span><span class="bt">1 · Organização e limpeza — a base de tudo</span></div><ul>
+        <li>Varrer e manter <b>galpão, bancadas e corredores</b> limpos e livres</li>
+        <li>Recolher pó e serragem; checar/esvaziar a <b>aspiração</b> (sacos/filtros/silo)</li>
+        <li>Separar retalhos: descartar o que não presta e <b>guardar sobras aproveitáveis</b></li>
+        <li>Manter ferramentas no lugar e insumos organizados (padrão <b>5S</b>)</li>
+      </ul></div>
+      <div class="bloco"><div class="bh"><span class="ic">📦</span><span class="bt">2 · Movimentação de materiais</span></div><ul>
+        <li><b>Estocar as chapas</b> de MDF (cavalete/estoque) sem riscar, lascar ou molhar</li>
+        <li>Levar as chapas até a <b>seccionadora / CNC</b></li>
+        <li>Transportar peças entre setores (corte → coladeira → furação → montagem)</li>
+        <li>Carregar módulos/móveis prontos para <b>expedição e veículo</b></li>
+      </ul></div>
+      <div class="bloco"><div class="bh"><span class="ic">🪚</span><span class="bt">3 · Apoio ao corte / CNC (Solid TAF)</span></div><ul>
+        <li><b>Abastecer</b> a máquina e retirar as peças cortadas</li>
+        <li><b>Etiquetar/identificar</b> as peças por pedido/módulo</li>
+        <li>Ajudar na troca da <b>chapa de sacrifício</b> e na limpeza da mesa (vácuo)</li>
+        <li>Empilhar as peças por ordem de produção</li>
+      </ul></div>
+      <div class="bloco"><div class="bh"><span class="ic">🎗️</span><span class="bt">4 · Apoio à coladeira (fita de borda)</span></div><ul>
+        <li>Alimentar a coladeira e <b>receber as peças</b> do outro lado</li>
+        <li>Conferir se a fita colou bem, sem <b>rebarba ou falha</b></li>
+        <li>Limpar excesso de cola e manter a máquina limpa</li>
+      </ul></div>
+      <div class="bloco"><div class="bh"><span class="ic">🔩</span><span class="bt">5 · Apoio à montagem</span></div><ul>
+        <li>Pré-montagem: <b>parafusar, cavilhar, colar</b> sob orientação do marceneiro</li>
+        <li>Colocar ferragens simples (dobradiças, corrediças, puxadores)</li>
+        <li><b>Lixar, limpar e conferir</b> as peças antes de embalar</li>
+      </ul></div>
+      <div class="bloco"><div class="bh"><span class="ic">🧰</span><span class="bt">6 · Insumos / almoxarifado</span></div><ul>
+        <li>Ajudar no controle de <b>fita, cola, parafusos, ferragens, LED</b></li>
+        <li><b>Avisar com antecedência</b> quando um insumo estiver acabando</li>
+        <li>Organizar as prateleiras de ferragens e acessórios</li>
+      </ul></div>
+      <div class="bloco"><div class="bh"><span class="ic">⚙️</span><span class="bt">7 · Cuidado básico com as máquinas</span></div><ul>
+        <li><b>Limpeza diária</b> de todas as máquinas</li>
+        <li>Lubrificação simples e checagem da aspiração (sob orientação)</li>
+        <li><b>Reportar qualquer anomalia na hora</b> (barulho, folga, superaquecimento)</li>
+      </ul></div>
+      <div class="bloco safe"><div class="bh"><span class="ic">🦺</span><span class="bt">8 · Segurança (obrigatório)</span></div><ul>
+        <li>Usar sempre os <b>EPIs</b>: óculos, protetor auricular, máscara de pó, calçado (luva quando indicado — <b>nunca em máquina rotativa</b>)</li>
+        <li>Manter corredores e saídas livres; empilhar chapas com segurança</li>
+        <li><b>Não operar máquina sem treinamento/autorização</b></li>
+      </ul></div>
+      <div class="bloco"><div class="bh"><span class="ic">🚚</span><span class="bt">9 · Expedição / apoio externo</span></div><ul>
+        <li>Ajudar a <b>embalar, carregar e descarregar</b></li>
+        <li>Acompanhar entregas/montagem em obra quando for preciso</li>
+        <li>Pequenas retiradas/compras de material</li>
+      </ul></div>
+      <div class="bloco"><div class="bh"><span class="ic">🙋</span><span class="bt">10 · Postura esperada</span></div><ul>
+        <li>Pontualidade, proatividade e <b>cuidado com o material</b> (chapa perdida = prejuízo)</li>
+        <li>Seguir a <b>ordem de produção</b> e as instruções do marceneiro/líder</li>
+        <li>Comunicar problemas cedo (peça errada, falta de material, medida estranha)</li>
+      </ul></div>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Escopo de Função · Ajudante de Marcenaria · Valvic Marcenaria — Vargas Decor Ltda</div><div class="pr">ESCOPO · FÁBRICA <span>·</span> 03</div></div>
+</section>
+
+<!-- ============ ESCOPO — NA OBRA ============ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Escopo de Função · Ajudante de Marcenaria</div></div></div>
+    <div class="kx">Escopo · Parte 2</div>
+    <div class="tt">O que esperamos de você — na obra</div>
+    <div class="desc">Quando o móvel sai da fábrica, o cuidado vai junto. A obra é a hora da verdade: é onde o cliente vê o resultado.</div>
+  </div>
+  <div class="body">
+    <div class="blocos">
+      <div class="bloco"><div class="bh"><span class="ic">🚚</span><span class="bt">11 · Preparação e transporte</span></div><ul>
+        <li>Conferir a <b>lista de módulos, peças e ferragens</b> antes de sair (nada pode faltar)</li>
+        <li><b>Embalar e proteger</b> os móveis (cantoneiras, plástico bolha, manta)</li>
+        <li>Carregar o veículo na <b>ordem certa de descarga/montagem</b></li>
+        <li>Levar <b>ferramentas, EPIs, insumos e sobras</b> (parafusos, buchas, fita, silicone, retoque)</li>
+      </ul></div>
+      <div class="bloco"><div class="bh"><span class="ic">🏠</span><span class="bt">12 · Chegada e proteção do local</span></div><ul>
+        <li>Proteger o ambiente do cliente: <b>forrar o piso</b>, proteger móveis e paredes</li>
+        <li>Organizar a área de trabalho e conferir energia / ponto de luz</li>
+        <li>Descarregar e <b>subir os móveis</b> com cuidado (escada/elevador/içamento quando precisar)</li>
+      </ul></div>
+      <div class="bloco"><div class="bh"><span class="ic">📐</span><span class="bt">13 · Montagem e instalação</span></div><ul>
+        <li><b>Nivelar e aprumar</b> os módulos (pé nivelador, calços)</li>
+        <li><b>Fixar na parede</b> com bucha/parafuso certos para o tipo (drywall, alvenaria)</li>
+        <li>Montar caixaria, <b>portas, gavetas</b> e ajustar folgas/alinhamento das frentes</li>
+        <li>Instalar <b>tampos, bancadas, painéis, rodapés e arremates</b>; colocar puxadores/ferragens finais</li>
+        <li>Recortes em obra quando necessário (tomada, cuba, cooktop) — <b>medir 2×, cortar 1×</b></li>
+      </ul></div>
+      <div class="bloco"><div class="bh"><span class="ic">💡</span><span class="bt">14 · Complementos</span></div><ul>
+        <li>Instalar <b>fitas de LED / iluminação</b> (parte simples; energia com eletricista)</li>
+        <li>Vedar com <b>silicone</b> onde precisa (encontro com parede, cuba)</li>
+        <li>Fazer os <b>arremates finais</b> e retoques de acabamento</li>
+      </ul></div>
+      <div class="bloco"><div class="bh"><span class="ic">✅</span><span class="bt">15 · Entrega e finalização</span></div><ul>
+        <li><b>Limpeza geral</b> do móvel e do ambiente</li>
+        <li><b>Conferência com o cliente</b> (checklist: portas, gavetas, alinhamento, funcionamento)</li>
+        <li>Recolher <b>embalagens e entulho</b> — deixar o local limpo</li>
+        <li>Anotar pendências/ajustes e <b>comunicar à marcenaria</b></li>
+      </ul></div>
+      <div class="bloco"><div class="bh"><span class="ic">🔧</span><span class="bt">16 · Pós-obra / assistência</span></div><ul>
+        <li>Voltar para <b>ajustes e retoques</b> quando necessário</li>
+        <li>Trocar/regular ferragem, corrigir folga, arremate solto</li>
+      </ul></div>
+      <div class="bloco safe wide"><div class="bh"><span class="ic">🦺</span><span class="bt">Segurança na obra (obrigatório)</span></div><ul>
+        <li><b>EPIs</b> sempre: óculos, luva quando indicado, calçado, protetor auricular no corte</li>
+        <li>Cuidado com <b>escada, altura e peso</b> — móvel grande = 2 pessoas</li>
+        <li>Atenção à <b>rede elétrica / hidráulica</b> ao furar parede</li>
+        <li>Nunca improvisar fixação nem operar ferramenta sem condição segura</li>
+      </ul></div>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Escopo de Função · Ajudante de Marcenaria · Valvic Marcenaria — Vargas Decor Ltda</div><div class="pr">ESCOPO · OBRA <span>·</span> 04</div></div>
+</section>
+
+<!-- ============ AVALIAÇÃO + REMUNERAÇÃO ============ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Escopo de Função · Ajudante de Marcenaria</div></div></div>
+    <div class="kx">Avaliação · Remuneração · Contratação</div>
+    <div class="tt">Como você é avaliado e o que oferecemos</div>
+  </div>
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Como você é avaliado · a cada 90 dias</span></div>
+    <table>
+      <thead><tr><th>Indicador</th><th class="r" style="width:200px">O que esperamos</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Organização e limpeza (5S)</span></td><td class="r"><span class="me">fábrica limpa e organizada sem ser solicitado</span></td></tr>
+        <tr><td><span class="nm">Cuidado com o material</span><span class="ds">chapa/peça danificada, retrabalho</span></td><td class="r"><span class="me">mínimo — trata o material como caro</span></td></tr>
+        <tr><td><span class="nm">Segurança (EPIs e conduta)</span></td><td class="r"><span class="me">uso de EPI 100% · zero incidentes evitáveis</span></td></tr>
+        <tr><td><span class="nm">Pontualidade e presença</span></td><td class="r"><span class="me">ausências justificadas com 24h de antecedência</span></td></tr>
+        <tr><td><span class="nm">Proatividade e comunicação</span></td><td class="r"><span class="me">avisa cedo; não espera errar para falar</span></td></tr>
+        <tr><td><span class="nm">Evolução técnica</span><span class="ds">novas habilidades aprendidas</span></td><td class="r"><span class="me">progresso mensurável a cada ciclo</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Remuneração e benefícios</span></div>
+    <table>
+      <thead><tr><th>Item</th><th>Descrição</th><th class="r" style="width:120px">Valor</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Salário base</span></td><td><span class="ds">1 salário mínimo nacional vigente</span></td><td class="r"><span class="num">salário mínimo</span></td></tr>
+        <tr><td><span class="nm">Vale-refeição (VR)</span></td><td><span class="ds">benefício mensal</span></td><td class="r"><span class="num">R$ 300,00</span></td></tr>
+        <tr><td><span class="nm">Vale-transporte (VT)</span></td><td><span class="ds">conforme CLT (desconto legal de até 6% do salário base)</span></td><td class="r"><span class="num">R$ 400,00</span></td></tr>
+        <tr class="tot"><td colspan="2">Total em benefícios (além do salário)</td><td class="r"><span class="gv num">R$ 700,00 / mês</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Modelo de contratação</span></div>
+    <div class="two">
+      <div class="cardbox"><div class="cbh">Fase 1 · Contrato de experiência</div><p><b>3 meses (90 dias)</b> de experiência por contrato. É um período de <b>avaliação mútua</b>: você conhece a Valvic e a Valvic conhece o seu trabalho, com acompanhamento próximo e orientação constante.</p></div>
+      <div class="cardbox"><div class="cbh">Fase 2 · Efetivação CLT</div><p>Concluídos os 3 meses e <b>sendo cabível para a empresa</b> (desempenho + fit com a equipe), a contratação passa para o <b>regime CLT</b>, com todos os direitos e a estabilidade do vínculo formal.</p></div>
+    </div>
+    <div class="note"><div class="nh">Nota</div><p>Os benefícios (VR e VT) valem <b>desde a admissão</b>. O avanço na carreira e os ganhos seguintes acompanham o <b>plano de carreira</b> (página seguinte) e a avaliação a cada 90 dias.</p></div>
+  </div>
+  <div class="pf"><div class="pl">Escopo de Função · Ajudante de Marcenaria · Valvic Marcenaria — Vargas Decor Ltda</div><div class="pr">REMUNERAÇÃO <span>·</span> 05</div></div>
+</section>
+
+<!-- ============ PLANO DE CARREIRA ============ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Escopo de Função · Ajudante de Marcenaria</div></div></div>
+    <div class="kx">Plano de Carreira</div>
+    <div class="tt">Para onde você pode ir</div>
+    <div class="desc">A trilha da marcenaria conforme a Matriz de Cargos e Funções da Valvic. Você entra no primeiro degrau — e o caminho para cima é claro.</div>
+  </div>
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Trilha da Produção / Marcenaria</span></div>
+    <div class="ladder">
+      <div class="rung here">
+        <div class="lvl">1</div>
+        <div class="body2"><div class="rc">Ajudante de Marcenaria</div><div class="rd">Entrada · sustenta a produção, aprende o ofício na prática</div></div>
+        <span class="tag">Você está aqui</span>
+      </div>
+      <div class="rung">
+        <div class="lvl">2</div>
+        <div class="body2"><div class="rc">Meio-oficial / Marceneiro Júnior</div><div class="rd">Começa a executar tarefas técnicas sob supervisão (montagem, acabamento simples)</div></div>
+      </div>
+      <div class="rung">
+        <div class="lvl">3</div>
+        <div class="body2"><div class="rc">Marceneiro (Pleno)</div><div class="rd">Executa com autonomia; responde por qualidade e prazo do que produz</div></div>
+      </div>
+      <div class="rung">
+        <div class="lvl">4</div>
+        <div class="body2"><div class="rc">Marceneiro Sênior</div><div class="rd">Referência técnica; ensina os níveis abaixo e sustenta o padrão Valvic</div></div>
+      </div>
+      <div class="rung">
+        <div class="lvl">5</div>
+        <div class="body2"><div class="rc">Coordenador de Produção</div><div class="rd">Coordena a equipe, o fluxo e a qualidade de toda a fábrica</div></div>
+      </div>
+    </div>
+
+    <div class="note navy" style="margin-top:14px"><div class="nh">Como se sobe de degrau</div><p>O avanço é por <b>desempenho comprovado, não por tempo de casa</b>. Avaliação a cada <b>90 dias</b> (com o Deivson e o Paulo). E há uma regra cultural que vale para todos: <b>ninguém sobe de nível sem ter ensinado algo ao nível abaixo</b> — quem cresce, forma quem vem atrás.</p></div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Ramificações possíveis</span></div>
+    <div class="two">
+      <div class="cardbox"><div class="cbh">Tecnologia CNC</div><p>Quem tem afinidade com máquina e software pode seguir para <b>Operador CNC & Máquinas</b> e depois <b>Programador CNC</b> — a área que corta e programa as peças.</p></div>
+      <div class="cardbox"><div class="cbh">Acabamento & Qualidade</div><p>Quem se destaca no capricho pode se especializar em <b>Acabamento e Controle de Qualidade</b> — a área que garante o padrão premium da entrega.</p></div>
+    </div>
+
+    <div class="signrow">
+      <div class="col"><div class="line"></div><div class="cap">Colaborador · ciência e de acordo</div></div>
+      <div class="col" style="text-align:right"><div class="line"></div><div class="cap">Valvic Marcenaria · Belo Horizonte / MG</div></div>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Escopo de Função · Ajudante de Marcenaria · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">CARREIRA <span>·</span> 06</div></div>
+</section>
+
+</body>
+</html>
