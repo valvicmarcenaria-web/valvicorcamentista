@@ -12,46 +12,42 @@
   *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
   :root{ --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f; --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd; --green:#2f7d4f; --red:#b0413f; }
   html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:9px; line-height:1.35; -webkit-font-smoothing:antialiased; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:8.6px; line-height:1.3; -webkit-font-smoothing:antialiased; }
   .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:16px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; }
-  .ph{ background:var(--navy); color:#fff; padding:8mm 14mm 6mm; position:relative; }
+  .ph{ background:var(--navy); color:#fff; padding:7mm 13mm 5mm; position:relative; }
   .ph::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:2.5px; background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 42%,transparent 100%); }
-  .ph .top{ display:flex; align-items:center; gap:11px; }
-  .ph .mono{ width:34px; height:34px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:17px; color:var(--gold); }
-  .ph .co{ font-size:10px; font-weight:700; letter-spacing:2.4px; text-transform:uppercase; }
-  .ph .sub{ font-size:7.2px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
-  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:700; margin-top:6px; line-height:1.05; }
-  .ph .kx{ font-size:7.2px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-top:2px; }
-  .body{ flex:1; padding:5mm 14mm 0; display:flex; flex-direction:column; min-height:0; }
-  .fill{ display:inline-block; border-bottom:1px solid var(--navy2); height:10px; flex:1; }
-  .hdr{ border:1px solid var(--line); border-radius:7px; padding:7px 11px; background:#f4f1ea; margin-bottom:7px; }
-  .hdr .grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:5px 12px; }
-  .hdr .field{ display:flex; align-items:baseline; gap:5px; font-size:8.4px; } .hdr .fl{ color:var(--muted); white-space:nowrap; } .hdr .fl b{ color:var(--navy); font-weight:700; }
-  .legend{ display:flex; gap:14px; align-items:center; margin-bottom:8px; font-size:8.2px; color:#33404d; }
-  .legend .k{ display:inline-flex; align-items:center; gap:5px; } .legend .bx{ display:inline-block; width:11px; height:11px; border:1.3px solid var(--navy2); border-radius:2.5px; } .legend b{ color:var(--navy); }
-  /* categorias */
-  .cats{ display:grid; grid-template-columns:1fr 1fr; gap:7px; }
-  .cat{ border:1px solid var(--line); border-radius:7px; overflow:hidden; background:#fff; break-inside:avoid; }
-  .cat.full{ grid-column:1 / -1; }
-  .cat .ch{ display:flex; align-items:center; gap:7px; padding:4px 10px; background:var(--navy); color:#fff; }
-  .cat .ch .ci{ font-size:11px; } .cat .ch .ct{ font-size:8.4px; font-weight:800; letter-spacing:.3px; text-transform:uppercase; }
-  .cat .ch .ps{ margin-left:auto; font-size:6.4px; letter-spacing:.5px; color:var(--gold-soft); font-weight:700; }
-  .cat .items{ padding:5px 9px 6px; columns:2; column-gap:14px; }
-  .cat.solo .items{ columns:1; }
-  .it{ display:flex; align-items:flex-start; gap:5px; font-size:8.1px; line-height:1.3; padding:1.5px 0; break-inside:avoid; }
-  .it .p, .it .s{ width:10px; height:10px; border:1.2px solid var(--navy2); border-radius:2px; flex-shrink:0; margin-top:1px; background:#fff; }
+  .ph .top{ display:flex; align-items:center; gap:10px; }
+  .ph .mono{ width:32px; height:32px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:16px; color:var(--gold); }
+  .ph .co{ font-size:9.5px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; }
+  .ph .sub{ font-size:7px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:1px; }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:700; margin-top:5px; line-height:1.05; }
+  .ph .kx{ font-size:7px; letter-spacing:2.6px; text-transform:uppercase; color:var(--gold); margin-top:1px; }
+  .body{ flex:1; padding:4mm 13mm 0; display:flex; flex-direction:column; min-height:0; }
+  .fill{ display:inline-block; border-bottom:1px solid var(--navy2); height:9px; flex:1; }
+  .hdr{ border:1px solid var(--line); border-radius:6px; padding:5px 10px; background:#f4f1ea; margin-bottom:5px; }
+  .hdr .grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:4px 12px; }
+  .hdr .field{ display:flex; align-items:baseline; gap:5px; font-size:8px; } .hdr .fl{ color:var(--muted); white-space:nowrap; } .hdr .fl b{ color:var(--navy); font-weight:700; }
+  .legend{ display:flex; gap:12px; align-items:center; margin-bottom:6px; font-size:7.8px; color:#33404d; }
+  .legend .k{ display:inline-flex; align-items:center; gap:5px; } .legend .bx{ display:inline-block; width:10px; height:10px; border:1.2px solid var(--navy2); border-radius:2px; } .legend b{ color:var(--navy); }
+  .cats{ columns:2; column-gap:10px; }
+  .cat{ border:1px solid var(--line); border-radius:6px; overflow:hidden; background:#fff; break-inside:avoid; margin-bottom:6px; }
+  .cat .ch{ display:flex; align-items:center; gap:6px; padding:3px 9px; background:var(--navy); color:#fff; }
+  .cat .ch .ci{ font-size:10px; } .cat .ch .ct{ font-size:7.8px; font-weight:800; letter-spacing:.2px; text-transform:uppercase; } .cat .ch .ct small{ font-weight:400; text-transform:none; letter-spacing:0; opacity:.72; }
+  .cat .ch .ps{ margin-left:auto; font-size:6.2px; letter-spacing:.4px; color:var(--gold-soft); font-weight:700; }
+  .cat .items{ padding:4px 8px 5px; }
+  .it{ display:flex; align-items:flex-start; gap:5px; font-size:7.7px; line-height:1.25; padding:1.3px 0; }
+  .it .p, .it .s{ width:9px; height:9px; border:1.2px solid var(--navy2); border-radius:2px; flex-shrink:0; margin-top:1px; background:#fff; }
   .it .s{ border-color:var(--green); }
   .it .nm{ color:#2f3a45; } .it .nm b{ color:var(--navy); }
-  .note{ background:#fffaf0; border:1px solid #eed9a8; border-radius:7px; padding:7px 11px; margin-top:7px; }
-  .note .nh{ font-size:6.8px; letter-spacing:1.2px; text-transform:uppercase; color:var(--gold-dk); font-weight:700; margin-bottom:3px; }
-  .note p{ font-size:8.2px; line-height:1.45; color:#5a4a2c; } .note p b{ color:var(--navy); }
-  .retorno{ border:1.4px solid var(--navy2); border-radius:8px; overflow:hidden; margin-top:7px; }
-  .retorno .rh{ background:var(--navy); color:#fff; padding:4px 11px; font-size:8px; font-weight:800; letter-spacing:.7px; text-transform:uppercase; }
-  .retorno .rb{ padding:8px 11px; display:flex; gap:20px; align-items:center; font-size:8.4px; }
-  .retorno .opt{ display:flex; align-items:center; gap:6px; font-weight:700; } .retorno .opt .cb{ width:12px; height:12px; border:1.3px solid var(--navy2); border-radius:2.5px; }
-  .retorno .sg{ margin-left:auto; text-align:right; color:var(--muted); font-size:7.6px; } .retorno .sg .line{ width:150px; border-top:1px solid var(--navy2); margin-bottom:3px; margin-left:auto; }
-  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:5px 14mm; display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
-  .pf .pl{ font-size:6.4px; color:var(--muted); } .pf .pr{ font-size:7.2px; color:var(--navy); font-weight:700; letter-spacing:.8px; } .pf .pr span{ color:var(--gold); }
+  .bottom{ margin-top:4px; }
+  .retorno{ border:1.3px solid var(--navy2); border-radius:7px; overflow:hidden; }
+  .retorno .rh{ background:var(--navy); color:#fff; padding:3px 10px; font-size:7.6px; font-weight:800; letter-spacing:.6px; text-transform:uppercase; }
+  .retorno .rb{ padding:6px 10px; display:flex; gap:18px; align-items:center; font-size:8px; }
+  .retorno .opt{ display:flex; align-items:center; gap:6px; font-weight:700; } .retorno .opt .cb{ width:11px; height:11px; border:1.2px solid var(--navy2); border-radius:2px; }
+  .retorno .sg{ margin-left:auto; text-align:right; color:var(--muted); font-size:7.2px; } .retorno .sg .line{ width:140px; border-top:1px solid var(--navy2); margin-bottom:2px; margin-left:auto; }
+  .epi{ font-size:7.4px; color:var(--muted); margin-top:4px; } .epi b{ color:var(--navy); }
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:4px 13mm; display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf .pl{ font-size:6.2px; color:var(--muted); } .pf .pr{ font-size:7px; color:var(--navy); font-weight:700; letter-spacing:.8px; } .pf .pr span{ color:var(--gold); }
   .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
   @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
 </style>
@@ -59,7 +55,6 @@
 <body>
 <button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
 
-<!-- ============ PÁGINA 1 ============ -->
 <section class="sheet">
   <div class="ph">
     <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Vargas Decor Ltda · Belo Horizonte / MG · Expedição / Montagem</div></div></div>
@@ -67,100 +62,75 @@
     <div class="kx">Nada sai sem conferir · nada volta esquecido</div>
   </div>
   <div class="body">
-    <div class="hdr">
-      <div class="grid">
-        <div class="field"><span class="fl"><b>Cliente / OP:</b></span><span class="fill"></span></div>
-        <div class="field"><span class="fl">Obra:</span><span class="fill"></span></div>
-        <div class="field"><span class="fl">Data:</span><span class="fill"></span></div>
-        <div class="field"><span class="fl">Responsável:</span><span class="fill"></span></div>
-      </div>
-    </div>
+    <div class="hdr"><div class="grid">
+      <div class="field"><span class="fl"><b>Cliente / OP:</b></span><span class="fill"></span></div>
+      <div class="field"><span class="fl">Obra:</span><span class="fill"></span></div>
+      <div class="field"><span class="fl">Data:</span><span class="fill"></span></div>
+      <div class="field"><span class="fl">Responsável:</span><span class="fill"></span></div>
+    </div></div>
     <div class="legend">
-      <span class="k"><span class="bx"></span> <b>P</b> = precisa (marque na preparação)</span>
-      <span class="k"><span class="bx" style="border-color:var(--green)"></span> <b>S</b> = separado / conferido (marque na carga)</span>
-      <span style="color:var(--muted)">— cada item tem os 2. Linhas em branco = "outros".</span>
+      <span class="k"><span class="bx"></span> <b>P</b> = precisa (na preparação)</span>
+      <span class="k"><span class="bx" style="border-color:var(--green)"></span> <b>S</b> = separado / conferido (na carga)</span>
+      <span style="color:var(--muted)">— cada item tem os 2. Linha em branco = "outros".</span>
     </div>
 
     <div class="cats">
       <!-- 1 -->
-      <div class="cat"><div class="ch"><span class="ci">🧰</span><span class="ct">1 · Ferramentas manuais</span><span class="ps">P&nbsp;S</span></div>
+      <div class="cat"><div class="ch"><span class="ci">🧰</span><span class="ct">1 · Ferramentas manuais &amp; desgaste</span><span class="ps">P&nbsp;S</span></div>
         <div class="items">
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Parafusadeira/furadeira + <b>baterias</b> + carregador</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Parafusadeira de impacto</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Jogo de bits (Phillips/Pozi/Torx)</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Jogo de brocas (madeira/concreto/aço)</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Trena + fita métrica</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Nível de bolha + <b>nível a laser</b></span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Esquadro + régua</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Martelo + martelo de borracha</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Alicate universal / bico / corte</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Chaves de fenda/Philips (jogo)</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Chaves allen (jogo)</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Sargentos / grampos de aperto</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Serra tico-tico + lâminas</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Serrote / arco</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Formão + gabarito de furação</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Estilete + lápis de marcenaria</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Grampeador</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Escada</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Furadeira e parafusadeira (+ <b>baterias</b> + carregador)</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Martelete</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Tico-tico</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Lâminas de tico-tico novas</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Plaina</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Pinador</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Serra copo</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Brocas vídea</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Brocas aço rápido</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Jogo de bits</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Jogo de chaves</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Jogo de chave allen</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Sargentos e grampos de aperto</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Serrinha</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Diversos (alicate + martelo + formão etc.)</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm"><b>Material de laminação</b> (lima, espátula, estilete, couro)</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Metro (trena)</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Nível a laser</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Nível de mão</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Pilhas para o nível</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Aspirador de pó</span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">_______________________</span></div>
         </div>
       </div>
       <!-- 2 -->
-      <div class="cat"><div class="ch"><span class="ci">🪚</span><span class="ct">2 · Desgaste &amp; acessórios</span><span class="ps">P&nbsp;S</span></div>
+      <div class="cat"><div class="ch"><span class="ci">🧴</span><span class="ct">2 · Material de limpeza</span><span class="ps">P&nbsp;S</span></div>
         <div class="items">
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Brocas reposição (madeira/vídea)</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Bits reposição</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Fresas</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Serra copo</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Lixas (grãos variados)</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Discos de corte</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Lâminas de tico-tico reposição</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Thinner</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Querosene</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Limpa-vidro</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Estopa</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Pano</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Pincel</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Vassoura + pá</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Saco de lixo</span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">_______________________</span></div>
         </div>
       </div>
       <!-- 3 -->
-      <div class="cat"><div class="ch"><span class="ci">🧴</span><span class="ct">3 · Material de limpeza</span><span class="ps">P&nbsp;S</span></div>
-        <div class="items">
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Pano / flanela / microfibra</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Álcool isopropílico</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Removedor de cola / silicone</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Removedor de adesivo/etiqueta</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Estopa</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Aspirador + sacos</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Vassoura / pá / sacos de lixo</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Multiuso / desengraxante</span></div>
-        </div>
-      </div>
-      <!-- 4 -->
-      <div class="cat"><div class="ch"><span class="ci">🎨</span><span class="ct">4 · Material de acabamento</span><span class="ps">P&nbsp;S</span></div>
+      <div class="cat"><div class="ch"><span class="ci">🎨</span><span class="ct">3 · Material de acabamento</span><span class="ps">P&nbsp;S</span></div>
         <div class="items">
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Cola branca / instantânea / contato</span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm"><b>Silicone (cor)</b> + aplicador/bico</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Calafetador</span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Caneta/massa de retoque <b>(cor)</b></span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Cera / polidor</span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm"><b>Fita de borda reposição (cor)</b> + ferro</span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Tapa-furo / tampinhas <b>(cor)</b></span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Verniz / spray</span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">_______________________</span></div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="pf"><div class="pl">Checklist de Insumos &amp; Ferramentas · Valvic Marcenaria — Vargas Decor Ltda · Expedição / Montagem</div><div class="pr">KIT DA OBRA <span>·</span> 1/2</div></div>
-</section>
-
-<!-- ============ PÁGINA 2 ============ -->
-<section class="sheet">
-  <div class="ph">
-    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Checklist de Insumos &amp; Ferramentas — Cliente/OP: __________</div></div></div>
-    <div class="tt">Kit da Obra — proteções, componentes &amp; elétrico</div>
-    <div class="kx">P = precisa · S = separado/conferido</div>
-  </div>
-  <div class="body">
-    <div class="cats">
-      <!-- 5 -->
-      <div class="cat"><div class="ch"><span class="ci">🛡️</span><span class="ct">5 · Proteções</span><span class="ps">P&nbsp;S</span></div>
+      <!-- 4 -->
+      <div class="cat"><div class="ch"><span class="ci">🛡️</span><span class="ct">4 · Proteções</span><span class="ps">P&nbsp;S</span></div>
         <div class="items">
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Cantoneira</span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Plástico bolha</span></div>
@@ -172,50 +142,57 @@
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">_______________________</span></div>
         </div>
       </div>
-      <!-- 6 -->
-      <div class="cat"><div class="ch"><span class="ci">🔩</span><span class="ct">6 · Ferragens &amp; componentes da obra</span><span class="ps">P&nbsp;S</span></div>
+      <!-- 5 -->
+      <div class="cat"><div class="ch"><span class="ci">🔩</span><span class="ct">5 · Ferragens &amp; componentes da obra</span><span class="ps">P&nbsp;S</span></div>
         <div class="items">
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm"><b>Buchas</b> (nylon/drywall/alvenaria)</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Parafusos (chipboard/ferragem)</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Buchas (nylon/drywall/alvenaria)</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm"><b>Buchas especiais</b></span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Cantoneiras de instalação</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Parafusos de instalação</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm"><b>Caixa de parafusos completa</b></span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Dobradiças reserva</span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Corrediças reserva</span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm"><b>Puxadores (conforme projeto)</b></span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Pés niveladores / sapatas</span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Suportes de prateleira / mão-francesa</span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Minifix / cavilha reserva</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Fita dupla-face / adesivo estrutural</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm"><b>Kit de ferragens do módulo (saco etiq.)</b></span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Fita dupla-face</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Adesivo de alta fixação</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Anti-impacto de silicone</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Cola PU · Cola PUR</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm"><b>Kit de ferragens do módulo</b> (saco etiq.)</span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">_______________________</span></div>
         </div>
       </div>
-      <!-- 7 -->
-      <div class="cat full solo"><div class="ch"><span class="ci">💡</span><span class="ct">7 · Material elétrico <span style="font-weight:400;text-transform:none;letter-spacing:0;opacity:.7">(do móvel — ligação com eletricista)</span></span><span class="ps">P&nbsp;S</span></div>
-        <div class="items" style="columns:3">
+      <!-- 6 -->
+      <div class="cat"><div class="ch"><span class="ci">💡</span><span class="ct">6 · Material elétrico <small>(do móvel)</small></span><span class="ps">P&nbsp;S</span></div>
+        <div class="items">
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm"><b>Fita LED (cor/projeto)</b> + perfil</span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Fonte / driver</span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Sensor (presença/toque)</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Interruptores</span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Conectores / emendas de LED</span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Fio / cabo</span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Fita isolante</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Abraçadeira (cinta nylon)</span></div>
-          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Extensão / filtro de linha</span></div>
+          <div class="it"><span class="p"></span><span class="s"></span><span class="nm">Abraçadeira (cinta nylon) · extensão</span></div>
           <div class="it"><span class="p"></span><span class="s"></span><span class="nm">_______________________</span></div>
         </div>
       </div>
     </div>
 
-    <div class="note"><div class="nh">EPI (à medida que forem implementados)</div><p>Óculos, protetor auricular, máscara de pó, calçado, luva (quando indicado). Levar os que já estiverem disponíveis.</p></div>
-
-    <div class="retorno">
-      <div class="rh">Conferência de RETORNO — ao sair da obra</div>
-      <div class="rb">
-        <div class="opt"><span class="cb"></span>Ferramentas conferidas — <b>nada esquecido na obra</b></div>
-        <div class="opt"><span class="cb"></span>Sobras/insumos recolhidos</div>
-        <div class="sg"><div class="line"></div>Responsável · Data: __/__/____</div>
+    <div class="bottom">
+      <div class="retorno">
+        <div class="rh">Conferência de RETORNO — ao sair da obra</div>
+        <div class="rb">
+          <div class="opt"><span class="cb"></span>Ferramentas conferidas — <b>nada esquecido na obra</b></div>
+          <div class="opt"><span class="cb"></span>Sobras / insumos recolhidos</div>
+          <div class="sg"><div class="line"></div>Responsável · Data: __/__/____</div>
+        </div>
       </div>
+      <p class="epi"><b>EPI</b> (à medida que forem implementados): óculos, protetor auricular, máscara de pó, calçado, luva quando indicado — levar os disponíveis.</p>
     </div>
   </div>
-  <div class="pf"><div class="pl">Checklist de Insumos &amp; Ferramentas · Valvic Marcenaria — Vargas Decor Ltda · Expedição / Montagem</div><div class="pr">KIT DA OBRA <span>·</span> 2/2</div></div>
+  <div class="pf"><div class="pl">Checklist de Insumos &amp; Ferramentas · Valvic Marcenaria — Vargas Decor Ltda · Expedição / Montagem</div><div class="pr">KIT DA OBRA <span>·</span> folha única</div></div>
 </section>
 
 </body>
