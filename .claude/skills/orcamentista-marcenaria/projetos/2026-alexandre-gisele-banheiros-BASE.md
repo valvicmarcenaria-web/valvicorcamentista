@@ -28,16 +28,19 @@
 - Fita+cola R$308 · consumíveis R$150
 - **Material ≈ R$ 5.064**
 
-## Preço (MC 37%)
-| Ambiente | Venda |
-|---|---:|
-| Suíte 01 (Aréia · 2p+2g) | R$ 2.350 |
-| Suíte 02 (Chumbo · 2p+3g) | R$ 3.000 |
-| Suíte 03 (Chumbo · 2p+2g) | R$ 2.450 |
-| Suíte 04 (Gianduia · 2p+3g) | R$ 4.350 |
-| Suíte 05 (Aréia · 2p+3g) | R$ 2.850 |
-| Apoio (Aréia · 2p suspenso) | R$ 1.100 |
-| **TOTAL** | **R$ 16.100** |
+## Preço — FECHADO (MC 35%)
+- **Otimização de material (Fase 3):** estrutura interna cortada da **sobra das chapas de cor** (7,3 m² de sobra)
+  → branco 15mm de 4 → **2 chapas**. Material R$5.064 → **R$4.552**. (Interior fica na cor da sobra, não branco — 100% escondido.)
+- **Nivelamento:** o método de chapa inteira jogava a chapa premium Gianduia (R$700, 1 gabinete só, ~75% sobra)
+  toda na Suíte 04, inflando-a ~R$1.500 vs idênticas. Corrigido: móveis iguais, preço igual; Suíte 04 fica só com o +R$200 real do MDF.
+- **MC 35%** (divisor parceiro 0,70 → 0,35): `inv = (4.552+250)/0,35` = R$13.720 → **tabela Valvic R$ 13.700**.
+
+**FECHADO:** Investimento **R$ 13.700** · condição **60% + 40% com 10% de desconto = R$ 12.330**
+(entrada R$ 7.398 + entrega R$ 4.932) · prazo **60 dias úteis** · garantia 5 anos · cliente recorrente.
+Proposta: `closer-vendas/propostas/proposta-alexandre-gisele-banheiros.html` + PDF (valor único, itens listados sem preço separado).
+
+### Estimativa anterior por item (MC 37%, pré-otimização — referência interna)
+Suíte 01 2.350 · 02 3.000 · 03 2.450 · 04 4.350 · 05 2.850 · Apoio 1.100 = R$ 16.100.
 
 ## Flags para o fundador (validar)
 1. **Alturas dos gabinetes** (elevações 108–135 cm) — estimei a área de chapa; medir no local.

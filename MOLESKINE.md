@@ -363,6 +363,26 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
 - *Regra-mãe: o descritivo de contrato diz **O QUE É** o móvel, limpo e técnico, sem número de insumo; o que não está
   confirmado no projeto vira "conforme projeto / validação in loco", nunca invenção.* Modelo: `projetos/descritivo-tecnico-roupeiro-camila.md`.
 
+### [2026-07-08] Lavinia — Banheiros Alexandre e Gisele (cliente recorrente · arq. Ionah Pinho)
+- 6 gabinetes de banheiro (5 suítes + apoio), **só os gabinetes de bancada** (SEM espelheira/armário espelhado/LED
+  — atenção: são os itens onde eu inflo; aqui nem existem, não inventei). 2 portas de giro + gavetas, puxador
+  **perfil cava alumínio natural** (faz fita de borda + fechamento lateral), padrão **Hardt oculta soft-close**.
+  Bancadas/sóculos em pedra (quartzito/granito) = FORA. Método parceiro 0,70.
+- **APRENDIZADO nº1 — chapa inteira de cor pouco usada distorce o preço por móvel:** comprar chapa INTEIRA por cor
+  jogou a chapa **Gianduia (R$700, cara, 1 gabinete só, ~75% sobra)** toda na Suíte 04 → ela ficou ~R$1.500 acima de
+  gabinetes IDÊNTICOS (mesmo layout, cor mais barata compartilhada entre 2–3 móveis). O custo tá certo, mas é péssima
+  leitura: **móveis iguais têm que custar quase igual**. Correção: nivelar (móvel igual = preço igual) e a cor premium
+  entra só como +delta real (~R$200), não com a sobra inteira. *Preço por móvel é estratégico, não custo+markup cru.*
+- **APRENDIZADO nº2 — otimização de material (Fase 3): cortar a estrutura interna da SOBRA das chapas de cor.**
+  As 3 chapas de cor sobram ~7,3 m². Em vez de comprar chapa branca à parte p/ corpo/prateleiras/caixa de gaveta,
+  corto da sobra da cor → branco 15mm de **4 → 2 chapas** (−R$520). Trade-off: **interior fica na cor da sobra, não
+  branco uniforme** (100% escondido atrás da porta) — sinalizar. Alavanca extra (ferragem): telescópica c/ amortecedor
+  no lugar da oculta (−R$585) = troca de qualidade, só se o fundador pedir.
+- **FECHADO (MC 35%):** material otimizado R$4.552 → `(4.552+250)/0,35` = **R$ 13.700** (tabela Valvic, redondo).
+  Pagamento **60% + 40% com 10% desc = R$ 12.330**. Prazo 60 dias úteis. Proposta cliente recorrente, **valor único**
+  (fundador: "não apresente valores separados, apenas o total, mas liste cada item") → itens listados sem preço, um total só.
+  `closer-vendas/propostas/proposta-alexandre-gisele-banheiros.html` + PDF (3 págs). Base: `2026-alexandre-gisele-banheiros-BASE.md`.
+
 ### [2026-07-02] Lavinia — CALIBRAÇÃO Apto CV (superestimei ~2–3×) ⚠️
 - Orcei o Apto CV (Ana Carolina Valente / arq. Bruna Rezende) sobre o executivo e o **fundador mostrou a proposta real**
   (sem banheiros): minhas estimativas ficaram **~2 a 3× ALTAS**. Real: Lavanderia R$11.500 (eu 27,6k) · Lavabo R$4.700
