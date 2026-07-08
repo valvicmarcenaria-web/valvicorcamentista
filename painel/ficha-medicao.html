@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ficha de Medição / Levantamento — Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  :root{ --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f; --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd; --green:#2f7d4f; --red:#b0413f; --amber:#c47d0e; --crit:#9a3f1f; --critbg:#fbf1e9; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:9.5px; line-height:1.4; -webkit-font-smoothing:antialiased; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:16px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; }
+  .ph{ background:var(--navy); color:#fff; padding:9mm 14mm 7mm; position:relative; }
+  .ph::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:2.5px; background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 42%,transparent 100%); }
+  .ph .top{ display:flex; align-items:center; gap:11px; }
+  .ph .mono{ width:36px; height:36px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:18px; color:var(--gold); }
+  .ph .co{ font-size:10.5px; font-weight:700; letter-spacing:2.4px; text-transform:uppercase; }
+  .ph .sub{ font-size:7.5px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; margin-top:7px; line-height:1.05; }
+  .ph .kx{ font-size:7.5px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-top:2px; }
+  .body{ flex:1; padding:6mm 14mm 0; display:flex; flex-direction:column; min-height:0; }
+  .fill{ display:inline-block; border-bottom:1px solid var(--navy2); height:11px; flex:1; }
+  .sec{ display:flex; align-items:center; gap:9px; margin:8px 0 6px; } .sec:first-child{ margin-top:0; }
+  .sec .bar{ width:15px; height:2px; background:var(--gold); } .sec .tx{ font-size:8.2px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); } .sec .tx small{ color:var(--muted); font-weight:600; letter-spacing:.4px; text-transform:none; }
+  .box{ border:1px solid var(--line); border-radius:7px; padding:9px 12px; background:#fff; } .box.pad{ background:#f4f1ea; }
+  .grid{ display:grid; gap:6px 12px; } .g2{ grid-template-columns:1fr 1fr; } .g3{ grid-template-columns:1fr 1fr 1fr; } .g4{ grid-template-columns:repeat(4,1fr); } .g5{ grid-template-columns:repeat(5,1fr); }
+  .field{ display:flex; align-items:baseline; gap:5px; font-size:8.5px; } .field .fl{ color:var(--muted); white-space:nowrap; } .field .fl b{ color:var(--navy); font-weight:700; }
+  .cb{ display:inline-block; width:11px; height:11px; border:1.3px solid var(--navy2); border-radius:2.5px; flex-shrink:0; margin-top:1px; background:#fff; }
+  /* pontos de atenção */
+  .att{ list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:2px 16px; }
+  .att li{ display:flex; gap:7px; align-items:flex-start; font-size:8.7px; line-height:1.35; padding:2.5px 6px; color:#2f3a45; border-radius:4px; }
+  .att li.hot{ background:var(--critbg); } .att li.hot .cb{ border-color:var(--crit); } .att li .cm{ color:var(--crit); font-weight:800; }
+  .att li b{ color:var(--navy); }
+  /* croqui quadriculado */
+  .croqui{ flex:1; min-height:150px; border:1px solid var(--navy2); border-radius:6px; margin-top:2px; position:relative; background-color:#fff;
+    background-image: repeating-linear-gradient(#eef0f2 0 1px, transparent 1px 100%), repeating-linear-gradient(90deg,#eef0f2 0 1px, transparent 1px 100%);
+    background-size: 5mm 5mm; }
+  .croqui .cl{ position:absolute; top:6px; left:9px; font-size:7.5px; letter-spacing:.6px; text-transform:uppercase; color:var(--muted); }
+  .croqui .leg{ position:absolute; bottom:6px; right:9px; font-size:7.5px; color:var(--muted); }
+  .croqui .leg b.r{ color:var(--red); } .croqui .leg b.b{ color:var(--blue); }
+  /* tabelas */
+  table{ width:100%; border-collapse:collapse; }
+  thead th{ background:var(--navy2); color:#fff; font-size:6.8px; font-weight:600; letter-spacing:.5px; text-transform:uppercase; padding:5px 8px; text-align:left; }
+  tbody td{ border:1px solid var(--line); height:19px; padding:2px 8px; font-size:8px; }
+  /* método (POP) */
+  .pop{ list-style:none; }
+  .pop li{ font-size:9px; line-height:1.5; padding:4px 0 4px 20px; position:relative; border-bottom:1px dotted var(--line2); color:#33404d; }
+  .pop li:last-child{ border-bottom:none; }
+  .pop li .n{ position:absolute; left:0; top:4px; width:14px; height:14px; border-radius:50%; background:var(--gold); color:var(--navy); font-size:8px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+  .pop li b{ color:var(--navy); }
+  .note{ background:#fffaf0; border:1px solid #eed9a8; border-radius:7px; padding:8px 12px; margin-top:8px; }
+  .note .nh{ font-size:7px; letter-spacing:1.3px; text-transform:uppercase; color:var(--gold-dk); font-weight:700; margin-bottom:4px; }
+  .note p{ font-size:8.5px; line-height:1.5; color:#5a4a2c; } .note p b{ color:var(--navy); }
+  .note.navy{ background:var(--navy); border:none; } .note.navy .nh{ color:var(--gold); } .note.navy p{ color:rgba(255,255,255,.9); } .note.navy p b{ color:#fff; }
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:5px 14mm; display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf .pl{ font-size:6.6px; color:var(--muted); } .pf .pr{ font-size:7.4px; color:var(--navy); font-weight:700; letter-spacing:.8px; } .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<!-- ============ PÁGINA A — MÉTODO PADRÃO (imprimir 1x, fica na prancheta) ============ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Vargas Decor Ltda · Belo Horizonte / MG · Conferência Técnica</div></div></div>
+    <div class="tt">Método Padrão de Medição</div>
+    <div class="kx">O jeito Valvic de medir · imprimir 1× e deixar na prancheta</div>
+  </div>
+  <div class="body">
+    <p style="font-size:9.5px;color:#33404d;line-height:1.55;margin-bottom:8px">O profissional já sabe cotar. O que padroniza a medição — e evita o retrabalho na produção — são <b style="color:var(--navy)">estes 10 combinados</b>. Não é sobre <i>como</i> medir, é sobre <b style="color:var(--navy)">não deixar buraco de informação</b>.</p>
+    <ol class="pop">
+      <li><span class="n">1</span><b>Unidade sempre em milímetros (mm).</b> Sem cm, sem "mais ou menos".</li>
+      <li><span class="n">2</span><b>Canto de referência por ambiente.</b> Escolha um canto (0,0) e cote tudo a partir dele — some ambiguidade de direção.</li>
+      <li><span class="n">3</span><b>Parede fora de esquadro → meça em 3 alturas</b> (base, meio, topo) e use a <b>menor</b>; anote a diferença (o desaprumo importa para a produção).</li>
+      <li><span class="n">4</span><b>Esquadro do ambiente:</b> confira as <b>diagonais</b>. Diferentes = ambiente torto, precisa folga/ajuste.</li>
+      <li><span class="n">5</span><b>Pé-direito e rebaixo de forro/sanca:</b> meça a <b>altura livre real</b> — é ela que limita torre e aéreo (a sanca de LED "come" altura).</li>
+      <li><span class="n">6</span><b>Foto limpa + foto cotada</b> de cada parede. Nomeie <b>Ambiente-Parede</b> (não "IMG_0553"). Cor no croqui: <b style="color:var(--red)">vermelho</b> = parede/arquitetura, <b style="color:var(--blue)">azul</b> = detalhe/interferência.</li>
+      <li><span class="n">7</span><b>Cote TODA interferência</b> em X,Y do canto de referência: tomada, interruptor, água, esgoto, gás, registro, ar-condicionado, viga, "buraco".</li>
+      <li><span class="n">8</span><b>Confira se o revestimento está pronto</b> (piso e parede). Se não estiver, a medida muda — registre "medida sobre contrapiso/reboco".</li>
+      <li><span class="n">9</span><b>Nicho de embutido = medida do aparelho.</b> Bata com a <b>marca+modelo</b> do Escopo de Venda; na dúvida, meça o vão e sinalize "confirmar eletro".</li>
+      <li><span class="n">10</span><b>Acesso:</b> confira se o <b>maior módulo passa</b> pela porta/corredor/curva/elevador até o ambiente.</li>
+    </ol>
+    <div class="note navy"><div class="nh">Regra de ouro</div><p>Medida não é opinião. <b>Na dúvida, meça de novo e fotografe.</b> É mais barato voltar à obra hoje do que refazer um móvel amanhã. Toda ficha volta com as <b>fotos nomeadas e salvas no Drive</b>, na pasta do cliente.</p></div>
+  </div>
+  <div class="pf"><div class="pl">Ficha de Medição · Valvic Marcenaria — Vargas Decor Ltda · Conferência Técnica</div><div class="pr">MÉTODO PADRÃO <span>·</span> A</div></div>
+</section>
+
+<!-- ============ PÁGINA B — FICHA DE MEDIÇÃO (por ambiente) ============ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Ficha de Medição — imprimir 1 por ambiente</div></div></div>
+    <div class="tt">Ficha de Medição · Levantamento</div>
+    <div class="kx">Medidas em mm · anexar as fotos cotadas</div>
+  </div>
+  <div class="body">
+    <div class="box pad">
+      <div class="grid g4" style="margin-bottom:6px">
+        <div class="field"><span class="fl"><b>Cliente / OP:</b></span><span class="fill"></span></div>
+        <div class="field"><span class="fl"><b>Ambiente:</b></span><span class="fill"></span></div>
+        <div class="field"><span class="fl">Medidor:</span><span class="fill"></span></div>
+        <div class="field"><span class="fl">Data:</span><span class="fill"></span></div>
+      </div>
+      <div class="grid g5">
+        <div class="field"><span class="fl">Pé-direito:</span><span class="fill"></span></div>
+        <div class="field"><span class="fl">Forro/sanca (livre):</span><span class="fill"></span></div>
+        <div class="field"><span class="fl">Piso nivelado?</span><span class="fill"></span></div>
+        <div class="field"><span class="fl">Revest. pronto?</span><span class="fill"></span></div>
+        <div class="field"><span class="fl">Canto de ref.:</span><span class="fill"></span></div>
+      </div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Pontos de atenção <small>· marque o que conferiu / se aplica</small></span></div>
+    <ul class="att">
+      <li class="hot"><span class="cb"></span><span><span class="cm">⚑</span> <b>Prumo/esquadro</b> conferidos (diagonais); parede fora de esquadro anotada</span></li>
+      <li class="hot"><span class="cb"></span><span><span class="cm">⚑</span> <b>Pé-direito e forro/sanca</b> (altura livre que limita torre/aéreo)</span></li>
+      <li><span class="cb"></span><span>Piso <b>nivelado</b>? desnível → prever pé regulável</span></li>
+      <li class="hot"><span class="cb"></span><span><span class="cm">⚑</span> <b>Elétrica:</b> tomadas, interruptores, ponto de força do eletro</span></li>
+      <li class="hot"><span class="cb"></span><span><span class="cm">⚑</span> <b>Hidráulica/gás:</b> água, esgoto, registro, gás</span></li>
+      <li><span class="cb"></span><span>Ar-condicionado / dreno / tubulação aparente</span></li>
+      <li><span class="cb"></span><span>Viga, coluna, quina, retorno, peitoril de janela</span></li>
+      <li><span class="cb"></span><span>Rodapé / batente / soleira que encosta no móvel</span></li>
+      <li class="hot"><span class="cb"></span><span><span class="cm">⚑</span> Ponto de força bate com o <b>embutido (marca+modelo)</b> do escopo</span></li>
+      <li><span class="cb"></span><span>Irregularidade/"buraco"/reentrância na parede</span></li>
+      <li class="hot"><span class="cb"></span><span><span class="cm">⚑</span> <b>Acesso:</b> o maior módulo passa (porta/corredor/curva/elevador)?</span></li>
+      <li><span class="cb"></span><span>Divergência <b>projeto × obra</b> sinalizada</span></li>
+    </ul>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Croqui do ambiente <small>· planta / elevação + interferências (X,Y do canto de ref.)</small></span></div>
+    <div class="croqui"><span class="cl">Desenhe as paredes e marque cada interferência com a cota</span><span class="leg"><b class="r">■</b> arquitetura &nbsp; <b class="b">■</b> detalhe/interferência</span></div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Cotas principais &nbsp;·&nbsp; fotos anexas</span></div>
+    <div class="grid g2" style="gap:10px">
+      <table>
+        <thead><tr><th>Parede / elemento</th><th style="width:52px">Larg.</th><th style="width:52px">Alt.*</th><th style="width:52px">Prof./vão</th></tr></thead>
+        <tbody>
+          <tr><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+      <table>
+        <thead><tr><th>Foto (nome: Ambiente-Parede)</th><th style="width:64px">Cotada?</th></tr></thead>
+        <tbody>
+          <tr><td></td><td>☐ sim ☐ não</td></tr>
+          <tr><td></td><td>☐ sim ☐ não</td></tr>
+          <tr><td></td><td>☐ sim ☐ não</td></tr>
+          <tr><td></td><td>☐ sim ☐ não</td></tr>
+          <tr><td></td><td>☐ sim ☐ não</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:7.6px;color:var(--muted);margin-top:4px;font-style:italic">* Altura = a MENOR das 3 medições (base/meio/topo). Tudo em milímetros. Fotos salvas na pasta do cliente no Drive.</p>
+  </div>
+  <div class="pf"><div class="pl">Ficha de Medição · Valvic Marcenaria — Vargas Decor Ltda · Conferência Técnica</div><div class="pr">FICHA POR AMBIENTE <span>·</span> B</div></div>
+</section>
+
+</body>
+</html>
