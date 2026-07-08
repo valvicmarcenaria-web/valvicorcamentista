@@ -47,6 +47,14 @@ fundador, exato como o software de produção**.
 - **Otimização em paralelo.** Para todo ponto caro, já pensar numa versão enxuta.
 - **Rápido E preciso (sem modelar em 3D).** O 3D de produção é só para negócio
   fechado. **Mas nunca trocar velocidade por completude.**
+- **⛔ Fora do escopo Valvic — NUNCA nosso (não perguntar, é sempre do cliente/obra):**
+  **(1) marmoraria / pedra** (mármore, granito, quartzo, cubas esculpidas, bancadas,
+  tampos e painéis de pedra, sóculos de pedra, jardineiras de pedra); **(2) drywall /
+  alvenaria / gesso** (paredes, meia-paredes, painéis de drywall, sóculos de alvenaria,
+  forros); **(3) louças e metais / hidráulica** (cubas de louça, torneiras, misturadores).
+  Orçar SÓ a **marcenaria** (MDF, ferragens, vidros/espelhos dos móveis, LED embutido).
+  Esses terceiros entram no máximo como **referência** para o cliente enxergar o conjunto —
+  **nunca no preço da Valvic.** *(Regra Jonathan, cravada 08/07/2026 — Clínica Nura.)*
 
 ## ⛔ REGRA DE OURO — A TRAVA DE COMPLETUDE
 
