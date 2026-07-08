@@ -88,6 +88,39 @@ Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
 
 ## Diário de sessões
 
+### [2026-07-08] SESSÃO COMPACTADA — Apto CV (propostas) + Alexandre e Gisele (banheiros)
+> Resumo durável da sessão (contexto preservado a pedido do fundador).
+
+**A) Apto CV — Ana Carolina Valente (arq. Bruna Rezende / Estúdio Gráza) — PROPOSTAS.**
+Sobre a calibração de 07/02 (valores reais do fundador), construí as propostas comerciais:
+- **Layout de referência = "Juliana"** (o fundador mandou o PDF): editorial de 8 páginas — capa com hero,
+  "Por que Valvic" (4 razões c/ ícones), processo em 8 etapas (página escura), descritivo por ambiente,
+  depoimento (Graciene), investimento, CTA. É o **layout premium padrão** agora (≠ Carla/Family).
+- **Proposta Essencial + Gold** (`proposta-apto-cv.html`+PDF, 7 págs): duas linhas lado a lado —
+  **Essencial (Hardt oculta, garantia 5 anos) R$ 114.200** · **Gold (Hettich, 10 anos) R$ 128.600→129.600**
+  (portas divisoras Gold +R$1.000 = sistema de correr importado). Comparação Essencial×Gold em 2 colunas;
+  CTA com **ícone de escudo (SVG) "dobro de garantia"** enquadrando o pacote Hettich (suavidade/soft-close +
+  garantia, não só tempo). **Imagens = renders REAIS extraídos dos PDFs executivos** (`pdfimages`) — capa sala/TV,
+  cozinha, jantar. **LED é NOSSO** (por conta da Valvic, explícito).
+- **Proposta de FECHAMENTO** (`proposta-apto-cv-fechamento.html`+PDF): só Essencial, tom de parabéns/decisão,
+  descritivo consolidado, condição **5% desc → R$ 108.490, entrada 30% + 10× sem juros**.
+- **Memorial descritivo técnico** (`memorial-descritivo-apto-cv.md`+`.html`+PDF): anexo de contrato, item a item,
+  specs de material/ferragem, escopo incluso×cliente, SEM quantidade de insumo (regra do descritivo p/ contrato).
+- *Aprendizados: layout Juliana = padrão premium; extrair render real do executivo eleva a proposta; garantia
+  não é só "tempo", é o pacote de ferragem; evitar repetir a marca "Valvic" em toda página (redundante).*
+
+**B) Alexandre e Gisele — Banheiros (cliente recorrente · arq. Ionah Pinho) — ORÇAMENTO FECHADO.**
+Ver entrada dedicada mais abaixo [2026-07-08]. Resumo: 6 gabinetes de bancada (5 suítes + apoio), Hardt oculta,
+puxador perfil cava alumínio, pedras FORA. **Fechado R$ 13.700** (MC 35%, material otimizado cortando estrutura
+interna da SOBRA da chapa de cor). Pagamento **60%+40% com 10% desc = R$ 12.300 (7.400+4.900)**, prazo 60 dias.
+Proposta `proposta-alexandre-gisele-banheiros.html`+PDF (3 págs, valor único, itens listados sem preço separado).
+Ajustes finais do fundador: tirar selo "cliente recorrente" (info interna, não é pro cliente); puxador APARECE
+(perfil cava é visível, não "sem puxador aparente"); valores redondos; escopo redundante removido.
+
+**PENDÊNCIA:** subir no Drive as propostas (Apto CV + Alexandre e Gisele) — bloqueado por aprovação de MCP write
+nesta sessão headless; o fundador precisa autorizar OU eu entrego os PDFs pra ele subir. Pasta destino:
+"Orçamentos Valvic" (id 1liWjdBNktz6C4087YhbJq0gufVwcYSBx) → criar subpasta por cliente.
+
 ### [2026-06-19] Lavinia — 3 orçamentos + proposta
 - **Samara (quarto, parceira Luana RT10):** nasceram a regra da curva, macho-fêmea, LED
   padrão, vidro+logística, fórmula de encargos (parceiro ~30%). Proposta Linha Family.
