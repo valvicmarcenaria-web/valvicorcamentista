@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kit do Marceneiro Montador — Relatórios de Obra · Valvic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  :root{ --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f; --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd; --green:#2f7d4f; --red:#b0413f; --amber:#c47d0e; --critbg:#fbf1e9; --crit:#9a3f1f; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:9px; line-height:1.35; -webkit-font-smoothing:antialiased; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:16px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; }
+  .ph{ background:var(--navy); color:#fff; padding:8mm 14mm 6mm; position:relative; }
+  .ph::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:2.5px; background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 42%,transparent 100%); }
+  .ph .top{ display:flex; align-items:center; gap:11px; }
+  .ph .mono{ width:34px; height:34px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:17px; color:var(--gold); }
+  .ph .co{ font-size:10px; font-weight:700; letter-spacing:2.4px; text-transform:uppercase; }
+  .ph .sub{ font-size:7.2px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:700; margin-top:6px; line-height:1.05; }
+  .ph .kx{ font-size:7.2px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-top:2px; }
+  .body{ flex:1; padding:5mm 14mm 0; display:flex; flex-direction:column; min-height:0; }
+  .fill{ display:inline-block; border-bottom:1px solid var(--navy2); height:10px; flex:1; }
+  .hdr{ border:1px solid var(--line); border-radius:7px; padding:6px 11px; background:#f4f1ea; margin-bottom:7px; }
+  .hdr .grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:5px 12px; }
+  .field{ display:flex; align-items:baseline; gap:5px; font-size:8.3px; } .field .fl{ color:var(--muted); white-space:nowrap; } .field .fl b{ color:var(--navy); font-weight:700; }
+  .sec{ display:flex; align-items:center; gap:8px; margin:8px 0 5px; } .sec:first-child{ margin-top:0; }
+  .sec .bar{ width:14px; height:2px; background:var(--gold); } .sec .tx{ font-size:8px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:var(--navy); } .sec .tx small{ color:var(--muted); font-weight:600; letter-spacing:.3px; text-transform:none; }
+  .cb{ display:inline-block; width:11px; height:11px; border:1.3px solid var(--navy2); border-radius:2.5px; flex-shrink:0; margin-top:1px; background:#fff; }
+  .chk{ list-style:none; } .chk.c2{ columns:2; column-gap:16px; }
+  .chk li{ display:flex; gap:6px; align-items:flex-start; font-size:8.3px; line-height:1.3; padding:2px 0; break-inside:avoid; color:#2f3a45; }
+  .chk li b{ color:var(--navy); } .chk li.hot{ background:var(--critbg); border-radius:4px; padding:2px 6px; } .chk li.hot .cb{ border-color:var(--crit); }
+  table{ width:100%; border-collapse:collapse; }
+  thead th{ background:var(--navy2); color:#fff; font-size:6.6px; font-weight:600; letter-spacing:.4px; text-transform:uppercase; padding:4px 7px; text-align:left; }
+  tbody td{ border:1px solid var(--line); height:20px; padding:2px 7px; font-size:7.8px; }
+  .note{ background:#fffaf0; border:1px solid #eed9a8; border-radius:7px; padding:7px 11px; margin-top:6px; }
+  .note .nh{ font-size:6.8px; letter-spacing:1.2px; text-transform:uppercase; color:var(--gold-dk); font-weight:700; margin-bottom:3px; }
+  .note p{ font-size:8.2px; line-height:1.45; color:#5a4a2c; } .note p b{ color:var(--navy); }
+  .note.navy{ background:var(--navy); border:none; } .note.navy .nh{ color:var(--gold); } .note.navy p{ color:rgba(255,255,255,.9); } .note.navy p b{ color:#fff; }
+  .lines{ border:1px solid var(--line); border-radius:7px; background:#fff; padding:8px 11px; }
+  .lines .ln{ border-bottom:1px solid var(--line2); height:15px; }
+  .auth{ border:1.4px solid var(--navy2); border-radius:8px; overflow:hidden; margin-top:7px; }
+  .auth .ah{ background:var(--navy); color:#fff; padding:4px 11px; font-size:7.8px; font-weight:800; letter-spacing:.7px; text-transform:uppercase; }
+  .auth .ab{ padding:8px 11px; display:flex; gap:16px; align-items:center; font-size:8.4px; flex-wrap:wrap; }
+  .auth .opt{ display:flex; align-items:center; gap:6px; font-weight:700; } .auth .opt .cb{ width:12px; }
+  .auth .opt.g{ color:var(--green); } .auth .opt.a{ color:var(--amber); } .auth .opt.r{ color:var(--red); }
+  .auth .sg{ margin-left:auto; text-align:right; color:var(--muted); font-size:7.6px; } .auth .sg .line{ width:150px; border-top:1px solid var(--navy2); margin-bottom:3px; margin-left:auto; }
+  .sign2{ display:flex; gap:26px; margin-top:12px; } .sign2 .c{ flex:1; text-align:center; } .sign2 .line{ border-top:1px solid var(--navy2); margin-bottom:4px; } .sign2 .cap{ font-size:7.6px; color:var(--muted); }
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:5px 14mm; display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf .pl{ font-size:6.4px; color:var(--muted); } .pf .pr{ font-size:7.2px; color:var(--navy); font-weight:700; letter-spacing:.8px; } .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<!-- ============ 5A — RELATÓRIO DE ENTRADA + POP PRÉ-MONTAGEM ============ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Vargas Decor Ltda · BH/MG · Montagem em obra · Relatório 1 de 3</div></div></div>
+    <div class="tt">Relatório de Entrada &amp; POP Pré-montagem</div>
+    <div class="kx">O que fazer ANTES de descarregar · registrar o estado real da obra</div>
+  </div>
+  <div class="body">
+    <div class="hdr"><div class="grid">
+      <div class="field"><span class="fl"><b>Cliente / OP:</b></span><span class="fill"></span></div>
+      <div class="field"><span class="fl">Ambiente(s):</span><span class="fill"></span></div>
+      <div class="field"><span class="fl">Montador:</span><span class="fill"></span></div>
+      <div class="field"><span class="fl">Data / hora:</span><span class="fill"></span></div>
+    </div></div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">POP · antes de descarregar qualquer peça</span></div>
+    <ul class="chk c2">
+      <li class="hot"><span class="cb"></span><span><b>Registrar fotos E vídeos</b> do ambiente no estado inicial (antes de tudo)</span></li>
+      <li class="hot"><span class="cb"></span><span>Conferir <b>recebimento × romaneio</b> (nada faltou/quebrou no transporte)</span></li>
+      <li><span class="cb"></span><span>Alocar volumes com <b>estratégia</b> (ordem de montagem, sem obstruir passagem)</span></li>
+      <li><span class="cb"></span><span><b>Proteger</b> piso, paredes e móveis do cliente antes de trabalhar</span></li>
+      <li><span class="cb"></span><span>Conferir <b>energia</b>, ponto de luz e água disponíveis</span></li>
+      <li class="hot"><span class="cb"></span><span><b>Registrar danos prévios</b> (do ambiente e do transporte) com foto</span></li>
+      <li><span class="cb"></span><span>Registrar <b>pendências</b> que impedem/dificultam a montagem</span></li>
+      <li><span class="cb"></span><span>Confirmar acesso: o <b>maior módulo passa</b> até o ambiente</span></li>
+    </ul>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Estado do ambiente encontrado <small>· marque tudo o que se aplica</small></span></div>
+    <ul class="chk c2">
+      <li><span class="cb"></span><span>Ambiente pronto e limpo, apto a montar</span></li>
+      <li class="hot"><span class="cb"></span><span><b>Obra ainda em execução</b> (outras equipes trabalhando)</span></li>
+      <li class="hot"><span class="cb"></span><span>Ambiente <b>sem energia</b> / sem água</span></li>
+      <li class="hot"><span class="cb"></span><span><b>Piso não nivelado</b> / não acabado (contrapiso)</span></li>
+      <li><span class="cb"></span><span>Parede fora de esquadro / prumo</span></li>
+      <li><span class="cb"></span><span>Revestimento não concluído (piso/parede/teto/gesso)</span></li>
+      <li class="hot"><span class="cb"></span><span><b>Medida divergente</b> do projeto (obra × projeto)</span></li>
+      <li><span class="cb"></span><span>Interferência não prevista (tomada, cano, viga, registro)</span></li>
+      <li class="hot"><span class="cb"></span><span><b>Acesso bloqueado</b> / módulo não passa</span></li>
+      <li><span class="cb"></span><span>Sujeira / entulho no ambiente</span></li>
+      <li><span class="cb"></span><span>Conflito de agenda com <b>terceiros</b> (pedra, gesso, elétrica)</span></li>
+      <li class="hot"><span class="cb"></span><span><b>Item de terceiros não chegou</b> (tampo/pedra, vidro, eletro)</span></li>
+      <li><span class="cb"></span><span>Ambiente ocupado (cliente morando)</span></li>
+      <li><span class="cb"></span><span>Presença de crianças / animais no ambiente</span></li>
+      <li><span class="cb"></span><span>Clima (chuva) afetando içamento/transporte</span></li>
+      <li><span class="cb"></span><span>Outro: _______________________________</span></li>
+    </ul>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Registro de danos / ocorrências de entrada</span></div>
+    <table>
+      <thead><tr><th style="width:120px">Item / local</th><th>Descrição do dano/ocorrência</th><th style="width:60px">Foto?</th><th style="width:90px">Origem provável</th></tr></thead>
+      <tbody>
+        <tr><td></td><td></td><td>☐ sim</td><td>☐ transp. ☐ fábrica ☐ obra</td></tr>
+        <tr><td></td><td></td><td>☐ sim</td><td>☐ transp. ☐ fábrica ☐ obra</td></tr>
+        <tr><td></td><td></td><td>☐ sim</td><td>☐ transp. ☐ fábrica ☐ obra</td></tr>
+      </tbody>
+    </table>
+
+    <div class="auth">
+      <div class="ah">Autorização para iniciar a montagem</div>
+      <div class="ab">
+        <div class="opt g"><span class="cb"></span>APTO — iniciar</div>
+        <div class="opt a"><span class="cb"></span>INICIAR COM RESSALVA (registrada acima)</div>
+        <div class="opt r"><span class="cb"></span>NÃO INICIAR — acionar a coordenação</div>
+        <div class="sg"><div class="line"></div>Montador · Data/hora</div>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Kit do Marceneiro Montador · Valvic Marcenaria — Vargas Decor Ltda</div><div class="pr">ENTRADA & PRÉ-MONTAGEM <span>·</span> 5A</div></div>
+</section>
+
+<!-- ============ 5B — RELATÓRIO DIÁRIO ============ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Montagem em obra · Relatório 2 de 3 · imprimir 1 por dia</div></div></div>
+    <div class="tt">Relatório Diário de Montagem</div>
+    <div class="kx">O que foi feito · o que deu errado · o que sugere</div>
+  </div>
+  <div class="body">
+    <div class="hdr"><div class="grid">
+      <div class="field"><span class="fl"><b>Cliente / OP:</b></span><span class="fill"></span></div>
+      <div class="field"><span class="fl">Data · Dia nº:</span><span class="fill"></span></div>
+      <div class="field"><span class="fl">Equipe (montador+ajud.):</span><span class="fill"></span></div>
+      <div class="field"><span class="fl">Horário (início–fim):</span><span class="fill"></span></div>
+    </div></div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">O que foi feito hoje <small>· por ambiente / módulo</small></span></div>
+    <table>
+      <thead><tr><th style="width:36%">Ambiente / módulo</th><th>Situação</th><th>Observação</th></tr></thead>
+      <tbody>
+        <tr><td></td><td>☐ concluído ☐ parcial ☐ pendente</td><td></td></tr>
+        <tr><td></td><td>☐ concluído ☐ parcial ☐ pendente</td><td></td></tr>
+        <tr><td></td><td>☐ concluído ☐ parcial ☐ pendente</td><td></td></tr>
+        <tr><td></td><td>☐ concluído ☐ parcial ☐ pendente</td><td></td></tr>
+        <tr><td></td><td>☐ concluído ☐ parcial ☐ pendente</td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Erros de fabricação encontrados</span></div>
+    <table>
+      <thead><tr><th style="width:32%">Peça / módulo</th><th>Erro</th><th style="width:130px">Ação</th><th style="width:78px">Fábrica avisada?</th></tr></thead>
+      <tbody>
+        <tr><td></td><td></td><td>☐ ajusta ☐ refaz</td><td>☐ sim ☐ não</td></tr>
+        <tr><td></td><td></td><td>☐ ajusta ☐ refaz</td><td>☐ sim ☐ não</td></tr>
+        <tr><td></td><td></td><td>☐ ajusta ☐ refaz</td><td>☐ sim ☐ não</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Avarias de transporte / danos de fábrica &nbsp;·&nbsp; ocorrências de cliente / terceiros</span></div>
+    <table>
+      <thead><tr><th style="width:90px">Tipo</th><th>Descrição</th><th style="width:110px">Providência / acionar</th><th style="width:52px">Foto?</th></tr></thead>
+      <tbody>
+        <tr><td>☐ transporte ☐ fábrica</td><td></td><td></td><td>☐ sim</td></tr>
+        <tr><td>☐ cliente ☐ terceiro</td><td></td><td></td><td>☐ sim</td></tr>
+        <tr><td>☐ ______________</td><td></td><td></td><td>☐ sim</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Sugestões de melhoria <small>· processo construtivo, fábrica, logística</small></span></div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Pendências &amp; materiais que faltam para amanhã</span></div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+
+    <div class="sign2">
+      <div class="c"><div class="line"></div><div class="cap">Montador responsável</div></div>
+      <div class="c"><div class="line"></div><div class="cap">Recebido pela coordenação · data</div></div>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Kit do Marceneiro Montador · Valvic Marcenaria — Vargas Decor Ltda</div><div class="pr">RELATÓRIO DIÁRIO <span>·</span> 5B</div></div>
+</section>
+
+<!-- ============ 5C·1 — VISTORIA FINAL (checklist) ============ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Montagem em obra · Relatório 3 de 3 · vistoria &amp; aceite</div></div></div>
+    <div class="tt">Relatório Final — Vistoria Minuciosa</div>
+    <div class="kx">Confira TUDO antes de chamar o cliente para o aceite</div>
+  </div>
+  <div class="body">
+    <div class="hdr"><div class="grid">
+      <div class="field"><span class="fl"><b>Cliente / OP:</b></span><span class="fill"></span></div>
+      <div class="field"><span class="fl">Ambiente(s):</span><span class="fill"></span></div>
+      <div class="field"><span class="fl">Data conclusão:</span><span class="fill"></span></div>
+      <div class="field"><span class="fl">Montador:</span><span class="fill"></span></div>
+    </div></div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Estrutura &amp; funcionamento</span></div>
+    <ul class="chk c2">
+      <li class="hot"><span class="cb"></span><span><b>Fixação e resistência</b>: móvel firme, bucha/parafuso corretos, não balança</span></li>
+      <li class="hot"><span class="cb"></span><span><b>Nivelamento e prumo</b>: pé regulável ajustado, tampo nivelado</span></li>
+      <li class="hot"><span class="cb"></span><span><b>Alinhamento</b> de portas/gavetas, <b>folgas uniformes</b>, frentes no plano</span></li>
+      <li><span class="cb"></span><span>Regulagem de ferragens (dobradiça, corrediça, soft-close, tip-on)</span></li>
+      <li><span class="cb"></span><span>Tudo <b>funciona</b>: abre/fecha, gaveta corre, porta de correr desliza</span></li>
+      <li><span class="cb"></span><span>Iluminação testada (LED / sensor)</span></li>
+      <li><span class="cb"></span><span>Tampo/bancada instalado, vedado e sem folga (se Valvic)</span></li>
+      <li><span class="cb"></span><span>Recortes (tomada / cuba / cooktop) corretos e alinhados</span></li>
+    </ul>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Acabamento &amp; finalização</span></div>
+    <ul class="chk c2">
+      <li><span class="cb"></span><span>Superfície sem risco, mancha ou cola; borda íntegra</span></li>
+      <li class="hot"><span class="cb"></span><span><b>Marcas de caneta / lápis</b> removidas</span></li>
+      <li class="hot"><span class="cb"></span><span><b>Tampinhas de parafuso</b> e de <b>sistema de fixação (minifix)</b> colocadas</span></li>
+      <li><span class="cb"></span><span>Arremates de perfil / rodapé / acabamento concluídos</span></li>
+      <li><span class="cb"></span><span>Silicone / vedação onde previsto (limpo, sem excesso)</span></li>
+      <li><span class="cb"></span><span>Puxadores e ferragens finais instalados</span></li>
+      <li class="hot"><span class="cb"></span><span><b>Limpeza interna</b> (dentro de armários e gavetas)</span></li>
+      <li><span class="cb"></span><span>Limpeza externa do móvel</span></li>
+      <li><span class="cb"></span><span>Ambiente limpo; embalagem e entulho recolhidos</span></li>
+      <li class="hot"><span class="cb"></span><span><b>Foto final</b> de cada ambiente registrada</span></li>
+    </ul>
+
+    <div class="note navy"><div class="nh">Regra</div><p>Só chame o cliente para o aceite <b>depois</b> de todos os itens marcados. Pendência que não dá para resolver na hora vai para a página seguinte e é <b>comunicada à coordenação</b>.</p></div>
+  </div>
+  <div class="pf"><div class="pl">Kit do Marceneiro Montador · Valvic Marcenaria — Vargas Decor Ltda</div><div class="pr">VISTORIA FINAL <span>·</span> 5C · 1/2</div></div>
+</section>
+
+<!-- ============ 5C·2 — PENDÊNCIAS, FEEDBACK & ACEITE ============ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Relatório Final — Cliente/OP: __________</div></div></div>
+    <div class="tt">Encerramento — Pendências, Feedback &amp; Aceite</div>
+    <div class="kx">O fecho da obra · assinado pelo cliente</div>
+  </div>
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Pendências remanescentes <small>· o que ficou para resolver</small></span></div>
+    <table>
+      <thead><tr><th>Pendência</th><th style="width:120px">Resolver quando</th><th style="width:100px">Responsável</th></tr></thead>
+      <tbody>
+        <tr><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Ocorrências &amp; advertências à equipe (ajudantes)</span></div>
+    <div class="lines"><div class="ln"></div><div class="ln"></div></div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Feedback do cliente</span></div>
+    <div class="hdr" style="background:#fff">
+      <div style="display:flex;gap:20px;font-size:8.6px;font-weight:700;margin-bottom:6px">
+        <span style="color:var(--green)"><span class="cb" style="border-color:var(--green)"></span> Muito satisfeito</span>
+        <span><span class="cb"></span> Satisfeito</span>
+        <span style="color:var(--red)"><span class="cb" style="border-color:var(--red)"></span> Insatisfeito</span>
+      </div>
+      <div class="lines" style="border:none;padding:0"><div class="ln"></div><div class="ln"></div></div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Aceite da entrega</span></div>
+    <div class="note"><div class="nh">Termo</div><p>Declaro que <b>recebi e conferi</b> os móveis do(s) ambiente(s) acima, que foram <b>montados e entregues</b> conforme o combinado, ressalvadas as pendências registradas nesta ficha.</p></div>
+    <div class="sign2" style="margin-top:16px">
+      <div class="c"><div class="line"></div><div class="cap">Cliente — nome e assinatura · data</div></div>
+      <div class="c"><div class="line"></div><div class="cap">Montador responsável — Valvic</div></div>
+    </div>
+    <div class="note navy" style="margin-top:14px"><div class="nh">Para a coordenação</div><p>Esta ficha final volta para a Valvic e alimenta o histórico do cliente: <b>erros de fabricação viram melhoria</b>, o <b>feedback</b> vira indicação/depoimento, e as <b>pendências</b> viram tarefa com prazo. Nada se perde.</p></div>
+  </div>
+  <div class="pf"><div class="pl">Kit do Marceneiro Montador · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">ACEITE <span>·</span> 5C · 2/2</div></div>
+</section>
+
+</body>
+</html>
