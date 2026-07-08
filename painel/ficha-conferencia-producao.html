@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ficha de Conferência — Linha de Produção Sob Medida · Valvic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  :root{ --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f; --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd; --green:#2f7d4f; --red:#b0413f; --blue:#2f5d8c; --crit:#9a3f1f; --critbg:#fbf1e9; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:9.5px; line-height:1.4; -webkit-font-smoothing:antialiased; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:16px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; }
+  .ph{ background:var(--navy); color:#fff; padding:9mm 14mm 7mm; position:relative; }
+  .ph::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:2.5px; background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 42%,transparent 100%); }
+  .ph .top{ display:flex; align-items:center; gap:11px; }
+  .ph .mono{ width:36px; height:36px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:18px; color:var(--gold); }
+  .ph .co{ font-size:10.5px; font-weight:700; letter-spacing:2.4px; text-transform:uppercase; }
+  .ph .sub{ font-size:7.5px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; margin-top:7px; line-height:1.05; }
+  .ph .kx{ font-size:7.5px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-top:2px; }
+  .body{ flex:1; padding:6mm 14mm 0; display:flex; flex-direction:column; min-height:0; }
+  .fill{ display:inline-block; border-bottom:1px solid var(--navy2); min-width:90px; height:11px; vertical-align:baseline; }
+  .fill.lg{ min-width:150px; } .fill.sm{ min-width:52px; } .fill.xs{ min-width:34px; }
+  /* barra de identificação da OP */
+  .opbar{ display:grid; grid-template-columns:1fr 1.6fr 1fr; gap:0; border:1.4px solid var(--navy2); border-radius:7px; overflow:hidden; margin-bottom:8px; }
+  .opbar .c{ padding:6px 10px; border-right:1px solid var(--line); font-size:9px; }
+  .opbar .c:last-child{ border-right:none; }
+  .opbar .l{ font-size:6.8px; letter-spacing:.8px; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:2px; }
+  .opbar .c b{ color:var(--navy); }
+  /* princípio */
+  .princ{ background:var(--navy); color:#fff; border-radius:7px; padding:8px 12px; margin-bottom:9px; }
+  .princ .pt{ font-size:7px; letter-spacing:1.4px; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }
+  .princ p{ font-size:8.4px; line-height:1.5; color:rgba(255,255,255,.9); } .princ b{ color:#fff; } .princ .cq{ color:var(--gold-soft); font-weight:800; }
+  /* portão */
+  .gate{ border:1px solid var(--line); border-radius:7px; overflow:hidden; margin-bottom:8px; background:#fff; break-inside:avoid; }
+  .gate .gh{ display:flex; align-items:center; gap:9px; padding:5px 11px; background:var(--navy); color:#fff; }
+  .gate .gh .gn{ width:19px; height:19px; border-radius:50%; background:var(--gold); color:var(--navy); font-weight:800; font-size:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .gate .gh .gt{ font-size:10px; font-weight:800; letter-spacing:.3px; text-transform:uppercase; }
+  .gate .gh .gtag{ margin-left:auto; font-size:6.6px; font-weight:700; letter-spacing:.6px; text-transform:uppercase; padding:1.5px 7px; border-radius:9px; background:rgba(255,255,255,.14); color:var(--gold-soft); }
+  .gate .gmeta{ display:flex; gap:16px; padding:5px 11px; background:#f4f1ea; border-bottom:1px solid var(--line); font-size:8.2px; color:var(--muted); }
+  .gate .gmeta b{ color:var(--navy); font-weight:600; }
+  .checks{ list-style:none; padding:5px 11px 4px; }
+  .checks li{ display:flex; gap:7px; align-items:flex-start; font-size:8.6px; line-height:1.35; padding:2.5px 0; color:#2f3a45; }
+  .checks li .cb{ width:11px; height:11px; border:1.3px solid var(--navy2); border-radius:2.5px; flex-shrink:0; margin-top:1px; background:#fff; }
+  .checks li b{ color:var(--navy); }
+  .checks li.crit{ background:var(--critbg); border-radius:4px; padding:2.5px 6px; margin:1px -6px; }
+  .checks li.crit .cb{ border-color:var(--crit); }
+  .checks li .cm{ color:var(--crit); font-weight:800; margin-right:1px; }
+  .gate .gfoot{ display:flex; align-items:center; gap:8px; padding:5px 11px; background:#f4f1ea; border-top:1px solid var(--line); font-size:8.4px; }
+  .gate .gfoot .lb{ color:var(--muted); } .gate .gfoot .to{ font-weight:800; color:var(--navy); text-transform:uppercase; letter-spacing:.3px; } .gate .gfoot .as{ margin-left:auto; color:var(--muted); }
+  /* NC + final */
+  .sec{ display:flex; align-items:center; gap:9px; margin:2px 0 7px; }
+  .sec .bar{ width:15px; height:2px; background:var(--gold); } .sec .tx{ font-size:8.4px; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:var(--navy); }
+  table{ width:100%; border-collapse:collapse; }
+  thead th{ background:var(--navy2); color:#fff; font-size:6.8px; font-weight:600; letter-spacing:.5px; text-transform:uppercase; padding:5px 8px; text-align:left; }
+  tbody td{ border:1px solid var(--line); height:26px; padding:3px 8px; font-size:8px; vertical-align:top; }
+  .ncnote{ font-size:8px; color:var(--muted); margin-top:5px; font-style:italic; }
+  .final{ border:1.4px solid var(--navy2); border-radius:8px; overflow:hidden; margin-top:10px; }
+  .final .fh{ background:var(--navy); color:#fff; padding:6px 12px; font-size:9px; font-weight:800; letter-spacing:1px; text-transform:uppercase; }
+  .final .fb{ padding:10px 13px; display:flex; gap:26px; align-items:flex-start; }
+  .final .opt{ display:flex; align-items:center; gap:7px; font-size:9.5px; font-weight:700; }
+  .final .opt .cb{ width:14px; height:14px; border:1.5px solid var(--navy2); border-radius:3px; }
+  .final .opt.ap{ color:var(--green); } .final .opt.ap .cb{ border-color:var(--green); }
+  .final .opt.rp{ color:var(--red); } .final .opt.rp .cb{ border-color:var(--red); }
+  .final .sign{ margin-left:auto; text-align:right; font-size:8px; color:var(--muted); }
+  .final .sign .line{ width:180px; border-top:1px solid var(--navy2); margin-bottom:3px; margin-left:auto; }
+  .note{ background:#fffaf0; border:1px solid #eed9a8; border-radius:7px; padding:8px 12px; margin-top:10px; }
+  .note .nh{ font-size:7.2px; letter-spacing:1.3px; text-transform:uppercase; color:var(--gold-dk); font-weight:700; margin-bottom:4px; }
+  .note p{ font-size:8.6px; line-height:1.5; color:#5a4a2c; } .note p b{ color:var(--navy); }
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:5px 14mm; display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf .pl{ font-size:6.6px; color:var(--muted); } .pf .pr{ font-size:7.4px; color:var(--navy); font-weight:700; letter-spacing:.8px; } .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<!-- ================= PÁGINA 1 ================= -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top">
+      <div class="mono">V</div>
+      <div><div class="co">Valvic Marcenaria</div><div class="sub">Vargas Decor Ltda · Belo Horizonte / MG · Coordenação de Produção</div></div>
+    </div>
+    <div class="tt">Ficha de Conferência — Linha de Produção Sob Medida</div>
+    <div class="kx">Sistema de portões de qualidade · uma ficha por OP · viaja o fluxo inteiro</div>
+  </div>
+  <div class="body">
+    <div class="opbar">
+      <div class="c"><span class="l">OP nº</span><span class="fill lg"></span></div>
+      <div class="c"><span class="l">Cliente / Obra</span><span class="fill lg"></span></div>
+      <div class="c"><span class="l">Módulo / Ambiente</span><span class="fill"></span></div>
+    </div>
+    <div class="opbar" style="grid-template-columns:1fr 1fr 1fr">
+      <div class="c"><span class="l">Data início</span>__/__/____</div>
+      <div class="c"><span class="l">Data término</span>__/__/____</div>
+      <div class="c"><span class="l">Qtd. volumes</span><span class="fill sm"></span></div>
+    </div>
+
+    <div class="princ">
+      <div class="pt">Como usar — a regra dos portões</div>
+      <p>Cada etapa é um <b>PORTÃO</b>. <span class="cq">Não se libera para a próxima sem conferir e assinar</span> — quem assina, responde. Os itens marcados <b style="color:var(--gold-soft)">⚑</b> são os <b>CRÍTICOS</b>: causam a maioria dos retrabalhos — <b>nunca pular</b>. Achou problema? Registra na <b>Não Conformidade</b> (pág. 4) e resolve <b>antes</b> de liberar.</p>
+    </div>
+
+    <!-- Portão 0 -->
+    <div class="gate">
+      <div class="gh"><span class="gn">0</span><span class="gt">Escopo de Venda & Projeto — entrada da produção</span><span class="gtag">Comercial → Produção</span></div>
+      <div class="gmeta">Responsável: <b>Jonathan / Comercial</b> &nbsp; Data/Hora: <span class="fill sm"></span></div>
+      <ul class="checks">
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Escopo <b>100% definido</b>: cor, chapa, borda, puxador, ferragens, medidas e prazo — <b>nada "a confirmar"</b></span></li>
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Projeto técnico <b>atualizado e aprovado</b> (última versão, sem pendência do cliente/arquiteto)</span></li>
+        <li><span class="cb"></span><span>Particularidades da obra registradas: acesso, elevador, prazo, restrição de horário</span></li>
+        <li><span class="cb"></span><span>Dúvidas do escopo <b>resolvidas com o comercial ANTES</b> de iniciar (não durante)</span></li>
+      </ul>
+      <div class="gfoot"><span class="lb">Libera para:</span><span class="to">Conferência Técnica</span><span class="as">Ass: <span class="fill"></span></span></div>
+    </div>
+
+    <!-- Portão 1 -->
+    <div class="gate">
+      <div class="gh"><span class="gn">1</span><span class="gt">Conferência Técnica / Medição (na obra)</span><span class="gtag">Paulo / Deivson</span></div>
+      <div class="gmeta">Responsável: <span class="fill"></span> &nbsp; Data/Hora: <span class="fill sm"></span></div>
+      <ul class="checks">
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Medição conferida no local (<b>medir 2×</b>): vãos, prumo, nível e esquadro do ambiente</span></li>
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Interferências mapeadas: tomada, hidráulica, viga, tubulação, cuba, cooktop, ar-condicionado</span></li>
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> <b>Fotos com medição salvas no Drive</b> (rastreável, na pasta do cliente)</span></li>
+        <li><span class="cb"></span><span>Revestimento/piso/teto e tipo de parede (drywall/alvenaria) confirmados</span></li>
+        <li><span class="cb"></span><span>Divergência <b>projeto × obra</b> sinalizada e resolvida <b>antes</b> de programar</span></li>
+      </ul>
+      <div class="gfoot"><span class="lb">Libera para:</span><span class="to">Programação / PCP</span><span class="as">Ass: <span class="fill"></span></span></div>
+    </div>
+
+    <!-- Portão 2 -->
+    <div class="gate">
+      <div class="gh"><span class="gn">2</span><span class="gt">Programação / PCP</span><span class="gtag">Programador</span></div>
+      <div class="gmeta">Responsável: <span class="fill"></span> &nbsp; Data/Hora: <span class="fill sm"></span></div>
+      <ul class="checks">
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Projeto técnico conferido: medidas, modulação e <b>sentido de abertura</b></span></li>
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Lista de Materiais (LM) gerada <b>bate com o projeto</b></span></li>
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Cor, chapa, borda e puxador <b>confirmados código a código</b></span></li>
+        <li><span class="cb"></span><span>Furações especiais e acessórios lançados no sistema</span></li>
+        <li><span class="cb"></span><span>OP impressa + <b>etiqueta de rastreio por peça</b></span></li>
+      </ul>
+      <div class="gfoot"><span class="lb">Libera para:</span><span class="to">Corte / CNC</span><span class="as">Ass: <span class="fill"></span></span></div>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Ficha de Conferência · Valvic Marcenaria — Vargas Decor Ltda · Coordenação de Produção</div><div class="pr">ENTRADA & PROGRAMAÇÃO <span>·</span> 1/4</div></div>
+</section>
+
+<!-- ================= PÁGINA 2 ================= -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Ficha de Conferência — OP nº ______ (repetir no topo de cada página)</div></div></div>
+    <div class="tt">Fabricação — corte, borda e pré-montagem</div>
+    <div class="kx">Portões 3 a 5 · o coração da fábrica</div>
+  </div>
+  <div class="body">
+    <!-- Portão 3 -->
+    <div class="gate">
+      <div class="gh"><span class="gn">3</span><span class="gt">Corte / CNC</span><span class="gtag">Operador CNC</span></div>
+      <div class="gmeta">Responsável: <span class="fill"></span> &nbsp; Data/Hora: <span class="fill sm"></span></div>
+      <ul class="checks">
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Programa CNC correto carregado: <b>nome da OP + versão</b></span></li>
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Chapa correta na mesa: <b>cor, lote e espessura</b> conferidos e fixados</span></li>
+        <li><span class="cb"></span><span>Zero-peça e vácuo conferidos</span></li>
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Medidas finais, furações e usinagens <b>batem com o desenho</b></span></li>
+        <li><span class="cb"></span><span>Peças numeradas/etiquetadas conforme OP <b>ao sair da mesa</b></span></li>
+        <li><span class="cb"></span><span>Sem lasca, queima ou deslocamento na usinagem</span></li>
+      </ul>
+      <div class="gfoot"><span class="lb">Libera para:</span><span class="to">Fita de Borda</span><span class="as">Ass: <span class="fill"></span></span></div>
+    </div>
+
+    <!-- Portão 4 -->
+    <div class="gate">
+      <div class="gh"><span class="gn">4</span><span class="gt">Fita de Borda / Coladeira</span><span class="gtag">Coladeira</span></div>
+      <div class="gmeta">Responsável: <span class="fill"></span> &nbsp; Data/Hora: <span class="fill sm"></span></div>
+      <ul class="checks">
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Cor/espessura da borda <b>conforme projeto</b></span></li>
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Colagem <b>100%</b>: sem descole, excesso ou falha</span></li>
+        <li><span class="cb"></span><span>Refile limpo, sem rebarba ou queimado</span></li>
+        <li><span class="cb"></span><span>Canto arredondado / raio conforme padrão Valvic</span></li>
+        <li><span class="cb"></span><span>Peça limpa, sem cola aparente</span></li>
+      </ul>
+      <div class="gfoot"><span class="lb">Libera para:</span><span class="to">Pré-montagem</span><span class="as">Ass: <span class="fill"></span></span></div>
+    </div>
+
+    <!-- Portão 5 -->
+    <div class="gate">
+      <div class="gh"><span class="gn">5</span><span class="gt">Pré-montagem / Furação / Usinagem</span><span class="gtag">Marceneiro</span></div>
+      <div class="gmeta">Responsável: <span class="fill"></span> &nbsp; Data/Hora: <span class="fill sm"></span></div>
+      <ul class="checks">
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Furações de dobradiça/corrediça na <b>posição E no lado certo</b></span></li>
+        <li><span class="cb"></span><span>Furo minifix/cavilha com <b>profundidade correta</b></span></li>
+        <li><span class="cb"></span><span>Usinagem de puxador/tirador/concha ok</span></li>
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Teste de esquadro: <b>diagonais iguais</b></span></li>
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> <b>Montagem a seco confere</b>: portas/gavetas alinham, folgas uniformes</span></li>
+      </ul>
+      <div class="gfoot"><span class="lb">Libera para:</span><span class="to">Embalagem</span><span class="as">Ass: <span class="fill"></span></span></div>
+    </div>
+
+    <div class="note"><div class="nh">Regra de ouro da fábrica</div><p>Peça que não passou no portão <b>não avança</b> — volta para a etapa e o problema entra na Não Conformidade. <b>É mais barato parar aqui do que refazer na obra</b> (onde o custo é transporte + mão de obra + imagem com o cliente).</p></div>
+  </div>
+  <div class="pf"><div class="pl">Ficha de Conferência · Valvic Marcenaria — Vargas Decor Ltda · Coordenação de Produção</div><div class="pr">FABRICAÇÃO <span>·</span> 2/4</div></div>
+</section>
+
+<!-- ================= PÁGINA 3 ================= -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Ficha de Conferência — OP nº ______</div></div></div>
+    <div class="tt">Expedição e Entrega</div>
+    <div class="kx">Portões 6 a 8 · da fábrica ao aceite do cliente</div>
+  </div>
+  <div class="body">
+    <!-- Portão 6 -->
+    <div class="gate">
+      <div class="gh"><span class="gn">6</span><span class="gt">Embalagem / Expedição</span><span class="gtag">Embalagem</span></div>
+      <div class="gmeta">Responsável: <span class="fill"></span> &nbsp; Data/Hora: <span class="fill sm"></span></div>
+      <ul class="checks">
+        <li><span class="cb"></span><span>Peça limpa, sem pó, cola ou mancha</span></li>
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Ferragens do módulo em <b>kit/saco etiquetado</b> — nada solto</span></li>
+        <li><span class="cb"></span><span>Proteção: cantoneira + plástico bolha + stretch</span></li>
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Volume identificado: <b>Cliente + Módulo + Cômodo</b></span></li>
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Qtd. de volumes <b>bate com o romaneio</b> da OP</span></li>
+      </ul>
+      <div class="gfoot"><span class="lb">Libera para:</span><span class="to">Carregamento</span><span class="as">Ass: <span class="fill"></span></span></div>
+    </div>
+
+    <!-- Portão 7 -->
+    <div class="gate">
+      <div class="gh"><span class="gn">7</span><span class="gt">Carregamento</span><span class="gtag">Expedição / Motorista</span></div>
+      <div class="gmeta">Responsável: <span class="fill"></span> &nbsp; Data/Hora: <span class="fill sm"></span></div>
+      <ul class="checks">
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Conferência <b>física × romaneio</b>: quantidade e código de cada volume</span></li>
+        <li><span class="cb"></span><span>Ordem de carga = <b>ordem de montagem</b> (o que monta primeiro, descarrega primeiro)</span></li>
+        <li><span class="cb"></span><span>Peças grandes / tampos travados e protegidos</span></li>
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> <b>Foto da carga</b> no caminhão/baú</span></li>
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Nota + romaneio + <b>termo de entrega</b> com o motorista</span></li>
+      </ul>
+      <div class="gfoot"><span class="lb">Libera para:</span><span class="to">Montagem na Obra</span><span class="as">Ass: <span class="fill"></span></span></div>
+    </div>
+
+    <!-- Portão 8 -->
+    <div class="gate">
+      <div class="gh"><span class="gn">8</span><span class="gt">Montagem & Entrega na Obra</span><span class="gtag">Montagem</span></div>
+      <div class="gmeta">Responsável: <span class="fill"></span> &nbsp; Data/Hora: <span class="fill sm"></span></div>
+      <ul class="checks">
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Recebimento na obra <b>× romaneio</b>: nada faltou nem quebrou no transporte</span></li>
+        <li><span class="cb"></span><span>Ambiente do cliente protegido (piso, paredes, móveis)</span></li>
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Nivelamento, prumo e <b>fixação correta para o tipo de parede</b></span></li>
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> Portas/gavetas alinhadas, <b>folgas uniformes</b>, tudo funcionando</span></li>
+        <li><span class="cb"></span><span>Arremates, vedação (silicone) e iluminação concluídos</span></li>
+        <li class="crit"><span class="cb"></span><span><span class="cm">⚑</span> <b>Vistoria / aceite com o cliente</b> (checklist de entrega assinado)</span></li>
+        <li><span class="cb"></span><span>Local limpo, entulho recolhido; pendências anotadas e comunicadas</span></li>
+      </ul>
+      <div class="gfoot"><span class="lb">Libera para:</span><span class="to">Pós-venda / Encerramento</span><span class="as">Ass: <span class="fill"></span></span></div>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Ficha de Conferência · Valvic Marcenaria — Vargas Decor Ltda · Coordenação de Produção</div><div class="pr">EXPEDIÇÃO & ENTREGA <span>·</span> 3/4</div></div>
+</section>
+
+<!-- ================= PÁGINA 4 ================= -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Ficha de Conferência — OP nº ______</div></div></div>
+    <div class="tt">Não Conformidade & Liberação Final</div>
+    <div class="kx">O que deu errado vira dado — para atacar a causa, não o sintoma</div>
+  </div>
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Registro de Não Conformidade (NC)</span></div>
+    <table>
+      <thead><tr><th style="width:66px">Portão / etapa</th><th>Problema identificado</th><th style="width:120px">Causa provável</th><th>Ação corretiva</th><th style="width:60px">Resp.</th><th style="width:52px">Data</th></tr></thead>
+      <tbody>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+    <p class="ncnote">Preencher SEMPRE que algo for reprovado em um portão. A “causa provável” é o campo mais importante — é dela que sai a melhoria do processo.</p>
+
+    <div class="note"><div class="nh">O que a Coordenação faz com as NCs (mensal)</div><p>As NCs do mês são somadas por <b>portão e por causa</b>. A causa que mais repete vira <b>ação de melhoria</b> — ajuste de POP, treinamento, mudança de layout ou dispositivo à prova de erro. <b>Retrabalho que se repete é falha de processo, não de pessoa</b> — a ficha existe para revelar isso.</p></div>
+
+    <div class="sec" style="margin-top:12px"><span class="bar"></span><span class="tx">Liberação Final da OP</span></div>
+    <div class="final">
+      <div class="fh">Autorização de encerramento da OP</div>
+      <div class="fb">
+        <div class="opt ap"><span class="cb"></span>APROVADO — entrega/carregamento autorizado</div>
+        <div class="opt rp"><span class="cb"></span>REPROVADO — retornar para o portão nº <span class="fill xs"></span></div>
+        <div class="sign"><div class="line"></div>Gestor de Produção · Data: __/__/____</div>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:12px"><div class="nh">Como esta ficha "cerca" o erro</div><p><b>1.</b> Nada avança sem assinatura → ninguém "esquece" uma etapa. <b>2.</b> O erro é pego no portão mais barato (quanto antes, mais barato). <b>3.</b> O item ⚑ obriga o olhar no que mais causa retrabalho. <b>4.</b> A NC transforma o problema em dado, e o dado em melhoria. <b>Uma ficha por OP, do escopo ao aceite — rastreável de ponta a ponta.</b></p></div>
+  </div>
+  <div class="pf"><div class="pl">Ficha de Conferência · Valvic Marcenaria — Vargas Decor Ltda · Coordenação de Produção · Julho/2026</div><div class="pr">NC & LIBERAÇÃO <span>·</span> 4/4</div></div>
+</section>
+
+</body>
+</html>
