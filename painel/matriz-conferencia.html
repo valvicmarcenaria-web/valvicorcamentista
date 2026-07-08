@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Matriz de Conferência do Marceneiro — Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  :root{ --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f; --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd; --green:#2f7d4f; --amber:#c9a227; --red:#b0413f; --blue:#2f5d8c; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:9.5px; line-height:1.4; -webkit-font-smoothing:antialiased; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:16px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; }
+  .ph{ background:var(--navy); color:#fff; padding:9mm 14mm 7mm; position:relative; }
+  .ph::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:2.5px; background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 42%,transparent 100%); }
+  .ph .top{ display:flex; align-items:center; gap:11px; }
+  .ph .mono{ width:36px; height:36px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:18px; color:var(--gold); }
+  .ph .co{ font-size:10.5px; font-weight:700; letter-spacing:2.4px; text-transform:uppercase; }
+  .ph .sub{ font-size:7.5px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; margin-top:7px; line-height:1.05; }
+  .ph .kx{ font-size:7.5px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-top:2px; }
+  .body{ flex:1; padding:6mm 14mm 0; display:flex; flex-direction:column; min-height:0; }
+  .fill{ display:inline-block; border-bottom:1px solid var(--navy2); height:11px; flex:1; }
+  .sec{ display:flex; align-items:center; gap:9px; margin:9px 0 6px; } .sec:first-child{ margin-top:0; }
+  .sec .bar{ width:15px; height:2px; background:var(--gold); } .sec .tx{ font-size:8.2px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); } .sec .tx small{ color:var(--muted); font-weight:600; letter-spacing:.4px; text-transform:none; }
+  .box{ border:1px solid var(--line); border-radius:7px; padding:9px 12px; background:#fff; } .box.pad{ background:#f4f1ea; }
+  .grid{ display:grid; gap:6px 12px; } .g2{ grid-template-columns:1fr 1fr; } .g4{ grid-template-columns:repeat(4,1fr); }
+  .field{ display:flex; align-items:baseline; gap:5px; font-size:8.5px; } .field .fl{ color:var(--muted); white-space:nowrap; } .field .fl b{ color:var(--navy); font-weight:700; }
+  .cb{ display:inline-block; width:11px; height:11px; border:1.3px solid var(--navy2); border-radius:2.5px; flex-shrink:0; vertical-align:-1px; background:#fff; }
+  .dot{ display:inline-block; width:15px; height:15px; border:1.5px solid var(--navy2); border-radius:50%; background:#fff; }
+  /* código de cores */
+  .colors{ display:grid; grid-template-columns:repeat(4,1fr); gap:9px; }
+  .colr{ display:flex; gap:8px; align-items:flex-start; border:1px solid var(--line); border-radius:7px; padding:8px 10px; background:#fff; }
+  .colr .cd{ width:18px; height:18px; border-radius:50%; flex-shrink:0; margin-top:1px; border:1px solid rgba(0,0,0,.12); }
+  .colr .g{ background:var(--green); } .colr .a{ background:var(--amber); } .colr .r{ background:var(--red); } .colr .b{ background:var(--blue); }
+  .colr .ct{ font-size:9px; font-weight:800; color:var(--navy); } .colr .cs{ font-size:8px; color:var(--muted); line-height:1.35; margin-top:1px; }
+  /* critérios */
+  .crit{ list-style:none; }
+  .crit li{ font-size:8.8px; line-height:1.45; padding:4px 0; border-bottom:1px dotted var(--line2); color:#33404d; } .crit li:last-child{ border-bottom:none; }
+  .crit li b{ color:var(--navy); }
+  /* matriz */
+  table.mx{ width:100%; border-collapse:collapse; table-layout:fixed; }
+  table.mx th{ background:var(--navy2); color:#fff; font-size:6.6px; font-weight:700; letter-spacing:.2px; text-transform:uppercase; padding:5px 3px; text-align:center; vertical-align:middle; line-height:1.15; border:1px solid var(--navy); }
+  table.mx th.mod{ text-align:left; padding-left:8px; width:27%; } table.mx th.obs{ width:16%; text-align:left; padding-left:8px; } table.mx th.ade{ width:9%; }
+  table.mx td{ border:1px solid var(--line); height:24px; padding:2px; text-align:center; vertical-align:middle; font-size:8px; }
+  table.mx td.mod{ text-align:left; padding-left:8px; }
+  table.mx tbody tr:nth-child(even) td{ background:#f7f5ef; }
+  table.mx .cbx{ display:inline-block; width:12px; height:12px; border:1.3px solid var(--navy2); border-radius:2.5px; background:#fff; }
+  table.mx .odot{ display:inline-block; width:15px; height:15px; border:1.4px solid var(--navy2); border-radius:50%; background:#fff; }
+  .note{ background:#fffaf0; border:1px solid #eed9a8; border-radius:7px; padding:8px 12px; margin-top:8px; }
+  .note .nh{ font-size:7px; letter-spacing:1.3px; text-transform:uppercase; color:var(--gold-dk); font-weight:700; margin-bottom:4px; }
+  .note p{ font-size:8.5px; line-height:1.5; color:#5a4a2c; } .note p b{ color:var(--navy); }
+  .note.navy{ background:var(--navy); border:none; } .note.navy .nh{ color:var(--gold); } .note.navy p{ color:rgba(255,255,255,.9); } .note.navy p b{ color:#fff; }
+  .libera{ border:1.4px solid var(--navy2); border-radius:8px; overflow:hidden; margin-top:9px; }
+  .libera .lh{ background:var(--navy); color:#fff; padding:5px 12px; font-size:8.5px; font-weight:800; letter-spacing:.8px; text-transform:uppercase; }
+  .libera .lb{ padding:9px 12px; display:flex; gap:22px; align-items:center; }
+  .libera .opt{ display:flex; align-items:center; gap:7px; font-size:9px; font-weight:700; } .libera .opt.ok{ color:var(--green); } .libera .opt.rt{ color:var(--red); }
+  .libera .opt .cb{ width:13px; height:13px; } .libera .sg{ margin-left:auto; font-size:8px; color:var(--muted); text-align:right; } .libera .sg .line{ width:170px; border-top:1px solid var(--navy2); margin-bottom:3px; margin-left:auto; }
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:5px 14mm; display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf .pl{ font-size:6.6px; color:var(--muted); } .pf .pr{ font-size:7.4px; color:var(--navy); font-weight:700; letter-spacing:.8px; } .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<!-- ============ PÁGINA A — COMO CONFERIR (código de cores + critérios) ============ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Vargas Decor Ltda · Belo Horizonte / MG · Conferência de Produção</div></div></div>
+    <div class="tt">Como Conferir — Código &amp; Critérios</div>
+    <div class="kx">Imprimir 1× e deixar na bancada de conferência</div>
+  </div>
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Código de cores <small>· bolinha adesiva na peça + o mesmo círculo pintado na matriz</small></span></div>
+    <div class="colors">
+      <div class="colr"><span class="cd g"></span><div><div class="ct">Verde · Conferido</div><div class="cs">Item aprovado e liberado. Todos os itens 🟢 = ambiente/lote libera.</div></div></div>
+      <div class="colr"><span class="cd a"></span><div><div class="ct">Amarelo · Pendência</div><div class="cs">Falta algo (ferragem, item do lote, ajuste simples). Não libera ainda.</div></div></div>
+      <div class="colr"><span class="cd r"></span><div><div class="ct">Vermelho · Retorna</div><div class="cs">Reprovado — volta à etapa. Registrar na Não Conformidade.</div></div></div>
+      <div class="colr"><span class="cd b"></span><div><div class="ct">Azul · Em produção</div><div class="cs">Ainda em fabricação/andamento. Não entrou na conferência final.</div></div></div>
+    </div>
+    <div class="note"><div class="nh">Como usar (manual, sem app)</div><p>O marceneiro confere o item → <b>cola a bolinha adesiva</b> da cor certa <b>na peça/módulo</b> e <b>pinta o mesmo círculo</b> na coluna "Adesivo" da matriz. A estante passa a ser lida por cor de longe. <b>Uma cor por módulo</b> (o status geral dele) — as caixas de conferência dizem o porquê.</p></div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">O que significa "OK" em cada coluna</span></div>
+    <ul class="crit">
+      <li><b>Medida / esquadro</b> — a peça bate com o projeto; diagonais iguais; sem empeno.</li>
+      <li><b>Acabamento</b> — borda 100% (sem descole/rebarba/queima); superfície sem risco, mancha, cola aparente ou <b>marca de caneta</b>.</li>
+      <li><b>Ferragem / funcionamento</b> — dobradiça/corrediça no <b>lado certo</b>, alinhada; testada: abre/fecha, soft-close, gaveta corre, porta não cai.</li>
+      <li><b>Alinhamento / folgas</b> — portas e gavetas alinhadas; <b>folgas uniformes</b>; frentes no mesmo plano.</li>
+      <li><b>Limpeza</b> — peça limpa, sem pó/cola/marca; pronta para embalar.</li>
+      <li><b>Embalagem / kit</b> — ferragem do módulo em <b>saco etiquetado</b>; peça protegida e <b>identificada</b> (cliente + ambiente + módulo).</li>
+    </ul>
+    <div class="note navy"><div class="nh">Regra de liberação</div><p>Confere-se <b>item por item</b> (cada módulo é uma linha). A liberação é <b>por ambiente</b> — ou por <b>módulo/lote</b> quando o ambiente vai fragmentado. <b>Só libera o que está tudo 🟢.</b> O que está 🟡 ou 🔴 fica retido e vira pendência.</p></div>
+  </div>
+  <div class="pf"><div class="pl">Matriz de Conferência · Valvic Marcenaria — Vargas Decor Ltda · Conferência de Produção</div><div class="pr">CÓDIGO & CRITÉRIOS <span>·</span> A</div></div>
+</section>
+
+<!-- ============ PÁGINA B — MATRIZ DE CONFERÊNCIA (por ambiente) ============ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Matriz de Conferência — imprimir 1 por ambiente</div></div></div>
+    <div class="tt">Matriz de Conferência do Marceneiro</div>
+    <div class="kx">Uma linha por módulo · marque as caixas · pinte a cor do adesivo</div>
+  </div>
+  <div class="body">
+    <div class="box pad" style="margin-bottom:8px">
+      <div class="grid g4" style="margin-bottom:6px">
+        <div class="field"><span class="fl"><b>Cliente / OP:</b></span><span class="fill"></span></div>
+        <div class="field"><span class="fl"><b>Ambiente:</b></span><span class="fill"></span></div>
+        <div class="field"><span class="fl">Marceneiro:</span><span class="fill"></span></div>
+        <div class="field"><span class="fl">Data:</span><span class="fill"></span></div>
+      </div>
+      <div class="grid g2">
+        <div class="field"><span class="fl">Lote:</span><span style="font-size:8.5px"><span class="cb"></span> completo &nbsp;&nbsp; <span class="cb"></span> parcial (fragmentado)</span></div>
+        <div class="field"><span class="fl">Adesivo do ambiente:</span><span class="dot"></span> <span style="font-size:8px;color:var(--muted)">(cor geral do ambiente)</span></div>
+      </div>
+    </div>
+
+    <table class="mx">
+      <thead>
+        <tr>
+          <th class="mod">Módulo / Item</th>
+          <th>Medida<br>esquadro</th>
+          <th>Acaba-<br>mento</th>
+          <th>Ferragem<br>func.</th>
+          <th>Alinh.<br>folgas</th>
+          <th>Limpeza</th>
+          <th>Embal.<br>kit</th>
+          <th class="ade">Adesivo</th>
+          <th class="obs">Obs. / pendência</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:7.6px;color:var(--muted);margin-top:4px;font-style:italic">Marque a caixa de cada critério conferido. Na coluna "Adesivo", pinte o círculo com a cor do status geral do módulo (🟢🟡🔴🔵) e cole a bolinha na peça.</p>
+
+    <div class="libera">
+      <div class="lh">Liberação do ambiente / lote para carregamento</div>
+      <div class="lb">
+        <div class="opt ok"><span class="cb"></span>LIBERADO — todos os módulos 🟢</div>
+        <div class="opt rt"><span class="cb"></span>RETIDO — há módulo 🟡 / 🔴</div>
+        <div class="sg"><div class="line"></div>Marceneiro responsável · Data: __/__/____</div>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Matriz de Conferência · Valvic Marcenaria — Vargas Decor Ltda · Conferência de Produção</div><div class="pr">MATRIZ POR AMBIENTE <span>·</span> B</div></div>
+</section>
+
+</body>
+</html>
