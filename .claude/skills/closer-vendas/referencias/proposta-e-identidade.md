@@ -99,3 +99,18 @@ A API **não adiciona nem remove linhas de tabela** — só edita texto de célu
   `garantia.md` (política escalonada por ferragem).
 - **Logo, paleta exata e fontes** oficiais: não há Brand Office — identidade hoje
   inferida das propostas (`identidade-marca.md`).
+
+## ⚠️ Gotcha ao reaproveitar o template Premium (cravado 08/07/2026 — Clínica Nura)
+
+O HTML da proposta tem **JS** que, ao abrir no navegador, preenche os campos
+(`.token[data-key]`, imagens) a partir de um objeto `DEFAULTS` **e** do
+`localStorage` (chave `SK`). Isso **sobrescreve o texto estático** — então editar
+só o HTML estático NÃO basta. Ao clonar o template para um novo cliente:
+
+1. **Trocar a chave `SK`** para uma única por cliente (ex.: `valvic_nura_clinica`).
+   Senão o navegador carrega os dados salvos de OUTRA proposta — bug real: abriu a
+   proposta da Nura e apareceu Kênia & Fábio.
+2. **Atualizar TODOS os `DEFAULTS`** (nome, projeto, data, ferragem, material,
+   acabamento, depoimento/autor/projeto/caption, prazo, garantia, URLs das imagens) —
+   não só o texto estático.
+3. **Testar no navegador** (não só no WeasyPrint, que ignora o JS e mostra o estático).
