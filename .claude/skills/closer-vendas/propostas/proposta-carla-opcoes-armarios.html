@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size:A4; margin:0; }
+  @font-face{ font-family:"Aurora Valvic"; src:url("aurora-valvic.ttf"); }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  :root{ --mostarda:#E0A521; --ouro:#B0892F; --carvao:#201C18; --creme:#F4ECDD; --ivory:#FBF6EC;
+    --taupe:#8C7E69; --linha:#E5D9BE; --texto:#2A2520; }
+  body{ font-family:"Helvetica Neue",Arial,sans-serif; color:var(--texto); font-size:10pt; line-height:1.55; }
+  .page{ width:210mm; min-height:297mm; padding:20mm 22mm; position:relative; background:#fff; }
+  .serif{ font-family:Georgia,"Times New Roman",serif; font-weight:normal; }
+  .fw{ font-family:"Aurora Valvic"; }
+  .eyebrow{ letter-spacing:5px; font-size:8.5pt; text-transform:uppercase; color:var(--ouro); }
+  .top{ display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid var(--carvao); padding-bottom:5mm; }
+  .brand{ font-size:18pt; color:var(--carvao); } .brand .st{ font-family:Georgia,serif; color:var(--ouro); margin-right:2mm; }
+  .brand .v{ font-family:"Aurora Valvic"; }
+  .top .r{ text-align:right; font-family:"Courier New",monospace; font-size:8.5pt; color:var(--taupe); letter-spacing:1px; }
+  .hl{ font-family:Georgia,serif; font-size:26pt; line-height:1.1; color:var(--carvao); margin:6mm 0 2mm; }
+  .hl .it{ font-style:italic; color:var(--ouro); }
+  .lead{ font-size:10pt; color:#5b5347; max-width:150mm; }
+
+  .arm{ margin-top:7mm; }
+  .arm .ah{ display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid var(--carvao); padding-bottom:2mm; margin-bottom:1mm; }
+  .arm .an{ font-family:Georgia,serif; font-size:15pt; color:var(--carvao); text-transform:uppercase; letter-spacing:.5px; }
+  .arm .as{ font-size:8.5pt; color:var(--taupe); }
+  .opt{ display:flex; align-items:center; gap:5mm; padding:3.4mm 3mm; border-bottom:1px solid var(--linha); }
+  .opt.cur{ background:var(--ivory); border-radius:2mm; border-bottom:1px solid var(--linha); padding-left:5mm; padding-right:5mm; }
+  .opt .tag{ width:22mm; min-width:22mm; }
+  .opt .tag .badge{ display:inline-block; font-family:"Courier New",monospace; font-size:7pt; letter-spacing:.5px; text-transform:uppercase;
+    color:var(--ouro); border:1px solid var(--mostarda); border-radius:1.5mm; padding:1mm 2.5mm; }
+  .opt .tag .badge.n{ color:var(--taupe); border-color:var(--linha); }
+  .opt .desc{ flex:1; }
+  .opt .dt{ font-family:Georgia,serif; font-size:12.5pt; color:var(--carvao); }
+  .opt .dd{ font-size:8.7pt; color:#6a6155; margin-top:.5mm; }
+  .opt .pr{ font-family:Georgia,serif; font-size:16pt; color:var(--carvao); white-space:nowrap; }
+  .opt.cur .pr{ color:var(--ouro); }
+  .opt .pr small{ display:block; font-family:"Helvetica Neue",Arial,sans-serif; font-size:7pt; color:var(--taupe); letter-spacing:.5px; text-align:right; }
+
+  .note{ margin-top:7mm; background:var(--ivory); border-left:3px solid var(--mostarda); border-radius:1mm; padding:4.5mm 7mm; font-size:9pt; color:#5b5347; line-height:1.5; }
+  .note b{ color:var(--carvao); }
+  .pfoot{ position:absolute; bottom:14mm; left:22mm; right:22mm; font-size:8pt; color:var(--taupe);
+    display:flex; justify-content:space-between; border-top:1px solid var(--linha); padding-top:3mm; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top">
+    <span class="brand"><span class="st">✦</span><span class="v">Valvic</span></span>
+    <span class="r">Opções de armário · Banheiros<br>Carla &amp; Beto — aditivo</span>
+  </div>
+
+  <div class="eyebrow" style="margin-top:8mm;">Escolha das portas</div>
+  <div class="hl">Como você quer<br><span class="it">as espelheiras?</span></div>
+  <p class="lead">O gabinete inferior é o mesmo em todas as opções — muda só a <b>espelheira (armário superior)</b>.
+  Todas com <b>portas espelhadas</b>, nichos e LED. Escolha a configuração de cada banheiro.</p>
+
+  <!-- ARMÁRIO SUÍTE (MASTER) -->
+  <div class="arm">
+    <div class="ah"><div class="an">Armário Suíte</div><div class="as">gabinete inferior R$ 4.200 · igual em todas as opções</div></div>
+    <div class="opt cur">
+      <div class="tag"><span class="badge">Atual</span></div>
+      <div class="desc"><div class="dt">1 porta de espelho deslizante</div><div class="dd">Cobre parte da frente, nichos aparentes ao lado — como no projeto atual.</div></div>
+      <div class="pr">R$ 8.100<small>armário completo</small></div>
+    </div>
+    <div class="opt">
+      <div class="tag"><span class="badge n">Opção</span></div>
+      <div class="desc"><div class="dt">2 portas de correr</div><div class="dd">Espelhadas, cobrindo toda a extensão do armário; sistema de correr embutido.</div></div>
+      <div class="pr">R$ 8.700<small>armário completo</small></div>
+    </div>
+    <div class="opt">
+      <div class="tag"><span class="badge n">Opção</span></div>
+      <div class="desc"><div class="dt">3 portas de giro</div><div class="dd">Espelhadas, cobrindo toda a extensão; abertura total do armário de uma vez.</div></div>
+      <div class="pr">R$ 8.900<small>armário completo</small></div>
+    </div>
+  </div>
+
+  <!-- ARMÁRIO YASMIM -->
+  <div class="arm">
+    <div class="ah"><div class="an">Armário Yasmim</div><div class="as">gabinete inferior R$ 3.600 · igual em todas as opções</div></div>
+    <div class="opt cur">
+      <div class="tag"><span class="badge">Atual</span></div>
+      <div class="desc"><div class="dt">1 porta de espelho deslizante</div><div class="dd">Cobre parte da frente, nichos aparentes ao lado — como no projeto atual.</div></div>
+      <div class="pr">R$ 7.000<small>armário completo</small></div>
+    </div>
+    <div class="opt">
+      <div class="tag"><span class="badge n">Opção</span></div>
+      <div class="desc"><div class="dt">2 portas de giro</div><div class="dd">Espelhadas, cobrindo a frente do armário; abertura pelas duas folhas.</div></div>
+      <div class="pr">R$ 7.300<small>armário completo</small></div>
+    </div>
+  </div>
+
+  <div class="note">Valores do <b>armário completo</b> (gabinete inferior + espelheira). O que muda entre as opções é
+  apenas a <b>espelheira</b> — as portas, a área de espelho e as ferragens. Espelho, esquadria de alumínio e
+  iluminação LED inclusos. Medidas conferidas no local antes da produção.</div>
+
+  <div class="pfoot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Carla &amp; Beto — Opções de armário</span></div>
+</div>
+</body>
+</html>
