@@ -37,6 +37,14 @@ fundo branco 6 ~R$190) — **barato**. **Só a face aparente / portas / frentes 
 NUNCA precificar caixaria interna em "cor". (Superestimei o Apto CV ~2–3× por pôr tudo em cor + contar
 chapa demais — o material inteiro em cor infla ~40%.) Contar chapa com **parcimônia** (caixaria enxuta).
 
+**⭐ FERRAGEM — contar QUANTIDADE, não preço unitário (correção do fundador, Carla 07/2026):** dobradiça **= R$10**
+(baratíssima). **Porta de correr tem TRILHO (~R$150) + roldanas** — o trilho é o vilão do custo. Comparar por
+peça engana: 3 portas de giro = 6 dobradiças (R$60) « 2 portas de correr = trilho+roldanas (~R$250). Regra:
+**giro quase sempre sai mais barato que correr** (dispensa o trilho). Sempre somar trilho+roldanas nas de correr e
+contar a **quantidade real** de dobradiça (2/porta). *Furo que cometi: chutei dobradiça R$140→R$60 (é R$10) e esqueci
+o trilho — inverteu a ordem de preço das opções.* E: **espelheira (armário suspenso/superior) orça SEPARADA do
+gabinete inferior** quando o fundador pede opção de portas — não somar o "armário completo".
+
 **Erros que NÃO repito:** fração de chapa · **precificar caixaria interna em "cor" (é branco!)** ·
 **contar chapa demais / superestimar material (Apto CV ~2–3× alto)** · **diluir item especial dentro de
 outro ambiente** (painel hall, portas divisoras, painel de TV = linhas próprias) · chutar preço (especificar+perguntar) · não ler
