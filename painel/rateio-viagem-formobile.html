@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rateio de Despesas — Viagem Feira Formobile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  :root{ --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f; --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd; --green:#2f7d4f; --red:#b0413f; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:9.6px; line-height:1.42; -webkit-font-smoothing:antialiased; }
+  .num{ font-variant-numeric:tabular-nums; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:18px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; }
+  .ph{ background:var(--navy); color:#fff; padding:10mm 16mm 8mm; position:relative; }
+  .ph::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:2.5px; background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 42%,transparent 100%); }
+  .ph .top{ display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+  .ph .mono{ width:38px; height:38px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:19px; color:var(--gold); }
+  .ph .co{ font-size:11.5px; font-weight:700; letter-spacing:2.4px; text-transform:uppercase; }
+  .ph .sub{ font-size:7.6px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
+  .ph .kx{ font-size:8px; letter-spacing:3.6px; text-transform:uppercase; color:var(--gold); }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; margin-top:3px; line-height:1.05; }
+  .ph .desc{ font-size:9px; color:rgba(255,255,255,.62); margin-top:6px; max-width:540px; line-height:1.5; }
+  .body{ flex:1; padding:7mm 16mm 0; display:flex; flex-direction:column; }
+  .idbar{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:1px solid var(--line); border-radius:9px; overflow:hidden; margin-bottom:11px; }
+  .idbar .c{ padding:7px 11px; border-right:1px solid var(--line); }
+  .idbar .c:last-child{ border-right:none; }
+  .idbar .l{ font-size:6.8px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); }
+  .idbar .v{ font-size:9.8px; font-weight:700; color:var(--navy); margin-top:2px; line-height:1.25; }
+  .sec{ display:flex; align-items:center; gap:9px; margin:0 0 6px; }
+  .sec .bar{ width:14px; height:2px; background:var(--gold); }
+  .sec .tx{ font-size:8.4px; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:var(--navy); }
+  .sec .aux{ font-size:7.6px; color:var(--muted); font-weight:500; letter-spacing:.2px; text-transform:none; margin-left:2px; }
+  p.tx{ font-size:9.3px; line-height:1.55; color:#33404d; margin-bottom:9px; }
+  p.tx b{ color:var(--navy); }
+  table{ width:100%; border-collapse:collapse; }
+  thead th{ background:var(--navy2); color:#fff; font-size:6.9px; font-weight:600; letter-spacing:.5px; text-transform:uppercase; padding:5.5px 10px; text-align:left; }
+  th.r,td.r{ text-align:right; }
+  th.c,td.c{ text-align:center; }
+  tbody td{ padding:5.5px 10px; border-bottom:1px solid var(--line); vertical-align:top; font-size:9.3px; }
+  tbody tr:nth-child(even) td{ background:#f4f1ea; }
+  td .nm{ font-weight:700; color:var(--ink); } td .ds{ color:var(--muted); font-size:7.8px; display:block; margin-top:1px; }
+  td.r .num{ font-weight:700; color:var(--navy); }
+  tr.tot td{ background:var(--navy) !important; color:#fff; font-weight:700; padding:7px 10px; border:none; font-size:10.5px; white-space:nowrap; }
+  tr.tot td .gv{ color:var(--gold-soft); font-size:13.5px; white-space:nowrap; }
+  .tbc{ font-size:7.6px; font-weight:700; letter-spacing:.6px; text-transform:uppercase; padding:2px 7px; border-radius:10px; display:inline-block; }
+  .tbc.pago{ background:#e4f2e8; color:var(--green); }
+  .tbc.pend{ background:#fdeceb; color:var(--red); }
+  .tbc.conf{ background:#fdf3dd; color:var(--gold-dk); }
+  ul.reg{ list-style:none; margin-bottom:10px; }
+  ul.reg li{ font-size:9.3px; line-height:1.5; padding:4px 0 4px 20px; position:relative; color:#33404d; border-bottom:1px dotted var(--line2); }
+  ul.reg li:last-child{ border-bottom:none; }
+  ul.reg li::before{ content:""; position:absolute; left:3px; top:9.5px; width:6px; height:6px; border-radius:50%; background:var(--gold); }
+  ul.reg li b{ color:var(--navy); }
+  .credit{ color:var(--green); font-weight:800; }
+  .debit{ color:var(--red); font-weight:800; }
+  .note{ background:#fffaf0; border:1px solid #eed9a8; border-radius:8px; padding:8px 12px; margin-top:11px; }
+  .note .nh{ font-size:7.2px; letter-spacing:1.3px; text-transform:uppercase; color:var(--gold-dk); font-weight:700; margin-bottom:4px; }
+  .note ul{ list-style:none; } .note li{ font-size:8.7px; line-height:1.5; color:#5a4a2c; padding-left:11px; position:relative; margin-bottom:2px; }
+  .note li::before{ content:"—"; position:absolute; left:0; color:var(--gold-dk); }
+  .note li b{ color:var(--navy); }
+  .sign{ margin-top:auto; padding-top:10px; display:flex; justify-content:space-between; align-items:flex-end; }
+  .sign .l{ font-size:8px; color:var(--muted); } .sign .l b{ color:var(--navy); font-size:9.6px; display:block; font-family:'Cormorant Garamond',serif; font-weight:700; }
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:5px 16mm; display:flex; justify-content:space-between; align-items:center; }
+  .pf .pl{ font-size:6.6px; color:var(--muted); } .pf .pr{ font-size:7.4px; color:var(--navy); font-weight:700; letter-spacing:1px; } .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<section class="sheet">
+  <div class="ph">
+    <div class="top">
+      <div class="mono">V</div>
+      <div><div class="co">Valvic Marcenaria</div><div class="sub">Vargas Decor Ltda &nbsp;·&nbsp; CNPJ 17.269.304/0001-51 &nbsp;·&nbsp; Belo Horizonte / MG</div></div>
+    </div>
+    <div class="kx">Acerto de Contas · Viagem</div>
+    <div class="tt">Rateio de Despesas — Feira Formobile</div>
+    <div class="desc">Fechamento dos gastos da viagem à Feira Formobile: o que foi gasto, quem pagou e quanto cabe a cada participante.</div>
+  </div>
+
+  <div class="body">
+    <div class="idbar">
+      <div class="c"><div class="l">Viagem</div><div class="v">Feira Formobile</div></div>
+      <div class="c"><div class="l">Período</div><div class="v">Fim de semana · Jul/2026</div></div>
+      <div class="c"><div class="l">Participantes</div><div class="v">8 pessoas</div></div>
+      <div class="c"><div class="l">Status</div><div class="v"><span class="tbc conf">Combustível a confirmar</span></div></div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">1 · O que foi gasto</span></div>
+    <table style="margin-bottom:11px">
+      <thead><tr><th>Item</th><th>Descrição</th><th>Pago por</th><th class="r" style="width:95px">Valor</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Hospedagem</span></td><td><span class="ds">Airbnb da equipe durante a feira</span></td><td>Valvic (empresa)</td><td class="r"><span class="num">R$ 1.587,00</span></td></tr>
+        <tr><td><span class="nm">Alimentação geral</span></td><td><span class="ds">Refeições do grupo · Mercadinho Bueno + Cursino</span></td><td>Jonathan + Felipe</td><td class="r"><span class="num">R$ 597,44</span></td></tr>
+        <tr><td><span class="nm">Alimentação extra</span></td><td><span class="ds">Marmitex complementar (equipe + Maurílio)</span></td><td>Felipe</td><td class="r"><span class="num">R$ 33,33</span></td></tr>
+        <tr><td><span class="nm">Combustível — Carro 1</span></td><td><span class="ds">Ocupantes: Jonathan, Paulo, Felipe, Deivson</span></td><td>—</td><td class="r"><span class="tbc pend">A confirmar</span></td></tr>
+        <tr><td><span class="nm">Combustível — Carro 2</span></td><td><span class="ds">Ocupantes: José Carlos, Samuel, Maurílio, esposa</span></td><td>—</td><td class="r"><span class="tbc pend">A confirmar</span></td></tr>
+        <tr class="tot"><td colspan="3">TOTAL CONHECIDO ATÉ AGORA</td><td class="r"><span class="gv num">R$ 2.217,77</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">2 · Como a divisão funciona</span></div>
+    <ul class="reg">
+      <li><b>Hospedagem:</b> a Valvic assume apenas a cota da <b>própria equipe</b> (Jonathan, Paulo, Deivson, Felipe, Samuel). Os convidados (Maurílio, José Carlos e esposa) pagam a parte deles.</li>
+      <li><b>Alimentação geral:</b> dividida <b>igualmente entre os 8 participantes</b> — R$ 597,44 ÷ 8 = <b>R$ 74,68</b> por pessoa.</li>
+      <li><b>Marmitex extra:</b> dividido entre os <b>6 que consumiram</b> (todos, exceto José Carlos e esposa) — R$ 33,33 ÷ 6 = <b>R$ 5,56</b> por pessoa.</li>
+      <li><b>Combustível:</b> dividido entre os ocupantes de cada carro, assim que o valor de cada abastecimento for informado.</li>
+    </ul>
+
+    <div class="sec"><span class="bar"></span><span class="tx">3 · Quanto cada um deve ou tem a receber</span></div>
+    <table>
+      <thead><tr><th>Participante</th><th class="r" style="width:78px">Hospedagem</th><th class="r" style="width:78px">Alimentação</th><th class="r" style="width:74px">Combustível</th><th class="r" style="width:120px">Posição final</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Jonathan</span><span class="ds">pagou a alimentação geral</span></td><td class="r">equipe</td><td class="r"><span class="credit num">+R$ 154,76</span></td><td class="r">a confirmar</td><td class="r"><span class="credit num">a receber</span></td></tr>
+        <tr><td><span class="nm">Felipe</span><span class="ds">pagou Mercadinho + Cursino + marmitex</span></td><td class="r">equipe</td><td class="r"><span class="credit num">+R$ 315,53</span></td><td class="r">a confirmar</td><td class="r"><span class="credit num">a receber</span></td></tr>
+        <tr><td><span class="nm">Paulo</span></td><td class="r">equipe</td><td class="r" colspan="3"><span class="tbc pago">Pago — sem pendência</span></td></tr>
+        <tr><td><span class="nm">Deivson</span></td><td class="r">equipe</td><td class="r"><span class="debit num">R$ 80,24</span></td><td class="r">a confirmar</td><td class="r"><span class="debit num">a pagar</span></td></tr>
+        <tr><td><span class="nm">Samuel</span></td><td class="r">equipe</td><td class="r"><span class="debit num">R$ 80,24</span></td><td class="r">a confirmar</td><td class="r"><span class="debit num">a pagar</span></td></tr>
+        <tr><td><span class="nm">Maurílio</span></td><td class="r"><span class="debit num">R$ 198,38</span></td><td class="r"><span class="debit num">R$ 80,24</span></td><td class="r">a confirmar</td><td class="r"><span class="debit num">R$ 278,62 + comb.</span></td></tr>
+        <tr><td><span class="nm">José Carlos</span></td><td class="r"><span class="debit num">R$ 198,38</span></td><td class="r"><span class="debit num">R$ 74,68</span></td><td class="r">a confirmar</td><td class="r"><span class="debit num">R$ 273,06 + comb.</span></td></tr>
+        <tr><td><span class="nm">Esposa de José Carlos</span></td><td class="r"><span class="debit num">R$ 198,38</span></td><td class="r"><span class="debit num">R$ 74,68</span></td><td class="r">a confirmar</td><td class="r"><span class="debit num">R$ 273,06 + comb.</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="note">
+      <div class="nh">Observações</div>
+      <ul>
+        <li>A parte de <b>hospedagem dos convidados</b> (Maurílio, José Carlos e esposa) é devida <b>à Valvic</b>, que adiantou o valor total do Airbnb — R$ 1.587,00 ÷ 8 = <b>R$ 198,38</b> por pessoa.</li>
+        <li>A parte de <b>alimentação</b> é devida a quem adiantou o valor (Jonathan e Felipe).</li>
+        <li>Os valores de <b>combustível dos dois carros</b> ainda precisam ser informados para fechar a posição final de cada participante.</li>
+        <li>Valores com arredondamento de centavos (divisão por 6 ou 8 pessoas).</li>
+      </ul>
+    </div>
+
+    <div class="sign">
+      <div class="l">Documento de controle interno<br><b>Valvic Marcenaria — Vargas Decor Ltda</b>Belo Horizonte / MG · Julho/2026</div>
+    </div>
+  </div>
+
+  <div class="pf"><div class="pl">Documento de controle interno · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">RATEIO <span>·</span> VIAGEM FEIRA FORMOBILE</div></div>
+</section>
+
+</body>
+</html>
