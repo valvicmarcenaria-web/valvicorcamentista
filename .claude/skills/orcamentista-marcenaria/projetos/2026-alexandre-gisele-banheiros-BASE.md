@@ -35,9 +35,14 @@
   toda na Suíte 04, inflando-a ~R$1.500 vs idênticas. Corrigido: móveis iguais, preço igual; Suíte 04 fica só com o +R$200 real do MDF.
 - **MC 35%** (divisor parceiro 0,70 → 0,35): `inv = (4.552+250)/0,35` = R$13.720 → **tabela Valvic R$ 13.700**.
 
-**FECHADO:** Investimento **R$ 13.700** · condição **60% + 40% com 10% de desconto = R$ 12.330**
-(entrada R$ 7.398 + entrega R$ 4.932) · prazo **60 dias úteis** · garantia 5 anos · cliente recorrente.
+**FECHADO (rev. 07/09):** Investimento **R$ 15.500** · condição **60% + 40% com 10% de desconto = R$ 13.950**
+(entrada R$ 8.400 + entrega R$ 5.550) · prazo **60 dias úteis** · garantia 5 anos · cliente recorrente.
 Proposta: `closer-vendas/propostas/proposta-alexandre-gisele-banheiros.html` + PDF (valor único, itens listados sem preço separado).
+
+**Correções do fundador (07/09):** Suíte 1 e 3 → **3 gavetas** (eram 2); demais confirmados (2=3, 4=3, 5=3, apoio=0).
+Acabamento **interno e externo na mesma cor**, **definida in loco**, **não contempla a linha acetinada**.
+Valor +R$ 1.800 sobre o fechamento anterior (R$ 13.700 → **R$ 15.500**) — reflete as 2 gavetas extras + interior na cor
+(sem a otimização de interior branco). *(Valor somado por ordem do fundador; não recalculei material.)*
 
 ### Estimativa anterior por item (MC 37%, pré-otimização — referência interna)
 Suíte 01 2.350 · 02 3.000 · 03 2.450 · 04 4.350 · 05 2.850 · Apoio 1.100 = R$ 16.100.
