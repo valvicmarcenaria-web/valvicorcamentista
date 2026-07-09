@@ -35,7 +35,7 @@ Chapas 15mm (29) · corrediças 16 (4 coz + 12 closet) · dobradiças 25 (coz) �
 | **Total** | **43.300** | **48.300** | **58.400** |
 | **Fechamento completo −10%** | **39.000** | **43.500** | **52.600** |
 
-**LED closet (adicional): ~R$ 4.200.**
+**LED closet (adicional): R$ 1.350.**
 
 ## A confirmar
 - Fita: 200m na cozinha (dado); demais ambientes estimados (~250m) — validar se 200m era o total.
