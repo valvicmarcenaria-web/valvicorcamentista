@@ -60,9 +60,18 @@
   .ladderline .lt{ font-size:9.6px; color:#33404d; line-height:1.4; } .ladderline .lt b{ color:var(--navy); }
   .signrow{ margin-top:auto; padding-top:14px; display:flex; justify-content:space-between; align-items:flex-end; }
   .signrow .col{ width:46%; } .signrow .line{ border-top:1px solid var(--navy2); margin-bottom:4px; } .signrow .cap{ font-size:8px; color:var(--muted); letter-spacing:.4px; }
-  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:6px 16mm; display:flex; justify-content:space-between; align-items:center; }
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:6px 16mm; display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
   .pf .pl{ font-size:7px; color:var(--muted); } .pf .pr{ font-size:8px; color:var(--navy); font-weight:700; letter-spacing:1px; } .pf .pr span{ color:var(--gold); }
   .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  .calc{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px 14px; margin-bottom:10px; }
+  .calc .ch{ font-size:8px; letter-spacing:1.2px; text-transform:uppercase; color:var(--gold-dk); font-weight:700; margin-bottom:6px; }
+  .calc ol{ list-style:none; counter-reset:cs; }
+  .calc li{ font-size:9.3px; line-height:1.55; color:#33404d; padding:0 0 5px 22px; position:relative; counter-increment:cs; }
+  .calc li:last-child{ padding-bottom:0; }
+  .calc li::before{ content:counter(cs); position:absolute; left:0; top:0; width:15px; height:15px; border-radius:50%; background:var(--navy); color:#fff; font-size:7.6px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+  .calc li b{ color:var(--navy); }
+  .calc .src{ font-size:7.6px; color:var(--muted); margin-top:6px; padding-top:6px; border-top:1px dotted var(--line2); }
+  tr.proj-hi td{ background:#f6edd6 !important; }
   @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
 </style>
 </head>
@@ -82,7 +91,7 @@
       <div class="m"><div class="ml">Cargo</div><div class="mv">Marceneiro Pleno</div></div>
       <div class="m"><div class="ml">Área</div><div class="mv">Marcenaria / Produção</div></div>
       <div class="m"><div class="ml">Reporta a</div><div class="mv">Deivson e Paulo</div></div>
-      <div class="m"><div class="ml">Vínculo</div><div class="mv">MEI · Equipe de Produção</div></div>
+      <div class="m"><div class="ml">Vínculo</div><div class="mv">CLT · Equipe de Produção</div></div>
     </div>
 
     <div class="prop">
@@ -121,29 +130,75 @@
       </ul>
     </div>
 
-    <div class="sec"><span class="bar"></span><span class="tx">Remuneração proposta</span></div>
-    <table>
-      <thead><tr><th>Item</th><th>Descrição</th><th class="r" style="width:110px">Valor</th></tr></thead>
-      <tbody>
-        <tr><td><span class="nm">Salário base</span></td><td><span class="ds">Fixo mensal</span></td><td class="r"><span class="num">R$ 2.700,00 / mês</span></td></tr>
-        <tr><td><span class="nm">Comissão — Montagem</span></td><td><span class="ds">Líquida, sobre o valor de montagem executada</span></td><td class="r"><span class="num">2,5%</span></td></tr>
-        <tr><td><span class="nm">Comissão — Instalação</span></td><td><span class="ds">Líquida, sobre o valor de instalação executada</span></td><td class="r"><span class="num">2,5%</span></td></tr>
-      </tbody>
-    </table>
-    <div class="finemark">Percentuais de comissão são valores-base de um plano de remuneração em estruturação, podendo ser reajustados em <b>90 dias</b>.</div>
-
     <div class="sec"><span class="bar"></span><span class="tx">Categorização na trilha de carreira</span></div>
     <div class="ladderline">
       <div class="lv">3</div>
       <div class="lt"><b>Marceneiro Pleno</b> — mesmo degrau já ocupado na equipe. Executa com autonomia; responde por qualidade e prazo. A partir deste degrau, a remuneração passa a incluir comissões de produção, conforme a Matriz de Cargos e Funções da Valvic.</div>
     </div>
+  </div>
+  <div class="pf"><div class="pl">Uso interno · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">PROPOSTA <span>·</span> 01</div></div>
+</section>
+
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Vargas Decor Ltda &nbsp;·&nbsp; CNPJ 17.269.304/0001-51 &nbsp;·&nbsp; Belo Horizonte / MG</div></div></div>
+    <div class="kx">Proposta de Contratação · Uso interno</div>
+    <div class="tt">Remuneração & Categorização</div>
+    <div class="desc">Salário e benefícios fixos, modelo da comissão de produção e projeção de ganhos, com base no que já está em prática na marcenaria.</div>
+  </div>
+
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Salário & benefícios — fixo mensal</span></div>
+    <table style="margin-bottom:4px">
+      <thead><tr><th>Item</th><th>Descrição</th><th class="r" style="width:110px">Valor</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Salário base</span></td><td><span class="ds">Fixo mensal, regime CLT</span></td><td class="r"><span class="num">R$ 2.700,00</span></td></tr>
+        <tr><td><span class="nm">Vale-refeição (VR)</span></td><td><span class="ds">Benefício mensal</span></td><td class="r"><span class="num">R$ 400,00</span></td></tr>
+        <tr><td><span class="nm">Vale-transporte (VT)</span></td><td><span class="ds">Conforme CLT (desconto legal de até 6% do salário base)</span></td><td class="r"><span class="num">R$ 400,00</span></td></tr>
+        <tr class="tot"><td colspan="2">TOTAL FIXO MENSAL (sem comissão)</td><td class="r"><span class="gv num">R$ 3.500,00</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Comissão de produção</span></div>
+    <table style="margin-bottom:4px">
+      <thead><tr><th>Item</th><th>Descrição</th><th class="r" style="width:110px">Valor</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Comissão — Montagem</span></td><td><span class="ds">Líquida, sobre o valor de montagem executada</span></td><td class="r"><span class="num">2,5%</span></td></tr>
+        <tr><td><span class="nm">Comissão — Instalação</span></td><td><span class="ds">Líquida, sobre o valor de instalação executada</span></td><td class="r"><span class="num">2,5%</span></td></tr>
+        <tr><td><span class="nm">Total possível por projeto</span></td><td><span class="ds">Quando o mesmo marceneiro executa as duas etapas</span></td><td class="r"><span class="num">5,0%</span></td></tr>
+      </tbody>
+    </table>
+    <div class="finemark">Percentuais de comissão são valores-base de um plano de remuneração em estruturação, podendo ser reajustados em <b>90 dias</b>.</div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Como a comissão é calculada</span></div>
+    <div class="calc">
+      <div class="ch">Modelo — referência nos escopos e na estrutura de custos atuais da Valvic</div>
+      <ol>
+        <li>Hoje, a comissão de <b>marceneiros</b> já existe na estrutura de custos variáveis da empresa: <b>5% sobre o projeto fechado</b>, ao lado das comissões de vendedor (3%), coordenador (1%) e programador (0,5%) — ver Memória de Custos.</li>
+        <li>Nesta vaga, os mesmos <b>5%</b> são <b>divididos por etapa de execução</b>: <b>2,5% quando o marceneiro faz a montagem</b> do ambiente e <b>2,5% quando faz a instalação</b> em obra — em vez de um rateio genérico entre todos os marceneiros do projeto.</li>
+        <li>A base de cálculo é o <b>valor líquido do projeto</b> (faturamento menos os custos diretos de venda — nota fiscal, comissão de venda e de coordenação), a mesma lógica que a Valvic já estuda para alinhar o incentivo do marceneiro ao resultado real do projeto.</li>
+        <li>Se mais de um marceneiro participar da <b>mesma etapa</b> do mesmo projeto, o percentual daquela etapa é <b>rateado entre eles</b> — como já acontece hoje.</li>
+      </ol>
+      <div class="src">Referências: `memoria-custos-valvic.html` (comissões · 9,5% sobre faturamento, marceneiros 5%) · `faturamento-historico.md` (estudo de base líquida de custos de venda) · plano de carreira do `escopo-ajudante-marcenaria.html` (comissão a partir do nível Marceneiro).</div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Projeção de ganhos — cenários mensais</span></div>
+    <table>
+      <thead><tr><th>Cenário</th><th class="r" style="width:105px">Produção líquida</th><th class="r" style="width:95px">Comissão (5%)</th><th class="r" style="width:85px">Salário base</th><th class="r" style="width:100px">Ganho total</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Conservador</span><span class="ds">1 projeto de ticket médio no mês</span></td><td class="r"><span class="num">R$ 29.225</span></td><td class="r"><span class="num">R$ 1.461</span></td><td class="r"><span class="num">R$ 2.700</span></td><td class="r"><span class="num">R$ 4.161</span></td></tr>
+        <tr class="proj-hi"><td><span class="nm">Típico</span><span class="ds">2 projetos de ticket médio no mês</span></td><td class="r"><span class="num">R$ 58.450</span></td><td class="r"><span class="num">R$ 2.923</span></td><td class="r"><span class="num">R$ 2.700</span></td><td class="r"><span class="num">R$ 5.623</span></td></tr>
+        <tr><td><span class="nm">Forte</span><span class="ds">3 projetos, ou 2 de maior porte</span></td><td class="r"><span class="num">R$ 87.675</span></td><td class="r"><span class="num">R$ 4.384</span></td><td class="r"><span class="num">R$ 2.700</span></td><td class="r"><span class="num">R$ 7.084</span></td></tr>
+      </tbody>
+    </table>
+    <div class="finemark">Produção líquida estimada a partir do <b>ticket médio ~R$ 35 mil</b> por projeto (H1/2026, 28 projetos) já líquido de custos de venda (~83,5% do valor bruto). Projeção ilustrativa, não é garantia de ganho — varia com o volume de projetos e etapas atribuídas ao marceneiro no mês.</div>
 
     <div class="signrow">
       <div class="col"><div class="line"></div><div class="cap">Jonathan · aprovação</div></div>
       <div class="col" style="text-align:right"><div class="line"></div><div class="cap">Paulo · aprovação</div></div>
     </div>
   </div>
-  <div class="pf"><div class="pl">Uso interno · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">PROPOSTA <span>·</span> MARCENEIRO PLENO</div></div>
+  <div class="pf"><div class="pl">Uso interno · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">PROPOSTA <span>·</span> 02</div></div>
 </section>
 
 </body>
