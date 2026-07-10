@@ -51,23 +51,29 @@ pintura, porcelanato, rodapé poliestireno, blindex, arandelas e **madeira de de
   `proposta-ed-luxemburgo.html`/`.pdf`. Proposta subida ao Drive (pasta do cliente).
 - **Pendências:** confirmar prazo do boleto (assumido 30 dias); ver recado p/ Rodrigo.
 
-### [2026-06-25] Orçamento + Proposta — Camila (Closet) — Lavinia + Vitor · rev. 27/06
+### [2026-06-25] Orçamento + Proposta — Camila (Closet) — Lavinia + Vitor · rev. 10/07
 **Solicitante:** Jonathan · **Status:** 🟢 Concluído
 Closet = **Roupeiro em L (piso-teto) + Ilha**. Fechou em **config única** (evoluiu de 2
-versões — correr ripado × básculas — que foram descartadas). **R$ 27.500** · MC **32%** ·
-RT **10%** embutido · ferragem **Hardt** → garantia 5 anos · material ≈ R$ 10.036.
+versões — correr ripado × básculas — que foram descartadas). **R$ 24.900** ·
+RT **10%** embutido · ferragem **Hardt** → garantia 5 anos.
 - **Roupeiro** (piso-teto, 2 cores cinza + Cumaru **USINADO**, não ripado): 3 portas de
   correr **RO-65 piso-teto** (trilho 3 m + desempenadores) + 2 portas menores (43 cm) de
   **giro** (dobradiças Hardt). Gavetas em corrediça oculta Hardt + puxador SP7000. LED +
   sensor. **Eliminados:** módulo superior, báscula/Multi, tábua de passar.
-- **Ilha:** serralheria **só da base** + tampo de vidro temperado 8 mm + corrediça oculta
-  Hardt + puxador Enlevo. **Eliminados:** gaveta especial (virou comum) e suporte de joias.
-- **Alocação:** Roupeiro ≈ R$ 20.700 · Ilha ≈ R$ 6.800 (proporcional ao material).
+- **Ilha (rev. 10/07):** agora **marcenaria** — **estrutura com 4 gavetas** (corrediça oculta
+  Hardt + puxador Enlevo), **base SEM serralheria**. Saiu a serralheria da base e o tampo de
+  vidro. **R$ 4.200** (era R$ 6.800). Repreço a pedido do Jonathan.
+- **Alocação:** Roupeiro **R$ 20.700** · Ilha **R$ 4.200** → **total R$ 24.900**.
+- **Pagamento (rev. 10/07):** condição única **50% entrada + 50% na entrega** (transferência)
+  com **8% de desconto → R$ 22.908**. (Saíram as opções de cartão/parcelamento.)
 - **Arquivos:** `orcamento-camila-v3-mc32.json`, `orcamento-camila-closet.html/.pdf`,
-  `proposta-camila.html/.pdf` (proposta de config única).
-- **Drive (pasta "Camila"):** Docs **ATUAL** (proposta + orçamento interno v3). ⚠️ Há **2 Docs
-  antigos** (das versões 2-cenários) a **apagar** pelo Jonathan — o Drive MCP não deleta.
-- **Pendências:** confirmar prazo (usei 60–70 dias úteis); trocar render da capa por foto real.
+  `proposta-camila.html/.pdf` (proposta de config única, **atualizada 10/07**).
+- **Drive (pasta "Camila"):** Docs **ATUAL** (proposta + orçamento interno v3). ⚠️ Subir a
+  proposta rev. 10/07 no lugar. Há **2 Docs antigos** (das versões 2-cenários) a **apagar**
+  pelo Jonathan — o Drive MCP não deleta.
+- **Pendências:** ① atualizar o **orçamento interno v3** (linha da ilha ainda com serralheria/vidro
+  → recalcular MC com o novo custo da ilha em marcenaria); ② confirmar prazo (usei 60–70 dias
+  úteis); ③ trocar render da capa por foto real.
 
 ### [2026-06-27] Orçamento + Proposta — Raquel (Roupeiro Branco TX) — Lavinia + Vitor
 **Solicitante:** Jonathan · **Status:** 🟢 Concluído
