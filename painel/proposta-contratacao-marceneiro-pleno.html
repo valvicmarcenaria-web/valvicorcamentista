@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Proposta de Contratação — Marceneiro Pleno · Valvic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  :root{ --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f; --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd; --green:#2f7d4f; --red:#b0413f; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:9.9px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+  .num{ font-variant-numeric:tabular-nums; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:18px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; }
+  .ph{ background:var(--navy); color:#fff; padding:12mm 16mm 9mm; position:relative; }
+  .ph::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:2.5px; background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 42%,transparent 100%); }
+  .ph .top{ display:flex; align-items:center; gap:12px; margin-bottom:11px; }
+  .ph .mono{ width:40px; height:40px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:20px; color:var(--gold); }
+  .ph .co{ font-size:11.5px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; }
+  .ph .sub{ font-size:8px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
+  .ph .kx{ font-size:8px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:27px; font-weight:600; margin-top:3px; line-height:1.05; }
+  .ph .desc{ font-size:9px; color:rgba(255,255,255,.62); margin-top:7px; max-width:540px; line-height:1.5; }
+  .body{ flex:1; padding:9mm 16mm 0; display:flex; flex-direction:column; min-height:0; }
+  .meta{ display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--line); border-radius:9px; overflow:hidden; margin-bottom:13px; }
+  .meta .m{ padding:8px 12px; border-right:1px solid var(--line); } .meta .m:last-child{ border-right:none; }
+  .meta .ml{ font-size:7.2px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); } .meta .mv{ font-size:9.8px; font-weight:700; color:var(--navy); margin-top:2px; line-height:1.25; }
+  .sec{ display:flex; align-items:center; gap:10px; margin:0 0 8px; }
+  .sec:not(:first-child){ margin-top:14px; }
+  .sec .bar{ width:16px; height:2px; background:var(--gold); }
+  .sec .tx{ font-size:8.6px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:var(--navy); }
+  .prop{ background:#fff; border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:0 8px 8px 0; padding:11px 15px; margin-bottom:5px; }
+  .prop .pt{ font-size:8px; letter-spacing:1.4px; text-transform:uppercase; color:var(--gold-dk); font-weight:700; margin-bottom:5px; }
+  .prop p{ font-size:10px; line-height:1.62; color:#33404d; } .prop p b{ color:var(--navy); }
+  .grp{ background:#fff; border:1px solid var(--line); border-radius:8px; margin-bottom:8px; overflow:hidden; }
+  .grp .gh{ font-size:8.6px; font-weight:800; letter-spacing:.3px; color:var(--navy); text-transform:uppercase; padding:7px 12px; background:#f4f1ea; border-bottom:1px solid var(--line); }
+  .grp ul.resp{ list-style:none; padding:8px 14px 9px; }
+  .grp ul.resp li{ font-size:9.4px; line-height:1.5; padding:0 0 5px 16px; position:relative; color:#33404d; }
+  .grp ul.resp li:last-child{ padding-bottom:0; }
+  .grp ul.resp li::before{ content:""; position:absolute; left:2px; top:6px; width:5px; height:5px; border-radius:50%; background:var(--gold); }
+  .grp ul.resp li b{ color:var(--navy); }
+  .grp.full .gh{ background:var(--navy); color:#fff; border-bottom:none; }
+  .grp.full .gh .tag{ float:right; font-size:7.4px; letter-spacing:.6px; color:var(--gold-soft); font-weight:700; }
+  .grp.full ul.resp li::before{ background:var(--green); }
+  table{ width:100%; border-collapse:collapse; }
+  thead th{ background:var(--navy2); color:#fff; font-size:7.4px; font-weight:600; letter-spacing:.6px; text-transform:uppercase; padding:6px 11px; text-align:left; }
+  th.r,td.r{ text-align:right; }
+  tbody td{ padding:6.5px 11px; border-bottom:1px solid var(--line); vertical-align:top; font-size:9.6px; }
+  tbody tr:nth-child(even) td{ background:#f4f1ea; }
+  td .nm{ font-weight:700; color:var(--ink); } td .ds{ color:var(--muted); font-size:8px; display:block; margin-top:1px; }
+  td.r .num{ font-weight:700; color:var(--navy); }
+  tr.tot td{ background:var(--navy) !important; color:#fff; font-weight:700; padding:8px 11px; border:none; font-size:10.5px; } tr.tot td .gv{ color:var(--gold-soft); }
+  .finemark{ font-size:7.6px; color:var(--muted); line-height:1.5; margin-top:5px; padding-left:1px; }
+  .finemark b{ color:#8a8272; }
+  .ladderline{ display:flex; align-items:center; gap:9px; background:#fff; border:1px solid var(--line); border-radius:8px; padding:9px 13px; margin-top:8px; }
+  .ladderline .lv{ width:24px; height:24px; flex-shrink:0; border-radius:50%; background:var(--gold); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:10.5px; }
+  .ladderline .lt{ font-size:9.6px; color:#33404d; line-height:1.4; } .ladderline .lt b{ color:var(--navy); }
+  .signrow{ margin-top:auto; padding-top:14px; display:flex; justify-content:space-between; align-items:flex-end; }
+  .signrow .col{ width:46%; } .signrow .line{ border-top:1px solid var(--navy2); margin-bottom:4px; } .signrow .cap{ font-size:8px; color:var(--muted); letter-spacing:.4px; }
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:6px 16mm; display:flex; justify-content:space-between; align-items:center; }
+  .pf .pl{ font-size:7px; color:var(--muted); } .pf .pr{ font-size:8px; color:var(--navy); font-weight:700; letter-spacing:1px; } .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Vargas Decor Ltda &nbsp;·&nbsp; CNPJ 17.269.304/0001-51 &nbsp;·&nbsp; Belo Horizonte / MG</div></div></div>
+    <div class="kx">Proposta de Contratação · Uso interno</div>
+    <div class="tt">Marceneiro Pleno — Novo Colaborador</div>
+    <div class="desc">Proposta de perfil, categorização e remuneração para reforço da equipe de produção, no mesmo degrau de autonomia técnica já consolidado na marcenaria.</div>
+  </div>
+
+  <div class="body">
+    <div class="meta">
+      <div class="m"><div class="ml">Cargo</div><div class="mv">Marceneiro Pleno</div></div>
+      <div class="m"><div class="ml">Área</div><div class="mv">Marcenaria / Produção</div></div>
+      <div class="m"><div class="ml">Reporta a</div><div class="mv">Deivson e Paulo</div></div>
+      <div class="m"><div class="ml">Vínculo</div><div class="mv">MEI · Equipe de Produção</div></div>
+    </div>
+
+    <div class="prop">
+      <div class="pt">Por que essa vaga agora</div>
+      <p>A equipe de produção precisa de mais um <b>Marceneiro Pleno</b> — um profissional que execute <b>montagem completa de ambientes</b> na fábrica e <b>instalação em obra com autonomia</b>, sem depender de supervisão constante. É o mesmo nível de exigência técnica já praticado hoje pela marcenaria, contratado desde já <b>sem ressalvas ou pendências de ajuste</b>: o perfil buscado entrega o padrão pleno por completo, desde o início.</p>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Perfil de competências exigido</span></div>
+    <div class="grp">
+      <div class="gh">Execução técnica com autonomia total</div>
+      <ul class="resp">
+        <li>Montagem completa de ambientes (armários, roupeiros, cozinhas) e instalação em obra <b>sem supervisão constante</b>.</li>
+        <li><b>Leitura e interpretação autônoma</b> de projetos e fichas técnicas; conferência do próprio serviço antes da vistoria.</li>
+        <li>Identificar e reportar peças ou serviços fora do padrão <b>antes</b> de prosseguir.</li>
+      </ul>
+    </div>
+    <div class="grp">
+      <div class="gh">Padrão de acabamento — referência, não exceção</div>
+      <ul class="resp">
+        <li>Entrega no <b>padrão de acabamento que define a percepção do cliente</b> sobre a Valvic, de forma consistente — não apenas em parte dos projetos.</li>
+        <li>Domínio das especificações de cada projeto antes de iniciar a execução.</li>
+      </ul>
+    </div>
+    <div class="grp">
+      <div class="gh">Conduta em obra &amp; comunicação</div>
+      <ul class="resp">
+        <li>Ambiente do cliente sempre organizado; deixa o espaço igual ou melhor; respeito com cliente, parceiro e arquiteto.</li>
+        <li>Reporta status <b>proativamente, sem ser cobrado</b>; sinaliza ajuste antes de instalar; comunica riscos de prazo com antecedência.</li>
+        <li>Não altera o projeto no campo sem autorização de Deivson ou Paulo.</li>
+      </ul>
+    </div>
+    <div class="grp full">
+      <div class="gh">Padrão esperado <span class="tag">sem exceções recorrentes</span></div>
+      <ul class="resp">
+        <li>Os três blocos acima são <b>cumpridos de forma integral e consistente</b> desde a admissão — não há ponto de atenção em aberto a ser tolerado ou compensado ao longo do tempo.</li>
+      </ul>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Remuneração proposta</span></div>
+    <table>
+      <thead><tr><th>Item</th><th>Descrição</th><th class="r" style="width:110px">Valor</th></tr></thead>
+      <tbody>
+        <tr><td><span class="nm">Salário base</span></td><td><span class="ds">Fixo mensal</span></td><td class="r"><span class="num">R$ 2.700,00 / mês</span></td></tr>
+        <tr><td><span class="nm">Comissão — Montagem</span></td><td><span class="ds">Líquida, sobre o valor de montagem executada</span></td><td class="r"><span class="num">2,5%</span></td></tr>
+        <tr><td><span class="nm">Comissão — Instalação</span></td><td><span class="ds">Líquida, sobre o valor de instalação executada</span></td><td class="r"><span class="num">2,5%</span></td></tr>
+      </tbody>
+    </table>
+    <div class="finemark">Percentuais de comissão são valores-base de um plano de remuneração em estruturação, podendo ser reajustados em <b>90 dias</b>.</div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Categorização na trilha de carreira</span></div>
+    <div class="ladderline">
+      <div class="lv">3</div>
+      <div class="lt"><b>Marceneiro Pleno</b> — mesmo degrau já ocupado na equipe. Executa com autonomia; responde por qualidade e prazo. A partir deste degrau, a remuneração passa a incluir comissões de produção, conforme a Matriz de Cargos e Funções da Valvic.</div>
+    </div>
+
+    <div class="signrow">
+      <div class="col"><div class="line"></div><div class="cap">Jonathan · aprovação</div></div>
+      <div class="col" style="text-align:right"><div class="line"></div><div class="cap">Paulo · aprovação</div></div>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Uso interno · Valvic Marcenaria — Vargas Decor Ltda · Julho/2026</div><div class="pr">PROPOSTA <span>·</span> MARCENEIRO PLENO</div></div>
+</section>
+
+</body>
+</html>
