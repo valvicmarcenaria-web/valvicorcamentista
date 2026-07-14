@@ -5,6 +5,8 @@
 **Fechamento (v002):** 2 linhas pela ferragem, nomeadas pelo **modelo Valvic** (não pela marca) —
 **Linha base (Hardt · 5 anos) MC 32% ≈ R$ 70.400** · **Linha premium (Hettich · 10 anos · engenharia alemã) MC 35% ≈ R$ 83.900**
 (v001 era MC 37/42% → R$ 81k/105k; margens revistas p/ 32/35% a pedido do Jonathan)
+**Nomes das linhas na proposta (modelo Valvic, sem citar marca):** base = **"Essencial"** · premium = **"Essencial Prime"**.
+**Proposta (v003):** layout com **renders do cliente** (capa + galeria 2×2 dos ambientes), linhas Essencial/Essencial Prime, repetição de "coladeira" enxugada.
 **Unidade de quantitativo:** CHAPAS (plano de corte — premissa da skill).
 
 > Extração página-a-página no histórico da sessão. "Conferir medidas no local" está em TODAS as

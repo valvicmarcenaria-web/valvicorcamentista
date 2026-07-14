@@ -57,8 +57,9 @@ Marcenaria completa do apto (projeto Jéssica Sollero, 27 pranchas). **9 móveis
 Carvalho Hanover) · cozinha completa (superiores Cinza Cristal Chess + inferiores Lord + prateleiras) ·
 cabeceira + roupeiro (Hóspede, Beige Matt) · roupeiro + painel/prateleiras + mesa (Suíte, Lord).
 - **2 linhas pela ferragem, nomeadas pelo MODELO Valvic** (a pedido — sem citar marca):
-  **"Assinatura"** (Hardt · 5 anos · MC **32%** · **R$ 70.400**) · **"Assinatura Alemã"** (Hettich Sensys+Quadro ·
+  **"Essencial"** (Hardt · 5 anos · MC **32%** · **R$ 70.400**) · **"Essencial Prime"** (Hettich Sensys+Quadro ·
   10 anos · MC **35%** · **R$ 83.900**). Premium evidencia **engenharia alemã** (ciclagem 100k, ajuste 3D) e garantia superior.
+  (nomes v1 "Assinatura/Assinatura Alemã" trocados por Essencial/Essencial Prime a pedido do Jonathan.)
 - **Quantitativo com PLANO DE CORTE** (premissa nova da skill) → ~34 chapas · fita+filetagem · ~64 dobr. + 16 corr.
   ocultas · LED 9 m · terceirizados (vidros cristaleira + espelho + estofado cabeceira) · **insumos** (cola, parafusos,
   limpeza/embalagem) não esquecidos. Cliente **criterioso** → proposta puxa acabamento, garantia, pós-venda e a
