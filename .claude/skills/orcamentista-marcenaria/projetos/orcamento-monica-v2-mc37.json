@@ -1,0 +1,542 @@
+{
+ "cliente": "Mônica Cristina",
+ "projeto": "Banheiros Social + Suíte (BH)",
+ "versao": "002",
+ "inv": 15400,
+ "mcAlvo": 37,
+ "_nota": "v2 OTIMIZADA (opcao B): laser das 2 frentes em 1 viagem (-1 log dedicada) + fundos de 6mm em 1 chapa so (-1 chapa, fundos sao paineis grandes que nestam). Parceira Rubia RT10, caixa baixo, MC 37%. Split equilibrado ~R$ 7.700/banheiro. Economia vs v1: R$ 1.600; vs 2 orcamentos separados: ~R$ 3.800.",
+ "p": {
+  "nf": 5,
+  "parc": 7,
+  "vend": 0,
+  "rt": 10,
+  "vis": 250,
+  "outv": 0,
+  "prog": 0.8,
+  "coord": 1,
+  "marc": 5,
+  "serra": 0.2,
+  "manut": 0.2,
+  "log": 0,
+  "erro": 2
+ },
+ "lib": [
+  [
+   "MDF",
+   [
+    [
+     "mdf branco 6",
+     190
+    ],
+    [
+     "mdf branco 15",
+     260
+    ],
+    [
+     "mdf branco 18",
+     320
+    ],
+    [
+     "mdf branco 25",
+     420
+    ],
+    [
+     "mdf cor 6",
+     300
+    ],
+    [
+     "mdf cor 15",
+     500
+    ],
+    [
+     "mdf cor 18",
+     600
+    ],
+    [
+     "mdf cristallo 6",
+     400
+    ],
+    [
+     "mdf cristallo 15",
+     600
+    ],
+    [
+     "mdf cristallo 18",
+     700
+    ],
+    [
+     "mdf Acetinato 6",
+     1000
+    ],
+    [
+     "mdf Acetinato 15",
+     1300
+    ],
+    [
+     "mdf Acetinato 18",
+     1500
+    ],
+    [
+     "mdf com lâmina prensada +acab.",
+     2200
+    ],
+    [
+     "Palha sintética",
+     600
+    ],
+    [
+     "Compensado flexível",
+     400
+    ]
+   ]
+  ],
+  [
+   "Cola e fita",
+   [
+    [
+     "Colagem - mt linear - máquina",
+     2.5
+    ],
+    [
+     "Colagem - mt linear - manual",
+     4
+    ],
+    [
+     "Fita de borda - branco tx - mt",
+     2
+    ],
+    [
+     "Fita de borda - cor - mt",
+     3
+    ],
+    [
+     "Demandas pontuais - espec.",
+     50
+    ]
+   ]
+  ],
+  [
+   "Dobradiças",
+   [
+    [
+     "Padrão",
+     6
+    ],
+    [
+     "Bigfer Inox",
+     20
+    ],
+    [
+     "Bigfer Ônix",
+     15
+    ],
+    [
+     "Hardt",
+     8
+    ],
+    [
+     "Häfele",
+     20
+    ],
+    [
+     "Hettich Novisys",
+     10
+    ],
+    [
+     "Hettich Sensys",
+     35
+    ],
+    [
+     "Hettich Sensys Onix",
+     40
+    ],
+    [
+     "Hettich Sensys Black",
+     40
+    ]
+   ]
+  ],
+  [
+   "Corrediças",
+   [
+    [
+     "Telescópica",
+     40
+    ],
+    [
+     "Oculta Hardt",
+     70
+    ],
+    [
+     "Oculta Quadro (Hettich)",
+     120
+    ],
+    [
+     "Oculta Actro (Hettich)",
+     400
+    ],
+    [
+     "Blum",
+     300
+    ]
+   ]
+  ],
+  [
+   "Sistema portas roupeiros",
+   [
+    [
+     "SS150 - 2 portas",
+     500
+    ],
+    [
+     "SS150 - 3 portas",
+     600
+    ],
+    [
+     "RO65 (Rometal)",
+     60
+    ],
+    [
+     "Dominus - 2 portas",
+     700
+    ],
+    [
+     "Dominus - 3 portas",
+     850
+    ],
+    [
+     "Trilho RO65 - 3mt",
+     80
+    ],
+    [
+     "Trilho RO65 - 2mt",
+     60
+    ],
+    [
+     "Trilho SS150 - 3mt",
+     200
+    ],
+    [
+     "Trilho SS150 - 2mt",
+     170
+    ],
+    [
+     "Trilho Dominus - 3mt",
+     350
+    ],
+    [
+     "Trilho Dominus - 2mt",
+     300
+    ],
+    [
+     "Desempenador sobrepor - par",
+     100
+    ],
+    [
+     "Desempenador embutido - par",
+     150
+    ]
+   ]
+  ],
+  [
+   "Articuladores",
+   [
+    [
+     "Pistão Normal",
+     20
+    ],
+    [
+     "Pistão com amortecimento",
+     30
+    ],
+    [
+     "Blum HK-xs",
+     180
+    ],
+    [
+     "Aventos (e outros)",
+     600
+    ]
+   ]
+  ],
+  [
+   "Puxadores",
+   [
+    [
+     "SP7000 anodizado",
+     70
+    ],
+    [
+     "SP7000 bronze",
+     90
+    ],
+    [
+     "Perfil cava RM195 - 3mt",
+     250
+    ],
+    [
+     "Perfil cava RM213 - 3mt",
+     100
+    ],
+    [
+     "Par tampinhas RM213",
+     4
+    ],
+    [
+     "Cava 35° usinada - mt",
+     50
+    ],
+    [
+     "Puxador bolinha",
+     15
+    ],
+    [
+     "Concha shell Zen",
+     80
+    ],
+    [
+     "Ponto Zen",
+     70
+    ],
+    [
+     "Especial 1 - Traço Metal/Couro Enlevo",
+     60
+    ]
+   ]
+  ],
+  [
+   "Suportes",
+   [
+    [
+     "Suporte espada",
+     25
+    ],
+    [
+     "Suporte oculto",
+     20
+    ],
+    [
+     "Serralheria prat. simples",
+     25
+    ],
+    [
+     "Serralheria bancada",
+     50
+    ]
+   ]
+  ],
+  [
+   "Parafusos / dispositivos / montagem",
+   [
+    [
+     "Parafusos gerais - especulação",
+     25
+    ],
+    [
+     "Conj. parafuso e bucha",
+     1.8
+    ],
+    [
+     "Sup. prateleiras - cj4",
+     3
+    ],
+    [
+     "Sist. montagem (mini fix)",
+     0
+    ],
+    [
+     "Cola kit Teck bond",
+     35
+    ],
+    [
+     "PUR / PU",
+     50
+    ],
+    [
+     "Silicone acabamento",
+     30
+    ]
+   ]
+  ],
+  [
+   "Iluminação",
+   [
+    [
+     "LED - fita + perfil - mt",
+     150
+    ],
+    [
+     "Sensor",
+     50
+    ]
+   ]
+  ],
+  [
+   "Vidros e espelhos (m²)",
+   [
+    [
+     "Vidro incolor temperado 6mm",
+     200
+    ],
+    [
+     "Vidro incolor temperado 8mm",
+     250
+    ],
+    [
+     "Vidro incolor temperado 10mm",
+     300
+    ],
+    [
+     "Espelho prata",
+     600
+    ],
+    [
+     "Espelho bronze",
+     900
+    ]
+   ]
+  ],
+  [
+   "Limpeza / embalagem",
+   [
+    [
+     "Tinner (litro)",
+     12
+    ],
+    [
+     "Estopa (pacote)",
+     10
+    ],
+    [
+     "Strech",
+     4
+    ],
+    [
+     "Cantoneira",
+     0.5
+    ],
+    [
+     "Embalagem",
+     50
+    ]
+   ]
+  ],
+  [
+   "Especiais",
+   [
+    [
+     "Logística específica",
+     150
+    ],
+    [
+     "Cabideiro oval",
+     150
+    ],
+    [
+     "Rodízio trundle",
+     8
+    ],
+    [
+     "Estrutura de serralheria",
+     350
+    ],
+    [
+     "Gaveta especial",
+     900
+    ],
+    [
+     "Painel corte a laser (frente)",
+     280
+    ],
+    [
+     "Estrutura metalon - pint. eletrostatica preto fosco",
+     350
+    ]
+   ]
+  ]
+ ],
+ "ambientes": [
+  {
+   "nome": "Banheiro Social",
+   "q": {
+    "MDF¦mdf cor 15": 2,
+    "MDF¦mdf cor 6": 1,
+    "Corrediças¦Telescópica": 2,
+    "Puxadores¦Especial 1 - Traço Metal/Couro Enlevo": 2,
+    "Dobradiças¦Padrão": 2,
+    "Iluminação¦LED - fita + perfil - mt": 2.5,
+    "Iluminação¦Sensor": 1,
+    "Cola e fita¦Fita de borda - cor - mt": 24,
+    "Cola e fita¦Colagem - mt linear - máquina": 24,
+    "Parafusos / dispositivos / montagem¦Parafusos gerais - especulação": 2,
+    "Parafusos / dispositivos / montagem¦Conj. parafuso e bucha": 10,
+    "Parafusos / dispositivos / montagem¦Cola kit Teck bond": 1,
+    "Limpeza / embalagem¦Embalagem": 1,
+    "Limpeza / embalagem¦Strech": 2,
+    "Especiais¦Painel corte a laser (frente)": 1,
+    "Especiais¦Logística específica": 1
+   },
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
+   }
+  },
+  {
+   "nome": "Banheiro Suíte",
+   "q": {
+    "MDF¦mdf cor 15": 1,
+    "MDF¦mdf cor 6": 0,
+    "Corrediças¦Telescópica": 1,
+    "Puxadores¦Especial 1 - Traço Metal/Couro Enlevo": 1,
+    "Dobradiças¦Padrão": 2,
+    "Iluminação¦LED - fita + perfil - mt": 2.25,
+    "Iluminação¦Sensor": 1,
+    "Suportes¦Suporte espada": 4,
+    "Cola e fita¦Fita de borda - cor - mt": 21,
+    "Cola e fita¦Colagem - mt linear - máquina": 21,
+    "Parafusos / dispositivos / montagem¦Parafusos gerais - especulação": 2,
+    "Parafusos / dispositivos / montagem¦Conj. parafuso e bucha": 10,
+    "Parafusos / dispositivos / montagem¦Cola kit Teck bond": 1,
+    "Limpeza / embalagem¦Embalagem": 1,
+    "Limpeza / embalagem¦Strech": 2,
+    "Especiais¦Painel corte a laser (frente)": 1,
+    "Especiais¦Estrutura metalon - pint. eletrostatica preto fosco": 1,
+    "Especiais¦Logística específica": 1
+   },
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
+   }
+  }
+ ],
+ "ativo": 0,
+ "collapsed": {
+  "MDF": true,
+  "Cola e fita": true,
+  "Dobradiças": true,
+  "Corrediças": true,
+  "Sistema portas roupeiros": true,
+  "Articuladores": true,
+  "Puxadores": true,
+  "Suportes": true,
+  "Parafusos / dispositivos / montagem": true,
+  "Iluminação": true,
+  "Vidros e espelhos (m²)": true,
+  "Limpeza / embalagem": true,
+  "Especiais": true
+ },
+ "diretrizes": "",
+ "rodrigo": "",
+ "duvidas": [],
+ "theme": "light"
+}
