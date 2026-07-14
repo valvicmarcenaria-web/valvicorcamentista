@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;700&display=swap');
+:root{--gold:#B8901E;--gold-soft:#D9B25A;--gold-deep:#8f6410;--ink:#191512;--ink-soft:#4a463f;--cream:#FBF5E9;--cream-2:#F3E8CE;--line:#E4D8B8;--paper:#fff;}
+@page{size:A4;margin:0;}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;color:var(--ink);font-size:10.5pt;line-height:1.62;}
+.serif{font-family:'Cormorant Garamond','Georgia',serif;}
+.page{position:relative;width:210mm;min-height:297mm;padding:16mm 18mm;page-break-after:always;overflow:hidden;background:var(--paper);}
+.page:last-child{page-break-after:auto;}
+h1,h2,h3{margin:0;font-weight:600;}
+p{margin:8px 0;}
+.eyebrow{letter-spacing:.32em;text-transform:uppercase;font-size:8pt;font-weight:700;color:var(--gold-deep);}
+.rule{height:2px;width:54px;background:var(--gold);border:0;margin:13px 0;}
+.section-h{font-family:'Cormorant Garamond',serif;font-size:23pt;font-weight:700;color:var(--ink);line-height:1.1;margin-top:4px;}
+.lead{font-family:'Cormorant Garamond',serif;font-size:13.5pt;font-style:italic;color:var(--ink-soft);line-height:1.5;}
+.pfoot{position:absolute;left:18mm;right:18mm;bottom:11mm;display:flex;justify-content:space-between;font-size:7.6pt;color:#9a9080;letter-spacing:.12em;border-top:1px solid var(--line);padding-top:3mm;}
+.brandline{font-family:'Cormorant Garamond',serif;font-weight:700;letter-spacing:.12em;}.brandline .dot{color:var(--gold);}
+
+/* capa */
+.cover{padding:0;background:var(--cream);}
+.cover .frame{position:absolute;inset:9mm;border:1px solid var(--gold-soft);}
+.cover .inner{position:relative;padding:22mm 20mm;height:297mm;display:flex;flex-direction:column;}
+.brand{font-family:'Cormorant Garamond',serif;font-size:30pt;font-weight:700;letter-spacing:.18em;color:var(--ink);}
+.brand .dot{color:var(--gold);}
+.brand-sub{letter-spacing:.5em;font-size:8pt;font-weight:700;color:var(--gold-deep);margin-top:2px;}
+.cover .hero{margin:12mm 0 10mm;height:88mm;border-radius:3px;position:relative;background:#6f5128;box-shadow:0 12px 30px rgba(80,55,20,.30);overflow:hidden;}
+.hero .wall{position:absolute;inset:0;background:linear-gradient(160deg,#7d5a2b,#5f4622);}
+.hero .cab{position:absolute;top:8mm;bottom:8mm;border:1mm solid #4f3a1a;}
+.hero .c1{left:8mm;width:34mm;background:repeating-linear-gradient(90deg,#8a6634,#8a6634 1mm,#a37d42 1mm,#a37d42 5mm);}
+.hero .c2{left:46mm;width:26mm;background:#9c7637;}
+.hero .c3{left:76mm;right:8mm;background:#8d8c8a;}
+.hero .c3 .g{position:absolute;left:4mm;right:4mm;background:rgba(220,240,255,.16);border:.4mm solid rgba(255,255,255,.28);height:15mm;}
+.hero .c3 .g:nth-child(1){top:4mm;}.hero .c3 .g:nth-child(2){top:23mm;}.hero .c3 .g:nth-child(3){top:42mm;}
+.cover .hero .cap{position:absolute;left:9mm;bottom:3mm;color:#fff;font-size:7.6pt;letter-spacing:.22em;text-transform:uppercase;opacity:.9;}
+.cover .for{letter-spacing:.34em;text-transform:uppercase;font-size:9pt;font-weight:700;color:var(--gold-deep);}
+.cover .client{font-family:'Cormorant Garamond',serif;font-size:38pt;font-weight:700;line-height:1.05;margin:5px 0 4px;color:var(--ink);}
+.cover .proj{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15pt;color:var(--ink-soft);}
+.cover .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;font-size:8.5pt;color:var(--ink-soft);letter-spacing:.06em;}
+.sparkles{font-size:13pt;color:var(--gold);letter-spacing:.4em;}
+
+.band{background:var(--ink);color:var(--cream);border-radius:4px;padding:7mm 9mm;margin:8mm 0;}
+.band .serif{color:#fff;}
+.partner{display:flex;gap:5mm;align-items:center;background:var(--cream);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:3px;padding:5mm 6mm;margin-top:6mm;}
+.partner .ic{font-family:'Cormorant Garamond',serif;font-size:26pt;color:var(--gold-deep);line-height:1;}
+.partner .tx{font-size:9.6pt;color:var(--ink-soft);}
+.partner .tx b{color:var(--ink);}
+
+.cards{display:flex;flex-wrap:wrap;gap:6mm;margin-top:6mm;}
+.card{width:calc(50% - 3mm);background:var(--cream);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:3px;padding:5mm 5.5mm;}
+.card .k{font-family:'Cormorant Garamond',serif;font-size:13.5pt;font-weight:600;color:var(--ink);}
+.card .v{font-size:9.2pt;color:var(--ink-soft);margin-top:3px;}
+
+.lines{display:flex;gap:6mm;margin-top:7mm;}
+.lineC{flex:1;border:1px solid var(--line);border-radius:4px;padding:6mm;background:var(--paper);}
+.lineC.prem{background:var(--ink);color:var(--cream);border-color:var(--ink);}
+.lineC .tag{letter-spacing:.2em;text-transform:uppercase;font-size:7.6pt;font-weight:700;color:var(--gold-deep);}
+.lineC.prem .tag{color:var(--gold-soft);}
+.lineC .nm{font-family:'Cormorant Garamond',serif;font-size:19pt;font-weight:700;margin:2px 0 1mm;}
+.lineC.prem .nm{color:#fff;}
+.lineC .warr{font-family:'Cormorant Garamond',serif;font-size:15pt;color:var(--gold-deep);}
+.lineC.prem .warr{color:var(--gold-soft);}
+.lineC ul{margin:4mm 0 0;padding-left:5mm;font-size:9pt;color:var(--ink-soft);}
+.lineC.prem ul{color:#e9e1cd;}
+.lineC li{margin:2.2mm 0;}
+
+table{width:100%;border-collapse:collapse;margin:4mm 0 3mm;font-size:10pt;}
+th,td{padding:2.3mm 4mm;text-align:left;border-bottom:1px solid var(--line);}
+thead th{background:var(--ink);color:var(--cream);font-size:8pt;letter-spacing:.14em;text-transform:uppercase;font-weight:700;border:0;}
+td.r,th.r{text-align:right;}
+.amb-name{font-family:'Cormorant Garamond',serif;font-size:12.5pt;font-weight:600;}
+.amb-d{font-size:8.4pt;color:var(--ink-soft);}
+.grand td{background:var(--gold);color:#1a1a1a;font-weight:700;font-size:12pt;border:0;}
+.grand .serif{font-size:14pt;}
+.prem-col{background:var(--cream-2);}
+
+.terms{display:flex;gap:5mm;margin-top:4mm;flex-wrap:wrap;}
+.term{flex:1;min-width:36mm;background:var(--cream);border:1px solid var(--line);border-radius:3px;padding:4.5mm;text-align:center;}
+.term .t{font-size:7.4pt;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;}
+.term .b{font-family:'Cormorant Garamond',serif;font-size:15pt;font-weight:700;margin-top:3px;line-height:1.1;}
+.pay{margin:3mm 0 0;}.pay li{margin:1.9mm 0;font-size:9.6pt;}
+.timeline{margin-top:5mm;}
+.step{display:flex;gap:5mm;padding:3.5mm 0;border-bottom:1px solid var(--line);}
+.step .n{font-family:'Cormorant Garamond',serif;font-size:17pt;font-weight:700;color:var(--gold);min-width:9mm;}
+.step .h{font-weight:700;font-size:10pt;color:var(--ink);}
+.step .d{font-size:9pt;color:var(--ink-soft);}
+.close{background:var(--ink);color:var(--cream);border-radius:5px;padding:9mm;margin-top:7mm;}
+.close .serif{color:#fff;font-size:16pt;}.close p{color:#e9e1cd;}
+.scope{display:flex;gap:6mm;margin-top:5mm;}.scope>div{flex:1;}
+.scope h3{font-size:8pt;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:3mm;}
+.scope ul{margin:0;padding-left:5mm;font-size:9pt;color:var(--ink-soft);}.scope li{margin:2mm 0;}
+</style></head>
+<body>
+
+<!-- PAGE 1 — CAPA -->
+<div class="page cover">
+  <div class="frame"></div>
+  <div class="inner">
+    <div><div class="brand">valvic<span class="dot">.</span></div><div class="brand-sub">MARCENARIA</div></div>
+    <div class="hero">
+      <div class="wall"></div>
+      <div class="cab c1"></div>
+      <div class="cab c2"></div>
+      <div class="cab c3"><span class="g"></span><span class="g"></span><span class="g"></span></div>
+      <div class="cap">Cristaleira · cozinha · roupeiros · painéis — marcenaria sob medida</div>
+    </div>
+    <div class="sparkles">✦ ✦ ✦</div>
+    <div class="for">Proposta especial para</div>
+    <div class="client serif">Jairo Samuel</div>
+    <div class="proj serif">Marcenaria completa — projeto Jéssica Sollero</div>
+    <div style="flex:1 1 auto;"></div>
+    <div class="foot">
+      <div>Julho de 2026</div>
+      <div style="text-align:right">Proposta nº JS-2026-001<br>Validade: 7 dias úteis</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 2 — APRESENTAÇÃO + PARCERIA -->
+<div class="page">
+  <div class="eyebrow">Quem vai executar o seu projeto</div>
+  <h1 class="section-h">O projeto é da Jéssica.<br>A execução é nossa.</h1>
+  <hr class="rule">
+  <p class="lead">Um projeto criterioso pede uma marcenaria à altura — que traduza cada desenho em peça real com a precisão, o acabamento e a durabilidade que ele merece.</p>
+
+  <p>A <b>Jéssica Sollero</b> desenhou para o seu apartamento um conjunto que conversa em cada ambiente — a <b>cristaleira</b> amadeirada da sala, a <b>cozinha</b> em dois tons, as <b>cabeceiras</b> e os <b>roupeiros</b> dos quartos, os <b>painéis</b> da suíte. A <b>Valvic</b> existe para <b>executar esse desenho com maestria</b>: não vendemos o projeto — vendemos a certeza de que ele será construído do jeito certo, com o acabamento fino que um cliente exigente reconhece de perto.</p>
+
+  <div class="partner">
+    <div class="ic">✦</div>
+    <div class="tx">Uma <b>parceria de anos com a Jéssica Sollero</b>. Já executamos juntos projeto após projeto — e isso significa um fluxo azeitado: o que ela desenha, a gente sabe construir. Menos ruído, mais precisão, e a tranquilidade de quem já viu o resultado final tantas vezes.</div>
+  </div>
+
+  <div class="band">
+    <div class="eyebrow" style="color:var(--gold-soft)">O que estamos propondo</div>
+    <h2 class="serif" style="font-size:19pt;margin-top:3px;">Não vendemos móveis de catálogo. Vendemos execução sob medida, de obra fina.</h2>
+    <p style="color:#e9e1cd;margin-top:6px;">Toda a marcenaria em MDF do projeto — cristaleira, cozinha completa, cabeceira, dois roupeiros piso-teto e os painéis da suíte — com <b>ferragens premium de fechamento suave</b>, <b>acabamento em meia esquadria</b>, iluminação embutida e <b>instalação por equipe própria</b>. Cada peça sai do nosso galpão usinada em <b>CNC</b> e com bordas em <b>coladeira automática</b>.</p>
+  </div>
+
+  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Jairo Samuel · Marcenaria · 2026</span></div>
+</div>
+
+<!-- PAGE 3 — CONFIGURAÇÃO TÉCNICA / ACABAMENTO -->
+<div class="page">
+  <div class="eyebrow">O acabamento por dentro</div>
+  <h1 class="section-h">Onde o olhar criterioso<br>encontra a diferença.</h1>
+  <hr class="rule">
+  <p>Cada item abaixo é uma decisão de execução — não de catálogo. É o que separa uma marcenaria que alinha e dura de uma que empena, descola e desregula em poucos meses.</p>
+
+  <div class="cards">
+    <div class="card"><div class="k">Meia esquadria (junção a 45°)</div>
+      <div class="v">O acabamento premium pedido no projeto: as faces se encontram na quina a 45°, sem topo aparente. Exige corte e montagem de precisão — é o detalhe que denuncia a boa marcenaria.</div></div>
+    <div class="card"><div class="k">Melamínicos de linha nobre</div>
+      <div class="v">Carvalho Hanover, Cinza Cristal Chess, Lord e Beige Matt — texturas e cores estáveis, resistentes ao dia a dia, com a fidelidade de cor que o projeto especifica.</div></div>
+    <div class="card"><div class="k">Corrediças ocultas, fechamento suave</div>
+      <div class="v">Gavetas que deslizam em silêncio e fecham sozinhas (soft-close), com a lateral limpa — sem trilho aparente. Ferragem premium é a base da nossa garantia.</div></div>
+    <div class="card"><div class="k">Interiores em Branco TX</div>
+      <div class="v">Toda a caixaria interna em Branco TX — limpo, claro e fácil de manter — com as faces aparentes no acabamento nobre de cada ambiente.</div></div>
+    <div class="card"><div class="k">Cristaleira com vidro e LED</div>
+      <div class="v">Portas em vidro reflecta prata com perfil de alumínio, prateleiras de vidro e iluminação LED 3000K — a peça-joia da sala, executada no esquadro exato.</div></div>
+    <div class="card"><div class="k">Iluminação embutida</div>
+      <div class="v">LED profissional com perfil e difusor, embutido nos armários da cozinha (4000K) e nas cabeceiras (3000K), com sensor — luz limpa, sem ponto quente.</div></div>
+    <div class="card"><div class="k">Roupeiros piso-teto</div>
+      <div class="v">Do chão ao teto, com maleiro, cabideiro metálico, gaveteiros internos e detalhe em Carvalho Hanover nas portas. Prumo e modulação perfeitos — é onde a execução aparece.</div></div>
+    <div class="card"><div class="k">Bordas em coladeira automática</div>
+      <div class="v">Todas as faces aparentes com fita de borda na cor, aplicada em coladeira automática — colagem uniforme, sem descolar, para durar.</div></div>
+  </div>
+
+  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Jairo Samuel · Marcenaria · 2026</span></div>
+</div>
+
+<!-- PAGE 4 — AS DUAS LINHAS -->
+<div class="page">
+  <div class="eyebrow">Duas linhas, o mesmo projeto</div>
+  <h1 class="section-h">Escolha o nível<br>de engenharia.</h1>
+  <hr class="rule">
+  <p>O projeto, os acabamentos e a execução são idênticos nas duas linhas. O que muda é a <b>ferragem</b> que move e sustenta cada porta e gaveta — e, com ela, a <b>garantia</b>.</p>
+
+  <div class="lines">
+    <div class="lineC">
+      <div class="tag">Linha</div>
+      <div class="nm serif">Assinatura</div>
+      <div class="warr serif">Garantia 5 anos</div>
+      <ul>
+        <li>Ferragens premium de <b>fechamento suave</b> (soft-close), corrediças ocultas e dobradiças com amortecedor.</li>
+        <li>Padrão de mercado alto — silêncio, durabilidade e lateral limpa.</li>
+        <li>Garantia de <b>5 anos</b> em estrutura e ferragens.</li>
+      </ul>
+    </div>
+    <div class="lineC prem">
+      <div class="tag">Linha</div>
+      <div class="nm serif">Assinatura Alemã</div>
+      <div class="warr serif">Garantia 10 anos</div>
+      <ul>
+        <li>Ferragens de <b>engenharia alemã</b>: ciclagem certificada de <b>100.000 aberturas</b>, ajuste tridimensional e fechamento por amortecimento a gel.</li>
+        <li>O padrão mais premiado do mundo em dobradiças — precisão que se sente a cada toque, por décadas.</li>
+        <li><b>Garantia estendida de 10 anos</b> — a tranquilidade de quem não quer pensar nisso de novo.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="band" style="margin-top:7mm;">
+    <div class="eyebrow" style="color:var(--gold-soft)">Pós-venda Valvic</div>
+    <p style="color:#e9e1cd;margin-top:4px;">A garantia não é um papel: é <b>atendimento em até 24h</b>, <b>visita técnica em até 3 dias úteis</b> e <b>custo zero</b> dentro do prazo. Cobertura por componente, documentada e assinada na entrega. É o compromisso de quem vai estar por perto muito depois da montagem.</p>
+  </div>
+
+  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Jairo Samuel · Marcenaria · 2026</span></div>
+</div>
+
+<!-- PAGE 5 — INVESTIMENTO -->
+<div class="page">
+  <div class="eyebrow">Investimento</div>
+  <h1 class="section-h">Proposta de investimento.</h1>
+  <hr class="rule">
+  <p>Toda a marcenaria em MDF do projeto, por ambiente, nas duas linhas. Valores para o escopo de marcenaria — a serralheria (divisória de TV, estruturas metálicas e cabeceira de gradil) fica por conta do fornecedor parceiro.</p>
+
+  <table>
+    <thead><tr><th>Ambiente</th><th class="r">Assinatura<br><span style="font-weight:400;text-transform:none;letter-spacing:0">5 anos</span></th><th class="r">Assinatura Alemã<br><span style="font-weight:400;text-transform:none;letter-spacing:0">10 anos</span></th></tr></thead>
+    <tbody>
+      <tr><td><span class="amb-name">Sala — Cristaleira</span><div class="amb-d">Carvalho Hanover · portas de vidro reflecta prata · prateleiras de vidro · LED</div></td>
+          <td class="r">R$ 10.000</td><td class="r prem-col">R$ 11.700</td></tr>
+      <tr><td><span class="amb-name">Cozinha completa</span><div class="amb-d">Superiores Cinza Cristal Chess + inferiores Lord + prateleiras · meia esquadria · lixeira embutida · LED</div></td>
+          <td class="r">R$ 28.000</td><td class="r prem-col">R$ 33.500</td></tr>
+      <tr><td><span class="amb-name">Quarto Hóspede — Cabeceira</span><div class="amb-d">Carvalho Hanover + estofado · recuo cortineiro · LED 3000K</div></td>
+          <td class="r">R$ 5.000</td><td class="r prem-col">R$ 5.900</td></tr>
+      <tr><td><span class="amb-name">Quarto Hóspede — Roupeiro</span><div class="amb-d">Beige Matt + detalhe Carvalho · maleiro, cabideiro, gaveteiro · espelho prata</div></td>
+          <td class="r">R$ 12.700</td><td class="r prem-col">R$ 15.000</td></tr>
+      <tr><td><span class="amb-name">Quarto Suíte — Roupeiro</span><div class="amb-d">Lord + detalhe Carvalho · maleiro, cabideiro, gaveteiro, nicho</div></td>
+          <td class="r">R$ 10.500</td><td class="r prem-col">R$ 12.600</td></tr>
+      <tr><td><span class="amb-name">Quarto Suíte — Painel + mesa</span><div class="amb-d">Painel Carvalho + prateleiras Lord + tampo da mesa em Carvalho Hanover</div></td>
+          <td class="r">R$ 4.200</td><td class="r prem-col">R$ 5.200</td></tr>
+      <tr class="grand"><td><span class="serif">Investimento total</span></td><td class="r"><span class="serif">R$ 70.400</span></td><td class="r"><span class="serif">R$ 83.900</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="terms">
+    <div class="term"><div class="t">Prazo de entrega</div><div class="b">60–70<br><span style="font-size:9pt">dias úteis</span></div></div>
+    <div class="term"><div class="t">Validade</div><div class="b">7<br><span style="font-size:9pt">dias úteis</span></div></div>
+    <div class="term"><div class="t">Garantia</div><div class="b">5 ou 10<br><span style="font-size:9pt">anos</span></div></div>
+  </div>
+
+  <h2 class="serif" style="font-size:14pt;margin-top:6mm;">Condições de pagamento</h2>
+  <ul class="pay">
+    <li><b>30%</b> de entrada + restante em até <b>10× no cartão</b></li>
+    <li><b>50%</b> de entrada + restante em até 8× no cartão — <b>3% de desconto</b></li>
+    <li><b>70%</b> de entrada + restante em até 6× no cartão — <b>5% de desconto</b></li>
+    <li><b>70%</b> de entrada + restante por transferência — <b>7% de desconto</b></li>
+  </ul>
+
+  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Jairo Samuel · Marcenaria · 2026</span></div>
+</div>
+
+<!-- PAGE 6 — PROCESSO + FECHAMENTO -->
+<div class="page">
+  <div class="eyebrow">Como conduzimos</div>
+  <h1 class="section-h">Do desenho à entrega,<br>sem surpresas.</h1>
+  <hr class="rule">
+
+  <div class="timeline">
+    <div class="step"><div class="n serif">01</div><div><div class="h">Análise técnica e medição no local</div><div class="d">Conferimos cada medida do projeto da Jéssica no apartamento — é onde a marcenaria sob medida começa de verdade.</div></div></div>
+    <div class="step"><div class="n serif">02</div><div><div class="h">Aprovação e detalhamento executivo</div><div class="d">Fechamos acabamentos, ferragens e cores com você e com a Jéssica, e detalhamos cada módulo para produção.</div></div></div>
+    <div class="step"><div class="n serif">03</div><div><div class="h">Produção no galpão próprio (CNC + coladeira)</div><div class="d">Corte de precisão em CNC, bordas em coladeira automática e montagem conferida peça a peça, com controle de qualidade.</div></div></div>
+    <div class="step"><div class="n serif">04</div><div><div class="h">Entrega e instalação por equipe própria</div><div class="d">Montagem por quem faz — sem terceirizar a instalação — com o acabamento de obra fina no ambiente pronto.</div></div></div>
+    <div class="step"><div class="n serif">05</div><div><div class="h">Pós-venda e garantia</div><div class="d">Cobertura documentada e assinada, retorno em 24h e visita técnica em 3 dias úteis dentro do prazo.</div></div></div>
+  </div>
+
+  <div class="close">
+    <div class="eyebrow" style="color:var(--gold-soft)">Por que a Valvic</div>
+    <p class="serif">Galpão próprio, CNC, coladeira automática e equipe especializada — estrutura para entregar cada detalhe, do friso ao encaixe em meia esquadria, com o padrão que um projeto criterioso merece. E uma parceria de anos com a Jéssica Sollero para que nada se perca entre o desenho e a peça montada.</p>
+    <p>Será uma honra executar a sua marcenaria, Jairo. Ficamos à disposição para apresentar a proposta pessoalmente e detalhar cada etapa com você e com a Jéssica.</p>
+    <p style="margin-top:6mm;"><span class="brandline" style="color:#fff;font-size:13pt;">valvic<span class="dot">.</span> marcenaria</span></p>
+  </div>
+
+  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Proposta nº JS-2026-001 · validade 7 dias úteis</span></div>
+</div>
+
+</body></html>

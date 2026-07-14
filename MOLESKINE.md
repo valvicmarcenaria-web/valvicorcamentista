@@ -51,6 +51,26 @@ pintura, porcelanato, rodapé poliestireno, blindex, arandelas e **madeira de de
   `proposta-ed-luxemburgo.html`/`.pdf`. Proposta subida ao Drive (pasta do cliente).
 - **Pendências:** confirmar prazo do boleto (assumido 30 dias); ver recado p/ Rodrigo.
 
+### [2026-07-14] Orçamento + Proposta — Jairo Samuel (apto completo) — Lavinia + Vitor
+**Solicitante:** Jonathan · **Parceira:** Jéssica Sollero (RT 10%) · **Status:** 🟢 Proposta entregue (v002)
+Marcenaria completa do apto (projeto Jéssica Sollero, 27 pranchas). **9 móveis MDF:** cristaleira (Sala,
+Carvalho Hanover) · cozinha completa (superiores Cinza Cristal Chess + inferiores Lord + prateleiras) ·
+cabeceira + roupeiro (Hóspede, Beige Matt) · roupeiro + painel/prateleiras + mesa (Suíte, Lord).
+- **2 linhas pela ferragem, nomeadas pelo MODELO Valvic** (a pedido — sem citar marca):
+  **"Assinatura"** (Hardt · 5 anos · MC **32%** · **R$ 70.400**) · **"Assinatura Alemã"** (Hettich Sensys+Quadro ·
+  10 anos · MC **35%** · **R$ 83.900**). Premium evidencia **engenharia alemã** (ciclagem 100k, ajuste 3D) e garantia superior.
+- **Quantitativo com PLANO DE CORTE** (premissa nova da skill) → ~34 chapas · fita+filetagem · ~64 dobr. + 16 corr.
+  ocultas · LED 9 m · terceirizados (vidros cristaleira + espelho + estofado cabeceira) · **insumos** (cola, parafusos,
+  limpeza/embalagem) não esquecidos. Cliente **criterioso** → proposta puxa acabamento, garantia, pós-venda e a
+  **parceria de anos com a Jéssica**. Prazo **60–70 dias úteis**.
+- 🚫 **DIVISÓRIA de TV (Metalon + cachepots) FORA** (confirmado cliente) · toda serralheria/marmoraria fora do escopo
+  (por fornecedor parceiro) — só a marcenaria MDF entrou.
+- **Margens:** v001 era 37/42% (R$81k/105k); revistas p/ **32/35%** a pedido do Jonathan.
+- **Arquivos:** `projetos/2026-jairo-samuel-marcenaria.md` · `orcamento-jairo-samuel.json` · `proposta-jairo-samuel.html`/`.pdf`.
+- **Pendências:** ① confirmar coordenação da **serralheria** (Valvic gerencia ou fica com o serralheiro?) · ② **ripado dos
+  banhos** sem cota · ③ cota "113" da cristaleira não fecha (conferir DWG p/ porta de vidro) · ④ prof. do roupeiro da suíte
+  (adotei 55) · ⑤ refinar quantitativo no app após **medição no local** · ⑥ subir a proposta ao Drive (pasta do cliente).
+
 ### [2026-06-25] Orçamento + Proposta — Camila (Closet) — Lavinia + Vitor · rev. 10/07
 **Solicitante:** Jonathan · **Status:** 🟢 Concluído
 Closet = **Roupeiro em L (piso-teto) + Ilha**. Fechou em **config única** (evoluiu de 2
