@@ -79,3 +79,17 @@ Fechando os dois banheiros juntos, capturei 2 economias (repassadas ao preço):
 - Painel a laser e metalon: custos por referência do fundador (serviço antigo) —
   confirmar com fornecedor atual antes de fechar a OP.
 - LED da marcenaria (sup+inf) é nosso; LED IP65 de nicho/sanca é civil (não nosso).
+
+---
+
+## Refinamentos (08/07/2026) — aplicar a TODOS os ambientes (banheiros + closet + cozinha)
+
+- **Ferragens: Hardt + Hettich** (substitui a telescópica simples). Garantia do conjunto = **5 anos** (elo mais fraco, Hardt); opção de padronizar Hettich → 10 anos (upsell, ajustar custo).
+- **Puxador abaulado com topo em laca** — item de **acabamento premium**. Processo: usinagem CNC do chanfro → selagem/regularização → lixamento entre demãos → primer + laca PU em cabine → polimento. **Custo adicional referência do Jonathan: + R$ 3.500** (lançar nas portas com puxador abaulado).
+- **Cozinha — correção:** a **bancada principal é QUARTZITO Klahari** (pedra) = **FORA** (cliente/marmoraria). Só a base é MDF Tauari. (Eu havia lançado a bancada como MDF por engano.)
+- **Método:** quantitativo por **cut list peça a peça** (regra cravada — nunca chutar). Cozinha ainda em leitura das pranchas (aéreos, torre quente, despenseiro, portas) antes de fechar.
+
+## Status atual
+- Banheiros v2 fechados (R$ 15.400) — **recompor** com ferragens Hardt/Hettich + laca + RT como repasse (padronizar método).
+- Closet: cut list pronta (6 chapas 15mm + 3 de 6mm Freijó) — falta nº de folhas de porta e cabideiro.
+- Cozinha: base inferior lida (L 300+295, Tauari); aéreos/torres/portas em leitura.
