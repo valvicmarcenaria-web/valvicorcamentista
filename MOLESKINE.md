@@ -46,10 +46,13 @@ layout? Referência visual? Links exatos do IG e YouTube?"
    (renders da Kênia & Fábio contaminaram a leitura da Juliana).
 3. **Nunca orçar por m²** — sempre plano de corte (peça a peça por cor×espessura). Diretriz do Jonathan.
 
-### [2026-06-30] Orçamento Juliana (Kairon & Juliana) — em proposta
-4 ambientes (Cozinha, Área serviço, Lavabo, Sala). Anteprojeto Caio Oliveira. Caixa normal, sem RT, vend 3%.
-**Gold R$ 55.800 (MC 42%) · Essencial R$ 49.200 (MC 37%).** Registro: `projetos/2026-kairon-juliana.md`.
-Falta: definir pagamento/validade e montar a proposta 2 linhas.
+### [2026-07-02] Orçamento Juliana (Kairon & Juliana) — proposta enviada
+Expandido de 4 para 8 ambientes (+ Quarto de casal, Closet, Banheiros social+suíte, Roupeiro corredor).
+Anteprojeto Caio Oliveira. Caixa normal, sem RT, vend 3%.
+**Gold R$ 123.954 (MC 40%) · Essencial R$ 107.121 (MC ~35%).** Pagamento: entrada 30%+10x cartão (padrão),
+descontos até 7% para entrada maior. Garantia Gold 10 anos / Essencial 2 anos. Validade 7 dias.
+Registro: `projetos/2026-kairon-juliana.md`. Proposta final: `projetos/proposta-juliana-premium.html` / `.pdf`.
+Status: aguardando retorno da cliente.
 
 ## Recados rápidos
 

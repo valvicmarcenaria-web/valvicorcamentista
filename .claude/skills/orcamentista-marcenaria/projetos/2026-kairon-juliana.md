@@ -1,11 +1,13 @@
 # Orçamento — Kairon & Juliana (cliente: Juliana)
 
-> **Status:** 🟡 Fase 1 (Olhar) em andamento. Iniciado em 30/06/2026.
+> **Status:** 🟢 Proposta final enviada (2 linhas, 8 ambientes). Iniciado em 30/06/2026, proposta atualizada em 02/07/2026.
 > Arquiteta: **Caio Oliveira** (@caiooliveiraarquitetura). Endereço: Rua Doresópolis 413, ap 502, BH.
 > Fonte: Drive `1cJpKlgCFRQ-6MMq6tby2SbcYleA2iTfI` (anteprojeto Proposta 05 + ~35 renders 3D).
+> Arquivos: `orcamento-juliana-gold.json` · `orcamento-juliana-essencial.json` · `proposta-juliana-premium.html` · `Proposta_Juliana_premium.pdf`.
 
 ## Intake (definido pelo Jonathan)
-- **Ambientes em escopo (4):** Cozinha · Lavabo · Área de serviço (Lavanderia) · Sala.
+- **Ambientes em escopo — expandido de 4 para 8:** Cozinha · Lavabo · Área de serviço (Lavanderia) · Sala ·
+  Quarto de casal · Closet · Banheiros (social + suíte) · Roupeiro do corredor.
 - **Situação de caixa:** NORMAL → MC alvo na faixa saudável (37–40%); piso 35%.
   (Obs.: o moleskine trazia "caixa crítico/piso 40%", mas o Jonathan atualizou para NORMAL neste orçamento.)
 - **RT:** SEM parceiro/arquiteto com RT → rt = 0% (entra comissão de vendedor no lugar).
@@ -20,7 +22,8 @@
 
 ## Áreas (da planta)
 Cozinha 10,88 m² · Lavabo 2,06 m² · Lavanderia/Área serviço 4,17 m² · Sala 27,09 m².
-(Fora de escopo no apê: Quarto Casal, Closet, Suíte, Banheiro, 2× Quarto Matheus, Varanda.)
+(Escopo ampliado depois para incluir Quarto de casal, Closet, Banheiros social+suíte e Roupeiro do
+corredor — ver ORÇAMENTO FINAL. Segue fora: 2× Quarto Matheus, Varanda.)
 
 ## Móveis por ambiente (lidos da planta baixa)
 - **Cozinha (em L):** bancada inferior c/ gabinetes + cooktop; torre de eletros (forno/micro);
@@ -63,10 +66,12 @@ Cozinha 10,88 m² · Lavabo 2,06 m² · Lavanderia/Área serviço 4,17 m² · Sa
 > filetagem (faces, +10%) → ferragens por contagem. Dimensões de módulo estimadas do
 > footprint da planta + renders + profundidades-padrão (anteprojeto), sinalizando "a conferir no local".
 
-## ORÇAMENTO FINAL — confirmado pelo Jonathan (30/06)
+## ORÇAMENTO FINAL — 8 ambientes, proposta enviada (02/07)
 > Itens verificados render a render (renders separados J00–J33; contaminação K&F removida).
 > **Nada ripado no projeto. Forro de madeira NÃO é nosso.** Espelho orgânico do lavabo NÃO entra.
-> Gold MC **42%** · Essencial MC **37%** (5 pts). Gabinete do lavabo com MC 10 pts menor (Gold 32/Ess 27).
+> Os 4 ambientes iniciais (Cozinha/Área/Lavabo/Sala) mantidos no valor da 1ª versão (30/06);
+> os 4 novos (Quarto/Closet/Banheiros/Roupeiro) precificados ao MC alvo (Gold 40 / Essencial ~35).
+> Gabinete do lavabo com MC 10 pts menor (Gold 32/Ess 27).
 
 | Ambiente | Itens | GOLD | ESSENCIAL |
 |---|---|--:|--:|
@@ -74,14 +79,22 @@ Cozinha 10,88 m² · Lavabo 2,06 m² · Lavanderia/Área serviço 4,17 m² · Sa
 | **Área de serviço** | Aéreos LED · báscula (articulador) · bancada+gabinete · torre despensa | 9.400 | 8.300 |
 | **Lavabo** | Gabinete suspenso amadeirado (cuba do cliente) | 2.000 | 1.800 |
 | **Sala** | Rack TV comprido · prat. flutuantes · cristaleira (vidro reflecta bronze) · estante/nichos jantar | 21.700 | 19.000 |
-| **TOTAL** | | **R$ 55.800** | **R$ 49.200** |
+| **Quarto de casal** | Painel cabeceira + mesas suspensas · cabeceira estofada (terceiro) · painel TV · painel c/ porta de correr p/ closet | 19.700 | 17.500 |
+| **Closet** | Armário em L piso-teto · armário/penteadeira c/ espelho LED · ilha-cômoda (melamínico vermelho, tampo de vidro) | 34.304 | 28.121 |
+| **Banheiros (social + suíte)** | Gabinete suspenso + espelheira (2 un.) | 6.550 | 5.300 |
+| **Roupeiro do corredor** | Roupeiro piso-teto, portas espelhadas + esquadria de alumínio (terceiro) | 7.600 | 7.000 |
+| **TOTAL** | | **R$ 123.954** | **R$ 107.121** |
 
 **Fora (cliente):** tampos de pedra, revestimentos, forro de madeira, eletros, cubas, torneiras.
-**Renders por ambiente:** Cozinha J18/J20/J29/J30/J31 · Área J09 · Lavabo J06/J33 · Sala J00/J08/J10/J12/J19/J21/J22/J23.
+**Renders por ambiente:** Cozinha J18/J20/J29/J30/J31 · Área J09 · Lavabo J06/J33 · Sala J00/J08/J10/J12/J19/J21/J22/J23
+(renders dos 4 novos ambientes fornecidos pela própria cliente).
+**Pagamento:** entrada 30% + saldo 10× cartão (padrão) · 50%+8×(3% desc.) · 70%+6×(5% desc.) · 70%+transf.(7% desc.).
+**Garantia:** Gold 10 anos · Essencial 2 anos. **Prazo:** 45–60 dias úteis. **Validade:** 7 dias.
 ⚠️ Estimativa de anteprojeto — conferir medidas no local antes do contrato.
 
 ## APRENDIZADO (registrar no moleskine/skill)
 > Item arquitetônico ambíguo (forro/revestimento de madeira, painéis) = **PERGUNTAR antes de incluir**, não assumir que é marcenaria.
 > Ao baixar renders de um projeto, **isolar por cliente/data** — não misturar com outro projeto (contaminação K&F→Juliana gerou móveis fantasma).
 
-## Próximo: Fase 3 — proposta 2 linhas (Gold/Essencial)
+## Status: proposta enviada — aguardando retorno da cliente
+Próximo passo, quando houver retorno: agendar conferência de medidas no local antes de fechar contrato.
