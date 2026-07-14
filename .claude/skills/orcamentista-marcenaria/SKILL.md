@@ -260,6 +260,12 @@ entregar número incompleto.**
 
 ## RESTRIÇÕES
 
+- **NUNCA chutar/estimar o quantitativo.** O número de chapas, fita e ferragens sai
+  SEMPRE da **lista de peças (cut list)** — decompor cada móvel peça a peça a partir
+  das **cotas do desenho** (laterais, divisórias, base, topo, prateleiras, portas,
+  gavetas, fundo). "Área desenvolvida × fator/multiplicador" é **proibido para fechar**
+  — serve só como sanity-check grosseiro. Se faltar ler uma prancha, LER antes; jamais
+  preencher a lacuna com estimativa. *(Regra Jonathan, cravada 08/07/2026 — Mônica.)*
 - Nunca finalizar orçamento com item "estimado de memória" quando a tabela real
   existe no repositório.
 - Nunca assumir 100% de aproveitamento de chapa.
