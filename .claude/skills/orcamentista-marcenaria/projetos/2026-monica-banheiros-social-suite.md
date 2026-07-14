@@ -90,6 +90,51 @@ Fechando os dois banheiros juntos, capturei 2 economias (repassadas ao preço):
 - **Método:** quantitativo por **cut list peça a peça** (regra cravada — nunca chutar). Cozinha ainda em leitura das pranchas (aéreos, torre quente, despenseiro, portas) antes de fechar.
 
 ## Status atual
-- Banheiros v2 fechados (R$ 15.400) — **recompor** com ferragens Hardt/Hettich + laca + RT como repasse (padronizar método).
-- Closet: cut list pronta (6 chapas 15mm + 3 de 6mm Freijó) — falta nº de folhas de porta e cabideiro.
-- Cozinha: base inferior lida (L 300+295, Tauari); aéreos/torres/portas em leitura.
+- ✅ **ORÇAMENTO FECHADO — 4 ambientes** (banheiros recompostos + closet + cozinha), MC 37%, método padrão (igual Nura/Júnior). Ver seção abaixo.
+
+---
+
+## 🔒 FECHAMENTO FINAL (14/07/2026) — 4 ambientes, MC 37%
+
+> Quantitativo por **cut list peça a peça** das pranchas executivas (regra cravada — nunca chutado).
+> Ferragens **Hardt + Hettich** (garantia 5 anos, elo Hardt). Portas com **puxador abaulado + topo em laca PU**
+> (+R$ 3.500/ambiente) na cozinha e no closet. Preço **igual aos demais projetos**: encargos 22% (NF 7 ·
+> parc 7 · produção 5 · coord 1 · erro 2, *sem vendedor*) + **MC 37%** + **RT 10% da Rubia como REPASSE por cima**
+> (fora do divisor). JSON: `orcamento-monica-v3-mc37.json`.
+
+### Cut list confirmado (chapas)
+| Ambiente | Chapas 15mm | Fundo 6mm | Cor(es) |
+|---|---|---|---|
+| Banheiro Social | 2 | 1 | Freijó |
+| Banheiro Suíte | 1 | 1 | Freijó |
+| **Closet** (armário em L 1,60+1,42 × 2,70 × 0,60) | 6 | 3 | Freijó |
+| **Cozinha** (U + torre quente + despenseiro + bancada refeições + lavanderia) | 17 (Tauari 11 + Tijolo 4 + branco 2) | 7 | Tauari/Tijolo |
+
+> ⛔ **Fora (cliente/marmoraria):** tampo principal da cozinha = **Quartzito Klahari**; bancada da lavanderia = granito
+> São Gabriel; bancadas dos banheiros = granito Pitaya; box de vidro; louças/metais. (Só a base é MDF Tauari.)
+
+### Preço (MC 37%)
+| Ambiente | Custo direto | **Preço (parcelado)** |
+|---|---:|---:|
+| Banheiro Social | R$ 2.820 | **R$ 7.650** |
+| Banheiro Suíte | R$ 2.540 | **R$ 6.900** |
+| Closet | R$ 9.950 | **R$ 26.900** |
+| Cozinha | R$ 21.200 | **R$ 57.400** |
+| Visita | R$ 250 | (embutida) |
+| **TOTAL** | **R$ 36.760** | **R$ 98.900** |
+
+- **À vista (−7% da maquininha): ~R$ 92.000.**
+- **Faixa de negociação (Vitor):** MC 32% **R$ 88.100** · MC 35% **R$ 94.300** · MC 37% **R$ 98.900**.
+- **RT Rubia ≈ R$ 9.190** (9,3% do bruto, repasse) — a MC em R$ da Valvic não muda com ou sem RT.
+- **Recompose dos banheiros:** ao método padrão (RT como repasse) os 2 banheiros dão **~R$ 14.550**, contra
+  os R$ 15.400 do orçamento avulso anterior (que embutia o RT no divisor — corrigido pela regra cravada).
+  Se já foram fechados com a Mônica a R$ 15.400, mantém-se; o valor honesto padronizado é o de cima.
+
+### Item de acabamento premium (destacar na proposta)
+- **Puxador abaulado + topo em laca PU** (cozinha e closet): usinagem CNC do chanfro → selagem/regularização →
+  lixamento entre demãos → primer → laca PU em cabine → polimento. Custo adicional **+R$ 3.500/ambiente**.
+- Ferragens **Hardt + Hettich** (fechamento suave, garantia 5 anos; opção de subir tudo p/ Hettich = 10 anos, upsell).
+
+### Próximo passo
+- Montar a **proposta Premium** (layout Stefan/Vitor) dos 4 ambientes, com a narrativa da laca abaulada e os
+  métodos de pagamento (à vista 8% / parcelado). Base: `proposta-nura-premium.html`.
