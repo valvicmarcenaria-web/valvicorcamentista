@@ -40,6 +40,7 @@ quando criar/revisar documentos.
 | **Layout do galpão (Fase 1)** | Layout do galpão atual | `layout-fase1-galpao-atual.html` · `Valvic_Layout_Fase1_Galpao_Atual.pdf` · `layout_galpao_1000m2.png` |
 | **Advertência (RH)** | Documento disciplinar (exemplo Jomar/Projeto Yasmin) | `advertencia-jomar.html` · `Advertencia_Jomar_Projeto_Yasmin.pdf` |
 | **Ocorrência & reparo — Maria e Valdenir** | Registro formal de dano ao painel de TV laqueado (Vale dos Cristais, dano de terceiros) + custos do reparo in loco (total R$ 750, marceneiro cortesia) | `ocorrencia-reparo-maria-valdenir.html` · `Valvic_Ocorrencia_Reparo_Maria_Valdenir.pdf` |
+| **Story Instagram — Vaga Marceneiro** | Arte de divulgação de vaga (1080×1920), estética Valvic (navy/gold), profissional experiente com domínio total do ofício, salário fixo + comissão, VA + VT, contato WhatsApp | `vaga-marceneiro-instagram-story.html` · `Valvic_Vaga_Marceneiro_Story.png` |
 | **Índice do painel** | Página-índice dos documentos | `index.html` |
 
 ## Conhecimento estruturado (skills)
