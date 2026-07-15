@@ -113,27 +113,33 @@ Fechando os dois banheiros juntos, capturei 2 economias (repassadas ao preço):
 > ⛔ **Fora (cliente/marmoraria):** tampo principal da cozinha = **Quartzito Klahari**; bancada da lavanderia = granito
 > São Gabriel; bancadas dos banheiros = granito Pitaya; box de vidro; louças/metais. (Só a base é MDF Tauari.)
 
-### Preço (MC 37%)
-| Ambiente | Custo direto | **Preço (parcelado)** |
-|---|---:|---:|
-| Banheiro Social | R$ 2.820 | **R$ 7.650** |
-| Banheiro Suíte | R$ 2.540 | **R$ 6.900** |
-| Closet | R$ 9.950 | **R$ 26.900** |
-| Cozinha | R$ 21.200 | **R$ 57.400** |
-| Visita | R$ 250 | (embutida) |
-| **TOTAL** | **R$ 36.760** | **R$ 98.900** |
+### Preço — DOIS CENÁRIOS (14/07/2026, revisado)
+> Correção do closet: **NÃO tem laca nem LED**; puxador = **alça Phenix preto** (lido na prancha).
+> Margens por ambiente: **banheiros 37% · closet 33% · cozinha 35%**. Laca (+R$3.500) só na **cozinha**.
+> Duas linhas de ferragem: **Essencial** (Hardt, 5 anos) vs **Essencial Prime** (Hettich alemã — Sensys +
+> Actro, 10 anos). Cozinha — portas de correr: Essencial **Rometal RO82 top** · Prime **Siforma (italiana)**.
+> Portas estruturadas com **mecanismo anti-empeno** (ambas as linhas).
 
-- **À vista (−7% da maquininha): ~R$ 92.000.**
-- **Faixa de negociação (Vitor):** MC 32% **R$ 88.100** · MC 35% **R$ 94.300** · MC 37% **R$ 98.900**.
-- **RT Rubia ≈ R$ 9.190** (9,3% do bruto, repasse) — a MC em R$ da Valvic não muda com ou sem RT.
-- **Recompose dos banheiros:** ao método padrão (RT como repasse) os 2 banheiros dão **~R$ 14.550**, contra
-  os R$ 15.400 do orçamento avulso anterior (que embutia o RT no divisor — corrigido pela regra cravada).
-  Se já foram fechados com a Mônica a R$ 15.400, mantém-se; o valor honesto padronizado é o de cima.
+| Ambiente | MC | Custo (Ess.) | **Essencial (5a)** | **Prime (10a)** |
+|---|--:|---:|---:|---:|
+| Banheiro Social | 37% | R$ 2.820 | **R$ 7.600** | **R$ 9.250** |
+| Banheiro Suíte | 37% | R$ 2.540 | **R$ 6.850** | **R$ 7.750** |
+| Closet | 33% | R$ 5.750 | **R$ 14.100** | **R$ 19.500** |
+| Cozinha (+visita) | 35% | R$ 21.450 | **R$ 55.000** | **R$ 71.100** |
+| **TOTAL** | | | **R$ 83.550** | **R$ 107.600** |
 
-### Item de acabamento premium (destacar na proposta)
-- **Puxador abaulado + topo em laca PU** (cozinha e closet): usinagem CNC do chanfro → selagem/regularização →
-  lixamento entre demãos → primer → laca PU em cabine → polimento. Custo adicional **+R$ 3.500/ambiente**.
-- Ferragens **Hardt + Hettich** (fechamento suave, garantia 5 anos; opção de subir tudo p/ Hettich = 10 anos, upsell).
+- **À vista (−8%): Essencial ~R$ 76.900 · Prime ~R$ 99.000.**
+- **RT Rubia = repasse por cima** (fora do divisor) — não altera a MC em R$ da Valvic.
+- **Closet caiu de R$ 26.900 → R$ 14.100**: tirei a laca (que eu havia lançado errado, +~R$9,4k no preço),
+  tirei o LED (não tem) e baixei a MC p/ 33%. Correção a favor da cliente.
+
+### Itens de acabamento (destacar na proposta)
+- **Puxador abaulado + topo em laca PU** — **só na cozinha**: usinagem CNC do chanfro → selagem → lixamento
+  entre demãos → primer → laca PU em cabine → polimento (+R$ 3.500). **Fita de borda não acompanha a curva
+  do abaulado** — só a laca entrega. **Amostra física da peça na aprovação**, antes da produção.
+- **Closet:** puxador **alça Phenix preto**, sem laca, sem LED.
+- **LED (banheiros + cozinha):** fornecido **e instalado** pela Valvic (destaque de praticidade na proposta).
+- Ferragens: **Essencial Hardt (5a)** / **Prime Hettich alemã — Sensys + Actro (10a)**.
 
 ### Próximo passo
 - Montar a **proposta Premium** (layout Stefan/Vitor) dos 4 ambientes, com a narrativa da laca abaulada e os
