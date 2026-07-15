@@ -25,8 +25,8 @@ data e agente responsável.
 1. **NUNCA chutar quantitativo** — cut list peça a peça das cotas do desenho.
 2. **Acabamento é lido POR AMBIENTE** — laca/LED/vidro/puxador só onde o desenho daquele
    móvel mostra; **nunca herdar** de outro ambiente. *(erro closet Mônica: laca+LED que não existiam)*
-3. **Puxador abaulado/chanfro curvo → topo em LACA** (fita não acompanha a curva). Item
-   próprio ~R$3.500/ambiente.
+3. **Chanfro CURVO (puxador abaulado) → topo em LACA.** A fita acompanha curva **e** chanfro
+   reto, mas **não** o chanfro curvo (os dois juntos). Item próprio ~R$3.500/ambiente.
 4. **Marmoraria/pedra + drywall/gesso + louças/metais → NUNCA são Valvic** (não perguntar).
 5. **Ripado sempre régua a régua** (nunca multiplicador de área). **Porta de passagem = item próprio.**
 6. **LED embutido na nossa marcenaria = escopo Valvic** (fornecemos E instalamos).
@@ -124,8 +124,9 @@ acompanhamento** pronta pro Jonathan. Nada sai sem material entre 30–40% do pr
 - **Acabamento especial é LIDO POR AMBIENTE — nunca herdado nem assumido.** *Erro real:*
   lancei **laca (+R$3.500) e LED** num closet que só tinha **puxador alça Phenix preto** →
   inflou ~R$12k. Antes de precificar: *este móvel tem laca? tem LED? qual o puxador exato?*
-- **Puxador abaulado/chanfro curvo → topo em LACA** (fita não acompanha a curva: emenda,
-  quebra, descola). Laca PU = selagem → primer → cabine → polimento. Item próprio (~R$3.500).
+- **Chanfro CURVO (puxador abaulado) → topo em LACA.** Técnico: a fita **acompanha curva** e
+  **acompanha chanfro reto**, mas **não acompanha chanfro curvo** (os dois juntos) — repuxa,
+  marca, descola. Laca PU = selagem → primer → cabine → polimento. Item próprio (~R$3.500).
   Vender com a **promessa de AMOSTRA física na aprovação**, antes da produção.
 - **MC por ambiente** é válido (Mônica: banheiros 37 · closet 33 · cozinha 35) — não forçar MC única.
 - **LED = escopo Valvic** (fornecemos **e** instalamos) → argumento de praticidade na proposta.

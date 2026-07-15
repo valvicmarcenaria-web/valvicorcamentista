@@ -135,8 +135,9 @@ Fechando os dois banheiros juntos, capturei 2 economias (repassadas ao preço):
 
 ### Itens de acabamento (destacar na proposta)
 - **Puxador abaulado + topo em laca PU** — **só na cozinha**: usinagem CNC do chanfro → selagem → lixamento
-  entre demãos → primer → laca PU em cabine → polimento (+R$ 3.500). **Fita de borda não acompanha a curva
-  do abaulado** — só a laca entrega. **Amostra física da peça na aprovação**, antes da produção.
+  entre demãos → primer → laca PU em cabine → polimento (+R$ 3.500). **Fita acompanha curva e chanfro reto,
+  mas não chanfro curvo** (o abaulado combina os dois) — só a laca entrega. **Amostra física da peça na
+  aprovação**, antes da produção.
 - **Closet:** puxador **alça Phenix preto**, sem laca, sem LED.
 - **LED (banheiros + cozinha):** fornecido **e instalado** pela Valvic (destaque de praticidade na proposta).
 - Ferragens: **Essencial Hardt (5a)** / **Prime Hettich alemã — Sensys + Actro (10a)**.

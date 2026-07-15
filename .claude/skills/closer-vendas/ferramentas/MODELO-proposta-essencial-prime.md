@@ -23,8 +23,8 @@
    *(anti-empeno + puxador/laca + equipe própria entram aqui.)*
 3. **Ambiente a ambiente** — grid 2×2 de **imagens 3D do projeto** + legendas. Banda sutil
    dourada destacando **"LED por nossa conta — fornecido e instalado"** (praticidade).
-4. **Acabamento assinatura** — puxador abaulado + **laca**: explica que **a fita não
-   acompanha a curva do abaulado, só a laca entrega**; 4 etapas; **ilustração SVG do
+4. **Acabamento assinatura** — puxador abaulado + **laca**: explica que **a fita acompanha
+   curva e chanfro reto, mas não o chanfro curvo do abaulado — só a laca entrega**; 4 etapas; **ilustração SVG do
    laqueamento**; caixa escura com a **promessa de AMOSTRA física na aprovação**.
 5. **Escolha o nível de engenharia** — 2 cards de ferragem (**Essencial** claro / **Prime**
    escuro) + **cards expressivos dos sistemas de porta com ícone** (item premium recebe

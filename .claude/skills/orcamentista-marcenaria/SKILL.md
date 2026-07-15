@@ -123,11 +123,13 @@ estimar pela escala, sinalizando.
     (+R$3.500) e LED** num closet que só tinha **puxador alça Phenix preto** —
     inflou o preço em ~R$12k. Antes de precificar, confirme item a item: *este
     móvel tem laca? tem LED? qual o puxador exato do desenho?*
-14. **Puxador abaulado / chanfro curvo → topo em LACA, nunca fita** (cravado
-    14/07): a fita de borda não acompanha o raio do abaulado (emenda, quebra na
-    curva, descola). O topo usinado em CNC precisa de **laca PU** (selagem →
-    primer → laca em cabine → polimento). É **item de custo próprio** (~R$3.500
-    por ambiente que tiver o abaulado) — lançar só onde há o puxador abaulado.
+14. **Chanfro CURVO (puxador abaulado) → topo em LACA, nunca fita** (cravado
+    14/07): tecnicamente, a fita de borda **acompanha curva** e **acompanha
+    chanfro reto** — o que ela NÃO acompanha é o **chanfro curvo** (as duas
+    geometrias juntas, como no abaulado): repuxa, marca a emenda e descola. Só a
+    **laca PU** cobre o chanfro curvo sem emenda (selagem → primer → laca em
+    cabine → polimento). É **item de custo próprio** (~R$3.500/ambiente) — lançar
+    só onde há o puxador abaulado. *(Chanfro reto ou curva simples: fita resolve.)*
 15. **Portas estruturadas com mecanismo anti-empeno** (sarrafeamento/contraverga)
     → padrão de qualidade Valvic para portas altas/largas; citar como diferencial.
     **LED embutido na nossa marcenaria = escopo Valvic** (fornecemos **e**
