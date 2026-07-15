@@ -125,6 +125,42 @@ p.body{font-size:12.5px;line-height:1.7;color:var(--ink-70)}
 .tl .sn{font-family:var(--fd);font-size:20px;color:var(--gold);font-weight:600;min-width:34px}
 .tl .st{font-weight:600;font-size:13px;color:var(--ink);margin-bottom:3px}
 .tl .sd{font-size:11px;line-height:1.55;color:var(--ink-45)}
+
+/* DOOR SYSTEM CARDS */
+.doorsys{margin-top:20px}
+.ds-lbl{font-size:8.5px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.ds-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.dscard{position:relative;border:1px solid var(--line);border-radius:5px;padding:20px 22px;background:#fff;overflow:hidden}
+.dscard.prime{border:1px solid var(--gold-20);background:linear-gradient(180deg,#FFFDF8,#FBF6EA)}
+.dscard.prime::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-l))}
+.ds-badge{position:absolute;top:14px;right:0;background:var(--gold);color:#fff;font-size:8px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:4px 12px 4px 10px;border-radius:2px 0 0 2px}
+.ds-ico{width:44px;height:44px;border-radius:50%;border:1px solid var(--gold-20);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.dscard.prime .ds-ico{border-color:var(--gold);background:var(--gold-10)}
+.ds-ico svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.ds-line{font-size:8.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-45)}
+.ds-name{font-family:var(--fd);font-size:22px;font-weight:600;color:var(--ink);line-height:1.05;margin:2px 0 8px}
+.dscard.prime .ds-name{color:var(--gold)}
+.ds-desc{font-size:11px;line-height:1.55;color:var(--ink-70)}
+.ds-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.ds-chips span{font-size:8.5px;font-weight:600;letter-spacing:.06em;color:var(--ink-45);border:1px solid var(--line);border-radius:20px;padding:3px 10px}
+.dscard.prime .ds-chips span{color:var(--gold);border-color:var(--gold-20);background:var(--gold-10)}
+
+/* LACA PROCESS ILLUSTRATION */
+.laca-illus{margin:18px 0 4px;background:var(--dark);border-radius:4px;padding:16px 20px 12px}
+.laca-illus svg{width:100%;height:auto;display:block}
+.laca-illus .cap{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(196,154,74,.7);margin-top:4px;text-align:center}
+
+/* À VISTA HIGHLIGHT */
+.paywrap{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;align-items:start;margin-top:4px}
+.avista-card{border:1px solid var(--gold-20);border-radius:5px;background:linear-gradient(180deg,#FFFDF8,#F7F1E4);padding:18px 20px;position:relative}
+.avista-card .av-tag{display:inline-block;font-size:8px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--gold);padding:3px 10px;border-radius:20px;margin-bottom:10px}
+.avista-card .av-h{font-family:var(--fd);font-size:22px;font-weight:600;color:var(--ink);line-height:1}
+.avista-card .av-disc{font-size:11px;color:var(--gold);font-weight:600;margin:2px 0 12px}
+.av-vals{display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--gold-20);padding-top:10px}
+.av-vals .r{display:flex;justify-content:space-between;align-items:baseline}
+.av-vals .r span{font-size:10px;letter-spacing:.04em;color:var(--ink-45)}
+.av-vals .r b{font-family:var(--fd);font-size:17px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.av-note{font-size:8.5px;color:var(--ink-45);margin-top:8px;line-height:1.4}
 </style></head><body>
 <div id="controls"><button class="ctrl-btn" id="btn-print" onclick="window.print()">⬡ Imprimir PDF</button></div>
 
@@ -172,6 +208,28 @@ p.body{font-size:12.5px;line-height:1.7;color:var(--ink-70)}
  <h1 class="disp">O detalhe que<br>se toca todo dia.</h1>
  <div class="rule"></div>
  <p class="body">O puxador abaulado das portas da cozinha não é um perfil comprado — é <b>usinado no próprio painel</b>, em router CNC. E aqui está a decisão técnica que define o resultado: <b>o topo do chanfro precisa ser finalizado em laca</b>. A fita de borda não acompanha a curva do abaulado — ela deixa emenda, quebra no raio e descola com o tempo. <b>Só a laca entrega a superfície contínua, lisa e resistente</b> que esse desenho pede.</p>
+ <div class="laca-illus">
+  <svg viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg">
+   <defs>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7c4f2d"/><stop offset="1" stop-color="#5f3b20"/></linearGradient>
+    <linearGradient id="mist" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C9A25A" stop-opacity=".85"/><stop offset="1" stop-color="#C9A25A" stop-opacity="0"/></linearGradient>
+   </defs>
+   <path d="M500 134 L500 60 Q500 30 530 30 L628 30 L628 134 Z" fill="url(#wood)" stroke="#3a2c1c" stroke-width="1"/>
+   <path d="M502 59 Q502 32 530 32 L626 32" fill="none" stroke="#E8C88A" stroke-width="4" stroke-linecap="round" opacity=".8"/>
+   <path d="M508 70 Q508 42 532 42 L618 42" fill="none" stroke="#F3E6C6" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
+   <path d="M512 66 Q512 48 530 48" fill="none" stroke="#241608" stroke-width="2" opacity=".5"/>
+   <rect x="516" y="80" width="96" height="46" rx="3" fill="none" stroke="#3a2c1c" stroke-width="1" opacity=".45"/>
+   <g stroke="url(#mist)" stroke-width="1.4" stroke-linecap="round">
+    <line x1="256" y1="72" x2="495" y2="40"/><line x1="256" y1="72" x2="498" y2="52"/><line x1="256" y1="72" x2="500" y2="66"/><line x1="256" y1="72" x2="498" y2="80"/><line x1="256" y1="72" x2="492" y2="94"/>
+   </g>
+   <g fill="#C9A25A"><circle cx="330" cy="55" r="1.6" opacity=".8"/><circle cx="392" cy="66" r="1.4" opacity=".6"/><circle cx="360" cy="79" r="1.5" opacity=".7"/><circle cx="432" cy="58" r="1.3" opacity=".5"/><circle cx="302" cy="70" r="1.6" opacity=".85"/><circle cx="420" cy="86" r="1.4" opacity=".55"/></g>
+   <g fill="none" stroke="#C9A25A" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="150" y="56" width="78" height="28" rx="7"/><path d="M228 62 L252 66 L252 78 L228 78"/><path d="M172 84 L160 116 L186 116 L196 84"/><line x1="176" y1="84" x2="182" y2="100"/><circle cx="167" cy="70" r="3"/>
+   </g>
+   <text x="640" y="26" font-family="Inter,sans-serif" font-size="9" fill="#C9A25A" opacity=".8">topo abaulado</text>
+  </svg>
+  <div class="cap">Aplicação da laca PU em cabine · lixamento entre demãos · polimento</div>
+ </div>
  <div class="laca-steps">
   <div class="lstep"><div class="lnum">1</div><div><div class="lt">Usinagem do chanfro</div><div class="ld">O abaulado é fresado em CNC direto no painel — pega contínua, sem perfil aparente.</div></div></div>
   <div class="lstep"><div class="lnum">2</div><div><div class="lt">Selagem e regularização</div><div class="ld">O topo é selado e regularizado — a base perfeita que a fita de borda nunca daria na curva.</div></div></div>
@@ -195,7 +253,6 @@ p.body{font-size:12.5px;line-height:1.7;color:var(--ink-70)}
   <div class="lcard"><div class="llbl">Linha</div><div class="lname">Essencial</div><div class="lgar">Garantia 5 anos</div>
    <ul>
     <li>Ferragens <b>Hardt</b> — dobradiças e corrediças ocultas de <b>fechamento suave</b> (soft-close).</li>
-    <li>Portas de correr da cozinha em sistema <b>Rometal RO82 top</b> — deslize firme e alinhado.</li>
     <li>Padrão de mercado alto — silêncio, durabilidade e lateral limpa, sem trilho aparente.</li>
     <li>Garantia de <b>5 anos</b> em estrutura e ferragens.</li>
    </ul>
@@ -204,9 +261,28 @@ p.body{font-size:12.5px;line-height:1.7;color:var(--ink-70)}
    <ul>
     <li>Ferragens <b>Hettich — engenharia alemã</b>: dobradiça Sensys e corrediça oculta Actro.</li>
     <li>Ciclagem certificada de <b>100.000 aberturas</b>, ajuste tridimensional e fechamento amortecido a gel.</li>
-    <li>Portas de correr da cozinha em sistema <b>Siforma — origem italiana</b>: deslize mais suave, mais resistente e mais durável.</li>
     <li><b>Garantia estendida de 10 anos</b> — a tranquilidade de quem não quer pensar nisso de novo.</li>
    </ul>
+  </div>
+ </div>
+ <div class="doorsys">
+  <div class="ds-lbl">E as portas de correr da cozinha — um sistema para cada linha</div>
+  <div class="ds-grid">
+   <div class="dscard">
+    <div class="ds-ico"><svg viewBox="0 0 24 24"><path d="M2 3v18M22 3v18M4 5h7v14H4zM13 5h7v14h-7z"/><path d="M8 12h1M16 12h1"/></svg></div>
+    <div class="ds-line">Essencial</div>
+    <div class="ds-name">Rometal RO82 top</div>
+    <div class="ds-desc">Sistema de correr nacional de linha alta — deslize firme, alinhado e silencioso, com trilho embutido.</div>
+    <div class="ds-chips"><span>Nacional</span><span>Trilho embutido</span><span>Soft</span></div>
+   </div>
+   <div class="dscard prime">
+    <div class="ds-badge">★ Origem italiana</div>
+    <div class="ds-ico"><svg viewBox="0 0 24 24"><path d="M2 3v18M22 3v18M4 5h7v14H4zM13 5h7v14h-7z"/><path d="M8 12h1M16 12h1"/><path d="M9.5 9l3 3-3 3" stroke-width="1.2"/></svg></div>
+    <div class="ds-line">Essencial Prime</div>
+    <div class="ds-name">Siforma</div>
+    <div class="ds-desc">Engenharia italiana de correr — deslize <b>mais suave</b>, maior <b>resistência</b> e <b>durabilidade</b>. O toque premium que se sente ao abrir.</div>
+    <div class="ds-chips"><span>Itália</span><span>+ suave</span><span>+ resistente</span><span>+ durável</span></div>
+   </div>
   </div>
  </div>
  <div class="darkbox" style="margin-top:20px">
@@ -231,15 +307,26 @@ p.body{font-size:12.5px;line-height:1.7;color:var(--ink-70)}
   <div class="c3"><div class="cl">Validade</div><div class="cv">7</div><div class="cs">dias úteis</div></div>
   <div class="c3"><div class="cl">Garantia</div><div class="cv">5 ou 10</div><div class="cs">anos · conforme a linha</div></div>
  </div>
- <div class="pay">
-  <h3>Condições de pagamento</h3>
-  <ul>
-   <li><b>30%</b> de entrada + restante em até <b>10× no cartão</b> — valor da proposta</li>
-   <li><b>50%</b> de entrada + saldo em até 8× no cartão — <b>3% de desconto</b></li>
-   <li><b>70%</b> de entrada + saldo em até 6× no cartão — <b>5% de desconto</b></li>
-   <li><b>70%</b> de entrada + saldo por transferência — <b>7% de desconto</b></li>
-   <li>À vista (transferência) — <b>8% de desconto</b> · Essencial <b>~R$ 76.900</b> · Prime <b>~R$ 99.000</b></li>
-  </ul>
+ <div class="paywrap">
+  <div class="pay">
+   <h3>Condições de pagamento</h3>
+   <ul>
+    <li><b>30%</b> de entrada + restante em até <b>10× no cartão</b> — valor da proposta</li>
+    <li><b>50%</b> de entrada + saldo em até 8× no cartão — <b>3% de desconto</b></li>
+    <li><b>70%</b> de entrada + saldo em até 6× no cartão — <b>5% de desconto</b></li>
+    <li><b>70%</b> de entrada + saldo por transferência — <b>7% de desconto</b></li>
+   </ul>
+  </div>
+  <div class="avista-card">
+   <div class="av-tag">Melhor condição</div>
+   <div class="av-h">À vista</div>
+   <div class="av-disc">8% de desconto</div>
+   <div class="av-vals">
+    <div class="r"><span>Essencial</span><b>R$ 76.900</b></div>
+    <div class="r"><span>Prime</span><b>R$ 99.000</b></div>
+   </div>
+   <div class="av-note">Transferência — você economiza a taxa de cartão.</div>
+  </div>
  </div>
  <div class="scope"><b>Escopo Valvic:</b> marcenaria sob medida · ferragens (Hardt / Hettich) · puxador abaulado c/ topo em laca · serralheria de apoio (metalon) · iluminação LED embutida. Bancadas de pedra, box e louças/metais por conta do cliente.</div>
  <div class="foot"><span class="fw">valvic. marcenaria</span><span>Proposta nº MC-2026-001 · validade 7 dias úteis</span></div>
