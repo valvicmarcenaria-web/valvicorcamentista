@@ -116,6 +116,22 @@ estimar pela escala, sinalizando.
     **prateleira/montante de louçaria → ler no desenho** (peça pesada e estética
     aparente costumam pedir espessura maior). **Interno de closet: na cor das
     portas** (não assumir branco — padrão alto-padrão é interno na cor).
+13. **ACABAMENTO ESPECIAL É LIDO POR AMBIENTE — NUNCA HERDADO NEM ASSUMIDO**
+    (cravado 14/07, erro do closet Mônica): **laca, LED, vidro, tipo de puxador,
+    metalon** entram só onde o **desenho daquele móvel** especifica. Não repita o
+    acabamento de um ambiente em outro por analogia. *Erro real:* lancei **laca
+    (+R$3.500) e LED** num closet que só tinha **puxador alça Phenix preto** —
+    inflou o preço em ~R$12k. Antes de precificar, confirme item a item: *este
+    móvel tem laca? tem LED? qual o puxador exato do desenho?*
+14. **Puxador abaulado / chanfro curvo → topo em LACA, nunca fita** (cravado
+    14/07): a fita de borda não acompanha o raio do abaulado (emenda, quebra na
+    curva, descola). O topo usinado em CNC precisa de **laca PU** (selagem →
+    primer → laca em cabine → polimento). É **item de custo próprio** (~R$3.500
+    por ambiente que tiver o abaulado) — lançar só onde há o puxador abaulado.
+15. **Portas estruturadas com mecanismo anti-empeno** (sarrafeamento/contraverga)
+    → padrão de qualidade Valvic para portas altas/largas; citar como diferencial.
+    **LED embutido na nossa marcenaria = escopo Valvic** (fornecemos **e**
+    instalamos — perfil + fita + fonte + sensor); não é do eletricista do cliente.
 
 ### ⚠️ CHECKLIST ANTI-ESQUECIMENTO — FASE ①
 - [ ] **Fita de borda** — todas as bordas aparentes, por cor/espessura? *(erro nº1 — conferir 2×; ripado régua a régua)*
@@ -126,6 +142,7 @@ estimar pela escala, sinalizando.
 - [ ] **Puxadores** — tipo, qtd, perfil (incl. perfil Gola/cava usinada)
 - [ ] **Iluminação:** fita LED (m) · fonte/driver (dimensionada p/ a carga) · perfil de alumínio · sensor/interruptor
 - [ ] **Acessórios internos:** cabideiros, porta-calças, sapateiras · aramados, cestos, divisórias · porta-temperos, lixeiras embutidas, organizadores
+- [ ] **Acabamento especial LIDO POR AMBIENTE** — laca (só onde há abaulado/chanfro — fita não serve), LED, vidro, tipo de puxador exato: conferido no desenho de CADA móvel, nunca herdado de outro ambiente?
 - [ ] **Vidros/espelhos** — m², tipo, lapidação, furação
 - [ ] **Pedras/granito/quartzo** — m² + acabamento de borda *(regra Jonathan: marmoraria é SEMPRE do cliente — orçar só p/ saber o que casa com nossos móveis)*
 - [ ] **Componentes especiais** — porta de passagem (item próprio), basculantes, aero/pneumático, portas de correr (trilhos+roldanas), giro-fácil, painel ondulado
@@ -170,6 +187,10 @@ detalhada, LED, acessórios, vidros/pedras, terceirizados).
 4. **Regra de bolso (sanity-check):** custos variáveis ≈ **56,5%** → **MC ~43,5%**;
    **material entre 30–40% do preço**. Se o material passar de 40%, a margem está
    comprimida → **sinalizar**.
+   > **A MC pode variar por AMBIENTE dentro do mesmo pacote** (decisão do Jonathan):
+   > ex. Mônica — banheiros 37% · closet 33% · cozinha 35%. Não force uma MC única
+   > se o Jonathan definir margens diferentes por ambiente; aplique cada uma no seu
+   > divisor. O RT continua repasse por cima, em qualquer MC.
 5. **Fórmula:** `Preço mínimo = custos fixos do projeto ÷ ((1 − %encargos) − %MC)`;
    ou âncora pelo material: `Preço ≈ custo material ÷ 0,35` (material ~35%).
 6. **Ferramenta oficial = `ferramentas/validacao-orcamento.html`** (o app):

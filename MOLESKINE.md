@@ -4,6 +4,59 @@ Arquivo central de conhecimento, decisões e pendências entre sessões. Qualque
 (Lavinia, Rodrigo, Vitor, Stefan…) pode ler e escrever aqui. Formato livre — marcar
 data e agente responsável.
 
+---
+
+# 🚀 CENTRO DE START — LEIA ANTES DE TODO ORÇAMENTO
+
+> **Bootstrap único da Valvic.** Comece SEMPRE por aqui (economiza tokens e evita
+> refazer o já decidido). Se algo mudar, atualize aqui primeiro. Detalhe fica nas
+> referências apontadas — só abra o que o projeto exigir.
+
+### ① Modelo de preço (decorar)
+- **Preço (sem RT) = custo_direto ÷ ((1 − encargos%) − MC%)**. Depois **RT por cima**:
+  **Preço_final = Preço_semRT ÷ (1 − 0,093)**. ⛔ **RT/repasse NUNCA no divisor.**
+- **Encargos ≈ 22%** (NF 7 · parcelamento 7 · produção 5 · coordenador 1 · erro 2 —
+  *sem vendedor*). Divisor padrão MC 37% → **0,41**. **À vista = −8%** (tira o cartão).
+- **MC:** meta ideal ~43,5%; **piso pela situação de caixa** (perguntar SEMPRE). Pode ser
+  **por ambiente** (ex. Mônica: banheiros 37 · closet 33 · cozinha 35). Projeto >R$80k:
+  MC ≥ 40% + entrada 40%.
+
+### ② Regras inegociáveis (cravadas — não repetir erro)
+1. **NUNCA chutar quantitativo** — cut list peça a peça das cotas do desenho.
+2. **Acabamento é lido POR AMBIENTE** — laca/LED/vidro/puxador só onde o desenho daquele
+   móvel mostra; **nunca herdar** de outro ambiente. *(erro closet Mônica: laca+LED que não existiam)*
+3. **Puxador abaulado/chanfro curvo → topo em LACA** (fita não acompanha a curva). Item
+   próprio ~R$3.500/ambiente.
+4. **Marmoraria/pedra + drywall/gesso + louças/metais → NUNCA são Valvic** (não perguntar).
+5. **Ripado sempre régua a régua** (nunca multiplicador de área). **Porta de passagem = item próprio.**
+6. **LED embutido na nossa marcenaria = escopo Valvic** (fornecemos E instalamos).
+7. **RT/repasse fora do divisor** (regra ①). **Prazo: confirmar com Jonathan antes de cravar.**
+
+### ③ Números de referência
+- Chapa útil **5,0875 m²** (2750×1850); aproveitamento **15/18mm ≈ 0,82 · 6mm ≈ 0,55**;
+  **cada cor ≥1 chapa**; fita **×1,15**; gaveta = 6 peças; filetagem máquina ~R$2,50/m,
+  manual/6mm ~R$4/m; logística **por ambiente**.
+- Ferragem → garantia: **Telescópica/padrão 2a · Hardt 5a · Hettich 10a · Blum vitalícia**
+  (conjunto segue o elo mais fraco).
+
+### ④ Ferramentas e modelos (não reinventar)
+- **Orçamento:** `orcamentista-marcenaria/ferramentas/validacao-orcamento.html` (app oficial —
+  biblioteca, ambientes, MC, import/export JSON). Fonte de preço: `dados/materiais.json`.
+- **Proposta:** clonar **`closer-vendas/ferramentas/MODELO-proposta-essencial-prime.md`**
+  (layout claro, 2 cenários Essencial/Prime). Instância pronta: `proposta-monica-premium.html`.
+- **Descritivo da skill:** `closer-vendas/ferramentas/descritivo-lavinia.html`.
+
+### ⑤ Fluxo e handoff
+- **Lavinia** (quantitativo+preço por MC) → **Rodrigo** (piso de caixa) → **Vitor** (proposta+fechamento).
+- Projetos resolvidos = `orcamentista-marcenaria/projetos/*.md` (consultar análogo antes de orçar).
+- Ambiente: imagens **coladas no chat** viram base64 → embutíveis no PDF; **link de Drive não** renderiza.
+
+### ⑥ Antes de entregar (trava)
+Rodar a **Checklist de Completude Final** (SKILL). Proposta: QA de nome único + **mensagem de
+acompanhamento** pronta pro Jonathan. Nada sai sem material entre 30–40% do preço conferido.
+
+> Abaixo: status dos projetos · aprendizados cravados (detalhe) · backlog por dono · furos.
+
 > **Última auditoria completa do branch:** 18/06/2026 (Lavinia) — varredura dos 85
 > arquivos das 3 skills (orçamentista, closer, financeiro) + docs de raiz + fontes.
 > O que a varredura achou está consolidado abaixo (estado dos projetos, aprendizados
@@ -15,6 +68,7 @@ data e agente responsável.
 
 | Projeto | Status | Valor / MC | Pendência principal |
 |---|---|---|---|
+| **Mônica Cristina** (banheiros + closet + cozinha) | ✅ Orçado + proposta (modelo Essencial Prime) | Essencial R$ 83.550 / Prime R$ 107.600 · MC banh.37 · closet 33 · coz 35 | Confirmar **prazo** c/ Jonathan; subir renders reais se houver |
 | **Júnior — Lagoa Santa** (casa completa, 9 amb.) | ✅ Orçado + proposta entregue | A R$ 395k (~38%) / B R$ 370k (~36%) | Refinar quantitativo Fase-1 (±25%) com cotas reais antes da produção |
 | **Kênia & Fábio — casa completa** (15 amb., ~60 mód.) | ✅ Orçado (Fase 2) | R$ 481.000 / MC 42% | 4 dúvidas abertas (ver backlog); ⚠️ status contraditório no `.md` (header "orçado" vs "próximos passos A FAZER" — reconciliar) |
 | **Lucas e Ana — Apto 101** | 📘 Referência resolvida | Gold R$ 181.800 / Silver R$ 169.950 | 🔴 TODO: completar quantitativo dos demais ambientes + fechar regra "peças → nº de chapas" |
@@ -62,6 +116,21 @@ data e agente responsável.
 - **Logística por AMBIENTE, não por projeto** (carreto ~R$ 300 ida+volta; equipe de
   montagem 2–3 dias tem que entrar — antes era esquecida = subprecificação).
 - **Pedra / marmoraria = SEMPRE do cliente** (regra Jonathan), em qualquer projeto.
+
+### Acabamento / proposta (cravado 14/07 — projeto Mônica)
+- **Acabamento especial é LIDO POR AMBIENTE — nunca herdado nem assumido.** *Erro real:*
+  lancei **laca (+R$3.500) e LED** num closet que só tinha **puxador alça Phenix preto** →
+  inflou ~R$12k. Antes de precificar: *este móvel tem laca? tem LED? qual o puxador exato?*
+- **Puxador abaulado/chanfro curvo → topo em LACA** (fita não acompanha a curva: emenda,
+  quebra, descola). Laca PU = selagem → primer → cabine → polimento. Item próprio (~R$3.500).
+  Vender com a **promessa de AMOSTRA física na aprovação**, antes da produção.
+- **MC por ambiente** é válido (Mônica: banheiros 37 · closet 33 · cozinha 35) — não forçar MC única.
+- **LED = escopo Valvic** (fornecemos **e** instalamos) → argumento de praticidade na proposta.
+- **Modelo de proposta oficial = "Essencial Prime"** (2 cenários de ferragem/garantia; layout
+  claro). Registro: `closer-vendas/ferramentas/MODELO-proposta-essencial-prime.md`; instância:
+  `proposta-monica-premium.html`. **Sistemas de porta:** Essencial **Rometal RO82 top** ·
+  Prime **Siforma (italiana)**. **Sempre um detalhe visual distinto para o item premium.**
+  Portas Valvic são **estruturadas com mecanismo anti-empeno** (citar como qualidade/durabilidade).
 
 ### Persona / método
 - **Lavínia é sênior e pensa como o Jonathan.** Princípio supremo: "orçamento incompleto
