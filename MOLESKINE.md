@@ -50,6 +50,9 @@ data e agente responsável.
 - **Lavinia** (quantitativo+preço por MC) → **Rodrigo** (piso de caixa) → **Vitor** (proposta+fechamento).
 - Projetos resolvidos = `orcamentista-marcenaria/projetos/*.md` (consultar análogo antes de orçar).
 - Ambiente: imagens **coladas no chat** viram base64 → embutíveis no PDF; **link de Drive não** renderiza.
+- ⛔ **Drive WRITE não flui aqui:** `create_file`/upload exige aprovação que o ambiente headless não
+  entrega (erro "requires approval"). Não insistir. Entregar via **SendUserFile** + **commit na branch**;
+  o **Jonathan sobe no Drive** do lado dele. Drive **READ/search** funciona (metadados/IDs).
 
 ### ⑥ Antes de entregar (trava)
 Rodar a **Checklist de Completude Final** (SKILL). Proposta: QA de nome único + **mensagem de

@@ -94,13 +94,13 @@ Fechando os dois banheiros juntos, capturei 2 economias (repassadas ao preço):
 
 ---
 
-## 🔒 FECHAMENTO FINAL (14/07/2026) — 4 ambientes, MC 37%
+## 🔒 FECHAMENTO FINAL (14/07/2026) — 4 ambientes, 2 cenários
 
 > Quantitativo por **cut list peça a peça** das pranchas executivas (regra cravada — nunca chutado).
-> Ferragens **Hardt + Hettich** (garantia 5 anos, elo Hardt). Portas com **puxador abaulado + topo em laca PU**
-> (+R$ 3.500/ambiente) na cozinha e no closet. Preço **igual aos demais projetos**: encargos 22% (NF 7 ·
-> parc 7 · produção 5 · coord 1 · erro 2, *sem vendedor*) + **MC 37%** + **RT 10% da Rubia como REPASSE por cima**
-> (fora do divisor). JSON: `orcamento-monica-v3-mc37.json`.
+> Preço **igual aos demais projetos**: encargos 22% (NF 7 · parc 7 · produção 5 · coord 1 · erro 2, *sem
+> vendedor*) + **MC por ambiente** (banheiros 37 · closet 33 · cozinha 35) + **RT 10% da Rubia como REPASSE
+> por cima** (fora do divisor). Duas linhas de ferragem/garantia (Essencial 5a / Prime 10a). Ver seções abaixo.
+> Laca **só na cozinha** (puxador abaulado); **closet = puxador alça Phenix preto, sem laca/LED**.
 
 ### Cut list confirmado (chapas)
 | Ambiente | Chapas 15mm | Fundo 6mm | Cor(es) |
