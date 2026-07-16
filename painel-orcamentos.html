@@ -85,6 +85,7 @@ body{background:var(--bg); color:var(--ink); font-family:system-ui,-apple-system
 const DATA_ATUALIZADA="16/07/2026";
 const ORCAMENTOS=[
   {cliente:"Kênia & Fábio", ref:481000, max:null, tag:"Casa completa", status:"concluido", drive:"parcial"},
+  {cliente:"Resolve Consórcio", ref:147800, max:174800, tag:"Comercial · 14 amb", status:"entregue", drive:"ausente"},
   {cliente:"Lilian Lee",    ref:127000, max:180500, tag:"Apto completo", status:"concluido", drive:"ausente"},
   {cliente:"Jairo Samuel",  ref:70400,  max:83900,  tag:"Apto completo", status:"entregue",  drive:"ausente"},
   {cliente:"Ed. Luxemburgo",ref:35295,  max:null,  tag:"Halls",         status:"concluido", drive:"ok"},
@@ -93,7 +94,7 @@ const ORCAMENTOS=[
   {cliente:"Hotel Ibis",    ref:16500,  max:null,   tag:"Hall comercial",status:"concluido", drive:"desatualizado"},
   {cliente:"Maria",         ref:7850,   max:null,   tag:"Lavanderia",    status:"entregue",  drive:"desatualizado"},
 ];
-const PARADOS=[{n:"Resolve Consórcio",m:"refazer"},{n:"Karina Ramos",m:"a consultar"}];
+const PARADOS=[{n:"Karina Ramos",m:"a consultar"}];
 
 const brl=n=>new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL",maximumFractionDigits:0}).format(n);
 const kbrl=n=>n>=1000?"R$ "+(n/1000).toLocaleString("pt-BR",{maximumFractionDigits:0})+" mil":brl(n);
