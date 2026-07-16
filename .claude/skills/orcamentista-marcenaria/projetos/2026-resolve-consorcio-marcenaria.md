@@ -41,16 +41,20 @@ Compliance · **Circulação (63 lockers)** · Comercial · Sala Reunião Colab 
 ## ③ Fita, ferragens, LED, insumos, terceirizados
 - **Fita + filetagem ≈ R$ 5.000** (só as chapas; ripado não leva fita; muita ½ esquadria = + mão de obra, − fita).
 - **Ferragens:**
-  - **63 fechaduras digitais Papaiz M1602** (sobrepor móveis) × **R$ 196,90 = R$ 12.400** (ref. loja Papaiz). ⚠️ item pesado — vale checar se todos os 63 lockers levam digital.
   - Dobradiças c/ amortecedor ~**176** + corrediças oculta ~**30 pares** → **base Hardt R$ 3.500** · (Hettich ≈ R$ 9.760).
   - Pistões a gás (básculas Refeitório) ~R$ 120.
   - **Usinagem** do "puxador chanfrado" (cava) em ~todos os armários + alça preta 70 cm (CALL) ≈ **R$ 2.000** (usinagem, não ferragem comprada).
+  - 🚫 **FECHADURAS DIGITAIS (63× Papaiz M1602) — NÃO INCLUSAS** no escopo Valvic (fornecimento à parte, por conta do cliente). Ref. de mercado ~R$ 196,90/un = ~R$ 12.400 caso queiram incluir depois.
 - **LED** (prateleiras Sala Reunião + Jurídico 3000K · básculas Refeitório 4000K · Colab) ~15–18 m + sensores ≈ **R$ 2.700**.
 - **Insumos** (cola/PUR, parafusos/minifix/cantoneira, limpeza + embalagem — obra grande) ≈ **R$ 4.000**.
 
-### Custo de MATERIAL Valvic (base Hardt)
-`ripado 8.300 + chapas 25.030 + fita 5.000 + fechaduras 12.400 + dobr./corr. 3.500 + pistões 120 + usinagem 2.000 + LED 2.700 + insumos 4.000`
-→ **≈ R$ 63.050** (base Hardt) · com Hettich no lugar da variável: **≈ R$ 69.300**.
+### Custo de MATERIAL Valvic (base Hardt) — SEM fechaduras
+`ripado 8.300 + chapas 25.030 + fita 5.000 + dobr./corr. 3.500 + pistões 120 + usinagem 2.000 + LED 2.700 + insumos 4.000`
+→ **≈ R$ 50.650** (base Hardt) · com Hettich no lugar da variável: **≈ R$ 56.900**.
+> **Fechaduras digitais FORA** (não inclusas). Se o cliente quiser incluir: +~R$ 12.400.
+
+> ⚠️ **Sobre as ~49 chapas:** é **estimativa por área (erra p/ cima), NÃO um plano de corte fechado** — margem de ±alguns chapas.
+> As **mesas orgânicas** das cabines são **tampo MDF + pé em tubo metálico**: só o tampo conta (~0,5 m²/un ×7 ≈ 3,5 m² ≈ **~1 chapa** no total). Ou seja, com ou sem as mesas o número fica em ~48–49 — dentro da própria incerteza da estimativa. Para **cravar** o nº de chapas, é preciso o levantamento **peça-a-peça** (ou rodar no app).
 
 ### Terceirizados (à parte — não são material Valvic)
 - **Blindex** das 7 cabines (4 giro + 3 correr) ≈ R$ 7.000 · **estofado** dos 7 bancos (tecido acústico) ≈ R$ 2.100 ·
@@ -61,7 +65,9 @@ Compliance · **Circulação (63 lockers)** · Comercial · Sala Reunião Colab 
 ## Flags — o que NÃO está descrito / a confirmar
 1. **Ripado — larguras de Compliance e Comercial** não claras nas elevações → área de ripado pode subir (mais caixas).
 2. **Cabines acústicas:** caixa + carpete + espuma = especialidade, fora deste material (só banco/mesa entraram).
-3. **Fechaduras digitais ×63** = R$ 12.400 — confirmar se é digital em todos.
+3. **Fechaduras digitais dos lockers = NÃO INCLUSAS** (fornecimento à parte). Fora do custo de material.
+4. **Mesas orgânicas das cabines = tampo MDF + pé em tubo metálico** → só o tampo é marcenaria; o pé é serralheria (fora).
+5. **Nº de chapas (~49) = ESTIMATIVA por área, não plano de corte fechado.** Para cravar, levantar peça-a-peça no app.
 4. **Bancadas/tampos** (Refeitório, Coffe Point) **não especificados** → fora. **Jardineiras** só como caixa MDF (sem impermeabilização).
 5. **Frigobares** (93L/45L) = eletrodoméstico, fora (o nicho é marcenaria).
 6. **Materiais conflitantes:** jardineira Descompressão (Freijó × Grafito); **Jurídico × "Gestão"** (mesmo ambiente?).

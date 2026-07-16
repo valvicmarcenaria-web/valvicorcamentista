@@ -27,14 +27,15 @@
   },
   "fita_filetagem": 5000,
   "ferragens": {
-    "fechadura_digital_papaiz_M1602": {"qtd": 63, "unit": 196.90, "total": 12400, "fonte": "loja.papaiz.com.br"},
     "dobradicas_qtd": 176, "corredicas_pares": 30,
     "hardt_variavel": 3500, "hettich_variavel": 9760,
     "pistoes": 120, "usinagem_cava_e_alca": 2000
   },
+  "fechaduras_digitais": {"status": "NAO INCLUSAS - fornecimento a parte", "ref_mercado": "63x Papaiz M1602 ~R$196,90 = ~R$12.400 se quiserem incluir"},
   "led": 2700,
   "insumos": 4000,
-  "custo_material_valvic": {"base_hardt": 63050, "base_hettich": 69300},
+  "custo_material_valvic": {"base_hardt": 50650, "base_hettich": 56900, "obs": "SEM fechaduras"},
+  "nota_chapas": "~49 e ESTIMATIVA por area (erra p/ cima), nao plano de corte fechado. Mesas = so tampo MDF (~1 chapa no total); pe e tubo metalico (fora).",
   "terceirizados_a_parte": {
     "blindex_7_cabines": 7000, "estofado_7_bancos": 2100, "pes_mesa_tubo_metal_7": 1000, "escorredor_refeitorio": 200,
     "cabine_acustica_caixa_carpete_espuma": "ESPECIALIDADE - cotar a parte (so banco+mesa entraram na marcenaria)"
