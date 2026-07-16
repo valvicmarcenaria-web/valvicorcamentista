@@ -116,10 +116,11 @@ puxador **Liveri IL955 192 mm** (Italy Line), interior completo (cabideiros, pra
 
 ### [2026-07-16] Painel fixo de orçamentos — Lavinia
 **Artifact (link fixo):** https://claude.ai/code/artifact/19b63c82-17d8-4b8c-a5b7-b95c63abb71d
-**Fonte no repo:** `painel-orcamentos.html` (raiz). Dashboard com KPIs (nº finalizados, valor total ref., ticket
-médio, pendências no Drive), gráfico de barras "pipeline por cliente" e tabela com chips de status/Drive.
-- **Dados:** array `ORCAMENTOS` no `<script>` (os KPIs recalculam sozinhos ao adicionar um item). Também array
-  `PARADOS`. Atualizar `DATA_ATUALIZADA` a cada mudança.
+**Fonte no repo:** `painel-orcamentos.html` (raiz) = **versão COMPACTA/widget** (o que está publicado — feito p/ ficar
+fixo no painel lateral: hero de valor total, ticket, nº fechados, lista enxuta + status dot). A **versão detalhada**
+(KPIs + gráfico de barras + tabela completa) está preservada em `painel-orcamentos-detalhado.html`.
+- **Dados:** array `ORCAMENTOS` no `<script>` (KPIs recalculam sozinhos ao adicionar item). Também `PARADOS`.
+  Atualizar `DATA_ATUALIZADA` a cada mudança. `dp` = pendências Drive (conta ausente+desatualizado).
 - **Como atualizar:** editar `painel-orcamentos.html`, e republicar com a ferramenta Artifact **passando
   `url:` = o link acima** (senão cria um artifact novo). Na mesma conversa que publicou, basta republicar o mesmo caminho.
 - Regra: **preencher o painel a cada orçamento que a Lavinia finaliza.**
