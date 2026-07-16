@@ -162,3 +162,22 @@ for a in sorted(amb_area, key=lambda x: -sum(area*cpm[k] for k, area in amb_area
     print(f"{a:20s} {frac*100:5.1f}% {e:12,.0f} {p:12,.0f}".replace(',', '.'))
 te = sum(v[0] for v in alloc.values()); tp = sum(v[1] for v in alloc.values())
 print(f"{'TOTAL':20s} {'100%':>6} {te:12,.0f} {tp:12,.0f}".replace(',', '.'))
+
+# ---------- DETALHE por ambiente (dump peca-a-peca): python3 corte-graca.py detalhe [Ambiente] ----------
+import sys
+if len(sys.argv) > 1 and sys.argv[1].startswith('detalhe'):
+    alvo = sys.argv[2] if len(sys.argv) > 2 else 'Despensa'
+    print(f"\n\n######## DETALHE — {alvo} ########")
+    print(f"{'Peca':34s} {'Material':8s} {'esp':>4} {'L(cm)':>6} {'A(cm)':>6} {'qt':>3} {'m2':>7}")
+    sub = {}
+    for (a, lab, mat, esp, w, h, n, area) in log:
+        if a != alvo: continue
+        print(f"{lab:34s} {mat:8s} {esp:>3}mm {w:>6.0f} {h:>6.0f} {n:>3} {area:7.3f}")
+        sub[(mat, esp)] = sub.get((mat, esp), 0) + area
+    print(f"\n-- m2 por material/espessura ({alvo}) --")
+    ch_amb = 0; cost_amb = 0
+    for (mat, esp), area in sorted(sub.items(), key=lambda x: -x[1]):
+        cor = COR[mat]; frac_ch = area/(CHAPA*APROV[esp]); custo = area*cpm[(mat, esp)]
+        ch_amb += frac_ch; cost_amb += custo
+        print(f"{mat:8s} {esp:>2}mm  {area:6.2f} m2  ->  {frac_ch:4.2f} chapa-eq  ~R$ {custo:6.0f}")
+    print(f"m2 total {alvo}: {sum(sub.values()):.2f} m2  ·  ~{ch_amb:.1f} chapas-equivalentes  ·  chapa ~R$ {cost_amb:.0f}")
