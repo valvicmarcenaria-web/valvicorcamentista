@@ -51,6 +51,16 @@ pintura, porcelanato, rodapé poliestireno, blindex, arandelas e **madeira de de
   `proposta-ed-luxemburgo.html`/`.pdf`. Proposta subida ao Drive (pasta do cliente).
 - **Pendências:** confirmar prazo do boleto (assumido 30 dias); ver recado p/ Rodrigo.
 
+### [2026-07-16] Orçamento + Proposta — Graça (despensa + lavanderia + tanque) — Lavinia
+**Solicitante:** Jonathan · **Projeto:** arq. **Lais Teles** (RT 10% líq.) · **Status:** 🟢 Proposta entregue
+3 ambientes, 4 conjuntos de marcenaria, **tudo MDF Azul Petróleo Guararapes** (25 pranchas, "Detalhamento").
+- **CÁLCULO peça-a-peça** (`corte-graca.py`, 59 peças) → **11 chapas R$ 3.750**. Despensa = armário superior **revestido** (existente) + bancada em L (2 gavetões, nichos, **3 cestos aramados**, LED 3000 K). Lavanderia = torre da máq. de lavar (puxador cava passante). Tanque = balcão 2 portas (tampo de pedra = terceiro).
+- **Preço (motor COM cartão, RT 10%):** **Essencial (telescópica/2a/MC35%) R$ 21.900** · **Essencial Prime (oculta alemã Hardt/5a/MC38%) R$ 24.800.** Alocação: Despensa 67,6% · Lavanderia 26,4% · Tanque 6,0%.
+- **Pagto:** escala padrão (30% 10× · 50% 8× −3% · 70% 6× −5% · 70%+transf. −7%). **Prazo 60–90 dias.** Proposta **enxuta (3 págs)** a pedido do Jonathan — capa + escopo dos 3 ambientes (renders do cliente) + investimento.
+- **Diferenciação por modelo/garantia, não por marca** (regra da casa). **Interior:** caixaria Branco TX padrão; "todo em Azul Petróleo" vale p/ superfícies aparentes (interior integral sob consulta). **Não inclusos:** pedra/cuba do tanque, máquina de lavar, hidráulica/elétrica.
+- **Flags:** nº de folhas do armário existente · larg. bancada 136 vs 154 (adotado 154) · tampo bancada MDF vs pedra · puxador despensa/tanque.
+- **Arquivos:** `2026-graca-marcenaria.md` · `orcamento-graca.json` · `corte-graca.py` · `build-graca.py` · `proposta-graca.html/.pdf` · `img-graca-*.png`.
+
 ### [2026-07-16] Orçamento + Proposta — Resolve Consórcio (comercial, 14 amb.) — Lavinia + Vitor
 **Solicitante:** Jonathan · **Parceira:** Jéssica Sollero (RT 10%) · **Eng.:** Corsino Soares · **Status:** 🟢 Proposta entregue
 Escritório corporativo completo (14 ambientes, 54 pranchas) — recepção, salas, convivência, coffe point, refeitório,

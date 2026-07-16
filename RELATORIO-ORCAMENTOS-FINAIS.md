@@ -1,6 +1,6 @@
 # Relatório — Orçamentos finais Valvic (consolidado)
 
-**Gerado por:** Lavinia · **Data:** 14/07/2026 · **Branch:** `claude/fervent-maxwell-55vwy1`
+**Gerado por:** Lavinia · **Data:** 16/07/2026 · **Branch:** `claude/fervent-maxwell-55vwy1`
 
 ## Certificação de backup
 - **Git:** ✅ **Tudo commitado e enviado (push) para o `origin`.** Working tree limpo, branch sincronizada. Esta é a **fonte durável** — nada se perde.
@@ -17,7 +17,8 @@
 | **Maria** | Lavanderia + complemento de painel (Vale dos Cristais) | **R$ 7.850** (derivado da cabeceira-couro, valores mantidos) | 🟢 Entregue | ⚠️ só versões antigas no Drive |
 | **Lilian Lee** | Apto completo — marcenaria + portas provençais. Decoradora **Jéssica Sollero** (RT 10%) | **3 linhas:** Essencial **R$ 127.000** (2a) · Conforto **R$ 137.000** (5a) · Premium **R$ 180.500** (10a) + logística Vila Velha à parte | 🟢 Concluído | ❌ **não está no Drive** |
 | **Hotel Ibis Betim** | Hall comercial — nichos + molduras + balcão (interior MDF branco) | **R$ 16.500** (MC 31%, RT 10% DAD, pagto 50/50 sem cartão) | 🟢 Concluído | ⚠️ pasta `hotel_ibis` existe, **proposta não subida** |
-| **Resolve Consórcio** | Comercial — 14 ambientes (recepção, salas, 63 lockers, 7 cabines acústicas). Parceria Jéssica | ⛔ **PRELIMINAR ~R$ 241k/281k SUPERESTIMADO** | 🔴 **PARADO — refazer do zero** | ❌ |
+| **Resolve Consórcio** | Comercial — 14 ambientes (recepção, salas, 63 lockers, 7 cabines acústicas). Parceria Jéssica | **Refeito peça-a-peça** (79 chapas + ripado Eucatex real): Essencial **R$ 147.800** (Hardt/5a) · Prime **R$ 174.800** (Hettich/10a). Pagto 40/40/20, prazo 90–100d | 🟢 **Entregue** (formato Jairo, renders do cliente) | ❌ **não está no Drive** |
+| **Graça** | 3 ambientes — Despensa (armário revestido + bancada L) · Lavanderia (torre máq. lavar) · Armário-tanque. Tudo MDF Azul Petróleo Guararapes. Projeto **arq. Lais Teles** (RT 10%) | **Cálculo peça-a-peça** (11 chapas): Essencial **R$ 21.900** (telescópica/2a) · Essencial Prime **R$ 24.800** (oculta alemã/5a). Pagto padrão c/ escala, prazo 60–90d | 🟢 Proposta entregue (3 págs, formato enxuto) | ❌ **não está no Drive** |
 
 ## 2) Orçamentos anteriores (no repositório)
 
@@ -37,10 +38,12 @@ Ação manual do Jonathan (arrastar PDF) **ou** liberar a escrita do conector Go
 2. **Lilian Lee** — criar pasta + subir `proposta-lilian-lee.pdf`.
 3. **Camila** — substituir os Docs antigos pela proposta **rev. 10/07** (R$ 24.900). Apagar os 2 Docs de 2-cenários.
 4. **Hotel Ibis** — subir `proposta-hotel-ibis.pdf` na pasta `hotel_ibis` (já existe).
-5. **Maria** — subir `proposta-maria-lavanderia-painel.pdf` na pasta "Maria".
+5. **Maria** — subir `proposta-maria-lavanderia-painel.pdf` + `aditivo-contratual-maria-lavanderia-painel.pdf` na pasta "Maria".
+6. **Resolve Consórcio** — criar pasta + subir `proposta-resolve-consorcio.pdf` (R$ 147.800 / 174.800).
+7. **Graça** — criar pasta + subir `proposta-graca.pdf` (R$ 21.900 / 24.800).
 > Todos os arquivos acima estão **salvos e versionados no Git** (branch acima) — o Drive é só a cópia de acesso do time.
 
-## 4) Resolve Consórcio — parado para refazer
-A estimativa preliminar (~R$ 241k Essencial / R$ 281k Prime) **está superestimada** (premissa demais: ripado sem padrão, cabines acústicas, fechaduras, fator de área alto). **Vamos refazer do zero.** O que já temos e serve de base: extração fiel das 54 pranchas (14 ambientes, materiais, medidas) em `2026-resolve-consorcio-marcenaria.md`. Ao retomar: revisar o método de estimativa (área real por elevação, não fator), definir o padrão do ripado, e separar o que é marcenaria do que é acústica/serralheria/terceiro.
+## 4) Método consolidado — calcular, nunca estimar
+Após o episódio do Resolve (estimativa preliminar superestimada em ~R$ 241k/281k), a regra virou princípio nº 1 da skill: **quantitativo sai do plano de corte peça-a-peça** (`corte-*.py`), não de fator de área. Resolve e Graça já nasceram assim (script auditável, chapa a chapa, ripado/pedra/eletro tratados como terceiro quando é o caso). Nada de número que não se possa provar.
 
 **Arquivos-fonte no repositório:** `.claude/skills/orcamentista-marcenaria/projetos/` (todos os `.md`, `.json`, `.html`, `.pdf`) · `MOLESKINE.md` (histórico e aprendizados).
