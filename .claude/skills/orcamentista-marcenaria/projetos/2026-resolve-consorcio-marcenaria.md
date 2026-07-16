@@ -2,69 +2,73 @@
 
 **Cliente:** Resolve Consórcio · **Decoradora/parceira:** Jéssica Sollero · **Engenharia:** Corsino Soares
 **Caderno:** 11/06/2026 (54 pranchas) · **Perfil:** comercial (corporativo) · **Escopo:** orçar **só o que está descrito**
-**Fechamento (v001 — PRELIMINAR):** 2 linhas · RT 10% Jéssica · **Essencial (Hardt/5 anos) MC 32% ≈ R$ 241.000** · **Essencial Prime (Hettich/10 anos) MC 35% ≈ R$ 281.000**
-**Unidade:** CHAPAS (plano de corte — premissa da skill). "Conferir medidas no local" em todas as pranchas → estimativa erra p/ cima, refinar no app.
+**Status (v2):** 🟡 **LEVANTAMENTO DE CUSTO DE MATERIAL** refeito do zero (v1 preliminar estava superestimada e foi descartada).
+**Unidade:** CHAPAS (plano de corte) + **ripado como produto Eucatex** (não como chapa cortada).
 
-> ⚠️ Estimativa PRELIMINAR de ordem de grandeza. Vários itens grandes têm ressalva (ver Flags):
-> ripado sem espaçamento definido, cabines acústicas, fechaduras digitais, itens não cotados.
+> "Conferir medidas no local" em todas as pranchas. Vários itens sem cota → estimativa erra p/ cima, sinalizada.
+> **v1 descartada** (chapas infladas, ripado como chapa ×1,4, cabines chutadas). Esta v2 usa **preços reais**.
 
 ## Escopo (14 ambientes descritos)
 Recepção · Sala Reunião · Convivência · Coffe Point · Descompressão · Refeitório · Jurídico (planta "Gestão") ·
 Compliance · **Circulação (63 lockers)** · Comercial · Sala Reunião Colab · Sala CEO · CALL · **Cabines CALL (7 acústicas)**.
 
-**Paleta:** MDF **Grafito Chess** (Arauco) — dominante · **Freijó Brasil** (Eucatex) — ripados/painéis · **Carvalho Americano** (Arauco) — básculas refeitório · **Azul Austral / Azul Secreto** (Duratex) + **Azul Petróleo** (Guararapes) — lockers/CALL · interno **Branco TX**. Tudo em **½ esquadria**; "puxador chanfrado" = **cava usinada** (não é ferragem comprada).
+**Paleta MDF:** **Grafito Chess** (Arauco) — dominante · **Freijó Brasil** (Eucatex) — ripado (produto) + painéis lisos ·
+**Carvalho Americano** (Arauco) — básculas refeitório · **Azul Austral / Azul Secreto** (Duratex) + **Azul Petróleo**
+(Guararapes) — portas dos lockers/CALL · interno **Branco TX**. Tudo em **½ esquadria**; "puxador chanfrado" = **cava usinada**.
 
-## Itens de maior peso
-- **63 lockers** 50×50×40 (3 cores) + **63 fechaduras digitais Papaiz** (sobrepor) + 63 dobradiças c/ amortecedor.
-- **7 cabines acústicas** (caixa Grafito Chess + piso elevado/carpete + teto e laterais em espuma acústica) c/ **banco suspenso estofado** + **mesa orgânica** (pé tubo metálico) + **porta blindex** (giro/correr) cada.
-- **Credenzas Jurídico** (418 + 350 L) · **Coffe Point** (armário 304 + painel/teto Freijó 449) · **Comercial** (jardineira central Grafito **783 L**) · **Sala Reunião Colab** (armário 410 + ripado 315×260) · **CALL** (guarda-roupa 270×270 + armário frigobar).
-- **Ripado Freijó** em 5 ambientes (Recepção, Convivência, Compliance, Comercial, Colab).
-- **Prateleiras c/ LED 3000K** (Sala Reunião, Jurídico, Colab) · **básculas c/ LED 4000K + pistão a gás + escorredor** (Refeitório) · **jardineiras** (caixa MDF, sem impermeabilização especificada).
+## ① RIPADO — produto Eucatex (referência de custo real, da internet)
+**Painel Ripado Eucatex RU Freijó Brasil** = caixa de **6 barras de encaixe**, barra **55 × 2.700 × 12 mm**,
+**rende 0,75 m²/caixa**, **R$ 166,50/caixa** (Estilo Home Center; faixa R$ 158–183). É produto **pronto e pré-acabado**
+(obra seca, encaixe macho-fêmea) — **não leva chapa de fundo nem fita**; só acabamento em **perfil L** nas bordas aparentes.
+- **Paredes ripadas (Freijó Brasil):** Recepção ~8,4 m² · Convivência 7,4 m² · Sala Reunião Colab 7,9 m² ·
+  Compliance ~5 m² ⚠️ · Comercial ~5 m² ⚠️ → **≈ 34 m²** (larguras de Compliance/Comercial a confirmar).
+- **34 m² ÷ 0,75 = ~46 caixas × R$ 166,50 = R$ 7.660** + perfis L (~R$ 600) → **≈ R$ 8.300.**
 
-## Quantitativo — CHAPAS (plano de corte, preliminar, erra p/ cima)
-`chapa 5,0875 m² · útil 15/18 ≈ 4,17 · 6mm ≈ 2,80 · cor R$500/15·600/18 · Branco TX R$260/15·190/6`
+## ② CHAPAS MDF (plano de corte, disciplinado)
+`chapa 5,0875 m² · útil 15/18 ≈ 4,17 · 6mm ≈ 2,80`
 
-| Cor | chapas | ~R$ |
-|---|--:|--:|
-| **Grafito Chess** | 24 | 12.000 |
-| **Freijó Brasil** (inclui ripado ×1,4) | 21 | 10.500 |
-| **Carvalho Americano** | 1 | 500 |
-| **"Similar ao existente"** (refeitório) | 1 | 500 |
-| **Azul Austral / Secreto / Petróleo** | 2/2/3 | 4.200 |
-| **Branco TX 15** | 35 | 9.100 |
-| **Branco TX 6** | 17 | 3.230 |
-| **TOTAL** | **~106 chapas** | **~40.000** |
+| Cor | chapas | R$/chapa | R$ | Onde |
+|---|--:|--:|--:|---|
+| **Grafito Chess** | 16 | 500 | 8.000 | jardineiras, prateleiras, armários/credenzas (faces), bancos, **bancos+mesas das 7 cabines** |
+| **Freijó Brasil (liso)** | 6 | 500 | 3.000 | painel+teto Coffe Point + painel liso Convivência (chapa, não ripado) |
+| **Carvalho Americano** | 1 | 500 | 500 | básculas Refeitório (face) |
+| **Azul Austral / Secreto / Petróleo** | 2 / 2 / 3 | 600 | 4.200 | portas dos lockers (63) + portas CALL |
+| **"Similar ao existente"** | 1 | 500 | 500 | armário inferior Refeitório (cor a confirmar) |
+| **Branco TX 15** (caixaria) | 23 | 260 | 5.980 | interiores dos armários + estrutura dos 63 lockers (laterais compartilhadas) |
+| **Branco TX 6** (fundos) | 15 | 190 | 2.850 | fundos dos armários + costas dos lockers |
+| **TOTAL** | **~49 chapas** | | **R$ 25.030** | |
 
-## Fita, ferragens, LED, terceirizados, INSUMOS
-- **Fita + filetagem ≈ R$ 7.000** (projeto grande; muita ½ esquadria = + mão de obra).
-- **Ferragem variável (dobradiças + corrediças):** ~**180 dobradiças** c/ amortecedor + ~**30 pares corrediça oculta**.
-  - **Hardt:** 180×8 + 30×70 = **R$ 3.540** · **Hettich:** 180×35 + 30×120 = **R$ 9.900**.
-- **Fechaduras digitais Papaiz ×63 ≈ R$ 12.600** (⚠️ confirmar modelo/custo — item pesado) · pistões a gás/escorredor ≈ R$ 500.
-- **Puxadores/usinagem ≈ R$ 2.000** (cava chanfrada usinada em quase tudo; + alça preta 70cm do guarda-roupa CALL).
-- **LED ≈ R$ 2.700** (~15–18 m COB 3000/4000K + sensores).
-- **Terceirizados ≈ R$ 17.000:** blindex das 7 cabines (~7k) · revestimento acústico das cabines (carpete+espuma ~7k) · estofado dos 7 bancos (~2,1k) · pés de mesa em tubo metálico (~1k). ⚠️ revestimento acústico pode virar linha à parte.
-- **INSUMOS ≈ R$ 4.500** (cola/PUR, parafusos/minifix/cantoneira, limpeza+embalagem — obra grande).
+## ③ Fita, ferragens, LED, insumos, terceirizados
+- **Fita + filetagem ≈ R$ 5.000** (só as chapas; ripado não leva fita; muita ½ esquadria = + mão de obra, − fita).
+- **Ferragens:**
+  - **63 fechaduras digitais Papaiz M1602** (sobrepor móveis) × **R$ 196,90 = R$ 12.400** (ref. loja Papaiz). ⚠️ item pesado — vale checar se todos os 63 lockers levam digital.
+  - Dobradiças c/ amortecedor ~**176** + corrediças oculta ~**30 pares** → **base Hardt R$ 3.500** · (Hettich ≈ R$ 9.760).
+  - Pistões a gás (básculas Refeitório) ~R$ 120.
+  - **Usinagem** do "puxador chanfrado" (cava) em ~todos os armários + alça preta 70 cm (CALL) ≈ **R$ 2.000** (usinagem, não ferragem comprada).
+- **LED** (prateleiras Sala Reunião + Jurídico 3000K · básculas Refeitório 4000K · Colab) ~15–18 m + sensores ≈ **R$ 2.700**.
+- **Insumos** (cola/PUR, parafusos/minifix/cantoneira, limpeza + embalagem — obra grande) ≈ **R$ 4.000**.
 
-## Fechamento (motor Valvic) — PRELIMINAR
-`inv = fixedR/(1 − 0,18 − 0,88·0,143 − MC)` · RT 10% Jéssica embutida · visitas R$ 500 (comercial)
-**Material fixo (igual nas 2) ≈ R$ 69.300** (chapas 40.000 + fita 7.000 + fechaduras 12.600 + LED 2.700 + puxadores 2.000 + pistões 500 + insumos 4.500). **fixedR = material + ferragem variável + terceirizados 17.000 + visitas 500.**
+### Custo de MATERIAL Valvic (base Hardt)
+`ripado 8.300 + chapas 25.030 + fita 5.000 + fechaduras 12.400 + dobr./corr. 3.500 + pistões 120 + usinagem 2.000 + LED 2.700 + insumos 4.000`
+→ **≈ R$ 63.050** (base Hardt) · com Hettich no lugar da variável: **≈ R$ 69.300**.
 
-| Linha | Ferragem | Garantia | fixedR | MC | **Investimento (prelim.)** |
-|---|---|:--:|--:|:--:|--:|
-| **Essencial** | Hardt | 5 anos | 90.340 | 32% | **≈ R$ 241.000** |
-| **Essencial Prime** | Hettich (alemã) | 10 anos | 96.700 | 35% | **≈ R$ 281.000** |
+### Terceirizados (à parte — não são material Valvic)
+- **Blindex** das 7 cabines (4 giro + 3 correr) ≈ R$ 7.000 · **estofado** dos 7 bancos (tecido acústico) ≈ R$ 2.100 ·
+  **pés de mesa em tubo metálico** (7) ≈ R$ 1.000 · escorredor metálico Refeitório ≈ R$ 200.
+- ⛔ **CABINE ACÚSTICA (caixa + carpete + espuma acústica) = ESPECIALIDADE — cotar à parte.** Não dá pra estimar por chapa
+  com o que o caderno traz; orcei só o **banco + mesa** (marcenaria) de cada cabine. A construção acústica da caixa é item próprio.
 
-RT p/ Jéssica embutida: ~R$ 19k (Ess.) · ~R$ 22,5k (Prime).
+## Flags — o que NÃO está descrito / a confirmar
+1. **Ripado — larguras de Compliance e Comercial** não claras nas elevações → área de ripado pode subir (mais caixas).
+2. **Cabines acústicas:** caixa + carpete + espuma = especialidade, fora deste material (só banco/mesa entraram).
+3. **Fechaduras digitais ×63** = R$ 12.400 — confirmar se é digital em todos.
+4. **Bancadas/tampos** (Refeitório, Coffe Point) **não especificados** → fora. **Jardineiras** só como caixa MDF (sem impermeabilização).
+5. **Frigobares** (93L/45L) = eletrodoméstico, fora (o nicho é marcenaria).
+6. **Materiais conflitantes:** jardineira Descompressão (Freijó × Grafito); **Jurídico × "Gestão"** (mesmo ambiente?).
+7. **Elevações faltando:** Recepção Elev. C e Coffe Point Elev. B referenciadas e não desenhadas.
+8. **"Similar ao existente"** (Refeitório) — cor/linha depende de amostra do local.
+9. **Preços de compra:** ripado e fechadura vêm de **varejo web** (Valvic pode ter preço melhor no fornecedor). Chapas/ferragens = base da skill.
+10. **Preço final / MC:** ainda **não** calculado — aguardando a Lavinia/Rodrigo definir margem, linhas e RT do comercial.
 
-## Flags — o que NÃO está descrito / precisa confirmar (antes de fechar)
-1. **Ripado Freijó** sem **largura de barra/espaçamento/espessura** → estimei fator 1,4 sobre a área. Definir padrão muda o consumo de Freijó.
-2. **Cabines acústicas:** construção (estrutura MDF + revestimento acústico) é especialidade; estimativa grosseira. Confirmar se Valvic executa a caixa+acústica ou só a marcenaria (banco/mesa) e a acústica é terceiro.
-3. **Fechaduras digitais Papaiz ×63** — custo unitário real (R$?) pesa muito. Confirmar.
-4. **Bancadas/tampos** (Refeitório, Coffe Point) **não especificados** → NÃO orçados. **Jardineiras** sem impermeabilização/liner → só a caixa MDF.
-5. **Frigobares** (93L/45L) = eletrodoméstico, **fora** (o nicho é marcenaria; o aparelho não).
-6. **Materiais conflitantes:** jardineira Descompressão (Freijó na planta × Grafito no corte). **Jurídico × "Gestão"** (mesmo ambiente?).
-7. **Elevações faltando:** Recepção Elev. C e Coffe Point Elev. B referenciadas e **não desenhadas** → itens dessas paredes sem cota.
-8. **Blindex das cabines** (giro/correr) sem espessura/ferragem → terceirizado estimado.
-9. **Termos comerciais** a confirmar com Jonathan: margens (usei 32/35% como no Jairo), 1 ou 2 linhas, **prazo** (comercial — a validar com a produção), situação de caixa.
-
+**Fontes de custo (web):** Ripado — estilohomecenter.com.br / leomadeiras.com.br / eucatex.com.br · Fechadura — loja.papaiz.com.br / amazon.com.br.
 **Arquivos:** `orcamento-resolve-consorcio.json` · este `.md`. Caderno-fonte no upload da sessão.

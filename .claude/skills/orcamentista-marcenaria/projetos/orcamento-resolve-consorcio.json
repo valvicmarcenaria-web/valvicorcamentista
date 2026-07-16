@@ -3,42 +3,50 @@
   "tipo": "comercial (escritorio corporativo)",
   "decoradora": "Jessica Sollero",
   "engenharia": "Corsino Soares",
-  "rt_percent_liquido": 10,
   "caderno": "54 pranchas, 11/06/2026",
   "escopo_regra": "orcar somente o que esta descrito",
-  "unidade": "chapas (plano de corte)",
-  "status": "v001 PRELIMINAR",
+  "status": "v2 LEVANTAMENTO DE MATERIAL (v1 preliminar descartada, superestimada)",
   "ambientes": ["Recepcao","Sala Reuniao","Convivencia","Coffe Point","Descompressao","Refeitorio","Juridico(Gestao)","Compliance","Circulacao(63 lockers)","Comercial","Sala Reuniao Colab","Sala CEO","CALL","Cabines CALL(7 acusticas)"],
-  "paleta": ["Grafito Chess (Arauco)","Freijo Brasil (Eucatex)","Carvalho Americano (Arauco)","Azul Austral/Secreto (Duratex)","Azul Petroleo (Guararapes)","Branco TX interno"],
+  "ripado_eucatex": {
+    "produto": "Painel Ripado Eucatex RU Freijo Brasil",
+    "caixa": "6 barras de encaixe, 55x2700x12mm",
+    "rendimento_m2_por_caixa": 0.75,
+    "preco_caixa_ref": 166.50,
+    "fonte": "estilohomecenter.com.br / leomadeiras.com.br / eucatex.com.br",
+    "area_ripado_m2_estimada": 34,
+    "caixas": 46,
+    "custo_ripado": 7660,
+    "perfil_L": 600,
+    "custo_total": 8300,
+    "obs": "produto pronto pre-acabado, sem chapa de fundo nem fita; larguras Compliance/Comercial a confirmar"
+  },
   "chapas": {
-    "grafito_chess": 24, "freijo_brasil": 21, "carvalho_americano": 1, "similar_existente": 1,
-    "azul_austral": 2, "azul_secreto": 2, "azul_petroleo": 3, "branco_tx_15": 35, "branco_tx_6": 17,
-    "total": 106, "custo": 40000
+    "grafito_chess": 16, "freijo_brasil_liso": 6, "carvalho_americano": 1, "similar_existente": 1,
+    "azul_austral": 2, "azul_secreto": 2, "azul_petroleo": 3, "branco_tx_15": 23, "branco_tx_6": 15,
+    "total": 49, "custo": 25030
   },
-  "material_fixo": {
-    "chapas": 40000, "fita_filetagem": 7000, "fechaduras_digitais_papaiz_63un": 12600,
-    "led": 2700, "puxadores_usinagem": 2000, "pistoes_escorredor": 500, "insumos": 4500,
-    "total": 69300
+  "fita_filetagem": 5000,
+  "ferragens": {
+    "fechadura_digital_papaiz_M1602": {"qtd": 63, "unit": 196.90, "total": 12400, "fonte": "loja.papaiz.com.br"},
+    "dobradicas_qtd": 176, "corredicas_pares": 30,
+    "hardt_variavel": 3500, "hettich_variavel": 9760,
+    "pistoes": 120, "usinagem_cava_e_alca": 2000
   },
-  "ferragem_variavel": {
-    "dobradicas_qtd": 180, "corredicas_pares": 30,
-    "hardt": 3540, "hettich": 9900
+  "led": 2700,
+  "insumos": 4000,
+  "custo_material_valvic": {"base_hardt": 63050, "base_hettich": 69300},
+  "terceirizados_a_parte": {
+    "blindex_7_cabines": 7000, "estofado_7_bancos": 2100, "pes_mesa_tubo_metal_7": 1000, "escorredor_refeitorio": 200,
+    "cabine_acustica_caixa_carpete_espuma": "ESPECIALIDADE - cotar a parte (so banco+mesa entraram na marcenaria)"
   },
-  "terceirizados": {"blindex_7cabines": 7000, "revestimento_acustico_cabines": 7000, "estofado_bancos": 2100, "pes_mesa_tubo_metal": 1000, "total": 17000},
-  "visitas": 500,
-  "motor": {"formula": "inv = fixedR/(1 - 0.18 - 0.88*0.143 - MC)", "b": 0.143},
-  "linhas": [
-    {"nome": "Essencial", "ferragem": "Hardt", "garantia_anos": 5, "mc": 0.32, "fixedR": 90340, "investimento_prelim": 241000, "rt_estimada": 19000},
-    {"nome": "Essencial Prime", "ferragem": "Hettich", "garantia_anos": 10, "mc": 0.35, "fixedR": 96700, "investimento_prelim": 281000, "rt_estimada": 22500}
-  ],
-  "flags_criticos": [
-    "Ripado Freijo sem espacamento/barra definido (fator 1.4 estimado)",
-    "Cabines acusticas: Valvic executa caixa+acustica ou so banco/mesa?",
-    "Fechaduras digitais Papaiz x63: custo unitario real pesa muito",
-    "Bancadas/tampos (Refeitorio, Coffe Point) NAO descritos = fora",
-    "Frigobares = eletrodomestico, fora",
+  "preco_final": "NAO calculado - aguardando margem/linhas/RT do comercial (Lavinia/Rodrigo)",
+  "flags": [
+    "Ripado larguras Compliance/Comercial a confirmar (pode subir caixas)",
+    "Cabine acustica (caixa+carpete+espuma) = especialidade fora do material",
+    "63 fechaduras digitais = R$12.400, confirmar se digital em todos",
+    "Bancadas/tampos nao especificados = fora; jardineiras so caixa MDF",
+    "Frigobares = eletrodomestico fora",
     "Material conflitante jardineira Descompressao; Juridico vs Gestao",
-    "Recepcao Elev C e Coffe Point Elev B nao desenhadas",
-    "Termos comerciais (margens/linhas/prazo/RT) a confirmar"
+    "Precos de ripado e fechadura sao varejo web (Valvic pode ter preco melhor)"
   ]
 }
