@@ -25,6 +25,12 @@ software de produção**.
 
 ## Princípios (valem nas 3 fases)
 
+- **CALCULAR, nunca ESTIMAR — é isso que faz um orçamentista de verdade.** O número de
+  chapas (e de tudo) sai do **cálculo peça-a-peça** — cada peça L×A decomposta e encaixada
+  na chapa 2,75×1,85 — **não** de estimativa por área/extensão "no olho". Estimar é, no
+  máximo, **conferência de sanidade** do cálculo; **nunca o número entregue**. **Nunca
+  afirmar um número que não se pode provar:** se falta cota, diga que falta e peça a medida —
+  não chute. Estimar é o caminho do prejuízo; calcular é o caminho do lucro.
 - **Quantitativo antes de preço.** Primeiro o levantamento físico (chapas, metros
   de fita, ferragens), depois o custo.
 - **Plano de corte SEMPRE.** Para o levantamento preciso do quantitativo, montar o
@@ -83,8 +89,10 @@ e estimar pela escala, sinalizando.
     a resposta no projeto e em `materiais.json` (ref. ~R$660-710/m² reflecta
     bronze + perfil bronze, base Kenia&Fábio).
 
-> Calibração: erra para cima de propósito (melhor sobrar 1 chapa). Ver
-> `projetos/treino/` e `projetos/treino/calibracao-camila.md` (onde o olhar
+> Calibração: o arredondamento p/ cima (melhor sobrar 1 chapa) vale **no fecho do
+> cálculo peça-a-peça** — nunca como substituto dele. Estimar por área/extensão é
+> **só quando falta cota** e **sempre sinalizado como estimativa** (nunca cravado como
+> número fechado). Ver `projetos/treino/` e `calibracao-camila.md` (onde o olhar
 > falha: subestima fita de cor/ripado e prateleiras; superestima branco/LED;
 > sempre lançar consumíveis).
 

@@ -5,7 +5,9 @@
   "engenharia": "Corsino Soares",
   "caderno": "54 pranchas, 11/06/2026",
   "escopo_regra": "orcar somente o que esta descrito",
-  "status": "v2 LEVANTAMENTO DE MATERIAL (v1 preliminar descartada, superestimada)",
+  "status": "v3 CHAPAS CALCULADAS peca-a-peca (corte-resolve-consorcio.py, 257 pecas)",
+  "metodo": "levantamento peca-a-peca; area por cor/espessura / (5.0875 * aprov 0.82 [15-18] / 0.55 [6mm])",
+  "historico_chapas": "v1 estimativa 106 (alta) | v2 estimativa 49 (baixa) | v3 CALCULO 79 (real)",
   "ambientes": ["Recepcao","Sala Reuniao","Convivencia","Coffe Point","Descompressao","Refeitorio","Juridico(Gestao)","Compliance","Circulacao(63 lockers)","Comercial","Sala Reuniao Colab","Sala CEO","CALL","Cabines CALL(7 acusticas)"],
   "ripado_eucatex": {
     "produto": "Painel Ripado Eucatex RU Freijo Brasil",
@@ -20,10 +22,11 @@
     "custo_total": 8300,
     "obs": "produto pronto pre-acabado, sem chapa de fundo nem fita; larguras Compliance/Comercial a confirmar"
   },
-  "chapas": {
-    "grafito_chess": 16, "freijo_brasil_liso": 6, "carvalho_americano": 1, "similar_existente": 1,
-    "azul_austral": 2, "azul_secreto": 2, "azul_petroleo": 3, "branco_tx_15": 23, "branco_tx_6": 15,
-    "total": 49, "custo": 25030
+  "chapas_calculado": {
+    "grafito_15": 17, "grafito_18": 3, "branco_tx_15": 21, "branco_tx_6": 19, "freijo_liso_15": 8,
+    "azul_petroleo_18": 3, "azul_austral_18": 2, "azul_secreto_18": 2, "carvalho_15_18": 2, "similar_15_18": 2,
+    "total": 79, "custo": 29770,
+    "obs": "6mm usa aprov 0.55 (skill, conservador); com nesting apertado ~13 chapas (-6)"
   },
   "fita_filetagem": 5000,
   "ferragens": {
@@ -34,8 +37,8 @@
   "fechaduras_digitais": {"status": "NAO INCLUSAS - fornecimento a parte", "ref_mercado": "63x Papaiz M1602 ~R$196,90 = ~R$12.400 se quiserem incluir"},
   "led": 2700,
   "insumos": 4000,
-  "custo_material_valvic": {"base_hardt": 50650, "base_hettich": 56900, "obs": "SEM fechaduras"},
-  "nota_chapas": "~49 e ESTIMATIVA por area (erra p/ cima), nao plano de corte fechado. Mesas = so tampo MDF (~1 chapa no total); pe e tubo metalico (fora).",
+  "custo_material_valvic": {"base_hardt": 56700, "base_hettich": 62600, "obs": "SEM fechaduras; chapas+ripado calculados, fita/LED/insumos a fechar por perimetro"},
+  "ferragens_contadas": {"portas": 87, "gavetoes": 23, "dobradicas": 176, "corredicas_pares": 23},
   "terceirizados_a_parte": {
     "blindex_7_cabines": 7000, "estofado_7_bancos": 2100, "pes_mesa_tubo_metal_7": 1000, "escorredor_refeitorio": 200,
     "cabine_acustica_caixa_carpete_espuma": "ESPECIALIDADE - cotar a parte (so banco+mesa entraram na marcenaria)"

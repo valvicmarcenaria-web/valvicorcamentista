@@ -2,11 +2,12 @@
 
 **Cliente:** Resolve Consórcio · **Decoradora/parceira:** Jéssica Sollero · **Engenharia:** Corsino Soares
 **Caderno:** 11/06/2026 (54 pranchas) · **Perfil:** comercial (corporativo) · **Escopo:** orçar **só o que está descrito**
-**Status (v2):** 🟡 **LEVANTAMENTO DE CUSTO DE MATERIAL** refeito do zero (v1 preliminar estava superestimada e foi descartada).
-**Unidade:** CHAPAS (plano de corte) + **ripado como produto Eucatex** (não como chapa cortada).
+**Status (v3):** 🟢 **CHAPAS CALCULADAS peça-a-peça** (`corte-resolve-consorcio.py`, 257 peças) — **79 chapas · R$ 29.770**.
+Ripado = produto Eucatex (calculado por área/rendimento). **Custo de material Valvic ≈ R$ 56.700 (base Hardt) · R$ 62.600 (Hettich)**, sem fechaduras.
+**Unidade:** CHAPAS (plano de corte real) + ripado como produto Eucatex.
 
-> "Conferir medidas no local" em todas as pranchas. Vários itens sem cota → estimativa erra p/ cima, sinalizada.
-> **v1 descartada** (chapas infladas, ripado como chapa ×1,4, cabines chutadas). Esta v2 usa **preços reais**.
+> **Histórico:** v1 estimativa 106 chapas (alta) · v2 estimativa 49 (baixa) · **v3 CÁLCULO 79** (o número real).
+> Lição cravada na skill: **calcular, nunca estimar.** Fechaduras dos lockers = **NÃO inclusas** (fornecimento à parte).
 
 ## Escopo (14 ambientes descritos)
 Recepção · Sala Reunião · Convivência · Coffe Point · Descompressão · Refeitório · Jurídico (planta "Gestão") ·
@@ -24,37 +25,45 @@ Compliance · **Circulação (63 lockers)** · Comercial · Sala Reunião Colab 
   Compliance ~5 m² ⚠️ · Comercial ~5 m² ⚠️ → **≈ 34 m²** (larguras de Compliance/Comercial a confirmar).
 - **34 m² ÷ 0,75 = ~46 caixas × R$ 166,50 = R$ 7.660** + perfis L (~R$ 600) → **≈ R$ 8.300.**
 
-## ② CHAPAS MDF (plano de corte, disciplinado)
-`chapa 5,0875 m² · útil 15/18 ≈ 4,17 · 6mm ≈ 2,80`
+## ② CHAPAS MDF — **CALCULADO peça-a-peça** (não estimado)
+**Método:** `corte-resolve-consorcio.py` — **257 peças** decompostas (cada L×A), área somada por cor×espessura,
+chapas = área ÷ (5,0875 m² × aproveitamento **0,82** p/ 15-18mm · **0,55** p/ 6mm — fatores da skill). **Conta aberta e auditável.**
+Premissas de construção explícitas: face/portas/gavetões = cor 18mm · tampo/prateleira visível/jardineira/banco = cor 15mm ·
+caixaria interna + lat/contrafrente de gaveta = Branco TX 15mm · fundos = 6mm · banco suspenso (sem encosto/base MDF) ·
+prateleira "esp 5" = painel 15mm + fascia (vão 347 leva reforço) · mesa de cabine = só tampo (pé é tubo metálico, fora).
 
-| Cor | chapas | R$/chapa | R$ | Onde |
-|---|--:|--:|--:|---|
-| **Grafito Chess** | 16 | 500 | 8.000 | jardineiras, prateleiras, armários/credenzas (faces), bancos, **bancos+mesas das 7 cabines** |
-| **Freijó Brasil (liso)** | 6 | 500 | 3.000 | painel+teto Coffe Point + painel liso Convivência (chapa, não ripado) |
-| **Carvalho Americano** | 1 | 500 | 500 | básculas Refeitório (face) |
-| **Azul Austral / Secreto / Petróleo** | 2 / 2 / 3 | 600 | 4.200 | portas dos lockers (63) + portas CALL |
-| **"Similar ao existente"** | 1 | 500 | 500 | armário inferior Refeitório (cor a confirmar) |
-| **Branco TX 15** (caixaria) | 23 | 260 | 5.980 | interiores dos armários + estrutura dos 63 lockers (laterais compartilhadas) |
-| **Branco TX 6** (fundos) | 15 | 190 | 2.850 | fundos dos armários + costas dos lockers |
-| **TOTAL** | **~49 chapas** | | **R$ 25.030** | |
+| Cor · esp | área (m²) | chapas | R$/ch | R$ |
+|---|--:|--:|--:|--:|
+| **Grafito 15** | 68,0 | 17 | 500 | 8.500 |
+| **Grafito 18** | 12,0 | 3 | 600 | 1.800 |
+| **Branco TX 15** | 84,8 | 21 | 260 | 5.460 |
+| **Branco TX 6** | 51,1 | 19 | 190 | 3.610 |
+| **Freijó liso 15** | 31,5 | 8 | 500 | 4.000 |
+| **Azul Petróleo 18** | 8,5 | 3 | 600 | 1.800 |
+| **Azul Austral 18** | 6,8 | 2 | 600 | 1.200 |
+| **Azul Secreto 18** | 4,5 | 2 | 600 | 1.200 |
+| **Carvalho Am. 15+18** | 3,2 | 2 | — | 1.100 |
+| **"Similar" 15+18** | 2,4 | 2 | — | 1.100 |
+| **TOTAL (calculado)** | | **79 chapas** | | **R$ 29.770** |
+
+> ⚠️ **v1 (106) e v2 (49) eram ESTIMATIVAS — as duas erradas** (uma alta, uma baixa). Este **79 é cálculo**.
+> Sensibilidade: o **Branco 6mm** usa o fator conservador da skill (0,55); com nesting apertado cai p/ ~13 chapas (−6). Confirmar no app.
 
 ## ③ Fita, ferragens, LED, insumos, terceirizados
 - **Fita + filetagem ≈ R$ 5.000** (só as chapas; ripado não leva fita; muita ½ esquadria = + mão de obra, − fita).
-- **Ferragens:**
-  - Dobradiças c/ amortecedor ~**176** + corrediças oculta ~**30 pares** → **base Hardt R$ 3.500** · (Hettich ≈ R$ 9.760).
+- **Ferragens (CONTADAS do levantamento):** **87 portas · 23 gavetões** →
+  - Dobradiças c/ amortecedor **176** + corrediças oculta **23 pares** → **base Hardt = 176×8 + 23×70 = R$ 3.018** · (Hettich = 176×35 + 23×120 = **R$ 8.920**).
   - Pistões a gás (básculas Refeitório) ~R$ 120.
-  - **Usinagem** do "puxador chanfrado" (cava) em ~todos os armários + alça preta 70 cm (CALL) ≈ **R$ 2.000** (usinagem, não ferragem comprada).
+  - **Usinagem** do "puxador chanfrado" (cava) nos armários + alça preta 70 cm (CALL) ≈ **R$ 2.000** (usinagem, não ferragem comprada).
   - 🚫 **FECHADURAS DIGITAIS (63× Papaiz M1602) — NÃO INCLUSAS** no escopo Valvic (fornecimento à parte, por conta do cliente). Ref. de mercado ~R$ 196,90/un = ~R$ 12.400 caso queiram incluir depois.
 - **LED** (prateleiras Sala Reunião + Jurídico 3000K · básculas Refeitório 4000K · Colab) ~15–18 m + sensores ≈ **R$ 2.700**.
 - **Insumos** (cola/PUR, parafusos/minifix/cantoneira, limpeza + embalagem — obra grande) ≈ **R$ 4.000**.
 
 ### Custo de MATERIAL Valvic (base Hardt) — SEM fechaduras
-`ripado 8.300 + chapas 25.030 + fita 5.000 + dobr./corr. 3.500 + pistões 120 + usinagem 2.000 + LED 2.700 + insumos 4.000`
-→ **≈ R$ 50.650** (base Hardt) · com Hettich no lugar da variável: **≈ R$ 56.900**.
+`chapas 29.770 (CALCULADO) + ripado 8.300 + fita ~6.000 + dobr./corr. Hardt 3.018 + pistões 120 + usinagem 2.000 + LED ~3.000 + insumos ~4.500`
+→ **≈ R$ 56.700** (base Hardt) · com **Hettich** no lugar da variável: **≈ R$ 62.600**.
 > **Fechaduras digitais FORA** (não inclusas). Se o cliente quiser incluir: +~R$ 12.400.
-
-> ⚠️ **Sobre as ~49 chapas:** é **estimativa por área (erra p/ cima), NÃO um plano de corte fechado** — margem de ±alguns chapas.
-> As **mesas orgânicas** das cabines são **tampo MDF + pé em tubo metálico**: só o tampo conta (~0,5 m²/un ×7 ≈ 3,5 m² ≈ **~1 chapa** no total). Ou seja, com ou sem as mesas o número fica em ~48–49 — dentro da própria incerteza da estimativa. Para **cravar** o nº de chapas, é preciso o levantamento **peça-a-peça** (ou rodar no app).
+> **Chapas e ripado = CALCULADOS.** Fita, LED e insumos ainda a fechar por perímetro/metro linear (próximo passo do rigor).
 
 ### Terceirizados (à parte — não são material Valvic)
 - **Blindex** das 7 cabines (4 giro + 3 correr) ≈ R$ 7.000 · **estofado** dos 7 bancos (tecido acústico) ≈ R$ 2.100 ·
