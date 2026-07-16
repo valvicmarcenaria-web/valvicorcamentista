@@ -2,9 +2,9 @@
 
 **Cliente:** Resolve Consórcio · **Decoradora/parceira:** Jéssica Sollero · **Engenharia:** Corsino Soares
 **Caderno:** 11/06/2026 (54 pranchas) · **Perfil:** comercial (corporativo) · **Escopo:** orçar **só o que está descrito**
-**Status (v3):** 🟢 **CHAPAS CALCULADAS peça-a-peça** (`corte-resolve-consorcio.py`, 257 peças) — **79 chapas · R$ 29.770**.
-Ripado = produto Eucatex (calculado por área/rendimento). **Custo de material Valvic ≈ R$ 56.700 (base Hardt) · R$ 62.600 (Hettich)**, sem fechaduras.
-**Unidade:** CHAPAS (plano de corte real) + ripado como produto Eucatex.
+**Status (v3 — FECHADO):** 🟢 **CALCULADO peça-a-peça + precificado** (`corte-resolve-consorcio.py`, 257 peças).
+**Preço:** **Essencial (Hardt · 5 anos · MC 35%) R$ 147.800** · **Essencial Prime (Hettich · 10 anos · MC 38%) R$ 174.800** · **RT 10% Jéssica** · **sem cartão** · pagamento **40/40/20** · prazo **90–100 dias corridos**.
+Material Valvic (fixedR): R$ 60.994 (Hardt) / R$ 66.896 (Hettich) = 79 chapas R$ 29.770 + ripado R$ 8.436 + comuns R$ 19.770 + ferragem. **Fechaduras FORA.**
 
 > **Histórico:** v1 estimativa 106 chapas (alta) · v2 estimativa 49 (baixa) · **v3 CÁLCULO 79** (o número real).
 > Lição cravada na skill: **calcular, nunca estimar.** Fechaduras dos lockers = **NÃO inclusas** (fornecimento à parte).
@@ -70,6 +70,30 @@ prateleira "esp 5" = painel 15mm + fascia (vão 347 leva reforço) · mesa de ca
   **pés de mesa em tubo metálico** (7) ≈ R$ 1.000 · escorredor metálico Refeitório ≈ R$ 200.
 - ⛔ **CABINE ACÚSTICA (caixa + carpete + espuma acústica) = ESPECIALIDADE — cotar à parte.** Não dá pra estimar por chapa
   com o que o caderno traz; orcei só o **banco + mesa** (marcenaria) de cada cabine. A construção acústica da caixa é item próprio.
+
+## ④ PREÇO FINAL + alocação por ambiente (motor Valvic)
+`inv = fixedR / (1 − 0,10 − 0,96·0,143 − MC)` · **sem cartão** (parc=0 → a=0,10; liqF=0,96) · **RT 10%** (b=0,143) · terceirizados inclusos (estofado bancos + pés metálicos + escorredor cromado) · visitas R$ 500.
+**Essencial R$ 147.800 (MC 35%) · Essencial Prime R$ 174.800 (MC 38%).** RT p/ Jéssica ~R$ 14,2k / ~R$ 16,8k.
+
+| Ambiente | %mat | Essencial | Ess. Prime |
+|---|--:|--:|--:|
+| Circulação (63 lockers) | 16,9% | 25.000 | 29.500 |
+| Jurídico | 11,1% | 16.300 | 19.300 |
+| Coffe Point | 9,7% | 14.400 | 17.000 |
+| Convivência | 8,6% | 12.700 | 15.000 |
+| Comercial | 8,5% | 12.600 | 14.900 |
+| Sala Reunião Colab | 8,4% | 12.400 | 14.700 |
+| CALL | 7,7% | 11.300 | 13.400 |
+| Recepção | 7,1% | 10.500 | 12.400 |
+| Refeitório | 7,0% | 10.400 | 12.300 |
+| Compliance | 4,6% | 6.800 | 8.000 |
+| Sala de Reunião | 3,4% | 5.000 | 5.900 |
+| Sala CEO | 2,7% | 4.000 | 4.800 |
+| Descompressão | 2,4% | 3.600 | 4.300 |
+| Cabines CALL | 1,9% | 2.800 | 3.300 |
+| **TOTAL** | 100% | **147.800** | **174.800** |
+
+> Alocação **proporcional ao material direto** (chapa+ripado) de cada ambiente — não rateio igual. ⚠️ MC 35/38% fica **abaixo** do piso do Rodrigo p/ projeto >R$80k (40%) — decisão do Jonathan, registrada.
 
 ## Flags — o que NÃO está descrito / a confirmar
 1. **Ripado — larguras de Compliance e Comercial** não claras nas elevações → área de ripado pode subir (mais caixas).

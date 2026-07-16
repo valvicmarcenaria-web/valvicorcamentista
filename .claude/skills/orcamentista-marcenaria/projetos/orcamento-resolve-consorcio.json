@@ -43,7 +43,23 @@
     "blindex_7_cabines": 7000, "estofado_7_bancos": 2100, "pes_mesa_tubo_metal_7": 1000, "escorredor_refeitorio": 200,
     "cabine_acustica_caixa_carpete_espuma": "ESPECIALIDADE - cotar a parte (so banco+mesa entraram na marcenaria)"
   },
-  "preco_final": "NAO calculado - aguardando margem/linhas/RT do comercial (Lavinia/Rodrigo)",
+  "preco_final": {
+    "motor": "inv = fixedR/(1 - 0.10 - 0.96*0.143 - MC); sem cartao (parc=0); RT 10%",
+    "essencial_hardt_mc35": 147800, "essencial_prime_hettich_mc38": 174800,
+    "fixedR_hardt": 60994, "fixedR_hettich": 66896,
+    "rt_jessica": {"essencial": 14200, "prime": 16800},
+    "pagamento": "40% entrada + 40% inicio montagem + 20% entrega final (transferencia, sem cartao)",
+    "prazo": "90-100 dias corridos",
+    "terceirizados_inclusos": "estofado 7 bancos + pes metalicos 7 mesas + escorredor cromado",
+    "fora": "blindex, espuma acustica, cabine acustica (caixa), fechaduras digitais",
+    "obs_rodrigo": "MC 35/38% abaixo do piso 40% p/ projeto >R$80k - decisao do Jonathan"
+  },
+  "alocacao_ambiente": {
+    "Circulacao_lockers": [25000,29500], "Juridico": [16300,19300], "Coffe_Point": [14400,17000],
+    "Convivencia": [12700,15000], "Comercial": [12600,14900], "Sala_Reuniao_Colab": [12400,14700],
+    "CALL": [11300,13400], "Recepcao": [10500,12400], "Refeitorio": [10400,12300], "Compliance": [6800,8000],
+    "Sala_de_Reuniao": [5000,5900], "Sala_CEO": [4000,4800], "Descompressao": [3600,4300], "Cabines_CALL": [2800,3300]
+  },
   "flags": [
     "Ripado larguras Compliance/Comercial a confirmar (pode subir caixas)",
     "Cabine acustica (caixa+carpete+espuma) = especialidade fora do material",
