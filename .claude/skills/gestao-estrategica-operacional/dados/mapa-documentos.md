@@ -43,6 +43,11 @@ quando criar/revisar documentos.
 | **Story Instagram — Vaga Marceneiro** | Arte de divulgação de vaga (1080×1920), estética Valvic (navy/gold), profissional experiente com domínio total do ofício, salário fixo + comissão, VA + VT, contato WhatsApp | `vaga-marceneiro-instagram-story.html` · `Valvic_Vaga_Marceneiro_Story.png` |
 | **Índice do painel** | Página-índice dos documentos | `index.html` |
 
+## Ferramentas em nuvem (Google Sheets — fora do repo)
+| Documento | O que é / para quem | Local |
+|---|---|---|
+| **Acompanhamento CNC — Conferência & Aprendizado** | Planilha viva (Google Sheets) para o Paulo registrar cada conferência da programação do Filipe (e futuros programadores): medição, correções por causa, tempo líquido. Dashboard travado com KPIs, causas recorrentes e ponto de atenção automático. Entregue ao usuário como `.xlsx` (converte ao subir no Drive) — não versionado no repo. | Google Drive do usuário, após upload manual |
+
 ## Conhecimento estruturado (skills)
 | Skill | Persona / papel |
 |---|---|
