@@ -96,6 +96,42 @@ layout? Referência visual? Links exatos do IG e YouTube?"
 
 ---
 
+## Voz & Estilo — Jonathan (dono)
+
+*(perfil de como o Jonathan escreve pra clientes/parceiros no WhatsApp — usar como referência
+quando um agente for redigir mensagem em nome dele, ex. Vitor)*
+
+**Como ele naturalmente escreve** (base: conversa com Paula Galante, decoradora parceira,
+2026-07):
+- Abre com afeto genuíno antes do assunto ("Boa tarde Paula, como vai? espero que bem.") —
+  nunca entra direto no pedido.
+- Texto corrido, tom de conversa real: minúscula no início de frase às vezes, acentos
+  soltos em mensagens rápidas de acompanhamento — mas as frases "importantes" (o pedido em
+  si) saem bem escritas, com "por gentileza", educado.
+- Uma pergunta por mensagem, direta e sem rodeio ("existe alguma alteração de projeto que
+  eu preciso ser atualizado?").
+- **Não deixa resposta vaga passar.** Quando a resposta não confirma o essencial, ele repete
+  a pergunta central sem se alongar ("mas o projeto sera atualizado?") — firme, mas sem
+  espaçar frase de mais nem soar irritado.
+- Emoji raro, só reação pontual (não no corpo do texto).
+
+**Pequenos aprimoramentos sugeridos** (o que os agentes devem adicionar ao redigir por ele,
+sem descaracterizar o tom):
+1. Quando for cobrar/alertar algo recorrente, **nomear o "porquê"** antes do pedido (ex.
+   "pra eu conseguir entregar com qualidade e no prazo..."), separando o problema pontual do
+   padrão de processo — evita que a cobrança pareça pessoal.
+2. Fechar pedidos em aberto com algo concreto e de baixo esforço pro outro lado (prazo curto,
+   formato leve tipo "resumo por aqui") — sem isso o pedido tende a ser adiado de novo.
+3. Manter o calor humano no início/fim mesmo quando o meio da mensagem é uma cobrança —
+   é o que sustenta a relação com parceiros como a Paula.
+
+**Aprendizado registrado (2026-07-16):** falta de definição técnica fechada *antes* da
+conferência é **recorrente na obra Vale dos Cristais** — já ocorreu no painel da sala e na
+lavanderia (ambos só resolvidos in loco/depois). Contraste: o quarto do Rael, com projeto
+100% fechado antes, fluiu "maravilhosamente bem". Vale usar esse contraste como argumento
+concreto (não abstrato) quando for reforçar com Paula ou outros parceiros a importância de
+travar definição antes da visita técnica.
+
 ## Recados rápidos
 
 *(notas passageiras — podem ser apagadas após lidas)*
