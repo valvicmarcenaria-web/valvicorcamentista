@@ -28,17 +28,16 @@
     "com_cartao": true,
     "a": 0.18, "liqF": 0.88, "b": 0.143, "rt_liquido": 0.10,
     "denominador": "0.69416 - mc",
-    "mc_unificada": 0.32,
-    "nota_caixa": "32% abaixo do piso do Rodrigo (exceção 37%, ideal 43%+) — decisão do Jonathan"
+    "nota_caixa": "Essencial a 32% fica abaixo do piso do Rodrigo (exceção 37%, ideal 43%+) — decisão do Jonathan"
   },
   "linhas": [
     {"nome": "Essencial", "ferragem": "Telescópica", "garantia_anos": 2, "mc": 0.32, "fixedR": 7523, "calculado": 20106, "cravado": 20100},
-    {"nome": "Essencial Prime", "ferragem": "Hardt (oculta alemã)", "garantia_anos": 5, "mc": 0.32, "fixedR": 7769, "calculado": 20764, "cravado": 20800}
+    {"nome": "Essencial Prime", "ferragem": "Hardt (oculta alemã)", "garantia_anos": 5, "mc": 0.37, "fixedR": 7769, "calculado": 23967, "cravado": 24000}
   ],
   "alocacao_ambiente": {
-    "Despensa": {"pct": 0.644, "essencial": 12900, "prime": 13400},
-    "Lavanderia": {"pct": 0.291, "essencial": 5900, "prime": 6100},
-    "Armário-tanque": {"pct": 0.065, "essencial": 1300, "prime": 1300}
+    "Despensa": {"pct": 0.644, "essencial": 12900, "prime": 15400},
+    "Lavanderia": {"pct": 0.291, "essencial": 5900, "prime": 7000},
+    "Armário-tanque": {"pct": 0.065, "essencial": 1300, "prime": 1600}
   },
   "pagamento": [
     "30% entrada + saldo em até 10x no cartão",

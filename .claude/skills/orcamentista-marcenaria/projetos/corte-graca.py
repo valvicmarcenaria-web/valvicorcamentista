@@ -140,7 +140,7 @@ for linha, ferr in FERR.items():
 a_enc = 0.18; liqF = 0.88; b = (0.8+1+2.5+10)/100
 def preco(fixedR, mc): return fixedR/(1 - a_enc - liqF*b - mc)
 LINHAS = {'Essencial (Telescópica/2a)': ('Telescopica', 0.32),
-          'Essencial Prime (Hardt/5a)': ('Hardt', 0.32)}
+          'Essencial Prime (Hardt/5a)': ('Hardt', 0.37)}   # 2a linha +5% de MC
 print("\n=== PRECO FINAL (motor COM cartao, RT10% liq — arq. Lais Teles) ===")
 print(f"denominador = 1 - {a_enc} - {liqF}*{b:.3f} - mc = {1-a_enc-liqF*b:.5f} - mc")
 precos = {}

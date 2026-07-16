@@ -33,10 +33,10 @@ Ferragens por linha: **Telescópica** 7 pares × R$40 + 18 dobradiças × R$6 = 
 | Linha | Ferragem / garantia | MC | Cálculo | **Cravado** |
 |---|---|---|---|---|
 | **Essencial** | Telescópica · **2 anos** | 32% | R$ 20.106 | **R$ 20.100** |
-| **Essencial Prime** | Hardt (oculta alemã) · **5 anos** | 32% | R$ 20.764 | **R$ 20.800** |
+| **Essencial Prime** | Hardt (oculta alemã) · **5 anos** | 37% | R$ 23.967 | **R$ 24.000** |
 
-Margem unificada 32% → as linhas diferem só pela ferragem (gap ~R$ 700). **⚠️ 32% está abaixo do piso de caixa do Rodrigo** (exceção 37%, ideal 43%+) — decisão do Jonathan.
-**Alocação por ambiente** (proporcional ao material direto): Despensa 64,4% (12,9k/13,4k) · Lavanderia 29,1% (5,9k/6,1k) · Tanque 6,5% (1,3k/1,3k).
+2ª linha com **+5% de MC** (32% → 37%) a pedido do Jonathan → gap volta a ~R$ 3.900 (Prime como upgrade real). **⚠️ Essencial a 32% fica abaixo do piso de caixa do Rodrigo** (exceção 37%, ideal 43%+) — decisão do Jonathan.
+**Alocação por ambiente** (proporcional ao material direto): Despensa 64,4% (12,9k/15,4k) · Lavanderia 29,1% (5,9k/7,0k) · Tanque 6,5% (1,3k/1,6k).
 
 ## Decisões & premissas (sinalizadas na proposta)
 - **Diferenciação por modelo/garantia, não por marca:** Essencial = telescópica/2a; Essencial Prime = "oculta alemã"/5a.

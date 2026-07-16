@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Monta a proposta Graca (3 paginas, formato enxuto). Imagens do cliente embutidas em base64.
+# Monta a proposta Graca (3 paginas, layout leve/editorial). Imagens do cliente em base64.
 import base64, pathlib
 P = pathlib.Path('/home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos')
 def b64(name):
@@ -11,85 +11,88 @@ IMG_TAN  = b64('img-graca-tanque.png')
 HTML = f"""<!DOCTYPE html>
 <html lang="pt-BR"><head><meta charset="utf-8">
 <style>
-:root{{--gold:#B8901E;--gold-soft:#D9B25A;--gold-deep:#8f6410;--ink:#191512;--ink-soft:#4a463f;
---cream:#FBF5E9;--cream-2:#F3E8CE;--line:#E4D8B8;--line-soft:#EDE4D2;--paper:#fff;--petrol:#294351;--petrol-d:#1e323d;}}
+:root{{--gold:#B8901E;--gold-soft:#D9B25A;--gold-deep:#9A6E12;--ink:#211a12;--ink-soft:#5c5344;--mut:#8b8172;
+--cream:#FCF8F0;--cream-2:#F5EEDE;--line:#EAE0CB;--line-soft:#F0E9D9;--paper:#fff;--petrol:#2C4A5A;--petrol-soft:#5C7686;--petrol-tint:#F5F8F8;--petrol-line:#CBD7DB;}}
 @page{{size:A4;margin:0;}}
 *{{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
-body{{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;color:var(--ink);font-size:10.5pt;line-height:1.62;}}
+body{{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;color:var(--ink);font-size:10.5pt;line-height:1.65;}}
 .serif{{font-family:'Cormorant Garamond','Georgia',serif;}}
-.page{{position:relative;width:210mm;min-height:297mm;padding:16mm 18mm;page-break-after:always;overflow:hidden;background:var(--paper);}}
+.page{{position:relative;width:210mm;height:297mm;padding:14mm 18mm 13mm;page-break-after:always;overflow:hidden;background:var(--paper);}}
 .page:last-child{{page-break-after:auto;}}
 h1,h2,h3{{margin:0;font-weight:600;}}
 p{{margin:8px 0;}}
-.eyebrow{{letter-spacing:.32em;text-transform:uppercase;font-size:8pt;font-weight:700;color:var(--gold-deep);}}
-.rule{{height:2px;width:54px;background:var(--gold);border:0;margin:12px 0;}}
-.section-h{{font-family:'Cormorant Garamond','Georgia',serif;font-size:24pt;font-weight:700;color:var(--ink);line-height:1.1;margin-top:4px;}}
-.lead{{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;font-style:italic;color:var(--ink-soft);line-height:1.5;}}
-.pfoot{{position:absolute;left:18mm;right:18mm;bottom:11mm;display:flex;justify-content:space-between;font-size:7.6pt;color:#9a9080;letter-spacing:.12em;border-top:1px solid var(--line);padding-top:3mm;}}
+.eyebrow{{letter-spacing:.34em;text-transform:uppercase;font-size:8pt;font-weight:700;color:var(--gold-deep);}}
+.rule{{height:1.5px;width:46px;background:var(--gold-soft);border:0;margin:10px 0 11px;}}
+.section-h{{font-family:'Cormorant Garamond','Georgia',serif;font-size:22.5pt;font-weight:700;color:var(--ink);line-height:1.1;letter-spacing:.01em;}}
+.lead{{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;font-style:italic;color:var(--ink-soft);line-height:1.5;max-width:158mm;}}
+.pfoot{{position:absolute;left:19mm;right:19mm;bottom:12mm;display:flex;justify-content:space-between;font-size:7.4pt;color:var(--mut);letter-spacing:.13em;border-top:1px solid var(--line-soft);padding-top:3mm;}}
 .brandline{{font-family:'Cormorant Garamond','Georgia',serif;font-weight:700;letter-spacing:.12em;}}.brandline .dot{{color:var(--gold);}}
 
 /* ---------- CAPA ---------- */
 .cover{{padding:0;background:var(--cream);}}
-.cover .frame{{position:absolute;inset:9mm;border:1px solid var(--gold-soft);pointer-events:none;}}
-.cover .inner{{position:relative;padding:19mm 18mm 15mm;height:297mm;display:flex;flex-direction:column;}}
-.brand{{font-family:'Cormorant Garamond','Georgia',serif;font-size:29pt;font-weight:700;letter-spacing:.18em;color:var(--ink);}}
+.cover .frame{{position:absolute;inset:10mm;border:1px solid var(--gold-soft);pointer-events:none;}}
+.cover .inner{{position:relative;padding:20mm 19mm 16mm;height:297mm;display:flex;flex-direction:column;}}
+.brand{{font-family:'Cormorant Garamond','Georgia',serif;font-size:28pt;font-weight:700;letter-spacing:.2em;color:var(--ink);}}
 .brand .dot{{color:var(--gold);}}
-.brand-sub{{letter-spacing:.5em;font-size:8pt;font-weight:700;color:var(--gold-deep);margin-top:2px;}}
-.heroimg{{width:100%;height:120mm;margin:8mm 0 7mm;border-radius:3px;background:var(--petrol) center/cover no-repeat;box-shadow:0 14px 34px rgba(30,50,61,.30);}}
-.cover .cap{{letter-spacing:.2em;text-transform:uppercase;font-size:7.4pt;color:var(--gold-deep);font-weight:700;margin-bottom:8mm;}}
-.cover .for{{letter-spacing:.34em;text-transform:uppercase;font-size:9pt;font-weight:700;color:var(--gold-deep);}}
-.cover .client{{font-family:'Cormorant Garamond','Georgia',serif;font-size:36pt;font-weight:700;line-height:1.05;margin:3px 0 3px;color:var(--ink);}}
-.cover .proj{{font-family:'Cormorant Garamond','Georgia',serif;font-style:italic;font-size:15pt;color:var(--ink-soft);}}
-.cover .foot{{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;font-size:8.5pt;color:var(--ink-soft);letter-spacing:.06em;}}
-.sparkles{{font-size:12pt;color:var(--gold);letter-spacing:.4em;margin-bottom:3mm;}}
+.brand-sub{{letter-spacing:.52em;font-size:7.6pt;font-weight:700;color:var(--gold-deep);margin-top:3px;}}
+.heroimg{{width:100%;height:119mm;margin:9mm 0 8mm;border-radius:2px;background:var(--petrol-tint) center/cover no-repeat;border:1px solid var(--line);box-shadow:0 10px 26px rgba(44,74,90,.16);}}
+.cover .cap{{letter-spacing:.22em;text-transform:uppercase;font-size:7.2pt;color:var(--gold-deep);font-weight:700;margin-bottom:9mm;}}
+.cover .for{{letter-spacing:.36em;text-transform:uppercase;font-size:8.6pt;font-weight:700;color:var(--gold-deep);}}
+.cover .client{{font-family:'Cormorant Garamond','Georgia',serif;font-size:37pt;font-weight:700;line-height:1.02;margin:4px 0 4px;color:var(--ink);}}
+.cover .proj{{font-family:'Cormorant Garamond','Georgia',serif;font-style:italic;font-size:14.5pt;color:var(--ink-soft);}}
+.cover .foot{{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;font-size:8.4pt;color:var(--ink-soft);letter-spacing:.05em;}}
+.sparkles{{font-size:11pt;color:var(--gold-soft);letter-spacing:.45em;margin-bottom:3mm;}}
 
 /* ---------- ESCOPO ---------- */
-.amb{{display:flex;gap:6mm;align-items:stretch;margin-top:6mm;}}
-.amb .im{{width:52mm;flex:none;border:1px solid var(--line);border-radius:4px;background:var(--petrol) center/cover no-repeat;}}
-.amb .tx{{flex:1;}}
-.amb .nm{{font-family:'Cormorant Garamond','Georgia',serif;font-size:16.5pt;font-weight:700;color:var(--ink);line-height:1.05;}}
-.amb .sub{{font-size:8.2pt;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;margin-top:1mm;}}
-.amb ul{{margin:2.5mm 0 0;padding-left:4.6mm;font-size:9.2pt;color:var(--ink-soft);}}
-.amb li{{margin:1.5mm 0;}}
-.note{{margin-top:7mm;background:var(--cream);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:3px;padding:4.5mm 5.5mm;font-size:8.7pt;color:var(--ink-soft);}}
+.amb{{display:flex;gap:7mm;align-items:stretch;margin-top:4mm;}}
+.amb .im{{width:53mm;flex:none;border:1px solid var(--line);border-radius:3px;background:var(--petrol-tint) center/cover no-repeat;box-shadow:0 4px 12px rgba(44,74,90,.09);}}
+.amb .tx{{flex:1;padding-top:1mm;}}
+.amb .nm{{font-family:'Cormorant Garamond','Georgia',serif;font-size:17pt;font-weight:700;color:var(--ink);line-height:1.02;}}
+.amb .sub{{font-size:8pt;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;margin-top:1.5mm;}}
+.amb ul{{margin:3mm 0 0;padding-left:4.6mm;font-size:9.2pt;color:var(--ink-soft);}}
+.amb li{{margin:1.8mm 0;}}
+.note{{margin-top:3.5mm;padding:0 0 0 5mm;border-left:2px solid var(--gold-soft);font-size:8.6pt;color:var(--ink-soft);line-height:1.5;}}
 .note b{{color:var(--ink);}}
-.note .h{{font-size:7.6pt;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;margin-bottom:2mm;}}
+.note .h{{font-size:7.4pt;letter-spacing:.17em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;margin-bottom:2.2mm;}}
 
 /* ---------- INVESTIMENTO ---------- */
-.lines{{display:flex;gap:6mm;margin-top:4mm;}}
-.lineC{{flex:1;border:1px solid var(--line);border-radius:5px;padding:5mm;background:var(--paper);}}
-.lineC.prem{{background:var(--petrol);color:var(--cream);border-color:var(--petrol);}}
-.lineC .tag{{letter-spacing:.2em;text-transform:uppercase;font-size:7.6pt;font-weight:700;color:var(--gold-deep);}}
-.lineC.prem .tag{{color:var(--gold-soft);}}
-.lineC .nm{{font-family:'Cormorant Garamond','Georgia',serif;font-size:20pt;font-weight:700;margin:2px 0 1mm;}}
-.lineC.prem .nm{{color:#fff;}}
-.lineC .warr{{font-family:'Cormorant Garamond','Georgia',serif;font-size:14.5pt;font-weight:700;color:var(--gold-deep);}}
-.lineC.prem .warr{{color:var(--gold-soft);}}
-.lineC .price{{font-family:'Cormorant Garamond','Georgia',serif;font-size:24pt;font-weight:700;margin-top:2mm;line-height:1;}}
-.lineC.prem .price{{color:#fff;}}
-.lineC ul{{margin:3mm 0 0;padding-left:5mm;font-size:8.9pt;color:var(--ink-soft);}}
-.lineC.prem ul{{color:#e9e1cd;}}
-.lineC li{{margin:1.6mm 0;}}
+.lines{{display:flex;gap:7mm;margin-top:5mm;align-items:stretch;}}
+.lineC{{flex:1;border:1px solid var(--line);border-radius:7px;padding:4.5mm 6mm;background:var(--paper);position:relative;}}
+.lineC::before{{content:"";position:absolute;left:0;right:0;top:0;height:2.5px;background:var(--gold-soft);border-radius:7px 7px 0 0;}}
+.lineC.prem{{background:var(--petrol-tint);border-color:var(--petrol-line);}}
+.lineC.prem::before{{background:var(--petrol);}}
+.recom{{position:absolute;top:-2.8mm;right:5.5mm;background:var(--gold);color:#fff;font-size:6.6pt;letter-spacing:.15em;text-transform:uppercase;font-weight:700;padding:1.4mm 3mm;border-radius:20px;box-shadow:0 2px 6px rgba(184,144,30,.28);}}
+.lineC .tag{{letter-spacing:.2em;text-transform:uppercase;font-size:7.4pt;font-weight:700;color:var(--gold-deep);}}
+.lineC.prem .tag{{color:var(--petrol);}}
+.lineC .nm{{font-family:'Cormorant Garamond','Georgia',serif;font-size:19pt;font-weight:700;margin:3px 0 1mm;color:var(--ink);}}
+.lineC .warr{{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;font-weight:600;color:var(--gold-deep);}}
+.lineC.prem .warr{{color:var(--petrol);}}
+.lineC .price{{font-family:'Cormorant Garamond','Georgia',serif;font-size:22pt;font-weight:700;margin-top:2.5mm;line-height:1;color:var(--ink);}}
+.lineC .plab{{font-size:7.4pt;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-top:1.5mm;}}
+.lineC ul{{margin:2.8mm 0 0;padding-left:5mm;font-size:8.9pt;color:var(--ink-soft);}}
+.lineC li{{margin:1.4mm 0;}}
 
-table{{width:100%;border-collapse:collapse;margin:4mm 0 2mm;font-size:9.4pt;}}
-th,td{{padding:1.6mm 4mm;text-align:left;border-bottom:1px solid var(--line-soft);}}
-thead th{{background:var(--ink);color:var(--cream);font-size:7.6pt;letter-spacing:.12em;text-transform:uppercase;font-weight:700;border:0;}}
+table{{width:100%;border-collapse:collapse;margin:4.5mm 0 2mm;font-size:9.6pt;}}
+thead th{{background:transparent;color:var(--ink-soft);font-size:7.4pt;letter-spacing:.16em;text-transform:uppercase;font-weight:700;border:0;border-bottom:1.5px solid var(--ink);padding:0 4mm 2.2mm;}}
+td{{padding:1.5mm 4mm;text-align:left;border-bottom:1px solid var(--line-soft);}}
 td.r,th.r{{text-align:right;font-variant-numeric:tabular-nums;}}
-.amb-name{{font-weight:600;}}
-.grand td{{background:var(--gold);color:#1a1a1a;font-weight:700;font-size:10.5pt;border:0;}}
-.grand .serif{{font-size:12.5pt;}}
-.prem-col{{background:var(--cream-2);}}
+.amb-name{{font-weight:600;color:var(--ink);}}
+.prem-col{{background:rgba(44,74,90,.045);}}
+.grand td{{background:transparent;border:0;border-top:1.5px solid var(--gold);color:var(--ink);font-weight:700;font-size:11pt;padding-top:2.6mm;}}
+.grand .serif{{font-size:13.5pt;}}
+.grand .prem-col{{background:rgba(44,74,90,.045);}}
+.tcap{{font-size:7.8pt;color:var(--mut);margin-top:2.5mm;font-style:italic;}}
 
-.terms{{display:flex;gap:5mm;margin-top:5mm;flex-wrap:wrap;}}
-.term{{flex:1;min-width:34mm;background:var(--cream);border:1px solid var(--line);border-radius:3px;padding:4mm;text-align:center;}}
-.term .t{{font-size:7.2pt;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;}}
-.term .b{{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;font-weight:700;margin-top:3px;line-height:1.1;}}
-.pay{{margin:3mm 0 0;padding-left:5mm;}}.pay li{{margin:1.7mm 0;font-size:9.2pt;color:var(--ink-soft);}}
+.split{{display:flex;gap:9mm;margin-top:2.5mm;}}.split>div{{flex:1;}}
+h3.blk{{font-family:'Cormorant Garamond','Georgia',serif;font-size:14pt;color:var(--ink);margin-bottom:1mm;}}
+.hrule{{height:1px;background:var(--line);margin:2.5mm 0 3mm;}}
+.pay{{margin:2mm 0 0;padding-left:4.6mm;}}.pay li{{margin:1.6mm 0;font-size:9pt;line-height:1.4;color:var(--ink-soft);}}
 .pay b{{color:var(--ink);}}
-.close{{background:var(--ink);color:var(--cream);border-radius:5px;padding:5.5mm 8mm;margin-top:4mm;}}
-.close .serif{{color:#fff;font-size:15pt;}}.close p{{color:#e9e1cd;margin:3px 0 0;font-size:9.2pt;}}
-.split{{display:flex;gap:8mm;}}.split>div{{flex:1;}}
-h3.blk{{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;color:var(--ink);margin-top:5mm;}}
+.terms{{display:flex;gap:5mm;margin-top:3mm;}}
+.term{{flex:1;border:1px solid var(--line);border-radius:4px;padding:3.2mm 3mm;text-align:center;background:var(--paper);}}
+.term .t{{font-size:7pt;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;}}
+.term .b{{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;font-weight:700;margin-top:3px;line-height:1.12;color:var(--ink);}}
+.signoff{{position:absolute;left:18mm;right:18mm;bottom:22mm;text-align:center;font-size:14pt;font-style:italic;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:4.5mm;}}
 </style></head>
 <body>
 
@@ -157,7 +160,7 @@ h3.blk{{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;color:
 
   <div class="note">
     <div class="h">Premissas &amp; itens não inclusos</div>
-    Projeto <b>integralmente em MDF Azul Petróleo Guararapes</b> — inclusive caixaria interna e fundos (sem branco). O armário superior da despensa é <b>revestido sobre a estrutura existente</b> (não inclui refazer a caixa). <b>Não inclusos:</b> tampos de pedra e cuba/inox (bancada da despensa e armário-tanque, por conta do marmorista), máquina de lavar (eletrodoméstico do cliente) e pontos hidráulicos/elétricos de alimentação. Medidas a conferir no local, conforme nota do projeto.
+    Projeto <b>integralmente em MDF Azul Petróleo Guararapes</b> — inclusive caixaria e fundos. O armário superior da despensa é <b>revestido sobre a estrutura existente</b>. <b>Não inclusos:</b> tampos de pedra e cuba/inox (marmorista), máquina de lavar e pontos hidráulicos/elétricos de alimentação.
   </div>
   <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Proposta Graça · Projeto Lais Teles</span></div>
 </div>
@@ -167,7 +170,7 @@ h3.blk{{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;color:
   <div class="eyebrow">Investimento</div>
   <div class="section-h serif">Duas linhas, a mesma marcenaria</div>
   <hr class="rule">
-  <p class="lead">A construção, o acabamento e o desenho são idênticos. O que muda é o <b>sistema de ferragens</b> — e, com ele, a garantia.</p>
+  <p class="lead">O que muda entre as linhas é o <b>sistema de ferragens</b> — e, com ele, a garantia.</p>
 
   <div class="lines">
     <div class="lineC">
@@ -175,6 +178,7 @@ h3.blk{{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;color:
       <div class="nm serif">Essencial</div>
       <div class="warr">Garantia de 2 anos</div>
       <div class="price serif">R$ 20.100</div>
+      <div class="plab">Investimento total</div>
       <ul>
         <li>Corrediças telescópicas com amortecimento.</li>
         <li>Dobradiças com amortecimento (fechamento suave).</li>
@@ -182,14 +186,16 @@ h3.blk{{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;color:
       </ul>
     </div>
     <div class="lineC prem">
+      <div class="recom">Recomendada</div>
       <div class="tag">Linha Essencial Prime</div>
       <div class="nm serif">Essencial Prime</div>
       <div class="warr">Garantia de 5 anos</div>
-      <div class="price serif">R$ 20.800</div>
+      <div class="price serif">R$ 24.000</div>
+      <div class="plab">Investimento total</div>
       <ul>
-        <li>Corrediças <b>ocultas</b> de engenharia alemã, com amortecimento e fechamento suave.</li>
+        <li>Corrediças <b>ocultas</b> de engenharia alemã, com fechamento suave.</li>
         <li>Dobradiças alemãs de alta durabilidade.</li>
-        <li>Maior suavidade de uso e vida útil — a mesma peça, elevada.</li>
+        <li>Mais suavidade de uso e vida útil — a mesma peça, elevada.</li>
       </ul>
     </div>
   </div>
@@ -197,37 +203,35 @@ h3.blk{{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;color:
   <table>
     <thead><tr><th>Ambiente</th><th class="r">Essencial</th><th class="r prem-col">Essencial Prime</th></tr></thead>
     <tbody>
-      <tr><td class="amb-name">Despensa</td><td class="r">R$ 12.900</td><td class="r prem-col">R$ 13.400</td></tr>
-      <tr><td class="amb-name">Lavanderia</td><td class="r">R$ 5.900</td><td class="r prem-col">R$ 6.100</td></tr>
-      <tr><td class="amb-name">Armário-tanque</td><td class="r">R$ 1.300</td><td class="r prem-col">R$ 1.300</td></tr>
+      <tr><td class="amb-name">Despensa</td><td class="r">R$ 12.900</td><td class="r prem-col">R$ 15.400</td></tr>
+      <tr><td class="amb-name">Lavanderia</td><td class="r">R$ 5.900</td><td class="r prem-col">R$ 7.000</td></tr>
+      <tr><td class="amb-name">Armário-tanque</td><td class="r">R$ 1.300</td><td class="r prem-col">R$ 1.600</td></tr>
     </tbody>
-    <tfoot><tr class="grand"><td class="serif">Investimento total</td><td class="r serif">R$ 20.100</td><td class="r serif">R$ 20.800</td></tr></tfoot>
   </table>
+  <div class="tcap">Detalhamento por ambiente · o total de cada linha é o investimento indicado acima.</div>
 
   <div class="split">
     <div>
       <h3 class="blk">Condições de pagamento</h3>
+      <div class="hrule"></div>
       <ul class="pay">
         <li><b>30%</b> de entrada + saldo em até <b>10× no cartão</b></li>
-        <li><b>50%</b> de entrada + saldo em até 8× — <b>3% de desconto</b></li>
-        <li><b>70%</b> de entrada + saldo em até 6× — <b>5% de desconto</b></li>
-        <li><b>70%</b> de entrada + saldo por transferência — <b>7% de desconto</b></li>
+        <li><b>50%</b> de entrada + saldo em 8× — <b>3% de desconto</b></li>
+        <li><b>70%</b> de entrada + saldo em 6× — <b>5% de desconto</b></li>
+        <li><b>70%</b> de entrada + transferência — <b>7% de desconto</b></li>
       </ul>
     </div>
     <div>
       <h3 class="blk">Prazo &amp; garantia</h3>
-      <div class="terms" style="margin-top:2mm;">
+      <div class="hrule"></div>
+      <div class="terms">
         <div class="term"><div class="t">Entrega</div><div class="b">60 a 90<br>dias corridos</div></div>
         <div class="term"><div class="t">Garantia</div><div class="b">2 a 5<br>anos</div></div>
       </div>
-      <p style="font-size:8.4pt;color:var(--ink-soft);margin-top:3mm;">Prazo a partir da aprovação do executivo e definição de acabamentos. Instalação e assistência por equipe própria Valvic.</p>
+      <p style="font-size:8.4pt;color:var(--ink-soft);margin-top:3.5mm;">A partir da aprovação do executivo. Instalação e assistência por equipe própria Valvic.</p>
     </div>
   </div>
 
-  <div class="close">
-    <div class="serif">Uma marcenaria que começa no desenho e termina no encaixe.</div>
-    <p>Seguimos com o projeto executivo assim que você escolher a linha. Qualquer ajuste de escopo é revisto com você antes de produzir — nada entra em corte sem a sua aprovação.</p>
-  </div>
   <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Proposta Graça · Projeto Lais Teles · 16/07/2026</span></div>
 </div>
 
