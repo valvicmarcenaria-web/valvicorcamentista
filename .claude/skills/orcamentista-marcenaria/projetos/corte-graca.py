@@ -1,18 +1,19 @@
 # -*- coding: utf-8 -*-
 # LEVANTAMENTO PECA-A-PECA — GRACA / arq. Lais Teles. Conta aberta (cotas do caderno, em cm).
 # Regra da casa: cada peca L x A -> area; soma por (material, espessura); chapas = area / (5,0875 * aprov).
-# Construcao Valvic: face/portas/gavetoes/tampo visivel/prat.visivel = COR (Azul Petroleo Guararapes);
-#   caixaria interna (laterais internas, base, divisorias, prat.internas, lat/contrafrente de gaveta) = Branco TX 15mm;
-#   fundos e fundos de gaveta = 6mm.
+# Construcao Valvic: PROJETO TODO EM AZUL PETROLEO GUARARAPES — nao ha nada em Branco TX.
+#   face/portas/gavetoes/tampo/prat = cor 15/18mm; caixaria interna e fundos tambem em Azul (6/15mm).
+#   Como tudo e a mesma cor, o nesting e UNIFICADO no projeto inteiro (pilhas de 15 e de 6mm somadas) -> menos chapa.
 # CALCULAR, nunca ESTIMAR: onde falta cota, assumo e SINALIZO (flags do caderno).
 CHAPA = 2.75 * 1.85  # 5.0875 m2
 APROV = {15: 0.82, 18: 0.82, 6: 0.55}
-PRC = {('cor', 15): 500, ('cor', 18): 600, ('cor', 6): 300, ('branco', 15): 260, ('branco', 6): 190}
-COR = {'Azul': 'cor', 'Branco': 'branco'}   # projeto todo Azul Petroleo Guararapes; caixaria interna Branco TX (padrao)
+PRC = {('cor', 15): 500, ('cor', 18): 600, ('cor', 6): 300}
+COR = {'Azul': 'cor'}   # projeto 100% Azul Petroleo Guararapes
 
 tal = {}; log = []; CUR = [None]; amb_area = {}
 def amb(name): CUR[0] = name; amb_area.setdefault(name, {})
 def add(mat, esp, w, h, n=1, lab=''):
+    if mat == 'Branco': mat = 'Azul'   # projeto todo Azul: caixaria interna e fundos tambem em Azul Petroleo
     a = (w/100.0) * (h/100.0) * n
     tal[(mat, esp)] = tal.get((mat, esp), 0) + a
     d = amb_area[CUR[0]]; d[(mat, esp)] = d.get((mat, esp), 0) + a
@@ -48,16 +49,15 @@ add('Azul', 6, 30, 196, 1, 'B1 nicho alto fundo aparente')
 add('Branco', 6, 163, 128, 1, 'B1 fundo reface')
 
 # ---- B2: BANCADA INFERIOR (NOVA, em "L"). 154 L x 73 A x 61 P (+ retorno ~50)
-# Tampo (Azul 15 -- ver FLAG: se pedra, vira terceiro) + base (Branco 15)
-add('Azul', 15, 154, 61, 1, 'B2 tampo (MDF; flag pedra)')
+# Tampo = PEDRA (marmorista, NAO conta MDF). Base em Azul 15.
 add('Branco', 15, 154, 61, 1, 'B2 base')
 # 2 laterais externas (Azul 15) + 3 divisorias internas (Branco 15) entre modulos
 add('Azul', 15, 61, 73, 2, 'B2 laterais ext')
 add('Branco', 15, 61, 73, 3, 'B2 divisorias')
 # fundo (Branco 6)
 add('Branco', 6, 154, 73, 1, 'B2 fundo')
-# retorno em L (~50 larg): tampo Azul15 + base Branco15 + 1 lateral Azul15 + fundo Branco6
-add('Azul', 15, 50, 61, 1, 'B2 retorno tampo'); add('Branco', 15, 50, 61, 1, 'B2 retorno base')
+# retorno em L (~50 larg): tampo = pedra (marmorista, fora) ; base + 1 lateral + fundo em Azul
+add('Branco', 15, 50, 61, 1, 'B2 retorno base')
 add('Azul', 15, 61, 73, 1, 'B2 retorno lateral'); add('Branco', 6, 50, 73, 1, 'B2 retorno fundo')
 # 2 gavetoes 71 x 34
 gaveta('B2 gavetao1', 71, 34, 61); gaveta('B2 gavetao2', 71, 34, 61)
@@ -139,8 +139,8 @@ for linha, ferr in FERR.items():
 #   liqF=1-(nf4+parc8)/100=0.88 ; b=(prog0.8+coord1+marc2.5+rt10)/100=0.143 ; denom = 1 - a - liqF*b - mc = 0.69416 - mc
 a_enc = 0.18; liqF = 0.88; b = (0.8+1+2.5+10)/100
 def preco(fixedR, mc): return fixedR/(1 - a_enc - liqF*b - mc)
-LINHAS = {'Essencial (Telescópica/2a)': ('Telescopica', 0.35),
-          'Essencial Prime (Hardt/5a)': ('Hardt', 0.38)}
+LINHAS = {'Essencial (Telescópica/2a)': ('Telescopica', 0.32),
+          'Essencial Prime (Hardt/5a)': ('Hardt', 0.32)}
 print("\n=== PRECO FINAL (motor COM cartao, RT10% liq — arq. Lais Teles) ===")
 print(f"denominador = 1 - {a_enc} - {liqF}*{b:.3f} - mc = {1-a_enc-liqF*b:.5f} - mc")
 precos = {}

@@ -4,16 +4,17 @@
   "arquiteta": "Lais Teles",
   "autor_prancha": "Marcus Juan",
   "data": "2026-07-16",
+  "revisao": "2 — projeto 100% Azul, tampo pedra, MC 32% + nesting unificado",
   "validade_dias": 15,
   "caderno_paginas": 25,
-  "acabamento_externo": "MDF Azul Petróleo Guararapes",
-  "caixaria_interna": "MDF Branco TX (padrão)",
-  "metodo": "peça-a-peça (corte-graca.py) — calcular, não estimar",
+  "acabamento": "MDF Azul Petróleo Guararapes — projeto 100% Azul (aparente + caixaria + fundos), sem Branco TX",
+  "metodo": "peça-a-peça (corte-graca.py) — calcular, não estimar; nesting unificado (uma cor)",
   "material": {
-    "chapas_total": 11,
-    "chapas_custo": 3750,
-    "detalhe_chapas": {"Azul_18": 1, "Azul_15": 3, "Azul_6": 1, "Branco_15": 3, "Branco_6": 3},
-    "insumos": {"fita": 825, "cola_parafuso_minifix_cavilha": 660, "usinagem": 450, "led_3000k": 300, "acessorios_pistoes_cestos": 370},
+    "chapas_total": 9,
+    "chapas_custo": 4000,
+    "detalhe_chapas": {"Azul_15": 5, "Azul_18": 1, "Azul_6": 3},
+    "nota_otimizacao": "era 11 chapas (caixaria branca + tampo MDF); unificar cor -1 chapa, tampo em pedra -1 chapa -> 9",
+    "insumos": {"fita": 675, "cola_parafuso_minifix_cavilha": 540, "usinagem": 450, "led_3000k": 300, "acessorios_pistoes_cestos": 370},
     "visitas": 500,
     "logistica": 300
   },
@@ -26,16 +27,18 @@
   "motor": {
     "com_cartao": true,
     "a": 0.18, "liqF": 0.88, "b": 0.143, "rt_liquido": 0.10,
-    "denominador": "0.69416 - mc"
+    "denominador": "0.69416 - mc",
+    "mc_unificada": 0.32,
+    "nota_caixa": "32% abaixo do piso do Rodrigo (exceção 37%, ideal 43%+) — decisão do Jonathan"
   },
   "linhas": [
-    {"nome": "Essencial", "ferragem": "Telescópica", "garantia_anos": 2, "mc": 0.35, "fixedR": 7543, "calculado": 21917, "cravado": 21900},
-    {"nome": "Essencial Prime", "ferragem": "Hardt (oculta alemã)", "garantia_anos": 5, "mc": 0.38, "fixedR": 7789, "calculado": 24793, "cravado": 24800}
+    {"nome": "Essencial", "ferragem": "Telescópica", "garantia_anos": 2, "mc": 0.32, "fixedR": 7523, "calculado": 20106, "cravado": 20100},
+    {"nome": "Essencial Prime", "ferragem": "Hardt (oculta alemã)", "garantia_anos": 5, "mc": 0.32, "fixedR": 7769, "calculado": 20764, "cravado": 20800}
   ],
   "alocacao_ambiente": {
-    "Despensa": {"pct": 0.676, "essencial": 14800, "prime": 16800},
-    "Lavanderia": {"pct": 0.264, "essencial": 5800, "prime": 6500},
-    "Armário-tanque": {"pct": 0.060, "essencial": 1300, "prime": 1500}
+    "Despensa": {"pct": 0.644, "essencial": 12900, "prime": 13400},
+    "Lavanderia": {"pct": 0.291, "essencial": 5900, "prime": 6100},
+    "Armário-tanque": {"pct": 0.065, "essencial": 1300, "prime": 1300}
   },
   "pagamento": [
     "30% entrada + saldo em até 10x no cartão",
@@ -44,12 +47,11 @@
     "70% entrada + saldo por transferência — 7% desconto"
   ],
   "prazo": "60 a 90 dias corridos",
-  "nao_inclusos": ["tampo/cuba de pedra e inox do armário-tanque (marmorista)", "máquina de lavar (cliente)", "pontos hidráulicos/elétricos"],
+  "nao_inclusos": ["tampos de pedra e cuba/inox (bancada da despensa + armário-tanque, marmorista)", "máquina de lavar (cliente)", "pontos hidráulicos/elétricos"],
   "flags": [
     "nº de folhas do armário superior da despensa (existente a revestir)",
     "largura bancada despensa 136 vs 154 (adotado 154)",
     "cestos vs nichos com perfil metálico (coluna dir. despensa)",
-    "material do tampo da bancada da despensa (MDF vs pedra)",
     "modelo de puxador despensa/tanque"
   ],
   "status": "entregue"

@@ -157,7 +157,7 @@ h3.blk{{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;color:
 
   <div class="note">
     <div class="h">Premissas &amp; itens não inclusos</div>
-    Acabamento externo em MDF Azul Petróleo Guararapes conforme projeto; caixaria interna em MDF branco (padrão) — interior integral em Azul Petróleo sob consulta. O armário superior da despensa é <b>revestido sobre a estrutura existente</b> (não inclui refazer a caixa). <b>Não inclusos:</b> tampo/cuba de pedra e inox do armário-tanque (marmorista), máquina de lavar (eletrodoméstico do cliente) e pontos hidráulicos/elétricos de alimentação. Tampo da bancada da despensa considerado em MDF; se optar por pedra, passa ao marmorista. Medidas a conferir no local, conforme nota do projeto.
+    Projeto <b>integralmente em MDF Azul Petróleo Guararapes</b> — inclusive caixaria interna e fundos (sem branco). O armário superior da despensa é <b>revestido sobre a estrutura existente</b> (não inclui refazer a caixa). <b>Não inclusos:</b> tampos de pedra e cuba/inox (bancada da despensa e armário-tanque, por conta do marmorista), máquina de lavar (eletrodoméstico do cliente) e pontos hidráulicos/elétricos de alimentação. Medidas a conferir no local, conforme nota do projeto.
   </div>
   <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Proposta Graça · Projeto Lais Teles</span></div>
 </div>
@@ -174,18 +174,18 @@ h3.blk{{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;color:
       <div class="tag">Linha Essencial</div>
       <div class="nm serif">Essencial</div>
       <div class="warr">Garantia de 2 anos</div>
-      <div class="price serif">R$ 21.900</div>
+      <div class="price serif">R$ 20.100</div>
       <ul>
         <li>Corrediças telescópicas com amortecimento.</li>
         <li>Dobradiças com amortecimento (fechamento suave).</li>
-        <li>Mesma caixaria, mesmo acabamento Azul Petróleo.</li>
+        <li>Projeto integral em Azul Petróleo, inclusive a caixaria.</li>
       </ul>
     </div>
     <div class="lineC prem">
       <div class="tag">Linha Essencial Prime</div>
       <div class="nm serif">Essencial Prime</div>
       <div class="warr">Garantia de 5 anos</div>
-      <div class="price serif">R$ 24.800</div>
+      <div class="price serif">R$ 20.800</div>
       <ul>
         <li>Corrediças <b>ocultas</b> de engenharia alemã, com amortecimento e fechamento suave.</li>
         <li>Dobradiças alemãs de alta durabilidade.</li>
@@ -197,11 +197,11 @@ h3.blk{{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;color:
   <table>
     <thead><tr><th>Ambiente</th><th class="r">Essencial</th><th class="r prem-col">Essencial Prime</th></tr></thead>
     <tbody>
-      <tr><td class="amb-name">Despensa</td><td class="r">R$ 14.800</td><td class="r prem-col">R$ 16.800</td></tr>
-      <tr><td class="amb-name">Lavanderia</td><td class="r">R$ 5.800</td><td class="r prem-col">R$ 6.500</td></tr>
-      <tr><td class="amb-name">Armário-tanque</td><td class="r">R$ 1.300</td><td class="r prem-col">R$ 1.500</td></tr>
+      <tr><td class="amb-name">Despensa</td><td class="r">R$ 12.900</td><td class="r prem-col">R$ 13.400</td></tr>
+      <tr><td class="amb-name">Lavanderia</td><td class="r">R$ 5.900</td><td class="r prem-col">R$ 6.100</td></tr>
+      <tr><td class="amb-name">Armário-tanque</td><td class="r">R$ 1.300</td><td class="r prem-col">R$ 1.300</td></tr>
     </tbody>
-    <tfoot><tr class="grand"><td class="serif">Investimento total</td><td class="r serif">R$ 21.900</td><td class="r serif">R$ 24.800</td></tr></tfoot>
+    <tfoot><tr class="grand"><td class="serif">Investimento total</td><td class="r serif">R$ 20.100</td><td class="r serif">R$ 20.800</td></tr></tfoot>
   </table>
 
   <div class="split">
