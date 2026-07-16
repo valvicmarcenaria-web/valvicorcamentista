@@ -51,6 +51,18 @@ pintura, porcelanato, rodapé poliestireno, blindex, arandelas e **madeira de de
   `proposta-ed-luxemburgo.html`/`.pdf`. Proposta subida ao Drive (pasta do cliente).
 - **Pendências:** confirmar prazo do boleto (assumido 30 dias); ver recado p/ Rodrigo.
 
+### [2026-07-16] Orçamento + Proposta — Resolve Consórcio (comercial, 14 amb.) — Lavinia + Vitor
+**Solicitante:** Jonathan · **Parceira:** Jéssica Sollero (RT 10%) · **Eng.:** Corsino Soares · **Status:** 🟢 Proposta entregue
+Escritório corporativo completo (14 ambientes, 54 pranchas) — recepção, salas, convivência, coffe point, refeitório,
+jurídico, compliance, **63 lockers**, comercial, CEO, CALL + **7 cabines**. **Refeito do zero** (v1/v2 estimativas erradas).
+- **CÁLCULO peça-a-peça** (`corte-resolve-consorcio.py`, 257 peças) → **79 chapas R$ 29.770** (v1 estimava 106, v2 49 — as duas erradas).
+  **Ripado = produto Eucatex RU Freijó Brasil** (0,75 m²/cx, R$ 166,50/cx, ref. web). Material Valvic ~R$ 61k (Hardt).
+- **Preço (motor sem cartão, RT 10%):** **Essencial (Hardt/5a/MC35%) R$ 147.800** · **Essencial Prime (Hettich/10a/MC38%) R$ 174.800.**
+  Alocação por ambiente **proporcional ao material** (lockers 16,9%). Pagto **40/40/20**, prazo **90–100 dias corridos**.
+- **Escopo:** inclui estofado dos bancos + pés metálicos + escorredor cromado. **FORA:** blindex, espuma acústica, fechaduras dos lockers.
+- **Lição cravada na skill:** *CALCULAR, nunca ESTIMAR* (princípio nº 1). ⚠️ MC 35/38% abaixo do piso 40% do Rodrigo p/ >R$80k — decisão do Jonathan.
+- **Arquivos:** `2026-resolve-consorcio-marcenaria.md` · `orcamento-resolve-consorcio.json` · `corte-resolve-consorcio.py` · `proposta-resolve-consorcio.html/.pdf`.
+
 ### [2026-07-14] Orçamento + Proposta — Jairo Samuel (apto completo) — Lavinia + Vitor
 **Solicitante:** Jonathan · **Parceira:** Jéssica Sollero (RT 10%) · **Status:** 🟢 Proposta entregue (v002)
 Marcenaria completa do apto (projeto Jéssica Sollero, 27 pranchas). **9 móveis MDF:** cristaleira (Sala,
