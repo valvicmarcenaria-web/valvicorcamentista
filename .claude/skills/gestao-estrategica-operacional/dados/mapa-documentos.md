@@ -12,6 +12,7 @@ quando criar/revisar documentos.
 | **Modelo econômico do investidor** | Modelagem econômica para conversa de sociedade/investimento | `modelo-economico-investidor.html` · `Valvic_Modelo_Economico_Investidor.pdf` |
 | **Proposta de expansão (sócio)** | Proposta de expansão para o sócio | `proposta-expansao-socio.html` · `Valvic_Proposta_Expansao_2026.pdf` |
 | **Imagens das máquinas** | Slots de foto das lâminas (A3) · ver guia | `img-maquinas/COMO-TROCAR-IMAGENS.md` |
+| **Panorama Comercial — Rumo a Agosto (lâmina)** | Painel de 1 página (A4 paisagem) para o Walton: carteira ativa (13 projetos · R$ 711k), recebido/a receber, cruzamento % Entregue × Fabricado (aguardando entrega) × A fabricar, cronograma de conclusão (ago/set) e pipeline em negociação (Junior, Fábio&Quênia, leads). Análise superficial a partir da posição informada pelo Jonathan · **restrito** | `walton-panorama-comercial-agosto.html` · `Valvic_Walton_Panorama_Comercial_Agosto2026.pdf` |
 
 ## Financeiro & Patrimônio (dono: Rodrigo)
 | Documento | O que é / para quem | Arquivos |

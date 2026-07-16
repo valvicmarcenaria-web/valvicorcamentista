@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panorama Comercial — Rumo a Agosto/2026 · Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 landscape; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  :root{
+    --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f;
+    --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd;
+    --good:#0ca30c; --warn:#fab219; --crit:#d03b3b;
+    --c1:#2a78d6; --c2:#1baf7a; --c3:#eda100; --track:#e4dfd0;
+  }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:10px; line-height:1.4; -webkit-font-smoothing:antialiased; }
+  .num{ font-variant-numeric:tabular-nums; }
+  .serif{ font-family:'Cormorant Garamond',Georgia,serif; }
+  .sheet{ position:relative; width:297mm; height:210mm; background:var(--cream); margin:16px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; }
+
+  .ph{ background:var(--navy); color:#fff; padding:7mm 12mm 5mm; display:flex; justify-content:space-between; align-items:flex-end; position:relative; }
+  .ph::after{ content:""; position:absolute; left:12mm; right:12mm; bottom:0; height:2.5px; background:linear-gradient(90deg,var(--gold),var(--gold-dk) 45%,transparent); }
+  .ph .kx{ font-size:8.5px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:23px; font-weight:600; margin-top:2px; line-height:1.05; }
+  .ph .r{ text-align:right; } .ph .co{ font-size:10px; letter-spacing:2px; text-transform:uppercase; font-weight:600; }
+  .ph .pg{ font-size:8.5px; color:rgba(255,255,255,.55); margin-top:3px; }
+
+  .body{ flex:1; padding:5mm 12mm 0; display:flex; flex-direction:column; gap:6px; min-height:0; }
+
+  /* ===== KPI row ===== */
+  .kpis{ display:flex; gap:9px; }
+  .kpi{ flex:1; background:#fff; border:1px solid var(--line); border-radius:7px; padding:8px 12px; position:relative; overflow:hidden; }
+  .kpi::before{ content:""; position:absolute; top:0; left:0; right:0; height:3px; background:var(--gold); }
+  .kpi.b::before{ background:var(--navy); } .kpi.g::before{ background:var(--good); } .kpi.a::before{ background:var(--gold); }
+  .kpi .kl{ font-size:7.6px; letter-spacing:1.1px; text-transform:uppercase; color:var(--muted); font-weight:600; }
+  .kpi .kv{ font-family:'Cormorant Garamond',serif; font-size:23px; font-weight:700; margin-top:3px; letter-spacing:-.3px; color:var(--navy); }
+  .kpi .kv small{ font-size:11px; color:var(--muted); font-weight:600; font-family:'Inter'; }
+  .kpi .ks{ font-size:7.6px; color:var(--muted); margin-top:3px; line-height:1.35; }
+  .kpi .ks b{ color:var(--ink); }
+
+  .sec{ display:flex; align-items:center; gap:8px; margin:2px 0 4px; }
+  .sec .bar{ width:13px; height:2px; background:var(--gold); }
+  .sec .tx{ font-size:8.4px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); }
+  .sec .ct{ margin-left:auto; font-size:7.8px; color:var(--muted); }
+
+  /* ===== segmented composition bar ===== */
+  .card{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:9px 13px; }
+  .compbar{ height:24px; border-radius:5px; overflow:hidden; display:flex; background:var(--track); }
+  .compbar .seg{ display:flex; align-items:center; justify-content:center; color:#fff; font-size:9.5px; font-weight:800; white-space:nowrap; }
+  .complegend{ display:flex; gap:16px; margin-top:6px; flex-wrap:wrap; }
+  .complegend .lg{ font-size:8px; color:var(--ink); display:flex; align-items:center; gap:5px; }
+  .complegend .sw{ width:9px; height:9px; border-radius:2px; display:inline-block; }
+  .complegend b{ color:var(--navy); }
+
+  /* ===== main grid: table + sidebar ===== */
+  .maingrid{ display:flex; gap:10px; flex:1; min-height:0; }
+  .col-table{ flex:1.62; display:flex; flex-direction:column; min-height:0; }
+  .col-side{ flex:1; display:flex; flex-direction:column; gap:6px; min-height:0; }
+
+  table{ width:100%; border-collapse:collapse; }
+  thead th{ background:var(--navy2); color:#fff; font-size:6.6px; font-weight:600; letter-spacing:.4px; text-transform:uppercase; padding:4px 7px; text-align:right; }
+  thead th:nth-child(1),thead th:nth-child(2){ text-align:left; }
+  tbody td{ padding:3.4px 7px; border-bottom:1px solid var(--line); font-size:7.6px; text-align:right; vertical-align:middle; }
+  tbody td:nth-child(1),tbody td:nth-child(2){ text-align:left; }
+  tbody tr:nth-child(even) td{ background:#f4f1ea; }
+  td .nm{ font-weight:700; color:var(--navy); }
+  td .am{ color:var(--muted); font-size:7px; display:block; }
+  tr.tot td{ background:#eceadf !important; font-weight:700; color:var(--navy); border-top:1.5px solid var(--line2); font-size:8px; padding:5px 7px; }
+  .pctcell{ font-weight:700; }
+  .pill{ display:inline-block; min-width:30px; padding:1px 5px; border-radius:8px; font-size:7px; font-weight:800; text-align:center; }
+  .p-hi{ background:#e6f4e6; color:#0a7a0a; } .p-mid{ background:#fdf1d6; color:#9a6a08; } .p-lo{ background:#f1efe9; color:var(--muted); }
+
+  /* ===== cronograma mini-bars ===== */
+  .cbar-row{ display:grid; grid-template-columns:52px 1fr 56px; align-items:center; gap:7px; margin-bottom:5px; }
+  .cbar-row:last-child{ margin-bottom:0; }
+  .cbar-lb{ font-size:7.6px; font-weight:700; color:var(--ink); text-align:right; }
+  .cbar-lb small{ display:block; font-size:6.4px; color:var(--muted); font-weight:500; }
+  .cbar-track{ height:15px; background:var(--track); border-radius:3px; overflow:hidden; }
+  .cbar-fill{ height:100%; }
+  .cbar-v{ font-size:8px; font-weight:800; color:var(--navy); text-align:right; }
+
+  /* ===== pipeline / leads ===== */
+  .pipe-item{ padding:5px 0; border-bottom:1px solid var(--line); }
+  .pipe-item:last-child{ border-bottom:none; padding-bottom:0; }
+  .pipe-top{ display:flex; justify-content:space-between; align-items:baseline; }
+  .pipe-nm{ font-size:8.4px; font-weight:700; color:var(--navy); }
+  .pipe-v{ font-size:9.5px; font-weight:800; color:var(--gold-dk); }
+  .pipe-tx{ font-size:6.9px; color:var(--muted); line-height:1.4; margin-top:1px; }
+
+  .leadrow{ display:flex; flex-wrap:wrap; gap:5px; margin-top:2px; }
+  .leadchip{ background:#f6f3ec; border:1px solid var(--line); border-radius:11px; padding:2.5px 8px; font-size:7.2px; color:var(--ink); }
+  .leadchip b{ color:var(--navy); }
+
+  .notes{ background:#f6f3ec; border:1px solid var(--line); border-radius:7px; padding:6px 10px; margin-top:2px; }
+  .notes .nt{ font-size:6.8px; letter-spacing:1.1px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:3px; }
+  .notes p,.notes li{ font-size:7.2px; color:#41505d; line-height:1.45; }
+  .notes ul{ padding-left:12px; }
+  .notes b{ color:var(--navy); }
+
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:4px 12mm; display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf .pl{ font-size:6.8px; color:var(--muted); } .pf .pr{ font-size:7.6px; color:var(--navy); font-weight:700; letter-spacing:1px; } .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Carteira Ativa · Posição Julho/2026</div><div class="tt">Panorama Comercial — Rumo a Agosto</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Preparado para Walton · confidencial</div></div>
+  </div>
+
+  <div class="body">
+
+    <!-- ===== KPI row ===== -->
+    <section class="kpis">
+      <div class="kpi b">
+        <div class="kl">Carteira ativa (vendido)</div>
+        <div class="kv num">R$ 711<small> mil</small></div>
+        <div class="ks">13 projetos em execução · tickets de R$ 12k a R$ 117k</div>
+      </div>
+      <div class="kpi g">
+        <div class="kl">Recebido até agora</div>
+        <div class="kv num">R$ 240<small> mil</small></div>
+        <div class="ks"><b>34%</b> do valor vendido já em caixa</div>
+      </div>
+      <div class="kpi a">
+        <div class="kl">Receita bruta pendente</div>
+        <div class="kv num">R$ 460<small> mil</small></div>
+        <div class="ks"><b>~65%</b> do valor vendido, conforme entrega avança</div>
+      </div>
+      <div class="kpi b">
+        <div class="kl">Pipeline em negociação</div>
+        <div class="kv num">R$ 1,29<small> mi</small></div>
+        <div class="ks">2 contas grandes (R$ 820k) + 5 leads (R$ 467k) — <b>fora da carteira acima</b></div>
+      </div>
+    </section>
+
+    <!-- ===== composição do valor vendido ===== -->
+    <div class="card">
+      <div class="sec" style="margin:0 0 5px"><span class="bar"></span><span class="tx">Onde está o valor vendido hoje</span><span class="ct">% da carteira ativa (R$ 711 mil) · "fabricado" = pronto, ainda não entregue ao cliente</span></div>
+      <div class="compbar">
+        <div class="seg" style="width:30.6%;background:var(--c1)">Entregue ao cliente · 31%</div>
+        <div class="seg" style="width:8.4%;background:var(--c3);color:#5a4108">Fabricado · 8%</div>
+        <div class="seg" style="width:61%;background:var(--track);color:var(--muted)">A fabricar · 61%</div>
+      </div>
+      <div class="complegend">
+        <span class="lg"><i class="sw" style="background:var(--c1)"></i>Entregue ao cliente — <b>R$ 217,7 mil</b></span>
+        <span class="lg"><i class="sw" style="background:var(--c3)"></i>Fabricado, aguardando entrega — <b>R$ 60 mil</b></span>
+        <span class="lg"><i class="sw" style="background:var(--track);border:1px solid var(--line2)"></i>Ainda a fabricar — <b>R$ 433,3 mil</b></span>
+      </div>
+    </div>
+
+    <!-- ===== tabela + sidebar ===== -->
+    <div class="maingrid">
+      <div class="col-table">
+        <div class="sec"><span class="bar"></span><span class="tx">Carteira ativa, projeto a projeto</span><span class="ct">13 projetos · R$ 711 mil</span></div>
+        <table>
+          <thead><tr>
+            <th>Cliente</th><th>Ambiente(s)</th><th>Venda R$</th><th>Recebido</th><th>Entregue</th><th>Fabricado</th><th>A fabricar</th><th>Entrega prevista</th>
+          </tr></thead>
+          <tbody>
+            <tr><td><span class="nm">Augusto</span></td><td>Diversos</td><td class="num">90.000</td><td class="num pctcell">63.000 <span class="pill p-hi">70%</span></td><td class="num pctcell">70%</td><td class="num">—</td><td class="num">30%</td><td>1ª quinz. ago</td></tr>
+            <tr><td><span class="nm">Maria</span><span class="am">Vale dos Cristais</span></td><td>Diversos</td><td class="num">117.000</td><td class="num pctcell">58.000 <span class="pill p-mid">50%</span></td><td class="num pctcell">50%</td><td class="num">—</td><td class="num">50%</td><td>final de set.</td></tr>
+            <tr><td><span class="nm">André</span><span class="am">Alphaville</span></td><td>Diversos</td><td class="num">87.000</td><td class="num pctcell">0 <span class="pill p-lo">0%</span></td><td class="num pctcell">100%</td><td class="num">—</td><td class="num">—</td><td>entregue · cobrança em aberto</td></tr>
+            <tr><td><span class="nm">Cristiane</span></td><td>Diversos</td><td class="num">94.000</td><td class="num pctcell">32.000 <span class="pill p-mid">34%</span></td><td class="num">—</td><td class="num pctcell">50%</td><td class="num">50%</td><td>1ª quinz. ago</td></tr>
+            <tr><td><span class="nm">Simony</span></td><td>Diversos</td><td class="num">34.000</td><td class="num pctcell">13.000 <span class="pill p-mid">38%</span></td><td class="num">—</td><td class="num pctcell">0%</td><td class="num">100%</td><td>2ª quinz. ago</td></tr>
+            <tr><td><span class="nm">Bernardo</span></td><td>Cozinha e banheiro</td><td class="num">13.000</td><td class="num pctcell">4.000 <span class="pill p-mid">31%</span></td><td class="num">—</td><td class="num pctcell">100%</td><td class="num">—</td><td>final de ago.</td></tr>
+            <tr><td><span class="nm">Carla</span></td><td>Cozinha</td><td class="num">27.000</td><td class="num pctcell">13.500 <span class="pill p-mid">50%</span></td><td class="num">—</td><td class="num pctcell">0%</td><td class="num">100%</td><td>final de ago.</td></tr>
+            <tr><td><span class="nm">Lucas Mello</span></td><td>Diversos</td><td class="num">46.000</td><td class="num pctcell">24.000 <span class="pill p-mid">52%</span></td><td class="num pctcell">20%</td><td class="num">—</td><td class="num">80%</td><td>1ª quinz. ago</td></tr>
+            <tr><td><span class="nm">Luciana Rajão</span><span class="am">Vale dos Cristais</span></td><td>Manutenções diversas</td><td class="num">12.000</td><td class="num pctcell">0 <span class="pill p-lo">0%</span></td><td class="num pctcell">0%</td><td class="num">—</td><td class="num">100%</td><td>2ª quinz. ago</td></tr>
+            <tr><td><span class="nm">Ana Carolina</span></td><td>Casa completa</td><td class="num">108.000</td><td class="num pctcell">32.500 <span class="pill p-mid">30%</span></td><td class="num pctcell">0%</td><td class="num">—</td><td class="num">100%</td><td>início de set.</td></tr>
+            <tr><td><span class="nm">Richard</span></td><td>Quarto</td><td class="num">22.000</td><td class="num pctcell">0 <span class="pill p-lo">0%</span></td><td class="num pctcell">0%</td><td class="num">—</td><td class="num">100%</td><td>início de set.</td></tr>
+            <tr><td><span class="nm">Andrea</span></td><td>Clínica dermatologia</td><td class="num">47.000</td><td class="num pctcell">0 <span class="pill p-lo">0%</span></td><td class="num pctcell">0%</td><td class="num">—</td><td class="num">100%</td><td>1ª quinz. set.</td></tr>
+            <tr><td><span class="nm">Giseli</span><span class="am">Vale do Sereno</span></td><td>Banheiros</td><td class="num">14.000</td><td class="num pctcell">0 <span class="pill p-lo">0%</span></td><td class="num pctcell">0%</td><td class="num">—</td><td class="num">100%</td><td>1ª quinz. set.</td></tr>
+            <tr class="tot"><td colspan="2">TOTAL CARTEIRA ATIVA</td><td class="num">711.000</td><td class="num">240.000 <span style="color:var(--muted);font-weight:600">(34%)</span></td><td class="num">31%</td><td class="num">8%</td><td class="num">61%</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-side">
+        <div class="card">
+          <div class="sec" style="margin:0 0 5px"><span class="bar"></span><span class="tx">Cronograma de conclusão</span></div>
+          <div class="cbar-row">
+            <div class="cbar-lb">Já entregue<small>André</small></div>
+            <div class="cbar-track"><div class="cbar-fill" style="width:12%;background:var(--navy2)"></div></div>
+            <div class="cbar-v">R$ 87k</div>
+          </div>
+          <div class="cbar-row">
+            <div class="cbar-lb">Até final<br>de agosto</div>
+            <div class="cbar-track"><div class="cbar-fill" style="width:44%;background:var(--gold)"></div></div>
+            <div class="cbar-v">R$ 316k</div>
+          </div>
+          <div class="cbar-row">
+            <div class="cbar-lb">Em<br>setembro</div>
+            <div class="cbar-track"><div class="cbar-fill" style="width:43%;background:var(--gold-soft)"></div></div>
+            <div class="cbar-v">R$ 308k</div>
+          </div>
+        </div>
+
+        <div class="card" style="flex:1">
+          <div class="sec" style="margin:0 0 3px"><span class="bar"></span><span class="tx">Negociações mais expressivas</span><span class="ct">não incluídas na carteira</span></div>
+          <div class="pipe-item">
+            <div class="pipe-top"><span class="pipe-nm">Junior — Construtora Lagoa Santa</span><span class="pipe-v num">R$ 370k</span></div>
+            <div class="pipe-tx">Proposta já aprovada verbalmente, pendente alinhar forma de pagamento. Cliente sobrecarregado com a obra; porte das casas que constrói é um perfil interessante para a Valvic.</div>
+          </div>
+          <div class="pipe-item">
+            <div class="pipe-top"><span class="pipe-nm">Fábio &amp; Quênia — Alphaville Vespasiano</span><span class="pipe-v num">R$ 450k</span></div>
+            <div class="pipe-tx">Mais focado na experiência de recebimento do que em valor; contato difícil (viagem, pouca resposta) — acompanhamento de perto necessário.</div>
+          </div>
+          <div style="margin-top:5px">
+            <div class="sec" style="margin:0 0 2px"><span class="bar"></span><span class="tx">Leads em conversa</span><span class="ct">total R$ 467k</span></div>
+            <div class="leadrow">
+              <span class="leadchip">Empresa consórcio <b>147k</b></span>
+              <span class="leadchip">Juliana <b>120k</b></span>
+              <span class="leadchip">Clínica Nura <b>90k</b></span>
+              <span class="leadchip">Jairo <b>70k</b></span>
+              <span class="leadchip">Rômulo <b>40k</b></span>
+            </div>
+          </div>
+          <div class="notes" style="margin-top:8px">
+            <div class="nt">Leitura</div>
+            <p>O pipeline em negociação (<b>R$ 1,29 mi</b>) já supera <b>1,8×</b> o valor da carteira ativa em execução — sinal de que o crescimento comercial segue alimentando a produção além do backlog atual.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes">
+      <div class="nt">Como ler</div>
+      <p><b>Entregue</b> = já nas mãos do cliente. <b>Fabricado</b> = pronto na fábrica, ainda não entregue. <b>A fabricar</b> = falta produzir. Percentuais em relação ao valor vendido de cada projeto. Análise superficial a partir da posição informada pelo comercial (Jonathan) — não substitui o fechamento financeiro/Calcme. A "receita bruta pendente" (R$ 460 mil) é a posição consolidada; a soma projeto a projeto acima (R$ 471 mil) é uma aproximação e pode divergir ligeiramente.</p>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Documento confidencial · preparado para Walton · Valvic Marcenaria — Vargas Decor Ltda</div><div class="pr">Julho <span>/</span> 2026</div></div>
+</section>
+
+</body>
+</html>
