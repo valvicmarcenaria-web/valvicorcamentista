@@ -1,0 +1,89 @@
+{
+  "cliente": "Jairo Samuel",
+  "decoradora": "Jéssica Sollero",
+  "rt_percent_liquido": 10,
+  "prazo_dias_uteis": "60-70",
+  "perfil_cliente": "criterioso",
+  "unidade": "chapas (plano de corte)",
+  "fonte": "Caderno Jessica Sollero, 27 pranchas, 22-30/02/2026",
+  "escopo_valvic_mdf": [
+    {"id": 1, "ambiente": "Sala", "movel": "Cristaleira", "dim_cm": "109,5x238,5x40", "face": "Carvalho Hanover Duratex", "interno": "Branco TX", "vidros_terc": "porta reflecta prata + prateleiras de vidro"},
+    {"id": 2, "ambiente": "Cozinha", "movel": "Armarios superiores", "dim_cm": "~298,5 + 134 / prof 35 / alt 78,5", "face": "Cinza Cristal Chess Arauco", "interno": "Branco TX", "led": "4000K"},
+    {"id": 3, "ambiente": "Cozinha", "movel": "Armarios inferiores", "dim_cm": "229 + 134 / prof 59,5 / corpo 74", "face": "Lord Arauco", "interno": "Branco TX", "extra": "lixeira deslizante; nichos forno/lava-loucas/lava-roupa"},
+    {"id": 4, "ambiente": "Cozinha", "movel": "Prateleiras MDF (sobre metalon)", "dim_cm": "66/67 x 14,5 x3", "face": "Lord, 1/2 esquadria", "obs": "estrutura metalon = serralheiro"},
+    {"id": 5, "ambiente": "Quarto Hospede", "movel": "Cabeceira", "dim_cm": "273x110x15", "face": "Carvalho Hanover", "terc": "estofado Facto dunas verde", "led": "3000K"},
+    {"id": 6, "ambiente": "Quarto Hospede", "movel": "Roupeiro", "dim_cm": "190x245,5x55 + painel espelho 83", "face": "Beige Matt Arauco + detalhe Carvalho", "interno": "Branco TX", "terc": "espelho prata colado"},
+    {"id": 7, "ambiente": "Quarto Suite", "movel": "Roupeiro", "dim_cm": "143x255,5x55", "face": "Lord + detalhe Carvalho", "interno": "Branco TX"},
+    {"id": 8, "ambiente": "Quarto Suite", "movel": "Painel + 3 prateleiras", "dim_cm": "painel 92 / prat 70", "face": "Painel Carvalho + prateleiras Lord", "obs": "mao francesa invertida preta = serralheiro"},
+    {"id": 9, "ambiente": "Quarto Suite", "movel": "Mesa/escrivaninha", "dim_cm": "92x40x75", "face": "tampo Carvalho", "obs": "estrutura metalon = serralheiro"}
+  ],
+  "fora_escopo_serralheria_terceiros": [
+    "Painel TV Metalon + suporte giratorio 180 + cachepots Madeira Manga (Sala)",
+    "Mesa de centro Metalon + tampo madeira de demolicao (Sala)",
+    "Prateleiras Metalon banho social + banho suite",
+    "Cabeceira gradil metalico + almofadas linhao/couro (Suite)",
+    "Estruturas metalon (suporte prateleiras cozinha, mesa/painel suite)",
+    "Bancadas de pedra dos banhos (marmoraria)",
+    "Ripado de madeira das paredes dos banhos (sem cota)"
+  ],
+  "chapas": {
+    "carvalho_hanover": {"15mm": 5, "6mm": 1},
+    "cinza_cristal_chess": {"15mm": 1, "18mm": 1},
+    "lord": {"15mm": 2, "18mm": 2},
+    "beige_matt": {"15mm": 1, "18mm": 2},
+    "branco_tx": {"15mm": 12, "6mm": 7},
+    "total_chapas": 34,
+    "custo_chapas": 12250
+  },
+  "material_fixo": {
+    "chapas": 12250,
+    "fita_mais_filetagem": 2200,
+    "puxadores_usinagem_cabideiro_lixeira_suportes": 3300,
+    "led": 1550,
+    "insumos": {"cola": 250, "parafusos_minifix_cantoneira_tapafuro": 350, "limpeza_embalagem": 1000, "total": 1600},
+    "total_material_fixo": 20150
+  },
+  "ferragem_variavel": {
+    "dobradicas_qtd": 64,
+    "corredicas_pares": 16,
+    "hardt": {"dobradica_unit": 8, "corredica_par": 70, "total": 1632},
+    "hettich": {"dobradica_unit": 35, "corredica_par": 120, "total": 4160}
+  },
+  "terceirizados_coordenados": {
+    "vidros_cristaleira": 1800,
+    "espelho_prata_roupeiro_hospede": 1000,
+    "estofado_cabeceira": 1500,
+    "total": 4300
+  },
+  "visitas": 250,
+  "motor": {
+    "formula": "inv = fixedR / (1 - 0.18 - 0.88*b - MC)",
+    "b": 0.143,
+    "rt_percent": 10,
+    "denominador_base_mc32": 0.37416,
+    "denominador_premium_mc35": 0.34416
+  },
+  "linhas": [
+    {"nome_interno": "Base (Hardt)", "garantia_anos": 5, "mc": 0.32, "fixedR": 26332, "investimento": 70400, "rt_estimada": 5600},
+    {"nome_interno": "Premium (Hettich Sensys+Quadro, alema)", "garantia_anos": 10, "mc": 0.35, "fixedR": 28860, "investimento": 83900, "rt_estimada": 6700}
+  ],
+  "_historico_margens": "v001 MC 37/42% = R$81k/105k; v002 (14/07) MC 32/35% = R$70,4k/83,9k a pedido do Jonathan",
+  "divisoria_status": "FORA do orcamento (confirmado cliente 14/07) - serralheria, nunca precificada",
+  "alocacao_por_ambiente_aprox": {
+    "cozinha": {"base": 28000, "premium": 33500},
+    "roupeiro_hospede": {"base": 12700, "premium": 15000},
+    "roupeiro_suite": {"base": 10500, "premium": 12600},
+    "cristaleira_sala": {"base": 10000, "premium": 11700},
+    "cabeceira_hospede": {"base": 5000, "premium": 5900},
+    "painel_mesa_suite": {"base": 4200, "premium": 5000}
+  },
+  "flags": [
+    "Serralheria/metalon: confirmar se Valvic coordena ou fica com outro fornecedor",
+    "Ripado de madeira dos banhos sem cota",
+    "Cachepots Madeira Manga e tampo madeira demolicao: marcenaria ou terceiro?",
+    "MDF Lord = azul-petroleo, confirmar codigo",
+    "Cristaleira cota 113 nao fecha, conferir DWG (porta de vidro)",
+    "Prof roupeiro suite nao cotada (adotei 55)",
+    "Bancadas de pedra dos banhos = marmoraria"
+  ]
+}

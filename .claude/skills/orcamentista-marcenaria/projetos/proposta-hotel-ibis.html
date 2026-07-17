@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+@page{ size:A4; margin:0; }
+*{ box-sizing:border-box; margin:0; padding:0; }
+body{ font-family:'Liberation Sans',Helvetica,Arial,sans-serif; color:#2A211A; }
+.serif{ font-family:'Liberation Serif',Georgia,'Times New Roman',serif; }
+.page{ width:210mm; height:297mm; position:relative; overflow:hidden; page-break-after:always; }
+.page:last-child{ page-break-after:auto; }
+.eyebrow{ letter-spacing:.34em; text-transform:uppercase; font-size:8.5pt; color:#A6843E; font-weight:bold; }
+.pfoot{ position:absolute; bottom:9mm; left:20mm; right:20mm; display:flex; justify-content:space-between;
+        font-size:8pt; color:#9A8E7C; border-top:1px solid #E0D5C0; padding-top:3mm; }
+.pfoot .bl{ font-weight:bold; color:#6E655A; } .pfoot .bl .d{ color:#C2A052; }
+/* CAPA */
+.cover{ background:#F3ECDE; padding:26mm 22mm 0; }
+.wordmark{ font-weight:bold; font-size:30pt; letter-spacing:.01em; color:#241D16; }
+.cov-hl{ font-size:42pt; line-height:1.06; color:#2A211A; margin-top:16mm; }
+.cov-sub{ font-style:italic; font-size:14.5pt; color:#6E655A; margin-top:6mm; }
+.meta{ display:flex; gap:10mm; border-top:1px solid #D9CDB6; margin-top:20mm; padding-top:5mm; }
+.meta .lbl{ letter-spacing:.24em; font-size:7pt; color:#9A8E7C; text-transform:uppercase; }
+.meta .val{ font-size:11.5pt; color:#2A211A; margin-top:2mm; }
+.cband{ position:absolute; left:0; right:0; bottom:0; height:44mm; background:#1C1813; color:#F3ECDE;
+        display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.cband .gl{ width:30px; height:2px; background:#C2A052; margin-bottom:6mm; }
+.cband .bl{ font-weight:bold; letter-spacing:.04em; font-size:12.5pt; } .cband .bl .d{ color:#C2A052; }
+.cband .loc{ letter-spacing:.24em; text-transform:uppercase; font-size:7pt; color:#9A8E7C; margin-top:3mm; }
+/* FOLHAS */
+.sheet{ background:#fff; padding:17mm 20mm 0; height:297mm; }
+.h1{ font-size:24pt; line-height:1.08; color:#1C1813; margin-top:3mm; }
+.rule{ height:2px; width:46px; background:#C8901E; border:0; margin:8mm 0 7mm; }
+.lead{ font-size:11pt; line-height:1.6; color:#2A211A; }
+.p{ font-size:10.5pt; line-height:1.62; color:#4a463f; margin-top:4mm; } .p b{ color:#1C1813; }
+.band{ background:#1C1813; color:#F3ECDE; border-radius:5px; padding:8mm 9mm; margin-top:7mm; }
+.band .p{ color:#e9e1cd; }
+.item{ border-left:2px solid #E0CB95; padding:1mm 0 1mm 5mm; margin-top:6mm; }
+.item .k{ font-size:13pt; color:#1C1813; } .item .v{ font-size:10pt; color:#4a463f; margin-top:1.5mm; line-height:1.55; }
+.item .prem{ display:inline-block; background:#1C1813; color:#C2A052; font-size:7.5pt; letter-spacing:.12em;
+             text-transform:uppercase; padding:1mm 3mm; border-radius:3px; margin-top:2mm; }
+.cols{ display:flex; gap:7mm; margin-top:6mm; } .col{ flex:1; }
+.col .ic{ font-size:15pt; color:#A6843E; } .col .k{ font-size:11.5pt; color:#1C1813; font-weight:bold; margin-top:1mm; }
+.col .v{ font-size:9.5pt; color:#4a463f; margin-top:2mm; line-height:1.5; }
+.price{ background:#1C1813; color:#F3ECDE; border-radius:6px; padding:7mm 9mm; margin-top:5mm; display:flex; justify-content:space-between; align-items:center; }
+.price .l .t{ letter-spacing:.16em; text-transform:uppercase; font-size:8.5pt; color:#C2A052; }
+.price .l .s{ font-size:9.5pt; color:#cfc6b4; margin-top:1.5mm; }
+.price .pr{ font-size:26pt; }
+.split{ margin-top:5mm; }
+.srow{ display:flex; justify-content:space-between; align-items:baseline; padding:4mm 0; border-bottom:1px solid #EEE6D6; }
+.srow .nm{ font-size:12.5pt; color:#1C1813; } .srow .sd{ font-size:9pt; color:#8a8074; margin-top:1mm; }
+.srow .pr2{ font-size:16pt; color:#2A211A; white-space:nowrap; }
+.incl{ background:#F6ECD3; border:1px solid #D9B25A; border-radius:4px; padding:5mm 6mm; font-size:9.5pt; color:#4a463f; margin-top:6mm; }
+.terms{ display:flex; gap:6mm; margin-top:6mm; }
+.term{ flex:1; border-left:2px solid #E0CB95; padding-left:4mm; }
+.term .t{ letter-spacing:.2em; text-transform:uppercase; font-size:7pt; color:#9A8E7C; }
+.term .b{ font-size:12pt; color:#2A211A; margin-top:1.5mm; }
+.cond{ width:100%; border-collapse:collapse; margin-top:4mm; }
+.cond td{ font-size:10pt; padding:3mm 0; border-bottom:1px solid #EEE6D6; } .cond td.r{ text-align:right; color:#9A7B36; }
+.close{ background:#1C1813; color:#F3ECDE; border-radius:6px; padding:9mm; margin-top:6mm; }
+.close .serif{ font-size:15pt; line-height:1.4; } .close .p{ color:#cfc6b4; }
+</style></head>
+<body>
+
+<!-- CAPA -->
+<div class="page cover">
+  <div class="wordmark">Valvic</div>
+  <div class="eyebrow" style="margin-top:18mm;">Proposta comercial</div>
+  <h1 class="serif cov-hl">Marcenaria de<br>obra fina</h1>
+  <div class="serif cov-sub">Reforma do Hall · Hotel Ibis Betim</div>
+  <div class="meta">
+    <div><div class="lbl">Para</div><div class="serif val">Hotel Ibis Betim</div></div>
+    <div><div class="lbl">Projeto</div><div class="serif val">DAD · Marina Dolabella</div></div>
+    <div><div class="lbl">Ano</div><div class="serif val">2026</div></div>
+  </div>
+  <div class="cband">
+    <div class="gl"></div>
+    <div class="bl serif">Valvic<span class="d"> ·</span> marcenaria sob medida</div>
+    <div class="loc">Meia-esquadria · execução comercial</div>
+  </div>
+</div>
+
+<!-- ESCOPO -->
+<div class="page sheet">
+  <div class="eyebrow">Escopo da marcenaria Valvic</div>
+  <h1 class="serif h1">O que a Valvic executa.</h1>
+  <hr class="rule">
+  <p class="lead">A Valvic executa a <b>marcenaria em MDF</b> do projeto da arquiteta <b>Marina Dolabella (DAD)</b> — nichos, molduras de sinalização e o <b>balcão novo</b> da recepção, tudo em <b>meia-esquadria</b>, com equipe própria do corte à instalação.</p>
+  <div class="item"><div class="k serif">Nichos do hall — MDF Carvalho Hanover</div>
+    <div class="v">Conjunto de nichos integrados à parede, em MDF Duratex Carvalho Hanover, com <b>acabamento em meia-esquadria</b> (junção a 45°, sem topos aparentes) e todas as bordas fitadas — inclusive as ocultas, para proteção do MDF.</div></div>
+  <div class="item"><div class="k serif">Molduras de sinalização — MDF Carvalho Hanover</div>
+    <div class="v">Molduras das placas de sinalização em Carvalho Hanover, meia-esquadria, seguindo o padrão visual da rede Ibis.</div></div>
+  <div class="item"><div class="k serif">Balcão novo da recepção — Acetinatta + interior branco</div>
+    <div class="v">Balcão <b>novo</b> (peça inteira nova, não readequação): <b>faces aparentes e portas de giro em MDF Duratex Acetinatta</b> — Preto nas faces, Graffite nas portas — com puxador tipo cava usinado e rodapé recuado. O <b>interior (caixaria/prateleiras) é em MDF branco</b>.</div>
+    <div class="prem">Faces em Acetinatta premium · interior em MDF branco</div></div>
+  <div class="incl" style="margin-top:8mm;"><b>Não incluído (outros fornecedores):</b> serralheria (pilares e painéis metálicos, cestos), bancos estofados, placas em adesivo, painéis/portas de vidro. A Valvic responde pela <b>marcenaria em MDF</b> acima.</div>
+  <div class="pfoot"><span class="bl serif">Valvic<span class="d"> ·</span> marcenaria sob medida</span><span>Hotel Ibis Betim · Proposta 2026</span></div>
+</div>
+
+<!-- P4 — EXECUÇÃO + GARANTIA -->
+<div class="page sheet">
+  <div class="eyebrow">Execução · garantia</div>
+  <h1 class="serif h1">Meia-esquadria é detalhe<br>de quem domina o ofício.</h1>
+  <hr class="rule">
+  <p class="lead">A junção em <b>meia-esquadria</b> (45°) elimina os topos aparentes e dá o acabamento contínuo e sofisticado que o projeto pede — mas exige corte de precisão e montagem conferida. É a diferença entre obra fina e móvel de catálogo.</p>
+  <div class="cols">
+    <div class="col"><div class="ic">✦</div><div class="k">Galpão próprio + CNC</div><div class="v">~500 m², centro de CNC e coladeira automática. Meia-esquadria e bordas fitadas com padrão industrial.</div></div>
+    <div class="col"><div class="ic">✦</div><div class="k">Ferragem Hettich</div><div class="v">Ferragens <b>Hettich com amortecedor</b> — grau comercial, para o uso intenso de um hall de hotel.</div></div>
+    <div class="col"><div class="ic">✦</div><div class="k">Instalação + garantia</div><div class="v">Peças <b>modulares</b> (sem içamento), instaladas por equipe própria, com medidas conferidas no local.</div></div>
+  </div>
+  <div class="band">
+    <div class="eyebrow" style="color:#C2A052">Garantia</div>
+    <div class="serif" style="font-size:20pt;margin-top:3px;">10 anos</div>
+    <p class="p">A garantia de 10 anos existe porque temos segurança na execução: ferragem Hettich, estrutura conferida e acabamento de meia-esquadria feito para durar em ambiente comercial de alto tráfego.</p>
+  </div>
+  <div class="pfoot"><span class="bl serif">Valvic<span class="d"> ·</span> marcenaria sob medida</span><span>Hotel Ibis Betim · Proposta 2026</span></div>
+</div>
+
+<!-- P5 — INVESTIMENTO -->
+<div class="page sheet">
+  <div class="eyebrow">Investimento</div>
+  <h1 class="serif h1">O investimento.</h1>
+  <hr class="rule">
+  <div class="split">
+    <div class="srow"><div><div class="nm serif">Nichos + molduras de sinalização</div><div class="sd">MDF Carvalho Hanover · meia-esquadria · prof. 20 cm</div></div><div class="serif pr2">R$ 6.000</div></div>
+    <div class="srow"><div><div class="nm serif">Balcão novo da recepção</div><div class="sd">Faces + portas em Acetinatta premium (Preto + Graffite) · <b>interior em MDF branco</b> · ~4,4 m · puxador cava · peça nova</div></div><div class="serif pr2">R$ 10.500</div></div>
+  </div>
+  <div class="price">
+    <div class="l"><div class="t">Investimento total · Hall</div><div class="s">Marcenaria Valvic · garantia 10 anos</div></div>
+    <div class="serif pr">R$ 16.500</div>
+  </div>
+  <div class="incl"><b>Incluído:</b> nichos em Carvalho Hanover (meia-esquadria), molduras de sinalização, <b>balcão novo</b> com <b>faces e portas em Acetinatta premium</b> (Preto + Graffite) e <b>interior em MDF branco</b>, puxador cava, ferragens <b>Hettich</b>, todas as bordas fitadas, medição no local, <b>instalação</b> por equipe própria e <b>garantia de 10 anos</b>. Amostras validadas com a arquiteta antes da produção.</div>
+  <div class="terms">
+    <div class="term"><div class="t">Prazo de entrega</div><div class="serif b">45 a 60<br><span style="font-size:9pt">dias úteis</span></div></div>
+    <div class="term"><div class="t">Validade</div><div class="serif b">7 dias</div></div>
+    <div class="term"><div class="t">Garantia</div><div class="serif b">10 anos</div></div>
+  </div>
+  <div class="eyebrow" style="margin-top:10mm;">Condições de pagamento</div>
+  <table class="cond"><tbody>
+    <tr><td><b>50% de entrada</b> (reserva a vaga na produção) <b>+ 50% na entrega</b></td><td class="r">por transferência</td></tr>
+  </tbody></table>
+  <div class="close">
+    <div class="eyebrow" style="color:#C2A052">Por que a Valvic</div>
+    <p class="serif" style="margin-top:3mm;">Galpão próprio, CNC, coladeira automática e equipe especializada — estrutura para executar a meia-esquadria com perfeição, instalar e garantir por 10 anos em ambiente comercial.</p>
+    <p class="p">Ficamos à disposição para apresentar a proposta e alinhar as amostras com a arquiteta. Será uma satisfação executar este projeto para o Hotel Ibis Betim.</p>
+  </div>
+  <div class="pfoot"><span class="bl serif">Valvic<span class="d"> ·</span> marcenaria sob medida</span><span>Proposta 2026 · validade 7 dias</span></div>
+</div>
+
+</body></html>

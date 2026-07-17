@@ -1,0 +1,239 @@
+<style>
+:root{
+  --bg:#F2ECDF; --panel:#FBF7EF; --panel-2:#F5EFE2; --ink:#221B12; --ink-soft:#6C6152;
+  --line:#E4D9C4; --line-soft:#EDE4D2; --accent:#A97C15; --accent-soft:#C9A24B;
+  --good:#3F7D58; --good-bg:#E4EFE5; --warn:#B07A1E; --warn-bg:#F4E9D2;
+  --bad:#A6443A; --bad-bg:#F2E0DA; --info:#4C6A86; --info-bg:#E3E9F0;
+  --shadow:0 1px 2px rgba(60,45,20,.05),0 6px 20px rgba(60,45,20,.05);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#141009; --panel:#211A11; --panel-2:#1B150D; --ink:#F1E9D8; --ink-soft:#A99E89;
+    --line:#332918; --line-soft:#2A2114; --accent:#D9B25A; --accent-soft:#A7842f;
+    --good:#7FBE94; --good-bg:#1D2B1F; --warn:#DBAE5B; --warn-bg:#2C2312;
+    --bad:#DE9086; --bad-bg:#2E1B17; --info:#9DB6CE; --info-bg:#18222C;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.28);
+  }
+}
+:root[data-theme="light"]{
+  --bg:#F2ECDF; --panel:#FBF7EF; --panel-2:#F5EFE2; --ink:#221B12; --ink-soft:#6C6152;
+  --line:#E4D9C4; --line-soft:#EDE4D2; --accent:#A97C15; --accent-soft:#C9A24B;
+  --good:#3F7D58; --good-bg:#E4EFE5; --warn:#B07A1E; --warn-bg:#F4E9D2;
+  --bad:#A6443A; --bad-bg:#F2E0DA; --info:#4C6A86; --info-bg:#E3E9F0;
+  --shadow:0 1px 2px rgba(60,45,20,.05),0 6px 20px rgba(60,45,20,.05);
+}
+:root[data-theme="dark"]{
+  --bg:#141009; --panel:#211A11; --panel-2:#1B150D; --ink:#F1E9D8; --ink-soft:#A99E89;
+  --line:#332918; --line-soft:#2A2114; --accent:#D9B25A; --accent-soft:#A7842f;
+  --good:#7FBE94; --good-bg:#1D2B1F; --warn:#DBAE5B; --warn-bg:#2C2312;
+  --bad:#DE9086; --bad-bg:#2E1B17; --info:#9DB6CE; --info-bg:#18222C;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased;
+}
+.serif{font-family:Georgia,"Times New Roman",serif;}
+.num{font-variant-numeric:tabular-nums;}
+.wrap{max-width:1080px; margin:0 auto; padding:28px 22px 56px;}
+
+/* top bar */
+.top{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:22px;}
+.brand{display:flex; align-items:baseline; gap:10px;}
+.brand .mark{font-family:Georgia,serif; font-weight:700; font-size:26px; letter-spacing:.01em;}
+.brand .mark .dot{color:var(--accent);}
+.brand .sub{font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:var(--ink-soft); font-weight:600;}
+.topright{display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
+.stat-chip{display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600;
+  padding:5px 10px; border-radius:999px; border:1px solid var(--line); background:var(--panel);}
+.dot-ok{width:7px;height:7px;border-radius:50%;background:var(--good);}
+.dot-warn{width:7px;height:7px;border-radius:50%;background:var(--warn);}
+.tgl{border:1px solid var(--line); background:var(--panel); color:var(--ink); cursor:pointer;
+  width:34px;height:34px;border-radius:9px; font-size:15px; display:grid; place-items:center;}
+.tgl:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+
+h1.title{font-family:Georgia,serif; font-weight:700; font-size:23px; margin:0 0 3px; text-wrap:balance;}
+.lede{color:var(--ink-soft); font-size:13.5px; margin:0 0 20px; max-width:60ch;}
+
+/* KPIs */
+.kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px; margin-bottom:26px;}
+.kpi{background:var(--panel); border:1px solid var(--line); border-radius:13px; padding:16px 17px; box-shadow:var(--shadow); position:relative; overflow:hidden;}
+.kpi .lab{font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); font-weight:600;}
+.kpi .val{font-family:Georgia,serif; font-weight:700; font-size:31px; margin-top:8px; letter-spacing:-.01em;}
+.kpi .foot{font-size:12px; color:var(--ink-soft); margin-top:5px;}
+.kpi .foot b{color:var(--good); font-weight:700;}
+.kpi.accent .val{color:var(--accent);}
+.kpi .rail{position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--accent); opacity:.75;}
+
+/* section */
+.sec-h{display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin:26px 0 12px;}
+.sec-h h2{font-family:Georgia,serif; font-weight:700; font-size:16px; margin:0;}
+.sec-h .hint{font-size:12px; color:var(--ink-soft);}
+.card{background:var(--panel); border:1px solid var(--line); border-radius:13px; box-shadow:var(--shadow);}
+
+/* bar chart */
+.bars{padding:16px 18px; display:flex; flex-direction:column; gap:11px;}
+.bar-row{display:grid; grid-template-columns:130px 1fr auto; align-items:center; gap:12px;}
+.bar-row .name{font-size:12.5px; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.bar-track{display:block; height:15px; background:var(--panel-2); border-radius:6px; overflow:hidden; border:1px solid var(--line-soft);}
+.bar-fill{display:block; height:100%; min-width:3px; background:linear-gradient(90deg,var(--accent-soft),var(--accent)); border-radius:6px 0 0 6px;}
+.bar-val{font-size:12.5px; font-weight:600; color:var(--ink-soft); min-width:76px; text-align:right;}
+
+/* table */
+.tbl-wrap{overflow-x:auto;}
+table{width:100%; border-collapse:collapse; min-width:640px;}
+thead th{font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); font-weight:700; text-align:left; padding:11px 14px; border-bottom:1px solid var(--line);}
+thead th.r,tbody td.r{text-align:right;}
+tbody td{padding:12px 14px; border-bottom:1px solid var(--line-soft); font-size:13.5px; vertical-align:middle;}
+tbody tr:last-child td{border-bottom:0;}
+tbody tr{position:relative;}
+td.cli{font-weight:600;}
+td.cli .stripe{display:inline-block; width:3px; height:15px; border-radius:2px; margin-right:9px; vertical-align:-2px;}
+.esc{color:var(--ink-soft); font-size:12px; margin-top:1px;}
+.tp{font-size:11px; color:var(--ink-soft);}
+.val-main{font-weight:700;}
+.val-range{font-size:11px; color:var(--ink-soft);}
+.chip{display:inline-flex; align-items:center; gap:5px; font-size:11.5px; font-weight:600; padding:3px 9px; border-radius:999px; white-space:nowrap;}
+.c-good{color:var(--good); background:var(--good-bg);}
+.c-warn{color:var(--warn); background:var(--warn-bg);}
+.c-bad{color:var(--bad); background:var(--bad-bg);}
+.c-info{color:var(--info); background:var(--info-bg);}
+
+.parado{display:flex; align-items:flex-start; gap:12px; padding:15px 18px;}
+.parado .ic{font-size:19px; line-height:1;}
+.parado .b{font-weight:700; color:var(--bad);}
+.parado .t{font-size:13px; color:var(--ink-soft); margin-top:2px;}
+
+.foot{margin-top:26px; padding-top:14px; border-top:1px solid var(--line); font-size:12px; color:var(--ink-soft); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+.foot .mark{font-family:Georgia,serif; font-weight:700;}
+.foot .mark .dot{color:var(--accent);}
+@media (max-width:560px){
+  .bar-row{grid-template-columns:96px 1fr auto; gap:8px;}
+  .kpi .val{font-size:27px;}
+}
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <div class="brand">
+      <span class="mark serif">valvic<span class="dot">.</span></span>
+      <span class="sub">Painel de orçamentos</span>
+    </div>
+    <div class="topright">
+      <span class="stat-chip"><span class="dot-ok"></span> Git · tudo salvo</span>
+      <span class="stat-chip"><span class="dot-warn"></span> Drive · <span id="drivePend">–</span> pendência(s)</span>
+      <button class="tgl" id="tgl" aria-label="Alternar tema">◐</button>
+    </div>
+  </div>
+
+  <h1 class="title serif">Orçamentos finalizados</h1>
+  <p class="lede">Painel atualizado a cada orçamento que a Lavinia fecha. Valores de referência pela linha de entrada (as opções premium aparecem no intervalo). <span id="upd"></span></p>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="sec-h"><h2>Pipeline por cliente</h2><span class="hint">valor de referência (linha base)</span></div>
+  <div class="card"><div class="bars" id="bars"></div></div>
+
+  <div class="sec-h"><h2>Orçamentos</h2><span class="hint" id="count"></span></div>
+  <div class="card tbl-wrap">
+    <table>
+      <thead><tr><th>Cliente</th><th>Tipo</th><th class="r">Investimento</th><th>Status</th><th>Drive</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <div class="sec-h"><h2>Em aberto / parados</h2></div>
+  <div class="card" id="parados"></div>
+
+  <div class="foot">
+    <span><span class="mark serif">valvic<span class="dot">.</span></span> marcenaria — painel interno</span>
+    <span>Backup durável no Git · Drive é cópia de acesso do time</span>
+  </div>
+</div>
+
+<script>
+const DATA_ATUALIZADA = "14/07/2026";
+const ORCAMENTOS = [
+  {cliente:"Kênia & Fábio", escopo:"Casa completa · 15 ambientes", tipo:"Residencial", ref:481000, max:null, linhas:"MC 42%", status:"concluido", drive:"parcial"},
+  {cliente:"Lilian Lee",    escopo:"Apto completo · provençais",   tipo:"Residencial", ref:127000, max:180500, linhas:"3 linhas", status:"concluido", drive:"ausente"},
+  {cliente:"Jairo Samuel",  escopo:"Apto completo · 9 móveis",     tipo:"Residencial", ref:70400,  max:83900,  linhas:"2 linhas", status:"entregue",  drive:"ausente"},
+  {cliente:"Ed. Luxemburgo",escopo:"Halls · revestimento MDF",     tipo:"Condomínio",  ref:35295,  max:null,   linhas:"unitário", status:"concluido", drive:"ok"},
+  {cliente:"Raquel",        escopo:"Roupeiro Branco TX 6,30 m",    tipo:"Residencial", ref:25000,  max:30000,  linhas:"2 linhas", status:"concluido", drive:"ok"},
+  {cliente:"Camila",        escopo:"Closet · roupeiro L + ilha",   tipo:"Residencial", ref:24900,  max:null,   linhas:"única",   status:"concluido", drive:"desatualizado"},
+  {cliente:"Hotel Ibis Betim",escopo:"Hall comercial · nichos+balcão",tipo:"Comercial",ref:16500,  max:null,   linhas:"única",   status:"concluido", drive:"desatualizado"},
+  {cliente:"Maria",         escopo:"Lavanderia + painel",          tipo:"Residencial", ref:7850,   max:null,   linhas:"única",   status:"entregue",  drive:"desatualizado"},
+];
+const PARADOS = [
+  {cliente:"Resolve Consórcio", escopo:"Comercial · 14 ambientes (63 lockers, 7 cabines acústicas)", motivo:"Estimativa preliminar superestimada — refazer do zero"},
+  {cliente:"Karina Ramos", escopo:"Escritório / home office", motivo:"Proposta pronta no repositório — valor a consultar"},
+];
+
+const brl = n => new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL",maximumFractionDigits:0}).format(n);
+const total = ORCAMENTOS.reduce((s,o)=>s+o.ref,0);
+const ticket = Math.round(total/ORCAMENTOS.length);
+const drivePend = ORCAMENTOS.filter(o=>o.drive!=="ok").length;
+
+document.getElementById("drivePend").textContent = drivePend;
+document.getElementById("upd").textContent = "Atualizado em "+DATA_ATUALIZADA+".";
+document.getElementById("count").textContent = ORCAMENTOS.length+" finalizados";
+
+const KPI = [
+  {lab:"Orçamentos finalizados", val:ORCAMENTOS.length, foot:"2 comerciais · 6 residenciais/condomínio", accent:false, rail:true},
+  {lab:"Valor total (ref.)", val:brl(total), foot:"soma pela linha de entrada", accent:true, rail:true},
+  {lab:"Ticket médio", val:brl(ticket), foot:"por orçamento fechado", accent:false, rail:true},
+  {lab:"Pendências no Drive", val:drivePend, foot:'<b>Git: tudo salvo ✓</b>', accent:false, rail:true},
+];
+document.getElementById("kpis").innerHTML = KPI.map(k=>`
+  <div class="kpi ${k.accent?'accent':''}">${k.rail?'<span class="rail"></span>':''}
+    <div class="lab">${k.lab}</div>
+    <div class="val num">${k.val}</div>
+    <div class="foot">${k.foot}</div>
+  </div>`).join("");
+
+const maxRef = Math.max(...ORCAMENTOS.map(o=>o.ref));
+document.getElementById("bars").innerHTML = [...ORCAMENTOS].sort((a,b)=>b.ref-a.ref).map(o=>`
+  <div class="bar-row">
+    <span class="name" title="${o.cliente}">${o.cliente}</span>
+    <span class="bar-track"><span class="bar-fill" style="width:${Math.max(4,o.ref/maxRef*100)}%"></span></span>
+    <span class="bar-val num">${brl(o.ref)}</span>
+  </div>`).join("");
+
+const STAT = {
+  concluido:{cls:"c-good", txt:"Concluído", stripe:"var(--good)"},
+  entregue:{cls:"c-info", txt:"Entregue", stripe:"var(--info)"},
+};
+const DRV = {
+  ok:{cls:"c-good", txt:"No Drive"},
+  desatualizado:{cls:"c-warn", txt:"Desatualizado"},
+  ausente:{cls:"c-bad", txt:"A subir"},
+  parcial:{cls:"c-warn", txt:"Parcial"},
+};
+document.getElementById("rows").innerHTML = ORCAMENTOS.map(o=>{
+  const st=STAT[o.status], dv=DRV[o.drive];
+  const val = o.max ? `<span class="val-main num">${brl(o.ref)}</span><div class="val-range num">até ${brl(o.max)} · ${o.linhas}</div>`
+                    : `<span class="val-main num">${brl(o.ref)}</span><div class="val-range">${o.linhas}</div>`;
+  return `<tr>
+    <td class="cli"><span class="stripe" style="background:${st.stripe}"></span>${o.cliente}<div class="esc">${o.escopo}</div></td>
+    <td><span class="tp">${o.tipo}</span></td>
+    <td class="r">${val}</td>
+    <td><span class="chip ${st.cls}">${st.txt}</span></td>
+    <td><span class="chip ${dv.cls}">${dv.txt}</span></td>
+  </tr>`;
+}).join("");
+
+document.getElementById("parados").innerHTML = PARADOS.map((p,i)=>`
+  <div class="parado" style="${i?'border-top:1px solid var(--line-soft)':''}">
+    <span class="ic">${i? "📄":"⛔"}</span>
+    <div><span class="b">${p.cliente}</span> — ${p.escopo}<div class="t">${p.motivo}</div></div>
+  </div>`).join("");
+
+// theme toggle (viewer chrome also controls this)
+const root=document.documentElement, tgl=document.getElementById("tgl");
+tgl.addEventListener("click",()=>{
+  const dark = root.getAttribute("data-theme")==="dark" || (!root.getAttribute("data-theme") && matchMedia("(prefers-color-scheme:dark)").matches);
+  root.setAttribute("data-theme", dark?"light":"dark");
+});
+</script>
