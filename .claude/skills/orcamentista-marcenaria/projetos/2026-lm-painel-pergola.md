@@ -37,11 +37,17 @@ Cotas lidas do **vetor do CAD** (planta + elevações + cortes) — calcular, n�
 | Visitas + logística | | | 1.350 |
 | **CUSTO MATERIAL** | | | **≈ R$ 34.900** |
 
-## Portas (destacadas na proposta)
-1 porta **ripada** (90×210) · 2 portas de **giro** na copa (+ painel entre elas) · 2 portas do **armário gourmet** (42,3) · 1 porta de **acesso ao QG** embutida no painel · 1 porta em **vidro temperado com película jateada** (pilar, terceiro).
+## Portas (destacadas na proposta) — CORRIGIDO
+2 portas de **giro** na copa (+ painel entre elas) · 2 portas do **armário gourmet** (42,3) · 1 porta de **acesso ao QG** embutida no painel.
+**FORA (terceiros, correção do Jonathan):** a porta com lâminas horizontais da Elev.2 é **veneziana** (não marcenaria Valvic); a portinhola 30×20 do pilar (*"vidro temperado c/ película jateada"*, acesso hidrante) é **vidraceiro**. Ambas removidas do escopo/preço.
 
-## Fechamento (confirmado): chapa R$ 500 · sem RT · MC 40% → **R$ 91.300**
-Breakdown destacando pérgola + portas: Painéis R$ 44.000 · **Pérgola R$ 18.000** · **Portas R$ 9.300** · Móveis + complementos R$ 20.000. Pagto 40/40/20 · prazo 45–60 úteis · garantia 2 anos.
+## Corretor & Inox (esclarecimentos)
+- **Corretores** = Painel Corretor (MOB 01): backdrop 8,17×3,85 em Cravo Trend — faixa sup. 4×204,4 (h=125) + **caixa em marcenaria** central recuada (h=260). Não é balcão.
+- **Inox** = rodapé em perfil de **inox escovado 5×0,5, h=5cm** (DET.02), na base dos painéis. Serralheria (incluso, coordenado pela Valvic).
+
+## Fechamento (confirmado): chapa R$ 500 · sem RT · MC 40% → **R$ 88.200**
+*(era R$ 91.300; −R$ 3.100 ao remover veneziana + vidro jateado, ambos terceiros.)* Material R$ 33.694.
+Breakdown: Painéis R$ 45.700 · **Pérgola R$ 18.000** · **Portas (giro+acesso) R$ 5.500** · Móveis + complementos R$ 19.000. Pagto 40/40/20 · prazo 45–60 úteis · garantia 2 anos.
 
 ## Preço (motor comercial) — sensibilidade
 denom = 1 − 0,18 − 0,88·b − MC. **MC 40% · sem RT → R$ 91.300** · **MC 40% · RT 10% → R$ 118.600** · MC 43%/RT10 → R$ 132.100.

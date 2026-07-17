@@ -69,13 +69,13 @@ custo_mad     = ch_mad*PRC[15]
 pes_metalicos = 6*60             # movel lounge sobre pes
 rodape_inox   = (24+8)*40        # ~32 m perfil inox h5 x R$40/m (terceiro inox)
 rodape_polies = 8*18             # poliestireno santa luzia (corretor)
-porta_vidro   = 900              # porta vidro temperado jateado 30x20 (terceiro)
+porta_vidro   = 0                # vidro jateado do pilar = VIDRACEIRO (terceiro), fora do escopo Valvic
 sanca_led     = 350              # perfil+fita+fonte 3000K
 moldura_hidr  = 200              # caixa MDF moldura hidrante
 ch_tot = ch_cravo+ch_moscada+ch_moscada6+ch_mad
 fita   = ch_tot*80
 insumos= ch_tot*60
-usinagem = 1200                  # frisos quinas + puxador calha + cava porta ripada
+usinagem = 900                   # frisos quinas + puxador calha (SEM porta ripada/veneziana = terceiro)
 visitas  = 3*250
 logistica= 4*150
 forro_gypsum = 0                 # gesseiro -> FLAG (por conta de terceiro/cliente?)

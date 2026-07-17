@@ -59,6 +59,7 @@ Stand de vendas comercial (2 pranchas executivas CAD): **MOB 01** Painel Correto
 - **Painéis Cravo Trend** parede a parede: MOB02 62,9 m² + MOB01 ~35,8 m² + porta ripada + armário ext = **107,5 m² → 25 chapas**. Móveis Moscada Matt (móvel lounge 300×60×35 + armário gourmet 97,5×248×42). MDF madeirado (pérgola+forro) 11 chapas. **39 chapas**, custo material **~R$ 34.900**.
 - **Preço:** chapa Arauco Realce R$ 500 · **sem RT** · **MC 40%** → **R$ 91.300**. Pagto 40/40/20, prazo 45–60 úteis, garantia 2a. Proposta comercial config única (sem linhas de ferragem), capa tipográfica (sem render, é CAD).
 - **Não inclusos:** forro gypsum (gesseiro), pontos elétr./hidr., obra civil.
+- **Rev. (Jonathan revisou):** tirei **veneziana** (a "porta ripada" da Elev.2 = veneziana, terceiro) e **vidro jateado** do pilar (vidraceiro) → **R$ 91.300 → R$ 88.200**. Corretor **não é balcão** — é backdrop + **caixa em marcenaria** (nicho recuado). **Inox** = rodapé perfil inox escovado 5cm (DET.02, serralheria). ⚠️ Lição: não rotular "ripado/balcão" no olho — conferir se é veneziana/nicho; e itens escritos na prancha (vidro) podem ser terceiro/existente, sempre confirmar escopo.
 - **Aprendizado:** ler cota do vetor (`get_text('words')`) é o método exato pra prancha CAD — clusterizar cadeias horizontais/verticais dá comprimento de parede e contagem de ripas sem erro. Coordenada do vetor = pt; imagem 2,2x = ×2,2.
 - **Arquivos:** `2026-lm-painel-pergola.md` · `corte-lm.py` · `build-lm.py` · `proposta-lm.html/.pdf`.
 
