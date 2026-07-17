@@ -51,6 +51,17 @@ pintura, porcelanato, rodapé poliestireno, blindex, arandelas e **madeira de de
   `proposta-ed-luxemburgo.html`/`.pdf`. Proposta subida ao Drive (pasta do cliente).
 - **Pendências:** confirmar prazo do boleto (assumido 30 dias); ver recado p/ Rodrigo.
 
+### [2026-07-17] Orçamento + Proposta — LM / SPE Nova Lima 1 (comercial: painéis + pérgola) — Lavinia
+**Solicitante:** Jonathan · **Projeto:** arq. **Lodi Motta / JBA** · **Status:** 🟢 Proposta entregue
+Stand de vendas comercial (2 pranchas executivas CAD): **MOB 01** Painel Corretores/Pilar + **MOB 02** Painel/Pérgula Gourmet-Lounge.
+- **Leitura do VETOR do CAD** (não OCR/olho): cotas exatas de planta/elevações. Alturas painel 2,62 m.
+- **PÉRGOLA cravada:** cadeia de cotas = **28 faces de 8** → **28 ripas** de metalon #10×5 × **3,09 m** (projeção). Barra 6 m, 2×3,09>6 → **1 ripa/barra = 28 barras** × R$150 + R$150 frete dedicado = **R$ 4.350**. (Cliente já sabia que não dá 2 numa barra — bateu.)
+- **Painéis Cravo Trend** parede a parede: MOB02 62,9 m² + MOB01 ~35,8 m² + porta ripada + armário ext = **107,5 m² → 25 chapas**. Móveis Moscada Matt (móvel lounge 300×60×35 + armário gourmet 97,5×248×42). MDF madeirado (pérgola+forro) 11 chapas. **39 chapas**, custo material **~R$ 34.900**.
+- **Preço:** chapa Arauco Realce R$ 500 · **sem RT** · **MC 40%** → **R$ 91.300**. Pagto 40/40/20, prazo 45–60 úteis, garantia 2a. Proposta comercial config única (sem linhas de ferragem), capa tipográfica (sem render, é CAD).
+- **Não inclusos:** forro gypsum (gesseiro), pontos elétr./hidr., obra civil.
+- **Aprendizado:** ler cota do vetor (`get_text('words')`) é o método exato pra prancha CAD — clusterizar cadeias horizontais/verticais dá comprimento de parede e contagem de ripas sem erro. Coordenada do vetor = pt; imagem 2,2x = ×2,2.
+- **Arquivos:** `2026-lm-painel-pergola.md` · `corte-lm.py` · `build-lm.py` · `proposta-lm.html/.pdf`.
+
 ### [2026-07-16] Orçamento + Proposta — Graça (despensa + lavanderia + tanque) — Lavinia
 **Solicitante:** Jonathan · **Projeto:** arq. **Lais Teles** (RT 10% líq.) · **Status:** 🟢 Proposta entregue
 3 ambientes, 4 conjuntos de marcenaria, **projeto 100% MDF Azul Petróleo Guararapes** (25 pranchas, "Detalhamento").

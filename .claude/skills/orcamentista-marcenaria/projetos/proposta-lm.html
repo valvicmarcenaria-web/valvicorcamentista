@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+:root{--gold:#B8901E;--gold-soft:#D9B25A;--gold-deep:#9A6E12;--ink:#211a12;--ink-soft:#5c5344;--mut:#8b8172;
+--cream:#FCF8F0;--line:#EAE0CB;--line-soft:#F0E9D9;--paper:#fff;--petrol:#2C4A5A;--petrol-tint:#F5F8F8;--petrol-line:#CBD7DB;}
+@page{size:A4;margin:0;}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;color:var(--ink);font-size:10.5pt;line-height:1.6;}
+.serif{font-family:'Cormorant Garamond','Georgia',serif;}
+.page{position:relative;width:210mm;height:297mm;padding:15mm 18mm 14mm;page-break-after:always;overflow:hidden;background:var(--paper);}
+.page:last-child{page-break-after:auto;}
+h1,h2,h3{margin:0;font-weight:600;}
+p{margin:8px 0;}
+.eyebrow{letter-spacing:.34em;text-transform:uppercase;font-size:8pt;font-weight:700;color:var(--gold-deep);}
+.rule{height:1.5px;width:46px;background:var(--gold-soft);border:0;margin:11px 0 13px;}
+.section-h{font-family:'Cormorant Garamond','Georgia',serif;font-size:23pt;font-weight:700;color:var(--ink);line-height:1.1;}
+.lead{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;font-style:italic;color:var(--ink-soft);line-height:1.5;max-width:160mm;}
+.pfoot{position:absolute;left:18mm;right:18mm;bottom:12mm;display:flex;justify-content:space-between;font-size:7.4pt;color:var(--mut);letter-spacing:.13em;border-top:1px solid var(--line-soft);padding-top:3mm;}
+.brandline{font-family:'Cormorant Garamond','Georgia',serif;font-weight:700;letter-spacing:.12em;}.brandline .dot{color:var(--gold);}
+
+/* CAPA */
+.cover{padding:0;background:var(--cream);}
+.cover .frame{position:absolute;inset:10mm;border:1px solid var(--gold-soft);pointer-events:none;}
+.cover .inner{position:relative;padding:28mm 20mm 16mm;height:297mm;}
+.brand{font-family:'Cormorant Garamond','Georgia',serif;font-size:30pt;font-weight:700;letter-spacing:.2em;color:var(--ink);}
+.brand .dot{color:var(--gold);}
+.brand-sub{letter-spacing:.52em;font-size:7.6pt;font-weight:700;color:var(--gold-deep);margin-top:3px;}
+.cover .kicker{margin-top:74mm;letter-spacing:.34em;text-transform:uppercase;font-size:8.6pt;font-weight:700;color:var(--gold-deep);}
+.cover .client{font-family:'Cormorant Garamond','Georgia',serif;font-size:40pt;font-weight:700;line-height:1.02;margin:5px 0 4px;color:var(--ink);}
+.cover .proj{font-family:'Cormorant Garamond','Georgia',serif;font-style:italic;font-size:15pt;color:var(--ink-soft);}
+.cover .meta{margin-top:9mm;display:flex;gap:7mm;flex-wrap:wrap;}
+.cover .meta .m{border-left:2px solid var(--gold-soft);padding-left:4mm;}
+.cover .meta .t{font-size:7pt;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;}
+.cover .meta .v{font-family:'Cormorant Garamond','Georgia',serif;font-size:13pt;font-weight:700;color:var(--ink);}
+.cover .foot{position:absolute;left:20mm;right:20mm;bottom:16mm;display:flex;justify-content:space-between;align-items:flex-end;font-size:8.4pt;color:var(--ink-soft);}
+.sparkles{font-size:11pt;color:var(--gold-soft);letter-spacing:.45em;margin-bottom:3mm;}
+
+/* ESCOPO */
+.block{margin-top:6mm;padding-left:5mm;border-left:2px solid var(--gold-soft);}
+.block .nm{font-family:'Cormorant Garamond','Georgia',serif;font-size:16.5pt;font-weight:700;color:var(--ink);}
+.block .sub{font-size:8pt;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;margin-top:1mm;}
+.block ul{margin:2.5mm 0 0;padding-left:4.6mm;font-size:9.3pt;color:var(--ink-soft);}
+.block li{margin:1.6mm 0;}
+.block b{color:var(--ink);}
+.perg{background:var(--petrol-tint);border:1px solid var(--petrol-line);border-radius:6px;padding:4.5mm 5.5mm;margin-top:7mm;}
+.perg .t{font-family:'Cormorant Garamond','Georgia',serif;font-size:14pt;font-weight:700;color:var(--petrol);}
+.perg .d{font-size:9pt;color:var(--ink-soft);margin-top:1.5mm;}
+.perg b{color:var(--petrol);}
+
+/* INVESTIMENTO */
+.hero{margin-top:6mm;border:1px solid var(--line);border-radius:8px;padding:7mm 8mm;position:relative;background:var(--paper);}
+.hero::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold-soft);border-radius:8px 0 0 8px;}
+.hero .t{letter-spacing:.2em;text-transform:uppercase;font-size:8pt;font-weight:700;color:var(--gold-deep);}
+.hero .big{font-family:'Cormorant Garamond','Georgia',serif;font-size:34pt;font-weight:700;color:var(--ink);line-height:1;margin:3mm 0 1mm;}
+.hero .cap{font-size:9pt;color:var(--ink-soft);}
+table{width:100%;border-collapse:collapse;margin:7mm 0 2mm;font-size:9.8pt;}
+thead th{background:transparent;color:var(--ink-soft);font-size:7.4pt;letter-spacing:.16em;text-transform:uppercase;font-weight:700;border:0;border-bottom:1.5px solid var(--ink);padding:0 4mm 2.2mm;text-align:left;}
+td{padding:2.4mm 4mm;border-bottom:1px solid var(--line-soft);}
+td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
+.nmc{font-weight:600;color:var(--ink);}
+.grand td{border:0;border-top:1.5px solid var(--gold);color:var(--ink);font-weight:700;font-size:11.5pt;padding-top:3mm;}
+.grand .serif{font-size:14pt;}
+.split{display:flex;gap:9mm;margin-top:6mm;}.split>div{flex:1;}
+h3.blk{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;color:var(--ink);margin-bottom:1mm;}
+.hrule{height:1px;background:var(--line);margin:2.5mm 0 3mm;}
+.pay{margin:2mm 0 0;padding-left:4.6mm;}.pay li{margin:1.6mm 0;font-size:9.3pt;color:var(--ink-soft);}.pay b{color:var(--ink);}
+.terms{display:flex;gap:5mm;margin-top:3mm;}
+.term{flex:1;border:1px solid var(--line);border-radius:4px;padding:3.4mm 3mm;text-align:center;}
+.term .t{font-size:7pt;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;}
+.term .b{font-family:'Cormorant Garamond','Georgia',serif;font-size:13pt;font-weight:700;margin-top:3px;line-height:1.12;color:var(--ink);}
+.note{margin-top:7mm;padding-left:5mm;border-left:2px solid var(--gold-soft);font-size:8.5pt;color:var(--ink-soft);line-height:1.55;}
+.note b{color:var(--ink);}
+.note .h{font-size:7.4pt;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;margin-bottom:2mm;}
+</style></head>
+<body>
+
+<!-- CAPA -->
+<div class="page cover">
+  <div class="frame"></div>
+  <div class="inner">
+    <div><div class="brand">valvic<span class="dot">.</span></div><div class="brand-sub">MARCENARIA</div></div>
+    <div class="kicker">Proposta comercial</div>
+    <div class="client">SPE Nova Lima 1</div>
+    <div class="proj">Painéis, pérgola e mobiliário — stand de vendas · projeto arq. Lodi Motta</div>
+    <div class="meta">
+      <div class="m"><div class="t">Escopo</div><div class="v">Corretores · Pilar · Gourmet/Lounge</div></div>
+      <div class="m"><div class="t">Acabamento</div><div class="v">MDF Arauco Realce Cravo Trend</div></div>
+    </div>
+    <div class="foot">
+      <div><span class="sparkles">&#10022; &#10022; &#10022;</span><br>Do executivo ao encaixe, medido no milímetro.</div>
+      <div style="text-align:right">17 de julho de 2026<br>validade 15 dias</div>
+    </div>
+  </div>
+</div>
+
+<!-- ESCOPO -->
+<div class="page">
+  <div class="eyebrow">O que será executado</div>
+  <div class="section-h serif">Escopo da marcenaria</div>
+  <hr class="rule">
+  <p class="lead">Leitura fiel do seu executivo — cada painel medido parede a parede e o metalon da pérgola calculado ripa a ripa. Nada estimado.</p>
+
+  <div class="block">
+    <div class="nm">Gourmet / Lounge</div>
+    <div class="sub">Painéis · armário gourmet · móvel do lounge</div>
+    <ul>
+      <li>Painéis em <b>MDF Arauco Realce Cravo Trend</b> revestindo as paredes do ambiente (~63 m²), com rodapé em perfil de inox h=5.</li>
+      <li><b>Armário Gourmet</b> (97,5×248×42) — exterior Cravo Trend, caixa/nicho em Moscada Matt, 2 portas.</li>
+      <li><b>Móvel do Lounge</b> (300×60×35) em Moscada Matt — 2 nichos e 4 gavetas, sobre pés metálicos.</li>
+      <li>Porta ripada e forro em MDF madeirado.</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <div class="nm">Corretores &amp; Pilar central</div>
+    <div class="sub">Backdrop · stand · pilar</div>
+    <ul>
+      <li>Painel dos corretores em Cravo Trend (backdrop 8,17×3,85) com <b>stand/balcão em marcenaria</b>.</li>
+      <li>Painel do <b>pilar central</b> envolvendo a coluna (h=3,85) com moldura de hidrante em MDF, <b>sanca com LED 3000K</b> e porta em vidro temperado com película jateada.</li>
+    </ul>
+  </div>
+
+  <div class="perg">
+    <div class="t">Pérgola — 28 ripas em metalon #10×5</div>
+    <div class="d">Estrutura em <b>perfil metálico #10×5 revestido em MDF madeirado</b>: <b>28 ripas de 3,09 m</b>, calculadas ripa a ripa (barra de 6 m, uma ripa por barra). Fornecimento e revestimento inclusos.</div>
+  </div>
+
+  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>SPE Nova Lima 1 · Projeto Lodi Motta</span></div>
+</div>
+
+<!-- INVESTIMENTO -->
+<div class="page">
+  <div class="eyebrow">Investimento</div>
+  <div class="section-h serif">Uma execução, do desenho ao encaixe</div>
+  <hr class="rule">
+
+  <div class="hero">
+    <div class="t">Investimento total</div>
+    <div class="big serif">R$ 91.300</div>
+    <div class="cap">Painéis + pérgola + mobiliário, fornecimento e instalação por equipe própria Valvic.</div>
+  </div>
+
+  <table>
+    <thead><tr><th>Frente</th><th class="r">Valor</th></tr></thead>
+    <tbody>
+      <tr><td class="nmc">Gourmet / Lounge — painéis, armário, móvel e pérgola</td><td class="r">R$ 63.900</td></tr>
+      <tr><td class="nmc">Corretores &amp; Pilar central — painéis, stand, sanca e vidro</td><td class="r">R$ 27.400</td></tr>
+    </tbody>
+    <tfoot><tr class="grand"><td class="serif">Total</td><td class="r serif">R$ 91.300</td></tr></tfoot>
+  </table>
+
+  <div class="split">
+    <div>
+      <h3 class="blk">Condições de pagamento</h3>
+      <div class="hrule"></div>
+      <ul class="pay">
+        <li><b>40%</b> de entrada (assinatura)</li>
+        <li><b>40%</b> no início da montagem</li>
+        <li><b>20%</b> na entrega final</li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="blk">Prazo &amp; garantia</h3>
+      <div class="hrule"></div>
+      <div class="terms">
+        <div class="term"><div class="t">Entrega</div><div class="b">45 a 60<br>dias úteis</div></div>
+        <div class="term"><div class="t">Garantia</div><div class="b">2 anos</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <div class="h">Premissas &amp; não inclusos</div>
+    Painéis em MDF Arauco Realce Cravo Trend (aparente) e Moscada Matt (caixas/móveis); pérgola em metalon #10×5 revestido em MDF madeirado. <b>Não inclusos:</b> forro em gypsum (por conta do gesseiro), pontos elétricos/hidráulicos de alimentação e serviços de obra civil (gesso, pintura, alvenaria). Medidas a conferir no local, conforme nota do projeto. Prazo a partir da aprovação do executivo e liberação da frente de trabalho.
+  </div>
+
+  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>SPE Nova Lima 1 · Projeto Lodi Motta · 17/07/2026</span></div>
+</div>
+
+</body></html>

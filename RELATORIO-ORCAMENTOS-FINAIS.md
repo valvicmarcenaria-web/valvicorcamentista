@@ -18,6 +18,7 @@
 | **Lilian Lee** | Apto completo — marcenaria + portas provençais. Decoradora **Jéssica Sollero** (RT 10%) | **3 linhas:** Essencial **R$ 127.000** (2a) · Conforto **R$ 137.000** (5a) · Premium **R$ 180.500** (10a) + logística Vila Velha à parte | 🟢 Concluído | ❌ **não está no Drive** |
 | **Hotel Ibis Betim** | Hall comercial — nichos + molduras + balcão (interior MDF branco) | **R$ 16.500** (MC 31%, RT 10% DAD, pagto 50/50 sem cartão) | 🟢 Concluído | ⚠️ pasta `hotel_ibis` existe, **proposta não subida** |
 | **Resolve Consórcio** | Comercial — 14 ambientes (recepção, salas, 63 lockers, 7 cabines acústicas). Parceria Jéssica | **Refeito peça-a-peça** (79 chapas + ripado Eucatex real): Essencial **R$ 147.800** (Hardt/5a) · Prime **R$ 174.800** (Hettich/10a). Pagto 40/40/20, prazo 90–100d | 🟢 **Entregue** (formato Jairo, renders do cliente) | ❌ **não está no Drive** |
+| **SPE Nova Lima 1** (LM) | Stand comercial (2 pranchas exec.) — painéis MDF Arauco Cravo Trend (~107 m²), **pérgola 28 ripas metalon #10×5**, armário gourmet + móvel lounge (Moscada), stand corretores + pilar. Projeto **arq. Lodi Motta/JBA** | **Config única R$ 91.300** (chapa R$500 · sem RT · MC 40%). Pagto 40/40/20, prazo 45–60 úteis | 🟢 Proposta entregue (comercial, 3 págs) | ❌ **não está no Drive** |
 | **Graça** | 3 ambientes — Despensa (armário revestido + bancada L) · Lavanderia (torre máq. lavar) · Armário-tanque. **Projeto 100% MDF Azul Petróleo Guararapes**, tampos em pedra (marmorista). Projeto **arq. Lais Teles** (RT 10%) | **Cálculo peça-a-peça** (9 chapas, nesting unificado): Essencial **R$ 20.100** (telescópica/2a · MC 32%) · Essencial Prime **R$ 24.000** (oculta alemã/5a · MC 37%). Pagto padrão c/ escala, prazo 60–90d | 🟢 Proposta entregue (3 págs, layout leve) | ❌ **não está no Drive** |
 
 ## 2) Orçamentos anteriores (no repositório)
@@ -40,7 +41,8 @@ Ação manual do Jonathan (arrastar PDF) **ou** liberar a escrita do conector Go
 4. **Hotel Ibis** — subir `proposta-hotel-ibis.pdf` na pasta `hotel_ibis` (já existe).
 5. **Maria** — subir `proposta-maria-lavanderia-painel.pdf` + `aditivo-contratual-maria-lavanderia-painel.pdf` na pasta "Maria".
 6. **Resolve Consórcio** — criar pasta + subir `proposta-resolve-consorcio.pdf` (R$ 147.800 / 174.800).
-7. **Graça** — criar pasta + subir `proposta-graca.pdf` (R$ 21.900 / 24.800).
+7. **Graça** — criar pasta + subir `proposta-graca.pdf` (R$ 20.100 / 24.000).
+8. **SPE Nova Lima 1 (LM)** — criar pasta + subir `proposta-lm.pdf` (R$ 91.300).
 > Todos os arquivos acima estão **salvos e versionados no Git** (branch acima) — o Drive é só a cópia de acesso do time.
 
 ## 4) Método consolidado — calcular, nunca estimar
