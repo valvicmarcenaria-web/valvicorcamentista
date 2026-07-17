@@ -180,10 +180,10 @@ if len(sys.argv)>2 and sys.argv[2]=='json':
       "Especiais¦Logística específica": 6,
     }
     S={
-      "cliente":"Aline Sanches","projeto":"Apartamento completo","versao":"001","inv":0,"mcAlvo":42,
+      "cliente":"Aline Sanches","projeto":"Apartamento completo","versao":"001 · interior "+("Cor (Nude)" if INT=='Nude' else "Branco TX"),"inv":0,"mcAlvo":38,
       "p":{"nf":4,"parc":8,"vend":3,"rt":10,"vis":250,"outv":0,"prog":0.8,"coord":1,"marc":2.5,"serra":0.2,"manut":0.5,"erro":0.5},
       "ambientes":[{"nome":"Apartamento — marcenaria","q":q,"terc":{"vid":0,"esq":0,"ser":0,"pin":0,"est":0,"laq":0,"log":0}}],
-      "ativo":0,"collapsed":{},"theme":"dark","diretrizes":"Interior Branco TX (base). Ferragem: Telescópica (gavetas) + Hardt (portas). Upgrade cor interna tratado na proposta.","rodrigo":"","duvidas":[]
+      "ativo":0,"collapsed":{},"theme":"dark","diretrizes":"Ferragem: Telescópica (gavetas) + Hardt (portas). Interior "+INT+". MC alvo 38%.","rodrigo":"","duvidas":[]
     }
     import json
     print("\n===JSON_VALIDADOR_START===")
