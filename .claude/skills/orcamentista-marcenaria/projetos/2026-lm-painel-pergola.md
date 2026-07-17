@@ -37,6 +37,12 @@ Cotas lidas do **vetor do CAD** (planta + elevações + cortes) — calcular, n�
 | Visitas + logística | | | 1.350 |
 | **CUSTO MATERIAL** | | | **≈ R$ 34.900** |
 
+## Portas (destacadas na proposta)
+1 porta **ripada** (90×210) · 2 portas de **giro** na copa (+ painel entre elas) · 2 portas do **armário gourmet** (42,3) · 1 porta de **acesso ao QG** embutida no painel · 1 porta em **vidro temperado com película jateada** (pilar, terceiro).
+
+## Fechamento (confirmado): chapa R$ 500 · sem RT · MC 40% → **R$ 91.300**
+Breakdown destacando pérgola + portas: Painéis R$ 44.000 · **Pérgola R$ 18.000** · **Portas R$ 9.300** · Móveis + complementos R$ 20.000. Pagto 40/40/20 · prazo 45–60 úteis · garantia 2 anos.
+
 ## Preço (motor comercial) — sensibilidade
 denom = 1 − 0,18 − 0,88·b − MC. **MC 40% · sem RT → R$ 91.300** · **MC 40% · RT 10% → R$ 118.600** · MC 43%/RT10 → R$ 132.100.
 

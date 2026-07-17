@@ -47,10 +47,16 @@ p{margin:8px 0;}
 .block ul{margin:2.5mm 0 0;padding-left:4.6mm;font-size:9.3pt;color:var(--ink-soft);}
 .block li{margin:1.6mm 0;}
 .block b{color:var(--ink);}
-.perg{background:var(--petrol-tint);border:1px solid var(--petrol-line);border-radius:6px;padding:4.5mm 5.5mm;margin-top:7mm;}
-.perg .t{font-family:'Cormorant Garamond','Georgia',serif;font-size:14pt;font-weight:700;color:var(--petrol);}
-.perg .d{font-size:9pt;color:var(--ink-soft);margin-top:1.5mm;}
-.perg b{color:var(--petrol);}
+.highlights{display:flex;gap:6mm;margin-top:8mm;}
+.hl{flex:1;border-radius:6px;padding:4.5mm 5mm;}
+.hl.perg{background:var(--petrol-tint);border:1px solid var(--petrol-line);}
+.hl.port{background:#FBF3E1;border:1px solid var(--line);}
+.hl .t{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;font-weight:700;line-height:1.1;}
+.hl.perg .t{color:var(--petrol);}
+.hl.port .t{color:var(--gold-deep);}
+.hl ul{margin:2.5mm 0 0;padding-left:4.4mm;font-size:8.5pt;color:var(--ink-soft);line-height:1.45;}
+.hl li{margin:1.4mm 0;}
+.hl b{color:var(--ink);}
 
 /* INVESTIMENTO */
 .hero{margin-top:6mm;border:1px solid var(--line);border-radius:8px;padding:7mm 8mm;position:relative;background:var(--paper);}
@@ -125,9 +131,21 @@ h3.blk{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;color:v
     </ul>
   </div>
 
-  <div class="perg">
-    <div class="t">Pérgola — 28 ripas em metalon #10×5</div>
-    <div class="d">Estrutura em <b>perfil metálico #10×5 revestido em MDF madeirado</b>: <b>28 ripas de 3,09 m</b>, calculadas ripa a ripa (barra de 6 m, uma ripa por barra). Fornecimento e revestimento inclusos.</div>
+  <div class="highlights">
+    <div class="hl perg">
+      <div class="t">Pérgola — metalon #10×5</div>
+      <ul>
+        <li><b>28 ripas de 3,09 m</b> em perfil metálico #10×5 <b>revestido em MDF madeirado</b>.</li>
+        <li>Calculadas ripa a ripa (barra de 6 m, 1 ripa/barra). Fornecimento, revestimento e instalação.</li>
+      </ul>
+    </div>
+    <div class="hl port">
+      <div class="t">Portas em destaque</div>
+      <ul>
+        <li><b>1 porta ripada</b> (90×210) · <b>portas de giro</b> na copa e no armário gourmet.</li>
+        <li><b>Porta em vidro temperado</b> jateado (pilar) · porta de acesso ao QG embutida no painel.</li>
+      </ul>
+    </div>
   </div>
 
   <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>SPE Nova Lima 1 · Projeto Lodi Motta</span></div>
@@ -148,8 +166,10 @@ h3.blk{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;color:v
   <table>
     <thead><tr><th>Frente</th><th class="r">Valor</th></tr></thead>
     <tbody>
-      <tr><td class="nmc">Gourmet / Lounge — painéis, armário, móvel e pérgola</td><td class="r">R$ 63.900</td></tr>
-      <tr><td class="nmc">Corretores &amp; Pilar central — painéis, stand, sanca e vidro</td><td class="r">R$ 27.400</td></tr>
+      <tr><td class="nmc">Painéis — MDF Cravo Trend (Gourmet/Lounge + Corretores + Pilar)</td><td class="r">R$ 44.000</td></tr>
+      <tr><td class="nmc">Pérgola — 28 ripas metalon #10×5 revestido em MDF madeirado</td><td class="r">R$ 18.000</td></tr>
+      <tr><td class="nmc">Portas — ripada, de giro, vidro jateado e acesso</td><td class="r">R$ 9.300</td></tr>
+      <tr><td class="nmc">Móveis + complementos — armário gourmet, móvel lounge, sanca, inox</td><td class="r">R$ 20.000</td></tr>
     </tbody>
     <tfoot><tr class="grand"><td class="serif">Total</td><td class="r serif">R$ 91.300</td></tr></tfoot>
   </table>
