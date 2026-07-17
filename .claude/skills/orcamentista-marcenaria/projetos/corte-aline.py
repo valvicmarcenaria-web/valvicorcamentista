@@ -141,5 +141,51 @@ def run():
         for mc in (0.40,0.42):
             inv=material/(1-a-liqF*b-mc)
             print(f"  MC {int(mc*100)}% RT {int(rt*100)}% -> R$ {inv:,.0f}".replace(',','.'))
-    return material
+    return tot_ch,tot_cost,cpm
 run()
+
+# ===================================================== EXPORT JSON VALIDADOR (interior branco)
+def chapas_por_lib():
+    # soma cor (Nude+Cumaru) e branco por espessura -> chapas (lib precifica por chapa)
+    agg={}
+    for (mat,esp),area in tal.items():
+        libmat = 'cor' if COR[mat]=='cor' else 'branco'
+        agg[(libmat,esp)]=agg.get((libmat,esp),0)+area
+    out={}
+    for (libmat,esp),area in agg.items():
+        out[(libmat,esp)]=math.ceil(area/(CHAPA*APRO[esp]))
+    return out
+
+if len(sys.argv)>2 and sys.argv[2]=='json':
+    ch=chapas_por_lib()
+    # ferragens/insumos (contagem real do projeto) -> chaves da lib
+    q={
+      "MDF¦mdf cor 15": ch.get(('cor',15),0), "MDF¦mdf cor 18": ch.get(('cor',18),0), "MDF¦mdf cor 6": ch.get(('cor',6),0),
+      "MDF¦mdf branco 15": ch.get(('branco',15),0), "MDF¦mdf branco 6": ch.get(('branco',6),0),
+      "Cola e fita¦Fita de borda - cor - mt": 560, "Cola e fita¦Fita de borda - branco tx - mt": 620,
+      "Cola e fita¦Colagem - mt linear - máquina": 1180,
+      "Corrediças¦Telescópica": 21,               # gavetas
+      "Dobradiças¦Hardt": 46,                       # portas de abrir
+      "Sistema portas roupeiros¦SS150 - 2 portas": 2, "Sistema portas roupeiros¦Trilho SS150 - 3mt": 2,
+      "Sistema portas rack e suspenso¦Linea 1 porta": 1,   # espelheira banheiro (porta correr espelho)
+      "Iluminação¦LED - fita + perfil - mt": 11,    # cavas 3000K (torre, nichos, prateleiras, portico, cabeceira)
+      "Vidros e espelhos (m²)¦Vidro incolor temperado 8mm": 2, "Vidros e espelhos (m²)¦Espelho prata": 4,
+      "Suportes¦Serralheria prat. simples": 6,      # prateleiras/suportes serralheria de apoio
+      "Parafusos / dispositivos / montagem¦Parafusos gerais - especulação": 1,
+      "Parafusos / dispositivos / montagem¦Sup. prateleiras - cj4": 18,
+      "Parafusos / dispositivos / montagem¦Cola kit Teck bond": 4, "Parafusos / dispositivos / montagem¦PUR / PU": 3,
+      "Parafusos / dispositivos / montagem¦Silicone acabamento": 3,
+      "Limpeza / embalagem¦Tinner (litro)": 6, "Limpeza / embalagem¦Estopa (pacote)": 6,
+      "Limpeza / embalagem¦Strech": 10, "Limpeza / embalagem¦Cantoneira": 40, "Limpeza / embalagem¦Embalagem": 10,
+      "Especiais¦Logística específica": 6,
+    }
+    S={
+      "cliente":"Aline Sanches","projeto":"Apartamento completo","versao":"001","inv":0,"mcAlvo":42,
+      "p":{"nf":4,"parc":8,"vend":3,"rt":10,"vis":250,"outv":0,"prog":0.8,"coord":1,"marc":2.5,"serra":0.2,"manut":0.5,"erro":0.5},
+      "ambientes":[{"nome":"Apartamento — marcenaria","q":q,"terc":{"vid":0,"esq":0,"ser":0,"pin":0,"est":0,"laq":0,"log":0}}],
+      "ativo":0,"collapsed":{},"theme":"dark","diretrizes":"Interior Branco TX (base). Ferragem: Telescópica (gavetas) + Hardt (portas). Upgrade cor interna tratado na proposta.","rodrigo":"","duvidas":[]
+    }
+    import json
+    print("\n===JSON_VALIDADOR_START===")
+    print(json.dumps(S,ensure_ascii=False,indent=1))
+    print("===JSON_VALIDADOR_END===")
