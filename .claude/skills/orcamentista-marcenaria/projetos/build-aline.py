@@ -159,7 +159,7 @@ HTML=f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">{CSS}</he
       <tr><td>4º boleto — 120 dias</td><td>17,5%</td></tr>
     </tbody></table></div>
     <div class="meta-row">
-      <div class="meta-card mc-navy"><div class="mc-label">Prazo de entrega</div><div class="mc-val">90–120</div><div class="mc-sub">dias · a partir da aprovação</div></div>
+      <div class="meta-card mc-navy"><div class="mc-label">Prazo de entrega</div><div class="mc-val">50–60</div><div class="mc-sub">dias úteis · a partir da aprovação</div></div>
       <div class="meta-card mc-gold"><div class="mc-label">Garantia</div><div class="mc-val">5 anos</div><div class="mc-sub">ferragens Hardt</div></div>
       <div class="meta-card mc-cream"><div class="mc-label">Validade dos valores</div><div class="mc-val">10</div><div class="mc-sub">dias corridos</div></div>
     </div>
