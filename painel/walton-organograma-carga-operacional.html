@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Organograma & Carga Operacional — Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A3 landscape; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:#1b2733; background:#d9dde3; font-size:10px; line-height:1.4; -webkit-font-smoothing:antialiased; }
+  .num{ font-variant-numeric:tabular-nums; }
+  :root{
+    --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-dk:#a9863f;
+    --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd;
+    --good:#0ca30c; --crit:#d03b3b;
+  }
+  .sheet{ position:relative; width:420mm; height:297mm; background:var(--cream); margin:16px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; }
+
+  .ph{ background:var(--navy); color:#fff; padding:7mm 14mm 5mm; display:flex; justify-content:space-between; align-items:flex-end; position:relative; }
+  .ph::after{ content:""; position:absolute; left:14mm; right:14mm; bottom:0; height:2.5px; background:linear-gradient(90deg,var(--gold),var(--gold-dk) 45%,transparent); }
+  .ph .kx{ font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:600; margin-top:2px; line-height:1.05; }
+  .ph .r{ text-align:right; } .ph .co{ font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:600; }
+  .ph .pg{ font-size:9px; color:rgba(255,255,255,.55); margin-top:3px; }
+
+  .body{ flex:1; padding:6mm 14mm 0; display:flex; flex-direction:column; gap:6px; min-height:0; position:relative; }
+
+  .kpis{ display:flex; gap:10px; }
+  .kpi{ flex:1; background:#fff; border:1px solid var(--line); border-radius:7px; padding:8px 13px; position:relative; overflow:hidden; }
+  .kpi::before{ content:""; position:absolute; top:0; left:0; right:0; height:3px; background:var(--gold); }
+  .kpi.b::before{ background:var(--navy); }
+  .kpi .kl{ font-size:8px; letter-spacing:1.1px; text-transform:uppercase; color:var(--muted); font-weight:600; }
+  .kpi .kv{ font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:700; margin-top:3px; letter-spacing:-.3px; color:var(--navy); }
+  .kpi .kv small{ font-size:11px; color:var(--muted); font-weight:600; font-family:'Inter'; }
+  .kpi .ks{ font-size:8px; color:var(--muted); margin-top:3px; line-height:1.35; }
+  .kpi .ks b{ color:var(--ink); }
+
+  /* ===== org tree ===== */
+  .tree{ position:relative; flex:1; display:flex; flex-direction:column; justify-content:space-evenly; gap:22px; padding:10px 0 26px; }
+  .lines{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+  .row{ position:relative; z-index:1; display:flex; justify-content:center; gap:14px; }
+  .row.top{ gap:34px; }
+
+  .hub{ background:#fff; border:1.4px solid var(--navy); border-radius:10px; padding:14px 22px; width:340px; box-shadow:0 3px 10px rgba(11,22,40,.08); }
+  .hub .role{ font-size:9px; letter-spacing:1.3px; text-transform:uppercase; color:var(--gold-dk); font-weight:700; }
+  .hub .name{ font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:700; color:var(--navy); line-height:1.05; margin-top:2px; }
+  .hub .title{ font-size:10px; color:var(--muted); margin-top:2px; }
+  .hub .chips{ display:flex; flex-wrap:wrap; gap:5px; margin-top:10px; }
+  .hub .chip{ font-size:8.4px; font-weight:600; background:#f4f1ea; border:1px solid var(--line); color:var(--ink); padding:3px 8px; border-radius:9px; }
+  .hub .badge{ margin-top:11px; display:flex; align-items:center; gap:8px; border-top:1px solid var(--line); padding-top:9px; }
+  .hub .badge .bn{ font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:700; color:var(--navy); }
+  .hub .badge .bt{ font-size:8.2px; color:var(--muted); line-height:1.3; }
+  .hub.warn .badge .bn{ color:var(--gold-dk); }
+
+  .node{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:9px 12px; width:140px; text-align:center; }
+  .node .role{ font-size:7.4px; letter-spacing:.8px; text-transform:uppercase; color:var(--muted); font-weight:700; }
+  .node .name{ font-size:11.5px; font-weight:700; color:var(--navy); margin-top:2px; }
+  .node .fn{ font-size:7.8px; color:var(--muted); margin-top:2px; line-height:1.35; }
+  .node.pending{ border-style:dashed; background:#faf8f2; }
+  .node.pending .name{ color:var(--gold-dk); }
+  .node.lvl2{ width:104px; padding:8px 8px; }
+  .node.lvl2 .name{ font-size:10.5px; }
+  .node .dual{ display:inline-block; margin-top:5px; font-size:6.8px; font-weight:800; letter-spacing:.3px; text-transform:uppercase; background:#f6edd6; color:var(--gold-dk); padding:2px 6px; border-radius:7px; }
+
+  .notes{ background:#f6f3ec; border:1px solid var(--line); border-radius:7px; padding:7px 12px; margin-top:2px; }
+  .notes .nt{ font-size:7px; letter-spacing:1.1px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:3px; }
+  .notes p{ font-size:8.4px; color:#41505d; line-height:1.5; }
+  .notes b{ color:var(--navy); }
+
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:4px 14mm; display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf .pl{ font-size:7.4px; color:var(--muted); } .pf .pr{ font-size:8.2px; color:var(--navy); font-weight:700; letter-spacing:1px; } .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Estrutura de Pessoal · Posição Julho/2026</div><div class="tt">Organograma & Carga Operacional</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Preparado para Walton · confidencial</div></div>
+  </div>
+
+  <div class="body">
+    <section class="kpis">
+      <div class="kpi b"><div class="kl">Equipe total</div><div class="kv num">9<small> + 1 a contratar</small></div><div class="ks">2 sócios-diretores + 7 profissionais de produção/tecnologia</div></div>
+      <div class="kpi"><div class="kl">Convergem em Paulo</div><div class="kv num">7</div><div class="ks">2 reporte direto (Deivson, Filipe) + 5 dupla checagem técnica</div></div>
+      <div class="kpi"><div class="kl">Convergem em Jonathan</div><div class="kv num">0<small> ativo</small></div><div class="ks">Assistente Operacional ainda <b>em contratação</b> — comercial hoje é solo</div></div>
+      <div class="kpi"><div class="kl">Dupla função</div><div class="kv num">2 / 2</div><div class="ks">Jonathan e Paulo <b>executam e gerenciam</b> ao mesmo tempo — sem camada intermediária entre eles e a operação</div></div>
+    </section>
+
+    <div class="tree" id="tree">
+      <svg class="lines" id="lines"></svg>
+
+      <div class="row top">
+        <div class="hub" id="n-jonathan">
+          <div class="role">Sócio · Diretor Comercial &amp; Experiência</div>
+          <div class="name">Jonathan</div>
+          <div class="title">Vendas, relacionamento, visão estratégica</div>
+          <div class="chips">
+            <span class="chip">Vendas &amp; fechamento</span>
+            <span class="chip">Relacionamento cliente/parceiro</span>
+            <span class="chip">Visão &amp; expansão</span>
+          </div>
+          <div class="badge"><div class="bn">1</div><div class="bt">pessoa prevista sob gestão<br>(a contratar)</div></div>
+        </div>
+        <div class="hub warn" id="n-paulo">
+          <div class="role">Sócio · Diretor de Operações &amp; Tecnologia</div>
+          <div class="name">Paulo</div>
+          <div class="title">Produção, máquinas, tecnologia, investimento</div>
+          <div class="chips">
+            <span class="chip">Produção &amp; prazo</span>
+            <span class="chip">Tecnologia CNC &amp; máquinas</span>
+            <span class="chip">Investimento &amp; CAPEX</span>
+            <span class="chip">Escalonamento técnico da equipe</span>
+          </div>
+          <div class="badge"><div class="bn">7</div><div class="bt">pessoas sob gestão direta<br>ou dupla checagem técnica</div></div>
+        </div>
+      </div>
+
+      <div class="row" id="row-l1">
+        <div class="node pending" id="n-asst">
+          <div class="role">Comercial &amp; Adm.</div>
+          <div class="name">Assistente Operacional</div>
+          <div class="fn">Karla · a contratar · reporta a Jonathan</div>
+        </div>
+        <div class="node" id="n-deivson">
+          <div class="role">Operações</div>
+          <div class="name">Deivson</div>
+          <div class="fn">Coordenador de Produção</div>
+        </div>
+        <div class="node" id="n-filipe">
+          <div class="role">Tecnologia CNC</div>
+          <div class="name">Filipe</div>
+          <div class="fn">Programador CNC &amp; Tecnologia</div>
+        </div>
+      </div>
+
+      <div class="row" id="row-l2">
+        <div class="node lvl2" id="n-joelson"><div class="name">Joelson</div><div class="fn">Operador CNC</div><span class="dual">+ Paulo</span></div>
+        <div class="node lvl2" id="n-samuel"><div class="name">Samuel</div><div class="fn">Marceneiro Sênior</div><span class="dual">+ Paulo</span></div>
+        <div class="node lvl2" id="n-jackson"><div class="name">Jackson</div><div class="fn">Marceneiro Pleno</div><span class="dual">+ Paulo</span></div>
+        <div class="node lvl2" id="n-jomar"><div class="name">Jomar</div><div class="fn">Marceneiro</div><span class="dual">+ Paulo</span></div>
+        <div class="node lvl2" id="n-limpeza"><div class="name">Suporte Limpeza</div><div class="fn">Conservação da fábrica</div><span class="dual">+ Paulo</span></div>
+      </div>
+    </div>
+
+    <div class="notes">
+      <div class="nt">Leitura</div>
+      <p>Hoje, <b>toda a operação converge para dois pontos: Jonathan e Paulo.</b> Paulo concentra a gestão — direta ou por dupla checagem técnica — de <b>7 dos 9 profissionais</b> da produção/tecnologia; Jonathan sustenta sozinho toda a frente comercial, sem nenhum suporte administrativo ativo (a Assistente Operacional segue em contratação). Nenhum dos dois tem hoje uma camada de gestão intermediária entre si e a execução — <b>ambos acumulam a função de gestor e de executor</b> ao mesmo tempo.</p>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Documento confidencial · preparado para Walton · Valvic Marcenaria — Vargas Decor Ltda</div><div class="pr">Julho <span>/</span> 2026</div></div>
+</section>
+
+<script>
+function drawLines(){
+  const svg = document.getElementById('lines');
+  const tree = document.getElementById('tree');
+  const treeBox = tree.getBoundingClientRect();
+  svg.setAttribute('viewBox', `0 0 ${treeBox.width} ${treeBox.height}`);
+  svg.innerHTML = '';
+  const NS = 'http://www.w3.org/2000/svg';
+  const el = (t,a) => { const e = document.createElementNS(NS,t); for(const k in a) e.setAttribute(k,a[k]); return e; };
+
+  function pt(node, edge){
+    const r = document.getElementById(node).getBoundingClientRect();
+    const x = r.left + r.width/2 - treeBox.left;
+    const y = (edge === 'bottom' ? r.bottom : r.top) - treeBox.top;
+    return {x,y};
+  }
+  function elbow(parentId, childIds){
+    const p = pt(parentId, 'bottom');
+    const childTops = childIds.map(cid => pt(cid, 'top'));
+    const avgChildTop = childTops.reduce((s,c) => s+c.y, 0) / childTops.length;
+    const midY = p.y + (avgChildTop - p.y) / 2;
+    childTops.forEach(c => {
+      const d = `M ${p.x} ${p.y} L ${p.x} ${midY} L ${c.x} ${midY} L ${c.x} ${c.y}`;
+      svg.appendChild(el('path', {d, fill:'none', stroke:'#c7bd9f', 'stroke-width':1.4}));
+    });
+  }
+  elbow('n-jonathan', ['n-asst']);
+  elbow('n-paulo', ['n-deivson','n-filipe']);
+  elbow('n-deivson', ['n-joelson','n-samuel','n-jackson','n-jomar','n-limpeza']);
+}
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(() => requestAnimationFrame(() => requestAnimationFrame(drawLines)));
+} else {
+  window.addEventListener('load', drawLines);
+}
+window.addEventListener('resize', drawLines);
+</script>
+</body>
+</html>
