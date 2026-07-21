@@ -45,7 +45,13 @@
   .row{ position:relative; z-index:1; display:flex; justify-content:center; gap:14px; }
   .row.top{ gap:34px; }
 
-  .hub{ background:#fff; border:1.4px solid var(--navy); border-radius:10px; padding:14px 22px; width:340px; box-shadow:0 3px 10px rgba(11,22,40,.08); }
+  .hub{ background:#fff; border:1.4px solid var(--navy); border-radius:10px; padding:14px 22px; width:390px; box-shadow:0 3px 10px rgba(11,22,40,.08); }
+  .shared{ position:absolute; left:50%; bottom:0; transform:translate(-50%,50%); z-index:2; background:var(--gold); color:var(--navy); border:2px solid var(--cream); border-radius:99px; padding:7px 14px; font-size:8px; font-weight:800; letter-spacing:.4px; text-transform:uppercase; text-align:center; line-height:1.3; box-shadow:0 2px 6px rgba(11,22,40,.18); white-space:nowrap; }
+  .shared span{ display:block; font-size:6.6px; font-weight:600; letter-spacing:.2px; text-transform:none; opacity:.85; }
+  .legend{ display:flex; gap:16px; justify-content:center; margin-top:2px; }
+  .legend .lg{ font-size:7.4px; color:var(--muted); display:flex; align-items:center; gap:5px; }
+  .legend .ln{ width:16px; height:0; border-top:1.6px solid #c7bd9f; display:inline-block; }
+  .legend .ln.dash{ border-top-style:dashed; border-top-color:var(--gold-dk); }
   .hub .role{ font-size:9px; letter-spacing:1.3px; text-transform:uppercase; color:var(--gold-dk); font-weight:700; }
   .hub .name{ font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:700; color:var(--navy); line-height:1.05; margin-top:2px; }
   .hub .title{ font-size:10px; color:var(--muted); margin-top:2px; }
@@ -90,32 +96,41 @@
     <section class="kpis">
       <div class="kpi b"><div class="kl">Equipe total</div><div class="kv num">9<small> + 1 a contratar</small></div><div class="ks">2 sócios-diretores + 7 profissionais de produção/tecnologia</div></div>
       <div class="kpi"><div class="kl">Convergem em Paulo</div><div class="kv num">7</div><div class="ks">2 reporte direto (Deivson, Filipe) + 5 dupla checagem técnica</div></div>
-      <div class="kpi"><div class="kl">Convergem em Jonathan</div><div class="kv num">0<small> ativo</small></div><div class="ks">Assistente Operacional ainda <b>em contratação</b> — comercial hoje é solo</div></div>
+      <div class="kpi"><div class="kl">Convergem em Jonathan</div><div class="kv num">0<small> ativo</small></div><div class="ks">Assistente Operacional ainda <b>em contratação</b> — hoje ele executa esse escopo inteiro sozinho</div></div>
       <div class="kpi"><div class="kl">Dupla função</div><div class="kv num">2 / 2</div><div class="ks">Jonathan e Paulo <b>executam e gerenciam</b> ao mesmo tempo — sem camada intermediária entre eles e a operação</div></div>
     </section>
 
     <div class="tree" id="tree">
       <svg class="lines" id="lines"></svg>
 
-      <div class="row top">
+      <div class="row top" style="position:relative">
         <div class="hub" id="n-jonathan">
           <div class="role">Sócio · Diretor Comercial &amp; Experiência</div>
           <div class="name">Jonathan</div>
-          <div class="title">Vendas, relacionamento, visão estratégica</div>
+          <div class="title">Hoje faz sozinho o que a Assistente Operacional vai assumir</div>
           <div class="chips">
-            <span class="chip">Vendas &amp; fechamento</span>
+            <span class="chip">Comercial &amp; fechamento</span>
             <span class="chip">Relacionamento cliente/parceiro</span>
+            <span class="chip">Administrativo (interino)</span>
+            <span class="chip">Jurídico (aciona advogado)</span>
+            <span class="chip">Contábil (aciona contador)</span>
+            <span class="chip">Suporte pontual à produção</span>
+            <span class="chip">Pós-venda — permanente</span>
             <span class="chip">Visão &amp; expansão</span>
           </div>
           <div class="badge"><div class="bn">1</div><div class="bt">pessoa prevista sob gestão<br>(a contratar)</div></div>
         </div>
+        <div class="shared">RH &amp; Recrutamento<br><span>feito em conjunto</span></div>
         <div class="hub warn" id="n-paulo">
           <div class="role">Sócio · Diretor de Operações &amp; Tecnologia</div>
           <div class="name">Paulo</div>
           <div class="title">Produção, máquinas, tecnologia, investimento</div>
           <div class="chips">
-            <span class="chip">Produção &amp; prazo</span>
-            <span class="chip">Tecnologia CNC &amp; máquinas</span>
+            <span class="chip">Programação CNC (digital)</span>
+            <span class="chip">Suporte total à produção</span>
+            <span class="chip">Manutenção de máquinas</span>
+            <span class="chip">Compras</span>
+            <span class="chip">Captação de mão de obra</span>
             <span class="chip">Investimento &amp; CAPEX</span>
             <span class="chip">Escalonamento técnico da equipe</span>
           </div>
@@ -149,10 +164,14 @@
         <div class="node lvl2" id="n-limpeza"><div class="name">Suporte Limpeza</div><div class="fn">Conservação da fábrica</div><span class="dual">+ Paulo</span></div>
       </div>
     </div>
+    <div class="legend">
+      <span class="lg"><i class="ln"></i>reporte formal</span>
+      <span class="lg"><i class="ln dash"></i>apoio/interface direta hoje (sem a Assistente ainda ativa)</span>
+    </div>
 
     <div class="notes">
       <div class="nt">Leitura</div>
-      <p>Hoje, <b>toda a operação converge para dois pontos: Jonathan e Paulo.</b> Paulo concentra a gestão — direta ou por dupla checagem técnica — de <b>7 dos 9 profissionais</b> da produção/tecnologia; Jonathan sustenta sozinho toda a frente comercial, sem nenhum suporte administrativo ativo (a Assistente Operacional segue em contratação). Nenhum dos dois tem hoje uma camada de gestão intermediária entre si e a execução — <b>ambos acumulam a função de gestor e de executor</b> ao mesmo tempo.</p>
+      <p>Hoje, <b>toda a operação converge para dois pontos: Jonathan e Paulo.</b> Paulo concentra a gestão — direta ou por dupla checagem técnica — de <b>7 dos 9 profissionais</b> da produção/tecnologia, além de programação CNC, manutenção, compras e captação de mão de obra. Jonathan sustenta sozinho <b>todo o comercial, administrativo, jurídico e contábil</b> — na ausência da Assistente Operacional, ele também absorve o apoio pontual à produção e o pós-venda (este último, permanente mesmo depois da contratação). Recrutamento e desligamento (RH) são decisão conjunta dos dois. Nenhum dos dois tem hoje uma camada de gestão intermediária entre si e a execução — <b>ambos acumulam a função de gestor e de executor</b> ao mesmo tempo.</p>
     </div>
   </div>
   <div class="pf"><div class="pl">Documento confidencial · preparado para Walton · Valvic Marcenaria — Vargas Decor Ltda</div><div class="pr">Julho <span>/</span> 2026</div></div>
@@ -168,10 +187,14 @@ function drawLines(){
   const NS = 'http://www.w3.org/2000/svg';
   const el = (t,a) => { const e = document.createElementNS(NS,t); for(const k in a) e.setAttribute(k,a[k]); return e; };
 
-  function pt(node, edge){
+  function pt(node, edge, frac){
+    frac = (frac === undefined) ? 0.5 : frac;
     const r = document.getElementById(node).getBoundingClientRect();
-    const x = r.left + r.width/2 - treeBox.left;
-    const y = (edge === 'bottom' ? r.bottom : r.top) - treeBox.top;
+    let x, y;
+    if (edge === 'left'){ x = r.left - treeBox.left; y = r.top + r.height*frac - treeBox.top; }
+    else if (edge === 'right'){ x = r.right - treeBox.left; y = r.top + r.height*frac - treeBox.top; }
+    else if (edge === 'top'){ x = r.left + r.width*frac - treeBox.left; y = r.top - treeBox.top; }
+    else { x = r.left + r.width*frac - treeBox.left; y = r.bottom - treeBox.top; }
     return {x,y};
   }
   function elbow(parentId, childIds){
@@ -187,6 +210,20 @@ function drawLines(){
   elbow('n-jonathan', ['n-asst']);
   elbow('n-paulo', ['n-deivson','n-filipe']);
   elbow('n-deivson', ['n-joelson','n-samuel','n-jackson','n-jomar','n-limpeza']);
+
+  /* ===== conexões de apoio/interface hoje (tracejadas) ===== */
+  (function dashed(){
+    const style = { fill:'none', stroke:'#a9863f', 'stroke-width':1.3, 'stroke-dasharray':'4 3' };
+    // Jonathan <-> Deivson (apoio pontual, hoje sem a Assistente)
+    const j = pt('n-jonathan', 'bottom', 0.78);
+    const d1 = pt('n-deivson', 'top', 0.22);
+    const midY1 = j.y + (d1.y - j.y) * 0.45;
+    svg.appendChild(el('path', {d:`M ${j.x} ${j.y} L ${j.x} ${midY1} L ${d1.x} ${midY1} L ${d1.x} ${d1.y}`, ...style}));
+    // Assistente <-> Deivson (interface direta, mesma linha)
+    const a = pt('n-asst', 'right', 0.5);
+    const d2 = pt('n-deivson', 'left', 0.5);
+    svg.appendChild(el('path', {d:`M ${a.x} ${a.y} L ${d2.x} ${d2.y}`, ...style}));
+  })();
 }
 if (document.fonts && document.fonts.ready) {
   document.fonts.ready.then(() => requestAnimationFrame(() => requestAnimationFrame(drawLines)));
