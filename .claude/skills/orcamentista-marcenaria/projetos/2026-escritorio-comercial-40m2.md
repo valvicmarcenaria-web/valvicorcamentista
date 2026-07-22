@@ -1,8 +1,8 @@
-# Projeto técnico — Escritório comercial 40 m² (4×10 m)
+# Projeto técnico — Escritório PORTO VERDE 40 m² (4×10 m)
 
-> **Entregável:** elevação frontal técnica da marcenaria. Iniciado 22/07/2026.
+> **Cliente:** PORTO VERDE. **Entregável:** elevação frontal técnica da marcenaria. Iniciado 22/07/2026.
 > **Fonte:** Drive `1vYkWUJH8Gi0kIg25cL88GKqKqZ5q7CZ2` → subpasta `referencias`
-> (1 board de proposta + 9 fotos do local). Cliente: escritório/coworking (logo "Grupo…" a confirmar).
+> (1 board de proposta + 9 fotos do local) + **render fotorrealista PORTO VERDE** (referência definitiva).
 
 ## Leitura do material
 - **Espaço:** sala longa e estreita, **40 m² (4 × 10 m)**. Laje nervurada aparente (forro mantido),
@@ -20,17 +20,20 @@
 3. Moldura ripada do jardim vertical + painel/logo — *a detalhar*.
 4. Sala de reunião: parede ripada + painel de TV — *a detalhar*.
 
-## Elevação 01 — Balcão de apoio (entregue)
-- Arquivo: `elevacao-escritorio.pdf` (A3 paisagem, esc. 1:25, cotas em mm). Gerador: `gerar-elevacao-escritorio.py` → `elevacao-escritorio.html` (SVG) → Playwright (`render-elev.cjs`).
-- **Módulos (largura mm):** Arquivos 900 · Arquivos 900 · Papelaria 600 (gaveteiro) · Café 900 · Impressora 750 · Frigobar 600 · Nicho grafite 750 → **total 5400 (a confirmar no local)**.
-- **Alturas:** tampo 900 · vão/backsplash até 1500 · prateleira flutuante LED · aéreos 1650–2150. Rodapé recuado 100. Puxador cava/perfil.
-- Inclui legenda de materiais, planta-chave e as 2 perspectivas de referência.
+## Elevação 01 — PAREDE DIREITA (entregue · Rev. 01)
+> Reconstruída a partir do **render PORTO VERDE**, focando a parede direita. Composição (janela→entrada):
+- **Estante metálica preta** (aberta, plantas) — serralheria parceira, 900 mm.
+- **Torre alta grafite** (piso-teto, porta c/ puxador cava; confirmar se integra porta/WC), 1050 mm.
+- **Balcão copa/café** (amêndoa + tampo grafite) 2700 mm: portas 750 · gaveteiro 500 · portas 750 · porta+nicho 700.
+  Atrás: **parede grafite** com **logo PORTO VERDE** em relevo · **prateleira flutuante c/ LED 3000K** · **nicho da impressora**. Café + cafeteira sobre o tampo.
+- **Alturas:** tampo 900 · prateleira 1550 · pé-direito útil ~2550 (a confirmar). Rodapé recuado 100. Puxador cava.
+- Arquivo: `elevacao-escritorio.pdf` (A3, 1:25). Gerador `gerar-elevacao-escritorio.py` → SVG → Playwright (`render-elev.cjs`).
+- **Largura total desenhada: 4650 mm (a confirmar no local).**
 
 ## ⚠ A confirmar
-- **Largura real da parede** e pé-direito (o board não trazia cotas — "medidas ajustadas em obra").
-- Nome do cliente (logo "Grupo…").
-- Frentes em amêndoa (renders) × "frentes cinza grafite" (texto do board) — definir predominância.
-- Se bancada de estações, ripados e sala de reunião entram no escopo Valvic (para orçar).
+- **Largura real da parede**, pé-direito e **posição da porta/WC** (o board não trazia cotas).
+- Se a **torre grafite** integra a porta do WC ou é armário utilitário/copa.
+- Se estações de trabalho, jardim vertical/logo e sala de reunião ripada entram no escopo Valvic (para orçar).
 
 ## Próximo
 - Fechar as demais elevações (estações, jardim vertical, sala de reunião) → depois **quantitativo + orçamento**.
