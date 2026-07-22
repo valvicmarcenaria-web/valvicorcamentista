@@ -1,0 +1,132 @@
+<style>
+:root{
+  --bg:#F2ECDF; --panel:#FBF7EF; --panel-2:#F4EEE1; --ink:#221B12; --ink-soft:#6C6152;
+  --line:#E6DCC7; --line-soft:#EEE6D4; --accent:#A97C15;
+  --good:#3F7D58; --info:#4C6A86; --warn:#B07A1E; --bad:#A6443A;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#141009; --panel:#201911; --panel-2:#191309; --ink:#F1E9D8; --ink-soft:#A99E89;
+  --line:#332918; --line-soft:#271F13; --accent:#D9B25A;
+  --good:#7FBE94; --info:#9DB6CE; --warn:#DBAE5B; --bad:#DE9086;
+}}
+:root[data-theme="light"]{
+  --bg:#F2ECDF; --panel:#FBF7EF; --panel-2:#F4EEE1; --ink:#221B12; --ink-soft:#6C6152;
+  --line:#E6DCC7; --line-soft:#EEE6D4; --accent:#A97C15;
+  --good:#3F7D58; --info:#4C6A86; --warn:#B07A1E; --bad:#A6443A;
+}
+:root[data-theme="dark"]{
+  --bg:#141009; --panel:#201911; --panel-2:#191309; --ink:#F1E9D8; --ink-soft:#A99E89;
+  --line:#332918; --line-soft:#271F13; --accent:#D9B25A;
+  --good:#7FBE94; --info:#9DB6CE; --warn:#DBAE5B; --bad:#DE9086;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;}
+body{background:var(--bg); color:var(--ink); font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; -webkit-font-smoothing:antialiased;}
+.num{font-variant-numeric:tabular-nums;}
+.mini{max-width:400px; margin:0 auto; padding:16px 15px 18px;}
+
+.hd{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:13px;}
+.mk{font-family:Georgia,serif; font-weight:700; font-size:18px; letter-spacing:.01em;}
+.mk .d{color:var(--accent);}
+.hd .r{font-size:11px; color:var(--ink-soft); letter-spacing:.02em;}
+
+.hero{background:var(--panel); border:1px solid var(--line); border-radius:13px; padding:15px 16px; position:relative; overflow:hidden;}
+.hero::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--accent);}
+.hero .lab{font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); font-weight:600;}
+.hero .big{font-family:Georgia,serif; font-weight:700; font-size:32px; color:var(--accent); line-height:1.05; margin:5px 0 4px; letter-spacing:-.01em;}
+.hero .cap{font-size:12.5px; color:var(--ink-soft);}
+.hero .cap b{color:var(--ink);}
+
+.stat{display:flex; gap:8px; margin:11px 0 4px;}
+.stat .s{flex:1; display:flex; align-items:center; gap:7px; background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:8px 10px; font-size:12px; color:var(--ink-soft);}
+.stat .s b{color:var(--ink); font-weight:700;}
+.dot{width:8px; height:8px; border-radius:50%; flex:none;}
+.dg{background:var(--good);} .da{background:var(--warn);} .di{background:var(--info);} .db{background:var(--bad);}
+
+.lh{font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); font-weight:600; margin:16px 2px 5px;}
+.list{background:var(--panel); border:1px solid var(--line); border-radius:13px; padding:3px 13px;}
+.row{display:grid; grid-template-columns:auto 1fr auto; gap:9px; align-items:center; padding:8px 0; border-bottom:1px solid var(--line-soft);}
+.row:last-child{border-bottom:0;}
+.row .nm{font-size:13px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.row .nm small{display:block; font-weight:400; font-size:10.5px; color:var(--ink-soft); margin-top:0;}
+.row .v{font-size:13px; font-weight:700; text-align:right; white-space:nowrap;}
+.row .v small{display:block; font-weight:400; font-size:10px; color:var(--ink-soft);}
+
+.par{margin:12px 2px 0; font-size:11.5px; color:var(--ink-soft); display:flex; gap:12px; flex-wrap:wrap;}
+.par b{color:var(--bad);}
+.foot{margin-top:12px; text-align:center; font-size:10.5px; color:var(--ink-soft);}
+</style>
+
+<div class="mini">
+  <div class="hd">
+    <span class="mk">valvic<span class="d">.</span></span>
+    <span class="r">Orçamentos · <span id="upd">22/07</span></span>
+  </div>
+
+  <div class="hero">
+    <div class="lab">Valor total fechado</div>
+    <div class="big num" id="total">—</div>
+    <div class="cap"><b id="cnt">–</b> orçamentos finalizados · ticket médio <b class="num" id="tk">–</b></div>
+  </div>
+
+  <div class="stat">
+    <span class="s"><span class="dot dg"></span>Git <b>salvo</b></span>
+    <span class="s"><span class="dot da"></span><b id="dp" class="num">–</b> p/ subir no Drive</span>
+  </div>
+
+  <div class="lh">Fechados</div>
+  <div class="list" id="list"></div>
+
+  <div class="par" id="par"></div>
+  <div class="foot" id="foot"></div>
+</div>
+
+<script>
+const DATA_ATUALIZADA="22/07/2026";
+const ORCAMENTOS=[
+  {cliente:"Kênia & Fábio", ref:481000, max:null, tag:"Casa completa", status:"concluido", drive:"parcial"},
+  {cliente:"Resolve Consórcio", ref:147800, max:174800, tag:"Comercial · 14 amb", status:"entregue", drive:"ausente"},
+  {cliente:"Lilian Lee",    ref:127000, max:180500, tag:"Apto completo", status:"concluido", drive:"ausente"},
+  {cliente:"Kairon & Juliana", ref:107121, max:123954, tag:"Apto completo · 8 amb (Ess/Gold)", status:"entregue", drive:"ausente"},
+  {cliente:"SPE Nova Lima 1", ref:88200, max:null, tag:"Comercial · painéis+pérgola", status:"entregue", drive:"ausente"},
+  {cliente:"Aline Sanches", ref:77800, max:88700, tag:"Apto completo · Galeria 42", status:"entregue", drive:"ausente"},
+  {cliente:"Jairo Samuel",  ref:70400,  max:83900,  tag:"Apto completo", status:"entregue",  drive:"ausente"},
+  {cliente:"Ed. Luxemburgo",ref:35295,  max:null,  tag:"Halls",         status:"concluido", drive:"ok"},
+  {cliente:"Raquel",        ref:25000,  max:30000,  tag:"Roupeiro 6,30m",status:"concluido", drive:"ok"},
+  {cliente:"Camila",        ref:24900,  max:null,   tag:"Closet",        status:"concluido", drive:"desatualizado"},
+  {cliente:"Graça",         ref:20100,  max:24000,  tag:"Despensa+Lav+Tanque", status:"entregue", drive:"ausente"},
+  {cliente:"Hotel Ibis",    ref:16500,  max:null,   tag:"Hall comercial",status:"concluido", drive:"desatualizado"},
+  {cliente:"Maria",         ref:7850,   max:null,   tag:"Lavanderia",    status:"entregue",  drive:"desatualizado"},
+];
+const PARADOS=[{n:"Karina Ramos",m:"a consultar"}];
+
+const brl=n=>new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL",maximumFractionDigits:0}).format(n);
+const kbrl=n=>n>=1000?"R$ "+(n/1000).toLocaleString("pt-BR",{maximumFractionDigits:0})+" mil":brl(n);
+const total=ORCAMENTOS.reduce((s,o)=>s+o.ref,0);
+const tk=Math.round(total/ORCAMENTOS.length);
+const dp=ORCAMENTOS.filter(o=>o.drive==="ausente"||o.drive==="desatualizado").length;
+
+document.getElementById("total").textContent=brl(total);
+document.getElementById("cnt").textContent=ORCAMENTOS.length;
+document.getElementById("tk").textContent=kbrl(tk);
+document.getElementById("dp").textContent=dp;
+document.getElementById("upd").textContent=DATA_ATUALIZADA;
+
+const DOT={concluido:"dg",entregue:"di"};
+document.getElementById("list").innerHTML=ORCAMENTOS.map(o=>`
+  <div class="row">
+    <span class="dot ${DOT[o.status]}" title="${o.status}"></span>
+    <span class="nm">${o.cliente}<small>${o.tag}</small></span>
+    <span class="v num">${brl(o.ref)}${o.max?`<small>até ${kbrl(o.max)}</small>`:""}</span>
+  </div>`).join("");
+
+document.getElementById("par").innerHTML=`<span>⛔ <b>${PARADOS.length} em aberto</b></span>`+
+  PARADOS.map(p=>`<span>${p.n} <span style="opacity:.7">(${p.m})</span></span>`).join("");
+document.getElementById("foot").textContent="Backup durável no Git · Drive = cópia do time";
+
+const root=document.documentElement;
+addEventListener("click",e=>{ if(e.target.closest(".mk")){
+  const dark=root.getAttribute("data-theme")==="dark"||(!root.getAttribute("data-theme")&&matchMedia("(prefers-color-scheme:dark)").matches);
+  root.setAttribute("data-theme",dark?"light":"dark");
+}});
+</script>
