@@ -1,6 +1,6 @@
 # Orçamento — Guarda-roupa Luiz (nicho 146,5 × 216) · 07/2026
 
-**Cliente:** Luiz · **Venda direta (SEM RT)** → divisor 0,738 · **Prazo 30–45 dias úteis**
+**Cliente:** Luiz · **Venda direta (SEM RT)** → divisor 0,738 · **Prazo 30 dias úteis**
 Móvel de embutir **145 × 215 × 49 cm**, 2 módulos iguais, tudo em **MDF branco TX** (interno e externo).
 
 ## Escopo (layout "Projeto Básico – Guarda-roupa")
@@ -18,8 +18,8 @@ Chapas R$1.420 · corrediças 4 (por versão) · RO65 2 portas R$120 · cabideir
 ## Preço — 2 versões (venda direta /0,738)
 | Versão | Corrediça | Material | MC | **Valor** |
 |---|---|---:|:--:|---:|
-| **Telescópica** | R$35 | R$2.886 | 30% | **R$6.600** (garantia 3 anos) |
-| **Oculta Hardt** (soft-close) | R$70 | R$3.026 | 37% | **R$8.200** (garantia 5 anos) |
+| **Telescópica** | R$35 | R$2.886 | 35% | **R$7.450** (garantia 1 ano) |
+| **Oculta Hardt** (soft-close) | R$70 | R$3.026 | 40% | **R$8.950** (garantia 5 anos) |
 
 ## Upgrades opcionais (add-on)
 - **Acabamento externo em MDF cor:** +R$800
