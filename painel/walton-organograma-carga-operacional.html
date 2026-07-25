@@ -52,6 +52,7 @@
   .legend .lg{ font-size:7.4px; color:var(--muted); display:flex; align-items:center; gap:5px; }
   .legend .ln{ width:16px; height:0; border-top:1.6px solid #c7bd9f; display:inline-block; }
   .legend .ln.dash{ border-top-style:dashed; border-top-color:var(--gold-dk); }
+  .legend .ln.dot{ border-top-style:dotted; border-top-color:#9aa3b0; border-top-width:2px; }
   .hub .role{ font-size:9px; letter-spacing:1.3px; text-transform:uppercase; color:var(--gold-dk); font-weight:700; }
   .hub .name{ font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:700; color:var(--navy); line-height:1.05; margin-top:2px; }
   .hub .title{ font-size:10px; color:var(--muted); margin-top:2px; }
@@ -68,6 +69,10 @@
   .node .fn{ font-size:7.8px; color:var(--muted); margin-top:2px; line-height:1.35; }
   .node.pending{ border-style:dashed; background:#faf8f2; }
   .node.pending .name{ color:var(--gold-dk); }
+  .node.external{ border-style:dotted; border-color:#9aa3b0; background:#f4f5f7; }
+  .node.external .name{ color:#4d5766; }
+  .node.external .role{ color:#6b7684; }
+  .node.external .tag{ display:inline-block; margin-top:5px; font-size:6.8px; font-weight:800; letter-spacing:.3px; text-transform:uppercase; background:#e7e9ed; color:#4d5766; padding:2px 6px; border-radius:7px; }
   .node.lvl2{ width:104px; padding:8px 8px; }
   .node.lvl2 .name{ font-size:10.5px; }
   .node .dual{ display:inline-block; margin-top:5px; font-size:6.8px; font-weight:800; letter-spacing:.3px; text-transform:uppercase; background:#f6edd6; color:var(--gold-dk); padding:2px 6px; border-radius:7px; }
@@ -158,6 +163,12 @@
           <div class="name">Bruna</div>
           <div class="fn">Arquiteta · programação + suporte de projetos no comercial · início previsto</div>
         </div>
+        <div class="node external" id="n-jennifer">
+          <div class="role">Marketing</div>
+          <div class="name">Jennifer</div>
+          <div class="fn">Social Media</div>
+          <span class="tag">Parceira externa</span>
+        </div>
       </div>
 
       <div class="row" id="row-l2">
@@ -174,11 +185,12 @@
     <div class="legend">
       <span class="lg"><i class="ln"></i>reporte formal</span>
       <span class="lg"><i class="ln dash"></i>apoio/interface direta hoje (sem a Assistente ainda ativa)</span>
+      <span class="lg"><i class="ln dot"></i>parceria externa (terceirizada, fora da folha)</span>
     </div>
 
     <div class="notes">
       <div class="nt">Leitura</div>
-      <p>Hoje, <b>toda a operação converge para dois pontos: Jonathan e Paulo.</b> Paulo concentra a gestão — direta ou por dupla checagem técnica — de <b>6 profissionais</b> de produção/tecnologia (Joelson, Samuel e Jackson em dupla checagem; Deivson, Filipe e, em breve, Bruna em reporte direto), além de programação CNC, manutenção, compras e captação de mão de obra. Jonathan sustenta sozinho <b>todo o comercial, administrativo, jurídico e contábil</b> — na ausência da Carla (Assistente Operacional, início já previsto), ele também absorve o apoio pontual à produção e o pós-venda (este último, permanente mesmo depois da contratação). Recrutamento e desligamento (RH) são decisão conjunta dos dois. O próprio Deivson hoje acumula funções — <b>Coordenador de Produção que atua mais como Marceneiro Sênior</b> — e, uma vez ativa, a Carla vira o ponto de interface entre Jonathan, Paulo, Deivson e Filipe. A equipe de produção também tem <b>crescimento já previsto</b>: Bruna (arquiteta, programação + suporte de projetos no comercial) e mais dois marceneiros, Cezar e Paulo B. Nenhum dos dois sócios tem hoje uma camada de gestão intermediária plena entre si e a execução — <b>ambos acumulam a função de gestor e de executor</b> ao mesmo tempo.</p>
+      <p>Hoje, <b>toda a operação converge para dois pontos: Jonathan e Paulo.</b> Paulo concentra a gestão — direta ou por dupla checagem técnica — de <b>6 profissionais</b> de produção/tecnologia (Joelson, Samuel e Jackson em dupla checagem; Deivson, Filipe e, em breve, Bruna em reporte direto), além de programação CNC, manutenção, compras e captação de mão de obra. Jonathan sustenta sozinho <b>todo o comercial, administrativo, jurídico e contábil</b> — na ausência da Carla (Assistente Operacional, início já previsto), ele também absorve o apoio pontual à produção e o pós-venda (este último, permanente mesmo depois da contratação). Recrutamento e desligamento (RH) são decisão conjunta dos dois. O próprio Deivson hoje acumula funções — <b>Coordenador de Produção que atua mais como Marceneiro Sênior</b> — e, uma vez ativa, a Carla vira o ponto de interface entre Jonathan, Paulo, Deivson e Filipe. A equipe de produção também tem <b>crescimento já previsto</b>: Bruna (arquiteta, programação + suporte de projetos no comercial) e mais dois marceneiros, Cezar e Paulo B. Jennifer (social media) apoia o marketing como <b>parceira externa</b>, fora da folha e da estrutura interna — não entra na contagem de equipe, mas é mais um fio que passa pela mão do Jonathan. Nenhum dos dois sócios tem hoje uma camada de gestão intermediária plena entre si e a execução — <b>ambos acumulam a função de gestor e de executor</b> ao mesmo tempo.</p>
     </div>
   </div>
   <div class="pf"><div class="pl">Documento confidencial · preparado para Walton · Valvic Marcenaria — Vargas Decor Ltda</div><div class="pr">Julho <span>/</span> 2026</div></div>
@@ -245,6 +257,14 @@ function drawLines(){
     // Jonathan <-> Bruna (suporte de projetos no comercial)
     const j2 = pt('n-jonathan','bottom',0.94), bTop = pt('n-bruna','top',0.5);
     elbowV(j2, bTop, j2.y + (bTop.y - j2.y) * 0.3);
+  })();
+
+  /* ===== parceria externa (pontilhado) ===== */
+  (function dotted(){
+    const style = { fill:'none', stroke:'#9aa3b0', 'stroke-width':1.3, 'stroke-dasharray':'1.5 3' };
+    const j = pt('n-jonathan','bottom',0.98), jenTop = pt('n-jennifer','top',0.5);
+    const midY = j.y + (jenTop.y - j.y) * 0.15;
+    svg.appendChild(el('path', {d:`M ${j.x} ${j.y} L ${j.x} ${midY} L ${jenTop.x} ${midY} L ${jenTop.x} ${jenTop.y}`, ...style}));
   })();
 }
 if (document.fonts && document.fonts.ready) {
