@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fluxo de Trabalho — Posição &amp; Impacto · Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A3 landscape; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:#1b2733; background:#d9dde3; font-size:10px; line-height:1.4; -webkit-font-smoothing:antialiased; }
+  .num{ font-variant-numeric:tabular-nums; }
+  :root{
+    --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-dk:#a9863f;
+    --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd;
+    --ok:#2f7d4f; --ok-bg:#eaf4ee; --ok-br:#bcdcc8;
+    --set:#2f5d8c; --set-bg:#e8eff7; --set-br:#bcd0e6;
+    --need:#b0413f; --need-bg:#fbeceb; --need-br:#eec4c1;
+    --ext:#6b7684; --ext-bg:#f2f3f5; --ext-br:#d8dce1;
+  }
+  .sheet{ position:relative; width:420mm; height:297mm; background:var(--cream); margin:16px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; }
+
+  .ph{ background:var(--navy); color:#fff; padding:7mm 13mm 5mm; display:flex; justify-content:space-between; align-items:flex-end; position:relative; }
+  .ph::after{ content:""; position:absolute; left:13mm; right:13mm; bottom:0; height:2.5px; background:linear-gradient(90deg,var(--gold),var(--gold-dk) 45%,transparent); }
+  .ph .kx{ font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:600; margin-top:2px; line-height:1.05; }
+  .ph .r{ text-align:right; } .ph .co{ font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:600; }
+  .ph .pg{ font-size:9px; color:rgba(255,255,255,.55); margin-top:3px; }
+
+  .body{ flex:1; padding:5mm 13mm 0; display:flex; flex-direction:column; gap:7px; min-height:0; }
+
+  .kpis{ display:flex; gap:9px; }
+  .kpi{ flex:1; background:#fff; border:1px solid var(--line); border-radius:7px; padding:8px 13px; position:relative; overflow:hidden; }
+  .kpi::before{ content:""; position:absolute; top:0; left:0; right:0; height:3px; background:var(--navy); }
+  .kpi.k-need::before{ background:var(--need); } .kpi.k-gold::before{ background:var(--gold); }
+  .kpi .kl{ font-size:7.8px; letter-spacing:1.1px; text-transform:uppercase; color:var(--muted); font-weight:700; }
+  .kpi .kv{ font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:700; margin-top:2px; letter-spacing:-.3px; color:var(--navy); }
+  .kpi .kv small{ font-size:11px; color:var(--muted); font-weight:600; font-family:'Inter'; }
+  .kpi.k-need .kv{ color:var(--need); }
+  .kpi .ks{ font-size:7.8px; color:var(--muted); margin-top:3px; line-height:1.35; }
+  .kpi .ks b{ color:var(--ink); }
+
+  /* ===== grade do fluxo ===== */
+  .flow{ flex:1; min-height:0; display:grid; grid-template-columns:repeat(6,1fr);
+         grid-template-rows:min-content min-content min-content 1fr min-content min-content;
+         gap:10px 9px; }
+
+  .hand{ background:#fff; border:1px solid var(--line2); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 12px; }
+  .hand .hl{ font-size:7.6px; font-weight:800; letter-spacing:.9px; text-transform:uppercase; color:var(--gold-dk); }
+  .hand .ht{ font-size:9.6px; color:#41505d; line-height:1.4; margin-top:2px; }
+  .hand .ht b{ color:var(--navy); }
+
+  .stg{ background:var(--navy); color:#fff; border-radius:7px 7px 0 0; padding:11px 13px; position:relative; }
+  .stg .n{ font-size:9px; font-weight:800; letter-spacing:1.2px; color:var(--gold); }
+  .stg .t{ font-size:14px; font-weight:800; margin-top:1px; line-height:1.15; }
+  .stg .w{ font-size:9px; color:rgba(255,255,255,.6); margin-top:2px; }
+  .stg::after{ content:"▶"; position:absolute; right:-7px; top:50%; transform:translateY(-50%); font-size:7px; color:var(--gold-dk); z-index:2; }
+  .stg.last::after{ display:none; }
+
+  .span{ border-radius:99px; padding:10px 18px; display:flex; align-items:center; gap:10px; font-size:11.4px; }
+  .span b{ font-weight:800; }
+  .span .lbl{ font-size:8.4px; font-weight:800; letter-spacing:.8px; text-transform:uppercase; opacity:.75; }
+  .span-j{ background:#f3ede1; border:1.4px solid var(--gold); color:#6d5320; }
+  .span-p{ background:#e8eff7; border:1.4px solid var(--set); color:#1f4468; }
+  .span-gap{ background:transparent; }
+
+  .ppl{ background:#fff; border:1px solid var(--line); border-radius:0 0 7px 7px; border-top:none; padding:12px 12px 13px; display:flex; flex-direction:column; gap:6px; }
+  .chip{ border:1px solid; border-radius:6px; padding:7px 9px; display:flex; align-items:center; gap:5px; flex:1 1 auto; max-height:56px; }
+  .chip .cn{ font-size:11.4px; font-weight:800; }
+  .chip .cf{ font-size:8.6px; opacity:.85; margin-left:auto; text-align:right; }
+  .c-ok{ background:var(--ok-bg); border-color:var(--ok-br); color:#215a39; }
+  .c-set{ background:var(--set-bg); border-color:var(--set-br); color:#1f4468; }
+  .c-need{ background:var(--need-bg); border-color:var(--need-br); border-style:dashed; color:var(--need); }
+  .c-ext{ background:var(--ext-bg); border-color:var(--ext-br); color:var(--ext); }
+
+  .imp{ background:#f6f3ec; border:1px solid var(--line); border-radius:7px; padding:11px 12px; }
+  .imp .il{ font-size:7.6px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:var(--gold-dk); }
+  .imp .it{ font-size:9.8px; color:#41505d; line-height:1.45; margin-top:2px; }
+  .imp .it b{ color:var(--navy); }
+  .risk{ display:block; margin-top:7px; font-size:8.2px; font-weight:700; line-height:1.4; background:#fbeceb; border:1px dashed var(--need-br); color:var(--need); padding:4px 7px; border-radius:6px; }
+
+  .legend{ display:flex; gap:14px; justify-content:center; }
+  .legend .lg{ font-size:7.4px; color:var(--muted); display:flex; align-items:center; gap:5px; }
+  .legend .sw{ width:9px; height:9px; border-radius:2px; display:inline-block; border:1px solid; }
+
+  .notes{ background:#f6f3ec; border:1px solid var(--line); border-radius:7px; padding:7px 12px; }
+  .notes .nt{ font-size:7px; letter-spacing:1.1px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:3px; }
+  .notes p{ font-size:8.4px; color:#41505d; line-height:1.5; }
+  .notes b{ color:var(--navy); }
+
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:4px 13mm; display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf .pl{ font-size:7.4px; color:var(--muted); } .pf .pr{ font-size:8.2px; color:var(--navy); font-weight:700; letter-spacing:1px; } .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Cadeia de Valor · Posição Julho/2026</div><div class="tt">Fluxo de Trabalho — Posição &amp; Impacto</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Preparado para Walton · confidencial</div></div>
+  </div>
+
+  <div class="body">
+
+    <section class="kpis">
+      <div class="kpi k-gold"><div class="kl">Jonathan atravessa</div><div class="kv num">5<small> de 6 etapas</small></div><div class="ks">Do primeiro contato ao pós-venda — <b>sem substituto em nenhuma delas</b></div></div>
+      <div class="kpi"><div class="kl">Paulo atravessa</div><div class="kv num">4<small> de 6 etapas</small></div><div class="ks">Projeto → compras → fabricação → montagem, <b>ponta a ponta na produção</b></div></div>
+      <div class="kpi"><div class="kl">Demais colaboradores</div><div class="kv num">1<small> a 2 etapas</small></div><div class="ks">Cada um concentrado na sua especialidade</div></div>
+      <div class="kpi k-need"><div class="kl">Etapas com risco</div><div class="kv num">3</div><div class="ks">Projeto (sem redundância) · Fabricação (maior lacuna) · Montagem (sem veículo)</div></div>
+    </section>
+
+    <div class="flow">
+
+      <!-- linha 1 — etapas -->
+      <div class="stg" style="grid-area:1/1"><div class="n">01</div><div class="t">Comercial &amp; Venda</div><div class="w">contato → orçamento → contrato</div></div>
+      <div class="stg" style="grid-area:1/2"><div class="n">02</div><div class="t">Projeto &amp; Programação</div><div class="w">conferência técnica → CNC</div></div>
+      <div class="stg" style="grid-area:1/3"><div class="n">03</div><div class="t">Compras &amp; Recepção</div><div class="w">insumos → conferência → estoque</div></div>
+      <div class="stg" style="grid-area:1/4"><div class="n">04</div><div class="t">Fabricação</div><div class="w">corte → montagem de fábrica</div></div>
+      <div class="stg" style="grid-area:1/5"><div class="n">05</div><div class="t">Montagem &amp; Entrega</div><div class="w">obra → vistoria → aceite</div></div>
+      <div class="stg last" style="grid-area:1/6"><div class="n">06</div><div class="t">Pós-venda</div><div class="w">garantia → recompra</div></div>
+
+      <!-- linha 2 — barra Jonathan -->
+      <div class="span span-j" style="grid-row:2; grid-column:1 / span 3"><span class="lbl">Sócio</span><b>Jonathan</b> — comercial, administrativo, jurídico, contábil e compras</div>
+      <div class="span span-j" style="grid-row:2; grid-column:5 / span 2"><span class="lbl">Sócio</span><b>Jonathan</b> — apoio em obra e <b>pós-venda</b></div>
+
+      <!-- linha 3 — barra Paulo -->
+      <div class="span span-p" style="grid-row:3; grid-column:2 / span 4"><span class="lbl">Sócio</span><b>Paulo</b> — engenharia, programação, compras técnicas, produção e coordenação da montagem</div>
+
+      <!-- linha 4 — pessoas por etapa -->
+      <div class="ppl" style="grid-row:4; grid-column:1">
+        <div class="chip c-set"><span class="cn">Karla</span><span class="cf">Assist. Operacional · dia 10</span></div>
+        <div class="chip c-set"><span class="cn">Bruna</span><span class="cf">suporte de projetos · dia 01</span></div>
+        <div class="chip c-ext"><span class="cn">Jennifer</span><span class="cf">social media · externa</span></div>
+      </div>
+      <div class="ppl" style="grid-row:4; grid-column:2">
+        <div class="chip c-ok"><span class="cn">Filipe</span><span class="cf">Programador CNC</span></div>
+        <div class="chip c-set"><span class="cn">Bruna</span><span class="cf">Arquiteta · dia 01</span></div>
+        <div class="chip c-ok"><span class="cn">Deivson</span><span class="cf">olhar de produção</span></div>
+      </div>
+      <div class="ppl" style="grid-row:4; grid-column:3">
+        <div class="chip c-set"><span class="cn">Karla</span><span class="cf">cotação · faturamento</span></div>
+        <div class="chip c-ok"><span class="cn">Deivson</span><span class="cf">recepção · conferência</span></div>
+        <div class="chip c-ok"><span class="cn">Joelson</span><span class="cf">separação · estoque</span></div>
+      </div>
+      <div class="ppl" style="grid-row:4; grid-column:4">
+        <div class="chip c-ok"><span class="cn">Joelson</span><span class="cf">Operador CNC</span></div>
+        <div class="chip c-ok"><span class="cn">Deivson</span><span class="cf">coord. + marceneiro</span></div>
+        <div class="chip c-need"><span class="cn">Baiano</span><span class="cf">marceneiro exp. · contratar</span></div>
+        <div class="chip c-need"><span class="cn">2 a 3 ajudantes</span><span class="cf">contratar</span></div>
+        <div class="chip c-need"><span class="cn">+1 operador CNC</span><span class="cf">contratar</span></div>
+      </div>
+      <div class="ppl" style="grid-row:4; grid-column:5">
+        <div class="chip c-ok"><span class="cn">Samuel / Jomar</span><span class="cf">dupla 1 · com carro</span></div>
+        <div class="chip c-ok"><span class="cn">Jackson / Davi</span><span class="cf">dupla 2 · sem carro</span></div>
+        <div class="chip c-ok"><span class="cn">Cezar / J. Godoy</span><span class="cf">dupla 3 · em teste</span></div>
+        <div class="chip c-need"><span class="cn">2 carros · 3 kits</span><span class="cf">adquirir</span></div>
+      </div>
+      <div class="ppl" style="grid-row:4; grid-column:6">
+        <div class="chip c-set"><span class="cn">Karla</span><span class="cf">registro · acionamento</span></div>
+        <div class="chip c-ok"><span class="cn">Duplas de montagem</span><span class="cf">assistência técnica</span></div>
+      </div>
+
+
+      <!-- linha 5 — entregável para a próxima etapa -->
+      <div class="hand" style="grid-row:5; grid-column:1"><div class="hl">Entrega para a etapa 02</div><div class="ht"><b>Escopo de Venda</b> + projeto atualizado, contrato e cadastro no Calcme</div></div>
+      <div class="hand" style="grid-row:5; grid-column:2"><div class="hl">Entrega para a etapa 03</div><div class="ht"><b>Arquivos de corte</b> no Drive + plano de produção validado</div></div>
+      <div class="hand" style="grid-row:5; grid-column:3"><div class="hl">Entrega para a etapa 04</div><div class="ht"><b>Insumos conferidos</b>, alocados no projeto e baixados no pedido</div></div>
+      <div class="hand" style="grid-row:5; grid-column:4"><div class="hl">Entrega para a etapa 05</div><div class="ht"><b>Peças no padrão</b>, conferidas pelo POP de qualidade e embaladas</div></div>
+      <div class="hand" style="grid-row:5; grid-column:5"><div class="hl">Entrega para a etapa 06</div><div class="ht"><b>Vistoria + aceite</b> assinado pelo cliente</div></div>
+      <div class="hand" style="grid-row:5; grid-column:6"><div class="hl">Fecha o ciclo</div><div class="ht"><b>Chamado registrado</b> e garantia acionada quando necessário</div></div>
+
+      <!-- linha 6 — impacto -->
+      <div class="imp" style="grid-row:6; grid-column:1">
+        <div class="il">Impacto</div>
+        <div class="it">Define <b>escopo, preço e margem</b>. Informação incompleta aqui contamina toda a cadeia.</div>
+        <span class="risk">⚠ Jonathan sozinho até a Karla entrar</span>
+      </div>
+      <div class="imp" style="grid-row:6; grid-column:2">
+        <div class="il">Impacto</div>
+        <div class="it">Converte a venda em <b>arquivo de corte</b>. Define aproveitamento de chapa e retrabalho.</div>
+        <span class="risk">⚠ Filipe sem redundância — Bruna reduz o risco</span>
+      </div>
+      <div class="imp" style="grid-row:6; grid-column:3">
+        <div class="il">Impacto</div>
+        <div class="it">Garante o <b>material certo na hora certa</b>. Falha aqui para a fábrica inteira.</div>
+      </div>
+      <div class="imp" style="grid-row:6; grid-column:4">
+        <div class="il">Impacto</div>
+        <div class="it">Transforma chapa em peça <b>no padrão</b>. Define qualidade e prazo de entrega.</div>
+        <span class="risk">⚠ Maior lacuna — Deivson opera em vez de coordenar; Joelson sem backup na CNC</span>
+      </div>
+      <div class="imp" style="grid-row:6; grid-column:5">
+        <div class="il">Impacto</div>
+        <div class="it">É <b>o que o cliente vê e sente</b>. Define a percepção da marca e o aceite.</div>
+        <span class="risk">⚠ 2 das 3 duplas sem veículo · ferramental parcial</span>
+      </div>
+      <div class="imp" style="grid-row:6; grid-column:6">
+        <div class="il">Impacto</div>
+        <div class="it">Sustenta a <b>garantia de 10 anos</b>, a recompra e a indicação — a receita mais barata.</div>
+      </div>
+
+    </div>
+
+    <div class="legend">
+      <span class="lg"><i class="sw" style="background:var(--ok-bg);border-color:var(--ok-br)"></i>ativo hoje</span>
+      <span class="lg"><i class="sw" style="background:var(--set-bg);border-color:var(--set-br)"></i>início já alinhado</span>
+      <span class="lg"><i class="sw" style="background:var(--need-bg);border-color:var(--need-br)"></i>necessidade de contratação / aquisição</span>
+      <span class="lg"><i class="sw" style="background:var(--ext-bg);border-color:var(--ext-br)"></i>parceria externa</span>
+    </div>
+
+    <div class="notes">
+      <div class="nt">Leitura</div>
+      <p>O fluxo mostra por que a estrutura hoje é frágil: <b>os dois sócios atravessam quase toda a cadeia</b> — Jonathan em 5 das 6 etapas e Paulo em 4 — enquanto cada colaborador ocupa apenas 1 ou 2. Isso significa que <b>nenhuma etapa avança sem passar por um deles</b>, e qualquer ausência trava o fluxo inteiro. As entradas já alinhadas atacam justamente as pontas: <b>Karla</b> assume o administrativo nas etapas 1, 3 e 6, e <b>Bruna</b> cria a segunda pessoa em projeto/programação — hoje concentrada só no Filipe. O centro da cadeia (etapa 4, fabricação) segue sendo a <b>maior lacuna</b>: sem o marceneiro experiente e os ajudantes, o Deivson continua operando em vez de coordenar, e o Joelson segue sem backup para migrar às máquinas novas.</p>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Documento confidencial · preparado para Walton · Valvic Marcenaria — Vargas Decor Ltda</div><div class="pr">Julho <span>/</span> 2026</div></div>
+</section>
+
+</body>
+</html>
