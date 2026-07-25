@@ -27,8 +27,8 @@ Chapas R$1.420 · corrediças 4 (por versão) · RO65 2 portas R$120 · cabideir
 
 Proposta: `closer-vendas/propostas/proposta-luiz-guarda-roupa.html` + PDF (2 págs, clean, com desenho técnico SVG).
 
-## + 3ª versão: ECONÔMICA (o mais barato possível) — MC 30%
-- **Tudo 15mm** (fundos também): area 16,20 m² -> **5 chapas 15mm** = R$1.300 (sem 6mm).
-- Corrediça **telescópica básica R$25** · sistema **Joeline** (2×R$20 + trilho R$120 = R$160) · puxador **perfil G leve** (~2 barras × R$45 = R$90) · **sem anti-empeno**.
-- Material = R$2.756 · **MC 30% (CONFIRMAR)** -> **R$ 6.300**.
-- Escada: Econômica R$6.300 · Padrão R$7.450 · Oculta Hardt R$8.950.
+## + 3ª versão: ECONÔMICA (entrada) — MC 27%
+- Chapas **4×15mm + 2×6mm** (fundos SEGUEM 6mm) = R$1.420 · corrediça **telescópica básica R$25** (4=100) · sistema **Joeline** (2×20 + trilho 120 = 160) · puxador **perfil G leve** (2 barras ×45 = 90) · cabideiro 70 · fita 240 · cola 200 · sup.prat 96 · consumíveis 250 · visita 250. **Material = R$2.876.**
+- **MC 27%** -> `2.876/(0,738-0,27)` = **R$ 6.150**.
+- Escada final: **Econômica R$6.150** (Joeline, s/ anti-empeno, gar. 1 ano) · **Padrão R$7.450** (RO65 anti-empeno, telescópica, cava, gar. **2 anos**) · **Oculta Hardt R$8.950** (RO65, oculta soft-close, gar. 5 anos).
+- **Pagamento: 50% na aprovação + 50% na entrega.** Prazo 30 dias úteis.
