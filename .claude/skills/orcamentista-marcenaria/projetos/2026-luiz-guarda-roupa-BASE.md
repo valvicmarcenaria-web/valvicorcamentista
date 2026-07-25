@@ -26,3 +26,9 @@ Chapas R$1.420 · corrediças 4 (por versão) · RO65 2 portas R$120 · cabideir
 - **Iluminação LED horizontal no teto do cabideiro:** +R$350
 
 Proposta: `closer-vendas/propostas/proposta-luiz-guarda-roupa.html` + PDF (2 págs, clean, com desenho técnico SVG).
+
+## + 3ª versão: ECONÔMICA (o mais barato possível) — MC 30%
+- **Tudo 15mm** (fundos também): area 16,20 m² -> **5 chapas 15mm** = R$1.300 (sem 6mm).
+- Corrediça **telescópica básica R$25** · sistema **Joeline** (2×R$20 + trilho R$120 = R$160) · puxador **perfil G leve** (~2 barras × R$45 = R$90) · **sem anti-empeno**.
+- Material = R$2.756 · **MC 30% (CONFIRMAR)** -> **R$ 6.300**.
+- Escada: Econômica R$6.300 · Padrão R$7.450 · Oculta Hardt R$8.950.
