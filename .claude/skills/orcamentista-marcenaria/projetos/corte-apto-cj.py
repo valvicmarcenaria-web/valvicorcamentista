@@ -22,19 +22,19 @@ CH_AREA = CH_A * CH_L            # 5,0875 m²
 # Preços = custo de compra. chapas.md é a fonte da base; itens fora do catálogo
 # (lâmina natural, laca) entram como ESTIMATIVA DE MERCADO — sinalizados.
 P = {
-    'LAM15':  950.0,   # MDF 15mm revestido LÂMINA NATURAL louro freijó   [ESTIMATIVA]
-    'LAM6':   620.0,   # MDF 6mm lâmina natural (fundos aparentes)        [ESTIMATIVA]
-    'FRJ15':  500.0,   # MDF 15mm Freijó Puro (melamínico) — interno
-    'FRJ6':   300.0,   # MDF 6mm Freijó — fundos
-    'CRU15':   82.0,   # MDF cru 15mm (recebe laca)                        chapas.md
-    'CRU18':   95.0,   # MDF cru 18mm (prateleiras/estrutura laca)         chapas.md
-    'CRU6':    62.0,   # MDF cru 6mm (fundos laca)                         chapas.md
+    'SUB15':   82.0,   # MDF cru 15mm — SUBSTRATO p/ lâmina natural           chapas.md
+    'SUB6':    62.0,   # MDF cru 6mm  — substrato/fundo                       chapas.md
+    'MEL15':  180.0,   # MDF melamínico 15mm — PARTE INTERNA dos móveis  [ESTIM. linha especial]
+    'MEL6':   130.0,   # MDF melamínico 6mm  — fundos internos           [ESTIM.]
+    'BRC15':  108.0,   # MDF BRANCO 15mm — base para laca                     chapas.md
+    'BRC18':  122.0,   # MDF BRANCO 18mm — prateleiras/laca                   chapas.md
+    'BRC6':    78.0,   # MDF BRANCO 6mm  — fundos laca                        chapas.md
 }
 FITA_LAM_M   = 12.0   # fita/bordo lâmina natural (R$/m)                  [ESTIMATIVA]
 FITA_FRJ_M   = 3.0    # fita melamínico cor (R$/m)
 FILETAGEM_M  = 2.5    # aplicação/filetagem (R$/m)
-LACA_M2      = 300.0  # laca fosca PU 2 faces (R$/m² de superfície)       [ESTIMATIVA]
-LAMINA_M2    = 190.0  # lâmina natural aplicada em ripa (R$/m² extra)     [ESTIMATIVA]
+LACA_M2      = 300.0  # laca fosca PU (R$/m² de superfície)               [ESTIMATIVA]
+LAMINA_M2    = 450.0  # SERVIÇO de lâmina natural aplicada+acabada (R$/m²)  [Jonathan]
 
 # Hettich (referencias/ferragens.md)
 P_SENSYS     = 17.80  # dobradiça Sensys (premium, garantia vitalícia)
@@ -53,18 +53,18 @@ def add(mv, desc, mat, c, l, q=1):
 # =====================================================================
 A = 'A. Móvel entrada'
 MOD = 59.5                       # 4 módulos de 59,5 = 238
-add(A, 'Tampo', 'LAM15', 238, 45)
-add(A, 'Base (aparente — suspenso)', 'LAM15', 238, 45)
-add(A, 'Laterais externas', 'LAM15', 40, 45, 2)
-add(A, 'Divisórias internas', 'FRJ15', 40, 45, 3)
-add(A, 'Fundo (estrutural — suspenso)', 'FRJ15', 238, 40)
-add(A, 'Prateleiras (módulos de porta)', 'FRJ15', 58, 42, 2)
-add(A, 'Frentes gavetão', 'LAM15', 59, 39, 2)
-add(A, 'Frentes porta de abrir', 'LAM15', 59, 39, 2)
+add(A, 'Tampo', 'SUB15', 238, 45)
+add(A, 'Base (aparente — suspenso)', 'SUB15', 238, 45)
+add(A, 'Laterais externas', 'SUB15', 40, 45, 2)
+add(A, 'Divisórias internas', 'MEL15', 40, 45, 3)
+add(A, 'Fundo (estrutural — suspenso)', 'MEL15', 238, 40)
+add(A, 'Prateleiras (módulos de porta)', 'MEL15', 58, 42, 2)
+add(A, 'Frentes gavetão', 'SUB15', 59, 39, 2)
+add(A, 'Frentes porta de abrir', 'SUB15', 59, 39, 2)
 # caixas dos 2 gavetões
-add(A, 'Gavetão — laterais', 'FRJ15', 42, 28, 4)
-add(A, 'Gavetão — frente/costas', 'FRJ15', 56, 28, 4)
-add(A, 'Gavetão — fundo', 'FRJ6', 56, 42, 2)
+add(A, 'Gavetão — laterais', 'MEL15', 42, 28, 4)
+add(A, 'Gavetão — frente/costas', 'MEL15', 56, 28, 4)
+add(A, 'Gavetão — fundo', 'MEL6', 56, 42, 2)
 
 # =====================================================================
 # B. MARCENARIA VARANDA / GOURMET  ⚠️ RIPADO EM LÂMINA NATURAL FREIJÓ
@@ -74,20 +74,20 @@ add(A, 'Gavetão — fundo', 'FRJ6', 56, 42, 2)
 # =====================================================================
 B = 'B. Varanda/gourmet'
 # --- superior
-add(B, 'Sup — laterais', 'LAM15', 66, 32, 2)
-add(B, 'Sup — tampo/base', 'LAM15', 137, 32, 2)
-add(B, 'Sup — divisórias', 'FRJ15', 66, 32, 2)
-add(B, 'Sup — prateleiras', 'FRJ15', 45, 30, 3)
-add(B, 'Sup — fundo', 'FRJ6', 140, 66)
-add(B, 'Sup — base das portas ripadas', 'LAM15', 65, 45.7, 3)
+add(B, 'Sup — laterais', 'SUB15', 66, 32, 2)
+add(B, 'Sup — tampo/base', 'SUB15', 137, 32, 2)
+add(B, 'Sup — divisórias', 'MEL15', 66, 32, 2)
+add(B, 'Sup — prateleiras', 'MEL15', 45, 30, 3)
+add(B, 'Sup — fundo', 'MEL6', 140, 66)
+add(B, 'Sup — base das portas ripadas', 'SUB15', 65, 45.7, 3)
 # --- inferior
-add(B, 'Inf — laterais', 'LAM15', 69, 61, 2)
-add(B, 'Inf — base', 'LAM15', 93, 61)
-add(B, 'Inf — travessas de apoio (bancada granito)', 'FRJ15', 93, 10, 2)
-add(B, 'Inf — divisória', 'FRJ15', 69, 61)
-add(B, 'Inf — prateleiras', 'FRJ15', 45, 58, 2)
-add(B, 'Inf — fundo', 'FRJ6', 95.5, 69)
-add(B, 'Inf — base das portas ripadas', 'LAM15', 68, 46, 2)
+add(B, 'Inf — laterais', 'SUB15', 69, 61, 2)
+add(B, 'Inf — base', 'SUB15', 93, 61)
+add(B, 'Inf — travessas de apoio (bancada granito)', 'MEL15', 93, 10, 2)
+add(B, 'Inf — divisória', 'MEL15', 69, 61)
+add(B, 'Inf — prateleiras', 'MEL15', 45, 58, 2)
+add(B, 'Inf — fundo', 'MEL6', 95.5, 69)
+add(B, 'Inf — base das portas ripadas', 'SUB15', 68, 46, 2)
 
 # --- RIPADO (o gargalo): ripa 3cm + espaçamento 1,5cm -> passo 4,5cm
 RIPA_L, PASSO = 3.0, 4.5
@@ -109,33 +109,33 @@ area_ripado = sum(q * (c/100) * (RIPA_L/100) for q, c in ripas)
 # =====================================================================
 C = 'C. Salas TV e jantar'
 # --- C1 painel TV + armários altos: 361 de largura
-add(C, 'C1 — laterais/divisórias verticais', 'CRU15', 232, 47, 4)
-add(C, 'C1 — tampo/base', 'CRU15', 178, 47, 4)
-add(C, 'C1 — fundo', 'CRU6', 178, 232, 2)
-add(C, 'C1 — painel de TV (fundo aparente)', 'CRU15', 175, 120)
-add(C, 'C1 — prateleira acima TV (laca 3cm = 2x15mm colados)', 'CRU15', 175, 30, 2)
-add(C, 'C1 — portas altas de abrir', 'CRU15', 200, 92, 2)
-add(C, 'C1 — prateleiras internas', 'CRU18', 90, 45, 6)
-add(C, 'C1 — gavetas inferiores: frentes', 'CRU15', 86, 22, 2)
-add(C, 'C1 — gavetas: laterais', 'CRU15', 45, 20, 4)
-add(C, 'C1 — gavetas: frente/costas', 'CRU15', 83, 20, 4)
-add(C, 'C1 — gavetas: fundo', 'CRU6', 83, 45, 2)
+add(C, 'C1 — laterais/divisórias verticais', 'BRC15', 232, 47, 4)
+add(C, 'C1 — tampo/base', 'BRC15', 178, 47, 4)
+add(C, 'C1 — fundo', 'BRC6', 178, 232, 2)
+add(C, 'C1 — painel de TV (fundo aparente)', 'BRC15', 175, 120)
+add(C, 'C1 — prateleira acima TV (laca 3cm = 2x15mm colados)', 'BRC15', 175, 30, 2)
+add(C, 'C1 — portas altas de abrir', 'BRC15', 200, 92, 2)
+add(C, 'C1 — prateleiras internas', 'BRC18', 90, 45, 6)
+add(C, 'C1 — gavetas inferiores: frentes', 'BRC15', 86, 22, 2)
+add(C, 'C1 — gavetas: laterais', 'BRC15', 45, 20, 4)
+add(C, 'C1 — gavetas: frente/costas', 'BRC15', 83, 20, 4)
+add(C, 'C1 — gavetas: fundo', 'BRC6', 83, 45, 2)
 # --- C2 cristaleira 138,5 x 141 x 32 — 4 portas de abrir c/ vidro incolor
-add(C, 'C2 — laterais', 'CRU15', 141, 32, 2)
-add(C, 'C2 — divisória central', 'CRU15', 141, 32)
-add(C, 'C2 — tampo/base', 'CRU15', 137, 32, 2)
-add(C, 'C2 — fundo', 'CRU6', 137, 141)
-add(C, 'C2 — prateleiras internas (5 por coluna)', 'CRU18', 66, 30, 10)
-add(C, 'C2 — caixilhos das portas de vidro', 'CRU15', 141, 34, 4)   # perfil/quadro
+add(C, 'C2 — laterais', 'BRC15', 141, 32, 2)
+add(C, 'C2 — divisória central', 'BRC15', 141, 32)
+add(C, 'C2 — tampo/base', 'BRC15', 137, 32, 2)
+add(C, 'C2 — fundo', 'BRC6', 137, 141)
+add(C, 'C2 — prateleiras internas (5 por coluna)', 'BRC18', 66, 30, 10)
+add(C, 'C2 — caixilhos das portas de vidro', 'BRC15', 141, 34, 4)   # perfil/quadro
 # --- C3 nichos + base 136,5
-add(C, 'C3 — laterais', 'CRU15', 232, 47, 2)
-add(C, 'C3 — tampo/base', 'CRU15', 133, 47, 2)
-add(C, 'C3 — fundo', 'CRU6', 133, 232)
-add(C, 'C3 — divisória dos nichos', 'CRU15', 45, 47)
-add(C, 'C3 — prateleira dos nichos', 'CRU15', 133, 47)
-add(C, 'C3 — bancada/tampo intermediário', 'CRU18', 133, 47)
-add(C, 'C3 — portas da base', 'CRU15', 91, 66, 2)
-add(C, 'C3 — prateleiras internas', 'CRU18', 64, 45, 2)
+add(C, 'C3 — laterais', 'BRC15', 232, 47, 2)
+add(C, 'C3 — tampo/base', 'BRC15', 133, 47, 2)
+add(C, 'C3 — fundo', 'BRC6', 133, 232)
+add(C, 'C3 — divisória dos nichos', 'BRC15', 45, 47)
+add(C, 'C3 — prateleira dos nichos', 'BRC15', 133, 47)
+add(C, 'C3 — bancada/tampo intermediário', 'BRC18', 133, 47)
+add(C, 'C3 — portas da base', 'BRC15', 91, 66, 2)
+add(C, 'C3 — prateleiras internas', 'BRC18', 64, 45, 2)
 
 # =====================================================================
 # NESTING — chapa 275 x 185. Estratégia: agrupar por material, ordenar por
@@ -193,18 +193,18 @@ print("\n" + "-" * 78)
 print("2) PLANO DE CORTE — chapas por material (nesting real 275x185)")
 print("-" * 78)
 NOME = {
-    'LAM15': 'MDF 15mm LÂMINA NATURAL louro freijó',
-    'LAM6':  'MDF 6mm lâmina natural',
-    'FRJ15': 'MDF 15mm Freijó Puro (interno)',
-    'FRJ6':  'MDF 6mm Freijó (fundos)',
-    'CRU15': 'MDF cru 15mm (p/ laca)',
-    'CRU18': 'MDF cru 18mm (prateleiras/laca)',
-    'CRU6':  'MDF cru 6mm (fundos laca)',
+    'SUB15': 'MDF cru 15mm (substrato p/ lâmina natural)',
+    'SUB6':  'MDF cru 6mm (substrato/fundo)',
+    'MEL15': 'MDF melamínico 15mm — PARTE INTERNA',
+    'MEL6':  'MDF melamínico 6mm — fundos internos',
+    'BRC15': 'MDF BRANCO 15mm (base p/ laca)',
+    'BRC18': 'MDF BRANCO 18mm (prateleiras/laca)',
+    'BRC6':  'MDF BRANCO 6mm (fundos laca)',
 }
 total_chapas = 0
 custo_chapas = 0.0
 chapas_por_mat = {}
-for mat in ['LAM15', 'FRJ15', 'FRJ6', 'CRU15', 'CRU18', 'CRU6']:
+for mat in ['SUB15', 'MEL15', 'MEL6', 'BRC15', 'BRC18', 'BRC6']:
     if mat not in por_mat: continue
     itens = por_mat[mat]
     n = nest(itens)
@@ -219,9 +219,9 @@ for mat in ['LAM15', 'FRJ15', 'FRJ6', 'CRU15', 'CRU18', 'CRU6']:
 # ripas: material adicional em lâmina natural
 ch_ripas = 1
 total_chapas += ch_ripas
-custo_chapas += ch_ripas * P['LAM15']
-print(f"{'+ ripas do ripado (lâmina natural 15mm)':<42} {n_ripas:>3} ripas · "
-      f"{ml_ripas:>6.2f} m · **{ch_ripas:>2} chapa**  · R$ {ch_ripas*P['LAM15']:>8,.2f}")
+custo_chapas += ch_ripas * P['SUB15']
+print(f"{'+ ripas do ripado (MDF cru 15mm)':<42} {n_ripas:>3} ripas · "
+      f"{ml_ripas:>6.2f} m · **{ch_ripas:>2} chapa**  · R$ {ch_ripas*P['SUB15']:>8,.2f}")
 
 print(f"\nTOTAL DE CHAPAS: {total_chapas}   |   custo de chapas: R$ {custo_chapas:,.2f}")
 
@@ -237,12 +237,12 @@ def perim_mat(mats):
         if mat in mats:
             t += q * 2 * (c + l) / 100
     return t
-fita_lam = perim_mat(['LAM15']) * 0.55        # só bordas aparentes
-fita_frj = perim_mat(['FRJ15', 'FRJ6']) * 0.5
-fita_cru = perim_mat(['CRU15', 'CRU18']) * 0.5   # laca: bordas seladas, não fitadas
+fita_lam = perim_mat(['SUB15']) * 0.55        # só bordas aparentes
+fita_frj = perim_mat(['MEL15', 'MEL6']) * 0.5
+fita_cru = perim_mat(['BRC15', 'BRC18']) * 0.5   # laca: bordas seladas, não fitadas
 print(f"Lâmina natural (bordas aparentes) ..... {fita_lam:>7.1f} m x R$ {FITA_LAM_M:.2f} = R$ {fita_lam*FITA_LAM_M:>9,.2f}")
 print(f"Ripas do ripado (2x(alt+larg)/ripa) ... {fita_ripas:>7.1f} m x R$ {FITA_LAM_M:.2f} = R$ {fita_ripas*FITA_LAM_M:>9,.2f}  <-- GARGALO")
-print(f"Freijó melamínico (interno) ........... {fita_frj:>7.1f} m x R$ {FITA_FRJ_M:.2f} = R$ {fita_frj*FITA_FRJ_M:>9,.2f}")
+print(f"Melamínico (parte interna)    ........... {fita_frj:>7.1f} m x R$ {FITA_FRJ_M:.2f} = R$ {fita_frj*FITA_FRJ_M:>9,.2f}")
 fita_total_m = fita_lam + fita_ripas + fita_frj
 custo_fita = fita_lam*FITA_LAM_M + fita_ripas*FITA_LAM_M + fita_frj*FITA_FRJ_M
 custo_filet = fita_total_m * FILETAGEM_M
@@ -255,12 +255,20 @@ print(f"(peças de laca não levam fita — bordas seladas e lacadas: {fita_cru:
 print("\n" + "-" * 78)
 print("4) ACABAMENTOS POR m²")
 print("-" * 78)
-area_laca = sum(c*l*q for mv, d, mat, c, l, q in pecas if mat.startswith('CRU')) / 10000
+area_laca = sum(c*l*q for mv, d, mat, c, l, q in pecas if mat.startswith('BRC')) / 10000
 area_laca_2f = area_laca * 1.6      # faces aparentes + internas parciais
 custo_laca = area_laca_2f * LACA_M2
-custo_lamina_ripa = area_ripado * 3 * LAMINA_M2   # face + 2 laterais da ripa
-print(f"Laca fosca N048/X148 (Sayerlack) ...... {area_laca_2f:>7.1f} m² x R$ {LACA_M2:.0f} = R$ {custo_laca:>9,.2f}")
-print(f"Lâmina natural nas ripas (3 faces) .... {area_ripado*3:>7.1f} m² x R$ {LAMINA_M2:.0f} = R$ {custo_lamina_ripa:>9,.2f}")
+
+# --- lâmina natural: corpo (1 face) + portas (2 faces) + ripas (3 faces)
+area_lam_corpo = sum(c*l*q for mv, d, mat, c, l, q in pecas
+                     if mat == 'SUB15' and 'porta' not in d.lower() and 'frente' not in d.lower()) / 10000
+area_lam_porta = sum(c*l*q for mv, d, mat, c, l, q in pecas
+                     if mat == 'SUB15' and ('porta' in d.lower() or 'frente' in d.lower())) / 10000
+area_lamina = area_lam_corpo + area_lam_porta*2 + area_ripado*3
+custo_lamina = area_lamina * LAMINA_M2
+print(f"Laca fosca N048/X148 sobre MDF branco . {area_laca_2f:>7.1f} m² x R$ {LACA_M2:.0f} = R$ {custo_laca:>9,.2f}")
+print(f"Lâmina natural — serviço aplicado ..... {area_lamina:>7.1f} m² x R$ {LAMINA_M2:.0f} = R$ {custo_lamina:>9,.2f}")
+print(f"   (corpo {area_lam_corpo:.1f} m² 1 face + portas {area_lam_porta:.1f} m² 2 faces + ripas {area_ripado:.1f} m² 3 faces)")
 
 # =====================================================================
 # 5) FERRAGENS HETTICH E INSUMOS
@@ -319,8 +327,8 @@ linhas = [
     ('Chapas (todas as linhas)', custo_chapas),
     ('Fita de borda / lâmina de bordo', custo_fita),
     ('Filetagem (aplicação)', custo_filet),
-    ('Laca fosca (Sayerlack N048/X148)', custo_laca),
-    ('Lâmina natural aplicada nas ripas', custo_lamina_ripa),
+    ('Laca fosca sobre MDF branco', custo_laca),
+    ('Lâmina natural — serviço aplicado', custo_lamina),
     ('Ferragens Hettich + puxadores + vidro', custo_ferragens),
 ]
 mat_total = sum(v for _, v in linhas)
@@ -328,6 +336,48 @@ for k, v in linhas:
     print(f"   {k:<44} R$ {v:>10,.2f}")
 print(f"   {'-'*44} {'-'*14}")
 print(f"   {'SUBTOTAL MATERIAL':<44} R$ {mat_total:>10,.2f}")
+
+
+# =====================================================================
+# 7) PRECIFICAÇÃO — motor oficial do validador. MC 35%, SEM RT.
+# =====================================================================
+logistica = 900.0     # 3 ambientes, peças grandes (636cm) — 2 viagens
+visita    = 400.0     # medição + conferência de obra
+fixedR = mat_total + logistica + visita
+
+NF, PARC, VEND, ERRO, SERRA, MANUT = 0.04, 0.08, 0.03, 0.005, 0.002, 0.005
+a = NF + PARC + VEND + ERRO + SERRA + MANUT
+liqF = 1 - (NF + PARC)
+PROG, COORD, MARC, RT = 0.008, 0.01, 0.025, 0.0
+b = PROG + COORD + MARC + RT
+MC = 0.35
+divisor = 1 - a - liqF*b - MC
+inv = fixedR / divisor
+
+print("\n" + "=" * 78)
+print(f"7) PRECIFICAÇÃO — MC {MC*100:.0f}% · SEM RT")
+print("=" * 78)
+print(f"   Subtotal material .......................... R$ {mat_total:>10,.2f}")
+print(f"   Logística .................................. R$ {logistica:>10,.2f}")
+print(f"   Visita técnica / medição ................... R$ {visita:>10,.2f}")
+print(f"   CUSTO DIRETO (fixedR) ...................... R$ {fixedR:>10,.2f}")
+print(f"\n   Divisor: 1 - {a:.3f} - {liqF:.2f}x{b:.3f} - {MC:.2f} = {divisor:.5f}")
+print(f"   >>> INVESTIMENTO TOTAL ..................... R$ {inv:>10,.2f}")
+
+# alocação por móvel (proporcional ao custo direto de material de cada um)
+print("\n   --- Alocação por móvel (proporcional ao material) ---")
+custo_mv = {}
+for mv, d, mat, c, l, q in pecas:
+    custo_mv[mv] = custo_mv.get(mv, 0) + (c*l*q/10000) / CH_AREA * P[mat]
+# acabamentos alocados onde ocorrem
+custo_mv['B. Varanda/gourmet'] = custo_mv.get('B. Varanda/gourmet', 0) + custo_lamina*0.62 + fita_ripas*FITA_LAM_M
+custo_mv['A. Móvel entrada']   = custo_mv.get('A. Móvel entrada', 0) + custo_lamina*0.38
+custo_mv['C. Salas TV e jantar'] = custo_mv.get('C. Salas TV e jantar', 0) + custo_laca
+tot_mv = sum(custo_mv.values())
+for mv in ['A. Móvel entrada', 'B. Varanda/gourmet', 'C. Salas TV e jantar']:
+    frac = custo_mv[mv]/tot_mv
+    print(f"   {mv:<26} {frac*100:>5.1f}%  ->  R$ {inv*frac:>10,.2f}")
+print(f"\n   MC verificada = {MC*100:.1f}% | RT = 0% | sem desconto.")
 
 print(f"""
 {'='*78}

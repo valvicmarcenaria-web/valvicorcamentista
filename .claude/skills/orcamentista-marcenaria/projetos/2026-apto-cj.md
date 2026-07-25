@@ -1,6 +1,6 @@
 # Apartamento CJ — Belo Horizonte/MG (B+G Estúdio)
 
-> **Status:** 🟡 Levantamento de material concluído. Aguardando definições para fechar preço.
+> **Status:** 🟢 REV.01 — levantamento fechado com MC 35%, sem RT. Pronto para virar proposta.
 > Fonte: `CL_ENTREGA_FINAL_MARCENARIA.pdf` (13 pranchas). Projeto **B+G Estúdio**.
 > Estilo: clássico + escandinavo. Ferragens definidas: **Hettich**.
 
@@ -23,26 +23,36 @@ ainda não chegou.
 projeto manda o cliente tratar com o serralheiro) · futton estofado 110×41 · granito/frontão
 (marmoraria) · ponto elétrico do nicho (eletricista) · demolição/retirada do móvel antigo.
 
+## Definições do Jonathan (REV.01)
+- **Laca sobre MDF branco** (chapa branca como base) — não MDF cru.
+- **Parte interna dos móveis em MDF melamínico** — *deve constar explícito na proposta*.
+- **Serviço de lâmina natural: R$ 450/m²** (aplicação + acabamento).
+- **MC 35% · sem RT.**
+
 ## Quantitativo — plano de corte real (chapa 275×185, nesting)
 
 | Material | Peças | Área | **Chapas** | Custo |
 |---|--:|--:|--:|--:|
-| MDF 15mm **lâmina natural** louro freijó | 20 | 7,65 m² | **2** | R$ 1.900 |
-| MDF 15mm Freijó Puro (interno) | 24 | 5,03 m² | **2** | R$ 1.000 |
-| MDF 6mm Freijó (fundos) | 4 | 2,05 m² | **1** | R$ 300 |
-| MDF cru 15mm (p/ laca) | 40 | 25,56 m² | **8** | R$ 656 |
-| MDF cru 18mm (prateleiras/laca) | 19 | 5,61 m² | **2** | R$ 190 |
-| MDF cru 6mm (fundos laca) | 6 | 14,02 m² | **4** | R$ 248 |
-| + ripas do ripado (lâmina natural) | 50 ripas · 33,1 m | — | **1** | R$ 950 |
-| **TOTAL** | | | **20 chapas** | **R$ 5.244** |
+| MDF cru 15mm (substrato p/ lâmina natural) | 20 | 7,65 m² | **2** | R$ 164 |
+| MDF **melamínico** 15mm — parte interna | 24 | 5,03 m² | **2** | R$ 360 |
+| MDF **melamínico** 6mm — fundos internos | 4 | 2,05 m² | **1** | R$ 130 |
+| MDF **branco** 15mm (base p/ laca) | 40 | 25,56 m² | **8** | R$ 864 |
+| MDF **branco** 18mm (prateleiras/laca) | 19 | 5,61 m² | **2** | R$ 244 |
+| MDF **branco** 6mm (fundos laca) | 6 | 14,02 m² | **4** | R$ 312 |
+| + ripas do ripado (MDF cru 15mm) | 50 ripas · 33,1 m | — | **1** | R$ 82 |
+| **TOTAL** | | | **20 chapas** | **R$ 2.156** |
 
 ### Fita / filetagem
-Lâmina natural (bordas aparentes) 29,0 m · **ripas 69,2 m** ⚠️ · freijó interno 28,8 m →
-**127 m** de filetagem. Peças de laca não levam fita (bordas seladas e lacadas): 94 m de borda a selar.
+Bordo em lâmina natural 29,0 m · **ripas 69,2 m** ⚠️ · melamínico interno 28,8 m →
+**127 m de filetagem**. Peças de laca não levam fita (bordas seladas e lacadas): 94 m a selar.
 
-### Acabamentos por m²
-- **Laca fosca Sayerlack N048/X148: 72,3 m²** → R$ 21.692 — *maior driver de custo do projeto*
-- Lâmina natural aplicada nas ripas (3 faces/ripa): 3,0 m² → R$ 566
+### Acabamentos por m² — onde está o dinheiro
+| Serviço | Área | R$/m² | Custo |
+|---|--:|--:|--:|
+| **Laca fosca N048/X148 sobre MDF branco** | 72,3 m² | 300 | **R$ 21.692** |
+| **Lâmina natural aplicada + acabada** | 13,1 m² | 450 | **R$ 5.879** |
+
+Lâmina = corpo 4,0 m² (1 face) + portas 3,0 m² (2 faces) + ripas 3,0 m² (3 faces).
 
 ### Ferragens Hettich
 | Item | Qtd | Custo |
@@ -54,19 +64,31 @@ Lâmina natural (bordas aparentes) 29,0 m · **ripas 69,2 m** ⚠️ · freijó 
 | Puxador bolinha dourado fosco (cristaleira) | 4 un | R$ 152 |
 | Vidro incolor cristaleira *(terceiro)* | 1,86 m² | R$ 596 |
 
-## Custo de material
+## Custo e precificação — MC 35%, sem RT
 
 | | |
 |---|--:|
-| Chapas | R$ 5.244 |
-| Fita/lâmina de bordo | R$ 1.265 |
-| Filetagem | R$ 317 |
-| **Laca fosca** | **R$ 21.692** |
-| Lâmina natural nas ripas | R$ 566 |
+| Chapas | R$ 2.156 |
+| Fita/bordo + filetagem | R$ 1.582 |
+| **Laca fosca sobre MDF branco** | **R$ 21.692** |
+| **Lâmina natural — serviço aplicado** | **R$ 5.879** |
 | Ferragens Hettich + puxadores + vidro | R$ 2.436 |
-| **SUBTOTAL MATERIAL** | **R$ 31.520** |
+| **Subtotal material** | **R$ 33.745** |
+| Logística | R$ 900 |
+| Visita técnica / medição | R$ 400 |
+| **Custo direto (fixedR)** | **R$ 35.045** |
 
-> Falta definir **MC** e **RT** para fechar o investimento.
+Motor: `inv = fixedR / (1 − a − liqF·b − mc)` · a=16,2% · liqF=0,88 · b=4,3% (RT=0) · mc=35%
+→ divisor **0,45016**
+
+| | Valor |
+|---|--:|
+| **INVESTIMENTO TOTAL** | **R$ 77.849** |
+| A. Móvel entrada — 8,1% | R$ 6.328 |
+| B. Varanda/gourmet — 15,7% | R$ 12.218 |
+| C. Salas TV e jantar — 76,2% | R$ 59.303 |
+
+> MC verificada 35,0% · RT 0% · sem desconto.
 
 ## ⚠️ Pontos de atenção
 1. **Ripado da varanda em lâmina natural — o item mais crítico.** 50 ripas (33,1 m lineares) com
