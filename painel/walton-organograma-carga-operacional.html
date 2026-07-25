@@ -42,7 +42,7 @@
   /* ===== org tree ===== */
   .tree{ position:relative; flex:1; display:flex; flex-direction:column; justify-content:space-evenly; gap:22px; padding:10px 0 26px; }
   .lines{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:0; }
-  .row{ position:relative; z-index:1; display:flex; justify-content:center; gap:14px; }
+  .row{ position:relative; z-index:1; display:flex; justify-content:center; gap:10px; }
   .row.top{ gap:34px; }
 
   .hub{ background:#fff; border:1.4px solid var(--navy); border-radius:10px; padding:14px 22px; width:390px; box-shadow:0 3px 10px rgba(11,22,40,.08); }
@@ -74,7 +74,10 @@
   .node.external .name{ color:#4d5766; }
   .node.external .role{ color:#6b7684; }
   .node.external .tag{ display:inline-block; margin-top:5px; font-size:6.8px; font-weight:800; letter-spacing:.3px; text-transform:uppercase; background:#e7e9ed; color:#4d5766; padding:2px 6px; border-radius:7px; }
-  .node.lvl2{ width:104px; padding:8px 8px; }
+  .node .vv{ margin-top:5px; padding-top:4px; border-top:1px dashed rgba(27,39,51,.18); font-size:7.6px; color:var(--navy); font-weight:800; }
+  .node .vv i{ display:block; font-style:normal; font-weight:600; font-size:6.8px; color:#8a5d08; margin-top:1px; }
+  .node .vv u{ display:block; text-decoration:none; font-weight:600; font-size:6.8px; color:var(--muted); margin-top:1px; }
+  .node.lvl2{ width:126px; padding:8px 9px; }
   .node.lvl2 .name{ font-size:10.5px; }
   .node .dual{ display:inline-block; margin-top:5px; font-size:6.8px; font-weight:800; letter-spacing:.3px; text-transform:uppercase; background:#f6edd6; color:var(--gold-dk); padding:2px 6px; border-radius:7px; }
   .node.need{ border-style:dashed; border-color:#b0413f; background:#fbeceb; box-shadow:0 0 0 3px rgba(176,65,63,.07); }
@@ -105,10 +108,10 @@
 
   <div class="body">
     <section class="kpis">
-      <div class="kpi b"><div class="kl">Equipe total</div><div class="kv num">9<small> ativos</small></div><div class="ks">Fora os 2 sócios · <b>2 entram</b> (Carla, Bruna) e <b>4 a 5 a contratar</b></div></div>
+      <div class="kpi b"><div class="kl">Equipe total</div><div class="kv num">8<small> ativos</small></div><div class="ks">Fora os 2 sócios · <b>3 entram</b> (Carla, Bruna, Cezar) e <b>4 a 5 a contratar</b></div></div>
       <div class="kpi"><div class="kl">Convergem em Paulo</div><div class="kv num">6</div><div class="ks">3 reporte direto (Deivson, Filipe, Bruna) + 3 dupla checagem técnica (Joelson, Samuel, Jackson)</div></div>
       <div class="kpi"><div class="kl">Convergem em Jonathan</div><div class="kv num">0<small> ativo</small></div><div class="ks">Assistente Operacional ainda <b>em contratação</b> — hoje ele executa esse escopo inteiro sozinho</div></div>
-      <div class="kpi"><div class="kl">Dupla função</div><div class="kv num">2 / 2</div><div class="ks">Jonathan e Paulo <b>executam e gerenciam</b> ao mesmo tempo — sem camada intermediária entre eles e a operação</div></div>
+      <div class="kpi"><div class="kl">Custo mensal · próximo mês</div><div class="kv num">R$ 58,4<small> mil</small></div><div class="ks">Com Bruna, Karla e Cezar · hoje <b>R$ 47,9 mil</b> — inclui pró-labore e benefícios</div></div>
     </section>
 
     <div class="tree" id="tree">
@@ -129,7 +132,7 @@
             <span class="chip">Pós-venda — permanente</span>
             <span class="chip">Visão &amp; expansão</span>
           </div>
-          <div class="badge"><div class="bn">1</div><div class="bt">pessoa prevista sob gestão<br>(a contratar)</div></div>
+          <div class="badge"><div class="bn">1</div><div class="bt">pessoa prevista sob gestão<br>(a contratar)</div><div style="margin-left:auto;text-align:right"><div style="font-size:8px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);font-weight:700">Pró-labore</div><div style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;color:var(--navy)">R$ 10.000</div></div></div>
         </div>
         <div class="shared">RH &amp; Recrutamento<br><span>feito em conjunto</span></div>
         <div class="hub warn" id="n-paulo">
@@ -144,7 +147,7 @@
             <span class="chip">Captação de mão de obra</span>
             <span class="chip">Escalonamento técnico da equipe</span>
           </div>
-          <div class="badge"><div class="bn">6</div><div class="bt">pessoas sob gestão direta<br>ou dupla checagem técnica</div></div>
+          <div class="badge"><div class="bn">6</div><div class="bt">pessoas sob gestão direta<br>ou dupla checagem técnica</div><div style="margin-left:auto;text-align:right"><div style="font-size:8px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);font-weight:700">Pró-labore</div><div style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;color:var(--navy)">R$ 10.000</div></div></div>
         </div>
       </div>
 
@@ -152,42 +155,47 @@
         <div class="node pending" id="n-asst">
           <div class="role">Comercial &amp; Adm.</div>
           <div class="name">Carla</div>
-          <div class="fn">Assistente Operacional · início previsto · reporta a Jonathan</div>
+          <div class="fn">Assistente Operacional · início dia 10</div>
+          <div class="vv">R$ 2.000<u>VR 500 + VT · progride a 3.200</u></div>
         </div>
         <div class="node" id="n-deivson">
           <div class="role">Operações &amp; Produção</div>
           <div class="name">Deivson</div>
-          <div class="fn">Coordenador de Produção<br>hoje atua mais como Marceneiro Sênior</div>
+          <div class="fn">Coordenador · hoje atua mais como Marceneiro Sênior</div>
+          <div class="vv">R$ 4.000<i>2,5% fabr. · 2,5% mont. · 1,0% coord.</i></div>
         </div>
         <div class="node" id="n-filipe">
           <div class="role">Tecnologia CNC</div>
           <div class="name">Filipe</div>
           <div class="fn">Programador CNC &amp; Tecnologia</div>
+          <div class="vv">R$ 3.600<u>sem comissão</u></div>
         </div>
         <div class="node pending" id="n-bruna">
           <div class="role">Tecnologia &amp; Suporte Comercial</div>
           <div class="name">Bruna</div>
-          <div class="fn">Arquiteta · programação + suporte de projetos no comercial · início previsto</div>
+          <div class="fn">Arquiteta · início dia 01</div>
+          <div class="vv">R$ 4.000<i>50% dos projetos que vender</i></div>
         </div>
         <div class="node external" id="n-jennifer">
           <div class="role">Marketing</div>
           <div class="name">Jennifer</div>
           <div class="fn">Social Media</div>
           <span class="tag">Parceira externa</span>
+          <div class="vv">R$ 1.400<u>fora da folha</u></div>
         </div>
       </div>
 
       <div class="row" id="row-l2">
-        <div class="node lvl2" id="n-joelson"><div class="name">Joelson</div><div class="fn">Operador CNC</div><span class="dual">+ Paulo</span></div>
-        <div class="node lvl2" id="n-samuel"><div class="name">Samuel</div><div class="fn">Marceneiro Sênior</div><span class="dual">+ Paulo</span></div>
-        <div class="node lvl2" id="n-jackson"><div class="name">Jackson</div><div class="fn">Marceneiro Pleno</div><span class="dual">+ Paulo</span></div>
-        <div class="node lvl2" id="n-jomar"><div class="name">Jomar</div><div class="fn">Marceneiro</div></div>
-        <div class="node lvl2" id="n-godoy"><div class="name">Jonathan Godoy</div><div class="fn">Ajudante Geral · novo, em início</div></div>
-        <div class="node lvl2" id="n-davi"><div class="name">Davi</div><div class="fn">Ajudante</div></div>
-        <div class="node lvl2" id="n-cezar"><div class="name">Cezar</div><div class="fn">Marceneiro · em teste</div></div>
-        <div class="node lvl2 need" id="n-paulob"><div class="name">Paulo (baiano)</div><div class="fn">Marceneiro experiente</div><span class="needtag">Necessidade</span></div>
-        <div class="node lvl2 need" id="n-ajud"><div class="name">2 a 3 ajudantes</div><div class="fn">Apoio à produção</div><span class="needtag">Necessidade</span></div>
-        <div class="node lvl2 need" id="n-opcnc"><div class="name">+1 operador CNC</div><div class="fn">Assume a máquina atual</div><span class="needtag">Necessidade</span></div>
+        <div class="node lvl2" id="n-joelson"><div class="name">Joelson</div><div class="fn">Operador CNC</div><div class="vv">R$ 2.500<i>2,5% mont. · R$2/chapa</i></div></div>
+        <div class="node lvl2" id="n-samuel"><div class="name">Samuel</div><div class="fn">Marceneiro Sênior</div><div class="vv">R$ 3.900<i>2,5% fabr. · 2,5% mont.</i></div></div>
+        <div class="node lvl2" id="n-jackson"><div class="name">Jackson</div><div class="fn">Marceneiro Pleno</div><div class="vv">R$ 3.600<i>2,5% fabr. · 2,5% mont.</i></div></div>
+        <div class="node lvl2" id="n-jomar"><div class="name">Jomar</div><div class="fn">Marceneiro</div><div class="vv">R$ 1.950<u>sem comissão</u></div></div>
+        <div class="node lvl2" id="n-godoy"><div class="name">Jonathan Godoy</div><div class="fn">Ajudante Geral · novo</div><div class="vv">R$ 1.950 est.<u>sem comissão</u></div></div>
+        <div class="node lvl2" id="n-davi"><div class="name">Davi</div><div class="fn">Ajudante</div><div class="vv">R$ 1.950<u>sem comissão</u></div></div>
+        <div class="node lvl2 pending" id="n-cezar"><div class="name">Cezar</div><div class="fn">Marceneiro · a entrar</div><div class="vv">R$ 3.600 est.<i>2,5% fabr. · 2,5% mont.</i></div></div>
+        <div class="node lvl2 need" id="n-paulob"><div class="name">Paulo (baiano)</div><div class="fn">Marceneiro experiente</div><span class="needtag">Necessidade</span><div class="vv">R$ 3.900<i>2,5% fabr. · 2,5% mont.</i></div></div>
+        <div class="node lvl2 need" id="n-ajud"><div class="name">2 a 3 ajudantes</div><div class="fn">Apoio à produção</div><span class="needtag">Necessidade</span><div class="vv">R$ 1.950 cada<u>sem comissão</u></div></div>
+        <div class="node lvl2 need" id="n-opcnc"><div class="name">+1 operador CNC</div><div class="fn">Assume a máquina atual</div><span class="needtag">Necessidade</span><div class="vv">R$ 2.500<u>sem comissão</u></div></div>
       </div>
     </div>
     <div class="legend">
@@ -199,7 +207,7 @@
 
     <div class="notes">
       <div class="nt">Leitura</div>
-      <p>Hoje, <b>toda a operação converge para dois pontos: Jonathan e Paulo.</b> Paulo concentra a gestão — direta ou por dupla checagem técnica — de <b>6 profissionais</b> de produção/tecnologia (Joelson, Samuel e Jackson em dupla checagem; Deivson, Filipe e, em breve, Bruna em reporte direto), além de programação CNC, manutenção, compras e captação de mão de obra. Jonathan sustenta sozinho <b>todo o comercial, administrativo, jurídico e contábil</b> — na ausência da Carla (Assistente Operacional, início já previsto), ele também absorve o apoio pontual à produção e o pós-venda (este último, permanente mesmo depois da contratação). Recrutamento e desligamento (RH) são decisão conjunta dos dois. O próprio Deivson hoje acumula funções — <b>Coordenador de Produção que atua mais como Marceneiro Sênior</b> — justamente porque a bancada está curta: <b>Paulo "Baiano", 2 a 3 ajudantes e um operador de CNC são necessidades de contratação já identificadas</b> (destacadas em vermelho), não apenas previsão — é o que libera o Deivson para coordenar em vez de operar e o Joelson para migrar às máquinas novas. Cezar e Jonathan Godoy já atuam, na dupla 3, em período de teste. Bruna (arquiteta, programação + suporte de projetos no comercial) também tem entrada já prevista. Jennifer (social media) apoia o marketing como <b>parceira externa</b>, fora da folha e da estrutura interna — não entra na contagem de equipe, mas é mais um fio que passa pela mão do Jonathan. Nenhum dos dois sócios tem hoje uma camada de gestão intermediária plena entre si e a execução — <b>ambos acumulam a função de gestor e de executor</b> ao mesmo tempo.</p>
+      <p>Hoje, <b>toda a operação converge para dois pontos: Jonathan e Paulo.</b> Paulo concentra a gestão — direta ou por dupla checagem técnica — de <b>6 profissionais</b> de produção/tecnologia (Joelson, Samuel e Jackson em dupla checagem; Deivson, Filipe e, em breve, Bruna em reporte direto), além de programação CNC, manutenção, compras e captação de mão de obra. Jonathan sustenta sozinho <b>todo o comercial, administrativo, jurídico e contábil</b> — na ausência da Carla (Assistente Operacional, início já previsto), ele também absorve o apoio pontual à produção e o pós-venda (este último, permanente mesmo depois da contratação). Recrutamento e desligamento (RH) são decisão conjunta dos dois. O próprio Deivson hoje acumula funções — <b>Coordenador de Produção que atua mais como Marceneiro Sênior</b> — justamente porque a bancada está curta: <b>Paulo "Baiano", 2 a 3 ajudantes e um operador de CNC são necessidades de contratação já identificadas</b> (destacadas em vermelho), não apenas previsão — é o que libera o Deivson para coordenar em vez de operar e o Joelson para migrar às máquinas novas. Jonathan Godoy já atua; <b>Cezar ainda não entrou</b> — a dupla 3 só fecha com a entrada dele. Os dois sócios <b>executam e gerenciam ao mesmo tempo</b>, sem camada intermediária entre eles e a operação. Bruna (arquiteta, programação + suporte de projetos no comercial) também tem entrada já prevista. Jennifer (social media) apoia o marketing como <b>parceira externa</b>, fora da folha e da estrutura interna — não entra na contagem de equipe, mas é mais um fio que passa pela mão do Jonathan. Nenhum dos dois sócios tem hoje uma camada de gestão intermediária plena entre si e a execução — <b>ambos acumulam a função de gestor e de executor</b> ao mesmo tempo.</p>
     </div>
   </div>
   <div class="pf"><div class="pl">Documento confidencial · preparado para Walton · Valvic Marcenaria — Vargas Decor Ltda</div><div class="pr">Julho <span>/</span> 2026</div></div>
