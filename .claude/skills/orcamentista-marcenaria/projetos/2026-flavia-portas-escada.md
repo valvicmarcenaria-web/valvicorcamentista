@@ -1,7 +1,17 @@
 # Levantamento — Portas + painéis do vão da escada (contato: Flávia Moacir)
 
-> **Status:** 🟢 REV.03 — tabela de cálculo para aprovação.
+> **Status:** 🟢 REV.04 — proposta final entregue (`proposta-flavia-portas.pdf`, 2 págs, design minimalista).
 > Origem: WhatsApp (atendimento Jonathan), fotos do local (escada em concreto + hall de elevadores amadeirado) e medidas passadas em texto.
+
+## REV.04 — fechamento
+- **Dobradiça Häfele IN600 = R$ 250,00/un** (valor do anúncio, confirmado pelo cliente — substitui a
+  estimativa de R$138,51 da pesquisa de mercado).
+- **Valores arredondados para números cheios** na proposta final: Portas R$ 9.100 + Painel R$ 5.400 =
+  **Total R$ 14.500** (cálculo bruto do motor: R$ 14.505,54 — MC efetiva ~37,0% mantida no arredondamento).
+- **Pagamento 50% + 50%** (entrada na assinatura + saldo na entrega). **Prazo: 50 dias úteis.**
+- Puxadores em cava nas 2 portas (sem ferragem aparente) — destacado na proposta.
+- Destaques da proposta: **dobradiças Häfele IN600** (7 un, 4 na porta maior) e **proteção de
+  alumínio na base** das portas.
 
 ## Leitura da conversa
 - 14/07: foto da escada (vão subindo/descendo). Escopo: **porta no vão da escada subindo E porta no vão da escada descendo** — confirmado.

@@ -17,7 +17,7 @@ ESP_FACE = 0.015                        # 15mm por face
 PRECO_CHAPA_ULTRA15 = 580.0             # R$/chapa — MDF Ultra amadeirado fosco (Duratex) — estimativa mercado, confirmar fornecedor
 PRECO_FITA_M = 4.0                      # R$/m (fita de borda amadeirado fosco)
 PRECO_SARRAFO_M = 8.0                   # R$/m (sarrafo pinus, estrutura interna)
-PRECO_DOBR_IN600 = 138.51               # R$/un — Häfele IN600 (referência de mercado, link do cliente)
+PRECO_DOBR_IN600 = 250.0                # R$/un — Häfele IN600, valor confirmado pelo cliente (anúncio)
 PRECO_FECHO_ROLETE = 75.0               # R$/un — estimativa de mercado (fecho rolete p/ porta pivotante)
 PRECO_PERFIL_ALUM_M = 10.0              # R$/m — perfil de alumínio base (valor passado pelo cliente)
 
