@@ -1,6 +1,6 @@
 # Apartamento CJ — Belo Horizonte/MG (B+G Estúdio)
 
-> **Status:** 🟢 REV.03 — proposta premium entregue (`proposta-apto-cj.pdf`, 5 págs) — levantamento fechado com MC 35%, sem RT. Pronto para virar proposta.
+> **Status:** 🟢 REV.04 — proposta premium entregue (`proposta-apto-cj.pdf`, 5 págs) — levantamento fechado com MC 35%, sem RT. Pronto para virar proposta.
 > Fonte: `CL_ENTREGA_FINAL_MARCENARIA.pdf` (13 pranchas). Projeto **B+G Estúdio**.
 > Estilo: clássico + escandinavo. Ferragens definidas: **Hettich**.
 
@@ -86,22 +86,33 @@ Motor: `inv = fixedR / (1 − a − liqF·b − mc)` · a=**18,2%** (parc 10%) �
 
 | | Valor |
 |---|--:|
-| **INVESTIMENTO TOTAL (cheio)** | **R$ 83.071 → apresentado R$ 83.100** |
-| A. Móvel entrada — 7,2% | R$ 5.960 |
-| B. Varanda/gourmet — 14,1% | R$ 11.736 |
-| C. Salas TV e jantar — 78,7% | R$ 65.375 |
+| **INVESTIMENTO TOTAL (cheio)** | **R$ 84.531 → apresentado R$ 84.600** |
+| *(inclui serralheria da adega, custo produção R$ 600)* | |
+| A. Móvel entrada | R$ 5.950 |
+| B. Varanda/gourmet | R$ 11.700 |
+| C. Salas TV e jantar | R$ 65.200 |
+| D. Serralheria da adega | R$ 1.750 |
 
 > MC verificada 37,0% · RT 0%.
 
 ### Tabela de desconto à vista (apresentada na proposta)
 | Condição | Desc. | Valor |
 |---|--:|--:|
-| Entrada 30% + até 10× cartão | — | R$ 83.100 |
-| Entrada 50% + até 8× cartão | 4% | R$ 79.800 |
-| Entrada 70% + até 6× cartão | 7% | R$ 77.300 |
-| **À vista / transferência** | **10%** | **R$ 74.800** |
+| Entrada 30% + até 10× cartão | — | R$ 84.600 |
+| Entrada 50% + até 8× cartão | 4% | R$ 81.200 |
+| Entrada 70% + até 6× cartão | 7% | R$ 78.700 |
+| **À vista / transferência** | **10%** | **R$ 76.100** |
 
-## Proposta entregue (REV.03)
+## Ajustes REV.04 (Jonathan)
+- **Serralheria da adega incluída** — custo de produção R$ 600 → R$ 1.750 na proposta.
+- **Garantia 10 anos** (era 5).
+- **Prazo 50 a 60 dias corridos** (era úteis).
+- **Preço à vista em destaque** (hero escuro), parcelado como alternativa secundária.
+- **Custos por item** na proposta (4 linhas).
+- **Sem quantidades de ferragem** no texto; ênfase na **engenharia alemã Hettich** (fundada 1888,
+  80 mil ciclos de teste).
+
+## Proposta entregue (REV.03→04)
 `build-apto-cj.py` → `proposta-apto-cj.html` → `proposta-apto-cj.pdf` (5 págs, Playwright).
 Layout premium: capa com foto do living, página de copy (Light Copy — premissa antes da promessa)
 sobre lâmina natural e laca, escopo por ambiente com imagens do caderno, página técnica completa

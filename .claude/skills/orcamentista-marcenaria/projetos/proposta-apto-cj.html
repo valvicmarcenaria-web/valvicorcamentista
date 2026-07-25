@@ -76,23 +76,37 @@ p{margin:0;}
        letter-spacing:.1em;text-transform:uppercase;padding:1mm 2.5mm;border-radius:3px;}
 
 /* ---------- INVESTIMENTO ---------- */
-.inv-hero{border:1.5px solid var(--ink);border-radius:7px;padding:7mm 8mm;position:relative;}
-.inv-hero .k{font-size:7.4pt;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);font-weight:700;}
-.inv-hero .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:31pt;font-weight:700;line-height:1;margin:3mm 0 1mm;}
-.inv-hero .c{font-size:8.8pt;color:var(--soft);}
+.inv-hero{background:var(--deep);color:#F5F1E8;border-radius:7px;padding:5.5mm 7mm;position:relative;overflow:hidden;}
+.inv-hero::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gold-lt);}
+.inv-hero .k{font-size:7.4pt;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-lt);font-weight:700;}
+.inv-hero .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:35pt;font-weight:700;line-height:1;
+             margin:1.5mm 0 .8mm;color:#fff;}
+.inv-hero .c{font-size:8.6pt;color:#C6BFB2;}
+.inv-hero .alt{margin-top:2.2mm;padding-top:2.2mm;border-top:1px solid rgba(201,169,106,.32);
+               font-size:8.6pt;color:#C6BFB2;}
+.inv-hero .alt b{color:#F0E7D6;}
+.item-tb{width:100%;border-collapse:collapse;font-size:9pt;margin-top:4mm;}
+.item-tb th{text-align:left;font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);
+            font-weight:700;border-bottom:1.5px solid var(--ink);padding:0 0 2mm;}
+.item-tb td{padding:1.9mm 0;border-bottom:1px solid var(--hair);vertical-align:top;}
+.item-tb td.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600;}
+.item-tb .nm{font-weight:600;color:var(--ink);}
+.item-tb .nm small{display:block;font-weight:400;color:var(--soft);font-size:8pt;margin-top:.4mm;}
+.item-tb tr.tot td{border-bottom:0;border-top:1.5px solid var(--ink);font-weight:700;
+                   font-family:'Cormorant Garamond',Georgia,serif;font-size:12pt;padding-top:2.4mm;}
 .pay-tb{width:100%;border-collapse:collapse;font-size:9.2pt;margin-top:5mm;}
 .pay-tb th{text-align:left;font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);
            font-weight:700;border-bottom:1.5px solid var(--ink);padding:0 0 2mm;}
-.pay-tb td{padding:2.8mm 0;border-bottom:1px solid var(--hair);}
+.pay-tb td{padding:1.9mm 0;border-bottom:1px solid var(--hair);}
 .pay-tb td.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
 .pay-tb tr.best td{background:var(--gold-pale);font-weight:700;color:var(--ink);}
 .pay-tb tr.best td:first-child{padding-left:3mm;border-radius:4px 0 0 4px;}
 .pay-tb tr.best td:last-child{padding-right:3mm;border-radius:0 4px 4px 0;color:var(--gold);}
-.terms{display:flex;gap:5mm;margin-top:5mm;}
-.term{flex:1;border:1px solid var(--line);border-radius:5px;padding:4mm 4.5mm;text-align:center;}
+.terms{display:flex;gap:5mm;margin-top:3.2mm;}
+.term{flex:1;border:1px solid var(--line);border-radius:5px;padding:3mm 4mm;text-align:center;}
 .term .k{font-size:6.6pt;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);font-weight:700;}
 .term .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:12.5pt;font-weight:700;margin-top:1mm;line-height:1.15;}
-.note{margin-top:5mm;padding-left:4mm;border-left:2px solid var(--gold-lt);font-size:8pt;color:var(--soft);line-height:1.55;}
+.note{margin-top:3.2mm;padding-left:4mm;border-left:2px solid var(--gold-lt);font-size:7.1pt;color:var(--soft);line-height:1.48;}
 .note b{color:var(--ink);}
 </style></head><body>
 
@@ -233,32 +247,36 @@ p{margin:0;}
         <b>MDF melamínico</b> nos módulos de laca — resistente a risco, umidade e limpeza diária.</td></tr>
       <tr><td>Estrutura</td><td>MDF <b>15 mm</b> em caixaria e portas · <b>18 mm</b> em prateleiras
         (evita flecha no vão longo) · <b>6 mm</b> em fundos · prateleira da TV em <b>3 cm</b>.</td></tr>
-      <tr><td>Dobradiças</td><td><b>Hettich Sensys</b> com amortecimento integrado — 40 unidades.
-        Fecho suave em qualquer velocidade. <b>Garantia vitalícia do fabricante.</b></td></tr>
-      <tr><td>Corrediças</td><td><b>Hettich Actro 5D</b> nos gavetões da entrada (regulagem em 5 eixos,
-        carga até 40 kg) e <b>Quadro V6</b> nas gavetas do painel — abertura total, retorno silencioso.</td></tr>
+      <tr><td>Dobradiças</td><td><b>Hettich Sensys</b> — amortecimento integrado ao corpo da dobradiça.
+        Fecho suave em qualquer velocidade, mesmo com a porta empurrada de leve.</td></tr>
+      <tr><td>Corrediças</td><td><b>Hettich Actro 5D</b> nos gavetões (regulagem em 5 eixos) e
+        <b>Quadro V6</b> nas gavetas do painel — abertura total, retorno silencioso, carga plena.</td></tr>
       <tr><td>Puxadores</td><td>Cava 45° usinada na própria peça (entrada e varanda) ·
         bolinha dourado fosco na cristaleira.</td></tr>
-      <tr><td>Vidros</td><td>Incolor nas 4 portas da cristaleira — fornecimento e instalação
+      <tr><td>Vidros</td><td>Incolor nas portas da cristaleira — fornecimento e instalação
         coordenados pela Valvic.</td></tr>
+      <tr><td>Serralheria</td><td>Adega de vinho em serralheria, conforme detalhamento do projeto —
+        fabricação e instalação coordenadas pela Valvic.</td></tr>
       <tr><td>Emendas</td><td>O móvel das salas tem 636 cm — acima da chapa. As juntas são
         <b>projetadas para cair em linha de módulo</b>, alinhadas e simétricas.</td></tr>
     </tbody>
   </table>
 
   <div class="split2" style="margin-top:6mm;">
-    <div class="pull" style="background:var(--cream);border-left-color:var(--ink);">
-      <div class="t">Garantia</div>
-      <div class="d"><b>5 anos</b> na marcenaria (estrutura, montagem e acabamento).<br>
-      <b>Vitalícia</b> nas dobradiças Hettich, direto do fabricante.<br>
-      <b>2 anos</b> na instalação e regulagem.<br><br>
-      Garantia formal, assinada em contrato — não é promessa verbal.</div>
+    <div class="pull" style="background:var(--deep);border-left-color:var(--gold-lt);">
+      <div class="t" style="color:#fff;">Ferragem alemã.<br>Hettich desde 1888.</div>
+      <div class="d" style="color:#C6BFB2;">Alemã, fundada em 1888 — referência mundial em ferragem
+      para móveis. Cada dobradiça é testada para <b style="color:#F0E7D6;">80 mil ciclos</b>: abrir e
+      fechar a porta <b style="color:#F0E7D6;">10 vezes por dia durante 20 anos</b>.<br><br>
+      É a diferença entre a porta que continua macia no décimo ano e a que começa a bater no segundo.</div>
     </div>
-    <div class="pull">
-      <div class="t">Equipe própria,<br>do corte à instalação</div>
-      <div class="d">Quem projeta é quem produz é quem instala. Sem terceirização de montagem —
-      a responsabilidade não muda de mão no meio do caminho.<br><br>
-      Produção em <b>CNC próprio</b>: cada peça sai do plano de corte conferido, não do improviso de obra.</div>
+    <div class="pull" style="background:var(--cream);border-left-color:var(--ink);">
+      <div class="t">10 anos de garantia</div>
+      <div class="d"><b>10 anos</b> na marcenaria — estrutura, montagem e acabamento.<br>
+      <b>2 anos</b> na instalação e regulagem.<br><br>
+      Garantia formal, assinada em contrato — não é promessa verbal.<br><br>
+      <b>Equipe própria do corte à instalação:</b> quem projeta é quem produz é quem instala, em
+      CNC próprio.</div>
     </div>
   </div>
 
@@ -268,50 +286,54 @@ p{margin:0;}
 <!-- ══════════ 5. INVESTIMENTO ══════════ -->
 <div class="page"><div class="pad">
   <div class="eyebrow">Investimento</div>
-  <div class="h-sec serif">Uma execução completa,<br><em>do corte à instalação.</em></div>
-  <hr class="rule">
+  <div class="h-sec serif" style="font-size:21pt;">Uma execução completa,<br><em>do corte à instalação.</em></div>
+  <hr class="rule" style="margin:8px 0 9px;">
 
   <div class="inv-hero" style="margin-top:5mm;">
-    <div class="k">Investimento total</div>
-    <div class="v serif">R$ 83.100</div>
-    <div class="c">Móvel de entrada, marcenaria da varanda/gourmet e marcenaria das salas de TV e jantar —
-    material, ferragens Hettich, acabamento, fornecimento e instalação por equipe própria Valvic.</div>
+    <div class="k">Investimento à vista</div>
+    <div class="v serif">R$ 76.100</div>
+    <div class="c">Três ambientes de marcenaria + serralheria da adega — material, ferragens alemãs
+    Hettich, acabamento, fornecimento e instalação por equipe própria Valvic.</div>
+    <div class="alt">Prefere parcelar? <b>R$ 84.600</b> — entrada de 30% + saldo em até 10× no cartão.</div>
   </div>
 
-  <table class="pay-tb">
-    <thead><tr><th>Condição de pagamento</th><th class="r">Desconto</th><th class="r">Valor final</th></tr></thead>
+  <table class="item-tb">
+    <thead><tr><th>Item</th><th class="r">Investimento</th></tr></thead>
     <tbody>
-      <tr><td>Entrada 30% + saldo em até 10× no cartão</td><td class="r">—</td><td class="r">R$ 83.100</td></tr>
-      <tr><td>Entrada 50% + saldo em até 8× no cartão</td><td class="r">4%</td><td class="r">R$ 79.800</td></tr>
-      <tr><td>Entrada 70% + saldo em até 6× no cartão</td><td class="r">7%</td><td class="r">R$ 77.300</td></tr>
-      <tr class="best"><td>À vista / transferência</td><td class="r">10%</td><td class="r">R$ 74.800</td></tr>
+      <tr><td class="nm">Móvel de entrada<small>Suspenso, lâmina natural de louro freijó, gavetões e portas</small></td><td class="r">R$ 5.950</td></tr>
+      <tr><td class="nm">Marcenaria da varanda / gourmet<small>Módulos superior e inferior, ripado em lâmina natural freijó</small></td><td class="r">R$ 11.700</td></tr>
+      <tr><td class="nm">Marcenaria das salas de TV e jantar<small>636 cm — painel de TV, armários, cristaleira e nichos em laca fosca</small></td><td class="r">R$ 65.200</td></tr>
+      <tr><td class="nm">Serralheria da adega<small>Adega de vinho conforme detalhamento do projeto</small></td><td class="r">R$ 1.750</td></tr>
+      <tr class="tot"><td>Total à vista</td><td class="r">R$ 76.100</td></tr>
+    </tbody>
+  </table>
+
+  <table class="pay-tb" style="margin-top:4.5mm;">
+    <thead><tr><th>Outras condições</th><th class="r">Desconto</th><th class="r">Valor</th></tr></thead>
+    <tbody>
+      <tr><td>Entrada 70% + saldo em até 6× no cartão</td><td class="r">7%</td><td class="r">R$ 78.700</td></tr>
+      <tr><td>Entrada 50% + saldo em até 8× no cartão</td><td class="r">4%</td><td class="r">R$ 81.200</td></tr>
+      <tr><td>Entrada 30% + saldo em até 10× no cartão</td><td class="r">—</td><td class="r">R$ 84.600</td></tr>
     </tbody>
   </table>
   <p style="font-size:8pt;color:var(--soft);margin-top:2.5mm;">
-  O desconto à vista não é cortesia: é a <b>taxa de parcelamento que deixamos de pagar</b> à operadora,
-  devolvida integralmente para você.</p>
+  Quanto menos parcela, menor o preço — e o motivo é simples: o desconto é a
+  <b>taxa de parcelamento que deixamos de pagar</b> à operadora, devolvida integralmente para você.</p>
 
   <div class="terms">
-    <div class="term"><div class="k">Prazo</div><div class="v">50 a 60<br>dias úteis</div></div>
-    <div class="term"><div class="k">Garantia</div><div class="v">5 anos<br><span style="font-size:7.6pt;font-family:'DM Sans',sans-serif;font-weight:400;color:var(--soft);">vitalícia nas Hettich</span></div></div>
+    <div class="term"><div class="k">Prazo</div><div class="v">50 a 60<br>dias corridos</div></div>
+    <div class="term"><div class="k">Garantia</div><div class="v">10 anos</div></div>
     <div class="term"><div class="k">Validade</div><div class="v">7 dias<br>corridos</div></div>
   </div>
 
   <div class="note">
-    <b>Incluso:</b> marcenaria dos três ambientes, ferragens Hettich, lâmina natural aplicada e acabada,
-    laca fosca, vidros da cristaleira, fornecimento e instalação.<br>
-    <b>Não incluso:</b> espelho · manutenção/relaqueamento do móvel existente (exige avaliação in loco) ·
-    serralheria da adega · futton estofado · granito/frontão da bancada (marmoraria) · ponto elétrico do
-    nicho (eletricista) · retirada e descarte do móvel antigo.<br>
-    <b>Premissas:</b> medidas do caderno conferidas no local antes da produção. Laca N048 ou X148 e
-    tonalidade da lâmina a definir em amostra física antes do início.
-  </div>
-
-  <div style="margin-top:7mm;padding-top:5mm;border-top:1px solid var(--hair);">
-    <div class="h-sec serif" style="font-size:17pt;">Qual o próximo passo?</div>
-    <p class="body-t" style="margin-top:2mm;">Aprovada a proposta, agendamos a <b>medição final</b> e
-    apresentamos as <b>amostras físicas</b> de lâmina e laca antes de qualquer corte. Nada entra em
-    produção sem o seu aceite na amostra.</p>
+    <b>Incluso:</b> marcenaria dos três ambientes, serralheria da adega, ferragens Hettich, lâmina
+    natural aplicada e acabada, laca fosca, vidros da cristaleira, fornecimento e instalação.<br>
+    <b>Não incluso:</b> espelho · relaqueamento do móvel existente (exige avaliação in loco) · futton
+    estofado · granito/frontão (marmoraria) · ponto elétrico do nicho · retirada do móvel antigo.<br>
+    <b>Premissas:</b> medidas conferidas no local antes da produção.<br>
+    <b>Próximo passo:</b> aprovada a proposta, agendamos a medição final e apresentamos as
+    <b>amostras físicas</b> de lâmina e laca — nada entra em produção sem o seu aceite na amostra.
   </div>
 
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Apartamento CJ · B+G Estúdio · 22/07/2026</span></div>

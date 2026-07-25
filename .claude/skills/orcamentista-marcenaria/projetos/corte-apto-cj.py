@@ -341,9 +341,10 @@ print(f"   {'SUBTOTAL MATERIAL':<44} R$ {mat_total:>10,.2f}")
 # =====================================================================
 # 7) PRECIFICAÇÃO — motor oficial do validador. MC 35%, SEM RT.
 # =====================================================================
-logistica = 900.0     # 3 ambientes, peças grandes (636cm) — 2 viagens
-visita    = 400.0     # medição + conferência de obra
-fixedR = mat_total + logistica + visita
+logistica    = 900.0   # 3 ambientes, peças grandes (636cm) — 2 viagens
+visita       = 400.0   # medição + conferência de obra
+serralheria  = 600.0   # adega de vinho em serralheria — custo de produção (Jonathan)
+fixedR = mat_total + logistica + visita + serralheria
 
 NF, PARC, VEND, ERRO, SERRA, MANUT = 0.04, 0.10, 0.03, 0.005, 0.002, 0.005  # parc 10% (Jonathan)
 a = NF + PARC + VEND + ERRO + SERRA + MANUT
@@ -360,6 +361,7 @@ print("=" * 78)
 print(f"   Subtotal material .......................... R$ {mat_total:>10,.2f}")
 print(f"   Logística .................................. R$ {logistica:>10,.2f}")
 print(f"   Visita técnica / medição ................... R$ {visita:>10,.2f}")
+print(f"   Serralheria (adega de vinho) ............... R$ {serralheria:>10,.2f}")
 print(f"   CUSTO DIRETO (fixedR) ...................... R$ {fixedR:>10,.2f}")
 print(f"\n   Divisor: 1 - {a:.3f} - {liqF:.2f}x{b:.3f} - {MC:.2f} = {divisor:.5f}")
 print(f"   >>> INVESTIMENTO TOTAL ..................... R$ {inv:>10,.2f}")
@@ -373,8 +375,9 @@ for mv, d, mat, c, l, q in pecas:
 custo_mv['B. Varanda/gourmet'] = custo_mv.get('B. Varanda/gourmet', 0) + custo_lamina*0.62 + fita_ripas*FITA_LAM_M
 custo_mv['A. Móvel entrada']   = custo_mv.get('A. Móvel entrada', 0) + custo_lamina*0.38
 custo_mv['C. Salas TV e jantar'] = custo_mv.get('C. Salas TV e jantar', 0) + custo_laca
+custo_mv['D. Serralheria (adega)'] = serralheria
 tot_mv = sum(custo_mv.values())
-for mv in ['A. Móvel entrada', 'B. Varanda/gourmet', 'C. Salas TV e jantar']:
+for mv in ['A. Móvel entrada', 'B. Varanda/gourmet', 'C. Salas TV e jantar', 'D. Serralheria (adega)']:
     frac = custo_mv[mv]/tot_mv
     print(f"   {mv:<26} {frac*100:>5.1f}%  ->  R$ {inv*frac:>10,.2f}")
 print(f"\n   MC verificada = {MC*100:.1f}% | RT = 0%")
