@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Escopo de Função — Arquiteta · Engenharia de Produto · Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  :root{
+    --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f;
+    --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd;
+  }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:10px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+  .serif{ font-family:'Cormorant Garamond',Georgia,serif; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:16px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; page-break-after:always; }
+  .sheet:last-child{ page-break-after:auto; }
+
+  /* ===== capa/cabeçalho ===== */
+  .hero{ background:radial-gradient(120% 90% at 85% -10%, #1b3a5e 0%, rgba(27,58,94,0) 55%), linear-gradient(160deg,#0E2038 0%,#0b1a2e 60%,#0a1626 100%); color:#fff; padding:14mm 16mm 12mm; position:relative; }
+  .hero::after{ content:""; position:absolute; left:16mm; right:16mm; bottom:0; height:2.5px; background:linear-gradient(90deg,var(--gold),var(--gold-dk) 45%,transparent); }
+  .hero .brand{ display:flex; align-items:center; gap:11px; }
+  .hero .mono{ width:38px; height:38px; border:1.5px solid var(--gold); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:20px; color:var(--gold); }
+  .hero .co{ font-size:12px; font-weight:700; letter-spacing:2.6px; text-transform:uppercase; }
+  .hero .cosub{ font-size:8px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
+  .hero .kx{ font-size:8.5px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-top:13mm; }
+  .hero h1{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:34px; line-height:1.08; margin-top:5px; }
+  .hero h1 span{ color:var(--gold-soft); font-style:italic; }
+  .hero .lead{ font-size:10.5px; color:rgba(255,255,255,.7); margin-top:9px; max-width:135mm; line-height:1.65; }
+
+  .ph{ background:var(--navy); color:#fff; padding:9mm 16mm 6mm; display:flex; justify-content:space-between; align-items:flex-end; position:relative; }
+  .ph::after{ content:""; position:absolute; left:16mm; right:16mm; bottom:0; height:2px; background:linear-gradient(90deg,var(--gold),transparent); }
+  .ph .kx{ font-size:7.5px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; margin-top:2px; line-height:1; }
+  .ph .co{ font-size:9px; letter-spacing:2px; text-transform:uppercase; font-weight:600; }
+
+  .body{ flex:1; padding:8mm 16mm 0; display:flex; flex-direction:column; }
+
+  .sec{ display:flex; align-items:center; gap:9px; margin:0 0 7px; }
+  .sec:not(:first-child){ margin-top:7mm; }
+  .sec .bar{ width:15px; height:2px; background:var(--gold); }
+  .sec .tx{ font-size:8.6px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--navy); }
+  .sec .ct{ margin-left:auto; font-size:8px; color:var(--muted); }
+
+  p.t{ font-size:10.2px; line-height:1.62; color:#33414f; }
+  p.t + p.t{ margin-top:6px; }
+  p.t b{ color:var(--navy); }
+
+  /* trajetória */
+  .traj{ display:flex; gap:0; margin-top:3px; }
+  .traj .st{ flex:1; padding:0 11px; border-left:2px solid var(--line2); }
+  .traj .st:first-child{ padding-left:0; border-left:none; }
+  .traj .st.now{ border-left-color:var(--gold); }
+  .traj .yr{ font-size:8px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:var(--muted); }
+  .traj .st.now .yr{ color:var(--gold-dk); }
+  .traj .hd{ font-family:'Cormorant Garamond',serif; font-size:16px; font-weight:700; color:var(--navy); line-height:1.15; margin-top:2px; }
+  .traj .ds{ font-size:8.6px; color:var(--muted); line-height:1.45; margin-top:3px; }
+
+  /* cartão de destaque */
+  .hl{ background:#fff; border:1px solid var(--line); border-left:3.5px solid var(--gold); border-radius:0 8px 8px 0; padding:11px 15px; margin-top:8px; }
+  .hl .hlt{ font-size:7.6px; letter-spacing:1.6px; text-transform:uppercase; color:var(--gold-dk); font-weight:800; }
+  .hl p{ font-family:'Cormorant Garamond',serif; font-size:13.5px; line-height:1.5; color:#2a3744; margin-top:4px; }
+  .hl p b{ color:var(--navy); font-weight:700; }
+
+  /* blocos de responsabilidade */
+  .blk{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:11px 15px; margin-bottom:7px; }
+  .blk .bt{ display:flex; align-items:baseline; gap:8px; }
+  .blk .ltr{ font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:700; color:var(--gold); line-height:1; }
+  .blk .bn{ font-size:11px; font-weight:800; color:var(--navy); }
+  .blk .bs{ margin-left:auto; font-size:8px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:var(--gold-dk); background:#f6edd6; padding:2px 8px; border-radius:9px; }
+  .blk ul{ margin:6px 0 0; padding-left:15px; }
+  .blk li{ font-size:9.4px; color:#41505d; line-height:1.55; margin-bottom:2.5px; }
+  .blk li b{ color:var(--navy); }
+  .blk li::marker{ color:var(--gold); }
+
+  /* meta / condições */
+  .meta{ display:flex; gap:9px; margin-top:3px; }
+  .mi{ flex:1; background:#fff; border:1px solid var(--line); border-radius:8px; padding:9px 13px; }
+  .mi .ml{ font-size:7.6px; letter-spacing:1.3px; text-transform:uppercase; color:var(--muted); font-weight:700; }
+  .mi .mv{ font-size:11.5px; font-weight:800; color:var(--navy); margin-top:3px; line-height:1.3; }
+  .mi .ms{ font-size:8.4px; color:var(--muted); margin-top:2px; line-height:1.45; }
+
+  table{ width:100%; border-collapse:collapse; margin-top:3px; background:#fff; }
+  thead th{ background:var(--navy2); color:#fff; font-size:7.6px; font-weight:600; letter-spacing:.7px; text-transform:uppercase; padding:6px 11px; text-align:left; }
+  tbody td{ padding:8px 11px; border-bottom:1px solid var(--line); font-size:9.4px; vertical-align:top; line-height:1.5; }
+  tbody td:first-child{ font-weight:700; color:var(--navy); width:34%; }
+  tbody td b{ color:var(--navy); }
+
+  .mst{ display:flex; gap:0; margin-top:3px; }
+  .mst .m{ flex:1; padding:0 13px; border-left:2px solid var(--gold); }
+  .mst .m:first-child{ padding-left:0; border-left:none; }
+  .mst .mw{ font-size:7.6px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:var(--gold-dk); }
+  .mst .mh{ font-size:10.5px; font-weight:800; color:var(--navy); margin-top:3px; line-height:1.3; }
+  .mst .md{ font-size:8.8px; color:#41505d; line-height:1.5; margin-top:3px; }
+  .mst .md b{ color:var(--navy); }
+  .note{ background:#f6f3ec; border:1px solid var(--line); border-radius:8px; padding:10px 14px; margin-top:7px; }
+  .note .nt{ font-size:7.4px; letter-spacing:1.4px; text-transform:uppercase; color:var(--navy); font-weight:800; margin-bottom:4px; }
+  .note p{ font-size:9.2px; color:#41505d; line-height:1.55; }
+  .note b{ color:var(--navy); }
+
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:5px 16mm; display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf .pl{ font-size:7.4px; color:var(--muted); } .pf .pr{ font-size:8px; color:var(--navy); font-weight:700; letter-spacing:1px; } .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<!-- ============ PÁGINA 1 ============ -->
+<section class="sheet">
+  <div class="hero">
+    <div class="brand">
+      <div class="mono">V</div>
+      <div><div class="co">Valvic Marcenaria</div><div class="cosub">Vargas Decor Ltda &nbsp;·&nbsp; Belo Horizonte / MG</div></div>
+    </div>
+    <div class="kx">Escopo de Função</div>
+    <h1>Arquiteta<br><span>Engenharia de Produto</span></h1>
+    <p class="lead">Um convite para construir a etapa que transforma o que foi vendido no que sai da fábrica — dentro de uma empresa que está dobrando de tamanho e se preparando para o próximo salto.</p>
+  </div>
+
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">A empresa</span><span class="ct">onde estamos e para onde vamos</span></div>
+    <p class="t">A Valvic é uma marcenaria de <b>alto padrão</b> em Belo Horizonte — móveis planejados sob medida, para clientes que compram acabamento e projeto, não preço. Em três anos, a empresa <b>mais que dobrou de tamanho</b>, com crescimento consistente ano após ano.</p>
+
+    <div class="traj">
+      <div class="st"><div class="yr">2023 → 2025</div><div class="hd">Crescimento contínuo</div><div class="ds">A empresa mais que dobrou de tamanho no período, sem perder o padrão de acabamento.</div></div>
+      <div class="st now"><div class="yr">Próximos meses</div><div class="hd">Galpão novo</div><div class="ds">Mudança para um galpão maior, com <b>coladeira</b> e <b>centro de furação</b> novos — um salto real de capacidade.</div></div>
+      <div class="st"><div class="yr">Horizonte</div><div class="hd">Escala com padrão</div><div class="ds">Estruturar a operação para crescer sem abrir mão do que nos trouxe até aqui.</div></div>
+    </div>
+
+    <div class="hl">
+      <div class="hlt">Por que essa vaga existe agora</div>
+      <p>Máquina nova só vira entrega se houver <b>gente qualificada na engenharia do produto</b>. Hoje essa etapa depende de uma única pessoa — e é justamente ela que define se o projeto sai certo, no prazo e com o melhor aproveitamento de chapa. <b>Essa é a cadeira que estamos abrindo.</b></p>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Seu papel aqui</span></div>
+    <p class="t">Você é a pessoa que <b>traduz a venda em projeto executável</b>. Recebe o que o comercial fechou e entrega ao chão de fábrica um projeto estruturado e programado — com medida, ferragem e material corretos. É uma função técnica, de precisão, e com efeito direto em duas coisas que a empresa leva a sério: <b>o prazo e o retrabalho</b>.</p>
+    <p class="t">Além disso, você atua na <b>engenharia e estruturação de todos os projetos</b> que entram na empresa e apoia pontualmente o comercial — inclusive com uma frente própria de atendimento, remunerada à parte.</p>
+
+    <div class="sec"><span class="bar"></span><span class="tx">O que você faz</span><span class="ct">quatro frentes</span></div>
+
+    <div class="blk">
+      <div class="bt"><span class="ltr">A</span><span class="bn">Engenharia de produto &amp; programação</span><span class="bs">Principal</span></div>
+      <ul>
+        <li><b>Programar os projetos no sistema</b>, sob direcionamento do Paulo.</li>
+        <li>Atuar na <b>engenharia e estruturação de todos os projetos</b> que entram na empresa.</li>
+        <li>Converter o escopo de venda em projeto executável — medidas, ferragens e materiais definidos.</li>
+        <li>Conferir a programação <b>antes</b> de liberar para a produção.</li>
+      </ul>
+    </div>
+
+    <div class="blk">
+      <div class="bt"><span class="ltr">B</span><span class="bn">Projetos internos de produção</span></div>
+      <ul>
+        <li>Desenvolver os <b>projetos internos</b> dos clientes trazidos pelo comercial.</li>
+        <li>São projetos de <b>cunho produtivo</b> — servem à fabricação; não são entregáveis de projeto ao cliente.</li>
+        <li>Garantir que o projeto interno reflete <b>exatamente o que foi vendido</b>.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Escopo de Função · Arquiteta — Engenharia de Produto · Valvic Marcenaria</div><div class="pr">01 <span>/</span> 02</div></div>
+</section>
+
+<!-- ============ PÁGINA 2 ============ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Arquiteta · Engenharia de Produto</div><div class="tt">Frentes, acompanhamento e condições</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div></div>
+  </div>
+
+  <div class="body">
+    <div class="blk">
+      <div class="bt"><span class="ltr">C</span><span class="bn">Atendimento a cliente sem projeto</span><span class="bs">Remunerado à parte</span></div>
+      <ul>
+        <li>Atender clientes que chegam <b>sem projeto</b>, mediante <b>acordo e alinhamento de valores prévios</b>.</li>
+        <li><b>Repasse de 50%</b> do valor acordado para você.</li>
+        <li>Nenhum atendimento desse tipo é assumido sem o alinhamento anterior — <b>a combinação vem antes do trabalho</b>.</li>
+      </ul>
+    </div>
+
+    <div class="blk">
+      <div class="bt"><span class="ltr">D</span><span class="bn">Suporte comercial pontual</span></div>
+      <ul>
+        <li>Apoiar <b>negociações e atendimentos simples</b>.</li>
+        <li>Dar retaguarda técnica ao comercial quando o cliente precisa de uma resposta de projeto.</li>
+      </ul>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Como o trabalho é acompanhado</span></div>
+    <p class="t">Aqui não existe avaliação por planilha ou índice. O acompanhamento é <b>prático e cotidiano, direto com o Paulo</b> — sobre o que de fato importa: o projeto saiu certo, o prazo foi cumprido e a autonomia foi crescendo. É uma conversa de trabalho, não um formulário.</p>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Os primeiros 90 dias</span><span class="ct">o que esperamos da curva</span></div>
+    <div class="mst">
+      <div class="m">
+        <div class="mw">Primeiras semanas</div>
+        <div class="mh">Absorver o padrão</div>
+        <div class="md">Entender o <b>padrão construtivo da Valvic</b> e o sistema de programação, acompanhando de perto o Paulo e o Filipe.</div>
+      </div>
+      <div class="m">
+        <div class="mw">Ao longo do período</div>
+        <div class="mh">Assumir projetos</div>
+        <div class="md">Programar projetos completos com <b>conferência do Paulo</b>, ganhando ritmo e reduzindo a necessidade de supervisão.</div>
+      </div>
+      <div class="m">
+        <div class="mw">Ao fim dos 90 dias</div>
+        <div class="mh">Conduzir sozinha</div>
+        <div class="md">Levar a engenharia de um projeto <b>do escopo de venda até a liberação para produção</b>, com autonomia.</div>
+      </div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Contrato e condições</span></div>
+    <div class="meta">
+      <div class="mi"><div class="ml">Contrato</div><div class="mv">90 dias iniciais</div><div class="ms">Com <b>intenção de extensão</b> mediante reavaliação conjunta ao fim do período.</div></div>
+      <div class="mi"><div class="ml">Vínculo</div><div class="mv">PJ</div><div class="ms">Prestação de serviço, com nota fiscal.</div></div>
+      <div class="mi"><div class="ml">Jornada</div><div class="mv">Presencial · seg a sex</div><div class="ms">Carga horária equivalente à praticada em regime CLT.</div></div>
+    </div>
+
+    <table>
+      <thead><tr><th>Item</th><th>Como funciona</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Remuneração fixa</td>
+          <td><b>R$ 4.000 por mês</b> durante os 90 dias iniciais. Ao fim do período, <b>o valor é revisto</b> junto com a reavaliação do contrato.</td>
+        </tr>
+        <tr>
+          <td>Atendimento a cliente sem projeto</td>
+          <td><b>50% do valor acordado</b> com o cliente, sempre com alinhamento prévio. Havendo <b>custo de transação financeira</b>, o percentual incide sobre o <b>valor líquido</b>.</td>
+        </tr>
+        <tr>
+          <td>A quem você se reporta</td>
+          <td><b>Paulo</b> — engenharia, programação e produção.<br><b>Jonathan</b> — comercial e relacionamento com o cliente.</td>
+        </tr>
+        <tr>
+          <td>Com quem você trabalha lado a lado</td>
+          <td><b>Filipe</b> (programação CNC) no dia a dia técnico, e o time de produção coordenado pelo <b>Deivson</b>.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="note">
+      <div class="nt">O combinado, em uma frase</div>
+      <p>São <b>90 dias para nos conhecermos trabalhando</b>. Se de parte a parte fizer sentido — e a nossa intenção é que faça — o contrato é estendido e as condições são revistas. A empresa está entrando na sua fase de maior crescimento, e <b>quem construir isso junto cresce junto</b>.</p>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Escopo de Função · Arquiteta — Engenharia de Produto · Valvic Marcenaria — Vargas Decor Ltda</div><div class="pr">02 <span>/</span> 02</div></div>
+</section>
+
+</body>
+</html>
