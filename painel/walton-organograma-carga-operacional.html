@@ -53,6 +53,7 @@
   .legend .ln{ width:16px; height:0; border-top:1.6px solid #c7bd9f; display:inline-block; }
   .legend .ln.dash{ border-top-style:dashed; border-top-color:var(--gold-dk); }
   .legend .ln.dot{ border-top-style:dotted; border-top-color:#9aa3b0; border-top-width:2px; }
+  .legend .ln.need{ border-top-style:dashed; border-top-color:#b0413f; border-top-width:2px; }
   .hub .role{ font-size:9px; letter-spacing:1.3px; text-transform:uppercase; color:var(--gold-dk); font-weight:700; }
   .hub .name{ font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:700; color:var(--navy); line-height:1.05; margin-top:2px; }
   .hub .title{ font-size:10px; color:var(--muted); margin-top:2px; }
@@ -76,6 +77,11 @@
   .node.lvl2{ width:104px; padding:8px 8px; }
   .node.lvl2 .name{ font-size:10.5px; }
   .node .dual{ display:inline-block; margin-top:5px; font-size:6.8px; font-weight:800; letter-spacing:.3px; text-transform:uppercase; background:#f6edd6; color:var(--gold-dk); padding:2px 6px; border-radius:7px; }
+  .node.need{ border-style:dashed; border-color:#b0413f; background:#fbeceb; box-shadow:0 0 0 3px rgba(176,65,63,.07); }
+  .node.need .name{ color:#b0413f; }
+  .node.need .needtag{ display:inline-block; margin-top:5px; font-size:6.8px; font-weight:800; letter-spacing:.3px; text-transform:uppercase; background:#f6dbd8; color:#b0413f; padding:2px 6px; border-radius:7px; }
+  .need-callout{ position:absolute; z-index:1; text-align:center; font-family:'Inter',sans-serif; font-size:6.6px; color:#b0413f; font-weight:700; line-height:1.4; background:rgba(251,236,235,.95); border:1px dashed #b0413f; border-radius:6px; padding:4px 7px; }
+  .need-callout b{ letter-spacing:.3px; }
 
   .notes{ background:#f6f3ec; border:1px solid var(--line); border-radius:7px; padding:7px 12px; margin-top:2px; }
   .notes .nt{ font-size:7px; letter-spacing:1.1px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:3px; }
@@ -99,7 +105,7 @@
 
   <div class="body">
     <section class="kpis">
-      <div class="kpi b"><div class="kl">Equipe total</div><div class="kv num">10<small> + 4 previstos</small></div><div class="ks">2 sócios-diretores + 8 ativos + 4 em contratação/previsão (Carla, Bruna, Cezar, Paulo B.)</div></div>
+      <div class="kpi b"><div class="kl">Equipe total</div><div class="kv num">10<small> + 4 previstos</small></div><div class="ks">2 sócios-diretores + 8 ativos + 4 em contratação/previsão — <b>2 já identificados como necessidade</b> (Cezar, Paulo B.)</div></div>
       <div class="kpi"><div class="kl">Convergem em Paulo</div><div class="kv num">6</div><div class="ks">3 reporte direto (Deivson, Filipe, Bruna) + 3 dupla checagem técnica (Joelson, Samuel, Jackson)</div></div>
       <div class="kpi"><div class="kl">Convergem em Jonathan</div><div class="kv num">0<small> ativo</small></div><div class="ks">Assistente Operacional ainda <b>em contratação</b> — hoje ele executa esse escopo inteiro sozinho</div></div>
       <div class="kpi"><div class="kl">Dupla função</div><div class="kv num">2 / 2</div><div class="ks">Jonathan e Paulo <b>executam e gerenciam</b> ao mesmo tempo — sem camada intermediária entre eles e a operação</div></div>
@@ -178,19 +184,20 @@
         <div class="node lvl2" id="n-jomar"><div class="name">Jomar</div><div class="fn">Marceneiro</div></div>
         <div class="node lvl2" id="n-godoy"><div class="name">Jonathan Godoy</div><div class="fn">Ajudante Geral · novo, em início</div></div>
         <div class="node lvl2" id="n-davi"><div class="name">Davi</div><div class="fn">Ajudante</div></div>
-        <div class="node lvl2 pending" id="n-cezar"><div class="name">Cezar</div><div class="fn">Marceneiro · previsão de contratação</div></div>
-        <div class="node lvl2 pending" id="n-paulob"><div class="name">Paulo (baiano)</div><div class="fn">Marceneiro · previsão de contratação</div></div>
+        <div class="node lvl2 need" id="n-cezar"><div class="name">Cezar</div><div class="fn">Marceneiro</div><span class="needtag">Necessidade</span></div>
+        <div class="node lvl2 need" id="n-paulob"><div class="name">Paulo (baiano)</div><div class="fn">Marceneiro</div><span class="needtag">Necessidade</span></div>
       </div>
     </div>
     <div class="legend">
       <span class="lg"><i class="ln"></i>reporte formal</span>
       <span class="lg"><i class="ln dash"></i>apoio/interface direta hoje (sem a Assistente ainda ativa)</span>
       <span class="lg"><i class="ln dot"></i>parceria externa (terceirizada, fora da folha)</span>
+      <span class="lg"><i class="ln need"></i>necessidade de contratação identificada</span>
     </div>
 
     <div class="notes">
       <div class="nt">Leitura</div>
-      <p>Hoje, <b>toda a operação converge para dois pontos: Jonathan e Paulo.</b> Paulo concentra a gestão — direta ou por dupla checagem técnica — de <b>6 profissionais</b> de produção/tecnologia (Joelson, Samuel e Jackson em dupla checagem; Deivson, Filipe e, em breve, Bruna em reporte direto), além de programação CNC, manutenção, compras e captação de mão de obra. Jonathan sustenta sozinho <b>todo o comercial, administrativo, jurídico e contábil</b> — na ausência da Carla (Assistente Operacional, início já previsto), ele também absorve o apoio pontual à produção e o pós-venda (este último, permanente mesmo depois da contratação). Recrutamento e desligamento (RH) são decisão conjunta dos dois. O próprio Deivson hoje acumula funções — <b>Coordenador de Produção que atua mais como Marceneiro Sênior</b> — e, uma vez ativa, a Carla vira o ponto de interface entre Jonathan, Paulo, Deivson e Filipe. A equipe de produção também tem <b>crescimento já previsto</b>: Bruna (arquiteta, programação + suporte de projetos no comercial) e mais dois marceneiros, Cezar e Paulo B. Jennifer (social media) apoia o marketing como <b>parceira externa</b>, fora da folha e da estrutura interna — não entra na contagem de equipe, mas é mais um fio que passa pela mão do Jonathan. Nenhum dos dois sócios tem hoje uma camada de gestão intermediária plena entre si e a execução — <b>ambos acumulam a função de gestor e de executor</b> ao mesmo tempo.</p>
+      <p>Hoje, <b>toda a operação converge para dois pontos: Jonathan e Paulo.</b> Paulo concentra a gestão — direta ou por dupla checagem técnica — de <b>6 profissionais</b> de produção/tecnologia (Joelson, Samuel e Jackson em dupla checagem; Deivson, Filipe e, em breve, Bruna em reporte direto), além de programação CNC, manutenção, compras e captação de mão de obra. Jonathan sustenta sozinho <b>todo o comercial, administrativo, jurídico e contábil</b> — na ausência da Carla (Assistente Operacional, início já previsto), ele também absorve o apoio pontual à produção e o pós-venda (este último, permanente mesmo depois da contratação). Recrutamento e desligamento (RH) são decisão conjunta dos dois. O próprio Deivson hoje acumula funções — <b>Coordenador de Produção que atua mais como Marceneiro Sênior</b> — justamente porque a bancada está curta: <b>Cezar e Paulo B. são uma necessidade de contratação já identificada</b> (destacados em vermelho no organograma), não apenas uma previsão — é o que libera o Deivson para coordenar em vez de operar. Bruna (arquiteta, programação + suporte de projetos no comercial) também tem entrada já prevista. Jennifer (social media) apoia o marketing como <b>parceira externa</b>, fora da folha e da estrutura interna — não entra na contagem de equipe, mas é mais um fio que passa pela mão do Jonathan. Nenhum dos dois sócios tem hoje uma camada de gestão intermediária plena entre si e a execução — <b>ambos acumulam a função de gestor e de executor</b> ao mesmo tempo.</p>
     </div>
   </div>
   <div class="pf"><div class="pl">Documento confidencial · preparado para Walton · Valvic Marcenaria — Vargas Decor Ltda</div><div class="pr">Julho <span>/</span> 2026</div></div>
@@ -216,19 +223,43 @@ function drawLines(){
     else { x = r.left + r.width*frac - treeBox.left; y = r.bottom - treeBox.top; }
     return {x,y};
   }
-  function elbow(parentId, childIds){
+  function elbow(parentId, childIds, color, dash){
     const p = pt(parentId, 'bottom');
     const childTops = childIds.map(cid => pt(cid, 'top'));
     const avgChildTop = childTops.reduce((s,c) => s+c.y, 0) / childTops.length;
     const midY = p.y + (avgChildTop - p.y) / 2;
     childTops.forEach(c => {
       const d = `M ${p.x} ${p.y} L ${p.x} ${midY} L ${c.x} ${midY} L ${c.x} ${c.y}`;
-      svg.appendChild(el('path', {d, fill:'none', stroke:'#c7bd9f', 'stroke-width':1.4}));
+      const attrs = {d, fill:'none', stroke: color || '#c7bd9f', 'stroke-width': color ? 1.8 : 1.4};
+      if (dash) attrs['stroke-dasharray'] = dash;
+      svg.appendChild(el('path', attrs));
     });
   }
   elbow('n-jonathan', ['n-asst']);
   elbow('n-paulo', ['n-deivson','n-filipe','n-bruna']);
-  elbow('n-deivson', ['n-joelson','n-samuel','n-jackson','n-jomar','n-godoy','n-davi','n-cezar','n-paulob']);
+  elbow('n-deivson', ['n-joelson','n-samuel','n-jackson','n-jomar','n-godoy','n-davi']);
+  // Cezar e Paulo B. — necessidade de contratação identificada (destacado em vermelho)
+  elbow('n-deivson', ['n-cezar','n-paulob'], '#b0413f', '5 3');
+
+  // rótulo de necessidade, ancorado sob os dois cards em vermelho
+  (function needCallout(){
+    const c1 = document.getElementById('n-cezar').getBoundingClientRect();
+    const c2 = document.getElementById('n-paulob').getBoundingClientRect();
+    const left = Math.min(c1.left, c2.left) - treeBox.left;
+    const right = Math.max(c1.right, c2.right) - treeBox.left;
+    const top = Math.max(c1.bottom, c2.bottom) - treeBox.top;
+    let callout = document.getElementById('need-callout');
+    if (!callout){
+      callout = document.createElement('div');
+      callout.id = 'need-callout';
+      callout.className = 'need-callout';
+      callout.innerHTML = '<b>NECESSIDADE DE CONTRATAÇÃO</b><br>sustenta o ritmo de produção e libera o Deivson pra coordenar';
+      tree.appendChild(callout);
+    }
+    callout.style.left = left + 'px';
+    callout.style.width = (right - left) + 'px';
+    callout.style.top = (top + 6) + 'px';
+  })();
 
   /* ===== conexões de apoio/interface hoje (tracejadas) ===== */
   (function dashed(){
