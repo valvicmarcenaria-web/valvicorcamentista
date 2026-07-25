@@ -94,8 +94,8 @@
 
   <div class="body">
     <section class="kpis">
-      <div class="kpi b"><div class="kl">Equipe total</div><div class="kv num">10<small> + 1 a contratar</small></div><div class="ks">2 sócios-diretores + 8 profissionais de produção/tecnologia</div></div>
-      <div class="kpi"><div class="kl">Convergem em Paulo</div><div class="kv num">5</div><div class="ks">2 reporte direto (Deivson, Filipe) + 3 dupla checagem técnica (Joelson, Samuel, Jackson)</div></div>
+      <div class="kpi b"><div class="kl">Equipe total</div><div class="kv num">10<small> + 4 previstos</small></div><div class="ks">2 sócios-diretores + 8 ativos + 4 em contratação/previsão (Carla, Bruna, Cezar, Paulo B.)</div></div>
+      <div class="kpi"><div class="kl">Convergem em Paulo</div><div class="kv num">6</div><div class="ks">3 reporte direto (Deivson, Filipe, Bruna) + 3 dupla checagem técnica (Joelson, Samuel, Jackson)</div></div>
       <div class="kpi"><div class="kl">Convergem em Jonathan</div><div class="kv num">0<small> ativo</small></div><div class="ks">Assistente Operacional ainda <b>em contratação</b> — hoje ele executa esse escopo inteiro sozinho</div></div>
       <div class="kpi"><div class="kl">Dupla função</div><div class="kv num">2 / 2</div><div class="ks">Jonathan e Paulo <b>executam e gerenciam</b> ao mesmo tempo — sem camada intermediária entre eles e a operação</div></div>
     </section>
@@ -153,6 +153,11 @@
           <div class="name">Filipe</div>
           <div class="fn">Programador CNC &amp; Tecnologia</div>
         </div>
+        <div class="node pending" id="n-bruna">
+          <div class="role">Tecnologia &amp; Suporte Comercial</div>
+          <div class="name">Bruna</div>
+          <div class="fn">Arquiteta · programação + suporte de projetos no comercial · início previsto</div>
+        </div>
       </div>
 
       <div class="row" id="row-l2">
@@ -162,6 +167,8 @@
         <div class="node lvl2" id="n-jomar"><div class="name">Jomar</div><div class="fn">Marceneiro</div></div>
         <div class="node lvl2" id="n-godoy"><div class="name">Jonathan Godoy</div><div class="fn">Ajudante Geral · novo, em início</div></div>
         <div class="node lvl2" id="n-davi"><div class="name">Davi</div><div class="fn">Ajudante</div></div>
+        <div class="node lvl2 pending" id="n-cezar"><div class="name">Cezar</div><div class="fn">Marceneiro · previsão de contratação</div></div>
+        <div class="node lvl2 pending" id="n-paulob"><div class="name">Paulo (baiano)</div><div class="fn">Marceneiro · previsão de contratação</div></div>
       </div>
     </div>
     <div class="legend">
@@ -171,7 +178,7 @@
 
     <div class="notes">
       <div class="nt">Leitura</div>
-      <p>Hoje, <b>toda a operação converge para dois pontos: Jonathan e Paulo.</b> Paulo concentra a gestão — direta ou por dupla checagem técnica — de <b>5 dos 8 profissionais</b> da produção/tecnologia (Joelson, Samuel e Jackson em dupla checagem; Jomar, Jonathan Godoy e Davi respondem mais diretamente ao Deivson), além de programação CNC, manutenção, compras e captação de mão de obra. Jonathan sustenta sozinho <b>todo o comercial, administrativo, jurídico e contábil</b> — na ausência da Carla (Assistente Operacional, com início já previsto), ele também absorve o apoio pontual à produção e o pós-venda (este último, permanente mesmo depois da contratação). Recrutamento e desligamento (RH) são decisão conjunta dos dois. O próprio Deivson hoje acumula funções — <b>Coordenador de Produção que atua mais como Marceneiro Sênior</b> — e, uma vez ativa, a Carla vira o ponto de interface entre Jonathan, Paulo, Deivson e Filipe. Nenhum dos dois sócios tem hoje uma camada de gestão intermediária plena entre si e a execução — <b>ambos acumulam a função de gestor e de executor</b> ao mesmo tempo.</p>
+      <p>Hoje, <b>toda a operação converge para dois pontos: Jonathan e Paulo.</b> Paulo concentra a gestão — direta ou por dupla checagem técnica — de <b>6 profissionais</b> de produção/tecnologia (Joelson, Samuel e Jackson em dupla checagem; Deivson, Filipe e, em breve, Bruna em reporte direto), além de programação CNC, manutenção, compras e captação de mão de obra. Jonathan sustenta sozinho <b>todo o comercial, administrativo, jurídico e contábil</b> — na ausência da Carla (Assistente Operacional, início já previsto), ele também absorve o apoio pontual à produção e o pós-venda (este último, permanente mesmo depois da contratação). Recrutamento e desligamento (RH) são decisão conjunta dos dois. O próprio Deivson hoje acumula funções — <b>Coordenador de Produção que atua mais como Marceneiro Sênior</b> — e, uma vez ativa, a Carla vira o ponto de interface entre Jonathan, Paulo, Deivson e Filipe. A equipe de produção também tem <b>crescimento já previsto</b>: Bruna (arquiteta, programação + suporte de projetos no comercial) e mais dois marceneiros, Cezar e Paulo B. Nenhum dos dois sócios tem hoje uma camada de gestão intermediária plena entre si e a execução — <b>ambos acumulam a função de gestor e de executor</b> ao mesmo tempo.</p>
     </div>
   </div>
   <div class="pf"><div class="pl">Documento confidencial · preparado para Walton · Valvic Marcenaria — Vargas Decor Ltda</div><div class="pr">Julho <span>/</span> 2026</div></div>
@@ -208,8 +215,8 @@ function drawLines(){
     });
   }
   elbow('n-jonathan', ['n-asst']);
-  elbow('n-paulo', ['n-deivson','n-filipe']);
-  elbow('n-deivson', ['n-joelson','n-samuel','n-jackson','n-jomar','n-godoy','n-davi']);
+  elbow('n-paulo', ['n-deivson','n-filipe','n-bruna']);
+  elbow('n-deivson', ['n-joelson','n-samuel','n-jackson','n-jomar','n-godoy','n-davi','n-cezar','n-paulob']);
 
   /* ===== conexões de apoio/interface hoje (tracejadas) ===== */
   (function dashed(){
@@ -234,6 +241,10 @@ function drawLines(){
     // Carla <-> Filipe, arqueando por cima de Deivson pra não cruzar o card
     const aTop2 = pt('n-asst','top',0.85), fTop = pt('n-filipe','top',0.15);
     elbowV(aTop2, fTop, Math.min(aTop2.y, fTop.y) - 16);
+
+    // Jonathan <-> Bruna (suporte de projetos no comercial)
+    const j2 = pt('n-jonathan','bottom',0.94), bTop = pt('n-bruna','top',0.5);
+    elbowV(j2, bTop, j2.y + (bTop.y - j2.y) * 0.3);
   })();
 }
 if (document.fonts && document.fonts.ready) {
