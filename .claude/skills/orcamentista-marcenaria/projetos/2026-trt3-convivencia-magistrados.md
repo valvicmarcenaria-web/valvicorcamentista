@@ -1,62 +1,103 @@
-# TRT 3ª Região — Área de Convivência dos Magistrados (via MLQ Engenharia)
+# TRT 3ª Região — Espaço de Convivência dos Desembargadores (via MLQ Engenharia)
 
-> **Status:** 🟡 Fase 1 — intake do e-mail feito. **Bloqueado**: aguardando os 20 anexos
-> (o conector Gmail lê mensagens, mas não baixa anexos).
-> Fonte: e-mail em `valvicmarcenaria@gmail.com`, thread `19f6c8098d3d239c`, recebido 16/07/2026 19:56.
+> **Status:** 🟡 Fase 1 concluída — material lido (20 anexos). **Aguardando decisões do Jonathan**
+> para iniciar o quantitativo.
+> Fonte: e-mail `valvicmarcenaria@gmail.com`, thread `19f6c8098d3d239c` (16/07/2026) + ZIP com 20 anexos.
 
-## ⚠️ A cadeia — Valvic é o 4º elo
+## 🔴 Descoberta principal: **isto é licitação pública**
 
-| # | Quem | E-mail | Quando |
+A planilha anexa é o **modelo oficial do TRT3** — traz "PLANILHA MODELO DE PROPOSTA (preencher somente
+células em azul)", campo **"Desconto da licitante (%)"** e uma aba de **BDI**. A **MLQ Engenharia** é a
+*licitante*; a Valvic entraria como **subcontratada da parte de movelaria**.
+
+| Campo | Valor |
+|---|---|
+| **Objeto** | Contratação de empresa especializada para prestação de serviços **MOVELARIA** para implantação de um **Espaço de Convivência dos Desembargadores** |
+| **Local** | 10º andar do **Edifício Anexo** · Av. Getúlio Vargas, 265 · Funcionários · BH/MG |
+| **Licitante** | **MLQ ENGENHARIA LTDA** · CNPJ 42.035.255/0001-30 |
+| **Data da planilha** | 30/06/2026 |
+| **Projeto executivo** | 26/03/2026 · arq. resp. **Renata Lodi** · disciplina ARQ · rev. 00 |
+| **Preços de referência** | **EM BRANCO** — o teto do TRT não foi revelado |
+
+### BDI do modelo (aba "BDI", sem desoneração)
+| Grupo | % |
+|---|--:|
+| Despesas legais (PIS 0,65 + COFINS 3 + ISSQN 3,5) | 7,15% s/ PV |
+| Despesas administrativas (adm central 4 + riscos 1,27 + garantias 0,4 + seguros 0,4) | 6,07% s/ CD |
+| Despesas financeiras (juros SELIC) | 1,21% s/ CD |
+| Remuneração (lucro) | 7,40% s/ CD |
+| **BDI padrão** | **24,17%** |
+
+`BDI% = { [(1+DA)×(1+DF)×(1+RE)] / (1−DL) − 1 } × 100`
+
+> ⚠️ **Modelo de custo totalmente diferente do nosso.** O BDI de obra pública embute lucro de **7,4%** —
+> muito abaixo da nossa MC de 35–37%. Se a MLQ exigir a composição no formato dela, temos que decidir
+> como apresentar: preço fechado de fornecedor (o BDI é problema da MLQ) **ou** planilha aberta.
+> **Decisão do Rodrigo/Jonathan.**
+
+## Escopo da planilha — 4 grupos, só **um** é nosso
+
+| Grupo | Itens | Natureza | Valvic? |
+|---|--:|---|---|
+| **10. PORTAS E JANELA** | 5 | Kits de porta pronta ref. **Concrem Wood** (folha sarrafeada, marco, alizar, dobradiça inox 4", fechadura **Stam 803/35**) + 1 esquadria de vidro temperado 6mm c/ alumínio | ❌ porta pronta / serralheria |
+| **12. BANCADAS** | 3 | **Granito Preto São Gabriel** (cozinha) e **Quartzito Madrid** (buffet e lavatório), c/ recortes | ❌ marmoraria |
+| **16. MARCENARIA** | **7** | Armários, prateleiras e painéis em MDF | ✅ **NOSSO** |
+| **17. PERSIANAS** | 16 un | Tela solar 3% branca (10× 52×132 · 3× 52×170,5 · 3× 32×179) | ❌ persianeiro |
+
+## ✅ Grupo 16 — MARCENARIA (o nosso escopo)
+
+| # | Item | Ambiente | Material |
 |---|---|---|---|
-| 1 | **Adriano de Matos** — MLQ Engenharia (origem) | adriano.amatos@mlqengenharia.com.br | 15/07 10:04 |
-| 2 | **Fernando Marinho** | fernandojmarinho@hotmail.com | 16/07 16:03 |
-| 3 | **Lalu Design Interiores** | laludesigninteriores@gmail.com | 16/07 19:56 |
-| 4 | **Valvic Marcenaria** | valvicmarcenaria@gmail.com | — |
+| 16.1 | Armário **superior e inferior** c/ prateleira interna + **prateleira suspensa** · puxador slim inox 128 mm preto | **Cozinha** | MDF **Branco** |
+| 16.2 | **Armário sob bancada** · puxador slim preto | **Buffet** | MDF **Duratex Unicolores MOSS** (verde escuro) |
+| 16.3 | **Prateleira superior** c/ LED | **Buffet** | MDF **Arauco Louro Freijó** |
+| 16.4 | **Armário alto** · porta frontal de **girar e correr c/ ferragem escamoteável** + porta traseira de giro · puxadores slim inox preto | **Salão de mesas / Lavatório** | MDF **Arauco Louro Freijó** |
+| 16.5 | **Painel ripado** | **Salão de mesas / Lavatório** | MDF **Arauco Louro Freijó** |
+| 16.6 | **Painel c/ portas** sistema **fecho-toque** | **Shaft** | MDF **Duratex Gianduia Puro** |
+| 16.7 | **Painel** | **Descanso** | MDF **Arauco Louro Freijó** |
 
-Cópias na origem (MLQ): mlq.engenharia@gmail.com · rayssa.maryha@mlqengenharia.com.br ·
-compras@mlqengenharia.com.br → **o setor de Compras da MLQ está no circuito**.
+### Medidas lidas nas pranchas (executivo, esc. 1:25)
+- **Cozinha** (pr. 08/10): marcenaria **sob bancada 314 cm** (61 + 81,5 + 81,5 + 80; módulos 42,3) ·
+  **sobre bancada 319 cm** (45 + 274; 6 módulos de 45,7) · aéreo h=96 · vão 60 · inferior h=70/73 ·
+  2 prateleiras internas de 43,5. **Caixa de gordura embutida no sóculo — prever acesso pela marcenaria.**
+  **Grelha de ventilação em inox 60 cm preta.** Vazio para cooktop.
+- **Buffet e Lavatório** (pr. 09/10): armário inferior 7 módulos de 54,3 (105,6 + 215,3 + 51,3), h≈91,2 ·
+  prateleira superior em 4 tramos de ≈93,7 com **fita LED COB 15 W/m 12 V 3000 K contínua** ·
+  **vão inferior no armário para ventilação da pista fria** · sóculo.
+- **Painel Shaft** (pr. 09/10): **315 cm** (4 módulos de 78,8) × **230 cm** de altura, portas fecho-toque.
+- Pranchas de detalhe: fixação de prateleira invisível com **metalon com flange metálica** no reforço em
+  madeira do drywall.
 
-**Leitura:** isto **não é licitação pública direta**. É **subcontratação B2B** — a MLQ Engenharia é a
-construtora que atende o TRT e está cotando movelaria. Quem contrata e paga a Valvic seria a MLQ (ou a
-Lalu Design, a depender de como se estrutura). Regras de pagamento/prazo seguem contrato de obra
-privado, não edital.
+## ⚠️ Divergências projeto × planilha (confirmar antes de orçar)
+1. **Shaft** — planilha: *Duratex Gianduia Puro* (amarronzado). Desenho: *"MDF cor sólida **cinza** a
+   definir"*. **Conflito de cor.**
+2. **Buffet** — planilha: *Duratex Unicolores MOSS*. Desenho: *"MDF verde escuro a definir"*. Compatível,
+   mas o desenho deixa em aberto.
+3. **Espelhos do lavatório** — o desenho especifica *espelho cristal 4 mm colado em MDF cru 15 mm com
+   LED superior e inferior*, mas **não há item de espelho na planilha**. Ou é escopo de outro grupo, ou
+   foi omitido. **Perguntar.**
+4. **Louro Freijó** aparece como *"LOURO FREJÓ"* na planilha (grafia) — é o Arauco Madeiras Brasileiras.
 
-## O pedido (texto do Adriano, 15/07)
-> "segue o pedido de orçamento para **confecção e instalação** dos móveis, armários e painéis conforme
-> projetos e perspectiva anexa."
-> "Obs. Como já comentei segue também uma **planilha itenizada para equalizarmos as propostas**."
+## 🔴 Decisões necessárias antes da Fase 2
 
-## Anexos (20 arquivos) — a receber
-- **10 PDFs** — `BHZ-GVA_PRJ_EXE_ARQ_Convivência-Magistrados_2026-03-26 (1)-Work.pdf`
-  (partes "1 de 10" a "10 de 10"). Projeto **executivo de arquitetura**, datado **26/03/2026**.
-  Prefixo BHZ-GVA = Belo Horizonte / (GVA a identificar — provável escritório autor).
-- **1 XLSX** — `ORÇAMENTO DE MOVELARIA PLANILHA TRT.xlsx` ← **planilha de equalização obrigatória**.
-- **9 JPEGs** — perspectivas (WhatsApp, 18/06/2026).
+1. **A Valvic cota só o grupo 16 (marcenaria) ou os 4 grupos?** O assunto do e-mail cita portas e
+   persianas, mas nós não fazemos porta pronta, marmoraria nem persiana. Podemos **coordenar terceiros**
+   (como fizemos com serralheria/vidro) — mas isso muda o risco e o preço.
+2. **Formato da resposta:** preço fechado de fornecedor **ou** planilha aberta com BDI? O modelo do TRT
+   pede composição — mas quem é licitante é a MLQ, não nós.
+3. **RT / comissão** para Fernando Marinho e Lalu Design Interiores? Quanto? (entra no `b` do motor)
+4. **Espelhos do lavatório entram?**
+5. **Prazo de entrega da proposta** — não consta no e-mail; houve tratativa por WhatsApp entre Adriano
+   e Fernando.
+6. **MC alvo** e situação de caixa para um job de obra pública (recebimento costuma ser mais lento).
 
-## 🔴 Pontos críticos identificados no intake
-
-1. **"Equalizar as propostas" = concorrência.** Há outros marceneiros cotando o mesmo escopo, e a MLQ
-   vai comparar linha a linha na planilha dela. **Temos que preencher no formato deles** — nossa
-   proposta visual vem depois, como complemento, não no lugar da planilha.
-2. **Dois intermediários** (Fernando Marinho + Lalu Design). **Definir com o Jonathan se há RT ou
-   comissão embutida** e de quanto — impacta direto o `b` do motor. A Lalu é design de interiores:
-   RT é o cenário provável.
-3. **Divergência de escopo no próprio e-mail.** O assunto diz *"Móveis Planejados, Portas, Persianas e
-   Armários"*, mas o corpo do Adriano pede só *"móveis, armários e painéis"*. **Persianas não são
-   nossas** e portas dependem da especificação. Confirmar o escopo real antes de orçar.
-4. **Cliente final é órgão público** (TRT 3ª Região) — mesmo sendo subcontratação, exigências de
-   NF/retenção e prazo de pagamento da construtora costumam ser mais duras. Acionar o Rodrigo antes de
-   fechar MC.
-5. **Projeto de março, cotação em julho** — verificar se o executivo ainda é a versão vigente.
-6. **Prazo de resposta não informado no e-mail.** Como já houve contato por WhatsApp entre Adriano e
-   Fernando, o prazo pode ter sido combinado por lá. **Perguntar.**
+## Anexos recebidos (20)
+- 10 pranchas A0 do executivo (`BHZ-GVA_PRJ_EXE_ARQ_Convivência-Magistrados_2026-03-26`):
+  01–03 plantas/layout · 04 det. I.S. PMR · 05, 06, 08 **det. marcenaria cozinha** ·
+  07, 10 detalhes/cotas · 09 **det. marcenaria buffet, lavatório e shaft**.
+- `ORÇAMENTO DE MOVELARIA PLANILHA TRT.xlsx` (abas *Modelo Proposta* e *BDI*).
+- 9 perspectivas (JPEG, 18/06/2026).
 
 ## Próximo passo
-Receber os 20 anexos (Drive) → ler o executivo prancha a prancha + a planilha de equalização →
-mapear ambientes/móveis → plano de corte → precificação.
-
-## Perguntas para o Jonathan
-1. **RT/comissão** para Fernando Marinho e/ou Lalu Design? Quanto?
-2. **Persianas e portas entram** ou ficam fora (terceiros)?
-3. Prazo de entrega da proposta — foi combinado por WhatsApp?
-4. Situação de caixa / MC alvo para esse job?
+Com as decisões acima: quantitativo peça a peça dos 7 itens do grupo 16 → plano de corte →
+insumos/ferragens → precificação → preenchimento da planilha no formato exigido.
