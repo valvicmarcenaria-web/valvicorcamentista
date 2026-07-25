@@ -345,17 +345,17 @@ logistica = 900.0     # 3 ambientes, peças grandes (636cm) — 2 viagens
 visita    = 400.0     # medição + conferência de obra
 fixedR = mat_total + logistica + visita
 
-NF, PARC, VEND, ERRO, SERRA, MANUT = 0.04, 0.08, 0.03, 0.005, 0.002, 0.005
+NF, PARC, VEND, ERRO, SERRA, MANUT = 0.04, 0.10, 0.03, 0.005, 0.002, 0.005  # parc 10% (Jonathan)
 a = NF + PARC + VEND + ERRO + SERRA + MANUT
 liqF = 1 - (NF + PARC)
 PROG, COORD, MARC, RT = 0.008, 0.01, 0.025, 0.0
 b = PROG + COORD + MARC + RT
-MC = 0.35
+MC = 0.37
 divisor = 1 - a - liqF*b - MC
 inv = fixedR / divisor
 
 print("\n" + "=" * 78)
-print(f"7) PRECIFICAÇÃO — MC {MC*100:.0f}% · SEM RT")
+print(f"7) PRECIFICAÇÃO — MC {MC*100:.0f}% · SEM RT · parcelamento {PARC*100:.0f}% no custo")
 print("=" * 78)
 print(f"   Subtotal material .......................... R$ {mat_total:>10,.2f}")
 print(f"   Logística .................................. R$ {logistica:>10,.2f}")
@@ -377,7 +377,13 @@ tot_mv = sum(custo_mv.values())
 for mv in ['A. Móvel entrada', 'B. Varanda/gourmet', 'C. Salas TV e jantar']:
     frac = custo_mv[mv]/tot_mv
     print(f"   {mv:<26} {frac*100:>5.1f}%  ->  R$ {inv*frac:>10,.2f}")
-print(f"\n   MC verificada = {MC*100:.1f}% | RT = 0% | sem desconto.")
+print(f"\n   MC verificada = {MC*100:.1f}% | RT = 0%")
+print("\n   --- DESCONTO À VISTA (devolução da taxa de parcelamento) ---")
+for cond, d in [("Entrada 30% + saldo em ate 10x no cartao", 0.00),
+                ("Entrada 50% + saldo em ate 8x no cartao",  0.04),
+                ("Entrada 70% + saldo em ate 6x no cartao",  0.07),
+                ("100% a vista / transferencia",             0.10)]:
+    print(f"   {cond:<44} -{d*100:>4.0f}%  ->  R$ {inv*(1-d):>10,.2f}")
 
 print(f"""
 {'='*78}

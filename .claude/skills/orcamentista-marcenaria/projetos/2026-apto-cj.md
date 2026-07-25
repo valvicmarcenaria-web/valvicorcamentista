@@ -1,6 +1,6 @@
 # Apartamento CJ — Belo Horizonte/MG (B+G Estúdio)
 
-> **Status:** 🟢 REV.02 — levantamento fechado com MC 35%, sem RT. Pronto para virar proposta.
+> **Status:** 🟢 REV.03 — proposta premium entregue (`proposta-apto-cj.pdf`, 5 págs) — levantamento fechado com MC 35%, sem RT. Pronto para virar proposta.
 > Fonte: `CL_ENTREGA_FINAL_MARCENARIA.pdf` (13 pranchas). Projeto **B+G Estúdio**.
 > Estilo: clássico + escandinavo. Ferragens definidas: **Hettich**.
 
@@ -29,7 +29,8 @@ projeto manda o cliente tratar com o serralheiro) · futton estofado 110×41 · 
 - **Serviço de lâmina natural: R$ 450/m²** (aplicação + acabamento) — **somente nas peças externas**.
 - **Interno em Freijó Puro (melamínico)**: as peças externas usam chapa de freijó puro melamínico
   (face interna já acabada) e recebem lâmina natural **apenas na face externa**.
-- **MC 35% · sem RT.**
+- **MC 37% · sem RT · parcelamento 10% no custo** (era 8%) — vira desconto à vista.
+- **Desconto à vista até 10%** (devolução da taxa de parcelamento), tabela escalada de `proposta-comercial.md`.
 
 ## Quantitativo — plano de corte real (chapa 275×185, nesting)
 
@@ -80,17 +81,32 @@ Lâmina = faces externas 7,6 m² (**1 face**) + ripas 1,0 m² (**3 faces**). **O
 | Visita técnica / medição | R$ 400 |
 | **Custo direto (fixedR)** | **R$ 34.144** |
 
-Motor: `inv = fixedR / (1 − a − liqF·b − mc)` · a=16,2% · liqF=0,88 · b=4,3% (RT=0) · mc=35%
-→ divisor **0,45016**
+Motor: `inv = fixedR / (1 − a − liqF·b − mc)` · a=**18,2%** (parc 10%) · liqF=**0,86** · b=4,3% (RT=0) · mc=**37%**
+→ divisor **0,41102**
 
 | | Valor |
 |---|--:|
-| **INVESTIMENTO TOTAL** | **R$ 75.848** |
-| A. Móvel entrada — 7,2% | R$ 5.442 |
-| B. Varanda/gourmet — 14,1% | R$ 10.716 |
-| C. Salas TV e jantar — 78,7% | R$ 59.690 |
+| **INVESTIMENTO TOTAL (cheio)** | **R$ 83.071 → apresentado R$ 83.100** |
+| A. Móvel entrada — 7,2% | R$ 5.960 |
+| B. Varanda/gourmet — 14,1% | R$ 11.736 |
+| C. Salas TV e jantar — 78,7% | R$ 65.375 |
 
-> MC verificada 35,0% · RT 0% · sem desconto.
+> MC verificada 37,0% · RT 0%.
+
+### Tabela de desconto à vista (apresentada na proposta)
+| Condição | Desc. | Valor |
+|---|--:|--:|
+| Entrada 30% + até 10× cartão | — | R$ 83.100 |
+| Entrada 50% + até 8× cartão | 4% | R$ 79.800 |
+| Entrada 70% + até 6× cartão | 7% | R$ 77.300 |
+| **À vista / transferência** | **10%** | **R$ 74.800** |
+
+## Proposta entregue (REV.03)
+`build-apto-cj.py` → `proposta-apto-cj.html` → `proposta-apto-cj.pdf` (5 págs, Playwright).
+Layout premium: capa com foto do living, página de copy (Light Copy — premissa antes da promessa)
+sobre lâmina natural e laca, escopo por ambiente com imagens do caderno, página técnica completa
+(materiais, espessuras, Hettich Sensys/Actro 5D/Quadro V6, garantias) e investimento com tabela
+de desconto à vista.
 
 ## ⚠️ Pontos de atenção
 1. **Ripado da varanda em lâmina natural — o item mais crítico.** 50 ripas (33,1 m lineares) com
