@@ -31,8 +31,7 @@ p{margin:0;}
 
 .scope{display:flex;gap:10mm;margin-bottom:9mm;}
 .scope .it{flex:1;border-top:2px solid var(--ink);padding-top:4mm;}
-.scope .it .k{font-size:7.4pt;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:700;}
-.scope .it .v{font-size:14pt;font-weight:700;margin-top:2px;}
+.scope .it .k{font-size:11pt;font-weight:700;}
 .scope .it .d{font-size:8.8pt;color:var(--soft);margin-top:2mm;line-height:1.5;}
 
 .hl-row{display:flex;gap:6mm;margin-top:3mm;}
@@ -52,13 +51,11 @@ p{margin:0;}
 .inv-box .big{font-size:30pt;font-weight:700;margin:3mm 0 1mm;}
 .inv-box .cap{font-size:9pt;color:var(--soft);}
 
-table{width:100%;border-collapse:collapse;margin:6mm 0;table-layout:fixed;}
-thead th{font-size:7.6pt;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:700;text-align:left;border-bottom:1.5px solid var(--ink);padding:0 0 2.5mm;}
-td{padding:3.2mm 0;border-bottom:1px solid var(--line);font-size:10pt;}
-td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
-.nmc{font-weight:600;}
-.nmc small{display:block;font-weight:400;color:var(--soft);font-size:8.4pt;margin-top:.5mm;}
-.grand td{border:0;border-top:1.5px solid var(--ink);font-weight:700;font-size:12pt;padding-top:4mm;}
+.incl{margin:9mm 0;}
+.incl-t{font-size:7.4pt;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);font-weight:700;margin-bottom:4mm;}
+.incl ul{margin:0;padding:0;list-style:none;}
+.incl li{padding:3.4mm 0;border-bottom:1px solid var(--line);font-size:10pt;padding-left:5mm;position:relative;}
+.incl li::before{content:"";position:absolute;left:0;top:50%;margin-top:-2.5px;width:5px;height:5px;background:var(--accent);}
 
 .terms{display:flex;gap:6mm;margin-top:3mm;}
 .term{flex:1;border:1px solid var(--line);border-radius:6px;padding:5mm 5.5mm;}
@@ -82,18 +79,15 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;
 
   <div class="scope">
     <div class="it">
-      <div class="k">Porta 1 — vão subindo</div>
-      <div class="v">220 × 116 cm</div>
+      <div class="k">Porta — vão subindo</div>
       <div class="d">MDF Ultra amadeirado fosco, frente e verso. Puxador em cava.</div>
     </div>
     <div class="it">
-      <div class="k">Porta 2 — vão descendo</div>
-      <div class="v">220 × 88 cm</div>
+      <div class="k">Porta — vão descendo</div>
       <div class="d">MDF Ultra amadeirado fosco, frente e verso. Puxador em cava.</div>
     </div>
     <div class="it">
       <div class="k">Painel de complemento</div>
-      <div class="v">220 × 241 cm</div>
       <div class="d">Revestimento em MDF Ultra, mesma face das portas — vão fechado, do piso ao teto.</div>
     </div>
   </div>
@@ -135,14 +129,15 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;
     fosco, ferragens Häfele, fornecimento e instalação pela equipe própria Valvic.</div>
   </div>
 
-  <table>
-    <thead><tr><th>Frente</th><th class="r" style="width:32mm;">Valor</th></tr></thead>
-    <tbody>
-      <tr><td class="nmc">Portas (2 unidades)<small>Vão subindo 220×116 + vão descendo 220×88 — dobradiças Häfele IN600, perfil de alumínio na base, fecho rolete, puxador em cava</small></td><td class="r">R$ 9.100</td></tr>
-      <tr><td class="nmc">Painel de complemento<small>220×241 cm — MDF Ultra amadeirado fosco, mesma face das portas</small></td><td class="r">R$ 5.400</td></tr>
-    </tbody>
-    <tfoot><tr class="grand"><td>Total</td><td class="r">R$ 14.500</td></tr></tfoot>
-  </table>
+  <div class="incl">
+    <div class="incl-t">O que está incluso</div>
+    <ul>
+      <li>Porta de giro no vão subindo + porta de giro no vão descendo, em MDF Ultra amadeirado fosco</li>
+      <li>Painel de complemento fechando a composição, do piso ao teto</li>
+      <li>Dobradiças Häfele IN600, perfil de alumínio na base, fecho rolete e puxadores em cava</li>
+      <li>Fornecimento e instalação pela equipe própria Valvic</li>
+    </ul>
+  </div>
 
   <div class="terms">
     <div class="term"><div class="k">Pagamento</div><div class="v">50% + 50%</div><div class="s">Entrada na assinatura · saldo na entrega</div></div>
