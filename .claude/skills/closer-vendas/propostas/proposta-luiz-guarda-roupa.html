@@ -43,14 +43,14 @@
   .invhead .eyebrow{ color:var(--mostarda); }
   .invhead h2{ font-family:Georgia,serif; font-size:26pt; color:#F3ECDD; margin:2mm 0 2mm; }
   .invhead p{ color:#b6ab97; font-size:9.5pt; }
-  .cards{ display:flex; gap:6mm; }
-  .card{ flex:1; border:1px solid var(--linha); border-radius:2mm; padding:6mm 6mm; background:var(--ivory); }
+  .cards{ display:flex; gap:4mm; }
+  .card{ flex:1; border:1px solid var(--linha); border-radius:2mm; padding:4.5mm 4.5mm; background:var(--ivory); }
   .card.reco{ border:1.6px solid var(--mostarda); background:#fff; }
-  .card .k{ font-size:7.5pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); } .card.reco .k{ color:var(--ouro); }
-  .card .nm{ font-family:Georgia,serif; font-size:15pt; color:var(--carvao); margin:1.5mm 0 1mm; }
-  .card .ds{ font-size:8.4pt; color:#5b5347; min-height:11mm; line-height:1.4; } .card .ds b{ color:var(--carvao); }
-  .card .vl{ font-family:Georgia,serif; font-size:24pt; color:var(--carvao); } .card.reco .vl{ color:var(--ouro); }
-  .card .gr{ font-family:"Courier New",monospace; font-size:7.5pt; color:var(--taupe); text-transform:uppercase; margin-top:1mm; }
+  .card .k{ font-size:7pt; letter-spacing:1.5px; text-transform:uppercase; color:var(--taupe); } .card.reco .k{ color:var(--ouro); }
+  .card .nm{ font-family:Georgia,serif; font-size:12.5pt; color:var(--carvao); margin:1.5mm 0 1.5mm; line-height:1.1; }
+  .card .ds{ font-size:7.8pt; color:#5b5347; min-height:20mm; line-height:1.45; } .card .ds b{ color:var(--carvao); }
+  .card .vl{ font-family:Georgia,serif; font-size:19pt; color:var(--carvao); } .card.reco .vl{ color:var(--ouro); }
+  .card .gr{ font-family:"Courier New",monospace; font-size:7pt; color:var(--taupe); text-transform:uppercase; margin-top:1mm; }
 
   .upg{ margin-top:8mm; }
   .upg .u{ display:flex; justify-content:space-between; align-items:center; padding:3.4mm 0; border-bottom:1px solid #f0eadd; }
@@ -140,22 +140,30 @@
 <div class="page">
   <div class="invhead">
     <div class="eyebrow">Investimento</div>
-    <h2>Duas versões de ferragem.</h2>
-    <p>A marcenaria é a mesma. Muda a corrediça das gavetas — e a suavidade e a garantia.</p>
+    <h2>Três versões.</h2>
+    <p>A mesma marcenaria e o mesmo layout nas três. Muda o pacote de ferragem — sistema de correr,
+    corrediça e puxador — e, com ele, o acabamento e a garantia.</p>
   </div>
 
   <div class="cards">
     <div class="card">
-      <div class="k">Versão econômica</div>
-      <div class="nm serif">Corrediça telescópica</div>
-      <div class="ds">Corrediça telescópica de esferas — abertura firme e resistente.</div>
+      <div class="k">Econômica</div>
+      <div class="nm serif">Linha básica</div>
+      <div class="ds">Correr <b>Joeline</b> · corrediça telescópica básica · puxador <b>perfil G leve</b>. Configuração mais enxuta.</div>
+      <div class="vl serif">R$ 6.300</div>
+      <div class="gr">Garantia 1 ano</div>
+    </div>
+    <div class="card">
+      <div class="k">Padrão</div>
+      <div class="nm serif">Telescópica</div>
+      <div class="ds">Correr <b>RO65 com anti-empeno</b> · corrediça telescópica · puxador <b>cava usinado</b>. Mais robusta.</div>
       <div class="vl serif">R$ 7.450</div>
       <div class="gr">Garantia 1 ano</div>
     </div>
     <div class="card reco">
       <div class="k">Recomendada</div>
-      <div class="nm serif">Corrediça oculta Hardt</div>
-      <div class="ds">Corrediça <b>oculta com soft-close</b> — fechamento amortecido e silencioso.</div>
+      <div class="nm serif">Oculta Hardt</div>
+      <div class="ds">Correr <b>RO65 com anti-empeno</b> · corrediça <b>oculta soft-close Hardt</b> · puxador cava. Fechamento silencioso.</div>
       <div class="vl serif">R$ 8.950</div>
       <div class="gr">Garantia 5 anos</div>
     </div>
