@@ -75,6 +75,12 @@
   .c-need{ background:var(--need-bg); border-color:var(--need-br); border-style:dashed; } .c-need .nm{ color:var(--need); } .c-need .st{ background:#f3d5d2; color:var(--need); }
   .c-fut{ background:var(--fut-bg); border-color:var(--fut-br); border-style:dashed; } .c-fut .nm{ color:var(--fut); } .c-fut .st{ background:#e4e4e0; color:var(--fut); }
 
+  .val{ margin-top:8px; padding-top:6px; border-top:1px dashed rgba(27,39,51,.18); display:flex; flex-direction:column; gap:3px; }
+  .vi{ display:flex; align-items:center; gap:5px; font-size:8.8px; color:#41505d; }
+  .vi b{ margin-left:auto; color:var(--navy); font-weight:800; white-space:nowrap; }
+  .vi .vsub{ color:var(--muted); font-size:8px; }
+  .vtot{ display:flex; align-items:center; font-size:8.4px; font-weight:800; color:var(--navy); letter-spacing:.2px; }
+  .vtot span{ margin-left:auto; }
   .flag{ display:inline-block; align-self:flex-start; margin-top:6px; font-size:7.6px; font-weight:800; letter-spacing:.3px; text-transform:uppercase; background:#fdf1d6; color:#8a5d08; padding:2.5px 7px; border-radius:7px; }
   .flag.urg{ background:#f6dbd8; color:var(--need); }
 
@@ -187,19 +193,19 @@
         <div class="stack">
           <div class="card c-ok">
             <div class="top"><span class="nm">Samuel / Jomar</span><span class="st">Ativa</span></div>
-            <div class="dt">Equipe definida · vem mais cedo pra obra<br><b>Carro ✓</b> · ferramental parcial</div>
+            <div class="dt">Equipe definida · vem mais cedo pra obra<br><b>Carro ✓</b> · ferramental parcial</div><div class="val"><span class="vi"><i class="vb vb-pj">PJ</i>Samuel<b>R$ 3.900</b></span><span class="vi"><i class="vb vb-clt">CLT</i>Jomar<b>R$ 1.950</b></span><div class="vtot">Custo da dupla<span>R$ 5.850</span></div></div>
           </div>
           <div class="card c-ok">
             <div class="top"><span class="nm">Jackson / Davi</span><span class="st">Ativa</span></div>
-            <div class="dt">Equipe definida · fluindo bem<br><b>Sem veículo</b> · ferramental parcial</div>
+            <div class="dt">Equipe definida · fluindo bem<br><b>Sem veículo</b> · ferramental parcial</div><div class="val"><span class="vi"><i class="vb vb-pj">PJ</i>Jackson<b>R$ 3.600</b></span><span class="vi"><i class="vb vb-clt">CLT</i>Davi<b>R$ 1.950</b></span><div class="vtot">Custo da dupla<span>R$ 5.550</span></div></div>
           </div>
           <div class="card c-ok">
             <div class="top"><span class="nm">Cezar / Jonathan Godoy</span><span class="st">Em teste</span></div>
-            <div class="dt">Equipe definida · em período de avaliação<br><b>Sem veículo</b> · ferramental parcial</div>
+            <div class="dt">Equipe definida · em período de avaliação<br><b>Sem veículo</b> · ferramental parcial</div><div class="val"><span class="vi">Cezar<b>a definir</b></span><span class="vi">Jonathan Godoy<b>a definir</b></span></div>
           </div>
           <div class="card c-fut">
             <div class="top"><span class="nm">Duplas 4 e 5</span><span class="st">2ª fase</span></div>
-            <div class="dt">Expansão prevista após a estabilização do novo galpão</div>
+            <div class="dt">Expansão prevista após a estabilização do novo galpão</div><div class="val"><span class="vi vsub">Não precificado nesta fase</span></div>
           </div>
         </div>
       </div>
@@ -210,15 +216,15 @@
         <div class="stack">
           <div class="card c-ok">
             <div class="top"><span class="nm">Deivson</span><span class="st">Ativo</span></div>
-            <div class="dt">Marceneiro mais experiente · coordenação<br><b>Ferramentas OK</b></div>
+            <div class="dt">Marceneiro mais experiente · coordenação<br><b>Ferramentas OK</b></div><div class="val"><span class="vi"><i class="vb vb-pj">PJ</i>Deivson<b>R$ 4.000</b></span></div>
           </div>
           <div class="card c-need">
             <div class="top"><span class="nm">Marceneiro experiente</span><span class="st">Contratar</span></div>
-            <div class="dt">Alvo: <b>Paulo "Baiano"</b>, em negociação (vindo de outra marcenaria). Não sendo ele, <b>perfil equivalente</b>.<br>Definir salário e benefício · ferramental de fábrica</div>
+            <div class="dt">Alvo: <b>Paulo "Baiano"</b>, em negociação (vindo de outra marcenaria). Não sendo ele, <b>perfil equivalente</b>.</div><div class="val"><span class="vi"><i class="vb vb-pj">PJ</i>Mesmo escopo do Samuel<b>R$ 3.900</b></span><span class="vi">Kit de ferramentas<b>R$ 3.000</b></span></div>
           </div>
           <div class="card c-need">
             <div class="top"><span class="nm">2 a 3 ajudantes</span><span class="st">Contratar</span></div>
-            <div class="dt">Lacuna crítica de apoio à produção<br>Inclui ferramental próprio</div>
+            <div class="dt">Lacuna crítica de apoio à produção</div><div class="val"><span class="vi"><i class="vb vb-clt">CLT</i>Ref. 1.950 cada<b>R$ 3,9k–5,9k</b></span><span class="vi">Kit básico · 1.000 cada<b>R$ 2k–3k</b></span></div>
             <span class="flag urg">Maior lacuna da operação</span>
           </div>
         </div>
@@ -230,20 +236,20 @@
         <div class="stack">
           <div class="card c-ok">
             <div class="top"><span class="nm">Joelson</span><span class="st">Ativo</span></div>
-            <div class="dt">Operador CNC &amp; máquinas</div>
+            <div class="dt">Operador CNC &amp; máquinas</div><div class="val"><span class="vi"><i class="vb vb-clt">CLT</i>Joelson<b>R$ 2.500</b></span></div>
             <span class="flag urg">Treinamento urgente · maquinário novo</span>
           </div>
           <div class="card c-need">
             <div class="top"><span class="nm">+1 operador CNC</span><span class="st">Contratar</span></div>
-            <div class="dt">Treinar na CNC para <b>assumir o lugar do Joelson</b> — que migra para as máquinas novas</div>
+            <div class="dt">Treinar na CNC para <b>assumir o lugar do Joelson</b> — que migra para as máquinas novas</div><div class="val"><span class="vi"><i class="vb vb-clt">CLT</i>Ref. Joelson<b>R$ 2.500</b></span></div>
           </div>
           <div class="card c-ok">
             <div class="top"><span class="nm">Filipe</span><span class="st">Ativo</span></div>
-            <div class="dt">Programador CNC &amp; tecnologia</div>
+            <div class="dt">Programador CNC &amp; tecnologia</div><div class="val"><span class="vi"><i class="vb vb-pj">PJ</i>Filipe<b>R$ 3.600</b></span></div>
           </div>
           <div class="card c-set">
             <div class="top"><span class="nm">Bruna</span><span class="st">Início dia 01</span></div>
-            <div class="dt">Arquiteta · programação + suporte de projetos no comercial</div>
+            <div class="dt">Arquiteta · programação + suporte de projetos no comercial</div><div class="val"><span class="vi"><i class="vb vb-pj">PJ</i>Fixo (3 primeiros meses)<b>R$ 4.000</b></span><span class="vi">50% dos projetos vendidos<b>variável</b></span><span class="vi">Computador<b>R$ 4.000</b></span></div>
           </div>
         </div>
       </div>
@@ -254,11 +260,11 @@
         <div class="stack">
           <div class="card c-set">
             <div class="top"><span class="nm">Karla</span><span class="st">Início dia 10</span></div>
-            <div class="dt">Assistente Operacional · pivô entre comercial, produção, financeiro e logística<br>Libera o Jonathan do administrativo/jurídico/contábil</div>
+            <div class="dt">Assistente Operacional · pivô entre comercial, produção, financeiro e logística</div><div class="val"><span class="vi"><i class="vb vb-clt">CLT</i>Início (progride a 3.200)<b>R$ 2.000</b></span><span class="vi">VR + transporte<b>R$ 500 + VT</b></span></div>
           </div>
           <div class="card c-ok">
             <div class="top"><span class="nm">Jennifer</span><span class="st">Externa</span></div>
-            <div class="dt">Social media · parceira terceirizada, fora da folha</div>
+            <div class="dt">Social media · parceira terceirizada</div><div class="val"><span class="vi vsub">Fora da folha — contrato à parte</span></div>
           </div>
         </div>
 
@@ -266,7 +272,7 @@
         <div class="stack">
           <div class="card c-need">
             <div class="top"><span class="nm">2 carros · 3 kits</span><span class="st">Adquirir</span></div>
-            <div class="dt">2 duplas hoje <b>sem veículo</b> · as 3 duplas com ferramental <b>parcial</b></div>
+            <div class="dt">2 duplas hoje <b>sem veículo</b> · ferramental <b>parcial</b></div><div class="val"><span class="vi">Kit equipe de obra<b>R$ 6.000</b></span><span class="vi">2 carros<b>a definir</b></span></div>
           </div>
         </div>
       </div>
@@ -368,8 +374,8 @@
 
             <tr class="grp"><td colspan="6">Necessidade de contratação</td></tr>
             <tr><td><span class="who">Paulo "Baiano"</span></td><td>Marceneiro experiente</td><td><span class="vb vb-pj">PJ</span></td><td class="r">3.900</td><td>Mesmo escopo de ganho do <b>Samuel</b></td><td><span class="sm sm-need">Contratar</span></td></tr>
-            <tr><td><span class="who">2 a 3 ajudantes</span></td><td>Apoio à produção</td><td class="fx">a definir</td><td class="r fx">ref. 1.950 cada</td><td class="fx">—</td><td><span class="sm sm-need">Contratar</span></td></tr>
-            <tr><td><span class="who">1 operador CNC</span></td><td>Assume a máquina atual</td><td class="fx">a definir</td><td class="r fx">ref. 2.500</td><td class="fx">—</td><td><span class="sm sm-need">Contratar</span></td></tr>
+            <tr><td><span class="who">2 a 3 ajudantes</span></td><td>Apoio à produção</td><td><span class="vb vb-clt">CLT</span></td><td class="r fx">ref. 1.950 cada</td><td class="fx">—</td><td><span class="sm sm-need">Contratar</span></td></tr>
+            <tr><td><span class="who">1 operador CNC</span></td><td>Assume a máquina atual</td><td><span class="vb vb-clt">CLT</span></td><td class="r fx">ref. 2.500</td><td class="fx">—</td><td><span class="sm sm-need">Contratar</span></td></tr>
             <tr class="tot"><td colspan="3">Folha projetada com todos (base definida)</td><td class="r">≈ 31.400</td><td colspan="2" class="fx" style="font-weight:600">+ ajudantes, operador e variáveis</td></tr>
           </tbody>
         </table>
