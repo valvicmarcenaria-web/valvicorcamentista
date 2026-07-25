@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Estrutura de Demandas — Pessoas &amp; Infraestrutura · Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A3 landscape; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:#1b2733; background:#d9dde3; font-size:10px; line-height:1.4; -webkit-font-smoothing:antialiased; }
+  .num{ font-variant-numeric:tabular-nums; }
+  :root{
+    --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-dk:#a9863f;
+    --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd;
+    --ok:#2f7d4f; --ok-bg:#eaf4ee; --ok-br:#bcdcc8;
+    --set:#2f5d8c; --set-bg:#e8eff7; --set-br:#bcd0e6;
+    --need:#b0413f; --need-bg:#fbeceb; --need-br:#eec4c1;
+    --fut:#6c7785; --fut-bg:#f2f2f0; --fut-br:#dcdcd6;
+  }
+  .sheet{ position:relative; width:420mm; height:297mm; background:var(--cream); margin:16px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; }
+
+  .ph{ background:var(--navy); color:#fff; padding:7mm 13mm 5mm; display:flex; justify-content:space-between; align-items:flex-end; position:relative; }
+  .ph::after{ content:""; position:absolute; left:13mm; right:13mm; bottom:0; height:2.5px; background:linear-gradient(90deg,var(--gold),var(--gold-dk) 45%,transparent); }
+  .ph .kx{ font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:600; margin-top:2px; line-height:1.05; }
+  .ph .r{ text-align:right; } .ph .co{ font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:600; }
+  .ph .pg{ font-size:9px; color:rgba(255,255,255,.55); margin-top:3px; }
+
+  .body{ flex:1; padding:5mm 13mm 0; display:flex; flex-direction:column; gap:7px; min-height:0; }
+
+  /* faixa de contexto */
+  .ctx{ background:#fff; border:1px solid var(--line); border-left:3.5px solid var(--gold); border-radius:0 8px 8px 0; padding:8px 14px; display:flex; align-items:center; gap:16px; }
+  .ctx .ci{ font-size:8px; letter-spacing:1.4px; text-transform:uppercase; color:var(--gold-dk); font-weight:800; white-space:nowrap; }
+  .ctx .ct{ font-size:9.4px; color:#41505d; line-height:1.45; }
+  .ctx .ct b{ color:var(--navy); }
+
+  /* KPIs */
+  .kpis{ display:flex; gap:9px; }
+  .kpi{ flex:1; background:#fff; border:1px solid var(--line); border-radius:7px; padding:8px 13px; position:relative; overflow:hidden; }
+  .kpi::before{ content:""; position:absolute; top:0; left:0; right:0; height:3px; }
+  .kpi.k-ok::before{ background:var(--ok); } .kpi.k-set::before{ background:var(--set); }
+  .kpi.k-need::before{ background:var(--need); } .kpi.k-infra::before{ background:var(--navy); }
+  .kpi .kl{ font-size:7.8px; letter-spacing:1.1px; text-transform:uppercase; color:var(--muted); font-weight:700; }
+  .kpi .kv{ font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:700; margin-top:2px; letter-spacing:-.3px; color:var(--navy); }
+  .kpi .kv small{ font-size:11px; color:var(--muted); font-weight:600; font-family:'Inter'; }
+  .kpi.k-ok .kv{ color:var(--ok); } .kpi.k-set .kv{ color:var(--set); } .kpi.k-need .kv{ color:var(--need); }
+  .kpi .ks{ font-size:7.8px; color:var(--muted); margin-top:3px; line-height:1.35; }
+  .kpi .ks b{ color:var(--ink); }
+
+  /* colunas de frente */
+  .cols{ display:flex; gap:9px; flex:1; min-height:0; }
+  .col{ flex:1; display:flex; flex-direction:column; min-height:0; }
+  .col.wide{ flex:1.32; }
+  .colhead{ display:flex; align-items:center; gap:7px; padding:0 2px 7px; }
+  .colhead .bar{ width:15px; height:2px; background:var(--gold); }
+  .colhead .tx{ font-size:9.6px; font-weight:800; letter-spacing:1.4px; text-transform:uppercase; color:var(--navy); }
+  .colhead .sub{ margin-left:auto; font-size:8.4px; color:var(--muted); }
+  .stack{ display:flex; flex-direction:column; gap:9px; flex:1; min-height:0; }
+  .stack .card{ flex:1 1 auto; max-height:162px; display:flex; flex-direction:column; justify-content:flex-start; }
+
+  .card{ border:1px solid var(--line); border-radius:8px; padding:13px 16px; background:#fff; position:relative; }
+  .card .top{ display:flex; align-items:baseline; gap:6px; }
+  .card .nm{ font-size:13.6px; font-weight:800; color:var(--navy); }
+  .card .rl{ font-size:9.4px; color:var(--muted); }
+  .card .dt{ font-size:9.8px; color:#41505d; margin-top:5px; line-height:1.55; }
+  .card .dt b{ color:var(--navy); }
+  .st{ margin-left:auto; font-size:7.4px; font-weight:800; letter-spacing:.4px; text-transform:uppercase; padding:2px 7px; border-radius:8px; white-space:nowrap; }
+
+  .c-ok{ background:var(--ok-bg); border-color:var(--ok-br); } .c-ok .nm{ color:#215a39; } .c-ok .st{ background:#d3e9db; color:#215a39; }
+  .c-set{ background:var(--set-bg); border-color:var(--set-br); } .c-set .nm{ color:#1f4468; } .c-set .st{ background:#d1e0ef; color:#1f4468; }
+  .c-need{ background:var(--need-bg); border-color:var(--need-br); border-style:dashed; } .c-need .nm{ color:var(--need); } .c-need .st{ background:#f3d5d2; color:var(--need); }
+  .c-fut{ background:var(--fut-bg); border-color:var(--fut-br); border-style:dashed; } .c-fut .nm{ color:var(--fut); } .c-fut .st{ background:#e4e4e0; color:var(--fut); }
+
+  .flag{ display:inline-block; align-self:flex-start; margin-top:6px; font-size:7.6px; font-weight:800; letter-spacing:.3px; text-transform:uppercase; background:#fdf1d6; color:#8a5d08; padding:2.5px 7px; border-radius:7px; }
+  .flag.urg{ background:#f6dbd8; color:var(--need); }
+
+  /* infraestrutura */
+  .infra{ display:flex; gap:9px; }
+  .ib{ flex:1; background:#fff; border:1px solid var(--line); border-radius:7px; padding:7px 12px; display:flex; align-items:center; gap:11px; }
+  .ib .q{ font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700; color:var(--navy); line-height:1; }
+  .ib .q.need{ color:var(--need); }
+  .ib .txt .t1{ font-size:9px; font-weight:700; color:var(--navy); }
+  .ib .txt .t2{ font-size:7.4px; color:var(--muted); line-height:1.35; margin-top:1px; }
+
+  /* linha do tempo */
+  .tl{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:9px 14px 11px; }
+  .tlhead{ display:flex; align-items:center; gap:7px; margin-bottom:8px; }
+  .tlhead .bar{ width:15px; height:2px; background:var(--gold); }
+  .tlhead .tx{ font-size:9.6px; font-weight:800; letter-spacing:1.4px; text-transform:uppercase; color:var(--navy); }
+  .tlhead .sub{ margin-left:auto; font-size:8.4px; color:var(--muted); }
+  .tlrow{ display:flex; gap:0; align-items:stretch; }
+  .tlstep{ flex:1; padding:0 14px; position:relative; border-left:2.5px solid var(--line2); }
+  .tlstep:first-child{ padding-left:0; border-left:none; }
+  .tlstep.s-set{ border-left-color:var(--set); } .tlstep.s-set:first-child{ border-left:none; }
+  .tlstep.s-need{ border-left-color:var(--need); }
+  .tlstep.s-ctx{ border-left-color:var(--gold); }
+  .tlwhen{ font-size:8px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:var(--muted); }
+  .tlstep.s-set .tlwhen{ color:var(--set); } .tlstep.s-need .tlwhen{ color:var(--need); } .tlstep.s-ctx .tlwhen{ color:var(--gold-dk); }
+  .tlwhat{ font-size:11.5px; color:var(--navy); margin-top:2px; }
+  .tlwhy{ font-size:8.6px; color:#41505d; line-height:1.45; margin-top:3px; }
+  .tlwhy b{ color:var(--navy); }
+
+  .legend{ display:flex; gap:14px; justify-content:center; padding:1px 0; }
+  .legend .lg{ font-size:7.4px; color:var(--muted); display:flex; align-items:center; gap:5px; }
+  .legend .sw{ width:9px; height:9px; border-radius:2px; display:inline-block; border:1px solid; }
+
+  .notes{ background:#f6f3ec; border:1px solid var(--line); border-radius:7px; padding:7px 12px; }
+  .notes .nt{ font-size:7px; letter-spacing:1.1px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:3px; }
+  .notes p{ font-size:8.4px; color:#41505d; line-height:1.5; }
+  .notes b{ color:var(--navy); }
+
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:4px 13mm; display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf .pl{ font-size:7.4px; color:var(--muted); } .pf .pr{ font-size:8.2px; color:var(--navy); font-weight:700; letter-spacing:1px; } .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Pessoas &amp; Infraestrutura · Posição Julho/2026</div><div class="tt">Estrutura de Demandas</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div><div class="pg">Preparado para Walton · confidencial</div></div>
+  </div>
+
+  <div class="body">
+
+    <div class="ctx">
+      <span class="ci">Contexto ≈ 3 meses</span>
+      <span class="ct">Novo galpão com <b>coladeira</b> e <b>centro de furação</b> novos. Toda a demanda abaixo existe para <b>dar vazão à capacidade produtiva que essas máquinas exigem</b> — sem essa estrutura de pessoas e ferramental, o investimento em máquina não converte em entrega.</span>
+    </div>
+
+    <section class="kpis">
+      <div class="kpi k-ok"><div class="kl">Ativos hoje</div><div class="kv num">9</div><div class="ks">3 duplas de montagem + chão de fábrica + tecnologia (fora os 2 sócios)</div></div>
+      <div class="kpi k-set"><div class="kl">Início já alinhado</div><div class="kv num">2</div><div class="ks"><b>Bruna dia 01</b> · <b>Karla dia 10</b> — datas fechadas</div></div>
+      <div class="kpi k-need"><div class="kl">A contratar</div><div class="kv num">4<small> a 5</small></div><div class="ks">1 marceneiro experiente · 2–3 ajudantes · 1 operador CNC</div></div>
+      <div class="kpi k-infra"><div class="kl">Infraestrutura</div><div class="kv num">2<small> carros</small> · 3<small> kits</small></div><div class="ks">Ferramental completo para as 3 duplas de montagem</div></div>
+    </section>
+
+    <div class="cols">
+
+      <!-- ===== MONTAGEM ===== -->
+      <div class="col wide">
+        <div class="colhead"><span class="bar"></span><span class="tx">Montagem · obra</span><span class="sub">coord. Paulo</span></div>
+        <div class="stack">
+          <div class="card c-ok">
+            <div class="top"><span class="nm">Samuel / Jomar</span><span class="st">Ativa</span></div>
+            <div class="dt">Equipe definida · vem mais cedo pra obra<br><b>Carro ✓</b> · ferramental parcial</div>
+          </div>
+          <div class="card c-ok">
+            <div class="top"><span class="nm">Jackson / Davi</span><span class="st">Ativa</span></div>
+            <div class="dt">Equipe definida · fluindo bem<br><b>Sem veículo</b> · ferramental parcial</div>
+          </div>
+          <div class="card c-ok">
+            <div class="top"><span class="nm">Cezar / Jonathan Godoy</span><span class="st">Em teste</span></div>
+            <div class="dt">Equipe definida · em período de avaliação<br><b>Sem veículo</b> · ferramental parcial</div>
+          </div>
+          <div class="card c-fut">
+            <div class="top"><span class="nm">Duplas 4 e 5</span><span class="st">2ª fase</span></div>
+            <div class="dt">Expansão prevista após a estabilização do novo galpão</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== CHÃO DE FÁBRICA ===== -->
+      <div class="col">
+        <div class="colhead"><span class="bar"></span><span class="tx">Chão de fábrica</span><span class="sub">coord. Deivson</span></div>
+        <div class="stack">
+          <div class="card c-ok">
+            <div class="top"><span class="nm">Deivson</span><span class="st">Ativo</span></div>
+            <div class="dt">Marceneiro mais experiente · coordenação<br><b>Ferramentas OK</b></div>
+          </div>
+          <div class="card c-need">
+            <div class="top"><span class="nm">Marceneiro experiente</span><span class="st">Contratar</span></div>
+            <div class="dt">Alvo: <b>Paulo "Baiano"</b>, em negociação (vindo de outra marcenaria). Não sendo ele, <b>perfil equivalente</b>.<br>Definir salário e benefício · ferramental de fábrica</div>
+          </div>
+          <div class="card c-need">
+            <div class="top"><span class="nm">2 a 3 ajudantes</span><span class="st">Contratar</span></div>
+            <div class="dt">Lacuna crítica de apoio à produção<br>Inclui ferramental próprio</div>
+            <span class="flag urg">Maior lacuna da operação</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== TECNOLOGIA & MÁQUINAS ===== -->
+      <div class="col">
+        <div class="colhead"><span class="bar"></span><span class="tx">Tecnologia &amp; máquinas</span><span class="sub">coord. Paulo</span></div>
+        <div class="stack">
+          <div class="card c-ok">
+            <div class="top"><span class="nm">Joelson</span><span class="st">Ativo</span></div>
+            <div class="dt">Operador CNC &amp; máquinas</div>
+            <span class="flag urg">Treinamento urgente · maquinário novo</span>
+          </div>
+          <div class="card c-need">
+            <div class="top"><span class="nm">+1 operador CNC</span><span class="st">Contratar</span></div>
+            <div class="dt">Treinar na CNC para <b>assumir o lugar do Joelson</b> — que migra para as máquinas novas</div>
+          </div>
+          <div class="card c-ok">
+            <div class="top"><span class="nm">Filipe</span><span class="st">Ativo</span></div>
+            <div class="dt">Programador CNC &amp; tecnologia</div>
+          </div>
+          <div class="card c-set">
+            <div class="top"><span class="nm">Bruna</span><span class="st">Início dia 01</span></div>
+            <div class="dt">Arquiteta · programação + suporte de projetos no comercial</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== ADM & COMERCIAL ===== -->
+      <div class="col">
+        <div class="colhead"><span class="bar"></span><span class="tx">Adm. &amp; comercial</span><span class="sub">coord. Jonathan</span></div>
+        <div class="stack">
+          <div class="card c-set">
+            <div class="top"><span class="nm">Karla</span><span class="st">Início dia 10</span></div>
+            <div class="dt">Assistente Operacional · pivô entre comercial, produção, financeiro e logística<br>Libera o Jonathan do administrativo/jurídico/contábil</div>
+          </div>
+          <div class="card c-ok">
+            <div class="top"><span class="nm">Jennifer</span><span class="st">Externa</span></div>
+            <div class="dt">Social media · parceira terceirizada, fora da folha</div>
+          </div>
+        </div>
+
+        <div class="colhead" style="margin-top:9px"><span class="bar"></span><span class="tx">Ferramental</span></div>
+        <div class="stack">
+          <div class="card c-need">
+            <div class="top"><span class="nm">2 carros · 3 kits</span><span class="st">Adquirir</span></div>
+            <div class="dt">2 duplas hoje <b>sem veículo</b> · as 3 duplas com ferramental <b>parcial</b></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tl">
+      <div class="tlhead"><span class="bar"></span><span class="tx">Sequência de entrada</span><span class="sub">o que destrava o quê</span></div>
+      <div class="tlrow">
+        <div class="tlstep s-set">
+          <div class="tlwhen">Dia 01</div>
+          <div class="tlwhat"><b>Bruna</b> entra</div>
+          <div class="tlwhy">Programação + suporte de projetos alivia Filipe e o comercial</div>
+        </div>
+        <div class="tlstep s-set">
+          <div class="tlwhen">Dia 10</div>
+          <div class="tlwhat"><b>Karla</b> entra</div>
+          <div class="tlwhy">Assume administrativo/jurídico/contábil e libera o Jonathan pra vender</div>
+        </div>
+        <div class="tlstep s-need">
+          <div class="tlwhen">Curto prazo</div>
+          <div class="tlwhat"><b>4 a 5 contratações</b> + ferramental</div>
+          <div class="tlwhy">Marceneiro experiente · 2–3 ajudantes · operador CNC · 2 carros e 3 kits</div>
+        </div>
+        <div class="tlstep s-ctx">
+          <div class="tlwhen">≈ 3 meses</div>
+          <div class="tlwhat"><b>Novo galpão</b></div>
+          <div class="tlwhy">Coladeira + centro de furação — a equipe precisa estar formada e treinada <b>antes</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <span class="lg"><i class="sw" style="background:var(--ok-bg);border-color:var(--ok-br)"></i>ativo hoje</span>
+      <span class="lg"><i class="sw" style="background:var(--set-bg);border-color:var(--set-br)"></i>início já alinhado (data fechada)</span>
+      <span class="lg"><i class="sw" style="background:var(--need-bg);border-color:var(--need-br)"></i>necessidade de contratação / aquisição</span>
+      <span class="lg"><i class="sw" style="background:var(--fut-bg);border-color:var(--fut-br)"></i>2ª fase (futuro)</span>
+    </div>
+
+    <div class="notes">
+      <div class="nt">Leitura</div>
+      <p>A operação hoje roda com <b>3 duplas de montagem</b> e um chão de fábrica enxuto — mas <b>2 das 3 duplas não têm veículo</b> e todas operam com ferramental parcial, o que já limita o ritmo atual. Para o novo galpão, a demanda se concentra em três pontos: <b>(1)</b> um marceneiro experiente no chão de fábrica — hoje é o Deivson sozinho nesse nível; <b>(2)</b> de 2 a 3 ajudantes, a maior lacuna da operação; e <b>(3)</b> um operador de CNC formado para assumir a máquina atual, liberando o Joelson — que precisa de <b>treinamento urgente</b> — para a coladeira e o centro de furação novos. Karla (dia 10) e Bruna (dia 01) já têm início fechado e resolvem as frentes administrativa e de programação/projeto. <b>Sem essa estrutura, a capacidade das máquinas novas não vira entrega.</b></p>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Documento confidencial · preparado para Walton · Valvic Marcenaria — Vargas Decor Ltda</div><div class="pr">Julho <span>/</span> 2026</div></div>
+</section>
+
+</body>
+</html>
