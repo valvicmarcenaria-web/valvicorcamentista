@@ -1,6 +1,6 @@
 # Apartamento CJ — Belo Horizonte/MG (B+G Estúdio)
 
-> **Status:** 🟢 REV.01 — levantamento fechado com MC 35%, sem RT. Pronto para virar proposta.
+> **Status:** 🟢 REV.02 — levantamento fechado com MC 35%, sem RT. Pronto para virar proposta.
 > Fonte: `CL_ENTREGA_FINAL_MARCENARIA.pdf` (13 pranchas). Projeto **B+G Estúdio**.
 > Estilo: clássico + escandinavo. Ferragens definidas: **Hettich**.
 
@@ -23,24 +23,26 @@ ainda não chegou.
 projeto manda o cliente tratar com o serralheiro) · futton estofado 110×41 · granito/frontão
 (marmoraria) · ponto elétrico do nicho (eletricista) · demolição/retirada do móvel antigo.
 
-## Definições do Jonathan (REV.01)
+## Definições do Jonathan (REV.02)
 - **Laca sobre MDF branco** (chapa branca como base) — não MDF cru.
 - **Parte interna dos móveis em MDF melamínico** — *deve constar explícito na proposta*.
-- **Serviço de lâmina natural: R$ 450/m²** (aplicação + acabamento).
+- **Serviço de lâmina natural: R$ 450/m²** (aplicação + acabamento) — **somente nas peças externas**.
+- **Interno em Freijó Puro (melamínico)**: as peças externas usam chapa de freijó puro melamínico
+  (face interna já acabada) e recebem lâmina natural **apenas na face externa**.
 - **MC 35% · sem RT.**
 
 ## Quantitativo — plano de corte real (chapa 275×185, nesting)
 
 | Material | Peças | Área | **Chapas** | Custo |
 |---|--:|--:|--:|--:|
-| MDF cru 15mm (substrato p/ lâmina natural) | 20 | 7,65 m² | **2** | R$ 164 |
+| MDF melam. **Freijó Puro** 15mm (externas, recebem lâmina 1 face) | 20 | 7,65 m² | **2** | R$ 360 |
 | MDF **melamínico** 15mm — parte interna | 24 | 5,03 m² | **2** | R$ 360 |
 | MDF **melamínico** 6mm — fundos internos | 4 | 2,05 m² | **1** | R$ 130 |
 | MDF **branco** 15mm (base p/ laca) | 40 | 25,56 m² | **8** | R$ 864 |
 | MDF **branco** 18mm (prateleiras/laca) | 19 | 5,61 m² | **2** | R$ 244 |
 | MDF **branco** 6mm (fundos laca) | 6 | 14,02 m² | **4** | R$ 312 |
-| + ripas do ripado (MDF cru 15mm) | 50 ripas · 33,1 m | — | **1** | R$ 82 |
-| **TOTAL** | | | **20 chapas** | **R$ 2.156** |
+| + ripas do ripado (MDF cru 15mm) | 50 ripas · 33,1 m | — | **1** | R$ 180 |
+| **TOTAL** | | | **20 chapas** | **R$ 2.352** |
 
 ### Fita / filetagem
 Bordo em lâmina natural 29,0 m · **ripas 69,2 m** ⚠️ · melamínico interno 28,8 m →
@@ -50,9 +52,9 @@ Bordo em lâmina natural 29,0 m · **ripas 69,2 m** ⚠️ · melamínico intern
 | Serviço | Área | R$/m² | Custo |
 |---|--:|--:|--:|
 | **Laca fosca N048/X148 sobre MDF branco** | 72,3 m² | 300 | **R$ 21.692** |
-| **Lâmina natural aplicada + acabada** | 13,1 m² | 450 | **R$ 5.879** |
+| **Lâmina natural aplicada + acabada** (só externas) | 10,6 m² | 450 | **R$ 4.782** |
 
-Lâmina = corpo 4,0 m² (1 face) + portas 3,0 m² (2 faces) + ripas 3,0 m² (3 faces).
+Lâmina = faces externas 7,6 m² (**1 face**) + ripas 1,0 m² (**3 faces**). **O interno não leva lâmina** — é freijó puro melamínico de fábrica.
 
 ### Ferragens Hettich
 | Item | Qtd | Custo |
@@ -68,25 +70,25 @@ Lâmina = corpo 4,0 m² (1 face) + portas 3,0 m² (2 faces) + ripas 3,0 m² (3 f
 
 | | |
 |---|--:|
-| Chapas | R$ 2.156 |
+| Chapas | R$ 2.352 |
 | Fita/bordo + filetagem | R$ 1.582 |
 | **Laca fosca sobre MDF branco** | **R$ 21.692** |
-| **Lâmina natural — serviço aplicado** | **R$ 5.879** |
+| **Lâmina natural — serviço aplicado** | **R$ 4.782** |
 | Ferragens Hettich + puxadores + vidro | R$ 2.436 |
-| **Subtotal material** | **R$ 33.745** |
+| **Subtotal material** | **R$ 32.844** |
 | Logística | R$ 900 |
 | Visita técnica / medição | R$ 400 |
-| **Custo direto (fixedR)** | **R$ 35.045** |
+| **Custo direto (fixedR)** | **R$ 34.144** |
 
 Motor: `inv = fixedR / (1 − a − liqF·b − mc)` · a=16,2% · liqF=0,88 · b=4,3% (RT=0) · mc=35%
 → divisor **0,45016**
 
 | | Valor |
 |---|--:|
-| **INVESTIMENTO TOTAL** | **R$ 77.849** |
-| A. Móvel entrada — 8,1% | R$ 6.328 |
-| B. Varanda/gourmet — 15,7% | R$ 12.218 |
-| C. Salas TV e jantar — 76,2% | R$ 59.303 |
+| **INVESTIMENTO TOTAL** | **R$ 75.848** |
+| A. Móvel entrada — 7,2% | R$ 5.442 |
+| B. Varanda/gourmet — 14,1% | R$ 10.716 |
+| C. Salas TV e jantar — 78,7% | R$ 59.690 |
 
 > MC verificada 35,0% · RT 0% · sem desconto.
 
@@ -100,8 +102,8 @@ Motor: `inv = fixedR / (1 − a − liqF·b − mc)` · a=16,2% · liqF=0,88 · 
 3. **Peças acima de 275cm**: o móvel de 636cm exige **emenda** — prever junta alinhada e simetria.
 4. **Prateleira acima da TV com 3cm de espessura** — fora do padrão; feita com 2 chapas coladas.
 5. **Cristaleira recuada (prof. 32 vs 47 do móvel)** — muda a caixaria; conferir alinhamento.
-6. **"Lâmina natural freijó OU MDF freijó puro" no interior** — o projeto deixa em aberto nos móveis
-   A e B. Diferença de custo relevante. **Definir.**
+6. ~~Interior lâmina OU freijó puro~~ → **RESOLVIDO: interno em Freijó Puro melamínico**; lâmina
+   natural apenas nas faces externas. Deve constar **explícito na proposta**.
 7. **Laca N048 ou X148** — escolher uma antes da produção.
 8. **Cervejeira**: vão de 44cm — confirmar modelo/medidas reais do equipamento do cliente.
 9. **Lavabo (prancha 13)** — só retirada de vidro pintado e papel de parede; **sem marcenaria**.

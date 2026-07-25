@@ -22,7 +22,9 @@ CH_AREA = CH_A * CH_L            # 5,0875 m²
 # Preços = custo de compra. chapas.md é a fonte da base; itens fora do catálogo
 # (lâmina natural, laca) entram como ESTIMATIVA DE MERCADO — sinalizados.
 P = {
-    'SUB15':   82.0,   # MDF cru 15mm — SUBSTRATO p/ lâmina natural           chapas.md
+    'SUB15':  180.0,   # MDF melamínico FREIJÓ PURO 15mm — face interna acabada,
+                       #   recebe lâmina natural APENAS na face externa   [ESTIM.]
+    'RIPA15':  82.0,   # MDF cru 15mm — ripas (lâmina em 3 faces)             chapas.md
     'SUB6':    62.0,   # MDF cru 6mm  — substrato/fundo                       chapas.md
     'MEL15':  180.0,   # MDF melamínico 15mm — PARTE INTERNA dos móveis  [ESTIM. linha especial]
     'MEL6':   130.0,   # MDF melamínico 6mm  — fundos internos           [ESTIM.]
@@ -193,7 +195,7 @@ print("\n" + "-" * 78)
 print("2) PLANO DE CORTE — chapas por material (nesting real 275x185)")
 print("-" * 78)
 NOME = {
-    'SUB15': 'MDF cru 15mm (substrato p/ lâmina natural)',
+    'SUB15': 'MDF melam. Freijó Puro 15mm (ext. c/ lâmina)',
     'SUB6':  'MDF cru 6mm (substrato/fundo)',
     'MEL15': 'MDF melamínico 15mm — PARTE INTERNA',
     'MEL6':  'MDF melamínico 6mm — fundos internos',
@@ -219,9 +221,9 @@ for mat in ['SUB15', 'MEL15', 'MEL6', 'BRC15', 'BRC18', 'BRC6']:
 # ripas: material adicional em lâmina natural
 ch_ripas = 1
 total_chapas += ch_ripas
-custo_chapas += ch_ripas * P['SUB15']
+custo_chapas += ch_ripas * P['RIPA15']
 print(f"{'+ ripas do ripado (MDF cru 15mm)':<42} {n_ripas:>3} ripas · "
-      f"{ml_ripas:>6.2f} m · **{ch_ripas:>2} chapa**  · R$ {ch_ripas*P['SUB15']:>8,.2f}")
+      f"{ml_ripas:>6.2f} m · **{ch_ripas:>2} chapa**  · R$ {ch_ripas*P['RIPA15']:>8,.2f}")
 
 print(f"\nTOTAL DE CHAPAS: {total_chapas}   |   custo de chapas: R$ {custo_chapas:,.2f}")
 
@@ -259,16 +261,14 @@ area_laca = sum(c*l*q for mv, d, mat, c, l, q in pecas if mat.startswith('BRC'))
 area_laca_2f = area_laca * 1.6      # faces aparentes + internas parciais
 custo_laca = area_laca_2f * LACA_M2
 
-# --- lâmina natural: corpo (1 face) + portas (2 faces) + ripas (3 faces)
-area_lam_corpo = sum(c*l*q for mv, d, mat, c, l, q in pecas
-                     if mat == 'SUB15' and 'porta' not in d.lower() and 'frente' not in d.lower()) / 10000
-area_lam_porta = sum(c*l*q for mv, d, mat, c, l, q in pecas
-                     if mat == 'SUB15' and ('porta' in d.lower() or 'frente' in d.lower())) / 10000
-area_lamina = area_lam_corpo + area_lam_porta*2 + area_ripado*3
+# --- lâmina natural: SOMENTE PEÇAS EXTERNAS, 1 face (o interno é freijó puro
+#     melamínico, já acabado de fábrica) + ripas do ripado em 3 faces.
+area_lam_ext = sum(c*l*q for mv, d, mat, c, l, q in pecas if mat == 'SUB15') / 10000
+area_lamina = area_lam_ext + area_ripado*3
 custo_lamina = area_lamina * LAMINA_M2
 print(f"Laca fosca N048/X148 sobre MDF branco . {area_laca_2f:>7.1f} m² x R$ {LACA_M2:.0f} = R$ {custo_laca:>9,.2f}")
 print(f"Lâmina natural — serviço aplicado ..... {area_lamina:>7.1f} m² x R$ {LAMINA_M2:.0f} = R$ {custo_lamina:>9,.2f}")
-print(f"   (corpo {area_lam_corpo:.1f} m² 1 face + portas {area_lam_porta:.1f} m² 2 faces + ripas {area_ripado:.1f} m² 3 faces)")
+print(f"   (faces externas {area_lam_ext:.1f} m² x1 face + ripas {area_ripado:.1f} m² x3 faces · interno = freijó puro melamínico)")
 
 # =====================================================================
 # 5) FERRAGENS HETTICH E INSUMOS
