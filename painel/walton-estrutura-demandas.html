@@ -30,17 +30,23 @@
   .ph .r{ text-align:right; } .ph .co{ font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:600; }
   .ph .pg{ font-size:9px; color:rgba(255,255,255,.55); margin-top:3px; }
 
-  .body{ flex:1; padding:5mm 13mm 0; display:flex; flex-direction:column; gap:7px; min-height:0; }
+  .body{ flex:1; padding:4mm 13mm 0; display:flex; flex-direction:column; gap:5px; min-height:0; }
 
   /* faixa de contexto */
-  .ctx{ background:#fff; border:1px solid var(--line); border-left:3.5px solid var(--gold); border-radius:0 8px 8px 0; padding:8px 14px; display:flex; align-items:center; gap:16px; }
+  .ctx{ background:#fff; border:1px solid var(--line); border-left:3.5px solid var(--gold); border-radius:0 8px 8px 0; padding:6px 14px; display:flex; align-items:center; gap:16px; }
   .ctx .ci{ font-size:8px; letter-spacing:1.4px; text-transform:uppercase; color:var(--gold-dk); font-weight:800; white-space:nowrap; }
   .ctx .ct{ font-size:9.4px; color:#41505d; line-height:1.45; }
   .ctx .ct b{ color:var(--navy); }
 
+  .dir{ background:#fff; border:1px solid var(--line); border-left:3.5px solid var(--navy); border-radius:0 8px 8px 0; padding:5px 14px; display:flex; align-items:center; gap:18px; }
+  .dir .dl{ font-size:8px; letter-spacing:1.4px; text-transform:uppercase; color:var(--navy); font-weight:800; white-space:nowrap; }
+  .dir .dp{ display:flex; align-items:baseline; gap:7px; font-size:9.6px; color:#41505d; }
+  .dir .dp b{ font-size:11.4px; color:var(--navy); font-weight:800; }
+  .dir .dp .dv{ font-weight:800; color:var(--navy); }
+  .dir .dn{ margin-left:auto; font-size:8.4px; color:var(--muted); }
   /* KPIs */
   .kpis{ display:flex; gap:9px; }
-  .kpi{ flex:1; background:#fff; border:1px solid var(--line); border-radius:7px; padding:8px 13px; position:relative; overflow:hidden; }
+  .kpi{ flex:1; background:#fff; border:1px solid var(--line); border-radius:7px; padding:6px 13px; position:relative; overflow:hidden; }
   .kpi::before{ content:""; position:absolute; top:0; left:0; right:0; height:3px; }
   .kpi.k-ok::before{ background:var(--ok); } .kpi.k-set::before{ background:var(--set); }
   .kpi.k-need::before{ background:var(--need); } .kpi.k-infra::before{ background:var(--navy); }
@@ -59,10 +65,10 @@
   .colhead .bar{ width:15px; height:2px; background:var(--gold); }
   .colhead .tx{ font-size:9.6px; font-weight:800; letter-spacing:1.4px; text-transform:uppercase; color:var(--navy); }
   .colhead .sub{ margin-left:auto; font-size:8.4px; color:var(--muted); }
-  .stack{ display:flex; flex-direction:column; gap:9px; flex:1; min-height:0; }
-  .stack .card{ flex:1 1 auto; max-height:178px; display:flex; flex-direction:column; justify-content:flex-start; }
+  .stack{ display:flex; flex-direction:column; gap:6px; flex:1; min-height:0; }
+  .stack .card{ flex:1 1 auto; max-height:176px; display:flex; flex-direction:column; justify-content:flex-start; }
 
-  .card{ border:1px solid var(--line); border-radius:8px; padding:13px 16px; background:#fff; position:relative; }
+  .card{ border:1px solid var(--line); border-radius:8px; padding:9px 14px; background:#fff; position:relative; }
   .card .top{ display:flex; align-items:baseline; gap:6px; }
   .card .nm{ font-size:13.6px; font-weight:800; color:var(--navy); }
   .card .rl{ font-size:9.4px; color:var(--muted); }
@@ -75,7 +81,7 @@
   .c-need{ background:var(--need-bg); border-color:var(--need-br); border-style:dashed; } .c-need .nm{ color:var(--need); } .c-need .st{ background:#f3d5d2; color:var(--need); }
   .c-fut{ background:var(--fut-bg); border-color:var(--fut-br); border-style:dashed; } .c-fut .nm{ color:var(--fut); } .c-fut .st{ background:#e4e4e0; color:var(--fut); }
 
-  .val{ margin-top:8px; padding-top:6px; border-top:1px dashed rgba(27,39,51,.18); display:flex; flex-direction:column; gap:3px; }
+  .val{ margin-top:5px; padding-top:4px; border-top:1px dashed rgba(27,39,51,.18); display:flex; flex-direction:column; gap:3px; }
   .vi{ display:flex; align-items:center; gap:5px; font-size:8.8px; color:#41505d; }
   .vi b{ margin-left:auto; color:var(--navy); font-weight:800; white-space:nowrap; }
   .vi .vsub{ color:var(--muted); font-size:8px; }
@@ -83,7 +89,7 @@
   .vsl{ font-size:8.2px; color:var(--muted); line-height:1.4; padding-left:2px; }
   .vsl b{ color:#8a5d08; font-weight:800; }
   .vsl i{ font-style:normal; color:#1f4468; font-weight:700; }
-  .needs{ margin-top:8px; padding-top:6px; border-top:1px dashed rgba(176,65,63,.4); }
+  .needs{ margin-top:5px; padding-top:4px; border-top:1px dashed rgba(176,65,63,.4); }
   .needs .nl{ font-size:7.2px; font-weight:800; letter-spacing:.9px; text-transform:uppercase; color:#b0413f; }
   .needs .ni{ display:flex; align-items:center; font-size:8.8px; color:#41505d; margin-top:3px; }
   .needs .ni b{ margin-left:auto; color:#b0413f; font-weight:800; white-space:nowrap; }
@@ -136,12 +142,12 @@
   table{ width:100%; border-collapse:collapse; background:#fff; }
   thead th{ background:var(--navy2); color:#fff; font-size:7.6px; font-weight:600; letter-spacing:.6px; text-transform:uppercase; padding:6px 9px; text-align:left; }
   th.r,td.r{ text-align:right; }
-  tbody td{ padding:9.6px 10px; border-bottom:1px solid var(--line); font-size:9.6px; vertical-align:middle; }
+  tbody td{ padding:6.6px 10px; border-bottom:1px solid var(--line); font-size:9.2px; vertical-align:middle; }
   tbody tr:nth-child(even) td{ background:#f7f5ef; }
   td .who{ font-weight:700; color:var(--navy); }
   td .fx{ color:var(--muted); font-size:8.2px; }
-  tr.grp td{ background:#eceadf !important; font-size:7.8px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; color:var(--navy); padding:5.5px 10px; }
-  tr.next td{ background:var(--navy) !important; color:#fff; font-weight:800; font-size:10.4px; padding:9px 10px; border:none; }
+  tr.grp td{ background:#eceadf !important; font-size:7.4px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; color:var(--navy); padding:4px 10px; }
+  tr.next td{ background:var(--navy) !important; color:#fff; font-weight:800; font-size:10px; padding:7px 10px; border:none; }
   tr.next td .gv{ color:#dcc389; }
   tr.tot td{ background:#e6e3d6 !important; font-weight:800; color:var(--navy); font-size:10px; border-top:1.5px solid var(--line2); }
   .cols2 .notes, .body > .notes{ margin-top:auto; }
@@ -189,11 +195,18 @@
       <span class="ct">Novo galpão com <b>coladeira</b> e <b>centro de furação</b> novos. Toda a demanda abaixo existe para <b>dar vazão à capacidade produtiva que essas máquinas exigem</b> — sem essa estrutura de pessoas e ferramental, o investimento em máquina não converte em entrega.</span>
     </div>
 
+    <div class="dir">
+      <span class="dl">Direção · sócios</span>
+      <span class="dp"><b>Jonathan</b> Comercial &amp; Experiência <span class="dv">R$ 10.000</span></span>
+      <span class="dp"><b>Paulo</b> Operações &amp; Tecnologia <span class="dv">R$ 10.000</span></span>
+      <span class="dn">Pró-labore · R$ 20.000/mês somados · ambos executam e gerenciam</span>
+    </div>
+
     <section class="kpis">
       <div class="kpi k-ok"><div class="kl">Ativos hoje</div><div class="kv num">8</div><div class="ks">Chão de fábrica + tecnologia + 2 duplas completas (fora os 2 sócios)</div></div>
       <div class="kpi k-set"><div class="kl">Início já alinhado</div><div class="kv num">3</div><div class="ks"><b>Bruna dia 01</b> · <b>Karla dia 10</b> · <b>Cezar</b> — data a definir</div></div>
       <div class="kpi k-need"><div class="kl">A contratar</div><div class="kv num">4<small> a 5</small></div><div class="ks">1 marceneiro experiente · 2–3 ajudantes · 1 operador CNC</div></div>
-      <div class="kpi k-infra"><div class="kl">Custo mensal · a partir do próximo mês</div><div class="kv num">R$ 38,4<small> mil</small></div><div class="ks">Com <b>Bruna, Karla e Cezar</b> · salários + benefícios + Jennifer</div></div>
+      <div class="kpi k-infra"><div class="kl">Custo mensal · a partir do próximo mês</div><div class="kv num">R$ 58,4<small> mil</small></div><div class="ks">Com <b>Bruna, Karla e Cezar</b> · inclui pró-labore, benefícios e Jennifer</div></div>
     </section>
 
     <div class="cols">
@@ -214,7 +227,7 @@
             <div class="top"><span class="nm">Cezar / Jonathan Godoy</span><span class="st">Cezar a entrar</span></div>
             <div class="dt">Dupla definida, <b>ainda incompleta</b> — Godoy já atua, Cezar não entrou</div><div class="val"><span class="vi">Cezar <span class="vsub">· ainda não entrou</span><b>a definir</b></span><div class="vsl"><b>2,5%</b> fabricação · <b>2,5%</b> montagem</div><span class="vi"><i class="vb vb-clt">CLT</i>Jonathan Godoy<b>a definir</b></span><div class="vsl">sem comissão · <i>VR 350 + VT 400</i></div></div><div class="needs"><div class="nl">Necessidades correlacionadas</div><div class="ni">Veículo para a dupla<b>a definir</b></div></div>
           </div>
-          <div class="card c-fut">
+          <div class="card c-fut" style="max-height:78px">
             <div class="top"><span class="nm">Duplas 4 e 5</span><span class="st">2ª fase</span></div>
             <div class="dt">Expansão prevista após a estabilização do novo galpão</div><div class="val"><span class="vi vsub">Não precificado nesta fase</span></div>
           </div>
@@ -341,8 +354,8 @@
   <div class="body">
 
     <section class="kpis">
-      <div class="kpi k-ok"><div class="kl">Custo mensal hoje</div><div class="kv num">R$ 27,9<small> mil</small></div><div class="ks">8 ativos + Jennifer · salários <b>+ benefícios CLT</b></div></div>
-      <div class="kpi k-set"><div class="kl">A partir do próximo mês</div><div class="kv num">R$ 38,4<small> mil</small></div><div class="ks">Entram <b>Bruna, Karla e Cezar</b> — acréscimo de R$ 10,5k</div></div>
+      <div class="kpi k-ok"><div class="kl">Custo mensal hoje</div><div class="kv num">R$ 47,9<small> mil</small></div><div class="ks">2 sócios + 8 ativos + Jennifer · <b>com benefícios CLT</b></div></div>
+      <div class="kpi k-set"><div class="kl">A partir do próximo mês</div><div class="kv num">R$ 58,4<small> mil</small></div><div class="ks">Entram <b>Bruna, Karla e Cezar</b> — acréscimo de R$ 10,5k</div></div>
       <div class="kpi k-need"><div class="kl">Ainda a contratar</div><div class="kv num">R$ 12,6<small> a 15,3 mil</small></div><div class="ks">Baiano + 2–3 ajudantes + operador CNC — <b>fora do cálculo acima</b></div></div>
       <div class="kpi k-infra"><div class="kl">Investimento (CAPEX)</div><div class="kv num">R$ 15<small> mil +</small></div><div class="ks">Ferramental e equipamentos mapeados · <b>carros e cadeiras a definir</b></div></div>
     </section>
@@ -358,6 +371,10 @@
             <th class="r" style="width:13%">Fixo mensal</th><th style="width:22%">Variável / comissão</th><th style="width:10%">Status</th>
           </tr></thead>
           <tbody>
+            <tr class="grp"><td colspan="6">Direção · sócios</td></tr>
+            <tr><td><span class="who">Jonathan</span></td><td>Diretor Comercial &amp; Experiência</td><td><span class="vb vb-soc">SÓCIO</span></td><td class="r">10.000</td><td class="fx">pró-labore</td><td><span class="sm sm-ok">Ativo</span></td></tr>
+            <tr><td><span class="who">Paulo</span></td><td>Diretor de Operações &amp; Tecnologia</td><td><span class="vb vb-soc">SÓCIO</span></td><td class="r">10.000</td><td class="fx">pró-labore</td><td><span class="sm sm-ok">Ativo</span></td></tr>
+            <tr class="tot"><td colspan="3">Subtotal direção</td><td class="r">20.000</td><td colspan="2" class="fx" style="font-weight:600">Pró-labore dos 2 sócios</td></tr>
             <tr class="grp"><td colspan="6">Ativos hoje</td></tr>
             <tr><td><span class="who">Deivson</span></td><td>Coordenador de Produção</td><td><span class="vb vb-pj">PJ</span></td><td class="r">4.000</td><td><b>2,5%</b> fab. + <b>2,5%</b> mont. + <b>1,0%</b> coord.</td><td><span class="sm sm-ok">Ativo</span></td></tr>
             <tr><td><span class="who">Samuel</span></td><td>Marceneiro Sênior</td><td><span class="vb vb-pj">PJ</span></td><td class="r">3.900</td><td><b>2,5%</b> fab. + <b>2,5%</b> mont.</td><td><span class="sm sm-ok">Ativo</span></td></tr>
@@ -384,7 +401,7 @@
               </div>
             </td></tr>
 
-            <tr class="next"><td colspan="3">CUSTO MENSAL A PARTIR DO PRÓXIMO MÊS <span style="font-weight:600;opacity:.75">· ativos + Bruna + Karla + Cezar</span></td><td class="r"><span class="gv">36.950</span></td><td colspan="2" style="font-weight:600;opacity:.85">+ Jennifer R$ 1.400 = <span class="gv">R$ 38.350</span></td></tr>
+            <tr class="next"><td colspan="3">CUSTO MENSAL A PARTIR DO PRÓXIMO MÊS <span style="font-weight:600;opacity:.75">· direção + ativos + Bruna + Karla + Cezar</span></td><td class="r"><span class="gv">56.950</span></td><td colspan="2" style="font-weight:600;opacity:.85">+ Jennifer R$ 1.400 = <span class="gv">R$ 58.350</span></td></tr>
             <tr class="grp"><td colspan="6">Parceria externa</td></tr>
             <tr><td><span class="who">Jennifer</span></td><td>Social media</td><td><span class="vb vb-soc">EXT</span></td><td class="r">1.400</td><td class="fx">contrato à parte</td><td><span class="sm sm-ok">Ativa</span></td></tr>
             <tr class="grp"><td colspan="6">Necessidade de contratação</td></tr>
@@ -427,7 +444,7 @@
 
     <div class="notes">
       <div class="nt">Leitura</div>
-      <p>O custo mensal hoje é de <b>R$ 27,9 mil</b> — 8 ativos mais a Jennifer, já <b>incluindo os benefícios CLT</b>. A partir do próximo mês, com a entrada de <b>Bruna (dia 01), Karla (dia 10) e Cezar</b>, sobe para <b>R$ 38,4 mil</b>: um acréscimo de R$ 10,5 mil. As contratações ainda pendentes — marceneiro experiente, 2–3 ajudantes e operador de CNC — somariam outros <b>R$ 12,6 a 15,3 mil</b> e estão <b>fora desse número</b>. Os valores de Jonathan Godoy e Cezar são estimativas de referência até a formalização. A estrutura é majoritariamente <b>PJ na produção e tecnologia</b> (Deivson, Samuel, Jackson, Filipe, Bruna) e <b>CLT nas funções de formação e apoio</b> (Joelson, Jomar, Davi, Karla). A estrutura é majoritariamente <b>PJ na produção e tecnologia</b> e <b>CLT nas funções de formação e apoio</b>. Os variáveis relevantes são a <b>participação de 50% da Bruna</b> nos projetos que ela vende e a <b>progressão validada da Karla</b>, que só avança por entrega. O investimento único em ferramental e equipamento é de <b>R$ 15 mil</b>, com carros e mobiliário a precificar.<br><span style="display:inline-block;margin-top:4px">As comissões são <b>por profissional e por etapa</b>: <b>2,5% por fabricação</b> e <b>2,5% por montagem</b>, mais <b>1,0% de coordenação</b> para o Deivson e <b>R$ 2,00 por chapa cortada</b> para o Joelson, que também recebe os 2,5% de montagem. <b>Só existem quando há venda</b> — são custo variável, não folha fixa. Os <b>benefícios CLT</b> (VR R$ 350 + transporte ~R$ 400 = <b>R$ 750/mês por colaborador</b>) são fixos e somam sobre a folha acima. A participação da Bruna (50% dos projetos que ela vende) é adicional.</span></p>
+      <p>O custo mensal hoje é de <b>R$ 47,9 mil</b> — os 2 sócios, 8 ativos e a Jennifer, já <b>incluindo os benefícios CLT</b>. A partir do próximo mês, com a entrada de <b>Bruna (dia 01), Karla (dia 10) e Cezar</b>, sobe para <b>R$ 58,4 mil</b>: um acréscimo de R$ 10,5 mil. As contratações ainda pendentes — marceneiro experiente, 2–3 ajudantes e operador de CNC — somariam outros <b>R$ 12,6 a 15,3 mil</b> e estão <b>fora desse número</b>. Os valores de Jonathan Godoy e Cezar são estimativas de referência até a formalização. A estrutura é majoritariamente <b>PJ na produção e tecnologia</b> (Deivson, Samuel, Jackson, Filipe, Bruna) e <b>CLT nas funções de formação e apoio</b> (Joelson, Jomar, Davi, Karla). A estrutura é majoritariamente <b>PJ na produção e tecnologia</b> e <b>CLT nas funções de formação e apoio</b>. Os variáveis relevantes são a <b>participação de 50% da Bruna</b> nos projetos que ela vende e a <b>progressão validada da Karla</b>, que só avança por entrega. O investimento único em ferramental e equipamento é de <b>R$ 15 mil</b>, com carros e mobiliário a precificar.<br><span style="display:inline-block;margin-top:4px">As comissões são <b>por profissional e por etapa</b>: <b>2,5% por fabricação</b> e <b>2,5% por montagem</b>, mais <b>1,0% de coordenação</b> para o Deivson e <b>R$ 2,00 por chapa cortada</b> para o Joelson, que também recebe os 2,5% de montagem. <b>Só existem quando há venda</b> — são custo variável, não folha fixa. Os <b>benefícios CLT</b> (VR R$ 350 + transporte ~R$ 400 = <b>R$ 750/mês por colaborador</b>) são fixos e somam sobre a folha acima. A participação da Bruna (50% dos projetos que ela vende) é adicional.</span></p>
     </div>
   </div>
   <div class="pf"><div class="pl">Documento confidencial · dado de remuneração · uso restrito — Valvic Marcenaria — Vargas Decor Ltda</div><div class="pr">02 <span>/</span> 02 · Julho 2026</div></div>
