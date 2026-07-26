@@ -10,7 +10,7 @@ Medidas lidas do executivo (arq. Renata Lodi, 26/03/2026, esc. 1:25):
   pr.10 — armário alto 87x230x70 (escamoteável) · painel ripado 173x230 · painel L 492,5+266,5
 
 DECISÕES: BDI fica com a MLQ (entregamos preço fechado) · shaft em MDF padrão fosco ·
-espelhos FORA · COM RT · prazo 50-60 dias corridos.
+espelhos FORA · COM RT · prazo 60-70 dias corridos · MC 45%.
 """
 
 CH_A, CH_L = 2.75, 1.85
@@ -239,7 +239,7 @@ a = NF+PARC+VEND+ERRO+SERRA+MANUT
 liqF = 1-(NF+PARC)
 PROG, COORD, MARC, RT = 0.008, 0.01, 0.025, 0.10      # *** COM RT 10% ***
 b = PROG+COORD+MARC+RT
-MC = 0.37
+MC = 0.45
 div = 1 - a - liqF*b - MC
 inv = fixedR/div
 
@@ -263,4 +263,4 @@ cst['16.1 Cozinha']           += P_GRELHA + n_pux*P_PUX_SLIM*0.6
 tot = sum(cst.values())
 for it in sorted(cst):
     print(f'   {it:<28} {cst[it]/tot*100:>5.1f}%  ->  R$ {inv*cst[it]/tot:>10,.2f}')
-print(f'\n   MC verificada {MC*100:.1f}% · RT {RT*100:.0f}% · prazo 50–60 dias corridos.')
+print(f'\n   MC verificada {MC*100:.1f}% · RT {RT*100:.0f}% · prazo 60–70 dias corridos.')

@@ -1,7 +1,7 @@
 # TRT 3ª Região — Espaço de Convivência dos Desembargadores (via MLQ Engenharia)
 
-> **Status:** 🟢 Fase 2 — quantitativo fechado. **R$ 50.200** (MC 37%, COM RT 10%).
-> Pronto para virar proposta.
+> **Status:** 🟢 Fase 3 — proposta entregue. **R$ 65.500** (MC 45%, COM RT 10%).
+> `proposta-trt3.pdf` — 5 págs, layout premium.
 > Fonte: e-mail `valvicmarcenaria@gmail.com`, thread `19f6c8098d3d239c` (16/07/2026) + ZIP com 20 anexos.
 
 ## 🔴 Descoberta principal: **isto é licitação pública**
@@ -104,8 +104,8 @@ células em azul)", campo **"Desconto da licitante (%)"** e uma aba de **BDI**. 
 3. **Shaft em MDF padrão fosco** — resolve a divergência Gianduia × cinza.
 4. **Espelhos do lavatório: FORA.**
 5. **COM RT** (10% sobre o líquido).
-6. **Prazo: 50 a 60 dias corridos.**
-7. MC 37% *(assumida — padrão dos últimos fechamentos; confirmar)*.
+6. **Prazo: 60 a 70 dias corridos.**
+7. **MC 45%** (definida pelo Jonathan em 26/07).
 
 ## FASE 2 — Quantitativo (plano de corte real)
 
@@ -158,23 +158,23 @@ Fita nobre (Freijó/MOSS) 155,8 m · fita comum 168,5 m · filetagem 324,4 m →
 | Acesso de obra (içamento, horário restrito) | R$ 900 |
 | **Custo direto (fixedR)** | **R$ 17.181** |
 
-`a=16,2% · liqF=0,88 · b=14,3% (prog 0,8 + coord 1 + marc 2,5 + **RT 10**) · mc=37%` → divisor **0,34216**
+`a=16,2% · liqF=0,88 · b=14,3% (prog 0,8 + coord 1 + marc 2,5 + **RT 10**) · mc=**45%**` → divisor **0,26216**
 
 | | Valor |
 |---|--:|
-| **INVESTIMENTO TOTAL** | **R$ 50.214 → apresentar R$ 50.200** |
-| RT embutida (10% do líquido) | R$ 4.419 |
+| **INVESTIMENTO TOTAL** | **R$ 65.537 → apresentado R$ 65.500** |
+| RT embutida (10% do líquido) | R$ 5.767 |
 
 ### Alocação por item da planilha (grupo 16)
 | Item | % | Valor |
 |---|--:|--:|
-| 16.1 Cozinha | 33,1% | R$ 16.636 |
-| 16.2 Buffet armário | 8,2% | R$ 4.095 |
-| 16.3 Buffet prateleira | 4,0% | R$ 2.005 |
-| 16.4 Armário alto | 29,9% | R$ 15.032 |
-| 16.5 Painel ripado | 5,4% | R$ 2.701 |
-| 16.6 Painel shaft | 5,0% | R$ 2.527 |
-| 16.7 Painel descanso | 14,4% | R$ 7.218 |
+| 16.1 Cozinha | 33,1% | R$ 21.700 |
+| 16.2 Buffet armário | 8,2% | R$ 5.350 |
+| 16.3 Buffet prateleira | 4,0% | R$ 2.600 |
+| 16.4 Armário alto | 29,9% | R$ 19.600 |
+| 16.5 Painel ripado | 5,4% | R$ 3.550 |
+| 16.6 Painel shaft | 5,0% | R$ 3.300 |
+| 16.7 Painel descanso | 14,4% | R$ 9.400 |
 
 ## ⚠️ A cotar antes de fechar
 - **Sistema de ferragem para porta escamoteável** (16.4) — é o item de maior incerteza. Estimei
@@ -190,3 +190,20 @@ do TRT nos 7 itens do grupo 16.
 ## Entregáveis
 - `corte-trt3.py` — levantamento auditável (peças, nesting, fita, ferragens, motor).
 - `trt3/ORÇAMENTO DE MOVELARIA PLANILHA TRT.xlsx` — planilha original arquivada.
+
+## ✅ Verificação do teto amadeirado (26/07)
+Jonathan questionou se o **teto** do nicho do descanso (visível no render) foi orçado. **Não é
+marcenaria** — o quadro de acabamentos do projeto lista **quatro tipos de forro, todos em gesso
+acartonado ou fibra mineral**; o teto marrom do render é *gesso acartonado com pintura acrílica fosca
+cor **Marrom Neve***. A ampliação do render confirma: parede com veio de madeira, teto liso e uniforme.
+Escopo de gesseiro + pintor. **Corretamente fora.**
+
+> Dependência registrada na proposta: a prancha 02 traz o detalhe *"FORRO — DET. REFORÇO PAINEL"*, com
+> **reforço em madeira embutido no drywall** para fixar os painéis. Esse reforço é do gesseiro e
+> **precisa estar pronto antes da nossa instalação**.
+
+## Proposta entregue (Fase 3)
+`build-trt3.py` → `proposta-trt3.html` → `proposta-trt3.pdf` (5 págs, Playwright).
+Layout premium (mesmo sistema do Apto CJ): capa com render do salão · copy Light Copy adaptada ao
+contexto B2B/obra pública · escopo dos 7 itens · especificação técnica com Hettich e garantia 10 anos ·
+investimento com preço fechado por item da planilha, **sem BDI**.
