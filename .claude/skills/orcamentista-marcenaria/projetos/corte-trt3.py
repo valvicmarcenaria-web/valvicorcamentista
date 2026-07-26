@@ -36,7 +36,7 @@ P_CORREDICA   = 83.00   # corrediça Hettich Quadro V6 (par)
 P_PUX_SLIM    = 30.00   # puxador slim inox 128mm preto (un)        [Jonathan 26/07]
 P_ESCAMOT     = 6000.0  # sistema escamoteável + DOBRADIÇAS das portas do armário alto
                         #                                           [Jonathan 26/07]
-P_FECHO_TOQUE = 22.00   # fecho-toque / push (un)                   [ESTIM.]
+P_FECHO_TOQUE = 90.00   # fecho-toque BLUM TIP-ON (un)              [Jonathan 26/07]
 P_LED_M       = 55.00   # fita LED COB 15W/m 12V 3000K + perfil (R$/m) [ESTIM.]
 P_GRELHA      = 380.0   # grelha ventilação inox 60cm preta (un)     [ESTIM.]
 
@@ -209,7 +209,7 @@ ferr = [
     (f'Dobradiça Hettich Sensys ({n_dobr} un)', n_dobr*P_SENSYS),
     (f'Puxador slim inox 128mm preto ({n_pux} un)', n_pux*P_PUX_SLIM),
     (f'Sistema escamoteável + dobradiças do armário alto', P_ESCAMOT),
-    (f'Fecho-toque shaft ({n_portas_shaft} un) [ESTIM.]', n_portas_shaft*P_FECHO_TOQUE),
+    (f'Fecho-toque BLUM TIP-ON — shaft ({n_portas_shaft} un)', n_portas_shaft*P_FECHO_TOQUE),
     (f'Fita LED COB 3000K + perfil ({ml_led:.2f} m) [ESTIM.]', ml_led*P_LED_M),
     (f'Grelha ventilação inox 60cm preta (1 un) [ESTIM.]', P_GRELHA),
     (f'Corrediças Hettich (2 pares, gavetas cozinha)', 2*P_CORREDICA),

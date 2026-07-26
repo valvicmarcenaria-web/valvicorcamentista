@@ -1,6 +1,6 @@
 # TRT 3ª Região — Espaço de Convivência dos Desembargadores (via MLQ Engenharia)
 
-> **Status:** 🟢 Fase 3 — proposta entregue. **R$ 73.900** (MC 45%, COM RT 10%).
+> **Status:** 🟢 Fase 3 — proposta entregue. **R$ 74.900** (MC 45%, COM RT 10%).
 > `proposta-trt3.pdf` — 5 págs, layout premium.
 > Fonte: e-mail `valvicmarcenaria@gmail.com`, thread `19f6c8098d3d239c` (16/07/2026) + ZIP com 20 anexos.
 
@@ -180,7 +180,10 @@ Fita nobre (Freijó/MOSS) 155,8 m · fita comum 168,5 m · filetagem 324,4 m →
 - **Sistema escamoteável + dobradiças do armário alto: R$ 6.000** (pacote fechado — as dobradiças
   dessas portas já estão dentro, não são contadas de novo no pacote Sensys).
 - **Puxador slim inox 128 mm preto: R$ 30/un** × 28 = R$ 840 (era estimado em R$ 95).
-- Efeito líquido: custo direto R$ 17.181 → **R$ 19.369**; investimento **R$ 65.500 → R$ 73.900**.
+- **Fecho-toque BLUM TIP-ON: R$ 90/un** × 4 = R$ 360 (era estimado em R$ 22).
+  ⚠️ **Blum é austríaca, não alemã** — a proposta especifica Hettich (Alemanha) nas dobradiças
+  e corrediças e Blum TIP-ON (Áustria) no fecho-toque, sem misturar as origens.
+- Efeito líquido: custo direto R$ 17.181 → **R$ 19.641**; investimento **R$ 65.500 → R$ 74.900**.
 
 ### Método de rateio revisado
 O pacote de R$ 6.000 concentrado no item 16.4 distorcia o rateio proporcional a material (o armário
@@ -196,9 +199,9 @@ camadas**: a **ferragem específica** de cada item entra direto (com o mesmo mar
 | 16.3 Buffet prateleira | R$ 2.250 | R$ 787 |
 | **16.4 Armário alto** | **R$ 29.400** | **R$ 23.116** |
 | 16.5 Painel ripado | R$ 6.450 | — |
-| 16.6 Painel shaft | R$ 3.700 | R$ 336 |
+| 16.6 Painel shaft | R$ 4.700 | R$ 1.373 |
 | 16.7 Painel descanso | R$ 10.800 | — |
-| **TOTAL** | **R$ 73.900** | |
+| **TOTAL** | **R$ 74.900** | |
 
 > ⚠️ **Ponto comercial a observar:** o item 16.4 sozinho responde por 40% do total, porque a ferragem
 > de R$ 6.000 recebe o markup cheio do motor (÷0,26216 → R$ 23,1k). É coerente com o nosso método, mas
