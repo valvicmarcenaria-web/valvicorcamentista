@@ -234,3 +234,36 @@ Escopo de gesseiro + pintor. **Corretamente fora.**
 Layout premium (mesmo sistema do Apto CJ): capa com render do salão · copy Light Copy adaptada ao
 contexto B2B/obra pública · escopo dos 7 itens · especificação técnica com Hettich e garantia 10 anos ·
 investimento com preço fechado por item da planilha, **sem BDI**.
+
+## Ajustes finais (26/07) — decisão do Jonathan
+
+**1 · Custo do sistema escamoteável mantido em R$ 6.000.**
+O valor de R$ 1.850 que aparece na tabela de ferragens acima era **estimativa minha, não cotação** —
+está sinalizado como `(estim. — COTAR)` e não deve ser usado. Ao ser questionado sobre a origem do
+número, não havia link de referência: eu tinha arbitrado. As referências reais pesquisadas depois
+(Hettich **KA 5740**, Häfele **Hawa Concepta 25/30/40/50**) confirmam a ordem de grandeza dos R$ 6.000
+— e o KA 5740 tem **limite de 1.800 mm de altura**, que não atende o armário de 2.300 mm, empurrando
+a solução para as linhas superiores. **Valor travado em R$ 6.000** (sistema + dobradiças das portas do
+armário alto), já embutido no `corte-trt3.py` como `P_ESCAMOT`.
+
+**2 · O escamoteável virou argumento de venda, não só linha de custo.**
+Como o item 16.4 responde por 40% do total, o recurso passou a ser **destacado na proposta** em quatro
+pontos, para que o preço seja lido como solução e não como excesso:
+
+| Onde | O que entrou |
+|---|---|
+| Pág. 3 · escopo | Badge **"porta escamoteável"** no título do 16.4 + descrição das **2 folhas de 157 cm** que giram, dobram e recolhem |
+| Pág. 3 · destaque | Bloco escuro **"A porta que some dentro do móvel"** — o armário fica em ponto de passagem; aberto, não avança sobre a circulação. Assume abertamente ser *"a ferragem mais cara da proposta"* |
+| Pág. 4 · técnico | Linha reforçada na tabela de especificação |
+| Pág. 5 · investimento | Citado no hero, no subtítulo do item 16.4 e na lista de **inclusos** |
+
+**3 · Pagamento: apenas valor à vista.**
+A proposta não apresenta parcelamento. **R$ 74.900 à vista**, sem BDI. Reflexos na pág. 5: hero passou
+a *"Grupo 16 — Marcenaria · valor à vista"*, linha de total virou *"Total do grupo 16 · à vista"* e a
+grade de condições ganhou um quarto card — **Pagamento / À vista** — antes de Prazo, Garantia e Validade.
+
+**Números inalterados:** MC 45% · RT 10% · divisor 0,26216 · custo direto R$ 19.640,74 ·
+**total R$ 74.900** · prazo 60–70 dias corridos · garantia 10 anos · validade 15 dias.
+
+### Ainda estimados (trocar se vier valor real)
+Fita LED COB (R$ 55/m) e grelha de ventilação inox 60 cm (R$ 380) — cerca de **R$ 586** somados.

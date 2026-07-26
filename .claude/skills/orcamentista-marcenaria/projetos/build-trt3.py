@@ -19,6 +19,15 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   .cover .veil{{background:linear-gradient(180deg,
       rgba(26,23,20,.92) 0%, rgba(26,23,20,.60) 22%, rgba(26,23,20,.34) 45%,
       rgba(26,23,20,.72) 74%, rgba(26,23,20,.95) 100%);}}
+  /* página de escopo — 4 blocos + destaque: compacta o respiro para caber sem quebrar */
+  .p-esc .h-sec{{font-size:22pt;}}
+  .p-esc .amb{{padding-top:2.6mm; margin-bottom:3.6mm;}}
+  .p-esc .amb ul{{line-height:1.5; margin-top:2mm;}}
+  .p-esc .amb li{{margin:.8mm 0;}}
+  /* destaque do sistema escamoteável — compacto, ao lado da foto */
+  .band{{height:100%; padding:4.5mm 5.5mm;}}
+  .band .t{{font-size:12.5pt;}}
+  .band .d{{font-size:8.5pt; line-height:1.55; margin-top:1.6mm;}}
 </style></head><body>
 
 <!-- ══════ 1. CAPA ══════ -->
@@ -83,11 +92,11 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
 </div></div>
 
 <!-- ══════ 3. ESCOPO ══════ -->
-<div class="page"><div class="pad">
+<div class="page p-esc"><div class="pad">
   <div class="eyebrow">Grupo 16 — Marcenaria</div>
   <div class="h-sec serif">Sete itens,<br><em>lidos do executivo.</em></div>
   <hr class="rule">
-  <p class="lead" style="margin-bottom:6mm;">Escopo conforme a planilha do TRT e o projeto executivo
+  <p class="lead" style="margin-bottom:4mm;">Escopo conforme a planilha do TRT e o projeto executivo
   de 26/03/2026. Fornecimento e instalação.</p>
 
   <div class="amb">
@@ -112,11 +121,11 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   </div>
 
   <div class="amb">
-    <div class="n">16.4 · Armário alto — salão de mesas / lavatório</div>
+    <div class="n">16.4 · Armário alto — salão de mesas / lavatório <span class="badge">porta escamoteável</span></div>
     <div class="s">MDF Arauco Louro Freijó · 87 × 230 × 70 cm</div>
     <ul>
-      <li>Porta frontal de <b>girar e correr com sistema de ferragem escamoteável</b> — a folha
-          recolhe para dentro do corpo.</li>
+      <li>Frente de <b>girar e correr com sistema de ferragem escamoteável</b> — <b>2 folhas de
+          157 cm</b> que giram, dobram e recolhem para dentro do corpo do móvel.</li>
       <li><b>Porta traseira de giro</b> (acesso pelos dois lados) e parte inferior cega.</li>
       <li>Prateleiras internas e puxadores slim inox preto.</li>
     </ul>
@@ -134,10 +143,18 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   </div>
 
   <div class="split2" style="margin-top:1mm;">
-    <div><div class="figure"><img src="{BUFFET}" alt=""></div>
+    <div style="flex:1.1;">
+      <div class="pull band" style="background:var(--deep);border-left-color:var(--gold-lt);">
+        <div class="t" style="color:#fff;">A porta que some dentro do móvel.</div>
+        <div class="d" style="color:#C6BFB2;">O armário alto fica num ponto de passagem. Suas
+        <b style="color:#F0E7D6;">2 folhas de 157 cm</b> giram, dobram e
+        <b style="color:#F0E7D6;">correm para dentro do corpo</b> — aberto, ele não avança sobre a
+        circulação. É a ferragem mais cara da proposta, já inclusa no item 16.4.</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;justify-content:flex-end;">
+      <div class="figure"><img src="{BUFFET}" alt="" style="height:31mm;object-fit:cover;object-position:center 62%;"></div>
       <div class="cap">Buffet · armário Moss e prateleira Louro Freijó</div></div>
-    <div><div class="figure"><img src="{DESC}" alt=""></div>
-      <div class="cap">Descanso · painel em L</div></div>
   </div>
 
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>TRT 3ª Região · MLQ Engenharia</span></div>
@@ -163,8 +180,8 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       <tr><td>Dobradiças</td><td><b>Hettich Sensys</b>, com amortecimento integrado ao corpo.
         Fecho suave em qualquer velocidade.</td></tr>
       <tr><td>Corrediças</td><td><b>Hettich Quadro V6</b> — abertura total, retorno silencioso, carga plena.</td></tr>
-      <tr><td>Porta escamoteável</td><td>Sistema de ferragem para porta de girar e correr que recolhe
-        para dentro do corpo do armário — item 16.4.</td></tr>
+      <tr><td>Porta escamoteável</td><td><b>Sistema de ferragem de girar e correr</b> — as folhas dobram
+        e recolhem para dentro do corpo do armário, liberando a passagem por completo. Item 16.4.</td></tr>
       <tr><td>Puxadores</td><td>Slim em inox 128 mm, cor preta, conforme especificação.</td></tr>
       <tr><td>Fecho-toque (shaft)</td><td><b>Blum TIP-ON</b> — sistema austríaco de abertura por toque,
         puramente mecânico (sem eletrônica). Painel do shaft sem nenhuma ferragem aparente.</td></tr>
@@ -205,12 +222,12 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   <hr class="rule" style="margin:8px 0 9px;">
 
   <div class="inv-hero">
-    <div class="k">Grupo 16 — Marcenaria · total</div>
+    <div class="k">Grupo 16 — Marcenaria · valor à vista</div>
     <div class="v serif">R$ 74.900</div>
     <div class="c">Fornecimento e instalação dos 7 itens de marcenaria, com ferragens Hettich e Blum,
-    iluminação LED e acabamento — por equipe própria Valvic.</div>
-    <div class="alt">Valores <b>já fechados</b>, sem BDI. A composição de BDI da licitação fica a
-    critério da MLQ Engenharia.</div>
+    sistema escamoteável, iluminação LED e acabamento — por equipe própria Valvic.</div>
+    <div class="alt">Preço fechado para <b>pagamento à vista</b>, <b>sem BDI</b>. A composição de BDI da
+    licitação fica a critério da MLQ Engenharia.</div>
   </div>
 
   <table class="item-tb">
@@ -223,11 +240,12 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       <tr><td class="nm">16.5 — Painel ripado<small>Salão de mesas / lavatório · MDF Louro Freijó</small></td><td class="r">R$ 6.450</td></tr>
       <tr><td class="nm">16.6 — Painel com portas fecho-toque<small>Shaft · MDF padrão fosco · fecho-toque Blum TIP-ON</small></td><td class="r">R$ 4.700</td></tr>
       <tr><td class="nm">16.7 — Painel<small>Descanso · MDF Louro Freijó</small></td><td class="r">R$ 10.800</td></tr>
-      <tr class="tot"><td>Total do grupo 16</td><td class="r">R$ 74.900</td></tr>
+      <tr class="tot"><td>Total do grupo 16 · à vista</td><td class="r">R$ 74.900</td></tr>
     </tbody>
   </table>
 
   <div class="terms">
+    <div class="term"><div class="k">Pagamento</div><div class="v">À vista</div></div>
     <div class="term"><div class="k">Prazo</div><div class="v">60 a 70<br>dias corridos</div></div>
     <div class="term"><div class="k">Garantia</div><div class="v">10 anos</div></div>
     <div class="term"><div class="k">Validade</div><div class="v">15 dias<br>corridos</div></div>
@@ -235,6 +253,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
 
   <div class="note">
     <b>Incluso:</b> fornecimento, produção e instalação dos 7 itens do grupo 16 · ferragens Hettich ·
+    <b>sistema de ferragem escamoteável do item 16.4</b> · fecho-toque Blum TIP-ON ·
     fita LED e perfil · grelha de ventilação em inox · puxadores conforme especificação.<br>
     <b>Não incluso:</b> grupos 10 (portas e janela), 12 (bancadas em granito/quartzito) e 17 (persianas)
     da planilha · espelhos do lavatório · forro (gesso/pintura) · pontos elétricos e hidráulicos ·
