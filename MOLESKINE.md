@@ -116,6 +116,10 @@ minerada pelo próprio especialista a partir de todo o histórico do repositóri
 - Escada de pagamento casada com o caixa do Rodrigo (+antecipação = +desconto; ex. K&F 40/30/30) + aviso de reajuste (julho/2026) como urgência; validade por perfil.
 - Objeções: acolher→reenquadrar→conduzir; silêncio após o preço; nunca dar desconto antes de pedido (e só por antecipação). Cliente recorrente = reconhecimento, não convencimento.
 
+**🔎 Inteligência competitiva:**
+- **[2026-07-26] Grupo Todeschini confirmado** — Todeschini, **Italínea** e **Criare** são o MESMO grupo (Todeschini S.A., Bento Gonçalves/RS). Prova estrutural: a financeira cativa **Todescredi** atende as 3 marcas. Escalonamento por bolso: Todeschini (1ª linha/premium-tradição) → Italínea (volume/custo-benefício, "maior rede da América Latina", garantia fábrica 5a) → Criare (2ª linha/design acessível; nasceu na Móveis Carraro em 2003, comprada pela Todeschini ~2007). Apoio: Carraro/Morata (fábricas), Avantti (escritório), Todesflor (madeira). ⚠️ **Homônimo:** o "Grupo Todeschini" de Curitiba (estacionamentos/alimentação) NÃO é o mesmo. Data de entrada da Italínea = a confirmar.
+- **Como a Valvic vence planejado industrial:** não competir por preço na mesma prateleira — **mudar de eixo: preço → categoria**. Eles vendem módulo industrial (40/60/80cm) adaptado ao espaço → geram fresta, arremate/tamponamento, catálogo fechado, ferragem de pacote. Nós construímos PARA o espaço (milímetro, sem fresta, acabamento ilimitado, ferragem de escolha). Fraquezas operacionais deles (Reclame Aqui): atraso de prazo, montagem terceirizada com defeito, assistência lenta. **Regra de ouro: NUNCA falar mal — acolher→reenquadrar→conduzir; fazer as perguntas que expõem o limite deles** ("quem monta? o acabamento da arquiteta está no catálogo? a ferragem é Blum/Hettich ou a do pacote?"). Fechar na **garantia por ferragem** (trunfo objetivo). Dossiê tático (interno, não enviar ao cliente): `closer-vendas/ferramentas/dossie-grupo-todeschini.html`.
+
 ---
 
 ### 🎨 Aprendizados — Stefan (Design & Identidade Visual)

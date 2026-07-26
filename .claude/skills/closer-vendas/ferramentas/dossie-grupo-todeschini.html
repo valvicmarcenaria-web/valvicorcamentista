@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dossiê Competitivo — Grupo Todeschini · Valvic (interno)</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --char:#232019;--char2:#1a1813;--cream:#EFE9DC;--latao:#B89456;--ouro:#D2AD65;
+  --sand:#F2ECDE;--bd:#DED6C7;--ink:#2B2823;--muted:#8a8073;
+  --red:#a5493a;--green:#5e7150;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--mono:'Space Mono',monospace;
+}
+body{background:#F6F2EA;color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.62}
+
+/* HEADER */
+.hd{background:linear-gradient(155deg,#232019,#141210);color:var(--cream);padding:56px 52px 46px;border-bottom:3px solid var(--latao)}
+.hd .tag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#141210;background:var(--latao);padding:4px 10px;border-radius:2px;margin-bottom:20px}
+.hd h1{font-family:var(--serif);font-size:clamp(34px,5vw,52px);font-weight:400;line-height:1.05;letter-spacing:.01em}
+.hd h1 em{font-style:italic;color:var(--ouro)}
+.hd .sub{font-size:14px;color:#a9a091;margin-top:14px;max-width:720px;line-height:1.7}
+.hd .conf{font-family:var(--mono);font-size:10.5px;color:#6f685c;margin-top:20px;letter-spacing:.03em}
+
+.w{max-width:1000px;margin:0 auto;padding:0 52px}
+.sec{padding:52px 0;border-bottom:1px solid var(--bd)}
+.sec:nth-child(even){background:#fff}
+.kick{font-family:var(--mono);font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--latao);margin-bottom:12px}
+h2{font-family:var(--serif);font-size:34px;font-weight:400;color:var(--ink);margin-bottom:8px;line-height:1.15}
+.h2sub{font-size:14px;color:var(--muted);margin-bottom:30px;max-width:700px}
+h3{font-family:var(--serif);font-size:22px;font-weight:500;color:var(--ink);margin:26px 0 10px}
+p{margin-bottom:12px}
+strong{color:var(--ink);font-weight:600}
+em{color:#7a5e30;font-style:italic}
+a{color:#7a5e30}
+
+/* CALLOUT */
+.note{border-left:3px solid var(--latao);background:rgba(184,148,86,.07);padding:16px 20px;margin:20px 0;font-size:13.5px;line-height:1.7;border-radius:0 3px 3px 0}
+.note.warn{border-left-color:var(--red);background:rgba(165,73,58,.06)}
+.note .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--latao);display:block;margin-bottom:5px}
+.note.warn .lbl{color:var(--red)}
+
+/* GROUP MAP */
+.map{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:16px;margin-top:22px}
+.brand{border:1px solid var(--bd);border-radius:6px;padding:22px;background:#fff;position:relative;overflow:hidden}
+.brand.core{border-color:var(--latao);box-shadow:0 0 0 1px rgba(184,148,86,.2)}
+.brand .bn{font-family:var(--serif);font-size:24px;font-weight:500;color:var(--ink)}
+.brand .pos{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--latao);margin:4px 0 12px}
+.brand .desc{font-size:12.5px;color:#5f574b;line-height:1.6}
+.brand ul{list-style:none;margin-top:10px}
+.brand li{font-size:12px;color:#5f574b;padding:3px 0 3px 14px;position:relative}
+.brand li::before{content:'·';position:absolute;left:2px;color:var(--latao);font-weight:700}
+
+/* POSITION AXIS */
+.axis{margin-top:26px;border:1px solid var(--bd);border-radius:6px;overflow:hidden;background:#fff}
+.axis .row{display:grid;grid-template-columns:150px 1fr;border-bottom:1px solid #eee5d6}
+.axis .row:last-child{border-bottom:none}
+.axis .row .tier{padding:14px 18px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;background:#faf6ee;color:var(--ink);display:flex;align-items:center;border-right:1px solid #eee5d6}
+.axis .row .brands{padding:13px 18px;font-size:13px;color:#4c453b;display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+.pill{display:inline-block;padding:3px 10px;border-radius:3px;font-size:11.5px;font-weight:500}
+.pill.g{background:#232019;color:var(--cream)}
+.pill.v{background:var(--latao);color:#141210;font-weight:600}
+.pill.o{background:#efe6d3;color:#6f5e38}
+
+/* BATTLE TABLE */
+.bt{width:100%;border-collapse:collapse;margin-top:20px;font-size:13px;background:#fff;border:1px solid var(--bd);border-radius:6px;overflow:hidden}
+.bt th{text-align:left;padding:13px 16px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--latao);background:#232019;border-bottom:1px solid var(--bd)}
+.bt td{padding:14px 16px;border-bottom:1px solid #eee5d6;vertical-align:top;line-height:1.55;color:#4c453b}
+.bt tr:last-child td{border-bottom:none}
+.bt td:first-child{font-weight:600;color:var(--ink);width:32%}
+.bt .fail{color:var(--red);font-weight:600}
+.bt .win{color:var(--green);font-weight:600}
+
+/* SCRIPT CARDS */
+.scripts{display:grid;gap:16px;margin-top:22px}
+.script{border:1px solid var(--bd);border-radius:6px;overflow:hidden;background:#fff}
+.script .q{background:#faf6ee;padding:14px 18px;font-size:13.5px;color:var(--ink);border-bottom:1px solid #eee5d6}
+.script .q b{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:4px}
+.script .a{padding:16px 18px;font-size:13.5px;line-height:1.7;color:#4c453b}
+.script .a b{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);display:block;margin-bottom:6px}
+.script .a .say{font-family:var(--serif);font-size:16px;font-style:italic;color:var(--ink);line-height:1.55;border-left:2px solid var(--latao);padding-left:14px;margin-top:4px}
+
+/* CHECKLIST */
+ol.play{list-style:none;counter-reset:p;margin-top:8px}
+ol.play li{counter-increment:p;display:flex;gap:14px;margin-bottom:12px;font-size:14px;line-height:1.6;color:#4c453b}
+ol.play li::before{content:counter(p);font-family:var(--serif);font-size:19px;color:var(--latao);flex-shrink:0;width:26px;font-weight:500}
+ol.play strong{color:var(--ink)}
+
+.srcs{font-size:11.5px;color:var(--muted);line-height:1.9}
+.srcs a{color:#7a5e30}
+footer{background:#141210;color:#6f685c;padding:22px 52px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+@media(max-width:820px){.axis .row{grid-template-columns:1fr}.bt td:first-child{width:auto}}
+@media print{body{background:#fff}.sec:nth-child(even){background:#fff}}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <span class="tag">Documento interno · não enviar ao cliente</span>
+  <h1>Dossiê Competitivo<br><em>Grupo Todeschini</em></h1>
+  <p class="sub">Inteligência de campo sobre Todeschini · Italínea · Criare — e o <strong style="color:#efe9dc">manual tático</strong> de como a Valvic vence contra planejados industriais no mesmo cliente.</p>
+  <p class="conf">Vitor · Vendas · Jul/2026 · Fontes públicas + Reclame Aqui · Preços exatos não são públicos (tratados por faixa)</p>
+</header>
+
+<!-- 1. CONFIRMAÇÃO -->
+<section class="sec"><div class="w">
+  <p class="kick">01 · Confirmação societária</p>
+  <h2>Sim — as três são o mesmo grupo</h2>
+  <p class="h2sub">A informação que chegou está correta. Confirmado por fonte estrutural, não por marketing.</p>
+  <p>Todeschini, Italínea e Criare pertencem à <strong>Todeschini S.A.</strong>, sediada em <strong>Bento Gonçalves (RS)</strong> — um dos maiores conglomerados de móveis planejados da América Latina.</p>
+  <div class="note">
+    <span class="lbl">A prova que não deixa dúvida</span>
+    A financeira cativa do grupo, a <strong>Todescredi</strong>, declara atender "lojistas e consumidores das marcas <strong>Todeschini, Criare e Italínea</strong>". Um grupo só monta um braço de crédito próprio para as marcas que <em>controla</em> — isso é confirmação societária, não parceria comercial. Somado à notícia setorial <em>"Todeschini reestrutura o grupo e junta Criare e Italínea"</em>, o quadro fecha.
+  </div>
+  <div class="note warn">
+    <span class="lbl">Cuidado — homônimo perigoso</span>
+    Existe um <strong>"Grupo Todeschini" em Curitiba</strong> (estacionamentos, alimentação, incorporação) que <strong>não é o mesmo</strong> — só coincidência de sobrenome. O grupo dos planejados é a <strong>Todeschini S.A. de Bento Gonçalves</strong>. Nunca misturar os dois numa conversa de venda.
+  </div>
+  <div class="note">
+    <span class="lbl">Pendente de fonte primária</span>
+    O ano exato em que a Italínea entrou no grupo e se foi aquisição ou fusão ainda não cravei em documento oficial (os sites do grupo bloqueiam leitura). Trato como hipótese, não como fato — não usar número inventado em conversa.
+  </div>
+</div></section>
+
+<!-- 2. MAPA DO GRUPO -->
+<section class="sec"><div class="w">
+  <p class="kick">02 · Anatomia do grupo</p>
+  <h2>Quem é quem no portfólio</h2>
+  <p class="h2sub">Três marcas de planejados escalonadas por preço + empresas de apoio que dão a eles uma vantagem estrutural: financiamento próprio.</p>
+  <div class="map">
+    <div class="brand core">
+      <div class="bn">Todeschini</div>
+      <div class="pos">1ª linha · premium-tradição</div>
+      <div class="desc">A marca-mãe, +80 anos. Vende durabilidade e "alto nível de personalização". Referência de status do setor.</div>
+      <ul><li>Ticket mais alto do grupo</li><li>Rede de lojas exclusivas</li><li>Público AAA/AA</li></ul>
+    </div>
+    <div class="brand core">
+      <div class="bn">Italínea</div>
+      <div class="pos">Volume · custo-benefício</div>
+      <div class="desc">"A maior rede de planejados da América Latina". Posicionada como o <em>"Corolla dos móveis"</em>: financiamento fácil, entrega rápida, menor taxa.</div>
+      <ul><li>Garantia de fábrica 5 anos</li><li>~1.200 pontos de venda</li><li>Público AB/B — massa</li></ul>
+    </div>
+    <div class="brand core">
+      <div class="bn">Criare</div>
+      <div class="pos">2ª linha · design acessível</div>
+      <div class="desc">Nasceu na Móveis Carraro (2003); Carraro comprada pela Todeschini (~2007). Vende "tendência de Milão" a preço mais baixo.</div>
+      <ul><li>Ticket de entrada do grupo</li><li>Estética atualizada</li><li>Público B/BC jovem</li></ul>
+    </div>
+    <div class="brand">
+      <div class="bn">Apoio</div>
+      <div class="pos">Retaguarda do grupo</div>
+      <div class="desc">A estrutura que sustenta as três marcas.</div>
+      <ul><li><strong>Todescredi</strong> — financeira própria</li><li><strong>Carraro / Morata</strong> — fábricas</li><li><strong>Avantti</strong> — móveis de escritório</li><li><strong>Todesflor</strong> — agroflorestal (madeira)</li></ul>
+    </div>
+  </div>
+  <div class="note">
+    <span class="lbl">Leitura estratégica</span>
+    O grupo cobre <strong>toda a pirâmide de renda com uma marca para cada bolso</strong> (Todeschini→Italínea→Criare) e ainda financia a própria venda (Todescredi) e controla matéria-prima (Todesflor). É uma máquina de <strong>escala e crédito</strong>. É exatamente por ser máquina que ela tem os limites que exploramos no bloco 04.
+  </div>
+</div></section>
+
+<!-- 3. ONDE ELES ESTÃO NO MAPA -->
+<section class="sec"><div class="w">
+  <p class="kick">03 · Mapa de posicionamento do setor</p>
+  <h2>Onde o grupo está — e onde a Valvic joga</h2>
+  <p class="h2sub">O grupo domina o médio e o médio-alto <em>industrial</em>. Acima dele há o luxo (Ornare/Florense). A Valvic não disputa a prateleira deles — joga noutra categoria: o <strong>sob medida artesanal</strong>.</p>
+  <div class="axis">
+    <div class="row"><div class="tier">Luxo global</div><div class="brands"><span class="pill o">Ornare</span><span class="pill o">Florense</span><span class="pill o">Dell Anno</span><span style="font-size:12px;color:#8a8073">— personalização total, arquitetos-assinatura, "Hermès do móvel"</span></div></div>
+    <div class="row"><div class="tier">Premium-tradição</div><div class="brands"><span class="pill g">Todeschini</span><span style="font-size:12px;color:#8a8073">— industrial de alto padrão, status de marca</span></div></div>
+    <div class="row"><div class="tier">Médio / volume</div><div class="brands"><span class="pill g">Italínea</span><span class="pill g">Criare</span><span style="font-size:12px;color:#8a8073">— custo-benefício, escala, financiamento</span></div></div>
+    <div class="row"><div class="tier">Sob medida real</div><div class="brands"><span class="pill v">VALVIC</span><span style="font-size:12px;color:#8a8073">— marcenaria artesanal, milímetro, ferragem de escolha, execução própria</span></div></div>
+  </div>
+  <div class="note">
+    <span class="lbl">O reposicionamento que ganha a conversa</span>
+    Nunca deixar o cliente comparar "Valvic × Todeschini" como se fossem a mesma coisa mais barata/cara. São <strong>categorias diferentes</strong>: eles vendem <em>módulo industrial montado no seu apê</em>; nós vendemos <em>móvel construído para aquele espaço, sem fresta, com a ferragem que você escolher</em>. Quem compara preço perde; quem compara categoria ganha.
+  </div>
+</div></section>
+
+<!-- 4. ONDE ELES FALHAM -->
+<section class="sec"><div class="w">
+  <p class="kick">04 · Onde o industrial falha</p>
+  <h2>Os pontos cegos da máquina</h2>
+  <p class="h2sub">Dois tipos de fraqueza: a <strong>estrutural</strong> (limite físico do modelo industrial, vale para as três marcas) e a <strong>operacional</strong> (o que os clientes reclamam na prática).</p>
+
+  <h3>Fraqueza estrutural — o limite da modulação</h3>
+  <table class="bt">
+    <tr><th>O modelo industrial deles</th><th>A consequência para o cliente</th></tr>
+    <tr><td>Módulos padrão (40 / 60 / 80 cm)</td><td><span class="fail">Frestas e vãos</span> quando a parede não bate com o módulo — acúmulo de pó, espaço morto</td></tr>
+    <tr><td>Ajuste por <strong>arremate / tamponamento</strong></td><td>Painéis de "tapa-buraco" para o móvel encostar na parede — <span class="fail">não é o milímetro, é o disfarce do milímetro</span></td></tr>
+    <tr><td>Catálogo fechado de acabamentos</td><td>A cor/textura que o arquiteto quer <span class="fail">pode simplesmente não existir</span> na tabela da fábrica</td></tr>
+    <tr><td>Ferragem da marca (pacote fechado)</td><td>Cliente <span class="fail">não escolhe</span> Blum/Hettich à vontade — leva o que o combo oferece</td></tr>
+    <tr><td>Projeto amarrado ao vendedor-projetista da loja</td><td>Quem desenha é funcionário de loja com meta de módulo, <span class="fail">não um marceneiro</span> pensando execução</td></tr>
+  </table>
+
+  <h3>Fraqueza operacional — o que reclamam (Reclame Aqui)</h3>
+  <table class="bt">
+    <tr><th>Reclamação recorrente</th><th>Nosso contraponto</th></tr>
+    <tr><td>Atraso de prazo de entrega</td><td class="win">Prazo confirmado com a produção antes de fechar — e cumprido</td></tr>
+    <tr><td>Montagem com defeito / assistência semanal para corrigir</td><td class="win">Equipe própria de montagem, não terceiro rotativo</td></tr>
+    <tr><td>Assistência técnica lenta / difícil de agendar</td><td class="win">Relação direta com quem produziu a peça</td></tr>
+    <tr><td>Gaveta de vidro quebrada, instalação desalinhada</td><td class="win">Conferência peça a peça antes de sair da fábrica</td></tr>
+  </table>
+  <div class="note warn">
+    <span class="lbl">Regra de ouro — nunca falar mal</span>
+    Não citamos Reclame Aqui, não xingamos concorrente, não falamos o nome deles com desdém. Isso queima a Valvic, não eles. Usamos o padrão: <strong>acolher → reenquadrar → conduzir</strong>. O cliente chega à conclusão sozinho quando <em>perguntamos</em> as coisas certas ("quem vai montar? é equipe da fábrica ou terceirizada? o acabamento que a arquiteta pediu está no catálogo deles?").
+  </div>
+</div></section>
+
+<!-- 5. ONDE A VALVIC GANHA -->
+<section class="sec"><div class="w">
+  <p class="kick">05 · Onde a Valvic ganha</p>
+  <h2>Os cinco terrenos onde somos imbatíveis</h2>
+  <table class="bt">
+    <tr><th>Terreno</th><th>Por que ganhamos (argumento de execução, não de projeto)</th></tr>
+    <tr><td>1. Aproveitamento do espaço</td><td>Construímos para <strong>aquele</strong> vão — do piso ao teto, parede a parede, <strong>sem fresta, sem arremate, sem módulo morto</strong>. Cada milímetro vira armazenamento.</td></tr>
+    <tr><td>2. Liberdade de acabamento</td><td>Não temos catálogo fechado. A cor, a textura, a lâmina, o detalhe de puxador em cava — <strong>se o arquiteto desenhou, a gente executa</strong>.</td></tr>
+    <tr><td>3. Ferragem de escolha</td><td>Blum (vitalícia), Hettich (10 anos), Hardt — o cliente escolhe o tier. A <strong>garantia deriva da ferragem</strong>, e a gente prova o porquê (ciclos de teste).</td></tr>
+    <tr><td>4. Execução artesanal + serralheria</td><td>Bancada suspensa de 3,5 m, estrutura metálica embutida, encaixe de precisão — coisas que <strong>a linha de módulo não faz</strong>. Vendemos essa competência.</td></tr>
+    <tr><td>5. Relação direta</td><td>O cliente fala com quem projeta, orça e produz — não com um balcão de loja com meta. <strong>Um dono por trás de cada projeto.</strong></td></tr>
+  </table>
+  <div class="note">
+    <span class="lbl">O enquadramento de valor</span>
+    Um planejado Todeschini de alto padrão pode custar <strong>tão caro quanto uma marcenaria sob medida</strong> — só que com módulo, fresta e catálogo fechado. Quando o ticket é parecido, a pergunta certa é: <em>"pelo mesmo investimento, você quer o módulo industrial adaptado ao seu espaço, ou o móvel construído para o seu espaço?"</em>
+  </div>
+</div></section>
+
+<!-- 6. SCRIPTS -->
+<section class="sec"><div class="w">
+  <p class="kick">06 · Discurso pronto</p>
+  <h2>Quando o cliente cita eles</h2>
+  <p class="h2sub">Respostas calibradas por objeção. Sempre acolher primeiro — nunca atropelar a marca que o cliente admira.</p>
+  <div class="scripts">
+    <div class="script">
+      <div class="q"><b>Objeção · marca conhecida</b>"Estou pensando na Todeschini também, é uma marca forte…"</div>
+      <div class="a"><b>Acolher → reenquadrar → conduzir</b>
+        <div class="say">"É uma marca séria mesmo, faz sentido você considerar. A diferença é de categoria: a Todeschini trabalha com módulos industriais que se adaptam ao seu espaço. A gente constrói o móvel para o seu espaço — sem fresta, sem tapa-buraco, com a ferragem que você escolher. Posso te mostrar num detalhe do seu projeto onde isso muda o resultado?"</div>
+      </div>
+    </div>
+    <div class="script">
+      <div class="q"><b>Objeção · preço (Italínea/Criare)</b>"Peguei um orçamento da Italínea bem mais barato."</div>
+      <div class="a"><b>Não baixar preço — subir a régua</b>
+        <div class="say">"Faz sentido, a Italínea é volume, ela ganha na escala. São coisas diferentes: ali você leva um produto de linha, com o acabamento do catálogo e ferragem do pacote. Aqui você leva um móvel sob medida, com a ferragem que dá a garantia longa e o acabamento exato que a sua arquiteta pediu. Vale eu te mostrar onde esse investimento a mais aparece no dia a dia?"</div>
+      </div>
+    </div>
+    <div class="script">
+      <div class="q"><b>Objeção · segurança "tem fábrica atrás"</b>"Mas eles têm uma indústria enorme por trás, e vocês?"</div>
+      <div class="a"><b>Transformar tamanho em distância</b>
+        <div class="say">"Justamente — numa indústria daquele tamanho, quem monta é uma equipe terceirizada rotativa e a assistência passa por um call center. Aqui, quem projeta, produz e responde depois é a mesma casa. Se algo precisar de ajuste, você fala com quem fez, não com um protocolo. Pra móvel que vai durar 15 anos, essa proximidade é o que mais pesa."</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 7. PLAYBOOK -->
+<section class="sec"><div class="w">
+  <p class="kick">07 · Playbook do Vitor</p>
+  <h2>O passo a passo na conversa</h2>
+  <ol class="play">
+    <li><strong>Nunca ataque a marca.</strong> Acolha ("é séria mesmo"). Cliente que admira a concorrente e ouve desdém defende a concorrente.</li>
+    <li><strong>Mude de eixo: preço → categoria.</strong> Não somos "mais caro que a Todeschini". Somos outra coisa: sob medida × módulo industrial.</li>
+    <li><strong>Faça a pergunta que expõe o limite deles</strong> sem citá-los: "quem vai montar, é equipe da fábrica?", "o acabamento que a arquiteta pediu está no catálogo?", "a ferragem é Blum/Hettich ou a do pacote?".</li>
+    <li><strong>Ancore no projeto real do cliente.</strong> Pegue um detalhe do próprio projeto (bancada longa, nicho de cor, vão irregular) e mostre onde o módulo falha e o sob medida entrega.</li>
+    <li><strong>Feche na garantia por ferragem.</strong> É o nosso trunfo objetivo: Blum vitalícia / Hettich 10 anos, com a prova técnica (ciclos de teste). Deriva do orçamento da Lavinia.</li>
+    <li><strong>Se o ticket for parecido</strong>, use o enquadramento: "pelo mesmo valor, módulo adaptado ou móvel construído pro seu espaço?".</li>
+  </ol>
+  <div class="note">
+    <span class="lbl">Handoff</span>
+    Este dossiê alimenta o discurso de fechamento. Os números de garantia saem do JSON da Lavinia (ferragem do projeto). Prazo, só com o Jonathan. Preço da concorrência que o cliente citar → registrar no CRM para calibrar a proposta com o Rodrigo.
+  </div>
+</div></section>
+
+<!-- FONTES -->
+<section class="sec"><div class="w">
+  <p class="kick">08 · Fontes</p>
+  <h2>De onde veio a inteligência</h2>
+  <p class="srcs">
+    · <a href="https://www.moveisdevalor.com.br/portal/todeschini-reestrutura-o-grupo-e-junta-criare-e-italinea">Todeschini reestrutura o grupo e junta Criare e Italínea — Móveis de Valor</a><br>
+    · <a href="https://www.todescredi.com.br/sobre-nos/">Todescredi — Sobre nós (atende as marcas Todeschini, Criare e Italínea)</a><br>
+    · <a href="https://www.2inside.com.br/single-post/2016/09/29/m%C3%B3veis-planejados-holdings-marcas-e-linhas">Móveis Planejados: Holdings, Marcas e Linhas — 2inside</a><br>
+    · <a href="https://projefacil.com.br/2026/01/08/as-melhores-marcas-de-moveis-planejados-do-brasil-o-ranking-definitivo-e-imparcial-2026/">Ranking das Melhores Marcas de Móveis Planejados 2026 — Projefácil</a><br>
+    · <a href="https://www.reclameaqui.com.br/empresa/moveis-todeschini/lista-reclamacoes/">Reclame Aqui — Móveis Todeschini (reclamações recorrentes)</a><br>
+    · <a href="https://www.calcme.com.br/blog/diferencas-entre-moveis-sob-medida-e-planejados/">Diferenças entre sob medida e planejados (modulação, frestas, arremate) — Calcme</a><br>
+    · <a href="https://portaldoarquiteto.com.br/empresas/criare/">Criare — Portal do Arquiteto</a>
+  </p>
+  <p style="font-size:12px;color:#8a8073;margin-top:16px">Confiança: estrutura do grupo = <strong>confirmada</strong> (multi-fonte). Posicionamento e reclamações = <strong>fontes públicas</strong>. Preços exatos = <strong>não públicos</strong>, tratados por faixa. Datas de aquisição da Italínea = <strong>a confirmar</strong>.</p>
+</div></section>
+
+<footer>
+  <span>VALVIC · Dossiê Competitivo Grupo Todeschini · uso interno</span>
+  <span>Vitor · Vendas · Jul/2026</span>
+</footer>
+
+</body>
+</html>
