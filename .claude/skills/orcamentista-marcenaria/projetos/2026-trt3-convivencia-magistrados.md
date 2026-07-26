@@ -1,7 +1,7 @@
 # TRT 3ª Região — Espaço de Convivência dos Desembargadores (via MLQ Engenharia)
 
-> **Status:** 🟡 Fase 1 concluída — material lido (20 anexos). **Aguardando decisões do Jonathan**
-> para iniciar o quantitativo.
+> **Status:** 🟢 Fase 2 — quantitativo fechado. **R$ 50.200** (MC 37%, COM RT 10%).
+> Pronto para virar proposta.
 > Fonte: e-mail `valvicmarcenaria@gmail.com`, thread `19f6c8098d3d239c` (16/07/2026) + ZIP com 20 anexos.
 
 ## 🔴 Descoberta principal: **isto é licitação pública**
@@ -98,6 +98,95 @@ células em azul)", campo **"Desconto da licitante (%)"** e uma aba de **BDI**. 
 - `ORÇAMENTO DE MOVELARIA PLANILHA TRT.xlsx` (abas *Modelo Proposta* e *BDI*).
 - 9 perspectivas (JPEG, 18/06/2026).
 
+## ✅ Decisões do Jonathan (26/07)
+1. **BDI fica com a MLQ** — entregamos **preço fechado de fornecedor**, sem abrir composição.
+2. **Só marcenaria** (grupo 16). Portas prontas, bancadas de pedra e persianas: outros fornecedores.
+3. **Shaft em MDF padrão fosco** — resolve a divergência Gianduia × cinza.
+4. **Espelhos do lavatório: FORA.**
+5. **COM RT** (10% sobre o líquido).
+6. **Prazo: 50 a 60 dias corridos.**
+7. MC 37% *(assumida — padrão dos últimos fechamentos; confirmar)*.
+
+## FASE 2 — Quantitativo (plano de corte real)
+
+### Medidas confirmadas nas pranchas
+| Item | Medidas lidas |
+|---|---|
+| 16.1 Cozinha inferior | **2 trechos de 169 cm** (4 portas de 42,3 cada) · h 70 · prof 60 |
+| 16.1 Cozinha aéreo | **L: 274 (6 mód. 45,7) + 257 (5 mód. 51,4) = 531 cm** · h 96 · prof 36 · 2 prat. int./módulo |
+| 16.1 Prateleira suspensa | prof 48,4 |
+| 16.2 Buffet armário | **372 cm** (7 mód. 54,3) · h 75 · prof 61 · vão inf. p/ ventilação da pista fria |
+| 16.3 Buffet prateleira | **4 tramos de 93,7 = 375 cm** · prof 45,4 · LED COB contínua |
+| 16.4 Armário alto | **87 × 230 × 70** · porta escamoteável + porta traseira de giro · inf. cega |
+| 16.5 Painel ripado | **173 × 230** · ripas verticais de 5,5 cm (23 un) |
+| 16.6 Painel shaft | **315 × 230** (4 mód. 78,8) · portas fecho-toque |
+| 16.7 Painel descanso | **L: 492,5 (4 mód. 123,1) + 266,5 = 759 cm** · h 230 · friso 1×1 |
+
+### Chapas — 30 no total
+| Material | Peças | Área | Chapas | Custo |
+|---|--:|--:|--:|--:|
+| MDF Branco fosco 15 mm | 60 | 26,11 m² | **7** | R$ 770 |
+| MDF Branco fosco 18 mm | 42 | 10,00 m² | **3** | R$ 375 |
+| MDF Branco 6 mm (fundos) | 5 | 10,25 m² | **3** | R$ 234 |
+| **MDF Arauco Louro Freijó 15 mm** | 47 | 35,68 m² | **9** | R$ 2.880 |
+| MDF Louro Freijó 6 mm | 1 | 1,93 m² | **1** | R$ 190 |
+| MDF Duratex MOSS 15 mm | 18 | 11,42 m² | **3** | R$ 780 |
+| MDF padrão fosco 15 mm (shaft) | 10 | 15,29 m² | **4** | R$ 440 |
+| **TOTAL** | | **110,7 m²** | **30** | **R$ 5.669** |
+
+> Nesting respeita as duas dimensões da chapa (275×185): o painel de 492,5 × 230 sai em
+> **4 peças de 123,1** — exatamente a modulação do projeto. Piso de aproveitamento de 80%.
+
+### Fita e ferragens
+Fita nobre (Freijó/MOSS) 155,8 m · fita comum 168,5 m · filetagem 324,4 m → **R$ 2.251**
+
+| Ferragem | Qtd | Custo |
+|---|--:|--:|
+| Dobradiça Hettich Sensys | 68 un | R$ 1.210 |
+| Puxador slim inox 128 mm preto *(estim.)* | 28 un | R$ 2.660 |
+| **Sistema porta escamoteável** *(estim. — COTAR)* | 1 kit | R$ 1.850 |
+| Fita LED COB 3000 K + perfil *(estim.)* | 3,75 m | R$ 206 |
+| Grelha ventilação inox 60 cm preta *(estim.)* | 1 un | R$ 380 |
+| Fecho-toque shaft + corrediças | — | R$ 254 |
+
+### Custo e preço — MC 37%, **COM RT 10%**
+| | |
+|---|--:|
+| Subtotal material | R$ 14.481 |
+| Logística | R$ 1.200 |
+| Visita técnica / compatibilização com a MLQ | R$ 600 |
+| Acesso de obra (içamento, horário restrito) | R$ 900 |
+| **Custo direto (fixedR)** | **R$ 17.181** |
+
+`a=16,2% · liqF=0,88 · b=14,3% (prog 0,8 + coord 1 + marc 2,5 + **RT 10**) · mc=37%` → divisor **0,34216**
+
+| | Valor |
+|---|--:|
+| **INVESTIMENTO TOTAL** | **R$ 50.214 → apresentar R$ 50.200** |
+| RT embutida (10% do líquido) | R$ 4.419 |
+
+### Alocação por item da planilha (grupo 16)
+| Item | % | Valor |
+|---|--:|--:|
+| 16.1 Cozinha | 33,1% | R$ 16.636 |
+| 16.2 Buffet armário | 8,2% | R$ 4.095 |
+| 16.3 Buffet prateleira | 4,0% | R$ 2.005 |
+| 16.4 Armário alto | 29,9% | R$ 15.032 |
+| 16.5 Painel ripado | 5,4% | R$ 2.701 |
+| 16.6 Painel shaft | 5,0% | R$ 2.527 |
+| 16.7 Painel descanso | 14,4% | R$ 7.218 |
+
+## ⚠️ A cotar antes de fechar
+- **Sistema de ferragem para porta escamoteável** (16.4) — é o item de maior incerteza. Estimei
+  R$ 1.850/kit; kits Hettich/Häfele desse tipo variam muito. **Cotar.**
+- **Puxador slim inox 128 mm preto** — 28 unidades a R$ 95 = R$ 2.660. Peso relevante; cotar.
+- **MDF Arauco Louro Freijó** e **Duratex Unicolores MOSS** — preços de linha premium estimados.
+- Grelha de ventilação inox 60 cm preta e fita LED COB.
+
 ## Próximo passo
-Com as decisões acima: quantitativo peça a peça dos 7 itens do grupo 16 → plano de corte →
-insumos/ferragens → precificação → preenchimento da planilha no formato exigido.
+Montar a proposta (preço fechado, sem abrir composição) e preencher a coluna de preço da planilha
+do TRT nos 7 itens do grupo 16.
+
+## Entregáveis
+- `corte-trt3.py` — levantamento auditável (peças, nesting, fita, ferragens, motor).
+- `trt3/ORÇAMENTO DE MOVELARIA PLANILHA TRT.xlsx` — planilha original arquivada.
