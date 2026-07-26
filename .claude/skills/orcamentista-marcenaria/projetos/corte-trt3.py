@@ -33,8 +33,9 @@ FILETAGEM  = 2.5     # R$/m aplicação
 # ferragens (referencias/ferragens.md + estimativas sinalizadas)
 P_SENSYS      = 17.80   # dobradiça Hettich Sensys
 P_CORREDICA   = 83.00   # corrediça Hettich Quadro V6 (par)
-P_PUX_SLIM    = 95.00   # puxador slim inox 128mm preto (un)        [ESTIM.]
-P_ESCAMOT     = 1850.0  # sistema ferragem porta escamoteável (kit) [ESTIM. — COTAR]
+P_PUX_SLIM    = 30.00   # puxador slim inox 128mm preto (un)        [Jonathan 26/07]
+P_ESCAMOT     = 6000.0  # sistema escamoteável + DOBRADIÇAS das portas do armário alto
+                        #                                           [Jonathan 26/07]
 P_FECHO_TOQUE = 22.00   # fecho-toque / push (un)                   [ESTIM.]
 P_LED_M       = 55.00   # fita LED COB 15W/m 12V 3000K + perfil (R$/m) [ESTIM.]
 P_GRELHA      = 380.0   # grelha ventilação inox 60cm preta (un)     [ESTIM.]
@@ -200,13 +201,14 @@ n_portas_coz  = 8 + 11            # inferior + aéreo
 n_portas_buf  = 7
 n_portas_alto = 2 + 1 + 1         # escamoteável(2) + inf cega + traseira
 n_portas_shaft= 4
-n_dobr = (n_portas_coz + n_portas_buf + n_portas_alto)*2 + n_portas_shaft*2
+# armário alto NÃO entra: suas dobradiças já estão no pacote de R$ 6.000
+n_dobr = (n_portas_coz + n_portas_buf)*2 + n_portas_shaft*2
 n_pux  = n_portas_coz + n_portas_buf + 2   # slim inox 128 preto (shaft = fecho-toque, sem puxador)
 ml_led = ML_LED_BUFFET
 ferr = [
     (f'Dobradiça Hettich Sensys ({n_dobr} un)', n_dobr*P_SENSYS),
-    (f'Puxador slim inox 128mm preto ({n_pux} un) [ESTIM.]', n_pux*P_PUX_SLIM),
-    (f'Sistema ferragem PORTA ESCAMOTEÁVEL (1 kit) [ESTIM. — COTAR]', P_ESCAMOT),
+    (f'Puxador slim inox 128mm preto ({n_pux} un)', n_pux*P_PUX_SLIM),
+    (f'Sistema escamoteável + dobradiças do armário alto', P_ESCAMOT),
     (f'Fecho-toque shaft ({n_portas_shaft} un) [ESTIM.]', n_portas_shaft*P_FECHO_TOQUE),
     (f'Fita LED COB 3000K + perfil ({ml_led:.2f} m) [ESTIM.]', ml_led*P_LED_M),
     (f'Grelha ventilação inox 60cm preta (1 un) [ESTIM.]', P_GRELHA),
@@ -250,17 +252,34 @@ print(f'   Divisor: 1 - {a:.3f} - {liqF:.2f}x{b:.3f} - {MC:.2f} = {div:.5f}')
 print(f'   >>> INVESTIMENTO TOTAL ..................... R$ {inv:>10,.2f}')
 print(f'   RT embutida (10% do líquido) ............... R$ {inv*liqF*RT:>10,.2f}')
 
-# alocação por item (proporcional ao custo direto de material)
+# ---------------------------------------------------------------- alocação
+# Rateio em duas camadas (senão a ferragem de R$6k distorce tudo):
+#   (a) ferragem ESPECÍFICA de cada item entra direto, com o mesmo markup;
+#   (b) todo o resto (chapa, fita, dobradiças gerais, logística, mão de obra)
+#       é rateado pelo ESFORÇO DE PRODUÇÃO — proxy = chapa + fita de cada item.
 print(f'\n6) ALOCAÇÃO POR ITEM DA PLANILHA (grupo 16)')
 print('-'*82)
-cst = defaultdict(float)
+ESPEC = {
+    '16.1 Cozinha':          P_GRELHA + 19*P_PUX_SLIM + 2*P_CORREDICA,
+    '16.2 Buffet armário':   7*P_PUX_SLIM,
+    '16.3 Buffet prateleira': ml_led*P_LED_M,
+    '16.4 Armário alto':     P_ESCAMOT + 2*P_PUX_SLIM,
+    '16.6 Painel shaft':     n_portas_shaft*P_FECHO_TOQUE,
+}
+esforco = defaultdict(float)
 for it, d, mat, c, l, q in pecas:
-    cst[it] += (c*l*q/10000)/CH_AREA*P[mat]
-cst['16.3 Buffet prateleira'] += ml_led*P_LED_M
-cst['16.4 Armário alto']      += P_ESCAMOT
-cst['16.6 Painel shaft']      += n_portas_shaft*P_FECHO_TOQUE
-cst['16.1 Cozinha']           += P_GRELHA + n_pux*P_PUX_SLIM*0.6
-tot = sum(cst.values())
-for it in sorted(cst):
-    print(f'   {it:<28} {cst[it]/tot*100:>5.1f}%  ->  R$ {inv*cst[it]/tot:>10,.2f}')
+    a = c*l*q/10000
+    esforco[it] += a/CH_AREA*P[mat]                      # chapa
+    esforco[it] += 2*(c+l)/100*q*0.5*(FITA_NOBRE if mat in ('FRJ15','FRJ6','MOSS15') else FITA_COMUM)
+tot_esf = sum(esforco.values())
+spec_tot = sum(ESPEC.values())
+resto = (fixedR - spec_tot)/div                          # bolo a ratear, já com markup
+print(f'   (ferragem específica: R$ {spec_tot:,.2f} · rateio de produção sobre o restante)')
+soma = 0.0
+for it in sorted(esforco):
+    v = resto*esforco[it]/tot_esf + ESPEC.get(it, 0)/div
+    soma += v
+    esp = f"  [inclui ferragem própria R$ {ESPEC[it]/div:,.0f}]" if it in ESPEC else ''
+    print(f'   {it:<26} R$ {v:>10,.2f}{esp}')
+print(f'   {"TOTAL":<26} R$ {soma:>10,.2f}')
 print(f'\n   MC verificada {MC*100:.1f}% · RT {RT*100:.0f}% · prazo 60–70 dias corridos.')

@@ -1,6 +1,6 @@
 # TRT 3ª Região — Espaço de Convivência dos Desembargadores (via MLQ Engenharia)
 
-> **Status:** 🟢 Fase 3 — proposta entregue. **R$ 65.500** (MC 45%, COM RT 10%).
+> **Status:** 🟢 Fase 3 — proposta entregue. **R$ 73.900** (MC 45%, COM RT 10%).
 > `proposta-trt3.pdf` — 5 págs, layout premium.
 > Fonte: e-mail `valvicmarcenaria@gmail.com`, thread `19f6c8098d3d239c` (16/07/2026) + ZIP com 20 anexos.
 
@@ -176,10 +176,34 @@ Fita nobre (Freijó/MOSS) 155,8 m · fita comum 168,5 m · filetagem 324,4 m →
 | 16.6 Painel shaft | 5,0% | R$ 3.300 |
 | 16.7 Painel descanso | 14,4% | R$ 9.400 |
 
-## ⚠️ A cotar antes de fechar
-- **Sistema de ferragem para porta escamoteável** (16.4) — é o item de maior incerteza. Estimei
-  R$ 1.850/kit; kits Hettich/Häfele desse tipo variam muito. **Cotar.**
-- **Puxador slim inox 128 mm preto** — 28 unidades a R$ 95 = R$ 2.660. Peso relevante; cotar.
+## ✅ Ferragens cotadas (Jonathan, 26/07)
+- **Sistema escamoteável + dobradiças do armário alto: R$ 6.000** (pacote fechado — as dobradiças
+  dessas portas já estão dentro, não são contadas de novo no pacote Sensys).
+- **Puxador slim inox 128 mm preto: R$ 30/un** × 28 = R$ 840 (era estimado em R$ 95).
+- Efeito líquido: custo direto R$ 17.181 → **R$ 19.369**; investimento **R$ 65.500 → R$ 73.900**.
+
+### Método de rateio revisado
+O pacote de R$ 6.000 concentrado no item 16.4 distorcia o rateio proporcional a material (o armário
+alto ia a 58% do total e a cozinha inteira caía para R$ 10,8k). Passou a valer um **rateio em duas
+camadas**: a **ferragem específica** de cada item entra direto (com o mesmo markup) e **todo o resto**
+— chapa, fita, dobradiças gerais, logística e mão de obra — é rateado pelo **esforço de produção**
+(chapa + fita por item).
+
+| Item | Preço | Ferragem própria embutida |
+|---|--:|--:|
+| 16.1 Cozinha | R$ 13.300 | R$ 4.257 |
+| 16.2 Buffet armário | R$ 8.000 | R$ 801 |
+| 16.3 Buffet prateleira | R$ 2.250 | R$ 787 |
+| **16.4 Armário alto** | **R$ 29.400** | **R$ 23.116** |
+| 16.5 Painel ripado | R$ 6.450 | — |
+| 16.6 Painel shaft | R$ 3.700 | R$ 336 |
+| 16.7 Painel descanso | R$ 10.800 | — |
+| **TOTAL** | **R$ 73.900** | |
+
+> ⚠️ **Ponto comercial a observar:** o item 16.4 sozinho responde por 40% do total, porque a ferragem
+> de R$ 6.000 recebe o markup cheio do motor (÷0,26216 → R$ 23,1k). É coerente com o nosso método, mas
+> numa concorrência que compara **linha a linha** essa linha fica exposta. Se a MLQ questionar, a saída
+> é repassar a ferragem com markup reduzido e redistribuir — decisão do Jonathan/Rodrigo.
 - **MDF Arauco Louro Freijó** e **Duratex Unicolores MOSS** — preços de linha premium estimados.
 - Grelha de ventilação inox 60 cm preta e fita LED COB.
 

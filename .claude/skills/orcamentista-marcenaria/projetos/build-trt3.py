@@ -203,7 +203,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
 
   <div class="inv-hero">
     <div class="k">Grupo 16 — Marcenaria · total</div>
-    <div class="v serif">R$ 65.500</div>
+    <div class="v serif">R$ 73.900</div>
     <div class="c">Fornecimento e instalação dos 7 itens de marcenaria, com ferragens Hettich,
     iluminação LED e acabamento — por equipe própria Valvic.</div>
     <div class="alt">Valores <b>já fechados</b>, sem BDI. A composição de BDI da licitação fica a
@@ -213,14 +213,14 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   <table class="item-tb">
     <thead><tr><th>Item da planilha</th><th class="r">Preço</th></tr></thead>
     <tbody>
-      <tr><td class="nm">16.1 — Armário superior e inferior + prateleira suspensa<small>Cozinha · MDF branco</small></td><td class="r">R$ 21.700</td></tr>
-      <tr><td class="nm">16.2 — Armário sob bancada<small>Buffet · MDF Duratex Moss</small></td><td class="r">R$ 5.350</td></tr>
-      <tr><td class="nm">16.3 — Prateleira superior com LED<small>Buffet · MDF Louro Freijó</small></td><td class="r">R$ 2.600</td></tr>
-      <tr><td class="nm">16.4 — Armário alto com porta escamoteável<small>Salão de mesas / lavatório · MDF Louro Freijó</small></td><td class="r">R$ 19.600</td></tr>
-      <tr><td class="nm">16.5 — Painel ripado<small>Salão de mesas / lavatório · MDF Louro Freijó</small></td><td class="r">R$ 3.550</td></tr>
-      <tr><td class="nm">16.6 — Painel com portas fecho-toque<small>Shaft · MDF padrão fosco</small></td><td class="r">R$ 3.300</td></tr>
-      <tr><td class="nm">16.7 — Painel<small>Descanso · MDF Louro Freijó</small></td><td class="r">R$ 9.400</td></tr>
-      <tr class="tot"><td>Total do grupo 16</td><td class="r">R$ 65.500</td></tr>
+      <tr><td class="nm">16.1 — Armário superior e inferior + prateleira suspensa<small>Cozinha · MDF branco</small></td><td class="r">R$ 13.300</td></tr>
+      <tr><td class="nm">16.2 — Armário sob bancada<small>Buffet · MDF Duratex Moss</small></td><td class="r">R$ 8.000</td></tr>
+      <tr><td class="nm">16.3 — Prateleira superior com LED<small>Buffet · MDF Louro Freijó</small></td><td class="r">R$ 2.250</td></tr>
+      <tr><td class="nm">16.4 — Armário alto com porta escamoteável<small>Salão de mesas / lavatório · MDF Louro Freijó · inclui o sistema de ferragem escamoteável</small></td><td class="r">R$ 29.400</td></tr>
+      <tr><td class="nm">16.5 — Painel ripado<small>Salão de mesas / lavatório · MDF Louro Freijó</small></td><td class="r">R$ 6.450</td></tr>
+      <tr><td class="nm">16.6 — Painel com portas fecho-toque<small>Shaft · MDF padrão fosco</small></td><td class="r">R$ 3.700</td></tr>
+      <tr><td class="nm">16.7 — Painel<small>Descanso · MDF Louro Freijó</small></td><td class="r">R$ 10.800</td></tr>
+      <tr class="tot"><td>Total do grupo 16</td><td class="r">R$ 73.900</td></tr>
     </tbody>
   </table>
 
