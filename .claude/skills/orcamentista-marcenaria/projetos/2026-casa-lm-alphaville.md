@@ -1,7 +1,8 @@
 # Casa L&M — Alphaville (alto padrão)
 
 > **Status:** 🟡 Fase 2 — quantitativo calculado, preço preliminar.
-> **R$ 204.065** (MC 37%, COM RT 10%) · 70 chapas · 15 móveis.
+> **R$ 219.938** (MC 37%, COM RT 10%) · 70 chapas · 15 móveis.
+> Vidro das portas do closet/roupeiro **cotado** (Renolfh, 28/07).
 > Fonte: `Caderno_Tecnico.pdf` — 40 pranchas A2, 07/2026.
 > Cálculo auditável: `corte-casa-lm.py`.
 
@@ -79,7 +80,7 @@ Fita: 702 m nobre + 204 m comum → R$ 2.514 · filetagem 906 m → R$ 2.264.
 | Ganchos de vassoura (despensa) | 1 | 90 | 90 |
 | Fita LED 3000K/4000K + perfil + lente difusora | 20,9 m | 150 | 3.132 |
 | **Chapa metálica perfurada 3mm preta** *(gaveta 4 despensa)* | 1,30 m² | **450** | 585 |
-| **Portas em vidro reflecta** *(roupeiro + closet)* | 15,56 m² | 700 | **10.889** |
+| **Portas em vidro reflecta** — cotação Renolfh, 8 folhas | 14,71 m² | ~1.110 | **16.320** |
 | Serralheria — estrutura metálica cinza grafite | 3 | 300 | 900 |
 
 ## Fechamento — MC 37% · COM RT 10%
@@ -88,23 +89,23 @@ Fita: 702 m nobre + 204 m comum → R$ 2.514 · filetagem 906 m → R$ 2.264.
 |---|--:|
 | Chapas | R$ 29.220 |
 | Fita + filetagem | R$ 4.778 |
-| Ferragens / LED / vidro / serralheria | R$ 28.821 |
+| Ferragens / LED / vidro / serralheria | R$ 34.252 |
 | Consumíveis e embalagem (6%) | R$ 1.904 |
-| **Subtotal material** | **R$ 64.723** |
+| **Subtotal material** | **R$ 70.154** |
 | Logística (Alphaville, 2 viagens) | R$ 2.400 |
 | Visita técnica / medições in loco | R$ 900 |
 | Serviço sobre o existente (reorganizar módulos + remover gaveta) | R$ 1.800 |
-| **CUSTO DIRETO** | **R$ 69.823** |
+| **CUSTO DIRETO** | **R$ 75.254** |
 | divisor = 1 − 0,162 − 0,88×0,143 − 0,37 | 0,34216 |
-| **INVESTIMENTO** | **R$ 204.065** |
+| **INVESTIMENTO** | **R$ 219.938** |
 
 ### Preço por móvel
 | Móvel | Preço |
 |---|--:|
-| 9 · Closet suíte | R$ 80.770 |
+| 9 · Closet suíte | R$ 92.394 |
 | 1 · Painel sala jantar | R$ 26.383 |
 | 3 · Armário cozinha | R$ 23.838 |
-| 7 · Roupeiro suíte | R$ 16.310 |
+| 7 · Roupeiro suíte | R$ 20.559 |
 | 8 · Sapateira suíte | R$ 14.556 |
 | 5 · Despensa baixo | R$ 8.651 |
 | 2 · Aéreo cozinha | R$ 6.943 |
@@ -115,7 +116,7 @@ Fita: 702 m nobre + 204 m comum → R$ 2.514 · filetagem 906 m → R$ 2.264.
 | 10 · Banho suíte | R$ 3.178 |
 | 14 · Lavabo | R$ 3.077 |
 | 4 · Despensa alto | R$ 2.371 |
-| **TOTAL** | **R$ 204.065** |
+| **TOTAL** | **R$ 219.938** |
 
 ## 🔶 Pontos abertos — resolver antes de fechar a proposta
 
@@ -135,3 +136,27 @@ Fita: 702 m nobre + 204 m comum → R$ 2.514 · filetagem 906 m → R$ 2.264.
 
 ## Entregáveis
 - `corte-casa-lm.py` — levantamento auditável (peças, nesting, fita, ferragens, motor).
+
+## ✅ Cotação das portas de vidro — Renolfh (28/07/2026)
+
+Preço **por folha**, todas com 271 cm de altura:
+
+| Elevação | Qtd | Largura | R$/folha | R$/m² | Total |
+|---|--:|--:|--:|--:|--:|
+| Closet V3 | 2 | 77,2 | 2.270 | 1.085 | 4.540 |
+| Closet V5 | 2 | 69,7 | 2.070 | 1.096 | 4.140 |
+| Closet V4 | 2 | 59,5 | 1.860 | 1.153 | 3.720 |
+| Roupeiro  | 2 | 65,0 | 1.960 | 1.113 | 3.920 |
+| **Total** | **8** | | | **~1.110** | **16.320** |
+
+**Impacto:** eu havia estimado R$ 700/m². O real é **~R$ 1.110/m², 58% acima**.
+Custo direto subiu R$ 6.023 e o investimento foi de R$ 202.335 → **R$ 219.938**.
+Fica o registro para a base: porta em **vidro reflecta com estrutura metálica**
+não se compara a porta com perfil de alumínio (ref. Kenia&Fábio, ~R$ 660/m²).
+
+**Ainda em aberto no vidro:**
+- A estrutura metálica cinza grafite está inclusa nesse preço? Mantive à parte
+  R$ 900 de serralheria até confirmar — se estiver inclusa, sai do custo.
+- Instalação, frete e prazo entram no valor?
+- Closet V1: se for conjunto separado, +2 folhas ≈ **R$ 3.740** de custo
+  (≈ R$ 10.900 no preço final).

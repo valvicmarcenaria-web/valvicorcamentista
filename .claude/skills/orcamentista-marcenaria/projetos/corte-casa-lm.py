@@ -47,8 +47,22 @@ P_LED_M        = 150.00   # fita + perfil + lente difusora + usinagem, por metro
 P_CABIDEIRO    = 120.00   # cabideiro em metal preto/grafite
 P_GANCHOS      = 90.00    # conjunto ganchos vassouras (despensa)
 P_PERFURADA_M2 = 450.00   # [Jonathan] chapa metálica perfurada 3mm preta
-P_VIDRO_M2     = 700.00   # porta em vidro reflecta c/ perfil (ref. Kenia&Fábio ~660/m²)
 P_SERRALHERIA  = 300.00   # serviço base — estrutura metálica cinza grafite
+
+# Portas em vidro reflecta — COTAÇÃO RENOLFH (preço por folha, todas h=271)
+#   consistência conferida: R$ 1.085 a 1.153/m² (variação de 6%)
+VIDRO = [                        # (elevação, qtd, larg_m, preço/folha)
+    ('closet V3',   2, 0.772, 2270.00),   # R$ 1.085/m²
+    ('closet V5',   2, 0.697, 2070.00),   # R$ 1.096/m²
+    ('closet V4',   2, 0.595, 1860.00),   # R$ 1.153/m²
+    ('roupeiro',    2, 0.650, 1960.00),   # R$ 1.113/m²
+]
+# ⚠ closet V1 (2 folhas de 0,60 x 2,71) fora — ver nota do cabeçalho.
+#   Se entrar, ~R$ 1.870/folha pela mesma curva → +R$ 3.740.
+custo_vidro_closet   = sum(q*p for n, q, l, p in VIDRO if n.startswith('closet'))
+custo_vidro_roupeiro = sum(q*p for n, q, l, p in VIDRO if n == 'roupeiro')
+custo_vidro          = custo_vidro_closet + custo_vidro_roupeiro
+m2_vidro             = sum(q*l*2.71 for n, q, l, p in VIDRO)
 
 # ============================================================== estrutura dados
 PECAS = []            # (item, desc, mat, comp, larg, qtd)
@@ -307,13 +321,6 @@ n_prat_corr    = 6                                    # cozinha (telescópica)
 ml_led = 2.67 + (1.60*4 + 1.24*3 + 1.60*3) + (1.82 + 1.47)
 # chapa perfurada — gaveta 4 da despensa (3 un): fundo + 2 faces longas + 2 curtas
 m2_perf = 3 * (0.658*0.265 + 2*0.658*0.145 + 2*0.235*0.145)
-# vidro reflecta — medidas CONFERIDAS nas elevações (todas h=271):
-#   roupeiro (pr.22)  2 x 65,0    · closet V3 (pr.23) 2 x 77,2
-#   closet V4 (pr.24) 2 x 59,5    · closet V5 (pr.24) 2 x 69,7
-# ⚠ closet V1 (pr.23) mostra mais 2 portas num vão de 120. Pode ser o MESMO
-#   conjunto do V4 (124 com estrutura) visto por fora. Orçado SEM o V1;
-#   se for conjunto separado, somar 2 x 60 x 271 = +3,25 m².
-m2_vidro = 2*0.65*2.71 + (2*0.772 + 2*0.595 + 2*0.697)*2.71
 
 FERR = [
     (f'Dobradiça Hettich Sensys Black',        n_dobr,          P_DOBR_BLACK),
@@ -328,7 +335,7 @@ FERR = [
     (f'Ganchos vassoura (conjunto)',           1,               P_GANCHOS),
     (f'Fita LED + perfil + lente ({ml_led:.1f} m)', 1,          ml_led*P_LED_M),
     (f'Chapa metálica perfurada 3mm ({m2_perf:.2f} m²)', 1,     m2_perf*P_PERFURADA_M2),
-    (f'Portas em vidro reflecta ({m2_vidro:.2f} m²)',    1,     m2_vidro*P_VIDRO_M2),
+    (f'Portas vidro reflecta — Renolfh ({m2_vidro:.2f} m², 8 folhas)', 1, custo_vidro),
     (f'Serralheria — estrutura metálica closet', 3,             P_SERRALHERIA),
 ]
 print('\n' + '═'*74)
@@ -387,9 +394,9 @@ tot_esf = sum(esforco.values())
 ESPEC = {
     '1 Painel sala jantar':      P_PIVO + P_FECH_ROLETE + P_PUX_ALCA_60,
     '5 Despensa · armário baixo': m2_perf*P_PERFURADA_M2,
-    '7 Suíte · roupeiro':        2*0.65*2.71*P_VIDRO_M2 + 2*P_PUX_METALICO,
+    '7 Suíte · roupeiro':        custo_vidro_roupeiro + 2*P_PUX_METALICO,
     '8 Suíte · sapateira':       13*P_CORR_OCULTA + 2.67*P_LED_M,
-    '9 Suíte · closet':          (2*0.772+2*0.595+2*0.697)*2.71*P_VIDRO_M2 + 3*P_SERRALHERIA
+    '9 Suíte · closet':          custo_vidro_closet + 3*P_SERRALHERIA
                                  + 20*P_CORR_OCULTA + 5*P_CABIDEIRO,
 }
 spec_tot = sum(ESPEC.values())
