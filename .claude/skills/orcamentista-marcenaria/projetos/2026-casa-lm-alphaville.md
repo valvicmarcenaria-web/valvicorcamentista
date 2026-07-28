@@ -1,7 +1,7 @@
 # Casa L&M — Alphaville (alto padrão)
 
 > **Status:** 🟡 Fase 2 — quantitativo calculado, preço preliminar.
-> **R$ 219.938** (MC 37%, COM RT 10%) · 70 chapas · 15 móveis.
+> **R$ 214.268** (MC 37%, COM RT 10%) · 70 chapas · 15 móveis.
 > Vidro das portas do closet/roupeiro **cotado** (Renolfh, 28/07).
 > Fonte: `Caderno_Tecnico.pdf` — 40 pranchas A2, 07/2026.
 > Cálculo auditável: `corte-casa-lm.py`.
@@ -160,3 +160,40 @@ não se compara a porta com perfil de alumínio (ref. Kenia&Fábio, ~R$ 660/m²)
 - Instalação, frete e prazo entram no valor?
 - Closet V1: se for conjunto separado, +2 folhas ≈ **R$ 3.740** de custo
   (≈ R$ 10.900 no preço final).
+
+## Ajustes do Jonathan (28/07) — pós-cotação
+
+**1 · Serralheria do closet sai do custo.** A estrutura metálica cinza grafite já
+vem **embutida no preço por folha do Renolfh**. Removidos os R$ 900 que eu havia
+provisionado à parte.
+
+**2 · Bandejas da sapateira vão de corrediça telescópica.** Não existe corrediça
+**oculta** de 25 cm — as 13 bandejas têm **24,5 cm de profundidade**. Trocadas de
+oculta (R$ 120/par) para telescópica (R$ 40/par): −R$ 1.040 de custo.
+As **20 gavetas do closet continuam ocultas** — têm 51,5 e 53,5 cm, profundidade
+onde a oculta existe e é o padrão do projeto.
+
+**Impacto:** custo direto −R$ 1.940 · investimento **R$ 219.938 → R$ 214.268**.
+Sapateira R$ 14.001 → **R$ 10.961** · closet R$ 97.697 → **R$ 95.066**.
+
+> 🔶 **Mesmo problema, item vizinho:** as **5 bandejas do armário piso-teto da
+> despensa** têm **28 cm** de profundidade e seguem lançadas como oculta. Está no
+> limite do que existe (Hettich Quadro começa em 270 mm). Confirmar se troco
+> também — seriam −R$ 400 de custo (≈ −R$ 1.170 no preço).
+
+### Composição do closet — custo direto R$ 30.439 → preço R$ 95.066
+
+| Bloco | Custo | % |
+|---|--:|--:|
+| Ferragens e terceirizados | R$ 18.178 | 60% |
+| Chapas (Carvalho Brun 15/18/6) | R$ 8.991 | 30% |
+| Rateio de custos gerais | R$ 2.063 | 7% |
+| Fita + filetagem | R$ 1.207 | 4% |
+
+| Ferragem / terceirizado | Custo |
+|---|--:|
+| Portas em vidro reflecta — Renolfh, 6 folhas *(estrutura metálica inclusa)* | 12.400 |
+| Corrediça oculta Hettich Quadro — 20 pares | 2.400 |
+| Fita LED 3000K/4000K + perfil — 14,92 m | 2.238 |
+| Cabideiro em metal preto/grafite — 5 un | 600 |
+| Puxador metálico cinza grafite — 6 un | 540 |

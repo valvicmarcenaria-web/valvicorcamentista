@@ -47,7 +47,8 @@ P_LED_M        = 150.00   # fita + perfil + lente difusora + usinagem, por metro
 P_CABIDEIRO    = 120.00   # cabideiro em metal preto/grafite
 P_GANCHOS      = 90.00    # conjunto ganchos vassouras (despensa)
 P_PERFURADA_M2 = 450.00   # [Jonathan] chapa metálica perfurada 3mm preta
-P_SERRALHERIA  = 300.00   # serviço base — estrutura metálica cinza grafite
+# Serralheria do closet SAI do custo: [Jonathan 28/07] a estrutura metálica cinza
+# grafite já vem embutida no preço por folha do Renolfh.
 
 # Portas em vidro reflecta — COTAÇÃO RENOLFH (preço por folha, todas h=271)
 #   consistência conferida: R$ 1.085 a 1.153/m² (variação de 6%)
@@ -313,8 +314,11 @@ PORTAS = [
 ]
 n_dobr = sum(q*(2 if h <= 1.5 else 3 if h <= 2.2 else 4) for _, q, h in PORTAS)
 n_dobr += 2   # porta tempero
-GAVETAS_TELESC = 4 + 2 + 6 + 3 + 2 + 2 + 2 + 2 + 2   # cozinha/despensa/banheiros/lavabo
-GAVETAS_OCULTA = 20 + 13 + 5 + 3                     # closet + sapateira + piso-teto + banho suíte
+# [Jonathan 28/07] não existe corrediça OCULTA de 25 cm — as 13 bandejas da
+# sapateira têm 24,5 cm de profundidade, então vão de telescópica.
+GAVETAS_TELESC = (4 + 2 + 6 + 3 + 2 + 2 + 2 + 2 + 2   # cozinha/despensa/banheiros/lavabo
+                  + 13)                                # + bandejas da sapateira
+GAVETAS_OCULTA = 20 + 5 + 3                            # closet + piso-teto + banho suíte
 n_prat_corr    = 6                                    # cozinha (telescópica)
 
 # LED: sapateira 2,67m vertical · closet prateleiras iluminadas · aéreo cozinha
@@ -336,7 +340,6 @@ FERR = [
     (f'Fita LED + perfil + lente ({ml_led:.1f} m)', 1,          ml_led*P_LED_M),
     (f'Chapa metálica perfurada 3mm ({m2_perf:.2f} m²)', 1,     m2_perf*P_PERFURADA_M2),
     (f'Portas vidro reflecta — Renolfh ({m2_vidro:.2f} m², 8 folhas)', 1, custo_vidro),
-    (f'Serralheria — estrutura metálica closet', 3,             P_SERRALHERIA),
 ]
 print('\n' + '═'*74)
 print('FERRAGENS, ILUMINAÇÃO E TERCEIRIZADOS')
@@ -402,8 +405,8 @@ ESPEC = {
     '2 Aéreo cozinha (L)':       ml_led_aereo*P_LED_M,
     '5 Despensa · armário baixo': m2_perf*P_PERFURADA_M2,
     '7 Suíte · roupeiro':        custo_vidro_roupeiro + 2*P_PUX_METALICO,
-    '8 Suíte · sapateira':       13*P_CORR_OCULTA + ml_led_sapat*P_LED_M,
-    '9 Suíte · closet':          custo_vidro_closet + 3*P_SERRALHERIA
+    '8 Suíte · sapateira':       13*P_CORR_TELESC + ml_led_sapat*P_LED_M,
+    '9 Suíte · closet':          custo_vidro_closet
                                  + 20*P_CORR_OCULTA + 5*P_CABIDEIRO
                                  + 6*P_PUX_METALICO + ml_led_closet*P_LED_M,
 }
@@ -461,7 +464,6 @@ DET = [
     ('Portas em vidro reflecta — Renolfh (6 folhas)', custo_vidro_closet),
     ('Corrediça oculta Hettich Quadro — 20 pares',    20*P_CORR_OCULTA),
     ('Fita LED 3000K/4000K + perfil (%.2f m)' % ml_led_closet, ml_led_closet*P_LED_M),
-    ('Serralheria — estrutura metálica cinza grafite', 3*P_SERRALHERIA),
     ('Cabideiro em metal preto/grafite — 5 un',       5*P_CABIDEIRO),
     ('Puxador metálico cinza grafite — 6 un',         6*P_PUX_METALICO),
 ]
