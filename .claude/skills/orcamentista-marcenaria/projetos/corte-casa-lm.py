@@ -307,8 +307,13 @@ n_prat_corr    = 6                                    # cozinha (telescópica)
 ml_led = 2.67 + (1.60*4 + 1.24*3 + 1.60*3) + (1.82 + 1.47)
 # chapa perfurada — gaveta 4 da despensa (3 un): fundo + 2 faces longas + 2 curtas
 m2_perf = 3 * (0.658*0.265 + 2*0.658*0.145 + 2*0.235*0.145)
-# vidro reflecta: roupeiro (2 portas 0,65x2,71) + closet (portas dos 3 corpos, h 2,71)
-m2_vidro = 2*0.65*2.71 + (1.24 + 1.60 + 1.60)*2.71
+# vidro reflecta — medidas CONFERIDAS nas elevações (todas h=271):
+#   roupeiro (pr.22)  2 x 65,0    · closet V3 (pr.23) 2 x 77,2
+#   closet V4 (pr.24) 2 x 59,5    · closet V5 (pr.24) 2 x 69,7
+# ⚠ closet V1 (pr.23) mostra mais 2 portas num vão de 120. Pode ser o MESMO
+#   conjunto do V4 (124 com estrutura) visto por fora. Orçado SEM o V1;
+#   se for conjunto separado, somar 2 x 60 x 271 = +3,25 m².
+m2_vidro = 2*0.65*2.71 + (2*0.772 + 2*0.595 + 2*0.697)*2.71
 
 FERR = [
     (f'Dobradiça Hettich Sensys Black',        n_dobr,          P_DOBR_BLACK),
@@ -384,7 +389,7 @@ ESPEC = {
     '5 Despensa · armário baixo': m2_perf*P_PERFURADA_M2,
     '7 Suíte · roupeiro':        2*0.65*2.71*P_VIDRO_M2 + 2*P_PUX_METALICO,
     '8 Suíte · sapateira':       13*P_CORR_OCULTA + 2.67*P_LED_M,
-    '9 Suíte · closet':          (1.24+1.60+1.60)*2.71*P_VIDRO_M2 + 3*P_SERRALHERIA
+    '9 Suíte · closet':          (2*0.772+2*0.595+2*0.697)*2.71*P_VIDRO_M2 + 3*P_SERRALHERIA
                                  + 20*P_CORR_OCULTA + 5*P_CABIDEIRO,
 }
 spec_tot = sum(ESPEC.values())
