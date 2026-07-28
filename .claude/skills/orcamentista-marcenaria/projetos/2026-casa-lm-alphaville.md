@@ -1,7 +1,7 @@
 # Casa L&M — Alphaville (alto padrão)
 
-> **Status:** 🟡 Fase 2 — quantitativo calculado, preço preliminar.
-> **R$ 214.268** (MC 37%, COM RT 10%) · 70 chapas · 15 móveis.
+> **Status:** 🟢 Fase 3 — proposta entregue.
+> **R$ 212.700** parcelado · **R$ 191.400 à vista** (MC 37%, COM RT 10%) · 70 chapas · 14 móveis.
 > Vidro das portas do closet/roupeiro **cotado** (Renolfh, 28/07).
 > Fonte: `Caderno_Tecnico.pdf` — 40 pranchas A2, 07/2026.
 > Cálculo auditável: `corte-casa-lm.py`.
@@ -197,3 +197,42 @@ Sapateira R$ 14.001 → **R$ 10.961** · closet R$ 97.697 → **R$ 95.066**.
 | Fita LED 3000K/4000K + perfil — 14,92 m | 2.238 |
 | Cabideiro em metal preto/grafite — 5 un | 600 |
 | Puxador metálico cinza grafite — 6 un | 540 |
+
+## Ajuste final (28/07)
+Puxador metálico do closet **já vem incluso na folha do Renolfh** — removidos R$ 540.
+Investimento: R$ 214.268 → **R$ 212.690** (apresentado R$ 212.700).
+O puxador do roupeiro (R$ 180) segue lançado; pela mesma lógica provavelmente também sai.
+
+## Proposta entregue (Fase 3)
+`build-casa-lm.py` → `casa-lm/proposta-casa-lm.pdf` (5 págs, Playwright).
+Renders **extraídos do próprio caderno técnico** (68 imagens embutidas no PDF da
+arquiteta; 20 em resolução útil). Capa = closet da suíte.
+
+Layout premium, mesmo sistema do Apto CJ e do TRT: capa · copy Light Copy ·
+escopo por ambiente · especificação técnica · investimento.
+
+**Ângulo da copy:** *"Num projeto deste tamanho, o orçamento mais barato quase sempre
+é o que leu menos."* Quase metade dos móveis encosta em algo existente — quem orça por
+metro linear ou cobra pelo que o cliente já tem, ou trava a obra na montagem.
+Prova concreta usada: as bandejas da sapateira têm 24,5 cm e **não existe corrediça
+oculta nessa medida** — achamos antes, não com a ferragem comprada.
+
+**Evidência em números (pág. 2):** 40 pranchas lidas · 70 chapas calculadas no plano
+de corte · 10 anos de garantia em contrato.
+
+### Preço por ambiente
+| Ambiente | Preço |
+|---|--:|
+| Suíte — closet, roupeiro, sapateira | R$ 124.500 |
+| Cozinha — aéreo em L, torre e gabinete | R$ 30.300 |
+| Sala de jantar — painel e porta pivotante | R$ 24.800 |
+| Banheiros e lavabo — 5 ambientes | R$ 19.300 |
+| Despensa — alto, gaveteiro e piso-teto | R$ 13.800 |
+| **Total parcelado** | **R$ 212.700** |
+| **Total à vista (−10%)** | **R$ 191.400** |
+
+Prazo 70 a 90 dias corridos · garantia 10 anos · validade 15 dias.
+Pagamento: à vista com 10% de desconto, ou 50% na assinatura + 50% na entrega.
+
+> 🔶 **Definidos por mim, confirmar:** prazo (70–90 dias corridos) e forma de pagamento
+> (à vista −10% conforme a tabela, ou 50%+50%). Ajusto em minutos se quiser outro arranjo.

@@ -333,7 +333,7 @@ FERR = [
     (f'Corrediça prateleira cozinha (par)',    n_prat_corr,     P_CORR_TELESC),
     (f'Conjunto pivotante + fechadura rolete', 1,               P_PIVO + P_FECH_ROLETE),
     (f'Puxador alça inox preto 60cm',          1,               P_PUX_ALCA_60),
-    (f'Puxador metálico preto/grafite',        8,               P_PUX_METALICO),
+    (f'Puxador metálico preto (roupeiro)',      2,               P_PUX_METALICO),
     (f'Cava 45° usinada (peça)',               46,              P_CAVA_USINADA),
     (f'Cabideiro metal preto/grafite',         5,               P_CABIDEIRO),
     (f'Ganchos vassoura (conjunto)',           1,               P_GANCHOS),
@@ -408,7 +408,7 @@ ESPEC = {
     '8 Suíte · sapateira':       13*P_CORR_TELESC + ml_led_sapat*P_LED_M,
     '9 Suíte · closet':          custo_vidro_closet
                                  + 20*P_CORR_OCULTA + 5*P_CABIDEIRO
-                                 + 6*P_PUX_METALICO + ml_led_closet*P_LED_M,
+                                 + ml_led_closet*P_LED_M,
 }
 spec_tot = sum(ESPEC.values())
 resto = (fixedR - spec_tot)/div
@@ -465,7 +465,6 @@ DET = [
     ('Corrediça oculta Hettich Quadro — 20 pares',    20*P_CORR_OCULTA),
     ('Fita LED 3000K/4000K + perfil (%.2f m)' % ml_led_closet, ml_led_closet*P_LED_M),
     ('Cabideiro em metal preto/grafite — 5 un',       5*P_CABIDEIRO),
-    ('Puxador metálico cinza grafite — 6 un',         6*P_PUX_METALICO),
 ]
 for n, v in DET: print(f'    {n:52s} R$ {v:8,.2f}')
 print(f'    {"subtotal ferragens/terceirizados":52s} R$ {sum(v for _, v in DET):8,.2f}')
