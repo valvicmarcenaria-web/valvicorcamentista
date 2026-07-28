@@ -391,13 +391,21 @@ for it, d, m, c, l, q in PECAS:
 tot_esf = sum(esforco.values())
 
 # ferragem específica por item (o que não pode ser rateado)
+# A fita de LED é MUITO concentrada (14,92 dos 20,9 m estão no closet). Rateá-la
+# pelo esforço de chapa jogaria custo do closet nos banheiros. Vai direto no item.
+ml_led_closet = 1.60*4 + 1.24*3 + 1.60*3      # prateleiras iluminadas dos 3 corpos
+ml_led_aereo  = 1.82 + 1.47                    # aéreo da cozinha
+ml_led_sapat  = 2.67                           # vertical da sapateira
+
 ESPEC = {
     '1 Painel sala jantar':      P_PIVO + P_FECH_ROLETE + P_PUX_ALCA_60,
+    '2 Aéreo cozinha (L)':       ml_led_aereo*P_LED_M,
     '5 Despensa · armário baixo': m2_perf*P_PERFURADA_M2,
     '7 Suíte · roupeiro':        custo_vidro_roupeiro + 2*P_PUX_METALICO,
-    '8 Suíte · sapateira':       13*P_CORR_OCULTA + 2.67*P_LED_M,
+    '8 Suíte · sapateira':       13*P_CORR_OCULTA + ml_led_sapat*P_LED_M,
     '9 Suíte · closet':          custo_vidro_closet + 3*P_SERRALHERIA
-                                 + 20*P_CORR_OCULTA + 5*P_CABIDEIRO,
+                                 + 20*P_CORR_OCULTA + 5*P_CABIDEIRO
+                                 + 6*P_PUX_METALICO + ml_led_closet*P_LED_M,
 }
 spec_tot = sum(ESPEC.values())
 resto = (fixedR - spec_tot)/div
@@ -411,3 +419,66 @@ for it in sorted(esforco):
     tot += v
     print(f'  {it:32s} R$ {v:10,.2f}')
 print(f'  {"TOTAL":32s} R$ {tot:10,.2f}')
+
+# ══════════════════════════════════════════ ABERTURA DE CUSTO DE UM ITEM
+ALVO = '9 Suíte · closet'
+print('\n' + '═'*74)
+print(f'ABERTURA DE CUSTO — {ALVO}')
+print('═'*74)
+
+# 1) chapas efetivamente consumidas pelo item (rateio por área dentro de cada material)
+area_item, area_tot_mat = {}, {}
+for it, d, m, c, l, q in PECAS:
+    area_tot_mat[m] = area_tot_mat.get(m, 0) + c*l/10000*q
+    if it == ALVO:
+        area_item[m] = area_item.get(m, 0) + c*l/10000*q
+chapa_item = 0.0
+print('\n  CHAPAS')
+for m in sorted(area_item, key=lambda x: -area_item[x]):
+    frac = area_item[m]/area_tot_mat[m]
+    ch   = chapas_por_mat[m]*frac
+    v    = ch*P[m]; chapa_item += v
+    print(f'    {m:7s} {area_item[m]:6.2f} m² de {area_tot_mat[m]:6.2f} '
+          f'({frac*100:4.1f}% do material) → {ch:5.2f} chapas = R$ {v:8,.2f}')
+print(f'    {"":7s} {"subtotal chapas":41s} R$ {chapa_item:8,.2f}')
+
+# 2) fita + filetagem do item
+mln = mlc = 0.0
+for it, d, m, c, l, q in PECAS:
+    if it != ALVO: continue
+    ml = 2*(c+l)/100*q*0.5*1.10
+    if m in NOBRE: mln += ml
+    else:          mlc += ml
+fita_item = mln*FITA_NOBRE + mlc*FITA_COMUM
+filet_item = (mln+mlc)*FILETAGEM
+print(f'\n  FITA E FILETAGEM')
+print(f'    fita nobre {mln:6.1f} m × R$ {FITA_NOBRE:.2f}{"":18s} R$ {mln*FITA_NOBRE:8,.2f}')
+print(f'    filetagem  {mln+mlc:6.1f} m × R$ {FILETAGEM:.2f}{"":18s} R$ {filet_item:8,.2f}')
+
+# 3) ferragens e terceirizados diretos
+print(f'\n  FERRAGENS E TERCEIRIZADOS (direto, sem rateio)')
+DET = [
+    ('Portas em vidro reflecta — Renolfh (6 folhas)', custo_vidro_closet),
+    ('Corrediça oculta Hettich Quadro — 20 pares',    20*P_CORR_OCULTA),
+    ('Fita LED 3000K/4000K + perfil (%.2f m)' % ml_led_closet, ml_led_closet*P_LED_M),
+    ('Serralheria — estrutura metálica cinza grafite', 3*P_SERRALHERIA),
+    ('Cabideiro em metal preto/grafite — 5 un',       5*P_CABIDEIRO),
+    ('Puxador metálico cinza grafite — 6 un',         6*P_PUX_METALICO),
+]
+for n, v in DET: print(f'    {n:52s} R$ {v:8,.2f}')
+print(f'    {"subtotal ferragens/terceirizados":52s} R$ {sum(v for _, v in DET):8,.2f}')
+
+# 4) rateio dos custos gerais (consumíveis, logística, visita, serviço no existente)
+share  = esforco[ALVO]/tot_esf
+gerais = (consum + LOGISTICA + VISITA + MONTAGEM_EX)*share
+print(f'\n  RATEIO DOS CUSTOS GERAIS  ({share*100:.1f}% do esforço de produção)')
+for n, v in [('Consumíveis e embalagem', consum), ('Logística Alphaville', LOGISTICA),
+             ('Visita técnica / medições', VISITA), ('Serviço sobre o existente', MONTAGEM_EX)]:
+    print(f'    {n:52s} R$ {v*share:8,.2f}')
+
+custo_item = chapa_item + fita_item + filet_item + sum(v for _, v in DET) + gerais
+preco_item = resto*esforco[ALVO]/tot_esf + ESPEC.get(ALVO, 0)/div
+print(f'\n  ══ CUSTO DIRETO DO ITEM                            R$ {custo_item:9,.2f}')
+print(f'  ══ PREÇO AO CLIENTE                                R$ {preco_item:9,.2f}')
+print(f'     markup = 1/{div:.5f} = {1/div:.3f}×   ·   margem embutida'
+      f' R$ {preco_item-custo_item:9,.2f}')
