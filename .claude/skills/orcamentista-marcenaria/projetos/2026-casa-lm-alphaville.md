@@ -1,7 +1,7 @@
 # Casa L&M — Alphaville (alto padrão)
 
 > **Status:** 🟢 Fase 3 — proposta entregue.
-> **R$ 212.700** parcelado · **R$ 191.400 à vista** (MC 37%, COM RT 10%) · 70 chapas · 14 móveis.
+> **R$ 200.700** parcelado · **R$ 180.600 à vista** · MC 37% (**closet 32%**), COM RT 10% · 70 chapas · 14 móveis.
 > Vidro das portas do closet/roupeiro **cotado** (Renolfh, 28/07).
 > Fonte: `Caderno_Tecnico.pdf` — 40 pranchas A2, 07/2026.
 > Cálculo auditável: `corte-casa-lm.py`.
@@ -236,3 +236,55 @@ Pagamento: à vista com 10% de desconto, ou 50% na assinatura + 50% na entrega.
 
 > 🔶 **Definidos por mim, confirmar:** prazo (70–90 dias corridos) e forma de pagamento
 > (à vista −10% conforme a tabela, ou 50%+50%). Ajusto em minutos se quiser outro arranjo.
+
+## Lapidações do Jonathan (28/07) — versão final
+
+**1 · Closet com MC 32%.** O motor passou a calcular **custo direto por item** e aplicar
+o divisor de cada um, em vez de um divisor único sobre o total. Cada móvel carrega o seu
+material e a sua ferragem específica; só o rateável (ferragem comum, consumíveis,
+logística, visita, serviço sobre o existente) é dividido pelo esforço de produção.
+A soma dos custos por item fecha exatamente com o `fixedR`.
+
+| | MC 37% | MC 32% |
+|---|--:|--:|
+| divisor | 0,34216 | 0,39216 |
+
+Closet: custo R$ 32.170 → **R$ 82.033** (era R$ 93.488 com 37%).
+**Total R$ 212.690 → R$ 200.703.**
+
+> Os demais itens também mudaram de preço, e não só por causa do closet: a alocação
+> agora usa o **consumo real de chapa** de cada móvel em vez de um rateio por esforço
+> sobre o bolo todo. É mais defensável linha a linha.
+
+**2 · Erro meu, corrigido.** A página técnica dizia *"18 mm em prateleiras longas, que
+evita a flecha no vão de 1,60 m"*. **Não existe prateleira de 1,60 m no projeto** — os
+corpos de 160 cm do closet têm divisória central, então o vão real é de ~76 cm. O maior
+vão livre da casa é o **roupeiro, com 1,30 m**. Tirei o número do texto.
+
+**3 · Cortes na copy.** Removidos: o fecho *"Achamos antes…"*, o parágrafo *"A premissa
+é essa…"* e a estatística das **70 chapas** (revelava método interno sem benefício para
+o cliente). No lugar das chapas entrou **"14 móveis num único contrato"** — benefício
+que o cliente sente.
+
+**4 · Menos ruído técnico.** Fora: medidas em cm de cada item · modelo da corrediça
+(ficou só **Hettich**) · *"cotadas e fechadas com o fornecedor antes desta proposta"* ·
+metragem da fita de LED.
+
+**5 · Nova premissa:** o **Grafite** é fornecido nas linhas foscas, **não contemplando as
+linhas Acetinato e Aris**.
+
+### Preço por ambiente — final
+| Ambiente | Preço |
+|---|--:|
+| Suíte — closet, roupeiro, sapateira | R$ 113.300 |
+| Cozinha — aéreo em L, torre e gabinete | R$ 32.800 |
+| Sala de jantar — painel e porta pivotante | R$ 20.000 |
+| Banheiros e lavabo — 5 ambientes | R$ 19.700 |
+| Despensa — alto, gaveteiro e piso-teto | R$ 14.900 |
+| **Total parcelado** | **R$ 200.700** |
+| **Total à vista (−10%)** | **R$ 180.600** |
+
+> 🔶 **Ainda em aberto:** a **dobradiça** segue como *Hettich Sensys Black* na proposta —
+> a instrução era só sobre a corrediça. Tiro o modelo dela também se quiser.
+> O puxador do roupeiro (R$ 180) continua lançado; pela mesma lógica do closet,
+> provavelmente também está incluso na folha do Renolfh.

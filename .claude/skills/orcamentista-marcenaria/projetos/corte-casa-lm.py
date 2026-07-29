@@ -363,15 +363,17 @@ MONTAGEM_EX = 1800.0    # reorganizar módulos existentes da cozinha + remoção
 
 fixedR = MAT + LOGISTICA + VISITA + MONTAGEM_EX
 
-MC   = 0.37
+MC        = 0.37       # padrão da casa
+MC_CLOSET = 0.32       # [Jonathan 28/07] margem menor no maior item do projeto
+CLOSET    = '9 Suíte · closet'
 a    = 0.162          # nf4 + parc8 + vend3 + erro0,5 + serra0,2 + manut0,5
 liqF = 0.88
 b    = 0.008 + 0.010 + 0.025 + 0.10     # prog + coord + marc + RT 10%
-div  = 1 - a - liqF*b - MC
-inv  = fixedR/div
+div        = 1 - a - liqF*b - MC
+div_closet = 1 - a - liqF*b - MC_CLOSET
 
 print('\n' + '═'*74)
-print('CUSTO E PREÇO — MC 37% · COM RT 10%')
+print('CUSTO E PREÇO — MC 37% (closet 32%) · COM RT 10%')
 print('═'*74)
 print(f'  Chapas                                          R$ {custo_chapa:10,.2f}')
 print(f'  Fita de borda + filetagem                       R$ {custo_fita+custo_filet:10,.2f}')
@@ -382,8 +384,7 @@ print(f'  Logística (Alphaville, 2 viagens)               R$ {LOGISTICA:10,.2f}
 print(f'  Visita técnica / medições in loco               R$ {VISITA:10,.2f}')
 print(f'  Serviço sobre o existente (reorganizar/remover) R$ {MONTAGEM_EX:10,.2f}')
 print(f'  ══ CUSTO DIRETO (fixedR)                        R$ {fixedR:10,.2f}')
-print(f'  divisor = 1 − {a} − {liqF}×{b:.3f} − {MC} = {div:.5f}')
-print(f'  ══ INVESTIMENTO                                 R$ {inv:10,.2f}')
+print(f'  divisor MC 37% = {div:.5f}   ·   divisor closet MC 32% = {div_closet:.5f}')
 
 # ═════════════════════════════════════════ ALOCAÇÃO POR ITEM (esforço produtivo)
 esforco = {}
@@ -411,17 +412,36 @@ ESPEC = {
                                  + ml_led_closet*P_LED_M,
 }
 spec_tot = sum(ESPEC.values())
-resto = (fixedR - spec_tot)/div
+
+# CUSTO DIRETO POR ITEM — cada item carrega o seu, e só o rateável é dividido
+# pelo esforço de produção. Assim cada móvel pode receber a sua própria MC.
+area_it, area_mat = {}, {}
+fita_it = {}
+for it, d, m, c, l, q in PECAS:
+    area_mat[m] = area_mat.get(m, 0) + c*l/10000*q
+    area_it.setdefault(it, {})[m] = area_it.setdefault(it, {}).get(m, 0) + c*l/10000*q
+    ml = 2*(c+l)/100*q*0.5*1.10
+    f = ml*(FITA_NOBRE if m in NOBRE else FITA_COMUM) + ml*FILETAGEM
+    fita_it[it] = fita_it.get(it, 0) + f
+
+RATEAVEL = (custo_ferr - spec_tot) + consum + LOGISTICA + VISITA + MONTAGEM_EX
+
+custo_it, preco_it = {}, {}
+for it in esforco:
+    ch = sum(a_/area_mat[m]*chapas_por_mat[m]*P[m] for m, a_ in area_it[it].items())
+    custo_it[it] = ch + fita_it[it] + ESPEC.get(it, 0) + RATEAVEL*esforco[it]/tot_esf
+    d_ = div_closet if it == CLOSET else div
+    preco_it[it] = custo_it[it]/d_
+inv = sum(preco_it.values())
 
 print('\n' + '═'*74)
-print('PREÇO POR ITEM')
+print('PREÇO POR ITEM   (closet com MC 32%, demais 37%)')
 print('═'*74)
-tot = 0.0
 for it in sorted(esforco):
-    v = resto*esforco[it]/tot_esf + ESPEC.get(it, 0)/div
-    tot += v
-    print(f'  {it:32s} R$ {v:10,.2f}')
-print(f'  {"TOTAL":32s} R$ {tot:10,.2f}')
+    mc = MC_CLOSET if it == CLOSET else MC
+    print(f'  {it:30s} custo R$ {custo_it[it]:9,.2f}  MC {mc:.0%}  →  R$ {preco_it[it]:10,.2f}')
+print(f'  {"TOTAL":30s} custo R$ {sum(custo_it.values()):9,.2f}'
+      f'{"":11s}→  R$ {inv:10,.2f}')
 
 # ══════════════════════════════════════════ ABERTURA DE CUSTO DE UM ITEM
 ALVO = '9 Suíte · closet'
