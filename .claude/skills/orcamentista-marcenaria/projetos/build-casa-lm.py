@@ -9,7 +9,7 @@ SALA  = open('/tmp/uri_lm_p08_3.txt').read()   # sala de jantar / painel
 COZ   = open('/tmp/uri_lm_p18_1.txt').read()   # cozinha
 BANHO = open('/tmp/uri_lm_p39_4.txt').read()   # banheiro
 SUITE = open('/tmp/uri_lm_p31_3.txt').read()   # suíte
-CLOS2 = open('/tmp/uri_lm_p31_1.txt').read()   # closet 2
+CURVA = open('/tmp/uri_lm_curva.txt').read()    # closet — terminação curva
 CSS   = open('/tmp/css_premium.txt', encoding='utf-8').read().split('CSS = """')[1].rsplit('"""',1)[0]
 
 HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>{CSS}</style>
@@ -52,15 +52,14 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       font-weight:700; color:var(--gold-lt); line-height:1;}}
   .pay3 span{{display:block; font-size:7.6pt; color:#C6BFB2; margin-top:1.2mm;}}
   /* banda da dobradiça */
-  .p-tec .spec-tb td{{padding-top:2.1mm; padding-bottom:2.1mm;}}
   .hinge{{background:var(--deep); border-left:3px solid var(--gold-lt); border-radius:0 5px 5px 0;
-      padding:4.4mm 6.5mm; margin-top:3.5mm; display:flex; gap:7mm; align-items:flex-start;}}
+      padding:5.2mm 7mm; margin-top:5mm; display:flex; gap:7mm; align-items:flex-start;}}
   .hinge .lead-t{{flex:0 0 52mm;}}
   .hinge .lead-t .t{{font-family:'Cormorant Garamond',Georgia,serif; font-size:15pt;
       font-weight:700; line-height:1.2; color:#fff;}}
   .hinge .lead-t .k{{font-size:7pt; letter-spacing:.2em; text-transform:uppercase;
       color:var(--gold-lt); font-weight:700; margin-bottom:1.8mm;}}
-  .hinge .d{{font-size:8.3pt; color:#C6BFB2; line-height:1.5;}}
+  .hinge .d{{font-size:8.5pt; color:#C6BFB2; line-height:1.58;}}
   .hinge .d b{{color:#F0E7D6;}}
   .warr{{background:var(--cream); border-left:3px solid var(--ink); border-radius:0 5px 5px 0;
       padding:3.2mm 6mm; margin-top:2.6mm; display:flex; gap:6mm; align-items:center;}}
@@ -68,6 +67,25 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       font-size:13.5pt; font-weight:700; line-height:1.2;}}
   .warr .d{{font-size:8.4pt; color:var(--soft); line-height:1.6;}}
   .warr .d b{{color:var(--ink);}}
+  /* página "além do móvel" */
+  .coord{{display:flex; gap:0; margin-top:4mm; border-top:2px solid var(--ink); padding-top:3.4mm;}}
+  .coord > div{{flex:1; padding:0 5mm; border-left:1px solid var(--line);}}
+  .coord > div:first-child{{padding-left:0; border-left:0;}}
+  .coord > div:last-child{{padding-right:0;}}
+  .coord .k{{font-size:7pt; letter-spacing:.16em; text-transform:uppercase;
+      color:var(--gold); font-weight:700;}}
+  .coord .d{{font-size:8.4pt; color:var(--soft); line-height:1.55; margin-top:1.6mm;}}
+  .coord .d b{{color:var(--ink);}}
+  .warr-big{{background:var(--deep); border-radius:6px; padding:5mm 7mm; margin-top:4mm;
+      position:relative; overflow:hidden; box-shadow:inset 0 0 0 1px rgba(201,169,106,.30);}}
+  .warr-big::after{{content:""; position:absolute; left:0; top:0; bottom:0; width:4px;
+      background:var(--gold-lt);}}
+  .warr-big .k{{font-size:7.2pt; letter-spacing:.2em; text-transform:uppercase;
+      color:var(--gold-lt); font-weight:700;}}
+  .warr-big .big{{font-family:'Cormorant Garamond',Georgia,serif; font-size:24pt;
+      font-weight:700; color:#fff; line-height:1.12; margin-top:1.6mm;}}
+  .warr-big .d{{font-size:8.6pt; color:#C6BFB2; line-height:1.6; margin-top:2.4mm;}}
+  .warr-big .d b{{color:#F0E7D6;}}
 </style></head><body>
 
 <!-- ══════ 1. CAPA ══════ -->
@@ -269,17 +287,68 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
     </div>
   </div>
 
-  <div class="warr">
-    <div class="t">10 anos de garantia</div>
-    <div class="d"><b>10 anos</b> na marcenaria — estrutura, montagem e acabamento ·
-    <b>2 anos</b> na instalação e regulagem · garantia formal em contrato ·
-    <b>equipe própria do corte à instalação</b>, com CNC próprio.</div>
+  <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Casa L&amp;M · Alphaville</span></div>
+</div></div>
+
+
+<!-- ══════ 5. ALÉM DO MÓVEL ══════ -->
+<div class="page"><div class="pad">
+  <div class="eyebrow">Além do móvel</div>
+  <div class="h-sec serif">Uma obra,<br><em>um interlocutor.</em></div>
+  <hr class="rule">
+  <p class="lead" style="margin-bottom:1mm;">Um projeto deste porte não é só marcenaria.</p>
+
+  <p class="body-t" style="margin-top:4mm;">
+  Tem <b>porta de vidro com estrutura metálica</b>, <b>serralheria</b>, <b>fita de LED com
+  fonte e comando</b>, <b>pintura e gesso</b> encostando no móvel. Cada um desses é um
+  fornecedor com prazo próprio, medida própria — e desculpa própria quando alguma coisa
+  não encaixa.<br><br>
+  <b>A Valvic centraliza essa articulação.</b> Nós cotamos, especificamos, conferimos a
+  medida e marcamos a sequência com cada um deles. Você trata com uma pessoa. E quando
+  algo não encaixa, o problema é nosso — não vira uma reunião entre fornecedores com
+  você no meio.</p>
+
+  <div class="coord">
+    <div><div class="k">Vidro</div><div class="d">Portas em reflecta com estrutura
+      metálica — <b>cotação, medida e sequência de instalação</b> conosco.</div></div>
+    <div><div class="k">Serralheria</div><div class="d">Estrutura em cinza grafite,
+      <b>conferida contra a caixaria</b> antes de ir para a obra.</div></div>
+    <div><div class="k">Iluminação</div><div class="d">Fita, perfil e lente — nós usinamos
+      o rasgo e <b>alinhamos com o eletricista</b> onde entra a fonte.</div></div>
+    <div><div class="k">Pintura e gesso</div><div class="d">Definimos com a obra
+      <b>o que fecha primeiro</b>, para o móvel não voltar para retoque.</div></div>
+  </div>
+
+  <div class="split2" style="margin-top:5.5mm;">
+    <div><div class="figure"><img src="{CURVA}" alt="" style="height:46mm;object-fit:cover;object-position:38% 50%;"></div>
+      <div class="cap">Closet · terminação curva do piso ao teto</div></div>
+    <div style="display:flex;flex-direction:column;justify-content:center;">
+      <div class="pull">
+        <div class="t">A peça mais difícil<br>da casa.</div>
+        <div class="d">O closet <b>termina em curva</b> — dois raios ligados por um trecho
+        reto, do piso ao teto. E o roupeiro repete a curva na lateral.<br><br>
+        <b>MDF não dobra.</b> A peça é construída em camadas laminadas sobre gabarito,
+        lixada e revestida, mantendo o <b>raio constante em toda a altura</b> e o veio da
+        madeira contínuo. Um milímetro de variação aparece assim que a luz bate de lado.<br><br>
+        É por isso que ela abre esta proposta na capa.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="warr-big">
+    <div class="k">Garantia</div>
+    <div class="big">10 anos. Em contrato.</div>
+    <div class="d">Marcenaria sob medida costuma sair com <b>1 a 3 anos</b> de garantia —
+    quando sai por escrito. A nossa é de <b>10 anos</b> sobre estrutura, montagem e
+    acabamento, mais <b>2 anos</b> de instalação e regulagem, formalizada em contrato.<br>
+    Só conseguimos assinar isso porque a equipe é <b>própria do corte à instalação</b>,
+    com CNC próprio — não há terceiro no meio para quem empurrar o defeito.</div>
   </div>
 
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Casa L&amp;M · Alphaville</span></div>
 </div></div>
 
-<!-- ══════ 5. INVESTIMENTO ══════ -->
+<!-- ══════ 6. INVESTIMENTO ══════ -->
 <div class="page"><div class="pad">
   <div class="eyebrow">Investimento</div>
   <div class="h-sec serif" style="font-size:21pt;">Preço fechado,<br><em>por ambiente.</em></div>

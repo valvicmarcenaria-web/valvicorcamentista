@@ -321,3 +321,52 @@ e os 80 mil ciclos. A garantia de 10 anos virou uma faixa clara e enxuta logo ab
 | Despensa — alto, gaveteiro e piso-teto | R$ 14.900 |
 | **Tabela** | **R$ 200.200** |
 | **À vista (−10%)** | **R$ 180.200** |
+
+## Rodada 6 (28/07) — coordenação, curvas e garantia
+
+**Conferido no caderno, a pedido do Jonathan:** a prancha 09 traz, com todas as letras,
+**"ARMÁRIOS EXISTENTES — REORGANIZAR OS MÓDULOS"** na elevação V1 e
+**"NOVO SÓCULO — ALTURA E REVESTIMENTO IGUAL EXISTENTE"** na isométrica. O escopo estava
+certo: os dois serviços são pedidos pelo projeto.
+
+**Curvas — também conferido.** A planta do closet (prancha 23) mostra a terminação em
+**dois raios de 23,6 cm ligados por um trecho reto de 31,5 cm**, do piso ao teto (280 cm).
+O roupeiro repete a curva na lateral (R23,5). É a peça mais difícil da casa — e é
+exatamente o que aparece na foto de capa.
+
+**Proposta passou de 5 para 6 páginas.** Nova página 5 — *"Uma obra, um interlocutor"*:
+- **Articulação centralizada** em 4 colunas (vidro · serralheria · iluminação · pintura e
+  gesso), com o argumento de que cada fornecedor tem prazo, medida e desculpa próprios —
+  e que a Valvic cota, especifica, confere medida e marca a sequência. *"Quando algo não
+  encaixa, o problema é nosso."*
+- **As curvas do closet**, com recorte do render mostrando a terminação curva.
+- **Garantia como diferencial de mercado**, em bloco escuro com anel dourado:
+  *"Marcenaria sob medida costuma sair com 1 a 3 anos — quando sai por escrito."*
+  Ancorada no motivo: equipe própria do corte à instalação, sem terceiro para empurrar
+  o defeito.
+
+A faixa de garantia da página técnica saiu (virou repetição), devolvendo respiro à
+banda da dobradiça.
+
+## 🔶 Upgrade Blum — NÃO ORÇADO, falta custo
+
+**Não tenho custo de compra da Blum na base.** Só existem dois itens em
+`dados/materiais.json`, e nenhum serve para o upgrade:
+| Item | Custo |
+|---|--:|
+| Pulsador Blum (Tip-on / Servo) | R$ 100 |
+| Articulador Blum HK-xs | R$ 180 |
+
+Para montar o upgrade preciso do preço de compra Valvic destes três, nas quantidades
+já levantadas:
+
+| Substituir | Qtd | Hoje (Hettich) | Blum equivalente |
+|---|--:|--:|---|
+| Dobradiça | **78 un** | Sensys Black · R$ 40/un = R$ 3.120 | CLIP top BLUMOTION |
+| Corrediça oculta | **28 pares** | Quadro · R$ 120/par = R$ 3.360 | MOVENTO com BLUMOTION |
+| Corrediça telescópica | **44 pares** | R$ 40/par = R$ 1.760 | TANDEM |
+| | | **R$ 8.240** | ? |
+
+Com esses três números eu fecho o upgrade em minutos — inclusive com o preço adicional
+já convertido pelo divisor. **Não vou estimar**: seria repetir o erro do vidro, que eu
+havia chutado em R$ 700/m² e veio a R$ 1.110.
