@@ -1,7 +1,10 @@
 # Porto Verde (Leonardo) — escritório · ORÇAMENTO V2
 
-> **Status:** 🟡 Quantitativo calculado, aguardando confirmação de medidas.
-> **R$ 94.150** de tabela · **R$ 84.700 à vista** (MC 37%, COM RT 10%) · 28 chapas.
+> **Status:** 🟢 Proposta entregue — **R$ 57.800**, valores FECHADOS pelo Jonathan.
+> ⚠️ **EXCEÇÃO DE MÉTODO:** este orçamento **não passou pelo motor**. O Jonathan ditou o
+> preço de cada frente; o meu papel foi montar a proposta. O cálculo peça-a-peça abaixo
+> (`corte-porto-verde-v2.py`, R$ 94.150) fica como **referência interna de conferência**,
+> não como o preço praticado.
 > Substitui a **V1 de 22/07** (R$ 62.400), que fora montada sobre uma única imagem.
 > Cálculo auditável: `corte-porto-verde-v2.py`.
 
@@ -114,3 +117,39 @@ Fita 250,6 m nobre + 92,9 m comum → R$ 938 · filetagem R$ 859.
 
 ## Entregáveis
 - `corte-porto-verde-v2.py` — levantamento auditável.
+
+## ✅ Valores fechados pelo Jonathan (28/07) — proposta entregue
+
+| Frente | Preço |
+|---|--:|
+| Parede lado direito — completa | R$ 22.500 |
+| Mesas centrais | R$ 12.500 |
+| Sala de reunião — painéis | R$ 9.800 |
+| Sala de reunião — mesa oval | R$ 8.700 |
+| Painel frontal do banheiro | R$ 4.300 |
+| **TOTAL** | **R$ 57.800** |
+
+Pagamento **40% na assinatura + 60% na entrega** · prazo **35 a 45 dias úteis** ·
+garantia **10 anos** · validade 15 dias (mesmas condições da V1, que o Leonardo já viu).
+
+### Especificações gerais incorporadas
+- Serralheria com **pintura eletrostática**.
+- Portas com **estrutura de aço anti-empeno**.
+- **Fecho rolete**, **sistema pivotante** e **puxadores em cava**.
+- Portas altas com **abertura por toque**.
+- Materiais **a definir**, **sem a linha Acetinato**.
+- **Esquadria de alumínio e vidros FORA do escopo** — dito com todas as letras na página
+  técnica e na lista de não incluso.
+
+> 📉 **Comparação com o meu cálculo:** o motor deu R$ 94.150 (dos quais R$ 24.842 só da
+> mesa de reunião com markup cheio). O fechado é R$ 57.800. A diferença está sobretudo
+> na mesa (R$ 8.700 contra R$ 24.842) e na parede direita. Registro para memória — a
+> decisão de preço é do Jonathan.
+
+## Entregáveis (V2)
+- `build-porto-verde-v2.py` → `proposta-porto-verde-v2.pdf` (5 págs).
+- `corte-porto-verde-v2.py` — cálculo de referência interna.
+
+> 🔶 **Capa e miolo sem imagem.** Os 5 renders vieram inline no chat e não ficam
+> acessíveis como arquivo. A capa saiu **tipográfica** (fundo escuro, sem foto). Para
+> encaixar os renders, reenviar como **anexo de arquivo**.

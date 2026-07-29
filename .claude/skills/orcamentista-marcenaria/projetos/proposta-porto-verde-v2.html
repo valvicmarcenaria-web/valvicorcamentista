@@ -1,0 +1,386 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
+:root{
+  --ink:#1A1714; --soft:#5F594F; --mut:#928B7D; --line:#E2DCD0; --hair:#EFEAE0;
+  --paper:#fff; --cream:#FAF7F1; --sand:#F2ECE1;
+  --gold:#9C7A3C; --gold-lt:#C9A96A; --gold-pale:#F3EADA;
+  --deep:#2A2521;
+}
+@page{size:A4;margin:0;}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;color:var(--ink);
+     font-size:10.2pt;line-height:1.6;}
+.serif{font-family:'Cormorant Garamond',Georgia,serif;}
+.page{position:relative;width:210mm;height:297mm;overflow:hidden;background:var(--paper);
+      page-break-after:always;}
+.page:last-child{page-break-after:auto;}
+.pad{padding:17mm 19mm 15mm;height:100%;}
+h1,h2,h3{margin:0;font-weight:600;}
+p{margin:0;}
+.eyebrow{font-size:7.6pt;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+.rule{height:1.5px;width:42px;background:var(--gold-lt);border:0;margin:10px 0 12px;}
+.h-sec{font-family:'Cormorant Garamond',Georgia,serif;font-size:25pt;font-weight:700;line-height:1.08;}
+.h-sec em{font-style:italic;color:var(--gold);}
+.lead{font-family:'Cormorant Garamond',Georgia,serif;font-size:13pt;font-style:italic;
+      color:var(--soft);line-height:1.5;}
+.pfoot{position:absolute;left:19mm;right:19mm;bottom:11mm;display:flex;justify-content:space-between;
+       font-size:7pt;color:var(--mut);letter-spacing:.12em;border-top:1px solid var(--hair);padding-top:2.5mm;}
+.bl{font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;letter-spacing:.14em;}
+.bl .d{color:var(--gold);}
+
+/* ---------- CAPA ---------- */
+.cover{background:var(--deep);color:#F5F1E8;padding:0;}
+.cover .hero-img{position:absolute;inset:0;}
+.cover .hero-img img{width:100%;height:100%;object-fit:cover;opacity:.92;display:block;}
+.cover .veil{position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(26,23,20,.72) 0%,rgba(26,23,20,.30) 30%,rgba(26,23,20,.55) 62%,rgba(26,23,20,.93) 100%);}
+.cover .inner{position:relative;height:100%;padding:20mm 20mm 16mm;display:flex;flex-direction:column;}
+.cover .brand{font-family:'Cormorant Garamond',Georgia,serif;font-size:27pt;font-weight:700;letter-spacing:.2em;}
+.cover .brand .d{color:var(--gold-lt);}
+.cover .bsub{letter-spacing:.5em;font-size:6.8pt;font-weight:700;color:var(--gold-lt);margin-top:2px;}
+.cover .mid{margin-top:96mm;}
+.cover .kick{font-size:8pt;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-lt);font-weight:700;}
+.cover .tit{font-family:'Cormorant Garamond',Georgia,serif;font-size:37pt;font-weight:700;line-height:1.04;margin:5mm 0 3mm;}
+.cover .sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:14pt;color:#D9D2C4;}
+.cover .strip{position:absolute;left:20mm;right:20mm;bottom:16mm;display:flex;gap:8mm;
+  border-top:1px solid rgba(201,169,106,.4);padding-top:5mm;}
+.cover .strip .c .k{font-size:6.6pt;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-lt);font-weight:700;}
+.cover .strip .c .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:12pt;font-weight:700;margin-top:1mm;}
+
+/* ---------- COPY ---------- */
+.big-q{font-family:'Cormorant Garamond',Georgia,serif;font-size:19pt;line-height:1.32;color:var(--ink);}
+.big-q b{color:var(--gold);font-weight:700;}
+.body-t{font-size:10.2pt;color:var(--soft);line-height:1.72;}
+.body-t b{color:var(--ink);}
+.split2{display:flex;gap:9mm;}
+.split2>div{flex:1;}
+.figure{border-radius:5px;overflow:hidden;background:var(--sand);}
+.figure img{width:100%;display:block;}
+.cap{font-size:7.4pt;color:var(--mut);letter-spacing:.1em;text-transform:uppercase;margin-top:2.5mm;}
+.pull{background:var(--gold-pale);border-left:3px solid var(--gold-lt);padding:5mm 6mm;border-radius:0 5px 5px 0;}
+.pull .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:13.5pt;font-weight:700;line-height:1.25;}
+.pull .d{font-size:9pt;color:var(--soft);margin-top:2mm;line-height:1.6;}
+
+/* ---------- ESCOPO / TÉCNICO ---------- */
+.amb{border-top:2px solid var(--ink);padding-top:3.5mm;margin-bottom:6mm;}
+.amb .n{font-family:'Cormorant Garamond',Georgia,serif;font-size:15pt;font-weight:700;}
+.amb .s{font-size:7.2pt;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-top:.8mm;}
+.amb ul{margin:2.5mm 0 0;padding-left:4.5mm;font-size:9.1pt;color:var(--soft);line-height:1.62;}
+.amb li{margin:1.2mm 0;}
+.amb b{color:var(--ink);}
+.spec-tb{width:100%;border-collapse:collapse;font-size:8.8pt;margin-top:2mm;}
+.spec-tb th{text-align:left;font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);
+            font-weight:700;border-bottom:1.5px solid var(--ink);padding:0 0 2mm;}
+.spec-tb td{padding:2.4mm 0;border-bottom:1px solid var(--hair);color:var(--soft);vertical-align:top;}
+.spec-tb td:first-child{font-weight:600;color:var(--ink);width:44mm;padding-right:4mm;}
+.badge{display:inline-block;background:var(--gold-pale);color:var(--gold);font-size:7pt;font-weight:700;
+       letter-spacing:.1em;text-transform:uppercase;padding:1mm 2.5mm;border-radius:3px;}
+
+/* ---------- INVESTIMENTO ---------- */
+.inv-hero{background:var(--deep);color:#F5F1E8;border-radius:7px;padding:5.5mm 7mm;position:relative;overflow:hidden;}
+.inv-hero::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gold-lt);}
+.inv-hero .k{font-size:7.4pt;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-lt);font-weight:700;}
+.inv-hero .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:35pt;font-weight:700;line-height:1;
+             margin:1.5mm 0 .8mm;color:#fff;}
+.inv-hero .c{font-size:8.6pt;color:#C6BFB2;}
+.inv-hero .alt{margin-top:2.2mm;padding-top:2.2mm;border-top:1px solid rgba(201,169,106,.32);
+               font-size:8.6pt;color:#C6BFB2;}
+.inv-hero .alt b{color:#F0E7D6;}
+.item-tb{width:100%;border-collapse:collapse;font-size:9pt;margin-top:4mm;}
+.item-tb th{text-align:left;font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);
+            font-weight:700;border-bottom:1.5px solid var(--ink);padding:0 0 2mm;}
+.item-tb td{padding:1.9mm 0;border-bottom:1px solid var(--hair);vertical-align:top;}
+.item-tb td.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600;}
+.item-tb .nm{font-weight:600;color:var(--ink);}
+.item-tb .nm small{display:block;font-weight:400;color:var(--soft);font-size:8pt;margin-top:.4mm;}
+.item-tb tr.tot td{border-bottom:0;border-top:1.5px solid var(--ink);font-weight:700;
+                   font-family:'Cormorant Garamond',Georgia,serif;font-size:12pt;padding-top:2.4mm;}
+.pay-tb{width:100%;border-collapse:collapse;font-size:9.2pt;margin-top:5mm;}
+.pay-tb th{text-align:left;font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);
+           font-weight:700;border-bottom:1.5px solid var(--ink);padding:0 0 2mm;}
+.pay-tb td{padding:1.9mm 0;border-bottom:1px solid var(--hair);}
+.pay-tb td.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.pay-tb tr.best td{background:var(--gold-pale);font-weight:700;color:var(--ink);}
+.pay-tb tr.best td:first-child{padding-left:3mm;border-radius:4px 0 0 4px;}
+.pay-tb tr.best td:last-child{padding-right:3mm;border-radius:0 4px 4px 0;color:var(--gold);}
+.terms{display:flex;gap:5mm;margin-top:3.2mm;}
+.term{flex:1;border:1px solid var(--line);border-radius:5px;padding:3mm 4mm;text-align:center;}
+.term .k{font-size:6.6pt;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);font-weight:700;}
+.term .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:12.5pt;font-weight:700;margin-top:1mm;line-height:1.15;}
+.note{margin-top:3.2mm;padding-left:4mm;border-left:2px solid var(--gold-lt);font-size:7.1pt;color:var(--soft);line-height:1.48;}
+.note b{color:var(--ink);}
+</style>
+<style>
+  /* capa tipográfica — sem foto */
+  .cover-t{background:var(--deep); position:relative; overflow:hidden;}
+  .cover-t::before{content:""; position:absolute; inset:0;
+     background:radial-gradient(120% 80% at 18% 12%, rgba(201,169,106,.16) 0%, transparent 58%),
+                radial-gradient(90% 70% at 88% 96%, rgba(201,169,106,.10) 0%, transparent 60%);}
+  .cover-t .rules{position:absolute; inset:0;
+     background:repeating-linear-gradient(90deg, rgba(255,255,255,.030) 0 1px, transparent 1px 34mm);}
+  .stats{display:flex; gap:7mm; margin-top:8mm;}
+  .stats > div{flex:1; border-top:2px solid var(--ink); padding-top:3.2mm;}
+  .stats .n{font-family:'Cormorant Garamond',Georgia,serif; font-size:26pt;
+      font-weight:700; line-height:1; color:var(--gold);}
+  .stats .n em{font-style:normal; font-size:12.5pt;}
+  .stats .t{font-size:8.3pt; color:var(--soft); line-height:1.52; margin-top:2mm;}
+  .stats .t b{color:var(--ink);}
+  .p-esc .amb{padding-top:2.6mm; margin-bottom:4.2mm;}
+  .p-esc .amb ul{line-height:1.5; margin-top:1.8mm;}
+  .fora{background:var(--cream); border-left:3px solid var(--ink); border-radius:0 5px 5px 0;
+      padding:4mm 6mm; margin-top:4.5mm;}
+  .fora .t{font-family:'Cormorant Garamond',Georgia,serif; font-size:13pt; font-weight:700;}
+  .fora .d{font-size:8.5pt; color:var(--soft); line-height:1.6; margin-top:1.6mm;}
+  .fora .d b{color:var(--ink);}
+  .warr-big{background:var(--deep); border-radius:6px; padding:4.6mm 7mm; margin-top:4.5mm;
+      position:relative; overflow:hidden; box-shadow:inset 0 0 0 1px rgba(201,169,106,.30);}
+  .warr-big::after{content:""; position:absolute; left:0; top:0; bottom:0; width:4px;
+      background:var(--gold-lt);}
+  .warr-big .k{font-size:7.2pt; letter-spacing:.2em; text-transform:uppercase;
+      color:var(--gold-lt); font-weight:700;}
+  .warr-big .big{font-family:'Cormorant Garamond',Georgia,serif; font-size:22pt;
+      font-weight:700; color:#fff; line-height:1.12; margin-top:1.6mm;}
+  .warr-big .d{font-size:8.5pt; color:#C6BFB2; line-height:1.55; margin-top:2mm;}
+  .warr-big .d b{color:#F0E7D6;}
+  .pay2{display:flex; margin-top:3mm; padding-top:2.6mm;
+      border-top:1px solid rgba(201,169,106,.28);}
+  .pay2 > div{flex:1; padding-left:6mm; border-left:1px solid rgba(201,169,106,.18);}
+  .pay2 > div:first-child{padding-left:0; border-left:0;}
+  .pay2 b{display:block; font-family:'Cormorant Garamond',Georgia,serif; font-size:18pt;
+      font-weight:700; color:var(--gold-lt); line-height:1;}
+  .pay2 span{display:block; font-size:7.8pt; color:#C6BFB2; margin-top:1.2mm;}
+</style></head><body>
+
+<!-- ══════ 1. CAPA ══════ -->
+<div class="page cover cover-t">
+  <div class="rules"></div>
+  <div class="inner">
+    <div><div class="brand">valvic<span class="d">.</span></div><div class="bsub">MARCENARIA</div></div>
+    <div class="mid">
+      <div class="kick">Proposta de marcenaria corporativa</div>
+      <div class="tit">Porto Verde.</div>
+      <div class="sub">Escritório · Leonardo — revisão sobre o projeto 3D</div>
+    </div>
+    <div class="strip">
+      <div class="c"><div class="k">Escopo</div><div class="v">5 frentes</div></div>
+      <div class="c"><div class="k">Execução</div><div class="v">Marcenaria · serralheria</div></div>
+      <div class="c"><div class="k">Ferragens</div><div class="v">Hettich · Alemanha</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ 2. COPY ══════ -->
+<div class="page"><div class="pad">
+  <div class="eyebrow">Antes do preço</div>
+  <hr class="rule">
+  <div class="big-q serif">Num escritório, a marcenaria não decora.<br>
+  Ela <b>é a arquitetura</b>.</div>
+
+  <p class="body-t" style="margin-top:6mm;">
+  Aqui os painéis não são revestimento — são as paredes que o seu cliente vê quando entra.
+  A porta do banheiro e a da sala de reunião <b>somem dentro deles</b>. As portas altas
+  abrem ao toque, <b>sem puxador quebrando o plano</b>. E a mesa central esconde
+  <b>até 20 tomadas</b> dentro da própria estrutura.<br><br>
+  Isso só fecha se marcenaria, serralheria e iluminação forem pensadas juntas, pela mesma
+  mão. Quando são três fornecedores diferentes, a folga aparece sempre no mesmo lugar: o
+  metalon que não bate com a caixaria, o LED que sobra no nicho, a porta mimetizada que
+  denuncia o vão.<br><br>
+  <b>Aqui é tudo nosso.</b> Uma equipe, um cronograma, um responsável.</p>
+
+  <div class="pull" style="margin-top:6mm;">
+    <div class="t">Duas portas que desaparecem.</div>
+    <div class="d">A do banheiro e a da sala de reunião são <b>mimetizadas</b>: mesma folha,
+    mesmo veio, mesma linha de sombra do painel. Fechadas, você não acha onde estão.
+    Abertas, funcionam com <b>sistema pivotante e fecho rolete</b> — e por dentro levam
+    <b>estrutura de aço anti-empeno</b>, porque folha de porta alta sem reforço entorta
+    com o tempo e passa a raspar.</div>
+  </div>
+
+  <div class="stats">
+    <div>
+      <div class="n">5</div>
+      <div class="t"><b>frentes num único contrato.</b> Da mesa central ao painel do
+      banheiro, um só responsável pelo conjunto.</div>
+    </div>
+    <div>
+      <div class="n">2</div>
+      <div class="t"><b>ofícios sob o mesmo teto.</b> Marcenaria e serralheria saem da
+      mesma produção, com a mesma conferência de medida.</div>
+    </div>
+    <div>
+      <div class="n">10 <em>anos</em></div>
+      <div class="t"><b>de garantia formal em contrato.</b> Equipe própria do corte à
+      instalação.</div>
+    </div>
+  </div>
+
+  <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Porto Verde · Leonardo</span></div>
+</div></div>
+
+<!-- ══════ 3. ESCOPO ══════ -->
+<div class="page p-esc"><div class="pad">
+  <div class="eyebrow">O que será executado</div>
+  <div class="h-sec serif">Cinco frentes,<br><em>um só conjunto.</em></div>
+  <hr class="rule">
+  <p class="lead" style="margin-bottom:4mm;">Fornecimento, produção e instalação por equipe
+  própria.</p>
+
+  <div class="amb">
+    <div class="n">Parede lado direito — completa <span class="badge">maior frente</span></div>
+    <div class="s">Estante com torres e nichos iluminados</div>
+    <ul>
+      <li>Torres e <b>nichos iluminados</b>, com painéis complementares de acabamento
+          fechando o conjunto de ponta a ponta.</li>
+      <li>Estrutura com <b>3 gavetas</b> e <b>puxadores em cava</b> usinada.</li>
+      <li><b>Prateleiras em serralheria</b> com <b>vidro incolor temperado 8 mm</b>.</li>
+      <li><b>Portas com abertura por toque</b> — sem puxador aparente.</li>
+    </ul>
+  </div>
+
+  <div class="amb">
+    <div class="n">Mesas centrais</div>
+    <div class="s">MDF melamínico fosco · estrutura em metalon</div>
+    <ul>
+      <li>Estrutura em <b>metalon</b> com <b>pé em acabamento treliçado</b>.</li>
+      <li><b>2 gaveteiros volantes</b> com 3 gavetas cada.</li>
+      <li><b>Caixas elétricas embutidas</b> — até <b>20 tomadas 10A</b> na própria mesa.</li>
+    </ul>
+  </div>
+
+  <div class="amb">
+    <div class="n">Sala de reunião — painéis</div>
+    <div class="s">Painel de TV · painel com porta mimetizada</div>
+    <ul>
+      <li><b>Painel central para televisão.</b></li>
+      <li><b>Painel com porta mimetizada</b> para a sala de reunião.</li>
+      <li><b>3 prateleiras suspensas</b> com <b>suporte oculto</b>.</li>
+    </ul>
+  </div>
+
+  <div class="amb">
+    <div class="n">Sala de reunião — mesa oval</div>
+    <div class="s">Tampo em MDF melamínico fosco · base cônica laqueada</div>
+    <ul>
+      <li>Mesa oval com <b>tampo em MDF melamínico fosco</b>.</li>
+      <li><b>Base cônica</b> com acabamento <b>laqueado</b>.</li>
+    </ul>
+  </div>
+
+  <div class="amb">
+    <div class="n">Painel frontal do banheiro</div>
+    <div class="s">Parede completa com porta mimetizada</div>
+    <ul>
+      <li>Painel de <b>parede completa</b>, com <b>porta mimetizada</b> integrada —
+          pivotante, fecho rolete e estrutura de aço anti-empeno.</li>
+    </ul>
+  </div>
+
+  <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Porto Verde · Leonardo</span></div>
+</div></div>
+
+<!-- ══════ 4. TÉCNICO ══════ -->
+<div class="page"><div class="pad">
+  <div class="eyebrow">Especificação técnica</div>
+  <div class="h-sec serif">O que está por dentro<br><em>do que você não vê.</em></div>
+  <hr class="rule">
+  <p class="lead" style="margin-bottom:4mm;">Um escritório é usado oito horas por dia,
+  todos os dias. A diferença aparece no segundo ano.</p>
+
+  <table class="spec-tb">
+    <thead><tr><th>Item</th><th>Especificação</th></tr></thead>
+    <tbody>
+      <tr><td>Painéis e caixaria</td><td><b>MDF melamínico fosco.</b> Linha e cor a definir
+        com você na aprovação — <b>não contempla a linha Acetinato</b>.</td></tr>
+      <tr><td>Serralheria</td><td>Metalon com <b>pintura eletrostática</b> — acabamento de
+        forno, uniforme e muito mais resistente a risco que pintura líquida.</td></tr>
+      <tr><td>Portas</td><td><b>Estrutura de aço anti-empeno</b> por dentro da folha.
+        Porta alta sem reforço entorta com o tempo e passa a raspar no batente.</td></tr>
+      <tr><td>Fechaduras e abertura</td><td><b>Fecho rolete</b> e <b>sistema pivotante</b>
+        nas portas mimetizadas · <b>abertura por toque</b> nas portas altas.</td></tr>
+      <tr><td>Puxadores</td><td><b>Cava usinada</b> no próprio MDF — sem ferragem aparente
+        quebrando o plano do painel.</td></tr>
+      <tr><td>Dobradiças</td><td><b>Hettich</b>, alemã, com amortecimento integrado ao corpo.
+        Fecho suave em qualquer velocidade.</td></tr>
+      <tr><td>Prateleiras da estante</td><td><b>Serralheria + vidro incolor temperado 8 mm</b>
+        — vão livre sem montante no meio.</td></tr>
+      <tr><td>Iluminação</td><td><b>Fita de LED</b> com perfil embutido nos nichos, alinhada
+        com o elétrico da obra.</td></tr>
+      <tr><td>Elétrica da mesa</td><td><b>Caixas embutidas para até 20 tomadas 10A</b>,
+        com passagem usinada na própria estrutura.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="fora">
+    <div class="t">O que não está incluído</div>
+    <div class="d"><b>Esquadria de alumínio e vidros</b> — as divisórias e portas de vidro
+    com perfil metálico que aparecem no projeto <b>não fazem parte desta proposta</b> e
+    devem ser contratadas com o fornecedor de esquadrias.<br>
+    Também fora: pontos elétricos e hidráulicos · gesso, pintura e obra civil ·
+    mobiliário solto (cadeiras) · televisão e eletrodomésticos.</div>
+  </div>
+
+  <div class="warr-big">
+    <div class="k">Garantia</div>
+    <div class="big">10 anos. Em contrato.</div>
+    <div class="d">Marcenaria sob medida costuma sair com <b>1 a 3 anos</b> de garantia —
+    quando sai por escrito. A nossa é de <b>10 anos</b> sobre estrutura, montagem e
+    acabamento, mais <b>2 anos</b> de instalação e regulagem.<br>
+    Conseguimos assinar isso porque a equipe é <b>própria do corte à instalação</b> —
+    não há terceiro para quem empurrar o defeito.</div>
+  </div>
+
+  <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Porto Verde · Leonardo</span></div>
+</div></div>
+
+<!-- ══════ 5. INVESTIMENTO ══════ -->
+<div class="page p-inv"><div class="pad">
+  <div class="eyebrow">Investimento</div>
+  <div class="h-sec serif" style="font-size:21pt;">Preço fechado,<br><em>por frente.</em></div>
+  <hr class="rule" style="margin:8px 0 9px;">
+
+  <div class="inv-hero" style="box-shadow:inset 0 0 0 1px rgba(201,169,106,.30);">
+    <div class="k">Marcenaria completa · 5 frentes</div>
+    <div class="v serif">R$ 57.800</div>
+    <div class="c">Fornecimento, produção e instalação por equipe própria — marcenaria,
+    serralheria com pintura eletrostática, ferragens Hettich e iluminação dos nichos.</div>
+    <div class="pay2">
+      <div><b>40%</b><span>na assinatura</span></div>
+      <div><b>60%</b><span>na entrega</span></div>
+    </div>
+  </div>
+
+  <table class="item-tb">
+    <thead><tr><th>Frente</th><th class="r">Preço</th></tr></thead>
+    <tbody>
+      <tr><td class="nm">Parede lado direito — completa<small>Estante com torres e nichos iluminados · 3 gavetas · prateleiras em serralheria e vidro · portas touch</small></td><td class="r">R$ 22.500</td></tr>
+      <tr><td class="nm">Mesas centrais<small>Metalon com pé treliçado · 2 gaveteiros volantes · até 20 tomadas 10A</small></td><td class="r">R$ 12.500</td></tr>
+      <tr><td class="nm">Sala de reunião — painéis<small>Painel de TV · painel com porta mimetizada · 3 prateleiras com suporte oculto</small></td><td class="r">R$ 9.800</td></tr>
+      <tr><td class="nm">Sala de reunião — mesa oval<small>Tampo em MDF melamínico fosco · base cônica laqueada</small></td><td class="r">R$ 8.700</td></tr>
+      <tr><td class="nm">Painel frontal do banheiro<small>Parede completa com porta mimetizada</small></td><td class="r">R$ 4.300</td></tr>
+      <tr class="tot"><td>Total</td><td class="r">R$ 57.800</td></tr>
+    </tbody>
+  </table>
+
+  <div class="terms" style="margin-top:2.6mm;">
+    <div class="term"><div class="k">Pagamento</div><div class="v">40% + 60%</div></div>
+    <div class="term"><div class="k">Prazo</div><div class="v">35 a 45<br>dias úteis</div></div>
+    <div class="term"><div class="k">Garantia</div><div class="v">10 anos</div></div>
+    <div class="term"><div class="k">Validade</div><div class="v">15 dias<br>corridos</div></div>
+  </div>
+
+  <div class="note">
+    <b>Incluso:</b> fornecimento, produção e instalação das 5 frentes · serralheria com
+    pintura eletrostática · vidro incolor temperado das prateleiras · ferragens Hettich ·
+    abertura por toque nas portas altas · estrutura de aço anti-empeno nas portas ·
+    fecho rolete e sistema pivotante · fita de LED com perfil nos nichos ·
+    caixas elétricas embutidas na mesa central.<br>
+    <b>Não incluso:</b> <b>esquadria de alumínio e vidros</b> (divisórias e portas de vidro
+    com perfil metálico) · pontos elétricos e hidráulicos · gesso, pintura e obra civil ·
+    mobiliário solto · televisão e eletrodomésticos.<br>
+    <b>Premissas:</b> materiais e cores <b>a definir na aprovação</b>, sem contemplar a
+    linha Acetinato · medidas conferidas no local antes da produção.
+  </div>
+
+  <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Porto Verde · Leonardo · 28/07/2026</span></div>
+</div></div>
+
+</body></html>
