@@ -497,9 +497,38 @@ for n, v in [('Consumíveis e embalagem', consum), ('Logística Alphaville', LOG
              ('Visita técnica / medições', VISITA), ('Serviço sobre o existente', MONTAGEM_EX)]:
     print(f'    {n:52s} R$ {v*share:8,.2f}')
 
-custo_item = chapa_item + fita_item + filet_item + sum(v for _, v in DET) + gerais
-preco_item = resto*esforco[ALVO]/tot_esf + ESPEC.get(ALVO, 0)/div
+custo_item = custo_it[ALVO]
+preco_item = preco_it[ALVO]
 print(f'\n  ══ CUSTO DIRETO DO ITEM                            R$ {custo_item:9,.2f}')
-print(f'  ══ PREÇO AO CLIENTE                                R$ {preco_item:9,.2f}')
-print(f'     markup = 1/{div:.5f} = {1/div:.3f}×   ·   margem embutida'
+print(f'  ══ PREÇO AO CLIENTE (MC {MC_CLOSET:.0%})                     R$ {preco_item:9,.2f}')
+print(f'     markup = 1/{div_closet:.5f} = {1/div_closet:.3f}×   ·   margem embutida'
       f' R$ {preco_item-custo_item:9,.2f}')
+
+# ══════════════════════════════ AJUSTE COMERCIAL POR AMBIENTE [Jonathan 28/07]
+# Decisão de venda, não de custo: puxa R$ 5.000 do closet e fecha a despensa em
+# R$ 19.000. O custo não muda — muda a MC de cada conjunto.
+AMB = {
+    'Suíte':            ['7 Suíte · roupeiro', '8 Suíte · sapateira', '9 Suíte · closet'],
+    'Cozinha':          ['2 Aéreo cozinha (L)', '3 Armário cozinha (torre)'],
+    'Sala de jantar':   ['1 Painel sala jantar'],
+    'Banheiros/lavabo': ['10 Banho suíte', '11 Banho 01 (visita)', '12 Banho 02 (Terezinha)',
+                         '13 Banho 03 (Natalia/Gab)', '14 Lavabo'],
+    'Despensa':         ['4 Despensa · armário alto', '5 Despensa · armário baixo',
+                         '6 Despensa · piso-teto'],
+}
+AJUSTE  = {'Suíte': -5000.0}          # retirado do closet
+FECHADO = {'Despensa': 19000.0}       # preço fechado do conjunto
+
+print('\n' + '═'*74)
+print('AJUSTE COMERCIAL POR AMBIENTE')
+print('═'*74)
+tot_p = tot_c = 0.0
+for nome, itens in AMB.items():
+    c = sum(custo_it[i] for i in itens)
+    p = FECHADO.get(nome, sum(preco_it[i] for i in itens) + AJUSTE.get(nome, 0))
+    mc = 1 - a - liqF*b - c/p
+    tot_p += p; tot_c += c
+    print(f'  {nome:18s} custo R$ {c:9,.2f}  →  R$ {p:10,.2f}   MC {mc:5.1%}')
+print(f'  {"TOTAL":18s} custo R$ {tot_c:9,.2f}  →  R$ {tot_p:10,.2f}'
+      f'   MC {1 - a - liqF*b - tot_c/tot_p:5.1%}')
+print(f'  À vista (−10%)                              R$ {tot_p*0.9:10,.2f}')

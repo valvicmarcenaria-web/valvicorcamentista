@@ -1,7 +1,7 @@
 # Casa L&M — Alphaville (alto padrão)
 
 > **Status:** 🟢 Fase 3 — proposta entregue.
-> **R$ 200.200** de tabela · **R$ 180.200 à vista** (30/30/40) · MC 37% (**closet 32%**), COM RT 10% · 70 chapas · 14 móveis.
+> **R$ 199.300** de tabela · **R$ 179.300 à vista** (30/30/40) · MC blended **34,8%**, COM RT 10% · 70 chapas · 14 móveis.
 > Vidro das portas do closet/roupeiro **cotado** (Renolfh, 28/07).
 > Fonte: `Caderno_Tecnico.pdf` — 40 pranchas A2, 07/2026.
 > Cálculo auditável: `corte-casa-lm.py`.
@@ -370,3 +370,41 @@ já levantadas:
 Com esses três números eu fecho o upgrade em minutos — inclusive com o preço adicional
 já convertido pelo divisor. **Não vou estimar**: seria repetir o erro do vidro, que eu
 havia chutado em R$ 700/m² e veio a R$ 1.110.
+
+## Rodada 7 (28/07) — correção técnica e ancoragem de preço
+
+**1 · Erro meu na página das curvas.** Eu havia escrito *"MDF não dobra"*. **Dobra sim** —
+com **usinagem de precisão na CNC**: o verso da peça recebe uma sequência de rasgos
+calculados para o raio exato; espaçamento errado e a curva sai facetada ou trinca.
+Texto reescrito. A versão correta é melhor argumento do que a errada, porque puxa para
+a **CNC própria**: *"é o tipo de peça que separa quem tem CNC própria de quem terceiriza
+o corte."*
+
+**2 · Ancoragem de preço.** O bloco do investimento passou a mostrar o **valor de tabela
+riscado em corpo grande** (21pt) acima do valor à vista (35pt), com pílula dourada
+**"Você economiza R$ 20.000"**. Na tabela por ambiente, corrigi uma inconsistência real:
+a soma dos ambientes é o **valor de tabela**, então a linha de total virou R$ 199.300 e o
+à vista ganhou linha própria em dourado.
+
+**3 · Premissas enxutas.** Saíram a ressalva da elevação V1 e a das cores em amostra.
+> ⚠️ A questão do **V1 continua aberta internamente** — se a arquiteta confirmar que são
+> mais 2 folhas de vidro, são ~R$ 3.740 de custo (≈ R$ 10.900 de preço) que hoje **não
+> estão** na proposta e não têm mais ressalva escrita protegendo a gente.
+
+**4 · Rebalanceamento comercial [Jonathan].** Decisão de venda, não de custo — o custo
+direto não mudou (R$ 72.594):
+
+| Ambiente | Custo | Preço | MC |
+|---|--:|--:|--:|
+| Suíte | R$ 42.691 | R$ 107.800 | 31,6% |
+| Cozinha | R$ 11.225 | R$ 32.800 | 37,0% |
+| Sala de jantar | R$ 6.859 | R$ 20.000 | 37,0% |
+| Banheiros e lavabo | R$ 6.737 | R$ 19.700 | 37,0% |
+| **Despensa** *(fechado)* | R$ 5.081 | **R$ 19.000** | **44,5%** |
+| **TOTAL** | **R$ 72.594** | **R$ 199.300** | **34,8%** |
+
+> O closet sozinho, com os R$ 5.000 retirados, sai de MC 32% para **≈ 29,5%**.
+> A despensa compensa subindo para 44,5%. A MC do projeto praticamente não se move
+> (34,95% → 34,8%).
+
+**Blum:** parado por ora, a pedido.

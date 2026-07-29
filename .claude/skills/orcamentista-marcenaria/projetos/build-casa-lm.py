@@ -43,8 +43,20 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       letter-spacing:.22em; text-transform:uppercase; color:var(--gold-lt);
       vertical-align:middle; margin-left:4mm;}}
   .vrule{{width:26mm; height:1.5px; background:var(--gold-lt); opacity:.85;
-      margin:1mm 0 2.6mm;}}
-  .pay3{{display:flex; margin-top:3.4mm; padding-top:3mm;
+      margin:1mm 0 2.4mm;}}
+  .p-inv .inv-hero{{padding:4.6mm 7mm;}}
+  .pr-tab{{margin-top:1.4mm;}}
+  .pr-tab span{{font-family:system-ui,-apple-system,sans-serif; font-size:7.2pt;
+      letter-spacing:.18em; text-transform:uppercase; color:#8F8578; font-weight:700;
+      margin-right:3.5mm; vertical-align:middle;}}
+  .pr-tab s{{font-family:'Cormorant Garamond',Georgia,serif; font-size:21pt; font-weight:700;
+      color:#9C9288; text-decoration-thickness:1.5px;
+      text-decoration-color:rgba(201,169,106,.7);}}
+  .econ{{display:inline-block; margin-top:1.4mm; padding:1.2mm 4.2mm; border-radius:99px;
+      background:rgba(201,169,106,.15); border:1px solid rgba(201,169,106,.45);
+      font-size:8.2pt; font-weight:700; letter-spacing:.05em; color:var(--gold-lt);}}
+  .item-tb tr.vista-row td{{color:var(--gold); font-size:12.5pt;}}
+  .pay3{{display:flex; margin-top:2.6mm; padding-top:2.4mm;
       border-top:1px solid rgba(201,169,106,.28);}}
   .pay3 > div{{flex:1; padding-left:5mm; border-left:1px solid rgba(201,169,106,.18);}}
   .pay3 > div:first-child{{padding-left:0; border-left:0;}}
@@ -68,7 +80,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   .warr .d{{font-size:8.4pt; color:var(--soft); line-height:1.6;}}
   .warr .d b{{color:var(--ink);}}
   /* página "além do móvel" */
-  .coord{{display:flex; gap:0; margin-top:4mm; border-top:2px solid var(--ink); padding-top:3.4mm;}}
+  .coord{{display:flex; gap:0; margin-top:3mm; border-top:2px solid var(--ink); padding-top:2.8mm;}}
   .coord > div{{flex:1; padding:0 5mm; border-left:1px solid var(--line);}}
   .coord > div:first-child{{padding-left:0; border-left:0;}}
   .coord > div:last-child{{padding-right:0;}}
@@ -76,15 +88,15 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       color:var(--gold); font-weight:700;}}
   .coord .d{{font-size:8.4pt; color:var(--soft); line-height:1.55; margin-top:1.6mm;}}
   .coord .d b{{color:var(--ink);}}
-  .warr-big{{background:var(--deep); border-radius:6px; padding:5mm 7mm; margin-top:4mm;
+  .warr-big{{background:var(--deep); border-radius:6px; padding:4.4mm 7mm; margin-top:3.4mm;
       position:relative; overflow:hidden; box-shadow:inset 0 0 0 1px rgba(201,169,106,.30);}}
   .warr-big::after{{content:""; position:absolute; left:0; top:0; bottom:0; width:4px;
       background:var(--gold-lt);}}
   .warr-big .k{{font-size:7.2pt; letter-spacing:.2em; text-transform:uppercase;
       color:var(--gold-lt); font-weight:700;}}
-  .warr-big .big{{font-family:'Cormorant Garamond',Georgia,serif; font-size:24pt;
+  .warr-big .big{{font-family:'Cormorant Garamond',Georgia,serif; font-size:22pt;
       font-weight:700; color:#fff; line-height:1.12; margin-top:1.6mm;}}
-  .warr-big .d{{font-size:8.6pt; color:#C6BFB2; line-height:1.6; margin-top:2.4mm;}}
+  .warr-big .d{{font-size:8.5pt; color:#C6BFB2; line-height:1.52; margin-top:2mm;}}
   .warr-big .d b{{color:#F0E7D6;}}
 </style></head><body>
 
@@ -298,7 +310,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   <hr class="rule">
   <p class="lead" style="margin-bottom:1mm;">Um projeto deste porte não é só marcenaria.</p>
 
-  <p class="body-t" style="margin-top:4mm;">
+  <p class="body-t" style="margin-top:3mm;">
   Tem <b>porta de vidro com estrutura metálica</b>, <b>serralheria</b>, <b>fita de LED com
   fonte e comando</b>, <b>pintura e gesso</b> encostando no móvel. Cada um desses é um
   fornecedor com prazo próprio, medida própria — e desculpa própria quando alguma coisa
@@ -319,18 +331,19 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       <b>o que fecha primeiro</b>, para o móvel não voltar para retoque.</div></div>
   </div>
 
-  <div class="split2" style="margin-top:5.5mm;">
-    <div><div class="figure"><img src="{CURVA}" alt="" style="height:46mm;object-fit:cover;object-position:38% 50%;"></div>
+  <div class="split2" style="margin-top:4.5mm;">
+    <div><div class="figure"><img src="{CURVA}" alt="" style="height:43mm;object-fit:cover;object-position:38% 50%;"></div>
       <div class="cap">Closet · terminação curva do piso ao teto</div></div>
     <div style="display:flex;flex-direction:column;justify-content:center;">
       <div class="pull">
         <div class="t">A peça mais difícil<br>da casa.</div>
         <div class="d">O closet <b>termina em curva</b> — dois raios ligados por um trecho
         reto, do piso ao teto. E o roupeiro repete a curva na lateral.<br><br>
-        <b>MDF não dobra.</b> A peça é construída em camadas laminadas sobre gabarito,
-        lixada e revestida, mantendo o <b>raio constante em toda a altura</b> e o veio da
-        madeira contínuo. Um milímetro de variação aparece assim que a luz bate de lado.<br><br>
-        É por isso que ela abre esta proposta na capa.</div>
+        Curvar MDF é <b>usinagem de precisão na CNC</b>: o verso da peça recebe uma
+        sequência de rasgos calculados para o raio exato — espaçamento errado, e a curva
+        sai facetada ou trinca. E o revestimento ainda precisa fechar com o
+        <b>veio contínuo</b> em relação às peças retas ao lado.<br><br>
+        É o tipo de peça que separa quem tem <b>CNC própria</b> de quem terceiriza o corte.</div>
       </div>
     </div>
   </div>
@@ -341,47 +354,48 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
     <div class="d">Marcenaria sob medida costuma sair com <b>1 a 3 anos</b> de garantia —
     quando sai por escrito. A nossa é de <b>10 anos</b> sobre estrutura, montagem e
     acabamento, mais <b>2 anos</b> de instalação e regulagem, formalizada em contrato.<br>
-    Só conseguimos assinar isso porque a equipe é <b>própria do corte à instalação</b>,
-    com CNC próprio — não há terceiro no meio para quem empurrar o defeito.</div>
+    Conseguimos assinar isso porque a equipe é <b>própria do corte à instalação</b> —
+    não há terceiro para quem empurrar o defeito.</div>
   </div>
 
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Casa L&amp;M · Alphaville</span></div>
 </div></div>
 
 <!-- ══════ 6. INVESTIMENTO ══════ -->
-<div class="page"><div class="pad">
+<div class="page p-inv"><div class="pad">
   <div class="eyebrow">Investimento</div>
   <div class="h-sec serif" style="font-size:21pt;">Preço fechado,<br><em>por ambiente.</em></div>
   <hr class="rule" style="margin:8px 0 9px;">
 
   <div class="inv-hero hero-vista">
     <div class="k">Marcenaria completa · 14 móveis</div>
-    <div class="v serif">R$ 180.200<span class="vtag">à vista</span></div>
+    <div class="pr-tab"><span>Valor de tabela</span><s>R$ 199.300</s></div>
+    <div class="v serif">R$ 179.300<span class="vtag">à vista</span></div>
     <div class="vrule"></div>
-    <div class="c">Seis ambientes — fornecimento, produção e instalação por equipe própria,
-    com ferragens Hettich, portas em vidro e iluminação LED.</div>
+    <div class="econ">Você economiza R$ 20.000</div>
+    <div class="c" style="margin-top:1.8mm;">Seis ambientes — fornecimento, produção e
+    instalação por equipe própria, com ferragens Hettich, portas em vidro e iluminação LED.</div>
     <div class="pay3">
       <div><b>30%</b><span>na assinatura</span></div>
       <div><b>30%</b><span>no início da montagem</span></div>
       <div><b>40%</b><span>na entrega final</span></div>
     </div>
-    <div class="alt">Valor de tabela <b>R$ 200.200</b> — o pagamento à vista já traz
-    <b>10% de desconto</b>.</div>
   </div>
 
   <table class="item-tb">
     <thead><tr><th>Ambiente</th><th class="r">Preço</th></tr></thead>
     <tbody>
-      <tr><td class="nm">Suíte — closet, roupeiro e sapateira<small>Carvalho Brun · 8 portas em vidro reflecta · 20 gavetas com corrediça oculta</small></td><td class="r">R$ 112.800</td></tr>
+      <tr><td class="nm">Suíte — closet, roupeiro e sapateira<small>Carvalho Brun · 8 portas em vidro reflecta · 20 gavetas com corrediça oculta</small></td><td class="r">R$ 107.800</td></tr>
       <tr><td class="nm">Cozinha — aéreo em L, torre e gabinete<small>Branco Ártico e Cinza Chumbo · inclui reorganizar os módulos existentes</small></td><td class="r">R$ 32.800</td></tr>
       <tr><td class="nm">Sala de jantar — painel e porta pivotante<small>Carvalho Batur · painel em três faces com porta mimetizada</small></td><td class="r">R$ 20.000</td></tr>
       <tr><td class="nm">Banheiros e lavabo — 5 ambientes<small>Carvalho Brun · sobre as bancadas de granito existentes</small></td><td class="r">R$ 19.700</td></tr>
-      <tr><td class="nm">Despensa — armário alto, gaveteiro e piso-teto<small>11 gavetas · três com fundo em chapa perfurada</small></td><td class="r">R$ 14.900</td></tr>
-      <tr class="tot"><td>Total · à vista</td><td class="r">R$ 180.200</td></tr>
+      <tr><td class="nm">Despensa — armário alto, gaveteiro e piso-teto<small>11 gavetas · três com fundo em chapa perfurada</small></td><td class="r">R$ 19.000</td></tr>
+      <tr class="tot"><td>Total</td><td class="r">R$ 199.300</td></tr>
+      <tr class="tot vista-row"><td>À vista — 10% de desconto</td><td class="r">R$ 179.300</td></tr>
     </tbody>
   </table>
 
-  <div class="terms">
+  <div class="terms" style="margin-top:2.4mm;">
     <div class="term"><div class="k">Pagamento</div><div class="v">À vista<br>−10%</div></div>
     <div class="term"><div class="k">Prazo</div><div class="v">70 a 90<br>dias corridos</div></div>
     <div class="term"><div class="k">Garantia</div><div class="v">10 anos</div></div>
@@ -398,9 +412,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
     pontos elétricos e hidráulicos · obra civil.<br>
     <b>Premissas:</b> medidas do executivo <b>conferidas no local</b> antes da produção —
     em especial as bancadas existentes e o furo de sifão · o <b>Grafite</b> é fornecido nas
-    linhas foscas, <b>não contemplando as linhas Acetinato e Aris</b> · elevação V1 do closet
-    a confirmar com a arquiteta (se for um conjunto adicional de portas, será orçado à parte) ·
-    cores confirmadas em amostra antes do corte.
+    linhas foscas, <b>não contemplando as linhas Acetinato e Aris</b>.
   </div>
 
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Casa L&amp;M · Alphaville · 28/07/2026</span></div>
