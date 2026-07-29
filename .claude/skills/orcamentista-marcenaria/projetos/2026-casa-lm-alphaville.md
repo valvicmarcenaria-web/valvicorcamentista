@@ -408,3 +408,11 @@ direto não mudou (R$ 72.594):
 > (34,95% → 34,8%).
 
 **Blum:** parado por ora, a pedido.
+
+## Rodada 8 (28/07)
+**Pintura e gesso saem da página de coordenação.** Não é escopo da Valvic — não faz
+sentido dizer que articulamos o que não tocamos. A coordenação ficou em **três frentes**:
+vidro, serralheria e iluminação. As colunas ganharam largura e a página respirou.
+
+> Gesso continua aparecendo uma vez na proposta, no lugar certo: a lista de
+> **"não incluso — já existe ou é de outro fornecedor"** da página de investimento.

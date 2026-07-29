@@ -311,10 +311,9 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   <p class="lead" style="margin-bottom:1mm;">Um projeto deste porte não é só marcenaria.</p>
 
   <p class="body-t" style="margin-top:3mm;">
-  Tem <b>porta de vidro com estrutura metálica</b>, <b>serralheria</b>, <b>fita de LED com
-  fonte e comando</b>, <b>pintura e gesso</b> encostando no móvel. Cada um desses é um
-  fornecedor com prazo próprio, medida própria — e desculpa própria quando alguma coisa
-  não encaixa.<br><br>
+  Tem <b>porta de vidro com estrutura metálica</b>, <b>serralheria</b> e <b>fita de LED
+  com fonte e comando</b> encostando no móvel. Cada um desses é um fornecedor com prazo
+  próprio, medida própria — e desculpa própria quando alguma coisa não encaixa.<br><br>
   <b>A Valvic centraliza essa articulação.</b> Nós cotamos, especificamos, conferimos a
   medida e marcamos a sequência com cada um deles. Você trata com uma pessoa. E quando
   algo não encaixa, o problema é nosso — não vira uma reunião entre fornecedores com
@@ -327,8 +326,6 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       <b>conferida contra a caixaria</b> antes de ir para a obra.</div></div>
     <div><div class="k">Iluminação</div><div class="d">Fita, perfil e lente — nós usinamos
       o rasgo e <b>alinhamos com o eletricista</b> onde entra a fonte.</div></div>
-    <div><div class="k">Pintura e gesso</div><div class="d">Definimos com a obra
-      <b>o que fecha primeiro</b>, para o móvel não voltar para retoque.</div></div>
   </div>
 
   <div class="split2" style="margin-top:4.5mm;">
