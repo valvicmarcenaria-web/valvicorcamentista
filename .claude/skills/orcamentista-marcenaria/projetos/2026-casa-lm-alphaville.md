@@ -1,7 +1,7 @@
 # Casa L&M — Alphaville (alto padrão)
 
 > **Status:** 🟢 Fase 3 — proposta entregue.
-> **R$ 200.700** parcelado · **R$ 180.600 à vista** · MC 37% (**closet 32%**), COM RT 10% · 70 chapas · 14 móveis.
+> **R$ 200.200** de tabela · **R$ 180.200 à vista** (30/30/40) · MC 37% (**closet 32%**), COM RT 10% · 70 chapas · 14 móveis.
 > Vidro das portas do closet/roupeiro **cotado** (Renolfh, 28/07).
 > Fonte: `Caderno_Tecnico.pdf` — 40 pranchas A2, 07/2026.
 > Cálculo auditável: `corte-casa-lm.py`.
@@ -288,3 +288,36 @@ linhas Acetinato e Aris**.
 > a instrução era só sobre a corrediça. Tiro o modelo dela também se quiser.
 > O puxador do roupeiro (R$ 180) continua lançado; pela mesma lógica do closet,
 > provavelmente também está incluso na folha do Renolfh.
+
+## Rodada final (28/07)
+
+**1 · Puxador metálico sai do custo.** Closet **e roupeiro** já vêm com o puxador incluso
+no preço por folha do Renolfh. Removidos os R$ 180 do roupeiro (os R$ 540 do closet já
+haviam saído). Roupeiro R$ 20.298 → **R$ 19.772**.
+**Total R$ 200.703 → R$ 200.176** (apresentado R$ 200.200 · à vista **R$ 180.200**).
+
+**2 · Destaque sutil do valor à vista.** O bloco escuro do investimento ganhou um anel
+dourado de 1px, um filete curto sob o número e a tag **À VISTA** ao lado — presença sem
+gritar. O parcelamento em 50%+50% que eu havia inventado saiu.
+
+**3 · Pagamento à vista em três marcos:** **30%** na assinatura · **30%** no início da
+montagem · **40%** na entrega final. Apresentados em três colunas separadas por filete
+dourado dentro do próprio bloco do preço.
+
+**4 · Dobradiça com ênfase visual.** Especificação **mantida** (Hettich Sensys Black) e
+promovida a **banda dedicada** na página técnica, no lugar dos dois cards antigos. O texto
+fala de qualidade **e de design**: amortecimento dentro do corpo da dobradiça (não em
+cilindro aparente), acabamento preto que faz a ferragem sumir no interior escuro do
+armário — *"num projeto em Carvalho, esse detalhe é a diferença entre acabado e montado"* —
+e os 80 mil ciclos. A garantia de 10 anos virou uma faixa clara e enxuta logo abaixo.
+
+### Preço por ambiente — final
+| Ambiente | Preço |
+|---|--:|
+| Suíte — closet, roupeiro, sapateira | R$ 112.800 |
+| Cozinha — aéreo em L, torre e gabinete | R$ 32.800 |
+| Sala de jantar — painel e porta pivotante | R$ 20.000 |
+| Banheiros e lavabo — 5 ambientes | R$ 19.700 |
+| Despensa — alto, gaveteiro e piso-teto | R$ 14.900 |
+| **Tabela** | **R$ 200.200** |
+| **À vista (−10%)** | **R$ 180.200** |

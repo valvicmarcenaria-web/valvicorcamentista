@@ -132,6 +132,38 @@ p{margin:0;}
   .stats .n em{font-style:normal; font-size:13pt;}
   .stats .t{font-size:8.3pt; color:var(--soft); line-height:1.52; margin-top:2mm;}
   .stats .t b{color:var(--ink);}
+  /* destaque sutil do valor à vista */
+  .hero-vista{box-shadow:inset 0 0 0 1px rgba(201,169,106,.30);}
+  .hero-vista .v{display:inline-block;}
+  .vtag{font-family:system-ui,-apple-system,sans-serif; font-size:7.6pt; font-weight:700;
+      letter-spacing:.22em; text-transform:uppercase; color:var(--gold-lt);
+      vertical-align:middle; margin-left:4mm;}
+  .vrule{width:26mm; height:1.5px; background:var(--gold-lt); opacity:.85;
+      margin:1mm 0 2.6mm;}
+  .pay3{display:flex; margin-top:3.4mm; padding-top:3mm;
+      border-top:1px solid rgba(201,169,106,.28);}
+  .pay3 > div{flex:1; padding-left:5mm; border-left:1px solid rgba(201,169,106,.18);}
+  .pay3 > div:first-child{padding-left:0; border-left:0;}
+  .pay3 b{display:block; font-family:'Cormorant Garamond',Georgia,serif; font-size:17pt;
+      font-weight:700; color:var(--gold-lt); line-height:1;}
+  .pay3 span{display:block; font-size:7.6pt; color:#C6BFB2; margin-top:1.2mm;}
+  /* banda da dobradiça */
+  .p-tec .spec-tb td{padding-top:2.1mm; padding-bottom:2.1mm;}
+  .hinge{background:var(--deep); border-left:3px solid var(--gold-lt); border-radius:0 5px 5px 0;
+      padding:4.4mm 6.5mm; margin-top:3.5mm; display:flex; gap:7mm; align-items:flex-start;}
+  .hinge .lead-t{flex:0 0 52mm;}
+  .hinge .lead-t .t{font-family:'Cormorant Garamond',Georgia,serif; font-size:15pt;
+      font-weight:700; line-height:1.2; color:#fff;}
+  .hinge .lead-t .k{font-size:7pt; letter-spacing:.2em; text-transform:uppercase;
+      color:var(--gold-lt); font-weight:700; margin-bottom:1.8mm;}
+  .hinge .d{font-size:8.3pt; color:#C6BFB2; line-height:1.5;}
+  .hinge .d b{color:#F0E7D6;}
+  .warr{background:var(--cream); border-left:3px solid var(--ink); border-radius:0 5px 5px 0;
+      padding:3.2mm 6mm; margin-top:2.6mm; display:flex; gap:6mm; align-items:center;}
+  .warr .t{flex:0 0 44mm; font-family:'Cormorant Garamond',Georgia,serif;
+      font-size:13.5pt; font-weight:700; line-height:1.2;}
+  .warr .d{font-size:8.4pt; color:var(--soft); line-height:1.6;}
+  .warr .d b{color:var(--ink);}
 </style></head><body>
 
 <!-- ══════ 1. CAPA ══════ -->
@@ -282,11 +314,11 @@ p{margin:0;}
 </div></div>
 
 <!-- ══════ 4. TÉCNICO ══════ -->
-<div class="page"><div class="pad">
+<div class="page p-tec"><div class="pad">
   <div class="eyebrow">Especificação técnica</div>
   <div class="h-sec serif">O que está por dentro<br><em>do que você não vê.</em></div>
   <hr class="rule">
-  <p class="lead" style="margin-bottom:5mm;">Uma casa inteira é usada todos os dias, por
+  <p class="lead" style="margin-bottom:3mm;">Uma casa inteira é usada todos os dias, por
   todo mundo. A diferença aparece no terceiro ano.</p>
 
   <table class="spec-tb">
@@ -315,21 +347,29 @@ p{margin:0;}
     </tbody>
   </table>
 
-  <div class="split2" style="margin-top:5mm;">
-    <div class="pull" style="background:var(--deep);border-left-color:var(--gold-lt);">
-      <div class="t" style="color:#fff;">Ferragem alemã.<br>Hettich desde 1888.</div>
-      <div class="d" style="color:#C6BFB2;">Cada dobradiça é testada para
-      <b style="color:#F0E7D6;">80 mil ciclos</b>: abrir e fechar a porta 10 vezes por dia
-      durante 20 anos. Numa casa com cinco banheiros e uma cozinha em uso diário, é o que
-      separa a porta que continua macia da que começa a bater.</div>
+  <div class="hinge">
+    <div class="lead-t">
+      <div class="k">Ferragem alemã · desde 1888</div>
+      <div class="t">Hettich<br>Sensys Black.</div>
     </div>
-    <div class="pull" style="background:var(--cream);border-left-color:var(--ink);">
-      <div class="t">10 anos de garantia</div>
-      <div class="d"><b>10 anos</b> na marcenaria — estrutura, montagem e acabamento.<br>
-      <b>2 anos</b> na instalação e regulagem. Garantia formal em contrato.<br><br>
-      <b>Equipe própria do corte à instalação</b>, com CNC próprio — cada peça sai do plano
-      de corte conferido, não do improviso de obra.</div>
+    <div class="d">
+      O amortecimento fica <b>dentro do corpo da dobradiça</b> — não num cilindro
+      aparente pendurado na lateral do móvel. A porta desacelera sozinha e encosta macia
+      em qualquer velocidade, e o armário por dentro continua limpo, sem nada atravessado
+      no caminho.<br><br>
+      O acabamento <b>preto</b> faz a ferragem desaparecer no interior escuro do armário.
+      É o oposto do cromado, que denuncia a dobradiça toda vez que a porta abre — e num
+      projeto em Carvalho, esse detalhe é a diferença entre acabado e montado.<br><br>
+      Cada uma é testada para <b>80 mil ciclos</b>: abrir e fechar dez vezes por dia,
+      durante vinte anos.
     </div>
+  </div>
+
+  <div class="warr">
+    <div class="t">10 anos de garantia</div>
+    <div class="d"><b>10 anos</b> na marcenaria — estrutura, montagem e acabamento ·
+    <b>2 anos</b> na instalação e regulagem · garantia formal em contrato ·
+    <b>equipe própria do corte à instalação</b>, com CNC próprio.</div>
   </div>
 
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Casa L&amp;M · Alphaville</span></div>
@@ -341,24 +381,30 @@ p{margin:0;}
   <div class="h-sec serif" style="font-size:21pt;">Preço fechado,<br><em>por ambiente.</em></div>
   <hr class="rule" style="margin:8px 0 9px;">
 
-  <div class="inv-hero">
-    <div class="k">Marcenaria completa · à vista</div>
-    <div class="v serif">R$ 180.600</div>
-    <div class="c">Catorze móveis em seis ambientes — fornecimento, produção e instalação
-    por equipe própria, com ferragens Hettich, portas em vidro e iluminação LED.</div>
-    <div class="alt">Ou <b>R$ 200.700</b> em <b>50% na assinatura + 50% na entrega</b>.
-    O valor à vista já traz <b>10% de desconto</b>.</div>
+  <div class="inv-hero hero-vista">
+    <div class="k">Marcenaria completa · 14 móveis</div>
+    <div class="v serif">R$ 180.200<span class="vtag">à vista</span></div>
+    <div class="vrule"></div>
+    <div class="c">Seis ambientes — fornecimento, produção e instalação por equipe própria,
+    com ferragens Hettich, portas em vidro e iluminação LED.</div>
+    <div class="pay3">
+      <div><b>30%</b><span>na assinatura</span></div>
+      <div><b>30%</b><span>no início da montagem</span></div>
+      <div><b>40%</b><span>na entrega final</span></div>
+    </div>
+    <div class="alt">Valor de tabela <b>R$ 200.200</b> — o pagamento à vista já traz
+    <b>10% de desconto</b>.</div>
   </div>
 
   <table class="item-tb">
     <thead><tr><th>Ambiente</th><th class="r">Preço</th></tr></thead>
     <tbody>
-      <tr><td class="nm">Suíte — closet, roupeiro e sapateira<small>Carvalho Brun · 8 portas em vidro reflecta · 20 gavetas com corrediça oculta</small></td><td class="r">R$ 113.300</td></tr>
+      <tr><td class="nm">Suíte — closet, roupeiro e sapateira<small>Carvalho Brun · 8 portas em vidro reflecta · 20 gavetas com corrediça oculta</small></td><td class="r">R$ 112.800</td></tr>
       <tr><td class="nm">Cozinha — aéreo em L, torre e gabinete<small>Branco Ártico e Cinza Chumbo · inclui reorganizar os módulos existentes</small></td><td class="r">R$ 32.800</td></tr>
       <tr><td class="nm">Sala de jantar — painel e porta pivotante<small>Carvalho Batur · painel em três faces com porta mimetizada</small></td><td class="r">R$ 20.000</td></tr>
       <tr><td class="nm">Banheiros e lavabo — 5 ambientes<small>Carvalho Brun · sobre as bancadas de granito existentes</small></td><td class="r">R$ 19.700</td></tr>
       <tr><td class="nm">Despensa — armário alto, gaveteiro e piso-teto<small>11 gavetas · três com fundo em chapa perfurada</small></td><td class="r">R$ 14.900</td></tr>
-      <tr class="tot"><td>Total · à vista</td><td class="r">R$ 180.600</td></tr>
+      <tr class="tot"><td>Total · à vista</td><td class="r">R$ 180.200</td></tr>
     </tbody>
   </table>
 

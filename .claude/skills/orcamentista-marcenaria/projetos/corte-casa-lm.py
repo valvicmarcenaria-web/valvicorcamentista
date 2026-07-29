@@ -41,7 +41,8 @@ P_CORR_OCULTA  = 120.00   # par — Hettich Quadro (closet/sapateira: corrediça
 P_PIVO         = 120.00   # conjunto porta pivotante
 P_FECH_ROLETE  = 25.00
 P_PUX_ALCA_60  = 180.00   # alça inox preto 60cm
-P_PUX_METALICO = 90.00    # puxador metálico preto/grafite (roupeiro/closet)
+# Puxador metálico SAI do custo: [Jonathan 28/07] closet e roupeiro já vêm com
+# o puxador incluso no preço por folha do Renolfh.
 P_CAVA_USINADA = 50.00    # peça — puxador cava 45° usinado
 P_LED_M        = 150.00   # fita + perfil + lente difusora + usinagem, por metro
 P_CABIDEIRO    = 120.00   # cabideiro em metal preto/grafite
@@ -333,7 +334,6 @@ FERR = [
     (f'Corrediça prateleira cozinha (par)',    n_prat_corr,     P_CORR_TELESC),
     (f'Conjunto pivotante + fechadura rolete', 1,               P_PIVO + P_FECH_ROLETE),
     (f'Puxador alça inox preto 60cm',          1,               P_PUX_ALCA_60),
-    (f'Puxador metálico preto (roupeiro)',      2,               P_PUX_METALICO),
     (f'Cava 45° usinada (peça)',               46,              P_CAVA_USINADA),
     (f'Cabideiro metal preto/grafite',         5,               P_CABIDEIRO),
     (f'Ganchos vassoura (conjunto)',           1,               P_GANCHOS),
@@ -405,7 +405,7 @@ ESPEC = {
     '1 Painel sala jantar':      P_PIVO + P_FECH_ROLETE + P_PUX_ALCA_60,
     '2 Aéreo cozinha (L)':       ml_led_aereo*P_LED_M,
     '5 Despensa · armário baixo': m2_perf*P_PERFURADA_M2,
-    '7 Suíte · roupeiro':        custo_vidro_roupeiro + 2*P_PUX_METALICO,
+    '7 Suíte · roupeiro':        custo_vidro_roupeiro,
     '8 Suíte · sapateira':       13*P_CORR_TELESC + ml_led_sapat*P_LED_M,
     '9 Suíte · closet':          custo_vidro_closet
                                  + 20*P_CORR_OCULTA + 5*P_CABIDEIRO
