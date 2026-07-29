@@ -21,13 +21,13 @@
   .sheet:last-child{ page-break-after:auto; }
 
   /* ===== capa/cabeçalho ===== */
-  .hero{ background:radial-gradient(120% 90% at 85% -10%, #1b3a5e 0%, rgba(27,58,94,0) 55%), linear-gradient(160deg,#0E2038 0%,#0b1a2e 60%,#0a1626 100%); color:#fff; padding:14mm 16mm 12mm; position:relative; }
+  .hero{ background:radial-gradient(120% 90% at 85% -10%, #1b3a5e 0%, rgba(27,58,94,0) 55%), linear-gradient(160deg,#0E2038 0%,#0b1a2e 60%,#0a1626 100%); color:#fff; padding:12mm 16mm 10mm; position:relative; }
   .hero::after{ content:""; position:absolute; left:16mm; right:16mm; bottom:0; height:2.5px; background:linear-gradient(90deg,var(--gold),var(--gold-dk) 45%,transparent); }
   .hero .brand{ display:flex; align-items:center; gap:11px; }
   .hero .mono{ width:38px; height:38px; border:1.5px solid var(--gold); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:20px; color:var(--gold); }
   .hero .co{ font-size:12px; font-weight:700; letter-spacing:2.6px; text-transform:uppercase; }
   .hero .cosub{ font-size:8px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
-  .hero .kx{ font-size:8.5px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-top:13mm; }
+  .hero .kx{ font-size:8.5px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-top:10mm; }
   .hero h1{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:34px; line-height:1.08; margin-top:5px; }
   .hero h1 span{ color:var(--gold-soft); font-style:italic; }
   .hero .lead{ font-size:10.5px; color:rgba(255,255,255,.7); margin-top:9px; max-width:135mm; line-height:1.65; }
@@ -41,7 +41,7 @@
   .body{ flex:1; padding:8mm 16mm 0; display:flex; flex-direction:column; }
 
   .sec{ display:flex; align-items:center; gap:9px; margin:0 0 7px; }
-  .sec:not(:first-child){ margin-top:7mm; }
+  .sec:not(:first-child){ margin-top:5mm; }
   .sec .bar{ width:15px; height:2px; background:var(--gold); }
   .sec .tx{ font-size:8.6px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--navy); }
   .sec .ct{ margin-left:auto; font-size:8px; color:var(--muted); }
@@ -61,19 +61,19 @@
   .traj .ds{ font-size:8.6px; color:var(--muted); line-height:1.45; margin-top:3px; }
 
   /* cartão de destaque */
-  .hl{ background:#fff; border:1px solid var(--line); border-left:3.5px solid var(--gold); border-radius:0 8px 8px 0; padding:11px 15px; margin-top:8px; }
+  .hl{ background:#fff; border:1px solid var(--line); border-left:3.5px solid var(--gold); border-radius:0 8px 8px 0; padding:9px 14px; margin-top:7px; }
   .hl .hlt{ font-size:7.6px; letter-spacing:1.6px; text-transform:uppercase; color:var(--gold-dk); font-weight:800; }
-  .hl p{ font-family:'Cormorant Garamond',serif; font-size:13.5px; line-height:1.5; color:#2a3744; margin-top:4px; }
+  .hl p{ font-family:'Cormorant Garamond',serif; font-size:12.8px; line-height:1.45; color:#2a3744; margin-top:4px; }
   .hl p b{ color:var(--navy); font-weight:700; }
 
   /* blocos de responsabilidade */
-  .blk{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:11px 15px; margin-bottom:7px; }
+  .blk{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:9px 14px; margin-bottom:6px; }
   .blk .bt{ display:flex; align-items:baseline; gap:8px; }
   .blk .ltr{ font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:700; color:var(--gold); line-height:1; }
   .blk .bn{ font-size:11px; font-weight:800; color:var(--navy); }
   .blk .bs{ margin-left:auto; font-size:8px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:var(--gold-dk); background:#f6edd6; padding:2px 8px; border-radius:9px; }
   .blk ul{ margin:6px 0 0; padding-left:15px; }
-  .blk li{ font-size:9.4px; color:#41505d; line-height:1.55; margin-bottom:2.5px; }
+  .blk li{ font-size:9.2px; color:#41505d; line-height:1.5; margin-bottom:2px; }
   .blk li b{ color:var(--navy); }
   .blk li::marker{ color:var(--gold); }
 
@@ -140,9 +140,9 @@
 
     <div class="sec"><span class="bar"></span><span class="tx">Seu papel aqui</span></div>
     <p class="t">Você é a pessoa que <b>traduz a venda em projeto executável</b>. Recebe o que o comercial fechou e entrega ao chão de fábrica um projeto estruturado e programado — com medida, ferragem e material corretos. É uma função técnica, de precisão, e com efeito direto em duas coisas que a empresa leva a sério: <b>o prazo e o retrabalho</b>.</p>
-    <p class="t">Além disso, você atua na <b>engenharia e estruturação de todos os projetos</b> que entram na empresa e apoia pontualmente o comercial — inclusive com uma frente própria de atendimento, remunerada à parte.</p>
+    <p class="t">Além disso, você é o <b>elo técnico entre o comercial e a produção</b> e responde pela <b>inteligência de desenvolvimento de produto</b> — os padrões construtivos e a biblioteca de modelos que hoje existem só na cabeça de quem faz. Há ainda uma frente própria de atendimento, remunerada à parte.</p>
 
-    <div class="sec"><span class="bar"></span><span class="tx">O que você faz</span><span class="ct">quatro frentes</span></div>
+    <div class="sec"><span class="bar"></span><span class="tx">O que você faz</span><span class="ct">cinco frentes</span></div>
 
     <div class="blk">
       <div class="bt"><span class="ltr">A</span><span class="bn">Engenharia de produto &amp; programação</span><span class="bs">Principal</span></div>
@@ -154,12 +154,24 @@
       </ul>
     </div>
 
+
     <div class="blk">
-      <div class="bt"><span class="ltr">B</span><span class="bn">Projetos internos de produção</span></div>
+      <div class="bt"><span class="ltr">B</span><span class="bn">Elo técnico entre o comercial e a produção</span></div>
       <ul>
-        <li>Desenvolver os <b>projetos internos</b> dos clientes trazidos pelo comercial.</li>
-        <li>São projetos de <b>cunho produtivo</b> — servem à fabricação; não são entregáveis de projeto ao cliente.</li>
-        <li>Garantir que o projeto interno reflete <b>exatamente o que foi vendido</b>.</li>
+        <li>Traduzir a intenção comercial em <b>especificação técnica executável</b> — material, ferragem, medida e método fechados <b>antes</b> de o projeto entrar em produção.</li>
+        <li>Antecipar as <b>divergências entre o que foi vendido e o que é fabricável</b>, resolvendo no projeto o que viraria retrabalho ou renegociação na obra.</li>
+        <li>Subsidiar o comercial com informação técnica precisa — é o que sustenta a <b>credibilidade da marca</b> diante de arquitetos e clientes.</li>
+        <li>Zelar para que a solução entregue <b>agregue valor percebido</b>: o detalhe, o acabamento e a coerência que o cliente de alto padrão reconhece.</li>
+        <li>Apoiar <b>negociações e atendimentos simples</b> como retaguarda técnica do comercial.</li>
+      </ul>
+    </div>
+
+    <div class="blk">
+      <div class="bt"><span class="ltr">C</span><span class="bn">Inteligência de desenvolvimento de produto</span></div>
+      <ul>
+        <li>Elaborar e documentar os <b>padrões técnicos de execução</b> da Valvic — o método construtivo escrito, hoje conhecimento tácito.</li>
+        <li>Desenvolver e manter a <b>biblioteca de modelos</b>: puxadores, acabamentos, ferragens e soluções construtivas recorrentes.</li>
+        <li>Converter decisão pontual em <b>padrão replicável</b> — menos tempo de projeto, menos erro de especificação e menos dependência de uma única pessoa.</li>
       </ul>
     </div>
   </div>
@@ -174,20 +186,21 @@
   </div>
 
   <div class="body">
-    <div class="blk">
-      <div class="bt"><span class="ltr">C</span><span class="bn">Atendimento a cliente sem projeto</span><span class="bs">Remunerado à parte</span></div>
+<div class="blk">
+      <div class="bt"><span class="ltr">D</span><span class="bn">Projetos internos de produção</span></div>
       <ul>
-        <li>Atender clientes que chegam <b>sem projeto</b>, mediante <b>acordo e alinhamento de valores prévios</b>.</li>
-        <li><b>Repasse de 50%</b> do valor acordado para você.</li>
-        <li>Nenhum atendimento desse tipo é assumido sem o alinhamento anterior — <b>a combinação vem antes do trabalho</b>.</li>
+        <li>Desenvolver os <b>projetos internos</b> dos clientes trazidos pelo comercial.</li>
+        <li>São projetos de <b>cunho produtivo</b> — servem à fabricação; não são entregáveis de projeto ao cliente.</li>
+        <li>Garantir que o projeto interno reflete <b>exatamente o que foi vendido</b>.</li>
       </ul>
     </div>
 
     <div class="blk">
-      <div class="bt"><span class="ltr">D</span><span class="bn">Suporte comercial pontual</span></div>
+      <div class="bt"><span class="ltr">E</span><span class="bn">Atendimento a cliente sem projeto</span><span class="bs">Remunerado à parte</span></div>
       <ul>
-        <li>Apoiar <b>negociações e atendimentos simples</b>.</li>
-        <li>Dar retaguarda técnica ao comercial quando o cliente precisa de uma resposta de projeto.</li>
+        <li>Atender clientes que chegam <b>sem projeto</b>, mediante <b>acordo e alinhamento de valores prévios</b>.</li>
+        <li><b>Repasse de 50%</b> do valor acordado para você.</li>
+        <li>Nenhum atendimento desse tipo é assumido sem o alinhamento anterior — <b>a combinação vem antes do trabalho</b>.</li>
       </ul>
     </div>
 
