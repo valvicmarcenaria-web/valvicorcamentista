@@ -59,20 +59,34 @@ e da mesma cor sim.
 
 ## Custo e preço
 
+Com a cabeceira estofada e o espelho **dentro do escopo** [Jonathan 31/07]:
+
 | | |
 |---|--:|
-| Material + ferragens + LED | 34.890,87 |
-| Consumíveis (6%) | 2.093,45 |
+| Material + ferragens + LED + especiais | 36.970,67 |
+| Consumíveis (6%) | 2.218,24 |
 | Logística · visita · instalação | 2.500,00 |
-| **CUSTO DIRETO** | **39.484,33** |
+| **CUSTO DIRETO** | **41.688,91** |
 
 | MC | Tabela | À vista (−10%) |
 |---|--:|--:|
-| 37% | R$ 91.800 | R$ 82.600 |
-| **40%** | **R$ 98.700** | **R$ 88.800** |
+| 37% | R$ 96.900 | R$ 87.200 |
+| **40%** | **R$ 104.200** | **R$ 93.800** |
 
-Rateio por quarto, a MC 40%: **Mateus R$ 59.000** (R$ 53.100 à vista) ·
-**Manuela R$ 39.700** (R$ 35.700 à vista).
+Rateio por quarto, a MC 40%: **Mateus R$ 62.900** (R$ 56.600 à vista) ·
+**Manuela R$ 41.200** (R$ 37.100 à vista).
+
+### Itens especiais dentro do número
+
+| | Custo |
+|---|--:|
+| Mateus — cabeceira estofada em linho cinza · 1,98 m² × R$ 750/m² | 1.485,00 |
+| Manuela — espelho oval 140×47 iluminado (0,66 m² × R$ 600) + vidraceiro pelo corte oval | 594,80 |
+
+> **Leitura do R$ 750/m²:** o valor veio logo depois de "cabeceira é nossa", então
+> apliquei ao **estofado**. O espelho ficou na base (prata R$ 600/m²) mais R$ 200 de
+> vidraceiro pelo corte oval e a furação do perfil de LED. Se os R$ 750 valem para os
+> dois, o espelho sobe R$ 99 — irrelevante no total, mas fica registrado.
 
 ## O ripado é o custo — de novo
 
@@ -96,8 +110,7 @@ barato (as 72 ripas saem de uma chapa só); o custo inteiro é hora de bancada.
    perguntar, porque visualmente a diferença é pequena e o custo não.
 2. **Profundidades não cotadas:** roupeiro 55 (esta está cotada na lateral),
    guarda-roupa da Manuela 55, rack/escrivaninha 50, cabeceiras 10.
-3. **Terceirizados fora do número, a cotar:**
-   - Mateus — cabeceira estofada em linho cinza claro, 11 módulos de 20 × 90 cm;
-   - Manuela — espelho oval 140 × 47 cm e o espelho iluminado da escrivaninha.
-4. **Ferragens:** orçado com Hettich Novisys (R$ 10/un) e corrediça oculta Hardt
-   (R$ 70/par). Se o padrão do projeto for Sensys, sobe.
+3. ~~Terceirizados~~ — **resolvido [Jonathan 31/07]:** cabeceira estofada e espelhos
+   são nossos e já estão no preço.
+4. ~~Ferragens~~ — **confirmado:** Hettich Novisys (R$ 10/un) e corrediça oculta Hardt
+   (R$ 70/par).

@@ -17,9 +17,11 @@ bordas aparentes. É a construção real para essa espessura; confirmar com a ar
 se ela aceita 3 cm (2×15 colados), o que baixaria bastante.
 [PREMISSA 2] Profundidades onde a prancha não cota: roupeiro 55 (cotado na lateral),
 guarda-roupa Manuela 55, rack/escrivaninha 50, cabeceiras 10.
-[PREMISSA 3] Cabeceira estofada do Mateus (11 módulos 20×90 em linho cinza) e o
-espelho oval da Manuela entram como TERCEIRIZADO, com custo a confirmar — estão
-lançados a zero e listados à parte para não contaminar o preço.
+[Jonathan 31/07] Cabeceira estofada e espelhos são NOSSOS, entram no preço:
+  · cabeceira estofada do Mateus — 11 módulos de 20×90 = 1,98 m² a R$ 750/m²
+  · espelho oval iluminado da Manuela — 140×47 = 0,66 m². O R$ 750/m² foi dado logo
+    depois de "cabeceira é nossa", então vale para o ESTOFADO; o espelho fica na base
+    (prata R$ 600/m²) + vidraceiro pelo corte oval. Corrigir se for 750 nos dois.
 
 FORA DO ESCOPO (memorial da arquiteta, mas não é marcenaria): tinta, gesso, papel de
 parede, spots/plafon/pendente, tapete, cadeira, cortina, mapa-múndi decorativo.
@@ -42,6 +44,9 @@ P_CAVA   = 50.0                   # cava usinada, por peça
 P_PUX_ML = 0.0                    # puxador em MDF = a própria chapa, já contada
 P_PISTAO = 30.0                   # pistão c/ amortecimento (porta basculante)
 P_CABID  = 45.0                   # cabideiro por metro
+ESTOFADO_M2 = 750.0               # [Jonathan] linho cinza claro, aplicado
+ESPELHO_M2  = 600.0               # base: espelho prata
+VIDRACEIRO  = 200.0               # corte oval + furação p/ o perfil de LED
 
 # ═══════════════════════════════ nesting (mesmo motor dos outros projetos)
 def nest(items):
@@ -229,6 +234,11 @@ FERR = {
     N2: 0.0, N3: 2*P_CORR + 2*P_CAVA,
     N4: 4*2*P_DOBR + 2*P_CORR + 4*P_CAVA,
 }
+# itens especiais que não são chapa: entram direto no custo do móvel
+ESPEC = {
+    M5: 11*0.20*0.90*ESTOFADO_M2,                       # cabeceira estofada, 1,98 m²
+    N4: (1.40*0.47)*ESPELHO_M2 + VIDRACEIRO,            # espelho oval 140×47 iluminado
+}
 LED = {M1: 2.50, M2: 5.50, M3: 4.95, M4: 0.0, M5: 0.0, M6: 0.0, M7: 0.0,
        N1: 0.0, N2: 3.15 + 2.75, N3: 0.0, N4: 2.34 + 2.34 + 0.90}
 
@@ -243,7 +253,7 @@ def custo_movel(mv):
     f_n, f_r, f_l = fita_do_movel(mv)
     c_fita  = (f_n*FITA + f_r*FITA + f_l*FITA_50)*DESP_FITA
     c_filet = f_n*FILET + f_r*FILET_MAN + f_l*FILET_MAN
-    c_ferr  = FERR[mv] + LED[mv]*LED_M
+    c_ferr  = FERR[mv] + LED[mv]*LED_M + ESPEC.get(mv, 0.0)
     return chapas, c_chapa, c_fita, c_filet, c_ferr, (f_n, f_r, f_l)
 
 print('═'*104)
@@ -298,6 +308,6 @@ for q in QUARTOS:
     print(f'    {q:<10} custo R$ {parc:>9,.0f}   ·   tabela R$ {round(parc/div/100)*100:>9,.0f}'
           f'   ·   à vista R$ {round(parc/div*0.9/100)*100:>9,.0f}')
 
-print('\n  ⚠ TERCEIRIZADOS FORA DESTE NÚMERO (a cotar):')
-print('     · Mateus — cabeceira estofada em linho cinza, 11 módulos de 20×90 cm')
-print('     · Manuela — espelho oval 140×47 cm e espelho iluminado da escrivaninha')
+print('\n  Itens especiais JÁ DENTRO do número:')
+print(f'     · Mateus  — cabeceira estofada linho cinza · 1,98 m² × R$ 750  = R$ {ESPEC[M5]:>8,.2f}')
+print(f'     · Manuela — espelho oval 140×47 iluminado + vidraceiro       = R$ {ESPEC[N4]:>8,.2f}')
