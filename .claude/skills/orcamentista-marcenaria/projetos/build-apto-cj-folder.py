@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
-"""FOLDER Apto CJ (B+G Estúdio) — material gráfico de alto impacto, 7 páginas.
-Capa · contracapa conceitual (lâmina de Freijó) · descritivo · miolo comparativo
-(2 págs, 5 opções de produto) · técnico · garantia+condições.
-Preços das variantes: corte-apto-cj-variantes.py (mesmo motor do orçamento)."""
+"""FOLDER Apto CJ (B+G Estúdio) — material gráfico de alto impacto, 8 páginas.
+Capa · conceitual lâmina de Freijó · conceitual laca fosca PU · descritivo ·
+miolo comparativo (2 págs, 6 configurações) · técnico · garantia+condições.
+Preços FECHADOS comercialmente [Jonathan 28/07] — auditados em precos-apto-cj.py:
+as duas colunas (à vista e parcelado) são aditivas, desconto à vista 10% em tudo,
+e a opção 1 honra exatamente os R$ 84.600 / 76.100 já entregues."""
 import pathlib
 P = pathlib.Path('/home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos')
 
@@ -13,6 +15,10 @@ OBJ     = open('/tmp/uri_cj_obj.txt').read()       # móvel entrada sobre branco
 CRIST   = open('/tmp/uri_cj_crist.txt').read()     # crop cristaleira
 TEX     = open('/tmp/uri_cj_tex.txt').read()       # textura freijó (crop do projeto)
 RIPADO  = open('/tmp/uri_cj_ripado.txt').read()    # isométrica técnica do gourmet
+ELEV    = open('/tmp/uri_cj_elev.txt').read()      # render frontal 636 cm na cor — laca
+EST2    = open('/tmp/uri_cj_est2.txt').read()      # crop cristaleira + nicho + bancada
+EST3    = open('/tmp/uri_cj_est3.txt').read()      # crop painel de TV + portas altas
+PUX     = open('/tmp/uri_cj_pux.txt').read()       # puxador bolinha dourado fosco
 CSS     = open('/tmp/css_premium.txt', encoding='utf-8').read().split('CSS = """')[1].rsplit('"""',1)[0]
 
 HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>{CSS}</style>
@@ -43,6 +49,14 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       color:var(--gold-lt); line-height:1;}}
   .proc .d{{font-size:7.9pt; color:#B9B1A2; line-height:1.5; margin-top:1.4mm;}}
   .proc .d b{{color:#F0E7D6;}}
+
+  /* ── conceitual laca */
+  .p-laca .pad{{padding:13mm 19mm 10mm;}}
+  .p-laca .body-t{{font-size:9.2pt;}}
+  .p-laca .objcard{{background:#F2EEE5; padding:4mm 4.5mm 2.5mm;}}
+  .p-laca .objcard img{{width:100%; display:block; border-radius:3px;}}
+  .p-laca .objcard .cap{{font-size:7.2pt; line-height:1.4;}}
+  .p-laca .texband img{{width:100%; display:block;}}
 
   /* ── descritivo */
   .p-esc .amb{{padding-top:2.6mm; margin-bottom:3.8mm;}}
@@ -76,6 +90,16 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       font-weight:700;}}
   .lever .d{{font-size:8.4pt; color:var(--soft); line-height:1.55; margin-top:1.4mm;}}
   .lever .d b{{color:var(--ink);}}
+
+  .same{{margin-top:5.5mm; background:var(--gold-pale); border-radius:6px;
+      padding:4.4mm 6mm 4mm;}}
+  .same .hd{{font-family:'Cormorant Garamond',Georgia,serif; font-size:13pt; font-weight:700;
+      color:var(--ink); line-height:1.2;}}
+  .same .hd em{{color:var(--gold);}}
+  .same .grid{{display:grid; grid-template-columns:1fr 1fr; gap:3.2mm 7mm; margin-top:3.2mm;}}
+  .same .k{{font-size:6.8pt; letter-spacing:.16em; text-transform:uppercase; color:var(--gold);
+      font-weight:700;}}
+  .same .d{{font-size:8pt; color:var(--soft); line-height:1.5; margin-top:.8mm;}}
 
   .menu{{margin-top:3.5mm;}}
   .mrow{{display:grid; grid-template-columns:1fr 30mm 30mm 27mm; gap:4mm; align-items:center;
@@ -181,7 +205,60 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   <div class="pfoot" style="color:#8F8578;"><span class="bl" style="color:#EFE9DC;">valvic<span class="d">.</span> marcenaria</span><span>Apartamento CJ · B+G Estúdio</span></div>
 </div></div>
 
-<!-- ══════ 3. DESCRITIVO ══════ -->
+<!-- ══════ 3. CONCEITUAL — A LACA ══════ -->
+<div class="page concept p-laca"><div class="pad">
+  <div class="eyebrow">Laca fosca PU</div>
+  <div class="h-sec serif">A cor,<br><em style="color:var(--gold-lt);">sem uma emenda.</em></div>
+  <hr class="rule">
+  <p class="body-t" style="margin-top:4mm;">
+  O melamínico chega pronto da fábrica: a cor vem impressa na face e a borda é uma
+  <b>fita colada em volta</b> — sempre há a linha onde a face termina. A laca não é uma
+  chapa, é um <b>processo</b>: aplicada sobre o móvel já montado, ela sobe pela face,
+  <b>vira a quina e continua</b>. São <b>6,36 m de parede</b> lidos como um volume único,
+  numa cor definida pelo B+G Estúdio — não escolhida num catálogo de chapas.</p>
+
+  <div class="texband"><img src="{ELEV}" alt="" style="height:auto;"></div>
+  <div class="cap" style="color:#8F8578;margin-top:1.8mm;">Estante das salas · 636 cm de parede em laca fosca — um plano contínuo, sem borda aparente em nenhuma quina</div>
+
+  <div class="proc">
+    <div><div class="n">01</div><div class="d"><b>Preparação.</b> O MDF é poroso e bebe
+      tinta. Selador, massa nas juntas e lixamento até a superfície ficar plana — a
+      etapa que ninguém vê e que decide o resultado.</div></div>
+    <div><div class="n">02</div><div class="d"><b>Fundo.</b> Demãos de primer PU com
+      lixamento fino entre cada uma. Cada demão fecha o poro que a anterior deixou
+      aberto.</div></div>
+    <div><div class="n">03</div><div class="d"><b>Cor.</b> Laca PU aplicada em cabine,
+      em camadas cruzadas — sem marca de aplicação, sem sombra, sem borda.</div></div>
+    <div><div class="n">04</div><div class="d"><b>Cura.</b> A peça descansa dias até o
+      poliuretano endurecer por completo. Só então é embalada — é isso que dá a
+      resistência ao toque e ao tempo.</div></div>
+  </div>
+
+  <div class="split2" style="margin-top:4.5mm;align-items:center;">
+    <div style="flex:1;">
+      <div class="objcard" style="margin-top:0;">
+        <img src="{CRIST}" alt="" style="height:33mm;object-fit:cover;object-position:center 32%;">
+        <div class="cap">Caixilho lacado e vidro · a quina é a mesma pele que a face</div>
+      </div>
+    </div>
+    <div style="flex:1.15;">
+      <p class="body-t" style="margin:0;">E há o que só a laca permite: <b>ela se recupera</b>.
+      Um risco é retocado no próprio móvel, e daqui a dez anos a mesma estante pode receber
+      outra cor sem trocar um único módulo. Chapa arranhada se substitui —
+      <b>laca se restaura</b>.<br><br>
+      É também onde está o custo: não na chapa, mas nas <b>horas de preparo, lixamento e
+      pintura de cada face</b>. É por isso que a laca é a maior alavanca de investimento
+      deste projeto — e a razão de existirem as configurações das próximas páginas.</p>
+    </div>
+  </div>
+
+  <div class="big-q serif" style="color:#fff; font-size:16.5pt; margin-top:4.5mm;">
+  O melamínico tem borda.<br>A laca tem <em style="color:var(--gold-lt);">silhueta</em>.</div>
+
+  <div class="pfoot" style="color:#8F8578;"><span class="bl" style="color:#EFE9DC;">valvic<span class="d">.</span> marcenaria</span><span>Apartamento CJ · B+G Estúdio</span></div>
+</div></div>
+
+<!-- ══════ 4. DESCRITIVO ══════ -->
 <div class="page p-esc"><div class="pad">
   <div class="eyebrow">O que será executado</div>
   <div class="h-sec serif">Três ambientes,<br><em>e uma adega.</em></div>
@@ -211,7 +288,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
 
   <div class="amb">
     <div class="n">Salas de TV e jantar <span class="badge">estante · laca fosca</span></div>
-    <div class="s">636 × 232 cm · laca fosca acetinada na cor do projeto</div>
+    <div class="s">636 × 232 cm · laca fosca PU na cor do projeto</div>
     <ul>
       <li><b>Estante de parede inteira</b>: painel de TV, armários altos, gavetas,
           nichos e <b>cristaleira com 4 portas de vidro</b> e puxadores dourados.</li>
@@ -237,7 +314,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Apartamento CJ · B+G Estúdio</span></div>
 </div></div>
 
-<!-- ══════ 4. MIOLO A — A ESCOLHA ══════ -->
+<!-- ══════ 5. MIOLO A — A ESCOLHA ══════ -->
 <div class="page"><div class="pad">
   <div class="eyebrow">Investimento · como ler</div>
   <div class="h-sec serif" style="font-size:21pt;">Um projeto,<br><em>seis maneiras de chegar lá.</em></div>
@@ -250,8 +327,12 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   da especificação integral do B+G Estúdio às versões que trocam acabamento por
   economia, sem mudar uma medida sequer.</p>
 
-  <div class="figure" style="margin-top:3.5mm;"><img src="{ESTANTE}" alt="" style="height:44mm;object-fit:cover;object-position:center 55%;"></div>
-  <div class="cap">Estante das salas · 6,36 m de parede — o coração do investimento</div>
+  <div class="split2" style="margin-top:3.5mm;">
+    <div style="flex:1.35;"><div class="figure"><img src="{EST3}" alt="" style="height:46mm;object-fit:cover;object-position:center 55%;"></div>
+      <div class="cap">Painel de TV e portas altas · laca fosca</div></div>
+    <div style="flex:1;"><div class="figure"><img src="{EST2}" alt="" style="height:46mm;object-fit:cover;object-position:center 42%;"></div>
+      <div class="cap">Cristaleira, nichos e bancada</div></div>
+  </div>
 
   <div class="opt1">
     <span class="tag">Opção 1 · como o projeto pede</span>
@@ -270,15 +351,29 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
     <div><div class="k">Alavanca 1 · a lâmina</div><div class="d">Trocar a lâmina natural
       por <b>melamínico Freijó Puro</b> na entrada e na varanda — por fora e por dentro.
       O desenho deixa de ser único; o tom permanece. <b>Nunca branco</b> nesses móveis.</div></div>
-    <div><div class="k">Alavanca 2 · a laca</div><div class="d">Reduzir ou substituir a
-      laca da estante por <b>melamínico na cor</b> ou <b>branco TX</b>. A forma não muda —
-      muda a pele.</div></div>
+    <div><div class="k">Alavanca 2 · a laca</div><div class="d">Manter a laca só onde o
+      olho toca, ou substituí-la por <b>melamínico na cor</b>. A forma, as medidas e as
+      ferragens não mudam — muda a pele.</div></div>
+  </div>
+
+  <div class="same">
+    <div class="hd">O que não muda em <em>nenhuma</em> das seis configurações</div>
+    <div class="grid">
+      <div><div class="k">Projeto</div><div class="d">Todas as medidas do executivo B+G —
+        os 636 cm da estante, o ripado da varanda, a cava a 45° da entrada.</div></div>
+      <div><div class="k">Ferragens</div><div class="d">Hettich Sensys com amortecimento ·
+        Actro 5D nos gavetões · Quadro V6 oculta. Garantia vitalícia do fabricante.</div></div>
+      <div><div class="k">Cristaleira</div><div class="d">As 4 portas de vidro, os
+        caixilhos e os puxadores bolinha em dourado fosco, conforme projeto.</div></div>
+      <div><div class="k">Garantia</div><div class="d">10 anos em contrato sobre estrutura,
+        montagem e acabamento — igual na opção 1 e na opção 6.</div></div>
+    </div>
   </div>
 
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Apartamento CJ · B+G Estúdio</span></div>
 </div></div>
 
-<!-- ══════ 5. MIOLO B — O MENU ══════ -->
+<!-- ══════ 6. MIOLO B — O MENU ══════ -->
 <div class="page"><div class="pad">
   <div class="eyebrow">Investimento · as configurações</div>
   <div class="h-sec serif" style="font-size:21pt;">O mesmo desenho,<br><em>cinco alternativas.</em></div>
@@ -297,33 +392,34 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       <div class="n">2 · Entrada + varanda em melamínico Freijó
         <small>O móvel fica <b>100% em melamínico Freijó Puro — por fora e por dentro</b>.
         Ripado e cava permanecem. A estante das salas segue <b>integral, em laca</b>.</small></div>
-      <div class="v gold">R$ 65.800<small>à vista</small></div>
-      <div class="v">R$ 73.100<small>parcelado</small></div>
-      <div><span class="econ-p">economiza R$ 11.500</span></div>
+      <div class="v gold">R$ 65.500<small>à vista</small></div>
+      <div class="v">R$ 72.800<small>parcelado</small></div>
+      <div><span class="econ-p">economiza R$ 11.800</span></div>
     </div>
     <div class="mrow">
-      <div class="n">3 · Estante: laca por fora · branco TX por dentro
-        <small>A laca permanece em tudo o que se vê de frente; o interior dos armários vai
-        em branco TX. Lâmina natural <b>mantida</b> na entrada e na varanda.</small></div>
-      <div class="v gold">R$ 60.600<small>à vista</small></div>
-      <div class="v">R$ 67.400<small>parcelado</small></div>
-      <div><span class="econ-p">economiza R$ 17.200</span></div>
+      <div class="n">3 · Estante: laca por fora · melamínico fosco na cor por dentro
+        <small>A laca permanece em <b>tudo o que se vê de frente</b>; o interior dos
+        armários vai em melamínico fosco <b>na mesma cor</b> — e não em branco. Lâmina
+        natural <b>mantida</b> na entrada e na varanda.</small></div>
+      <div class="v gold">R$ 60.300<small>à vista</small></div>
+      <div class="v">R$ 67.000<small>parcelado</small></div>
+      <div><span class="econ-p">economiza R$ 17.600</span></div>
     </div>
     <div class="mrow">
       <div class="n">4 · Estante sem laca — melamínico na cor, por inteiro
         <small>Dentro e fora na cor do projeto, em melamínico fosco. Lâmina natural
         <b>mantida</b> na entrada e na varanda.</small></div>
-      <div class="v gold">R$ 39.700<small>à vista</small></div>
-      <div class="v">R$ 44.100<small>parcelado</small></div>
-      <div><span class="econ-p">economiza R$ 40.500</span></div>
+      <div class="v gold">R$ 48.700<small>à vista</small></div>
+      <div class="v">R$ 54.100<small>parcelado</small></div>
+      <div><span class="econ-p">economiza R$ 30.500</span></div>
     </div>
     <div class="mrow">
       <div class="n">5 · Estante sem laca — cor por fora · branco por dentro
         <small>Faces externas em melamínico na cor; todo o miolo em branco TX, inclusive
         atrás dos vidros da cristaleira. Os nichos abertos seguem na cor.</small></div>
-      <div class="v gold">R$ 38.900<small>à vista</small></div>
-      <div class="v">R$ 43.200<small>parcelado</small></div>
-      <div><span class="econ-p">economiza R$ 41.400</span></div>
+      <div class="v gold">R$ 46.700<small>à vista</small></div>
+      <div class="v">R$ 51.900<small>parcelado</small></div>
+      <div><span class="econ-p">economiza R$ 32.700</span></div>
     </div>
     <div class="mrow">
       <div class="n">6 · Projeto 100% melamínico — sem lâmina, sem laca
@@ -331,27 +427,28 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
         dentro</b> · estante em melamínico na cor por fora e branco TX por dentro
         (opções 2 + 5 combinadas). O desenho inteiro permanece — ripado, cava,
         cristaleira, Hettich.</small></div>
-      <div class="v gold">R$ 28.600<small>à vista</small></div>
-      <div class="v">R$ 31.700<small>parcelado</small></div>
-      <div><span class="econ-p">economiza R$ 52.900</span></div>
+      <div class="v gold">R$ 36.100<small>à vista</small></div>
+      <div class="v">R$ 40.100<small>parcelado</small></div>
+      <div><span class="econ-p">economiza R$ 44.500</span></div>
     </div>
   </div>
 
   <div class="mnote">
     <b>Como comparar:</b> a conta fecha na sua frente — o cenário 6 é a soma das opções
-    2 e 5: R$ 73.100 + R$ 43.200 − R$ 84.600 = <b>R$ 31.700</b>. As opções 4 e 5 ficam a
-    apenas <b>R$ 900</b> uma da outra — o miolo branco quase não muda o preço; o que muda
-    o preço é a <b>laca</b>.
-    E a opção 3 mostra o caminho do meio: manter a laca onde o olho toca e simplificar
-    onde ninguém vê. O cenário <b>6</b> é o piso do projeto: o mesmo desenho, do ripado à
-    cristaleira, sem nenhum acabamento premium. Em todas as configurações, <b>medidas,
-    ferragens Hettich, vidros e garantia são exatamente os mesmos</b>.
+    2 e 5: R$ 72.800 + R$ 51.900 − R$ 84.600 = <b>R$ 40.100</b>. Some as linhas que
+    quiser: as duas colunas são aditivas.<br>
+    Entre as opções 4 e 5 há apenas <b>R$ 2.200</b> — trocar o miolo por branco quase não
+    muda o preço. <b>O que move o preço é a laca</b> (página 3): não é a chapa, é a mão de
+    obra de preparar, lixar e pintar cada face. Por isso a opção 3 é o caminho do meio —
+    mantém a laca em tudo o que se vê e simplifica só o que fica atrás da porta.
+    Em todas as configurações, <b>medidas, ferragens Hettich, vidros e garantia são
+    exatamente os mesmos</b>.
   </div>
 
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Apartamento CJ · B+G Estúdio</span></div>
 </div></div>
 
-<!-- ══════ 6. TÉCNICO ══════ -->
+<!-- ══════ 7. TÉCNICO ══════ -->
 <div class="page"><div class="pad">
   <div class="eyebrow">Especificação técnica</div>
   <div class="h-sec serif">O que está por dentro<br><em>do que você não vê.</em></div>
@@ -405,7 +502,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Apartamento CJ · B+G Estúdio</span></div>
 </div></div>
 
-<!-- ══════ 7. GARANTIA + CONDIÇÕES ══════ -->
+<!-- ══════ 8. GARANTIA + CONDIÇÕES ══════ -->
 <div class="page"><div class="pad">
   <div class="eyebrow">Garantia e condições</div>
   <div class="h-sec serif">O que assinamos<br><em>junto com o móvel.</em></div>

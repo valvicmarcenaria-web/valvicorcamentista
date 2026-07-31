@@ -85,8 +85,31 @@ def custo_AB(mv, versao):
     return ch + fita + ml*FILET + acab
 
 # ═══════════════════════════════ C — versões da estante
+def split_C():
+    """Separa as peças da estante em aparentes (EXT) e internas, com perímetros.
+    Cores diferentes NÃO dividem chapa → nesting separado."""
+    ext, inte = defaultdict(list), defaultdict(list)
+    a_ext = a_int = pe = pi = 0.0
+    for mv, desc, mat, c, l, q in pecas:
+        if mv != C: continue
+        n_e = min(EXT.get(desc, 0), q)
+        for _ in range(n_e):
+            ext[mat].append((c,l));  pe += 2*(c+l)/100;  a_ext += c*l/10000
+        for _ in range(q-n_e):
+            inte[mat].append((c,l)); pi += 2*(c+l)/100;  a_int += c*l/10000
+    return ext, inte, a_ext, a_int, pe, pi
+
 def custo_C(versao):
     p_ext = perim(C, ['BRC15','BRC18','BRC6'], 0.5)
+    if versao == 'laca_ext_cor':
+        # [Jonathan 28/07] laca fosca por fora · interior em MELAMÍNICO FOSCO NA COR
+        # (antes era branco TX). Fora: MDF branco + laca. Dentro: chapa na cor.
+        ext, inte, a_ext, a_int, pe, pi = split_C()
+        ch = sum(chapa_custo(ext[m], P[m]) + chapa_custo(inte[m], MELC[m])
+                 for m in ('BRC15','BRC18','BRC6'))
+        area_tot = mv_area[(C,'BRC15')]+mv_area[(C,'BRC18')]+mv_area[(C,'BRC6')]
+        acab = area_tot*1.0*LACA                      # mesma metragem de laca da v2 antiga
+        return ch + acab + pi*0.5*(FITA_COR+FILET)
     if versao in ('laca_full', 'laca_ext'):
         ch = sum(chapa_custo(mv_mat[(C, m)], P[m]) for m in ('BRC15','BRC18','BRC6'))
         mult = 1.6 if versao == 'laca_full' else 1.0     # faces internas também lacadas?
@@ -100,13 +123,7 @@ def custo_C(versao):
         ch = sum(chapa_custo(mv_mat[(C, m)], MELC[m]) for m in ('BRC15','BRC18','BRC6'))
         return ch + p_ext*(FITA_COR + FILET)
     # cor_ext: nesting SEPARADO por cor (cores não dividem chapa)
-    ext, inte = defaultdict(list), defaultdict(list)
-    pe = pi = 0.0
-    for mv, desc, mat, c, l, q in pecas:
-        if mv != C: continue
-        n_e = min(EXT.get(desc, 0), q)
-        for _ in range(n_e):   ext[mat].append((c,l)); pe += 2*(c+l)/100
-        for _ in range(q-n_e): inte[mat].append((c,l)); pi += 2*(c+l)/100
+    ext, inte, a_ext, a_int, pe, pi = split_C()
     ch = sum(chapa_custo(ext[m], MELC[m]) + chapa_custo(inte[m], P[m])
              for m in ('BRC15','BRC18','BRC6'))
     return ch + pe*0.5*(FITA_COR+FILET) + pi*0.5*(FITA_BRC+FILET)
@@ -124,8 +141,10 @@ SERRA  = g['serralheria']                 # 600 — móvel D
 # ═══════════════════════════════ monta a matriz
 VA = {'v1 · lâmina natural': custo_AB(A,'lamina')+FERR[A], 'v2 · 100% melamínico': custo_AB(A,'melaminico')+FERR[A]}
 VB = {'v1 · lâmina natural': custo_AB(B,'lamina')+FERR[B], 'v2 · 100% melamínico': custo_AB(B,'melaminico')+FERR[B]}
-VC = {'v1 · laca completa': custo_C('laca_full')+FERR[C], 'v2 · laca ext + branco int': custo_C('laca_ext')+FERR[C],
+VC = {'v1 · laca completa': custo_C('laca_full')+FERR[C],
+      'v2 · laca ext + melamínico fosco na cor int': custo_C('laca_ext_cor')+FERR[C],
       'v3 · melamínico na cor': custo_C('cor_full')+FERR[C], 'v4 · cor ext + branco int': custo_C('cor_ext')+FERR[C]}
+VC_ANT = custo_C('laca_ext')+FERR[C]    # referência: v2 com interior em branco TX
 
 base = VA['v1 · lâmina natural'] + VB['v1 · lâmina natural'] + VC['v1 · laca completa']
 def rat(cm): return GERAIS * cm/base                       # rateio dos gerais
@@ -154,7 +173,7 @@ print(f'   {"versão única":<39}{cd_D:>12,.2f}{pr(cd_D):>13,.2f}{pr(cd_D)*0.9:>
 # ═══════════════════════════════ conferência: soma dos itens = cenário
 CEN = [('1 Integral',            'v1 · lâmina natural','v1 · lâmina natural','v1 · laca completa'),
        ('2 A+B melamínico',      'v2 · 100% melamínico','v2 · 100% melamínico','v1 · laca completa'),
-       ('3 Estante laca ext',    'v1 · lâmina natural','v1 · lâmina natural','v2 · laca ext + branco int'),
+       ('3 Estante laca ext',    'v1 · lâmina natural','v1 · lâmina natural','v2 · laca ext + melamínico fosco na cor int'),
        ('4 Estante cor inteira', 'v1 · lâmina natural','v1 · lâmina natural','v3 · melamínico na cor'),
        ('5 Estante cor+branco',  'v1 · lâmina natural','v1 · lâmina natural','v4 · cor ext + branco int'),
        ('6 Tudo melamínico',     'v2 · 100% melamínico','v2 · 100% melamínico','v4 · cor ext + branco int')]

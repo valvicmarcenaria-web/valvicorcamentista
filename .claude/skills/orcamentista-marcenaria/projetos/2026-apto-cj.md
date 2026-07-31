@@ -280,3 +280,73 @@ Jonathan confirmar o 18mm.
 
 > ⚠️ **18 mm ainda derivado** (branca 380 / cor 600). A estante usa 18mm nas prateleiras —
 > confirmar antes de fechar.
+
+---
+
+## 💰 PREÇOS FECHADOS (28/07) — `precos-apto-cj.py`
+
+O Jonathan definiu os valores comerciais em números cheios. O motor **deixou de definir
+preço e passou a auditar margem**. Preços de venda, por item:
+
+| Móvel / versão | Custo direto | À vista | Parcelado | MC |
+|---|--:|--:|--:|--:|
+| **A. Entrada** — lâmina natural de Freijó | 4.068 | **7.900** | 8.800 | 31,9% |
+| **A. Entrada** — 100% melamínico Freijó Puro | 2.358 | **4.500** | 5.000 | 30,9% |
+| **B. Varanda/gourmet** — lâmina natural | 6.494 | **12.600** | 14.000 | 31,7% |
+| **B. Varanda/gourmet** — 100% melamínico | 2.773 | **5.400** | 6.000 | 31,9% |
+| **C. Estante** — laca fosca completa | 27.972 | **54.400** | 60.500 | 31,9% |
+| **C. Estante** — laca ext + melamínico fosco na cor int | 21.345 | **38.600** | 42.900 | 28,3% |
+| **C. Estante** — melamínico na cor, inteira | 8.889 | **27.000** | 30.000 | 48,5% |
+| **C. Estante** — cor ext + branco int | 8.333 | **25.000** | 27.800 | 48,1% |
+| **D. Adega** (serralheria) | 600 | **1.200** | 1.300 | 31,9% |
+
+### Cenários (soma dos itens — as duas colunas fecham)
+
+| # | Configuração | Custo | À vista | Parcelado | MC | Economia |
+|---|---|--:|--:|--:|--:|--:|
+| 1 | Integral (honrada) | 39.134 | **76.100** | **84.600** | 31,8% | — |
+| 2 | Entrada+varanda 100% Freijó Puro | 33.703 | 65.500 | 72.800 | 31,8% | 11.800 |
+| 3 | Estante laca ext · melamínico fosco na cor int | 32.507 | 60.300 | 67.000 | 29,6% | 17.600 |
+| 4 | Estante melamínico na cor | 20.051 | 48.700 | 54.100 | 41,0% | 30.500 |
+| 5 | Estante cor fora · branco dentro | 19.495 | 46.700 | 51.900 | 40,5% | 32.700 |
+| 6 | Projeto 100% melamínico | 14.064 | 36.100 | 40.100 | 43,0% | 44.500 |
+
+**Três travas verificadas pelo script (todas ✓):**
+1. as duas colunas são **aditivas** — o cliente pode somar qualquer uma;
+2. desconto à vista **exatamente 10%** em todo item e todo cenário;
+3. cenário 1 honra **R$ 84.600 / 76.100** já entregues.
+   Conferência aberta no folder: `72.800 + 51.900 − 84.600 = 40.100` = cenário 6.
+
+### Mudança de escopo na opção 3
+
+O interior da estante laca-externa saiu de **branco TX** para **melamínico fosco na cor**
+("só mudei a cor"), com **preço mantido**. Custo do item subiu **+R$ 1.480** → MC do item
+cai de 31,8% para **28,3%** (cenário 3: 29,6%). É o item de menor margem da tabela —
+decisão comercial consciente, registrada.
+Modelado em `custo_C('laca_ext_cor')`: exterior MDF branco + laca · interior chapa na cor
+com **nesting separado** (cores não dividem chapa).
+
+### Por que 4/5/6 têm MC alta
+
+O Jonathan puxou a estante melamínica para valores cheios (27k / 25k à vista) bem acima
+do que o motor devolvia (19,2k / 18,0k parcelado). Efeito colateral **desejado**: a
+diferença entre a opção 4 e a 5 passou de R$ 900 para **R$ 2.200**, e o piso do projeto
+(cenário 6) subiu de R$ 31.700 para R$ 40.100 — deixa de parecer "outro projeto".
+
+## 📕 FOLDER — 8 páginas (`build-apto-cj-folder.py`)
+
+`capa · conceitual lâmina de Freijó · conceitual laca fosca PU · descritivo ·
+miolo A (a escolha) · miolo B (o menu) · técnico · garantia+condições`
+
+**Página nova da laca** (espelha a da lâmina): a laca não é chapa, é **processo** — sobe
+pela face, vira a quina e continua; não existe fita de borda. Processo em 4 tempos
+(preparação · fundo · cor · cura), o argumento da **restauração** (laca se recupera, chapa
+se substitui) e o gancho comercial: *o custo não está na chapa, está nas horas de preparar,
+lixar e pintar cada face* — que é exatamente o que o miolo cobra.
+
+Imagens novas extraídas do PDF do arquiteto (xref 98, pág. 9): render frontal dos 636 cm
+na cor (banda da pág. 3) + dois crops distintos (painel de TV · cristaleira/nicho) para o
+miolo A, evitando repetir a mesma foto entre páginas.
+
+> ⚠️ **18 mm ainda derivado** (branca 380 / cor 600) — afeta só o lado do custo/MC, não o
+> preço, que agora é fixo.
