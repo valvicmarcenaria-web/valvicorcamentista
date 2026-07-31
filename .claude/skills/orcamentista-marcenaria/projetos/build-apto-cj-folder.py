@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-"""FOLDER Apto CJ (B+G Estúdio) — material gráfico de alto impacto, 9 páginas.
+"""FOLDER Apto CJ (B+G Estúdio) — material gráfico de alto impacto, 8 páginas.
 Capa · conceitual lâmina de Freijó · conceitual laca fosca PU · descritivo ·
-miolo comparativo (2 págs, 6 configurações) · preço por móvel · técnico ·
-garantia+condições.
+miolo (6 configurações) · preço por móvel · técnico · garantia+condições.
 Preços FECHADOS comercialmente [Jonathan 28/07] — auditados em precos-apto-cj.py:
 as duas colunas (à vista e parcelado) são aditivas, desconto à vista 10% em tudo,
 e a opção 1 honra exatamente os R$ 84.600 / 76.100 já entregues."""
@@ -92,6 +91,19 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   .lever .d{{font-size:8.4pt; color:var(--soft); line-height:1.55; margin-top:1.4mm;}}
   .lever .d b{{color:var(--ink);}}
 
+  .mrow.one{{background:var(--deep); border-radius:6px; border-top:0; margin:1mm 0 1.5mm;
+      padding:3.6mm 5.5mm; box-shadow:inset 0 0 0 1.5px rgba(201,169,106,.5);}}
+  .mrow.one .n{{color:#fff; font-size:13.5pt;}}
+  .mrow.one .n small{{color:#C6BFB2;}}
+  .mrow.one .n small b{{color:#F0E7D6;}}
+  .mrow.one .v{{color:#fff; font-size:15pt;}}
+  .mrow.one .v.gold{{color:var(--gold-lt);}}
+  .mrow.one .v small{{color:#9C9288;}}
+  .tag1{{display:inline-block; padding:1mm 3mm; border-radius:99px; text-align:center;
+      background:rgba(201,169,106,.16); border:1px solid rgba(201,169,106,.5);
+      font-size:6.6pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+      color:var(--gold-lt); line-height:1.3;}}
+
   .same{{margin-top:5.5mm; background:var(--gold-pale); border-radius:6px;
       padding:4.4mm 6mm 4mm;}}
   .same .hd{{font-family:'Cormorant Garamond',Georgia,serif; font-size:13pt; font-weight:700;
@@ -101,6 +113,9 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   .same .k{{font-size:6.8pt; letter-spacing:.16em; text-transform:uppercase; color:var(--gold);
       font-weight:700;}}
   .same .d{{font-size:8pt; color:var(--soft); line-height:1.5; margin-top:.8mm;}}
+  .p-tec .same{{padding:3.8mm 6mm 3.4mm;}}
+  .p-tec .same .grid{{grid-template-columns:repeat(4,1fr); gap:0 5mm; margin-top:2.6mm;}}
+  .p-tec .same .d{{font-size:7.6pt; line-height:1.45;}}
 
   /* ── tabela de preços por móvel */
   .ptab{{width:100%; border-collapse:collapse; margin-top:3mm;}}
@@ -137,7 +152,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
 
   .menu{{margin-top:3.5mm;}}
   .mrow{{display:grid; grid-template-columns:1fr 30mm 30mm 27mm; gap:4mm; align-items:center;
-      border-top:1px solid var(--line); padding:3.4mm 0;}}
+      border-top:1px solid var(--line); padding:2.5mm 0;}}
   .mrow:first-child{{border-top:2px solid var(--ink);}}
   .mrow .n{{font-family:'Cormorant Garamond',Georgia,serif; font-size:12.5pt; font-weight:700;
       line-height:1.15;}}
@@ -339,81 +354,26 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   </div>
 
   <div class="split2" style="margin-top:2mm;">
-    <div><div class="figure"><img src="{GOURMET}" alt="" style="height:42mm;object-fit:cover;object-position:center 42%;"></div>
+    <div><div class="figure"><img src="{GOURMET}" alt="" style="height:40mm;object-fit:cover;object-position:center 42%;"></div>
       <div class="cap">Varanda gourmet · ripado em Freijó</div></div>
-    <div><div class="figure"><img src="{CRIST}" alt="" style="height:42mm;object-fit:cover;object-position:center 30%;"></div>
-      <div class="cap">Cristaleira · vidro e puxadores dourados</div></div>
-  </div>
-
-  <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Apartamento CJ · B+G Estúdio</span></div>
-</div></div>
-
-<!-- ══════ 5. MIOLO A — A ESCOLHA ══════ -->
-<div class="page"><div class="pad">
-  <div class="eyebrow">Investimento · como ler</div>
-  <div class="h-sec serif" style="font-size:21pt;">Um projeto,<br><em>seis maneiras de chegar lá.</em></div>
-  <hr class="rule" style="margin:8px 0 9px;">
-
-  <p class="body-t">
-  Neste projeto, dois acabamentos respondem por quase todo o investimento: a
-  <b>lâmina natural</b> (entrada e varanda) e a <b>laca fosca</b> da estante das salas.
-  Em vez de um preço único, preparamos <b>seis configurações do mesmo projeto</b> —
-  da especificação integral do B+G Estúdio às versões que trocam acabamento por
-  economia, sem mudar uma medida sequer.</p>
-
-  <div class="split2" style="margin-top:3.5mm;">
-    <div style="flex:1.35;"><div class="figure"><img src="{EST3}" alt="" style="height:46mm;object-fit:cover;object-position:center 55%;"></div>
-      <div class="cap">Painel de TV e portas altas · laca fosca</div></div>
-    <div style="flex:1;"><div class="figure"><img src="{EST2}" alt="" style="height:46mm;object-fit:cover;object-position:center 42%;"></div>
+    <div><div class="figure"><img src="{EST3}" alt="" style="height:40mm;object-fit:cover;object-position:center 55%;"></div>
+      <div class="cap">Salas · painel de TV e portas altas</div></div>
+    <div><div class="figure"><img src="{EST2}" alt="" style="height:40mm;object-fit:cover;object-position:center 42%;"></div>
       <div class="cap">Cristaleira, nichos e bancada</div></div>
   </div>
 
-  <div class="opt1">
-    <span class="tag">Opção 1 · como o projeto pede</span>
-    <div class="nm">Integral — lâmina natural + laca fosca completa</div>
-    <div class="ds">Entrada e varanda em <b>lâmina natural de Freijó</b> · estante das salas
-    inteira em <b>laca fosca</b>, por dentro e por fora · cristaleira, vidros, Hettich e
-    adega em serralheria. A especificação do B+G Estúdio, sem nenhuma substituição.</div>
-    <div class="prices">
-      <div class="pr gold"><div class="k">À vista</div><div class="v">R$ 76.100</div></div>
-      <div class="pr"><div class="k">Parcelado</div><div class="v">R$ 84.600</div>
-        <div class="s">30% + até 10× no cartão</div></div>
-    </div>
-  </div>
-
-  <div class="lever">
-    <div><div class="k">Alavanca 1 · a lâmina</div><div class="d">Trocar a lâmina natural
-      por <b>melamínico Freijó Puro</b> na entrada e na varanda — por fora e por dentro.
-      O desenho deixa de ser único; o tom permanece. <b>Nunca branco</b> nesses móveis.</div></div>
-    <div><div class="k">Alavanca 2 · a laca</div><div class="d">Manter a laca só onde o
-      olho toca, ou substituí-la por <b>melamínico na cor</b>. A forma, as medidas e as
-      ferragens não mudam — muda a pele.</div></div>
-  </div>
-
-  <div class="same">
-    <div class="hd">O que não muda em <em>nenhuma</em> das seis configurações</div>
-    <div class="grid">
-      <div><div class="k">Projeto</div><div class="d">Todas as medidas do executivo B+G —
-        os 636 cm da estante, o ripado da varanda, a cava a 45° da entrada.</div></div>
-      <div><div class="k">Ferragens</div><div class="d">Hettich Sensys com amortecimento ·
-        Actro 5D nos gavetões · Quadro V6 oculta. Garantia vitalícia do fabricante.</div></div>
-      <div><div class="k">Cristaleira</div><div class="d">As 4 portas de vidro, os
-        caixilhos e os puxadores bolinha em dourado fosco, conforme projeto.</div></div>
-      <div><div class="k">Garantia</div><div class="d">10 anos em contrato sobre estrutura,
-        montagem e acabamento — igual na opção 1 e na opção 6.</div></div>
-    </div>
-  </div>
-
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Apartamento CJ · B+G Estúdio</span></div>
 </div></div>
 
-<!-- ══════ 6. MIOLO B — O MENU ══════ -->
+<!-- ══════ 5. MIOLO — AS SEIS CONFIGURAÇÕES ══════ -->
 <div class="page"><div class="pad">
-  <div class="eyebrow">Investimento · as configurações</div>
-  <div class="h-sec serif" style="font-size:21pt;">O mesmo desenho,<br><em>cinco alternativas.</em></div>
+  <div class="eyebrow">Investimento · as seis configurações</div>
+  <div class="h-sec serif" style="font-size:21pt;">Um projeto,<br><em>seis maneiras de chegar lá.</em></div>
   <hr class="rule" style="margin:8px 0 9px;">
-  <p class="lead" style="margin-bottom:2mm;">Cada valor abaixo é o <b>projeto completo</b> —
-  entrada, varanda, salas e adega — variando apenas o acabamento indicado.</p>
+  <p class="lead" style="margin-bottom:2mm;">Dois acabamentos respondem por quase todo o
+  investimento: a <b>lâmina natural</b> da entrada e da varanda e a <b>laca fosca</b> da
+  estante. As seis configurações movem esses dois — e nada mais. Cada valor é o
+  <b>projeto completo</b>, sem mudar uma medida sequer.</p>
 
   <div class="menu">
     <div class="mrow" style="border-top:0; padding:0 0 1.6mm;">
@@ -422,7 +382,16 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       <div style="font-size:6.8pt; letter-spacing:.18em; text-transform:uppercase; color:var(--mut); font-weight:700; text-align:right;">Parcelado</div>
       <div style="font-size:6.8pt; letter-spacing:.18em; text-transform:uppercase; color:var(--mut); font-weight:700;">vs. opção 1</div>
     </div>
-    <div class="mrow" style="border-top:2px solid var(--ink);">
+    <div class="mrow one">
+      <div class="n">1 · Integral — lâmina natural + laca fosca completa
+        <small>Entrada e varanda em <b>lâmina natural de Freijó</b> · estante inteira em
+        <b>laca fosca</b>, por dentro e por fora. A especificação do B+G Estúdio, sem
+        nenhuma substituição.</small></div>
+      <div class="v gold">R$ 76.100<small>à vista</small></div>
+      <div class="v">R$ 84.600<small>parcelado</small></div>
+      <div><span class="tag1">como o projeto pede</span></div>
+    </div>
+    <div class="mrow" style="border-top:0;">
       <div class="n">2 · Entrada + varanda em melamínico Freijó
         <small>O móvel fica <b>100% em melamínico Freijó Puro — por fora e por dentro</b>.
         Ripado e cava permanecem. A estante das salas segue <b>integral, em laca</b>.</small></div>
@@ -457,10 +426,9 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
     </div>
     <div class="mrow">
       <div class="n">6 · Projeto 100% melamínico — sem lâmina, sem laca
-        <small>Entrada e varanda <b>100% em melamínico Freijó Puro, por fora e por
-        dentro</b> · estante em melamínico na cor por fora e branco TX por dentro
-        (opções 2 + 5 combinadas). O desenho inteiro permanece — ripado, cava,
-        cristaleira, Hettich.</small></div>
+        <small>Entrada e varanda <b>100% em melamínico Freijó Puro</b> · estante na cor
+        por fora e branco TX por dentro (configurações 2 + 5). O desenho inteiro
+        permanece — ripado, cava, cristaleira, Hettich.</small></div>
       <div class="v gold">R$ 36.100<small>à vista</small></div>
       <div class="v">R$ 40.100<small>parcelado</small></div>
       <div><span class="econ-p">economiza R$ 44.500</span></div>
@@ -468,21 +436,17 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   </div>
 
   <div class="mnote">
-    <b>Como comparar:</b> a conta fecha na sua frente — o cenário 6 é a soma das opções
-    2 e 5: R$ 72.800 + R$ 51.900 − R$ 84.600 = <b>R$ 40.100</b>. Some as linhas que
-    quiser: as duas colunas são aditivas.<br>
-    Entre as opções 4 e 5 há apenas <b>R$ 2.200</b> — trocar o miolo por branco quase não
-    muda o preço. <b>O que move o preço é a laca</b> (página 3): não é a chapa, é a mão de
-    obra de preparar, lixar e pintar cada face. Por isso a opção 3 é o caminho do meio —
-    mantém a laca em tudo o que se vê e simplifica só o que fica atrás da porta.
-    Em todas as configurações, <b>medidas, ferragens Hettich, vidros e garantia são
-    exatamente os mesmos</b>.
+    <b>Como comparar:</b> a conta fecha na sua frente — a configuração 6 é a soma da 2 com
+    a 5: R$ 72.800 + R$ 51.900 − R$ 84.600 = <b>R$ 40.100</b>. Some as linhas que quiser.
+    Entre a 4 e a 5 há apenas <b>R$ 2.200</b>: trocar o miolo por branco quase não muda o
+    preço — <b>o que move o preço é a laca</b> (página 3). Em todas elas, medidas, ferragens
+    Hettich, vidros e garantia são <b>exatamente os mesmos</b>.
   </div>
 
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Apartamento CJ · B+G Estúdio</span></div>
 </div></div>
 
-<!-- ══════ 7. PREÇO POR MÓVEL ══════ -->
+<!-- ══════ 6. PREÇO POR MÓVEL ══════ -->
 <div class="page"><div class="pad">
   <div class="eyebrow">Investimento · móvel a móvel</div>
   <div class="h-sec serif" style="font-size:21pt;">Monte a sua<br><em>combinação.</em></div>
@@ -544,8 +508,8 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Apartamento CJ · B+G Estúdio</span></div>
 </div></div>
 
-<!-- ══════ 8. TÉCNICO ══════ -->
-<div class="page"><div class="pad">
+<!-- ══════ 7. TÉCNICO ══════ -->
+<div class="page p-tec"><div class="pad">
   <div class="eyebrow">Especificação técnica</div>
   <div class="h-sec serif">O que está por dentro<br><em>do que você não vê.</em></div>
   <hr class="rule">
@@ -583,7 +547,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   </div>
 
   <div class="split2" style="margin-top:4mm;">
-    <div><div class="figure"><img src="{RIPADO}" alt="" style="height:34mm;object-fit:cover;object-position:center 30%;"></div>
+    <div><div class="figure"><img src="{RIPADO}" alt="" style="height:31mm;object-fit:cover;object-position:center 30%;"></div>
       <div class="cap">Varanda · cada ripa acabada nas três faces</div></div>
     <div style="display:flex;flex-direction:column;justify-content:center;">
       <div class="pull">
@@ -595,10 +559,24 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
     </div>
   </div>
 
+  <div class="same" style="margin-top:4.5mm;">
+    <div class="hd">Tudo desta página vale para as <em>seis</em> configurações</div>
+    <div class="grid">
+      <div><div class="k">Projeto</div><div class="d">Todas as medidas do executivo
+        B+G — os 636 cm, o ripado, a cava a 45°.</div></div>
+      <div><div class="k">Ferragens</div><div class="d">Hettich Sensys · Actro 5D ·
+        Quadro V6, com garantia vitalícia.</div></div>
+      <div><div class="k">Cristaleira</div><div class="d">As 4 portas de vidro e os
+        puxadores em dourado fosco.</div></div>
+      <div><div class="k">Garantia</div><div class="d">10 anos em contrato — igual na
+        configuração 1 e na 6.</div></div>
+    </div>
+  </div>
+
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Apartamento CJ · B+G Estúdio</span></div>
 </div></div>
 
-<!-- ══════ 9. GARANTIA + CONDIÇÕES ══════ -->
+<!-- ══════ 8. GARANTIA + CONDIÇÕES ══════ -->
 <div class="page"><div class="pad">
   <div class="eyebrow">Garantia e condições</div>
   <div class="h-sec serif">O que assinamos<br><em>junto com o móvel.</em></div>

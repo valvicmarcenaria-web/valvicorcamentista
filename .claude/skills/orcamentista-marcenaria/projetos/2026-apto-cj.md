@@ -338,10 +338,21 @@ do que o motor devolvia (19,2k / 18,0k parcelado). Efeito colateral **desejado**
 diferença entre a opção 4 e a 5 passou de R$ 900 para **R$ 2.200**, e o piso do projeto
 (cenário 6) subiu de R$ 31.700 para R$ 40.100 — deixa de parecer "outro projeto".
 
-## 📕 FOLDER — 9 páginas (`build-apto-cj-folder.py`)
+## 📕 FOLDER — 8 páginas (`build-apto-cj-folder.py`)
 
 `capa · conceitual lâmina de Freijó · conceitual laca fosca PU · descritivo ·
-miolo A (a escolha) · miolo B (o menu) · preço por móvel · técnico · garantia+condições`
+miolo (6 configurações) · preço por móvel · técnico · garantia+condições`
+
+**Otimização de 9 → 8 páginas (31/07):** o "miolo A" (página de leitura, com o cartão
+escuro da opção 1 e as duas alavancas) foi dissolvido — a **opção 1 virou a linha-âncora
+destacada** no topo do menu (`.mrow.one`: fundo escuro, anel dourado, selo *como o projeto
+pede*), o argumento das alavancas foi condensado no lead, o bloco *"o que não muda"* migrou
+para a página técnica em 4 colunas (`.p-tec .same`) e as duas fotos da estante foram para o
+descritivo, que virou uma faixa de 3 imagens. Nada de conteúdo se perdeu — só densificou.
+
+Conferência de estouro automatizada em `/tmp/chk.py`: compara o fim do conteúdo com o topo
+do `.pfoot` de cada página. **Cuidado:** `get_image_info()` reporta o retângulo cheio da
+imagem, não o recorte do `object-fit:cover` — dá falso positivo. Só blocos de texto valem.
 
 **Pág. 7 — "Monte a sua combinação":** a tabela de preços item a item, agrupada por móvel,
 só com as duas colunas de venda (à vista / parcelado). Selo `projeto B+G` marca a versão
