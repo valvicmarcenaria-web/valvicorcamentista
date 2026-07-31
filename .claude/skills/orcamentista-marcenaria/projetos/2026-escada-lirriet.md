@@ -55,7 +55,54 @@ mesma composição em 200 / 250 / 300 cm.
 salto entre 250 e 300 cm (mais uma chapa inteira de 15 mm), e não sobe de forma suave.
 Vale avisar a cliente: **se o vão der até 2,75 m, o tampo é inteiriço.**
 
-## Números — MC 37%
+## ✅ CONFIGURAÇÃO FECHADA [Jonathan 31/07]
+
+`2,50 m de largura total · sem ripado, painel frontal liso · melamínico, tudo na cor
+(inclusive a caixaria e as gavetas) · preços da base · MC 40%`
+
+| | |
+|---|--:|
+| Chapas — 3 × melamínico fosco 15 mm + 1 × 6 mm | 1.800,00 |
+| Fita de cor — 43,8 m (×1,15 de desperdício) | 150,95 |
+| Filetagem na coladeira | 109,38 |
+| Ferragens + LED — 3 corrediças ocultas, 3 cavas, 4,49 m de LED | 1.033,33 |
+| Consumíveis (6%) | 117,06 |
+| Logística · visita · instalação | 1.050,00 |
+| **CUSTO DIRETO** | **4.260,72** |
+| **INVESTIMENTO — MC 40%** | **10.647,54** |
+
+### Tabela padrão de pagamento
+
+| Condição | | Valor | MC |
+|---|--:|--:|--:|
+| Entrada 30% + até 10× no cartão | valor de tabela | **R$ 10.600** | 39,8% |
+| Entrada 50% + até 8× no cartão | −4% | R$ 10.200 | 38,2% |
+| Entrada 70% + até 6× no cartão | −7% | R$ 9.900 | 37,0% |
+| À vista / transferência | −10% | **R$ 9.600** | 35,6% |
+
+> O piso da escada de pagamento (à vista) ainda entrega **35,6% de MC** — dentro da
+> faixa boa. A tabela inteira cabe sem quebrar a margem.
+
+### O que mudou ao tirar o ripado e levar tudo para a cor
+
+| | antes (ripado + caixaria branca) | agora |
+|---|--:|--:|
+| chapa de 15 mm | 2 | 3 |
+| fita | 91,4 m (67 m manual) | 43,8 m (toda na máquina) |
+| custo de fita + filetagem | R$ 668 | R$ 260 |
+
+Levar a caixaria para a cor **subiu uma chapa de 15 mm** (branco TX de R$ 260 sai da
+conta, entra melamínico de R$ 500) mas tirar o ripado **derrubou 47 m de fita**, 67 dos
+quais eram filetagem manual. As duas decisões juntas baixaram o custo direto de
+R$ 4.730 para R$ 4.261 — e o móvel ficou com o interior na mesma cor da frente.
+
+### Nota de aproveitamento
+
+A chapa de 6 mm entra só para os fundos do gaveteiro e das gavetas: **0,91 m² de uma
+chapa de 5,09 m²**. É compra mínima, não desperdício de projeto — não há como reduzir
+sem tirar os fundos de 6 mm, o que não se faz.
+
+## Números anteriores — MC 37%, exploratórios
 
 | bancada | ASSINADA custo | investimento | à vista | ENXUTA custo | investimento | à vista |
 |---|--:|--:|--:|--:|--:|--:|

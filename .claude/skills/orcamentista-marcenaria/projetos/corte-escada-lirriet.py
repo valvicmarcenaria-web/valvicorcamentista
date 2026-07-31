@@ -38,9 +38,13 @@ from collections import defaultdict
 # ═══════════════════════════════════ base de chapa [Jonathan 28/07]
 CH_C, CH_L = 275.0, 185.0
 CH_AREA = CH_C*CH_L/10000                      # 5,0875 m²
-P = {'AMA15': 500.0, 'AMA6': 350.0,            # melamínico fosco amadeirado (carvalho)
-     'BRC15': 300.0, 'BRC6': 200.0}            # caixaria interna do gaveteiro
+# preços da BASE (dados/materiais.json) — não os ditados de 28/07
+P = {'AMA15': 500.0, 'AMA6': 300.0,            # MDF Melamínico Fosco 15 / 6 mm
+     'BRC15': 260.0, 'BRC6': 190.0}            # MDF Branco TX 15 / 6 mm
 FITA_COR, FITA_BRC = 3.0, 2.0                  # R$/m — insumo
+DESP_FITA = 1.15                               # desperdício de fita (método Fase 1)
+# "tudo na cor": a caixaria interna também sai em melamínico, não em branco TX
+NA_COR = {'BRC15': 'AMA15', 'BRC6': 'AMA6'}
 FILET, FILET_MAN = 2.5, 4.0                    # aplicação: coladeira / manual (ripas)
 LED_M = 150.0                                  # fita + perfil + usinagem, por metro
 P_CORR_OCULTA = 70.0                           # par, Hardt
@@ -124,8 +128,10 @@ def pecas_para(L, ripado=True):
     a(('lateral direita',                'AMA15', H_BANC, PROF_BANC, 1))
     return p, n_rip
 
-def orcar(L, MC=0.37, mostrar=True, ripado=True, led_bancada=True):
+def orcar(L, MC=0.37, mostrar=True, ripado=True, led_bancada=True, tudo_na_cor=False):
     pecas, n_rip = pecas_para(L, ripado)
+    if tudo_na_cor:
+        pecas = [(d, NA_COR.get(m, m), c, l, q) for d, m, c, l, q in pecas]
     porm = defaultdict(list); area = defaultdict(float)
     for d, m, c, l, q in pecas:
         for _ in range(q):
@@ -143,7 +149,9 @@ def orcar(L, MC=0.37, mostrar=True, ripado=True, led_bancada=True):
     if not ripado:
         fita_cor += ((L-GAV_L)*2 + GAV_H*2)/100   # painel liso: borda em volta
     fita_brc  = (2*(GAV_H+GAV_P) + 2*(GAV_L+GAV_P))*2/100 + 3*2*(GAV_L-4+GAV_P-5)/100
-    custo_fita  = (fita_cor + fita_rip)*FITA_COR + fita_brc*FITA_BRC
+    if tudo_na_cor:
+        fita_cor += fita_brc; fita_brc = 0.0       # caixaria também em fita de cor
+    custo_fita  = ((fita_cor + fita_rip)*FITA_COR + fita_brc*FITA_BRC)*DESP_FITA
     # ripa de 2 cm não entra na coladeira em pé → filetagem MANUAL, mais cara
     custo_filet = (fita_cor + fita_brc)*FILET + fita_rip*FILET_MAN
 
@@ -181,7 +189,7 @@ def orcar(L, MC=0.37, mostrar=True, ripado=True, led_bancada=True):
         print(f'  {"Consumíveis (6%)":<44}R$ {consum:>10,.2f}')
         print(f'  {"Logística · visita · instalação":<44}R$ {LOGISTICA+VISITA+INSTALACAO:>10,.2f}')
         print(f'  {"CUSTO DIRETO":<44}R$ {fixedR:>10,.2f}')
-        print(f'  {"INVESTIMENTO (MC 37%)":<44}R$ {inv:>10,.2f}')
+        print(f'  {f"INVESTIMENTO (MC {MC*100:.0f}%)":<44}R$ {inv:>10,.2f}')
         print(f'  {"À vista (−10%)":<44}R$ {inv*0.9:>10,.2f}')
     return fixedR, inv
 
