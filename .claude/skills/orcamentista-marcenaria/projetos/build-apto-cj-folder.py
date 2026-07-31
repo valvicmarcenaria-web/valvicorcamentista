@@ -634,7 +634,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       </div>
       <div class="mnote" style="margin-top:3mm;">
         <b>Não incluso:</b> espelhos · relaqueamento do móvel existente (avaliação in loco) ·
-        granito e frontão (marmoraria) · futton estofado · pontos elétricos.
+        granito e frontão (marmoraria) · pontos elétricos.
       </div>
     </div>
   </div>
