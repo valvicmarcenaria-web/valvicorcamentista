@@ -338,10 +338,16 @@ do que o motor devolvia (19,2k / 18,0k parcelado). Efeito colateral **desejado**
 diferença entre a opção 4 e a 5 passou de R$ 900 para **R$ 2.200**, e o piso do projeto
 (cenário 6) subiu de R$ 31.700 para R$ 40.100 — deixa de parecer "outro projeto".
 
-## 📕 FOLDER — 8 páginas (`build-apto-cj-folder.py`)
+## 📕 FOLDER — 9 páginas (`build-apto-cj-folder.py`)
 
 `capa · conceitual lâmina de Freijó · conceitual laca fosca PU · descritivo ·
-miolo A (a escolha) · miolo B (o menu) · técnico · garantia+condições`
+miolo A (a escolha) · miolo B (o menu) · preço por móvel · técnico · garantia+condições`
+
+**Pág. 7 — "Monte a sua combinação":** a tabela de preços item a item, agrupada por móvel,
+só com as duas colunas de venda (à vista / parcelado). Selo `projeto B+G` marca a versão
+que o arquiteto especificou em cada grupo. Fecha com um exemplo de combinação livre que
+não está entre as seis (lâmina na entrada + varanda melamínico + estante laca =
+R$ 68.900 à vista / R$ 76.600 parcelado), provando na prática que as colunas somam.
 
 **Página nova da laca** (espelha a da lâmina): a laca não é chapa, é **processo** — sobe
 pela face, vira a quina e continua; não existe fita de borda. Processo em 4 tempos

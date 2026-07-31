@@ -188,6 +188,39 @@ p{margin:0;}
       font-weight:700;}
   .same .d{font-size:8pt; color:var(--soft); line-height:1.5; margin-top:.8mm;}
 
+  /* ── tabela de preços por móvel */
+  .ptab{width:100%; border-collapse:collapse; margin-top:3mm;}
+  .ptab th{text-align:right; font-size:6.8pt; letter-spacing:.16em; text-transform:uppercase;
+      color:var(--mut); font-weight:700; padding-bottom:1.6mm;}
+  .ptab th:first-child{text-align:left;}
+  .ptab th.g{color:var(--gold);}
+  .ptab tr.grp td{padding:2.7mm 0 1.2mm; border-bottom:1.5px solid var(--ink);
+      font-family:'Cormorant Garamond',Georgia,serif; font-size:13pt; font-weight:700;
+      color:var(--ink); line-height:1.15;}
+  .ptab tr.grp:first-child td{padding-top:0;}
+  .ptab tr.grp td em{font-family:system-ui,sans-serif; font-style:normal; font-size:7.6pt;
+      font-weight:400; color:var(--mut);}
+  .ptab td{padding:1.8mm 0; border-bottom:1px solid var(--hair); vertical-align:middle;}
+  .ptab td.n{font-size:9pt; color:var(--ink); padding-right:6mm;}
+  .ptab td.n small{display:block; font-size:7.4pt; color:var(--mut); margin-top:.4mm;
+      line-height:1.35;}
+  .ptab td.r{text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums;
+      font-family:'Cormorant Garamond',Georgia,serif; font-size:13pt; font-weight:700;
+      width:31mm;}
+  .ptab td.r.g{color:var(--gold);}
+  .bg-spec{display:inline-block; margin-left:2.4mm; padding:.4mm 2.4mm; border-radius:99px;
+      background:var(--gold-pale); border:1px solid rgba(169,124,21,.35); font-size:6.4pt;
+      font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--gold);
+      vertical-align:1.2mm;}
+  .exmp{margin-top:3.5mm; background:var(--gold-pale); border-radius:6px; padding:3.6mm 6mm;}
+  .exmp .k{font-size:6.8pt; letter-spacing:.16em; text-transform:uppercase; color:var(--gold);
+      font-weight:700;}
+  .exmp .d{font-size:8.4pt; color:var(--soft); line-height:1.6; margin-top:1.4mm;}
+  .exmp .d b{color:var(--ink);}
+  .exmp .sum{font-family:'Cormorant Garamond',Georgia,serif; font-size:11.5pt; font-weight:700;
+      color:var(--ink); margin-top:1.8mm; line-height:1.45;}
+  .exmp .sum span{color:var(--gold);}
+
   .menu{margin-top:3.5mm;}
   .mrow{display:grid; grid-template-columns:1fr 30mm 30mm 27mm; gap:4mm; align-items:center;
       border-top:1px solid var(--line); padding:3.4mm 0;}
@@ -535,7 +568,69 @@ p{margin:0;}
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Apartamento CJ · B+G Estúdio</span></div>
 </div></div>
 
-<!-- ══════ 7. TÉCNICO ══════ -->
+<!-- ══════ 7. PREÇO POR MÓVEL ══════ -->
+<div class="page"><div class="pad">
+  <div class="eyebrow">Investimento · móvel a móvel</div>
+  <div class="h-sec serif" style="font-size:21pt;">Monte a sua<br><em>combinação.</em></div>
+  <hr class="rule" style="margin:8px 0 9px;">
+  <p class="lead" style="margin-bottom:0;">As seis configurações são as combinações mais
+  prováveis — mas você não está preso a elas. Aqui está <b>cada móvel em cada versão</b>.</p>
+
+  <table class="ptab">
+    <tr><th>Móvel e versão</th><th class="g">À vista</th><th>Parcelado</th></tr>
+
+    <tr class="grp"><td colspan="3">Entrada <em>· móvel suspenso, 2 gavetões e 2 portas</em></td></tr>
+    <tr><td class="n">Lâmina natural de Freijó<span class="bg-spec">projeto B+G</span>
+        <small>Frentes em lâmina com veio contínuo · interior em Freijó melamínico</small></td>
+      <td class="r g">R$ 7.900</td><td class="r">R$ 8.800</td></tr>
+    <tr><td class="n">100% melamínico Freijó Puro
+        <small>Por fora e por dentro, no mesmo tom · cava a 45° mantida</small></td>
+      <td class="r g">R$ 4.500</td><td class="r">R$ 5.000</td></tr>
+
+    <tr class="grp"><td colspan="3">Varanda gourmet <em>· armário superior e inferior, portas ripadas</em></td></tr>
+    <tr><td class="n">Lâmina natural de Freijó<span class="bg-spec">projeto B+G</span>
+        <small>Cada ripa acabada individualmente, nas três faces</small></td>
+      <td class="r g">R$ 12.600</td><td class="r">R$ 14.000</td></tr>
+    <tr><td class="n">100% melamínico Freijó Puro
+        <small>Ripado mantido, executado em melamínico no mesmo tom</small></td>
+      <td class="r g">R$ 5.400</td><td class="r">R$ 6.000</td></tr>
+
+    <tr class="grp"><td colspan="3">Salas de TV e jantar <em>· estante de 636 cm, com cristaleira</em></td></tr>
+    <tr><td class="n">Laca fosca completa<span class="bg-spec">projeto B+G</span>
+        <small>Por dentro e por fora, na cor do projeto</small></td>
+      <td class="r g">R$ 54.400</td><td class="r">R$ 60.500</td></tr>
+    <tr><td class="n">Laca fosca por fora · melamínico fosco na cor por dentro
+        <small>A laca em tudo o que se vê de frente; interior na mesma cor, não em branco</small></td>
+      <td class="r g">R$ 42.600</td><td class="r">R$ 47.300</td></tr>
+    <tr><td class="n">Melamínico na cor, por inteiro
+        <small>Sem laca · dentro e fora na cor do projeto, em melamínico fosco</small></td>
+      <td class="r g">R$ 27.000</td><td class="r">R$ 30.000</td></tr>
+    <tr><td class="n">Melamínico na cor por fora · branco TX por dentro
+        <small>Miolo branco, inclusive atrás dos vidros · nichos abertos seguem na cor</small></td>
+      <td class="r g">R$ 25.000</td><td class="r">R$ 27.800</td></tr>
+
+    <tr class="grp"><td colspan="3">Adega <em>· serralheria sob medida</em></td></tr>
+    <tr><td class="n">Estrutura metálica para vinhos<span class="bg-spec">projeto B+G</span>
+        <small>Vertical, integrada à parede da entrada</small></td>
+      <td class="r g">R$ 1.200</td><td class="r">R$ 1.300</td></tr>
+  </table>
+
+  <div class="exmp">
+    <div class="k">Um exemplo de combinação livre</div>
+    <div class="d">Manter a <b>lâmina natural na entrada</b>, levar a <b>varanda para
+    melamínico</b> e preservar a <b>estante inteira em laca</b> — uma composição que não
+    está entre as seis:</div>
+    <div class="sum">7.900 + 5.400 + 54.400 + 1.200 = <span>R$ 68.900 à vista</span><br>
+      8.800 + 6.000 + 60.500 + 1.300 = R$ 76.600 parcelado</div>
+    <div class="d" style="margin-top:2mm;">A coluna <b>à vista</b> já traz o desconto de
+    10% aplicado linha a linha — por isso ela soma sozinha. Medidas, ferragens Hettich,
+    vidros e a garantia de 10 anos são <b>os mesmos em qualquer linha</b>.</div>
+  </div>
+
+  <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Apartamento CJ · B+G Estúdio</span></div>
+</div></div>
+
+<!-- ══════ 8. TÉCNICO ══════ -->
 <div class="page"><div class="pad">
   <div class="eyebrow">Especificação técnica</div>
   <div class="h-sec serif">O que está por dentro<br><em>do que você não vê.</em></div>
@@ -589,7 +684,7 @@ p{margin:0;}
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Apartamento CJ · B+G Estúdio</span></div>
 </div></div>
 
-<!-- ══════ 8. GARANTIA + CONDIÇÕES ══════ -->
+<!-- ══════ 9. GARANTIA + CONDIÇÕES ══════ -->
 <div class="page"><div class="pad">
   <div class="eyebrow">Garantia e condições</div>
   <div class="h-sec serif">O que assinamos<br><em>junto com o móvel.</em></div>
