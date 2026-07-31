@@ -295,7 +295,7 @@ preço e passou a auditar margem**. Preços de venda, por item:
 | **B. Varanda/gourmet** — lâmina natural | 6.494 | **12.600** | 14.000 | 31,7% |
 | **B. Varanda/gourmet** — 100% melamínico | 2.773 | **5.400** | 6.000 | 31,9% |
 | **C. Estante** — laca fosca completa | 27.972 | **54.400** | 60.500 | 31,9% |
-| **C. Estante** — laca ext + melamínico fosco na cor int | 21.345 | **38.600** | 42.900 | 28,3% |
+| **C. Estante** — laca ext + melamínico fosco na cor int | 21.345 | **42.600** | 47.300 | 33,0% |
 | **C. Estante** — melamínico na cor, inteira | 8.889 | **27.000** | 30.000 | 48,5% |
 | **C. Estante** — cor ext + branco int | 8.333 | **25.000** | 27.800 | 48,1% |
 | **D. Adega** (serralheria) | 600 | **1.200** | 1.300 | 31,9% |
@@ -306,7 +306,7 @@ preço e passou a auditar margem**. Preços de venda, por item:
 |---|---|--:|--:|--:|--:|--:|
 | 1 | Integral (honrada) | 39.134 | **76.100** | **84.600** | 31,8% | — |
 | 2 | Entrada+varanda 100% Freijó Puro | 33.703 | 65.500 | 72.800 | 31,8% | 11.800 |
-| 3 | Estante laca ext · melamínico fosco na cor int | 32.507 | 60.300 | 67.000 | 29,6% | 17.600 |
+| 3 | Estante laca ext · melamínico fosco na cor int | 32.507 | 64.300 | 71.400 | 32,6% | 13.200 |
 | 4 | Estante melamínico na cor | 20.051 | 48.700 | 54.100 | 41,0% | 30.500 |
 | 5 | Estante cor fora · branco dentro | 19.495 | 46.700 | 51.900 | 40,5% | 32.700 |
 | 6 | Projeto 100% melamínico | 14.064 | 36.100 | 40.100 | 43,0% | 44.500 |
@@ -320,9 +320,14 @@ preço e passou a auditar margem**. Preços de venda, por item:
 ### Mudança de escopo na opção 3
 
 O interior da estante laca-externa saiu de **branco TX** para **melamínico fosco na cor**
-("só mudei a cor"), com **preço mantido**. Custo do item subiu **+R$ 1.480** → MC do item
-cai de 31,8% para **28,3%** (cenário 3: 29,6%). É o item de menor margem da tabela —
-decisão comercial consciente, registrada.
+("só mudei a cor"). Custo do item subiu **+R$ 1.480**; a preço mantido a MC caía para
+28,3%, então o Jonathan **reancorou o item em MC 33%** → R$ 47.300 parcelado /
+R$ 42.600 à vista (MC exata 32,98%, desconto 9,94%). É o único item acima da MC base
+de 31,8% entre as versões premium.
+
+> Efeito de menu: a economia da opção 3 cai de R$ 17.600 para **R$ 13.200**, ficando a
+> apenas R$ 1.400 da opção 2. As duas alavancas passam a valer quase o mesmo no primeiro
+> degrau — a escolha vira de gosto, não de dinheiro.
 Modelado em `custo_C('laca_ext_cor')`: exterior MDF branco + laca · interior chapa na cor
 com **nesting separado** (cores não dividem chapa).
 

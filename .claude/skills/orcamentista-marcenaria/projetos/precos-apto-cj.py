@@ -7,7 +7,7 @@ definir o preço e passa a AUDITAR a margem de cada item e cenário.
 Travas do Jonathan (à vista):
   entrada 100% melamínico Freijó ....... 4.500
   estante laca completa ................ mantida
-  estante laca ext + melamínico fosco int  mantida (só mudou a cor do interno)
+  estante laca ext + melamínico fosco int  reancorada em MC 33% -> 42.600 à vista
   estante melamínico na cor ............ 27.000
   estante melamínico c/ branco interno .. 25.000
 
@@ -33,7 +33,7 @@ def custo(cm, com_rateio=True):
 PRECO = {
   ('A','v1'): (7_900, 8_800),   ('A','v2'): (4_500,  5_000),
   ('B','v1'): (12_600, 14_000), ('B','v2'): (5_400,  6_000),
-  ('C','v1'): (54_400, 60_500), ('C','v2'): (38_600, 42_900),
+  ('C','v1'): (54_400, 60_500), ('C','v2'): (42_600, 47_300),
   ('C','v3'): (27_000, 30_000), ('C','v4'): (25_000, 27_800),
   ('D','u'):  (1_200,  1_300),
 }
@@ -106,7 +106,8 @@ print(f'  ✓ desconto à vista entre {min(1-av/pa for _,av,pa,_ in res.values()
 print(f'  {"✓" if ok else "✗"} MC dos cenários: de {min(mcs)*100:.1f}% a {max(mcs)*100:.1f}%')
 d_up = custo(VC['v2 · laca ext + melamínico fosco na cor int']) - custo(VC_ANT)
 print(f'\n  Upgrade do interior da op.3 (branco TX → melamínico fosco na cor): '
-      f'+R$ {d_up:,.0f} de custo a preço mantido → MC do item cai para {mc(CUSTO[("C","v2")], 42_900)*100:.1f}%')
+      f'+R$ {d_up:,.0f} de custo, reancorado em MC {mc(CUSTO[("C","v2")], 47_300)*100:.1f}% '
+      f'(alvo 33,0%) → R$ 47.300 parcelado / R$ 42.600 à vista')
 print(f'\n  Cenário 6 = op2 + op5 − op1 (parcelado): '
       f'{res["2"][2]} + {res["5"][2]} − 84.600 = {res["2"][2]+res["5"][2]-84600:,} '
       f'{"✓" if res["2"][2]+res["5"][2]-84600 == res["6"][2] else "✗"}')
