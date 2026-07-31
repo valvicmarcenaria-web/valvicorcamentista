@@ -268,8 +268,8 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
 
   <div class="lever">
     <div><div class="k">Alavanca 1 · a lâmina</div><div class="d">Trocar a lâmina natural
-      por <b>melamínico Freijó</b> na entrada e na varanda. O desenho deixa de ser único —
-      o tom permanece.</div></div>
+      por <b>melamínico Freijó Puro</b> na entrada e na varanda — por fora e por dentro.
+      O desenho deixa de ser único; o tom permanece. <b>Nunca branco</b> nesses móveis.</div></div>
     <div><div class="k">Alavanca 2 · a laca</div><div class="d">Reduzir ou substituir a
       laca da estante por <b>melamínico na cor</b> ou <b>branco TX</b>. A forma não muda —
       muda a pele.</div></div>
@@ -283,12 +283,20 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   <div class="eyebrow">Investimento · as configurações</div>
   <div class="h-sec serif" style="font-size:21pt;">O mesmo desenho,<br><em>cinco alternativas.</em></div>
   <hr class="rule" style="margin:8px 0 9px;">
+  <p class="lead" style="margin-bottom:2mm;">Cada valor abaixo é o <b>projeto completo</b> —
+  entrada, varanda, salas e adega — variando apenas o acabamento indicado.</p>
 
   <div class="menu">
-    <div class="mrow">
+    <div class="mrow" style="border-top:0; padding:0 0 1.6mm;">
+      <div style="font-size:6.8pt; letter-spacing:.18em; text-transform:uppercase; color:var(--mut); font-weight:700;">Configuração</div>
+      <div style="font-size:6.8pt; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); font-weight:700; text-align:right;">Projeto à vista</div>
+      <div style="font-size:6.8pt; letter-spacing:.18em; text-transform:uppercase; color:var(--mut); font-weight:700; text-align:right;">Parcelado</div>
+      <div style="font-size:6.8pt; letter-spacing:.18em; text-transform:uppercase; color:var(--mut); font-weight:700;">vs. opção 1</div>
+    </div>
+    <div class="mrow" style="border-top:2px solid var(--ink);">
       <div class="n">2 · Entrada + varanda em melamínico Freijó
-        <small>Sai a lâmina natural; ripado e cava permanecem. A estante das salas segue
-        <b>integral, em laca</b>.</small></div>
+        <small>O móvel fica <b>100% em melamínico Freijó Puro — por fora e por dentro</b>.
+        Ripado e cava permanecem. A estante das salas segue <b>integral, em laca</b>.</small></div>
       <div class="v gold">R$ 63.900<small>à vista</small></div>
       <div class="v">R$ 71.000<small>parcelado</small></div>
       <div><span class="econ-p">economiza R$ 13.600</span></div>
@@ -319,26 +327,26 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
     </div>
     <div class="mrow">
       <div class="n">6 · Projeto 100% melamínico — sem lâmina, sem laca
-        <small>Entrada e varanda em melamínico Freijó · estante em melamínico na cor por
-        fora e branco TX por dentro. O desenho inteiro permanece — ripado, cava,
-        cristaleira, Hettich; nenhum acabamento premium.</small></div>
+        <small>Entrada e varanda <b>100% em melamínico Freijó Puro, por fora e por
+        dentro</b> · estante em melamínico na cor por fora e branco TX por dentro
+        (opções 2 + 5 combinadas). O desenho inteiro permanece — ripado, cava,
+        cristaleira, Hettich.</small></div>
       <div class="v gold">R$ 19.300<small>à vista</small></div>
-      <div class="v">R$ 21.500<small>parcelado</small></div>
-      <div><span class="econ-p">economiza R$ 63.100</span></div>
+      <div class="v">R$ 21.400<small>parcelado</small></div>
+      <div><span class="econ-p">economiza R$ 63.200</span></div>
     </div>
   </div>
 
   <div class="mnote">
-    <b>Como comparar:</b> as opções 4 e 5 ficam a apenas <b>R$ 400</b> uma da outra —
-    o miolo branco quase não muda o preço; o que muda o preço é a <b>laca</b>.
+    <b>Como comparar:</b> a conta fecha na sua frente — o cenário 6 é a soma das opções
+    2 e 5: R$ 71.000 + R$ 35.000 − R$ 84.600 = <b>R$ 21.400</b>. As opções 4 e 5 ficam a
+    apenas <b>R$ 400</b> uma da outra — o miolo branco quase não muda o preço; o que muda
+    o preço é a <b>laca</b>.
     E a opção 3 mostra o caminho do meio: manter a laca onde o olho toca e simplificar
     onde ninguém vê. O cenário <b>6</b> é o piso do projeto: o mesmo desenho, do ripado à
     cristaleira, sem nenhum acabamento premium. Em todas as configurações, <b>medidas,
     ferragens Hettich, vidros e garantia são exatamente os mesmos</b>.
   </div>
-
-  <div class="figure" style="margin-top:3.5mm;"><img src="{ESTANTE}" alt="" style="height:22mm;object-fit:cover;object-position:center 78%;"></div>
-  <div class="cap">A mesma estante em todas as opções — muda a pele, não o desenho</div>
 
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Apartamento CJ · B+G Estúdio</span></div>
 </div></div>

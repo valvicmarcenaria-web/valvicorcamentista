@@ -196,3 +196,33 @@ na cor por fora / branco TX por dentro (op5). Mesmo divisor, MC 37% preservada.
 Exato: inv R$ 21.472,11 · material R$ 6.925,47. Se a estante for TODA na cor
 (op4 no lugar da op5): **+R$ 382** (~400). Folder atualizado: 6 configurações,
 página 5 com 5 alternativas + nota de comparação citando o cenário 6 como piso.
+
+### 🔍 Auditoria do Jonathan no cenário 6 (28/07) — e o que mudou
+
+**O questionamento:** "se só a estante sem laca fica 31.500, como o projeto inteiro em
+melamínico pode ficar 19?" — **a conta estava certa, a comunicação não.** Os R$ 31.500 da
+op5 nunca foram a estante sozinha: são o projeto completo com a estante simplificada e a
+**lâmina mantida** na entrada/varanda. Ponte à vista: 76.100 − 12.200 (lâmina→melamínico)
+− 44.600 (laca→melamínico) = **19.300**. Fecha exato.
+
+**Correções aplicadas ao folder:**
+1. Página 5 ganhou a frase-chave: *"Cada valor abaixo é o projeto completo — entrada,
+   varanda, salas e adega — variando apenas o acabamento"* + cabeçalho de colunas
+   ("Projeto à vista / Parcelado / vs. opção 1").
+2. **Regra do Freijó, agora explícita** [Jonathan]: entrada e varanda **nunca** levam
+   branco TX — ou é lâmina por fora + Freijó Puro melamínico por dentro (op1), ou é
+   **100% melamínico Freijó Puro, por fora e por dentro** (ops 2 e 6). O motor sempre
+   calculou assim (o branco só existe no miolo da ESTANTE, ops 3/5/6); o texto é que
+   deixava ambíguo. Op2, op6 e a alavanca 1 reescritas.
+3. **Valores do cenário 6 agora aditivos na apresentação:** parcelado 21.500 → **21.400**
+   (71.000 + 35.000 − 84.600) e economia 63.100 → **63.200** (13.600 + 49.600). O exato é
+   R$ 21.472; apresentar 21.400 custa R$ 72 e elimina qualquer pega aritmética do cliente.
+   À vista já era aditivo (63.900 + 31.500 − 76.100 = 19.300 ✓). A nota "Como comparar"
+   agora ABRE com a soma, na frente do cliente.
+4. Removida a foto do rodapé da pág. 5 (colidia com o rodapé após a 5ª linha).
+
+> ⚠️ **Flag de base de custo (não alterado):** os cenários 4/5/6 são intensivos em chapa
+> melamínica, e a base deste orçamento usa **R$ 180/chapa 15mm "linha especial"** (estim.
+> do corte original, que o Jonathan validou). A linha padrão da nossa base é R$ 500/600.
+> Se a linha especial não se confirmar, o cenário 6 sobe ~R$ 3-5 mil de preço. Confirmar
+> o custo real do Freijó Puro e do melamínico na cor antes de FECHAR nas opções 4/5/6.
