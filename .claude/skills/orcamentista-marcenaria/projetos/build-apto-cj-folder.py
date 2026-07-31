@@ -297,33 +297,33 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       <div class="n">2 · Entrada + varanda em melamínico Freijó
         <small>O móvel fica <b>100% em melamínico Freijó Puro — por fora e por dentro</b>.
         Ripado e cava permanecem. A estante das salas segue <b>integral, em laca</b>.</small></div>
-      <div class="v gold">R$ 63.900<small>à vista</small></div>
-      <div class="v">R$ 71.000<small>parcelado</small></div>
-      <div><span class="econ-p">economiza R$ 13.600</span></div>
+      <div class="v gold">R$ 65.800<small>à vista</small></div>
+      <div class="v">R$ 73.100<small>parcelado</small></div>
+      <div><span class="econ-p">economiza R$ 11.500</span></div>
     </div>
     <div class="mrow">
       <div class="n">3 · Estante: laca por fora · branco TX por dentro
         <small>A laca permanece em tudo o que se vê de frente; o interior dos armários vai
         em branco TX. Lâmina natural <b>mantida</b> na entrada e na varanda.</small></div>
-      <div class="v gold">R$ 58.800<small>à vista</small></div>
-      <div class="v">R$ 65.400<small>parcelado</small></div>
-      <div><span class="econ-p">economiza R$ 19.200</span></div>
+      <div class="v gold">R$ 60.600<small>à vista</small></div>
+      <div class="v">R$ 67.400<small>parcelado</small></div>
+      <div><span class="econ-p">economiza R$ 17.200</span></div>
     </div>
     <div class="mrow">
       <div class="n">4 · Estante sem laca — melamínico na cor, por inteiro
         <small>Dentro e fora na cor do projeto, em melamínico fosco. Lâmina natural
         <b>mantida</b> na entrada e na varanda.</small></div>
-      <div class="v gold">R$ 31.900<small>à vista</small></div>
-      <div class="v">R$ 35.400<small>parcelado</small></div>
-      <div><span class="econ-p">economiza R$ 49.200</span></div>
+      <div class="v gold">R$ 39.700<small>à vista</small></div>
+      <div class="v">R$ 44.100<small>parcelado</small></div>
+      <div><span class="econ-p">economiza R$ 40.500</span></div>
     </div>
     <div class="mrow">
       <div class="n">5 · Estante sem laca — cor por fora · branco por dentro
         <small>Faces externas em melamínico na cor; todo o miolo em branco TX, inclusive
         atrás dos vidros da cristaleira. Os nichos abertos seguem na cor.</small></div>
-      <div class="v gold">R$ 31.500<small>à vista</small></div>
-      <div class="v">R$ 35.000<small>parcelado</small></div>
-      <div><span class="econ-p">economiza R$ 49.600</span></div>
+      <div class="v gold">R$ 38.900<small>à vista</small></div>
+      <div class="v">R$ 43.200<small>parcelado</small></div>
+      <div><span class="econ-p">economiza R$ 41.400</span></div>
     </div>
     <div class="mrow">
       <div class="n">6 · Projeto 100% melamínico — sem lâmina, sem laca
@@ -331,16 +331,16 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
         dentro</b> · estante em melamínico na cor por fora e branco TX por dentro
         (opções 2 + 5 combinadas). O desenho inteiro permanece — ripado, cava,
         cristaleira, Hettich.</small></div>
-      <div class="v gold">R$ 19.300<small>à vista</small></div>
-      <div class="v">R$ 21.400<small>parcelado</small></div>
-      <div><span class="econ-p">economiza R$ 63.200</span></div>
+      <div class="v gold">R$ 28.600<small>à vista</small></div>
+      <div class="v">R$ 31.700<small>parcelado</small></div>
+      <div><span class="econ-p">economiza R$ 52.900</span></div>
     </div>
   </div>
 
   <div class="mnote">
     <b>Como comparar:</b> a conta fecha na sua frente — o cenário 6 é a soma das opções
-    2 e 5: R$ 71.000 + R$ 35.000 − R$ 84.600 = <b>R$ 21.400</b>. As opções 4 e 5 ficam a
-    apenas <b>R$ 400</b> uma da outra — o miolo branco quase não muda o preço; o que muda
+    2 e 5: R$ 73.100 + R$ 43.200 − R$ 84.600 = <b>R$ 31.700</b>. As opções 4 e 5 ficam a
+    apenas <b>R$ 900</b> uma da outra — o miolo branco quase não muda o preço; o que muda
     o preço é a <b>laca</b>.
     E a opção 3 mostra o caminho do meio: manter a laca onde o olho toca e simplificar
     onde ninguém vê. O cenário <b>6</b> é o piso do projeto: o mesmo desenho, do ripado à

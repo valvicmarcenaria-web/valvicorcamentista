@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-APTO CJ — VARIANTES DE PRODUTO para o folder comparativo [Jonathan 28/07]
-Roda o corte original (exec) e recalcula 5 configurações com o MESMO motor:
+APTO CJ — VARIANTES DE PRODUTO · BASE DE CHAPA CORRIGIDA [Jonathan 28/07]
 
-  1. INTEGRAL — como orçado (lâmina natural + laca completa). Valores intocados.
-  2. Móveis de lâmina natural (entrada + gourmet) em MDF MELAMÍNICO (freijó padrão).
-  3. Estante das salas: LACA só nas faces externas · interno em MDF BRANCO TX.
-  4. Estante das salas: SEM laca — MELAMÍNICO NA COR por inteiro (ext + int).
-  5. Estante das salas: SEM laca — MELAMÍNICO NA COR externo · BRANCO TX interno.
+Preços REAIS de chapa (Jonathan): branca 15mm R$ 300 · branca 6mm R$ 200 ·
+cor 15mm R$ 500 · cor 6mm R$ 350. 18mm DERIVADOS (confirmar): branca 380 · cor 600.
+O corte original usava 108/78/180/130 — barato demais; os cenários intensivos em
+chapa estavam subprecificados.
 
-"Estante" = móvel C (salas TV e jantar, 636 × 232 — painel, cristaleira, nichos).
-As opções 2 e 3–5 mexem em móveis DIFERENTES (A+B vs C) → economias combináveis.
+DECISÃO DE ANCORAGEM (padrão deste script):
+  A opção 1 JÁ FOI ENTREGUE ao cliente por R$ 84.600 / 76.100 — fica HONRADA.
+  Com o custo real de chapa, esse preço carrega MC ~32% (não 37%). O menu inteiro
+  é recalculado com o MESMO divisor calibrado → margem uniforme e economias coerentes.
+  Alternativa (reancorar tudo em MC 37%): tabela impressa ao final.
 """
 import io, contextlib, pathlib
 
@@ -19,127 +20,95 @@ g = {}
 with contextlib.redirect_stdout(io.StringIO()):
     exec(SRC.read_text(encoding='utf-8'), g)
 
-# ── baseline
-mat0     = g['mat_total']
+mat0_old = g['mat_total']
 fixo     = g['logistica'] + g['visita'] + g['serralheria']
-div      = g['divisor']
-inv1     = g['inv']
-LACA     = g['LACA_M2']            # 300
-LAMINA_C = g['custo_lamina']       # 4.781,90
-area_laca      = g['area_laca']    # 1 face de todas as peças BRC
-custo_laca     = g['custo_laca']   # area_laca*1.6*300
-fita_lam, fita_ripas = g['fita_lam'], g['fita_ripas']
-fita_cru = g['fita_cru']           # m de borda BRC visível (0.5 do perímetro)
-FILET    = g['FILETAGEM_M']        # 2.5
-chapas   = g['chapas_por_mat']     # por material
-nest, pecas, P = g['nest'], g['pecas'], g['P']
+div37    = g['divisor']              # 0,41102 — MC 37%
+inv1     = g['inv']                  # 84.530,93 → entregue como 84.600
+LACA     = g['LACA_M2']
+LAMINA_C = g['custo_lamina']
+area_laca = g['area_laca']
+custo_laca = g['custo_laca']
+fita_lam, fita_ripas, fita_cru = g['fita_lam'], g['fita_ripas'], g['fita_cru']
+FILET = g['FILETAGEM_M']
+chapas = g['chapas_por_mat']         # SUB15/MEL15/MEL6/BRC15/BRC18/BRC6
+nest, pecas, P_OLD = g['nest'], g['pecas'], g['P']
+a_, liqF_, b_ = 0.182, 0.86, 0.043
 
+# ══════════════════════ BASE NOVA DE CHAPA [Jonathan 28/07]
+P_NEW = {
+    'SUB15': 500.0, 'MEL15': 500.0,   # cor 15 (Freijó Puro)
+    'MEL6':  350.0,                    # cor 6
+    'BRC15': 300.0, 'BRC6': 200.0,     # branca 15 / 6
+    'BRC18': 380.0,                    # DERIVADO de 300 (confirmar)
+    'RIPA15': 82.0,                    # MDF cru (recebe lâmina) — inalterado
+}
+MELC = {'15': 500.0, '18': 600.0, '6': 350.0}   # melamínico NA COR (18 derivado)
 FITA_COR, FITA_BRC = 3.0, 2.0
-MELC = {'15': 180.0, '18': 220.0, '6': 130.0}   # melamínico NA COR, linha do projeto
-                                                 # (15 = mesma ref. MEL15; 18/6 proporcionais)
 
-def preco(mat_total):
-    inv = (mat_total + fixo) / div
-    return inv, inv * 0.90
+d_int = sum(chapas[m] * (P_NEW[m] - P_OLD[m]) for m in chapas)
+fixedR1 = mat0_old + d_int + fixo               # custo real da opção 1
+div = fixedR1 / inv1                            # divisor CALIBRADO p/ honrar 84.600
+MC_real = 1 - a_ - liqF_*b_ - div
 
-def r100(v):                        # apresentação em valores cheios
-    return round(v / 100) * 100
+def preco(fixedR): return fixedR/div, fixedR/div*0.9
+def r100(v): return round(v/100)*100
 
-# ═════════════════ OPÇÃO 2 — lâmina natural → melamínico (móveis A+B)
-d_lamina = -LAMINA_C                                  # serviço de lâmina sai inteiro
-d_fita   = (fita_lam + fita_ripas) * (FITA_COR - 12.0)  # bordo lâmina → fita cor
-d_ripa   = 1 * (P['MEL15'] - P['RIPA15'])             # ripas: cru → melamínico
-mat2 = mat0 + d_lamina + d_fita + d_ripa
-inv2, av2 = preco(mat2)
+# ── deltas de CUSTO por alavanca (base nova)
+d2 = -LAMINA_C + (fita_lam+fita_ripas)*(FITA_COR-12.0) + 1*(P_NEW['MEL15']-P_NEW['RIPA15'])
+d3 = -(0.6*area_laca)*LACA + fita_cru*0.6*(FITA_BRC+FILET)
+d4_ch = sum(chapas[f'BRC{t}'] * (MELC[t]-P_NEW[f'BRC{t}']) for t in ('15','18','6'))
+d4 = -custo_laca + d4_ch + fita_cru*(FITA_COR+FILET)
 
-# ═════════════════ OPÇÃO 3 — estante: laca externa · interno branco TX
-d_laca3  = -(0.6 * area_laca) * LACA                  # 1.6x → 1.0x (só faces externas)
-d_fita3  = fita_cru * 0.6 * (FITA_BRC + FILET)        # bordas internas: fita branca
-mat3 = mat0 + d_laca3 + d_fita3
-inv3, av3 = preco(mat3)
-
-# ═════════════════ classificação ext/int das peças da estante (p/ opções 4 e 5)
-EXT = {  # peça aparente → NA COR na opção 5
-    'C1 — laterais/divisórias verticais': 2,   # 2 das 4 são laterais externas
-    'C1 — tampo/base': 4, 'C1 — painel de TV (fundo aparente)': 1,
+EXT = {
+    'C1 — laterais/divisórias verticais': 2, 'C1 — tampo/base': 4,
+    'C1 — painel de TV (fundo aparente)': 1,
     'C1 — prateleira acima TV (laca 3cm = 2x15mm colados)': 2,
     'C1 — portas altas de abrir': 2, 'C1 — gavetas inferiores: frentes': 2,
     'C2 — laterais': 2, 'C2 — tampo/base': 2, 'C2 — caixilhos das portas de vidro': 4,
-    'C3 — laterais': 2, 'C3 — tampo/base': 2, 'C3 — fundo': 1,          # nichos abertos
+    'C3 — laterais': 2, 'C3 — tampo/base': 2, 'C3 — fundo': 1,
     'C3 — divisória dos nichos': 1, 'C3 — prateleira dos nichos': 1,
     'C3 — bancada/tampo intermediário': 1, 'C3 — portas da base': 2,
 }
-ext_pcs, int_pcs = {'15': [], '18': [], '6': []}, {'15': [], '18': [], '6': []}
+ext_pcs, int_pcs = {'15':[], '18':[], '6':[]}, {'15':[], '18':[], '6':[]}
 per_ext = per_int = 0.0
 for mv, desc, mat, c, l, q in pecas:
-    if not mat.startswith('BRC'):
-        continue
-    th = mat[3:]
-    n_ext = min(EXT.get(desc, 0), q)
-    for _ in range(n_ext):
-        ext_pcs[th].append((c, l)); per_ext += 2 * (c + l) / 100
-    for _ in range(q - n_ext):
-        int_pcs[th].append((c, l)); per_int += 2 * (c + l) / 100
+    if not mat.startswith('BRC'): continue
+    t = mat[3:]
+    n_e = min(EXT.get(desc, 0), q)
+    for _ in range(n_e):   ext_pcs[t].append((c,l)); per_ext += 2*(c+l)/100
+    for _ in range(q-n_e): int_pcs[t].append((c,l)); per_int += 2*(c+l)/100
+chapa5 = sum((nest(ext_pcs[t]) if ext_pcs[t] else 0)*MELC[t]
+             + (nest(int_pcs[t]) if int_pcs[t] else 0)*P_NEW[f'BRC{t}'] for t in ('15','18','6'))
+chapa0 = sum(chapas[f'BRC{t}']*P_NEW[f'BRC{t}'] for t in ('15','18','6'))
+d5 = -custo_laca + (chapa5-chapa0) + (per_ext*0.5)*(FITA_COR+FILET) + (per_int*0.5)*(FITA_BRC+FILET)
+d6 = d2 + d5
 
-# ═════════════════ OPÇÃO 4 — estante toda em melamínico NA COR
-d_laca4  = -custo_laca
-d_chapa4 = sum(chapas[f'BRC{t}'] * (MELC[t] - P[f'BRC{t}']) for t in ('15', '18', '6'))
-d_fita4  = fita_cru * (FITA_COR + FILET)              # bordas: fita cor (antes lacadas)
-mat4 = mat0 + d_laca4 + d_chapa4 + d_fita4
-inv4, av4 = preco(mat4)
-
-# ═════════════════ OPÇÃO 5 — estante: externo NA COR · interno BRANCO TX
-# nesting separado por cor (cores não dividem chapa — custo real da mistura)
-d_laca5  = -custo_laca
-chapa5 = 0.0
-det5 = []
-for t in ('15', '18', '6'):
-    n_e = nest(ext_pcs[t]) if ext_pcs[t] else 0
-    n_i = nest(int_pcs[t]) if int_pcs[t] else 0
-    chapa5 += n_e * MELC[t] + n_i * P[f'BRC{t}']
-    det5.append((t, n_e, n_i))
-chapa0_BRC = sum(chapas[f'BRC{t}'] * P[f'BRC{t}'] for t in ('15', '18', '6'))
-d_chapa5 = chapa5 - chapa0_BRC
-d_fita5  = (per_ext * 0.5) * (FITA_COR + FILET) + (per_int * 0.5) * (FITA_BRC + FILET)
-mat5 = mat0 + d_laca5 + d_chapa5 + d_fita5
-inv5, av5 = preco(mat5)
-
-# ═════════════════ RELATÓRIO
-print('═' * 78)
-print('APTO CJ — TABELA COMPARATIVA DE PRODUTO   (divisor 0,41102 · MC 37% · sem RT)')
-print('═' * 78)
+print('═'*78)
+print('APTO CJ — MENU COM BASE DE CHAPA CORRIGIDA')
+print(f'  Δ custo de chapa na opção 1: +R$ {d_int:,.2f}  →  custo real R$ {fixedR1:,.2f}')
+print(f'  Opção 1 HONRADA em R$ 84.600 → divisor calibrado {div:.5f} → MC real {MC_real*100:.1f}%')
+print('═'*78)
 OPTS = [
-    ('1. INTEGRAL — lâmina natural + laca completa (como o projeto pede)', inv1),
-    ('2. Entrada + gourmet em melamínico (sem lâmina natural)',            inv2),
-    ('3. Estante: laca externa · interno branco TX',                       inv3),
-    ('4. Estante: sem laca — melamínico na cor (ext + int)',               inv4),
-    ('5. Estante: sem laca — cor externo · branco interno',                inv5),
+    ('1. INTEGRAL — lâmina + laca (entregue; honrada)', 0.0),
+    ('2. Entrada + varanda 100% melamínico Freijó Puro', d2),
+    ('3. Estante: laca externa · interno branco TX',     d3),
+    ('4. Estante sem laca — melamínico na cor, inteira', d4),
+    ('5. Estante sem laca — cor fora · branco dentro',   d5),
+    ('6. Projeto 100% melamínico (2 + 5)',               d6),
 ]
-for nome, inv in OPTS:
-    econ = inv1 - inv
+for nome, d in OPTS:
+    inv, av = preco(fixedR1 + d)
+    econ = 84600 - r100(inv) if d else 0
     print(f'  {nome}')
-    print(f'      parcelado R$ {r100(inv):>7,.0f}   ·   à vista R$ {r100(inv*0.9):>7,.0f}'
-          + (f'   ·   economia R$ {r100(econ):>6,.0f}' if econ > 1 else '   ·   —'))
-print()
-print('  Deltas de custo (auditoria):')
-print(f'    op2: lâmina {-LAMINA_C:+,.0f} · fita {(fita_lam+fita_ripas)*(FITA_COR-12):+,.0f} '
-      f'· chapa ripa {1*(P["MEL15"]-P["RIPA15"]):+,.0f}')
-print(f'    op3: laca {d_laca3:+,.0f} · fita branca int {d_fita3:+,.0f}')
-print(f'    op4: laca {d_laca4:+,.0f} · chapas {d_chapa4:+,.0f} · fita cor {d_fita4:+,.0f}')
-print(f'    op5: laca {d_laca5:+,.0f} · chapas {d_chapa5:+,.0f} · fita {d_fita5:+,.0f}')
-print(f'    op5 nesting por cor (15/18/6): ' +
-      ' · '.join(f'{t}mm ext {e} + int {i}' for t, e, i in det5))
-print(f'\n  Economias combináveis: op2 + op5 → R$ {r100((inv1-inv2)+(inv1-inv5)):,.0f} '
-      f'(mexem em móveis diferentes)')
+    print(f'      parcelado R$ {r100(inv):>7,.0f} (exato {inv:,.0f})  ·  à vista R$ {r100(av):>7,.0f}'
+          + (f'  ·  economia R$ {econ:,.0f}' if d else '  ·  —'))
 
-# ═════════════════ OPÇÃO 6 — projeto 100% MELAMÍNICO (sem lâmina, sem laca)
-# Combinação das alavancas: A+B como na op2 · estante como na op5 (cor fora,
-# branco TX dentro). Deltas independentes — móveis diferentes, mesmo divisor.
-mat6 = mat0 + (d_lamina + d_fita + d_ripa) + (d_laca5 + d_chapa5 + d_fita5)
-inv6, av6 = preco(mat6)
-print('\n  6. PROJETO 100% MELAMÍNICO — sem lâmina, sem laca (op2 + op5)')
-print(f'      parcelado R$ {r100(inv6):>7,.0f}   ·   à vista R$ {r100(inv6*0.9):>7,.0f}'
-      f'   ·   economia R$ {r100(inv1-inv6):>6,.0f}')
-print(f'      exato: inv {inv6:,.2f} · à vista {inv6*0.9:,.2f} · mat {mat6:,.2f}')
-print(f'      variação se a estante for TODA na cor (op4 no lugar da op5): '
-      f'+R$ {(mat4-mat5)/div:,.0f}')
+print('\n  Aditividade (apresentação): op2+op5−op1 = '
+      f'{r100(preco(fixedR1+d2)[0]) + r100(preco(fixedR1+d5)[0]) - 84600:,.0f} '
+      f'vs op6 = {r100(preco(fixedR1+d6)[0]):,.0f}')
+
+print('\n' + '─'*78)
+print('  ALTERNATIVA — reancorar TUDO em MC 37% (base nova, divisor 0,41102):')
+for nome, d in OPTS:
+    inv = (fixedR1 + d)/div37
+    print(f'    {nome:<52} R$ {r100(inv):>8,.0f} · à vista R$ {r100(inv*.9):>8,.0f}')

@@ -226,3 +226,32 @@ op5 nunca foram a estante sozinha: são o projeto completo com a estante simplif
 > do corte original, que o Jonathan validou). A linha padrão da nossa base é R$ 500/600.
 > Se a linha especial não se confirmar, o cenário 6 sobe ~R$ 3-5 mil de preço. Confirmar
 > o custo real do Freijó Puro e do melamínico na cor antes de FECHAR nas opções 4/5/6.
+
+### 💰 BASE DE CHAPA CORRIGIDA [Jonathan 28/07] — menu reprecificado
+
+Preços reais ditados: **branca 15mm R$ 300 · branca 6mm R$ 200 · cor 15mm R$ 500 ·
+cor 6mm R$ 350**. Derivados por proporção (**A CONFIRMAR**): branca 18mm R$ 380 ·
+cor 18mm R$ 600. A base antiga (108/78/180/130) estava barata demais — exatamente o
+flag da rodada anterior.
+
+**Impacto na opção 1:** +R$ 4.040 de custo de chapa → custo real R$ 38.784.
+
+**Decisão de ancoragem aplicada (padrão):** a opção 1 já foi entregue por R$ 84.600 —
+fica **honrada**. Divisor calibrado 0,45881 → **MC real da opção 1 = 32,2%** (não 37%).
+O menu inteiro roda nesse divisor → margem uniforme, economias coerentes, aditividade
+exata (73.100 + 43.200 − 84.600 = 31.700 = op6 ✓).
+
+| # | Configuração | À vista | Parcelado | Economia |
+|---|---|--:|--:|--:|
+| 1 | Integral (honrada) | R$ 76.100 | R$ 84.600 | — |
+| 2 | Entrada+varanda 100% Freijó Puro | R$ 65.800 | R$ 73.100 | R$ 11.500 |
+| 3 | Estante laca ext · branco int | R$ 60.600 | R$ 67.400 | R$ 17.200 |
+| 4 | Estante melamínico na cor | R$ 39.700 | R$ 44.100 | R$ 40.500 |
+| 5 | Estante cor fora · branco dentro | R$ 38.900 | R$ 43.200 | R$ 41.400 |
+| 6 | Projeto 100% melamínico | R$ 28.600 | R$ 31.700 | R$ 52.900 |
+
+**Alternativa disponível no script (não aplicada):** reancorar TUDO em MC 37% com a base
+nova → op1 R$ 94.400 / 84.900 à vista · op6 R$ 35.400 / 31.900. Um comando troca.
+
+> Registro de calibração: o "cenário 6 a R$ 19.300" da rodada anterior nasceu da chapa
+> subprecificada — o instinto do Jonathan ("muito barato") estava certo.
