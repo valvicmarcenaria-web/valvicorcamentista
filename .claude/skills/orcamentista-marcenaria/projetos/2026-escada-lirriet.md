@@ -57,31 +57,46 @@ Vale avisar a cliente: **se o vão der até 2,75 m, o tampo é inteiriço.**
 
 ## ✅ CONFIGURAÇÃO FECHADA [Jonathan 31/07]
 
-`2,50 m de largura total · sem ripado, painel frontal liso · melamínico, tudo na cor
+`2,60 m de largura total · sem ripado, painel frontal liso · melamínico, tudo na cor
 (inclusive a caixaria e as gavetas) · preços da base · MC 40%`
 
 | | |
 |---|--:|
 | Chapas — 3 × melamínico fosco 15 mm + 1 × 6 mm | 1.800,00 |
-| Fita de cor — 43,8 m (×1,15 de desperdício) | 150,95 |
-| Filetagem na coladeira | 109,38 |
-| Ferragens + LED — 3 corrediças ocultas, 3 cavas, 4,49 m de LED | 1.033,33 |
-| Consumíveis (6%) | 117,06 |
+| Fita de cor — 44,2 m (×1,15 de desperdício) | 152,33 |
+| Filetagem na coladeira | 110,38 |
+| Ferragens + LED — 3 corrediças ocultas, 3 cavas, 4,59 m de LED | 1.048,33 |
+| Consumíveis (6%) | 117,14 |
 | Logística · visita · instalação | 1.050,00 |
-| **CUSTO DIRETO** | **4.260,72** |
-| **INVESTIMENTO — MC 40%** | **10.647,54** |
+| **CUSTO DIRETO** | **4.278,18** |
+| **INVESTIMENTO — MC 40%** | **10.691,18** |
 
 ### Tabela padrão de pagamento
 
 | Condição | | Valor | MC |
 |---|--:|--:|--:|
-| Entrada 30% + até 10× no cartão | valor de tabela | **R$ 10.600** | 39,8% |
-| Entrada 50% + até 8× no cartão | −4% | R$ 10.200 | 38,2% |
-| Entrada 70% + até 6× no cartão | −7% | R$ 9.900 | 37,0% |
-| À vista / transferência | −10% | **R$ 9.600** | 35,6% |
+| Entrada 30% + até 10× no cartão | valor de tabela | **R$ 10.700** | 40,0% |
+| Entrada 50% + até 8× no cartão | −4% | R$ 10.300 | 38,5% |
+| Entrada 70% + até 6× no cartão | −7% | R$ 9.900 | 36,8% |
+| À vista / transferência | −10% | **R$ 9.600** | 35,5% |
 
-> O piso da escada de pagamento (à vista) ainda entrega **35,6% de MC** — dentro da
-> faixa boa. A tabela inteira cabe sem quebrar a margem.
+> Os 10 cm a mais de bancada custaram **R$ 17 de custo direto** — o tampo já estava
+> dentro da mesma chapa. Só a fita, o LED e a chapa de 6 mm acompanham.
+> O piso da escada de pagamento (à vista) ainda entrega **35,5% de MC** — faixa boa.
+> A tabela inteira cabe sem quebrar a margem.
+
+## 📄 PROPOSTA — 2 páginas (`build-escada-lirriet.py`)
+
+Formato **enxuto**, adequado a um lead de primeiro contato: capa com a imagem de
+referência da própria cliente + escopo em 6 linhas numeradas · investimento com a
+escada de pagamento inteira + condições + o que não está incluso.
+
+A imagem do moodboard é **legendada como "imagem de referência enviada pela cliente"** —
+não é render nosso e não pode ser apresentada como se fosse.
+
+A observação de medição está no corpo da proposta: o valor considera 2,60 m, a medição
+é feita antes do corte e, se o vão for diferente, o valor é reapresentado antes de
+qualquer produção.
 
 ### O que mudou ao tirar o ripado e levar tudo para a cor
 
