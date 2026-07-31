@@ -255,3 +255,28 @@ nova → op1 R$ 94.400 / 84.900 à vista · op6 R$ 35.400 / 31.900. Um comando t
 
 > Registro de calibração: o "cenário 6 a R$ 19.300" da rodada anterior nasceu da chapa
 > subprecificada — o instinto do Jonathan ("muito barato") estava certo.
+
+### 📊 Tabela custo × preço POR ITEM (28/07) — `corte-apto-cj-itens.py`
+
+Modelo novo, mais preciso que o de deltas: **nesting por móvel** e fita apurada por
+móvel. Reproduz a opção 1 exata (R$ 84.530,93) e cada cenário fecha como soma dos itens.
+Divisor calibrado **0,46295** → **MC real 31,8%** (honrando os R$ 84.600 entregues).
+
+| Móvel / versão | Custo direto | Preço | À vista |
+|---|--:|--:|--:|
+| **A. Entrada** — v1 lâmina natural | 4.068 | 8.786 | 7.908 |
+| **A. Entrada** — v2 100% melamínico Freijó Puro | 2.358 | 5.094 | 4.584 |
+| **B. Varanda/gourmet** — v1 lâmina natural | 6.494 | 14.028 | 12.625 |
+| **B. Varanda/gourmet** — v2 100% melamínico | 2.773 | 5.989 | 5.390 |
+| **C. Estante** — v1 laca completa | 27.972 | 60.421 | 54.379 |
+| **C. Estante** — v2 laca ext + branco int | 19.865 | 42.909 | 38.618 |
+| **C. Estante** — v3 melamínico na cor (inteira) | 8.889 | 19.201 | 17.281 |
+| **C. Estante** — v4 cor ext + branco int | 8.333 | 17.999 | 16.199 |
+| **D. Adega** (serralheria) — versão única | 600 | 1.296 | 1.166 |
+
+**Divergência contra o folder (modelo de deltas):** cenário 2 −300 · 3 −381 · 4 −789 ·
+5 −1.091 · 6 −1.322. O modelo por item é o mais preciso; **folder a alinhar** quando o
+Jonathan confirmar o 18mm.
+
+> ⚠️ **18 mm ainda derivado** (branca 380 / cor 600). A estante usa 18mm nas prateleiras —
+> confirmar antes de fechar.
