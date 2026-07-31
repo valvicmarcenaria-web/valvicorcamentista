@@ -182,3 +182,17 @@ move o preço; quem move é a LACA. A op3 é o caminho do meio (laca onde o olho
 > 🔒 **Interno, NÃO está no folder:** as alavancas são independentes (op2 mexe em A+B,
 > ops 3-5 na estante C) — combinando op2+op5 o projeto inteiro cairia a ~R$ 21.400.
 > Deixado FORA do material por ancoragem — se o cliente pedir a combinação, a conta existe.
+
+### Cenário 6 (28/07) — projeto 100% melamínico
+
+Jonathan decidiu **expor o piso do projeto** no folder (a combinação que eu havia deixado
+só no dossiê): entrada + varanda em melamínico Freijó (op2) **e** estante em melamínico
+na cor por fora / branco TX por dentro (op5). Mesmo divisor, MC 37% preservada.
+
+| | Parcelado | À vista | Economia |
+|---|--:|--:|--:|
+| **6 · Projeto 100% melamínico** | **R$ 21.500** | **R$ 19.300** | **R$ 63.100** |
+
+Exato: inv R$ 21.472,11 · material R$ 6.925,47. Se a estante for TODA na cor
+(op4 no lugar da op5): **+R$ 382** (~400). Folder atualizado: 6 configurações,
+página 5 com 5 alternativas + nota de comparação citando o cenário 6 como piso.

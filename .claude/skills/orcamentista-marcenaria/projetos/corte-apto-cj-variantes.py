@@ -131,3 +131,15 @@ print(f'    op5 nesting por cor (15/18/6): ' +
       ' · '.join(f'{t}mm ext {e} + int {i}' for t, e, i in det5))
 print(f'\n  Economias combináveis: op2 + op5 → R$ {r100((inv1-inv2)+(inv1-inv5)):,.0f} '
       f'(mexem em móveis diferentes)')
+
+# ═════════════════ OPÇÃO 6 — projeto 100% MELAMÍNICO (sem lâmina, sem laca)
+# Combinação das alavancas: A+B como na op2 · estante como na op5 (cor fora,
+# branco TX dentro). Deltas independentes — móveis diferentes, mesmo divisor.
+mat6 = mat0 + (d_lamina + d_fita + d_ripa) + (d_laca5 + d_chapa5 + d_fita5)
+inv6, av6 = preco(mat6)
+print('\n  6. PROJETO 100% MELAMÍNICO — sem lâmina, sem laca (op2 + op5)')
+print(f'      parcelado R$ {r100(inv6):>7,.0f}   ·   à vista R$ {r100(inv6*0.9):>7,.0f}'
+      f'   ·   economia R$ {r100(inv1-inv6):>6,.0f}')
+print(f'      exato: inv {inv6:,.2f} · à vista {inv6*0.9:,.2f} · mat {mat6:,.2f}')
+print(f'      variação se a estante for TODA na cor (op4 no lugar da op5): '
+      f'+R$ {(mat4-mat5)/div:,.0f}')

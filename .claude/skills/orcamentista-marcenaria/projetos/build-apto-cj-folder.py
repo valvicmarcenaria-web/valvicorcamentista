@@ -240,13 +240,13 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
 <!-- ══════ 4. MIOLO A — A ESCOLHA ══════ -->
 <div class="page"><div class="pad">
   <div class="eyebrow">Investimento · como ler</div>
-  <div class="h-sec serif" style="font-size:21pt;">Um projeto,<br><em>cinco maneiras de chegar lá.</em></div>
+  <div class="h-sec serif" style="font-size:21pt;">Um projeto,<br><em>seis maneiras de chegar lá.</em></div>
   <hr class="rule" style="margin:8px 0 9px;">
 
   <p class="body-t">
   Neste projeto, dois acabamentos respondem por quase todo o investimento: a
   <b>lâmina natural</b> (entrada e varanda) e a <b>laca fosca</b> da estante das salas.
-  Em vez de um preço único, preparamos <b>cinco configurações do mesmo projeto</b> —
+  Em vez de um preço único, preparamos <b>seis configurações do mesmo projeto</b> —
   da especificação integral do B+G Estúdio às versões que trocam acabamento por
   economia, sem mudar uma medida sequer.</p>
 
@@ -281,7 +281,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
 <!-- ══════ 5. MIOLO B — O MENU ══════ -->
 <div class="page"><div class="pad">
   <div class="eyebrow">Investimento · as configurações</div>
-  <div class="h-sec serif" style="font-size:21pt;">O mesmo desenho,<br><em>quatro alternativas.</em></div>
+  <div class="h-sec serif" style="font-size:21pt;">O mesmo desenho,<br><em>cinco alternativas.</em></div>
   <hr class="rule" style="margin:8px 0 9px;">
 
   <div class="menu">
@@ -317,17 +317,27 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       <div class="v">R$ 35.000<small>parcelado</small></div>
       <div><span class="econ-p">economiza R$ 49.600</span></div>
     </div>
+    <div class="mrow">
+      <div class="n">6 · Projeto 100% melamínico — sem lâmina, sem laca
+        <small>Entrada e varanda em melamínico Freijó · estante em melamínico na cor por
+        fora e branco TX por dentro. O desenho inteiro permanece — ripado, cava,
+        cristaleira, Hettich; nenhum acabamento premium.</small></div>
+      <div class="v gold">R$ 19.300<small>à vista</small></div>
+      <div class="v">R$ 21.500<small>parcelado</small></div>
+      <div><span class="econ-p">economiza R$ 63.100</span></div>
+    </div>
   </div>
 
   <div class="mnote">
     <b>Como comparar:</b> as opções 4 e 5 ficam a apenas <b>R$ 400</b> uma da outra —
     o miolo branco quase não muda o preço; o que muda o preço é a <b>laca</b>.
     E a opção 3 mostra o caminho do meio: manter a laca onde o olho toca e simplificar
-    onde ninguém vê. Em todas as configurações, <b>medidas, ferragens Hettich, vidros e
-    garantia são exatamente os mesmos</b> — o que muda é só o acabamento.
+    onde ninguém vê. O cenário <b>6</b> é o piso do projeto: o mesmo desenho, do ripado à
+    cristaleira, sem nenhum acabamento premium. Em todas as configurações, <b>medidas,
+    ferragens Hettich, vidros e garantia são exatamente os mesmos</b>.
   </div>
 
-  <div class="figure" style="margin-top:4mm;"><img src="{ESTANTE}" alt="" style="height:30mm;object-fit:cover;object-position:center 78%;"></div>
+  <div class="figure" style="margin-top:3.5mm;"><img src="{ESTANTE}" alt="" style="height:22mm;object-fit:cover;object-position:center 78%;"></div>
   <div class="cap">A mesma estante em todas as opções — muda a pele, não o desenho</div>
 
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Apartamento CJ · B+G Estúdio</span></div>
