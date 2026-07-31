@@ -114,3 +114,36 @@ barato (as 72 ripas saem de uma chapa só); o custo inteiro é hora de bancada.
    são nossos e já estão no preço.
 4. ~~Ferragens~~ — **confirmado:** Hettich Novisys (R$ 10/un) e corrediça oculta Hardt
    (R$ 70/par).
+
+
+## 📕 PROPOSTA PREMIUM — 6 páginas (`build-quartos-larissa-rafael.py`)
+
+`capa · conceitual (a ripa e a luz) · quarto Mateus · quarto Manuela · técnico ·
+investimento`
+
+Renders extraídos das capas dos dois cadernos (xref 17 e 19 em cada PDF) — quatro
+imagens de qualidade, mais dois crops de detalhe dos nichos iluminados.
+
+**A página conceitual** ataca o que os dois quartos têm em comum e que é exatamente
+onde está o nosso trabalho: o **ripado** e a **luz indireta**. Nenhum dos dois é
+comprado pronto. São 119 ripas só no quarto do Mateus, 566 m de fita nos ripados dos
+dois quartos e 14,6 m de LED em cava usinada. O processo em 4 tempos (corte · borda ·
+cava · alinhamento) fecha no argumento que vende: **gabarito de montagem para os 2 cm
+de vão é o que separa ripado de marcenaria de ripado de catálogo.**
+
+**A página técnica** tem o bloco "uma obra, um interlocutor": estofamento, espelho,
+marcenaria e instalação saem da mesma equipe — não há estofador esperando marceneiro
+nem vidraceiro remarcando visita. É o argumento certo para um projeto com 4 cores e
+dois quartos que dividem parede.
+
+**Investimento** apresenta os dois quartos em cards separados (cada um pode ser
+contratado sozinho) e o total logo abaixo, com a escada de pagamento inteira.
+
+### Decisão de projeto gráfico: sem chips de cor
+
+A primeira versão trazia amostras de cor ao lado de "Carvalho Hanover" e
+"Rosa Milkshake". Tentei amostrar as cores dos próprios renders e o resultado não
+fechou — a iluminação da cena puxa o carvalho para cinza e o rosa para bege. **Chip de
+cor errado ao lado do nome do padrão é pior que chip nenhum**, e a arquiteta perceberia
+na hora. A paleta ficou tipográfica: nome do fabricante, nome do padrão e onde ele é
+aplicado. Os renders já mostram a cor.
