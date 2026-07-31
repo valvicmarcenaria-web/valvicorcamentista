@@ -14,7 +14,6 @@ GOURMET = open('/tmp/uri_cj_gourmet.txt').read()   # varanda gourmet ambientada
 OBJ     = open('/tmp/uri_cj_obj.txt').read()       # móvel entrada sobre branco
 CRIST   = open('/tmp/uri_cj_crist.txt').read()     # crop cristaleira
 TEX     = open('/tmp/uri_cj_tex.txt').read()       # textura freijó (crop do projeto)
-RIPADO  = open('/tmp/uri_cj_ripado.txt').read()    # isométrica técnica do gourmet
 ELEV    = open('/tmp/uri_cj_elev.txt').read()      # render frontal 636 cm na cor — laca
 EST2    = open('/tmp/uri_cj_est2.txt').read()      # crop cristaleira + nicho + bancada
 EST3    = open('/tmp/uri_cj_est3.txt').read()      # crop painel de TV + portas altas
@@ -23,6 +22,7 @@ CSS     = open('/tmp/css_premium.txt', encoding='utf-8').read().split('CSS = """
 
 HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>{CSS}</style>
 <style>
+  .page:last-of-type{{page-break-after:avoid; break-after:avoid;}}
   .cover .hero-img img{{object-position:center 40%; filter:brightness(1.06);}}
   .cover .veil{{background:linear-gradient(180deg,
       rgba(24,19,14,.88) 0%, rgba(24,19,14,.38) 26%, rgba(24,19,14,.16) 50%,
@@ -141,14 +141,6 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       background:var(--gold-pale); border:1px solid rgba(169,124,21,.35); font-size:6.4pt;
       font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--gold);
       vertical-align:1.2mm;}}
-  .exmp{{margin-top:3.5mm; background:var(--gold-pale); border-radius:6px; padding:3.6mm 6mm;}}
-  .exmp .k{{font-size:6.8pt; letter-spacing:.16em; text-transform:uppercase; color:var(--gold);
-      font-weight:700;}}
-  .exmp .d{{font-size:8.4pt; color:var(--soft); line-height:1.6; margin-top:1.4mm;}}
-  .exmp .d b{{color:var(--ink);}}
-  .exmp .sum{{font-family:'Cormorant Garamond',Georgia,serif; font-size:11.5pt; font-weight:700;
-      color:var(--ink); margin-top:1.8mm; line-height:1.45;}}
-  .exmp .sum span{{color:var(--gold);}}
 
   .menu{{margin-top:3.5mm;}}
   .mrow{{display:grid; grid-template-columns:1fr 30mm 30mm 27mm; gap:4mm; align-items:center;
@@ -452,7 +444,9 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   <div class="h-sec serif" style="font-size:21pt;">Monte a sua<br><em>combinação.</em></div>
   <hr class="rule" style="margin:8px 0 9px;">
   <p class="lead" style="margin-bottom:0;">As seis configurações são as combinações mais
-  prováveis — mas você não está preso a elas. Aqui está <b>cada móvel em cada versão</b>.</p>
+  prováveis — mas você não está preso a elas. Aqui está <b>cada móvel em cada versão</b>:
+  some as linhas que quiser, em qualquer uma das colunas — a de <b>à vista</b> já traz os
+  10% aplicados linha a linha.</p>
 
   <table class="ptab">
     <tr><th>Móvel e versão</th><th class="g">À vista</th><th>Parcelado</th></tr>
@@ -493,18 +487,6 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       <td class="r g">R$ 1.200</td><td class="r">R$ 1.300</td></tr>
   </table>
 
-  <div class="exmp">
-    <div class="k">Um exemplo de combinação livre</div>
-    <div class="d">Manter a <b>lâmina natural na entrada</b>, levar a <b>varanda para
-    melamínico</b> e preservar a <b>estante inteira em laca</b> — uma composição que não
-    está entre as seis:</div>
-    <div class="sum">7.900 + 5.400 + 54.400 + 1.200 = <span>R$ 68.900 à vista</span><br>
-      8.800 + 6.000 + 60.500 + 1.300 = R$ 76.600 parcelado</div>
-    <div class="d" style="margin-top:2mm;">A coluna <b>à vista</b> já traz o desconto de
-    10% aplicado linha a linha — por isso ela soma sozinha. Medidas, ferragens Hettich,
-    vidros e a garantia de 10 anos são <b>os mesmos em qualquer linha</b>.</div>
-  </div>
-
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Apartamento CJ · B+G Estúdio</span></div>
 </div></div>
 
@@ -544,19 +526,6 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
     <b>80 mil ciclos</b>, e a ferragem tem <b>garantia vitalícia</b> do fabricante.<br><br>
     Nos gavetões, a <b>Actro 5D</b> ajusta a frente em cinco dimensões — é o que mantém
     as frestas perfeitas anos depois da instalação.</div>
-  </div>
-
-  <div class="split2" style="margin-top:4mm;">
-    <div><div class="figure"><img src="{RIPADO}" alt="" style="height:31mm;object-fit:cover;object-position:center 30%;"></div>
-      <div class="cap">Varanda · cada ripa acabada nas três faces</div></div>
-    <div style="display:flex;flex-direction:column;justify-content:center;">
-      <div class="pull">
-        <div class="t">O ripado é feito<br>ripa por ripa.</div>
-        <div class="d">São <b>dezenas de ripas</b> em lâmina natural, cada uma lixada,
-        bordada e vernizada individualmente antes da montagem. É o item de maior
-        artesania do projeto — e o motivo de o gourmet parecer móvel de galeria.</div>
-      </div>
-    </div>
   </div>
 
   <div class="same" style="margin-top:4.5mm;">
