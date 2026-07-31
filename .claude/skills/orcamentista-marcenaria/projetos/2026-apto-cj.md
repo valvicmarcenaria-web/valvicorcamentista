@@ -144,3 +144,41 @@ de desconto à vista.
 Lâmina natural (chapa e bordo), laca por m² e usinagem de cava **não estão no catálogo da base**
 (`chapas.md` / `ferragens.md`) — entraram como **estimativa de mercado**. Cotar com fornecedor antes
 de fechar. Dobradiças/corrediças Hettich vieram do catálogo real (`ferragens.md`).
+
+## 📘 FOLDER comparativo (28/07) — material gráfico de alto impacto
+
+`build-apto-cj-folder.py` → `proposta-apto-cj-folder.pdf` (7 págs).
+Novo formato a pedido do Jonathan: **folder** com capa, contracapa conceitual sobre a
+lâmina natural de Freijó (processo em 4 passos: faqueamento → casamento → prensagem →
+acabamento), descritivo, **miolo comparativo de 2 páginas com 5 configurações de
+produto**, técnico e garantia+condições. Imagens extraídas do PDF de entrega da B+G
+(estante sage, gourmet, cristaleira, móvel da entrada).
+
+### As 5 configurações — `corte-apto-cj-variantes.py` (mesmo motor, divisor 0,41102)
+
+| # | Configuração | À vista | Parcelado | Economia |
+|---|---|--:|--:|--:|
+| 1 | **Integral — como o projeto pede** (lâmina + laca completa) | **R$ 76.100** | **R$ 84.600** | — |
+| 2 | Entrada + varanda em melamínico Freijó (sem lâmina) | R$ 63.900 | R$ 71.000 | R$ 13.600 |
+| 3 | Estante: laca externa · interno branco TX | R$ 58.800 | R$ 65.400 | R$ 19.200 |
+| 4 | Estante sem laca — melamínico na cor, por inteiro | R$ 31.900 | R$ 35.400 | R$ 49.200 |
+| 5 | Estante sem laca — cor por fora · branco por dentro | R$ 31.500 | R$ 35.000 | R$ 49.600 |
+
+Opção 1 **pinada** nos valores entregues (84.600/76.100). Deltas auditados:
+- op2: lâmina −4.782 · fita bordo 12→3 −884 · chapa ripa cru→melamínico +98
+- op3: laca 1,6x→1,0x −8.135 · fita branca interna +254
+- op4: laca −21.692 · chapas BRC→cor +980 · fita cor +518
+- op5: laca −21.692 · chapas (nesting SEPARADO por cor: 15mm 7+1 · 18mm 1+2 · 6mm 1+3)
+  +776 · fita mista +565
+
+**Modelo declarado da op5:** externo = laterais, tampos, portas, frentes, painel TV,
+prateleira TV, caixilhos, e o C3 inteiro (nichos abertos aparentes); interno = divisórias,
+prateleiras internas (inclusive cristaleira — **atrás do vidro fica branco**, dito no
+folder), caixas de gaveta, fundos fechados.
+
+**Insight comercial usado no folder:** op4 e op5 distam só R$ 400 — o miolo branco não
+move o preço; quem move é a LACA. A op3 é o caminho do meio (laca onde o olho toca).
+
+> 🔒 **Interno, NÃO está no folder:** as alavancas são independentes (op2 mexe em A+B,
+> ops 3-5 na estante C) — combinando op2+op5 o projeto inteiro cairia a ~R$ 21.400.
+> Deixado FORA do material por ancoragem — se o cliente pedir a combinação, a conta existe.
