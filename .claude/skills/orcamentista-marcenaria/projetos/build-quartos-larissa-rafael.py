@@ -282,8 +282,8 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       <tr><td>Estrutura</td><td><b>15 mm</b> em toda a caixaria · <b>6 mm</b> nos fundos ·
         <b>18 mm</b> em toda prateleira com mais de 70 cm de vão e nas portas — é o que
         evita o empeno que aparece no segundo verão.</td></tr>
-      <tr><td>Dobradiças</td><td><b>Hettich</b> com amortecimento integrado, e
-        <b>garantia vitalícia da ferragem</b> pelo fabricante.</td></tr>
+      <tr><td>Dobradiças</td><td><b>Hettich</b> com amortecimento integrado — a porta
+        desacelera sozinha e encosta macia em qualquer velocidade.</td></tr>
       <tr><td>Corrediças</td><td><b>Ocultas com amortecimento</b> nas 13 gavetas dos dois
         quartos — a gaveta fecha sozinha nos últimos centímetros.</td></tr>
       <tr><td>Basculantes</td><td><b>Pistão com amortecimento</b> nas 4 sapateiras do
@@ -366,8 +366,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
 
   <div class="cond">
     <div><div class="k">Garantia</div><div class="d"><b>10 anos</b> em contrato sobre
-      estrutura, montagem e acabamento · <b>2 anos</b> de instalação e regulagem ·
-      ferragem Hettich com garantia vitalícia do fabricante.</div></div>
+      estrutura, montagem e acabamento · <b>2 anos</b> de instalação e regulagem.</div></div>
     <div><div class="k">Prazo</div><div class="d"><b>55 a 65 dias corridos</b> para os
       dois quartos, após aprovação e medição final. Um quarto isolado: 40 a 50 dias.</div></div>
     <div><div class="k">Medição</div><div class="d">Conferida no local antes do corte.

@@ -100,6 +100,14 @@ Atende do básico ao intermediário com bom custo-benefício e encaixe técnico.
 Notas técnicas Hettich: norma EN 15570; Sensys nível 3, fechamento automático
 a partir de 35°, espessura de porta 15–22 mm, estável de 5 °C a 45 °C.
 
+> ⛔ **A garantia vitalícia da Sensys NÃO entra em proposta.** [Jonathan 04/08/2026]
+> A coluna acima é **spec do fabricante**, usada para escolher a ferragem e defender
+> o preço na conversa. Mas **garantia vitalícia da ferragem nunca fez parte do escopo
+> da Valvic** — quem responde por ela é a Hettich, não nós, e escrever isso na proposta
+> nos coloca como fiadores de um termo que não emitimos. Nas propostas, argumentar a
+> ferragem por **ciclos testados, amortecimento e regulagem** — nunca por garantia.
+> (Corrigido em Dr. Luiz, Apto CJ e quartos Mateus & Manuela nesta data.)
+
 **Regra de quantidade de dobradiças por porta (pela altura):**
 
 | Altura da porta   | Dobradiças |

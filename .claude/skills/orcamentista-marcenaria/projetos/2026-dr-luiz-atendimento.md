@@ -23,7 +23,8 @@ A torre da copa tem vãos dedicados a **frigobar · cafeteira · micro-ondas · 
 ## Especificação
 
 - **Revestimento:** MDF melamínico fosco — **sem a linha acetinato e sem a linha Aris**.
-- **Bancadas:** borda **arredondada**, raio usinado na peça, **sem acabamento chanfrado**.
+- **Bancadas:** tampo de **45 mm**, borda **arredondada**, raio usinado na peça,
+  **sem acabamento chanfrado**.
 - **Estrutura:** pé em **serralheria** com **pintura eletrostática fosca**.
 - **Pedras existentes:** mantidas. A marcenaria reveste as faces aparentes.
 
@@ -34,7 +35,7 @@ A torre da copa tem vãos dedicados a **frigobar · cafeteira · micro-ondas · 
 | **Investimento** | **R$ 27.000** |
 | Pagamento | **50% na assinatura + 50% na entrega** |
 | Prazo | **45 dias corridos** |
-| Garantia | 10 anos em contrato · 2 anos de instalação |
+| Garantia | **5 anos** em contrato — estrutura, montagem, acabamento e instalação |
 | Validade | 15 dias corridos |
 
 ## 📄 Proposta — 4 páginas
@@ -55,6 +56,26 @@ descasca no encosto da cadeira. Fecha com a observação de que num espaço de a
 
 **Página 4** traz o valor, o 50/50 desdobrado (o que cada metade libera) e os três
 passos até a entrega.
+
+## ✏️ Correções [Jonathan 04/08]
+
+| # | Correção | Onde |
+|---|---|---|
+| 1 | **Garantia vitalícia da ferragem — fora.** *"Nunca fez parte do nosso escopo."* | tabela técnica, p.3 |
+| 2 | Bloco **Incluso / Não incluso / Medição** removido inteiro | p.4 |
+| 3 | Garantia **10 anos → 5 anos** | `.warr` p.3 + `.cond` p.4 |
+| 4 | **Expor 45 mm** de espessura da bancada | `.det` p.2 + tabela técnica p.3 |
+| 5 | **"Cor única nos cinco ambientes"** removido | tabela técnica, p.3 |
+
+> A correção 1 **não era só desta proposta.** A mesma frase estava no **Apto CJ**
+> (4 ocorrências) e nos **quartos Mateus & Manuela** (2) — os dois já entregues.
+> Corrigi os geradores e reemiti os PDFs; o argumento de ferragem agora se apoia em
+> **ciclos testados, amortecimento e regulagem**, não em garantia. A regra ficou
+> registrada em `referencias/ferragens.md` para não voltar.
+
+> A remoção do bloco Incluso/Não incluso abriu 30 mm na p.4. Em vez de deixar o vazio,
+> redistribuí: caixa de investimento maior (número a 54pt), respiro maior entre as
+> condições e os três passos. Folgas finais: 17,2 / 10,3 / 15,9 / 29,9 mm.
 
 ## ⚠️ Aberto
 

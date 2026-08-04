@@ -147,3 +147,12 @@ fechou — a iluminação da cena puxa o carvalho para cinza e o rosa para bege.
 cor errado ao lado do nome do padrão é pior que chip nenhum**, e a arquiteta perceberia
 na hora. A paleta ficou tipográfica: nome do fabricante, nome do padrão e onde ele é
 aplicado. Os renders já mostram a cor.
+
+## ✏️ Correção [Jonathan 04/08/2026] — garantia da ferragem
+
+A proposta afirmava **garantia vitalícia da ferragem pelo fabricante**. Jonathan:
+*"isso nunca fez parte do nosso escopo."* Removido (2 ocorrências) — o PDF foi reemitido. A ferragem
+agora é defendida por **ciclos testados, amortecimento e regulagem**. Regra em
+`referencias/ferragens.md`.
+
+> ⚠️ **A versão que o cliente recebeu ainda traz a frase.** Reenviar é decisão comercial.

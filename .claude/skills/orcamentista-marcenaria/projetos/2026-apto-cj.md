@@ -372,3 +372,12 @@ miolo A, evitando repetir a mesma foto entre páginas.
 
 > ⚠️ **18 mm ainda derivado** (branca 380 / cor 600) — afeta só o lado do custo/MC, não o
 > preço, que agora é fixo.
+
+## ✏️ Correção [Jonathan 04/08/2026] — garantia da ferragem
+
+A proposta afirmava **garantia vitalícia da ferragem pelo fabricante**. Jonathan:
+*"isso nunca fez parte do nosso escopo."* Removido (4 ocorrências) — o PDF foi reemitido. A ferragem
+agora é defendida por **ciclos testados, amortecimento e regulagem**. Regra em
+`referencias/ferragens.md`.
+
+> ⚠️ **A versão que o cliente recebeu ainda traz a frase.** Reenviar é decisão comercial.
