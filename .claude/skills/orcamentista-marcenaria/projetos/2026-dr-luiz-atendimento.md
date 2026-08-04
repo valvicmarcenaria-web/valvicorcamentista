@@ -79,21 +79,39 @@ passos até a entrega.
 
 ## 🖼️ A única imagem — detalhe da borda [Jonathan 04/08]
 
-`img/borda-arredondada-45mm.png` · pé da **p.3**, ao lado do texto que argumenta a borda.
+`img/borda-arredondada-45mm.png` · pé da **p.3**, **92 × 58 mm**, ao lado do texto que
+argumenta a borda.
 
-A proposta era 100% tipográfica por falta de material. O Jonathan mandou uma foto do
-**detalhe da borda arredondada** — que é exatamente o assunto da p.3 — então ela entrou
-lá, emparelhada com o parágrafo *"a bancada é a primeira coisa que o cliente toca"*.
-A legenda foi para a coluna de texto, não embaixo da foto: como legenda ela descia
-6,7 mm dentro do rodapé.
+A proposta era 100% tipográfica por falta de material. A imagem entrou na p.3 — que é
+exatamente a página do assunto — emparelhada com o parágrafo *"a bancada é a primeira
+coisa que o cliente toca"*. A legenda foi para a coluna de texto, não embaixo da foto:
+como `figcaption` ela descia **6,7 mm dentro do rodapé**.
 
-> ⚠️ **A imagem original tem 153 × 154 px.** Guardei ampliada 3× (LANCZOS) só para o PDF
-> não sair a 114 dpi — isso **suaviza, não recupera detalhe**. Nos 34 mm em que está,
-> segura bem, porque a foto é de superfície lisa e sem textura fina. **Não dá para usar
-> maior que isso, e muito menos na capa** (210 mm daria ~18 dpi). Se aparecer o arquivo
-> original da câmera, vale refazer com ela grande.
+**Duas versões.** A primeira tinha 153 × 154 px e só aguentava 34 mm. A segunda
+(1024 × 1031) permitiu subir para **92 mm** e mostra *duas* especificações de uma vez:
+a **borda arredondada com o tampo espesso** e o **pé cilíndrico em pintura fosca**.
 
-Folgas finais: 17,2 / 10,3 / 11,4 / 29,9 mm — e 4,4 mm entre a base da foto e o rodapé.
+### Tratamento da imagem
+
+Recortada para `(0, 225) → (1024, 872)` — 1024 × 647, proporção 1,58:1. O corte é de
+composição (aperta no encontro tampo/pé e corta piso vazio), e resolve dois defeitos
+de brinde:
+
+| Defeito | Onde estava | Saiu por |
+|---|---|---|
+| **Marca d'água ✦ do Gemini** | x 880–925, y 885–935 | corte inferior (y < 872) |
+| 3 blocos quadrados de artefato sobre o tampo | y 48–64, 171–176, 208–218 | corte superior (y > 225) |
+
+> ⚠️ **A imagem é gerada por IA, não é foto de peça nossa.** A marca d'água do Gemini
+> estava lá; ela saiu no recorte de composição, mas **o fato não sai** — vale saber o
+> que está indo para o cliente. Como ilustração de especificação (é o que a legenda diz)
+> funciona; como "olha um móvel que fizemos", não é verdade.
+
+> ⚠️ **A mesa da foto é preta e a cor do projeto ainda não está definida** (item 2 do
+> *Aberto*). A foto pode ser lida como compromisso de cor. Se o padrão escolhido não for
+> escuro, trocar a imagem antes de enviar.
+
+Folgas finais: 17,2 / 10,3 / 12,5 / 29,9 mm.
 
 ## ⚠️ Aberto
 

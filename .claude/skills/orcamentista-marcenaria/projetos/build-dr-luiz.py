@@ -72,32 +72,32 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   .cond .d{{font-size:9.4pt; color:var(--soft); line-height:1.6; margin-top:1.2mm;}}
   .cond .d b{{color:var(--ink);}}
   .warr{{background:var(--deep); border-left:3px solid var(--gold-lt);
-      border-radius:0 5px 5px 0; padding:5mm 7mm; margin-top:6mm;}}
+      border-radius:0 5px 5px 0; padding:4.2mm 7mm; margin-top:5mm;}}
   .warr .k{{font-size:6.8pt; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-lt);
       font-weight:700;}}
-  .warr .big{{font-family:'Cormorant Garamond',Georgia,serif; font-size:23pt; font-weight:700;
+  .warr .big{{font-family:'Cormorant Garamond',Georgia,serif; font-size:20pt; font-weight:700;
       color:#fff; line-height:1.1; margin-top:1.6mm;}}
-  .warr .d{{font-size:9pt; color:#C6BFB2; line-height:1.6; margin-top:2.2mm;}}
+  .warr .d{{font-size:8.8pt; color:#C6BFB2; line-height:1.55; margin-top:2mm;}}
   .warr .d b{{color:#F0E7D6;}}
   .obs{{margin-top:6mm; padding-left:4.5mm; border-left:2px solid var(--gold-lt);
       font-size:8.4pt; color:var(--soft); line-height:1.7;}}
   .obs b{{color:var(--ink);}}
 
   .spec-tb td:first-child{{width:44mm;}}
-  .spec-tb td{{padding:2.9mm 0;}}
+  .spec-tb td{{padding:2.2mm 0;}}
   .spec-tb{{font-size:9.2pt;}}
 
-  /* figura de detalhe + texto — a legenda vai na coluna de texto: a coluna da figura fica só com a imagem,
-     senão o figcaption desce e bate no rodapé */
-  .figrow{{display:flex; gap:0; margin-top:5mm; align-items:center;}}
-  .fig{{width:34mm; flex:none; margin:0;}}
-  .fig img{{width:34mm; height:34mm; object-fit:cover; display:block;
-      border-radius:4px; box-shadow:0 1px 5px rgba(0,0,0,.10);}}
+  /* figura de detalhe + texto — a legenda vai na coluna de texto: a coluna da
+     figura fica só com a imagem, senão o figcaption desce e bate no rodapé */
+  .figrow{{display:flex; gap:0; margin-top:4mm; align-items:center;}}
+  .fig{{width:92mm; flex:none; margin:0;}}
+  .fig img{{width:92mm; height:58mm; object-fit:cover; display:block;
+      border-radius:4px; box-shadow:0 2px 9px rgba(0,0,0,.14);}}
   .ftxt{{flex:1; margin-left:7mm; padding-left:5mm; border-left:2px solid var(--gold-lt);
-      font-size:8.6pt; color:var(--soft); line-height:1.7;}}
+      font-size:8.4pt; color:var(--soft); line-height:1.68;}}
   .ftxt b{{color:var(--ink);}}
-  .ftxt .fk{{font-size:6.4pt; letter-spacing:.16em; text-transform:uppercase;
-      color:var(--gold); font-weight:700; margin-bottom:1.8mm;}}
+  .ftxt .fk{{font-size:6.4pt; letter-spacing:.15em; text-transform:uppercase;
+      color:var(--gold); font-weight:700; margin-bottom:1.8mm; line-height:1.5;}}
 </style></head><body>
 
 <!-- ══════ 1. CAPA ══════ -->
@@ -233,8 +233,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
     <div class="d">Marcenaria sob medida costuma sair com <b>1 a 3 anos</b> de garantia —
     quando sai por escrito. A nossa é de <b>5 anos</b> sobre estrutura, montagem,
     acabamento e instalação. Conseguimos assinar isso porque a equipe é <b>própria do
-    corte à instalação</b> — inclusive a serralheria dos pés, que sai coordenada com a
-    marcenaria e não como um fornecedor à parte.</div>
+    corte à instalação</b> — inclusive a serralheria dos pés.</div>
   </div>
 
   <div class="figrow">
@@ -242,7 +241,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       <img src="{BORDA}" alt="Detalhe da borda arredondada do tampo de 45 mm">
     </figure>
     <div class="ftxt">
-      <div class="fk">Borda arredondada · tampo de 45 mm</div>
+      <div class="fk">Borda arredondada · tampo de 45 mm<br>pé em serralheria</div>
       <b>Um espaço de atendimento tem uma exigência que uma casa não tem:</b> a bancada é a
       primeira coisa que o cliente toca quando senta. É por isso que a borda arredondada e a
       pintura eletrostática não são detalhes de acabamento aqui — são o que mantém o móvel
