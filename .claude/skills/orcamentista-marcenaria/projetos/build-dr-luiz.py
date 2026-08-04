@@ -2,9 +2,15 @@
 """PROPOSTA Dr. Luiz — novo espaço de atendimento (advocacia).
 Valores FECHADOS pelo Jonathan (não passaram pelo motor). 4 páginas.
 Capa tipográfica — não há render nem executivo, mesma situação do Porto Verde V2."""
-import pathlib
+import pathlib, base64
 P = pathlib.Path('/home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos')
 CSS = open('/tmp/css_premium.txt', encoding='utf-8').read().split('CSS = """')[1].rsplit('"""',1)[0]
+
+def uri(nome):
+    b = (P/'img'/nome).read_bytes()
+    return 'data:image/png;base64,' + base64.b64encode(b).decode()
+
+BORDA = uri('borda-arredondada-45mm.png')   # detalhe da borda arredondada [Jonathan 04/08]
 
 HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>{CSS}</style>
 <style>
@@ -66,7 +72,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   .cond .d{{font-size:9.4pt; color:var(--soft); line-height:1.6; margin-top:1.2mm;}}
   .cond .d b{{color:var(--ink);}}
   .warr{{background:var(--deep); border-left:3px solid var(--gold-lt);
-      border-radius:0 5px 5px 0; padding:5.6mm 7mm; margin-top:6mm;}}
+      border-radius:0 5px 5px 0; padding:5mm 7mm; margin-top:6mm;}}
   .warr .k{{font-size:6.8pt; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-lt);
       font-weight:700;}}
   .warr .big{{font-family:'Cormorant Garamond',Georgia,serif; font-size:23pt; font-weight:700;
@@ -78,8 +84,20 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   .obs b{{color:var(--ink);}}
 
   .spec-tb td:first-child{{width:44mm;}}
-  .spec-tb td{{padding:3.4mm 0;}}
+  .spec-tb td{{padding:2.9mm 0;}}
   .spec-tb{{font-size:9.2pt;}}
+
+  /* figura de detalhe + texto — a legenda vai na coluna de texto: a coluna da figura fica só com a imagem,
+     senão o figcaption desce e bate no rodapé */
+  .figrow{{display:flex; gap:0; margin-top:5mm; align-items:center;}}
+  .fig{{width:34mm; flex:none; margin:0;}}
+  .fig img{{width:34mm; height:34mm; object-fit:cover; display:block;
+      border-radius:4px; box-shadow:0 1px 5px rgba(0,0,0,.10);}}
+  .ftxt{{flex:1; margin-left:7mm; padding-left:5mm; border-left:2px solid var(--gold-lt);
+      font-size:8.6pt; color:var(--soft); line-height:1.7;}}
+  .ftxt b{{color:var(--ink);}}
+  .ftxt .fk{{font-size:6.4pt; letter-spacing:.16em; text-transform:uppercase;
+      color:var(--gold); font-weight:700; margin-bottom:1.8mm;}}
 </style></head><body>
 
 <!-- ══════ 1. CAPA ══════ -->
@@ -219,11 +237,17 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
     marcenaria e não como um fornecedor à parte.</div>
   </div>
 
-  <div class="obs">
-    <b>Um espaço de atendimento tem uma exigência que uma casa não tem:</b> a bancada é a
-    primeira coisa que o cliente toca quando senta. É por isso que a borda arredondada e a
-    pintura eletrostática não são detalhes de acabamento aqui — são o que mantém o móvel
-    com cara de novo depois de centenas de atendimentos.
+  <div class="figrow">
+    <figure class="fig">
+      <img src="{BORDA}" alt="Detalhe da borda arredondada do tampo de 45 mm">
+    </figure>
+    <div class="ftxt">
+      <div class="fk">Borda arredondada · tampo de 45 mm</div>
+      <b>Um espaço de atendimento tem uma exigência que uma casa não tem:</b> a bancada é a
+      primeira coisa que o cliente toca quando senta. É por isso que a borda arredondada e a
+      pintura eletrostática não são detalhes de acabamento aqui — são o que mantém o móvel
+      com cara de novo depois de centenas de atendimentos.
+    </div>
   </div>
 
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Dr. Luiz · novo espaço de atendimento</span></div>

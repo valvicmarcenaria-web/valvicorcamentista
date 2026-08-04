@@ -75,7 +75,25 @@ passos até a entrega.
 
 > A remoção do bloco Incluso/Não incluso abriu 30 mm na p.4. Em vez de deixar o vazio,
 > redistribuí: caixa de investimento maior (número a 54pt), respiro maior entre as
-> condições e os três passos. Folgas finais: 17,2 / 10,3 / 15,9 / 29,9 mm.
+> condições e os três passos.
+
+## 🖼️ A única imagem — detalhe da borda [Jonathan 04/08]
+
+`img/borda-arredondada-45mm.png` · pé da **p.3**, ao lado do texto que argumenta a borda.
+
+A proposta era 100% tipográfica por falta de material. O Jonathan mandou uma foto do
+**detalhe da borda arredondada** — que é exatamente o assunto da p.3 — então ela entrou
+lá, emparelhada com o parágrafo *"a bancada é a primeira coisa que o cliente toca"*.
+A legenda foi para a coluna de texto, não embaixo da foto: como legenda ela descia
+6,7 mm dentro do rodapé.
+
+> ⚠️ **A imagem original tem 153 × 154 px.** Guardei ampliada 3× (LANCZOS) só para o PDF
+> não sair a 114 dpi — isso **suaviza, não recupera detalhe**. Nos 34 mm em que está,
+> segura bem, porque a foto é de superfície lisa e sem textura fina. **Não dá para usar
+> maior que isso, e muito menos na capa** (210 mm daria ~18 dpi). Se aparecer o arquivo
+> original da câmera, vale refazer com ela grande.
+
+Folgas finais: 17,2 / 10,3 / 11,4 / 29,9 mm — e 4,4 mm entre a base da foto e o rodapé.
 
 ## ⚠️ Aberto
 

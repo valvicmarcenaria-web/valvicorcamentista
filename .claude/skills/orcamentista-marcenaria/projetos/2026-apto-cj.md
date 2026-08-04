@@ -351,8 +351,17 @@ para a página técnica em 4 colunas (`.p-tec .same`) e as duas fotos da estante
 descritivo, que virou uma faixa de 3 imagens. Nada de conteúdo se perdeu — só densificou.
 
 Conferência de estouro automatizada em `/tmp/chk.py`: compara o fim do conteúdo com o topo
-do `.pfoot` de cada página. **Cuidado:** `get_image_info()` reporta o retângulo cheio da
-imagem, não o recorte do `object-fit:cover` — dá falso positivo. Só blocos de texto valem.
+do `.pfoot` de cada página. **Duas armadilhas, as duas já me pegaram:**
+
+1. `get_image_info()` reporta o retângulo cheio da imagem, não o recorte do
+   `object-fit:cover` — dá **falso positivo**. Só vale medir imagem quando a caixa e a
+   imagem têm a mesma proporção (aí não há corte), e lembrando que a **sombra entra como
+   um segundo rect**, sempre maior.
+2. ⚠️ **Falso NEGATIVO, muito pior** [04/08/2026]. A versão antiga filtrava o conteúdo com
+   `b[3] < pfoot_top` — o que **descarta justamente o bloco que estourou** e devolve folga
+   saudável. Na proposta do Dr. Luiz a legenda da figura invadiu 6,7 mm do rodapé e a
+   checagem disse "folga 6,1 mm". Agora bloco abaixo do `.pfoot` é **ERRO explícito**, não
+   filtro. Uma checagem que só sabe dizer "está tudo bem" não é checagem.
 
 **Pág. 7 — "Monte a sua combinação":** a tabela de preços item a item, agrupada por móvel,
 só com as duas colunas de venda (à vista / parcelado). Selo `projeto B+G` marca a versão
