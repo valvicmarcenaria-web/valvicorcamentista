@@ -82,29 +82,39 @@ body{background:var(--bg); color:var(--ink); font-family:system-ui,-apple-system
 </div>
 
 <script>
-const DATA_ATUALIZADA="31/07/2026";
+const DATA_ATUALIZADA="04/08/2026";
 const ORCAMENTOS=[
+  {cliente:"Júnior — Lagoa Santa", ref:370000, max:395000, tag:"Casa completa · 9 amb · Res. Bouganville", status:"entregue", drive:"ok"},
   {cliente:"Kênia & Fábio", ref:481000, max:null, tag:"Casa completa", status:"concluido", drive:"parcial"},
   {cliente:"Casa L&M (Alphaville)", ref:179300, max:199300, tag:"Casa completa · 14 móveis · 6 amb", status:"entregue", drive:"ausente"},
+  {cliente:"Quartos Mateus & Manuela", ref:93800, max:104200, tag:"2 quartos infantis · 11 móveis · A Urbanística", status:"entregue", drive:"ausente"},
   {cliente:"Resolve Consórcio", ref:147800, max:174800, tag:"Comercial · 14 amb", status:"entregue", drive:"ausente"},
   {cliente:"Lilian Lee",    ref:127000, max:180500, tag:"Apto completo", status:"concluido", drive:"ausente"},
   {cliente:"Kairon & Juliana", ref:107121, max:123954, tag:"Apto completo · 8 amb (Ess/Gold)", status:"entregue", drive:"ausente"},
+  {cliente:"Clínica Nura", ref:85150, max:92550, tag:"Comercial · clínica · arq. Jessyca Santos", status:"entregue", drive:"ok"},
   {cliente:"SPE Nova Lima 1", ref:88200, max:null, tag:"Comercial · painéis+pérgola", status:"entregue", drive:"ausente"},
   {cliente:"Aline Sanches", ref:77800, max:88700, tag:"Apto completo · Galeria 42", status:"entregue", drive:"ausente"},
   {cliente:"Apto CJ (B+G Estúdio)", ref:76100, max:84600, tag:"Folder 8 pág · 6 configurações · preços fechados", status:"entregue", drive:"ausente"},
   {cliente:"TRT 3ª Região", ref:74900, max:null, tag:"Licitação · Grupo 16 · via MLQ Eng.", status:"entregue", drive:"ausente"},
   {cliente:"Jairo Samuel",  ref:70400,  max:83900,  tag:"Apto completo", status:"entregue",  drive:"ausente"},
   {cliente:"Porto Verde (Leonardo)", ref:57800, max:null, tag:"Escritório · V2 sobre o 3D · 5 frentes", status:"entregue", drive:"ausente"},
+  {cliente:"Rômulo", ref:39000, max:58400, tag:"Apto · 4 amb · 3 níveis de ferragem", status:"entregue", drive:"ok"},
+  {cliente:"Simony — Buritis", ref:34850, max:null, tag:"Contrato assinado · marcenaria", status:"concluido", drive:"ok"},
   {cliente:"Ed. Luxemburgo",ref:35295,  max:null,  tag:"Halls",         status:"concluido", drive:"ok"},
   {cliente:"Raquel",        ref:25000,  max:30000,  tag:"Roupeiro 6,30m",status:"concluido", drive:"ok"},
   {cliente:"Camila",        ref:24900,  max:null,   tag:"Closet",        status:"concluido", drive:"desatualizado"},
   {cliente:"Graça",         ref:20100,  max:24000,  tag:"Despensa+Lav+Tanque", status:"entregue", drive:"ausente"},
+  {cliente:"Karina Ramos", ref:17500, max:21500, tag:"Escritório home office · Gold/Silver", status:"entregue", drive:"ok"},
   {cliente:"Hotel Ibis",    ref:16500,  max:null,   tag:"Hall comercial",status:"concluido", drive:"desatualizado"},
+  {cliente:"Regina Godinho", ref:13100, max:null, tag:"Escritório · 3º projeto (recorrente)", status:"entregue", drive:"ok"},
   {cliente:"Flávia Moacir", ref:14500,  max:null,   tag:"Portas + painéis · vão escada", status:"entregue", drive:"ausente"},
   {cliente:"Lirriet Libório", ref:9600, max:10700, tag:"Home office sob a escada · 2,60 m", status:"entregue", drive:"ausente"},
   {cliente:"Maria",         ref:7850,   max:null,   tag:"Lavanderia",    status:"entregue",  drive:"desatualizado"},
 ];
-const PARADOS=[{n:"Karina Ramos",m:"a consultar"}];
+const PARADOS=[{n:"Cristiane",m:"escopo de venda"},{n:"Ana Carolina",m:"projeto recebido"},
+  {n:"Tania",m:"projeto recebido"},{n:"Bernardo",m:"escopo de venda"},
+  {n:"Carla Dressler",m:"escopo de venda"},{n:"Marina",m:"escopo de venda"},
+  {n:"Alexandrina",m:"escopo de venda"}];
 
 const brl=n=>new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL",maximumFractionDigits:0}).format(n);
 const kbrl=n=>n>=1000?"R$ "+(n/1000).toLocaleString("pt-BR",{maximumFractionDigits:0})+" mil":brl(n);
@@ -126,7 +136,7 @@ document.getElementById("list").innerHTML=ORCAMENTOS.map(o=>`
     <span class="v num">${brl(o.ref)}${o.max?`<small>até ${kbrl(o.max)}</small>`:""}</span>
   </div>`).join("");
 
-document.getElementById("par").innerHTML=`<span>⛔ <b>${PARADOS.length} em aberto</b></span>`+
+document.getElementById("par").innerHTML=`<span>⛔ <b>${PARADOS.length} em aberto</b> (escopo sem orçamento fechado)</span>`+
   PARADOS.map(p=>`<span>${p.n} <span style="opacity:.7">(${p.m})</span></span>`).join("");
 document.getElementById("foot").textContent="Backup durável no Git · Drive = cópia do time";
 
