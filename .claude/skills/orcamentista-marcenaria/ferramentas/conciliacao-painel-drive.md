@@ -26,14 +26,42 @@ sistema_valvic/           apps · financeiro · fluxograma
 |---|--:|--:|---|---|
 | **Júnior — Lagoa Santa** | 370.000 | 395.000 | Drive (doc 18/06) | Casa completa, 9 ambientes, Res. Bouganville. **2º maior da carteira** |
 | **Quartos Mateus & Manuela** | 93.800 | 104.200 | repo (fechado hoje) | A Urbanística · 11 móveis |
-| **Clínica Nura** | 85.150 | 92.550 | Drive (PDF 08/07) | Comercial · arq. Jessyca Santos |
 | **Rômulo** | 39.000 | 58.400 | Drive (PDF 09/07) | Apto 4 amb · 3 níveis de ferragem |
 | **Simony — Buritis** | 34.850 | — | Drive (contrato) | **Contrato assinado** — não era orçamento, era venda fechada |
 | **Karina Ramos** | 17.500 | 21.500 | repo + Drive | Estava em PARADOS "a consultar", mas a proposta Gold/Silver está fechada |
 | **Regina Godinho** | 13.100 | — | Drive (doc 16/06) | Escritório · cliente recorrente, 3º projeto |
 
-**Impacto:** 19 → **26 orçamentos** · R$ 1.641.166 → **R$ 2.294.566** (+R$ 653.400,
-+40%). Ticket médio R$ 86.377 → **R$ 88.253**.
+**Impacto:** 19 → **25 orçamentos** · R$ 1.641.166 → **R$ 2.209.416** (+R$ 568.250,
++35%).
+
+> A **Clínica Nura** (R$ 85.150 / 92.550) foi levantada na auditoria e **retirada em
+> seguida — proposta perdida** [Jonathan 04/08]. A proposta e os 3D continuam no Drive
+> em `Orçamentos Valvic/Em aberto/Nura`; se o cliente voltar, o material está lá.
+
+## 🚦 Status reais [Jonathan 04/08]
+
+O painel passou a ter **três estados** em vez de dois. Antes só existia
+`concluido` (verde) e `entregue` (azul); uma proposta parada ficava indistinguível de
+uma em negociação ativa.
+
+| Estado | Cor | Significado | Total |
+|---|---|---|--:|
+| `concluido` | verde | vendido / contrato assinado | 8 · R$ 757.645 |
+| `entregue` | azul | proposta entregue, em negociação | 15 · R$ 1.395.271 |
+| `parado` | âmbar | entregue, sem previsão ou sem retorno | 2 · R$ 56.500 |
+
+Decisões desta rodada:
+
+| Cliente | Antes | Agora |
+|---|---|---|
+| Clínica Nura | entregue | **removida** — perdida |
+| Rômulo | entregue | **parado** — sem previsão |
+| Simony — Buritis | concluido | **fechado** ✓ (confirmado) |
+| Karina Ramos | entregue | **parado** — sem retorno |
+| Regina Godinho | entregue | **fechado** ✓ |
+
+A faixa de indicadores no topo agora mostra os três valores lado a lado, e a contagem
+de pendências de Drive foi para o rodapé.
 
 ## 🔁 PARADOS reconstruído
 
