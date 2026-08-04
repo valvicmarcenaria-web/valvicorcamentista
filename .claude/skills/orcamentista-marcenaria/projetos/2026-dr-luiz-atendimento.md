@@ -1,0 +1,69 @@
+# Dr. Luiz — novo espaço de atendimento (advocacia)
+
+**Entrada** 04/08/2026 · escopo, valores e estruturação **ditados pelo Jonathan**.
+**Motor** `build-dr-luiz.py` — proposta em 4 páginas.
+
+> ⚠️ **EXCEÇÃO DE MÉTODO, como no Porto Verde V2.** Este orçamento **não passou pelo
+> motor**. Não há projeto executivo, não há render e não há uma única cota. O preço
+> (R$ 27.000) e as condições foram definidos comercialmente; o meu papel foi montar a
+> proposta. Não existe conferência de MC porque não existe quantitativo.
+
+## Escopo — 5 ambientes, 11 elementos
+
+| Ambiente | Elementos | Qtd |
+|---|---|--:|
+| Salas de atendimento compactas (2) | revestimento parcial de bancada de pedra existente + bancada acoplada | 4 |
+| Sala principal | revestimento da bancada existente + bancada nova | 2 |
+| Sala de apoio | 2 bancadas suspensas | 2 |
+| Copa | armário inferior sob a pia + armário superior + torre de apoio | 3 |
+| | **Total** | **11** |
+
+A torre da copa tem vãos dedicados a **frigobar · cafeteira · micro-ondas · armazenagem**.
+
+## Especificação
+
+- **Revestimento:** MDF melamínico fosco — **sem a linha acetinato e sem a linha Aris**.
+- **Bancadas:** borda **arredondada**, raio usinado na peça, **sem acabamento chanfrado**.
+- **Estrutura:** pé em **serralheria** com **pintura eletrostática fosca**.
+- **Pedras existentes:** mantidas. A marcenaria reveste as faces aparentes.
+
+## Comercial
+
+| | |
+|---|---|
+| **Investimento** | **R$ 27.000** |
+| Pagamento | **50% na assinatura + 50% na entrega** |
+| Prazo | **45 dias corridos** |
+| Garantia | 10 anos em contrato · 2 anos de instalação |
+| Validade | 15 dias corridos |
+
+## 📄 Proposta — 4 páginas
+
+`capa tipográfica · escopo · técnico · investimento`
+
+**Capa tipográfica** (`.cover-t`), reaproveitada do Porto Verde V2 — não há render nem
+foto do espaço. Gradientes radiais dourados sobre fundo escuro, com a régua vertical.
+
+**Página 2** fecha com o argumento do conjunto: *são 11 elementos em cinco ambientes, e
+quem atravessa o espaço precisa enxergar um conjunto, não cinco compras separadas.* É o
+que justifica a repetição de cor, borda e pé em todos os móveis.
+
+**Página 3** transforma cada exigência técnica em benefício: a borda arredondada é a
+quina que não machuca nem lasca; a pintura eletrostática é curada em estufa e não
+descasca no encosto da cadeira. Fecha com a observação de que num espaço de atendimento
+**a bancada é a primeira coisa que o cliente toca ao sentar**.
+
+**Página 4** traz o valor, o 50/50 desdobrado (o que cada metade libera) e os três
+passos até a entrega.
+
+## ⚠️ Aberto
+
+1. **Nenhuma medida.** Não há cota de bancada, de vão da copa nem de altura. A proposta
+   traz a ressalva de medição no corpo do texto, mas **o preço está travado antes do
+   levantamento** — se o espaço for maior que o imaginado, não há proteção contratual
+   além dessa frase.
+2. **Cor não definida.** A especificação diz "melamínico fosco, sem acetinato e sem
+   Aris" — falta o padrão exato. Não muda o custo de chapa (mesma linha), mas precisa
+   ser fixado antes da compra.
+3. **Sem MC apurada.** Sem quantitativo não dá para dizer se R$ 27.000 cabe. Para
+   referência: são 11 elementos, e o piso de MC do Rodrigo é 37%.
