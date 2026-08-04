@@ -7,10 +7,11 @@ P = pathlib.Path('/home/user/valvicorcamentista/.claude/skills/orcamentista-marc
 CSS = open('/tmp/css_premium.txt', encoding='utf-8').read().split('CSS = """')[1].rsplit('"""',1)[0]
 
 def uri(nome):
+    # jpeg, nao png: e' fotografia. PNG dava 209 KB, jpeg q92 da' 59 KB
     b = (P/'img'/nome).read_bytes()
-    return 'data:image/png;base64,' + base64.b64encode(b).decode()
+    return 'data:image/jpeg;base64,' + base64.b64encode(b).decode()
 
-BORDA = uri('borda-arredondada-45mm.png')   # detalhe da borda arredondada [Jonathan 04/08]
+BORDA = uri('borda-arredondada-45mm.jpg')   # detalhe da borda arredondada [Jonathan 04/08]
 
 HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>{CSS}</style>
 <style>
