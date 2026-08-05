@@ -100,3 +100,33 @@ Flávia Moacir · Lirriet Libório · Maria.
 4. **Coluna `drive`.** Marquei `ok` para tudo que tem pasta com proposta no Drive.
    Os quartos Mateus & Manuela e os demais projetos recentes do repositório seguem
    `ausente` — os PDFs estão só no Git.
+
+---
+
+## Rodada 2 — 04/08/2026 (fim do dia)
+
+| Cliente | Antes | Agora | Motivo |
+|---|--:|--:|---|
+| **Cristaleira** | — | **7.500** | Nova. Peça única, preço fechado |
+| **Apto CJ** | 76.100 / 84.600 | **48.700** | Cliente escolheu a **opção 4** — o leque de 6 virou um número |
+| **Quartos Mateus & Manuela** | 93.800 / 104.200 | **88.800 / 98.700** | MC 40→35% e o painel da Manuela que faltava |
+
+**26 → 27 orçamentos** · R$ 2.236.416 → **R$ 2.211.516**. O total caiu R$ 24.900 e isso
+é bom: era pipeline que não existia. O Apto CJ estava lançado pelo cenário integral
+(R$ 76.100) e a cliente fechou no de R$ 48.700 — carregar os R$ 27.400 de diferença
+seria inflar a carteira com uma venda que não vai acontecer naquele valor.
+
+## ⚠️ Ainda pendente — a pasta "Em aberto" tem 20 pastas, não 8
+
+A rodada 1 registrou só o que apareceu na primeira página da listagem do Drive.
+Listando por `parentId`, a pasta tem **20 subpastas**. Estas **não estão no painel** e
+não têm valor levantado:
+
+`Clínica Dermato-Nutrologia (Dra. Esther / Dra. Sarah)` · `Mônica Cristina — Banheiros
+(Social + Suíte)` · `Cabeceira em couro — Valdenir & Maria (Paula Galante)` ·
+`Sala Bia & Matheus (arq. Giovanna Camisassa)` · `Samara — Quarto dos Irmãos
+(consultoria Rizzi)`
+
+Algumas têm proposta pronta lá dentro (a da Mônica tem `Proposta-Monica-Banheiros.html`
+e `orcamento-monica-v2-mc37.json`). **Vale abrir uma a uma e lançar** — é a mesma
+situação que na rodada 1 revelou R$ 568 mil de carteira não registrada.
