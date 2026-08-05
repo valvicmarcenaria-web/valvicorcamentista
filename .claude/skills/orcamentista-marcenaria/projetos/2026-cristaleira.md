@@ -108,3 +108,35 @@ Se essa hora entrar na conta, os 35% viram ~33,5% reais. Para blindar,
    "vidro incolor". Peça de **1,93 m de altura** dentro de casa — temperado é a escolha
    segura. Comum de 4 mm cairia para ~R$ 100 no total, mas não recomendo nessa altura.
 3. **Profundidade da prateleira** não cotada. Adotei 36 (2 cm recuada da frente).
+
+## 📗 PROPOSTA — 3 páginas (`build-cristaleira.py`)
+
+`capa · o móvel · investimento`
+
+**Três páginas, não seis.** É peça única de R$ 9.800 — uma pasta do tamanho da dos
+quartos do Mateus e da Manuela seria desproporcional ao que está sendo vendido.
+
+**Capa em faixa, não em full-bleed.** Os renders do arquiteto têm 1202 px de altura.
+Numa capa A4 sangrada isso daria **103 dpi**. Na faixa de 190 mm com o degradê descendo
+para o painel escuro, fica em **161 dpi** — e a composição ficou melhor do que seria
+com a foto inteira.
+
+**Página 2** põe o render aberto ao lado da lista de medidas, e fecha com o argumento
+que justifica o preço: *a porta é o móvel*. Uma moldura de 4 cm em volta de 42 × 193 cm
+de vidro pede 8 encaixes e 9,4 m de rebaixo usinado. Sem citar custo — o cliente não
+precisa saber que em chapa a porta custa R$ 46; precisa saber por que ela é trabalhosa.
+
+**Página 3** traz a escada de pagamento inteira com a transferência destacada, e explica
+por que o desconto existe (a Valvic devolve a taxa de cartão que economiza). Fecha nos
+três passos até a entrega.
+
+Folgas: 11,6 / 28,2 mm.
+
+## ⚠ Duas divergências entre o render e o escrito
+
+1. **O vidro.** A prancha escreve **"vedação em vidro incolor"**, mas os três renders
+   mostram um vidro **fumê/reflecta**, bem mais fechado. Orcei o que está escrito —
+   incolor temperado 6 mm. Se o cliente aprovou pela imagem, vai esperar o fumê, que é
+   mais caro. **Confirmar antes de comprar.**
+2. **Garantia.** Usei **5 anos**, que foi o número corrigido no Dr. Luiz. A proposta dos
+   quartos Mateus & Manuela ainda sai com **10 anos**. As duas não podem circular assim.
