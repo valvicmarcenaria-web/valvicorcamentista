@@ -206,3 +206,20 @@ print(f'  (R$ {4*(201*4)/10000*PRECO["MOS18"]/CH_AREA + 4*(42*4)/10000*PRECO["MO
       'de MDF); o custo dela é bancada — igual ao ripado dos quartos.')
 print('  Se essa hora for cobrada, MC 35% vira ~33,5% real. Para blindar, MC 37%'
       f' → tabela R$ {round(fixedR/(1-a_-liqF_*b_-0.37)/100)*100:,.0f}.')
+
+# ── PREÇO FECHADO [Jonathan 04/08] ──────────────────────────────────────────
+# Divisor calibrado: quando o preço é dado, leio a MC de volta em vez de
+# recalcular o preço.
+print('\n' + '═'*92)
+print('FECHADO EM R$ 7.500 — MC lida de volta')
+print('═'*92)
+A_CARTAO = 0.072                                   # taxa de cartão dentro do a=0,162
+for alvo, rot in ((tabela, 'tabela calculada'), (7500, 'FECHADO — no cartão')):
+    d = fixedR/alvo
+    print(f'  {rot:<26}R$ {alvo:>6,.0f}   divisor {d:.5f}   MC {(1-a_-liqF_*b_-d)*100:>5.1f}%')
+d = fixedR/7500
+print(f'  {"FECHADO — em transferência":<26}R$ {7500:>6,.0f}   divisor {d:.5f}   '
+      f'MC {(1-(a_-A_CARTAO)-liqF_*b_-d)*100:>5.1f}%')
+print('\n  Faixa da casa: <28% abaixo do ideal · 28–38% saudável · meta 35–40%.')
+print('  No cartão o negócio fica ABAIXO do piso. Em transferência encosta nele.')
+print('  A forma de pagamento é que decide se esta venda se paga.')

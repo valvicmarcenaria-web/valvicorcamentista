@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """PROPOSTA — Cristaleira 100 × 205 × 40.
 3 páginas: capa · o móvel · investimento. Peça única — uma pasta de 6 seria
-desproporcional. Preços de corte-cristaleira.py (MC 35%, sem RT)."""
+desproporcional. Preço FECHADO em R$ 7.500 [Jonathan 04/08] — MC implícita 20,9% no cartão,
+28,1% em transferência. Ver 2026-cristaleira.md."""
 import pathlib, base64
 P = pathlib.Path('/home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos')
 CSS = open('/tmp/css_premium.txt', encoding='utf-8').read().split('CSS = """')[1].rsplit('"""',1)[0]
@@ -11,6 +12,7 @@ def uri(n):
 
 CAPA   = uri('cristaleira-capa.jpg')
 ABERTA = uri('cristaleira-aberta.jpg')
+FECHADA = uri('cristaleira-fechada.jpg')
 
 HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>{CSS}</style>
 <style>
@@ -46,23 +48,24 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
 
   /* pagina do movel */
   .duo{{display:flex; gap:8mm; margin-top:4mm; align-items:stretch;}}
-  .duo .ph{{width:78mm; flex:none;}}
-  .duo .ph img{{width:78mm; height:132mm; object-fit:cover; display:block; border-radius:4px;
+  .duo .ph{{width:88mm; flex:none;}}
+  .duo .ph img{{width:88mm; height:96mm; object-fit:cover; display:block; border-radius:4px;
       box-shadow:0 2px 10px rgba(0,0,0,.14);}}
+  .duo .ph img + img{{margin-top:5mm;}}
   .duo .ph .cp{{font-size:6.4pt; letter-spacing:.14em; text-transform:uppercase; color:var(--gold);
       font-weight:700; margin-top:2.2mm; line-height:1.5;}}
   .duo .dd{{flex:1;}}
-  .dl{{border-top:1px solid var(--hair); padding:4.1mm 0;}}
+  .dl{{border-top:1px solid var(--hair); padding:6.4mm 0;}}
   .dl:first-child{{border-top:2px solid var(--ink); padding-top:2.6mm;}}
   .dl .k{{font-size:6.4pt; letter-spacing:.16em; text-transform:uppercase; color:var(--gold);
       font-weight:700;}}
-  .dl .v{{font-size:9.8pt; color:var(--soft); line-height:1.6; margin-top:1.2mm;}}
+  .dl .v{{font-size:10pt; color:var(--soft); line-height:1.6; margin-top:1.2mm;}}
   .dl .v b{{color:var(--ink);}}
 
   /* passos ate' a entrega */
-  .steps{{display:flex; gap:0; margin-top:8mm; border-top:1px solid var(--line);
+  .steps{{display:flex; gap:0; margin-top:13mm; border-top:1px solid var(--line);
       border-bottom:1px solid var(--line); padding:5.5mm 0;}}
-  .steps > div{{flex:1; padding-left:6mm; border-left:1px solid var(--line);}}
+  .steps > div{{flex:1; padding-left:6mm; padding-block:1mm; border-left:1px solid var(--line);}}
   .steps > div:first-child{{padding-left:0; border-left:0;}}
   .steps .k{{font-size:6.4pt; letter-spacing:.16em; text-transform:uppercase; color:var(--gold);
       font-weight:700;}}
@@ -70,6 +73,18 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       color:var(--ink); line-height:1.15; margin-top:1mm;}}
   .steps .d{{font-size:8.8pt; color:var(--soft); line-height:1.6; margin-top:1.4mm;}}
   .steps .d b{{color:var(--ink);}}
+
+  /* preco fechado dentro da caixa escura */
+  .inv-hero{{padding:14mm 8mm !important;}}
+  .inv-hero .v{{font-size:50pt !important; margin:2.5mm 0 1.5mm !important;}}
+  .inv-hero .c{{font-size:9.2pt !important;}}
+  .pay2{{display:flex; margin-top:6.5mm; padding-top:5mm;
+      border-top:1px solid rgba(201,169,106,.30);}}
+  .pay2 > div{{flex:1; padding-left:7mm; border-left:1px solid rgba(201,169,106,.18);}}
+  .pay2 > div:first-child{{padding-left:0; border-left:0;}}
+  .pay2 b{{display:block; font-family:'Cormorant Garamond',Georgia,serif; font-size:26pt;
+      font-weight:700; color:var(--gold-lt); line-height:1;}}
+  .pay2 span{{display:block; font-size:8.8pt; color:#C6BFB2; margin-top:2mm; line-height:1.55;}}
 </style></head><body>
 
 <!-- ══════ 1. CAPA ══════ -->
@@ -98,14 +113,13 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   <div class="eyebrow">O móvel</div>
   <div class="h-sec serif" style="font-size:26pt;">Em cima o que se mostra,<br>
     <em>embaixo o que se guarda.</em></div>
-  <hr class="rule" style="margin:8px 0 9px;">
-  <p class="lead" style="margin-bottom:1mm;">Quatro prateleiras atrás de vidro incolor e
-  três gavetas fechadas embaixo. A taça fica à vista; a toalha de mesa, não.</p>
+  <hr class="rule" style="margin:8px 0 10px;">
 
   <div class="duo">
     <div class="ph">
       <img src="{ABERTA}" alt="Cristaleira aberta, com as prateleiras e as gavetas">
-      <div class="cp">Quatro vãos de 26,75 cm<br>três gavetas de corrediça oculta</div>
+      <img src="{FECHADA}" alt="Cristaleira fechada, com as portas de vidro">
+      <div class="cp">Aberta e fechada · quatro vãos de 26,75 cm<br>três gavetas de corrediça oculta</div>
     </div>
     <div class="dd">
       <div class="dl"><div class="k">Medidas</div>
@@ -130,14 +144,6 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
     </div>
   </div>
 
-  <div class="pull" style="margin-top:7mm;">
-    <div class="t">A porta é<br>o móvel.</div>
-    <div class="d">Uma moldura de <b>4 cm</b> em volta de <b>42 × 193 cm de vidro</b> pede
-    <b>8 encaixes</b> e <b>9,4 m de rebaixo usinado</b> — para o vidro assentar sem folga,
-    sem massa aparente e sem chacoalhar quando a porta fecha. É a diferença entre uma
-    porta de vidro e uma porta <em>com</em> vidro.</div>
-  </div>
-
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Cristaleira · 100 × 205 × 40</span></div>
 </div></div>
 
@@ -151,33 +157,19 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
 
   <div class="inv-hero">
     <div class="k">Cristaleira · 100 × 205 × 40 cm</div>
-    <div class="v">R$ 9.800</div>
+    <div class="v">R$ 7.500</div>
     <div class="c">MDF Arauco Moscada Matt · portas de vidro incolor com moldura de 4 cm ·
-      4 prateleiras · 3 gavetas em corrediça oculta</div>
-    <div class="alt">Valor de tabela — <b>entrada de 30% + até 10× no cartão</b>.
-      As demais condições, abaixo, trazem desconto.</div>
+      4 prateleiras · 3 gavetas em corrediça oculta · ferragens Hardt</div>
+    <div class="pay2">
+      <div><b>30%</b><span>na assinatura — libera a compra do material e a entrada
+        na fila de produção</span></div>
+      <div><b>10×</b><span>o saldo em até dez vezes no cartão, ou em transferência
+        na entrega</span></div>
+    </div>
   </div>
 
-  <table class="pay-tb">
-    <thead><tr><th>Condição de pagamento</th><th style="text-align:right;">Desconto</th>
-      <th style="text-align:right;">Investimento</th></tr></thead>
-    <tbody>
-      <tr><td>Entrada 30% + restante em até 10× no cartão</td>
-        <td class="r">—</td><td class="r">R$ 9.800</td></tr>
-      <tr><td>Entrada 50% + restante em até 8× no cartão</td>
-        <td class="r">3%</td><td class="r">R$ 9.500</td></tr>
-      <tr><td>Entrada 70% + restante em até 6× no cartão</td>
-        <td class="r">5%</td><td class="r">R$ 9.300</td></tr>
-      <tr class="best"><td>Entrada 70% + restante via transferência</td>
-        <td class="r">7%</td><td class="r">R$ 9.100</td></tr>
-    </tbody>
-  </table>
 
-  <div class="note" style="margin-top:4mm;">O desconto da transferência não é cortesia:
-  o cartão custa de <b>7% a 8%</b> de taxa. Quando o pagamento não passa por ele,
-  <b>a Valvic devolve o que economiza</b>.</div>
-
-  <div class="terms" style="margin-top:7mm;">
+  <div class="terms" style="margin-top:12mm;">
     <div class="term"><div class="k">Prazo de entrega</div>
       <div class="v"><b>60 dias</b> corridos</div></div>
     <div class="term"><div class="k">Garantia</div>

@@ -109,6 +109,31 @@ Se essa hora entrar na conta, os 35% viram ~33,5% reais. Para blindar,
    segura. Comum de 4 mm cairia para ~R$ 100 no total, mas não recomendo nessa altura.
 3. **Profundidade da prateleira** não cotada. Adotei 36 (2 cm recuada da frente).
 
+## 🔴 FECHADO EM R$ 7.500 [Jonathan 04/08]
+
+Preço definido comercialmente, abaixo dos R$ 9.800 do motor. **Divisor calibrado** —
+com o preço dado, leio a MC de volta em vez de recalcular o preço.
+
+| | Valor | Divisor | MC implícita |
+|---|--:|--:|--:|
+| Tabela calculada (MC 35%) | R$ 9.800 | 0,45217 | 34,8% |
+| **Fechado — recebido no cartão** | **R$ 7.500** | 0,59084 | **20,9%** ⚠ |
+| **Fechado — recebido em transferência** | **R$ 7.500** | 0,59084 | **28,1%** |
+
+> ⚠ **No cartão esta venda fica abaixo do piso da casa.** A faixa de saúde é
+> <28% abaixo do ideal · 28–38% saudável · meta 35–40%. A R$ 7.500 no cartão dá
+> **20,9%** — sete pontos abaixo do piso.
+>
+> **A diferença inteira é a taxa de cartão** (≈7,2%, que vive dentro do `a = 0,162`).
+> Recebido em transferência o mesmo R$ 7.500 rende **28,1%** e encosta no piso.
+> Ou seja: **neste preço, a forma de pagamento deixou de ser conveniência e virou a
+> condição de a venda se pagar.** Empurrar a transferência aqui vale 7 pontos de MC.
+
+**Escada de desconto retirada da proposta.** Ela existe para descer a partir da tabela;
+com o preço já fechado abaixo dela, aplicar −7% levaria a R$ 6.975 e **MC 16,5%**.
+A proposta traz R$ 7.500 como preço fechado, com a estrutura de pagamento
+(30% + saldo) e sem desconto adicional.
+
 ## 📗 PROPOSTA — 3 páginas (`build-cristaleira.py`)
 
 `capa · o móvel · investimento`
@@ -121,16 +146,18 @@ Numa capa A4 sangrada isso daria **103 dpi**. Na faixa de 190 mm com o degradê 
 para o painel escuro, fica em **161 dpi** — e a composição ficou melhor do que seria
 com a foto inteira.
 
-**Página 2** põe o render aberto ao lado da lista de medidas, e fecha com o argumento
-que justifica o preço: *a porta é o móvel*. Uma moldura de 4 cm em volta de 42 × 193 cm
-de vidro pede 8 encaixes e 9,4 m de rebaixo usinado. Sem citar custo — o cliente não
-precisa saber que em chapa a porta custa R$ 46; precisa saber por que ela é trabalhosa.
+**Página 2** põe os dois renders — aberto e fechado — ao lado da lista de medidas.
 
-**Página 3** traz a escada de pagamento inteira com a transferência destacada, e explica
-por que o desconto existe (a Valvic devolve a taxa de cartão que economiza). Fecha nos
+> **Cortado a pedido do Jonathan [04/08]:** o lead (*"a taça fica à vista; a toalha de
+> mesa, não"*) e o bloco *"A porta é o móvel"* com os 8 encaixes e os 9,4 m de rebaixo.
+> A página perdeu ~42 mm; em vez de deixar buraco, o render fechado subiu para a coluna
+> da esquerda e as linhas de especificação ganharam respiro. Ficou mais seca e mais
+> direta — a foto fechada mostra sozinha o que o texto explicava.
+
+**Página 3** traz o preço fechado com a estrutura 30% + saldo, os quatro termos, e os
 três passos até a entrega.
 
-Folgas: 11,6 / 28,2 mm.
+Folgas: 29,3 / 28,2 mm.
 
 ## ⚠ Duas divergências entre o render e o escrito
 
