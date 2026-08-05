@@ -390,3 +390,45 @@ agora é defendida por **ciclos testados, amortecimento e regulagem**. Regra em
 `referencias/ferragens.md`.
 
 > ⚠️ **A versão que o cliente recebeu ainda traz a frase.** Reenviar é decisão comercial.
+
+## ✅ FECHOU NA OPÇÃO 4 — versão reduzida [Jonathan 04/08/2026]
+
+A cliente optou pela **configuração 4**: entrada e varanda em **lâmina natural**
+(mantidas) + estante das salas **100% melamínico fosco na cor**, dentro e fora, sem laca
++ adega em serralheria. **R$ 48.700 à vista — valor mantido, sem recálculo.**
+
+`build-apto-cj-op4.py` → **4 páginas**: capa · ambientes · técnico · investimento.
+
+**O que saiu do folder de 8:** as seis configurações, a tabela de preço por item e a
+**página conceitual da laca**. A laca não está mais no escopo — manter aquela página
+seria vender o que não vai ser feito. Saiu também a coluna parcelada, a pedido: só
+à vista.
+
+**O que entrou no lugar da laca.** A página técnica abre com o render de 636 cm na cor
+e um bloco de três colunas — *o que permanece* (a lâmina), *na estante* (melamínico
+fosco, curado de fábrica, mais resistente à abrasão que pintura de obra) e
+**"a borda aparece"**. Esse terceiro é deliberado: o melamínico tem fita, existe a linha
+onde a face termina, e é dela que vem a economia de R$ 30.500. Dizer isso na proposta é
+mais barato que o cliente descobrir na instalação.
+
+### Portas inferiores: de correr → de giro com Hettich
+
+Alteração de layout informada junto com o fechamento. **Não move o preço**, e a razão
+é boa de registrar: o motor **nunca carregou sistema deslizante**. `FERR[C]` sempre
+somou **26 dobradiças Sensys**, das quais `2×3` são exatamente as portas da base —
+elas já estavam orçadas como de giro desde o levantamento original.
+
+| | Ferragem | Custo |
+|---|---|--:|
+| Como estava orçado (giro) | 6 Sensys × R$ 17,80 | **R$ 106,80** |
+| Se fosse deslizante | 2 RO65 + trilho 2 m + 2 desempenadores | R$ 300,00 |
+
+Ou seja: a mudança **melhora** a margem em ~R$ 193 em vez de piorar. Nada a recompor.
+
+### ⚠ Garantia mantida em 10 anos — de propósito
+
+O Dr. Luiz e a cristaleira saem com **5 anos**, número corrigido nesta data. **Aqui
+ficaram 10**, porque a cliente **já recebeu o folder de 8 páginas com 10 anos** e esta
+é a mesma negociação. Cortar a garantia no meio do fechamento é retirar compromisso
+já feito — pior que a inconsistência entre documentos. Proposta nova adota o número
+novo; proposta na mesa, não.
