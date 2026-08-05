@@ -39,7 +39,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   .proc .d b{{color:#F0E7D6;}}
   .duo2{{display:flex; gap:5mm; margin-top:5.5mm;}}
   .duo2 > div{{flex:1;}}
-  .duo2 img{{width:100%; height:97mm; object-fit:cover; border-radius:5px; display:block;}}
+  .duo2 img{{width:100%; height:93mm; object-fit:cover; border-radius:5px; display:block;}}
   .duo2 .cap{{color:#8F8578; margin-top:2mm;}}
 
   /* ── páginas de quarto */
@@ -118,6 +118,32 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   .obs{{margin-top:4mm; padding-left:4mm; border-left:2px solid var(--gold-lt);
       font-size:7.4pt; color:var(--soft); line-height:1.55;}}
   .obs b{{color:var(--ink);}}
+
+  .warr2{{background:var(--deep); border-left:3px solid var(--gold-lt);
+      border-radius:0 5px 5px 0; padding:4.2mm 7mm; margin-top:4.5mm;}}
+  .warr2 .k{{font-size:6.8pt; letter-spacing:.2em; text-transform:uppercase;
+      color:var(--gold-lt); font-weight:700;}}
+  .warr2 .big{{font-family:'Cormorant Garamond',Georgia,serif; font-size:20pt;
+      font-weight:700; color:#fff; line-height:1.1; margin-top:1.2mm;}}
+  .warr2 .d{{font-size:8.4pt; color:#C6BFB2; line-height:1.55; margin-top:1.8mm;}}
+  .warr2 .d b{{color:#F0E7D6;}}
+
+  .ferr-blk{{margin-top:6mm; border-top:2px solid var(--ink); padding-top:4.5mm;}}
+  .ferr-blk .k{{font-size:6.6pt; letter-spacing:.18em; text-transform:uppercase;
+      color:var(--gold); font-weight:700;}}
+  .ferr-blk .hd{{font-family:'Cormorant Garamond',Georgia,serif; font-size:18pt;
+      font-weight:700; color:var(--ink); line-height:1.15; margin-top:1.2mm;}}
+  .ferr-blk .hd em{{color:var(--gold); font-style:italic;}}
+  .ferr-blk .gr{{display:flex; gap:0; margin-top:4.5mm;}}
+  .ferr-blk .gr > div{{flex:1; padding-left:6mm; border-left:1px solid var(--line);}}
+  .ferr-blk .gr > div:first-child{{padding-left:0; border-left:0;}}
+  .ferr-blk .gr b{{display:block; font-size:8.4pt; color:var(--ink); letter-spacing:.02em;}}
+  .ferr-blk .gr span{{display:block; font-size:8.8pt; color:var(--soft);
+      line-height:1.62; margin-top:1.6mm;}}
+  .ferr-blk .gr span b{{display:inline; color:var(--ink);}}
+  .ferr-blk .ft{{font-size:8.8pt; color:var(--soft); line-height:1.62; margin-top:4.5mm;
+      padding-left:4.5mm; border-left:2px solid var(--gold-lt);}}
+  .ferr-blk .ft b{{color:var(--ink);}}
 </style></head><body>
 
 <!-- ══════ 1. CAPA ══════ -->
@@ -132,7 +158,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       <div class="sub">Dois quartos · Projeto A Urbanística · Belo Horizonte</div>
     </div>
     <div class="strip">
-      <div class="c"><div class="k">Escopo</div><div class="v">11 móveis · 2 quartos</div></div>
+      <div class="c"><div class="k">Escopo</div><div class="v">12 móveis · 2 quartos</div></div>
       <div class="c"><div class="k">Destaque</div><div class="v">Ripado e luz indireta</div></div>
       <div class="c"><div class="k">Ferragens</div><div class="v">Hettich · Alemanha</div></div>
     </div>
@@ -166,6 +192,8 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       catálogo.</div></div>
   </div>
 
+
+
   <div class="duo2">
     <div><img src="{MTD}" alt="" style="object-position:center 40%;">
       <div class="cap">Mateus · nichos com LED em cava, iluminação indireta</div></div>
@@ -197,12 +225,12 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
 
   <div style="margin-top:4mm;">
     <div class="mv"><div class="t">Roupeiro com portas ripadas <span>290 × 266 × 55 cm</span></div>
-      <div class="d">Cinco módulos, <b>4 gavetas</b>, 4 sapateiras basculantes, 2 cabideiros e
+      <div class="d">Cinco módulos, <b>4 gavetas</b>, 4 sapateiras <b>deslizantes</b>, 2 cabideiros e
       nichos abertos com LED. As <b>72 ripas</b> das portas correm de ponta a ponta, sem
       interrupção nos encontros.</div></div>
     <div class="mv"><div class="t">Móvel de TV com painel ripado <span>275 × 263 cm</span></div>
       <div class="d">Painel ripado em carvalho e fundo em azul · <b>3 prateleiras
-      iluminadas</b> (5,50 m de LED) · base de 6 portas com <b>puxador em cava usinada</b>.</div></div>
+      iluminadas</b> (5,50 m de LED) · base de 6 portas com <b>puxador Slim Prata</b>.</div></div>
     <div class="mv"><div class="t">Nicho da cama <span>218 × 166 × 25 cm</span></div>
       <div class="d">Malha de nichos em azul, com <b>fita de LED em cava na face superior
       de cada nicho</b> — 4,95 m de luz indireta, exatamente como a prancha pede.</div></div>
@@ -239,9 +267,9 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
     <div>
       <div class="mv" style="border-top:2px solid var(--ink);">
         <div class="t">Guarda-roupa <span>295 × 267 × 55 cm</span></div>
-        <div class="d"><b>4 portas de abrir + 1 basculante</b> com pistão amortecido ·
-        7 gavetas, 4 sapateiras, 3 cabideiros · <b>puxador em Bilbao</b> aplicado na
-        própria porta, em contraste com o rosa.</div></div>
+        <div class="d"><b>4 portas de abrir + 1 basculante</b> com
+        <b>articulador Blum</b> · 7 gavetas, 4 sapateiras deslizantes, 3 cabideiros ·
+        <b>puxador em Bilbao</b> aplicado na própria porta, em contraste com o rosa.</div></div>
       <div class="mv"><div class="t">Cabeceira e painel <span>300 × 100 cm</span></div>
         <div class="d">Três painéis em Bilbao com <b>bordas salientes e miolo rebaixado</b> —
         moldura usinada na peça, não aplicada. <b>3,15 m de LED</b> na cabeceira e
@@ -262,6 +290,10 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       iluminados</b> em Bilbao (2,34 m de perfil de LED) · rack com 4 portas e 3
       sapateiras · <b>espelho oval 140 × 47 cm com perfil de LED próprio</b>, executado
       por nós.</div></div>
+    <div class="mv"><div class="t">Painel com porta mimetizada <span>267 × 121 cm</span></div>
+      <div class="d">Painel ripado em Bilbao com a <b>porta de 210 × 54 cm desaparecendo
+      dentro do ripado</b> — a mesma solução do quarto do Mateus. A ripa corre por cima
+      da folha sem interrupção: a porta só existe quando alguém abre.</div></div>
   </div>
 
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Mateus &amp; Manuela · A Urbanística</span></div>
@@ -282,37 +314,44 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       <tr><td>Estrutura</td><td><b>15 mm</b> em toda a caixaria · <b>6 mm</b> nos fundos ·
         <b>18 mm</b> em toda prateleira com mais de 70 cm de vão e nas portas — é o que
         evita o empeno que aparece no segundo verão.</td></tr>
-      <tr><td>Dobradiças</td><td><b>Hettich</b> com amortecimento integrado — a porta
-        desacelera sozinha e encosta macia em qualquer velocidade.</td></tr>
-      <tr><td>Corrediças</td><td><b>Ocultas com amortecimento</b> nas 13 gavetas dos dois
-        quartos — a gaveta fecha sozinha nos últimos centímetros.</td></tr>
-      <tr><td>Basculantes</td><td><b>Pistão com amortecimento</b> nas 4 sapateiras do
-        Mateus e na porta basculante da Manuela.</td></tr>
-      <tr><td>Puxadores</td><td><b>Cava usinada</b> no móvel de TV e nas mesinhas ·
-        <b>puxador em MDF Bilbao</b> no guarda-roupa da Manuela · <b>puxador em carvalho</b>
-        no roupeiro do Mateus, conforme prancha.</td></tr>
+      <tr><td>Puxadores</td><td><b>Slim Prata</b> aplicado, conforme especificado nas
+        pranchas · <b>puxador em MDF Bilbao</b> no guarda-roupa da Manuela ·
+        <b>puxador em carvalho</b> no roupeiro do Mateus.</td></tr>
       <tr><td>Iluminação</td><td><b>14,6 m</b> de LED em perfil, embutido em cava usinada
         na marcenaria. Ligação aos pontos previstos no projeto elétrico.</td></tr>
+      <tr><td>Ferragens</td><td><b>Hettich</b> nas dobradiças · <b>Blum</b> no
+        articulador da báscula · corrediça <b>oculta com amortecimento</b> em todas as
+        gavetas e sapateiras — detalhado abaixo.</td></tr>
       <tr><td>Estofado e espelho</td><td>Cabeceira do Mateus em <b>linho cinza claro</b> ·
         espelho oval iluminado da Manuela — <b>ambos executados por nós</b>, na mesma
         entrega e sob a mesma garantia.</td></tr>
     </tbody>
   </table>
 
+  <div class="ferr-blk">
+    <div class="k">Ferragens</div>
+    <div class="hd">Hettich e Blum.<br><em>Onde o móvel é usado todo dia.</em></div>
+    <div class="gr">
+      <div><b>Hettich · dobradiças</b><span>Amortecimento <b>dentro do corpo</b> da
+        dobradiça e ajuste em 3 dimensões — a fresta continua perfeita anos depois
+        da instalação.</span></div>
+      <div><b>Blum · articulador</b><span>Na báscula da Manuela: a folha sobe, <b>para
+        exatamente onde é solta</b> e desce amortecida.</span></div>
+      <div><b>Corrediça oculta</b><span>Nas 13 gavetas e nas <b>8 sapateiras
+        deslizantes</b>. Fecha sozinha no fim do curso e não aparece por baixo.</span></div>
+    </div>
+    <div class="ft">São dois quartos de criança: portas e gavetas vão ser abertas com
+    pressa, milhares de vezes. <b>Ferragem é onde o móvel envelhece</b> — não é o item
+    que a gente economiza.</div>
+  </div>
+
   <div class="warr">
     <div class="k">Uma obra, um interlocutor</div>
     <div class="big">Quarto de criança<br>tem prazo de verdade.</div>
-    <div class="d">São <b>11 móveis, 45 chapas e 4 cores</b> em dois quartos que dividem
+    <div class="d">São <b>12 móveis, 47 chapas e 4 cores</b> em dois quartos que dividem
     parede. Fabricação, estofamento, espelho e instalação saem da <b>mesma equipe</b> —
     não há um estofador esperando o marceneiro, nem um vidraceiro remarcando visita.
     Uma medição, uma entrega, um responsável.</div>
-  </div>
-
-  <div class="split2" style="margin-top:4.5mm;">
-    <div><div class="figure"><img src="{MT1}" alt="" style="height:52mm;object-fit:cover;object-position:center 30%;"></div>
-      <div class="cap">Mateus · o nicho da cama e o roupeiro ripado</div></div>
-    <div><div class="figure"><img src="{MN1}" alt="" style="height:52mm;object-fit:cover;object-position:center 62%;"></div>
-      <div class="cap">Manuela · a cabeceira em Bilbao</div></div>
   </div>
 
   <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Mateus &amp; Manuela · A Urbanística</span></div>
@@ -332,41 +371,39 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       <div class="k">Quarto 1 · 16,00 m²</div>
       <div class="nm">Mateus<small>Roupeiro ripado · móvel de TV · nicho da cama · painel
         com porta mimetizada · cabeceira estofada · mesinha · rebaixamento</small></div>
-      <div class="v">R$ 62.900<small>ou R$ 56.600 à vista</small></div>
+      <div class="v">R$ 55.900<small>ou R$ 50.300 à vista</small></div>
     </div>
     <div>
       <div class="k">Quarto 2 · 13,65 m²</div>
       <div class="nm">Manuela<small>Guarda-roupa · cabeceira em Bilbao · mesinha ·
-        escrivaninha e rack com nichos iluminados e espelho</small></div>
-      <div class="v">R$ 41.200<small>ou R$ 37.100 à vista</small></div>
+        escrivaninha e rack com nichos iluminados e espelho · painel com porta mimetizada</small></div>
+      <div class="v">R$ 42.800<small>ou R$ 38.500 à vista</small></div>
     </div>
   </div>
 
   <div class="inv-tot">
     <div>
       <div class="k">Os dois quartos · valor de tabela</div>
-      <div class="big">R$ 104.200</div>
+      <div class="big">R$ 98.700</div>
     </div>
     <div class="rt">
-      <div class="v">R$ 93.800</div>
-      <div class="s">à vista · economia de R$ 10.400</div>
+      <div class="v">R$ 88.800</div>
+      <div class="s">à vista · economia de R$ 9.900</div>
     </div>
   </div>
 
-  <div class="pay">
+  <div class="pay" style="margin-top:2mm;">
     <div class="r"><span>Entrada 30% + até 10× no cartão</span>
-      <span><b>valor de tabela</b> &nbsp; <span class="v">R$ 104.200</span></span></div>
+      <span><b>valor de tabela</b> &nbsp; <span class="v">R$ 98.700</span></span></div>
     <div class="r"><span>Entrada 50% + até 8× no cartão &nbsp;<b>−4%</b></span>
-      <span class="v">R$ 100.000</span></div>
+      <span class="v">R$ 94.800</span></div>
     <div class="r"><span>Entrada 70% + até 6× no cartão &nbsp;<b>−7%</b></span>
-      <span class="v">R$ 96.900</span></div>
+      <span class="v">R$ 91.800</span></div>
     <div class="r g"><span><b>À vista / transferência</b> &nbsp;<b>−10%</b></span>
-      <span class="v">R$ 93.800</span></div>
+      <span class="v">R$ 88.800</span></div>
   </div>
 
   <div class="cond">
-    <div><div class="k">Garantia</div><div class="d"><b>10 anos</b> em contrato sobre
-      estrutura, montagem e acabamento · <b>2 anos</b> de instalação e regulagem.</div></div>
     <div><div class="k">Prazo</div><div class="d"><b>55 a 65 dias corridos</b> para os
       dois quartos, após aprovação e medição final. Um quarto isolado: 40 a 50 dias.</div></div>
     <div><div class="k">Medição</div><div class="d">Conferida no local antes do corte.
@@ -375,16 +412,23 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       desta data.</div></div>
   </div>
 
-  <div class="obs">
-    <b>Não incluso:</b> tinta e gesso · papel de parede · spots, plafons e pendentes ·
-    pontos elétricos · tapete, cadeiras, cortinas e o mapa-múndi decorativo — todos
-    previstos no memorial da arquiteta, mas fora do escopo de marcenaria.<br>
-    <b>A confirmar com a arquiteta:</b> as peças do nicho da cama do Mateus estão
-    desenhadas com <b>5 cm de espessura</b> e foram orçadas assim, em caixa oca. Se a
-    especificação admitir 3 cm, reapresentamos o valor antes da produção.
+  <div class="warr2">
+    <div class="k">Garantia</div>
+    <div class="big">10 anos. Em contrato.</div>
+    <div class="d">Marcenaria sob medida costuma sair com <b>1 a 3 anos</b> de garantia —
+    quando sai por escrito. A nossa é de <b>10 anos</b> sobre estrutura, montagem e
+    acabamento, mais <b>2 anos</b> de instalação e regulagem. Conseguimos assinar isso
+    porque a equipe é <b>própria do corte à instalação</b> — inclusive o estofado e o
+    espelho, <b>sob a mesma garantia</b>.</div>
   </div>
 
-  <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Larissa e Rafael · 31/07/2026</span></div>
+  <div class="obs">
+    <b>Não incluso:</b> tinta e gesso · papel de parede · spots, plafons e pendentes ·
+    pontos elétricos · tapete, cadeiras, cortinas e o mapa-múndi — fora do escopo de
+    marcenaria.
+  </div>
+
+  <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Larissa e Rafael · 04/08/2026</span></div>
 </div></div>
 
 </body></html>"""

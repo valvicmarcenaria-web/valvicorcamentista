@@ -102,7 +102,61 @@ não entra em pé na coladeira, então é filetagem manual a R$ 4/m. Em chapa o 
 barato (as 72 ripas saem de uma chapa só); o custo inteiro é hora de bancada.
 **É o maior item isolado de mão de obra dos dois quartos.**
 
-## ⚠️ Premissas a confirmar com a arquiteta
+## ✏️ CORREÇÕES [Jonathan 04/08/2026]
+
+| # | Correção | Efeito |
+|---|---|--:|
+| 1 | **Sapateiras são deslizantes**, não basculantes — vão em corrediça | pistão → corrediça |
+| 2 | **Básculas com articulador Blum** (era pistão amortecido) | +R$ 300 |
+| 3 | **Manuela também tem painel com porta mimetizada** — faltava | +2 chapas |
+| 4 | Fora a ressalva "a confirmar com a arquiteta" da proposta | — |
+| 5 | **Puxador Slim Prata** aplicado, **não é cava usinada** | −R$ 140 |
+| 6 | **MC 35%** (era 40%) | — |
+
+### 3 — o painel que faltava (prancha 06, Elevação B)
+
+O executivo da Manuela tem **painel com porta mimetizada** na Elevação B, e eu não tinha
+levantado. **267 alto × 121 (7 + 60 + 54)**, porta de **210 × 54**, ripado, em
+**MDF Guararapes Bilbao** — é a mesma solução do M4 do Mateus.
+
+Entrou como **N5**. O quarto da Manuela passou de 4 para 5 móveis, e o projeto de 11
+para **12 móveis**.
+
+> ⚠️ **A porta mimetizada trouxe uma chapa inteira de Bilbao 18 para uma peça só**
+> (1,13 m², 22% de aproveitamento, R$ 600). É o único item de 18 mm nessa cor. Se ela
+> puder sair em **15 mm** — o ripado é aplicado por cima e engrossa a folha de todo
+> jeito — economiza a chapa inteira. Deixei em 18 para não contrariar a regra da casa
+> de porta em 18, e porque a porta gêmea do Mateus é CAR18.
+
+### Novo número
+
+| | Antes (MC 40%) | Agora (MC 35%) |
+|---|--:|--:|
+| Chapas | 45 | **47** |
+| Custo direto | 41.688,91 | **44.452,22** |
+| Tabela | 104.200 | **98.700** |
+| À vista | 93.800 | **88.800** |
+| Mateus | 62.900 / 56.600 | **55.900 / 50.300** |
+| Manuela | 41.200 / 37.100 | **42.800 / 38.500** |
+
+A Manuela **subiu** apesar da MC cair 5 pontos: ganhou o painel inteiro.
+
+### Ênfase pedida — garantia e ferragens
+
+A garantia saiu da grade de condições e virou **caixa escura própria** na página de
+investimento. As ferragens saíram de quatro linhas soltas da tabela técnica e viraram
+um **bloco de três colunas** — Hettich (dobradiça), Blum (articulador) e corrediça
+oculta — cada uma com o que faz, não só o nome. Fecha em: *são dois quartos de criança,
+portas e gavetas vão ser abertas com pressa milhares de vezes; ferragem é onde o móvel
+envelhece.*
+
+> As duas fotos do rodapé da página técnica saíram para abrir espaço. Eram crops dos
+> mesmos renders já mostrados nas páginas dos quartos — e estavam sendo **empurradas
+> para fora da página** (desciam até 350 mm numa folha de 297). A checagem de estouro
+> não pegava: ela só olhava blocos de texto. **Corrigida** — agora imagem que passa da
+> borda da página é erro explícito.
+
+## ⚠️ ~~Premissas a confirmar com a arquiteta~~ (fora da proposta a pedido)
 
 1. **Nicho cama do Mateus — peças de 5 cm.** A prancha 13 desenha todas as peças com
    5 cm de espessura. Modelei como **caixa oca** (2 faces de 15 mm por peça + fita de

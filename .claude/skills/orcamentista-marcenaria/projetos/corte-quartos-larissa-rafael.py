@@ -40,9 +40,11 @@ DESP_FITA = 1.15
 LED_M = 150.0
 P_DOBR   = 10.0                   # Hettich Novisys
 P_CORR   = 70.0                   # corrediça oculta Hardt (par)
-P_CAVA   = 50.0                   # cava usinada, por peça
+P_PUX    = 40.0                   # Puxador Slim Prata (aplicado) — executivo
+                                  # [Jonathan 04/08] NAO e' cava usinada
 P_PUX_ML = 0.0                    # puxador em MDF = a própria chapa, já contada
-P_PISTAO = 30.0                   # pistão c/ amortecimento (porta basculante)
+P_BLUM   = 180.0                  # Articulador Blum HK-xs — básculas do projeto
+                                  # [Jonathan 04/08]
 P_CABID  = 45.0                   # cabideiro por metro
 ESTOFADO_M2 = 750.0               # [Jonathan] linho cinza claro, aplicado
 ESPELHO_M2  = 600.0               # base: espelho prata
@@ -193,7 +195,14 @@ a(N4,'rack — portas',       'BIL15', 47.5, 68, 4)
 a(N4,'rack — sapateiras',   'ROS15', 92, 20, 3)
 
 # ═══════════════════════════════ agrupa e nesta (por quarto — cores não se misturam)
-QUARTOS = {'MATEUS': [M1,M2,M3,M4,M5,M6,M7], 'MANUELA': [N1,N2,N3,N4]}
+N5 = 'N5. Painel + porta mimetizada'
+# prancha 06 (Elevação B): 267 alto × 121 (7+60+54) · porta 210×54 · ripado · Bilbao
+a(N5,'painel',              'BIL15', 267, 121, 1)
+n_rip_N5 = int(114/4)                                    # faixa ripada de 114 cm
+a(N5,'painel — ripas 2 cm', 'BIL15', 267, 2, n_rip_N5)
+a(N5,'porta mimetizada',    'BIL18', 210, 54, 1)
+
+QUARTOS = {'MATEUS': [M1,M2,M3,M4,M5,M6,M7], 'MANUELA': [N1,N2,N3,N4,N5]}
 QUARTO_DO_MOVEL = {mv: q for q, movs in QUARTOS.items() for mv in movs}
 por_q_mat = defaultdict(list)          # (quarto, material) -> peças  → nesting REAL
 area_mv   = defaultdict(float)         # (móvel, material)  -> m²     → rateio da chapa
@@ -210,7 +219,8 @@ CHAPAS_Q = {k: nest(v) for k, v in por_q_mat.items()}
 def perim(mv, frac=0.5):
     return sum(q*2*(c+l)/100 for m,d,mat,c,l,q in pecas if m == mv)*frac
 
-RIPAS = {M1: n_rip_M1, M2: n_rip_M2, M4: n_rip_M4, M6: n_rip_M6, N3: n_rip_N3}
+RIPAS = {M1: n_rip_M1, M2: n_rip_M2, M4: n_rip_M4, M6: n_rip_M6,
+         N3: n_rip_N3, N5: n_rip_N5}
 def fita_do_movel(mv):
     """fita normal (22mm) + fita de ripado (manual) + fita de 50mm do nicho cama."""
     normal = perim(mv, 0.5)
@@ -225,14 +235,15 @@ def fita_do_movel(mv):
 
 # ═══════════════════════════════ ferragens e LED, por móvel
 FERR = {
-    M1: 8*2*P_DOBR + 4*P_CORR + 4*P_PISTAO + 2*0.79*P_CABID,   # 8 portas, 4 gav, 4 sap
-    M2: 6*2*P_DOBR + 6*P_CAVA,
+    M1: 8*2*P_DOBR + 8*P_CORR + 2*0.79*P_CABID,   # 8 portas · 4 gav + 4 sapateiras DESLIZANTES
+    M2: 6*2*P_DOBR + 6*P_PUX,
     M3: 0.0,
     M4: 3*P_DOBR,                                              # porta mimetizada
-    M5: 0.0, M6: 2*P_CORR + 2*P_CAVA, M7: 0.0,
-    N1: 4*2*P_DOBR + 2*P_PISTAO + 7*P_CORR + 3*1.02*P_CABID,
-    N2: 0.0, N3: 2*P_CORR + 2*P_CAVA,
-    N4: 4*2*P_DOBR + 2*P_CORR + 4*P_CAVA,
+    M5: 0.0, M6: 2*P_CORR + 2*P_PUX, M7: 0.0,
+    N1: 4*2*P_DOBR + 2*P_BLUM + 7*P_CORR + 3*1.02*P_CABID,   # báscula em articulador Blum
+    N2: 0.0, N3: 2*P_CORR + 2*P_PUX,
+    N4: 4*2*P_DOBR + 2*P_CORR + 4*P_PUX,
+    N5: 3*P_DOBR,                                              # porta mimetizada
 }
 # itens especiais que não são chapa: entram direto no custo do móvel
 ESPEC = {
@@ -240,7 +251,7 @@ ESPEC = {
     N4: (1.40*0.47)*ESPELHO_M2 + VIDRACEIRO,            # espelho oval 140×47 iluminado
 }
 LED = {M1: 2.50, M2: 5.50, M3: 4.95, M4: 0.0, M5: 0.0, M6: 0.0, M7: 0.0,
-       N1: 0.0, N2: 3.15 + 2.75, N3: 0.0, N4: 2.34 + 2.34 + 0.90}
+       N1: 0.0, N2: 3.15 + 2.75, N3: 0.0, N4: 2.34 + 2.34 + 0.90, N5: 0.0}
 
 # ═══════════════════════════════ custo por móvel
 def custo_movel(mv):
@@ -295,7 +306,7 @@ a_, liqF_, b_ = 0.162, 0.88, 0.043
 print('\n' + '═'*100)
 print('PREÇO')
 print('═'*104)
-for MC in (0.37, 0.40):
+for MC in (0.35, 0.37):
     div = 1 - a_ - liqF_*b_ - MC
     inv = fixedR/div
     r = round(inv/100)*100
@@ -303,7 +314,7 @@ for MC in (0.37, 0.40):
 
 print('\n  Rateio por quarto (proporcional ao material):')
 for q in QUARTOS:
-    div = 1 - a_ - liqF_*b_ - 0.40
+    div = 1 - a_ - liqF_*b_ - 0.35
     parc = fixedR*tot[q]/MAT
     print(f'    {q:<10} custo R$ {parc:>9,.0f}   ·   tabela R$ {round(parc/div/100)*100:>9,.0f}'
           f'   ·   à vista R$ {round(parc/div*0.9/100)*100:>9,.0f}')
