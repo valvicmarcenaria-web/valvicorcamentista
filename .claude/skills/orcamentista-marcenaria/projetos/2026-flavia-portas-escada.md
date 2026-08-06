@@ -1,6 +1,61 @@
 # Levantamento — Portas + painéis do vão da escada (contato: Flávia Moacir)
 
-> **Status:** 🟢 REV.04 — proposta final entregue (`proposta-flavia-portas.pdf`, 2 págs, design minimalista).
+> **Status:** 🟢 **REV.05 — retificada e reentregue** (`proposta-flavia-portas.pdf`, 2 págs).
+> Escopo, ferragem, material e condições mudaram. **R$ 13.050** (14.500 −10%).
+
+## 🔴 REV.05 — RETIFICAÇÃO [Jonathan 04/08/2026]
+
+| | REV.04 (entregue) | REV.05 |
+|---|---|---|
+| Aberturas | **2 portas de giro** | **1 pivotante + 1 de correr** |
+| Painel | 1 painel de complemento (241 cm) | **2 painéis fixos** (120,5 cada) |
+| Pivotante | — | dobradiça invisível · cava · **com fechadura** |
+| Correr | — | **RO82 duplo amortecimento** · cava · **sem fechadura** |
+| Base | perfil de alumínio, só nas portas | **rodapé de alumínio fosco 30 mm**, portas **e** painéis |
+| Material | MDF Ultra amadeirado fosco | **MDF Itapuã Ultra** |
+| Prazo | 50 dias **úteis** | **até 45 dias corridos** |
+| Preço | R$ 14.500 | **R$ 13.050** (−10% especial) |
+
+Pagamento segue **50% + 50%**. Motor em `corte-flavia-portas-rev05.py`.
+
+### Os 2 painéis já estavam lá — só não eram painéis
+
+A REV.04 cortava o painel de 241 cm em **duas tiras de 120,5** porque 241 não cabe na
+chapa em nenhuma orientação. Agora que o projeto pede **dois painéis fixos**, a emenda
+central deixou de ser emenda: virou a junta entre duas peças. **Mesma área, mesmas 6
+chapas** — e um problema de fabricação a menos.
+
+### O que a retificação fez com o custo
+
+| | REV.04 | REV.05 |
+|---|--:|--:|
+| Ferragens | 7 × IN600 + 2 fecho rolete = 1.900 | 4 × IN600 + fechadura + RO82 top + trilho = **1.850** |
+| Rodapé de alumínio | 40 | **228** |
+| Cava usinada (4,4 m) | — | **220** |
+| Fita e sarrafo | 319 | 381 |
+| **Custo direto** | **6.239** | **6.659** |
+
+Trocar 3 dobradiças IN600 (R$ 750) pelo conjunto RO82 top + trilho (R$ 600) **baratearia**
+— mas a fechadura, a cava e o rodapé de 30 mm devolvem tudo e mais um pouco: **+R$ 420**.
+
+> ⚠️ **A MC cai de 37% para 29,0%.** O escopo cresceu R$ 420 e o desconto de 10% vem por
+> cima. O motor, no escopo novo, pediria **R$ 15.500** de tabela — e com os mesmos 10%
+> daria R$ 13.950. A R$ 13.050 estamos **R$ 900 abaixo** disso. Está acima do piso de 28%
+> da casa, mas por pouco. Foi decisão comercial, registrada.
+
+### ⚠️ Três preços que não vêm da base
+
+| Item | Adotado | Origem |
+|---|--:|---|
+| Fechadura da pivotante | R$ 250 | **estimativa** — `ferragens.md` lista fechaduras como TODO |
+| RO82 com duplo amortecimento | R$ 400 + R$ 200 de trilho | li como o **RO82 "top"** da base; se for RO82 padrão + kit de amortecedor, o número é próximo |
+| Rodapé de alumínio fosco 30 mm | R$ 38/m | referência de perfil de alumínio de `chapas.md` (preto/bronze 38) |
+
+---
+
+## Histórico — REV.04 (substituída)
+
+> **Status anterior:** proposta entregue com 2 portas de giro, R$ 14.500.
 > Origem: WhatsApp (atendimento Jonathan), fotos do local (escada em concreto + hall de elevadores amadeirado) e medidas passadas em texto.
 
 ## REV.04 — fechamento
