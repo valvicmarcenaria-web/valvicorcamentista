@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Trilha de Formação — Ajudante a Marceneiro · Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  :root{
+    --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f;
+    --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd;
+    --ok:#2f7d4f;
+  }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:10px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:16px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; page-break-after:always; }
+  .sheet:last-child{ page-break-after:auto; }
+
+  .hero{ background:radial-gradient(120% 90% at 85% -10%, #1b3a5e 0%, rgba(27,58,94,0) 55%), linear-gradient(160deg,#0E2038 0%,#0b1a2e 60%,#0a1626 100%); color:#fff; padding:12mm 16mm 10mm; position:relative; }
+  .hero::after{ content:""; position:absolute; left:16mm; right:16mm; bottom:0; height:2.5px; background:linear-gradient(90deg,var(--gold),var(--gold-dk) 45%,transparent); }
+  .hero .brand{ display:flex; align-items:center; gap:11px; }
+  .hero .mono{ width:38px; height:38px; border:1.5px solid var(--gold); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:20px; color:var(--gold); }
+  .hero .co{ font-size:12px; font-weight:700; letter-spacing:2.6px; text-transform:uppercase; }
+  .hero .cosub{ font-size:8px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
+  .hero .kx{ font-size:8.5px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-top:9mm; }
+  .hero h1{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:33px; line-height:1.08; margin-top:5px; }
+  .hero h1 span{ color:var(--gold-soft); font-style:italic; }
+  .hero .lead{ font-size:10.5px; color:rgba(255,255,255,.7); margin-top:9px; max-width:138mm; line-height:1.65; }
+
+  .ph{ background:var(--navy); color:#fff; padding:9mm 16mm 6mm; display:flex; justify-content:space-between; align-items:flex-end; position:relative; }
+  .ph::after{ content:""; position:absolute; left:16mm; right:16mm; bottom:0; height:2px; background:linear-gradient(90deg,var(--gold),transparent); }
+  .ph .kx{ font-size:7.5px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; margin-top:2px; line-height:1; }
+  .ph .co{ font-size:9px; letter-spacing:2px; text-transform:uppercase; font-weight:600; }
+
+  .body{ flex:1; padding:7mm 16mm 0; display:flex; flex-direction:column; }
+
+  .sec{ display:flex; align-items:center; gap:9px; margin:0 0 7px; }
+  .sec:not(:first-child){ margin-top:5mm; }
+  .sec .bar{ width:15px; height:2px; background:var(--gold); }
+  .sec .tx{ font-size:8.6px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--navy); }
+  .sec .ct{ margin-left:auto; font-size:8px; color:var(--muted); }
+
+  p.t{ font-size:10.2px; line-height:1.6; color:#33414f; }
+  p.t + p.t{ margin-top:6px; }
+  p.t b{ color:var(--navy); }
+
+  /* etapa */
+  .etp{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:11px 15px; margin-bottom:5px; }
+  .etp .top{ display:flex; align-items:baseline; gap:9px; }
+  .etp .n{ font-family:'Cormorant Garamond',serif; font-size:23px; font-weight:700; color:var(--gold); line-height:.9; }
+  .etp .nm{ font-size:12px; font-weight:800; color:var(--navy); }
+  .etp .wh{ font-size:8.6px; color:var(--muted); }
+  .etp .per{ margin-left:auto; font-size:8px; font-weight:800; letter-spacing:.5px; text-transform:uppercase; color:var(--gold-dk); background:#f6edd6; padding:2px 8px; border-radius:9px; white-space:nowrap; }
+  .etp ul{ margin:7px 0 0; padding-left:15px; }
+  .etp li{ font-size:9.3px; color:#41505d; line-height:1.5; margin-bottom:2px; }
+  .etp li b{ color:var(--navy); }
+  .etp li::marker{ color:var(--gold); }
+  .etp.up{ border-color:var(--gold); box-shadow:0 0 0 2px rgba(194,160,90,.13); }
+
+  /* portão de validação */
+  .gate{ display:flex; align-items:center; gap:10px; margin:0 0 5px; padding:7px 15px;
+    background:#f3f7f4; border:1px dashed #b5d2c1; border-radius:8px; }
+  .gate .gi{ font-size:7.4px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:var(--ok); white-space:nowrap; }
+  .gate .gt{ font-size:9.2px; color:#385043; line-height:1.45; }
+  .gate .gt b{ color:#215a39; }
+
+  /* escada salarial */
+  .lad{ display:flex; gap:0; margin-top:3px; }
+  .lad .s{ flex:1; padding:0 12px; border-left:2px solid var(--line2); }
+  .lad .s:first-child{ padding-left:0; border-left:none; }
+  .lad .s.fin{ border-left-color:var(--gold); }
+  .lad .sw{ font-size:7.6px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:var(--muted); }
+  .lad .s.fin .sw{ color:var(--gold-dk); }
+  .lad .sv{ font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:700; color:var(--navy); line-height:1.15; margin-top:2px; }
+  .lad .sd{ font-size:8.4px; color:var(--muted); line-height:1.45; margin-top:3px; }
+  .lad .sd b{ color:var(--navy); }
+
+  table{ width:100%; border-collapse:collapse; margin-top:3px; background:#fff; }
+  thead th{ background:var(--navy2); color:#fff; font-size:7.6px; font-weight:600; letter-spacing:.7px; text-transform:uppercase; padding:6px 11px; text-align:left; }
+  tbody td{ padding:8px 11px; border-bottom:1px solid var(--line); font-size:9.4px; vertical-align:top; line-height:1.5; }
+  tbody td:first-child{ font-weight:700; color:var(--navy); width:32%; }
+  tbody td b{ color:var(--navy); }
+
+  .note{ background:#f6f3ec; border:1px solid var(--line); border-radius:8px; padding:10px 14px; margin-top:7px; }
+  .note .nt{ font-size:7.4px; letter-spacing:1.4px; text-transform:uppercase; color:var(--navy); font-weight:800; margin-bottom:4px; }
+  .note p{ font-size:9.2px; color:#41505d; line-height:1.55; }
+  .note b{ color:var(--navy); }
+
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:5px 16mm; display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf .pl{ font-size:7.4px; color:var(--muted); } .pf .pr{ font-size:8px; color:var(--navy); font-weight:700; letter-spacing:1px; } .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<!-- ============ PÁGINA 1 ============ -->
+<section class="sheet">
+  <div class="hero">
+    <div class="brand">
+      <div class="mono">V</div>
+      <div><div class="co">Valvic Marcenaria</div><div class="cosub">Vargas Decor Ltda &nbsp;·&nbsp; Belo Horizonte / MG</div></div>
+    </div>
+    <div class="kx">Escopo de Função · Trilha de Formação</div>
+    <h1>De Ajudante<br>a <span>Marceneiro</span></h1>
+    <p class="lead">Uma trilha com etapas claras: a cada 3 meses o seu trabalho é avaliado, e cada avanço confirmado vira aumento de salário — até o ponto em que você monta sozinho e passa a receber comissão.</p>
+  </div>
+
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">Como a trilha funciona</span></div>
+    <p class="t">Você entra como <b>Ajudante de Marcenaria</b> e aprende o ofício na prática, com quem já faz. A cada <b>3 meses</b> há uma avaliação do que você já domina — feita por quem te acompanha no dia a dia. <b>Cada validação confirmada traz um incremento no salário</b>, e assim você vai subindo degrau a degrau até chegar ao ponto em que passa a ser <b>comissionado pela produção</b>.</p>
+    <p class="t">A régua é o que você <b>sabe fazer</b>, não o tempo de casa. Se numa avaliação a evolução não veio, você não sobe de fase — <b>repete o ciclo por mais 3 meses</b>, com o que precisa desenvolver dito com clareza. Ninguém avança sem estar pronto, e ninguém fica parado sem saber por quê.</p>
+
+    <div class="sec"><span class="bar"></span><span class="tx">As etapas</span><span class="ct">o que você faz e com quem aprende</span></div>
+
+    <div class="etp">
+      <div class="top"><span class="n">1</span><div><div class="nm">Ajudante · chão de fábrica</div><div class="wh">Aprende com o <b>Deivson</b>, na fábrica</div></div><span class="per">Meses 1 a 3</span></div>
+      <ul>
+        <li>Sustentar a produção no dia a dia da fábrica — organização, material, apoio à equipe.</li>
+        <li><b>Treinamento direto com o Deivson</b>: montagem de caixaria e montagem de gaveta.</li>
+        <li>Aprender <b>filetagem</b> — inclusive filetagem de puxador — e o acabamento que define o padrão da casa.</li>
+        <li>Começar na <b>serra</b>: corte com segurança e precisão.</li>
+      </ul>
+    </div>
+
+    <div class="gate">
+      <span class="gi">Validação · 3 meses</span>
+      <span class="gt">Você monta e instala <b>gaveta sozinho</b>, monta <b>caixaria</b>, faz <b>filetagem e acabamento</b> e já opera a <b>serra</b>. Confirmado pelo Deivson → <b>efetivação CLT + incremento salarial</b>.</span>
+    </div>
+
+    <div class="etp">
+      <div class="top"><span class="n">2</span><div><div class="nm">Ajudante de montagem · obra</div><div class="wh">Vai a campo com o <b>Samuel</b></div></div><span class="per">Meses 4 a 6</span></div>
+      <ul>
+        <li>Sai para a obra na dupla do Samuel: ele monta o armário, <b>você faz a parte que fixa e finaliza</b>.</li>
+        <li><b>Colocar e regular porta</b>, fixar armário na parede, executar peças menores (banheiro).</li>
+        <li>Aprender a instalar <b>porta de pivô</b> — acompanhando o Samuel na primeira vez.</li>
+        <li>Conduta em obra: ambiente do cliente organizado, respeito e cuidado com o material.</li>
+      </ul>
+    </div>
+
+    <div class="gate">
+      <span class="gi">Validação · 6 meses</span>
+      <span class="gt">Você instala e regula porta com autonomia, fixa armário e resolve o acabamento em obra. Confirmado → <b>novo incremento salarial</b>. Se a evolução não veio, o ciclo repete por mais 3 meses.</span>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Trilha de Formação · De Ajudante a Marceneiro · Valvic Marcenaria</div><div class="pr">01 <span>/</span> 02</div></div>
+</section>
+
+<!-- ============ PÁGINA 2 ============ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="l"><div class="kx">Trilha de Formação</div><div class="tt">O degrau que muda o jogo</div></div>
+    <div class="r"><div class="co">Valvic Marcenaria</div></div>
+  </div>
+
+  <div class="body">
+    <div class="etp up">
+      <div class="top"><span class="n">3</span><div><div class="nm">Marceneiro · montagem guiada</div><div class="wh">Monta sozinho, com o <b>Samuel</b> por perto</div></div><span class="per">A partir do mês 7</span></div>
+      <ul>
+        <li>Você vai à obra com o Samuel e um ajudante — e a divisão muda: <b>o Samuel monta um cômodo, você monta o outro</b>.</li>
+        <li>Montagem sob <b>supervisão</b>, não sob comando: o Samuel acompanha, corrige e ensina o que ainda falta.</li>
+        <li>Segue aprendendo o que é novo: quando aparece uma <b>porta de pivô</b>, você vai junto para dominar a solução.</li>
+        <li><b>Aqui você deixa de ser ajudante.</b> Passa ao cargo de <b>Marceneiro</b> — e, com ele, à remuneração variável.</li>
+      </ul>
+    </div>
+
+    <div class="gate">
+      <span class="gi">O que muda no bolso</span>
+      <span class="gt">Como <b>Marceneiro</b>, você passa a receber <b>salário + comissão de produção</b>: <b>2,5%</b> sobre a fabricação e <b>2,5%</b> sobre a montagem, na regra que já vale para toda a equipe. Quanto mais você monta, mais você ganha.</span>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">A escada de remuneração</span><span class="ct">cada validação, um incremento</span></div>
+    <div class="lad">
+      <div class="s">
+        <div class="sw">Entrada · mês 1</div>
+        <div class="sv">R$ 1.800</div>
+        <div class="sd">+ VR R$ 350 e VT R$ 400 <b>desde a admissão</b></div>
+      </div>
+      <div class="s">
+        <div class="sw">Validação · 3 meses</div>
+        <div class="sv">+ incremento</div>
+        <div class="sd">Definido na avaliação, conforme o que você demonstrou dominar</div>
+      </div>
+      <div class="s">
+        <div class="sw">Validação · 6 meses</div>
+        <div class="sv">+ incremento</div>
+        <div class="sd">Novo aumento sobre o salário já ajustado</div>
+      </div>
+      <div class="s fin">
+        <div class="sw">Marceneiro · mês 7+</div>
+        <div class="sv">Salário + comissão</div>
+        <div class="sd"><b>2,5% fabricação + 2,5% montagem</b> — o ganho passa a acompanhar a sua produção</div>
+      </div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Condições</span></div>
+    <table>
+      <thead><tr><th>Item</th><th>Como funciona</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Contratação</td>
+          <td><b>Contrato de experiência de 90 dias</b>. Concluído o período e confirmada a evolução, a contratação passa para o <b>regime CLT</b>.</td>
+        </tr>
+        <tr>
+          <td>Salário de entrada</td>
+          <td><b>R$ 1.800</b> por mês, com incremento a cada validação de 3 meses confirmada.</td>
+        </tr>
+        <tr>
+          <td>Benefícios</td>
+          <td><b>VR R$ 350</b> + <b>VT R$ 400</b> — R$ 750 por mês, válidos <b>desde a admissão</b> e mantidos em todas as etapas.</td>
+        </tr>
+        <tr>
+          <td>Avaliação</td>
+          <td>A cada <b>90 dias</b>, com quem te acompanha: <b>Deivson</b> na fábrica, <b>Samuel</b> na obra. Conversa de trabalho sobre o que você já faz e o que falta.</td>
+        </tr>
+        <tr>
+          <td>Se não avançar</td>
+          <td>Não há punição — o ciclo <b>repete por mais 3 meses</b>, com o ponto a desenvolver dito de forma clara e específica.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="note">
+      <div class="nt">O combinado, em uma frase</div>
+      <p>A Valvic investe em te formar — treinamento com os mais experientes da casa, desde o primeiro dia. Em troca, espera <b>evolução real e demonstrável</b>. <b>Cada avanço confirmado vira aumento</b>, e o degrau de Marceneiro abre a comissão: a partir dali, o quanto você cresce passa a depender do quanto você produz.</p>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Trilha de Formação · De Ajudante a Marceneiro · Valvic Marcenaria — Vargas Decor Ltda</div><div class="pr">02 <span>/</span> 02</div></div>
+</section>
+
+</body>
+</html>
