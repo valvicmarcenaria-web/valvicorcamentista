@@ -37,7 +37,8 @@ ITENS = [
   'Mesma especificação da lavanderia do térreo.', 5850, 4800),
  ('Hall dos dormitórios', '',
   'Estrutura interna e acabamento externo em <b>MDF Areia Guararapes</b> · portas de '
-  '<b>espelho prata</b> em esquadria de alumínio bronze.', 6300, 5700),
+  '<b>espelho prata</b> em esquadria de <b>alumínio</b> — o perfil acompanha o tom do '
+  'espelho.', 6300, 5700),
  ('Cozinha', 'Ilha e geladeiras',
   'Estrutura interna e externa em <b>MDF Areia</b> · puxadores em cava com perfil · '
   '<b>ilha reduzida para 2,80 m</b>.', 15100, 11800),
@@ -131,6 +132,27 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
                 radial-gradient(90% 70% at 90% 96%, rgba(201,169,106,.11) 0%, transparent 60%);}}
   .cover-t .rules{{position:absolute; inset:0;
      background:repeating-linear-gradient(90deg, rgba(255,255,255,.030) 0 1px, transparent 1px 34mm);}}
+
+  /* mosaico da capa — colagem assimétrica no terço superior, sangrando à direita */
+  .mos{{position:absolute; inset:0; pointer-events:none; z-index:1;}}
+  .mos figure{{position:absolute; margin:0; overflow:hidden; border-radius:3px;
+      box-shadow:0 8px 30px rgba(0,0,0,.5);}}
+  .mos figure img{{width:100%; height:100%; object-fit:cover; display:block;}}
+  .mos .a{{top:2mm; right:-16mm; width:112mm; height:84mm;}}
+  .mos .b{{top:64mm; right:52mm; width:70mm; height:80mm;}}
+  .mos .c{{top:102mm; right:-10mm; width:86mm; height:62mm;}}
+  .mos .ln{{position:absolute; background:var(--gold-lt); opacity:.9;}}
+  .mos .l1{{top:72mm; right:126mm; width:40mm; height:1.4px;}}
+  .mos .l2{{top:100mm; right:139mm; width:1.4px; height:46mm;}}
+
+  /* véu: garante leitura da tipografia sobre a colagem */
+  .cover-t .scrim{{position:absolute; left:0; right:0; bottom:0; height:60%;
+     background:linear-gradient(to bottom, rgba(26,21,16,0) 0%, rgba(26,21,16,.86) 34%,
+                var(--deep) 62%); z-index:2;}}
+  .cover-t .inner{{position:relative; z-index:3;}}
+  .cover-t .inner{{justify-content:flex-start;}}
+  .cover-t .mid{{max-width:120mm; margin-top:auto; margin-bottom:15mm; flex:none;}}
+  .cover-t .strip{{flex:none;}}
 
   .amb3{{border-top:1px solid var(--hair); padding:5.4mm 0;}}
   .amb3:first-child{{border-top:2px solid var(--ink);}}
@@ -232,6 +254,13 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
 <!-- ══════ 1. CAPA ══════ -->
 <div class="page cover cover-t">
   <div class="rules"></div>
+  <div class="mos">
+    <figure class="a"><img src="{COZ2}" alt=""></figure>
+    <figure class="b"><img src="{CLO1}" alt=""></figure>
+    <figure class="c"><img src="{LAV1}" alt=""></figure>
+    <span class="ln l1"></span><span class="ln l2"></span>
+  </div>
+  <div class="scrim"></div>
   <div class="inner">
     <div><div class="brand">valvic<span class="d">.</span></div><div class="bsub">MARCENARIA</div></div>
     <div class="mid">
@@ -269,8 +298,8 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       superiores passantes, e <b>fundo em MDF com duplo revestimento</b> — a face de dentro acabada
       como a de fora, onde a umidade é rotina.</div></div>
     <div class="amb3"><div class="hd"><div class="t">Hall dos dormitórios</div><div class="q">espelho</div></div>
-      <div class="d"><b>Portas de espelho prata</b> em esquadria de alumínio bronze, sobre a mesma
-      caixaria em MDF Areia.</div></div>
+      <div class="d"><b>Portas de espelho prata</b> em <b>esquadria de alumínio</b> — o perfil
+      acompanha o tom do espelho — sobre a mesma caixaria em MDF Areia.</div></div>
   </div>
 
   <div class="rend3">
@@ -303,7 +332,8 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
         Em 18 não.</div></div>
       <div class="esl"><div class="n">6 mm</div>
         <div class="d"><b>Fundos.</b> Encaixados em ranhura na caixaria, travando o esquadro do
-        móvel. Nas lavanderias, com <b>duplo revestimento</b>.</div></div>
+        móvel — <b>em todo o mobiliário desta proposta</b>. Nas lavanderias, ainda com
+        <b>duplo revestimento</b>.</div></div>
       <div class="esl"><div class="n">18 mm</div>
         <div class="d"><b>Portas e acabamentos.</b> A folha precisa de massa para não torcer e
         para receber dobradiça com firmeza — e é o que se toca todo dia.</div></div>
@@ -402,16 +432,16 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
     <div class="d">A Valvic executa a marcenaria e faz a instalação. <b>Todo o processo de aquisição
     das ferragens passa a ser de inteira responsabilidade da contratante</b>, incluindo:</div>
     <ul>
-      <li><b>Pedido e especificação</b> — modelo, linha e quantidade exatos, conforme esta proposta.</li>
+      <li><b>Pedido.</b></li>
       <li><b>Notas fiscais</b> e a relação comercial direta com o fornecedor.</li>
-      <li><b>Logística</b> — prazo de compra, transporte e entrega das peças na data da montagem.</li>
+      <li><b>Logística</b> — prazo de compra, transporte e entrega.</li>
       <li><b>Ocorrências</b> — falta, atraso, peça errada, avaria no transporte, defeito de fábrica,
           troca e garantia junto ao fabricante.</li>
     </ul>
     <div class="d"><b>Efeito no prazo e na garantia:</b> a instalação só ocorre com as ferragens
     disponíveis no local — atraso na entrega delas desloca o cronograma. A garantia Valvic
     permanece integral sobre a marcenaria, <b>e não alcança as ferragens fornecidas por
-    terceiros</b> nem os desdobramentos de uma ferragem inadequada sobre a peça.</div>
+    terceiros</b> nem os desdobramentos delas sobre a peça.</div>
   </div>
 
   <div class="pgto">
@@ -434,7 +464,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       do pagamento.</div></div>
     <div><div class="k">Conferência técnica</div><div class="d">Precisa ocorrer em <b>até 60 dias
       antes</b> do prazo de entrega — é ela que libera o corte.</div></div>
-    <div><div class="k">Garantia</div><div class="d"><b>5 anos</b> em contrato — estrutura, montagem,
+    <div><div class="k">Garantia</div><div class="d"><b>10 anos</b> em contrato — estrutura, montagem,
       acabamento e instalação.</div></div>
     <div><div class="k">Validade da proposta</div><div class="d"><b>7 dias corridos</b> a partir
       desta data.</div></div>

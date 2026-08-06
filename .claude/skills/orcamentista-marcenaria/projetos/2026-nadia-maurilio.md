@@ -70,9 +70,24 @@ recortadas em 8 imagens de **254×211 a 419×384 px**. Numa capa A4 sangrada iss
 completo no Drive tem 1 GB** e não é transferível neste ambiente — se houver renders
 soltos em resolução maior, a proposta melhora bastante.
 
+## ✏️ Correções [Jonathan 06/08]
+
+| | |
+|---|---|
+| **Capa** | ganhou colagem de fotos — cascata assimétrica sangrando na borda direita, com réguas douradas e véu para a tipografia. Assinatura no topo, nome no pé |
+| Fornecimento | *"Pedido e especificação — modelo, linha e quantidade exatos"* → só **"Pedido."** |
+| Logística | saiu *"das peças na data da montagem"* |
+| Garantia terceiros | saiu *"inadequada"* — ficou "os desdobramentos **delas** sobre a peça" |
+| **Garantia** | **10 anos** (era 5) |
+| Fundo 6 mm | **em todo o mobiliário**, não só na lavanderia — lá é o *duplo revestimento* que é exclusivo |
+| Hall dos dormitórios | esquadria em **alumínio** (não bronze), para acompanhar o tom do espelho |
+
+> A cristaleira **mantém alumínio bronze** — lá o perfil acompanha o vidro reflecta
+> bronze, não o espelho prata. São dois critérios diferentes na mesma proposta.
+
 ## ⚠️ A confirmar
 
 1. **Lavanderia superior** — o valor em branco no documento de origem.
-2. **Garantia: usei 5 anos**, alinhado ao Dr. Luiz e à cristaleira. O Apto CJ mantém 10
-   por já estar na mesa. Definir o padrão da casa.
+2. ~~Garantia~~ — **resolvido: 10 anos** [Jonathan 06/08]. Fica o registro de que
+   Dr. Luiz e cristaleira saíram com **5**. Definir qual é o padrão da casa.
 3. **Renders em resolução maior**, se existirem fora do PDF de 1 GB.
