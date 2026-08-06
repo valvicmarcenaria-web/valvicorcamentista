@@ -84,4 +84,50 @@ Cozinha 10,88 m² · Lavabo 2,06 m² · Lavanderia/Área serviço 4,17 m² · Sa
 > Item arquitetônico ambíguo (forro/revestimento de madeira, painéis) = **PERGUNTAR antes de incluir**, não assumir que é marcenaria.
 > Ao baixar renders de um projeto, **isolar por cliente/data** — não misturar com outro projeto (contaminação K&F→Juliana gerou móveis fantasma).
 
-## Próximo: Fase 3 — proposta 2 linhas (Gold/Essencial)
+## 📘 VERSÃO 2 — escopo priorizado [Jonathan 06/08/2026]
+
+`build-juliana-v2.py` → 4 páginas: capa · escopo priorizado · Gold × Essencial · investimento.
+
+Eles priorizaram **cozinha, quarto de casal e closet**. Entra um item **novo** na cozinha —
+**mesa de refeições** com base em serralheria e tampo em MDF, **R$ 2.350** de venda
+(mesmo valor nas duas linhas: serralheria e MDF não mudam de ferragem). E o **gabinete do
+lavabo entra de brinde** no fechamento.
+
+| Ambiente | GOLD | ESSENCIAL |
+|---|--:|--:|
+| Cozinha | 22.700 | 20.100 |
+| **Mesa de refeições** 🆕 | **2.350** | **2.350** |
+| Quarto de casal | 19.700 | 17.500 |
+| Closet v2 | 34.304 | 28.121 |
+| **TOTAL** | **79.054** | **68.071** |
+| *Lavabo — brinde* | *~~2.000~~ 0* | *~~1.800~~ 0* |
+
+Escada padrão: −3% / −5% / **−7%** → Gold **73.520** · Essencial **63.306**.
+Condições herdadas da V1: **45 a 60 dias úteis**, validade 7 dias,
+**garantia Gold 10 anos · Essencial 2 anos**.
+
+**Valores dos 3 ambientes preservados da V1** — nada foi recalculado. Os outros 5
+ambientes seguem válidos pelos mesmos valores, e a proposta diz isso: *"podem ser
+retomados a qualquer momento"*. Não se queima a V1 ao priorizar.
+
+### O brinde na tabela, não no rodapé
+
+A linha do lavabo entra **dentro da tabela de investimento**, em faixa escura, com o valor
+riscado e **R$ 0** ao lado. Brinde citado só no texto vira promessa; riscado na coluna de
+preço vira **desconto visível**, e a cliente lê o que está ganhando na mesma unidade em
+que lê o que está pagando.
+
+### A página que decide
+
+A p.3 opõe as duas linhas e fecha em **"oito anos de diferença"** — entre Gold e Essencial
+há R$ 10.983 e 8 anos de garantia. O bloco *o que **não** muda* (desenho e medidas · chapa
+e acabamento · quem faz) existe para isolar a variável: se tudo é igual menos a ferragem,
+o cliente para de comparar dois móveis e passa a comparar **duas ferragens** — que é onde
+a Gold ganha.
+
+> ⚠️ **Banheiro da suíte continua fora.** Ele está no bloco "Banheiros (social + suíte)" da
+> V1 e a divisão ao meio já está apurada (Gold 3.275 / Essencial 2.650). Não entrou nesta
+> versão porque não foi citado na priorização — se a suíte for para a obra completa, é só
+> somar.
+
+## Histórico — Fase 3 (V1, 8 ambientes)
