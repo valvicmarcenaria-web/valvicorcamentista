@@ -2,7 +2,8 @@
 
 > **Status:** 🟡 Levantado em 07/08/2026. Aguarda confirmação de medidas.
 > Fontes: render do projeto + foto da parede real com medição de **3,02 m**.
-> Script: `corte-armario-superior-cozinha.py`
+> Scripts: `corte-armario-superior-cozinha.py` (levantamento) ·
+> `build-armario-superior-cozinha.py` → `proposta-armario-superior-cozinha.pdf` (3 páginas)
 
 ## Premissas (Jonathan, 07/08/2026)
 - **Interno branco · externo cor**
@@ -78,3 +79,23 @@ virou **2 chapas com 71%**, e o custo caiu R$ 250 — R$ 555 de preço ao client
 
 > Os 42% do branco 18 e os 53% da cor **não** são o mesmo caso: são pouca área
 > contra o mínimo de 1 chapa por cor × espessura. Piso, não desperdício.
+
+## Proposta — 3 páginas [07/08/2026]
+
+`build-armario-superior-cozinha.py`: escopo · **elevação frontal desenhada** · investimento.
+
+A p.2 é o coração: uma **elevação em SVG** feita a partir do próprio levantamento, com os
+dois planos em tons diferentes, as fitas de LED em dourado, a geladeira em tracejado (fora
+do escopo) e as cotas por módulo. Não é ilustração — é **o que precisa ser aprovado**, já
+que as alturas são estimadas e a medição final ainda vai acontecer.
+
+Duas correções feitas no desenho depois de olhar o render:
+- as etiquetas *PLANO 50/35* caíam **dentro de um módulo** e liam como nome dele → viraram
+  **legenda** no rodapé da figura;
+- o vazio sob o módulo da geladeira não se explicava → entrou a **geladeira em tracejado**.
+
+Condições: **45 dias corridos** · garantia **10 anos** em estrutura e ferragens (linha
+Silver: 10 anos, com 2 anos em corrediças — que este móvel **não tem**) · validade 7 dias.
+
+> ⚠️ Prazo e validade foram **assumidos por mim**, não ditados. O padrão da casa em
+> `proposta-comercial.md` é 45–60 dias úteis para projeto completo; aqui é um ambiente só.
