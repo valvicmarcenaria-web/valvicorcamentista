@@ -1,8 +1,9 @@
 # Orçamento — Cozinha (consultoria Rizzi Interiores)
 
-> **Status:** 🟢 Precificado em 07/08/2026 — **R$ 40.100** (MC **32%** · COM RT · Hardt).
-> *Trajetória da MC: 35% → 30% ("o perfil do cliente não condiz") → **32%** (ajuste final).*
-> Proposta válida: **V3**, layout do orçamento da Juliana.
+> **Status:** 🟢 Precificado em 07/08/2026 — **duas versões de corrediça**, MC **30%** · COM RT.
+> Telescópica **R$ 36.700** · Oculta Hardt **R$ 38.100**.
+> *Trajetória da MC: 35% → 30% → 32% → **30%** (fechada com as duas versões).*
+> Proposta válida: **V4**, layout da Juliana em duas colunas.
 > Aguarda medição no local e as duas linhas ilegíveis do documento.
 > Fontes: `DOC-2026...A0017.pdf` · `RI - CONSUL...ELENA.pdf` · `Casa Sil.pdf` (capturas).
 > Script: `corte-cozinha-elena.py`
@@ -298,3 +299,67 @@ Economia real de tirar o bloco: **R$ 12.100**.
 - `build-cozinha-elena-v2.py` — premium com renders (estilo Nádia). **Bloqueado**: os
   renders nunca chegaram como arquivo. Os slots ficam prontos se um dia chegarem.
 - `build-cozinha-elena-v3.py` — **válido**.
+
+## V4 — duas versões de corrediça · MC 30% [Jonathan 07/08]
+
+> *"faça um orçamento com corrediça telescópica e outro com oculta Hardt · MC 30% ·
+> se atente para o tempo de garantia de cada · prazo de entrega de 60 a 70 dias corridos"*
+
+`precos-cozinha-elena-variantes.py` (cálculo) · `build-cozinha-elena-v4.py` (5 páginas).
+**Esta é a versão válida.**
+
+### O layout da Juliana finalmente cabe de verdade
+
+A Juliana opunha **duas linhas em duas colunas** (Gold × Essencial). Aqui a variável é
+ainda mais limpa: **só a corrediça muda**. Chapa, fita, dobradiça, articulador, cava,
+logística e instalação são idênticas. Isso permite usar o bloco *o que não muda* sem
+nenhuma ressalva — três colunas isolando a única variável.
+
+### Preço — MC 30% · COM RT · divisor 0,41216
+
+| Linha | Telescópica | Oculta Hardt |
+|---|--:|--:|
+| Armários inferiores da bancada | 12.000 | 13.300 |
+| Demais móveis | 24.700 | 24.800 |
+| **Total** | **36.700** | **38.100** |
+| MC conferida | 29,9% | 30,0% |
+| RT ao parceiro | 3.230 | 3.353 |
+
+Custo direto: R$ 15.161,50 (telescópica) · R$ 15.721,50 (oculta).
+Diferença: **R$ 560 de custo** (14 pares × R$ 40) → **R$ 1.400 de preço**.
+
+### A garantia é o argumento, e ela é da tabela da casa
+
+De `referencias/proposta-comercial.md`:
+
+| | Corrediças | Garantia |
+|---|---|---|
+| **Telescópica** (Silver) | telescópicas | 10 anos · **2 anos nas corrediças** |
+| **Oculta** (Gold) | ocultas slow motion | **10 anos**, sem ressalva |
+
+São **8 anos de diferença**, e eles moram exatamente na peça que muda. A p.4 abre com
+*"Uma peça muda. Oito anos mudam com ela."* e põe a garantia como manchete de cada caixa,
+acima da descrição técnica — **R$ 1.400 = R$ 100 por gaveta** por 8 anos a mais.
+
+> ⚠️ Isso corrige uma incoerência da V3: lá a ferragem era oculta Hardt mas a garantia
+> impressa era a da Silver (*2 anos nas corrediças*). Ferragem Gold com ressalva Silver.
+
+### A escada voltou a ser truncada em −3%
+
+A MC 30% os degraus de −5% e −7% caem em **27,8% e 26,8%** nas duas versões — abaixo do
+piso de 28%. A proposta traz só tabela e −3% (28,7% / 28,6%).
+
+| Condição | Telescópica | Oculta |
+|---|--:|--:|
+| Tabela | 36.700 · 29,9% | 38.100 · 30,0% |
+| −3% | 35.600 · 28,6% | 37.000 · 28,7% |
+
+### Faseamento
+Sem a bancada inferior: **R$ 26.300** (telescópica) · **R$ 26.600** (oculta).
+
+### Condições
+**Prazo 60 a 70 dias corridos** · validade 7 dias · medição antes do corte.
+
+### Estrutura das 5 páginas
+capa (numeral 09) · escopo (`.amb4` + cores) · os nove móveis + estrutura/ferragens/puxador ·
+**as duas versões** · investimento em duas colunas.

@@ -1,0 +1,411 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
+:root{
+  --ink:#1A1714; --soft:#5F594F; --mut:#928B7D; --line:#E2DCD0; --hair:#EFEAE0;
+  --paper:#fff; --cream:#FAF7F1; --sand:#F2ECE1;
+  --gold:#9C7A3C; --gold-lt:#C9A96A; --gold-pale:#F3EADA;
+  --deep:#2A2521;
+}
+@page{size:A4;margin:0;}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;color:var(--ink);
+     font-size:10.2pt;line-height:1.6;}
+.serif{font-family:'Cormorant Garamond',Georgia,serif;}
+.page{position:relative;width:210mm;height:297mm;overflow:hidden;background:var(--paper);
+      page-break-after:always;}
+.page:last-child{page-break-after:auto;}
+.pad{padding:17mm 19mm 15mm;height:100%;}
+h1,h2,h3{margin:0;font-weight:600;}
+p{margin:0;}
+.eyebrow{font-size:7.6pt;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+.rule{height:1.5px;width:42px;background:var(--gold-lt);border:0;margin:10px 0 12px;}
+.h-sec{font-family:'Cormorant Garamond',Georgia,serif;font-size:25pt;font-weight:700;line-height:1.08;}
+.h-sec em{font-style:italic;color:var(--gold);}
+.lead{font-family:'Cormorant Garamond',Georgia,serif;font-size:13pt;font-style:italic;
+      color:var(--soft);line-height:1.5;}
+.pfoot{position:absolute;left:19mm;right:19mm;bottom:11mm;display:flex;justify-content:space-between;
+       font-size:7pt;color:var(--mut);letter-spacing:.12em;border-top:1px solid var(--hair);padding-top:2.5mm;}
+.bl{font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;letter-spacing:.14em;}
+.bl .d{color:var(--gold);}
+
+/* ---------- CAPA ---------- */
+.cover{background:var(--deep);color:#F5F1E8;padding:0;}
+.cover .hero-img{position:absolute;inset:0;}
+.cover .hero-img img{width:100%;height:100%;object-fit:cover;opacity:.92;display:block;}
+.cover .veil{position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(26,23,20,.72) 0%,rgba(26,23,20,.30) 30%,rgba(26,23,20,.55) 62%,rgba(26,23,20,.93) 100%);}
+.cover .inner{position:relative;height:100%;padding:20mm 20mm 16mm;display:flex;flex-direction:column;}
+.cover .brand{font-family:'Cormorant Garamond',Georgia,serif;font-size:27pt;font-weight:700;letter-spacing:.2em;}
+.cover .brand .d{color:var(--gold-lt);}
+.cover .bsub{letter-spacing:.5em;font-size:6.8pt;font-weight:700;color:var(--gold-lt);margin-top:2px;}
+.cover .mid{margin-top:96mm;}
+.cover .kick{font-size:8pt;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-lt);font-weight:700;}
+.cover .tit{font-family:'Cormorant Garamond',Georgia,serif;font-size:37pt;font-weight:700;line-height:1.04;margin:5mm 0 3mm;}
+.cover .sub{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:14pt;color:#D9D2C4;}
+.cover .strip{position:absolute;left:20mm;right:20mm;bottom:16mm;display:flex;gap:8mm;
+  border-top:1px solid rgba(201,169,106,.4);padding-top:5mm;}
+.cover .strip .c .k{font-size:6.6pt;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-lt);font-weight:700;}
+.cover .strip .c .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:12pt;font-weight:700;margin-top:1mm;}
+
+/* ---------- COPY ---------- */
+.big-q{font-family:'Cormorant Garamond',Georgia,serif;font-size:19pt;line-height:1.32;color:var(--ink);}
+.big-q b{color:var(--gold);font-weight:700;}
+.body-t{font-size:10.2pt;color:var(--soft);line-height:1.72;}
+.body-t b{color:var(--ink);}
+.split2{display:flex;gap:9mm;}
+.split2>div{flex:1;}
+.figure{border-radius:5px;overflow:hidden;background:var(--sand);}
+.figure img{width:100%;display:block;}
+.cap{font-size:7.4pt;color:var(--mut);letter-spacing:.1em;text-transform:uppercase;margin-top:2.5mm;}
+.pull{background:var(--gold-pale);border-left:3px solid var(--gold-lt);padding:5mm 6mm;border-radius:0 5px 5px 0;}
+.pull .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:13.5pt;font-weight:700;line-height:1.25;}
+.pull .d{font-size:9pt;color:var(--soft);margin-top:2mm;line-height:1.6;}
+
+/* ---------- ESCOPO / TÉCNICO ---------- */
+.amb{border-top:2px solid var(--ink);padding-top:3.5mm;margin-bottom:6mm;}
+.amb .n{font-family:'Cormorant Garamond',Georgia,serif;font-size:15pt;font-weight:700;}
+.amb .s{font-size:7.2pt;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-top:.8mm;}
+.amb ul{margin:2.5mm 0 0;padding-left:4.5mm;font-size:9.1pt;color:var(--soft);line-height:1.62;}
+.amb li{margin:1.2mm 0;}
+.amb b{color:var(--ink);}
+.spec-tb{width:100%;border-collapse:collapse;font-size:8.8pt;margin-top:2mm;}
+.spec-tb th{text-align:left;font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);
+            font-weight:700;border-bottom:1.5px solid var(--ink);padding:0 0 2mm;}
+.spec-tb td{padding:2.4mm 0;border-bottom:1px solid var(--hair);color:var(--soft);vertical-align:top;}
+.spec-tb td:first-child{font-weight:600;color:var(--ink);width:44mm;padding-right:4mm;}
+.badge{display:inline-block;background:var(--gold-pale);color:var(--gold);font-size:7pt;font-weight:700;
+       letter-spacing:.1em;text-transform:uppercase;padding:1mm 2.5mm;border-radius:3px;}
+
+/* ---------- INVESTIMENTO ---------- */
+.inv-hero{background:var(--deep);color:#F5F1E8;border-radius:7px;padding:5.5mm 7mm;position:relative;overflow:hidden;}
+.inv-hero::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gold-lt);}
+.inv-hero .k{font-size:7.4pt;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-lt);font-weight:700;}
+.inv-hero .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:35pt;font-weight:700;line-height:1;
+             margin:1.5mm 0 .8mm;color:#fff;}
+.inv-hero .c{font-size:8.6pt;color:#C6BFB2;}
+.inv-hero .alt{margin-top:2.2mm;padding-top:2.2mm;border-top:1px solid rgba(201,169,106,.32);
+               font-size:8.6pt;color:#C6BFB2;}
+.inv-hero .alt b{color:#F0E7D6;}
+.item-tb{width:100%;border-collapse:collapse;font-size:9pt;margin-top:4mm;}
+.item-tb th{text-align:left;font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);
+            font-weight:700;border-bottom:1.5px solid var(--ink);padding:0 0 2mm;}
+.item-tb td{padding:1.9mm 0;border-bottom:1px solid var(--hair);vertical-align:top;}
+.item-tb td.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600;}
+.item-tb .nm{font-weight:600;color:var(--ink);}
+.item-tb .nm small{display:block;font-weight:400;color:var(--soft);font-size:8pt;margin-top:.4mm;}
+.item-tb tr.tot td{border-bottom:0;border-top:1.5px solid var(--ink);font-weight:700;
+                   font-family:'Cormorant Garamond',Georgia,serif;font-size:12pt;padding-top:2.4mm;}
+.pay-tb{width:100%;border-collapse:collapse;font-size:9.2pt;margin-top:5mm;}
+.pay-tb th{text-align:left;font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);
+           font-weight:700;border-bottom:1.5px solid var(--ink);padding:0 0 2mm;}
+.pay-tb td{padding:1.9mm 0;border-bottom:1px solid var(--hair);}
+.pay-tb td.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.pay-tb tr.best td{background:var(--gold-pale);font-weight:700;color:var(--ink);}
+.pay-tb tr.best td:first-child{padding-left:3mm;border-radius:4px 0 0 4px;}
+.pay-tb tr.best td:last-child{padding-right:3mm;border-radius:0 4px 4px 0;color:var(--gold);}
+.terms{display:flex;gap:5mm;margin-top:3.2mm;}
+.term{flex:1;border:1px solid var(--line);border-radius:5px;padding:3mm 4mm;text-align:center;}
+.term .k{font-size:6.6pt;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);font-weight:700;}
+.term .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:12.5pt;font-weight:700;margin-top:1mm;line-height:1.15;}
+.note{margin-top:3.2mm;padding-left:4mm;border-left:2px solid var(--gold-lt);font-size:7.1pt;color:var(--soft);line-height:1.48;}
+.note b{color:var(--ink);}
+</style>
+<style>
+  .page:last-of-type{page-break-after:avoid; break-after:avoid;}
+
+  .cover-t{background:var(--deep); position:relative; overflow:hidden;}
+  .cover-t::before{content:""; position:absolute; inset:0;
+     background:radial-gradient(120% 80% at 18% 12%, rgba(201,169,106,.16) 0%, transparent 58%),
+                radial-gradient(90% 70% at 88% 96%, rgba(201,169,106,.10) 0%, transparent 60%);}
+  .cover-t .rules{position:absolute; inset:0;
+     background:repeating-linear-gradient(90deg, rgba(255,255,255,.030) 0 1px, transparent 1px 34mm);}
+  .cover-t .v2{position:absolute; top:34mm; right:20mm; font-family:'Cormorant Garamond',Georgia,serif;
+     font-size:96pt; font-weight:700; color:rgba(201,169,106,.16); line-height:1;}
+
+  .amb4{border-top:1px solid var(--hair); padding:6.2mm 0;}
+  .amb4:first-child{border-top:2px solid var(--ink);}
+  .amb4 .hd{display:flex; justify-content:space-between; align-items:baseline;}
+  .amb4 .t{font-family:'Cormorant Garamond',Georgia,serif; font-size:19pt; font-weight:700; line-height:1.14;}
+  .amb4 .q{font-size:6.4pt; letter-spacing:.16em; text-transform:uppercase; color:var(--gold);
+      font-weight:700; white-space:nowrap; padding-left:5mm;}
+  .amb4 .d{font-size:9.8pt; color:var(--soft); line-height:1.64; margin-top:2mm;}
+  .amb4 .d b{color:var(--ink);}
+
+  .lin{display:flex; gap:7mm; margin-top:6mm;}
+  .lin > div{flex:1; border:1.5px solid var(--line); border-radius:7px; padding:8mm 7mm;}
+  .lin > div.g{border-color:var(--gold); background:rgba(201,169,106,.07);}
+  .lin .k{font-size:6.4pt; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); font-weight:700;}
+  .lin .t{font-family:'Cormorant Garamond',Georgia,serif; font-size:26pt; font-weight:700;
+      color:var(--ink); line-height:1.05; margin-top:1.4mm;}
+  .lin .g2{font-family:'Cormorant Garamond',Georgia,serif; font-size:15pt; font-weight:700;
+      color:var(--gold); margin-top:3mm; line-height:1.15;}
+  .lin .d{font-size:9pt; color:var(--soft); line-height:1.6; margin-top:2.4mm;}
+  .lin .d b{color:var(--ink);}
+
+  .dual{width:100%; border-collapse:collapse; font-size:8.6pt; margin-top:3mm;}
+  .dual th{font-size:6.4pt; letter-spacing:.14em; text-transform:uppercase; color:var(--mut);
+      font-weight:700; border-bottom:1.5px solid var(--ink); padding:0 0 2mm; text-align:left;
+      vertical-align:bottom;}
+  .dual th.vh{text-align:right; width:26mm; padding-left:3mm;}
+  .dual th.vh.alt{color:var(--gold);}
+  .dual td{padding:2.1mm 0; border-bottom:1px solid var(--hair); vertical-align:top;}
+  .dual td.sv{width:38mm; font-weight:700; color:var(--ink); font-size:9pt; padding-right:3mm;}
+  .dual td.sv small{display:block; font-weight:700; color:var(--gold); font-size:6.6pt;
+      letter-spacing:.13em; text-transform:uppercase; margin-top:.5mm;}
+  .dual td.ds{color:var(--soft); line-height:1.56; padding-right:4mm;}
+  .dual td.vl{text-align:right; white-space:nowrap; font-weight:700;
+      font-variant-numeric:tabular-nums; padding-left:3mm;}
+  .dual td.vl.alt{color:var(--gold); background:rgba(201,169,106,.07);}
+  .dual tr.tot td{border-bottom:0; border-top:2px solid var(--ink); padding-top:3.4mm;
+      font-family:'Cormorant Garamond',Georgia,serif; font-size:16pt;}
+  .dual tr.tot td.ds{font-family:system-ui,sans-serif; font-size:8.6pt;}
+
+  .pay-tb2{width:100%; border-collapse:collapse; font-size:9pt; margin-top:4mm;}
+  .pay-tb2 th{font-size:6.4pt; letter-spacing:.14em; text-transform:uppercase; color:var(--mut);
+      font-weight:700; border-bottom:1.5px solid var(--ink); padding:0 0 2mm; text-align:left;}
+  .pay-tb2 th.r, .pay-tb2 td.r{text-align:right;}
+  .pay-tb2 th.r.alt{color:var(--gold);}
+  .pay-tb2 td{padding:2mm 0; border-bottom:1px solid var(--hair); font-variant-numeric:tabular-nums;}
+  .pay-tb2 td.r{font-weight:700; white-space:nowrap; padding-left:4mm;}
+  .pay-tb2 td.r.alt{color:var(--gold); background:rgba(201,169,106,.07);}
+
+  .same{display:flex; gap:0; margin-top:7mm; border-top:2px solid var(--ink);
+      border-bottom:1px solid var(--line); padding:6mm 0;}
+  .same > div{flex:1; padding-left:6mm; border-left:1px solid var(--line);}
+  .same > div:first-child{padding-left:0; border-left:0;}
+  .same .k{font-size:6.4pt; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); font-weight:700;}
+  .same .d{font-size:8.8pt; color:var(--soft); line-height:1.58; margin-top:1.4mm;}
+  .same .d b{color:var(--ink);}
+
+  .cnd{display:grid; grid-template-columns:1fr 1fr; gap:4.2mm 8mm; margin-top:5mm;
+      border-top:2px solid var(--ink); padding-top:4.2mm;}
+  .cnd .k{font-size:6.4pt; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); font-weight:700;}
+  .cnd .v{font-size:9.2pt; color:var(--soft); line-height:1.52; margin-top:.8mm;}
+  .cnd .v b{color:var(--ink);}
+
+  .cores{display:flex; gap:7mm; margin-top:6mm;}
+  .cores .c{flex:1; display:flex; align-items:center; gap:3.4mm;}
+  .cores .sw{width:14mm; height:14mm; border-radius:3px; flex:none;
+      box-shadow:inset 0 0 0 1px rgba(0,0,0,.14);}
+  .cores .n{font-family:'Cormorant Garamond',Georgia,serif; font-size:13pt; font-weight:700; line-height:1.12;}
+  .cores .u{font-size:6.8pt; letter-spacing:.13em; text-transform:uppercase; color:var(--mut);
+      font-weight:700; margin-top:.8mm;}
+</style></head><body>
+
+<!-- 1 · CAPA -->
+<div class="page cover cover-t">
+  <div class="rules"></div><div class="v2">09</div>
+  <div class="inner">
+    <div><div class="brand">valvic<span class="d">.</span></div><div class="bsub">MARCENARIA</div></div>
+    <div class="mid">
+      <div class="kick">Proposta de marcenaria</div>
+      <div class="tit">Sua cozinha,<br>executada.</div>
+      <div class="sub">Projeto Rizzi Interiores · nove móveis, três cores</div>
+    </div>
+    <div class="strip">
+      <div class="c"><div class="k">Escopo</div><div class="v">9 móveis</div></div>
+      <div class="c"><div class="k">Acabamento</div><div class="v">3 cores</div></div>
+      <div class="c"><div class="k">Versões</div><div class="v">2 de corrediça</div></div>
+      <div class="c"><div class="k">Entrega</div><div class="v">60 a 70 dias</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 2 · O ESCOPO -->
+<div class="page"><div class="pad">
+  <div class="eyebrow">O escopo</div>
+  <div class="h-sec serif" style="font-size:25pt;">Do desenho da Rizzi<br><em>para a bancada da fábrica.</em></div>
+  <hr class="rule" style="margin:8px 0;">
+  <p class="lead" style="margin-bottom:2mm;">O projeto já definiu cada móvel, cada cor e cada
+  medida. O nosso trabalho é traduzir isso em chapa, ferragem e montagem — sem reinterpretar
+  o que já foi decidido.</p>
+
+  <div style="margin-top:2.5mm;">
+    <div class="amb4"><div class="hd"><div class="t">A bancada em “L”</div>
+      <div class="q">272 + 150 cm</div></div>
+      <div class="d">Dois corpos em <b>Azul Ardósia</b> fechando o “L”: módulo da pia, dois
+      bancos de gavetas e módulos de portas de giro. São <b>11 gavetas</b>, e sóculo recuado de
+      10 cm — a bancada fica exatamente nos <b>90 cm</b> que o projeto pede.</div></div>
+
+    <div class="amb4"><div class="hd"><div class="t">O bloco em freijó</div>
+      <div class="q">nicho + 3 básculas</div></div>
+      <div class="d">Nicho de <b>110 cm</b> com prateleira e, acima dele, <b>três básculas</b>
+      de 49 cm com articulador. É o único volume a <b>45 cm</b> de profundidade — o que fica na
+      altura de trabalho recua, para não esbarrar em quem cozinha.</div></div>
+
+    <div class="amb4"><div class="hd"><div class="t">Aéreos</div>
+      <div class="q">150 + 80 cm</div></div>
+      <div class="d">Três portas de giro em <b>Azul Ardósia</b> sobre o nicho, e duas em
+      <b>Cinza Urban</b> fechando o vão da geladeira. Ambos a <b>60 cm</b> de profundidade:
+      volume de guarda onde o alcance já não atrapalha.</div></div>
+
+    <div class="amb4"><div class="hd"><div class="t">Torre quente</div>
+      <div class="q">270 cm, piso ao teto</div></div>
+      <div class="d">Em <b>Cinza Urban</b>, com duas básculas, <b>3 gavetas</b>, os vãos para os
+      embutidos e <b>tomadas embutidas na lateral esquerda</b>, como o projeto especifica.</div></div>
+
+    <div class="amb4"><div class="hd"><div class="t">Painel ripado e mesa</div>
+      <div class="q">em freijó</div></div>
+      <div class="d">As ripas e o tampo em <b>freijó</b>, com apoio na lateral esquerda. São os
+      dois itens que fazem a cozinha e a sala de jantar lerem como um ambiente só.</div></div>
+  </div>
+
+  <div class="cores">
+    <div class="c"><div class="sw" style="background:#5D7480;"></div>
+      <div><div class="n">Azul Ardósia</div><div class="u">bancadas e aéreo</div></div></div>
+    <div class="c"><div class="sw" style="background:#B08856;"></div>
+      <div><div class="n">Freijó</div><div class="u">nicho · básculas · ripado</div></div></div>
+    <div class="c"><div class="sw" style="background:#E4E0D8;"></div>
+      <div><div class="n">Cinza Urban</div><div class="u">torre e aéreo da geladeira</div></div></div>
+  </div>
+
+  <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span>
+    <span>Cozinha · projeto Rizzi Interiores</span></div>
+</div></div>
+
+<!-- 3 · ESPECIFICAÇÃO -->
+<div class="page"><div class="pad">
+  <div class="eyebrow">Especificação</div>
+  <div class="h-sec serif" style="font-size:25pt;">Os <em>nove móveis</em>,<br>um a um.</div>
+  <hr class="rule" style="margin:8px 0;">
+
+  <table class="dual">
+    <tr><th>Móvel</th><th>Medidas e configuração</th></tr>
+    <tr><td class="sv">Armário de bancada<small>Azul Ardósia</small></td><td class="ds"><b>77 × 272 × 60 cm</b> — módulo da pia com báscula e gavetão, dois módulos de gavetas e módulo de portas de giro. Todas as frentes <b>em cava</b>.</td></tr><tr><td class="sv">Armário de bancada<small>Azul Ardósia</small></td><td class="ds"><b>77 × 150 × 60 cm</b> — fecha o “L” com quatro gavetas e duas portas de giro. Sóculo recuado de 10 cm, como o projeto define.</td></tr><tr><td class="sv">Nicho<small>Freijó</small></td><td class="ds"><b>110 × 150 cm</b> — reveste o vão entre a bancada e o aéreo, com prateleira. É onde a madeira aparece na altura do olho.</td></tr><tr><td class="sv">Aéreo de básculas<small>Freijó</small></td><td class="ds"><b>40 × 147 × 45 cm</b> — três básculas em cava com articulador. Único volume a <b>45 cm</b> de profundidade: é o que fica na altura de trabalho.</td></tr><tr><td class="sv">Aéreo<small>Azul Ardósia</small></td><td class="ds"><b>70 × 150 × 60 cm</b> — três portas de giro em cava, com prateleira interna.</td></tr><tr><td class="sv">Torre quente<small>Cinza Urban</small></td><td class="ds"><b>270 × 70 × 60 cm</b>, do piso ao teto — duas básculas, gavetas, vãos para os embutidos e <b>tomadas embutidas na lateral esquerda</b>.</td></tr><tr><td class="sv">Aéreo da geladeira<small>Cinza Urban</small></td><td class="ds"><b>70 × 80 × 60 cm</b> — duas portas de giro em cava, fechando o vão acima do eletrodoméstico.</td></tr><tr><td class="sv">Painel ripado<small>Freijó</small></td><td class="ds">Ripas em freijó integrando a cozinha à sala de jantar.</td></tr><tr><td class="sv">Mesa<small>Freijó</small></td><td class="ds">Tampo em freijó com apoio na lateral esquerda.</td></tr>
+  </table>
+
+  <div class="same">
+    <div><div class="k">Estrutura</div>
+      <div class="d">Caixaria em <b>15 mm</b>, prateleiras e frentes em <b>18 mm</b>, fundos em
+      <b>6 mm</b>. Fita de borda em <b>todas</b> as faces aparentes — inclusive as que só
+      aparecem com a porta aberta.</div></div>
+    <div><div class="k">Ferragens</div>
+      <div class="d"><b>18 dobradiças</b> com amortecimento e <b>5 articuladores</b> de báscula,
+      iguais nas duas versões. A corrediça é o único item que muda.</div></div>
+    <div><div class="k">Puxador</div>
+      <div class="d"><b>16,94 m</b> de cava usinada na CNC. O puxador é a própria frente: nada
+      aplicado, nada para desalinhar com o tempo. Nas três cores, com o mesmo perfil.</div></div>
+  </div>
+
+  <div class="pull" style="margin-top:6mm;">
+    <div class="t">Três cores nunca dividem chapa.</div>
+    <div class="d">Azul Ardósia, Freijó e Cinza Urban são compradas e cortadas em separado —
+    cada cor tem seu próprio plano de corte. É o que garante que o tom de uma porta seja
+    exatamente o da porta ao lado, e é por isso que um projeto tricolor não custa o mesmo que
+    um monocromático.</div>
+  </div>
+
+  <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span>
+    <span>Cozinha · projeto Rizzi Interiores</span></div>
+</div></div>
+
+<!-- 4 · AS DUAS VERSÕES -->
+<div class="page"><div class="pad">
+  <div class="eyebrow">Duas versões</div>
+  <div class="h-sec serif" style="font-size:25pt;">Uma peça muda.<br><em>Oito anos mudam com ela.</em></div>
+  <hr class="rule" style="margin:8px 0;">
+  <p class="lead" style="margin-bottom:2mm;">São <b>14 gavetas</b> nesta cozinha. A corrediça
+  que corre debaixo delas é a única coisa que separa as duas versões — e é ela que define por
+  quanto tempo respondemos por essa gaveta.</p>
+
+  <div class="lin">
+    <div>
+      <div class="k">Versão 1 · corrediça telescópica</div>
+      <div class="t">R$ 36.700</div>
+      <div class="g2">2 anos de garantia<br>nas corrediças</div>
+      <div class="d">Corrediça <b>telescópica</b>, lateral. Funciona bem e é a solução mais
+      difundida do mercado. A gaveta abre cerca de <b>três quartos</b> do curso, e o trilho
+      fica <b>visível na lateral</b> quando ela está aberta.<br><br>
+      Estrutura e demais ferragens seguem com <b>10 anos</b>.</div>
+    </div>
+    <div class="g">
+      <div class="k">Versão 2 · corrediça oculta Hardt</div>
+      <div class="t">R$ 38.100</div>
+      <div class="g2">10 anos de garantia<br>sem ressalva</div>
+      <div class="d">Corrediça <b>oculta com amortecimento</b>, por baixo da gaveta. Abre
+      <b>por inteiro</b>, fecha sozinha nos últimos centímetros e <b>não aparece</b> — a lateral
+      da gaveta fica limpa.<br><br>
+      É o padrão que usamos em <b>7 de cada 10</b> projetos.</div>
+    </div>
+  </div>
+
+  <div class="same">
+    <div><div class="k">O desenho não muda</div>
+      <div class="d">Mesmos nove móveis, mesmas medidas, mesma divisão de módulos. As duas
+      versões saem do mesmo plano de corte.</div></div>
+    <div><div class="k">O acabamento não muda</div>
+      <div class="d">Mesmas <b>três cores</b>, mesmas espessuras, mesma fita de borda, mesma
+      cava usinada em todas as frentes.</div></div>
+    <div><div class="k">O resto da ferragem não muda</div>
+      <div class="d">As <b>18 dobradiças</b> com amortecimento e os <b>5 articuladores</b> de
+      báscula são os mesmos nas duas versões.</div></div>
+  </div>
+
+  <div class="pull" style="margin-top:6mm;">
+    <div class="t">A conta, por gaveta.</div>
+    <div class="d">A diferença entre as duas versões é de <b>R$ 1.400</b> — 3,8% do
+    investimento, ou <b>R$ 100 por gaveta</b>. É o que custa trocar 2 anos de garantia por 10,
+    na peça que mais abre e fecha na casa inteira.</div>
+  </div>
+
+  <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span>
+    <span>Cozinha · projeto Rizzi Interiores</span></div>
+</div></div>
+
+<!-- 5 · INVESTIMENTO -->
+<div class="page"><div class="pad">
+  <div class="eyebrow">Investimento</div>
+  <div class="h-sec serif" style="font-size:25pt;">A cozinha <em>completa</em>.</div>
+  <hr class="rule" style="margin:8px 0;">
+
+  <table class="dual" style="margin-top:5mm;">
+    <tr><th>Linha</th><th>O que entra</th>
+      <th class="vh">Telescópica</th><th class="vh alt">Oculta Hardt</th></tr>
+    <tr><td class="sv">Armários inferiores da bancada<small>Azul Ardósia</small></td>
+      <td class="ds">Os dois corpos que fecham o “L” — <b>272 + 150 cm</b> — com 11 gavetas,
+      portas de giro e sóculo recuado.</td>
+      <td class="vl">R$ 12.000</td><td class="vl alt">R$ 13.300</td></tr>
+    <tr><td class="sv">Demais móveis<small>três cores</small></td>
+      <td class="ds">Nicho e básculas em freijó, os dois aéreos, a torre quente do piso ao teto
+      com 3 gavetas, o painel ripado e a mesa.</td>
+      <td class="vl">R$ 24.700</td><td class="vl alt">R$ 24.800</td></tr>
+    <tr class="tot"><td class="sv">Total</td>
+      <td class="ds">Projeto, medição, produção, entrega e instalação pela equipe própria Valvic.</td>
+      <td class="vl">R$ 36.700</td><td class="vl alt">R$ 38.100</td></tr>
+  </table>
+
+  <table class="pay-tb2">
+    <tr><th>Forma de pagamento</th><th class="r">Condição</th>
+      <th class="r">Telescópica</th><th class="r alt">Oculta Hardt</th></tr>
+    <tr><td>Entrada 30% + saldo em até 10× no cartão</td><td class="r">valor de tabela</td><td class="r">R$ 36.700</td><td class="r alt">R$ 38.100</td></tr><tr><td>Entrada 50% + saldo em até 8× no cartão</td><td class="r">−3%</td><td class="r">R$ 35.600</td><td class="r alt">R$ 37.000</td></tr>
+  </table>
+
+  <div class="cnd">
+    <div><div class="k">Garantia · versão telescópica</div>
+      <div class="v"><b>10 anos</b> em estrutura e ferragens · <b>2 anos</b> nas corrediças.</div></div>
+    <div><div class="k">Garantia · versão oculta Hardt</div>
+      <div class="v"><b>10 anos</b> em estrutura e ferragens, <b>corrediças incluídas</b>.</div></div>
+    <div><div class="k">Prazo de entrega</div>
+      <div class="v"><b>60 a 70 dias corridos</b>, a partir da aprovação e da medição final.</div></div>
+    <div><div class="k">Validade</div>
+      <div class="v"><b>7 dias</b>. Chapa e ferragem sujeitas a reajuste após o prazo.</div></div>
+    <div style="grid-column:1 / -1;"><div class="k">Medição</div>
+      <div class="v">Feita por nós <b>antes da liberação do corte</b>. As cotas desta proposta vêm
+      do documento de consultoria, que declara não servir como referência para compra final —
+      eventuais ajustes são acertados na medição, com a proposta revisada por escrito antes de a
+      produção começar.</div></div>
+  </div>
+
+  <div class="note" style="margin-top:4mm;"><b>Faseamento.</b> Se os armários inferiores da
+  bancada forem executados depois, o restante da cozinha fica em <b>R$ 26.300</b> na versão
+  telescópica e <b>R$ 26.600</b> na oculta — e não nos valores da linha acima: chapa
+  comprada para o conjunto não encolhe na mesma proporção quando o conjunto diminui, e a
+  instalação continua sendo uma cozinha inteira.<br>
+  <b>Não incluso:</b> granito, cuba e misturador; porcelanato e demais revestimentos; cooktop,
+  forno, micro-ondas, coifa, geladeira, purificador e luminária; pontos elétricos e hidráulicos;
+  rebaixo de gesso.</div>
+
+  <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span>
+    <span>Cozinha · projeto Rizzi Interiores · 07/08/2026</span></div>
+</div></div>
+
+</body></html>
