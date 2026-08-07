@@ -1,7 +1,39 @@
 # Levantamento — Portas + painéis do vão da escada (contato: Flávia Moacir)
 
-> **Status:** 🟢 **REV.05 — retificada e reentregue** (`proposta-flavia-portas.pdf`, 2 págs).
-> Escopo, ferragem, material e condições mudaram. **R$ 13.050** (14.500 −10%).
+> **Status:** 🟢 **REV.06** (`proposta-flavia-portas.pdf`, 2 págs) — entrou o nicho de
+> escaninhos. **R$ 15.255** (16.950 −10%).
+
+## ➕ REV.06 — nicho de escaninhos [Jonathan 07/08/2026]
+
+**6 nichos** em **MDF Itapuã**, cada um com **porta e fechadura individuais** e
+**usinagem para recebimento de correspondência**. Preço de venda **R$ 2.450**.
+
+| | |
+|---|--:|
+| Portas e painéis do vão da escada | 14.500 |
+| **Nicho de escaninhos** | **2.450** |
+| Subtotal | 16.950 |
+| Desconto especial de 10% | −1.695 |
+| **TOTAL** | **R$ 15.255** |
+
+> **O desconto foi aplicado também sobre o escaninho.** É a leitura consistente com a
+> mesa da Juliana, e é a única que deixa a matemática da página fechar à vista do
+> cliente — a proposta mostra a composição inteira: dois itens, subtotal, desconto, total.
+> **Se o escaninho não devia entrar no desconto**, o total é **R$ 15.500** (13.050 + 2.450)
+> e a página precisa de outro arranjo. Diferença de R$ 245.
+
+> ⚠️ **Sem levantamento.** O R$ 2.450 é preço de venda ditado, como a mesa da Juliana.
+> Não apurei chapa, fechadura nem usinagem. Por ordem de grandeza — ~1 chapa de Itapuã,
+> 6 fechaduras, 12 dobradiças, fita e a usinagem das 6 fendas — o custo deve ficar perto
+> de **R$ 1.200**, o que daria MC próxima dos **27%** sobre os R$ 2.205 recebidos.
+> Fica na mesma faixa apertada do restante do job (29,0%), não abaixo dela.
+
+Na proposta o escaninho ganhou **bloco de destaque próprio**: *seis escaninhos, seis
+chaves* — a correspondência de um morador não fica acessível ao outro, e a fenda usinada
+na porta recebe carta com o nicho fechado. É o argumento que justifica fechadura
+individual em vez de um nicho aberto.
+
+## Histórico — REV.05
 
 ## 🔴 REV.05 — RETIFICAÇÃO [Jonathan 04/08/2026]
 
