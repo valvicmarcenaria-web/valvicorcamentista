@@ -93,7 +93,7 @@ body{background:var(--bg); color:var(--ink); font-family:system-ui,-apple-system
 </div>
 
 <script>
-const DATA_ATUALIZADA="04/08/2026";
+const DATA_ATUALIZADA="07/08/2026";
 const ORCAMENTOS=[
   {cliente:"Júnior — Lagoa Santa", ref:370000, max:395000, tag:"Casa completa · 9 amb · Res. Bouganville", status:"entregue", drive:"ok"},
   {cliente:"Kênia & Fábio", ref:481000, max:null, tag:"Casa completa", status:"concluido", drive:"parcial"},
@@ -103,6 +103,7 @@ const ORCAMENTOS=[
   {cliente:"Lilian Lee",    ref:127000, max:180500, tag:"Apto completo", status:"concluido", drive:"ausente"},
   {cliente:"Kairon & Juliana", ref:107121, max:123954, tag:"Apto completo · 8 amb (Ess/Gold)", status:"entregue", drive:"ausente"},
   {cliente:"SPE Nova Lima 1", ref:189400, max:null, tag:"Stand 88.200 + decorado 101.200 · 4 amb · MC comb. 37,3% · gar. 5 anos", status:"entregue", drive:"ausente"},
+  {cliente:"Honda Minas Motos S. Efigênia", ref:20500, max:25400, tag:"Showroom · MA-01 aéreo + MA-02 em L · MC 35% s/ RT · AGUARDA RT", status:"orcado", drive:"ausente"},
   {cliente:"Aline Sanches", ref:77800, max:88700, tag:"Apto completo · Galeria 42", status:"entregue", drive:"ausente"},
   {cliente:"Apto CJ (B+G Estúdio)", ref:48700, max:null, tag:"Opção 4 · lâmina + melamínico", status:"entregue", drive:"ausente"},
   {cliente:"Cristaleira", ref:7500, max:null, tag:"Peça única · portas de vidro", status:"entregue", drive:"ausente"},
@@ -146,7 +147,7 @@ document.getElementById("v-neg").textContent=kbrl(soma("entregue"));
 document.getElementById("v-par").textContent=conta("parado")+" · "+kbrl(soma("parado"));
 document.getElementById("upd").textContent=DATA_ATUALIZADA;
 
-const DOT={concluido:"dg",entregue:"di",parado:"da"};
+const DOT={concluido:"dg",entregue:"di",parado:"da",orcado:"db"};
 document.getElementById("list").innerHTML=ORCAMENTOS.map(o=>`
   <div class="row">
     <span class="dot ${DOT[o.status]}" title="${o.status}"></span>

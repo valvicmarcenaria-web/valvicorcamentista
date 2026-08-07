@@ -180,3 +180,78 @@ chapas = min(_pack(sorted(base, key=k)) for k in ordens)
 
 > A regra continua: **sub-50% é sintoma a investigar**, nunca resultado a aceitar.
 > Mas a investigação agora começa pelo empacotador, não pelo móvel.
+
+---
+
+## ⚠️ Varrer ordens não bastou — o packer só olhava a ÚLTIMA faixa [Honda 07/08/2026]
+
+A varredura de quatro ordens acima **não é suficiente**. O `_pack` por faixas só
+tenta encaixar a peça na **última faixa aberta**. Quando entra uma peça larga no
+meio da fila, ele abre faixa nova e **abandona toda a sobra das faixas
+anteriores** — e nenhuma das quatro ordens conserta isso.
+
+**Caso real** (Honda Minas Motos, MA-01): 3,98 m² de Amêndola 18 — **78% de UMA
+chapa** — saía em 2 chapas nas quatro ordens. Empacotado à mão fecha em **1**,
+usando 166 dos 185 cm:
+
+```
+faixa h=30 : 213×30 + 40×30           = 253 de 275
+faixa h=30 : 213×30 + 40×30           = 253
+faixa h=40 : 92×40 + 70×36 + 70×36    = 232
+faixa h=36 : 92×30 + 92×30 + 69,5×36  = 253,5
+faixa h=30 : 92×30 + 92×30 + 40×30×2  = 264      → 166 de 185 ✓
+```
+
+**Correção:** segundo empacotador **best-fit** — procura a melhor faixa já aberta
+em **qualquer** chapa, não só a última. Rodar os dois, nas quatro ordens, e ficar
+com o mínimo. Qualquer resultado continua sendo um plano de corte real (faixa
+guilhotinada é como a serra opera), então baixar a contagem nunca é otimismo.
+
+```python
+def _pack_bf(pcs):
+    ch = []                    # ch[i] = [altura_usada, [[alt_faixa, sobra_larg], ...]]
+    for c, l in pcs:
+        if c > CH_C and l <= CH_C: c, l = l, c
+        if c > CH_C or l > CH_L: ch.append([CH_L, []]); continue
+        best = None
+        for s in ch:
+            for fx in s[1]:
+                if fx[0] >= l and fx[1] >= c and (best is None or fx[1] < best[1]):
+                    best = fx
+        if best is not None: best[1] -= c; continue
+        for s in ch:
+            if s[0] + l <= CH_L:
+                s[0] += l; s[1].append([l, CH_C - c]); break
+        else:
+            ch.append([l, [[l, CH_C - c]]])
+    return len(ch)
+
+chapas = min(pk(sorted(base, key=k))
+             for pk in (_pack_faixa, _pack_bf) for k in ordens)
+```
+
+No mesmo job o best-fit ainda derrubou o Branco 15 de 3 para 2 chapas (50% → 75%).
+**Efeito total: 11 → 8 chapas, R$ 4.290 → R$ 3.030.**
+
+### E o teste de sanidade que fecha a conta
+Antes de aceitar qualquer contagem, olhar o **aproveitamento por cor × espessura**.
+Acima de ~75% numa chapa só, desconfie de que o packer inventou a segunda —
+empacote à mão. É rápido e já pegou dois casos.
+
+---
+
+## 💡 Consolidar espessura dentro da cor [Honda 07/08/2026]
+
+Cada **cor × espessura** puxa no mínimo 1 chapa. Um móvel com 15 e 18 na mesma
+cor paga **duas** chapas mínimas. Quando a área da cor é pequena, jogar tudo na
+espessura maior costuma sair mais barato — e às vezes é tecnicamente melhor.
+
+No Honda: Amêndola 15 (1,67 m², 33%) + Amêndola 18 (2,31 m², 45%) = 2 chapas,
+R$ 1.100. Tudo em 18 → **1 chapa, R$ 600**. Mesma coisa no Palha (−R$ 500).
+E no MA-01, caixaria de 18 mm ainda é **ganho estrutural** — é um aéreo de 3,15 m
+em balanço com fixação invisível.
+
+> Sempre testar a consolidação quando uma cor tiver **duas espessuras com pouca
+> área**. Não vale quando isso empurra a chapa consolidada para uma chapa a mais —
+> testar, não supor (no Honda, consolidar o Amêndola **antes** de corrigir o packer
+> custava R$ 100 a mais).
