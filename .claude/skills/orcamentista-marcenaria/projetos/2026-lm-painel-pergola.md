@@ -1,7 +1,8 @@
 # Orçamento — LM / SPE Nova Lima 1 (Painéis + Pérgola) — comercial
 
 **Cliente:** SPE Nova Lima 1 · **Projeto:** arq. Lodi Motta / JBA Arquitetura · **Local:** Nova Lima–MG · **Etapa:** Executivo
-**Pranchas:** MOB 01 (Painel Corretores/Pilar, R01) + MOB 02 (Painel/Pérgula Gourmet-Lounge, R00).
+**Pranchas:** MOB 01 (Painel Corretores/Pilar, R01) + MOB 02 (Painel/Pérgula Gourmet-Lounge, R00)
+\+ **[07/08] MO 03 (Sala/Cozinha) · DET 05 (Quarto) · DET 06 (Suíte)** — o apartamento decorado.
 **Acabamentos:** MDF Arauco Realce **Cravo Trend** (painéis/aparente) · **Moscada Matt** (móveis/caixa interna) · **MDF madeirado** (revestimento da pérgola + forro).
 
 ## Método
@@ -58,3 +59,75 @@ denom = 1 − 0,18 − 0,88·b − MC. **MC 40% · sem RT → R$ 91.300** · **M
 3. **MC** — recomendo 40% (piso caixa Rodrigo é 37%).
 4. **Forro em gypsum** — assumido por conta do gesseiro (fora do escopo Valvic). Confirmar.
 5. Espessura do painel de parede: assumi 15 mm.
+
+
+---
+
+# ESCOPO NOVO — APARTAMENTO DECORADO [07/08/2026]
+
+Chegaram três pranchas **executivas** do Lodi Motta, R00 de 05–06/08/2026:
+
+| Prancha | Conteúdo | Formato |
+|---|---|---|
+| **MO 03** | Mobiliário Sala / Cozinha — 4 elevações + 2 plantas | A2 79,3×42 |
+| **DET 05** | Quarto — 4 elevações + planta, 9,00 m² | A2 59,4×42 |
+| **DET 06** | Suíte — 3 elevações + planta | A2 59,4×42 |
+
+**Não há sobreposição com a proposta vigente.** Os R$ 88.200 cobrem MOB 01 + MOB 02 —
+painéis, pérgola e móveis das **áreas comerciais do stand**. Isto é o **apartamento
+decorado**. É escopo somado, não revisado.
+
+## Acabamentos (legenda das pranchas)
+- **Sala/Cozinha e Suíte:** MDF Arauco **Anis Matt** + **Frapé Matt**
+- **Quarto:** MDF **Ciliegio Poro** + **laca brilhante Sayerlack M072**
+- **Rodapé sala/cozinha:** perfil de **inox escovado 5×0,5, h=5** (DET.02)
+- **Rodapé quarto/suíte:** h=7
+- **Puxador da cozinha:** perfil embutido 1,5+1,5, prof. 8 (DET.03) — é **cava**
+
+## Quantitativo — `corte-spe-decorado.py`
+
+| Material | Área | Chapas |
+|---|--:|--:|
+| Branco 15 · 18 · 6 (caixaria e fundos) | 100,9 m² | 29 |
+| Anis Matt 15 · 18 | 25,6 m² | 8 |
+| Frapé Matt 15 · 18 | 6,9 m² | 3 |
+| Ciliegio Poro 15 · 18 | 12,6 m² | 5 |
+| **Total** | **145,85 m²** | **45** · 64% |
+
+Terceirizados **R$ 5.950,69** — espelho prata 5,34 m², laca Sayerlack 3,16 m²,
+cabeceiras estofadas 3,64 m², rodapé inox 10,6 m, LED 9,9 m.
+Ferragens **R$ 2.860,50** — 22 dobradiças, 8 articuladores, 3 conjuntos de correr,
+8,95 m de cava.
+
+**CUSTO DIRETO: R$ 37.808,82**
+
+## Preço
+
+| MC | Sem RT | Com RT |
+|--:|--:|--:|
+| 35% | 84.000 | 104.400 |
+| 37% | 87.900 | 110.500 |
+| **40%** | **94.500** | 121.100 |
+
+Mantendo o critério da vigente (**MC 40% · sem RT**):
+
+| | |
+|---|--:|
+| Vigente — MOB 01 + MOB 02 | R$ 88.200 |
+| **Decorado — MO 03 + DET 05 + DET 06** | **R$ 94.500** |
+| **TOTAL ATUALIZADO** | **R$ 182.700** |
+
+O decorado **é maior que o stand**. Faz sentido: são quatro ambientes mobiliados
+contra painelaria e pérgola.
+
+## ⚠️ Flags
+1. **Chapa Arauco MATT** — usei a base "cor" (R$ 500/580). Matt é linha premium;
+   a R$ 800/chapa o custo sobe ~R$ 11.250 e o preço ~R$ 28.100. **É o maior risco
+   aberto**, e é o mesmo flag que ficou pendente na proposta vigente.
+2. **RT** — projeto do Lodi Motta. Se houver, o decorado vai de 94.500 para 121.100.
+3. **Interno branco assumido** — as pranchas só especificam o acabamento aparente.
+4. **Fita pelo fator 2,6 m/m²**, não apurada peça a peça.
+5. **Divisão interna dos módulos** lida das elevações; as plantas cotam o
+   desenvolvimento, não a divisão de gavetas.
+6. **Fora do escopo:** caixa de gypsum, pintura, cortinas, tapetes, eletros,
+   bancadas de pedra.
