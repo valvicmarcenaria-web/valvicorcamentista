@@ -112,7 +112,6 @@ a(Q1,'BR15','Vertical',                255, 55, 4)
 a(Q1,'BR15','Tampo/base',              154, 55, 2)
 a(Q1,'BR15','Prateleira',              150, 53, 4)
 a(Q1,'BR6', 'Fundo',                   255, 154, 1)
-a(Q1,'CI18','Porta de correr',          77, 255, 2)
 a(Q1,'CI18','Tamponamento lateral',    255, 55, 1)
 
 Q2 = 'Quarto · módulo de nichos em laca (E01)'
@@ -141,7 +140,6 @@ a(U2,'BR15','Vertical',                255, 55, 4)
 a(U2,'BR15','Tampo/base',              193.5, 55, 2)
 a(U2,'BR15','Prateleira',              190, 53, 4)
 a(U2,'BR6', 'Fundo',                   255, 193.5, 1)
-a(U2,'AN18','Porta de correr',          97, 255, 2)
 
 U3 = 'Suíte · painel ripado (E03)'
 N_RIPA_S = 24                       # sequência 20/3/5/5/10/5/5/5 repetida em ~245 cm
@@ -204,13 +202,15 @@ ESP_M2  = (1.90*2.40) + 4*(0.39*0.50)     # espelho grande E03 + 4 nichos
 LACA_M2_Q = 2*(2.55*0.62)                 # módulo de nichos do quarto, laca brilhante
 ESTOF_M2 = (1.96*0.87) + (1.935*1.00)     # cabeceiras do quarto e da suíte
 INOX_ML = 7.2 + 3.4                        # rodapé inox sala/cozinha (E03+E04)
-LED_ML_T = 3.0 + 2.97 + 2.46 + 1.5         # cortineiros e nichos iluminados
+LED_ML_T = 3.0 + 1.0 + 2.97 + 2.3 + 2.46 + 5.0   # cozinha·sala·cortineiros·nichos = 16,7 m
 N_DOBR  = 2*2 + 1*2 + 1*2 + 2*2 + 5*2      # portas de giro da cozinha
 N_ARTIC = 8                                # básculas dos aéreos Frapé
 N_CORR  = 3                                # gavetas da torre do forno
 M_CAVA  = 3.56 + 2.35 + 3.04               # frentes com cava (DET.03)
 
 terc = [
+    ('Portas de espelho terceirizadas — 4 folhas + 2 fretes',
+     4*PORTA_ESPELHO + 2*FRETE_ESPELHO),
     (f'Espelho prata com perfil — {ESP_M2:.2f} m²',        ESP_M2*ESPELHO_M2),
     (f'Laca brilhante Sayerlack M072 — {LACA_M2_Q:.2f} m²', LACA_M2_Q*LACA_M2),
     (f'Cabeceiras estofadas — {ESTOF_M2:.2f} m²',           ESTOF_M2*ESTOFADO_M2),
@@ -221,7 +221,8 @@ ferr = [
     (f'Dobradiça com amortecimento — {N_DOBR} un',      N_DOBR*DOBR),
     (f'Articulador de báscula — {N_ARTIC} un',          N_ARTIC*ARTIC),
     (f'Corrediça oculta — {N_CORR} pares',              N_CORR*CORR),
-    ('Sistema de correr — 3 conjuntos de 2 portas',     3*DESLIZ_2P),
+    ('Sistema Dominus — 2 kits de 2 portas (roupeiros)', 2*DOMINUS_2P),
+    ('Sistema RO82 + trilho — porta de passagem da sala', RO82),
     (f'Cava usinada — {M_CAVA:.2f} m',                  M_CAVA*CAVA_M),
     ('Suportes de prateleira — 22 un',                  22*SUP_PRAT),
 ]
@@ -272,14 +273,16 @@ ft_g = {g: custo_fita*ar_g_tot[g]/ar_tot for g in AMB}
 fl_g = {g: custo_filet*ar_g_tot[g]/ar_tot for g in AMB}
 
 # terceirizados e ferragens: atribuição EXATA
-te_g = {'Cozinha': INOX_ML*0.45*INOX_M,
-        'Sala':    ESP_M2*ESPELHO_M2 + INOX_ML*0.55*INOX_M,
-        'Quarto':  LACA_M2_Q*LACA_M2 + (1.96*0.87)*ESTOFADO_M2 + (3.0+1.5)*LED_ML,
-        'Suíte':   (1.935*1.00)*ESTOFADO_M2 + (2.97+2.46)*LED_ML}
+te_g = {'Cozinha': INOX_ML*0.45*INOX_M + 3.0*LED_ML,
+        'Sala':    ESP_M2*ESPELHO_M2 + INOX_ML*0.55*INOX_M + 1.0*LED_ML,
+        'Quarto':  LACA_M2_Q*LACA_M2 + (1.96*0.87)*ESTOFADO_M2 + (2.97+2.3)*LED_ML
+                   + 2*PORTA_ESPELHO + FRETE_ESPELHO,
+        'Suíte':   (1.935*1.00)*ESTOFADO_M2 + (2.46+5.0)*LED_ML
+                   + 2*PORTA_ESPELHO + FRETE_ESPELHO}
 fe_g = {'Cozinha': N_DOBR*DOBR + N_ARTIC*ARTIC + N_CORR*CORR + M_CAVA*CAVA_M + 10*SUP_PRAT,
-        'Sala':    6*SUP_PRAT,
-        'Quarto':  DESLIZ_2P + 4*SUP_PRAT,
-        'Suíte':   2*DESLIZ_2P + 2*SUP_PRAT}
+        'Sala':    RO82 + 6*SUP_PRAT,
+        'Quarto':  DOMINUS_2P + 4*SUP_PRAT,
+        'Suíte':   DOMINUS_2P + 2*SUP_PRAT}
 # reconcilia arredondamentos com o total apurado
 te_g['Sala']   += custo_terc - sum(te_g.values())
 fe_g['Cozinha'] += custo_ferr - sum(fe_g.values())

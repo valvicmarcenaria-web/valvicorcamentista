@@ -204,9 +204,33 @@ com perfil"* de `chapas.md`, onde **a unidade é FOLHA**, não metro quadrado.
 | 630 | 48.357 | 107.400 | 195.600 |
 | 800 | 49.265 | 109.400 | 197.600 |
 
-**Proposta NÃO fechada** — instrução do Jonathan: *"não feche a proposta enquanto
-não fecharmos os valores"*. `proposta-spe-nova-lima.pdf` está com os números
-antigos e não deve ser enviado.
+### ✅ FECHADO em R$ 191.500 [Jonathan 07/08]
+
+Espelho da E03 **mantido a R$ 285/m²**. Emitida `proposta-spe-nova-lima.pdf`.
+
+| Etapa | Custo direto | Investimento |
+|---|--:|--:|
+| Stand — MOB 01 + MOB 02 · *inalterado* | — | **88.200** |
+| Cozinha | 11.379,56 | 25.800 |
+| Sala | 6.971,85 | 15.800 |
+| Quarto | 13.230,71 | 30.000 |
+| Suíte | 13.971,37 | 31.700 |
+| **Decorado** | **45.553,49** | **103.300** |
+| **TOTAL** | | **R$ 191.500** |
+
+Escada: −3% 185.800 · −5% 181.900 · −7% **178.100**.
+
+> ⚠️ **A MC do decorado ficou em 35,9%, não 35,0%.** Ao tirar as portas de espelho
+> da lista de MDF, o re-nesting caiu de 145,9 para **137,0 m²** e derrubaram
+> chapas inteiras — o custo caiu **R$ 962** a mais do que meu crédito à mão previa.
+> A MC 35% exata daria R$ 101.200 (total 189.400). Segurando o valor autorizado,
+> ganhamos 0,9 ponto. **MC combinada do contrato: ~38,1%.**
+
+### APRENDIZADO — crédito de área ≠ crédito de chapa
+Quando um item sai do plano de corte, creditar só a **área** subestima a economia:
+o nesting pode derrubar **chapas inteiras**. Vale para os dois lados — foi o mesmo
+efeito que fez a bancada da cozinha Rizzi economizar menos do que a linha rateada
+sugeria. **Sempre re-rodar o nesting, nunca estimar o delta por m².**
 
 ### APRENDIZADO — unidade de tabela
 `chapas.md` cota vidro e espelho **por folha**; `validacao-orcamento.md` cota

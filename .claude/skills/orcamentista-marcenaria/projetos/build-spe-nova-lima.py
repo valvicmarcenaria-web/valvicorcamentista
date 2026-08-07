@@ -4,38 +4,45 @@
 [Jonathan 07/08] "considere sem RT e MC de 35%. sem mexer nos valores na
 proposta inicial."
 
-O stand (MOB 01 + MOB 02) entra INALTERADO em R$ 88.200 — foi fechado a MC 40%
-sem RT. O decorado (MO 03 + DET 05 + DET 06) sai a MC 35% sem RT, divisor
-0,45016, de `corte-spe-decorado.py`:
+FECHADO em R$ 191.500 [Jonathan 07/08], depois da auditoria que corrigiu quatro
+furos: portas de espelho tratadas como MDF, sistema de correr a R$ 250 em vez do
+Dominus, LED subcontado e a razão R$/chapa que denunciava tudo.
 
-  Cozinha  R$ 11.671,12 → 25.900      Quarto  R$  9.178,30 → 20.400
-  Sala     R$  6.306,83 → 14.000      Suíte   R$ 10.652,57 → 23.700
-  DECORADO R$ 37.808,82 → 84.000  (MC conferida 35,0%)
+O stand (MOB 01 + MOB 02) entra INALTERADO em R$ 88.200 — fechado a MC 40% sem RT.
+Decorado (MO 03 + DET 05 + DET 06), custo apurado em `corte-spe-decorado.py`:
 
-  TOTAL  88.200 + 84.000 = R$ 172.200   ·   MC combinada do contrato ~37,6%
+  Cozinha  R$ 11.379,56 → 25.800      Quarto  R$ 13.230,71 → 30.000
+  Sala     R$  6.971,85 → 15.800      Suíte   R$ 13.971,37 → 31.700
+  DECORADO R$ 45.553,49 → 103.300
+
+  TOTAL  88.200 + 103.300 = R$ 191.500
+
+⚠️ A MC 35% exata daria R$ 101.200 (total 189.400). Segurando o valor autorizado,
+   a MC do decorado fica em 35,9% — o re-nesting derrubou o custo em R$ 962
+   depois que as portas de espelho saíram da lista de MDF.
 """
 import pathlib
 P = pathlib.Path('/home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos')
 CSS = open('/tmp/css_premium.txt', encoding='utf-8').read().split('CSS = """')[1].rsplit('"""', 1)[0]
 
-STAND, DEC, TOT = 88200, 84000, 172200
+STAND, DEC, TOT = 88200, 103300, 191500
 AMB = [('Cozinha', 'Anis Matt · Frapé Matt',
         'Bancada em “L” com módulos de giro e a torre do forno com <b>3 gavetas</b> · '
         'aéreos em dois planos, <b>prof. 62</b> em Anis e <b>prof. 40</b> em Frapé com '
         '<b>8 básculas</b> em articulador · nicho do micro-ondas e vão da coifa de embutir · '
-        'painel alto de <b>2,55 m</b> com nichos.', 25900),
+        'painel alto de <b>2,55 m</b> com nichos.', 25800),
        ('Sala', 'Anis Matt',
         'Painelaria de <b>7,20 m</b> de desenvolvimento por <b>2,55 m</b> de altura, em duas '
         'elevações: painel com <b>4 nichos de espelho</b> emoldurados e espelho de 1,90 m · '
-        'painel com <b>3 nichos</b> e porta embutida · <b>rodapé em perfil de inox escovado</b>.', 14000),
+        'painel com <b>3 nichos</b> e porta embutida · <b>rodapé em perfil de inox escovado</b>.', 15800),
        ('Quarto', 'Ciliegio Poro · laca Sayerlack M072',
-        'Roupeiro de <b>1,54 m</b> com duas portas de correr · módulo de nichos iluminados em '
+        'Roupeiro de <b>1,54 m</b> com <b>duas portas de correr espelhadas</b> · módulo de nichos iluminados em '
         '<b>laca brilhante</b> · cabeceira estofada, painel de TV, prateleira suspensa, '
-        'bancada de trabalho e criado suspenso · cortineiro com iluminação.', 20400),
+        'bancada de trabalho e criado suspenso · cortineiro com iluminação.', 30000),
        ('Suíte', 'Anis Matt · Frapé Matt',
         'Torre de <b>5 nichos iluminados</b> em Frapé, do piso ao teto · roupeiro de '
-        '<b>1,935 m</b> com duas portas de correr · <b>painel ripado</b> em perfil de madeira '
-        '5×1,5 · cabeceira estofada e cortineiro com iluminação.', 23700)]
+        '<b>1,935 m</b> com <b>duas portas de correr espelhadas</b> · <b>painel ripado</b> em perfil '
+        'de madeira 5×1,5 · cabeceira estofada e cortineiro com iluminação.', 31700)]
 def br(v): return f'{v:,.0f}'.replace(',', '.')
 
 amb_tb = ''.join(
@@ -167,7 +174,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       <div class="k">Entra agora</div>
       <div class="t">R$ {br(DEC)}</div>
       <div class="d">O <b>apartamento decorado</b> completo: cozinha, sala, quarto e suíte.
-      <br><br>São <b>145,9 m² de chapa</b> em quatro acabamentos — Anis Matt, Frapé Matt,
+      <br><br>São <b>137 m² de chapa</b> em quatro acabamentos — Anis Matt, Frapé Matt,
       Ciliegio Poro e laca brilhante Sayerlack — mais espelhos, cabeceiras estofadas,
       rodapé em inox e iluminação embutida.</div>
     </div>
@@ -187,18 +194,19 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
 
   <table class="dual" style="margin-top:7mm;">
     <tr><th>O decorado em números</th><th>Composição</th></tr>
-    <tr><td class="sv">Chapa<small>45 chapas · 145,9 m²</small></td>
+    <tr><td class="sv">Chapa<small>41 chapas · 137,0 m²</small></td>
       <td class="ds"><b>Anis Matt</b> e <b>Frapé Matt</b> na sala, cozinha e suíte ·
       <b>Ciliegio Poro</b> no quarto · branco na caixaria interna. Quatro planos de corte
-      independentes.</td></tr>
-    <tr><td class="sv">Ferragens<small>Hardt</small></td>
+      independentes — <b>cor nenhuma divide chapa com outra</b>.</td></tr>
+    <tr><td class="sv">Ferragens<small>Hardt · Rometal</small></td>
       <td class="ds"><b>22 dobradiças</b> com amortecimento · <b>8 articuladores</b> de báscula ·
-      <b>3 conjuntos</b> de porta de correr · corrediças ocultas na torre do forno ·
-      <b>8,95 m</b> de cava usinada.</td></tr>
+      <b>2 sistemas Dominus</b> nos roupeiros e <b>RO82</b> na porta de passagem · corrediças
+      ocultas na torre do forno · <b>8,95 m</b> de cava usinada.</td></tr>
     <tr><td class="sv">Terceiros<small>coordenados pela Valvic</small></td>
-      <td class="ds">Espelho prata com perfil <b>5,34 m²</b> · laca brilhante Sayerlack M072
+      <td class="ds"><b>4 portas de espelho</b> em esquadria de alumínio com película de
+      segurança · espelho prata com perfil <b>5,34 m²</b> · laca brilhante Sayerlack M072
       <b>3,16 m²</b> · duas cabeceiras estofadas <b>3,64 m²</b> · rodapé em inox escovado
-      <b>10,6 m</b> · fita de LED com perfil <b>9,9 m</b>.</td></tr>
+      <b>10,6 m</b> · fita de LED com perfil <b>16,7 m</b>.</td></tr>
   </table>
 
   <div class="note"><b>Fora do escopo:</b> caixa de gypsum, forro, pintura de paredes e teto,
@@ -231,7 +239,8 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
 
     <div class="amb4"><div class="hd"><div class="t">Quarto</div>
       <div class="q">DET 05 · Ciliegio + laca</div></div>
-      <div class="d">Roupeiro de <b>1,54 m</b> com duas portas de correr e módulo lateral de
+      <div class="d">Roupeiro de <b>1,54 m</b> com <b>duas portas de correr espelhadas</b> em
+      esquadria de alumínio, no sistema <b>Dominus</b>, e módulo lateral de
       <b>nichos iluminados em laca brilhante</b> Sayerlack M072. Cabeceira estofada, painel de
       TV, prateleira suspensa, bancada de trabalho e criado suspenso. Cortineiro com
       iluminação embutida.</div></div>
@@ -239,7 +248,8 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
     <div class="amb4"><div class="hd"><div class="t">Suíte</div>
       <div class="q">DET 06 · Anis + Frapé</div></div>
       <div class="d">Torre de <b>cinco nichos iluminados</b> em Frapé Matt, do piso ao teto ·
-      roupeiro de <b>1,935 m</b> com duas portas de correr · <b>painel ripado</b> em perfil de
+      roupeiro de <b>1,935 m</b> com <b>duas portas de correr espelhadas</b> no sistema
+      <b>Dominus</b> · <b>painel ripado</b> em perfil de
       madeira 5×1,5 · cabeceira estofada e cortineiro com iluminação.</div></div>
   </div>
 
