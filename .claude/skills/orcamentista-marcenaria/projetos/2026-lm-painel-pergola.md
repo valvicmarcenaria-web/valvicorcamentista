@@ -242,6 +242,61 @@ o nesting pode derrubar **chapas inteiras**. Vale para os dois lados — foi o m
 efeito que fez a bancada da cozinha Rizzi economizar menos do que a linha rateada
 sugeria. **Sempre re-rodar o nesting, nunca estimar o delta por m².**
 
+---
+
+# ✅ VERSÃO FINAL — MC 35% exata no decorado · garantia 5 anos [07/08/2026]
+
+> *"vamos elevar a MC para 35% e dar 5 anos de garantia."* — Jonathan
+> *"sempre mantendo os valores do orçamento inicial do Stand de vendas"* — Jonathan
+
+## A ambiguidade que a segunda mensagem resolveu
+
+"Elevar a MC para 35%" não podia significar *elevar* nada: o stand estava em **40%**
+e o decorado em **35,9%**. Aplicar 35% no contrato inteiro **derrubaria** o total em
+R$ 11.900. A segunda mensagem travou a leitura correta: **stand congelado, MC 35% só
+no decorado.**
+
+## Preço
+
+| Frente | Custo direto | Investimento |
+|---|--:|--:|
+| Painéis — Cravo Trend (Gourmet/Lounge + Corretores + Pilar) | — | 45.700 |
+| Pérgola — 28 ripas metalon #10×5 revestido | — | 18.000 |
+| Portas — giro (copa + armário) + acesso ao QG | — | 5.500 |
+| Móveis + complementos — armário gourmet, móvel lounge, sanca, inox | — | 19.000 |
+| **Stand — MOB 01 + MOB 02 · MC 40% · congelado** | **33.694** | **88.200** |
+| Cozinha do decorado | 11.379,56 | 25.300 |
+| Sala do decorado | 6.971,85 | 15.500 |
+| Quarto do decorado | 13.230,71 | 29.400 |
+| Suíte do decorado | 13.971,37 | 31.000 |
+| **Decorado — MC 35,0% exata** | **45.553,49** | **101.200** |
+| **TOTAL** | **79.247** | **R$ 189.400** |
+
+**MC combinada do contrato: 37,3%** *(média ponderada por receita: 88.200 a 40% +
+101.200 a 35%)*. Bem acima do piso de caixa do Rodrigo (37%) e no meio da faixa
+saudável.
+
+Escada: −3% 183.700 · −5% 179.900 · −7% **176.100**. No pior degrau a MC do decorado
+ainda fica em **31,6%** — acima do piso de 28%.
+
+> **R$ 2.100 abaixo dos R$ 191.500 antes autorizados.** Não é perda: os 103.300
+> nunca foram alvo, eram o **resíduo de segurar o número redondo**, o que deixava a
+> MC em 35,9%. Pedida a MC 35% exata, o decorado é 101.200 por construção.
+
+## Garantia — 5 anos
+
+Coerente com a tabela corrigida da casa (`proposta-comercial.md`): **corrediça oculta
+Hardt = 5 anos**. O decorado usa oculta. O stand é painelaria e pérgola — quase não
+tem ferragem móvel, então 5 anos não cria exposição nova ali.
+
+## Layout
+O mesmo da primeira versão (`build-lm.py`, 17/07). O build **lê o CSS direto do
+`build-lm.py`** via regex, então os dois nunca divergem. 4 páginas: capa · escopo do
+stand · escopo do decorado · investimento. Prazo 60–75 dias úteis · 40/40/20 ·
+validade 15 dias.
+
+Emitida `proposta-spe-nova-lima.pdf` (4 páginas, verificada).
+
 ### APRENDIZADO — unidade de tabela
 `chapas.md` cota vidro e espelho **por folha**; `validacao-orcamento.md` cota
 **por unidade**. Nenhuma das duas é por m². Usar esses números como R$/m² em

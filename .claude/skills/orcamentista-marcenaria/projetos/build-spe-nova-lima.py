@@ -9,15 +9,23 @@ obs. NAO TEM NADA CONTRATADO AINDA."
   filete, tabela de frentes, hero do investimento. Mesma casca, escopo maior.
 
 → E cai a moldura "contratado + adição" que a versão anterior usava. Nada foi
-  assinado: é UMA proposta, com oito frentes, fechando em R$ 191.500.
+  assinado: é UMA proposta, com oito frentes.
 
-  Stand ....... painéis 45.700 · pérgola 18.000 · portas 5.500 · móveis 19.000
-  Decorado .... cozinha 25.800 · sala 15.800 · quarto 30.000 · suíte 31.700
-  TOTAL ....... R$ 191.500
+[Jonathan 07/08] "elevar a MC para 35% e dar 5 anos de garantia · SEMPRE mantendo
+os valores do orçamento inicial do Stand de vendas."
 
-Números do stand vêm de `corte-lm.py` (MC 40% sem RT, 17/07); os do decorado de
-`corte-spe-decorado.py` (custo apurado R$ 45.553,49 — segurando o valor fechado,
-a MC do decorado fica em 35,9%).
+  Stand ....... 88.200 INTOCADO (MC 40%, como saiu em 17/07)
+  Decorado .... MC 35% exata: 25.300 + 15.500 + 29.400 + 31.000 = 101.200
+  TOTAL ....... R$ 189.400
+
+⚠️ MC 35% exata no decorado dá R$ 101.200, e não os 103.300 que estavam na versão
+   anterior. Aqueles 103.300 nunca foram alvo — eram o resíduo de segurar o número
+   redondo de 191.500, o que deixava a MC em 35,9%. Travando 35%, o total cai
+   R$ 2.100. MC combinada do contrato: 37,4%.
+
+⚠️ GARANTIA 5 ANOS (era 2). Coerente com a tabela corrigida da casa: corrediça
+   oculta = 5 anos. O decorado tem Dominus, oculta e articuladores; o stand é
+   painelaria e pérgola, quase sem ferragem móvel — risco estrutural baixo.
 """
 import pathlib, re
 P = pathlib.Path('/home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos')
@@ -31,13 +39,13 @@ FRENTES = [
  ('Pérgola — 28 ripas metalon #10×5 revestido em MDF madeirado',          18000),
  ('Portas — de giro (copa + armário) e acesso ao QG',                      5500),
  ('Móveis + complementos — armário gourmet, móvel lounge, sanca, inox',   19000),
- ('Cozinha do decorado — bancada em “L”, aéreos em dois planos, torre do forno', 25800),
- ('Sala do decorado — 7,20 m de painelaria, espelhos e rodapé de inox',   15800),
- ('Quarto do decorado — roupeiro espelhado, nichos em laca, cabeceira',   30000),
- ('Suíte do decorado — torre de nichos, roupeiro espelhado, painel ripado', 31700),
+ ('Cozinha do decorado — bancada em “L”, aéreos em dois planos, torre do forno', 25300),
+ ('Sala do decorado — 7,20 m de painelaria, espelhos e rodapé de inox',   15500),
+ ('Quarto do decorado — roupeiro espelhado, nichos em laca, cabeceira',   29400),
+ ('Suíte do decorado — torre de nichos, roupeiro espelhado, painel ripado', 31000),
 ]
 TOT = sum(v for _, v in FRENTES)
-assert TOT == 191500, TOT
+assert TOT == 189400, TOT
 def br(v): return f'{v:,.0f}'.replace(',', '.')
 linhas = ''.join(f'<tr><td class="nmc">{n}</td><td class="r">R$ {br(v)}</td></tr>'
                  for n, v in FRENTES)
@@ -203,7 +211,7 @@ HTML = f"""<!DOCTYPE html>
       <div class="hrule"></div>
       <div class="terms">
         <div class="term"><div class="t">Entrega</div><div class="b">60 a 75<br>dias úteis</div></div>
-        <div class="term"><div class="t">Garantia</div><div class="b">2 anos</div></div>
+        <div class="term"><div class="t">Garantia</div><div class="b">5 anos</div></div>
       </div>
     </div>
   </div>
