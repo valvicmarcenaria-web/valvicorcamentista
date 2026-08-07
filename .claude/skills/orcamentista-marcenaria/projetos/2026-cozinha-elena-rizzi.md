@@ -171,3 +171,41 @@ o número a defender é 26.600 — não 38.100 − 13.300.
    (GIRO / BASC / GAV / PORTA), não cota do documento.
 5. **Medição no local é pré-requisito do contrato** — o próprio documento diz que as
    cotas dele "não servem como referência para compra final".
+
+## Proposta — 4 páginas [07/08/2026]
+
+`build-cozinha-elena.py` → `proposta-cozinha-elena.pdf`:
+escopo · **elevação desdobrada** · os nove móveis + especificação · investimento.
+
+### A elevação desdobrada corrigiu uma leitura minha
+
+Na primeira versão eu tinha colocado o **nicho freijó e o aéreo azul sobre a bancada A**,
+deixando um vazio de 150 × 180 cm no meio do desenho. Errado. Os **três volumes de 150**
+— bancada B, nicho e aéreo azul — são a **mesma pilha, na parede 2**. A parede 1 tem só a
+bancada A (272) com a janela por cima. Foi o vazio no desenho que denunciou o erro: se um
+móvel some da elevação, ele está no lugar errado ou não existe.
+
+Com isso as duas contas continuam fechando: parede 1 = 272 + 60 de canto = **332** ·
+parede 2 = 150 + 70 + 80 = **300**.
+
+O desenho traz o traço do **canto do "L"** em dourado, a geladeira em tracejado (fora do
+escopo) e legenda das três cores + granito.
+
+### A escada foi truncada em −3%
+
+A proposta traz **só dois degraus**: tabela R$ 38.100 e −3% R$ 37.000 (MC 28,7%).
+Os degraus de −5% e −7% ficaram de fora porque levariam a MC a 27,8% e 26,8% — **abaixo
+do piso de 28%**. Imprimir um degrau que não se pode conceder é convidar o pedido.
+Reativar é uma linha no script.
+
+### O bloco da bancada aparece com o número certo
+
+A p.4 diz explicitamente que, se os armários de bancada forem executados depois, o
+restante fica em **R$ 26.600** — e não nos R$ 24.800 da linha. É o número que a
+negociação vai cobrar, impresso antes de alguém perguntar.
+
+Condições: **60 dias corridos** · garantia **10 anos** em estrutura e ferragens com
+**2 anos nas corrediças** (spec real da linha Silver — este móvel tem 14 corrediças) ·
+validade 7 dias · medição final antes do corte, em dois blocos da proposta.
+
+> ⚠️ Prazo e validade foram **assumidos por mim**, não ditados.
