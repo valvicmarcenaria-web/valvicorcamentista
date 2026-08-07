@@ -1,7 +1,8 @@
 # Orçamento — Cozinha (consultoria Rizzi Interiores)
 
-> **Status:** 🟢 Precificado em 07/08/2026 — **R$ 38.100** (MC **30%** · COM RT · Hardt).
-> *MC baixada de 35% para 30%: "o perfil do cliente não condiz com esse valor".*
+> **Status:** 🟢 Precificado em 07/08/2026 — **R$ 40.100** (MC **32%** · COM RT · Hardt).
+> *Trajetória da MC: 35% → 30% ("o perfil do cliente não condiz") → **32%** (ajuste final).*
+> Proposta válida: **V3**, layout do orçamento da Juliana.
 > Aguarda medição no local e as duas linhas ilegíveis do documento.
 > Fontes: `DOC-2026...A0017.pdf` · `RI - CONSUL...ELENA.pdf` · `Casa Sil.pdf` (capturas).
 > Script: `corte-cozinha-elena.py`
@@ -250,3 +251,50 @@ Salvar os seis arquivos com esses nomes e rodar de novo é tudo o que falta.
    bloco do faseamento (R$ 26.600) · faixa do ripado · termos.
 
 Os números são idênticos aos da V1 — só o layout mudou.
+
+## V3 — layout da Juliana · MC 32% [Jonathan 07/08]
+
+> *"não vieram as imagens · quero que faça do mesmo layout do orçamento da juliana ·
+> mude a margem para 32%"*
+
+`build-cozinha-elena-v3.py` → `proposta-cozinha-elena-v3.pdf`. **Esta é a versão válida.**
+
+O layout da Juliana é **tipográfico** — capa escura com numeral translúcido (aqui `09`,
+de nove móveis), blocos `.amb4`, tabela `.dual`, escada `.pay-tb2`, grade `.cnd`. Não
+depende de render nenhum, e é exatamente por isso que resolve: os renders do projeto
+nunca chegaram como arquivo.
+
+### Preço — MC 32% · COM RT · divisor 0,39216
+
+| Linha | Custo direto | Tabela |
+|---|--:|--:|
+| Armários inferiores da bancada | R$ 5.501,35 | **R$ 14.000** |
+| Demais móveis | R$ 10.220,14 | **R$ 26.100** |
+| **Total** | **R$ 15.721,49** | **R$ 40.100** |
+
+MC conferida **32,0%**. RT ao parceiro **R$ 3.529**.
+
+### Os 2 pontos devolveram a escada inteira
+
+| Condição | MC 30% | MC 32% |
+|---|--:|--:|
+| Tabela | 38.100 · 30,0% | **40.100 · 32,0%** |
+| −3% | 37.000 · 28,7% | 38.900 · 30,8% |
+| −5% | 36.200 · **27,8%** ⚠ | 38.100 · 30,0% |
+| −7% | 35.400 · **26,8%** ⚠ | **37.300 · 29,1%** |
+
+A 30% eu tinha truncado a escada em −3%, porque os dois últimos degraus furavam o piso
+de 28%. **A 32% os quatro degraus cabem** — a escada padrão da casa volta inteira, com o
+−7% destacado como na Juliana. Dois pontos de margem compraram de volta duas ferramentas
+de negociação.
+
+### Faseamento
+Sem a bancada inferior, o restante fica em **R$ 28.000** (não nos R$ 26.100 da linha).
+Economia real de tirar o bloco: **R$ 12.100**.
+
+### Histórico de layouts
+- `build-cozinha-elena.py` — tipográfico com **elevação desenhada e cotada**. Útil na obra,
+  mas o Jonathan considerou que não condiz com esta cliente.
+- `build-cozinha-elena-v2.py` — premium com renders (estilo Nádia). **Bloqueado**: os
+  renders nunca chegaram como arquivo. Os slots ficam prontos se um dia chegarem.
+- `build-cozinha-elena-v3.py` — **válido**.
