@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Caderno Empresarial — Valvic Marcenaria · 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+@page { size: A4 portrait; margin: 0; }
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+:root{
+  --navy:#0E2038; --navy2:#16314f; --navy3:#1b3a5e;
+  --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f; --gold-bg:#f6edd6;
+  --cream:#FBFAF7; --ink:#1b2733; --body:#33414f; --muted:#6c7785;
+  --line:#e8e3d8; --line2:#dfdacd;
+  --ok:#2f7d4f; --blue:#2f5d8c; --red:#b0413f; --gray:#6c7785;
+}
+html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink);
+  background:#d9dde3; font-size:10px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+.sheet{ position:relative; width:210mm; height:297mm; background:var(--cream);
+  margin:14px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden;
+  display:flex; flex-direction:column; page-break-after:always; }
+.sheet:last-child{ page-break-after:auto; }
+
+/* ── correntes de página (miolo) ── */
+.rh{ display:flex; justify-content:space-between; align-items:baseline;
+  padding:11mm 16mm 0 24mm; }
+.rh .rl{ font-size:7.2px; font-weight:800; letter-spacing:2.4px; text-transform:uppercase; color:var(--gold-dk); }
+.rh .rr{ font-size:7px; letter-spacing:1.8px; text-transform:uppercase; color:var(--muted); }
+.rh::after{ content:""; }
+.pg{ flex:1; padding:5mm 16mm 0 24mm; display:flex; flex-direction:column; min-height:0; }
+.rf{ display:flex; justify-content:space-between; align-items:center;
+  padding:0 16mm 9mm 24mm; margin-top:auto; }
+.rf .fl{ font-size:6.8px; color:var(--muted); letter-spacing:.3px; }
+.rf .pn{ font-family:'Cormorant Garamond',serif; font-size:13px; font-weight:700; color:var(--navy); }
+.rf .pn i{ font-style:normal; color:var(--gold); margin-right:4px; }
+
+/* ── capa ── */
+.cover{ background:radial-gradient(120% 80% at 82% -8%, #1e4270 0%, rgba(30,66,112,0) 58%),
+  linear-gradient(158deg,#0E2038 0%,#0b1a2e 58%,#08131f 100%); color:#fff;
+  padding:24mm 24mm 18mm; display:flex; flex-direction:column; height:100%; }
+.cover{ position:relative; }
+.cover::after{ content:"V"; position:absolute; right:14mm; top:36mm;
+  font-family:'Cormorant Garamond',serif; font-weight:700; font-size:250px; line-height:.78;
+  color:rgba(226,200,140,.085); letter-spacing:-8px; pointer-events:none; }
+.cover > *{ position:relative; z-index:1; }
+.cover .brand{ display:flex; align-items:center; gap:13px; }
+.cover .mono{ width:48px; height:48px; border:1.6px solid var(--gold); border-radius:5px;
+  display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif;
+  font-weight:700; font-size:26px; color:var(--gold); }
+.cover .co{ font-size:14px; font-weight:700; letter-spacing:3.2px; text-transform:uppercase; }
+.cover .cosub{ font-size:8.4px; color:rgba(255,255,255,.5); letter-spacing:.5px; margin-top:3px; }
+.cover .mid{ margin-top:auto; }
+.cover .kx{ font-size:9px; letter-spacing:5px; text-transform:uppercase; color:var(--gold); }
+.cover h1{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:62px;
+  line-height:1.02; margin-top:10px; letter-spacing:-.5px; }
+.cover h1 span{ display:block; color:var(--gold-soft); font-style:italic; }
+.cover .rule{ height:2.5px; width:64mm; margin:11mm 0 9mm;
+  background:linear-gradient(90deg,var(--gold),var(--gold-dk) 60%,transparent); }
+.cover .lead{ font-size:11px; color:rgba(255,255,255,.72); line-height:1.7; max-width:118mm; }
+.cover .facts{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:12mm;
+  border-top:1px solid rgba(255,255,255,.14); padding-top:7mm; }
+.cover .fx{ padding-right:6mm; }
+.cover .fx .fv{ font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700; color:var(--gold-soft); line-height:1; }
+.cover .fx .fl2{ font-size:7.2px; letter-spacing:1.4px; text-transform:uppercase; color:rgba(255,255,255,.45); margin-top:5px; line-height:1.5; }
+.cover .btm{ margin-top:12mm; display:flex; justify-content:space-between; align-items:flex-end;
+  border-top:1px solid rgba(255,255,255,.14); padding-top:6mm; }
+.cover .btm .b1{ font-size:8.4px; color:rgba(255,255,255,.5); letter-spacing:.5px; line-height:1.7; }
+.cover .btm .b2{ font-size:8px; letter-spacing:2.4px; text-transform:uppercase; color:var(--gold); text-align:right; }
+
+/* ── divisória de parte ── */
+.part{ background:linear-gradient(158deg,#0E2038 0%,#0b1a2e 62%,#08131f 100%); color:#fff;
+  padding:42mm 24mm 20mm; display:flex; flex-direction:column; height:100%; position:relative; }
+.part::before{ content:""; position:absolute; right:0; top:0; bottom:0; width:9mm;
+  background:linear-gradient(180deg,var(--gold),var(--gold-dk) 55%,rgba(169,134,63,0)); opacity:.85; }
+.part::after{ content:"Valvic Marcenaria · Caderno Empresarial · 2026"; position:absolute;
+  left:24mm; right:20mm; bottom:20mm; padding-top:5mm; border-top:1px solid rgba(255,255,255,.13);
+  font-size:7.4px; letter-spacing:2.8px; text-transform:uppercase; color:rgba(255,255,255,.3); }
+.part .pnum{ position:absolute; right:20mm; top:30mm; font-family:'Cormorant Garamond',serif;
+  font-size:200px; font-weight:700; color:rgba(232,206,148,.26); line-height:.72;
+  letter-spacing:-6px; z-index:0; }
+.part > *:not(.pnum){ position:relative; z-index:1; }
+.part .plabel{ font-size:9px; letter-spacing:5px; text-transform:uppercase; color:var(--gold); }
+.part h2{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:42px;
+  line-height:1.08; margin-top:6px; max-width:120mm; }
+.part .pintro{ font-size:10.6px; color:rgba(255,255,255,.7); line-height:1.75; max-width:112mm; margin-top:8mm; }
+.part .plist{ margin-top:13mm; border-top:1px solid rgba(255,255,255,.14); padding-top:7mm;
+  display:flex; flex-direction:column; gap:5px; max-width:112mm; }
+.part .pli{ display:flex; align-items:baseline; gap:10px; font-size:9.4px; color:rgba(255,255,255,.78); }
+.part .pli b{ font-family:'Cormorant Garamond',serif; font-size:13px; color:var(--gold-soft); font-weight:700; min-width:22px; }
+
+/* ── títulos de página ── */
+.ptitle{ margin-bottom:6mm; }
+.ptitle .kx{ font-size:7.4px; letter-spacing:3px; text-transform:uppercase; color:var(--gold-dk); font-weight:800; }
+.ptitle h3{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:29px;
+  line-height:1.1; color:var(--navy); margin-top:3px; }
+.ptitle .sub{ font-size:10.2px; color:var(--muted); line-height:1.6; margin-top:5px; max-width:150mm; }
+.ptitle::after{ content:""; display:block; height:2px; width:26mm; margin-top:5mm;
+  background:linear-gradient(90deg,var(--gold),transparent); }
+
+.sec{ display:flex; align-items:center; gap:9px; margin:0 0 7px; }
+.sec:not(:first-child){ margin-top:5mm; }
+.sec .bar{ width:14px; height:2px; background:var(--gold); }
+.sec .tx{ font-size:8.4px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--navy); }
+.sec .ct{ margin-left:auto; font-size:7.8px; color:var(--muted); }
+
+p.t{ font-size:10.2px; line-height:1.62; color:var(--body); }
+p.t + p.t{ margin-top:6px; }
+p.t b{ color:var(--navy); font-weight:700; }
+p.t i{ font-style:normal; color:var(--gold-dk); font-weight:700; }
+.lead2{ font-size:11px; line-height:1.65; color:var(--body); }
+.lead2 b{ color:var(--navy); }
+
+/* ── KPIs ── */
+.kpis{ display:grid; gap:7px; }
+.k4{ grid-template-columns:repeat(4,1fr); } .k3{ grid-template-columns:repeat(3,1fr); }
+.k2{ grid-template-columns:repeat(2,1fr); }
+.kpi{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px 12px;
+  position:relative; overflow:hidden; }
+.kpi::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--line2); }
+.kpi.a::before{ background:var(--blue); } .kpi.b::before{ background:var(--gold); }
+.kpi.c::before{ background:var(--gold-dk); } .kpi.d::before{ background:var(--navy); }
+.kpi.e::before{ background:var(--ok); }   .kpi.f::before{ background:var(--red); }
+.kpi .kl{ font-size:7px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; color:var(--muted); }
+.kpi .kv{ font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:700; color:var(--navy); line-height:1.1; margin-top:3px; }
+.kpi .kv small{ font-family:'Inter',sans-serif; font-size:10.5px; font-weight:700; }
+.kpi .kd{ font-size:7.5px; color:var(--muted); line-height:1.45; margin-top:4px; }
+.kpi .kd b{ color:var(--navy); }
+
+/* ── tabelas ── */
+table{ width:100%; border-collapse:collapse; background:#fff; }
+thead th{ background:var(--navy2); color:#fff; font-size:7px; font-weight:600; letter-spacing:.6px;
+  text-transform:uppercase; padding:6px 7px; text-align:left; }
+thead th.num{ text-align:right; }
+tbody td{ padding:5.6px 7px; border-bottom:1px solid var(--line); font-size:8.9px;
+  vertical-align:middle; line-height:1.4; }
+tbody td.num{ text-align:right; font-variant-numeric:tabular-nums; }
+tbody td.nm{ font-weight:800; color:var(--navy); }
+tbody td .fn{ display:block; font-size:7.2px; font-weight:500; color:var(--muted); margin-top:1px; line-height:1.35; }
+tbody td.sub{ font-weight:800; color:var(--navy); background:#faf7f0; }
+tbody tr.tot td{ background:var(--navy); color:#fff; font-weight:800; font-size:9.2px;
+  border-bottom:none; padding:7px; }
+tbody tr.tot td.num{ color:var(--gold-soft); }
+tbody tr.sec2 td{ background:#f1eee6; font-size:7.2px; font-weight:800; letter-spacing:1.4px;
+  text-transform:uppercase; color:var(--navy); padding:4.5px 7px; border-bottom:1px solid var(--line2); }
+tbody tr.enc td{ background:var(--gold-bg); font-weight:700; color:#7a5b17; border-bottom:none; padding:7px; }
+tbody tr.enc td.num{ color:#7a5b17; font-weight:800; }
+table.tight tbody td{ padding:4.6px 7px; font-size:8.5px; }
+.dt{ font-size:8px; color:var(--muted); font-variant-numeric:tabular-nums; }
+
+.badge{ display:inline-block; font-size:6.6px; font-weight:800; letter-spacing:.7px;
+  text-transform:uppercase; padding:1.5px 5px; border-radius:8px; white-space:nowrap; }
+.b-clt{ background:#eaf1f8; color:var(--blue); } .b-pj{ background:#f3ece1; color:var(--gold-dk); }
+.b-ext{ background:#efefef; color:var(--gray); } .b-soc{ background:#e9f2ec; color:var(--ok); }
+.b-need{ background:#fbeceb; color:var(--red); } .b-new{ background:#eaf1f8; color:var(--blue); }
+
+/* ── cartões ── */
+.cards{ display:grid; gap:7px; }
+.c2{ grid-template-columns:repeat(2,1fr); } .c3{ grid-template-columns:repeat(3,1fr); }
+.c4{ grid-template-columns:repeat(4,1fr); }
+.card{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px 12px; }
+.card .ct{ font-size:7.2px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:var(--gold-dk); }
+.card h4{ font-size:11.4px; font-weight:800; color:var(--navy); line-height:1.25; margin-top:3px; }
+.card .cv{ font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:700; color:var(--navy); line-height:1.15; margin-top:2px; }
+.card p{ font-size:8.8px; color:var(--body); line-height:1.55; margin-top:5px; }
+.card p b{ color:var(--navy); }
+.card ul{ margin:5px 0 0; padding-left:13px; }
+.card li{ font-size:8.6px; color:var(--body); line-height:1.5; margin-bottom:2.5px; }
+.card li::marker{ color:var(--gold); }
+.card li b{ color:var(--navy); }
+.card.gold{ border-color:var(--gold); box-shadow:0 0 0 2px rgba(194,160,90,.12); }
+.card.warn{ background:#fdf5f4; border-color:#e8cdcb; }
+.card.warn .ct{ color:var(--red); } .card.warn li::marker{ color:var(--red); }
+.card.blue{ background:#f2f6fa; border-color:#d3e0ec; } .card.blue .ct{ color:var(--blue); }
+.card.ok{ background:#f3f7f4; border-color:#cadfd2; } .card.ok .ct{ color:var(--ok); }
+.card .pill{ display:inline-block; font-size:7px; font-weight:800; letter-spacing:.8px;
+  text-transform:uppercase; padding:2px 7px; border-radius:9px; background:var(--gold-bg);
+  color:var(--gold-dk); margin-top:4px; }
+
+/* ── notas ── */
+.note{ background:#f6f3ec; border:1px solid var(--line); border-radius:8px; padding:10px 13px; }
+.note .nt{ font-size:7.2px; letter-spacing:1.4px; text-transform:uppercase; color:var(--navy);
+  font-weight:800; margin-bottom:5px; }
+.note p{ font-size:8.9px; color:var(--body); line-height:1.55; }
+.note p + p{ margin-top:4px; }
+.note b{ color:var(--navy); }
+.note ul{ margin:0; padding-left:13px; }
+.note li{ font-size:8.9px; color:var(--body); line-height:1.5; margin-bottom:3px; }
+.note li:last-child{ margin-bottom:0; }
+.note li::marker{ color:var(--gold); }
+.note li b{ color:var(--navy); }
+.note.warn{ background:#fdf5f4; border-color:#e8cdcb; }
+.note.warn .nt{ color:var(--red); } .note.warn li::marker{ color:var(--red); }
+.note.blue{ background:#f2f6fa; border-color:#d3e0ec; }
+.note.blue .nt{ color:var(--blue); } .note.blue li::marker{ color:var(--blue); }
+.note.ok{ background:#f3f7f4; border-color:#cadfd2; }
+.note.ok .nt{ color:var(--ok); } .note.ok li::marker{ color:var(--ok); }
+
+/* ── faixa de destaque ── */
+.band{ background:linear-gradient(150deg,var(--navy) 0%,#0b1a2e 100%); color:#fff;
+  border-radius:8px; padding:12px 16px; display:flex; align-items:center; gap:15px;
+  position:relative; overflow:hidden; }
+.band::after{ content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--gold); }
+.band .bl{ font-size:7.4px; letter-spacing:2.2px; text-transform:uppercase; color:var(--gold); }
+.band .bv{ font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:700; line-height:1; margin-top:3px; }
+.band .br{ margin-left:auto; text-align:right; font-size:8.4px; color:rgba(255,255,255,.62);
+  line-height:1.6; max-width:88mm; }
+.band .br b{ color:#fff; }
+
+/* ── sumário ── */
+.toc{ display:flex; flex-direction:column; gap:0; }
+.toc .tp{ margin-top:4.6mm; padding-bottom:4px; border-bottom:1.5px solid var(--navy);
+  display:flex; align-items:baseline; gap:9px; }
+.toc .tp:first-child{ margin-top:0; }
+.toc .tp .tn{ font-family:'Cormorant Garamond',serif; font-size:15px; font-weight:700; color:var(--gold-dk); }
+.toc .tp .tt{ font-size:9.2px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--navy); }
+.toc .tp .tg{ margin-left:auto; font-size:7.4px; color:var(--muted); letter-spacing:1px; }
+.toc .ti{ display:flex; align-items:baseline; gap:8px; padding:4.2px 0 4.2px 4px;
+  border-bottom:1px solid var(--line); }
+.toc .ti .il{ font-size:9.8px; color:var(--ink); font-weight:600; }
+.toc .ti .id{ font-size:8.4px; color:var(--muted); }
+.toc .ti .dots{ flex:1; border-bottom:1px dotted var(--line2); margin:0 4px 3px; }
+.toc .ti .ip{ font-family:'Cormorant Garamond',serif; font-size:13px; font-weight:700; color:var(--navy); min-width:16px; text-align:right; }
+
+/* ── escada ── */
+.stair{ display:grid; grid-template-columns:repeat(5,1fr); gap:6px; align-items:end; }
+.st{ display:flex; flex-direction:column; justify-content:flex-end; }
+.st .sbar{ border-radius:6px 6px 0 0; padding:9px 9px 8px; color:#fff; position:relative; }
+.st .sv{ font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700; line-height:1; }
+.st .sv small{ font-family:'Inter',sans-serif; font-size:8.4px; font-weight:600; display:block; margin-top:2px; opacity:.75; }
+.st .sw{ font-size:6.8px; letter-spacing:1.3px; text-transform:uppercase; opacity:.7; }
+.st .sbody{ border:1px solid var(--line); border-top:none; background:#fff;
+  border-radius:0 0 6px 6px; padding:8px 9px; flex:1; }
+.st .sk{ font-size:6.6px; font-weight:800; letter-spacing:.9px; text-transform:uppercase; color:var(--gold-dk); }
+.st .sp{ font-size:8.2px; color:var(--body); line-height:1.45; margin-top:2px; }
+.st .sp b{ color:var(--navy); }
+.st .sp + .sk{ margin-top:5px; }
+
+/* ── fluxo de etapas ── */
+.flow{ display:flex; flex-direction:column; gap:4px; }
+.fst{ display:grid; grid-template-columns:8mm 1fr 46mm 44mm; gap:9px; align-items:stretch;
+  background:#fff; border:1px solid var(--line); border-radius:7px; padding:8px 10px; }
+.fst .fn2{ font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:700; color:var(--gold); line-height:1; }
+.fst .fnm{ font-size:10px; font-weight:800; color:var(--navy); line-height:1.2; }
+.fst .fwho{ font-size:8px; color:var(--muted); line-height:1.5; margin-top:3px; }
+.fst .fwho b{ color:var(--navy2); font-weight:700; }
+.fst .fh{ font-size:6.6px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:var(--gold-dk); }
+.fst .fv2{ font-size:8.2px; color:var(--body); line-height:1.5; margin-top:2px; }
+.fst .fv2 b{ color:var(--navy); }
+.fst .risk{ display:block; font-size:7.4px; color:var(--red); font-weight:700; margin-top:3px; line-height:1.4; }
+
+/* ── legenda ── */
+.leg{ display:flex; flex-wrap:wrap; gap:11px; margin-top:6px; }
+.leg span{ display:flex; align-items:center; gap:5px; font-size:7.4px; color:var(--muted); }
+.leg i{ width:9px; height:9px; border-radius:2px; display:block; font-style:normal; }
+
+.two{ display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+.two-a{ display:grid; grid-template-columns:1.25fr 1fr; gap:7px; }
+.mt{ margin-top:5mm; }
+.mts{ margin-top:7px; }
+
+/* ── fecho ── */
+.end{ background:linear-gradient(158deg,#0E2038 0%,#0b1a2e 62%,#08131f 100%); color:#fff;
+  padding:28mm 24mm 20mm; display:flex; flex-direction:column; height:100%; }
+.end .kx{ font-size:8.5px; letter-spacing:4.5px; text-transform:uppercase; color:var(--gold); }
+.end h2{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:38px; line-height:1.1; margin-top:7px; }
+.end h2 span{ color:var(--gold-soft); font-style:italic; }
+.end .src{ margin-top:10mm; border-top:1px solid rgba(255,255,255,.14); padding-top:7mm; }
+.end .sh{ font-size:7.2px; letter-spacing:2.4px; text-transform:uppercase; color:var(--gold); margin-bottom:5mm; }
+.end .sr{ display:flex; align-items:baseline; gap:9px; padding:5px 0; border-bottom:1px solid rgba(255,255,255,.09); }
+.end .sr .sd{ font-size:8px; color:rgba(255,255,255,.4); min-width:16mm; letter-spacing:.5px; }
+.end .sr .sn{ font-size:9.4px; color:rgba(255,255,255,.85); font-weight:600; }
+.end .sr .sf{ margin-left:auto; font-size:7.6px; color:rgba(255,255,255,.35); }
+.end .fin{ margin-top:auto; border-top:1px solid rgba(255,255,255,.14); padding-top:6mm;
+  display:flex; justify-content:space-between; align-items:flex-end; }
+.end .fin .f1{ font-size:8.4px; color:rgba(255,255,255,.5); line-height:1.7; max-width:110mm; }
+.end .fin .f2{ font-size:8px; letter-spacing:2.4px; text-transform:uppercase; color:var(--gold); text-align:right; }
+
+.btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff;
+  border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px;
+  font-weight:600; cursor:pointer; }
+@media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+<section class="sheet">
+<div class="cover">
+  <div class="brand">
+    <div class="mono">V</div>
+    <div><div class="co">Valvic Marcenaria</div>
+      <div class="cosub">Vargas Decor Ltda &nbsp;·&nbsp; CNPJ 17.269.304/0001-51 &nbsp;·&nbsp; Belo Horizonte / MG</div></div>
+  </div>
+  <div class="mid">
+    <div class="kx">Volume único · 2026</div>
+    <h1>Caderno<span>Empresarial</span></h1>
+    <div class="rule"></div>
+    <p class="lead">A empresa reunida num só documento: a posição comercial, a estrutura de pessoas,
+      a economia da operação, o passivo trabalhista e os caminhos de expansão — cada assunto
+      com os números abertos e as decisões postas na mesa.</p>
+    <div class="facts">
+      <div class="fx"><div class="fv">R$ 827k</div><div class="fl2">Carteira ativa<br>18 projetos</div></div>
+      <div class="fx"><div class="fv">R$ 1,06 mi</div><div class="fl2">Pipeline<br>em negociação</div></div>
+      <div class="fx"><div class="fv">+133%</div><div class="fl2">Crescimento<br>2023 → 2025</div></div>
+      <div class="fx"><div class="fv">R$ 1 mi</div><div class="fl2">Horizonte<br>por mês</div></div>
+    </div>
+  </div>
+  <div class="btm">
+    <div class="b1">Documento de trabalho · uso restrito<br>Contém dado de remuneração e posição financeira</div>
+    <div class="b2">Agosto<br>2026</div>
+  </div>
+</div></section>
+<section class="sheet"><div class="rh"><span class="rl">Sumário</span><span class="rr">Valvic Marcenaria</span></div><div class="pg"><div class="ptitle"><div class="kx">Como este caderno está organizado</div><h3>Sumário</h3><div class="sub">Cinco partes, da posição de hoje aos caminhos de crescimento. Cada parte abre com uma página de contexto e reúne o material que já existia em documentos separados.</div></div><div class="toc"><div class="tp"><span class="tn">I</span><span class="tt">A Empresa Hoje</span><span class="tg">4 páginas</span></div><div class="ti"><span class="il">Identidade, trajetória e capacidade instalada</span><span class="id">· o que já existe e está pago</span><span class="dots"></span><span class="ip">05</span></div><div class="ti"><span class="il">Panorama comercial — posição de 25/07</span><span class="id">· carteira, recebido e composição</span><span class="dots"></span><span class="ip">06</span></div><div class="ti"><span class="il">Carteira ativa, projeto a projeto</span><span class="id">· 18 projetos · R$ 827 mil</span><span class="dots"></span><span class="ip">07</span></div><div class="ti"><span class="il">Pipeline e cronograma de conclusão</span><span class="id">· R$ 1,06 mi em negociação</span><span class="dots"></span><span class="ip">08</span></div><div class="tp"><span class="tn">II</span><span class="tt">Estrutura & Pessoas</span><span class="tg">5 páginas</span></div><div class="ti"><span class="il">Organograma e carga operacional dos sócios</span><span class="id">· onde tudo converge hoje</span><span class="dots"></span><span class="ip">10</span></div><div class="ti"><span class="il">Quadro de pessoal e folha mensal</span><span class="id">· vínculo, fixo e variável por pessoa</span><span class="dots"></span><span class="ip">11</span></div><div class="ti"><span class="il">Estrutura de demandas</span><span class="id">· o que existe, o que entra, o que falta</span><span class="dots"></span><span class="ip">12</span></div><div class="ti"><span class="il">Fluxo de trabalho — posição e impacto</span><span class="id">· a cadeia de valor em 6 etapas</span><span class="dots"></span><span class="ip">13</span></div><div class="tp"><span class="tn">III</span><span class="tt">Economia da Operação</span><span class="tg">3 páginas</span></div><div class="ti"><span class="il">Modelo econômico e alavancagem operacional</span><span class="id">· o que cada nível de volume gera</span><span class="dots"></span><span class="ip">15</span></div><div class="ti"><span class="il">Custo da estrutura e investimento</span><span class="id">· folha, benefícios e CAPEX mapeado</span><span class="dots"></span><span class="ip">16</span></div><div class="tp"><span class="tn">IV</span><span class="tt">Passivo Trabalhista</span><span class="tg">2 páginas</span></div><div class="ti"><span class="il">Apuração por contrato</span><span class="id">· verbas, encargos e perímetro</span><span class="dots"></span><span class="ip">18</span></div><div class="tp"><span class="tn">V</span><span class="tt">Caminhos de Expansão</span><span class="tg">9 páginas</span></div><div class="ti"><span class="il">A escada de produção</span><span class="id">· de R$ 250 mil a R$ 1 milhão por mês</span><span class="dots"></span><span class="ip">20</span></div><div class="ti"><span class="il">Galpão: adaptar o atual ou mudar</span><span class="id">· os dois caminhos, com custos abertos</span><span class="dots"></span><span class="ip">21</span></div><div class="ti"><span class="il">Comparativo de coladeiras</span><span class="id">· cinco opções lado a lado</span><span class="dots"></span><span class="ip">22</span></div><div class="ti"><span class="il">Linha industrial e complementares</span><span class="id">· nesting, furação, esteira e embaladora</span><span class="dots"></span><span class="ip">23</span></div><div class="ti"><span class="il">Diferencial de mercado — puxadores</span><span class="id">· margem por posicionamento</span><span class="dots"></span><span class="ip">24</span></div><div class="ti"><span class="il">Prestação de serviços</span><span class="id">· a capacidade ociosa como receita</span><span class="dots"></span><span class="ip">25</span></div><div class="ti"><span class="il">Plano de expansão 2026–2027</span><span class="id">· fases, máquinas e mapa do investimento</span><span class="dots"></span><span class="ip">26</span></div><div class="ti"><span class="il">Retorno e payback</span><span class="id">· cenários conservador e de capacidade</span><span class="dots"></span><span class="ip">27</span></div></div><div class="note mt"><div class="nt">Nota de leitura</div><p>Este caderno <b>compila</b> documentos produzidos entre junho e agosto de 2026, cada parte preservando os números e as datas da sua origem — por isso convivem aqui referências de períodos diferentes, sempre identificadas. Onde duas fontes adotam premissas distintas, a divergência está <b>sinalizada em vez de resolvida</b>. Valores de máquina são <b>de feira</b>: referências de negociação, a confirmar na proposta final de cada fornecedor.</p></div></div><div class="rf"><span class="fl">Caderno Empresarial · Valvic Marcenaria — Vargas Decor Ltda</span><span class="pn"><i>·</i>02</span></div></section>
+<section class="sheet"><div class="rh"><span class="rl">Abertura</span><span class="rr">Valvic Marcenaria</span></div><div class="pg"><div class="ptitle"><div class="kx">O documento</div><h3>O que este caderno reúne</h3><div class="sub">Uma leitura contínua da empresa: onde ela está, com quem opera, quanto custa, o que deve e para onde pode ir.</div></div>
+<p class="lead2">A Valvic é uma marcenaria industrial de móveis planejados sob medida em Belo Horizonte,
+operando sob a razão social <b>Vargas Decor Ltda</b>. Cresceu <b>133% entre 2023 e 2025</b> — de
+R$ 645 mil para R$ 1,5 milhão ao ano — <b>sem aporte externo de capital</b>, e chegou a 2026 com um
+parque produtivo instalado e majoritariamente quitado.</p>
+
+<p class="t mts">O material que segue foi produzido ao longo de junho, julho e agosto de 2026 em documentos
+separados, cada um respondendo a uma pergunta específica. Reunidos aqui, eles formam um retrato único:
+<b>a carteira que está em execução</b>, <b>as pessoas que fazem a operação girar</b> e o que ela custa,
+<b>a economia que sustenta o negócio</b>, <b>o passivo trabalhista acumulado</b> e <b>os caminhos de
+expansão</b> com os investimentos abertos item a item.</p>
+
+<div class="sec mt"><span class="bar"></span><span class="tx">A empresa em números</span><span class="ct">posição consolidada · agosto de 2026</span></div>
+<div class="kpis k4">
+  <div class="kpi a"><div class="kl">Carteira ativa</div><div class="kv"><small>R$</small> 827<small>,4 mil</small></div><div class="kd">18 projetos em execução · tickets de R$ 5,3k a R$ 117k</div></div>
+  <div class="kpi b"><div class="kl">Já recebido</div><div class="kv"><small>R$</small> 321<small>,2 mil</small></div><div class="kd">39% do valor vendido, em caixa</div></div>
+  <div class="kpi c"><div class="kl">Pipeline</div><div class="kv"><small>R$</small> 1,06<small> mi</small></div><div class="kd">1,3× a carteira já em execução</div></div>
+  <div class="kpi d"><div class="kl">Parque produtivo</div><div class="kv"><small>R$</small> 506<small> mil</small></div><div class="kd">Instalado e em grande parte quitado</div></div>
+</div>
+<div class="kpis k4 mts">
+  <div class="kpi e"><div class="kl">Equipe</div><div class="kv">8<small> + 2 sócios</small></div><div class="kd">3 entrando · 4 a 5 contratações abertas</div></div>
+  <div class="kpi a"><div class="kl">Custo da estrutura</div><div class="kv"><small>R$</small> 58,0<small> mil/mês</small></div><div class="kd">A partir do próximo mês · hoje R$ 47,5 mil</div></div>
+  <div class="kpi f"><div class="kl">Passivo trabalhista</div><div class="kv"><small>R$</small> 28,7<small> mil</small></div><div class="kd">6 contratos encerrados · perímetro definido</div></div>
+  <div class="kpi c"><div class="kl">Horizonte</div><div class="kv"><small>R$</small> 1<small> mi/mês</small></div><div class="kd">Meta aspiracional · hoje o teto é ~R$ 250 mil</div></div>
+</div>
+
+<div class="sec mt"><span class="bar"></span><span class="tx">Como ler as cinco partes</span></div>
+<div class="cards c2">
+  <div class="card"><div class="ct">Partes I e II · o retrato</div><h4>Onde a empresa está e com quem</h4>
+    <p>A carteira em execução, projeto a projeto, e a estrutura de pessoas que a entrega — com a folha
+    aberta por colaborador e o mapa de quem responde a quem. É a fotografia do presente.</p></div>
+  <div class="card"><div class="ct">Partes III e IV · a conta</div><h4>Quanto rende e quanto deve</h4>
+    <p>A alavancagem operacional — por que cada real novo de volume converte desproporcionalmente em
+    resultado — e o passivo trabalhista apurado contrato a contrato.</p></div>
+</div>
+<div class="cards c1 mts" style="grid-template-columns:1fr">
+  <div class="card gold"><div class="ct">Parte V · a decisão</div><h4>Os caminhos de expansão, com os custos abertos</h4>
+    <p>De R$ 250 mil a R$ 1 milhão por mês, em degraus. Cada degrau com o seu gatilho de demanda, o gargalo
+    que ataca e o investimento que exige. As máquinas com ficha técnica e preço; o galpão com os dois
+    caminhos possíveis. <b>Não há recomendação</b> — há caminhos, custos e trade-offs postos lado a lado
+    para que a decisão seja informada.</p></div>
+</div></div><div class="rf"><span class="fl">Caderno Empresarial · Valvic Marcenaria — Vargas Decor Ltda</span><span class="pn"><i>·</i>03</span></div></section>
+<section class="sheet">
+<div class="part">
+  <div class="pnum">I</div>
+  <div class="plabel">Parte um</div>
+  <h2>A Empresa Hoje</h2>
+  <p class="pintro">O que já existe, está instalado e está pago — e o que a empresa tem em execução
+    neste momento. Uma marcenaria que dobrou de tamanho em dois anos sem capital externo e que hoje
+    opera próxima do seu teto de capacidade, com uma carteira de 18 projetos e um pipeline maior
+    que a própria carteira.</p>
+  <div class="plist">
+    <div class="pli"><b>05</b><span>Identidade, trajetória e capacidade instalada</span></div>
+    <div class="pli"><b>06</b><span>Panorama comercial — posição de 25 de julho</span></div>
+    <div class="pli"><b>07</b><span>Carteira ativa, projeto a projeto</span></div>
+    <div class="pli"><b>08</b><span>Pipeline e cronograma de conclusão</span></div>
+  </div>
+</div></section>
+<section class="sheet"><div class="rh"><span class="rl">Parte I · A Empresa Hoje</span><span class="rr">Valvic Marcenaria</span></div><div class="pg"><div class="ptitle"><div class="kx">Identidade & capacidade</div><h3>A máquina já está construída</h3><div class="sub">A Valvic não é uma promessa a construir: é uma operação instalada, paga e com histórico. O que ela tem de capacidade supera o que fatura.</div></div>
+<div class="kpis k3">
+  <div class="kpi a"><div class="kl">Parque produtivo instalado</div><div class="kv"><small>R$</small> 506<small> mil</small></div><div class="kd">Máquinas, ferramentas e infraestrutura — em grande parte quitado</div></div>
+  <div class="kpi b"><div class="kl">Crescimento 2023 → 2025</div><div class="kv">+133%</div><div class="kd">De R$ 645 mil para R$ 1,5 milhão ao ano, sem capital externo</div></div>
+  <div class="kpi e"><div class="kl">Margem de contribuição</div><div class="kv">43,5%</div><div class="kd">Referência do modelo econômico de jun/2026</div></div>
+</div>
+
+<div class="sec"><span class="bar"></span><span class="tx">Os quatro ativos que o capital não compra rápido</span></div>
+<table>
+  <thead><tr><th style="width:24%">Ativo</th><th>Por que vale</th><th style="width:18%">Situação</th></tr></thead>
+  <tbody>
+    <tr><td class="nm">Parque de máquinas</td><td>CNC, esquadrejadeira, coladeira e exaustão — corte e usinagem em padrão industrial</td><td><span class="badge b-ok" style="background:#e9f2ec;color:#2f7d4f">Instalado · pago</span></td></tr>
+    <tr><td class="nm">Equipe formada</td><td>Marceneiros, operador de máquinas, programador CNC e coordenação de produção</td><td><span class="badge b-ok" style="background:#e9f2ec;color:#2f7d4f">Em operação</span></td></tr>
+    <tr><td class="nm">Marca &amp; carteira</td><td>Reputação de planejados sob medida em BH, com base de clientes recorrente e indicação ativa</td><td><span class="badge b-ok" style="background:#e9f2ec;color:#2f7d4f">Ativa</span></td></tr>
+    <tr><td class="nm">Processo &amp; track record</td><td>Dobrou de tamanho em dois anos sozinha — sabe produzir e sabe entregar</td><td><span class="badge b-ok" style="background:#e9f2ec;color:#2f7d4f">Comprovado</span></td></tr>
+  </tbody>
+</table>
+
+<div class="sec"><span class="bar"></span><span class="tx">Inventário do parque instalado</span><span class="ct">todos quitados</span></div>
+<table class="tight">
+  <thead><tr><th style="width:27%">Equipamento</th><th>Papel hoje</th><th style="width:30%">Papel na linha expandida</th></tr></thead>
+  <tbody>
+    <tr><td class="nm">Raizen Solid TAF<span class="fn">Centro de usinagem CNC · 380V · 3 eixos</span></td><td>Nesting e usinagens especiais, dividindo tempo entre as duas — ~35 chapas/dia</td><td>Passa a fazer <b>só usinagens especiais</b>, liberada pela CNC nesting dedicada</td></tr>
+    <tr><td class="nm">SCM minimax me 25<span class="fn">Coladeira de bordas · fita 0,4 mm · cola EVA</span></td><td>Coladeira principal · atende até ~R$ 300 mil/mês e <b>não finaliza 100%</b> a peça</td><td>Vira <b>backup</b> da nova — garante uptime, elimina ponto único de falha</td></tr>
+    <tr><td class="nm">Raizen RZN 3200P<span class="fn">Esquadrejadeira</span></td><td>Cluster de corte</td><td>Mantém a função de corte</td></tr>
+    <tr><td class="nm">Ferramental &amp; infraestrutura<span class="fn">Tupia, serra, coletores, pneumático, bancadas</span></td><td>Apoio de produção</td><td>Mantém, somado ao compressor novo da linha</td></tr>
+  </tbody>
+</table>
+
+<div class="two mt">
+  <div class="note ok"><div class="nt">Princípio adotado</div>
+    <p><b>Nenhuma máquina atual será vendida ou descartada.</b> Cada equipamento ganha um papel novo na
+    linha expandida — a Solid TAF deixa de brigar entre nesting e especiais, e a me 25 vira redundância.
+    O ganho imediato é que <b>o corte deixa de ser o gargalo</b>.</p></div>
+  <div class="note"><div class="nt">A leitura de fundo</div>
+    <p>Um concorrente que quisesse partir do zero precisaria desembolsar <b>~R$ 500 mil só em máquinas</b> e
+    <b>dois anos para provar a operação</b>. A Valvic já tem os dois. A margem de 43,5% significa que cada
+    projeto contribui com 43 centavos de cada real para cobrir estrutura e gerar lucro —
+    <b>o que limita o resultado não é a margem, é a quantidade de projetos</b>.</p></div>
+</div></div><div class="rf"><span class="fl">Caderno Empresarial · Valvic Marcenaria — Vargas Decor Ltda</span><span class="pn"><i>·</i>05</span></div></section>
+<section class="sheet"><div class="rh"><span class="rl">Parte I · A Empresa Hoje</span><span class="rr">Valvic Marcenaria</span></div><div class="pg"><div class="ptitle"><div class="kx">Panorama comercial · posição de 25/07/2026</div><h3>A carteira em execução</h3><div class="sub">Quanto foi vendido, quanto já entrou em caixa e em que estágio de produção está cada real vendido.</div></div>
+<div class="kpis k4">
+  <div class="kpi a"><div class="kl">Carteira ativa (vendido)</div><div class="kv"><small>R$</small> 827<small> mil</small></div><div class="kd">18 projetos em execução · tickets de R$ 5,3k a R$ 117k</div></div>
+  <div class="kpi e"><div class="kl">Recebido até agora</div><div class="kv"><small>R$</small> 321<small> mil</small></div><div class="kd"><b>39%</b> do valor vendido já em caixa</div></div>
+  <div class="kpi c"><div class="kl">Receita bruta pendente</div><div class="kv"><small>R$</small> 506<small> mil</small></div><div class="kd"><b>61%</b> do vendido, conforme a entrega avança</div></div>
+  <div class="kpi b"><div class="kl">Pipeline em negociação</div><div class="kv"><small>R$</small> 1,06<small> mi</small></div><div class="kd">R$ 240k em fase final + R$ 820k em 2 contas grandes</div></div>
+</div>
+
+<div class="sec"><span class="bar"></span><span class="tx">Onde está o valor vendido hoje</span><span class="ct">% da carteira ativa de R$ 827 mil</span></div>
+<div class="cards c3">
+  <div class="card ok"><div class="ct">Entregue ao cliente</div><div class="cv">R$ 274,9 mil</div><span class="pill" style="background:#e9f2ec;color:#2f7d4f">33% da carteira</span>
+    <p>Já nas mãos do cliente. É a parcela que sustenta o recebimento e libera as parcelas finais de contrato.</p></div>
+  <div class="card blue"><div class="ct">Fabricado, aguardando entrega</div><div class="cv">R$ 68,5 mil</div><span class="pill" style="background:#eaf1f8;color:#2f5d8c">8% da carteira</span>
+    <p>Pronto na fábrica e ainda não entregue — depende de agenda de obra, veículo e equipe de montagem.</p></div>
+  <div class="card"><div class="ct">Ainda a fabricar</div><div class="cv">R$ 484,0 mil</div><span class="pill">59% da carteira</span>
+    <p>A maior parte do que foi vendido ainda precisa passar pela fábrica. É o que dimensiona a carga de produção dos próximos meses.</p></div>
+</div>
+
+<div class="sec"><span class="bar"></span><span class="tx">Cronograma de conclusão</span><span class="ct">quando cada bloco da carteira fecha</span></div>
+<div class="cards c4">
+  <div class="card"><div class="ct">Já entregue</div><div class="cv">R$ 87k</div><p>André · Alphaville — entregue, com <b>cobrança em aberto</b>.</p></div>
+  <div class="card"><div class="ct">Próxima semana</div><div class="cv">R$ 44k</div><p>Fechamentos imediatos, com peças já fabricadas.</p></div>
+  <div class="card"><div class="ct">Até final de agosto</div><div class="cv">R$ 321k</div><p>O maior bloco de conclusão do trimestre.</p></div>
+  <div class="card"><div class="ct">Em setembro</div><div class="cv">R$ 375k</div><p>Concentra os projetos de casa completa e clínica.</p></div>
+</div>
+
+<div class="note mt"><div class="nt">Como ler os percentuais</div>
+  <p><b>Entregue</b> = já nas mãos do cliente. <b>Fabricado</b> = pronto na fábrica, ainda não entregue.
+  <b>A fabricar</b> = falta produzir. Os percentuais são sempre em relação ao valor vendido de cada projeto.
+  Entre a posição anterior e esta, a carteira passou de <b>13 para 18 projetos</b> (R$ 711k → R$ 827k) e o
+  recebido subiu de <b>34% para 39%</b>. Análise a partir da posição informada pelo comercial —
+  não substitui o fechamento financeiro.</p></div></div><div class="rf"><span class="fl">Caderno Empresarial · Valvic Marcenaria — Vargas Decor Ltda</span><span class="pn"><i>·</i>06</span></div></section>
+<section class="sheet"><div class="rh"><span class="rl">Parte I · A Empresa Hoje</span><span class="rr">Valvic Marcenaria</span></div><div class="pg"><div class="ptitle"><div class="kx">Carteira ativa · 25/07/2026</div><h3>Projeto a projeto</h3><div class="sub">Os 18 projetos em execução, com valor vendido, recebido e o estágio de produção de cada um.</div></div>
+<table class="tight">
+  <thead><tr>
+    <th style="width:20%">Cliente</th><th style="width:15%">Ambiente(s)</th>
+    <th class="num" style="width:10%">Venda R$</th><th class="num" style="width:15%">Recebido</th>
+    <th class="num" style="width:8%">Entregue</th><th class="num" style="width:8%">Fabricado</th>
+    <th class="num" style="width:8%">A fabricar</th><th style="width:16%">Entrega prevista</th>
+  </tr></thead>
+  <tbody><tr><td class="nm">Augusto</td><td class="dt">Diversos</td><td class="num">90.000</td><td class="num">63.000 <span class="fn" style="display:inline">(70%)</span></td><td class="num">70%</td><td class="num">—</td><td class="num">30%</td><td class="dt">1ª quinz. ago</td></tr><tr><td class="nm">Maria · Vale dos Cristais</td><td class="dt">Diversos</td><td class="num">117.000</td><td class="num">58.000 <span class="fn" style="display:inline">(50%)</span></td><td class="num">70%</td><td class="num">—</td><td class="num">30%</td><td class="dt">final de set.</td></tr><tr><td class="nm">André · Alphaville</td><td class="dt">Diversos</td><td class="num">87.000</td><td class="num">0 <span class="fn" style="display:inline">(0%)</span></td><td class="num">100%</td><td class="num">—</td><td class="num">—</td><td class="dt">entregue · cobrança em aberto</td></tr><tr><td class="nm">Cristiane</td><td class="dt">Diversos</td><td class="num">94.000</td><td class="num">41.951 <span class="fn" style="display:inline">(45%)</span></td><td class="num">—</td><td class="num">50%</td><td class="num">50%</td><td class="dt">1ª quinz. ago</td></tr><tr><td class="nm">Simony</td><td class="dt">Diversos</td><td class="num">34.000</td><td class="num">34.000 <span class="fn" style="display:inline">(100%)</span></td><td class="num">—</td><td class="num">0%</td><td class="num">100%</td><td class="dt">2ª quinz. ago</td></tr><tr><td class="nm">Bernardo</td><td class="dt">Cozinha e banheiro</td><td class="num">13.000</td><td class="num">4.000 <span class="fn" style="display:inline">(31%)</span></td><td class="num">—</td><td class="num">100%</td><td class="num">—</td><td class="dt">final de ago.</td></tr><tr><td class="nm">Carla</td><td class="dt">Cozinha</td><td class="num">27.000</td><td class="num">13.500 <span class="fn" style="display:inline">(50%)</span></td><td class="num">—</td><td class="num">0%</td><td class="num">100%</td><td class="dt">final de ago.</td></tr><tr><td class="nm">Lucas Mello</td><td class="dt">Diversos</td><td class="num">46.000</td><td class="num">24.000 <span class="fn" style="display:inline">(52%)</span></td><td class="num">20%</td><td class="num">—</td><td class="num">80%</td><td class="dt">1ª quinz. ago</td></tr><tr><td class="nm">Luciana Rajão · V. dos Cristais</td><td class="dt">Manutenções diversas</td><td class="num">12.000</td><td class="num">0 <span class="fn" style="display:inline">(0%)</span></td><td class="num">0%</td><td class="num">—</td><td class="num">100%</td><td class="dt">2ª quinz. ago</td></tr><tr><td class="nm">Ana Carolina</td><td class="dt">Casa completa</td><td class="num">108.000</td><td class="num">32.500 <span class="fn" style="display:inline">(30%)</span></td><td class="num">0%</td><td class="num">—</td><td class="num">100%</td><td class="dt">início de set.</td></tr><tr><td class="nm">Richard</td><td class="dt">Quarto</td><td class="num">22.000</td><td class="num">11.000 <span class="fn" style="display:inline">(50%)</span></td><td class="num">0%</td><td class="num">—</td><td class="num">100%</td><td class="dt">início de set.</td></tr><tr><td class="nm">Andrea</td><td class="dt">Clínica dermatologia</td><td class="num">47.000</td><td class="num">14.000 <span class="fn" style="display:inline">(30%)</span></td><td class="num">0%</td><td class="num">—</td><td class="num">100%</td><td class="dt">1ª quinz. set.</td></tr><tr><td class="nm">Giseli · Vale do Sereno</td><td class="dt">Banheiros</td><td class="num">14.000</td><td class="num">7.000 <span class="fn" style="display:inline">(50%)</span></td><td class="num">0%</td><td class="num">—</td><td class="num">100%</td><td class="dt">1ª quinz. set.</td></tr><tr><td class="nm">Luiz · adv.</td><td class="dt">Diversos</td><td class="num">5.300</td><td class="num">0 <span class="fn" style="display:inline">(0%)</span></td><td class="num">0%</td><td class="num">—</td><td class="num">100%</td><td class="dt">final de ago.</td></tr><tr><td class="nm">Leonardo · Alphaville</td><td class="dt">Diversos</td><td class="num">55.000</td><td class="num">0 <span class="fn" style="display:inline">(0%)</span></td><td class="num">0%</td><td class="num">—</td><td class="num">100%</td><td class="dt">1ª quinz. set.</td></tr><tr><td class="nm">Rejane</td><td class="dt">Diversos</td><td class="num">35.600</td><td class="num">14.000 <span class="fn" style="display:inline">(39%)</span></td><td class="num">95%</td><td class="num">—</td><td class="num">5%</td><td class="dt">a concluir</td></tr><tr><td class="nm">Tania</td><td class="dt">Diversos</td><td class="num">8.500</td><td class="num">4.250 <span class="fn" style="display:inline">(50%)</span></td><td class="num">—</td><td class="num">100%</td><td class="num">—</td><td class="dt">próxima semana</td></tr><tr><td class="nm">Flavia</td><td class="dt">Diversos</td><td class="num">12.000</td><td class="num">0 <span class="fn" style="display:inline">(0%)</span></td><td class="num">0%</td><td class="num">—</td><td class="num">100%</td><td class="dt">início de set.</td></tr>
+    <tr class="tot"><td colspan="2">Total da carteira ativa</td><td class="num">827.400</td>
+      <td class="num">321.201 (39%)</td><td class="num">33%</td><td class="num">8%</td>
+      <td class="num">59%</td><td>—</td></tr>
+  </tbody>
+</table>
+
+<div class="two mt">
+  <div class="note blue"><div class="nt">Concentração da carteira</div>
+    <p>Os <b>cinco maiores projetos</b> — Maria (R$ 117k), Ana Carolina (R$ 108k), Cristiane (R$ 94k),
+    Augusto (R$ 90k) e André (R$ 87k) — somam <b>R$ 496 mil</b>, ou <b>60% de toda a carteira</b>.
+    Os treze restantes dividem os R$ 331 mil finais.</p></div>
+  <div class="note warn"><div class="nt">Pontos de atenção</div>
+    <ul>
+      <li><b>André · Alphaville — R$ 87 mil.</b> Projeto 100% fabricado e entregue com <b>cobrança integralmente em aberto</b>. É o maior valor a receber isolado da carteira.</li>
+      <li><b>Rejane</b> segue sem prazo de conclusão definido, com 95% já fabricado.</li>
+    </ul></div>
+</div></div><div class="rf"><span class="fl">Caderno Empresarial · Valvic Marcenaria — Vargas Decor Ltda</span><span class="pn"><i>·</i>07</span></div></section>
+<section class="sheet"><div class="rh"><span class="rl">Parte I · A Empresa Hoje</span><span class="rr">Valvic Marcenaria</span></div><div class="pg"><div class="ptitle"><div class="kx">Pipeline · fora da carteira</div><h3>O que está em negociação</h3><div class="sub">R$ 1,06 milhão em conversas abertas — 1,3 vez a carteira que já está em execução.</div></div>
+<div class="kpis k3">
+  <div class="kpi b"><div class="kl">Pipeline total</div><div class="kv"><small>R$</small> 1,06<small> mi</small></div><div class="kd">Fora da carteira ativa de R$ 827 mil</div></div>
+  <div class="kpi e"><div class="kl">Fase final de negociação</div><div class="kv"><small>R$</small> 240<small> mil</small></div><div class="kd">Alta probabilidade de conversão</div></div>
+  <div class="kpi a"><div class="kl">Duas contas grandes</div><div class="kv"><small>R$</small> 820<small> mil</small></div><div class="kd">Construtora e condomínio · ciclo mais longo</div></div>
+</div>
+
+<div class="sec"><span class="bar"></span><span class="tx">Fase final de negociação</span><span class="ct">alta probabilidade · R$ 240 mil</span></div>
+<table>
+  <thead><tr><th style="width:34%">Conta</th><th class="num" style="width:14%">Valor</th><th>Situação</th></tr></thead>
+  <tbody>
+    <tr><td class="nm">Juliana</td><td class="num sub">R$ 120.000</td><td>Maior valor individual do bloco de conversão próxima.</td></tr>
+    <tr><td class="nm">Marcelo Tolentino</td><td class="num sub">R$ 85.000</td><td>Negociação avançada.</td></tr>
+    <tr><td class="nm">Cristiane</td><td class="num sub">R$ 35.000</td><td>Ampliação de escopo sobre projeto já em execução na carteira.</td></tr>
+    <tr class="tot"><td>Subtotal em fase final</td><td class="num">R$ 240.000</td><td></td></tr>
+  </tbody>
+</table>
+
+<div class="sec"><span class="bar"></span><span class="tx">Contas mais expressivas</span><span class="ct">R$ 820 mil · ciclo mais longo</span></div>
+<div class="cards c2">
+  <div class="card gold"><div class="ct">Construtora · Lagoa Santa</div><h4>Junior</h4><div class="cv">R$ 370.000</div>
+    <p>Proposta <b>aprovada verbalmente</b>, pendente de alinhamento da forma de pagamento. O porte das
+    casas que a construtora entrega é um perfil interessante para a Valvic — abre a porta para
+    recorrência, não só para um projeto.</p></div>
+  <div class="card gold"><div class="ct">Alphaville Vespasiano</div><h4>Fábio &amp; Quênia</h4><div class="cv">R$ 450.000</div>
+    <p>Cliente <b>mais focado na experiência de recebimento do que no valor</b>. O contato é difícil e a
+    conta exige acompanhamento de perto — é o maior valor isolado do pipeline.</p></div>
+</div>
+
+<div class="band mt">
+  <div><div class="bl">Carteira + pipeline</div><div class="bv">R$ 1,89 mi</div></div>
+  <div class="br">R$ 827 mil já contratados e em execução, somados a <b>R$ 1,06 milhão em negociação</b>.
+    O pipeline sozinho supera em <b>1,3×</b> tudo o que a empresa tem hoje na fábrica — e é isso que
+    dimensiona a urgência da estrutura descrita na Parte II.</div>
+</div>
+
+<div class="note mt"><div class="nt">O que esse número significa para a decisão</div>
+  <p>A carteira atual já ocupa a capacidade instalada. Se apenas os <b>R$ 240 mil em fase final</b> se
+  converterem, a produção precisa absorver quase 30% a mais sem qualquer mudança de estrutura. Se as
+  duas contas grandes entrarem, o volume ultrapassa o teto físico do galpão atual — que é exatamente
+  a conversa da Parte V.</p></div></div><div class="rf"><span class="fl">Caderno Empresarial · Valvic Marcenaria — Vargas Decor Ltda</span><span class="pn"><i>·</i>08</span></div></section>
+<section class="sheet">
+<div class="part">
+  <div class="pnum">II</div>
+  <div class="plabel">Parte dois</div>
+  <h2>Estrutura &amp; Pessoas</h2>
+  <p class="pintro">Quem faz a operação girar, quanto custa e onde o trabalho converge. Hoje a empresa
+    tem oito profissionais ativos além dos dois sócios — e os dois sócios atravessam quase toda a
+    cadeia de valor, acumulando ao mesmo tempo a função de gestor e a de executor.</p>
+  <div class="plist">
+    <div class="pli"><b>10</b><span>Organograma e carga operacional dos sócios</span></div>
+    <div class="pli"><b>11</b><span>Quadro de pessoal e folha mensal</span></div>
+    <div class="pli"><b>12</b><span>Estrutura de demandas — o que existe, entra e falta</span></div>
+    <div class="pli"><b>13</b><span>Fluxo de trabalho — posição e impacto</span></div>
+  </div>
+</div></section>
+<section class="sheet"><div class="rh"><span class="rl">Parte II · Estrutura & Pessoas</span><span class="rr">Valvic Marcenaria</span></div><div class="pg"><div class="ptitle"><div class="kx">Organograma · posição julho/2026</div><h3>Onde tudo converge</h3><div class="sub">A estrutura de pessoal e a carga que recai sobre cada sócio — sem camada de gestão intermediária entre a direção e a execução.</div></div>
+<div class="kpis k4">
+  <div class="kpi a"><div class="kl">Equipe total</div><div class="kv">8<small> ativos</small></div><div class="kd">Fora os 2 sócios · 3 entram e 4 a 5 a contratar</div></div>
+  <div class="kpi c"><div class="kl">Convergem em Paulo</div><div class="kv">6</div><div class="kd">Deivson, Joelson, Filipe, Karla, Bruna e Jennifer</div></div>
+  <div class="kpi b"><div class="kl">Convergem em Jonathan</div><div class="kv">4<small> + clientes</small></div><div class="kd">Karla, Bruna, Deivson e Jennifer · 2 só entram no próximo mês</div></div>
+  <div class="kpi d"><div class="kl">Custo · próximo mês</div><div class="kv"><small>R$</small> 58,0<small> mil</small></div><div class="kd">Hoje R$ 47,5 mil — inclui pró-labore e benefícios</div></div>
+</div>
+
+<div class="sec"><span class="bar"></span><span class="tx">A carga de cada sócio</span><span class="ct">ambos executam e gerenciam ao mesmo tempo</span></div>
+<div class="two">
+  <div class="card gold"><div class="ct">Sócio · pró-labore R$ 10.000</div><h4>Jonathan — Diretor Comercial &amp; Experiência</h4>
+    <ul>
+      <li><b>Comercial e fechamento</b> — toda a venda passa por ele</li>
+      <li><b>Relacionamento</b> com cliente e parceiro (arquitetas e decoradoras)</li>
+      <li><b>Administrativo</b> — interino, até a Karla assumir</li>
+      <li><b>Jurídico</b> (aciona advogado) e <b>contábil</b> (aciona contador)</li>
+      <li><b>Suporte pontual à produção</b></li>
+      <li><b>Pós-venda</b> — permanente, mesmo depois da contratação</li>
+      <li><b>Visão e expansão</b></li>
+    </ul>
+    <p style="margin-top:6px"><b>4 pessoas sob gestão + toda a carteira de clientes.</b></p></div>
+  <div class="card gold"><div class="ct">Sócio · pró-labore R$ 10.000</div><h4>Paulo — Diretor de Operações &amp; Tecnologia</h4>
+    <ul>
+      <li><b>Programação CNC</b> — o digital da produção</li>
+      <li><b>Suporte total à produção</b></li>
+      <li><b>Manutenção de máquinas</b></li>
+      <li><b>Compras</b> — insumos e técnicas</li>
+      <li><b>Captação de mão de obra</b></li>
+      <li><b>Escalonamento técnico</b> da equipe</li>
+    </ul>
+    <p style="margin-top:6px"><b>6 pessoas sob gestão direta ou dupla checagem técnica.</b></p>
+    <p style="margin-top:4px">Recrutamento e desligamento são <b>decisão conjunta</b> dos dois.</p></div>
+</div>
+
+<div class="sec"><span class="bar"></span><span class="tx">Leitura da estrutura</span></div>
+<p class="t">Toda a operação converge para dois pontos. <b>Quatro pessoas respondem aos dois sócios ao mesmo
+tempo</b> — Karla, Bruna, Deivson e Jennifer — e é aí que a coordenação entre eles vira pré-requisito, não
+preferência. Jonathan sustenta sozinho todo o comercial, administrativo, jurídico e contábil, e ainda
+absorve o pós-venda de forma permanente.</p>
+<p class="t">O próprio <b>Deivson acumula funções</b>: é Coordenador de Produção, mas atua na prática como
+Marceneiro Sênior — justamente porque a bancada está curta. As contratações abertas (marceneiro
+experiente, ajudantes e operador de CNC) existem para <b>liberar o Deivson para coordenar em vez de
+operar</b> e o Joelson para migrar às máquinas novas.</p>
+<p class="t"><b>Nenhum dos dois sócios tem hoje uma camada de gestão intermediária plena entre si e a
+execução.</b> Qualquer ausência de um deles trava o fluxo — é o risco estrutural que a página seguinte
+quantifica em folha e a página 13 destrincha por etapa.</p></div><div class="rf"><span class="fl">Caderno Empresarial · Valvic Marcenaria — Vargas Decor Ltda</span><span class="pn"><i>·</i>10</span></div></section>
+<section class="sheet"><div class="rh"><span class="rl">Parte II · Estrutura & Pessoas</span><span class="rr">Valvic Marcenaria</span></div><div class="pg"><div class="ptitle"><div class="kx">Folha mensal · dado de remuneração</div><h3>Quadro de pessoal e custo</h3><div class="sub">Cada pessoa da estrutura, com vínculo, fixo mensal e variável — e o que ainda falta contratar.</div></div>
+<table class="tight">
+  <thead><tr><th style="width:20%">Colaborador</th><th style="width:26%">Função</th>
+    <th style="width:9%">Vínculo</th><th class="num" style="width:12%">Fixo mensal</th>
+    <th>Variável / comissão</th></tr></thead>
+  <tbody>
+    <tr class="sec2"><td colspan="5">Direção · sócios</td></tr>
+    <tr><td class="nm">Jonathan</td><td>Diretor Comercial &amp; Experiência</td><td><span class="badge b-soc">Sócio</span></td><td class="num sub">10.000</td><td class="dt">pró-labore</td></tr>
+    <tr><td class="nm">Paulo</td><td>Diretor de Operações &amp; Tecnologia</td><td><span class="badge b-soc">Sócio</span></td><td class="num sub">10.000</td><td class="dt">pró-labore</td></tr>
+    <tr class="sec2"><td colspan="5">Ativos hoje</td></tr>
+    <tr><td class="nm">Deivson</td><td>Coordenador de Produção</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">4.000</td><td class="dt">2,5% fabricação + 2,5% montagem + 1,0% coordenação</td></tr>
+    <tr><td class="nm">Samuel</td><td>Marceneiro Sênior</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">3.900</td><td class="dt">2,5% fabricação + 2,5% montagem</td></tr>
+    <tr><td class="nm">Jackson</td><td>Marceneiro Pleno</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">3.600</td><td class="dt">2,5% fabricação + 2,5% montagem</td></tr>
+    <tr><td class="nm">Filipe</td><td>Programador CNC</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">3.600</td><td class="dt">sem comissão</td></tr>
+    <tr><td class="nm">Joelson</td><td>Operador CNC &amp; máquinas</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.500</td><td class="dt">2,5% montagem + R$ 2,00/chapa cortada · VR + VT</td></tr>
+    <tr><td class="nm">Jomar</td><td>Marceneiro</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.950</td><td class="dt">sem comissão · VR 350 + VT 400</td></tr>
+    <tr><td class="nm">Davi</td><td>Ajudante</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.950</td><td class="dt">sem comissão · VR 350 + VT 400</td></tr>
+    <tr><td class="nm">Jonathan Godoy</td><td>Ajudante Geral · novo</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.620</td><td class="dt">salário mínimo · sem comissão · VR 350 + VT 400</td></tr>
+    <tr class="sec2"><td colspan="5">Início já alinhado</td></tr>
+    <tr><td class="nm">Cezar<span class="fn">data a definir</span></td><td>Marceneiro</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">3.600<span class="fn">estimado</span></td><td class="dt">2,5% fabricação + 2,5% montagem</td></tr>
+    <tr><td class="nm">Bruna<span class="fn">dia 01</span></td><td>Arquiteta · programação + projetos</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">4.000</td><td class="dt">50% dos projetos vendidos aos clientes que ela atende</td></tr>
+    <tr><td class="nm">Karla<span class="fn">dia 10</span></td><td>Assistente Operacional</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.000</td><td class="dt">VR 500 + transporte conforme local · progride a 3.200</td></tr>
+    <tr class="sec2"><td colspan="5">Parceria externa</td></tr>
+    <tr><td class="nm">Jennifer</td><td>Social media</td><td><span class="badge b-ext">Ext.</span></td><td class="num sub">1.400</td><td class="dt">contrato à parte · fora da folha</td></tr>
+    <tr class="tot"><td colspan="3">Custo mensal a partir do próximo mês · direção + ativos + Bruna, Karla e Cezar + Jennifer</td><td class="num">58.020</td><td></td></tr>
+    <tr class="sec2"><td colspan="5">Necessidade de contratação — fora do número acima</td></tr>
+    <tr><td class="nm">Paulo &quot;Baiano&quot;</td><td>Marceneiro experiente</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">3.900</td><td class="dt">mesmo escopo do Samuel · 2,5% + 2,5%</td></tr>
+    <tr><td class="nm">2 a 3 ajudantes</td><td>Apoio à produção · maior lacuna</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.950<span class="fn">cada</span></td><td class="dt">sem comissão · VR 350 + VT 400 cada</td></tr>
+    <tr><td class="nm">1 operador CNC</td><td>Assume a máquina atual</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.500</td><td class="dt">sem comissão · VR 350 + VT 400</td></tr>
+    <tr class="enc"><td colspan="3">Subtotal a contratar</td><td class="num">12.550 a 15.250</td><td class="dt" style="color:#96803f">Baiano + 2–3 ajudantes + operador CNC</td></tr>
+  </tbody>
+</table>
+
+<div class="two mt">
+  <div class="note"><div class="nt">Progressão validada da Karla</div>
+    <p><b>1º ao 3º mês</b> R$ 2.000 &nbsp;·&nbsp; <b>3º ao 6º</b> R$ 2.500 &nbsp;·&nbsp;
+    <b>6 meses a 1 ano</b> R$ 2.800 &nbsp;·&nbsp; <b>a partir de 1 ano</b> R$ 3.200.
+    Cada degrau só avança por entrega validada, não por tempo de casa.</p></div>
+  <div class="note blue"><div class="nt">Regra de comissão</div>
+    <p>Por <b>profissional e por etapa</b>, não por dupla: 2,5% por fabricação e 2,5% por montagem, pagas
+    conforme a etapa executada; o coordenador acrescenta 1,0%. <b>Só existem quando há venda</b> — são
+    custo variável, não folha fixa. Base: faturamento bruto.</p></div>
+</div></div><div class="rf"><span class="fl">Caderno Empresarial · Valvic Marcenaria — Vargas Decor Ltda</span><span class="pn"><i>·</i>11</span></div></section>
+<section class="sheet"><div class="rh"><span class="rl">Parte II · Estrutura & Pessoas</span><span class="rr">Valvic Marcenaria</span></div><div class="pg"><div class="ptitle"><div class="kx">Estrutura de demandas · pessoas e infraestrutura</div><h3>O que existe, o que entra e o que falta</h3><div class="sub">Toda a demanda abaixo existe para dar vazão à capacidade que as máquinas novas vão exigir — sem ela, o investimento em máquina não converte em entrega.</div></div>
+<div class="band" style="padding:10px 15px">
+  <div><div class="bl">Contexto · ≈ 3 meses</div><div class="bv" style="font-size:20px">Novo galpão</div></div>
+  <div class="br">Com <b>coladeira</b> e <b>centro de furação</b> novos. A equipe precisa estar formada e
+    treinada <b>antes</b> da mudança — máquina parada por falta de gente é o pior dos cenários.</div>
+</div>
+
+<div class="sec"><span class="bar"></span><span class="tx">Como a estrutura está dividida</span></div>
+<div class="cards c3">
+  <div class="card ok"><div class="ct">Ativo hoje · 8 pessoas</div><h4>Chão de fábrica, tecnologia e 2 duplas completas</h4>
+    <ul>
+      <li><b>Montagem:</b> Samuel/Jomar e Jackson/Davi — duas duplas completas e fluindo</li>
+      <li><b>Chão de fábrica:</b> Deivson, o único no nível de marceneiro sênior</li>
+      <li><b>Tecnologia:</b> Joelson (operação) e Filipe (programação)</li>
+    </ul></div>
+  <div class="card blue"><div class="ct">Início já alinhado · 3 pessoas</div><h4>Datas fechadas</h4>
+    <ul>
+      <li><b>Bruna · dia 01</b> — programação e suporte de projetos, alivia o Filipe e o comercial</li>
+      <li><b>Karla · dia 10</b> — assume administrativo, jurídico e contábil, libera o Jonathan para vender</li>
+      <li><b>Cezar</b> — fecha a dupla 3, que hoje está incompleta (Godoy já atua)</li>
+    </ul></div>
+  <div class="card warn"><div class="ct">A contratar · 4 a 5 pessoas</div><h4>O que ainda falta</h4>
+    <ul>
+      <li><b>1 marceneiro experiente</b> — alvo Paulo &quot;Baiano&quot;, em negociação; não sendo ele, perfil equivalente</li>
+      <li><b>2 a 3 ajudantes</b> — a maior lacuna da operação</li>
+      <li><b>1 operador CNC</b> — assume a máquina atual e libera o Joelson</li>
+    </ul></div>
+</div>
+
+<div class="sec"><span class="bar"></span><span class="tx">Sequência de entrada</span><span class="ct">o que destrava o quê</span></div>
+<table class="tight">
+  <thead><tr><th style="width:14%">Quando</th><th style="width:30%">O que entra</th><th>O que isso destrava</th></tr></thead>
+  <tbody>
+    <tr><td class="nm">Dia 01</td><td>Bruna entra</td><td>Programação e suporte de projetos aliviam o Filipe — que hoje é ponto único — e o comercial</td></tr>
+    <tr><td class="nm">Dia 10</td><td>Karla entra</td><td>Assume administrativo, jurídico e contábil e <b>libera o Jonathan para vender</b></td></tr>
+    <tr><td class="nm">Curto prazo</td><td>4 a 5 contratações + ferramental</td><td>Marceneiro experiente, 2–3 ajudantes, operador CNC, 2 carros e 3 kits de ferramenta</td></tr>
+    <tr><td class="nm">≈ 3 meses</td><td>Novo galpão</td><td>Coladeira e centro de furação — <b>exigem a equipe já formada e treinada</b></td></tr>
+  </tbody>
+</table>
+
+<div class="sec"><span class="bar"></span><span class="tx">Investimento em infraestrutura</span><span class="ct">custo único</span></div>
+<table class="tight">
+  <thead><tr><th style="width:34%">Item</th><th style="width:36%">Para quem</th><th class="num" style="width:14%">Valor</th></tr></thead>
+  <tbody>
+    <tr><td class="nm">Cadeira + computador</td><td>Bruna</td><td class="num sub">4.000<span class="fn">cadeira a definir</span></td></tr>
+    <tr><td class="nm">Kit de ferramentas</td><td>Paulo &quot;Baiano&quot;</td><td class="num sub">3.000</td></tr>
+    <tr><td class="nm">Kit equipe de obra</td><td>Duplas de montagem</td><td class="num sub">6.000<span class="fn">varia com o nível definido</span></td></tr>
+    <tr><td class="nm">Kit básico</td><td>Davi e Jonathan Godoy · R$ 1.000 cada</td><td class="num sub">2.000</td></tr>
+    <tr><td class="nm">Cadeira + celular</td><td>Karla</td><td class="num sub">a definir</td></tr>
+    <tr><td class="nm">2 carros</td><td>Duplas 2 e 3 — hoje sem veículo</td><td class="num sub">a definir</td></tr>
+    <tr class="tot"><td colspan="2">Subtotal mapeado · carros e mobiliário em aberto</td><td class="num">15.000</td></tr>
+  </tbody>
+</table>
+
+<div class="note warn mt"><div class="nt">O que já limita o ritmo atual</div>
+  <p><b>2 das 3 duplas não têm veículo</b> e todas operam com ferramental parcial. Isso restringe a
+  produção de hoje, antes mesmo de qualquer máquina nova entrar. O Joelson precisa de
+  <b>treinamento urgente</b> no maquinário novo, e só pode ser liberado quando houver um operador
+  formado para assumir a CNC atual.</p></div></div><div class="rf"><span class="fl">Caderno Empresarial · Valvic Marcenaria — Vargas Decor Ltda</span><span class="pn"><i>·</i>12</span></div></section>
+<section class="sheet"><div class="rh"><span class="rl">Parte II · Estrutura & Pessoas</span><span class="rr">Valvic Marcenaria</span></div><div class="pg"><div class="ptitle"><div class="kx">Cadeia de valor · posição julho/2026</div><h3>Fluxo de trabalho — posição e impacto</h3><div class="sub">As seis etapas do primeiro contato ao pós-venda: quem atua, o que passa adiante e o que cada etapa define no resultado.</div></div>
+<div class="kpis k4" style="margin-bottom:5mm">
+  <div class="kpi b"><div class="kl">Jonathan atravessa</div><div class="kv">5<small> de 6 etapas</small></div><div class="kd">Sem substituto em nenhuma delas</div></div>
+  <div class="kpi c"><div class="kl">Paulo atravessa</div><div class="kv">4<small> de 6 etapas</small></div><div class="kd">Projeto → compras → fabricação → montagem</div></div>
+  <div class="kpi a"><div class="kl">Demais colaboradores</div><div class="kv">1<small> a 2 etapas</small></div><div class="kd">Cada um na sua especialidade</div></div>
+  <div class="kpi f"><div class="kl">Etapas com risco</div><div class="kv">3</div><div class="kd">Projeto, fabricação e montagem</div></div>
+</div>
+<div class="flow"><div class="fst"><div class="fn2">01</div><div><div class="fnm">Comercial &amp; Venda</div><div class="fwho" style="font-size:7.4px;color:#8a94a0">contato → orçamento → contrato</div><div class="fwho"><b>Jonathan</b> (sócio) · <b>Karla</b> assist. operacional (dia 10) · <b>Jennifer</b> social media (externa)</div></div><div><div class="fh">Entrega para a etapa seguinte</div><div class="fv2">Escopo de Venda + projeto atualizado, contrato e cadastro no Calcme</div></div><div><div class="fh">Impacto</div><div class="fv2">Define <b>escopo, preço e margem</b>. Informação incompleta aqui contamina toda a cadeia.</div><span class="risk">⚠ Jonathan sozinho até a Karla entrar</span></div></div><div class="fst"><div class="fn2">02</div><div><div class="fnm">Projeto &amp; Programação</div><div class="fwho" style="font-size:7.4px;color:#8a94a0">conferência técnica → CNC</div><div class="fwho"><b>Paulo</b> (sócio) · <b>Filipe</b> programador CNC · <b>Bruna</b> arquiteta (dia 01) · <b>Deivson</b> olhar de produção</div></div><div><div class="fh">Entrega para a etapa seguinte</div><div class="fv2">Arquivos de corte no Drive + plano de produção validado</div></div><div><div class="fh">Impacto</div><div class="fv2">Converte a venda em <b>arquivo de corte</b>. Define aproveitamento de chapa e retrabalho.</div><span class="risk">⚠ Filipe sem redundância — Bruna reduz o risco</span></div></div><div class="fst"><div class="fn2">03</div><div><div class="fnm">Compras &amp; Recepção</div><div class="fwho" style="font-size:7.4px;color:#8a94a0">insumos → conferência → estoque</div><div class="fwho"><b>Jonathan</b> e <b>Paulo</b> · <b>Karla</b> cotação e faturamento · <b>Deivson</b> recepção · <b>Joelson</b> separação</div></div><div><div class="fh">Entrega para a etapa seguinte</div><div class="fv2">Insumos conferidos, alocados no projeto e baixados no pedido</div></div><div><div class="fh">Impacto</div><div class="fv2">Garante o <b>material certo na hora certa</b>. Falha aqui para a fábrica inteira.</div></div></div><div class="fst"><div class="fn2">04</div><div><div class="fnm">Fabricação</div><div class="fwho" style="font-size:7.4px;color:#8a94a0">corte → montagem de fábrica</div><div class="fwho"><b>Paulo</b> (sócio) · <b>Joelson</b> operador CNC · <b>Deivson</b> coord. + marceneiro · <b>Baiano</b>, <b>2–3 ajudantes</b> e <b>+1 operador CNC</b> a contratar</div></div><div><div class="fh">Entrega para a etapa seguinte</div><div class="fv2">Peças no padrão, conferidas pelo POP de qualidade e embaladas</div></div><div><div class="fh">Impacto</div><div class="fv2">Transforma chapa em peça <b>no padrão</b>. Define qualidade e prazo de entrega.</div><span class="risk">⚠ Maior lacuna — Deivson opera em vez de coordenar; Joelson sem backup na CNC</span></div></div><div class="fst"><div class="fn2">05</div><div><div class="fnm">Montagem &amp; Entrega</div><div class="fwho" style="font-size:7.4px;color:#8a94a0">obra → vistoria → aceite</div><div class="fwho"><b>Jonathan</b> e <b>Paulo</b> · Samuel/Jomar (com carro) · Jackson/Davi (sem carro) · Cezar/J. Godoy (em teste) · <b>2 carros e 3 kits</b> a adquirir</div></div><div><div class="fh">Entrega para a etapa seguinte</div><div class="fv2">Vistoria + aceite assinado pelo cliente</div></div><div><div class="fh">Impacto</div><div class="fv2">É <b>o que o cliente vê e sente</b>. Define a percepção da marca e o aceite.</div><span class="risk">⚠ 2 das 3 duplas sem veículo · ferramental parcial</span></div></div><div class="fst"><div class="fn2">06</div><div><div class="fnm">Pós-venda</div><div class="fwho" style="font-size:7.4px;color:#8a94a0">garantia → recompra</div><div class="fwho"><b>Jonathan</b> (permanente) · <b>Karla</b> registro e acionamento · duplas de montagem em assistência técnica</div></div><div><div class="fh">Entrega para a etapa seguinte</div><div class="fv2">Chamado registrado e garantia acionada quando necessário</div></div><div><div class="fh">Impacto</div><div class="fv2">Sustenta a <b>garantia de 10 anos</b>, a recompra e a indicação — a receita mais barata.</div></div></div></div>
+
+<div class="note warn mt"><div class="nt">Leitura do fluxo</div>
+  <p>O fluxo mostra por que a estrutura é frágil hoje: <b>os dois sócios atravessam quase toda a cadeia</b>
+  enquanto cada colaborador ocupa apenas uma ou duas etapas. Nenhuma etapa avança sem passar por um deles,
+  e qualquer ausência trava o fluxo inteiro. As entradas já alinhadas atacam justamente as pontas —
+  Karla nas etapas 1, 3 e 6; Bruna criando a segunda pessoa em projeto. O centro da cadeia,
+  <b>a fabricação, segue sendo a maior lacuna</b>.</p></div></div><div class="rf"><span class="fl">Caderno Empresarial · Valvic Marcenaria — Vargas Decor Ltda</span><span class="pn"><i>·</i>13</span></div></section>
+<section class="sheet">
+<div class="part">
+  <div class="pnum">III</div>
+  <div class="plabel">Parte três</div>
+  <h2>Economia da Operação</h2>
+  <p class="pintro">Por que uma estrutura majoritariamente fixa transforma cada real adicional de
+    faturamento em resultado desproporcional — e quanto custa, hoje, manter essa estrutura de pé.
+    A margem já é conhecida e boa; o que limita o resultado é a quantidade de projetos.</p>
+  <div class="plist">
+    <div class="pli"><b>15</b><span>Modelo econômico e alavancagem operacional</span></div>
+    <div class="pli"><b>16</b><span>Custo da estrutura e investimento</span></div>
+  </div>
+</div></section>
+<section class="sheet"><div class="rh"><span class="rl">Parte III · Economia da Operação</span><span class="rr">Valvic Marcenaria</span></div><div class="pg"><div class="ptitle"><div class="kx">Modelo econômico · jun/2026</div><h3>Alavancagem operacional</h3><div class="sub">A estrutura é majoritariamente fixa. Depois de cobrir o custo fixo, cada real adicional converte cerca de 34 centavos direto em resultado.</div></div>
+<p class="lead2">As mesmas máquinas, o mesmo galpão e a mesma equipe-base atendem um volume bem maior
+que o atual. É a definição de <b>alavancagem operacional</b> — e a Valvic está sentada sobre
+<b>capacidade ociosa</b>. A capacidade custa o mesmo cheia ou vazia, porque o custo fixo já está pago.</p>
+
+<div class="sec mt"><span class="bar"></span><span class="tx">O que cada nível de volume gera</span><span class="ct">MC líquida de 34% · estrutura atual</span></div>
+<table>
+  <thead><tr><th style="width:34%">Faturamento / mês</th><th class="num" style="width:20%">Margem gerada</th>
+    <th class="num" style="width:22%">Resultado / mês</th><th class="num" style="width:24%">Resultado / ano</th></tr></thead>
+  <tbody>
+    <tr><td class="nm">~R$ 163k<span class="fn">posição de referência · capacidade ociosa</span></td><td class="num">R$ 55k</td><td class="num" style="color:#6c7785">limiar</td><td class="num" style="color:#6c7785">—</td></tr>
+    <tr><td class="nm">R$ 246k<span class="fn">ponto de equilíbrio</span></td><td class="num">R$ 84k</td><td class="num sub">R$ 0</td><td class="num" style="color:#6c7785">break-even</td></tr>
+    <tr><td class="nm">R$ 300k</td><td class="num">R$ 102k</td><td class="num sub">+R$ 18,5k</td><td class="num sub">+R$ 222k</td></tr>
+    <tr><td class="nm">R$ 400k<span class="fn">meta Fase 1 — dobrar</span></td><td class="num">R$ 136k</td><td class="num sub">+R$ 52,5k</td><td class="num sub">+R$ 630k</td></tr>
+    <tr><td class="nm">R$ 600k</td><td class="num">R$ 204k</td><td class="num sub">+R$ 120k</td><td class="num sub">+R$ 1,4 mi</td></tr>
+    <tr class="tot"><td>R$ 1.000k — visão (Fase 2)</td><td class="num">R$ 340k</td><td class="num">+R$ 256k</td><td class="num">+R$ 3,1 mi</td></tr>
+  </tbody>
+</table>
+<p class="t mts">Até cerca de <b>R$ 400k/mês a estrutura atual absorve o volume</b> com custo fixo praticamente
+constante. De R$ 400k a R$ 1 mi, a Fase 2 — novas máquinas e galpão — adiciona capacidade. É exatamente
+onde o capital de um sócio investidor é aplicado.</p>
+
+<div class="sec"><span class="bar"></span><span class="tx">O encaixe · o que cada lado traz</span></div>
+<table class="tight">
+  <thead><tr><th style="width:44%">A Valvic já tem</th><th>O sócio aporta</th></tr></thead>
+  <tbody>
+    <tr><td class="nm">Capacidade instalada e paga</td><td>Capital para a Fase 2 — novas máquinas e galpão — que eleva o teto de R$ 400k para R$ 1 mi/mês</td></tr>
+    <tr><td class="nm">Operação que sabe entregar</td><td>Pipeline e demanda — o insumo que falta para encher a capacidade ociosa</td></tr>
+    <tr><td class="nm">Margem saudável e conhecida</td><td>Capital de giro para subsidiar orçamentos e acelerar o ciclo comercial</td></tr>
+  </tbody>
+</table>
+
+<div class="two mt">
+  <div class="note ok"><div class="nt">O que isto é</div>
+    <p>Uma <b>aposta em volume e escala</b> — o terreno onde capital e pipeline rendem mais. E a entrada
+    numa empresa que <b>já cresce, já produz e já tem marca</b>, para acelerar o que funciona.</p>
+    <p style="margin-top:5px">O caminho: manter o <b>bespoke premium</b> (marca e margem) e abrir uma
+    <b>linha modular</b> para incorporação e construtora, que absorve volume — duas pistas, sem trair a identidade.</p></div>
+  <div class="note warn"><div class="nt">Divergência de premissa · sinalizada, não resolvida</div>
+    <p>Este modelo usa <b>margem de contribuição de 43,5%</b> (34% líquida). O Plano de Expansão da Parte V
+    trabalha com <b>MC de ~30%</b> — premissa mais conservadora, adotada para o cálculo de payback.</p>
+    <p style="margin-top:5px">As duas referências convivem neste caderno porque vêm de estudos distintos.
+    <b>Qualquer decisão de aporte deve fixar uma única premissa</b>, validada com o contador.</p></div>
+</div></div><div class="rf"><span class="fl">Caderno Empresarial · Valvic Marcenaria — Vargas Decor Ltda</span><span class="pn"><i>·</i>15</span></div></section>
+<section class="sheet"><div class="rh"><span class="rl">Parte III · Economia da Operação</span><span class="rr">Valvic Marcenaria</span></div><div class="pg"><div class="ptitle"><div class="kx">Custo da estrutura · julho/2026</div><h3>O que custa manter a operação</h3><div class="sub">A folha, os benefícios e o investimento único mapeado — separando o que já é custo do que ainda é decisão.</div></div>
+<div class="kpis k4">
+  <div class="kpi a"><div class="kl">Custo mensal hoje</div><div class="kv"><small>R$</small> 47,5<small> mil</small></div><div class="kd">2 sócios + 8 ativos + Jennifer · com benefícios CLT</div></div>
+  <div class="kpi b"><div class="kl">A partir do próximo mês</div><div class="kv"><small>R$</small> 58,0<small> mil</small></div><div class="kd">Entram Bruna, Karla e Cezar — acréscimo de R$ 10,5k</div></div>
+  <div class="kpi f"><div class="kl">Ainda a contratar</div><div class="kv"><small>R$</small> 12,6<small>–15,3 mil</small></div><div class="kd">Baiano + 2–3 ajudantes + operador CNC · fora do número acima</div></div>
+  <div class="kpi c"><div class="kl">Investimento único</div><div class="kv"><small>R$</small> 15<small> mil +</small></div><div class="kd">Ferramental mapeado · carros e cadeiras a definir</div></div>
+</div>
+
+<div class="sec"><span class="bar"></span><span class="tx">Composição do custo mensal</span></div>
+<table>
+  <thead><tr><th style="width:44%">Bloco</th><th class="num" style="width:18%">Valor</th><th>Observação</th></tr></thead>
+  <tbody>
+    <tr><td class="nm">Direção · pró-labore dos 2 sócios</td><td class="num sub">20.000</td><td class="dt">R$ 10.000 cada · ambos executam e gerenciam</td></tr>
+    <tr><td class="nm">Ativos hoje · 8 pessoas</td><td class="num sub">26.120</td><td class="dt">Salários R$ 23.120 + benefícios CLT R$ 3.000</td></tr>
+    <tr><td class="nm">Entradas alinhadas · Bruna, Karla e Cezar</td><td class="num sub">10.500</td><td class="dt">Valor do Cezar é estimativa até a formalização</td></tr>
+    <tr><td class="nm">Parceria externa · Jennifer</td><td class="num sub">1.400</td><td class="dt">Contrato à parte, fora da folha</td></tr>
+    <tr class="tot"><td>Custo mensal a partir do próximo mês</td><td class="num">58.020</td><td></td></tr>
+    <tr class="enc"><td>Necessidades de contratação — ainda fora do cálculo</td><td class="num">12.550 a 15.250</td><td class="dt" style="color:#96803f">Elevaria o custo para R$ 70,6 a 73,3 mil</td></tr>
+  </tbody>
+</table>
+
+<div class="sec"><span class="bar"></span><span class="tx">Natureza do vínculo</span><span class="ct">a estrutura é mista por desenho</span></div>
+<div class="cards c3">
+  <div class="card"><div class="ct">PJ · produção e tecnologia</div><h4>Deivson, Samuel, Jackson, Filipe, Bruna</h4>
+    <p>Os papéis de <b>maior autonomia técnica</b> e remuneração variável relevante. Comissionados por etapa executada.</p></div>
+  <div class="card"><div class="ct">CLT · formação e apoio</div><h4>Joelson, Jomar, Davi, J. Godoy, Karla</h4>
+    <p>As funções de <b>formação e apoio</b>, com benefícios fixos: VR R$ 350 + transporte ~R$ 400 =
+    <b>R$ 750/mês por colaborador</b>, somados sobre a folha.</p></div>
+  <div class="card"><div class="ct">Variável · só existe com venda</div><h4>Comissões e participação</h4>
+    <p>2,5% fabricação + 2,5% montagem por profissional, 1,0% de coordenação para o Deivson e R$ 2,00/chapa
+    para o Joelson. A Bruna tem <b>50% dos projetos que vender</b>. Nada disso é folha fixa.</p></div>
+</div>
+
+<div class="note mt"><div class="nt">O que está em aberto</div>
+  <p>Ficam a precificar: <b>2 carros</b> para as duplas 2 e 3, <b>cadeiras</b> para Karla e Bruna, o
+  <b>celular da Karla</b> e o kit dos ajudantes a contratar (R$ 1.000 cada). O kit da equipe de obra pode
+  variar conforme o <b>nível de ferramenta</b> que for definido. O valor do Cezar segue como estimativa
+  de referência até a formalização.</p></div></div><div class="rf"><span class="fl">Caderno Empresarial · Valvic Marcenaria — Vargas Decor Ltda</span><span class="pn"><i>·</i>16</span></div></section>
+<section class="sheet">
+<div class="part">
+  <div class="pnum">IV</div>
+  <div class="plabel">Parte quatro</div>
+  <h2>Passivo Trabalhista</h2>
+  <p class="pintro">O levantamento das verbas rescisórias e dos encargos incidentes sobre os
+    desligamentos já ocorridos no quadro de produção, apurado contrato a contrato. Um número fechado,
+    com o perímetro do cálculo declarado — o que entra, o que não entra e por quê.</p>
+  <div class="plist">
+    <div class="pli"><b>18</b><span>Apuração por contrato, encargos e perímetro</span></div>
+  </div>
+</div></section>
+<section class="sheet"><div class="rh"><span class="rl">Parte IV · Passivo Trabalhista</span><span class="rr">Valvic Marcenaria</span></div><div class="pg"><div class="ptitle"><div class="kx">Levantamento · posição até o presente momento</div><h3>Apuração por contrato</h3><div class="sub">Verbas rescisórias e encargos incidentes sobre os seis desligamentos do quadro de produção, com data de conclusão definida.</div></div>
+<div class="kpis k4">
+  <div class="kpi a"><div class="kl">Contratos encerrados</div><div class="kv">6</div><div class="kd">Equipe de produção · marceneiros</div></div>
+  <div class="kpi b"><div class="kl">Verbas rescisórias</div><div class="kv"><small>R$</small> 27.268<small>,84</small></div><div class="kd">13º, férias + 1/3 e FGTS</div></div>
+  <div class="kpi c"><div class="kl">Encargos patronais</div><div class="kv"><small>R$</small> 1.422<small>,45</small></div><div class="kd">Incidentes sobre o 13º</div></div>
+  <div class="kpi d"><div class="kl">Passivo total</div><div class="kv"><small>R$</small> 28.691<small>,29</small></div><div class="kd">Sem saldo de dias · sem multa de 40%</div></div>
+</div>
+
+<div class="sec"><span class="bar"></span><span class="tx">Apuração contrato a contrato</span><span class="ct">valores em reais · base salário contratual</span></div>
+<table>
+  <thead><tr><th style="width:20%">Colaborador</th><th style="width:19%">Período do contrato</th>
+    <th class="num" style="width:9%">Salário</th><th class="num" style="width:13%">13º prop.</th>
+    <th class="num" style="width:14%">Férias + 1/3</th><th class="num" style="width:12%">FGTS 8%</th>
+    <th class="num" style="width:13%">Subtotal</th></tr></thead>
+  <tbody><tr><td class="nm">Jomar<span class="fn">Marceneiro · 47 meses</span></td><td class="dt">24/06/2022 &nbsp;a&nbsp; 30/04/2026</td><td class="num">1.950,00</td><td class="num">650,00</td><td class="num">2.166,67</td><td class="num">7.332,00</td><td class="num sub">10.148,67</td></tr><tr><td class="nm">Samuel<span class="fn">Marceneiro · 9 meses</span></td><td class="dt">01/08/2025 &nbsp;a&nbsp; 30/04/2026</td><td class="num">2.500,00</td><td class="num">833,33</td><td class="num">2.500,00</td><td class="num">1.800,00</td><td class="num sub">5.133,33</td></tr><tr><td class="nm">Deivison<span class="fn">Marceneiro · 9 meses</span></td><td class="dt">01/09/2025 &nbsp;a&nbsp; 31/05/2026</td><td class="num">2.500,00</td><td class="num">1.041,67</td><td class="num">2.500,00</td><td class="num">1.800,00</td><td class="num sub">5.341,67</td></tr><tr><td class="nm">Joelson<span class="fn">Marceneiro · 15 meses</span></td><td class="dt">01/02/2025 &nbsp;a&nbsp; 30/04/2026</td><td class="num">1.950,00</td><td class="num">650,00</td><td class="num">650,00</td><td class="num">2.340,00</td><td class="num sub">3.640,00</td></tr><tr><td class="nm">Davi<span class="fn">Marceneiro · 3 meses</span></td><td class="dt">01/02/2026 &nbsp;a&nbsp; 30/04/2026</td><td class="num">1.950,00</td><td class="num">487,50</td><td class="num">650,00</td><td class="num">468,00</td><td class="num sub">1.605,50</td></tr><tr><td class="nm">Filipe<span class="fn">Marceneiro · 3 meses</span></td><td class="dt">01/03/2026 &nbsp;a&nbsp; 31/05/2026</td><td class="num">1.700,00</td><td class="num">425,00</td><td class="num">566,67</td><td class="num">408,00</td><td class="num sub">1.399,67</td></tr>
+    <tr class="tot"><td colspan="3">Total das verbas rescisórias</td><td class="num">4.087,50</td>
+      <td class="num">9.033,34</td><td class="num">14.148,00</td><td class="num">27.268,84</td></tr>
+    <tr class="enc"><td colspan="6">Encargos patronais sobre o 13º<span class="fn">INSS patronal + terceiros / RAT 26,8% &nbsp;·&nbsp; FGTS 8%</span></td>
+      <td class="num">1.422,45</td></tr>
+  </tbody>
+</table>
+
+<div class="band mt">
+  <div><div class="bl">Passivo trabalhista apurado</div><div class="bv">R$ 28.691,29</div></div>
+  <div class="br">O valor está concentrado no <b>tempo de casa, não no número de pessoas</b>: o FGTS
+    responde por <b>49% do total</b>, e o contrato mais antigo sozinho por <b>R$ 10.148,67</b>.</div>
+</div>
+
+<div class="sec"><span class="bar"></span><span class="tx">Critérios da apuração</span></div>
+<div class="two">
+  <div class="note"><div class="nt">Como cada verba foi calculada</div>
+    <ul>
+      <li><b>Base.</b> Salário contratual mensal, sem médias de variáveis ou adicionais.</li>
+      <li><b>Conclusão.</b> 30/04/2026, exceto Deivison e Filipe em 31/05/2026. Todos por demissão sem justa causa.</li>
+      <li><b>FGTS.</b> 8% da remuneração de cada mês, sobre a duração integral do vínculo.</li>
+      <li><b>Férias.</b> Proporcionais do período aquisitivo em curso, acrescidas do terço constitucional.</li>
+      <li><b>Encargos.</b> Incidem apenas sobre o 13º, por ser verba salarial. Confirmado enquadramento no Simples sem CPP, o passivo recua para <b>R$ 27.595,84</b>.</li>
+    </ul></div>
+  <div class="note warn"><div class="nt">Não computado nesta apuração</div>
+    <ul>
+      <li><b>Multa de 40% do FGTS</b> — incidiria sobre o saldo da conta vinculada de cada colaborador.</li>
+      <li><b>Aviso prévio</b> — devido em desligamento sem justa causa, indenizado ou trabalhado, crescendo 3 dias por ano de casa.</li>
+      <li><b>Férias vencidas</b> — considerados regularmente gozados os períodos aquisitivos já completados.</li>
+    </ul>
+    <p style="margin-top:6px">Os itens acima são <b>conhecidos e mapeados</b>. Ficaram fora para que o
+    número apresente exatamente o perímetro definido.</p></div>
+</div></div><div class="rf"><span class="fl">Caderno Empresarial · Valvic Marcenaria — Vargas Decor Ltda</span><span class="pn"><i>·</i>18</span></div></section>
+<section class="sheet">
+<div class="part">
+  <div class="pnum">V</div>
+  <div class="plabel">Parte cinco</div>
+  <h2>Caminhos de Expansão</h2>
+  <p class="pintro">De R$ 250 mil a R$ 1 milhão por mês, em degraus. Cada degrau com o seu gatilho de
+    demanda, o gargalo que ataca e o investimento que exige. As máquinas com ficha técnica e preço; o
+    galpão com os dois caminhos possíveis. <b>Não há recomendação aqui</b> — há caminhos, custos e
+    trade-offs postos lado a lado, para que a decisão seja informada e consciente.</p>
+  <div class="plist">
+    <div class="pli"><b>20</b><span>A escada de produção</span></div>
+    <div class="pli"><b>21</b><span>Galpão: adaptar o atual ou mudar</span></div>
+    <div class="pli"><b>22</b><span>Comparativo de coladeiras</span></div>
+    <div class="pli"><b>23</b><span>Linha industrial e complementares</span></div>
+    <div class="pli"><b>24</b><span>Diferencial de mercado — puxadores</span></div>
+    <div class="pli"><b>25</b><span>Prestação de serviços</span></div>
+    <div class="pli"><b>26</b><span>Plano de expansão 2026–2027</span></div>
+    <div class="pli"><b>27</b><span>Retorno e payback</span></div>
+  </div>
+</div></section>
+<section class="sheet"><div class="rh"><span class="rl">Parte V · Caminhos de Expansão</span><span class="rr">Valvic Marcenaria</span></div><div class="pg"><div class="ptitle"><div class="kx">A escada de produção</div><h3>Do teto atual ao horizonte de R$ 1 milhão</h3><div class="sub">Cada degrau responde à demanda que passou a puxar acima do patamar anterior e ao gargalo que limita a produção naquele ponto.</div></div>
+<div class="stair"><div class="st"><div class="sbar" style="background:#5a6a7a;min-height:78px"><div class="sw">Hoje</div><div class="sv">250<small>mil / mês</small></div></div><div class="sbody"><div class="sk" style="color:#1b2733;font-size:7.4px">Estrutura atual</div><div class="sk" style="margin-top:5px">Situação</div><div class="sp">Teto da capacidade atual. A coladeira <b>SCM ME25</b> atende até ~300 mil e <b>não entrega a peça 100% finalizada</b>.</div><div class="sk" style="margin-top:5px">Investimento</div><div class="sp">—</div></div></div><div class="st"><div class="sbar" style="background:#2f5d8c;min-height:100px"><div class="sw">Degrau 1</div><div class="sv">300<small>mil / mês</small></div></div><div class="sbody"><div class="sk" style="color:#1b2733;font-size:7.4px">+ Mão de obra · zero máquina</div><div class="sk" style="margin-top:5px">Gatilho</div><div class="sp">Demanda sustentada acima do teto atual, com carteira firme.</div><div class="sk" style="margin-top:5px">Investimento</div><div class="sp">+1 marceneiro · +2 ajudantes · +1 carro.<br><b>Folha ~R$ 9 mil/mês</b> + veículo.</div><div class="sk" style="margin-top:5px">Ganho</div><div class="sp">+20% de capacidade sem tocar na estrutura.</div></div></div><div class="st"><div class="sbar" style="background:#2f7d4f;min-height:126px"><div class="sw">Degrau 2</div><div class="sv">400<small>mil / mês</small></div></div><div class="sbody"><div class="sk" style="color:#1b2733;font-size:7.4px">+ Upgrade de coladeira</div><div class="sk" style="margin-top:5px">Gatilho</div><div class="sp">Demanda acima de 300 mil; a ME25 não passa daqui nem finaliza 100%.</div><div class="sk" style="margin-top:5px">Investimento</div><div class="sp">Coladeira <b>R$ 160–480k</b> + habilitação do galpão <b>~R$ 56–61k</b> (única).</div><div class="sk" style="margin-top:5px">Ganho</div><div class="sp">Remove o gargalo da colagem e libera mão de obra para produzir.</div></div></div><div class="st"><div class="sbar" style="background:#a9863f;min-height:158px"><div class="sw">Degrau 3</div><div class="sv">600<small>mil / mês</small></div></div><div class="sbody"><div class="sk" style="color:#1b2733;font-size:7.4px">+ Reorg. galpão + equipe</div><div class="sk" style="margin-top:5px">Gatilho</div><div class="sp">Demanda acima de 400 mil.</div><div class="sk" style="margin-top:5px">Investimento</div><div class="sp">Reorganização do galpão <b>~R$ 50–79k</b> (única) + folha de 2 duplas <b>~R$ 14k/mês</b>.</div><div class="sk" style="margin-top:5px">Ganho</div><div class="sp">Fluxo contínuo; base para o salto industrial.</div></div></div><div class="st"><div class="sbar" style="background:#0E2038;min-height:196px"><div class="sw">Horizonte</div><div class="sv">1<small>milhão / mês</small></div></div><div class="sbody"><div class="sk" style="color:#1b2733;font-size:7.4px">Linha industrial</div><div class="sk" style="margin-top:5px">Gatilho</div><div class="sp">Demanda acima de 600 mil + mudança de galpão.</div><div class="sk" style="margin-top:5px">Investimento</div><div class="sp">Novo galpão + nesting (R$ 530k) + furação (R$ 360k) + coladeira.</div><div class="sk" style="margin-top:5px">Ganho</div><div class="sp">Produção em linha, escalável e rastreável.</div></div></div></div>
+
+<div class="sec mt"><span class="bar"></span><span class="tx">Quadro-resumo da escada</span><span class="ct">valores-âncora</span></div>
+<table class="tight">
+  <thead><tr><th style="width:14%">Degrau</th><th style="width:32%">O que entra</th>
+    <th style="width:32%">Investimento-âncora</th><th>Gatilho</th></tr></thead>
+  <tbody>
+    <tr><td class="nm">R$ 250 mil<span class="fn">hoje</span></td><td>Estrutura atual</td><td class="dt">—</td><td class="dt">ponto de partida</td></tr>
+    <tr><td class="nm">R$ 300 mil<span class="fn">degrau 1</span></td><td>+1 marceneiro, +2 ajudantes, +1 carro</td><td>Folha ~R$ 9k/mês + veículo</td><td class="dt">demanda &gt; teto</td></tr>
+    <tr><td class="nm">R$ 400 mil<span class="fn">degrau 2</span></td><td>Upgrade de coladeira + habilitação (única)</td><td>R$ 160–480k + R$ 56–61k</td><td class="dt">demanda &gt; 300</td></tr>
+    <tr><td class="nm">R$ 600 mil<span class="fn">degrau 3</span></td><td>Reorganização do galpão (única) + 2 duplas</td><td>Reorg. ~R$ 50–79k + folha ~R$ 14k/mês</td><td class="dt">demanda &gt; 400</td></tr>
+    <tr class="tot"><td>R$ 1 milhão<span class="fn" style="color:#b9c2cc">horizonte</span></td><td>Galpão novo + linha interligada</td><td>Galpão + nesting + furação + coladeira</td><td>demanda &gt; 600</td></tr>
+  </tbody>
+</table>
+
+<div class="two mt">
+  <div class="note ok"><div class="nt">Por que uma escada, e não um salto</div>
+    <p>Cada degrau ataca o gargalo daquele momento e destrava a capacidade seguinte. Assim, o
+    <b>capital entra na medida em que a demanda real o justifica</b>, e o risco fica distribuído no tempo
+    em vez de concentrado numa aposta única.</p>
+    <p style="margin-top:5px">A escada não é um cronograma rígido — é um <b>mapa de decisão</b>. O ritmo
+    real é ditado pela demanda, não pelo documento.</p></div>
+  <div class="note"><div class="nt">O fio condutor financeiro</div>
+    <p>A régua que atravessa todos os degraus é a <b>margem de contribuição de ~40%</b>. Cada passo só se
+    justifica se o faturamento adicional <b>preservar essa margem</b> — cobrindo o custo fixo que ele mesmo
+    cria e ainda ampliando o resultado.</p>
+    <p style="margin-top:5px">Os números são <b>âncoras</b>: ordem de grandeza para orientar a decisão,
+    não um orçamento fechado. Valores de máquina são de feira.</p></div>
+</div></div><div class="rf"><span class="fl">Caderno Empresarial · Valvic Marcenaria — Vargas Decor Ltda</span><span class="pn"><i>·</i>20</span></div></section>
+<section class="sheet"><div class="rh"><span class="rl">Parte V · Caminhos de Expansão</span><span class="rr">Valvic Marcenaria</span></div><div class="pg"><div class="ptitle"><div class="kx">Infraestrutura</div><h3>Galpão: adaptar o atual ou mudar</h3><div class="sub">Os dois caminhos para a mesma meta, com os custos abertos. A diferença entre eles é sobretudo de capital e de risco.</div></div>
+<div class="two">
+  <div class="card"><div class="ct">Caminho A</div><h4>Escada dentro do galpão atual</h4>
+    <p><b>Cheque menor por etapa</b>, capital diluído no tempo, na medida da demanda. Em contrapartida,
+    <b>parte da obra civil não migra</b> — vira custo afundado ao mudar de galpão — e o teto físico do
+    atual fica em ~R$ 600 mil/mês.</p></div>
+  <div class="card"><div class="ct">Caminho B</div><h4>Salto direto para o galpão novo</h4>
+    <p><b>Sem retrabalho.</b> Nenhuma obra afundada, a estrutura já nasce para o milhão e chega ao topo
+    mais rápido. Em contrapartida, o <b>cheque de largada é grande e concentrado</b>, e exige demanda já
+    engatilhada para não ociar a capacidade instalada.</p></div>
+</div>
+
+<div class="sec"><span class="bar"></span><span class="tx">Caminho A · custos abertos da adaptação</span><span class="ct">investimento único · não migra</span></div>
+<table class="tight">
+  <thead><tr><th style="width:44%">Item</th><th style="width:24%">Natureza</th><th class="num" style="width:18%">Referência</th></tr></thead>
+  <tbody>
+    <tr class="sec2"><td colspan="3">Habilitação da coladeira · degrau 2</td></tr>
+    <tr><td class="nm">Compressor maior<span class="fn">ar comprimido para a máquina</span></td><td class="dt">Equipamento</td><td class="num sub">R$ 25.000</td></tr>
+    <tr><td class="nm">Exaustor 5 cv<span class="fn">exaustão de pó e vapores</span></td><td class="dt">Equipamento</td><td class="num sub">R$ 6.000</td></tr>
+    <tr><td class="nm">Rede elétrica + transformador</td><td class="dt">Instalação</td><td class="num sub">~R$ 10.000</td></tr>
+    <tr><td class="nm">Frete + instalação</td><td class="dt">Logística</td><td class="num sub">~R$ 20.000</td></tr>
+    <tr class="sec2"><td colspan="3">Reorganização do espaço · degrau 3</td></tr>
+    <tr><td class="nm">Mezanino no fundo<span class="fn">área adicional de apoio e estoque</span></td><td class="dt">Obra civil</td><td class="num sub">~R$ 25.000</td></tr>
+    <tr><td class="nm">Elétrica / iluminação / ventilação</td><td class="dt">Instalação</td><td class="num sub">R$ 12–15.000</td></tr>
+    <tr><td class="nm">Carrinhos / esteira interna<span class="fn">circulação de peças</span></td><td class="dt">Equipamento</td><td class="num sub">~R$ 8.000</td></tr>
+    <tr><td class="nm">Rede pneumática</td><td class="dt">Instalação</td><td class="num sub">~R$ 5.000</td></tr>
+    <tr><td class="nm">Piso usinado<span class="fn">opcional</span></td><td class="dt">Obra civil</td><td class="num sub">~R$ 12.000</td></tr>
+    <tr><td class="nm">Patamar + rampa<span class="fn">ou descer a esquadrejadeira — alternativa</span></td><td class="dt">Obra civil</td><td class="num sub">a definir</td></tr>
+    <tr class="tot"><td colspan="2">Faixa total da adaptação · habilitação + reorganização</td><td class="num">R$ 90–120 mil</td></tr>
+  </tbody>
+</table>
+
+<div class="sec"><span class="bar"></span><span class="tx">Caminho B · composição do salto</span></div>
+<div class="kpis k3">
+  <div class="kpi c"><div class="kl">Caminho A · obra no atual</div><div class="kv"><small>R$</small> 90–120k</div><div class="kd">Diluído entre os degraus 2 e 3 · <b>não migra</b></div></div>
+  <div class="kpi d"><div class="kl">Caminho B · cheque de largada</div><div class="kv"><small>R$</small> 1,5–2 mi</div><div class="kd">Galpão + linha de máquinas · concentrado</div></div>
+  <div class="kpi f"><div class="kl">Teto do galpão atual</div><div class="kv"><small>~R$</small> 600k</div><div class="kd">O milhão exige a mudança de qualquer forma</div></div>
+</div>
+
+<div class="note warn mt"><div class="nt">⚑ Ponto de contexto — fato, não recomendação</div>
+  <p>As <b>máquinas Giben migram e têm revenda/troca</b> — acompanham a empresa para o galpão novo.
+  Já a <b>obra civil é específica de cada galpão</b> e não se muda. Onde o capital é alocado — em ativo que
+  migra ou em estrutura fixa — pesa de forma diferente em cada caminho.</p></div></div><div class="rf"><span class="fl">Caderno Empresarial · Valvic Marcenaria — Vargas Decor Ltda</span><span class="pn"><i>·</i>21</span></div></section>
+<section class="sheet"><div class="rh"><span class="rl">Parte V · Caminhos de Expansão</span><span class="rr">Valvic Marcenaria</span></div><div class="pg"><div class="ptitle"><div class="kx">Comparativo de máquinas</div><h3>As coladeiras, lado a lado</h3><div class="sub">A coladeira de bordas é a máquina que destrava a produção. A atual atende até ~R$ 300 mil e não finaliza 100% — por isso o upgrade no degrau 2.</div></div>
+<table class="tight">
+  <thead><tr><th style="width:19%">Critério</th>
+    <th style="width:16%">Raizen<br>Spectra 7GT</th><th style="width:16%">Usikraft<br>Pegasus 1100</th>
+    <th style="width:16%">Giben<br>KG668</th><th style="width:16%">Giben<br>KG712</th>
+    <th style="width:17%">Giben KG398J<br>Puxadores ★</th></tr></thead>
+  <tbody>
+    <tr><td class="nm">Valor de feira</td><td class="num sub">R$ 160 mil</td><td class="num sub">R$ 200 mil</td><td class="num sub">R$ 260 mil</td><td class="num sub">R$ 410 mil</td><td class="num sub">R$ 480 mil</td></tr>
+    <tr><td class="nm">Posição</td><td class="dt">Menor cheque de entrada</td><td class="dt">Meio-termo de acabamento</td><td class="dt">Referência do mercado moveleiro</td><td class="dt">Topo — automação plena</td><td class="dt">Puxador integrado · lançamento</td></tr>
+    <tr><td class="nm">Recursos</td><td class="dt">7 grupos de trabalho</td><td class="dt">12 grupos · fita até 3 mm · 6 rolos pneum.</td><td class="dt">Regulagens finas manuais · manutenção simples</td><td class="dt">Regulagens automáticas · magazine de 4 fitas</td><td class="dt">Usina puxador / perfil integrado na peça</td></tr>
+    <tr><td class="nm">Filetagem (peça reta)</td><td class="dt">a confirmar</td><td class="dt">a confirmar</td><td class="dt">22 m/min</td><td class="dt">a confirmar (alta)</td><td class="dt" style="color:#b0413f">8 m/min (baixa)</td></tr>
+    <tr><td class="nm">Bipagem / telemetria</td><td class="dt">Não</td><td class="dt">Não</td><td class="dt">Não</td><td class="dt" style="color:#2f7d4f;font-weight:700">Sim</td><td class="dt">a confirmar</td></tr>
+    <tr><td class="nm">Pega a usada na troca</td><td class="dt">Não</td><td class="dt">Não</td><td class="dt" style="color:#2f7d4f;font-weight:700">Sim</td><td class="dt" style="color:#2f7d4f;font-weight:700">Sim</td><td class="dt" style="color:#2f7d4f;font-weight:700">Sim</td></tr>
+    <tr><td class="nm">Assistência / revenda</td><td class="dt" style="color:#b0413f">Fraca</td><td class="dt">Média</td><td class="dt" style="color:#2f7d4f;font-weight:700">Forte · BH</td><td class="dt" style="color:#2f7d4f;font-weight:700">Forte</td><td class="dt" style="color:#2f7d4f;font-weight:700">Forte · Giben</td></tr>
+    <tr><td class="nm">Logística + instalação</td><td class="dt">~R$ 20 mil</td><td class="dt">~R$ 20 mil</td><td class="dt">~R$ 20 mil</td><td class="dt">~R$ 20 mil</td><td class="dt">~R$ 20 mil</td></tr>
+    <tr><td class="nm">Atende até R$ 600k sem troca</td><td class="dt">Provável que não</td><td class="dt">Meio-termo</td><td class="dt" style="color:#2f7d4f;font-weight:700">Sim</td><td class="dt" style="color:#2f7d4f;font-weight:700">Sim</td><td class="dt">Diferencial · não é a de volume</td></tr>
+    <tr class="tot"><td>Entra no degrau</td><td class="num">2 · 400 mil</td><td class="num">2 · 400 mil</td><td class="num">2–3 · 400–600</td><td class="num">3 · 600 mil</td><td class="num">qualquer fase</td></tr>
+  </tbody>
+</table>
+
+<div class="sec"><span class="bar"></span><span class="tx">O que pesa em cada escolha</span></div>
+<div class="cards c3">
+  <div class="card"><div class="ct">Raizen Spectra 7GT · R$ 160k</div><h4>O menor cheque possível</h4>
+    <p><b>A favor:</b> menor investimento de entrada; marca que a equipe já conhece e opera.</p>
+    <p><b>A ponderar:</b> depreciação alta e revenda fraca; não pega usada na troca — <b>vira custo afundado
+    ao migrar</b> — e provavelmente não basta até os 600 mil.</p></div>
+  <div class="card"><div class="ct">Usikraft Pegasus 1100 · R$ 200k</div><h4>O meio-termo de acabamento</h4>
+    <p><b>A favor:</b> 12 grupos operacionais, bordas mais limpas e fita PVC/ABS até 3 mm, que cobre a
+    linha premium. Bom custo-benefício.</p>
+    <p><b>A ponderar:</b> sem bipagem ou telemetria; não pega usada na troca; assistência a confirmar na região.</p></div>
+  <div class="card gold"><div class="ct">Giben KG668 · R$ 260k</div><h4>O capital que se preserva</h4>
+    <p><b>A favor:</b> marca moveleira conceituada que preserva valor; <b>pega a usada na troca</b>, migra para
+    o galpão novo e tem showroom, técnico e treinamento em BH. Atende até 600 sem nova troca.</p>
+    <p><b>A ponderar:</b> regulagens ainda manuais; sem bipagem.</p></div>
+</div>
+
+<div class="note mt"><div class="nt">Nota sobre custos que não aparecem no preço</div>
+  <p>Além do valor da máquina, cada coladeira exige <b>frete e instalação (~R$ 20 mil)</b> e a
+  <b>habilitação no galpão</b> — compressor, exaustão e elétrica — um investimento único de
+  <b>~R$ 56–61 mil no total</b>. A diferença real entre as opções não está só no preço de etiqueta:
+  está em <b>revenda, assistência local e migração</b> para o galpão novo.</p></div></div><div class="rf"><span class="fl">Caderno Empresarial · Valvic Marcenaria — Vargas Decor Ltda</span><span class="pn"><i>·</i>22</span></div></section>
+<section class="sheet"><div class="rh"><span class="rl">Parte V · Caminhos de Expansão</span><span class="rr">Valvic Marcenaria</span></div><div class="pg"><div class="ptitle"><div class="kx">Fichas técnicas · linha industrial</div><h3>Corte, furação e apoio</h3><div class="sub">As máquinas do horizonte de R$ 1 milhão — nesting e centro de usinagem — e os equipamentos que sustentam o fluxo.</div></div>
+<div class="two">
+  <div class="card"><div class="ct">Valor de feira · R$ 530 mil</div><h4>Nesting Giben</h4>
+    <div class="sp" style="font-size:8px;color:#6c7785;margin-top:2px">Centro de corte nesting com bipagem · base da linha</div>
+    <table class="tight" style="margin-top:6px">
+      <tbody>
+        <tr><td class="nm" style="width:42%">Função</td><td class="dt">Corte nesting</td></tr>
+        <tr><td class="nm">Rastreabilidade</td><td class="dt">Bipagem de peça</td></tr>
+        <tr><td class="nm">Aproveitamento</td><td class="dt">Plano otimizado</td></tr>
+        <tr><td class="nm">Integração</td><td class="dt">Coladeira + furação</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:6px">Substitui o corte tradicional por um fluxo <b>automatizado e rastreável</b>,
+    com menos desperdício de chapa. É a <b>porta de entrada da linha interligada</b>.</p>
+    <p style="margin-top:4px;color:#b0413f"><b>A ponderar:</b> cheque elevado, só no salto industrial —
+    pede galpão maior e demanda engatilhada.</p></div>
+  <div class="card"><div class="ct">Valor de feira · R$ 360 mil</div><h4>Giben Flexdrill</h4>
+    <div class="sp" style="font-size:8px;color:#6c7785;margin-top:2px">Centro de usinagem / furação CNC com bipagem</div>
+    <table class="tight" style="margin-top:6px">
+      <tbody>
+        <tr><td class="nm" style="width:42%">Função</td><td class="dt">Furação CNC</td></tr>
+        <tr><td class="nm">Rastreabilidade</td><td class="dt">Bipagem de peça</td></tr>
+        <tr><td class="nm">Precisão</td><td class="dt">Programada, repetível</td></tr>
+        <tr><td class="nm">Integração</td><td class="dt">Fecha corte–colagem–furação</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:6px">Fecha o <b>trio da linha</b>: a peça sai cortada, colada e <b>furada</b>, pronta
+    para montar. Menos retrabalho e montagem mais rápida — o que sustenta o volume do milhão.</p>
+    <p style="margin-top:4px;color:#b0413f"><b>A ponderar:</b> ganho pleno só com nesting e coladeira juntos.</p></div>
+</div>
+
+<div class="sec"><span class="bar"></span><span class="tx">Complementares</span><span class="ct">apoio de fluxo e expedição</span></div>
+<table>
+  <thead><tr><th style="width:22%">Equipamento</th><th>Papel</th><th style="width:20%">Entra quando</th><th class="num" style="width:16%">Referência</th></tr></thead>
+  <tbody>
+    <tr><td class="nm">Esteira de retorno</td><td>Devolve a peça ao operador após a colagem sem carregar manualmente. Reduz o deslocamento interno, acelera o ciclo da coladeira e sustenta o ritmo quando a produção sobe.</td><td class="dt">Reorganização · degrau 3+</td><td class="num sub">R$ 60.000</td></tr>
+    <tr><td class="nm">Embaladora</td><td>Protege e padroniza a peça na expedição — acabamento profissional na entrega e menos avaria no transporte. Ganha relevância com volume alto e operação de linha.</td><td class="dt">Linha industrial</td><td class="num sub">a partir de R$ 60.000</td></tr>
+  </tbody>
+</table>
+
+<div class="band mt">
+  <div><div class="bl">Linha completa · horizonte</div><div class="bv">R$ 890 mil</div></div>
+  <div class="br">Nesting (R$ 530k) + Flexdrill (R$ 360k), <b>antes</b> da coladeira, dos complementares e do
+    galpão. É o núcleo do cheque de R$ 1,5–2 milhões do Caminho B.</div>
+</div>
+
+<div class="note mt"><div class="nt">Por que só faz sentido em conjunto</div>
+  <p>Cada máquina isolada entrega menos do que promete. O ganho real da linha industrial vem da
+  <b>integração</b>: corte nesting, colagem e furação falando a mesma língua, com bipagem entre as etapas.
+  Deixa de ser &quot;uma máquina a mais&quot; e passa a ser um <b>sistema de produção</b> — e é isso que o
+  patamar de R$ 1 milhão exige.</p></div></div><div class="rf"><span class="fl">Caderno Empresarial · Valvic Marcenaria — Vargas Decor Ltda</span><span class="pn"><i>·</i>23</span></div></section>
+<section class="sheet"><div class="rh"><span class="rl">Parte V · Caminhos de Expansão</span><span class="rr">Valvic Marcenaria</span></div><div class="pg"><div class="ptitle"><div class="kx">Diferencial de mercado</div><h3>A máquina de puxadores</h3><div class="sub">Por que um único equipamento pode reposicionar o produto Valvic — ampliando margem por percepção de valor, não por volume.</div></div>
+<p class="lead2">Entre todas as máquinas deste caderno, a coladeira de puxadores é <b>a única cujo retorno
+não vem de produzir mais, e sim de produzir diferente</b>. Ela usina o puxador — o perfil de pega —
+<b>integrado à própria peça</b>, eliminando a ferragem comprada de terceiros. O resultado é um móvel de
+linhas limpas, sem puxador aparente, com um acabamento que o cliente percebe imediatamente como superior.</p>
+
+<div class="two mt">
+  <div class="card gold"><div class="ct">Giben KG398J · valor de feira R$ 480 mil</div><h4>Modelo de lançamento, inédito em Minas Gerais</h4>
+    <table class="tight" style="margin-top:6px">
+      <tbody>
+        <tr><td class="nm" style="width:38%">Função</td><td class="dt">Puxador / perfil integrado na peça</td></tr>
+        <tr><td class="nm">Filetagem</td><td class="dt">8 m/min — baixa · diferencial, não volume</td></tr>
+        <tr><td class="nm">Exclusividade</td><td class="dt">Nenhuma marcenaria de MG a tem ainda</td></tr>
+        <tr><td class="nm">Pega usada na troca</td><td class="dt">Sim · Giben</td></tr>
+      </tbody>
+    </table></div>
+  <div class="card"><div class="ct">O que ela cria</div><h4>Um produto que o concorrente não tem</h4>
+    <ul>
+      <li><b>Ineditismo em MG</b> — possivelmente alguém no Sul de Minas venha a ter, segundo vendedores do ramo</li>
+      <li>Puxador integrado como <b>assinatura visual</b> difícil de copiar</li>
+      <li>Elimina o <b>custo e o prazo</b> da ferragem de puxador comprada</li>
+      <li>Eleva a <b>percepção de valor</b> e o preço praticável</li>
+    </ul></div>
+</div>
+
+<div class="sec"><span class="bar"></span><span class="tx">Por que importa para a decisão de investimento</span></div>
+<p class="t">As demais máquinas ampliam <b>capacidade</b>; esta amplia <b>a marca</b>. Num mercado de móveis
+planejados onde a concorrência disputa preço, um diferencial de <b>design proprietário</b> muda o eixo da
+conversa com o cliente — de &quot;quanto custa&quot; para <b>&quot;isto só a Valvic faz&quot;</b>.</p>
+<p class="t">Há sinal de mercado: em São Paulo, um proprietário dessa máquina está <b>amplamente abastecido
+de demanda</b> de arquitetas e marcenarias do entorno. É um módulo que <b>se paga em posicionamento</b> —
+cada projeto premium carrega margem maior.</p>
+
+<div class="two mt">
+  <div class="note warn"><div class="nt">A ponderar com clareza</div>
+    <p>Ela <b>fileta a ~8 m/min</b>, velocidade baixa — <b>não é a coladeira de volume</b> em peças retas.
+    O ideal em produtividade é ter uma coladeira rápida para retas (ex.: Giben KG668) <b>e</b> a KG398J
+    como diferencial competitivo. Uma não substitui a outra.</p></div>
+  <div class="note ok"><div class="nt">Leitura estratégica</div>
+    <p>Não compete com as coladeiras de produção — <b>complementa</b>. Enquanto a linha resolve o
+    <b>volume</b>, os puxadores resolvem o <b>valor</b>.</p>
+    <p style="margin-top:5px">Em uma frase: transforma o móvel Valvic em <b>produto de assinatura</b> — e a
+    marca em algo que se escolhe por desejo, não só por orçamento.</p></div>
+</div></div><div class="rf"><span class="fl">Caderno Empresarial · Valvic Marcenaria — Vargas Decor Ltda</span><span class="pn"><i>·</i>24</span></div></section>
+<section class="sheet"><div class="rh"><span class="rl">Parte V · Caminhos de Expansão</span><span class="rr">Valvic Marcenaria</span></div><div class="pg"><div class="ptitle"><div class="kx">Cenário adicional</div><h3>Prestação de serviços</h3><div class="sub">Como a linha industrial vira um segundo motor de receita — e por que isso reduz o risco de todo o investimento.</div></div>
+<p class="lead2">Uma linha dimensionada para R$ 1 milhão de produção própria dificilmente estará
+<b>100% ocupada o tempo todo</b>. Essa folga — que num modelo tradicional seria custo ocioso — pode virar
+<b>receita</b>. Com nesting, coladeira e furação equipados com bipagem, a Valvic passa a poder
+<b>vender capacidade de produção</b> a terceiros: corte, colagem e furação para marcenarias sem CNC próprio.</p>
+
+<div class="cards c2 mt">
+  <div class="card"><div class="ct">O modelo</div><h4>Capacidade ociosa vira receita</h4>
+    <p>A mesma linha que produz o móvel Valvic presta <b>serviço B2B</b> nas janelas livres. O cliente é a
+    marcenaria menor, sem máquina, que precisa de corte e colagem de qualidade industrial. A Valvic vende
+    <b>a própria capacidade</b>, não só o produto final.</p></div>
+  <div class="card"><div class="ct">O efeito no caixa</div><h4>Preenche os vales de demanda</h4>
+    <p>Nos meses de produção própria mais fraca, o serviço <b>preenche o buraco de caixa</b>. A operação
+    deixa de depender exclusivamente do ciclo de vendas de móveis planejados e ganha uma
+    <b>receita mais estável</b> ao longo do ano.</p></div>
+  <div class="card"><div class="ct">A precificação</div><h4>Margem alta e auditável</h4>
+    <p>A <b>telemetria</b> da coladeira mede o metro colado real; a bipagem conta as peças. Isso permite
+    <b>precificar por peça ou por metro</b> — cobrança justa, transparente e medida pela própria máquina,
+    sem estimativa grosseira.</p></div>
+  <div class="card gold"><div class="ct">O ponto central</div><h4>De-risca o investimento</h4>
+    <p>A prestação de serviços <b>transforma o CAPEX em ativo que fatura mesmo com a produção própria não
+    cheia</b>. A linha industrial passa a se pagar por <b>dois caminhos, não um só</b> — e é isso que reduz
+    o risco de todo o investimento em máquinas.</p></div>
+</div>
+
+<div class="note blue mt"><div class="nt">Consequência prática — muda a estratégia de localização</div>
+  <p>Se o serviço mirar atender a demanda de <b>BH, Contagem e entornos</b>, a
+  <b>localização do galpão passa a ser fator estratégico</b>: estar perto dos clientes B2B — marcenarias e
+  lojas — muda a escolha do endereço. Proximidade vira vantagem logística e comercial, e essa decisão
+  precisa ser tomada <b>antes</b> de fechar o galpão novo, não depois.</p></div>
+
+<div class="note mt"><div class="nt">Síntese do cenário</div>
+  <p>Não é um negócio paralelo que disputa foco — é o <b>aproveitamento inteligente</b> de uma capacidade
+  que, de outro modo, ficaria parada. Receita de margem alta, que estabiliza o caixa e reduz o risco de
+  todo o investimento em máquinas.</p></div></div><div class="rf"><span class="fl">Caderno Empresarial · Valvic Marcenaria — Vargas Decor Ltda</span><span class="pn"><i>·</i>25</span></div></section>
+<section class="sheet"><div class="rh"><span class="rl">Parte V · Caminhos de Expansão</span><span class="rr">Valvic Marcenaria</span></div><div class="pg"><div class="ptitle"><div class="kx">Plano de expansão 2026–2027</div><h3>Fases, máquinas e mapa do investimento</h3><div class="sub">A versão executiva do plano: o que entra na Fase 1 para girar já, e o que a Fase 2 exige para a estrutura completa.</div></div>
+<div class="two">
+  <div class="card blue"><div class="ct">Fase 1 · imediato</div><h4>Start do negócio — girar com o essencial</h4>
+    <ul>
+      <li>Nova <b>coladeira de borda</b> Giben KG268 — arredondador, fita 1 mm</li>
+      <li>Novo <b>compressor</b> Techto 10 HP — alimenta a nova linha</li>
+      <li><b>Camionete usada</b> — reforço de logística imediato</li>
+      <li>+1 marceneiro, +1 auxiliar administrativo, +1 ajudante</li>
+      <li>Setup de postos: 2 kits de ferramentas + móveis</li>
+    </ul>
+    <div class="cv" style="margin-top:6px">≈ R$ 251–263 mil</div></div>
+  <div class="card"><div class="ct">Fase 2 · estrutura completa</div><h4>Galpão novo, todas as máquinas rodando</h4>
+    <ul>
+      <li>Nova <b>CNC nesting</b> Giben — capacidade 2× a Solid TAF</li>
+      <li><b>Furação horizontal</b> Raizen 3S — portas, cavilhas, fechaduras</li>
+      <li><b>Galpão 1.000 m²</b> — 40 × 25 m com doca de caminhão</li>
+      <li><b>Kia Bongo baú</b> — carga 1,5 t para o volume dobrado</li>
+      <li>+1 marceneiro, +1 ajudante, +1 projetista</li>
+    </ul>
+    <div class="cv" style="margin-top:6px">≈ R$ 872 mil</div></div>
+</div>
+
+<div class="sec"><span class="bar"></span><span class="tx">Mapa do investimento</span><span class="ct">consolidado das duas fases</span></div>
+<table class="tight">
+  <thead><tr><th style="width:34%">Item</th><th style="width:36%">Detalhe</th><th class="num" style="width:18%">Valor R$</th></tr></thead>
+  <tbody>
+    <tr class="sec2"><td colspan="3">Fase 1 · start imediato</td></tr>
+    <tr><td class="nm">Coladeira Giben KG268</td><td class="dt">Principal — arredondador + fita 1 mm · suporte local em BH</td><td class="num sub">~162.000</td></tr>
+    <tr><td class="nm">Compressor Techto AT 10HP</td><td class="dt">10 HP / 7,5 kW · 8,5 bar · cabine acústica · instalação externa</td><td class="num sub">21.310</td></tr>
+    <tr><td class="nm">Camionete usada</td><td class="dt">Reforço de logística</td><td class="num sub">50–60.000</td></tr>
+    <tr><td class="nm">Setup de pessoal</td><td class="dt">CAPEX único · 2 kits + posto adm. + 7 cadeiras</td><td class="num sub">~18–20.000</td></tr>
+    <tr class="enc"><td colspan="2">Total Fase 1</td><td class="num">≈ 251–263.000</td></tr>
+    <tr class="sec2"><td colspan="3">Fase 2 · estrutura completa</td></tr>
+    <tr><td class="nm">CNC Nesting Giben G2 1929</td><td class="dt">~1.430 chapas/mês · etiquetagem + furação · carga de palete inteiro</td><td class="num sub">490.000</td></tr>
+    <tr><td class="nm">Furação horizontal Raizen 3S</td><td class="dt">Topo e borda do MDF — cavilha, minifix, fechadura, dobradiça</td><td class="num sub">82.000</td></tr>
+    <tr><td class="nm">Kia Bongo baú</td><td class="dt">Carga ~1,5 t · entrega do volume dobrado</td><td class="num sub">~100.000</td></tr>
+    <tr><td class="nm">Infraestrutura do galpão</td><td class="dt">Reforma · elétrica 150 kVA · aspiração · ar comprimido</td><td class="num sub">~200.000</td></tr>
+    <tr class="enc"><td colspan="2">Total Fase 2</td><td class="num">≈ 872.000</td></tr>
+    <tr class="tot"><td colspan="2">Investimento total · Fase 1 + Fase 2</td><td class="num">≈ R$ 1.100.000</td></tr>
+  </tbody>
+</table>
+
+<div class="two mt">
+  <div class="note ok"><div class="nt">Por que pagamento à vista</div>
+    <p>O aporte <b>compra as máquinas à vista</b>, desbloqueando <b>desconto de 10–15%</b> que financia parte
+    do próprio processo — e elimina parcelas mensais que pressionariam o caixa durante a rampa de produção.</p></div>
+  <div class="note warn"><div class="nt">Ainda em aberto</div>
+    <ul>
+      <li><b>Custo mensal do galpão</b> (aluguel) — impacta o ponto de equilíbrio final.</li>
+      <li><b>Capital de giro</b> operacional durante a rampa — não incluído no total.</li>
+      <li><b>Estrutura do aporte</b> — valor e contrapartida (% societária ou empréstimo remunerado) não fixados.</li>
+      <li>Confirmar se os preços Giben são <b>à vista</b> e solicitar desconto.</li>
+    </ul></div>
+</div></div><div class="rf"><span class="fl">Caderno Empresarial · Valvic Marcenaria — Vargas Decor Ltda</span><span class="pn"><i>·</i>26</span></div></section>
+<section class="sheet"><div class="rh"><span class="rl">Parte V · Caminhos de Expansão</span><span class="rr">Valvic Marcenaria</span></div><div class="pg"><div class="ptitle"><div class="kx">Retorno ao investidor</div><h3>Cenários e payback</h3><div class="sub">Dois cenários sobre o mesmo investimento de R$ 1,1 milhão — o conservador, de dobrar a produção, e o de capacidade instalada.</div></div>
+<div class="two">
+  <div class="card"><div class="ct">Cenário 1 · conservador</div><h4>Dobrar: R$ 200k → R$ 400k / mês</h4>
+    <table class="tight" style="margin-top:6px">
+      <tbody>
+        <tr><td class="nm" style="width:46%">Receita nova</td><td class="num sub">+R$ 200k<span class="fn">/mês adicional</span></td></tr>
+        <tr><td class="nm">MC 30%</td><td class="num sub">+R$ 60k<span class="fn">MC adicional/mês</span></td></tr>
+        <tr><td class="nm">Folha nova</td><td class="num sub" style="color:#b0413f">−R$ 41k<span class="fn">com encargos/mês</span></td></tr>
+        <tr><td class="nm">Sobra líquida</td><td class="num sub">≈ R$ 19k<span class="fn">/mês</span></td></tr>
+      </tbody>
+    </table>
+    <div class="cv" style="margin-top:7px">~55 meses <span style="font-size:11px;color:#6c7785">· ~4,6 anos</span></div>
+    <p style="margin-top:4px;color:#b0413f;font-size:8.2px">Antes de fixos novos — aluguel, energia e
+    combustível — ainda a incluir. Eles reduzem o saldo e alongam o payback.</p></div>
+  <div class="card gold"><div class="ct">Cenário 2 · capacidade instalada</div><h4>R$ 1 milhão / mês — teto das máquinas novas</h4>
+    <table class="tight" style="margin-top:6px">
+      <tbody>
+        <tr><td class="nm" style="width:46%">Receita nova</td><td class="num sub">+R$ 800k<span class="fn">/mês adicional</span></td></tr>
+        <tr><td class="nm">MC 30%</td><td class="num sub">+R$ 240k<span class="fn">MC adicional/mês</span></td></tr>
+        <tr><td class="nm">Investimento</td><td class="num sub">R$ 1,1 mi<span class="fn">total da estrutura</span></td></tr>
+        <tr><td class="nm">Payback no pico</td><td class="num sub" style="color:#2f7d4f">&lt; 5 meses</td></tr>
+      </tbody>
+    </table>
+    <div class="cv" style="margin-top:7px">&lt; 12 meses <span style="font-size:11px;color:#6c7785">· por alavancagem operacional</span></div>
+    <p style="margin-top:4px;font-size:8.2px">O cenário exige demanda engatilhada para não ociar a
+    capacidade — é onde o pipeline do investidor pesa mais que o capital.</p></div>
+</div>
+
+<div class="sec"><span class="bar"></span><span class="tx">A alavancagem operacional, em uma frase</span></div>
+<div class="band">
+  <div><div class="bl">O princípio</div><div class="bv" style="font-size:22px">Custo fixo linear,<br>capacidade exponencial</div></div>
+  <div class="br">Com a estrutura instalada, o custo fixo cresce <b>de forma linear</b> enquanto a capacidade de
+    faturamento cresce <b>de forma exponencial</b>. A mesma folha, o mesmo galpão e as mesmas máquinas que
+    produzem R$ 400 mil/mês são as que chegam a <b>R$ 1 milhão/mês</b> — o diferencial vira
+    <b>capital de giro e carteira comercial</b>.</div>
+</div>
+
+<div class="sec"><span class="bar"></span><span class="tx">As decisões que ficam na mesa</span></div>
+<table class="tight">
+  <thead><tr><th style="width:15%">Decisão</th><th style="width:44%">O que está em jogo</th><th>Extremos</th></tr></thead>
+  <tbody>
+    <tr><td class="nm">Ritmo</td><td>Crescer por etapas, na medida da demanda — o R$ 1 milhão como horizonte, não como prazo.</td><td class="dt">Gradual (menor risco) ↔ acelerado (chega antes)</td></tr>
+    <tr><td class="nm">Galpão</td><td>Onde a expansão acontece e como o capital fica exposto.</td><td class="dt">Atual (obra R$ 90–120k) ↔ novo (cheque R$ 1,5–2 mi)</td></tr>
+    <tr><td class="nm">Coladeira</td><td>Cheque menor agora × capital que preserva valor e migra.</td><td class="dt">Raizen R$ 160k ↔ Giben KG668 R$ 260k</td></tr>
+    <tr><td class="nm">Alavancas</td><td>Diferenciação de produto e monetização da capacidade instalada.</td><td class="dt">Puxadores (margem) + serviços (de-risca)</td></tr>
+  </tbody>
+</table>
+
+<div class="note mt"><div class="nt">O que validar antes de subir cada degrau</div>
+  <p>Confirmar <b>demanda sustentada</b> acima do patamar atual &nbsp;·&nbsp; identificar o
+  <b>gargalo real</b> que o investimento vai atacar &nbsp;·&nbsp; checar que o salto <b>preserva a margem</b>.
+  Para fechar números: obter <b>propostas finais</b> das máquinas (de feira → firmes), orçar a
+  <b>infraestrutura</b> com fornecedores locais e definir a <b>forma de aporte</b> e o payback aceitável por etapa.</p></div></div><div class="rf"><span class="fl">Caderno Empresarial · Valvic Marcenaria — Vargas Decor Ltda</span><span class="pn"><i>·</i>27</span></div></section>
+<section class="sheet">
+<div class="end">
+  <div class="kx">Encerramento</div>
+  <h2>Os caminhos estão<br><span>postos na mesa</span></h2>
+  <p style="font-size:10.6px;color:rgba(255,255,255,.7);line-height:1.75;margin-top:8mm;max-width:118mm">
+    Este caderno apresenta <b style="color:#fff">caminhos e realidades</b>, de forma organizada — não uma
+    recomendação. Cada degrau tem o seu gatilho, cada máquina o seu momento, cada galpão o seu trade-off.
+    O material existe para que a decisão seja <b style="color:#fff">informada e consciente</b>, por quem
+    tem os números na ponta da língua.</p>
+
+  <div class="src">
+    <div class="sh">Documentos de origem · reunidos neste volume</div>
+    <div class="sr"><span class="sd">07 ago 2026</span><span class="sn">Passivo Trabalhista — Posição Apurada</span><span class="sf">Parte IV</span></div>
+    <div class="sr"><span class="sd">25 jul 2026</span><span class="sn">Estrutura de Demandas — Pessoas &amp; Infraestrutura</span><span class="sf">Parte II</span></div>
+    <div class="sr"><span class="sd">25 jul 2026</span><span class="sn">Fluxo de Trabalho — Posição &amp; Impacto</span><span class="sf">Parte II</span></div>
+    <div class="sr"><span class="sd">20 jul 2026</span><span class="sn">Organograma &amp; Carga Operacional</span><span class="sf">Parte II</span></div>
+    <div class="sr"><span class="sd">16 jul 2026</span><span class="sn">Panorama Comercial — Rumo a Agosto</span><span class="sf">Parte I</span></div>
+    <div class="sr"><span class="sd">06 jul 2026</span><span class="sn">Caminhos de Expansão — Apresentação Visual</span><span class="sf">Parte V</span></div>
+    <div class="sr"><span class="sd">06 jul 2026</span><span class="sn">Dossiê Técnico de Expansão</span><span class="sf">Parte V</span></div>
+    <div class="sr"><span class="sd">29 jun 2026</span><span class="sn">Modelo Econômico &amp; Alavancagem Operacional</span><span class="sf">Parte III</span></div>
+    <div class="sr"><span class="sd">26 jun 2026</span><span class="sn">Plano de Expansão 2026–2027</span><span class="sf">Parte V</span></div>
+  </div>
+
+  <div class="fin">
+    <div class="f1"><b style="color:#fff">Uso restrito.</b> Contém dado de remuneração e posição financeira —
+      não circular fora dos sócios e do destinatário.<br>
+      Valvic Marcenaria · Vargas Decor Ltda · CNPJ 17.269.304/0001-51 · Belo Horizonte / MG</div>
+    <div class="f2">Agosto<br>2026</div>
+  </div>
+</div></section>
+</body>
+</html>

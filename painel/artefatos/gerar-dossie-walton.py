@@ -134,7 +134,7 @@ HTML=f'''<style>{CSS}</style>
     <p class="sub">Tudo que foi produzido para a conversa com o Walton, do mais recente ao mais antigo. Cada entrada abre a versão mais atual do documento.</p>
     <div class="stats">
       <div class="stat"><div class="n mono">{len(docs)}</div><div class="l">documentos</div></div>
-      <div class="stat"><div class="n mono">26 jun → 25 jul</div><div class="l">período</div></div>
+      <div class="stat"><div class="n mono">26 jun → 07 ago</div><div class="l">período</div></div>
       <div class="stat"><div class="n mono">{rev_n}</div><div class="l">revisado depois de criado</div></div>
     </div>
   </header>
@@ -145,7 +145,7 @@ HTML=f'''<style>{CSS}</style>
 
   <footer>
     <span><b>Uso restrito.</b> Documentos com dado de remuneração e posição financeira — não circular fora dos sócios e do destinatário.</span>
-    <span>Fonte: pasta <span class="mono">painel/</span> do repositório · atualizado em 25 de julho de 2026.</span>
+    <span>Fonte: pasta <span class="mono">painel/</span> do repositório · atualizado em 7 de agosto de 2026.</span>
   </footer>
 </div>
 '''
