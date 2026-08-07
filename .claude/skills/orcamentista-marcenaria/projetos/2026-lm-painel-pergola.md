@@ -154,3 +154,61 @@ stand · garantia **2 anos** (mesma da etapa contratada) · validade 7 dias.
    desenvolvimento, não a divisão de gavetas.
 6. **Fora do escopo:** caixa de gypsum, pintura, cortinas, tapetes, eletros,
    bancadas de pedra.
+
+
+---
+
+# ⚠️ AUDITORIA DO DECORADO — o Jonathan achou os valores baixos [07/08]
+
+> *"estou achando os valores bem abaixo do real. vc considerou tudo, estofados,
+> portas de espelho, sistema etc?"*
+
+Estava. Quatro furos, e o primeiro é grosseiro.
+
+| # | Erro | Delta |
+|---|---|--:|
+| 1 | **Portas de espelho orçadas como painel de MDF.** Os roupeiros do quarto e da suíte têm portas de correr com hachura de espelho na elevação — e o render do quarto mostra o reflexo. `ferragens.md` é explícito: terceirizadas, ~R$ 1.200 + R$ 200 de frete. Eu tinha R$ 1.012 de chapa onde vão R$ 5.200. | **+4.188** |
+| 2 | **Sistema de correr a R$ 250.** Peguei "Sistema roupeiro 250" da planilha em vez do **Dominus** (R$ 1.840 o kit de 2 portas), que é o padrão da casa. | **+3.630** |
+| 3 | **LED curto** — contei 9,9 m; são **16,7 m** (dois cortineiros, torre de 5 nichos da suíte, nichos do quarto, fita da cozinha). | **+888** |
+| 4 | Estofado a R$ 450/m² — **Jonathan cravou: mantém 450**, é o custo da base. | 0 |
+| — | Chapa Arauco Matt — **Jonathan confirmou: o preço está certo.** Flag fechado. | 0 |
+
+**Custo direto: R$ 37.808,82 → R$ 46.515,04.**
+Decorado a MC 35% sem RT: **R$ 84.000 → R$ 103.300.** Total **R$ 191.500**.
+
+## O teste que faltou
+
+**R$ por chapa** — a métrica que denuncia orçamento raso:
+
+| | R$/chapa |
+|---|--:|
+| Decorado (1ª versão) | 1.867 |
+| Cozinha Rizzi (residencial) | 2.005 |
+| Stand SPE (fechado) | 2.262 |
+| **Decorado corrigido** | **2.296** |
+
+Um decorado com espelhos, laca, estofado e quatro acabamentos saindo **mais barato
+por chapa que uma cozinha residencial** não fechava. Rodar essa razão contra jobs
+comparáveis antes de entregar teria pego os quatro furos.
+
+## ⚠️ ABERTO — espelho da ELEVAÇÃO 03
+
+Painel de 1,90 × 2,40 (4,56 m²) + 4 nichos de 0,39 × 0,50 = **5,34 m²**.
+Estão no orçamento a **R$ 285/m²** — mas os 285 vêm da tabela *"Espelho Prata ·
+com perfil"* de `chapas.md`, onde **a unidade é FOLHA**, não metro quadrado.
+
+| R$/m² | Custo direto | Decorado | Total |
+|--:|--:|--:|--:|
+| 285 *(hoje)* | 46.515 | 103.300 | 191.500 |
+| 450 | 47.396 | 105.300 | 193.500 |
+| 630 | 48.357 | 107.400 | 195.600 |
+| 800 | 49.265 | 109.400 | 197.600 |
+
+**Proposta NÃO fechada** — instrução do Jonathan: *"não feche a proposta enquanto
+não fecharmos os valores"*. `proposta-spe-nova-lima.pdf` está com os números
+antigos e não deve ser enviado.
+
+### APRENDIZADO — unidade de tabela
+`chapas.md` cota vidro e espelho **por folha**; `validacao-orcamento.md` cota
+**por unidade**. Nenhuma das duas é por m². Usar esses números como R$/m² em
+painelaria subestima sempre.

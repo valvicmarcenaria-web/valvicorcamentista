@@ -34,8 +34,16 @@ FITA_BR, FITA_COR, FILET = 2.0, 3.0, 2.50
 
 DOBR, CORR, ARTIC   = 10.0, 70.0, 150.0
 CAVA_M, SUP_PRAT    = 50.0, 1.50
-DESLIZ_2P           = 250.0   # sistema de correr 2 portas (base: "Sistema roupeiro")
-ESPELHO_M2          = 285.0   # espelho prata com perfil
+# ⚠ CORRIGIDO [Jonathan 07/08] — a 1a versao usou "Sistema roupeiro 250" da
+#   planilha em vez do DOMINUS, que e' o padrao da casa (ferragens.md).
+DOMINUS_2P          = 1840.0  # Rometal Dominus, kit de 2 portas
+RO82                = 700.0   # sistema de porta de passagem + trilho
+# ⚠ As portas de correr dos roupeiros do QUARTO e da SUITE sao ESPELHADAS
+#   (hachura de espelho na elevacao + render). Terceirizadas: aluminio +
+#   espelho prata com pelicula de seguranca. R$ 1.200/porta + R$ 200 de frete.
+PORTA_ESPELHO       = 1200.0
+FRETE_ESPELHO       = 200.0
+ESPELHO_M2          = 285.0   # ⚠ ABERTO — 285 vem de tabela por FOLHA, nao por m²
 LACA_M2             = 300.0   # material de pintura/laca — terceiro
 INOX_M              = 52.0    # rodapé perfil inox escovado h=5
 LED_ML              = 130.0   # fita + perfil com difusor
