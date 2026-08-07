@@ -145,3 +145,38 @@ máquina/operação.
 > **Próximo passo de calibração:** comparar a estimativa manual do Marcos
 > (a partir de medidas/render) com esses números reais e ajustar os fatores
 > (aproveitamento por tipo, fita por gaveta/porta, furação por módulo).
+
+---
+
+## ⚠️ O empacotador guloso depende da ORDEM de entrada [07/08/2026]
+
+O `nest()` que usamos nos scripts de corte é um empacotador **por faixas**
+(shelf packing). Ele é guloso: a ordem em que as peças entram decide quantas
+chapas saem. Ordenar só por **largura decrescente** — que era o padrão — pode
+gastar uma chapa inteira à toa.
+
+**Caso real** (armário superior de cozinha, 07/08): as 3 verticais de 50×50
+ocupavam a primeira faixa e empurravam os tampos de 230 para outra chapa →
+**3 chapas com 47%**. Empacotado à mão, tudo cabia em **2 chapas com 71%**.
+R$ 250 de custo e R$ 555 de preço em cima de um artefato do algoritmo.
+
+**Correção:** varrer várias ordens e ficar com a menor contagem.
+
+```python
+ordens = [lambda p: -p[1],            # largura decrescente
+          lambda p: (-p[1], -p[0]),   # largura, depois comprimento
+          lambda p: -p[0],            # comprimento decrescente
+          lambda p: -p[0]*p[1]]       # área decrescente
+chapas = min(_pack(sorted(base, key=k)) for k in ordens)
+```
+
+**Como ler o aproveitamento:**
+
+| Sintoma | Leitura |
+|---|---|
+| < 50% com **muita área** | suspeitar do algoritmo — conferir à mão antes de aceitar |
+| < 50% com **pouca área** | piso de 1 chapa por cor × espessura. Normal, não é desperdício |
+| < 50% em **peça única multi-material** | pode ser o chão real (cristaleira: 36% verificado peça a peça) |
+
+> A regra continua: **sub-50% é sintoma a investigar**, nunca resultado a aceitar.
+> Mas a investigação agora começa pelo empacotador, não pelo móvel.
