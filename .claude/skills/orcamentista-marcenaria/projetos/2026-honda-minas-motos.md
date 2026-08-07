@@ -94,9 +94,10 @@ MA-01 5,69 m² · MA-02 17,20 m². Fita **73,13 m** (50,47 cor + 22,66 branco).
 
 Ferragens: 12 dobradiças Sensys c/ amortecimento · 6 pistões a gás · 4 corrediças
 ocultas Hardt · 6,84 m de cava usinada · 8 pontos de fixação invisível.
-Terceirizado: **serralheria do metalon R$ 1.200** ⚠ estimado.
+Terceirizado: **serralheria do metalon R$ 600** (cravado pelo Jonathan).
+Logística: 2 carretos · 2 visitas técnicas · instalação de 3 dias de dupla = R$ 2.900.
 
-**CUSTO DIRETO: R$ 9.199,01**
+**CUSTO DIRETO: R$ 8.599,01**
 
 ---
 
@@ -126,27 +127,35 @@ a mais. Testar, não supor.
 
 ---
 
-## Preço — MC 35% · sem RT · divisor 0,45016
+## ✅ FECHADO — MC 32% · sem RT · divisor 0,48016 [Jonathan 07/08]
+
+Cinco perguntas, cinco respostas: **sem RT · MC 32%** · chapa na linha Fosco
+confirmada · **metalon a R$ 600** (eu tinha estimado 1.200) · tampo do MA-02 em
+MDF, não é pedra · fixação invisível orçada como está.
 
 | | Custo direto | Investimento |
 |---|--:|--:|
-| **MA-01** — Armário superior | 3.454,11 | **R$ 7.700** |
-| **MA-02** — Armário inferior em "L" | 5.744,90 | **R$ 12.800** |
-| **TOTAL** | **9.199,01** | **R$ 20.500** |
+| **MA-01** — Armário superior | 2.854,11 | **R$ 5.900** |
+| **MA-02** — Armário inferior em "L" | 5.744,90 | **R$ 12.000** |
+| **TOTAL** | **8.599,01** | **R$ 17.900** |
 
-MC conferida **35,1%**. Escada: −3% 19.900 · −5% 19.500 · −7% **19.100**
-(no pior degrau a MC ainda fica em **31,9%**, acima do piso de 28%).
+MC conferida **32,0%**.
 
-Base MC 35% sem RT segue o precedente do **SPE Nova Lima** — também comercial,
-também executivo de escritório de arquitetura.
+> ⚠️ **A escada não foi oferecida.** A MC 32%, o último degrau (−7% → R$ 16.600)
+> cai para **28,2%** — encostado no piso de 28%. Cliente corporativo com canteiro
+> em andamento: **40 / 40 / 20** é a condição certa aqui, e não custa margem.
 
-### Sensibilidade — a RT continua pesando mais que a MC
+Prazo **30 a 40 dias úteis** · garantia **5 anos** (o gaveteiro usa corrediça
+oculta Hardt — tabela corrigida da casa) · validade 15 dias.
+
+### Sensibilidade que ficou registrada
 
 | | sem RT | com RT 10% |
 |---|--:|--:|
-| MC 30% | 18.400 | 22.300 |
-| **MC 35%** | **20.400** | 25.400 |
-| MC 40% | 23.000 | 29.500 |
+| MC 30% | 17.200 | 20.900 |
+| **MC 32% ← fechado** | **17.900** | — |
+| MC 35% | 19.100 | 23.700 |
+| MC 40% | 21.500 | 27.500 |
 
 ### Sanidade — R$ por m² de chapa
 
@@ -155,35 +164,40 @@ também executivo de escritório de arquitetura.
 | Cozinha Rizzi (residencial) | 626 |
 | Armário superior de cozinha | 647 |
 | SPE decorado (comercial) | 739 |
-| **→ Honda showroom** | **895** |
+| **→ Honda showroom** | **782** |
 
-Acima da faixa **por ser job pequeno com custo fixo alto**: serralheria, fixação
-invisível e 3 dias de instalação somam **49% do custo direto** (R$ 4.500 de
-R$ 9.199). Não é levantamento inflado — é o piso de custo de mobilizar uma equipe
-para dois móveis num canteiro comercial no Contorno.
+Ainda acima da faixa, e o motivo é legítimo: **job pequeno com custo fixo alto**.
+Serralheria, fixação invisível e 3 dias de instalação somam **45% do custo direto**
+(R$ 3.900 de R$ 8.599). É o piso de mobilizar equipe para dois móveis num canteiro
+comercial no Contorno — não é levantamento inflado.
 
 ---
 
-## ⚠️ Aberto — precisa da palavra do Jonathan
+## Proposta emitida
 
-1. **RT.** O executivo é da Mímesis. Tem RT de 10%? É a maior alavanca daqui
-   (R$ 20.500 → R$ 25.400 na mesma MC).
-2. **Preço de compra da chapa Duratex Amêndola Rústica e Palha.** Usei a linha
-   Fosco (18 mm R$ 600). Rústica texturizada costuma custar acima disso.
-3. **Serralheria do metalon — R$ 1.200 é estimativa minha.** A casa não tem tabela
-   para metalon 20×20 com pintura eletrostática. Cotar.
-4. **Tampo do MA-02.** O DT-02 chama de *"bancada/tampo do móvel"*. Orcei em MDF
-   Palha 18. Se for pedra (a prancha tem BG07 = bancada, outra disciplina), sai do
-   escopo e o custo cai.
-5. **Parede de fixação do MA-01.** 3,15 m de aéreo em balanço com **fixação
-   invisível**. A nota 2 da prancha manda conferir se é drywall — se for, exige
-   reforço estrutural que não está no preço.
+`build-honda-minas-motos.py` → `proposta-honda-minas-motos.pdf`, **3 páginas**:
+capa · escopo (MA-01 + MA-02 + dois destaques técnicos) · investimento.
 
-## Premissas assumidas (não estão na prancha)
+Layout editorial comercial — o mesmo do SPE Nova Lima, com o CSS **lido direto do
+`build-lm.py`** para os dois nunca divergirem. Mesmo perfil de cliente: obra
+comercial especificada por escritório de arquitetura.
+
+A página de escopo abre dizendo o que a proposta **não** cobre: a prancha separa
+mobiliário (MB01–MB40) de marcenaria (MA-01/MA-02), e a proposta é exatamente a
+segunda tabela. Numa obra com 40 itens de mobiliário na mesma prancha, deixar essa
+fronteira explícita evita a discussão depois.
+
+## Premissas assumidas (não estão na prancha) — declaradas na proposta
 
 - **Interno branco**, exceto o nicho do MA-01, que é aberto e vai todo na cor.
 - **2 divisórias internas** no caixote A do MA-01 — a prancha desenha um vão de
   209 cm sem apoio, que empenaria tampo e base. Caem atrás das básculas fechadas.
 - **1 prateleira por módulo de porta** no MA-02 (4 no total) — a prancha não desenha.
-- **Travessa de metalon** sob a prateleira longa de 213 cm do MA-01, já dentro do
+- **Travessa de metalon** sob a prateleira longa de 213 cm do MA-01, dentro do
   pacote de serralheria. Em 18 mm com vão livre de 213 ela flexiona.
+
+## Segue aberto para a produção
+
+**Parede de fixação do MA-01.** 3,15 m de aéreo em balanço com fixação invisível.
+A nota 2 da prancha manda conferir se é drywall — se for, o reforço estrutural
+**não está no preço**. Está declarado na proposta como verificação prévia à produção.

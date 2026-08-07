@@ -88,8 +88,9 @@ USIN_CAVA    = 25.0    # R$/m — usinagem da cava embutida na CNC
 FIX_INVIS    = 50.0    # un — suporte/mão-francesa oculta + bucha estrutural
 
 # Serralheria MA-01 — 3 pórticos de metalon 20×20 com pintura eletrostática
-# preta. ~9 m de barra + corte/solda + pintura + frete.  ⚠ SEM TABELA NA CASA.
-METALON_PACK = 1200.0
+# preta. ~9 m de barra + corte/solda + pintura + frete.
+# [Jonathan 07/08] CRAVOU R$ 600 — eu tinha estimado 1.200 sem tabela da casa.
+METALON_PACK = 600.0
 
 # ── peças  (material, descrição, comprimento, largura, qtd) ─────────────────
 pecas = [
@@ -332,7 +333,7 @@ cd02 = cd_ma02_exato + rateavel*(1-p01)
 a_, liqF_, b_ = 0.162, 0.88, 0.043
 def div_(mc, rt): return 1 - a_ - liqF_*b_ - mc - (liqF_*0.10 if rt else 0.0)
 
-MC, RT = 0.35, False
+MC, RT = 0.32, False   # [Jonathan 07/08] sem RT · MC 32%
 div = div_(MC, RT)
 inv01 = round(cd01/div/100)*100
 inv02 = round(cd02/div/100)*100
@@ -381,23 +382,19 @@ for mc in (0.30, 0.35, 0.40):
 print('  Projeto de escritório de arquitetura (Mímesis) — CONFIRMAR se há RT.')
 
 print('\n' + '─'*94)
-print('⚠ A CONFIRMAR ANTES DE FECHAR')
-for f in (
- 'RT — o executivo é da Mímesis Arquitetura. Tem RT de 10%? É a maior alavanca daqui.',
- 'Preço de compra da chapa Duratex Amêndola Rústica e Palha — usei a linha Fosco',
- '  (15mm R$500 · 18mm R$600). Rústica texturizada costuma custar acima disso.',
- 'Serralheria do metalon — R$ 1.200 é estimativa minha, a casa não tem tabela para',
- '  metalon 20×20 com pintura eletrostática. Cotar com o serralheiro.',
- 'O tampo do MA-02 (2 cm, "bancada/tampo do móvel" no DT-02) está orçado em MDF',
- '  Palha 18 mm. Se for pedra (a prancha tem BG07 = bancada, outra disciplina),',
- '  sai do escopo e o custo cai.',
- 'Interno: a prancha não especifica. Orcei INTERNO BRANCO, exceto o nicho do MA-01,',
- '  que é aberto e vai todo na cor.',
- 'Prateleiras do MA-02 não estão desenhadas. Lancei 1 por módulo de porta (4 no total).',
- 'PAREDE DE FIXAÇÃO do MA-01 — 3,15 m de aéreo em balanço com FIXAÇÃO INVISÍVEL.',
- '  Se for drywall (nota 2 da prancha), exige reforço estrutural. Conferir na obra.',
- 'Vão livre de 213 cm na prateleira longa do MA-01 — em 18 mm ela flexiona.',
- '  Previ travessa de metalon sob ela no pacote de serralheria.',
- 'Cervejeira e adega (proj. na VISTA 01) e a bancada BG07 NÃO são marcenaria.',
- 'MB01 a MB40 são mobiliário padrão Honda / comprado — fora deste orçamento.'):
+print('✅ FECHADO PELO JONATHAN [07/08]')
+for f in ('RT: NÃO tem. MC 32%.',
+          'Chapa Duratex Amêndola Rústica e Palha na linha Fosco (18 mm R$ 600) — confirmado.',
+          'Serralheria do metalon: R$ 600 (eu tinha estimado 1.200).',
+          'Tampo do MA-02 em MDF Palha 18 mm — confirmado, não é pedra.',
+          'Fixação invisível do MA-01 orçada como está — conferir a parede na obra.'):
+    print('  · ' + f)
+
+print('\n⚠ PREMISSAS ASSUMIDAS (não estão na prancha) — valem para a produção')
+for f in ('Interno BRANCO, exceto o nicho do MA-01, que é aberto e vai todo na cor.',
+          '2 divisórias internas no caixote A: a prancha desenha 209 cm de vão sem apoio,',
+          '  que empenaria tampo e base. Ficam atrás das básculas fechadas.',
+          '1 prateleira por módulo de porta no MA-02 (4 no total) — a prancha não desenha.',
+          'Travessa de metalon sob a prateleira de 213 cm do MA-01 (flexiona em 18 mm).',
+          'FORA DO ESCOPO: cervejeira, adega, bancada BG07 e os 40 itens MB.'):
     print('  · ' + f if not f.startswith('  ') else '   ' + f.strip())
