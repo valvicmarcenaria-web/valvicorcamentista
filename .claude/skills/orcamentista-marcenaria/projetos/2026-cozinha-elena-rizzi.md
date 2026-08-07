@@ -1,6 +1,7 @@
 # Orçamento — Cozinha (consultoria Rizzi Interiores)
 
-> **Status:** 🟢 Precificado em 07/08/2026 — **R$ 43.400** (MC 35% · COM RT · Hardt).
+> **Status:** 🟢 Precificado em 07/08/2026 — **R$ 38.100** (MC **30%** · COM RT · Hardt).
+> *MC baixada de 35% para 30%: "o perfil do cliente não condiz com esse valor".*
 > Aguarda medição no local e as duas linhas ilegíveis do documento.
 > Fontes: `DOC-2026...A0017.pdf` · `RI - CONSUL...ELENA.pdf` · `Casa Sil.pdf` (capturas).
 > Script: `corte-cozinha-elena.py`
@@ -87,16 +88,44 @@ documento forem literais, são ~60 ripas e a fita vai a **324 m só nesse item**
 
 ## Preço — parâmetros travados [Jonathan 07/08]
 
-**MC 35% · COM RT (10% do líquido) · ferragem Hardt** → divisor **0,36216**.
+**MC 30% · COM RT (10% do líquido) · ferragem Hardt** → divisor **0,41216**.
 
 | Linha | Custo direto | Tabela |
 |---|--:|--:|
-| **Armários inferiores da bancada** (móveis 1 e 2) | R$ 5.501,35 | **R$ 15.200** |
-| Demais móveis (aéreos, nicho, torre, ripado, mesa) | R$ 10.220,14 | **R$ 28.200** |
-| **Total** | **R$ 15.721,49** | **R$ 43.400** |
+| **Armários inferiores da bancada** (móveis 1 e 2) | R$ 5.501,35 | **R$ 13.300** |
+| Demais móveis (aéreos, nicho, torre, ripado, mesa) | R$ 10.220,14 | **R$ 24.800** |
+| **Total** | **R$ 15.721,49** | **R$ 38.100** |
 
-MC conferida **35,0%**. RT ao parceiro: **R$ 3.819**.
-Escada: −3% 42.100 · −5% 41.200 · −7% **40.400**.
+MC conferida **30,0%**. RT ao parceiro: **R$ 3.353**.
+
+### ⚠️ A escada de pagamento encosta no piso
+
+| Condição | Preço | MC |
+|---|--:|--:|
+| Tabela | 38.100 | 30,0% |
+| −3% | 37.000 | 28,7% |
+| −5% | 36.200 | **27,8%** ⚠ |
+| −7% | 35.400 | **26,8%** ⚠ |
+
+A 35% a escada inteira cabia. A 30%, os dois últimos degraus caem abaixo do piso
+de 28% da casa. **Se a proposta sair com a escada completa, o −7% já é decisão de
+furar o piso** — não é desconto de tabela.
+
+### ⚠️ O RT pesa mais que os 5 pontos de MC
+
+| Cenário | Preço | MC real | RT ao parceiro |
+|---|--:|--:|--:|
+| MC 35% COM RT | 43.400 | 35,0% | 3.819 |
+| **MC 30% COM RT** ← o pedido | **38.100** | 30,0% | 3.353 |
+| **MC 35% SEM RT** | **34.900** | **35,0%** | 0 |
+| MC 30% SEM RT | 31.400 | 29,9% | 0 |
+
+- Cortar 5 pontos de MC alivia **R$ 5.300** e custa 5 pontos de margem.
+- Tirar o RT a MC 35% alivia **R$ 8.500** e **não custa nada de margem**.
+- **R$ 34.900 a MC 35% sem RT é R$ 3.200 mais barato que os R$ 38.100 a MC 30% com RT.**
+
+Se o problema é o preço para o perfil da cliente, o RT é a alavanca maior — e a
+única que não sai da nossa margem. É decisão comercial com a Rizzi, não de orçamento.
 
 ### Como a bancada foi separada
 
@@ -124,12 +153,12 @@ Se a bancada inferior sair do escopo, o restante **nestado sozinho** dá 13 chap
 | | |
 |---|--:|
 | Custo do restante sozinho | R$ 10.961,04 |
-| Preço | **R$ 30.300** |
-| **Economia real de tirar a bancada** | **R$ 13.100** |
-| *A linha rateada mostra* | *R$ 15.200* |
+| Preço | **R$ 26.600** |
+| **Economia real de tirar a bancada** | **R$ 11.500** |
+| *A linha rateada mostra* | *R$ 13.300* |
 
-**São R$ 2.100 de diferença.** Se a conversa virar "e sem os armários de baixo?",
-o número a defender é 30.300 — não 43.400 − 15.200.
+**São R$ 1.800 de diferença.** Se a conversa virar "e sem os armários de baixo?",
+o número a defender é 26.600 — não 38.100 − 13.300.
 
 ## ⚠️ Aberto
 

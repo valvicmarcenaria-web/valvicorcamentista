@@ -309,8 +309,9 @@ print(f'  {"CUSTO DIRETO":<40}R$ {fr_g["B"]:>15,.2f}R$ {fr_g["R"]:>13,.2f}'
       f'R$ {fr_g["B"]+fr_g["R"]:>11,.2f}')
 
 # ── PREÇO — parâmetros travados [Jonathan 07/08] ──────────────────────────
-# COM RT (10% do líquido) · MC 35% · ferragem Hardt (linha básica).
-a_, liqF_, b_, rt_, MC = 0.162, 0.88, 0.043, 0.10, 0.35
+# COM RT (10% do líquido) · ferragem Hardt (linha básica).
+# MC 35% -> 30%: "o perfil do cliente nao condiz com esse valor".
+a_, liqF_, b_, rt_, MC = 0.162, 0.88, 0.043, 0.10, 0.30
 div = 1 - a_ - liqF_*b_ - liqF_*rt_ - MC
 print('\n' + '═'*98)
 print(f'PREÇO — MC {MC*100:.0f}% · COM RT {rt_*100:.0f}% do líquido · Hardt · divisor {div:.5f}')
@@ -325,10 +326,34 @@ print(f'\n  MC conferida: '
       f'{(TAB - TAB*(a_+liqF_*b_+liqF_*rt_) - (fr_g["B"]+fr_g["R"]))/TAB*100:.1f}%')
 print(f'  RT ao parceiro: R$ {TAB*(1-a_*0)*0:,.0f}'.replace('R$ 0', f'R$ {TAB*liqF_*rt_:,.0f}'))
 
-print('\n  ESCADA DE PAGAMENTO (padrão da casa)')
+print('\n  ESCADA DE PAGAMENTO — a MC 30% ela encosta no piso da casa')
+ENC = a_ + liqF_*b_ + liqF_*rt_
 for d, desc in (('Entrada 30% + até 10× no cartão', 0.00), ('Entrada 50% + até 8× no cartão', 0.03),
                 ('Entrada 70% + até 6× no cartão', 0.05), ('Entrada 70% + transferência', 0.07)):
-    print(f'    {d:<44}{"—" if not desc else f"−{desc*100:.0f}%":>5}   R$ {round(TAB*(1-desc)/100)*100:>8,.0f}')
+    v = round(TAB*(1-desc)/100)*100
+    mc = (v - v*ENC - (fr_g['B']+fr_g['R']))/v*100
+    flag = '  ⚠ abaixo do piso de 28%' if mc < 28 else ''
+    print(f'    {d:<44}{"—" if not desc else f"−{desc*100:.0f}%":>5}   '
+          f'R$ {v:>8,.0f}   MC {mc:>4.1f}%{flag}')
+
+# ── o RT pesa mais que os 5 pontos de MC ──────────────────────────────────
+print('\n' + '═'*98)
+print('O RT PESA MAIS QUE OS 5 PONTOS DE MC')
+print('═'*98)
+FX = fr_g['B'] + fr_g['R']
+for mc_, rt2, rot in ((0.35, rt_, 'MC 35% COM RT'), (0.30, rt_, 'MC 30% COM RT  ← o pedido'),
+                      (0.35, 0.0, 'MC 35% SEM RT'), (0.30, 0.0, 'MC 30% SEM RT')):
+    dv = 1 - a_ - liqF_*b_ - liqF_*rt2 - mc_
+    t = round(fr_g['B']/dv/100)*100 + round(fr_g['R']/dv/100)*100
+    print(f'  {rot:<28} R$ {t:>7,.0f}   MC real '
+          f'{(t - t*(a_+liqF_*b_+liqF_*rt2) - FX)/t*100:>4.1f}%   RT ao parceiro R$ {t*liqF_*rt2:>6,.0f}')
+d35 = 1 - a_ - liqF_*b_ - liqF_*rt_ - 0.35
+t35 = round(fr_g['B']/d35/100)*100 + round(fr_g['R']/d35/100)*100
+d35s = 1 - a_ - liqF_*b_ - 0.35
+t35s = round(fr_g['B']/d35s/100)*100 + round(fr_g['R']/d35s/100)*100
+print(f'\n  Cortar 5 pontos de MC alivia R$ {t35-TAB:,.0f} e nos custa 5 pontos.')
+print(f'  Tirar o RT a MC 35% alivia R$ {t35-t35s:,.0f} e NÃO nos custa nada.')
+print(f'  R$ {t35s:,.0f} a MC 35% sem RT é MAIS BARATO que os R$ {TAB:,.0f} a MC 30% com RT.')
 
 # ── o que o rateio NÃO diz ────────────────────────────────────────────────
 print('\n' + '═'*98)
