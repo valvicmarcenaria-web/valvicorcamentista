@@ -150,12 +150,12 @@ p{margin:0;}
 
   <div class="inv-box">
     <div class="t">Investimento total · com desconto especial</div>
-    <div class="big">R$ 15.255</div>
+    <div class="big">R$ 15.000</div>
     <div class="comp">
       <div class="r"><span>Portas e painéis do vão da escada</span><b>R$ 14.500</b></div>
       <div class="r"><span>Nicho de escaninhos · 6 nichos com fechadura</span><b>R$ 2.450</b></div>
       <div class="r s"><span>Subtotal</span><b>R$ 16.950</b></div>
-      <div class="r d"><span>Desconto especial de 10%</span><b>− R$ 1.695</b></div>
+      <div class="r d"><span>Desconto especial <small style="opacity:.7">(11,5%)</small></span><b>− R$ 1.950</b></div>
     </div>
     <div class="cap">MDF Itapuã Ultra e Itapuã, rodapé de alumínio fosco de 30 mm, ferragens
     Häfele e Rometal, fornecimento e instalação pela equipe própria Valvic.</div>

@@ -1,7 +1,7 @@
 # Levantamento — Portas + painéis do vão da escada (contato: Flávia Moacir)
 
 > **Status:** 🟢 **REV.06** (`proposta-flavia-portas.pdf`, 2 págs) — entrou o nicho de
-> escaninhos. **R$ 15.255** (16.950 −10%).
+> escaninhos e o desconto foi para **R$ 1.950**. **R$ 15.000** fechado.
 
 ## ➕ REV.06 — nicho de escaninhos [Jonathan 07/08/2026]
 
@@ -13,8 +13,13 @@
 | Portas e painéis do vão da escada | 14.500 |
 | **Nicho de escaninhos** | **2.450** |
 | Subtotal | 16.950 |
-| Desconto especial de 10% | −1.695 |
-| **TOTAL** | **R$ 15.255** |
+| ~~Desconto especial de 10%~~ | ~~−1.695~~ |
+| **Desconto especial (11,5%)** | **−1.950** |
+| **TOTAL** | **R$ 15.000** |
+
+> **Fechado em R$ 15.000 [Jonathan 07/08].** Apresentei o desconto como **valor**
+> (R$ 1.950) e não como percentual, porque 11,504% não fecha em número redondo — desse
+> jeito a conta da página bate exatamente e o total sai limpo.
 
 > **O desconto foi aplicado também sobre o escaninho.** É a leitura consistente com a
 > mesa da Juliana, e é a única que deixa a matemática da página fechar à vista do
@@ -26,7 +31,14 @@
 > Não apurei chapa, fechadura nem usinagem. Por ordem de grandeza — ~1 chapa de Itapuã,
 > 6 fechaduras, 12 dobradiças, fita e a usinagem das 6 fendas — o custo deve ficar perto
 > de **R$ 1.200**, o que daria MC próxima dos **27%** sobre os R$ 2.205 recebidos.
-> Fica na mesma faixa apertada do restante do job (29,0%), não abaixo dela.
+> Fica na mesma faixa apertada do restante do job.
+
+> ⚠️ **A descida para R$ 15.000 cruza o piso.** Com o custo estimado do conjunto
+> (6.659 apurado + ~1.200 do escaninho ≈ **7.859**), a MC sai de **~28,5%** a R$ 15.255
+> para **~27,6%** a R$ 15.000. Os R$ 255 a mais de desconto custam **0,9 ponto** e põem o
+> job **logo abaixo do piso de 28%** da casa. Não é queda grande, mas é uma linha
+> cruzada — e como o custo do escaninho é estimativa, a margem real pode estar um pouco
+> pior. Decisão comercial, registrada.
 
 Na proposta o escaninho ganhou **bloco de destaque próprio**: *seis escaninhos, seis
 chaves* — a correspondência de um morador não fica acessível ao outro, e a fenda usinada
