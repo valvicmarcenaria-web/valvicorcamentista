@@ -95,8 +95,9 @@ METALON_PACK = 600.0
 # ── peças  (material, descrição, comprimento, largura, qtd) ─────────────────
 pecas = [
     # ═════════ MA-01 — ARMÁRIO SUPERIOR · Amêndola Rústica · prof. 30 ═══════
-    # Caixote A — 213 × 40 × 30, três básculas. A base fica totalmente à vista
-    # (é aéreo a 1,84 m do piso), então vai na cor; o tampo, não.
+    # Caixote A — 213 × 40 × 30, três básculas. A BASE (face de baixo) é o que se
+    # vê — é aéreo a 1,84 m do piso —, então vai na cor. O TAMPO não se vê e o
+    # FUNDO encosta na parede [correção do Jonathan 07/08]: os dois em branco.
     ('AMR18', 'MA-01 · caixote A — lateral',                     40,  30, 2),
     ('AMR18', 'MA-01 · caixote A — base (aparente por baixo)',  213,  30, 1),
     ('BRC15', 'MA-01 · caixote A — tampo',                      213,  30, 1),
@@ -105,13 +106,13 @@ pecas = [
     ('AMR18', 'MA-01 · báscula 69,5',                          69.5,  36, 1),
     ('AMR18', 'MA-01 · báscula 70',                              70,  36, 2),
 
-    # Caixote B — 92 × 40 × 30, NICHO ABERTO: todo o interior aparece, tudo cor.
-    # O fundo sai da sobra da chapa de 18 mm da cor — evita puxar uma chapa
-    # inteira de 6 mm da cor para 0,37 m².
+    # Caixote B — 92 × 40 × 30, NICHO ABERTO. Aqui o fundo É visto — não pela
+    # parede, mas POR DENTRO, através do vão aberto de 88 × 36. Vai na cor, e sai
+    # da sobra da chapa de 18 mm — evita puxar uma chapa de 6 mm da cor p/ 0,37 m².
     ('AMR18', 'MA-01 · caixote B (nicho) — lateral',             40,  30, 2),
     ('AMR18', 'MA-01 · caixote B (nicho) — tampo',               92,  30, 1),
     ('AMR18', 'MA-01 · caixote B (nicho) — base',                92,  30, 1),
-    ('AMR18', 'MA-01 · caixote B (nicho) — fundo aparente',      92,  40, 1),
+    ('AMR18', 'MA-01 · caixote B (nicho) — fundo visto pelo vão', 92,  40, 1),
 
     # Prateleiras abertas sobre o metalon — aparentes dos dois lados.
     ('AMR18', 'MA-01 · prateleira longa (vão 213)',             213,  30, 1),
@@ -333,7 +334,7 @@ cd02 = cd_ma02_exato + rateavel*(1-p01)
 a_, liqF_, b_ = 0.162, 0.88, 0.043
 def div_(mc, rt): return 1 - a_ - liqF_*b_ - mc - (liqF_*0.10 if rt else 0.0)
 
-MC, RT = 0.32, False   # [Jonathan 07/08] sem RT · MC 32%
+MC, RT = 0.35, False   # [Jonathan 07/08] sem RT · MC 32% → 35%
 div = div_(MC, RT)
 inv01 = round(cd01/div/100)*100
 inv02 = round(cd02/div/100)*100
@@ -383,11 +384,13 @@ print('  Projeto de escritório de arquitetura (Mímesis) — CONFIRMAR se há R
 
 print('\n' + '─'*94)
 print('✅ FECHADO PELO JONATHAN [07/08]')
-for f in ('RT: NÃO tem. MC 32%.',
+for f in ('RT: NÃO tem. MC 35% (subiu de 32%).',
           'Chapa Duratex Amêndola Rústica e Palha na linha Fosco (18 mm R$ 600) — confirmado.',
           'Serralheria do metalon: R$ 600 (eu tinha estimado 1.200).',
           'Tampo do MA-02 em MDF Palha 18 mm — confirmado, não é pedra.',
-          'Fixação invisível do MA-01 orçada como está — conferir a parede na obra.'):
+          'Fixação invisível do MA-01 orçada como está — conferir a parede na obra.',
+          'Pagamento: 50% de entrada + 50% na entrega.',
+          'O FUNDO do MA-01 encosta na parede — em branco. Só a BASE vai na cor.'):
     print('  · ' + f)
 
 print('\n⚠ PREMISSAS ASSUMIDAS (não estão na prancha) — valem para a produção')

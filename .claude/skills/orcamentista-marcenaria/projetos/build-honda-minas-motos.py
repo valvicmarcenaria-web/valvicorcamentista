@@ -12,12 +12,15 @@ comercial especificada por escritório de arquitetura.
   4. tampo do MA-02 em MDF Palha — não é pedra
   5. fixação invisível orçada como está
 
-  MA-01 · Armário superior ......  R$  5.900
-  MA-02 · Armário inferior em L .  R$ 12.000
-  TOTAL .........................  R$ 17.900     custo direto 8.599,01 · MC 32,0%
+[Jonathan 07/08, 2ª rodada] MC 32% → 35% · pagamento 50/50 · e a correção do
+MA-01: o FUNDO encosta na parede, não fica à vista. Quem se vê é a BASE, a face
+de baixo do aéreo. O texto do escopo dizia "fundo" e estava errado.
 
-Pagamento 40/40/20 (contrato corporativo, canteiro em andamento) em vez da
-escada — a MC 32% a escada chega a 28,2% no último degrau, encostada no piso.
+  MA-01 · Armário superior ......  R$  6.300
+  MA-02 · Armário inferior em L .  R$ 12.800
+  TOTAL .........................  R$ 19.100     custo direto 8.599,01 · MC 35,0%
+
+Pagamento 50% na entrada + 50% na entrega — sem escada e sem parcelamento.
 
 Garantia 5 ANOS: o gaveteiro usa corrediça OCULTA HARDT. Tabela corrigida da
 casa (telescópica 2 anos · oculta Hardt 5 anos). Sem abrir por componente.
@@ -30,12 +33,12 @@ CSS = re.search(r'<style>\n(.*?)\n</style>',
 
 FRENTES = [
  ('MA-01 — Armário superior · 3,15 m em MDF Amêndola Rústica, básculas, '
-  'nicho e prateleiras sobre metalon',                                     5900),
+  'nicho e prateleiras sobre metalon',                                     6300),
  ('MA-02 — Armário inferior em “L” · 4,36 m de desenvolvimento em MDF Palha, '
-  '6 portas de giro e gaveteiro de 4 gavetas',                            12000),
+  '6 portas de giro e gaveteiro de 4 gavetas',                            12800),
 ]
 TOT = sum(v for _, v in FRENTES)
-assert TOT == 17900, TOT
+assert TOT == 19100, TOT
 
 def br(v): return f'{v:,.0f}'.replace(',', '.')
 linhas = ''.join(f'<tr><td class="nmc">{n}</td><td class="r" style="white-space:nowrap">R$ {br(v)}</td></tr>'
@@ -81,8 +84,8 @@ HTML = f"""<!DOCTYPE html>
     <div class="nm">MA-01 · Armário superior</div>
     <div class="sub">Showroom · 3,15 m × 30 cm de profundidade · topo a 2,24 m do piso acabado</div>
     <ul>
-      <li>Corpo em <b>MDF Duratex Amêndola Rústica</b>, com a base inteira na cor — é aéreo, o
-      fundo do móvel fica à vista de quem passa.</li>
+      <li>Corpo em <b>MDF Duratex Amêndola Rústica</b>, com a <b>base inteira na cor</b> — a
+      2,24 m do piso, é a face que se enxerga de baixo.</li>
       <li><b>3 portas basculantes</b> de 69,5 / 70 / 70 cm, em pistão a gás <b>com amortecimento</b>.</li>
       <li><b>Nicho aberto de 88 × 36 cm</b> com o interior integralmente na cor, inclusive o fundo.</li>
       <li><b>3 prateleiras</b> — uma de 2,13 m e duas de 92 cm — apoiadas nas prumadas de metalon.</li>
@@ -152,9 +155,8 @@ HTML = f"""<!DOCTYPE html>
       <h3 class="blk">Condições de pagamento</h3>
       <div class="hrule"></div>
       <ul class="pay">
-        <li><b>40%</b> de entrada (assinatura)</li>
-        <li><b>40%</b> no início da montagem</li>
-        <li><b>20%</b> na entrega final</li>
+        <li><b>50%</b> de entrada (assinatura)</li>
+        <li><b>50%</b> na entrega</li>
       </ul>
     </div>
     <div>

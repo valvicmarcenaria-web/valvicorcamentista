@@ -127,34 +127,34 @@ a mais. Testar, não supor.
 
 ---
 
-## ✅ FECHADO — MC 32% · sem RT · divisor 0,48016 [Jonathan 07/08]
+## ✅ FECHADO — MC 35% · sem RT · divisor 0,45016 [Jonathan 07/08]
 
-Cinco perguntas, cinco respostas: **sem RT · MC 32%** · chapa na linha Fosco
-confirmada · **metalon a R$ 600** (eu tinha estimado 1.200) · tampo do MA-02 em
-MDF, não é pedra · fixação invisível orçada como está.
+Duas rodadas. Na primeira: **sem RT · MC 32%** · chapa na linha Fosco confirmada ·
+**metalon a R$ 600** (eu tinha estimado 1.200) · tampo do MA-02 em MDF, não é pedra ·
+fixação invisível orçada como está. Na segunda: **MC 32% → 35%** e **pagamento 50/50**.
 
 | | Custo direto | Investimento |
 |---|--:|--:|
-| **MA-01** — Armário superior | 2.854,11 | **R$ 5.900** |
-| **MA-02** — Armário inferior em "L" | 5.744,90 | **R$ 12.000** |
-| **TOTAL** | **8.599,01** | **R$ 17.900** |
+| **MA-01** — Armário superior | 2.854,11 | **R$ 6.300** |
+| **MA-02** — Armário inferior em "L" | 5.744,90 | **R$ 12.800** |
+| **TOTAL** | **8.599,01** | **R$ 19.100** |
 
-MC conferida **32,0%**.
+MC conferida **35,0%**. Pagamento **50% na entrada + 50% na entrega** — sem escada e
+sem parcelamento. Prazo **30 a 40 dias úteis** · garantia **5 anos** (o gaveteiro usa
+corrediça oculta Hardt — tabela corrigida da casa) · validade 15 dias.
 
-> ⚠️ **A escada não foi oferecida.** A MC 32%, o último degrau (−7% → R$ 16.600)
-> cai para **28,2%** — encostado no piso de 28%. Cliente corporativo com canteiro
-> em andamento: **40 / 40 / 20** é a condição certa aqui, e não custa margem.
-
-Prazo **30 a 40 dias úteis** · garantia **5 anos** (o gaveteiro usa corrediça
-oculta Hardt — tabela corrigida da casa) · validade 15 dias.
+> 💡 **O 50/50 pode valer mais que os 35%.** A taxa de cartão (~7,2%) mora dentro do
+> `a = 0,162`. Se as duas parcelas entrarem por transferência ou PIX, ela não é paga —
+> e a margem real sobe para perto de **42%** sem mexer no preço. Vale confirmar o meio
+> de pagamento no fechamento.
 
 ### Sensibilidade que ficou registrada
 
 | | sem RT | com RT 10% |
 |---|--:|--:|
 | MC 30% | 17.200 | 20.900 |
-| **MC 32% ← fechado** | **17.900** | — |
-| MC 35% | 19.100 | 23.700 |
+| MC 32% | 17.900 | — |
+| **MC 35% ← fechado** | **19.100** | 23.700 |
 | MC 40% | 21.500 | 27.500 |
 
 ### Sanidade — R$ por m² de chapa
@@ -164,12 +164,35 @@ oculta Hardt — tabela corrigida da casa) · validade 15 dias.
 | Cozinha Rizzi (residencial) | 626 |
 | Armário superior de cozinha | 647 |
 | SPE decorado (comercial) | 739 |
-| **→ Honda showroom** | **782** |
+| **→ Honda showroom** | **834** |
 
-Ainda acima da faixa, e o motivo é legítimo: **job pequeno com custo fixo alto**.
+Acima da faixa, e o motivo é legítimo: **job pequeno com custo fixo alto**.
 Serralheria, fixação invisível e 3 dias de instalação somam **45% do custo direto**
 (R$ 3.900 de R$ 8.599). É o piso de mobilizar equipe para dois móveis num canteiro
 comercial no Contorno — não é levantamento inflado.
+
+---
+
+## ⛔ CORREÇÃO — "fundo" não é "base" [Jonathan 07/08]
+
+Eu escrevi na proposta: *"com a base inteira na cor — é aéreo, o **fundo do móvel**
+fica à vista de quem passa"*. Errado, e errado no vocabulário: em marcenaria **fundo
+é a costa**, o painel de trás. O MA-01 **encosta na parede** — o fundo não é visto
+por ninguém.
+
+Quem se vê num aéreo a 1,84 m do piso é a **BASE**, a face de baixo. Era essa que eu
+queria justificar na cor, e é essa que está na cor.
+
+**Não mudou custo nenhum** — o fundo do caixote A já estava lançado em branco 6 mm
+desde o primeiro levantamento. O que estava errado era só o texto.
+
+> ⚠️ **O fundo do NICHO é outra coisa e continua na cor.** Ele também encosta na
+> parede, mas é visto **por dentro**, através do vão aberto de 88 × 36. Um fundo
+> branco dentro de um nicho na cor apareceria como defeito. Está em Amêndola 18,
+> saindo da sobra da mesma chapa — sem custo adicional.
+
+> **Regra que fica:** visibilidade se decide **por face**, não por peça. A mesma
+> chapa pode ter uma face contra a parede e a outra dentro de um nicho aberto.
 
 ---
 
@@ -187,9 +210,13 @@ mobiliário (MB01–MB40) de marcenaria (MA-01/MA-02), e a proposta é exatament
 segunda tabela. Numa obra com 40 itens de mobiliário na mesma prancha, deixar essa
 fronteira explícita evita a discussão depois.
 
+O `assert TOT == 19100` pegou a segunda rodada pela metade — eu tinha atualizado o
+MA-01 e esquecido o MA-02. Vale manter esse assert em todo build.
+
 ## Premissas assumidas (não estão na prancha) — declaradas na proposta
 
 - **Interno branco**, exceto o nicho do MA-01, que é aberto e vai todo na cor.
+- **Base do MA-01 na cor** (face de baixo, aparente); **tampo e fundo em branco**.
 - **2 divisórias internas** no caixote A do MA-01 — a prancha desenha um vão de
   209 cm sem apoio, que empenaria tampo e base. Caem atrás das básculas fechadas.
 - **1 prateleira por módulo de porta** no MA-02 (4 no total) — a prancha não desenha.
