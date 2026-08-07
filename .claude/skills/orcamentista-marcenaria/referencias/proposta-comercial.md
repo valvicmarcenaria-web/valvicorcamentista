@@ -82,3 +82,25 @@ custo zero ao cliente dentro do prazo. Marcas: Hardt, Häfele, Hettich, Rometal.
 
 > Na planilha, "RT" aparece como ~7–8% do investimento (= 10% do líquido após
 > deduções) e zero quando não há parceiro indicando o projeto.
+
+---
+
+## ⛔ GARANTIA — números corrigidos pelo Jonathan [07/08/2026]
+
+A tabela "Linha Gold vs Linha Silver" acima traz **10 anos / 10 anos com 2 nas
+corrediças**. **Não é o que a Valvic pratica.** Os números reais, por linha de
+corrediça:
+
+| Corrediça | Garantia |
+|---|---|
+| **Telescópica** | **2 anos**, geral |
+| **Oculta Hardt** | **5 anos** |
+
+> **E não abrir por componente na proposta.** O Jonathan pediu o número, não a
+> composição: *"não precisa entrar em detalhes da garantia"*. Escrever a abertura
+> (estrutura X, ferragem Y, corrediça Z) cria compromissos que a gente não emite —
+> o mesmo motivo pelo qual a garantia vitalícia da Sensys saiu das propostas
+> (ver `ferragens.md`).
+
+Aplicado em `build-cozinha-elena-v4.py`. As propostas anteriores que imprimiram
+**10 anos** estão desatualizadas nesse ponto.

@@ -328,21 +328,19 @@ nenhuma ressalva — três colunas isolando a única variável.
 Custo direto: R$ 15.161,50 (telescópica) · R$ 15.721,50 (oculta).
 Diferença: **R$ 560 de custo** (14 pares × R$ 40) → **R$ 1.400 de preço**.
 
-### A garantia é o argumento, e ela é da tabela da casa
+### A garantia é o argumento — números corrigidos pelo Jonathan
 
-De `referencias/proposta-comercial.md`:
+| Corrediça | Garantia |
+|---|---|
+| **Telescópica** | **2 anos**, geral |
+| **Oculta Hardt** | **5 anos** |
 
-| | Corrediças | Garantia |
-|---|---|---|
-| **Telescópica** (Silver) | telescópicas | 10 anos · **2 anos nas corrediças** |
-| **Oculta** (Gold) | ocultas slow motion | **10 anos**, sem ressalva |
+⛔ A tabela de `proposta-comercial.md` trazia **10 anos / 2 nas corrediças** — **não é
+o que a casa pratica**. Corrigido lá também.
 
-São **8 anos de diferença**, e eles moram exatamente na peça que muda. A p.4 abre com
-*"Uma peça muda. Oito anos mudam com ela."* e põe a garantia como manchete de cada caixa,
-acima da descrição técnica — **R$ 1.400 = R$ 100 por gaveta** por 8 anos a mais.
-
-> ⚠️ Isso corrige uma incoerência da V3: lá a ferragem era oculta Hardt mas a garantia
-> impressa era a da Silver (*2 anos nas corrediças*). Ferragem Gold com ressalva Silver.
+**E sem abrir por componente:** *"não precisa entrar em detalhes da garantia"*. Só o
+número. A p.4 abre com *"Uma peça muda. A garantia mais que dobra."* e põe o número como
+manchete de cada caixa — **R$ 1.400 = R$ 100 por gaveta** para ir de 2 a 5 anos.
 
 ### A escada voltou a ser truncada em −3%
 
