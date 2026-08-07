@@ -179,28 +179,33 @@ c_extra, n_extra, a_extra = levanta(EXTRA, 'móveis 8 e 9 (painel ripado + mesa)
 c_tot, n_tot, a_tot = levanta(p, 'CONJUNTO (nesting real, freijó compartilhado)')
 
 # ── fita: bordas aparentes ────────────────────────────────────────────────
+# grupo: 'B' = armários inferiores da bancada (móveis 1 e 2) · 'R' = resto
 FR_COR = [
-    ('Frentes da bancada A — perímetro', 2*(0.80+0.25) + 2*(0.80+0.50) + 6*2*(0.60+0.25) + 2*2*(0.36+0.77)),
-    ('Frentes da bancada B — perímetro', 4*2*(0.75+0.19) + 2*2*(0.375+0.77)),
-    ('Nicho freijó — fundo, prateleira e arremates', 2*(1.50+0.70) + 2*(1.50+0.15) + 2*2*(0.70+0.08)),
-    ('Frentes das básculas freijó',      3*2*(0.49+0.40)),
-    ('Portas e tamponamento do aéreo azul', 3*2*(0.50+0.70) + (0.70+0.60)),
-    ('Frentes e tamponamento da torre',  5*2*(0.70+0.40) + (2.70+0.60)),
-    ('Portas do aéreo da geladeira',     2*2*(0.40+0.70)),
-    ('Painel ripado — ripas (2 faces longas) ⚠', N_RIPA*2*2.70),
-    ('Mesa — perímetro do tampo ⚠',      2*(1.50+0.60)),
+    ('B','Frentes da bancada A — perímetro', 2*(0.80+0.25) + 2*(0.80+0.50) + 6*2*(0.60+0.25) + 2*2*(0.36+0.77)),
+    ('B','Frentes da bancada B — perímetro', 4*2*(0.75+0.19) + 2*2*(0.375+0.77)),
+    ('R','Nicho freijó — fundo, prateleira e arremates', 2*(1.50+0.70) + 2*(1.50+0.15) + 2*2*(0.70+0.08)),
+    ('R','Frentes das básculas freijó',      3*2*(0.49+0.40)),
+    ('R','Portas e tamponamento do aéreo azul', 3*2*(0.50+0.70) + (0.70+0.60)),
+    ('R','Frentes e tamponamento da torre',  5*2*(0.70+0.40) + (2.70+0.60)),
+    ('R','Portas do aéreo da geladeira',     2*2*(0.40+0.70)),
+    ('R','Painel ripado — ripas (2 faces longas) ⚠', N_RIPA*2*2.70),
+    ('R','Mesa — perímetro do tampo ⚠',      2*(1.50+0.60)),
 ]
 FR_BR = [
-    ('Verticais e laterais — canto frontal', 5*0.77 + 3*0.77 + 4*0.40 + 4*0.70 + 2*2.70 + 2*0.70),
-    ('Bases e travessas — frente',       2.72 + 2*2.72 + 1.50 + 2*1.50 + 1.47*2 + 1.50*2 + 0.67*7 + 0.77*2),
-    ('Prateleiras — frente',             0.70 + 0.73 + 3*0.48 + 0.76),
-    ('Caixas de gaveta — topo',          14*2*(0.56+0.55)/2 + 4*2*(0.71+0.55)/2 + 3*2*(0.66+0.55)/2),
+    ('B','Verticais da bancada — canto frontal', 5*0.77 + 3*0.77),
+    ('R','Demais verticais e laterais — canto frontal', 4*0.40 + 4*0.70 + 2*2.70 + 2*0.70),
+    ('B','Bases e travessas da bancada — frente', 2.72 + 2*2.72 + 1.50 + 2*1.50),
+    ('R','Demais bases e travessas — frente', 1.47*2 + 1.50*2 + 0.67*7 + 0.77*2),
+    ('B','Prateleiras da bancada — frente', 0.70 + 0.73),
+    ('R','Demais prateleiras — frente',  3*0.48 + 0.76),
+    ('B','Caixas de gaveta da bancada — topo', 14*2*(0.56+0.55)/2 + 4*2*(0.71+0.55)/2),
+    ('R','Caixas de gaveta da torre — topo',   3*2*(0.66+0.55)/2),
 ]
-m_cor = sum(m for _, m in FR_COR); m_br = sum(m for _, m in FR_BR)
+m_cor = sum(m for _, _, m in FR_COR); m_br = sum(m for _, _, m in FR_BR)
 custo_fita = m_cor*1.10*FITA_COR + m_br*1.10*FITA_BR
 custo_filet = (m_cor + m_br)*FILET
 print('\nFITA DE BORDA  (+10% de desperdício)')
-for d, m in FR_COR + FR_BR: print(f'  {d:<50}{m:>7.2f} m')
+for g, d, m in FR_COR + FR_BR: print(f'  {g}  {d:<47}{m:>7.2f} m')
 print(f'  {"— cor":<50}{m_cor:>7.2f} m × R$ {FITA_COR:.2f}')
 print(f'  {"— branco":<50}{m_br:>7.2f} m × R$ {FITA_BR:.2f}')
 print(f'  {"material":<50}{m_cor+m_br:>7.2f} m        R$ {custo_fita:>9,.2f}')
@@ -212,18 +217,23 @@ N_CORR  = 7 + 4 + 3                                # gavetas
 N_ARTIC = 3 + 2                                    # básculas freijó + torre
 N_PRAT  = 1 + 1 + 3 + 1 + 1                        # prateleiras com suporte
 M_CAVA  = (0.80+0.80+6*0.60+2*0.36) + (4*0.75+2*0.375) + 3*0.49 + 3*0.50 + 5*0.70 + 2*0.40
+CAVA_B = (0.80+0.80+6*0.60+2*0.36) + (4*0.75+2*0.375)
 ferr = [
-    (f'Dobradiça Hardt c/ amortecimento — {N_DOBR} un',  N_DOBR*DOBR),
-    (f'Corrediça oculta c/ amortecimento — {N_CORR} pares', N_CORR*CORR),
-    (f'Articulador de báscula — {N_ARTIC} un',           N_ARTIC*ARTIC),
-    ('Suporte de báscula da pia (frente falsa) — 1 un',  40.0),
-    (f'Suporte de prateleira — {N_PRAT*4} un',           N_PRAT*4*SUP_PRAT),
-    (f'Cava usinada — {M_CAVA:.2f} m de frente',         M_CAVA*CAVA_M),
-    ('Usinagem e caixa das tomadas embutidas na torre',  TOMADA),
+    ('B', 'Dobradiça Hardt — 8 un (portas de giro da bancada)',   8*DOBR),
+    ('R', f'Dobradiça Hardt — {N_DOBR-8} un (aéreos)',            (N_DOBR-8)*DOBR),
+    ('B', 'Corrediça oculta c/ amortecimento — 11 pares',         11*CORR),
+    ('R', 'Corrediça oculta c/ amortecimento — 3 pares (torre)',  3*CORR),
+    ('R', f'Articulador de báscula — {N_ARTIC} un',               N_ARTIC*ARTIC),
+    ('B', 'Suporte de báscula da pia (frente falsa) — 1 un',      40.0),
+    ('B', 'Suporte de prateleira — 8 un',                         8*SUP_PRAT),
+    ('R', f'Suporte de prateleira — {N_PRAT*4-8} un',             (N_PRAT*4-8)*SUP_PRAT),
+    ('B', f'Cava usinada — {CAVA_B:.2f} m (frentes da bancada)',  CAVA_B*CAVA_M),
+    ('R', f'Cava usinada — {M_CAVA-CAVA_B:.2f} m (aéreos e torre)', (M_CAVA-CAVA_B)*CAVA_M),
+    ('R', 'Usinagem e caixa das tomadas embutidas na torre',      TOMADA),
 ]
-custo_ferr = sum(v for _, v in ferr)
+custo_ferr = sum(v for _, _, v in ferr)
 print('\nFERRAGENS  (linha básica/Hardt — a definir)')
-for d, v in ferr: print(f'  {d:<62}R$ {v:>9,.2f}')
+for g, d, v in ferr: print(f'  {g}  {d:<59}R$ {v:>9,.2f}')
 print(f'  {"TOTAL":<62}R$ {custo_ferr:>9,.2f}')
 
 # ── custo direto ──────────────────────────────────────────────────────────
@@ -238,36 +248,117 @@ for d, v in (('Chapas', c_tot), ('Fita (material)', custo_fita), ('Filetagem', c
     print(f'  {d:<62}R$ {v:>9,.2f}')
 print(f'  {"CUSTO DIRETO":<62}R$ {fixedR:>9,.2f}')
 
-# ── preço: FAIXA, porque os parâmetros ainda não foram definidos ──────────
-print('\n' + '═'*98)
-print('PREÇO — FAIXA. MC, RT e linha ainda NÃO foram definidos.')
-print('═'*98)
-a_, liqF_, b_ = 0.162, 0.88, 0.043
-print(f'  {"MC":<6}{"SEM RT":>14}{"COM RT (10% do líquido)":>28}')
-for MC in (0.32, 0.35, 0.37, 0.40):
-    d0 = 1 - a_ - liqF_*b_ - MC
-    d1 = 1 - a_ - liqF_*b_ - 0.88*0.10 - MC
-    print(f'  {MC*100:>4.0f}%  R$ {round(fixedR/d0/100)*100:>11,.0f}'
-          f'   R$ {round(fixedR/d1/100)*100:>22,.0f}')
+# ══ SEPARAÇÃO DOS ARMÁRIOS INFERIORES DA BANCADA [Jonathan 07/08] ═════════
+# Móveis 1 e 2 (bancada A 272 + bancada B 150) saem em linha própria.
+#
+# A chapa é RATEADA POR ÁREA dentro de cada material, não re-nestada. Motivo:
+# BR15/BR18/BR6 e AZ18 são compartilhados com os aéreos — nestar os dois grupos
+# em separado somaria mais chapas que o conjunto (piso de 1 chapa por cor). O
+# rateio faz as duas linhas fecharem no total. Logo abaixo eu mostro o que
+# REALMENTE se economiza se o bloco sair do escopo, que é outro número.
+BANC = (M1, M2)
+ar_g = defaultdict(lambda: defaultdict(float))
+for mov, mat, d, c, l, q in p:
+    ar_g['B' if mov in BANC else 'R'][mat] += c*l/10000*q
 
-print('\n  PESO DOS ITENS ESTIMADOS (painel ripado + mesa)')
-mat_sem = c_base + custo_fita*0.80 + custo_filet*0.80 + custo_ferr
-fx_sem  = mat_sem + mat_sem*0.06/1.06 + LOG + VIS + INST*0.85
-d = 1 - a_ - liqF_*b_ - 0.35
-print(f'    Com eles      custo R$ {fixedR:>9,.2f}   →  MC 35% sem RT: R$ {round(fixedR/d/100)*100:,.0f}')
-print(f'    Sem eles      custo R$ {fx_sem:>9,.2f}   →  MC 35% sem RT: R$ {round(fx_sem/d/100)*100:,.0f}')
-print(f'    Diferença     R$ {fixedR-fx_sem:>9,.2f} de custo · '
-      f'R$ {round(fixedR/d/100)*100 - round(fx_sem/d/100)*100:,.0f} de venda')
+por = defaultdict(list)
+for mov, mat, d, c, l, q in p:
+    for _ in range(q): por[mat].append((c, l))
+CH = {m: nest(v) for m, v in por.items()}
+
+ch_g = {'B': 0.0, 'R': 0.0}
+print('\n' + '═'*98)
+print('RATEIO DA CHAPA — armários inferiores da bancada × restante')
+print('═'*98)
+print(f'  {"":<6}{"bancada":>16}{"restante":>16}{"chapas":>9}{"custo":>13}')
+for m in sorted(CH, key=lambda k: (k[:2], k)):
+    tb, tr = ar_g['B'][m], ar_g['R'][m]
+    custo_m = CH[m]*PRECO[m]
+    if tb + tr:
+        ch_g['B'] += custo_m*tb/(tb+tr); ch_g['R'] += custo_m*tr/(tb+tr)
+    print(f'  {m:<6}{tb:>13.2f} m²{tr:>13.2f} m²{CH[m]:>9}   R$ {custo_m:>9,.2f}')
+print(f'  {"":<6}{"":>16}{"":>16}{"":>9}   R$ {sum(ch_g.values()):>9,.2f}')
+print(f'  Chapa rateada:  bancada R$ {ch_g["B"]:,.2f}   ·   restante R$ {ch_g["R"]:,.2f}')
+
+# fita, filetagem e ferragens saem exatos pelas tags de grupo
+ft_g, fl_g, fe_g = {}, {}, {}
+for g in ('B', 'R'):
+    mc = sum(m for gg, _, m in FR_COR if gg == g)
+    mb = sum(m for gg, _, m in FR_BR  if gg == g)
+    ft_g[g] = mc*1.10*FITA_COR + mb*1.10*FITA_BR
+    fl_g[g] = (mc + mb)*FILET
+    fe_g[g] = sum(v for gg, _, v in ferr if gg == g)
+
+# consumíveis e logística seguem a proporção do material
+sub = {g: ch_g[g] + ft_g[g] + fl_g[g] + fe_g[g] for g in ('B', 'R')}
+fr_g = {}
+for g in ('B', 'R'):
+    prop = sub[g]/sum(sub.values())
+    fr_g[g] = sub[g] + (ch_g[g] + ft_g[g])*0.06 + (LOG + VIS + INST)*prop
 
 print('\n' + '─'*98)
-print('⚠ A DEFINIR ANTES DE FECHAR PREÇO')
-print('  · MC alvo e situação de caixa.')
-print('  · RT: a consultoria é da Rizzi Interiores — há parceiro com RT? Muda ~13% do preço.')
-print('  · Linha: Hardt (básica) ou Hettich (Gold)? Os articuladores são o item sensível.')
-print('  · Interno branco? A consultoria não especifica o interno de nenhum móvel.')
+print(f'  {"":<40}{"BANCADA INFERIOR":>20}{"RESTANTE":>18}{"TOTAL":>16}')
+for rot, d in (('Chapas', ch_g), ('Fita (material)', ft_g), ('Filetagem', fl_g),
+               ('Ferragens, cava e usinagem', fe_g)):
+    print(f'  {rot:<40}R$ {d["B"]:>15,.2f}R$ {d["R"]:>13,.2f}R$ {d["B"]+d["R"]:>11,.2f}')
+cs = {g: (ch_g[g]+ft_g[g])*0.06 for g in ('B','R')}
+lg = {g: (LOG+VIS+INST)*sub[g]/sum(sub.values()) for g in ('B','R')}
+for rot, d in (('Consumíveis (6%)', cs), ('Logística · visitas · instalação', lg)):
+    print(f'  {rot:<40}R$ {d["B"]:>15,.2f}R$ {d["R"]:>13,.2f}R$ {d["B"]+d["R"]:>11,.2f}')
+print(f'  {"CUSTO DIRETO":<40}R$ {fr_g["B"]:>15,.2f}R$ {fr_g["R"]:>13,.2f}'
+      f'R$ {fr_g["B"]+fr_g["R"]:>11,.2f}')
+
+# ── PREÇO — parâmetros travados [Jonathan 07/08] ──────────────────────────
+# COM RT (10% do líquido) · MC 35% · ferragem Hardt (linha básica).
+a_, liqF_, b_, rt_, MC = 0.162, 0.88, 0.043, 0.10, 0.35
+div = 1 - a_ - liqF_*b_ - liqF_*rt_ - MC
+print('\n' + '═'*98)
+print(f'PREÇO — MC {MC*100:.0f}% · COM RT {rt_*100:.0f}% do líquido · Hardt · divisor {div:.5f}')
+print('═'*98)
+pr = {g: round(fr_g[g]/div/100)*100 for g in ('B', 'R')}
+print(f'  {"Armários inferiores da bancada":<46}R$ {fr_g["B"]:>9,.2f} ÷ {div:.5f} = R$ {pr["B"]:>8,.0f}')
+print(f'  {"Demais móveis (aéreos, nicho, torre, ripado, mesa)":<46}'
+      f'R$ {fr_g["R"]:>9,.2f} ÷ {div:.5f} = R$ {pr["R"]:>8,.0f}')
+TAB = pr['B'] + pr['R']
+print(f'  {"TOTAL DE TABELA":<46}{"":>28}R$ {TAB:>8,.0f}')
+print(f'\n  MC conferida: '
+      f'{(TAB - TAB*(a_+liqF_*b_+liqF_*rt_) - (fr_g["B"]+fr_g["R"]))/TAB*100:.1f}%')
+print(f'  RT ao parceiro: R$ {TAB*(1-a_*0)*0:,.0f}'.replace('R$ 0', f'R$ {TAB*liqF_*rt_:,.0f}'))
+
+print('\n  ESCADA DE PAGAMENTO (padrão da casa)')
+for d, desc in (('Entrada 30% + até 10× no cartão', 0.00), ('Entrada 50% + até 8× no cartão', 0.03),
+                ('Entrada 70% + até 6× no cartão', 0.05), ('Entrada 70% + transferência', 0.07)):
+    print(f'    {d:<44}{"—" if not desc else f"−{desc*100:.0f}%":>5}   R$ {round(TAB*(1-desc)/100)*100:>8,.0f}')
+
+# ── o que o rateio NÃO diz ────────────────────────────────────────────────
+print('\n' + '═'*98)
+print('SE A BANCADA INFERIOR SAIR DO ESCOPO, NÃO SE ECONOMIZA A LINHA INTEIRA')
+print('═'*98)
+RESTO = [x for x in p if x[0] not in BANC]
+por_r = defaultdict(list); ar_r = defaultdict(float)
+for mov, mat, d, c, l, q in RESTO:
+    for _ in range(q): por_r[mat].append((c, l)); ar_r[mat] += c*l/10000
+CH_R = {m: nest(v) for m, v in por_r.items()}
+ch_real = sum(CH_R[m]*PRECO[m] for m in CH_R)
+sub_r = ch_real + ft_g['R'] + fl_g['R'] + fe_g['R']
+fr_real = sub_r + (ch_real + ft_g['R'])*0.06 + (LOG + VIS + INST)*0.72
+print(f'  Chapas do restante — nestado sozinho: {sum(CH_R.values())} chapas '
+      f'(no conjunto o rateio dava R$ {ch_g["R"]:,.2f}; sozinho custa R$ {ch_real:,.2f})')
+print(f'  Custo direto do restante sozinho ..... R$ {fr_real:>9,.2f}')
+print(f'  Preço ................................ R$ {round(fr_real/div/100)*100:>9,.0f}')
+print(f'  Economia real de tirar a bancada ..... R$ {TAB - round(fr_real/div/100)*100:>9,.0f}'
+      f'   (a linha rateada mostra R$ {pr["B"]:,.0f})')
+print('  A diferença é o piso de 1 chapa por cor × espessura: sem a bancada, o branco')
+print('  não encolhe na mesma proporção, e a instalação da cozinha não cai 28%.')
+
+print('\n' + '─'*98)
 print('⚠ A CONFERIR NO PROJETO')
 print('  · Painel ripado e mesa: as duas linhas do documento estão COBERTAS pela barra')
-print('    de rolagem na captura. Dimensões acima são estimativa do render.')
-print('  · "Ripas de 1cm" — usei ripa de 4 cm com vão de 2. Se for ripa de 1 cm mesmo,')
-print(f'    são ~{int(120/2)} ripas em vez de {N_RIPA} e o custo de usinagem multiplica.')
+print('    de rolagem na captura. Dimensões usadas são estimativa do render.')
+print(f'  · "Ripas de 1cm" — usei ripa de 4 cm com vão de 2 ({N_RIPA} ripas). Se for ripa')
+print(f'    de 1 cm mesmo, são ~{int(120/2)} ripas e a fita desse item vai de '
+      f'{N_RIPA*2*2.70:.0f} m para {int(120/2)*2*2.70:.0f} m.')
 print('  · Divisão interna dos módulos da bancada é leitura minha da elevação etiquetada.')
+print('  · Interno branco assumido — a consultoria não especifica o interno de nenhum móvel.')
+print('  · Medição no local é pré-requisito: o próprio documento diz que as cotas dele')
+print('    "não servem como referência para compra final".')

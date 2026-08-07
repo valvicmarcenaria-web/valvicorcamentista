@@ -1,7 +1,7 @@
 # Orçamento — Cozinha (consultoria Rizzi Interiores)
 
-> **Status:** 🟡 Fase 1 concluída em 07/08/2026 — quantitativo levantado.
-> **Preço travado** aguardando MC, RT e linha de ferragem.
+> **Status:** 🟢 Precificado em 07/08/2026 — **R$ 43.400** (MC 35% · COM RT · Hardt).
+> Aguarda medição no local e as duas linhas ilegíveis do documento.
 > Fontes: `DOC-2026...A0017.pdf` · `RI - CONSUL...ELENA.pdf` · `Casa Sil.pdf` (capturas).
 > Script: `corte-cozinha-elena.py`
 
@@ -85,27 +85,60 @@ documento forem literais, são ~60 ripas e a fita vai a **324 m só nesse item**
 | Logística · 2 visitas · instalação | R$ 4.200,00 |
 | **CUSTO DIRETO** | **R$ 15.721,49** |
 
-## Faixa de preço — parâmetros ainda não definidos
+## Preço — parâmetros travados [Jonathan 07/08]
 
-| MC | Sem RT | Com RT (10% do líquido) |
-|--:|--:|--:|
-| 32% | 32.700 | 40.100 |
-| 35% | **34.900** | **43.400** |
-| 37% | 36.500 | 45.900 |
-| 40% | 39.300 | 50.400 |
+**MC 35% · COM RT (10% do líquido) · ferragem Hardt** → divisor **0,36216**.
 
-Painel ripado + mesa pesam **R$ 1.681 de custo · R$ 3.700 de venda** a MC 35%.
-Sem eles: R$ 31.200.
+| Linha | Custo direto | Tabela |
+|---|--:|--:|
+| **Armários inferiores da bancada** (móveis 1 e 2) | R$ 5.501,35 | **R$ 15.200** |
+| Demais móveis (aéreos, nicho, torre, ripado, mesa) | R$ 10.220,14 | **R$ 28.200** |
+| **Total** | **R$ 15.721,49** | **R$ 43.400** |
+
+MC conferida **35,0%**. RT ao parceiro: **R$ 3.819**.
+Escada: −3% 42.100 · −5% 41.200 · −7% **40.400**.
+
+### Como a bancada foi separada
+
+Rateio **por área dentro de cada material**, não re-nesting. BR15, BR18, BR6 e AZ18
+são compartilhados com os aéreos — nestar os dois grupos em separado somaria mais
+chapas que o conjunto, por causa do piso de 1 chapa por cor × espessura. O rateio faz
+as duas linhas fecharem no total.
+
+| Material | Bancada | Restante | Chapas |
+|---|--:|--:|--:|
+| AZ18 | 3,20 m² | 1,47 m² | 2 |
+| BR15 | 11,76 m² | 14,65 m² | 7 |
+| BR18 | 0,83 m² | 1,28 m² | 1 |
+| BR6 | 7,08 m² | 5,18 m² | 4 |
+| CZ18 · FR15 · FR18 | — | 13,20 m² | 5 |
+
+Fita, filetagem e ferragens saem **exatos** (cada linha tem tag de grupo);
+consumíveis e logística seguem a proporção do material.
+
+### ⚠️ O rateio não é a economia de tirar o bloco
+
+Se a bancada inferior sair do escopo, o restante **nestado sozinho** dá 13 chapas
+(R$ 4.990) contra os R$ 4.572 do rateio, e a instalação da cozinha não cai 28%.
+
+| | |
+|---|--:|
+| Custo do restante sozinho | R$ 10.961,04 |
+| Preço | **R$ 30.300** |
+| **Economia real de tirar a bancada** | **R$ 13.100** |
+| *A linha rateada mostra* | *R$ 15.200* |
+
+**São R$ 2.100 de diferença.** Se a conversa virar "e sem os armários de baixo?",
+o número a defender é 30.300 — não 43.400 − 15.200.
 
 ## ⚠️ Aberto
 
-1. **MC alvo e situação de caixa.**
-2. **RT** — a consultoria é da Rizzi Interiores. Se houver parceria com RT, o preço
-   sobe ~24%. É a maior variável da mesa.
-3. **Linha de ferragem** — Hardt (básica) ou Hettich (Gold). Os 5 articuladores são
-   o item sensível: R$ 750 na básica.
-4. **Interno branco?** A consultoria não especifica o interno de nenhum móvel.
-5. **Duas linhas do documento estão cobertas pela barra de rolagem na captura** —
-   o painel ripado e a mesa. Dimensões acima são leitura do render.
-6. **Divisão interna dos módulos da bancada** é minha leitura da elevação etiquetada
+1. **Duas linhas do documento estão cobertas pela barra de rolagem na captura** —
+   o painel ripado e a mesa. Dimensões usadas são leitura do render.
+2. **"Ripas de 1cm"** — usei ripa de 4 cm com vão de 2 (20 ripas). Se for literal,
+   são ~60 ripas e a fita desse item vai de **108 m para 324 m**.
+3. **Interno branco** assumido — a consultoria não especifica o interno de nenhum móvel.
+4. **Divisão interna dos módulos da bancada** é minha leitura da elevação etiquetada
    (GIRO / BASC / GAV / PORTA), não cota do documento.
+5. **Medição no local é pré-requisito do contrato** — o próprio documento diz que as
+   cotas dele "não servem como referência para compra final".
