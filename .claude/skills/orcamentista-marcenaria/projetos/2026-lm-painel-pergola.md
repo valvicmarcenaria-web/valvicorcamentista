@@ -206,6 +206,16 @@ com perfil"* de `chapas.md`, onde **a unidade é FOLHA**, não metro quadrado.
 
 ### ✅ FECHADO em R$ 191.500 [Jonathan 07/08]
 
+> ⛔ **NADA FOI CONTRATADO AINDA.** [Jonathan 07/08] A primeira versão de 17/07
+> foi *apresentada*, não assinada. A moldura "contratado + adição" que eu tinha
+> usado estava errada — não existe etapa fechada. É **uma proposta só**, com oito
+> frentes. Corrigido em `build-spe-nova-lima.py`.
+
+> **Layout:** o mesmo da primeira versão (`build-lm.py`, 17/07) — editorial claro,
+> capa creme com moldura dourada, blocos com filete, tabela de frentes, hero do
+> investimento. O build **lê o CSS direto do `build-lm.py`**, então os dois nunca
+> divergem. 4 páginas: capa · escopo do stand · escopo do decorado · investimento.
+
 Espelho da E03 **mantido a R$ 285/m²**. Emitida `proposta-spe-nova-lima.pdf`.
 
 | Etapa | Custo direto | Investimento |

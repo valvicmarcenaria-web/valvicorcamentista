@@ -1,313 +1,230 @@
 # -*- coding: utf-8 -*-
-"""SPE NOVA LIMA 1 — proposta ATUALIZADA (stand + apartamento decorado).
+"""SPE NOVA LIMA 1 — proposta COMPLETA (stand + apartamento decorado).
 
-[Jonathan 07/08] "considere sem RT e MC de 35%. sem mexer nos valores na
-proposta inicial."
+[Jonathan 07/08] "quero o layout igual a primeira versao que foi apresentada.
+obs. NAO TEM NADA CONTRATADO AINDA."
 
-FECHADO em R$ 191.500 [Jonathan 07/08], depois da auditoria que corrigiu quatro
-furos: portas de espelho tratadas como MDF, sistema de correr a R$ 250 em vez do
-Dominus, LED subcontado e a razão R$/chapa que denunciava tudo.
+→ Reaproveita o CSS de `build-lm.py` (a proposta de 17/07) lendo o arquivo
+  direto: layout editorial claro, capa creme com moldura dourada, blocos com
+  filete, tabela de frentes, hero do investimento. Mesma casca, escopo maior.
 
-O stand (MOB 01 + MOB 02) entra INALTERADO em R$ 88.200 — fechado a MC 40% sem RT.
-Decorado (MO 03 + DET 05 + DET 06), custo apurado em `corte-spe-decorado.py`:
+→ E cai a moldura "contratado + adição" que a versão anterior usava. Nada foi
+  assinado: é UMA proposta, com oito frentes, fechando em R$ 191.500.
 
-  Cozinha  R$ 11.379,56 → 25.800      Quarto  R$ 13.230,71 → 30.000
-  Sala     R$  6.971,85 → 15.800      Suíte   R$ 13.971,37 → 31.700
-  DECORADO R$ 45.553,49 → 103.300
+  Stand ....... painéis 45.700 · pérgola 18.000 · portas 5.500 · móveis 19.000
+  Decorado .... cozinha 25.800 · sala 15.800 · quarto 30.000 · suíte 31.700
+  TOTAL ....... R$ 191.500
 
-  TOTAL  88.200 + 103.300 = R$ 191.500
-
-⚠️ A MC 35% exata daria R$ 101.200 (total 189.400). Segurando o valor autorizado,
-   a MC do decorado fica em 35,9% — o re-nesting derrubou o custo em R$ 962
-   depois que as portas de espelho saíram da lista de MDF.
+Números do stand vêm de `corte-lm.py` (MC 40% sem RT, 17/07); os do decorado de
+`corte-spe-decorado.py` (custo apurado R$ 45.553,49 — segurando o valor fechado,
+a MC do decorado fica em 35,9%).
 """
-import pathlib
+import pathlib, re
 P = pathlib.Path('/home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos')
-CSS = open('/tmp/css_premium.txt', encoding='utf-8').read().split('CSS = """')[1].rsplit('"""', 1)[0]
 
-STAND, DEC, TOT = 88200, 103300, 191500
-AMB = [('Cozinha', 'Anis Matt · Frapé Matt',
-        'Bancada em “L” com módulos de giro e a torre do forno com <b>3 gavetas</b> · '
-        'aéreos em dois planos, <b>prof. 62</b> em Anis e <b>prof. 40</b> em Frapé com '
-        '<b>8 básculas</b> em articulador · nicho do micro-ondas e vão da coifa de embutir · '
-        'painel alto de <b>2,55 m</b> com nichos.', 25800),
-       ('Sala', 'Anis Matt',
-        'Painelaria de <b>7,20 m</b> de desenvolvimento por <b>2,55 m</b> de altura, em duas '
-        'elevações: painel com <b>4 nichos de espelho</b> emoldurados e espelho de 1,90 m · '
-        'painel com <b>3 nichos</b> e porta embutida · <b>rodapé em perfil de inox escovado</b>.', 15800),
-       ('Quarto', 'Ciliegio Poro · laca Sayerlack M072',
-        'Roupeiro de <b>1,54 m</b> com <b>duas portas de correr espelhadas</b> · módulo de nichos iluminados em '
-        '<b>laca brilhante</b> · cabeceira estofada, painel de TV, prateleira suspensa, '
-        'bancada de trabalho e criado suspenso · cortineiro com iluminação.', 30000),
-       ('Suíte', 'Anis Matt · Frapé Matt',
-        'Torre de <b>5 nichos iluminados</b> em Frapé, do piso ao teto · roupeiro de '
-        '<b>1,935 m</b> com <b>duas portas de correr espelhadas</b> · <b>painel ripado</b> em perfil '
-        'de madeira 5×1,5 · cabeceira estofada e cortineiro com iluminação.', 31700)]
+# CSS idêntico ao da primeira versão — lido do próprio build original
+CSS = re.search(r'<style>\n(.*?)\n</style>',
+                (P/'build-lm.py').read_text(encoding='utf-8'), re.S).group(1)
+
+FRENTES = [
+ ('Painéis — MDF Cravo Trend (Gourmet/Lounge + Corretores + Pilar)',      45700),
+ ('Pérgola — 28 ripas metalon #10×5 revestido em MDF madeirado',          18000),
+ ('Portas — de giro (copa + armário) e acesso ao QG',                      5500),
+ ('Móveis + complementos — armário gourmet, móvel lounge, sanca, inox',   19000),
+ ('Cozinha do decorado — bancada em “L”, aéreos em dois planos, torre do forno', 25800),
+ ('Sala do decorado — 7,20 m de painelaria, espelhos e rodapé de inox',   15800),
+ ('Quarto do decorado — roupeiro espelhado, nichos em laca, cabeceira',   30000),
+ ('Suíte do decorado — torre de nichos, roupeiro espelhado, painel ripado', 31700),
+]
+TOT = sum(v for _, v in FRENTES)
+assert TOT == 191500, TOT
 def br(v): return f'{v:,.0f}'.replace(',', '.')
+linhas = ''.join(f'<tr><td class="nmc">{n}</td><td class="r">R$ {br(v)}</td></tr>'
+                 for n, v in FRENTES)
 
-amb_tb = ''.join(
-  f'<tr><td class="sv">{n}<small>{c}</small></td><td class="ds">{d}</td>'
-  f'<td class="vl alt">R$ {br(v)}</td></tr>' for n, c, d, v in AMB)
-
-ESCADA = [('Entrada 30% + saldo em até 10× no cartão', 0.00, 'valor de tabela'),
-          ('Entrada 50% + saldo em até 8× no cartão',  0.03, '−3%'),
-          ('Entrada 70% + saldo em até 6× no cartão',  0.05, '−5%'),
-          ('Entrada 70% + saldo via transferência',    0.07, '−7%')]
-def _best(d): return ' class="best"' if d == 0.07 else ''
-esc = ''.join(
-  f'<tr{_best(d)}><td>{n}</td><td class="r">{r}</td>'
-  f'<td class="r alt">R$ {br(round(TOT*(1-d)/100)*100)}</td></tr>' for n, d, r in ESCADA)
-
-HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>{CSS}</style>
+HTML = f"""<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
 <style>
-  .page:last-of-type{{page-break-after:avoid; break-after:avoid;}}
-  .cover-t{{background:var(--deep); position:relative; overflow:hidden;}}
-  .cover-t::before{{content:""; position:absolute; inset:0;
-     background:radial-gradient(120% 80% at 18% 12%, rgba(201,169,106,.16) 0%, transparent 58%),
-                radial-gradient(90% 70% at 88% 96%, rgba(201,169,106,.10) 0%, transparent 60%);}}
-  .cover-t .rules{{position:absolute; inset:0;
-     background:repeating-linear-gradient(90deg, rgba(255,255,255,.030) 0 1px, transparent 1px 34mm);}}
-  .cover-t .v2{{position:absolute; top:34mm; right:20mm; font-family:'Cormorant Garamond',Georgia,serif;
-     font-size:96pt; font-weight:700; color:rgba(201,169,106,.16); line-height:1;}}
+{CSS}
+</style></head>
+<body>
 
-  .amb4{{border-top:1px solid var(--hair); padding:6.6mm 0;}}
-  .amb4:first-child{{border-top:2px solid var(--ink);}}
-  .amb4 .hd{{display:flex; justify-content:space-between; align-items:baseline;}}
-  .amb4 .t{{font-family:'Cormorant Garamond',Georgia,serif; font-size:19pt; font-weight:700; line-height:1.14;}}
-  .amb4 .q{{font-size:6.4pt; letter-spacing:.16em; text-transform:uppercase; color:var(--gold);
-      font-weight:700; white-space:nowrap; padding-left:5mm;}}
-  .amb4 .d{{font-size:9.6pt; color:var(--soft); line-height:1.64; margin-top:2mm;}}
-  .amb4 .d b{{color:var(--ink);}}
-
-  .lin{{display:flex; gap:7mm; margin-top:6mm;}}
-  .lin > div{{flex:1; border:1.5px solid var(--line); border-radius:7px; padding:7mm 6.5mm;}}
-  .lin > div.g{{border-color:var(--gold); background:rgba(201,169,106,.07);}}
-  .lin .k{{font-size:6.4pt; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); font-weight:700;}}
-  .lin .t{{font-family:'Cormorant Garamond',Georgia,serif; font-size:24pt; font-weight:700;
-      color:var(--ink); line-height:1.05; margin-top:1.4mm;}}
-  .lin .d{{font-size:8.8pt; color:var(--soft); line-height:1.58; margin-top:2.4mm;}}
-  .lin .d b{{color:var(--ink);}}
-
-  .dual{{width:100%; border-collapse:collapse; font-size:8.6pt; margin-top:3mm;}}
-  .dual th{{font-size:6.4pt; letter-spacing:.14em; text-transform:uppercase; color:var(--mut);
-      font-weight:700; border-bottom:1.5px solid var(--ink); padding:0 0 2mm; text-align:left;
-      vertical-align:bottom;}}
-  .dual th.vh{{text-align:right; width:28mm; padding-left:3mm; color:var(--gold);}}
-  .dual td{{padding:2.1mm 0; border-bottom:1px solid var(--hair); vertical-align:top;}}
-  .dual td.sv{{width:32mm; font-weight:700; color:var(--ink); font-size:9pt; padding-right:3mm;}}
-  .dual td.sv small{{display:block; font-weight:700; color:var(--gold); font-size:6.4pt;
-      letter-spacing:.12em; text-transform:uppercase; margin-top:.5mm; line-height:1.3;}}
-  .dual td.ds{{color:var(--soft); line-height:1.54; padding-right:4mm;}}
-  .dual td.vl{{text-align:right; white-space:nowrap; font-weight:700;
-      font-variant-numeric:tabular-nums; padding-left:3mm;}}
-  .dual td.vl.alt{{color:var(--gold); background:rgba(201,169,106,.07);}}
-  .dual tr.st td{{background:var(--sand);}}
-  .dual tr.st td.vl{{color:var(--soft); background:var(--sand);}}
-  .dual tr.tot td{{border-bottom:0; border-top:2px solid var(--ink); padding-top:3.4mm;
-      font-family:'Cormorant Garamond',Georgia,serif; font-size:16pt;}}
-  .dual tr.tot td.ds{{font-family:system-ui,sans-serif; font-size:8.6pt;}}
-
-  .pay-tb2{{width:100%; border-collapse:collapse; font-size:9pt; margin-top:4mm;}}
-  .pay-tb2 th{{font-size:6.4pt; letter-spacing:.14em; text-transform:uppercase; color:var(--mut);
-      font-weight:700; border-bottom:1.5px solid var(--ink); padding:0 0 2mm; text-align:left;}}
-  .pay-tb2 th.r, .pay-tb2 td.r{{text-align:right;}}
-  .pay-tb2 td{{padding:2mm 0; border-bottom:1px solid var(--hair); font-variant-numeric:tabular-nums;}}
-  .pay-tb2 td.r{{font-weight:700; white-space:nowrap; padding-left:4mm;}}
-  .pay-tb2 td.r.alt{{color:var(--gold);}}
-  .pay-tb2 tr.best td{{background:rgba(201,169,106,.12); border-bottom:0;}}
-  .pay-tb2 tr.best td:first-child{{border-radius:4px 0 0 4px; font-weight:700;}}
-  .pay-tb2 tr.best td:last-child{{border-radius:0 4px 4px 0;}}
-
-  .same{{display:flex; gap:0; margin-top:6mm; border-top:2px solid var(--ink);
-      border-bottom:1px solid var(--line); padding:5.4mm 0;}}
-  .same > div{{flex:1; padding-left:6mm; border-left:1px solid var(--line);}}
-  .same > div:first-child{{padding-left:0; border-left:0;}}
-  .same .k{{font-size:6.4pt; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); font-weight:700;}}
-  .same .d{{font-size:8.8pt; color:var(--soft); line-height:1.56; margin-top:1.4mm;}}
-  .same .d b{{color:var(--ink);}}
-
-  .cnd{{display:grid; grid-template-columns:1fr 1fr; gap:4.2mm 8mm; margin-top:5mm;
-      border-top:2px solid var(--ink); padding-top:4.2mm;}}
-  .cnd .k{{font-size:6.4pt; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); font-weight:700;}}
-  .cnd .v{{font-size:9.2pt; color:var(--soft); line-height:1.52; margin-top:.8mm;}}
-  .cnd .v b{{color:var(--ink);}}
-</style></head><body>
-
-<!-- 1 · CAPA -->
-<div class="page cover cover-t">
-  <div class="rules"></div><div class="v2">02</div>
+<!-- CAPA -->
+<div class="page cover">
+  <div class="frame"></div>
   <div class="inner">
-    <div><div class="brand">valvic<span class="d">.</span></div><div class="bsub">MARCENARIA</div></div>
-    <div class="mid">
-      <div class="kick">Proposta de marcenaria · atualização</div>
-      <div class="tit">SPE<br>Nova Lima 1.</div>
-      <div class="sub">Stand de vendas e apartamento decorado · projeto Lodi Motta</div>
+    <div><div class="brand">valvic<span class="dot">.</span></div><div class="brand-sub">MARCENARIA</div></div>
+    <div class="kicker">Proposta comercial</div>
+    <div class="client">SPE Nova Lima 1</div>
+    <div class="proj">Stand de vendas e apartamento decorado — projeto arq. Lodi Motta</div>
+    <div class="meta">
+      <div class="m"><div class="t">Escopo</div><div class="v">Stand · Cozinha · Sala · Quarto · Suíte</div></div>
+      <div class="m"><div class="t">Acabamentos</div><div class="v">Cravo Trend · Anis · Frapé · Ciliegio</div></div>
     </div>
-    <div class="strip">
-      <div class="c"><div class="k">Contratado</div><div class="v">Stand</div></div>
-      <div class="c"><div class="k">Entra agora</div><div class="v">4 ambientes</div></div>
-      <div class="c"><div class="k">Pranchas</div><div class="v">MO 03 · DET 05 · DET 06</div></div>
-      <div class="c"><div class="k">Data</div><div class="v">07.08.2026</div></div>
+    <div class="foot">
+      <div><span class="sparkles">&#10022; &#10022; &#10022;</span><br>Do executivo ao encaixe, medido no milímetro.</div>
+      <div style="text-align:right">7 de agosto de 2026<br>validade 15 dias</div>
     </div>
   </div>
 </div>
 
-<!-- 2 · O QUE MUDA -->
-<div class="page"><div class="pad">
-  <div class="eyebrow">A atualização</div>
-  <div class="h-sec serif" style="font-size:25pt;">O stand segue como está.<br><em>O decorado entra somado.</em></div>
-  <hr class="rule" style="margin:8px 0;">
-  <p class="lead" style="margin-bottom:2mm;">As três pranchas executivas emitidas em 05 e 06 de
-  agosto detalham o apartamento decorado. Conferimos item a item: <b>não há sobreposição</b>
-  com o que já foi contratado.</p>
+<!-- ESCOPO 1 · STAND -->
+<div class="page">
+  <div class="eyebrow">O que será executado · parte 1</div>
+  <div class="section-h serif">Stand de vendas</div>
+  <hr class="rule">
+  <p class="lead">Leitura fiel do seu executivo — cada painel medido parede a parede e o metalon
+  da pérgola calculado ripa a ripa. Nada estimado.</p>
 
-  <div class="lin">
-    <div>
-      <div class="k">Já contratado</div>
-      <div class="t">R$ {br(STAND)}</div>
-      <div class="d">Painelaria, pérgola e mobiliário das <b>áreas comerciais</b> —
-      MOB 01 (painel dos corretores e pilar) e MOB 02 (painel e pérgula do gourmet-lounge).
-      <br><br><b>Nenhum valor desta etapa foi alterado.</b> As condições permanecem
-      exatamente como aprovadas.</div>
+  <div class="block">
+    <div class="nm">Gourmet / Lounge</div>
+    <div class="sub">Painéis · armário gourmet · móvel do lounge</div>
+    <ul>
+      <li>Painéis em <b>MDF Arauco Realce Cravo Trend</b> revestindo as paredes do ambiente (~63 m²), com rodapé em perfil de inox h=5.</li>
+      <li><b>Armário Gourmet</b> (97,5×248×42) — exterior Cravo Trend, caixa/nicho em Moscada Matt, 2 portas.</li>
+      <li><b>Móvel do Lounge</b> (300×60×35) em Moscada Matt — 2 nichos e 4 gavetas, sobre pés metálicos.</li>
+      <li>Porta ripada e forro em MDF madeirado.</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <div class="nm">Corretores &amp; Pilar central</div>
+    <div class="sub">Backdrop · stand · pilar</div>
+    <ul>
+      <li>Painel dos corretores em Cravo Trend (backdrop 8,17×3,85) com <b>caixa em marcenaria</b> (nicho central recuado, h=260).</li>
+      <li>Painel do <b>pilar central</b> envolvendo a coluna (h=3,85) com <b>moldura de hidrante em MDF</b> e <b>sanca com LED 3000K</b>.</li>
+    </ul>
+  </div>
+
+  <div class="highlights">
+    <div class="hl perg">
+      <div class="t">Pérgola — metalon #10×5</div>
+      <ul>
+        <li><b>28 ripas de 3,09 m</b> em perfil metálico #10×5 <b>revestido em MDF madeirado</b>.</li>
+        <li>Calculadas ripa a ripa (barra de 6 m, 1 ripa/barra). Fornecimento, revestimento e instalação.</li>
+      </ul>
     </div>
-    <div class="g">
-      <div class="k">Entra agora</div>
-      <div class="t">R$ {br(DEC)}</div>
-      <div class="d">O <b>apartamento decorado</b> completo: cozinha, sala, quarto e suíte.
-      <br><br>São <b>137 m² de chapa</b> em quatro acabamentos — Anis Matt, Frapé Matt,
-      Ciliegio Poro e laca brilhante Sayerlack — mais espelhos, cabeceiras estofadas,
-      rodapé em inox e iluminação embutida.</div>
+    <div class="hl port">
+      <div class="t">Portas em destaque</div>
+      <ul>
+        <li><b>Portas de giro</b> na copa (2, com painel entre elas) e no <b>armário gourmet</b> (2).</li>
+        <li><b>Porta de acesso ao QG</b> embutida no painel, sem ferragem aparente.</li>
+      </ul>
     </div>
   </div>
 
-  <div class="same">
-    <div><div class="k">Do executivo, não do croqui</div>
-      <div class="d">As três pranchas são <b>executivas e cotadas</b>. O levantamento saiu das
-      elevações, não de estimativa por metro quadrado.</div></div>
-    <div><div class="k">Quatro acabamentos</div>
-      <div class="d">Cada cor tem <b>plano de corte próprio</b> e nunca divide chapa com outra.
-      É o que garante a uniformidade de tom entre peças vizinhas.</div></div>
-    <div><div class="k">Coordenação dos terceiros</div>
-      <div class="d">Espelho, laca, estofado e rodapé de inox são <b>coordenados pela
-      Valvic</b> e entregues instalados, dentro do valor.</div></div>
+  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>SPE Nova Lima 1 · Projeto Lodi Motta</span></div>
+</div>
+
+<!-- ESCOPO 2 · DECORADO -->
+<div class="page">
+  <div class="eyebrow">O que será executado · parte 2</div>
+  <div class="section-h serif">Apartamento decorado</div>
+  <hr class="rule">
+  <p class="lead">Quatro ambientes das pranchas MO 03, DET 05 e DET 06 — executivas e cotadas.
+  O levantamento saiu das elevações, não de estimativa por metro quadrado.</p>
+
+  <div class="block">
+    <div class="nm">Cozinha</div>
+    <div class="sub">MO 03 · Anis Matt + Frapé Matt</div>
+    <ul>
+      <li>Bancada em <b>“L”</b> com módulos de giro e a <b>torre do forno</b> com 3 gavetas em corrediça oculta.</li>
+      <li>Aéreos em <b>dois planos de profundidade</b> — 62 cm em Anis e 40 cm em Frapé, com <b>8 básculas</b> em articulador.</li>
+      <li>Nicho do micro-ondas, vão da coifa de embutir e painel alto de <b>2,55 m</b> com nichos.</li>
+      <li>Puxador em <b>cava usinada</b>, conforme o DET.03 da prancha.</li>
+    </ul>
   </div>
 
-  <table class="dual" style="margin-top:7mm;">
-    <tr><th>O decorado em números</th><th>Composição</th></tr>
-    <tr><td class="sv">Chapa<small>41 chapas · 137,0 m²</small></td>
-      <td class="ds"><b>Anis Matt</b> e <b>Frapé Matt</b> na sala, cozinha e suíte ·
-      <b>Ciliegio Poro</b> no quarto · branco na caixaria interna. Quatro planos de corte
-      independentes — <b>cor nenhuma divide chapa com outra</b>.</td></tr>
-    <tr><td class="sv">Ferragens<small>Hardt · Rometal</small></td>
-      <td class="ds"><b>22 dobradiças</b> com amortecimento · <b>8 articuladores</b> de báscula ·
-      <b>2 sistemas Dominus</b> nos roupeiros e <b>RO82</b> na porta de passagem · corrediças
-      ocultas na torre do forno · <b>8,95 m</b> de cava usinada.</td></tr>
-    <tr><td class="sv">Terceiros<small>coordenados pela Valvic</small></td>
-      <td class="ds"><b>4 portas de espelho</b> em esquadria de alumínio com película de
-      segurança · espelho prata com perfil <b>5,34 m²</b> · laca brilhante Sayerlack M072
-      <b>3,16 m²</b> · duas cabeceiras estofadas <b>3,64 m²</b> · rodapé em inox escovado
-      <b>10,6 m</b> · fita de LED com perfil <b>16,7 m</b>.</td></tr>
-  </table>
-
-  <div class="note"><b>Fora do escopo:</b> caixa de gypsum, forro, pintura de paredes e teto,
-  cortinas, tapetes, eletrodomésticos, bancadas de pedra, cubas e metais — todos indicados nas
-  pranchas como fornecimento de outras frentes.</div>
-
-  <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span>
-    <span>SPE Nova Lima 1 · atualização</span></div>
-</div></div>
-
-<!-- 3 · O DECORADO -->
-<div class="page"><div class="pad">
-  <div class="eyebrow">O decorado</div>
-  <div class="h-sec serif" style="font-size:25pt;">Quatro ambientes,<br><em>ambiente a ambiente.</em></div>
-  <hr class="rule" style="margin:8px 0;">
-
-  <div style="margin-top:3mm;">
-    <div class="amb4"><div class="hd"><div class="t">Cozinha</div>
-      <div class="q">MO 03 · Anis + Frapé</div></div>
-      <div class="d">Bancada em “L” com módulos de giro e a torre do forno com <b>3 gavetas</b>.
-      Aéreos em <b>dois planos de profundidade</b> — 62 cm em Anis Matt e 40 cm em Frapé Matt,
-      com <b>8 básculas</b> em articulador. Nicho do micro-ondas, vão da coifa de embutir e
-      painel alto de <b>2,55 m</b> com nichos. Puxador em <b>cava</b>, conforme o DET.03.</div></div>
-
-    <div class="amb4"><div class="hd"><div class="t">Sala</div>
-      <div class="q">MO 03 · 7,20 m de painelaria</div></div>
-      <div class="d">Duas elevações de painel a <b>2,55 m</b> de altura: uma com <b>quatro
-      nichos de espelho</b> emoldurados e espelho de 1,90 m; outra com <b>três nichos</b> e a
-      porta embutida no painel. <b>Rodapé em perfil de inox escovado</b> 5×0,5 correndo a base.</div></div>
-
-    <div class="amb4"><div class="hd"><div class="t">Quarto</div>
-      <div class="q">DET 05 · Ciliegio + laca</div></div>
-      <div class="d">Roupeiro de <b>1,54 m</b> com <b>duas portas de correr espelhadas</b> em
-      esquadria de alumínio, no sistema <b>Dominus</b>, e módulo lateral de
-      <b>nichos iluminados em laca brilhante</b> Sayerlack M072. Cabeceira estofada, painel de
-      TV, prateleira suspensa, bancada de trabalho e criado suspenso. Cortineiro com
-      iluminação embutida.</div></div>
-
-    <div class="amb4"><div class="hd"><div class="t">Suíte</div>
-      <div class="q">DET 06 · Anis + Frapé</div></div>
-      <div class="d">Torre de <b>cinco nichos iluminados</b> em Frapé Matt, do piso ao teto ·
-      roupeiro de <b>1,935 m</b> com <b>duas portas de correr espelhadas</b> no sistema
-      <b>Dominus</b> · <b>painel ripado</b> em perfil de
-      madeira 5×1,5 · cabeceira estofada e cortineiro com iluminação.</div></div>
+  <div class="block">
+    <div class="nm">Sala</div>
+    <div class="sub">MO 03 · 7,20 m de painelaria</div>
+    <ul>
+      <li>Duas elevações de painel a <b>2,55 m</b> de altura, em Anis Matt.</li>
+      <li>Painel com <b>4 nichos de espelho</b> emoldurados e <b>espelho de 1,90 m</b>; painel com 3 nichos e porta embutida.</li>
+      <li><b>Rodapé em perfil de inox escovado</b> 5×0,5 correndo a base, como no stand.</li>
+    </ul>
   </div>
 
-  <div class="pull" style="margin-top:6mm;">
-    <div class="t">Medição antes do corte.</div>
-    <div class="d">As pranchas trazem a observação <i>“conferir medidas na obra”</i>. Nossa
-    medição é feita no local antes da liberação do corte — e é ela que trava as dimensões
-    finais de cada peça.</div>
+  <div class="highlights">
+    <div class="hl perg">
+      <div class="t">Quarto — Ciliegio Poro + laca</div>
+      <ul>
+        <li>Roupeiro de 1,54 m com <b>duas portas de correr espelhadas</b> em esquadria de alumínio, sistema <b>Dominus</b>.</li>
+        <li>Módulo de <b>nichos iluminados em laca brilhante</b> Sayerlack M072.</li>
+        <li>Cabeceira estofada, painel de TV, prateleira suspensa, bancada de trabalho e criado suspenso.</li>
+      </ul>
+    </div>
+    <div class="hl port">
+      <div class="t">Suíte — Anis + Frapé</div>
+      <ul>
+        <li><b>Torre de 5 nichos iluminados</b> em Frapé, do piso ao teto.</li>
+        <li>Roupeiro de 1,935 m com <b>duas portas de correr espelhadas</b>, sistema Dominus.</li>
+        <li><b>Painel ripado</b> em perfil de madeira 5×1,5 · cabeceira estofada e cortineiro com iluminação.</li>
+      </ul>
+    </div>
   </div>
 
-  <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span>
-    <span>SPE Nova Lima 1 · atualização</span></div>
-</div></div>
+  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>SPE Nova Lima 1 · Projeto Lodi Motta</span></div>
+</div>
 
-<!-- 4 · INVESTIMENTO -->
-<div class="page"><div class="pad">
+<!-- INVESTIMENTO -->
+<div class="page">
   <div class="eyebrow">Investimento</div>
-  <div class="h-sec serif" style="font-size:25pt;">O contrato <em>atualizado</em>.</div>
-  <hr class="rule" style="margin:8px 0;">
+  <div class="section-h serif">Uma execução, do desenho ao encaixe</div>
+  <hr class="rule">
 
-  <table class="dual" style="margin-top:4mm;">
-    <tr><th>Etapa</th><th>Escopo</th><th class="vh">Investimento</th></tr>
-    <tr class="st"><td class="sv">Stand de vendas<small>já contratado</small></td>
-      <td class="ds">MOB 01 e MOB 02 — painel dos corretores, pilar, painel e pérgula do
-      gourmet-lounge, móvel do lounge e armário gourmet. <b>Valor inalterado.</b></td>
-      <td class="vl">R$ {br(STAND)}</td></tr>
-    {amb_tb}
-    <tr class="tot"><td class="sv">Total</td>
-      <td class="ds">Projeto, medição, produção, terceiros coordenados, entrega e instalação
-      pela equipe própria Valvic.</td>
-      <td class="vl alt">R$ {br(TOT)}</td></tr>
-  </table>
-
-  <table class="pay-tb2">
-    <tr><th>Forma de pagamento</th><th class="r">Condição</th><th class="r">Investimento</th></tr>
-    {esc}
-  </table>
-
-  <div class="cnd">
-    <div><div class="k">Prazo de entrega</div>
-      <div class="v"><b>60 a 75 dias úteis</b> para o decorado, a alinhar com a data de
-      inauguração do stand.</div></div>
-    <div><div class="k">Garantia</div>
-      <div class="v"><b>2 anos</b>, mesma condição da etapa já contratada.</div></div>
-    <div><div class="k">Medição</div>
-      <div class="v">Feita por nós <b>antes da liberação do corte</b>, conforme a observação
-      das próprias pranchas.</div></div>
-    <div><div class="k">Validade</div>
-      <div class="v"><b>7 dias</b>. Chapa e ferragem sujeitas a reajuste após o prazo.</div></div>
+  <div class="hero" style="margin-top:4mm;">
+    <div class="t">Investimento total</div>
+    <div class="big serif">R$ {br(TOT)}</div>
+    <div class="cap">Stand de vendas e apartamento decorado — fornecimento, terceiros coordenados
+    e instalação por equipe própria Valvic.</div>
   </div>
 
-  <div class="note" style="margin-top:4mm;"><b>Fora do escopo:</b> caixa de gypsum, forro,
-  pintura de paredes e teto, cortinas, tapetes, eletrodomésticos, bancadas de pedra, cubas e
-  metais.</div>
+  <table>
+    <thead><tr><th>Frente</th><th class="r">Valor</th></tr></thead>
+    <tbody>
+      {linhas}
+    </tbody>
+    <tfoot><tr class="grand"><td class="serif">Total</td><td class="r serif">R$ {br(TOT)}</td></tr></tfoot>
+  </table>
 
-  <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span>
-    <span>SPE Nova Lima 1 · 07/08/2026</span></div>
-</div></div>
+  <div class="split" style="margin-top:5mm;">
+    <div>
+      <h3 class="blk">Condições de pagamento</h3>
+      <div class="hrule"></div>
+      <ul class="pay">
+        <li><b>40%</b> de entrada (assinatura)</li>
+        <li><b>40%</b> no início da montagem</li>
+        <li><b>20%</b> na entrega final</li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="blk">Prazo &amp; garantia</h3>
+      <div class="hrule"></div>
+      <div class="terms">
+        <div class="term"><div class="t">Entrega</div><div class="b">60 a 75<br>dias úteis</div></div>
+        <div class="term"><div class="t">Garantia</div><div class="b">2 anos</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top:5mm;">
+    <div class="h">Premissas &amp; não inclusos</div>
+    <b>Stand:</b> painéis em MDF Arauco Realce Cravo Trend (aparente) e Moscada Matt
+    (caixas/móveis); pérgola em metalon #10×5 revestido em MDF madeirado.
+    <b>Decorado:</b> MDF Arauco Anis Matt e Frapé Matt na cozinha, sala e suíte; Ciliegio Poro
+    e laca brilhante Sayerlack M072 no quarto; caixaria interna em branco.
+    Rodapé em perfil de <b>inox escovado 5×0,5 (h=5 cm)</b> — item de serralheria, fornecido por
+    parceiro e coordenado/instalado pela Valvic (incluso). Espelhos, laca, estofados e LED
+    <b>coordenados pela Valvic e entregues instalados</b>.
+    <b>Não inclusos:</b> forro e caixas em gypsum, porta veneziana e vidro temperado do pilar
+    (terceiros), pintura, cortinas, tapetes, eletrodomésticos, bancadas de pedra, cubas e
+    metais, pontos elétricos/hidráulicos e obra civil. Medidas a conferir no local, conforme
+    nota das pranchas.
+  </div>
+
+  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>SPE Nova Lima 1 · Projeto Lodi Motta · 07/08/2026</span></div>
+</div>
 
 </body></html>"""
 
