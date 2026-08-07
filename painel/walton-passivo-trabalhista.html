@@ -17,8 +17,7 @@
   }
   html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
   body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:10px; line-height:1.5; -webkit-font-smoothing:antialiased; }
-  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:16px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; page-break-after:always; }
-  .sheet:last-child{ page-break-after:auto; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:16px auto; box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; }
 
   .hero{ background:radial-gradient(120% 90% at 85% -10%, #1b3a5e 0%, rgba(27,58,94,0) 55%), linear-gradient(160deg,#0E2038 0%,#0b1a2e 60%,#0a1626 100%); color:#fff; padding:12mm 16mm 10mm; position:relative; }
   .hero::after{ content:""; position:absolute; left:16mm; right:16mm; bottom:0; height:2.5px; background:linear-gradient(90deg,var(--gold),var(--gold-dk) 45%,transparent); }
@@ -26,90 +25,71 @@
   .hero .mono{ width:38px; height:38px; border:1.5px solid var(--gold); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:20px; color:var(--gold); }
   .hero .co{ font-size:12px; font-weight:700; letter-spacing:2.6px; text-transform:uppercase; }
   .hero .cosub{ font-size:8px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
-  .hero .kx{ font-size:8.5px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-top:8mm; }
-  .hero h1{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:33px; line-height:1.08; margin-top:5px; }
+  .hero .kx{ font-size:8.5px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-top:9mm; }
+  .hero h1{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:34px; line-height:1.08; margin-top:5px; }
   .hero h1 span{ color:var(--gold-soft); font-style:italic; }
-  .hero .lead{ font-size:10.2px; color:rgba(255,255,255,.72); margin-top:9px; max-width:142mm; line-height:1.6; }
-  .hero .stamp{ position:absolute; right:16mm; bottom:9mm; text-align:right; }
+  .hero .lead{ font-size:10.4px; color:rgba(255,255,255,.72); margin-top:9px; max-width:126mm; line-height:1.6; }
+  .hero .stamp{ position:absolute; right:16mm; bottom:11mm; text-align:right; }
   .hero .stamp .sl{ font-size:7.2px; letter-spacing:2.2px; text-transform:uppercase; color:rgba(255,255,255,.45); }
-  .hero .stamp .sv{ font-size:9.5px; font-weight:700; color:var(--gold-soft); letter-spacing:.6px; margin-top:2px; }
+  .hero .stamp .sv{ font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:700; color:var(--gold-soft); line-height:1.1; margin-top:3px; }
 
-  .ph{ background:var(--navy); color:#fff; padding:9mm 16mm 6mm; display:flex; justify-content:space-between; align-items:flex-end; position:relative; }
-  .ph::after{ content:""; position:absolute; left:16mm; right:16mm; bottom:0; height:2px; background:linear-gradient(90deg,var(--gold),transparent); }
-  .ph .kx{ font-size:7.5px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); }
-  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; margin-top:2px; line-height:1; }
-  .ph .co{ font-size:9px; letter-spacing:2px; text-transform:uppercase; font-weight:600; }
+  .body{ flex:1; padding:7mm 16mm 0; display:flex; flex-direction:column; }
 
-  .body{ flex:1; padding:6mm 16mm 0; display:flex; flex-direction:column; }
-
-  .sec{ display:flex; align-items:center; gap:9px; margin:0 0 6px; }
-  .sec:not(:first-child){ margin-top:4.5mm; }
+  .sec{ display:flex; align-items:center; gap:9px; margin:0 0 7px; }
+  .sec:not(:first-child){ margin-top:5.5mm; }
   .sec .bar{ width:15px; height:2px; background:var(--gold); }
   .sec .tx{ font-size:8.6px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--navy); }
   .sec .ct{ margin-left:auto; font-size:8px; color:var(--muted); }
 
-  p.t{ font-size:10px; line-height:1.58; color:#33414f; }
-  p.t + p.t{ margin-top:5px; }
+  p.t{ font-size:10.2px; line-height:1.6; color:#33414f; }
   p.t b{ color:var(--navy); }
 
-  /* KPIs */
   .kpis{ display:grid; grid-template-columns:repeat(4,1fr); gap:7px; }
-  .kpi{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:9px 11px; position:relative; overflow:hidden; }
+  .kpi{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px 12px; position:relative; overflow:hidden; }
   .kpi::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--line2); }
   .kpi.a::before{ background:var(--blue); } .kpi.b::before{ background:var(--gold); }
   .kpi.c::before{ background:var(--gold-dk); } .kpi.d::before{ background:var(--navy); }
   .kpi .kl{ font-size:7.1px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; color:var(--muted); }
-  .kpi .kv{ font-family:'Cormorant Garamond',serif; font-size:23px; font-weight:700; color:var(--navy); line-height:1.1; margin-top:3px; }
+  .kpi .kv{ font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:700; color:var(--navy); line-height:1.1; margin-top:3px; }
   .kpi .kv small{ font-family:'Inter',sans-serif; font-size:11px; font-weight:700; }
-  .kpi .kd{ font-size:7.6px; color:var(--muted); line-height:1.4; margin-top:3px; }
+  .kpi .kd{ font-size:7.6px; color:var(--muted); line-height:1.4; margin-top:4px; }
 
   table{ width:100%; border-collapse:collapse; background:#fff; }
-  thead th{ background:var(--navy2); color:#fff; font-size:7.2px; font-weight:600; letter-spacing:.6px; text-transform:uppercase; padding:6px 8px; text-align:left; }
+  thead th{ background:var(--navy2); color:#fff; font-size:7.2px; font-weight:600; letter-spacing:.6px; text-transform:uppercase; padding:7px 8px; text-align:left; }
   thead th.num{ text-align:right; }
-  tbody td{ padding:6.5px 8px; border-bottom:1px solid var(--line); font-size:9.2px; vertical-align:middle; line-height:1.4; }
+  tbody td{ padding:7.5px 8px; border-bottom:1px solid var(--line); font-size:9.3px; vertical-align:middle; line-height:1.4; }
   tbody td.num{ text-align:right; font-variant-numeric:tabular-nums; }
   tbody td.nm{ font-weight:800; color:var(--navy); }
   tbody td .fn{ display:block; font-size:7.4px; font-weight:500; color:var(--muted); letter-spacing:.2px; margin-top:1px; }
   tbody td.sub{ font-weight:800; color:var(--navy); background:#faf7f0; }
-  tbody tr.tot td{ background:var(--navy); color:#fff; font-weight:800; font-size:9.6px; border-bottom:none; padding:8px; }
+  tbody tr.tot td{ background:var(--navy); color:#fff; font-weight:800; font-size:9.6px; border-bottom:none; padding:8.5px 8px; }
   tbody tr.tot td.num{ color:var(--gold-soft); }
+  tbody tr.enc td{ background:#f6edd6; font-size:9.1px; font-weight:700; color:#7a5b17; border-bottom:none; padding:8px; }
+  tbody tr.enc td .fn{ font-weight:500; color:#96803f; }
+  tbody tr.enc td.num{ color:#7a5b17; font-weight:800; }
   .dt{ font-size:8.4px; color:var(--muted); font-variant-numeric:tabular-nums; }
 
-  /* faixa total */
-  .grand{ margin-top:7px; background:linear-gradient(150deg,var(--navy) 0%,#0b1a2e 100%); color:#fff; border-radius:8px; padding:12px 16px; display:flex; align-items:center; gap:16px; position:relative; overflow:hidden; }
+  .grand{ margin-top:8px; background:linear-gradient(150deg,var(--navy) 0%,#0b1a2e 100%); color:#fff; border-radius:8px; padding:13px 17px; display:flex; align-items:center; gap:16px; position:relative; overflow:hidden; }
   .grand::after{ content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--gold); }
   .grand .gl{ font-size:7.6px; letter-spacing:2.2px; text-transform:uppercase; color:var(--gold); }
-  .grand .gv{ font-family:'Cormorant Garamond',serif; font-size:34px; font-weight:700; line-height:1; margin-top:3px; }
-  .grand .gr{ margin-left:auto; text-align:right; font-size:8.4px; color:rgba(255,255,255,.62); line-height:1.55; max-width:78mm; }
+  .grand .gv{ font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:700; line-height:1; margin-top:3px; }
+  .grand .gr{ margin-left:auto; text-align:right; font-size:8.6px; color:rgba(255,255,255,.62); line-height:1.6; max-width:80mm; }
   .grand .gr b{ color:#fff; }
 
-  /* blocos de composição */
-  .comp{ display:grid; grid-template-columns:repeat(3,1fr); gap:7px; }
-  .cb{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px 12px; }
-  .cb .ct2{ font-size:7.4px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; color:var(--navy); }
-  .cb .cv{ font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; color:var(--navy); line-height:1.15; margin-top:2px; }
-  .cb .cp{ display:inline-block; font-size:7.2px; font-weight:800; color:var(--gold-dk); background:#f6edd6; padding:1.5px 7px; border-radius:9px; margin-top:3px; }
-  .cb .cd{ font-size:8.2px; color:#50606e; line-height:1.5; margin-top:5px; }
-  .cb .cd b{ color:var(--navy); }
-
+  .two{ display:grid; grid-template-columns:1fr 1fr; gap:7px; }
   .note{ background:#f6f3ec; border:1px solid var(--line); border-radius:8px; padding:10px 13px; }
   .note .nt{ font-size:7.3px; letter-spacing:1.4px; text-transform:uppercase; color:var(--navy); font-weight:800; margin-bottom:5px; }
-  .note p{ font-size:9px; color:#41505d; line-height:1.55; }
-  .note b{ color:var(--navy); }
   .note ul{ margin:0; padding-left:14px; }
-  .note li{ font-size:9px; color:#41505d; line-height:1.5; margin-bottom:3px; }
+  .note li{ font-size:9px; color:#41505d; line-height:1.5; margin-bottom:3.5px; }
+  .note li:last-child{ margin-bottom:0; }
   .note li::marker{ color:var(--gold); }
   .note li b{ color:var(--navy); }
   .note.warn{ background:#fdf5f4; border-color:#e8cdcb; }
   .note.warn .nt{ color:var(--red); }
   .note.warn li::marker{ color:var(--red); }
-  .note.blue{ background:#f2f6fa; border-color:#d3e0ec; }
-  .note.blue .nt{ color:var(--blue); }
-  .note.blue li::marker{ color:var(--blue); }
+  .note.warn li b{ color:#8f3331; }
 
-  .two{ display:grid; grid-template-columns:1fr 1fr; gap:7px; }
-
-  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:5px 16mm; display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:6px 16mm; display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
   .pf .pl{ font-size:7.4px; color:var(--muted); } .pf .pr{ font-size:8px; color:var(--navy); font-weight:700; letter-spacing:1px; } .pf .pr span{ color:var(--gold); }
   .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff; border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
   @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
@@ -118,7 +98,6 @@
 <body>
 <button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
 
-<!-- ============ PÁGINA 1 ============ -->
 <section class="sheet">
   <div class="hero">
     <div class="brand">
@@ -127,21 +106,17 @@
     </div>
     <div class="kx">Levantamento · Posição até o presente momento</div>
     <h1>Passivo<br><span>Trabalhista</span></h1>
-    <p class="lead">Apuração consolidada das verbas rescisórias e dos encargos incidentes sobre os seis desligamentos do quadro de produção, com data de conclusão definida para cada contrato. Documento de leitura única: o que é devido, por quem, e o que está fora do perímetro deste cálculo.</p>
-    <div class="stamp"><div class="sl">Total apurado</div><div class="sv">R$ 28.691,29</div></div>
+    <p class="lead">Verbas rescisórias e encargos incidentes sobre os seis desligamentos do quadro de produção, apurados contrato a contrato com data de conclusão definida.</p>
+    <div class="stamp"><div class="sl">Passivo apurado</div><div class="sv">R$ 28.691,29</div></div>
   </div>
 
   <div class="body">
     <div class="kpis">
-      <div class="kpi a"><div class="kl">Contratos encerrados</div><div class="kv">6</div><div class="kd">Equipe de produção · marceneiros e ajudantes</div></div>
-      <div class="kpi b"><div class="kl">Verbas rescisórias</div><div class="kv"><small>R$</small> 27.268<small>,84</small></div><div class="kd">13º, férias + 1/3 e FGTS do contrato</div></div>
-      <div class="kpi c"><div class="kl">Encargos incidentes</div><div class="kv"><small>R$</small> 1.422<small>,45</small></div><div class="kd">Não constavam dos acertos originais</div></div>
+      <div class="kpi a"><div class="kl">Contratos encerrados</div><div class="kv">6</div><div class="kd">Equipe de produção · marceneiros</div></div>
+      <div class="kpi b"><div class="kl">Verbas rescisórias</div><div class="kv"><small>R$</small> 27.268<small>,84</small></div><div class="kd">13º, férias + 1/3 e FGTS</div></div>
+      <div class="kpi c"><div class="kl">Encargos patronais</div><div class="kv"><small>R$</small> 1.422<small>,45</small></div><div class="kd">Incidentes sobre o 13º</div></div>
       <div class="kpi d"><div class="kl">Passivo total</div><div class="kv"><small>R$</small> 28.691<small>,29</small></div><div class="kd">Sem saldo de dias · sem multa de 40%</div></div>
     </div>
-
-    <div class="sec"><span class="bar"></span><span class="tx">Como este número foi apurado</span></div>
-    <p class="t">Partimos dos seis termos de acerto emitidos pela empresa e <b>refizemos o cálculo por contrato</b>, corrigindo duas coisas. Primeiro, o <b>FGTS</b>: os acertos traziam valores parciais, e aqui ele está recomposto sobre <b>toda a duração do vínculo</b> — 8% da remuneração de cada mês trabalhado. Segundo, as <b>férias proporcionais acrescidas do terço constitucional</b>, que não apareciam em nenhum dos documentos e são devidas em toda rescisão sem justa causa.</p>
-    <p class="t">Sobre esse valor incidem ainda os <b>encargos patronais</b> que os acertos não descrevem. A base de cálculo por pessoa é o <b>salário contratual</b>, e a data de conclusão é <b>30/04/2026</b> para todos, exceto Deivison e Filipe, cujos contratos se encerram em <b>31/05/2026</b>.</p>
 
     <div class="sec"><span class="bar"></span><span class="tx">Apuração por contrato</span><span class="ct">valores em reais · base salário contratual</span></div>
     <table>
@@ -191,108 +166,45 @@
           <td colspan="3">Total das verbas rescisórias</td>
           <td class="num">4.087,50</td><td class="num">9.033,34</td><td class="num">14.148,00</td><td class="num">27.268,84</td>
         </tr>
-      </tbody>
-    </table>
-
-    <div class="sec"><span class="bar"></span><span class="tx">Encargos incidentes sobre as verbas</span><span class="ct">não descritos nos termos de acerto</span></div>
-    <table>
-      <thead>
-        <tr><th style="width:39%">Encargo</th><th style="width:32%">Base de incidência</th><th class="num" style="width:13%">Alíquota</th><th class="num" style="width:16%">Valor</th></tr>
-      </thead>
-      <tbody>
-        <tr><td class="nm">INSS patronal + terceiros / RAT</td><td>13º salário proporcional <span class="fn">verba de natureza salarial</span></td><td class="num">26,8%</td><td class="num sub">1.095,45</td></tr>
-        <tr><td class="nm">FGTS sobre o 13º salário</td><td>13º salário proporcional</td><td class="num">8,0%</td><td class="num sub">327,00</td></tr>
-        <tr class="tot"><td colspan="3">Total dos encargos</td><td class="num">1.422,45</td></tr>
+        <tr class="enc">
+          <td colspan="6">Encargos patronais sobre o 13º<span class="fn">INSS patronal + terceiros / RAT 26,8% &nbsp;·&nbsp; FGTS 8%</span></td>
+          <td class="num">1.422,45</td>
+        </tr>
       </tbody>
     </table>
 
     <div class="grand">
       <div><div class="gl">Passivo trabalhista apurado</div><div class="gv">R$ 28.691,29</div></div>
-      <div class="gr">Verbas rescisórias de <b>R$ 27.268,84</b> somadas aos encargos patronais de <b>R$ 1.422,45</b>. Valor apurado <b>sem saldo de dias</b> e <b>sem a multa de 40% do FGTS</b>, conforme definido para este levantamento.</div>
-    </div>
-  </div>
-
-  <div class="pf">
-    <div class="pl">Vargas Decor Ltda · CNPJ 17.269.304/0001-51 · Levantamento de passivo trabalhista</div>
-    <div class="pr">VALVIC <span>·</span> 1 / 2</div>
-  </div>
-</section>
-
-<!-- ============ PÁGINA 2 ============ -->
-<section class="sheet">
-  <div class="ph">
-    <div><div class="kx">Passivo Trabalhista · Memória de cálculo</div><div class="tt">Premissas, perímetro e sensibilidade</div></div>
-    <div class="co">Valvic</div>
-  </div>
-
-  <div class="body">
-    <div class="sec"><span class="bar"></span><span class="tx">Composição do passivo</span><span class="ct">onde o valor está concentrado</span></div>
-    <div class="comp">
-      <div class="cb">
-        <div class="ct2">FGTS do contrato</div>
-        <div class="cv">R$ 14.148,00</div>
-        <div class="cp">49% do total</div>
-        <div class="cd">Recomposição de <b>8% da remuneração mensal ao longo de todo o vínculo</b>. É a maior parcela porque acompanha o tempo de casa — sozinho, o contrato do Jomar (47 meses) responde por <b>R$ 7.332,00</b>, metade desta linha.</div>
-      </div>
-      <div class="cb">
-        <div class="ct2">Férias proporcionais + 1/3</div>
-        <div class="cv">R$ 9.033,34</div>
-        <div class="cp">31% do total</div>
-        <div class="cd">Verba <b>devida em toda rescisão sem justa causa</b> e que <b>não constava de nenhum dos seis termos de acerto</b>. É o principal item novo trazido por esta apuração.</div>
-      </div>
-      <div class="cb">
-        <div class="ct2">13º proporcional</div>
-        <div class="cv">R$ 4.087,50</div>
-        <div class="cp">14% do total</div>
-        <div class="cd">Calculado em <b>avos do ano de 2026</b> até a data de conclusão de cada contrato. É também a única base sobre a qual incidem os encargos patronais.</div>
-      </div>
+      <div class="gr">O valor está concentrado no <b>tempo de casa, não no número de pessoas</b>: o FGTS responde por <b>49% do total</b>, e o contrato mais antigo sozinho por <b>R$ 10.148,67</b>.</div>
     </div>
 
-    <div class="sec"><span class="bar"></span><span class="tx">Premissas adotadas</span></div>
-    <div class="note blue">
-      <div class="nt">O que sustenta cada número</div>
-      <ul>
-        <li><b>Base de cálculo.</b> Salário contratual mensal de cada colaborador, conforme consta nos termos de acerto. Não há médias de variáveis, horas extras ou adicionais compostos na base.</li>
-        <li><b>Data de conclusão.</b> <b>30/04/2026</b> para Jomar, Samuel, Joelson e Davi; <b>31/05/2026</b> para Deivison e Filipe. Todos por <b>demissão sem justa causa</b>.</li>
-        <li><b>FGTS.</b> Recomposto sobre a integralidade do vínculo (8% × salário × meses de contrato), e não pelos valores parciais que constavam dos acertos originais.</li>
-        <li><b>Férias.</b> Consideramos apenas as <b>proporcionais do período aquisitivo em curso</b>, acrescidas do terço constitucional — partindo da premissa de que os períodos aquisitivos já vencidos foram regularmente gozados.</li>
-        <li><b>Encargos.</b> INSS patronal e FGTS incidem <b>somente sobre o 13º</b>, por ser verba de natureza salarial. Férias indenizadas e o terço constitucional têm natureza indenizatória e não sofrem incidência.</li>
-      </ul>
-    </div>
-
-    <div class="sec"><span class="bar"></span><span class="tx">Fora do perímetro deste cálculo</span></div>
-    <div class="note warn">
-      <div class="nt">Itens não computados — por definição do levantamento</div>
-      <ul>
-        <li><b>Saldo de dias.</b> Excluído por decisão. Constava dos termos de acerto originais e corresponde aos dias trabalhados no mês da saída.</li>
-        <li><b>Multa de 40% sobre o FGTS.</b> Excluída por decisão. Incidiria sobre o saldo total da conta vinculada de cada colaborador.</li>
-        <li><b>Aviso prévio.</b> Não integrou esta apuração. Em desligamento sem justa causa é devido — indenizado ou trabalhado — e cresce 3 dias por ano de casa, o que pesa especialmente no contrato mais antigo.</li>
-      </ul>
-      <p style="margin-top:6px; font-size:8.8px;">Os três itens acima são conhecidos e estão mapeados. Ficaram fora deste documento para que ele apresente <b>exatamente o perímetro definido</b> — e não porque tenham sido desconsiderados.</p>
-    </div>
-
-    <div class="sec"><span class="bar"></span><span class="tx">Sensibilidade — regime tributário</span></div>
+    <div class="sec"><span class="bar"></span><span class="tx">Critérios da apuração</span></div>
     <div class="two">
       <div class="note">
-        <div class="nt">Cenário apurado · com INSS patronal</div>
-        <p style="font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:700; color:var(--navy); line-height:1.1;">R$ 28.691,29</p>
-        <p style="margin-top:4px;">Considera a incidência integral de <b>INSS patronal de 20% mais terceiros e RAT de 6,8%</b> sobre o 13º proporcional. É o cenário conservador e o número que este documento apresenta.</p>
+        <div class="nt">Como cada verba foi calculada</div>
+        <ul>
+          <li><b>Base.</b> Salário contratual mensal, sem médias de variáveis ou adicionais.</li>
+          <li><b>Conclusão.</b> 30/04/2026, exceto Deivison e Filipe em 31/05/2026. Todos por demissão sem justa causa.</li>
+          <li><b>FGTS.</b> 8% da remuneração de cada mês, sobre a duração integral do vínculo.</li>
+          <li><b>Férias.</b> Proporcionais do período aquisitivo em curso, acrescidas do terço constitucional.</li>
+          <li><b>Encargos.</b> Incidem apenas sobre o 13º, por ser verba salarial. Confirmado enquadramento no Simples sem CPP, o passivo recua para <b>R$ 27.595,84</b>.</li>
+        </ul>
       </div>
-      <div class="note">
-        <div class="nt">Se enquadrado no Simples sem CPP</div>
-        <p style="font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:700; color:var(--ok); line-height:1.1;">R$ 27.595,84</p>
-        <p style="margin-top:4px;">Caso a empresa esteja em anexo do Simples Nacional <b>sem contribuição previdenciária patronal destacada</b>, os 26,8% não incidem e o passivo recua em <b>R$ 1.095,45</b>. A confirmação do enquadramento define qual dos dois vale.</p>
+      <div class="note warn">
+        <div class="nt">Não computado nesta apuração</div>
+        <ul>
+          <li><b>Saldo de dias</b> — dias trabalhados no mês da saída.</li>
+          <li><b>Multa de 40% do FGTS</b> — incidiria sobre o saldo da conta vinculada de cada colaborador.</li>
+          <li><b>Aviso prévio</b> — devido em desligamento sem justa causa, indenizado ou trabalhado, crescendo 3 dias por ano de casa.</li>
+          <li><b>Férias vencidas</b> — considerados regularmente gozados os períodos aquisitivos já completados.</li>
+        </ul>
       </div>
     </div>
-
-    <div class="sec"><span class="bar"></span><span class="tx">Leitura do quadro</span></div>
-    <p class="t">O passivo está <b>concentrado no tempo de casa, não no volume de pessoas</b>: os quatro contratos com menos de um ano somam R$ 13.480,17 juntos, praticamente o mesmo que os dois mais antigos — e destes, o contrato do Jomar sozinho responde por R$ 10.148,67. O número não cresce com o tamanho da equipe; cresce com a permanência.</p>
-    <p class="t">Do total apurado, <b>R$ 9.033,34 em férias proporcionais não estavam previstos</b> em nenhum dos termos emitidos. Essa é a diferença material entre o que os documentos originais indicavam e a posição real da empresa, e é o principal motivo pelo qual este levantamento foi refeito do zero.</p>
   </div>
 
   <div class="pf">
-    <div class="pl">Levantamento elaborado a partir dos seis termos de acerto emitidos pela empresa · valores em reais</div>
-    <div class="pr">VALVIC <span>·</span> 2 / 2</div>
+    <div class="pl">Vargas Decor Ltda · CNPJ 17.269.304/0001-51 · Levantamento de passivo trabalhista · valores em reais</div>
+    <div class="pr">VALVIC <span>·</span> Passivo Trabalhista</div>
   </div>
 </section>
 </body>
