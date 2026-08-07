@@ -241,33 +241,80 @@ for d, v in (('Chapas', custo_chapa), ('Fita (material)', custo_fita), ('Filetag
     print(f'  {d:<56}R$ {v:>9,.2f}')
 print(f'  {"CUSTO DIRETO — DECORADO":<56}R$ {fixedR:>9,.2f}')
 
-# ── preço ─────────────────────────────────────────────────────────────────
-a_, liqF_, b_ = 0.162, 0.88, 0.043
+# ══ RATEIO POR AMBIENTE [Jonathan 07/08: sem RT · MC 35%] ═════════════════
+GRUPO = {C1:'Cozinha', C2:'Cozinha', C3:'Cozinha', S1:'Sala', S2:'Sala',
+         Q1:'Quarto', Q2:'Quarto', Q3:'Quarto', U1:'Suíte', U2:'Suíte',
+         U3:'Suíte', U4:'Suíte'}
+AMB = ('Cozinha', 'Sala', 'Quarto', 'Suíte')
+
+ar_g = defaultdict(lambda: defaultdict(float))
+for mov, mat, d, c, l, q in p:
+    ar_g[GRUPO[mov]][mat] += c*l/10000*q
+
+# chapa rateada por área dentro de cada material (materiais compartilhados)
+ch_g = dict.fromkeys(AMB, 0.0)
+for m in CH:
+    tot_m = sum(ar_g[g][m] for g in AMB)
+    if not tot_m: continue
+    for g in AMB: ch_g[g] += CH[m]*PRECO[m]*ar_g[g][m]/tot_m
+
+# fita e filetagem seguem a área
+ar_g_tot = {g: sum(ar_g[g].values()) for g in AMB}
+ft_g = {g: custo_fita*ar_g_tot[g]/ar_tot for g in AMB}
+fl_g = {g: custo_filet*ar_g_tot[g]/ar_tot for g in AMB}
+
+# terceirizados e ferragens: atribuição EXATA
+te_g = {'Cozinha': INOX_ML*0.45*INOX_M,
+        'Sala':    ESP_M2*ESPELHO_M2 + INOX_ML*0.55*INOX_M,
+        'Quarto':  LACA_M2_Q*LACA_M2 + (1.96*0.87)*ESTOFADO_M2 + (3.0+1.5)*LED_ML,
+        'Suíte':   (1.935*1.00)*ESTOFADO_M2 + (2.97+2.46)*LED_ML}
+fe_g = {'Cozinha': N_DOBR*DOBR + N_ARTIC*ARTIC + N_CORR*CORR + M_CAVA*CAVA_M + 10*SUP_PRAT,
+        'Sala':    6*SUP_PRAT,
+        'Quarto':  DESLIZ_2P + 4*SUP_PRAT,
+        'Suíte':   2*DESLIZ_2P + 2*SUP_PRAT}
+# reconcilia arredondamentos com o total apurado
+te_g['Sala']   += custo_terc - sum(te_g.values())
+fe_g['Cozinha'] += custo_ferr - sum(fe_g.values())
+
+sub_g = {g: ch_g[g]+ft_g[g]+fl_g[g]+te_g[g]+fe_g[g] for g in AMB}
+S = sum(sub_g.values())
+fr_g = {g: sub_g[g] + (ch_g[g]+ft_g[g])*0.06 + (LOG+VIS+INST)*sub_g[g]/S for g in AMB}
+
 print('\n' + '═'*94)
-print('PREÇO DO DECORADO — os parâmetros do SPE continuam abertos')
+print('CUSTO DIRETO POR AMBIENTE')
 print('═'*94)
-print(f'  {"MC":<6}{"SEM RT":>16}{"COM RT (10% do líquido)":>30}')
-for MC in (0.35, 0.37, 0.40):
-    d0 = 1 - a_ - liqF_*b_ - MC
-    d1 = 1 - a_ - liqF_*b_ - liqF_*0.10 - MC
-    print(f'  {MC*100:>4.0f}%  R$ {round(fixedR/d0/100)*100:>13,.0f}   R$ {round(fixedR/d1/100)*100:>24,.0f}')
+print(f'  {"":<10}{"área":>9}{"chapa":>11}{"fita+filet":>12}{"terceiros":>11}{"ferragem":>10}{"CUSTO":>12}')
+for g in AMB:
+    print(f'  {g:<10}{ar_g_tot[g]:>7.1f} m²{ch_g[g]:>11,.0f}{ft_g[g]+fl_g[g]:>12,.0f}'
+          f'{te_g[g]:>11,.0f}{fe_g[g]:>10,.0f}{fr_g[g]:>12,.2f}')
+print(f'  {"TOTAL":<10}{ar_tot:>7.1f} m²{sum(ch_g.values()):>11,.0f}'
+      f'{sum(ft_g.values())+sum(fl_g.values()):>12,.0f}{sum(te_g.values()):>11,.0f}'
+      f'{sum(fe_g.values()):>10,.0f}{sum(fr_g.values()):>12,.2f}')
+
+# ── preço: SEM RT · MC 35% ────────────────────────────────────────────────
+a_, liqF_, b_, MC = 0.162, 0.88, 0.043, 0.35
+div = 1 - a_ - liqF_*b_ - MC
+print('\n' + '═'*94)
+print(f'PREÇO DO DECORADO — MC {MC*100:.0f}% · SEM RT · divisor {div:.5f}')
+print('═'*94)
+pr = {g: round(fr_g[g]/div/100)*100 for g in AMB}
+for g in AMB:
+    print(f'  {g:<12}R$ {fr_g[g]:>9,.2f}  ÷ {div:.5f}  =  R$ {pr[g]:>8,.0f}')
+DEC = sum(pr.values()); FX = sum(fr_g.values())
+print(f'  {"DECORADO":<12}R$ {FX:>9,.2f}                    R$ {DEC:>8,.0f}')
+print(f'  MC conferida: {(DEC - DEC*(a_+liqF_*b_) - FX)/DEC*100:.1f}%')
 
 VIGENTE = 88200
-d40 = 1 - a_ - liqF_*b_ - 0.40
-dec40 = round(fixedR/d40/100)*100
-print(f'\n  PROPOSTA VIGENTE (MOB 01 + MOB 02, MC 40% sem RT) ....... R$ {VIGENTE:>8,.0f}')
-print(f'  DECORADO (MO 03 + DET 05 + DET 06, MC 40% sem RT) ....... R$ {dec40:>8,.0f}')
-print(f'  {"TOTAL ATUALIZADO":<55}R$ {VIGENTE+dec40:>8,.0f}')
-
-print('\n' + '─'*94)
-print('⚠ FLAGS — as três primeiras vêm do dossiê e continuam abertas')
-print('  1. Preço da chapa Arauco MATT — usei a base "cor" (R$ 500/580). A linha Matt é')
-print(f'     premium; a R$ 800/chapa o custo sobe ~R$ {tot_ch*250:,.0f} e o preço ~R$ '
-      f'{round(tot_ch*250/d40/100)*100:,.0f}.')
-print('  2. RT — projeto do escritório Lodi Motta. Tem RT? Muda ~24% do preço.')
-print('  3. MC — a vigente fechou em 40% sem RT.')
-print('  4. Interno branco assumido; as pranchas só especificam o acabamento aparente.')
-print('  5. Fita estimada pelo fator 2,6 m/m² — não apurada peça a peça.')
-print('  6. Divisão interna dos módulos lida das elevações; as plantas cotam o')
-print('     desenvolvimento, não a divisão de gavetas.')
-print('  7. Caixa de gypsum, pintura, cortina e tapetes: fora do escopo Valvic.')
+print('\n' + '═'*94)
+print('PROPOSTA ATUALIZADA')
+print('═'*94)
+print(f'  {"Stand — MOB 01 + MOB 02 (inalterado)":<52}R$ {VIGENTE:>8,.0f}')
+print(f'  {"Decorado — MO 03 + DET 05 + DET 06":<52}R$ {DEC:>8,.0f}')
+print(f'  {"TOTAL":<52}R$ {VIGENTE+DEC:>8,.0f}')
+print('\n  ESCADA (padrão da casa, sobre o total)')
+for d, rot in ((0.00,'Entrada 30% + até 10x no cartao'), (0.03,'Entrada 50% + até 8x no cartao'),
+               (0.05,'Entrada 70% + até 6x no cartao'), (0.07,'Entrada 70% + transferencia')):
+    v = round((VIGENTE+DEC)*(1-d)/100)*100
+    print(f'    {rot:<44}{"—" if not d else f"−{d*100:.0f}%":>5}   R$ {v:>9,.0f}')
+print(f'\n  ⚠ O stand fechou a MC 40%; o decorado sai a 35%. A MC combinada do')
+print(f'    contrato fica em ~{(0.40*VIGENTE + MC*DEC)/(VIGENTE+DEC)*100:.1f}%.')

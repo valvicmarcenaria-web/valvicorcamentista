@@ -103,22 +103,45 @@ Ferragens **R$ 2.860,50** — 22 dobradiças, 8 articuladores, 3 conjuntos de co
 
 ## Preço
 
-| MC | Sem RT | Com RT |
-|--:|--:|--:|
-| 35% | 84.000 | 104.400 |
-| 37% | 87.900 | 110.500 |
-| **40%** | **94.500** | 121.100 |
+### FECHADO [Jonathan 07/08]: **sem RT · MC 35%** · *"sem mexer nos valores na proposta inicial"*
 
-Mantendo o critério da vigente (**MC 40% · sem RT**):
+Divisor 0,45016. Rateio por ambiente — chapa por área dentro de cada material,
+fita e filetagem por área, **terceiros e ferragens atribuídos exatos**.
+
+| Ambiente | Área | Custo direto | Investimento |
+|---|--:|--:|--:|
+| Cozinha | 54,5 m² | 11.671,12 | **25.900** |
+| Sala | 19,2 m² | 6.306,83 | **14.000** |
+| Quarto | 29,9 m² | 9.178,30 | **20.400** |
+| Suíte | 42,2 m² | 10.652,57 | **23.700** |
+| **Decorado** | **145,9 m²** | **37.808,82** | **84.000** |
+
+MC conferida **35,0%**.
 
 | | |
 |---|--:|
-| Vigente — MOB 01 + MOB 02 | R$ 88.200 |
-| **Decorado — MO 03 + DET 05 + DET 06** | **R$ 94.500** |
-| **TOTAL ATUALIZADO** | **R$ 182.700** |
+| Stand — MOB 01 + MOB 02 · **inalterado** | R$ 88.200 |
+| Decorado — MO 03 + DET 05 + DET 06 | R$ 84.000 |
+| **TOTAL** | **R$ 172.200** |
 
-O decorado **é maior que o stand**. Faz sentido: são quatro ambientes mobiliados
-contra painelaria e pérgola.
+Escada: −3% 167.000 · −5% 163.600 · −7% **160.100**.
+
+> ⚠️ **O contrato passa a ter duas margens.** O stand fechou a **40%**, o decorado
+> sai a **35%**. A MC combinada fica em **~37,6%** — ainda na faixa boa. Mas se a
+> negociação puxar desconto sobre o total, ela corrói a etapa nova, não a antiga.
+
+O decorado quase empata com o stand — quatro ambientes mobiliados contra
+painelaria e pérgola.
+
+## Proposta — `build-spe-nova-lima.py` → `proposta-spe-nova-lima.pdf`
+
+4 páginas no layout premium da casa: capa · **o que muda** (duas caixas opondo
+contratado × entra agora, mais o decorado em números) · os quatro ambientes ·
+investimento com o stand em faixa cinza marcado *"valor inalterado"*.
+
+Condições: **60 a 75 dias úteis** para o decorado, a alinhar com a inauguração do
+stand · garantia **2 anos** (mesma da etapa contratada) · validade 7 dias.
+⚠️ O prazo é assumido por mim, não ditado.
 
 ## ⚠️ Flags
 1. **Chapa Arauco MATT** — usei a base "cor" (R$ 500/580). Matt é linha premium;
