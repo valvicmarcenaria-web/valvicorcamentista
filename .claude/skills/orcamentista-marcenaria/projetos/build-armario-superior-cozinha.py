@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 # Proposta — Armário superior de cozinha (3,02 m). 3 páginas.
 # Números vêm de corte-armario-superior-cozinha.py:
-#   marcenaria R$ 10.550 · LED R$ 2.500 · total R$ 13.050 (MC 35%, sem RT)
+#   custo direto R$ 5.872,88 · FECHADO em R$ 9.700 [Jonathan 07/08] — contexto atipico.
+#   Divisor calibrado 0,60545 -> MC 19,5% no cartao, 26,7% em transferencia.
+#   Por isso a proposta NAO traz escada de pagamento: 50%+50% em transferencia ou PIX.
 import pathlib
 P = pathlib.Path('/home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos')
 
@@ -225,6 +227,11 @@ h1,h2,h3{margin:0;font-weight:600;} p{margin:0;}
 .esc tr.best td{color:var(--ink);}
 .esc tr.best td:first-child{font-weight:700;}
 
+.cond{background:var(--accent-soft);border-radius:7px;padding:4.4mm 6mm;margin-top:4mm;}
+.cond .k{font-size:7.4pt;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+         font-weight:700;margin-bottom:1.8mm;}
+.cond .d{font-size:8.8pt;color:var(--soft);line-height:1.5;}
+.cond .d b{color:var(--ink);}
 .incl{margin:4mm 0 3.4mm;}
 .incl-t{font-size:7.4pt;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);
         font-weight:700;margin-bottom:2.4mm;}
@@ -367,9 +374,9 @@ HTML = f"""<!DOCTYPE html>
   </div>
 
   <div class="note">
-    A cristaleira leva <b>vidro com perfil de alumínio</b> nas duas folhas. É o item mais caro
-    da lista de ferragens — se a preferência for por portas cegas na cor, o conjunto fica
-    <b>R$ 1.300 mais barato</b>, e a decisão pode ser tomada até a liberação do corte.
+    A cristaleira leva <b>vidro com perfil de alumínio</b> nas duas folhas, com <b>LED interno</b>
+    em cada prateleira — é o único módulo em que o que está guardado aparece, e por isso o único
+    que ganha luz por dentro. Todas as demais portas são cegas, na cor escolhida.
   </div>
 {FT}
 </div>
@@ -378,15 +385,15 @@ HTML = f"""<!DOCTYPE html>
 <div class="page">
 {HD}
   <div class="eyebrow">Investimento</div>
-  <div class="h1" style="font-size:18pt;margin-bottom:4mm;">Marcenaria e iluminação,<br>em linhas separadas.</div>
+  <div class="h1" style="font-size:18pt;margin-bottom:5mm;">Marcenaria e iluminação,<br>em linhas separadas.</div>
 
   <div class="inv-box">
-    <div class="t">Investimento total</div>
-    <div class="big">R$ 13.050</div>
-    <div class="cap">Entrada de 30% + saldo em até 10× no cartão</div>
+    <div class="t">Investimento</div>
+    <div class="big">R$ 9.700</div>
+    <div class="cap"><b>50% na assinatura + 50% na entrega</b>, em transferência ou PIX</div>
     <div class="comp">
-      <div class="r"><span>Marcenaria — 5 módulos, 3,02 m de parede</span><b>R$ 10.550</b></div>
-      <div class="r"><span>Iluminação LED — 7 m de fita com perfil, 2 fontes e sensor</span><b>R$ 2.500</b></div>
+      <div class="r"><span>Marcenaria — 5 módulos, 3,02 m de parede</span><b>R$ 7.850</b></div>
+      <div class="r"><span>Iluminação LED — 7 m de fita com perfil, 2 fontes e sensor</span><b>R$ 1.850</b></div>
     </div>
   </div>
 
@@ -394,22 +401,23 @@ HTML = f"""<!DOCTYPE html>
     <b>Por que o LED aparece sozinho.</b> São <b>7 m</b> de fita com perfil e difusor — 2,30 m
     sob cada corpo e 2,10 m dentro da cristaleira — mais duas fontes e o sensor. É a única
     linha que pode ser reduzida ou adiada <b>sem mexer na marcenaria</b>. Sem o trecho da
-    cristaleira, cai para <b>R$ 1.900</b>.
+    cristaleira, cai para <b>R$ 1.400</b> — e o conjunto, para <b>R$ 9.250</b>.
   </div>
 
-  <table class="esc">
-    <tr><td>Entrada de 30% + até 10× no cartão</td><td class="dsc">—</td><td>R$ 13.050</td></tr>
-    <tr><td>Entrada de 50% + até 8× no cartão</td><td class="dsc">−3%</td><td>R$ 12.650</td></tr>
-    <tr><td>Entrada de 70% + até 6× no cartão</td><td class="dsc">−5%</td><td>R$ 12.400</td></tr>
-    <tr class="best"><td>Entrada de 70% + saldo em transferência</td><td class="dsc">−7%</td><td>R$ 12.150</td></tr>
-  </table>
+  <div class="cond">
+    <div class="k">Condição fechada</div>
+    <div class="d">O valor de <b>R$ 9.700</b> é fechado para o escopo desta proposta, nas
+    condições acima. Não há escalonamento por forma de pagamento — o preço já está no piso, e
+    a liquidação em <b>transferência ou PIX</b> é o que o sustenta.</div>
+  </div>
 
   <div class="incl">
     <div class="incl-t">O que está incluso</div>
     <ul>
-      <li><b>Corpo superior</b> 230 × 50 cm — 6 portas, 3 prateleiras · <b>módulo da geladeira</b> 72 × 70 cm — 2 portas</li>
-      <li><b>Cristaleira</b> 72 cm — 2 portas de vidro com perfil de alumínio, 2 prateleiras</li>
-      <li><b>Vão da coifa</b> 83 cm — 2 portas · <b>nicho do micro</b> 75 cm — báscula com pistão a gás</li>
+      <li><b>Corpo superior</b> de 230 × 50 cm — 6 portas e 3 prateleiras</li>
+      <li><b>Módulo da geladeira</b> de 72 × 70 cm — 2 portas e prateleira</li>
+      <li><b>Cristaleira</b> de 72 cm — 2 portas de vidro com perfil de alumínio, 2 prateleiras</li>
+      <li><b>Vão da coifa</b> de 83 cm — 2 portas · <b>nicho do micro</b> de 75 cm — báscula com pistão a gás</li>
       <li><b>Puxador passante</b> em perfil usinado em toda a frontal</li>
       <li>Interno em branco · externo na cor · fita de borda em todas as faces aparentes</li>
       <li>Ferragens Hardt com amortecimento · projeto, entrega e instalação pela equipe Valvic</li>

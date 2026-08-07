@@ -1,6 +1,6 @@
 # Orçamento — Armário superior de cozinha (3,02 m)
 
-> **Status:** 🟡 Levantado em 07/08/2026. Aguarda confirmação de medidas.
+> **Status:** 🔴 **FECHADO em R$ 9.700** [Jonathan 07/08] — contexto atípico, **não é referência**. Aguarda confirmação de medidas.
 > Fontes: render do projeto + foto da parede real com medição de **3,02 m**.
 > Scripts: `corte-armario-superior-cozinha.py` (levantamento) ·
 > `build-armario-superior-cozinha.py` → `proposta-armario-superior-cozinha.pdf` (3 páginas)
@@ -99,3 +99,42 @@ Silver: 10 anos, com 2 anos em corrediças — que este móvel **não tem**) · 
 
 > ⚠️ Prazo e validade foram **assumidos por mim**, não ditados. O padrão da casa em
 > `proposta-comercial.md` é 45–60 dias úteis para projeto completo; aqui é um ambiente só.
+
+## FECHAMENTO — R$ 9.700 [Jonathan 07/08/2026]
+
+> ⚠️ **Contexto atípico, declarado pelo Jonathan. Não usar como referência de preço.**
+
+Divisor calibrado: `5.872,88 ÷ 9.700 = 0,60545` → **MC 19,5%** no cartão.
+Contra 35,0% da tabela de R$ 13.050. Cai na faixa **Crítico** (até 25%) da
+`validacao-orcamento.md` — a que existe só para gerar caixa urgente.
+
+| | Preço | MC |
+|---|--:|--:|
+| Tabela calculada | 13.050 | 35,0% · R$ 4.569 |
+| **Fechado — cartão** | **9.700** | **19,5% · R$ 1.889** |
+| **Fechado — transferência/PIX** | **9.700** | **26,7% · R$ 2.587** |
+
+### A forma de pagamento virou a variável principal
+
+A taxa de maquininha (~7,2%) mora dentro do `a = 0,162`. A R$ 9.700 ela vale
+**R$ 698** — **37% de toda a MC do cartão**. Por isso a proposta **não traz a
+escada de pagamento**: o −7% levaria a MC a 14,8%. Entrou no lugar um bloco de
+**condição fechada** com 50% + 50% em transferência ou PIX.
+
+### Alavancas, se precisar recuperar margem sem mexer no preço
+
+| Alavanca | Custo | MC |
+|---|--:|--:|
+| Portas cegas na cor no lugar do vidro | −R$ 591 | 25,6% |
+| LED sem o trecho da cristaleira | −R$ 273 | 22,3% |
+| As duas | −R$ 864 | 28,4% |
+| As duas + transferência | | **35,6%** |
+
+> A alternativa de porta cega **saiu da p.2**: ela prometia "R$ 1.300 mais barato",
+> número que existia contra a tabela. A R$ 9.700 aplicar aquele desconto levaria a
+> MC a 17,1%. Virou nota técnica sobre o vidro e o LED interno, sem promessa de preço.
+
+### Rateio apresentado
+Marcenaria **R$ 7.850** · LED **R$ 1.850** — proporcional à tabela (80,8% / 19,2%),
+para o LED continuar em linha própria como pedido. **Sem desconto riscado**: o
+cliente nunca viu os R$ 13.050, então não há por que expor uma redução de 25,7%.
