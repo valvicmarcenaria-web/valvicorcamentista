@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fluxo Financeiro — Agosto e Setembro · Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  :root{
+    --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f;
+    --gold-bg:#f6edd6; --cream:#FBFAF7; --ink:#1b2733; --body:#33414f; --muted:#6c7785;
+    --line:#e8e3d8; --line2:#dfdacd; --ok:#2f7d4f; --blue:#2f5d8c; --red:#b0413f;
+  }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3;
+    font-size:10px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:14px auto;
+    box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column;
+    page-break-after:always; }
+  .sheet:last-child{ page-break-after:auto; }
+
+  .hero{ background:radial-gradient(120% 90% at 85% -10%, #1b3a5e 0%, rgba(27,58,94,0) 55%),
+    linear-gradient(160deg,#0E2038 0%,#0b1a2e 60%,#0a1626 100%); color:#fff; padding:11mm 16mm 9mm; position:relative; }
+  .hero::after{ content:""; position:absolute; left:16mm; right:16mm; bottom:0; height:2.5px;
+    background:linear-gradient(90deg,var(--gold),var(--gold-dk) 45%,transparent); }
+  .hero .brand{ display:flex; align-items:center; gap:11px; }
+  .hero .mono{ width:36px; height:36px; border:1.5px solid var(--gold); border-radius:4px; display:flex;
+    align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700;
+    font-size:19px; color:var(--gold); }
+  .hero .co{ font-size:11.5px; font-weight:700; letter-spacing:2.6px; text-transform:uppercase; }
+  .hero .cosub{ font-size:7.8px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
+  .hero .kx{ font-size:8.2px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-top:7mm; }
+  .hero h1{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:31px; line-height:1.08; margin-top:5px; }
+  .hero h1 span{ color:var(--gold-soft); font-style:italic; }
+  .hero .lead{ font-size:10px; color:rgba(255,255,255,.72); margin-top:8px; max-width:140mm; line-height:1.6; }
+  .hero .stamp{ position:absolute; right:16mm; bottom:9mm; text-align:right; }
+  .hero .stamp .sl{ font-size:7px; letter-spacing:2.2px; text-transform:uppercase; color:rgba(255,255,255,.45); }
+  .hero .stamp .sv{ font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:700; color:var(--gold-soft); line-height:1.1; margin-top:2px; }
+
+  .ph{ background:var(--navy); color:#fff; padding:8mm 16mm 5.5mm; display:flex; justify-content:space-between;
+    align-items:flex-end; position:relative; }
+  .ph::after{ content:""; position:absolute; left:16mm; right:16mm; bottom:0; height:2px;
+    background:linear-gradient(90deg,var(--gold),transparent); }
+  .ph .kx{ font-size:7.4px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:600; margin-top:2px; line-height:1; }
+  .ph .co{ font-size:8.6px; letter-spacing:2px; text-transform:uppercase; font-weight:600; }
+
+  .body{ flex:1; padding:5.5mm 16mm 0; display:flex; flex-direction:column; min-height:0; }
+
+  .sec{ display:flex; align-items:center; gap:9px; margin:0 0 6px; }
+  .sec:not(:first-child){ margin-top:4.5mm; }
+  .sec .bar{ width:14px; height:2px; background:var(--gold); }
+  .sec .tx{ font-size:8.4px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--navy); }
+  .sec .ct{ margin-left:auto; font-size:7.8px; color:var(--muted); }
+
+  p.t{ font-size:10px; line-height:1.6; color:var(--body); }
+  p.t + p.t{ margin-top:5px; }
+  p.t b{ color:var(--navy); font-weight:700; }
+  .lead2{ font-size:10.6px; line-height:1.62; color:var(--body); }
+  .lead2 b{ color:var(--navy); }
+
+  .kpis{ display:grid; gap:7px; }
+  .k4{ grid-template-columns:repeat(4,1fr); } .k3{ grid-template-columns:repeat(3,1fr); }
+  .k2{ grid-template-columns:repeat(2,1fr); }
+  .kpi{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px 12px; position:relative; overflow:hidden; }
+  .kpi::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--line2); }
+  .kpi.a::before{ background:var(--blue); } .kpi.b::before{ background:var(--gold); }
+  .kpi.c::before{ background:var(--gold-dk); } .kpi.d::before{ background:var(--navy); }
+  .kpi.e::before{ background:var(--ok); } .kpi.f::before{ background:var(--red); }
+  .kpi .kl{ font-size:7px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; color:var(--muted); }
+  .kpi .kv{ font-family:'Cormorant Garamond',serif; font-size:23px; font-weight:700; color:var(--navy); line-height:1.1; margin-top:3px; }
+  .kpi .kv small{ font-family:'Inter',sans-serif; font-size:10.5px; font-weight:700; }
+  .kpi .kv.neg{ color:var(--red); } .kpi .kv.pos{ color:var(--ok); }
+  .kpi .kd{ font-size:7.5px; color:var(--muted); line-height:1.45; margin-top:4px; }
+  .kpi .kd b{ color:var(--navy); }
+
+  table{ width:100%; border-collapse:collapse; background:#fff; }
+  thead th{ background:var(--navy2); color:#fff; font-size:7px; font-weight:600; letter-spacing:.6px;
+    text-transform:uppercase; padding:6px 7px; text-align:left; }
+  thead th.num{ text-align:right; }
+  tbody td{ padding:5.2px 7px; border-bottom:1px solid var(--line); font-size:8.8px; vertical-align:middle; line-height:1.4; }
+  tbody td.num{ text-align:right; font-variant-numeric:tabular-nums; }
+  tbody td.nm{ font-weight:800; color:var(--navy); }
+  tbody td .fn{ display:block; font-size:7.1px; font-weight:500; color:var(--muted); margin-top:1px; line-height:1.35; }
+  tbody td.sub{ font-weight:800; color:var(--navy); background:#faf7f0; }
+  tbody tr.tot td{ background:var(--navy); color:#fff; font-weight:800; font-size:9.2px; border-bottom:none; padding:6.5px 7px; }
+  tbody tr.tot td.num{ color:var(--gold-soft); }
+  tbody tr.sec2 td{ background:#f1eee6; font-size:7.1px; font-weight:800; letter-spacing:1.4px;
+    text-transform:uppercase; color:var(--navy); padding:4.2px 7px; border-bottom:1px solid var(--line2); }
+  tbody tr.enc td{ background:var(--gold-bg); font-weight:700; color:#7a5b17; border-bottom:none; padding:6.5px 7px; }
+  tbody tr.enc td.num{ color:#7a5b17; font-weight:800; }
+  tbody tr.neg td{ background:#fdf0ef; font-weight:800; color:#8f3331; border-bottom:none; padding:6.5px 7px; }
+  tbody tr.neg td.num{ color:#8f3331; }
+  .dt{ font-size:8px; color:var(--muted); }
+
+  .band{ background:linear-gradient(150deg,var(--navy) 0%,#0b1a2e 100%); color:#fff; border-radius:8px;
+    padding:12px 16px; display:flex; align-items:center; gap:15px; position:relative; overflow:hidden; }
+  .band::after{ content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--gold); }
+  .band.red::after{ background:#d4635f; }
+  .band .bl{ font-size:7.4px; letter-spacing:2.2px; text-transform:uppercase; color:var(--gold); }
+  .band.red .bl{ color:#e8918d; }
+  .band .bv{ font-family:'Cormorant Garamond',serif; font-size:30px; font-weight:700; line-height:1; margin-top:3px; }
+  .band .br{ margin-left:auto; text-align:right; font-size:8.4px; color:rgba(255,255,255,.64); line-height:1.6; max-width:92mm; }
+  .band .br b{ color:#fff; }
+
+  .cards{ display:grid; gap:7px; }
+  .c2{ grid-template-columns:repeat(2,1fr); } .c3{ grid-template-columns:repeat(3,1fr); }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px 12px; }
+  .card .ct2{ font-size:7.1px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:var(--gold-dk); }
+  .card h4{ font-size:11px; font-weight:800; color:var(--navy); line-height:1.25; margin-top:3px; }
+  .card .cv{ font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700; color:var(--navy); line-height:1.15; margin-top:2px; }
+  .card .cv.neg{ color:var(--red); } .card .cv.pos{ color:var(--ok); }
+  .card p{ font-size:8.7px; color:var(--body); line-height:1.55; margin-top:5px; }
+  .card p b{ color:var(--navy); }
+  .card ul{ margin:5px 0 0; padding-left:13px; }
+  .card li{ font-size:8.6px; color:var(--body); line-height:1.5; margin-bottom:3px; }
+  .card li::marker{ color:var(--gold); }
+  .card li b{ color:var(--navy); }
+  .card.warn{ background:#fdf5f4; border-color:#e8cdcb; } .card.warn .ct2{ color:var(--red); }
+  .card.warn li::marker{ color:var(--red); }
+  .card.blue{ background:#f2f6fa; border-color:#d3e0ec; } .card.blue .ct2{ color:var(--blue); }
+  .card.blue li::marker{ color:var(--blue); }
+  .card.ok{ background:#f3f7f4; border-color:#cadfd2; } .card.ok .ct2{ color:var(--ok); }
+  .card.ok li::marker{ color:var(--ok); }
+  .card.gold{ border-color:var(--gold); box-shadow:0 0 0 2px rgba(194,160,90,.12); }
+
+  .note{ background:#f6f3ec; border:1px solid var(--line); border-radius:8px; padding:10px 13px; }
+  .note .nt{ font-size:7.2px; letter-spacing:1.4px; text-transform:uppercase; color:var(--navy); font-weight:800; margin-bottom:5px; }
+  .note p{ font-size:8.9px; color:var(--body); line-height:1.55; }
+  .note p + p{ margin-top:4px; }
+  .note b{ color:var(--navy); }
+  .note ul{ margin:0; padding-left:13px; }
+  .note li{ font-size:8.9px; color:var(--body); line-height:1.5; margin-bottom:3px; }
+  .note li:last-child{ margin-bottom:0; }
+  .note li::marker{ color:var(--gold); }
+  .note li b{ color:var(--navy); }
+  .note.warn{ background:#fdf5f4; border-color:#e8cdcb; } .note.warn .nt{ color:var(--red); }
+  .note.warn li::marker{ color:var(--red); }
+  .note.blue{ background:#f2f6fa; border-color:#d3e0ec; } .note.blue .nt{ color:var(--blue); }
+  .note.blue li::marker{ color:var(--blue); }
+  .note.ok{ background:#f3f7f4; border-color:#cadfd2; } .note.ok .nt{ color:var(--ok); }
+  .note.ok li::marker{ color:var(--ok); }
+
+  .two{ display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+  .mt{ margin-top:4.5mm; } .mts{ margin-top:7px; }
+
+  /* faixa de incerteza */
+  .range{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:12px 14px; }
+  .range .rtrack{ position:relative; height:34px; margin:10px 0 6px; }
+  .range .rbar{ position:absolute; left:0; right:0; top:15px; height:5px; border-radius:3px;
+    background:linear-gradient(90deg,#c96b67 0%,#dda86a 48%,#5a9c72 100%); }
+  .range .rp{ position:absolute; top:2px; width:2px; height:31px; background:var(--navy); }
+  .range .rl{ position:absolute; top:-3px; font-size:7.6px; font-weight:800; color:var(--navy); white-space:nowrap; }
+  .range .rends{ display:flex; justify-content:space-between; font-size:8.4px; }
+  .range .rends b{ display:block; font-family:'Cormorant Garamond',serif; font-size:17px; }
+  .range .re-l b{ color:var(--red); } .range .re-r b{ color:var(--ok); }
+  .range .rends span{ font-size:7.6px; color:var(--muted); }
+
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:5px 16mm; display:flex;
+    justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf .pl{ font-size:7.2px; color:var(--muted); }
+  .pf .pr{ font-size:8px; color:var(--navy); font-weight:700; letter-spacing:1px; }
+  .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff;
+    border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<!-- ══════════════ PÁGINA 1 ══════════════ -->
+<section class="sheet">
+  <div class="hero">
+    <div class="brand">
+      <div class="mono">V</div>
+      <div><div class="co">Valvic Marcenaria</div>
+        <div class="cosub">Vargas Decor Ltda &nbsp;·&nbsp; CNPJ 17.269.304/0001-51 &nbsp;·&nbsp; Belo Horizonte / MG</div></div>
+    </div>
+    <div class="kx">Levantamento solicitado · agosto e setembro de 2026</div>
+    <h1>Fluxo<br><span>Financeiro</span></h1>
+    <p class="lead">Todo o movimento previsto para os dois próximos meses — o que entra, o que sai e o que
+      sobra — em duas leituras: <b style="color:#fff">caixa</b> (dinheiro que circula) e
+      <b style="color:#fff">competência</b> (resultado que o período gerou).</p>
+    <div class="stamp"><div class="sl">A receber nos 2 meses</div><div class="sv">R$ 378,4 mil</div></div>
+  </div>
+
+  <div class="body">
+    <div class="kpis k4">
+      <div class="kpi a"><div class="kl">Produção a concluir</div><div class="kv"><small>R$</small> 695,4<small> mil</small></div><div class="kd">16 contratos · valor bruto dos dois meses</div></div>
+      <div class="kpi e"><div class="kl">Já recebido antes</div><div class="kv"><small>R$</small> 317,0<small> mil</small></div><div class="kd">Sinais e parcelas cobrados em meses anteriores</div></div>
+      <div class="kpi b"><div class="kl">A receber ago + set</div><div class="kv"><small>R$</small> 378,4<small> mil</small></div><div class="kd">R$ 192,9k em agosto · R$ 185,5k em setembro</div></div>
+      <div class="kpi f"><div class="kl">Fora deste fluxo</div><div class="kv"><small>R$</small> 87,0<small> mil</small></div><div class="kd">André / Alphaville — sem data de recebimento</div></div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Agosto · contratos a concluir</span><span class="ct">valores em reais</span></div>
+    <table>
+      <thead><tr><th style="width:30%">Cliente</th><th class="num" style="width:17%">Valor do contrato</th>
+        <th class="num" style="width:17%">Já recebido</th><th class="num" style="width:17%">A receber</th>
+        <th class="num" style="width:19%">% já em caixa</th></tr></thead>
+      <tbody>
+        <tr><td class="nm">Cristiane</td><td class="num">94.000</td><td class="num">42.000</td><td class="num sub">52.000</td><td class="num dt">45%</td></tr>
+        <tr><td class="nm">Lucas Mello</td><td class="num">46.000</td><td class="num">24.000</td><td class="num sub">22.000</td><td class="num dt">52%</td></tr>
+        <tr><td class="nm">Rejane</td><td class="num">35.600</td><td class="num">14.000</td><td class="num sub">21.600</td><td class="num dt">39%</td></tr>
+        <tr><td class="nm">Augusto</td><td class="num">90.000</td><td class="num">63.000</td><td class="num sub">27.000</td><td class="num dt">70%</td></tr>
+        <tr><td class="nm">Carla</td><td class="num">27.000</td><td class="num">13.500</td><td class="num sub">13.500</td><td class="num dt">50%</td></tr>
+        <tr><td class="nm">Flavia</td><td class="num">15.000</td><td class="num">—</td><td class="num sub">15.000</td><td class="num dt">0%</td></tr>
+        <tr><td class="nm">Luciana Rajão</td><td class="num">12.000</td><td class="num">—</td><td class="num sub">12.000</td><td class="num dt">0%</td></tr>
+        <tr><td class="nm">Bernardo</td><td class="num">13.000</td><td class="num">4.000</td><td class="num sub">9.000</td><td class="num dt">31%</td></tr>
+        <tr><td class="nm">Tania</td><td class="num">8.500</td><td class="num">—</td><td class="num sub">8.500</td><td class="num dt">0%</td></tr>
+        <tr><td class="nm">Giseli</td><td class="num">14.000</td><td class="num">7.000</td><td class="num sub">7.000</td><td class="num dt">50%</td></tr>
+        <tr><td class="nm">Luiz</td><td class="num">5.300</td><td class="num">—</td><td class="num sub">5.300</td><td class="num dt">0%</td></tr>
+        <tr class="tot"><td>Total de agosto · 11 contratos</td><td class="num">360.400</td><td class="num">167.500</td><td class="num">192.900</td><td class="num">46%</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Setembro · contratos a concluir</span></div>
+    <table>
+      <thead><tr><th style="width:30%">Cliente</th><th class="num" style="width:17%">Valor do contrato</th>
+        <th class="num" style="width:17%">Já recebido</th><th class="num" style="width:17%">A receber</th>
+        <th class="num" style="width:19%">% já em caixa</th></tr></thead>
+      <tbody>
+        <tr><td class="nm">Ana Carolina</td><td class="num">108.000</td><td class="num">32.500</td><td class="num sub">75.500</td><td class="num dt">30%</td></tr>
+        <tr><td class="nm">Maria · Vale dos Cristais</td><td class="num">124.000</td><td class="num">58.000</td><td class="num sub">66.000</td><td class="num dt">47%</td></tr>
+        <tr><td class="nm">Andrea · clínica</td><td class="num">47.000</td><td class="num">14.000</td><td class="num sub">33.000</td><td class="num dt">30%</td></tr>
+        <tr><td class="nm">Richard</td><td class="num">22.000</td><td class="num">11.000</td><td class="num sub">11.000</td><td class="num dt">50%</td></tr>
+        <tr><td class="nm">Simony</td><td class="num">34.000</td><td class="num">34.000</td><td class="num sub">—</td><td class="num dt">100%</td></tr>
+        <tr class="tot"><td>Total de setembro · 5 contratos</td><td class="num">335.000</td><td class="num">149.500</td><td class="num">185.500</td><td class="num">45%</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note warn mt"><div class="nt">Correção aplicada ao levantamento original</div>
+      <p>O rascunho da reunião somava <b>R$ 443 mil a receber</b>. O valor correto é <b>R$ 378,4 mil</b> —
+      diferença de <b>R$ 64,6 mil</b>. A causa: o cliente <b>Augusto</b> entrou na soma pelo saldo a receber
+      (R$ 27 mil) e não pelo contrato (R$ 90 mil), enquanto os <b>R$ 63 mil já recebidos dele</b> ficaram fora
+      da linha de recebidos. <b>Leonardo (R$ 55 mil)</b> foi retirado de setembro e não consta aqui.</p></div>
+  </div>
+
+  <div class="pf">
+    <div class="pl">Vargas Decor Ltda · CNPJ 17.269.304/0001-51 · Fluxo financeiro agosto–setembro/2026</div>
+    <div class="pr">VALVIC <span>·</span> 1 / 3</div>
+  </div>
+</section>
+
+<!-- ══════════════ PÁGINA 2 ══════════════ -->
+<section class="sheet">
+  <div class="ph">
+    <div><div class="kx">Fluxo financeiro · as duas leituras</div><div class="tt">Caixa e competência</div></div>
+    <div class="co">Valvic</div>
+  </div>
+
+  <div class="body">
+    <p class="lead2">O mesmo período conta <b>duas histórias diferentes</b>, e as duas são verdadeiras.
+    Por <b>competência</b>, o resultado mede o que os dois meses produziram — receita de tudo o que for
+    entregue, menos o custo de produzir. Por <b>caixa</b>, mede só o dinheiro que efetivamente circula
+    na conta. A distância entre as duas é o retrato do capital de giro da empresa.</p>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Leitura por competência</span><span class="ct">o que o período gera de resultado</span></div>
+    <table>
+      <thead><tr><th style="width:44%">Linha</th><th class="num" style="width:18%">Agosto</th>
+        <th class="num" style="width:18%">Setembro</th><th class="num" style="width:20%">Dois meses</th></tr></thead>
+      <tbody>
+        <tr><td class="nm">Receita reconhecida<span class="fn">valor dos contratos concluídos no mês</span></td><td class="num">360.400</td><td class="num">335.000</td><td class="num sub">695.400</td></tr>
+        <tr><td class="nm">(−) Custo variável<span class="fn">material, ferragem, terceirizados, comissões e impostos · 56,5%</span></td><td class="num">203.626</td><td class="num">189.275</td><td class="num sub">392.901</td></tr>
+        <tr class="enc"><td>= Margem de contribuição<span class="fn" style="color:#96803f">43,5% da receita</span></td><td class="num">156.774</td><td class="num">145.725</td><td class="num">302.499</td></tr>
+        <tr><td class="nm">(−) Custo fixo da estrutura<span class="fn">folha, pró-labore, galpão, administrativo, logística e marketing</span></td><td class="num">76.186</td><td class="num">81.920</td><td class="num sub">158.106</td></tr>
+        <tr class="tot"><td>= Resultado operacional do período</td><td class="num">+80.588</td><td class="num">+63.805</td><td class="num">+144.393</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Leitura por caixa</span><span class="ct">o dinheiro que entra e sai na conta</span></div>
+    <table>
+      <thead><tr><th style="width:44%">Linha</th><th class="num" style="width:18%">Agosto</th>
+        <th class="num" style="width:18%">Setembro</th><th class="num" style="width:20%">Dois meses</th></tr></thead>
+      <tbody>
+        <tr><td class="nm">Entradas — parcelas a receber</td><td class="num">192.900</td><td class="num">185.500</td><td class="num sub">378.400</td></tr>
+        <tr><td class="nm">(−) Compra de material e terceirizados<span class="fn">premissa: desembolso no mês da produção</span></td><td class="num">203.626</td><td class="num">189.275</td><td class="num sub">392.901</td></tr>
+        <tr><td class="nm">(−) Custo fixo da estrutura</td><td class="num">76.186</td><td class="num">81.920</td><td class="num sub">158.106</td></tr>
+        <tr><td class="nm">(−) Serviço de dívida<span class="fn">máquinas R$ 4.800 + conta garantia ~R$ 3.000 + consórcio R$ 1.100</span></td><td class="num">8.900</td><td class="num">8.900</td><td class="num sub">17.800</td></tr>
+        <tr class="neg"><td>= Resultado de caixa do período</td><td class="num">−95.812</td><td class="num">−94.595</td><td class="num">−190.407</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">A ponte entre as duas</span><span class="ct">de onde vem a diferença de R$ 334,8 mil</span></div>
+    <table>
+      <thead><tr><th style="width:66%">Da competência para o caixa</th><th class="num" style="width:34%">Dois meses</th></tr></thead>
+      <tbody>
+        <tr><td class="nm">Resultado por competência</td><td class="num sub">+144.393</td></tr>
+        <tr><td class="nm">(−) Receita já recebida em meses anteriores<span class="fn">sinais e parcelas cobrados antes — o dinheiro entrou e já foi gasto</span></td><td class="num">−317.000</td></tr>
+        <tr><td class="nm">(−) Amortização de dívida<span class="fn">saída de caixa que não é despesa do período</span></td><td class="num">−17.800</td></tr>
+        <tr class="neg"><td>= Resultado de caixa</td><td class="num">−190.407</td></tr>
+      </tbody>
+    </table>
+
+    <div class="band red mt">
+      <div><div class="bl">O que esta ponte mostra</div><div class="bv" style="font-size:19px">A operação dá lucro.<br>O caixa é que não fecha.</div></div>
+      <div class="br">Os dois meses <b>geram R$ 144 mil de resultado</b> — a margem cobre o custo fixo com folga.
+        Mas <b>R$ 317 mil da receita desses contratos já entrou e já foi consumido</b> em meses anteriores.
+        A empresa produz agora com dinheiro que recebeu antes. <b>Isso é gargalo de capital de giro,
+        não de rentabilidade.</b></div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <div class="pl">Vargas Decor Ltda · Fluxo financeiro agosto–setembro/2026 · valores em reais</div>
+    <div class="pr">VALVIC <span>·</span> 2 / 3</div>
+  </div>
+</section>
+
+<!-- ══════════════ PÁGINA 3 ══════════════ -->
+<section class="sheet">
+  <div class="ph">
+    <div><div class="kx">Fluxo financeiro · qualidade da informação</div><div class="tt">Premissas, faixa e próximos passos</div></div>
+    <div class="co">Valvic</div>
+  </div>
+
+  <div class="body">
+    <div class="sec"><span class="bar"></span><span class="tx">A premissa mais frágil deste documento</span></div>
+    <p class="t">O resultado de caixa depende inteiramente de <b>quando o material é comprado</b>. A empresa
+    ainda <b>não mede o cronograma de desembolso</b> — hoje só se sabe o custo total do projeto, não em que mês
+    ele sai da conta. Boa parte da chapa e da ferragem dos contratos de agosto foi comprada em junho e julho.
+    Abaixo, o mesmo fluxo com as duas hipóteses extremas.</p>
+
+    <div class="range mts">
+      <div class="rends">
+        <div class="re-l"><span>Se todo o material dos dois meses ainda for comprado</span><b>−R$ 190,4 mil</b></div>
+        <div class="re-r" style="text-align:right"><span>Se metade já tiver sido comprada antes</span><b>+R$ 6,0 mil</b></div>
+      </div>
+      <div class="rtrack">
+        <div class="rbar"></div>
+        <div class="rp" style="left:0"></div>
+        <div class="rp" style="right:0"></div>
+        <div class="rl" style="left:50%; transform:translateX(-50%)">amplitude de R$ 196,4 mil</div>
+      </div>
+      <p style="font-size:8.6px; color:#33414f; line-height:1.55">Nenhum dos dois extremos é o número real —
+      o real está entre eles. <b style="color:#0E2038">Fechar essa faixa é o primeiro trabalho a fazer</b>, e
+      depende de levantar o desembolso de material por mês, projeto a projeto.</p>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Base de cálculo utilizada</span></div>
+    <div class="two">
+      <div class="note blue"><div class="nt">O que sustenta cada linha</div>
+        <ul>
+          <li><b>Receita.</b> Valor de contrato dos projetos com conclusão prevista em cada mês, conforme a posição comercial.</li>
+          <li><b>Custo variável 56,5%.</b> Derivado da margem de contribuição média de <b>43,5%</b> apurada em 2025. É uma média — <b>não</b> o custo real destes contratos.</li>
+          <li><b>Custo fixo.</b> Folha e pró-labore atualizados (R$ 57,2k em agosto e R$ 62,9k em setembro, com a entrada da assistente e do programador) somados a galpão, administrativo, logística e marketing.</li>
+          <li><b>Serviço de dívida.</b> Parcelas recorrentes com forma já definida.</li>
+        </ul></div>
+      <div class="note warn"><div class="nt">O que ainda não está medido</div>
+        <ul>
+          <li><b>Custo real por projeto.</b> Não há apuração de custo executado contra o orçado. A MC de 43,5% pode estar acima ou abaixo do real em cada contrato.</li>
+          <li><b>Cronograma de desembolso.</b> Quando cada compra sai da conta — a origem da faixa acima.</li>
+          <li><b>Avanço físico.</b> Quanto de cada contrato foi executado. Sem isso, a competência é aproximada pela data de conclusão, e não pela medição.</li>
+          <li><b>Rubricas de estrutura</b> fora da folha datam de junho e precisam ser reconferidas.</li>
+        </ul></div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Posições fora do fluxo dos dois meses</span></div>
+    <table>
+      <thead><tr><th style="width:26%">Posição</th><th class="num" style="width:14%">Valor</th><th>Situação</th></tr></thead>
+      <tbody>
+        <tr><td class="nm">André · Alphaville</td><td class="num sub">87.000</td><td>Projeto <b>entregue</b>, cobrança integralmente em aberto e <b>sem data</b>. Registrado no histórico como recebível ligado a investimento dos sócios, não como inadimplência de cliente externo. <b>Não entra em nenhum dos dois meses.</b></td></tr>
+        <tr><td class="nm">Aporte já consumido</td><td class="num sub">71.000</td><td>Parcela do primeiro aporte usada para <b>cobrir o déficit de caixa de julho</b>. Não foi aplicada em máquina, estrutura ou expansão — <b>foi capital de giro</b>. É a evidência prática do gargalo descrito na página 2.</td></tr>
+        <tr><td class="nm">Passivo trabalhista</td><td class="num sub">28.691</td><td>Verbas e encargos dos seis desligamentos já ocorridos, <b>ainda não desembolsados</b> e fora do fluxo acima. Perímetro e memória de cálculo em documento próprio.</td></tr>
+        <tr class="enc"><td colspan="2">Total fora do fluxo</td><td class="dt" style="color:#96803f">R$ 87,0k a receber sem data &nbsp;·&nbsp; R$ 28,7k a pagar sem data</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">O que será construído a seguir</span></div>
+    <div class="cards c3">
+      <div class="card gold"><div class="ct2">Prioridade 1 · até 30 dias</div><h4>Cronograma de desembolso por projeto</h4>
+        <p>Levantar, contrato a contrato, <b>quando cada compra de material sai da conta</b>. É o que fecha a
+        faixa de R$ 196 mil e transforma esta projeção em previsão.</p></div>
+      <div class="card"><div class="ct2">Prioridade 2 · até 60 dias</div><h4>Custo real por projeto</h4>
+        <p>Apurar o <b>executado contra o orçado</b> em cada contrato entregue. Sem isso, a margem de 43,5%
+        segue sendo média histórica, e não o resultado de cada obra.</p></div>
+      <div class="card"><div class="ct2">Prioridade 3 · até 90 dias</div><h4>Resultado mensal por competência</h4>
+        <p>Fechar <b>todo mês</b> receita reconhecida, custo variável, margem, custo fixo e resultado — no mesmo
+        formato da página 2, com número apurado no lugar de premissa.</p></div>
+    </div>
+
+    <div class="note ok mt"><div class="nt">Leitura de conjunto</div>
+      <p>Os dois meses fecham com <b>R$ 695,4 mil de produção</b> e <b>R$ 144 mil de resultado operacional</b> —
+      o volume e a margem sustentam a estrutura. O aperto está no <b>descasamento entre receber e pagar</b>:
+      quase metade da receita destes contratos foi cobrada e consumida antes de a produção acontecer.</p>
+      <p>Esse descasamento não se resolve vendendo mais — <b>vender mais o agrava</b>, porque cada contrato novo
+      exige material antes de gerar caixa. Resolve-se com <b>capital de giro</b>, com <b>revisão da escala de
+      pagamento dos contratos</b> e com a <b>medição que este documento ainda não tem</b>.</p></div>
+  </div>
+
+  <div class="pf">
+    <div class="pl">Documento preparado a partir do levantamento comercial de agosto e setembro · valores em reais</div>
+    <div class="pr">VALVIC <span>·</span> 3 / 3</div>
+  </div>
+</section>
+</body>
+</html>
