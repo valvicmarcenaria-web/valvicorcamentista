@@ -209,3 +209,44 @@ Condições: **60 dias corridos** · garantia **10 anos** em estrutura e ferrage
 validade 7 dias · medição final antes do corte, em dois blocos da proposta.
 
 > ⚠️ Prazo e validade foram **assumidos por mim**, não ditados.
+
+## V2 — layout premium com renders do projeto [Jonathan 07/08]
+
+> *"vamos trabalhar com outro estilo de layout que utilizamos. onde usamos imagens do
+> próprio projeto. esse não condiz com essa cliente."*
+
+`build-cozinha-elena-v2.py` → `proposta-cozinha-elena-v2.pdf`. Mesmo sistema visual da
+Nádia (`/tmp/css_premium.txt`): capa escura com colagem assimétrica sangrando à direita,
+serifada Cormorant, dourado, scrim para leitura da tipografia sobre a imagem.
+
+A versão tipográfica com elevação desenhada (`build-cozinha-elena.py`) fica no repositório
+— é a certa para cliente técnico, não para esta.
+
+### ⚠️ Os renders não estão em disco
+
+As capturas do projeto chegaram **na conversa, não como arquivo**. E são fotos de tela de
+celular, com a barra de rolagem por cima — não servem para proposta.
+
+Montei o build com **slots nomeados**: cada `img()` cai num placeholder que estampa o nome
+do arquivo e o que ele deve conter, enquanto o `.jpg` não existir em `projetos/img/`.
+Salvar os seis arquivos com esses nomes e rodar de novo é tudo o que falta.
+
+| Arquivo | Conteúdo | Onde entra |
+|---|---|---|
+| `elena-capa.jpg` | vista ampla — cozinha e sala de jantar | capa, peça maior |
+| `elena-bancada.jpg` | bancada, janela e cooktop | capa + p2 |
+| `elena-torre.jpg` | torre quente, forno e geladeira | capa + p2 |
+| `elena-nicho.jpg` | nicho em freijó e básculas | p2 |
+| `elena-elevacao.jpg` | elevação etiquetada do projeto | p2, faixa larga |
+| `elena-ripado.jpg` | painel ripado e mesa | p4, faixa fina |
+
+### Estrutura das 4 páginas
+1. **Capa** — colagem de 3 renders, título serifado, régua de 5 dados.
+2. **O projeto** — 3 renders legendados · **swatches das 3 cores** · elevação do projeto ·
+   bloco "três cores nunca dividem chapa" · nota da medição.
+3. **Especificação** — tabela dos 9 móveis · SVG da estrutura por espessura · SVG da cava ·
+   ferragens × não incluso.
+4. **Investimento** — R$ 38.100 em caixa escura · composição · duas formas de pagamento ·
+   bloco do faseamento (R$ 26.600) · faixa do ripado · termos.
+
+Os números são idênticos aos da V1 — só o layout mudou.
