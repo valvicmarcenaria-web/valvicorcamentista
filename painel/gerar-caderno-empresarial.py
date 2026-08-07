@@ -431,8 +431,8 @@ expansão</b> com os investimentos abertos item a item.</p>
   <div class="kpi d"><div class="kl">Parque produtivo</div><div class="kv"><small>R$</small> 506<small> mil</small></div><div class="kd">Instalado e em grande parte quitado</div></div>
 </div>
 <div class="kpis k4 mts">
-  <div class="kpi e"><div class="kl">Equipe</div><div class="kv">8<small> + 2 sócios</small></div><div class="kd">4 entrando · 4 a 5 contratações abertas</div></div>
-  <div class="kpi a"><div class="kl">Custo da estrutura</div><div class="kv"><small>R$</small> 62,8<small> mil/mês</small></div><div class="kd">A partir do próximo mês · hoje R$ 47,5 mil</div></div>
+  <div class="kpi e"><div class="kl">Equipe</div><div class="kv">10<small> + 2 sócios</small></div><div class="kd">2 entradas datadas · 4 a 5 contratações abertas</div></div>
+  <div class="kpi a"><div class="kl">Custo da estrutura</div><div class="kv"><small>R$</small> 62,9<small> mil/mês</small></div><div class="kd">Estrutura completa no mês que vem · hoje R$ 55,2 mil</div></div>
   <div class="kpi f"><div class="kl">Passivo trabalhista</div><div class="kv"><small>R$</small> 28,7<small> mil</small></div><div class="kd">6 contratos encerrados · perímetro definido</div></div>
   <div class="kpi c"><div class="kl">Horizonte</div><div class="kv"><small>R$</small> 1<small> mi/mês</small></div><div class="kd">Meta aspiracional · hoje o teto é ~R$ 250 mil</div></div>
 </div>
@@ -662,7 +662,7 @@ full("""
   <div class="plabel">Parte dois</div>
   <h2>Estrutura &amp; Pessoas</h2>
   <p class="pintro">Quem faz a operação girar, quanto custa e onde o trabalho converge. Hoje a empresa
-    tem oito profissionais ativos além dos dois sócios, com mais quatro entradas já alinhadas — e os dois
+    tem dez profissionais ativos além dos dois sócios, com mais duas entradas já datadas — e os dois
     sócios atravessam quase toda a cadeia de valor, acumulando ao mesmo tempo a função de gestor e a de executor.</p>
   <div class="plist">
     <div class="pli"><b>10</b><span>Organograma e carga operacional dos sócios</span></div>
@@ -673,14 +673,14 @@ full("""
 </div>""")
 
 # ── 10 organograma
-page('Parte II · Estrutura & Pessoas', 'Organograma · posição julho/2026', 'Onde tudo converge',
+page('Parte II · Estrutura & Pessoas', 'Organograma · posição agosto/2026', 'Onde tudo converge',
      'A estrutura de pessoal e a carga que recai sobre cada sócio — sem camada de gestão intermediária entre a direção e a execução.',
      """
 <div class="kpis k4">
-  <div class="kpi a"><div class="kl">Equipe total</div><div class="kv">8<small> ativos</small></div><div class="kd">Fora os 2 sócios · 4 entram e 4 a 5 a contratar</div></div>
+  <div class="kpi a"><div class="kl">Equipe total</div><div class="kv">10<small> ativos</small></div><div class="kd">Fora os 2 sócios · 2 entradas datadas e 4 a 5 a contratar</div></div>
   <div class="kpi c"><div class="kl">Convergem em Paulo</div><div class="kv">7</div><div class="kd">Deivson, Joelson, Filipe, Hugo, Karla, Bruna e Jennifer</div></div>
-  <div class="kpi b"><div class="kl">Convergem em Jonathan</div><div class="kv">4<small> + clientes</small></div><div class="kd">Karla, Bruna, Deivson e Jennifer · 2 só entram no próximo mês</div></div>
-  <div class="kpi d"><div class="kl">Custo · próximo mês</div><div class="kv"><small>R$</small> 62,8<small> mil</small></div><div class="kd">Hoje R$ 47,5 mil — inclui pró-labore e benefícios</div></div>
+  <div class="kpi b"><div class="kl">Convergem em Jonathan</div><div class="kv">4<small> + clientes</small></div><div class="kd">Bruna, Deivson e Jennifer já ativos · Karla entra dia 10</div></div>
+  <div class="kpi d"><div class="kl">Custo · estrutura completa</div><div class="kv"><small>R$</small> 62,9<small> mil</small></div><div class="kd">Hoje R$ 55,2 mil — inclui pró-labore e benefícios</div></div>
 </div>
 
 <div class="sec"><span class="bar"></span><span class="tx">A carga de cada sócio</span><span class="ct">ambos executam e gerenciam ao mesmo tempo</span></div>
@@ -689,7 +689,7 @@ page('Parte II · Estrutura & Pessoas', 'Organograma · posição julho/2026', '
     <ul>
       <li><b>Comercial e fechamento</b> — toda a venda passa por ele</li>
       <li><b>Relacionamento</b> com cliente e parceiro (arquitetas e decoradoras)</li>
-      <li><b>Administrativo</b> — interino, até a Karla assumir</li>
+      <li><b>Administrativo</b> — interino, até a Karla assumir no dia 10</li>
       <li><b>Jurídico</b> (aciona advogado) e <b>contábil</b> (aciona contador)</li>
       <li><b>Suporte pontual à produção</b></li>
       <li><b>Pós-venda</b> — permanente, mesmo depois da contratação</li>
@@ -743,14 +743,14 @@ page('Parte II · Estrutura & Pessoas', 'Folha mensal · dado de remuneração',
     <tr><td class="nm">Jomar</td><td>Marceneiro</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.950</td><td class="dt">sem comissão · VR 350 + VT 400</td></tr>
     <tr><td class="nm">Davi</td><td>Ajudante</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.950</td><td class="dt">sem comissão · VR 350 + VT 400</td></tr>
     <tr><td class="nm">Jonathan Godoy</td><td>Ajudante Geral · novo</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.620</td><td class="dt">salário mínimo · sem comissão · VR 350 + VT 400</td></tr>
-    <tr class="sec2"><td colspan="5">Início já alinhado</td></tr>
-    <tr><td class="nm">Cezar<span class="fn">data a definir</span></td><td>Marceneiro</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">3.600<span class="fn">estimado</span></td><td class="dt">2,5% fabricação + 2,5% montagem</td></tr>
-    <tr><td class="nm">Bruna<span class="fn">dia 01</span></td><td>Arquiteta · programação + projetos</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">4.000</td><td class="dt">50% dos projetos vendidos aos clientes que ela atende</td></tr>
-    <tr><td class="nm">Karla<span class="fn">dia 10</span></td><td>Assistente Operacional</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.000</td><td class="dt">VR 500 + transporte conforme local · progride a 3.200</td></tr>
-    <tr><td class="nm">Hugo<span class="fn">em contratação</span></td><td>Programador<span class="fn">função-chave · atravessa toda a operação</span></td><td><span class="badge b-clt">CLT</span></td><td class="num sub">4.000</td><td class="dt">sem comissão · VR 400 + VT 400</td></tr>
+    <tr><td class="nm">Bruna<span class="fn">iniciou este mês</span></td><td>Arquiteta · programação + projetos</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">4.000</td><td class="dt">50% dos projetos vendidos aos clientes que ela atende</td></tr>
+    <tr><td class="nm">Cezar<span class="fn">iniciou este mês</span></td><td>Marceneiro</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.900</td><td class="dt">2,5% fabricação + 2,5% montagem · VR 400 + VT 400</td></tr>
+    <tr class="sec2"><td colspan="5">Entradas com data definida</td></tr>
+    <tr><td class="nm">Karla<span class="fn">dia 10 deste mês</span></td><td>Assistente Operacional</td><td><span class="badge b-new">CLT</span></td><td class="num sub">2.000</td><td class="dt">VR 500 + transporte conforme local · progride a 3.200</td></tr>
+    <tr><td class="nm">Hugo<span class="fn">dia 01 do mês que vem</span></td><td>Programador<span class="fn">função-chave · atravessa toda a operação</span></td><td><span class="badge b-new">CLT</span></td><td class="num sub">4.000</td><td class="dt">sem comissão · VR 400 + VT 400</td></tr>
     <tr class="sec2"><td colspan="5">Parceria externa</td></tr>
     <tr><td class="nm">Jennifer</td><td>Social media</td><td><span class="badge b-ext">Ext.</span></td><td class="num sub">1.400</td><td class="dt">contrato à parte · fora da folha</td></tr>
-    <tr class="tot"><td colspan="3">Custo mensal a partir do próximo mês · direção + ativos + Bruna, Karla, Cezar e Hugo + Jennifer</td><td class="num">62.820</td><td></td></tr>
+    <tr class="tot"><td colspan="3">Custo da estrutura completa · a partir da entrada do Hugo, dia 01 do mês que vem</td><td class="num">62.920</td><td></td></tr>
     <tr class="sec2"><td colspan="5">Necessidade de contratação — fora do número acima</td></tr>
     <tr><td class="nm">Paulo &quot;Baiano&quot;</td><td>Marceneiro experiente</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">3.900</td><td class="dt">mesmo escopo do Samuel · 2,5% + 2,5%</td></tr>
     <tr><td class="nm">2 a 3 ajudantes</td><td>Apoio à produção · maior lacuna</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.950<span class="fn">cada</span></td><td class="dt">sem comissão · VR 350 + VT 400 cada</td></tr>
@@ -782,19 +782,18 @@ page('Parte II · Estrutura & Pessoas', 'Estrutura de demandas · pessoas e infr
 
 <div class="sec"><span class="bar"></span><span class="tx">Como a estrutura está dividida</span></div>
 <div class="cards c3">
-  <div class="card ok"><div class="ct">Ativo hoje · 8 pessoas</div><h4>Chão de fábrica, tecnologia e 2 duplas completas</h4>
+  <div class="card ok"><div class="ct">Ativo hoje · 10 pessoas</div><h4>Chão de fábrica, tecnologia e 3 duplas completas</h4>
     <ul>
-      <li><b>Montagem:</b> Samuel/Jomar e Jackson/Davi — duas duplas completas e fluindo</li>
+      <li><b>Montagem:</b> Samuel/Jomar, Jackson/Davi e Cezar/J. Godoy — as três duplas fechadas</li>
       <li><b>Chão de fábrica:</b> Deivson, o único no nível de marceneiro sênior</li>
-      <li><b>Tecnologia:</b> Joelson (operação) e Filipe (programação)</li>
+      <li><b>Tecnologia:</b> Joelson (operação), Filipe (programação) e Bruna (projeto e programação)</li>
     </ul></div>
-  <div class="card blue"><div class="ct">Início já alinhado · 4 pessoas</div><h4>Entradas confirmadas</h4>
+  <div class="card blue"><div class="ct">Entradas com data definida · 2 pessoas</div><h4>Já contratadas, ainda não em posto</h4>
     <ul>
-      <li><b>Bruna · dia 01</b> — programação e suporte de projetos, alivia o Filipe e o comercial</li>
-      <li><b>Karla · dia 10</b> — assume administrativo, jurídico e contábil, libera o Jonathan para vender</li>
-      <li><b>Cezar</b> — fecha a dupla 3, que hoje está incompleta (Godoy já atua)</li>
-      <li><b>Hugo</b> — programador, em contratação; segunda pessoa em programação ao lado do Filipe</li>
-    </ul></div>
+      <li><b>Karla · dia 10 deste mês</b> — assume administrativo, jurídico e contábil e libera o Jonathan para vender</li>
+      <li><b>Hugo · dia 01 do mês que vem</b> — programador; segunda pessoa em programação ao lado do Filipe</li>
+    </ul>
+    <p style="margin-top:6px"><b>Bruna e Cezar já entraram</b> neste mês — a arquiteta em projeto e programação, e o Cezar fechando a terceira dupla de montagem.</p></div>
   <div class="card warn"><div class="ct">A contratar · 4 a 5 pessoas</div><h4>O que ainda falta</h4>
     <ul>
       <li><b>1 marceneiro experiente</b> — alvo Paulo &quot;Baiano&quot;, em negociação; não sendo ele, perfil equivalente</li>
@@ -807,9 +806,9 @@ page('Parte II · Estrutura & Pessoas', 'Estrutura de demandas · pessoas e infr
 <table class="tight">
   <thead><tr><th style="width:14%">Quando</th><th style="width:30%">O que entra</th><th>O que isso destrava</th></tr></thead>
   <tbody>
-    <tr><td class="nm">Dia 01</td><td>Bruna entra</td><td>Programação e suporte de projetos aliviam o Filipe — que hoje é ponto único — e o comercial</td></tr>
-    <tr><td class="nm">Dia 10</td><td>Karla entra</td><td>Assume administrativo, jurídico e contábil e <b>libera o Jonathan para vender</b></td></tr>
-    <tr><td class="nm">Em contratação</td><td>Hugo entra</td><td>Programador — <b>elimina o ponto único na programação</b> e sustenta o volume que as máquinas novas vão exigir</td></tr>
+    <tr><td class="nm">Este mês<span class="fn">já ocorrido</span></td><td>Bruna e Cezar entraram</td><td>Bruna alivia o Filipe e o comercial em projeto e programação; Cezar <b>fecha a terceira dupla</b> de montagem ao lado do Godoy</td></tr>
+    <tr><td class="nm">Dia 10<span class="fn">deste mês</span></td><td>Karla entra</td><td>Assume administrativo, jurídico e contábil e <b>libera o Jonathan para vender</b></td></tr>
+    <tr><td class="nm">Dia 01<span class="fn">do mês que vem</span></td><td>Hugo entra</td><td>Programador — <b>elimina o ponto único na programação</b> e sustenta o volume que as máquinas novas vão exigir</td></tr>
     <tr><td class="nm">Curto prazo</td><td>4 a 5 contratações + ferramental</td><td>Marceneiro experiente, 2–3 ajudantes, operador CNC, 2 carros e 3 kits de ferramenta</td></tr>
     <tr><td class="nm">≈ 3 meses</td><td>Novo galpão</td><td>Coladeira e centro de furação — <b>exigem a equipe já formada e treinada</b></td></tr>
   </tbody>
@@ -838,17 +837,17 @@ page('Parte II · Estrutura & Pessoas', 'Estrutura de demandas · pessoas e infr
 # ── 13 fluxo
 FLOW = [
     ('01', 'Comercial &amp; Venda', 'contato → orçamento → contrato',
-     '<b>Jonathan</b> (sócio) · <b>Karla</b> assist. operacional (dia 10) · <b>Jennifer</b> social media (externa)',
+     '<b>Jonathan</b> (sócio) · <b>Karla</b> assist. operacional (entra dia 10) · <b>Jennifer</b> social media (externa)',
      'Escopo de Venda + projeto atualizado, contrato e cadastro no Calcme',
      'Define <b>escopo, preço e margem</b>. Informação incompleta aqui contamina toda a cadeia.',
      'Jonathan sozinho até a Karla entrar'),
     ('02', 'Projeto &amp; Programação', 'conferência técnica → CNC',
-     '<b>Paulo</b> (sócio) · <b>Filipe</b> programador CNC · <b>Hugo</b> programador (em contratação) · <b>Bruna</b> arquiteta (dia 01) · <b>Deivson</b> olhar de produção',
+     '<b>Paulo</b> (sócio) · <b>Filipe</b> programador CNC · <b>Bruna</b> arquiteta · <b>Hugo</b> programador (entra dia 01/09) · <b>Deivson</b> olhar de produção',
      'Arquivos de corte no Drive + plano de produção validado',
      'Converte a venda em <b>arquivo de corte</b>. Define aproveitamento de chapa e retrabalho.',
-     'Etapa hoje concentrada no Filipe — Hugo e Bruna eliminam o ponto único'),
+     'Ainda sem folga: a Bruna já entrou, mas a redundância plena só vem com o Hugo'),
     ('03', 'Compras &amp; Recepção', 'insumos → conferência → estoque',
-     '<b>Jonathan</b> e <b>Paulo</b> · <b>Karla</b> cotação e faturamento · <b>Deivson</b> recepção · <b>Joelson</b> separação',
+     '<b>Jonathan</b> e <b>Paulo</b> · <b>Karla</b> cotação e faturamento (entra dia 10) · <b>Deivson</b> recepção · <b>Joelson</b> separação',
      'Insumos conferidos, alocados no projeto e baixados no pedido',
      'Garante o <b>material certo na hora certa</b>. Falha aqui para a fábrica inteira.', None),
     ('04', 'Fabricação', 'corte → montagem de fábrica',
@@ -857,7 +856,7 @@ FLOW = [
      'Transforma chapa em peça <b>no padrão</b>. Define qualidade e prazo de entrega.',
      'Maior lacuna — Deivson opera em vez de coordenar; Joelson sem backup na CNC'),
     ('05', 'Montagem &amp; Entrega', 'obra → vistoria → aceite',
-     '<b>Jonathan</b> e <b>Paulo</b> · Samuel/Jomar (com carro) · Jackson/Davi (sem carro) · Cezar/J. Godoy (em teste) · <b>2 carros e 3 kits</b> a adquirir',
+     '<b>Jonathan</b> e <b>Paulo</b> · Samuel/Jomar (com carro) · Jackson/Davi (sem carro) · Cezar/J. Godoy (sem carro) · <b>2 carros e 3 kits</b> a adquirir',
      'Vistoria + aceite assinado pelo cliente',
      'É <b>o que o cliente vê e sente</b>. Define a percepção da marca e o aceite.',
      '2 das 3 duplas sem veículo · ferramental parcial'),
@@ -875,7 +874,7 @@ fl = ''.join(
     + (f'<span class="risk">⚠ {s[6]}</span>' if s[6] else '') +
     '</div></div>' for s in FLOW)
 
-page('Parte II · Estrutura & Pessoas', 'Cadeia de valor · posição julho/2026', 'Fluxo de trabalho — posição e impacto',
+page('Parte II · Estrutura & Pessoas', 'Cadeia de valor · posição agosto/2026', 'Fluxo de trabalho — posição e impacto',
      'As seis etapas do primeiro contato ao pós-venda: quem atua, o que passa adiante e o que cada etapa define no resultado.',
      f"""
 <div class="kpis k4" style="margin-bottom:5mm">
@@ -890,7 +889,7 @@ page('Parte II · Estrutura & Pessoas', 'Cadeia de valor · posição julho/2026
   <p>O fluxo mostra por que a estrutura é frágil hoje: <b>os dois sócios atravessam quase toda a cadeia</b>
   enquanto cada colaborador ocupa apenas uma ou duas etapas. Nenhuma etapa avança sem passar por um deles,
   e qualquer ausência trava o fluxo inteiro. As entradas já alinhadas atacam justamente as pontas —
-  Karla nas etapas 1, 3 e 6; Hugo e Bruna dando redundância à programação, hoje concentrada só no Filipe.
+  Karla nas etapas 1, 3 e 6; Bruna e Hugo dando redundância à programação, hoje ainda concentrada no Filipe.
   O centro da cadeia, <b>a fabricação, segue sendo a maior lacuna</b>.</p></div>""")
 
 # ═══════════════════════════════════════════ PARTE III
@@ -958,12 +957,12 @@ onde o capital de um sócio investidor é aplicado.</p>
 </div>""")
 
 # ── 16 custo da estrutura
-page('Parte III · Economia da Operação', 'Custo da estrutura · julho/2026', 'O que custa manter a operação',
+page('Parte III · Economia da Operação', 'Custo da estrutura · agosto/2026', 'O que custa manter a operação',
      'A folha, os benefícios e o investimento único mapeado — separando o que já é custo do que ainda é decisão.',
      """
 <div class="kpis k4">
-  <div class="kpi a"><div class="kl">Custo mensal hoje</div><div class="kv"><small>R$</small> 47,5<small> mil</small></div><div class="kd">2 sócios + 8 ativos + Jennifer · com benefícios CLT</div></div>
-  <div class="kpi b"><div class="kl">A partir do próximo mês</div><div class="kv"><small>R$</small> 62,8<small> mil</small></div><div class="kd">Entram Bruna, Karla, Cezar e Hugo — acréscimo de R$ 15,3k</div></div>
+  <div class="kpi a"><div class="kl">Custo mensal hoje</div><div class="kv"><small>R$</small> 55,2<small> mil</small></div><div class="kd">2 sócios + 10 ativos + Jennifer · com benefícios CLT</div></div>
+  <div class="kpi b"><div class="kl">Estrutura completa</div><div class="kv"><small>R$</small> 62,9<small> mil</small></div><div class="kd">Com Karla (dia 10) e Hugo (dia 01/09) — acréscimo de R$ 7,7k</div></div>
   <div class="kpi f"><div class="kl">Ainda a contratar</div><div class="kv"><small>R$</small> 12,6<small>–15,3 mil</small></div><div class="kd">Baiano + 2–3 ajudantes + operador CNC · fora do número acima</div></div>
   <div class="kpi c"><div class="kl">Investimento único</div><div class="kv"><small>R$</small> 15<small> mil +</small></div><div class="kd">Ferramental mapeado · carros e cadeiras a definir</div></div>
 </div>
@@ -973,11 +972,13 @@ page('Parte III · Economia da Operação', 'Custo da estrutura · julho/2026', 
   <thead><tr><th style="width:44%">Bloco</th><th class="num" style="width:18%">Valor</th><th>Observação</th></tr></thead>
   <tbody>
     <tr><td class="nm">Direção · pró-labore dos 2 sócios</td><td class="num sub">20.000</td><td class="dt">R$ 10.000 cada · ambos executam e gerenciam</td></tr>
-    <tr><td class="nm">Ativos hoje · 8 pessoas</td><td class="num sub">26.120</td><td class="dt">Salários R$ 23.120 + benefícios CLT R$ 3.000</td></tr>
-    <tr><td class="nm">Entradas alinhadas · Bruna, Karla, Cezar e Hugo</td><td class="num sub">15.300</td><td class="dt">Hugo entra com R$ 4.000 + VR 400 + VT 400 · valor do Cezar é estimativa</td></tr>
+    <tr><td class="nm">Ativos hoje · 10 pessoas</td><td class="num sub">33.820</td><td class="dt">Salários R$ 30.020 + benefícios CLT R$ 3.800 · já com Bruna e Cezar</td></tr>
     <tr><td class="nm">Parceria externa · Jennifer</td><td class="num sub">1.400</td><td class="dt">Contrato à parte, fora da folha</td></tr>
-    <tr class="tot"><td>Custo mensal a partir do próximo mês</td><td class="num">62.820</td><td></td></tr>
-    <tr class="enc"><td>Necessidades de contratação — ainda fora do cálculo</td><td class="num">12.550 a 15.250</td><td class="dt" style="color:#96803f">Elevaria o custo para R$ 75,4 a 78,1 mil</td></tr>
+    <tr class="enc"><td>Custo mensal hoje</td><td class="num">55.220</td><td class="dt" style="color:#96803f">Direção + 10 ativos + Jennifer</td></tr>
+    <tr><td class="nm">Karla · entra dia 10 deste mês</td><td class="num sub">2.900</td><td class="dt">R$ 2.000 + VR 500 + transporte conforme local</td></tr>
+    <tr><td class="nm">Hugo · entra dia 01 do mês que vem</td><td class="num sub">4.800</td><td class="dt">R$ 4.000 + VR 400 + VT 400</td></tr>
+    <tr class="tot"><td>Custo da estrutura completa</td><td class="num">62.920</td><td></td></tr>
+    <tr class="enc"><td>Necessidades de contratação — ainda fora do cálculo</td><td class="num">12.550 a 15.250</td><td class="dt" style="color:#96803f">Elevaria o custo para R$ 75,5 a 78,2 mil</td></tr>
   </tbody>
 </table>
 
@@ -985,9 +986,10 @@ page('Parte III · Economia da Operação', 'Custo da estrutura · julho/2026', 
 <div class="cards c3">
   <div class="card"><div class="ct">PJ · produção e tecnologia</div><h4>Deivson, Samuel, Jackson, Filipe, Bruna</h4>
     <p>Os papéis de <b>maior autonomia técnica</b> e remuneração variável relevante. Comissionados por etapa executada.</p></div>
-  <div class="card"><div class="ct">CLT · formação, apoio e programação</div><h4>Joelson, Jomar, Davi, J. Godoy, Karla, Hugo</h4>
-    <p>As funções de <b>formação e apoio</b>, com benefícios fixos: VR R$ 350 + transporte ~R$ 400 =
-    <b>R$ 750/mês por colaborador</b>, somados sobre a folha.</p></div>
+  <div class="card"><div class="ct">CLT · formação, apoio e programação</div><h4>Joelson, Jomar, Davi, J. Godoy, Cezar, Karla, Hugo</h4>
+    <p>As funções de <b>formação, apoio e programação</b>, com benefícios fixos somados sobre a folha:
+    <b>R$ 750/mês</b> (VR 350 + VT 400) para a equipe de produção e <b>R$ 800</b> para Cezar e Hugo.
+    A Karla tem VR de R$ 500 mais transporte conforme o local.</p></div>
   <div class="card"><div class="ct">Variável · só existe com venda</div><h4>Comissões e participação</h4>
     <p>2,5% fabricação + 2,5% montagem por profissional, 1,0% de coordenação para o Deivson e R$ 2,00/chapa
     para o Joelson. A Bruna tem <b>50% dos projetos que vender</b>. Nada disso é folha fixa.</p></div>
@@ -996,8 +998,8 @@ page('Parte III · Economia da Operação', 'Custo da estrutura · julho/2026', 
 <div class="note mt"><div class="nt">O que está em aberto</div>
   <p>Ficam a precificar: <b>2 carros</b> para as duplas 2 e 3, <b>cadeiras</b> para Karla e Bruna, o
   <b>celular da Karla</b> e o kit dos ajudantes a contratar (R$ 1.000 cada). O kit da equipe de obra pode
-  variar conforme o <b>nível de ferramenta</b> que for definido. O valor do Cezar segue como estimativa
-  de referência até a formalização.</p></div>""")
+  variar conforme o <b>nível de ferramenta</b> que for definido. O Cezar entrou <b>como CLT</b>, e não como PJ — o que
+  soma benefícios de R$ 800/mês ao custo dele.</p></div>""")
 
 # ═══════════════════════════════════════════ PARTE IV
 
