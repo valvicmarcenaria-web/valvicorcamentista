@@ -14,7 +14,8 @@
 | A2 | **Emive — vigilância** | ago R$ 387,00 · set R$ 280,46 | **R$ 390,00/mês** | +R$ 112,54 nos dois meses |
 | A3 | **Pró-labore duplicado** | Setembro tem `pro.lab. Jonathan / adiant.` 2 × R$ 5.000 **mais** `Pro labore Jonathan - Restante` R$ 3.850 | Só os 2 × R$ 5.000 | **R$ 3.850 lançados a mais em setembro.** Resíduo do esquema antigo (7.700 = 3.850 + 3.850). Paulo não tem esse resíduo |
 | A4 | **RT de Isabella Biancardine** | Não lançada | Projeto **Simony** · estimada em R$ 1.700 (5%) | Entrou no cálculo do cenário real, mas precisa de lançamento |
-| A5 | **Compra de material futura** | Só R$ 5,3k de competência ago em diante | A produção de ago/set exige mais | Jonathan estimou **+R$ 15 mil/mês**, já aplicado no cenário |
+| A5 | **Compra de material futura** | Só R$ 5,3k de competência ago em diante | A produção de ago/set exige mais, **em volume desconhecido** | Jonathan estimou **+R$ 15 mil/mês**, já aplicado no cenário. É estimativa, não levantamento |
+| A6 | **Rastreio de material por projeto** | Inexistente | Todo pedido de compra vinculado a um contrato | **Bloqueio central.** Sem isso não se sabe quanto do material já comprado é de obra entregue e quanto é de obra a executar — nem quanto ainda falta comprar |
 
 ## B · Corrigir no Caderno Empresarial
 
@@ -44,15 +45,18 @@ Verificação feita em 08/08 comparando as duas colunas do extrato:
 
 - **Comissões de obra:** 12 lançamentos em agosto (R$ 5.580) e **zero em setembro**. No cenário real isso
   foi coberto pela estimativa de 6% sobre o valor a entregar, mas o sistema precisa receber os lançamentos.
-- **Material:** 22 notas em agosto (R$ 45,6k) contra **13 em setembro** (R$ 21,2k). Parte da diferença é real
-  (material já comprado), parte é lançamento que ainda não aconteceu.
+- **Material:** 22 notas em agosto (R$ 45,6k) contra **13 em setembro** (R$ 21,2k). ⚠️ **Não se pode concluir
+  daí que o material já está comprado.** O material adquirido mistura obras entregues e obras a executar, e
+  **não é rastreável por projeto** (item A6). A diferença entre os meses é lançamento pendente, não fato
+  sobre o estoque. Ainda será preciso comprar para concluir os dois meses, em volume desconhecido.
 - **Itens eventuais só em agosto:** manutenção predial (480), manutenção de equipamentos (375), manutenções
   (280), transporte urbano (250), carretos (200), serviços extras do Joelson (1.500) e uma semana a menos de
   corte de chapas (250) — **R$ 3.335 sem equivalente em setembro**.
 - **Cobertura de datas:** agosto de 03 a 30, setembro de 02 a 30 — os dois meses estão completos em calendário.
 
-> Conclusão: o resultado de setembro (+R$ 69,5 mil) tende a **cair** conforme os lançamentos entrarem.
-> A margem até zerar os dois meses é de R$ 120,5 mil, então o sinal do resultado não muda — mas o valor sim.
+> Conclusão: o **+R$ 120,5 mil é um teto**, não uma previsão. Cai conforme entrarem os lançamentos pendentes
+> e, principalmente, a compra de material ainda não dimensionada. Seriam necessários R$ 120,5 mil adicionais
+> para zerar o período — hoje não há como afirmar se esse valor será ou não ultrapassado.
 
 ## D · Já resolvido
 
