@@ -32,7 +32,7 @@
 
 | # | Dado | Panorama / rascunho | Sistema / histórico | Observação |
 |---|---|---|---|---|
-| C1 | **Maria · Vale dos Cristais** | R$ 124.000 (rascunho da reunião) | **R$ 117.738** | O sistema e o histórico concordam. O 124k do rascunho está errado |
+| C1 | ~~**Maria · Vale dos Cristais**~~ **RESOLVIDO** | R$ 124.000 | R$ 117.738 | **O rascunho estava certo.** São dois contratos: casa do Vale dos Cristais R$ 117.738 + **lavanderia R$ 7.000** vendida depois = **R$ 124.738**. O sistema só traz a parcela da casa |
 | C2 | **André / Alphaville** | R$ 87.000 (panorama) | R$ 70.800 (histórico) | Valor a confirmar. Marcado no histórico como **recebível de investimento dos sócios**, não cobrança de cliente externo |
 | C3 | **Cristiane** | R$ 94.000 (panorama) | R$ 101.700 com R$ 79.200 pendente (histórico) | Sistema traz a receber R$ 52.449 |
 | C4 | **Lucas Mello** | a receber R$ 22.000 | R$ 24.000 no sistema | Diferença de R$ 2.000 |
@@ -57,6 +57,13 @@ Verificação feita em 08/08 comparando as duas colunas do extrato:
 > Conclusão: o **+R$ 120,5 mil é um teto**, não uma previsão. Cai conforme entrarem os lançamentos pendentes
 > e, principalmente, a compra de material ainda não dimensionada. Seriam necessários R$ 120,5 mil adicionais
 > para zerar o período — hoje não há como afirmar se esse valor será ou não ultrapassado.
+
+## E · Decisões de apresentação (documento do Walton)
+
+- **Correções do rascunho manuscrito** não constam do documento, a pedido — o PDF apresenta os números já certos.
+- **Caixa de "Base e ressalvas"** removida da última página, a pedido. A ressalva essencial (o material ainda a
+  comprar, que faz do resultado um teto) **permanece na faixa da página 2**.
+- **Análise por competência** (+R$ 144,4k contra −R$ 190,4k de caixa) segue **fora** dos documentos, a pedido.
 
 ## D · Já resolvido
 
