@@ -58,6 +58,32 @@ Verificação feita em 08/08 comparando as duas colunas do extrato:
 > e, principalmente, a compra de material ainda não dimensionada. Seriam necessários R$ 120,5 mil adicionais
 > para zerar o período — hoje não há como afirmar se esse valor será ou não ultrapassado.
 
+## F · Cenário atualizado em 08/08 (2ª foto — "Contexto atual")
+
+Substitui integralmente a posição anterior. **Leonardo saiu da carteira; Jairo entrou.**
+
+| | Agosto | Setembro | Dois meses |
+|---|---|---|---|
+| Vendido | 360.400 | 398.000 | **758.400** |
+| Recebido | 144.500 | 174.500 | **319.000** |
+| A receber | 215.900 | 223.500 | **439.400** |
+| A produzir | 185.880 (52%) | 311.200 (78%) | **497.080 (66%)** |
+
+- **Jairo — R$ 63.000, R$ 25.000 recebidos, 100% a produzir.** É o Pedido nº 74 do sistema
+  (R$ 25.000 em ago + R$ 38.000 em set) — resolve o item C5.
+- **Flavia — 100% a produzir.**
+- ⚠️ **Augusto: recebido caiu de R$ 63.000 para R$ 24.000** nesta folha. Contradiz a folha anterior e o
+  histórico (que traziam R$ 27.000 pendentes de R$ 90.000). **Diferença de R$ 39.000 — confirmar.**
+  O sistema ainda tem "Projeto Augusto R$ 27.000" a receber em agosto, e não R$ 66.000.
+- **Maria volta a R$ 124.000** (casa 117.000 + lavanderia 7.000) — arredondamento da folha; o valor
+  contábil da casa é R$ 117.738.
+- **% a produzir** vem da última conferência de produção (panorama de 25/07), exceto Jairo e Flavia,
+  informados agora. **Precisa de atualização** — a produção avançou desde então.
+
+**Reflexos no fluxo:** comissão de setembro sobe para R$ 23.880 (6% de R$ 398.000); saídas de setembro
+vão a R$ 166.889; resultado de caixa fica em **+R$ 50.979 em agosto, +R$ 65.320 em setembro, +R$ 116.299
+nos dois meses**.
+
 ## E · Decisões de apresentação (documento do Walton)
 
 - **Correções do rascunho manuscrito** não constam do documento, a pedido — o PDF apresenta os números já certos.
