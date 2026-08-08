@@ -153,6 +153,8 @@ tbody tr.sec2 td{ background:#f1eee6; font-size:7.2px; font-weight:800; letter-s
 tbody tr.enc td{ background:var(--gold-bg); font-weight:700; color:#7a5b17; border-bottom:none; padding:7px; }
 tbody tr.enc td.num{ color:#7a5b17; font-weight:800; }
 table.tight tbody td{ padding:4.6px 7px; font-size:8.5px; }
+table.xt tbody td{ padding:3.2px 7px; font-size:8.2px; }
+table.xt tbody tr.tot td{ padding:5px 7px; font-size:8.8px; }
 .dt{ font-size:8px; color:var(--muted); font-variant-numeric:tabular-nums; }
 
 .badge{ display:inline-block; font-size:6.6px; font-weight:800; letter-spacing:.7px;
@@ -216,13 +218,13 @@ table.tight tbody td{ padding:4.6px 7px; font-size:8.5px; }
 
 /* ── sumário ── */
 .toc{ display:flex; flex-direction:column; gap:0; }
-.toc .tp{ margin-top:4.6mm; padding-bottom:4px; border-bottom:1.5px solid var(--navy);
+.toc .tp{ margin-top:3.6mm; padding-bottom:4px; border-bottom:1.5px solid var(--navy);
   display:flex; align-items:baseline; gap:9px; }
 .toc .tp:first-child{ margin-top:0; }
 .toc .tp .tn{ font-family:'Cormorant Garamond',serif; font-size:15px; font-weight:700; color:var(--gold-dk); }
 .toc .tp .tt{ font-size:9.2px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--navy); }
 .toc .tp .tg{ margin-left:auto; font-size:7.4px; color:var(--muted); letter-spacing:1px; }
-.toc .ti{ display:flex; align-items:baseline; gap:8px; padding:4.2px 0 4.2px 4px;
+.toc .ti{ display:flex; align-items:baseline; gap:8px; padding:3.3px 0 3.3px 4px;
   border-bottom:1px solid var(--line); }
 .toc .ti .il{ font-size:9.8px; color:var(--ink); font-weight:600; }
 .toc .ti .id{ font-size:8.4px; color:var(--muted); }
@@ -358,9 +360,9 @@ full("""
 TOC = [
     ('parte', 'I', 'A Empresa Hoje', '4 páginas', None),
     ('item', 'Identidade, trajetória e capacidade instalada', 'o que já existe e está pago', '05'),
-    ('item', 'Panorama comercial — posição de 25/07', 'carteira, recebido e composição', '06'),
-    ('item', 'Carteira ativa, projeto a projeto', '18 projetos · R$ 827 mil', '07'),
-    ('item', 'Pipeline e cronograma de conclusão', 'R$ 1,06 mi em negociação', '08'),
+    ('item', 'Posição comercial — agosto e setembro', 'carteira, recebido e produção', '06'),
+    ('item', 'Carteira em conclusão, contrato a contrato', '17 contratos · R$ 758,4 mil', '07'),
+    ('item', 'Pipeline em negociação', 'R$ 1,06 mi fora da carteira', '08'),
 
     ('parte', 'II', 'Estrutura & Pessoas', '5 páginas', None),
     ('item', 'Organograma e carga operacional dos sócios', 'onde tudo converge hoje', '10'),
@@ -368,22 +370,24 @@ TOC = [
     ('item', 'Estrutura de demandas', 'o que existe, o que entra, o que falta', '12'),
     ('item', 'Fluxo de trabalho — posição e impacto', 'a cadeia de valor em 6 etapas', '13'),
 
-    ('parte', 'III', 'Economia da Operação', '3 páginas', None),
+    ('parte', 'III', 'Economia da Operação', '4 páginas', None),
     ('item', 'Modelo econômico e alavancagem operacional', 'o que cada nível de volume gera', '15'),
-    ('item', 'Custo da estrutura e investimento', 'folha, benefícios e CAPEX mapeado', '16'),
+    ('item', 'Custo fixo da operação', 'quanto custa manter a empresa de pé', '16'),
+    ('item', 'Folha e estrutura, item a item', 'pessoa a pessoa e rubrica a rubrica', '17'),
+    ('item', 'Fluxo de caixa — agosto e setembro', 'a receber, a pagar e demanda de material', '18'),
 
     ('parte', 'IV', 'Passivo Trabalhista', '2 páginas', None),
-    ('item', 'Apuração por contrato', 'verbas, encargos e perímetro', '18'),
+    ('item', 'Apuração por contrato', 'verbas, encargos e perímetro', '20'),
 
     ('parte', 'V', 'Caminhos de Expansão', '9 páginas', None),
-    ('item', 'A escada de produção', 'de R$ 250 mil a R$ 1 milhão por mês', '20'),
-    ('item', 'Galpão: adaptar o atual ou mudar', 'os dois caminhos, com custos abertos', '21'),
-    ('item', 'Comparativo de coladeiras', 'cinco opções lado a lado', '22'),
-    ('item', 'Linha industrial e complementares', 'nesting, furação, esteira e embaladora', '23'),
-    ('item', 'Diferencial de mercado — puxadores', 'margem por posicionamento', '24'),
-    ('item', 'Prestação de serviços', 'a capacidade ociosa como receita', '25'),
-    ('item', 'Plano de expansão 2026–2027', 'fases, máquinas e mapa do investimento', '26'),
-    ('item', 'Retorno e payback', 'cenários conservador e de capacidade', '27'),
+    ('item', 'A escada de produção', 'de R$ 250 mil a R$ 1 milhão por mês', '22'),
+    ('item', 'Galpão: adaptar o atual ou mudar', 'os dois caminhos, com custos abertos', '23'),
+    ('item', 'Comparativo de coladeiras', 'cinco opções lado a lado', '24'),
+    ('item', 'Linha industrial e complementares', 'nesting, furação, esteira e embaladora', '25'),
+    ('item', 'Diferencial de mercado — puxadores', 'margem por posicionamento', '26'),
+    ('item', 'Prestação de serviços', 'a capacidade ociosa como receita', '27'),
+    ('item', 'Plano de expansão 2026–2027', 'fases, máquinas e mapa do investimento', '28'),
+    ('item', 'Retorno e payback', 'cenários conservador e de capacidade', '29'),
 ]
 
 rows = []
@@ -423,17 +427,17 @@ separados, cada um respondendo a uma pergunta específica. Reunidos aqui, eles f
 <b>a economia que sustenta o negócio</b>, <b>o passivo trabalhista acumulado</b> e <b>os caminhos de
 expansão</b> com os investimentos abertos item a item.</p>
 
-<div class="sec mt"><span class="bar"></span><span class="tx">A empresa em números</span><span class="ct">posição consolidada · agosto de 2026</span></div>
+<div class="sec mt"><span class="bar"></span><span class="tx">A empresa em números</span><span class="ct">posição consolidada · 08 de agosto de 2026</span></div>
 <div class="kpis k4">
-  <div class="kpi a"><div class="kl">Carteira ativa</div><div class="kv"><small>R$</small> 827<small>,4 mil</small></div><div class="kd">18 projetos em execução · tickets de R$ 5,3k a R$ 117k</div></div>
-  <div class="kpi b"><div class="kl">Já recebido</div><div class="kv"><small>R$</small> 321<small>,2 mil</small></div><div class="kd">39% do valor vendido, em caixa</div></div>
-  <div class="kpi c"><div class="kl">Pipeline</div><div class="kv"><small>R$</small> 1,06<small> mi</small></div><div class="kd">1,3× a carteira já em execução</div></div>
-  <div class="kpi d"><div class="kl">Parque produtivo</div><div class="kv"><small>R$</small> 506<small> mil</small></div><div class="kd">Instalado e em grande parte quitado</div></div>
+  <div class="kpi a"><div class="kl">Carteira em conclusão</div><div class="kv"><small>R$</small> 758<small>,4 mil</small></div><div class="kd">17 contratos a entregar em agosto e setembro</div></div>
+  <div class="kpi b"><div class="kl">Já recebido</div><div class="kv"><small>R$</small> 319<small>,0 mil</small></div><div class="kd">42% do vendido, cobrado em meses anteriores</div></div>
+  <div class="kpi c"><div class="kl">Saldo a receber</div><div class="kv"><small>R$</small> 439<small>,4 mil</small></div><div class="kd">R$ 215,9k em agosto · R$ 223,5k em setembro</div></div>
+  <div class="kpi f"><div class="kl">Falta produzir</div><div class="kv"><small>R$</small> 497<small>,1 mil</small></div><div class="kd">66% da carteira ainda por fabricar</div></div>
 </div>
 <div class="kpis k4 mts">
-  <div class="kpi e"><div class="kl">Equipe</div><div class="kv">10<small> + 2 sócios</small></div><div class="kd">2 entradas datadas · 4 a 5 contratações abertas</div></div>
-  <div class="kpi a"><div class="kl">Custo da estrutura</div><div class="kv"><small>R$</small> 62,9<small> mil/mês</small></div><div class="kd">Estrutura completa no mês que vem · hoje R$ 55,2 mil</div></div>
-  <div class="kpi f"><div class="kl">Passivo trabalhista</div><div class="kv"><small>R$</small> 28,7<small> mil</small></div><div class="kd">6 contratos encerrados · perímetro definido</div></div>
+  <div class="kpi e"><div class="kl">Equipe</div><div class="kv">10<small> + 2 sócios</small></div><div class="kd">Karla e Hugo com data · 4 a 5 vagas abertas</div></div>
+  <div class="kpi a"><div class="kl">Custo fixo mensal</div><div class="kv"><small>R$</small> 77,2<small> mil</small></div><div class="kd">Folha R$ 62,6k + estrutura R$ 14,6k · setembro</div></div>
+  <div class="kpi d"><div class="kl">Parque produtivo</div><div class="kv"><small>R$</small> 506<small> mil</small></div><div class="kd">Instalado e em grande parte quitado</div></div>
   <div class="kpi c"><div class="kl">Horizonte</div><div class="kv"><small>R$</small> 1<small> mi/mês</small></div><div class="kd">Meta aspiracional · hoje o teto é ~R$ 250 mil</div></div>
 </div>
 
@@ -467,9 +471,9 @@ full("""
     que a própria carteira.</p>
   <div class="plist">
     <div class="pli"><b>05</b><span>Identidade, trajetória e capacidade instalada</span></div>
-    <div class="pli"><b>06</b><span>Panorama comercial — posição de 25 de julho</span></div>
-    <div class="pli"><b>07</b><span>Carteira ativa, projeto a projeto</span></div>
-    <div class="pli"><b>08</b><span>Pipeline e cronograma de conclusão</span></div>
+    <div class="pli"><b>06</b><span>Posição comercial — agosto e setembro</span></div>
+    <div class="pli"><b>07</b><span>Carteira em conclusão, contrato a contrato</span></div>
+    <div class="pli"><b>08</b><span>Pipeline em negociação</span></div>
   </div>
 </div>""")
 
@@ -517,104 +521,119 @@ page('Parte I · A Empresa Hoje', 'Identidade & capacidade', 'A máquina já est
     <b>o que limita o resultado não é a margem, é a quantidade de projetos</b>.</p></div>
 </div>""")
 
-# ── 06 panorama
-page('Parte I · A Empresa Hoje', 'Panorama comercial · posição de 25/07/2026', 'A carteira em execução',
-     'Quanto foi vendido, quanto já entrou em caixa e em que estágio de produção está cada real vendido.',
+# ── 06 posição comercial
+page('Parte I · A Empresa Hoje', 'Posição comercial · 08/08/2026', 'A carteira em conclusão',
+     'Os 17 contratos com entrega prevista para agosto e setembro: quanto valem, quanto já entrou, quanto ainda entra e quanto falta fabricar.',
      """
 <div class="kpis k4">
-  <div class="kpi a"><div class="kl">Carteira ativa (vendido)</div><div class="kv"><small>R$</small> 827<small> mil</small></div><div class="kd">18 projetos em execução · tickets de R$ 5,3k a R$ 117k</div></div>
-  <div class="kpi e"><div class="kl">Recebido até agora</div><div class="kv"><small>R$</small> 321<small> mil</small></div><div class="kd"><b>39%</b> do valor vendido já em caixa</div></div>
-  <div class="kpi c"><div class="kl">Receita bruta pendente</div><div class="kv"><small>R$</small> 506<small> mil</small></div><div class="kd"><b>61%</b> do vendido, conforme a entrega avança</div></div>
-  <div class="kpi b"><div class="kl">Pipeline em negociação</div><div class="kv"><small>R$</small> 1,06<small> mi</small></div><div class="kd">R$ 240k em fase final + R$ 820k em 2 contas grandes</div></div>
+  <div class="kpi a"><div class="kl">Receita da carteira</div><div class="kv"><small>R$</small> 758<small>,4 mil</small></div><div class="kd">17 contratos · tickets de R$ 5,3k a R$ 124k</div></div>
+  <div class="kpi e"><div class="kl">Já recebido</div><div class="kv"><small>R$</small> 319<small>,0 mil</small></div><div class="kd"><b>42%</b> do vendido, cobrado em meses anteriores</div></div>
+  <div class="kpi b"><div class="kl">Saldo a receber</div><div class="kv"><small>R$</small> 439<small>,4 mil</small></div><div class="kd">R$ 215,9k em agosto · R$ 223,5k em setembro</div></div>
+  <div class="kpi f"><div class="kl">Falta produzir</div><div class="kv"><small>R$</small> 497<small>,1 mil</small></div><div class="kd"><b>66%</b> da carteira ainda por fabricar</div></div>
 </div>
 
-<div class="sec"><span class="bar"></span><span class="tx">Onde está o valor vendido hoje</span><span class="ct">% da carteira ativa de R$ 827 mil</span></div>
+<div class="sec"><span class="bar"></span><span class="tx">Os dois meses lado a lado</span><span class="ct">valores em reais</span></div>
+<table>
+  <thead><tr><th style="width:24%">Mês</th><th class="num" style="width:19%">Vendido</th>
+    <th class="num" style="width:19%">Recebido</th><th class="num" style="width:19%">A receber</th>
+    <th class="num" style="width:19%">A produzir</th></tr></thead>
+  <tbody>
+    <tr><td class="nm">Agosto<span class="fn">11 contratos</span></td><td class="num">360.400</td><td class="num">144.500</td><td class="num sub">215.900</td><td class="num sub">185.880<span class="fn">52%</span></td></tr>
+    <tr><td class="nm">Setembro<span class="fn">6 contratos</span></td><td class="num">398.000</td><td class="num">174.500</td><td class="num sub">223.500</td><td class="num sub">311.200<span class="fn">78%</span></td></tr>
+    <tr class="tot"><td>Total da carteira</td><td class="num">758.400</td><td class="num">319.000</td><td class="num">439.400</td><td class="num">497.080</td></tr>
+  </tbody>
+</table>
+
+<div class="sec"><span class="bar"></span><span class="tx">Onde está a carteira hoje</span><span class="ct">% do valor vendido</span></div>
 <div class="cards c3">
-  <div class="card ok"><div class="ct">Entregue ao cliente</div><div class="cv">R$ 274,9 mil</div><span class="pill" style="background:#e9f2ec;color:#2f7d4f">33% da carteira</span>
-    <p>Já nas mãos do cliente. É a parcela que sustenta o recebimento e libera as parcelas finais de contrato.</p></div>
-  <div class="card blue"><div class="ct">Fabricado, aguardando entrega</div><div class="cv">R$ 68,5 mil</div><span class="pill" style="background:#eaf1f8;color:#2f5d8c">8% da carteira</span>
-    <p>Pronto na fábrica e ainda não entregue — depende de agenda de obra, veículo e equipe de montagem.</p></div>
-  <div class="card"><div class="ct">Ainda a fabricar</div><div class="cv">R$ 484,0 mil</div><span class="pill">59% da carteira</span>
-    <p>A maior parte do que foi vendido ainda precisa passar pela fábrica. É o que dimensiona a carga de produção dos próximos meses.</p></div>
+  <div class="card ok"><div class="ct">Já produzido</div><div class="cv">R$ 261,3 mil</div><span class="pill" style="background:#e9f2ec;color:#2f7d4f">34% da carteira</span>
+    <p>Fabricado ou entregue. Concentra-se nos contratos mais antigos — Augusto, Maria, Rejane e Cristiane.</p></div>
+  <div class="card warn"><div class="ct">Falta produzir</div><div class="cv">R$ 497,1 mil</div><span class="pill" style="background:#fbeceb;color:#b0413f">66% da carteira</span>
+    <p><b>Dez contratos estão integralmente por fabricar</b> — Jairo, Flavia, Simony, Ana Carolina, Andrea, Richard, Carla, Giseli, Luciana e Luiz.</p></div>
+  <div class="card"><div class="ct">Carga por mês</div><div class="cv">52% <span style="font-size:12px;color:#6c7785">e</span> 78%</div><span class="pill">agosto e setembro</span>
+    <p>Setembro é o mês pesado: <b>quase quatro quintos da produção do mês ainda não começou</b>.</p></div>
 </div>
 
-<div class="sec"><span class="bar"></span><span class="tx">Cronograma de conclusão</span><span class="ct">quando cada bloco da carteira fecha</span></div>
-<div class="cards c4">
-  <div class="card"><div class="ct">Já entregue</div><div class="cv">R$ 87k</div><p>André · Alphaville — entregue, com <b>cobrança em aberto</b>.</p></div>
-  <div class="card"><div class="ct">Próxima semana</div><div class="cv">R$ 44k</div><p>Fechamentos imediatos, com peças já fabricadas.</p></div>
-  <div class="card"><div class="ct">Até final de agosto</div><div class="cv">R$ 321k</div><p>O maior bloco de conclusão do trimestre.</p></div>
-  <div class="card"><div class="ct">Em setembro</div><div class="cv">R$ 375k</div><p>Concentra os projetos de casa completa e clínica.</p></div>
-</div>
+<div class="note mt"><div class="nt">Como ler estes números</div>
+  <p><b>Vendido</b> é o valor de contrato. <b>Recebido</b> é o que já foi cobrado em meses anteriores — e que
+  <b>já não está em caixa</b>, tendo sido aplicado em material e no custeio da operação. <b>A produzir</b> é a
+  parcela de cada contrato que ainda precisa passar pela fábrica.</p>
+  <p>Fora desta conta: <b>R$ 87 mil</b> do projeto André / Alphaville, entregue e com cobrança em aberto
+  sem data de recebimento.</p></div>""")
 
-<div class="note mt"><div class="nt">Como ler os percentuais</div>
-  <p><b>Entregue</b> = já nas mãos do cliente. <b>Fabricado</b> = pronto na fábrica, ainda não entregue.
-  <b>A fabricar</b> = falta produzir. Os percentuais são sempre em relação ao valor vendido de cada projeto.
-  Entre a posição anterior e esta, a carteira passou de <b>13 para 18 projetos</b> (R$ 711k → R$ 827k) e o
-  recebido subiu de <b>34% para 39%</b>. Análise a partir da posição informada pelo comercial —
-  não substitui o fechamento financeiro.</p></div>""")
-
-# ── 07 carteira
+# ── 07 carteira contrato a contrato
 CART = [
-    ('Augusto', 'Diversos', '90.000', '63.000', '70%', '70%', '—', '30%', '1ª quinz. ago'),
-    ('Maria · Vale dos Cristais', 'Diversos', '117.000', '58.000', '50%', '70%', '—', '30%', 'final de set.'),
-    ('André · Alphaville', 'Diversos', '87.000', '0', '0%', '100%', '—', '—', 'entregue · cobrança em aberto'),
-    ('Cristiane', 'Diversos', '94.000', '41.951', '45%', '—', '50%', '50%', '1ª quinz. ago'),
-    ('Simony', 'Diversos', '34.000', '34.000', '100%', '—', '0%', '100%', '2ª quinz. ago'),
-    ('Bernardo', 'Cozinha e banheiro', '13.000', '4.000', '31%', '—', '100%', '—', 'final de ago.'),
-    ('Carla', 'Cozinha', '27.000', '13.500', '50%', '—', '0%', '100%', 'final de ago.'),
-    ('Lucas Mello', 'Diversos', '46.000', '24.000', '52%', '20%', '—', '80%', '1ª quinz. ago'),
-    ('Luciana Rajão · V. dos Cristais', 'Manutenções diversas', '12.000', '0', '0%', '0%', '—', '100%', '2ª quinz. ago'),
-    ('Ana Carolina', 'Casa completa', '108.000', '32.500', '30%', '0%', '—', '100%', 'início de set.'),
-    ('Richard', 'Quarto', '22.000', '11.000', '50%', '0%', '—', '100%', 'início de set.'),
-    ('Andrea', 'Clínica dermatologia', '47.000', '14.000', '30%', '0%', '—', '100%', '1ª quinz. set.'),
-    ('Giseli · Vale do Sereno', 'Banheiros', '14.000', '7.000', '50%', '0%', '—', '100%', '1ª quinz. set.'),
-    ('Luiz · adv.', 'Diversos', '5.300', '0', '0%', '0%', '—', '100%', 'final de ago.'),
-    ('Leonardo · Alphaville', 'Diversos', '55.000', '0', '0%', '0%', '—', '100%', '1ª quinz. set.'),
-    ('Rejane', 'Diversos', '35.600', '14.000', '39%', '95%', '—', '5%', 'a concluir'),
-    ('Tania', 'Diversos', '8.500', '4.250', '50%', '—', '100%', '—', 'próxima semana'),
-    ('Flavia', 'Diversos', '12.000', '0', '0%', '0%', '—', '100%', 'início de set.'),
+    ('Augusto', '', 90000, 24000, 0.30, '08'),
+    ('Cristiane', '', 94000, 42000, 0.50, '08'),
+    ('Lucas Mello', '', 46000, 24000, 0.80, '08'),
+    ('Rejane', '', 35600, 14000, 0.05, '08'),
+    ('Carla', '', 27000, 13500, 1.00, '08'),
+    ('Flavia', '', 15000, 7500, 1.00, '08'),
+    ('Giseli', '', 14000, 7000, 1.00, '08'),
+    ('Bernardo', 'fabricado', 13000, 4000, 0.00, '08'),
+    ('Luciana Rajão', '', 12000, 0, 1.00, '08'),
+    ('Tania', 'entregue e quitado', 8500, 8500, 0.00, '08'),
+    ('Luiz', '', 5300, 0, 1.00, '08'),
+    ('Maria · Vale dos Cristais', 'casa R$ 117.000 + lavanderia R$ 7.000', 124000, 58000, 0.30, '09'),
+    ('Ana Carolina', '', 108000, 32500, 1.00, '09'),
+    ('Jairo', '', 63000, 25000, 1.00, '09'),
+    ('Andrea', 'clínica de dermatologia', 47000, 14000, 1.00, '09'),
+    ('Simony', 'quitado, ainda por fabricar', 34000, 34000, 1.00, '09'),
+    ('Richard', '', 22000, 11000, 1.00, '09'),
 ]
-lin = ''.join(
-    f'<tr><td class="nm">{c[0]}</td><td class="dt">{c[1]}</td><td class="num">{c[2]}</td>'
-    f'<td class="num">{c[3]} <span class="fn" style="display:inline">({c[4]})</span></td>'
-    f'<td class="num">{c[5]}</td><td class="num">{c[6]}</td><td class="num">{c[7]}</td>'
-    f'<td class="dt">{c[8]}</td></tr>' for c in CART)
+def _n(v):
+    return '—' if v == 0 else format(int(round(v)), ',d').replace(',', '.')
+lin = ''
+for mes, rot in [('08', 'Agosto · 11 contratos'), ('09', 'Setembro · 6 contratos')]:
+    sel = [c for c in CART if c[5] == mes]
+    lin += f'<tr class="sec2"><td colspan="6">{rot}</td></tr>'
+    for nm, sub, v, r, pct, _ in sel:
+        f = f'<span class="fn">{sub}</span>' if sub else ''
+        cor = ' style="color:#b0413f"' if pct == 1.0 else ''
+        lin += (f'<tr><td class="nm">{nm}{f}</td><td class="num">{_n(v)}</td>'
+                f'<td class="num">{_n(r)}</td><td class="num sub">{_n(v-r)}</td>'
+                f'<td class="num dt"{cor}>{"—" if pct==0 else f"{pct:.0%}"}</td>'
+                f'<td class="num sub">{_n(v*pct)}</td></tr>')
+    sv = sum(c[2] for c in sel); sr = sum(c[3] for c in sel); sp = sum(c[2]*c[4] for c in sel)
+    lin += (f'<tr class="enc"><td>Subtotal de {"agosto" if mes=="08" else "setembro"}</td>'
+            f'<td class="num">{_n(sv)}</td><td class="num">{_n(sr)}</td><td class="num">{_n(sv-sr)}</td>'
+            f'<td class="num">{sp/sv:.0%}</td><td class="num">{_n(sp)}</td></tr>')
 
-page('Parte I · A Empresa Hoje', 'Carteira ativa · 25/07/2026', 'Projeto a projeto',
-     'Os 18 projetos em execução, com valor vendido, recebido e o estágio de produção de cada um.',
+page('Parte I · A Empresa Hoje', 'Carteira em conclusão · 08/08/2026', 'Contrato a contrato',
+     'Os 17 projetos com entrega prevista nos dois meses, com valor, recebimento e o que ainda falta fabricar em cada um.',
      f"""
 <table class="tight">
-  <thead><tr>
-    <th style="width:20%">Cliente</th><th style="width:15%">Ambiente(s)</th>
-    <th class="num" style="width:10%">Venda R$</th><th class="num" style="width:15%">Recebido</th>
-    <th class="num" style="width:8%">Entregue</th><th class="num" style="width:8%">Fabricado</th>
-    <th class="num" style="width:8%">A fabricar</th><th style="width:16%">Entrega prevista</th>
-  </tr></thead>
+  <thead><tr><th style="width:27%">Cliente</th><th class="num" style="width:14%">Vendido</th>
+    <th class="num" style="width:14%">Recebido</th><th class="num" style="width:15%">A receber</th>
+    <th class="num" style="width:13%">% a produzir</th><th class="num" style="width:17%">R$ a produzir</th></tr></thead>
   <tbody>{lin}
-    <tr class="tot"><td colspan="2">Total da carteira ativa</td><td class="num">827.400</td>
-      <td class="num">321.201 (39%)</td><td class="num">33%</td><td class="num">8%</td>
-      <td class="num">59%</td><td>—</td></tr>
+    <tr class="tot"><td>Total · 17 contratos</td><td class="num">758.400</td><td class="num">319.000</td>
+      <td class="num">439.400</td><td class="num">66%</td><td class="num">497.080</td></tr>
   </tbody>
 </table>
 
 <div class="two mt">
   <div class="note blue"><div class="nt">Concentração da carteira</div>
-    <p>Os <b>cinco maiores projetos</b> — Maria (R$ 117k), Ana Carolina (R$ 108k), Cristiane (R$ 94k),
-    Augusto (R$ 90k) e André (R$ 87k) — somam <b>R$ 496 mil</b>, ou <b>60% de toda a carteira</b>.
-    Os treze restantes dividem os R$ 331 mil finais.</p></div>
+    <p>Os <b>cinco maiores contratos</b> — Maria (R$ 124k), Ana Carolina (R$ 108k), Cristiane (R$ 94k),
+    Augusto (R$ 90k) e Jairo (R$ 63k) — somam <b>R$ 479 mil</b>, ou <b>63% de toda a carteira</b>. Os doze
+    restantes dividem os R$ 279 mil finais.</p>
+    <p style="margin-top:5px">Dois contratos já estão <b>quitados e ainda não produzidos</b>: Simony
+    (R$ 34 mil, integralmente por fabricar) e Tania (R$ 8,5 mil, já entregue).</p></div>
   <div class="note warn"><div class="nt">Pontos de atenção</div>
     <ul>
-      <li><b>André · Alphaville — R$ 87 mil.</b> Projeto 100% fabricado e entregue com <b>cobrança integralmente em aberto</b>. É o maior valor a receber isolado da carteira.</li>
-      <li><b>Rejane</b> segue sem prazo de conclusão definido, com 95% já fabricado.</li>
+      <li><b>Setembro concentra 78% da produção do mês por fazer</b> — R$ 311,2 mil em cinco semanas.</li>
+      <li><b>Jairo e Flavia entraram com 100% a produzir</b>, sem nenhuma etapa iniciada.</li>
+      <li><b>André / Alphaville — R$ 87 mil</b> entregue, com cobrança integralmente em aberto e sem data. Não integra esta carteira.</li>
+      <li>Os percentuais de produção vêm da <b>última conferência de fábrica</b> e precisam de atualização semanal.</li>
     </ul></div>
 </div>""")
 
 # ── 08 pipeline
-page('Parte I · A Empresa Hoje', 'Pipeline · fora da carteira', 'O que está em negociação',
-     'R$ 1,06 milhão em conversas abertas — 1,3 vez a carteira que já está em execução.',
+page('Parte I · A Empresa Hoje', 'Pipeline · posição de 25/07/2026', 'O que está em negociação',
+     'R$ 1,06 milhão em conversas abertas, fora dos 17 contratos em conclusão. Levantamento de 25 de julho, ainda não reconferido.',
      """
 <div class="kpis k3">
-  <div class="kpi b"><div class="kl">Pipeline total</div><div class="kv"><small>R$</small> 1,06<small> mi</small></div><div class="kd">Fora da carteira ativa de R$ 827 mil</div></div>
+  <div class="kpi b"><div class="kl">Pipeline total</div><div class="kv"><small>R$</small> 1,06<small> mi</small></div><div class="kd">Fora da carteira em conclusão de R$ 758,4 mil</div></div>
   <div class="kpi e"><div class="kl">Fase final de negociação</div><div class="kv"><small>R$</small> 240<small> mil</small></div><div class="kd">Alta probabilidade de conversão</div></div>
   <div class="kpi a"><div class="kl">Duas contas grandes</div><div class="kv"><small>R$</small> 820<small> mil</small></div><div class="kd">Construtora e condomínio · ciclo mais longo</div></div>
 </div>
@@ -642,17 +661,17 @@ page('Parte I · A Empresa Hoje', 'Pipeline · fora da carteira', 'O que está e
 </div>
 
 <div class="band mt">
-  <div><div class="bl">Carteira + pipeline</div><div class="bv">R$ 1,89 mi</div></div>
-  <div class="br">R$ 827 mil já contratados e em execução, somados a <b>R$ 1,06 milhão em negociação</b>.
-    O pipeline sozinho supera em <b>1,3×</b> tudo o que a empresa tem hoje na fábrica — e é isso que
+  <div><div class="bl">Carteira + pipeline</div><div class="bv">R$ 1,82 mi</div></div>
+  <div class="br">R$ 758,4 mil já contratados e em conclusão, somados a <b>R$ 1,06 milhão em negociação</b>.
+    O pipeline sozinho supera em <b>1,4×</b> tudo o que a empresa tem hoje na fábrica — e é isso que
     dimensiona a urgência da estrutura descrita na Parte II.</div>
 </div>
 
 <div class="note mt"><div class="nt">O que esse número significa para a decisão</div>
-  <p>A carteira atual já ocupa a capacidade instalada. Se apenas os <b>R$ 240 mil em fase final</b> se
-  converterem, a produção precisa absorver quase 30% a mais sem qualquer mudança de estrutura. Se as
-  duas contas grandes entrarem, o volume ultrapassa o teto físico do galpão atual — que é exatamente
-  a conversa da Parte V.</p></div>""")
+  <p>A carteira atual já tem <b>R$ 497 mil por fabricar</b> — dois terços do que foi vendido. Se apenas os
+  <b>R$ 240 mil em fase final</b> se converterem, a fábrica precisa absorver isso em cima de uma fila que já
+  está cheia. Se as duas contas grandes entrarem, o volume ultrapassa o teto físico do galpão atual — que é
+  exatamente a conversa da Parte V.</p></div>""")
 
 # ═══════════════════════════════════════════ PARTE II
 
@@ -739,10 +758,10 @@ page('Parte II · Estrutura & Pessoas', 'Folha mensal · dado de remuneração',
     <tr><td class="nm">Samuel</td><td>Marceneiro Sênior</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">3.900</td><td class="dt">2,5% fabricação + 2,5% montagem</td></tr>
     <tr><td class="nm">Jackson</td><td>Marceneiro Pleno</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">3.600</td><td class="dt">2,5% fabricação + 2,5% montagem</td></tr>
     <tr><td class="nm">Filipe</td><td>Programador CNC</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">3.600</td><td class="dt">sem comissão</td></tr>
-    <tr><td class="nm">Joelson</td><td>Operador CNC &amp; máquinas</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.500</td><td class="dt">2,5% montagem + R$ 2,00/chapa cortada · VR + VT</td></tr>
-    <tr><td class="nm">Jomar</td><td>Marceneiro</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.950</td><td class="dt">sem comissão · VR 350 + VT 400</td></tr>
-    <tr><td class="nm">Davi</td><td>Ajudante</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.950</td><td class="dt">sem comissão · VR 350 + VT 400</td></tr>
-    <tr><td class="nm">Jonathan Godoy</td><td>Ajudante Geral · novo</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.620</td><td class="dt">salário mínimo · sem comissão · VR 350 + VT 400</td></tr>
+    <tr><td class="nm">Joelson</td><td>Operador CNC &amp; máquinas</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.500</td><td class="dt">2,5% montagem + R$ 2,00/chapa cortada · VR 400 + VT 400</td></tr>
+    <tr><td class="nm">Jomar</td><td>Marceneiro</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.950</td><td class="dt">sem comissão · VR 400 + VT 400</td></tr>
+    <tr><td class="nm">Davi</td><td>Ajudante</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.950</td><td class="dt">sem comissão · VR 400 + VT 400</td></tr>
+    <tr><td class="nm">Jonathan Godoy</td><td>Ajudante Geral · novo</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.621</td><td class="dt">salário mínimo · sem comissão · VR 400 + VT 400</td></tr>
     <tr><td class="nm">Bruna<span class="fn">iniciou este mês</span></td><td>Arquiteta · programação + projetos</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">4.000</td><td class="dt">50% dos projetos vendidos aos clientes que ela atende</td></tr>
     <tr><td class="nm">Cezar<span class="fn">iniciou este mês</span></td><td>Marceneiro</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.900</td><td class="dt">2,5% fabricação + 2,5% montagem · VR 400 + VT 400</td></tr>
     <tr class="sec2"><td colspan="5">Entradas com data definida</td></tr>
@@ -753,8 +772,8 @@ page('Parte II · Estrutura & Pessoas', 'Folha mensal · dado de remuneração',
     <tr class="tot"><td colspan="3">Custo da estrutura completa · a partir da entrada do Hugo, dia 01 do mês que vem</td><td class="num">62.920</td><td></td></tr>
     <tr class="sec2"><td colspan="5">Necessidade de contratação — fora do número acima</td></tr>
     <tr><td class="nm">Paulo &quot;Baiano&quot;</td><td>Marceneiro experiente</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">3.900</td><td class="dt">mesmo escopo do Samuel · 2,5% + 2,5%</td></tr>
-    <tr><td class="nm">2 a 3 ajudantes</td><td>Apoio à produção · maior lacuna</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.950<span class="fn">cada</span></td><td class="dt">sem comissão · VR 350 + VT 400 cada</td></tr>
-    <tr><td class="nm">1 operador CNC</td><td>Assume a máquina atual</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.500</td><td class="dt">sem comissão · VR 350 + VT 400</td></tr>
+    <tr><td class="nm">2 a 3 ajudantes</td><td>Apoio à produção · maior lacuna</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.950<span class="fn">cada</span></td><td class="dt">sem comissão · VR 400 + VT 400 cada</td></tr>
+    <tr><td class="nm">1 operador CNC</td><td>Assume a máquina atual</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.500</td><td class="dt">sem comissão · VR 400 + VT 400</td></tr>
     <tr class="enc"><td colspan="3">Subtotal a contratar</td><td class="num">12.550 a 15.250</td><td class="dt" style="color:#96803f">Baiano + 2–3 ajudantes + operador CNC</td></tr>
   </tbody>
 </table>
@@ -767,7 +786,9 @@ page('Parte II · Estrutura & Pessoas', 'Folha mensal · dado de remuneração',
   <div class="note blue"><div class="nt">Regra de comissão</div>
     <p>Por <b>profissional e por etapa</b>, não por dupla: 2,5% por fabricação e 2,5% por montagem, pagas
     conforme a etapa executada; o coordenador acrescenta 1,0%. <b>Só existem quando há venda</b> — são
-    custo variável, não folha fixa. Base: faturamento bruto.</p></div>
+    custo variável, não folha fixa. Base: faturamento bruto.</p>
+    <p style="margin-top:5px">Sobre a carteira em conclusão de R$ 758,4 mil, a comissão estimada dos dois
+    meses é de <b>R$ 45,5 mil</b>.</p></div>
 </div>""")
 
 # ── 12 demandas
@@ -904,7 +925,9 @@ full("""
     A margem já é conhecida e boa; o que limita o resultado é a quantidade de projetos.</p>
   <div class="plist">
     <div class="pli"><b>15</b><span>Modelo econômico e alavancagem operacional</span></div>
-    <div class="pli"><b>16</b><span>Custo da estrutura e investimento</span></div>
+    <div class="pli"><b>16</b><span>Custo fixo da operação</span></div>
+    <div class="pli"><b>17</b><span>Folha e estrutura, item a item</span></div>
+    <div class="pli"><b>18</b><span>Fluxo de caixa — agosto e setembro</span></div>
   </div>
 </div>""")
 
@@ -956,29 +979,30 @@ onde o capital de um sócio investidor é aplicado.</p>
     <b>Qualquer decisão de aporte deve fixar uma única premissa</b>, validada com o contador.</p></div>
 </div>""")
 
-# ── 16 custo da estrutura
-page('Parte III · Economia da Operação', 'Custo da estrutura · agosto/2026', 'O que custa manter a operação',
-     'A folha, os benefícios e o investimento único mapeado — separando o que já é custo do que ainda é decisão.',
+# ── 16 custo fixo da operação
+page('Parte III · Economia da Operação', 'Custo fixo · agosto e setembro de 2026', 'O que custa manter a operação',
+     'As duas contas que existem independentemente de vender: a folha de pagamento e a estrutura. Juntas somam R$ 152,2 mil nos dois meses.',
      """
 <div class="kpis k4">
-  <div class="kpi a"><div class="kl">Custo mensal hoje</div><div class="kv"><small>R$</small> 55,2<small> mil</small></div><div class="kd">2 sócios + 10 ativos + Jennifer · com benefícios CLT</div></div>
-  <div class="kpi b"><div class="kl">Estrutura completa</div><div class="kv"><small>R$</small> 62,9<small> mil</small></div><div class="kd">Com Karla (dia 10) e Hugo (dia 01/09) — acréscimo de R$ 7,7k</div></div>
+  <div class="kpi a"><div class="kl">Custo fixo · agosto</div><div class="kv"><small>R$</small> 75,1<small> mil</small></div><div class="kd">Folha R$ 57,8k + estrutura R$ 17,3k</div></div>
+  <div class="kpi b"><div class="kl">Custo fixo · setembro</div><div class="kv"><small>R$</small> 77,2<small> mil</small></div><div class="kd">Folha R$ 62,6k + estrutura R$ 14,6k · com o Hugo</div></div>
+  <div class="kpi e"><div class="kl">Peso da folha</div><div class="kv">81%</div><div class="kd">Do custo fixo total · 19% é instalação e administrativo</div></div>
   <div class="kpi f"><div class="kl">Ainda a contratar</div><div class="kv"><small>R$</small> 12,6<small>–15,3 mil</small></div><div class="kd">Baiano + 2–3 ajudantes + operador CNC · fora do número acima</div></div>
-  <div class="kpi c"><div class="kl">Investimento único</div><div class="kv"><small>R$</small> 15<small> mil +</small></div><div class="kd">Ferramental mapeado · carros e cadeiras a definir</div></div>
 </div>
 
-<div class="sec"><span class="bar"></span><span class="tx">Composição do custo mensal</span></div>
+<div class="sec"><span class="bar"></span><span class="tx">Composição do custo fixo</span><span class="ct">valores em reais</span></div>
 <table>
-  <thead><tr><th style="width:44%">Bloco</th><th class="num" style="width:18%">Valor</th><th>Observação</th></tr></thead>
+  <thead><tr><th style="width:40%">Bloco</th><th class="num" style="width:16%">Agosto</th>
+    <th class="num" style="width:16%">Setembro</th><th class="num" style="width:14%">Peso</th>
+    <th style="width:14%">Natureza</th></tr></thead>
   <tbody>
-    <tr><td class="nm">Direção · pró-labore dos 2 sócios</td><td class="num sub">20.000</td><td class="dt">R$ 10.000 cada · ambos executam e gerenciam</td></tr>
-    <tr><td class="nm">Ativos hoje · 10 pessoas</td><td class="num sub">33.820</td><td class="dt">Salários R$ 30.020 + benefícios CLT R$ 3.800 · já com Bruna e Cezar</td></tr>
-    <tr><td class="nm">Parceria externa · Jennifer</td><td class="num sub">1.400</td><td class="dt">Contrato à parte, fora da folha</td></tr>
-    <tr class="enc"><td>Custo mensal hoje</td><td class="num">55.220</td><td class="dt" style="color:#96803f">Direção + 10 ativos + Jennifer</td></tr>
-    <tr><td class="nm">Karla · entra dia 10 deste mês</td><td class="num sub">2.900</td><td class="dt">R$ 2.000 + VR 500 + transporte conforme local</td></tr>
-    <tr><td class="nm">Hugo · entra dia 01 do mês que vem</td><td class="num sub">4.800</td><td class="dt">R$ 4.000 + VR 400 + VT 400</td></tr>
-    <tr class="tot"><td>Custo da estrutura completa</td><td class="num">62.920</td><td></td></tr>
-    <tr class="enc"><td>Necessidades de contratação — ainda fora do cálculo</td><td class="num">12.550 a 15.250</td><td class="dt" style="color:#96803f">Elevaria o custo para R$ 75,5 a 78,2 mil</td></tr>
+    <tr><td class="nm">Folha de pagamento<span class="fn">salários, adiantamentos, pró-labore, benefícios e contratos PJ</span></td>
+      <td class="num">57.786</td><td class="num sub">62.586</td><td class="num dt">81%</td><td class="dt">Fixo</td></tr>
+    <tr><td class="nm">Estrutura<span class="fn">galpão, energia, contador, software, logística e marketing</span></td>
+      <td class="num">17.280</td><td class="num sub">14.580</td><td class="num dt">19%</td><td class="dt">Fixo</td></tr>
+    <tr class="tot"><td>Custo fixo total</td><td class="num">75.066</td><td class="num">77.166</td><td class="num">100%</td><td></td></tr>
+    <tr class="enc"><td>Necessidades de contratação — ainda fora do cálculo</td><td class="num" colspan="2">12.550 a 15.250</td>
+      <td class="dt" colspan="2" style="color:#96803f">Elevaria o custo fixo a R$ 89,7–92,4 mil</td></tr>
   </tbody>
 </table>
 
@@ -987,19 +1011,141 @@ page('Parte III · Economia da Operação', 'Custo da estrutura · agosto/2026',
   <div class="card"><div class="ct">PJ · produção e tecnologia</div><h4>Deivson, Samuel, Jackson, Filipe, Bruna</h4>
     <p>Os papéis de <b>maior autonomia técnica</b> e remuneração variável relevante. Comissionados por etapa executada.</p></div>
   <div class="card"><div class="ct">CLT · formação, apoio e programação</div><h4>Joelson, Jomar, Davi, J. Godoy, Cezar, Karla, Hugo</h4>
-    <p>As funções de <b>formação, apoio e programação</b>, com benefícios fixos somados sobre a folha:
-    <b>R$ 750/mês</b> (VR 350 + VT 400) para a equipe de produção e <b>R$ 800</b> para Cezar e Hugo.
-    A Karla tem VR de R$ 500 mais transporte conforme o local.</p></div>
+    <p>Funções de <b>formação, apoio e programação</b>, com benefícios fixos: <b>R$ 800/mês</b> (VR 400 + VT 400) na
+    produção e VR 500 mais transporte para a Karla.</p></div>
   <div class="card"><div class="ct">Variável · só existe com venda</div><h4>Comissões e participação</h4>
-    <p>2,5% fabricação + 2,5% montagem por profissional, 1,0% de coordenação para o Deivson e R$ 2,00/chapa
-    para o Joelson. A Bruna tem <b>50% dos projetos que vender</b>. Nada disso é folha fixa.</p></div>
+    <p>2,5% fabricação + 2,5% montagem por profissional, 1,0% de coordenação para o Deivson e R$ 2,00/chapa para
+    o Joelson. A Bruna tem <b>50% dos projetos que vender</b>. <b>Nada disso é folha fixa.</b></p></div>
 </div>
 
-<div class="note mt"><div class="nt">O que está em aberto</div>
-  <p>Ficam a precificar: <b>2 carros</b> para as duplas 2 e 3, <b>cadeiras</b> para Karla e Bruna, o
-  <b>celular da Karla</b> e o kit dos ajudantes a contratar (R$ 1.000 cada). O kit da equipe de obra pode
-  variar conforme o <b>nível de ferramenta</b> que for definido. O Cezar entrou <b>como CLT</b>, e não como PJ — o que
-  soma benefícios de R$ 800/mês ao custo dele.</p></div>""")
+<div class="sec"><span class="bar"></span><span class="tx">Investimento em infraestrutura</span><span class="ct">custo único, fora do fixo mensal</span></div>
+<table class="tight">
+  <thead><tr><th style="width:36%">Item</th><th style="width:44%">Para quem</th><th class="num" style="width:20%">Valor</th></tr></thead>
+  <tbody>
+    <tr><td class="nm">Cadeira + computador</td><td>Bruna</td><td class="num sub">4.000<span class="fn">cadeira a definir</span></td></tr>
+    <tr><td class="nm">Kit de ferramentas</td><td>Marceneiro experiente a contratar</td><td class="num sub">3.000</td></tr>
+    <tr><td class="nm">Kit equipe de obra</td><td>Duplas de montagem</td><td class="num sub">6.000</td></tr>
+    <tr><td class="nm">Kit básico</td><td>Davi e Jonathan Godoy · R$ 1.000 cada</td><td class="num sub">2.000</td></tr>
+    <tr><td class="nm">2 carros</td><td>Duplas 2 e 3 — hoje sem veículo</td><td class="num sub">a definir</td></tr>
+    <tr class="tot"><td colspan="2">Subtotal mapeado · carros e mobiliário em aberto</td><td class="num">15.000</td></tr>
+  </tbody>
+</table>""")
+
+# ── 17 folha e estrutura, item a item
+page('Parte III · Economia da Operação', 'Custo fixo · detalhamento', 'Folha e estrutura, item a item',
+     'Cada pessoa e cada rubrica que compõem os R$ 77,2 mil de custo fixo mensal.',
+     """
+<div class="sec"><span class="bar"></span><span class="tx">Folha de pagamento</span><span class="ct">custo total por pessoa · fixo + benefícios</span></div>
+<table class="xt">
+  <thead><tr><th style="width:24%">Pessoa</th><th style="width:32%">Função</th><th style="width:11%">Vínculo</th>
+    <th class="num" style="width:16%">Agosto</th><th class="num" style="width:17%">Setembro</th></tr></thead>
+  <tbody>
+    <tr><td class="nm">Jonathan</td><td>Diretor Comercial &amp; Experiência</td><td><span class="badge b-soc">Sócio</span></td><td class="num">10.000</td><td class="num sub">10.000</td></tr>
+    <tr><td class="nm">Paulo</td><td>Diretor de Operações &amp; Tecnologia</td><td><span class="badge b-soc">Sócio</span></td><td class="num">10.000</td><td class="num sub">10.000</td></tr>
+    <tr><td class="nm">Hugo<span class="fn">entra dia 01/09</span></td><td>Programador</td><td><span class="badge b-clt">CLT</span></td><td class="num dt">—</td><td class="num sub">4.800</td></tr>
+    <tr><td class="nm">Deivson</td><td>Coordenador de Produção</td><td><span class="badge b-pj">PJ</span></td><td class="num">4.000</td><td class="num sub">4.000</td></tr>
+    <tr><td class="nm">Bruna</td><td>Arquiteta · projeto e programação</td><td><span class="badge b-pj">PJ</span></td><td class="num">4.000</td><td class="num sub">4.000</td></tr>
+    <tr><td class="nm">Samuel</td><td>Marceneiro Sênior</td><td><span class="badge b-pj">PJ</span></td><td class="num">3.900</td><td class="num sub">3.900</td></tr>
+    <tr><td class="nm">Cezar</td><td>Marceneiro</td><td><span class="badge b-clt">CLT</span></td><td class="num">3.700</td><td class="num sub">3.700</td></tr>
+    <tr><td class="nm">Jackson</td><td>Marceneiro Pleno</td><td><span class="badge b-pj">PJ</span></td><td class="num">3.600</td><td class="num sub">3.600</td></tr>
+    <tr><td class="nm">Filipe</td><td>Programador CNC</td><td><span class="badge b-pj">PJ</span></td><td class="num">3.600</td><td class="num sub">3.600</td></tr>
+    <tr><td class="nm">Joelson</td><td>Operador CNC &amp; máquinas</td><td><span class="badge b-clt">CLT</span></td><td class="num">3.300</td><td class="num sub">3.300</td></tr>
+    <tr><td class="nm">Karla</td><td>Assistente Operacional</td><td><span class="badge b-clt">CLT</span></td><td class="num">3.050</td><td class="num sub">3.050</td></tr>
+    <tr><td class="nm">Jomar</td><td>Marceneiro</td><td><span class="badge b-clt">CLT</span></td><td class="num">2.750</td><td class="num sub">2.750</td></tr>
+    <tr><td class="nm">Davi</td><td>Ajudante</td><td><span class="badge b-clt">CLT</span></td><td class="num">2.750</td><td class="num sub">2.750</td></tr>
+    <tr><td class="nm">Jonathan Godoy</td><td>Ajudante Geral</td><td><span class="badge b-clt">CLT</span></td><td class="num">2.421</td><td class="num sub">2.421</td></tr>
+    <tr><td class="nm">INSS sobre pró-labore</td><td>Encargo dos sócios · GPS</td><td class="dt">—</td><td class="num">715</td><td class="num sub">715</td></tr>
+    <tr class="tot"><td colspan="3">Total da folha · 14 pessoas em agosto, 15 em setembro</td><td class="num">57.786</td><td class="num">62.586</td></tr>
+  </tbody>
+</table>
+
+<div class="sec"><span class="bar"></span><span class="tx">Custo fixo da estrutura</span><span class="ct">o que sustenta o galpão e o administrativo</span></div>
+<table class="xt">
+  <thead><tr><th style="width:38%">Rubrica</th><th style="width:26%">Natureza</th>
+    <th class="num" style="width:18%">Agosto</th><th class="num" style="width:18%">Setembro</th></tr></thead>
+  <tbody>
+    <tr><td class="nm">Aluguel do galpão</td><td class="dt">Instalações</td><td class="num">4.980</td><td class="num sub">4.980</td></tr>
+    <tr><td class="nm">Marketing e publicidade<span class="fn">tráfego pago + social media</span></td><td class="dt">Comercial</td><td class="num">2.300</td><td class="num sub">2.300</td></tr>
+    <tr><td class="nm">Energia elétrica</td><td class="dt">Instalações</td><td class="num">1.500</td><td class="num sub">1.500</td></tr>
+    <tr><td class="nm">Software e licenças</td><td class="dt">Administrativo</td><td class="num">1.430</td><td class="num sub">1.130</td></tr>
+    <tr><td class="nm">Combustível</td><td class="dt">Logística</td><td class="num">750</td><td class="num sub">1.000</td></tr>
+    <tr><td class="nm">Honorários contábeis</td><td class="dt">Administrativo</td><td class="num">700</td><td class="num sub">700</td></tr>
+    <tr><td class="nm">Lanches e refeições da equipe</td><td class="dt">Produção</td><td class="num">600</td><td class="num sub">800</td></tr>
+    <tr><td class="nm">Limpeza</td><td class="dt">Instalações</td><td class="num">600</td><td class="num sub">600</td></tr>
+    <tr><td class="nm">Manutenção predial e de equipamentos</td><td class="dt">Instalações</td><td class="num">1.135</td><td class="num sub">—</td></tr>
+    <tr><td class="nm">Materiais de escritório<span class="fn">cadeiras — aquisição pontual</span></td><td class="dt">Administrativo</td><td class="num">1.265</td><td class="num sub">—</td></tr>
+    <tr><td class="nm">Vigilância e segurança</td><td class="dt">Instalações</td><td class="num">390</td><td class="num sub">390</td></tr>
+    <tr><td class="nm">Viagens e representações</td><td class="dt">Comercial</td><td class="num">370</td><td class="num sub">370</td></tr>
+    <tr><td class="nm">Seguros de veículos</td><td class="dt">Logística</td><td class="num">255</td><td class="num sub">255</td></tr>
+    <tr><td class="nm">Demais rubricas<span class="fn">água, telefonia, lixo, seguro de vida, cursos, transporte urbano, carretos</span></td><td class="dt">Diversos</td><td class="num">1.006</td><td class="num sub">556</td></tr>
+    <tr class="tot"><td colspan="2">Total da estrutura</td><td class="num">17.280</td><td class="num">14.580</td></tr>
+  </tbody>
+</table>
+
+<div class="note ok mt"><div class="nt">O que este detalhamento mostra</div>
+  <p>A operação é <b>enxuta em custo de ocupação e pesada em mão de obra qualificada</b>. O aluguel do galpão
+  responde por menos de 7% do custo fixo, enquanto a folha responde por 81%. É o perfil de uma empresa que
+  investe em gente, não em metro quadrado.</p></div>""")
+
+# ── 18 fluxo de caixa
+page('Parte III · Economia da Operação', 'Fluxo de caixa · agosto e setembro de 2026', 'A receber, a pagar e o que sobra',
+     'O movimento dos dois meses conforme os lançamentos do sistema financeiro, e a compra de material que ainda precisa acontecer.',
+     """
+<div class="kpis k4">
+  <div class="kpi a"><div class="kl">Total a receber</div><div class="kv"><small>R$</small> 402<small> mil</small></div><div class="kd">Parcelas em aberto com vencimento nos dois meses</div></div>
+  <div class="kpi f"><div class="kl">Total a pagar</div><div class="kv"><small>R$</small> 260<small> mil</small></div><div class="kd">Folha, estrutura, material e compromissos</div></div>
+  <div class="kpi e"><div class="kl">Saldo do período</div><div class="kv" style="color:#2f7d4f"><small>+R$</small> 142<small> mil</small></div><div class="kd">Antes da compra de material ainda a fazer</div></div>
+  <div class="kpi c"><div class="kl">Demanda de material</div><div class="kv"><small>R$</small> 200<small> mil</small></div><div class="kd">R$ 120k em agosto + R$ 80k em setembro · estimativa</div></div>
+</div>
+
+<div class="sec"><span class="bar"></span><span class="tx">Composição do total a pagar</span><span class="ct">R$ 260 mil nos dois meses</span></div>
+<table>
+  <thead><tr><th style="width:46%">Bloco</th><th class="num" style="width:20%">Dois meses</th>
+    <th class="num" style="width:14%">Peso</th><th style="width:20%">Natureza</th></tr></thead>
+  <tbody>
+    <tr><td class="nm">Folha de pagamento<span class="fn">15 pessoas · salários, pró-labore, benefícios e PJ</span></td>
+      <td class="num sub">120.372</td><td class="num dt">46,3%</td><td class="dt">Fixo</td></tr>
+    <tr><td class="nm">Material, comissões e compromissos<span class="fn">material lançado, RT de parceiros, comissões, máquinas e dívida</span></td>
+      <td class="num sub">107.767</td><td class="num dt">41,4%</td><td class="dt">Variável e parcelado</td></tr>
+    <tr><td class="nm">Custo fixo da estrutura</td><td class="num sub">31.861</td><td class="num dt">12,3%</td><td class="dt">Fixo</td></tr>
+    <tr class="tot"><td>Total a pagar</td><td class="num">260.000</td><td class="num">100%</td><td></td></tr>
+  </tbody>
+</table>
+
+<div class="sec"><span class="bar"></span><span class="tx">A demanda de material que falta</span><span class="ct">o que ainda precisa ser comprado para concluir a produção</span></div>
+<table>
+  <thead><tr><th style="width:30%">Período</th><th class="num" style="width:20%">Estimativa</th><th>Base</th></tr></thead>
+  <tbody>
+    <tr><td class="nm">Agosto</td><td class="num sub">120.000</td><td class="dt">Produção a executar no mês: R$ 185,9 mil</td></tr>
+    <tr><td class="nm">Setembro</td><td class="num sub">80.000</td><td class="dt">Produção a executar no mês: R$ 311,2 mil</td></tr>
+    <tr class="enc"><td>Demanda total de material</td><td class="num">200.000</td><td class="dt" style="color:#96803f">Estimativa da direção · não é levantamento por projeto</td></tr>
+  </tbody>
+</table>
+
+<div class="band mt">
+  <div><div class="bl">Saldo da carteira menos o material</div><div class="bv">R$ 239,4 mil</div></div>
+  <div class="br">Dos <b>R$ 439,4 mil</b> que a carteira ainda tem a receber, <b>R$ 200 mil</b> vão para a compra
+    de material necessária para concluir a produção. O que resta precisa cobrir folha, estrutura e
+    compromissos do período.</div>
+</div>
+
+<div class="sec"><span class="bar"></span><span class="tx">Pontos de atenção</span><span class="ct">fora do fluxo dos dois meses</span></div>
+<div class="cards c3">
+  <div class="card warn"><div class="ct">Aporte já consumido</div><div class="cv">R$ 71 mil</div>
+    <p>Parcela do primeiro aporte usada para <b>cobrir o déficit de caixa de julho</b>. Não foi aplicada em
+    máquina, estrutura ou expansão.</p></div>
+  <div class="card warn"><div class="ct">Passivo trabalhista</div><div class="cv">R$ 28,7 mil</div>
+    <p>Verbas e encargos dos seis desligamentos já ocorridos, <b>fora do fluxo acima</b>. Detalhamento na
+    Parte IV.</p></div>
+  <div class="card"><div class="ct">A receber sem data</div><div class="cv">R$ 87 mil</div>
+    <p>Projeto <b>André / Alphaville</b>, entregue e com cobrança integralmente em aberto. Não entra em
+    nenhum dos dois meses.</p></div>
+</div>
+
+<div class="note warn mt"><div class="nt">A incógnita deste quadro</div>
+  <p>O material já adquirido <b>mistura obras entregues e obras a executar, sem rastreio por projeto</b>. Os
+  R$ 200 mil de demanda são estimativa da direção, não levantamento. <b>Enquanto essa medição não existir, o
+  saldo do período é um teto, não uma previsão</b> — e construí-la é a prioridade número um do financeiro.</p></div>""")
 
 # ═══════════════════════════════════════════ PARTE IV
 
@@ -1012,7 +1158,7 @@ full("""
     desligamentos já ocorridos no quadro de produção, apurado contrato a contrato. Um número fechado,
     com o perímetro do cálculo declarado — o que entra, o que não entra e por quê.</p>
   <div class="plist">
-    <div class="pli"><b>18</b><span>Apuração por contrato, encargos e perímetro</span></div>
+    <div class="pli"><b>20</b><span>Apuração por contrato, encargos e perímetro</span></div>
   </div>
 </div>""")
 
@@ -1093,14 +1239,14 @@ full("""
     galpão com os dois caminhos possíveis. <b>Não há recomendação aqui</b> — há caminhos, custos e
     trade-offs postos lado a lado, para que a decisão seja informada e consciente.</p>
   <div class="plist">
-    <div class="pli"><b>20</b><span>A escada de produção</span></div>
-    <div class="pli"><b>21</b><span>Galpão: adaptar o atual ou mudar</span></div>
-    <div class="pli"><b>22</b><span>Comparativo de coladeiras</span></div>
-    <div class="pli"><b>23</b><span>Linha industrial e complementares</span></div>
-    <div class="pli"><b>24</b><span>Diferencial de mercado — puxadores</span></div>
-    <div class="pli"><b>25</b><span>Prestação de serviços</span></div>
-    <div class="pli"><b>26</b><span>Plano de expansão 2026–2027</span></div>
-    <div class="pli"><b>27</b><span>Retorno e payback</span></div>
+    <div class="pli"><b>22</b><span>A escada de produção</span></div>
+    <div class="pli"><b>23</b><span>Galpão: adaptar o atual ou mudar</span></div>
+    <div class="pli"><b>24</b><span>Comparativo de coladeiras</span></div>
+    <div class="pli"><b>25</b><span>Linha industrial e complementares</span></div>
+    <div class="pli"><b>26</b><span>Diferencial de mercado — puxadores</span></div>
+    <div class="pli"><b>27</b><span>Prestação de serviços</span></div>
+    <div class="pli"><b>28</b><span>Plano de expansão 2026–2027</span></div>
+    <div class="pli"><b>29</b><span>Retorno e payback</span></div>
   </div>
 </div>""")
 

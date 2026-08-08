@@ -23,10 +23,10 @@
 |---|---|---|---|
 | B1 | **Vínculo do Cezar** | Já consta CLT R$ 2.900 + VR 400 + VT 400 | **Confirmar** — bate com o sistema (2.000 salário + 900 adiantamento + 800 benefícios = R$ 3.700 de custo total). Verificar se algum outro documento ainda o traz como PJ |
 | B2 | **Salário da Karla** | R$ 2.000 | Correto — a divergência está no sistema (item A1) |
-| B3 | **Custo mensal da estrutura** | R$ 55,2k hoje → R$ 62,9k completo (só folha) | O número real de **custo fixo** é **folha + estrutura**: R$ 75,1k em agosto e **R$ 77,2 mil em setembro** |
-| B4 | **Página nova — Custo Fixo da Estrutura** | Não existe | **Criar** na Parte III, com as duas tabelas do relatório de cenário real: folha por pessoa e estrutura por rubrica |
-| B5 | **Jonathan Godoy** | R$ 1.620 (salário mínimo) | Custo total é **R$ 2.421** com benefícios (1.621 + 400 VT + 400 VR) |
-| B6 | **Benefícios do Joelson, Jomar e Davi** | VR 350 + VT 400 = R$ 750 | Sistema mostra **VR 400 + VT 400 = R$ 800** |
+| ~~B3~~ | ~~**Custo mensal da estrutura**~~ **FEITO** | — | Caderno agora traz custo fixo = folha + estrutura: **R$ 75,1k em agosto e R$ 77,2k em setembro** |
+| ~~B4~~ | ~~**Página nova — Custo Fixo da Estrutura**~~ **FEITO** | — | Criadas **duas** páginas na Parte III: pág. 17 (folha por pessoa + estrutura por rubrica) e pág. 18 (fluxo de caixa) |
+| ~~B5~~ | ~~**Jonathan Godoy**~~ **FEITO** | — | Corrigido para R$ 1.621 na folha e R$ 2.421 de custo total no detalhamento |
+| ~~B6~~ | ~~**Benefícios do Joelson, Jomar e Davi**~~ **FEITO** | — | Caderno atualizado para VR 400 + VT 400 = R$ 800 |
 
 ## C · Divergências entre documentos — decidir a fonte de verdade
 
@@ -104,6 +104,29 @@ nos dois meses**.
   R$ 87 mil a receber sem data (André / Alphaville).
 - O passivo trabalhista aparece como **R$ 30 mil** nesta leitura; o cálculo detalhado fechou em
   **R$ 28.691**. Arredondamento, não divergência.
+
+## H · Caderno Empresarial retificado em 08/08 — 30 páginas
+
+Todas as correções das seções B, F e G foram aplicadas ao gerador. Mudanças:
+
+- **Abertura (pág. 3):** KPIs passam a carteira R$ 758,4k · recebido R$ 319,0k · a receber R$ 439,4k ·
+  falta produzir R$ 497,1k · custo fixo R$ 77,2k · equipe 10 + 2 sócios.
+- **Pág. 6 — Posição comercial:** substituiu o panorama de 25/07. Traz os dois meses lado a lado com
+  vendido / recebido / a receber / a produzir e a composição já produzido × falta produzir.
+- **Pág. 7 — Carteira contrato a contrato:** 17 contratos com coluna de % e R$ a produzir, subtotais por
+  mês. Leonardo fora, Jairo dentro.
+- **Pág. 8 — Pipeline:** datado como 25/07 e marcado como não reconferido; carteira + pipeline recalculado
+  para R$ 1,82 mi.
+- **Pág. 11 — Folha:** Jonathan Godoy a R$ 1.621, benefícios a VR 400 + VT 400, nota de comissão estimada
+  de R$ 45,5 mil sobre a carteira.
+- **Pág. 16 — Custo fixo da operação (reescrita):** folha + estrutura, peso de 81% da folha, natureza do
+  vínculo e investimento único.
+- **Pág. 17 — NOVA · Folha e estrutura item a item:** 15 linhas de pessoas e 14 rubricas de estrutura.
+- **Pág. 18 — NOVA · Fluxo de caixa:** 402 − 260 = 142, composição do a pagar, demanda de material de
+  R$ 200 mil, saldo da carteira menos material (R$ 239,4 mil) e os três pontos de atenção.
+- Sumário e divisórias renumerados: Parte IV vai para 20, Parte V para 22–29, fecho na 30.
+
+**Ainda em aberto no caderno:** o pipeline (pág. 8) segue com os dados de 25/07 e precisa de reconferência.
 
 ## E · Decisões de apresentação (documento do Walton)
 
