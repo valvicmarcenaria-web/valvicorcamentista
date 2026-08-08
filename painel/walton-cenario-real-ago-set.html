@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cenário Real — Agosto e Setembro · Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  :root{
+    --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f;
+    --gold-bg:#f6edd6; --cream:#FBFAF7; --ink:#1b2733; --body:#33414f; --muted:#6c7785;
+    --line:#e8e3d8; --line2:#dfdacd; --ok:#2f7d4f; --blue:#2f5d8c; --red:#b0413f;
+  }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3;
+    font-size:10px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:14px auto;
+    box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column;
+    page-break-after:always; }
+  .sheet:last-child{ page-break-after:auto; }
+
+  .hero{ background:radial-gradient(120% 90% at 85% -10%, #1b3a5e 0%, rgba(27,58,94,0) 55%),
+    linear-gradient(160deg,#0E2038 0%,#0b1a2e 60%,#0a1626 100%); color:#fff; padding:11mm 16mm 9mm; position:relative; }
+  .hero::after{ content:""; position:absolute; left:16mm; right:16mm; bottom:0; height:2.5px;
+    background:linear-gradient(90deg,var(--gold),var(--gold-dk) 45%,transparent); }
+  .hero .brand{ display:flex; align-items:center; gap:11px; }
+  .hero .mono{ width:36px; height:36px; border:1.5px solid var(--gold); border-radius:4px; display:flex;
+    align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700;
+    font-size:19px; color:var(--gold); }
+  .hero .co{ font-size:11.5px; font-weight:700; letter-spacing:2.6px; text-transform:uppercase; }
+  .hero .cosub{ font-size:7.8px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
+  .hero .kx{ font-size:8.2px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-top:7mm; }
+  .hero h1{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:31px; line-height:1.08; margin-top:5px; }
+  .hero h1 span{ color:var(--gold-soft); font-style:italic; }
+  .hero .lead{ font-size:10px; color:rgba(255,255,255,.72); margin-top:8px; max-width:138mm; line-height:1.6; }
+  .hero .stamp{ position:absolute; right:16mm; bottom:9mm; text-align:right; }
+  .hero .stamp .sl{ font-size:7px; letter-spacing:2.2px; text-transform:uppercase; color:rgba(255,255,255,.45); }
+  .hero .stamp .sv{ font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:700; color:var(--gold-soft); line-height:1.1; margin-top:2px; }
+
+  .ph{ background:var(--navy); color:#fff; padding:8mm 16mm 5.5mm; display:flex; justify-content:space-between;
+    align-items:flex-end; position:relative; }
+  .ph::after{ content:""; position:absolute; left:16mm; right:16mm; bottom:0; height:2px;
+    background:linear-gradient(90deg,var(--gold),transparent); }
+  .ph .kx{ font-size:7.4px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:600; margin-top:2px; line-height:1; }
+  .ph .co{ font-size:8.6px; letter-spacing:2px; text-transform:uppercase; font-weight:600; }
+
+  .body{ flex:1; padding:5.5mm 16mm 0; display:flex; flex-direction:column; min-height:0; }
+
+  .sec{ display:flex; align-items:center; gap:9px; margin:0 0 6px; }
+  .sec:not(:first-child){ margin-top:4.5mm; }
+  .sec .bar{ width:14px; height:2px; background:var(--gold); }
+  .sec .tx{ font-size:8.4px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--navy); }
+  .sec .ct{ margin-left:auto; font-size:7.8px; color:var(--muted); }
+
+  p.t{ font-size:10px; line-height:1.6; color:var(--body); }
+  p.t + p.t{ margin-top:5px; }
+  p.t b{ color:var(--navy); font-weight:700; }
+  .lead2{ font-size:10.5px; line-height:1.62; color:var(--body); }
+  .lead2 b{ color:var(--navy); }
+
+  .kpis{ display:grid; gap:7px; }
+  .k4{ grid-template-columns:repeat(4,1fr); } .k3{ grid-template-columns:repeat(3,1fr); }
+  .kpi{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px 12px; position:relative; overflow:hidden; }
+  .kpi::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--line2); }
+  .kpi.a::before{ background:var(--blue); } .kpi.b::before{ background:var(--gold); }
+  .kpi.c::before{ background:var(--gold-dk); } .kpi.d::before{ background:var(--navy); }
+  .kpi.e::before{ background:var(--ok); } .kpi.f::before{ background:var(--red); }
+  .kpi .kl{ font-size:7px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; color:var(--muted); }
+  .kpi .kv{ font-family:'Cormorant Garamond',serif; font-size:23px; font-weight:700; color:var(--navy); line-height:1.1; margin-top:3px; }
+  .kpi .kv small{ font-family:'Inter',sans-serif; font-size:10.5px; font-weight:700; }
+  .kpi .kv.pos{ color:var(--ok); }
+  .kpi .kd{ font-size:7.5px; color:var(--muted); line-height:1.45; margin-top:4px; }
+  .kpi .kd b{ color:var(--navy); }
+
+  table{ width:100%; border-collapse:collapse; background:#fff; }
+  thead th{ background:var(--navy2); color:#fff; font-size:7px; font-weight:600; letter-spacing:.6px;
+    text-transform:uppercase; padding:6px 7px; text-align:left; }
+  thead th.num{ text-align:right; }
+  tbody td{ padding:5px 7px; border-bottom:1px solid var(--line); font-size:8.8px; vertical-align:middle; line-height:1.4; }
+  tbody td.num{ text-align:right; font-variant-numeric:tabular-nums; }
+  tbody td.nm{ font-weight:800; color:var(--navy); }
+  tbody td .fn{ display:block; font-size:7.1px; font-weight:500; color:var(--muted); margin-top:1px; line-height:1.35; }
+  tbody td.sub{ font-weight:800; color:var(--navy); background:#faf7f0; }
+  tbody tr.tot td{ background:var(--navy); color:#fff; font-weight:800; font-size:9.2px; border-bottom:none; padding:6.5px 7px; }
+  tbody tr.tot td.num{ color:var(--gold-soft); }
+  tbody tr.sec2 td{ background:#f1eee6; font-size:7.1px; font-weight:800; letter-spacing:1.4px;
+    text-transform:uppercase; color:var(--navy); padding:4.2px 7px; border-bottom:1px solid var(--line2); }
+  tbody tr.enc td{ background:var(--gold-bg); font-weight:700; color:#7a5b17; border-bottom:none; padding:6.5px 7px; }
+  tbody tr.enc td.num{ color:#7a5b17; font-weight:800; }
+  tbody tr.pos td{ background:#eef5f0; font-weight:800; color:#256b43; border-bottom:none; padding:6.5px 7px; }
+  tbody tr.pos td.num{ color:#256b43; }
+  table.cmp tbody td{ padding:3.9px 7px; font-size:8.5px; }
+  table.cmp tbody tr.tot td{ padding:5.6px 7px; }
+  .dt{ font-size:8px; color:var(--muted); }
+  .badge{ display:inline-block; font-size:6.5px; font-weight:800; letter-spacing:.7px; text-transform:uppercase;
+    padding:1.4px 5px; border-radius:8px; white-space:nowrap; }
+  .b-clt{ background:#eaf1f8; color:var(--blue); } .b-pj{ background:#f3ece1; color:var(--gold-dk); }
+  .b-soc{ background:#e9f2ec; color:var(--ok); } .b-new{ background:#f6edd6; color:#7a5b17; }
+
+  .apur{ background:linear-gradient(150deg,var(--navy) 0%,#0b1a2e 100%); color:#fff; border-radius:8px;
+    overflow:hidden; position:relative; }
+  .apur::after{ content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--gold); }
+  .apur .arow{ display:grid; grid-template-columns:1fr 1fr 1.1fr; }
+  .apur .ac{ padding:11px 16px; position:relative; }
+  .apur .ac + .ac{ border-left:1px solid rgba(255,255,255,.13); }
+  .apur .ac .al{ font-size:7.2px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.5); }
+  .apur .ac .av{ font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:700; line-height:1.05; margin-top:3px; }
+  .apur .ac .ad{ font-size:7.6px; color:rgba(255,255,255,.5); margin-top:3px; line-height:1.45; }
+  .apur .ac.op .av{ color:#e8918d; }
+  .apur .ac.res{ background:rgba(120,190,150,.14); }
+  .apur .ac.res .al{ color:#9fd3b4; } .apur .ac.res .av{ color:#a9dcbf; font-size:30px; }
+  .apur .ac .sign{ position:absolute; left:-8px; top:50%; transform:translateY(-50%); width:16px; height:16px;
+    border-radius:50%; background:var(--navy2); border:1px solid rgba(255,255,255,.2); display:flex;
+    align-items:center; justify-content:center; font-size:9px; font-weight:800; color:var(--gold); z-index:2; }
+  .apur .actx{ border-top:1px solid rgba(255,255,255,.13); padding:9px 16px; display:grid;
+    grid-template-columns:1fr 1fr; gap:14px; }
+  .apur .actx div{ font-size:8.3px; color:rgba(255,255,255,.62); line-height:1.55; }
+  .apur .actx b{ color:#fff; } .apur .actx u{ text-decoration:none; color:var(--gold-soft); font-weight:700; }
+
+  .note{ background:#f6f3ec; border:1px solid var(--line); border-radius:8px; padding:10px 13px; }
+  .note .nt{ font-size:7.2px; letter-spacing:1.4px; text-transform:uppercase; color:var(--navy); font-weight:800; margin-bottom:5px; }
+  .note p{ font-size:8.9px; color:var(--body); line-height:1.55; }
+  .note p + p{ margin-top:4px; }
+  .note b{ color:var(--navy); }
+  .note ul{ margin:0; padding-left:13px; }
+  .note li{ font-size:8.9px; color:var(--body); line-height:1.5; margin-bottom:3px; }
+  .note li:last-child{ margin-bottom:0; }
+  .note li::marker{ color:var(--gold); } .note li b{ color:var(--navy); }
+  .note.warn{ background:#fdf5f4; border-color:#e8cdcb; } .note.warn .nt{ color:var(--red); }
+  .note.warn li::marker{ color:var(--red); }
+  .note.blue{ background:#f2f6fa; border-color:#d3e0ec; } .note.blue .nt{ color:var(--blue); }
+  .note.blue li::marker{ color:var(--blue); }
+  .note.ok{ background:#f3f7f4; border-color:#cadfd2; } .note.ok .nt{ color:var(--ok); }
+  .note.ok li::marker{ color:var(--ok); }
+
+  .two{ display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+  .two-b{ display:grid; grid-template-columns:1.15fr 1fr; gap:7px; }
+  .mt{ margin-top:4.5mm; } .mts{ margin-top:7px; }
+
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:5px 16mm; display:flex;
+    justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf .pl{ font-size:7.2px; color:var(--muted); }
+  .pf .pr{ font-size:8px; color:var(--navy); font-weight:700; letter-spacing:1px; }
+  .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff;
+    border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<!-- ═════════ PÁGINA 1 ═════════ -->
+<section class="sheet">
+  <div class="hero">
+    <div class="brand">
+      <div class="mono">V</div>
+      <div><div class="co">Valvic Marcenaria</div>
+        <div class="cosub">Vargas Decor Ltda &nbsp;·&nbsp; CNPJ 17.269.304/0001-51 &nbsp;·&nbsp; Belo Horizonte / MG</div></div>
+    </div>
+    <div class="kx">Cenário real · agosto e setembro de 2026</div>
+    <h1>Fluxo<br><span>Financeiro</span></h1>
+    <p class="lead">Todo o movimento dos dois meses, com os dois lados abertos: as <b style="color:#fff">entradas
+      por contrato</b> e as <b style="color:#fff">saídas por natureza</b> — folha, estrutura, material, comissões
+      e dívida. Base: lançamentos do sistema financeiro em 08/08/2026.</p>
+    <div class="stamp"><div class="sl">Resultado de caixa · 2 meses</div><div class="sv">+ R$ 120,5 mil</div></div>
+  </div>
+
+  <div class="body">
+    <div class="kpis k4">
+      <div class="kpi a"><div class="kl">Entradas previstas</div><div class="kv"><small>R$</small> 464,0<small> mil</small></div><div class="kd">R$ 231,8k em agosto · R$ 232,2k em setembro</div></div>
+      <div class="kpi f"><div class="kl">Saídas previstas</div><div class="kv"><small>R$</small> 343,6<small> mil</small></div><div class="kd">R$ 180,8k em agosto · R$ 162,7k em setembro</div></div>
+      <div class="kpi e"><div class="kl">Resultado de caixa</div><div class="kv pos"><small>+R$</small> 120,5<small> mil</small></div><div class="kd">+R$ 51,0k em agosto · +R$ 69,5k em setembro</div></div>
+      <div class="kpi c"><div class="kl">Produção a entregar</div><div class="kv"><small>R$</small> 689,1<small> mil</small></div><div class="kd">16 contratos concluídos nos dois meses</div></div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Consolidado dos dois meses</span><span class="ct">valores em reais · base sistema financeiro</span></div>
+    <table>
+      <thead><tr><th style="width:34%">Natureza</th><th class="num" style="width:16%">Agosto</th>
+        <th class="num" style="width:16%">Setembro</th><th class="num" style="width:17%">Dois meses</th>
+        <th class="num" style="width:17%">% das saídas</th></tr></thead>
+      <tbody>
+        <tr class="sec2"><td colspan="5">Entradas</td></tr>
+        <tr><td class="nm">Recebimento de contratos<span class="fn">22 parcelas · R$ 61,2k de agosto já recebidos</span></td>
+          <td class="num sub">231.817</td><td class="num sub">232.209</td><td class="num sub">464.026</td><td class="dt num">—</td></tr>
+        <tr class="sec2"><td colspan="5">Saídas</td></tr>
+        <tr><td class="nm">Folha de pagamento<span class="fn">15 pessoas · salários, pró-labore, benefícios e PJ</span></td>
+          <td class="num">57.786</td><td class="num">62.586</td><td class="num sub">120.372</td><td class="num dt">35,0%</td></tr>
+        <tr><td class="nm">Material de produção<span class="fn">chapa, ferragem, corte e serviços de fábrica</span></td>
+          <td class="num">64.898</td><td class="num">36.463</td><td class="num sub">101.361</td><td class="num dt">29,5%</td></tr>
+        <tr><td class="nm">Comissões de obra<span class="fn">estimativa sobre o valor a entregar</span></td>
+          <td class="num">21.624</td><td class="num">19.724</td><td class="num sub">41.348</td><td class="num dt">12,0%</td></tr>
+        <tr><td class="nm">Custo fixo da estrutura<span class="fn">galpão, energia, contador, software, logística e marketing</span></td>
+          <td class="num">17.280</td><td class="num">14.580</td><td class="num sub">31.861</td><td class="num dt">9,3%</td></tr>
+        <tr><td class="nm">Máquinas, dívida e veículos<span class="fn">parcelas com forma já definida</span></td>
+          <td class="num">12.907</td><td class="num">12.907</td><td class="num sub">25.814</td><td class="num dt">7,5%</td></tr>
+        <tr><td class="nm">RT de parceiros<span class="fn">arquitetas e decoradoras indicantes</span></td>
+          <td class="num">6.343</td><td class="num">16.473</td><td class="num sub">22.815</td><td class="num dt">6,6%</td></tr>
+        <tr class="tot"><td>Total de saídas</td><td class="num">180.838</td><td class="num">162.733</td><td class="num">343.571</td><td class="num">100%</td></tr>
+        <tr class="pos"><td>Resultado de caixa</td><td class="num">+50.979</td><td class="num">+69.476</td><td class="num">+120.455</td><td class="num">26,0% das entradas</td></tr>
+      </tbody>
+    </table>
+
+    <div class="apur mt">
+      <div class="arow">
+        <div class="ac"><div class="al">Entradas previstas</div><div class="av">R$ 464,0 mil</div>
+          <div class="ad">Recebimento dos contratos com conclusão nos dois meses</div></div>
+        <div class="ac op"><div class="sign">−</div><div class="al">Saídas previstas</div><div class="av">R$ 343,6 mil</div>
+          <div class="ad">Folha, material, comissões, estrutura, dívida e RT</div></div>
+        <div class="ac res"><div class="sign">=</div><div class="al">Resultado de caixa</div><div class="av">+ R$ 120,5 mil</div>
+          <div class="ad">Positivo nos dois meses, com sobra crescente em setembro</div></div>
+      </div>
+      <div class="actx">
+        <div><u>A folha é a maior conta, não o material.</u> Pessoas respondem por <b>35% das saídas</b>;
+          material por 29,5%. A estrutura fixa não ligada a pessoas é só <b>9,3%</b> — a operação é enxuta
+          em custo de instalação e pesada em mão de obra qualificada.</div>
+        <div><u>O material dos dois meses já está majoritariamente comprado.</u> Boa parte da chapa e da
+          ferragem dos contratos em conclusão foi adquirida em meses anteriores, e o que vence agora são
+          parcelas — por isso o desembolso cai <b>44% de agosto para setembro</b>.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <div class="pl">Vargas Decor Ltda · CNPJ 17.269.304/0001-51 · Cenário real agosto–setembro/2026</div>
+    <div class="pr">VALVIC <span>·</span> 1 / 3</div>
+  </div>
+</section>
+
+<!-- ═════════ PÁGINA 2 ═════════ -->
+<section class="sheet">
+  <div class="ph">
+    <div><div class="kx">Cenário real · o custo de manter a operação de pé</div><div class="tt">Folha de pagamento e estrutura</div></div>
+    <div class="co">Valvic</div>
+  </div>
+
+  <div class="body">
+    <p class="lead2">As duas contas que <b>existem independentemente de vender</b>. Juntas somam
+    <b>R$ 152,2 mil nos dois meses</b> — 44% de todas as saídas. A folha inclui salário, adiantamento,
+    benefícios e contratos PJ; a estrutura reúne tudo o que sustenta o galpão e o administrativo.</p>
+
+    <div class="sec mt"><span class="bar"></span><span class="tx">Custo fixo da folha de pagamento</span><span class="ct">custo total por pessoa · fixo + benefícios</span></div>
+    <table class="cmp">
+      <thead><tr><th style="width:26%">Pessoa</th><th style="width:30%">Função</th><th style="width:11%">Vínculo</th>
+        <th class="num" style="width:15%">Agosto</th><th class="num" style="width:18%">Setembro</th></tr></thead>
+      <tbody>
+        <tr><td class="nm">Jonathan</td><td>Diretor Comercial &amp; Experiência</td><td><span class="badge b-soc">Sócio</span></td><td class="num">10.000</td><td class="num sub">10.000</td></tr>
+        <tr><td class="nm">Paulo</td><td>Diretor de Operações &amp; Tecnologia</td><td><span class="badge b-soc">Sócio</span></td><td class="num">10.000</td><td class="num sub">10.000</td></tr>
+        <tr><td class="nm">Hugo<span class="fn">entra dia 01/09</span></td><td>Programador</td><td><span class="badge b-clt">CLT</span></td><td class="num dt">—</td><td class="num sub">4.800</td></tr>
+        <tr><td class="nm">Deivson</td><td>Coordenador de Produção</td><td><span class="badge b-pj">PJ</span></td><td class="num">4.000</td><td class="num sub">4.000</td></tr>
+        <tr><td class="nm">Bruna</td><td>Arquiteta · projeto e programação</td><td><span class="badge b-pj">PJ</span></td><td class="num">4.000</td><td class="num sub">4.000</td></tr>
+        <tr><td class="nm">Samuel</td><td>Marceneiro Sênior</td><td><span class="badge b-pj">PJ</span></td><td class="num">3.900</td><td class="num sub">3.900</td></tr>
+        <tr><td class="nm">Cezar</td><td>Marceneiro</td><td><span class="badge b-clt">CLT</span></td><td class="num">3.700</td><td class="num sub">3.700</td></tr>
+        <tr><td class="nm">Jackson</td><td>Marceneiro Pleno</td><td><span class="badge b-pj">PJ</span></td><td class="num">3.600</td><td class="num sub">3.600</td></tr>
+        <tr><td class="nm">Filipe</td><td>Programador CNC</td><td><span class="badge b-pj">PJ</span></td><td class="num">3.600</td><td class="num sub">3.600</td></tr>
+        <tr><td class="nm">Joelson</td><td>Operador CNC &amp; máquinas</td><td><span class="badge b-clt">CLT</span></td><td class="num">3.300</td><td class="num sub">3.300</td></tr>
+        <tr><td class="nm">Karla</td><td>Assistente Operacional</td><td><span class="badge b-clt">CLT</span></td><td class="num">3.050</td><td class="num sub">3.050</td></tr>
+        <tr><td class="nm">Jomar</td><td>Marceneiro</td><td><span class="badge b-clt">CLT</span></td><td class="num">2.750</td><td class="num sub">2.750</td></tr>
+        <tr><td class="nm">Davi</td><td>Ajudante</td><td><span class="badge b-clt">CLT</span></td><td class="num">2.750</td><td class="num sub">2.750</td></tr>
+        <tr><td class="nm">Jonathan Godoy</td><td>Ajudante Geral</td><td><span class="badge b-clt">CLT</span></td><td class="num">2.421</td><td class="num sub">2.421</td></tr>
+        <tr><td class="nm">INSS sobre pró-labore</td><td>Encargo dos sócios · GPS</td><td class="dt">—</td><td class="num">715</td><td class="num sub">715</td></tr>
+        <tr class="tot"><td colspan="3">Total da folha · 14 pessoas em agosto, 15 em setembro</td><td class="num">57.786</td><td class="num">62.586</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Custo fixo da estrutura</span><span class="ct">o que sustenta o galpão e o administrativo</span></div>
+    <table class="cmp">
+      <thead><tr><th style="width:38%">Rubrica</th><th style="width:26%">Natureza</th>
+        <th class="num" style="width:18%">Agosto</th><th class="num" style="width:18%">Setembro</th></tr></thead>
+      <tbody>
+        <tr><td class="nm">Aluguel do galpão</td><td class="dt">Instalações</td><td class="num">4.980</td><td class="num sub">4.980</td></tr>
+        <tr><td class="nm">Marketing e publicidade<span class="fn">tráfego pago + social media</span></td><td class="dt">Comercial</td><td class="num">2.300</td><td class="num sub">2.300</td></tr>
+        <tr><td class="nm">Energia elétrica</td><td class="dt">Instalações</td><td class="num">1.500</td><td class="num sub">1.500</td></tr>
+        <tr><td class="nm">Software e licenças</td><td class="dt">Administrativo</td><td class="num">1.430</td><td class="num sub">1.130</td></tr>
+        <tr><td class="nm">Combustível</td><td class="dt">Logística</td><td class="num">750</td><td class="num sub">1.000</td></tr>
+        <tr><td class="nm">Honorários contábeis</td><td class="dt">Administrativo</td><td class="num">700</td><td class="num sub">700</td></tr>
+        <tr><td class="nm">Lanches e refeições da equipe</td><td class="dt">Produção</td><td class="num">600</td><td class="num sub">800</td></tr>
+        <tr><td class="nm">Limpeza</td><td class="dt">Instalações</td><td class="num">600</td><td class="num sub">600</td></tr>
+        <tr><td class="nm">Manutenção predial e de equipamentos</td><td class="dt">Instalações</td><td class="num">1.135</td><td class="num sub">—</td></tr>
+        <tr><td class="nm">Materiais de escritório<span class="fn">cadeiras — aquisição pontual</span></td><td class="dt">Administrativo</td><td class="num">1.265</td><td class="num sub">—</td></tr>
+        <tr><td class="nm">Vigilância e segurança</td><td class="dt">Instalações</td><td class="num">390</td><td class="num sub">390</td></tr>
+        <tr><td class="nm">Viagens e representações</td><td class="dt">Comercial</td><td class="num">370</td><td class="num sub">370</td></tr>
+        <tr><td class="nm">Seguros de veículos</td><td class="dt">Logística</td><td class="num">255</td><td class="num sub">255</td></tr>
+        <tr><td class="nm">Demais rubricas<span class="fn">água, telefonia, lixo, seguro de vida, cursos, transporte urbano, carretos</span></td><td class="dt">Diversos</td><td class="num">1.006</td><td class="num sub">556</td></tr>
+        <tr class="tot"><td colspan="2">Total da estrutura</td><td class="num">17.280</td><td class="num">14.580</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note ok mt"><div class="nt">O que este quadro diz</div>
+      <p>O custo fixo real da operação é de <b>R$ 75,1 mil em agosto e R$ 77,2 mil em setembro</b>
+      (folha + estrutura). Desse total, <b>81% é gente</b> — e apenas 19% é instalação, administrativo e
+      logística. É uma estrutura de baixo custo fixo de ocupação para a capacidade que opera.</p>
+      A variação entre os meses vem de <b>itens pontuais em agosto</b> (cadeiras e manutenções, R$ 2,4 mil)
+      e da <b>entrada do Hugo em setembro</b> (R$ 4,8 mil).</p></div>
+  </div>
+
+  <div class="pf">
+    <div class="pl">Cenário real agosto–setembro/2026 · dado de remuneração · uso restrito</div>
+    <div class="pr">VALVIC <span>·</span> 2 / 3</div>
+  </div>
+</section>
+
+<!-- ═════════ PÁGINA 3 ═════════ -->
+<section class="sheet">
+  <div class="ph">
+    <div><div class="kx">Cenário real · o que varia com a venda</div><div class="tt">Comissões, RT e compromissos</div></div>
+    <div class="co">Valvic</div>
+  </div>
+
+  <div class="body">
+    <p class="lead2">Ao contrário da folha e da estrutura, estas contas <b>só existem quando há entrega</b>.
+    São calculadas sobre o valor dos contratos concluídos no período — e por isso crescem junto com a
+    produção, sem pesar nos meses fracos.</p>
+
+    <div class="sec mt"><span class="bar"></span><span class="tx">Comissões de obra</span><span class="ct">estimativa sobre o valor a entregar</span></div>
+    <table>
+      <thead><tr><th style="width:36%">Base e alíquota</th><th class="num" style="width:21%">Agosto</th>
+        <th class="num" style="width:21%">Setembro</th><th class="num" style="width:22%">Dois meses</th></tr></thead>
+      <tbody>
+        <tr><td class="nm">Valor a entregar<span class="fn">contratos com conclusão prevista no mês</span></td><td class="num">360.400</td><td class="num">328.738</td><td class="num sub">689.138</td></tr>
+        <tr><td class="nm">Fabricação · 2,5%</td><td class="num">9.010</td><td class="num">8.218</td><td class="num sub">17.228</td></tr>
+        <tr><td class="nm">Montagem · 2,5%</td><td class="num">9.010</td><td class="num">8.218</td><td class="num sub">17.228</td></tr>
+        <tr><td class="nm">Coordenação · 1,0%</td><td class="num">3.604</td><td class="num">3.287</td><td class="num sub">6.891</td></tr>
+        <tr class="tot"><td>Comissão estimada · 6,0%</td><td class="num">21.624</td><td class="num">19.724</td><td class="num">41.348</td></tr>
+      </tbody>
+    </table>
+    <div class="note blue mts"><div class="nt">Como ler esta estimativa</div>
+      <p>A comissão é paga <b>por profissional e por etapa executada</b> — 2,5% a quem fabrica, 2,5% a quem
+      monta, mais 1,0% de coordenação. Ajudantes, programadores e parte dos marceneiros não recebem comissão,
+      de modo que <b>6,0% é o teto</b>: o valor efetivo tende a ficar abaixo disso. Parte das etapas destes
+      contratos foi executada em meses anteriores e já foi paga — <b>R$ 5,6 mil já estão lançados em agosto</b>.</p></div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">RT de parceiros</span><span class="ct">arquitetas e decoradoras indicantes</span></div>
+    <table>
+      <thead><tr><th style="width:56%">Composição</th><th class="num" style="width:22%">Agosto</th><th class="num" style="width:22%">Setembro</th></tr></thead>
+      <tbody>
+        <tr><td class="nm">RT com parcelas já contratadas<span class="fn">Paula Galante, Paula, Luana Rizzi, Ana Maria, Bruna Rezende, Rubia</span></td><td class="num">6.343</td><td class="num sub">14.773</td></tr>
+        <tr><td class="nm">RT a formalizar<span class="fn">um projeto de setembro, ainda sem lançamento</span></td><td class="num dt">—</td><td class="num sub">1.700</td></tr>
+        <tr class="tot"><td>Total de RT</td><td class="num">6.343</td><td class="num">16.473</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Máquinas, dívida e veículos</span><span class="ct">parcelas com forma já definida</span></div>
+    <table>
+      <thead><tr><th style="width:56%">Compromisso</th><th class="num" style="width:22%">Agosto</th><th class="num" style="width:22%">Setembro</th></tr></thead>
+      <tbody>
+        <tr><td class="nm">Router CNC<span class="fn">Raizem</span></td><td class="num">3.750</td><td class="num sub">3.750</td></tr>
+        <tr><td class="nm">Conta garantia<span class="fn">capital de giro · parcelas 1 e 2 de 6</span></td><td class="num">3.320</td><td class="num sub">3.320</td></tr>
+        <tr><td class="nm">Esquadrejadeira<span class="fn">Raizen · parcelas 11 e 12 de 14</span></td><td class="num">2.346</td><td class="num sub">2.346</td></tr>
+        <tr><td class="nm">Financiamento do veículo<span class="fn">Montana</span></td><td class="num">1.500</td><td class="num sub">1.500</td></tr>
+        <tr><td class="nm">Consórcio imobiliário</td><td class="num">1.090</td><td class="num sub">1.090</td></tr>
+        <tr><td class="nm">Equipamentos parcelados<span class="fn">computador, etiquetadora, carrinho, furador, tablet</span></td><td class="num">901</td><td class="num sub">901</td></tr>
+        <tr class="tot"><td>Total de compromissos</td><td class="num">12.907</td><td class="num">12.907</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Base e ressalvas</span></div>
+    <div class="two">
+      <div class="note"><div class="nt">De onde vem cada número</div>
+        <ul>
+          <li><b>Fonte.</b> Lançamentos do sistema financeiro em <b>08/08/2026</b>, contas a pagar e a receber, por data de vencimento. Agosto cobre de 03 a 30; setembro, de 02 a 30.</li>
+          <li><b>Material.</b> Ao lançado somou-se <b>R$ 15 mil por mês</b> de compra ainda não registrada, para cobrir o que falta produzir.</li>
+          <li><b>Comissões.</b> Estimadas à alíquota cheia de 6% sobre o valor a entregar, e não pelo lançado.</li>
+        </ul></div>
+      <div class="note warn"><div class="nt">O que pode mover o resultado</div>
+        <ul>
+          <li><b>Compra de material acima do previsto.</b> Cada R$ 10 mil a mais reduz o resultado na mesma medida. Seria preciso <b>R$ 120,5 mil adicionais</b> para zerar os dois meses.</li>
+          <li><b>Setembro tem menos lançamentos que agosto.</b> 13 notas de material contra 22, e nenhum item eventual (manutenção, frete, corte extra) — cerca de <b>R$ 3,3 mil</b> por equivalência com agosto. O mês tende a subir conforme for lançado.</li>
+          <li><b>Atraso de recebimento.</b> R$ 232,2 mil concentram-se na última semana de setembro.</li>
+          <li><b>André / Alphaville — R$ 87 mil</b> entregue, com cobrança em aberto e <b>fora deste fluxo</b>.</li>
+        </ul></div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <div class="pl">Base: sistema financeiro em 08/08/2026 · valores em reais</div>
+    <div class="pr">VALVIC <span>·</span> 3 / 3</div>
+  </div>
+</section>
+</body>
+</html>
