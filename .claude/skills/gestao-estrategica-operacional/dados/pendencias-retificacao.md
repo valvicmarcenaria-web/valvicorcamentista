@@ -84,6 +84,27 @@ Substitui integralmente a posição anterior. **Leonardo saiu da carteira; Jairo
 vão a R$ 166.889; resultado de caixa fica em **+R$ 50.979 em agosto, +R$ 65.320 em setembro, +R$ 116.299
 nos dois meses**.
 
+## G · Fluxo de caixa — leitura de 08/08 (3ª foto)
+
+| | Valor |
+|---|---|
+| Total a receber | **R$ 402 mil** |
+| Total a pagar | **R$ 260 mil** |
+| **Saldo do fluxo** | **+R$ 142 mil** |
+
+- **O "402" bate exatamente com o sistema** — R$ 402.858 de contas a receber em aberto nos dois meses.
+- ⚠️ **O "260" não bate.** O extrato de 08/08 dá **R$ 245.357** de contas a pagar em aberto
+  (não pago + vencido), o que levaria o saldo a R$ 157.501. **Diferença de R$ 14,6 mil a esclarecer.**
+  O documento usa o R$ 260 mil do Jonathan; a composição foi montada como
+  folha R$ 120.372 + estrutura R$ 31.861 + material/comissões/compromissos R$ 107.767 = R$ 260.000.
+- **Demanda de material estimada:** R$ 120 mil em agosto + R$ 80 mil em setembro = **R$ 200 mil**.
+  Estimativa da direção, não levantamento por projeto (ver A6).
+- **Saldo da carteira menos material:** R$ 439,4 − R$ 200 = **R$ 239,4 mil**.
+- **Pontos de atenção:** R$ 71 mil de aporte já consumido · R$ 30 mil de passivo trabalhista ·
+  R$ 87 mil a receber sem data (André / Alphaville).
+- O passivo trabalhista aparece como **R$ 30 mil** nesta leitura; o cálculo detalhado fechou em
+  **R$ 28.691**. Arredondamento, não divergência.
+
 ## E · Decisões de apresentação (documento do Walton)
 
 - **Correções do rascunho manuscrito** não constam do documento, a pedido — o PDF apresenta os números já certos.

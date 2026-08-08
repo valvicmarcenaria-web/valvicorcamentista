@@ -122,6 +122,16 @@
   .apur .actx div{ font-size:8.3px; color:rgba(255,255,255,.62); line-height:1.55; }
   .apur .actx b{ color:#fff; } .apur .actx u{ text-decoration:none; color:var(--gold-soft); font-weight:700; }
 
+  .cards{ display:grid; gap:7px; }
+  .c2{ grid-template-columns:repeat(2,1fr); } .c3{ grid-template-columns:repeat(3,1fr); }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px 12px; }
+  .card .ct2{ font-size:7.1px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:var(--gold-dk); }
+  .card .cv{ font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700; color:var(--navy);
+    line-height:1.15; margin-top:2px; }
+  .card p{ font-size:8.7px; color:var(--body); line-height:1.55; margin-top:5px; }
+  .card p b{ color:var(--navy); }
+  .card.warn{ background:#fdf5f4; border-color:#e8cdcb; }
+  .card.warn .ct2{ color:var(--red); } .card.warn .cv{ color:var(--red); }
   .note{ background:#f6f3ec; border:1px solid var(--line); border-radius:8px; padding:10px 13px; }
   .note .nt{ font-size:7.2px; letter-spacing:1.4px; text-transform:uppercase; color:var(--navy); font-weight:800; margin-bottom:5px; }
   .note p{ font-size:8.9px; color:var(--body); line-height:1.55; }
@@ -234,72 +244,81 @@
 <!-- ═════════ PÁGINA 2 ═════════ -->
 <section class="sheet">
   <div class="ph">
-    <div><div class="kx">Cenário real · os dois lados do fluxo</div><div class="tt">Entradas, saídas e resultado</div></div>
+    <div><div class="kx">Contexto atual · agosto e setembro</div><div class="tt">Fluxo de caixa</div></div>
     <div class="co">Valvic</div>
   </div>
 
   <div class="body">
     <div class="kpis k4">
-      <div class="kpi a"><div class="kl">Entradas previstas</div><div class="kv"><small>R$</small> 464,0<small> mil</small></div><div class="kd">R$ 231,8k em agosto · R$ 232,2k em setembro</div></div>
-      <div class="kpi f"><div class="kl">Saídas previstas</div><div class="kv"><small>R$</small> 347,7<small> mil</small></div><div class="kd">R$ 180,8k em agosto · R$ 166,9k em setembro</div></div>
-      <div class="kpi e"><div class="kl">Resultado de caixa</div><div class="kv pos"><small>+R$</small> 116,3<small> mil</small></div><div class="kd"><b>Teto</b> — cai conforme entrar a compra de material ainda não dimensionada</div></div>
-      <div class="kpi c"><div class="kl">Falta produzir</div><div class="kv"><small>R$</small> 497,1<small> mil</small></div><div class="kd">66% da carteira de R$ 758,4k ainda por fabricar</div></div>
+      <div class="kpi a"><div class="kl">Total a receber</div><div class="kv"><small>R$</small> 402<small> mil</small></div><div class="kd">Parcelas em aberto com vencimento nos dois meses</div></div>
+      <div class="kpi f"><div class="kl">Total a pagar</div><div class="kv"><small>R$</small> 260<small> mil</small></div><div class="kd">Folha, estrutura, material e compromissos</div></div>
+      <div class="kpi e"><div class="kl">Saldo do período</div><div class="kv pos"><small>+R$</small> 142<small> mil</small></div><div class="kd">Antes da compra de material ainda a fazer</div></div>
+      <div class="kpi c"><div class="kl">Demanda a produzir</div><div class="kv"><small>R$</small> 497<small> mil</small></div><div class="kd">66% da carteira de R$ 758,4 mil</div></div>
     </div>
 
-    <div class="sec"><span class="bar"></span><span class="tx">Consolidado por natureza</span><span class="ct">base: sistema financeiro em 08/08/2026</span></div>
+    <div class="apur mt">
+      <div class="arow">
+        <div class="ac"><div class="al">Total a receber</div><div class="av">R$ 402 mil</div>
+          <div class="ad">Todas as parcelas em aberto que vencem em agosto e setembro</div></div>
+        <div class="ac op"><div class="sign">−</div><div class="al">Total a pagar</div><div class="av">R$ 260 mil</div>
+          <div class="ad">Tudo o que está lançado para vencer no mesmo período</div></div>
+        <div class="ac res"><div class="sign">=</div><div class="al">Saldo do fluxo</div><div class="av">+ R$ 142 mil</div>
+          <div class="ad">Folga do período, com o que está lançado hoje</div></div>
+      </div>
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Composição do total a pagar</span><span class="ct">R$ 260 mil nos dois meses</span></div>
     <table>
-      <thead><tr><th style="width:34%">Natureza</th><th class="num" style="width:16%">Agosto</th>
-        <th class="num" style="width:16%">Setembro</th><th class="num" style="width:17%">Dois meses</th>
-        <th class="num" style="width:17%">% das saídas</th></tr></thead>
+      <thead><tr><th style="width:44%">Bloco</th><th class="num" style="width:20%">Dois meses</th>
+        <th class="num" style="width:14%">Peso</th><th style="width:22%">Natureza</th></tr></thead>
       <tbody>
-        <tr class="sec2"><td colspan="5">Entradas</td></tr>
-        <tr><td class="nm">Recebimento de contratos<span class="fn">22 parcelas · R$ 61,2k de agosto já recebidos</span></td>
-          <td class="num sub">231.817</td><td class="num sub">232.209</td><td class="num sub">464.026</td><td class="dt num">—</td></tr>
-        <tr class="sec2"><td colspan="5">Saídas</td></tr>
         <tr><td class="nm">Folha de pagamento<span class="fn">15 pessoas · salários, pró-labore, benefícios e PJ</span></td>
-          <td class="num">57.786</td><td class="num">62.586</td><td class="num sub">120.372</td><td class="num dt">34,6%</td></tr>
-        <tr><td class="nm">Material de produção<span class="fn">chapa, ferragem, corte e serviços de fábrica</span></td>
-          <td class="num">64.898</td><td class="num">36.463</td><td class="num sub">101.361</td><td class="num dt">29,1%</td></tr>
-        <tr><td class="nm">Comissões de obra<span class="fn">estimativa sobre o valor a entregar</span></td>
-          <td class="num">21.624</td><td class="num">23.880</td><td class="num sub">45.504</td><td class="num dt">13,1%</td></tr>
+          <td class="num sub">120.372</td><td class="num dt">46,3%</td><td class="dt">Fixo</td></tr>
+        <tr><td class="nm">Material, comissões e compromissos<span class="fn">material lançado, RT de parceiros, comissões de obra, máquinas e dívida</span></td>
+          <td class="num sub">107.767</td><td class="num dt">41,4%</td><td class="dt">Variável e parcelado</td></tr>
         <tr><td class="nm">Custo fixo da estrutura<span class="fn">galpão, energia, contador, software, logística e marketing</span></td>
-          <td class="num">17.280</td><td class="num">14.580</td><td class="num sub">31.861</td><td class="num dt">9,2%</td></tr>
-        <tr><td class="nm">Máquinas, dívida e veículos<span class="fn">parcelas com forma já definida</span></td>
-          <td class="num">12.907</td><td class="num">12.907</td><td class="num sub">25.814</td><td class="num dt">7,4%</td></tr>
-        <tr><td class="nm">RT de parceiros<span class="fn">arquitetas e decoradoras indicantes</span></td>
-          <td class="num">6.343</td><td class="num">16.473</td><td class="num sub">22.815</td><td class="num dt">6,6%</td></tr>
-        <tr class="tot"><td>Total de saídas</td><td class="num">180.838</td><td class="num">166.889</td><td class="num">347.727</td><td class="num">100%</td></tr>
-        <tr class="pos"><td>Resultado de caixa</td><td class="num">+50.979</td><td class="num">+65.320</td><td class="num">+116.299</td><td class="num">25,1% das entradas</td></tr>
+          <td class="num sub">31.861</td><td class="num dt">12,3%</td><td class="dt">Fixo</td></tr>
+        <tr class="tot"><td>Total a pagar</td><td class="num">260.000</td><td class="num">100%</td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">Demanda de material estimada</span><span class="ct">o que ainda precisa ser comprado</span></div>
+    <table>
+      <thead><tr><th style="width:44%">Período</th><th class="num" style="width:20%">Estimativa</th><th style="width:36%">Base</th></tr></thead>
+      <tbody>
+        <tr><td class="nm">Agosto</td><td class="num sub">120.000</td><td class="dt">Produção a executar no mês: R$ 185,9 mil</td></tr>
+        <tr><td class="nm">Setembro</td><td class="num sub">80.000</td><td class="dt">Produção a executar no mês: R$ 311,2 mil</td></tr>
+        <tr class="enc"><td>Demanda total de material</td><td class="num">200.000</td><td class="dt" style="color:#96803f">Estimativa da direção · não é levantamento por projeto</td></tr>
       </tbody>
     </table>
 
     <div class="apur mt">
       <div class="arow">
-        <div class="ac"><div class="al">Entradas previstas</div><div class="av">R$ 464,0 mil</div>
-          <div class="ad">Todas as parcelas com vencimento nos dois meses</div></div>
-        <div class="ac op"><div class="sign">−</div><div class="al">Saídas previstas</div><div class="av">R$ 347,7 mil</div>
-          <div class="ad">Folha, material, comissões, estrutura, dívida e RT</div></div>
-        <div class="ac res"><div class="sign">=</div><div class="al">Resultado de caixa</div><div class="av">+ R$ 116,3 mil</div>
-          <div class="ad">Positivo nos dois meses, com sobra maior em setembro</div></div>
-      </div>
-      <div class="actx">
-        <div><u>Do que está lançado, a maior conta é gente.</u> Pessoas respondem por <b>35% das saídas</b>
-          e a estrutura fixa não ligada a pessoas por apenas <b>9,3%</b> — a operação é enxuta em custo de
-          instalação e pesada em mão de obra qualificada.</div>
-        <div><u>O material ainda a comprar é a incógnita deste quadro.</u> O que já foi adquirido mistura
-          obras entregues e obras a executar, sem rastreio por projeto. <b>Ainda será preciso comprar para
-          concluir os dois meses, em volume que hoje não se sabe</b> — o resultado acima é um <b>teto</b>.</div>
+        <div class="ac"><div class="al">Saldo a receber da carteira</div><div class="av">R$ 439,4 mil</div>
+          <div class="ad">Dos 17 contratos em conclusão nos dois meses</div></div>
+        <div class="ac op"><div class="sign">−</div><div class="al">Demanda de material</div><div class="av">R$ 200 mil</div>
+          <div class="ad">Compra necessária para concluir a produção</div></div>
+        <div class="ac res"><div class="sign">=</div><div class="al">Sobra após o material</div><div class="av">R$ 239,4 mil</div>
+          <div class="ad">Antes de folha, estrutura e compromissos do período</div></div>
       </div>
     </div>
 
-    <div class="note blue mt"><div class="nt">Por que as entradas somam mais do que o saldo da página 1</div>
-      <p>O saldo de <b>R$ 439,4 mil</b> é o que falta receber dos <b>17 contratos em conclusão</b>. As entradas
-      de <b>R$ 464,0 mil</b> são <b>todas as parcelas que vencem no período</b> — incluem R$ 61,2 mil já
-      recebidos em agosto e parcelas cujo vencimento cai fora do mês de conclusão do contrato.</p></div>
+    <div class="sec"><span class="bar"></span><span class="tx">Pontos de atenção</span><span class="ct">fora do fluxo dos dois meses</span></div>
+    <div class="cards c3">
+      <div class="card warn"><div class="ct2">Aporte já consumido</div><div class="cv">R$ 71 mil</div>
+        <p>Parcela do primeiro aporte usada para <b>cobrir o déficit de caixa de julho</b>. Não foi aplicada em
+        máquina, estrutura ou expansão.</p></div>
+      <div class="card warn"><div class="ct2">Passivo trabalhista</div><div class="cv">R$ 30 mil</div>
+        <p>Verbas e encargos dos seis desligamentos já ocorridos, <b>fora do fluxo acima</b>. Perímetro e memória
+        de cálculo em documento próprio.</p></div>
+      <div class="card"><div class="ct2">A receber sem data</div><div class="cv">R$ 87 mil</div>
+        <p>Projeto <b>André / Alphaville</b>, entregue e com cobrança integralmente em aberto. <b>Não entra em
+        nenhum dos dois meses.</b></p></div>
+    </div>
   </div>
 
   <div class="pf">
-    <div class="pl">Cenário real agosto–setembro/2026 · base sistema financeiro</div>
+    <div class="pl">Contexto atual agosto–setembro/2026 · base sistema financeiro em 08/08</div>
     <div class="pr">VALVIC <span>·</span> 2 / 4</div>
   </div>
 </section>
