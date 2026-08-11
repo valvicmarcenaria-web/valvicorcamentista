@@ -112,52 +112,72 @@ layout do folder do Apto CJ (`/tmp/css_premium.txt`).
 | Cozinha · bancada | 52.400 |
 | Closet do casal | 36.700 |
 | **Tabela** | **127.850** |
-| Desconto especial · 15% | −19.177,50 |
-| **TOTAL** | **R$ 108.672,50** |
+| Desconto especial · 12% | −15.342,00 |
+| **TOTAL** | **R$ 112.508,00** |
 
-**5 × R$ 21.734,50** — fechamento · 60 dias · início da montagem · entrega final ·
-**após a entrega da obra**. Ferragens **100% Blum** · garantia **20 anos** ·
-entrega **90 a 120 dias** · validade **sexta, 14/08/2026** (emitida terça, 11 —
-janela de 3 dias).
+**Pagamento 20 · 20 · 20 · 40** — fechamento · 60 dias · início das montagens ·
+**entrega final**. Três de R$ 22.501,60 e a última de **R$ 45.003,20**.
+Ferragens **Blum** · garantia **20 anos** · entrega **90 a 120 dias** ·
+validade **sexta, 14/08/2026** (emitida terça, 11 — janela de 3 dias).
 
 ## As 8 páginas
 capa (colagem) · **a oportunidade** (página escura, as 4 alavancas + faixa de preço) ·
-**ferragem 100% Blum** (3 SVGs de mecanismo) · lavanderias e corredor · cozinha ·
+**ferragem Blum** (3 SVGs de mecanismo) · lavanderias e corredor · cozinha ·
 closet · construção (espessuras cotadas) · investimento.
+
+## 2ª rodada de ajustes [Jonathan 11/08]
+
+| | De | Para |
+|---|---|---|
+| Desconto | 15% | **12%** |
+| Parcelas | 5 × 20% | **20 · 20 · 20 · 40** |
+| Corrediça | MOVENTO | **TANDEM com BLUMOTION** |
+| Armário do corredor | — | **sem Blum** |
+
+> ⚠️ **"Última parcela com os 40% restantes" não disse em qual marco.** Adotei
+> **ENTREGA FINAL** — a parcela pós-obra sai do contrato. Leitura conservadora: os
+> 40% ficam amarrados à nossa entrega, não ao cronograma de obra do cliente. Se a
+> intenção era manter o marco pós-obra, é trocar uma linha em `PARCELAS`.
+
+### O armário do corredor não leva Blum — e isso é construtivo, não corte
+As portas de espelho correm na **esquadria de alumínio**, que tem sistema próprio.
+Não há ferragem Blum a aplicar ali. A proposta diz isso em três lugares (descritivo
+do item, página da ferragem e nota de inclusos) e o selo da capa deixou de dizer
+"100% Blum" — passou a dizer só **"Blum"**.
+
+> **Aprendizado:** um selo de "100% X" na capa vira dívida na hora em que aparece
+> a exceção. Nomear a exceção custa uma linha; ser pego custa a confiança da peça.
 
 ## ⛔ O QUE EU NÃO CONSIGO GARANTIR
 
 **Não existe levantamento para este job.** Não há `corte-nadia.py`, não há plano de
-corte, não há MC conferida — os valores vieram prontos do `nadia_v3.pdf`. Agora há
-**três compressões empilhadas** sobre um número que não posso auditar: o desconto de
-15%, o upgrade para 100% Blum e o alongamento do recebimento.
+corte, não há MC conferida — os valores vieram prontos do `nadia_v3.pdf`.
 
-### O que o desconto de 15% custa, em pontos de MC
+### O que o desconto custa, em pontos de MC
+`div_novo = div_antigo / (1 − desconto)` — a receita cai, o custo não.
 
-`div_novo = div_antigo / 0,85` — a receita cai 15%, o custo não.
+| MC de partida | após −15% *(1ª rodada)* | após −12% *(atual)* |
+|--:|--:|--:|
+| 30% | 21,2% ⛔ | **23,2%** ⛔ |
+| 35% | 27,1% ⛔ | **28,9%** |
+| 40% | 32,9% | **34,5%** |
+| 45% | 38,8% | **40,2%** |
 
-| MC de partida | MC depois do −15% |
-|--:|--:|
-| 30% | **21,2%** ⛔ |
-| 35% | **27,1%** ⛔ |
-| 40% | 32,9% |
-| 45% | 38,8% |
+> **Para sobrar 28% (o piso da casa), o job precisava ter sido precificado a no
+> mínimo MC 34,2%** — era 35,8% com os 15%. Os três pontos de desconto a menos
+> compraram 1,6 ponto de folga.
 
-> **Para sobrar 28% (o piso da casa) depois do desconto, este job precisava ter sido
-> precificado a no mínimo MC 35,8%. E isso ANTES do Blum.**
+### As duas mudanças aliviaram a exposição
+- **TANDEM em vez de MOVENTO** é a corrediça oculta clássica da Blum, bem abaixo da
+  MOVENTO no custo. Mesma família, mesmo argumento de mecanismo (undermount,
+  extração total, BLUMOTION).
+- **Sai a parcela pós-obra.** Os R$ 45.003,20 passam a vencer na **nossa** entrega,
+  numa data que controlamos.
 
-### E o Blum é custo por cima disso
-
-No documento de origem, a diferença entre as colunas *com* e *sem* ferragens era
-**R$ 23.450** — é a linha inteira de ferragem, a preço de venda. Trocar uma
-especificação mista por **100% Blum** sobe esse custo de forma relevante, e sem
-contagem de ferragem eu não sei quanto. Cada R$ 10 mil de custo a mais tira ~9
-pontos de MC sobre os R$ 108.672,50.
-
-### O 5º pagamento
-
-20% = **R$ 21.734,50** entram **depois da entrega da obra** — uma data que não é
-nossa. É a parcela mais exposta do contrato.
+Continua valendo: o Blum é custo por cima de um número não auditado. No documento de
+origem a diferença entre as colunas *com* e *sem* ferragens era **R$ 23.450**, a
+preço de venda. Cada R$ 10 mil de custo a mais tira ~9 pontos de MC sobre os
+R$ 112.508.
 
 ## Como a garantia de 20 anos foi tratada
 
@@ -174,3 +194,4 @@ exatamente como a referência manda.
 1. **Levantamento.** É o que resolveria tudo acima. Proposto ao Jonathan.
 2. **Lavanderia superior** — a célula em branco do documento de origem. A proposta já
    declara que o valor é revisto se a medida diferir.
+3. **O marco da parcela de 40%** — entrega final (adotado) ou pós-obra.

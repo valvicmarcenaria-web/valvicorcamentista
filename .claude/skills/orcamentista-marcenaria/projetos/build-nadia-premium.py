@@ -5,20 +5,28 @@
   · layout do folder do Apto CJ (`build-apto-cj-folder.py`), 8 páginas
   · escopo: as DUAS lavanderias · armário do corredor (hall dos dormitórios) ·
     cozinha SEM o painel de TV · closet do casal
-  · ferragens 100% BLUM · garantia 20 anos · entrega 90 a 120 dias
-  · pagamento 5 × 20% (fechamento · 60 dias · início da montagem · entrega final ·
-    após a entrega da obra)
-  · 15% de desconto
+  · ferragens BLUM · garantia 20 anos · entrega 90 a 120 dias
+  · pagamento 20 · 20 · 20 · 40 (fechamento · 60 dias · início da montagem ·
+    ENTREGA FINAL) — some a parcela pós-obra
+  · 12% de desconto
   · validade: sexta-feira, 14 de agosto de 2026 (hoje é terça, 11 — janela de 3 dias)
   · deixar claro que é um momento estratégico e uma grande oportunidade
 
 VALORES — coluna COM FERRAGENS do `nadia_v3.pdf`, menos o painel de TV:
-  130.100 − 2.250 = 127.850 de tabela → −15% = 108.672,50 → 5 × 21.734,50
+  130.100 − 2.250 = 127.850 de tabela → −12% = 112.508,00
+  3 × 22.501,60 (20%) + 1 × 45.003,20 (40%)
+
+[Jonathan 11/08, 2ª rodada] desconto 15% → 12% · corrediça MOVENTO → TANDEM ·
+  última parcela leva os 40% restantes · e o ARMÁRIO DO CORREDOR NÃO TEM BLUM
+  (as portas de espelho correm no sistema da própria esquadria de alumínio).
+  ⚠️ "última parcela com os 40% restantes" não disse em qual marco. Adotei
+     ENTREGA FINAL — a parcela pós-obra some. Se for para manter o marco
+     pós-obra, é trocar uma linha em PARCELAS.
 
 ⚠️ NÃO HÁ LEVANTAMENTO PARA ESTE JOB. Os valores vieram prontos do documento de
    origem — não existe `corte-nadia.py`, não há plano de corte nem MC conferida.
    Três compressões estão empilhadas sobre um número que não consigo auditar:
-   o desconto de 15%, o upgrade para 100% Blum e o alongamento do recebimento.
+   o desconto de 12%, o upgrade para Blum e o alongamento do recebimento.
    Está tudo escrito no dossiê `2026-nadia-maurilio.md`.
 
 ⚠️ GARANTIA — `referencias/ferragens.md` proíbe vender ferragem POR GARANTIA
@@ -53,10 +61,11 @@ ITENS = [
  ('Armário do corredor', 'Hall dos dormitórios',
   'Estrutura interna e acabamento externo em <b>MDF Areia Guararapes</b> · portas de '
   '<b>espelho prata</b> em esquadria de <b>alumínio</b> — o perfil acompanha o tom do '
-  'espelho, não o contraria.', 6300),
+  'espelho, não o contraria. <i>Único conjunto sem ferragem Blum: as portas correm no '
+  'próprio sistema da esquadria de alumínio.</i>', 6300),
  ('Cozinha · ilha e geladeiras', '',
   'Estrutura interna e externa em <b>MDF Areia</b> · puxadores em cava com perfil · '
-  '<b>ilha de 2,80 m</b> · gavetas em <b>Blum MOVENTO com BLUMOTION</b>.', 15100),
+  '<b>ilha de 2,80 m</b> · gavetas em <b>Blum TANDEM com BLUMOTION</b>.', 15100),
  ('Cozinha · cristaleira', '',
   'Cores conforme projeto · <b>3 portas de vidro reflecta bronze</b> em esquadria de '
   'alumínio bronze · prateleiras de vidro incolor temperado de 8 mm · puxadores em cava '
@@ -65,37 +74,39 @@ ITENS = [
   'Armários aéreos e inferiores com estrutura em <b>MDF Areia</b> · cores externas conforme '
   'projeto · básculas em <b>MDF amadeirado</b> interno e externo · puxadores inferiores em '
   'cava com <b>perfil Rometal RM280</b> e superiores passantes · básculas em '
-  '<b>Blum AVENTOS HK-S</b> · gavetas em <b>Blum MOVENTO</b>.', 52400),
+  '<b>Blum AVENTOS HK-S</b> · gavetas em <b>Blum TANDEM</b>.', 52400),
  ('Closet do casal', 'Suíte master · versão 2',
   'Estrutura completa em <b>MDF Areia</b> · gavetas com puxadores espaçados e '
-  '<b>Blum MOVENTO com BLUMOTION</b> · <b>cabideiros metálicos</b> · sem a cômoda.', 36700),
+  '<b>Blum TANDEM com BLUMOTION</b> · <b>cabideiros metálicos</b> · sem a cômoda.', 36700),
 ]
 TABELA   = sum(i[3] for i in ITENS)
-DESC_PCT = 0.15
+DESC_PCT = 0.12
 DESCONTO = round(TABELA*DESC_PCT, 2)
 TOTAL    = round(TABELA - DESCONTO, 2)
-PARCELA  = round(TOTAL/5, 2)
+P20      = round(TOTAL*0.20, 2)
+P40      = round(TOTAL*0.40, 2)
 assert TABELA == 127850, TABELA
-assert DESCONTO == 19177.50 and TOTAL == 108672.50 and PARCELA == 21734.50
+assert DESCONTO == 15342.00 and TOTAL == 112508.00
+assert P20 == 22501.60 and P40 == 45003.20
+assert round(3*P20 + P40, 2) == TOTAL
 
 def br(v):  return f'{v:,.0f}'.replace(',', '.')
 def br2(v): return f'{v:,.2f}'.replace(',', '·').replace('.', ',').replace('·', '.')
 
 PARCELAS = [
- ('1ª — no fechamento',                     'Assinatura do contrato'),
- ('2ª — 60 dias após o fechamento',         'Sem vínculo com etapa de obra'),
- ('3ª — no início das montagens',           'Equipe Valvic no local'),
- ('4ª — na entrega final',                  'Marcenaria concluída e conferida'),
- ('5ª — após a entrega da obra',            'A última parte fica por nossa conta até lá'),
+ ('1ª — no fechamento',             'Assinatura do contrato',            20, P20),
+ ('2ª — 60 dias após o fechamento', 'Sem vínculo com etapa de obra',     20, P20),
+ ('3ª — no início das montagens',   'Equipe Valvic no local',            20, P20),
+ ('4ª — na entrega final',          'Marcenaria concluída e conferida',  40, P40),
 ]
-def _lin_pag(i, n, d):
-    cls = ' class="best"' if i == 4 else ''
+def _lin_pag(i, n, d, pc, vl):
+    cls = ' class="best"' if i == len(PARCELAS)-1 else ''
     sub = ('<span style="font-size:7.8pt;color:var(--mut);font-weight:400"> · '
            + d + '</span>')
     return (f'<tr{cls}><td>{n}{sub}</td>'
-            f'<td class="r">20%</td><td class="r">R$ {br2(PARCELA)}</td></tr>')
+            f'<td class="r">{pc}%</td><td class="r">R$ {br2(vl)}</td></tr>')
 
-linhas_pag = ''.join(_lin_pag(i, n, d) for i, (n, d) in enumerate(PARCELAS))
+linhas_pag = ''.join(_lin_pag(i, *r) for i, r in enumerate(PARCELAS))
 
 linhas_item = ''.join(
   f'<tr><td class="nm">{a}</td><td class="r">R$ {br(v)}</td></tr>'
@@ -110,7 +121,7 @@ ESC_COZ = ''.join(bloco(a, b, d) for a, b, d, _ in ITENS[3:6])
 ESC_CLO = ''.join(bloco(a, b, d) for a, b, d, _ in ITENS[6:])
 
 # ── SVG das ferragens: MECANISMO, não foto de catálogo ─────────────────────
-SVG_MOVENTO = """<svg viewBox="0 0 200 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+SVG_TANDEM = """<svg viewBox="0 0 200 112" fill="none" xmlns="http://www.w3.org/2000/svg">
  <rect x="14" y="20" width="172" height="62" rx="2" stroke="#C9A96A" stroke-width="1.5"/>
  <rect x="26" y="30" width="128" height="42" rx="1.5" fill="#EFE7D8" stroke="#3A322A" stroke-width="1.5"/>
  <rect x="26" y="74" width="128" height="5" rx="1" fill="#C9A96A"/>
@@ -257,8 +268,8 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   .desc-row td{{color:var(--gold) !important; font-weight:700;}}
 
   /* faixa de oferta — ancora o número já na página 2 */
-  .oferta{{margin-top:auto; border:1px solid rgba(201,169,106,.42); border-radius:6px;
-      padding:6mm 7mm; background:rgba(201,169,106,.07);}}
+  .oferta{{margin-top:auto; margin-bottom:9mm; border:1px solid rgba(201,169,106,.42);
+      border-radius:6px; padding:6mm 7mm; background:rgba(201,169,106,.07);}}
   .oferta .ln{{display:flex; align-items:baseline; gap:6mm;}}
   .oferta .de{{font-size:11pt; color:#9C9384; text-decoration:line-through;
       font-family:'Cormorant Garamond',Georgia,serif;}}
@@ -302,7 +313,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
     </div>
     <div class="strip">
       <div class="c"><div class="k">Escopo</div><div class="v">7 conjuntos · 5 ambientes</div></div>
-      <div class="c"><div class="k">Ferragens</div><div class="v">100% Blum</div></div>
+      <div class="c"><div class="k">Ferragens</div><div class="v">Blum</div></div>
       <div class="c"><div class="k">Garantia</div><div class="v">20 anos</div></div>
     </div>
   </div>
@@ -322,16 +333,16 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   <div class="quatro">
     <div>
       <div class="n">01</div>
-      <div><div class="t">15% abaixo da tabela</div>
+      <div><div class="t">12% abaixo da tabela</div>
       <div class="d"><b>R$ {br2(DESCONTO)}</b> a menos, sem tirar uma linha do escopo.
       A especificação é a mesma — o que mudou foi o preço, não o móvel.</div></div>
     </div>
     <div>
       <div class="n">02</div>
-      <div><div class="t">Ferragem 100% Blum</div>
+      <div><div class="t">Toda a ferragem em Blum</div>
       <div class="d">A linha inteira subiu: <b>CLIP top BLUMOTION</b> nas portas,
-      <b>MOVENTO</b> nas gavetas, <b>AVENTOS</b> nas básculas. Dentro do preço já
-      reduzido — <b>não é upgrade cobrado à parte</b>.</div></div>
+      <b>TANDEM com BLUMOTION</b> nas gavetas, <b>AVENTOS</b> nas básculas. Dentro do
+      preço já reduzido — <b>não é upgrade cobrado à parte</b>.</div></div>
     </div>
     <div>
       <div class="n">03</div>
@@ -341,9 +352,10 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
     </div>
     <div>
       <div class="n">04</div>
-      <div><div class="t">Cinco parcelas de 20%</div>
-      <div class="d">A quinta só entra <b>depois que a obra for entregue</b>. Um quinto do
-      contrato fica financiado por nós até lá.</div></div>
+      <div><div class="t">Quatro parcelas, a maior no fim</div>
+      <div class="d">Entrada de apenas <b>20%</b>. Os outros 80% acompanham a execução, e a
+      maior parcela — <b>40%, R$ {br2(P40)}</b> — só na <b>entrega final</b>, com a
+      marcenaria concluída e conferida no local.</div></div>
     </div>
   </div>
 
@@ -353,8 +365,8 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   <div class="oferta">
     <div class="ln"><span class="de">De R$ {br(TABELA)}</span>
       <span class="por">R$ {br2(TOTAL)}</span></div>
-    <div class="pc">Sete conjuntos, cinco parcelas de <b>R$ {br2(PARCELA)}</b> —
-    e a quinta só depois que a obra for entregue.</div>
+    <div class="pc">Sete conjuntos em <b>quatro parcelas</b> — três de
+    R$ {br2(P20)} e a última de <b>R$ {br2(P40)}</b>, só na entrega final.</div>
   </div>
   {FOOT}
 </div></div>
@@ -367,7 +379,9 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   <div class="body-t" style="margin-top:4mm; max-width:152mm;">
     A chapa você escolhe pela cor. A ferragem você só percebe quando falha — e ela falha
     depois, não na entrega. Por isso ela está aqui, desenhada e nomeada: <b>toda a
-    ferragem móvel desta proposta é Blum</b>, sem linha mista.
+    ferragem móvel desta proposta é Blum</b>, sem linha mista. A única exceção é o
+    armário do corredor, cujas portas de espelho correm no <b>sistema da própria esquadria
+    de alumínio</b> — ali não existe ferragem Blum a aplicar.
   </div>
 
   <div class="fer">
@@ -382,10 +396,10 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   </div>
 
   <div class="fer">
-    <div class="art">{SVG_MOVENTO}</div>
+    <div class="art">{SVG_TANDEM}</div>
     <div class="tx">
       <div class="k">Gavetas</div>
-      <div class="t">MOVENTO com BLUMOTION</div>
+      <div class="t">TANDEM com BLUMOTION</div>
       <div class="d">Corrediça <b>oculta sob a gaveta</b>: a lateral fica limpa, sem trilho
       à vista. Extração total — o fundo da gaveta vem até a mão. Testada em <b>ciclos de
       abre-e-fecha</b> muito além do uso doméstico, com carga nominal.</div>
@@ -529,21 +543,21 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
     <div class="k">Investimento total · condição especial</div>
     <div class="v serif">R$ {br2(TOTAL)}</div>
     <div class="c">De <b style="text-decoration:line-through">R$ {br(TABELA)}</b> por
-    R$ {br2(TOTAL)} — <b>15% de desconto</b>, R$ {br2(DESCONTO)} a menos.</div>
-    <div class="alt">Sete conjuntos · ferragem <b>100% Blum</b> · garantia <b>20 anos</b> ·
+    R$ {br2(TOTAL)} — <b>12% de desconto</b>, R$ {br2(DESCONTO)} a menos.</div>
+    <div class="alt">Sete conjuntos · ferragem <b>Blum</b> · garantia <b>20 anos</b> ·
     fornecimento, montagem e instalação por equipe própria Valvic.</div>
   </div>
 
   <table class="item-tb">
     <tr><th>Conjunto</th><th class="r">Tabela</th></tr>
     {linhas_item}
-    <tr class="desc-row"><td class="nm" style="color:var(--gold)">Desconto especial · 15%</td>
+    <tr class="desc-row"><td class="nm" style="color:var(--gold)">Desconto especial · 12%</td>
         <td class="r">− R$ {br2(DESCONTO)}</td></tr>
     <tr class="tot"><td>Total</td><td class="r">R$ {br2(TOTAL)}</td></tr>
   </table>
 
   <table class="pay-tb">
-    <tr><th>Pagamento · cinco parcelas iguais</th><th class="r">%</th><th class="r">Valor</th></tr>
+    <tr><th>Pagamento · quatro parcelas</th><th class="r">%</th><th class="r">Valor</th></tr>
     {linhas_pag}
   </table>
 
@@ -554,8 +568,10 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   </div>
 
   <div class="note">
-    <b>Incluso:</b> projeto executivo, chapas, vidros, espelhos, LED e <b>toda a ferragem
-    Blum</b>, montagem e instalação por equipe própria Valvic. <b>Não incluso:</b> bancadas
+    <b>Incluso:</b> projeto executivo, chapas, vidros, espelhos, LED e a <b>ferragem
+    Blum</b> de todos os conjuntos — o armário do corredor não leva Blum porque as portas
+    correm no sistema da própria esquadria de alumínio —, montagem e instalação por equipe
+    própria Valvic. <b>Não incluso:</b> bancadas
     de pedra, cubas, metais, eletrodomésticos, pontos elétricos e hidráulicos, gesso, pintura
     e obra civil. Medidas a conferir no local antes da produção. <b>A lavanderia superior</b>
     está orçada com a mesma especificação e o mesmo valor da do térreo; havendo diferença de
@@ -569,6 +585,6 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
 (P/'proposta-nadia-premium.html').write_text(HTML, encoding='utf-8')
 print('wrote proposta-nadia-premium.html', len(HTML))
 print(f'  tabela   R$ {br2(TABELA)}')
-print(f'  desconto R$ {br2(DESCONTO)}  (15%)')
+print(f'  desconto R$ {br2(DESCONTO)}  ({DESC_PCT*100:.0f}%)')
 print(f'  total    R$ {br2(TOTAL)}')
-print(f'  parcela  R$ {br2(PARCELA)}  × 5')
+print(f'  parcelas 3 × R$ {br2(P20)} + 1 × R$ {br2(P40)}')
