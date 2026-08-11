@@ -14,7 +14,8 @@ senão a próxima geração sobrescreve as mudanças.
 | Aba | Para quê |
 |---|---|
 | **Dashboard** | Painel com valor de aquisição, depreciação, valor contábil, itens cedidos, termos assinados e três quadros de distribuição. Tudo calculado — nada se digita aqui |
-| **Patrimônio Geral** | O cadastro. Uma linha por bem, 150 linhas disponíveis. Fundo creme = preencher; fundo cinza-azulado = calculado |
+| **Patrimônio Geral** | O cadastro. **Uma linha por unidade física**, 150 linhas disponíveis. Fundo creme = preencher; fundo cinza-azulado = calculado |
+| **Kit Padrão** | O que compõe um kit completo, com quantidade por item, e quantos kits o estoque atual permite montar |
 | **Movimentações** | Histórico de entregas, devoluções, transferências, manutenções e baixas — uma linha por evento |
 | **Conferência Mensal** | Checagem física, responsável Deivson, periodicidade mensal |
 | **Termo · [nome]** × 8 | Um termo por colaborador, em layout A4 retrato pronto para imprimir |
@@ -36,9 +37,24 @@ Não é o mesmo documento com nome trocado — as cláusulas mudam.
 Em ambos: desgaste natural por conta da empresa, guarda vedada em residência, e Boletim de
 Ocorrência obrigatório em até 48 horas para furto ou roubo.
 
+## Por que não existe coluna de quantidade
+
+Cinco parafusadeiras iguais são **cinco linhas**, com cinco códigos. Uma coluna de quantidade
+economizaria digitação e custaria caro: com quantidade não se sabe **quem está com qual**, não se
+registram datas de aquisição diferentes, não se marca uma como avariada sem afetar as outras, e o
+termo perde o vínculo entre a pessoa e o bem específico.
+
+O agrupamento vem da coluna **Modelo padrão (SKU)** — uma chave que se repete entre unidades
+idênticas, como `PARAF-MAK-DHP482`. O Dashboard e a aba Kit Padrão usam essa chave para somar
+quantas unidades existem, quantas estão cedidas e quantas sobram. **Quantidade aparece uma única
+vez na planilha: na aba Kit Padrão**, onde ela descreve o desenho do kit, não o acervo.
+
+Para cadastrar várias unidades iguais: preencha uma linha, copie e cole, e troque só o código.
+
 ## Como operar
 
-1. **Cadastrar o bem** na aba Patrimônio Geral, com código sequencial `VLV-0001`.
+1. **Cadastrar o bem** na aba Patrimônio Geral, com código sequencial `VLV-0001`. Se o item se
+   repete, use o mesmo **Modelo padrão (SKU)** em todas as unidades.
 2. **Etiquetar** a ferramenta com o mesmo código e registrar o código de etiqueta do fabricante
    ou número de série na coluna F.
 3. **Ceder**: preencher Responsável, Estado na entrega e Data de entrega.
