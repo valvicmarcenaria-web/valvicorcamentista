@@ -55,10 +55,13 @@ Suíte 1 · Suíte 2 · Suíte 3 · Suíte Master.
 
 ## Condições (definidas)
 
-- **Pagamento:** 30% de entrada na assinatura + **4 boletos (60 / 90 / 120 / 150 dias)**.
+- **Pagamento — CONDIÇÃO ESPECIAL E EXCLUSIVA (12/08/2026):** 30% em 60 dias + 30% em 90 dias +
+  20% na entrega final + 20% em boleto 30 dias após a entrega. *(Nada na assinatura; 40% na entrega
+  ou depois.)* Valores por parcela (Versão A / B): 30% = **R$ 125.610 / R$ 118.110**; 20% =
+  **R$ 83.740 / R$ 78.740**. *(Substitui o antigo 30% assinatura + 4 boletos.)*
 - **Prazo:** 100 a 120 dias úteis.
 - **Garantia:** 10 anos (ferragens Hettich).
-- **Validade:** 22/06/2026.
+- **Validade:** 7 dias úteis (a de 22/06/2026 venceu; renovada na proposta atual).
 - **RT:** não há (sem parceria de arquiteto neste projeto) — **não entra no divisor**.
 
 ## Breakdown por ambiente (Versão "Tudo na cor" — alocação Fase-1)
