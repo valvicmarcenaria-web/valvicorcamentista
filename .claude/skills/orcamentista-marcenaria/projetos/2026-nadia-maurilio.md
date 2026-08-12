@@ -195,3 +195,69 @@ exatamente como a referência manda.
 2. **Lavanderia superior** — a célula em branco do documento de origem. A proposta já
    declara que o valor é revisto se a medida diferir.
 3. **O marco da parcela de 40%** — entrega final (adotado) ou pós-obra.
+
+
+---
+
+# 📋 MEMORIAL DESCRITIVO PARA VALIDAÇÃO [Jonathan 11/08/2026, 3ª rodada]
+
+**Motor** `build-nadia-memorial.py` → `memorial-nadia.pdf`, **4 páginas**.
+Documento **técnico**, sem marketing, para a cliente conferir item a item e assinar
+o aceite. É peça separada do folder comercial.
+
+**4 páginas:** escopo parte 1 (lavanderias + hall) · escopo parte 2 (cozinha + suíte) ·
+padrões construtivos (acabamentos, espessuras, ferragens, LED, não-incluso) ·
+investimento, pagamento e **bloco de aceite com assinatura**.
+
+## O que mudou no escopo
+
+| | |
+|---|---|
+| ➕ **Cristaleira 2** | ao lado da torre da geladeira · **2 portas em vidro reflecta bronze** |
+| ➕ **Painel de TV** | volta ao projeto, em MDF Itapuã |
+| 🔄 **Closet** | Areia → **100% MDF Gianduia Trama** |
+| 🔄 **Cozinha** | detalhes amadeirados nomeados: **MDF Itapuã** |
+| ➕ **LED** | **fornecimento e instalação Valvic**, declarado |
+| 💰 **Valor** | **R$ 112.500** · pagamento 20 · 20 · 20 · 40 |
+
+> ⚠️ O Jonathan escreveu "reflecta **fumê**" e corrigiu em seguida para **reflecta
+> bronze**. Vale bronze — e é coerente: a Cristaleira 1 já é reflecta bronze com
+> esquadria de alumínio bronze. Fumê teria criado dois vidros diferentes na mesma
+> cozinha.
+
+## ⚠️ O ESCOPO CRESCEU E O PREÇO NÃO
+
+| | |
+|---|--:|
+| 7 conjuntos (tabela) | 127.850 |
+| + painel de TV (volta) | 2.250 |
+| **= tabela conhecida** | **130.100** |
+| + cristaleira 2 | **não orçada** |
+| + closet Areia → Gianduia Trama | **delta não orçado** |
+| **Preço** | **112.500** |
+
+**O desconto efetivo sobe de 12,0% para 13,5% só com o painel de TV.** Com a
+cristaleira nova a um valor coerente com a Cristaleira 1 (R$ 5.650 por 80 cm e
+3 portas → ~R$ 4.000 por 2 portas), vai para **~16%**. E ainda falta o delta do
+Gianduia Trama sobre o closet inteiro, que é o segundo maior item da proposta
+(R$ 36.700 de tabela em Areia).
+
+> Continua valendo o de sempre neste job: **não há levantamento**, então nada disso
+> é auditável. Cada acréscimo entra sobre um número que não conheço por dentro.
+
+## 🚨 O FOLDER COMERCIAL FICOU DESATUALIZADO
+
+`proposta-nadia-premium.pdf` ainda traz **7 conjuntos, R$ 112.508 e closet em Areia**.
+O memorial traz **9 conjuntos, R$ 112.500 e closet em Gianduia Trama**. **Os dois não
+podem circular juntos.**
+
+Não realinhei o folder porque a página de investimento dele é construída sobre a
+**tabela item a item + desconto**, e eu teria que inventar valor para a Cristaleira 2
+e para o upgrade do closet. Precisa do valor de tabela dos dois — ou autorização para
+o folder passar a mostrar só o total, como o memorial faz.
+
+## Segue aberto
+1. **Levantamento.** Continua sendo o que resolveria a questão da margem.
+2. **Largura da Cristaleira 2** — o memorial declara "a confirmar na medição".
+3. **Lavanderia superior** — a célula em branco do documento de origem.
+4. **Realinhar o folder comercial** com o escopo novo.
