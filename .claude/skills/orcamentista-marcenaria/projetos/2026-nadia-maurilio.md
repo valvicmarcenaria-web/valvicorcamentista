@@ -261,3 +261,54 @@ o folder passar a mostrar só o total, como o memorial faz.
 2. **Largura da Cristaleira 2** — o memorial declara "a confirmar na medição".
 3. **Lavanderia superior** — a célula em branco do documento de origem.
 4. **Realinhar o folder comercial** com o escopo novo.
+
+
+---
+
+## 🔄 4ª e 5ª rodadas — o MDF Areia sai do projeto [Jonathan 11/08]
+
+| | |
+|---|---|
+| **Lavanderia inferior** | Gianduia Trama interno e externo · **sai um módulo aéreo**, entra um **gaveteiro com 3 gavetas internas** com puxadores espaçados |
+| **Lavanderia superior** | idem, ponto a ponto |
+| **Hall dos dormitórios** | Gianduia Trama |
+| **Cozinha** | no lugar do Areia, **Gianduia Trama** |
+| **Cristaleira 2** | prateleiras em **MDF**, não em vidro |
+| **Fundos** | **todos** com duplo revestimento (era só a lavanderia) |
+| **Bloco de aceite** | **removido** — o memorial deixou de ter assinatura |
+
+### O acabamento virou um só
+Com essas trocas, **o MDF Areia Guararapes desaparece**. Toda a marcenaria — duas
+lavanderias, hall, cozinha e closet — é **MDF Gianduia Trama**, interno e externo.
+O **Itapuã** fica como único contraponto amadeirado (básculas da cozinha e painel de TV).
+
+O memorial não menciona o Areia em lugar nenhum: descreve o que **é**, não o que era.
+Documento de validação não deve lembrar o cliente de uma especificação que ele já
+esqueceu.
+
+> ⚠️ **NÃO TENHO O PREÇO DE COMPRA DA GIANDUIA TRAMA NA BASE.** `dados/materiais.json`
+> não tem a linha. O TRT 3ª Região usou *Duratex Gianduia Puro*, que é outra coisa —
+> "Trama" é textura, e textura costuma custar acima do fosco liso. **Cotar antes de
+> assinar.**
+
+### Terceira rodada seguida de acréscimo com o preço congelado
+
+| Rodada | O que entrou | Preço |
+|---|---|--:|
+| 1ª | 7 conjuntos, Blum, 12% | 112.508 |
+| 3ª | + cristaleira 2 · + painel de TV · closet → Gianduia | 112.500 |
+| **4ª/5ª** | **Areia → Gianduia em ~R$ 85.500 de tabela** · + 2 gaveteiros de 3 gavetas · − 2 módulos aéreos · fundos todos com duplo revestimento | **112.500** |
+
+Dos R$ 130.100 de tabela conhecida, hoje **~R$ 122.200 estão em Gianduia Trama**.
+A troca dos módulos nas lavanderias é aproximadamente neutra — sai um aéreo, entra um
+gaveteiro de 3 gavetas com TANDEM, que custa um pouco mais.
+
+> Continua o mesmo buraco: **sem levantamento, nada disso é auditável.** Só que agora
+> a exposição não é mais só o desconto — é uma **troca de chapa em todo o job** com
+> preço de compra desconhecido.
+
+## Segue aberto
+1. **Preço de compra da Gianduia Trama.** Virou o item mais urgente.
+2. **Levantamento** — resolveria a margem de uma vez.
+3. **Largura da Cristaleira 2** — declarada "a confirmar na medição".
+4. **Realinhar o folder comercial**, que segue com 7 conjuntos, Areia e R$ 112.508.

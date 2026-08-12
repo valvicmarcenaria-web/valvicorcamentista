@@ -21,6 +21,22 @@ final. NÃO é o folder comercial — aquele é `build-nadia-premium.py`.
    preço .............................  112.500
    O desconto efetivo sai de 12% para 13,5% só com o painel de TV.
 
+[Jonathan 11/08, 4ª rodada] O MDF AREIA SAI DO PROJETO INTEIRO:
+  · lavanderia inferior — Gianduia Trama interno e externo · SAI um módulo aéreo,
+    ENTRA um gaveteiro com 3 gavetas internas, puxadores espaçados
+  · lavanderia superior — idem
+  · hall dos dormitórios — Gianduia Trama
+  · cozinha — no lugar do Areia, Gianduia Trama
+  Resultado: acabamento ÚNICO em Gianduia Trama, com Itapuã só nos amadeirados.
+  ⚠️ Preço mantido em R$ 112.500. É a terceira rodada de acréscimo com o preço
+     congelado, e a maior delas: a troca de chapa agora vale para os ~R$ 93.400
+     de tabela que ainda estavam em Areia. NÃO TENHO O PREÇO DE COMPRA DA
+     GIANDUIA TRAMA na base — precisa cotar antes de assinar.
+
+[Jonathan 11/08, 5ª rodada] prateleiras da Cristaleira 2 em MDF (não vidro) ·
+  TODOS os fundos com duplo revestimento (era só lavanderia) · confirma que não há
+  MDF Areia no projeto · REMOVIDO o bloco de aceite com assinatura.
+
 ⚠️ A largura da cristaleira nova não foi informada. O memorial declara
    "largura a confirmar na medição" — que é justamente o papel deste documento.
 """
@@ -39,27 +55,29 @@ def br(v): return f'{v:,.0f}'.replace(',', '.')
 # ── escopo: ambiente → conjuntos ───────────────────────────────────────────
 AMBIENTES = [
  ('Lavanderia do térreo', 'Pavimento inferior', [
-   ('Armário da lavanderia',
-    'Estrutura interna e acabamento externo em <b>MDF Areia Guararapes</b>.',
-    'Puxadores inferiores em cava e superiores passantes. Fundo em MDF com '
-    '<b>duplo revestimento</b> — as duas faces seladas contra a umidade.'),
+   ('Armário da lavanderia <span class="alt">alterado</span>',
+    '<b>MDF Gianduia Trama, interno e externo.</b>',
+    '<b>Sai um módulo aéreo</b> e entra um <b>gaveteiro com 3 gavetas internas</b>, '
+    'com puxadores espaçados. Demais puxadores inferiores em cava e superiores '
+    'passantes.'),
  ]),
  ('Lavanderia superior', 'Pavimento superior', [
-   ('Armário da lavanderia',
-    'Estrutura interna e acabamento externo em <b>MDF Areia Guararapes</b>.',
-    'Mesma especificação da lavanderia do térreo, ponto a ponto — mesma chapa, '
-    'mesmo fundo com duplo revestimento, mesma linha de ferragem.'),
+   ('Armário da lavanderia <span class="alt">alterado</span>',
+    '<b>MDF Gianduia Trama, interno e externo.</b>',
+    'Mesma especificação da lavanderia do térreo, ponto a ponto — inclusive a troca '
+    'do módulo aéreo pelo <b>gaveteiro de 3 gavetas internas</b> com puxadores '
+    'espaçados e a linha de ferragem.'),
  ]),
  ('Hall dos dormitórios', 'Corredor', [
    ('Armário do corredor',
-    'Estrutura interna e acabamento externo em <b>MDF Areia Guararapes</b>.',
+    '<b>MDF Gianduia Trama</b>, interno e externo.',
     'Portas de <b>espelho prata</b> em esquadria de <b>alumínio</b>. As portas correm '
     'no sistema da própria esquadria — <b>é o único conjunto sem ferragem Blum</b>, '
     'por construção.'),
  ]),
  ('Cozinha', 'Cinco conjuntos', [
    ('Ilha e torre das geladeiras',
-    'Estrutura interna e externa em <b>MDF Areia</b>.',
+    'Estrutura interna e externa em <b>MDF Gianduia Trama</b>.',
     '<b>Ilha de 2,80 m.</b> Puxadores em cava com perfil. Gavetas em '
     '<b>Blum TANDEM com BLUMOTION</b>.'),
    ('Cristaleira 1 — 80 cm',
@@ -70,10 +88,10 @@ AMBIENTES = [
    ('Cristaleira 2 — ao lado da torre da geladeira <span class="novo">acréscimo</span>',
     'Cores conforme projeto, no mesmo padrão da Cristaleira 1.',
     '<b>2 portas em vidro reflecta bronze</b> com esquadria de alumínio bronze. '
-    'Prateleiras em vidro incolor temperado de 8 mm. Iluminação de LED. '
+    '<b>Prateleiras em MDF</b>, no mesmo acabamento do móvel. Iluminação de LED. '
     '<b class="conf">Largura a confirmar na medição.</b>'),
    ('Bancada — aéreos e inferiores',
-    'Estrutura em <b>MDF Areia</b>, cores externas conforme projeto. Básculas com '
+    'Estrutura e externos em <b>MDF Gianduia Trama</b>. Básculas com '
     '<b>detalhe amadeirado em MDF Itapuã</b>, interno e externo.',
     'Puxadores inferiores em cava com <b>perfil Rometal RM280</b> e superiores '
     'passantes. Básculas em <b>Blum AVENTOS HK-S</b>. Gavetas em <b>Blum TANDEM</b>.'),
@@ -103,17 +121,21 @@ ESCOPO_A = ''.join(_amb(*a) for a in AMBIENTES[:3])   # lavanderias + hall
 ESCOPO_B = ''.join(_amb(*a) for a in AMBIENTES[3:])   # cozinha + suíte
 
 ACAB = [
- ('MDF Areia Guararapes', 'Lavanderias, armário do corredor e estrutura da cozinha.'),
- ('MDF Gianduia Trama',   'Closet do casal — <b>100% do conjunto</b>.'),
- ('MDF Itapuã',           'Detalhes amadeirados da cozinha (básculas) e painel de TV.'),
+ ('MDF Gianduia Trama',   '<b>Acabamento único de toda a marcenaria</b> — as duas '
+                          'lavanderias, o armário do corredor, a cozinha inteira e o '
+                          'closet do casal, interno e externo.'),
+ ('MDF Itapuã',           'Único contraponto: os <b>detalhes amadeirados</b> — básculas '
+                          'da cozinha e painel de TV.'),
  ('Espelho prata',        'Portas do armário do corredor, em esquadria de alumínio.'),
  ('Vidro reflecta bronze','Portas das duas cristaleiras, em esquadria de alumínio bronze.'),
- ('Vidro temperado 8 mm', 'Prateleiras das cristaleiras, incolor.'),
+ ('Vidro temperado 8 mm', 'Prateleiras da Cristaleira 1, incolor. A Cristaleira 2 '
+                          'leva <b>prateleiras em MDF</b>.'),
 ]
 ESPESS = [
  ('15 mm', 'Caixaria — estrutura interna de todos os conjuntos.'),
  ('18 mm', 'Prateleiras, portas e frentes.'),
- ('6 mm',  'Fundos, em todo o mobiliário. Nas lavanderias, com <b>duplo revestimento</b>.'),
+ ('6 mm',  'Fundos de <b>todo</b> o mobiliário, <b>todos com duplo revestimento</b> — '
+           'as duas faces seladas, e não só a que aparece.'),
  ('0,4 mm','Fita de borda extra fina, em todas as bordas aparentes.'),
 ]
 FERR = [
@@ -186,6 +208,9 @@ table{{width:100%; border-collapse:collapse;}}
 .novo{{display:inline-block; background:#9C7A3C; color:#fff; font-size:5.8pt;
        letter-spacing:.12em; text-transform:uppercase; font-weight:700;
        padding:.7mm 1.6mm; border-radius:2px; vertical-align:middle; margin-left:1.5mm;}}
+.alt{{display:inline-block; background:#EDE5D5; color:#7A6134; font-size:5.8pt;
+      letter-spacing:.12em; text-transform:uppercase; font-weight:700;
+      padding:.7mm 1.6mm; border-radius:2px; vertical-align:middle; margin-left:1.5mm;}}
 .conf{{color:#A6443A !important;}}
 
 .gen td{{padding:1.9mm 3mm 1.9mm 0; border-bottom:1px solid #EFEAE0; vertical-align:top;
@@ -237,13 +262,13 @@ table{{width:100%; border-collapse:collapse;}}
   {topo(1)}
 
   <h1>Memorial descritivo</h1>
-  <div class="sub">Conferência de escopo e especificação para o aceite final. <b>9 conjuntos em 5 ambientes.</b></div>
+  <div class="sub">Conferência de escopo e especificação. <b>9 conjuntos em 5 ambientes.</b></div>
 
   <div class="box">
     <div class="t">Como usar este documento</div>
     <p>Cada conjunto está descrito com <b>acabamento</b> e <b>especificação técnica</b>.
     Confira item a item: o que estiver de acordo, segue para produção exatamente assim.
-    O que precisar mudar, aponte antes de assinar — depois do aceite, alteração de
+    O que precisar mudar, aponte antes da aprovação — depois dela, alteração de
     acabamento ou de ferragem implica revisão de prazo e de valor. Os pontos marcados
     em <b class="conf">vermelho</b> dependem da medição no local.</p>
   </div>
@@ -274,6 +299,12 @@ table{{width:100%; border-collapse:collapse;}}
   <div class="sub">O que vale para todos os conjuntos, salvo indicação em contrário.</div>
 
   <h2>Acabamentos</h2>
+  <div class="box" style="margin-top:0; margin-bottom:3mm;">
+    <div class="t">Um acabamento só, na casa inteira</div>
+    <p>Toda a marcenaria é em <b>MDF Gianduia Trama</b>: da lavanderia do térreo ao
+    closet do casal, a mesma chapa, interno e externo. O <b>MDF Itapuã</b> entra como
+    contraponto amadeirado, só nas básculas da cozinha e no painel de TV.</p>
+  </div>
   <table class="gen">{_tb(ACAB)}</table>
 
   <h2>Espessuras e bordas</h2>
@@ -282,21 +313,10 @@ table{{width:100%; border-collapse:collapse;}}
   <h2>Ferragens</h2>
   <table class="gen">{_tb(FERR)}</table>
 
-  <h2>Iluminação</h2>
-  <table class="gen">
-    <tr><td class="k">Fornecimento Valvic</td><td><b>Todo o LED da marcenaria é fornecido
-    e instalado por nós</b> — fita, perfil, fonte e acionamento. Entregue funcionando,
-    dentro da garantia da peça. Não depende de compra ou de instalação de terceiros.</td></tr>
-    <tr><td class="k">Onde</td><td>Cristaleira 1, Cristaleira 2 e painel de TV.</td></tr>
-    <tr><td class="k">Alimentação</td><td>O <b>ponto elétrico</b> até o móvel é obra civil,
-    por conta do cliente. Indicamos a posição exata na medição.</td></tr>
-  </table>
-
   <h2>Não incluso no escopo</h2>
-  <div class="box">
+  <div class="box" style="margin-top:0;">
     <p>Bancadas de pedra, cubas e metais · eletrodomésticos · pontos elétricos e
-    hidráulicos · gesso, pintura e obra civil · cortinas, tapetes e decoração.
-    Medidas a conferir no local antes da produção.</p>
+    hidráulicos · gesso, pintura e obra civil · cortinas, tapetes e decoração.</p>
   </div>
 
   {rodape(3)}
@@ -307,7 +327,19 @@ table{{width:100%; border-collapse:collapse;}}
   {topo(4)}
 
   <h1>Investimento e condições</h1>
-  <div class="sub">Valores e prazos que acompanham o escopo validado nas páginas 1 a 3.</div>
+  <div class="sub">Valores e prazos que acompanham o escopo das páginas 1 a 3.</div>
+
+  <h2>Iluminação</h2>
+  <table class="gen">
+    <tr><td class="k">Fornecimento Valvic</td><td><b>Todo o LED da marcenaria é fornecido
+    e instalado por nós</b> — fita, perfil, fonte e acionamento. Entregue funcionando,
+    dentro da garantia da peça.</td></tr>
+    <tr><td class="k">Onde</td><td>Cristaleira 1, Cristaleira 2 e painel de TV.</td></tr>
+    <tr><td class="k">Alimentação</td><td>O <b>ponto elétrico</b> até o móvel é obra civil.
+    Indicamos a posição exata na medição.</td></tr>
+  </table>
+
+  <h2>Investimento</h2>
 
   <div class="tot">
     <span class="k">Investimento total</span>
@@ -329,23 +361,11 @@ table{{width:100%; border-collapse:collapse;}}
   </div>
 
   <div class="box" style="margin-top:5mm;">
-    <div class="t">O que o aceite libera</div>
-    <p>Com o aceite, entramos na <b>medição no local</b> e emitimos o projeto executivo
-    de produção. O prazo de 90 a 120 dias conta a partir do aceite e da liberação da
-    frente de trabalho. A <b>garantia Valvic de 20 anos</b> cobre o conjunto que
-    fornecemos e instalamos, incluindo a ferragem Blum e o LED.</p>
-  </div>
-
-  <div class="aceite">
-    <div class="t">Aceite</div>
-    <p>Declaramos ter conferido o escopo, os acabamentos e as especificações descritos
-    neste memorial, e autorizamos a Valvic Marcenaria a seguir para a medição e a
-    produção nos termos aqui registrados.</p>
-    <div class="sig">
-      <div>Nádia — assinatura</div>
-      <div>Maurílio — assinatura</div>
-      <div>Data</div>
-    </div>
+    <div class="t">Próximos passos</div>
+    <p>Com a aprovação deste memorial, entramos na <b>medição no local</b> e emitimos o
+    projeto executivo de produção. O prazo de <b>90 a 120 dias</b> conta a partir da
+    aprovação e da liberação da frente de trabalho. A <b>garantia Valvic de 20 anos</b>
+    cobre o conjunto que fornecemos e instalamos, incluindo a ferragem Blum e o LED.</p>
   </div>
 
   {rodape(4)}
