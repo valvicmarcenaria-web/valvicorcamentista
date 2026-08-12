@@ -23,10 +23,27 @@ Suíte 1 · Suíte 2 · Suíte 3 · Suíte Master.
 
 ## Versões e valores
 
-| Versão | Preço | MC (Fase-1) | material/preço |
+> ⬆️ **Atualização 12/08/2026 — incluída a ÁREA GOURMET (+R$ 23.700) + lavanderia como cortesia.**
+> Novos totais: **Tudo na cor R$ 418.700** · **Branco interno R$ 393.700**. Ver seção "Área Gourmet" abaixo.
+
+| Versão | Preço (base 9 amb.) | + Gourmet | **Total atual** |
 |---|--:|--:|--:|
-| **Tudo na cor** (interior na cor) | **R$ 395.000** | ~38% | ~29% |
-| **Branco interno** (fechados em Branco TX) | **R$ 370.000** | ~36% | ~30% |
+| **Tudo na cor** (interior na cor) | R$ 395.000 | + R$ 23.700 | **R$ 418.700** |
+| **Branco interno** (fechados em Branco TX) | R$ 370.000 | + R$ 23.700 | **R$ 393.700** |
+
+### Área Gourmet (acréscimo 12/08/2026 — valores definidos pelo Jonathan)
+| Móvel | Descrição | Valor |
+|---|---|--:|
+| Armários inferiores | portas c/ prateleiras + 5 gavetões + torre quente p/ fornos | R$ 10.300 |
+| Armários superiores | básculas c/ vidro canelado + sistema articulado + nicho iluminado | R$ 5.400 |
+| Cristaleira | portas de vidro em esquadria + prateleiras de vidro | R$ 4.200 |
+| Rack | 4 gavetões | R$ 3.800 |
+| **Total gourmet** | | **R$ 23.700** |
+
+- **Lavanderia = CORTESIA** (sem custo — gesto de fechamento; sinalizada na proposta).
+- Proposta reconstruída no **layout claro (modelo Essencial Prime)** com as renders reais do Drive
+  embutidas: `proposta-junior-premium.html` / `proposta-junior.pdf`. 7 páginas (2 versões de cor,
+  Hettich 10 anos, gourmet incluído, lavanderia cortesia).
 
 - **Custo real (ponto de equilíbrio, MC 0): ~R$ 171.000.**
 - **DECISÃO (Jonathan): manter os preços** — margem aceita conscientemente (casa spec
