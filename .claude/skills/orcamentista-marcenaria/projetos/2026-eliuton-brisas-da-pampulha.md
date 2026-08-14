@@ -18,7 +18,9 @@ tel. (31) 3004-3387.
 
 ### Série PR NN — cozinha e gourmet (8 arquivos)
 `PR 01` a `PR 05` **COZINHA** · `PR 06` e `PR 07` **A. GOURMET**
-⚠️ `PR 05_COZINHA` está **duplicado** (um deles com sufixo `(1)`).
+⚠️ ~~`PR 05_COZINHA` duplicado~~ — **NÃO são duplicatas** [Jonathan 13/08]. Mesmo nome,
+conteúdos diferentes. Eu tinha julgado pelo nome do arquivo. O leitor do Drive devolve
+os dois idênticos porque só faz OCR do **carimbo**, que é igual nos dois.
 
 ### Série PR NN-10 — áreas molhadas (9 arquivos)
 `01-10` ÁREA SERVIÇO · `03-10` LAVABO EXTERNO · `04-10` BANHEIRO SOCIAL TÉRREO ·
@@ -88,5 +90,28 @@ gabinete/nicho — conferir.
 1. **Qual é o escopo de marcenaria** neste projeto. O único arquivo legível é de
    revestimento. Cozinha e gourmet podem ou não ter marcenaria nossa.
 2. **`PR 02-10`** — falta na pasta.
-3. **`PR 05_COZINHA` duplicado** — saber qual é a versão boa.
+3. ~~`PR 05_COZINHA` duplicado~~ — resolvido: são duas pranchas diferentes.
 4. **Situação de caixa e MC** — quando houver escopo.
+
+
+---
+
+## 13/08 — segunda tentativa de leitura, e o motor montado
+
+Testei o `read_file_content` em **quatro** pranchas da cozinha (PR 01, 02, 05 e
+PR 05 (1)). Todas devolvem o mesmo carimbo OCR-ado, com grafias diferentes a cada
+leitura — `SC ARBUITETURA`, `BC ARQUITETERA`, `BC ARBUITETURA`, `ROUTETAANSA`,
+`GOUTAL STA`. Grafia instável na mesma origem é **assinatura de OCR sobre imagem**:
+as pranchas são **raster**, não vetoriais.
+
+Consequências, já registradas:
+1. Mesmo com o arquivo em mãos, **a leitura será visual**, não vetor a vetor como na
+   prancha AR-18 da Honda. Resolução importa.
+2. Baixar pelo conector **não fecha a conta**: a menor prancha da cozinha (182 KB)
+   vira ~243 mil caracteres em base64 para chegar, e o mesmo tanto para gravar em
+   disco. ~120 mil tokens **por prancha**, e são cinco. Estoura antes da terceira.
+3. `drive.google.com` segue bloqueado na política de rede (403 no CONNECT).
+
+**Entregue mesmo assim:** `2026-eliuton-duvidas-tecnicas.md` (o levantamento de
+dúvidas, que o Jonathan pediu para vir antes) e `corte-eliuton.py` (o motor com os
+três cenários e a regra do ripado já calibrados — falta só a geometria).
