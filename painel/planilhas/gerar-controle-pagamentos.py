@@ -15,6 +15,10 @@ from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.datavalidation import DataValidation
 from openpyxl.worksheet.properties import PageSetupProperties
 from openpyxl.formatting.rule import FormulaRule
+from openpyxl.chart import BarChart, LineChart, Reference
+from openpyxl.chart.axis import ChartLines
+from openpyxl.chart.text import RichText
+from openpyxl.drawing.text import (Paragraph, ParagraphProperties, CharacterProperties)
 
 import importlib.util as _il, pathlib as _pl
 _spec = _il.spec_from_file_location(
@@ -59,8 +63,9 @@ FORMAS = ['pix', 'cartão', 'dinheiro', 'espécie', 'boleto', 'transferência', 
 # ── layout da aba de ano
 C_CLI, C_PROJ, C_VAL, C_FORMA, C_REC, C_SALDO, C_PCT, C_SIT = 1, 2, 3, 4, 5, 6, 7, 8
 BLOCOS = [9, 12, 15, 18, 21]              # I, L, O, R, U
-C_AUX = 24                                 # X · auxiliar oculta do ranking
-NCOL = 24
+C_AUX = 24                                 # X · auxiliar oculta: saldo por projeto
+C_AUX2 = 25                                # Y · auxiliar oculta: contrato por projeto
+NCOL = 25
 R_PAINEL, R_HEAD, R_IT0 = 6, 9, 10
 LP = {c: get_column_letter(c) for c in range(1, NCOL + 1)}
 
@@ -145,8 +150,8 @@ HDR = ['Cliente', 'Projeto', 'Investimento', 'Forma de pagamento', 'Recebido',
        'Saldo a receber', '% recebido', 'Situação']
 for i in range(1, 6):
     HDR += [f'{i}º Pagt. (R$)', 'Data', 'Descrição']
-HDR += ['aux']
-W = [22, 28, 13, 26, 13, 14, 10, 16] + [13, 11, 15] * 5 + [3]
+HDR += ['aux', 'aux2']
+W = [22, 28, 13, 26, 13, 14, 10, 16] + [13, 11, 15] * 5 + [3, 3]
 
 F_ROT = Font(name=F, size=9, color=INK)
 F_NUM = Font(name=F, size=9.5, color=NAVY2)
@@ -249,6 +254,8 @@ def montar_ano(aba, blocos_dados, meta, sobras):
             # auxiliar: repete o saldo só nas linhas de projeto, para o ranking
             c = ws.cell(rr, C_AUX, f'=IF($C{rr}="","",$F{rr})')
             c.number_format = MOEDA; c.font = font(8, c=MUTED)
+            c = ws.cell(rr, C_AUX2, f'=IF($C{rr}="","",$C{rr})')
+            c.number_format = MOEDA; c.font = font(8, c=MUTED)
             if p:
                 ws.cell(rr, C_CLI).value = p['cliente'] or None
                 ws.cell(rr, C_PROJ).value = p['projeto'] or None
@@ -307,6 +314,7 @@ def montar_ano(aba, blocos_dados, meta, sobras):
         formula=[f'AND($C{R_IT0}<>"",$H{R_IT0}="A receber")'], fill=fill('FDF3F2')))
 
     ws.column_dimensions[LP[C_AUX]].hidden = True
+    ws.column_dimensions[LP[C_AUX2]].hidden = True
     ws.freeze_panes = f'{LP[BLOCOS[0]]}{R_IT0}'
     print_cfg(ws, f'A1:{LP[C_SIT]}{fim}')
     mapa_anos[aba] = dict(ini=ini, fim=ultima_mes, divisores=divisores, fim_geral=fim)
@@ -328,87 +336,136 @@ for aba in ANOS:
     montar_ano(aba, ordenados, META[aba], sobras=3 if aba == ANO_ATUAL else 2)
 
 
+# ══════════════════════════════════════════════ dados de apoio ao painel
+DIVISOR = {a: dict(mapa_anos[a]['divisores']) for a in ANOS}
+ANOS_CHEIOS = ['2023', '2024', '2025']        # anos fechados, base da sazonalidade
+
+def rgn(aba, col, ini=None, fim=None):
+    m = mapa_anos[aba]
+    return (f"'{aba}'!${col}${ini or m['ini']}:${col}${fim or m['fim_geral']}")
+
+def fluxo_mes(ano, mes):
+    """Recebimentos com data de pagamento dentro do mês, somando todas as abas.
+
+    Aqui a faixa começa em R_IT0, e não no primeiro bloco de mês: o dinheiro que
+    entrou por contratos de 2022 (bloco "Anterior" da aba 2023) é caixa de verdade
+    e precisa aparecer no fluxo, mesmo ficando fora do total de vendas do ano.
+    """
+    partes = []
+    for aba in ANOS:
+        for c0 in BLOCOS:
+            v, d = LP[c0], LP[c0 + 1]
+            rv, rd = rgn(aba, v, R_IT0), rgn(aba, d, R_IT0)
+            partes.append(
+                f'SUMIFS({rv},{rd},">="&DATE({ano},{mes},1),'
+                f'{rd},"<"&DATE({ano},{mes + 1},1))')
+    return '=ROUND(' + '+'.join(partes) + ',2)'
+
+def qtd_projetos(aba):
+    return f'=COUNT({rgn(aba, LP[C_AUX])})'
+
+
 # ══════════════════════════════════════════════ ABA · Painel
 pa = wb.create_sheet('Painel', 0)
 pa.sheet_view.showGridLines = False
-NC_PA = 12
+NC_PA = 20
 r = faixa_marca(pa, NC_PA, 'PAINEL DE PAGAMENTOS',
                 'Tudo aqui é calculado a partir das abas de ano — não digite nada nesta aba')
-for i, w in enumerate([22, 26, 14, 14, 14, 11, 14, 12, 12, 12, 12, 12], start=1):
+for i, w in enumerate([20, 26, 13, 13, 13, 11, 11] + [11] * 13, start=1):
     pa.column_dimensions[get_column_letter(i)].width = w
 pa.row_dimensions[r].height = 6
 r += 1
 
 A = mapa_anos[ANO_ATUAL]
-KPI = [('VENDIDO EM ' + ANO_ATUAL, f"='{ANO_ATUAL}'!$A${R_PAINEL+1}", MOEDA0),
-       ('RECEBIDO', f"='{ANO_ATUAL}'!$D${R_PAINEL+1}", MOEDA0),
-       ('A RECEBER', f"='{ANO_ATUAL}'!$F${R_PAINEL+1}", MOEDA0),
-       ('% RECEBIDO', f"='{ANO_ATUAL}'!$H${R_PAINEL+1}", PCT0)]
+KPI = [('VENDIDO EM ' + ANO_ATUAL, f"='{ANO_ATUAL}'!$A$7", MOEDA0),
+       ('RECEBIDO', f"='{ANO_ATUAL}'!$D$7", MOEDA0),
+       ('A RECEBER', f"='{ANO_ATUAL}'!$F$7", MOEDA0),
+       ('% RECEBIDO', f"='{ANO_ATUAL}'!$H$7", PCT0),
+       ('PROJETOS', qtd_projetos(ANO_ATUAL), '0'),
+       ('TICKET MÉDIO', f"=IF({qtd_projetos(ANO_ATUAL)[1:]}=0,\"\","
+                        f"'{ANO_ATUAL}'!$A$7/{qtd_projetos(ANO_ATUAL)[1:]})", MOEDA0)]
+R_KPI = r
 for i, (rot, fx, nf) in enumerate(KPI):
     c0 = 1 + i * 3
     bloco(pa, r, c0, 3, rot, f=Font(name=F, size=8, bold=True, color=MUTED), bg=WHITE,
           al=CTR, bd=False)
-    bloco(pa, r + 1, c0, 3, fx, f=Font(name=F, size=16, bold=True, color=NAVY),
+    bloco(pa, r + 1, c0, 3, fx, f=Font(name=F, size=15, bold=True, color=NAVY),
           bg=GOLDBG, al=CTR, nf=nf)
 pa.row_dimensions[r].height = 14
-pa.row_dimensions[r + 1].height = 34
+pa.row_dimensions[r + 1].height = 32
 pa.row_dimensions[r + 2].height = 8
 r += 3
 
-r = titulo_secao(pa, r, NC_PA, 'Ano a ano')
-r = cab_tabela(pa, r, ['Ano', 'Meta', 'Vendido', 'Recebido', 'A receber', '% recebido',
-                       '% da meta', '', '', '', '', ''], None, 26)
+# ── ano a ano
+r = titulo_secao(pa, r, NC_PA, 'Ano a ano', 'vendido, recebido e o que ficou em aberto')
+R_ANO_H = r
+r = cab_tabela(pa, r, ['Ano', 'Projetos', 'Vendido', 'Recebido', 'A receber',
+                       '% recebido', 'Ticket médio'] + [''] * 13, None, 26)
+R_ANO0 = r
 for aba in ANOS:
     pa.row_dimensions[r].height = 19
-    vals = [(1, aba, None, LEFTI), (2, f"='{aba}'!$I${R_PAINEL+1}", MOEDA0, RIGHT),
-            (3, f"='{aba}'!$A${R_PAINEL+1}", MOEDA0, RIGHT),
-            (4, f"='{aba}'!$D${R_PAINEL+1}", MOEDA0, RIGHT),
-            (5, f"='{aba}'!$F${R_PAINEL+1}", MOEDA0, RIGHT),
-            (6, f"='{aba}'!$H${R_PAINEL+1}", PCT0, CTR),
-            (7, f"='{aba}'!$L${R_PAINEL+1}", PCT1, CTR)]
+    vals = [(1, aba, None, LEFTI), (2, qtd_projetos(aba), '0', CTR),
+            (3, f"='{aba}'!$A$7", MOEDA0, RIGHT), (4, f"='{aba}'!$D$7", MOEDA0, RIGHT),
+            (5, f"='{aba}'!$F$7", MOEDA0, RIGHT), (6, f"='{aba}'!$H$7", PCT0, CTR),
+            (7, f"=IF({qtd_projetos(aba)[1:]}=0,\"\",'{aba}'!$A$7/{qtd_projetos(aba)[1:]})",
+             MOEDA0, RIGHT)]
     for col, v, nf, al in vals:
         c = pa.cell(r, col, v)
         c.font = Font(name=F, size=10, bold=(col == 1), color=NAVY if col == 1 else NAVY2)
         c.fill = fill(CALC); c.alignment = al; c.border = GRID
         if nf: c.number_format = nf
-    for col in range(8, NC_PA + 1):
-        pa.cell(r, col).fill = fill(WHITE)
     r += 1
+R_ANOF = r - 1
 pa.row_dimensions[r].height = 8
 r += 1
 
-r = titulo_secao(pa, r, NC_PA, f'{ANO_ATUAL} mês a mês')
-r = cab_tabela(pa, r, ['Mês', 'Projetos', 'Vendido', 'Recebido', 'A receber', '% recebido',
-                       '', '', '', '', '', ''], None, 26)
-for nome, d in mapa_anos[ANO_ATUAL]['divisores']:
-    if nome == ANTERIOR:
-        continue
+# ── mês a mês do ano corrente
+r = titulo_secao(pa, r, NC_PA, f'{ANO_ATUAL} mês a mês',
+                 'vendas pela data do contrato · acumulado comparado à meta')
+R_MES_H = r
+r = cab_tabela(pa, r, ['Mês', 'Projetos', 'Vendido', 'Recebido', 'A receber',
+                       '% recebido', 'Acum. vendido', 'Meta acum.'] + [''] * 12, None, 26)
+R_MES0 = r
+for k, mes in enumerate(MESES, start=1):
+    d = DIVISOR[ANO_ATUAL][mes]
     pa.row_dimensions[r].height = 18
-    for col, v, nf, al in ((1, nome, None, LEFTI),
-                           (2, f"='{ANO_ATUAL}'!$H${d}", None, CTR),
+    ac = (f'=IF(DATE({ANO_ATUAL},{k},1)>TODAY(),"",'
+          f'IF(SUM($C${R_MES0}:$C{r})=0,"",SUM($C${R_MES0}:$C{r})))')
+    for col, v, nf, al in ((1, mes, None, LEFTI),
+                           (2, f"=COUNT('{ANO_ATUAL}'!$X${d + 1}:$X${d + 9})", '0', CTR),
                            (3, f"='{ANO_ATUAL}'!$C${d}", MOEDA0, RIGHT),
                            (4, f"='{ANO_ATUAL}'!$E${d}", MOEDA0, RIGHT),
                            (5, f"='{ANO_ATUAL}'!$F${d}", MOEDA0, RIGHT),
-                           (6, f"='{ANO_ATUAL}'!$G${d}", PCT0, CTR)):
+                           (6, f"='{ANO_ATUAL}'!$G${d}", PCT0, CTR),
+                           (7, ac, MOEDA0, RIGHT),
+                           (8, f"=ROUND('{ANO_ATUAL}'!$I$7/12*{k},0)", MOEDA0, RIGHT)):
         c = pa.cell(r, col, v)
-        c.font = Font(name=F, size=9.5, bold=(col == 1), color=NAVY if col == 1 else NAVY2)
+        c.font = Font(name=F, size=9.5, bold=(col == 1),
+                      color=NAVY if col == 1 else (MUTED if col == 8 else NAVY2))
         c.fill = fill(CALC); c.alignment = al; c.border = GRID
         if nf: c.number_format = nf
-    for col in range(7, NC_PA + 1):
-        pa.cell(r, col).fill = fill(WHITE)
     r += 1
+R_MESF = r - 1
+pa.conditional_formatting.add(f'G{R_MES0}:G{R_MESF}', FormulaRule(
+    formula=[f'AND($G{R_MES0}<>"",$G{R_MES0}>=$H{R_MES0})'],
+    fill=fill(OKBG), font=Font(bold=True, color=OK)))
+pa.conditional_formatting.add(f'G{R_MES0}:G{R_MESF}', FormulaRule(
+    formula=[f'AND($G{R_MES0}<>"",$G{R_MES0}<$H{R_MES0})'], font=Font(color=RED)))
 pa.row_dimensions[r].height = 8
 r += 1
 
+# ── maiores saldos
 r = titulo_secao(pa, r, NC_PA, f'Maiores saldos em aberto de {ANO_ATUAL}',
                  'ordenado pelo saldo · empate exato mostra o primeiro da lista')
 r = cab_tabela(pa, r, ['#', 'Cliente', 'Projeto', 'Investimento', 'Recebido',
-                       'Saldo a receber', '% recebido', '', '', '', '', ''], None, 26)
+                       'Saldo a receber', '% recebido', '% do total em aberto'] + [''] * 12,
+               None, 26)
+R_TOP0 = r
 RS = f"'{ANO_ATUAL}'!$X${A['ini']}:$X${A['fim']}"
 for k in range(1, 13):
     pa.row_dimensions[r].height = 18
     L = f'LARGE({RS},{k})'
-    MT = f"MATCH({L},{RS},0)"
+    MT = f'MATCH({L},{RS},0)'
     def idx(col):
         return (f'=IF(COUNT({RS})<{k},"",IF({L}<=0,"",'
                 f"INDEX('{ANO_ATUAL}'!${col}${A['ini']}:${col}${A['fim']},{MT})))")
@@ -416,24 +473,321 @@ for k in range(1, 13):
                            (3, idx('B'), None, LEFTI), (4, idx('C'), MOEDA0, RIGHT),
                            (5, idx('E'), MOEDA0, RIGHT),
                            (6, f'=IF(COUNT({RS})<{k},"",IF({L}<=0,"",{L}))', MOEDA0, RIGHT),
-                           (7, idx('G'), PCT0, CTR)):
+                           (7, idx('G'), PCT0, CTR),
+                           (8, f"=IF($F{r}=\"\",\"\",$F{r}/'{ANO_ATUAL}'!$F$7)", PCT1, CTR)):
         c = pa.cell(r, col, v)
         c.font = Font(name=F, size=9.5, bold=(col == 6),
-                      color=RED if col == 6 else (MUTED if col == 1 else NAVY2))
+                      color=RED if col == 6 else (MUTED if col in (1, 8) else NAVY2))
         c.fill = fill(CALC); c.alignment = al; c.border = GRID
         if nf: c.number_format = nf
-    for col in range(8, NC_PA + 1):
-        pa.cell(r, col).fill = fill(WHITE)
     r += 1
+R_TOPF = r - 1
 pa.row_dimensions[r].height = 8
 r += 1
-pa.row_dimensions[r].height = 40
-bloco(pa, r, 1, NC_PA,
-      '  Como este painel se atualiza: cada número vem direto das abas de ano. Lance o pagamento na aba do ano '
-      'e tudo aqui muda junto. A linha CONFERÊNCIA, no topo de cada aba de ano, avisa se alguma linha de projeto '
-      'ficou fora de um bloco de mês — se ela acusar divergência, o total do ano está subestimado.',
+
+# ── leitura automática
+r = titulo_secao(pa, r, NC_PA, 'Leitura do quadro', 'frases montadas a partir dos números acima')
+LEITURAS = [
+    (f'="Concentração da carteira em aberto: os 3 maiores saldos somam "&'
+     f'TEXT(SUM($F${R_TOP0}:$F${R_TOP0 + 2}),"R$ #,##0")&" de "&'
+     f'TEXT(\'{ANO_ATUAL}\'!$F$7,"R$ #,##0")&" — "&'
+     f'TEXT(SUM($F${R_TOP0}:$F${R_TOP0 + 2})/\'{ANO_ATUAL}\'!$F$7,"0%")&" do total a receber."'),
+    (f'="Ritmo do ano até "&INDEX($A${R_MES0}:$A${R_MESF},MONTH(TODAY()))&": vendido "&'
+     f'TEXT(\'{ANO_ATUAL}\'!$A$7,"R$ #,##0")&" contra meta acumulada de "&'
+     f'TEXT(INDEX($H${R_MES0}:$H${R_MESF},MONTH(TODAY())),"R$ #,##0")&" — "&'
+     f'IF(\'{ANO_ATUAL}\'!$A$7>=INDEX($H${R_MES0}:$H${R_MESF},MONTH(TODAY())),'
+     f'"acima do ritmo necessário.","faltam "&'
+     f'TEXT(INDEX($H${R_MES0}:$H${R_MESF},MONTH(TODAY()))-\'{ANO_ATUAL}\'!$A$7,"R$ #,##0")&'
+     f'" para o ritmo da meta.")'),
+    (f'="Projetos sem nenhum recebimento em {ANO_ATUAL}: "&'
+     f'COUNTIF(\'{ANO_ATUAL}\'!$H${A["ini"]}:$H${A["fim"]},"A receber")&'
+     f'" de "&{qtd_projetos(ANO_ATUAL)[1:]}&" — somam "&'
+     f'TEXT(SUMIF(\'{ANO_ATUAL}\'!$H${A["ini"]}:$H${A["fim"]},"A receber",'
+     f'\'{ANO_ATUAL}\'!$C${A["ini"]}:$C${A["fim"]}),"R$ #,##0")&" de contrato."'),
+    ('="Veja a aba Análise & Sazonalidade para o fluxo de caixa mês a mês e o padrão '
+     'sazonal de vendas."'),
+]
+for txt in LEITURAS:
+    pa.row_dimensions[r].height = 22
+    bloco(pa, r, 1, NC_PA, txt, f=Font(name=F, size=9.5, color='2A3744'), bg=WHITE,
+          al=LEFTIW, bd=False)
+    r += 1
+R_FIM_PA = r
+
+# ── gráficos
+def estilo_eixo(ch, titulo=None):
+    ch.style = None
+    ch.y_axis.majorGridlines = ChartLines()
+    ch.y_axis.numFmt = 'R$ #,##0'
+    ch.y_axis.txPr = RichText(p=[Paragraph(pPr=ParagraphProperties(
+        defRPr=CharacterProperties(sz=800, solidFill=MUTED)), endParaRPr=CharacterProperties(sz=800))])
+    ch.x_axis.txPr = ch.y_axis.txPr
+    ch.legend.position = 'b'
+    ch.legend.overlay = False
+    if titulo:
+        ch.title = titulo
+
+def pinta(serie, cor):
+    serie.graphicalProperties.solidFill = cor
+    serie.graphicalProperties.line.solidFill = cor
+
+g1 = BarChart(); g1.type = 'col'; g1.grouping = 'clustered'
+g1.add_data(Reference(pa, min_col=3, max_col=4, min_row=R_ANO_H, max_row=R_ANOF),
+            titles_from_data=True)
+g1.set_categories(Reference(pa, min_col=1, min_row=R_ANO0, max_row=R_ANOF))
+estilo_eixo(g1, 'Vendido × recebido por ano')
+pinta(g1.series[0], NAVY2); pinta(g1.series[1], GOLD)
+g1.width, g1.height = 15, 8
+G_COL, G_ALT = 'I', 17                    # 8 cm ≈ 17 linhas
+pa.add_chart(g1, f'{G_COL}{R_KPI + 3}')
+
+g2 = BarChart(); g2.type = 'col'; g2.grouping = 'clustered'
+g2.add_data(Reference(pa, min_col=3, max_col=4, min_row=R_MES_H, max_row=R_MESF),
+            titles_from_data=True)
+g2.set_categories(Reference(pa, min_col=1, min_row=R_MES0, max_row=R_MESF))
+estilo_eixo(g2, f'{ANO_ATUAL} · vendas e recebimentos mês a mês')
+pinta(g2.series[0], NAVY2); pinta(g2.series[1], GOLD)
+g2.width, g2.height = 15, 8
+g2l = LineChart()
+g2l.add_data(Reference(pa, min_col=7, max_col=8, min_row=R_MES_H, max_row=R_MESF),
+             titles_from_data=True)
+g2l.y_axis.axId = 200
+g2l.y_axis.numFmt = 'R$ #,##0'
+for s, cor in zip(g2l.series, (OK, RED)):
+    s.graphicalProperties.line.solidFill = cor
+    s.graphicalProperties.line.width = 22000
+    s.smooth = False
+    s.marker.symbol = 'none'
+g2l.series[1].graphicalProperties.line.dashStyle = 'dash'
+g2 += g2l
+pa.add_chart(g2, f'{G_COL}{R_KPI + 3 + G_ALT}')
+
+print_cfg(pa, f'A1:H{R_FIM_PA}')
+
+
+# ══════════════════════════════════════════════ ABA · Análise & Sazonalidade
+an = wb.create_sheet('Análise & Sazonalidade', 1)
+an.sheet_view.showGridLines = False
+NC_AN = 22
+r = faixa_marca(an, NC_AN, 'ANÁLISE & SAZONALIDADE',
+                'Fluxo de caixa pela data do pagamento · padrão sazonal de vendas · '
+                'concentração da carteira')
+for i, w in enumerate([13, 14, 14, 14, 14, 14, 11, 12, 15] + [11] * 13, start=1):
+    an.column_dimensions[get_column_letter(i)].width = w
+an.row_dimensions[r].height = 6
+r += 1
+
+# ── 1 · fluxo de caixa realizado
+r = titulo_secao(an, r, NC_AN, 'Fluxo de caixa realizado',
+                 'quanto entrou em cada mês, pela DATA DO PAGAMENTO — não pela data do contrato')
+R_FX_H = r
+r = cab_tabela(an, r, ['Mês'] + ANOS[::-1] + ['Média 23–25', 'Peso no ano'] + [''] * 15,
+               None, 26)
+R_FX0 = r
+R_FX_TOT_PH = R_FX0 + len(MESES) - 1      # última linha de mês
+for k, mes in enumerate(MESES, start=1):
+    an.row_dimensions[r].height = 18
+    c = an.cell(r, 1, mes); c.font = Font(name=F, size=9.5, bold=True, color=NAVY)
+    c.fill = fill(CALC); c.alignment = LEFTI; c.border = GRID
+    for j, ano in enumerate(ANOS[::-1], start=2):
+        c = an.cell(r, j, fluxo_mes(int(ano), k))
+        c.number_format = MOEDA0; c.font = Font(name=F, size=9.5, color=NAVY2)
+        c.fill = fill(CALC); c.alignment = RIGHT; c.border = GRID
+    c = an.cell(r, 6, f'=ROUND(AVERAGE($B{r}:$D{r}),0)')
+    c.number_format = MOEDA0; c.font = Font(name=F, size=9.5, bold=True, color=NAVY)
+    c.fill = fill(GOLDBG); c.alignment = RIGHT; c.border = GRID
+    c = an.cell(r, 7, f'=IF(SUM($F${R_FX0}:$F${R_FX_TOT_PH})=0,"",'
+                      f'$F{r}/SUM($F${R_FX0}:$F${R_FX_TOT_PH}))')
+    c.number_format = PCT1; c.font = Font(name=F, size=9.5, color=NAVY2)
+    c.fill = fill(CALC); c.alignment = CTR; c.border = GRID
+    r += 1
+R_FXF = r - 1
+an.row_dimensions[r].height = 20
+c = an.cell(r, 1, 'TOTAL'); c.font = Font(name=F, size=10, bold=True, color=WHITE)
+c.fill = fill(NAVY2); c.alignment = LEFTI; c.border = GRID
+for j in range(2, 8):
+    col = get_column_letter(j)
+    c = an.cell(r, j, f'=ROUND(SUM({col}${R_FX0}:{col}${R_FXF}),0)' if j < 7 else None)
+    c.number_format = MOEDA0; c.font = Font(name=F, size=10, bold=True, color=GOLDS)
+    c.fill = fill(NAVY2); c.alignment = RIGHT; c.border = GRID
+R_FX_TOT = r
+an.conditional_formatting.add(f'G{R_FX0}:G{R_FXF}', FormulaRule(
+    formula=[f'AND($G{R_FX0}<>"",$G{R_FX0}>=0.11)'], fill=fill(OKBG),
+    font=Font(bold=True, color=OK)))
+an.conditional_formatting.add(f'G{R_FX0}:G{R_FXF}', FormulaRule(
+    formula=[f'AND($G{R_FX0}<>"",$G{R_FX0}<=0.05)'], fill=fill(REDBG),
+    font=Font(bold=True, color=RED)))
+r += 2
+
+# ── 2 · sazonalidade de vendas
+r = titulo_secao(an, r, NC_AN, 'Padrão sazonal de vendas',
+                 'vendas pela data do contrato · índice = média do mês ÷ média geral')
+R_SZ_H = r
+r = cab_tabela(an, r, ['Mês'] + ANOS[::-1] + ['Média 23–25', 'Índice', 'Dispersão',
+                                              'Classificação'] + [''] * 13, None, 26)
+R_SZ0 = r
+R_SZ_TOT_PH = R_SZ0 + len(MESES)          # linha do TOTAL, conhecida de antemão
+for mes in MESES:
+    an.row_dimensions[r].height = 18
+    c = an.cell(r, 1, mes); c.font = Font(name=F, size=9.5, bold=True, color=NAVY)
+    c.fill = fill(CALC); c.alignment = LEFTI; c.border = GRID
+    for j, ano in enumerate(ANOS[::-1], start=2):
+        d = DIVISOR[ano][mes]
+        c = an.cell(r, j, f"='{ano}'!$C${d}")
+        c.number_format = MOEDA0; c.font = Font(name=F, size=9.5, color=NAVY2)
+        c.fill = fill(CALC); c.alignment = RIGHT; c.border = GRID
+    for col, v, nf, bg, fo in (
+            (6, f'=ROUND(AVERAGE($B{r}:$D{r}),0)', MOEDA0, GOLDBG,
+             Font(name=F, size=9.5, bold=True, color=NAVY)),
+            (7, f'=IF($F${R_SZ_TOT_PH}=0,"",$F{r}/($F${R_SZ_TOT_PH}/12))', '0.00', CALC,
+             Font(name=F, size=10, bold=True, color=NAVY2)),
+            (8, f'=IF(OR($F{r}=0,COUNT($B{r}:$D{r})<2),"",'
+                f'ROUND(STDEV($B{r}:$D{r})/$F{r},2))', '0.00', CALC,
+             Font(name=F, size=9, color=MUTED)),
+            (9, f'=IF($G{r}="","",IF($H{r}>0.7,"Irregular",'
+                f'IF($G{r}>=1.2,"Forte",IF($G{r}<=0.8,"Fraco","Normal"))))', None, CALC,
+             Font(name=F, size=9, bold=True, color=NAVY2))):
+        c = an.cell(r, col, v); c.number_format = nf or 'General'
+        c.font = fo; c.fill = fill(bg); c.alignment = CTR if col > 6 else RIGHT
+        c.border = GRID
+    r += 1
+R_SZF = r - 1
+an.row_dimensions[r].height = 20
+c = an.cell(r, 1, 'TOTAL / MÉDIA'); c.font = Font(name=F, size=10, bold=True, color=WHITE)
+c.fill = fill(NAVY2); c.alignment = LEFTI; c.border = GRID
+for j in range(2, 10):
+    col = get_column_letter(j)
+    v = f'=ROUND(SUM({col}${R_SZ0}:{col}${R_SZF}),0)' if j <= 6 else None
+    c = an.cell(r, j, v); c.number_format = MOEDA0
+    c.font = Font(name=F, size=10, bold=True, color=GOLDS)
+    c.fill = fill(NAVY2); c.alignment = RIGHT; c.border = GRID
+R_SZ_TOT = r
+for txt, bg, cor in (('Forte', OKBG, OK), ('Fraco', REDBG, RED),
+                     ('Irregular', AMBBG, AMBER)):
+    an.conditional_formatting.add(f'I{R_SZ0}:I{R_SZF}', FormulaRule(
+        formula=[f'$I{R_SZ0}="{txt}"'], fill=fill(bg), font=Font(bold=True, color=cor),
+        stopIfTrue=True))
+r += 2
+
+# ── 3 · concentração e ticket
+r = titulo_secao(an, r, NC_AN, 'Concentração da carteira',
+                 'o quanto o ano depende de poucos projetos')
+R_CC_H = r
+r = cab_tabela(an, r, ['Ano', 'Projetos', 'Vendido', 'Ticket médio', 'Maior projeto',
+                       '% do maior', 'Top 3', '% do top 3', 'Leitura'] + [''] * 13,
+               None, 26)
+R_CC0 = r
+for ano in ANOS:
+    m = mapa_anos[ano]
+    Y = rgn(ano, LP[C_AUX2])
+    an.row_dimensions[r].height = 19
+    n = f'COUNT({Y})'
+    for col, v, nf, al in (
+            (1, ano, None, LEFTI), (2, f'={n}', '0', CTR),
+            (3, f"='{ano}'!$A$7", MOEDA0, RIGHT),
+            (4, f'=IF({n}=0,"",ROUND(\'{ano}\'!$A$7/{n},0))', MOEDA0, RIGHT),
+            (5, f'=IF({n}=0,"",MAX({Y}))', MOEDA0, RIGHT),
+            (6, f"=IF(OR({n}=0,'{ano}'!$A$7=0),\"\",MAX({Y})/'{ano}'!$A$7)", PCT1, CTR),
+            (7, f'=IF({n}<3,"",ROUND(LARGE({Y},1)+LARGE({Y},2)+LARGE({Y},3),0))',
+             MOEDA0, RIGHT),
+            (8, f"=IF(OR($G{r}=\"\",'{ano}'!$A$7=0),\"\",$G{r}/'{ano}'!$A$7)", PCT1, CTR),
+            (9, f'=IF($H{r}="","",IF($H{r}>=0.45,"Muito concentrado",'
+                f'IF($H{r}>=0.3,"Concentrado","Distribuído")))', None, CTR)):
+        c = an.cell(r, col, v); c.font = Font(name=F, size=9.5, bold=(col in (1, 9)),
+                                              color=NAVY if col == 1 else NAVY2)
+        c.fill = fill(CALC); c.alignment = al; c.border = GRID
+        if nf: c.number_format = nf
+    r += 1
+R_CCF = r - 1
+for txt, bg, cor in (('Muito concentrado', REDBG, RED), ('Concentrado', AMBBG, AMBER),
+                     ('Distribuído', OKBG, OK)):
+    an.conditional_formatting.add(f'I{R_CC0}:I{R_CCF}', FormulaRule(
+        formula=[f'$I{R_CC0}="{txt}"'], fill=fill(bg), font=Font(bold=True, color=cor),
+        stopIfTrue=True))
+r += 2
+
+# ── 4 · leitura e ressalvas
+r = titulo_secao(an, r, NC_AN, 'Leitura do padrão')
+MX_IX = f'MAX($G${R_SZ0}:$G${R_SZF})'
+MN_IX = f'MIN($G${R_SZ0}:$G${R_SZF})'
+MN_DP = f'MIN($H${R_SZ0}:$H${R_SZF})'
+MX_PS = f'MAX($G${R_FX0}:$G${R_FXF})'
+LEIT = [
+    (f'="Maior índice de vendas: "&INDEX($A${R_SZ0}:$A${R_SZF},'
+     f'MATCH({MX_IX},$G${R_SZ0}:$G${R_SZF},0))&" ("&TEXT({MX_IX},"0.00")&", classificado como "&'
+     f'INDEX($I${R_SZ0}:$I${R_SZF},MATCH({MX_IX},$G${R_SZ0}:$G${R_SZF},0))&'
+     f'"). Menor índice: "&INDEX($A${R_SZ0}:$A${R_SZF},'
+     f'MATCH({MN_IX},$G${R_SZ0}:$G${R_SZF},0))&" ("&TEXT({MN_IX},"0.00")&")."'),
+    (f'="O mês de padrão MAIS CONFIÁVEL é "&INDEX($A${R_SZ0}:$A${R_SZF},'
+     f'MATCH({MN_DP},$H${R_SZ0}:$H${R_SZF},0))&" — dispersão de apenas "&'
+     f'TEXT({MN_DP},"0.00")&" entre os três anos, com índice "&'
+     f'TEXT(INDEX($G${R_SZ0}:$G${R_SZF},MATCH({MN_DP},$H${R_SZ0}:$H${R_SZF},0)),"0.00")&'
+     f'". Esse é o único tipo de mês em que o índice vale como referência de planejamento."'),
+    (f'="Dos 12 meses, "&COUNTIF($I${R_SZ0}:$I${R_SZF},"Irregular")&'
+     f'" estão marcados como Irregular e "&COUNTIF($I${R_SZ0}:$I${R_SZF},"Normal")&'
+     f'" como Normal. Índice alto com dispersão alta não é sazonalidade: é um projeto '
+     f'grande que caiu naquele mês em um dos anos."'),
+    (f'="Caixa: o mês que historicamente mais traz dinheiro é "&'
+     f'INDEX($A${R_FX0}:$A${R_FXF},MATCH({MX_PS},$G${R_FX0}:$G${R_FXF},0))&'
+     f'", com "&TEXT({MX_PS},"0%")&" do caixa do ano. Repare que o mês de maior VENDA e o '
+     f'de maior CAIXA não coincidem — é o descasamento entre vender e receber."'),
+]
+for txt in LEIT:
+    an.row_dimensions[r].height = 30
+    bloco(an, r, 1, NC_AN, txt, f=Font(name=F, size=9.5, color='2A3744'), bg=WHITE,
+          al=LEFTIW, bd=False)
+    r += 1
+an.row_dimensions[r].height = 8
+r += 1
+an.row_dimensions[r].height = 58
+bloco(an, r, 1, NC_AN,
+      '  Ressalvas honestas sobre a sazonalidade: (1) a base tem três anos fechados — 2023, 2024 e 2025 — e três '
+      'pontos por mês é pouco para afirmar padrão; trate o índice como sinal, não como previsão. '
+      '(2) A operação começou em março de 2023, então janeiro e fevereiro daquele ano puxam a média para baixo. '
+      '(3) Setembro de 2025 sozinho (R$ 572 mil, dois mega-projetos) distorce o mês inteiro — é por isso que a '
+      'coluna Dispersão existe: quando ela passa de 0,70, a planilha marca o mês como Irregular. '
+      '(4) 2026 aparece nas tabelas mas fica FORA do cálculo da média, porque o ano não fechou.',
       f=Font(name=F, size=8.5, color='41505D'), bg=GOLDBG, al=LEFTIW)
-print_cfg(pa, f'A1:{get_column_letter(NC_PA)}{r}')
+R_FIM_AN = r
+
+# ── gráficos da análise
+g3 = LineChart()
+g3.add_data(Reference(an, min_col=2, max_col=5, min_row=R_FX_H, max_row=R_FXF),
+            titles_from_data=True)
+g3.set_categories(Reference(an, min_col=1, min_row=R_FX0, max_row=R_FXF))
+estilo_eixo(g3, 'Fluxo de caixa · entradas por mês')
+for sr, cor in zip(g3.series, ('9FB0C4', BLUE, GOLD, NAVY2)):
+    sr.graphicalProperties.line.solidFill = cor
+    sr.graphicalProperties.line.width = 20000
+    sr.smooth = False
+    sr.marker.symbol = 'circle'
+    sr.marker.size = 5
+g3.width, g3.height = 17, 9
+GA_COL, GA_ALT = 'K', 19                  # 9 cm ≈ 19 linhas
+an.add_chart(g3, f'{GA_COL}{R_FX_H}')
+
+g4 = BarChart(); g4.type = 'col'
+g4.add_data(Reference(an, min_col=7, min_row=R_SZ_H, max_row=R_SZF),
+            titles_from_data=True)
+g4.set_categories(Reference(an, min_col=1, min_row=R_SZ0, max_row=R_SZF))
+estilo_eixo(g4, 'Índice sazonal de vendas  ·  1,00 = mês médio')
+g4.y_axis.numFmt = '0.00'
+pinta(g4.series[0], GOLD)
+g4.width, g4.height = 17, 9
+an.add_chart(g4, f'{GA_COL}{R_FX_H + GA_ALT}')
+
+g5 = BarChart(); g5.type = 'col'; g5.grouping = 'clustered'
+g5.add_data(Reference(an, min_col=2, max_col=5, min_row=R_SZ_H, max_row=R_SZF),
+            titles_from_data=True)
+g5.set_categories(Reference(an, min_col=1, min_row=R_SZ0, max_row=R_SZF))
+estilo_eixo(g5, 'Vendas mês a mês, ano a ano')
+for sr, cor in zip(g5.series, ('9FB0C4', BLUE, GOLD, NAVY2)):
+    pinta(sr, cor)
+g5.width, g5.height = 17, 9
+an.add_chart(g5, f'{GA_COL}{R_FX_H + 2 * GA_ALT}')
+
+print_cfg(an, f'A1:I{R_FIM_AN}')
+
 
 # ══════════════════════════════════════════════ ABA · Aporte Walton
 orig = openpyxl.load_workbook('/root/.claude/uploads/2544489f-df71-5f40-87c6-89025901a0cf/'

@@ -244,6 +244,77 @@ lin = [r for r in range(1, cs.max_row + 1) if cs.cell(r, 1).value == 'TOTAL ACUM
 ck('  Samuel · total acumulado', C('Crédito Samuel', f'B{lin[0]}'), 300)
 print(f'  {testes - n0} verificações')
 
+n0 = testes
+print('\nTESTE 8 · fluxo de caixa pela data do pagamento')
+AN = 'Análise & Sazonalidade'
+an = wbv[AN]
+R_FX0 = next(r for r in range(1, an.max_row + 1) if an.cell(r, 1).value == 'Janeiro')
+caixa = {}
+for aba in ANOS:
+    for b in verdade[aba]:
+        for p in b['projetos']:
+            for x in p['pagamentos']:
+                if x['valor'] is None or x['data'] is None:
+                    continue
+                k = (x['data'].year, x['data'].month)
+                caixa[k] = caixa.get(k, 0) + x['valor']
+for i, mes in enumerate(MESES):
+    r = R_FX0 + i
+    for j, ano in enumerate(ANOS[::-1]):
+        col = chr(ord('B') + j)
+        esp = xround(caixa.get((int(ano), i + 1), 0))
+        ck(f'  caixa {mes}/{ano}', C(AN, f'{col}{r}'), esp)
+    media = xround(sum(caixa.get((int(a_), i + 1), 0) for a_ in ('2023', '2024', '2025')) / 3)
+    ck(f'  caixa média {mes}', C(AN, f'F{r}'), media, tol=1.0)
+total_serie = sum(v for (y, _), v in caixa.items() if 2023 <= y <= 2026)
+soma_tab = sum(C(AN, f'{chr(ord("B") + j)}{R_FX0 + i}')
+               for i in range(12) for j in range(4)
+               if isinstance(C(AN, f'{chr(ord("B") + j)}{R_FX0 + i}'), (int, float)))
+ck('  soma da tabela de caixa = soma dos pagamentos datados',
+   xround(soma_tab), xround(total_serie), tol=1.0)
+print(f'  {testes - n0} verificações')
+
+n0 = testes
+print('\nTESTE 9 · sazonalidade de vendas')
+R_SZ0 = next(r for r in range(R_FX0 + 12, an.max_row + 1) if an.cell(r, 1).value == 'Janeiro')
+vendas = {}
+for aba in ANOS:
+    for b in verdade[aba]:
+        if b['mes'] == ANTERIOR:
+            continue
+        vendas[(aba, b['mes'])] = xround(sum(p['valor'] or 0 for p in b['projetos']))
+medias = []
+for i, mes in enumerate(MESES):
+    r = R_SZ0 + i
+    for j, ano in enumerate(ANOS[::-1]):
+        col = chr(ord('B') + j)
+        ck(f'  vendas {mes}/{ano}', C(AN, f'{col}{r}'), vendas[(ano, mes)])
+    m = xround(sum(vendas[(a_, mes)] for a_ in ('2023', '2024', '2025')) / 3)
+    medias.append(m)
+    ck(f'  média {mes}', C(AN, f'F{r}'), m, tol=1.0)
+geral = sum(medias) / 12
+for i, mes in enumerate(MESES):
+    ck(f'  índice {mes}', C(AN, f'G{R_SZ0 + i}'), medias[i] / geral, tol=0.01)
+print(f'  {testes - n0} verificações')
+
+n0 = testes
+print('\nTESTE 10 · gráficos apontam para as faixas certas')
+import zipfile
+zz = zipfile.ZipFile(ARQ)
+graf = sorted(x for x in zz.namelist() if 'charts/chart' in x)
+ck('  nº de gráficos', len(graf), 5)
+for g in graf:
+    x = zz.read(g).decode()
+    sers = re.findall(r'<cat><numRef><f>([^<]+)</f></numRef></cat>'
+                      r'<val><numRef><f>([^<]+)</f></numRef></val>', x)
+    ck(f'  {g} tem série', len(sers) >= 1, True)
+    def tamanho(ref):
+        m = re.search(r'\$[A-Z]+\$(\d+):\$[A-Z]+\$(\d+)$', ref)
+        return int(m.group(2)) - int(m.group(1)) + 1 if m else -1
+    for cat, val in sers:
+        ck(f'  {g} categorias e valores do mesmo tamanho', tamanho(cat), tamanho(val))
+print(f'  {testes - n0} verificações')
+
 print('\n' + '═' * 76)
 print(f'{testes} verificações · {len(falhas)} falha(s)')
 if falhas:

@@ -2,7 +2,7 @@
 
 Arquivo: `Valvic_Controle_Pagamentos.xlsx`
 Gerador: `gerar-controle-pagamentos.py` (edite o script, nunca o `.xlsx`)
-Extração: `extrair-pagamentos.py` · Testes: `testar-pagamentos.py` (1.270 verificações)
+Extração: `extrair-pagamentos.py` · Testes: `testar-pagamentos.py` (1.422 verificações)
 
 Reconstrução da planilha-mãe de faturamento e recebíveis. **O layout de digitação é o
 mesmo de sempre** — um projeto por linha, os pagamentos à direita, uma aba por ano,
@@ -14,7 +14,8 @@ cinco pagamentos por projeto. O que mudou foi o que estava quebrado por baixo.
 
 | Aba | Para que serve |
 |---|---|
-| **Painel** | Tudo calculado: KPIs do ano, ano a ano, mês a mês e os 12 maiores saldos em aberto. Não se digita nada aqui. |
+| **Painel** | 6 KPIs, ano a ano, mês a mês com acumulado × meta, 12 maiores saldos e leituras automáticas. Dois gráficos. Não se digita nada aqui. |
+| **Análise & Sazonalidade** | Fluxo de caixa pela data do pagamento, padrão sazonal de vendas com índice e dispersão, concentração da carteira. Três gráficos. |
 | **2026 · 2025 · 2024 · 2023** | Uma aba por ano, no layout de sempre. É onde se lança. |
 | **Aporte Walton** | Entradas, saídas e investimentos do aporte, com saldo calculado. |
 | **Crédito Samuel** | Lançamentos e total acumulado. |
@@ -101,6 +102,99 @@ posição de texto e fórmula.
 
 ---
 
+## O Painel
+
+**Seis KPIs** do ano corrente: vendido, recebido, a receber, % recebido, nº de projetos e
+ticket médio.
+
+**Ano a ano** — os quatro anos lado a lado, com ticket médio, mais um gráfico de barras
+comparando vendido × recebido.
+
+**Mês a mês** — vendas, recebimentos e saldo de cada mês, mais duas colunas que decidem o
+ano: `Acum. vendido` e `Meta acum.` (meta anual ÷ 12 × mês). O acumulado fica verde
+quando está à frente da meta e vermelho quando está atrás, e **para no mês corrente** —
+não estica uma linha falsa até dezembro. O gráfico combina as barras de venda e
+recebimento com as duas linhas de acumulado.
+
+**Maiores saldos em aberto** — os 12 maiores, com o % que cada um representa do total a
+receber.
+
+**Leitura do quadro** — três frases montadas pelas próprias fórmulas, que se reescrevem
+quando os números mudam:
+
+- concentração dos 3 maiores saldos sobre o total a receber;
+- ritmo do ano contra a meta acumulada **até o mês corrente** (usa `TODAY()`);
+- quantos projetos não receberam nada e quanto somam de contrato.
+
+---
+
+## A aba Análise & Sazonalidade
+
+### Fluxo de caixa realizado
+
+Doze meses × quatro anos, somando os pagamentos **pela data do pagamento**, não pela data
+do contrato. É a pergunta "quanto dinheiro entrou em outubro?", que a planilha antiga não
+conseguia responder porque as datas estavam corrompidas.
+
+A coluna `Peso no ano` mostra quanto cada mês representa do caixa médio anual. O padrão
+que aparece:
+
+| Mês | Peso no caixa |
+|---|---:|
+| Outubro | 20,5% |
+| Julho | 13,4% |
+| Setembro | 12,1% |
+| Janeiro | 1,8% |
+| Dezembro | 1,9% |
+
+O cálculo varre as cinco colunas de pagamento das quatro abas de ano — 20 `SUMIFS` por
+célula — e inclui o bloco `Anterior (2022)`, porque contrato de 2022 pago em 2023 é caixa
+de 2023.
+
+### Padrão sazonal de vendas
+
+Mesma matriz, mas por data de contrato, com quatro colunas de análise:
+
+```
+Média 23–25   → média dos três anos fechados (2026 fica de fora, o ano não acabou)
+Índice        → média do mês ÷ média geral mensal.  1,00 = mês médio
+Dispersão     → desvio padrão ÷ média dos três anos
+Classificação → Forte (≥1,20) · Fraco (≤0,80) · Normal · Irregular (dispersão > 0,70)
+```
+
+**A coluna Dispersão é o que separa padrão de ruído.** Setembro tem o maior índice do ano
+(2,43) e mesmo assim é marcado como Irregular: os três anos foram R$ 63k, R$ 43k e
+R$ 573k. Não é sazonalidade, é o setembro de 2025 sozinho.
+
+O que sobra depois desse filtro:
+
+| Mês | Índice | Dispersão | Classificação |
+|---|---:|---:|---|
+| Março | 1,38 | **0,12** | Forte |
+| Junho | 1,07 | 0,55 | Normal |
+| Outubro | 1,15 | 0,63 | Normal |
+| Agosto | 0,35 | 0,50 | Fraco |
+
+Março é o único mês com padrão realmente sólido: R$ 130k, R$ 141k e R$ 112k em três anos
+seguidos. Seis dos doze meses são Irregulares.
+
+### Concentração da carteira
+
+Por ano: nº de projetos, ticket médio, maior projeto e seu peso, top 3 e seu peso, com
+classificação automática (Distribuído · Concentrado · Muito concentrado).
+
+### Ressalvas
+
+Estão escritas dentro da aba, e são para levar a sério:
+
+1. Três anos fechados é pouco para afirmar sazonalidade — o índice é sinal, não previsão.
+2. A operação começou em março de 2023; janeiro e fevereiro daquele ano puxam a média
+   para baixo.
+3. Setembro de 2025 (R$ 572 mil em dois mega-projetos) distorce o mês inteiro.
+4. 2026 aparece nas tabelas mas fica fora do cálculo da média.
+
+---
+
 ## Como usar
 
 1. Abrir a aba do ano e achar o bloco do mês.
@@ -134,7 +228,12 @@ posição de texto e fórmula.
   pelas colunas de pagamento inteiras), mas não aparecerá no mês certo.
 - **O ranking de maiores saldos** usa `LARGE`; com dois saldos exatamente iguais, mostra
   o primeiro da lista duas vezes.
-- **A coluna X está oculta** — é auxiliar do ranking. Não apagar.
+- **As colunas X e Y estão ocultas** — são auxiliares do ranking e da concentração
+  (repetem saldo e valor do contrato só nas linhas de projeto). Não apagar.
+- **Os gráficos apontam para faixas fixas** do Painel e da Análise. Se você inserir linhas
+  nessas duas abas, os gráficos não acompanham — regere pelo script.
+- **A sazonalidade usa 2023, 2024 e 2025.** Quando 2026 fechar, ajuste `ANOS_CHEIOS` no
+  gerador para incluí-lo.
 - **A meta de cada ano** é digitada (célula I7 da aba do ano). 2024 e 2023 estão zeradas.
 
 ---
@@ -142,8 +241,11 @@ posição de texto e fórmula.
 ## Fórmulas
 
 Só funções da base do Excel 2007 (`IF`, `SUM`, `SUMPRODUCT`, `COUNT`, `COUNTIF`,
-`ROUND`, `MAX`, `LARGE`, `INDEX`, `MATCH`, `TEXT`, `OR`). Abre em qualquer versão do
-Excel, no LibreOffice e no Google Planilhas.
+`SUMIF`, `SUMIFS`, `AVERAGE`, `STDEV`, `ROUND`, `MAX`, `MIN`, `LARGE`, `INDEX`, `MATCH`,
+`TEXT`, `DATE`, `TODAY`, `MONTH`, `OR`, `AND`). Abre em qualquer versão do Excel, no
+LibreOffice e no Google Planilhas.
+
+Os gráficos são nativos do Excel (`barChart` / `lineChart`), sem imagem e sem macro.
 
 ---
 
@@ -152,7 +254,7 @@ Excel, no LibreOffice e no Google Planilhas.
 ```
 python3 extrair-pagamentos.py       # relatório da extração e das correções
 python3 gerar-controle-pagamentos.py
-python3 testar-pagamentos.py        # 1.270 verificações, 0 falha
+python3 testar-pagamentos.py        # 1.422 verificações, 0 falha
 ```
 
 `testar-pagamentos.py` calcula as fórmulas de verdade e reconcilia contra a planilha
@@ -160,3 +262,8 @@ original: cliente por cliente confere contrato e pagamentos, linha por linha con
 Recebido/Saldo/%/Situação, mês a mês e ano a ano confere os totais, confere o espelho do
 Painel, o ranking dos maiores saldos, se sobrou alguma data como texto e os totais do
 Aporte Walton e do Crédito Samuel.
+
+Cobre também as tabelas novas: cada célula do fluxo de caixa contra a soma independente
+dos pagamentos por data, cada célula da sazonalidade contra as vendas por mês, o cálculo
+do índice, e se os cinco gráficos apontam para faixas de categorias e valores do mesmo
+tamanho.
