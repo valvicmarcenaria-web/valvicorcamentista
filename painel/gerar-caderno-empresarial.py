@@ -1134,7 +1134,7 @@ page('Parte III · Economia da Operação', 'Fluxo de caixa · agosto e setembro
   <div class="card warn"><div class="ct">Aporte já consumido</div><div class="cv">R$ 71 mil</div>
     <p>Parcela do primeiro aporte usada para <b>cobrir o déficit de caixa de julho</b>. Não foi aplicada em
     máquina, estrutura ou expansão.</p></div>
-  <div class="card warn"><div class="ct">Passivo trabalhista</div><div class="cv">R$ 28,7 mil</div>
+  <div class="card warn"><div class="ct">Passivo trabalhista</div><div class="cv">R$ 30,0 mil</div>
     <p>Verbas e encargos dos seis desligamentos já ocorridos, <b>fora do fluxo acima</b>. Detalhamento na
     Parte IV.</p></div>
   <div class="card"><div class="ct">A receber sem data</div><div class="cv">R$ 87 mil</div>
@@ -1168,7 +1168,7 @@ PASS = [
     ('Samuel', 'Marceneiro · 9 meses', '01/08/2025', '30/04/2026', '2.500,00', '833,33', '2.500,00', '1.800,00', '5.133,33'),
     ('Deivison', 'Marceneiro · 9 meses', '01/09/2025', '31/05/2026', '2.500,00', '1.041,67', '2.500,00', '1.800,00', '5.341,67'),
     ('Joelson', 'Marceneiro · 15 meses', '01/02/2025', '30/04/2026', '1.950,00', '650,00', '650,00', '2.340,00', '3.640,00'),
-    ('Davi', 'Marceneiro · 3 meses', '01/02/2026', '30/04/2026', '1.950,00', '487,50', '650,00', '468,00', '1.605,50'),
+    ('Davi', 'Marceneiro · 6 meses', '01/11/2025', '30/04/2026', '1.950,00', '650,00', '1.300,00', '936,00', '2.886,00'),
     ('Filipe', 'Marceneiro · 3 meses', '01/03/2026', '31/05/2026', '1.700,00', '425,00', '566,67', '408,00', '1.399,67'),
 ]
 pl = ''.join(
@@ -1182,9 +1182,9 @@ page('Parte IV · Passivo Trabalhista', 'Levantamento · posição até o presen
      f"""
 <div class="kpis k4">
   <div class="kpi a"><div class="kl">Contratos encerrados</div><div class="kv">6</div><div class="kd">Equipe de produção · marceneiros</div></div>
-  <div class="kpi b"><div class="kl">Verbas rescisórias</div><div class="kv"><small>R$</small> 27.268<small>,84</small></div><div class="kd">13º, férias + 1/3 e FGTS</div></div>
-  <div class="kpi c"><div class="kl">Encargos patronais</div><div class="kv"><small>R$</small> 1.422<small>,45</small></div><div class="kd">Incidentes sobre o 13º</div></div>
-  <div class="kpi d"><div class="kl">Passivo total</div><div class="kv"><small>R$</small> 28.691<small>,29</small></div><div class="kd">Sem saldo de dias · sem multa de 40%</div></div>
+  <div class="kpi b"><div class="kl">Verbas rescisórias</div><div class="kv"><small>R$</small> 28.549<small>,34</small></div><div class="kd">13º, férias + 1/3 e FGTS</div></div>
+  <div class="kpi c"><div class="kl">Encargos patronais</div><div class="kv"><small>R$</small> 1.479<small>,00</small></div><div class="kd">Incidentes sobre o 13º</div></div>
+  <div class="kpi d"><div class="kl">Passivo total</div><div class="kv"><small>R$</small> 30.028<small>,34</small></div><div class="kd">Sem saldo de dias · sem multa de 40%</div></div>
 </div>
 
 <div class="sec"><span class="bar"></span><span class="tx">Apuração contrato a contrato</span><span class="ct">valores em reais · base salário contratual</span></div>
@@ -1194,17 +1194,17 @@ page('Parte IV · Passivo Trabalhista', 'Levantamento · posição até o presen
     <th class="num" style="width:14%">Férias + 1/3</th><th class="num" style="width:12%">FGTS 8%</th>
     <th class="num" style="width:13%">Subtotal</th></tr></thead>
   <tbody>{pl}
-    <tr class="tot"><td colspan="3">Total das verbas rescisórias</td><td class="num">4.087,50</td>
-      <td class="num">9.033,34</td><td class="num">14.148,00</td><td class="num">27.268,84</td></tr>
+    <tr class="tot"><td colspan="3">Total das verbas rescisórias</td><td class="num">4.250,00</td>
+      <td class="num">9.683,34</td><td class="num">14.616,00</td><td class="num">28.549,34</td></tr>
     <tr class="enc"><td colspan="6">Encargos patronais sobre o 13º<span class="fn">INSS patronal + terceiros / RAT 26,8% &nbsp;·&nbsp; FGTS 8%</span></td>
-      <td class="num">1.422,45</td></tr>
+      <td class="num">1.479,00</td></tr>
   </tbody>
 </table>
 
 <div class="band mt">
-  <div><div class="bl">Passivo trabalhista apurado</div><div class="bv">R$ 28.691,29</div></div>
+  <div><div class="bl">Passivo trabalhista apurado</div><div class="bv">R$ 30.028,34</div></div>
   <div class="br">O valor está concentrado no <b>tempo de casa, não no número de pessoas</b>: o FGTS
-    responde por <b>49% do total</b>, e o contrato mais antigo sozinho por <b>R$ 10.148,67</b>.</div>
+    responde por <b>51% do total</b>, e o contrato mais antigo sozinho por <b>R$ 10.148,67</b>.</div>
 </div>
 
 <div class="sec"><span class="bar"></span><span class="tx">Critérios da apuração</span></div>
@@ -1215,7 +1215,7 @@ page('Parte IV · Passivo Trabalhista', 'Levantamento · posição até o presen
       <li><b>Conclusão.</b> 30/04/2026, exceto Deivison e Filipe em 31/05/2026. Todos por demissão sem justa causa.</li>
       <li><b>FGTS.</b> 8% da remuneração de cada mês, sobre a duração integral do vínculo.</li>
       <li><b>Férias.</b> Proporcionais do período aquisitivo em curso, acrescidas do terço constitucional.</li>
-      <li><b>Encargos.</b> Incidem apenas sobre o 13º, por ser verba salarial. Confirmado enquadramento no Simples sem CPP, o passivo recua para <b>R$ 27.595,84</b>.</li>
+      <li><b>Encargos.</b> Incidem apenas sobre o 13º, por ser verba salarial. Confirmado enquadramento no Simples sem CPP, o passivo recua para <b>R$ 28.889,34</b>.</li>
     </ul></div>
   <div class="note warn"><div class="nt">Não computado nesta apuração</div>
     <ul>

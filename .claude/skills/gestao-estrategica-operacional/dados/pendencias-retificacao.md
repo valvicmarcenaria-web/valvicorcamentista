@@ -84,6 +84,25 @@ Substitui integralmente a posição anterior. **Leonardo saiu da carteira; Jairo
 vão a R$ 166.889; resultado de caixa fica em **+R$ 50.979 em agosto, +R$ 65.320 em setembro, +R$ 116.299
 nos dois meses**.
 
+## H-bis · Passivo trabalhista recalculado — admissão do Davi corrigida
+
+O Davi entrou em **01/11/2025**, não em 01/02/2026. São 6 meses de contrato, não 3.
+
+| | Antes | Depois |
+|---|---|---|
+| 13º proporcional | 487,50 | **650,00** (4/12) |
+| Férias + 1/3 | 650,00 | **1.300,00** (6/12) |
+| FGTS 8% | 468,00 | **936,00** (6 meses) |
+| Subtotal do Davi | 1.605,50 | **2.886,00** |
+
+**Reflexo nos totais:** 13º R$ 4.250,00 · férias R$ 9.683,34 · FGTS R$ 14.616,00 →
+**verbas R$ 28.549,34**; encargos R$ 1.479,00 (INSS 1.139,00 + FGTS 340,00) →
+**TOTAL R$ 30.028,34** (antes R$ 28.691,29, diferença de +R$ 1.337,05).
+Sensibilidade Simples sem CPP: **R$ 28.889,34**. FGTS passa a 51% do total.
+
+Atualizados: `walton-passivo-trabalhista.html`, o Caderno (Parte IV) e o mapa de documentos.
+O cenário real já trazia R$ 30 mil por arredondamento do Jonathan — coincidiu com o valor apurado.
+
 ## G · Fluxo de caixa — leitura de 08/08 (3ª foto)
 
 | | Valor |
