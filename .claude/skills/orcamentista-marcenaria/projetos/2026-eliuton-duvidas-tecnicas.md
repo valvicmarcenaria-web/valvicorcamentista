@@ -8,6 +8,46 @@ onde eu souber responder sozinha, respondi e marquei como premissa.
 
 ---
 
+# 🔄 17/08/2026 — O PROJETO CHEGOU. O QUE AS PRANCHAS RESPONDERAM
+
+Os 19 PDFs subiram no chat e foram lidos vetorialmente. Levantamento e preço em
+`corte-eliuton.py`; leitura e números em `2026-eliuton-brisas-da-pampulha.md`.
+
+## ✅ Respondido pelo desenho — não precisa perguntar
+
+| # | Resposta |
+|--:|---|
+| A1 | **12 conjuntos de marcenaria**: cozinha (torre, bancada 01, aéreo, ilha, acabamento), painel ripado do estar/jantar, gourmet (bancada 02 + cervejeira), área de serviço, lavabo externo e 3 banheiros. O **social térreo não tem marcenaria** — é todo mármore. |
+| A2 | **As bancadas são de pedra.** Carrara e Travertino, em todo ambiente. Fora do nosso custo — mas *quem fornece* ainda é pergunta (ver abaixo). |
+| A3 | Louças e metais **Deca**, especificados peça a peça. Não fornecemos. |
+| A5 | **Existe ripado** e existe **acabamento de forro em MDF** (lavabo externo, 130 × 40). |
+| A7 | **Área de serviço tem sim** — e é o 2º maior conjunto do job: 359 × 55 × 226, com nichos de máquina e secadora, 2 varais retráteis, 2 gavetões e tábua de passar embutida. |
+| B1 | **MDF ARAUCO 18 mm** em quatro acabamentos: **Nogueira Persa** (dominante) · **Sálvia** (só a cozinha) · **Jequitibá** (só o master) · **Beige** (só 4 prateleiras do banheiro 02). |
+| B2 | **Interno na cor.** As perspectivas de armário aberto mostram o interior todo na cor. |
+| B6 | **Espelhos:** portas espelhadas de correr no master (3 folhas), banheiro 02 (2) e banheiro 04 (2). **Vidro:** 2 portas basculantes do gourmet, com estrutura em metal fendi. |
+| C3 | **Pé-direito 308, forro rebaixado 288** na cozinha; 240 na área de serviço; 270 nos banheiros. |
+| C5 | ⚠️ **As pranchas SEMPRE foram vetoriais.** O que engana é que o texto foi convertido em curvas — daí zero palavras extraíveis e o conector do Drive só devolver o carimbo OCR-ado. Diagnóstico de 13/08 corrigido. |
+
+## ❓ O que o desenho NÃO resolve — e continua valendo dinheiro
+
+| # | Pergunta | Impacto |
+|--:|---|--:|
+| **B1b** | **Preço de compra da linha Arauco madeirada.** Nogueira Persa e Jequitibá não têm preço fechado na base — o `corte-lm.py` deixou "ver FLAG premium" e nunca preencheu. | **±R$ 58.100** no preço. **É o item nº 1.** |
+| **B3b** | **Passo do ripado.** A 1:25 uma ripa de 4 cm dá 1,6 mm no papel — não dá para ler. Premissa: régua 4,0 + espaçamento 1,5. | muda ripa a ripa e a fita |
+| **B3c** | A prancha diz "painel **parte ripado parte liso**" mas a elevação mostra tudo ripado. **Qual é?** | o painel é 17% da chapa e 53% da fita |
+| **A2b** | **A Valvic fornece o mármore ou não?** | escopo inteiro à parte |
+| **C4** | **Falta a folha 02/10** — detalhe da área de serviço. É ela que diz se as portas do topo são de abrir ou basculantes. | báscula de 113 cm não é HK-xs, é **Aventos**: R$ 600 vs 250 |
+| **A4** | **Medidas exatas dos eletros.** As pranchas dão o vão, não o aparelho. Geladeira 103, cervejeira 70, forno e micro em nicho de 58 e 40. | vão errado = chapa refeita |
+| **F1** | **RT para a arquiteta.** | **+24% a +30%** — segue a maior alavanca isolada |
+| **D5** | **Puxadores.** O projeto pede "puxador tipo cava" 50 vezes. Adotei **cava usinada R$ 50/peça**. | R$ 2.500 de custo, R$ 5.800 de preço |
+| **F2–F5** | Caixa, prazo, pagamento, validade. | |
+
+**Nova, que só apareceu com o desenho na mão:** os **22 dias de dupla + 5 carretos
++ 4 visitas (R$ 17.200)** são estimativa minha e valem **28% do custo direto**.
+Não há na base um job desse porte para calibrar. **O Jonathan precisa cravar.**
+
+---
+
 # PARTE 1 — PARA A ARQUITETA / O CLIENTE
 
 ## A. Fronteira de escopo — o que é marcenaria nossa
@@ -174,22 +214,28 @@ Adoto e **declaro na proposta** — assim nada fica escondido:
 
 | | Armadilha | Como evito |
 |---|---|---|
-| 1 | **Desenho raster.** A leitura será visual, não vetorial. | Pedir vetorial. Se não vier, declarar as cotas lidas e marcar as estimadas. |
+| 1 | ~~**Desenho raster.**~~ **ERA VETORIAL O TEMPO TODO** [17/08]. O texto é que foi convertido em curvas. Aferi a escala no próprio desenho (a porta 80×210 mediu 80,0 × 210,0) e medi o painel ripado na geometria: 570,6 × 287,5. | **Nunca concluir "raster" só porque não sai texto.** Abrir o PDF e contar os vetores: 25.703 traços na folha 01/08. |
+| 1b | **Peça maior que a chapa.** A ripa de 288 cm não cabe em 275 × 185 — e o `nest` devolveu 111 chapas a 9% sem reclamar. | Guarda de peça fora de chapa **antes** de qualquer conta. Ver `quantitativo.md`. |
+| 1c | **Nome de arquivo mente.** `PR 05_COZINHA` é a folha 08/08 (gourmet). | **Ler o carimbo, sempre.** Foi o que o Jonathan já tinha dito. |
 | 2 | **Nesting subempacota.** | Dois empacotadores (faixa + best-fit) × 4 ordenações. Aproveitamento acima de ~75% numa chapa só → conferir à mão. |
 | 3 | **Cor × espessura puxa chapa mínima.** | Testar consolidar espessura dentro da cor — no Honda economizou 2 chapas. |
 | 4 | **Vidro/espelho por folha, não por m².** | Nunca usar os R$ da tabela como R$/m². |
 | 5 | **Crédito de área ≠ crédito de chapa.** | Se um item sair do escopo, **re-rodar o nesting**, nunca estimar o delta por m². |
 | 6 | **Visibilidade se decide por FACE, não por peça.** | A mesma chapa pode ter uma face contra a parede e a outra dentro de um nicho aberto. |
-| 7 | **Sanidade: R$/m² de chapa.** | Faixa da casa: 626 (Rizzi) · 647 (aéreo cozinha) · 739 (SPE decorado) · 834 (Honda, job pequeno). Fora da faixa = investigar antes de entregar. |
+| 7 | **Sanidade: R$/m² de chapa.** | Faixa da casa: 626 (Rizzi) · 647 (aéreo cozinha) · 739 (SPE decorado) · 834 (Honda, job pequeno) · **846 (Eliuton)**. O Eliuton fica no topo da faixa apesar de ser job grande porque **logística (28%) e terceirizados (15%) pesam mais que a chapa (39%)** — é casa inteira, 3 pavimentos, 12 conjuntos. Se o Jonathan cravar menos dias de montagem, esse número cai. |
 | 8 | **Ripado é gargalo de fita.** | Na Rizzi foi 42% de toda a fita. Contar ripa a ripa, não por área. |
 
 ---
 
-## O que ainda falta para eu começar o levantamento
+## ~~O que ainda falta para eu começar o levantamento~~ — RESOLVIDO 17/08
 
-**Os 7 PDFs no chat:** `PR 01` a `PR 05` COZINHA e `PR 06`/`PR 07` A. GOURMET.
-É o único bloqueio que resta — as decisões de ferragem já estão quase todas fechadas.
-Testei o leitor do Drive em quatro deles — **todos devolvem só o carimbo OCR-ado**,
-inclusive os dois `PR 05`, que voltam idênticos porque a única coisa que o OCR pega é
-o carimbo, que é igual nos dois. A diferença de conteúdo entre eles é real; eu é que
-não a enxergo por esse caminho.
+Os 19 PDFs subiram no chat e o levantamento está feito: **169,93 m² de chapa ·
+49 chapas · R$ 126.400 / 143.800 / 162.500** nos três cenários.
+
+**A fila agora é outra**, e por ordem de dinheiro:
+
+1. **Preço da chapa Arauco madeirada** (±R$ 58.100) — uma ligação ao fornecedor.
+2. **A Valvic fornece o mármore?** — escopo inteiro à parte.
+3. **RT para a arquiteta** (+24% a +30%).
+4. **Dias de montagem** — R$ 17.200 são estimativa minha, 28% do custo direto.
+5. **Folha 02/10** e o passo do ripado — os dois últimos buracos de desenho.

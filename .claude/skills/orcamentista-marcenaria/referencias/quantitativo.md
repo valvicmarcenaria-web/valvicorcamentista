@@ -255,3 +255,41 @@ em balanço com fixação invisível.
 > área**. Não vale quando isso empurra a chapa consolidada para uma chapa a mais —
 > testar, não supor (no Honda, consolidar o Amêndola **antes** de corrigir o packer
 > custava R$ 100 a mais).
+
+---
+
+## ⛔ Peça que não cabe na chapa [Eliuton 17/08/2026]
+
+> **O empacotador não avisa. Ele obedece.** Se a peça é maior que 275 × 185, o
+> `nest` abre **uma chapa por peça** e devolve um número que passa por plano de
+> corte válido. Verificar SEMPRE antes de somar custo.
+
+No Eliuton o painel ripado do estar/jantar tem **288 cm de altura** e a ripa
+saiu inteira. 288 > 275: não cabe deitada nem em pé. O motor devolveu
+**111 chapas de Nogueira Persa com 9% de aproveitamento** — e o relatório
+imprimiu isso sem reclamar, como se fosse um plano de corte.
+
+Depois de emendar a ripa em 2 trechos de 144 (a emenda cai na horizontal do
+acabamento sobre a porta de correr): **10 chapas, 69% de aproveitamento**.
+Diferença de R$ 60.600 no custo de chapa.
+
+**Peça fora de chapa não é problema de empacotamento — é decisão de marcenaria:**
+ou emenda, ou muda o desenho. Quem decide onde a emenda cai é quem desenha o
+móvel, não o algoritmo.
+
+### A guarda (copiar em todo motor novo)
+```python
+_fora = [(m, e, a, d, c, l) for m, e, a, d, c, l, q, r in P
+         if max(c, l) > CH_C or min(c, l) > CH_L]
+if _fora:
+    print('PEÇAS QUE NÃO CABEM NA CHAPA DE 275 × 185 — corrigir antes de orçar')
+    for m, e, a, d, c, l in _fora:
+        print(f'  {m} {e} mm · {a} · {d}: {c:.0f} × {l:.0f} cm')
+```
+Roda **antes** de qualquer conta e imprime em destaque. No Eliuton pegou uma
+segunda peça que eu não tinha visto: o rodapé da área de serviço, 359 cm.
+
+### Onde isso morde
+Altura de pé-direito. Painel de forro a piso, lateral de torre alta, costas de
+armário até o teto — tudo que passa de 2,75 m. Num apartamento com pé-direito
+de 2,60 nunca aparece; numa casa com forro a 2,88 aparece em todo painel.

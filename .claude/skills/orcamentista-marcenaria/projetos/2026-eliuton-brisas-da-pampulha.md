@@ -1,155 +1,169 @@
-# ELIUTON — Residência Brisas da Pampulha
+# ELIUTON RIBEIRO — Residência Brisas da Pampulha
 
-**Data:** 13/08/2026 · **Status:** ⛔ **projeto NÃO lido** — ver "O bloqueio" abaixo.
-**Pasta no Drive:** `1L1y1ZSq1bIpLVSc-Znjm_14ECRreaBAo` — 19 arquivos, todos PDF,
-subidos em 13/08/2026 por `valvicmarcenaria@gmail.com`.
+**Data:** 13/08 (bloqueio) → **17/08/2026 (projeto LIDO e orçado)**
 **Autoria:** Arq. **Luciana Beatriz Simplício** — Núcleo SC Arquitetura ·
-tel. (31) 3004-3387.
+(31) 3004-3387 · CAU MG A54855-3
+**Motor:** `corte-eliuton.py` · **Dúvidas:** `2026-eliuton-duvidas-tecnicas.md`
 
 ---
 
-## Inventário da pasta
+## O número
 
-### Documentos-mestre (2)
-| Arquivo | Tam. | Leitura |
-|---|--:|---|
-| `PROJ. ELTN_A3_ÁREAS MOLHADAS-AS E BANHEIROS.pdf` | 3,1 MB | ✅ **legível** — export de PowerPoint |
-| `PLANTAS COTADAS - Executivo[1]_…-Model.pdf` | 1,8 MB | ❌ só devolve *"PÉ DIREITO DUPLO"* |
+| Cenário | Ferragem | Custo direto | **Investimento** | MC real | Garantia |
+|---|---|--:|--:|--:|--:|
+| 1 · Telescópica | padrão · pistão simples | 58.955 | **R$ 126.400** | 33,4% | 2 anos |
+| 2 · Hardt | Hardt · oculta Hardt · Blum HK-xs | 61.219 | **R$ 143.800** | 37,4% | 5 anos |
+| 3 · Hettich | Novisys · oculta Quadro · Blum HK-xs | 62.213 | **R$ 162.500** | 41,7% | 10 anos |
 
-### Série PR NN — cozinha e gourmet (8 arquivos)
-`PR 01` a `PR 05` **COZINHA** · `PR 06` e `PR 07` **A. GOURMET**
-⚠️ ~~`PR 05_COZINHA` duplicado~~ — **NÃO são duplicatas** [Jonathan 13/08]. Mesmo nome,
-conteúdos diferentes. Eu tinha julgado pelo nome do arquivo. O leitor do Drive devolve
-os dois idênticos porque só faz OCR do **carimbo**, que é igual nos dois.
+**169,93 m² de chapa · 49 chapas · 68% de aproveitamento médio · 580 m de fita ·
+94 dobradiças · 17 gavetas · 9 básculas · 50 cavas usinadas.**
 
-### Série PR NN-10 — áreas molhadas (9 arquivos)
-`01-10` ÁREA SERVIÇO · `03-10` LAVABO EXTERNO · `04-10` BANHEIRO SOCIAL TÉRREO ·
-`05-10` e `06-10` BANHEIRO MASTER · `07-10` e `08-10` BANHEIRO SOCIAL 1º PAV ·
-`09-10` e `10-10` BANHEIRO 04
-
-> ⚠️ **`PR 02-10` NÃO ESTÁ NA PASTA.** A sequência é 01, _(02 faltando)_, 03…10.
-> Pedir ao cliente ou à arquiteta.
+Com RT de 10% para a arquiteta: **157.100 · 182.000 · 210.500** (+24% a +30%).
 
 ---
 
-## O que o documento legível diz — e por que ele não resolve
+## Como o projeto foi lido
 
-O A3 compilado é o **pacote de acabamentos das áreas molhadas**, não de marcenaria:
+Os 19 PDFs chegaram por upload em 17/08. **Não eram raster** — como eu tinha
+diagnosticado em 13/08 pelo OCR instável do conector do Drive. São **vetoriais
+com o texto convertido em curvas**: por isso zero palavras extraíveis e por isso
+o conector só devolvia o carimbo OCR-ado. Duas coisas diferentes que pareciam a
+mesma.
 
-| Ambiente | Piso | Parede |
-|---|--:|--:|
-| Lavanderia | 5,42 m² | 23,00 m² |
-| Lavabo externo | 2,55 m² | 7,90 m² + 4,80 m² de destaque |
-| *(sem nome no extrato)* | 4,34 m² | 12,75 m² + 5,71 m² de destaque |
-| Banheiro social térreo | 4,06 m² | 13,50 m² + 8,12 m² de destaque |
-| Banheiro suíte 02 | 4,20 m² | 16,14 m² + 7,22 m² de destaque |
-| Banheiro suíte master | 9,20 m² | 21,70 m² + 5,20 + 6,65 m² de destaque |
+Lidos com PyMuPDF, renderizados a 1,4× e ampliados onde a cota era pequena.
 
-Especifica **porcelanato** (Portinari York / Sense Travertino / Ritual, Embramaco Gran
-Ônix, Ceusa Traços Mônaco), **mármore travertino** e tijolete, **azulejo Portobello
-Gouache Nuage**, e **louças e metais Deca** (Axis, Level, Black Matte, Red Gold).
+**A escala foi aferida no próprio desenho**, não assumida: a 1:25 em A3,
+1 pt = 0,88195 cm reais. Medindo a porta de passagem desenhada, deu
+**80,0 × 210,0** — exatamente a cota escrita `80X210`. Com a escala travada,
+medi o painel ripado direto na geometria: **570,6 × 287,5 cm**, contra 572 na
+cadeia de cotas da planta e 288 na elevação. Bate.
 
-**Nada disso é nosso.** É revestimento, louça e metal — o escopo do revestimentista e
-do hidráulico. Não há uma linha de marcenaria no arquivo que consegui ler.
+### ⚠ Os nomes dos arquivos não correspondem às folhas
+| Arquivo | Folha real |
+|---|---|
+| `PR 05_COZINHA` | **08/08** — Área Gourmet, bancadas 02 e 03 |
+| `PR 05_COZINHA (1)` | **05/08** — Cozinha, ilha |
 
-**E a marcenaria está exatamente onde não consigo ler:** as 5 pranchas da COZINHA e as
-2 da ÁREA GOURMET.
+O Jonathan tinha avisado em 13/08 que os dois `PR 05` não eram duplicatas.
+Estava certo — e o motivo é este. **O carimbo é a única referência confiável.**
 
----
+### São DUAS séries, não uma
+- **01/08 a 08/08** — cozinha e área gourmet · datadas 12/12/25
+- **01/10 a 10/10** — área de serviço e banheiros · datadas 17/12/25
 
-## ⛔ O bloqueio
-
-As 17 pranchas PR são **PDFs de CAD**. O leitor do conector do Drive devolve apenas o
-carimbo, OCR-ado e com erro:
-
-```
-"Model \n\nNÚCLEO\n\nBC ARQUITETERA\n\nLUCIANA BEATRIZ SIMPLICIO\n\nGOUTAL STA…"
-```
-
-Sem cota, sem elevação, sem legenda. **Não dá para orçar a partir disso.**
-
-E `drive.google.com` está **bloqueado pela política de rede** deste ambiente — a tentativa
-de baixar direto morre no gateway:
-
-```
-connect_rejected · gateway answered 403 to CONNECT · host: drive.google.com:443
-```
-
-### O caminho que funciona
-**Subir os PDFs no chat**, como foi feito com a prancha AR-18 da Honda. Ali eu extraio a
-geometria vetor a vetor — escala aferida no próprio desenho, cada linha lida em
-coordenada — e o levantamento sai das cotas, não de estimativa.
-
-**Prioridade, se for para subir aos poucos:** as 5 da COZINHA, depois as 2 da GOURMET,
-depois `PLANTAS COTADAS`. As 9 de banheiro provavelmente só têm marcenaria se houver
-gabinete/nicho — conferir.
+⚠ **A folha 02/10 continua faltando.** É o detalhamento da área de serviço, e
+as duas legendas da folha 01/10 ("portas de abrir" e "portas basculantes")
+mandam ver o detalhe justamente nela.
 
 ---
 
-## A confirmar
-1. **Qual é o escopo de marcenaria** neste projeto. O único arquivo legível é de
-   revestimento. Cozinha e gourmet podem ou não ter marcenaria nossa.
-2. **`PR 02-10`** — falta na pasta.
-3. ~~`PR 05_COZINHA` duplicado~~ — resolvido: são duas pranchas diferentes.
-4. **Situação de caixa e MC** — quando houver escopo.
+## Escopo — 12 conjuntos de marcenaria
 
+| # | Conjunto | Folha | Cor | Chapa | Investimento (cen. 2) |
+|---|---|---|---|--:|--:|
+| 1 | Torre quente + nicho geladeira · 187×70×290 | 04/08 | Nogueira Persa | 18,75 m² | 14.300 |
+| 2 | Acabamento superior (faixa 15 sob o forro) | 02–04/08 | Nogueira Persa | 0,81 m² | 500 |
+| 3 | Bancada 01 · armário inferior 355×70×88 | 03/08 | Sálvia | 16,19 m² | 12.100 |
+| 4 | Aéreo 351×40×96 · 5 portas | 04/08 | Sálvia | 12,81 m² | 8.900 |
+| 5 | Ilha 226×70×88 | 05/08 | Sálvia | 12,59 m² | 9.600 |
+| 6 | **Painel ripado do estar/jantar 572×288** | 02/08 | Nogueira Persa | 28,45 m² | **20.800** |
+| 7 | Gourmet · bancada 02 + cervejeira 215×290 | 07–08/08 | Nogueira Persa | 19,77 m² | 17.100 |
+| 8 | **Área de serviço 359×55×226** | 01/10 | Nogueira Persa | 32,54 m² | **26.600** |
+| 9 | Lavabo externo · painel + gabinete | 03/10 | Nogueira Persa | 6,59 m² | 4.900 |
+| 10 | Banheiro master · espelheira + gabinete **ripado** | 06/10 | **Jequitibá** | 8,73 m² | 11.000 |
+| 11 | Banheiro 02 (social 1º pav) | 07–08/10 | Nog. Persa + **Beige** | 6,67 m² | 8.800 |
+| 12 | Banheiro 04 | 09–10/10 | Nogueira Persa | 6,02 m² | 9.200 |
 
----
+**Banheiro social térreo (04/10) não tem marcenaria** — cuba esculpida,
+prateleira, porta e nicho são todos em mármore travertino. A única peça de MDF
+citada lá é a porta pivotante, que já está contada no painel da cozinha.
 
-## 13/08 — segunda tentativa de leitura, e o motor montado
-
-Testei o `read_file_content` em **quatro** pranchas da cozinha (PR 01, 02, 05 e
-PR 05 (1)). Todas devolvem o mesmo carimbo OCR-ado, com grafias diferentes a cada
-leitura — `SC ARBUITETURA`, `BC ARQUITETERA`, `BC ARBUITETURA`, `ROUTETAANSA`,
-`GOUTAL STA`. Grafia instável na mesma origem é **assinatura de OCR sobre imagem**:
-as pranchas são **raster**, não vetoriais.
-
-Consequências, já registradas:
-1. Mesmo com o arquivo em mãos, **a leitura será visual**, não vetor a vetor como na
-   prancha AR-18 da Honda. Resolução importa.
-2. Baixar pelo conector **não fecha a conta**: a menor prancha da cozinha (182 KB)
-   vira ~243 mil caracteres em base64 para chegar, e o mesmo tanto para gravar em
-   disco. ~120 mil tokens **por prancha**, e são cinco. Estoura antes da terceira.
-3. `drive.google.com` segue bloqueado na política de rede (403 no CONNECT).
-
-**Entregue mesmo assim:** `2026-eliuton-duvidas-tecnicas.md` (o levantamento de
-dúvidas, que o Jonathan pediu para vir antes) e `corte-eliuton.py` (o motor com os
-três cenários e a regra do ripado já calibrados — falta só a geometria).
+### Chapa especificada — a dúvida A/B está respondida
+O executivo especifica **MDF ARAUCO 18 mm** em quatro acabamentos:
+**Nogueira Persa** (a cor dominante) · **Sálvia** (verde — só a cozinha:
+aéreo, bancada 01, ilha) · **Jequitibá** (só o banheiro master) ·
+**Beige** (só as 4 prateleiras do nicho do banheiro 02).
 
 ---
 
-## 13/08 — "não consegue acessar pelo conector do Drive?" [Jonathan]
+## ⛔ O que NÃO está no número
 
-**Acessar, sim. Ler o desenho, não.** As duas coisas são diferentes e vale registrar
-por quê, para não se refazer esse teste toda vez.
+**Todo o mármore.** As pranchas especificam Carrara e Travertino em
+praticamente todo ambiente: bancadas 01, 02 e 03; a **ilha tipo cascata** e o
+acabamento sob ela; o **ripado da bancada 03 do gourmet — que é de mármore, não
+de madeira**; rodabancas; o "detalhe caixa" da cozinha; nichos com LED; cubas
+esculpidas; prateleiras; a porta de manutenção do banheiro social.
 
-| O que | Funciona? | O que acontece |
-|---|:--:|---|
-| Listar a pasta, ver metadados | ✅ | 19 arquivos, datas, tamanhos, autoria — tudo veio |
-| `read_file_content` numa prancha PR | ⚠️ | devolve **só o carimbo**, OCR-ado e com erro |
-| `download_file_content` | ❌ | chega em base64 **pelo meu contexto**: ~120 mil tokens por prancha |
-| `copy_file` → converter p/ Google Doc | ❌ | a ferramenta **não aceita mimeType de destino** |
-| `update_file` → mudar o tipo | ❌ | só mexe em título e pasta |
-| Baixar direto de `drive.google.com` | ❌ | política de rede: `403 no CONNECT` |
+Isso é marmoraria. Se a Valvic for fornecer, é orçamento à parte e muda o total.
+**Perguntar ao Jonathan antes de mandar qualquer proposta.**
 
-O gargalo real é que as pranchas são **raster**. Não existe camada de texto para o
-conector puxar — ele roda OCR, e OCR de prancha de CAD acerta o carimbo (letra grande,
-fundo limpo) e erra a cota (número pequeno, encostado em linha de chamada).
+Também fora: louças e metais Deca, eletrodomésticos, churrasqueira, revestimentos,
+e os móveis soltos (mesa Vicenza, cadeiras Napoli, buffet elipse, sofá e poltronas
+Faruk, banquetas).
 
-### Os dois caminhos que funcionam
+---
 
-1. **Subir os PDFs aqui no chat.** É o caminho da prancha AR-18 da Honda. Aí eu abro a
-   imagem e leio o desenho — não é OCR, é leitura visual: enxergo onde a cota está,
-   a que elemento ela pertence e como as vistas se amarram. É isso que permite orçar.
-2. **Se preferir o Drive:** o `read_file_content` também aceita `image/png` e
-   `image/jpeg`. Exportar cada prancha como **PNG em alta** (300 dpi) e subir na pasta
-   dá uma via pelo conector. Menos direto que o item 1, mas evita reenviar arquivo.
+## Um erro que o motor pegou — e a guarda que ficou
 
-### Um atalho que ajuda pouco
-No Drive, *botão direito → Abrir com → Documentos Google* roda o OCR completo do Google
-e o `read_file_content` no Doc resultante traria **todo** o texto, cotas inclusive.
-Só que vem como **lista solta de números**, sem saber qual cota é de qual elemento.
-Serve para conferir, não para levantar.
+A ripa do painel do estar/jantar tem **288 cm de altura**. A chapa tem
+**275 × 185**. Ela não cabe — nem deitada, nem em pé.
 
-**Conclusão:** o conector não é o problema, o formato é. Prancha vetorial ou imagem em
-alta resolução resolve; o PDF raster atual não.
+O empacotador não reclamou: ele simplesmente abriu **uma chapa por ripa**.
+Resultado: **111 chapas de Nogueira Persa com 9% de aproveitamento**, um número
+que passa por plano de corte válido se ninguém olhar a coluna de aproveitamento.
+
+Peça que não cabe na chapa **não é problema de empacotamento, é erro de projeto
+de marcenaria**: ou emenda, ou muda o desenho. Aqui a emenda cai na horizontal
+do acabamento sobre a porta de correr — ripa em 2 trechos de 144. Corrigido,
+a Nogueira 18 mm caiu de 111 para **10 chapas** e o aproveitamento subiu para
+69%.
+
+**Ficou uma guarda no motor** que lista qualquer peça fora de chapa antes de
+qualquer conta. Ela pegou uma segunda: o rodapé da área de serviço, 359 cm.
+Ver `referencias/quantitativo.md`.
+
+---
+
+## As premissas que mais mexem no número
+
+| # | Premissa adotada | Se mudar |
+|---|---|--:|
+| 1 | Chapa Arauco madeirada cotada como **cor** (500/600/300) | como **especial**: +R$ 58.100 de preço |
+| 2 | **Ripado 100%** no painel do estar/jantar | a prancha diz "parte ripado parte liso" |
+| 3 | Ripa 4,0 cm + espaçamento 1,5 (passo 5,5) | ilegível a 1:25 — só a arquiteta sabe |
+| 4 | **22 dias de dupla** + 5 carretos + 4 visitas = R$ 17.200 | 28% do custo direto |
+| 5 | Fundos **na cor** (as perspectivas mostram interior na cor) | em branco: −R$ 2.274 |
+| 6 | MDF **Beige** só nas 4 prateleiras do banheiro 02 | trocar por Nogueira: −R$ 2.092 |
+| 7 | Básculas do topo da área de serviço com **HK-xs** | 113 cm de altura pede **Aventos** (R$ 600 vs 250) |
+
+A **1** é a mais cara de todas e a mais fácil de resolver: é uma ligação para o
+fornecedor. **Nogueira Persa e Jequitibá são madeirados Arauco e a base da casa
+nunca fechou o preço dessa linha** — o `corte-lm.py` deixou a marca "ver FLAG
+premium" e ela nunca foi preenchida. Enquanto isso não fechar, o número tem
+±R$ 58 mil de incerteza. É o item nº 1 antes de propor qualquer coisa.
+
+---
+
+## Onde o dinheiro está
+
+- **Painel ripado (20.800) e área de serviço (26.600) somam 33% do projeto.**
+  São os dois conjuntos onde vale gastar tempo de conferência.
+- O painel sozinho consome **28,45 m² de chapa (17%) e 305 m de fita (53% de
+  toda a fita do projeto)**. É o gargalo de fita da casa — exatamente o que
+  `laminacao-e-construcao.md` avisa.
+- A **cava usinada** aparece 50 vezes: R$ 2.500 de custo, R$ 5.800 de preço.
+  Se virar perfil Rometal muda a conta e a estética; decisão do Jonathan (D5).
+- **Cor que não divide chapa cobra caro pelas peças pequenas:** Beige (1,33 m²)
+  e Jequitibá 18 mm (0,77 m²) consomem chapa inteira cada.
+
+---
+
+## Inventário da pasta (19 arquivos)
+
+| Série | Folhas | Conteúdo |
+|---|---|---|
+| Cozinha/Gourmet | 01–08 de 08 | layout, elevações, bancada 01, torre e aéreo, ilha, gourmet layout, gourmet elevação, gourmet bancadas 02/03 |
+| Áreas molhadas | 01, 03–10 de 10 | serviço, lavabo, social térreo, master ×2, banheiro 02 ×2, banheiro 04 ×2 |
+| Mestres | — | `PLANTAS COTADAS` (A0, vetorial) · `PROJ. ELTN_A3` (pacote de revestimento, 7 pág.) |
+
+**Falta a 02/10.**

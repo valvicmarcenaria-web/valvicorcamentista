@@ -1,24 +1,27 @@
 # -*- coding: utf-8 -*-
-"""ELIUTON · Residência Brisas da Pampulha — MOTOR DE LEVANTAMENTO E PREÇO.
+"""ELIUTON · Residência Brisas da Pampulha — LEVANTAMENTO E PREÇO.
 
-⛔ ESQUELETO. A lista `pecas` está VAZIA — as pranchas ainda não foram lidas.
-   Ver `2026-eliuton-brisas-da-pampulha.md` (o bloqueio) e
-   `2026-eliuton-duvidas-tecnicas.md` (o que precisa ser respondido antes).
+Projeto executivo Arq. Luciana Beatriz Simplício · Núcleo SC Arquitetura.
+DUAS séries de pranchas, lidas vetorialmente em 17/08/2026:
+  · folhas 01–08 de 08  — COZINHA e ÁREA GOURMET      (12/12/25)
+  · folhas 01–10 de 10  — ÁREA DE SERVIÇO e BANHEIROS (17/12/25)
+Escala 1:25 aferida no próprio desenho: a porta 80×210 mediu 80,0 × 210,0.
+Falta a folha 02/10 (detalhes da área de serviço) — não estava na pasta.
+
+⚠ OS NOMES DOS ARQUIVOS NÃO CORRESPONDEM ÀS FOLHAS. `PR 05_COZINHA` é a folha
+  08/08 (gourmet) e `PR 05_COZINHA (1)` é a 05/08 (ilha). O Jonathan já tinha
+  avisado que não eram duplicatas — estava certo, e por isso mesmo o carimbo é
+  a única referência confiável.
 
 [Jonathan 13/08/2026] TRÊS CENÁRIOS DE FERRAGEM, cada um com a sua MC:
-     telescópica 32% · Hardt 37% · Hettich 42%   ⟵ BLUM FORA [Jonathan 13/08]
+     telescópica 32% · Hardt 37% · Hettich 42%   ⟵ BLUM FORA
      …exceto as BÁSCULAS dos cenários 2 e 3, que são Blum HK-xs a R$ 250.
    E: **toda parte com RIPADO sai a MC 40%**, em qualquer cenário.
 
-   Tirar a Blum resolveu a dúvida D2 (não há o que cotar — as três linhas já estão
-   em `dados/materiais.json`) e estreitou muito a escada de ferragem.
-
-O ripado tem MC própria, então o preço NÃO é um divisor único sobre o custo total:
-é a soma de duas parcelas — a de ripado no seu divisor, e o resto no divisor do
-cenário. É por isso que `preco()` separa `custo_ripado` de `custo_resto`.
-
-⚠️ No cenário 3 o ripado (40%) sai MAIS BARATO que o resto (42%). Nos cenários 1 e 2
-   sai mais caro. Está na lista de dúvidas (E2) para o Jonathan confirmar.
+O ripado tem MC própria, então o preço NÃO é um divisor único sobre o custo
+total: é a soma de duas parcelas — a de ripado no seu divisor, e o resto no
+divisor do cenário. É por isso que `preco()` separa `custo_ripado` de
+`custo_resto`.
 """
 from collections import defaultdict
 
@@ -32,19 +35,6 @@ RT_PCT = 0.10                               # se houver RT: subtrair LIQF_*RT_PC
 
 MC_RIPADO = 0.40                            # [Jonathan] vale nos três cenários
 
-# Ferragem por cenário — preços de compra de `dados/materiais.json`.
-# (dobradiça un · corrediça par · articulador da báscula un)
-#
-# [Jonathan 13/08] BÁSCULAS DOS CENÁRIOS 2 E 3 = **Blum HK-xs a R$ 250**.
-#   A base tinha R$ 180; atualizada para 250 em `dados/materiais.json`.
-#
-# [Jonathan 13/08] corrediça do cenário 3 = **Quadro** (confirmado) ·
-#   garantia do cenário 3 = **10 anos**. A escada de garantia fecha em 2 · 5 · 10.
-# [Jonathan 13/08] dobradiça do cenário 3 = **NOVISYS R$ 10**. Eu tinha
-#   recomendado Sensys; o Jonathan escolheu Novisys. Decisão dele, registrada.
-#   Consequência: entre os cenários 2 e 3 a ferragem quase não muda (dobradiça
-#   1,25× · báscula 1,0× · só a corrediça sobe 1,7×). O que separa os dois passa
-#   a ser a CORREDIÇA e a GARANTIA (5 → 10 anos).
 HK_XS = 250.0                               # Blum HK-xs [Jonathan 13/08]
 CENARIOS = [
     ('1 · Telescópica', 'Padrão · telescópica · pistão simples',    0.32,
@@ -54,10 +44,6 @@ CENARIOS = [
     ('3 · Hettich',     'Novisys · oculta Quadro · Blum HK-xs',     0.42,
      dict(dobr=10.0, corr=120.0, art=HK_XS), '10 anos'),
 ]
-
-def custo_ferragem(cen, n_dobradicas, n_gavetas, n_basculas):
-    f = cen[3]
-    return n_dobradicas*f['dobr'] + n_gavetas*f['corr'] + n_basculas*f['art']
 
 def div(mc, rt=False):
     return BASE - mc - (LIQF_*RT_PCT if rt else 0.0)
@@ -70,9 +56,6 @@ def mc_conferida(preco_total, custo_total):
     return BASE - custo_total/preco_total
 
 # ── nesting da casa (dois empacotadores × quatro ordens) ───────────────────
-# Ver referencias/quantitativo.md. O de faixa corrente só tenta a ÚLTIMA faixa
-# aberta e abandona a sobra das anteriores; o best-fit procura a melhor faixa já
-# aberta em qualquer chapa. Rodar os dois e ficar com o mínimo.
 def _pack_faixa(pcs):
     chapas = 0; y = x = faixa = 0.0
     for c, l in pcs:
@@ -111,76 +94,648 @@ def nest(items):
     area = sum(c*l for c, l in items)/10000
     return max(chapas, -(-int(area/(CH_AREA*0.80)*1000)//1000) or 1)
 
-# ── peças: (material, ambiente, descrição, comprimento, largura, qtd, ripado?)
-# ⛔ VAZIO — aguardando as pranchas PR 01–05 COZINHA e PR 06–07 A. GOURMET.
-pecas = []
+# ═══════════════════════════════════════════════════════════════════════════
+# PREÇOS DE COMPRA — dados/materiais.json + referencias/validacao-orcamento.md
+# ═══════════════════════════════════════════════════════════════════════════
+# As quatro cores do projeto são Arauco: Nogueira Persa e Jequitibá (madeirados),
+# Sálvia e Beige (lisos). A base da casa não tem preço nominal de linha Arauco
+# madeirada — `corte-lm.py` deixou a marca "ver FLAG premium" e nunca foi
+# fechada. Aqui rodo em COR (500/600/300) e mostro a sensibilidade em ESPECIAL
+# (950/1200/800) no fim. ⚠ CONFIRMAR COM O FORNECEDOR ANTES DE FECHAR.
+PRC_COR = {15: 500.0, 18: 600.0, 6: 300.0}
+PRC_ESP = {15: 950.0, 18: 1200.0, 6: 800.0}
+PRECO_CHAPA = PRC_COR
 
-# ── quando houver peças, o resto do motor já roda ──────────────────────────
-if not pecas:
-    print('═'*78)
-    print('ELIUTON · Brisas da Pampulha — MOTOR PRONTO, SEM GEOMETRIA')
-    print('═'*78)
-    print('\nA lista `pecas` está vazia: as pranchas ainda não foram lidas.')
-    print('Faltam no chat: PR 01 a PR 05 COZINHA · PR 06 e PR 07 A. GOURMET.\n')
-    print('DIVISORES JÁ CALIBRADOS  (a=0,162 · liqF=0,88 · b=0,043 · SEM RT)')
-    print(f'  {"cenário":<16}{"ferragem":<42}{"MC":>5}{"divisor":>10}{"gar.":>11}')
-    for nome, ferr, mc, _f, gar in CENARIOS:
-        print(f'  {nome:<16}{ferr:<42}{mc*100:>4.0f}%{div(mc):>10.5f}{gar:>11}')
-    d = div(MC_RIPADO)
-    print(f'  {"RIPADO":<16}{"(vale nos três)":<24}{MC_RIPADO*100:>4.0f}%'
-          f'{d:>11.5f}{1/d:>9.3f}')
-    print('\n  COM RT 10% os divisores caem para:')
-    for nome, _, mc, _f, _g in CENARIOS:
-        print(f'    {nome:<16}{div(mc, True):.5f}   (+{(div(mc)/div(mc,True)-1)*100:.0f}% no preço)')
-    print('\n⚠ Cenário 3: o ripado (40%) sai MAIS BARATO que o resto (42%).')
-    print('  Nos cenários 1 e 2 sai mais caro. Confirmar com o Jonathan (dúvida E2).')
+FITA_COR   = 3.00      # R$/m — fita de borda cor 22 mm
+FILET_MAQ  = 2.50      # R$/m — aplicação na coladeira automática
+DESPERD    = 1.10      # +10% de fita
 
-    # ── a forma da escada, com a Blum fora ─────────────────────────────────
-    P, G, B, CD = 40, 15, 6, 25000.0     # ILUSTRATIVO, só para medir a forma
-    print('\n' + '─'*78)
-    print('A FORMA DA ESCADA  (exemplo ilustrativo: 40 dobradiças · 15 gavetas · 6 básculas,')
-    print(f'                    R$ {CD:,.0f} de custo direto sem ferragem, igual nos três)'.replace(',','.'))
-    p0 = None
-    for nome, _, mc, _f, _g in CENARIOS:
-        f = custo_ferragem((nome,_,mc,_f,_g), P, G, B)
-        pr = (CD+f)/div(mc)
-        delta = '' if p0 is None else f'  preço +{(pr/p0-1)*100:.0f}%'
-        if p0 is None: p0 = pr
-        print(f'  {nome:<16}ferragem R$ {f:>7,.0f}   preço R$ {pr:>9,.0f}{delta}'.replace(',','.'))
-    f1 = custo_ferragem(CENARIOS[0], P, G, B); f3 = custo_ferragem(CENARIOS[2], P, G, B)
-    pr1 = (CD+f1)/div(0.32); pr3 = (CD+f3)/div(0.42)
-    print(f'\n  Do 1º ao 3º: a ferragem sobe R$ {f3-f1:,.0f} de custo, o preço sobe R$ {pr3-pr1:,.0f}.'.replace(',','.'))
-    print(f'  {((pr3-pr1)-(f3-f1))/(pr3-pr1)*100:.0f}% da diferença é MARGEM, {(f3-f1)/(pr3-pr1)*100:.0f}% é peça a mais.')
-    print('  O discurso vem do MECANISMO e da GARANTIA — 2 · 5 · 10 anos, que DOBRA')
-    print('  a cada degrau. É essa escada que sustenta o salto de preço, não a marca.')
+CAVA_USIN  = 50.0      # R$/peça — cava 35° usinada (o projeto pede "puxador tipo cava")
+PUX_ALCA   = 60.0      # R$/un   — puxador metálico tipo alça preto (banheiro master)
+SUP_PRAT   = 1.50      # R$/un   — 4 por prateleira
+LED_COB    = 150.0     # R$/m    — fita + perfil
+ESPELHO    = 600.0     # R$/m²   — espelho prata
+VIDRO8     = 250.0     # R$/m²   — vidro incolor temperado 8 mm
+SERRALH    = 300.0     # R$/serviço
+SS150_2P   = 500.0     # conjunto 2 portas de correr
+SS150_3P   = 600.0     # conjunto 3 portas
+TRILHO_2M  = 170.0
+TRILHO_3M  = 200.0
+PIVO       = 120.0     # sistema de porta pivotante
+RO82_TOP   = 400.0     # deslizante embutido amortecido (porta de correr ripada)
+TABUA      = 480.0     # tábua de passar embutida dobrável
 
-    # ── o degrau, componente a componente ──────────────────────────────────
-    print('\n' + '─'*78)
-    print('O DEGRAU, COMPONENTE A COMPONENTE')
-    print(f'  {"":<14}{"cenário 1":>12}{"cenário 2":>12}{"×":>7}{"cenário 3":>12}{"×":>7}')
-    for rot, k in (('dobradiça','dobr'), ('corrediça','corr'), ('báscula','art')):
-        v = [c[3][k] for c in CENARIOS]
-        print(f'  {rot:<14}{v[0]:>12,.0f}{v[1]:>12,.0f}{v[1]/v[0]:>6.1f}×'
-              f'{v[2]:>12,.0f}{v[2]/v[1]:>6.1f}×'.replace(',','.'))
-    print('\n  ⚠ Do 2º para o 3º cenário SÓ A CORREDIÇA muda de verdade:')
-    print('    báscula idêntica (1,0×) e dobradiça Hardt 8 → Novisys 10 (1,25×).')
-    f2, f3 = custo_ferragem(CENARIOS[1],P,G,B), custo_ferragem(CENARIOS[2],P,G,B)
-    p2, p3 = (CD+f2)/div(0.37), (CD+f3)/div(0.42)
-    print(f'    Entre 2 e 3: ferragem +R$ {f3-f2:,.0f}, preço +R$ {p3-p2:,.0f} — '
-          f'{((p3-p2)-(f3-f2))/(p3-p2)*100:.0f}% margem.'.replace(',','.'))
-    print('    ⇒ O 3º cenário se defende pela GARANTIA (10 anos) e pela corrediça')
-    print('      oculta Quadro — não pelo nome Hettich na dobradiça.')
-    fb = [custo_ferragem(c, P, G, B) for c in CENARIOS]
-    print(f'\n    E a báscula pesa {B*HK_XS/fb[1]*100:.0f}% da ferragem do cenário 2 e '
-          f'{B*HK_XS/fb[2]*100:.0f}% do cenário 3.')
-    print('    ⇒ O NÚMERO DE BÁSCULAS do projeto virou a quantidade mais sensível do')
-    print('      orçamento. Contar báscula a báscula, não estimar.')
-    raise SystemExit(0)
+# ⚠ SEM PREÇO NA BASE — entram como estimativa, marcadas no relatório:
+VARAL_RETR = 350.0     # un — varal retrátil embutido (2 na área de serviço)
+SUP_DOURAD = 180.0     # un — suporte metálico dourado de prateleira (banheiro 04)
 
-# ── daqui para baixo só roda com geometria ─────────────────────────────────
-por_mat, area_mat = defaultdict(list), defaultdict(float)
-for mat, amb, desc, c, l, q, rip in pecas:
+# ── ripado: geometria adotada ──────────────────────────────────────────────
+# Tipo 2 (referencias/laminacao-e-construcao.md): painel em MDF 18 mm, régua
+# fitada em UMA face, topo colado no painel de fundo.
+# ⚠ O passo NÃO é legível na prancha (a 1:25 uma régua de 4 cm dá 1,6 mm no
+#   papel). PREMISSA: régua 4,0 cm + espaçamento 1,5 cm ⇒ passo 5,5 cm.
+RIPA_L, RIPA_PASSO = 4.0, 5.5
+
+# ═══════════════════════════════════════════════════════════════════════════
+# GEOMETRIA — (material, espessura, ambiente, descrição, comp, larg, qtd, ripado)
+# ═══════════════════════════════════════════════════════════════════════════
+# Materiais: NP Nogueira Persa · SA Sálvia · JQ Jequitibá · BG Beige
+# Regra de espessura da casa: 15 caixaria · 18 frentes e prateleiras · 6 fundos.
+# Os fundos vão NA COR porque as perspectivas de armário aberto mostram o
+# interior todo na cor. Alavanca de custo medida no fim (fundo branco).
+
+P = []            # peças
+def add(mat, esp, amb, desc, c, l, q=1, rip=False):
+    P.append((mat, esp, amb, desc, c, l, q, rip))
+
+def caixa(mat, amb, nome, L, H, Pf, nvert=0, nprat=0, fundo=True,
+          tampo=True, base=True):
+    """Caixaria de um módulo: laterais/divisórias, tampo, base, prateleiras, fundo."""
+    nlat = 2 + nvert
+    add(mat, 15, amb, f'{nome} · lateral/divisória', Pf, H, nlat)
+    Lh = L - 1.5*nlat
+    if tampo: add(mat, 15, amb, f'{nome} · tampo', Lh, Pf)
+    if base:  add(mat, 15, amb, f'{nome} · base',  Lh, Pf)
+    if nprat:
+        Lv = Lh/(nvert+1)
+        add(mat, 18, amb, f'{nome} · prateleira', Lv, Pf-2, nprat)
+    if fundo: add(mat, 6, amb, f'{nome} · fundo', L, H)
+
+def gaveta(mat, amb, nome, L, Pf, alt, q=1):
+    """Caixa de gaveta — 6 peças (referencias/laminacao-e-construcao.md)."""
+    add(mat, 15, amb, f'{nome} · gaveta lateral',       Pf-10, alt, 2*q)
+    add(mat, 15, amb, f'{nome} · gaveta frente/costas', L-6,   alt, 2*q)
+    add(mat, 6,  amb, f'{nome} · gaveta fundo',         L-6,   Pf-10, q)
+
+def ripado(mat, amb, nome, L, H, base_esp=15, nh=1, nv=1):
+    """Painel ripado tipo 2, quebrado em nh × nv peças para caber na chapa.
+
+    ⚠ A chapa é 275 × 185. Uma ripa de 288 cm NÃO CABE em nenhum sentido —
+      tem de sair emendada. Aqui a emenda é modelada: `nv` trechos na altura.
+      Na obra a emenda cai na horizontal do acabamento sobre a porta de correr.
+    """
+    n = int(L/RIPA_PASSO)
+    add(mat, base_esp, amb, f'{nome} · painel de fundo ({nh}×{nv} peças)',
+        L/nh, H/nv, nh*nv, True)
+    add(mat, 18, amb, f'{nome} · régua {RIPA_L:.0f} × {H/nv:.0f} cm',
+        RIPA_L, H/nv, n*nv, True)
+    return n
+
+# contadores de ferragem: (dobradiças, gavetas, básculas)
+FER = defaultdict(lambda: [0, 0, 0])
+def fer(amb, dobr=0, gav=0, basc=0):
+    FER[amb][0] += dobr; FER[amb][1] += gav; FER[amb][2] += basc
+
+FITA = []         # (ambiente, descrição, metros)
+def fita(amb, desc, m): FITA.append((amb, desc, m))
+
+TERC = []         # (ambiente, descrição, valor, estimado?)
+def terc(amb, desc, v, est=False): TERC.append((amb, desc, v, est))
+
+CAVAS = defaultdict(int)          # nº de frentes com cava usinada
+
+# ───────────────────────────────────────────────────────────────────────────
+# 1 · COZINHA — TORRE QUENTE + NICHO GELADEIRA        folha 04/08 · Nogueira
+#     187 larg (14 lateral vazada + 103 geladeira + 70 torre) × 70 prof × 290
+# ───────────────────────────────────────────────────────────────────────────
+A = 'Cozinha · torre quente'
+add('NP', 18, A, 'lateral vazada (batente da porta do gourmet)', 70, 275)
+add('NP', 15, A, 'divisória geladeira/torre', 70, 275)
+add('NP', 15, A, 'lateral direita (encosta na bancada)', 70, 275)
+add('NP', 15, A, 'tampo sobre o nicho da geladeira', 103, 70)
+add('NP', 15, A, 'tampo do armário basculante da geladeira', 103, 70)
+add('NP', 15, A, 'horizontais da torre (tampo+4 div+base)', 67, 70, 6)
+add('NP', 6,  A, 'fundo do nicho da geladeira', 103, 273)
+add('NP', 6,  A, 'fundo da torre', 70, 275)
+add('NP', 18, A, 'báscula sobre a geladeira', 103, 58)
+add('NP', 18, A, 'báscula superior da torre', 70, 58)
+add('NP', 18, A, 'báscula do 2º nicho da torre', 70, 39)
+add('NP', 18, A, 'frente do gavetão da torre', 70, 58)
+add('NP', 18, A, 'prateleira do armário basculante', 100, 68, 1)
+gaveta('NP', A, 'gavetão da torre', 70, 70, 50)
+fer(A, dobr=6, gav=1, basc=3)
+CAVAS[A] += 4
+fita(A, 'perímetro das 3 básculas + gavetão', 2*(1.03+0.58) + 2*(0.70+0.58)
+        + 2*(0.70+0.39) + 2*(0.70+0.58))
+fita(A, 'lateral vazada + frentes de caixaria', 2*(0.70+2.75) + 6*0.67 + 2*1.03)
+
+# ───────────────────────────────────────────────────────────────────────────
+# 2 · COZINHA — ACABAMENTO SUPERIOR (faixa de 15 sob o forro)  folhas 02–04/08
+# ───────────────────────────────────────────────────────────────────────────
+A = 'Cozinha · acabamento superior'
+add('NP', 18, A, 'faixa 15 cm sob o forro (541,5 em 2 peças)', 271, 15, 2)
+fita(A, 'borda inferior aparente', 5.42)
+
+# ───────────────────────────────────────────────────────────────────────────
+# 3 · COZINHA — BANCADA 01 · ARMÁRIO INFERIOR         folha 03/08 · Sálvia
+#     355 × 70 prof × 88 (corpo 78 + rodapé 10) · bancada em mármore
+#     64 gaveteiro | 104 (2 portas 50) | 23 pano de prato | 64 nicho LL | 104
+# ───────────────────────────────────────────────────────────────────────────
+A = 'Cozinha · bancada 01'
+add('SA', 15, A, 'verticais (2 externas + 5 divisórias)', 70, 78, 7)
+add('SA', 15, A, 'base (349 em 2 peças)', 175, 70, 2)
+add('SA', 15, A, 'travessa superior', 175, 10, 2)
+add('SA', 6,  A, 'fundo (355 em 2 peças)', 178, 78, 2)
+add('SA', 18, A, 'frente de gaveta 64 × 15', 64, 15, 3)
+add('SA', 18, A, 'frente do gavetão 64 × 29', 64, 29)
+add('SA', 18, A, 'porta 50 × 74', 50, 74, 4)
+add('SA', 18, A, 'porta pano de prato 23 × 74', 23, 74)
+add('SA', 18, A, 'prateleira dos módulos de porta', 100, 68, 2)
+add('SA', 18, A, 'rodapé recuado (355 em 2 peças)', 178, 10, 2)
+gaveta('SA', A, 'gaveteiro', 64, 70, 13, 3)
+gaveta('SA', A, 'gavetão',   64, 70, 27, 1)
+fer(A, dobr=10, gav=4)
+CAVAS[A] += 9
+fita(A, 'frentes de gaveta + gavetão', 3*2*(0.64+0.15) + 2*(0.64+0.29))
+fita(A, 'portas', 4*2*(0.50+0.74) + 2*(0.23+0.74))
+fita(A, 'verticais + prateleiras + rodapé', 7*0.78 + 2*1.00 + 3.55)
+fita(A, 'nicho da lava-louça (bordas aparentes)', 2*0.78 + 0.64)
+
+# ───────────────────────────────────────────────────────────────────────────
+# 4 · COZINHA — ARMÁRIO SUPERIOR (aéreo)              folha 04/08 · Sálvia
+#     351 × 40 prof × 96 · 5 portas: 85 · 85 · 56 · 57 · 56
+# ───────────────────────────────────────────────────────────────────────────
+A = 'Cozinha · aéreo'
+add('SA', 15, A, 'verticais (2 externas + 4 divisórias)', 40, 96, 6)
+add('SA', 15, A, 'tampo (342 em 2 peças)', 171, 40, 2)
+add('SA', 15, A, 'base (342 em 2 peças)',  171, 40, 2)
+add('SA', 18, A, 'prateleira dos módulos de 85', 85, 38, 2)
+add('SA', 18, A, 'prateleira dos módulos de 56/57', 56, 38, 3)
+add('SA', 6,  A, 'fundo (351 em 2 peças)', 176, 96, 2)
+add('SA', 18, A, 'porta 85 × 92', 85, 92, 2)
+add('SA', 18, A, 'porta 56/57 × 92', 56, 92, 3)
+fer(A, dobr=10)
+CAVAS[A] += 5
+fita(A, 'portas', 2*2*(0.85+0.92) + 3*2*(0.57+0.92))
+fita(A, 'base aparente por baixo + prateleiras', 3.51 + 2*0.85 + 3*0.56)
+
+# ───────────────────────────────────────────────────────────────────────────
+# 5 · COZINHA — ILHA                                  folha 05/08 · Sálvia
+#     226 × 70 prof × 88 · cascata em mármore (fora do escopo)
+#     20 porta temperos | 122 (2 portas de 60) | 78 gaveteiro
+# ───────────────────────────────────────────────────────────────────────────
+A = 'Cozinha · ilha'
+add('SA', 15, A, 'verticais (2 externas + 3 divisórias)', 70, 78, 5)
+add('SA', 15, A, 'base (218 em 2 peças)', 109, 70, 2)
+add('SA', 15, A, 'travessa superior', 109, 10, 2)
+add('SA', 18, A, 'costas aparente (vista posterior, 226 em 2)', 113, 88, 2)
+add('SA', 18, A, 'porta temperos 20 × 74', 20, 74)
+add('SA', 18, A, 'porta 60 × 74', 60, 74, 2)
+add('SA', 18, A, 'frente de gaveta 78 × 15', 78, 15, 3)
+add('SA', 18, A, 'frente do gavetão 78 × 29', 78, 29)
+add('SA', 18, A, 'prateleira do módulo de 122', 120, 68, 1)
+add('SA', 18, A, 'rodapé recuado (226 em 2 peças)', 113, 10, 2)
+gaveta('SA', A, 'gaveteiro', 78, 70, 13, 3)
+gaveta('SA', A, 'gavetão',   78, 70, 27, 1)
+fer(A, dobr=6, gav=4)
+CAVAS[A] += 8
+fita(A, 'portas', 2*(0.20+0.74) + 2*2*(0.60+0.74))
+fita(A, 'frentes de gaveta', 3*2*(0.78+0.15) + 2*(0.78+0.29))
+fita(A, 'costas + rodapé + prateleira', 2*(2.26+0.88) + 2.26 + 1.20)
+
+# ───────────────────────────────────────────────────────────────────────────
+# 6 · COZINHA/JANTAR — PAINEL RIPADO                  folha 02/08 · Nogueira
+#     572 × 288 = 16,47 m². Porta de correr ripada + porta pivotante ripada
+#     EMBUTIDAS no painel (o ripado delas já está na área).
+# ───────────────────────────────────────────────────────────────────────────
+A = 'Cozinha · painel ripado'
+n_reg = ripado('NP', A, 'painel do estar/jantar', 572, 288, nh=3, nv=2)
+fita(A, f'réguas fitadas em 1 face — {n_reg} × 2,88 m', n_reg*2.88)
+fita(A, 'acabamento superior sobre a porta de correr', 5.72)
+terc(A, 'Sistema deslizante embutido amortecido (porta de correr ripada)', RO82_TOP)
+terc(A, 'Sistema pivotante (porta 80 × 210 ripada)', PIVO)
+CAVAS[A] += 2
+
+# ───────────────────────────────────────────────────────────────────────────
+# 7 · GOURMET — BANCADA 02 (inferior + superior)      folhas 07 e 08/08 · Nog.
+#     215 = 145 bancada + 70 cervejeira · 290 de altura
+# ───────────────────────────────────────────────────────────────────────────
+A = 'Gourmet · bancada 02'
+# inferior 145 × 70 × 88: gaveteiro 51 + 2 portas de 47
+add('NP', 15, A, 'inferior · verticais (2 ext + 1 div)', 70, 78, 3)
+add('NP', 15, A, 'inferior · base', 140, 70)
+add('NP', 15, A, 'inferior · travessa superior', 140, 10)
+add('NP', 6,  A, 'inferior · fundo', 145, 78)
+add('NP', 18, A, 'inferior · frente de gaveta 51 × 15', 51, 15, 3)
+add('NP', 18, A, 'inferior · frente do gavetão 51 × 29', 51, 29)
+add('NP', 18, A, 'inferior · porta 47 × 74', 47, 74, 2)
+add('NP', 18, A, 'inferior · prateleira', 92, 68)
+add('NP', 18, A, 'inferior · rodapé recuado', 145, 10)
+gaveta('NP', A, 'inferior · gaveteiro', 51, 70, 13, 3)
+gaveta('NP', A, 'inferior · gavetão',   51, 70, 27, 1)
+# coluna da cervejeira 70 × 70 × 290: nicho 213 + báscula 62 + acabamento 15
+# ⚠ 290 não cabe na chapa de 275 — lateral emendada no plano do tampo do nicho.
+add('NP', 15, A, 'cervejeira · laterais do nicho (213)', 70, 213, 2)
+add('NP', 15, A, 'cervejeira · laterais do armário superior (77)', 70, 77, 2)
+add('NP', 15, A, 'cervejeira · base + divisória + tampo', 67, 70, 3)
+add('NP', 6,  A, 'cervejeira · fundo do nicho', 70, 213)
+add('NP', 6,  A, 'cervejeira · fundo do armário superior', 70, 77)
+add('NP', 18, A, 'cervejeira · báscula superior 70 × 62', 70, 62)
+add('NP', 18, A, 'cervejeira · acabamento 15', 70, 15)
+# prateleira c/ LED por baixo + armário superior de vidro
+add('NP', 18, A, 'prateleira c/ borda frontal e LED por baixo', 145, 25)
+add('NP', 15, A, 'superior · laterais e fundo do caixote de vidro', 40, 77, 3)
+add('NP', 15, A, 'superior · tampo e base do caixote', 142, 40, 2)
+add('NP', 6,  A, 'superior · fundo', 145, 77)
+fer(A, dobr=6, gav=4, basc=1)
+CAVAS[A] += 7
+fita(A, 'frentes de gaveta + portas', 3*2*(0.51+0.15) + 2*(0.51+0.29)
+        + 2*2*(0.47+0.74))
+fita(A, 'básculas + acabamento + prateleira LED', 2*(0.70+0.62) + 0.70
+        + 2*(1.45+0.25))
+fita(A, 'verticais, rodapé, caixotes', 3*0.78 + 1.45 + 2*2.90 + 2*1.42)
+terc(A, 'Serralheria — 2 portas basculantes c/ estrutura em metal fendi', 2*SERRALH)
+terc(A, 'Vidro incolor temperado 8 mm — 2 folhas de 0,71 × 0,73', 2*0.71*0.73*VIDRO8)
+terc(A, 'LED COB sob a prateleira — 1,45 m', 1.45*LED_COB)
+
+# ───────────────────────────────────────────────────────────────────────────
+# 8 · ÁREA DE SERVIÇO                                 folha 01/10 · Nogueira
+#     359 larg × 55 prof × 226 (+ rodapé) — medido no vetor: 359,0 × 238,1
+#     112 portas de abrir | 147 lavar+secar | 100 inferior sob bancada
+# ───────────────────────────────────────────────────────────────────────────
+A = 'Área de serviço'
+# módulo 1 — armário alto 112 × 226 (vassouras e tábua de passar)
+add('NP', 15, A, 'M1 · laterais', 55, 226, 2)
+add('NP', 15, A, 'M1 · tampo e base', 109, 55, 2)
+add('NP', 18, A, 'M1 · prateleiras', 107, 53, 4)
+add('NP', 6,  A, 'M1 · fundo', 112, 226)
+add('NP', 18, A, 'M1 · porta 56 × 224', 56, 224, 2)
+# módulo 2 — 147 × 226, duas colunas de 73
+add('NP', 15, A, 'M2 · laterais e divisória central', 55, 226, 3)
+add('NP', 15, A, 'M2 · tampo e base', 71, 55, 4)
+add('NP', 15, A, 'M2 · horizontais internas (varal/nicho/máquina/gavetão)', 71, 55, 8)
+add('NP', 6,  A, 'M2 · fundo', 147, 226)
+add('NP', 18, A, 'M2 · porta superior 73 × 113', 73, 113, 2)
+add('NP', 18, A, 'M2 · frente do gavetão 73 × 30', 73, 30, 2)
+add('NP', 18, A, 'M2 · frente da gaveta do varal 73 × 12', 73, 12, 2)
+gaveta('NP', A, 'M2 · gavetão', 73, 55, 28, 2)
+gaveta('NP', A, 'M2 · gaveta do varal', 73, 55, 10, 2)
+# módulo 3 — inferior sob a bancada 100 × 68
+add('NP', 15, A, 'M3 · laterais', 55, 68, 2)
+add('NP', 15, A, 'M3 · base e travessa', 97, 55, 2)
+add('NP', 6,  A, 'M3 · fundo', 100, 68)
+add('NP', 18, A, 'M3 · porta 49 × 66', 49, 66, 2)
+add('NP', 18, A, 'M3 · prateleira', 95, 53)
+add('NP', 18, A, 'rodapé recuado (359 em 2 peças)', 180, 10, 2)
+# painel-caixa para embutir as portas de correr da cozinha
+add('NP', 18, A, "'painel caixa' p/ embutir as portas de correr da cozinha", 115, 55)
+# ⚠ A prancha traz DOIS textos — "portas de abrir" e "portas basculantes" — e
+#   manda ver o detalhe na FOLHA 02/10, que NÃO ESTÁ NA PASTA. Adotei as duas
+#   folhas de 73 × 113 do topo do módulo central como basculantes. Se forem
+#   mesmo basculantes, 113 cm de altura NÃO é caso de HK-xs: é Aventos
+#   (R$ 600/un contra R$ 250). Swing de R$ 700 no custo. Pedir a folha 02/10.
+# M1: 2 portas de 2,24 m → 4 dobradiças cada · M2: 2 básculas → 2 cada ·
+# M3: 2 portas de 66 → 2 cada.
+fer(A, dobr=8+4+4, gav=4, basc=2)
+CAVAS[A] += 10
+fita(A, 'portas altas e superiores', 2*2*(0.56+2.24) + 2*2*(0.73+1.13))
+fita(A, 'frentes de gavetão e do varal', 2*2*(0.73+0.30) + 2*2*(0.73+0.12))
+fita(A, 'porta do módulo inferior', 2*2*(0.49+0.66))
+fita(A, 'verticais, prateleiras, horizontais, rodapé',
+     5*2.26 + 4*1.07 + 12*0.71 + 3.59 + 0.95)
+terc(A, 'Tábua de passar embutida dobrável', TABUA)
+terc(A, 'Varal retrátil embutido — 2 un ⚠ sem preço na base', 2*VARAL_RETR, True)
+
+# ───────────────────────────────────────────────────────────────────────────
+# 9 · LAVABO EXTERNO                                  folha 03/10 · Nogueira
+#     painel 130 × 248 · armário 150 × 50 × 32 · acabamento no forro
+# ───────────────────────────────────────────────────────────────────────────
+A = 'Lavabo externo'
+add('NP', 18, A, 'painel de parede 130 × 248', 130, 248)
+add('NP', 18, A, 'acabamento no forro 130 × 40', 130, 40)
+add('NP', 15, A, 'armário · laterais e divisória', 50, 32, 3)
+add('NP', 15, A, 'armário · tampo e base', 145, 50, 2)
+add('NP', 6,  A, 'armário · fundo', 150, 32)
+add('NP', 18, A, 'armário · porta basculante 71 × 30', 71, 30)
+add('NP', 18, A, 'armário · fundo do nicho aparente 73 × 30', 73, 30)
+fer(A, dobr=2, basc=1)
+CAVAS[A] += 1
+fita(A, 'painel + acabamento no forro', 2*(1.30+2.48) + 2*(1.30+0.40))
+fita(A, 'armário — báscula, nicho, bordas', 2*(0.71+0.30) + 2*(0.73+0.30)
+        + 2*1.50 + 3*0.32)
+
+# ───────────────────────────────────────────────────────────────────────────
+# 10 · BANHEIRO MASTER                                folha 06/10 · Jequitibá
+#      superior (espelheira) 185 × 15 × 120 · inferior RIPADO 185 × 50 × 52
+# ───────────────────────────────────────────────────────────────────────────
+A = 'Banheiro master'
+# superior: nicho 18 | 3 portas de correr espelhadas em 141 | nicho 18
+add('JQ', 15, A, 'superior · laterais e 2 divisórias', 15, 120, 4)
+add('JQ', 15, A, 'superior · tampo e base', 179, 15, 2)
+add('JQ', 18, A, 'superior · prateleiras dos nichos vazados', 18, 14, 4)
+add('JQ', 6,  A, 'superior · fundo', 185, 120)
+# inferior ripado: 4 portas de 45 × 52
+add('JQ', 15, A, 'inferior · laterais e divisória', 50, 52, 3)
+add('JQ', 15, A, 'inferior · tampo e base', 181, 50, 2)
+add('JQ', 6,  A, 'inferior · fundo', 185, 52)
+n_bm = 4*int(45/RIPA_PASSO)
+add('JQ', 15, A, 'inferior · base das portas ripadas 45 × 52', 45, 52, 4, True)
+add('JQ', 18, A, f'inferior · régua {RIPA_L:.0f} cm das portas', RIPA_L, 52, n_bm, True)
+fer(A, dobr=8)
+fita(A, f'réguas das portas ripadas — {n_bm} × 0,52 m', n_bm*0.52)
+fita(A, 'perímetro das 4 portas + nichos', 4*2*(0.45+0.52) + 4*2*(0.18+0.14)
+        + 2*(1.85+0.15))
+terc(A, 'Espelho prata — 3 folhas de correr 0,47 × 1,16', 3*0.47*1.16*ESPELHO)
+terc(A, 'Sistema deslizante SS150 3 portas + trilho 2 m', SS150_3P + TRILHO_2M)
+terc(A, 'Puxador metálico tipo alça preto — 8 un', 8*PUX_ALCA)
+
+# ───────────────────────────────────────────────────────────────────────────
+# 11 · BANHEIRO 02 (social 1º pav)              folhas 07 e 08/10 · Nog.+Beige
+#      superior 190 × 15 × 124 (106 correr espelhado + 74 nicho Beige)
+#      inferior 110 × 42 × 52
+# ───────────────────────────────────────────────────────────────────────────
+A = 'Banheiro 02'
+add('NP', 15, A, 'superior · laterais e divisória', 15, 124, 3)
+add('NP', 15, A, 'superior · tampo e base', 185, 15, 2)
+add('BG', 18, A, 'superior · prateleiras do nicho (MDF Beige)', 74, 14, 4)
+add('BG', 6,  A, 'superior · fundo do nicho aparente (Beige)', 74, 124)
+add('NP', 6,  A, 'superior · fundo do trecho de correr', 116, 124)
+add('NP', 15, A, 'inferior · laterais e divisória', 42, 52, 3)
+add('NP', 15, A, 'inferior · tampo e base', 106, 42, 2)
+add('NP', 6,  A, 'inferior · fundo', 110, 52)
+add('NP', 18, A, 'inferior · porta 53 × 50', 53, 50, 2)
+add('NP', 18, A, 'inferior · nicho papeleiro embutido', 20, 24, 3)
+fer(A, dobr=4)
+CAVAS[A] += 2
+fita(A, 'portas + prateleiras Beige + bordas', 2*2*(0.53+0.50) + 4*0.74
+        + 2*(1.90+0.15) + 2*(1.10+0.42))
+terc(A, 'Espelho prata — 2 folhas de correr 0,54 × 1,20', 2*0.54*1.20*ESPELHO)
+terc(A, 'Sistema deslizante SS150 2 portas + trilho 2 m', SS150_2P + TRILHO_2M)
+terc(A, 'LED COB em L no nicho — 2,6 m', 2.6*LED_COB)
+
+# ───────────────────────────────────────────────────────────────────────────
+# 12 · BANHEIRO 04                                folhas 09 e 10/10 · Nogueira
+#      superior 110 × 15 × 124 + prateleiras laterais de 78 e 36
+#      inferior 146 (91 c/ 2 portas + 55 nicho aberto) × 45 × 51
+# ───────────────────────────────────────────────────────────────────────────
+A = 'Banheiro 04'
+add('NP', 15, A, 'superior · laterais', 15, 124, 2)
+add('NP', 15, A, 'superior · tampo e base', 107, 15, 2)
+add('NP', 6,  A, 'superior · fundo', 110, 124)
+add('NP', 18, A, 'prateleira lateral esquerda 78 × 15', 78, 15, 2)
+add('NP', 18, A, 'prateleira lateral direita 36 × 15', 36, 15, 2)
+add('NP', 15, A, 'inferior · laterais e divisória', 45, 51, 3)
+add('NP', 15, A, 'inferior · tampo e base', 142, 45, 2)
+add('NP', 6,  A, 'inferior · fundo', 146, 51)
+add('NP', 18, A, 'inferior · porta 44 × 49', 44, 49, 2)
+add('NP', 18, A, 'inferior · nicho aberto 55 — fundo e prateleira', 55, 30, 2)
+add('NP', 18, A, 'inferior · nicho papeleiro embutido', 20, 24, 3)
+fer(A, dobr=4)
+CAVAS[A] += 2
+fita(A, 'portas + prateleiras + nicho', 2*2*(0.44+0.49) + 4*2*(0.78+0.15)/2
+        + 2*(1.46+0.45) + 2*(0.55+0.30))
+terc(A, 'Espelho prata — 2 folhas de correr 0,54 × 1,20', 2*0.54*1.20*ESPELHO)
+terc(A, 'Sistema deslizante SS150 2 portas + trilho 2 m', SS150_2P + TRILHO_2M)
+terc(A, 'Suporte metálico dourado de prateleira — 4 un ⚠ sem preço na base',
+     4*SUP_DOURAD, True)
+
+# ═══════════════════════════════════════════════════════════════════════════
+# APURAÇÃO
+# ═══════════════════════════════════════════════════════════════════════════
+NOME_MAT = {'NP': 'Nogueira Persa', 'SA': 'Sálvia', 'JQ': 'Jequitibá',
+            'BG': 'Beige'}
+W = 96
+
+# ⚠ GUARDA DE PEÇA FORA DE CHAPA — aprendizado deste projeto.
+# A ripa do painel tem 288 cm e a chapa 275 × 185: não cabe em nenhum sentido.
+# O `nest` não reclama, ele só abre uma chapa por peça — e o resultado (111
+# chapas de Nogueira, 9% de aproveitamento) parece um plano de corte válido.
+# Peça que não cabe é ERRO DE PROJETO DE MARCENARIA, não de empacotamento:
+# ou emenda, ou muda o desenho. O motor tem de gritar.
+_fora = [(m, e, a, d, c, l) for m, e, a, d, c, l, q, r in P
+         if max(c, l) > CH_C or min(c, l) > CH_L]
+if _fora:
+    print('\n' + '!'*W)
+    print('PEÇAS QUE NÃO CABEM NA CHAPA DE 275 × 185 — corrigir antes de orçar')
+    for m, e, a, d, c, l in _fora:
+        print(f'  {NOME_MAT[m]} {e} mm · {a} · {d}: {c:.0f} × {l:.0f} cm')
+    print('!'*W + '\n')
+
+por_chapa, area_chapa = defaultdict(list), defaultdict(float)
+area_amb, area_rip_amb = defaultdict(float), defaultdict(float)
+for mat, esp, amb, desc, c, l, q, rip in P:
     for _ in range(q):
-        por_mat[mat].append((c, l))
-        area_mat[mat] += c*l/10000
-CHAPAS = {m: nest(v) for m, v in por_mat.items()}
+        por_chapa[(mat, esp)].append((c, l))
+    a = c*l*q/10000
+    area_chapa[(mat, esp)] += a
+    area_amb[amb] += a
+    if rip: area_rip_amb[amb] += a
+
+CHAPAS = {k: nest(v) for k, v in por_chapa.items()}
+
+def linha(ch='─'): print(ch*W)
+
+print('═'*W)
+print('ELIUTON RIBEIRO · RESIDÊNCIA BRISAS DA PAMPULHA — LEVANTAMENTO DE MATERIAL E CUSTO')
+print('═'*W)
+print('Projeto executivo: Arq. Luciana Beatriz Simplício · Núcleo SC Arquitetura')
+print('Pranchas: folhas 01–08/08 (cozinha e gourmet) e 01–10/10 (serviço e banheiros)')
+print('Escala 1:25 · geometria lida no vetor · a folha 02/10 não estava na pasta')
+
+print('\nESCOPO POR AMBIENTE')
+ordem = list(dict.fromkeys(a for *_, a, _1, _2, _3, _4, _5 in
+                           [(m, e, amb, d, c, l, q, r) for m, e, amb, d, c, l, q, r in P]))
+ordem = []
+for _m, _e, amb, *_r in P:
+    if amb not in ordem: ordem.append(amb)
+for amb in ordem:
+    d, g, b = FER[amb]
+    extra = []
+    if d: extra.append(f'{d} dobr.')
+    if g: extra.append(f'{g} gav.')
+    if b: extra.append(f'{b} básc.')
+    rip = f'  ·  ripado {area_rip_amb[amb]:.2f} m²' if area_rip_amb[amb] else ''
+    print(f'  {amb:<32}{area_amb[amb]:>7.2f} m² de chapa   '
+          f'{" · ".join(extra):<26}{rip}')
+print(f'  {"TOTAL":<32}{sum(area_amb.values()):>7.2f} m²')
+
+print('\nPLANO DE CORTE  (nesting por cor × espessura — cores nunca dividem chapa)')
+custo_chapa = 0.0
+for (mat, esp) in sorted(CHAPAS, key=lambda k: (k[0], -k[1])):
+    n = CHAPAS[(mat, esp)]; pr = PRECO_CHAPA[esp]; c = n*pr
+    custo_chapa += c
+    ap = area_chapa[(mat, esp)]/(n*CH_AREA)*100
+    print(f'  {NOME_MAT[mat]+" "+str(esp)+" mm":<22}'
+          f'{area_chapa[(mat,esp)]:>7.2f} m²  →  {n:>2} chapa(s) × R$ {pr:>7,.2f}'
+          f'  = R$ {c:>9,.2f}   aprov. {ap:>3.0f}%'.replace(',', '.'))
+tot_ch = sum(CHAPAS.values()); area_tot = sum(area_chapa.values())
+print(f'  {"TOTAL":<22}{area_tot:>7.2f} m²  →  {tot_ch:>2} chapas'
+      f'                       R$ {custo_chapa:>9,.2f}   médio '
+      f'{area_tot/(tot_ch*CH_AREA)*100:.0f}%'.replace(',', '.'))
+
+print('\nFITA DE BORDA E FILETAGEM  (+10% de desperdício na fita)')
+m_amb = defaultdict(float)
+for amb, d, m in FITA: m_amb[amb] += m
+for amb in ordem:
+    if m_amb[amb]: print(f'  {amb:<40}{m_amb[amb]:>9.2f} m')
+m_fita = sum(m for _, _, m in FITA)
+custo_fita  = m_fita*DESPERD*FITA_COR
+custo_filet = m_fita*FILET_MAQ
+print(f'  {"TOTAL":<40}{m_fita:>9.2f} m')
+_v = f'{custo_fita:,.2f}'.replace(',', '.')
+print(f'  {"material da fita (cor, R$ 3,00/m +10%)":<40}          R$ {_v:>9}')
+_v = f'{custo_filet:,.2f}'.replace(',', '.')
+print(f'  {"filetagem na coladeira (R$ 2,50/m)":<40}          R$ {_v:>9}')
+
+print('\nUSINAGEM DE PUXADOR  (o projeto pede "puxador tipo cava" em quase tudo)')
+n_cava = sum(CAVAS.values())
+custo_cava = n_cava*CAVA_USIN
+_v = f'{custo_cava:,.2f}'.replace(',', '.')
+print(f'  Cava 35° usinada — {n_cava} frentes × R$ 50,00{"":>22}R$ {_v:>9}')
+
+print('\nTERCEIRIZADOS E ITENS ESPECIAIS')
+custo_terc = 0.0
+for amb, d, v, est in TERC:
+    custo_terc += v
+    print(f'  {amb:<26} {d:<52}R$ {v:>8,.2f}'.replace(',', '.'))
+print(f'  {"TOTAL":<79}R$ {custo_terc:>8,.2f}'.replace(',', '.'))
+
+TOT_DOBR = sum(f[0] for f in FER.values())
+TOT_GAV  = sum(f[1] for f in FER.values())
+TOT_BASC = sum(f[2] for f in FER.values())
+N_PRAT   = sum(q for m, e, a, d, c, l, q, r in P if 'prateleira' in d.lower())
+custo_sup = N_PRAT*4*SUP_PRAT
+
+print(f'\nFERRAGEM DO PROJETO — {TOT_DOBR} dobradiças · {TOT_GAV} gavetas · '
+      f'{TOT_BASC} básculas · {N_PRAT} prateleiras')
+
+# ── logística e instalação ─────────────────────────────────────────────────
+# 12 conjuntos em 3 pavimentos, casa inteira. Sem histórico de obra deste porte
+# na base — número explícito e marcado para o Jonathan cravar (dúvida F).
+DIAS_DUPLA, R_DIA = 22, 600.0
+N_CARRETO, R_CARRETO = 5, 600.0
+N_VISITA,  R_VISITA  = 4, 250.0
+LOG = DIAS_DUPLA*R_DIA + N_CARRETO*R_CARRETO + N_VISITA*R_VISITA
+
+# ── fechamento por cenário ─────────────────────────────────────────────────
+print('\n' + '═'*W)
+print('CUSTO DIRETO E PREÇO — TRÊS CENÁRIOS')
+print('═'*W)
+
+# Rateio do ripado. NÃO é proporcional ao custo total: o painel ripado não tem
+# ferragem, não tem cava e quase não tem terceirizado. Ele leva a fatia de
+# chapa/fita/filetagem/consumíveis/logística proporcional à área, mais os dois
+# sistemas de porta que são dele (deslizante embutido + pivotante).
+area_rip = sum(area_rip_amb.values())
+frac_rip = area_rip/area_tot
+TERC_RIP = RO82_TOP + PIVO
+
+resultados = []
+for nome, ferr_desc, mc, f, gar in CENARIOS:
+    custo_ferr = TOT_DOBR*f['dobr'] + TOT_GAV*f['corr'] + TOT_BASC*f['art']
+    consum = (custo_chapa + custo_fita)*0.06
+    MAT = (custo_chapa + custo_fita + custo_filet + custo_cava + custo_ferr
+           + custo_sup + custo_terc + consum)
+    CD = MAT + LOG
+    cd_rip = ((custo_chapa + custo_fita + custo_filet + consum + LOG)*frac_rip
+              + TERC_RIP)
+    cd_resto = CD - cd_rip
+    inv = preco(cd_resto, cd_rip, mc)
+    inv_r = round(inv/100)*100
+    resultados.append((nome, ferr_desc, mc, gar, custo_ferr, CD, inv_r,
+                       mc_conferida(inv_r, CD)))
+
+print(f'  {"":<17}{"ferragem":>10}{"custo direto":>14}{"INVESTIMENTO":>15}'
+      f'{"MC real":>9}{"garantia":>11}')
+for nome, fd, mc, gar, cf, cd, inv, mcr in resultados:
+    print(f'  {nome:<17}{cf:>10,.0f}{cd:>14,.0f}{inv:>15,.0f}'
+          f'{mcr*100:>8.1f}%{gar:>11}'.replace(',', '.'))
+
+print('\n  Composição do custo direto (igual nos três, exceto a ferragem):')
+consum = (custo_chapa + custo_fita)*0.06
+for rot, v in (('Chapas', custo_chapa), ('Fita (material)', custo_fita),
+               ('Filetagem (aplicação)', custo_filet),
+               ('Usinagem das cavas', custo_cava),
+               ('Suportes de prateleira', custo_sup),
+               ('Terceirizados e especiais', custo_terc),
+               ('Consumíveis (6% de chapa + fita)', consum),
+               (f'Logística e instalação ({DIAS_DUPLA} dias de dupla, '
+                f'{N_CARRETO} carretos, {N_VISITA} visitas) ⚠', LOG)):
+    _v = f'{v:,.2f}'.replace(',', '.')
+    print(f'    {rot:<74}R$ {_v:>9}')
+
+consum = (custo_chapa + custo_fita)*0.06
+cd_rip_v = (custo_chapa + custo_fita + custo_filet + consum + LOG)*frac_rip + TERC_RIP
+_v = f'{cd_rip_v:,.0f}'.replace(',', '.')
+print(f'\n  Ripado = {area_rip:.2f} m² de chapa ({frac_rip*100:.0f}% do projeto) '
+      f'⇒ R$ {_v} de custo direto, à parte, a MC {MC_RIPADO*100:.0f}%.')
+print('  (o painel não tem ferragem nem cava — só leva chapa, fita, consumível,')
+print('   logística e os dois sistemas de porta que são dele.)')
+
+print('\n  ⚠ NÃO ESTÁ INCLUÍDO: todo o mármore. Bancadas 01/02/03, ilha tipo')
+print('    cascata, ripado da bancada 03, rodabancas, nichos, cubas esculpidas,')
+print('    prateleiras e o "detalhe caixa" da cozinha são MARMORARIA. As pranchas')
+print('    especificam Carrara e Travertino em praticamente todo ambiente. Se a')
+print('    Valvic for fornecer, é orçamento à parte e muda o total.')
+
+# ── sensibilidade ──────────────────────────────────────────────────────────
+# ── rateio por ambiente ────────────────────────────────────────────────────
+# Exato onde dá (ferragem, cava, terceirizado são atribuíveis); rateado por
+# área de chapa onde não dá (chapa, fita, filetagem, consumível, logística).
+print('\n' + '─'*W)
+print(f'INVESTIMENTO POR AMBIENTE — cenário 2 (Hardt · MC 37% · garantia 5 anos)')
+_, _, mc2, f2, _ = CENARIOS[1]
+terc_amb = defaultdict(float)
+for amb, d, v, est in TERC: terc_amb[amb] += v
+consum = (custo_chapa + custo_fita)*0.06
+rateavel = custo_chapa + custo_fita + custo_filet + consum + LOG
+prat_amb = defaultdict(int)
+for m, e, a, d, c, l, q, r in P:
+    if 'prateleira' in d.lower(): prat_amb[a] += q
+soma = 0.0
+print(f'  {"ambiente":<32}{"chapa":>8}{"custo dir.":>12}{"ripado":>10}'
+      f'{"INVESTIMENTO":>15}')
+for amb in ordem:
+    fr = area_amb[amb]/area_tot
+    d, g, b = FER[amb]
+    exato = (d*f2['dobr'] + g*f2['corr'] + b*f2['art'] + CAVAS[amb]*CAVA_USIN
+             + prat_amb[amb]*4*SUP_PRAT + terc_amb[amb])
+    cd = exato + rateavel*fr
+    fr_r = area_rip_amb[amb]/area_amb[amb] if area_amb[amb] else 0.0
+    cd_r = rateavel*fr*fr_r + (TERC_RIP if amb == 'Cozinha · painel ripado' else 0)
+    inv = round(preco(cd - cd_r, cd_r, mc2)/100)*100
+    soma += inv
+    _a = f'{area_amb[amb]:.2f}'; _c = f'{cd:,.0f}'.replace(',', '.')
+    _r = f'{cd_r:,.0f}'.replace(',', '.') if cd_r else '—'
+    _i = f'{inv:,.0f}'.replace(',', '.')
+    print(f'  {amb:<32}{_a:>8}{_c:>12}{_r:>10}{_i:>15}')
+_s = f'{soma:,.0f}'.replace(',', '.')
+print(f'  {"SOMA":<32}{"":>8}{"":>12}{"":>10}{_s:>15}')
+
+print('\n' + '─'*W)
+print('SENSIBILIDADE — as três premissas que mais mexem no número')
+custo_esp = sum(CHAPAS[k]*PRC_ESP[k[1]] for k in CHAPAS)
+d_esp = custo_esp - custo_chapa
+base_mc = CENARIOS[1][2]
+print(f'  1. Chapa Arauco madeirada cotada como ESPECIAL (950/1200/800) em vez '
+      f'de COR:\n     custo +R$ {d_esp:,.0f}  →  preço +R$ {d_esp/div(base_mc):,.0f} '
+      f'no cenário 2.'.replace(',', '.'))
+# fundos em branco
+area_f6 = sum(c*l*q/10000 for m, e, a, d, c, l, q, r in P if e == 6)
+ec_branco = area_f6/(CH_AREA*0.80)
+d_fundo = -(PRC_COR[6]-190.0)*ec_branco
+print(f'  2. Fundos em branco 6 mm em vez da cor ({area_f6:.1f} m²):'
+      f'\n     custo R$ {d_fundo:,.0f}  →  preço R$ {d_fundo/div(base_mc):,.0f}. '
+      f'⚠ as perspectivas mostram o interior na cor.'.replace(',', '.'))
+# ripado do painel
+cd_pain = area_rip_amb['Cozinha · painel ripado']
+print(f'  3. O painel do estar/jantar sozinho tem {cd_pain:.2f} m² de chapa '
+      f'({cd_pain/area_tot*100:.0f}% do projeto).\n     A prancha diz "parte '
+      f'ripado parte liso" e eu adotei 100% ripado. Se metade for lisa,\n'
+      f'     saem ~{int(572/RIPA_PASSO)//2} réguas e ~{int(572/RIPA_PASSO)//2*2.88:.0f} m de fita.')
+bg = sum(CHAPAS[k]*PRECO_CHAPA[k[1]] for k in CHAPAS if k[0] == 'BG')
+abg = sum(area_chapa[k] for k in area_chapa if k[0] == 'BG')
+_v = f'{bg:,.0f}'.replace(',', '.'); _p = f'{bg/div(base_mc):,.0f}'.replace(',', '.')
+print(f'  4. O MDF BEIGE existe só nas 4 prateleiras do nicho do banheiro 02 '
+      f'({abg:.2f} m²).\n     Como cor não divide chapa, custa R$ {_v} de chapa '
+      f'inteira → R$ {_p} de preço.\n     Trocar por Nogueira Persa apaga essa '
+      f'linha sem tocar em mais nada do projeto.')
+
+print('\n' + '─'*W)
+print('COM RT DE 10% PARA A ARQUITETA  (a alavanca isolada mais cara do projeto)')
+for nome, fd, mc, gar, cf, cd, inv, mcr in resultados:
+    cd_rip = cd*frac_rip
+    inv_rt = round(preco(cd-cd_rip, cd_rip, mc, rt=True)/100)*100
+    print(f'  {nome:<17}R$ {inv:>9,.0f}  →  R$ {inv_rt:>9,.0f}   '
+          f'(+{(inv_rt/inv-1)*100:.0f}%)'.replace(',', '.'))
+print('═'*W)
