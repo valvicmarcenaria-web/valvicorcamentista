@@ -115,3 +115,41 @@ Consequências, já registradas:
 **Entregue mesmo assim:** `2026-eliuton-duvidas-tecnicas.md` (o levantamento de
 dúvidas, que o Jonathan pediu para vir antes) e `corte-eliuton.py` (o motor com os
 três cenários e a regra do ripado já calibrados — falta só a geometria).
+
+---
+
+## 13/08 — "não consegue acessar pelo conector do Drive?" [Jonathan]
+
+**Acessar, sim. Ler o desenho, não.** As duas coisas são diferentes e vale registrar
+por quê, para não se refazer esse teste toda vez.
+
+| O que | Funciona? | O que acontece |
+|---|:--:|---|
+| Listar a pasta, ver metadados | ✅ | 19 arquivos, datas, tamanhos, autoria — tudo veio |
+| `read_file_content` numa prancha PR | ⚠️ | devolve **só o carimbo**, OCR-ado e com erro |
+| `download_file_content` | ❌ | chega em base64 **pelo meu contexto**: ~120 mil tokens por prancha |
+| `copy_file` → converter p/ Google Doc | ❌ | a ferramenta **não aceita mimeType de destino** |
+| `update_file` → mudar o tipo | ❌ | só mexe em título e pasta |
+| Baixar direto de `drive.google.com` | ❌ | política de rede: `403 no CONNECT` |
+
+O gargalo real é que as pranchas são **raster**. Não existe camada de texto para o
+conector puxar — ele roda OCR, e OCR de prancha de CAD acerta o carimbo (letra grande,
+fundo limpo) e erra a cota (número pequeno, encostado em linha de chamada).
+
+### Os dois caminhos que funcionam
+
+1. **Subir os PDFs aqui no chat.** É o caminho da prancha AR-18 da Honda. Aí eu abro a
+   imagem e leio o desenho — não é OCR, é leitura visual: enxergo onde a cota está,
+   a que elemento ela pertence e como as vistas se amarram. É isso que permite orçar.
+2. **Se preferir o Drive:** o `read_file_content` também aceita `image/png` e
+   `image/jpeg`. Exportar cada prancha como **PNG em alta** (300 dpi) e subir na pasta
+   dá uma via pelo conector. Menos direto que o item 1, mas evita reenviar arquivo.
+
+### Um atalho que ajuda pouco
+No Drive, *botão direito → Abrir com → Documentos Google* roda o OCR completo do Google
+e o `read_file_content` no Doc resultante traria **todo** o texto, cotas inclusive.
+Só que vem como **lista solta de números**, sem saber qual cota é de qual elemento.
+Serve para conferir, não para levantar.
+
+**Conclusão:** o conector não é o problema, o formato é. Prancha vetorial ou imagem em
+alta resolução resolve; o PDF raster atual não.
