@@ -4,6 +4,7 @@
 **Autoria:** Arq. **Luciana Beatriz Simplício** — Núcleo SC Arquitetura ·
 (31) 3004-3387 · CAU MG A54855-3
 **Motor:** `corte-eliuton.py` · **Proposta:** `build-eliuton.py` → `proposta-eliuton.pdf` (5 pág.)
+**Prazo:** 90 a 120 dias **corridos** [Jonathan 17/08] · **Validade:** 7 dias (premissa)
 **Dúvidas:** `2026-eliuton-duvidas-tecnicas.md`
 
 ---
@@ -24,7 +25,10 @@ Com RT de 10% para a arquiteta: **108.100 · 127.100 · 147.800** (+24% a +30%).
 > ⚠ **3ª rodada.** A 1ª saiu a 126.400 / 143.800 / 162.500; o Jonathan disse que
 > estava alto demais e a auditoria achou nove erros. Na 2ª ele apontou o décimo,
 > que era o maior de todos: **eu tinha lançado montagem no custo direto, e a
-> Valvic nunca põe montagem na proposta.**
+> Valvic nunca põe montagem no custo.**
+> ⚠ **Mas montagem ENTRA no escopo.** A equipe é própria e isso é diferencial de
+> venda — a proposta diz, em duas páginas, que a Valvic instala com equipe
+> própria e não terceiriza a montagem. Custo e escopo são coisas diferentes.
 > A sanidade de R$/m² de chapa foi de **846 → 739 → 624**, agora no piso da faixa
 > da casa (626 no Rizzi) — que é onde um job grande tem de ficar, porque o custo
 > fixo por m² dilui.

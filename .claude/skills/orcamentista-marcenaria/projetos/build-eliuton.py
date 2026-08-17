@@ -13,8 +13,13 @@ NÃO entra na proposta (montador é salário fixo; ver validacao-orcamento.md).
 
 ⚠ SEM RT. Se houver RT de 10% para a arquiteta Luciana Beatriz Simplício, os
   valores sobem 24% a 30% e a proposta tem de ser refeita.
-⚠ PRAZO e VALIDADE são premissa minha (F3 e F5 sem resposta). Trocar em PRAZO
-  e VALIDADE abaixo se o Jonathan cravar outro.
+· PRAZO cravado pelo Jonathan em 17/08: 90 a 120 dias CORRIDOS.
+⚠ VALIDADE ainda é premissa minha (F5 sem resposta).
+
+⚠ MONTAGEM: não entra no CUSTO (equipe é salário fixo — ver
+  validacao-orcamento.md), mas ENTRA NO ESCOPO entregue ao cliente. São duas
+  coisas diferentes e a página 4 tem de dizer isso: a Valvic instala com equipe
+  própria, não terceiriza. Não confundir de novo.
 ⚠ MÁRMORE FORA. Está escrito na página 5, mas é a maior fronteira de escopo do
   job — confirmar antes de enviar.
 """
@@ -25,7 +30,7 @@ OBRA      = 'Residência Brisas da Pampulha'
 ARQUITETA = 'Arq. Luciana Beatriz Simplício · Núcleo SC Arquitetura'
 DATA      = '17 de agosto de 2026'
 VALIDADE  = '7 dias corridos'          # ⚠ premissa
-PRAZO     = '90 a 120 dias úteis'      # ⚠ premissa
+PRAZO     = '90 a 120 dias corridos'   # [Jonathan 17/08]
 
 CEN = [
     dict(n='I', nome='Essencial', mc='2 anos',
@@ -329,7 +334,9 @@ p4 = f"""<div class="page"><div class="pad">
   <div class="box" style="border-left-color:var(--mut)">
   <div class="t" style="color:var(--mut)">O que está dentro do valor</div>
   <p>Projeto executivo de marcenaria, fornecimento de material, produção em CNC
-  e coladeira automática próprias, transporte e entrega na obra.</p></div>
+  e coladeira automática próprias, transporte, entrega na obra e
+  <strong>instalação e montagem por equipe própria da Valvic</strong> — não
+  terceirizamos a montagem.</p></div>
   {foot(4)}
 </div></div>"""
 
@@ -354,10 +361,11 @@ p5 = f"""<div class="page"><div class="pad">
         do prazo.</div></div>
       <div class="term"><div class="k">Validade desta proposta</div>
         <div class="v">{VALIDADE}</div></div>
-      <div class="term"><div class="k">Produção</div>
-        <div class="v">CNC e coladeira automática próprias</div>
-        <div class="s">Corte, usinagem da cava e laminação de borda feitos na
-        nossa fábrica — sem terceirizar o que define o acabamento.</div></div>
+      <div class="term"><div class="k">Produção e montagem</div>
+        <div class="v">Fábrica e equipe próprias, do corte à instalação</div>
+        <div class="s">Corte, usinagem da cava e laminação de borda na nossa CNC
+        e coladeira automática; instalação e montagem pela nossa equipe. Não
+        terceirizamos nem o que define o acabamento, nem quem entrega.</div></div>
       <table class="pay" style="margin-top:5mm">
         <tr><td colspan="2" style="border:none;padding-bottom:1mm">
           <span class="eyebrow">Formas de pagamento</span></td></tr>

@@ -233,3 +233,16 @@ decidir se corrige o histórico.
 Se uma linha do custo direto tem a palavra **dia**, **hora**, **equipe**,
 **montagem** ou **instalação** e o serviço é feito por gente da casa, ela está
 errada. Só entra o que a Valvic **compra de terceiro** ou **paga por evento**.
+
+### ⚠ Não confundir CUSTO com ESCOPO [Jonathan 17/08]
+Montagem **não entra no custo** — e **entra no escopo**. São duas coisas
+diferentes e é fácil derrubar a segunda junto com a primeira.
+
+| | Custo (planilha) | Escopo (proposta) |
+|---|---|---|
+| Instalação e montagem | **não entra** — equipe é salário fixo | **entra, e é diferencial**: "instalação e montagem por equipe própria da Valvic; não terceirizamos a montagem" |
+
+A Valvic **não terceiriza a montagem**, e isso é argumento de venda: quem
+instala é quem produziu. Toda proposta tem de dizer isso na lista do que está
+dentro do valor. Tirar a linha da planilha e esquecer de escrever no papel é
+entregar de graça um diferencial que a concorrência não tem.
