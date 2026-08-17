@@ -56,7 +56,7 @@ body{background:var(--bg); color:var(--ink); font-family:system-ui,-apple-system
 .row{display:grid; grid-template-columns:auto 1fr auto; gap:9px; align-items:center; padding:8px 0; border-bottom:1px solid var(--line-soft);}
 .row:last-child{border-bottom:0;}
 .row .nm{font-size:13px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
-.row .nm small{display:block; font-weight:400; font-size:10.5px; color:var(--ink-soft); margin-top:0;}
+.row .nm small{display:block; font-weight:400; font-size:10.5px; color:var(--ink-soft); margin-top:1px; white-space:normal; line-height:1.35;}
 .row .v{font-size:13px; font-weight:700; text-align:right; white-space:nowrap;}
 .row .v small{display:block; font-weight:400; font-size:10px; color:var(--ink-soft);}
 
@@ -104,8 +104,8 @@ const ORCAMENTOS=[
   {cliente:"Kairon & Juliana", ref:107121, max:123954, tag:"Apto completo · 8 amb (Ess/Gold)", status:"entregue", drive:"ausente"},
   {cliente:"SPE Nova Lima 1", ref:189400, max:null, tag:"Stand 88.200 + decorado 101.200 · 4 amb · MC comb. 37,3% · gar. 5 anos", status:"entregue", drive:"ausente"},
   {cliente:"Nádia & Maurílio", ref:112500, max:null, tag:"9 conjuntos · 100% Gianduia Trama · Blum · 20/20/20/40 · ⚠ sem levantamento e sem preço da chapa", status:"entregue", drive:"ausente"},
-  {cliente:"Honda Minas Motos S. Efigênia", ref:19100, max:null, tag:"Showroom · MA-01 aéreo + MA-02 em L · MC 35% s/ RT · 50/50 · via Mímesis Arq.", status:"entregue", drive:"ausente"},
-  {cliente:"Eliuton · Brisas da Pampulha", ref:86900, max:114100, tag:"Casa inteira · 8 itens (cozinha em um só) · 160,8 m² · 48 chapas · 3 cenários 32/37/42% · proposta 5 pág. em 17/08 · ⚠ sem preço da chapa Arauco (±57 mil) e sem definição do mármore", status:"orcado", drive:"ausente"},
+  {cliente:"Honda Minas Motos S. Efigênia", ref:19100, max:null, tag:"Showroom · MA-01 aéreo + MA-02 em L · 50/50 · via Mímesis Arq. · ⚠ MC real 44,4% (a proposta declarou 35%: havia montagem no custo direto, que não entra)", status:"entregue", drive:"ausente"},
+  {cliente:"Eliuton · Brisas da Pampulha", ref:86900, max:114100, tag:"Casa inteira · 8 itens (cozinha em um só) · 160,8 m² · 48 chapas · 3 linhas 86,9 / 100,5 / 114,1 mil · proposta 5 pág. · 90–120 dias corridos · s/ RT · ⚠ falta preço da chapa Arauco (±57 mil), definição do mármore e a folha 02/10", status:"orcado", drive:"ok"},
   {cliente:"Aline Sanches", ref:77800, max:88700, tag:"Apto completo · Galeria 42", status:"entregue", drive:"ausente"},
   {cliente:"Apto CJ (B+G Estúdio)", ref:48700, max:null, tag:"Opção 4 · lâmina + melamínico", status:"entregue", drive:"ausente"},
   {cliente:"Cristaleira", ref:7500, max:null, tag:"Peça única · portas de vidro", status:"entregue", drive:"ausente"},
