@@ -6,8 +6,11 @@
    `2026-eliuton-duvidas-tecnicas.md` (o que precisa ser respondido antes).
 
 [Jonathan 13/08/2026] TRÊS CENÁRIOS DE FERRAGEM, cada um com a sua MC:
-     simples (telescópica) 32% · intermediária (Hettich) 37% · top (Blum) 42%
+     telescópica 32% · Hardt 37% · Hettich 42%   ⟵ BLUM FORA [Jonathan 13/08]
    E: **toda parte com RIPADO sai a MC 40%**, em qualquer cenário.
+
+   Tirar a Blum resolveu a dúvida D2 (não há o que cotar — as três linhas já estão
+   em `dados/materiais.json`) e estreitou muito a escada de ferragem.
 
 O ripado tem MC própria, então o preço NÃO é um divisor único sobre o custo total:
 é a soma de duas parcelas — a de ripado no seu divisor, e o resto no divisor do
@@ -27,11 +30,25 @@ BASE = 1 - A_ - LIQF_*B_                    # 0,80016
 RT_PCT = 0.10                               # se houver RT: subtrair LIQF_*RT_PCT
 
 MC_RIPADO = 0.40                            # [Jonathan] vale nos três cenários
+
+# Ferragem por cenário — preços de compra de `dados/materiais.json`.
+# (dobradiça un · corrediça par · articulador/pistão un)
+# ⚠️ O cenário 3 tem duas escolhas em aberto — ver `2026-eliuton-duvidas-tecnicas.md`:
+#    dobradiça Novisys 10 ou Sensys 35 · corrediça Quadro 120 ou Actro 400.
+#    Adotei Sensys + Quadro como premissa: com Novisys (10) contra a Hardt (8) o
+#    cenário 3 não se distingue do 2 na dobradiça, e a escada perde o degrau.
 CENARIOS = [
-    ('Simples',       'Corrediça telescópica',      0.32),
-    ('Intermediária', 'Hettich',                    0.37),
-    ('Top de linha',  'Blum',                       0.42),
+    ('1 · Telescópica', 'Dobradiça padrão · telescópica · pistão',  0.32,
+     dict(dobr=6.0,  corr=40.0,  art=20.0), '2 anos'),
+    ('2 · Hardt',       'Hardt · oculta Hardt · pistão amortecido', 0.37,
+     dict(dobr=8.0,  corr=70.0,  art=30.0), '5 anos'),
+    ('3 · Hettich',     'Sensys · oculta Quadro · pistão amortec.', 0.42,
+     dict(dobr=35.0, corr=120.0, art=30.0), '❓ definir'),
 ]
+
+def custo_ferragem(cen, n_dobradicas, n_gavetas, n_basculas):
+    f = cen[3]
+    return n_dobradicas*f['dobr'] + n_gavetas*f['corr'] + n_basculas*f['art']
 
 def div(mc, rt=False):
     return BASE - mc - (LIQF_*RT_PCT if rt else 0.0)
@@ -97,18 +114,36 @@ if not pecas:
     print('\nA lista `pecas` está vazia: as pranchas ainda não foram lidas.')
     print('Faltam no chat: PR 01 a PR 05 COZINHA · PR 06 e PR 07 A. GOURMET.\n')
     print('DIVISORES JÁ CALIBRADOS  (a=0,162 · liqF=0,88 · b=0,043 · SEM RT)')
-    print(f'  {"cenário":<16}{"ferragem":<24}{"MC":>5}{"divisor":>11}{"×custo":>9}')
-    for nome, ferr, mc in CENARIOS:
-        d = div(mc)
-        print(f'  {nome:<16}{ferr:<24}{mc*100:>4.0f}%{d:>11.5f}{1/d:>9.3f}')
+    print(f'  {"cenário":<16}{"ferragem":<42}{"MC":>5}{"divisor":>10}{"gar.":>11}')
+    for nome, ferr, mc, _f, gar in CENARIOS:
+        print(f'  {nome:<16}{ferr:<42}{mc*100:>4.0f}%{div(mc):>10.5f}{gar:>11}')
     d = div(MC_RIPADO)
     print(f'  {"RIPADO":<16}{"(vale nos três)":<24}{MC_RIPADO*100:>4.0f}%'
           f'{d:>11.5f}{1/d:>9.3f}')
     print('\n  COM RT 10% os divisores caem para:')
-    for nome, _, mc in CENARIOS:
+    for nome, _, mc, _f, _g in CENARIOS:
         print(f'    {nome:<16}{div(mc, True):.5f}   (+{(div(mc)/div(mc,True)-1)*100:.0f}% no preço)')
     print('\n⚠ Cenário 3: o ripado (40%) sai MAIS BARATO que o resto (42%).')
     print('  Nos cenários 1 e 2 sai mais caro. Confirmar com o Jonathan (dúvida E2).')
+
+    # ── a forma da escada, com a Blum fora ─────────────────────────────────
+    P, G, B, CD = 40, 15, 6, 25000.0     # ILUSTRATIVO, só para medir a forma
+    print('\n' + '─'*78)
+    print('A FORMA DA ESCADA  (exemplo ilustrativo: 40 dobradiças · 15 gavetas · 6 básculas,')
+    print(f'                    R$ {CD:,.0f} de custo direto sem ferragem, igual nos três)'.replace(',','.'))
+    p0 = None
+    for nome, _, mc, _f, _g in CENARIOS:
+        f = custo_ferragem((nome,_,mc,_f,_g), P, G, B)
+        pr = (CD+f)/div(mc)
+        delta = '' if p0 is None else f'  preço +{(pr/p0-1)*100:.0f}%'
+        if p0 is None: p0 = pr
+        print(f'  {nome:<16}ferragem R$ {f:>7,.0f}   preço R$ {pr:>9,.0f}{delta}'.replace(',','.'))
+    f1 = custo_ferragem(CENARIOS[0], P, G, B); f3 = custo_ferragem(CENARIOS[2], P, G, B)
+    pr1 = (CD+f1)/div(0.32); pr3 = (CD+f3)/div(0.42)
+    print(f'\n  Do 1º ao 3º: a ferragem sobe R$ {f3-f1:,.0f} de custo, o preço sobe R$ {pr3-pr1:,.0f}.'.replace(',','.'))
+    print(f'  {((pr3-pr1)-(f3-f1))/(pr3-pr1)*100:.0f}% da diferença é MARGEM, {(f3-f1)/(pr3-pr1)*100:.0f}% é peça a mais.')
+    print('  Com a Blum fora, o degrau de ferragem estreitou — o discurso tem de vir')
+    print('  do MECANISMO e da GARANTIA (2 · 5 · ? anos), não do nome do fabricante.')
     raise SystemExit(0)
 
 # ── daqui para baixo só roda com geometria ─────────────────────────────────
