@@ -620,19 +620,24 @@ print(f'\nFERRAGEM DO PROJETO — {TOT_DOBR} dobradiças · {TOT_GAV} gavetas ·
       f'{TOT_BASC} básculas · {N_PRAT} prateleiras')
 
 # ── logística e instalação ─────────────────────────────────────────────────
-# ⚠ CORREÇÃO 17/08 — eu tinha posto 22 dias de dupla escalando a montagem pela
-#   ÁREA DE CHAPA (Honda: 22,89 m² → 3 dias ⇒ 170 m² → 22 dias). Errado:
-#   montagem escala por CONJUNTO e por complexidade, não por m² de chapa. Uma
-#   chapa de fundo de 3 m² não custa nada de montagem; um caixote pequeno com
-#   ferragem custa meio dia igual.
-#   Contado conjunto a conjunto: cozinha 4 · painel ripado 2 · gourmet 1,5 ·
-#   área de serviço 1,5 · lavabo 0,5 · 3 banheiros 1,5 = 11, mais 2 de folga
-#   pelos 3 pavimentos = 13. Caiu de R$ 17.200 para R$ 10.950.
-# ⚠ CONTINUA SENDO ESTIMATIVA MINHA. É o Jonathan quem crava (dúvida F).
-DIAS_DUPLA, R_DIA = 13, 600.0
+# ⛔ MONTAGEM NÃO ENTRA NA PROPOSTA  [Jonathan 17/08]
+#    Está em `referencias/validacao-orcamento.md`, na lista de custos FIXOS:
+#    "salários de toda a equipe (7 profissionais — marceneiros, montadores,
+#     etc.) … A produção é fixa, não por demanda."
+#    E logo abaixo: "o marceneiro tem salário (fixo, fora do orçamento) e pode
+#    ter comissão (variável, dentro do orçamento). Só a comissão entra."
+#    A comissão já está DENTRO do motor, nos coeficientes a = 0,162 e
+#    liqF·b = 0,0378. Lançar dia de montador como custo direto é contar duas
+#    vezes: uma no salário que a empresa já paga de qualquer jeito, outra na
+#    comissão que o divisor já cobra.
+#
+#    Eu tinha lançado 13 dias de dupla (R$ 7.800) — e antes disso 22 (R$ 13.200).
+#    Os dois estavam errados pela mesma razão: a linha não existe.
+#
+#    Da logística sobra o que É variável e por demanda: CARRETO e VISITA.
 N_CARRETO, R_CARRETO = 4, 600.0
 N_VISITA,  R_VISITA  = 3, 250.0
-LOG = DIAS_DUPLA*R_DIA + N_CARRETO*R_CARRETO + N_VISITA*R_VISITA
+LOG = N_CARRETO*R_CARRETO + N_VISITA*R_VISITA
 
 # ── fechamento por cenário ─────────────────────────────────────────────────
 print('\n' + '═'*W)
@@ -676,8 +681,8 @@ for rot, v in (('Chapas', custo_chapa), ('Fita (material)', custo_fita),
                ('Suportes de prateleira', custo_sup),
                ('Terceirizados e especiais', custo_terc),
                ('Consumíveis (6% de chapa + fita)', consum),
-               (f'Logística e instalação ({DIAS_DUPLA} dias de dupla, '
-                f'{N_CARRETO} carretos, {N_VISITA} visitas) ⚠', LOG)):
+               (f'Logística — {N_CARRETO} carretos + {N_VISITA} visitas técnicas '
+                f'(montagem NÃO entra: é custo fixo)', LOG)):
     _v = f'{v:,.2f}'.replace(',', '.')
     print(f'    {rot:<74}R$ {_v:>9}')
 
@@ -784,8 +789,8 @@ CORR = [
   'profundidade. O certo é RO65 Rometal.', '−R$ 1.610'),
  ('LED a R$ 150/m; a decomposição rastreável dá R$ 66/m (fita 28 + perfil 38).',
   '', '−R$ 341'),
- ('MONTAGEM escalada por m² de chapa (22 dias). Montagem escala por CONJUNTO,',
-  'não por área: contada conjunto a conjunto dá 13 dias.', '−R$ 6.250'),
+ ('MONTAGEM lançada como custo direto — 22 dias de dupla, depois 13.',
+  'A linha NÃO EXISTE: montador é salário fixo, fora do orçamento.', '−R$ 13.200'),
 ]
 for i, (l1, l2, v) in enumerate(CORR, 1):
     print(f'  {i:>2}. {l1:<73}{v:>12}')
@@ -794,5 +799,6 @@ print(f'\n  Efeito: 169,93 → {area_tot:.2f} m² de chapa · 49 → {tot_ch} ch
 _a = f'{resultados[1][5]:,.0f}'.replace(',', '.')
 _b = f'{resultados[1][6]:,.0f}'.replace(',', '.')
 print(f'          custo direto R$ 61.219 → R$ {_a} · preço R$ 143.800 → R$ {_b} (cenário 2)')
+print('  A correção 9 sozinha vale mais que as oito outras somadas.')
 print(f'  Sanidade R$/m² de chapa: 846 → {resultados[1][6]/area_tot:.0f}  (faixa da casa 626–834)')
 print('═'*W)

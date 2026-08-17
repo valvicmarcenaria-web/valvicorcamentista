@@ -11,19 +11,22 @@
 
 | Cenário | Ferragem | Custo direto | **Investimento** | MC real | Garantia |
 |---|---|--:|--:|--:|--:|
-| 1 · Telescópica | padrão · pistão simples | 48.252 | **R$ 103.800** | 33,5% | 2 anos |
-| 2 · Hardt | Hardt · oculta Hardt · Blum HK-xs | 50.516 | **R$ 118.800** | 37,5% | 5 anos |
-| 3 · Hettich | Novisys · oculta Quadro · Blum HK-xs | 51.510 | **R$ 134.500** | 41,7% | 10 anos |
+| 1 · Telescópica | padrão · pistão simples | 40.452 | **R$ 86.900** | 33,5% | 2 anos |
+| 2 · Hardt | Hardt · oculta Hardt · Blum HK-xs | 42.716 | **R$ 100.400** | 37,5% | 5 anos |
+| 3 · Hettich | Novisys · oculta Quadro · Blum HK-xs | 43.710 | **R$ 114.100** | 41,7% | 10 anos |
 
 **160,82 m² de chapa · 48 chapas · 66% de aproveitamento médio · 580 m de fita ·
 72 dobradiças · 17 gavetas · 7 básculas · 30,3 m de cava usinada.**
 
-Com RT de 10% para a arquiteta: **128.900 · 150.300 · 174.200** (+24% a +30%).
+Com RT de 10% para a arquiteta: **108.100 · 127.100 · 147.800** (+24% a +30%).
 
-> ⚠ **Estes números são da 2ª rodada.** A 1ª saiu a 126.400 / 143.800 / 162.500 e
-> o Jonathan apontou que estava alto demais. Estava — ver "A revisão" abaixo.
-> A sanidade de R$/m² de chapa caiu de **846 para 739**, dentro da faixa da casa
-> (626–834).
+> ⚠ **3ª rodada.** A 1ª saiu a 126.400 / 143.800 / 162.500; o Jonathan disse que
+> estava alto demais e a auditoria achou nove erros. Na 2ª ele apontou o décimo,
+> que era o maior de todos: **eu tinha lançado montagem no custo direto, e a
+> Valvic nunca põe montagem na proposta.**
+> A sanidade de R$/m² de chapa foi de **846 → 739 → 624**, agora no piso da faixa
+> da casa (626 no Rizzi) — que é onde um job grande tem de ficar, porque o custo
+> fixo por m² dilui.
 
 ---
 
@@ -68,18 +71,18 @@ mandam ver o detalhe justamente nela.
 
 | # | Item | Folha | Cor | Chapa | Investimento (cen. 2) |
 |---|---|---|---|--:|--:|
-| 1 | **Cozinha — conjunto completo** · torre quente + nicho geladeira 187×70×290, acabamento superior, bancada 01 (355×70×88), aéreo (351×40×96, 5 portas), ilha (226×70×88) | 02–05/08 | Nogueira Persa + Sálvia | 56,42 m² | **37.000** |
-| 2 | **Painel ripado do estar/jantar 572×288** | 02/08 | Nogueira Persa | 28,45 m² | **18.800** |
-| 3 | Gourmet · bancada 02 + coluna da cervejeira 215×290 | 07–08/08 | Nogueira Persa | 17,97 m² | 14.100 |
-| 4 | **Área de serviço 359×55×226** | 01/10 | Nogueira Persa | 32,10 m² | **23.600** |
-| 5 | Lavabo externo · painel + gabinete + forro | 03/10 | Nogueira Persa | 6,01 m² | 4.100 |
-| 6 | Banheiro master · espelheira + gabinete **ripado** | 06/10 | **Jequitibá** | 8,01 m² | 8.500 |
-| 7 | Banheiro 02 (social 1º pav) | 07–08/10 | Nog. Persa + **Beige** | 6,34 m² | 5.900 |
-| 8 | Banheiro 04 | 09–10/10 | Nogueira Persa | 5,52 m² | 6.800 |
+| 1 | **Cozinha — conjunto completo** · torre quente + nicho geladeira 187×70×290, acabamento superior, bancada 01 (355×70×88), aéreo (351×40×96, 5 portas), ilha (226×70×88) | 02–05/08 | Nogueira Persa + Sálvia | 56,42 m² | **30.700** |
+| 2 | **Painel ripado do estar/jantar 572×288** | 02/08 | Nogueira Persa | 28,45 m² | **15.400** |
+| 3 | Gourmet · bancada 02 + coluna da cervejeira 215×290 | 07–08/08 | Nogueira Persa | 17,97 m² | 12.000 |
+| 4 | **Área de serviço 359×55×226** | 01/10 | Nogueira Persa | 32,10 m² | **20.000** |
+| 5 | Lavabo externo · painel + gabinete + forro | 03/10 | Nogueira Persa | 6,01 m² | 3.400 |
+| 6 | Banheiro master · espelheira + gabinete **ripado** | 06/10 | **Jequitibá** | 8,01 m² | 7.600 |
+| 7 | Banheiro 02 (social 1º pav) | 07–08/10 | Nog. Persa + **Beige** | 6,34 m² | 5.200 |
+| 8 | Banheiro 04 | 09–10/10 | Nogueira Persa | 5,52 m² | 6.200 |
 
 O **painel ripado fica fora do item da cozinha** por dois motivos: é outra parede
 (a do estar/jantar) e tem **MC própria de 40%**, então precisa de linha separada
-no motor. Se o Jonathan quiser juntar comercialmente, é só somar: **R$ 55.800**.
+no motor. Se o Jonathan quiser juntar comercialmente, é só somar: **R$ 46.100**.
 
 **Banheiro social térreo (04/10) não tem marcenaria** — cuba esculpida,
 prateleira, porta e nicho são todos em mármore travertino. A única peça de MDF
@@ -154,14 +157,35 @@ peça a peça e achei nove erros — quatro de **material contado a mais** e cin
 | 6 | **Espelho cotado por m²** — a **armadilha nº 4 da minha própria lista**: *"a casa cota vidro e espelho por FOLHA, não por m²"*. Caí nela. R$ 285/folha com perfil. | −R$ 542 |
 | 7 | **SS150 em porta de banheiro.** SS150 é sistema de **roupeiro** — folha pesada, 65 cm de profundidade. Porta de espelho num armário de **15 cm** é RO65 Rometal. | −R$ 1.610 |
 | 8 | **LED a R$ 150/m.** A decomposição rastreável do `chapas.md` dá R$ 66/m (fita 28 + perfil 38). | −R$ 341 |
-| 9 | **Montagem escalada por m² de chapa.** Peguei a Honda (22,89 m² → 3 dias) e multipliquei: 22 dias. Errado — **montagem escala por conjunto e por complexidade, não por área**. Uma chapa de fundo de 3 m² não custa nada de montagem; um caixote pequeno com ferragem custa meio dia igual. Contado conjunto a conjunto: 13 dias. | −R$ 6.250 |
+| 9 | **Montagem lançada como custo direto.** Na 1ª rodada como 22 dias de dupla; na 2ª eu "corrigi" para 13. Errado das duas vezes — **a linha não existe**. Ver abaixo. | −R$ 13.200 |
 
-**Efeito total:** 169,93 → **160,82 m²** · 49 → **48 chapas** · custo direto
-61.219 → **50.516** · preço 143.800 → **118.800** no cenário 2.
+### ⛔ O erro nº 9, que só o Jonathan pegou: montagem não entra na proposta
 
-O erro nº 9 sozinho valia R$ 14.500 de preço — mais que os oito outros somados.
-E os R$ 10.950 que ficaram **continuam sendo estimativa minha**. É o Jonathan
-quem crava.
+> *"Nunca consideramos montagem na proposta."* — Jonathan, 17/08.
+
+Estava escrito em `validacao-orcamento.md`, na lista de **custos fixos**:
+*"salários de toda a equipe (7 profissionais — marceneiros, montadores, etc.).
+A produção é fixa, não por demanda."* E logo abaixo: *"o marceneiro tem salário
+(fixo, fora do orçamento) e pode ter comissão (variável, dentro do orçamento).
+Só a comissão entra."*
+
+E a comissão **já está dentro do motor**, nos coeficientes `a = 0,162` e
+`liqF·b = 0,0378`. Lançar dia de montador conta a mesma mão de obra duas vezes:
+uma no salário que a empresa paga de qualquer jeito, outra na comissão que o
+divisor já cobra. E ainda infla o preço, porque passa pelo divisor.
+
+Na 2ª rodada eu tratei isso como "erro de escala" e fui de 22 para 13 dias.
+Continuava errado — o problema não era o número de dias, era a linha existir.
+Sobra o que é variável de verdade: **4 carretos + 3 visitas = R$ 3.150**.
+
+**Efeito total das 9 correções:** 169,93 → **160,82 m²** · 49 → **48 chapas** ·
+custo direto 61.219 → **42.716** · preço 143.800 → **100.400** no cenário 2.
+
+### ⚠ Isso respinga na Honda
+`corte-honda-minas-motos.py` tem `INSTAL = 1800` ("3 dias de dupla") no custo
+direto. Pela regra, não deveria. Num job **já entregue a R$ 19.100**, o custo
+direto real é R$ 6.799 e a **MC foi 44,4%, não os 35% declarados**. O job é mais
+lucrativo do que está registrado. Não mexi no arquivo entregue.
 
 ---
 
@@ -172,7 +196,7 @@ quem crava.
 | 1 | Chapa Arauco madeirada cotada como **cor** (500/600/300) | como **especial**: +R$ 57.000 de preço |
 | 2 | **Ripado 100%** no painel do estar/jantar | a prancha diz "parte ripado parte liso" |
 | 3 | Ripa 4,0 cm + espaçamento 1,5 (passo 5,5) | ilegível a 1:25 — só a arquiteta sabe |
-| 4 | **13 dias de dupla** + 4 carretos + 3 visitas = R$ 10.950 | 22% do custo direto |
+| 4 | **4 carretos + 3 visitas = R$ 3.150** (sem montagem) | 7% do custo direto |
 | 5 | Fundos **na cor** (as perspectivas mostram interior na cor) | em branco: −R$ 1.883 |
 | 6 | MDF **Beige** só nas 4 prateleiras do banheiro 02 | trocar por Nogueira: −R$ 2.092 |
 | 7 | Básculas do topo da área de serviço com **HK-xs** | 113 cm de altura pede **Aventos** (R$ 600 vs 250) |
@@ -181,22 +205,22 @@ A **1** é a mais cara de todas e a mais fácil de resolver: é uma ligação pa
 fornecedor. **Nogueira Persa e Jequitibá são madeirados Arauco e a base da casa
 nunca fechou o preço dessa linha** — o `corte-lm.py` deixou a marca "ver FLAG
 premium" e ela nunca foi preenchida. Enquanto isso não fechar, o número tem
-±R$ 57 mil de incerteza. É o item nº 1 antes de propor qualquer coisa.
+±R$ 57 mil de incerteza — mais da metade do preço do cenário 2. É o item nº 1 antes de propor qualquer coisa.
 
 ---
 
 ## Onde o dinheiro está
 
-- **Cozinha (37.000), área de serviço (23.600) e painel ripado (18.800) somam
-  67% do projeto.** São os três itens onde vale gastar tempo de conferência.
+- **Cozinha (30.700), área de serviço (20.000) e painel ripado (15.400) somam
+  66% do projeto.** São os três itens onde vale gastar tempo de conferência.
 - O painel sozinho consome **28,45 m² de chapa (18%) e 305 m de fita (53% de
   toda a fita do projeto)**. É o gargalo de fita da casa — exatamente o que
   `laminacao-e-construcao.md` avisa.
 - **Cor que não divide chapa cobra caro pelas peças pequenas:** Beige (1,33 m²)
   e Jequitibá 18 mm (0,77 m²) consomem chapa inteira cada.
-- **R$/m² de chapa: 739.** Faixa da casa: 626 (Rizzi) · 647 (aéreo cozinha) ·
-  739 (SPE decorado) · 834 (Honda). Bate exatamente com o SPE decorado, que é o
-  job mais parecido em porte e acabamento.
+- **R$/m² de chapa: 624.** Faixa da casa: 626 (Rizzi) · 647 (aéreo cozinha) ·
+  739 (SPE decorado) · 834 (Honda, job pequeno). O Eliuton no piso da faixa é o
+  esperado: é o maior job da base, e custo fixo por m² dilui com o tamanho.
 
 ---
 

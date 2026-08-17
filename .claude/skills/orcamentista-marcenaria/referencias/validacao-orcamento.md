@@ -193,31 +193,43 @@ num job de R$ 118.800 — 8% do orçamento em erro de unidade.
 
 ---
 
-## Montagem escala por CONJUNTO, não por m² de chapa [Eliuton 17/08/2026]
+## ⛔ MONTAGEM NÃO ENTRA NA PROPOSTA [Jonathan 17/08/2026]
 
-Eu peguei o número da Honda (22,89 m² de chapa → 3 dias de dupla) e escalei por
-área para a casa do Eliuton: 170 m² → **22 dias**. Errado, e caro: valia
-R$ 14.500 de preço.
+> **"Nunca consideramos montagem na proposta."** — Jonathan, 17/08.
+> Já estava escrito nesta mesma página, na lista de custos fixos. Eu lancei
+> assim mesmo, duas vezes: 22 dias de dupla e depois 13. **A linha não existe.**
 
-**Montagem não tem relação com área de chapa.** Uma chapa de fundo de 3 m² sobe
-na parede em minutos; um gabinete de banheiro de 1,5 m² com espelho de correr,
-nicho e papeleiro leva meio dia. O que consome dia é **conjunto, ferragem,
-regulagem e deslocamento**.
+**Por quê.** Montador e marceneiro são **salário fixo** — a estrutura da Valvic
+tem 7 profissionais que recebem todo mês, com ou sem obra. A produção é fixa,
+não por demanda. O que é variável e entra no orçamento é a **comissão**, e a
+comissão **já está dentro do motor**, nos coeficientes `a = 0,162` e
+`liqF·b = 0,0378`.
 
-**Contar conjunto a conjunto**, e somar folga por pavimento:
+Lançar dia de montador como custo direto conta a mesma mão de obra **duas
+vezes**: uma no salário que a empresa paga de qualquer jeito, outra na comissão
+que o divisor já cobra. E ainda infla o preço, porque o custo direto passa pelo
+divisor.
 
-| Tipo de conjunto | Dias de dupla |
-|---|--:|
-| Cozinha completa (torre + bancada + aéreo + ilha) | 4 |
-| Painel ripado de parede inteira (16 m²) | 2 |
-| Bancada de gourmet / área de serviço | 1,5 |
-| Gabinete de banheiro com espelheira | 0,5 |
-| Lavabo (painel + gabinete) | 0,5 |
-| **Folga por pavimento acima do térreo** | +1 |
+### O que fica na logística
+| Entra | Não entra |
+|---|---|
+| **Carreto** (frete do móvel até a obra) | Dia de montador |
+| **Visita técnica** (~R$ 250 cada) | Dia de marceneiro |
+| Embalagem | Qualquer "instalação" em dias |
+| Terceirizado de verdade: serralheiro, vidraceiro, marmorista, laqueador | |
 
-No Eliuton: 4 + 2 + 1,5 + 1,5 + 0,5 + 3×0,5 = 11, mais 2 de folga pelos três
-pavimentos = **13 dias**. R$ 17.200 → R$ 10.950.
+No Eliuton isso derrubou R$ 13.200 de custo direto — de R$ 17.200 de "logística
+e instalação" sobraram **R$ 3.150** de 4 carretos e 3 visitas.
 
-> A logística fica entre **20% e 30% do custo direto** num job de casa inteira.
-> É a maior linha depois da chapa e a única inteiramente estimada — sempre
-> marcar como ⚠ e pedir ao Jonathan para cravar.
+### ⚠ Rever a Honda
+`corte-honda-minas-motos.py` tem `INSTAL = 1800.0` ("3 dias de dupla") dentro do
+custo direto. Pela regra, não deveria estar lá. Consequência para um job **já
+entregue a R$ 19.100**: o custo direto real é R$ 6.799, não R$ 8.599, e a
+**MC foi 44,4%, não os 35% que a proposta declarou**. O job é mais lucrativo do
+que está registrado. Não mexi no arquivo entregue — fica a nota para o Jonathan
+decidir se corrige o histórico.
+
+### O teste
+Se uma linha do custo direto tem a palavra **dia**, **hora**, **equipe**,
+**montagem** ou **instalação** e o serviço é feito por gente da casa, ela está
+errada. Só entra o que a Valvic **compra de terceiro** ou **paga por evento**.
