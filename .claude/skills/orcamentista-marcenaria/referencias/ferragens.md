@@ -182,13 +182,13 @@ A tabela da casa nasceu com dois números e ganhou o terceiro no Eliuton:
 |---|--:|
 | **Telescópica** | **2 anos** |
 | **Oculta Hardt** | **5 anos** |
-| **Hettich (oculta Quadro / Sensys)** | **10 anos** [Jonathan 13/08/2026] |
+| **Hettich (oculta Quadro / Novisys)** | **10 anos** [Jonathan 13/08/2026] |
 
 > A escada **dobra a cada degrau** — 2 · 5 · 10. É o que sustenta comercialmente
 > uma escada de três cenários, porque a diferença de **peça** entre eles é pequena
 > perto da diferença de **preço**. Ver `projetos/2026-eliuton-duvidas-tecnicas.md`:
 > num exemplo ilustrativo, 84% da diferença entre o cenário mais barato e o mais
-> caro é margem e só 16% é ferragem a mais.
+> caro é margem e só 13% é ferragem a mais.
 
 > ⛔ Continua valendo a proibição do bloco acima: **argumentar por ciclos testados,
 > amortecimento e regulagem — nunca pela garantia do FABRICANTE.** Estes números são

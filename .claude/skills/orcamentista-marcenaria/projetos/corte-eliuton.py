@@ -40,17 +40,19 @@ MC_RIPADO = 0.40                            # [Jonathan] vale nos três cenário
 #
 # [Jonathan 13/08] corrediça do cenário 3 = **Quadro** (confirmado) ·
 #   garantia do cenário 3 = **10 anos**. A escada de garantia fecha em 2 · 5 · 10.
-# ⚠️ Segue aberto no cenário 3: dobradiça **Novisys 10 ou Sensys 35**.
-#    Adotei Sensys: com Novisys (10) contra a Hardt (8) o cenário 3 não se
-#    distingue do 2 na dobradiça, e a escada perde o degrau onde mais se toca.
+# [Jonathan 13/08] dobradiça do cenário 3 = **NOVISYS R$ 10**. Eu tinha
+#   recomendado Sensys; o Jonathan escolheu Novisys. Decisão dele, registrada.
+#   Consequência: entre os cenários 2 e 3 a ferragem quase não muda (dobradiça
+#   1,25× · báscula 1,0× · só a corrediça sobe 1,7×). O que separa os dois passa
+#   a ser a CORREDIÇA e a GARANTIA (5 → 10 anos).
 HK_XS = 250.0                               # Blum HK-xs [Jonathan 13/08]
 CENARIOS = [
     ('1 · Telescópica', 'Padrão · telescópica · pistão simples',    0.32,
      dict(dobr=6.0,  corr=40.0,  art=20.0),  '2 anos'),
     ('2 · Hardt',       'Hardt · oculta Hardt · Blum HK-xs',        0.37,
      dict(dobr=8.0,  corr=70.0,  art=HK_XS), '5 anos'),
-    ('3 · Hettich',     'Sensys · oculta Quadro · Blum HK-xs',      0.42,
-     dict(dobr=35.0, corr=120.0, art=HK_XS), '10 anos'),
+    ('3 · Hettich',     'Novisys · oculta Quadro · Blum HK-xs',     0.42,
+     dict(dobr=10.0, corr=120.0, art=HK_XS), '10 anos'),
 ]
 
 def custo_ferragem(cen, n_dobradicas, n_gavetas, n_basculas):
@@ -160,10 +162,14 @@ if not pecas:
         v = [c[3][k] for c in CENARIOS]
         print(f'  {rot:<14}{v[0]:>12,.0f}{v[1]:>12,.0f}{v[1]/v[0]:>6.1f}×'
               f'{v[2]:>12,.0f}{v[2]/v[1]:>6.1f}×'.replace(',','.'))
-    print('\n  ⚠ A BÁSCULA salta 12,5× do 1º para o 2º e depois NÃO MUDA.')
-    print('    Cenários 2 e 3 têm a MESMA báscula — o mecanismo mais visível e mais')
-    print('    tocado da cozinha é idêntico nos dois. A diferença entre eles fica só')
-    print('    na dobradiça e na corrediça.')
+    print('\n  ⚠ Do 2º para o 3º cenário SÓ A CORREDIÇA muda de verdade:')
+    print('    báscula idêntica (1,0×) e dobradiça Hardt 8 → Novisys 10 (1,25×).')
+    f2, f3 = custo_ferragem(CENARIOS[1],P,G,B), custo_ferragem(CENARIOS[2],P,G,B)
+    p2, p3 = (CD+f2)/div(0.37), (CD+f3)/div(0.42)
+    print(f'    Entre 2 e 3: ferragem +R$ {f3-f2:,.0f}, preço +R$ {p3-p2:,.0f} — '
+          f'{((p3-p2)-(f3-f2))/(p3-p2)*100:.0f}% margem.'.replace(',','.'))
+    print('    ⇒ O 3º cenário se defende pela GARANTIA (10 anos) e pela corrediça')
+    print('      oculta Quadro — não pelo nome Hettich na dobradiça.')
     fb = [custo_ferragem(c, P, G, B) for c in CENARIOS]
     print(f'\n    E a báscula pesa {B*HK_XS/fb[1]*100:.0f}% da ferragem do cenário 2 e '
           f'{B*HK_XS/fb[2]*100:.0f}% do cenário 3.')
