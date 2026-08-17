@@ -171,3 +171,53 @@ Etiqueta **20** · Impressão externa **1,5** · Impressão interna **1,0**.
 > (a coluna Quant) é justamente a metodologia que vamos destilar com os
 > projetos resolvidos: como se chega ao nº de chapas e às quantidades de
 > ferragem a partir das peças.
+
+---
+
+## Unidades: quatro linhas em que a casa cobra numa unidade e eu cobrei noutra
+### [Eliuton 17/08/2026 — depois de "os valores ficaram altos demais"]
+
+> **Antes de multiplicar, olhar a UNIDADE da linha.** `materiais.json` e
+> `chapas.md` não usam sempre a mesma, e há linhas com duas origens e dois
+> preços. Quando houver conflito, vale a que já foi usada num job real.
+
+| Item | Errado | Certo | Por quê |
+|---|---|---|---|
+| **Cava usinada** | R$ 50 **por peça** (`materiais.json`) | **R$ 25 por metro** linear (Honda 07/08) | A CNC cobra tempo de percurso, e percurso é metro. Uma frente de 20 cm e uma de 1,45 m não custam o mesmo. |
+| **Espelho e vidro** | R$ 600/m² (`materiais.json`) | **R$ 285 por folha** com perfil (`chapas.md`) | Já estava escrito como armadilha e caí nela mesmo assim. |
+| **LED** | R$ 150/m ("LED COB fita + perfil") | **R$ 66/m** = fita 28 + perfil de alumínio 38 (`chapas.md`) | A decomposta é rastreável; a agregada não diz que perfil é. |
+| **Sistema de correr** | SS150 R$ 500–600 + trilho | **RO65 Rometal R$ 60/porta + trilho R$ 60** | SS150 é sistema de **roupeiro**: folha pesada, 65 cm de profundidade. Porta de espelho num armário de banheiro de **15 cm** não é o mesmo produto. |
+
+Somadas, essas quatro linhas valiam **R$ 4.237 de custo** e ~R$ 9.850 de preço
+num job de R$ 118.800 — 8% do orçamento em erro de unidade.
+
+---
+
+## Montagem escala por CONJUNTO, não por m² de chapa [Eliuton 17/08/2026]
+
+Eu peguei o número da Honda (22,89 m² de chapa → 3 dias de dupla) e escalei por
+área para a casa do Eliuton: 170 m² → **22 dias**. Errado, e caro: valia
+R$ 14.500 de preço.
+
+**Montagem não tem relação com área de chapa.** Uma chapa de fundo de 3 m² sobe
+na parede em minutos; um gabinete de banheiro de 1,5 m² com espelho de correr,
+nicho e papeleiro leva meio dia. O que consome dia é **conjunto, ferragem,
+regulagem e deslocamento**.
+
+**Contar conjunto a conjunto**, e somar folga por pavimento:
+
+| Tipo de conjunto | Dias de dupla |
+|---|--:|
+| Cozinha completa (torre + bancada + aéreo + ilha) | 4 |
+| Painel ripado de parede inteira (16 m²) | 2 |
+| Bancada de gourmet / área de serviço | 1,5 |
+| Gabinete de banheiro com espelheira | 0,5 |
+| Lavabo (painel + gabinete) | 0,5 |
+| **Folga por pavimento acima do térreo** | +1 |
+
+No Eliuton: 4 + 2 + 1,5 + 1,5 + 0,5 + 3×0,5 = 11, mais 2 de folga pelos três
+pavimentos = **13 dias**. R$ 17.200 → R$ 10.950.
+
+> A logística fica entre **20% e 30% do custo direto** num job de casa inteira.
+> É a maior linha depois da chapa e a única inteiramente estimada — sempre
+> marcar como ⚠ e pedir ao Jonathan para cravar.

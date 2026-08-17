@@ -293,3 +293,44 @@ segunda peça que eu não tinha visto: o rodapé da área de serviço, 359 cm.
 Altura de pé-direito. Painel de forro a piso, lateral de torre alta, costas de
 armário até o teto — tudo que passa de 2,75 m. Num apartamento com pé-direito
 de 2,60 nunca aparece; numa casa com forro a 2,88 aparece em todo painel.
+
+---
+
+## Quatro peças que NÃO existem [Eliuton 17/08/2026]
+
+Auditoria depois que o Jonathan disse "os valores ficaram altos demais". Nove
+erros; quatro eram chapa lançada a mais. Todos são erros de *desenho de móvel*,
+não de conta — e todos passam despercebidos porque a peça "faz sentido".
+
+### 1. Nicho de eletrodoméstico não leva fundo
+Geladeira, forno, micro-ondas, cervejeira, máquina de lavar, secadora, lava-louças:
+**o fundo é a alvenaria.** O aparelho precisa de ventilação, de folga de
+dissipação e de tomada atrás. Fechar com MDF é erro de execução, não só de
+orçamento.
+
+No Eliuton eu tinha lançado fundo atrás da geladeira (2,81 m²), da torre de
+cocção (1,93) e da cervejeira (1,49): **6,2 m² que não existem.**
+
+### 2. O tampo de um módulo é a base do módulo de cima
+Torre com nicho embaixo e armário em cima: a horizontal entre os dois é **uma
+peça só**. Lançar "tampo do nicho" + "base do armário" duplica.
+
+### 3. Onde a bancada é de PEDRA não há tampo de MDF
+Bancada em mármore/granito/quartzo apoia em **base + travessa**, não em tampo
+inteiro. Quem faz o tampo é a marmoraria. Vale para gabinete de banheiro,
+lavabo, bancada de cozinha e de área de serviço.
+
+> Sinal de alerta: se a prancha diz "BANCADA E RODABANCA EM MÁRMORE" e a lista
+> de peças tem um tampo de MDF do mesmo tamanho, um dos dois está sobrando.
+
+### 4. Fundo lançado duas vezes em caixote com face de vidro
+Acontece quando a linha diz "laterais e fundo, 3 peças" e depois vem uma linha
+"fundo" separada.
+
+### O teste que pega os quatro
+Somar a área do item e dividir pela **área frontal** do móvel. Faixa normal:
+- móvel raso (aéreo, espelheira, 15–40 cm): **2 a 3×**
+- móvel fundo (torre, bancada, roupeiro, 50–70 cm): **3 a 4,5×**
+
+Acima de 4,5× num móvel fundo, procurar fundo de nicho de eletro e tampo
+duplicado — foi exatamente onde estavam.

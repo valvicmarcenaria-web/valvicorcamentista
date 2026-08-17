@@ -110,17 +110,28 @@ FITA_COR   = 3.00      # R$/m — fita de borda cor 22 mm
 FILET_MAQ  = 2.50      # R$/m — aplicação na coladeira automática
 DESPERD    = 1.10      # +10% de fita
 
-CAVA_USIN  = 50.0      # R$/peça — cava 35° usinada (o projeto pede "puxador tipo cava")
+# ⚠ CORREÇÃO 17/08 — a cava é por METRO, não por peça.
+# `materiais.json` traz "Cava 35° usinada · peça · R$ 50" e a Honda usou
+# "R$ 25/m de usinagem de cava embutida na CNC" — número que o Jonathan validou
+# num job real. A CNC cobra tempo de percurso, e percurso é metro linear.
+# Eu tinha usado R$ 50 × 50 frentes = R$ 2.500. Correto: ~30 m × R$ 25 = R$ 750.
+CAVA_USIN  = 25.0      # R$/m linear de cava usinada  [convenção Honda 07/08]
 PUX_ALCA   = 60.0      # R$/un   — puxador metálico tipo alça preto (banheiro master)
 SUP_PRAT   = 1.50      # R$/un   — 4 por prateleira
-LED_COB    = 150.0     # R$/m    — fita + perfil
-ESPELHO    = 600.0     # R$/m²   — espelho prata
+# ⚠ CORREÇÃO — LED. `materiais.json` diz "LED COB (fita+perfil) R$ 150/m";
+# `chapas.md` decompõe: fita branco quente R$ 28/m + perfil alumínio R$ 38/m.
+# Uso a decomposta, que é a que tem origem rastreável.
+LED_M      = 28.0 + 38.0
+# ⚠ CORREÇÃO — ARMADILHA Nº 4 DA MINHA PRÓPRIA LISTA: "vidro e espelho a casa
+# cota POR FOLHA, não por m². Nunca usar os R$ da tabela como R$/m²."
+# Eu usei R$ 600/m². `chapas.md`: espelho prata colado R$ 220 · com perfil R$ 285.
+ESPELHO_FL = 285.0     # R$/folha — espelho prata com perfil
 VIDRO8     = 250.0     # R$/m²   — vidro incolor temperado 8 mm
 SERRALH    = 300.0     # R$/serviço
-SS150_2P   = 500.0     # conjunto 2 portas de correr
-SS150_3P   = 600.0     # conjunto 3 portas
-TRILHO_2M  = 170.0
-TRILHO_3M  = 200.0
+# ⚠ CORREÇÃO — SS150 é sistema de ROUPEIRO (folha pesada, 65 cm de profundidade).
+# Porta de espelho num armário de banheiro de 15 cm NÃO é SS150: é RO65 Rometal.
+RO65_PORTA = 60.0      # conjunto por porta
+TRILHO_RO65 = 60.0     # 2 m
 PIVO       = 120.0     # sistema de porta pivotante
 RO82_TOP   = 400.0     # deslizante embutido amortecido (porta de correr ripada)
 TABUA      = 480.0     # tábua de passar embutida dobrável
@@ -192,108 +203,110 @@ def fita(amb, desc, m): FITA.append((amb, desc, m))
 TERC = []         # (ambiente, descrição, valor, estimado?)
 def terc(amb, desc, v, est=False): TERC.append((amb, desc, v, est))
 
-CAVAS = defaultdict(int)          # nº de frentes com cava usinada
+CAVA_M = defaultdict(float)       # metros lineares de cava usinada
+def cava(amb, m): CAVA_M[amb] += m
 
 # ───────────────────────────────────────────────────────────────────────────
-# 1 · COZINHA — TORRE QUENTE + NICHO GELADEIRA        folha 04/08 · Nogueira
-#     187 larg (14 lateral vazada + 103 geladeira + 70 torre) × 70 prof × 290
+# 1 · COZINHA — CONJUNTO COMPLETO EM UM ÚNICO ITEM  [Jonathan 17/08]
+#     folhas 02, 03, 04 e 05 de 08 · Nogueira Persa + Sálvia
+#     · torre quente + nicho geladeira 187 × 70 × 290   (Nogueira Persa)
+#     · acabamento superior — faixa de 15 sob o forro    (Nogueira Persa)
+#     · bancada 01 · armário inferior 355 × 70 × 88      (Sálvia)
+#     · aéreo 351 × 40 × 96 · 5 portas                   (Sálvia)
+#     · ilha 226 × 70 × 88                               (Sálvia)
+#     O painel ripado do estar/jantar fica FORA deste item: é outra parede e
+#     tem MC própria de 40%, então precisa de linha separada no motor.
 # ───────────────────────────────────────────────────────────────────────────
-A = 'Cozinha · torre quente'
-add('NP', 18, A, 'lateral vazada (batente da porta do gourmet)', 70, 275)
-add('NP', 15, A, 'divisória geladeira/torre', 70, 275)
-add('NP', 15, A, 'lateral direita (encosta na bancada)', 70, 275)
-add('NP', 15, A, 'tampo sobre o nicho da geladeira', 103, 70)
-add('NP', 15, A, 'tampo do armário basculante da geladeira', 103, 70)
-add('NP', 15, A, 'horizontais da torre (tampo+4 div+base)', 67, 70, 6)
-add('NP', 6,  A, 'fundo do nicho da geladeira', 103, 273)
-add('NP', 6,  A, 'fundo da torre', 70, 275)
-add('NP', 18, A, 'báscula sobre a geladeira', 103, 58)
-add('NP', 18, A, 'báscula superior da torre', 70, 58)
-add('NP', 18, A, 'báscula do 2º nicho da torre', 70, 39)
-add('NP', 18, A, 'frente do gavetão da torre', 70, 58)
-add('NP', 18, A, 'prateleira do armário basculante', 100, 68, 1)
-gaveta('NP', A, 'gavetão da torre', 70, 70, 50)
+A = 'Cozinha (conjunto completo)'
+
+# ── torre quente + nicho da geladeira ──────────────────────────────────────
+# ⚠ CORREÇÃO 17/08 — NICHO DE ELETRODOMÉSTICO NÃO LEVA FUNDO DE MDF.
+#   Geladeira, forno e micro-ondas precisam de ventilação, tomada e folga de
+#   dissipação; o fundo é a alvenaria. Eu tinha lançado 2,81 m² de fundo atrás
+#   da geladeira e 1,93 m² atrás da torre de cocção — 4,74 m² que não existem.
+# ⚠ CORREÇÃO 17/08 — o tampo sobre o nicho da geladeira JÁ É a base do armário
+#   basculante de cima. Eu tinha lançado as duas peças: −0,72 m².
+add('NP', 18, A, 'torre · lateral vazada (batente da porta do gourmet)', 70, 275)
+add('NP', 15, A, 'torre · divisória geladeira/torre', 70, 275)
+add('NP', 15, A, 'torre · lateral direita (encosta na bancada)', 70, 275)
+add('NP', 15, A, 'torre · horizontal entre geladeira e basculante', 103, 70)
+add('NP', 15, A, 'torre · tampo do armário basculante', 103, 70)
+add('NP', 15, A, 'torre · horizontais da coluna (tampo + 4 div + base)', 67, 70, 6)
+add('NP', 18, A, 'torre · báscula sobre a geladeira 103 × 58', 103, 58)
+add('NP', 18, A, 'torre · báscula superior da coluna 70 × 58', 70, 58)
+add('NP', 18, A, 'torre · báscula do 2º nicho 70 × 39', 70, 39)
+add('NP', 18, A, 'torre · frente do gavetão 70 × 58', 70, 58)
+add('NP', 18, A, 'torre · prateleira do armário basculante', 100, 68)
+gaveta('NP', A, 'torre · gavetão', 70, 70, 50)
 fer(A, dobr=6, gav=1, basc=3)
-CAVAS[A] += 4
-fita(A, 'perímetro das 3 básculas + gavetão', 2*(1.03+0.58) + 2*(0.70+0.58)
-        + 2*(0.70+0.39) + 2*(0.70+0.58))
-fita(A, 'lateral vazada + frentes de caixaria', 2*(0.70+2.75) + 6*0.67 + 2*1.03)
+cava(A, 1.03 + 0.70 + 0.70 + 0.70)
+fita(A, 'torre · perímetro das 3 básculas + gavetão',
+     2*(1.03+0.58) + 2*(0.70+0.58) + 2*(0.70+0.39) + 2*(0.70+0.58))
+fita(A, 'torre · lateral vazada + frentes de caixaria',
+     2*(0.70+2.75) + 6*0.67 + 2*1.03)
 
-# ───────────────────────────────────────────────────────────────────────────
-# 2 · COZINHA — ACABAMENTO SUPERIOR (faixa de 15 sob o forro)  folhas 02–04/08
-# ───────────────────────────────────────────────────────────────────────────
-A = 'Cozinha · acabamento superior'
-add('NP', 18, A, 'faixa 15 cm sob o forro (541,5 em 2 peças)', 271, 15, 2)
-fita(A, 'borda inferior aparente', 5.42)
+# ── acabamento superior — faixa de 15 sob o forro, ao longo dos 541,5 ──────
+add('NP', 18, A, 'acabamento superior sob o forro (541,5 em 2 peças)', 271, 15, 2)
+fita(A, 'acabamento superior · borda inferior aparente', 5.42)
 
-# ───────────────────────────────────────────────────────────────────────────
-# 3 · COZINHA — BANCADA 01 · ARMÁRIO INFERIOR         folha 03/08 · Sálvia
-#     355 × 70 prof × 88 (corpo 78 + rodapé 10) · bancada em mármore
-#     64 gaveteiro | 104 (2 portas 50) | 23 pano de prato | 64 nicho LL | 104
-# ───────────────────────────────────────────────────────────────────────────
-A = 'Cozinha · bancada 01'
-add('SA', 15, A, 'verticais (2 externas + 5 divisórias)', 70, 78, 7)
-add('SA', 15, A, 'base (349 em 2 peças)', 175, 70, 2)
-add('SA', 15, A, 'travessa superior', 175, 10, 2)
-add('SA', 6,  A, 'fundo (355 em 2 peças)', 178, 78, 2)
-add('SA', 18, A, 'frente de gaveta 64 × 15', 64, 15, 3)
-add('SA', 18, A, 'frente do gavetão 64 × 29', 64, 29)
-add('SA', 18, A, 'porta 50 × 74', 50, 74, 4)
-add('SA', 18, A, 'porta pano de prato 23 × 74', 23, 74)
-add('SA', 18, A, 'prateleira dos módulos de porta', 100, 68, 2)
-add('SA', 18, A, 'rodapé recuado (355 em 2 peças)', 178, 10, 2)
-gaveta('SA', A, 'gaveteiro', 64, 70, 13, 3)
-gaveta('SA', A, 'gavetão',   64, 70, 27, 1)
+# ── bancada 01 · armário inferior · Sálvia ────────────────────────────────
+#    355 × 70 × 88 (corpo 78 + rodapé 10) · a bancada é de MÁRMORE
+#    64 gaveteiro | 104 (2 portas 50) | 23 pano de prato | 64 nicho LL | 104
+add('SA', 15, A, 'bancada 01 · verticais (2 externas + 5 divisórias)', 70, 78, 7)
+add('SA', 15, A, 'bancada 01 · base (349 em 2 peças)', 175, 70, 2)
+add('SA', 15, A, 'bancada 01 · travessa superior', 175, 10, 2)
+add('SA', 6,  A, 'bancada 01 · fundo (355 em 2 peças)', 178, 78, 2)
+add('SA', 18, A, 'bancada 01 · frente de gaveta 64 × 15', 64, 15, 3)
+add('SA', 18, A, 'bancada 01 · frente do gavetão 64 × 29', 64, 29)
+add('SA', 18, A, 'bancada 01 · porta 50 × 74', 50, 74, 4)
+add('SA', 18, A, 'bancada 01 · porta pano de prato 23 × 74', 23, 74)
+add('SA', 18, A, 'bancada 01 · prateleira dos módulos de porta', 100, 68, 2)
+add('SA', 18, A, 'bancada 01 · rodapé recuado (355 em 2 peças)', 178, 10, 2)
+gaveta('SA', A, 'bancada 01 · gaveteiro', 64, 70, 13, 3)
+gaveta('SA', A, 'bancada 01 · gavetão',   64, 70, 27, 1)
 fer(A, dobr=10, gav=4)
-CAVAS[A] += 9
-fita(A, 'frentes de gaveta + gavetão', 3*2*(0.64+0.15) + 2*(0.64+0.29))
-fita(A, 'portas', 4*2*(0.50+0.74) + 2*(0.23+0.74))
-fita(A, 'verticais + prateleiras + rodapé', 7*0.78 + 2*1.00 + 3.55)
-fita(A, 'nicho da lava-louça (bordas aparentes)', 2*0.78 + 0.64)
+cava(A, 3*0.64 + 0.64 + 4*0.50 + 0.23)
+fita(A, 'bancada 01 · frentes de gaveta + gavetão',
+     3*2*(0.64+0.15) + 2*(0.64+0.29))
+fita(A, 'bancada 01 · portas', 4*2*(0.50+0.74) + 2*(0.23+0.74))
+fita(A, 'bancada 01 · verticais + prateleiras + rodapé',
+     7*0.78 + 2*1.00 + 3.55)
+fita(A, 'bancada 01 · nicho da lava-louça (bordas aparentes)', 2*0.78 + 0.64)
 
-# ───────────────────────────────────────────────────────────────────────────
-# 4 · COZINHA — ARMÁRIO SUPERIOR (aéreo)              folha 04/08 · Sálvia
-#     351 × 40 prof × 96 · 5 portas: 85 · 85 · 56 · 57 · 56
-# ───────────────────────────────────────────────────────────────────────────
-A = 'Cozinha · aéreo'
-add('SA', 15, A, 'verticais (2 externas + 4 divisórias)', 40, 96, 6)
-add('SA', 15, A, 'tampo (342 em 2 peças)', 171, 40, 2)
-add('SA', 15, A, 'base (342 em 2 peças)',  171, 40, 2)
-add('SA', 18, A, 'prateleira dos módulos de 85', 85, 38, 2)
-add('SA', 18, A, 'prateleira dos módulos de 56/57', 56, 38, 3)
-add('SA', 6,  A, 'fundo (351 em 2 peças)', 176, 96, 2)
-add('SA', 18, A, 'porta 85 × 92', 85, 92, 2)
-add('SA', 18, A, 'porta 56/57 × 92', 56, 92, 3)
+# ── aéreo · Sálvia · 351 × 40 × 96 · portas 85 · 85 · 56 · 57 · 56 ────────
+add('SA', 15, A, 'aéreo · verticais (2 externas + 4 divisórias)', 40, 96, 6)
+add('SA', 15, A, 'aéreo · tampo (342 em 2 peças)', 171, 40, 2)
+add('SA', 15, A, 'aéreo · base (342 em 2 peças)',  171, 40, 2)
+add('SA', 18, A, 'aéreo · prateleira dos módulos de 85', 85, 38, 2)
+add('SA', 18, A, 'aéreo · prateleira dos módulos de 56/57', 56, 38, 3)
+add('SA', 6,  A, 'aéreo · fundo (351 em 2 peças)', 176, 96, 2)
+add('SA', 18, A, 'aéreo · porta 85 × 92', 85, 92, 2)
+add('SA', 18, A, 'aéreo · porta 56/57 × 92', 56, 92, 3)
 fer(A, dobr=10)
-CAVAS[A] += 5
-fita(A, 'portas', 2*2*(0.85+0.92) + 3*2*(0.57+0.92))
-fita(A, 'base aparente por baixo + prateleiras', 3.51 + 2*0.85 + 3*0.56)
+cava(A, 2*0.85 + 3*0.57)
+fita(A, 'aéreo · portas', 2*2*(0.85+0.92) + 3*2*(0.57+0.92))
+fita(A, 'aéreo · base aparente por baixo + prateleiras',
+     3.51 + 2*0.85 + 3*0.56)
 
-# ───────────────────────────────────────────────────────────────────────────
-# 5 · COZINHA — ILHA                                  folha 05/08 · Sálvia
-#     226 × 70 prof × 88 · cascata em mármore (fora do escopo)
-#     20 porta temperos | 122 (2 portas de 60) | 78 gaveteiro
-# ───────────────────────────────────────────────────────────────────────────
-A = 'Cozinha · ilha'
-add('SA', 15, A, 'verticais (2 externas + 3 divisórias)', 70, 78, 5)
-add('SA', 15, A, 'base (218 em 2 peças)', 109, 70, 2)
-add('SA', 15, A, 'travessa superior', 109, 10, 2)
-add('SA', 18, A, 'costas aparente (vista posterior, 226 em 2)', 113, 88, 2)
-add('SA', 18, A, 'porta temperos 20 × 74', 20, 74)
-add('SA', 18, A, 'porta 60 × 74', 60, 74, 2)
-add('SA', 18, A, 'frente de gaveta 78 × 15', 78, 15, 3)
-add('SA', 18, A, 'frente do gavetão 78 × 29', 78, 29)
-add('SA', 18, A, 'prateleira do módulo de 122', 120, 68, 1)
-add('SA', 18, A, 'rodapé recuado (226 em 2 peças)', 113, 10, 2)
-gaveta('SA', A, 'gaveteiro', 78, 70, 13, 3)
-gaveta('SA', A, 'gavetão',   78, 70, 27, 1)
+# ── ilha · Sálvia · 226 × 70 × 88 · cascata em mármore (fora do escopo) ────
+#    20 porta temperos | 122 (2 portas de 60) | 78 gaveteiro
+add('SA', 15, A, 'ilha · verticais (2 externas + 3 divisórias)', 70, 78, 5)
+add('SA', 15, A, 'ilha · base (218 em 2 peças)', 109, 70, 2)
+add('SA', 15, A, 'ilha · travessa superior', 109, 10, 2)
+add('SA', 18, A, 'ilha · costas aparente (vista posterior, 226 em 2)', 113, 88, 2)
+add('SA', 18, A, 'ilha · porta temperos 20 × 74', 20, 74)
+add('SA', 18, A, 'ilha · porta 60 × 74', 60, 74, 2)
+add('SA', 18, A, 'ilha · frente de gaveta 78 × 15', 78, 15, 3)
+add('SA', 18, A, 'ilha · frente do gavetão 78 × 29', 78, 29)
+add('SA', 18, A, 'ilha · prateleira do módulo de 122', 120, 68)
+add('SA', 18, A, 'ilha · rodapé recuado (226 em 2 peças)', 113, 10, 2)
+gaveta('SA', A, 'ilha · gaveteiro', 78, 70, 13, 3)
+gaveta('SA', A, 'ilha · gavetão',   78, 70, 27, 1)
 fer(A, dobr=6, gav=4)
-CAVAS[A] += 8
-fita(A, 'portas', 2*(0.20+0.74) + 2*2*(0.60+0.74))
-fita(A, 'frentes de gaveta', 3*2*(0.78+0.15) + 2*(0.78+0.29))
-fita(A, 'costas + rodapé + prateleira', 2*(2.26+0.88) + 2.26 + 1.20)
-
-# ───────────────────────────────────────────────────────────────────────────
+cava(A, 0.20 + 2*0.60 + 3*0.78 + 0.78)
+fita(A, 'ilha · portas', 2*(0.20+0.74) + 2*2*(0.60+0.74))
+fita(A, 'ilha · frentes de gaveta', 3*2*(0.78+0.15) + 2*(0.78+0.29))
+fita(A, 'ilha · costas + rodapé + prateleira', 2*(2.26+0.88) + 2.26 + 1.20)
 # 6 · COZINHA/JANTAR — PAINEL RIPADO                  folha 02/08 · Nogueira
 #     572 × 288 = 16,47 m². Porta de correr ripada + porta pivotante ripada
 #     EMBUTIDAS no painel (o ripado delas já está na área).
@@ -304,7 +317,7 @@ fita(A, f'réguas fitadas em 1 face — {n_reg} × 2,88 m', n_reg*2.88)
 fita(A, 'acabamento superior sobre a porta de correr', 5.72)
 terc(A, 'Sistema deslizante embutido amortecido (porta de correr ripada)', RO82_TOP)
 terc(A, 'Sistema pivotante (porta 80 × 210 ripada)', PIVO)
-CAVAS[A] += 2
+cava(A, 2*0.80)
 
 # ───────────────────────────────────────────────────────────────────────────
 # 7 · GOURMET — BANCADA 02 (inferior + superior)      folhas 07 e 08/08 · Nog.
@@ -328,17 +341,16 @@ gaveta('NP', A, 'inferior · gavetão',   51, 70, 27, 1)
 add('NP', 15, A, 'cervejeira · laterais do nicho (213)', 70, 213, 2)
 add('NP', 15, A, 'cervejeira · laterais do armário superior (77)', 70, 77, 2)
 add('NP', 15, A, 'cervejeira · base + divisória + tampo', 67, 70, 3)
-add('NP', 6,  A, 'cervejeira · fundo do nicho', 70, 213)
 add('NP', 6,  A, 'cervejeira · fundo do armário superior', 70, 77)
 add('NP', 18, A, 'cervejeira · báscula superior 70 × 62', 70, 62)
 add('NP', 18, A, 'cervejeira · acabamento 15', 70, 15)
 # prateleira c/ LED por baixo + armário superior de vidro
 add('NP', 18, A, 'prateleira c/ borda frontal e LED por baixo', 145, 25)
-add('NP', 15, A, 'superior · laterais e fundo do caixote de vidro', 40, 77, 3)
+add('NP', 15, A, 'superior · laterais do caixote de vidro', 40, 77, 2)
 add('NP', 15, A, 'superior · tampo e base do caixote', 142, 40, 2)
 add('NP', 6,  A, 'superior · fundo', 145, 77)
 fer(A, dobr=6, gav=4, basc=1)
-CAVAS[A] += 7
+cava(A, 3*0.51 + 0.51 + 2*0.47 + 0.70)
 fita(A, 'frentes de gaveta + portas', 3*2*(0.51+0.15) + 2*(0.51+0.29)
         + 2*2*(0.47+0.74))
 fita(A, 'básculas + acabamento + prateleira LED', 2*(0.70+0.62) + 0.70
@@ -346,7 +358,7 @@ fita(A, 'básculas + acabamento + prateleira LED', 2*(0.70+0.62) + 0.70
 fita(A, 'verticais, rodapé, caixotes', 3*0.78 + 1.45 + 2*2.90 + 2*1.42)
 terc(A, 'Serralheria — 2 portas basculantes c/ estrutura em metal fendi', 2*SERRALH)
 terc(A, 'Vidro incolor temperado 8 mm — 2 folhas de 0,71 × 0,73', 2*0.71*0.73*VIDRO8)
-terc(A, 'LED COB sob a prateleira — 1,45 m', 1.45*LED_COB)
+terc(A, 'LED fita + perfil de alumínio sob a prateleira — 1,45 m', 1.45*LED_M)
 
 # ───────────────────────────────────────────────────────────────────────────
 # 8 · ÁREA DE SERVIÇO                                 folha 01/10 · Nogueira
@@ -372,7 +384,8 @@ gaveta('NP', A, 'M2 · gavetão', 73, 55, 28, 2)
 gaveta('NP', A, 'M2 · gaveta do varal', 73, 55, 10, 2)
 # módulo 3 — inferior sob a bancada 100 × 68
 add('NP', 15, A, 'M3 · laterais', 55, 68, 2)
-add('NP', 15, A, 'M3 · base e travessa', 97, 55, 2)
+add('NP', 15, A, 'M3 · base', 97, 55)
+add('NP', 15, A, 'M3 · travessa superior (a bancada é mármore)', 97, 10)
 add('NP', 6,  A, 'M3 · fundo', 100, 68)
 add('NP', 18, A, 'M3 · porta 49 × 66', 49, 66, 2)
 add('NP', 18, A, 'M3 · prateleira', 95, 53)
@@ -387,7 +400,7 @@ add('NP', 18, A, "'painel caixa' p/ embutir as portas de correr da cozinha", 115
 # M1: 2 portas de 2,24 m → 4 dobradiças cada · M2: 2 básculas → 2 cada ·
 # M3: 2 portas de 66 → 2 cada.
 fer(A, dobr=8+4+4, gav=4, basc=2)
-CAVAS[A] += 10
+cava(A, 2*0.56 + 2*0.73 + 2*0.73 + 2*0.73 + 2*0.49)
 fita(A, 'portas altas e superiores', 2*2*(0.56+2.24) + 2*2*(0.73+1.13))
 fita(A, 'frentes de gavetão e do varal', 2*2*(0.73+0.30) + 2*2*(0.73+0.12))
 fita(A, 'porta do módulo inferior', 2*2*(0.49+0.66))
@@ -404,12 +417,16 @@ A = 'Lavabo externo'
 add('NP', 18, A, 'painel de parede 130 × 248', 130, 248)
 add('NP', 18, A, 'acabamento no forro 130 × 40', 130, 40)
 add('NP', 15, A, 'armário · laterais e divisória', 50, 32, 3)
-add('NP', 15, A, 'armário · tampo e base', 145, 50, 2)
+# ⚠ CORREÇÃO 17/08 — onde a bancada é de MÁRMORE não existe tampo de MDF.
+#   Eu tinha lançado 'tampo e base' em todo gabinete de banheiro e no lavabo.
+#   Vira base + travessa, como já estava na bancada 01, na ilha e no gourmet.
+add('NP', 15, A, 'armário · base', 145, 50)
+add('NP', 15, A, 'armário · travessa superior (a bancada é mármore)', 145, 10)
 add('NP', 6,  A, 'armário · fundo', 150, 32)
 add('NP', 18, A, 'armário · porta basculante 71 × 30', 71, 30)
 add('NP', 18, A, 'armário · fundo do nicho aparente 73 × 30', 73, 30)
 fer(A, dobr=2, basc=1)
-CAVAS[A] += 1
+cava(A, 0.71)
 fita(A, 'painel + acabamento no forro', 2*(1.30+2.48) + 2*(1.30+0.40))
 fita(A, 'armário — báscula, nicho, bordas', 2*(0.71+0.30) + 2*(0.73+0.30)
         + 2*1.50 + 3*0.32)
@@ -426,7 +443,8 @@ add('JQ', 18, A, 'superior · prateleiras dos nichos vazados', 18, 14, 4)
 add('JQ', 6,  A, 'superior · fundo', 185, 120)
 # inferior ripado: 4 portas de 45 × 52
 add('JQ', 15, A, 'inferior · laterais e divisória', 50, 52, 3)
-add('JQ', 15, A, 'inferior · tampo e base', 181, 50, 2)
+add('JQ', 15, A, 'inferior · base', 181, 50)
+add('JQ', 15, A, 'inferior · travessa superior (a bancada é mármore)', 181, 10)
 add('JQ', 6,  A, 'inferior · fundo', 185, 52)
 n_bm = 4*int(45/RIPA_PASSO)
 add('JQ', 15, A, 'inferior · base das portas ripadas 45 × 52', 45, 52, 4, True)
@@ -435,8 +453,8 @@ fer(A, dobr=8)
 fita(A, f'réguas das portas ripadas — {n_bm} × 0,52 m', n_bm*0.52)
 fita(A, 'perímetro das 4 portas + nichos', 4*2*(0.45+0.52) + 4*2*(0.18+0.14)
         + 2*(1.85+0.15))
-terc(A, 'Espelho prata — 3 folhas de correr 0,47 × 1,16', 3*0.47*1.16*ESPELHO)
-terc(A, 'Sistema deslizante SS150 3 portas + trilho 2 m', SS150_3P + TRILHO_2M)
+terc(A, 'Espelho prata c/ perfil — 3 folhas de correr (por FOLHA, não por m²)', 3*ESPELHO_FL)
+terc(A, 'Deslizante RO65 Rometal — 3 portas + trilho 2 m', 3*RO65_PORTA + TRILHO_RO65)
 terc(A, 'Puxador metálico tipo alça preto — 8 un', 8*PUX_ALCA)
 
 # ───────────────────────────────────────────────────────────────────────────
@@ -451,17 +469,18 @@ add('BG', 18, A, 'superior · prateleiras do nicho (MDF Beige)', 74, 14, 4)
 add('BG', 6,  A, 'superior · fundo do nicho aparente (Beige)', 74, 124)
 add('NP', 6,  A, 'superior · fundo do trecho de correr', 116, 124)
 add('NP', 15, A, 'inferior · laterais e divisória', 42, 52, 3)
-add('NP', 15, A, 'inferior · tampo e base', 106, 42, 2)
+add('NP', 15, A, 'inferior · base', 106, 42)
+add('NP', 15, A, 'inferior · travessa superior (a bancada é mármore)', 106, 10)
 add('NP', 6,  A, 'inferior · fundo', 110, 52)
 add('NP', 18, A, 'inferior · porta 53 × 50', 53, 50, 2)
 add('NP', 18, A, 'inferior · nicho papeleiro embutido', 20, 24, 3)
 fer(A, dobr=4)
-CAVAS[A] += 2
+cava(A, 2*0.53)
 fita(A, 'portas + prateleiras Beige + bordas', 2*2*(0.53+0.50) + 4*0.74
         + 2*(1.90+0.15) + 2*(1.10+0.42))
-terc(A, 'Espelho prata — 2 folhas de correr 0,54 × 1,20', 2*0.54*1.20*ESPELHO)
-terc(A, 'Sistema deslizante SS150 2 portas + trilho 2 m', SS150_2P + TRILHO_2M)
-terc(A, 'LED COB em L no nicho — 2,6 m', 2.6*LED_COB)
+terc(A, 'Espelho prata c/ perfil — 2 folhas de correr (por FOLHA, não por m²)', 2*ESPELHO_FL)
+terc(A, 'Deslizante RO65 Rometal — 2 portas + trilho 2 m', 2*RO65_PORTA + TRILHO_RO65)
+terc(A, 'LED fita + perfil de alumínio em L no nicho — 2,6 m', 2.6*LED_M)
 
 # ───────────────────────────────────────────────────────────────────────────
 # 12 · BANHEIRO 04                                folhas 09 e 10/10 · Nogueira
@@ -475,17 +494,18 @@ add('NP', 6,  A, 'superior · fundo', 110, 124)
 add('NP', 18, A, 'prateleira lateral esquerda 78 × 15', 78, 15, 2)
 add('NP', 18, A, 'prateleira lateral direita 36 × 15', 36, 15, 2)
 add('NP', 15, A, 'inferior · laterais e divisória', 45, 51, 3)
-add('NP', 15, A, 'inferior · tampo e base', 142, 45, 2)
+add('NP', 15, A, 'inferior · base', 142, 45)
+add('NP', 15, A, 'inferior · travessa superior (a bancada é mármore)', 142, 10)
 add('NP', 6,  A, 'inferior · fundo', 146, 51)
 add('NP', 18, A, 'inferior · porta 44 × 49', 44, 49, 2)
 add('NP', 18, A, 'inferior · nicho aberto 55 — fundo e prateleira', 55, 30, 2)
 add('NP', 18, A, 'inferior · nicho papeleiro embutido', 20, 24, 3)
 fer(A, dobr=4)
-CAVAS[A] += 2
+cava(A, 2*0.44)
 fita(A, 'portas + prateleiras + nicho', 2*2*(0.44+0.49) + 4*2*(0.78+0.15)/2
         + 2*(1.46+0.45) + 2*(0.55+0.30))
-terc(A, 'Espelho prata — 2 folhas de correr 0,54 × 1,20', 2*0.54*1.20*ESPELHO)
-terc(A, 'Sistema deslizante SS150 2 portas + trilho 2 m', SS150_2P + TRILHO_2M)
+terc(A, 'Espelho prata c/ perfil — 2 folhas de correr (por FOLHA, não por m²)', 2*ESPELHO_FL)
+terc(A, 'Deslizante RO65 Rometal — 2 portas + trilho 2 m', 2*RO65_PORTA + TRILHO_RO65)
 terc(A, 'Suporte metálico dourado de prateleira — 4 un ⚠ sem preço na base',
      4*SUP_DOURAD, True)
 
@@ -578,10 +598,10 @@ _v = f'{custo_filet:,.2f}'.replace(',', '.')
 print(f'  {"filetagem na coladeira (R$ 2,50/m)":<40}          R$ {_v:>9}')
 
 print('\nUSINAGEM DE PUXADOR  (o projeto pede "puxador tipo cava" em quase tudo)')
-n_cava = sum(CAVAS.values())
+n_cava = sum(CAVA_M.values())
 custo_cava = n_cava*CAVA_USIN
 _v = f'{custo_cava:,.2f}'.replace(',', '.')
-print(f'  Cava 35° usinada — {n_cava} frentes × R$ 50,00{"":>22}R$ {_v:>9}')
+print(f'  Cava 35° usinada — {n_cava:.1f} m × R$ 25,00/m{"":>21}R$ {_v:>9}')
 
 print('\nTERCEIRIZADOS E ITENS ESPECIAIS')
 custo_terc = 0.0
@@ -600,11 +620,18 @@ print(f'\nFERRAGEM DO PROJETO — {TOT_DOBR} dobradiças · {TOT_GAV} gavetas ·
       f'{TOT_BASC} básculas · {N_PRAT} prateleiras')
 
 # ── logística e instalação ─────────────────────────────────────────────────
-# 12 conjuntos em 3 pavimentos, casa inteira. Sem histórico de obra deste porte
-# na base — número explícito e marcado para o Jonathan cravar (dúvida F).
-DIAS_DUPLA, R_DIA = 22, 600.0
-N_CARRETO, R_CARRETO = 5, 600.0
-N_VISITA,  R_VISITA  = 4, 250.0
+# ⚠ CORREÇÃO 17/08 — eu tinha posto 22 dias de dupla escalando a montagem pela
+#   ÁREA DE CHAPA (Honda: 22,89 m² → 3 dias ⇒ 170 m² → 22 dias). Errado:
+#   montagem escala por CONJUNTO e por complexidade, não por m² de chapa. Uma
+#   chapa de fundo de 3 m² não custa nada de montagem; um caixote pequeno com
+#   ferragem custa meio dia igual.
+#   Contado conjunto a conjunto: cozinha 4 · painel ripado 2 · gourmet 1,5 ·
+#   área de serviço 1,5 · lavabo 0,5 · 3 banheiros 1,5 = 11, mais 2 de folga
+#   pelos 3 pavimentos = 13. Caiu de R$ 17.200 para R$ 10.950.
+# ⚠ CONTINUA SENDO ESTIMATIVA MINHA. É o Jonathan quem crava (dúvida F).
+DIAS_DUPLA, R_DIA = 13, 600.0
+N_CARRETO, R_CARRETO = 4, 600.0
+N_VISITA,  R_VISITA  = 3, 250.0
 LOG = DIAS_DUPLA*R_DIA + N_CARRETO*R_CARRETO + N_VISITA*R_VISITA
 
 # ── fechamento por cenário ─────────────────────────────────────────────────
@@ -688,7 +715,7 @@ print(f'  {"ambiente":<32}{"chapa":>8}{"custo dir.":>12}{"ripado":>10}'
 for amb in ordem:
     fr = area_amb[amb]/area_tot
     d, g, b = FER[amb]
-    exato = (d*f2['dobr'] + g*f2['corr'] + b*f2['art'] + CAVAS[amb]*CAVA_USIN
+    exato = (d*f2['dobr'] + g*f2['corr'] + b*f2['art'] + CAVA_M[amb]*CAVA_USIN
              + prat_amb[amb]*4*SUP_PRAT + terc_amb[amb])
     cd = exato + rateavel*fr
     fr_r = area_rip_amb[amb]/area_amb[amb] if area_amb[amb] else 0.0
@@ -738,4 +765,34 @@ for nome, fd, mc, gar, cf, cd, inv, mcr in resultados:
     inv_rt = round(preco(cd-cd_rip, cd_rip, mc, rt=True)/100)*100
     print(f'  {nome:<17}R$ {inv:>9,.0f}  →  R$ {inv_rt:>9,.0f}   '
           f'(+{(inv_rt/inv-1)*100:.0f}%)'.replace(',', '.'))
+
+print('\n' + '─'*W)
+print('REVISÃO 17/08 — O QUE ESTAVA ERRADO NA 1ª VERSÃO  [Jonathan: "valores altos demais"]')
+CORR = [
+ ('Nicho de eletrodoméstico com FUNDO de MDF. Geladeira, forno, micro-ondas e',
+  'cervejeira precisam de ventilação e tomada — o fundo é a alvenaria.', '−6,2 m²'),
+ ('Tampo contado duas vezes na torre: o tampo do nicho da geladeira JÁ É a',
+  'base do armário basculante de cima.', '−0,7 m²'),
+ ('Fundo do caixote de vidro do gourmet contado duas vezes.', '', '−0,4 m²'),
+ ('Tampo de MDF sob bancada de MÁRMORE, em 5 gabinetes.',
+  'Vira travessa — quem faz o tampo é a marmoraria.', '−1,8 m²'),
+ ('CAVA cobrada por PEÇA (R$ 50 × 50) em vez de por METRO (R$ 25 × 30,3 m),',
+  'que é a convenção que o Jonathan validou na Honda.', '−R$ 1.744'),
+ ('ESPELHO cotado por m² — a armadilha nº 4 da minha própria lista.',
+  'A casa cota por FOLHA: R$ 285 com perfil.', '−R$ 542'),
+ ('SS150 (sistema de ROUPEIRO) em porta de espelho de armário de 15 cm de',
+  'profundidade. O certo é RO65 Rometal.', '−R$ 1.610'),
+ ('LED a R$ 150/m; a decomposição rastreável dá R$ 66/m (fita 28 + perfil 38).',
+  '', '−R$ 341'),
+ ('MONTAGEM escalada por m² de chapa (22 dias). Montagem escala por CONJUNTO,',
+  'não por área: contada conjunto a conjunto dá 13 dias.', '−R$ 6.250'),
+]
+for i, (l1, l2, v) in enumerate(CORR, 1):
+    print(f'  {i:>2}. {l1:<73}{v:>12}')
+    if l2: print(f'      {l2}')
+print(f'\n  Efeito: 169,93 → {area_tot:.2f} m² de chapa · 49 → {tot_ch} chapas')
+_a = f'{resultados[1][5]:,.0f}'.replace(',', '.')
+_b = f'{resultados[1][6]:,.0f}'.replace(',', '.')
+print(f'          custo direto R$ 61.219 → R$ {_a} · preço R$ 143.800 → R$ {_b} (cenário 2)')
+print(f'  Sanidade R$/m² de chapa: 846 → {resultados[1][6]/area_tot:.0f}  (faixa da casa 626–834)')
 print('═'*W)
