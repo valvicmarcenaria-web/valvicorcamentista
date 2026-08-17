@@ -3,7 +3,8 @@
 **Data:** 13/08 (bloqueio) → **17/08/2026 (projeto LIDO e orçado)**
 **Autoria:** Arq. **Luciana Beatriz Simplício** — Núcleo SC Arquitetura ·
 (31) 3004-3387 · CAU MG A54855-3
-**Motor:** `corte-eliuton.py` · **Dúvidas:** `2026-eliuton-duvidas-tecnicas.md`
+**Motor:** `corte-eliuton.py` · **Proposta:** `build-eliuton.py` → `proposta-eliuton.pdf` (5 pág.)
+**Dúvidas:** `2026-eliuton-duvidas-tecnicas.md`
 
 ---
 
@@ -69,16 +70,25 @@ mandam ver o detalhe justamente nela.
 
 [Jonathan 17/08] **A cozinha vai como conjunto completo num item só.**
 
-| # | Item | Folha | Cor | Chapa | Investimento (cen. 2) |
-|---|---|---|---|--:|--:|
-| 1 | **Cozinha — conjunto completo** · torre quente + nicho geladeira 187×70×290, acabamento superior, bancada 01 (355×70×88), aéreo (351×40×96, 5 portas), ilha (226×70×88) | 02–05/08 | Nogueira Persa + Sálvia | 56,42 m² | **30.700** |
-| 2 | **Painel ripado do estar/jantar 572×288** | 02/08 | Nogueira Persa | 28,45 m² | **15.400** |
-| 3 | Gourmet · bancada 02 + coluna da cervejeira 215×290 | 07–08/08 | Nogueira Persa | 17,97 m² | 12.000 |
-| 4 | **Área de serviço 359×55×226** | 01/10 | Nogueira Persa | 32,10 m² | **20.000** |
-| 5 | Lavabo externo · painel + gabinete + forro | 03/10 | Nogueira Persa | 6,01 m² | 3.400 |
-| 6 | Banheiro master · espelheira + gabinete **ripado** | 06/10 | **Jequitibá** | 8,01 m² | 7.600 |
-| 7 | Banheiro 02 (social 1º pav) | 07–08/10 | Nog. Persa + **Beige** | 6,34 m² | 5.200 |
-| 8 | Banheiro 04 | 09–10/10 | Nogueira Persa | 5,52 m² | 6.200 |
+| # | Item | Cor | Chapa | I | II | III |
+|---|---|---|--:|--:|--:|--:|
+| 1 | **Cozinha — conjunto completo** (torre + acabamento + bancada 01 + aéreo + ilha) | Nog. Persa + Sálvia | 56,42 m² | 25.300 | **30.700** | 36.000 |
+| 2 | **Painel ripado do estar/jantar** 572×288 | Nogueira Persa | 28,45 m² | 20.400 | **20.400** | 20.400 |
+| 3 | Área gourmet · bancada 02 + cervejeira | Nogueira Persa | 17,97 m² | 10.000 | **12.000** | 14.200 |
+| 4 | **Área de serviço** 359×55×226 | Nogueira Persa | 32,10 m² | 11.600 | **15.000** | 18.200 |
+| 5 | Lavabo externo · painel + gabinete + forro | Nogueira Persa | 6,01 m² | 2.600 | **3.400** | 3.900 |
+| 6 | Banheiro master · espelheira + gabinete **ripado** | **Jequitibá** | 8,01 m² | 6.800 | **7.600** | 8.500 |
+| 7 | Banheiro social 1º pav | Nog. Persa + **Beige** | 6,34 m² | 4.700 | **5.200** | 5.900 |
+| 8 | Banheiro 04 | Nogueira Persa | 5,52 m² | 5.500 | **6.200** | 7.000 |
+| | **TOTAL** | | **160,82 m²** | **86.900** | **100.500** | **114.100** |
+
+**[Jonathan 17/08] Realocação comercial aplicada:** −R$ 5.000 da área de serviço,
++R$ 5.000 no painel ripado. O total não muda — é remanejamento de vitrine entre
+itens, não mudança de escopo nem de margem.
+
+**O painel ripado custa o mesmo nas três linhas.** É o único conjunto sem uma
+dobradiça, corrediça ou báscula sequer — e como a diferença entre os cenários é
+inteiramente ferragem, ele não se move. Virou argumento de página na proposta.
 
 O **painel ripado fica fora do item da cozinha** por dois motivos: é outra parede
 (a do estar/jantar) e tem **MC própria de 40%**, então precisa de linha separada

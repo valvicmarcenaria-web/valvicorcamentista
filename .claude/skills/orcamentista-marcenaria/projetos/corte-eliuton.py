@@ -701,12 +701,15 @@ print('    especificam Carrara e Travertino em praticamente todo ambiente. Se a'
 print('    Valvic for fornecer, é orçamento à parte e muda o total.')
 
 # ── sensibilidade ──────────────────────────────────────────────────────────
-# ── rateio por ambiente ────────────────────────────────────────────────────
+# ── rateio por ambiente, nos três cenários ─────────────────────────────────
 # Exato onde dá (ferragem, cava, terceirizado são atribuíveis); rateado por
 # área de chapa onde não dá (chapa, fita, filetagem, consumível, logística).
-print('\n' + '─'*W)
-print(f'INVESTIMENTO POR AMBIENTE — cenário 2 (Hardt · MC 37% · garantia 5 anos)')
-_, _, mc2, f2, _ = CENARIOS[1]
+#
+# [Jonathan 17/08] REALOCAÇÃO COMERCIAL: −R$ 5.000 da área de serviço,
+# +R$ 5.000 no painel ripado. O total NÃO muda — é remanejamento de vitrine
+# entre itens, não mudança de escopo nem de margem do projeto.
+REALOC = {'Área de serviço': -5000, 'Cozinha · painel ripado': +5000}
+
 terc_amb = defaultdict(float)
 for amb, d, v, est in TERC: terc_amb[amb] += v
 consum = (custo_chapa + custo_fita)*0.06
@@ -714,25 +717,36 @@ rateavel = custo_chapa + custo_fita + custo_filet + consum + LOG
 prat_amb = defaultdict(int)
 for m, e, a, d, c, l, q, r in P:
     if 'prateleira' in d.lower(): prat_amb[a] += q
-soma = 0.0
-print(f'  {"ambiente":<32}{"chapa":>8}{"custo dir.":>12}{"ripado":>10}'
-      f'{"INVESTIMENTO":>15}')
+
+ITENS = {}                       # ambiente -> [inv_cen1, inv_cen2, inv_cen3]
+for ci, (nome_c, _fd, mc, f, _g) in enumerate(CENARIOS):
+    for amb in ordem:
+        fr = area_amb[amb]/area_tot
+        d, g, b = FER[amb]
+        exato = (d*f['dobr'] + g*f['corr'] + b*f['art'] + CAVA_M[amb]*CAVA_USIN
+                 + prat_amb[amb]*4*SUP_PRAT + terc_amb[amb])
+        cd = exato + rateavel*fr
+        fr_r = area_rip_amb[amb]/area_amb[amb] if area_amb[amb] else 0.0
+        cd_r = rateavel*fr*fr_r + (TERC_RIP if amb == 'Cozinha · painel ripado' else 0)
+        inv = round((preco(cd - cd_r, cd_r, mc) + REALOC.get(amb, 0))/100)*100
+        ITENS.setdefault(amb, []).append(inv)
+
+print('\n' + '─'*W)
+print('INVESTIMENTO POR ITEM — os três cenários')
+print('  (já com a realocação de R$ 5.000 da área de serviço para o painel ripado)')
+print(f'  {"item":<34}{"chapa":>8}{"1 · Telesc.":>14}{"2 · Hardt":>13}{"3 · Hettich":>14}')
+somas = [0, 0, 0]
 for amb in ordem:
-    fr = area_amb[amb]/area_tot
-    d, g, b = FER[amb]
-    exato = (d*f2['dobr'] + g*f2['corr'] + b*f2['art'] + CAVA_M[amb]*CAVA_USIN
-             + prat_amb[amb]*4*SUP_PRAT + terc_amb[amb])
-    cd = exato + rateavel*fr
-    fr_r = area_rip_amb[amb]/area_amb[amb] if area_amb[amb] else 0.0
-    cd_r = rateavel*fr*fr_r + (TERC_RIP if amb == 'Cozinha · painel ripado' else 0)
-    inv = round(preco(cd - cd_r, cd_r, mc2)/100)*100
-    soma += inv
-    _a = f'{area_amb[amb]:.2f}'; _c = f'{cd:,.0f}'.replace(',', '.')
-    _r = f'{cd_r:,.0f}'.replace(',', '.') if cd_r else '—'
-    _i = f'{inv:,.0f}'.replace(',', '.')
-    print(f'  {amb:<32}{_a:>8}{_c:>12}{_r:>10}{_i:>15}')
-_s = f'{soma:,.0f}'.replace(',', '.')
-print(f'  {"SOMA":<32}{"":>8}{"":>12}{"":>10}{_s:>15}')
+    v = ITENS[amb]
+    for k in range(3): somas[k] += v[k]
+    cols = ''.join(f'{f"{x:,.0f}".replace(",", "."):>14}' if k == 0 else
+                   f'{f"{x:,.0f}".replace(",", "."):>13}' if k == 1 else
+                   f'{f"{x:,.0f}".replace(",", "."):>14}'
+                   for k, x in enumerate(v))
+    print(f'  {amb:<34}{area_amb[amb]:>8.2f}{cols}')
+cols = ''.join(f'{f"{x:,.0f}".replace(",", "."):>14}' if k != 1 else
+               f'{f"{x:,.0f}".replace(",", "."):>13}' for k, x in enumerate(somas))
+print(f'  {"TOTAL":<34}{area_tot:>8.2f}{cols}')
 
 print('\n' + '─'*W)
 print('SENSIBILIDADE — as três premissas que mais mexem no número')
