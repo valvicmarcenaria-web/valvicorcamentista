@@ -170,3 +170,32 @@ a partir de 35°, espessura de porta 15–22 mm, estável de 5 °C a 45 °C.
 
 > TODO Valvic: suportes de prateleira, pés/rodízios, fechaduras, acessórios
 > internos (cestos, divisórias) — critério de quantidade de cada.
+
+
+---
+
+## Tabela de GARANTIA por linha de ferragem — completa [13/08/2026]
+
+A tabela da casa nasceu com dois números e ganhou o terceiro no Eliuton:
+
+| Linha | Garantia Valvic |
+|---|--:|
+| **Telescópica** | **2 anos** |
+| **Oculta Hardt** | **5 anos** |
+| **Hettich (oculta Quadro / Sensys)** | **10 anos** [Jonathan 13/08/2026] |
+
+> A escada **dobra a cada degrau** — 2 · 5 · 10. É o que sustenta comercialmente
+> uma escada de três cenários, porque a diferença de **peça** entre eles é pequena
+> perto da diferença de **preço**. Ver `projetos/2026-eliuton-duvidas-tecnicas.md`:
+> num exemplo ilustrativo, 84% da diferença entre o cenário mais barato e o mais
+> caro é margem e só 16% é ferragem a mais.
+
+> ⛔ Continua valendo a proibição do bloco acima: **argumentar por ciclos testados,
+> amortecimento e regulagem — nunca pela garantia do FABRICANTE.** Estes números são
+> **garantia VALVIC**, termo nosso sobre o conjunto que fornecemos e instalamos.
+
+### Preço atualizado
+**Articulador Blum HK-xs: R$ 180 → R$ 250** [Jonathan 13/08/2026]. Corrigido em
+`dados/materiais.json`. É a báscula dos cenários 2 e 3 do Eliuton, e a R$ 250 cada
+uma **pesa mais que 30 dobradiças** — o número de básculas virou a quantidade mais
+sensível de um orçamento com báscula.

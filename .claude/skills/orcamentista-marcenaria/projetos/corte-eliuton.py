@@ -7,6 +7,7 @@
 
 [Jonathan 13/08/2026] TRÊS CENÁRIOS DE FERRAGEM, cada um com a sua MC:
      telescópica 32% · Hardt 37% · Hettich 42%   ⟵ BLUM FORA [Jonathan 13/08]
+     …exceto as BÁSCULAS dos cenários 2 e 3, que são Blum HK-xs a R$ 250.
    E: **toda parte com RIPADO sai a MC 40%**, em qualquer cenário.
 
    Tirar a Blum resolveu a dúvida D2 (não há o que cotar — as três linhas já estão
@@ -32,18 +33,24 @@ RT_PCT = 0.10                               # se houver RT: subtrair LIQF_*RT_PC
 MC_RIPADO = 0.40                            # [Jonathan] vale nos três cenários
 
 # Ferragem por cenário — preços de compra de `dados/materiais.json`.
-# (dobradiça un · corrediça par · articulador/pistão un)
-# ⚠️ O cenário 3 tem duas escolhas em aberto — ver `2026-eliuton-duvidas-tecnicas.md`:
-#    dobradiça Novisys 10 ou Sensys 35 · corrediça Quadro 120 ou Actro 400.
-#    Adotei Sensys + Quadro como premissa: com Novisys (10) contra a Hardt (8) o
-#    cenário 3 não se distingue do 2 na dobradiça, e a escada perde o degrau.
+# (dobradiça un · corrediça par · articulador da báscula un)
+#
+# [Jonathan 13/08] BÁSCULAS DOS CENÁRIOS 2 E 3 = **Blum HK-xs a R$ 250**.
+#   A base tinha R$ 180; atualizada para 250 em `dados/materiais.json`.
+#
+# [Jonathan 13/08] corrediça do cenário 3 = **Quadro** (confirmado) ·
+#   garantia do cenário 3 = **10 anos**. A escada de garantia fecha em 2 · 5 · 10.
+# ⚠️ Segue aberto no cenário 3: dobradiça **Novisys 10 ou Sensys 35**.
+#    Adotei Sensys: com Novisys (10) contra a Hardt (8) o cenário 3 não se
+#    distingue do 2 na dobradiça, e a escada perde o degrau onde mais se toca.
+HK_XS = 250.0                               # Blum HK-xs [Jonathan 13/08]
 CENARIOS = [
-    ('1 · Telescópica', 'Dobradiça padrão · telescópica · pistão',  0.32,
-     dict(dobr=6.0,  corr=40.0,  art=20.0), '2 anos'),
-    ('2 · Hardt',       'Hardt · oculta Hardt · pistão amortecido', 0.37,
-     dict(dobr=8.0,  corr=70.0,  art=30.0), '5 anos'),
-    ('3 · Hettich',     'Sensys · oculta Quadro · pistão amortec.', 0.42,
-     dict(dobr=35.0, corr=120.0, art=30.0), '❓ definir'),
+    ('1 · Telescópica', 'Padrão · telescópica · pistão simples',    0.32,
+     dict(dobr=6.0,  corr=40.0,  art=20.0),  '2 anos'),
+    ('2 · Hardt',       'Hardt · oculta Hardt · Blum HK-xs',        0.37,
+     dict(dobr=8.0,  corr=70.0,  art=HK_XS), '5 anos'),
+    ('3 · Hettich',     'Sensys · oculta Quadro · Blum HK-xs',      0.42,
+     dict(dobr=35.0, corr=120.0, art=HK_XS), '10 anos'),
 ]
 
 def custo_ferragem(cen, n_dobradicas, n_gavetas, n_basculas):
@@ -142,8 +149,26 @@ if not pecas:
     pr1 = (CD+f1)/div(0.32); pr3 = (CD+f3)/div(0.42)
     print(f'\n  Do 1º ao 3º: a ferragem sobe R$ {f3-f1:,.0f} de custo, o preço sobe R$ {pr3-pr1:,.0f}.'.replace(',','.'))
     print(f'  {((pr3-pr1)-(f3-f1))/(pr3-pr1)*100:.0f}% da diferença é MARGEM, {(f3-f1)/(pr3-pr1)*100:.0f}% é peça a mais.')
-    print('  Com a Blum fora, o degrau de ferragem estreitou — o discurso tem de vir')
-    print('  do MECANISMO e da GARANTIA (2 · 5 · ? anos), não do nome do fabricante.')
+    print('  O discurso vem do MECANISMO e da GARANTIA — 2 · 5 · 10 anos, que DOBRA')
+    print('  a cada degrau. É essa escada que sustenta o salto de preço, não a marca.')
+
+    # ── o degrau, componente a componente ──────────────────────────────────
+    print('\n' + '─'*78)
+    print('O DEGRAU, COMPONENTE A COMPONENTE')
+    print(f'  {"":<14}{"cenário 1":>12}{"cenário 2":>12}{"×":>7}{"cenário 3":>12}{"×":>7}')
+    for rot, k in (('dobradiça','dobr'), ('corrediça','corr'), ('báscula','art')):
+        v = [c[3][k] for c in CENARIOS]
+        print(f'  {rot:<14}{v[0]:>12,.0f}{v[1]:>12,.0f}{v[1]/v[0]:>6.1f}×'
+              f'{v[2]:>12,.0f}{v[2]/v[1]:>6.1f}×'.replace(',','.'))
+    print('\n  ⚠ A BÁSCULA salta 12,5× do 1º para o 2º e depois NÃO MUDA.')
+    print('    Cenários 2 e 3 têm a MESMA báscula — o mecanismo mais visível e mais')
+    print('    tocado da cozinha é idêntico nos dois. A diferença entre eles fica só')
+    print('    na dobradiça e na corrediça.')
+    fb = [custo_ferragem(c, P, G, B) for c in CENARIOS]
+    print(f'\n    E a báscula pesa {B*HK_XS/fb[1]*100:.0f}% da ferragem do cenário 2 e '
+          f'{B*HK_XS/fb[2]*100:.0f}% do cenário 3.')
+    print('    ⇒ O NÚMERO DE BÁSCULAS do projeto virou a quantidade mais sensível do')
+    print('      orçamento. Contar báscula a báscula, não estimar.')
     raise SystemExit(0)
 
 # ── daqui para baixo só roda com geometria ─────────────────────────────────

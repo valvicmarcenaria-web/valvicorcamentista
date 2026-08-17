@@ -47,70 +47,80 @@ onde eu souber responder sozinha, respondi e marquei como premissa.
 
 # PARTE 2 — PARA O JONATHAN (decisões da casa)
 
-## D. Os três cenários — BLUM FORA [Jonathan 13/08]
+## D. Os três cenários — FECHADOS [Jonathan 13/08]
 
-Nova escada: **telescópica 32% · Hardt 37% · Hettich 42%**. Isso **mata a dúvida D2** —
-as três linhas já estão em `dados/materiais.json`, não há o que cotar.
-
-Montei cada nível a partir da base. **Confirmar, não compor:**
+**Telescópica 32% · Hardt 37% · Hettich 42%.** Blum fora como linha, **mas as básculas
+dos cenários 2 e 3 são Blum HK-xs a R$ 250**.
 
 | | 1 · **Telescópica** | 2 · **Hardt** | 3 · **Hettich** |
 |---|---|---|---|
 | **MC** | **32%** · div 0,48016 | **37%** · div 0,43016 | **42%** · div 0,38016 |
 | Dobradiça | Padrão · R$ 6 | Hardt · R$ 8 | ❓ **Sensys R$ 35** ou Novisys R$ 10 |
-| Corrediça | Telescópica · R$ 40/par | **Oculta Hardt** · R$ 70/par | ❓ **Quadro R$ 120** ou Actro R$ 400 |
-| Báscula | Pistão · R$ 20 | Pistão amortecido · R$ 30 | Pistão amortecido · R$ 30 |
-| **Garantia** | **2 anos** | **5 anos** | ❓ **não está na tabela** |
+| Corrediça | Telescópica · R$ 40/par | Oculta Hardt · R$ 70/par | ✅ **Oculta Quadro · R$ 120/par** |
+| Báscula | Pistão simples · R$ 20 | ✅ **Blum HK-xs · R$ 250** | ✅ **Blum HK-xs · R$ 250** |
+| **Garantia** | **2 anos** | **5 anos** | ✅ **10 anos** |
 
-### D1 · Sensys ou Novisys no cenário 3
-**Recomendo Sensys.** Novisys custa R$ 10 contra R$ 8 da Hardt — **25% de diferença,
-imperceptível na mão**. Se o terceiro nível for Novisys, ele deixa de se distinguir do
-segundo na dobradiça, e a escada perde o degrau logo onde o cliente mais toca: a porta.
-Com Sensys (R$ 35) a diferença é **4,4×** e se sente.
+✅ = fechado nesta rodada · ❓ = única coisa que falta
 
-### D2 · ~~Cotar a linha Blum~~ — **RESOLVIDO**, a Blum saiu.
+### ✅ D1 · A escada de garantia fecha em 2 · 5 · 10 — e **dobra a cada degrau**
+Era a pergunta mais importante da lista e agora tem resposta. **É isso que sustenta
+comercialmente a escada de preço**, porque a diferença de *peça* entre os cenários é
+pequena perto da diferença de *preço* (ver o achado abaixo). Registrado como tabela da
+casa em `referencias/ferragens.md`.
 
-### D3 · Quadro ou Actro nas gavetas do cenário 3
-Quadro R$ 120 · Actro R$ 400. Adotei **Quadro** — a Actro triplica a linha e cria um
-degrau grande demais para um projeto residencial.
+### ✅ D2 · Blum como linha — fora. D3 · Corrediça do cenário 3 — **Quadro**.
 
-### D4 · A garantia do cenário 3
-A tabela corrigida da casa cobre dois dos três: **telescópica = 2 anos · oculta Hardt =
-5 anos**. **Falta o número da Hettich.** É o argumento mais forte dos três cenários —
-ver o achado abaixo.
+### ❓ D4 · Sensys ou Novisys — **o único item aberto**
+**Recomendo Sensys.** Novisys custa R$ 10 contra R$ 8 da Hardt: **25% de diferença,
+imperceptível na mão**. Com Novisys o cenário 3 deixaria de se distinguir do 2 na
+dobradiça — e, como as básculas agora são iguais nos dois, **a corrediça sobraria como
+única diferença real**. Com Sensys (R$ 35) são 4,4× e se sente na porta.
+*(Adotado Sensys como premissa no motor.)*
 
-### D5 · Puxadores entram nos cenários?
-Cava usinada, perfil Rometal (RM195 R$ 250/3m · RM213 R$ 100/3m) ou puxador aparente?
-**Não está nos três cenários e pesa.**
+### ❓ D5 · Puxadores entram nos cenários?
+Cava usinada, perfil Rometal (RM195 R$ 250/3m · RM213 R$ 100/3m) ou aparente?
+**Não está em nenhum dos três e pesa.**
+
+### Preço atualizado na base
+**Blum HK-xs: R$ 180 → R$ 250.** `dados/materiais.json` corrigido.
 
 ---
 
-## ⚠️ O ACHADO QUE MUDA O DISCURSO DE VENDA
+## ⚠️ DOIS ACHADOS DA ESCADA DE FERRAGEM
 
-Com a Blum fora, **a escada de ferragem estreitou muito**. Medido num exemplo
-ilustrativo (40 dobradiças, 15 gavetas, 6 básculas, R$ 25.000 de custo direto sem
-ferragem, igual nos três):
+Exemplo ilustrativo — 40 dobradiças, 15 gavetas, 6 básculas, R$ 25.000 de custo direto
+sem ferragem, igual nos três:
 
-| Cenário | Custo da ferragem | Preço | Δ |
-|---|--:|--:|--:|
-| 1 · Telescópica | R$ 960 | R$ 54.065 | — |
-| 2 · Hardt | R$ 1.550 | R$ 61.721 | +14% |
-| 3 · Hettich | R$ 3.380 | R$ 74.653 | **+38%** |
+| Cenário | Ferragem | Preço | Δ | Garantia |
+|---|--:|--:|--:|--:|
+| 1 · Telescópica | R$ 960 | R$ 54.065 | — | 2 anos |
+| 2 · Hardt | R$ 2.870 | R$ 64.790 | +20% | 5 anos |
+| 3 · Hettich | R$ 4.700 | R$ 78.125 | **+45%** | 10 anos |
 
-Do primeiro ao terceiro, **a ferragem sobe R$ 2.420 de custo e o preço sobe R$ 20.587**.
+### 1 · **84% da diferença de preço é margem, 16% é peça a mais**
+Do primeiro ao terceiro a ferragem sobe R$ 3.740 de custo e o preço sobe R$ 24.060.
+Não está errado — é a política de preço da casa. Mas o cliente que comparar as três
+colunas vai sentir o salto de 45% e perguntar o que mudou, e **a resposta tem de ser a
+garantia (2 · 5 · 10) e o mecanismo**, não o nome do fabricante. Com o HK-xs entrando
+nos cenários 2 e 3, a parcela de peça subiu de 12% para 16% — ajudou, mas o desenho
+continua o mesmo.
 
-> **88% da diferença entre o cenário mais barato e o mais caro é MARGEM. 12% é peça a
-> mais.**
+### 2 · **A báscula virou a quantidade mais sensível do orçamento**
 
-Isso não está errado — é a política de preço do Jonathan e ela é dele. Mas o cliente
-que comparar as três colunas vai sentir um salto de 38% e perguntar o que mudou. **A
-resposta não pode ser "é Hettich"**, porque em peça a diferença é pequena.
+| | Cenário 1 | Cenário 2 | × | Cenário 3 | × |
+|---|--:|--:|--:|--:|--:|
+| Dobradiça | 6 | 8 | 1,3× | 35 | 4,4× |
+| Corrediça | 40 | 70 | 1,8× | 120 | 1,7× |
+| **Báscula** | **20** | **250** | **12,5×** | **250** | **1,0×** |
 
-**A resposta tem de ser a garantia e o mecanismo:** 2 anos contra 5 anos contra o
-número da Hettich; corrediça que corre por baixo e some contra trilho aparente;
-amortecimento no corpo da dobradiça contra porta que bate. Por isso **D4 é a pergunta
-mais importante desta lista** — sem o terceiro número de garantia, o terceiro cenário
-não tem como se defender.
+A báscula **salta 12,5× do 1º para o 2º e depois não muda**. Duas consequências:
+
+- **Cenários 2 e 3 têm a MESMA báscula.** O mecanismo mais visível e mais tocado de
+  uma cozinha é idêntico nos dois. Entre eles sobra a dobradiça e a corrediça — mais
+  uma razão para o cenário 3 levar **Sensys** e não Novisys.
+- **Cada báscula vale mais que 30 dobradiças.** Ela pesa **52%** da ferragem do
+  cenário 2 e **32%** do cenário 3. ⇒ **Contar báscula a báscula nas pranchas, nunca
+  estimar.** Errar duas básculas custa R$ 500 de custo direto e ~R$ 1.300 de preço.
 
 ---
 
