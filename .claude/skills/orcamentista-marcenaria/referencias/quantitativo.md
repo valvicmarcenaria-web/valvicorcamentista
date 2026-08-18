@@ -334,3 +334,32 @@ Somar a área do item e dividir pela **área frontal** do móvel. Faixa normal:
 
 Acima de 4,5× num móvel fundo, procurar fundo de nicho de eletro e tampo
 duplicado — foi exatamente onde estavam.
+
+---
+
+## Prancha em PDF: três casos, três caminhos [18/08/2026]
+
+Duas pastas do Drive lidas com um dia de diferença deram resultados opostos.
+A diferença não é o desenho — é **como o PDF foi exportado**. Testar antes de
+concluir qualquer coisa.
+
+| Caso | Sintoma | O que dá para fazer |
+|---|---|---|
+| **A · Texto como texto** | `read_file_content` devolve cotas, legendas e especificações corretas | **Ler pelo conector.** Sai de graça. Falta só a geometria |
+| **B · Texto em curvas** | Devolve só o carimbo, OCR-ado, com grafia instável a cada leitura | Precisa do arquivo em mãos. Mas o desenho é **vetorial** — dá para medir |
+| **C · Raster de verdade** | Sem vetor nenhum; só imagem | Leitura visual, resolução manda |
+
+**Como distinguir A de B sem abrir:** ler um arquivo pelo conector. Se voltar
+cota, é A. Se voltar só o carimbo com grafia dançando, é B — e aí **não concluir
+que é raster**: contar os vetores. As pranchas do Eliuton tinham 25.703 traços
+vetoriais e mesmo assim devolviam só o carimbo.
+
+### O limite do caso A
+O texto vem **sem coordenadas** — um despejo linear. Uma prancha devolve
+`"2 51 223 70 3223 70 32"` sem dizer a qual peça cada número pertence.
+Serve para: material especificado, aparelhos, notas, escala, o que existe no
+ambiente. **Não serve para** levantar peça a peça: para isso ainda é preciso
+ver o desenho.
+
+> Fluxo: ler pelo conector para **mapear o escopo e as especificações**, e pedir
+> o arquivo só das pranchas que vão virar corte.
