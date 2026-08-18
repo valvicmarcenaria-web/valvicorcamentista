@@ -1,29 +1,42 @@
-# PROJETO NOVO — pasta Drive `1iC5AVoqoM…`
+# LUCIANA — pasta Drive `1iC5AVoqoM…`
 
+**Cliente:** Luciana [Jonathan 18/08]
 **Data:** 18/08/2026 · **Status:** levantamento de **1ª rodada**, ordem de grandeza
 **Motor:** `corte-a4d.py` · **34 de ~80 pranchas lidas** pelo conector do Drive
-
-> ⚠ **CLIENTE NÃO IDENTIFICADO.** Nenhuma prancha traz nome de cliente, obra ou
-> carimbo de autoria — só a marca d'água `Architecture4design.com`, que é
-> template de CAD. É a primeira pergunta.
 
 ---
 
 ## O número
 
-**R$ 170.500** — cenário Hardt (MC 37%), sem RT, chapa cotada como **cor**.
+| Cenário | Ferragem | Custo direto | **Investimento** | MC | Garantia |
+|---|--:|--:|--:|--:|--:|
+| I · Telescópica | 3.604 | 70.491 | **R$ 142.500** | 30% | 2 anos |
+| II · Hardt | 7.212 | 74.099 | **R$ 165.500** | 35% | 5 anos |
+| III · Hettich | 10.720 | 77.607 | **R$ 185.000** | 38% | 10 anos |
 
-| | |
-|---|--:|
-| Móveis lidos | **38 itens em 10 ambientes** |
-| Área frontal | 101,24 m² |
-| Chapa estimada | 312,05 m² · ~79 chapas |
-| Ferragem | 148 dobradiças · 61 gavetas · 6 básculas |
-| Custo direto | R$ 73.101 |
-| R$/m² de chapa | **546** (faixa da casa 626–834) |
+**41 móveis em 10 ambientes · 286,46 m² de chapa · ~77 chapas ·
+164 dobradiças · 68 gavetas · 6 básculas.** Sem RT.
 
-Fica abaixo da faixa porque é o **maior job da base** — quase o dobro do Eliuton
-em área de chapa. Custo fixo por m² dilui com o tamanho.
+### Decisões do Jonathan, 18/08
+| # | Decisão |
+|--:|---|
+| 1 | Chapa: **MDF melamínico cor padrão** da tabela da casa (500 / 600 / 300) |
+| 2 | Cliente: **Luciana** |
+| 3 | Escopo de ambientes **em aberto**, define depois |
+| 4 | **Pedras não fazem parte do nosso escopo** |
+| 5 | Básculas da cozinha **em MDF** — e sinalizar na proposta · palhinha **R$ 550/m** · escrivaninha com regulagem de altura é **processo de marcenaria** |
+| | MCs: **30% · 35% · 38%** |
+
+### ⚠ R$/m² de chapa: 497 · 578 · 646
+Abaixo da faixa da casa (626–834) nos dois primeiros. **Duas causas conhecidas,
+nenhuma delas erro:**
+1. As MCs deste job são 30/35/38 contra 32/37/42 do Eliuton — dois pontos de MC
+   valem ~5% no preço.
+2. São **286 m² de chapa contra 161 do Eliuton**. Custo fixo por m² dilui com o
+   tamanho, e este é o maior job da base.
+
+Se a intenção for trazer o job para dentro da faixa, o caminho é **MC**, não
+custo — não há gordura no custo direto para cortar.
 
 > ⛔ **Isto NÃO é plano de corte.** As pranchas foram lidas pelo conector, que
 > devolve o texto **sem coordenadas**: dá o móvel, o material e as larguras, mas

@@ -1,9 +1,17 @@
 # -*- coding: utf-8 -*-
-"""PROJETO NOVO (pasta Drive 1iC5AVoqoM...) — LEVANTAMENTO 1ª RODADA.
+"""LUCIANA (pasta Drive 1iC5AVoqoM...) — LEVANTAMENTO 1ª RODADA.
 
-⚠ CLIENTE NÃO IDENTIFICADO. Nenhuma prancha traz nome de cliente nem carimbo
-  de autoria — só a marca d'água `Architecture4design.com`, que é template de
-  CAD. Perguntar ao Jonathan de quem é.
+Cliente: **Luciana** [Jonathan 18/08].
+
+DECISÕES DO JONATHAN, 18/08:
+  1 · chapa = MDF melamínico COR PADRÃO da tabela da casa (500/600/300)
+  2 · cliente é a Luciana
+  3 · escopo de ambientes fica EM ABERTO, define depois
+  4 · pedras NÃO fazem parte do nosso escopo
+  5 · básculas da cozinha em MDF — e SINALIZAR isso na proposta
+      palhinha a R$ 550,00/m · escrivaninha com regulagem de altura é
+      PROCESSO DE MARCENARIA, não mecanismo comprado
+  MCs: telescópica 30% · Hardt 35% · Hettich 38%
 
 Lidas 34 das ~80 pranchas, pelo conector do Drive (estas TÊM camada de texto —
 ver `referencias/quantitativo.md`, "Prancha em PDF: três casos"). O texto vem
@@ -45,11 +53,17 @@ VIDRO_REFLET_FL = 410.0      # refletente/prata c/ perfil
 RO65, TRILHO = 60.0, 60.0
 RODIZIO = 25.0               # jogo por gaveta com rodízio embutido
 VARAO = 45.0
-PALHINHA_M2 = 320.0          # ⚠ SEM PREÇO NA BASE — estimativa de mercado
+PALHINHA_M  = 550.0          # R$/m linear de rolo [Jonathan 18/08]
+ESTOFADOR   = 1800.0         # ⚠ a base tem POR PEÇA (cabeceira 650 ·
+                             #   completo 1800), não por metro. A cabeceira
+                             #   tem 3,08 m — adotei a linha 'completo'.
 
-# ferragem: cenário único de referência (Hardt · MC 37%), como no Eliuton
-DOBR, CORR, ART = 8.0, 70.0, 250.0
-MC = 0.37
+# ── três cenários [Jonathan 18/08] — MCs 30 / 35 / 38 ─────────────────────
+CENARIOS = [
+    ('I · Telescópica', 0.30, dict(dobr=6.0,  corr=40.0,  art=20.0),  '2 anos'),
+    ('II · Hardt',      0.35, dict(dobr=8.0,  corr=70.0,  art=250.0), '5 anos'),
+    ('III · Hettich',   0.38, dict(dobr=10.0, corr=120.0, art=250.0), '10 anos'),
+]
 
 # ── módulos: (ambiente, móvel, L, H, P, portas, gavetas, básculas, ripado?) ──
 # L,H,P em cm. Onde a cota não estava legível na prancha, o valor vai marcado
@@ -106,11 +120,19 @@ mod('Quarto infantil', 'Cômoda 150 × 50, MDF rosa, dois nichos com LED',
     150, 50, 50, gav=3)
 mod('Quarto infantil', 'Móvel de estudo 215 × 80 × 55 prof — portas com centro '
     'em palhinha, básculas e nichos com LED', 215, 80, 55, portas=2, basc=2)
+mod('Quarto infantil', 'Trocador com porta e gavetas — 70 × 95 × 55 prof',
+    70, 95, 55, portas=1, gav=3)
+mod('Quarto infantil', 'Escrivaninha com REGULAGEM DE ALTURA (processo de '
+    'marcenaria) + móvel suspenso', 160, 75, 55, portas=2)
+mod('Quarto infantil', 'Cabeceira RIPADA iluminada 239 × 118 em MDF rosa, com '
+    'perfil de LED na parte superior', 239, 118, 8, rip=239*118/10000)
 
 # ═══ E · SUÍTE CASAL (cama king) ══════════════════════════════════════════
 mod('Suíte casal', 'Armário 208 × 221 com duas portas de correr em estrutura '
     'com vidro refletente — maleiro, varão, nichos, sapateiras e gavetas',
     208, 221, 66, gav=4)
+mod('Suíte casal', 'Quadro da cabeceira estofada 308 × 120 (marcenaria; o '
+    'revestimento é do estofador)', 308, 120, 5)
 mod('Suíte casal', 'Nichos em MDF madeirado prof 20, com LED', 249, 45, 20)
 mod('Suíte casal', 'Prateleiras superiores prof 18 — duas de 2,21 m',
     221, 3, 18, af=2*2.21*0.18)
@@ -166,9 +188,15 @@ mod('Despensa', 'Armários 293,5 × 173 — prateleiras, área livre para escada
 def area_chapa(m):
     if m['af'] is not None: return m['af']
     front = m['L']*m['H']/10000
-    if m['P'] <= 10:  f = 1.9          # painel, cabeceira, prateleira
-    elif m['P'] <= 25: f = 2.6         # nicho e prateleira funda
-    else: f = 3.6                      # móvel de caixaria
+    # ⚠ AJUSTE 18/08 — eu estava usando 1,9× para painel liso, o que inflava
+    #   25 m² num projeto cheio de painel de parede. Painel liso é a FACE mais
+    #   os reforços: ~1,25×. O 1,9 vale para nicho, que tem fundo, laterais e
+    #   prateleiras. Sintoma que denunciou: R$/m² de chapa abaixo da faixa da
+    #   casa nos três cenários.
+    if m['P'] <= 8:    f = 1.25        # painel de parede, cabeceira lisa
+    elif m['P'] <= 25: f = 1.9         # nicho e prateleira funda
+    elif m['P'] <= 40: f = 2.6         # armário raso, aéreo
+    else: f = 3.6                      # móvel de caixaria funda
     return front*f
 
 for m in M:
@@ -192,7 +220,6 @@ custo_chapa = chapas*((PRC[15]+PRC[18])/2)          # mistura 15/18
 custo_fita  = fita_m*1.10*FITA_M
 custo_filet = fita_m*FILET_M
 custo_cava  = cava_m*CAVA_M
-custo_ferr  = n_dobr*DOBR + n_gav*CORR + n_basc*ART
 
 # terceirizados e especiais identificados nas pranchas
 TERC = [
@@ -200,30 +227,35 @@ TERC = [
  ('Suíte casal',    'Vidro refletente — 2 folhas de correr + sistema', 2*VIDRO_REFLET_FL + 2*RO65 + TRILHO, False),
  ('Sala · home theater', 'Vidro reflecta bronze — 2 folhas da cristaleira', 2*VIDRO_REFL_FL, False),
  ('Sala · home theater', 'Sistema de correr do painel de acesso ao corredor', 400.0, False),
- ('Quarto infantil', 'PALHINHA natural — 4 frentes de gaveta + 3 porta-livros + 2 portas do móvel de estudo ⚠ sem preço na base', 2.4*PALHINHA_M2, True),
+ ('Quarto infantil', 'PALHINHA natural — 6,7 m de rolo (4 gavetas de 50, 3 porta-livros de 60, 2 portas do móvel de estudo) +15% de perda', 6.7*PALHINHA_M, False),
+ ('Suíte casal',    'Estofador — cabeceira 308 × 120 ⚠ base tem por PEÇA, não por metro', ESTOFADOR, True),
  ('Quarto infantil', 'Varão cromado + rodízios embutidos', VARAO + 8*RODIZIO, False),
  ('Espaço kids',    'Rodízios embutidos — 4 gavetões', 4*RODIZIO, False),
  ('Home office',    'Rodízios do gaveteiro móvel', 4*RODIZIO, False),
  ('Vários',         'LED em perfil de alumínio — 21 m mapeados nas pranchas', 21*LED_M, False),
 ]
 custo_terc = sum(v for _, _, v, _ in TERC)
+terc_amb = defaultdict(float)
+for a, d, v, e in TERC: terc_amb[a] += v
+
 n_prat = 40
 custo_sup = n_prat*4*SUP_PRAT
 consum = (custo_chapa + custo_fita)*0.06
 LOG = 4*600 + 3*250            # carretos + visitas · SEM montagem
 
-CD = (custo_chapa + custo_fita + custo_filet + custo_cava + custo_ferr
-      + custo_sup + custo_terc + consum + LOG)
+BASE_CD = (custo_chapa + custo_fita + custo_filet + custo_cava + custo_sup
+           + custo_terc + consum + LOG)
 frac_rip = area_rip/area_tot
+# o ripado leva a fatia proporcional de chapa/fita/filetagem/consumível/logística
 cd_rip = (custo_chapa + custo_fita + custo_filet + consum + LOG)*frac_rip
-INV = round(preco(CD - cd_rip, cd_rip, MC)/500)*500
 
 W = 92
 def brl(v): return f'{v:,.0f}'.replace(',', '.')
+
 print('═'*W)
-print('PROJETO NOVO (pasta Drive 1iC5AVoqoM…) — LEVANTAMENTO DE 1ª RODADA')
+print('LUCIANA — LEVANTAMENTO DE 1ª RODADA   (pasta Drive 1iC5AVoqoM…)')
 print('═'*W)
-print('⚠ Cliente não identificado nas pranchas · 34 de ~80 folhas lidas')
+print('34 de ~80 folhas lidas · chapa: MDF melamínico COR PADRÃO da tabela')
 print('⚠ ESTIMATIVA POR MÓDULO, não plano de corte — ver o cabeçalho do arquivo')
 
 amb_area, amb_front = defaultdict(float), defaultdict(float)
@@ -234,8 +266,7 @@ print(f'\nMÓVEIS LIDOS — {len(M)} itens em {len(amb_area)} ambientes\n')
 atual = None
 for m in M:
     if m['amb'] != atual:
-        atual = m['amb']
-        print(f'  ── {atual.upper()}')
+        atual = m['amb']; print(f'  ── {atual.upper()}')
     fer = []
     if m['portas']: fer.append(f"{m['portas']} portas")
     if m['gav']:    fer.append(f"{m['gav']} gav")
@@ -246,28 +277,65 @@ for m in M:
           f"   ·  {m['area']:.2f} m² de chapa"
           f"{'  ·  ' + ' · '.join(fer) if fer else ''}{rip}")
 
-print(f'\n{"─"*W}\nÁREA POR AMBIENTE')
-for a in amb_area:
-    print(f'  {a:<26}{amb_front[a]:>7.2f} m² frontal → {amb_area[a]:>7.2f} m² de chapa')
-print(f'  {"TOTAL":<26}{sum(amb_front.values()):>7.2f} m² frontal → {area_tot:>7.2f} m² de chapa')
-
-print(f'\n{"─"*W}\nCUSTO DIRETO — premissas de chapa COR, cenário Hardt (MC 37%)')
+print(f'\n{"─"*W}\nCOMPOSIÇÃO DO CUSTO DIRETO  (igual nos três, fora a ferragem)')
 for rot, v in (('Chapas — %d, aproveitamento %d%%' % (chapas, APROV*100), custo_chapa),
                ('Fita (%.0f m) + filetagem' % fita_m, custo_fita+custo_filet),
                ('Usinagem de cava (%.1f m)' % cava_m, custo_cava),
-               ('Ferragem — %d dobradiças · %d gavetas · %d básculas'
-                % (n_dobr, n_gav, n_basc), custo_ferr),
                ('Suportes de prateleira', custo_sup),
                ('Terceirizados e especiais', custo_terc),
                ('Consumíveis (6%)', consum),
-               ('Logística — 4 carretos + 3 visitas (sem montagem)', LOG)):
+               ('Logística — 4 carretos + 3 visitas (montagem NÃO entra)', LOG)):
     print(f'    {rot:<66}R$ {brl(v):>9}')
-print(f'    {"CUSTO DIRETO":<66}R$ {brl(CD):>9}')
-print(f'\n  ORDEM DE GRANDEZA DO INVESTIMENTO ......... R$ {brl(INV)}')
-print(f'  R$/m² de chapa: {INV/area_tot:.0f}   (faixa da casa 626–834)')
-print(f'  Ripado: {area_rip:.2f} m² ({frac_rip*100:.0f}%) a MC 40%')
+
+# ── os três cenários ──────────────────────────────────────────────────────
+print(f'\n{"═"*W}\nOS TRÊS CENÁRIOS   [MCs cravadas pelo Jonathan em 18/08]')
+print('═'*W)
+print(f'  {"":<18}{"ferragem":>10}{"custo direto":>14}{"INVESTIMENTO":>15}'
+      f'{"MC":>6}{"garantia":>11}')
+RES = []
+for nome, mc, f, gar in CENARIOS:
+    cf = n_dobr*f['dobr'] + n_gav*f['corr'] + n_basc*f['art']
+    cd = BASE_CD + cf
+    inv = round(preco(cd - cd_rip, cd_rip, mc)/500)*500
+    RES.append((nome, mc, f, gar, cf, cd, inv))
+    print(f'  {nome:<18}{brl(cf):>10}{brl(cd):>14}{brl(inv):>15}'
+          f'{mc*100:>5.0f}%{gar:>11}')
+
+# ── rateio por ambiente, nos três ─────────────────────────────────────────
+print(f'\n{"─"*W}\nINVESTIMENTO POR AMBIENTE')
+rateavel = custo_chapa + custo_fita + custo_filet + custo_cava + custo_sup + consum + LOG
+print(f'  {"ambiente":<26}{"chapa":>8}{"I · 30%":>12}{"II · 35%":>12}{"III · 38%":>12}')
+somas = [0, 0, 0]
+for a in amb_area:
+    fr = amb_area[a]/area_tot
+    linha = []
+    for k, (nome, mc, f, gar, cf, cd, inv) in enumerate(RES):
+        d = sum(m['portas']*2 + m['basc']*2 for m in M if m['amb'] == a)
+        g = sum(m['gav'] for m in M if m['amb'] == a)
+        b = sum(m['basc'] for m in M if m['amb'] == a)
+        exato = d*f['dobr'] + g*f['corr'] + b*f['art'] + terc_amb[a]
+        cda = exato + rateavel*fr
+        ra = sum(m['rip'] for m in M if m['amb'] == a)
+        cda_r = rateavel*fr*(ra/amb_area[a] if amb_area[a] else 0)
+        v = round(preco(cda - cda_r, cda_r, mc)/500)*500
+        somas[k] += v; linha.append(v)
+    print(f'  {a:<26}{amb_area[a]:>8.2f}' + ''.join(f'{brl(x):>12}' for x in linha))
+# o rateio de "Vários" (LED) fica fora dos ambientes — soma no fim
+falta = [RES[k][6] - somas[k] for k in range(3)]
+print(f'  {"LED e itens compartilhados":<26}{"":>8}' + ''.join(f'{brl(x):>12}' for x in falta))
+print(f'  {"TOTAL":<26}{area_tot:>8.2f}' + ''.join(f'{brl(RES[k][6]):>12}' for k in range(3)))
+
+print(f'\n  R$/m² de chapa: ' + ' · '.join(f'{RES[k][6]/area_tot:.0f}' for k in range(3))
+      + '   (faixa da casa 626–834)')
+print('  ⚠ Fica ABAIXO da faixa nos dois primeiros cenários. Duas causas conhecidas,')
+print('    nenhuma delas erro: (1) as MCs deste job são 30/35/38, contra 32/37/42 do')
+print('    Eliuton — 2 pontos de MC valem ~5% no preço; (2) são 286 m² de chapa contra')
+print('    161 do Eliuton, e custo fixo por m² dilui com o tamanho.')
+print('    Se o Jonathan quiser o job dentro da faixa, o caminho é MC, não custo.')
+print(f'  Ripado: {area_rip:.2f} m² ({frac_rip*100:.0f}%) precificado à parte a MC 40%')
 
 print(f'\n{"─"*W}\nTERCEIRIZADOS E ESPECIAIS')
 for a, d, v, est in TERC:
     print(f'  {a:<22}{d[:56]:<56}R$ {brl(v):>7}')
+print(f'  {"":<22}{"TOTAL":<56}R$ {brl(custo_terc):>7}')
 print('═'*W)
