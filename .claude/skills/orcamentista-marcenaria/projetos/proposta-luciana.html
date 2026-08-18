@@ -1,0 +1,393 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"><style>
+:root{
+  --ink:#1A1714; --soft:#5C564C; --mut:#918A7C; --line:#E3DDD1; --hair:#F0EBE1;
+  --paper:#fff; --cream:#FAF7F1; --sand:#F1EBDF;
+  --gold:#9C7A3C; --gold-lt:#C6A567; --gold-pale:#F5EEDF; --deep:#241F1B;
+}
+@page{size:A4;margin:0;}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;
+     color:var(--ink);font-size:9.6pt;line-height:1.62;}
+.serif{font-family:'Cormorant Garamond','Liberation Serif',Georgia,serif;}
+.page{position:relative;width:210mm;height:297mm;overflow:hidden;
+      background:var(--paper);page-break-after:always;}
+.page:last-of-type{page-break-after:avoid;}
+.pad{padding:17mm 19mm 14mm;height:100%;display:flex;flex-direction:column;}
+h1,h2,h3{margin:0;font-weight:600;}
+p{margin:0;}
+.eyebrow{font-size:7.2pt;letter-spacing:.30em;text-transform:uppercase;
+         color:var(--gold);font-weight:700;}
+.rule{height:1.5px;width:40px;background:var(--gold);margin:7px 0 13px;}
+.h-sec{font-family:'Cormorant Garamond',Georgia,serif;font-size:23pt;
+       line-height:1.12;font-weight:600;letter-spacing:-.01em;}
+.lead{color:var(--soft);font-size:9.9pt;max-width:150mm;}
+.foot{margin-top:auto;padding-top:8mm;border-top:1px solid var(--hair);
+      display:flex;justify-content:space-between;font-size:7.2pt;
+      letter-spacing:.16em;text-transform:uppercase;color:var(--mut);}
+
+/* capa */
+.cover{background:var(--deep);color:#F6F1E7;}
+.cover .pad{padding:24mm 19mm 16mm;}
+.cover .eyebrow{color:var(--gold-lt);}
+.cover .rule{background:var(--gold-lt);width:56px;height:2px;}
+.cv-t{font-family:'Cormorant Garamond',Georgia,serif;font-size:38pt;
+      line-height:1.05;font-weight:600;letter-spacing:-.015em;margin-top:3mm;max-width:150mm;}
+.cv-s{font-size:12.5pt;color:#CFC6B4;margin-top:5mm;font-weight:300;}
+.cv-meta{margin-top:13mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6mm;
+         border-top:1px solid rgba(255,255,255,.16);padding-top:7mm;}
+.cv-meta .k{font-size:6.9pt;letter-spacing:.2em;text-transform:uppercase;
+            color:var(--gold-lt);font-weight:700;}
+.cv-meta .v{font-size:10.4pt;color:#EDE6D9;margin-top:2mm;}
+.cv-brand{font-size:8.6pt;letter-spacing:.42em;text-transform:uppercase;
+          color:#E8DFCB;font-weight:700;}
+.cv-num{position:absolute;right:19mm;top:22mm;font-family:'Cormorant Garamond',Georgia,serif;
+        font-size:110pt;line-height:1;color:rgba(198,165,103,.13);font-weight:600;}
+
+/* itens */
+.it{padding:3.1mm 0;border-bottom:1px solid var(--hair);display:flex;gap:6mm;}
+.it:last-child{border-bottom:none;}
+.it-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:14.5pt;color:var(--gold-lt);
+      font-weight:600;min-width:9mm;line-height:1.1;}
+.it-t{font-size:10.4pt;font-weight:600;letter-spacing:-.005em;}
+.it-d{color:var(--soft);font-size:8.4pt;margin-top:1mm;line-height:1.5;}
+
+/* cenários */
+.cen{border:1px solid var(--line);border-radius:2px;padding:4.6mm 5.6mm;
+     margin-bottom:3.4mm;background:var(--cream);}
+.cen.hi{background:var(--gold-pale);border-color:var(--gold-lt);}
+.cen-h{display:flex;align-items:baseline;gap:4mm;}
+.cen-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:20pt;
+       color:var(--gold);font-weight:600;line-height:1;}
+.cen-t{font-size:12.5pt;font-weight:600;}
+.cen-g{margin-left:auto;font-size:7.6pt;letter-spacing:.16em;text-transform:uppercase;
+       color:#fff;background:var(--gold);padding:2.2mm 3.4mm;border-radius:2px;
+       font-weight:700;white-space:nowrap;}
+.cen-x{color:var(--soft);font-size:8.7pt;margin-top:2mm;}
+.cen-l{margin-top:2.8mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm;
+       border-top:1px solid var(--line);padding-top:3.2mm;}
+.cen-l .k{font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;
+          color:var(--mut);font-weight:700;}
+.cen-l .v{font-size:8.7pt;margin-top:1mm;line-height:1.4;}
+
+/* tabela de investimento */
+table{width:100%;border-collapse:collapse;}
+.inv th{font-size:6.9pt;letter-spacing:.16em;text-transform:uppercase;
+        color:var(--mut);font-weight:700;text-align:right;padding:0 0 3mm;
+        border-bottom:1.5px solid var(--gold);}
+.inv th.l{text-align:left;}
+.inv td{padding:2.4mm 0;border-bottom:1px solid var(--hair);text-align:right;
+        font-variant-numeric:tabular-nums;font-size:9.6pt;}
+.inv td.l{text-align:left;font-size:9.5pt;}
+.inv td.hi{background:var(--gold-pale);font-weight:600;
+           padding-right:2.6mm;padding-left:2.6mm;}
+.inv th.hi{background:var(--gold-pale);padding-right:2.6mm;padding-left:2.6mm;
+           color:var(--gold);}
+.inv tr.tot td{border-bottom:none;border-top:1.5px solid var(--ink);
+               padding-top:3mm;font-size:13.5pt;font-weight:600;
+               font-family:'Cormorant Garamond',Georgia,serif;}
+.inv tr.tot td.l{font-family:inherit;font-size:8pt;letter-spacing:.18em;
+                 text-transform:uppercase;font-weight:700;}
+
+.box{background:var(--cream);border-left:2.5px solid var(--gold);
+     padding:4mm 5.2mm;margin-top:4mm;}
+.box .t{font-size:7.4pt;letter-spacing:.18em;text-transform:uppercase;
+        color:var(--gold);font-weight:700;}
+.box p{color:var(--soft);font-size:9pt;margin-top:2mm;}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:9mm;}
+.term{padding:3.4mm 0;border-bottom:1px solid var(--hair);}
+.term:last-child{border-bottom:none;}
+.term .k{font-size:6.9pt;letter-spacing:.18em;text-transform:uppercase;
+         color:var(--gold);font-weight:700;}
+.term .v{font-size:9.5pt;margin-top:1.2mm;}
+.term .s{color:var(--soft);font-size:8.5pt;margin-top:.8mm;}
+.pay td{padding:2.6mm 0;border-bottom:1px solid var(--hair);font-size:9pt;}
+.pay td.d{text-align:right;font-weight:600;color:var(--gold);
+          font-variant-numeric:tabular-nums;}
+.fora .k{font-size:9.3pt;font-weight:600;}
+.fora .v{color:var(--soft);font-size:8.6pt;margin-top:.8mm;}
+.fora li{margin-bottom:3.2mm;list-style:none;}
+.fora ul{margin:0;padding:0;}
+.sig{margin-top:auto;padding-top:9mm;display:grid;grid-template-columns:1fr 1fr;gap:14mm;}
+.sig .ln{border-top:1px solid var(--ink);padding-top:2.4mm;font-size:8.4pt;
+         color:var(--soft);}
+"""
+
+def brl(v): return f'{v:,.0f}'.replace(',', '.')
+
+def foot(n):
+    return (f'<div class="foot"><span>Valvic Marcenaria · {CLIENTE}</span>'
+            f'<span>{OBRA}</span><span>{n} / 5</span></div>')
+
+# ── páginas ────────────────────────────────────────────────────────────────
+p1 = f"""<div class="page cover"><div class="pad">
+  <div class="cv-brand">Valvic Marcenaria</div>
+  <div style="margin-top:auto">
+    <div class="eyebrow">Proposta de marcenaria planejada</div>
+    <div class="rule"></div>
+    <div class="cv-t">{OBRA}</div>
+    <div class="cv-s">{CLIENTE}</div>
+  </div>
+  <div class="cv-meta">
+    <div><div class="k">Projeto</div><div class="v">{ARQUITETA}</div></div>
+    <div><div class="k">Data</div><div class="v">{DATA}</div></div>
+    <div><div class="k">Validade</div><div class="v">{VALIDADE}</div></div>
+  </div>
+</div></div>"""
+
+itens_html = ''.join(
+    f'<div class="it"><div class="it-n">{i:02d}</div><div>'
+    f'<div class="it-t">{t}</div><div class="it-d">{d}</div></div></div>'
+    for i, (t, d, *_v) in enumerate(ITENS, 1))
+
+p2 = f"""<div class="page"><div class="pad">
+  <div class="eyebrow">O que está sendo proposto</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">Oito conjuntos,<br>uma casa inteira.</h2>
+  <p class="lead" style="margin-top:4mm">Levantamento feito peça a peça sobre o
+  executivo da arquiteta — as dezoito pranchas, cota a cota. São
+  <strong>160,8 m² de chapa</strong> em quatro acabamentos Arauco, com o interior
+  dos móveis na mesma cor da frente.</p>
+  <div style="margin-top:5mm">{itens_html}</div>
+  {foot(2)}
+</div></div>"""
+
+cen_html = ''.join(
+    f'<div class="cen{" hi" if c["n"]=="II" else ""}">'
+    f'<div class="cen-h"><div class="cen-n">{c["n"]}</div>'
+    f'<div class="cen-t">{c["nome"]}</div>'
+    f'<div class="cen-g">Garantia {c["gar"]}</div></div>'
+    f'<div class="cen-x">{c["txt"]}</div>'
+    f'<div class="cen-l">'
+    f'<div><div class="k">Dobradiça</div><div class="v">{c["dobr"]}</div></div>'
+    f'<div><div class="k">Corrediça</div><div class="v">{c["corr"]}</div></div>'
+    f'<div><div class="k">Báscula</div><div class="v">{c["basc"]}</div></div>'
+    f'</div></div>' for c in CEN)
+
+p3 = f"""<div class="page"><div class="pad">
+  <div class="eyebrow">Três configurações</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">O que muda entre elas<br>é o movimento.</h2>
+  <p class="lead" style="margin-top:4mm">O desenho, a chapa, o acabamento e o
+  esquadro são <strong>os mesmos nas três</strong>. O que separa uma da outra é
+  a ferragem — e ferragem se mede em ciclo de abertura, amortecimento e
+  regulagem. Por isso a garantia dobra a cada degrau: ela é a tradução, em papel,
+  daquilo que a mão sente.</p>
+  <div style="margin-top:5mm">{cen_html}</div>
+  <div class="box"><div class="t">Uma observação honesta</div>
+  <p>A garantia acima é <strong>garantia Valvic</strong> — nossa, escrita e
+  assinada na entrega. Não é a garantia do fabricante da ferragem, que não faz
+  parte do que a gente vende.</p></div>
+  {foot(3)}
+</div></div>"""
+
+linhas = ''.join(
+    f'<tr><td class="l">{t}</td><td>{brl(a)}</td>'
+    f'<td class="hi">{brl(b)}</td><td>{brl(c)}</td></tr>'
+    for t, _d, a, b, c in ITENS)
+
+p4 = f"""<div class="page"><div class="pad">
+  <div class="eyebrow">Investimento</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">Item a item,<br>nas três linhas.</h2>
+  <table class="inv" style="margin-top:7mm">
+    <tr><th class="l">Conjunto</th><th>I · Essencial</th>
+        <th class="hi">II · Intermediária</th><th>III · Superior</th></tr>
+    {linhas}
+    <tr class="tot"><td class="l">Investimento total</td>
+      <td>{brl(TOT[0])}</td><td class="hi">{brl(TOT[1])}</td>
+      <td>{brl(TOT[2])}</td></tr>
+  </table>
+  <div class="box"><div class="t">Por que o painel ripado não muda de preço</div>
+  <p>Ele é o único conjunto sem uma única dobradiça, corrediça ou báscula: são
+  ripas, painel e dois sistemas de porta. Como a diferença entre as três linhas
+  está inteiramente na ferragem, o painel custa o mesmo nas três — e representa
+  <strong>{TOT[1] and round(20400/TOT[1]*100)}% do investimento na linha
+  intermediária</strong>.</p></div>
+  <div class="box" style="border-left-color:var(--mut)">
+  <div class="t" style="color:var(--mut)">O que está dentro do valor</div>
+  <p>Projeto executivo de marcenaria, fornecimento de material, produção em CNC
+  e coladeira automática próprias, transporte, entrega na obra e
+  <strong>instalação e montagem por equipe própria da Valvic</strong> — não
+  terceirizamos a montagem.</p></div>
+  {foot(4)}
+</div></div>"""
+
+pay = ''.join(f'<tr><td>{c}</td><td class="d">{d}</td></tr>' for c, d in PAGTO)
+fora = ''.join(f'<li><div class="k">{k}</div><div class="v">{v}</div></li>'
+               for k, v in FORA)
+
+p5 = f"""<div class="page"><div class="pad">
+  <div class="eyebrow">Condições</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">Prazo, pagamento<br>e fronteiras.</h2>
+  <div class="two" style="margin-top:7mm">
+    <div>
+      <div class="term"><div class="k">Prazo de entrega</div>
+        <div class="v">{PRAZO}</div>
+        <div class="s">Contados da liberação da frente de trabalho na obra e da
+        aprovação do projeto executivo de marcenaria.</div></div>
+      <div class="term"><div class="k">Garantia</div>
+        <div class="v">2, 5 ou 10 anos — conforme a linha escolhida</div>
+        <div class="s">Garantia Valvic, documentada e assinada na entrega.
+        Retorno em 24 h e visita técnica em até 3 dias úteis, sem custo dentro
+        do prazo.</div></div>
+      <div class="term"><div class="k">Validade desta proposta</div>
+        <div class="v">{VALIDADE}</div></div>
+      <div class="term"><div class="k">Produção e montagem</div>
+        <div class="v">Fábrica e equipe próprias, do corte à instalação</div>
+        <div class="s">Corte, usinagem da cava e laminação de borda na nossa CNC
+        e coladeira automática; instalação e montagem pela nossa equipe. Não
+        terceirizamos nem o que define o acabamento, nem quem entrega.</div></div>
+      <table class="pay" style="margin-top:5mm">
+        <tr><td colspan="2" style="border:none;padding-bottom:1mm">
+          <span class="eyebrow">Formas de pagamento</span></td></tr>
+        {pay}
+      </table>
+      <p style="color:var(--mut);font-size:7.9pt;margin-top:2.5mm">
+      O desconto por transferência devolve ao cliente a taxa de máquina que
+      deixamos de pagar.</p>
+    </div>
+    <div class="fora">
+      <div class="eyebrow">Não incluso nesta proposta</div>
+      <div class="rule"></div>
+      <ul>{fora}</ul>
+    </div>
+  </div>
+  <div class="sig">
+    <div class="ln">Valvic Marcenaria</div>
+    <div class="ln">{CLIENTE}</div>
+  </div>
+  {foot(5)}
+</div></div></style></head><body><div class="page cover"><div class="pad">
+  <div class="cv-brand">Valvic Marcenaria</div>
+  <div style="margin-top:auto">
+    <div class="eyebrow">Proposta de marcenaria planejada</div>
+    <div class="rule"></div>
+    <div class="cv-t">Quarenta e um<br>móveis planejados</div>
+    <div class="cv-s">Luciana</div>
+  </div>
+  <div class="cv-meta">
+    <div><div class="k">Ambientes</div><div class="v">Dez</div></div>
+    <div><div class="k">Data</div><div class="v">18 de agosto de 2026</div></div>
+    <div><div class="k">Validade</div><div class="v">7 dias corridos</div></div>
+  </div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">O que está sendo proposto</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">A casa inteira,<br>móvel por móvel.</h2>
+  <p class="lead" style="margin-top:4mm">Levantamento feito sobre o projeto de
+  interiores — as pranchas de layout, elevação e detalhamento de cada ambiente.
+  São <strong>286 m² de chapa</strong> em MDF melamínico, com o interior dos
+  móveis no mesmo acabamento da frente.</p>
+  <div style="margin-top:5.5mm"><div class="eyebrow">Cozinha &nbsp;·&nbsp; 4,28 m de parede</div><div class="rule" style="margin:5px 0 3mm"></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Armários inferiores</span><span class="it-d" style="display:inline;margin-left:5px">428,5 × 41 prof — sete portas e quatro gavetas, com nichos para lava-louças de embutir, cervejeira e adega. Puxador em cava usinada no próprio material.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Armário suspenso com básculas</span><span class="it-d" style="display:inline;margin-left:5px">264 × 35 prof — três portas e duas básculas em MDF, com fita de LED na parte inferior e báscula com escorredor em inox.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Torre de fornos</span><span class="it-d" style="display:inline;margin-left:5px">98 × 211, prof 70 — quatro portas e nicho para micro-ondas de embutir.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Armário do nicho da geladeira</span><span class="it-d" style="display:inline;margin-left:5px">108 × 211, prof 70 — duas portas.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Armário inferior com ripado vazado</span><span class="it-d" style="display:inline;margin-left:5px">108 × 88 — o ripado é funcional: ventila a churrasqueira sem abrir mão do desenho contínuo.</span></div></div></div>
+  <div style="margin-top:5.5mm"><div class="eyebrow">Sala e home theater &nbsp;·&nbsp; painel de 6,77 m</div><div class="rule" style="margin:5px 0 3mm"></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Painel de parede</span><span class="it-d" style="display:inline;margin-left:5px">677 × 273 — com porta de correr embutida de acesso ao corredor, puxador usinado no próprio material. De fora, o painel é contínuo: a porta desaparece nele.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Cristaleira</span><span class="it-d" style="display:inline;margin-left:5px">99,5 × 218,5 — portas de giro em vidro reflecta bronze, prateleiras com iluminação em LED.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Rack de equipamentos</span><span class="it-d" style="display:inline;margin-left:5px">183 × 62 × 45 prof — três gavetas, ventilação e passagem de cabo previstas para receiver e subwoofer.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Móvel inferior</span><span class="it-d" style="display:inline;margin-left:5px">245 × 43,5 × 45 prof — cinco portas de giro, cava.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Nicho com fundo ripado</span><span class="it-d" style="display:inline;margin-left:5px">140 × 69 × 20 prof — LED na parte superior.</span></div></div></div>
+  <div class="foot"><span>Valvic Marcenaria · Luciana</span><span>Projeto de interiores — residência</span><span>2 / 8</span></div>
+</div></div><div class="page"><div class="pad">
+  <div style="margin-top:5.5mm"><div class="eyebrow">Espaço kids &nbsp;·&nbsp; painel de 3,72 m</div><div class="rule" style="margin:5px 0 3mm"></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Estrutura do painel de TV</span><span class="it-d" style="display:inline;margin-left:5px">372,5 × 249, prof 45 — painel de fundo e nicho central preparado para suporte de TV ajustável em altura e posição.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Painel ripado sobreposto</span><span class="it-d" style="display:inline;margin-left:5px">350 × 249, prof 2 — a camada ripada que dá o relevo à parede inteira.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Prateleiras</span><span class="it-d" style="display:inline;margin-left:5px">três de 1,29 m, prof 20.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Gavetões com rodízio embutido</span><span class="it-d" style="display:inline;margin-left:5px">quatro de 50 × 45 — rodam para fora e viram baú de brinquedo.</span></div></div></div>
+  <div style="margin-top:5.5mm"><div class="eyebrow">Quarto infantil</div><div class="rule" style="margin:5px 0 3mm"></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Cabeceira ripada</span><span class="it-d" style="display:inline;margin-left:5px">264 × 118 — com rebaixo para a descida da persiana.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Cabeceira ripada iluminada</span><span class="it-d" style="display:inline;margin-left:5px">239 × 118 — com perfil de LED na parte superior.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Guarda-roupa</span><span class="it-d" style="display:inline;margin-left:5px">200 × 200 × 70 prof — quatro portas, oito gavetas, maleiro, varão cromado e prateleiras.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Gavetas com centro em palhinha</span><span class="it-d" style="display:inline;margin-left:5px">quatro de 50 × 45, com rodízio embutido — palhinha natural aplicada na frente.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Nichos porta-livros</span><span class="it-d" style="display:inline;margin-left:5px">três de 60 × 15, frente em palhinha natural.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Cômoda</span><span class="it-d" style="display:inline;margin-left:5px">150 × 50 × 50 prof — três gavetas e dois nichos com LED.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Móvel de estudo</span><span class="it-d" style="display:inline;margin-left:5px">215 × 80 × 55 prof — portas com centro em palhinha, duas básculas e nichos com LED.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Trocador</span><span class="it-d" style="display:inline;margin-left:5px">70 × 95 × 55 prof — uma porta e três gavetas.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Escrivaninha com regulagem de altura</span><span class="it-d" style="display:inline;margin-left:5px">160 × 75 × 55 prof — a regulagem é executada em marcenaria, não por mecanismo comprado. Acompanha móvel suspenso.</span></div></div></div>
+  <div class="box" style="margin-top:5mm"><div class="t">Sobre as básculas da cozinha</div>
+  <p>O projeto abre duas possibilidades para as portas basculantes do armário
+  suspenso: MDF ou vidro laqueado. <strong>Esta proposta considera MDF.</strong>
+  O vidro laqueado é fornecimento de terceiro e altera o valor.</p></div>
+  <div class="foot"><span>Valvic Marcenaria · Luciana</span><span>Projeto de interiores — residência</span><span>3 / 8</span></div>
+</div></div><div class="page"><div class="pad">
+  <div style="margin-top:5.5mm"><div class="eyebrow">Suíte do casal</div><div class="rule" style="margin:5px 0 3mm"></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Armário com portas de correr</span><span class="it-d" style="display:inline;margin-left:5px">208 × 221 × 66 prof — duas folhas de correr em estrutura com vidro refletente. Maleiro, varão, nichos, sapateiras e quatro gavetas.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Quadro da cabeceira estofada</span><span class="it-d" style="display:inline;margin-left:5px">308 × 120 — a marcenaria executa o quadro; o revestimento é do estofador e está no valor.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Nichos em MDF madeirado</span><span class="it-d" style="display:inline;margin-left:5px">249 × 45, prof 20 — com LED.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Painel de nichos e prateleiras</span><span class="it-d" style="display:inline;margin-left:5px">307 × 204 — estrutura madeirada com seis portas.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Prateleiras superiores</span><span class="it-d" style="display:inline;margin-left:5px">duas de 2,21 m, prof 18.</span></div></div></div>
+  <div style="margin-top:5.5mm"><div class="eyebrow">Suíte 02</div><div class="rule" style="margin:5px 0 3mm"></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Painel de cabeceira</span><span class="it-d" style="display:inline;margin-left:5px">271 × 45 — com recuo para a descida da cortina.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Criado-mudo</span><span class="it-d" style="display:inline;margin-left:5px">45 × 45 × 45 prof — três gavetas, cava central.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Prateleira superior</span><span class="it-d" style="display:inline;margin-left:5px">2,71 m, prof 20.</span></div></div></div>
+  <div style="margin-top:5.5mm"><div class="eyebrow">Home office &nbsp;·&nbsp; 3,46 m de parede</div><div class="rule" style="margin:5px 0 3mm"></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Bancada e rodobanca</span><span class="it-d" style="display:inline;margin-left:5px">346 × 70 prof — em MDF madeirado, com fita de LED na parte superior da rodobanca.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Armário inferior da bancada</span><span class="it-d" style="display:inline;margin-left:5px">346 × 70 × 45 prof — quatro portas e quatro gavetas, cava no mesmo material.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Armário 01</span><span class="it-d" style="display:inline;margin-left:5px">200 × 200 × 45 prof — estrutura madeirada, frentes em tom contrastante, seis portas e quatro gavetas.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Armário 02</span><span class="it-d" style="display:inline;margin-left:5px">200 × 200 × 45 prof — prateleiras internas prof 41, quatro portas e quatro gavetas.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Prateleiras</span><span class="it-d" style="display:inline;margin-left:5px">dezenove peças em quatro modelos, prof 20.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Gaveteiro móvel</span><span class="it-d" style="display:inline;margin-left:5px">45 × 50 × 45 prof — quatro gavetas sobre rodízio.</span></div></div></div>
+  <div class="foot"><span>Valvic Marcenaria · Luciana</span><span>Projeto de interiores — residência</span><span>4 / 8</span></div>
+</div></div><div class="page"><div class="pad">
+  <div style="margin-top:5.5mm"><div class="eyebrow">Banho da suíte</div><div class="rule" style="margin:5px 0 3mm"></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Armário suspenso</span><span class="it-d" style="display:inline;margin-left:5px">196 × 35 × 35 prof — quatro portas de abrir em espelho prata, com fita de LED na parte inferior.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Armário inferior</span><span class="it-d" style="display:inline;margin-left:5px">215 × 85 × 45 prof — quatro gavetas, dois gavetões e duas básculas de roupa suja.</span></div></div></div>
+  <div style="margin-top:5.5mm"><div class="eyebrow">Área de serviço</div><div class="rule" style="margin:5px 0 3mm"></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Armário superior</span><span class="it-d" style="display:inline;margin-left:5px">326 × 73 × 35 prof — cinco portas e prateleiras.</span></div></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Armário inferior</span><span class="it-d" style="display:inline;margin-left:5px">326 × 85 × 60 prof — quatro portas, três gavetões e três cestos de roupa suja.</span></div></div></div>
+  <div style="margin-top:5.5mm"><div class="eyebrow">Despensa</div><div class="rule" style="margin:5px 0 3mm"></div><div class="it" style="padding:2.2mm 0"><div><span class="it-t" style="font-size:9.8pt">Armários</span><span class="it-d" style="display:inline;margin-left:5px">293,5 × 173 × 40 prof — seis portas, prateleiras e vão livre para escada e vassouras.</span></div></div></div>
+  <div class="box" style="margin-top:6mm"><div class="t">O que atravessa a casa toda</div>
+  <p><strong>Palhinha natural</strong> nas frentes de gaveta, nos porta-livros e
+  nas portas do móvel de estudo do quarto infantil — aplicada sobre quadro de
+  marcenaria. <strong>Iluminação em LED</strong> em perfil de alumínio, embutida
+  na marcenaria, em vinte e um metros distribuídos entre cozinha, sala, quarto
+  infantil, suíte, home office e banho. E <strong>puxador em cava usinada</strong>
+  no próprio material, em praticamente todas as frentes: sem puxador aparente,
+  o desenho fica limpo.</p></div>
+  <div class="foot"><span>Valvic Marcenaria · Luciana</span><span>Projeto de interiores — residência</span><span>5 / 8</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Três configurações</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">O que muda entre elas<br>é o movimento.</h2>
+  <p class="lead" style="margin-top:4mm">O desenho, a chapa, o acabamento e o
+  esquadro são <strong>os mesmos nas três</strong>. O que separa uma da outra é
+  a ferragem — e ferragem se mede em ciclo de abertura, amortecimento e
+  regulagem. São <strong>164 dobradiças e 68 gavetas</strong> nesta casa: é
+  muita coisa abrindo e fechando todo dia.</p>
+  <div style="margin-top:5mm"><div class="cen"><div class="cen-h"><div class="cen-n">I</div><div class="cen-t">Essencial</div><div class="cen-g">Garantia 2 anos</div></div><div class="cen-x">A configuração de referência do mercado. Mecanismo correto, regulagem completa e acabamento idêntico ao das outras duas linhas — a diferença está na vida útil do movimento, não no que se vê.</div><div class="cen-l"><div><div class="k">Dobradiça</div><div class="v">Dobradiça padrão com amortecimento</div></div><div><div class="k">Corrediça</div><div class="v">Corrediça telescópica</div></div><div><div class="k">Báscula</div><div class="v">Pistão a gás</div></div></div></div><div class="cen hi"><div class="cen-h"><div class="cen-n">II</div><div class="cen-t">Intermediária</div><div class="cen-g">Garantia 5 anos</div></div><div class="cen-x">A gaveta passa a correr por baixo, escondida: some o trilho lateral e o vão útil cresce. Num projeto com 68 gavetas, é o degrau que mais se sente no dia a dia. Dobra a garantia.</div><div class="cen-l"><div><div class="k">Dobradiça</div><div class="v">Dobradiça Hardt com amortecimento</div></div><div><div class="k">Corrediça</div><div class="v">Corrediça oculta Hardt, fechamento suave</div></div><div><div class="k">Báscula</div><div class="v">Articulador Blum HK-xs</div></div></div></div><div class="cen"><div class="cen-h"><div class="cen-n">III</div><div class="cen-t">Superior</div><div class="cen-g">Garantia 10 anos</div></div><div class="cen-x">A corrediça Quadro tem curso mais longo, carga maior, retorno mais macio e ciclo de teste muito acima do uso doméstico. Dobra a garantia outra vez.</div><div class="cen-l"><div><div class="k">Dobradiça</div><div class="v">Dobradiça Hettich Novisys</div></div><div><div class="k">Corrediça</div><div class="v">Corrediça oculta Hettich Quadro</div></div><div><div class="k">Báscula</div><div class="v">Articulador Blum HK-xs</div></div></div></div></div>
+  <div class="box"><div class="t">Uma observação honesta</div>
+  <p>A garantia acima é <strong>garantia Valvic</strong> — nossa, escrita e
+  assinada na entrega. Não é a garantia do fabricante da ferragem, que não faz
+  parte do que a gente vende.</p></div>
+  <div class="foot"><span>Valvic Marcenaria · Luciana</span><span>Projeto de interiores — residência</span><span>6 / 8</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Investimento</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">Ambiente a ambiente,<br>nas três linhas.</h2>
+  <table class="inv" style="margin-top:5mm">
+    <tr><th class="l">Ambiente</th><th>I · Essencial</th>
+        <th class="hi">II · Intermediária</th><th>III · Superior</th></tr>
+    <tr><td class="l">Cozinha</td><td>15.500</td><td class="hi">18.500</td><td>20.500</td></tr><tr><td class="l">Sala e home theater</td><td>18.000</td><td class="hi">20.500</td><td>22.500</td></tr><tr><td class="l">Espaço kids</td><td>19.500</td><td class="hi">21.500</td><td>23.000</td></tr><tr><td class="l">Quarto infantil</td><td>25.500</td><td class="hi">30.000</td><td>34.500</td></tr><tr><td class="l">Suíte do casal</td><td>22.000</td><td class="hi">24.500</td><td>27.000</td></tr><tr><td class="l">Suíte 02</td><td>1.500</td><td class="hi">1.500</td><td>2.000</td></tr><tr><td class="l">Home office</td><td>19.500</td><td class="hi">23.000</td><td>26.500</td></tr><tr><td class="l">Banho da suíte</td><td>6.500</td><td class="hi">8.500</td><td>10.000</td></tr><tr><td class="l">Área de serviço</td><td>7.000</td><td class="hi">8.500</td><td>9.500</td></tr><tr><td class="l">Despensa</td><td>5.500</td><td class="hi">6.000</td><td>6.500</td></tr><tr><td class="l">Iluminação em LED embutida — 21 m</td><td>2.000</td><td class="hi">3.000</td><td>3.000</td></tr>
+    <tr class="tot"><td class="l">Investimento total</td>
+      <td>142.500</td><td class="hi">165.500</td>
+      <td>185.000</td></tr>
+  </table>
+  <div class="box"><div class="t">O que está dentro do valor</div>
+  <p>Projeto executivo de marcenaria, fornecimento de material, produção em CNC
+  e coladeira automática próprias, transporte, entrega na obra e
+  <strong>instalação e montagem por equipe própria da Valvic</strong> — não
+  terceirizamos a montagem.</p></div>
+  <div class="box" style="border-left-color:var(--mut)">
+  <div class="t" style="color:var(--mut)">Duas definições ainda em aberto</div>
+  <p><strong>Quais ambientes entram no contrato</strong> — se algum sair, o
+  conjunto é recalculado, porque o custo de produção se redistribui entre os que
+  ficam. E a <strong>linha e a cor da chapa</strong>: o valor considera MDF
+  melamínico de cor padrão.</p></div>
+  <div class="foot"><span>Valvic Marcenaria · Luciana</span><span>Projeto de interiores — residência</span><span>7 / 8</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Condições</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">Prazo, pagamento<br>e fronteiras.</h2>
+  <div class="two" style="margin-top:7mm">
+    <div>
+      <div class="term"><div class="k">Prazo de entrega</div>
+        <div class="v">120 a 150 dias corridos</div>
+        <div class="s">Contados da liberação da frente de trabalho na obra e da
+        aprovação do projeto executivo de marcenaria.</div></div>
+      <div class="term"><div class="k">Garantia</div>
+        <div class="v">2, 5 ou 10 anos — conforme a linha escolhida</div>
+        <div class="s">Garantia Valvic, documentada e assinada na entrega.
+        Retorno em 24 h e visita técnica em até 3 dias úteis, sem custo dentro
+        do prazo.</div></div>
+      <div class="term"><div class="k">Validade desta proposta</div>
+        <div class="v">7 dias corridos</div></div>
+      <div class="term"><div class="k">Produção e montagem</div>
+        <div class="v">Fábrica e equipe próprias, do corte à instalação</div>
+        <div class="s">Corte, usinagem da cava e laminação de borda na nossa CNC
+        e coladeira automática; instalação e montagem pela nossa equipe. Não
+        terceirizamos nem o que define o acabamento, nem quem entrega.</div></div>
+      <table class="pay" style="margin-top:5mm">
+        <tr><td colspan="2" style="border:none;padding-bottom:1mm">
+          <span class="eyebrow">Formas de pagamento</span></td></tr>
+        <tr><td>Entrada de 30% + saldo em até 10× no cartão</td><td class="d">—</td></tr><tr><td>Entrada de 50% + saldo em até 8× no cartão</td><td class="d">3%</td></tr><tr><td>Entrada de 70% + saldo em até 6× no cartão</td><td class="d">5%</td></tr><tr><td>Entrada de 70% + saldo por transferência</td><td class="d">7%</td></tr>
+      </table>
+      <p style="color:var(--mut);font-size:7.9pt;margin-top:2.5mm">
+      O desconto por transferência devolve ao cliente a taxa de máquina que
+      deixamos de pagar.</p>
+    </div>
+    <div class="fora">
+      <div class="eyebrow">Não incluso nesta proposta</div>
+      <div class="rule"></div>
+      <ul><li><div class="k">Pedras e marmoraria</div><div class="v">O projeto especifica Taj Mahal acetinado, Bege Bahia levigado, Branco Siena polido, granito preto e travertino. Nenhuma delas está neste valor — pedra é fornecimento de marmoraria.</div></li><li><div class="k">Sóculos em alvenaria</div><div class="v">Os sóculos revestidos em pedra, com instalação em meia-esquadria, são obra civil.</div></li><li><div class="k">Eletrodomésticos, louças e metais</div><div class="v">Prevemos o vão e a usinagem; o aparelho é do cliente. Precisamos das medidas de fábrica antes do corte.</div></li><li><div class="k">Alvenaria, gesso, revestimento e pintura</div><div class="v">Inclusive a pintura da parede de fundo do home office.</div></li><li><div class="k">Elétrica e hidráulica</div><div class="v">A iluminação embutida NA marcenaria é nossa; os pontos de energia e de água são da obra.</div></li><li><div class="k">Móveis soltos e persianas</div><div class="v">Camas, poltronas, mesas e cortinas.</div></li></ul>
+    </div>
+  </div>
+  <div class="sig">
+    <div class="ln">Valvic Marcenaria</div>
+    <div class="ln">Luciana</div>
+  </div>
+  <div class="foot"><span>Valvic Marcenaria · Luciana</span><span>Projeto de interiores — residência</span><span>8 / 8</span></div>
+</div></div></body></html>

@@ -2,7 +2,8 @@
 
 **Cliente:** Luciana [Jonathan 18/08]
 **Data:** 18/08/2026 · **Status:** levantamento de **1ª rodada**, ordem de grandeza
-**Motor:** `corte-a4d.py` · **34 de ~80 pranchas lidas** pelo conector do Drive
+**Motor:** `corte-a4d.py` · **Proposta:** `build-luciana.py` → `proposta-luciana.pdf` (8 pág.)
+**34 de ~80 pranchas lidas** pelo conector do Drive
 
 ---
 
@@ -187,3 +188,30 @@ está no número.
 3. **Resolver os dois "estudar com marceneiro"** — painel do home theater e cofre.
 4. **Mandar as pranchas** dos ambientes aprovados, na revisão válida. Aí eu leio
    cota a cota como fiz no Eliuton e o número vira plano de corte.
+
+
+---
+
+## A proposta — 8 páginas, 18/08
+
+`build-luciana.py` → `proposta-luciana.pdf`. Estrutura: capa · escopo em quatro
+páginas (os 41 móveis descritos um a um, por ambiente) · as três configurações ·
+investimento ambiente a ambiente nas três linhas · condições e fronteiras.
+
+**Prazo 120 a 150 dias corridos** e **validade 7 dias** são premissa minha —
+o Jonathan cravou 90–120 para o Eliuton, mas este job tem 78% mais chapa.
+
+### O que a proposta diz em texto, por decisão do Jonathan
+- **Básculas da cozinha em MDF** — página 3, num box próprio: *"o projeto abre
+  duas possibilidades, MDF ou vidro laqueado; esta proposta considera MDF"*.
+- **Pedras fora** — primeira linha do "não incluso", com as cinco pedras
+  nomeadas (Taj Mahal, Bege Bahia, Branco Siena, granito preto, travertino).
+- **Escopo em aberto** — página 7: *"quais ambientes entram no contrato — se
+  algum sair, o conjunto é recalculado, porque o custo de produção se
+  redistribui entre os que ficam"*. Isso protege contra o cliente pedir para
+  tirar um ambiente e subtrair a linha.
+- **Chapa em cor padrão** — declarado na mesma página.
+
+### O CSS saiu do /tmp
+`projetos/css-proposta.css` agora está versionado no repo. Metade dos builders
+da pasta lê de `/tmp/css_premium.txt`, que some a cada sessão — este não.
