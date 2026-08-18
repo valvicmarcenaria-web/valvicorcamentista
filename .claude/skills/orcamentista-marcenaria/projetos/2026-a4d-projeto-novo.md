@@ -198,8 +198,16 @@ está no número.
 páginas (os 41 móveis descritos um a um, por ambiente) · as três configurações ·
 investimento ambiente a ambiente nas três linhas · condições e fronteiras.
 
-**Prazo 120 a 150 dias corridos** e **validade 7 dias** são premissa minha —
-o Jonathan cravou 90–120 para o Eliuton, mas este job tem 78% mais chapa.
+**A capa leva o nome da cliente como título** [Jonathan 18/08] — "Luciana" em
+74 pt, e o descritor do escopo abaixo. A hierarquia anterior era o contrário.
+
+**Prazo: 60 dias corridos** [Jonathan 18/08]. **Validade 7 dias** segue premissa
+minha.
+
+> ⚠ **60 dias é agressivo para este porte.** São 286 m² de chapa — 78% mais que
+> o Eliuton, que saiu com 90–120. Não é impossível, mas amarra a produção: se a
+> obra atrasar a liberação da frente de trabalho, o prazo corre contra a Valvic.
+> Decisão do Jonathan, registrada.
 
 ### O que a proposta diz em texto, por decisão do Jonathan
 - **Básculas da cozinha em MDF** — página 3, num box próprio: *"o projeto abre

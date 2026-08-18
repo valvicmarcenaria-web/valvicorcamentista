@@ -18,7 +18,8 @@ DECISÕES DO JONATHAN, 18/08, todas aplicadas:
 ⚠ ESCOPO DE AMBIENTES EM ABERTO [Jonathan 18/08]. A proposta traz os dez
   ambientes lidos; se algum sair, é recalcular — não basta subtrair a linha,
   porque o custo fixo se redistribui.
-⚠ PRAZO e VALIDADE são premissa minha.
+· PRAZO cravado pelo Jonathan em 18/08: 60 dias corridos.
+⚠ VALIDADE ainda é premissa minha.
 ⚠ SEM RT.
 """
 import subprocess
@@ -27,7 +28,7 @@ CLIENTE  = 'Luciana'
 OBRA     = 'Projeto de interiores — residência'
 DATA     = '18 de agosto de 2026'
 VALIDADE = '7 dias corridos'            # ⚠ premissa
-PRAZO    = '120 a 150 dias corridos'    # ⚠ premissa (job 78% maior que o Eliuton)
+PRAZO    = '60 dias corridos'           # [Jonathan 18/08]
 
 CEN = [
     dict(n='I', nome='Essencial', gar='2 anos',
@@ -213,13 +214,13 @@ def bloco(amb, sub, itens):
 p1 = f"""<div class="page cover"><div class="pad">
   <div class="cv-brand">Valvic Marcenaria</div>
   <div style="margin-top:auto">
-    <div class="eyebrow">Proposta de marcenaria planejada</div>
+    <div class="eyebrow">Proposta de marcenaria planejada para</div>
     <div class="rule"></div>
-    <div class="cv-t">Quarenta e um<br>móveis planejados</div>
-    <div class="cv-s">{CLIENTE}</div>
+    <div class="cv-nome">{CLIENTE}</div>
+    <div class="cv-s">Quarenta e um móveis planejados,<br>em dez ambientes</div>
   </div>
   <div class="cv-meta">
-    <div><div class="k">Ambientes</div><div class="v">Dez</div></div>
+    <div><div class="k">Prazo de entrega</div><div class="v">{PRAZO}</div></div>
     <div><div class="k">Data</div><div class="v">{DATA}</div></div>
     <div><div class="k">Validade</div><div class="v">{VALIDADE}</div></div>
   </div>
