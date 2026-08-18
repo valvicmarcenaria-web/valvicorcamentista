@@ -1,0 +1,244 @@
+# CAROL E VINÍCIUS — Caderno de Marcenaria
+
+**Cliente:** Carol e Vinícius Ramalho
+**Projeto:** Jéssica Sollero Design de Interiores — jessicasollerointeriores@gmail.com · 31-98406.0172
+**Data da prancha:** 20 de julho de 2026 · escala 1:25 · **49 pranchas**
+**Levantamento:** Lavinia, 18/08/2026 · `projetos/corte-vinicius.py`
+**Carimbo em todas as folhas:** "CONFERIR MEDIDAS NO LOCAL"
+
+---
+
+## 1 · Como o PDF foi lido
+
+Caso **B** da taxonomia de `referencias/quantitativo.md`: **0 palavras de texto,
+331 imagens, 337.884 vetores** — o texto está **em curvas**. O conector do Drive
+não devolve nada; a leitura foi visual, sobre render a 2,9× com rotação de +90°
+(as pranchas estão deitadas no PDF).
+
+Como o desenho é vetorial e **cotado**, as medidas abaixo saíram das **cotas
+escritas na prancha**, não de medição em pixel. Isso põe este job no mesmo
+patamar de confiança do Eliuton — e acima da Luciana, que foi por módulo.
+
+**Mapa das pranchas**
+
+| Folhas | Ambiente |
+|---|---|
+| 01 | capa |
+| 02–03 | Lavabo |
+| 04–11 | Sala de jantar |
+| 12–17 | Sala de estar |
+| 18–21 | Varanda |
+| 22–31 | Quarto Rafael e Miguel |
+| 32–37 | Quarto Maria Luísa |
+| 38–40 | Banho social |
+| 41–46 | Quarto casal |
+| 47–49 | Banho casal |
+
+---
+
+## 2 · Materiais do projeto
+
+| Sigla | Material | Onde |
+|---|---|---|
+| **AR** | MDF **Areal** — ARAUCO | painéis, ripados, prateleiras orgânicas, mezanino, escada, bancada da varanda, cristaleira do casal |
+| **FR** | MDF **Frapê** — ARAUCO | armários, racks, bancadas, portas, envelopamentos |
+| **BT** | MDF **Branco TX** | interno de armário fechado |
+| **TV** | MDF **Trevi** — DURATEX | nicho da sala de jantar |
+| **CR** | MDF **Cru** | base do espelho do lavabo |
+
+Nota que se repete em **todas** as pranchas:
+
+> "ATENÇÃO AO PADRÃO DE VEIOS DOS MDF AMADEIRADOS — SEGUIR VEIOS NOS ENCONTROS
+> EM TODOS OS DETALHES."
+
+Isso **encarece o nesting**: peça com veio orientado não gira 90° para caber.
+Está quantificado na sensibilidade (item 3).
+
+---
+
+## 3 · O que foi orçado, ambiente a ambiente
+
+### Lavabo — 2,40 m² de chapa
+Painel ripado em MDF Areal, 126 × 148, ripas de 3 × 2 cm com espaçamento de 3 cm
+(passo 6 cm), espelho prata 126 × 98 colado em MDF Cru no miolo, LED 4000 K
+superior e inferior.
+
+### Sala de jantar — 39,23 m² · 19 dobradiças · 4 gavetas
+- **Cristaleira** MDF Frapê 230 × 114,5 × 35,5 — 4 portas de vidro reflecta
+  bronze com alumínio bronze e puxador Sotille, 4 prateleiras de vidro incolor
+  temperado, LED 3000 K posterior.
+- **Nicho** MDF Trevi Duratex 230 × 66 × 35,5 com LED superior.
+- **Armário inferior** MDF Frapê 230 × 82 × 50 — 4 gavetas + 4 portas,
+  **puxador em mármore travertino 6 × 6 (04 unidades)**.
+- **Elevação B** — painel 120 × 262,5 com porta de giro 76 × 210; marco do vão
+  140 × 150 em MDF Areal; painel 140 × 262,5 e porta de correr 140 × 242,5 com
+  trilho embutido no gesso.
+- **Elevação C** — painel 120 × 262,5 e porta de correr 72 × 230.
+- **Sapateira** MDF Areal 52,5 × 105 × 25, 4 prateleiras inclinadas.
+
+### Sala de estar — 42,68 m² · 12 dobradiças · 9 gavetas · **ripado 5,73 m²**
+- **Buffet suspenso** MDF Frapê 443,5 × 80 × 45 — 6 gavetões, LED 3000 K
+  superior e inferior, **puxador travertino (06 unidades)**.
+- **Painel da TV** 228 × 262,5 em MDF Areal ripado: armário superior de 6 portas
+  ripadas (228 × 59), painel ripado central 152 × 118,5, faixa ripada 228 × 30,
+  8 prateleiras laterais de 34 e LED inferior.
+- **Rack** MDF Frapê 228 × 50 × 61 — 3 gavetões, **puxador travertino (03 un)**.
+
+### Varanda — 7,13 m² · 2 dobradiças
+- **Armário superior** MDF Areal 73 × 168 × 22, **sem fundo**, 3 prateleiras de
+  vidro incolor temperado, acabamento em tubinho champagne.
+- **Armário inferior** MDF Frapê 90 × 80 × 50 — nicho de 30 × 68 e porta de 56,
+  **puxador travertino (01 un)**.
+- **Bancada curva** MDF Areal 300 × 40 × 5 cm, bordas arredondadas, fixação
+  invisível, **pés chumbados em tubo champagne**.
+
+### Quarto Rafael e Miguel — 37,68 m² · 19 dobradiças · 6 gavetas
+- **Mezanino / cama suspensa** MDF Areal, estrado 203 × 150, **estruturado com
+  metalon**, vão com porta de acesso, **guarda-corpo de corda**, LED 4000 K
+  inferior.
+- **Escada** MDF Areal — 9 degraus de 17, altura 170.
+- **Cama inferior** 203 × 105 com 2 gavetões em MDF Frapê.
+- **2 cabeceiras** 146 × 35 com LED 3000 K e **2 nichos** 146 × 23 com suporte
+  em MDF Frapê.
+- **Bancada/escrivaninha** MDF Frapê 113 × 46, 2 gavetas.
+- **Armário** MDF Frapê 104,5 × 170 × 40 — 4 portas, 2 gavetas, prateleiras.
+- **Armário existente ENVELOPADO** em MDF Frapê, 204 × 280, **3 portas novas de
+  espelho prata**.
+
+### Quarto Maria Luísa — 37,94 m² · 11 dobradiças · 5 gavetas · 2 básculas
+- **Fechamento de cortineiro** MDF Frapê — 318,5 e 214,5, LED 3000 K inferior.
+- **Painel e teto** em MDF Areal, 60 × 266 e 169,5 × 60.
+- **3 prateleiras orgânicas** MDF Areal de 5 cm de espessura (duas lâminas de
+  18 mm), fixação invisível, LED inferior — 170, 170 e 125, com retorno de canto.
+- **Cabeceira estofada em gomos**, tecido facto branco, 4,14 m em duas paredes,
+  vão posterior para persiana, LED 3000 K superior.
+- **Bancada/penteadeira em L** MDF Frapê 172 + 167,5 × 50 × 80 — 2 gavetões,
+  2 gavetas, báscula a gás e báscula com espelho prata colado, divisória em
+  acrílico, LED 4000 K do espelho.
+- **Banco-armário** 50 × 80 × 50 com assento estofado.
+- **Armário existente ENVELOPADO** em MDF Frapê, 188,5 × 266, 3 portas de espelho.
+
+### Banho social — 11,20 m² · 3 gavetas · 1 báscula
+- **Armário superior** 140 × 120,5 × 15 — 3 portas de correr em espelho prata,
+  12 prateleiras.
+- **Armário inferior** 140 × 91 × 35 — báscula com pistão a gás, 2 gavetões
+  tulha e 1 gavetão.
+
+### Quarto casal — 25,46 m² · 9 dobradiças · 10 gavetas · 2 básculas
+- **Painel da cabeceira** MDF Areal 272,5 × 256, instalado acima do rodapé.
+- **Cabeceira estofada** em Tecido Bouclé Elba Cor Branco Bruma, 177,5.
+- **Penteadeira** MDF Frapê 52 × 50 × 80 — báscula a gás, báscula com espelho
+  prata colado, divisória em acrílico, LED 4000 K.
+- **Mesa de cabeceira** MDF Frapê 45 × 50, **puxador travertino (01 un)**.
+- **Cristaleira** MDF Areal 100,5 × 181 × 30 — 2 portas de vidro reflecta bronze,
+  4 prateleiras de vidro, LED 3000 K posterior.
+- **Armário inferior** MDF Frapê 100,5 × 85 × 30 — 8 gavetas.
+- **2 portas** em MDF Areal (giro 97,5 × 242 e correr 59 × 242), puxador cava,
+  perfil de alumínio na base.
+
+### Banho casal — 10,51 m² · 2 gavetas · 1 báscula
+- **Armário superior** 112 × 120,5 × 15 — 2 portas de correr em espelho prata,
+  4 prateleiras, **iluminação frontal em LED 4000 K**.
+- **Armário inferior** 112 × 91 × 51,5 — báscula a gás, gavetão tulha e gavetão.
+
+---
+
+## 4 · Números
+
+| | |
+|---|---|
+| Área de chapa | **214,23 m²** |
+| Chapas | **59** (aproveitamento médio 71 %) |
+| Fita de borda | 435,20 m |
+| Cava / chanfro usinado | 27,3 m |
+| LED | 49,91 m |
+| Ferragem | 72 dobradiças · 39 gavetas · 6 básculas · 54 prateleiras |
+| Custo direto | R$ 60.683 a R$ 65.471 conforme a linha |
+
+**Composição do custo direto** — chapas R$ 24.060 · terceirizados R$ 22.407 ·
+LED R$ 3.294 · logística R$ 3.750 · consumíveis R$ 1.530 · fita R$ 1.436 ·
+filetagem R$ 1.088 · cava R$ 682 · suportes R$ 324 · ferragem R$ 2.112 a 6.900.
+
+> **O terceirizado pesa 37 % do custo direto** — espelhos, portas de vidro,
+> estofador, serralheria do mezanino, tubo champagne e puxadores de travertino.
+> É o job com maior fração de não-marcenaria que a casa já orçou.
+
+### Preço
+
+**Escada 30/35/38** (a mais recente, dada na Luciana em 18/08):
+
+| Cenário | MC | Investimento | R$/m² de chapa | Garantia |
+|---|---|---|---|---|
+| I · Telescópica | 30 % | **R$ 121.800** | 569 | 2 anos |
+| II · Hardt | 35 % | **R$ 141.100** | 659 | 5 anos |
+| III · Hettich | 38 % | **R$ 155.900** | 728 | 10 anos |
+
+**Escada 32/37/42** (a do Eliuton, 13/08): R$ 126.800 · R$ 147.500 · R$ 172.100.
+
+Faixa de sanidade da casa: 626 (Rizzi) · 647 · 739 (SPE) · 834 (Honda) ·
+624 (Eliuton). **O cenário II cai em 659 — no meio da faixa.**
+
+Com RT de 10 % para a arquiteta: R$ 148.000 · R$ 175.400 · R$ 197.300.
+
+O **ripado** (6,68 m², 3 % do projeto) sai à parte, a MC 40 %, como manda a
+regra da casa.
+
+---
+
+## 5 · Sensibilidade
+
+1. **Areal e Frapê como chapa ESPECIAL** (950/1200/800) em vez de COR
+   (500/600/300): **+R$ 17.850 de custo ⇒ +R$ 39.653 de preço.**
+   ⚠ É a maior incerteza do orçamento — a base da casa não tem preço nominal de
+   Arauco amadeirado (mesmo buraco do Eliuton).
+2. Interno na cor em vez de Branco TX (101,5 m²): +R$ 5.230 de chapa.
+3. **Veio travado** no nesting: aproveitamento cai ~8 pontos ⇒ ~6 chapas a mais.
+4. Terceirizados **sem preço na base**: R$ 7.210 — metalon do mezanino (2.500),
+   pés e tubinho champagne (1.300), guarda-corpo de corda (800), 15 puxadores de
+   travertino (2.250), 2 divisórias de acrílico (360).
+
+---
+
+## 6 · Dúvidas e itens a confirmar
+
+**Para o Jonathan**
+
+1. **Qual escada de MC** vale neste job — 30/35/38 (Luciana) ou 32/37/42
+   (Eliuton)? Rodei as duas; a proposta saiu na primeira.
+2. **Areal e Frapê: cor ou especial?** Vale R$ 39.653 no cenário II.
+3. **Tem RT para a Jéssica Sollero?** Vale +24 % no cenário II.
+4. Preço dos **15 puxadores de travertino 6 × 6** — a base não tem. Lancei
+   R$ 150/un.
+5. Preço da **estrutura de metalon do mezanino**. Lancei R$ 2.500 (a base só tem
+   "serralheiro padrão R$ 300/serviço", que não cobre isso).
+6. **Estofador**: a base cota por peça (cabeceira 650 · completo 1800). A
+   cabeceira em gomos do quarto Maria Luísa tem 4,14 m em duas paredes — lancei
+   duas peças "completo".
+
+**Para a arquiteta / conferir no local**
+
+7. A **bancada e o nicho do lavabo**, as **bancadas dos dois banheiros** e a
+   bancada da cuba aparecem em pedra nas perspectivas — não entraram no escopo
+   de marcenaria.
+8. A **sapateira** tem 52,5 de largura na elevação D e a planta traz 94 e 62 na
+   mesma região. Adotei a cota da elevação.
+9. A região de **140 × 100 abaixo do vão** da elevação B da sala de jantar está
+   com hachura de parede e rodapé, não de marcenaria — não entrou.
+10. A **bancada da varanda é curva** (R40/R46, arcos de 210,7 e 301,1). Adotei
+    300 × 40 de projeção; o raio consome mais chapa.
+11. Os **armários existentes** dos quartos Rafael/Miguel e Maria Luísa serão
+    envelopados: as portas de espelho são novas, mas a caixaria é a que já está
+    lá. Conferir se o corpo aceita a ferragem nova.
+12. Na elevação D do quarto Maria Luísa o espelho tem 188,5 de vão e 266 de
+    altura, mas a prancha não divide as folhas. Adotei 3 portas de 62,8.
+
+---
+
+## 7 · O que este levantamento **não** inclui
+
+- Pedras (bancadas, cubas, rodabancas) — fora do escopo da casa.
+- Persianas e cortinas (há vão previsto para persiana em duas cabeceiras).
+- Eletrodomésticos: adega/frigobar da varanda, TV, pontos elétricos.
+- Papel de parede, revestimento e pintura.
+- **Montagem não entra no custo** (montador é salário fixo) — mas entra no
+  escopo da proposta, feita por equipe própria.
