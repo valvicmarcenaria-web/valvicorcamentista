@@ -2,7 +2,7 @@
 
 Arquivo: `Valvic_Custo_por_Projeto.xlsx`
 Gerador: `gerar-custo-projeto.py` (edite o script, nunca o `.xlsx`)
-Testes: `testar-custo-projeto.py` (143 verificações)
+Testes: `testar-custo-projeto.py` (210 verificações)
 
 Uma lâmina por projeto, com todo o custo direto e indireto em **ORÇADO ×
 REALIZADO × DESVIO**. É essa segunda coluna que transforma um controle de gasto
@@ -17,8 +17,65 @@ numa régua de eficiência do orçamento.
 | **Instruções** | Passo a passo, a cascata de cálculo e os cuidados. Imprimível em A4. |
 | **Painel Geral** | Consolida todos os projetos. 6 KPIs, tabela de 40 slots, "onde o orçamento erra", leituras e 2 gráficos. |
 | **Ficha Modelo** | O modelo. Duplique a cada projeto novo. |
-| **Exemplo P-2026-041** | Ficha preenchida (R$ 90 mil, 4 ambientes) com o desfecho completo. |
+| **Exemplo P-2026-041** | Ficha preenchida: R$ 90 mil, 4 ambientes, 21 compras lançadas, 3 retrabalhos. |
 | **Listas** | Equipe, vendedores e causas de retrabalho. |
+
+---
+
+## A ordem da ficha
+
+O **resultado vem primeiro**. Logo abaixo da identificação estão a faixa de KPIs e o
+resumo por categoria — você abre a ficha e já vê onde o projeto está, sem rolar. Os
+blocos de lançamento vêm depois:
+
+```
+identificação · resultado + resumo por categoria     ← linhas 6 a 24
+1 · valor de venda
+2 · custos de venda
+3 · ambientes, produção e montagem        12 linhas
+4 · comissões operacionais
+5 · comissões por colaborador             12 linhas
+6 · material, terceirizados e logística   16 categorias
+7 · retrabalho                            12 linhas
+8 · livro de compras e despesas           60 linhas
+```
+
+**A regra de ouro:** pode inserir e apagar linhas em qualquer bloco **a partir da linha
+26**. Tudo o que o Painel Geral lê está entre as linhas 6 e 24, e por isso não sai do lugar.
+
+---
+
+## O livro de compras — o bloco que dá o dinamismo
+
+Hoje você compra chapa, amanhã compra outra, semana que vem compra ferragem. **Cada
+compra é uma linha** no bloco 8:
+
+| Campo | |
+|---|---|
+| Descrição / fornecedor | texto livre — "MADEGEM — chapas brancas TX" |
+| Categoria | menu suspenso com as 16 categorias |
+| Data | quando comprou |
+| Valor | R$ |
+| Forma de pagamento | PIX · Boleto · Cartão · Cartão parcelado · Dinheiro · Transferência · Faturado 30 dias |
+| Status | **A comprar** · **Comprado (a pagar)** · **Pago** |
+
+O bloco 6 **não se digita**: ele soma o livro por categoria, sozinho. Você só digita o
+**orçado** de cada categoria.
+
+**O status é o que separa o que já é custo do que ainda não é:**
+
+```
+A comprar            → NÃO entra no custo realizado, vai para "Ainda a comprar"
+Comprado (a pagar)   → entra no custo E na coluna "Comprado, ainda a pagar"
+Pago                 → entra no custo
+```
+
+Isso responde três perguntas de uma vez: **quanto já custou, quanto ainda vou gastar e
+quanto devo aos fornecedores.** A faixa dourada abaixo da margem mostra o custo projetado
+e a MC projetada — a margem que o projeto vai ter depois de comprar o que falta.
+
+Lançamento com valor e sem categoria fica destacado em vermelho, e o total do livro avisa
+quantos estão sem classificar. Cabem 60 linhas e você pode inserir mais.
 
 ---
 
@@ -72,7 +129,9 @@ O exemplo, exatamente como você descreveu:
 | Sala | 30.000 | 33,3% | Deivson 3% | 730,37 | Jackson 2% | 486,91 |
 
 E o consolidado **por colaborador** sai sozinho, somando produção, montagem e
-coordenação:
+coordenação. A lista tem **só quem recebe comissão** — marceneiros, ajudantes e o
+coordenador (Deivson, Samuel, Cezar, Jackson, Jomar, Joelson, Jonathan Godoy e
+"Terceiro / avulso"), com 4 linhas livres:
 
 | Colaborador | Produção | Montagem | Coordenação | Total |
 |---|---:|---:|---:|---:|
@@ -107,11 +166,11 @@ Você duplica a Ficha Modelo, renomeia, e escreve **o nome da aba** numa linha
 livre da coluna ABA. Todo o resto se preenche por `INDIRECT`. Nome errado ou aba
 inexistente deixa a linha em branco — não quebra nada.
 
-**Seis KPIs:** projetos, vendido, custo total, MC em reais, MC média e
-**percentual de entrega no prazo**.
+**Sete KPIs:** projetos, vendido, custo total, **ainda a comprar**, MC em reais, MC média
+e **percentual de entrega no prazo**.
 
-**Tabela de 40 projetos** com entrada, prevista, entregue, dias de atraso,
-situação da entrega, venda, custo, MC em R$ e %, MC % orçada, o desvio em pontos
+**Tabela de 40 projetos** com entrada, prevista, entregue, dias de atraso, situação da
+entrega, venda, custo, **ainda a comprar**, MC em R$ e %, MC % orçada, o desvio em pontos
 percentuais, o desvio de custo em reais e um diagnóstico automático
 (Margem boa ≥ 35% · Margem apertada 25–35% · Margem crítica < 25%).
 
@@ -139,6 +198,9 @@ O orçamento previa 32,5% e o projeto entregou 26,7%. Quase metade do estouro ve
 de **material** — e é exatamente esse tipo de conclusão que a planilha existe para
 produzir. Entrega prevista 30/07, real 06/08: **7 dias de atraso**.
 
+As 21 compras do livro somam R$ 42.280, das quais **R$ 10.200 ainda estão a pagar** —
+chapas de reposição, o espelho da suíte e a laqueação faturada em 30 dias.
+
 ---
 
 ## Sinais visuais
@@ -156,12 +218,14 @@ produzir. Entrega prevista 30/07, real 06/08: **7 dias de atraso**.
 
 ## Limites conhecidos
 
-- **Não insira nem apague linhas dentro da ficha.** O Painel procura os números
-  em endereços fixos (`A13`, `C13`, `E13`, `G13`, `H13`, `I13`, `A7`, `A9`, `F7`,
-  `H7`, `J7`, `H9`, `J9`, `C107:D112`). Mudou a forma da ficha, o painel lê a
-  célula errada. Use as linhas de sobra de cada bloco.
+- **Não mexa nas linhas 1 a 25 da ficha.** O Painel procura os números em endereços fixos
+  (`A7`, `A9`, `F7`, `H7`, `J7`, `H9`, `J9`, `A13`, `C13`, `E13`, `G13`, `H13`, `I13`,
+  `I24`, `C16:D21`). Da linha 26 para baixo, insira e apague à vontade.
 - **40 projetos no Painel.** Para mais, é preciso regerar pelo script.
-- **10 ambientes, 12 colaboradores e 6 retrabalhos** por ficha.
+- **12 ambientes, 12 colaboradores, 12 retrabalhos e 60 lançamentos** por ficha — e o
+  livro aceita inserção de linhas.
+- **Se renomear uma categoria** na aba Listas, renomeie também na tabela do bloco 6: o
+  `SUMIFS` casa pelo texto.
 - **A ficha não tem gráfico de propósito.** Gráfico dentro de aba duplicada tende
   a continuar apontando para a aba original; a composição de custo já está na
   tabela de resumo, com o % da venda ao lado de cada categoria.
@@ -174,8 +238,8 @@ produzir. Entrega prevista 30/07, real 06/08: **7 dias de atraso**.
 ## Fórmulas
 
 Só funções da base do Excel 2007 (`IF`, `AND`, `OR`, `SUM`, `SUMIF`, `COUNTA`,
-`COUNTIF`, `COUNT`, `AVERAGE`, `ROUND`, `MAX`, `MIN`, `INDEX`, `MATCH`, `TEXT`,
-`LEFT`, `TODAY`, `INDIRECT`, `IFERROR`). Sem macro. Abre em qualquer versão do
+`SUMIFS`, `COUNTIF`, `COUNT`, `AVERAGE`, `ROUND`, `MAX`, `MIN`, `INDEX`, `MATCH`,
+`TEXT`, `LEFT`, `TODAY`, `INDIRECT`, `IFERROR`). Sem macro. Abre em qualquer versão do
 Excel, no LibreOffice e no Google Planilhas.
 
 ---
@@ -184,15 +248,21 @@ Excel, no LibreOffice e no Google Planilhas.
 
 ```
 python3 gerar-custo-projeto.py     # gera o .xlsx
-python3 testar-custo-projeto.py    # 143 verificações, 0 falha
+python3 testar-custo-projeto.py    # 210 verificações, 0 falha
 ```
 
 O teste calcula as fórmulas de verdade (biblioteca `formulas`) e confere a ficha
 inteira contra um modelo independente escrito em Python: a cascata de custos de
 venda, a receita líquida, a comissão de cada ambiente, o consolidado por
 colaborador, o resumo por categoria, a margem, a faixa de resultado do topo e o
-cálculo de atraso na entrega. Confere também que a ficha em branco não gera lixo
-e que o modelo e o exemplo têm **exatamente as mesmas fórmulas**.
+cálculo de atraso na entrega. Confere cada uma das 16 categorias de compra contra a soma
+independente do livro de lançamentos, nos três estados. Confere também que a ficha em
+branco não gera lixo, que o modelo e o exemplo têm **exatamente as mesmas fórmulas**, e
+que a lista de comissões não tem ninguém que não seja marceneiro, ajudante ou coordenador.
+
+Um teste extra (`TESTE 0`) confere as **âncoras de texto** de cada bloco: se alguém mudar
+o mapa de linhas da ficha sem atualizar o Painel, o teste acusa antes de o número sair
+errado.
 
 Para o Painel Geral, o teste resolve o `INDIRECT` à mão — o motor não avalia nome
 de aba dinâmico — e confirma que **cada coluna aponta para o endereço certo** da
