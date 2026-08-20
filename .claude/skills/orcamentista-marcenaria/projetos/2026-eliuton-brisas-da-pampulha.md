@@ -37,10 +37,6 @@ Com RT de 10% para a arquiteta: **108.100 · 127.100 · 147.800** (+24% a +30%).
 
 ## 🔒 20/08/2026 — VERSÃO DE FECHAMENTO
 
-[Jonathan] *"versão de fechamento da versão intermediária, com todas as
-descrições técnicas pertinentes, condição especial de fechamento com 10% de
-desconto, entrada de 30% e o restante à vista pós entrega."*
-
 `projetos/build-eliuton-fechamento.py` → **`proposta-eliuton-fechamento.pdf`**,
 8 páginas. Uma linha só — a Intermediária. Proposta de fechamento não oferece
 escolha, oferece decisão.
@@ -49,43 +45,55 @@ escolha, oferece decisão.
 |---|---|
 | Investimento cheio (linha II · Hardt) | R$ 100.500 |
 | Condição especial de fechamento (−10 %) | **R$ 90.450** |
-| Entrada de 30 % na assinatura | R$ 27.135 |
-| Saldo de 70 % à vista, pós-entrega | R$ 63.315 |
+| Entrada na assinatura | R$ 27.000 |
+| Saldo à vista, pós-entrega | R$ 63.450 |
+| Prazo | **65 dias corridos** |
 
-### ⚠ O que o desconto custa — registrado, decidido pelo Jonathan
+### 2ª rodada, 20/08 — seis correções do Jonathan
 
-| | Cheio | Fechamento |
+1. Prazo de entrega passa de 90–120 para **65 dias corridos**.
+2. Entrada vira **R$ 27.000 redondos** (era 30 % = R$ 27.135).
+3. Cai a caixa "o que essa condição significa na prática".
+4. **Tábua de passar embutida e os dois varais retráteis saem do escopo.**
+5. Sai o **quantitativo** de chapa, fita e ferragem — fica a especificação.
+6. Sai o **espaço de assinatura**.
+
+### O efeito da retirada da tábua e dos varais
+
+| | Antes | Depois |
 |---|--:|--:|
-| Preço | 100.500 | 90.450 |
-| Custo direto | 42.716 | 42.716 |
-| **MC real** | **37,5 %** | **32,8 %** |
-| Contribuição | R$ 37.700 | R$ 29.658 |
+| Preço | 90.450 | **90.450** (mantido) |
+| Custo direto | 42.716 | **41.536** |
+| **MC real** | 32,8 % | **34,1 %** |
+| Contribuição | R$ 29.658 | R$ 30.838 |
 
-O desconto de R$ 10.050 tira **4,7 pontos de MC** e **R$ 8.042 de
-contribuição** — a diferença entre os dois (R$ 2.008) é imposto e comissão que
-deixam de ser pagos sobre um preço menor. A MC cai **abaixo da faixa ideal da
-casa (35–40 %)**.
+Tábua (R$ 480) + dois varais (R$ 700) = **R$ 1.180** de custo direto que saem.
+**Preço mantido em R$ 90.450** — é a leitura que fecha com a entrada redonda de
+R$ 27.000 que o Jonathan cravou (27.000 é 29,9 % de 90.450). A retirada
+**recupera 1,3 ponto de MC** do que o desconto tinha levado. Ainda abaixo da
+faixa ideal da casa (35–40 %).
 
-### ⚠ E a entrada não cobre o material
+Se ele preferir abater a retirada do preço, o número vai a **R$ 87.700** e a
+entrada volta a ser ~31 %.
 
-Entrada de R$ 27.135 contra custo direto de R$ 42.716: a entrada cobre
-**64 %** do custo direto. A Valvic banca **R$ 15.581** de capital de giro por
-**90 a 120 dias** — mais o custo fixo do período, que não está nessa conta.
-Entre assinatura e saldo não há nenhuma parcela intermediária.
+### ⚠ A entrada continua sem cobrir o material
 
-Isso está dito na página 2 da proposta, virado para o lado do cliente: *"a
-produção inteira é financiada por nós — é por isso que a condição está atrelada
-ao fechamento dentro da validade"*. Serve de argumento de urgência e de
-justificativa honesta da condição ao mesmo tempo.
+R$ 27.000 contra R$ 41.536 de custo direto — cobre **65 %**. A Valvic banca
+**R$ 14.536** de capital de giro, mais o custo fixo do período. Com o prazo
+caindo de 90–120 para **65 dias**, a exposição **dura menos, mas fica mais
+intensa**: a compra de material se concentra num intervalo menor e a produção
+tem de estar reservada.
 
 ### O que a versão de fechamento tem que a de 17/08 não tinha
 
 - **Memorial descritivo item a item** — os oito conjuntos com material,
-  composição construtiva, ferragem e o porquê das decisões técnicas (nicho de
+  composição construtiva e o porquê das decisões técnicas (nicho de
   eletrodoméstico sem fundo, emenda da ripa de 288, RO65 em vez de SS150).
 - **Página de especificação técnica geral** — chapa, borda, cava, ferragem,
-  iluminação, espelho e vidro, serralheria e produção.
+  iluminação, espelho e vidro, serralheria e produção. **Sem quantitativo.**
 - **Valor cheio e valor de fechamento lado a lado** em cada item e no resumo.
+- A tábua e os varais aparecem explicitamente em **"não incluso"**, para que a
+  retirada não vire discussão na entrega.
 
 ### 🐛 Um defeito que apareceu ao montar
 
