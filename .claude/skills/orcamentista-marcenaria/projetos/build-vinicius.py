@@ -5,13 +5,14 @@ Valores de `corte-vinicius.py`. Diferente da Luciana, aqui a geometria é
 PEÇA A PEÇA: o caderno da Jéssica Sollero é vetorial e cotado, e as 49 pranchas
 foram lidas uma a uma. O número tem o mesmo grau de confiança do Eliuton.
 
-⚠ DUAS PREMISSAS QUE PRECISAM DE PALAVRA DO JONATHAN — estão escritas na
-  proposta, na página 8:
-  1. escada de MC — rodei 30/35/38 (a mais recente, da Luciana em 18/08).
-     A escada do Eliuton (32/37/42) dá R$ 126.800 / 147.500 / 172.100.
-  2. Areal e Frapê como chapa de COR (500/600/300). Se a linha Arauco for
-     cotada como ESPECIAL, some ~R$ 39.700 no cenário II.
-⚠ SEM RT. Com RT de 10%: R$ 148.000 / 175.400 / 197.300.
+[Jonathan 19/08] escada 30/35/38 confirmada · chapa em COR confirmada ·
+  **COM RT de 10%** para a Jéssica Sollero. Valores atualizados.
+  Sem RT, para referência interna: R$ 121.800 / 141.100 / 155.900.
+
+Esta é a versão TÉCNICA, A4 retrato, com as medidas de cada móvel. A versão
+que vai ao cliente é `build-vinicius-premium.py` — deck A4 paisagem, sem cotas,
+conduzido pelas perspectivas do projeto. As duas têm de bater no valor.
+
 ⚠ PRAZO e VALIDADE são premissas minhas — este projeto é maior que o da Luciana.
 """
 import subprocess
@@ -167,18 +168,18 @@ ESCOPO = [
 
 # ── investimento por ambiente · valores de corte-vinicius.py ──────────────
 INV = [
- ('Lavabo',                  1400,   1600,   1700),
- ('Sala de jantar',         22300,  25800,  28500),
- ('Sala de estar',          24100,  28100,  31100),
- ('Varanda',                 4100,   4700,   5200),
- ('Quarto Rafael e Miguel', 21400,  24800,  27400),
- ('Quarto Maria Luísa',     21600,  25000,  27600),
- ('Banho social',            6400,   7400,   8200),
- ('Quarto casal',           14500,  16800,  18500),
- ('Banho casal',             6000,   6900,   7700),
+ ('Lavabo',                  1700,   2000,   2200),
+ ('Sala de jantar',         27100,  32100,  36100),
+ ('Sala de estar',          29500,  35000,  39400),
+ ('Varanda',                 4900,   5800,   6600),
+ ('Quarto Rafael e Miguel', 26000,  30800,  34700),
+ ('Quarto Maria Luísa',     26200,  31100,  34900),
+ ('Banho social',            7700,   9200,  10300),
+ ('Quarto casal',           17600,  20800,  23400),
+ ('Banho casal',             7300,   8600,   9700),
 ]
 TOT = [sum(i[k] for i in INV) for k in (1, 2, 3)]
-assert TOT == [121800, 141100, 155900], TOT
+assert TOT == [148000, 175400, 197300], TOT
 
 PAGTO = [
     ('Entrada de 30% + saldo em até 10× no cartão', '—'),
@@ -340,6 +341,9 @@ p7 = f"""<div class="page"><div class="pad">
   travertino, a iluminação em LED, transporte, entrega na obra e
   <strong>instalação e montagem por equipe própria da Valvic</strong> — não
   terceirizamos a montagem.</p></div>
+  <div class="box"><div class="t">Coordenação de projeto</div>
+  <p>O acompanhamento de Jéssica Sollero Design de Interiores está contemplado
+  no valor, em todas as três linhas.</p></div>
   <div class="box" style="border-left-color:var(--mut)">
   <div class="t" style="color:var(--mut)">Uma definição ainda em aberto</div>
   <p>A <strong>linha da chapa</strong>. O caderno nomeia MDF Areal e MDF Frapê

@@ -4,6 +4,11 @@
 **Projeto:** Jéssica Sollero Design de Interiores — jessicasollerointeriores@gmail.com · 31-98406.0172
 **Data da prancha:** 20 de julho de 2026 · escala 1:25 · **49 pranchas**
 **Levantamento:** Lavinia, 18/08/2026 · `projetos/corte-vinicius.py`
+**Entregáveis:**
+`projetos/apresentacao-vinicius.pdf` — apresentação premium, A4 paisagem,
+16 páginas, no padrão do caderno do Junior (Lagoa Santa), com as 15
+perspectivas do projeto · `projetos/proposta-vinicius.pdf` — proposta A4
+retrato, 8 páginas, versão técnica
 **Carimbo em todas as folhas:** "CONFERIR MEDIDAS NO LOCAL"
 
 ---
@@ -163,22 +168,23 @@ filetagem R$ 1.088 · cava R$ 682 · suportes R$ 324 · ferragem R$ 2.112 a 6.90
 > estofador, serralheria do mezanino, tubo champagne e puxadores de travertino.
 > É o job com maior fração de não-marcenaria que a casa já orçou.
 
-### Preço
+### Preço — **COM RT de 10 %** [Jonathan 19/08]
 
-**Escada 30/35/38** (a mais recente, dada na Luciana em 18/08):
+Escada de MC 30/35/38, confirmada.
 
 | Cenário | MC | Investimento | R$/m² de chapa | Garantia |
 |---|---|---|---|---|
-| I · Telescópica | 30 % | **R$ 121.800** | 569 | 2 anos |
-| II · Hardt | 35 % | **R$ 141.100** | 659 | 5 anos |
-| III · Hettich | 38 % | **R$ 155.900** | 728 | 10 anos |
+| I · Telescópica | 30 % | **R$ 148.000** | 691 | 2 anos |
+| II · Hardt | 35 % | **R$ 175.400** | 819 | 5 anos |
+| III · Hettich | 38 % | **R$ 197.300** | 921 | 10 anos |
 
-**Escada 32/37/42** (a do Eliuton, 13/08): R$ 126.800 · R$ 147.500 · R$ 172.100.
+Sem RT, para referência interna: R$ 121.800 · R$ 141.100 · R$ 155.900.
+O RT vale ~R$ 17.500 no cenário II — 22 a 27 % sobre o preço sem RT, porque
+sai de dentro do divisor, não por cima do preço.
 
-Faixa de sanidade da casa: 626 (Rizzi) · 647 · 739 (SPE) · 834 (Honda) ·
-624 (Eliuton). **O cenário II cai em 659 — no meio da faixa.**
-
-Com RT de 10 % para a arquiteta: R$ 148.000 · R$ 175.400 · R$ 197.300.
+Faixa de sanidade da casa **sem RT**: 626 (Rizzi) · 647 · 739 (SPE) ·
+834 (Honda) · 624 (Eliuton). Sem RT o cenário II cai em **659** — meio da
+faixa. Com RT sobe para 819, o que é esperado: o RT é comissão, não material.
 
 O **ripado** (6,68 m², 3 % do projeto) sai à parte, a MC 40 %, como manda a
 regra da casa.
@@ -201,35 +207,33 @@ regra da casa.
 
 ## 6 · Dúvidas e itens a confirmar
 
-**Para o Jonathan**
+**Fechado pelo Jonathan em 19/08** ✅
 
-1. **Qual escada de MC** vale neste job — 30/35/38 (Luciana) ou 32/37/42
-   (Eliuton)? Rodei as duas; a proposta saiu na primeira.
-2. **Areal e Frapê: cor ou especial?** Vale R$ 39.653 no cenário II.
-3. **Tem RT para a Jéssica Sollero?** Vale +24 % no cenário II.
-4. Preço dos **15 puxadores de travertino 6 × 6** — a base não tem. Lancei
-   R$ 150/un.
-5. Preço da **estrutura de metalon do mezanino**. Lancei R$ 2.500 (a base só tem
-   "serralheiro padrão R$ 300/serviço", que não cobre isso).
-6. **Estofador**: a base cota por peça (cabeceira 650 · completo 1800). A
-   cabeceira em gomos do quarto Maria Luísa tem 4,14 m em duas paredes — lancei
-   duas peças "completo".
+1. ✅ **Escada de MC: 30/35/38.**
+2. ✅ **Chapa em COR** (500/600/300) — Areal e Frapê na faixa padrão.
+3. ✅ **COM RT de 10 %** para a Jéssica Sollero.
+4. ✅ **As estimativas dos terceirizados sem preço na base** — 15 puxadores de
+   travertino a R$ 150/un, metalon do mezanino a R$ 2.500, guarda-corpo de corda
+   a R$ 800, tubo champagne a R$ 900 + R$ 400 e acrílico a R$ 180.
+5. ✅ **Estofador por peça**: duas peças "completo" para a cabeceira em gomos do
+   quarto Maria Luísa (4,14 m em duas paredes) + uma "cabeceira" no quarto casal
+   + uma no assento do banco.
 
 **Para a arquiteta / conferir no local**
 
-7. A **bancada e o nicho do lavabo**, as **bancadas dos dois banheiros** e a
+6. A **bancada e o nicho do lavabo**, as **bancadas dos dois banheiros** e a
    bancada da cuba aparecem em pedra nas perspectivas — não entraram no escopo
    de marcenaria.
-8. A **sapateira** tem 52,5 de largura na elevação D e a planta traz 94 e 62 na
+7. A **sapateira** tem 52,5 de largura na elevação D e a planta traz 94 e 62 na
    mesma região. Adotei a cota da elevação.
-9. A região de **140 × 100 abaixo do vão** da elevação B da sala de jantar está
+8. A região de **140 × 100 abaixo do vão** da elevação B da sala de jantar está
    com hachura de parede e rodapé, não de marcenaria — não entrou.
-10. A **bancada da varanda é curva** (R40/R46, arcos de 210,7 e 301,1). Adotei
+9. A **bancada da varanda é curva** (R40/R46, arcos de 210,7 e 301,1). Adotei
     300 × 40 de projeção; o raio consome mais chapa.
-11. Os **armários existentes** dos quartos Rafael/Miguel e Maria Luísa serão
+10. Os **armários existentes** dos quartos Rafael/Miguel e Maria Luísa serão
     envelopados: as portas de espelho são novas, mas a caixaria é a que já está
     lá. Conferir se o corpo aceita a ferragem nova.
-12. Na elevação D do quarto Maria Luísa o espelho tem 188,5 de vão e 266 de
+11. Na elevação D do quarto Maria Luísa o espelho tem 188,5 de vão e 266 de
     altura, mas a prancha não divide as folhas. Adotei 3 portas de 62,8.
 
 ---

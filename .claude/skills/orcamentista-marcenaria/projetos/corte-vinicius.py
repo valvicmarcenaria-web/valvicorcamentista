@@ -26,9 +26,10 @@ sensibilidade.
   tem preço nominal de Arauco amadeirado. Rodo em COR (500/600/300) e mostro a
   sensibilidade em ESPECIAL (950/1200/800). CONFIRMAR COM O FORNECEDOR.
 
-MCs: o Jonathan deu 32/37/42 no Eliuton (13/08) e 30/35/38 na Luciana (18/08).
-Para este job ele ainda não disse. Rodo a escada MAIS RECENTE (30/35/38) como
-principal e mostro a de 32/37/42 ao lado, para ele escolher.
+[Jonathan 19/08] TRÊS DECISÕES FECHADAS:
+  · o projeto vai **COM RT** de 10% para a Jéssica Sollero
+  · a escada de MC é **30 / 35 / 38** — confirmada
+  · preço de chapa em COR e as estimativas dos terceirizados — confirmados
 
 ⛔ MONTAGEM NÃO ENTRA NO CUSTO (montador é salário fixo) — mas ENTRA NO ESCOPO
    da proposta. Ver `referencias/validacao-orcamento.md`.
@@ -50,10 +51,8 @@ def preco(resto, rip, mc, rt=False): return resto/div(mc, rt) + rip/div(MC_RIPAD
 def mc_conferida(p, c): return BASE - c/p
 
 HK_XS = 250.0
-ESCADA_MC = [
-    ('30 / 35 / 38  (escada Luciana, 18/08)', [0.30, 0.35, 0.38]),
-    ('32 / 37 / 42  (escada Eliuton, 13/08)', [0.32, 0.37, 0.42]),
-]
+MCS = [0.30, 0.35, 0.38]        # [Jonathan 19/08] confirmada
+COM_RT = True                   # [Jonathan 19/08] o projeto vai com RT de 10%
 CENARIOS = [
     ('I · Telescópica', 'Padrão · telescópica · pistão simples', dict(dobr=6.0,  corr=40.0,  art=20.0),  '2 anos'),
     ('II · Hardt',      'Hardt · oculta Hardt · Blum HK-xs',     dict(dobr=8.0,  corr=70.0,  art=HK_XS), '5 anos'),
@@ -743,13 +742,13 @@ consum = (custo_chapa + custo_fita)*0.06
 MAT_FIXO = (custo_chapa + custo_fita + custo_filet + custo_cava + custo_led
             + custo_sup + custo_terc + consum)
 
-def fechar(mcs):
+def fechar(mcs, rt=True):
     out = []
     for (nome, fdesc, f, gar), mc in zip(CENARIOS, mcs):
         custo_ferr = TOT_DOBR*f['dobr'] + TOT_GAV*f['corr'] + TOT_BASC*f['art']
         CD = MAT_FIXO + custo_ferr + LOG
         cd_rip = (custo_chapa + custo_fita + custo_filet + consum + LOG)*frac_rip
-        inv = preco(CD - cd_rip, cd_rip, mc)
+        inv = preco(CD - cd_rip, cd_rip, mc, rt)
         inv_r = round(inv/100)*100
         out.append((nome, fdesc, mc, gar, custo_ferr, CD, inv_r,
                     mc_conferida(inv_r, CD)))
@@ -772,16 +771,17 @@ for rot, v in (('Chapas', custo_chapa), ('Fita (material)', custo_fita),
     print(f'    {rot:<78}R$ {_v:>10}')
 
 RES = {}
-for rot, mcs in ESCADA_MC:
-    RES[rot] = fechar(mcs)
-    print(f'\n  ESCADA DE MC — {rot}')
+for rot, rt in (('COM RT de 10% — configuração entregue', True),
+                ('sem RT (referência interna)', False)):
+    RES[rot] = fechar(MCS, rt)
+    print(f'\n  {rot}')
     print(f'  {"":<17}{"MC":>6}{"ferragem":>11}{"custo direto":>14}'
           f'{"INVESTIMENTO":>15}{"MC real":>9}{"garantia":>11}')
     for nome, fd, mc, gar, cf, cd, inv, mcr in RES[rot]:
         print(f'  {nome:<17}{mc*100:>5.0f}%{cf:>11,.0f}{cd:>14,.0f}{inv:>15,.0f}'
               f'{mcr*100:>8.1f}%{gar:>11}'.replace(',', '.'))
 
-PRINC = ESCADA_MC[0][0]
+PRINC = 'COM RT de 10% — configuração entregue'
 _v = f'{(custo_chapa + custo_fita + custo_filet + consum + LOG)*frac_rip:,.0f}'.replace(',', '.')
 print(f'\n  Ripado = {area_rip:.2f} m² de chapa ({frac_rip*100:.0f}% do projeto) ⇒ '
       f'R$ {_v} de custo direto, à parte, a MC {MC_RIPADO*100:.0f}%.')
@@ -814,7 +814,7 @@ rodar(False)
 d_esp = custo_chapa_esp - custo_chapa
 inv2 = RES[PRINC][1][6]
 _a = f'{d_esp:,.0f}'.replace(',', '.')
-_b = f'{d_esp/div(ESCADA_MC[0][1][1]):,.0f}'.replace(',', '.')
+_b = f'{d_esp/div(MCS[1], COM_RT):,.0f}'.replace(',', '.')
 print(f'  1. Areal e Frapê cotadas como chapa ESPECIAL (950/1200/800) em vez de')
 print(f'     COR (500/600/300): +R$ {_a} de custo ⇒ +R$ {_b} de preço (cenário II).')
 print(f'     ⚠ É A MAIOR INCERTEZA DO ORÇAMENTO. Confirmar a linha com a Arauco.')
@@ -833,12 +833,11 @@ print(f'  4. Terceirizados SEM preço na base (★): R$ {_v} — metalon do meza
 print(f'     guarda-corpo de corda, tubo champagne, puxadores de travertino e acrílico.')
 
 print('\n' + '─'*W)
-print('COM RT DE 10% PARA A ARQUITETA')
-for nome, fd, mc, gar, cf, cd, inv, mcr in RES[PRINC]:
-    cd_rip = (custo_chapa + custo_fita + custo_filet + consum + LOG)*frac_rip
-    inv_rt = round(preco(cd - cd_rip, cd_rip, mc, rt=True)/100)*100
-    print(f'  {nome:<17}R$ {inv:>9,.0f}  →  R$ {inv_rt:>9,.0f}   '
-          f'(+{(inv_rt/inv-1)*100:.0f}%)'.replace(',', '.'))
+print('O QUE O RT CUSTA  (10% para a Jéssica Sollero, dentro do preço)')
+for i, (nome, fd, mc, gar, cf, cd, inv, mcr) in enumerate(RES[PRINC]):
+    sem = RES['sem RT (referência interna)'][i][6]
+    print(f'  {nome:<17}sem RT R$ {sem:>9,.0f}  →  com RT R$ {inv:>9,.0f}   '
+          f'(+{(inv/sem-1)*100:.0f}%)  ·  RT ≈ R$ {inv*0.10:>8,.0f}'.replace(',', '.'))
 
 print('\n' + '─'*W)
 print('SANIDADE — R$/m² de chapa  (faixa da casa: 626 Rizzi · 647 · 739 SPE · 834 Honda)')
