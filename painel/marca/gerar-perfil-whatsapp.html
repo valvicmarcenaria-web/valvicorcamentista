@@ -1,0 +1,54 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#555}
+  .a{width:1000px;height:1000px;position:relative;overflow:hidden;
+     display:flex;align-items:center;justify-content:center;flex-direction:column}
+  .navy{background:#0E2038}
+  .creme{background:#FBFAF7}
+  .gold{background:#C2A05A}
+  /* anel: o WhatsApp corta em círculo de raio 50% — o anel a 43% fica sempre visível */
+  .ring{position:absolute;inset:7%;border-radius:50%;border:3px solid rgba(194,160,90,.55)}
+  .ring-d{position:absolute;inset:7%;border-radius:50%;border:3px solid rgba(14,32,56,.35)}
+  .v{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:.78;
+     letter-spacing:-.02em}
+  .v-gold{color:#C2A05A}
+  .v-navy{color:#0E2038}
+  .wm{font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:.16em}
+  .sub{font-family:'Inter',sans-serif;font-weight:500;letter-spacing:.34em;
+       text-transform:uppercase}
+  .rule{width:150px;height:2px;background:#C2A05A;opacity:.85}
+</style></head><body>
+
+<!-- 1 · monograma V dourado sobre navy -->
+<div class="a navy" id="c1">
+  <div class="ring"></div>
+  <div class="v v-gold" style="font-size:480px;margin-top:26px">V</div>
+</div>
+
+<!-- 2 · wordmark VALVIC sobre navy -->
+<div class="a navy" id="c2">
+  <div class="ring"></div>
+  <div class="wm v-gold" style="font-size:116px">VALVIC</div>
+  <div class="rule" style="margin:26px 0 20px"></div>
+  <div class="sub" style="font-size:26px;color:#9FB0C4">Marcenaria</div>
+</div>
+
+<!-- 3 · monograma navy sobre creme -->
+<div class="a creme" id="c3">
+  <div class="ring-d"></div>
+  <div class="v v-navy" style="font-size:480px;margin-top:26px">V</div>
+</div>
+
+<!-- 4 · V + assinatura, sobre navy -->
+<div class="a navy" id="c4">
+  <div class="ring"></div>
+  <div class="v v-gold" style="font-size:330px;margin-top:8px">V</div>
+  <div class="rule" style="margin:34px 0 22px;width:120px"></div>
+  <div class="sub" style="font-size:24px;color:#D8BD80">Valvic</div>
+</div>
+
+</body></html>
