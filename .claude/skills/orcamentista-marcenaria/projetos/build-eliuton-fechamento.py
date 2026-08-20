@@ -1,26 +1,36 @@
 # -*- coding: utf-8 -*-
-"""ELIUTON RIBEIRO · Brisas da Pampulha — PROPOSTA DE FECHAMENTO, 8 páginas.
+"""ELIUTON RIBEIRO · Brisas da Pampulha — PROPOSTA DE FECHAMENTO, 7 páginas.
 
-[Jonathan 20/08] "versão de fechamento da versão intermediária, com todas as
-descrições técnicas pertinentes, condição especial de fechamento com 10% de
-desconto, entrada de 30% e o restante à vista pós entrega."
+[Jonathan 20/08] fechamento da linha Intermediária (Hardt · garantia 5 anos),
+condição especial de 10% de desconto.
 
-UMA LINHA SÓ — a Intermediária (Hardt · MC 37% · garantia 5 anos). Não há
-comparação de cenários aqui: proposta de fechamento não oferece escolha, oferece
-decisão. Os outros dois cenários ficam na proposta de 17/08.
+[Jonathan 20/08 · 2ª rodada] seis correções, todas aplicadas:
+  1. prazo de entrega passa a 65 dias corridos
+  2. entrada de R$ 27.000 (redonda) — deixa de ser "30%"
+  3. cai a caixa "o que essa condição significa na prática"
+  4. tábua de passar e os dois varais retráteis SAEM do escopo
+  5. sai o quantitativo de chapa, fita e ferragem — fica a especificação
+  6. sai o espaço de assinatura
 
-  Investimento da linha Intermediária ......... R$ 100.500
-  Condição especial de fechamento (−10%) ...... R$  90.450
-  Entrada de 30% na assinatura ................ R$  27.135
-  Saldo de 70% à vista, após a entrega ........ R$  63.315
+  Investimento cheio da linha Intermediária .... R$ 100.500
+  Condição especial de fechamento (−10%) ....... R$  90.450
+  Entrada na assinatura ........................ R$  27.000
+  Saldo à vista, após a entrega ................ R$  63.450
 
-⚠ O DESCONTO CUSTA 4,7 PONTOS DE MC: 37,5% → 32,8%, contra custo direto de
-  R$ 42.716. Abaixo da faixa ideal da casa (35–40%). Está registrado aqui e foi
-  dito ao Jonathan — a decisão é dele, e ele a tomou.
+⚠ PREÇO MANTIDO EM R$ 90.450 mesmo com a saída da tábua e dos varais. Era a
+  leitura que fecha com a entrada redonda de R$ 27.000 que o Jonathan cravou —
+  27.000 é 29,9% de 90.450. Se ele quiser abater a retirada do preço, o número
+  vai a R$ 87.700 e a entrada volta a ser ~31%.
 
-⚠ E A ENTRADA NÃO COBRE O MATERIAL: R$ 27.135 de entrada contra R$ 42.716 de
-  custo direto. A Valvic banca R$ 15.581 de capital de giro por 90 a 120 dias,
-  além do custo fixo do período. Também dito, também decisão dele.
+  Efeito na margem: o custo direto cai de R$ 42.716 para R$ 41.536, e a MC
+  sobe de 32,8% para **34,1%** — recupera 1,3 ponto do que o desconto tinha
+  levado. Continua abaixo da faixa ideal da casa (35–40%).
+
+⚠ E a entrada segue sem cobrir o material: R$ 27.000 contra R$ 41.536 de custo
+  direto (65%). A Valvic banca R$ 14.536 de capital de giro pelos 65 dias, além
+  do custo fixo do período. Com o prazo caindo de 90–120 para 65 dias, a
+  exposição dura menos — mas fica mais intensa, porque a compra de material se
+  concentra.
 
 Valores de `corte-eliuton.py`. SEM RT. Mármore fora do escopo.
 ⚠ MONTAGEM: fora do CUSTO (equipe é salário fixo), DENTRO do escopo entregue.
@@ -32,81 +42,78 @@ OBRA      = 'Residência Brisas da Pampulha'
 ARQUITETA = 'Arq. Luciana Beatriz Simplício · Núcleo SC Arquitetura'
 DATA      = '20 de agosto de 2026'
 VALIDADE  = '7 dias corridos'
-PRAZO     = '90 a 120 dias corridos'
+PRAZO     = '65 dias corridos'          # [Jonathan 20/08]
 
 CHEIO    = 100500
-DESC_PCT = 0.10
-FECHA    = int(round(CHEIO*(1-DESC_PCT)))      # 90.450
-ECONOMIA = CHEIO - FECHA                        # 10.050
-ENTRADA  = int(round(FECHA*0.30))               # 27.135
-SALDO    = FECHA - ENTRADA                      # 63.315
-assert (FECHA, ENTRADA, SALDO) == (90450, 27135, 63315)
+FECHA    = 90450
+ECONOMIA = CHEIO - FECHA
+ENTRADA  = 27000                        # [Jonathan 20/08] valor redondo
+SALDO    = FECHA - ENTRADA
+assert SALDO == 63450
 
-# ── memorial descritivo · 8 itens, com o valor cheio e o de fechamento ────
+# ── memorial descritivo · sem quantitativo de chapa, fita e ferragem ──────
 ITENS = [
- ('01', 'Cozinha — conjunto completo', '56,42 m² de chapa · 32 dobradiças · 9 gavetas · 3 básculas',
+ ('01', 'Cozinha — conjunto completo',
   'MDF Arauco <strong>Nogueira Persa</strong> (torre e acabamento) e '
   '<strong>Sálvia</strong> (bancada, aéreo e ilha).',
   ['<strong>Torre de cocção com nicho de geladeira</strong> — 187 × 70 × 290. '
-   'Lateral vazada de 18 mm servindo de batente da porta do gourmet, divisória e '
-   'lateral em 15 mm, seis horizontais na coluna, três portas basculantes '
-   '(103 × 58, 70 × 58 e 70 × 39) e gavetão de 70 × 58 com prateleira interna.',
+   'Lateral vazada servindo de batente da porta do gourmet, divisória e lateral '
+   'internas, horizontais da coluna, três portas basculantes (103 × 58, 70 × 58 '
+   'e 70 × 39) e gavetão de 70 × 58 com prateleira interna.',
    '<strong>Os nichos de eletrodoméstico não levam fundo de MDF.</strong> '
    'Geladeira, forno e micro-ondas precisam de ventilação, tomada e folga de '
    'dissipação — o fundo é a alvenaria. É especificação técnica, não economia.',
    '<strong>Acabamento superior</strong> — faixa de 15 cm sob o forro, ao longo '
-   'dos 5,415 m, executada em duas peças com emenda sobre divisória.',
-   '<strong>Bancada 01</strong> — 355 × 70 × 88 (corpo de 78 + rodapé recuado de '
-   '10). Sete verticais, base em duas peças, travessa superior, fundo de 6 mm, '
-   'três frentes de gaveta de 64 × 15, gavetão de 64 × 29, quatro portas de '
-   '50 × 74, porta do pano de prato de 23 × 74 e duas prateleiras internas. '
-   'Nicho preparado para lava-louças de embutir.',
+   'de toda a parede, com emenda executada sobre divisória.',
+   '<strong>Bancada 01</strong> — 355 × 70 × 88, corpo de 78 com rodapé recuado '
+   'de 10. Três frentes de gaveta de 64 × 15, gavetão de 64 × 29, quatro portas '
+   'de 50 × 74, porta do pano de prato de 23 × 74 e prateleiras internas. Nicho '
+   'preparado para lava-louças de embutir.',
    '<strong>Aéreo</strong> — 351 × 40 × 96, cinco portas (85 · 85 · 56 · 57 · 56).',
-   '<strong>Ilha</strong> — 226 × 70 × 88, quatro gavetas e três módulos de porta. '
-   'O tampo em cascata é de mármore e não está neste valor.',
+   '<strong>Ilha</strong> — 226 × 70 × 88, quatro gavetas e três módulos de '
+   'porta. O tampo em cascata é de mármore e não está neste valor.',
    'Puxador em <strong>cava 35° usinada</strong> no próprio material, na CNC.'],
   30700),
- ('02', 'Painel ripado do estar e jantar', '28,45 m² de chapa · ripado integral · 305 m de fita',
+ ('02', 'Painel ripado do estar e jantar',
   'MDF Arauco <strong>Nogueira Persa</strong>, parede inteira de 572 × 288.',
-  ['Construção <strong>tipo 2</strong>: painel de fundo em 15 mm com régua de '
-   '18 mm colada no topo, fitada em uma face. Régua de 4,0 cm com espaçamento de '
-   '1,5 — passo de 5,5 cm.',
-   'A régua de 288 cm <strong>não cabe na chapa de 275 × 185</strong>. Sai '
-   'emendada em dois trechos de 144, com a emenda caindo na horizontal do '
-   'acabamento sobre a porta de correr — onde ela desaparece. Está previsto no '
-   'plano de corte, não é improviso de obra.',
+  ['Construção <strong>tipo 2</strong>: painel de fundo com régua colada no topo '
+   'e fitada em uma face. Régua de 4,0 cm com espaçamento de 1,5 — passo de '
+   '5,5 cm, mantido do rodapé ao forro.',
+   'A régua de 288 cm <strong>não cabe na chapa</strong>. Sai emendada em dois '
+   'trechos, com a emenda caindo na horizontal do acabamento sobre a porta de '
+   'correr — onde ela desaparece. Está previsto no plano de corte, não é '
+   'improviso de obra.',
    '<strong>Porta de correr embutida</strong> com sistema deslizante amortecido, '
    'e <strong>porta pivotante de 80 × 210</strong>. As duas são ripadas e '
    'alinhadas ao painel: de fora, a parede é contínua e as portas somem nela.',
-   'São <strong>305 metros de fita de borda</strong> só neste item — 53% da fita '
-   'do projeto inteiro. O ripado é caro pela mão de obra de borda, não pela chapa.'],
+   'O ripado é caro pela <strong>mão de obra de borda</strong>, não pela chapa. '
+   'Cada régua é cortada, fitada e colada uma a uma, e o desenho só fecha se o '
+   'passo não variar em nenhum ponto da parede.'],
   20400),
- ('03', 'Área gourmet — bancada 02', '17,97 m² de chapa · 6 dobradiças · 4 gavetas · 1 báscula',
+ ('03', 'Área gourmet — bancada 02',
   'MDF Arauco <strong>Nogueira Persa</strong>.',
-  ['<strong>Armário inferior com gaveteiro</strong> — 145 × 70, quatro gavetas '
-   'com corrediça oculta.',
-   '<strong>Coluna da cervejeira</strong> — 70 × 290, do piso ao forro, com nicho '
-   'ventilado para o aparelho.',
-   '<strong>Prateleira com iluminação embutida</strong> — 1,45 m de fita de LED '
-   'em perfil de alumínio, embutida na própria peça.',
+  ['<strong>Armário inferior com gaveteiro</strong> — 145 × 70, gavetas com '
+   'corrediça oculta.',
+   '<strong>Coluna da cervejeira</strong> — 70 × 290, do piso ao forro, com '
+   'nicho ventilado para o aparelho.',
+   '<strong>Prateleira com iluminação embutida</strong> — fita de LED em perfil '
+   'de alumínio, embutida na própria peça.',
    '<strong>Armário superior com duas portas basculantes</strong> em estrutura '
-   'metálica fendi e vidro incolor temperado de 8 mm (duas folhas de 71 × 73). '
-   'A serralheria das duas folhas está no valor.'],
+   'metálica fendi e vidro incolor temperado de 8 mm. A serralheria das folhas '
+   'está no valor.'],
   12000),
- ('04', 'Área de serviço', '32,10 m² de chapa · 16 dobradiças · 4 gavetas · 2 básculas',
+ ('04', 'Área de serviço',
   'MDF Arauco <strong>Nogueira Persa</strong>, armário de 359 × 55 × 226.',
   ['Armário do <strong>piso ao forro</strong>, 55 cm de profundidade, com módulo '
    'alto para vassouras e material de limpeza.',
-   '<strong>Tábua de passar embutida dobrável</strong>, integrada ao módulo.',
    '<strong>Nichos de máquina de lavar e secadora</strong>, com o vão e a '
    'usinagem previstos — precisamos das medidas de fábrica dos aparelhos antes '
    'do corte.',
-   '<strong>Dois varais retráteis embutidos</strong>, dois gavetões e armário '
-   'inferior sob a bancada.',
+   '<strong>Dois gavetões</strong> e armário inferior sob a bancada.',
    'O rodapé de 359 cm também <strong>não cabe na chapa</strong> e sai emendado, '
    'previsto no plano de corte.'],
   15000),
- ('05', 'Lavabo externo', '6,01 m² de chapa · 2 dobradiças · 1 báscula',
+ ('05', 'Lavabo externo',
   'MDF Arauco <strong>Nogueira Persa</strong>.',
   ['<strong>Painel de parede</strong> de 130 × 248.',
    '<strong>Acabamento de forro em MDF</strong> de 130 × 40 — a madeira desce da '
@@ -114,71 +121,74 @@ ITENS = [
    '<strong>Gabinete suspenso</strong> de 150 × 50 com porta basculante e nicho '
    'aberto. O tampo é de pedra e não está neste valor.'],
   3400),
- ('06', 'Banheiro master', '8,01 m² de chapa · 8 dobradiças · gabinete ripado',
+ ('06', 'Banheiro master',
   'MDF Arauco <strong>Jequitibá</strong> — o único ambiente nesta cor.',
   ['<strong>Espelheira de 1,85 m</strong> com três portas espelhadas de correr e '
    'nichos vazados nas laterais.',
-   'Espelho <strong>prata com perfil</strong>, três folhas, sobre sistema '
-   'deslizante <strong>RO65 Rometal</strong> com trilho de 2 m. RO65 é o sistema '
-   'correto para folha de armário raso — SS150 é de roupeiro e não se aplica aqui.',
-   '<strong>Gabinete suspenso de 1,85 × 50 com quatro portas ripadas</strong>, no '
-   'mesmo desenho do painel do estar, e oito puxadores metálicos tipo alça preto.'],
+   'Espelho <strong>prata com perfil</strong>, sobre sistema deslizante '
+   '<strong>RO65 Rometal</strong>. RO65 é o sistema correto para folha de '
+   'armário raso — SS150 é de roupeiro e não se aplica aqui.',
+   '<strong>Gabinete suspenso de 1,85 × 50 com quatro portas ripadas</strong>, '
+   'no mesmo desenho do painel do estar, com puxadores metálicos tipo alça '
+   'preto.'],
   7600),
- ('07', 'Banheiro social — 1º pavimento', '6,34 m² de chapa · 4 dobradiças',
-  'MDF Arauco <strong>Nogueira Persa</strong>, com quatro prateleiras em '
+ ('07', 'Banheiro social — 1º pavimento',
+  'MDF Arauco <strong>Nogueira Persa</strong>, com prateleiras em '
   '<strong>Beige</strong>.',
   ['<strong>Armário superior de 1,90 m</strong> com portas espelhadas de correr '
    'sobre sistema RO65, e nicho aberto com prateleiras.',
-   '<strong>Iluminação em LED em L</strong> — 2,6 m de fita em perfil de alumínio, '
+   '<strong>Iluminação em LED em L</strong> — fita em perfil de alumínio, '
    'contornando o nicho em dois planos.',
    '<strong>Gabinete inferior de 1,10 m</strong> com nicho papeleiro.'],
   5200),
- ('08', 'Banheiro 04', '5,52 m² de chapa · 4 dobradiças',
+ ('08', 'Banheiro 04',
   'MDF Arauco <strong>Nogueira Persa</strong>.',
   ['<strong>Armário superior de 1,10 m</strong> com duas portas espelhadas de '
    'correr sobre sistema RO65.',
-   '<strong>Prateleiras laterais sobre suporte metálico dourado</strong> — quatro '
-   'unidades.',
+   '<strong>Prateleiras laterais sobre suporte metálico dourado.</strong>',
    '<strong>Gabinete inferior de 1,46 m</strong> com nicho aberto.'],
   6200),
 ]
-assert sum(i[5] for i in ITENS) == CHEIO
+assert sum(i[4] for i in ITENS) == CHEIO
 
-# ── especificação técnica que atravessa o projeto ─────────────────────────
+# ── especificação técnica — spec, não quantitativo ───────────────────────
 ESPEC = [
  ('Chapa', 'MDF Arauco: <strong>18 mm</strong> em frentes e prateleiras, '
   '<strong>15 mm</strong> na caixaria e <strong>6 mm</strong> nos fundos. '
   'Fundos <strong>na cor</strong>, não em branco — as perspectivas do projeto '
-  'mostram o interior todo no acabamento da frente. São 160,82 m² em 48 chapas, '
-  'com o plano de corte fechado por cor e por espessura: cor nenhuma divide chapa '
-  'com outra.'),
- ('Borda', '579,55 m de fita de borda na cor, aplicada em <strong>coladeira '
-  'automática</strong> com filetagem. O desperdício de 10% já está previsto no '
-  'valor — não é reajuste posterior.'),
- ('Puxador', '30,3 m de <strong>cava 35° usinada na CNC</strong> no próprio '
-  'material. Sem puxador aparente, o desenho fica limpo e não há peça de '
-  'reposição a depender de fornecedor.'),
- ('Ferragem', '72 dobradiças, 17 conjuntos de corrediça, 7 articuladores de '
-  'báscula e 30 prateleiras com suporte — todos na linha Intermediária '
-  'especificada na página 3.'),
+  'mostram o interior todo no acabamento da frente. O plano de corte é fechado '
+  'por cor e por espessura: cor nenhuma divide chapa com outra.'),
+ ('Borda', 'Fita de borda na cor em todas as bordas aparentes, aplicada em '
+  '<strong>coladeira automática</strong> com filetagem — não é fita passada a '
+  'ferro nem colada em bancada.'),
+ ('Puxador', '<strong>Cava 35° usinada na CNC</strong> no próprio material. Sem '
+  'puxador aparente o desenho fica limpo, e não há peça de reposição a depender '
+  'de fornecedor.'),
+ ('Ferragem', 'Linha Intermediária em todos os conjuntos: <strong>dobradiça '
+  'Hardt</strong> com amortecimento, <strong>corrediça oculta Hardt</strong> de '
+  'fechamento suave e <strong>articulador Blum HK-xs</strong> nas básculas.'),
  ('Iluminação', 'Fita de LED em <strong>perfil de alumínio</strong>, embutida na '
   'marcenaria: prateleira do gourmet e nicho em L do banheiro social. O perfil é '
   'o que diferencia luz embutida de fita aparente.'),
- ('Espelho e vidro', 'Sete folhas de <strong>espelho prata com perfil</strong> '
-  'nas portas de correr dos três banheiros, e duas folhas de <strong>vidro '
-  'incolor temperado 8 mm</strong> nas básculas do gourmet.'),
- ('Serralheria', 'Estrutura metálica <strong>fendi</strong> das duas portas '
-  'basculantes do gourmet, sob medida.'),
+ ('Espelho e vidro', '<strong>Espelho prata com perfil</strong> nas portas de '
+  'correr dos três banheiros, sobre sistema deslizante RO65 Rometal. '
+  '<strong>Vidro incolor temperado de 8 mm</strong> nas portas basculantes do '
+  'gourmet.'),
+ ('Serralheria', 'Estrutura metálica <strong>fendi</strong> das portas '
+  'basculantes do gourmet, executada sob medida.'),
  ('Produção e montagem', 'Corte e usinagem em <strong>CNC própria</strong>, '
-  'laminação de borda em coladeira automática própria, e '
-  '<strong>instalação e montagem por equipe própria da Valvic</strong>. Não '
-  'terceirizamos nem o que define o acabamento, nem quem entrega.'),
+  'laminação de borda em coladeira automática própria, e <strong>instalação e '
+  'montagem por equipe própria da Valvic</strong>. Não terceirizamos nem o que '
+  'define o acabamento, nem quem entrega.'),
 ]
 
 FORA = [
  ('Marmoraria', 'Bancadas 01, 02 e 03, ilha em cascata, rodabancas, nichos, '
   'cubas esculpidas, prateleiras e o "detalhe caixa" da cozinha — o projeto '
   'especifica Carrara e Travertino. É fornecimento de marmoraria.'),
+ ('Tábua de passar e varais', 'A tábua de passar embutida e os varais retráteis '
+  'da área de serviço <strong>não fazem parte deste escopo</strong>. O armário '
+  'é executado sem eles.'),
  ('Louças, metais e eletrodomésticos', 'Especificados no projeto (Deca, '
   'Tramontina, Brastemp, Electrolux, Metalfrio). Prevemos o vão e a usinagem; '
   'precisamos das medidas de fábrica antes do corte.'),
@@ -190,10 +200,6 @@ FORA = [
   'pontos de energia e de água são da obra.'),
 ]
 
-# ⚠ 20/08: `css-proposta.css` tinha código Python colado depois do CSS (linhas
-# 122–265, sobra de uma sessão antiga). O parser do navegador entrava em erro
-# ali e ENGOLIA tudo que viesse depois — inclusive as regras acrescentadas
-# abaixo, que simplesmente não pintavam. Arquivo truncado no fim do CSS real.
 CSS = open('projetos/css-proposta.css', encoding='utf-8').read() + """
 /* ── blocos exclusivos da proposta de FECHAMENTO ─────────────────────── */
 .selo-f{display:inline-block;background:var(--gold);color:#fff;font-size:7pt;
@@ -219,8 +225,6 @@ CSS = open('projetos/css-proposta.css', encoding='utf-8').read() + """
 .mem-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:17pt;
   color:var(--gold-lt);font-weight:600;line-height:1;min-width:10mm;}
 .mem-t{font-size:11pt;font-weight:700;letter-spacing:-.005em;}
-.mem-q{margin-left:auto;font-size:7pt;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--mut);font-weight:600;white-space:nowrap;}
 .mem-m{color:var(--soft);font-size:8.4pt;margin:1.6mm 0 0 14mm;}
 .mem ul{margin:2mm 0 0 14mm;padding:0;}
 .mem li{list-style:none;color:var(--soft);font-size:8.4pt;line-height:1.52;
@@ -230,13 +234,12 @@ CSS = open('projetos/css-proposta.css', encoding='utf-8').read() + """
 .mem-v{margin:2.4mm 0 0 14mm;font-size:8.6pt;}
 .mem-v b{font-size:10.4pt;}
 .mem-v s{color:var(--mut);font-weight:400;}
-.esp{padding:3mm 0;border-bottom:1px solid var(--hair);display:grid;
+.esp{padding:2.5mm 0;border-bottom:1px solid var(--hair);display:grid;
   grid-template-columns:34mm 1fr;gap:5mm;}
 .esp:last-child{border-bottom:none;}
 .esp .k{font-size:7.4pt;letter-spacing:.18em;text-transform:uppercase;
   color:var(--gold);font-weight:700;padding-top:.5mm;}
 .esp .v{color:var(--soft);font-size:8.7pt;}
-/* a coluna do valor cheio encostava na faixa bege do fechamento */
 .inv th:nth-child(2),.inv td:nth-child(2){padding-right:5mm;}
 """
 
@@ -247,10 +250,10 @@ def foot(n):
             f'<span>Proposta de fechamento</span><span>{n} / {NP}</span></div>')
 
 def mem(i):
-    n, tit, qtd, mat, bul, val = i
+    n, tit, mat, bul, val = i
     li = ''.join(f'<li>{b}</li>' for b in bul)
     return (f'<div class="mem"><div class="mem-h"><div class="mem-n">{n}</div>'
-            f'<div class="mem-t">{tit}</div><div class="mem-q">{qtd}</div></div>'
+            f'<div class="mem-t">{tit}</div></div>'
             f'<div class="mem-m">{mat}</div><ul>{li}</ul>'
             f'<div class="mem-v"><s>R$ {brl(val)}</s> &nbsp;→&nbsp; '
             f'<b>R$ {brl(int(round(val*0.9)))}</b> '
@@ -268,7 +271,7 @@ p1 = f"""<div class="page cover"><div class="pad">
       <div class="rule"></div>
       <div class="cv-val">R$ {brl(FECHA)}</div>
       <div class="cv-de">de <s>R$ {brl(CHEIO)}</s> &nbsp;·&nbsp; condição especial
-    de fechamento, −10%</div>
+      de fechamento, −10%</div>
     </div>
   </div>
   <div class="cv-meta">
@@ -285,40 +288,35 @@ p2 = f"""<div class="page"><div class="pad">
   <p class="lead" style="margin-top:4mm">Esta é uma condição de fechamento: vale
   para a assinatura dentro da validade desta proposta e não se soma a outras
   condições. O desconto incide sobre o investimento cheio da linha Intermediária,
-  <strong>sem retirar um único item do escopo</strong> — o que muda é o preço,
-  não o que será executado.</p>
+  <strong>sem simplificar um único conjunto</strong> — o que muda é o preço, não
+  o que será executado.</p>
   <div class="pf">
     <div class="c"><div class="k">Investimento da linha Intermediária</div>
       <div class="v" style="color:var(--mut)">R$ {brl(CHEIO)}</div>
-      <div class="s">Valor da proposta de 17 de agosto, escopo completo,
-      garantia de 5 anos.</div></div>
+      <div class="s">Valor da proposta de 17 de agosto, com a mesma ferragem e a
+      mesma garantia de 5 anos.</div></div>
     <div class="c hi"><div class="k">Com a condição de fechamento</div>
       <div class="v">R$ {brl(FECHA)}</div>
-      <div class="s">Economia de <strong>R$ {brl(ECONOMIA)}</strong>. Mesmo escopo,
-      mesma ferragem, mesma garantia.</div></div>
+      <div class="s">Economia de <strong>R$ {brl(ECONOMIA)}</strong>.</div></div>
   </div>
   <div class="pf" style="margin-top:5mm">
-    <div class="c"><div class="k">Entrada — 30% na assinatura</div>
+    <div class="c"><div class="k">Entrada na assinatura</div>
       <div class="v">R$ {brl(ENTRADA)}</div>
       <div class="s">Libera a compra de material e a entrada do projeto na fila
       de produção.</div></div>
-    <div class="c"><div class="k">Saldo — 70% à vista, pós-entrega</div>
+    <div class="c"><div class="k">Saldo à vista, após a entrega</div>
       <div class="v">R$ {brl(SALDO)}</div>
       <div class="s">Pago depois da instalação concluída e conferida na obra.
       Não há parcela durante a produção.</div></div>
   </div>
-  <div class="box" style="margin-top:6mm"><div class="t">O que essa condição significa na prática</div>
-  <p>Entre a assinatura e o pagamento do saldo passam-se <strong>90 a 120
-  dias</strong>, e nesse intervalo a Valvic compra a chapa, a ferragem, o
-  espelho, o vidro e a serralheria, produz os oito conjuntos e instala — com
-  30% recebido. <strong>A produção inteira é financiada por nós.</strong> É por
-  isso que a condição está atrelada ao fechamento dentro da validade: ela
-  pressupõe uma agenda de produção reservada.</p></div>
-  <div class="box"><div class="t">O que não muda</div>
-  <p>Escopo, materiais, ferragem, iluminação, espelhos, vidros, serralheria,
-  prazo e garantia de 5 anos são <strong>exatamente os da proposta de 17 de
-  agosto</strong>. Nenhum item foi retirado, substituído ou simplificado para
-  chegar a este valor.</p></div>
+  <div class="box" style="margin-top:7mm"><div class="t">O que não muda</div>
+  <p>Materiais, ferragem, iluminação, espelhos, vidros, serralheria e a garantia
+  de 5 anos são <strong>exatamente os da proposta de 17 de agosto</strong>.
+  Nenhum conjunto foi substituído ou simplificado para chegar a este valor.</p></div>
+  <div class="box"><div class="t">Prazo de entrega</div>
+  <p><strong>{PRAZO}</strong>, contados da assinatura, do pagamento da entrada e
+  da definição da chapa. Os oito conjuntos são entregues por frentes, na ordem
+  em que a obra puder recebê-los.</p></div>
   {foot(2)}
 </div></div>"""
 
@@ -336,7 +334,7 @@ p3 = f"""<div class="page"><div class="pad">
       <div class="cen-g">Garantia 5 anos</div></div>
     <div class="cen-x">A gaveta passa a correr por baixo, escondida: some o
     trilho lateral e o vão útil cresce. O articulador da báscula é o Blum HK-xs
-    — o mesmo da linha Superior. Nos 17 conjuntos de gaveta desta casa, é o
+    — o mesmo da linha Superior. Numa casa com esta quantidade de gavetas, é o
     degrau que mais se sente no dia a dia.</div>
     <div class="cen-l">
       <div><div class="k">Dobradiça</div>
@@ -369,8 +367,8 @@ p4 = f"""<div class="page"><div class="pad">
   <div class="rule"></div>
   <h2 class="h-sec">Oito conjuntos,<br>descritos um a um.</h2>
   <p class="lead" style="margin-top:3.5mm;margin-bottom:1mm">Cada item traz o
-  material, a composição construtiva e a ferragem. O valor cheio e o valor com a
-  condição de fechamento aparecem ao pé de cada um.</p>
+  material, a composição construtiva e o que a define. O valor cheio e o valor
+  com a condição de fechamento aparecem ao pé de cada um.</p>
   {mem(ITENS[0])}
   {mem(ITENS[1])}
   {foot(4)}
@@ -380,19 +378,19 @@ p5 = f"""<div class="page"><div class="pad">
   {mem(ITENS[2])}
   {mem(ITENS[3])}
   {mem(ITENS[4])}
+  {mem(ITENS[5])}
   {foot(5)}
 </div></div>"""
 
 linhas = ''.join(
     f'<tr><td class="l">{n} · {t}</td><td>{brl(v)}</td>'
     f'<td class="hi">{brl(int(round(v*0.9)))}</td></tr>'
-    for n, t, _q, _m, _b, v in ITENS)
+    for n, t, _m, _b, v in ITENS)
 
 p6 = f"""<div class="page"><div class="pad">
-  {mem(ITENS[5])}
   {mem(ITENS[6])}
   {mem(ITENS[7])}
-  <div style="margin-top:5mm">
+  <div style="margin-top:6mm">
   <div class="eyebrow">Resumo do investimento</div>
   <div class="rule" style="margin:5px 0 3mm"></div>
   <table class="inv">
@@ -409,6 +407,8 @@ p6 = f"""<div class="page"><div class="pad">
 
 esp = ''.join(f'<div class="esp"><div class="k">{k}</div>'
               f'<div class="v">{v}</div></div>' for k, v in ESPEC)
+fora = ''.join(f'<li><div class="k">{k}</div><div class="v">{v}</div></li>'
+               for k, v in FORA)
 
 p7 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">Especificação técnica</div>
@@ -417,7 +417,7 @@ p7 = f"""<div class="page"><div class="pad">
   <p class="lead" style="margin-top:3.5mm">As oito linhas abaixo valem para
   todos os conjuntos do memorial, e são o que sustenta a garantia de cinco
   anos.</p>
-  <div style="margin-top:4mm">{esp}</div>
+  <div style="margin-top:5mm">{esp}</div>
   {foot(7)}
 </div></div>"""
 
@@ -425,17 +425,17 @@ p8 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">Condições</div>
   <div class="rule"></div>
   <h2 class="h-sec">Prazo, pagamento<br>e fronteiras.</h2>
-  <div class="two" style="margin-top:6mm">
+  <div class="two" style="margin-top:7mm">
     <div>
       <div class="term"><div class="k">Prazo de entrega</div>
         <div class="v">{PRAZO}</div>
         <div class="s">Contados da assinatura, do pagamento da entrada e da
-        definição da chapa. Oito conjuntos entregues por frentes.</div></div>
+        definição da chapa. Os oito conjuntos são entregues por frentes, na
+        ordem em que a obra puder recebê-los.</div></div>
       <div class="term"><div class="k">Pagamento</div>
-        <div class="v">30% na assinatura · 70% à vista, pós-entrega</div>
-        <div class="s">R$ {brl(ENTRADA)} na assinatura e R$ {brl(SALDO)} após a
-        instalação concluída e conferida na obra. Não há parcela durante a
-        produção.</div></div>
+        <div class="v">R$ {brl(ENTRADA)} + R$ {brl(SALDO)}</div>
+        <div class="s">Entrada na assinatura e saldo à vista após a instalação
+        concluída e conferida na obra. Não há parcela durante a produção.</div></div>
       <div class="term"><div class="k">Validade da condição</div>
         <div class="v">{VALIDADE}</div>
         <div class="s">Passada a validade, volta a valer o investimento cheio de
@@ -452,13 +452,8 @@ p8 = f"""<div class="page"><div class="pad">
     <div class="fora">
       <div class="eyebrow">Não incluso nesta proposta</div>
       <div class="rule"></div>
-      <ul>{''.join(f'<li><div class="k">{k}</div><div class="v">{v}</div></li>'
-                   for k, v in FORA)}</ul>
+      <ul>{fora}</ul>
     </div>
-  </div>
-  <div class="sig">
-    <div class="ln">Valvic Marcenaria</div>
-    <div class="ln">{CLIENTE}</div>
   </div>
   {foot(8)}
 </div></div>"""
@@ -475,5 +470,5 @@ open(OUT_H, 'w', encoding='utf-8').write(HTML)
 open('/tmp/in.html', 'w', encoding='utf-8').write(HTML)
 subprocess.run(['node', '/tmp/r.js', OUT_P], check=True)
 print(f'{OUT_H} · {OUT_P}')
-print(f'cheio {brl(CHEIO)} → fechamento {brl(FECHA)} '
-      f'(entrada {brl(ENTRADA)} + saldo {brl(SALDO)})')
+print(f'cheio {brl(CHEIO)} → fechamento {brl(FECHA)} · '
+      f'entrada {brl(ENTRADA)} + saldo {brl(SALDO)} · prazo {PRAZO}')
