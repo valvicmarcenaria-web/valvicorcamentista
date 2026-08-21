@@ -25,19 +25,29 @@ condição especial de 10% de desconto.
      serviço, o +5.000 do ripado ficaria sem contraparte e inflaria o total. Por
      isso o ripado volta de 20.400 para 16.400.
 
-  Investimento cheio ........................... R$  81.200  (era 100.500)
-  Condição especial de fechamento (−10%) ....... R$  73.080
-  Entrada na assinatura ........................ R$  27.000
-  Saldo à vista, após a entrega ................ R$  46.080
+[Jonathan 20/08 · 4ª rodada] "a entrada precisa corresponder a 30% do valor,
+  mas trabalhe com valor cheio não quebrado."
+
+  O fechamento vai a **R$ 73.000 redondos** — em vez dos R$ 73.080 que os 10%
+  exatos davam. Com isso a entrada de 30% cai em R$ 21.900 e o saldo em
+  R$ 51.100: os três números fecham redondos, sem centavo nem dígito solto.
+
+  Investimento cheio ........................... R$  81.200
+  Condição especial de fechamento .............. R$  73.000   (economia R$ 8.200)
+  Entrada de 30% na assinatura ................. R$  21.900
+  Saldo de 70% à vista, após a entrega ......... R$  51.100
   Validade da condição ......................... sábado, 22/08/2026
 
-⚠ ENTRADA MANTIDA EM R$ 27.000, o número que o Jonathan cravou. Sobre o total
-  menor ela passa a ser 36,9% (era 29,9%) e cobre 78% do custo direto — a
-  exposição de caixa cai de R$ 14.536 para R$ 7.418. Se ele quiser voltar aos
-  ~30%, a entrada é R$ 21.900.
+⚠ O DESCONTO REAL VIRA 10,1%, não 10%. Arredondar para baixo custa R$ 80 a mais
+  de desconto. Por isso a proposta deixou de anunciar o percentual e passou a
+  mostrar os dois valores e a economia em reais — dizer "−10%" e apresentar
+  81.200 → 73.000 daria ao cliente uma conta que não bate.
+
+⚠ Exposição de caixa: entrada de R$ 21.900 contra custo direto de R$ 34.418 —
+  cobre 64%, deixando R$ 12.518 de capital de giro por 65 dias.
 
 ⚠ MC no fechamento: 32,9% (cheio 37,6%). Abaixo da faixa ideal da casa (35–40%),
-  pelo mesmo motivo de sempre — o desconto de 10%.
+  pelo mesmo motivo de sempre — o desconto.
 
 Valores de `corte-eliuton.py`. SEM RT. Mármore fora do escopo.
 ⚠ MONTAGEM: fora do CUSTO (equipe é salário fixo), DENTRO do escopo entregue.
@@ -54,11 +64,11 @@ VALIDADE  = 'Sábado, 22/08/2026'
 PRAZO     = '65 dias corridos'          # [Jonathan 20/08]
 
 CHEIO    = 81200                        # 6 conjuntos, motor rodado de novo
-FECHA    = 73080
-ECONOMIA = CHEIO - FECHA
-ENTRADA  = 27000                        # [Jonathan 20/08] valor redondo, mantido
+FECHA    = 73000                        # [Jonathan 20/08] redondo, não quebrado
+ECONOMIA = CHEIO - FECHA                # 8.200 · 10,1% e não 10,0%
+ENTRADA  = round(FECHA*0.30)            # 30% cravados [Jonathan 20/08]
 SALDO    = FECHA - ENTRADA
-assert (FECHA, SALDO) == (73080, 46080)
+assert (ECONOMIA, ENTRADA, SALDO) == (8200, 21900, 51100)
 
 # ── memorial descritivo · sem quantitativo de chapa, fita e ferragem ──────
 ITENS = [
@@ -82,7 +92,7 @@ ITENS = [
    '<strong>Ilha</strong> — 226 × 70 × 88, quatro gavetas e três módulos de '
    'porta. O tampo em cascata é de mármore e não está neste valor.',
    'Puxador em <strong>cava 35° usinada</strong> no próprio material, na CNC.'],
-  32600),
+  32600, 29300),
  ('02', 'Painel ripado do estar e jantar',
   'MDF Arauco <strong>Nogueira Persa</strong>, parede inteira de 572 × 288.',
   ['Construção <strong>tipo 2</strong>: painel de fundo com régua colada no topo '
@@ -98,7 +108,7 @@ ITENS = [
    'O ripado é caro pela <strong>mão de obra de borda</strong>, não pela chapa. '
    'Cada régua é cortada, fitada e colada uma a uma, e o desenho só fecha se o '
    'passo não variar em nenhum ponto da parede.'],
-  16400),
+  16400, 14700),
  ('03', 'Área gourmet — bancada 02',
   'MDF Arauco <strong>Nogueira Persa</strong>.',
   ['<strong>Armário inferior com gaveteiro</strong> — 145 × 70, gavetas com '
@@ -110,7 +120,7 @@ ITENS = [
    '<strong>Armário superior com duas portas basculantes</strong> em estrutura '
    'metálica fendi e vidro incolor temperado de 8 mm. A serralheria das folhas '
    'está no valor.'],
-  12600),
+  12600, 11300),
  ('04', 'Banheiro master',
   'MDF Arauco <strong>Jequitibá</strong> — o único ambiente nesta cor.',
   ['<strong>Espelheira de 1,85 m</strong> com três portas espelhadas de correr e '
@@ -121,7 +131,7 @@ ITENS = [
    '<strong>Gabinete suspenso de 1,85 × 50 com quatro portas ripadas</strong>, '
    'no mesmo desenho do painel do estar, com puxadores metálicos tipo alça '
    'preto.'],
-  7900),
+  7900, 7100),
  ('05', 'Banheiro social — 1º pavimento',
   'MDF Arauco <strong>Nogueira Persa</strong>, com prateleiras em '
   '<strong>Beige</strong>.',
@@ -130,16 +140,17 @@ ITENS = [
    '<strong>Iluminação em LED em L</strong> — fita em perfil de alumínio, '
    'contornando o nicho em dois planos.',
    '<strong>Gabinete inferior de 1,10 m</strong> com nicho papeleiro.'],
-  5400),
+  5400, 4900),
  ('06', 'Banheiro 04',
   'MDF Arauco <strong>Nogueira Persa</strong>.',
   ['<strong>Armário superior de 1,10 m</strong> com duas portas espelhadas de '
    'correr sobre sistema RO65.',
    '<strong>Prateleiras laterais sobre suporte metálico dourado.</strong>',
    '<strong>Gabinete inferior de 1,46 m</strong> com nicho aberto.'],
-  6300),
+  6300, 5700),
 ]
 assert sum(i[4] for i in ITENS) == CHEIO
+assert sum(i[5] for i in ITENS) == FECHA
 
 # ── especificação técnica — spec, não quantitativo ───────────────────────
 ESPEC = [
@@ -241,13 +252,13 @@ def foot(n):
             f'<span>Proposta de fechamento</span><span>{n} / {NP}</span></div>')
 
 def mem(i):
-    n, tit, mat, bul, val = i
+    n, tit, mat, bul, val, fec = i
     li = ''.join(f'<li>{b}</li>' for b in bul)
     return (f'<div class="mem"><div class="mem-h"><div class="mem-n">{n}</div>'
             f'<div class="mem-t">{tit}</div></div>'
             f'<div class="mem-m">{mat}</div><ul>{li}</ul>'
             f'<div class="mem-v"><s>R$ {brl(val)}</s> &nbsp;→&nbsp; '
-            f'<b>R$ {brl(int(round(val*0.9)))}</b> '
+            f'<b>R$ {brl(fec)}</b> '
             f'<span style="color:var(--mut)">com a condição de fechamento</span>'
             f'</div></div>')
 
@@ -262,7 +273,7 @@ p1 = f"""<div class="page cover"><div class="pad">
       <div class="rule"></div>
       <div class="cv-val">R$ {brl(FECHA)}</div>
       <div class="cv-de">de <s>R$ {brl(CHEIO)}</s> &nbsp;·&nbsp; condição especial
-      de fechamento, −10%</div>
+      de fechamento</div>
     </div>
   </div>
   <div class="cv-meta">
@@ -275,7 +286,7 @@ p1 = f"""<div class="page cover"><div class="pad">
 p2 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">Condição especial de fechamento</div>
   <div class="rule"></div>
-  <h2 class="h-sec">Dez por cento a menos,<br>e o saldo só depois de entregue.</h2>
+  <h2 class="h-sec">Oito mil e duzentos a menos,<br>e o saldo só depois de entregue.</h2>
   <p class="lead" style="margin-top:4mm">Esta é uma condição de fechamento: vale
   para a assinatura dentro da validade desta proposta e não se soma a outras
   condições. O desconto incide sobre o investimento cheio da linha Intermediária,
@@ -288,14 +299,15 @@ p2 = f"""<div class="page"><div class="pad">
       mesma garantia de 5 anos.</div></div>
     <div class="c hi"><div class="k">Com a condição de fechamento</div>
       <div class="v">R$ {brl(FECHA)}</div>
-      <div class="s">Economia de <strong>R$ {brl(ECONOMIA)}</strong>.</div></div>
+      <div class="s">Economia de <strong>R$ {brl(ECONOMIA)}</strong> sobre o
+      investimento cheio.</div></div>
   </div>
   <div class="pf" style="margin-top:5mm">
-    <div class="c"><div class="k">Entrada na assinatura</div>
+    <div class="c"><div class="k">Entrada de 30% na assinatura</div>
       <div class="v">R$ {brl(ENTRADA)}</div>
       <div class="s">Libera a compra de material e a entrada do projeto na fila
       de produção.</div></div>
-    <div class="c"><div class="k">Saldo à vista, após a entrega</div>
+    <div class="c"><div class="k">Saldo de 70% à vista, após a entrega</div>
       <div class="v">R$ {brl(SALDO)}</div>
       <div class="s">Pago depois da instalação concluída e conferida na obra.
       Não há parcela durante a produção.</div></div>
@@ -375,8 +387,8 @@ p5 = f"""<div class="page"><div class="pad">
 
 linhas = ''.join(
     f'<tr><td class="l">{n} · {t}</td><td>{brl(v)}</td>'
-    f'<td class="hi">{brl(int(round(v*0.9)))}</td></tr>'
-    for n, t, _m, _b, v in ITENS)
+    f'<td class="hi">{brl(f)}</td></tr>'
+    for n, t, _m, _b, v, f in ITENS)
 esp = ''.join(f'<div class="esp"><div class="k">{k}</div>'
               f'<div class="v">{v}</div></div>' for k, v in ESPEC)
 fora = ''.join(f'<li><div class="k">{k}</div><div class="v">{v}</div></li>'
@@ -387,7 +399,7 @@ p6 = f"""<div class="page"><div class="pad">
   <div class="rule"></div>
   <table class="inv" style="margin-top:2mm">
     <tr><th class="l">Conjunto</th><th>Valor cheio</th>
-        <th class="hi">Fechamento −10%</th></tr>
+        <th class="hi">Com a condição</th></tr>
     {linhas}
     <tr class="tot"><td class="l">Investimento total</td>
       <td style="font-size:10.5pt;color:var(--mut)">{brl(CHEIO)}</td>
@@ -417,7 +429,7 @@ p7 = f"""<div class="page"><div class="pad">
         ordem em que a obra puder recebê-los.</div></div>
       <div class="term"><div class="k">Pagamento</div>
         <div class="v">R$ {brl(ENTRADA)} + R$ {brl(SALDO)}</div>
-        <div class="s">Entrada na assinatura e saldo à vista após a instalação
+        <div class="s">Entrada de 30% na assinatura e saldo de 70% à vista após a instalação
         concluída e conferida na obra. Não há parcela durante a produção.</div></div>
       <div class="term"><div class="k">Validade da condição</div>
         <div class="v">Até sábado, 22 de agosto de 2026</div>

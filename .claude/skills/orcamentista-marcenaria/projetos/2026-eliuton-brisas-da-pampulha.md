@@ -35,7 +35,7 @@ Com RT de 10% para a arquiteta: **108.100 · 127.100 · 147.800** (+24% a +30%).
 
 ---
 
-## 🔒 20/08/2026 — VERSÃO DE FECHAMENTO (3ª rodada)
+## 🔒 20/08/2026 — VERSÃO DE FECHAMENTO (4ª rodada)
 
 `projetos/build-eliuton-fechamento.py` → **`proposta-eliuton-fechamento.pdf`**,
 7 páginas. Uma linha só — a Intermediária. Proposta de fechamento não oferece
@@ -45,9 +45,9 @@ escolha, oferece decisão.
 |---|---|
 | Escopo | **6 conjuntos** — sem área de serviço e sem lavabo externo |
 | Investimento cheio | R$ 81.200 |
-| Condição especial de fechamento (−10 %) | **R$ 73.080** |
-| Entrada na assinatura | R$ 27.000 |
-| Saldo à vista, pós-entrega | R$ 46.080 |
+| Condição especial de fechamento | **R$ 73.000** (economia R$ 8.200) |
+| Entrada de 30 % na assinatura | R$ 21.900 |
+| Saldo de 70 % à vista, pós-entrega | R$ 51.100 |
 | Prazo | 65 dias corridos |
 | Validade da condição | sábado, 22/08/2026 |
 
@@ -91,21 +91,41 @@ esses R$ 5.000 pendurados no ripado sem que ninguém percebesse.
 O motor agora tem a exclusão embutida e recusa nome de ambiente que não exista,
 para que a próxima redução de escopo não seja feita na mão.
 
+### 4ª rodada — número redondo e entrada de 30 % exatos
+
+[Jonathan] *"a entrada precisa corresponder a 30 % do valor, mas trabalhe com
+valor cheio não quebrado."*
+
+Os 10 % exatos davam R$ 73.080 — e 30 % disso é R$ 21.924, quebrado. Levando o
+fechamento a **R$ 73.000 redondos**, os três números fecham limpos:
+
+| | |
+|---|--:|
+| Fechamento | **R$ 73.000** |
+| Entrada de 30 % | **R$ 21.900** |
+| Saldo de 70 % | **R$ 51.100** |
+
+⚠ **O desconto real vira 10,1 %, não 10 %.** Arredondar para baixo custa R$ 80 a
+mais de desconto. Por isso a proposta **deixou de anunciar o percentual** e passou
+a mostrar os dois valores e a economia em reais (R$ 8.200): dizer "−10 %" e
+apresentar 81.200 → 73.000 daria ao cliente uma conta que não bate. A capa, o
+título da página 2 e o cabeçalho da tabela foram todos reescritos por causa disso.
+
 ### Margem e caixa
 
 | | Cheio | Fechamento |
 |---|--:|--:|
-| Preço | 81.200 | **73.080** |
+| Preço | 81.200 | **73.000** |
 | Custo direto | 34.418 | 34.418 |
 | **MC real** | 37,6 % | **32,9 %** |
 
-⚠ **Entrada mantida em R$ 27.000**, o número que o Jonathan cravou na 2ª rodada.
-Sobre o total menor ela vira **36,9 %** (era 29,9 %) e cobre **78 %** do custo
-direto — a exposição de caixa cai de R$ 14.536 para **R$ 7.418**. Se ele quiser
-voltar aos ~30 %, a entrada é **R$ 21.900** (e a exposição volta a R$ 12.518).
+⚠ Entrada de R$ 21.900 contra custo direto de R$ 34.418 — cobre **64 %**,
+deixando **R$ 12.518** de capital de giro por 65 dias. Voltar aos 30 % devolveu
+ao cliente a folga que a entrada de R$ 27.000 tinha dado à Valvic: a exposição
+sobe de R$ 7.418 para R$ 12.518.
 
 A MC de 32,9 % segue abaixo da faixa ideal da casa (35–40 %), pelo mesmo motivo
-de sempre: o desconto de 10 %.
+de sempre: o desconto.
 
 ### O que a versão de fechamento tem que a de 17/08 não tinha
 
