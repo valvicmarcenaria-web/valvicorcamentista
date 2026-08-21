@@ -51,12 +51,14 @@ def preco(resto, rip, mc, rt=False): return resto/div(mc, rt) + rip/div(MC_RIPAD
 def mc_conferida(p, c): return BASE - c/p
 
 HK_XS = 250.0
-MCS = [0.30, 0.35, 0.38]        # [Jonathan 19/08] confirmada
+# [Jonathan 21/08] A LINHA TELESCÓPICA SAI DE CENA. Ficam duas linhas de
+# ferragem — e o terceiro degrau da proposta deixa de ser ferragem e passa a
+# ser PROJETO: o interior na cor da estrutura externa.
+MCS = [0.35, 0.38]
 COM_RT = True                   # [Jonathan 19/08] o projeto vai com RT de 10%
 CENARIOS = [
-    ('I · Telescópica', 'Padrão · telescópica · pistão simples', dict(dobr=6.0,  corr=40.0,  art=20.0),  '2 anos'),
-    ('II · Hardt',      'Hardt · oculta Hardt · Blum HK-xs',     dict(dobr=8.0,  corr=70.0,  art=HK_XS), '5 anos'),
-    ('III · Hettich',   'Novisys · oculta Quadro · Blum HK-xs',  dict(dobr=10.0, corr=120.0, art=HK_XS), '10 anos'),
+    ('I · Hardt',    'Hardt · oculta Hardt · Blum HK-xs',    dict(dobr=8.0,  corr=70.0,  art=HK_XS), '5 anos'),
+    ('II · Hettich', 'Novisys · oculta Quadro · Blum HK-xs', dict(dobr=10.0, corr=120.0, art=HK_XS), '10 anos'),
 ]
 
 # ── nesting da casa ────────────────────────────────────────────────────────
@@ -106,8 +108,23 @@ NOME_MAT = {'AR': 'MDF Areal (Arauco)', 'FR': 'MDF Frapê (Arauco)',
             'TV': 'MDF Trevi (Duratex)', 'BT': 'MDF Branco TX', 'CR': 'MDF Cru'}
 FAMILIA  = {'AR': 'cor', 'FR': 'cor', 'TV': 'cor', 'BT': 'branco', 'CR': 'cru'}
 ESPECIAL = False           # alavanca da sensibilidade
+
+# ── UPGRADE DE PROJETO: interior na cor da estrutura externa ─────────────
+# A caixaria interna sai marcada como 'I:AR' / 'I:FR' — interior de um módulo
+# Areal ou Frapê. Com INTERNO_COR=False ela resolve para Branco TX (o que a
+# prancha especifica); com True, resolve para a cor do próprio módulo, e aí
+# muda TAMBÉM O NESTING: o interior deixa de dividir chapa branca com todo
+# mundo e passa a dividir chapa colorida com a frente do seu próprio móvel.
+# ⚠ A caixa da GAVETA fica em Branco TX nos dois casos. Interior na cor é o
+#   que se vê ao ABRIR A PORTA; caixa de gaveta em branco é padrão mesmo em
+#   projeto premium, e trocá-la encareceria sem aparecer.
+INTERNO_COR = False
+def _res(mat):
+    if mat.startswith('I:'):
+        return mat[2:] if INTERNO_COR else 'BT'
+    return mat
 def prc(mat, esp):
-    f = FAMILIA[mat]
+    f = FAMILIA[_res(mat)]
     if f == 'branco': return PRC_BRA[esp]
     if f == 'cru':    return PRC_CRU[esp]
     return (PRC_ESP if ESPECIAL else PRC_COR)[esp]
@@ -147,9 +164,14 @@ P = []
 def add(mat, esp, amb, desc, c, l, q=1, rip=False):
     P.append((mat, esp, amb, desc, c, l, q, rip))
 
+def resolver_interior():
+    """Troca os 'I:XX' pela cor efetiva, conforme INTERNO_COR."""
+    return [(_res(m), e, a, d, c, l, q, r) for m, e, a, d, c, l, q, r in P]
+
 def caixa(mat, amb, nome, L, H, Pf, nvert=0, nprat=0, fundo=True, tampo=True,
           base=True, mat_int=None):
-    mi = mat_int or mat
+    # 'BT' vira 'I:<cor do módulo>' — a decisão de cor do interior é do cenário
+    mi = f'I:{mat}' if mat_int == 'BT' else (mat_int or mat)
     nlat = 2 + nvert
     add(mi, 15, amb, f'{nome} · lateral/divisória', Pf, H, nlat)
     Lh = L - 1.5*nlat
@@ -306,22 +328,40 @@ fita(A, 'buffet · frentes dos 6 gavetões', 6*2*(0.705+0.60))
 terc(A, 'Puxador em mármore travertino 6×6 cm — 06 unidades (buffet)',
      6*PUX_TRAVERTINO, True)
 
-# ── painel elevação B 228 × 262,5 — armário superior, ripado, prateleiras ──
+# ── painel elevação B 228 × 262,5 ────────────────────────────────────────
+# ⚠ CORREÇÃO 21/08 [Jonathan] — ERREI DUAS VEZES O MESMO PAINEL.
+#   Eu tinha lançado (a) o painel da TV inteiro ripado, (b) as 6 portas do
+#   armário superior com frente ripada e (c) as colunas laterais abertas.
+#   As duas perspectivas do projeto (`img-vinicius/estar-3.jpg` fechado e
+#   `estar-4.jpg` aberto) mostram outra coisa, sem ambiguidade:
+#     · o painel da TV é MDF Areal LISO — as linhas verticais da perspectiva
+#       fechada são junta de porta, não ripa;
+#     · as portas do armário superior são LISAS;
+#     · as colunas laterais TÊM PORTA — a perspectiva aberta é que revela as
+#       prateleiras brancas lá dentro.
+#   O ÚNICO ripado do ambiente é a faixa sob a TV, na cota de 30 que a elevação
+#   traz. Lição: perspectiva fechada + perspectiva aberta do MESMO móvel são
+#   duas vistas de estados diferentes; ler só uma delas inventa geometria.
 caixa('AR', A, 'elev. B · armário superior 228 × 59 × 30', 228, 59, 30, nvert=1,
       nprat=0, mat_int='BT')
-n1 = ripado('AR', A, 'elev. B · frentes ripadas do armário superior (6 × 38 × 59)',
-            228, 59)
+add('AR', 18, A, 'elev. B · porta lisa do armário superior 38 × 59', 38, 59, 6)
 fer(A, dobr=12); cava(A, 6*0.38)
 fita(A, 'elev. B · 6 portas superiores', 6*2*(0.38+0.59))
-# painel ripado central da TV (152 × 118,5) + faixa ripada de 30
-n2 = ripado('AR', A, 'elev. B · painel ripado central da TV 152 × 118,5', 152, 118.5)
-n3 = ripado('AR', A, 'elev. B · faixa ripada 228 × 30', 228, 30)
+# painel LISO da TV
+add('AR', 18, A, 'elev. B · painel liso da TV 152 × 118,5 (2 peças)', 152, 59.25, 2)
+add('AR', 15, A, 'elev. B · travessas de fixação do painel da TV', 152, 10, 2)
+fita(A, 'elev. B · perímetro do painel da TV', 2*(1.52+1.185))
+# a ÚNICA faixa ripada do ambiente — cota de 30 da elevação
+ripado('AR', A, 'elev. B · faixa ripada 228 × 30 (a única do ambiente)', 228, 30)
 led(A, 'elev. B · LED 3000K inferior do painel', 2.28)
-# colunas laterais abertas — 8 prateleiras de 34 × 30
-add('AR', 15, A, 'elev. B · laterais das colunas abertas', 30, 118.5, 4)
-add('AR', 18, A, 'elev. B · prateleira lateral 34 × 30', 34, 30, 8)
-add('BT', 6,  A, 'elev. B · fundo das colunas abertas', 34, 118.5, 2)
-fita(A, 'elev. B · 8 prateleiras laterais + colunas', 8*0.34 + 4*1.185)
+# colunas laterais COM PORTA — interior em Branco TX, 4 prateleiras cada
+for _lado in ('esquerda', 'direita'):
+    caixa('AR', A, f'elev. B · coluna lateral {_lado} 38 × 118,5 × 30',
+          38, 118.5, 30, nprat=4, mat_int='BT')
+    add('AR', 18, A, f'elev. B · porta da coluna {_lado} 38 × 118,5', 38, 118.5)
+fer(A, dobr=4); cava(A, 2*0.38)
+fita(A, 'elev. B · 2 portas das colunas laterais', 2*2*(0.38+1.185))
+
 # rack 228 × 50 × 61 — 3 gavetões de 76
 caixa('FR', A, 'rack 228 × 50 × 61', 228, 50, 61, nvert=2, nprat=0, mat_int='BT')
 add('FR', 18, A, 'rack · frente de gavetão 76 × 47', 76, 47, 3)
@@ -495,16 +535,19 @@ fer(A, gav=1)
 terc(A, 'Estofador · assento do banco em tecido facto branco (50 × 50)', ESTOF_CAB)
 fita(A, 'banco-armário · frente e bordas', 2*(0.49+0.42) + 2*(0.50+0.80))
 # ── armário existente, ENVELOPAR em MDF Frapê — elev. D 188,5 × 266 ─────
-add('FR', 18, A, 'envelopamento · porta 62,8 × 266 c/ espelho prata colado',
-    62.8, 266, 3)
-add('FR', 18, A, 'envelopamento · testeira e montantes aparentes', 188.5, 14, 2)
-fer(A, dobr=9); cava(A, 3*0.628)
-terc(A, 'Envelopamento ML · espelho prata colado nas 3 portas — 3 folhas',
-     3*ESPELHO_FL)
-fita(A, 'envelopamento ML · 3 portas', 3*2*(0.628+2.66))
-duv(A, 'na elevação D do quarto Maria Luísa o espelho aparece com 188,5 de vão '
-       'e 266 de altura, mas a prancha não divide as folhas. Adotei 3 portas '
-       'de 62,8 — mesma solução do quarto Rafael. Conferir no local.')
+# ⚠ CORREÇÃO 21/08 [Jonathan] — "portas com espelho prata colado, não considere
+#   essas portas, apenas o acabamento em MDF". As portas do armário existente
+#   ficam como estão; a Valvic entrega só o envelopamento em MDF Frapê.
+#   Saem: 3 portas de 62,8 × 266, as 9 dobradiças, a cava e as 3 folhas de
+#   espelho (R$ 855).
+add('FR', 18, A, 'envelopamento · montante lateral aparente 266 × 14', 266, 14, 2)
+add('FR', 18, A, 'envelopamento · testeira superior 188,5 × 14', 188.5, 14)
+add('FR', 18, A, 'envelopamento · rodapé/base 188,5 × 10', 188.5, 10)
+fita(A, 'envelopamento ML · perímetro aparente do acabamento',
+     2*(2.66+0.14)*2 + 2*(1.885+0.14) + 2*(1.885+0.10))
+duv(A, 'no quarto Maria Luísa o armário existente recebe SÓ o envelopamento em '
+       'MDF Frapê [Jonathan 21/08]. As portas de espelho da elevação D ficam '
+       'fora do escopo.')
 
 # ───────────────────────────────────────────────────────────────────────────
 # 7 · BANHO SOCIAL — pranchas 38 a 40
@@ -632,13 +675,13 @@ duv(A, 'as bancadas dos dois banheiros e do lavabo aparecem em pedra — fora do
 # ═══════════════════════════════════════════════════════════════════════════
 W = 100
 
-def rodar(especial=False):
-    """Retorna o pacote de custo para um cenário de preço de chapa."""
-    global ESPECIAL
-    ESPECIAL = especial
+def rodar(especial=False, interno_cor=False):
+    """Pacote de custo para uma combinação de (preço de chapa × cor do interior)."""
+    global ESPECIAL, INTERNO_COR
+    ESPECIAL, INTERNO_COR = especial, interno_cor
     por_chapa, area_chapa = defaultdict(list), defaultdict(float)
     area_amb, area_rip_amb = defaultdict(float), defaultdict(float)
-    for mat, esp, amb, desc, c, l, q, rip in P:
+    for mat, esp, amb, desc, c, l, q, rip in resolver_interior():
         for _ in range(q): por_chapa[(mat, esp)].append((c, l))
         a = c*l*q/10000
         area_chapa[(mat, esp)] += a
@@ -786,25 +829,64 @@ _v = f'{(custo_chapa + custo_fita + custo_filet + consum + LOG)*frac_rip:,.0f}'.
 print(f'\n  Ripado = {area_rip:.2f} m² de chapa ({frac_rip*100:.0f}% do projeto) ⇒ '
       f'R$ {_v} de custo direto, à parte, a MC {MC_RIPADO*100:.0f}%.')
 print('  (lavabo, painel da TV da sala de estar e as frentes do armário superior.)')
-
 print('\n' + '─'*W)
-print('INVESTIMENTO POR AMBIENTE — escada principal ' + PRINC)
-print(f'  {"ambiente":<26}{"chapa":>8}{"I · Telesc.":>14}{"II · Hardt":>13}{"III · Hettich":>15}')
-TOTS = [0, 0, 0]
+print('INVESTIMENTO POR AMBIENTE — ' + PRINC)
+_NC = len(CENARIOS)
+print(f'  {"ambiente":<26}{"chapa":>8}' + ''.join(f'{c[0]:>16}' for c in CENARIOS))
+TOTS = [0]*_NC
 linhas = []
 for amb in ordem:
     fr = area_amb[amb]/area_tot
-    vals = [round(RES[PRINC][i][6]*fr/100)*100 for i in range(3)]
+    vals = [round(RES[PRINC][i][6]*fr/100)*100 for i in range(_NC)]
     linhas.append((amb, area_amb[amb], vals))
-    for i in range(3): TOTS[i] += vals[i]
+    for i in range(_NC): TOTS[i] += vals[i]
 # ajuste de arredondamento no maior ambiente
 maior = max(range(len(linhas)), key=lambda i: linhas[i][1])
-for i in range(3):
+for i in range(_NC):
     linhas[maior][2][i] += RES[PRINC][i][6] - TOTS[i]
 for amb, ar, vals in linhas:
-    cols = ''.join(f'{v:>14,.0f}'.replace(',', '.') for v in vals)
+    cols = ''.join(f'{v:>16,.0f}'.replace(',', '.') for v in vals)
     print(f'  {amb:<26}{ar:>8.2f}{cols}')
-cols = ''.join(f'{RES[PRINC][i][6]:>14,.0f}'.replace(',', '.') for i in range(3))
+cols = ''.join(f'{RES[PRINC][i][6]:>16,.0f}'.replace(',', '.') for i in range(_NC))
+print(f'  {"TOTAL":<26}{area_tot:>8.2f}{cols}')
+
+# ═══════════════════════════════════════════════════════════════════════════
+# UPGRADE DE PROJETO — interior na cor da estrutura externa  [Jonathan 21/08]
+# ═══════════════════════════════════════════════════════════════════════════
+# Substitui a linha Telescópica como terceiro degrau da proposta. Não é
+# ferragem: é acabamento. Muda a chapa da caixaria interna E o nesting — o
+# interior deixa de dividir chapa branca com todo mundo e passa a dividir
+# chapa colorida com a frente do seu próprio móvel.
+print('\n' + '═'*W)
+print('UPGRADE DE PROJETO — INTERIOR NA COR DA ESTRUTURA EXTERNA')
+print('═'*W)
+CH_U, AC_U, _AA, _AR, custo_chapa_up = rodar(False, interno_cor=True)
+rodar(False, interno_cor=False)          # devolve o motor ao estado base
+d_chapa = custo_chapa_up - custo_chapa
+tot_ch_up = sum(CH_U.values())
+_a = f'{custo_chapa:,.2f}'.replace(',', '.')
+_b = f'{custo_chapa_up:,.2f}'.replace(',', '.')
+_d = f'{d_chapa:,.2f}'.replace(',', '.')
+print(f'  {"chapa · interior em Branco TX (o que a prancha pede)":<54}'
+      f'{tot_ch:>3} ch.  R$ {_a:>10}')
+print(f'  {"chapa · interior na cor (upgrade)":<54}{tot_ch_up:>3} ch.  R$ {_b:>10}')
+print(f'  {"diferença de custo direto":<54}{tot_ch_up-tot_ch:>+3} ch.  R$ {_d:>10}')
+consum_up = (custo_chapa_up + custo_fita)*0.06
+d_cd = d_chapa + (consum_up - consum)
+UP = {}
+print()
+for i, (nome, fd, mc, gar, cf, cd, inv, mcr) in enumerate(RES[PRINC]):
+    cd_rip_up = (custo_chapa_up + custo_fita + custo_filet + consum_up + LOG)*frac_rip
+    inv_up = round(preco(cd + d_cd - cd_rip_up, cd_rip_up, mc, True)/100)*100
+    UP[nome] = inv_up
+    print(f'  {nome:<17}R$ {inv:>9,.0f}  →  R$ {inv_up:>9,.0f}   '
+          f'upgrade +R$ {inv_up-inv:>8,.0f}'.replace(',', '.'))
+_bt = sum(a for k, a in area_chapa.items() if k[0] == 'BT')
+print(f'\n  Interior afetado: {_bt:.1f} m² que hoje sairiam em Branco TX.')
+print('  ⚠ A caixa da GAVETA fica em Branco TX nos dois casos — interior na cor')
+print('    é o que se vê ao ABRIR A PORTA; caixa de gaveta em branco é padrão')
+print('    mesmo em projeto premium, e trocá-la encareceria sem aparecer.')
+
 print(f'  {"TOTAL":<26}{area_tot:>8.2f}{cols}')
 
 print('\n' + '─'*W)
@@ -842,7 +924,8 @@ for i, (nome, fd, mc, gar, cf, cd, inv, mcr) in enumerate(RES[PRINC]):
 print('\n' + '─'*W)
 print('SANIDADE — R$/m² de chapa  (faixa da casa: 626 Rizzi · 647 · 739 SPE · 834 Honda)')
 for rot in RES:
-    print(f'  {rot:<42}' + '  '.join(f'{RES[rot][i][6]/area_tot:>6.0f}' for i in range(3)))
+    print(f'  {rot:<42}' + '  '.join(f'{RES[rot][i][6]/area_tot:>6.0f}'
+                                      for i in range(len(CENARIOS))))
 
 print('\n' + '─'*W)
 print(f'DÚVIDAS PARA A ARQUITETA / PARA CONFERIR NO LOCAL — {len(DUVIDAS)} itens')

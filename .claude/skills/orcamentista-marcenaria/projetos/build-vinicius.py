@@ -21,25 +21,17 @@ CLIENTE  = 'Carol e Vinícius'
 OBRA     = 'Caderno de marcenaria · Jéssica Sollero'
 DATA     = '18 de agosto de 2026'
 VALIDADE = '7 dias corridos'            # ⚠ premissa
-PRAZO    = '90 a 120 dias corridos'     # ⚠ premissa — 9 ambientes, 214 m² de chapa
+PRAZO    = 'Até 90 dias corridos'       # [Jonathan 21/08]
 
 CEN = [
-    dict(n='I', nome='Essencial', gar='2 anos',
-         dobr='Dobradiça padrão com amortecimento',
-         corr='Corrediça telescópica',
-         basc='Pistão a gás',
-         txt='A configuração de referência do mercado. Mecanismo correto, '
-             'regulagem completa e acabamento idêntico ao das outras duas '
-             'linhas — a diferença está na vida útil do movimento, não no que '
-             'se vê.'),
-    dict(n='II', nome='Intermediária', gar='5 anos',
+    dict(n='I', nome='Intermediária', gar='5 anos',
          dobr='Dobradiça Hardt com amortecimento',
          corr='Corrediça oculta Hardt, fechamento suave',
          basc='Articulador Blum HK-xs',
          txt='A gaveta passa a correr por baixo, escondida: some o trilho '
              'lateral e o vão útil cresce. Nos seis gavetões de 70 cm do '
              'buffet da sala de estar, é o degrau que mais se sente.'),
-    dict(n='III', nome='Superior', gar='10 anos',
+    dict(n='II', nome='Superior', gar='10 anos',
          dobr='Dobradiça Hettich Novisys',
          corr='Corrediça oculta Hettich Quadro',
          basc='Articulador Blum HK-xs',
@@ -167,19 +159,23 @@ ESCOPO = [
 ]
 
 # ── investimento por ambiente · valores de corte-vinicius.py ──────────────
+# [Jonathan 21/08] Telescópica fora · correções de escopo na sala de estar e
+# no quarto Maria Luísa · o 3º degrau vira UPGRADE DE PROJETO (interior na cor).
 INV = [
- ('Lavabo',                  1700,   2000,   2200),
- ('Sala de jantar',         27100,  32100,  36100),
- ('Sala de estar',          29500,  35000,  39400),
- ('Varanda',                 4900,   5800,   6600),
- ('Quarto Rafael e Miguel', 26000,  30800,  34700),
- ('Quarto Maria Luísa',     26200,  31100,  34900),
- ('Banho social',            7700,   9200,  10300),
- ('Quarto casal',           17600,  20800,  23400),
- ('Banho casal',             7300,   8600,   9700),
+ ('Lavabo',                  1900,   2200),
+ ('Sala de jantar',         31800,  35800),
+ ('Sala de estar',          34800,  39100),
+ ('Varanda',                 5800,   6500),
+ ('Quarto Rafael e Miguel', 30500,  34400),
+ ('Quarto Maria Luísa',     27200,  30700),
+ ('Banho social',            9100,  10200),
+ ('Quarto casal',           20600,  23200),
+ ('Banho casal',             8500,   9600),
 ]
-TOT = [sum(i[k] for i in INV) for k in (1, 2, 3)]
-assert TOT == [148000, 175400, 197300], TOT
+TOT = [sum(i[k] for i in INV) for k in (1, 2)]
+assert TOT == [170200, 191700], TOT
+UP_5, UP_10 = 9800, 10800
+TOT_UP = [TOT[0] + UP_5, TOT[1] + UP_10]
 
 PAGTO = [
     ('Entrada de 30% + saldo em até 10× no cartão', '—'),
@@ -306,7 +302,7 @@ p6 = f"""<div class="page"><div class="pad">
   <p class="lead" style="margin-top:4mm">O desenho, a chapa, o acabamento e o
   esquadro são <strong>os mesmos nas três</strong>. O que separa uma da outra é
   a ferragem — e ferragem se mede em ciclo de abertura, amortecimento e
-  regulagem. São <strong>72 dobradiças, 39 gavetas e 6 básculas</strong> neste
+  regulagem. São <strong>76 dobradiças, 39 gavetas e 6 básculas</strong> neste
   projeto: é muita coisa abrindo e fechando todo dia.</p>
   <div style="margin-top:5mm">{cen_html}</div>
   <div class="box"><div class="t">Uma observação honesta</div>
@@ -318,32 +314,33 @@ p6 = f"""<div class="page"><div class="pad">
 
 linhas = ''.join(
     f'<tr><td class="l">{t}</td><td>{brl(a)}</td>'
-    f'<td class="hi">{brl(b)}</td><td>{brl(c)}</td></tr>'
-    for t, a, b, c in INV)
+    f'<td class="hi">{brl(b)}</td></tr>' for t, a, b in INV)
 
 p7 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">Investimento</div>
   <div class="rule"></div>
-  <h2 class="h-sec">Ambiente a ambiente,<br>nas três linhas.</h2>
-  <table class="inv" style="margin-top:5mm">
-    <tr><th class="l">Ambiente</th><th>I · Essencial</th>
-        <th class="hi">II · Intermediária</th><th>III · Superior</th></tr>
+  <h2 class="h-sec">Ambiente a ambiente,<br>nas duas linhas.</h2>
+  <table class="inv" style="margin-top:4mm">
+    <tr><th class="l">Ambiente</th><th>I · 5 anos</th>
+        <th class="hi">II · 10 anos</th></tr>
     {linhas}
-    <tr class="tot"><td class="l">Investimento total</td>
-      <td>{brl(TOT[0])}</td><td class="hi">{brl(TOT[1])}</td>
-      <td>{brl(TOT[2])}</td></tr>
+    <tr class="tot"><td class="l">Investimento</td>
+      <td>{brl(TOT[0])}</td><td class="hi">{brl(TOT[1])}</td></tr>
+    <tr><td class="l" style="padding-top:2.5mm;color:var(--gold);font-weight:600">
+      + Upgrade · interior na cor da estrutura externa</td>
+      <td style="padding-top:2.5mm">{brl(UP_5)}</td>
+      <td class="hi" style="padding-top:2.5mm">{brl(UP_10)}</td></tr>
+    <tr class="tot"><td class="l">Com o upgrade</td>
+      <td>{brl(TOT_UP[0])}</td><td class="hi">{brl(TOT_UP[1])}</td></tr>
   </table>
   <div class="box"><div class="t">O que está dentro do valor</div>
-  <p>Projeto executivo de marcenaria, fornecimento de material, produção em CNC
-  e coladeira automática próprias, os espelhos, as portas de vidro reflecta
-  bronze, as prateleiras de vidro temperado, o estofamento das cabeceiras, a
-  estrutura de metalon do mezanino, o guarda-corpo de corda, os puxadores de
-  travertino, a iluminação em LED, transporte, entrega na obra e
-  <strong>instalação e montagem por equipe própria da Valvic</strong> — não
-  terceirizamos a montagem.</p></div>
-  <div class="box"><div class="t">Coordenação de projeto</div>
-  <p>O acompanhamento de Jéssica Sollero Design de Interiores está contemplado
-  no valor, em todas as três linhas.</p></div>
+  <p>Projeto executivo, material, produção em CNC e coladeira automática
+  próprias, e as oito frentes coordenadas — espelhos, portas de vidro,
+  prateleiras temperadas, estofamento das cabeceiras, serralheria do mezanino,
+  tubo champagne, puxadores de travertino e iluminação em LED. Mais transporte,
+  entrega na obra e <strong>instalação e montagem por equipe própria da
+  Valvic</strong>. O acompanhamento de Jéssica Sollero Design de Interiores está
+  contemplado no valor, nas duas linhas.</p></div>
   <div class="box" style="border-left-color:var(--mut)">
   <div class="t" style="color:var(--mut)">Uma definição ainda em aberto</div>
   <p>A <strong>linha da chapa</strong>. O caderno nomeia MDF Areal e MDF Frapê

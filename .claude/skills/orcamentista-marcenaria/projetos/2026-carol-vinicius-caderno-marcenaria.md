@@ -13,6 +13,90 @@ retrato, 8 páginas, versão técnica
 
 ---
 
+## 🔁 21/08/2026 — REVISÃO DO JONATHAN
+
+### O erro que ele pegou: a sala de estar, lida errada duas vezes
+
+> *"o painel ripado não é do rodapé ao forro, segunda leitura errada no mesmo
+> projeto, considere apenas a cota visível do projeto. Os armários tbm não têm
+> frentes ripadas, as colunas tbm não são abertas."*
+
+Eu tinha lançado o painel da elevação B como **quase tudo ripado**: o painel da
+TV inteiro, as seis portas do armário superior e as colunas laterais abertas.
+As duas perspectivas do próprio caderno desmentem as três coisas:
+
+| Perspectiva | O que mostra |
+|---|---|
+| `img-vinicius/estar-3.jpg` — **fechada** | painel de MDF Areal **liso**; as linhas verticais são junta de porta, não ripa |
+| `img-vinicius/estar-4.jpg` — **aberta** | as colunas **têm porta** — é a foto aberta que revela as prateleiras brancas |
+
+O **único ripado do ambiente** é a faixa sob o televisor, na cota de 30 que a
+elevação traz. Correção aplicada:
+
+| | Antes | Depois |
+|---|--:|--:|
+| Ripado da sala de estar | 5,73 m² | **0,68 m²** |
+| Ripado do projeto | 6,68 m² | **1,97 m²** |
+| Dobradiças da sala de estar | 12 | **16** (as colunas ganharam porta) |
+
+> 🧠 **A lição, para o moleskine.** Perspectiva **fechada** e perspectiva
+> **aberta** do mesmo móvel são dois **estados**, não duas vistas complementares.
+> Ler só a fechada faz junta de porta virar ripa; ler só a aberta faz porta
+> virar nicho. **Quando existem as duas, as duas têm de ser lidas antes de
+> lançar a geometria** — e é a fechada que define o que o cliente vê.
+
+### As outras quatro correções
+
+| # | O que mudou |
+|--:|---|
+| 1 | **Prazo**: de "90 a 120 dias" para **até 90 dias corridos**. |
+| 2 | **Lavabo**: sai a frase "do teto à bancada" — o ripado não tem essa extensão. |
+| 3 | **Varanda**: a bancada curva fica, agora com nota de **estruturação especial coordenada** (reforço embutido no tampo + pés em tubo champagne, dimensionados com a serralheria). |
+| 4 | **Quarto Maria Luísa**: as portas de espelho prata do armário existente **saem do escopo**. Fica só o envelopamento em MDF Frapê — montantes, testeira e base. Saem 3 portas, 9 dobradiças e 3 folhas de espelho (R$ 855). |
+
+### A Telescópica sai; entra um upgrade de projeto
+
+> *"vamos tirar a telescópica de cena. em vez disso apresentar um upgrade de
+> projeto mudando a cor da estrutura interna para a mesma cor da estrutura
+> externa."*
+
+O terceiro degrau da proposta **deixa de ser ferragem e passa a ser acabamento**.
+Comercialmente é melhor: a Telescópica competia para baixo, e o upgrade compete
+para cima.
+
+O motor ganhou o mecanismo: a caixaria interna passa a ser lançada como
+`I:AR` / `I:FR` — *interior de um módulo Areal ou Frapê*. Com `INTERNO_COR=False`
+resolve para Branco TX (o que a prancha pede); com `True`, resolve para a cor do
+próprio módulo. **Muda também o nesting**: o interior deixa de dividir chapa
+branca com todo mundo e passa a dividir chapa colorida com a frente do seu móvel.
+
+⚠ A **caixa da gaveta fica em Branco TX nos dois casos**. Interior na cor é o que
+se vê ao *abrir a porta*; caixa de gaveta em branco é padrão mesmo em projeto
+premium, e trocá-la encareceria sem aparecer. Está escrito na proposta.
+
+### Os números novos — COM RT, escada 35/38
+
+| | 5 anos (Hardt) | 10 anos (Hettich) |
+|---|--:|--:|
+| Investimento | **R$ 170.200** | **R$ 191.700** |
+| + Upgrade · interior na cor | + R$ 9.800 | + R$ 10.800 |
+| **Com o upgrade** | **R$ 180.000** | **R$ 202.500** |
+
+Sem RT, referência interna: R$ 136.900 e R$ 151.600.
+Área de chapa: **210,02 m²** (era 214,23) em 58 chapas.
+O upgrade custa R$ 3.360 de chapa a mais e **não acrescenta uma única chapa** ao
+plano de corte — o interior colorido ocupa a sobra das chapas de cor que já
+seriam compradas. É por isso que ele é barato para o que entrega.
+
+### ⚠ O caderno original se perdeu
+
+O container foi recriado e o PDF de origem sumiu de `/root/.claude/uploads/`.
+A correção da sala de estar foi possível **só porque as 30 perspectivas ficaram
+versionadas** em `projetos/img-vinicius/`. Para reconferir cota de elevação é
+preciso subir o caderno de novo.
+
+---
+
 ## 1 · Como o PDF foi lido
 
 Caso **B** da taxonomia de `referencias/quantitativo.md`: **0 palavras de texto,

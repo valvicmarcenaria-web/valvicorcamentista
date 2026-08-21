@@ -22,7 +22,7 @@ CLIENTE  = 'Carol e Vinícius'
 OBRA     = 'Caderno de marcenaria · Jéssica Sollero'
 DATA     = '19 de agosto de 2026'
 VALIDADE = '7 dias corridos'
-PRAZO    = '90 a 120 dias corridos'
+PRAZO    = 'Até 90 dias corridos'  # [Jonathan 21/08]
 IMGDIR   = 'projetos/img-vinicius'
 
 def img(nome):
@@ -33,7 +33,7 @@ def img(nome):
 AMB = [
  dict(n='01', nome='Lavabo', foto='lavabo-1',
       tag='Painel ripado com espelho integrado',
-      mv=[('Painel ripado em MDF Areal', 'régua a régua, do teto à bancada'),
+      mv=[('Painel ripado em MDF Areal', 'régua a régua, com o espelho integrado ao desenho'),
           ('Espelho prata integrado ao painel', 'colado sobre base própria, no miolo do ripado'),
           ('Iluminação em LED', 'superior e inferior, 4000 K')],
       nota=('O espelho nasce dentro do desenho',
@@ -55,11 +55,12 @@ AMB = [
             'As gavetas do armário inferior recebem puxador maciço em mármore '
             'travertino — peça de marmoraria, coordenada por nós.')),
  dict(n='03', nome='Sala de estar', foto='estar-3',
-      tag='Buffet suspenso e painel de TV ripado',
+      tag='Buffet suspenso e painel de TV',
       mv=[('Buffet suspenso em MDF Frapê', 'seis gavetões, LED em cima e embaixo, puxador em travertino'),
-          ('Painel de TV ripado em MDF Areal', 'do rodapé ao forro, sem interrupção'),
-          ('Armário superior com seis portas ripadas', 'a ripa atravessa a porta e continua no painel'),
-          ('Oito prateleiras laterais', 'nas duas colunas abertas que ladeiam a TV'),
+          ('Painel da TV em MDF Areal', 'painel liso, do buffet até o armário superior'),
+          ('Faixa ripada sob o televisor', 'a única ripada do ambiente — ripas de 3 × 2 cm com espaçamento de 3 e LED por baixo'),
+          ('Armário superior com seis portas', 'frentes lisas em MDF Areal, interior em MDF Branco TX'),
+          ('Duas colunas laterais com porta', 'quatro prateleiras cada, fechadas por porta inteira'),
           ('Rack em MDF Frapê', 'três gavetões, ventilação e passagem de cabo previstas')],
       nota=('Nove puxadores em travertino',
             'Seis no buffet e três no rack. O mesmo mármore do armário da sala '
@@ -69,10 +70,13 @@ AMB = [
       mv=[('Armário superior em MDF Areal', 'sem fundo, prateleiras de vidro incolor temperado, acabamento em tubinho champagne'),
           ('Armário inferior em MDF Frapê', 'nicho aberto para a adega e porta com puxador em travertino'),
           ('Bancada curva em MDF Areal', 'bordas arredondadas, fixação invisível e pés chumbados em tubo champagne')],
-      nota=('A curva é desenhada, não improvisada',
-            'A bancada segue dois raios diferentes e encosta na parede sem '
-            'mão-francesa aparente. O tubo champagne é serralheria sob '
-            'medida, com laca aplicada por pintor.')),
+      nota=('A curva pede estrutura, não só desenho',
+            'A bancada segue dois raios diferentes, tem cinco centímetros de '
+            'espessura e encosta na parede sem mão-francesa aparente. Isso '
+            'exige <strong>estruturação especial</strong> — reforço embutido no '
+            'próprio tampo e pés chumbados em tubo champagne — dimensionada e '
+            'coordenada por nós junto com a serralheria. É a peça do projeto '
+            'que mais depende de execução, e está no valor.')),
  dict(n='05', nome='Quarto Rafael e Miguel', foto='rafael-1',
       tag='Mezanino estruturado em metalon',
       mv=[('Cama suspensa em mezanino', 'estrado em MDF Areal sobre estrutura de metalon, com LED na face inferior'),
@@ -95,7 +99,7 @@ AMB = [
           ('Cabeceira estofada em gomos', 'tecido facto branco, com LED superior'),
           ('Bancada e penteadeira em L', 'gavetões, báscula a gás, báscula com espelho e divisória em acrílico'),
           ('Banco-armário com assento estofado', 'gaveta interna, tecido facto branco'),
-          ('Envelopamento do armário existente', 'portas com espelho prata colado')],
+          ('Envelopamento do armário existente', 'acabamento em MDF Frapê — montantes, testeira e base, para que o armário que já está lá desapareça no ambiente novo')],
       nota=('A curva é laminada, não recortada',
             'As prateleiras têm cinco centímetros de espessura e curva livre. '
             'Saem de duas lâminas usinadas e coladas — chapa única nessa '
@@ -151,39 +155,41 @@ FRENTES = [
 ]
 
 GAR = [
- dict(anos='2', nome='Essencial', pos='',
-      x='A configuração de referência do mercado. Mecanismo correto, regulagem '
-        'completa e acabamento idêntico ao das outras duas.',
-      dobr='Dobradiça padrão com amortecimento', corr='Corrediça telescópica',
-      basc='Pistão a gás', hi=False),
  dict(anos='5', nome='Intermediária', pos='',
-      x='A gaveta passa a correr por baixo, escondida: some o trilho lateral e '
-        'o vão útil cresce. Dobra a garantia.',
+      x='A gaveta corre por baixo, escondida: some o trilho lateral e o vão '
+        'útil cresce. O articulador da báscula é o mesmo da linha superior.',
       dobr='Dobradiça Hardt com amortecimento',
       corr='Corrediça oculta Hardt, fechamento suave',
       basc='Articulador Blum HK-xs', hi=False),
  dict(anos='10', nome='Superior', pos='A escolha da casa',
       x='Curso mais longo, carga maior, retorno mais macio e ciclo de teste '
-        'muito acima do uso doméstico. Dobra a garantia outra vez.',
+        'muito acima do uso doméstico. Dobra a garantia.',
       dobr='Dobradiça Hettich Novisys',
       corr='Corrediça oculta Hettich Quadro',
       basc='Articulador Blum HK-xs', hi=True),
 ]
 
+# ── upgrade de projeto — interior na cor  [Jonathan 21/08] ──────────────
+# Substitui a linha Telescópica como terceiro degrau. Não é ferragem: é
+# acabamento. Valores de `corte-vinicius.py`, seção UPGRADE DE PROJETO.
+UP_5, UP_10 = 9800, 10800
+
 # ── investimento · corte-vinicius.py COM RT ───────────────────────────────
 INV = [
- ('Lavabo',                  1700,   2000,   2200),
- ('Sala de jantar',         27100,  32100,  36100),
- ('Sala de estar',          29500,  35000,  39400),
- ('Varanda',                 4900,   5800,   6600),
- ('Quarto Rafael e Miguel', 26000,  30800,  34700),
- ('Quarto Maria Luísa',     26200,  31100,  34900),
- ('Banho social',            7700,   9200,  10300),
- ('Quarto casal',           17600,  20800,  23400),
- ('Banho casal',             7300,   8600,   9700),
+ ('Lavabo',                  1900,   2200),
+ ('Sala de jantar',         31800,  35800),
+ ('Sala de estar',          34800,  39100),
+ ('Varanda',                 5800,   6500),
+ ('Quarto Rafael e Miguel', 30500,  34400),
+ ('Quarto Maria Luísa',     27200,  30700),
+ ('Banho social',            9100,  10200),
+ ('Quarto casal',           20600,  23200),
+ ('Banho casal',             8500,   9600),
 ]
-TOT = [sum(i[k] for i in INV) for k in (1, 2, 3)]
-assert TOT == [148000, 175400, 197300], TOT
+TOT = [sum(i[k] for i in INV) for k in (1, 2)]
+assert TOT == [170200, 191700], TOT
+TOT_UP = [TOT[0] + UP_5, TOT[1] + UP_10]
+assert TOT_UP == [180000, 202500], TOT_UP
 
 PAGTO = [
     ('Entrada de 30% + saldo em até 10× no cartão', '—'),
@@ -210,7 +216,7 @@ FORA = [
 
 CSS = open('projetos/css-apresentacao.css', encoding='utf-8').read()
 def brl(v): return f'{v:,.0f}'.replace(',', '.')
-NP = 16
+NP = 17
 def foot(n, r=False):
     return (f'<div class="foot{" r" if r else ""}">'
             f'<span>Valvic&nbsp;·&nbsp;{CLIENTE}</span><span>{n} / {NP}</span></div>')
@@ -311,12 +317,12 @@ S.append(f"""<div class="slide"><div class="pad">
   {foot(13)}
 </div></div>""")
 
-# 14 · garantias
+# 14 · garantias — duas linhas
 gc = ''.join(
   f'<div class="c{" hi" if g["hi"] else ""}" style="position:relative">'
   + (f'<div class="selo">{g["pos"]}</div>' if g['pos'] else '')
   + f'<div class="anos">{g["anos"]}</div>'
-    f'<div class="unid">{"ano" if g["anos"]=="1" else "anos"} de garantia</div>'
+    f'<div class="unid">anos de garantia</div>'
     f'<div class="nm">{g["nome"]}</div><div class="x">{g["x"]}</div>'
     f'<div class="l">'
     f'<div class="k">Dobradiça</div><div class="v">{g["dobr"]}</div>'
@@ -326,48 +332,86 @@ gc = ''.join(
 S.append(f"""<div class="slide"><div class="pad">
   <div class="eyebrow">Garantia</div>
   <div class="rule"></div>
-  <h1 class="h1">Dois anos, cinco anos, dez anos.<br>
+  <h1 class="h1">Cinco anos ou dez anos.<br>
   A diferença cabe numa gaveta.</h1>
   <p class="lead" style="margin-top:3.5mm">O desenho, a chapa, o acabamento e o
-  esquadro são <strong>os mesmos nas três</strong>. O que separa uma da outra é a
-  ferragem — e ferragem se mede em ciclo de abertura. São 72 dobradiças, 39
+  esquadro são <strong>os mesmos nas duas</strong>. O que separa uma da outra é a
+  ferragem — e ferragem se mede em ciclo de abertura. São 76 dobradiças, 39
   gavetas e 6 básculas nesta casa, abrindo e fechando todo dia. A garantia
   abaixo é <strong>garantia Valvic</strong>: nossa, escrita e assinada na
   entrega, não a do fabricante da ferragem.</p>
-  <div class="gar">{gc}</div>
+  <div class="gar" style="grid-template-columns:1fr 1fr;max-width:200mm">{gc}</div>
   {foot(14)}
 </div></div>""")
 
-# 15 · investimento
+# 15 · upgrade de projeto — interior na cor
+S.append(f"""<div class="slide"><div class="amb">
+  <div class="amb-img"><img src="{img('estar-4')}">
+    <div class="tag">O interior, como o projeto especifica hoje</div></div>
+  <div class="amb-txt">
+    <div class="amb-n">+</div>
+    <div class="eyebrow" style="margin-top:2mm">Upgrade de projeto</div>
+    <h2 class="h2" style="margin:1mm 0 4mm">O interior na cor<br>da estrutura externa</h2>
+    <p style="color:var(--soft);font-size:8.9pt">O caderno especifica o interior
+    dos armários em <strong>MDF Branco TX</strong> — é o que a perspectiva ao
+    lado mostra quando as portas abrem: fora em madeira, dentro em branco.</p>
+    <p style="color:var(--soft);font-size:8.9pt;margin-top:3mm">O upgrade troca
+    esse interior pela <strong>mesma cor da frente</strong>. O armário de MDF
+    Areal fica Areal por dentro; o de MDF Frapê, Frapê. São
+    <strong>104 m² de caixaria</strong> que deixam de ser brancos — prateleiras,
+    laterais, fundos e o miolo das colunas.</p>
+    <div class="fr" style="grid-template-columns:1fr 1fr;margin-top:5mm">
+      <div class="c"><div class="n">5</div><div class="t">anos</div>
+        <div class="d">R$ {brl(TOT[0])} &nbsp;→&nbsp;
+        <strong style="color:var(--ink)">R$ {brl(TOT_UP[0])}</strong><br>
+        upgrade de R$ {brl(UP_5)}</div></div>
+      <div class="c"><div class="n">10</div><div class="t">anos</div>
+        <div class="d">R$ {brl(TOT[1])} &nbsp;→&nbsp;
+        <strong style="color:var(--ink)">R$ {brl(TOT_UP[1])}</strong><br>
+        upgrade de R$ {brl(UP_10)}</div></div>
+    </div>
+    <div class="amb-nota" style="margin-top:5mm">
+      <div class="t">Onde ele aparece</div>
+      <p>O upgrade cobre <strong>o que se vê ao abrir a porta</strong>: caixaria,
+      prateleiras e fundos. A caixa das gavetas segue em Branco TX nas duas
+      configurações — é padrão mesmo em projeto premium, e trocá-la encareceria
+      sem aparecer.</p></div>
+  </div>
+</div>{foot(15, r=True)}</div>""")
+
+# 16 · investimento
 linhas = ''.join(f'<tr><td class="l">{t}</td><td>{brl(a)}</td>'
-                 f'<td>{brl(b)}</td><td class="hi">{brl(c)}</td></tr>'
-                 for t, a, b, c in INV)
+                 f'<td class="hi">{brl(b)}</td></tr>' for t, a, b in INV)
 S.append(f"""<div class="slide"><div class="pad">
   <div class="eyebrow">Investimento</div>
   <div class="rule"></div>
-  <h2 class="h2" style="margin-bottom:4mm">Ambiente a ambiente, nas três linhas.</h2>
+  <h2 class="h2" style="margin-bottom:4mm">Ambiente a ambiente, nas duas linhas.</h2>
   <div style="display:grid;grid-template-columns:1.35fr 1fr;gap:11mm;flex:1;min-height:0">
     <div>
       <table class="inv">
-        <tr><th class="l">Ambiente</th><th>2 anos</th><th>5 anos</th>
-            <th class="hi">10 anos</th></tr>
+        <tr><th class="l">Ambiente</th><th>5 anos</th><th class="hi">10 anos</th></tr>
         {linhas}
-        <tr class="tot"><td class="l">Investimento total</td>
-          <td>{brl(TOT[0])}</td><td>{brl(TOT[1])}</td>
-          <td class="hi">{brl(TOT[2])}</td></tr>
+        <tr class="tot"><td class="l">Investimento</td>
+          <td>{brl(TOT[0])}</td><td class="hi">{brl(TOT[1])}</td></tr>
+        <tr><td class="l" style="padding-top:3mm;color:var(--gold);font-weight:600">
+          + Upgrade · interior na cor</td>
+          <td style="padding-top:3mm">{brl(UP_5)}</td>
+          <td class="hi" style="padding-top:3mm">{brl(UP_10)}</td></tr>
+        <tr class="tot"><td class="l">Com o upgrade</td>
+          <td>{brl(TOT_UP[0])}</td><td class="hi">{brl(TOT_UP[1])}</td></tr>
       </table>
     </div>
     <div style="display:flex;flex-direction:column">
       <div class="box" style="margin-top:0"><div class="t">O que está dentro do valor</div>
       <p>Projeto executivo, material, produção em CNC e coladeira automática
-      próprias, <strong>e as oito frentes da página anterior</strong> — espelhos,
+      próprias, <strong>e as oito frentes coordenadas</strong> — espelhos,
       portas de vidro, prateleiras temperadas, estofamento das cabeceiras,
       serralheria do mezanino, tubo champagne, puxadores de travertino e
       iluminação em LED. Mais transporte, entrega na obra e
       <strong>instalação e montagem por equipe própria da Valvic</strong>.</p></div>
       <div class="box"><div class="t">Coordenação de projeto</div>
       <p>O acompanhamento de Jéssica Sollero Design de Interiores está
-      contemplado no valor, em todas as três linhas.</p></div>
+      contemplado no valor, nas duas linhas.</p></div>
       <div class="box" style="border-left-color:var(--mut)">
       <div class="t" style="color:var(--mut)">Uma definição em aberto</div>
       <p>A <strong>linha da chapa</strong>. O caderno nomeia MDF Areal e MDF
@@ -377,12 +421,12 @@ S.append(f"""<div class="slide"><div class="pad">
     </div>
   </div>
   <div class="mos" style="grid-template-columns:repeat(3,1fr);flex:none;
-       height:34mm;margin-top:6mm">
+       height:25mm;margin-top:8mm">
     <figure><img src="{img('jantar-4')}"></figure>
     <figure><img src="{img('casal-4')}"></figure>
     <figure><img src="{img('rafael-6')}"></figure>
   </div>
-  {foot(15)}
+  {foot(16)}
 </div></div>""")
 
 # 16 · condições
@@ -434,7 +478,7 @@ S.append(f"""<div class="slide"><div class="pad">
     <div class="ln">Valvic Marcenaria</div>
     <div class="ln">{CLIENTE}</div>
   </div>
-  {foot(16)}
+  {foot(17)}
 </div></div>""")
 
 HTML = ('<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">'
