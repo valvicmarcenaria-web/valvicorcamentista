@@ -46,8 +46,8 @@ escolha, oferece decisão.
 | Escopo | **6 conjuntos** — sem área de serviço e sem lavabo externo |
 | Investimento cheio | R$ 81.200 |
 | Condição especial de fechamento | **R$ 73.000** (economia R$ 8.200) |
-| Entrada de 30 % na assinatura | R$ 21.900 |
-| Saldo de 70 % à vista, pós-entrega | R$ 51.100 |
+| Entrada na assinatura | R$ 22.000 |
+| Saldo à vista, pós-entrega | R$ 51.000 |
 | Prazo | 65 dias corridos |
 | Validade da condição | sábado, 22/08/2026 |
 
@@ -97,19 +97,32 @@ para que a próxima redução de escopo não seja feita na mão.
 valor cheio não quebrado."*
 
 Os 10 % exatos davam R$ 73.080 — e 30 % disso é R$ 21.924, quebrado. Levando o
-fechamento a **R$ 73.000 redondos**, os três números fecham limpos:
+fechamento a **R$ 73.000** e, na sequência, a entrada a **R$ 22.000**, os três
+números caem na casa do milhar redondo e a soma fecha na conta de cabeça do
+cliente: **22 + 51 = 73**.
 
 | | |
 |---|--:|
 | Fechamento | **R$ 73.000** |
-| Entrada de 30 % | **R$ 21.900** |
-| Saldo de 70 % | **R$ 51.100** |
+| Entrada | **R$ 22.000** |
+| Saldo | **R$ 51.000** |
 
-⚠ **O desconto real vira 10,1 %, não 10 %.** Arredondar para baixo custa R$ 80 a
-mais de desconto. Por isso a proposta **deixou de anunciar o percentual** e passou
-a mostrar os dois valores e a economia em reais (R$ 8.200): dizer "−10 %" e
-apresentar 81.200 → 73.000 daria ao cliente uma conta que não bate. A capa, o
-título da página 2 e o cabeçalho da tabela foram todos reescritos por causa disso.
+⚠ **Nenhum dos dois percentuais é exato, e por isso nenhum deles é anunciado:**
+
+| Rótulo tentador | Valor real | Direção |
+|---|--:|---|
+| "desconto de 10 %" | **10,1 %** | a favor do cliente |
+| "entrada de 30 %" | **30,1 %** | **a nosso favor** |
+
+Dizer "−10 %" ou "entrada de 30 %" e mostrar esses números daria ao cliente uma
+conta que não bate — e no caso da entrada a diferença de R$ 100 é **a nosso
+favor**, que é o pior lado para deixar sem explicação. A proposta mostra os
+valores e a economia em reais; a aritmética fica visível e correta. A capa, o
+título da página 2, o cabeçalho da tabela e os rótulos das quatro caixas de
+valor foram reescritos por causa disso.
+
+Para o rótulo "30 %" ser literal, o total teria de ser **R$ 73.333** — quebrado,
+contra o que o Jonathan pediu. **O número redondo ganhou do rótulo.**
 
 ### Margem e caixa
 
@@ -119,10 +132,10 @@ título da página 2 e o cabeçalho da tabela foram todos reescritos por causa d
 | Custo direto | 34.418 | 34.418 |
 | **MC real** | 37,6 % | **32,9 %** |
 
-⚠ Entrada de R$ 21.900 contra custo direto de R$ 34.418 — cobre **64 %**,
-deixando **R$ 12.518** de capital de giro por 65 dias. Voltar aos 30 % devolveu
+⚠ Entrada de R$ 22.000 contra custo direto de R$ 34.418 — cobre **64 %**,
+deixando **R$ 12.418** de capital de giro por 65 dias. Voltar aos ~30 % devolveu
 ao cliente a folga que a entrada de R$ 27.000 tinha dado à Valvic: a exposição
-sobe de R$ 7.418 para R$ 12.518.
+sobe de R$ 7.418 para R$ 12.418.
 
 A MC de 32,9 % segue abaixo da faixa ideal da casa (35–40 %), pelo mesmo motivo
 de sempre: o desconto.

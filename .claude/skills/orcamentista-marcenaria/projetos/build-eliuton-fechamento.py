@@ -26,25 +26,31 @@ condição especial de 10% de desconto.
      isso o ripado volta de 20.400 para 16.400.
 
 [Jonathan 20/08 · 4ª rodada] "a entrada precisa corresponder a 30% do valor,
-  mas trabalhe com valor cheio não quebrado."
+  mas trabalhe com valor cheio não quebrado" — e, na sequência, "arredonde o
+  valor para 22".
 
-  O fechamento vai a **R$ 73.000 redondos** — em vez dos R$ 73.080 que os 10%
-  exatos davam. Com isso a entrada de 30% cai em R$ 21.900 e o saldo em
-  R$ 51.100: os três números fecham redondos, sem centavo nem dígito solto.
+  Fechamento em **R$ 73.000**, entrada em **R$ 22.000**, saldo em **R$ 51.000**.
+  Os três na casa do milhar redondo, e a soma fecha na conta de cabeça do
+  cliente: 22 + 51 = 73.
 
   Investimento cheio ........................... R$  81.200
   Condição especial de fechamento .............. R$  73.000   (economia R$ 8.200)
-  Entrada de 30% na assinatura ................. R$  21.900
-  Saldo de 70% à vista, após a entrega ......... R$  51.100
+  Entrada na assinatura ........................ R$  22.000
+  Saldo à vista, após a entrega ................ R$  51.000
   Validade da condição ......................... sábado, 22/08/2026
 
-⚠ O DESCONTO REAL VIRA 10,1%, não 10%. Arredondar para baixo custa R$ 80 a mais
-  de desconto. Por isso a proposta deixou de anunciar o percentual e passou a
-  mostrar os dois valores e a economia em reais — dizer "−10%" e apresentar
-  81.200 → 73.000 daria ao cliente uma conta que não bate.
+⚠ NENHUM DOS DOIS PERCENTUAIS É EXATO, E POR ISSO NENHUM DELES É ANUNCIADO:
+     · o desconto é 10,1% (81.200 → 73.000), não 10%
+     · a entrada é 30,1% (22.000 / 73.000), não 30%
+  Dizer "−10%" ou "entrada de 30%" e mostrar esses números daria ao cliente uma
+  conta que não bate — e no caso da entrada a diferença de R$ 100 é a NOSSO
+  favor, que é o pior lado para deixar sem explicação. A proposta mostra os
+  valores e a economia em reais; a aritmética fica visível e correta.
+  Para o rótulo "30%" ser literal, o total teria de ser R$ 73.333 — quebrado,
+  contra o que o Jonathan pediu. O número redondo ganhou do rótulo.
 
-⚠ Exposição de caixa: entrada de R$ 21.900 contra custo direto de R$ 34.418 —
-  cobre 64%, deixando R$ 12.518 de capital de giro por 65 dias.
+⚠ Exposição de caixa: entrada de R$ 22.000 contra custo direto de R$ 34.418 —
+  cobre 64%, deixando R$ 12.418 de capital de giro por 65 dias.
 
 ⚠ MC no fechamento: 32,9% (cheio 37,6%). Abaixo da faixa ideal da casa (35–40%),
   pelo mesmo motivo de sempre — o desconto.
@@ -66,9 +72,9 @@ PRAZO     = '65 dias corridos'          # [Jonathan 20/08]
 CHEIO    = 81200                        # 6 conjuntos, motor rodado de novo
 FECHA    = 73000                        # [Jonathan 20/08] redondo, não quebrado
 ECONOMIA = CHEIO - FECHA                # 8.200 · 10,1% e não 10,0%
-ENTRADA  = round(FECHA*0.30)            # 30% cravados [Jonathan 20/08]
+ENTRADA  = 22000                        # [Jonathan 20/08] redondo; 30,1% do total
 SALDO    = FECHA - ENTRADA
-assert (ECONOMIA, ENTRADA, SALDO) == (8200, 21900, 51100)
+assert (ECONOMIA, ENTRADA, SALDO) == (8200, 22000, 51000)
 
 # ── memorial descritivo · sem quantitativo de chapa, fita e ferragem ──────
 ITENS = [
@@ -303,11 +309,11 @@ p2 = f"""<div class="page"><div class="pad">
       investimento cheio.</div></div>
   </div>
   <div class="pf" style="margin-top:5mm">
-    <div class="c"><div class="k">Entrada de 30% na assinatura</div>
+    <div class="c"><div class="k">Entrada na assinatura</div>
       <div class="v">R$ {brl(ENTRADA)}</div>
       <div class="s">Libera a compra de material e a entrada do projeto na fila
       de produção.</div></div>
-    <div class="c"><div class="k">Saldo de 70% à vista, após a entrega</div>
+    <div class="c"><div class="k">Saldo à vista, após a entrega</div>
       <div class="v">R$ {brl(SALDO)}</div>
       <div class="s">Pago depois da instalação concluída e conferida na obra.
       Não há parcela durante a produção.</div></div>
@@ -429,7 +435,7 @@ p7 = f"""<div class="page"><div class="pad">
         ordem em que a obra puder recebê-los.</div></div>
       <div class="term"><div class="k">Pagamento</div>
         <div class="v">R$ {brl(ENTRADA)} + R$ {brl(SALDO)}</div>
-        <div class="s">Entrada de 30% na assinatura e saldo de 70% à vista após a instalação
+        <div class="s">Entrada na assinatura e saldo à vista após a instalação
         concluída e conferida na obra. Não há parcela durante a produção.</div></div>
       <div class="term"><div class="k">Validade da condição</div>
         <div class="v">Até sábado, 22 de agosto de 2026</div>
