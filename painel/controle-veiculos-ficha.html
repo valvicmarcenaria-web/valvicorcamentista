@@ -35,6 +35,12 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:#8a8a8a}
 .ident .k{font-size:5.9pt;letter-spacing:.13em;text-transform:uppercase;
           color:var(--muted);font-weight:600}
 .ident .v{height:5.6mm;border-bottom:.25mm dotted #b9c2cc;margin-top:.8mm}
+.ident .carros{display:flex;gap:3.2mm;margin-top:1.4mm;align-items:center}
+.ident .carros .o{display:flex;align-items:center;gap:1.2mm;font-size:6.6pt;
+                  white-space:nowrap;line-height:1.2}
+.ident .carros .o b{font-size:6.9pt;color:var(--navy)}
+.ident .carros .cx{width:2.9mm;height:2.9mm;border:.3mm solid var(--ink);border-radius:.5mm;
+                   display:inline-block;flex-shrink:0}
 
 table{width:100%;border-collapse:collapse;table-layout:fixed}
 thead th{background:var(--navy2);color:#fff;font-size:6.1pt;font-weight:600;
@@ -103,8 +109,12 @@ tbody tr:nth-child(even) td{background:#fafbfc}
   <div class="gold-rule"></div>
   <div class="body">
     <div class="ident">
-      <div class="f" style="flex:1.5"><div class="k">Veículo — modelo</div><div class="v"></div></div>
-      <div class="f"><div class="k">Placa</div><div class="v"></div></div>
+      <div class="f" style="flex:2.6"><div class="k">Veículo — marque qual</div>
+        <div class="carros">
+          <span class="o"><span class="cx"></span> Mobi <b>TEN0J18</b></span>
+          <span class="o"><span class="cx"></span> Saveiro <b>TCR0D79</b></span>
+          <span class="o"><span class="cx"></span> Montana <b>QUY4166</b></span>
+        </div></div>
       <div class="f"><div class="k">Mês / Ano</div><div class="v"></div></div>
       <div class="f"><div class="k">KM no início do mês</div><div class="v"></div></div>
       <div class="f" style="flex:1.3"><div class="k">Responsável pela ficha</div><div class="v"></div></div>
