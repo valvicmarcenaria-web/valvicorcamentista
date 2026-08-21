@@ -43,16 +43,16 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:#8a8a8a}
 .grade th.dia.fds{background:#24405f}
 .grade th.pes{background:var(--navy);color:#fff;font-size:9pt;letter-spacing:.14em;
               text-transform:uppercase;font-weight:700;padding:2.6mm 3mm;text-align:left}
-.grade td{border:.3mm solid var(--line);vertical-align:top;padding:1.4mm}
+.grade td{border:.3mm solid var(--line);vertical-align:top;padding:1.1mm}
 .grade td.fds{background:#fafbfc}
-.grade td.pes{background:var(--pale);border-left:0;padding:2.4mm 3mm;vertical-align:middle}
+.grade td.pes{background:var(--pale);border-left:0;padding:2mm 3mm;vertical-align:middle}
 .grade td.pes .nm{font-size:12.5pt;font-weight:700;color:var(--navy);line-height:1.1}
 .grade td.pes .fn{font-size:7.6pt;color:var(--muted);margin-top:.6mm;line-height:1.25}
 .grade td.pes .fr{display:inline-block;font-size:6.6pt;font-weight:700;letter-spacing:.08em;
                   background:var(--goldbg);color:#7A5B17;padding:.4mm 1.4mm;border-radius:1mm;
                   margin-top:.8mm}
 
-.card{border-radius:1.2mm;padding:1.6mm 2mm 1.6mm 2.6mm;margin-bottom:1.2mm;
+.card{border-radius:1.2mm;padding:1.3mm 2mm 1.3mm 2.6mm;margin-bottom:1mm;
       position:relative;overflow:hidden}
 .card:last-child{margin-bottom:0}
 .card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1.3mm}
@@ -65,15 +65,15 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:#8a8a8a}
 .card.off{background:#eef0f2;border:.35mm dashed #b9c2cc}
 .card .q{position:absolute;right:1.4mm;bottom:1.2mm;font-size:6.6pt;font-weight:800;
          color:#8a6d3b;letter-spacing:.06em}
-.vazio{height:100%;min-height:8mm}
+.vazio{height:100%;min-height:7mm}
 
-.leg{display:flex;gap:2mm;flex-wrap:wrap;margin-top:3mm;align-items:center}
+.leg{display:flex;gap:2mm;flex-wrap:wrap;margin-top:2.4mm;align-items:center}
 .leg .i{display:flex;align-items:center;gap:1.4mm;font-size:8.4pt;font-weight:600}
 .leg .sw{width:5mm;height:5mm;border-radius:1mm}
 .leg .lbl{font-size:8pt;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
           font-weight:700;margin-right:1mm}
 
-.avisos{display:flex;gap:4mm;margin-top:3mm}
+.avisos{display:flex;gap:3.4mm;margin-top:2.4mm}
 .aviso{flex:1;border:.35mm solid var(--line);border-left:1.4mm solid var(--gold);
        border-radius:1mm;padding:2.4mm 3mm;background:#fffdf7}
 .aviso .h{font-size:7.6pt;letter-spacing:.14em;text-transform:uppercase;color:#7A5B17;
@@ -121,7 +121,8 @@ const P={
  carla:{n:'Carla',c:'#2F7D4F'}, bernardo:{n:'Bernardo',c:'#6B4E8C'},
  augusto:{n:'Augusto',c:'#B0413F'}, simony:{n:'Simony',c:'#0E2038'},
  patricia:{n:'Patrícia',c:'#8a6d3b'}, rejane:{n:'Rejane',c:'#A8562E'},
- luciana:{n:'Luciana Rajão',c:'#4F6B7A'}, medicao:{n:'Medição',c:'#157A8C'}
+ luciana:{n:'Luciana Rajão',c:'#4F6B7A'}, maria:{n:'Maria',c:'#8C3F63'},
+ medicao:{n:'Medição',c:'#157A8C'}
 };
 const hex2rgba=(h,a)=>{const n=parseInt(h.slice(1),16);
   return `rgba(${n>>16&255},${n>>8&255},${n&255},${a})`};
@@ -176,8 +177,11 @@ const f1=[
    card('lucas','Rack')+card('carla','Suporte na cozinha',1),
    '','','','','',''],S1),
  linha('Maurílio<br>+ ajudante','Marcenaria',1,['','','','','',
-   card('simony','2 banheiros + bancada<br>e prateleiras da Duda',1),
-   card('simony','2 banheiros + bancada<br>e prateleiras da Duda',1)],S1),
+   card('simony','2 banheiros + bancada<br>e prateleiras da Duda'),
+   card('simony','2 banheiros + bancada<br>e prateleiras da Duda')],S1),
+ linha('Jomar','Supervisão do domingo',0,['',
+   card('cristiane','Supervisão do dia<br>— responde pela fábrica',1),
+   '','','','',''],S1),
  linha('Paulo','Sócio · Operações',0,['','','','',
    card('medicao','3 medições técnicas<br><b>Andrea</b> Vila da Serra · <b>Cristiane</b> Santo Antônio · <b>Cristiane lâmina</b> Coração de Jesus'),
    '',''],S1)
@@ -186,7 +190,7 @@ const f1=[
 /* ═══════════ FOLHA 2 · 29/08 a 04/09 ═══════════ */
 const f2=[
  linha('Deivson','Coordenação de produção',0,[
-   card('simony','Coordena o mutirão<br>de fabricação'),off('Workshop'),
+   off('Não estará presente'),off('Workshop'),
    card('augusto','Fechamento da obra'),
    card('simony','Coordenação · ronda<br>das duas frentes'),
    card('simony','Coordenação · ronda<br>das duas frentes'),
@@ -204,12 +208,12 @@ const f2=[
    card('simony','Porta e prateleira<br>da sala'),
    card('simony','Porta e prateleira<br>+ vistoria')],S2),
  linha('Cezar','Marceneiro · fábrica',0,[
-   card('simony','Mutirão de fabricação'),'',
+   card('simony','Mutirão de fabricação',1),'',
    card('luciana','Reinstalação das<br>portas e alisares'),
-   card('simony','Fábrica — liberando<br>peça para a obra'),
-   card('simony','Fábrica — liberando<br>peça para a obra'),
-   card('simony','Fábrica — liberando<br>peça para a obra'),
-   card('simony','Fábrica — liberando<br>peça para a obra')],S2),
+   card('maria','Fabricação<br>Vale dos Cristais'),
+   card('maria','Fabricação<br>Vale dos Cristais'),
+   card('maria','Fabricação<br>Vale dos Cristais'),
+   card('maria','Fabricação<br>Vale dos Cristais')],S2),
  linha('Douglas','Marceneiro',1,[
    card('simony','Mutirão de fabricação',1),
    card('simony','Hóspede · porta e<br>prateleira da sala',1),
@@ -232,8 +236,8 @@ const PRIO=[
  ['Porta da sala e prateleira','Última da fila — Jackson, quinta e sexta. Ganhou folga: só precisa estar pronta na <b>quarta 2</b>, não no domingo.']
 ];
 const FAB=[
- ['2 banheiros','Maurílio + ajudante','Qui 27 e Sex 28','Sáb 29','A confirmar'],
- ['Bancada e prateleiras — Duda','Maurílio + ajudante','Qui 27 e Sex 28','Dom 30','A confirmar'],
+ ['2 banheiros','Maurílio + ajudante','Qui 27 e Sex 28','Sáb 29','Confirmado'],
+ ['Bancada e prateleiras — Duda','Maurílio + ajudante','Qui 27 e Sex 28','Dom 30','Confirmado'],
  ['Cozinha da Simony','Cezar','Qui 27 e Sex 28','Sex 28','Confirmado'],
  ['Porta do lavabo','Mutirão de sábado','Sáb 29','Sáb 29','A confirmar'],
  ['Despensa','Mutirão de sábado','Sáb 29','Sáb 29','A confirmar'],
@@ -249,11 +253,11 @@ const MONT=[
  ['Qui 3 set','Porta e prateleira da sala — <b>Jackson</b> · Samuel vai para a Rejane'],
  ['Sex 4 set','Fecha porta e prateleira · vistoria final com a cliente']];
 const DEC=[
- ['Confirmar Maurílio e ajudante','Ter 25'],
+ ['Confirmar o Jomar nos domingos 23 e 30','Sáb 22'],
  ['Combinar com o Cezar: referência da fábrica qui e sex','Seg 24'],
- ['Confirmar o mutirão de sábado 29','Qua 26'],
+ ['Confirmar Jackson e Cezar no sábado 29','Qua 26'],
+ ['Definir quem responde pela fábrica no sábado 29','Qua 26'],
  ['Liberar portas e alisares da Luciana Rajão','Qua 26'],
- ['Confirmar o Jomar na supervisão do domingo 30','Qui 27'],
  ['Conferir todo o material da Simony em estoque','Sex 28'],
  ['Validar o filho do Sr. Paulo como freelancer','Sex 28'],
  ['Pedir os espelhos assim que o banheiro subir','Seg 31']];
@@ -262,7 +266,7 @@ const DEC=[
 const ENTREGAS=[['Carla','Cozinha'],['Lucas','Lavanderia, prateleiras e rack'],
  ['Cristiane','Cristaleira, gourmet, rack e gaveteiros'],['Bernardo','—'],
  ['Augusto','Montagem — fecha em 31/08'],
- ['Luciana Rajão','Portas e alisares — reinstalação'],
+ ['Luciana Rajão','Portas e alisares — 31/08'],
  ['Simony','Banheiros'],['Simony','Cozinha, lavabo e despensa'],
  ['Simony','Quarto da Duda e hóspede'],['Simony','Porta e prateleira da sala'],
  ['Patrícia','Nicho'],['Rejane','Fechamento da obra'],['',''],['','']];
@@ -279,20 +283,20 @@ document.getElementById('app').innerHTML = `
     ${legenda(['carla','lucas','cristiane','bernardo','augusto','simony','luciana','medicao'])}
     <div class="avisos">
       <div class="aviso"><div class="h">Sábado 22 é o dia mais cheio</div>
-        <div class="c">Quatro frentes ao mesmo tempo. O Deivson coordena <b>e</b> executa a cozinha
-        da Carla — se o dia apertar, a coordenação é que se perde primeiro.</div></div>
-      <div class="aviso risco"><div class="h">Maurílio responde até terça 25</div>
-        <div class="c">Ele carrega <b>três</b> entregas: os 2 banheiros, a bancada e as prateleiras
-        da Duda. Sem resposta na terça, tudo isso cai no mutirão de sábado 29 e a porta e a
-        prateleira da sala saem do domingo para o pós-horário de segunda e terça.</div></div>
+        <div class="c">Quatro frentes juntas. O Deivson coordena <b>e</b> executa a cozinha da
+        Carla — se apertar, a coordenação é a primeira a se perder.</div></div>
+      <div class="aviso risco"><div class="h">O sábado 29 já está esvaziando</div>
+        <div class="c"><b>Deivson fora</b>, <b>Jackson a confirmar</b>, <b>Cezar talvez</b>.
+        Douglas e Baiano produzem mas não respondem pela fábrica. Definir até <b>quarta 26</b>
+        quem abre o dia.</div></div>
       <div class="aviso risco"><div class="h">A partir de quarta a fábrica fica sem o Deivson</div>
-        <div class="c">Ele abre a obra do Augusto na <b>quarta 26</b> e fica lá até sexta — que são
-        justamente os dois dias de fabricação da Simony. A referência da fábrica na quinta e na
-        sexta passa a ser o <b>Cezar</b>. Combinar isso com ele na segunda 24.</div></div>
+        <div class="c">Ele abre a obra do Augusto na <b>quarta 26</b> e fica até sexta — os dois
+        dias de fabricação da Simony. Referência da fábrica passa a ser o <b>Cezar</b>; combinar
+        na segunda 24.</div></div>
       <div class="aviso risco"><div class="h">Cezar tem prazo na quarta</div>
         <div class="c">Portas e alisares da <b>Luciana Rajão</b> liberados até <b>quarta 26</b>, em
-        pós-horário, para reinstalar no dia 31. É retrabalho — e retrabalho que escorrega vira
-        reclamação, não só atraso.</div></div>
+        pós-horário, para reinstalar na <b>segunda 31</b>. Sem isso, a segunda dele vira dia
+        perdido.</div></div>
     </div>
   </div>
   <div class="rf"><span>Atualizado em 21/08/2026 · substitua esta folha toda segunda-feira</span>
@@ -307,8 +311,13 @@ document.getElementById('app').innerHTML = `
   <div class="gold-rule"></div>
   <div class="body">
     <table class="grade"><thead>${cabeca(S2)}</thead><tbody>${f2}</tbody></table>
-    ${legenda(['simony','augusto','luciana','rejane','patricia','medicao'])}
+    ${legenda(['simony','augusto','maria','luciana','rejane','patricia','medicao'])}
     <div class="avisos">
+      <div class="aviso risco"><div class="h">Sábado 29 está sem quem responda</div>
+        <div class="c">Deivson fora, Jackson a confirmar, Cezar talvez. Sobram Douglas e Baiano —
+        freelancers, que produzem mas não respondem pela fábrica. O <b>Jomar cobre os dois
+        domingos</b>; o sábado continua sem nome. Com o Maurílio confirmado, resta pouco no dia:
+        porta do lavabo e despensa — e elas só são exigidas na quarta 2.</div></div>
       <div class="aviso risco"><div class="h">Segunda 31 a fábrica fica vazia</div>
         <div class="c">Quatro frentes em obra ao mesmo tempo: banheiros (Samuel), cozinha (Jackson),
         Luciana Rajão (Cezar) e fechamento do Augusto (Deivson). <b>Se faltar uma peça na segunda,
@@ -323,9 +332,9 @@ document.getElementById('app').innerHTML = `
         É o único item da obra que depende de fornecedor externo — o relógio dele começa a
         contar no dia da instalação, não no dia do pedido interno.</div></div>
       <div class="aviso"><div class="h">A Simony sobe com duas pessoas</div>
-        <div class="c">Samuel e Jackson, e o calendário fecha. Mas não existe um terceiro
-        marceneiro interno de reserva: o Cezar está preso à fábrica liberando peça para a obra.
-        Se quiser folga nessa semana, o terceiro corpo tem que vir de fora.</div></div>
+        <div class="c">Samuel e Jackson, e o calendário fecha. Mas de <b>1 a 4</b> o Cezar está na
+        fabricação da <b>Maria — Vale dos Cristais</b>: não há reserva interna nenhuma. Se quiser
+        folga nessa semana, o terceiro corpo tem que vir de fora.</div></div>
     </div>
   </div>
   <div class="rf"><span>Borda tracejada = depende de confirmação de freelancer ou de decisão de equipe</span>
@@ -350,9 +359,9 @@ document.getElementById('app').innerHTML = `
                           color:var(--muted);font-weight:800">A conta do prazo</div>
               <div style="font-size:8.8pt;line-height:1.42;margin-top:1.4mm">
                 A montagem começa <b>segunda 31</b> e roda em <b>duas frentes paralelas</b> —
-                Samuel e Jackson — durante cinco dias. A fabricação tem quatro: quinta 27,
-                sexta 28, sábado 29 e domingo 30. O único item com folga real é a porta e a
-                prateleira da sala, exigidas só na quarta 2.</div>
+                Samuel e Jackson — durante cinco dias. A fabricação tem quatro dias: 27, 28, 29 e
+                30, mas só 27 e 28 têm equipe confirmada (Maurílio e Cezar). O que tem folga real
+                é a porta e a prateleira da sala, exigidas só na quarta 2.</div>
             </div>
             <div style="border-top:.3mm solid var(--line);padding-top:2.8mm;margin-top:3mm">
               <div style="font-size:8pt;letter-spacing:.14em;text-transform:uppercase;
@@ -367,11 +376,11 @@ document.getElementById('app').innerHTML = `
               <div style="font-size:8pt;letter-spacing:.14em;text-transform:uppercase;
                           color:var(--muted);font-weight:800">Plano B, por cenário</div>
               <div style="font-size:8.6pt;line-height:1.4;margin-top:1.6mm">
-                <b>Maurílio não vem</b> (resposta até ter 25) → banheiros e Duda caem no mutirão de
-                sábado 29; porta e prateleira da sala saem do domingo para o pós-horário de
-                segunda e terça.<br><br>
-                <b>Domingo não abre</b> (sem o Jomar) → nicho e prateleiras do hóspede sobem para o
-                sábado; porta e prateleira, para o pós-horário.<br><br>
+                <b>Sábado 29 não abre</b> → porta do lavabo e despensa vão para o pós-horário de
+                segunda e terça. Dá: o Jackson começa pela cozinha, que já está pronta desde
+                sexta, e o lavabo entra no terceiro dia.<br><br>
+                <b>Domingo 30 não abre</b> → nicho e prateleiras do hóspede vão para o pós-horário
+                de segunda (exigidos terça 1); porta e prateleira, para o de terça.<br><br>
                 <b>Falta material</b> → é o único cenário sem plano B, e na segunda 31 não há
                 ninguém na fábrica para socorrer. Conferência de estoque na <b>sexta 28</b>.</div>
             </div>
@@ -390,10 +399,11 @@ document.getElementById('app').innerHTML = `
                   color:${f[4]==='Confirmado'?'#2F7D4F':'#8a6d3b'}">${f[4]}</span></td>
                 <td class="c"><span class="cx2"></span></td></tr>`).join('')}</tbody></table>
             <div class="aviso risco" style="margin-top:3mm">
-              <div class="h">Duas confirmações seguram o plano inteiro</div>
-              <div class="c"><b>Maurílio e ajudante</b> na quinta e sexta — sem eles não saem os
-              banheiros nem a Duda, e sem banheiro instalado não há pedido de espelho.<br>
-              <b>Mutirão de sábado 29</b> — sem ele, metade das peças não existe na segunda.</div>
+              <div class="h">O sábado 29 é o risco que sobrou</div>
+              <div class="c">Com o <b>Maurílio confirmado</b> na quinta e sexta, banheiros e Duda
+              saem da conta. Resta o sábado: <b>porta do lavabo e despensa</b>, num dia sem o
+              Deivson, com o Jackson a confirmar e o Cezar em talvez. Elas só são exigidas na
+              quarta 2 — se o sábado não abrir, vão para o pós-horário de segunda e terça.</div>
             </div>
           </div>
         </div>
@@ -460,8 +470,8 @@ document.getElementById('app').innerHTML = `
         arredonde, o número só serve se for honesto.</div></div>
       <div class="aviso"><div class="h">Retrabalho é o dado mais valioso desta folha</div>
         <div class="c">Marque sempre que uma peça voltar, mesmo que o conserto tenha sido rápido.
-        A <b>Luciana Rajão</b> já entra aqui como retrabalho. Se a causa mais comum do mês for
-        <b>medição</b>, o problema não está na produção — está antes dela.</div></div>
+        Se a causa mais comum do mês for <b>medição</b>, o problema não está na produção —
+        está antes dela. É isso que a folha existe para revelar.</div></div>
       <div class="aviso"><div class="h">Fechamento</div>
         <div class="c">No último dia útil, preencha os seis números do topo, fotografe a folha e
         arquive. A folha nova entra no lugar. Doze folhas ao ano contam a história inteira da
