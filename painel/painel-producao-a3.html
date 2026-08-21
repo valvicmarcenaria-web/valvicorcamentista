@@ -1,0 +1,430 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<title>Valvic · Painel de Produção</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0E2038;--navy2:#16314F;--gold:#C2A05A;--goldsoft:#d8bd80;
+      --goldbg:#F6EDD6;--ink:#1b2733;--muted:#6c7785;--line:#e3e7ec;--pale:#f5f7f9}
+*{margin:0;padding:0;box-sizing:border-box}
+@page{size:A3 landscape;margin:0}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:#8a8a8a}
+.sheet{width:420mm;height:297mm;background:#fff;position:relative;overflow:hidden;
+       page-break-after:always;display:flex;flex-direction:column}
+.sheet:last-child{page-break-after:auto}
+@media print{body{background:#fff}}
+@media screen{.sheet{margin:10mm auto;box-shadow:0 3px 22px rgba(0,0,0,.35)}}
+
+.rh{background:var(--navy);color:#fff;padding:6mm 14mm 5mm;display:flex;
+    align-items:flex-end;justify-content:space-between}
+.rh .kx{font-size:8.6pt;letter-spacing:.24em;text-transform:uppercase;
+        color:var(--goldsoft);font-weight:700}
+.rh .tt{font-family:'Cormorant Garamond',serif;font-size:30pt;font-weight:600;
+        line-height:1.02;margin-top:1mm}
+.rh .r{text-align:right;font-size:9pt;color:#9FB0C4;line-height:1.5}
+.rh .r b{color:#fff;font-weight:700;font-size:10.5pt}
+.gold-rule{height:1.6mm;background:linear-gradient(90deg,var(--gold),var(--goldsoft))}
+.body{flex:1;padding:6mm 14mm 4mm;display:flex;flex-direction:column;min-height:0}
+.rf{background:var(--goldbg);padding:3mm 14mm;font-size:8pt;color:#7A5B17;
+    display:flex;justify-content:space-between;align-items:center;font-weight:500}
+
+.sec{font-family:'Cormorant Garamond',serif;font-size:16pt;font-weight:600;color:var(--navy);
+     display:flex;align-items:center;gap:3mm;margin:0 0 3mm}
+.sec .bar{width:7mm;height:1.2mm;background:var(--gold)}
+.sec .hint{font-family:'Inter',sans-serif;font-size:8.4pt;color:var(--muted);font-weight:400}
+
+/* ---------- grade da semana ---------- */
+.grade{width:100%;border-collapse:collapse;table-layout:fixed;flex:1}
+.grade th.dia{background:var(--navy2);color:#fff;padding:2.6mm 1mm;text-align:center;
+              border-right:.3mm solid #2a4a70}
+.grade th.dia .d{font-size:8pt;letter-spacing:.16em;text-transform:uppercase;
+                 color:var(--goldsoft);font-weight:700}
+.grade th.dia .n{font-size:15pt;font-weight:700;line-height:1.1}
+.grade th.dia.fds{background:#24405f}
+.grade th.pes{background:var(--navy);color:#fff;font-size:9pt;letter-spacing:.14em;
+              text-transform:uppercase;font-weight:700;padding:2.6mm 3mm;text-align:left}
+.grade td{border:.3mm solid var(--line);vertical-align:top;padding:1.4mm}
+.grade td.fds{background:#fafbfc}
+.grade td.pes{background:var(--pale);border-left:0;padding:2.4mm 3mm;vertical-align:middle}
+.grade td.pes .nm{font-size:12.5pt;font-weight:700;color:var(--navy);line-height:1.1}
+.grade td.pes .fn{font-size:7.6pt;color:var(--muted);margin-top:.6mm;line-height:1.25}
+.grade td.pes .fr{display:inline-block;font-size:6.6pt;font-weight:700;letter-spacing:.08em;
+                  background:var(--goldbg);color:#7A5B17;padding:.4mm 1.4mm;border-radius:1mm;
+                  margin-top:.8mm}
+
+.card{border-radius:1.2mm;padding:1.6mm 2mm 1.6mm 2.6mm;margin-bottom:1.2mm;
+      position:relative;overflow:hidden}
+.card:last-child{margin-bottom:0}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1.3mm}
+.card .p{font-size:7.6pt;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+         line-height:1.1}
+.card .t{font-size:8.6pt;line-height:1.28;margin-top:.8mm;color:var(--ink)}
+.card .cx{position:absolute;right:1.6mm;top:1.6mm;width:3.6mm;height:3.6mm;
+          border:.35mm solid rgba(0,0,0,.28);border-radius:.6mm;background:rgba(255,255,255,.7)}
+.card.conf{border:.35mm dashed rgba(0,0,0,.35);padding-bottom:4.6mm}
+.card .q{position:absolute;right:1.4mm;bottom:1.2mm;font-size:6.6pt;font-weight:800;
+         color:#8a6d3b;letter-spacing:.06em}
+.vazio{height:100%;min-height:8mm}
+
+.leg{display:flex;gap:2mm;flex-wrap:wrap;margin-top:3mm;align-items:center}
+.leg .i{display:flex;align-items:center;gap:1.4mm;font-size:8.4pt;font-weight:600}
+.leg .sw{width:5mm;height:5mm;border-radius:1mm}
+.leg .lbl{font-size:8pt;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+          font-weight:700;margin-right:1mm}
+
+.avisos{display:flex;gap:4mm;margin-top:3mm}
+.aviso{flex:1;border:.35mm solid var(--line);border-left:1.4mm solid var(--gold);
+       border-radius:1mm;padding:2.4mm 3mm;background:#fffdf7}
+.aviso .h{font-size:7.6pt;letter-spacing:.14em;text-transform:uppercase;color:#7A5B17;
+          font-weight:800}
+.aviso .c{font-size:8.8pt;line-height:1.4;margin-top:1.2mm}
+.aviso.risco{border-left-color:#B0413F;background:#fef8f7}
+.aviso.risco .h{color:#B0413F}
+
+/* ---------- folha 3 ---------- */
+.cols{display:flex;gap:5mm;flex:1;min-height:0}
+.col{flex:1;display:flex;flex-direction:column;min-width:0}
+.box{border:.35mm solid var(--navy2);border-radius:1.2mm;overflow:hidden;display:flex;
+     flex-direction:column}
+.box>.h{background:var(--navy2);color:#fff;font-size:9pt;font-weight:700;letter-spacing:.12em;
+        text-transform:uppercase;padding:2.2mm 3mm}
+.box>.c{padding:3mm;flex:1}
+.prio{display:flex;gap:2.4mm;align-items:flex-start;margin-bottom:2.8mm}
+.prio .n{width:8mm;height:8mm;border-radius:50%;background:var(--navy);color:#fff;
+         display:flex;align-items:center;justify-content:center;font-size:11pt;font-weight:800;
+         flex-shrink:0}
+.prio .t{font-size:10.5pt;font-weight:700;color:var(--navy);line-height:1.2}
+.prio .w{font-size:8.4pt;color:var(--muted);line-height:1.35;margin-top:.8mm}
+.tb{width:100%;border-collapse:collapse}
+.tb th{background:#eef1f4;font-size:7.8pt;color:var(--navy2);font-weight:700;padding:2.4mm 1.6mm;
+       border:.25mm solid var(--line);letter-spacing:.06em;text-align:left}
+.tb td{border:.25mm solid var(--line);padding:3.1mm 1.6mm;font-size:8.8pt;line-height:1.25}
+.tb td.c{text-align:center}
+.pill{display:inline-block;font-size:7.2pt;font-weight:800;letter-spacing:.06em;
+      padding:.5mm 1.6mm;border-radius:1mm;text-transform:uppercase}
+.cx2{display:inline-block;width:4.2mm;height:4.2mm;border:.35mm solid #8b96a3;border-radius:.6mm}
+
+/* ---------- folha 4 ---------- */
+.kpis{display:flex;gap:4mm;margin-bottom:4mm}
+.kpi{flex:1;border:.35mm solid var(--navy2);border-radius:1.2mm;text-align:center;
+     padding:3mm 2mm;background:var(--pale)}
+.kpi .k{font-size:7.6pt;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+        font-weight:700}
+.kpi .v{height:13mm;border-bottom:.4mm solid #b9c2cc;margin:2mm 4mm 0}
+.kpi .u{font-size:7.4pt;color:var(--muted);margin-top:1.4mm}
+</style></head><body>
+<div id="app"></div>
+<script>
+const P={
+ cristiane:{n:'Cristiane',c:'#B08442'}, lucas:{n:'Lucas',c:'#2F5D8C'},
+ carla:{n:'Carla',c:'#2F7D4F'}, bernardo:{n:'Bernardo',c:'#6B4E8C'},
+ augusto:{n:'Augusto',c:'#B0413F'}, simony:{n:'Simony',c:'#0E2038'},
+ patricia:{n:'Patrícia',c:'#8a6d3b'}, medicao:{n:'Medição',c:'#157A8C'}
+};
+const hex2rgba=(h,a)=>{const n=parseInt(h.slice(1),16);
+  return `rgba(${n>>16&255},${n>>8&255},${n&255},${a})`};
+const card=(k,t,conf)=>{const p=P[k];
+  return `<div class="card${conf?' conf':''}" style="background:${hex2rgba(p.c,.10)}">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:1.3mm;background:${p.c}"></span>
+    <div class="cx"></div><div class="p" style="color:${p.c}">${p.n}</div>
+    <div class="t">${t}</div>${conf?'<div class="q">A CONFIRMAR</div>':''}</div>`};
+const linha=(pes,fn,fr,cels,dias)=>`<tr>
+  <td class="pes"><div class="nm">${pes}</div><div class="fn">${fn}</div>
+    ${fr?'<div class="fr">FREELANCER</div>':''}</td>
+  ${dias.map((d,i)=>`<td class="${d.fds?'fds':''}">${cels[i]||'<div class="vazio"></div>'}</td>`).join('')}</tr>`;
+const cabeca=(dias)=>`<tr><th class="pes">Equipe</th>${dias.map(d=>
+  `<th class="dia${d.fds?' fds':''}"><div class="d">${d.d}</div><div class="n">${d.n}</div></th>`).join('')}</tr>`;
+const legenda=(ks)=>`<div class="leg"><span class="lbl">Projetos</span>${ks.map(k=>
+  `<span class="i"><span class="sw" style="background:${P[k].c}"></span>${P[k].n}</span>`).join('')}
+  <span class="i" style="margin-left:4mm"><span class="sw" style="border:.4mm dashed #8a6d3b;background:#fff"></span>A confirmar</span>
+  <span class="i"><span class="sw" style="border:.35mm solid #8b96a3;background:#fff"></span>Marque ao concluir</span></div>`;
+
+const S1=[{d:'Sábado',n:'22',fds:1},{d:'Domingo',n:'23',fds:1},{d:'Segunda',n:'24'},
+          {d:'Terça',n:'25'},{d:'Quarta',n:'26'},{d:'Quinta',n:'27'},{d:'Sexta',n:'28'}];
+const S2=[{d:'Sábado',n:'29',fds:1},{d:'Domingo',n:'30',fds:1},{d:'Segunda',n:'31'},
+          {d:'Terça',n:'1 set'},{d:'Quarta',n:'2 set'},{d:'Quinta',n:'3 set'},{d:'Sexta',n:'4 set'}];
+
+/* ═══════════ FOLHA 1 ═══════════ */
+const f1=[
+ linha('Deivson','Coordenação de produção',0,[
+   card('carla','Coordenação do dia<br>+ cozinha'),'',
+   card('carla','Montagem da cozinha'),card('carla','Montagem da cozinha'),
+   card('augusto','Montagem do serviço'),card('augusto','Montagem do serviço'),
+   card('augusto','Montagem do serviço')],S1),
+ linha('Samuel','Marceneiro sênior',0,['','',
+   card('cristiane','Montagem')+card('bernardo','Pós-horário'),
+   card('cristiane','Montagem')+card('bernardo','Pós-horário'),
+   card('cristiane','Montagem')+card('bernardo','Pós-horário'),
+   card('cristiane','Montagem'),card('cristiane','Montagem')],S1),
+ linha('Jackson','Marceneiro pleno',0,[
+   card('lucas','Lavanderia<br>e prateleiras'),'',
+   card('lucas','Montagem'),card('lucas','Montagem'),card('lucas','Montagem'),
+   card('bernardo','Montagem'),card('bernardo','Montagem')],S1),
+ linha('Cezar','Marceneiro',0,['','',
+   card('cristiane','Fabricação'),card('cristiane','Fabricação'),card('cristiane','Fabricação'),
+   card('simony','Fabricação<br>da cozinha'),card('simony','Fabricação<br>da cozinha')],S1),
+ linha('Douglas','Marceneiro',1,[
+   card('cristiane','Cristaleira, gourmet,<br>rack e gaveteiros'),
+   card('cristiane','Continuidade'),'','','','',''],S1),
+ linha('Baiano','Marceneiro',1,[
+   card('lucas','Rack')+card('carla','Suporte na cozinha',1),
+   '','','','','',''],S1),
+ linha('Maurílio<br>+ ajudante','Marcenaria',1,['','','','','',
+   card('simony','Fabricação<br>dos 2 banheiros',1),
+   card('simony','Fabricação<br>dos 2 banheiros',1)],S1),
+ linha('Paulo','Sócio · Operações',0,['','','','',
+   card('medicao','3 medições técnicas<br><b>Andrea</b> Vila da Serra · <b>Cristiane</b> Santo Antônio · <b>Cristiane lâmina</b> Coração de Jesus'),
+   '',''],S1)
+].join('');
+
+/* ═══════════ FOLHA 2 ═══════════ */
+const f2=[
+ linha('Deivson','Coordenação de produção',0,[
+   card('simony','Coordenação do mutirão<br>de fabricação',1),'',
+   card('simony','Montagem — banheiros'),card('simony','Montagem — banheiros'),
+   card('simony','Montagem — cozinha,<br>lavabo e despensa'),
+   card('simony','Montagem — Duda<br>e hóspedes'),
+   card('simony','Montagem — porta<br>e prateleira da sala')],S2),
+ linha('Samuel','Marceneiro sênior',0,['','',
+   card('simony','Montagem',1),card('simony','Montagem',1),card('simony','Montagem',1),
+   card('simony','Montagem',1),card('simony','Montagem',1)],S2),
+ linha('Jackson','Marceneiro pleno',0,[
+   card('simony','Mutirão de fabricação',1),'',
+   card('simony','Montagem',1),card('simony','Montagem',1),card('simony','Montagem',1),
+   card('simony','Montagem',1),card('simony','Montagem',1)],S2),
+ linha('Cezar','Marceneiro',0,['','','','','','',''],S2),
+ linha('Douglas','Marceneiro',1,[
+   card('simony','Mutirão de fabricação',1),card('simony','Continuidade',1),
+   '','','','',''],S2),
+ linha('Baiano','Marceneiro',1,[
+   card('simony','Mutirão de fabricação',1),'','','','','',''],S2),
+ linha('A definir','Extra horário',0,['','','','','','',''],S2),
+ linha('Paulo','Sócio · Operações',0,['','','','',
+   card('medicao','3 medições técnicas<br><b>Flávia</b> Contagem · <b>Nádia</b> Xangrilá · <b>Eliuton</b> Xangrilá'),
+   '',''],S2)
+].join('');
+
+/* ═══════════ FOLHA 3 · SIMONY ═══════════ */
+const PRIO=[
+ ['Banheiros — 2','Precisam estar instalados antes de tudo: é a instalação que libera o pedido dos espelhos. Atrasar aqui atrasa um fornecedor externo.'],
+ ['Cozinha, lavabo e despensa','A cozinha já está na mão do Cezar na quinta e sexta. Porta do lavabo e despensa entram no mutirão de sábado.'],
+ ['Quarto da Duda e hóspedes','Bancada e prateleiras da Duda · nicho e prateleiras do hóspede. Peças menores, boas para o domingo.'],
+ ['Porta da sala e prateleira','Última da fila. É a que aceita escorregar se algo estourar antes.']
+];
+const FAB=[
+ ['2 banheiros','Maurílio + ajudante','Qui 27 e Sex 28','Sex 28','A confirmar'],
+ ['Cozinha da Simony','Cezar','Qui 27 e Sex 28','Sex 28','Confirmado'],
+ ['Porta do lavabo','Mutirão de sábado','Sáb 29','Sáb 29','A confirmar'],
+ ['Despensa','Mutirão de sábado','Sáb 29','Sáb 29','A confirmar'],
+ ['Bancada e prateleiras — Duda','Mutirão de sábado','Sáb 29','Sáb 29','A confirmar'],
+ ['Nicho e prateleiras — hóspede','Douglas','Dom 30','Dom 30','A confirmar'],
+ ['Porta da sala','Douglas','Dom 30','Dom 30','A confirmar'],
+ ['Prateleira da sala','Douglas','Dom 30','Dom 30','A confirmar']
+];
+const MONT=[['Seg 31','Banheiro 1 e banheiro 2'],['Ter 1 set','Fechar banheiros · pedir espelhos'],
+ ['Qua 2 set','Cozinha, lavabo e despensa'],['Qui 3 set','Quarto da Duda e hóspedes'],
+ ['Sex 4 set','Porta da sala e prateleira · vistoria final']];
+
+/* ═══════════ FOLHA 4 · PLACAR ═══════════ */
+const ENTREGAS=[['Carla','Cozinha'],['Lucas','Lavanderia, prateleiras e rack'],
+ ['Cristiane','Cristaleira, gourmet, rack e gaveteiros'],['Bernardo','—'],['Augusto','—'],
+ ['Simony','Banheiros'],['Simony','Cozinha, lavabo e despensa'],['Simony','Duda e hóspedes'],
+ ['Simony','Porta e prateleira da sala'],['Patrícia','Nicho'],['',''],['',''],['',''],['','']];
+
+document.getElementById('app').innerHTML = `
+<section class="sheet">
+  <div class="rh"><div><div class="kx">Painel de Produção · Chão de fábrica</div>
+    <div class="tt">Esta semana — 22 a 28 de agosto</div></div>
+    <div class="r"><b>VALVIC MARCENARIA</b><br>Coordenação: Deivson<br>
+      Marque o quadradinho ao concluir</div></div>
+  <div class="gold-rule"></div>
+  <div class="body">
+    <table class="grade"><thead>${cabeca(S1)}</thead><tbody>${f1}</tbody></table>
+    ${legenda(['carla','lucas','cristiane','bernardo','augusto','simony','medicao'])}
+    <div class="avisos">
+      <div class="aviso"><div class="h">Fica de pé o quê</div>
+        <div class="c"><b>Sábado 22</b> é o dia mais cheio da semana: quatro frentes ao mesmo tempo.
+        O Deivson coordena <b>e</b> executa a cozinha da Carla — se o dia apertar, a coordenação é
+        que se perde primeiro.</div></div>
+      <div class="aviso risco"><div class="h">Pendência sem dono</div>
+        <div class="c"><b>Nicho da Patrícia</b> — fabricação em extra horário, prazo até
+        <b>31/08</b>. Ainda não tem responsável definido. Sem nome e sem dia, não acontece.</div></div>
+      <div class="aviso"><div class="h">Samuel dobrado</div>
+        <div class="c">Montagem da Cristiane a semana inteira <b>mais</b> o projeto do Bernardo em
+        pós-horário de segunda a quarta. Três dias seguidos de jornada estendida — vale confirmar
+        se ele topa e se a Cristiane não sofre com isso.</div></div>
+    </div>
+  </div>
+  <div class="rf"><span>Atualizado em 21/08/2026 · substitua esta folha toda segunda-feira</span>
+    <span>VALVIC · PRODUÇÃO &nbsp;·&nbsp; 1 / 4</span></div>
+</section>
+
+<section class="sheet">
+  <div class="rh"><div><div class="kx">Painel de Produção · Chão de fábrica</div>
+    <div class="tt">Próxima semana — 29 de agosto a 4 de setembro</div></div>
+    <div class="r"><b>VALVIC MARCENARIA</b><br>Semana da <b>montagem da Simony</b><br>
+      Quase tudo aqui depende de confirmação</div></div>
+  <div class="gold-rule"></div>
+  <div class="body">
+    <table class="grade"><thead>${cabeca(S2)}</thead><tbody>${f2}</tbody></table>
+    ${legenda(['simony','medicao'])}
+    <div class="avisos">
+      <div class="aviso risco"><div class="h">A montagem não tem equipe definida</div>
+        <div class="c">A montagem da Simony começa <b>segunda 31</b> e vai até sexta. Nenhum nome foi
+        fechado. A sugestão desenhada aqui — <b>Samuel, Jackson e Deivson</b> — é o que sobra
+        naturalmente: os dois terminam Cristiane e Bernardo na sexta 28. <b>Confirmar até quinta 27.</b></div></div>
+      <div class="aviso risco"><div class="h">O mutirão de sábado é o gargalo</div>
+        <div class="c">Metade da fabricação da Simony depende de repetir a equipe do sábado
+        (Douglas, Baiano, Jackson) em <b>29/08</b>. Se não fechar, a montagem de segunda começa sem peça.
+        <b>Confirmar até quarta 26.</b></div></div>
+      <div class="aviso"><div class="h">Cezar sem pauta</div>
+        <div class="c">Depois da cozinha da Simony na sexta 28, o Cezar não tem frente definida para
+        a semana. É a folga que pode absorver o nicho da Patrícia ou reforçar o mutirão.</div></div>
+    </div>
+  </div>
+  <div class="rf"><span>As frentes marcadas com borda tracejada dependem de confirmação de freelancer ou de decisão de equipe</span>
+    <span>VALVIC · PRODUÇÃO &nbsp;·&nbsp; 2 / 4</span></div>
+</section>
+
+<section class="sheet">
+  <div class="rh"><div><div class="kx">Plano tático</div>
+    <div class="tt">Simony — da fábrica à montagem</div></div>
+    <div class="r"><b>VALVIC MARCENARIA</b><br>Fabricação: 27 a 30 de agosto<br>
+      Montagem: 31 de agosto a 4 de setembro</div></div>
+  <div class="gold-rule"></div>
+  <div class="body">
+    <div class="cols">
+      <div class="col" style="flex:.84">
+        <div class="box" style="flex:1"><div class="h">1 · A ordem, e por que ela é essa</div>
+          <div class="c">
+            ${PRIO.map((p,i)=>`<div class="prio"><div class="n">${i+1}</div>
+              <div><div class="t">${p[0]}</div><div class="w">${p[1]}</div></div></div>`).join('')}
+            <div style="border-top:.3mm solid var(--line);padding-top:2.6mm;margin-top:1mm">
+              <div style="font-size:8pt;letter-spacing:.14em;text-transform:uppercase;
+                          color:var(--muted);font-weight:800">A conta do prazo</div>
+              <div style="font-size:9pt;line-height:1.45;margin-top:1.4mm">
+                A montagem começa <b>segunda 31</b>. A fabricação tem <b>quatro dias</b>:
+                quinta 27, sexta 28, sábado 29 e domingo 30. Não há folga — o que não sair
+                até domingo entra na semana da montagem com a equipe já em obra.</div>
+            </div>
+            <div style="border-top:.3mm solid var(--line);padding-top:2.8mm;margin-top:3mm">
+              <div style="font-size:8pt;letter-spacing:.14em;text-transform:uppercase;
+                          color:#B0413F;font-weight:800">Se estourar, o que cede</div>
+              <div style="font-size:9pt;line-height:1.45;margin-top:1.4mm">
+                A ordem de prioridade é também a ordem inversa do que se sacrifica.
+                <b>A porta e a prateleira da sala são as primeiras a escorregar</b> — o cliente
+                mora com elas faltando sem grande prejuízo. Os banheiros são os últimos:
+                atrasá-los para o fim da semana empurra o espelho para a semana seguinte.</div>
+            </div>
+            <div style="border-top:.3mm solid var(--line);padding-top:2.8mm;margin-top:3mm">
+              <div style="font-size:8pt;letter-spacing:.14em;text-transform:uppercase;
+                          color:var(--muted);font-weight:800">Plano B, por cenário</div>
+              <div style="font-size:8.8pt;line-height:1.42;margin-top:1.6mm">
+                <b>Maurílio não vem</b> → o Cezar troca a cozinha pelos banheiros na quinta e
+                sexta, e a cozinha vai para o mutirão de sábado.<br><br>
+                <b>Mutirão de sábado não fecha</b> → montar só os banheiros na semana de 31 e
+                remarcar o restante com o cliente <b>antes</b> de segunda, não no meio da semana.<br><br>
+                <b>Falta material</b> → é o único cenário sem plano B. Por isso conferir o
+                estoque dos banheiros já na <b>segunda 24</b>.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="flex:1.28">
+        <div class="box" style="flex:1"><div class="h">2 · Fabricação — quem faz, quando e até quando</div>
+          <div class="c" style="padding:2mm">
+            <table class="tb"><thead><tr><th>Peça</th><th style="width:36mm">Quem</th>
+              <th style="width:26mm">Quando</th><th style="width:20mm">Prazo</th>
+              <th style="width:24mm">Situação</th><th style="width:14mm">Pronto</th></tr></thead>
+              <tbody>${FAB.map(f=>`<tr><td><b>${f[0]}</b></td><td>${f[1]}</td><td>${f[2]}</td>
+                <td class="c"><b>${f[3]}</b></td>
+                <td class="c"><span class="pill" style="background:${f[4]==='Confirmado'?'#E2F0E7':'#FBF1DC'};
+                  color:${f[4]==='Confirmado'?'#2F7D4F':'#8a6d3b'}">${f[4]}</span></td>
+                <td class="c"><span class="cx2"></span></td></tr>`).join('')}</tbody></table>
+            <div class="aviso risco" style="margin-top:3mm">
+              <div class="h">Duas confirmações seguram o plano inteiro</div>
+              <div class="c"><b>Maurílio e ajudante</b> na quinta e sexta — sem eles, os banheiros
+              não saem, e sem banheiro instalado não há pedido de espelho.<br>
+              <b>Mutirão de sábado 29</b> — sem ele, metade das peças não existe na segunda.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="flex:.88">
+        <div class="box"><div class="h">3 · Montagem — 31/08 a 04/09</div>
+          <div class="c" style="padding:2mm">
+            <table class="tb"><thead><tr><th style="width:24mm">Dia</th><th>O que entra</th>
+              <th style="width:14mm">Feito</th></tr></thead>
+              <tbody>${MONT.map(m=>`<tr><td><b>${m[0]}</b></td><td>${m[1]}</td>
+                <td class="c"><span class="cx2"></span></td></tr>`).join('')}</tbody></table>
+          </div>
+        </div>
+        <div class="box" style="margin-top:4mm;flex:1"><div class="h">4 · Decidir até quando</div>
+          <div class="c">
+            <table class="tb"><thead><tr><th>Decisão</th><th style="width:24mm">Até</th>
+              <th style="width:14mm">OK</th></tr></thead><tbody>
+              <tr><td>Confirmar Maurílio e ajudante</td><td class="c"><b>Qua 26</b></td><td class="c"><span class="cx2"></span></td></tr>
+              <tr><td>Confirmar mutirão de sábado 29</td><td class="c"><b>Qua 26</b></td><td class="c"><span class="cx2"></span></td></tr>
+              <tr><td>Definir equipe da montagem</td><td class="c"><b>Qui 27</b></td><td class="c"><span class="cx2"></span></td></tr>
+              <tr><td>Definir quem faz o nicho da Patrícia</td><td class="c"><b>Seg 24</b></td><td class="c"><span class="cx2"></span></td></tr>
+              <tr><td>Conferir material dos banheiros em estoque</td><td class="c"><b>Seg 24</b></td><td class="c"><span class="cx2"></span></td></tr>
+              <tr><td>Pedir os espelhos assim que o banheiro subir</td><td class="c"><b>Ter 1 set</b></td><td class="c"><span class="cx2"></span></td></tr>
+            </tbody></table>
+            <div style="font-size:8.4pt;line-height:1.4;margin-top:3mm;color:var(--muted)">
+              Cada decisão sem dono e sem data vira atraso. Escreva o nome de quem decide ao lado.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rf"><span>Prioridade 1 existe por causa do espelho: é fornecedor externo esperando a medida do banheiro instalado</span>
+    <span>VALVIC · PRODUÇÃO &nbsp;·&nbsp; 3 / 4</span></div>
+</section>
+
+<section class="sheet">
+  <div class="rh"><div><div class="kx">Medição de desempenho</div>
+    <div class="tt">Placar de entregas</div></div>
+    <div class="r"><b>VALVIC MARCENARIA</b><br>Preenchido pelo Deivson a cada entrega<br>
+      Fechamento no último dia útil do mês</div></div>
+  <div class="gold-rule"></div>
+  <div class="body">
+    <div class="kpis">
+      <div class="kpi"><div class="k">Entregas no mês</div><div class="v"></div><div class="u">quantas foram concluídas</div></div>
+      <div class="kpi"><div class="k">No prazo</div><div class="v"></div><div class="u">quantas entregaram na data prometida</div></div>
+      <div class="kpi"><div class="k">% no prazo</div><div class="v"></div><div class="u">no prazo ÷ entregas</div></div>
+      <div class="kpi"><div class="k">Atraso médio</div><div class="v"></div><div class="u">dias, só das atrasadas</div></div>
+      <div class="kpi"><div class="k">Retrabalhos</div><div class="v"></div><div class="u">quantas voltaram à fábrica</div></div>
+      <div class="kpi"><div class="k">Causa mais comum</div><div class="v"></div><div class="u">projeto · medição · produção · montagem</div></div>
+    </div>
+    <div class="sec"><span class="bar"></span>Entrega por entrega
+      <span class="hint">uma linha por ambiente entregue · preencher no dia, não no fim do mês</span></div>
+    <table class="tb" style="flex:1">
+      <thead><tr><th style="width:34mm">Projeto</th><th>Ambiente</th>
+        <th style="width:26mm">Prometido</th><th style="width:26mm">Entregue</th>
+        <th style="width:22mm">Desvio</th><th style="width:34mm">Quem montou</th>
+        <th style="width:22mm">Retrabalho</th><th style="width:62mm">Se voltou, por quê</th>
+        <th style="width:34mm">Assinatura do cliente</th></tr></thead>
+      <tbody>${ENTREGAS.map(e=>`<tr><td style="height:9.4mm"><b>${e[0]}</b></td><td>${e[1]}</td>
+        <td></td><td></td><td class="c"></td><td></td>
+        <td class="c"><span class="cx2"></span></td><td></td><td></td></tr>`).join('')}</tbody>
+    </table>
+    <div class="avisos" style="margin-top:3mm">
+      <div class="aviso"><div class="h">O que conta como "no prazo"</div>
+        <div class="c">A data prometida é a que foi combinada <b>com o cliente</b>, não a que a
+        fábrica gostaria. Entregou no dia ou antes: no prazo. Um dia depois já é atraso — não
+        arredonde, o número só serve se for honesto.</div></div>
+      <div class="aviso"><div class="h">Retrabalho é o dado mais valioso desta folha</div>
+        <div class="c">Marque sempre que uma peça voltar, mesmo que o conserto tenha sido rápido.
+        Se a causa mais comum do mês for <b>medição</b>, o problema não está na produção — está
+        antes dela. É isso que a folha existe para revelar.</div></div>
+      <div class="aviso"><div class="h">Fechamento</div>
+        <div class="c">No último dia útil, preencha os seis números do topo, fotografe a folha e
+        arquive. A folha nova entra no lugar. Doze folhas ao ano contam a história inteira da
+        capacidade de entrega da fábrica.</div></div>
+    </div>
+  </div>
+  <div class="rf"><span>Sem data prometida registrada antes da entrega, não há medição — só opinião</span>
+    <span>VALVIC · PRODUÇÃO &nbsp;·&nbsp; 4 / 4</span></div>
+</section>`;
+</script>
+</body></html>
