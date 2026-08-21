@@ -59,11 +59,20 @@ compra é uma linha** no bloco 8:
 | Forma de pagamento | **menu suspenso**: PIX · Boleto · Cartão · Cartão parcelado · Dinheiro · Transferência · Faturado 30 dias |
 | Status | **menu suspenso**: A comprar · Comprado (a pagar) · Pago |
 
-As três colunas são menus clicáveis. Eles apontam para **nomes definidos**
-(`CATEGORIA_COMPRA`, `FORMA_PAGAMENTO`, `STATUS_COMPRA`), e não para um intervalo de
-outra aba — é a forma que sobrevive à conversão para o Google Sheets. Digitar por fora é
+As três colunas são menus clicáveis. A lista fica gravada **dentro da própria
+validação da célula** (`"PIX,Boleto,Cartão de crédito,..."`), e não como referência à aba
+Listas nem como nome definido. É a única forma que aparece em todo lugar: Excel de mesa,
+Excel online, Excel do celular, LibreOffice e Google Sheets. Referência a outra aba o
+Google descarta na importação, e nome definido ele importa de forma inconsistente — foi
+o que apagou os menus nas duas primeiras versões desta planilha. Digitar por fora é
 permitido, mas a planilha avisa: o que não estiver escrito igual à lista não entra na
 soma da categoria.
+
+O preço dessa escolha: cada lista cabe em **255 caracteres** e nenhum item pode ter
+vírgula. Para mudar as opções, edite as listas no topo do gerador e rode-o de novo — o
+teste barra qualquer lista que estoure o limite. A aba **Listas** continua ali como
+referência de leitura e alimenta os nomes definidos, que seguem existindo para quem
+quiser usá-los em fórmulas.
 
 As categorias têm nomes curtos e sem vírgula justamente para caberem no menu e na largura
 da coluna. O "o que entra em cada uma" está na aba **Listas**, ao lado da lista.
@@ -271,10 +280,11 @@ que a lista de comissões não tem ninguém que não seja marceneiro, ajudante o
 
 Um teste extra (`TESTE 0`) confere as **âncoras de texto** de cada bloco: se alguém mudar
 o mapa de linhas da ficha sem atualizar o Painel, o teste acusa antes de o número sair
-errado. E o `TESTE 10` confere os **menus suspensos**: que os seis nomes definidos existem
-e apontam para o intervalo certo, que cada uma das nove faixas de validação usa um nome
-(e não um intervalo de aba), que a setinha aparece na célula, que toda categoria da ficha
-existe na lista, e que nenhum nome de categoria tem vírgula ou passa de 26 caracteres.
+errado. E o `TESTE 10` confere os **menus suspensos**: que as nove faixas de validação
+carregam a lista literal (e não uma referência a outra aba), que cada lista bate item a
+item com a aba Listas, que nenhuma passa de 255 caracteres, que a setinha aparece na
+célula, que a célula em branco é aceita, que toda categoria da ficha existe na lista, e
+que nenhum nome de categoria tem vírgula ou passa de 26 caracteres.
 
 Para o Painel Geral, o teste resolve o `INDIRECT` à mão — o motor não avalia nome
 de aba dinâmico — e confirma que **cada coluna aponta para o endereço certo** da

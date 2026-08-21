@@ -301,20 +301,34 @@ for nome, alvo in NOMES_ESPERADOS.items():
     d = wbv.defined_names.get(nome)
     ck(f'  nome definido {nome}', d.attr_text if d else '<ausente>', alvo)
 
-VAL_ESPERADAS = {'B120:B179': '=CATEGORIA_COMPRA', 'G120:G179': '=FORMA_PAGAMENTO',
-                 'I120:I179': '=STATUS_COMPRA', 'D43:D54': '=EQUIPE_COMISSAO',
-                 'G43:G54': '=EQUIPE_COMISSAO', 'A66:A77': '=EQUIPE_COMISSAO',
-                 'B104:B115': '=CAUSA_RETRABALHO', 'D7:E7': '=VENDEDOR',
-                 'F9:G9': '=EQUIPE_COMISSAO'}
+# A validação precisa carregar a LISTA LITERAL, não uma referência a outra aba
+# nem um nome definido: é a única forma que o Google Sheets preserva ao importar
+# o xlsx, e a que o Excel do celular também desenha.
+def lit(col, n):
+    itens = [wbv['Listas'].cell(r, col).value for r in range(2, 2 + n)]
+    assert all(itens), f'lista da coluna {col} tem buraco'
+    return '"' + ','.join(itens) + '"'
+
+LISTAS = {'CATEGORIA': lit(4, 16), 'PAGAMENTO': lit(5, 8), 'STATUS': lit(6, 3),
+          'EQUIPE': lit(1, 8), 'VENDEDOR': lit(2, 5), 'CAUSA': lit(3, 9)}
+VAL_ESPERADAS = {'B120:B179': 'CATEGORIA', 'G120:G179': 'PAGAMENTO',
+                 'I120:I179': 'STATUS', 'D43:D54': 'EQUIPE',
+                 'G43:G54': 'EQUIPE', 'A66:A77': 'EQUIPE',
+                 'B104:B115': 'CAUSA', 'D7:E7': 'VENDEDOR',
+                 'F9:G9': 'EQUIPE'}
+for chave, valor in LISTAS.items():
+    ck(f'  lista {chave} cabe no formato (até 255 caracteres)', len(valor) <= 255, True)
 for aba in (FM, EX):
     achadas = {str(d.sqref): d.formula1 for d in wbv[aba].data_validations.dataValidation}
     ck(f'  {aba} · nº de menus', len(achadas), len(VAL_ESPERADAS))
-    for rng, formula in VAL_ESPERADAS.items():
-        ck(f'  {aba}!{rng} aponta para', achadas.get(rng, '<ausente>'), formula)
+    for rng, chave in VAL_ESPERADAS.items():
+        ck(f'  {aba}!{rng} traz a lista de {chave}', achadas.get(rng, '<ausente>'),
+           LISTAS[chave])
     for d in wbv[aba].data_validations.dataValidation:
-        ck(f'  {aba}!{d.sqref} usa nome definido, não intervalo de aba',
-           d.formula1.lstrip("=").split("!")[0] in NOMES_ESPERADOS, True)
+        ck(f'  {aba}!{d.sqref} é lista literal, não referência a outra aba',
+           d.formula1.startswith('"') and '!' not in d.formula1, True)
         ck(f'  {aba}!{d.sqref} mostra a setinha na célula', d.showDropDown, False)
+        ck(f'  {aba}!{d.sqref} aceita célula em branco', d.allowBlank, True)
 
 # as categorias da ficha têm de existir exatamente na lista da aba Listas
 lista = [wbv['Listas'].cell(r, 4).value for r in range(2, 18)]

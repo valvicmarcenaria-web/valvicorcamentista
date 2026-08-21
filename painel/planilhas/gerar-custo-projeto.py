@@ -85,9 +85,13 @@ DESCR_CATEGORIA = {
     'Estacionamento e pedágio': 'estacionamento, pedágio e miudezas de rota',
 }
 
-# nomes definidos: a validação passa a apontar para um NOME, não para um
-# intervalo de outra aba. É a forma que sobrevive à conversão para o Google
-# Sheets — foi por isso que o menu de Categoria não apareceu lá.
+# Os menus suspensos são gravados com a LISTA LITERAL dentro da própria
+# validação ("PIX,Boleto,..."), não como referência a outra aba nem como nome
+# definido. É a única forma que aparece em todo lugar: Excel de mesa, Excel
+# online, Excel do celular, LibreOffice e Google Sheets. Referência a outra aba
+# o Google descarta na importação; nome definido ele importa de forma
+# inconsistente — foi o que apagou os menus nas duas tentativas anteriores.
+# Limite do formato: 255 caracteres por lista, e nenhum item pode ter vírgula.
 NOMES = {'CATEGORIA_COMPRA': 'D', 'FORMA_PAGAMENTO': 'E', 'STATUS_COMPRA': 'F',
          'EQUIPE_COMISSAO': 'A', 'VENDEDOR': 'B', 'CAUSA_RETRABALHO': 'C'}
 
@@ -152,6 +156,16 @@ def print_cfg(ws, area, retrato=False, margens=(0.4, 0.3, 0.4, 0.3)):
     ws.page_margins.left, ws.page_margins.right = l, r
     ws.page_margins.top, ws.page_margins.bottom = t, b
     ws.sheet_view.showGridLines = False
+
+
+def literal(itens):
+    """Lista embutida na validação, no formato que todo programa entende."""
+    for it in itens:
+        assert ',' not in it, f'item com vírgula quebra a lista literal: {it!r}'
+        assert '"' not in it, f'item com aspas quebra a lista literal: {it!r}'
+    lit = '"' + ','.join(itens) + '"'
+    assert len(lit) <= 255, f'lista literal com {len(lit)} caracteres (máx. 255)'
+    return lit
 
 
 def dv(ws, formula, rng):
@@ -462,8 +476,8 @@ def montar_ficha(ws):
         bloco(ws, r, 10, 1, f'=IF(AND($F{r}="",$I{r}=""),"",'
                             f'ROUND(IF($F{r}="",0,$F{r})+IF($I{r}="",0,$I{r}),2))',
               f=Font(name=F, size=9.5, bold=True, color=NAVY2), bg=CALC, al=RIGHT, nf=MOEDA)
-    dv(ws, '=EQUIPE_COMISSAO', f'D{R_AMB0}:D{R_AMBF}')
-    dv(ws, '=EQUIPE_COMISSAO', f'G{R_AMB0}:G{R_AMBF}')
+    dv(ws, literal(EQUIPE), f'D{R_AMB0}:D{R_AMBF}')
+    dv(ws, literal(EQUIPE), f'G{R_AMB0}:G{R_AMBF}')
     ws.row_dimensions[R_AMB_TOT].height = 20
     bloco(ws, R_AMB_TOT, 1, 1, 'SOMA DOS AMBIENTES', f=F_SUB, bg=NAVY2, al=RIGHT)
     bloco(ws, R_AMB_TOT, 2, 1, f'=IF({VENDA}=0,"",$C${R_AMB_TOT}/{VENDA})',
@@ -514,7 +528,7 @@ def montar_ficha(ws):
               f=F_CALC, bg=CALC, al=RIGHT, nf=MOEDA)
         bloco(ws, r, 8, 3, f'=IF($A{r}="","",ROUND($B{r}+$D{r}+$F{r},2))',
               f=Font(name=F, size=10, bold=True, color=NAVY), bg=CALC, al=RIGHT, nf=MOEDA)
-    dv(ws, '=EQUIPE_COMISSAO', f'A{R_CL0}:A{R_CLF}')
+    dv(ws, literal(EQUIPE), f'A{R_CL0}:A{R_CLF}')
     ws.row_dimensions[R_CL_TOT].height = 20
     bloco(ws, R_CL_TOT, 1, 1, 'TOTAL', f=F_SUB, bg=NAVY2, al=RIGHT)
     for c0, span in ((2, 2), (4, 2), (6, 2), (8, 3)):
@@ -568,7 +582,7 @@ def montar_ficha(ws):
         bloco(ws, r, 5, 2, None, f=Font(name=F, size=9.5, bold=True, color=RED),
               bg=INPUT, al=RIGHT, nf=MOEDA)
         bloco(ws, r, 7, 4, None, f=Font(name=F, size=8.5, color=INK), bg=INPUT, al=LEFTI)
-    dv(ws, '=CAUSA_RETRABALHO', f'B{R_RB0}:B{R_RBF}')
+    dv(ws, literal(CAUSAS), f'B{R_RB0}:B{R_RBF}')
     ws.row_dimensions[R_RB_SUB].height = 20
     bloco(ws, R_RB_SUB, 1, 2, 'CONTINGÊNCIA PREVISTA NO ORÇAMENTO  →', f=F_SUB,
           bg=NAVY2, al=RIGHT)
@@ -600,9 +614,9 @@ def montar_ficha(ws):
         bloco(ws, r, 7, 2, None, f=Font(name=F, size=9, color=INK), bg=INPUT, al=CTR)
         bloco(ws, r, 9, 2, None, f=Font(name=F, size=9, bold=True, color=NAVY2),
               bg=INPUT, al=CTR)
-    dv(ws, '=CATEGORIA_COMPRA', f'B{R_LAN0}:B{R_LANF}')
-    dv(ws, '=FORMA_PAGAMENTO', f'G{R_LAN0}:G{R_LANF}')
-    dv(ws, '=STATUS_COMPRA', f'I{R_LAN0}:I{R_LANF}')
+    dv(ws, literal(CATEGORIAS_COMPRA), f'B{R_LAN0}:B{R_LANF}')
+    dv(ws, literal(PAGAMENTOS), f'G{R_LAN0}:G{R_LANF}')
+    dv(ws, literal(STATUS), f'I{R_LAN0}:I{R_LANF}')
     for txt, bg, cor in (('Pago', OKBG, OK), ('Comprado (a pagar)', BLUEBG, BLUE),
                          ('A comprar', AMBBG, AMBER)):
         ws.conditional_formatting.add(f'I{R_LAN0}:J{R_LANF}', FormulaRule(
@@ -653,8 +667,8 @@ def montar_ficha(ws):
         formula=[f'$J${R_ID4}="Atrasado"'], fill=fill(REDBG), font=Font(bold=True, color=RED)))
     ws.conditional_formatting.add(f'A{R_KPI_V}:J{R_KPI_V}', FormulaRule(
         formula=[f'AND($G${R_KPI_V}<>"",$G${R_KPI_V}<0.25)'], fill=fill(REDBG)))
-    dv(ws, '=VENDEDOR', f'D{R_ID2}:E{R_ID2}')
-    dv(ws, '=EQUIPE_COMISSAO', f'F{R_ID4}:G{R_ID4}')
+    dv(ws, literal(VENDEDORES), f'D{R_ID2}:E{R_ID2}')
+    dv(ws, literal(EQUIPE), f'F{R_ID4}:G{R_ID4}')
     ws.freeze_panes = f'A{R_VEN_T}'
     print_cfg(ws, f'A1:J{R_NOTA}')
     return ws
