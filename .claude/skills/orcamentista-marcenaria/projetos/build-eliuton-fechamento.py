@@ -4,34 +4,40 @@
 [Jonathan 20/08] fechamento da linha Intermediária (Hardt · garantia 5 anos),
 condição especial de 10% de desconto.
 
-[Jonathan 20/08 · 2ª rodada] seis correções, todas aplicadas:
-  1. prazo de entrega passa a 65 dias corridos
-  2. entrada de R$ 27.000 (redonda) — deixa de ser "30%"
-  3. cai a caixa "o que essa condição significa na prática"
-  4. tábua de passar e os dois varais retráteis SAEM do escopo
-  5. sai o quantitativo de chapa, fita e ferragem — fica a especificação
-  6. sai o espaço de assinatura
+[Jonathan 20/08 · 2ª rodada] prazo 65 dias · entrada de R$ 27.000 redondos ·
+  cai a caixa "o que essa condição significa na prática" · sai o quantitativo de
+  chapa, fita e ferragem · sai o espaço de assinatura · validade até sábado.
 
-  Validade da condição ......................... sábado, 22/08/2026
-  Investimento cheio da linha Intermediária .... R$ 100.500
-  Condição especial de fechamento (−10%) ....... R$  90.450
+[Jonathan 20/08 · 3ª rodada] **ÁREA DE SERVIÇO E LAVABO EXTERNO SAEM DO ESCOPO.**
+  Ficam SEIS conjuntos. O motor rodou de novo — não é subtrair as duas linhas:
+
+    EXCLUIR='Área de serviço|Lavabo externo' python3 corte-eliuton.py
+
+  ⛔ POR QUE NÃO É SUBTRAIR. Três coisas mudam ao tirar ambiente:
+     1. o NESTING — 38 m² a menos não são 8 chapas a menos; a chapa parcial que
+        sobrava para um ambiente vira sobra inteira;
+     2. a LOGÍSTICA — 4 carretos viram 3;
+     3. o CUSTO FIXO RATEÁVEL, que se redistribui entre os que ficam.
+     Resultado: TODOS os conjuntos que ficam sobem de preço. A cozinha vai de
+     30.700 para 32.600, o gourmet de 12.000 para 12.600, e assim por diante.
+  ⛔ E A REALOCAÇÃO COMERCIAL CAIU JUNTO. Em 17/08 o Jonathan tirou R$ 5.000 da
+     área de serviço e pôs no painel ripado — par de soma zero. Saindo a área de
+     serviço, o +5.000 do ripado ficaria sem contraparte e inflaria o total. Por
+     isso o ripado volta de 20.400 para 16.400.
+
+  Investimento cheio ........................... R$  81.200  (era 100.500)
+  Condição especial de fechamento (−10%) ....... R$  73.080
   Entrada na assinatura ........................ R$  27.000
-  Saldo à vista, após a entrega ................ R$  63.450
+  Saldo à vista, após a entrega ................ R$  46.080
+  Validade da condição ......................... sábado, 22/08/2026
 
-⚠ PREÇO MANTIDO EM R$ 90.450 mesmo com a saída da tábua e dos varais. Era a
-  leitura que fecha com a entrada redonda de R$ 27.000 que o Jonathan cravou —
-  27.000 é 29,9% de 90.450. Se ele quiser abater a retirada do preço, o número
-  vai a R$ 87.700 e a entrada volta a ser ~31%.
+⚠ ENTRADA MANTIDA EM R$ 27.000, o número que o Jonathan cravou. Sobre o total
+  menor ela passa a ser 36,9% (era 29,9%) e cobre 78% do custo direto — a
+  exposição de caixa cai de R$ 14.536 para R$ 7.418. Se ele quiser voltar aos
+  ~30%, a entrada é R$ 21.900.
 
-  Efeito na margem: o custo direto cai de R$ 42.716 para R$ 41.536, e a MC
-  sobe de 32,8% para **34,1%** — recupera 1,3 ponto do que o desconto tinha
-  levado. Continua abaixo da faixa ideal da casa (35–40%).
-
-⚠ E a entrada segue sem cobrir o material: R$ 27.000 contra R$ 41.536 de custo
-  direto (65%). A Valvic banca R$ 14.536 de capital de giro pelos 65 dias, além
-  do custo fixo do período. Com o prazo caindo de 90–120 para 65 dias, a
-  exposição dura menos — mas fica mais intensa, porque a compra de material se
-  concentra.
+⚠ MC no fechamento: 32,9% (cheio 37,6%). Abaixo da faixa ideal da casa (35–40%),
+  pelo mesmo motivo de sempre — o desconto de 10%.
 
 Valores de `corte-eliuton.py`. SEM RT. Mármore fora do escopo.
 ⚠ MONTAGEM: fora do CUSTO (equipe é salário fixo), DENTRO do escopo entregue.
@@ -47,12 +53,12 @@ DATA      = '20 de agosto de 2026'
 VALIDADE  = 'Sábado, 22/08/2026'
 PRAZO     = '65 dias corridos'          # [Jonathan 20/08]
 
-CHEIO    = 100500
-FECHA    = 90450
+CHEIO    = 81200                        # 6 conjuntos, motor rodado de novo
+FECHA    = 73080
 ECONOMIA = CHEIO - FECHA
-ENTRADA  = 27000                        # [Jonathan 20/08] valor redondo
+ENTRADA  = 27000                        # [Jonathan 20/08] valor redondo, mantido
 SALDO    = FECHA - ENTRADA
-assert SALDO == 63450
+assert (FECHA, SALDO) == (73080, 46080)
 
 # ── memorial descritivo · sem quantitativo de chapa, fita e ferragem ──────
 ITENS = [
@@ -76,7 +82,7 @@ ITENS = [
    '<strong>Ilha</strong> — 226 × 70 × 88, quatro gavetas e três módulos de '
    'porta. O tampo em cascata é de mármore e não está neste valor.',
    'Puxador em <strong>cava 35° usinada</strong> no próprio material, na CNC.'],
-  30700),
+  32600),
  ('02', 'Painel ripado do estar e jantar',
   'MDF Arauco <strong>Nogueira Persa</strong>, parede inteira de 572 × 288.',
   ['Construção <strong>tipo 2</strong>: painel de fundo com régua colada no topo '
@@ -92,7 +98,7 @@ ITENS = [
    'O ripado é caro pela <strong>mão de obra de borda</strong>, não pela chapa. '
    'Cada régua é cortada, fitada e colada uma a uma, e o desenho só fecha se o '
    'passo não variar em nenhum ponto da parede.'],
-  20400),
+  16400),
  ('03', 'Área gourmet — bancada 02',
   'MDF Arauco <strong>Nogueira Persa</strong>.',
   ['<strong>Armário inferior com gaveteiro</strong> — 145 × 70, gavetas com '
@@ -104,27 +110,8 @@ ITENS = [
    '<strong>Armário superior com duas portas basculantes</strong> em estrutura '
    'metálica fendi e vidro incolor temperado de 8 mm. A serralheria das folhas '
    'está no valor.'],
-  12000),
- ('04', 'Área de serviço',
-  'MDF Arauco <strong>Nogueira Persa</strong>, armário de 359 × 55 × 226.',
-  ['Armário do <strong>piso ao forro</strong>, 55 cm de profundidade, com módulo '
-   'alto para vassouras e material de limpeza.',
-   '<strong>Nichos de máquina de lavar e secadora</strong>, com o vão e a '
-   'usinagem previstos — precisamos das medidas de fábrica dos aparelhos antes '
-   'do corte.',
-   '<strong>Dois gavetões</strong> e armário inferior sob a bancada.',
-   'O rodapé de 359 cm também <strong>não cabe na chapa</strong> e sai emendado, '
-   'previsto no plano de corte.'],
-  15000),
- ('05', 'Lavabo externo',
-  'MDF Arauco <strong>Nogueira Persa</strong>.',
-  ['<strong>Painel de parede</strong> de 130 × 248.',
-   '<strong>Acabamento de forro em MDF</strong> de 130 × 40 — a madeira desce da '
-   'parede e vira teto.',
-   '<strong>Gabinete suspenso</strong> de 150 × 50 com porta basculante e nicho '
-   'aberto. O tampo é de pedra e não está neste valor.'],
-  3400),
- ('06', 'Banheiro master',
+  12600),
+ ('04', 'Banheiro master',
   'MDF Arauco <strong>Jequitibá</strong> — o único ambiente nesta cor.',
   ['<strong>Espelheira de 1,85 m</strong> com três portas espelhadas de correr e '
    'nichos vazados nas laterais.',
@@ -134,8 +121,8 @@ ITENS = [
    '<strong>Gabinete suspenso de 1,85 × 50 com quatro portas ripadas</strong>, '
    'no mesmo desenho do painel do estar, com puxadores metálicos tipo alça '
    'preto.'],
-  7600),
- ('07', 'Banheiro social — 1º pavimento',
+  7900),
+ ('05', 'Banheiro social — 1º pavimento',
   'MDF Arauco <strong>Nogueira Persa</strong>, com prateleiras em '
   '<strong>Beige</strong>.',
   ['<strong>Armário superior de 1,90 m</strong> com portas espelhadas de correr '
@@ -143,14 +130,14 @@ ITENS = [
    '<strong>Iluminação em LED em L</strong> — fita em perfil de alumínio, '
    'contornando o nicho em dois planos.',
    '<strong>Gabinete inferior de 1,10 m</strong> com nicho papeleiro.'],
-  5200),
- ('08', 'Banheiro 04',
+  5400),
+ ('06', 'Banheiro 04',
   'MDF Arauco <strong>Nogueira Persa</strong>.',
   ['<strong>Armário superior de 1,10 m</strong> com duas portas espelhadas de '
    'correr sobre sistema RO65.',
    '<strong>Prateleiras laterais sobre suporte metálico dourado.</strong>',
    '<strong>Gabinete inferior de 1,46 m</strong> com nicho aberto.'],
-  6200),
+  6300),
 ]
 assert sum(i[4] for i in ITENS) == CHEIO
 
@@ -189,9 +176,10 @@ FORA = [
  ('Marmoraria', 'Bancadas 01, 02 e 03, ilha em cascata, rodabancas, nichos, '
   'cubas esculpidas, prateleiras e o "detalhe caixa" da cozinha — o projeto '
   'especifica Carrara e Travertino. É fornecimento de marmoraria.'),
- ('Tábua de passar e varais', 'A tábua de passar embutida e os varais retráteis '
-  'da área de serviço <strong>não fazem parte deste escopo</strong>. O armário '
-  'é executado sem eles.'),
+ ('Área de serviço e lavabo externo', 'Os dois ambientes <strong>não fazem '
+  'parte deste escopo</strong>. O armário da área de serviço, a tábua de passar '
+  'embutida, os varais retráteis, o painel e o gabinete do lavabo externo estão '
+  'fora desta proposta e podem ser orçados à parte.'),
  ('Louças, metais e eletrodomésticos', 'Especificados no projeto (Deca, '
   'Tramontina, Brastemp, Electrolux, Metalfrio). Prevemos o vão e a usinagem; '
   'precisamos das medidas de fábrica antes do corte.'),
@@ -247,7 +235,7 @@ CSS = open('projetos/css-proposta.css', encoding='utf-8').read() + """
 """
 
 def brl(v): return f'{v:,.0f}'.replace(',', '.')
-NP = 8
+NP = 7
 def foot(n):
     return (f'<div class="foot"><span>Valvic Marcenaria · {CLIENTE}</span>'
             f'<span>Proposta de fechamento</span><span>{n} / {NP}</span></div>')
@@ -318,7 +306,7 @@ p2 = f"""<div class="page"><div class="pad">
   Nenhum conjunto foi substituído ou simplificado para chegar a este valor.</p></div>
   <div class="box"><div class="t">Prazo de entrega</div>
   <p><strong>{PRAZO}</strong>, contados da assinatura, do pagamento da entrada e
-  da definição da chapa. Os oito conjuntos são entregues por frentes, na ordem
+  da definição da chapa. Os seis conjuntos são entregues por frentes, na ordem
   em que a obra puder recebê-los.</p></div>
   {foot(2)}
 </div></div>"""
@@ -368,7 +356,7 @@ p3 = f"""<div class="page"><div class="pad">
 p4 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">Memorial descritivo</div>
   <div class="rule"></div>
-  <h2 class="h-sec">Oito conjuntos,<br>descritos um a um.</h2>
+  <h2 class="h-sec">Seis conjuntos,<br>descritos um a um.</h2>
   <p class="lead" style="margin-top:3.5mm;margin-bottom:1mm">Cada item traz o
   material, a composição construtiva e o que a define. O valor cheio e o valor
   com a condição de fechamento aparecem ao pé de cada um.</p>
@@ -389,14 +377,15 @@ linhas = ''.join(
     f'<tr><td class="l">{n} · {t}</td><td>{brl(v)}</td>'
     f'<td class="hi">{brl(int(round(v*0.9)))}</td></tr>'
     for n, t, _m, _b, v in ITENS)
+esp = ''.join(f'<div class="esp"><div class="k">{k}</div>'
+              f'<div class="v">{v}</div></div>' for k, v in ESPEC)
+fora = ''.join(f'<li><div class="k">{k}</div><div class="v">{v}</div></li>'
+               for k, v in FORA)
 
 p6 = f"""<div class="page"><div class="pad">
-  {mem(ITENS[6])}
-  {mem(ITENS[7])}
-  <div style="margin-top:6mm">
   <div class="eyebrow">Resumo do investimento</div>
-  <div class="rule" style="margin:5px 0 3mm"></div>
-  <table class="inv">
+  <div class="rule"></div>
+  <table class="inv" style="margin-top:2mm">
     <tr><th class="l">Conjunto</th><th>Valor cheio</th>
         <th class="hi">Fechamento −10%</th></tr>
     {linhas}
@@ -404,27 +393,18 @@ p6 = f"""<div class="page"><div class="pad">
       <td style="font-size:10.5pt;color:var(--mut)">{brl(CHEIO)}</td>
       <td class="hi">{brl(FECHA)}</td></tr>
   </table>
+  <div style="margin-top:8mm">
+  <div class="eyebrow">Especificação técnica</div>
+  <div class="rule" style="margin:5px 0 3mm"></div>
+  <p class="lead" style="margin-bottom:2mm">As oito linhas abaixo valem para
+  todos os conjuntos do memorial, e são o que sustenta a garantia de cinco
+  anos.</p>
+  {esp}
   </div>
   {foot(6)}
 </div></div>"""
 
-esp = ''.join(f'<div class="esp"><div class="k">{k}</div>'
-              f'<div class="v">{v}</div></div>' for k, v in ESPEC)
-fora = ''.join(f'<li><div class="k">{k}</div><div class="v">{v}</div></li>'
-               for k, v in FORA)
-
 p7 = f"""<div class="page"><div class="pad">
-  <div class="eyebrow">Especificação técnica</div>
-  <div class="rule"></div>
-  <h2 class="h-sec">O que atravessa<br>o projeto inteiro.</h2>
-  <p class="lead" style="margin-top:3.5mm">As oito linhas abaixo valem para
-  todos os conjuntos do memorial, e são o que sustenta a garantia de cinco
-  anos.</p>
-  <div style="margin-top:5mm">{esp}</div>
-  {foot(7)}
-</div></div>"""
-
-p8 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">Condições</div>
   <div class="rule"></div>
   <h2 class="h-sec">Prazo, pagamento<br>e fronteiras.</h2>
@@ -433,7 +413,7 @@ p8 = f"""<div class="page"><div class="pad">
       <div class="term"><div class="k">Prazo de entrega</div>
         <div class="v">{PRAZO}</div>
         <div class="s">Contados da assinatura, do pagamento da entrada e da
-        definição da chapa. Os oito conjuntos são entregues por frentes, na
+        definição da chapa. Os seis conjuntos são entregues por frentes, na
         ordem em que a obra puder recebê-los.</div></div>
       <div class="term"><div class="k">Pagamento</div>
         <div class="v">R$ {brl(ENTRADA)} + R$ {brl(SALDO)}</div>
@@ -458,14 +438,14 @@ p8 = f"""<div class="page"><div class="pad">
       <ul>{fora}</ul>
     </div>
   </div>
-  {foot(8)}
+  {foot(7)}
 </div></div>"""
 
 HTML = ('<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">'
         '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:'
         'wght@400;500;600&family=DM+Sans:wght@300;400;500;600;700&display=swap" '
         f'rel="stylesheet"><style>{CSS}</style></head><body>'
-        f'{p1}{p2}{p3}{p4}{p5}{p6}{p7}{p8}</body></html>')
+        f'{p1}{p2}{p3}{p4}{p5}{p6}{p7}</body></html>')
 
 OUT_H = 'projetos/proposta-eliuton-fechamento.html'
 OUT_P = 'projetos/proposta-eliuton-fechamento.pdf'

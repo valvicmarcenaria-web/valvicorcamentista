@@ -35,69 +35,88 @@ Com RT de 10% para a arquiteta: **108.100 · 127.100 · 147.800** (+24% a +30%).
 
 ---
 
-## 🔒 20/08/2026 — VERSÃO DE FECHAMENTO
+## 🔒 20/08/2026 — VERSÃO DE FECHAMENTO (3ª rodada)
 
 `projetos/build-eliuton-fechamento.py` → **`proposta-eliuton-fechamento.pdf`**,
-8 páginas. Uma linha só — a Intermediária. Proposta de fechamento não oferece
+7 páginas. Uma linha só — a Intermediária. Proposta de fechamento não oferece
 escolha, oferece decisão.
 
 | | |
 |---|---|
-| Investimento cheio (linha II · Hardt) | R$ 100.500 |
-| Condição especial de fechamento (−10 %) | **R$ 90.450** |
+| Escopo | **6 conjuntos** — sem área de serviço e sem lavabo externo |
+| Investimento cheio | R$ 81.200 |
+| Condição especial de fechamento (−10 %) | **R$ 73.080** |
 | Entrada na assinatura | R$ 27.000 |
-| Saldo à vista, pós-entrega | R$ 63.450 |
-| Prazo | **65 dias corridos** |
-| Validade da condição | **sábado, 22/08/2026** |
+| Saldo à vista, pós-entrega | R$ 46.080 |
+| Prazo | 65 dias corridos |
+| Validade da condição | sábado, 22/08/2026 |
 
-### 2ª rodada, 20/08 — seis correções do Jonathan
+### ⛔ Tirar ambiente NÃO é subtrair a linha do rateio
 
-1. Prazo de entrega passa de 90–120 para **65 dias corridos**.
-2. Entrada vira **R$ 27.000 redondos** (era 30 % = R$ 27.135).
-3. Cai a caixa "o que essa condição significa na prática".
-4. **Tábua de passar embutida e os dois varais retráteis saem do escopo.**
-5. Sai o **quantitativo** de chapa, fita e ferragem — fica a especificação.
-6. Sai o **espaço de assinatura**.
-7. Validade da condição passa a **sábado, 22/08/2026** (era 7 dias corridos).
-   Datei em vez de escrever só "sábado": proposta é documento, e "sábado" sem
-   data fica ambíguo na semana seguinte.
+O Jonathan mandou tirar **área de serviço e lavabo externo**. A conta que parece
+certa — 100.500 − 15.000 − 3.400 = 82.100 — **está errada por dois motivos**.
 
-### O efeito da retirada da tábua e dos varais
+**1 · Três coisas mudam quando um ambiente sai:**
 
-| | Antes | Depois |
+| | |
+|---|---|
+| **Nesting** | 38 m² a menos não são 8 chapas a menos. A chapa parcial que sobrava para um ambiente vira sobra inteira. |
+| **Logística** | 4 carretos viram 3. |
+| **Custo fixo rateável** | Redistribui-se entre os que ficam — e **sobe o preço unitário de cada um**. |
+
+Por isso o motor rodou de novo, com exclusão feita **antes** do levantamento:
+
+```
+EXCLUIR='Área de serviço|Lavabo externo' python3 corte-eliuton.py
+```
+
+Todos os conjuntos que ficam subiram:
+
+| Conjunto | 8 itens | 6 itens |
 |---|--:|--:|
-| Preço | 90.450 | **90.450** (mantido) |
-| Custo direto | 42.716 | **41.536** |
-| **MC real** | 32,8 % | **34,1 %** |
-| Contribuição | R$ 29.658 | R$ 30.838 |
+| Cozinha — conjunto completo | 30.700 | **32.600** |
+| Painel ripado | 20.400 | **16.400** |
+| Área gourmet — bancada 02 | 12.000 | **12.600** |
+| Banheiro master | 7.600 | **7.900** |
+| Banheiro social | 5.200 | **5.400** |
+| Banheiro 04 | 6.200 | **6.300** |
+| **TOTAL** | 100.500 | **81.200** |
 
-Tábua (R$ 480) + dois varais (R$ 700) = **R$ 1.180** de custo direto que saem.
-**Preço mantido em R$ 90.450** — é a leitura que fecha com a entrada redonda de
-R$ 27.000 que o Jonathan cravou (27.000 é 29,9 % de 90.450). A retirada
-**recupera 1,3 ponto de MC** do que o desconto tinha levado. Ainda abaixo da
-faixa ideal da casa (35–40 %).
+**2 · A realocação comercial caiu junto.** Em 17/08 o Jonathan tirou R$ 5.000 da
+área de serviço e pôs no painel ripado — par de soma zero. Saindo a área de
+serviço, o **+5.000 do ripado ficaria sem contraparte** e inflaria o total. Por
+isso o ripado volta de 20.400 para 16.400. Uma subtração de linhas teria deixado
+esses R$ 5.000 pendurados no ripado sem que ninguém percebesse.
 
-Se ele preferir abater a retirada do preço, o número vai a **R$ 87.700** e a
-entrada volta a ser ~31 %.
+O motor agora tem a exclusão embutida e recusa nome de ambiente que não exista,
+para que a próxima redução de escopo não seja feita na mão.
 
-### ⚠ A entrada continua sem cobrir o material
+### Margem e caixa
 
-R$ 27.000 contra R$ 41.536 de custo direto — cobre **65 %**. A Valvic banca
-**R$ 14.536** de capital de giro, mais o custo fixo do período. Com o prazo
-caindo de 90–120 para **65 dias**, a exposição **dura menos, mas fica mais
-intensa**: a compra de material se concentra num intervalo menor e a produção
-tem de estar reservada.
+| | Cheio | Fechamento |
+|---|--:|--:|
+| Preço | 81.200 | **73.080** |
+| Custo direto | 34.418 | 34.418 |
+| **MC real** | 37,6 % | **32,9 %** |
+
+⚠ **Entrada mantida em R$ 27.000**, o número que o Jonathan cravou na 2ª rodada.
+Sobre o total menor ela vira **36,9 %** (era 29,9 %) e cobre **78 %** do custo
+direto — a exposição de caixa cai de R$ 14.536 para **R$ 7.418**. Se ele quiser
+voltar aos ~30 %, a entrada é **R$ 21.900** (e a exposição volta a R$ 12.518).
+
+A MC de 32,9 % segue abaixo da faixa ideal da casa (35–40 %), pelo mesmo motivo
+de sempre: o desconto de 10 %.
 
 ### O que a versão de fechamento tem que a de 17/08 não tinha
 
-- **Memorial descritivo item a item** — os oito conjuntos com material,
+- **Memorial descritivo item a item** — os seis conjuntos com material,
   composição construtiva e o porquê das decisões técnicas (nicho de
   eletrodoméstico sem fundo, emenda da ripa de 288, RO65 em vez de SS150).
-- **Página de especificação técnica geral** — chapa, borda, cava, ferragem,
-  iluminação, espelho e vidro, serralheria e produção. **Sem quantitativo.**
+- **Especificação técnica geral** — chapa, borda, cava, ferragem, iluminação,
+  espelho e vidro, serralheria e produção. **Sem quantitativo.**
 - **Valor cheio e valor de fechamento lado a lado** em cada item e no resumo.
-- A tábua e os varais aparecem explicitamente em **"não incluso"**, para que a
-  retirada não vire discussão na entrega.
+- Área de serviço e lavabo externo aparecem nomeados em **"não incluso"**, com a
+  ressalva de que podem ser orçados à parte.
 
 ### 🐛 Um defeito que apareceu ao montar
 
@@ -105,9 +124,7 @@ tem de estar reservada.
 (linhas 122–265, sobra de uma sessão antiga). O parser do navegador entrava em
 erro ali e **engolia silenciosamente tudo que viesse depois** — as regras novas
 desta proposta simplesmente não pintavam, sem erro nenhum. Arquivo truncado no
-fim do CSS real (118 linhas). As propostas antigas não foram afetadas porque
-nunca acrescentaram nada depois; mas qualquer builder que fizesse isso teria o
-mesmo sintoma mudo.
+fim do CSS real (118 linhas).
 
 ---
 

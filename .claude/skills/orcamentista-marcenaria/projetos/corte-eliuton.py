@@ -517,6 +517,33 @@ NOME_MAT = {'NP': 'Nogueira Persa', 'SA': 'Sálvia', 'JQ': 'Jequitibá',
 W = 96
 
 # ⚠ GUARDA DE PEÇA FORA DE CHAPA — aprendizado deste projeto.
+# ── EXCLUSÃO DE AMBIENTE — versões de escopo reduzido ─────────────────────
+#   EXCLUIR='Área de serviço|Lavabo externo' python3 corte-eliuton.py
+#
+# ⛔ TIRAR AMBIENTE NÃO É SUBTRAIR A LINHA DO RATEIO. Três coisas mudam:
+#   1. o NESTING — 32 m² a menos não são 6 chapas a menos; a chapa parcial que
+#      sobrava para um ambiente vira sobra inteira;
+#   2. a LOGÍSTICA — menos frentes, menos carreto;
+#   3. o CUSTO FIXO RATEÁVEL, que se redistribui entre os que ficam, subindo o
+#      preço unitário de cada um.
+# Por isso a exclusão acontece AQUI, antes do levantamento, e o motor roda
+# inteiro de novo. A conta de subtrair as linhas dá um número MENOR do que o
+# correto — e é justamente a que parece certa à primeira vista.
+import os as _os
+EXCLUIR = {a for a in _os.environ.get('EXCLUIR', '').split('|') if a.strip()}
+if EXCLUIR:
+    _amb_conhecidos = {x[2] for x in P}
+    _desconhecidos = EXCLUIR - _amb_conhecidos
+    if _desconhecidos:
+        raise SystemExit(f'EXCLUIR não reconhece: {sorted(_desconhecidos)}\n'
+                         f'ambientes válidos: {sorted(_amb_conhecidos)}')
+    P    = [x for x in P    if x[2] not in EXCLUIR]
+    FITA = [x for x in FITA if x[0] not in EXCLUIR]
+    TERC = [x for x in TERC if x[0] not in EXCLUIR]
+    for _a in EXCLUIR:
+        FER.pop(_a, None)
+        CAVA_M.pop(_a, None)
+
 # A ripa do painel tem 288 cm e a chapa 275 × 185: não cabe em nenhum sentido.
 # O `nest` não reclama, ele só abre uma chapa por peça — e o resultado (111
 # chapas de Nogueira, 9% de aproveitamento) parece um plano de corte válido.
@@ -635,7 +662,10 @@ print(f'\nFERRAGEM DO PROJETO — {TOT_DOBR} dobradiças · {TOT_GAV} gavetas ·
 #    Os dois estavam errados pela mesma razão: a linha não existe.
 #
 #    Da logística sobra o que É variável e por demanda: CARRETO e VISITA.
-N_CARRETO, R_CARRETO = 4, 600.0
+# 4 carretos para as 8 frentes originais. Sai frente, sai carreto — mas a
+# visita técnica não escala junto: continuam 3 (medição, conferência, entrega).
+_N_AMB = len({x[2] for x in P})
+N_CARRETO, R_CARRETO = max(2, round(_N_AMB/2)), 600.0
 N_VISITA,  R_VISITA  = 3, 250.0
 LOG = N_CARRETO*R_CARRETO + N_VISITA*R_VISITA
 
@@ -709,6 +739,10 @@ print('    Valvic for fornecer, é orçamento à parte e muda o total.')
 # +R$ 5.000 no painel ripado. O total NÃO muda — é remanejamento de vitrine
 # entre itens, não mudança de escopo nem de margem do projeto.
 REALOC = {'Área de serviço': -5000, 'Cozinha · painel ripado': +5000}
+# a realocação é um par: se a área de serviço sai, o +5.000 do ripado fica sem
+# contraparte e desequilibraria o total. O par cai junto.
+if EXCLUIR & set(REALOC):
+    REALOC = {}
 
 terc_amb = defaultdict(float)
 for amb, d, v, est in TERC: terc_amb[amb] += v
@@ -733,7 +767,10 @@ for ci, (nome_c, _fd, mc, f, _g) in enumerate(CENARIOS):
 
 print('\n' + '─'*W)
 print('INVESTIMENTO POR ITEM — os três cenários')
-print('  (já com a realocação de R$ 5.000 da área de serviço para o painel ripado)')
+if REALOC:
+    print('  (já com a realocação de R$ 5.000 da área de serviço para o painel ripado)')
+if EXCLUIR:
+    print(f'  ⚠ ESCOPO REDUZIDO — fora: {" · ".join(sorted(EXCLUIR))}')
 print(f'  {"item":<34}{"chapa":>8}{"1 · Telesc.":>14}{"2 · Hardt":>13}{"3 · Hettich":>14}')
 somas = [0, 0, 0]
 for amb in ordem:
