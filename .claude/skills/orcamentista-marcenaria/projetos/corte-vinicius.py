@@ -115,9 +115,10 @@ ESPECIAL = False           # alavanca da sensibilidade
 # prancha especifica); com True, resolve para a cor do próprio módulo, e aí
 # muda TAMBÉM O NESTING: o interior deixa de dividir chapa branca com todo
 # mundo e passa a dividir chapa colorida com a frente do seu próprio móvel.
-# ⚠ A caixa da GAVETA fica em Branco TX nos dois casos. Interior na cor é o
-#   que se vê ao ABRIR A PORTA; caixa de gaveta em branco é padrão mesmo em
-#   projeto premium, e trocá-la encareceria sem aparecer.
+# ⚠ [Jonathan 21/08] "no upgrade de cor, não haverá material branco." VALE PARA
+#   TUDO: caixaria, prateleiras, fundos, CAIXA DE GAVETA e até os substratos que
+#   ficam sob o estofado e sob o acrílico. No upgrade o projeto não compra uma
+#   única chapa branca — o que também simplifica o estoque de obra.
 INTERNO_COR = False
 def _res(mat):
     if mat.startswith('I:'):
@@ -190,6 +191,8 @@ def caixa(mat, amb, nome, L, H, Pf, nvert=0, nprat=0, fundo=True, tampo=True,
             L/kf, H, kf)
 
 def gaveta(mat, amb, nome, L, Pf, alt, q=1):
+    # 'mat' aqui vem como 'I:<cor>': a caixa de gaveta segue a mesma regra da
+    # caixaria — branca por padrão, na cor no upgrade.
     add(mat, 15, amb, f'{nome} · gaveta lateral',       Pf-10, alt, 2*q)
     add(mat, 15, amb, f'{nome} · gaveta frente/costas', L-6,   alt, 2*q)
     add(mat, 6,  amb, f'{nome} · gaveta fundo',         L-6,   Pf-10, q)
@@ -269,7 +272,7 @@ caixa('FR', A, 'armário inferior 230 × 82 × 50', 230, 82, 50, nvert=3, nprat=
       mat_int='BT')
 add('FR', 18, A, 'armário inferior · frente de gaveta 47,5 × 17,2', 47.5, 17.2, 4)
 add('FR', 18, A, 'armário inferior · porta 47,5 × 60', 47.5, 60, 4)
-gaveta('BT', A, 'armário inferior · gaveta', 47.5, 50, 14, 4)
+gaveta('I:FR', A, 'armário inferior · gaveta', 47.5, 50, 14, 4)
 fer(A, dobr=8, gav=4)
 cava(A, 4*0.475)          # puxador chanfrado nas 4 portas
 fita(A, 'armário inferior · frentes de gaveta e portas',
@@ -321,7 +324,7 @@ A = 'Sala de estar'
 caixa('FR', A, 'buffet suspenso 443,5 × 80 × 45', 443.5, 80, 45, nvert=5,
       nprat=0, mat_int='BT')
 add('FR', 18, A, 'buffet · frente de gavetão 70,5 × 60', 70.5, 60, 6)
-gaveta('BT', A, 'buffet · gavetão', 70.5, 45, 55, 6)
+gaveta('I:FR', A, 'buffet · gavetão', 70.5, 45, 55, 6)
 fer(A, gav=6)
 led(A, 'buffet · LED 3000K superior e inferior', 2*4.435)
 fita(A, 'buffet · frentes dos 6 gavetões', 6*2*(0.705+0.60))
@@ -365,7 +368,7 @@ fita(A, 'elev. B · 2 portas das colunas laterais', 2*2*(0.38+1.185))
 # rack 228 × 50 × 61 — 3 gavetões de 76
 caixa('FR', A, 'rack 228 × 50 × 61', 228, 50, 61, nvert=2, nprat=0, mat_int='BT')
 add('FR', 18, A, 'rack · frente de gavetão 76 × 47', 76, 47, 3)
-gaveta('BT', A, 'rack · gavetão', 76, 61, 42, 3)
+gaveta('I:FR', A, 'rack · gavetão', 76, 61, 42, 3)
 fer(A, gav=3)
 fita(A, 'rack · frentes dos 3 gavetões', 3*2*(0.76+0.47))
 terc(A, 'Puxador em mármore travertino 6×6 cm — 03 unidades (rack)',
@@ -429,7 +432,7 @@ add('AR', 18, A, 'cama inferior · estrado 203 × 105 (2 peças)', 203, 52.5, 2)
 add('AR', 15, A, 'cama inferior · caixa lateral', 105, 32, 2)
 add('AR', 15, A, 'cama inferior · caixa frente/fundo', 203, 32, 2)
 add('FR', 18, A, 'cama inferior · frente de gavetão 93,5 × 32', 93.5, 32, 2)
-gaveta('BT', A, 'cama inferior · gavetão', 93.5, 100, 27, 2)
+gaveta('I:FR', A, 'cama inferior · gavetão', 93.5, 100, 27, 2)
 fer(A, gav=2)
 fita(A, 'cama inferior · frentes dos gavetões + bordas', 2*2*(0.935+0.32) + 2*2.03)
 # ── 2 cabeceiras 146 × 35 c/ LED 3000K e 2 nichos 146 × 23 c/ suporte Frapê ─
@@ -443,7 +446,7 @@ fita(A, 'cabeceiras e nichos · bordas aparentes', 2*2*(1.46+0.35) + 4*(1.46+0.2
 # ── bancada/escrivaninha MDF Frapê 113 × 46 × 80 c/ 2 gavetas ────────────
 caixa('FR', A, 'bancada 113 × 80 × 46', 113, 80, 46, nvert=0, nprat=0, mat_int='BT')
 add('FR', 18, A, 'bancada · frente de gaveta 52 × 10', 52, 10, 2)
-gaveta('BT', A, 'bancada · gaveta', 52, 46, 8, 2)
+gaveta('I:FR', A, 'bancada · gaveta', 52, 46, 8, 2)
 fer(A, gav=2); cava(A, 2*0.52)
 fita(A, 'bancada · tampo e frentes', 2*(1.13+0.46) + 2*2*(0.52+0.10))
 # ── armário MDF Frapê 104,5 × 170 × 40 — 4 portas + 2 gavetas + prateleira ─
@@ -452,7 +455,7 @@ caixa('FR', A, 'armário 104,5 × 170 × 40', 104.5, 170, 40, nvert=1, nprat=2,
 add('FR', 18, A, 'armário · porta superior 52,3 × 90', 52.3, 90, 2)
 add('FR', 18, A, 'armário · porta inferior 52,3 × 67', 52.3, 67, 2)
 add('FR', 18, A, 'armário · frente de gaveta 52,3 × 10', 52.3, 10, 2)
-gaveta('BT', A, 'armário · gaveta', 52.3, 40, 8, 2)
+gaveta('I:FR', A, 'armário · gaveta', 52.3, 40, 8, 2)
 fer(A, dobr=8, gav=2); cava(A, 4*0.523)
 fita(A, 'armário · 4 portas + 2 gavetas',
      2*2*(0.523+0.90) + 2*2*(0.523+0.67) + 2*2*(0.523+0.10))
@@ -495,9 +498,9 @@ led(A, 'prateleiras orgânicas · LED 3000K inferior', 2*1.70 + 1.25)
 fita(A, 'prateleiras orgânicas · borda curva (perímetro, 3 peças)',
      3*2*(2.30+0.40))
 # ── cabeceira ESTOFADA em gomos — 214,5 + 199,5 = 414 cm, altura 110 ─────
-add('BT', 15, A, 'cabeceira estofada · base de MDF 214,5 × 110 (2 peças)',
+add('I:FR', 15, A, 'cabeceira estofada · base de MDF 214,5 × 110 (2 peças)',
     107.25, 110, 2)
-add('BT', 15, A, 'cabeceira estofada · base de MDF 199,5 × 110 (2 peças)',
+add('I:FR', 15, A, 'cabeceira estofada · base de MDF 199,5 × 110 (2 peças)',
     99.75, 110, 2)
 terc(A, 'Estofador · cabeceira em gomos, tecido facto branco — parede de 214,5',
      ESTOF_PAREDE)
@@ -515,9 +518,9 @@ caixa('FR', A, 'bancada em L 167,5 × 80 × 50 (trecho B)', 167.5, 80, 50, nvert
 add('FR', 18, A, 'bancada · frente de gavetão 75 × 42', 75, 42, 2)
 add('FR', 18, A, 'bancada · frente de gaveta 49 × 20', 49, 20, 2)
 add('FR', 18, A, 'bancada · báscula c/ espelho prata colado 49,5 × 45', 49.5, 45)
-gaveta('BT', A, 'bancada · gavetão', 75, 50, 37, 2)
-gaveta('BT', A, 'bancada · gaveta', 49, 50, 16, 2)
-add('BT', 6, A, 'bancada · divisória interna (base do acrílico)', 49, 45, 2)
+gaveta('I:FR', A, 'bancada · gavetão', 75, 50, 37, 2)
+gaveta('I:FR', A, 'bancada · gaveta', 49, 50, 16, 2)
+add('I:FR', 6, A, 'bancada · divisória interna (base do acrílico)', 49, 45, 2)
 add('FR', 18, A, 'bancada · báscula do tampo c/ pistão a gás 50 × 42', 50, 42)
 fer(A, gav=4, basc=2, dobr=2); cava(A, 2*0.75 + 2*0.49 + 0.50)
 terc(A, 'Penteadeira · espelho prata colado na báscula (49,5 × 45) — 1 folha',
@@ -529,8 +532,8 @@ fita(A, 'bancada · frentes e tampo',
 # ── banco-armário 50 × 80 × 50 c/ assento estofado ──────────────────────
 caixa('FR', A, 'banco-armário 50 × 80 × 50', 50, 80, 50, nprat=1, mat_int='BT')
 add('FR', 18, A, 'banco-armário · frente de gaveta 49 × 42', 49, 42)
-gaveta('BT', A, 'banco-armário · gaveta', 49, 50, 37, 1)
-add('BT', 15, A, 'banco-armário · base do assento estofado', 50, 50)
+gaveta('I:FR', A, 'banco-armário · gaveta', 49, 50, 37, 1)
+add('I:FR', 15, A, 'banco-armário · base do assento estofado', 50, 50)
 fer(A, gav=1)
 terc(A, 'Estofador · assento do banco em tecido facto branco (50 × 50)', ESTOF_CAB)
 fita(A, 'banco-armário · frente e bordas', 2*(0.49+0.42) + 2*(0.50+0.80))
@@ -570,8 +573,8 @@ caixa('FR', A, 'armário inferior 140 × 91 × 35', 140, 91, 35, nvert=2, nprat=
 add('FR', 18, A, 'armário inferior · báscula c/ pistão a gás 50 × 28', 50, 28)
 add('FR', 18, A, 'armário inferior · frente de gavetão tulha 45 × 56', 45, 56, 2)
 add('FR', 18, A, 'armário inferior · frente de gavetão 50 × 20', 50, 20)
-gaveta('BT', A, 'armário inferior · gavetão tulha', 45, 35, 51, 2)
-gaveta('BT', A, 'armário inferior · gavetão', 50, 35, 15, 1)
+gaveta('I:FR', A, 'armário inferior · gavetão tulha', 45, 35, 51, 2)
+gaveta('I:FR', A, 'armário inferior · gavetão', 50, 35, 15, 1)
 fer(A, gav=3, basc=1); cava(A, 2*0.45 + 2*0.50)
 fita(A, 'armário inferior · frentes', 2*2*(0.45+0.56) + 2*(0.50+0.20) + 2*(0.50+0.28))
 duv(A, 'no banho social a bancada da cuba aparece em pedra na perspectiva — '
@@ -588,15 +591,15 @@ A = 'Quarto casal'
 add('AR', 18, A, 'painel da cabeceira 272,5 × 256 (4 peças)', 136.25, 128, 4)
 fita(A, 'painel da cabeceira · perímetro em ½ esquadria', 2*(2.725+2.56))
 # ── cabeceira estofada Bouclé Elba 177,5 ────────────────────────────────
-add('BT', 15, A, 'cabeceira estofada · base de MDF 177,5 × 64', 177.5, 64)
+add('I:AR', 15, A, 'cabeceira estofada · base de MDF 177,5 × 64', 177.5, 64)
 terc(A, 'Estofador · cabeceira em Tecido Bouclé Elba Branco Bruma (177,5 × 64)',
      ESTOF_CAB)
 # ── penteadeira MDF Frapê 52 × 50 prof × 80 ─────────────────────────────
 caixa('FR', A, 'penteadeira 52 × 80 × 50', 52, 80, 50, nprat=0, mat_int='BT')
 add('FR', 18, A, 'penteadeira · báscula c/ espelho prata colado 50 × 45', 50, 45)
 add('FR', 18, A, 'penteadeira · frente de gaveta 50 × 20', 50, 20)
-gaveta('BT', A, 'penteadeira · gaveta', 50, 50, 16, 1)
-add('BT', 6, A, 'penteadeira · divisória interna (base do acrílico)', 50, 45)
+gaveta('I:FR', A, 'penteadeira · gaveta', 50, 50, 16, 1)
+add('I:FR', 6, A, 'penteadeira · divisória interna (base do acrílico)', 50, 45)
 add('FR', 18, A, 'penteadeira · báscula do tampo c/ pistão a gás 50 × 42', 50, 42)
 fer(A, basc=2, gav=1, dobr=2); cava(A, 2*0.50)
 terc(A, 'Penteadeira · espelho prata colado na báscula (50 × 45) — 1 folha',
@@ -607,7 +610,7 @@ fita(A, 'penteadeira · frentes e tampo', 2*(0.50+0.45) + 2*(0.50+0.20) + 2*(0.5
 # ── mesa de cabeceira MDF Frapê 45 × 50 × 42, 1 gaveta, puxador travertino ─
 caixa('FR', A, 'mesa de cabeceira 45 × 42 × 50', 45, 42, 50, nprat=0, mat_int='BT')
 add('FR', 18, A, 'mesa de cabeceira · frente de gaveta 44 × 35', 44, 35)
-gaveta('BT', A, 'mesa de cabeceira · gaveta', 44, 50, 30, 1)
+gaveta('I:FR', A, 'mesa de cabeceira · gaveta', 44, 50, 30, 1)
 fer(A, gav=1)
 terc(A, 'Puxador em mármore travertino 6×6 cm — 01 unidade (mesa de cabeceira)',
      PUX_TRAVERTINO, True)
@@ -627,7 +630,7 @@ fita(A, 'cristaleira · bordas frontais', 2*(1.005+1.81))
 caixa('FR', A, 'armário inferior da cristaleira 100,5 × 85 × 30', 100.5, 85, 30,
       nvert=1, nprat=0, mat_int='BT')
 add('FR', 18, A, 'armário inferior · frente de gaveta 50,3 × 20', 50.3, 20, 8)
-gaveta('BT', A, 'armário inferior · gaveta', 50.3, 30, 16, 8)
+gaveta('I:FR', A, 'armário inferior · gaveta', 50.3, 30, 16, 8)
 fer(A, gav=8); cava(A, 8*0.503)
 fita(A, 'armário inferior · 8 frentes de gaveta', 8*2*(0.503+0.20))
 # ── portas em MDF Areal (giro 97,5 × 242 e correr 59 × 242) ─────────────
@@ -662,8 +665,8 @@ caixa('FR', A, 'armário inferior 112 × 91 × 51,5', 112, 91, 51.5, nvert=1,
 add('FR', 18, A, 'armário inferior · báscula c/ pistão a gás 52 × 28', 52, 28)
 add('FR', 18, A, 'armário inferior · frente de gavetão tulha 52 × 56', 52, 56)
 add('FR', 18, A, 'armário inferior · frente de gavetão 60 × 56', 60, 56)
-gaveta('BT', A, 'armário inferior · gavetão tulha', 52, 51.5, 51, 1)
-gaveta('BT', A, 'armário inferior · gavetão', 60, 51.5, 51, 1)
+gaveta('I:FR', A, 'armário inferior · gavetão tulha', 52, 51.5, 51, 1)
+gaveta('I:FR', A, 'armário inferior · gavetão', 60, 51.5, 51, 1)
 fer(A, gav=2, basc=1); cava(A, 0.52 + 0.60)
 fita(A, 'armário inferior · frentes',
      2*(0.52+0.56) + 2*(0.60+0.56) + 2*(0.52+0.28))
@@ -873,19 +876,34 @@ print(f'  {"chapa · interior na cor (upgrade)":<54}{tot_ch_up:>3} ch.  R$ {_b:>
 print(f'  {"diferença de custo direto":<54}{tot_ch_up-tot_ch:>+3} ch.  R$ {_d:>10}')
 consum_up = (custo_chapa_up + custo_fita)*0.06
 d_cd = d_chapa + (consum_up - consum)
-UP = {}
+# ⚠ [Jonathan 21/08] "o upgrade de cor precisa ser igual em ambos os casos, não
+#   justifica ser maior." O motor, sozinho, dá valores diferentes: o MESMO custo
+#   adicional dividido por divisores diferentes (MC 35% e 38%) produz preços
+#   diferentes. Comercialmente isso não se sustenta — é a mesma chapa, o mesmo
+#   corte e a mesma fita nas duas linhas. Cravo o MENOR dos dois e deixo a linha
+#   de 10 anos absorver a diferença.
+UP_UNICO = 14800
 print()
 for i, (nome, fd, mc, gar, cf, cd, inv, mcr) in enumerate(RES[PRINC]):
     cd_rip_up = (custo_chapa_up + custo_fita + custo_filet + consum_up + LOG)*frac_rip
-    inv_up = round(preco(cd + d_cd - cd_rip_up, cd_rip_up, mc, True)/100)*100
-    UP[nome] = inv_up
-    print(f'  {nome:<17}R$ {inv:>9,.0f}  →  R$ {inv_up:>9,.0f}   '
-          f'upgrade +R$ {inv_up-inv:>8,.0f}'.replace(',', '.'))
+    livre = round(preco(cd + d_cd - cd_rip_up, cd_rip_up, mc, True)/100)*100
+    print(f'  {nome:<17}R$ {inv:>9,.0f}  →  R$ {inv+UP_UNICO:>9,.0f}   '
+          f'upgrade R$ {UP_UNICO:>7,.0f}   (motor livre daria '
+          f'{livre-inv:+,.0f})'.replace(',', '.'))
 _bt = sum(a for k, a in area_chapa.items() if k[0] == 'BT')
 print(f'\n  Interior afetado: {_bt:.1f} m² que hoje sairiam em Branco TX.')
-print('  ⚠ A caixa da GAVETA fica em Branco TX nos dois casos — interior na cor')
-print('    é o que se vê ao ABRIR A PORTA; caixa de gaveta em branco é padrão')
-print('    mesmo em projeto premium, e trocá-la encareceria sem aparecer.')
+print(f'  Custo direto do upgrade: R$ {d_cd:,.0f} — e o plano de corte fica com'.replace(',', '.'))
+print(f'  {tot_ch_up} chapas contra {tot_ch}: sem chapa branca, as peças de interior caem')
+print('  na sobra das chapas de cor que já seriam compradas.')
+print('  ⚠ NENHUMA PEÇA BRANCA no upgrade — caixaria, prateleiras, fundos, caixa')
+print('    de gaveta e até os substratos sob o estofado e sob o acrílico saem na')
+print('    cor do próprio módulo.')
+print()
+print(f'  MC real com o upgrade a R$ {UP_UNICO:,.0f}:'.replace(',', '.'))
+for nome, fd, mc, gar, cf, cd, inv, mcr in RES[PRINC]:
+    p_up = inv + UP_UNICO
+    print(f'    {nome:<17}{mc_conferida(p_up, cd + d_cd)*100:>6.1f}%   '
+          f'(sem upgrade {mcr*100:.1f}%)')
 
 print(f'  {"TOTAL":<26}{area_tot:>8.2f}{cols}')
 

@@ -172,7 +172,17 @@ GAR = [
 # ── upgrade de projeto — interior na cor  [Jonathan 21/08] ──────────────
 # Substitui a linha Telescópica como terceiro degrau. Não é ferragem: é
 # acabamento. Valores de `corte-vinicius.py`, seção UPGRADE DE PROJETO.
-UP_5, UP_10 = 9800, 10800
+#
+# ⚠ VALOR ÚNICO nas duas linhas [Jonathan 21/08]: "não justifica ser maior".
+#   O motor, solto, daria +14.800 na de 5 anos e +16.200 na de 10 — o mesmo
+#   custo dividido por divisores de MC diferentes. Comercialmente não se
+#   sustenta: é a mesma chapa, o mesmo corte e a mesma fita nas duas. Cravado
+#   o menor; a linha de 10 anos absorve a diferença e perde 0,2 ponto de MC.
+#
+# ⚠ E O UPGRADE NÃO TEM MATERIAL BRANCO NENHUM [Jonathan 21/08]: caixaria,
+#   prateleiras, fundos, caixa de gaveta e até os substratos sob o estofado e
+#   sob o acrílico saem na cor do próprio módulo.
+UP = 14800
 
 # ── investimento · corte-vinicius.py COM RT ───────────────────────────────
 INV = [
@@ -188,8 +198,8 @@ INV = [
 ]
 TOT = [sum(i[k] for i in INV) for k in (1, 2)]
 assert TOT == [170200, 191700], TOT
-TOT_UP = [TOT[0] + UP_5, TOT[1] + UP_10]
-assert TOT_UP == [180000, 202500], TOT_UP
+TOT_UP = [TOT[0] + UP, TOT[1] + UP]
+assert TOT_UP == [185000, 206500], TOT_UP
 
 PAGTO = [
     ('Entrada de 30% + saldo em até 10× no cartão', '—'),
@@ -359,23 +369,21 @@ S.append(f"""<div class="slide"><div class="amb">
     esse interior pela <strong>mesma cor da frente</strong>. O armário de MDF
     Areal fica Areal por dentro; o de MDF Frapê, Frapê. São
     <strong>104 m² de caixaria</strong> que deixam de ser brancos — prateleiras,
-    laterais, fundos e o miolo das colunas.</p>
+    laterais, fundos, o miolo das colunas <strong>e a caixa de cada
+    gaveta</strong>.</p>
     <div class="fr" style="grid-template-columns:1fr 1fr;margin-top:5mm">
       <div class="c"><div class="n">5</div><div class="t">anos</div>
         <div class="d">R$ {brl(TOT[0])} &nbsp;→&nbsp;
-        <strong style="color:var(--ink)">R$ {brl(TOT_UP[0])}</strong><br>
-        upgrade de R$ {brl(UP_5)}</div></div>
+        <strong style="color:var(--ink)">R$ {brl(TOT_UP[0])}</strong></div></div>
       <div class="c"><div class="n">10</div><div class="t">anos</div>
         <div class="d">R$ {brl(TOT[1])} &nbsp;→&nbsp;
-        <strong style="color:var(--ink)">R$ {brl(TOT_UP[1])}</strong><br>
-        upgrade de R$ {brl(UP_10)}</div></div>
+        <strong style="color:var(--ink)">R$ {brl(TOT_UP[1])}</strong></div></div>
     </div>
     <div class="amb-nota" style="margin-top:5mm">
-      <div class="t">Onde ele aparece</div>
-      <p>O upgrade cobre <strong>o que se vê ao abrir a porta</strong>: caixaria,
-      prateleiras e fundos. A caixa das gavetas segue em Branco TX nas duas
-      configurações — é padrão mesmo em projeto premium, e trocá-la encareceria
-      sem aparecer.</p></div>
+      <div class="t">R$ {brl(UP)} — o mesmo nas duas linhas</div>
+      <p>É a mesma chapa, o mesmo corte e a mesma fita, então o upgrade custa
+      igual nas duas. E ele é <strong>integral</strong>: nenhuma peça branca fica
+      no projeto — nem a caixa da gaveta, nem o substrato sob o estofado.</p></div>
   </div>
 </div>{foot(15, r=True)}</div>""")
 
@@ -395,8 +403,8 @@ S.append(f"""<div class="slide"><div class="pad">
           <td>{brl(TOT[0])}</td><td class="hi">{brl(TOT[1])}</td></tr>
         <tr><td class="l" style="padding-top:3mm;color:var(--gold);font-weight:600">
           + Upgrade · interior na cor</td>
-          <td style="padding-top:3mm">{brl(UP_5)}</td>
-          <td class="hi" style="padding-top:3mm">{brl(UP_10)}</td></tr>
+          <td style="padding-top:3mm">{brl(UP)}</td>
+          <td class="hi" style="padding-top:3mm">{brl(UP)}</td></tr>
         <tr class="tot"><td class="l">Com o upgrade</td>
           <td>{brl(TOT_UP[0])}</td><td class="hi">{brl(TOT_UP[1])}</td></tr>
       </table>

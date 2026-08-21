@@ -70,23 +70,36 @@ resolve para Branco TX (o que a prancha pede); com `True`, resolve para a cor do
 próprio módulo. **Muda também o nesting**: o interior deixa de dividir chapa
 branca com todo mundo e passa a dividir chapa colorida com a frente do seu móvel.
 
-⚠ A **caixa da gaveta fica em Branco TX nos dois casos**. Interior na cor é o que
-se vê ao *abrir a porta*; caixa de gaveta em branco é padrão mesmo em projeto
-premium, e trocá-la encareceria sem aparecer. Está escrito na proposta.
+⚠ **[Jonathan, 2ª volta] "no upgrade de cor, não haverá material branco."** Vale
+para tudo: caixaria, prateleiras, fundos, **caixa de gaveta** e até os substratos
+que ficam sob o estofado e sob o acrílico. No upgrade o projeto **não compra uma
+única chapa branca** — o que também simplifica o estoque de obra.
+
+Efeito no plano de corte: o upgrade **tira uma chapa** (57 contra 58). Sem o lote
+branco, as peças de interior caem na sobra das chapas de cor que já seriam
+compradas. Custo direto do upgrade: **R$ 5.374**.
+
+⚠ **[Jonathan, 2ª volta] "o upgrade de cor precisa ser igual em ambos os casos,
+não justifica ser maior."** O motor, solto, dá +R$ 14.800 na linha de 5 anos e
++R$ 16.200 na de 10 — **o mesmo custo dividido por divisores de MC diferentes**.
+Comercialmente não se sustenta: é a mesma chapa, o mesmo corte e a mesma fita nas
+duas. Cravado o **menor**, R$ 14.800. A linha de 10 anos absorve a diferença e
+perde **0,2 ponto** de MC (46,8 % → 46,6 %) — irrelevante.
 
 ### Os números novos — COM RT, escada 35/38
 
 | | 5 anos (Hardt) | 10 anos (Hettich) |
 |---|--:|--:|
 | Investimento | **R$ 170.200** | **R$ 191.700** |
-| + Upgrade · interior na cor | + R$ 9.800 | + R$ 10.800 |
-| **Com o upgrade** | **R$ 180.000** | **R$ 202.500** |
+| + Upgrade · interior na cor | + R$ 14.800 | + R$ 14.800 |
+| **Com o upgrade** | **R$ 185.000** | **R$ 206.500** |
 
 Sem RT, referência interna: R$ 136.900 e R$ 151.600.
 Área de chapa: **210,02 m²** (era 214,23) em 58 chapas.
-O upgrade custa R$ 3.360 de chapa a mais e **não acrescenta uma única chapa** ao
-plano de corte — o interior colorido ocupa a sobra das chapas de cor que já
-seriam compradas. É por isso que ele é barato para o que entrega.
+O upgrade custa R$ 5.070 de chapa a mais e ainda assim **tira uma chapa** do
+plano de corte (57 contra 58): sem o lote branco, o interior colorido ocupa a
+sobra das chapas de cor que já seriam compradas. É por isso que ele entrega
+muito para o que custa.
 
 ### ⚠ O caderno original se perdeu
 

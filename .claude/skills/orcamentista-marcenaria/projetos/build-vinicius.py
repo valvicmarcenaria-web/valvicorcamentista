@@ -174,8 +174,10 @@ INV = [
 ]
 TOT = [sum(i[k] for i in INV) for k in (1, 2)]
 assert TOT == [170200, 191700], TOT
-UP_5, UP_10 = 9800, 10800
-TOT_UP = [TOT[0] + UP_5, TOT[1] + UP_10]
+# valor ÚNICO nas duas linhas [Jonathan 21/08] · sem material branco nenhum
+UP = 14800
+TOT_UP = [TOT[0] + UP, TOT[1] + UP]
+assert TOT_UP == [185000, 206500], TOT_UP
 
 PAGTO = [
     ('Entrada de 30% + saldo em até 10× no cartão', '—'),
@@ -328,8 +330,8 @@ p7 = f"""<div class="page"><div class="pad">
       <td>{brl(TOT[0])}</td><td class="hi">{brl(TOT[1])}</td></tr>
     <tr><td class="l" style="padding-top:2.5mm;color:var(--gold);font-weight:600">
       + Upgrade · interior na cor da estrutura externa</td>
-      <td style="padding-top:2.5mm">{brl(UP_5)}</td>
-      <td class="hi" style="padding-top:2.5mm">{brl(UP_10)}</td></tr>
+      <td style="padding-top:2.5mm">{brl(UP)}</td>
+      <td class="hi" style="padding-top:2.5mm">{brl(UP)}</td></tr>
     <tr class="tot"><td class="l">Com o upgrade</td>
       <td>{brl(TOT_UP[0])}</td><td class="hi">{brl(TOT_UP[1])}</td></tr>
   </table>
