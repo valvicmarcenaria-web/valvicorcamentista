@@ -12,6 +12,7 @@ condição especial de 10% de desconto.
   5. sai o quantitativo de chapa, fita e ferragem — fica a especificação
   6. sai o espaço de assinatura
 
+  Validade da condição ......................... sábado, 22/08/2026
   Investimento cheio da linha Intermediária .... R$ 100.500
   Condição especial de fechamento (−10%) ....... R$  90.450
   Entrada na assinatura ........................ R$  27.000
@@ -41,7 +42,9 @@ CLIENTE   = 'Eliuton Ribeiro'
 OBRA      = 'Residência Brisas da Pampulha'
 ARQUITETA = 'Arq. Luciana Beatriz Simplício · Núcleo SC Arquitetura'
 DATA      = '20 de agosto de 2026'
-VALIDADE  = '7 dias corridos'
+# [Jonathan 20/08] validade até sábado. Dato em vez de escrever só "sábado":
+# proposta é documento, e "sábado" sem data fica ambíguo na semana seguinte.
+VALIDADE  = 'Sábado, 22/08/2026'
 PRAZO     = '65 dias corridos'          # [Jonathan 20/08]
 
 CHEIO    = 100500
@@ -437,7 +440,7 @@ p8 = f"""<div class="page"><div class="pad">
         <div class="s">Entrada na assinatura e saldo à vista após a instalação
         concluída e conferida na obra. Não há parcela durante a produção.</div></div>
       <div class="term"><div class="k">Validade da condição</div>
-        <div class="v">{VALIDADE}</div>
+        <div class="v">Até sábado, 22 de agosto de 2026</div>
         <div class="s">Passada a validade, volta a valer o investimento cheio de
         R$ {brl(CHEIO)}.</div></div>
       <div class="term"><div class="k">Garantia</div>

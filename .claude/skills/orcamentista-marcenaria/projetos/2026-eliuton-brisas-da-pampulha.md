@@ -48,6 +48,7 @@ escolha, oferece decisão.
 | Entrada na assinatura | R$ 27.000 |
 | Saldo à vista, pós-entrega | R$ 63.450 |
 | Prazo | **65 dias corridos** |
+| Validade da condição | **sábado, 22/08/2026** |
 
 ### 2ª rodada, 20/08 — seis correções do Jonathan
 
@@ -57,6 +58,9 @@ escolha, oferece decisão.
 4. **Tábua de passar embutida e os dois varais retráteis saem do escopo.**
 5. Sai o **quantitativo** de chapa, fita e ferragem — fica a especificação.
 6. Sai o **espaço de assinatura**.
+7. Validade da condição passa a **sábado, 22/08/2026** (era 7 dias corridos).
+   Datei em vez de escrever só "sábado": proposta é documento, e "sábado" sem
+   data fica ambíguo na semana seguinte.
 
 ### O efeito da retirada da tábua e dos varais
 
