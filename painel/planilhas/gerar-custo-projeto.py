@@ -55,17 +55,41 @@ CAUSAS = ['Erro de projeto', 'Erro de medição', 'Erro de produção', 'Erro de
 PAGAMENTOS = ['PIX', 'Boleto', 'Cartão de crédito', 'Cartão parcelado', 'Dinheiro',
               'Transferência', 'Faturado 30 dias', 'A combinar']
 STATUS = ['A comprar', 'Comprado (a pagar)', 'Pago']
+# nomes curtos e sem vírgula: cabem no menu suspenso e na largura da coluna.
+# o "o que entra" de cada uma fica explicado na aba Listas.
 GRUPOS = [
-    ('Material', ['MDF / MDP (chapas)', 'Fita de borda', 'Ferragens e acessórios',
-                  'Vidros e espelhos', 'Esquadrias', 'Lâmina natural',
-                  'Consumíveis (parafuso, adesivo, tíner, estopa)']),
-    ('Serviços terceirizados', ['Acabamento (pintura / laca)', 'Serralheria',
-                                'Vidraceiro', 'Outro terceirizado']),
-    ('Logística', ['Uber / aplicativo', 'Carreto e frete de entrega',
-                   'Logística da equipe (deslocamento)', 'Frete de material',
-                   'Estacionamento, pedágio e outros']),
+    ('Material', ['MDF e MDP', 'Fita de borda', 'Ferragens', 'Vidros e espelhos',
+                  'Esquadrias', 'Lâmina natural', 'Consumíveis']),
+    ('Serviços terceirizados', ['Acabamento', 'Serralheria', 'Vidraceiro',
+                                'Outro terceirizado']),
+    ('Logística', ['Uber e aplicativo', 'Carreto e entrega', 'Deslocamento da equipe',
+                   'Frete de material', 'Estacionamento e pedágio']),
 ]
 CATEGORIAS_COMPRA = [c for _, cats in GRUPOS for c in cats]
+DESCR_CATEGORIA = {
+    'MDF e MDP': 'chapas cruas e revestidas, por cor e espessura',
+    'Fita de borda': 'fita de borda de todas as cores e espessuras',
+    'Ferragens': 'corrediças, dobradiças, puxadores, pistões, suportes',
+    'Vidros e espelhos': 'vidro, espelho e cristal comprados prontos',
+    'Esquadrias': 'perfis de alumínio, portas de perfil e box',
+    'Lâmina natural': 'lâmina de madeira natural e compostos',
+    'Consumíveis': 'parafuso, adesivo, tíner, estopa, lixa, disco, broca',
+    'Acabamento': 'pintura, laca, verniz e envernizamento terceirizado',
+    'Serralheria': 'estruturas metálicas feitas fora',
+    'Vidraceiro': 'corte e instalação de vidro por terceiro',
+    'Outro terceirizado': 'qualquer serviço feito fora da fábrica',
+    'Uber e aplicativo': 'corrida de medição, conferência e visita',
+    'Carreto e entrega': 'transporte do móvel pronto até a obra',
+    'Deslocamento da equipe': 'ida e volta da equipe de montagem',
+    'Frete de material': 'entrega de material do fornecedor até a fábrica',
+    'Estacionamento e pedágio': 'estacionamento, pedágio e miudezas de rota',
+}
+
+# nomes definidos: a validação passa a apontar para um NOME, não para um
+# intervalo de outra aba. É a forma que sobrevive à conversão para o Google
+# Sheets — foi por isso que o menu de Categoria não apareceu lá.
+NOMES = {'CATEGORIA_COMPRA': 'D', 'FORMA_PAGAMENTO': 'E', 'STATUS_COMPRA': 'F',
+         'EQUIPE_COMISSAO': 'A', 'VENDEDOR': 'B', 'CAUSA_RETRABALHO': 'C'}
 
 NCOL = 10
 LP = {c: get_column_letter(c) for c in range(1, 61)}
@@ -131,7 +155,14 @@ def print_cfg(ws, area, retrato=False, margens=(0.4, 0.3, 0.4, 0.3)):
 
 
 def dv(ws, formula, rng):
-    d = DataValidation(type='list', formula1=formula, allow_blank=True, showDropDown=False)
+    d = DataValidation(type='list', formula1=formula, allow_blank=True,
+                       showDropDown=False)
+    d.showInputMessage = False
+    d.showErrorMessage = True          # avisa quando o valor está fora da lista
+    d.errorStyle = 'warning'
+    d.errorTitle = 'Fora da lista'
+    d.error = ('Este valor não está na lista. Você pode manter, mas os totais só '
+               'somam o que estiver escrito exatamente como na aba Listas.')
     ws.add_data_validation(d); d.add(rng)
 
 
@@ -431,8 +462,8 @@ def montar_ficha(ws):
         bloco(ws, r, 10, 1, f'=IF(AND($F{r}="",$I{r}=""),"",'
                             f'ROUND(IF($F{r}="",0,$F{r})+IF($I{r}="",0,$I{r}),2))',
               f=Font(name=F, size=9.5, bold=True, color=NAVY2), bg=CALC, al=RIGHT, nf=MOEDA)
-    dv(ws, f'=Listas!$A$2:$A${len(EQUIPE)+1}', f'D{R_AMB0}:D{R_AMBF}')
-    dv(ws, f'=Listas!$A$2:$A${len(EQUIPE)+1}', f'G{R_AMB0}:G{R_AMBF}')
+    dv(ws, '=EQUIPE_COMISSAO', f'D{R_AMB0}:D{R_AMBF}')
+    dv(ws, '=EQUIPE_COMISSAO', f'G{R_AMB0}:G{R_AMBF}')
     ws.row_dimensions[R_AMB_TOT].height = 20
     bloco(ws, R_AMB_TOT, 1, 1, 'SOMA DOS AMBIENTES', f=F_SUB, bg=NAVY2, al=RIGHT)
     bloco(ws, R_AMB_TOT, 2, 1, f'=IF({VENDA}=0,"",$C${R_AMB_TOT}/{VENDA})',
@@ -483,7 +514,7 @@ def montar_ficha(ws):
               f=F_CALC, bg=CALC, al=RIGHT, nf=MOEDA)
         bloco(ws, r, 8, 3, f'=IF($A{r}="","",ROUND($B{r}+$D{r}+$F{r},2))',
               f=Font(name=F, size=10, bold=True, color=NAVY), bg=CALC, al=RIGHT, nf=MOEDA)
-    dv(ws, f'=Listas!$A$2:$A${len(EQUIPE)+1}', f'A{R_CL0}:A{R_CLF}')
+    dv(ws, '=EQUIPE_COMISSAO', f'A{R_CL0}:A{R_CLF}')
     ws.row_dimensions[R_CL_TOT].height = 20
     bloco(ws, R_CL_TOT, 1, 1, 'TOTAL', f=F_SUB, bg=NAVY2, al=RIGHT)
     for c0, span in ((2, 2), (4, 2), (6, 2), (8, 3)):
@@ -537,7 +568,7 @@ def montar_ficha(ws):
         bloco(ws, r, 5, 2, None, f=Font(name=F, size=9.5, bold=True, color=RED),
               bg=INPUT, al=RIGHT, nf=MOEDA)
         bloco(ws, r, 7, 4, None, f=Font(name=F, size=8.5, color=INK), bg=INPUT, al=LEFTI)
-    dv(ws, f'=Listas!$C$2:$C${len(CAUSAS)+1}', f'B{R_RB0}:B{R_RBF}')
+    dv(ws, '=CAUSA_RETRABALHO', f'B{R_RB0}:B{R_RBF}')
     ws.row_dimensions[R_RB_SUB].height = 20
     bloco(ws, R_RB_SUB, 1, 2, 'CONTINGÊNCIA PREVISTA NO ORÇAMENTO  →', f=F_SUB,
           bg=NAVY2, al=RIGHT)
@@ -569,9 +600,9 @@ def montar_ficha(ws):
         bloco(ws, r, 7, 2, None, f=Font(name=F, size=9, color=INK), bg=INPUT, al=CTR)
         bloco(ws, r, 9, 2, None, f=Font(name=F, size=9, bold=True, color=NAVY2),
               bg=INPUT, al=CTR)
-    dv(ws, f'=Listas!$D$2:$D${len(CATEGORIAS_COMPRA)+1}', f'B{R_LAN0}:B{R_LANF}')
-    dv(ws, f'=Listas!$E$2:$E${len(PAGAMENTOS)+1}', f'G{R_LAN0}:G{R_LANF}')
-    dv(ws, f'=Listas!$F$2:$F${len(STATUS)+1}', f'I{R_LAN0}:I{R_LANF}')
+    dv(ws, '=CATEGORIA_COMPRA', f'B{R_LAN0}:B{R_LANF}')
+    dv(ws, '=FORMA_PAGAMENTO', f'G{R_LAN0}:G{R_LANF}')
+    dv(ws, '=STATUS_COMPRA', f'I{R_LAN0}:I{R_LANF}')
     for txt, bg, cor in (('Pago', OKBG, OK), ('Comprado (a pagar)', BLUEBG, BLUE),
                          ('A comprar', AMBBG, AMBER)):
         ws.conditional_formatting.add(f'I{R_LAN0}:J{R_LANF}', FormulaRule(
@@ -622,8 +653,8 @@ def montar_ficha(ws):
         formula=[f'$J${R_ID4}="Atrasado"'], fill=fill(REDBG), font=Font(bold=True, color=RED)))
     ws.conditional_formatting.add(f'A{R_KPI_V}:J{R_KPI_V}', FormulaRule(
         formula=[f'AND($G${R_KPI_V}<>"",$G${R_KPI_V}<0.25)'], fill=fill(REDBG)))
-    dv(ws, f'=Listas!$B$2:$B${len(VENDEDORES)+1}', f'D{R_ID2}:E{R_ID2}')
-    dv(ws, f'=Listas!$A$2:$A${len(EQUIPE)+1}', f'F{R_ID4}:G{R_ID4}')
+    dv(ws, '=VENDEDOR', f'D{R_ID2}:E{R_ID2}')
+    dv(ws, '=EQUIPE_COMISSAO', f'F{R_ID4}:G{R_ID4}')
     ws.freeze_panes = f'A{R_VEN_T}'
     print_cfg(ws, f'A1:J{R_NOTA}')
     return ws
@@ -646,49 +677,49 @@ EXEMPLO = {
                   ('Lavanderia', 10000, 'Joelson', 0.03, 'Samuel', 0.02),
                   ('Sala', 30000, 'Deivson', 0.03, 'Jackson', 0.02)],
     'coord': 0.01, 'prod_o': 0.03, 'mont_o': 0.02,
-    'orcado_cat': {'MDF / MDP (chapas)': 14500, 'Fita de borda': 900,
-                   'Ferragens e acessórios': 6800, 'Vidros e espelhos': 2200,
+    'orcado_cat': {'MDF e MDP': 14500, 'Fita de borda': 900,
+                   'Ferragens': 6800, 'Vidros e espelhos': 2200,
                    'Lâmina natural': 3200,
-                   'Consumíveis (parafuso, adesivo, tíner, estopa)': 1100,
-                   'Acabamento (pintura / laca)': 4800, 'Serralheria': 1500,
-                   'Vidraceiro': 900, 'Uber / aplicativo': 250,
-                   'Carreto e frete de entrega': 900,
-                   'Logística da equipe (deslocamento)': 400,
-                   'Frete de material': 350, 'Estacionamento, pedágio e outros': 100},
+                   'Consumíveis': 1100,
+                   'Acabamento': 4800, 'Serralheria': 1500,
+                   'Vidraceiro': 900, 'Uber e aplicativo': 250,
+                   'Carreto e entrega': 900,
+                   'Deslocamento da equipe': 400,
+                   'Frete de material': 350, 'Estacionamento e pedágio': 100},
     'contingencia': 1500,
     'lancamentos': [
-        ('MADEGEM — chapas brancas TX', 'MDF / MDP (chapas)', D(2026, 5, 12), 8200, 'PIX', 'Pago'),
+        ('MADEGEM — chapas brancas TX', 'MDF e MDP', D(2026, 5, 12), 8200, 'PIX', 'Pago'),
         ('Frete das chapas', 'Frete de material', D(2026, 5, 12), 350, 'Dinheiro', 'Pago'),
-        ('Consumíveis — parafuso e cola', 'Consumíveis (parafuso, adesivo, tíner, estopa)',
+        ('Consumíveis — parafuso e cola', 'Consumíveis',
          D(2026, 5, 15), 640, 'Dinheiro', 'Pago'),
         ('Lâmina natural freijó', 'Lâmina natural', D(2026, 5, 19), 3200, 'PIX', 'Pago'),
-        ('Bigfer — corrediças e dobradiças', 'Ferragens e acessórios', D(2026, 5, 20),
+        ('Bigfer — corrediças e dobradiças', 'Ferragens', D(2026, 5, 20),
          4300, 'Cartão parcelado', 'Pago'),
-        ('Uber — medição e conferência', 'Uber / aplicativo', D(2026, 5, 22), 230, 'PIX', 'Pago'),
-        ('MADEGEM — complemento de chapas', 'MDF / MDP (chapas)', D(2026, 5, 28), 5180,
+        ('Uber — medição e conferência', 'Uber e aplicativo', D(2026, 5, 22), 230, 'PIX', 'Pago'),
+        ('MADEGEM — complemento de chapas', 'MDF e MDP', D(2026, 5, 28), 5180,
          'Boleto', 'Pago'),
         ('Fita de borda 6 cores', 'Fita de borda', D(2026, 5, 28), 1120, 'PIX', 'Pago'),
-        ('Consumíveis — lixa e tíner', 'Consumíveis (parafuso, adesivo, tíner, estopa)',
+        ('Consumíveis — lixa e tíner', 'Consumíveis',
          D(2026, 6, 3), 465, 'PIX', 'Pago'),
-        ('JR Ferragens — puxadores', 'Ferragens e acessórios', D(2026, 6, 11), 3150, 'PIX', 'Pago'),
-        ('MADEGEM — reposição pós-retrabalho', 'MDF / MDP (chapas)', D(2026, 6, 14), 2600,
+        ('JR Ferragens — puxadores', 'Ferragens', D(2026, 6, 11), 3150, 'PIX', 'Pago'),
+        ('MADEGEM — reposição pós-retrabalho', 'MDF e MDP', D(2026, 6, 14), 2600,
          'Boleto', 'Comprado (a pagar)'),
-        ('Consumíveis — estopa e adesivo', 'Consumíveis (parafuso, adesivo, tíner, estopa)',
+        ('Consumíveis — estopa e adesivo', 'Consumíveis',
          D(2026, 6, 25), 360, 'Dinheiro', 'Pago'),
         ('Serralheria — estrutura da bancada', 'Serralheria', D(2026, 6, 26), 1500, 'PIX', 'Pago'),
         ('Espelho da suíte', 'Vidros e espelhos', D(2026, 7, 2), 2200, 'Boleto',
          'Comprado (a pagar)'),
         ('Vidraceiro — instalação', 'Vidraceiro', D(2026, 7, 4), 1250, 'PIX', 'Pago'),
-        ('Laqueação das portas', 'Acabamento (pintura / laca)', D(2026, 7, 10), 5400,
+        ('Laqueação das portas', 'Acabamento', D(2026, 7, 10), 5400,
          'Faturado 30 dias', 'Comprado (a pagar)'),
-        ('Carreto — 1ª entrega', 'Carreto e frete de entrega', D(2026, 7, 28), 650, 'PIX', 'Pago'),
-        ('Uber — acerto final com o cliente', 'Uber / aplicativo', D(2026, 7, 30), 180,
+        ('Carreto — 1ª entrega', 'Carreto e entrega', D(2026, 7, 28), 650, 'PIX', 'Pago'),
+        ('Uber — acerto final com o cliente', 'Uber e aplicativo', D(2026, 7, 30), 180,
          'PIX', 'Pago'),
-        ('Carreto — 2ª entrega e retorno', 'Carreto e frete de entrega', D(2026, 8, 5), 500,
+        ('Carreto — 2ª entrega e retorno', 'Carreto e entrega', D(2026, 8, 5), 500,
          'PIX', 'Pago'),
-        ('Deslocamento da equipe de montagem', 'Logística da equipe (deslocamento)',
+        ('Deslocamento da equipe de montagem', 'Deslocamento da equipe',
          D(2026, 8, 5), 620, 'Dinheiro', 'Pago'),
-        ('Estacionamento e pedágio', 'Estacionamento, pedágio e outros', D(2026, 8, 6), 185,
+        ('Estacionamento e pedágio', 'Estacionamento e pedágio', D(2026, 8, 6), 185,
          'Dinheiro', 'Pago'),
     ],
     'retrabalho': [
@@ -970,9 +1001,17 @@ for col, titulo, vals, larg in (('A', 'Equipe (comissões)', EQUIPE, 24),
     c.font = font(9, True, WHITE); c.fill = fill(NAVY2); c.alignment = CTR
     for i, v in enumerate(vals, start=2):
         cc = ls[f'{col}{i}']; cc.value = v; cc.font = font(10); cc.border = BOTTOM2
-ls['H1'] = 'Para que servem'
-ls['H1'].font = font(9, True, WHITE); ls['H1'].fill = fill(NAVY2); ls['H1'].alignment = CTR
-ls.column_dimensions['H'].width = 80
+# coluna G: o que entra em cada categoria de compra
+ls.column_dimensions['G'].width = 46
+c = ls['G1']; c.value = 'O que entra nesta categoria'
+c.font = font(9, True, WHITE); c.fill = fill(NAVY2); c.alignment = CTR
+for i, cat in enumerate(CATEGORIAS_COMPRA, start=2):
+    cc = ls.cell(i, 7, DESCR_CATEGORIA.get(cat, '')); cc.font = font(9, c=MUTED)
+    cc.border = BOTTOM2
+
+ls['I1'] = 'Para que servem'
+ls['I1'].font = font(9, True, WHITE); ls['I1'].fill = fill(NAVY2); ls['I1'].alignment = CTR
+ls.column_dimensions['I'].width = 80
 for i, t in enumerate([
     'Coluna A — só quem recebe comissão: marceneiros, ajudantes e o coordenador. Alimenta produção, montagem, coordenação e o consolidado por colaborador.',
     'Se acrescentar alguém aqui, inclua também na tabela "Comissões por colaborador" da ficha, senão a pessoa não aparece no consolidado.',
@@ -980,7 +1019,7 @@ for i, t in enumerate([
     'Coluna F — status. "A comprar" NÃO entra no custo realizado, entra na coluna "ainda a comprar". "Comprado (a pagar)" e "Pago" entram no custo.',
     'Coluna C — causas do retrabalho. É a lista mais estratégica da planilha: ela é que vai dizer se o problema está no projeto, na medição, na produção ou no fornecedor.',
 ], start=2):
-    c = ls.cell(i, 8, t); c.font = font(9, c='41505D')
+    c = ls.cell(i, 9, t); c.font = font(9, c='41505D')
     c.alignment = Alignment(horizontal='left', vertical='center', wrap_text=True)
     ls.row_dimensions[i].height = 32
 
@@ -1031,6 +1070,7 @@ BLOCOS_IN = [
         'O STATUS é o que separa o que já é custo do que ainda não é: "A comprar" NÃO entra no custo realizado — vai para a coluna "Ainda a comprar". "Comprado (a pagar)" e "Pago" entram no custo.',
         'Isso responde três perguntas de uma vez: quanto já custou, quanto ainda vou gastar e quanto devo aos fornecedores. A faixa dourada logo abaixo da margem mostra o custo projetado e a MC projetada.',
         'Você pode inserir quantas linhas quiser no livro. Ele fica no fim da ficha exatamente por isso: nada que o Painel Geral lê está abaixo dele.',
+        'Categoria, Forma de pagamento e Status são MENUS SUSPENSOS: clique na célula e escolha. Digitar por fora é permitido, mas a planilha avisa — e o que não estiver escrito igual à lista não entra na soma da categoria.',
         'Lançamento com valor e sem categoria fica destacado em vermelho, e o total do livro avisa quantos estão sem classificar.',
     ]),
     ('A CASCATA DE CÁLCULO — a ordem importa', [
@@ -1076,6 +1116,15 @@ r = par(r, 'Abas:   Instruções  ·  Painel Geral  ·  Ficha Modelo (duplique e
            'Exemplo P-2026-041 (preenchido)  ·  Listas',
         f=Font(name=F, size=9, bold=True, color='7A5B17'), h=26, bg=GOLDBG)
 print_cfg(ins, f'A1:F{r - 1}', retrato=True)
+
+# ── nomes definidos que alimentam os menus suspensos
+from openpyxl.workbook.defined_name import DefinedName
+TAM = {'A': len(EQUIPE), 'B': len(VENDEDORES), 'C': len(CAUSAS),
+       'D': len(CATEGORIAS_COMPRA), 'E': len(PAGAMENTOS), 'F': len(STATUS)}
+for nome, col in NOMES.items():
+    wb.defined_names.add(
+        DefinedName(nome, attr_text=f"Listas!${col}$2:${col}${TAM[col] + 1}"))
+print('nomes definidos:', ', '.join(sorted(NOMES)))
 
 wb.active = 0
 SAIDA = '/home/user/valvicorcamentista/painel/planilhas/Valvic_Custo_por_Projeto.xlsx'

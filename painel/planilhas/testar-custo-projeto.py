@@ -289,6 +289,45 @@ ck('  12 linhas de retrabalho', R_RBF - R_RB0 + 1, 12)
 ck('  60 linhas de lançamento', R_LANF - R_LAN0 + 1, 60)
 print(f'  {testes - n0} verificações')
 
+n0 = testes
+print('\nTESTE 10 · menus suspensos (Categoria, Forma de pagamento, Status)')
+NOMES_ESPERADOS = {'CATEGORIA_COMPRA': 'Listas!$D$2:$D$17',
+                   'FORMA_PAGAMENTO': 'Listas!$E$2:$E$9',
+                   'STATUS_COMPRA': 'Listas!$F$2:$F$4',
+                   'EQUIPE_COMISSAO': 'Listas!$A$2:$A$9',
+                   'VENDEDOR': 'Listas!$B$2:$B$6',
+                   'CAUSA_RETRABALHO': 'Listas!$C$2:$C$10'}
+for nome, alvo in NOMES_ESPERADOS.items():
+    d = wbv.defined_names.get(nome)
+    ck(f'  nome definido {nome}', d.attr_text if d else '<ausente>', alvo)
+
+VAL_ESPERADAS = {'B120:B179': '=CATEGORIA_COMPRA', 'G120:G179': '=FORMA_PAGAMENTO',
+                 'I120:I179': '=STATUS_COMPRA', 'D43:D54': '=EQUIPE_COMISSAO',
+                 'G43:G54': '=EQUIPE_COMISSAO', 'A66:A77': '=EQUIPE_COMISSAO',
+                 'B104:B115': '=CAUSA_RETRABALHO', 'D7:E7': '=VENDEDOR',
+                 'F9:G9': '=EQUIPE_COMISSAO'}
+for aba in (FM, EX):
+    achadas = {str(d.sqref): d.formula1 for d in wbv[aba].data_validations.dataValidation}
+    ck(f'  {aba} · nº de menus', len(achadas), len(VAL_ESPERADAS))
+    for rng, formula in VAL_ESPERADAS.items():
+        ck(f'  {aba}!{rng} aponta para', achadas.get(rng, '<ausente>'), formula)
+    for d in wbv[aba].data_validations.dataValidation:
+        ck(f'  {aba}!{d.sqref} usa nome definido, não intervalo de aba',
+           d.formula1.lstrip("=").split("!")[0] in NOMES_ESPERADOS, True)
+        ck(f'  {aba}!{d.sqref} mostra a setinha na célula', d.showDropDown, False)
+
+# as categorias da ficha têm de existir exatamente na lista da aba Listas
+lista = [wbv['Listas'].cell(r, 4).value for r in range(2, 18)]
+ck('  a lista tem 16 categorias', len([x for x in lista if x]), 16)
+for grupo, (i0, i1, isub) in OC.items():
+    for r in range(i0, i1 + 1):
+        cat = wbv[FM].cell(r, 1).value
+        ck(f'  categoria "{cat}" existe no menu', cat in lista, True)
+for cat in lista:
+    ck(f'  "{cat}" cabe no menu (sem vírgula, até 26 caracteres)',
+       ',' not in cat and len(cat) <= 26, True)
+print(f'  {testes - n0} verificações')
+
 print('\n' + '═' * 76)
 print(f'{testes} verificações · {len(falhas)} falha(s)')
 if falhas:

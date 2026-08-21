@@ -2,7 +2,7 @@
 
 Arquivo: `Valvic_Custo_por_Projeto.xlsx`
 Gerador: `gerar-custo-projeto.py` (edite o script, nunca o `.xlsx`)
-Testes: `testar-custo-projeto.py` (210 verificações)
+Testes: `testar-custo-projeto.py` (305 verificações)
 
 Uma lâmina por projeto, com todo o custo direto e indireto em **ORÇADO ×
 REALIZADO × DESVIO**. É essa segunda coluna que transforma um controle de gasto
@@ -53,11 +53,20 @@ compra é uma linha** no bloco 8:
 | Campo | |
 |---|---|
 | Descrição / fornecedor | texto livre — "MADEGEM — chapas brancas TX" |
-| Categoria | menu suspenso com as 16 categorias |
+| Categoria | **menu suspenso** com as 16 categorias |
 | Data | quando comprou |
 | Valor | R$ |
-| Forma de pagamento | PIX · Boleto · Cartão · Cartão parcelado · Dinheiro · Transferência · Faturado 30 dias |
-| Status | **A comprar** · **Comprado (a pagar)** · **Pago** |
+| Forma de pagamento | **menu suspenso**: PIX · Boleto · Cartão · Cartão parcelado · Dinheiro · Transferência · Faturado 30 dias |
+| Status | **menu suspenso**: A comprar · Comprado (a pagar) · Pago |
+
+As três colunas são menus clicáveis. Eles apontam para **nomes definidos**
+(`CATEGORIA_COMPRA`, `FORMA_PAGAMENTO`, `STATUS_COMPRA`), e não para um intervalo de
+outra aba — é a forma que sobrevive à conversão para o Google Sheets. Digitar por fora é
+permitido, mas a planilha avisa: o que não estiver escrito igual à lista não entra na
+soma da categoria.
+
+As categorias têm nomes curtos e sem vírgula justamente para caberem no menu e na largura
+da coluna. O "o que entra em cada uma" está na aba **Listas**, ao lado da lista.
 
 O bloco 6 **não se digita**: ele soma o livro por categoria, sozinho. Você só digita o
 **orçado** de cada categoria.
@@ -248,7 +257,7 @@ Excel, no LibreOffice e no Google Planilhas.
 
 ```
 python3 gerar-custo-projeto.py     # gera o .xlsx
-python3 testar-custo-projeto.py    # 210 verificações, 0 falha
+python3 testar-custo-projeto.py    # 305 verificações, 0 falha
 ```
 
 O teste calcula as fórmulas de verdade (biblioteca `formulas`) e confere a ficha
@@ -262,7 +271,10 @@ que a lista de comissões não tem ninguém que não seja marceneiro, ajudante o
 
 Um teste extra (`TESTE 0`) confere as **âncoras de texto** de cada bloco: se alguém mudar
 o mapa de linhas da ficha sem atualizar o Painel, o teste acusa antes de o número sair
-errado.
+errado. E o `TESTE 10` confere os **menus suspensos**: que os seis nomes definidos existem
+e apontam para o intervalo certo, que cada uma das nove faixas de validação usa um nome
+(e não um intervalo de aba), que a setinha aparece na célula, que toda categoria da ficha
+existe na lista, e que nenhum nome de categoria tem vírgula ou passa de 26 caracteres.
 
 Para o Painel Geral, o teste resolve o `INDIRECT` à mão — o motor não avalia nome
 de aba dinâmico — e confirma que **cada coluna aponta para o endereço certo** da
