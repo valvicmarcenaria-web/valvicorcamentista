@@ -152,7 +152,7 @@ const S2=[{d:'Sábado',n:'29',fds:1},{d:'Domingo',n:'30',fds:1},{d:'Segunda',n:'
 /* ═══════════ FOLHA 1 · 22 a 28/08 ═══════════ */
 const f1=[
  linha('Deivson','Coordenação de produção',0,[
-   card('carla','Coordenação do dia<br>+ cozinha'),'',
+   card('carla','Coordenação do dia<br>+ cozinha'),off('Workshop'),
    card('carla','Montagem da cozinha'),card('carla','Montagem da cozinha'),
    card('augusto','Início da montagem'),card('augusto','Montagem'),
    card('augusto','Montagem')],S1),
@@ -190,12 +190,12 @@ const f1=[
 /* ═══════════ FOLHA 2 · 29/08 a 04/09 ═══════════ */
 const f2=[
  linha('Deivson','Coordenação de produção',0,[
-   off('Não estará presente'),off('Workshop'),
+   off('Não estará presente'),'',
    card('augusto','Fechamento da obra'),
-   card('simony','Coordenação · ronda<br>das duas frentes'),
-   card('simony','Coordenação · ronda<br>das duas frentes'),
-   card('simony','Coordenação · ronda<br>das duas frentes'),
-   card('simony','Ronda + vistoria final<br>com a cliente')],S2),
+   card('maria','Coordenação das frentes<br>+ fabricação'),
+   card('maria','Coordenação das frentes<br>+ fabricação'),
+   card('maria','Coordenação das frentes<br>+ fabricação'),
+   card('maria','Coordenação das frentes<br>+ fabricação')],S2),
  linha('Samuel','Marceneiro sênior',0,['','',
    card('simony','Instalação dos<br>2 banheiros — 1 dia')+card('patricia','Nicho — pós-horário<br><b>prazo 31/08</b>'),
    card('simony','Quarto da Duda<br>e hóspede'),card('simony','Quarto da Duda<br>e hóspede'),
@@ -323,8 +323,8 @@ document.getElementById('app').innerHTML = `
         Luciana Rajão (Cezar) e fechamento do Augusto (Deivson). <b>Se faltar uma peça na segunda,
         não há quem faça.</b> Conferir tudo na sexta 28.</div></div>
       <div class="aviso risco"><div class="h">O domingo depende do Jomar</div>
-        <div class="c">Deivson tem workshop. O Douglas produz, mas alguém precisa responder pela
-        fábrica: o <b>Jomar</b>, a confirmar até quinta 27. Sem supervisão o domingo não abre — e
+        <div class="c">O Douglas produz, mas alguém precisa responder pela fábrica: o
+        <b>Jomar</b>, a confirmar até quinta 27. Sem supervisão o domingo não abre — e
         aí porta e prateleira da sala vão para o pós-horário de segunda e terça, que ainda dá,
         porque elas só são exigidas na quarta 2.</div></div>
       <div class="aviso"><div class="h">O espelho depende da segunda</div>
@@ -332,9 +332,9 @@ document.getElementById('app').innerHTML = `
         É o único item da obra que depende de fornecedor externo — o relógio dele começa a
         contar no dia da instalação, não no dia do pedido interno.</div></div>
       <div class="aviso"><div class="h">A Simony sobe com duas pessoas</div>
-        <div class="c">Samuel e Jackson, e o calendário fecha. Mas de <b>1 a 4</b> o Cezar está na
-        fabricação da <b>Maria — Vale dos Cristais</b>: não há reserva interna nenhuma. Se quiser
-        folga nessa semana, o terceiro corpo tem que vir de fora.</div></div>
+        <div class="c">Samuel e Jackson, e o calendário fecha. Mas de <b>1 a 4</b> Cezar
+        <b>e Deivson</b> estão na fabricação da <b>Maria — Vale dos Cristais</b>: não há reserva
+        interna nenhuma. O terceiro corpo, se precisar, vem de fora.</div></div>
     </div>
   </div>
   <div class="rf"><span>Borda tracejada = depende de confirmação de freelancer ou de decisão de equipe</span>
