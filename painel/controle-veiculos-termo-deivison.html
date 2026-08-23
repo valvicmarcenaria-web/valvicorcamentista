@@ -1,0 +1,272 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<title>Valvic · Termo de Veículo — Deivison</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0E2038;--navy2:#16314F;--gold:#C2A05A;--goldsoft:#d8bd80;
+      --goldbg:#F6EDD6;--ink:#1b2733;--muted:#6c7785;--line:#e8e3d8}
+*{margin:0;padding:0;box-sizing:border-box}
+@page{size:A4 portrait;margin:0}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:#8a8a8a}
+.sheet{width:210mm;height:297mm;background:#fff;position:relative;overflow:hidden;
+       display:flex;flex-direction:column;page-break-after:always}
+.sheet:last-child{page-break-after:auto}
+@media print{body{background:#fff}}
+@media screen{.sheet{margin:8mm auto;box-shadow:0 2px 16px rgba(0,0,0,.3)}}
+.rh{background:var(--navy);color:#fff;padding:5mm 14mm 4mm}
+.rh.slim{padding:3.4mm 14mm 3mm}
+.rh .kx{font-size:6.6pt;letter-spacing:.22em;text-transform:uppercase;
+        color:var(--goldsoft);font-weight:600}
+.rh .tt{font-family:'Cormorant Garamond',serif;font-size:19pt;font-weight:600;
+        line-height:1.08;margin-top:.8mm}
+.rh.slim .tt{font-size:14pt}
+.rh .sb{font-size:7pt;color:#9FB0C4;margin-top:1.2mm}
+.gold-rule{height:1.1mm;background:linear-gradient(90deg,var(--gold),var(--goldsoft))}
+.body{flex:1;padding:5mm 14mm 3mm;display:flex;flex-direction:column;min-height:0}
+.rf{background:var(--goldbg);padding:2.4mm 14mm;font-size:6.3pt;color:#7A5B17;line-height:1.45;
+    display:flex;justify-content:space-between;gap:6mm;align-items:flex-end}
+.rf .pg{white-space:nowrap;font-weight:700}
+.sec{font-family:'Cormorant Garamond',serif;font-size:12pt;font-weight:600;color:var(--navy);
+     display:flex;align-items:baseline;gap:2mm;margin:0 0 2mm}
+.sec .bar{width:5mm;height:.9mm;background:var(--gold);align-self:center}
+.sec .hint{font-family:'Inter',sans-serif;font-size:6.6pt;color:var(--muted);font-weight:400;
+           letter-spacing:.02em}
+.grid{display:flex;flex-wrap:wrap;border:.35mm solid var(--navy2);margin-bottom:3.4mm}
+.grid .f{padding:1.7mm 3mm;border-right:.25mm solid var(--line);
+         border-bottom:.25mm solid var(--line)}
+.grid .k{font-size:6pt;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
+         font-weight:600}
+.grid .v{height:5.8mm;border-bottom:.25mm dotted #b9c2cc;margin-top:1mm}
+.grid .v.preenchido{font-size:9.6pt;font-weight:600;color:var(--navy);
+                    line-height:5.8mm;border-bottom-style:solid;
+                    border-bottom-color:var(--navy2)}
+.cx.on{background:var(--navy);color:#fff;font-size:6.4pt;font-weight:700;
+       text-align:center;line-height:3.4mm}
+.qual{display:flex;gap:7mm;align-items:center;margin-top:1.8mm;flex-wrap:wrap}
+.qual .o{display:flex;align-items:center;gap:1.6mm;font-size:7.8pt}
+.cx{width:3.4mm;height:3.4mm;border:.3mm solid var(--ink);border-radius:.5mm;
+    display:inline-block;flex-shrink:0}
+.qual .nota{font-size:6.4pt;color:var(--muted);margin-left:auto;line-height:1.35;
+            max-width:74mm;text-align:right}
+
+.frota{width:100%;border-collapse:collapse;margin-bottom:1.6mm}
+.frota th{background:var(--navy2);color:#fff;font-size:6.2pt;letter-spacing:.12em;
+          text-transform:uppercase;font-weight:600;padding:1.8mm 2.4mm;text-align:left}
+.frota td{border:.25mm solid var(--line);padding:2.2mm 2.4mm;font-size:7.8pt;line-height:1.3}
+.frota td.c{text-align:center}
+.frota .mod{font-weight:700;color:var(--navy)}
+.frota .pl{font-family:'Inter',sans-serif;font-weight:700;letter-spacing:.06em}
+.frota .det{font-size:6.6pt;color:var(--muted);line-height:1.35}
+.notafrota{font-size:6.8pt;color:var(--muted);line-height:1.45;margin-bottom:2.8mm;
+           border-left:.8mm solid var(--goldsoft);padding-left:2.6mm}
+ol{margin:0;padding-left:5.5mm}
+ol li{font-size:7.9pt;line-height:1.44;margin-bottom:1.7mm;text-align:justify}
+ol li b{color:var(--navy)}
+.destaque{background:var(--goldbg);border-left:1mm solid var(--gold);padding:2.6mm 3.5mm;
+          margin:1mm 0 3mm;font-size:8pt;line-height:1.5;text-align:justify}
+.destaque .sub{margin-top:2.2mm;padding-top:2.2mm;border-top:.25mm solid #d8c9a0}
+.decl{font-size:8.2pt;line-height:1.55;text-align:justify;margin-top:auto;
+      padding-top:3mm;border-top:.25mm solid var(--line)}
+.assin{display:flex;gap:8mm;margin-top:10mm}
+.assin .a{flex:1;text-align:center}
+.assin .a .ln{border-top:.3mm solid var(--ink);margin-bottom:1.2mm}
+.assin .a .t{font-size:6.6pt;color:var(--muted);letter-spacing:.04em;line-height:1.4}
+.test{display:flex;gap:8mm;margin-top:12mm}
+.local{margin-top:6mm;font-size:8pt;color:var(--ink)}
+.local .ln{display:inline-block;border-bottom:.25mm dotted #b9c2cc;width:52mm;margin:0 1mm}
+.local .sm{display:inline-block;border-bottom:.25mm dotted #b9c2cc;width:12mm;margin:0 1mm}
+.passos{display:flex;gap:3mm;margin-bottom:1mm}
+.passos .p{flex:1;border:.25mm solid var(--line);border-top:.9mm solid var(--gold);
+           padding:2.4mm 2.8mm}
+.passos .n{font-size:6.2pt;letter-spacing:.12em;color:var(--muted);font-weight:600}
+.passos .t{font-size:7.6pt;line-height:1.45;margin-top:1mm}
+</style></head><body>
+
+<!-- ══════════════ FOLHA 1 ══════════════ -->
+<section class="sheet">
+  <div class="rh">
+    <div class="kx">Controle de Frota · documento assinado uma única vez</div>
+    <div class="tt">Termo de Responsabilidade pelo Uso de Veículo</div>
+    <div class="sb">VALVIC MARCENARIA · Vargas Decor Ltda · CNPJ 17.269.304/0001-51 · Belo Horizonte / MG</div>
+  </div>
+  <div class="gold-rule"></div>
+  <div class="body">
+
+    <div class="sec"><span class="bar"></span>Identificação do condutor</div>
+    <div class="grid">
+      <div class="f" style="width:62%"><div class="k">Nome completo</div><div class="v preenchido">Deivison Gonçalves Santos</div></div>
+      <div class="f" style="width:38%;border-right:0"><div class="k">CPF</div><div class="v preenchido">086.137.146-17</div></div>
+      <div class="f" style="width:34%"><div class="k">CNH nº</div><div class="v preenchido">04064719490</div></div>
+      <div class="f" style="width:22%"><div class="k">Categoria</div><div class="v preenchido">AB</div></div>
+      <div class="f" style="width:22%"><div class="k">Validade</div><div class="v preenchido">17/05/2032</div></div>
+      <div class="f" style="width:22%;border-right:0"><div class="k">Telefone</div><div class="v preenchido">(31) 99424-3857</div></div>
+      <div class="f" style="width:100%;border-right:0;border-bottom:0">
+        <div class="k">Qualificação do signatário — marque uma</div>
+        <div class="qual">
+          <span class="o"><span class="cx"></span> Empregado (CLT)</span>
+          <span class="o"><span class="cx on">✓</span> Prestador de serviço</span>
+          <span class="o"><span class="cx"></span> Parceiro</span>
+          <span class="nota">Define qual das duas hipóteses de ressarcimento se aplica, no
+            quadro da página seguinte. Não descreve cargo nem cria vínculo.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec"><span class="bar"></span>Frota da empresa
+      <span class="hint">assinale os veículos que este condutor está autorizado a conduzir</span></div>
+    <table class="frota">
+      <thead><tr><th style="width:44mm">Veículo</th><th style="width:20mm">Placa</th>
+        <th style="width:18mm">Ano/mod.</th><th>Situação</th>
+        <th style="width:22mm;text-align:center">Autorizado</th></tr></thead>
+      <tbody>
+        <tr><td class="mod">Fiat Mobi Like</td><td class="pl">TEN0J18</td><td>2025/2025</td>
+          <td><b>Locado</b> — Capitaliza Aluguel de Carro<div class="det">Contrato nº 200826 ·
+            vigência 20/08/2026 a 20/08/2028</div></td>
+          <td class="c"><span class="cx on">✓</span></td></tr>
+        <tr><td class="mod">VW Saveiro 1.6 Robust</td><td class="pl">TCR0D79</td><td>2024/2025</td>
+          <td><b>Locado</b> — Capitaliza Aluguel de Carro<div class="det">Contrato nº 200826/2 ·
+            vigência 20/08/2026 a 20/08/2028</div></td>
+          <td class="c"><span class="cx on">✓</span></td></tr>
+        <tr><td class="mod">Chevrolet Montana LS 1.4 8V Eco</td><td class="pl">QUY4166</td><td>2019/2020</td>
+          <td><b>Próprio</b> — Vargas Decor Ltda<div class="det">Veículo de propriedade da
+            empresa</div></td>
+          <td class="c"><span class="cx on">✓</span></td></tr>
+      </tbody>
+    </table>
+    <div class="notafrota">
+      <b>Mobi e Saveiro são veículos locados</b> e têm franquia contratual de <b>2.000 km por mês
+      cada</b>; o quilômetro excedente custa <b>R$ 0,60</b> à empresa. A manutenção preventiva
+      desses dois é obrigação da locadora — nenhum serviço pode ser contratado por conta própria.
+      A <b>Montana</b> é da empresa e sua manutenção é feita pela direção.
+    </div>
+
+    <div class="sec"><span class="bar"></span>Condições</div>
+    <ol>
+      <li><b>Habilitação.</b> Declaro possuir CNH válida e de categoria compatível com os veículos
+        assinalados, e me obrigo a comunicar imediatamente à empresa qualquer vencimento, suspensão
+        ou cassação — hipótese em que fico impedido de conduzir até nova autorização escrita.</li>
+      <li><b>Veículos autorizados.</b> Posso conduzir apenas os veículos assinalados no quadro
+        acima. Conduzir veículo não assinalado depende de autorização escrita da direção,
+        registrada na Ficha de Uso.</li>
+      <li><b>Uso.</b> O veículo é de uso <b>exclusivamente a serviço da empresa</b>, durante a
+        execução do serviço e no trajeto necessário a ele. Uso particular, desvio de rota e
+        transporte de pessoa estranha ao serviço dependem de autorização escrita da direção.</li>
+      <li><b>Condução.</b> É vedado dirigir sob efeito de álcool ou de qualquer substância que
+        comprometa a capacidade de dirigir, ceder a direção a terceiro e usar o celular ao volante.
+        Comprometo-me a respeitar a legislação de trânsito.</li>
+      <li><b>Registro e quilometragem.</b> Obrigo-me a preencher e assinar a <b>Ficha de Uso do
+        Veículo</b> na saída e na volta, informando destino, quilometragem exata e o estado em que
+        o veículo é devolvido. Retirar o veículo sem registrar equivale a uso não autorizado. Nos
+        veículos locados, a quilometragem registrada é o que comprova o consumo da franquia
+        contratual de 2.000 km/mês.</li>
+      <li><b>Guarda do veículo — negligência grave.</b> Obrigo-me a não deixar o veículo aberto ou
+        destrancado, a não deixar a chave na ignição e a não deixar documentos ou objetos de valor
+        à vista. O contrato de locação classifica essas condutas como <b>negligência grave</b>, e
+        elas <b>afastam a cobertura do seguro</b> — ocorrendo furto ou dano nessas circunstâncias,
+        respondo pelo prejuízo sem o limite de franquia previsto no quadro da página seguinte.</li>
+      <li><b>Devolução.</b> O veículo deve retornar à empresa ao fim do serviço do dia, limpo, com
+        os documentos e os itens obrigatórios a bordo, salvo autorização expressa em contrário.</li>
+      <li><b>Manutenção e falhas.</b> Comunicarei imediatamente à empresa qualquer falha mecânica,
+        ruído anormal, luz de painel acesa ou pneu em más condições. É vedado contratar oficina,
+        guincho ou peça por conta própria — nos veículos locados a manutenção preventiva é
+        obrigação da locadora e o acionamento é feito pela empresa.</li>
+      <li><b>Multas e infrações.</b> Infrações cometidas durante o meu uso são de minha
+        responsabilidade. Autorizo a empresa a me indicar como condutor infrator perante a
+        autoridade de trânsito, nos termos do <b>art. 257, § 3º, do Código de Trânsito
+        Brasileiro</b>, e me obrigo a ressarcir o valor das multas. Nos veículos locados, a
+        locadora cobra da empresa <b>taxa administrativa de R$ 20,00 por infração processada</b>,
+        devida ainda que eu pague a multa diretamente — esse valor também será ressarcido.</li>
+      <li><b>Sinistro.</b> Em caso de acidente, obrigo-me a não abandonar o veículo, comunicar
+        imediatamente a empresa e a seguradora, prestar as informações necessárias e registrar
+        boletim de ocorrência quando cabível.</li>
+      <li><b>Avarias.</b> Comunicarei de imediato qualquer dano. Dano decorrente de <b>dolo</b>
+        será ressarcido integralmente. Dano decorrente de <b>culpa</b> — imprudência, negligência
+        ou imperícia — será ressarcido nos termos do quadro da página seguinte.</li>
+    </ol>
+  </div>
+  <div class="rf">
+    <span>A vigência desta autorização acompanha a relação do signatário com a empresa e pode ser
+      revogada a qualquer tempo por comunicação escrita da direção.</span>
+    <span class="pg">1 / 2</span>
+  </div>
+</section>
+
+<!-- ══════════════ FOLHA 2 ══════════════ -->
+<section class="sheet">
+  <div class="rh slim">
+    <div class="kx">Termo de Responsabilidade pelo Uso de Veículo · continuação</div>
+    <div class="tt">Ressarcimento, sinistro e assinaturas</div>
+  </div>
+  <div class="gold-rule"></div>
+  <div class="body">
+
+    <div class="sec"><span class="bar"></span>Ressarcimento de dano por culpa</div>
+    <div class="destaque">
+      Fica ajustado, em qualquer das qualificações assinaladas na página 1, que o ressarcimento de
+      dano causado por culpa é <b>limitado ao valor da franquia do seguro</b>, parcelado em até
+      <b>______ vezes</b>, em parcela que não excederá <b>______ %</b> do valor mensal a que eu
+      tiver direito, sempre mediante comunicação prévia do valor e do número de parcelas. Dano por
+      <b>dolo</b>, e dano ocorrido em situação de <b>negligência grave</b> na forma da condição 6,
+      não têm esse limite.
+      <div class="sub">
+        <b>Se empregado (CLT):</b> autorizo o desconto em folha nos limites acima, nos termos do
+        <b>art. 462, § 1º, da CLT</b>, que exige justamente este acordo prévio e escrito.<br>
+        <b>Se prestador de serviço ou parceiro:</b> respondo pelo dano nos termos dos
+        <b>arts. 186 e 927 do Código Civil</b> e autorizo, desde já, a <b>compensação</b> dos
+        valores devidos por mim com os valores que a empresa me dever pelos serviços prestados,
+        nos mesmos limites de franquia, parcelas e percentual.
+      </div>
+    </div>
+
+    <div class="sec"><span class="bar"></span>Em caso de acidente — o que fazer, nesta ordem</div>
+    <div class="passos">
+      <div class="p"><div class="n">1 · SEGURANÇA</div>
+        <div class="t">Verifique se há feridos e acione o <b>192</b>. Sinalize a via com o
+          triângulo. Não abandone o veículo.</div></div>
+      <div class="p"><div class="n">2 · AVISE A EMPRESA</div>
+        <div class="t">Ligue para a direção <b>antes</b> de qualquer acordo com terceiro. Nunca
+          negocie no local por conta própria.</div></div>
+      <div class="p"><div class="n">3 · REGISTRE</div>
+        <div class="t">Fotografe os veículos, a via e as placas. Anote nome, telefone e seguro do
+          outro condutor.</div></div>
+      <div class="p"><div class="n">4 · BO E SEGURO</div>
+        <div class="t">Registre boletim de ocorrência quando houver vítima, dano a terceiro ou
+          divergência de versão.</div></div>
+    </div>
+    <div class="notafrota" style="margin-top:2.6mm">
+      Nos veículos <b>locados</b> (Mobi e Saveiro), a empresa precisa comunicar o sinistro também
+      à <b>locadora</b> — por isso o aviso à direção não pode esperar o fim do dia.
+    </div>
+
+    <div class="decl">
+      Declaro que li e compreendi todas as condições deste termo, que recebi orientação sobre o uso
+      dos veículos da empresa e sobre o preenchimento da Ficha de Uso, e que assumo as
+      responsabilidades aqui descritas, na qualificação que assinalei na página 1, enquanto durar
+      a autorização para conduzir os veículos ali assinalados.
+      <div class="local">Belo Horizonte / MG, <span class="sm"></span> de
+        <span class="ln"></span> de <span class="sm"></span>.</div>
+      <div class="assin">
+        <div class="a"><div class="ln"></div>
+          <div class="t">Colaborador / prestador de serviço / parceiro — assinatura</div></div>
+        <div class="a"><div class="ln"></div>
+          <div class="t">Valvic Marcenaria — Vargas Decor Ltda</div></div>
+      </div>
+      <div class="test">
+        <div class="a" style="flex:1;text-align:center"><div class="ln" style="border-top:.3mm solid var(--ink);margin-bottom:1.2mm"></div>
+          <div class="t" style="font-size:6.6pt;color:var(--muted)">Testemunha 1 — nome e CPF</div></div>
+        <div class="a" style="flex:1;text-align:center"><div class="ln" style="border-top:.3mm solid var(--ink);margin-bottom:1.2mm"></div>
+          <div class="t" style="font-size:6.6pt;color:var(--muted)">Testemunha 2 — nome e CPF</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="rf">
+    <span>Duas vias: uma para o signatário, uma para o arquivo da empresa · anexar cópia da CNH.
+      Os campos de parcelamento e de percentual devem ser preenchidos antes da assinatura — em
+      branco, a cláusula de ressarcimento perde eficácia. Este termo autoriza a condução do
+      veículo e não cria, por si, vínculo de emprego nem altera a natureza da relação existente
+      com o signatário.</span>
+    <span class="pg">2 / 2</span>
+  </div>
+</section>
+</body></html>

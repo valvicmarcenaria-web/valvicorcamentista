@@ -49,6 +49,29 @@ PESSOAS = {
         'qualificacao': 'CLT',
         'veiculos': FROTA,
     },
+    'jackson': {
+        'arquivo': 'Jackson',
+        'Nome completo': 'Jackson Martins Duarte Neto',
+        'CPF': '066.606.486-58',
+        'CNH nº': '07562372642',
+        'Categoria': 'AB',            # com observação EAR na CNH
+        'Validade': '04/08/2032',
+        'Telefone': '(31) 99234-4977',
+        'qualificacao': 'PRESTADOR',
+        'veiculos': FROTA,
+    },
+    'deivison': {
+        'arquivo': 'Deivison',
+        # a CNH grafa DEIVISON — no chão de fábrica ele é chamado de Deivson
+        'Nome completo': 'Deivison Gonçalves Santos',
+        'CPF': '086.137.146-17',
+        'CNH nº': '04064719490',
+        'Categoria': 'AB',
+        'Validade': '17/05/2032',
+        'Telefone': '(31) 99424-3857',
+        'qualificacao': 'PRESTADOR',
+        'veiculos': FROTA,
+    },
 }
 
 
