@@ -33,9 +33,21 @@ PESSOAS = {
         'CNH nº': '07431102717',
         'Categoria': 'AB',
         'Validade': '30/05/2032',
-        'Telefone': '',
-        'qualificacao': None,     # 'CLT' | 'PRESTADOR' | 'PARCEIRO' | None
-        'veiculos': [],           # placas autorizadas; [] = marcar à caneta
+        'Telefone': '(31) 99583-2140',
+        'qualificacao': 'PRESTADOR',   # 'CLT' | 'PRESTADOR' | 'PARCEIRO' | None
+        'veiculos': FROTA,             # placas autorizadas; [] = marcar à caneta
+    },
+    'cesar': {
+        'arquivo': 'Cesar',
+        # o nome sai como está na CNH — no chão de fábrica ele é chamado de Cezar
+        'Nome completo': 'Cesar Eduardo Campos Santos',
+        'CPF': '043.245.596-51',
+        'CNH nº': '01406676021',
+        'Categoria': 'AB',
+        'Validade': '17/10/2034',
+        'Telefone': '(31) 98669-2802',
+        'qualificacao': 'CLT',
+        'veiculos': FROTA,
     },
 }
 
