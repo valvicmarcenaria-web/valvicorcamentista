@@ -301,3 +301,70 @@ Emitida `proposta-spe-nova-lima.pdf` (4 páginas, verificada).
 `chapas.md` cota vidro e espelho **por folha**; `validacao-orcamento.md` cota
 **por unidade**. Nenhuma das duas é por m². Usar esses números como R$/m² em
 painelaria subestima sempre.
+
+---
+
+## 🔁 21/08/2026 — DUAS PRANCHAS NOVAS NO DECORADO
+
+O Jonathan mandou acrescentar dois ambientes ao escopo:
+
+| Prancha | Ambiente | Emissão | Acabamento |
+|---|---|---|---|
+| **DET 07** | Armário 1 — **COPA** | R00 · 07/08/2026 | MDF Arauco **Frapé Matt** (cravado) |
+| **DET 02** | **ILHA GOURMET** | R00 · 22/07/2026 | ⚠ não legendado — adotei Frapé |
+
+As duas são **caso A** (têm camada de texto: 175 e 311 palavras). Lidas pelo
+conector e conferidas no render.
+
+### ⛔ Não foi somar duas linhas
+
+Rodei o motor inteiro com `EXCLUIR` desligado e os dois ambientes novos dentro.
+**Os quatro ambientes que já existiam mudaram de preço:**
+
+| Ambiente | Antes | Depois |
+|---|--:|--:|
+| Cozinha | 25.300 | **24.700** |
+| Sala | 15.500 | **15.800** |
+| Quarto | 29.400 | **29.800** |
+| Suíte | 31.000 | **30.300** |
+| Copa *(novo)* | — | **6.200** |
+| Ilha gourmet *(novo)* | — | **9.000** |
+| **DECORADO** | 101.200 | **115.800** |
+| Stand *(intocado)* | 88.200 | 88.200 |
+| **TOTAL** | 189.400 | **R$ 204.000** |
+
+**A cozinha CAIU.** Duas forças em sentidos opostos: a chapa Frapé passou a
+render mais — a copa e a ilha preenchem sobra que a cozinha pagava sozinha — e a
+logística subiu com a área (137,0 → 167,5 m² de chapa, 4 → 6 ambientes). Na
+cozinha o ganho de nesting venceu; nos outros três, a logística.
+
+MC do decorado mantida em **35,0% exata**. MC combinada do contrato: **37,2%**.
+
+### ⛔ Dívida técnica que NÃO corrigi — e que o Jonathan precisa decidir
+
+Este motor é de 07/08 e ainda lança **INSTALAÇÃO como custo direto**
+(R$ 7.947 no escopo novo). A regra da casa, cravada em 17/08 no Eliuton, é que
+**montagem não entra no custo** — a equipe é salário fixo e a comissão já está
+no divisor.
+
+Mantive a convenção do motor por duas razões: não misturar dois critérios dentro
+do **mesmo** orçamento, e porque a proposta vigente de R$ 189.400 já foi entregue
+nela.
+
+> **Se aplicar a regra, o decorado cai de R$ 115.800 para ~R$ 98.100** — R$ 17.700
+> a menos. E a parte do stand também teria de ser refeita, porque saiu na mesma
+> convenção. É a mesma correção que pegou a Honda.
+
+### O que ficou fora dos dois ambientes novos
+
+- **Bancada e rodabanca da copa** — pedra, marmoraria.
+- **Bancada da ilha** — "pedra a definir", marmoraria.
+- **Cuba 50×40×20 e torneira monocomando Tramontina** — louça e metal do cliente.
+- **Adega Duo Maxi Crissair** (770 × 870 × 575) — equipamento do cliente; fazemos
+  o nicho ventilado.
+
+### Uma nota de leitura sobre a ilha
+
+Móvel de ilha **aparece pelos quatro lados**: não existe face de fundo barata,
+tudo é frente. São 18,4 m² de chapa para 3,40 × 0,90 m — proporcionalmente mais
+que qualquer armário encostado na parede do projeto. Está no preço.

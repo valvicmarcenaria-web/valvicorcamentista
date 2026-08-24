@@ -1,6 +1,27 @@
 # -*- coding: utf-8 -*-
 """SPE NOVA LIMA 1 — APARTAMENTO DECORADO  [Jonathan 07/08/2026]
 
+[Jonathan 21/08/2026] DUAS PRANCHAS NOVAS, acrescentadas ao escopo:
+  DET 07 · Armário 1 COPA   (A4, R00 de 07/08)  — MDF Arauco Frapé Matt
+  DET 02 · ILHA GOURMET     (A3, R00 de 22/07)  — acabamento não legendado
+Ambas são CASO A (têm camada de texto) — lidas pelo conector e conferidas no
+render. Seis ambientes agora, 167,5 m² de chapa contra 137,0.
+
+⚠ NÃO É SOMAR DUAS LINHAS. Rodar o motor inteiro mudou também os quatro
+  ambientes que já existiam: a chapa Frapé passou a ser mais bem aproveitada
+  (a copa e a ilha preenchem sobra que a cozinha pagava sozinha) e a logística
+  subiu com a área. A cozinha CAIU de 25.300 para 24.700; sala, quarto e suíte
+  subiram um pouco. O total do decorado vai de R$ 101.200 para R$ 115.800.
+
+⛔ DÍVIDA TÉCNICA CONHECIDA, NÃO CORRIGIDA AQUI: este motor é de 07/08 e ainda
+  lança INSTALAÇÃO como custo direto (INST). A regra da casa, cravada pelo
+  Jonathan em 17/08 no Eliuton, é que MONTAGEM NÃO ENTRA NO CUSTO — a equipe é
+  salário fixo, e a comissão já está no divisor. Mantive a convenção do motor
+  para não misturar dois critérios dentro do MESMO orçamento, e porque a
+  proposta vigente de R$ 189.400 já foi entregue nela. Se o Jonathan mandar
+  aplicar a regra, o decorado cai ~R$ 18.000 e a proposta inteira tem de ser
+  refeita — inclusive a parte do stand.
+
 Três pranchas EXECUTIVAS novas do Lodi Motta (R00, emissão 05–06/08/2026):
   MO 03  · Mobiliário Sala / Cozinha  (A2 79,3×42)  — 4 elevações + 2 plantas
   DET 05 · Quarto                     (A2 59,4×42)  — 4 elevações + planta
@@ -150,6 +171,59 @@ U4 = 'Suíte · cabeceira e cortineiro'
 a(U4,'AN15','Cabeceira — base (estofada por cima)', 193.5, 100, 1)
 a(U4,'AN15','Cortineiro',              246, 15, 1)
 
+# ══ DET 07 · COPA — armário 1 ═════════════════════════════════════════════
+# [Jonathan 21/08] prancha nova, R00 de 07/08/2026. Lida pelo CONECTOR: é
+# caso A, com camada de texto (175 palavras) — cotas conferidas no render.
+#   260 × 95 (corpo, com rodapé de 10) × 60 de profundidade.
+#   Elevação: 2 | 50 | 50 | 56 | 50 | 50 | 2 = 260 ✓
+#   Módulos: porta+porta (100) · gaveteiro (56) · porta+porta (100)
+#   Gavetas: 15 · 15 · 15 · 30    · portas de 50 × 75
+#   Acabamento CRAVADO na prancha: MDF ARAUCO FRAPÉ MATT.
+#   Puxador: cava usinada com fita de bordo 4023 18 mm (DET.01).
+# ⛔ A BANCADA E A RODABANCA DE 24 SÃO PEDRA — hachura de granito na planta e
+#   na elevação. Marmoraria, fora do nosso escopo, como no resto do projeto.
+# ⛔ A cuba e a torneira são louça/metal do cliente; fazemos o vão.
+K1 = 'Copa · armário 1 (DET 07)'
+a(K1,'FR15','Vertical externa e divisória',   60, 85, 4)
+a(K1,'FR15','Base',                          130, 60, 2)
+a(K1,'FR15','Travessa superior',             130, 10, 4)
+a(K1,'BR6', 'Fundo',                         130, 85, 2)
+a(K1,'FR18','Porta de giro 50 × 75',          50, 75, 4)
+a(K1,'FR18','Frente de gaveta 56 × 15',       56, 15, 3)
+a(K1,'FR18','Frente de gavetão 56 × 30',      56, 30, 1)
+a(K1,'FR18','Prateleira interna',             98, 58, 2)
+a(K1,'FR18','Rodapé recuado',                130, 10, 2)
+a(K1,'BR15','Caixa de gaveta — lateral',      50, 15, 6)
+a(K1,'BR15','Caixa de gaveta — frente/costas',50, 15, 6)
+a(K1,'BR15','Caixa de gavetão — lateral',     50, 30, 2)
+a(K1,'BR15','Caixa de gavetão — frente/costas',50, 30, 2)
+a(K1,'BR6', 'Fundo de gaveta',                50, 50, 4)
+
+# ══ DET 02 · ILHA GOURMET ═════════════════════════════════════════════════
+# [Jonathan 21/08] prancha nova, R00 de 22/07/2026. Também caso A (311 palavras).
+#   340 × 90 em planta · 95 de altura total (88,5 de corpo + 6,5 de pedra).
+#   Móvel de ILHA: aparece pelos QUATRO lados, então não há face de fundo
+#   barata — tudo é frente. É o que encarece a peça por metro.
+#   Contém: nicho da ADEGA DUO MAXI CRISSAIR (770 × 870 × 575), um armário com
+#   porta e prateleira (ARM.) e uma prateleira aberta (PRAT.).
+# ⚠ A PRANCHA NÃO TRAZ LEGENDA DE ACABAMENTO. As demais do SPE são Arauco Anis
+#   Matt e Frapé Matt; adotei FRAPÉ MATT, igual à copa. CONFIRMAR.
+# ⛔ Bancada em PEDRA A DEFINIR — marmoraria, fora do escopo.
+# ⛔ Cuba 50×40×20 e torneira monocomando Tramontina — louça e metal do cliente.
+# ⛔ Adega Duo Maxi CRISSAIR — equipamento do cliente; fazemos o nicho ventilado.
+G1 = 'Gourmet · ilha (DET 02)'
+a(G1,'FR18','Face longa 340 × 88,5 (2 peças cada)', 170, 88.5, 4)
+a(G1,'FR18','Face curta 90 × 88,5',                  90, 88.5, 2)
+a(G1,'FR15','Base da ilha',                         170, 90, 2)
+a(G1,'FR15','Divisória interna',                     90, 88.5, 4)
+a(G1,'FR15','Travessa superior de apoio da pedra',  170, 12, 4)
+a(G1,'FR15','Nicho da adega — lateral',              60, 88, 2)
+a(G1,'FR15','Nicho da adega — base e topo',          79, 60, 2)
+a(G1,'FR18','Porta do armário 59 × 73,5',            59, 73.5, 1)
+a(G1,'FR18','Prateleira do armário',                 59, 58, 1)
+a(G1,'FR18','Prateleira aberta (PRAT.)',             88, 45, 1)
+a(G1,'FR18','Rodapé recuado 15',                    170, 15, 2)
+
 # ── nesting ───────────────────────────────────────────────────────────────
 def _pack(pcs):
     ch = 0; y = x = f = 0.0
@@ -175,7 +249,7 @@ for mov, mat, d, c, l, q in p:
 CH = {m: nest(v) for m, v in por.items()}
 
 print('═'*94)
-print('SPE NOVA LIMA 1 — APARTAMENTO DECORADO · MO 03 + DET 05 + DET 06')
+print('SPE NOVA LIMA 1 — DECORADO · MO 03 + DET 05 + DET 06 + DET 02 + DET 07')
 print('═'*94)
 print('\nÁREA DE CHAPA POR MÓVEL')
 for mov in dict.fromkeys(x[0] for x in p):
@@ -204,9 +278,14 @@ ESTOF_M2 = (1.96*0.87) + (1.935*1.00)     # cabeceiras do quarto e da suíte
 INOX_ML = 7.2 + 3.4                        # rodapé inox sala/cozinha (E03+E04)
 LED_ML_T = 3.0 + 1.0 + 2.97 + 2.3 + 2.46 + 5.0   # cozinha·sala·cortineiros·nichos = 16,7 m
 N_DOBR  = 2*2 + 1*2 + 1*2 + 2*2 + 5*2      # portas de giro da cozinha
+N_DOBR += 4*2                              # 4 portas da copa   [DET 07]
+N_DOBR += 1*2                              # 1 porta da ilha    [DET 02]
 N_ARTIC = 8                                # básculas dos aéreos Frapé
 N_CORR  = 3                                # gavetas da torre do forno
+N_CORR += 4                                # 4 gavetas da copa  [DET 07]
 M_CAVA  = 3.56 + 2.35 + 3.04               # frentes com cava (DET.03)
+M_CAVA += 4*0.50 + 4*0.56                  # portas e gavetas da copa (DET.01)
+M_CAVA += 0.59                             # porta da ilha
 
 terc = [
     ('Portas de espelho terceirizadas — 4 folhas + 2 fretes',
@@ -224,7 +303,7 @@ ferr = [
     ('Sistema Dominus — 2 kits de 2 portas (roupeiros)', 2*DOMINUS_2P),
     ('Sistema RO82 + trilho — porta de passagem da sala', RO82),
     (f'Cava usinada — {M_CAVA:.2f} m',                  M_CAVA*CAVA_M),
-    ('Suportes de prateleira — 22 un',                  22*SUP_PRAT),
+    ('Suportes de prateleira — 34 un (12 novos: copa e ilha)', 34*SUP_PRAT),
 ]
 custo_terc = sum(v for _, v in terc)
 custo_ferr = sum(v for _, v in ferr)
@@ -240,7 +319,11 @@ print(f'  {"TOTAL":<56}R$ {custo_ferr:>9,.2f}')
 
 consum = (custo_chapa + custo_fita)*0.06
 MAT = custo_chapa + custo_fita + custo_filet + custo_terc + custo_ferr + consum
-LOG, VIS, INST = 1600.0, 750.0, 6500.0    # 4 ambientes, obra em Nova Lima
+# ⚠ 21/08 — com a copa e a ilha são SEIS ambientes e ~25% mais chapa. Carreto,
+#   visita e instalação sobem junto. Escalo pela área, não por ambiente: a copa
+#   e a ilha são menores que os quatro originais.
+_F_LOG = ar_tot/137.0
+LOG, VIS, INST = 1600.0*_F_LOG, 750.0 + 250.0, 6500.0*_F_LOG
 fixedR = MAT + LOG + VIS + INST
 
 print('\n' + '─'*94)
@@ -253,8 +336,8 @@ print(f'  {"CUSTO DIRETO — DECORADO":<56}R$ {fixedR:>9,.2f}')
 # ══ RATEIO POR AMBIENTE [Jonathan 07/08: sem RT · MC 35%] ═════════════════
 GRUPO = {C1:'Cozinha', C2:'Cozinha', C3:'Cozinha', S1:'Sala', S2:'Sala',
          Q1:'Quarto', Q2:'Quarto', Q3:'Quarto', U1:'Suíte', U2:'Suíte',
-         U3:'Suíte', U4:'Suíte'}
-AMB = ('Cozinha', 'Sala', 'Quarto', 'Suíte')
+         U3:'Suíte', U4:'Suíte', K1:'Copa', G1:'Gourmet'}
+AMB = ('Cozinha', 'Sala', 'Quarto', 'Suíte', 'Copa', 'Gourmet')
 
 ar_g = defaultdict(lambda: defaultdict(float))
 for mov, mat, d, c, l, q in p:
@@ -278,11 +361,21 @@ te_g = {'Cozinha': INOX_ML*0.45*INOX_M + 3.0*LED_ML,
         'Quarto':  LACA_M2_Q*LACA_M2 + (1.96*0.87)*ESTOFADO_M2 + (2.97+2.3)*LED_ML
                    + 2*PORTA_ESPELHO + FRETE_ESPELHO,
         'Suíte':   (1.935*1.00)*ESTOFADO_M2 + (2.46+5.0)*LED_ML
-                   + 2*PORTA_ESPELHO + FRETE_ESPELHO}
-fe_g = {'Cozinha': N_DOBR*DOBR + N_ARTIC*ARTIC + N_CORR*CORR + M_CAVA*CAVA_M + 10*SUP_PRAT,
+                   + 2*PORTA_ESPELHO + FRETE_ESPELHO,
+        # a copa e a ilha não têm espelho, laca, estofado, inox nem LED — a
+        # pedra e os equipamentos são de terceiros, mas não nossos.
+        'Copa':    0.0,
+        'Gourmet': 0.0}
+# a ferragem da copa e da ilha é exata; o resto da cozinha absorve o saldo
+FE_COPA = 8*DOBR + 4*CORR + (4*0.50 + 4*0.56)*CAVA_M + 8*SUP_PRAT
+FE_ILHA = 2*DOBR + 0.59*CAVA_M + 4*SUP_PRAT
+fe_g = {'Cozinha': (N_DOBR-10)*DOBR + N_ARTIC*ARTIC + (N_CORR-4)*CORR
+                   + (M_CAVA - 4*0.50 - 4*0.56 - 0.59)*CAVA_M + 10*SUP_PRAT,
         'Sala':    RO82 + 6*SUP_PRAT,
         'Quarto':  DOMINUS_2P + 4*SUP_PRAT,
-        'Suíte':   DOMINUS_2P + 2*SUP_PRAT}
+        'Suíte':   DOMINUS_2P + 2*SUP_PRAT,
+        'Copa':    FE_COPA,
+        'Gourmet': FE_ILHA}
 # reconcilia arredondamentos com o total apurado
 te_g['Sala']   += custo_terc - sum(te_g.values())
 fe_g['Cozinha'] += custo_ferr - sum(fe_g.values())

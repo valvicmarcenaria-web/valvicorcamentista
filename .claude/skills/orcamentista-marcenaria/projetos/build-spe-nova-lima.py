@@ -9,7 +9,7 @@ obs. NAO TEM NADA CONTRATADO AINDA."
   filete, tabela de frentes, hero do investimento. Mesma casca, escopo maior.
 
 → E cai a moldura "contratado + adição" que a versão anterior usava. Nada foi
-  assinado: é UMA proposta, com oito frentes.
+  assinado: é UMA proposta, agora com dez frentes.
 
 [Jonathan 07/08] "elevar a MC para 35% e dar 5 anos de garantia · SEMPRE mantendo
 os valores do orçamento inicial do Stand de vendas."
@@ -18,10 +18,24 @@ os valores do orçamento inicial do Stand de vendas."
   Decorado .... MC 35% exata: 25.300 + 15.500 + 29.400 + 31.000 = 101.200
   TOTAL ....... R$ 189.400
 
+[Jonathan 21/08] DUAS PRANCHAS NOVAS entram no escopo do decorado:
+  DET 07 · Armário 1 COPA  ·  DET 02 · ILHA GOURMET
+Seis ambientes agora, 167,5 m² de chapa contra 137,0.
+
+  Stand ....... 88.200 INTOCADO
+  Decorado .... 24.700 + 15.800 + 29.800 + 30.300 + 6.200 + 9.000 = 115.800
+  TOTAL ....... R$ 204.000
+
+⚠️ NÃO É SOMAR DUAS LINHAS. O motor rodou inteiro e os quatro ambientes que já
+   existiam MUDARAM: a chapa Frapé passou a render mais (a copa e a ilha
+   preenchem sobra que a cozinha pagava sozinha) e a logística subiu com a
+   área. A COZINHA CAIU de 25.300 para 24.700; sala, quarto e suíte subiram um
+   pouco. A MC de 35% no decorado está mantida, exata.
+
 ⚠️ MC 35% exata no decorado dá R$ 101.200, e não os 103.300 que estavam na versão
    anterior. Aqueles 103.300 nunca foram alvo — eram o resíduo de segurar o número
    redondo de 191.500, o que deixava a MC em 35,9%. Travando 35%, o total cai
-   R$ 2.100. MC combinada do contrato: 37,4%.
+   R$ 2.100. MC combinada do contrato: 37,2% com o escopo de 21/08.
 
 ⚠️ GARANTIA 5 ANOS (era 2). Coerente com a tabela corrigida da casa: corrediça
    oculta = 5 anos. O decorado tem Dominus, oculta e articuladores; o stand é
@@ -39,13 +53,15 @@ FRENTES = [
  ('Pérgola — 28 ripas metalon #10×5 revestido em MDF madeirado',          18000),
  ('Portas — de giro (copa + armário) e acesso ao QG',                      5500),
  ('Móveis + complementos — armário gourmet, móvel lounge, sanca, inox',   19000),
- ('Cozinha do decorado — bancada em “L”, aéreos em dois planos, torre do forno', 25300),
- ('Sala do decorado — 7,20 m de painelaria, espelhos e rodapé de inox',   15500),
- ('Quarto do decorado — roupeiro espelhado, nichos em laca, cabeceira',   29400),
- ('Suíte do decorado — torre de nichos, roupeiro espelhado, painel ripado', 31000),
+ ('Cozinha do decorado — bancada em “L”, aéreos em dois planos, torre do forno', 24700),
+ ('Sala do decorado — 7,20 m de painelaria, espelhos e rodapé de inox',   15800),
+ ('Quarto do decorado — roupeiro espelhado, nichos em laca, cabeceira',   29800),
+ ('Suíte do decorado — torre de nichos, roupeiro espelhado, painel ripado', 30300),
+ ('Copa — armário de 2,60 m em Frapé Matt, quatro portas e gaveteiro (DET 07)', 6200),
+ ('Ilha gourmet — 3,40 × 0,90 m, nicho de adega, armário e prateleira (DET 02)', 9000),
 ]
 TOT = sum(v for _, v in FRENTES)
-assert TOT == 189400, TOT
+assert TOT == 204000, TOT
 def br(v): return f'{v:,.0f}'.replace(',', '.')
 linhas = ''.join(f'<tr><td class="nmc">{n}</td><td class="r">R$ {br(v)}</td></tr>'
                  for n, v in FRENTES)
@@ -129,7 +145,7 @@ HTML = f"""<!DOCTYPE html>
   <div class="eyebrow">O que será executado · parte 2</div>
   <div class="section-h serif">Apartamento decorado</div>
   <hr class="rule">
-  <p class="lead">Quatro ambientes das pranchas MO 03, DET 05 e DET 06 — executivas e cotadas.
+  <p class="lead">Seis ambientes das pranchas MO 03, DET 05, DET 06, DET 02 e DET 07 — executivas e cotadas.
   O levantamento saiu das elevações, não de estimativa por metro quadrado.</p>
 
   <div class="block">
@@ -153,7 +169,7 @@ HTML = f"""<!DOCTYPE html>
     </ul>
   </div>
 
-  <div class="highlights">
+  <div class="highlights" style="display:grid;grid-template-columns:1fr 1fr;gap:5mm">
     <div class="hl perg">
       <div class="t">Quarto — Ciliegio Poro + laca</div>
       <ul>
@@ -168,6 +184,22 @@ HTML = f"""<!DOCTYPE html>
         <li><b>Torre de 5 nichos iluminados</b> em Frapé, do piso ao teto.</li>
         <li>Roupeiro de 1,935 m com <b>duas portas de correr espelhadas</b>, sistema Dominus.</li>
         <li><b>Painel ripado</b> em perfil de madeira 5×1,5 · cabeceira estofada e cortineiro com iluminação.</li>
+      </ul>
+    </div>
+    <div class="hl perg">
+      <div class="t">Copa — armário 1 · DET 07</div>
+      <ul>
+        <li>Armário de <b>2,60 m</b> em <b>Frapé Matt</b>: quatro portas de giro, gaveteiro central de quatro gavetas e prateleira em cada módulo.</li>
+        <li><b>Puxador em cava usinada</b> com fita de bordo, conforme o DET.01.</li>
+        <li>Vão preparado para a cuba; bancada e rodabanca são <b>pedra</b>.</li>
+      </ul>
+    </div>
+    <div class="hl port">
+      <div class="t">Ilha gourmet · DET 02</div>
+      <ul>
+        <li>Corpo de <b>3,40 × 0,90 m</b>. Móvel de ilha: <b>não há face de fundo</b> — os quatro lados são acabamento.</li>
+        <li><b>Nicho ventilado para a adega Duo Maxi Crissair</b>, armário com porta e prateleira aberta.</li>
+        <li>Bancada em pedra, cuba e torneira <b>fora deste valor</b>.</li>
       </ul>
     </div>
   </div>
@@ -231,10 +263,13 @@ HTML = f"""<!DOCTYPE html>
     nota das pranchas.
   </div>
 
-  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>SPE Nova Lima 1 · Projeto Lodi Motta · 07/08/2026</span></div>
+  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>SPE Nova Lima 1 · Projeto Lodi Motta · 21/08/2026</span></div>
 </div>
 
 </body></html>"""
 
 (P/'proposta-spe-nova-lima.html').write_text(HTML, encoding='utf-8')
-print('wrote proposta-spe-nova-lima.html', len(HTML))
+import subprocess
+open('/tmp/in.html', 'w', encoding='utf-8').write(HTML)
+subprocess.run(['node', '/tmp/r.js', str(P/'proposta-spe-nova-lima.pdf')], check=True)
+print(f'proposta-spe-nova-lima.html · .pdf   ·   total R$ {br(TOT)}')
