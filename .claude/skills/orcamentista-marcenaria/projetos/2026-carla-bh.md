@@ -198,3 +198,65 @@ proposta é risco de direito de imagem. Está escrito na regra.
 **O que destrava:** subir a `Apresentação_Carla.pdf` (ou só os renders) no chat,
 como foi feito com o caderno do Vinícius. Com as imagens em mão, a proposta vira
 o deck premium A4 paisagem, no padrão do Junior.
+
+---
+
+## ⚠️ 24/08 — A APRESENTAÇÃO COBRE MAIS AMBIENTES QUE OS DETALHAMENTOS
+
+Ao tentar extrair os renders li o índice da `Apresentação_Carla.pdf`
+(15 páginas, **arquiteta Virginia Duarte**). Ele não bate com o pacote de
+detalhamentos:
+
+| Página da apresentação | Tem detalhamento? | Está no orçamento? |
+|---|---|---|
+| Escada entrada | ✅ `Detalhamento_Escada` | ✅ |
+| Sala estar | ✅ Painel · Rack · Cristaleira | ✅ |
+| **Copa** (2 páginas) | ❌ **não existe** | ❌ |
+| Cozinha (2 páginas) | ✅ `Detalhamento_Cozinha` | ✅ |
+| **Banheiro social** | ❌ | ❌ |
+| Sala TV | ✅ (painel/rack) | ✅ |
+| Quarto (2 páginas) | ✅ GR 3 portas · GR em L | ✅ |
+| **Suíte** | ❌ | ❌ |
+| **Banheiro suíte** | ❌ | ❌ |
+
+**Quatro ambientes aparecem na apresentação e não têm prancha executiva:**
+copa, suíte e os dois banheiros. A copa tem **duas páginas** de render — é um
+ambiente trabalhado, não uma sobra.
+
+### O que isso significa
+
+O orçamento de **R$ 109.300 cobre os sete conjuntos detalhados** e está certo
+para o que foi entregue. Mas se a cliente entender que a proposta cobre "o
+apartamento", vai faltar coisa — e falta de escopo descoberta na obra é a pior
+espécie.
+
+**Três hipóteses, e só o Jonathan/arquiteta resolvem:**
+1. Copa, suíte e banheiros **não têm marcenaria** — são só ambientação.
+2. Têm marcenaria, mas os detalhamentos **ainda não foram emitidos**.
+3. Têm marcenaria e as pranchas existem, mas **não subiram para a pasta**.
+
+Enquanto não se resolve, a proposta tem de deixar claro **quais conjuntos
+estão dentro** — e a de 9 páginas já faz isso, listando os sete nominalmente.
+
+---
+
+## 🖼 Imagens — o que falta e por quê
+
+Os renders estão nas 14 primeiras páginas da `Apresentação_Carla.pdf`, um
+arquivo de **39 MB**. Não há caminho técnico daqui:
+
+| Tentativa | Resultado |
+|---|---|
+| `curl` no Drive | **403 no CONNECT** — a política de rede deste ambiente nega `drive.google.com` |
+| conector · `download_file_content` | devolve base64 **dentro da conversa**; 39 MB não cabem |
+| `get_file_metadata` | **não expõe** `thumbnailLink` |
+| imagem de 10 KB da pasta | funciona, mas é miniatura de 300 × 300 px |
+
+⚠ As imagens que existem dentro dos detalhamentos **não servem**: as pranchas
+as rotulam como *"referência estética fornecida pelo cliente"* — inspiração de
+terceiro, não o projeto da Carla.
+
+**Destrava com um passo:** subir a `Apresentação_Carla.pdf` no chat. Com ela,
+a proposta vira o deck premium A4 paisagem (padrão do caderno do Junior), com
+uma página por ambiente conduzida pelo render — o mesmo tratamento do Carol e
+Vinícius.
