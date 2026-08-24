@@ -161,3 +161,40 @@ para que a diferença fique visível em vez de silenciosa. Efeito: +155 m de fit
 - Elétrica e hidráulica, inclusive os circuitos exclusivos dos eletros.
 - Alvenaria, gesso, revestimento e pintura.
 - Móveis soltos, cortinas e decoração.
+
+---
+
+## 🔁 24/08 — correções do Jonathan na proposta
+
+1. **Saíram TODAS as cotas de móvel.** Era a segunda vez que ele pedia (a
+   primeira foi no Carol e Vinícius, 21/08). Virou **regra da skill** —
+   `referencias/proposta-comercial.md`, no topo, e resumida no `SKILL.md`.
+   Onde a dimensão era o argumento, passou a ser dita em palavras: "do piso ao
+   forro", "parede inteira revestida", "nicho contínuo sem divisória".
+2. **Saiu toda a explicação de formação de preço.** A página do upgrade não fala
+   mais de chapa, plano de corte nem aproveitamento. Passou a falar só de
+   benefício: *"abrir a porta deixa de mostrar branco"* e *"marca de uso aparece
+   muito menos em superfície colorida"*. Também virou regra.
+3. **Imagens do projeto — BLOQUEADO, não feito.** Ver abaixo.
+
+### ⛔ Por que a proposta ainda está sem imagem
+
+Os renders do projeto estão em `Apresentação_Carla.pdf`, **39 MB**. Não consegui
+trazer por nenhum dos dois caminhos:
+
+| Caminho | Resultado |
+|---|---|
+| `curl` direto no Drive | **bloqueado pela política de rede** — o proxy devolve 403 no CONNECT para `drive.google.com` |
+| conector do Drive (`download_file_content`) | devolve **base64 no contexto** — 39 MB viram ~52 MB de texto, inviável |
+
+Testei o mecanismo com a imagem de 10 KB da pasta: funciona, mas é uma
+miniatura de 300 × 300 px, sem resolução para impressão.
+
+⚠ As "imagens de referência" que aparecem nos detalhamentos **não servem** — as
+próprias pranchas as rotulam como *"referência estética fornecida pelo
+cliente"*. É inspiração de terceiro, não o projeto da Carla, e usar na nossa
+proposta é risco de direito de imagem. Está escrito na regra.
+
+**O que destrava:** subir a `Apresentação_Carla.pdf` (ou só os renders) no chat,
+como foi feito com o caderno do Vinícius. Com as imagens em mão, a proposta vira
+o deck premium A4 paisagem, no padrão do Junior.

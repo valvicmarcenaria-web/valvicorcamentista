@@ -126,6 +126,17 @@ e estimar pela escala, sinalizando.
   proporção do material (o pacote dilui visita/setup → mais barato que separado).
 - **Proposta** (`proposta-comercial.md`): Linha Gold/Silver, garantia, prazo,
   pagamento, RT (10% líquido).
+- ⛔ **TRÊS REGRAS DO QUE NÃO VAI NA PROPOSTA** (`proposta-comercial.md`, topo —
+  o Jonathan já teve de pedir cada uma mais de uma vez):
+  1. **Nunca cotar medida de móvel.** Nem no título, nem na descrição. Medida é
+     documento técnico; na proposta vira objeção antes da venda. Diga a dimensão
+     **em palavras** quando ela for o argumento ("do piso ao forro").
+  2. **Nunca explicar a formação do preço** — nada de chapa, nesting,
+     aproveitamento, custo ou margem. Só **benefício**: o que o cliente vê, sente
+     e usa. Justificar por dentro é abrir a planilha para negociação.
+  3. **Imagens do projeto entram no layout.** Render ou perspectiva do projeto
+     dele — nunca "imagem de referência" de terceiro. Sem imagem acessível,
+     **peça**.
 - **Visão Valvic OS:** cada caso também alimenta o motor/regras do sistema.
 
 ---

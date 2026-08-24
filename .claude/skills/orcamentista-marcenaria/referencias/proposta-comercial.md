@@ -5,6 +5,74 @@ Como a Valvic apresenta o orçamento ao cliente (referência:
 (planilha) vira uma proposta institucional com preço **por ambiente** em
 **duas linhas: Gold e Silver**.
 
+## ⛔ REGRAS DO QUE **NÃO** VAI NA PROPOSTA
+
+Três coisas que o Jonathan já teve de pedir mais de uma vez. Se aparecerem numa
+proposta, é erro — não é questão de gosto.
+
+### 1 · NUNCA cotar medida de móvel na proposta
+[Jonathan 21/08 e 24/08 — pedido **duas vezes**]
+
+Nada de `2,60 m`, `340 × 90`, `920 × 400 × 2450`, `prof. 65`, `altura 2,45 m`.
+Nem no título do item, nem na descrição, nem entre parênteses.
+
+**Por quê.** Medida na proposta convida o cliente a conferir régua na parede
+antes de a gente medir — e a prancha quase sempre manda "conferir em obra". Cota
+divergente vira objeção antes da venda e discussão depois dela. Medida é
+documento **técnico**, de produção, não de venda.
+
+| Em vez de | Escreva |
+|---|---|
+| "Buffet suspenso 443,5 × 80 × 45 prof — seis gavetões" | "Buffet suspenso com seis gavetões" |
+| "Armário de 2,60 m com quatro portas" | "Armário com quatro portas e gaveteiro central" |
+| "Nicho contínuo de 1,77 m em MDF de 25 mm" | "Nicho contínuo, sem divisória, em MDF encorpado" |
+| "Painel de 6,57 m sobre estrutura niveladora" | "Painel do piso ao forro sobre estrutura niveladora" |
+
+O que **pode** ficar: o **material**, a **ferragem**, o **acabamento**, a
+**função** e o **diferencial construtivo**. Onde a dimensão for o próprio
+argumento de venda ("do piso ao forro", "parede inteira", "sem emenda
+aparente"), diga isso **em palavras**, não em número.
+
+Onde as medidas VÃO: memorial técnico interno, plano de corte, contrato de
+execução e ordem de produção.
+
+### 2 · NUNCA explicar a formação do preço
+[Jonathan 24/08]
+
+Nada de nesting, aproveitamento de chapa, "acrescenta duas chapas ao plano de
+corte", "cor nenhuma divide chapa com outra", custo de material, MC ou rateio.
+
+**Por quê.** Explicar por que algo custa o que custa é abrir a planilha para
+negociação. O cliente não compra chapa: compra o móvel pronto. Justificar preço
+por dentro convida a discutir por dentro — e transforma um diferencial em
+"então dá para tirar isso e baixar".
+
+**Fale só de BENEFÍCIO.** O que ele ganha, vê, sente e usa.
+
+| Em vez de | Escreva |
+|---|---|
+| "São duas chapas a mais no plano de corte" | "O armário fica inteiro na mesma cor, por dentro e por fora" |
+| "O interior deixa de dividir chapa branca" | "Abrir a porta deixa de mostrar branco" |
+| "Cor nenhuma divide chapa com outra" | *(nada — apagar a frase)* |
+
+### 3 · Imagens do projeto entram na composição
+[Jonathan 21/08 e 24/08]
+
+Sempre que a pasta do cliente tiver perspectiva, render ou apresentação, as
+imagens **do projeto dele** entram no layout. Proposta premium é conduzida por
+imagem (ver `projetos/build-vinicius-premium.py` e o padrão do caderno do
+Junior/Lagoa Santa).
+
+⚠ **Imagem de referência estética fornecida pelo cliente** (as que as pranchas
+rotulam assim) **não** serve: é inspiração de terceiro, não é o projeto dele, e
+usar na nossa proposta é risco de direito de imagem. Só render ou perspectiva do
+projeto em questão.
+
+Se a pasta não tiver render acessível, **peça** — não entregue proposta premium
+sem imagem alegando que não deu.
+
+---
+
 ## Estrutura da proposta
 
 1. **Capa** — "Proposta especial para [Cliente]".

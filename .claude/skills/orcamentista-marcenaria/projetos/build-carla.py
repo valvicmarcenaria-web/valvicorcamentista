@@ -28,89 +28,91 @@ INV, UP = 109300, 18500
 INV_UP = INV + UP
 assert INV_UP == 127800
 
+# ⛔ SEM UMA ÚNICA COTA. Regra da casa, em `referencias/proposta-comercial.md`:
+#    medida de móvel NÃO vai na proposta. Onde a dimensão é o argumento, ela é
+#    dita EM PALAVRAS — "do piso ao forro", "parede inteira", "sem divisória".
 ITENS = [
  ('01', 'Cozinha linear com torre de geladeira',
-  'Sequência de 3,89 m — 400 + 800 + 1170 + 600 + 920 mm — com 2,45 m de altura total.',
-  ['<strong>Armários inferiores</strong> de 65 cm de profundidade em quatro '
-   'módulos, com nicho para lava-louças de embutir e gaveteiro no módulo do '
-   'cooktop.',
-   '<strong>Aéreos</strong> com três portas (585 · 585 · 600) e 55 cm de altura, '
-   'alinhados à porta superior da torre.',
-   '<strong>Nicho contínuo de 1,77 m</strong> em MDF de 25 mm amadeirado, sem '
-   'divisória, encostado na base dos aéreos — com ventilação e passa-cabo '
-   'previstos para forno e micro-ondas.',
-   '<strong>Torre da geladeira</strong> de 92 × 90 × 245, com o fundo alinhado '
-   'ao fundo da bancada e avanço frontal de 25 cm.',
-   'Puxador em <strong>cava usinada</strong> e iluminação em LED 3000 K sob o '
-   'aéreo e dentro do nicho.'],
+  'Bancada linear com a torre da geladeira integrada, do piso ao forro.',
+  ['<strong>Armários inferiores</strong> em quatro módulos, com nicho para '
+   'lava-louças de embutir e gaveteiro no módulo do cooktop.',
+   '<strong>Aéreos com três portas</strong>, alinhados à porta superior da '
+   'torre: a linha de cima corre sem degrau de uma ponta à outra.',
+   '<strong>Nicho contínuo sem divisória</strong>, em MDF encorpado, encostado '
+   'na base dos aéreos — forno e micro-ondas ficam lado a lado, sem moldura '
+   'entre eles, com ventilação e passa-cabo previstos.',
+   '<strong>Torre da geladeira</strong> com o fundo alinhado ao fundo da '
+   'bancada: de frente ela avança e cria profundidade, de lado tudo termina no '
+   'mesmo plano.',
+   'Puxador em <strong>cava usinada</strong> no próprio material e iluminação '
+   'em LED 3000 K sob o aéreo e dentro do nicho.'],
   22200),
  ('02', 'Painel amadeirado até o forro',
-  '6,57 × 2,45 m, com porta integrada, espelho e frisos verticais.',
-  ['<strong>Painel de 6,57 m</strong> sobre estrutura niveladora de sarrafo, '
-   'ancorada à parede — não é chapa colada em reboco.',
-   '<strong>Porta de 700 × 2100 integrada ao painel</strong>, com batente '
-   'oculto, dobradiça invisível reforçada e folga perimetral de 3 mm. De fora, '
-   'a parede é contínua e a porta some nela.',
-   '<strong>Espelho de 2,50 × 1,10 m</strong> lapidado, com película de '
-   'segurança, instalado entre os dois primeiros conjuntos de frisos.',
-   '<strong>Três faixas de frisos verticais</strong>, cinco linhas cada, '
-   'usinados no próprio MDF.',
+  'Parede inteira revestida, do rodapé ao forro, com porta integrada.',
+  ['Painel sobre <strong>estrutura niveladora ancorada à parede</strong> — não é '
+   'chapa colada em reboco, e por isso não estufa nem descola com o tempo.',
+   '<strong>Porta integrada ao painel</strong>, com batente oculto e dobradiça '
+   'invisível. De fora, a parede é contínua: a porta desaparece nela.',
+   '<strong>Espelho lapidado com película de segurança</strong>, instalado entre '
+   'os frisos, sem sobreposição.',
+   '<strong>Frisos verticais usinados no próprio MDF</strong>, em três faixas, '
+   'com o mesmo veio do painel.',
    'Reforço estrutural previsto para TV e rack: a carga não fica na chapa.'],
   15500),
- ('03', 'Rack suspenso de 3,58 m',
-  'Quatro frentes basculantes de 895 mm, 40 cm de profundidade.',
-  ['<strong>Quatro portas basculantes</strong> com articulador dimensionado '
-   'pela massa real de cada frente.',
-   'Tampo e base <strong>engrossados para 25 mm</strong> — num móvel suspenso '
-   'de 3,58 m, rigidez é estrutura, não estética.',
-   '<strong>Barra metálica contínua de fixação</strong> ancorada na alvenaria. '
-   'O painel decorativo não recebe sozinho a carga do rack.',
-   '<strong>LED 3000 K</strong> em perfil de alumínio recuado 40 mm, com '
-   'difusor leitoso, e ventilação técnica para os equipamentos.'],
+ ('03', 'Rack suspenso',
+  'Quatro frentes basculantes, solto do chão, com luz por baixo.',
+  ['<strong>Quatro portas basculantes</strong> com articulador dimensionado pela '
+   'massa real de cada frente — abrem leves e param onde você soltar.',
+   '<strong>Tampo e base encorpados.</strong> Num móvel suspenso e longo, é a '
+   'rigidez que impede a barriga no meio com o passar dos anos.',
+   '<strong>Barra metálica contínua ancorada na alvenaria.</strong> O painel '
+   'decorativo não recebe sozinho a carga do rack.',
+   '<strong>LED 3000 K em perfil recuado com difusor leitoso</strong>: a luz '
+   'aparece, a fita não.'],
   5200),
  ('04', 'Cristaleira até o forro',
-  '920 × 400 × 2450, com duas portas de vidro e seis prateleiras iluminadas.',
+  'Portas de vidro, prateleiras iluminadas e arremate no forro.',
   ['<strong>Duas portas de giro</strong> em perfil de alumínio preto e vidro '
-   'temperado de 6 mm, com puxador vertical metálico.',
-   '<strong>Seis prateleiras de vidro temperado de 8 mm</strong> lapidado, cada '
-   'uma com seu perfil de LED 3000 K.',
-   'Lateral esquerda de 550 mm — 400 do móvel e 150 de acabamento até a parede '
-   '— para absorver o desaprumo sem deixar fresta.',
-   'Base niveladora de 80 mm e arremate superior recortado em obra, depois do '
-   'nivelamento.'],
+   'temperado, com puxador vertical metálico.',
+   '<strong>Prateleiras de vidro temperado lapidado</strong>, cada uma com a sua '
+   'própria linha de luz — o que se vê é a peça exposta, não a fonte.',
+   '<strong>Lateral esquerda com acabamento estendido até a parede</strong>, '
+   'para absorver o desaprumo sem deixar fresta.',
+   'Base niveladora e <strong>arremate superior recortado em obra</strong>, '
+   'depois do nivelamento: o móvel encosta no forro sem vão.'],
   4900),
  ('05', 'Guarda-roupa de três portas de correr',
-  '2,55 × 0,64 × 2,68 m, com porta central espelhada.',
-  ['<strong>Três folhas deslizantes</strong> em perfil de alumínio escuro, com '
-   'roldana regulável e sistema antidescarrilamento.',
-   '<strong>Porta central integral em espelho</strong> prata com película de '
+  'Três folhas deslizantes, com a central em espelho.',
+  ['<strong>Três folhas</strong> em perfil de alumínio escuro, com roldana '
+   'regulável e sistema antidescarrilamento.',
+   '<strong>Porta central integral em espelho</strong> com película de '
    'segurança.',
-   '<strong>Oito gavetas</strong> em corrediça oculta, prateleiras e maleiro '
-   'superior com prateleira engrossada.',
-   'Dois cabideiros ovais metálicos com suporte reforçado, mantendo 550 mm '
-   'úteis de profundidade para os cabides.'],
+   '<strong>Oito gavetas em corrediça oculta</strong>, prateleiras e maleiro '
+   'superior com prateleira encorpada.',
+   'Cabideiros ovais metálicos com suporte reforçado, com a profundidade útil '
+   'preservada para os cabides.'],
   27500),
  ('06', 'Guarda-roupa em L com cabeceira',
-  '1,97 m de roupeiro mais o retorno com mesa, nicho e aéreo.',
-  ['<strong>Roupeiro de 1,97 m</strong> modulado em 490 + 490 + 490 + 500, com '
-   'quatro portas de giro de 2,68 m e cabideiro contínuo.',
-   '<strong>Mesa de cabeceira</strong> de 500 × 500 × 700 com duas gavetas, '
-   'alinhada ao último módulo do roupeiro.',
-   '<strong>Módulo vertical</strong> de 500 × 500 × 1200 com prateleiras.',
-   '<strong>Nicho de 1,42 m</strong> sobre a cabeceira, em MDF de 25 mm, com '
-   'fita de LED e passa-fio previstos.',
-   '<strong>Armário aéreo</strong> de 1,42 × 0,40 × 0,75 com duas portas de giro.'],
+  'Roupeiro e cabeceira no mesmo desenho, virando a esquina.',
+  ['<strong>Roupeiro com quatro portas de giro</strong> do piso ao forro e '
+   'cabideiro contínuo.',
+   '<strong>Mesa de cabeceira com duas gavetas</strong>, alinhada ao último '
+   'módulo do roupeiro — a esquina fecha sem sobra nem emenda aparente.',
+   '<strong>Módulo vertical com prateleiras</strong>, resolvendo o encontro '
+   'entre o roupeiro e a cama.',
+   '<strong>Nicho iluminado sobre a cabeceira</strong>, em MDF encorpado, com '
+   'passa-fio previsto.',
+   '<strong>Armário aéreo com duas portas de giro</strong> sobre a cama.'],
   25900),
  ('07', 'Marcenaria sob a escada',
-  '2,39 m de largura, 40 cm de profundidade, acompanhando o intradorso.',
-  ['<strong>Porta em vidro Reflecta temperado</strong> de 890 × 1760 em perfil '
-   'de alumínio preto, com três dobradiças reforçadas e puxador vertical.',
-   '<strong>Nichos com geometria diagonal</strong> — 1,50 m de largura, altura '
-   'máxima de 1,06 m, terminando zerados sobre a base.',
+  'O vão da escada vira armário e vitrine.',
+  ['<strong>Porta em vidro Reflecta temperado</strong> em perfil de alumínio '
+   'preto, com dobradiça reforçada e puxador vertical.',
+   '<strong>Nichos que acompanham a diagonal da escada</strong> e terminam '
+   'zerados sobre a base: o desenho segue a escada em vez de brigar com ela.',
    '<strong>LED 3000 K inclusive nos nichos diagonais</strong>, em perfil '
-   'recuado, sem ponto aparente.',
-   'Prateleiras engrossadas para 25 mm, rodapé recuado de 50 mm e folga técnica '
-   'posterior de 20 mm.'],
+   'recuado, sem ponto de luz aparente.',
+   'Prateleiras encorpadas e rodapé recuado, para o vão respirar por baixo.'],
   8100),
 ]
 assert sum(i[4] for i in ITENS) == INV
@@ -118,8 +120,7 @@ assert sum(i[4] for i in ITENS) == INV
 ESPEC = [
  ('Chapa', 'MDF BP <strong>18 mm</strong> na caixaria e nas frentes, '
   '<strong>25 mm</strong> nos nichos e nas prateleiras longas, e '
-  '<strong>6 mm</strong> nos fundos encaixados — exatamente as espessuras que '
-  'os quadros de peças das pranchas especificam.'),
+  '<strong>6 mm</strong> nos fundos encaixados.'),
  ('Borda', 'Fita <strong>ABS de 1 mm</strong> nas faces aparentes e 0,45 mm nas '
   'não aparentes, aplicada em coladeira automática.'),
  ('Puxador', '<strong>Cava usinada</strong> no próprio material, e perfil '
@@ -149,8 +150,8 @@ PAGTO = [
 ]
 
 FORA = [
- ('Tampo e rodabanca da cozinha', 'A prancha especifica <strong>pedra de 20 mm</strong> '
-  'sobre 2,97 × 0,65 m. É fornecimento de marmoraria.'),
+ ('Tampo e rodabanca da cozinha', 'O projeto especifica <strong>pedra</strong> '
+  'sobre toda a bancada. É fornecimento de marmoraria.'),
  ('Eletrodomésticos, louças e metais', 'Cooktop, forno, micro-ondas, lava-louças, '
   'geladeira, coifa, cuba e torneira. Prevemos o vão e a usinagem — precisamos '
   'das medidas de fábrica antes do corte.'),
@@ -226,12 +227,11 @@ p2 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">O que está sendo proposto</div>
   <div class="rule"></div>
   <h2 class="h-sec">Sete conjuntos, sobre<br>projeto executivo detalhado.</h2>
-  <p class="lead" style="margin-top:4mm">Seu projeto chegou com uma coisa rara:
-  <strong>quadro de peças</strong>. Cada prancha lista código, quantidade,
-  espessura e dimensão de cada peça. Isso significa que este orçamento é
-  <strong>transcrição, não estimativa</strong> — não houve arredondamento por
-  metro quadrado nem chute de modulação. São <strong>133 m² de chapa</strong>,
-  contados peça a peça.</p>
+  <p class="lead" style="margin-top:4mm">Seu projeto chegou detalhado peça a
+  peça — cada prancha com memorial de materiais, ferragens e acabamentos. Isso
+  permitiu que este orçamento fosse feito <strong>sobre o projeto real</strong>,
+  e não sobre uma estimativa: o que está descrito abaixo é o que será
+  executado.</p>
   {mem(ITENS[0])}
   {mem(ITENS[1])}
   {foot(2)}
@@ -297,9 +297,8 @@ p6 = f"""<div class="page"><div class="pad">
   o padrão do mercado e é o que está no valor abaixo.</p>
   <p class="lead" style="margin-top:3mm">O upgrade troca esse interior pela
   <strong>mesma cor da frente</strong>, e é <strong>integral</strong>: caixaria,
-  prateleiras, fundos, caixa de gaveta e todo o miolo dos sete conjuntos. São
-  <strong>85 m²</strong> que deixam de ser brancos. <strong>Nenhuma peça branca
-  fica no projeto.</strong></p>
+  prateleiras, fundos e a caixa de cada gaveta. <strong>Nenhuma peça branca fica
+  no projeto.</strong></p>
   <div class="up">
     <div class="c"><div class="k">Como o projeto especifica</div>
       <div class="v" style="color:var(--mut)">R$ {brl(INV)}</div>
@@ -310,12 +309,16 @@ p6 = f"""<div class="page"><div class="pad">
       <div class="s">Upgrade de <strong>R$ {brl(UP)}</strong>. Mesmo escopo,
       mesma ferragem, mesma garantia.</div></div>
   </div>
-  <div class="box" style="margin-top:6mm"><div class="t">Por que ele custa isso</div>
-  <p>Não é só a diferença de preço entre a chapa branca e a colorida. Quando o
-  interior muda de cor, ele <strong>deixa de dividir chapa branca com todos os
-  módulos</strong> e passa a dividir chapa colorida com a frente do seu próprio
-  móvel — e cor nenhuma divide chapa com outra. São duas chapas a mais no plano
-  de corte, além do preço maior por chapa.</p></div>
+  <div class="box" style="margin-top:6mm"><div class="t">O que muda no dia a dia</div>
+  <p><strong>Abrir a porta deixa de mostrar branco.</strong> O móvel fica inteiro
+  na mesma cor, e o interior passa a fazer parte do desenho em vez de contrastar
+  com ele. Onde há porta de vidro, gaveta aberta, nicho ou prateleira à vista —
+  a cristaleira, o rack, o nicho da cabeceira, os nichos sob a escada — é o que
+  separa um móvel bem-feito de um móvel bem-resolvido.</p></div>
+  <div class="box"><div class="t">E envelhece melhor</div>
+  <p>Marca de uso, poeira e risco de manuseio aparecem muito menos em superfície
+  colorida do que em branca. Num armário que abre e fecha todo dia por dez anos,
+  o interior na cor é também uma decisão de manutenção.</p></div>
   {foot(6)}
 </div></div>"""
 
