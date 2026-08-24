@@ -161,3 +161,28 @@ body{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;
 .sig{margin-top:auto;padding-top:7mm;display:grid;grid-template-columns:1fr 1fr;gap:16mm;}
 .sig .ln{border-top:1px solid var(--ink);padding-top:2.4mm;font-size:8.4pt;
          color:var(--soft);}
+
+/* ── abertura de ambiente, variante LARGA ──────────────────────────────────
+   Para móveis horizontais e longos — um painel de parede inteira, um rack de
+   três metros e meio. Recortar um render panorâmico numa coluna vertical joga
+   fora justamente o que interessa: o comprimento. Aqui a imagem ocupa uma
+   faixa de largura total e a lista de móveis desce em duas colunas. */
+.ambw{display:flex;flex-direction:column;height:100%;}
+.ambw .band{position:relative;overflow:hidden;background:var(--sand);
+            height:97mm;flex:none;}
+.ambw .band img{width:100%;height:100%;object-fit:cover;display:block;}
+.ambw .band .tag{position:absolute;left:0;bottom:0;background:var(--deep);
+  color:var(--gold-lt);font-size:6.4pt;letter-spacing:.28em;text-transform:uppercase;
+  padding:3mm 6mm;font-weight:600;}
+.ambw .low{padding:8mm 18mm 12mm;display:grid;grid-template-columns:1.5fr 1fr;
+           gap:11mm;flex:1;min-height:0;}
+.ambw .low .mv .t{font-size:8.6pt;}
+.ambw .low .mv .d{font-size:7.8pt;}
+
+/* ── variante EMOLDURADA ───────────────────────────────────────────────────
+   Quando o render de origem é pequeno, esticá-lo para sangrar a página só
+   mostra o pixel. Melhor apresentá-lo emoldurado, no tamanho em que ainda é
+   nítido, sobre o campo areia. */
+.amb-img.fit{display:flex;background:var(--sand);}
+.amb-img.fit img{width:auto;height:auto;max-width:76%;max-height:56%;margin:auto;
+                 object-fit:contain;box-shadow:0 3mm 10mm rgba(26,23,20,.20);}

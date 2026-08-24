@@ -260,3 +260,101 @@ terceiro, não o projeto da Carla.
 a proposta vira o deck premium A4 paisagem (padrão do caderno do Junior), com
 uma página por ambiente conduzida pelo render — o mesmo tratamento do Carol e
 Vinícius.
+
+---
+
+## ✅ 24/08 — RENDERS EM MÃO. DECK PREMIUM ENTREGUE.
+
+O Jonathan subiu a `Apresentação_Carla.pdf` no chat (15 páginas, 1440 × 810 pt,
+uma imagem sangrada por página). Extraí as 13 imagens para `projetos/img-carla/`
+e montei `apresentacao-carla.pdf` — **16 páginas A4 paisagem**, gramática do
+deck do Vinícius, valores intactos (109.300 / 127.800).
+
+```python
+xref = max(p.get_images(full=True), key=lambda im: im[2]*im[3])[0]
+info = d.extract_image(xref)
+open(f'{OUT}/{nome}.{info["ext"]}', 'wb').write(info['image'])   # ⛔ PIL não existe aqui
+```
+
+### Os rótulos da própria apresentação (autoridade, não meu palpite)
+
+| pág | rótulo | arquivo | px |
+|---|---|---|---|
+| 2 | PLANTA LAYOUT | `planta` | 1439 × 1990 |
+| 3 | ESCADA ENTRADA | `escada` | 1503 × 847 |
+| 4 | SALA ESTAR | `estar` | 1422 × 847 |
+| 5–6 | COPA | `copa-1` · `copa-2` | 715 × 437 · 1383 × 827 |
+| 7–8 | COZINHA | `cozinha-1` · `cozinha-2` | 1381 × 781 · 1502 × 847 |
+| 9 | BANHEIRO SOCIAL | `banho-social` | 1462 × 825 |
+| 10 | SALA TV | `sala-tv` | 1499 × 847 |
+| 11–12 | QUARTO | `quarto-1` · `quarto-2` | 1501 × 847 |
+| 13 | SUÍTE | `suite` | **545 × 316** |
+| 14 | BANHEIRO SUÍTE | `banho-suite` | 1549 × 896 |
+
+⚠ `suite.jpeg` tem **545 px de origem** — não é recorte meu, é o que está no
+arquivo. Sangrado numa coluna de 174 mm daria 79 dpi. Por isso a página 8 do
+deck usa a variante **emoldurada** (`.amb-img.fit`), com a imagem contida em
+76% da coluna: dá ~102 dpi e parece decisão de projeto, não falta de resolução.
+
+### 🔴 A PLANTA E OS RENDERS REDESENHAM O BURACO DE ESCOPO
+
+A planta de layout resolveu o que o índice sozinho não resolvia. Correções à
+tabela da seção anterior:
+
+| Antes eu disse | O que a planta e os renders mostram |
+|---|---|
+| "Copa não tem detalhamento" | ✅ continua verdade — a copa é a **estante de nichos com prateleiras pretas + o balcão preto com banquetas + o ripado vertical**, visível em `copa-2` e no lado direito de `escada` |
+| "Sala TV tem detalhamento (painel/rack)" | ❌ **ERRADO.** O painel e o rack do orçamento são da **SALA** (cota `657` e `358` na planta, render `estar`). A "SALA TV" é outro cômodo — o `QUARTO` do meio com sofá, roupeiro de `306` e **painel + bancada próprios**, sem prancha |
+| "Suíte não tem detalhamento" | ❌ **ERRADO.** A suíte É o guarda-roupa de 3 portas de correr (parede de `240`+, folha central em espelho — está no render `suite`). Item 05, dentro do orçamento |
+| `quarto-1` e `quarto-2` são dois quartos | ❌ são **o mesmo quarto**, vistas opostas — mesma cama, mesma escrivaninha no primeiro plano, e as 4 portas de giro de `49/49/49/50` = o roupeiro em L (item 06) |
+
+**Buraco de escopo, versão corrigida — cinco frentes, não quatro:**
+
+1. **Banheiro social** — espelheira, prateleiras de madeira iluminadas e
+   gabinete amadeirado suspenso em dois módulos (`banho-social`)
+2. **Banheiro da suíte** — armário de 3 portas espelhadas, nichos brancos
+   iluminados e gabinete branco suspenso (`banho-suite`)
+3. **Quarto com sofá** (a "SALA TV") — roupeiro de `306`, painel amadeirado com
+   prateleiras iluminadas e bancada suspensa (`sala-tv`)
+4. **Bancada com espelho do quarto do roupeiro em L** — o item 06 tem roupeiro,
+   mesa de cabeceira, módulo vertical, nicho e aéreo, **e mais nada**. O painel
+   amadeirado com prateleiras, o espelho iluminado e a escrivaninha que
+   aparecem em `quarto-1` **não estão no quadro de peças**
+5. **Copa** — estante de nichos, balcão e ripado
+
+O item 4 é o mais perigoso dos cinco: é falta **dentro de um ambiente que já
+está vendido**. A cliente vai olhar o render do quarto dela e contar a bancada
+como incluída.
+
+### Como o deck trata isso
+
+Não dá para ilustrar a proposta com o apartamento inteiro e vender sete
+conjuntos sem dizer isso em voz alta. O deck diz três vezes:
+
+- **página 3 (Escopo)** — lista os sete e abre um quadro "E o que ainda não"
+- **página 14 (Investimento)** — nota "O escopo dos sete conjuntos"
+- **página 15 (Não incluso)** — **primeiro item da lista**, nominal, com os
+  cinco ambientes escritos
+
+Continua valendo: **quem resolve é o Jonathan com a arquiteta.** As três
+hipóteses da seção anterior seguem de pé, agora sobre cinco frentes.
+
+### Notas de execução do deck
+
+- CSS ganhou duas gramáticas novas em `css-apresentacao.css`: `.ambw` (faixa de
+  largura total, para móvel comprido — painel de parede inteira) e
+  `.amb-img.fit` (imagem emoldurada, para render de baixa resolução).
+- `object-position` por ambiente é o que decide **qual móvel do render** entra
+  no enquadramento. Sem ele o recorte centralizado mostra sempre o sofá.
+- ⚠ **Auditoria de estouro: `get_drawings()` inclui o box-shadow.** O cartão
+  escuro da página 12 aparecia como `y 158–606` (fora da página) quando a caixa
+  real ia até 560 — os 45 pt extras eram a sombra. Rasterizar e medir o pixel
+  escuro é o teste confiável:
+  ```python
+  pm = p.get_pixmap(dpi=72)          # 1 px = 1 pt
+  escuro = [y for y in range(pm.height) if sum(pm.pixel(600, y)[:3]) < 200]
+  ```
+- ⚠ **`flex:1` não limita a altura de uma linha de grid.** O cartão da página 12
+  estourava porque a linha era `auto` e crescia por conteúdo. Resolveu com
+  `grid-template-rows:minmax(0,1fr)` no contêiner.
+- Regra 1 auditada por regex no texto extraído do PDF: **zero cotas**.
