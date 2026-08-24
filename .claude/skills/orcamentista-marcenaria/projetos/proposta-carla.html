@@ -1,0 +1,322 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"><style>
+:root{
+  --ink:#1A1714; --soft:#5C564C; --mut:#918A7C; --line:#E3DDD1; --hair:#F0EBE1;
+  --paper:#fff; --cream:#FAF7F1; --sand:#F1EBDF;
+  --gold:#9C7A3C; --gold-lt:#C6A567; --gold-pale:#F5EEDF; --deep:#241F1B;
+}
+@page{size:A4;margin:0;}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;
+     color:var(--ink);font-size:9.6pt;line-height:1.62;}
+.serif{font-family:'Cormorant Garamond','Liberation Serif',Georgia,serif;}
+.page{position:relative;width:210mm;height:297mm;overflow:hidden;
+      background:var(--paper);page-break-after:always;}
+.page:last-of-type{page-break-after:avoid;}
+.pad{padding:17mm 19mm 14mm;height:100%;display:flex;flex-direction:column;}
+h1,h2,h3{margin:0;font-weight:600;}
+p{margin:0;}
+.eyebrow{font-size:7.2pt;letter-spacing:.30em;text-transform:uppercase;
+         color:var(--gold);font-weight:700;}
+.rule{height:1.5px;width:40px;background:var(--gold);margin:7px 0 13px;}
+.h-sec{font-family:'Cormorant Garamond',Georgia,serif;font-size:23pt;
+       line-height:1.12;font-weight:600;letter-spacing:-.01em;}
+.lead{color:var(--soft);font-size:9.9pt;max-width:150mm;}
+.foot{margin-top:auto;padding-top:8mm;border-top:1px solid var(--hair);
+      display:flex;justify-content:space-between;font-size:7.2pt;
+      letter-spacing:.16em;text-transform:uppercase;color:var(--mut);}
+
+/* capa */
+.cover{background:var(--deep);color:#F6F1E7;}
+.cover .pad{padding:24mm 19mm 16mm;}
+.cover .eyebrow{color:var(--gold-lt);}
+.cover .rule{background:var(--gold-lt);width:56px;height:2px;}
+.cv-t{font-family:'Cormorant Garamond',Georgia,serif;font-size:38pt;
+      line-height:1.05;font-weight:600;letter-spacing:-.015em;margin-top:3mm;max-width:150mm;}
+.cv-nome{font-family:'Cormorant Garamond',Georgia,serif;font-size:74pt;
+         line-height:.98;font-weight:600;letter-spacing:-.025em;margin-top:4mm;
+         color:#F7F2E8;}
+.cv-s{font-size:13pt;color:#CFC6B4;margin-top:7mm;font-weight:300;
+      line-height:1.45;}
+.cv-meta{margin-top:13mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6mm;
+         border-top:1px solid rgba(255,255,255,.16);padding-top:7mm;}
+.cv-meta .k{font-size:6.9pt;letter-spacing:.2em;text-transform:uppercase;
+            color:var(--gold-lt);font-weight:700;}
+.cv-meta .v{font-size:10.4pt;color:#EDE6D9;margin-top:2mm;}
+.cv-brand{font-size:8.6pt;letter-spacing:.42em;text-transform:uppercase;
+          color:#E8DFCB;font-weight:700;}
+.cv-num{position:absolute;right:19mm;top:22mm;font-family:'Cormorant Garamond',Georgia,serif;
+        font-size:110pt;line-height:1;color:rgba(198,165,103,.13);font-weight:600;}
+
+/* itens */
+.it{padding:3.1mm 0;border-bottom:1px solid var(--hair);display:flex;gap:6mm;}
+.it:last-child{border-bottom:none;}
+.it-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:14.5pt;color:var(--gold-lt);
+      font-weight:600;min-width:9mm;line-height:1.1;}
+.it-t{font-size:10.4pt;font-weight:600;letter-spacing:-.005em;}
+.it-d{color:var(--soft);font-size:8.4pt;margin-top:1mm;line-height:1.5;}
+
+/* cenários */
+.cen{border:1px solid var(--line);border-radius:2px;padding:4.6mm 5.6mm;
+     margin-bottom:3.4mm;background:var(--cream);}
+.cen.hi{background:var(--gold-pale);border-color:var(--gold-lt);}
+.cen-h{display:flex;align-items:baseline;gap:4mm;}
+.cen-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:20pt;
+       color:var(--gold);font-weight:600;line-height:1;}
+.cen-t{font-size:12.5pt;font-weight:600;}
+.cen-g{margin-left:auto;font-size:7.6pt;letter-spacing:.16em;text-transform:uppercase;
+       color:#fff;background:var(--gold);padding:2.2mm 3.4mm;border-radius:2px;
+       font-weight:700;white-space:nowrap;}
+.cen-x{color:var(--soft);font-size:8.7pt;margin-top:2mm;}
+.cen-l{margin-top:2.8mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm;
+       border-top:1px solid var(--line);padding-top:3.2mm;}
+.cen-l .k{font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;
+          color:var(--mut);font-weight:700;}
+.cen-l .v{font-size:8.7pt;margin-top:1mm;line-height:1.4;}
+
+/* tabela de investimento */
+table{width:100%;border-collapse:collapse;}
+.inv th{font-size:6.9pt;letter-spacing:.16em;text-transform:uppercase;
+        color:var(--mut);font-weight:700;text-align:right;padding:0 0 3mm;
+        border-bottom:1.5px solid var(--gold);}
+.inv th.l{text-align:left;}
+.inv td{padding:2.4mm 0;border-bottom:1px solid var(--hair);text-align:right;
+        font-variant-numeric:tabular-nums;font-size:9.6pt;}
+.inv td.l{text-align:left;font-size:9.5pt;}
+.inv td.hi{background:var(--gold-pale);font-weight:600;
+           padding-right:2.6mm;padding-left:2.6mm;}
+.inv th.hi{background:var(--gold-pale);padding-right:2.6mm;padding-left:2.6mm;
+           color:var(--gold);}
+.inv tr.tot td{border-bottom:none;border-top:1.5px solid var(--ink);
+               padding-top:3mm;font-size:13.5pt;font-weight:600;
+               font-family:'Cormorant Garamond',Georgia,serif;}
+.inv tr.tot td.l{font-family:inherit;font-size:8pt;letter-spacing:.18em;
+                 text-transform:uppercase;font-weight:700;}
+
+.box{background:var(--cream);border-left:2.5px solid var(--gold);
+     padding:4mm 5.2mm;margin-top:4mm;}
+.box .t{font-size:7.4pt;letter-spacing:.18em;text-transform:uppercase;
+        color:var(--gold);font-weight:700;}
+.box p{color:var(--soft);font-size:9pt;margin-top:2mm;}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:9mm;}
+.term{padding:3.4mm 0;border-bottom:1px solid var(--hair);}
+.term:last-child{border-bottom:none;}
+.term .k{font-size:6.9pt;letter-spacing:.18em;text-transform:uppercase;
+         color:var(--gold);font-weight:700;}
+.term .v{font-size:9.5pt;margin-top:1.2mm;}
+.term .s{color:var(--soft);font-size:8.5pt;margin-top:.8mm;}
+.pay td{padding:2.6mm 0;border-bottom:1px solid var(--hair);font-size:9pt;}
+.pay td.d{text-align:right;font-weight:600;color:var(--gold);
+          font-variant-numeric:tabular-nums;}
+.fora .k{font-size:9.3pt;font-weight:600;}
+.fora .v{color:var(--soft);font-size:8.6pt;margin-top:.8mm;}
+.fora li{margin-bottom:3.2mm;list-style:none;}
+.fora ul{margin:0;padding:0;}
+.sig{margin-top:auto;padding-top:9mm;display:grid;grid-template-columns:1fr 1fr;gap:14mm;}
+.sig .ln{border-top:1px solid var(--ink);padding-top:2.4mm;font-size:8.4pt;
+         color:var(--soft);}
+
+
+.mem{padding:3.4mm 0;border-bottom:1px solid var(--hair);}
+.mem:last-child{border-bottom:none;}
+.mem-h{display:flex;align-items:baseline;gap:4mm;}
+.mem-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:16pt;
+  color:var(--gold-lt);font-weight:600;line-height:1;min-width:9mm;}
+.mem-t{font-size:10.6pt;font-weight:700;letter-spacing:-.005em;}
+.mem-q{margin-left:auto;font-size:9.6pt;font-weight:700;white-space:nowrap;}
+.mem-m{color:var(--soft);font-size:8.3pt;margin:1.4mm 0 0 13mm;font-style:italic;}
+.mem ul{margin:1.8mm 0 0 13mm;padding:0;}
+.mem li{list-style:none;color:var(--soft);font-size:8.3pt;line-height:1.5;
+  margin-bottom:1.3mm;padding-left:4.5mm;position:relative;}
+.mem li::before{content:'';position:absolute;left:0;top:1.8mm;width:3.5px;
+  height:3.5px;border-radius:50%;background:var(--gold-lt);}
+.esp{padding:2.6mm 0;border-bottom:1px solid var(--hair);display:grid;
+  grid-template-columns:32mm 1fr;gap:5mm;}
+.esp:last-child{border-bottom:none;}
+.esp .k{font-size:7.2pt;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;padding-top:.5mm;}
+.esp .v{color:var(--soft);font-size:8.6pt;}
+.up{display:grid;grid-template-columns:1fr 1fr;gap:6mm;margin-top:6mm;}
+.up .c{border:1px solid var(--line);border-radius:2px;padding:5.5mm 6mm;}
+.up .c.hi{background:var(--deep);border-color:var(--deep);color:#F6F1E7;}
+.up .k{font-size:6.9pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.up .c.hi .k{color:var(--gold-lt);}
+.up .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:30pt;
+  line-height:1.05;font-weight:600;margin-top:2mm;}
+.up .s{color:var(--soft);font-size:8.4pt;margin-top:2mm;}
+.up .c.hi .s{color:#CFC6B4;}
+</style></head><body><div class="page cover"><div class="pad">
+  <div class="cv-brand">Valvic Marcenaria</div>
+  <div style="margin-top:auto">
+    <div class="eyebrow">Proposta de marcenaria planejada para</div>
+    <div class="rule"></div>
+    <div class="cv-t">Carla</div>
+    <div class="cv-s">Apartamento em Belo Horizonte<br>Sete conjuntos, sobre projeto executivo detalhado</div>
+  </div>
+  <div class="cv-meta">
+    <div><div class="k">Garantia Valvic</div><div class="v">10 anos</div></div>
+    <div><div class="k">Prazo de entrega</div><div class="v">Até 75 dias corridos</div></div>
+    <div><div class="k">Validade</div><div class="v">7 dias corridos</div></div>
+  </div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">O que está sendo proposto</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">Sete conjuntos, sobre<br>projeto executivo detalhado.</h2>
+  <p class="lead" style="margin-top:4mm">Seu projeto chegou com uma coisa rara:
+  <strong>quadro de peças</strong>. Cada prancha lista código, quantidade,
+  espessura e dimensão de cada peça. Isso significa que este orçamento é
+  <strong>transcrição, não estimativa</strong> — não houve arredondamento por
+  metro quadrado nem chute de modulação. São <strong>133 m² de chapa</strong>,
+  contados peça a peça.</p>
+  <div class="mem"><div class="mem-h"><div class="mem-n">01</div><div class="mem-t">Cozinha linear com torre de geladeira</div><div class="mem-q">R$ 22.200</div></div><div class="mem-m">Sequência de 3,89 m — 400 + 800 + 1170 + 600 + 920 mm — com 2,45 m de altura total.</div><ul><li><strong>Armários inferiores</strong> de 65 cm de profundidade em quatro módulos, com nicho para lava-louças de embutir e gaveteiro no módulo do cooktop.</li><li><strong>Aéreos</strong> com três portas (585 · 585 · 600) e 55 cm de altura, alinhados à porta superior da torre.</li><li><strong>Nicho contínuo de 1,77 m</strong> em MDF de 25 mm amadeirado, sem divisória, encostado na base dos aéreos — com ventilação e passa-cabo previstos para forno e micro-ondas.</li><li><strong>Torre da geladeira</strong> de 92 × 90 × 245, com o fundo alinhado ao fundo da bancada e avanço frontal de 25 cm.</li><li>Puxador em <strong>cava usinada</strong> e iluminação em LED 3000 K sob o aéreo e dentro do nicho.</li></ul></div>
+  <div class="mem"><div class="mem-h"><div class="mem-n">02</div><div class="mem-t">Painel amadeirado até o forro</div><div class="mem-q">R$ 15.500</div></div><div class="mem-m">6,57 × 2,45 m, com porta integrada, espelho e frisos verticais.</div><ul><li><strong>Painel de 6,57 m</strong> sobre estrutura niveladora de sarrafo, ancorada à parede — não é chapa colada em reboco.</li><li><strong>Porta de 700 × 2100 integrada ao painel</strong>, com batente oculto, dobradiça invisível reforçada e folga perimetral de 3 mm. De fora, a parede é contínua e a porta some nela.</li><li><strong>Espelho de 2,50 × 1,10 m</strong> lapidado, com película de segurança, instalado entre os dois primeiros conjuntos de frisos.</li><li><strong>Três faixas de frisos verticais</strong>, cinco linhas cada, usinados no próprio MDF.</li><li>Reforço estrutural previsto para TV e rack: a carga não fica na chapa.</li></ul></div>
+  <div class="foot"><span>Valvic Marcenaria · Carla</span><span>Apartamento em Belo Horizonte</span><span>2 / 9</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="mem"><div class="mem-h"><div class="mem-n">03</div><div class="mem-t">Rack suspenso de 3,58 m</div><div class="mem-q">R$ 5.200</div></div><div class="mem-m">Quatro frentes basculantes de 895 mm, 40 cm de profundidade.</div><ul><li><strong>Quatro portas basculantes</strong> com articulador dimensionado pela massa real de cada frente.</li><li>Tampo e base <strong>engrossados para 25 mm</strong> — num móvel suspenso de 3,58 m, rigidez é estrutura, não estética.</li><li><strong>Barra metálica contínua de fixação</strong> ancorada na alvenaria. O painel decorativo não recebe sozinho a carga do rack.</li><li><strong>LED 3000 K</strong> em perfil de alumínio recuado 40 mm, com difusor leitoso, e ventilação técnica para os equipamentos.</li></ul></div>
+  <div class="mem"><div class="mem-h"><div class="mem-n">04</div><div class="mem-t">Cristaleira até o forro</div><div class="mem-q">R$ 4.900</div></div><div class="mem-m">920 × 400 × 2450, com duas portas de vidro e seis prateleiras iluminadas.</div><ul><li><strong>Duas portas de giro</strong> em perfil de alumínio preto e vidro temperado de 6 mm, com puxador vertical metálico.</li><li><strong>Seis prateleiras de vidro temperado de 8 mm</strong> lapidado, cada uma com seu perfil de LED 3000 K.</li><li>Lateral esquerda de 550 mm — 400 do móvel e 150 de acabamento até a parede — para absorver o desaprumo sem deixar fresta.</li><li>Base niveladora de 80 mm e arremate superior recortado em obra, depois do nivelamento.</li></ul></div>
+  <div class="mem"><div class="mem-h"><div class="mem-n">05</div><div class="mem-t">Guarda-roupa de três portas de correr</div><div class="mem-q">R$ 27.500</div></div><div class="mem-m">2,55 × 0,64 × 2,68 m, com porta central espelhada.</div><ul><li><strong>Três folhas deslizantes</strong> em perfil de alumínio escuro, com roldana regulável e sistema antidescarrilamento.</li><li><strong>Porta central integral em espelho</strong> prata com película de segurança.</li><li><strong>Oito gavetas</strong> em corrediça oculta, prateleiras e maleiro superior com prateleira engrossada.</li><li>Dois cabideiros ovais metálicos com suporte reforçado, mantendo 550 mm úteis de profundidade para os cabides.</li></ul></div>
+  <div class="foot"><span>Valvic Marcenaria · Carla</span><span>Apartamento em Belo Horizonte</span><span>3 / 9</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="mem"><div class="mem-h"><div class="mem-n">06</div><div class="mem-t">Guarda-roupa em L com cabeceira</div><div class="mem-q">R$ 25.900</div></div><div class="mem-m">1,97 m de roupeiro mais o retorno com mesa, nicho e aéreo.</div><ul><li><strong>Roupeiro de 1,97 m</strong> modulado em 490 + 490 + 490 + 500, com quatro portas de giro de 2,68 m e cabideiro contínuo.</li><li><strong>Mesa de cabeceira</strong> de 500 × 500 × 700 com duas gavetas, alinhada ao último módulo do roupeiro.</li><li><strong>Módulo vertical</strong> de 500 × 500 × 1200 com prateleiras.</li><li><strong>Nicho de 1,42 m</strong> sobre a cabeceira, em MDF de 25 mm, com fita de LED e passa-fio previstos.</li><li><strong>Armário aéreo</strong> de 1,42 × 0,40 × 0,75 com duas portas de giro.</li></ul></div>
+  <div class="mem"><div class="mem-h"><div class="mem-n">07</div><div class="mem-t">Marcenaria sob a escada</div><div class="mem-q">R$ 8.100</div></div><div class="mem-m">2,39 m de largura, 40 cm de profundidade, acompanhando o intradorso.</div><ul><li><strong>Porta em vidro Reflecta temperado</strong> de 890 × 1760 em perfil de alumínio preto, com três dobradiças reforçadas e puxador vertical.</li><li><strong>Nichos com geometria diagonal</strong> — 1,50 m de largura, altura máxima de 1,06 m, terminando zerados sobre a base.</li><li><strong>LED 3000 K inclusive nos nichos diagonais</strong>, em perfil recuado, sem ponto aparente.</li><li>Prateleiras engrossadas para 25 mm, rodapé recuado de 50 mm e folga técnica posterior de 20 mm.</li></ul></div>
+  <div class="box" style="margin-top:6mm"><div class="t">Onde a prancha pede conferência</div>
+  <p>Os detalhamentos marcam alguns pontos como "conferir em obra": a cota
+  vertical do rack, a inclinação real da escada e os modelos definitivos dos
+  eletrodomésticos. <strong>Nada vai para a CNC antes da nossa medição no
+  local</strong> — é assim que a prancha pede e é assim que trabalhamos.</p></div>
+  <div class="foot"><span>Valvic Marcenaria · Carla</span><span>Apartamento em Belo Horizonte</span><span>4 / 9</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Ferragem e garantia</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">Hettich em todo o projeto.<br>Dez anos de garantia Valvic.</h2>
+  <p class="lead" style="margin-top:4mm">Ferragem se mede em ciclo de abertura,
+  amortecimento e regulagem. Neste projeto são <strong>46 dobradiças, 13
+  corrediças e 4 articuladores</strong> — e todos na linha superior, sem degrau
+  intermediário.</p>
+  <div class="cen hi" style="margin-top:6mm">
+    <div class="cen-h"><div class="cen-n">★</div>
+      <div class="cen-t">Linha Hettich</div>
+      <div class="cen-g">Garantia 10 anos</div></div>
+    <div class="cen-x">A corrediça Quadro tem curso mais longo, carga maior,
+    retorno mais macio e ciclo de teste muito acima do uso doméstico. Nas oito
+    gavetas do roupeiro de correr e nas quatro básculas do rack, é o que separa
+    um móvel que abre bem no primeiro ano de um que abre bem no décimo.</div>
+    <div class="cen-l">
+      <div><div class="k">Dobradiça</div><div class="v">Hettich Novisys</div></div>
+      <div><div class="k">Corrediça</div><div class="v">Oculta Hettich Quadro</div></div>
+      <div><div class="k">Báscula</div><div class="v">Articulador Blum HK-xs</div></div>
+    </div>
+  </div>
+  <div class="box"><div class="t">Sobre a garantia</div>
+  <p>Os dez anos são <strong>garantia Valvic</strong> — nossa, escrita e
+  assinada na entrega, cobrindo estrutura, ferragem e acabamento. Não é a
+  garantia do fabricante da ferragem, que não faz parte do que vendemos.</p></div>
+  <div class="box"><div class="t">Sobre a montagem</div>
+  <p>A <strong>instalação e a montagem são feitas por equipe própria da
+  Valvic</strong> e estão dentro deste valor. Quem produz é quem monta, e é a
+  mesma empresa que responde pela garantia.</p></div>
+  <div class="foot"><span>Valvic Marcenaria · Carla</span><span>Apartamento em Belo Horizonte</span><span>5 / 9</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Upgrade de projeto</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">O interior na mesma cor<br>da estrutura externa.</h2>
+  <p class="lead" style="margin-top:4mm">O projeto especifica o interior dos
+  armários em <strong>MDF Branco TX</strong> — fora na cor, dentro em branco. É
+  o padrão do mercado e é o que está no valor abaixo.</p>
+  <p class="lead" style="margin-top:3mm">O upgrade troca esse interior pela
+  <strong>mesma cor da frente</strong>, e é <strong>integral</strong>: caixaria,
+  prateleiras, fundos, caixa de gaveta e todo o miolo dos sete conjuntos. São
+  <strong>85 m²</strong> que deixam de ser brancos. <strong>Nenhuma peça branca
+  fica no projeto.</strong></p>
+  <div class="up">
+    <div class="c"><div class="k">Como o projeto especifica</div>
+      <div class="v" style="color:var(--mut)">R$ 109.300</div>
+      <div class="s">Interior em MDF Branco TX, ferragem Hettich, garantia de
+      10 anos.</div></div>
+    <div class="c hi"><div class="k">Com o upgrade · tudo na cor</div>
+      <div class="v">R$ 127.800</div>
+      <div class="s">Upgrade de <strong>R$ 18.500</strong>. Mesmo escopo,
+      mesma ferragem, mesma garantia.</div></div>
+  </div>
+  <div class="box" style="margin-top:6mm"><div class="t">Por que ele custa isso</div>
+  <p>Não é só a diferença de preço entre a chapa branca e a colorida. Quando o
+  interior muda de cor, ele <strong>deixa de dividir chapa branca com todos os
+  módulos</strong> e passa a dividir chapa colorida com a frente do seu próprio
+  móvel — e cor nenhuma divide chapa com outra. São duas chapas a mais no plano
+  de corte, além do preço maior por chapa.</p></div>
+  <div class="foot"><span>Valvic Marcenaria · Carla</span><span>Apartamento em Belo Horizonte</span><span>6 / 9</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Investimento</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">Conjunto a conjunto.</h2>
+  <table class="inv" style="margin-top:6mm">
+    <tr><th class="l">Conjunto</th><th class="hi">Investimento</th></tr>
+    <tr><td class="l">01 · Cozinha linear com torre de geladeira</td><td class="hi">22.200</td></tr><tr><td class="l">02 · Painel amadeirado até o forro</td><td class="hi">15.500</td></tr><tr><td class="l">03 · Rack suspenso de 3,58 m</td><td class="hi">5.200</td></tr><tr><td class="l">04 · Cristaleira até o forro</td><td class="hi">4.900</td></tr><tr><td class="l">05 · Guarda-roupa de três portas de correr</td><td class="hi">27.500</td></tr><tr><td class="l">06 · Guarda-roupa em L com cabeceira</td><td class="hi">25.900</td></tr><tr><td class="l">07 · Marcenaria sob a escada</td><td class="hi">8.100</td></tr>
+    <tr class="tot"><td class="l">Investimento total</td>
+      <td class="hi">109.300</td></tr>
+    <tr><td class="l" style="padding-top:3mm;color:var(--gold);font-weight:600">
+      + Upgrade · tudo na cor</td>
+      <td class="hi" style="padding-top:3mm">18.500</td></tr>
+    <tr class="tot"><td class="l">Com o upgrade</td>
+      <td class="hi">127.800</td></tr>
+  </table>
+  <div class="box" style="margin-top:6mm"><div class="t">O que está dentro do valor</div>
+  <p>Projeto executivo de marcenaria, fornecimento de material, produção em CNC
+  e coladeira automática próprias, espelhos com película de segurança, portas de
+  vidro temperado, prateleiras de vidro, porta Reflecta, sistema de correr de
+  três folhas, cabideiros, iluminação em LED com driver, transporte, entrega na
+  obra e <strong>instalação e montagem por equipe própria da Valvic</strong>.</p></div>
+  <div class="box"><div class="t">Coordenação de projeto</div>
+  <p>O acompanhamento do projeto executivo está contemplado no valor, com e sem
+  o upgrade.</p></div>
+  <div class="foot"><span>Valvic Marcenaria · Carla</span><span>Apartamento em Belo Horizonte</span><span>7 / 9</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Condições</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">Prazo, pagamento<br>e fronteiras.</h2>
+  <div class="two" style="margin-top:7mm">
+    <div>
+      <table class="pay">
+        <tr><td colspan="2" style="border:none;padding-bottom:1.4mm">
+          <span class="eyebrow">Formas de pagamento</span></td></tr>
+        <tr><td>Entrada de 30% + saldo em até 10× no cartão</td><td class="d">—</td></tr><tr><td>Entrada de 50% + saldo em até 8× no cartão</td><td class="d">3%</td></tr><tr><td>Entrada de 70% + saldo em até 6× no cartão</td><td class="d">5%</td></tr><tr><td>Entrada de 70% + saldo por transferência</td><td class="d">7%</td></tr>
+      </table>
+      <p style="color:var(--mut);font-size:7.9pt;margin-top:2.5mm">
+      O desconto por transferência devolve ao cliente a taxa de máquina que
+      deixamos de pagar.</p>
+      <div class="term" style="margin-top:3mm"><div class="k">Prazo de entrega</div>
+        <div class="v">Até 75 dias corridos</div>
+        <div class="s">Contados da aprovação e da medição em obra.</div></div>
+      <div class="term"><div class="k">Validade da proposta</div>
+        <div class="v">7 dias corridos</div></div>
+      <div class="term"><div class="k">Garantia</div>
+        <div class="v">10 anos, Valvic</div>
+        <div class="s">Escrita e assinada na entrega, cobrindo estrutura,
+        ferragem e acabamento.</div></div>
+      <div class="term"><div class="k">Conferência de medidas</div>
+        <div class="v">Visita técnica antes do corte</div>
+        <div class="s">As próprias pranchas marcam "conferir em obra" na cota
+        vertical do rack, na inclinação da escada e nos modelos dos
+        eletrodomésticos. Nada vai para a CNC antes da nossa medição.</div></div>
+    </div>
+    <div class="fora">
+      <div class="eyebrow">Não incluso nesta proposta</div>
+      <div class="rule"></div>
+      <ul><li><div class="k">Tampo e rodabanca da cozinha</div><div class="v">A prancha especifica <strong>pedra de 20 mm</strong> sobre 2,97 × 0,65 m. É fornecimento de marmoraria.</div></li><li><div class="k">Eletrodomésticos, louças e metais</div><div class="v">Cooktop, forno, micro-ondas, lava-louças, geladeira, coifa, cuba e torneira. Prevemos o vão e a usinagem — precisamos das medidas de fábrica antes do corte.</div></li><li><div class="k">Elétrica e hidráulica</div><div class="v">A iluminação embutida NA marcenaria é nossa; os pontos de energia, água e esgoto e os circuitos exclusivos dos eletrodomésticos são da obra.</div></li><li><div class="k">Alvenaria, gesso, revestimento e pintura</div><div class="v">Inclusive o forro sobre o qual o painel, a cristaleira e os roupeiros são arrematados.</div></li><li><div class="k">Móveis soltos, cortinas e decoração</div><div class="v">Cama, mesa de jantar, cadeiras, poltronas, tapetes e TV.</div></li></ul>
+    </div>
+  </div>
+  <div class="foot"><span>Valvic Marcenaria · Carla</span><span>Apartamento em Belo Horizonte</span><span>8 / 9</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Especificação técnica</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">O que atravessa<br>o projeto inteiro.</h2>
+  <p class="lead" style="margin-top:3.5mm">As oito linhas abaixo valem para os
+  sete conjuntos, e são o que sustenta a garantia de dez anos.</p>
+  <div style="margin-top:5mm"><div class="esp"><div class="k">Chapa</div><div class="v">MDF BP <strong>18 mm</strong> na caixaria e nas frentes, <strong>25 mm</strong> nos nichos e nas prateleiras longas, e <strong>6 mm</strong> nos fundos encaixados — exatamente as espessuras que os quadros de peças das pranchas especificam.</div></div><div class="esp"><div class="k">Borda</div><div class="v">Fita <strong>ABS de 1 mm</strong> nas faces aparentes e 0,45 mm nas não aparentes, aplicada em coladeira automática.</div></div><div class="esp"><div class="k">Puxador</div><div class="v"><strong>Cava usinada</strong> no próprio material, e perfil vertical preto onde a prancha pede.</div></div><div class="esp"><div class="k">Ferragem</div><div class="v">Linha <strong>Hettich</strong> em todo o projeto: dobradiça <strong>Novisys</strong> com amortecimento, corrediça oculta <strong>Quadro</strong> e articulador <strong>Blum HK-xs</strong> nas básculas do rack.</div></div><div class="esp"><div class="k">Iluminação</div><div class="v">Fita de LED <strong>24 V · 3000 K · IRC ≥ 90</strong> em perfil de alumínio com difusor leitoso, com driver bivolt dimensionado com 20% de reserva e acessível para manutenção.</div></div><div class="esp"><div class="k">Vidro e espelho</div><div class="v">Espelho lapidado com <strong>película de segurança</strong> no painel e na porta central do roupeiro; vidro temperado nas portas da cristaleira, nas prateleiras e na porta Reflecta sob a escada.</div></div><div class="esp"><div class="k">Fixação</div><div class="v">Niveladores, cantoneiras ocultas e ancoragem <strong>na alvenaria ou na estrutura</strong> — nunca só no painel decorativo.</div></div><div class="esp"><div class="k">Produção e montagem</div><div class="v">Corte e usinagem em <strong>CNC própria</strong>, laminação de borda em coladeira automática própria, e <strong>instalação e montagem por equipe própria da Valvic</strong>.</div></div></div>
+  <div class="sig">
+    <div class="ln">Valvic Marcenaria</div>
+    <div class="ln">Carla</div>
+  </div>
+  <div class="foot"><span>Valvic Marcenaria · Carla</span><span>Apartamento em Belo Horizonte</span><span>9 / 9</span></div>
+</div></div></body></html>
