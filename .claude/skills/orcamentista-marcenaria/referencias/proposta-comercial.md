@@ -10,11 +10,36 @@ Como a Valvic apresenta o orçamento ao cliente (referência:
 Três coisas que o Jonathan já teve de pedir mais de uma vez. Se aparecerem numa
 proposta, é erro — não é questão de gosto.
 
-### 1 · NUNCA cotar medida de móvel na proposta
+> ### ⚠️ ESCOPO DESTAS REGRAS: SÓ O TEXTO DA PROPOSTA
+> [Jonathan 24/08]
+>
+> As três valem **exclusivamente para o que é escrito no documento que vai ao
+> cliente**. Elas **não** tocam no método de trabalho.
+>
+> **O LEVANTAMENTO DE CUSTO CONTINUA COTADO AO MILÍMETRO.** Ler cada prancha,
+> transcrever cada cota, lançar peça a peça, conferir se cabe na chapa, rodar o
+> nesting por cor × espessura — nada disso muda. É de lá que sai o número.
+>
+> Se algum dia a leitura destas regras deixar o **levantamento** menos preciso,
+> a regra foi mal lida. O que se esconde é a **cota na descrição de venda**,
+> não a cota no motor.
+>
+> | Onde | Medida |
+> |---|---|
+> | `corte-*.py`, plano de corte, quadro de peças | **obrigatória, exata** |
+> | dossiê do projeto (`projetos/*.md`) | **obrigatória** — é o registro técnico |
+> | memorial de produção, ordem de corte, contrato | **obrigatória** |
+> | **descrição de item na proposta ao cliente** | **⛔ nunca** |
+
+### 1 · NUNCA cotar medida de móvel **na descrição da proposta**
 [Jonathan 21/08 e 24/08 — pedido **duas vezes**]
 
 Nada de `2,60 m`, `340 × 90`, `920 × 400 × 2450`, `prof. 65`, `altura 2,45 m`.
 Nem no título do item, nem na descrição, nem entre parênteses.
+
+**Isto é uma regra de REDAÇÃO.** O levantamento que gerou o preço usou todas
+essas cotas, uma a uma — e tem de continuar usando. O que muda é só a forma de
+**contar ao cliente** o que ele vai receber.
 
 **Por quê.** Medida na proposta convida o cliente a conferir régua na parede
 antes de a gente medir — e a prancha quase sempre manda "conferir em obra". Cota
@@ -33,8 +58,9 @@ O que **pode** ficar: o **material**, a **ferragem**, o **acabamento**, a
 argumento de venda ("do piso ao forro", "parede inteira", "sem emenda
 aparente"), diga isso **em palavras**, não em número.
 
-Onde as medidas VÃO: memorial técnico interno, plano de corte, contrato de
-execução e ordem de produção.
+Onde as medidas VÃO, e onde são obrigatórias: **motor de levantamento**
+(`corte-*.py`), **plano de corte**, **quadro de peças**, **dossiê do projeto**,
+**memorial de produção**, **ordem de corte** e **contrato de execução**.
 
 ### 2 · NUNCA explicar a formação do preço
 [Jonathan 24/08]

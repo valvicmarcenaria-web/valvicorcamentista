@@ -127,10 +127,15 @@ e estimar pela escala, sinalizando.
 - **Proposta** (`proposta-comercial.md`): Linha Gold/Silver, garantia, prazo,
   pagamento, RT (10% líquido).
 - ⛔ **TRÊS REGRAS DO QUE NÃO VAI NA PROPOSTA** (`proposta-comercial.md`, topo —
-  o Jonathan já teve de pedir cada uma mais de uma vez):
-  1. **Nunca cotar medida de móvel.** Nem no título, nem na descrição. Medida é
-     documento técnico; na proposta vira objeção antes da venda. Diga a dimensão
-     **em palavras** quando ela for o argumento ("do piso ao forro").
+  o Jonathan já teve de pedir cada uma mais de uma vez).
+  ⚠️ **Valem só para o TEXTO que vai ao cliente. O levantamento de custo
+  continua cotado ao milímetro, peça a peça** — se a regra deixar o
+  levantamento menos preciso, ela foi mal lida.
+  1. **Nunca cotar medida de móvel na descrição.** Nem no título, nem entre
+     parênteses. Medida é documento técnico; na proposta vira objeção antes da
+     venda. Diga a dimensão **em palavras** quando ela for o argumento
+     ("do piso ao forro"). No motor, no plano de corte e no dossiê a cota é
+     **obrigatória**.
   2. **Nunca explicar a formação do preço** — nada de chapa, nesting,
      aproveitamento, custo ou margem. Só **benefício**: o que o cliente vê, sente
      e usa. Justificar por dentro é abrir a planilha para negociação.
