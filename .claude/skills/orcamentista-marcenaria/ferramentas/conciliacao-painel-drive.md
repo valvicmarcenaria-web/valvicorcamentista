@@ -130,3 +130,87 @@ não têm valor levantado:
 Algumas têm proposta pronta lá dentro (a da Mônica tem `Proposta-Monica-Banheiros.html`
 e `orcamento-monica-v2-mc37.json`). **Vale abrir uma a uma e lançar** — é a mesma
 situação que na rodada 1 revelou R$ 568 mil de carteira não registrada.
+
+---
+
+## Rodada 3 — 25/08/2026 · a pendência da rodada 2 foi fechada
+
+A rodada 2 terminou com um aviso em aberto: *"a pasta Em aberto tem 20 pastas,
+não 8 — vale abrir uma a uma e lançar"*. Abri. São **23 subpastas**, e cinco
+delas tinham orçamento levantado e nunca entraram no painel.
+
+| Cliente | Ref. | Máx. | Onde estava | O que é |
+|---|--:|--:|---|---|
+| **Lucas e Ana · apto 101** | 169.950 | 181.800 | `fontes/` (2025) | Apto 168,61 m², executivo de 84 pranchas A3 · Silver/Gold · **⚠ a confirmar, ver abaixo** |
+| **Clínica Dermato-Nutrologia** | 43.200 | 47.000 | Drive · 2 JSON + proposta | 6 ambientes · cenário HPL × cenário Itapuã com paredes revestidas |
+| **Samara · quarto dos irmãos** | 37.500 | — | Drive · JSON v3 travado | Consultoria Luana Rizzi · MC real ~40,4% |
+| **Sala Bia & Matheus** | 36.000 | 70.000 | Drive · BASE.md + 2 JSON | arq. Giovanna Camisassa · melamínico × lâmina natural Freijó |
+| **Valdenir & Maria** | 8.500 | 20.000 | Drive · 3 JSON | designer Paula Galante · cabeceira em 3 acabamentos + lavanderia |
+| **Mônica Cristina · banheiros** | 15.400 | — | Drive · JSON v2 + proposta | parceira Rubia · social + suíte, otimizados juntos |
+
+**35 → 41 orçamentos** · R$ 3.000.816 → **R$ 3.311.366** (+R$ 310.550).
+
+### Duas correções ao mapa da rodada 2
+
+1. **A "Cabeceira em couro — Valdenir & Maria" não tem pasta própria.** Ela mora
+   dentro da pasta chamada **`Maria`** — a mesma que o painel já usava para o
+   job "Maria · Lavanderia R$ 7.850". São **coisas diferentes** com nome
+   parecido: o `orcamento-cabeceira-couro-valdenir-maria.json` é de Valdenir &
+   Maria via Paula Galante, no Vale dos Cristais, e traz cabeceira **e** uma
+   lavanderia de R$ 6.500 fechada pelo fundador. Lancei como linha própria.
+   ⚠ **Confirmar se a "Maria · Lavanderia" do painel não é essa mesma lavanderia
+   lançada duas vezes.**
+2. **A Samara tem duas propostas no Drive**, não uma: `Quarto-dos-Irmaos` e
+   `Bancada-e-Guarda-roupa`. O JSON travado (R$ 37.500) é do escopo cheio. O da
+   bancada é escopo reduzido e **o valor não foi capturado** — o conector não lê
+   HTML e o snippet do Drive para em 5.000 caracteres, que o CSS consome inteiro.
+
+### Como os valores foram extraídos sem baixar arquivo
+
+O conector devolve base64 (inútil aqui) e `read_file_content` não aceita
+`application/json` nem `text/html`. O caminho que funcionou:
+
+```
+search_files SEM excludeContentSnippets → contentSnippet de ~5.000 caracteres
+```
+
+Os JSON de orçamento começam por `cliente / projeto / versao / inv / mcAlvo`,
+então o snippet pega o valor logo na primeira linha. **Com HTML não funciona:**
+o `<style>` come os 5.000 caracteres antes de chegar no corpo. Quando o
+resultado estoura o limite de tokens, ele é salvo em arquivo — e aí `jq`/python
+local resolve. Foi assim que li os snippets todos de uma vez.
+
+### ⚠️ A linha do Lucas e Ana é a única decisão em aberto
+
+A pendência nº 2 da rodada 1 dizia *"se for cliente real e não material de
+treino, entra"*. Lancei porque o pedido foi lançar **todos**, mas com o alerta
+escrito na própria linha e status **`parado`**, não `entregue` — é proposta de
+nov/2025 sem retorno registrado. **Se for caso de treino, a linha sai e a
+carteira cai R$ 169.950.**
+
+### Faixa do cabeçalho: faltava um quarto estado
+
+O painel tinha quatro status (`concluido` · `entregue` · `orcado` · `parado`) e
+a faixa só mostrava três. Os **R$ 495 mil em `orcado`** — Eliuton, Carla,
+Vinícius e Luciana, o trabalho mais recente da casa — entravam no total e
+sumiam da leitura por estado. Criei o slot e, junto, um guarda:
+
+```js
+const _porEstado = ["concluido","entregue","orcado","parado"].reduce((a,st)=>a+soma(st),0);
+if (_porEstado !== total) console.warn("painel: faixa não fecha com o total", …);
+```
+
+Se amanhã alguém criar um status novo e esquecer o slot, o console avisa em vez
+de o dinheiro sumir em silêncio. Hoje fecha: 758 + 1.832 + 495 + 226 = 3.311.
+
+### O que ficou de fora, de propósito
+
+- **Clínica Nura** (85.150 / 92.550) — proposta perdida, retirada em 04/08 pelo
+  Jonathan. Continua no Drive; se o cliente voltar, o material está lá.
+- **Os 7 de PARADOS** (Cristiane · Ana Carolina · Tania · Bernardo ·
+  Carla Dressler · Marina · Alexandrina) — têm escopo no Drive e **nenhum
+  número**. Varri a pasta atrás de `orcamento*.json` e de propostas: não há.
+  Entrar no painel com valor zero seria inventar carteira.
+- **O rótulo do topo** continua dizendo *"Valor total fechado"* sobre um número
+  que soma fechado + negociação + orçado + parado. Está errado desde antes desta
+  rodada e não mexi por conta própria — é leitura de decisão do fundador.
