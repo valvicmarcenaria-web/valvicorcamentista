@@ -72,6 +72,19 @@ PESSOAS = {
         'qualificacao': 'PRESTADOR',
         'veiculos': FROTA,
     },
+    'fillipe': {
+        'arquivo': 'Fillipe',
+        # a CNH grafa FILLIPE, com dois L
+        'Nome completo': 'Fillipe Flausino de Moura Freire',
+        'CPF': '084.433.616-54',
+        'CNH nº': '05274275129',
+        'Categoria': 'B',             # só automóvel; cobre os três carros da frota
+        'Validade': '13/03/2035',
+        # número informado com 8 dígitos; se for celular falta o 9 inicial
+        'Telefone': '(31) 9410-0286',
+        'qualificacao': 'PRESTADOR',
+        'veiculos': FROTA,
+    },
 }
 
 
