@@ -97,9 +97,27 @@ TVs (50" e 85") · forro modular mineral acústico · divisórias de vidro
 existentes e o reforço delas · estrutura interna do dry wall · pontos elétrico,
 de rede e de água · alvenaria, gesso e pintura.
 
-## Em aberto para o Jonathan
+## 🔒 Fechado em 25/08 [Jonathan]
 
-1. **RT** — há arquiteta responsável (Ofício). Com RT de 10% o valor sai de
-   R$ 68.400 para R$ 86.600 a MC 38%. Confirmar se há parceria.
-2. **MC** — a escada está em 35/38/40. Comercial costuma aceitar 38–40.
-3. **A prancha do painel padrão IVECO** — pedir à arquiteta.
+> "as logos nao precisa considerar / MC de 35 com rt"
+
+| | |
+|---|--:|
+| **Margem** | **MC 35%, COM RT de 10%** |
+| Logos IVECO | **fora do custo** — quem fornece é a montadora |
+| Custo direto | R$ 28.757 → **R$ 26.207** |
+| **Investimento** | **R$ 72.400** |
+| Setor Comercial · Setor Vendas | R$ 31.600 · R$ 40.800 |
+| R$/m² de chapa | 648 sem RT · 806 com RT ✅ dentro da faixa |
+
+**As três linhas de logo continuam no levantamento, a custo zero.** Zerar e
+apagar são coisas diferentes: apagada, a logo sumiria do escopo e ninguém
+preveria o recorte e o reforço no painel para receber a marca. A proposta diz
+que o painel **prevê** a aplicação — sem cobrar por ela.
+
+## Em aberto
+
+1. **A prancha do painel padrão IVECO** — pedir à arquiteta. É o único buraco
+   de escopo conhecido.
+2. **Perfil em inox** — R$ 85/m adotado, ~14 m no projeto. Confirmar a compra.
+3. **A frente de 5 faixas do balcão comercial** — ripado ou gaveteiro.

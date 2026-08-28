@@ -90,8 +90,13 @@ PERFIL_INOX_M = 85.0               # ★ rodapé/recuo com perfil em INOX, por m
                                    #   CONFIRMAR — são ~24 m no projeto.
 VIDRO_PORTA_UN = 475.0             # porta de giro em vidro, perfil e ferragem
 VIDRO_FIXO_M2  = 250.0             # vidro incolor temperado 8 mm
-LOGO_UN = 850.0                    # ★ logo IVECO aplicada no painel — comunicação
-                                   #   visual, fora da base. 3 no projeto.
+# ── LOGOS FORA DO ESCOPO  [Jonathan 25/08] "as logos nao precisa considerar"
+#   As três logos IVECO saem do CUSTO. A LINHA CONTINUA no levantamento, com
+#   valor zero, para que a proposta possa dizer que o painel PREVÊ a aplicação
+#   da marca sem cobrar por ela — quem fornece é a montadora. Zerar e apagar
+#   são coisas diferentes: apagada, a logo some do escopo e ninguém prevê o
+#   recorte e o reforço no painel.
+LOGO_UN = 0.0
 METALON_M = 95.0                   # ★ estrutura de metalon interna, por metro
 
 P, FITA, TERC, LED, FRISO, DUV = [], [], [], [], [], []
@@ -358,6 +363,7 @@ N_CARRETO, R_CARRETO = 5, 600.0
 N_VISITA,  R_VISITA  = 4, 250.0
 LOG = N_CARRETO*R_CARRETO + N_VISITA*R_VISITA
 ESCADA = [0.35, 0.38, 0.40]
+MC_FECHADA, RT_FECHADO = 0.35, True   # [Jonathan 25/08] MC 35% COM RT
 
 por, area_ch, area_amb = defaultdict(list), defaultdict(float), defaultdict(float)
 for m, e, a, d, c, l, q in P:
@@ -460,18 +466,20 @@ for mc in ESCADA:
     PRECOS[mc] = (s, r)
     print(f'  {mc*100:>4.0f}%{"R$ "+brl(s,0):>14}{mc_conferida(s, CD)*100:>9.1f}%   '
           f'{"R$ "+brl(r,0):>14}{mc_conferida(r, CD)*100:>9.1f}%')
-REC = 0.38
-INV, INV_RT = PRECOS[REC]
-print(f'\n  REFERÊNCIA · MC {REC*100:.0f}% ....... sem RT R$ {brl(INV,0)}   ·   '
-      f'com RT R$ {brl(INV_RT,0)}')
-rm = INV/area_tot
-print(f'  R$/m² de chapa: {rm:.0f} sem RT · {INV_RT/area_tot:.0f} com RT'
+REC = MC_FECHADA
+INV_SEM, INV = PRECOS[REC]
+if not RT_FECHADO: INV, INV_SEM = INV_SEM, INV
+print(f'\n  ► FECHADO · MC {REC*100:.0f}% {"COM" if RT_FECHADO else "SEM"} RT '
+      f'......... R$ {brl(INV,0)}     [Jonathan 25/08]')
+print(f'    sem RT, referência interna ........... R$ {brl(INV_SEM,0)}')
+rm = INV_SEM/area_tot
+print(f'  R$/m² de chapa: {rm:.0f} sem RT · {INV/area_tot:.0f} com RT'
       f'   (faixa da casa sem RT: 626–834)')
 if not 626 <= rm <= 834:
     print('  ⚠ FORA DA FAIXA — conferir o levantamento.')
 
 print('\n' + '─'*W)
-print(f'INVESTIMENTO POR CONJUNTO   (MC {REC*100:.0f}% sem RT · rateio por área de chapa)')
+print(f'INVESTIMENTO POR CONJUNTO   (MC {REC*100:.0f}% COM RT · rateio por área de chapa)')
 tots, linhas = 0, []
 for a in ordem:
     v = round(INV*area_amb[a]/area_tot/100)*100
@@ -505,9 +513,9 @@ print('\n  ★ Preços sem linha fechada na base de materiais:')
 print(f'     · PERFIL EM INOX — adotei R$ {brl(PERFIL_INOX_M,0)}/m. A base só tem')
 print('       rodapé de ALUMÍNIO a R$ 20/m, que é outro produto. São ~14 m de')
 print('       inox no projeto: se o custo real for o dobro, o preço sobe ~R$ 3.000.')
-print(f'     · LOGO IVECO aplicada — R$ {brl(LOGO_UN,0)} por painel, 3 no projeto.')
-print('       É comunicação visual, não marcenaria. Provavelmente vem da')
-print('       montadora — CONFIRMAR se entra no nosso escopo.')
+print('     · LOGO IVECO — FORA DO CUSTO [Jonathan 25/08]. As três linhas')
+print('       ficam no levantamento a zero, para que o painel preveja a')
+print('       aplicação da marca sem cobrar por ela.')
 print(f'     · METALON da bancada da janela — R$ {brl(METALON_M,0)}/m, quadro')
 print('       perimetral com três travessas. A prancha não dimensiona.')
 print('     · MDF cor 25 mm — a base para em 18 mm (600). Adotei 900. Aqui pesa:')
