@@ -156,3 +156,51 @@ material com folga (no Eliuton cobria 64%).
 "MC 38%" enquanto imprimia os números de 40%. Passou a ser gerado de `REC`.
 Rótulo fixo ao lado de número variável é como um relatório mente sem errar
 conta nenhuma.
+
+---
+
+## 🔒 Rodada 2 de fechamento — 25/08 [Jonathan]
+
+**Duas linhas de ferragem, o mesmo móvel.** Mesmo desenho, mesmas cores, mesmo
+corte racionalizado — muda só a ferragem, e com ela a garantia.
+
+| Linha | Ferragem | Garantia | Investimento | Entrada | Na entrega |
+|---|---|:--:|--:|--:|--:|
+| **Hettich** | Novisys · Quadro oculta · 2 pistões a gás | **10 anos** | **R$ 16.700** | R$ 6.700 | R$ 10.000 |
+| **Blum** | Clip Top Blumotion · Blum oculta · HK-xs | **20 anos** | **R$ 18.800** | R$ 7.500 | R$ 11.300 |
+
+MC 40% nas duas, sem RT. R$/m² de chapa: 843 e 949.
+A diferença de custo direto é só de ferragem: R$ 440 → R$ 1.270.
+
+**Puxador do gaveteiro trocado** — cava usinada saiu, entra **perfil Arezzo**.
+
+### Redação da proposta — o que o Jonathan cortou
+
+| Frase | Por quê |
+|---|---|
+| *"A tampa levanta e para onde você soltar"* | conceitual demais |
+| *"fundos encaixados em ranhura"* | detalhe de oficina, não vende |
+| *"driver bivolt acessível para manutenção"* | idem |
+| *"arremate superior recortado em obra após o nivelamento"* | idem |
+
+Direção fixada: **menos texto, menos conceito, mais registro técnico.** Uma
+linha por móvel, com o que ele é e a ferragem que leva. A narrativa de
+benefício ("é isso que impede a barriga no meio") sai; a especificação fica.
+
+⚠️ Isso **não substitui** a regra 2 (`referencias/proposta-comercial.md`):
+continua proibido explicar formação de preço. Ser técnico é falar de ferragem,
+espessura de fita e temperatura de LED — não de chapa, corte e aproveitamento.
+
+### ⚠️ 20 anos é um degrau novo de garantia
+
+As referências da casa só têm **5 anos** (Hardt/intermediária) e **10 anos**
+(Hettich/superior). O degrau de **20 anos com Blum** foi criado agora
+[Jonathan 25/08] e ainda **não está em `referencias/`**. Se virar padrão, tem
+de entrar lá — senão a próxima proposta sai com escada diferente.
+
+### ★ Dois preços adotados, nenhum dos dois na base
+
+| Item | Adotado | Por quê | Se mudar |
+|---|--:|---|---|
+| **Perfil Arezzo** | R$ 250 / barra de 3 m | faixa do Perfil cava Rometal RM195 | se vier a R$ 100 como o RM213, o preço cai ~R$ 375 |
+| **Dobradiça Blum** | R$ 60 / un | Clip Top Blumotion, entre a Hettich Sensys (40) e a corrediça Blum (300) | são 2 no móvel: ~R$ 250 no preço |
