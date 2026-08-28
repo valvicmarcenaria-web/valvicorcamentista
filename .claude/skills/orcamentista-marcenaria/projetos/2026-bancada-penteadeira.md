@@ -204,3 +204,32 @@ de entrar lá — senão a próxima proposta sai com escada diferente.
 |---|--:|---|---|
 | **Perfil Arezzo** | R$ 250 / barra de 3 m | faixa do Perfil cava Rometal RM195 | se vier a R$ 100 como o RM213, o preço cai ~R$ 375 |
 | **Dobradiça Blum** | R$ 60 / un | Clip Top Blumotion, entre a Hettich Sensys (40) e a corrediça Blum (300) | são 2 no móvel: ~R$ 250 no preço |
+
+---
+
+## 📄 Proposta gerada — 25/08
+
+`build-bancada-penteadeira.py` → `proposta-bancada-penteadeira.pdf`, **3 páginas A4**.
+
+| Página | Conteúdo |
+|---|---|
+| 1 | Capa — garantia 10 ou 20 anos · 90 dias · validade |
+| 2 | Escopo (7 linhas) + especificação técnica (7 linhas) |
+| 3 | As duas linhas de ferragem lado a lado + condições + não incluso |
+
+**Decisão de layout:** o cartão da **Blum** é o destacado (escuro). É escolha
+comercial, não técnica — destaca a linha premium. Inverter é uma flag.
+
+### Auditoria automática antes de entregar
+
+| Verificação | Resultado |
+|---|---|
+| Geometria — nada colado no rodapé | ok |
+| **Regra 1** — nenhuma cota de móvel (regex sobre o texto do PDF) | LIMPA |
+| **Regra 2** — nenhuma menção a chapa, aproveitamento, custo, margem | LIMPA |
+| **Frases cortadas pelo Jonathan não voltaram** | nenhuma voltou |
+| Entradas fecham | 6.700 + 10.000 = 16.700 · 7.500 + 11.300 = 18.800 |
+
+A checagem das frases cortadas virou parte do script: a lista está no
+docstring do `build-`, e o teste procura cada uma no texto extraído. Correção
+pedida uma vez não pode voltar na próxima revisão sem ninguém notar.
