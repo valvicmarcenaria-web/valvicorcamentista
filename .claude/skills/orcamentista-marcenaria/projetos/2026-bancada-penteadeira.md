@@ -128,3 +128,31 @@ Com RT de 10%: R$ 19.000 na racionalizada a MC 38%.
   coerência com o que já foi vendido. **São 10,2 m de LED neste móvel** — se o
   projeto pedir COB, a iluminação sobe de R$ 675 para R$ 1.535, e o preço final
   sobe ~R$ 1.400. Vale fechar essa linha na base.
+
+---
+
+## 🔒 Fechado em 25/08 [Jonathan]
+
+| | |
+|---|---|
+| **Margem** | **MC 40%** — travada, não é mais escada |
+| **Prazo** | **90 dias corridos** |
+| **Pagamento** | **entrada de 40% + 60% na entrega** |
+
+| Versão | Investimento | Entrada | Na entrega |
+|---|--:|--:|--:|
+| como o render especifica | R$ 18.300 | R$ 7.300 | R$ 11.000 |
+| **racionalizada** | **R$ 15.800** | **R$ 6.300** | **R$ 9.500** |
+
+Os dois fecham em valor cheio e a entrada dá 39,9% — não precisa anunciar
+percentual quebrado.
+
+**Caixa:** o custo direto de compra (sem logística) é R$ 5.470. A entrada de
+R$ 6.300 cobre **115%** dele — o material entra na fábrica pago, sem consumir
+capital de giro. É a primeira vez numa proposta recente que a entrada fecha o
+material com folga (no Eliuton cobria 64%).
+
+**Erro corrigido no relatório:** o rótulo da linha de preço estava cravado em
+"MC 38%" enquanto imprimia os números de 40%. Passou a ser gerado de `REC`.
+Rótulo fixo ao lado de número variável é como um relatório mente sem errar
+conta nenhuma.

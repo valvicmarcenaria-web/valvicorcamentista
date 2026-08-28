@@ -270,7 +270,8 @@ N_CARRETO, R_CARRETO = 1, 600.0
 N_VISITA,  R_VISITA  = 1, 250.0
 LOG = N_CARRETO*R_CARRETO + N_VISITA*R_VISITA
 ESCADA = [0.35, 0.38, 0.40]
-REC = 0.38
+REC = 0.40                 # [Jonathan 25/08] "vamos trabalhar com uma
+                           # margem de 40%" — fechado, não é mais escada
 
 def rodar(RAC):
     montar(RAC)
@@ -430,7 +431,8 @@ print(f'  {"Chapas (unidades)":<26}{A_["tot_ch"]:>16}{B_["tot_ch"]:>16}'
 for rot, va, vb in (('Custo de chapa', A_['custo_chapa'], B_['custo_chapa']),
                     ('Custo direto', A_['CD'], B_['CD'])):
     print(f'  {rot:<26}{"R$ "+brl(va):>16}{"R$ "+brl(vb):>16}{"R$ "+brl(vb-va):>14}')
-print(f'  {"PREÇO · MC 38% sem RT":<26}{"R$ "+brl(INV,0):>16}{"R$ "+brl(INV_B,0):>16}'
+print(f'  {"PREÇO · MC "+str(int(REC*100))+"% sem RT":<26}'
+      f'{"R$ "+brl(INV,0):>16}{"R$ "+brl(INV_B,0):>16}'
       f'{"R$ "+brl(INV_B-INV,0):>14}')
 print(f'  {"aproveitamento médio":<26}{A_["aprov"]:>15.0f}%{B_["aprov"]:>15.0f}%')
 print(f'  {"R$/m² de chapa":<26}{rm:>16.0f}{INV_B/B_["area_tot"]:>16.0f}'
@@ -443,7 +445,8 @@ for mc in ESCADA:
           f'R$ {brl(cr,0):>9}')
 
 print('\n' + '─'*W)
-print('INVESTIMENTO POR MÓVEL   (versão racionalizada · MC 38% sem RT · rateio por área)')
+print(f'INVESTIMENTO POR MÓVEL   (versão racionalizada · MC {REC*100:.0f}% '
+      'sem RT · rateio por área)')
 tots, linhas = 0, []
 for a in B_['ordem']:
     v = round(INV_B*B_['area_amb'][a]/B_['area_tot']/100)*100
@@ -464,6 +467,28 @@ print('     · Espelho da penteadeira — cobrado como PEÇA MÍNIMA de espelhar
 print('       (R$ 285). Por m² daria R$ 160, mas ninguém corta espelho por isso.')
 print('     · LED — a base traz LED COB a R$ 150/m; usei os R$ 66/m dos motores')
 print('       recentes. Se o projeto pedir COB, a iluminação sobe ~R$ 570.')
+# ── condições comerciais  [Jonathan 25/08] ────────────────────────────────
+PRAZO = '90 dias corridos'
+ENT_PCT = 0.40
+print('\n' + '═'*W)
+print('CONDIÇÕES COMERCIAIS   [Jonathan 25/08]')
+print('═'*W)
+print(f'  Prazo de entrega .......... {PRAZO}')
+print(f'  Pagamento ................. entrada de {ENT_PCT*100:.0f}% + '
+      f'{(1-ENT_PCT)*100:.0f}% na entrega')
+for rot, v in (('como o render especifica', INV), ('racionalizado', INV_B)):
+    ent = round(v*ENT_PCT/100)*100
+    sal = v - ent
+    print(f'    {rot:<26}R$ {brl(v,0):>9}  =  entrada R$ {brl(ent,0):>8}'
+          f'  +  entrega R$ {brl(sal,0):>8}   (entrada {ent/v*100:.1f}%)')
+print('\n  ⚠ CAIXA: a entrada precisa cobrir a compra de material antes da')
+_cd = B_['CD'] - LOG
+_ent = round(INV_B*ENT_PCT/100)*100
+print(f'     produção. Custo direto de compra (sem logística) R$ {brl(_cd)};')
+print(f'     entrada de R$ {brl(_ent,0)} cobre {_ent/_cd*100:.0f}% dele.')
+if _ent < _cd:
+    print('     ⚠ A ENTRADA NÃO FECHA O MATERIAL — falta capital de giro.')
+
 print('\n⛔ FORA DO ESCOPO: painel de cabeceira (ripado + mármore), mesa de')
 print('   cabeceira, roupeiro à esquerda, elétrica, alvenaria e pintura.')
 print('═'*W)
