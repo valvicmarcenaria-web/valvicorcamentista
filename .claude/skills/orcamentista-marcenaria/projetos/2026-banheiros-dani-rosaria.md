@@ -349,3 +349,37 @@ Painel: 45 linhas, carteira de **R$ 3.445.266**.
 3. **Porta de passagem em 42 mm.** O `chapas.md` dá 42 mm como padrão da casa
    para porta de passagem; eu orcei sanduíche de 2 × 18 = 36 mm. Não mexi
    porque não foi pedido, mas fica anotado.
+
+---
+
+## Rodada 4 — o preço do aéreo da Flaviana, fechado a dedo [29/08]
+
+> *"Coloca o armário superior da Flaviana em sete e quinhentos no valor de
+> venda."*
+
+**R$ 7.500**, contra os R$ 10.800 que o rateio por custo pedia. Isso é decisão
+de **preço**, não de custo, e o motor passou a tratar as duas coisas separadas:
+
+- `PRECO_FIXO = {'Armário aéreo sobre a bancada': 7500}` entra **por cima** do
+  rateio; os outros dois itens seguem no rateio por custo direto.
+- O total do job passou a ser a **soma dos itens** — não mais o que a MC de
+  40% pediria. O motor imprime as duas coisas lado a lado.
+
+| | custo direto | rateio por custo | fechado |
+|---|--:|--:|--:|
+| Armário aéreo | R$ 3.400 | R$ 10.800 | **R$ 7.500** ◄ |
+| Armário inferior | R$ 2.391 | R$ 7.700 | R$ 7.700 |
+| Porta de correr | R$ 1.265 | R$ 4.100 | R$ 4.100 |
+| **TOTAL** | **R$ 7.056** | R$ 22.600 | **R$ 19.300** |
+
+### ⚠ A MC caiu para 34,7% com RT — abaixo do piso de 35%
+
+Os R$ 3.300 de diferença saem da **margem**, não do custo: nada mudou no
+levantamento. O motor imprime o aviso na hora, com o número que o rateio puro
+daria, para que ninguém leia o desvio como erro de máquina meses depois.
+
+O aéreo fica a R$ 7.500 carregando R$ 3.400 de custo direto — as três portas de
+alumínio sozinhas são R$ 1.632, e ainda entram espelho, LED de marca, drivers
+e 56 suportes. É o item de maior custo do job vendido pelo segundo maior preço.
+
+Painel: 45 linhas, carteira de **R$ 3.441.966**.

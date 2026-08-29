@@ -376,9 +376,9 @@ for mc in ESCADA:
           f'{"R$ "+brl(r,0):>13}{mc_conferida(r, CD)*100:>9.1f}%')
 # [Jonathan 25/08] "MC de 40% com rt em ambos" — fechado.
 REC, RT_FECHADO = 0.40, True
-INV = PRECOS[REC][1 if RT_FECHADO else 0]
+INV_MC = PRECOS[REC][1 if RT_FECHADO else 0]     # o que a MC de 40% pediria
 INV_SEM = PRECOS[REC][0]
-print(f'\n  ► FECHADO · MC {REC*100:.0f}% COM RT ....... R$ {brl(INV,0)}'
+print(f'\n  ► MC {REC*100:.0f}% COM RT pediria ....... R$ {brl(INV_MC,0)}'
       f'     [Jonathan 25/08]')
 print(f'    sem RT, referência interna ......... R$ {brl(INV_SEM,0)}')
 rm = INV_SEM/area_tot
@@ -388,18 +388,37 @@ if not 626 <= rm <= 834:
     print(f'    drivers e kit de correr somam R$ {custo_terc+custo_led:,.0f}.'
           .replace(',', '.'))
 
+# ── PREÇO DE VENDA FECHADO PELO FUNDADOR, ITEM A ITEM ─────────────────────
+# [Jonathan 29/08] "coloca o armário superior da Flaviana em 7.500 no valor de
+# venda". Isso é decisão de PREÇO, não de custo: entra por cima do rateio, e o
+# total do job passa a ser a SOMA dos itens — não o que a MC de 40% pediria.
+# Os outros itens seguem no rateio por custo direto.
+PRECO_FIXO = {'Armário aéreo sobre a bancada': 7500}
+
 print('\n' + '─'*W)
-print(f'INVESTIMENTO POR ITEM  (MC {REC*100:.0f}% COM RT)')
+print('INVESTIMENTO POR ITEM')
 tots, linhas = 0, []
 for a in ordem:
-    v = round(INV*cd_amb[a]/CD/100)*100          # rateio por CUSTO, não por área
+    v = round(INV_MC*cd_amb[a]/CD/100)*100       # rateio por CUSTO, não por área
     linhas.append([a, area_amb[a], cd_amb[a], v]); tots += v
-linhas[max(range(len(linhas)), key=lambda i: linhas[i][2])][3] += INV - tots
+linhas[max(range(len(linhas)), key=lambda i: linhas[i][2])][3] += INV_MC - tots
+for L in linhas:                                  # o preço fechado manda
+    if L[0] in PRECO_FIXO: L[3] = PRECO_FIXO[L[0]]
+INV = sum(L[3] for L in linhas)
 print(f'  {"":38}{"m² de chapa":>12}{"custo direto":>15}{"investimento":>15}')
 for a, ar, cd, v in linhas:
-    print(f'  {a:<38}{ar:>9.2f} m²{"R$ "+brl(cd,0):>15}{"R$ "+brl(v,0):>15}')
+    marca = '  ◄ preço fechado' if a in PRECO_FIXO else ''
+    print(f'  {a:<38}{ar:>9.2f} m²{"R$ "+brl(cd,0):>15}{"R$ "+brl(v,0):>15}{marca}')
 print(f'  {"TOTAL":<38}{area_tot:>9.2f} m²{"R$ "+brl(CD,0):>15}'
       f'{"R$ "+brl(INV,0):>15}')
+_mc = mc_conferida(INV, CD) - LIQF_*RT_PCT
+print(f'\n  ► INVESTIMENTO FECHADO ....... R$ {brl(INV,0)}     [Jonathan 29/08]')
+print(f'    MC real do job, com RT: {_mc*100:.1f}%   '
+      f'(o rateio puro daria R$ {brl(INV_MC,0)} a {REC*100:.0f}%)')
+if _mc < 0.35:
+    print(f'  ⚠ ABAIXO DO PISO DE 35% DA CASA. O preço do aéreo foi fechado')
+    print(f'    pelo fundador; a diferença de R$ {brl(INV_MC-INV,0)} sai da margem,')
+    print( '    não do custo. Registrado para não ser lido como erro de motor.')
 
 print('\n' + '─'*W)
 print(f'DÚVIDAS E CONFERÊNCIAS — {len(DUV)} itens')

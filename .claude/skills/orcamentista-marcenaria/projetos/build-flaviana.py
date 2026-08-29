@@ -3,10 +3,15 @@
 
 Valores lidos de `corte-flaviana.py`. [Jonathan 25/08] MC 40% COM RT.
 
-  Investimento .................... R$ 21.000
-  Armário aéreo ...................  R$ 7.100
-  Armário inferior ................ R$ 10.200
-  Porta de correr .................  R$ 3.700
+  Investimento .................... R$ 19.300
+  Armário aéreo ...................  R$ 7.500   ◄ preço fechado pelo Jonathan
+  Armário inferior ................  R$ 7.700
+  Porta de correr .................  R$ 4.100
+
+PREÇO [Jonathan 29/08] "coloca o armário superior em 7.500 no valor de venda".
+É decisão de preço, não de custo: entra por cima do rateio e o total do job
+vira a soma dos itens. A MC real cai de 40% para 34,7% com RT — abaixo do piso
+de 35% da casa, e o motor imprime o aviso para que não seja lido como erro.
 
 IMAGENS [Jonathan 25/08] "me de as propostas usando as imagens dos projetos
 para compor". Aqui os renders fotorrealistas SÃO do projeto: a prancha 02 do
@@ -54,7 +59,10 @@ def _n(pat):
     m = re.search(pat, _out)
     assert m, f'não achei {pat!r} no relatório do motor'
     return int(m.group(1).replace('.', ''))
-INV = _n(r'FECHADO · MC 40% COM RT \.+ R\$ ([\d.]+)')
+# [Jonathan 29/08] fechou o preço do aéreo em R$ 7.500. O total do job passou
+# a ser a SOMA dos itens, não o que a MC de 40% pediria — por isso o build lê
+# a linha do INVESTIMENTO FECHADO, e não mais a da escada de MC.
+INV = _n(r'INVESTIMENTO FECHADO \.+ R\$ ([\d.]+)')
 def _v(nome):
     # a linha do motor agora traz DUAS colunas em R$ — custo direto e
     # investimento. O que vai para a proposta é a SEGUNDA.
