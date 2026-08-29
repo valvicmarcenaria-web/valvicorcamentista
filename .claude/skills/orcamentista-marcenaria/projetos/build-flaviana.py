@@ -19,9 +19,18 @@ REGRAS DA CASA (`referencias/proposta-comercial.md`):
   2. ⛔ nenhuma explicação de formação de preço
   3. ✅ compor com as imagens do projeto
 
-GARANTIA — números do Jonathan [07/08]: telescópica 2 anos, oculta 5 anos.
-Este job tem as duas. Vai UM número com UMA ressalva ("10 anos · 2 anos nas
-corrediças"), que é o piso honesto — sem abrir por componente.
+FERRAGEM [Jonathan 29/08]: "a gente não utiliza essas ferragens (telescópica),
+substitui pela Hardt." As 4 gavetas saíram da telescópica e foram para a
+Corrediça Oculta Hardt Invisível, junto com o gavetão. Com isso a garantia da
+corrediça sobe de 2 para 5 anos (números do Jonathan, 07/08) — e a garantia
+passou a ter bloco próprio na proposta, técnico e por componente, também a
+pedido dele: "fale um pouco mais da garantia, sem ser muito conceitual".
+
+RATEIO [Jonathan 29/08]: "a precificação do gabinete inferior ficou
+superfaturada." Estava. O rateio era por ÁREA DE CHAPA, e o inferior é o item
+de mais chapa e quase nenhum acessório. Agora é por CUSTO DIRETO de cada item.
+O inferior caiu de R$ 10.200 para R$ 5.700 e o aéreo — que carrega espelho,
+LED, drivers e 56 suportes — subiu para o que ele realmente é.
 
 ⛔ MONTAGEM fora do custo (equipe é salário fixo), dentro do escopo entregue.
 
@@ -37,7 +46,6 @@ DATA     = '25 de agosto de 2026'
 VALIDADE = '7 dias corridos'          # ⚠ pendente
 PRAZO    = '45 dias úteis'            # ⚠ pendente
 ENT_PCT  = 30                         # ⚠ pendente
-GARANTIA = '10 anos'
 
 # ── valores lidos DO MOTOR, não transcritos à mão ─────────────────────────
 _out = subprocess.run(['python3', 'projetos/corte-flaviana.py'],
@@ -48,7 +56,9 @@ def _n(pat):
     return int(m.group(1).replace('.', ''))
 INV = _n(r'FECHADO · MC 40% COM RT \.+ R\$ ([\d.]+)')
 def _v(nome):
-    return _n(re.escape(nome) + r'\s+[\d.,]+ m²\s+R\$ ([\d.]+)')
+    # a linha do motor agora traz DUAS colunas em R$ — custo direto e
+    # investimento. O que vai para a proposta é a SEGUNDA.
+    return _n(re.escape(nome) + r'\s+[\d.,]+ m²\s+R\$ [\d.]+\s+R\$ ([\d.]+)')
 
 # ⛔ SEM UMA ÚNICA COTA. Onde a dimensão importa, ela é dita em palavras.
 ITENS = [
@@ -60,12 +70,14 @@ ITENS = [
   'ficam alojados os drivers de toda a iluminação do banheiro.'),
  ('Armário inferior sob a bancada', _v('Armário inferior sob a bancada'),
   'Gabinete em amadeirado sob a bancada de mármore: nichos abertos na ponta, '
-  'portas em dobradiça com amortecimento, um gavetão em corrediça oculta e '
-  'uma coluna de gavetas em corrediça telescópica com amortecimento. Puxador '
-  'em cava usinada com pega, na própria frente.'),
+  'portas em dobradiça com amortecimento, um gavetão de roupa suja e uma '
+  'coluna de quatro gavetas — todas as cinco em corrediça oculta Hardt '
+  'Invisível com amortecimento, nenhuma telescópica. Puxador em cava usinada '
+  'com pega, na própria frente.'),
  ('Porta de correr em MDF', _v('Porta de correr em MDF'),
-  'Folha de passagem em MDF laminado, montada em kit de correr embutido — '
-  'trilho, roldanas e guia de piso. Puxador tipo concha embutido na folha.'),
+  'Folha de passagem em MDF laminado, montada em sistema deslizante Rometal '
+  'RO82 Top, com amortecimento no fim de curso, e dois desempenadores '
+  'anti-empeno na folha. Puxador tipo concha embutido.'),
 ]
 assert sum(v for _, v, _d in ITENS) == INV, (ITENS, INV)
 
@@ -80,10 +92,13 @@ ESPEC = [
                  'segurança'),
  ('Iluminação',  'Fita LED IP65 24 V · 3000 K em perfil de alumínio Usina '
                  'Design com difusor — drivers slim alojados no armário aéreo'),
- ('Ferragem',    'Dobradiça com amortecimento; corrediça oculta no gavetão e '
-                 'corrediças telescópicas com amortecimento nas gavetas'),
+ ('Ferragem',    'Dobradiça com amortecimento e corrediça oculta Hardt '
+                 'Invisível P-10 com amortecimento nas cinco gavetas — a '
+                 'corrediça não aparece na lateral e a gaveta sai inteira'),
  ('Puxador',     'Cava usinada com pega, na própria frente — sem peça aplicada'),
- ('Porta',       'Kit de correr embutido, com trilho, roldanas e guia de piso'),
+ ('Porta',       'Sistema deslizante Rometal RO82 Top com amortecimento, '
+                 'trilho embutido no dente da parede, guia de piso e dois '
+                 'desempenadores anti-empeno'),
  ('Prateleiras', 'Reguláveis, sobre suportes'),
  ('Produção',    'Corte e usinagem em CNC própria, laminação de borda em '
                  'coladeira automática, instalação e montagem por equipe '
@@ -93,7 +108,8 @@ ESPEC = [
 FORA = [
  ('Bancada esculpida em mármore', 'é serviço de marmoraria.'),
  ('Dente na parede para embutir o trilho',
-  'a prancha manda fazer o dente — é serviço da obra. O kit de correr é nosso.'),
+  'a prancha manda fazer o dente — é serviço da obra. O sistema deslizante é '
+  'nosso.'),
  ('Box de vidro, nicho em porcelanato, porcelanato e paginação', ''),
  ('Forro de gesso e sanca', ''),
  ('Louças, metais, cubas e aquecimento', ''),
@@ -119,8 +135,30 @@ CSS = (open('projetos/css-proposta.css', encoding='utf-8').read()
 .cj-d{color:var(--soft);font-size:8.7pt;margin:1.4mm 0 0 12mm;line-height:1.55;}
 """)
 
+
+# ── GARANTIA ──────────────────────────────────────────────────────────────
+# [Jonathan 29/08] "expresse um pouco melhor a garantia, fale um pouco mais.
+# Sem ser muito conceitual, sendo um pouco mais técnico."
+#   Números de `referencias/proposta-comercial.md` + a correção do Jonathan de
+#   07/08 (telescópica 2 anos · oculta Hardt 5 anos). NADA aqui é inventado:
+#   espelho e LED NÃO entram na cobertura da casa e por isso não aparecem
+#   como cobertos — a linha diz o que a garantia é, e o que ela não é.
+GARANTIA = dict(anos=10, unid='anos de garantia', nota=(
+ 'Garantia da <strong>Valvic</strong>, não do fabricante: quem projeta, corta, '
+ 'monta e atende é a mesma equipe, sem triangulação. Cobertura por componente, '
+ 'documentada e assinada na entrega.'), linhas=[
+ ('Estrutura, corpo, fundo e prateleiras', '10 anos'),
+ ('Dobradiça com amortecimento', '10 anos'),
+ ('Corrediça oculta Hardt Invisível, em <strong>todas</strong> as gavetas — '
+  'a Valvic não trabalha com telescópica', '5 anos'),
+ ('Sistema deslizante da porta de correr', '10 anos'),
+ ('Regulagem de porta, de gaveta e de prateleira', '2 anos'),
+ ('Retorno do chamado', '24 horas'),
+ ('Visita técnica, sem custo dentro do prazo', 'até 3 dias úteis'),
+])
+
 def brl(v): return f'{v:,.0f}'.replace(',', '.')
-NP = 4
+NP = 5
 def foot(n):
     return (f'<div class="foot"><span>Valvic Marcenaria · {CLIENTE}</span>'
             f'<span>{OBRA}</span><span>{n} / {NP}</span></div>')
@@ -135,6 +173,13 @@ esp = ''.join(f'<div class="esp"><div class="k">{k}</div><div class="v">{v}</div
 fora = ''.join(f'<li><div class="k">{k}</div>'
                + (f'<div class="v">{v}</div>' if v else '') + '</li>'
                for k, v in FORA)
+gar = ('<div class="gar"><div class="gar-h">'
+       f'<div><div class="gar-n">{GARANTIA["anos"]}</div>'
+       f'<div class="gar-u">{GARANTIA["unid"]}</div></div>'
+       f'<div class="gar-x">{GARANTIA["nota"]}</div></div>'
+       + ''.join(f'<div class="gar-l"><div class="k">{k}</div>'
+                 f'<div class="v">{v}</div></div>'
+                 for k, v in GARANTIA['linhas']) + '</div>')
 linhas = ''.join(f'<tr><td class="l">{nome}</td><td class="hi">R$ {brl(v)}</td></tr>'
                  for nome, v, _d in ITENS)
 
@@ -186,7 +231,7 @@ p3 = f"""<div class="page"><div class="pad">
 p4 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">Investimento</div>
   <div class="rule"></div>
-  <h2 class="h-sec">Investimento e condições.</h2>
+  <h2 class="h-sec">Investimento e garantia.</h2>
   <table class="inv" style="margin-top:6mm">
     <tr><th class="l">Item</th><th class="hi">Investimento</th></tr>
     {linhas}
@@ -194,10 +239,17 @@ p4 = f"""<div class="page"><div class="pad">
       <td class="hi">R$ {brl(INV)}</td></tr>
   </table>
   <div class="box"><div class="t">O que está dentro do valor</div>
-  <p>Fornecimento de material, produção em CNC e coladeira automática próprias,
-  espelho, iluminação em LED com perfil e drivers, ferragem, kit de correr,
-  transporte, entrega na obra e <strong>instalação e montagem por equipe
-  própria da Valvic</strong>.</p></div>
+  <p>Fornecimento de material, produção em CNC e coladeira automática próprias, espelho, iluminação em LED com perfil e drivers, ferragem, sistema deslizante, transporte, entrega na obra e <strong>instalação e montagem por equipe própria da Valvic</strong>.</p></div>
+  <div class="eyebrow" style="margin-top:7mm">Garantia</div>
+  <div class="rule"></div>
+  {gar}
+  {foot(4)}
+</div></div>"""
+
+p5 = f"""<div class="page"><div class="pad">
+  <div class="eyebrow">Condições</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">Prazo, pagamento e limites.</h2>
   <div class="two" style="margin-top:7mm">
     <div>
       <div class="term" style="margin-top:0"><div class="k">Pagamento</div>
@@ -207,9 +259,6 @@ p4 = f"""<div class="page"><div class="pad">
       <div class="term"><div class="k">Prazo de entrega</div>
         <div class="v">{PRAZO}</div>
         <div class="s">Contados da aprovação e da medição em obra.</div></div>
-      <div class="term"><div class="k">Garantia Valvic</div>
-        <div class="v">{GARANTIA}</div>
-        <div class="s">2 anos nas corrediças.</div></div>
       <div class="term"><div class="k">Conferência de medidas</div>
         <div class="v">Visita técnica antes do corte</div>
         <div class="s">Nada vai para a CNC antes da nossa medição no local.</div></div>
@@ -222,18 +271,21 @@ p4 = f"""<div class="page"><div class="pad">
       <ul>{fora}</ul>
     </div>
   </div>
-  <div class="sig">
+  <div class="ph banda" style="margin-top:auto;height:68mm">
+    <img class="ct" src="{{IMG}}/armarios-perspectiva.jpeg" alt="">
+    <div class="cap">O banheiro inteiro · projeto executivo</div></div>
+  <div class="sig" style="margin-top:9mm">
     <div class="ln">Valvic Marcenaria</div>
     <div class="ln">{CLIENTE}</div>
   </div>
-  {foot(4)}
+  {foot(5)}
 </div></div>"""
 
 HTML = ('<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">'
         '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:'
         'wght@400;500;600&family=DM+Sans:wght@300;400;500;600;700&display=swap" '
         f'rel="stylesheet"><style>{CSS}</style></head>'
-        f'<body>{p1}{p2}{p3}{p4}</body></html>')
+        f'<body>{p1}{p2}{p3}{p4}{p5}</body></html>')
 
 OUT_H, OUT_P = 'projetos/proposta-flaviana.html', 'projetos/proposta-flaviana.pdf'
 open(OUT_H, 'w', encoding='utf-8').write(HTML.replace('{IMG}', 'img-flaviana'))

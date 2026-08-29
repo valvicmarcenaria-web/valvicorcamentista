@@ -48,3 +48,20 @@
 .split{display:grid;grid-template-columns:74mm 1fr;gap:9mm;flex:1;
   min-height:0;margin-top:2mm;}
 .split .ph{height:100%;}
+
+/* garantia — bloco técnico, uma linha por componente */
+.gar{border:1px solid var(--line);border-radius:2px;padding:5mm 5.5mm;
+  background:var(--cream);}
+.gar-h{display:flex;align-items:baseline;gap:4mm;
+  border-bottom:1px solid var(--line);padding-bottom:3mm;}
+.gar-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:30pt;
+  color:var(--gold);font-weight:600;line-height:.9;}
+.gar-u{font-size:7pt;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--mut);font-weight:700;}
+.gar-x{margin-left:auto;color:var(--soft);font-size:8.4pt;text-align:right;
+  max-width:78mm;line-height:1.45;}
+.gar-l{display:flex;justify-content:space-between;gap:5mm;
+  padding:2.3mm 0;border-bottom:1px solid var(--hair);font-size:8.8pt;}
+.gar-l:last-child{border-bottom:none;}
+.gar-l .k{color:var(--soft);}
+.gar-l .v{font-weight:700;white-space:nowrap;}

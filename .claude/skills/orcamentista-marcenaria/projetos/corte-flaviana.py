@@ -76,8 +76,12 @@ FURO_UN  = 18.0        # ★ furo Ø6 cm fitado na prateleira
 SUP_PRAT = 8.0         # ★ suporte de prateleira (mesma adoção do job da Giza)
 ESPELHO_M2 = 600.0
 DOBR = 20.0            # Häfele — a prancha manda "especificar marca"
-CORR_OCULTA = 120.0    # Hettich Quadro, oculta invisível — gavetão roupa suja
-CORR_TELESC = 40.0     # telescópica com amortecimento — as 4 gavetas
+# [Jonathan 29/08] "a gente não utiliza essas ferragens" — TELESCÓPICA SAI.
+# Vira Hardt em TODAS as gavetas. É o padrão real da casa: ferragens.md diz
+# "corrediça oculta com slow motion é o padrão; ~70% dos casos: Hardt", e o SKU
+# de produção é a Hardt Invisível P-10 com amortecimento (400/450/550 mm).
+# Telescópica é Linha Silver — rebaixamento de preço, não especificação.
+CORR_HARDT = 70.0      # Corrediça Oculta Hardt · dados/materiais.json
 # ★ LED: a prancha especifica perfil de SOBREPOR sem aba WOOD da Usina Design
 #   (1,7 × 1 cm) com fita LED IP65 12 V, 2700 K, 15 W, Saveenergy. NÃO é COB —
 #   então não cabe a linha de R$ 150/m da base. Mas o perfil é de marca
@@ -86,12 +90,16 @@ CORR_TELESC = 40.0     # telescópica com amortecimento — as 4 gavetas
 #   de poucas centenas.
 LED_M = 110.0
 DRIVER_UN = 90.0
-KIT_CORRER = 450.0     # ★ kit de correr embutido para porta de passagem
-                       #   (trilho + roldanas + guia). Não existe na base — a
-                       #   base só tem sistema de roupeiro. CONFIRMAR.
+# O ★ de R$ 450 saiu: a base TEM a linha, na categoria "Sistemas de porta de
+# passagem", e ferragens.md nomeia o RO82 como o deslizante de porta de
+# passagem da casa. Vai o RO82 Top, com amortecimento.
+RO82_TOP  = 400.0      # Sistema deslizante RO82 Top (amortecimento)
+DESEMP_UN = 60.0       # Desempenador anti-empeno. A base manda 2 por porta
+N_DESEMP  = 2          #   quando a folha tem 70 cm ou mais — é o caso.
+KIT_CORRER = RO82_TOP + N_DESEMP*DESEMP_UN
 
 P, FITA, TERC, LED, USIN, DUV = [], [], [], [], [], []
-FER = defaultdict(lambda: [0, 0, 0])       # dobradiças · oculta · telescópica
+FER = defaultdict(lambda: [0, 0, 0])       # dobradiças · oculta · (livre)
 def add(mat, esp, amb, desc, c, l, q=1): P.append((mat, esp, amb, desc, c, l, q))
 def fer(a, dobr=0, oc=0, tel=0):
     FER[a][0] += dobr; FER[a][1] += oc; FER[a][2] += tel
@@ -155,7 +163,7 @@ duv(A, 'a prancha manda guardar no aéreo os drivers slim de TODA a iluminação
 # ───────────────────────────────────────────────────────────────────────────
 # 2 · ARMÁRIO INFERIOR SOB A BANCADA — 194 × 61 × 45
 #     2 nichos abertos · gavetão de roupa suja com corrediça oculta invisível
-#     4 gavetas com corrediça telescópica com amortecimento · rodapé de 15
+#     4 gavetas com corrediça oculta Hardt com amortecimento · rodapé de 15
 #     Fundo aberto para o aparelho Cardal, prateleira removível recortada.
 # ───────────────────────────────────────────────────────────────────────────
 A = 'Armário inferior sob a bancada'
@@ -176,7 +184,7 @@ add('AM', 18, A, 'frente de gaveta 380 × 150',               38, 15, 4)
 gaveta('BR', A, 'gavetão de roupa suja', 77, PI, 55, 1)
 gaveta('BR', A, 'gaveta', 38, PI, 13, 4)
 add('AM', 15, A, 'rodapé recuado',                          LI, 15, 1)
-fer(A, oc=1, tel=4)
+fer(A, oc=5)      # gavetão + 4 gavetas, todas Hardt
 usin(A, (0.77 + 4*0.38))
 fita(A, 'frentes, nichos e rodapé',
      2*(0.77+0.57) + 4*2*(0.38+0.15) + 3*2*(0.44+PI/100)
@@ -199,8 +207,8 @@ add('AM', 18, A, 'folha da porta 700 × 2100', 70, 210, 1)
 add('AM', 18, A, 'folha da porta · segunda face (sanduíche)', 70, 210, 1)
 fita(A, 'porta · perímetro nas duas faces', 2*(0.70+2.10))
 usin(A, 2.10)
-terc(A, 'Kit de correr embutido: trilho, roldanas e guia de piso',
-     KIT_CORRER, est=True)
+terc(A, f'Sistema deslizante RO82 Top + {N_DESEMP} desempenadores',
+     KIT_CORRER)
 duv(A, 'orcei a folha como SANDUÍCHE de duas chapas de 18 — porta de passagem '
        'de 70 × 210 em chapa única empena. Se o projeto aceitar folha oca com '
        'miolo colmeia, cai o material mas entra prensa.')
@@ -234,10 +242,41 @@ custo_terc = sum(v for _, _, v, _ in TERC)
 TD = sum(f[0] for f in FER.values())
 TO = sum(f[1] for f in FER.values())
 TT = sum(f[2] for f in FER.values())
-custo_ferr = TD*DOBR + TO*CORR_OCULTA + TT*CORR_TELESC
+custo_ferr = TD*DOBR + (TO + TT)*CORR_HARDT
 consum = (custo_chapa + custo_fita)*0.06
 CD = (custo_chapa + custo_fita + custo_filet + custo_usin + custo_led
       + custo_terc + consum + custo_ferr + LOG)
+
+# ── CUSTO DIRETO POR ITEM ─────────────────────────────────────────────────
+# ⛔ O rateio por ÁREA DE CHAPA estava ERRADO, e o Jonathan pegou [29/08]: o
+#    gabinete inferior é o item de mais chapa e quase nenhum acessório, e
+#    levava 49% do preço; o aéreo, que carrega espelho, LED, drivers e 56
+#    suportes, saía barato. Área de chapa não é custo. O rateio agora é pelo
+#    CUSTO DIRETO de cada item, item por item.
+cd_amb = defaultdict(float)
+# chapa · dentro de cada grupo (material, espessura), a chapa comprada é
+#   rateada pela área que cada item ocupa NAQUELE grupo — é como ela é gasta.
+_ar_gr = defaultdict(float)
+for m, e, a, d, c, l, q in P: _ar_gr[(m, e, a)] += c*l*q/10000
+for (m, e, a), ar in _ar_gr.items():
+    cd_amb[a] += CH[(m, e)]*prc(m, e) * ar/area_ch[(m, e)]
+# fita e filetagem · se o piso de 2,6 m/m² valeu, o metro é do job inteiro e
+#   só a área explica quanto cada item puxa.
+_f_amb = defaultdict(float)
+if m_fita > m_fita_expl:
+    for a in ordem: _f_amb[a] = m_fita*area_amb[a]/area_tot
+else:
+    for a, d, mm in FITA: _f_amb[a] += mm
+for a, mm in _f_amb.items(): cd_amb[a] += mm*(DESPERD*FITA_M + FILET_M)
+for a, mm in USIN:          cd_amb[a] += mm*USIN_M
+for a, d, mm in LED:        cd_amb[a] += mm*LED_M
+for a, d, v, _e in TERC:    cd_amb[a] += v
+for a, (dd, oo, tt) in FER.items():
+    cd_amb[a] += dd*DOBR + (oo + tt)*CORR_HARDT
+# consumíveis e logística não têm dono: acompanham o resto.
+_bruto = sum(cd_amb.values())
+for a in list(cd_amb): cd_amb[a] += (consum + LOG)*cd_amb[a]/_bruto
+assert abs(sum(cd_amb.values()) - CD) < 0.01, (sum(cd_amb.values()), CD)
 
 def brl(v, n=2):
     return f'{v:,.{n}f}'.replace(',', '§').replace('.', ',').replace('§', '.')
@@ -259,8 +298,7 @@ print('Três itens de marcenaria. A bancada esculpida é MARMORARIA, fora do esc
 print('\nESCOPO')
 for a in ordem:
     d, o, t = FER[a]
-    ex = [f'{d} dobr.' if d else '', f'{o} oculta' if o else '',
-          f'{t} telescópicas' if t else '']
+    ex = [f'{d} dobr.' if d else '', f'{o+t} oculta Hardt' if o+t else '']
     print(f'  {a:<38}{area_amb[a]:>7.2f} m²   {" · ".join(x for x in ex if x)}')
 print(f'  {"TOTAL":<38}{area_tot:>7.2f} m²')
 
@@ -282,8 +320,8 @@ print('\nTERCEIRIZADOS E ITENS ESPECIAIS   (★ = sem preço fechado na base)')
 for a, d, v, est in TERC:
     print(f' {"★" if est else " "}{a:<32}{d[:44]:<45}R$ {brl(v):>9}')
 print(f'  {"TOTAL":<78}R$ {brl(custo_terc):>9}')
-print(f'\nFERRAGEM — {TD} dobradiças · {TO} corrediça oculta invisível '
-      f'(gavetão) · {TT} telescópicas com amortecimento')
+print(f'\nFERRAGEM — {TD} dobradiças Häfele · {TO+TT} corrediças ocultas Hardt '
+      f'Invisível P-10 com amortecimento (gavetão + 4 gavetas)')
 
 print('\n' + '═'*W)
 print('CUSTO DIRETO')
@@ -327,19 +365,20 @@ print('\n' + '─'*W)
 print(f'INVESTIMENTO POR ITEM  (MC {REC*100:.0f}% COM RT)')
 tots, linhas = 0, []
 for a in ordem:
-    v = round(INV*area_amb[a]/area_tot/100)*100
-    linhas.append([a, area_amb[a], v]); tots += v
-linhas[max(range(len(linhas)), key=lambda i: linhas[i][1])][2] += INV - tots
-for a, ar, v in linhas:
-    print(f'  {a:<38}{ar:>8.2f} m²{"R$ "+brl(v,0):>14}')
-print(f'  {"TOTAL":<38}{area_tot:>8.2f} m²{"R$ "+brl(INV,0):>14}')
+    v = round(INV*cd_amb[a]/CD/100)*100          # rateio por CUSTO, não por área
+    linhas.append([a, area_amb[a], cd_amb[a], v]); tots += v
+linhas[max(range(len(linhas)), key=lambda i: linhas[i][2])][3] += INV - tots
+print(f'  {"":38}{"m² de chapa":>12}{"custo direto":>15}{"investimento":>15}')
+for a, ar, cd, v in linhas:
+    print(f'  {a:<38}{ar:>9.2f} m²{"R$ "+brl(cd,0):>15}{"R$ "+brl(v,0):>15}')
+print(f'  {"TOTAL":<38}{area_tot:>9.2f} m²{"R$ "+brl(CD,0):>15}'
+      f'{"R$ "+brl(INV,0):>15}')
 
 print('\n' + '─'*W)
 print(f'DÚVIDAS E CONFERÊNCIAS — {len(DUV)} itens')
 for i, (a, t) in enumerate(DUV, 1):
     print(f'  {i:>2}. [{a}]\n      {t}')
 print('\n  ★ Preços adotados, sem linha na base:')
-print(f'     · kit de correr embutido p/ porta de passagem — R$ {brl(KIT_CORRER,0)}')
 print(f'     · perfil Usina Design + fita IP65 — R$ {brl(LED_M,0)}/m (não é COB,')
 print('       então não vale a linha de R$ 150 da base; é acima do perfil comum)')
 print(f'     · furo Ø6 fitado — R$ {brl(FURO_UN,0)}/un · suporte de prateleira '

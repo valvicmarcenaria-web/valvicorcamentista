@@ -200,6 +200,30 @@ consum = (custo_chapa + custo_fita)*0.06
 CD = (custo_chapa + custo_fita + custo_filet + custo_usin + custo_led
       + custo_terc + consum + custo_ferr + LOG)
 
+# ── CUSTO DIRETO POR AMBIENTE ─────────────────────────────────────────────
+# ⛔ O rateio por ÁREA DE CHAPA estava errado, e o Jonathan pegou no job da
+#    Flaviana [29/08]. Área de chapa não é custo: espelho, LED e suportes não
+#    entram nela. Aqui os dois armários são irmãos e o desvio é pequeno, mas o
+#    método é o mesmo nos dois motores — rateio pelo CUSTO DIRETO de cada um.
+cd_amb = defaultdict(float)
+_ar_gr = defaultdict(float)
+for m, e, a, d, c, l, q in P: _ar_gr[(m, e, a)] += c*l*q/10000
+for (m, e, a), ar in _ar_gr.items():
+    cd_amb[a] += CH[(m, e)]*prc(m, e) * ar/area_ch[(m, e)]
+_f_amb = defaultdict(float)
+if m_fita > m_fita_expl:
+    for a in ordem: _f_amb[a] = m_fita*area_amb[a]/area_tot
+else:
+    for a, d, mm in FITA: _f_amb[a] += mm
+for a, mm in _f_amb.items(): cd_amb[a] += mm*(DESPERD*FITA_M + FILET_M)
+for a, mm in USIN:       cd_amb[a] += mm*USIN_M
+for a, d, mm in LED:     cd_amb[a] += mm*LED_M
+for a, d, v, _e in TERC: cd_amb[a] += v
+for a, nd in FER.items(): cd_amb[a] += nd*DOBR_HAFELE
+_bruto = sum(cd_amb.values())
+for a in list(cd_amb): cd_amb[a] += (consum + LOG)*cd_amb[a]/_bruto
+assert abs(sum(cd_amb.values()) - CD) < 0.01, (sum(cd_amb.values()), CD)
+
 def brl(v, n=2):
     return f'{v:,.{n}f}'.replace(',', '§').replace('.', ',').replace('§', '.')
 
@@ -286,12 +310,14 @@ print('\n' + '─'*W)
 print(f'INVESTIMENTO POR AMBIENTE  (MC {REC*100:.0f}% COM RT)')
 tots, linhas = 0, []
 for a in ordem:
-    v = round(INV*area_amb[a]/area_tot/100)*100
-    linhas.append([a, area_amb[a], v]); tots += v
-linhas[max(range(len(linhas)), key=lambda i: linhas[i][1])][2] += INV - tots
-for a, ar, v in linhas:
-    print(f'  {a:<38}{ar:>8.2f} m²{"R$ "+brl(v,0):>14}')
-print(f'  {"TOTAL":<38}{area_tot:>8.2f} m²{"R$ "+brl(INV,0):>14}')
+    v = round(INV*cd_amb[a]/CD/100)*100          # rateio por CUSTO, não por área
+    linhas.append([a, area_amb[a], cd_amb[a], v]); tots += v
+linhas[max(range(len(linhas)), key=lambda i: linhas[i][2])][3] += INV - tots
+print(f'  {"":38}{"m² de chapa":>12}{"custo direto":>15}{"investimento":>15}')
+for a, ar, cd, v in linhas:
+    print(f'  {a:<38}{ar:>9.2f} m²{"R$ "+brl(cd,0):>15}{"R$ "+brl(v,0):>15}')
+print(f'  {"TOTAL":<38}{area_tot:>9.2f} m²{"R$ "+brl(CD,0):>15}'
+      f'{"R$ "+brl(INV,0):>15}')
 
 print('\n' + '─'*W)
 print(f'DÚVIDAS E CONFERÊNCIAS — {len(DUV)} itens')

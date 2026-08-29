@@ -199,3 +199,42 @@ A tabela da casa nasceu com dois números e ganhou o terceiro no Eliuton:
 `dados/materiais.json`. É a báscula dos cenários 2 e 3 do Eliuton, e a R$ 250 cada
 uma **pesa mais que 30 dobradiças** — o número de básculas virou a quantidade mais
 sensível de um orçamento com báscula.
+
+---
+
+## ⛔ TELESCÓPICA NÃO É ESPECIFICAÇÃO — corrigido pelo Jonathan [29/08/2026]
+
+No job da Flaviana e Igor eu lancei 4 gavetas em **corrediça telescópica com
+amortecimento** porque era o que a prancha da arquiteta sugeria pelo desenho.
+Resposta do Jonathan: *"a gente não utiliza essas ferragens, então substitui
+pela Hardt."*
+
+**A telescópica é rebaixamento de preço (Linha Silver), não especificação.** A
+casa não a oferece por escolha técnica. Toda gaveta sai em **Corrediça Oculta
+Hardt Invisível P-10 com amortecimento** (R$ 70/par na base, comprimentos
+400 / 450 / 550 mm) — o que este arquivo já dizia em duas linhas separadas e
+que agora fica valendo como regra fechada:
+
+- *"corrediça oculta com slow motion é o padrão; ~70% dos casos: Hardt"*
+- garantia: **oculta Hardt 5 anos** · telescópica 2 anos
+
+Consequência prática: **num orçamento novo, não existe linha de telescópica.**
+Se alguma prancha pedir, é conversa com o cliente, não default de motor. E a
+garantia da corrediça a citar na proposta é **5 anos**, não 2.
+
+### Porta de passagem: o sistema tem linha na base, não inventar preço
+
+Na mesma rodada saiu um ★ que não devia existir: eu tinha adotado
+*"kit de correr embutido — R$ 450"* dizendo que a base só tinha sistema de
+roupeiro. **Tem, sim** — a categoria é `Sistemas de porta de passagem`:
+
+| Item | Custo |
+|---|--:|
+| Sistema deslizante **RO82** | R$ 200 |
+| Sistema deslizante **RO82 Top** (amortecimento) | R$ 400 |
+| Desempenador anti-empeno | R$ 60 — **2 por porta** com 70 cm ou mais |
+| Sistema deslizante SI Forma | R$ 1.200 (raro) |
+
+E este arquivo já nomeava o **RO82 (Rometal)** como o deslizante de porta de
+passagem da casa. Antes de adotar preço ★, **procurar a categoria pelo nome do
+uso**, não pelo nome que eu daria à peça.

@@ -168,3 +168,96 @@ Ambos entraram no painel de orçamentos em 29/08. **45 linhas, carteira de
 R$ 3.441.966** — na mesma rodada entrou a bancada com penteadeira, que estava
 faltando: o commit `10e4089` anunciou que ela tinha entrado, mas só o DEVA
 tinha entrado de fato.
+
+---
+
+## Rodada 2 — correções do Jonathan [29/08]
+
+Quatro correções. Três eram erro meu; a quarta foi decisão dele sobre uma
+questão que eu tinha levantado.
+
+### 1 · A capa da Giza estava sem imagem de vender
+
+> *"a proposta da Giza ficou com um efeito muito ruim porque você não usou
+> nenhuma imagem de vender; utiliza as imagens do render 3D."*
+
+Na rodada 1 eu deixei o render fotorrealista de fora porque a capa do caderno
+o declara *"imagem meramente ilustrativa"*. Levantei a questão, ele decidiu, e
+o render virou a capa — e volta na página 5 como faixa larga. A proposta o
+credita como **referência de acabamento do caderno da arquiteta**, o que é
+verdade e evita que o cliente leia a imagem como foto de obra entregue.
+
+O caderno da Giza tem exatamente **uma** imagem de vender: `p1 xref153`,
+1888 × 2270. As outras da capa são o logotipo da arquiteta, uma textura de
+concreto e uma foto do banheiro como ele está hoje.
+
+### 2 · Telescópica não é especificação
+
+> *"você considerou a telescópica com amortecedor; a gente não utiliza essas
+> ferragens, então substitui pela Hardt."*
+
+As 4 gavetas da Flaviana saíram da telescópica e foram para a **Corrediça
+Oculta Hardt Invisível P-10 com amortecimento** — junto com o gavetão de roupa
+suja, que estava em Hettich Quadro. As cinco agora são Hardt.
+
+Isso estava no `ferragens.md` o tempo todo, em duas linhas separadas que eu não
+juntei: *"corrediça oculta com slow motion é o padrão; ~70% dos casos: Hardt"*
+e *"a Linha Silver troca ocultas por telescópicas"*. Telescópica é rebaixamento
+de preço, não escolha técnica. Virou regra fechada no `ferragens.md`.
+
+**Efeito na garantia: a corrediça sobe de 2 para 5 anos.**
+
+### 3 · O gabinete inferior estava superfaturado — e estava mesmo
+
+> *"a precificação do gabinete inferior não ficou boa, ficou superfaturada,
+> revê isso."*
+
+O rateio do investimento entre os itens era por **área de chapa**. O inferior é
+o item de mais chapa e quase nenhum acessório; o aéreo é o contrário — carrega
+espelho, LED, drivers e 56 suportes. Resultado: o inferior levava 49% do preço.
+
+| | m² | custo direto | por área | por custo |
+|---|--:|--:|--:|--:|
+| Armário aéreo | 5,61 | R$ 3.503 | R$ 7.100 | **R$ 11.300** |
+| Armário inferior | 8,15 | R$ 1.784 | R$ 10.200 | **R$ 5.700** |
+| Porta de correr | 2,94 | R$ 1.415 | R$ 3.700 | **R$ 4.500** |
+
+O inferior agora dá R$ 700/m², dentro da faixa da casa. O método virou regra em
+`estrutura-orcamento.md` e está nos dois motores, com `assert` fechando a soma.
+Na Giza os dois armários são irmãos e os valores **não se moveram** — o que é a
+melhor validação possível do método novo.
+
+Na mesma revisão caiu um ★ que não devia existir: o *"kit de correr — R$ 450"*
+virou **RO82 Top (R$ 400) + 2 desempenadores (R$ 120)**, tudo com linha na base.
+
+### 4 · A garantia ganhou bloco próprio
+
+> *"expresse um pouco melhor a garantia, fale um pouco mais. Sem ser muito
+> conceitual, sendo um pouco mais técnico."*
+
+Página de investimento das duas propostas, uma linha por componente, com os
+números de `proposta-comercial.md` e a correção do Jonathan de 07/08. **Nada
+inventado**: espelho e LED não estão na cobertura da casa e por isso não
+aparecem cobertos.
+
+| | Giza | Flaviana |
+|---|---|---|
+| Estrutura, corpo, fundo, prateleiras | 10 anos | 10 anos |
+| Dobradiça com amortecimento | 10 anos | 10 anos |
+| Corrediça | **não há** — abre só em dobradiça | **5 anos**, oculta Hardt em todas |
+| Sistema deslizante da porta | — | 10 anos |
+| Regulagens | 2 anos | 2 anos |
+| Retorno do chamado | 24 h | 24 h |
+| Visita técnica, sem custo no prazo | 3 dias úteis | 3 dias úteis |
+
+### Números depois da rodada 2
+
+| | Giza e Renato | Flaviana e Igor |
+|---|--:|--:|
+| **Investimento** | **R$ 20.500** | **R$ 21.500** |
+| variação | — | +R$ 500 (Hardt e RO82 Top) |
+
+As duas propostas passaram a ter **5 páginas** — a garantia não cabia junto com
+as condições. Painel: 45 linhas, carteira de **R$ 3.442.466**.
+
+**Prazo e pagamento seguem em aberto nos dois.**
