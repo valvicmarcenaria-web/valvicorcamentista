@@ -233,3 +233,13 @@ comercial, não técnica — destaca a linha premium. Inverter é uma flag.
 A checagem das frases cortadas virou parte do script: a lista está no
 docstring do `build-`, e o teste procura cada uma no texto extraído. Correção
 pedida uma vez não pode voltar na próxima revisão sem ninguém notar.
+
+---
+
+## Correção de registro [29/08]
+
+Este job **não estava no painel de orçamentos**. O commit `10e4089` diz
+"a bancada entra no painel" na mensagem, mas o diff toca uma única linha do
+`painel-orcamentos.html` — a do DEVA. A bancada entrou agora, junto com os
+dois banheiros da arq. Dani Rosaria: **R$ 16.700 (Hettich) / até R$ 18.800
+(Blum)**, status `orcado`.

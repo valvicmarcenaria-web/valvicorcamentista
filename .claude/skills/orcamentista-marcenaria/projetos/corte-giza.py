@@ -267,11 +267,14 @@ for mc in ESCADA:
     PRECOS[mc] = (s, r)
     print(f'  {mc*100:>4.0f}%{"R$ "+brl(s,0):>13}{mc_conferida(s, CD)*100:>9.1f}%   '
           f'{"R$ "+brl(r,0):>13}{mc_conferida(r, CD)*100:>9.1f}%')
-REC = 0.38
-INV = PRECOS[REC][0]
-print(f'\n  REFERÊNCIA · MC {REC*100:.0f}% sem RT ..... R$ {brl(INV,0)}   ·   '
-      f'com RT R$ {brl(PRECOS[REC][1],0)}')
-rm = INV/area_tot
+# [Jonathan 25/08] "MC de 40% com rt em ambos" — fechado.
+REC, RT_FECHADO = 0.40, True
+INV = PRECOS[REC][1 if RT_FECHADO else 0]
+INV_SEM = PRECOS[REC][0]
+print(f'\n  ► FECHADO · MC {REC*100:.0f}% COM RT ....... R$ {brl(INV,0)}'
+      f'     [Jonathan 25/08]')
+print(f'    sem RT, referência interna ......... R$ {brl(INV_SEM,0)}')
+rm = INV_SEM/area_tot
 print(f'  R$/m² de chapa: {rm:.0f} sem RT   (faixa da casa: 626–834)')
 if not 626 <= rm <= 834:
     print(f'  ⚠ FORA DA FAIXA. Aqui é ESPERADO: espelho, LED COB e drivers')
@@ -280,7 +283,7 @@ if not 626 <= rm <= 834:
     print('    Espelheira de banheiro é móvel de pouca chapa e muito acessório.')
 
 print('\n' + '─'*W)
-print(f'INVESTIMENTO POR AMBIENTE  (MC {REC*100:.0f}% sem RT)')
+print(f'INVESTIMENTO POR AMBIENTE  (MC {REC*100:.0f}% COM RT)')
 tots, linhas = 0, []
 for a in ordem:
     v = round(INV*area_amb[a]/area_tot/100)*100

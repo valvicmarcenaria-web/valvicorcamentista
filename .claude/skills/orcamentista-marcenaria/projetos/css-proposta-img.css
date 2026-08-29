@@ -1,0 +1,50 @@
+/* ── PAINÉIS DE IMAGEM ────────────────────────────────────────────────────
+   As vistas do projeto executivo saem do modelo 3D com FUNDO PRETO. Em vez
+   de recortar (o preto não é só borda — entra nos cantos do corte isométrico),
+   o painel é preto de propósito: a imagem encosta no fundo sem emenda e a
+   página ganha uma banda escura que conversa com a capa.
+   `.z` dá um zoom leve para comer a moldura preta fina das elevações.        */
+.ph{background:#000;overflow:hidden;position:relative;}
+.ph img{display:block;width:100%;height:100%;object-fit:cover;}
+.ph.ct img{object-fit:contain;}
+.ph img.z{transform:scale(1.09);}
+.ph img.z2{transform:scale(1.16);}
+.ph .cap{position:absolute;left:0;right:0;bottom:0;padding:6mm 4mm 2.8mm;
+  font-size:6.6pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-lt);font-weight:700;
+  background:linear-gradient(transparent,rgba(0,0,0,.9));}
+
+/* capa partida: texto à esquerda, vista do projeto à direita */
+.cv2{display:grid;grid-template-columns:1.06fr 1fr;height:100%;}
+.cv2 .txt{padding:24mm 13mm 16mm 19mm;display:flex;flex-direction:column;
+  min-width:0;}
+.cv2 .ph{border-left:1px solid rgba(198,165,103,.30);}
+.cv2 .cv-t{font-size:31pt;}
+.cv2 .cv-s{font-size:11.4pt;margin-top:6mm;}
+.cv2 .cv-meta{grid-template-columns:1fr;gap:4mm;margin-top:10mm;padding-top:6mm;}
+.cv2 .cv-meta>div{display:grid;grid-template-columns:34mm 1fr;align-items:baseline;}
+.cv2 .cv-meta .v{margin-top:0;font-size:9.8pt;}
+
+/* capa com render fotográfico de topo */
+.cvfoto{display:grid;grid-template-rows:auto 146mm 1fr;height:100%;}
+.cvfoto .top{padding:13mm 19mm 8mm;}
+.cvfoto .txt{padding:11mm 19mm 14mm;display:flex;flex-direction:column;}
+.cvfoto .cv-t{font-size:33pt;}
+
+/* dupla de vistas lado a lado */
+.dupla{display:grid;grid-template-columns:1fr 1fr;gap:6mm;}
+.dupla .ph{height:58mm;}
+.dupla .t{font-size:10.6pt;font-weight:600;margin-top:3.6mm;}
+.dupla .d{color:var(--soft);font-size:8.5pt;margin-top:1.4mm;line-height:1.52;}
+
+/* banda de largura total, sangrando nas laterais da página */
+.banda{margin:0 -19mm;height:74mm;}
+.dupla.sangra{margin:0 -19mm;gap:0;}
+.dupla.sangra .ph{height:172mm;}
+.dupla.sangra.baixa .ph{height:106mm;}
+.dupla.sangra .ph+.ph{border-left:1px solid rgba(198,165,103,.22);}
+
+/* página partida: vista alta à esquerda, texto à direita */
+.split{display:grid;grid-template-columns:74mm 1fr;gap:9mm;flex:1;
+  min-height:0;margin-top:2mm;}
+.split .ph{height:100%;}
