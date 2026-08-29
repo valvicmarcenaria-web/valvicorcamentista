@@ -121,3 +121,43 @@ que o painel **prevê** a aplicação — sem cobrar por ela.
    de escopo conhecido.
 2. **Perfil em inox** — R$ 85/m adotado, ~14 m no projeto. Confirmar a compra.
 3. **A frente de 5 faixas do balcão comercial** — ripado ou gaveteiro.
+
+---
+
+## 📄 Proposta gerada — 25/08
+
+`build-deva.py` → `proposta-deva.pdf`, **4 páginas A4**.
+
+| Página | Conteúdo |
+|---|---|
+| 1 | Capa — 9 conjuntos em 2 setores, prazo, validade |
+| 2 | Escopo do setor Comercial (5 conjuntos) |
+| 3 | Escopo do setor Vendas (4) + totais por setor + investimento |
+| 4 | Especificação técnica, pagamento e não incluso |
+
+**Os valores são LIDOS DO MOTOR, não transcritos.** O `build-` roda o
+`corte-deva.py`, extrai por regex o investimento, os dois setores e o valor de
+cada conjunto, e falha na hora se a soma não fechar. Transcrever nove valores à
+mão entre dois arquivos é como um número erra sem ninguém perceber.
+
+### Auditoria antes de entregar
+
+| Verificação | Resultado |
+|---|---|
+| Geometria — nada colado no rodapé | ok |
+| Numeração dos conjuntos 01–09, sem repetir | ok — a 1ª rodada saiu 01,01,02,02,02 porque eu usava o código da prancha |
+| Total com moeda | ok — a 1ª rodada imprimia "72.400" sem R$ |
+| Soma dos conjuntos = investimento | ok, por `assert` |
+| **Regra 2** — sem chapa, aproveitamento, custo, margem | LIMPA |
+| **Buraco de escopo nomeado no "não incluso"** | ok, é o 1º item da lista |
+
+### Regra 1 — duas exceções registradas
+
+O auditor pegou **"frisos usinados de 1 cm"** e **"bit de 1 cm no encontro com
+a alvenaria"**. Mantive as duas: são **especificação de acabamento**, da mesma
+natureza que "fita ABS", "LED 3000 K" ou "vidro temperado" — não são cota de
+móvel, que é o que a regra proíbe. As duas estão nomeadas no auditor como
+exceção, para que uma cota de verdade não passe amanhã sob a mesma desculpa.
+
+⚠ **PRAZO (75 dias) e PAGAMENTO são premissas minhas** — o Jonathan não fechou
+nenhum dos dois para este job.
