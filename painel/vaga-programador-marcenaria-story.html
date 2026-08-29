@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Vaga — Programador de Marcenaria · Story Instagram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0B1B31; --navy2:#12294a; --navy3:#060E1A;
+  --gold:#C2A05A; --gold-soft:#E3CD97; --gold-dk:#A9863F;
+  --wood:#8A6534; --cream:#FBFAF7;
+}
+html,body{width:1080px;height:1920px}
+body{font-family:'Inter',sans-serif;color:var(--cream);-webkit-font-smoothing:antialiased;overflow:hidden}
+.num{font-variant-numeric:tabular-nums}
+.mono{font-family:'JetBrains Mono','Courier New',monospace}
+
+.story{
+  position:relative;width:1080px;height:1920px;overflow:hidden;
+  display:flex;flex-direction:column;
+  background:
+    radial-gradient(130% 62% at 50% -8%, #1B3D63 0%, var(--navy) 44%, var(--navy3) 100%);
+}
+/* veio de madeira — camada quente sobre o azul */
+.grao{position:absolute;inset:0;pointer-events:none;opacity:.16;mix-blend-mode:screen;
+  background:
+    repeating-linear-gradient(97deg,
+      transparent 0 14px, rgba(138,101,52,.9) 14px 15px, transparent 15px 23px,
+      rgba(138,101,52,.55) 23px 24px, transparent 24px 46px,
+      rgba(138,101,52,.75) 46px 47px, transparent 47px 61px);
+}
+.grao2{position:absolute;inset:0;pointer-events:none;opacity:.10;
+  background:radial-gradient(58% 26% at 22% 34%, rgba(194,160,90,.55) 0%, transparent 62%),
+             radial-gradient(46% 20% at 78% 68%, rgba(194,160,90,.4) 0%, transparent 60%)}
+/* malha técnica — prancheta */
+.malha{position:absolute;inset:0;pointer-events:none;opacity:.10;
+  background:
+    linear-gradient(rgba(194,160,90,.65) 1px, transparent 1px) 0 0/100% 60px,
+    linear-gradient(90deg, rgba(194,160,90,.65) 1px, transparent 1px) 0 0/60px 100%}
+.vinheta{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 78% at 50% 46%, transparent 42%, rgba(3,8,16,.72) 100%)}
+
+/* moldura */
+.frame{position:absolute;inset:34px;border:1.5px solid rgba(194,160,90,.32);border-radius:10px;pointer-events:none}
+.frame::before,.frame::after{content:"";position:absolute;width:40px;height:40px;border:2.5px solid var(--gold)}
+.frame::before{top:-2px;left:-2px;border-right:none;border-bottom:none}
+.frame::after{bottom:-2px;right:-2px;border-left:none;border-top:none}
+
+/* nesting de fundo */
+.nest{position:absolute;left:-40px;top:414px;width:1160px;height:466px;pointer-events:none;
+  opacity:.7;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 16%,#000 44%,transparent 88%);
+  mask-image:linear-gradient(to bottom,transparent 0,#000 16%,#000 44%,transparent 88%)}
+
+/* tira técnica do rodapé */
+.tira{position:relative;z-index:4;margin-top:auto;padding:0 78px 26px;text-align:center}
+.tira .path{display:flex;align-items:center;gap:0;margin-bottom:18px}
+.tira .dot{width:9px;height:9px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.tira .dash{flex:1;height:2px;
+  background:repeating-linear-gradient(90deg,rgba(194,160,90,.55) 0 9px,transparent 9px 16px)}
+.tira .sq{width:9px;height:9px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;
+  margin-left:2px}
+.tira .l{font-size:15px;letter-spacing:3px;color:rgba(227,205,151,.42);line-height:1.9}
+
+/* anotações técnicas laterais */
+.anot{position:absolute;z-index:3;font-size:16px;letter-spacing:2.4px;
+  color:rgba(227,205,151,.5);text-transform:uppercase}
+.anot.esq{left:64px;top:800px;transform:rotate(-90deg);transform-origin:left top}
+.anot.dir{right:64px;top:770px;transform:rotate(90deg);transform-origin:right top}
+
+/* ─────────── topo ─────────── */
+.top{position:relative;z-index:4;padding:92px 90px 0;display:flex;flex-direction:column;
+  align-items:center;text-align:center}
+.mark{width:76px;height:76px;border:2px solid var(--gold);border-radius:8px;display:flex;
+  align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;
+  font-weight:700;font-size:40px;color:var(--gold);margin-bottom:15px;
+  background:rgba(194,160,90,.06)}
+.brand{font-size:18px;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:#fff}
+.brand-sub{font-size:12.5px;color:rgba(255,255,255,.42);letter-spacing:3px;margin-top:6px;
+  text-transform:uppercase}
+
+.kicker-wrap{position:relative;z-index:4;display:flex;justify-content:center;margin-top:44px}
+.kicker{font-size:25px;font-weight:900;letter-spacing:6.5px;text-transform:uppercase;
+  color:#0A1729;padding:17px 46px;border-radius:60px;
+  background:linear-gradient(90deg,var(--gold-dk),var(--gold) 46%,var(--gold-soft));
+  box-shadow:0 14px 44px rgba(194,160,90,.34)}
+
+/* ─────────── herói ─────────── */
+.mid{position:relative;z-index:4;padding:52px 74px 0;text-align:center}
+.pre{font-size:19px;letter-spacing:8px;text-transform:uppercase;color:rgba(255,255,255,.5);
+  font-weight:600}
+.h1{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:126px;line-height:.9;
+  color:#fff;letter-spacing:-1px;margin-top:14px;text-shadow:0 6px 40px rgba(3,10,20,.75)}
+.h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:64px;line-height:1;
+  color:var(--gold-soft);letter-spacing:2px;margin-top:6px;
+  text-shadow:0 4px 30px rgba(3,10,20,.7)}
+.subhead{font-size:25px;line-height:1.44;color:rgba(255,255,255,.8);margin:26px auto 0;
+  max-width:800px;text-shadow:0 2px 18px rgba(3,10,20,.85)}
+.subhead b{color:var(--gold-soft);font-weight:700}
+
+/* ─────────── requisitos ─────────── */
+.bloco{position:relative;z-index:4;margin-top:40px;padding:0 78px}
+.rot{display:flex;align-items:center;gap:18px;margin-bottom:20px}
+.rot .ln{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(194,160,90,.55))}
+.rot .ln.r{background:linear-gradient(90deg,rgba(194,160,90,.55),transparent)}
+.rot .tx{font-size:15px;font-weight:800;letter-spacing:5.5px;text-transform:uppercase;
+  color:var(--gold);white-space:nowrap}
+.req{display:flex;flex-direction:column;gap:0}
+.req .l{display:flex;align-items:center;gap:22px;padding:19px 4px;
+  border-bottom:1px solid rgba(255,255,255,.09)}
+.req .l:first-child{border-top:1px solid rgba(255,255,255,.09)}
+.req .n{width:40px;flex-shrink:0;font-size:14px;font-weight:700;letter-spacing:1px;
+  color:rgba(194,160,90,.75)}
+.req .t{font-size:25px;font-weight:500;color:rgba(255,255,255,.94);line-height:1.28}
+.req .t b{font-weight:800;color:#fff}
+
+/* ─────────── perfil ─────────── */
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:22px}
+.chip{font-size:18px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold-soft);border:1.5px solid rgba(194,160,90,.5);border-radius:40px;
+  padding:11px 24px;background:rgba(194,160,90,.07)}
+
+/* ─────────── oferta ─────────── */
+.oferta{position:relative;z-index:4;margin-top:34px;padding:0 78px;display:flex;gap:14px}
+.of{flex:1;border:1px solid rgba(194,160,90,.34);border-radius:12px;padding:20px 12px;
+  text-align:center;background:linear-gradient(180deg,rgba(194,160,90,.10),rgba(194,160,90,.02))}
+.of .ic{font-size:26px;line-height:1}
+.of .t{font-size:19px;font-weight:800;color:#fff;margin-top:9px;letter-spacing:.4px}
+.of .s{font-size:14px;color:rgba(255,255,255,.5);margin-top:4px;letter-spacing:.6px}
+
+/* ─────────── cta ─────────── */
+.cta{position:relative;z-index:4;margin-top:36px;padding:0 78px;text-align:center}
+.cta .lead{font-size:20px;color:rgba(255,255,255,.62);letter-spacing:2.5px;
+  text-transform:uppercase;font-weight:600}
+.btn{margin-top:15px;border-radius:16px;padding:22px 20px;
+  background:linear-gradient(90deg,var(--gold-dk),var(--gold) 48%,var(--gold-soft));
+  box-shadow:0 18px 46px rgba(194,160,90,.3)}
+.btn .l1{font-size:16px;font-weight:800;letter-spacing:5px;text-transform:uppercase;
+  color:rgba(10,23,41,.72)}
+.btn .l2{font-size:44px;font-weight:800;color:#0A1729;line-height:1.1;margin-top:2px;
+  letter-spacing:1px}
+
+.foot{position:relative;z-index:4;padding:0 78px 66px;text-align:center}
+.foot .ln{height:1px;background:linear-gradient(90deg,transparent,rgba(194,160,90,.4),transparent);
+  margin-bottom:20px}
+.foot .l1{font-size:16px;letter-spacing:6px;text-transform:uppercase;color:var(--gold);
+  font-weight:700}
+.foot .l2{font-size:14px;color:rgba(255,255,255,.4);margin-top:7px;letter-spacing:1.4px}
+</style>
+</head>
+<body>
+
+<section class="story">
+  <div class="grao"></div>
+  <div class="grao2"></div>
+  <div class="malha"></div>
+
+  <!-- ── nesting / plano de corte ── -->
+  <svg class="nest" viewBox="0 0 1160 900" fill="none" preserveAspectRatio="xMidYMin slice">
+    <defs>
+      <linearGradient id="chapa" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#8A6534" stop-opacity=".30"/>
+        <stop offset=".5" stop-color="#6B4E29" stop-opacity=".16"/>
+        <stop offset="1" stop-color="#8A6534" stop-opacity=".26"/>
+      </linearGradient>
+      <pattern id="veio" width="9" height="9" patternTransform="rotate(8)"
+               patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="9" stroke="#C2A05A" stroke-opacity=".16" stroke-width="1"/>
+      </pattern>
+    </defs>
+
+    <!-- a chapa -->
+    <rect x="118" y="60" width="924" height="700" rx="4" fill="url(#chapa)"/>
+    <rect x="118" y="60" width="924" height="700" rx="4" fill="url(#veio)"/>
+    <rect x="118" y="60" width="924" height="700" rx="4"
+          stroke="#C2A05A" stroke-opacity=".55" stroke-width="2"/>
+
+    <!-- peças nestadas -->
+    <g stroke="#E3CD97" stroke-opacity=".52" stroke-width="1.6" fill="#0B1B31" fill-opacity=".28">
+      <rect x="148" y="90" width="330" height="238" rx="3"/>
+      <rect x="498" y="90" width="212" height="238" rx="3"/>
+      <rect x="730" y="90" width="282" height="150" rx="3"/>
+      <rect x="730" y="262" width="282" height="66" rx="3"/>
+      <rect x="148" y="352" width="240" height="378" rx="3"/>
+      <rect x="410" y="352" width="300" height="182" rx="3"/>
+      <rect x="410" y="556" width="300" height="174" rx="3"/>
+      <rect x="730" y="352" width="282" height="378" rx="3"/>
+    </g>
+
+    <!-- furação sistema 32 -->
+    <g fill="#E3CD97" fill-opacity=".55">
+      <circle cx="170" cy="378" r="3.6"/><circle cx="170" cy="410" r="3.6"/>
+      <circle cx="170" cy="442" r="3.6"/><circle cx="170" cy="474" r="3.6"/>
+      <circle cx="170" cy="506" r="3.6"/><circle cx="170" cy="538" r="3.6"/>
+      <circle cx="366" cy="378" r="3.6"/><circle cx="366" cy="410" r="3.6"/>
+      <circle cx="366" cy="442" r="3.6"/><circle cx="366" cy="474" r="3.6"/>
+      <circle cx="366" cy="506" r="3.6"/><circle cx="366" cy="538" r="3.6"/>
+      <circle cx="756" cy="382" r="4.4"/><circle cx="986" cy="382" r="4.4"/>
+      <circle cx="756" cy="700" r="4.4"/><circle cx="986" cy="700" r="4.4"/>
+    </g>
+
+    <!-- toolpath com lead-in -->
+    <path d="M96 46 L138 46 L138 80"
+          stroke="#C2A05A" stroke-opacity=".9" stroke-width="2" stroke-dasharray="9 7"/>
+    <path d="M138 80 L1022 80 L1022 344 L720 344 L720 742 L138 742 Z"
+          stroke="#C2A05A" stroke-opacity=".55" stroke-width="2" stroke-dasharray="9 7"/>
+    <circle cx="96" cy="46" r="6" fill="#C2A05A"/>
+
+    <!-- cotas -->
+    <g stroke="#C2A05A" stroke-opacity=".5" stroke-width="1.4">
+      <path d="M118 34 L1042 34"/>
+      <path d="M118 26 L118 42"/><path d="M1042 26 L1042 42"/>
+      <path d="M1074 60 L1074 760"/>
+      <path d="M1066 60 L1082 60"/><path d="M1066 760 L1082 760"/>
+    </g>
+    <text x="580" y="24" text-anchor="middle" fill="#E3CD97" fill-opacity=".72"
+          font-family="JetBrains Mono, monospace" font-size="16" letter-spacing="2">2750 mm</text>
+    <text x="1074" y="404" text-anchor="middle" fill="#E3CD97" fill-opacity=".72"
+          font-family="JetBrains Mono, monospace" font-size="16" letter-spacing="2"
+          transform="rotate(90 1074 404)">1840 mm</text>
+
+  </svg>
+
+  <div class="vinheta"></div>
+  <div class="frame"></div>
+
+  <div class="anot esq mono">SECCIONADORA · CNC · COLADEIRA</div>
+  <div class="anot dir mono">PROJETO · CORTE · USINAGEM · MONTAGEM</div>
+
+  <!-- ── topo ── -->
+  <div class="top">
+    <div class="mark">V</div>
+    <div class="brand">Valvic Marcenaria</div>
+    <div class="brand-sub">Belo Horizonte / MG</div>
+  </div>
+
+  <div class="kicker-wrap"><div class="kicker">Vaga aberta</div></div>
+
+  <!-- ── herói ── -->
+  <div class="mid">
+    <div class="pre">Procuramos</div>
+    <div class="h1">Programador</div>
+    <div class="h2">de Marcenaria</div>
+    <div class="subhead">Quem transforma o projeto em <b>plano de corte</b> — e responde pelo
+      processo até a peça sair pronta da fábrica.</div>
+  </div>
+
+  <!-- ── requisitos ── -->
+  <div class="bloco">
+    <div class="rot"><span class="ln"></span><span class="tx">O que a vaga exige</span><span class="ln r"></span></div>
+    <div class="req">
+      <div class="l"><div class="n mono">01</div>
+        <div class="t"><b>Domínio total</b> do software de projeto e plano de corte</div></div>
+      <div class="l"><div class="n mono">02</div>
+        <div class="t">Programação e <b>operação de máquinas</b> — CNC e seccionadora</div></div>
+      <div class="l"><div class="n mono">03</div>
+        <div class="t">Leitura de projeto executivo, detalhamento e <b>ferragens</b></div></div>
+      <div class="l"><div class="n mono">04</div>
+        <div class="t">Entender de <b>processo de marcenaria</b> de verdade — da chapa ao móvel montado</div></div>
+    </div>
+    <div class="chips">
+      <span class="chip">Experiente</span>
+      <span class="chip">Alto gabarito</span>
+      <span class="chip">Proativo</span>
+      <span class="chip">Ambicioso</span>
+      <span class="chip">Dono do processo</span>
+    </div>
+  </div>
+
+  <!-- ── oferta ── -->
+  <div class="oferta">
+    <div class="of"><div class="ic">◆</div><div class="t">Salário fixo</div>
+      <div class="s">compatível com o nível</div></div>
+    <div class="of"><div class="ic">◈</div><div class="t">Benefícios</div>
+      <div class="s">pacote completo</div></div>
+    <div class="of"><div class="ic">◇</div><div class="t">Comissão</div>
+      <div class="s">por resultado</div></div>
+  </div>
+
+  <!-- ── cta ── -->
+  <div class="cta">
+    <div class="lead">Envie currículo e portfólio</div>
+    <div class="btn">
+      <div class="l1">Chame no WhatsApp</div>
+      <div class="l2 num">(31) 98524-8046</div>
+    </div>
+  </div>
+
+  <div class="tira">
+    <div class="path"><span class="dot"></span><span class="dash"></span><span class="sq"></span></div>
+    <div class="l mono">PLANO DE CORTE · MDF 18 mm · T1 Ø8 mm · F 18 m/min</div>
+    <div class="l mono">X 0.000 &nbsp; Y 0.000 &nbsp; Z −18.000 &nbsp;·&nbsp; G01 · NESTING</div>
+  </div>
+
+  <div class="foot">
+    <div class="ln"></div>
+    <div class="l1">Legado · Sinergia · Excelência</div>
+    <div class="l2">Marcenaria de alto padrão · Belo Horizonte / MG</div>
+  </div>
+</section>
+
+</body>
+</html>
