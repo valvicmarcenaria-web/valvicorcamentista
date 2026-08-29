@@ -1,0 +1,430 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<title>Valvic · Escopo de Função — Marceneiro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0E2038;--navy2:#16314F;--gold:#C2A05A;--goldsoft:#d8bd80;
+      --goldbg:#F6EDD6;--cream:#FBFAF7;--ink:#1b2733;--muted:#6c7785;--line:#e8e3d8;
+      --ok:#2F7D4F;--okbg:#E7F1EA;--red:#B0413F;--redbg:#FBF1F0}
+*{margin:0;padding:0;box-sizing:border-box}
+@page{size:A4 portrait;margin:0}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:#8a8a8a}
+.sheet{width:210mm;height:297mm;background:#fff;position:relative;overflow:hidden;
+       display:flex;flex-direction:column;page-break-after:always}
+.sheet:last-child{page-break-after:auto}
+@media print{body{background:#fff}.sheet{margin:0}}
+@media screen{.sheet{margin:8mm auto;box-shadow:0 2px 16px rgba(0,0,0,.3)}}
+
+.rh{background:var(--navy);color:#fff;padding:5mm 15mm 4.4mm;display:flex;
+    align-items:flex-end;justify-content:space-between}
+.rh .kx{font-size:6.4pt;letter-spacing:.22em;text-transform:uppercase;
+        color:var(--goldsoft);font-weight:600}
+.rh .tt{font-family:'Cormorant Garamond',serif;font-size:19pt;font-weight:600;
+        line-height:1.06;margin-top:.8mm}
+.rh .r{text-align:right;font-size:6.4pt;color:#9FB0C4;line-height:1.5}
+.rh .r b{color:#fff;font-weight:600}
+.gold-rule{height:1.1mm;background:linear-gradient(90deg,var(--gold),var(--goldsoft))}
+.body{flex:1;padding:5mm 15mm 3mm;display:flex;flex-direction:column;min-height:0}
+.rf{background:var(--goldbg);padding:2.2mm 15mm;font-size:6.2pt;color:#7A5B17;
+    display:flex;justify-content:space-between;align-items:center}
+
+/* capa */
+.capa{flex:1;display:flex;flex-direction:column;justify-content:center;
+      padding:0 15mm;text-align:center}
+.capa .mk{width:22mm;height:22mm;border:.6mm solid var(--gold);border-radius:2mm;
+  margin:0 auto 7mm;display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:34pt;font-weight:700;color:var(--gold)}
+.capa .kx{font-size:8pt;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);
+  font-weight:700}
+.capa h1{font-family:'Cormorant Garamond',serif;font-size:44pt;font-weight:700;
+  color:var(--navy);line-height:1;margin-top:3mm}
+.capa .nv{font-size:10.5pt;color:var(--muted);margin-top:3.4mm;letter-spacing:.02em}
+.capa .ln{width:34mm;height:.9mm;background:var(--gold);margin:8mm auto}
+.capa .lead{font-size:10pt;line-height:1.65;color:var(--ink);max-width:132mm;
+  margin:0 auto;text-align:center}
+.capa .emp{margin-top:11mm;font-size:8pt;color:var(--muted);line-height:1.7;
+  letter-spacing:.03em}
+.capa .emp b{color:var(--navy);font-weight:700;letter-spacing:.14em}
+
+.sec{display:flex;align-items:baseline;gap:3mm;margin:0 0 3mm}
+.sec .bar{width:6mm;height:1mm;background:var(--gold);align-self:center;flex-shrink:0}
+.sec .kx{font-size:6.4pt;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
+  font-weight:700;white-space:nowrap}
+.sec .tt{font-family:'Cormorant Garamond',serif;font-size:15pt;font-weight:600;
+  color:var(--navy);line-height:1.1}
+.sec2{font-family:'Cormorant Garamond',serif;font-size:12.5pt;font-weight:600;
+  color:var(--navy);margin:5mm 0 2.4mm;display:flex;align-items:center;gap:2.4mm}
+.sec2::before{content:'';width:4mm;height:.7mm;background:var(--gold);flex-shrink:0}
+
+p{font-size:8.6pt;line-height:1.6}
+p+p{margin-top:2.4mm}
+p b{color:var(--navy)}
+
+.ficha{display:flex;flex-wrap:wrap;border:.35mm solid var(--navy2);margin:3mm 0 4mm}
+.ficha .f{padding:2.2mm 3.4mm;border-right:.25mm solid var(--line);
+  border-bottom:.25mm solid var(--line)}
+.ficha .k{font-size:5.8pt;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  font-weight:600}
+.ficha .v{font-size:9pt;font-weight:700;color:var(--navy);margin-top:.8mm;line-height:1.2}
+.ficha .v span{font-weight:400;color:var(--ink);font-size:8.4pt}
+
+.grupo{margin-bottom:3.6mm}
+.grupo .gh{display:flex;align-items:center;gap:2.6mm;margin-bottom:1.8mm}
+.grupo .gn{width:6.4mm;height:6.4mm;border-radius:50%;background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:7.4pt;font-weight:800;
+  flex-shrink:0}
+.grupo .gt{font-size:9.6pt;font-weight:800;color:var(--navy);line-height:1.2}
+ul{list-style:none;padding-left:9mm}
+ul li{font-size:8.4pt;line-height:1.48;margin-bottom:1.5mm;position:relative;
+  padding-left:4mm}
+ul li::before{content:'';position:absolute;left:0;top:1.7mm;width:1.8mm;height:1.8mm;
+  background:var(--goldsoft);transform:rotate(45deg)}
+ul li b{color:var(--navy);font-weight:700}
+
+.nota{background:var(--goldbg);border-left:1.2mm solid var(--gold);padding:2.5mm 3.6mm;
+  font-size:8.2pt;line-height:1.52;margin:3mm 0}
+.nota .h{font-size:6.4pt;letter-spacing:.16em;text-transform:uppercase;color:#7A5B17;
+  font-weight:800;margin-bottom:1.4mm}
+.nota b{color:var(--navy)}
+.nota.ok{background:var(--okbg);border-left-color:var(--ok)}
+.nota.ok .h{color:var(--ok)}
+.nota.at{background:var(--redbg);border-left-color:var(--red)}
+.nota.at .h{color:var(--red)}
+
+table{width:100%;border-collapse:collapse;margin:2.2mm 0}
+th{background:var(--navy2);color:#fff;font-size:6.6pt;font-weight:600;letter-spacing:.06em;
+  padding:2.2mm 2.4mm;text-align:left}
+td{border:.25mm solid var(--line);padding:2.4mm;font-size:8.4pt;line-height:1.35;
+  vertical-align:top}
+td b{color:var(--navy)}
+tr:nth-child(even) td{background:#fafbfc}
+td.c{text-align:center}
+td.n{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.compacta td{padding:1.7mm 2.4mm;font-size:8.2pt}
+.compacta th{padding:1.8mm 2.4mm}
+
+.remun{display:flex;gap:3mm;margin:3mm 0}
+.remun .c{flex:1;border:.3mm solid var(--line);border-top:1mm solid var(--gold);
+  border-radius:1mm;padding:2.6mm 3.4mm;background:#fffdf8}
+.remun .k{font-size:6pt;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  font-weight:700}
+.remun .v{font-family:'Cormorant Garamond',serif;font-size:18pt;font-weight:700;
+  color:var(--navy);line-height:1.1;margin-top:1mm}
+.remun .s{font-size:7.2pt;color:var(--muted);margin-top:1mm;line-height:1.35}
+
+.escada{display:flex;gap:3mm;margin-top:2mm}
+.deg{flex:1;border:.3mm solid var(--line);border-radius:1mm;padding:2.6mm 3mm}
+.deg .n{font-family:'Cormorant Garamond',serif;font-size:15pt;font-weight:700;
+  color:var(--goldsoft);line-height:1}
+.deg .t{font-size:9.2pt;font-weight:800;color:var(--navy);margin-top:1.2mm;line-height:1.18}
+.deg .d{font-size:7.8pt;line-height:1.45;color:var(--ink);margin-top:1.6mm}
+.deg .d b{color:var(--navy)}
+.deg.aqui{background:var(--goldbg);border-color:var(--gold)}
+.deg.aqui .n{color:var(--gold)}
+.tagaqui{display:inline-block;font-size:5.6pt;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;background:var(--navy);color:#fff;padding:.5mm 1.6mm;
+  border-radius:1mm;margin-left:1.4mm;vertical-align:1.4px}
+
+.assin{display:flex;gap:10mm;margin-top:auto;padding-top:6mm}
+.assin .a{flex:1;text-align:center}
+.assin .a .ln{border-top:.3mm solid var(--ink);margin-bottom:1.4mm}
+.assin .a .t{font-size:6.6pt;color:var(--muted);line-height:1.4}
+.local{font-size:8.4pt;margin-top:5mm}
+.local .l{display:inline-block;border-bottom:.25mm dotted #b9c2cc;width:46mm;margin:0 1.4mm}
+.local .s{display:inline-block;border-bottom:.25mm dotted #b9c2cc;width:11mm;margin:0 1.4mm}
+</style></head><body>
+
+<!-- ══════════ 1 · CAPA ══════════ -->
+<section class="sheet">
+  <div class="rh">
+    <div><div class="kx">Escopo de Função · Produção</div>
+      <div class="tt">Valvic Marcenaria</div></div>
+    <div class="r"><b>VARGAS DECOR LTDA</b><br>CNPJ 17.269.304/0001-51<br>
+      Belo Horizonte / MG</div>
+  </div>
+  <div class="gold-rule"></div>
+  <div class="capa">
+    <div class="mk">V</div>
+    <div class="kx">Escopo de Função</div>
+    <h1>Marceneiro</h1>
+    <div class="nv">Produção e montagem · degrau de autonomia da trilha de marcenaria</div>
+    <div class="ln"></div>
+    <p class="lead">Este documento diz, sem rodeio, o que a Valvic espera de você, o que você
+      recebe em troca, qual é a sua jornada e para onde esta função leva. É o combinado —
+      escrito, para que nenhuma das duas partes precise adivinhar.</p>
+    <div class="emp"><b>LEGADO · SINERGIA · EXCELÊNCIA</b><br>
+      Marcenaria de alto padrão · Belo Horizonte / MG</div>
+  </div>
+  <div class="rf"><span>Documento de escopo de função · uso interno</span>
+    <span>VALVIC · MARCENEIRO &nbsp;·&nbsp; 1 / 4</span></div>
+</section>
+
+<!-- ══════════ 2 · CONTEXTO E FÁBRICA ══════════ -->
+<section class="sheet">
+  <div class="rh">
+    <div><div class="kx">Contexto</div>
+      <div class="tt">A empresa, o seu lugar nela e o que se espera na fábrica</div></div>
+    <div class="r"><b>ESCOPO · MARCENEIRO</b></div>
+  </div>
+  <div class="gold-rule"></div>
+  <div class="body">
+
+    <div class="sec"><span class="bar"></span><span class="kx">Quem é a Valvic</span></div>
+    <p>A Valvic é uma marcenaria de alto padrão de Belo Horizonte. Projetamos e fabricamos
+      móveis planejados sob medida para clientes exigentes, boa parte com projeto de arquiteto.
+      Trabalhamos com ferragens de primeira linha, CNC própria e garantia por componente.
+      Nossos valores são <b>Legado, Sinergia e Excelência</b>: aqui não se busca vender muito,
+      e sim vender bem e entregar melhor ainda. Cada peça leva o nome da casa.</p>
+
+    <div class="ficha">
+      <div class="f" style="width:34%"><div class="k">Cargo</div>
+        <div class="v">Marceneiro</div></div>
+      <div class="f" style="width:33%"><div class="k">Área</div>
+        <div class="v">Produção e Montagem</div></div>
+      <div class="f" style="width:33%;border-right:0"><div class="k">Regime</div>
+        <div class="v">CLT</div></div>
+      <div class="f" style="width:34%;border-bottom:0"><div class="k">Reporta a</div>
+        <div class="v"><span>Coordenação de Produção</span></div></div>
+      <div class="f" style="width:33%;border-bottom:0"><div class="k">Trabalha com</div>
+        <div class="v"><span>Ajudante sob a sua condução</span></div></div>
+      <div class="f" style="width:33%;border-right:0;border-bottom:0"><div class="k">Local</div>
+        <div class="v"><span>Fábrica e obra do cliente</span></div></div>
+    </div>
+
+    <div class="sec2">O que muda quando se é marceneiro</div>
+    <p>Ajudante executa o que mandam. <b>Marceneiro responde por um resultado.</b> A partir
+      daqui você recebe um ambiente inteiro — da chapa à entrega — e responde por ele: pelo
+      prazo, pelo acabamento, pelo material que consumiu e pelo ajudante que trabalhou com você.
+      É por isso que a função tem comissão: parte do que você ganha depende do que você entrega,
+      não das horas que você cumpre.</p>
+
+    <div class="sec" style="margin-top:6mm"><span class="bar"></span>
+      <span class="kx">Escopo · Parte 1</span>
+      <span class="tt">Na fábrica</span></div>
+
+    <div class="grupo">
+      <div class="gh"><div class="gn">1</div><div class="gt">Ler o projeto antes de encostar na chapa</div></div>
+      <ul>
+        <li>Interpretar o <b>projeto executivo</b> e o plano de corte, e conferir se o que está
+          desenhado fecha com a medida real da obra</li>
+        <li>Levantar dúvida <b>antes</b> de cortar — peça errada não volta a ser chapa</li>
+        <li>Conferir cor, espessura, veio e quantidade do material recebido</li>
+      </ul>
+    </div>
+
+    <div class="grupo">
+      <div class="gh"><div class="gn">2</div><div class="gt">Fabricar no padrão da casa</div></div>
+      <ul>
+        <li>Montagem de <b>caixaria</b> e de gaveta, com esquadro e folga corretos</li>
+        <li><b>Filetagem</b>, inclusive de puxador, e o acabamento que define o padrão Valvic</li>
+        <li>Furação, ferragens e regulagem — dobradiça, corrediça, pistão e puxador</li>
+        <li>Operação segura de serra e das máquinas para as quais você tem autorização</li>
+        <li>Aproveitamento de chapa: <b>MDF é o maior custo do projeto</b> e sobra mal cortada
+          é dinheiro no lixo</li>
+      </ul>
+    </div>
+
+    <div class="grupo">
+      <div class="gh"><div class="gn">3</div><div class="gt">Conferir antes de sair</div></div>
+      <ul>
+        <li>Preencher a <b>ficha de conferência de produção</b> do ambiente antes do carregamento</li>
+        <li>Separar e conferir ferragens, perfis e acessórios — o que falta na obra vira viagem</li>
+        <li>Proteger a peça para o transporte: risco feito na carga é retrabalho seu</li>
+      </ul>
+    </div>
+
+    <div class="grupo">
+      <div class="gh"><div class="gn">4</div><div class="gt">Fábrica organizada é fábrica que produz</div></div>
+      <ul>
+        <li>Bancada, ferramenta e corredor livres ao fim de cada dia — padrão 5S</li>
+        <li>Retalho aproveitável guardado e identificado; o que não presta, descartado</li>
+        <li><b>Segurança primeiro:</b> nenhuma máquina é operada sem autorização e sem EPI</li>
+      </ul>
+    </div>
+  </div>
+  <div class="rf"><span>Contexto e escopo de fábrica</span>
+    <span>VALVIC · MARCENEIRO &nbsp;·&nbsp; 2 / 4</span></div>
+</section>
+
+<!-- ══════════ 3 · OBRA, JORNADA E REMUNERAÇÃO ══════════ -->
+<section class="sheet">
+  <div class="rh">
+    <div><div class="kx">Escopo · Parte 2</div>
+      <div class="tt">Na obra, a jornada e a remuneração</div></div>
+    <div class="r"><b>ESCOPO · MARCENEIRO</b></div>
+  </div>
+  <div class="gold-rule"></div>
+  <div class="body">
+
+    <div class="grupo">
+      <div class="gh"><div class="gn">5</div><div class="gt">Montar como quem assina a peça</div></div>
+      <ul>
+        <li>Conferir medida e prumo <b>antes</b> de subir o móvel; parede fora de esquadro se
+          resolve na montagem, não na reclamação</li>
+        <li>Fixação segura, nivelamento, regulagem de porta e de gaveta</li>
+        <li>Instalação de porta de pivô, bancada, prateleira, nicho e peças de banheiro</li>
+        <li>Arremate e acabamento final — é o que o cliente vê primeiro</li>
+      </ul>
+    </div>
+
+    <div class="grupo">
+      <div class="gh"><div class="gn">6</div><div class="gt">Conduta na casa do cliente</div></div>
+      <ul>
+        <li>Proteger piso e ambiente, e devolver o espaço limpo ao fim do dia</li>
+        <li>Falar com o cliente com respeito e <b>nunca combinar mudança de escopo direto com
+          ele</b> — qualquer pedido novo passa pela coordenação</li>
+        <li>Registrar a <b>ficha de uso do veículo</b> na saída e na volta</li>
+      </ul>
+    </div>
+
+    <div class="grupo">
+      <div class="gh"><div class="gn">7</div><div class="gt">Conduzir o ajudante</div></div>
+      <ul>
+        <li>Mostrar como se faz, não só mandar fazer — a trilha da casa depende disso</li>
+        <li>Responder pela segurança de quem está com você</li>
+        <li>Dizer à coordenação, com honestidade, o que o ajudante já domina e o que falta</li>
+      </ul>
+    </div>
+
+    <div class="nota at">
+      <div class="h">O que a Valvic não aceita</div>
+      Esconder erro. Peça que voltou, medida errada, risco no móvel do cliente ou material
+      danificado <b>têm de ser avisados na hora</b>. Erro avisado cedo é problema pequeno;
+      erro descoberto pelo cliente é prejuízo e é confiança perdida. Ninguém aqui é punido por
+      avisar — só por esconder.
+    </div>
+
+    <div class="sec" style="margin-top:5mm"><span class="bar"></span>
+      <span class="kx">Jornada</span><span class="tt">Quando se trabalha</span></div>
+
+    <table>
+      <thead><tr><th style="width:32%">Dia</th><th style="width:26%">Horário</th>
+        <th style="width:20%">Intervalo</th><th>Jornada</th></tr></thead>
+      <tbody>
+        <tr><td><b>Segunda a quinta</b></td><td>07h00 às 17h00</td><td>1 hora</td>
+          <td class="n">9h00</td></tr>
+        <tr><td><b>Sexta-feira</b></td><td>07h00 às 16h00</td><td>1 hora</td>
+          <td class="n">8h00</td></tr>
+        <tr><td colspan="3"><b>Total semanal</b></td><td class="n"><b>44h00</b></td></tr>
+      </tbody>
+    </table>
+
+    <div class="nota">
+      <div class="h">Como a sexta mais curta funciona</div>
+      A jornada é de <b>44 horas semanais</b>, dentro do limite legal. A hora a mais de segunda
+      a quinta é o que compensa a saída antecipada de sexta — é um <b>regime de compensação de
+      jornada</b>, formalizado por acordo individual escrito assinado junto com o contrato.
+      Por isso, na semana normal <b>não há hora extra a pagar</b>: a jornada já está fechada e
+      compensada.
+    </div>
+
+    <div class="nota ok">
+      <div class="h">Trabalho além da jornada</div>
+      Trabalho fora dessa grade é <b>excepcional</b> e depende de <b>autorização prévia da
+      coordenação</b>. Quando acontecer, é remunerado na forma da lei. Não se cria hora extra
+      por conta própria e não se compensa hora de cabeça: o que não estiver registrado e
+      autorizado, não existe.
+    </div>
+  </div>
+  <div class="rf"><span>Escopo de obra e jornada de trabalho</span>
+    <span>VALVIC · MARCENEIRO &nbsp;·&nbsp; 3 / 4</span></div>
+</section>
+
+<!-- ══════════ 4 · REMUNERAÇÃO, AVALIAÇÃO E CARREIRA ══════════ -->
+<section class="sheet">
+  <div class="rh">
+    <div><div class="kx">Remuneração · Avaliação · Carreira</div>
+      <div class="tt">O que você recebe e para onde isto leva</div></div>
+    <div class="r"><b>ESCOPO · MARCENEIRO</b></div>
+  </div>
+  <div class="gold-rule"></div>
+  <div class="body">
+
+    <div class="remun">
+      <div class="c"><div class="k">Salário fixo</div><div class="v">R$ 2.200</div>
+        <div class="s">mensal, CLT, com carteira assinada</div></div>
+      <div class="c"><div class="k">Auxílio transporte</div><div class="v">R$ 400</div>
+        <div class="s">mensal</div></div>
+      <div class="c"><div class="k">Vale alimentação</div><div class="v">R$ 300</div>
+        <div class="s">mensal</div></div>
+    </div>
+
+    <div class="sec2">A parte variável — é aqui que o seu trabalho aparece</div>
+    <table class="compacta">
+      <thead><tr><th style="width:22%">Comissão</th><th style="width:14%">Percentual</th>
+        <th>Sobre o quê</th></tr></thead>
+      <tbody>
+        <tr><td><b>Produção</b></td><td class="c"><b>2,5%</b></td>
+          <td>Sobre o valor do ambiente que <b>você fabricou</b></td></tr>
+        <tr><td><b>Montagem</b></td><td class="c"><b>2,5%</b></td>
+          <td>Sobre o valor do ambiente que <b>você montou</b></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:8.2pt;color:var(--muted);line-height:1.5">
+      As duas comissões são independentes: fabricou e montou o mesmo ambiente, recebe as duas.
+      A base de cálculo é o <b>valor líquido do ambiente</b> apurado na planilha de custo por
+      projeto da empresa — a mesma para toda a equipe. O ambiente entra na comissão quando é
+      <b>entregue e aceito pelo cliente</b>, e o pagamento sai na folha do mês seguinte ao
+      fechamento, com o demonstrativo do cálculo aberto para conferência.</p>
+
+    <div class="nota">
+      <div class="h">A comissão conta para tudo</div>
+      Comissão não é bônus solto: ela integra a sua remuneração para <b>férias, 13º salário,
+      FGTS e repouso semanal remunerado</b>, na forma da lei. Retrabalho causado por erro seu
+      não gera comissão nova — o ambiente é um só.
+    </div>
+
+    <div class="sec" style="margin-top:4mm"><span class="bar"></span>
+      <span class="kx">Avaliação</span><span class="tt">Como você é medido</span>
+      <span style="font-size:7.2pt;color:var(--muted);margin-left:auto;white-space:nowrap">conversa a cada 90 dias</span></div>
+    <table class="compacta">
+      <thead><tr><th style="width:34%">O que se mede</th><th>Como</th></tr></thead>
+      <tbody>
+        <tr><td><b>Entrega no prazo</b></td>
+          <td>Ambiente entregue na data combinada com o cliente — medido no placar de entregas</td></tr>
+        <tr><td><b>Retrabalho</b></td>
+          <td>Quantas peças voltaram e por quê. A causa é registrada; o número honesto vale mais
+            que o número bonito</td></tr>
+        <tr><td><b>Acabamento</b></td>
+          <td>Conferência da peça na fábrica e vistoria final na obra</td></tr>
+        <tr><td><b>Aproveitamento de material</b></td>
+          <td>Consumo de chapa e ferragem contra o orçado do projeto</td></tr>
+        <tr><td><b>Condução do ajudante</b></td>
+          <td>Evolução de quem trabalha com você na trilha de formação</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec" style="margin-top:4mm"><span class="bar"></span>
+      <span class="kx">Carreira</span><span class="tt">Para onde isto leva</span></div>
+    <div class="escada">
+      <div class="deg aqui"><div class="n">01</div>
+        <div class="t">Marceneiro <span class="tagaqui">aqui</span></div>
+        <div class="d">Responde por um ambiente inteiro, da fábrica à entrega, conduzindo um
+          ajudante. Fixo + comissão de produção e de montagem.</div></div>
+      <div class="deg"><div class="n">02</div>
+        <div class="t">Marceneiro Pleno</div>
+        <div class="d">Assume os projetos <b>difíceis</b> — porta de pivô, lâmina natural,
+          marcenaria curva, cliente crítico — e resolve em obra o que ninguém resolveu.
+          Salário maior e mais volume de comissão.</div></div>
+      <div class="deg"><div class="n">03</div>
+        <div class="t">Líder de produção</div>
+        <div class="d">Distribui o trabalho da semana, cobra prazo, forma ajudante e responde
+          pela qualidade do que sai da fábrica. Passa a ser medido pelo que o time entrega.</div></div>
+    </div>
+    <p style="font-size:8pt;color:var(--muted);line-height:1.5;margin-top:2.4mm">
+      <b>A régua é o que você sabe fazer, não o tempo de casa.</b> Quem domina o degrau seguinte
+      sobe; quem ainda não domina repete o ciclo com o que falta dito por escrito.</p>
+
+    <div class="local">Declaro que li, compreendi e recebi uma via deste escopo de função.<br>
+      Belo Horizonte / MG, <span class="s"></span> de <span class="l"></span> de
+      <span class="s"></span>.</div>
+    <div class="assin">
+      <div class="a"><div class="ln"></div><div class="t">Colaborador — nome e assinatura</div></div>
+      <div class="a"><div class="ln"></div><div class="t">Valvic Marcenaria — Vargas Decor Ltda</div></div>
+    </div>
+  </div>
+  <div class="rf"><span>Este escopo descreve a função; não substitui o contrato de trabalho nem o acordo de compensação de jornada</span>
+    <span>VALVIC · MARCENEIRO &nbsp;·&nbsp; 4 / 4</span></div>
+</section>
+</body></html>
