@@ -159,5 +159,22 @@ natureza que "fita ABS", "LED 3000 K" ou "vidro temperado" — não são cota de
 móvel, que é o que a regra proíbe. As duas estão nomeadas no auditor como
 exceção, para que uma cota de verdade não passe amanhã sob a mesma desculpa.
 
-⚠ **PRAZO (75 dias) e PAGAMENTO são premissas minhas** — o Jonathan não fechou
-nenhum dos dois para este job.
+### 🔒 Condições fechadas — 25/08 [Jonathan]
+
+> "vamos tirar isso aqui: Projeto de detalhamento para produção / e colocar o
+> pagamento como 30% de entrada e o restante na entrega / prazo de entrega de
+> 60 dias corridos"
+
+| | |
+|---|---|
+| **Prazo** | **60 dias corridos** (era 75, premissa minha) |
+| **Pagamento** | **entrada de 30% + saldo na entrega** — sai a escada de quatro formas |
+| Entrada · saldo | **R$ 21.700** + **R$ 50.700** = R$ 72.400 |
+| Saiu do "dentro do valor" | *projeto de detalhamento para produção* |
+
+**⚠️ CAIXA — vale olhar.** A compra de material (custo direto sem logística) é
+**R$ 22.207**. A entrada de R$ 21.700 cobre **98%** dela — falta pouco, mas
+falta. E mais: **70% do valor só entra na entrega**, depois de 60 dias de
+produção. Num job comercial de R$ 72 mil, isso é a casa financiando mão de obra
+e logística por dois meses. Se a condição for negociável, subir a entrada para
+40% resolveria (R$ 29.000, cobrindo material com folga).

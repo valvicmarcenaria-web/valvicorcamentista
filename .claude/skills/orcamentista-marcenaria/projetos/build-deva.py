@@ -14,7 +14,8 @@ REGRAS DA CASA (`referencias/proposta-comercial.md`):
   1. ⛔ nenhuma cota de móvel no texto
   2. ⛔ nenhuma explicação de formação de preço
 
-⚠ PRAZO e PAGAMENTO são PREMISSAS minhas — o Jonathan ainda não fechou.
+[Jonathan 25/08] PRAZO 60 dias corridos · PAGAMENTO 30% de entrada + saldo na
+entrega · fora da caixa "o que está dentro do valor": projeto de detalhamento.
 ⛔ MONTAGEM fora do custo (equipe é salário fixo), dentro do escopo entregue.
 """
 import subprocess, re
@@ -24,7 +25,7 @@ OBRA     = 'Concessionária IVECO · setores Comercial e Vendas'
 ARQ      = 'Beatriz Fernandez Gontijo · Ofício Planejamento e Consultoria'
 DATA     = '25 de agosto de 2026'
 VALIDADE = '15 dias corridos'
-PRAZO    = 'Até 75 dias corridos'
+PRAZO    = '60 dias corridos'
 
 # ── valores lidos DO MOTOR, não transcritos à mão ─────────────────────────
 _out = subprocess.run(['python3', 'projetos/corte-deva.py'],
@@ -107,12 +108,12 @@ ESPEC = [
                  'própria da Valvic'),
 ]
 
-PAGTO = [
-    ('Entrada de 30% + saldo em até 10× no cartão', '—'),
-    ('Entrada de 50% + saldo em até 8× no cartão',  '3%'),
-    ('Entrada de 70% + saldo em até 6× no cartão',  '5%'),
-    ('Entrada de 70% + saldo por transferência',    '7%'),
-]
+# ── PAGAMENTO  [Jonathan 25/08] "30% de entrada e o restante na entrega"
+#    Sai a escada de quatro formas; fica uma condição só, em valor cheio.
+ENT_PCT = 30
+ENTRADA = round(INV*ENT_PCT/100/100)*100
+SALDO   = INV - ENTRADA
+assert ENTRADA + SALDO == INV
 
 # ⚠ O PRIMEIRO ITEM É O MAIS IMPORTANTE DESTA PROPOSTA.
 FORA = [
@@ -219,7 +220,7 @@ p3 = f"""<div class="page"><div class="pad">
       <td class="hi">R$ {brl(INV)}</td></tr>
   </table>
   <div class="box" style="margin-top:5mm"><div class="t">O que está dentro do valor</div>
-  <p>Projeto de detalhamento para produção, fornecimento de material, produção
+  <p>Fornecimento de material, produção
   em CNC e coladeira automática próprias, vidros temperados, perfis de inox e
   alumínio, serralheria da bancada da janela, iluminação em LED, transporte,
   entrega na obra e <strong>instalação e montagem por equipe própria da
@@ -240,12 +241,11 @@ p4 = f"""<div class="page"><div class="pad">
   <div style="margin-top:5mm">{esp}</div>
   <div class="two" style="margin-top:8mm">
     <div>
-      <table class="pay">
-        <tr><td colspan="2" style="border:none;padding-bottom:1.4mm">
-          <span class="eyebrow">Formas de pagamento</span></td></tr>
-        {''.join(f'<tr><td>{c}</td><td class="d">{d}</td></tr>' for c, d in PAGTO)}
-      </table>
-      <div class="term" style="margin-top:3mm"><div class="k">Prazo de entrega</div>
+      <div class="term" style="margin-top:0"><div class="k">Pagamento</div>
+        <div class="v">Entrada de {ENT_PCT}% + saldo na entrega</div>
+        <div class="s">Entrada de <strong>R$ {brl(ENTRADA)}</strong> na
+        assinatura e <strong>R$ {brl(SALDO)}</strong> na entrega.</div></div>
+      <div class="term"><div class="k">Prazo de entrega</div>
         <div class="v">{PRAZO}</div>
         <div class="s">Contados da aprovação e da medição em obra.</div></div>
       <div class="term"><div class="k">Conferência de medidas</div>
