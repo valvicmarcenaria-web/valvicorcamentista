@@ -34,8 +34,8 @@ LED, drivers e 56 suportes — subiu para o que ele realmente é.
 
 ⛔ MONTAGEM fora do custo (equipe é salário fixo), dentro do escopo entregue.
 
-⚠ PENDENTE DE DEFINIÇÃO — PRAZO e PAGAMENTO não foram fechados pelo Jonathan
-   neste job. Estão na linha de base da casa. Trocar as três constantes abaixo.
+⚠ PENDENTE — o PAGAMENTO não foi fechado. Está na linha de base da casa
+   (entrada de 30%). O prazo o Jonathan fechou em 29/08: 60 dias corridos.
 """
 import os, re, subprocess
 
@@ -44,7 +44,7 @@ OBRA     = 'Marcenaria do banheiro da suíte'
 ARQ      = 'arq. Dani Rosaria'
 DATA     = '25 de agosto de 2026'
 VALIDADE = '7 dias corridos'          # ⚠ pendente
-PRAZO    = '45 dias úteis'            # ⚠ pendente
+PRAZO    = '60 dias corridos'         # [Jonathan 29/08]
 ENT_PCT  = 30                         # ⚠ pendente
 
 # ── valores lidos DO MOTOR, não transcritos à mão ─────────────────────────
@@ -63,11 +63,12 @@ def _v(nome):
 # ⛔ SEM UMA ÚNICA COTA. Onde a dimensão importa, ela é dita em palavras.
 ITENS = [
  ('Armário aéreo sobre a bancada', _v('Armário aéreo sobre a bancada'),
-  'Três frentes com espelho prata colado, sobre dobradiça com amortecimento. '
-  'Corpo em amadeirado por fora e branco por dentro, com prateleiras '
-  'reguláveis e passagem fitada para o secador. Dois rasgos verticais de LED '
-  'entre as frentes, em perfil de alumínio — e é dentro deste armário que '
-  'ficam alojados os drivers de toda a iluminação do banheiro.'),
+  'Três folhas de abrir, cada uma em perfil de alumínio com espelho prata e '
+  'película de segurança, sobre dobradiça com amortecimento; uma frente fixa '
+  'fecha o vão. Corpo em amadeirado por fora e branco por dentro, com '
+  'prateleiras fixas e passagem fitada para o secador. Dois rasgos verticais '
+  'de LED entre as folhas, em perfil de alumínio — e é dentro deste armário '
+  'que ficam alojados os drivers de toda a iluminação do banheiro.'),
  ('Armário inferior sob a bancada', _v('Armário inferior sob a bancada'),
   'Gabinete em amadeirado sob a bancada de mármore: nichos abertos na ponta, '
   'portas em dobradiça com amortecimento, um gavetão de roupa suja e uma '
@@ -75,9 +76,9 @@ ITENS = [
   'Invisível com amortecimento, nenhuma telescópica. Puxador em cava usinada '
   'com pega, na própria frente.'),
  ('Porta de correr em MDF', _v('Porta de correr em MDF'),
-  'Folha de passagem em MDF laminado, montada em sistema deslizante Rometal '
-  'RO82 Top, com amortecimento no fim de curso, e dois desempenadores '
-  'anti-empeno na folha. Puxador tipo concha embutido.'),
+  'Folha de passagem em MDF branco da linha ultra premium, montada em sistema '
+  'deslizante Rometal RO82 Top, com amortecimento no fim de curso. Puxador '
+  'tipo concha embutido.'),
 ]
 assert sum(v for _, v, _d in ITENS) == INV, (ITENS, INV)
 
@@ -86,10 +87,18 @@ SALDO   = INV - ENTRADA
 assert ENTRADA + SALDO == INV
 
 ESPEC = [
- ('Chapa',       'MDF BP amadeirado nas faces externas e branco no interior'),
- ('Borda',       'Fita ABS aplicada em coladeira automática'),
- ('Espelho',     'Prata lapidado colado nas frentes do aéreo, com película de '
-                 'segurança'),
+ ('Chapa',       'MDF amadeirado nas faces externas; todo o branco — '
+                 'interior, fundos e a folha da porta de correr — na linha '
+                 '<strong>ultra premium</strong>, chapa de área úmida, mais '
+                 'resistente à umidade que o MDF branco comum'),
+ ('Borda',       'Fita de borda extra fina de 0,4 mm, aplicada em coladeira '
+                 'automática'),
+ ('Portas',      'As folhas que abrem são <strong>portas de espelho com '
+                 'estrutura de perfil de alumínio</strong>. O espelho é '
+                 'pesado, e o perfil é o que sustenta a folha, mantém o '
+                 'esquadro e evita que a frente empene ou descaia com o uso'),
+ ('Espelho',     'Prata com película de segurança nas folhas de abrir; colado '
+                 'na frente fixa'),
  ('Iluminação',  'Fita LED IP65 24 V · 3000 K em perfil de alumínio Usina '
                  'Design com difusor — drivers slim alojados no armário aéreo'),
  ('Ferragem',    'Dobradiça com amortecimento e corrediça oculta Hardt '
@@ -97,9 +106,8 @@ ESPEC = [
                  'corrediça não aparece na lateral e a gaveta sai inteira'),
  ('Puxador',     'Cava usinada com pega, na própria frente — sem peça aplicada'),
  ('Porta',       'Sistema deslizante Rometal RO82 Top com amortecimento, '
-                 'trilho embutido no dente da parede, guia de piso e dois '
-                 'desempenadores anti-empeno'),
- ('Prateleiras', 'Reguláveis, sobre suportes'),
+                 'trilho embutido no dente da parede e guia de piso'),
+ ('Prateleiras', 'Fixas, sobre suportes'),
  ('Produção',    'Corte e usinagem em CNC própria, laminação de borda em '
                  'coladeira automática, instalação e montagem por equipe '
                  'própria da Valvic'),
@@ -152,7 +160,7 @@ GARANTIA = dict(anos=10, unid='anos de garantia', nota=(
  ('Corrediça oculta Hardt Invisível, em <strong>todas</strong> as gavetas — '
   'a Valvic não trabalha com telescópica', '5 anos'),
  ('Sistema deslizante da porta de correr', '10 anos'),
- ('Regulagem de porta, de gaveta e de prateleira', '2 anos'),
+ ('Regulagem de porta e de gaveta', '2 anos'),
  ('Retorno do chamado', '24 horas'),
  ('Visita técnica, sem custo dentro do prazo', 'até 3 dias úteis'),
 ])
@@ -297,4 +305,4 @@ for nome, v, _d in ITENS:
     print(f'  {nome:<34} R$ {brl(v):>7}')
 print(f'  {"TOTAL":<34} R$ {brl(INV):>7}')
 print(f'  entrada {ENT_PCT}% R$ {brl(ENTRADA)} + R$ {brl(SALDO)} na entrega '
-      f'· {PRAZO}   ⚠ prazo e pagamento ainda não fechados')
+      f'· {PRAZO}   ⚠ pagamento ainda não fechado')

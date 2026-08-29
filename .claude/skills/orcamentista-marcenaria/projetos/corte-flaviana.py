@@ -66,15 +66,37 @@ def nest(items):
 
 # ── preços · dados/materiais.json (11/06/2026) ────────────────────────────
 PRC_COR = {6: 300.0, 15: 500.0, 18: 600.0, 25: 900.0}   # Carvalho Nórdico
-PRC_BRA = {6: 190.0, 15: 260.0, 18: 330.0, 25: 420.0}   # Branco TX interno
-NOME_MAT = {'AM': 'MDF Carvalho Nórdico', 'BR': 'MDF Branco TX'}
+# [Jonathan 29/08] "os MDF branco a ser utilizados serão da linha ULTRA
+# PREMIUM, inclusive a da nova porta". É o MDF Branco Ártico Ultra, que o
+# `chapas.md` descreve como "interno de áreas úmidas, mais resistente à
+# umidade" — banheiro é exatamente o caso.
+# ★ PREÇO ADOTADO POR RAZÃO, NÃO POR LINHA DE BASE. O `materiais.json` não
+#   tem o Ártico Ultra; o `chapas.md` tem, mas noutra base de preços (lá o
+#   Fosco 18 é 125, aqui é 600). Aproveita-se de lá a POSIÇÃO RELATIVA:
+#   Ártico Ultra 6/15/18 = 78/108/122 contra Fosco 85/110/125. Aplicada à
+#   base de hoje, o branco ultra sai quase no preço de um melamínico
+#   colorido — coerente com um MDF de área úmida. CONFERIR compra.
+#   (o 25 mm não aparece neste job; herda a razão do 18)
+_RAZAO  = {6: 78/85, 15: 108/110, 18: 122/125, 25: 122/125}
+PRC_BRA = {e: round(PRC_COR[e]*r/5)*5 for e, r in _RAZAO.items()}
+NOME_MAT = {'AM': 'MDF Carvalho Nórdico', 'BR': 'MDF Branco Ártico Ultra'}
 def prc(m, e): return PRC_BRA[e] if m == 'BR' else PRC_COR[e]
 
 FITA_M, FILET_M, DESPERD = 3.00, 2.50, 1.10
 USIN_M   = 25.0        # puxador cava usinado com pega / passante
 FURO_UN  = 18.0        # ★ furo Ø6 cm fitado na prateleira
 SUP_PRAT = 8.0         # ★ suporte de prateleira (mesma adoção do job da Giza)
-ESPELHO_M2 = 600.0
+ESPELHO_M2 = 600.0     # espelho prata colado — só na frente FIXA
+# [Jonathan 29/08] "as portas de espelho são com estrutura de ALUMÍNIO devido
+# ao peso". A folha que ABRE deixa de ser frente de MDF com espelho colado e
+# vira porta terceirizada de perfil de alumínio, espelho prata e película de
+# segurança: sai a chapa de 18 da folha, entra a porta pronta. A frente FIXA
+# de 11, que só fecha o vão, continua com espelho colado no MDF.
+# ★ R$ 700/m² posto na obra — mesma adoção do job da Giza. A base tem folha
+#   GRANDE a R$ 622/m² (1.200 + 200 de frete, ~90 × 250); em folha pequena o
+#   perímetro de perfil pesa mais, e a referência confirmada de folha pequena
+#   (Renolfh/Alumindoor, Kenia & Fábio 12/06/2026) é R$ 660–711/m².
+PORTA_ESP_M2 = 700.0
 DOBR = 20.0            # Häfele — a prancha manda "especificar marca"
 # [Jonathan 29/08] "a gente não utiliza essas ferragens" — TELESCÓPICA SAI.
 # Vira Hardt em TODAS as gavetas. É o padrão real da casa: ferragens.md diz
@@ -94,9 +116,9 @@ DRIVER_UN = 90.0
 # passagem", e ferragens.md nomeia o RO82 como o deslizante de porta de
 # passagem da casa. Vai o RO82 Top, com amortecimento.
 RO82_TOP  = 400.0      # Sistema deslizante RO82 Top (amortecimento)
-DESEMP_UN = 60.0       # Desempenador anti-empeno. A base manda 2 por porta
-N_DESEMP  = 2          #   quando a folha tem 70 cm ou mais — é o caso.
-KIT_CORRER = RO82_TOP + N_DESEMP*DESEMP_UN
+# [Jonathan 29/08] "a porta de passagem não tem desempenadores" — a base traz
+# o desempenador como padrão em porta deslizante, mas quem compra é ele. Fora.
+KIT_CORRER = RO82_TOP
 
 P, FITA, TERC, LED, USIN, DUV = [], [], [], [], [], []
 FER = defaultdict(lambda: [0, 0, 0])       # dobradiças · oculta · (livre)
@@ -136,16 +158,20 @@ add('BR', 6,  A, 'fundo',                                   LA-3, HA-3, 1)
 add('BR', 15, A, 'divisória vertical interna',              HA-3, PA, 2)
 add('BR', 15, A, 'prateleira interna',                      45, PA-1, 13)
 add('BR', 15, A, 'prateleira com borda alta de 110 p/ drivers', 45, 11, 1)
-add('AM', 18, A, 'porta 430 × 1180',                        43, HA, 2)
-add('AM', 18, A, 'porta 460 × 1180',                        46, HA, 1)
+# as três folhas que ABREM são porta pronta de alumínio: não entram no corte
+_m2_al = (2*43 + 46)*HA/10000
+terc(A, f'3 portas de espelho em perfil de alumínio, com película de '
+        f'segurança ({_m2_al:.2f} m²)', _m2_al*PORTA_ESP_M2)
 add('AM', 18, A, 'frente fixa espelhada 110 × 1180',        11, HA, 1)
+_m2_fx = 11*HA/10000
+terc(A, f'Espelho prata colado na frente fixa ({_m2_fx:.2f} m²)',
+     _m2_fx*ESPELHO_M2)
 fer(A, dobr=6)
-_m2 = (2*43 + 46 + 11)*HA/10000
-terc(A, f'Espelho prata colado nas frentes ({_m2:.2f} m²)', _m2*ESPELHO_M2)
-usin(A, (2*0.43 + 0.46))
-fita(A, 'frentes, bordas e frentes de prateleira fitadas no amadeirado',
-     (2*2*(0.43+HA/100) + 2*(0.46+HA/100) + 2*(0.11+HA/100))
-     + 2*(LA+HA)/100 + 14*0.45)
+# sem cava nas folhas de alumínio — o puxador é do perfil
+usin(A, 0.0)
+# a borda da porta de alumínio é o perfil: fita só no que é chapa nossa
+fita(A, 'frente fixa, bordas e frentes de prateleira fitadas no amadeirado',
+     2*(0.11+HA/100) + 2*(LA+HA)/100 + 14*0.45)
 led(A, 'perfil de sobrepor Usina Design Wood + fita LED IP65 2700 K', LA/100)
 terc(A, 'Drivers slim de TODA a iluminação do banheiro, guardados no aéreo',
      3*DRIVER_UN, est=True)
@@ -203,12 +229,13 @@ duv(A, 'a profundidade do inferior não é cotada na prancha de marcenaria. A '
 #     O dente na parede é da obra; a folha e o sistema são nossos.
 # ───────────────────────────────────────────────────────────────────────────
 A = 'Porta de correr em MDF'
-add('AM', 18, A, 'folha da porta 700 × 2100', 70, 210, 1)
-add('AM', 18, A, 'folha da porta · segunda face (sanduíche)', 70, 210, 1)
+# [Jonathan 29/08] "inclusive a da nova porta" — a folha é BRANCA, linha
+# ultra premium. É o que o render mostra; eu tinha lançado em amadeirado.
+add('BR', 18, A, 'folha da porta 700 × 2100', 70, 210, 1)
+add('BR', 18, A, 'folha da porta · segunda face (sanduíche)', 70, 210, 1)
 fita(A, 'porta · perímetro nas duas faces', 2*(0.70+2.10))
 usin(A, 2.10)
-terc(A, f'Sistema deslizante RO82 Top + {N_DESEMP} desempenadores',
-     KIT_CORRER)
+terc(A, 'Sistema deslizante RO82 Top, com amortecimento', KIT_CORRER)
 duv(A, 'orcei a folha como SANDUÍCHE de duas chapas de 18 — porta de passagem '
        'de 70 × 210 em chapa única empena. Se o projeto aceitar folha oca com '
        'miolo colmeia, cai o material mas entra prensa.')

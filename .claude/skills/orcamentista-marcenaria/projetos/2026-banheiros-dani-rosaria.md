@@ -261,3 +261,91 @@ As duas propostas passaram a ter **5 páginas** — a garantia não cabia junto 
 as condições. Painel: 45 linhas, carteira de **R$ 3.442.466**.
 
 **Prazo e pagamento seguem em aberto nos dois.**
+
+---
+
+## Rodada 3 — sete correções do Jonathan [29/08]
+
+### As que mudam o texto
+
+**1 · Fita ABS sai.** *"Ainda não trabalhamos com ela."* O que a casa aplica
+está no `chapas.md`: **fita de borda extra fina de 0,4 mm**. Registrado em
+`laminacao-e-construcao.md` para não voltar.
+
+**2 · Prateleira não tem regulagem.** As duas propostas diziam "reguláveis".
+São **fixas**, sobre suporte. O suporte continua no orçamento; sai a palavra —
+e sai também da garantia, que agora fala em regulagem de porta (e de gaveta,
+na Flaviana), não de prateleira.
+
+**3 · Prazo: 60 dias corridos.** Fechado. Sobra só o pagamento em aberto.
+
+**4 · Página 3 da Giza excluída.** Era a página de vistas do executivo. A
+proposta da Giza tem 4 páginas; a da Flaviana segue com 5.
+
+### As que mudam o orçamento
+
+**5 · Porta de espelho é porta de alumínio.**
+*"Exponha que as portas de espelho são com estrutura de alumínio devido ao
+peso."* Não era só texto: eu tinha orçado a frente espelhada como **MDF de 18
+com espelho colado**. A folha que ABRE é porta terceirizada — perfil de
+alumínio, espelho prata, película de segurança. Sai do plano de corte, e com
+ela saem a fita da borda (a borda é o perfil) e a cava usinada (o puxador é do
+perfil). As frentes **fixas**, que só escondem fiação, seguem com espelho
+colado no MDF.
+
+★ Adotei **R$ 700/m² posto na obra**: a base tem a folha grande a R$ 622/m²
+(1.200 + 200 de frete, ~90 × 250), e a referência confirmada de folha pequena
+— Renolfh/Alumindoor, job Kenia & Fábio 12/06 — é R$ 660–711/m². Folha pequena
+tem mais perímetro de perfil por m².
+
+> Efeito colateral nos dois jobs: com as folhas fora do corte, o que sobrou de
+> 18 mm virou meia dúzia de peças puxando **uma chapa inteira a 10% de
+> aproveitamento**. Na Giza as frentes fixas foram para 15 mm e o job perdeu
+> uma chapa.
+
+**6 · O branco é o ULTRA.** *"Cite que os MDF branco serão da linha ultra
+premium, inclusive o da nova porta."* É o **Branco Ártico Ultra**, que o
+`chapas.md` descreve como chapa de área úmida — e que resolve a dúvida da
+prancha da Giza, que dizia "MDF BRANCO ÁRTICO" na nota de furo.
+
+E **"inclusive o da nova porta"** corrigiu um erro meu: eu tinha lançado a
+folha da porta de correr da Flaviana em **Carvalho Nórdico**. O render mostra
+ela **branca**. É branca, linha ultra.
+
+★ O preço é adoção, não linha de base — o `materiais.json` não tem o Ártico
+Ultra. Usei a **razão** da tabela do `chapas.md` contra o melamínico fosco
+(0,918 / 0,982 / 0,976), aplicada à base de hoje: **6/15/18 = 275/490/585**. O
+branco ultra sai quase no preço de um melamínico colorido. **É a adoção ★ de
+maior peso destes dois jobs — conferir a compra.**
+
+**7 · A porta de passagem não tem desempenadores.** A base os traz como padrão
+em porta deslizante (2 por folha acima de 70 cm), mas quem compra é ele. Fora.
+Ficou só o RO82 Top.
+
+### Onde os números pararam
+
+| | Giza e Renato | Flaviana e Igor |
+|---|--:|--:|
+| rodada 1 | R$ 20.500 | R$ 21.000 |
+| rodada 2 (Hardt, RO82, rateio por custo) | R$ 20.500 | R$ 21.500 |
+| **rodada 3** | **R$ 22.200** | **R$ 22.600** |
+| variação total | **+8,3%** | **+7,6%** |
+
+Giza: suíte R$ 13.700 + social R$ 8.500.
+Flaviana: aéreo R$ 10.800 + inferior R$ 7.700 + porta R$ 4.100.
+
+A subida vem quase toda de duas coisas que **não eram opção de preço, eram
+correção de especificação**: a porta de alumínio e o branco ultra. Nos dois
+jobs a chapa até caiu de posto — a Giza perdeu uma chapa inteira.
+
+Painel: 45 linhas, carteira de **R$ 3.445.266**.
+
+### Em aberto
+
+1. **Pagamento** — único item das condições ainda não fechado. As propostas
+   saíram na linha de base da casa: entrada de 30% + saldo na entrega.
+2. **Preço de compra do Branco Ártico Ultra** e da **porta de espelho de
+   alumínio** — as duas adoções ★ de maior peso.
+3. **Porta de passagem em 42 mm.** O `chapas.md` dá 42 mm como padrão da casa
+   para porta de passagem; eu orcei sanduíche de 2 × 18 = 36 mm. Não mexi
+   porque não foi pedido, mas fica anotado.

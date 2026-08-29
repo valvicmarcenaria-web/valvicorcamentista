@@ -29,10 +29,9 @@ leva. Sem narrativa de benefício.
 
 ⛔ MONTAGEM fora do custo (equipe é salário fixo), dentro do escopo entregue.
 
-⚠ PENDENTE DE DEFINIÇÃO — PRAZO e PAGAMENTO não foram fechados pelo Jonathan
-   neste job. Estão na linha de base da casa (`proposta-comercial.md`:
-   entrada de 30%, entrega 45 a 60 dias úteis). Trocar as três constantes
-   abaixo quando ele definir.
+⚠ PENDENTE — o PAGAMENTO não foi fechado. Está na linha de base da casa
+   (`proposta-comercial.md`: entrada de 30%). O prazo o Jonathan fechou em
+   29/08: 60 dias corridos.
 """
 import os, re, subprocess
 
@@ -41,7 +40,7 @@ OBRA     = 'Marcenaria dos banheiros · suíte e social'
 ARQ      = 'arq. Dani Rosaria'
 DATA     = '25 de agosto de 2026'
 VALIDADE = '7 dias corridos'          # ⚠ pendente
-PRAZO    = '45 dias úteis'            # ⚠ pendente
+PRAZO    = '60 dias corridos'         # [Jonathan 29/08]
 ENT_PCT  = 30                         # ⚠ pendente
 
 # ── valores lidos DO MOTOR, não transcritos à mão ─────────────────────────
@@ -70,28 +69,38 @@ assert ENTRADA + SALDO == INV
 ITENS = [
  ('Banheiro da suíte', SUITE, 'suite-interna.jpeg', 'ct',
   'Vista interna · banheiro da suíte',
-  'Armário de espelheira em três frentes, todas com espelho prata colado, '
-  'sobre dobradiça com amortecimento. Interior dividido em três colunas, com '
-  'prateleiras reguláveis sobre suportes niquelados e passagem fitada para o '
-  'secador. LED COB em perfil de alumínio no arremate superior; o driver fica '
-  'alojado dentro do próprio armário.'),
+  'Armário de espelheira em três folhas de abrir, cada uma em perfil de '
+  'alumínio com espelho prata e película de segurança, sobre dobradiça com '
+  'amortecimento. Duas frentes fixas fecham o vão nas pontas. Interior '
+  'dividido em três colunas, com prateleiras fixas sobre suportes niquelados '
+  'e passagem fitada para o secador. LED COB em perfil de alumínio no '
+  'arremate superior; o driver fica alojado dentro do próprio armário.'),
  ('Banheiro social', SOCIAL, 'social-interna.jpeg', 'ct',
   'Vista interna · banheiro social',
-  'Mesma construção e mesmo acabamento da suíte, em duas colunas. Frentes '
-  'espelhadas sobre dobradiça com amortecimento, prateleiras reguláveis e '
-  'LED COB em perfil no arremate superior, com driver alojado no armário.'),
+  'Mesma construção e mesmo acabamento da suíte, em duas colunas: duas folhas '
+  'de abrir em perfil de alumínio com espelho, uma frente fixa, prateleiras '
+  'fixas sobre suportes niquelados e LED COB em perfil no arremate superior, '
+  'com driver alojado no armário.'),
 ]
 
 ESPEC = [
- ('Chapa',       'MDF BP branco, com o interior e o fundo no mesmo padrão'),
- ('Borda',       'Fita ABS aplicada em coladeira automática'),
- ('Espelho',     'Prata lapidado colado nas frentes, com película de segurança'),
+ ('Chapa',       'MDF branco da linha <strong>ultra premium</strong> — chapa '
+                 'de área úmida, mais resistente à umidade que o MDF branco '
+                 'comum. Interior e fundo no mesmo padrão'),
+ ('Borda',       'Fita de borda extra fina de 0,4 mm, aplicada em coladeira '
+                 'automática'),
+ ('Portas',      'As folhas que abrem são <strong>portas de espelho com '
+                 'estrutura de perfil de alumínio</strong>. O espelho é '
+                 'pesado, e o perfil é o que sustenta a folha, mantém o '
+                 'esquadro e evita que a frente empene ou descaia com o uso'),
+ ('Espelho',     'Prata com película de segurança nas folhas de abrir; colado '
+                 'nas frentes fixas'),
  ('Iluminação',  'Fita LED COB 24 V · 3000 K em perfil de alumínio com difusor, '
                  'IRC acima de 90 — driver slim alojado no armário'),
  ('Ferragem',    'Dobradiça Häfele com amortecimento'),
  ('Puxador',     'Cava usinada na própria frente, em meia esquadria — sem peça '
                  'aplicada'),
- ('Prateleiras', 'Reguláveis, sobre suportes niquelados à vista'),
+ ('Prateleiras', 'Fixas, sobre suportes niquelados à vista'),
  ('Fixação',     'Ancoragem na alvenaria, com arremate superior no forro'),
  ('Produção',    'Corte e usinagem em CNC própria, laminação de borda em '
                  'coladeira automática, instalação e montagem por equipe '
@@ -109,12 +118,14 @@ FORA = [
 
 CSS = (open('projetos/css-proposta.css', encoding='utf-8').read()
        + open('projetos/css-proposta-img.css', encoding='utf-8').read() + """
-.esp{padding:2.6mm 0;border-bottom:1px solid var(--hair);display:grid;
-  grid-template-columns:26mm 1fr;gap:4mm;}
+.dupla .ph{height:49mm;}
+.dupla .d{font-size:8.2pt;line-height:1.48;}
+.esp{padding:2.0mm 0;border-bottom:1px solid var(--hair);display:grid;
+  grid-template-columns:24mm 1fr;gap:4mm;}
 .esp:last-child{border-bottom:none;}
 .esp .k{font-size:7pt;letter-spacing:.16em;text-transform:uppercase;
   color:var(--gold);font-weight:700;padding-top:.7mm;}
-.esp .v{color:var(--soft);font-size:8.6pt;line-height:1.5;}
+.esp .v{color:var(--soft);font-size:8.3pt;line-height:1.45;}
 """)
 
 
@@ -132,13 +143,13 @@ GARANTIA = dict(anos=10, unid='anos de garantia', nota=(
  ('Estrutura, corpo, fundo e prateleiras', '10 anos'),
  ('Dobradiça com amortecimento', '10 anos'),
  ('Corrediça', 'não há — o armário abre só em dobradiça'),
- ('Regulagem de porta e de prateleira', '2 anos'),
+ ('Regulagem de porta', '2 anos'),
  ('Retorno do chamado', '24 horas'),
  ('Visita técnica, sem custo dentro do prazo', 'até 3 dias úteis'),
 ])
 
 def brl(v): return f'{v:,.0f}'.replace(',', '.')
-NP = 5
+NP = 4
 def foot(n):
     return (f'<div class="foot"><span>Valvic Marcenaria · {CLIENTE}</span>'
             f'<span>{OBRA}</span><span>{n} / {NP}</span></div>')
@@ -188,7 +199,7 @@ p2 = f"""<div class="page"><div class="pad">
   <p class="lead" style="margin-top:4mm">O levantamento foi feito sobre as
   cinco pranchas executivas — planta, elevações e vistas internas de cada
   banheiro. O que está descrito abaixo é o que será executado.</p>
-  <div class="dupla" style="margin-top:6mm">{dupla}</div>
+  <div class="dupla" style="margin-top:5mm">{dupla}</div>
   <div class="eyebrow" style="margin-top:8mm">Especificação técnica</div>
   <div class="rule"></div>
   <div>{esp}</div>
@@ -196,23 +207,6 @@ p2 = f"""<div class="page"><div class="pad">
 </div></div>"""
 
 p3 = f"""<div class="page"><div class="pad">
-  <div class="eyebrow">O projeto</div>
-  <div class="rule"></div>
-  <h2 class="h-sec">As vistas do executivo.</h2>
-  <p class="lead" style="margin-top:4mm">Os dois banheiros como saíram do
-  modelo. O armário é o volume espelhado sobre a bancada: as frentes fecham no
-  prumo, sem puxador aplicado, e o rasgo de luz corre no arremate superior,
-  entre o armário e o forro.</p>
-  <div class="dupla sangra" style="margin-top:8mm">
-    <div class="ph ct"><img src="{{IMG}}/suite-perspectiva.jpeg" alt="">
-      <div class="cap">Banheiro da suíte</div></div>
-    <div class="ph ct"><img src="{{IMG}}/social-perspectiva.jpeg" alt="">
-      <div class="cap">Banheiro social</div></div>
-  </div>
-  {foot(3)}
-</div></div>"""
-
-p4 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">Investimento</div>
   <div class="rule"></div>
   <h2 class="h-sec">Investimento e garantia.</h2>
@@ -227,10 +221,10 @@ p4 = f"""<div class="page"><div class="pad">
   <div class="eyebrow" style="margin-top:7mm">Garantia</div>
   <div class="rule"></div>
   {gar}
-  {foot(4)}
+  {foot(3)}
 </div></div>"""
 
-p5 = f"""<div class="page"><div class="pad">
+p4 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">Condições</div>
   <div class="rule"></div>
   <h2 class="h-sec">Prazo, pagamento e limites.</h2>
@@ -263,14 +257,14 @@ p5 = f"""<div class="page"><div class="pad">
     <div class="ln">Valvic Marcenaria</div>
     <div class="ln">{CLIENTE}</div>
   </div>
-  {foot(5)}
+  {foot(4)}
 </div></div>"""
 
 HTML = ('<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">'
         '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:'
         'wght@400;500;600&family=DM+Sans:wght@300;400;500;600;700&display=swap" '
         f'rel="stylesheet"><style>{CSS}</style></head>'
-        f'<body>{p1}{p2}{p3}{p4}{p5}</body></html>')
+        f'<body>{p1}{p2}{p3}{p4}</body></html>')
 
 OUT_H, OUT_P = 'projetos/proposta-giza.html', 'projetos/proposta-giza.pdf'
 # o HTML do repositório aponta para a pasta ao lado; o do render usa file://
@@ -281,4 +275,4 @@ subprocess.run(['node', '/tmp/r.js', OUT_P], check=True)
 print(f'{OUT_H} · {OUT_P}')
 print(f'  suíte R$ {brl(SUITE)} + social R$ {brl(SOCIAL)} = R$ {brl(INV)}')
 print(f'  entrada {ENT_PCT}% R$ {brl(ENTRADA)} + R$ {brl(SALDO)} na entrega '
-      f'· {PRAZO}   ⚠ prazo e pagamento ainda não fechados')
+      f'· {PRAZO}   ⚠ pagamento ainda não fechado')

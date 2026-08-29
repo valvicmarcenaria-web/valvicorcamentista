@@ -62,8 +62,25 @@ def nest(items):
     return max(ch, -(-int(ar/(CH_AREA*0.80)*1000)//1000) or 1)
 
 # ── preços · dados/materiais.json (11/06/2026) ────────────────────────────
-PRC_BRA = {6: 190.0, 15: 260.0, 18: 330.0, 25: 420.0}   # Branco TX Duratex
-NOME_MAT = {'BR': 'MDF Branco TX'}
+# [Jonathan 29/08] "os MDF branco a ser utilizados serão da linha ULTRA
+# PREMIUM". É o MDF Branco Ártico Ultra — o `chapas.md` o descreve como
+# "interno de áreas úmidas, mais resistente à umidade", que é exatamente o
+# caso de um banheiro. Também resolve a dúvida que estava aberta: a prancha
+# da Giza dizia "MDF BRANCO ÁRTICO" na nota de furo e "Branco Diamante" no
+# topo, e eu tinha orçado tudo em Branco TX.
+#
+# ★ PREÇO ADOTADO POR RAZÃO, NÃO POR LINHA DE BASE. O `materiais.json` não
+#   tem o Ártico Ultra; o `chapas.md` tem, mas numa base de preços diferente
+#   (lá o Melamínico Fosco 18 é 125, aqui é 600). O que se aproveita de lá é
+#   a POSIÇÃO RELATIVA: Ártico Ultra 6/15/18 = 78/108/122 contra Fosco
+#   85/110/125. Aplicada à base de hoje, o branco ultra sai praticamente no
+#   preço de um melamínico colorido — o que faz sentido para um MDF de área
+#   úmida. CONFERIR o preço de compra com o Jonathan.
+PRC_FOSCO = {6: 300.0, 15: 500.0, 18: 600.0, 25: 900.0}
+#   (o 25 mm não aparece nestes jobs; herda a razão do 18)
+_RAZAO    = {6: 78/85,  15: 108/110, 18: 122/125, 25: 122/125}
+PRC_BRA = {e: round(PRC_FOSCO[e]*r/5)*5 for e, r in _RAZAO.items()}
+NOME_MAT = {'BR': 'MDF Branco Ártico Ultra'}
 def prc(m, e): return PRC_BRA[e]
 
 FITA_M, FILET_M, DESPERD = 3.00, 2.50, 1.10
@@ -76,7 +93,22 @@ FURO_UN  = 18.0        # ★ furo Ø6 cm fitado na prateleira (usinagem + fita)
 #   os 56 suportes custariam R$ 1.120 — mais que toda a chapa do job, o que
 #   denuncia que o preço estava errado.
 SUP_PRAT = 8.0
-ESPELHO_M2 = 600.0     # espelho prata, base
+ESPELHO_M2 = 600.0     # espelho prata colado, base — só nas frentes FIXAS
+# [Jonathan 29/08] "as portas de espelho são com estrutura de ALUMÍNIO devido
+# ao peso". Muda a construção, não só o texto: a folha que ABRE deixa de ser
+# frente de MDF com espelho colado e passa a ser porta terceirizada de perfil
+# de alumínio com espelho prata e película de segurança. Sai a chapa de 18 da
+# folha; entra a porta pronta. As frentes FIXAS (portas falsas, que só escondem
+# fiação) continuam com espelho colado no MDF — não abrem, não têm peso pendurado.
+#
+# ★ PREÇO ADOTADO. A base tem "Porta de espelho (alumínio + espelho prata
+#   segurança)" a R$ 1.200 + R$ 200 de frete para ~90 × 250 cm — R$ 622/m²
+#   posto na obra, mas numa folha GRANDE. As folhas daqui têm menos de 1 m²,
+#   e em folha pequena o perímetro de perfil pesa mais por m². A referência
+#   confirmada de folha pequena é o Renolfh/Alumindoor no job Kenia & Fábio
+#   (12/06/2026): R$ 660/m² numa folha de 0,72 m² e R$ 711/m² numa de 0,39 m².
+#   Adotei R$ 700/m² posto na obra. CONFERIR com o fornecedor.
+PORTA_ESP_M2 = 700.0
 DOBR_HAFELE = 20.0     # Häfele Metalla Chip Soft Close 105°, curva
 # ⭐ LED: a prancha ESPECIFICA fita LED COB (Stella All Light EVO 5, 3000 K,
 #   IRC>90, 12 V, 15 W) em perfil metálico Usina Design modelo Wood. É
@@ -119,20 +151,29 @@ def armario(A, larg, alt_corpo, portas, falsas, furos, n_prat, n_div):
     # placa MDF Branco Diamante de 1,5 entre o forro e o armário, para a fiação
     add('BR', 15, A, f'placa superior de passagem de fiação {larg*10:.0f} × 150',
         larg, 15, 1)
-    # frentes: portas espelhadas + portas falsas fixas
-    for i, p in enumerate(portas, 1):
-        add('BR', 18, A, f'porta {i} · {p*10:.0f} × {alt_corpo*10:.0f}', p, alt_corpo, 1)
+    # frentes que ABREM: porta pronta de alumínio + espelho, terceirizada.
+    #   Não entram no plano de corte — não são chapa nossa.
+    m2_al = sum(p*alt_corpo for p in portas)/10000
+    terc(A, f'{len(portas)} portas de espelho em perfil de alumínio, com '
+            f'película de segurança ({m2_al:.2f} m²)', m2_al*PORTA_ESP_M2)
+    # frentes FIXAS: espelho colado no MDF, como antes.
+    # 15 mm, não 18: com as folhas que abrem virando porta de alumínio, as
+    # frentes fixas passaram a ser a ÚNICA peça de 18 do job — 0,50 m² puxando
+    # uma chapa inteira a 10% de aproveitamento. Frente fixa não tem dobradiça
+    # nem peso pendurado; 15 mm resolve e entra na chapa que já está aberta.
     for i, f in enumerate(falsas, 1):
-        add('BR', 18, A, f'porta falsa {i} · {f*10:.0f} × {alt_corpo*10:.0f}',
+        add('BR', 15, A, f'porta falsa {i} · {f*10:.0f} × {alt_corpo*10:.0f}',
             f, alt_corpo, 1)
+    m2_fx = sum(f*alt_corpo for f in falsas)/10000
+    if m2_fx:
+        terc(A, f'Espelho prata colado nas frentes fixas ({m2_fx:.2f} m²)',
+             m2_fx*ESPELHO_M2)
     FER[A] += 2*len(portas)                      # 2 dobradiças por porta
-    # espelho prata colado na face das portas E das portas falsas
-    m2 = sum(p*alt_corpo for p in portas + falsas)/10000
-    terc(A, f'Espelho prata colado nas frentes ({m2:.2f} m²)', m2*ESPELHO_M2)
     # puxador passante em meia esquadria, no topo de cada folha
     usin(A, sum(portas)/100)
-    fita(A, 'frentes e bordas aparentes',
-         sum(2*(p+alt_corpo) for p in portas+falsas)/100
+    # fita só no que é chapa nossa: a borda da porta de alumínio é o perfil.
+    fita(A, 'frentes fixas e bordas aparentes',
+         sum(2*(f+alt_corpo) for f in falsas)/100
          + 2*(larg + alt_corpo)/100 + n_prat*(larg-3)/(n_div+1)/100)
     led(A, 'perfil Usina Design Wood + fita LED COB, superior e inferior',
         2*larg/100)

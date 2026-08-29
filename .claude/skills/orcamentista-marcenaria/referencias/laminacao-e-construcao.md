@@ -135,3 +135,28 @@ entre réguas (ex. 1–2 cm). O **passo = largura + espaçamento**.
 > Valores da planilha de validação da Valvic (a confirmar na versão que o
 > Jonathan vai enviar). O diferencial máquina × manual existe porque o trabalho
 > manual leva mais tempo.
+
+---
+
+## ⛔ NÃO ESCREVER "FITA ABS" — corrigido pelo Jonathan [29/08/2026]
+
+> *"Tire a aplicação de fita em ABS. Ainda não trabalhamos com ela."*
+
+Eu vinha escrevendo *"fita ABS aplicada em coladeira automática"* nas propostas.
+**A Valvic não usa ABS.** O que a casa aplica está no `chapas.md`: **fita de
+borda extra fina de 0,4 mm**, na largura que acompanha a espessura da chapa
+(22 mm para peças de 15/18 mm). É esse o texto que vai para a proposta:
+
+> Fita de borda extra fina de 0,4 mm, aplicada em coladeira automática.
+
+## ⛔ PRATELEIRA NÃO TEM REGULAGEM — [Jonathan 29/08/2026]
+
+> *"Prateleira não tem regulagem."*
+
+As propostas vinham dizendo "prateleiras reguláveis". **Não são.** A prateleira
+é **fixa**, apoiada em suporte — uma linha de furo, não várias. O suporte
+continua no orçamento; o que sai é a palavra.
+
+Consequência na garantia: onde a linha dizia *"regulagem de porta e de
+prateleira — 2 anos"*, passa a dizer só **regulagem de porta** (e de gaveta,
+onde houver).

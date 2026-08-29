@@ -238,3 +238,39 @@ roupeiro. **Tem, sim** — a categoria é `Sistemas de porta de passagem`:
 E este arquivo já nomeava o **RO82 (Rometal)** como o deslizante de porta de
 passagem da casa. Antes de adotar preço ★, **procurar a categoria pelo nome do
 uso**, não pelo nome que eu daria à peça.
+
+---
+
+## ⛔ PORTA DE ESPELHO É PORTA DE ALUMÍNIO — [Jonathan 29/08/2026]
+
+> *"Exponha que as portas de espelho são com estrutura de alumínio devido ao
+> peso."*
+
+Nos dois banheiros da Dani Rosaria eu tinha orçado as frentes espelhadas como
+**frente de MDF de 18 com espelho colado**. Está errado para a folha que ABRE:
+o espelho é pesado, e quem sustenta a folha, mantém o esquadro e impede que ela
+empene ou descaia é o **perfil de alumínio**. Este arquivo já dizia, na seção
+de preferências de compra: *"portas de espelho são terceirizadas (alumínio +
+espelho prata com película de segurança + perfil largo)"*.
+
+**A regra, por tipo de frente:**
+
+| Frente | Construção | Custo |
+|---|---|---|
+| **Abre** (tem dobradiça) | porta pronta terceirizada, perfil de alumínio + espelho prata + película | por m² de folha — **não entra no plano de corte** |
+| **Fixa** (só fecha vão, esconde fiação) | espelho colado no MDF | espelho prata R$ 600/m² + a chapa |
+
+E some junto com a folha de MDF: a **fita** da borda (a borda é o perfil) e a
+**cava usinada** (o puxador é do perfil).
+
+**★ R$ 700/m² posto na obra**, adotado. A base tem a folha GRANDE — "Porta de
+espelho (alumínio + espelho prata segurança), ~90 × 250 cm, R$ 1.200 + R$ 200
+de frete" = R$ 622/m². Em folha pequena o perímetro de perfil pesa mais por m²,
+e a referência confirmada de folha pequena é o Renolfh/Alumindoor no job
+Kenia & Fábio (12/06/2026): **R$ 660/m² numa folha de 0,72 m² e R$ 711/m² numa
+de 0,39 m²**. CONFERIR o preço de compra.
+
+> Efeito colateral que apareceu nos dois jobs: com as folhas saindo do plano de
+> corte, o que sobrava de 18 mm virou meia dúzia de peças puxando uma chapa
+> inteira a 10% de aproveitamento. Frente FIXA não tem dobradiça nem peso
+> pendurado — vai em 15 mm, na chapa que já está aberta.

@@ -90,3 +90,43 @@ peça a peça.
 > TODO Valvic: registrar como você chega ao número de chapas a partir das
 > peças (plano de corte mental? fator de aproveitamento? arredondamento para
 > cima?). É a regra que vamos destilar com os projetos resolvidos.
+
+---
+
+## Branco de banheiro é o ULTRA — [Jonathan 29/08/2026]
+
+> *"Cite que os MDF branco a ser utilizados serão da linha ultra premium,
+> inclusive o da nova porta."*
+
+Nos banheiros da Dani Rosaria eu tinha orçado tudo em **Branco TX**. O branco
+que a casa usa nesses jobs é o **MDF Branco Ártico Ultra** — este arquivo já o
+descrevia como *"interno de áreas úmidas, mais resistente à umidade"*, que é
+exatamente o caso. Também resolveu uma dúvida que estava aberta: a prancha da
+Giza dizia "MDF BRANCO ÁRTICO" na nota de furo.
+
+**Na proposta**, a linha é benefício técnico, não nome comercial:
+
+> MDF branco da linha **ultra premium** — chapa de área úmida, mais resistente
+> à umidade que o MDF branco comum.
+
+### ★ Como o preço foi adotado
+
+O `materiais.json` **não tem** o Ártico Ultra. A tabela deste arquivo tem, mas
+numa base de preços diferente (aqui o Melamínico Fosco 18 mm é 125; no
+`materiais.json` é 600). O que se aproveita daqui é a **posição relativa**:
+
+| | 6 mm | 15 mm | 18 mm |
+|---|--:|--:|--:|
+| Ártico Ultra (tabela deste arquivo) | 78 | 108 | 122 |
+| Melamínico Fosco (mesma tabela) | 85 | 110 | 125 |
+| **razão** | 0,918 | 0,982 | 0,976 |
+| **aplicada à base de hoje** | **275** | **490** | **585** |
+
+Ou seja: **o branco ultra sai praticamente no preço de um melamínico
+colorido** — coerente com um MDF de área úmida. Os motores calculam a razão em
+código, não o número, para que a conta fique auditável.
+
+> ⚠ **CONFERIR o preço de compra com o Jonathan.** É a adoção ★ de maior peso
+> destes dois jobs: nos banheiros da Giza, que são 100% brancos, ela sozinha
+> move o material de R$ 1.230 para R$ 1.530 mesmo depois de o job perder uma
+> chapa inteira.
