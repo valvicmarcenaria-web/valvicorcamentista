@@ -1,0 +1,395 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<title>Valvic · Feedback e Checklist de Obra — Deivison</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0E2038;--navy2:#16314F;--gold:#C2A05A;--goldsoft:#d8bd80;
+      --goldbg:#F6EDD6;--ink:#1b2733;--muted:#6c7785;--line:#e8e3d8;
+      --ok:#2F7D4F;--okbg:#E7F1EA;--red:#B0413F;--redbg:#FBF1F0;
+      --blue:#2F5D8C;--bluebg:#EAF0F7}
+*{margin:0;padding:0;box-sizing:border-box}
+@page{size:A4 portrait;margin:0}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:#8a8a8a}
+.sheet{width:210mm;height:297mm;background:#fff;position:relative;overflow:hidden;
+       display:flex;flex-direction:column;page-break-after:always}
+.sheet:last-child{page-break-after:auto}
+@media print{body{background:#fff}.sheet{margin:0}}
+@media screen{.sheet{margin:8mm auto;box-shadow:0 2px 16px rgba(0,0,0,.3)}}
+
+.rh{background:var(--navy);color:#fff;padding:5mm 15mm 4.4mm;display:flex;
+    align-items:flex-end;justify-content:space-between}
+.rh .kx{font-size:6.4pt;letter-spacing:.22em;text-transform:uppercase;
+        color:var(--goldsoft);font-weight:600}
+.rh .tt{font-family:'Cormorant Garamond',serif;font-size:19pt;font-weight:600;
+        line-height:1.06;margin-top:.8mm}
+.rh .r{text-align:right;font-size:6.4pt;color:#9FB0C4;line-height:1.5}
+.rh .r b{color:#fff;font-weight:600}
+.gold-rule{height:1.1mm;background:linear-gradient(90deg,var(--gold),var(--goldsoft))}
+.body{flex:1;padding:5mm 15mm 3mm;display:flex;flex-direction:column;min-height:0}
+.rf{background:var(--goldbg);padding:2.2mm 15mm;font-size:6.2pt;color:#7A5B17;
+    display:flex;justify-content:space-between;align-items:center}
+
+.sec{display:flex;align-items:baseline;gap:3mm;margin:0 0 2.6mm}
+.sec .bar{width:6mm;height:1mm;background:var(--gold);align-self:center;flex-shrink:0}
+.sec .kx{font-size:6.4pt;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
+  font-weight:700;white-space:nowrap}
+.sec .tt{font-family:'Cormorant Garamond',serif;font-size:15pt;font-weight:600;
+  color:var(--navy);line-height:1.1}
+.sec2{font-family:'Cormorant Garamond',serif;font-size:12pt;font-weight:600;
+  color:var(--navy);margin:4.4mm 0 2mm;display:flex;align-items:center;gap:2.4mm}
+.sec2::before{content:'';width:4mm;height:.7mm;background:var(--gold);flex-shrink:0}
+
+p{font-size:8.8pt;line-height:1.58}
+p+p{margin-top:2.4mm}
+p b{color:var(--navy)}
+
+ul{list-style:none;padding-left:0}
+ul li{font-size:8.6pt;line-height:1.48;margin-bottom:1.6mm;position:relative;padding-left:5mm}
+ul li::before{content:'';position:absolute;left:0;top:1.8mm;width:1.8mm;height:1.8mm;
+  background:var(--goldsoft);transform:rotate(45deg)}
+ul li b{color:var(--navy);font-weight:700}
+
+.nota{background:var(--goldbg);border-left:1.2mm solid var(--gold);padding:2.6mm 3.6mm;
+  font-size:8.4pt;line-height:1.52;margin:3mm 0}
+.nota .h{font-size:6.4pt;letter-spacing:.16em;text-transform:uppercase;color:#7A5B17;
+  font-weight:800;margin-bottom:1.4mm}
+.nota b{color:var(--navy)}
+.nota.ok{background:var(--okbg);border-left-color:var(--ok)}
+.nota.ok .h{color:var(--ok)}
+.nota.at{background:var(--redbg);border-left-color:var(--red)}
+.nota.at .h{color:var(--red)}
+.nota.bl{background:var(--bluebg);border-left-color:var(--blue)}
+.nota.bl .h{color:var(--blue)}
+
+.fer{display:flex;gap:3mm;margin-top:2.6mm}
+.fer .c{flex:1;border:.3mm solid var(--line);border-top:1mm solid var(--navy2);
+  border-radius:1mm;padding:3mm 3.2mm;display:flex;flex-direction:column}
+.fer .n{font-family:'Cormorant Garamond',serif;font-size:15pt;font-weight:700;
+  color:var(--goldsoft);line-height:1}
+.fer .t{font-size:9.4pt;font-weight:800;color:var(--navy);margin-top:1.2mm;line-height:1.16}
+.fer .q{font-size:6pt;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  font-weight:700;margin-top:1.4mm}
+.fer .d{font-size:7.9pt;line-height:1.45;margin-top:1.6mm}
+.fer .d b{color:var(--navy)}
+
+table{width:100%;border-collapse:collapse;margin:2.2mm 0}
+th{background:var(--navy2);color:#fff;font-size:6.4pt;font-weight:600;letter-spacing:.06em;
+  padding:2mm 2mm;text-align:left;line-height:1.2}
+td{border:.25mm solid var(--line);padding:1.9mm 2mm;font-size:8.2pt;line-height:1.32;
+  vertical-align:top}
+td b{color:var(--navy)}
+tr:nth-child(even) td{background:#fafbfc}
+td.c{text-align:center;vertical-align:middle}
+td.n{text-align:center;font-weight:700;color:var(--muted);font-size:7.4pt;
+  vertical-align:middle}
+.cx{display:inline-block;width:4.4mm;height:4.4mm;border:.3mm solid #8b96a3;border-radius:.6mm}
+.pill{display:inline-block;font-size:6pt;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;padding:.7mm 1.6mm;border-radius:1mm;white-space:nowrap}
+.p-erro{background:var(--redbg);color:var(--red)}
+.p-rec{background:#B0413F;color:#fff}
+.p-mel{background:var(--bluebg);color:var(--blue)}
+.p-peca{background:var(--goldbg);color:#7A5B17}
+
+.assin{display:flex;gap:10mm;margin-top:auto;padding-top:7mm}
+.assin .a{flex:1;text-align:center}
+.assin .a .ln{border-top:.3mm solid var(--ink);margin-bottom:1.4mm}
+.assin .a .t{font-size:6.6pt;color:var(--muted);line-height:1.4}
+.local{font-size:8.4pt;margin-top:4mm}
+.local .l{display:inline-block;border-bottom:.25mm dotted #b9c2cc;width:44mm;margin:0 1.4mm}
+.local .s{display:inline-block;border-bottom:.25mm dotted #b9c2cc;width:11mm;margin:0 1.4mm}
+.anot{margin-top:auto;padding-top:4mm}
+.anot .h{font-size:6.2pt;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  font-weight:800;margin-bottom:2mm}
+.anot .l{border-bottom:.25mm solid var(--line);height:6.6mm}
+</style></head><body>
+
+<!-- ══════════ 1 ══════════ -->
+<section class="sheet">
+  <div class="rh">
+    <div><div class="kx">Conversa de acompanhamento · Coordenação de Produção</div>
+      <div class="tt">Deivison — o que foi bem e o que precisa mudar</div></div>
+    <div class="r"><b>VALVIC MARCENARIA</b><br>Vargas Decor Ltda<br>
+      Referência: cozinha da Karla</div>
+  </div>
+  <div class="gold-rule"></div>
+  <div class="body">
+
+    <div class="sec"><span class="bar"></span><span class="kx">Começando pelo que é justo</span></div>
+    <p>Deivison, antes de qualquer cobrança: <b>o seu envolvimento com esta empresa não está em
+      discussão.</b> Você ficou até mais tarde, veio em fim de semana e se empenhou de um jeito
+      que pouca gente se empenha. Isso foi visto, é reconhecido e não é pouca coisa — é a base
+      de tudo o que vem a seguir. Ninguém constrói uma marcenaria de alto padrão com gente que
+      não se importa, e você se importa.</p>
+    <p>Justamente por isso esta conversa existe. <b>Não é sobre esforço.</b> É sobre onde esse
+      esforço está sendo gasto e o que ele está deixando de trás.</p>
+
+    <div class="sec2">O primeiro ponto — a coordenação ficou para trás</div>
+    <p>Enquanto você estava dentro da obra, executando, a coordenação da produção ficou sem
+      dono. O resultado apareceu em três lugares:</p>
+    <ul>
+      <li><b>Pessoas sem direcionamento.</b> Gente esperando para saber o que fazer, ou fazendo
+        o que achou que devia</li>
+      <li><b>Material sem chegar a tempo.</b> Frente parada esperando peça, ferragem ou insumo
+        que deveria ter sido pedido antes</li>
+      <li><b>Soluções mal resolvidas.</b> Problema decidido às pressas, no meio da correria, em
+        vez de resolvido antes de virar problema</li>
+    </ul>
+    <p>Eu não leio isso como descaso. <b>Leio como consequência.</b> Chão de fábrica, obra e
+      coordenação ao mesmo tempo, todo dia, com jornada esticada e fim de semana — isso esgota
+      qualquer um. E é sempre a coordenação que se perde primeiro, porque ela é a única das três
+      que não grita quando é deixada de lado.</p>
+
+    <div class="sec2">O segundo ponto — o acabamento do que estamos entregando</div>
+    <p>Este é o mais duro, e preciso ser direto: <b>a estética do que saiu na cozinha da Karla
+      não está no padrão da Valvic.</b> Não é um detalhe isolado — são vinte e um pontos numa
+      única cozinha, e alguns deles são erros que já apareceram antes, como o acabamento dos
+      frisos entre nichos, que repetiu o que aconteceu no painel do hall da Maria.</p>
+    <p>A lista completa está nas páginas 3 e 4. Ela não está aí para constranger — está aí
+      porque <b>feedback sem lista é opinião</b>, e porque cada item tem de ser resolvido com
+      nome, prazo e conferência.</p>
+
+    <div class="nota at">
+      <div class="h">O que está em jogo</div>
+      A Valvic vende <b>alto padrão</b>. O cliente não avalia a estrutura do móvel, que está
+      certa — ele avalia o tapa-furo que faltou, o risco de caneta, a fita crepe esquecida e o
+      friso mal cortado. <b>É o acabamento que o cliente enxerga, e é por ele que ele paga a
+      diferença.</b> Empenho não compensa acabamento malfeito: o cliente não vê o esforço, vê a
+      peça.
+    </div>
+
+    <div class="nota">
+      <div class="h">O que a lista devolve quando se olha o conjunto</div>
+      <b>Dos 21 pontos, 18 são erro e só 3 são melhoria ou peça nova.</b> Ou seja: a obra não
+      ficou grande demais — ela ficou malfeita no detalhe. E os erros são quase todos do mesmo
+      tipo: <b>arremate, furação e limpeza</b>. Isso é uma boa notícia, porque problema de um
+      tipo só se resolve com um método só.
+    </div>
+
+    <div class="nota ok">
+      <div class="h">O que eu não quero que você entenda desta conversa</div>
+      Que o problema é você. <b>O problema é o desenho da sua semana</b> — três funções em uma
+      pessoa não fecham, e a saída não é você se esforçar mais. É a página seguinte.
+    </div>
+  </div>
+  <div class="rf"><span>Documento de acompanhamento · uso interno · duas vias</span>
+    <span>VALVIC · DEIVISON &nbsp;·&nbsp; 1 / 4</span></div>
+</section>
+
+<!-- ══════════ 2 ══════════ -->
+<section class="sheet">
+  <div class="rh">
+    <div><div class="kx">O caminho</div>
+      <div class="tt">Onde você rende mais e as três ferramentas</div></div>
+    <div class="r"><b>VALVIC MARCENARIA</b><br>Coordenação de Produção</div>
+  </div>
+  <div class="gold-rule"></div>
+  <div class="body">
+
+    <div class="sec"><span class="bar"></span><span class="kx">A leitura</span>
+      <span class="tt">Você rende muito mais na fábrica</span></div>
+    <p>Olhando o resultado dos últimos meses, uma coisa fica clara: <b>na fábrica você entrega
+      muito mais serviço e muito mais resultado do que na obra.</b> Na fábrica você coordena,
+      resolve, adianta e ainda produz. Na obra você produz — e só. E paga com o desgaste que
+      volta para a coordenação no dia seguinte.</p>
+    <p>Então a direção que a empresa quer tomar com você é esta: <b>o seu lugar é a fábrica.</b>
+      A montagem em obra passa a ter um marceneiro respondendo por ela, e você entra na obra
+      para conferir e resolver o que trava — não para montar o dia inteiro. Isso não é
+      rebaixamento; é colocar você onde você vale mais.</p>
+
+    <div class="nota bl">
+      <div class="h">O que muda na prática</div>
+      Você deixa de ser o executor da obra e passa a ser <b>quem garante que a obra tem tudo o
+      que precisa antes de começar</b>: peça conferida, ferragem separada, gente sabendo o que
+      faz. Essa é a função que ninguém mais pode fazer — e é a que está sendo deixada de lado.
+    </div>
+
+    <div class="sec" style="margin-top:5mm"><span class="bar"></span>
+      <span class="kx">Ferramentas</span><span class="tt">Três, simples, e é para usar toda semana</span></div>
+
+    <div class="fer">
+      <div class="c">
+        <div class="n">01</div>
+        <div class="t">Os 10 minutos da manhã</div>
+        <div class="q">Todo dia · 7h00 · em pé</div>
+        <div class="d">Antes de qualquer coisa, com a equipe reunida:
+          <b>quem faz o quê hoje</b>, <b>o que precisa chegar</b> e <b>o que está travando</b>.
+          Escrito no quadro, não falado no corredor.<br><br>
+          Dez minutos por dia custam <b>menos de uma hora por semana</b> e resolvem o problema
+          de gente sem direcionamento. Coordenar é <b>decidir antes</b>, não resolver depois.</div>
+      </div>
+      <div class="c">
+        <div class="n">02</div>
+        <div class="t">Conferência da peça antes de sair da fábrica</div>
+        <div class="q">A cada módulo · 3 minutos</div>
+        <div class="d">Nenhuma peça é carregada sem passar pela <b>Ficha de Conferência de
+          Produção</b>. Três minutos por módulo, com a peça ainda na bancada, onde o conserto é
+          barato.<br><br>
+          <b>Quase todos os 21 itens da cozinha da Karla teriam sido pegos aqui.</b> Tapa-furo,
+          fita, furação, puxador, dobradiça e risco de caneta se resolvem na fábrica em minutos —
+          na casa do cliente, custam uma viagem.</div>
+      </div>
+      <div class="c">
+        <div class="n">03</div>
+        <div class="t">A volta do cliente</div>
+        <div class="q">Antes de dizer "acabou" · 20 min</div>
+        <div class="d">Percorra o ambiente <b>como se você fosse o cliente</b>, sem pressa e com
+          a obra limpa:<br><br>
+          abra <b>todas</b> as portas e gavetas · passe a mão em <b>todos</b> os topos e frisos ·
+          olhe de pé e de cócoras · confira tapa-furos e regulagens · procure fita, cola, caneta
+          e poeira.<br><br>
+          <b>Só depois disso a obra está entregue.</b></div>
+      </div>
+    </div>
+
+    <div class="nota">
+      <div class="h">A regra que amarra as três</div>
+      <b>Peça que sai errada da fábrica custa dez vezes mais na obra</b> — em viagem, em tempo,
+      em desgaste com o cliente. As três ferramentas existem para empurrar o erro para trás, para
+      onde ele é barato. Nenhuma delas depende de você trabalhar mais: as três juntas somam menos
+      de 40 minutos por dia.
+    </div>
+
+    <div class="nota ok">
+      <div class="h">O combinado a partir de agora</div>
+      Os <b>10 minutos da manhã</b> começam na segunda-feira. A <b>conferência de peça</b> passa
+      a ser obrigatória para todo módulo que sai da fábrica, sem exceção. E <b>a volta do
+      cliente</b> vira o último passo de toda obra, feita por você antes de qualquer aviso de
+      entrega. Voltamos a conversar sobre isso em <b>30 dias</b>, com a lista de retrabalhos do
+      período na mão.
+    </div>
+  </div>
+  <div class="rf"><span>Ferramentas de coordenação · aplicação imediata</span>
+    <span>VALVIC · DEIVISON &nbsp;·&nbsp; 2 / 4</span></div>
+</section>
+
+<!-- ══════════ 3 e 4 · CHECKLIST ══════════ -->
+<div id="listas"></div>
+
+<script>
+const ITENS = [
+ ['Vão da porta de tempero — buraco sem acabamento','erro'],
+ ['Furo na fita azul, no montante do armário','erro'],
+ ['Puxadores não encostando nos topos das laterais','erro'],
+ ['Dobradiças sem acabamento','erro'],
+ ['Diversos tapa-furos ausentes','erro'],
+ ['Recorte da barra próxima ao vão da lava-louça mal feito — passar o puxador direto no vão','erro'],
+ ['Prateleira interna do vão da pia — refazer com recorte melhor e <b>não deixar fixa</b>','erro'],
+ ['Gaveta divisora de talheres — colagem mal feita, acabamento inaceitável','erro'],
+ ['Regulagem de força da báscula acima do micro-ondas — a porta só para na abertura total','erro'],
+ ['Acabamento dos frisos entre nichos muito mal feito','rec'],
+ ['Riscos de caneta em vários pontos','erro'],
+ ['Fita crepe no teto e dentro da cristaleira','erro'],
+ ['Arremate na lateral do forno mal recortado','erro'],
+ ['Furo errado do suporte de prateleira dentro de um módulo aéreo','erro'],
+ ['Fechamento lateral da cristaleira — mal recortado no rodapé','erro'],
+ ['Detalhe estragado em uma porta das básculas','erro'],
+ ['Interruptores faltantes — não era obrigação nossa, virou nossa quando assumimos','erro'],
+ ['Tomada da lava-louças passada para o lado dela — o erro foi ter mexido na instalação','erro'],
+ ['Fechamento inferior da cristaleira — 5 × 174 · Griss Chess','peca'],
+ ['Máscara da lava-louça','mel'],
+ ['Fechamento atrás da lixeira','mel']
+];
+const TIPO = {erro:['Erro','p-erro'], rec:['Erro recorrente','p-rec'],
+              mel:['Melhoria','p-mel'], peca:['Peça nova','p-peca']};
+
+function tabela(ini, fim){
+  const linhas = ITENS.slice(ini, fim).map((it, k) => {
+    const t = TIPO[it[1]];
+    return `<tr><td class="n">${ini + k + 1}</td><td>${it[0]}</td>
+      <td class="c"><span class="pill ${t[1]}">${t[0]}</span></td>
+      <td class="c"><span class="cx"></span></td>
+      <td class="c"><span class="cx"></span></td>
+      <td></td></tr>`;
+  }).join('');
+  return `<table>
+    <thead><tr><th style="width:8mm">Nº</th><th>O que precisa ser resolvido</th>
+      <th style="width:24mm">O que é</th><th style="width:19mm">Ciente</th>
+      <th style="width:19mm">Feito</th><th style="width:26mm">Visto e data</th></tr></thead>
+    <tbody>${linhas}</tbody></table>`;
+}
+
+document.getElementById('listas').outerHTML = `
+<section class="sheet">
+  <div class="rh">
+    <div><div class="kx">Checklist de obra · cozinha da Karla</div>
+      <div class="tt">Ponto a ponto — parte 1</div></div>
+    <div class="r"><b>VALVIC MARCENARIA</b><br>Levantado em visita à obra<br>
+      21 pontos ao todo</div>
+  </div>
+  <div class="gold-rule"></div>
+  <div class="body">
+    <div class="nota bl" style="margin-top:0">
+      <div class="h">Como usar as duas colunas</div>
+      <b>Ciente</b> — marque na conversa, item a item, o que você já tinha identificado. Serve
+      para separar o que passou por descuido do que passou por não ter sido visto: são problemas
+      diferentes e se resolvem de formas diferentes.<br>
+      <b>Feito</b> — só é marcado <b>depois de conferido na obra</b>, por quem não executou.
+      Autoconferência não vale: quem fez a peça já não enxerga o próprio erro.
+    </div>
+    ${tabela(0, 13)}
+    <div class="anot">
+      <div class="h">Anotações da conversa — o que ele explicou sobre cada ponto</div>
+      <div class="l"></div><div class="l"></div><div class="l"></div>
+      <div class="l"></div><div class="l"></div><div class="l"></div>
+      <div class="l"></div><div class="l"></div>
+    </div>
+  </div>
+  <div class="rf"><span>Cozinha da Karla · itens 1 a 13</span>
+    <span>VALVIC · DEIVISON &nbsp;·&nbsp; 3 / 4</span></div>
+</section>
+
+<section class="sheet">
+  <div class="rh">
+    <div><div class="kx">Checklist de obra · cozinha da Karla</div>
+      <div class="tt">Ponto a ponto — parte 2</div></div>
+    <div class="r"><b>VALVIC MARCENARIA</b><br>Levantado em visita à obra</div>
+  </div>
+  <div class="gold-rule"></div>
+  <div class="body">
+    ${tabela(13, 21)}
+
+    <div class="nota at">
+      <div class="h">O item recorrente merece tratamento separado</div>
+      O <b>acabamento dos frisos entre nichos</b> está marcado como recorrente porque repetiu o
+      que aconteceu no painel do hall da Maria. <b>Erro que repete não é distração — é método
+      que falta.</b> Esse item não se resolve marcando um quadradinho: precisa de uma conversa
+      técnica separada, com a peça na mão, definindo como o friso vai ser cortado e conferido
+      daqui para frente.
+    </div>
+
+    <div class="sec2">O que fazer com esta lista</div>
+    <table>
+      <thead><tr><th style="width:8mm">Nº</th><th>Passo</th>
+        <th style="width:34mm">Quando</th></tr></thead>
+      <tbody>
+        <tr><td class="n">1</td>
+          <td>Percorrer os 21 pontos juntos e marcar a coluna <b>Ciente</b> item a item</td>
+          <td><b>Nesta conversa</b></td></tr>
+        <tr><td class="n">2</td>
+          <td>Definir <b>um dia inteiro de correção</b> na obra, com o material já separado —
+            correção fatiada em meia hora por dia não termina nunca</td>
+          <td><b>Até sexta</b></td></tr>
+        <tr><td class="n">3</td>
+          <td>Conferir e marcar <b>Feito</b>, item a item, com quem não executou a correção</td>
+          <td>No dia seguinte à correção</td></tr>
+        <tr><td class="n">4</td>
+          <td>Fotografar a folha preenchida e arquivar junto ao projeto da Karla</td>
+          <td>Ao fechar</td></tr>
+      </tbody>
+    </table>
+
+    <div class="local">Conversamos sobre cada ponto desta lista, e o que está marcado como
+      pendente será resolvido e conferido.<br>
+      Belo Horizonte / MG, <span class="s"></span> de <span class="l"></span> de
+      <span class="s"></span>.</div>
+    <div class="assin">
+      <div class="a"><div class="ln"></div><div class="t">Deivison — Coordenação de Produção</div></div>
+      <div class="a"><div class="ln"></div><div class="t">Jonathan — Direção</div></div>
+    </div>
+  </div>
+  <div class="rf"><span>Reavaliação em 30 dias, com a lista de retrabalhos do período</span>
+    <span>VALVIC · DEIVISON &nbsp;·&nbsp; 4 / 4</span></div>
+</section>`;
+</script>
+</body></html>
