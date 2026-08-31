@@ -1,0 +1,404 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<title>Valvic · Feedback e Checklist de Obra — Samuel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0E2038;--navy2:#16314F;--gold:#C2A05A;--goldsoft:#d8bd80;
+      --goldbg:#F6EDD6;--ink:#1b2733;--muted:#6c7785;--line:#e8e3d8;
+      --ok:#2F7D4F;--okbg:#E7F1EA;--red:#B0413F;--redbg:#FBF1F0;
+      --blue:#2F5D8C;--bluebg:#EAF0F7}
+*{margin:0;padding:0;box-sizing:border-box}
+@page{size:A4 portrait;margin:0}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:#8a8a8a}
+.sheet{width:210mm;height:297mm;background:#fff;position:relative;overflow:hidden;
+       display:flex;flex-direction:column;page-break-after:always}
+.sheet:last-child{page-break-after:auto}
+@media print{body{background:#fff}.sheet{margin:0}}
+@media screen{.sheet{margin:8mm auto;box-shadow:0 2px 16px rgba(0,0,0,.3)}}
+
+.rh{background:var(--navy);color:#fff;padding:5mm 15mm 4.4mm;display:flex;
+    align-items:flex-end;justify-content:space-between}
+.rh .kx{font-size:6.4pt;letter-spacing:.22em;text-transform:uppercase;
+        color:var(--goldsoft);font-weight:600}
+.rh .tt{font-family:'Cormorant Garamond',serif;font-size:19pt;font-weight:600;
+        line-height:1.06;margin-top:.8mm}
+.rh .r{text-align:right;font-size:6.4pt;color:#9FB0C4;line-height:1.5}
+.rh .r b{color:#fff;font-weight:600}
+.gold-rule{height:1.1mm;background:linear-gradient(90deg,var(--gold),var(--goldsoft))}
+.body{flex:1;padding:5mm 15mm 3mm;display:flex;flex-direction:column;min-height:0}
+.rf{background:var(--goldbg);padding:2.2mm 15mm;font-size:6.2pt;color:#7A5B17;
+    display:flex;justify-content:space-between;align-items:center}
+
+.sec{display:flex;align-items:baseline;gap:3mm;margin:0 0 2.6mm}
+.sec .bar{width:6mm;height:1mm;background:var(--gold);align-self:center;flex-shrink:0}
+.sec .kx{font-size:6.4pt;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
+  font-weight:700;white-space:nowrap}
+.sec .tt{font-family:'Cormorant Garamond',serif;font-size:15pt;font-weight:600;
+  color:var(--navy);line-height:1.1}
+.sec2{font-family:'Cormorant Garamond',serif;font-size:12pt;font-weight:600;
+  color:var(--navy);margin:4.4mm 0 2mm;display:flex;align-items:center;gap:2.4mm}
+.sec2::before{content:'';width:4mm;height:.7mm;background:var(--gold);flex-shrink:0}
+
+p{font-size:8.8pt;line-height:1.58}
+p+p{margin-top:2.4mm}
+p b{color:var(--navy)}
+
+ul{list-style:none;padding-left:0}
+ul li{font-size:8.6pt;line-height:1.48;margin-bottom:1.6mm;position:relative;padding-left:5mm}
+ul li::before{content:'';position:absolute;left:0;top:1.8mm;width:1.8mm;height:1.8mm;
+  background:var(--goldsoft);transform:rotate(45deg)}
+ul li b{color:var(--navy);font-weight:700}
+
+.nota{background:var(--goldbg);border-left:1.2mm solid var(--gold);padding:2.6mm 3.6mm;
+  font-size:8.4pt;line-height:1.52;margin:3mm 0}
+.nota .h{font-size:6.4pt;letter-spacing:.16em;text-transform:uppercase;color:#7A5B17;
+  font-weight:800;margin-bottom:1.4mm}
+.nota b{color:var(--navy)}
+.nota.ok{background:var(--okbg);border-left-color:var(--ok)}
+.nota.ok .h{color:var(--ok)}
+.nota.at{background:var(--redbg);border-left-color:var(--red)}
+.nota.at .h{color:var(--red)}
+.nota.bl{background:var(--bluebg);border-left-color:var(--blue)}
+.nota.bl .h{color:var(--blue)}
+
+.fer{display:flex;gap:3mm;margin-top:2.6mm}
+.fer .c{flex:1;border:.3mm solid var(--line);border-top:1mm solid var(--navy2);
+  border-radius:1mm;padding:3mm 3.2mm;display:flex;flex-direction:column}
+.fer .n{font-family:'Cormorant Garamond',serif;font-size:15pt;font-weight:700;
+  color:var(--goldsoft);line-height:1}
+.fer .t{font-size:9.4pt;font-weight:800;color:var(--navy);margin-top:1.2mm;line-height:1.16}
+.fer .q{font-size:6pt;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  font-weight:700;margin-top:1.4mm}
+.fer .d{font-size:7.9pt;line-height:1.45;margin-top:1.6mm}
+.fer .d b{color:var(--navy)}
+
+table{width:100%;border-collapse:collapse;margin:2.2mm 0}
+th{background:var(--navy2);color:#fff;font-size:6.4pt;font-weight:600;letter-spacing:.06em;
+  padding:2mm 2mm;text-align:left;line-height:1.2}
+td{border:.25mm solid var(--line);padding:1.9mm 2mm;font-size:8.2pt;line-height:1.32;
+  vertical-align:top}
+td b{color:var(--navy)}
+tr:nth-child(even) td{background:#fafbfc}
+td.c{text-align:center;vertical-align:middle}
+td.n{text-align:center;font-weight:700;color:var(--muted);font-size:7.4pt;
+  vertical-align:middle}
+.cx{display:inline-block;width:4.4mm;height:4.4mm;border:.3mm solid #8b96a3;border-radius:.6mm}
+.pill{display:inline-block;font-size:6pt;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;padding:.7mm 1.6mm;border-radius:1mm;white-space:nowrap}
+.p-erro{background:var(--redbg);color:var(--red)}
+.p-rec{background:#B0413F;color:#fff}
+.p-mel{background:var(--bluebg);color:var(--blue)}
+.p-peca{background:var(--goldbg);color:#7A5B17}
+
+.assin{display:flex;gap:10mm;margin-top:auto;padding-top:7mm}
+.assin .a{flex:1;text-align:center}
+.assin .a .ln{border-top:.3mm solid var(--ink);margin-bottom:1.4mm}
+.assin .a .t{font-size:6.6pt;color:var(--muted);line-height:1.4}
+.local{font-size:8.4pt;margin-top:4mm}
+.local .l{display:inline-block;border-bottom:.25mm dotted #b9c2cc;width:44mm;margin:0 1.4mm}
+.local .s{display:inline-block;border-bottom:.25mm dotted #b9c2cc;width:11mm;margin:0 1.4mm}
+.grp td{background:var(--navy)!important;color:#fff;font-size:6.4pt;font-weight:800;
+  letter-spacing:.18em;text-transform:uppercase;padding:1.7mm 2mm}
+.anot{margin-top:auto;padding-top:4mm}
+.anot .h{font-size:6.2pt;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  font-weight:800;margin-bottom:2mm}
+.anot .l{border-bottom:.25mm solid var(--line);height:6.6mm}
+</style></head><body>
+
+<!-- ══════════ 1 ══════════ -->
+<section class="sheet">
+  <div class="rh">
+    <div><div class="kx">Conversa de acompanhamento · Marcenaria e montagem</div>
+      <div class="tt">Samuel — a mão está boa, falta o passo de trás</div></div>
+    <div class="r"><b>VALVIC MARCENARIA</b><br>Vargas Decor Ltda<br>
+      Referência: obra da Cristiane</div>
+  </div>
+  <div class="gold-rule"></div>
+  <div class="body">
+
+    <div class="sec"><span class="bar"></span><span class="kx">Começando pelo que é verdade</span></div>
+    <p>Samuel, <b>o seu acabamento em obra é dos melhores da casa.</b> No geral, o que sai da sua
+      mão está no padrão que a Valvic vende — e isso não é comum, não se ensina rápido e é a
+      razão de você estar onde está. Você também é dedicado e competente em várias outras
+      frentes, e nada disso está em discussão nesta conversa.</p>
+    <p>O que precisa mudar não é a sua execução. <b>É o que acontece antes dela.</b></p>
+
+    <div class="sec2">O ponto mais latente — você não antecipa o problema</div>
+    <p>Os erros que aparecem nas suas obras quase nunca são erros de mão. São problemas que
+      <b>chegaram até a obra sem terem sido pensados antes</b> — e aí precisam ser resolvidos no
+      pior lugar possível, que é na casa do cliente, com o material já subido e o relógio
+      correndo.</p>
+    <ul>
+      <li><b>Falta estudo e análise prévia do projeto.</b> A obra começa e as perguntas difíceis
+        só aparecem quando esbarram na parede</li>
+      <li><b>As pendências de insumo não são listadas antes.</b> Espelho, pulsador, perfil,
+        serralheria e LED viram descoberta no meio da montagem</li>
+      <li><b>Não existe um planejamento de execução.</b> A ordem do que sobe primeiro é decidida
+        no dia, e nem sempre é a melhor</li>
+      <li><b>Não há cenário de resolução prévia.</b> Quando o problema aparece, ele é resolvido
+        na hora, com o que tem — e às vezes mal</li>
+    </ul>
+
+    <div class="nota at">
+      <div class="h">O caso que resume tudo</div>
+      <b>"Não saber como seria a instalação da porta do elevador."</b> Isso não é um erro de
+      execução — é uma pergunta que não foi feita a tempo. Se ela tivesse sido levantada no
+      estudo do projeto, teria sido respondida no escritório, de graça. Na obra, ela virou
+      parada, improviso e desgaste. <b>O mesmo vale para as prateleiras com serralheria e LED e
+      para o alumínio ondulado da cabeceira</b> — todos poderiam ter sido ponderados antes.
+    </div>
+
+    <div class="sec2">O segundo ponto — você não reporta</div>
+    <p>Ninguém aqui sabe como a sua obra está indo sem ir até lá perguntar. <b>Você não reporta
+      o andamento e não manda relatório.</b> Isso tem duas consequências práticas: a coordenação
+      não consegue planejar a semana com a sua frente dentro da conta, e quando algo trava a
+      empresa só descobre tarde, quando já custou dia. Reportar não é prestar contas — é
+      <b>deixar a empresa te ajudar antes de o problema crescer</b>.</p>
+
+    <div class="sec2">O terceiro ponto — os detalhes que ainda escapam</div>
+    <p>São poucos, mas repetem: <b>acabamento de frisos</b> (apareceu em três ambientes na obra
+      da Cristiane), <b>instalação de LED</b>, onde você tem dificuldade declarada, e alguns
+      <b>acabamentos simples</b> que passam batido — tampa de dobradiça, arremate de base,
+      pulsador. Esses são os mais fáceis de resolver da lista inteira, e são justamente os que
+      o cliente enxerga primeiro.</p>
+
+    <div class="nota ok">
+      <div class="h">O que eu não quero que você entenda desta conversa</div>
+      Que o seu trabalho não é bom. <b>Ele é bom — e é por isso que esta conversa é sobre o
+      próximo degrau, e não sobre o básico.</b> Marceneiro que não sabe acabar a gente ensina a
+      acabar. Você já sabe. O que falta é a parte que transforma um bom executor em alguém que
+      a empresa consulta antes de decidir.
+    </div>
+  </div>
+  <div class="rf"><span>Documento de acompanhamento · uso interno · duas vias</span>
+    <span>VALVIC · SAMUEL &nbsp;·&nbsp; 1 / 4</span></div>
+</section>
+
+<!-- ══════════ 2 ══════════ -->
+<section class="sheet">
+  <div class="rh">
+    <div><div class="kx">O caminho</div>
+      <div class="tt">O seu papel está mudando</div></div>
+    <div class="r"><b>VALVIC MARCENARIA</b><br>Marcenaria e montagem</div>
+  </div>
+  <div class="gold-rule"></div>
+  <div class="body">
+
+    <div class="sec"><span class="bar"></span><span class="kx">A leitura</span>
+      <span class="tt">A empresa precisa da sua cabeça, não só das suas mãos</span></div>
+    <p>Você é o marceneiro mais seguro que a Valvic tem em obra. Só que <b>continuar sendo só o
+      melhor par de mãos é desperdiçar você</b> — e é o que está acontecendo. O que falta hoje na
+      empresa não é alguém que execute bem: é alguém que, ao receber uma obra, <b>a estude,
+      encontre os problemas antes deles acontecerem e ajude a decidir como ela vai subir</b>.</p>
+    <p>É esse o passo que estamos pedindo. Ele muda três coisas no seu dia: você passa a
+      <b>delegar mais ao ajudante</b>, a <b>entrar nas decisões de planejamento da obra</b> junto
+      com a coordenação, e a <b>reportar</b>. Nenhuma delas tira tempo da execução — todas
+      devolvem.</p>
+
+    <div class="nota bl">
+      <div class="h">A conta da delegação</div>
+      Toda vez que você carrega peça, protege piso, limpa ou faz fixação simples, <b>a hora mais
+      cara da obra está fazendo a tarefa mais barata</b>. O ajudante existe para isso. A sua mão
+      deve estar no que só ela resolve: esquadro, regulagem, friso, arremate e a decisão do que
+      fazer quando algo não fecha.
+    </div>
+
+    <div class="sec" style="margin-top:4mm"><span class="bar"></span>
+      <span class="kx">Ferramentas</span><span class="tt">Quatro, e todas cabem numa folha</span></div>
+
+    <div class="fer">
+      <div class="c">
+        <div class="n">01</div>
+        <div class="t">Estudo prévio da obra</div>
+        <div class="q">1 hora · antes do 1º dia</div>
+        <div class="d">Sente com o projeto <b>antes</b> de a obra começar e escreva três listas:
+          <b>o que não está claro</b>, <b>o que pode dar errado</b> e <b>como cada um desses
+          seria resolvido</b>.<br><br>
+          A porta do elevador, a serralheria com LED e o alumínio da cabeceira estariam aí.</div>
+      </div>
+      <div class="c">
+        <div class="n">02</div>
+        <div class="t">Lista de pendências de insumo</div>
+        <div class="q">Entregue antes de subir a obra</div>
+        <div class="d">Uma folha com <b>tudo o que a obra vai precisar e ainda não está na
+          fábrica</b>: ferragem, perfil, LED, espelho, vidro, serralheria, pulsador.<br><br>
+          Com <b>prazo</b> ao lado de cada item. Espelho da penteadeira e pulsador da porta
+          estariam nessa lista há semanas.</div>
+      </div>
+      <div class="c">
+        <div class="n">03</div>
+        <div class="t">Planejamento de execução</div>
+        <div class="q">Meia folha · antes de começar</div>
+        <div class="d">A <b>ordem</b> em que os ambientes sobem, quanto tempo cada um leva e
+          <b>o que precisa estar pronto antes de cada etapa</b>.<br><br>
+          É o que permite à coordenação encaixar a sua obra na semana — e a você pedir ajuda
+          antes de precisar dela.</div>
+      </div>
+      <div class="c">
+        <div class="n">04</div>
+        <div class="t">Relatório de fim de dia</div>
+        <div class="q">3 linhas + foto · todo dia</div>
+        <div class="d"><b>O que avançou hoje · o que travou · o que preciso amanhã.</b><br><br>
+          Três linhas no grupo, com uma foto do ambiente. Leva dois minutos e resolve de vez o
+          "ninguém sabe como está a obra do Samuel".</div>
+      </div>
+    </div>
+
+    <div class="sec2" style="margin-top:5mm">Como fica a próxima obra, dia a dia</div>
+    <table class="compacta">
+      <thead><tr><th style="width:26mm">Quando</th><th>O que acontece</th>
+        <th style="width:34mm">O que você entrega</th></tr></thead>
+      <tbody>
+        <tr><td><b>7 dias antes</b></td>
+          <td>Você estuda o projeto inteiro e levanta o que não está claro e o que pode dar errado</td>
+          <td><b>Estudo prévio</b></td></tr>
+        <tr><td><b>5 dias antes</b></td>
+          <td>Levanta tudo o que a obra vai precisar e ainda não está na fábrica</td>
+          <td><b>Lista de insumos</b></td></tr>
+        <tr><td><b>3 dias antes</b></td>
+          <td>Define a ordem dos ambientes e o que precisa estar pronto antes de cada etapa</td>
+          <td><b>Planejamento</b></td></tr>
+        <tr><td><b>1 dia antes</b></td>
+          <td>Confere com a coordenação se tudo da lista chegou — e o que não chegou, replaneja</td>
+          <td>Confirmação</td></tr>
+        <tr><td><b>Todo dia</b></td>
+          <td>Fim do dia: o que avançou, o que travou, o que precisa amanhã</td>
+          <td><b>Relatório</b></td></tr>
+      </tbody>
+    </table>
+
+    <div class="nota ok">
+      <div class="h">O combinado a partir da próxima obra</div>
+      As ferramentas <b>01, 02 e 03</b> entregues à coordenação <b>antes do primeiro dia de
+      montagem</b> — sem elas a obra não abre. A <b>04</b> começa já, na obra que estiver em
+      andamento. E você passa a participar da conversa de planejamento da semana, na
+      segunda-feira, como quem decide — não como quem recebe a decisão pronta. Voltamos a
+      conversar em <b>30 dias</b>.
+    </div>
+  </div>
+  <div class="rf"><span>Ferramentas de planejamento e reporte · aplicação imediata</span>
+    <span>VALVIC · SAMUEL &nbsp;·&nbsp; 2 / 4</span></div>
+</section>
+
+<div id="listas"></div>
+
+<script>
+const G = [
+ ['Quarto Júlia', [
+   ['Espelho da penteadeira — pendente','pend'],
+   ['Acabamento do perfil de LED mal feito — precisa de resolução','acab'],
+   ['Base da torre mal estruturada','ant'],
+   ['Perfil de alumínio amassado','acab'],
+   ['Pulsador da porta ausente','pend'],
+   ['Arremates laterais da base do painel de TV ausentes','acab']]],
+ ['Suíte do casal', [
+   ['Alumínio da base da cabeceira com efeito ondulado — falha de fabricação que poderia ter sido ponderada antes','ant'],
+   ['Acabamento dos frisos entre painéis mal feito em alguns pontos','rec'],
+   ['Tampas de dobradiça ausentes','acab']]],
+ ['Quarto Victor', [
+   ['Friso da cabeceira entre painel e marco mal resolvido','rec'],
+   ['Acabamento de alumínio da base do painel','acab'],
+   ['Acabamento ondulado no perfil de alumínio — mesmo problema da suíte','rec'],
+   ['Prateleiras com serralheria e LED — erro de processo que poderia ter sido antecipado','ant']]],
+ ['Sala', [
+   ['Instalação da porta do elevador — não se sabia como seria feita','ant'],
+   ['Ferros das garrafas de vinho tortos','acab']]],
+ ['Geral · todos os ambientes', [
+   ['Tampas de dobradiça ausentes em vários pontos','acab']]]
+];
+const TIPO = {acab:['Acabamento','p-erro'], rec:['Friso — recorrente','p-rec'],
+              ant:['Era antecipável','p-mel'], pend:['Pendência de insumo','p-peca']};
+
+let N = 0;
+function bloco(g){
+  const linhas = g[1].map(it => {
+    const t = TIPO[it[1]]; N++;
+    return `<tr><td class="n">${N}</td><td>${it[0]}</td>
+      <td class="c"><span class="pill ${t[1]}">${t[0]}</span></td>
+      <td class="c"><span class="cx"></span></td>
+      <td class="c"><span class="cx"></span></td>
+      <td></td></tr>`;
+  }).join('');
+  return `<tr class="grp"><td colspan="6">${g[0]}</td></tr>` + linhas;
+}
+function tabela(gs){
+  return `<table>
+    <thead><tr><th style="width:8mm">Nº</th><th>O que precisa ser resolvido</th>
+      <th style="width:30mm">O que é</th><th style="width:18mm">Ciente</th>
+      <th style="width:18mm">Feito</th><th style="width:24mm">Visto e data</th></tr></thead>
+    <tbody>${gs.map(bloco).join('')}</tbody></table>`;
+}
+
+document.getElementById('listas').outerHTML = `
+<section class="sheet">
+  <div class="rh">
+    <div><div class="kx">Checklist de obra · Cristiane</div>
+      <div class="tt">Ponto a ponto — parte 1</div></div>
+    <div class="r"><b>VALVIC MARCENARIA</b><br>Levantado em visita à obra<br>
+      16 pontos ao todo</div>
+  </div>
+  <div class="gold-rule"></div>
+  <div class="body">
+    <div class="nota bl" style="margin-top:0">
+      <div class="h">Como usar as duas colunas</div>
+      <b>Ciente</b> — marque na conversa, item a item, o que você já tinha identificado. Serve
+      para separar o que passou por descuido do que passou por não ter sido visto: são problemas
+      diferentes e se resolvem de formas diferentes.<br>
+      <b>Feito</b> — só é marcado <b>depois de conferido na obra</b>, por quem não executou a
+      correção. Autoconferência não vale: quem fez a peça já não enxerga o próprio erro.
+    </div>
+    ${tabela(G.slice(0,2))}
+    <div class="anot">
+      <div class="h">Anotações da conversa</div>
+      <div class="l"></div><div class="l"></div><div class="l"></div>
+      <div class="l"></div><div class="l"></div>
+    </div>
+  </div>
+  <div class="rf"><span>Obra da Cristiane · quarto Júlia e suíte do casal</span>
+    <span>VALVIC · SAMUEL &nbsp;·&nbsp; 3 / 4</span></div>
+</section>
+
+<section class="sheet">
+  <div class="rh">
+    <div><div class="kx">Checklist de obra · Cristiane</div>
+      <div class="tt">Ponto a ponto — parte 2</div></div>
+    <div class="r"><b>VALVIC MARCENARIA</b><br>Levantado em visita à obra</div>
+  </div>
+  <div class="gold-rule"></div>
+  <div class="body">
+    ${tabela(G.slice(2))}
+
+    <div class="nota">
+      <div class="h">O que a lista devolve quando se olha o conjunto</div>
+      <b>Dos 16 pontos, 4 eram antecipáveis e 3 são o mesmo problema de friso repetido em
+      ambientes diferentes.</b> Os outros são acabamentos simples — tampa, arremate, pulsador —
+      que se resolvem em minutos.<br><br>
+      Ou seja: <b>a lista não acusa a sua mão, acusa o passo que veio antes dela.</b> Quatro
+      itens teriam desaparecido com uma hora de estudo do projeto, e dois com uma lista de
+      insumos entregue a tempo. É exatamente para isso que servem as ferramentas da página 2.
+    </div>
+
+    <div class="nota at">
+      <div class="h">Dois itens merecem tratamento à parte</div>
+      <b>O friso</b> repete em três ambientes — erro que repete não é distração, é método que
+      falta. Precisa de uma conversa técnica com a peça na mão, definindo como o friso é cortado
+      e conferido daqui para frente.<br>
+      <b>O LED</b> é dificuldade declarada sua. Isso se resolve com treino, não com cobrança:
+      vamos marcar uma tarde de instalação acompanhada antes da próxima obra com perfil.
+    </div>
+
+    <div class="local">Conversamos sobre cada ponto desta lista, e o que está marcado como
+      pendente será resolvido e conferido.<br>
+      Belo Horizonte / MG, <span class="s"></span> de <span class="l"></span> de
+      <span class="s"></span>.</div>
+    <div class="assin">
+      <div class="a"><div class="ln"></div><div class="t">Samuel — Marcenaria e montagem</div></div>
+      <div class="a"><div class="ln"></div><div class="t">Jonathan — Direção</div></div>
+    </div>
+  </div>
+  <div class="rf"><span>Reavaliação em 30 dias, com as três folhas de planejamento da próxima obra</span>
+    <span>VALVIC · SAMUEL &nbsp;·&nbsp; 4 / 4</span></div>
+</section>`;
+</script>
+</body></html>
