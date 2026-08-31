@@ -3,15 +3,16 @@
 
 Valores lidos de `corte-flaviana.py`. [Jonathan 25/08] MC 40% COM RT.
 
-  Investimento .................... R$ 19.300
+  Investimento .................... R$ 18.700
   Armário aéreo ...................  R$ 7.500   ◄ preço fechado pelo Jonathan
   Armário inferior ................  R$ 7.700
-  Porta de correr .................  R$ 4.100
+  Porta de correr .................  R$ 3.500   ◄ preço fechado pelo Jonathan
 
-PREÇO [Jonathan 29/08] "coloca o armário superior em 7.500 no valor de venda".
-É decisão de preço, não de custo: entra por cima do rateio e o total do job
-vira a soma dos itens. A MC real cai de 40% para 34,7% com RT — abaixo do piso
-de 35% da casa, e o motor imprime o aviso para que não seja lido como erro.
+PREÇO [Jonathan 29/08] "coloca o armário superior em 7.500 no valor de venda"
+e "a porta de correr vamos vender por 3.500". É decisão de preço, não de custo:
+entra por cima do rateio e o total do job vira a soma dos itens. A MC real cai
+de 40% para 33,5% com RT — abaixo do piso de 35% da casa, e o motor imprime o
+aviso para que não seja lido como erro.
 
 IMAGENS [Jonathan 25/08] "me de as propostas usando as imagens dos projetos
 para compor". Aqui os renders fotorrealistas SÃO do projeto: a prancha 02 do

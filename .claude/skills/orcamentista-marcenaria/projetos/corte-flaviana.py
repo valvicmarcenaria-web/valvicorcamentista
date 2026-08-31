@@ -389,11 +389,14 @@ if not 626 <= rm <= 834:
           .replace(',', '.'))
 
 # ── PREÇO DE VENDA FECHADO PELO FUNDADOR, ITEM A ITEM ─────────────────────
-# [Jonathan 29/08] "coloca o armário superior da Flaviana em 7.500 no valor de
-# venda". Isso é decisão de PREÇO, não de custo: entra por cima do rateio, e o
-# total do job passa a ser a SOMA dos itens — não o que a MC de 40% pediria.
-# Os outros itens seguem no rateio por custo direto.
-PRECO_FIXO = {'Armário aéreo sobre a bancada': 7500}
+# [Jonathan 29/08] preços de VENDA fechados pelo fundador, item a item:
+#   "coloca o armário superior em 7.500 no valor de venda"
+#   "a porta de correr vamos vender por 3.500"
+# Isso é decisão de PREÇO, não de custo: entra por cima do rateio, e o total do
+# job passa a ser a SOMA dos itens — não o que a MC de 40% pediria. O que não
+# tem preço fechado segue no rateio por custo direto.
+PRECO_FIXO = {'Armário aéreo sobre a bancada': 7500,
+              'Porta de correr em MDF':        3500}
 
 print('\n' + '─'*W)
 print('INVESTIMENTO POR ITEM')
@@ -416,9 +419,12 @@ print(f'\n  ► INVESTIMENTO FECHADO ....... R$ {brl(INV,0)}     [Jonathan 29/08
 print(f'    MC real do job, com RT: {_mc*100:.1f}%   '
       f'(o rateio puro daria R$ {brl(INV_MC,0)} a {REC*100:.0f}%)')
 if _mc < 0.35:
-    print(f'  ⚠ ABAIXO DO PISO DE 35% DA CASA. O preço do aéreo foi fechado')
-    print(f'    pelo fundador; a diferença de R$ {brl(INV_MC-INV,0)} sai da margem,')
-    print( '    não do custo. Registrado para não ser lido como erro de motor.')
+    _quais = ', '.join(PRECO_FIXO)
+    print(f'  ⚠ ABAIXO DO PISO DE 35% DA CASA. Preço fechado pelo fundador em:')
+    print(f'    {_quais}.')
+    print(f'    A diferença de R$ {brl(INV_MC-INV,0)} sai da MARGEM, não do custo —')
+    print( '    nada mudou no levantamento. Registrado para não ser lido')
+    print( '    como erro de motor daqui a alguns meses.')
 
 print('\n' + '─'*W)
 print(f'DÚVIDAS E CONFERÊNCIAS — {len(DUV)} itens')
