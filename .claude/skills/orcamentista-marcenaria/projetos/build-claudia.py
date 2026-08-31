@@ -125,7 +125,7 @@ CSS = (open('projetos/css-proposta.css', encoding='utf-8').read()
 .esp .v{color:var(--soft);font-size:8.5pt;line-height:1.48;}
 .op{display:grid;grid-template-columns:1fr 1fr;gap:7mm;}
 .op .c{display:flex;flex-direction:column;}
-.op .ph{height:66mm;background:#F2EEE6;}
+.op .ph{height:53mm;background:#F2EEE6;}
 .op .ph img{object-fit:cover;}
 .op .t{font-size:11pt;font-weight:700;margin-top:3.6mm;}
 .op .s{font-size:7pt;letter-spacing:.18em;text-transform:uppercase;
@@ -135,7 +135,7 @@ CSS = (open('projetos/css-proposta.css', encoding='utf-8').read()
   font-size:19pt;font-weight:600;}
 .uni{display:grid;grid-template-columns:1fr 1.15fr;gap:7mm;align-items:center;
   border-top:1px solid var(--line);padding-top:6mm;margin-top:7mm;}
-.uni .ph{height:64mm;background:#F2EEE6;}
+.uni .ph{height:50mm;background:#F2EEE6;}
 .uni .ph img{object-fit:cover;}
 .pg{display:grid;grid-template-columns:1fr 1fr;gap:7mm;}
 .pg .c{border:1px solid var(--line);border-radius:2px;padding:5.5mm 6mm;
@@ -151,10 +151,23 @@ CSS = (open('projetos/css-proposta.css', encoding='utf-8').read()
 /* a coluna do meio (à vista) encostava no bloco bege da coluna do cartão —
    no total, em serifa de 13,5pt, o número chegava a invadir o fundo. */
 .inv td:nth-child(2), .inv th:nth-child(2){padding-right:7mm;}
+/* condensação para 3 páginas [Jonathan 31/08]: o detalhe de pagamento de cada
+   conjunto virou sublinha da própria tabela, e prazo/garantia/validade viraram
+   uma faixa de três — juntos economizam ~60 mm, que é o que faltava. */
+.inv td.l .sub{color:var(--mut);font-size:7.8pt;font-weight:400;
+  letter-spacing:0;text-transform:none;margin-top:1.4mm;line-height:1.45;}
+.t3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6mm;
+  border-top:1px solid var(--line);padding-top:5mm;margin-top:7mm;}
+.t3 .k{font-size:6.9pt;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.t3 .v{font-size:9.6pt;margin-top:1.4mm;}
+.t3 .s{color:var(--soft);font-size:8.2pt;margin-top:.8mm;}
+.fora.duas ul{columns:2;column-gap:8mm;}
+.fora.duas li{break-inside:avoid;margin-bottom:2.6mm;}
 """)
 
 def brl(v): return f'{v:,.0f}'.replace(',', '.')
-NP = 5
+NP = 3
 def foot(n):
     return (f'<div class="foot"><span>Valvic Marcenaria · {CLIENTE}</span>'
             f'<span>{OBRA}</span><span>{n} / {NP}</span></div>')
@@ -185,16 +198,12 @@ itens_tab = ''.join(
  f'<td class="hi">R$ {brl(cartao(v))}</td></tr>'
  for k, tit, sub, img, d, v in ITENS)
 conj_tab = ''.join(
- (lambda c: f'<tr class="tot"><td class="l">{nome}</td>'
+ (lambda c: f'<tr class="tot"><td class="l">{nome}'
+            f'<div class="sub">Entrada de R$ {brl(c["entrada"])} + '
+            f'R$ {brl(c["saldo"])} na entrega &nbsp;·&nbsp; ou {CARTAO_X} × '
+            f'R$ {brl(c["parcela"])} sem juros</div></td>'
             f'<td>R$ {brl(c["vista"])}</td>'
             f'<td class="hi">R$ {brl(c["cartao"])}</td></tr>')(conjunto(k))
- for nome, k, _d in CONJ)
-conj_det = ''.join(
- (lambda c: f'<div class="term"><div class="k">{nome}</div>'
-            f'<div class="v">À vista: entrada de R$ {brl(c["entrada"])} + '
-            f'R$ {brl(c["saldo"])} na entrega</div>'
-            f'<div class="s">No cartão: {CARTAO_X} × R$ {brl(c["parcela"])} '
-            f'sem juros, total de R$ {brl(c["cartao"])}.</div></div>')(conjunto(k))
  for nome, k, _d in CONJ)
 
 p1 = f"""<div class="page cover"><div class="cvfoto"
@@ -235,6 +244,9 @@ p2 = f"""<div class="page"><div class="pad">
         font-weight:600;margin-top:3.4mm">R$ {brl(_p[5])}</div>
     </div>
   </div>
+  <div class="eyebrow" style="margin-top:7mm">Não incluso nesta proposta</div>
+  <div class="rule"></div>
+  <div class="fora duas"><ul>{fora}</ul></div>
   {foot(2)}
 </div></div>"""
 
@@ -258,66 +270,38 @@ p3 = f"""<div class="page"><div class="pad">
       <th class="hi">{CARTAO_X} × sem juros</th></tr>
     {itens_tab}
   </table>
-  <div class="eyebrow" style="margin-top:8mm">Fechando por conjunto</div>
+  <div class="eyebrow" style="margin-top:7mm">Fechando por conjunto</div>
   <div class="rule"></div>
-  <p class="lead" style="font-size:9.3pt">Uma das opções do quarto mais o
-  painel livreiro:</p>
-  <table class="inv" style="margin-top:4mm">
-    <tr><th class="l">Conjunto</th><th>À vista</th>
-      <th class="hi">{CARTAO_X} × sem juros</th></tr>
+  <table class="inv" style="margin-top:3mm">
+    <tr><th class="l">Uma das opções do quarto mais o painel livreiro</th>
+      <th>À vista</th><th class="hi">{CARTAO_X} × sem juros</th></tr>
     {conj_tab}
   </table>
-  {foot(3)}
-</div></div>"""
-
-p4 = f"""<div class="page"><div class="pad">
-  <div class="eyebrow">Garantia</div>
-  <div class="rule"></div>
-  <h2 class="h-sec">O que a garantia cobre.</h2>
-  <div style="margin-top:5mm">{gar}</div>
-  <div class="eyebrow" style="margin-top:8mm">Especificação técnica</div>
-  <div class="rule"></div>
-  <div>{esp}</div>
-  {foot(4)}
-</div></div>"""
-
-p5 = f"""<div class="page"><div class="pad">
-  <div class="eyebrow">Condições</div>
-  <div class="rule"></div>
-  <h2 class="h-sec">Prazo, pagamento e limites.</h2>
-  <div class="two" style="margin-top:7mm">
-    <div>{conj_det}
-      <div class="term"><div class="k">Prazo de entrega</div>
-        <div class="v">{PRAZO}</div>
-        <div class="s">Contados da aprovação e da medição em obra.</div></div>
-      <div class="term"><div class="k">Conferência de medidas</div>
-        <div class="v">Visita técnica antes do corte</div>
-        <div class="s">Nada vai para a CNC antes da nossa medição no local.</div></div>
-      <div class="term"><div class="k">Validade da proposta</div>
-        <div class="v">{VALIDADE}</div></div>
-    </div>
-    <div class="fora">
-      <div class="eyebrow">Não incluso nesta proposta</div>
-      <div class="rule"></div>
-      <ul>{fora}</ul>
-    </div>
+  <div class="t3">
+    <div><div class="k">Prazo de entrega</div><div class="v">{PRAZO}</div>
+      <div class="s">Contados da aprovação e da medição em obra. Nada vai para
+      a CNC antes da nossa visita ao local.</div></div>
+    <div><div class="k">Garantia Valvic</div>
+      <div class="v">{GAR_ANOS} anos</div>
+      <div class="s">Estrutura, ferragem, báscula e prateleiras. Retorno do
+      chamado em 24 h.</div></div>
+    <div><div class="k">Validade da proposta</div><div class="v">{VALIDADE}</div>
+      <div class="s">A partir da data de envio.</div></div>
   </div>
-  <div class="ph banda" style="margin-top:auto;height:62mm">
-    <img src="{{IMG}}/livreiro-com.png"
-      style="object-fit:cover;object-position:center 38%" alt="">
-    <div class="cap">Painel livreiro · referência de acabamento</div></div>
   <div class="sig" style="margin-top:9mm">
     <div class="ln">Valvic Marcenaria</div>
     <div class="ln">{CLIENTE}</div>
   </div>
-  {foot(5)}
+  {foot(3)}
 </div></div>"""
+
+
 
 HTML = ('<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">'
         '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:'
         'wght@400;500;600&family=DM+Sans:wght@300;400;500;600;700&display=swap" '
         f'rel="stylesheet"><style>{CSS}</style></head>'
-        f'<body>{p1}{p2}{p3}{p4}{p5}</body></html>')
+        f'<body>{p1}{p2}{p3}</body></html>')
 
 OUT_H, OUT_P = 'projetos/proposta-claudia.html', 'projetos/proposta-claudia.pdf'
 open(OUT_H, 'w', encoding='utf-8').write(HTML.replace('{IMG}', 'img-claudia'))

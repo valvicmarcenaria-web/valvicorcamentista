@@ -192,7 +192,7 @@ table{width:100%;border-collapse:collapse;}
 .esp .v{color:var(--soft);font-size:8.5pt;line-height:1.48;}
 .op{display:grid;grid-template-columns:1fr 1fr;gap:7mm;}
 .op .c{display:flex;flex-direction:column;}
-.op .ph{height:66mm;background:#F2EEE6;}
+.op .ph{height:53mm;background:#F2EEE6;}
 .op .ph img{object-fit:cover;}
 .op .t{font-size:11pt;font-weight:700;margin-top:3.6mm;}
 .op .s{font-size:7pt;letter-spacing:.18em;text-transform:uppercase;
@@ -202,7 +202,7 @@ table{width:100%;border-collapse:collapse;}
   font-size:19pt;font-weight:600;}
 .uni{display:grid;grid-template-columns:1fr 1.15fr;gap:7mm;align-items:center;
   border-top:1px solid var(--line);padding-top:6mm;margin-top:7mm;}
-.uni .ph{height:64mm;background:#F2EEE6;}
+.uni .ph{height:50mm;background:#F2EEE6;}
 .uni .ph img{object-fit:cover;}
 .pg{display:grid;grid-template-columns:1fr 1fr;gap:7mm;}
 .pg .c{border:1px solid var(--line);border-radius:2px;padding:5.5mm 6mm;
@@ -218,6 +218,19 @@ table{width:100%;border-collapse:collapse;}
 /* a coluna do meio (à vista) encostava no bloco bege da coluna do cartão —
    no total, em serifa de 13,5pt, o número chegava a invadir o fundo. */
 .inv td:nth-child(2), .inv th:nth-child(2){padding-right:7mm;}
+/* condensação para 3 páginas [Jonathan 31/08]: o detalhe de pagamento de cada
+   conjunto virou sublinha da própria tabela, e prazo/garantia/validade viraram
+   uma faixa de três — juntos economizam ~60 mm, que é o que faltava. */
+.inv td.l .sub{color:var(--mut);font-size:7.8pt;font-weight:400;
+  letter-spacing:0;text-transform:none;margin-top:1.4mm;line-height:1.45;}
+.t3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6mm;
+  border-top:1px solid var(--line);padding-top:5mm;margin-top:7mm;}
+.t3 .k{font-size:6.9pt;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.t3 .v{font-size:9.6pt;margin-top:1.4mm;}
+.t3 .s{color:var(--soft);font-size:8.2pt;margin-top:.8mm;}
+.fora.duas ul{columns:2;column-gap:8mm;}
+.fora.duas li{break-inside:avoid;margin-bottom:2.6mm;}
 </style></head><body><div class="page cover"><div class="cvfoto"
   style="grid-template-rows:auto 78mm 1fr">
   <div class="top"><div class="cv-brand">Valvic Marcenaria</div></div>
@@ -254,7 +267,10 @@ table{width:100%;border-collapse:collapse;}
         font-weight:600;margin-top:3.4mm">R$ 4.650</div>
     </div>
   </div>
-  <div class="foot"><span>Valvic Marcenaria · Cláudia</span><span>Quarto do Matheus · painel livreiro</span><span>2 / 5</span></div>
+  <div class="eyebrow" style="margin-top:7mm">Não incluso nesta proposta</div>
+  <div class="rule"></div>
+  <div class="fora duas"><ul><li><div class="k">Cama, mesa, cadeira, criado-mudo e os demais móveis das imagens</div></li><li><div class="k">Pintura, papel de parede, cortina e persiana</div></li><li><div class="k">Pontos de elétrica</div><div class="v">a marcenaria é nossa; os pontos de energia são da obra.</div></li><li><div class="k">Objetos, brinquedos e decoração</div></li></ul></div>
+  <div class="foot"><span>Valvic Marcenaria · Cláudia</span><span>Quarto do Matheus · painel livreiro</span><span>2 / 3</span></div>
 </div></div><div class="page"><div class="pad">
   <div class="eyebrow">Investimento</div>
   <div class="rule"></div>
@@ -275,53 +291,27 @@ table{width:100%;border-collapse:collapse;}
       <th class="hi">5 × sem juros</th></tr>
     <tr><td class="l">Quarto do Matheus<br><span style="color:var(--mut);font-size:8pt">Opção 1 · com armário aéreo</span></td><td>R$ 3.500</td><td class="hi">R$ 3.850</td></tr><tr><td class="l">Quarto do Matheus<br><span style="color:var(--mut);font-size:8pt">Opção 2 · só as prateleiras</span></td><td>R$ 1.450</td><td class="hi">R$ 1.595</td></tr><tr><td class="l">Painel livreiro<br><span style="color:var(--mut);font-size:8pt">Item independente das opções acima</span></td><td>R$ 4.650</td><td class="hi">R$ 5.115</td></tr>
   </table>
-  <div class="eyebrow" style="margin-top:8mm">Fechando por conjunto</div>
+  <div class="eyebrow" style="margin-top:7mm">Fechando por conjunto</div>
   <div class="rule"></div>
-  <p class="lead" style="font-size:9.3pt">Uma das opções do quarto mais o
-  painel livreiro:</p>
-  <table class="inv" style="margin-top:4mm">
-    <tr><th class="l">Conjunto</th><th>À vista</th>
-      <th class="hi">5 × sem juros</th></tr>
-    <tr class="tot"><td class="l">Opção 1 + painel livreiro</td><td>R$ 8.150</td><td class="hi">R$ 8.965</td></tr><tr class="tot"><td class="l">Opção 2 + painel livreiro</td><td>R$ 6.100</td><td class="hi">R$ 6.710</td></tr>
+  <table class="inv" style="margin-top:3mm">
+    <tr><th class="l">Uma das opções do quarto mais o painel livreiro</th>
+      <th>À vista</th><th class="hi">5 × sem juros</th></tr>
+    <tr class="tot"><td class="l">Opção 1 + painel livreiro<div class="sub">Entrada de R$ 5.700 + R$ 2.450 na entrega &nbsp;·&nbsp; ou 5 × R$ 1.793 sem juros</div></td><td>R$ 8.150</td><td class="hi">R$ 8.965</td></tr><tr class="tot"><td class="l">Opção 2 + painel livreiro<div class="sub">Entrada de R$ 4.300 + R$ 1.800 na entrega &nbsp;·&nbsp; ou 5 × R$ 1.342 sem juros</div></td><td>R$ 6.100</td><td class="hi">R$ 6.710</td></tr>
   </table>
-  <div class="foot"><span>Valvic Marcenaria · Cláudia</span><span>Quarto do Matheus · painel livreiro</span><span>3 / 5</span></div>
-</div></div><div class="page"><div class="pad">
-  <div class="eyebrow">Garantia</div>
-  <div class="rule"></div>
-  <h2 class="h-sec">O que a garantia cobre.</h2>
-  <div style="margin-top:5mm"><div class="gar"><div class="gar-h"><div><div class="gar-n">5</div><div class="gar-u">anos de garantia</div></div><div class="gar-x">Garantia da <strong>Valvic</strong>, não do fabricante: quem projeta, corta, monta e atende é a mesma equipe, sem triangulação. Cobertura por componente, documentada e assinada na entrega.</div></div><div class="gar-l"><div class="k">Estrutura, corpo e prateleiras</div><div class="v">5 anos</div></div><div class="gar-l"><div class="k">Articulador da báscula, com amortecimento</div><div class="v">5 anos</div></div><div class="gar-l"><div class="k">Suporte oculto da prateleira</div><div class="v">5 anos</div></div><div class="gar-l"><div class="k">Regulagem da báscula</div><div class="v">2 anos</div></div><div class="gar-l"><div class="k">Retorno do chamado</div><div class="v">24 horas</div></div><div class="gar-l"><div class="k">Visita técnica, sem custo dentro do prazo</div><div class="v">até 3 dias úteis</div></div></div></div>
-  <div class="eyebrow" style="margin-top:8mm">Especificação técnica</div>
-  <div class="rule"></div>
-  <div><div class="esp"><div class="k">Chapa</div><div class="v">MDF melamínico fosco, cor a definir — exceto a linha acetinada</div></div><div class="esp"><div class="k">Borda</div><div class="v">Fita de borda extra fina de 0,4 mm, aplicada em coladeira automática</div></div><div class="esp"><div class="k">Báscula</div><div class="v">Articulador Blum HK-xs com amortecimento: a frente sobe e para sozinha, sem bater ao fechar</div></div><div class="esp"><div class="k">Prateleiras</div><div class="v">Sobre suporte oculto — sem mão-francesa e sem ferragem à vista por baixo</div></div><div class="esp"><div class="k">Ganchos</div><div class="v">Pintados no tom do MDF escolhido</div></div><div class="esp"><div class="k">Fixação</div><div class="v">Ancoragem na alvenaria</div></div><div class="esp"><div class="k">Produção</div><div class="v">Corte e usinagem em CNC própria, laminação de borda em coladeira automática, instalação e montagem por equipe própria da Valvic</div></div></div>
-  <div class="foot"><span>Valvic Marcenaria · Cláudia</span><span>Quarto do Matheus · painel livreiro</span><span>4 / 5</span></div>
-</div></div><div class="page"><div class="pad">
-  <div class="eyebrow">Condições</div>
-  <div class="rule"></div>
-  <h2 class="h-sec">Prazo, pagamento e limites.</h2>
-  <div class="two" style="margin-top:7mm">
-    <div><div class="term"><div class="k">Opção 1 + painel livreiro</div><div class="v">À vista: entrada de R$ 5.700 + R$ 2.450 na entrega</div><div class="s">No cartão: 5 × R$ 1.793 sem juros, total de R$ 8.965.</div></div><div class="term"><div class="k">Opção 2 + painel livreiro</div><div class="v">À vista: entrada de R$ 4.300 + R$ 1.800 na entrega</div><div class="s">No cartão: 5 × R$ 1.342 sem juros, total de R$ 6.710.</div></div>
-      <div class="term"><div class="k">Prazo de entrega</div>
-        <div class="v">60 dias corridos</div>
-        <div class="s">Contados da aprovação e da medição em obra.</div></div>
-      <div class="term"><div class="k">Conferência de medidas</div>
-        <div class="v">Visita técnica antes do corte</div>
-        <div class="s">Nada vai para a CNC antes da nossa medição no local.</div></div>
-      <div class="term"><div class="k">Validade da proposta</div>
-        <div class="v">5 dias úteis</div></div>
-    </div>
-    <div class="fora">
-      <div class="eyebrow">Não incluso nesta proposta</div>
-      <div class="rule"></div>
-      <ul><li><div class="k">Cama, mesa, cadeira, criado-mudo e os demais móveis das imagens</div></li><li><div class="k">Pintura, papel de parede, cortina e persiana</div></li><li><div class="k">Pontos de elétrica</div><div class="v">a marcenaria é nossa; os pontos de energia são da obra.</div></li><li><div class="k">Objetos, brinquedos e decoração</div></li></ul>
-    </div>
+  <div class="t3">
+    <div><div class="k">Prazo de entrega</div><div class="v">60 dias corridos</div>
+      <div class="s">Contados da aprovação e da medição em obra. Nada vai para
+      a CNC antes da nossa visita ao local.</div></div>
+    <div><div class="k">Garantia Valvic</div>
+      <div class="v">5 anos</div>
+      <div class="s">Estrutura, ferragem, báscula e prateleiras. Retorno do
+      chamado em 24 h.</div></div>
+    <div><div class="k">Validade da proposta</div><div class="v">5 dias úteis</div>
+      <div class="s">A partir da data de envio.</div></div>
   </div>
-  <div class="ph banda" style="margin-top:auto;height:62mm">
-    <img src="img-claudia/livreiro-com.png"
-      style="object-fit:cover;object-position:center 38%" alt="">
-    <div class="cap">Painel livreiro · referência de acabamento</div></div>
   <div class="sig" style="margin-top:9mm">
     <div class="ln">Valvic Marcenaria</div>
     <div class="ln">Cláudia</div>
   </div>
-  <div class="foot"><span>Valvic Marcenaria · Cláudia</span><span>Quarto do Matheus · painel livreiro</span><span>5 / 5</span></div>
+  <div class="foot"><span>Valvic Marcenaria · Cláudia</span><span>Quarto do Matheus · painel livreiro</span><span>3 / 3</span></div>
 </div></div></body></html>

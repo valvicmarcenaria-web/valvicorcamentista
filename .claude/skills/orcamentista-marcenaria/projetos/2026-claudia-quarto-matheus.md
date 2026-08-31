@@ -84,3 +84,37 @@ precise escrever a frase que a casa proíbe.
 2. **Cláudia é a cliente?** O nome saiu do arquivo (`proposta_claudia.pdf`) e o
    quarto é do Matheus. Se o contrato for em outro nome, é uma constante.
 3. **A cor do MDF** segue "a definir", como no original.
+
+---
+
+## Condensada para 3 páginas [Jonathan 31/08]
+
+> *"Tire a página 4 e condense as informações para 3 páginas."*
+
+Saíram a página de garantia e a de condições. O que era 5 virou 3, sem perder
+informação — cada bloco foi para onde ele já pertencia:
+
+| Estava | Foi para |
+|---|---|
+| Garantia, bloco de 6 linhas | **faixa de três termos na p3** — 5 anos, o que cobre e o retorno em 24 h |
+| Especificação técnica, 7 linhas | **descrição de cada item na p2** (báscula, suporte oculto, ganchos e cor já estavam lá) |
+| Não incluso | **rodapé da p2**, junto do escopo, em duas colunas |
+| Detalhe de pagamento por conjunto | **sublinha da própria tabela de conjuntos** |
+| Prazo, conferência e validade | faixa de três termos na p3 |
+
+As duas mudanças que compraram o espaço:
+
+1. **O detalhe do pagamento virou sublinha da tabela.** Entrada, saldo e parcela
+   ficam na linha do conjunto, em cinza pequeno, em vez de repetir os mesmos
+   números num bloco de termos abaixo. ~45 mm.
+2. **Prazo, garantia e validade viraram uma faixa de três colunas** em vez de
+   quatro blocos empilhados. ~30 mm.
+
+Mais os painéis de imagem da p2, de 66 e 64 mm para 53 e 50 mm.
+
+> Um detalhe que só apareceu na revisão: a nota *"medição no local antes do
+> corte"* tinha caído sob **Validade da proposta**, onde não é dela. Foi para o
+> prazo, que é o item que ela qualifica.
+
+A especificação técnica completa não sumiu do repositório — segue em
+`build-claudia.py` na lista `ESPEC`, pronta para voltar se um job maior pedir.
