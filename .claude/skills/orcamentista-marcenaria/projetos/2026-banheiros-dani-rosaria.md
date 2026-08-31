@@ -390,3 +390,41 @@ Dois pontos que valem ficar registrados:
   preço fechado ficou perto do que o rateio pedia.
 
 Painel: 45 linhas, carteira de **R$ 3.441.366**.
+
+---
+
+## Rodada 5 — a Giza fechada em R$ 13.900, sem separar ambientes [29/08]
+
+> *"O projeto da Giza, considere um preço de venda final de 13.900."*
+> *"Não separe os dois ambientes."*
+
+**Duas coisas diferentes num pedido só**, e o motor trata cada uma no seu lugar:
+
+- **preço** — `PRECO_FECHADO = 13900`, do **job**, não de cada armário;
+- **apresentação** — a tabela da proposta tem **uma linha**. A quebra por
+  ambiente continua sendo calculada, porque produção e painel precisam dela,
+  mas não vai para o cliente.
+
+| | custo direto | rateio a MC 40% | fechado |
+|---|--:|--:|--:|
+| Banheiro suíte | R$ 4.270 | R$ 13.700 | *(interno R$ 8.600)* |
+| Banheiro social | R$ 2.657 | R$ 8.500 | *(interno R$ 5.300)* |
+| **TOTAL** | **R$ 6.926** | R$ 22.200 | **R$ 13.900** |
+
+### ⚠⚠ MC real: 21,4% com RT
+
+É a **menor margem da carteira**. Os R$ 8.300 de diferença saem da margem, não
+do custo — nada mudou no levantamento, e o motor imprime o aviso na hora com o
+número que o rateio pediria.
+
+Um dado que pesa neste preço: **sem a RT a MC seria 30,2%**. Ou seja, a
+parceria com a arquiteta custa quase 9 pontos de margem aqui, porque a RT é
+percentual sobre o líquido e não acompanha a queda do preço. Em R$ 13.900 ela
+sozinha é **R$ 1.223** — mais do que toda a chapa do job, que é R$ 1.530.
+
+E este é o job em que duas adoções ★ ainda não conferidas empurram o custo:
+**Branco Ártico Ultra** e **porta de espelho de alumínio a R$ 700/m²**. Se o
+preço de compra de qualquer uma vier acima do adotado, a margem cai a partir
+de 21,4%, não de 40%.
+
+Painel: 45 linhas, carteira de **R$ 3.433.066**.

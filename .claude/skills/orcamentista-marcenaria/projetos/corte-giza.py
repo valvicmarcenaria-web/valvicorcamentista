@@ -332,11 +332,11 @@ for mc in ESCADA:
     PRECOS[mc] = (s, r)
     print(f'  {mc*100:>4.0f}%{"R$ "+brl(s,0):>13}{mc_conferida(s, CD)*100:>9.1f}%   '
           f'{"R$ "+brl(r,0):>13}{mc_conferida(r, CD)*100:>9.1f}%')
-# [Jonathan 25/08] "MC de 40% com rt em ambos" — fechado.
+# [Jonathan 25/08] "MC de 40% com rt em ambos" — era a MC pedida.
 REC, RT_FECHADO = 0.40, True
-INV = PRECOS[REC][1 if RT_FECHADO else 0]
+INV_MC = PRECOS[REC][1 if RT_FECHADO else 0]     # o que a MC de 40% pediria
 INV_SEM = PRECOS[REC][0]
-print(f'\n  ► FECHADO · MC {REC*100:.0f}% COM RT ....... R$ {brl(INV,0)}'
+print(f'\n  ► MC {REC*100:.0f}% COM RT pediria ....... R$ {brl(INV_MC,0)}'
       f'     [Jonathan 25/08]')
 print(f'    sem RT, referência interna ......... R$ {brl(INV_SEM,0)}')
 rm = INV_SEM/area_tot
@@ -348,17 +348,35 @@ if not 626 <= rm <= 834:
     print('    Espelheira de banheiro é móvel de pouca chapa e muito acessório.')
 
 print('\n' + '─'*W)
-print(f'INVESTIMENTO POR AMBIENTE  (MC {REC*100:.0f}% COM RT)')
+# ── PREÇO DE VENDA FECHADO PELO FUNDADOR ──────────────────────────────────
+# [Jonathan 29/08] "considere um preço de venda final de 13.900" e "não separe
+# os dois ambientes". O preço é do JOB, não de cada armário — a proposta sai
+# com UMA linha só. A quebra por ambiente continua sendo calculada aqui porque
+# a produção e o painel precisam dela, mas NÃO vai para o cliente.
+PRECO_FECHADO = 13900
+INV = PRECO_FECHADO
+
+print('INVESTIMENTO — preço fechado do job, NÃO separado na proposta')
 tots, linhas = 0, []
 for a in ordem:
     v = round(INV*cd_amb[a]/CD/100)*100          # rateio por CUSTO, não por área
     linhas.append([a, area_amb[a], cd_amb[a], v]); tots += v
 linhas[max(range(len(linhas)), key=lambda i: linhas[i][2])][3] += INV - tots
-print(f'  {"":38}{"m² de chapa":>12}{"custo direto":>15}{"investimento":>15}')
+print(f'  {"":38}{"m² de chapa":>12}{"custo direto":>15}{"interno":>15}')
 for a, ar, cd, v in linhas:
     print(f'  {a:<38}{ar:>9.2f} m²{"R$ "+brl(cd,0):>15}{"R$ "+brl(v,0):>15}')
 print(f'  {"TOTAL":<38}{area_tot:>9.2f} m²{"R$ "+brl(CD,0):>15}'
       f'{"R$ "+brl(INV,0):>15}')
+_mc = mc_conferida(INV, CD) - LIQF_*RT_PCT
+print(f'\n  ► INVESTIMENTO FECHADO ....... R$ {brl(INV,0)}     [Jonathan 29/08]')
+print(f'    MC real do job, com RT: {_mc*100:.1f}%   '
+      f'(o rateio puro daria R$ {brl(INV_MC,0)} a {REC*100:.0f}%)')
+if _mc < 0.35:
+    print(f'  ⚠⚠ MUITO ABAIXO DO PISO DE 35% DA CASA. O preço do job foi')
+    print(f'     fechado pelo fundador; os R$ {brl(INV_MC-INV,0)} de diferença saem da')
+    print( '     MARGEM, não do custo — nada mudou no levantamento.')
+    print(f'     Sem a RT a MC seria {(mc_conferida(INV, CD))*100:.1f}%: a RT sozinha')
+    print(f'     custa R$ {brl(INV*LIQF_*RT_PCT,0)} neste preço.')
 
 print('\n' + '─'*W)
 print(f'DÚVIDAS E CONFERÊNCIAS — {len(DUV)} itens')

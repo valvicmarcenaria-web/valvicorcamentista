@@ -50,13 +50,19 @@ def _n(pat):
     m = re.search(pat, _out)
     assert m, f'não achei {pat!r} no relatório do motor'
     return int(m.group(1).replace('.', ''))
-INV = _n(r'FECHADO · MC 40% COM RT \.+ R\$ ([\d.]+)')
+# [Jonathan 29/08] "considere um preço de venda final de 13.900". O total do
+# job é preço fechado do fundador, não mais o que a MC de 40% pediria — por
+# isso o build lê a linha do INVESTIMENTO FECHADO, e não a da escada de MC.
+INV = _n(r'INVESTIMENTO FECHADO \.+ R\$ ([\d.]+)')
 
 def _v(nome):
     # a linha do motor agora traz DUAS colunas em R$ — custo direto e
     # investimento. O que vai para a proposta é a SEGUNDA.
     return _n(re.escape(nome) + r'\s+[\d.,]+ m²\s+R\$ [\d.]+\s+R\$ ([\d.]+)')
 
+# [Jonathan 29/08] "não separe os dois ambientes". A quebra continua sendo
+# calculada — produção e painel precisam dela —, mas NÃO vai para o cliente:
+# a tabela da proposta tem uma linha só.
 SUITE  = _v('Banheiro suíte · armário aéreo')
 SOCIAL = _v('Banheiro social · armário aéreo')
 assert SUITE + SOCIAL == INV, (SUITE, SOCIAL, INV)
@@ -171,9 +177,10 @@ gar = ('<div class="gar"><div class="gar-h">'
        + ''.join(f'<div class="gar-l"><div class="k">{k}</div>'
                  f'<div class="v">{v}</div></div>'
                  for k, v in GARANTIA['linhas']) + '</div>')
-linhas = ''.join(f'<tr><td class="l">{nome}</td>'
-                 f'<td class="hi">R$ {brl(v)}</td></tr>'
-                 for nome, v, *_ in ITENS)
+# ⛔ UMA LINHA SÓ [Jonathan 29/08] — os dois ambientes não são separados.
+#    Com uma linha só, ela é a linha do total: vai no peso do total.
+linhas = ('<tr class="tot"><td class="l">Marcenaria dos dois banheiros'
+          '</td><td class="hi">R$ ' + brl(INV) + '</td></tr>')
 
 p1 = f"""<div class="page cover"><div class="cvfoto">
   <div class="top"><div class="cv-brand">Valvic Marcenaria</div></div>
@@ -211,10 +218,8 @@ p3 = f"""<div class="page"><div class="pad">
   <div class="rule"></div>
   <h2 class="h-sec">Investimento e garantia.</h2>
   <table class="inv" style="margin-top:6mm">
-    <tr><th class="l">Ambiente</th><th class="hi">Investimento</th></tr>
+    <tr><th class="l">Suíte e social, em conjunto</th><th class="hi">Investimento</th></tr>
     {linhas}
-    <tr class="tot"><td class="l">Total</td>
-      <td class="hi">R$ {brl(INV)}</td></tr>
   </table>
   <div class="box"><div class="t">O que está dentro do valor</div>
   <p>Fornecimento de material, produção em CNC e coladeira automática próprias, espelhos, iluminação em LED com perfil e driver, ferragem, transporte, entrega na obra e <strong>instalação e montagem por equipe própria da Valvic</strong>.</p></div>
