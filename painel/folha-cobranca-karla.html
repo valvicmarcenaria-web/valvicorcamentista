@@ -1,0 +1,256 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<title>Valvic · Folha de Cobrança — Karla</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0E2038;--navy2:#16314F;--gold:#C2A05A;--goldsoft:#d8bd80;
+      --goldbg:#F6EDD6;--ink:#1b2733;--muted:#6c7785;--line:#e8e3d8;
+      --ok:#2F7D4F;--okbg:#E7F1EA;--red:#B0413F;--redbg:#FBF1F0;
+      --blue:#2F5D8C;--bluebg:#EAF0F7}
+*{margin:0;padding:0;box-sizing:border-box}
+@page{size:A4 portrait;margin:0}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:#8a8a8a}
+.sheet{width:210mm;height:297mm;background:#fff;position:relative;overflow:hidden;
+       display:flex;flex-direction:column;page-break-after:always}
+.sheet:last-child{page-break-after:auto}
+@media print{body{background:#fff}.sheet{margin:0}}
+@media screen{.sheet{margin:8mm auto;box-shadow:0 2px 16px rgba(0,0,0,.3)}}
+
+.rh{background:var(--navy);color:#fff;padding:5mm 15mm 4.4mm;display:flex;
+    align-items:flex-end;justify-content:space-between}
+.rh .kx{font-size:6.4pt;letter-spacing:.22em;text-transform:uppercase;
+        color:var(--goldsoft);font-weight:600}
+.rh .tt{font-family:'Cormorant Garamond',serif;font-size:19pt;font-weight:600;
+        line-height:1.06;margin-top:.8mm}
+.rh .r{text-align:right;font-size:6.4pt;color:#9FB0C4;line-height:1.5}
+.rh .r b{color:#fff;font-weight:600}
+.gold-rule{height:1.1mm;background:linear-gradient(90deg,var(--gold),var(--goldsoft))}
+.body{flex:1;padding:5mm 15mm 3mm;display:flex;flex-direction:column;min-height:0}
+.rf{background:var(--goldbg);padding:2.2mm 15mm;font-size:6.2pt;color:#7A5B17;
+    display:flex;justify-content:space-between;align-items:center}
+
+.sec{display:flex;align-items:baseline;gap:3mm;margin:0 0 2.6mm}
+.sec .bar{width:6mm;height:1mm;background:var(--gold);align-self:center;flex-shrink:0}
+.sec .kx{font-size:6.4pt;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
+  font-weight:700;white-space:nowrap}
+.sec .tt{font-family:'Cormorant Garamond',serif;font-size:15pt;font-weight:600;
+  color:var(--navy);line-height:1.1}
+.sec2{font-family:'Cormorant Garamond',serif;font-size:12pt;font-weight:600;
+  color:var(--navy);margin:4.4mm 0 2mm;display:flex;align-items:center;gap:2.4mm}
+.sec2::before{content:'';width:4mm;height:.7mm;background:var(--gold);flex-shrink:0}
+
+p{font-size:8.8pt;line-height:1.58}
+p+p{margin-top:2.4mm}
+p b{color:var(--navy)}
+
+ul{list-style:none;padding-left:0}
+ul li{font-size:8.6pt;line-height:1.48;margin-bottom:1.6mm;position:relative;padding-left:5mm}
+ul li::before{content:'';position:absolute;left:0;top:1.8mm;width:1.8mm;height:1.8mm;
+  background:var(--goldsoft);transform:rotate(45deg)}
+ul li b{color:var(--navy);font-weight:700}
+
+.nota{background:var(--goldbg);border-left:1.2mm solid var(--gold);padding:2.6mm 3.6mm;
+  font-size:8.4pt;line-height:1.52;margin:3mm 0}
+.nota .h{font-size:6.4pt;letter-spacing:.16em;text-transform:uppercase;color:#7A5B17;
+  font-weight:800;margin-bottom:1.4mm}
+.nota b{color:var(--navy)}
+.nota.ok{background:var(--okbg);border-left-color:var(--ok)}
+.nota.ok .h{color:var(--ok)}
+.nota.at{background:var(--redbg);border-left-color:var(--red)}
+.nota.at .h{color:var(--red)}
+.nota.bl{background:var(--bluebg);border-left-color:var(--blue)}
+.nota.bl .h{color:var(--blue)}
+
+.fer{display:flex;gap:3mm;margin-top:2.6mm}
+.fer .c{flex:1;border:.3mm solid var(--line);border-top:1mm solid var(--navy2);
+  border-radius:1mm;padding:3mm 3.2mm;display:flex;flex-direction:column}
+.fer .n{font-family:'Cormorant Garamond',serif;font-size:15pt;font-weight:700;
+  color:var(--goldsoft);line-height:1}
+.fer .t{font-size:9.4pt;font-weight:800;color:var(--navy);margin-top:1.2mm;line-height:1.16}
+.fer .q{font-size:6pt;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  font-weight:700;margin-top:1.4mm}
+.fer .d{font-size:7.9pt;line-height:1.45;margin-top:1.6mm}
+.fer .d b{color:var(--navy)}
+
+table{width:100%;border-collapse:collapse;margin:2.2mm 0}
+th{background:var(--navy2);color:#fff;font-size:6.4pt;font-weight:600;letter-spacing:.06em;
+  padding:2mm 2mm;text-align:left;line-height:1.2}
+td{border:.25mm solid var(--line);padding:1.9mm 2mm;font-size:8.2pt;line-height:1.32;
+  vertical-align:top}
+td b{color:var(--navy)}
+tr:nth-child(even) td{background:#fafbfc}
+td.c{text-align:center;vertical-align:middle}
+td.n{text-align:center;font-weight:700;color:var(--muted);font-size:7.4pt;
+  vertical-align:middle}
+.cx{display:inline-block;width:4.4mm;height:4.4mm;border:.3mm solid #8b96a3;border-radius:.6mm}
+.pill{display:inline-block;font-size:6pt;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;padding:.7mm 1.6mm;border-radius:1mm;white-space:nowrap}
+.p-erro{background:var(--redbg);color:var(--red)}
+.p-rec{background:#B0413F;color:#fff}
+.p-mel{background:var(--bluebg);color:var(--blue)}
+.p-peca{background:var(--goldbg);color:#7A5B17}
+
+.assin{display:flex;gap:10mm;margin-top:auto;padding-top:7mm}
+.assin .a{flex:1;text-align:center}
+.assin .a .ln{border-top:.3mm solid var(--ink);margin-bottom:1.4mm}
+.assin .a .t{font-size:6.6pt;color:var(--muted);line-height:1.4}
+.local{font-size:8.4pt;margin-top:4mm}
+.local .l{display:inline-block;border-bottom:.25mm dotted #b9c2cc;width:44mm;margin:0 1.4mm}
+.local .s{display:inline-block;border-bottom:.25mm dotted #b9c2cc;width:11mm;margin:0 1.4mm}
+.anot{margin-top:auto;padding-top:4mm}
+.anot .h{font-size:6.2pt;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  font-weight:800;margin-bottom:2mm}
+.anot .l{border-bottom:.25mm solid var(--line);height:6.6mm}
+.duas{display:flex;gap:5mm}
+.duas>div{flex:1;min-width:0}
+.mini{width:100%;border-collapse:collapse;margin:2mm 0}
+.mini th{background:#eef1f4;color:var(--navy2);font-size:6pt;font-weight:700;
+  padding:1.5mm 1.6mm;border:.25mm solid var(--line);text-align:left;letter-spacing:.05em}
+.mini td{border:.25mm solid var(--line);padding:1.35mm 1.6mm;font-size:7.6pt;line-height:1.22}
+.mini td.n{width:7mm;text-align:center;color:var(--muted);font-weight:700;font-size:6.8pt}
+.mini td.c{width:10mm;text-align:center}
+.mini .cx{width:3.6mm;height:3.6mm}
+.mini tr:nth-child(even) td{background:#fafbfc}
+.bolha{background:#F7F9FB;border:.25mm solid var(--line);border-left:1.2mm solid var(--navy2);
+  border-radius:0 1.4mm 1.4mm 0;padding:2.2mm 3mm;font-size:7.8pt;line-height:1.46;
+  flex:1;white-space:pre-line}
+.bolha .q{font-size:6pt;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  font-weight:800;margin-bottom:1.2mm;white-space:normal}
+</style></head><body>
+
+<!-- ══════════ FRENTE ══════════ -->
+<section class="sheet">
+  <div class="rh">
+    <div><div class="kx">Administrativo · acompanhamento de produção</div>
+      <div class="tt">Folha de cobrança — Karla</div></div>
+    <div class="r"><b>VALVIC MARCENARIA</b><br>Deivison e Samuel<br>
+      Mês: ____ / ______</div>
+  </div>
+  <div class="gold-rule"></div>
+  <div class="body">
+
+    <div class="nota bl" style="margin-top:0">
+      <div class="h">Para que serve esta folha</div>
+      Depois das conversas de acompanhamento, ficaram <b>rotinas novas</b> e <b>correções de obra</b>
+      combinadas com o Deivison e com o Samuel. <b>Você não confere a qualidade do serviço — você
+      cobra a entrega e registra.</b> Se algo não for entregue duas semanas seguidas, leve à direção.
+    </div>
+
+    <div class="sec"><span class="bar"></span><span class="kx">Bloco 1</span>
+      <span class="tt">Rotinas — cobrar toda semana</span></div>
+    <table class="compacta">
+      <thead><tr><th style="width:52mm">O que</th><th style="width:26mm">De quem</th>
+        <th>Quando é devido</th><th style="width:12mm">S1</th><th style="width:12mm">S2</th>
+        <th style="width:12mm">S3</th><th style="width:12mm">S4</th></tr></thead>
+      <tbody>
+        <tr><td><b>Os 10 minutos da manhã</b></td><td>Deivison</td>
+          <td>Todo dia às 7h, com a equipe — quadro preenchido</td>
+          <td class="c"><span class="cx"></span></td><td class="c"><span class="cx"></span></td>
+          <td class="c"><span class="cx"></span></td><td class="c"><span class="cx"></span></td></tr>
+        <tr><td><b>Conferência de peça</b></td><td>Deivison</td>
+          <td>Ficha preenchida em todo módulo que sai da fábrica</td>
+          <td class="c"><span class="cx"></span></td><td class="c"><span class="cx"></span></td>
+          <td class="c"><span class="cx"></span></td><td class="c"><span class="cx"></span></td></tr>
+        <tr><td><b>Estudo prévio da obra</b></td><td>Samuel</td>
+          <td>7 dias antes do 1º dia de montagem</td>
+          <td class="c"><span class="cx"></span></td><td class="c"><span class="cx"></span></td>
+          <td class="c"><span class="cx"></span></td><td class="c"><span class="cx"></span></td></tr>
+        <tr><td><b>Lista de pendências de insumo</b></td><td>Samuel</td>
+          <td>5 dias antes — com prazo em cada item</td>
+          <td class="c"><span class="cx"></span></td><td class="c"><span class="cx"></span></td>
+          <td class="c"><span class="cx"></span></td><td class="c"><span class="cx"></span></td></tr>
+        <tr><td><b>Planejamento de execução</b></td><td>Samuel</td>
+          <td>3 dias antes — ordem dos ambientes</td>
+          <td class="c"><span class="cx"></span></td><td class="c"><span class="cx"></span></td>
+          <td class="c"><span class="cx"></span></td><td class="c"><span class="cx"></span></td></tr>
+        <tr><td><b>Relatório de fim de dia</b></td><td>Samuel</td>
+          <td>Todo dia — 3 linhas e uma foto no grupo</td>
+          <td class="c"><span class="cx"></span></td><td class="c"><span class="cx"></span></td>
+          <td class="c"><span class="cx"></span></td><td class="c"><span class="cx"></span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec" style="margin-top:4mm"><span class="bar"></span><span class="kx">Bloco 2</span>
+      <span class="tt">Correções de obra — cobrar até fechar</span></div>
+    <table class="compacta">
+      <thead><tr><th style="width:44mm">Obra</th><th style="width:24mm">Responsável</th>
+        <th style="width:16mm">Pontos</th><th style="width:26mm">Dia combinado</th>
+        <th style="width:26mm">Concluído em</th><th>Conferido por</th></tr></thead>
+      <tbody>
+        <tr><td><b>Cozinha da Karla</b></td><td>Deivison</td><td class="c"><b>21</b></td>
+          <td></td><td></td><td></td></tr>
+        <tr><td><b>Obra da Cristiane</b></td><td>Samuel</td><td class="c"><b>16</b></td>
+          <td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:7.8pt;color:var(--muted);line-height:1.45">
+      A lista item a item está no verso. <b>Correção fatiada em meia hora por dia não termina
+      nunca</b> — cobre um dia inteiro reservado, com o material já separado.</p>
+
+    <div class="sec" style="margin-top:4mm"><span class="bar"></span><span class="kx">Bloco 3</span>
+      <span class="tt">Como cobrar — pode copiar e enviar</span></div>
+    <div class="duas" style="margin-top:1mm">
+      <div class="bolha"><div class="q">Rotina · segunda de manhã</div>Oi, [nome]! Bom dia 🙂
+Confirmando o combinado da semana: o que você me manda hoje?
+Se precisar de algo da minha parte, me fala que eu resolvo.</div>
+      <div class="bolha"><div class="q">Quando não veio · no mesmo dia</div>Oi, [nome]!
+Não chegou [o item] de hoje. Consegue mandar ainda hoje?
+Se tiver algo travando, me diz que eu levo para a direção.</div>
+    </div>
+
+    <div class="nota at">
+      <div class="h">Três coisas que não são resposta</div>
+      <b>"Depois eu te mando"</b> sem dia · <b>"Está quase pronto"</b> sem o documento na mão ·
+      <b>silêncio</b>. Nos três casos, registre no bloco 4 e cobre de novo no dia seguinte.
+      <b>Na segunda vez seguida, leve à direção</b> — não é atrito seu, é o combinado deles.
+    </div>
+
+    <div class="anot">
+      <div class="h">Bloco 4 · Registro — data · quem · o que foi dito</div>
+      <div class="l"></div><div class="l"></div><div class="l"></div>
+    </div>
+  </div>
+  <div class="rf"><span>Uma folha por mês · guardar as anteriores</span>
+    <span>VALVIC · COBRANÇA &nbsp;·&nbsp; 1 / 2</span></div>
+</section>
+
+<!-- ══════════ VERSO ══════════ -->
+<section class="sheet">
+  <div class="rh">
+    <div><div class="kx">Verso · o que está em aberto</div>
+      <div class="tt">As duas listas, ponto a ponto</div></div>
+    <div class="r"><b>VALVIC MARCENARIA</b><br>Marque conforme forem sendo concluídos</div>
+  </div>
+  <div class="gold-rule"></div>
+  <div class="body">
+    <p style="font-size:8pt;color:var(--muted);line-height:1.45;margin-bottom:2mm">
+      Estas listas são as mesmas dos documentos de acompanhamento. Aqui elas servem só para você
+      saber <b>o que ainda está em aberto</b> e conseguir cobrar item a item quando precisar.
+      <b>Quem marca o item como concluído na obra é quem confere, não você</b> — aqui é só o seu
+      acompanhamento.</p>
+    <div class="duas">
+      <div>
+        <div class="sec2" style="margin-top:1mm">Cozinha da Karla · Deivison</div>
+        <table class="mini">
+          <thead><tr><th style="width:7mm">Nº</th><th>Ponto</th><th style="width:10mm">OK</th></tr></thead>
+          <tbody><tr><td class="n">1</td><td>Vão da porta de tempero</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">2</td><td>Furo na fita azul do montante</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">3</td><td>Puxadores nos topos das laterais</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">4</td><td>Dobradiças sem acabamento</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">5</td><td>Tapa-furos ausentes</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">6</td><td>Recorte da barra da lava-louça</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">7</td><td>Prateleira do vão da pia</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">8</td><td>Gaveta divisora de talheres</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">9</td><td>Regulagem da báscula do micro-ondas</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">10</td><td>Frisos entre nichos — recorrente</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">11</td><td>Riscos de caneta</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">12</td><td>Fita crepe no teto e na cristaleira</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">13</td><td>Arremate da lateral do forno</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">14</td><td>Furo do suporte de prateleira</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">15</td><td>Fechamento lateral da cristaleira</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">16</td><td>Detalhe da porta das básculas</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">17</td><td>Interruptores faltantes</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">18</td><td>Tomada da lava-louças</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">19</td><td>Fechamento inferior da cristaleira</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">20</td><td>Máscara da lava-louça</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">21</td><td>Fechamento atrás da lixeira</td><td class="c"><span class="cx"></span></td></tr></tbody>
+        </table>
+      </div>
+      <div>
+        <div class="sec2" style="margin-top:1mm">Obra da Cristiane · Samuel</div>
+        <table class="mini">
+          <thead><tr><th style="width:7mm">Nº</th><th>Ponto</th><th style="width:10mm">OK</th></tr></thead>
+          <tbody><tr class="grp"><td colspan="3">Quarto Júlia</td></tr><tr><td class="n">1</td><td>Espelho da penteadeira</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">2</td><td>Acabamento do perfil de LED</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">3</td><td>Base da torre</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">4</td><td>Perfil de alumínio amassado</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">5</td><td>Pulsador da porta</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">6</td><td>Arremates do painel de TV</td><td class="c"><span class="cx"></span></td></tr><tr class="grp"><td colspan="3">Suíte do casal</td></tr><tr><td class="n">7</td><td>Alumínio ondulado da cabeceira</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">8</td><td>Frisos entre painéis</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">9</td><td>Tampas de dobradiça</td><td class="c"><span class="cx"></span></td></tr><tr class="grp"><td colspan="3">Quarto Victor</td></tr><tr><td class="n">10</td><td>Friso da cabeceira</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">11</td><td>Alumínio da base do painel</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">12</td><td>Alumínio ondulado do perfil</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">13</td><td>Prateleiras com serralheria e LED</td><td class="c"><span class="cx"></span></td></tr><tr class="grp"><td colspan="3">Sala</td></tr><tr><td class="n">14</td><td>Instalação da porta do elevador</td><td class="c"><span class="cx"></span></td></tr><tr><td class="n">15</td><td>Ferros das garrafas de vinho</td><td class="c"><span class="cx"></span></td></tr><tr class="grp"><td colspan="3">Geral</td></tr><tr><td class="n">16</td><td>Tampas de dobradiça em vários pontos</td><td class="c"><span class="cx"></span></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="anot">
+      <div class="h">Anotações</div>
+      <div class="l"></div><div class="l"></div><div class="l"></div>
+    </div>
+  </div>
+  <div class="rf"><span>Cozinha da Karla · 21 pontos &nbsp;·&nbsp; Obra da Cristiane · 16 pontos</span>
+    <span>VALVIC · COBRANÇA &nbsp;·&nbsp; 2 / 2</span></div>
+</section>
+</body></html>
