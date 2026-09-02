@@ -3,15 +3,15 @@
 
 Valores lidos de `corte-lidia.py`. [Jonathan 02/09] COM RT, MC POR ITEM:
 
-  Investimento .................... R$ 27.000
+  Investimento .................... R$ 30.300
   Cristaleira ..................... R$ 10.700   MC 30%
   Painel do jantar ................  R$ 8.100   MC 40%
-  Painel e rack da TV .............  R$ 8.200   MC 40%
+  Painel e rack da TV ............. R$ 11.500   ◄ preço fechado (implica 49,1%)
 
-O preço não sai mais de uma MC única do job: cada item é precificado pela SUA
-margem sobre o SEU custo direto, e o total é a soma. O rack e o painel da TV
-são a mesma parede e viraram UM item, também a pedido dele. A MC misturada do
-job dá 36,0% com RT.
+O preço não sai de uma MC única do job: cada item é precificado pela SUA margem
+sobre o SEU custo direto, e o total é a soma. O rack e o painel da TV são a
+mesma parede e viraram UM item, e depois o Jonathan fechou o preço desse item
+a dedo. A MC misturada do job dá 39,9% com RT.
 
 FERRAGEM [Jonathan 02/09] "telescópica e hettich": corrediça telescópica com
 amortecimento e dobradiça Hettich Sensys. A telescópica leva a garantia da

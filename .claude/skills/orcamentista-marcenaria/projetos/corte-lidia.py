@@ -409,6 +409,10 @@ UNIR = {'Rack da TV': 'Painel e rack da TV',
 MC_ITEM = {'Cristaleira': 0.30,
            'Painel do jantar': 0.40,
            'Painel e rack da TV': 0.40}
+# [Jonathan 02/09] "vamos colocar o painel e rack a 11.500" — preço de VENDA
+# fechado, por cima da MC do item. A MC que ele implica é calculada e impressa,
+# não escondida.
+PRECO_FIXO = {'Painel e rack da TV': 11500}
 
 cd_item, area_item, ordem_item = defaultdict(float), defaultdict(float), []
 for a in ordem:
@@ -423,11 +427,17 @@ print('INVESTIMENTO POR ITEM — MC fechada item a item, com RT')
 print(f'  {"":26}{"m² chapa":>10}{"custo direto":>14}{"MC":>7}{"investimento":>15}')
 PRECO_ITEM, INV = {}, 0
 for a in ordem_item:
-    mc = MC_ITEM[a]
-    v = round(cd_item[a]/div(mc, RT_FECHADO)/100)*100
+    if a in PRECO_FIXO:                  # preço fechado manda na MC do item
+        v = PRECO_FIXO[a]
+        mc = mc_conferida(v, cd_item[a]) - (LIQF_*RT_PCT if RT_FECHADO else 0)
+        marca = '  ◄ preço fechado'
+    else:
+        mc = MC_ITEM[a]
+        v = round(cd_item[a]/div(mc, RT_FECHADO)/100)*100
+        marca = ''
     PRECO_ITEM[a] = v; INV += v
     print(f'  {a:<26}{area_item[a]:>7.2f} m²{"R$ "+brl(cd_item[a],0):>14}'
-          f'{mc*100:>6.0f}%{"R$ "+brl(v,0):>15}')
+          f'{mc*100:>6.0f}%{"R$ "+brl(v,0):>15}{marca}')
 print(f'  {"TOTAL":<26}{area_tot:>7.2f} m²{"R$ "+brl(CD,0):>14}{"":>7}'
       f'{"R$ "+brl(INV,0):>15}')
 _mcjob = mc_conferida(INV, CD) - LIQF_*RT_PCT
@@ -435,6 +445,10 @@ INV_SEM = round(CD/(BASE - _mcjob)/100)*100     # o mesmo job, sem a RT
 print(f'\n  ► INVESTIMENTO FECHADO ....... R$ {brl(INV,0)}     [Jonathan 02/09]')
 print(f'    MC do JOB, misturada: {_mcjob*100:.1f}% com RT'
       f'   (era 35% cravada em tudo, R$ {brl(PRECOS[0.35][1],0)})')
+for a in PRECO_FIXO:
+    _m = mc_conferida(PRECO_FIXO[a], cd_item[a]) - LIQF_*RT_PCT
+    print(f'    ◄ "{a}" com preço fechado em R$ {brl(PRECO_FIXO[a],0)} '
+          f'implica MC de {_m*100:.1f}%')
 if _mcjob < 0.35:
     print('  ⚠ ABAIXO DO PISO DE 35% DA CASA — a mistura das margens derrubou')
     print('    a MC do job. Registrado para não ser lido como erro de motor.')

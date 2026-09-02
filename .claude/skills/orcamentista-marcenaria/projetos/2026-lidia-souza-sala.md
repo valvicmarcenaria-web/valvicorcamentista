@@ -18,24 +18,29 @@ O preço deixou de sair de uma MC única do job: **cada item é precificado pela
 sua margem sobre o seu custo direto**, e o total é a soma. O rack e o painel da
 TV são a mesma parede e viraram **um item só**.
 
+E logo em seguida: *"vamos colocar o painel e rack a 11.500"* — preço de venda
+fechado a dedo nesse item, por cima da MC.
+
 | Item | m² de chapa | custo direto | MC | investimento |
 |---|--:|--:|--:|--:|
 | Cristaleira | 7,70 | R$ 4.421 | **30%** | **R$ 10.700** |
 | Painel do jantar | 9,48 | R$ 2.528 | **40%** | **R$ 8.100** |
-| Painel e rack da TV | 11,05 | R$ 2.546 | **40%** | **R$ 8.200** |
-| **TOTAL** | **28,23** | **R$ 9.496** | *36,0%* | **R$ 27.000** |
+| Painel e rack da TV | 11,05 | R$ 2.546 | *49,1%* | **R$ 11.500** ◄ fechado |
+| **TOTAL** | **28,23** | **R$ 9.496** | *39,9%* | **R$ 30.300** |
 
-**A MC misturada do job dá 36,0% com RT** — acima do piso de 35% da casa. E o
-total subiu, não caiu: a cristaleira perdeu 5 pontos, mas os dois painéis
-ganharam 5 cada, e eles somam mais custo direto do que ela.
+**A MC misturada do job dá 39,9% com RT.** O motor calcula e imprime a MC que
+o preço fechado implica (49,1%) em vez de escondê-la — do mesmo jeito que, na
+Flaviana, imprimiu o aviso quando o preço fechado derrubou a margem. A conta
+funciona nos dois sentidos.
 
-13 chapas, aproveitamento médio 43%. **R$/m² 765 sem RT — dentro da faixa da
-casa (626–834)**, o que para um job com vidro, LED e adega é uma boa validação:
-aqui a chapa realmente domina, ao contrário das espelheiras de banheiro.
+13 chapas, aproveitamento médio 43%. **R$/m² 840 sem RT — 6 acima do teto da
+faixa da casa (626–834).** É excursão de PREÇO, não de levantamento: aos
+R$ 27.000 da rodada anterior o índice dava 765, no meio da faixa.
 
 > A cristaleira é o item de **maior custo direto** (R$ 4.421 dos R$ 9.496 do
-> job) e é justamente o que ficou com a menor margem. Vale saber: cada ponto de
-> MC nela vale ~R$ 220 no preço final.
+> job) e é o que ficou com a menor margem. Cada ponto de MC nela vale ~R$ 220
+> no preço final. Já a parede da TV, que custa R$ 2.546, hoje responde por
+> R$ 11.500 — é ela que sustenta a margem do job.
 
 ## O escopo, em duas paredes
 
