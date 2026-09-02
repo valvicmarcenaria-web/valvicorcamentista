@@ -395,30 +395,54 @@ for mc in ESCADA:
     PRECOS[mc] = (s, r)
     print(f'  {mc*100:>4.0f}%{"R$ "+brl(s,0):>13}{mc_conferida(s, CD)*100:>9.1f}%   '
           f'{"R$ "+brl(r,0):>13}{mc_conferida(r, CD)*100:>9.1f}%')
-# [Jonathan 02/09] "Com RT · MC de 35%"
-REC, RT_FECHADO = 0.35, True
-INV = PRECOS[REC][1 if RT_FECHADO else 0]
-INV_SEM = PRECOS[REC][0]
+# ── MC POR ITEM, NÃO DO JOB [Jonathan 02/09] ─────────────────────────────
+#   "o rack e o painel da sala pode considerar uma MC de 40% e unifique o item
+#    para que ambos sejam um único valor / diminua a MC da cristaleira para 30%
+#    e o painel suba para 40%"
+#
+#   O preço deixa de sair de uma MC única do job: cada item é precificado pela
+#   SUA margem sobre o SEU custo direto, e o total é a soma. O rack e o painel
+#   da TV são a mesma parede e saem como UM item na proposta.
+RT_FECHADO = True
+UNIR = {'Rack da TV': 'Painel e rack da TV',
+        'Painel da TV': 'Painel e rack da TV'}
+MC_ITEM = {'Cristaleira': 0.30,
+           'Painel do jantar': 0.40,
+           'Painel e rack da TV': 0.40}
+
+cd_item, area_item, ordem_item = defaultdict(float), defaultdict(float), []
+for a in ordem:
+    k = UNIR.get(a, a)
+    if k not in ordem_item: ordem_item.append(k)
+    cd_item[k] += cd_amb[a]; area_item[k] += area_amb[a]
+assert abs(sum(cd_item.values()) - CD) < 0.01
+assert set(cd_item) == set(MC_ITEM), (set(cd_item), set(MC_ITEM))
+
+print('\n' + '─'*W)
+print('INVESTIMENTO POR ITEM — MC fechada item a item, com RT')
+print(f'  {"":26}{"m² chapa":>10}{"custo direto":>14}{"MC":>7}{"investimento":>15}')
+PRECO_ITEM, INV = {}, 0
+for a in ordem_item:
+    mc = MC_ITEM[a]
+    v = round(cd_item[a]/div(mc, RT_FECHADO)/100)*100
+    PRECO_ITEM[a] = v; INV += v
+    print(f'  {a:<26}{area_item[a]:>7.2f} m²{"R$ "+brl(cd_item[a],0):>14}'
+          f'{mc*100:>6.0f}%{"R$ "+brl(v,0):>15}')
+print(f'  {"TOTAL":<26}{area_tot:>7.2f} m²{"R$ "+brl(CD,0):>14}{"":>7}'
+      f'{"R$ "+brl(INV,0):>15}')
+_mcjob = mc_conferida(INV, CD) - LIQF_*RT_PCT
+INV_SEM = round(CD/(BASE - _mcjob)/100)*100     # o mesmo job, sem a RT
 print(f'\n  ► INVESTIMENTO FECHADO ....... R$ {brl(INV,0)}     [Jonathan 02/09]')
-print(f'    MC {REC*100:.0f}% COM RT · sem RT, referência interna: R$ {brl(INV_SEM,0)}')
+print(f'    MC do JOB, misturada: {_mcjob*100:.1f}% com RT'
+      f'   (era 35% cravada em tudo, R$ {brl(PRECOS[0.35][1],0)})')
+if _mcjob < 0.35:
+    print('  ⚠ ABAIXO DO PISO DE 35% DA CASA — a mistura das margens derrubou')
+    print('    a MC do job. Registrado para não ser lido como erro de motor.')
 rm = INV_SEM/area_tot
 print(f'  R$/m² de chapa: {rm:.0f} sem RT   (faixa da casa: 626–834)')
 if not 626 <= rm <= 834:
     print(f'  ⚠ FORA DA FAIXA — conferir. Vidro, LED, adega e perfil somam '
           f'R$ {brl(custo_terc+custo_led,0)}.')
-
-print('\n' + '─'*W)
-print('INVESTIMENTO POR CONJUNTO')
-tots, linhas = 0, []
-for a in ordem:
-    v = round(INV*cd_amb[a]/CD/100)*100          # rateio por CUSTO, não por área
-    linhas.append([a, area_amb[a], cd_amb[a], v]); tots += v
-linhas[max(range(len(linhas)), key=lambda i: linhas[i][2])][3] += INV - tots
-print(f'  {"":28}{"m² de chapa":>12}{"custo direto":>15}{"investimento":>15}')
-for a, ar, cd, v in linhas:
-    print(f'  {a:<28}{ar:>9.2f} m²{"R$ "+brl(cd,0):>15}{"R$ "+brl(v,0):>15}')
-print(f'  {"TOTAL":<28}{area_tot:>9.2f} m²{"R$ "+brl(CD,0):>15}'
-      f'{"R$ "+brl(INV,0):>15}')
 
 print('\n' + '─'*W)
 print(f'DÚVIDAS E CONFERÊNCIAS — {len(DUV)} itens')

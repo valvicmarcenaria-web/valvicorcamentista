@@ -8,19 +8,34 @@ nas 8 folhas: o caderno foi lido por **rasterização a 200 dpi com rotação de
 [Jonathan 02/09] **COM RT · MC 35% · 60 dias corridos · corrediça telescópica
 e dobradiça Hettich.**
 
-## Investimento — R$ 26.200
+## Investimento — R$ 27.000 · MC por item [Jonathan 02/09]
 
-| Conjunto | m² de chapa | custo direto | investimento |
-|---|--:|--:|--:|
-| Cristaleira | 7,70 | R$ 4.421 | **R$ 12.200** |
-| Painel do jantar | 9,48 | R$ 2.528 | **R$ 7.000** |
-| Rack da TV | 5,09 | R$ 1.636 | **R$ 4.500** |
-| Painel da TV | 5,96 | R$ 910 | **R$ 2.500** |
-| **TOTAL** | **28,23** | **R$ 9.496** | **R$ 26.200** |
+> *"O rack e o painel da sala pode considerar uma MC de 40% e unifique o item
+> para que ambos sejam um único valor. Diminua a MC da cristaleira para 30% e
+> o painel suba para 40%."*
 
-13 chapas, aproveitamento médio 43%. **R$/m² 747 sem RT — dentro da faixa da
+O preço deixou de sair de uma MC única do job: **cada item é precificado pela
+sua margem sobre o seu custo direto**, e o total é a soma. O rack e o painel da
+TV são a mesma parede e viraram **um item só**.
+
+| Item | m² de chapa | custo direto | MC | investimento |
+|---|--:|--:|--:|--:|
+| Cristaleira | 7,70 | R$ 4.421 | **30%** | **R$ 10.700** |
+| Painel do jantar | 9,48 | R$ 2.528 | **40%** | **R$ 8.100** |
+| Painel e rack da TV | 11,05 | R$ 2.546 | **40%** | **R$ 8.200** |
+| **TOTAL** | **28,23** | **R$ 9.496** | *36,0%* | **R$ 27.000** |
+
+**A MC misturada do job dá 36,0% com RT** — acima do piso de 35% da casa. E o
+total subiu, não caiu: a cristaleira perdeu 5 pontos, mas os dois painéis
+ganharam 5 cada, e eles somam mais custo direto do que ela.
+
+13 chapas, aproveitamento médio 43%. **R$/m² 765 sem RT — dentro da faixa da
 casa (626–834)**, o que para um job com vidro, LED e adega é uma boa validação:
 aqui a chapa realmente domina, ao contrário das espelheiras de banheiro.
+
+> A cristaleira é o item de **maior custo direto** (R$ 4.421 dos R$ 9.496 do
+> job) e é justamente o que ficou com a menor margem. Vale saber: cada ponto de
+> MC nela vale ~R$ 220 no preço final.
 
 ## O escopo, em duas paredes
 

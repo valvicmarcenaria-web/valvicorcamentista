@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 """LÍDIA DE SOUZA — PROPOSTA ILUSTRADA, 4 páginas A4.
 
-Valores lidos de `corte-lidia.py`. [Jonathan 02/09] COM RT · MC 35%.
+Valores lidos de `corte-lidia.py`. [Jonathan 02/09] COM RT, MC POR ITEM:
 
-  Investimento .................... R$ 26.200
-  Painel do jantar ................  R$ 7.000
-  Cristaleira ..................... R$ 12.200
-  Painel da TV ....................  R$ 2.500
-  Rack da TV ......................  R$ 4.500
+  Investimento .................... R$ 27.000
+  Cristaleira ..................... R$ 10.700   MC 30%
+  Painel do jantar ................  R$ 8.100   MC 40%
+  Painel e rack da TV .............  R$ 8.200   MC 40%
+
+O preço não sai mais de uma MC única do job: cada item é precificado pela SUA
+margem sobre o SEU custo direto, e o total é a soma. O rack e o painel da TV
+são a mesma parede e viraram UM item, também a pedido dele. A MC misturada do
+job dá 36,0% com RT.
 
 FERRAGEM [Jonathan 02/09] "telescópica e hettich": corrediça telescópica com
 amortecimento e dobradiça Hettich Sensys. A telescópica leva a garantia da
@@ -46,7 +50,9 @@ def _n(pat):
     return int(m.group(1).replace('.', ''))
 INV = _n(r'INVESTIMENTO FECHADO \.+ R\$ ([\d.]+)')
 def _v(nome):
-    return _n(re.escape(nome) + r'\s+[\d.,]+ m²\s+R\$ [\d.]+\s+R\$ ([\d.]+)')
+    # a linha do motor traz m², custo direto, MC do item e investimento.
+    # O que vai para a proposta é o ÚLTIMO campo.
+    return _n(re.escape(nome) + r'\s+[\d.,]+ m²\s+R\$ [\d.]+\s+\d+%\s+R\$ ([\d.]+)')
 
 # ⛔ SEM UMA ÚNICA COTA. Onde a dimensão importa, ela é dita em palavras.
 ITENS = [
@@ -59,13 +65,13 @@ ITENS = [
   'Tamponamento em MDF amadeirado de parede a parede, com o vão da cristaleira '
   'recortado nele. Bordas em meia esquadria e perfil de alumínio correndo na '
   'base.'),
- ('Rack da TV', _v('Rack da TV'),
-  'Suspenso, com frentes ripadas: uma báscula com frente vazada sobre pistão a '
-  'gás e dois gavetões em corrediça com amortecimento. O puxador é o próprio '
-  'ripado. Nichos abertos nas duas pontas e bordas arredondadas.'),
- ('Painel da TV', _v('Painel da TV'),
-  'Tamponamento em MDF claro acima do rodapé, com recorte e passa-cabo '
-  'previstos para a televisão. Bordas em meia esquadria.'),
+ ('Painel e rack da TV', _v('Painel e rack da TV'),
+  'A parede inteira, num item só. Tamponamento em MDF claro acima do rodapé, '
+  'com recorte e passa-cabo previstos para a televisão, e sobre ele o rack '
+  'suspenso em amadeirado, de frentes ripadas: uma báscula com frente vazada '
+  'sobre pistão a gás e dois gavetões em corrediça com amortecimento. O '
+  'puxador é o próprio ripado. Nichos abertos nas duas pontas e bordas '
+  'arredondadas. Bordas dos dois em meia esquadria.'),
 ]
 assert sum(v for _, v, _d in ITENS) == INV, (ITENS, INV)
 
@@ -176,7 +182,7 @@ p1 = f"""<div class="page cover"><div class="cvfoto">
     <div class="cv-t">{CLIENTE}</div>
     <div class="cv-s">{OBRA} · sobre o caderno de marcenaria da {ARQ}</div>
     <div class="cv-meta">
-      <div><div class="k">Escopo</div><div class="v">4 conjuntos, 2 paredes</div></div>
+      <div><div class="k">Escopo</div><div class="v">Duas paredes inteiras</div></div>
       <div><div class="k">Prazo de entrega</div><div class="v">{PRAZO}</div></div>
       <div><div class="k">Validade</div><div class="v">{VALIDADE}</div></div>
     </div>
@@ -186,10 +192,12 @@ p1 = f"""<div class="page cover"><div class="cvfoto">
 p2 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">Escopo</div>
   <div class="rule"></div>
-  <h2 class="h-sec">Quatro conjuntos, duas paredes.</h2>
+  <h2 class="h-sec">Duas paredes inteiras.</h2>
   <p class="lead" style="margin-top:4mm">O levantamento foi feito sobre as oito
   pranchas do caderno — planta, elevações externas e internas, cortes e o
-  detalhe da báscula. O que está descrito abaixo é o que será executado.</p>
+  detalhe da báscula. A parede do jantar vai em dois itens, porque a cristaleira
+  é um móvel e o painel é outro; a da TV vai num só, porque o rack nasce do
+  painel. O que está descrito abaixo é o que será executado.</p>
   <div style="margin-top:5mm">{cj}</div>
   <div class="ph banda" style="margin-top:7mm;height:76mm">
     <img src="{{IMG}}/sala-jantar.png" style="object-position:center 55%" alt="">
