@@ -24,12 +24,17 @@ fechado a dedo nesse item, por cima da MC.
 E na terceira rodada a ferragem mudou (ver abaixo), levando o custo direto
 junto:
 
+E na quarta, a parede da TV voltou a aparecer repartida entre os dois móveis:
+
 | Item | m² de chapa | custo direto | MC | à vista | 6× sem juros |
 |---|--:|--:|--:|--:|--:|
 | Cristaleira | 7,70 | R$ 4.486 | **30%** | **R$ 10.900** | R$ 11.990 |
 | Painel do jantar | 9,48 | R$ 2.514 | **40%** | **R$ 8.100** | R$ 8.910 |
-| Painel e rack da TV | 11,05 | R$ 2.926 | *45,8%* | **R$ 11.500** ◄ fechado | R$ 12.650 |
+| Rack da TV | 5,09 | R$ 2.021 | *45,8%* | **R$ 7.900** ◄ | R$ 8.690 |
+| Painel da TV | 5,96 | R$ 905 | *45,8%* | **R$ 3.600** ◄ | R$ 3.960 |
 | **TOTAL** | **28,23** | **R$ 9.926** | *38,7%* | **R$ 30.500** | **R$ 33.550** |
+
+◄ = os dois saem do preço fechado da PAREDE em R$ 11.500.
 
 **A MC misturada do job dá 38,7% com RT.** O motor calcula e imprime a MC que
 o preço fechado implica (49,1%) em vez de escondê-la — do mesmo jeito que, na
@@ -161,3 +166,31 @@ pendências** — não é mais premissa da casa, é decisão dele.
 > do HTML final pode conter chave literal.** E a faixa estava cortando na
 > altura do sofá com a legenda prometendo a cristaleira — numa faixa de 2,6 de
 > proporção sobre imagem de 1,33 o corte é vertical, e só o Y escolhe a fatia.
+
+
+---
+
+## Rodada 4 — a parede da TV, repartida [Jonathan 02/09]
+
+> *"Agora vamos separar o custo do rack do painel novamente, mantendo as
+> devidas proporções."*
+
+O preço fechado continua sendo **da parede** — R$ 11.500 —, mas agora aparece
+dividido entre os dois móveis. A divisão é pela **proporção do custo direto**,
+que é o mesmo critério de rateio que a casa usa desde 29/08:
+
+| | custo direto | % da parede | investimento |
+|---|--:|--:|--:|
+| Rack da TV | R$ 2.021 | **69,1%** | **R$ 7.900** |
+| Painel da TV | R$ 905 | **30,9%** | **R$ 3.600** |
+| **Parede** | **R$ 2.926** | 100% | **R$ 11.500** |
+
+Como a divisão é proporcional ao custo, **os dois saem com a mesma MC** —
+45,8%, a mesma da parede inteira. O total do job não se moveu.
+
+No motor isso virou um conceito novo, `GRUPO_FIXO`, ao lado do `PRECO_FIXO`
+que já existia: um preço fechado que vale para um **conjunto de itens** e é
+repartido por custo, com a sobra de arredondamento indo para o de maior custo e
+um `assert` de que a soma bate com o total fechado. É mais honesto do que fixar
+dois preços a dedo — se o custo de um deles mudar, a repartição se ajusta
+sozinha e a parede continua valendo R$ 11.500.

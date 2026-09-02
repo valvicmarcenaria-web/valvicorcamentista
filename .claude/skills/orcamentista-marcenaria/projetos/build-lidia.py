@@ -3,15 +3,18 @@
 
 Valores lidos de `corte-lidia.py`. [Jonathan 02/09] COM RT, MC POR ITEM:
 
-  Investimento .................... R$ 30.300
-  Cristaleira ..................... R$ 10.700   MC 30%
+  Investimento .................... R$ 30.500
+  Cristaleira ..................... R$ 10.900   MC 30%
   Painel do jantar ................  R$ 8.100   MC 40%
-  Painel e rack da TV ............. R$ 11.500   ◄ preço fechado (implica 49,1%)
+  Rack da TV ......................  R$ 7.900 ┐ preço fechado da PAREDE em
+  Painel da TV ....................  R$ 3.600 ┘ R$ 11.500 (implica 45,8%),
+                                                repartido pela proporção do custo
 
 O preço não sai de uma MC única do job: cada item é precificado pela SUA margem
-sobre o SEU custo direto, e o total é a soma. O rack e o painel da TV são a
-mesma parede e viraram UM item, e depois o Jonathan fechou o preço desse item
-a dedo. A MC misturada do job dá 39,9% com RT.
+sobre o SEU custo direto, e o total é a soma. A parede da TV teve o preço
+fechado a dedo em R$ 11.500 e depois voltou a aparecer repartida entre o rack e
+o painel — a repartição é pela PROPORÇÃO DO CUSTO DIRETO, o mesmo critério de
+rateio da casa desde 29/08. A MC misturada do job dá 38,7% com RT.
 
 FERRAGEM [Jonathan 02/09, 2ª rodada] "troque corrediças telescópicas para
 oculta da Hettich, os pistões para articuladores (não precisa falar marca)".
@@ -73,13 +76,15 @@ ITENS = [
   'Tamponamento em MDF amadeirado de parede a parede, com o vão da cristaleira '
   'recortado nele. Bordas em meia esquadria e perfil de alumínio correndo na '
   'base.'),
- ('Painel e rack da TV', _v('Painel e rack da TV'),
-  'A parede inteira, num item só. Tamponamento em MDF claro acima do rodapé, '
-  'com recorte e passa-cabo previstos para a televisão, e sobre ele o rack '
-  'suspenso em amadeirado, de frentes ripadas: uma báscula com frente vazada '
+ ('Rack da TV', _v('Rack da TV'),
+  'Suspenso em amadeirado, com frentes ripadas: uma báscula com frente vazada '
   'sobre articulador com amortecimento e dois gavetões em corrediça oculta. O '
   'puxador é o próprio ripado. Nichos abertos nas duas pontas e bordas '
-  'arredondadas. Bordas dos dois em meia esquadria.'),
+  'arredondadas.'),
+ ('Painel da TV', _v('Painel da TV'),
+  'Tamponamento em MDF claro acima do rodapé, de parede a parede, com recorte '
+  'e passa-cabo previstos para a televisão. Bordas em meia esquadria. É nele '
+  'que o rack se apoia.'),
 ]
 assert sum(v for _, v, _d in ITENS) == INV, (ITENS, INV)
 
@@ -233,9 +238,8 @@ p2 = f"""<div class="page"><div class="pad">
   <h2 class="h-sec">Duas paredes inteiras.</h2>
   <p class="lead" style="margin-top:4mm">O levantamento foi feito sobre as oito
   pranchas do caderno — planta, elevações externas e internas, cortes e o
-  detalhe da báscula. A parede do jantar vai em dois itens, porque a cristaleira
-  é um móvel e o painel é outro; a da TV vai num só, porque o rack nasce do
-  painel. O que está descrito abaixo é o que será executado.</p>
+  detalhe da báscula. Cada móvel com o seu valor: dois na parede do jantar,
+  dois na da TV. O que está descrito abaixo é o que será executado.</p>
   <div style="margin-top:5mm">{cj}</div>
   <div class="ph banda" style="margin-top:7mm;height:76mm">
     <img src="{{IMG}}/sala-jantar.png" style="object-position:center 55%" alt="">

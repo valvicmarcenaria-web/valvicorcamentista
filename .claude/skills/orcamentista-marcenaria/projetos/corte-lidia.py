@@ -414,15 +414,18 @@ for mc in ESCADA:
 #   SUA margem sobre o SEU custo direto, e o total é a soma. O rack e o painel
 #   da TV são a mesma parede e saem como UM item na proposta.
 RT_FECHADO = True
-UNIR = {'Rack da TV': 'Painel e rack da TV',
-        'Painel da TV': 'Painel e rack da TV'}
+UNIR = {}                      # [Jonathan 02/09] rack e painel voltam separados
 MC_ITEM = {'Cristaleira': 0.30,
            'Painel do jantar': 0.40,
-           'Painel e rack da TV': 0.40}
-# [Jonathan 02/09] "vamos colocar o painel e rack a 11.500" — preço de VENDA
-# fechado, por cima da MC do item. A MC que ele implica é calculada e impressa,
-# não escondida.
-PRECO_FIXO = {'Painel e rack da TV': 11500}
+           'Painel da TV': 0.40,      # não usada: o item tem preço fechado
+           'Rack da TV': 0.40}        # idem
+# [Jonathan 02/09] "vamos colocar o painel e rack a 11.500" e, depois,
+# "separar o custo do rack do painel novamente mantendo as devidas proporções".
+# O preço fechado continua sendo da PAREDE inteira; o que muda é que ele aparece
+# repartido entre os dois móveis NA PROPORÇÃO DO CUSTO DIRETO de cada um — que
+# é o mesmo critério de rateio que a casa usa desde 29/08.
+GRUPO_FIXO = {('Painel da TV', 'Rack da TV'): 11500}
+PRECO_FIXO = {}
 
 cd_item, area_item, ordem_item = defaultdict(float), defaultdict(float), []
 for a in ordem:
@@ -431,6 +434,16 @@ for a in ordem:
     cd_item[k] += cd_amb[a]; area_item[k] += area_amb[a]
 assert abs(sum(cd_item.values()) - CD) < 0.01
 assert set(cd_item) == set(MC_ITEM), (set(cd_item), set(MC_ITEM))
+
+# grupo com preço fechado: reparte pela proporção do custo direto, com a sobra
+# de arredondamento indo para o item de maior custo — a soma tem de bater.
+for membros, total in GRUPO_FIXO.items():
+    _cdg = sum(cd_item[a] for a in membros)
+    _v = {a: round(total*cd_item[a]/_cdg/100)*100 for a in membros}
+    _maior = max(membros, key=lambda a: cd_item[a])
+    _v[_maior] += total - sum(_v.values())
+    assert sum(_v.values()) == total, (_v, total)
+    PRECO_FIXO.update(_v)
 
 print('\n' + '─'*W)
 print('INVESTIMENTO POR ITEM — MC fechada item a item, com RT')
@@ -455,10 +468,14 @@ INV_SEM = round(CD/(BASE - _mcjob)/100)*100     # o mesmo job, sem a RT
 print(f'\n  ► INVESTIMENTO FECHADO ....... R$ {brl(INV,0)}     [Jonathan 02/09]')
 print(f'    MC do JOB, misturada: {_mcjob*100:.1f}% com RT'
       f'   (era 35% cravada em tudo, R$ {brl(PRECOS[0.35][1],0)})')
-for a in PRECO_FIXO:
-    _m = mc_conferida(PRECO_FIXO[a], cd_item[a]) - LIQF_*RT_PCT
-    print(f'    ◄ "{a}" com preço fechado em R$ {brl(PRECO_FIXO[a],0)} '
-          f'implica MC de {_m*100:.1f}%')
+for membros, total in GRUPO_FIXO.items():
+    _cdg = sum(cd_item[a] for a in membros)
+    _m = mc_conferida(total, _cdg) - LIQF_*RT_PCT
+    print(f'    ◄ preço fechado da parede em R$ {brl(total,0)} implica MC de '
+          f'{_m*100:.1f}%, repartida pela proporção do custo direto:')
+    for a in membros:
+        print(f'        {a:<22}{cd_item[a]/_cdg*100:>5.1f}% do custo  →  '
+              f'R$ {brl(PRECO_FIXO[a],0)}')
 if _mcjob < 0.35:
     print('  ⚠ ABAIXO DO PISO DE 35% DA CASA — a mistura das margens derrubou')
     print('    a MC do job. Registrado para não ser lido como erro de motor.')
