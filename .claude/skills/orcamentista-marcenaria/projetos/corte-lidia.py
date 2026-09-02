@@ -20,10 +20,11 @@ ESCOPO — quatro conjuntos em duas paredes:
                                         ripados + 2 nichos laterais
 
 [Jonathan 02/09] COM RT · MC 35% · prazo 60 dias corridos ·
-                 ferragens: corrediça TELESCÓPICA e dobradiça HETTICH.
-  A telescópica é o que ele pediu neste job. A regra de 29/08 em
-  `ferragens.md` diz que ela não é default de motor — e diz também que,
-  quando aparece, é decisão de conversa. Foi o caso. Garantia da corrediça: 2 anos.
+                 ferragens: dobradiça HETTICH.
+  [Jonathan 02/09, segunda rodada] a telescópica saiu e entrou a CORREDIÇA
+  OCULTA da Hettich; o pistão a gás da báscula virou ARTICULADOR. Com isso o
+  job volta à regra de 29/08 do `ferragens.md` (oculta é o padrão da casa) e
+  a garantia da corrediça sobe de 2 para 5 anos.
 
 ⛔ FORA — o caderno mostra, mas não é marcenaria: sofá, mesa, cadeiras,
    poltrona, tapete, pendente, cortina, TV, ar-condicionado, gesso e sanca,
@@ -91,8 +92,17 @@ RAIO_UN  = 35.0        # ★ borda arredondada R20 no rack — usinagem + fita
                        #   curva. Sem linha na base; adotado por peça.
 DOBR     = 35.0        # Hettich Sensys com amortecimento [Jonathan 02/09]
                        #   ★ se for a Novisys (R$ 10 na base), o job cai ~R$ 400
-CORR_TEL = 40.0        # corrediça telescópica com amortecimento, o par
-PISTAO   = 30.0        # pistão a gás com amortecimento — báscula do rack
+# [Jonathan 02/09] "troque corrediças telescópicas para oculta da Hettich, e
+# os pistões para articuladores (não precisa falar marca)". Isso é troca de
+# FERRAGEM, não de texto: a oculta custa o triplo da telescópica e o
+# articulador custa oito vezes o pistão. O preço acompanha.
+CORR_OC  = 120.0       # Corrediça Oculta Quadro (Hettich) · materiais.json
+ARTIC    = 250.0       # Articulador Blum HK-xs · materiais.json. A base só tem
+                       #   ele e o Aventos (600, "pouco usado") como linha de
+                       #   articulador. Vai UM por báscula: a folha tem 58 de
+                       #   largura e o HK-xs é dimensionado para frente pequena.
+                       #   ⚠ A MARCA NÃO VAI PARA A PROPOSTA, a pedido dele.
+N_ARTIC  = 1
 # ★ LED: a prancha pede "LED 3000K", sem dizer COB. A base tem COB a R$ 150/m;
 #   os componentes soltos dão fita 28 + perfil 38 = R$ 66/m, que é o que os
 #   motores recentes usam para LED comum. Adotei 66. Se a decoradora quiser
@@ -108,10 +118,10 @@ PERFIL_ALU_M = 40.0    # ★ perfil de alumínio na base do painel
 ADEGA_UN = 35.0        # ★ suporte de garrafa em tubinho preto, por garrafa
 
 P, FITA, TERC, LED, USIN, ESQ, DUV = [], [], [], [], [], [], []
-FER = defaultdict(lambda: [0, 0, 0])       # dobradiças · telescópicas · pistões
+FER = defaultdict(lambda: [0, 0, 0])       # dobradiças · ocultas · articuladores
 def add(mat, esp, amb, desc, c, l, q=1): P.append((mat, esp, amb, desc, c, l, q))
-def fer(a, dobr=0, tel=0, pis=0):
-    FER[a][0] += dobr; FER[a][1] += tel; FER[a][2] += pis
+def fer(a, dobr=0, tel=0, art=0):
+    FER[a][0] += dobr; FER[a][1] += tel; FER[a][2] += art
 def fita(a, d, m): FITA.append((a, d, m))
 def terc(a, d, v, est=False): TERC.append((a, d, v, est))
 def led(a, d, m): LED.append((a, d, m))
@@ -191,7 +201,7 @@ add('FR', 15, A, 'divisória interna do nicho', 78, P_CRIS, 1)
 add('FR', 15, A, 'prateleira do nicho', COL/2-1, P_CRIS-1, 2)
 add('FR', 15, A, 'frente do gavetão 930 × 380', COL, 38, 1)
 gaveta('BR', A, 'gavetão', COL, P_CRIS, 34, 1)
-fer(A, tel=1)                                        # gavetão em telescópica
+fer(A, tel=1)                                        # gavetão em oculta
 terc(A, '2 portas em vidro reflecta bronze, perfil bronze e puxador sotille '
         f'({2*0.485*2.00:.2f} m²)', 2*0.485*2.00*VIDRO_M2)
 fer(A, dobr=4)                                       # 2 dobradiças por folha
@@ -250,7 +260,7 @@ gaveta('BR', A, 'gavetão', 58, P_RACK, 26, 2)
 N_RIPAS = 29
 add('CU', 15, A, 'ripa 30 × 300 do ripado das frentes', 3, H_RACK, N_RIPAS)
 add('CU', 15, A, 'moldura da báscula vazada 580 × 300', 58, H_RACK, 1)
-fer(A, dobr=2, tel=2, pis=2)     # báscula com pistão a gás · 2 gavetões
+fer(A, dobr=2, tel=2, art=N_ARTIC)   # báscula com articulador · 2 gavetões
 terc(A, f'Usinagem das bordas arredondadas R20 ({4} cantos)', 4*RAIO_UN, est=True)
 esq(A, 2*(L_RACK + H_RACK)/100 + 2*(0.20+P_RACK/100))    # ½ esquadria e nichos
 fita(A, 'frentes, ripado, nichos e bordas aparentes',
@@ -298,7 +308,7 @@ custo_terc = sum(v for _, _, v, _ in TERC)
 TD = sum(f[0] for f in FER.values())
 TT = sum(f[1] for f in FER.values())
 TP = sum(f[2] for f in FER.values())
-custo_ferr = TD*DOBR + TT*CORR_TEL + TP*PISTAO
+custo_ferr = TD*DOBR + TT*CORR_OC + TP*ARTIC
 consum = (custo_chapa + custo_fita)*0.06
 CD = (custo_chapa + custo_fita + custo_filet + custo_usin + custo_esq
       + custo_led + custo_terc + consum + custo_ferr + LOG)
@@ -320,7 +330,7 @@ for a, mm in ESQ:        cd_amb[a] += mm*ESQ_M
 for a, d, mm in LED:     cd_amb[a] += mm*LED_M
 for a, d, v, _e in TERC: cd_amb[a] += v
 for a, (dd, tt, pp) in FER.items():
-    cd_amb[a] += dd*DOBR + tt*CORR_TEL + pp*PISTAO
+    cd_amb[a] += dd*DOBR + tt*CORR_OC + pp*ARTIC
 _bruto = sum(cd_amb.values())
 for a in list(cd_amb): cd_amb[a] += (consum + LOG)*cd_amb[a]/_bruto
 assert abs(sum(cd_amb.values()) - CD) < 0.01, (sum(cd_amb.values()), CD)
@@ -345,8 +355,8 @@ print('Quatro conjuntos em duas paredes. Texto em curvas: lido por rasterizaçã
 print('\nESCOPO')
 for a in ordem:
     d, t, p = FER[a]
-    ex = [f'{d} dobr.' if d else '', f'{t} telescópica' if t else '',
-          f'{p} pistão' if p else '']
+    ex = [f'{d} dobr.' if d else '', f'{t} oculta' if t else '',
+          f'{p} articulador' if p else '']
     print(f'  {a:<28}{area_amb[a]:>7.2f} m²   {" · ".join(x for x in ex if x)}')
 print(f'  {"TOTAL":<28}{area_tot:>7.2f} m²')
 
@@ -367,8 +377,8 @@ print('\nTERCEIRIZADOS E ITENS ESPECIAIS   (★ = sem preço fechado na base)')
 for a, d, v, est in TERC:
     print(f' {"★" if est else " "}{a:<28} {d[:46]:<46} R$ {brl(v):>9}')
 print(f'  {"TOTAL":<76}R$ {brl(custo_terc):>9}')
-print(f'\nFERRAGEM — {TD} dobradiças Hettich Sensys · {TT} corrediças '
-      f'telescópicas · {TP} pistões a gás')
+print(f'\nFERRAGEM — {TD} dobradiças Hettich Sensys · {TT} corrediças ocultas '
+      f'Hettich Quadro · {TP} articulador com amortecimento')
 
 print('\n' + '═'*W)
 print('CUSTO DIRETO')

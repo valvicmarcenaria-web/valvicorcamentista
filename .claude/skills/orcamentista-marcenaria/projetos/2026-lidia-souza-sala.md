@@ -21,21 +21,24 @@ TV são a mesma parede e viraram **um item só**.
 E logo em seguida: *"vamos colocar o painel e rack a 11.500"* — preço de venda
 fechado a dedo nesse item, por cima da MC.
 
-| Item | m² de chapa | custo direto | MC | investimento |
-|---|--:|--:|--:|--:|
-| Cristaleira | 7,70 | R$ 4.421 | **30%** | **R$ 10.700** |
-| Painel do jantar | 9,48 | R$ 2.528 | **40%** | **R$ 8.100** |
-| Painel e rack da TV | 11,05 | R$ 2.546 | *49,1%* | **R$ 11.500** ◄ fechado |
-| **TOTAL** | **28,23** | **R$ 9.496** | *39,9%* | **R$ 30.300** |
+E na terceira rodada a ferragem mudou (ver abaixo), levando o custo direto
+junto:
 
-**A MC misturada do job dá 39,9% com RT.** O motor calcula e imprime a MC que
+| Item | m² de chapa | custo direto | MC | à vista | 6× sem juros |
+|---|--:|--:|--:|--:|--:|
+| Cristaleira | 7,70 | R$ 4.486 | **30%** | **R$ 10.900** | R$ 11.990 |
+| Painel do jantar | 9,48 | R$ 2.514 | **40%** | **R$ 8.100** | R$ 8.910 |
+| Painel e rack da TV | 11,05 | R$ 2.926 | *45,8%* | **R$ 11.500** ◄ fechado | R$ 12.650 |
+| **TOTAL** | **28,23** | **R$ 9.926** | *38,7%* | **R$ 30.500** | **R$ 33.550** |
+
+**A MC misturada do job dá 38,7% com RT.** O motor calcula e imprime a MC que
 o preço fechado implica (49,1%) em vez de escondê-la — do mesmo jeito que, na
 Flaviana, imprimiu o aviso quando o preço fechado derrubou a margem. A conta
 funciona nos dois sentidos.
 
-13 chapas, aproveitamento médio 43%. **R$/m² 840 sem RT — 6 acima do teto da
-faixa da casa (626–834).** É excursão de PREÇO, não de levantamento: aos
-R$ 27.000 da rodada anterior o índice dava 765, no meio da faixa.
+13 chapas, aproveitamento médio 43%. **R$/m² 850 sem RT — 16 acima do teto da
+faixa da casa (626–834).** É excursão de PREÇO, não de levantamento: com a MC
+de 35% cravada em tudo o mesmo levantamento dava 765, no meio da faixa.
 
 > A cristaleira é o item de **maior custo direto** (R$ 4.421 dos R$ 9.496 do
 > job) e é o que ficou com a menor margem. Cada ponto de MC nela vale ~R$ 220
@@ -100,3 +103,61 @@ E o **pagamento** não foi fechado: a proposta saiu na linha de base da casa
 
 > A própria prancha carimba **"CONFERIR MEDIDAS NO LOCAL"** em todas as folhas.
 > A visita técnica antes do corte está dita nas condições.
+
+
+---
+
+## Rodada 3 — ferragem trocada e pagamento no cartão [Jonathan 02/09]
+
+> *"Troque a descrição de corrediças telescópicas para oculta da Hettich, os
+> pistões para articuladores (não precisa falar marca)."*
+
+Ele disse "descrição", mas **não é troca de texto: é troca de ferragem**, e o
+preço acompanha:
+
+| | antes | agora | por unidade |
+|---|---|---|--:|
+| Corrediça (3 un) | telescópica | **Oculta Quadro (Hettich)** | R$ 40 → **R$ 120** |
+| Báscula do rack | 2 pistões a gás | **1 articulador** | R$ 30 → **R$ 250** |
+
+Custo direto do job: **R$ 9.496 → R$ 9.926** (+R$ 430). Total: R$ 30.300 →
+**R$ 30.500**. A diferença não é maior porque a parede da TV — que absorve o
+articulador e duas das três corrediças — está com **preço fechado**: ela
+engoliu o aumento na própria margem, que caiu de 49,1% para 45,8%.
+
+**Dois efeitos que valem registro:**
+
+1. **A garantia da corrediça sobe de 2 para 5 anos.** Com a oculta o job volta
+   à regra de 29/08 do `ferragens.md`, que diz que a telescópica é rebaixamento
+   de preço e não especificação.
+2. **A marca do articulador não vai para a proposta**, a pedido dele. No motor
+   ela está: é o Blum HK-xs, a única linha de articulador da base além do
+   Aventos (R$ 600, "pouco usado"). ★ Adotei **um** por báscula — a folha tem
+   58 de largura e o HK-xs é dimensionado para frente pequena.
+
+### Pagamento — duas formas, com o à vista em destaque
+
+> *"Exponha a possibilidade de pagamento no cartão, acrescente 10% no custo
+> para pagar em até 6 vezes sem juros, e destaque o benefício do pagamento à
+> vista."*
+
+| | valor | condição |
+|---|--:|---|
+| **À vista** | **R$ 30.500** | entrada de 30% (R$ 9.200) + R$ 21.300 na entrega |
+| No cartão | R$ 33.550 | até 6 × sem juros |
+
+O destaque do à vista virou um bloco com **R$ 3.050** em corpo grande — *"quase
+o valor de um dos três itens desta proposta"*. É o argumento mais concreto que
+existe: o desconto tem o tamanho de um móvel.
+
+Os 10% são **derivados em código** item a item, com `assert` de que a soma dos
+itens no cartão bate com 10% sobre o total. E o **pagamento saiu da lista de
+pendências** — não é mais premissa da casa, é decisão dele.
+
+> **Bug apanhado na revisão:** a faixa de fecho da p5 vinha com a imagem
+> quebrada desde a divisão em 5 páginas. O patch tinha escrito `{{{{IMG}}}}`
+> dentro de uma f-string, o que produz `{{IMG}}` na saída, e o
+> `replace('{IMG}', …)` não pegava. Entrou uma guarda no build: **nenhum `src`
+> do HTML final pode conter chave literal.** E a faixa estava cortando na
+> altura do sofá com a legenda prometendo a cristaleira — numa faixa de 2,6 de
+> proporção sobre imagem de 1,33 o corte é vertical, e só o Y escolhe a fatia.

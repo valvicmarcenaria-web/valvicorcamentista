@@ -13,10 +13,15 @@ sobre o SEU custo direto, e o total é a soma. O rack e o painel da TV são a
 mesma parede e viraram UM item, e depois o Jonathan fechou o preço desse item
 a dedo. A MC misturada do job dá 39,9% com RT.
 
-FERRAGEM [Jonathan 02/09] "telescópica e hettich": corrediça telescópica com
-amortecimento e dobradiça Hettich Sensys. A telescópica leva a garantia da
-corrediça a 2 anos (números do Jonathan, 07/08) — e isso vai dito na proposta,
-não escondido.
+FERRAGEM [Jonathan 02/09, 2ª rodada] "troque corrediças telescópicas para
+oculta da Hettich, os pistões para articuladores (não precisa falar marca)".
+A troca é de FERRAGEM, não de texto: a oculta custa o triplo da telescópica e o
+articulador oito vezes o pistão. Com ela a garantia da corrediça sobe de 2 para
+5 anos. ⛔ A MARCA DO ARTICULADOR NÃO VAI PARA A PROPOSTA, a pedido dele.
+
+PAGAMENTO [Jonathan 02/09] duas formas, com o benefício do à vista em destaque:
+  à vista  — entrada de 30% + saldo na entrega, nos valores da tabela
+  cartão   — até 6× sem juros, com 10% a mais em cada valor
 
 IMAGENS: os três renders do próprio caderno da decoradora Jéssica Sollero,
 recortados das pranchas 4 e 7 e girados (o desenho está deitado na folha A4).
@@ -28,8 +33,8 @@ REGRAS DA CASA (`referencias/proposta-comercial.md`):
 
 ⛔ MONTAGEM fora do custo (equipe é salário fixo), dentro do escopo entregue.
 
-⚠ PENDENTE — o PAGAMENTO não foi fechado. Está na linha de base da casa
-   (entrada de 30% + saldo na entrega). O prazo o Jonathan fechou: 60 dias.
+Prazo e pagamento fechados pelo Jonathan: 60 dias corridos; à vista com entrada
+de 30% e saldo na entrega, ou até 6× sem juros no cartão com 10% a mais.
 """
 import os, re, subprocess
 
@@ -37,6 +42,8 @@ CLIENTE  = 'Lídia de Souza'
 OBRA     = 'Sala de estar e jantar'
 ARQ      = 'decoradora Jéssica Sollero'
 VALIDADE = '7 dias corridos'
+CARTAO_X = 6
+ACRESC   = 0.10
 PRAZO    = '60 dias corridos'         # [Jonathan 02/09]
 ENT_PCT  = 30                         # ⚠ pendente
 GAR_ANOS = 10
@@ -59,7 +66,8 @@ ITENS = [
  ('Cristaleira', _v('Cristaleira'),
   'Embutida no painel do jantar, em duas colunas. A da direita fecha com duas '
   'folhas em vidro reflecta bronze, com perfil bronze e puxador sotille; a da '
-  'esquerda fica aberta, com nicho alto e gavetão embaixo. Dez prateleiras, '
+  'esquerda fica aberta, com nicho alto e um gavetão em corrediça oculta '
+  'embaixo. Dez prateleiras, '
   'todas com fita de LED 3000 K, e adega em tubinho preto no rodapé.'),
  ('Painel do jantar', _v('Painel do jantar'),
   'Tamponamento em MDF amadeirado de parede a parede, com o vão da cristaleira '
@@ -69,7 +77,7 @@ ITENS = [
   'A parede inteira, num item só. Tamponamento em MDF claro acima do rodapé, '
   'com recorte e passa-cabo previstos para a televisão, e sobre ele o rack '
   'suspenso em amadeirado, de frentes ripadas: uma báscula com frente vazada '
-  'sobre pistão a gás e dois gavetões em corrediça com amortecimento. O '
+  'sobre articulador com amortecimento e dois gavetões em corrediça oculta. O '
   'puxador é o próprio ripado. Nichos abertos nas duas pontas e bordas '
   'arredondadas. Bordas dos dois em meia esquadria.'),
 ]
@@ -78,6 +86,14 @@ assert sum(v for _, v, _d in ITENS) == INV, (ITENS, INV)
 ENTRADA = round(INV*ENT_PCT/100/100)*100
 SALDO   = INV - ENTRADA
 assert ENTRADA + SALDO == INV
+# o cartão é DERIVADO item a item e tem de fechar com o total
+def cartao(v):
+    c = round(v*(1 + ACRESC))
+    assert abs(c - v*(1 + ACRESC)) < 1, (v, c)
+    return c
+INV_CARTAO = sum(cartao(v) for _, v, _d in ITENS)
+assert INV_CARTAO == cartao(INV), (INV_CARTAO, cartao(INV))
+ECONOMIA = INV_CARTAO - INV
 
 ESPEC = [
  ('Chapa',       'MDF melamínico ARAUCO nas três cores do projeto — Frapê na '
@@ -89,9 +105,10 @@ ESPEC = [
                  'rack — o canto fecha em 45°, sem topo de chapa à vista'),
  ('Vidro',       'Reflecta bronze com perfil bronze e puxador sotille, com '
                  'furação de dobradiça de fábrica'),
- ('Ferragem',    'Dobradiça Hettich Sensys com amortecimento e corrediça '
-                 'telescópica com amortecimento; báscula do rack sobre pistão '
-                 'a gás'),
+ ('Ferragem',    'Dobradiça Hettich Sensys e corrediça oculta Hettich, as '
+                 'duas com amortecimento — a corrediça não aparece na lateral '
+                 'e a gaveta sai inteira. A báscula do rack sobe em '
+                 'articulador com amortecimento: para onde você soltar'),
  ('Ripado',      'Ripas aplicadas com espaçamento regular; na báscula a frente '
                  'é vazada, e é o próprio ripado que serve de puxador'),
  ('Iluminação',  'Fita LED 24 V · 3000 K em perfil de alumínio, sob cada '
@@ -102,16 +119,16 @@ ESPEC = [
                  'própria da Valvic'),
 ]
 
-# [Jonathan 02/09] a telescópica é o que ele pediu. A garantia dela é de 2
-# anos pelos números de 07/08 — vai dita, não escondida.
+# [Jonathan 02/09] com a oculta no lugar da telescópica, a garantia da
+# corrediça sobe de 2 para 5 anos (números do Jonathan, 07/08).
 GARANTIA = dict(anos=GAR_ANOS, nota=(
  'Garantia da <strong>Valvic</strong>, não do fabricante: quem projeta, corta, '
  'monta e atende é a mesma equipe, sem triangulação. Cobertura por componente, '
  'documentada e assinada na entrega.'), linhas=[
  ('Estrutura, corpo, fundos e prateleiras', f'{GAR_ANOS} anos'),
  ('Dobradiça Hettich Sensys com amortecimento', f'{GAR_ANOS} anos'),
- ('Pistão a gás da báscula', f'{GAR_ANOS} anos'),
- ('Corrediça telescópica com amortecimento', '2 anos'),
+ ('Articulador da báscula, com amortecimento', f'{GAR_ANOS} anos'),
+ ('Corrediça oculta Hettich com amortecimento', '5 anos'),
  ('Regulagem de porta, de báscula e de gaveta', '2 anos'),
  ('Retorno do chamado', '24 horas'),
  ('Visita técnica, sem custo dentro do prazo', 'até 3 dias úteis'),
@@ -144,6 +161,26 @@ CSS = (open('projetos/css-proposta.css', encoding='utf-8').read()
 .cj-t{font-size:10.8pt;font-weight:700;letter-spacing:-.005em;}
 .cj-q{margin-left:auto;font-size:9.8pt;font-weight:700;white-space:nowrap;}
 .cj-d{color:var(--soft);font-size:8.6pt;margin:1.4mm 0 0 12mm;line-height:1.52;}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:7mm;}
+.pg .c{border:1px solid var(--line);border-radius:2px;padding:5.5mm 6mm;
+  display:flex;flex-direction:column;}
+.pg .c.hi{background:var(--deep);border-color:var(--deep);color:#F6F1E7;}
+.pg .k{font-size:7pt;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.pg .c.hi .k{color:var(--gold-lt);}
+.pg .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:22pt;
+  font-weight:600;line-height:1.1;margin-top:2mm;}
+.pg .x{color:var(--soft);font-size:8.6pt;margin-top:2.4mm;line-height:1.5;}
+.pg .c.hi .x{color:#CFC6B4;}
+.pg .v{margin-top:auto;padding-top:4mm;border-top:1px solid var(--hair);
+  font-size:9pt;}
+.pg .c.hi .v{border-top-color:rgba(255,255,255,.16);}
+.eco{background:var(--gold-pale);border-left:2.5px solid var(--gold);
+  padding:4mm 5.2mm;margin-top:6mm;display:flex;align-items:baseline;gap:5mm;}
+.eco .n{font-family:'Cormorant Garamond',Georgia,serif;font-size:22pt;
+  font-weight:600;color:var(--gold);line-height:1;white-space:nowrap;}
+.eco .t{font-size:9.2pt;color:var(--ink);}
+.inv td:nth-child(2), .inv th:nth-child(2){padding-right:7mm;}
 """)
 
 def brl(v): return f'{v:,.0f}'.replace(',', '.')
@@ -162,7 +199,8 @@ esp = ''.join(f'<div class="esp"><div class="k">{k}</div><div class="v">{v}</div
 fora = ''.join(f'<li><div class="k">{k}</div>'
                + (f'<div class="v">{v}</div>' if v else '') + '</li>'
                for k, v in FORA)
-linhas = ''.join(f'<tr><td class="l">{nome}</td><td class="hi">R$ {brl(v)}</td></tr>'
+linhas = ''.join(f'<tr><td class="l">{nome}</td><td>R$ {brl(v)}</td>'
+                 f'<td class="hi">R$ {brl(cartao(v))}</td></tr>'
                  for nome, v, _d in ITENS)
 gar = ('<div class="gar"><div class="gar-h">'
        f'<div><div class="gar-n">{GARANTIA["anos"]}</div>'
@@ -221,10 +259,11 @@ p4 = f"""<div class="page"><div class="pad">
   <div class="rule"></div>
   <h2 class="h-sec">Investimento e garantia.</h2>
   <table class="inv" style="margin-top:6mm">
-    <tr><th class="l">Conjunto</th><th class="hi">Investimento</th></tr>
+    <tr><th class="l">Conjunto</th><th>À vista</th>
+      <th class="hi">{CARTAO_X} × sem juros</th></tr>
     {linhas}
-    <tr class="tot"><td class="l">Total</td>
-      <td class="hi">R$ {brl(INV)}</td></tr>
+    <tr class="tot"><td class="l">Total</td><td>R$ {brl(INV)}</td>
+      <td class="hi">R$ {brl(INV_CARTAO)}</td></tr>
   </table>
   <div class="box"><div class="t">O que está dentro do valor</div>
   <p>Fornecimento de material, produção em CNC e coladeira automática próprias,
@@ -240,14 +279,28 @@ p4 = f"""<div class="page"><div class="pad">
 p5 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">Condições</div>
   <div class="rule"></div>
-  <h2 class="h-sec">Prazo, pagamento e limites.</h2>
+  <h2 class="h-sec">Duas formas de pagar.</h2>
+  <div class="pg" style="margin-top:6mm">
+    <div class="c hi"><div class="k">À vista</div>
+      <div class="t">R$ {brl(INV)}</div>
+      <div class="x">Entrada de {ENT_PCT}% na assinatura e o saldo na entrega,
+      por transferência. <strong>É o valor cheio da tabela, sem acréscimo
+      nenhum.</strong></div>
+      <div class="v">R$ {brl(ENTRADA)} na assinatura<br>
+      R$ {brl(SALDO)} na entrega</div></div>
+    <div class="c"><div class="k">No cartão</div>
+      <div class="t">R$ {brl(INV_CARTAO)}</div>
+      <div class="x">Em até <strong>{CARTAO_X} parcelas sem juros</strong>. Os
+      valores da coluna da direita são {ACRESC*100:.0f}% acima dos de
+      tabela.</div>
+      <div class="v">{CARTAO_X} × sem juros</div></div>
+  </div>
+  <div class="eco"><div class="n">R$ {brl(ECONOMIA)}</div>
+    <div class="t">é o que o pagamento <strong>à vista</strong> economiza —
+    quase o valor de um dos três itens desta proposta.</div></div>
   <div class="two" style="margin-top:7mm">
     <div>
-      <div class="term" style="margin-top:0"><div class="k">Pagamento</div>
-        <div class="v">Entrada de {ENT_PCT}% + saldo na entrega</div>
-        <div class="s">Entrada de <strong>R$ {brl(ENTRADA)}</strong> na
-        assinatura e <strong>R$ {brl(SALDO)}</strong> na entrega.</div></div>
-      <div class="term"><div class="k">Prazo de entrega</div>
+      <div class="term" style="margin-top:0"><div class="k">Prazo de entrega</div>
         <div class="v">{PRAZO}</div>
         <div class="s">Contados da aprovação e da medição em obra.</div></div>
       <div class="term"><div class="k">Conferência de medidas</div>
@@ -264,9 +317,9 @@ p5 = f"""<div class="page"><div class="pad">
     </div>
   </div>
   <div class="ph banda" style="margin-top:auto;height:66mm">
-    <img src="{{{{IMG}}}}/sala-cristaleira.png"
-      style="object-position:12% 55%" alt="">
-    <div class="cap">Cristaleira · caderno da decoradora</div></div>
+    <img src="{{IMG}}/sala-cristaleira.png"
+      style="object-position:center 30%" alt="">
+    <div class="cap">A sala · caderno da decoradora</div></div>
   <div class="sig" style="margin-top:9mm">
     <div class="ln">Valvic Marcenaria</div>
     <div class="ln">{CLIENTE}</div>
@@ -290,4 +343,6 @@ for nome, v, _d in ITENS:
     print(f'  {nome:<22} R$ {brl(v):>7}')
 print(f'  {"TOTAL":<22} R$ {brl(INV):>7}')
 print(f'  entrada {ENT_PCT}% R$ {brl(ENTRADA)} + R$ {brl(SALDO)} na entrega '
-      f'· {PRAZO}   ⚠ pagamento ainda não fechado')
+      f'· {PRAZO}')
+print(f'  no cartão {CARTAO_X}× sem juros: R$ {brl(INV_CARTAO)}   '
+      f'(à vista economiza R$ {brl(ECONOMIA)})')
