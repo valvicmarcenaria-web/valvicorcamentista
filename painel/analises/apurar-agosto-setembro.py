@@ -72,6 +72,11 @@ def classificar(cat, desc):
     return 'estrutura'          # sobra vai para estrutura, e o teste avisa se for muito
 
 
+# Lançamentos a ignorar: erro de digitação identificado pela direção.
+# O pró-labore é fixo em R$ 10 mil para cada sócio; esta linha era duplicidade.
+IGNORAR = {'pro labore jonathan - restante'}
+
+
 def ler():
     ws = openpyxl.load_workbook(ARQ, data_only=True)['data']
     h = {ws.cell(1, c).value: c for c in range(1, ws.max_column + 1)}
@@ -82,6 +87,8 @@ def ler():
         if not isinstance(val, (int, float)):
             continue
         cat = g('Categoria') or ''
+        if (g('Descrição') or '').strip().lower() in IGNORAR:
+            continue
         itens.append({'venc': data(g('Data_Vencimento')), 'comp': data(g('Data_competencia')),
                       'pag': data(g('Data_Pagamento')), 'cat': cat or '(sem categoria)',
                       'desc': g('Descrição') or '', 'status': g('Status'),
