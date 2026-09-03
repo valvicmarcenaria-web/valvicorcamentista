@@ -30,18 +30,22 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:#8a8a8a}
 .rf{background:var(--goldbg);padding:2.2mm 13mm;font-size:6pt;color:#7A5B17;line-height:1.5}
 .rf b{color:var(--navy)}
 
+.faixa{font-size:6.2pt;letter-spacing:.2em;text-transform:uppercase;font-weight:800;
+  color:var(--muted);margin:0 0 1.6mm}
+.faixa.ouro{color:#7A5B17;margin-top:4mm}
 .kpis{display:flex;gap:2.6mm}
+.kpi .u{font-size:10pt}
 .kpi{flex:1;border:.3mm solid var(--line);border-top:1mm solid var(--navy2);
-     border-radius:1mm;padding:3.4mm 3mm;background:#fbfcfd}
+     border-radius:1mm;padding:2.6mm 3mm;background:#fbfcfd}
 .kpi.dest{border-top-color:var(--gold);background:#fffdf7}
 .kpi .k{font-size:5.6pt;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
         font-weight:700;line-height:1.25}
-.kpi .v{font-family:'Cormorant Garamond',serif;font-size:20pt;font-weight:700;
+.kpi .v{font-family:'Cormorant Garamond',serif;font-size:19pt;font-weight:700;
         color:var(--navy);line-height:1.05;margin-top:1.2mm}
 .kpi .v.pos{color:var(--ok)}
 .kpi .s{font-size:6.2pt;color:var(--muted);margin-top:.8mm;line-height:1.3}
 
-.sec{display:flex;align-items:baseline;gap:2.6mm;margin:5.4mm 0 2.4mm}
+.sec{display:flex;align-items:baseline;gap:2.6mm;margin:4.6mm 0 2mm}
 .sec .bar{width:5mm;height:.9mm;background:var(--gold);align-self:center;flex-shrink:0}
 .sec .tt{font-family:'Cormorant Garamond',serif;font-size:13pt;font-weight:600;
          color:var(--navy);line-height:1.1}
@@ -51,7 +55,7 @@ table{width:100%;border-collapse:collapse}
 th{background:var(--navy2);color:#fff;font-size:6.6pt;font-weight:600;letter-spacing:.05em;
    padding:2.2mm 2.4mm;text-align:left;line-height:1.2}
 th.r{text-align:right}
-td{border-bottom:.25mm solid var(--line);padding:2.8mm 2.4mm;font-size:8.6pt;line-height:1.25}
+td{border-bottom:.25mm solid var(--line);padding:1.9mm 2.4mm;font-size:8.2pt;line-height:1.25}
 td.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 td.pc{text-align:right;font-size:6.8pt;color:var(--muted);font-variant-numeric:tabular-nums}
 tr.sub td{background:#f2f5f8;font-weight:800;color:var(--navy);font-size:9pt;
@@ -68,15 +72,15 @@ td .ind{padding-left:3mm;display:inline-block}
         letter-spacing:.13em;text-transform:uppercase;padding:2.4mm 3mm;
         border-bottom:.25mm solid var(--line)}
 .box>.c{padding:2.4mm 3mm}
-.lin{display:flex;justify-content:space-between;gap:3mm;font-size:9pt;
-     padding:3mm 0;border-bottom:.25mm solid var(--line)}
+.lin{display:flex;justify-content:space-between;gap:3mm;font-size:8.4pt;
+     padding:1.9mm 0;border-bottom:.25mm solid var(--line)}
 .lin:last-child{border-bottom:0}
 .lin b{font-variant-numeric:tabular-nums;color:var(--navy)}
 .lin.forte{font-weight:700;color:var(--navy)}
 .barra{height:2.6mm;background:#eef1f4;border-radius:1.4mm;overflow:hidden;margin-top:1mm}
 .barra span{display:block;height:100%;background:var(--gold)}
 
-.fecho{margin-top:8mm;background:var(--goldbg);border-left:1.2mm solid var(--gold);
+.fecho{margin-top:5mm;background:var(--goldbg);border-left:1.2mm solid var(--gold);
   border-radius:0 1.4mm 1.4mm 0;padding:4mm 5mm;font-size:9.4pt;line-height:1.55}
 .fecho b{color:var(--navy)}
 .pontos{display:flex;gap:3mm;margin-top:auto}
@@ -103,22 +107,30 @@ td .ind{padding-left:3mm;display:inline-block}
   <div class="gold-rule"></div>
   <div class="body">
 
+    <div class="faixa">Agosto — realizado</div>
     <div class="kpis">
-      <div class="kpi"><div class="k">Vendas de agosto</div>
-        <div class="v num">386,0<span style="font-size:10pt">k</span></div>
-        <div class="s">contratos fechados no mês</div></div>
-      <div class="kpi"><div class="k">Receita de agosto</div>
-        <div class="v num">229,0<span style="font-size:10pt">k</span></div>
-        <div class="s">tudo o que entrou em caixa</div></div>
-      <div class="kpi"><div class="k">Despesa de agosto</div>
-        <div class="v num">221,2<span style="font-size:10pt">k</span></div>
-        <div class="s">por vencimento</div></div>
-      <div class="kpi dest"><div class="k">Resultado de agosto</div>
-        <div class="v num pos">+7,8<span style="font-size:10pt">k</span></div>
-        <div class="s">3,4% sobre a receita</div></div>
-      <div class="kpi"><div class="k">Entregue em agosto</div>
-        <div class="v num">178,2<span style="font-size:10pt">k</span></div>
-        <div class="s">valor de obra concluída</div></div>
+      <div class="kpi"><div class="k">Vendas</div>
+        <div class="v num">386,0<span class="u">k</span></div></div>
+      <div class="kpi"><div class="k">Receita</div>
+        <div class="v num">229,0<span class="u">k</span></div></div>
+      <div class="kpi"><div class="k">Despesa</div>
+        <div class="v num">221,2<span class="u">k</span></div></div>
+      <div class="kpi"><div class="k">Resultado</div>
+        <div class="v num pos">+7,8<span class="u">k</span></div></div>
+      <div class="kpi"><div class="k">Entregue</div>
+        <div class="v num">178,2<span class="u">k</span></div></div>
+    </div>
+
+    <div class="faixa ouro">Setembro — projetado</div>
+    <div class="kpis">
+      <div class="kpi dest"><div class="k">Receita prevista</div>
+        <div class="v num">371,0<span class="u">k</span></div></div>
+      <div class="kpi dest"><div class="k">Despesa prevista</div>
+        <div class="v num">257,0<span class="u">k</span></div></div>
+      <div class="kpi dest"><div class="k">Resultado previsto</div>
+        <div class="v num pos">+114,0<span class="u">k</span></div></div>
+      <div class="kpi dest"><div class="k">Entrega prevista</div>
+        <div class="v num">362,0<span class="u">k</span></div></div>
     </div>
 
     <div class="sec"><span class="bar"></span>
@@ -126,39 +138,49 @@ td .ind{padding-left:3mm;display:inline-block}
       <span class="hint">setembro = compromissos já lançados</span></div>
 
     <table>
-      <thead><tr><th>Bloco</th><th class="r" style="width:30mm">Agosto</th>
-        <th class="r" style="width:30mm">Setembro</th>
-        <th class="r" style="width:30mm">Variação</th></tr></thead>
+      <thead><tr><th>Bloco</th><th class="r" style="width:28mm">Agosto</th>
+        <th class="r" style="width:28mm">Setembro</th>
+        <th class="r" style="width:28mm">Variação</th></tr></thead>
       <tbody>
-        <tr class="sub"><td>OPERAÇÃO</td>
-          <td class="r">93.842</td><td class="r">87.599</td>
-          <td class="r dn">−6.243</td></tr>
+        <tr class="sub"><td>OPERAÇÃO — manter a empresa funcionando</td>
+          <td class="r">68.484</td><td class="r">73.570</td>
+          <td class="r up">+5.086</td></tr>
         <tr><td><span class="ind">Folha de pagamento</span></td>
           <td class="r">47.431</td><td class="r">57.986</td>
           <td class="r up">+10.555</td></tr>
-        <tr><td><span class="ind">Estrutura, administrativo e frota</span></td>
-          <td class="r">46.411</td><td class="r">29.613</td>
-          <td class="r dn">−16.798</td></tr>
+        <tr><td><span class="ind">Estrutura — aluguel, energia, software, advogado, limpeza</span></td>
+          <td class="r">17.059</td><td class="r">12.979</td>
+          <td class="r dn">−4.081</td></tr>
+        <tr><td><span class="ind">Frota</span></td>
+          <td class="r">3.994</td><td class="r">2.605</td>
+          <td class="r dn">−1.389</td></tr>
 
-        <tr class="sub"><td>VARIÁVEIS</td>
-          <td class="r">127.366</td><td class="r">150.920</td>
-          <td class="r up">+23.553</td></tr>
+        <tr class="sub"><td>VARIÁVEIS — acompanham a venda e a obra</td>
+          <td class="r">135.233</td><td class="r">150.920</td>
+          <td class="r up">+15.687</td></tr>
         <tr><td><span class="ind">Matéria-prima</span></td>
           <td class="r">109.586</td><td class="r">75.478</td>
           <td class="r dn">−34.108</td></tr>
         <tr><td><span class="ind">RT, comissões e terceirizados</span></td>
           <td class="r">15.764</td><td class="r">72.270</td>
           <td class="r up">+56.506</td></tr>
+        <tr><td><span class="ind">Impostos sobre a venda</span></td>
+          <td class="r">7.866</td><td class="r" style="color:var(--muted)">a lançar</td>
+          <td class="r"></td></tr>
         <tr><td><span class="ind">Logística</span></td>
           <td class="r">2.016</td><td class="r">3.172</td>
           <td class="r up">+1.156</td></tr>
+
+        <tr class="sub"><td>FINANCIAMENTOS, COMERCIAL E DIVERSOS</td>
+          <td class="r">17.492</td><td class="r">14.030</td>
+          <td class="r dn">−3.462</td></tr>
 
         <tr class="tot"><td>TOTAL</td><td class="r">221.209</td>
           <td class="r">238.519</td><td class="r">+17.310</td></tr>
       </tbody>
     </table>
 
-    <div class="cols" style="margin-top:7mm">
+    <div class="cols" style="margin-top:5mm">
       <div style="flex:1">
         <div class="box">
           <div class="h">Entregue em agosto — R$ 178,2 mil</div>
@@ -169,15 +191,14 @@ td .ind{padding-left:3mm;display:inline-block}
             <div class="lin"><span>Bernardo</span><b>12.900</b></div>
             <div class="lin"><span>Luiz</span><b>5.300</b></div>
             <div class="lin"><span>Tânia</span><b>5.000</b></div>
-            <div class="lin forte" style="border-top:.3mm solid var(--line);padding-top:2mm">
-              <span>Total</span><b>178.200</b></div>
+            <div class="lin forte"><span>Total</span><b>178.200</b></div>
           </div>
         </div>
       </div>
       <div style="flex:1">
         <div class="box" style="border-color:var(--gold)">
           <div class="h" style="background:var(--goldbg);color:#7A5B17;border-bottom-color:var(--goldsoft)">
-            Projeção de entrega em setembro — R$ 362,0 mil</div>
+            Previsto para setembro — R$ 362,0 mil</div>
           <div class="c">
             <div class="lin"><span>Ana Carolina</span><b>108.000</b></div>
             <div class="lin"><span>Jairo</span><b>63.000</b></div>
@@ -186,8 +207,7 @@ td .ind{padding-left:3mm;display:inline-block}
             <div class="lin"><span>Andrea</span><b>47.000</b></div>
             <div class="lin"><span>Luiz</span><b>20.000</b></div>
             <div class="lin"><span>Giseli</span><b>14.000</b></div>
-            <div class="lin forte" style="border-top:.3mm solid var(--line);padding-top:2mm">
-              <span>Total previsto</span><b>362.000</b></div>
+            <div class="lin forte"><span>Total previsto</span><b>362.000</b></div>
           </div>
         </div>
       </div>
@@ -195,15 +215,16 @@ td .ind{padding-left:3mm;display:inline-block}
 
     <div class="fecho">
       <b>Agosto fechou positivo:</b> receita de 229k contra 221,2k de despesa, sobra de
-      <b>R$ 7,8 mil</b>. <b>Setembro projeta entregar 362 mil</b> — o dobro de agosto — com
-      custo previsto de <b>238,5 mil</b>. É o mês que transforma a venda de agosto em obra
-      entregue.
+      <b>R$ 7,8 mil</b>. <b>Setembro projeta 371 mil de receita contra 257 mil de despesa</b> —
+      resultado de <b>+114 mil</b> — entregando <b>362 mil</b> em obra, o dobro de agosto. É o
+      mês que transforma a venda de agosto em obra entregue.
     </div>
   </div>
   <div class="rf">
-    <b>Base:</b> Contas a Pagar de 02/09/2026, apurado por <b>data de vencimento</b>.
-    Setembro é <b>piso, não teto</b> — o material do próprio mês ainda não foi lançado.
-    Vendas, receita e entregas informadas pela direção.
+    <b>Base:</b> Contas a Pagar de 02/09/2026, apurado por <b>data de vencimento</b>. Os R$ 238,5 mil
+    de setembro são o que <b>já está lançado</b>; a projeção da direção é de R$ 257 mil — a diferença é o
+    material e o imposto do próprio mês, ainda não lançados.
+    Vendas, receita, entregas e projeções informadas pela direção.
   </div>
 </section>
 </body></html>

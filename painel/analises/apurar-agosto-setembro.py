@@ -17,37 +17,49 @@ FOLHA = {'Salários', 'Pró-labore', 'Adiantamento Salarial', 'Vale-Transporte',
          'Vale-Alimentação', 'Hora extra', 'INSS sobre Pró-labore - GPS'}
 FROTA = {'Leasing - Veículos', 'Seguros de Veículos', 'Manutenção de Veículos',
          'Combustíveis'}
+# Estrutura = só o que a empresa precisa para funcionar e operar.
 ESTRUTURA = {'Aluguel', 'Energia Elétrica', 'Água e Saneamento', 'Taxa de Lixo',
-             'Limpeza', 'Materiais de Limpeza e de Higiene', 'Vigilância e Segurança Patrimonial',
-             'Materiais de Escritório', 'Software / Licença de Uso',
-             'Software/ferramenta de gestao', 'Honorários Advocatícios',
-             'Marketing e Publicidade', 'Simples Nacional - DAS',
-             'Manutenção de Equipamentos', 'Manutenções', 'Máquinas, Equipamentos e Instalações Industriais',
-             'Terrenos', 'Lanches e Refeições', 'Brindes para Clientes',
-             'Viagens e Representações', 'Farmácia', 'juros e multas'}
+             'Limpeza', 'Materiais de Limpeza e de Higiene',
+             'Vigilância e Segurança Patrimonial', 'Materiais de Escritório',
+             'Software / Licença de Uso', 'Software/ferramenta de gestao',
+             'Honorários Advocatícios', 'Manutenção de Equipamentos', 'Manutenções',
+             'Manutenção Predial', 'Ferramentas de Desgastes',
+             'Computadores e Periféricos', 'Cursos e Treinamentos'}
+IMPOSTO = {'Simples Nacional - DAS'}
+# Financiamentos, dívida, comercial e o que não é nem operação nem obra.
+DIVERSOS = {'Máquinas, Equipamentos e Instalações Industriais', 'Terrenos',
+            'juros e multas', 'Marketing e Publicidade', 'Brindes para Clientes',
+            'Lanches e Refeições', 'Viagens e Representações', 'Farmácia'}
 RT = {'RT parceiros'}
 COMISSAO = {'Comissao de obras', 'Comissões de Vendedores'}
 LOGISTICA = {'carretos', 'Transportadoras', 'Transporte Urbano (táxi, Uber)'}
 MATERIA = {'Materiais Aplicados na Produção', 'Corte de chapas'}
 TERCEIRO = {'Servicos terceirizados', 'Servicos extras'}
 
+# Lançamentos a ignorar: erro de digitação identificado pela direção.
+# O pró-labore é fixo em R$ 10 mil para cada sócio; esta linha era duplicidade.
+IGNORAR = {'pro labore jonathan - restante'}
+
 # lançamentos sem categoria, classificados pela descrição
 POR_DESCRICAO = [
-    ('rt ', 'rt'),                       # RT Giovanna e afins, sem categoria
+    ('rt ', 'rt'),
     ('bigfer', 'materia'), ('compra 3', 'materia'), ('compra 4', 'materia'),
     ('mgv distribuidora', 'materia'),
     ('douglas marceneiro', 'terceiro'), ('rejane/acabamento', 'terceiro'),
     ('diarias', 'terceiro'), ('carreto', 'logistica'),
-    ('conta garantia', 'estrutura'), ('raizen', 'estrutura'),
-    ('eduzz', 'estrutura'), ('consulta protestos', 'estrutura'),
-    ('bondinho', 'estrutura'),
+    ('conta garantia', 'diversos'), ('raizen', 'diversos'),
+    ('eduzz', 'estrutura'), ('consulta protestos', 'diversos'),
+    ('bondinho', 'diversos'),
 ]
-GRUPO = {'folha': FOLHA, 'frota': FROTA, 'estrutura': ESTRUTURA, 'rt': RT,
-         'comissao': COMISSAO, 'logistica': LOGISTICA, 'materia': MATERIA,
-         'terceiro': TERCEIRO}
-VARIAVEIS = ('rt', 'comissao', 'logistica', 'materia', 'terceiro')
-OPERACAO = ('folha', 'frota', 'estrutura')
-ROTULO = {'folha': 'Folha de pagamento', 'frota': 'Frota', 'estrutura': 'Estrutura e administrativo',
+GRUPO = {'folha': FOLHA, 'frota': FROTA, 'estrutura': ESTRUTURA, 'imposto': IMPOSTO,
+         'diversos': DIVERSOS, 'rt': RT, 'comissao': COMISSAO, 'logistica': LOGISTICA,
+         'materia': MATERIA, 'terceiro': TERCEIRO}
+OPERACAO = ('folha', 'estrutura', 'frota')
+VARIAVEIS = ('materia', 'rt', 'comissao', 'terceiro', 'logistica', 'imposto')
+OUTROS = ('diversos',)
+ROTULO = {'folha': 'Folha de pagamento', 'estrutura': 'Estrutura e administrativo',
+          'frota': 'Frota', 'imposto': 'Impostos sobre a venda',
+          'diversos': 'Financiamentos, comercial e diversos',
           'rt': 'RT de parceiros', 'comissao': 'Comissões', 'logistica': 'Logística',
           'materia': 'Matéria-prima', 'terceiro': 'Serviços terceirizados'}
 
@@ -113,7 +125,8 @@ if __name__ == '__main__':
         tot = sum(gr.values())
         print('═' * 72)
         print(f'{rot} · por vencimento · {len(sub)} lançamentos · TOTAL R$ {tot:,.2f}')
-        for bloco, nome in (('OPERAÇÃO', OPERACAO), ('VARIÁVEIS', VARIAVEIS)):
+        for bloco, nome in (('OPERAÇÃO', OPERACAO), ('VARIÁVEIS', VARIAVEIS),
+                            ('OUTROS', OUTROS)):
             sb = sum(gr[g] for g in nome)
             print(f'\n  {bloco}  R$ {sb:,.2f}   ({sb/tot*100:.1f}%)')
             for g in nome:
