@@ -60,3 +60,23 @@
 - **Nada disto se aplica à Kênia & Fábio** — o K&F já foi revertido ao estado
   correto (4 versões Hettich+Hardt, pagamento 40/30/30, validade 10d/3d + aviso
   de reajuste em julho).
+
+---
+
+## ✅ RESOLUÇÃO (18/06/2026 — Lavinia + Jonathan)
+- **Item 6 (valor total) RESPONDIDO** e preço **DEFINIDO pelo Jonathan**:
+  - **Versão B — Branco interno (armários fechados): R$ 370.000**
+  - **Versão A — Tudo na cor: R$ 395.000**
+  - Diferença = material do interno na cor propagado pela margem (~R$ 24k).
+- **MC real (lançamento ambiente a ambiente): ~36% (B) / ~38% (A)** — **abaixo**
+  do piso de 40% de projeto grande. **Jonathan optou conscientemente por manter os
+  preços** (risco sinalizado pela Lavinia; casa spec p/ vender → priorizou o preço
+  de tabela). **Não reabrir.**
+- ⚠️ Quantitativo ainda **Fase-1 (±25%)**: material (~R$ 112k) saiu de
+  multiplicadores, não de cotas lidas; cruzando com o K&F tende a baixar → MC real
+  provavelmente sobe quando as medidas forem lançadas. Refinar com as pranchas de
+  detalhe antes da produção.
+- Arquivos no app: `orcamento-junior-vA-tudo-na-cor.json` e
+  `orcamento-junior-vB-branco-interno.json` (gerador: `gerar-orcamento-junior.js`).
+- **Próximo:** Vitor monta a proposta (âncora = versão A "tudo na cor"; valorizar
+  mobiliário na cor, sem expor margem). **Drive só após aprovação.**

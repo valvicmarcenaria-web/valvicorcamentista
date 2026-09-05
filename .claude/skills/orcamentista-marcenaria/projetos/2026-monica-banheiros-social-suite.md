@@ -79,3 +79,69 @@ Fechando os dois banheiros juntos, capturei 2 economias (repassadas ao preço):
 - Painel a laser e metalon: custos por referência do fundador (serviço antigo) —
   confirmar com fornecedor atual antes de fechar a OP.
 - LED da marcenaria (sup+inf) é nosso; LED IP65 de nicho/sanca é civil (não nosso).
+
+---
+
+## Refinamentos (08/07/2026) — aplicar a TODOS os ambientes (banheiros + closet + cozinha)
+
+- **Ferragens: Hardt + Hettich** (substitui a telescópica simples). Garantia do conjunto = **5 anos** (elo mais fraco, Hardt); opção de padronizar Hettich → 10 anos (upsell, ajustar custo).
+- **Puxador abaulado com topo em laca** — item de **acabamento premium**. Processo: usinagem CNC do chanfro → selagem/regularização → lixamento entre demãos → primer + laca PU em cabine → polimento. **Custo adicional referência do Jonathan: + R$ 3.500** (lançar nas portas com puxador abaulado).
+- **Cozinha — correção:** a **bancada principal é QUARTZITO Klahari** (pedra) = **FORA** (cliente/marmoraria). Só a base é MDF Tauari. (Eu havia lançado a bancada como MDF por engano.)
+- **Método:** quantitativo por **cut list peça a peça** (regra cravada — nunca chutar). Cozinha ainda em leitura das pranchas (aéreos, torre quente, despenseiro, portas) antes de fechar.
+
+## Status atual
+- ✅ **ORÇAMENTO FECHADO — 4 ambientes** (banheiros recompostos + closet + cozinha), MC 37%, método padrão (igual Nura/Júnior). Ver seção abaixo.
+
+---
+
+## 🔒 FECHAMENTO FINAL (14/07/2026) — 4 ambientes, 2 cenários
+
+> Quantitativo por **cut list peça a peça** das pranchas executivas (regra cravada — nunca chutado).
+> Preço **igual aos demais projetos**: encargos 22% (NF 7 · parc 7 · produção 5 · coord 1 · erro 2, *sem
+> vendedor*) + **MC por ambiente** (banheiros 37 · closet 33 · cozinha 35) + **RT 10% da Rubia como REPASSE
+> por cima** (fora do divisor). Duas linhas de ferragem/garantia (Essencial 5a / Prime 10a). Ver seções abaixo.
+> Laca **só na cozinha** (puxador abaulado); **closet = puxador alça Phenix preto, sem laca/LED**.
+
+### Cut list confirmado (chapas)
+| Ambiente | Chapas 15mm | Fundo 6mm | Cor(es) |
+|---|---|---|---|
+| Banheiro Social | 2 | 1 | Freijó |
+| Banheiro Suíte | 1 | 1 | Freijó |
+| **Closet** (armário em L 1,60+1,42 × 2,70 × 0,60) | 6 | 3 | Freijó |
+| **Cozinha** (U + torre quente + despenseiro + bancada refeições + lavanderia) | 17 (Tauari 11 + Tijolo 4 + branco 2) | 7 | Tauari/Tijolo |
+
+> ⛔ **Fora (cliente/marmoraria):** tampo principal da cozinha = **Quartzito Klahari**; bancada da lavanderia = granito
+> São Gabriel; bancadas dos banheiros = granito Pitaya; box de vidro; louças/metais. (Só a base é MDF Tauari.)
+
+### Preço — DOIS CENÁRIOS (14/07/2026, revisado)
+> Correção do closet: **NÃO tem laca nem LED**; puxador = **alça Phenix preto** (lido na prancha).
+> Margens por ambiente: **banheiros 37% · closet 33% · cozinha 35%**. Laca (+R$3.500) só na **cozinha**.
+> Duas linhas de ferragem: **Essencial** (Hardt, 5 anos) vs **Essencial Prime** (Hettich alemã — Sensys +
+> Actro, 10 anos). Cozinha — portas de correr: Essencial **Rometal RO82 top** · Prime **Siforma (italiana)**.
+> Portas estruturadas com **mecanismo anti-empeno** (ambas as linhas).
+
+| Ambiente | MC | Custo (Ess.) | **Essencial (5a)** | **Prime (10a)** |
+|---|--:|---:|---:|---:|
+| Banheiro Social | 37% | R$ 2.820 | **R$ 7.600** | **R$ 9.250** |
+| Banheiro Suíte | 37% | R$ 2.540 | **R$ 6.850** | **R$ 7.750** |
+| Closet | 33% | R$ 5.750 | **R$ 14.100** | **R$ 19.500** |
+| Cozinha (+visita) | 35% | R$ 21.450 | **R$ 55.000** | **R$ 71.100** |
+| **TOTAL** | | | **R$ 83.550** | **R$ 107.600** |
+
+- **À vista (−8%): Essencial ~R$ 76.900 · Prime ~R$ 99.000.**
+- **RT Rubia = repasse por cima** (fora do divisor) — não altera a MC em R$ da Valvic.
+- **Closet caiu de R$ 26.900 → R$ 14.100**: tirei a laca (que eu havia lançado errado, +~R$9,4k no preço),
+  tirei o LED (não tem) e baixei a MC p/ 33%. Correção a favor da cliente.
+
+### Itens de acabamento (destacar na proposta)
+- **Puxador abaulado + topo em laca PU** — **só na cozinha**: usinagem CNC do chanfro → selagem → lixamento
+  entre demãos → primer → laca PU em cabine → polimento (+R$ 3.500). **Fita acompanha curva e chanfro reto,
+  mas não chanfro curvo** (o abaulado combina os dois) — só a laca entrega. **Amostra física da peça na
+  aprovação**, antes da produção.
+- **Closet:** puxador **alça Phenix preto**, sem laca, sem LED.
+- **LED (banheiros + cozinha):** fornecido **e instalado** pela Valvic (destaque de praticidade na proposta).
+- Ferragens: **Essencial Hardt (5a)** / **Prime Hettich alemã — Sensys + Actro (10a)**.
+
+### Próximo passo
+- Montar a **proposta Premium** (layout Stefan/Vitor) dos 4 ambientes, com a narrativa da laca abaulada e os
+  métodos de pagamento (à vista 8% / parcelado). Base: `proposta-nura-premium.html`.

@@ -78,6 +78,15 @@ Toda gaveta Valvic é composta por **6 peças**:
 - **Ilha / peça solta:** a **face posterior também é acabada** (vista "posterior"
   no projeto). Fundo NÃO é 6 mm cru — é peça na cor/acabamento do projeto, com
   fita. Custo de chapa e fita maior que num móvel encostado à parede.
+- **Painel apoiado direto no chão → perfil de alumínio de proteção na base.**
+  Lançar **perfil de alumínio na base — R$ 15,00 / metro linear** (proteção contra
+  umidade/impacto). Quantidade = largura do painel em metros. *(regra geral
+  Jonathan, handoff Juninho 18/06/2026)*
+- **Porta de passagem — composição de custo (item próprio, nunca diluir em painel):**
+  cada porta = **2× MDF 15 mm + 2 barras de metalon internas** (reforço) +
+  sistema/dobradiças + (marco/alizar, puxador, tranca quando pede). **Metalon =
+  R$ 100,00 / barra → R$ 200 de metalon por porta**, além do MDF e da ferragem.
+  *(regra geral Jonathan, handoff Juninho 18/06/2026)*
 
 > Espessuras padrão Valvic: estrutura e gavetas **15 mm**; portas correr **18 mm**;
 > fundos **6 mm** (quando justificado — ver regra acima). Confirmar por projeto.
@@ -128,6 +137,15 @@ Toda gaveta Valvic é composta por **6 peças**:
 > **Regra de ouro:** ripado consome **muito mais fita** do que parece. Calcular
 > régua a régua, sempre. Subestimar aqui = prejuízo na certa. São **três
 > construções** distintas — identificar qual é antes de quantificar.
+
+> ⛔ **NUNCA orçar ripado por multiplicador de área de painel (cravado 17/06/2026).**
+> Erro real (Junior/Lagoa Santa): tratei o ripado como painel raso (1,4 × área
+> frontal) e ignorei a fita. Um único painel **3,50 × 2,73 m** (passo 4,5 cm) tem
+> **78 réguas = 213 m de fita** → R$ ~1.170 só de fita+filetagem **naquele painel**;
+> meu orçamento de fita pra **casa inteira** tinha sido ~2.320 m. Sempre:
+> `nº réguas = largura útil ÷ passo` → `fita = nº réguas × comprimento da régua`
+> → somar **filetagem** (máquina R$ 2,50/m; manual/6 mm R$ 4,00/m) → somar **chapa
+> das ripas + painel de fundo** → somar **colagem/lixamento** (mão de obra).
 
 **Geometria comum:** cada régua tem **largura** (ex. 3 cm) + **espaçamento**
 entre réguas (ex. 1–2 cm). O **passo = largura + espaçamento**.

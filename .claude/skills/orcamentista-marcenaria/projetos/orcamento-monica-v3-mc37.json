@@ -1,0 +1,222 @@
+{
+ "cliente": "Mônica Cristina",
+ "projeto": "Casa — Banheiros + Closet + Cozinha (BH)",
+ "versao": "003",
+ "inv": 89700,
+ "mcAlvo": 37,
+ "_nota": "v3 FINAL — 4 ambientes (2 banheiros recompostos + closet + cozinha). Cut list peca a peca das pranchas executivas (nunca chutado). Ferragens Hardt + Hettich (garantia 5 anos, elo Hardt). Portas com puxador abaulado + topo em laca PU: +R$3.500/ambiente (cozinha e closet). MC 37%, encargos 22% (NF7+parc7+producao5+coord1+erro2, SEM vendedor). RT 10% da parceira Rubia = REPASSE POR CIMA (fora do divisor): inv=89.700 e o cliente ve 89.700/0,907 = R$98.900. A vista (-7% da maquininha) ~R$92.000. Igual aos demais projetos (Nura/Junior).",
+ "p": {
+  "nf": 7,
+  "parc": 7,
+  "vend": 0,
+  "rt": 0,
+  "vis": 250,
+  "outv": 0,
+  "prog": 0.8,
+  "coord": 1,
+  "marc": 5,
+  "serra": 0.2,
+  "manut": 0.2,
+  "log": 0,
+  "erro": 2
+ },
+ "lib": [
+  [
+   "MDF",
+   [
+    ["mdf branco 6", 190],
+    ["mdf branco 15", 260],
+    ["mdf branco 18", 320],
+    ["mdf cor 6", 300],
+    ["mdf cor 15 (Freijo/Tauari/Tijolo)", 500],
+    ["mdf cor 18", 600]
+   ]
+  ],
+  [
+   "Cola e fita",
+   [
+    ["Colagem - mt linear - máquina", 2.5],
+    ["Colagem - mt linear - manual", 4],
+    ["Fita de borda - cor - mt", 3],
+    ["Fita de borda - branco tx - mt", 2]
+   ]
+  ],
+  [
+   "Dobradiças",
+   [
+    ["Padrão", 6],
+    ["Hardt", 8],
+    ["Hettich Sensys", 35]
+   ]
+  ],
+  [
+   "Corrediças",
+   [
+    ["Telescópica", 40],
+    ["Oculta Hardt", 70],
+    ["Oculta Quadro (Hettich)", 120],
+    ["Oculta Actro (Hettich)", 400]
+   ]
+  ],
+  [
+   "Articuladores",
+   [
+    ["Pistão com amortecimento", 30],
+    ["Aventos (Hettich)", 600]
+   ]
+  ],
+  [
+   "Puxadores",
+   [
+    ["Cava 35° usinada - mt", 50],
+    ["Especial 1 - Traço Metal/Couro Enlevo", 60]
+   ]
+  ],
+  [
+   "Suportes",
+   [
+    ["Suporte espada", 25],
+    ["Suporte oculto", 20]
+   ]
+  ],
+  [
+   "Iluminação",
+   [
+    ["LED - fita + perfil - mt", 150],
+    ["Sensor", 50]
+   ]
+  ],
+  [
+   "Parafusos / dispositivos / montagem",
+   [
+    ["Parafusos gerais - especulação", 25],
+    ["Conj. parafuso e bucha", 1.8],
+    ["Cola kit Teck bond", 35],
+    ["Silicone acabamento", 30]
+   ]
+  ],
+  [
+   "Limpeza / embalagem",
+   [
+    ["Strech", 4],
+    ["Embalagem", 50]
+   ]
+  ],
+  [
+   "Especiais",
+   [
+    ["Logística específica", 150],
+    ["Cabideiro oval inox", 150],
+    ["Painel corte a laser (frente)", 280],
+    ["Estrutura metalon - pint. eletrostatica preto fosco", 350],
+    ["Aramado/organizador despenseiro", 600],
+    ["Porta de correr (sistema + vidro)", 750],
+    ["Acabamento laca topo abaulado (CNC+primer+laca PU+polimento)", 3500]
+   ]
+  ]
+ ],
+ "ambientes": [
+  {
+   "nome": "Banheiro Social",
+   "q": {
+    "MDF¦mdf cor 15 (Freijo/Tauari/Tijolo)": 2,
+    "MDF¦mdf cor 6": 1,
+    "Cola e fita¦Fita de borda - cor - mt": 24,
+    "Cola e fita¦Colagem - mt linear - máquina": 24,
+    "Dobradiças¦Hardt": 2,
+    "Corrediças¦Oculta Quadro (Hettich)": 2,
+    "Puxadores¦Especial 1 - Traço Metal/Couro Enlevo": 2,
+    "Iluminação¦LED - fita + perfil - mt": 2.5,
+    "Iluminação¦Sensor": 1,
+    "Especiais¦Painel corte a laser (frente)": 1,
+    "Especiais¦Logística específica": 1,
+    "Parafusos / dispositivos / montagem¦Parafusos gerais - especulação": 2,
+    "Parafusos / dispositivos / montagem¦Conj. parafuso e bucha": 10,
+    "Parafusos / dispositivos / montagem¦Cola kit Teck bond": 1,
+    "Limpeza / embalagem¦Embalagem": 1,
+    "Limpeza / embalagem¦Strech": 2
+   },
+   "terc": {"vid": 0, "esq": 0, "ser": 0, "pin": 0, "est": 0, "laq": 0, "log": 0}
+  },
+  {
+   "nome": "Banheiro Suíte",
+   "q": {
+    "MDF¦mdf cor 15 (Freijo/Tauari/Tijolo)": 1,
+    "MDF¦mdf cor 6": 1,
+    "Cola e fita¦Fita de borda - cor - mt": 21,
+    "Cola e fita¦Colagem - mt linear - máquina": 21,
+    "Dobradiças¦Hardt": 2,
+    "Corrediças¦Oculta Quadro (Hettich)": 1,
+    "Puxadores¦Especial 1 - Traço Metal/Couro Enlevo": 1,
+    "Iluminação¦LED - fita + perfil - mt": 2.25,
+    "Iluminação¦Sensor": 1,
+    "Suportes¦Suporte espada": 4,
+    "Especiais¦Painel corte a laser (frente)": 1,
+    "Especiais¦Estrutura metalon - pint. eletrostatica preto fosco": 1,
+    "Especiais¦Logística específica": 1,
+    "Parafusos / dispositivos / montagem¦Parafusos gerais - especulação": 2,
+    "Parafusos / dispositivos / montagem¦Conj. parafuso e bucha": 10,
+    "Parafusos / dispositivos / montagem¦Cola kit Teck bond": 1,
+    "Limpeza / embalagem¦Embalagem": 1,
+    "Limpeza / embalagem¦Strech": 2
+   },
+   "terc": {"vid": 0, "esq": 0, "ser": 0, "pin": 0, "est": 0, "laq": 0, "log": 0}
+  },
+  {
+   "nome": "Closet (armário em L, Freijó)",
+   "q": {
+    "MDF¦mdf cor 15 (Freijo/Tauari/Tijolo)": 6,
+    "MDF¦mdf branco 6": 3,
+    "Cola e fita¦Fita de borda - cor - mt": 120,
+    "Cola e fita¦Colagem - mt linear - máquina": 120,
+    "Dobradiças¦Hardt": 16,
+    "Corrediças¦Oculta Quadro (Hettich)": 4,
+    "Corrediças¦Oculta Hardt": 2,
+    "Puxadores¦Cava 35° usinada - mt": 3,
+    "Iluminação¦LED - fita + perfil - mt": 5,
+    "Especiais¦Cabideiro oval inox": 1,
+    "Suportes¦Suporte espada": 8,
+    "Parafusos / dispositivos / montagem¦Parafusos gerais - especulação": 4,
+    "Parafusos / dispositivos / montagem¦Conj. parafuso e bucha": 20,
+    "Parafusos / dispositivos / montagem¦Cola kit Teck bond": 1,
+    "Limpeza / embalagem¦Embalagem": 1,
+    "Especiais¦Acabamento laca topo abaulado (CNC+primer+laca PU+polimento)": 1
+   },
+   "terc": {"vid": 0, "esq": 0, "ser": 0, "pin": 0, "est": 0, "laq": 0, "log": 0}
+  },
+  {
+   "nome": "Cozinha (U + torre quente + despenseiro + lavanderia)",
+   "q": {
+    "MDF¦mdf cor 15 (Freijo/Tauari/Tijolo)": 15,
+    "MDF¦mdf branco 15": 2,
+    "MDF¦mdf branco 6": 7,
+    "Cola e fita¦Fita de borda - cor - mt": 350,
+    "Cola e fita¦Colagem - mt linear - máquina": 350,
+    "Dobradiças¦Hardt": 48,
+    "Articuladores¦Pistão com amortecimento": 6,
+    "Corrediças¦Oculta Quadro (Hettich)": 16,
+    "Especiais¦Aramado/organizador despenseiro": 1,
+    "Puxadores¦Cava 35° usinada - mt": 5,
+    "Iluminação¦LED - fita + perfil - mt": 8.8,
+    "Iluminação¦Sensor": 1,
+    "Especiais¦Porta de correr (sistema + vidro)": 1,
+    "Suportes¦Suporte espada": 6,
+    "Parafusos / dispositivos / montagem¦Parafusos gerais - especulação": 8,
+    "Parafusos / dispositivos / montagem¦Conj. parafuso e bucha": 40,
+    "Parafusos / dispositivos / montagem¦Cola kit Teck bond": 2,
+    "Parafusos / dispositivos / montagem¦Silicone acabamento": 2,
+    "Limpeza / embalagem¦Embalagem": 2,
+    "Limpeza / embalagem¦Strech": 4,
+    "Especiais¦Logística específica": 2,
+    "Especiais¦Acabamento laca topo abaulado (CNC+primer+laca PU+polimento)": 1
+   },
+   "terc": {"vid": 0, "esq": 0, "ser": 0, "pin": 0, "est": 0, "laq": 0, "log": 0}
+  }
+ ],
+ "ativo": 0,
+ "collapsed": {},
+ "diretrizes": "MÔNICA — 4 ambientes. Quantitativo por CUT LIST peça a peça (regra cravada: nunca chutar). Cozinha = U completa (Tauari 11 + Tijolo 4 + branco 2 + fundo 7 = ~26 chapas); tampo principal = QUARTZITO Klahari FORA (marmoraria/cliente); base = MDF Tauari. Closet = armário em L Freijó (6 chapas 15mm + 3 de 6mm). Ferragens Hardt + Hettich → garantia 5 anos (elo Hardt); upsell possível padronizando Hettich (10 anos). Portas com puxador ABAULADO recebem topo em LACA PU (usinagem CNC do chanfro → selagem → lixamento entre demãos → primer → laca em cabine → polimento): +R$3.500 por ambiente (cozinha e closet). RT 10% Rubia = REPASSE por cima (fora do divisor). Preço ao cliente = inv/0,907 = R$98.900 parcelado · à vista ~R$92.000.",
+ "rodrigo": "",
+ "duvidas": [],
+ "theme": "light"
+}
