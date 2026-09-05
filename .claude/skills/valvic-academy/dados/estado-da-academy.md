@@ -23,6 +23,7 @@ Na arquitetura declarada do **"Valvic OS"** (≈15 documentos), a Academy é o *
 | **Fichas e checklists de produção** | `painel/ficha-*.html`, `matriz-conferencia.html`, `checklist-insumos-ferramentas.html` | Prontos — falta o POP que diz **como usá-los** |
 | **POP-01 — Conferência de peça antes de sair da fábrica** | `painel/pop-conferencia-de-peca.html` | Escrito em 09/2026 · aguarda aprovação da Direção e implantação (revisão em 30 dias) |
 | **Módulo VI — Acabamento e o padrão Valvic** | `painel/academy-modulo-06-acabamento.html` | Escrito em 09/2026 · 6 folhas A4, montado sobre os 37 pontos reais de erro. É o *porquê* do POP-01 |
+| **Escopo do Núcleo Informacional** — 77 fichas com ID, estado, dono e ordem de produção | `referencias/escopo-do-nucleo.md` | Definido em 09/2026 com o Jonathan. **É o plano de obra da Academy** |
 | **Casos reais de erro** | `painel/feedback-deivison-obra.html` (21 pontos) e `feedback-samuel-obra.html` (16 pontos) | Matéria-prima de aula |
 | **Apps de checklist digital** | pasta `apps` no Drive; ver `GUIA-APPS-E-FERRAMENTAS.md` | Existem — **cada um deveria ter POP e uma aula**, e não têm |
 

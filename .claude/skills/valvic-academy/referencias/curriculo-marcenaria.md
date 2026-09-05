@@ -3,6 +3,10 @@
 O mapa do que precisa existir como conteúdo. Não é para escrever tudo de uma vez — é para
 saber onde cada pedido encaixa e o que já está coberto.
 
+> **O escopo fechado do núcleo, com IDs de ficha, estado e ordem de produção, está em
+> `escopo-do-nucleo.md`.** Este arquivo segue valendo como a narrativa dos módulos técnicos
+> (Blocos 2 a 11 de lá); quando os dois divergirem, o `escopo-do-nucleo.md` manda.
+
 **Fonte primária de quase todo este conteúdo:**
 `.claude/skills/orcamentista-marcenaria/referencias/` (chapas, ferragens, laminação,
 roupeiros, quantitativo, custos) e
