@@ -1,0 +1,93 @@
+{
+ "cliente": "Valdenir & Maria (designer Paula Galante)",
+ "projeto": "Cabeceira — versão LACA ACETINADA (Vale dos Cristais)",
+ "versao": "laca",
+ "inv": 16000,
+ "mcAlvo": 40,
+ "_nota": "Cabeceira painel rígido em LACA ACETINADA. Laca R$450/m² frente+topos (7,5m²) + log dedicada 200. Frisos 5mm entre painéis. Prazo 45-50 dias. Material R$4585, MC 40%.",
+ "p": {
+  "nf": 5,
+  "parc": 7,
+  "vend": 0,
+  "rt": 10,
+  "vis": 250,
+  "outv": 0,
+  "prog": 0.8,
+  "coord": 1,
+  "marc": 5,
+  "serra": 0.2,
+  "manut": 0.2,
+  "log": 0,
+  "erro": 2
+ },
+ "lib": [
+  [
+   "MDF",
+   [
+    [
+     "mdf cru 15 (substrato laca)",
+     300
+    ]
+   ]
+  ],
+  [
+   "Acabamentos (m²)",
+   [
+    [
+     "Laca acetinada (m² por face)",
+     450
+    ]
+   ]
+  ],
+  [
+   "Especiais",
+   [
+    [
+     "Logística dedicada laca",
+     200
+    ],
+    [
+     "Fixação macho-fêmea + parafusos",
+     60
+    ],
+    [
+     "Consumíveis (cola/grampo/embalagem)",
+     50
+    ]
+   ]
+  ]
+ ],
+ "ambientes": [
+  {
+   "nome": "Cabeceira em laca acetinada (5,5×1,2m · 6 módulos · frisos 5mm)",
+   "q": {
+    "MDF¦mdf cru 15 (substrato laca)": 3,
+    "Acabamentos (m²)¦Laca acetinada (m² por face)": 7.5,
+    "Especiais¦Logística dedicada laca": 1,
+    "Especiais¦Fixação macho-fêmea + parafusos": 1,
+    "Especiais¦Consumíveis (cola/grampo/embalagem)": 1
+   },
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
+   }
+  }
+ ],
+ "ativo": 0,
+ "collapsed": {
+  "MDF": true,
+  "Acabamentos (m²)": true,
+  "Especiais": true
+ },
+ "diretrizes": "Paula Galante parceira RT10. Painel RÍGIDO (não estofado). Laca acetinada frente+topos R$450/m². Frisos 5mm entre os 6 painéis (EXPOR na proposta). Fixação macho-fêmea. LED do cliente. Conferir medidas no local.",
+ "rodrigo": "Laca acetinada MC ~40% (R$16,000). Prazo 45-50 dias.",
+ "duvidas": [
+  "Áreas por estimativa — conferir no local."
+ ],
+ "theme": "light"
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+  @page{ size:A4; margin:12mm 16mm 10mm; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  :root{ --mostarda:#E0A521; --ouro:#B0892F; --carvao:#201C18; --creme:#F4ECDD; --ivory:#FBF6EC; --taupe:#8C7E69; --linha:#E5D9BE; --texto:#2A2520; }
+  body{ font-family:"Helvetica Neue",Arial,sans-serif; color:var(--texto); font-size:9pt; line-height:1.45; }
+  .top{ display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid var(--carvao); padding-bottom:3.5mm; margin-bottom:4mm; }
+  .brand{ font-size:16pt; color:var(--carvao); } .brand .st{ color:var(--ouro); margin-right:1.5mm; }
+  .top .r{ text-align:right; font-size:7pt; color:var(--taupe); letter-spacing:.8px; text-transform:uppercase; line-height:1.6; }
+  .eyebrow{ letter-spacing:2.5px; font-size:7.5pt; text-transform:uppercase; color:var(--ouro); margin-bottom:2mm; }
+  h1{ font-family:Georgia,serif; font-weight:normal; font-size:18pt; color:var(--carvao); line-height:1.12; margin-bottom:1mm; }
+  h2{ font-family:Georgia,serif; font-weight:normal; font-size:12pt; color:var(--carvao); margin:4mm 0 1.5mm; padding-bottom:1mm; border-bottom:1px solid var(--mostarda); }
+  .callout{ background:var(--ivory); border-left:3px solid var(--mostarda); padding:3mm 4.5mm; font-size:8.4pt; color:#5b5347; margin:3mm 0; line-height:1.5; }
+  .flag{ background:#FBEFD6; border-left:3px solid var(--ouro); }
+  table{ width:100%; border-collapse:collapse; margin:2mm 0; }
+  th{ background:var(--carvao); color:var(--creme); font-size:7pt; text-transform:uppercase; letter-spacing:.5px; padding:2mm; text-align:left; font-weight:normal; }
+  td{ padding:2mm; border-bottom:1px solid var(--linha); font-size:8.8pt; vertical-align:top; }
+  td.n,th.n{ text-align:right; font-variant-numeric:tabular-nums; }
+  tr.sum td{ background:var(--creme); font-weight:bold; color:var(--carvao); border-bottom:1.5px solid var(--taupe); }
+  tr.big td{ background:var(--carvao); color:var(--creme); font-weight:bold; font-size:10pt; }
+  tr.big td .g{ color:var(--mostarda); }
+  b{ color:var(--carvao); }
+  .kpi{ display:flex; gap:3.5mm; margin:3mm 0; }
+  .kpi>div{ flex:1; background:var(--carvao); color:var(--creme); padding:3.5mm 4mm; }
+  .kpi.opt>div{ background:var(--taupe); }
+  .kpi .lbl{ font-size:6.8pt; text-transform:uppercase; letter-spacing:1px; color:var(--mostarda); }
+  .kpi.opt .lbl{ color:var(--creme); }
+  .kpi .val{ font-family:Georgia,serif; font-size:19pt; margin-top:1mm; }
+  .kpi .sub2{ font-size:6.8pt; color:#cbb98f; margin-top:.5mm; }
+  .foot{ margin-top:6mm; border-top:1px solid var(--linha); padding-top:2.5mm; font-size:6.8pt; color:var(--taupe); display:flex; justify-content:space-between; }
+</style></head><body>
+
+<div class="top">
+  <div><div class="brand"><span class="st">✦</span>Valvic</div><div style="font-size:7pt;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-top:.5mm;">Marcenaria sob medida</div></div>
+  <div class="r">Uso interno · Orçamentista<br>Precificação · fechamento de preço</div>
+</div>
+
+<div class="eyebrow">Precificação — Apartamento CJ (B+G)</div>
+<h1>Preço de venda por módulo</h1>
+<div style="font-size:8.5pt;color:var(--taupe);margin-top:1.5mm;">
+Venda direta · divisor <b>0,738</b> · MC <b>37%</b> · visita <b>R$350</b> · <span style="white-space:nowrap;">inv = (material + visita) ÷ (0,738 − 0,37) = custo ÷ <b>0,368</b></span></div>
+
+<h2>Núcleo — freijó lâmina natural + serralheria</h2>
+<table>
+<tr><th>Módulo</th><th class="n">Material</th><th class="n">÷ 0,368</th><th class="n">Preço de venda</th></tr>
+<tr><td>1 · Móvel Entrada (238×40×45, freijó, futton)</td><td class="n">9.659</td><td class="n">÷0,368</td><td class="n">26.247</td></tr>
+<tr><td>2 · Gourmet — aéreo + balcão ripado</td><td class="n">11.015</td><td class="n">÷0,368</td><td class="n">29.932</td></tr>
+<tr><td>4 · Serralheria vinho (2 un)</td><td class="n">600</td><td class="n">÷0,368</td><td class="n">1.630</td></tr>
+<tr><td>Visita técnica (rateio único)</td><td class="n">350</td><td class="n">÷0,368</td><td class="n">951</td></tr>
+<tr class="sum"><td>Subtotal material núcleo + visita</td><td class="n">21.624</td><td class="n"></td><td class="n"></td></tr>
+<tr class="big"><td>NÚCLEO — PREÇO DE VENDA</td><td class="n"></td><td class="n"></td><td class="n"><span class="g">R$ 58.760</span></td></tr>
+</table>
+
+<h2>Opcional — módulo laca TV + Jantar</h2>
+<table>
+<tr><th>Módulo</th><th class="n">Material</th><th class="n">÷ 0,368</th><th class="n">Preço de venda</th></tr>
+<tr><td>3 · Salas TV + Jantar — laca fosca 636×232 (módulo novo)</td><td class="n">14.475</td><td class="n">÷0,368</td><td class="n">39.334</td></tr>
+<tr class="big"><td>OPCIONAL — PREÇO DE VENDA</td><td class="n"></td><td class="n"></td><td class="n"><span class="g">R$ 39.334</span></td></tr>
+</table>
+
+<div class="kpi">
+  <div><div class="lbl">Núcleo (obrigatório)</div><div class="val">R$ 58.760</div><div class="sub2">Entrada + Gourmet + serralheria</div></div>
+  <div><div class="lbl">MC realizada</div><div class="val">37%</div><div class="sub2">R$ 21.741 de contribuição</div></div>
+</div>
+<div class="kpi opt">
+  <div><div class="lbl">+ Opcional laca</div><div class="val">R$ 39.334</div><div class="sub2">TV + Jantar (módulo novo)</div></div>
+  <div><div class="lbl">Pacote completo</div><div class="val">R$ 98.094</div><div class="sub2">núcleo + opcional</div></div>
+</div>
+
+<div class="callout flag"><b>Atenção de régua (sinal pro Rodrigo/Vitor).</b> O <b>pacote completo (R$ 98.094)</b>
+cruza a faixa de <b>R$ 80k</b> — a régua Valvic pra projeto acima de R$80k pede <b>MC mínima 40% + entrada 40%</b>.
+A 37% está <b>abaixo desse piso</b> no pacote fechado. O <b>núcleo sozinho (R$ 58.760)</b> fica sob R$80k e a
+37% se sustenta. <b>Confirmar:</b> mantém 37% no pacote completo ou sobe pra 40% se levar o opcional junto?</div>
+
+<div class="callout"><b>Notas de fechamento.</b> (1) Laca do opcional a R$650/m²; MDF, vidro e puxador ainda em
+<b>referência de catálogo</b> — trocar pelos seus preços firma o R$39.334. (2) Laminação manual do ripado
+assumida a ~30 m (pitch 5cm). (3) Serralheria é terceirizado (~R$600) — se preferir markup mais leve que o
+da marcenaria, o preço dela cai; hoje está no mesmo divisor. (4) Números exatos do motor — o <b>Vitor</b>
+arredonda no fechamento (ex.: núcleo R$ 58.800).</div>
+
+<div class="foot"><span>Valvic · marcenaria sob medida · uso interno</span><span>Precificação · Apartamento CJ (B+G) · MC 37% · venda direta</span></div>
+</body></html>

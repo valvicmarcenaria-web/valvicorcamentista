@@ -71,6 +71,17 @@ Base: cópia da `proposta_bruna_ferreira` (`DAHKUR7n8Yo`). Ambos já têm placeh
 `{{NOME DO CLIENTE}}`, `garantia - {{ANOS}} anos`, `Investimento total - R$ {{TOTAL}}`
 e typos corrigidos (Premium, Hardt, Laminação, Espessuras de painéis).
 
+### Linha Family — layout HTML→PDF (alternativa ao Canva)
+
+Layout próprio (não-Canva) para **projetos residenciais / perfil consultivo**, que
+resolve o que o mestre do Canva não faz: **duas versões num arquivo só** e **números
+redondos**, sem depender de Canva pago. Nasceu da proposta da **Samara** (jun/2026).
+- Template + doc: **`layouts/linha-family.html`** e **`layouts/README.md`**.
+- Exemplos reais: `propostas/proposta-samara*.html` (+ PDFs).
+- Gera com `weasyprint` (HTML→PDF). 4 páginas: capa · conexão+escopo · investimento
+  com 2 versões · pagamento+garantia+CTA.
+- Usar a Family no enxuto/familiar; o MODELO Canva no premium/casa inteira com cases.
+
 ### Element IDs reutilizáveis (para autofill via MCP)
 - Capa nome: `PB2PRdKRTQVKcmq8-LBRmKPSmH1SKzz2l`
 - Garantia (selo): `PBxslyLM2wlZc8Yx-LBC987f5h8kznwRY`
@@ -94,6 +105,15 @@ A API **não adiciona nem remove linhas de tabela** — só edita texto de célu
 ## Ativos pendentes (do Jonathan / Drive)
 
 - **MODELO ENXUTO:** aparar a tabela para 1–2 linhas (ajuste manual único no Canva).
+- **Campos faltando no template-mestre** (achados na geração da Samara 06/2026 — criar
+  como elementos/placeholders pra virar autofill e parar de exigir trabalho manual):
+  - `projeto_titulo` (ex.: "Quarto dos Irmãos") · `data` · `conexao_texto` (parágrafo
+    personalizado) — hoje a pág. 2 tem texto institucional FIXO, não editável por campo.
+  - **Comparativo de versões** (Conforto × Essencial + frase de upsell) — o template só
+    tem 1 campo de total/garantia, então a 2ª linha não entra (vai só a recomendada).
+  - **Tabela de itens com linhas fixas:** API do Canva não deleta linha → sobram linhas
+    vazias com bullet "•" quando o projeto tem menos itens que o template. Mestre
+    precisa de versão com menos linhas OU apagar manualmente as excedentes.
 - **Documento de garantia:** só o de **10 anos** (Gold) está desenhado. Criar as
   variações **2 / 5 anos / vitalícia** a partir dele (muda o tempo e a linha) — ver
   `garantia.md` (política escalonada por ferragem).

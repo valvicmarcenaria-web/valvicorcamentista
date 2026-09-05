@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root{ --mostarda:#E0A521; --ouro:#B8860B; --preto:#1A1A1A; --creme:#FDF6E3; --cinza:#6b6b6b; }
+  body { font-family: "Helvetica Neue", Arial, sans-serif; color:var(--preto); font-size:11pt; line-height:1.5; }
+  .page { width:210mm; min-height:297mm; padding:18mm 20mm; position:relative; page-break-after:always; background:#fff; }
+  .page:last-child{ page-break-after:auto; }
+  .serif{ font-family:Georgia,"Times New Roman",serif; }
+  h1,h2,h3{ font-family:Georgia,serif; font-weight:normal; }
+  .gold{ color:var(--ouro); } .spark{ color:var(--mostarda); letter-spacing:4px; }
+  .wordmark{ font-family:Georgia,serif; font-size:20pt; letter-spacing:1px; }
+  .cover{ background:var(--creme); display:flex; flex-direction:column; justify-content:center; }
+  .cover .band{ position:absolute; top:0; left:0; right:0; height:14mm; background:var(--mostarda); }
+  .cover .band-b{ top:auto; bottom:0; }
+  .cover .eyebrow{ letter-spacing:5px; font-size:10.5pt; color:var(--ouro); text-transform:uppercase; }
+  .cover .name{ font-size:40pt; line-height:1.08; margin:6mm 0 3mm; }
+  .cover .proj{ font-size:16pt; color:var(--cinza); font-style:italic; }
+  .cover .foot{ position:absolute; bottom:22mm; left:20mm; right:20mm; display:flex; justify-content:space-between; align-items:flex-end; }
+  .sec-h{ font-size:10pt; letter-spacing:5px; text-transform:uppercase; color:var(--ouro); border-bottom:1.5px solid var(--mostarda); padding-bottom:3mm; margin-bottom:6mm; }
+  .lead{ font-size:14pt; line-height:1.55; } .muted{ color:var(--cinza); }
+  .cards{ display:flex; flex-wrap:wrap; gap:4mm; margin-top:5mm; }
+  .card{ width:calc(50% - 2mm); background:var(--creme); border-left:3px solid var(--mostarda); padding:5mm 6mm; }
+  .card h3{ font-size:12.5pt; margin-bottom:1.5mm; } .card p{ font-size:9.5pt; color:#444; }
+  .hl{ margin-top:4mm; }
+  .hl .row{ display:flex; gap:4mm; padding:3.5mm 0; border-bottom:1px solid #ece2c6; }
+  .hl .ic{ color:var(--mostarda); font-size:13pt; width:8mm; flex-shrink:0; text-align:center; }
+  .hl .tx b{ font-family:Georgia,serif; font-size:11.5pt; } .hl .tx span{ font-size:9.7pt; color:#555; }
+  .versions{ display:flex; gap:5mm; margin-top:6mm; }
+  .v{ flex:1; border:1.5px solid #e0d6bb; border-radius:3mm; padding:6mm; }
+  .v.reco{ border:2px solid var(--mostarda); background:var(--creme); }
+  .v .vname{ font-family:Georgia,serif; font-size:15pt; } .v .badge{ background:var(--mostarda); color:#fff; font-size:7.5pt; letter-spacing:1.5px; padding:1mm 2.5mm; border-radius:2mm; text-transform:uppercase; float:right;}
+  .v .vdesc{ font-size:9.3pt; color:var(--cinza); min-height:26mm; margin:3mm 0; }
+  .v .vprice{ font-family:Georgia,serif; font-size:23pt; }
+  table{ width:100%; border-collapse:collapse; margin-top:3mm; } th{ text-align:left; font-size:8.5pt; letter-spacing:2px; text-transform:uppercase; color:var(--cinza); padding:2.5mm 2mm; border-bottom:1.5px solid var(--mostarda); }
+  td{ padding:3mm 2mm; border-bottom:1px solid #e8ddc2; font-size:10.5pt; } td.val{ text-align:right; font-family:Georgia,serif; }
+  .pay .disc{ text-align:right; font-family:Georgia,serif; color:var(--ouro); }
+  .info{ display:flex; gap:5mm; margin-top:6mm; } .info>div{flex:1;} .info .k{ font-size:8.5pt; letter-spacing:2px; text-transform:uppercase; color:var(--ouro);} .info .vv{ font-size:11.5pt; font-family:Georgia,serif; margin-top:1mm;}
+  .cta{ margin-top:7mm; background:var(--preto); color:#fff; padding:6mm; border-radius:3mm; }
+  .pfoot{ position:absolute; bottom:12mm; left:20mm; right:20mm; font-size:8pt; color:var(--cinza); display:flex; justify-content:space-between; border-top:1px solid #e8ddc2; padding-top:2.5mm;}
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="page cover">
+  <div class="band"></div><div class="band band-b"></div>
+  <div class="spark">✦ ✦ ✦</div>
+  <div class="eyebrow">Proposta especial para</div>
+  <div class="name serif">Clínica Dermato-Nutrologia</div>
+  <div class="proj serif">Dra. Esther &amp; Dra. Sarah · Vale do Sereno, Nova Lima</div>
+  <div class="foot"><span class="wordmark">valvic</span>
+    <span class="muted" style="font-size:9pt;">Marcenaria sob medida · Projeto: Paula Galante</span></div>
+</div>
+
+<!-- CONEXAO + ENTREGA -->
+<div class="page">
+  <div class="sec-h">O seu projeto</div>
+  <p class="lead">Uma clínica é feita de confiança — e isso começa no ambiente. O projeto que
+  a Paula desenhou pede uma marcenaria <b>limpa, precisa e sofisticada</b>, à altura do
+  cuidado que vocês entregam aos pacientes.</p>
+  <p class="lead" style="margin-top:4mm;"><b>A Valvic executa a clínica inteira e coordena
+  tudo</b> — marcenaria, vidro, iluminação e serralheria — para
+  vocês terem <b>um interlocutor só</b> e um padrão único de acabamento, do recepção ao consultório.</p>
+
+  <div class="sec-h" style="margin-top:11mm;">O que entregamos</div>
+  <div class="cards">
+    <div class="card"><h3>Recepção &amp; Circulação</h3><p>Aparador curvo com tampo de vidro
+      extra clear + prateleiras iluminadas + armário do quadro de distribuição embutido.</p></div>
+    <div class="card"><h3>Portas (sistema)</h3><p>3 portas de correr camufladas que deslizam
+      e somem na parede — ferragem premium embutida.</p></div>
+    <div class="card"><h3>Consultório</h3><p>Mesa de trabalho, móveis de apoio, prateleiras com
+      LED embutido e móvel sob a bancada — puxadores premium de embutir.</p></div>
+    <div class="card"><h3>Copa &amp; DML</h3><p>Básculas aéreas, bancada inferior,
+      e os armários de serviço (lixeira, vassouras).</p></div>
+  </div>
+  <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Clínica Dermato-Nutrologia — Dra. Esther &amp; Dra. Sarah</span></div>
+</div>
+
+<!-- DIFERENCIAIS PREMIUM -->
+<div class="page">
+  <div class="sec-h">Os diferenciais deste projeto</div>
+  <p class="muted" style="font-size:10.5pt;">Detalhes que elevam a clínica — e que exigem marcenaria de verdade:</p>
+  <div class="hl">
+    <div class="row"><div class="ic">✦</div><div class="tx"><b>Curvas</b><br><span>Aparador da recepção com base curva — recorte e acabamento que a marcenaria comum não faz.</span></div></div>
+    <div class="row"><div class="ic">✦</div><div class="tx"><b>Vidro Extra Clear</b><br><span>Tampo da recepção em vidro <b>extra clear</b> (super transparente, sem o esverdeado do vidro comum) com laca off-white no verso.</span></div></div>
+    <div class="row"><div class="ic">✦</div><div class="tx"><b>Iluminação integrada</b><br><span>LED 3000K embutido na marcenaria e <b>LED de 1×1cm</b> nas prateleiras do consultório — luz que faz parte do móvel.</span></div></div>
+    <div class="row"><div class="ic">✦</div><div class="tx"><b>Puxadores premium</b><br><span>Puxador <b>Livorno de embutir</b> (concha 98×98mm) — embutido, minimalista, toque sofisticado.</span></div></div>
+    <div class="row"><div class="ic">✦</div><div class="tx"><b>Portas de correr camufladas</b><br><span>Sistema <b>Rometal RO82 Top</b> com soft-close e ferragem embutida (FE 9009) — suporta até 150kg e some na parede.</span></div></div>
+    <div class="row"><div class="ic">✦</div><div class="tx"><b>MDF Ultra Premium Duratex</b><br><span>Portas e revestimento de parede no padrão <b>Ultra Premium Duratex</b> — superfície nobre, resistente, durável (essencial em clínica).</span></div></div>
+    <div class="row"><div class="ic">✦</div><div class="tx"><b>Rodapé em alumínio</b><br><span>Acabamento de precisão no encontro do revestimento com o piso (Cenário 2).</span></div></div>
+  </div>
+  <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Clínica Dermato-Nutrologia — Dra. Esther &amp; Dra. Sarah</span></div>
+</div>
+
+<!-- INVESTIMENTO -->
+<div class="page">
+  <div class="sec-h">Investimento</div>
+  <p class="muted" style="font-size:10.5pt;">A clínica inteira num projeto só. A diferença entre os
+  cenários está nas <b>3 portas e no revestimento das paredes</b> — todo o resto é igual nos dois.</p>
+
+  <div class="versions">
+    <div class="v">
+      <div class="vname">Cenário 1</div>
+      <div class="vdesc">As <b>3 portas de correr camufladas</b> em MDF com <b>laminado de alta
+        pressão (HPL) nas 2 faces</b> — superfície ultrarresistente — no sistema Rometal RO82 Top.
+        <br><br><i>Paredes sem revestimento de marcenaria.</i></div>
+      <div class="vprice">R$ 43.200</div>
+    </div>
+    <div class="v reco">
+      <span class="badge">Mais completo</span>
+      <div class="vname">Cenário 2</div>
+      <div class="vdesc">As 3 portas em <b>MDF Ultra Premium Duratex</b> <b>+ paredes revestidas</b>
+        no mesmo padrão amadeirado <b>+ rodapé de alumínio</b> — a clínica com revestimento
+        contínuo e integrado, do recepção ao consultório.</div>
+      <div class="vprice">R$ 47.000</div>
+    </div>
+  </div>
+
+  <div class="info">
+    <div><div class="k">Prazo de entrega</div><div class="vv">100 a 120 dias úteis</div></div>
+    <div><div class="k">Validade</div><div class="vv">5 dias úteis</div></div>
+    <div><div class="k">Garantia</div><div class="vv">5 anos · estrutura e ferragens</div></div>
+  </div>
+
+  <div class="sec-h" style="margin-top:10mm;">Condições de pagamento</div>
+  <table class="pay">
+    <tr><th>Condição</th><th style="text-align:right;">Vantagem</th></tr>
+    <tr><td>30% de entrada + saldo em até 10× no cartão</td><td class="disc">—</td></tr>
+    <tr><td>50% de entrada + saldo em até 8×</td><td class="disc">3% de desconto</td></tr>
+    <tr><td>70% de entrada + saldo em até 6×</td><td class="disc">5% de desconto</td></tr>
+    <tr><td>70% de entrada + saldo via transferência</td><td class="disc">7% de desconto</td></tr>
+  </table>
+
+  <div class="cta">
+    <span class="spark" style="color:var(--mostarda)">✦</span>&nbsp; <b class="serif" style="font-size:13pt;">Vamos executar a sua clínica?</b><br>
+    <span style="font-size:10pt;">Reservamos a vaga na agenda de produção com a entrada e seguimos
+    para a medição final e o cronograma — a clínica inteira, com o melhor acabamento, num projeto só.</span>
+  </div>
+  <div class="pfoot"><span>valvic · marcenaria sob medida</span><span>Clínica Dermato-Nutrologia — Dra. Esther &amp; Dra. Sarah</span></div>
+</div>
+
+</body>
+</html>

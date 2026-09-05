@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size:A4; margin:0; }
+  @font-face{ font-family:"Aurora Valvic"; src:url("aurora-valvic.ttf"); }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  :root{ --mostarda:#E0A521; --ouro:#B0892F; --carvao:#201C18; --creme:#F4ECDD; --ivory:#FBF6EC;
+    --taupe:#8C7E69; --linha:#E5D9BE; --texto:#2A2520; }
+  body{ font-family:"Helvetica Neue",Arial,sans-serif; color:var(--texto); font-size:10pt; line-height:1.5; }
+  .page{ width:210mm; min-height:297mm; padding:18mm 20mm; position:relative; background:#fff; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+  .serif{ font-family:Georgia,"Times New Roman",serif; font-weight:normal; }
+  .fw{ font-family:"Aurora Valvic"; }
+  .eyebrow{ letter-spacing:4px; font-size:8pt; text-transform:uppercase; color:var(--ouro); }
+  .mono{ font-family:"Courier New",monospace; }
+
+  /* CAPA */
+  .cover{ padding:0; display:flex; flex-direction:column; }
+  .cover .hero{ height:200mm; position:relative; overflow:hidden; background:#2a2520; }
+  .cover .hero img{ width:100%; height:100%; object-fit:cover; }
+  .cover .hero .band{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(32,28,24,.15) 40%,rgba(32,28,24,.85)); }
+  .cover .hero .top{ position:absolute; top:12mm; left:16mm; right:16mm; display:flex; justify-content:space-between; align-items:center; }
+  .cover .hero .brand{ font-size:19pt; color:#fff; } .cover .hero .brand .st{ font-family:Georgia,serif; color:var(--mostarda); margin-right:2mm; } .cover .hero .brand .v{ font-family:"Aurora Valvic"; }
+  .cover .hero .badge{ font-size:7.5pt; letter-spacing:2.5px; text-transform:uppercase; color:#EFE7D6; border:1px solid rgba(255,255,255,.5); border-radius:2mm; padding:2mm 4mm; }
+  .cover .hero .foot{ position:absolute; left:16mm; right:16mm; bottom:14mm; color:#fff; }
+  .cover .hero .foot .ey{ letter-spacing:4px; font-size:8pt; text-transform:uppercase; color:var(--mostarda); }
+  .cover .hero .foot .nm{ font-family:Georgia,serif; font-size:40pt; line-height:1.05; margin:2mm 0 2mm; }
+  .cover .hero .foot .sb{ font-size:11pt; color:#e6ddcc; }
+  .cover .strip{ flex:1; background:var(--carvao); color:#c9bda4; display:flex; align-items:center; justify-content:space-between; padding:0 16mm; font-size:9pt; letter-spacing:1px; }
+  .cover .strip b{ color:#EFE7D6; font-family:Georgia,serif; font-size:11pt; }
+
+  /* AMBIENTES */
+  .h1{ font-family:Georgia,serif; font-size:25pt; color:var(--carvao); line-height:1.1; }
+  .lead{ font-size:10pt; color:#5b5347; margin-top:3mm; max-width:150mm; }
+  .amb{ display:flex; gap:8mm; margin-top:8mm; align-items:flex-start; }
+  .amb .im{ width:60mm; min-width:60mm; height:42mm; border-radius:1.5mm; overflow:hidden; background:#2a2520; }
+  .amb .im img{ width:100%; height:100%; object-fit:cover; }
+  .amb .bd{ flex:1; }
+  .amb .nm{ font-family:Georgia,serif; font-size:15pt; color:var(--carvao); }
+  .amb .tg{ font-family:"Courier New",monospace; font-size:7.5pt; letter-spacing:.5px; color:var(--ouro); text-transform:uppercase; margin:1mm 0 2mm; }
+  .amb .ds{ font-size:9.2pt; color:#5b5347; line-height:1.5; }
+  .amb .ds b{ color:var(--carvao); }
+
+  /* INVESTIMENTO */
+  .invhead{ background:var(--carvao); color:#EFE7D6; margin:-18mm -20mm 7mm; padding:14mm 20mm 10mm; }
+  .invhead .eyebrow{ color:var(--mostarda); }
+  .invhead h2{ font-family:Georgia,serif; font-size:26pt; color:#F3ECDD; margin:2mm 0 2mm; }
+  .invhead p{ color:#b6ab97; font-size:9.5pt; max-width:150mm; }
+  .cmp{ width:100%; border-collapse:collapse; }
+  .cmp th, .cmp td{ padding:2.6mm 3mm; text-align:right; font-size:9.3pt; }
+  .cmp th:first-child, .cmp td:first-child{ text-align:left; }
+  .cmp thead th{ border-bottom:1.4px solid var(--mostarda); vertical-align:bottom; }
+  .cmp .cn{ font-family:Georgia,serif; font-size:13pt; color:var(--carvao); }
+  .cmp .cn.reco{ color:var(--ouro); }
+  .cmp .ck{ font-family:"Courier New",monospace; font-size:7pt; letter-spacing:.5px; text-transform:uppercase; color:var(--taupe); display:block; margin-top:1mm; font-weight:normal; }
+  .cmp tbody td{ border-bottom:1px solid #f0eadd; font-family:"Courier New",monospace; color:#4a443c; }
+  .cmp tbody td:first-child{ font-family:"Helvetica Neue",Arial,sans-serif; color:var(--texto); }
+  .cmp .spec td{ background:var(--ivory); font-family:"Courier New",monospace; font-size:8pt; color:var(--taupe); }
+  .cmp .tot td{ border-top:1.4px solid var(--mostarda); border-bottom:none; font-family:Georgia,serif; font-size:12pt; color:var(--carvao); padding-top:3.2mm; }
+  .cmp .tot td.g{ color:var(--carvao); }
+  .cmp .deal td{ background:var(--carvao); color:#EFE7D6; font-family:Georgia,serif; font-size:13pt; }
+  .cmp .deal td .s{ font-family:"Courier New",monospace; font-size:7pt; letter-spacing:1px; color:var(--mostarda); text-transform:uppercase; display:block; }
+  .cmp .deal td.gd{ color:var(--mostarda); }
+
+  .note{ font-size:8.3pt; color:var(--taupe); margin-top:4mm; line-height:1.5; } .note b{ color:var(--carvao); }
+  .cols{ display:flex; gap:9mm; margin-top:8mm; }
+  .cols .c{ flex:1; } .cols .sec{ font-size:8pt; letter-spacing:2px; text-transform:uppercase; color:var(--ouro); margin-bottom:2mm; }
+  .pr{ display:flex; justify-content:space-between; padding:2.4mm 0; border-bottom:1px solid #f0eadd; font-size:9pt; }
+  .pr .d{ font-family:"Courier New",monospace; font-size:8pt; color:var(--ouro); } .pr .d.n{ color:var(--taupe); }
+  .cd{ padding:2.4mm 0; border-bottom:1px solid #f0eadd; } .cd .k{ font-size:7.5pt; letter-spacing:1.5px; text-transform:uppercase; color:var(--taupe); } .cd .v{ font-family:Georgia,serif; font-size:12pt; color:var(--carvao); margin-top:.5mm; }
+  .add{ margin-top:7mm; background:var(--ivory); border-left:3px solid var(--mostarda); border-radius:1mm; padding:4mm 6mm; display:flex; justify-content:space-between; align-items:center; }
+  .add .l b{ color:var(--carvao); } .add .l{ font-size:9pt; color:#5b5347; } .add .v{ font-family:Georgia,serif; font-size:16pt; color:var(--ouro); }
+  .pfoot{ position:absolute; bottom:12mm; left:20mm; right:20mm; font-size:8pt; color:var(--taupe); display:flex; justify-content:space-between; border-top:1px solid var(--linha); padding-top:3mm; }
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="page cover">
+  <div class="hero">
+    <img src="img/romulo-cozinha.jpg" alt="">
+    <div class="band"></div>
+    <div class="top">
+      <span class="brand"><span class="st">✦</span><span class="v">Valvic</span></span>
+      <span class="badge">Projeto completo</span>
+    </div>
+    <div class="foot">
+      <div class="ey">Proposta de marcenaria</div>
+      <div class="nm serif">Rômulo</div>
+      <div class="sb">Apartamento completo — cozinha, closet, sapateira e painel de cabeceira</div>
+    </div>
+  </div>
+  <div class="strip"><span>4 ambientes · 3 configurações de ferragem</span><span><b>Uma marcenaria. Você escolhe o nível.</b></span></div>
+</div>
+
+<!-- AMBIENTES -->
+<div class="page">
+  <div class="eyebrow" style="margin-bottom:5mm;">O que será executado</div>
+  <div class="h1">O projeto, ambiente<br>por ambiente.</div>
+  <p class="lead">Marcenaria sob medida em MDF <b>Duratex linha Internos</b>. A execução é a mesma nos três cenários —
+  o que muda é a ferragem (ver investimento).</p>
+
+  <div class="amb">
+    <div class="im"><img src="img/romulo-cozinha2.jpg" alt=""></div>
+    <div class="bd">
+      <div class="nm serif">Cozinha</div>
+      <div class="tg">Painel madeirado + verde · L + ilha</div>
+      <div class="ds">Painel madeirado com <b>porta de passagem pivotante mimetizada</b> e geladeira integrada.
+      Vão com <b>prateleiras de 30 mm em suporte de aço oculto</b> (sem estrutura de armário). Torre de eletros,
+      balcões e ilha com <b>puxador cava usinado</b> e <b>báscula com articulador Blum</b>.</div>
+    </div>
+  </div>
+
+  <div class="amb">
+    <div class="im"><img src="img/romulo-closet.jpg" alt=""></div>
+    <div class="bd">
+      <div class="nm serif">Closet</div>
+      <div class="tg">Dois lados · sistema RO65 Prime</div>
+      <div class="ds">Closet de dois lados: nichos, cabideiros, prateleiras e <b>12 gavetas</b>. Fechamento superior
+      em <b>4 portas de correr, sistema deslizante RO65 Prime</b>. Painel liso (sem ripado).</div>
+    </div>
+  </div>
+
+  <div class="amb">
+    <div class="im"><img src="img/romulo-quarto.jpg" alt=""></div>
+    <div class="bd">
+      <div class="nm serif">Sapateira vertical &amp; Painel de cabeceira</div>
+      <div class="tg">Módulos dedicados</div>
+      <div class="ds"><b>Sapateira vertical:</b> módulo dedicado com prateleiras. <b>Painel de cabeceira:</b>
+      painel liso madeirado — item sem ferragem, com <b>valor fixo</b> nos três cenários.</div>
+    </div>
+  </div>
+  <div class="pfoot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Rômulo — projeto completo</span></div>
+</div>
+
+<!-- INVESTIMENTO -->
+<div class="page">
+  <div class="invhead">
+    <div class="eyebrow">Investimento</div>
+    <h2>Três configurações. Mesma marcenaria.</h2>
+    <p>A marcenaria é idêntica nos três. Muda apenas a <b style="color:#F3ECDD;">ferragem</b> das gavetas e portas —
+    e, com ela, a suavidade, a durabilidade e a garantia. Compare e decida.</p>
+  </div>
+
+  <table class="cmp">
+    <thead>
+      <tr>
+        <th>Ambiente</th>
+        <th><span class="cn">Telescópica</span><span class="ck">econômica</span></th>
+        <th><span class="cn">Hardt</span><span class="ck">oculta soft-close</span></th>
+        <th><span class="cn reco">Hettich</span><span class="ck">premium soft-close</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="spec"><td>Garantia</td><td>3 anos</td><td>5 anos</td><td>10 anos</td></tr>
+      <tr><td>Cozinha</td><td>R$ 19.600</td><td>R$ 21.800</td><td>R$ 27.200</td></tr>
+      <tr><td>Closet</td><td>R$ 14.900</td><td>R$ 17.300</td><td>R$ 21.400</td></tr>
+      <tr><td>Sapateira vertical</td><td>R$ 4.800</td><td>R$ 5.200</td><td>R$ 5.800</td></tr>
+      <tr><td>Painel de cabeceira <span style="color:var(--taupe);font-size:7.5pt;">(valor fixo)</span></td><td>R$ 4.000</td><td>R$ 4.000</td><td>R$ 4.000</td></tr>
+      <tr class="tot"><td>Total</td><td class="g">R$ 43.300</td><td class="g">R$ 48.300</td><td class="g">R$ 58.400</td></tr>
+      <tr class="deal"><td><span class="s">Fechamento completo</span>−10%</td><td class="gd">R$ 39.000</td><td class="gd">R$ 43.500</td><td class="gd">R$ 52.600</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Desconto de <b>10%</b> para o fechamento dos <b>4 ambientes juntos</b>. Escopo de marcenaria idêntico
+  nas três colunas; a diferença é exclusivamente a ferragem das gavetas e portas.</p>
+
+  <div class="add">
+    <div class="l"><b>Adicional — Iluminação LED do closet.</b> Perfil + fita instalados nos nichos.</div>
+    <div class="v">R$ 1.350</div>
+  </div>
+
+  <div class="cols">
+    <div class="c">
+      <div class="sec">Formas de pagamento</div>
+      <div class="pr"><span>Entrada 30% + saldo em até 10× no cartão</span><span class="d n">—</span></div>
+      <div class="pr"><span>Entrada 50% + saldo em até 8× no cartão</span><span class="d">3% desc.</span></div>
+      <div class="pr"><span>Entrada 70% + saldo em até 6× no cartão</span><span class="d">5% desc.</span></div>
+      <div class="pr"><span>Entrada 70% + saldo via transferência</span><span class="d">7% desc.</span></div>
+    </div>
+    <div class="c">
+      <div class="sec">Condições</div>
+      <div class="cd"><div class="k">Prazo de entrega</div><div class="v serif">60 a 70 dias úteis</div></div>
+      <div class="cd"><div class="k">Execução</div><div class="v serif">Equipe própria</div></div>
+      <div class="cd"><div class="k">Validade da proposta</div><div class="v serif">7 dias úteis</div></div>
+    </div>
+  </div>
+
+  <div class="pfoot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Rômulo — projeto completo</span></div>
+</div>
+
+</body>
+</html>

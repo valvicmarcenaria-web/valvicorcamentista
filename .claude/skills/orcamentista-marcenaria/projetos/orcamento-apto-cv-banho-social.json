@@ -1,0 +1,134 @@
+{
+ "cliente": "Ana Carolina Valente (Apto CV)",
+ "projeto": "Apto CV — Banho Social (arq. Bruna Rezende / Estúdio Gráza)",
+ "versao": "R00-v3-calibrado",
+ "inv": 6900,
+ "mcAlvo": 37,
+ "_nota": "CORRIGIDO (calibracao Apto CV): estrutura/fundos internos em MDF BRANCO; so aparente em COR. Contagem enxuta; espelho/LED reais. Marcenaria: gabinete (TULHA BASCULANTE 45 + porta + 3 gavetas cava) + armarios altos de correr espelhados + nichos. Espelho = nosso. FORA (regra): bancada GRANITO vermelho EXISTENTE (marmoraria); cuba Deca + misturador Docol + valvula/ducha (loucas/metais); box de vidro (vidraceiro); porcelanato (obra). Valor a validar com o fundador.",
+ "p": {
+  "nf": 5,
+  "parc": 7,
+  "vend": 0,
+  "rt": 10,
+  "vis": 250,
+  "outv": 0,
+  "prog": 0.8,
+  "coord": 1,
+  "marc": 5,
+  "serra": 0.2,
+  "manut": 0.2,
+  "log": 0,
+  "erro": 2
+ },
+ "lib": [
+  [
+   "MDF",
+   [
+    [
+     "mdf cor 15 (faces/portas aparentes)",
+     500
+    ],
+    [
+     "mdf branco 15 (estrutura)",
+     260
+    ],
+    [
+     "mdf branco 6 (fundos)",
+     190
+    ]
+   ]
+  ],
+  [
+   "Cola e fita",
+   [
+    [
+     "Fita de borda - cor - mt",
+     3
+    ],
+    [
+     "Colagem - mt linear - máquina",
+     2.5
+    ]
+   ]
+  ],
+  [
+   "Dobradiças",
+   [
+    [
+     "Hardt",
+     8
+    ]
+   ]
+  ],
+  [
+   "Corrediças",
+   [
+    [
+     "Oculta Hardt",
+     70
+    ]
+   ]
+  ],
+  [
+   "Puxadores",
+   [
+    [
+     "Cava 35° usinada - mt",
+     50
+    ]
+   ]
+  ],
+  [
+   "Vidros e espelhos (m²)",
+   [
+    [
+     "Espelho prata",
+     600
+    ]
+   ]
+  ],
+  [
+   "Especiais",
+   [
+    [
+     "Consumíveis + montagem",
+     150
+    ]
+   ]
+  ]
+ ],
+ "ambientes": [
+  {
+   "nome": "Banho Social",
+   "q": {
+    "MDF¦mdf cor 15 (faces/portas aparentes)": 2,
+    "MDF¦mdf branco 15 (estrutura)": 1,
+    "MDF¦mdf branco 6 (fundos)": 1,
+    "Cola e fita¦Fita de borda - cor - mt": 35,
+    "Cola e fita¦Colagem - mt linear - máquina": 35,
+    "Dobradiças¦Hardt": 6,
+    "Corrediças¦Oculta Hardt": 1,
+    "Puxadores¦Cava 35° usinada - mt": 2,
+    "Vidros e espelhos (m²)¦Espelho prata": 0.7,
+    "Especiais¦Consumíveis + montagem": 1
+   },
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
+   }
+  }
+ ],
+ "ativo": 0,
+ "diretrizes": "CORRIGIDO. Estrutura interna = branco; aparente = cor. MC 37%. Espelho nosso ~2 m². Tulha basculante (articulador). PEDRA (granito existente) + louças/metais + box de vidro FORA.",
+ "duvidas": [
+  "Material calibrado ao numero do fundador (~R$2.300). O espelho e a quantidade de mirror cabinetry sao o meu furo recorrente — medir o real.",
+  "Se Master > Social, ajustar (usei ~igual)."
+ ],
+ "theme": "light",
+ "_valorReal": "VALOR FINAL fechado pelo fundador = R$ 6900. (Calibração: material ~R$ 2.300; meu furo recorrente foi inflar espelho/mirror cabinetry — ver calibracao-apto-cv.md.)"
+}

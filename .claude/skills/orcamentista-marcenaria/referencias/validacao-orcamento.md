@@ -38,21 +38,77 @@ A planilha valida o orçamento **de trás para frente**: dado um Investimento
 
 **5. Margem de erro** — contingência.
 
-## Percentuais reais (sobre o Investimento) — inferidos de 11 projetos
+## Percentuais reais (sobre o Investimento) — padrão atualizado 06/2026
+
+> Padrão revisado pelo fundador em 06/2026 (projeto Samara). Mudou: NF 7→**5%**,
+> comissão produção ~5→**7,2%** (marceneiro 5%), e **vendedor = 0 quando o lead vem
+> de parceiro**.
 
 | Encargo                  | % do Investimento        | Observação                         |
 |--------------------------|--------------------------|------------------------------------|
-| Nota fiscal              | **7%** (RT doc: 7,5%)    | constante nos 11 projetos          |
+| Nota fiscal              | **5%** (era 7%)          | padrão atual 06/2026               |
 | Parcelamento de máquina  | **7%** (às vezes 8%)     | taxa da maquininha/cartão; vira desconto à vista |
-| Comissão vendedor        | **5%** (às vezes 3%)     | 3% em alguns projetos              |
-| Comissão produção        | **5%**                   |                                    |
-| RT (parceiro/arquiteto)  | **10% do líquido** (≈7–8% do bruto) | 0 quando não há parceiro; ver `proposta-comercial.md` |
+| Comissão vendedor        | **5%** · **0** c/ parceiro | quem "vende" é a RT do parceiro  |
+| Comissão produção        | **~7,2%**                | prog 0,8 + coord 1 + **marc 5** + serra 0,2 + manut 0,2 |
+| RT (parceiro/arquiteto)  | **10% do líquido** (≈8,8% do bruto) | 0 quando não há parceiro; ver `proposta-comercial.md` |
 | Margem de erro           | **2%**                   |                                    |
 | Visitas                  | **R$ 250** (fixo)        | valor por visita                   |
 
 > **Meta de margem:** MC% entre **35% e 40%** é o ideal. Abaixo disso, revisar
 > preço ou enxugar custos; isso difere do markup bruto do app (CX 52–68%),
 > que é *antes* dos encargos.
+
+## Fórmula de preço (markup divisor) — validada
+
+> Atalho para chegar ao **preço** a partir do **custo direto** e da **MC alvo**,
+> sem ir e voltar no app. Validado contra projetos reais (Camila, Samara 06/2026).
+
+Componentes do encargo (padrão 06/2026), **% sobre o investimento**:
+
+| Bloco | % do inv |
+|-------|---------:|
+| NF | 5% |
+| Parcelamento de máquina | 7% |
+| Comissão vendedor | 5% (**0** c/ parceiro) |
+| Comissão produção (prog 0,8 + coord 1 + **marc 5** + serra 0,2 + manut 0,2) | 7,2% |
+| Margem de erro | 2% |
+| RT 10% do líquido (líquido = inv − NF − cartão ≈ 0,88·inv) | ≈ 8,8% do bruto (0 sem parceiro) |
+
+**Dois cenários** (definem o divisor):
+
+| Cenário | Vendedor | RT | Encargos | Divisor |
+|---------|:-------:|:--:|:--------:|:-------:|
+| **Venda direta** (sem parceiro) | 5% | 0 | **26,2%** | `0,738 − MC%` |
+| **Lead de parceiro** (decorador/arquiteto) | 0 | 8,8% | **30,0%** | `0,70 − MC%` |
+
+```
+preço (inv) = (custo_material_direto + visita) / (divisor − MC%)
+```
+
+- Ex. parceiro: material R$ 10.866 + visita 250, MC 40% → inv = 11.116 / (0,70 − 0,40)
+  = **R$ 37.055** (Samara/Luana 06/2026).
+- **Atenção:** estimar encargos "no olho" subprecifica MC — usar o divisor do
+  cenário certo. (Aprendizado Samara: R$40,6k "a 40%" com encargo errado dava 38,8%.)
+
+## Subestimar custo = preço travado = MARGEM VIRA PREJUÍZO
+
+> Lição cara (clínica Dermato-Nutro 06/2026). O preço é **travado com o cliente**; se o
+> levantamento subestima o custo, **o erro sai inteiro da MC** — a empresa financia a obra.
+
+Os encargos (~30%) são **% do preço** (fixos). Quem absorve um custo direto maior é só a
+MC. Exemplo real (custo direto subestimado em R$ 8.740, real ~R$ 14.300):
+
+| Preço enviado | Custo real | MC real | vs alvo 42% |
+|---|---:|:---:|---|
+| R$ 32.500 (errado) | R$ 14.300 | **25,3%** | −17 pts · ~R$ 14 mil de MC perdida |
+| R$ 52.900 (correto) | R$ 14.300 | 42,6% | ✅ |
+
+**Regra:** isto **não** quer dizer "na dúvida erra o custo pra cima" — padding é muleta
+(encarece e perde venda, ou esconde levantamento mal feito). **Lidamos com matemática: dá
+para medir.** Na dúvida, **pergunta, alinha e aprende a fazer certo** — e **mede** (cotas
+do projeto, ou **escalímetro** usando a medida de um móvel conhecido como referência para
+achar portas/paredes). Conferir omissões clássicas antes de fechar: painel com portas (3
+partes), curva (+15%/+5%), sistemas de porta, terceirizados, fita de ripado.
 
 ## Situação de caixa — perguntar em TODA nova demanda
 

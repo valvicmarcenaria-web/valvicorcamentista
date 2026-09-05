@@ -11,6 +11,53 @@ Definições do fundador para o motor operar com agilidade.
 | Roupeiro           | 65 cm        |
 | Bancada            | 50 cm        |
 
+## Móveis com CURVA — regra do fundador (perda + margem)
+
+Todo móvel que tem **curva** (recorte orgânico, raio, painel curvo, lateral
+arredondada) carrega muito mais **trabalho operacional** — recorte, lixamento,
+fita acompanhando o raio, encaixe. Regra fixa, registrada para todo o time:
+
+- **Perda de material:** considerar **+15%** (aprox.) sobre a peça/área curva —
+  além do desperdício normal de aproveitamento. O raio "come" chapa.
+- **Margem de lucro:** subir a MC em **+5%** (pelo menos) sobre o piso do projeto
+  — a curva é mão de obra embutida que não aparece no material.
+
+> **Propagar:** vale para a **Lavinia** (quantitativo + piso de MC), para o
+> **Rodrigo** (margem/saúde financeira — curva puxa o piso pra cima) e para o
+> **Vitor** (descrição da proposta — registrar que a peça é curva e por que custa
+> mais). Em treinamento contínuo: calibrar o fator a cada projeto com curva.
+
+> ⚠️ **CURVA ≠ CORTE CIRCULAR (correção do fundador — Sala Bia & Matheus).**
+> O +15%/+5% vale para a **PEÇA/MÓVEL curvo** (corpo arredondado, lateral em raio,
+> painel curvo — a chapa inteira acompanha a curva, com perda e lixamento). **NÃO**
+> vale para um **corte/recorte circular** (furo redondo, nicho circular, recorte de
+> abertura) numa peça reta — isso é **usinagem CNC** que já cai na **margem
+> operacional**, sem % extra. Ex.: estante reta com nichos circulares = corte
+> circular (sem %); aparador com base curva = móvel curvo (com %).
+
+## Itens específicos e pontuais — +30% no custo (NÃO automático)
+
+Alguns itens comprados **especificamente para um projeto**, em **baixo volume / sob
+encomenda** (ex.: **puxador especial** como o Livorno de embutir), levam **+30% sobre o
+custo** — buffer de compra pontual (prazo/variação de fornecedor). **NÃO é automático:**
+o **fundador pontua caso a caso** quando aplicar — a Lavinia **não infla por conta
+própria** nem assume +30% em todo item especial. Quando o fundador indicar, aplicar o
++30% e **sinalizar ao Vitor** como item premium/especificado.
+
+## LED da marcenaria — padrão (incluir por default)
+
+Todo LED **da marcenaria** (cabeceira, nicho, prateleira, sob bancada) é
+**fornecimento Valvic** e entra **por padrão** no orçamento — fita + perfil +
+usinagem (lib "Iluminação", ~R$150/m) + sensor/interruptor quando houver.
+**Só remover se o cliente pedir** (ou sob exceção sinalizada pelo fundador). Não
+confundir com LED de teto/sanca/espelho comprado, que é da elétrica/decoração.
+
+## Tampo de vidro / penteadeira
+
+Tampo de vidro (ex.: sobre penteadeira) = **item de vidro** (lib "Vidros e
+espelhos", por m²) **+ logística dedicada de R$ 150** (lib "Especiais ¦ Logística
+específica") — o vidro vem de terceirizado e exige entrega/manuseio próprios.
+
 ## O que o orçamentista informa vs. o que vem do projeto (Bloco A)
 
 - **Marcos só informa a LINHA de ferragem** (dobradiça/corrediça/sistema).
@@ -29,6 +76,8 @@ O motor já dispõe destes (não recriar; apenas referenciar/usar):
 - **Custo de chapa** (comissão de corte por chapa).
 - **Logística** (carreto + equipe) e setup/visitas.
 
-> Percentuais de referência (da planilha): NF 7% · parcelamento de máquina 7–8% ·
-> comissão vendedor 5% (às vezes 3%) · comissão produção 5% · RT 10% do líquido
-> (quando há parceiro) · margem de erro 2% · visita R$250. Meta **MC 35–40%**.
+> Percentuais de referência (padrão 06/2026): NF **5%** · parcelamento 7–8% ·
+> comissão vendedor 5% (**0 quando o lead vem de parceiro**) · comissão produção
+> **~7,2%** (marc 5%) · RT 10% do líquido (quando há parceiro) · margem de erro 2% ·
+> visita R$250. Meta **MC 35–40%**. Detalhe e divisor de preço em
+> `validacao-orcamento.md`.

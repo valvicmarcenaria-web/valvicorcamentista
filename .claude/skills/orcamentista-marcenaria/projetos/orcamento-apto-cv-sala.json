@@ -1,0 +1,129 @@
+{
+ "cliente": "Ana Carolina Valente (Apto CV)",
+ "projeto": "Apto CV — Sala de Estar (arq. Bruna Rezende / Estúdio Gráza)",
+ "versao": "R00-v1",
+ "inv": 10600,
+ "mcAlvo": 37,
+ "_nota": "Parceria RT Bruna -> divisor 0,70. SALA SEM O RACK (exclusao do fundador). A parede (elev. A) e um painel inteiro em MDF madeirado integrando: (a) porta CAMUFLADA de acesso; (b) RACK/painel de TV = EXCLUIDO; (c) porta de correr 3 folhas madeirado acesso a cozinha = JA CONTADA NA COZINHA (nao duplicar); (d) LOUCEIRO em marcenaria (gavetas + nicho + armario bege 05) sob bancada de pedra. Orcado aqui: painel de parede madeirado (fora a area do rack e a porta de correr) + louceiro + porta camuflada. FORA (regra): bancada do louceiro em QUARTZITO nacarado = marmoraria. FLAG: confirmar o limite do 'rack' (so o movel de TV, ou tambem o painel da parede de TV?). Medidas no local.",
+ "p": {
+  "nf": 5,
+  "parc": 7,
+  "vend": 0,
+  "rt": 10,
+  "vis": 250,
+  "outv": 0,
+  "prog": 0.8,
+  "coord": 1,
+  "marc": 5,
+  "serra": 0.2,
+  "manut": 0.2,
+  "log": 0,
+  "erro": 2
+ },
+ "lib": [
+  [
+   "MDF",
+   [
+    [
+     "mdf cor 15 (madeirado 01 + bege 05)",
+     500
+    ],
+    [
+     "mdf cor 6 (fundo)",
+     300
+    ]
+   ]
+  ],
+  [
+   "Cola e fita",
+   [
+    [
+     "Fita de borda - cor - mt",
+     3
+    ],
+    [
+     "Colagem - mt linear - máquina",
+     2.5
+    ]
+   ]
+  ],
+  [
+   "Dobradiças",
+   [
+    [
+     "Hardt",
+     8
+    ]
+   ]
+  ],
+  [
+   "Corrediças",
+   [
+    [
+     "Oculta Hardt",
+     70
+    ]
+   ]
+  ],
+  [
+   "Sistema porta de acesso embutida",
+   [
+    [
+     "Dobradiça oculta / pivô (porta camuflada)",
+     150
+    ]
+   ]
+  ],
+  [
+   "Puxadores",
+   [
+    [
+     "Cava 35° usinada - mt",
+     50
+    ]
+   ]
+  ],
+  [
+   "Especiais",
+   [
+    [
+     "Consumíveis + montagem",
+     200
+    ]
+   ]
+  ]
+ ],
+ "ambientes": [
+  {
+   "nome": "Sala (sem rack)",
+   "q": {
+    "MDF¦mdf cor 15 (madeirado 01 + bege 05)": 5,
+    "MDF¦mdf cor 6 (fundo)": 2,
+    "Cola e fita¦Fita de borda - cor - mt": 60,
+    "Cola e fita¦Colagem - mt linear - máquina": 60,
+    "Dobradiças¦Hardt": 4,
+    "Corrediças¦Oculta Hardt": 4,
+    "Sistema porta de acesso embutida¦Dobradiça oculta / pivô (porta camuflada)": 1,
+    "Puxadores¦Cava 35° usinada - mt": 4,
+    "Especiais¦Consumíveis + montagem": 1
+   },
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
+   }
+  }
+ ],
+ "ativo": 0,
+ "diretrizes": "Parceria RT Bruna (0,70). MC 37%. SALA SEM O RACK. Porta de correr 3 folhas ja na Cozinha (nao duplicar). Louceiro sob bancada de pedra (pedra FORA). FLAG: confirmar limite do 'rack'. Estimativa sobre executivo R00.",
+ "duvidas": [
+  "LIMITE DO 'RACK': excluir só o móvel de TV, ou também o painel de parede da TV? (mudei = ~R$ 8.600 só louceiro / ~R$ 13.800 painel+louceiro).",
+  "Porta de correr 3 folhas: mantida na Cozinha (não duplicar aqui) — confirmar."
+ ],
+ "theme": "light",
+ "_valorReal": "VALOR REAL do fundador (proposta v2) = R$ 10600. Item: Sala elevação B / louceiro (o Painel de TV/rack, Painel Hall e Portas divisores são itens próprios). (Estimativa anterior da Lavinia era R$ 13800 — superestimada; ver calibracao-apto-cv.md.)"
+}

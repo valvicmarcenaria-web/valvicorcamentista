@@ -1,0 +1,170 @@
+{
+ "cliente": "Ana Carolina Valente (Apto CV)",
+ "projeto": "Apto CV — Cozinha (arq. Bruna Rezende / Estúdio Gráza)",
+ "versao": "R00-v1",
+ "inv": 33500,
+ "mcAlvo": 37,
+ "_nota": "Parceria RT Bruna -> divisor 0,70. COZINHA COMPLETA (U + ilha/peninsula): base madeirado (01) + aereos bege (05) + CRISTALEIRA AEREA com frente em VIDRO CANELADO + armario com PORTAS DE VIDRO + torres de geladeira (2 ref) e forno/microondas + porta de correr 3 folhas em MDF madeirado + gaveteiros especiais (gaveta de TALHERES, de PANELAS e de TEMPEROS, divididos) + LED perfil embutido + friso bit 5x5mm. Vidro (canelado + portas) = vidraceiro nosso (coordenado). FORA (regra): bancada + rodabanca + prat. de temperos em QUARTZITO nacarado = marmoraria; cuba Tramontina + torneiras + triturador = loucas/metais; cooktop/forno/coifa/lava-loucas/geladeiras = ELETRO do cliente; mureta de alvenaria + porcelanato = obra. Estimativa sobre executivo R00 (planta + elev. A/B/C); contagem fina de chapa = plano de corte; medidas no local.",
+ "p": {
+  "nf": 5,
+  "parc": 7,
+  "vend": 0,
+  "rt": 10,
+  "vis": 250,
+  "outv": 0,
+  "prog": 0.8,
+  "coord": 1,
+  "marc": 5,
+  "serra": 0.2,
+  "manut": 0.2,
+  "log": 0,
+  "erro": 2
+ },
+ "lib": [
+  [
+   "MDF",
+   [
+    [
+     "mdf cor 15 (madeirado 01 + bege 05)",
+     500
+    ],
+    [
+     "mdf cor 6 (fundo)",
+     300
+    ]
+   ]
+  ],
+  [
+   "Cola e fita",
+   [
+    [
+     "Fita de borda - cor - mt",
+     3
+    ],
+    [
+     "Colagem - mt linear - máquina",
+     2.5
+    ]
+   ]
+  ],
+  [
+   "Dobradiças",
+   [
+    [
+     "Hardt",
+     8
+    ]
+   ]
+  ],
+  [
+   "Corrediças",
+   [
+    [
+     "Oculta Hardt",
+     70
+    ]
+   ]
+  ],
+  [
+   "Articuladores",
+   [
+    [
+     "Basculante aéreo (pistão/aventos)",
+     150
+    ]
+   ]
+  ],
+  [
+   "Sistema porta de correr",
+   [
+    [
+     "Porta 3 folhas madeirado (conj. + trilho)",
+     600
+    ]
+   ]
+  ],
+  [
+   "Puxadores",
+   [
+    [
+     "Cava 35° usinada - mt",
+     50
+    ]
+   ]
+  ],
+  [
+   "Vidros e espelhos (m²)",
+   [
+    [
+     "Vidro canelado + portas de vidro (vidraceiro)",
+     400
+    ],
+    [
+     "Prateleira de vidro",
+     35
+    ]
+   ]
+  ],
+  [
+   "Iluminação",
+   [
+    [
+     "LED - fita + perfil - mt",
+     150
+    ]
+   ]
+  ],
+  [
+   "Especiais",
+   [
+    [
+     "Gaveta especial dividida (talheres/panelas/temperos)",
+     200
+    ],
+    [
+     "Consumíveis + montagem",
+     500
+    ]
+   ]
+  ]
+ ],
+ "ambientes": [
+  {
+   "nome": "Cozinha",
+   "q": {
+    "MDF¦mdf cor 15 (madeirado 01 + bege 05)": 24,
+    "MDF¦mdf cor 6 (fundo)": 7,
+    "Cola e fita¦Fita de borda - cor - mt": 280,
+    "Cola e fita¦Colagem - mt linear - máquina": 280,
+    "Dobradiças¦Hardt": 50,
+    "Corrediças¦Oculta Hardt": 16,
+    "Articuladores¦Basculante aéreo (pistão/aventos)": 5,
+    "Sistema porta de correr¦Porta 3 folhas madeirado (conj. + trilho)": 1,
+    "Puxadores¦Cava 35° usinada - mt": 18,
+    "Vidros e espelhos (m²)¦Vidro canelado + portas de vidro (vidraceiro)": 3,
+    "Vidros e espelhos (m²)¦Prateleira de vidro": 3,
+    "Iluminação¦LED - fita + perfil - mt": 8,
+    "Especiais¦Gaveta especial dividida (talheres/panelas/temperos)": 3,
+    "Especiais¦Consumíveis + montagem": 1
+   },
+   "terc": {
+    "vid": 1,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
+   }
+  }
+ ],
+ "ativo": 0,
+ "diretrizes": "Parceria RT Bruna (0,70). MC 37%. Cozinha completa (U + ilha + torres + cristaleira vidro canelado). Vidro = vidraceiro nosso. PEDRA (quartzito) + louças/metais + ELETRO FORA (regra). Estimativa sobre executivo R00.",
+ "duvidas": [
+  "Contagem de chapa estimada (~24x15mm + 7x6mm) sobre executivo — refinar no plano de corte.",
+  "Vidro canelado: m² e tipo (vidraceiro).",
+  "Ilha/península (pág.5) contemplada na estimativa; confirmar."
+ ],
+ "theme": "light",
+ "_valorReal": "VALOR REAL do fundador (proposta v2) = R$ 33500. Item: Cozinha. (Estimativa anterior da Lavinia era R$ 70500 — superestimada; ver calibracao-apto-cv.md.)"
+}

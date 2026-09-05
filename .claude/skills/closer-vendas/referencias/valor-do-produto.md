@@ -51,3 +51,19 @@ Cada case = "tivemos o desafio X, resolvemos com a engenharia Y, resultado Z".
 > "A diferença entre **fazer um móvel** e **viver um projeto**."
 > A Valvic não entrega móvel — entrega a casa organizada, o ritual diário, o
 > orgulho de receber visita. O móvel é o meio; o sentimento é o produto.
+
+## Itens especiais — SEMPRE em evidência ("cuidamos de tudo")
+
+> Regra do Jonathan (jun/2026): quando o projeto tem **item especial / terceirizado
+> coordenado pela Valvic** — corte a laser, estrutura de metalon, espelho com corte
+> especial, vidro, serralheria — **colocar com informação em evidência** na proposta.
+> Mostra que **cuidamos de tudo**: o cliente tem tranquilidade e eficácia na entrega,
+> não precisa correr atrás de vários fornecedores.
+
+- Dar **destaque visual** (card/linha própria, não diluído no meio dos móveis).
+- Descrever o item com o **acabamento certo**, ex.: estrutura de metalon →
+  **"estrutura de metalon com acabamento em pintura eletrostática preto fosco"**.
+- O recado de fundo: *"a Valvic coordena o laser, a serralheria e o vidro pra você —
+  um interlocutor só, um padrão só de acabamento."*
+- Esses itens costumam ter **logística dedicada** (entram no custo via Lavinia) —
+  reforçar que o cuidado logístico é parte do serviço.

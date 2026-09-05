@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+  @page{ size:A4; margin:13mm 14mm 11mm; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  :root{ --mostarda:#E0A521; --ouro:#B0892F; --carvao:#201C18; --creme:#F4ECDD; --ivory:#FBF6EC; --taupe:#8C7E69; --linha:#E5D9BE; --texto:#2A2520; }
+  body{ font-family:"Helvetica Neue",Arial,sans-serif; color:var(--texto); font-size:8.6pt; line-height:1.4; }
+  .top{ display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid var(--carvao); padding-bottom:3mm; margin-bottom:3mm; }
+  .brand{ font-size:15pt; color:var(--carvao); } .brand .st{ color:var(--ouro); margin-right:1.5mm; }
+  .top .r{ text-align:right; font-size:7pt; color:var(--taupe); letter-spacing:.8px; text-transform:uppercase; line-height:1.6; }
+  .eyebrow{ letter-spacing:2.5px; font-size:7pt; text-transform:uppercase; color:var(--ouro); margin-bottom:1.5mm; }
+  h1{ font-family:Georgia,serif; font-weight:normal; font-size:16pt; color:var(--carvao); line-height:1.12; }
+  h2{ font-family:Georgia,serif; font-weight:normal; font-size:11.5pt; color:var(--carvao); margin:4.5mm 0 1.5mm; padding-bottom:1mm; border-bottom:1px solid var(--mostarda); }
+  h2 .sub{ font-family:"Helvetica Neue",Arial; font-size:8pt; color:var(--taupe); float:right; letter-spacing:.5px; }
+  .callout{ background:var(--ivory); border-left:3px solid var(--mostarda); padding:2.5mm 4mm; font-size:8pt; color:#5b5347; margin:2.5mm 0; line-height:1.45; }
+  .flag{ background:#FBEFD6; border-left:3px solid var(--ouro); }
+  table{ width:100%; border-collapse:collapse; margin:1.5mm 0; }
+  th{ background:var(--carvao); color:var(--creme); font-size:7pt; text-transform:uppercase; letter-spacing:.4px; padding:1.6mm 2mm; text-align:left; font-weight:normal; }
+  td{ padding:1.4mm 2mm; border-bottom:1px solid var(--linha); font-size:8.2pt; vertical-align:top; }
+  td.n,th.n{ text-align:right; font-variant-numeric:tabular-nums; }
+  td.muted{ color:var(--taupe); font-size:7.6pt; }
+  tr.sum td{ background:var(--creme); font-weight:bold; color:var(--carvao); border-bottom:1px solid var(--taupe); }
+  b{ color:var(--carvao); }
+  .foot{ margin-top:4mm; border-top:1px solid var(--linha); padding-top:2mm; font-size:6.8pt; color:var(--taupe); display:flex; justify-content:space-between; }
+  .pb{ page-break-before:always; }
+  .two{ display:flex; gap:5mm; } .two>div{ flex:1; }
+</style></head><body>
+
+<div class="top">
+  <div><div class="brand"><span class="st">✦</span>Valvic</div><div style="font-size:7pt;letter-spacing:2px;text-transform:uppercase;color:var(--taupe);margin-top:.5mm;">Marcenaria sob medida</div></div>
+  <div class="r">Uso interno · Orçamentista<br>Decupagem de custo · item por item</div>
+</div>
+
+<div class="eyebrow">Levantamento de custo — Apartamento CJ (B+G)</div>
+<h1>Decupagem de custo — item por item</h1>
+
+<div class="callout"><b>Como está custeado.</b> Cada item pelo <b>consumo real</b> — o m² que <b>entra na peça</b>
+(m² útil × R$/m² da chapa), não a chapa inteira. Pela regra Valvic, a chapa se <b>compra inteira</b> mas
+"a divisão por ambiente é <b>alocação de preço</b>, não compra" — a sobra fica reconciliada à parte (última tabela),
+porque alimenta outros móveis e não deve ser jogada toda neste projeto. Puxador cava 45° = <b>usinagem</b> (mão de obra, sem hardware).</div>
+
+<h2>Base de custos unitários <span class="sub">preços travados por você · (*) referência de catálogo</span></h2>
+<div class="two">
+<div>
+<table>
+<tr><th>Insumo</th><th class="n">R$/chapa</th><th class="n">R$/m² útil</th></tr>
+<tr><td>Chapa 15 mm lâmina natural 2 faces</td><td class="n">2.000</td><td class="n">479,62</td></tr>
+<tr><td>Chapa 6 mm lâmina natural 1 face</td><td class="n">1.200</td><td class="n">428,57</td></tr>
+<tr><td>Chapa 18 mm lâmina natural (ripado)</td><td class="n">2.200</td><td class="n">527,58</td></tr>
+<tr><td>MDF melamínico fosco 15 mm (laca)*</td><td class="n">110</td><td class="n">26,38</td></tr>
+<tr><td>MDF 6 mm fundo (laca)*</td><td class="n">85</td><td class="n">30,36</td></tr>
+</table>
+</div>
+<div>
+<table>
+<tr><th>Insumo</th><th class="n">Unidade</th><th class="n">R$</th></tr>
+<tr><td>Acabamento (selador/verniz)</td><td class="n">m² · por face</td><td class="n">350,00</td></tr>
+<tr><td>Laca fosca Sayerlack</td><td class="n">m²</td><td class="n">650,00</td></tr>
+<tr><td>Laminação manual ripado</td><td class="n">m linear</td><td class="n">6,00</td></tr>
+<tr><td>Dobradiça Hettich Sensys</td><td class="n">un</td><td class="n">35,00</td></tr>
+<tr><td>Corrediça Hettich oculta</td><td class="n">par</td><td class="n">150,00</td></tr>
+<tr><td>Vidro incolor* · Puxador bolinha*</td><td class="n">m² · un</td><td class="n">250 · 25</td></tr>
+</table>
+</div>
+</div>
+
+<!-- ENTRADA -->
+<h2>1 · Móvel Entrada <span class="sub">238×40×45 · freijó lâmina natural int.+ext.</span></h2>
+<table>
+<tr><th>Item</th><th class="n">Un</th><th class="n">Qtd</th><th class="n">Custo unit.</th><th class="n">Custo</th></tr>
+<tr><td>Chapa 15 mm lâmina 2F (consumo)</td><td class="n">m²</td><td class="n">5,28</td><td class="n">479,62</td><td class="n">2.532</td></tr>
+<tr><td>Chapa 6 mm lâmina 1F (consumo)</td><td class="n">m²</td><td class="n">1,94</td><td class="n">428,57</td><td class="n">831</td></tr>
+<tr><td>Acabamento — 15mm 10,56 + 6mm 1,94 (por face)</td><td class="n">m²</td><td class="n">12,50</td><td class="n">350,00</td><td class="n">4.375</td></tr>
+<tr><td>Dobradiça Sensys (2 portas × 2)</td><td class="n">un</td><td class="n">4</td><td class="n">35,00</td><td class="n">140</td></tr>
+<tr><td>Corrediça oculta (2 gavetões)</td><td class="n">par</td><td class="n">2</td><td class="n">150,00</td><td class="n">300</td></tr>
+<tr><td>Puxador cava 45° (usinagem)</td><td class="n">—</td><td class="n">4</td><td class="n">—</td><td class="n">0</td></tr>
+<tr><td>Futton estofado linho cru 110×41</td><td class="n">un</td><td class="n">1</td><td class="n">350,00</td><td class="n">350</td></tr>
+<tr class="sum"><td colspan="4">Custo Móvel Entrada</td><td class="n">R$ 8.528</td></tr>
+</table>
+
+<!-- GOURMET -->
+<h2>2 · Marcenaria Gourmet <span class="sub">aéreo 140×66×32 + balcão 95,5×69×61 · ripado</span></h2>
+<table>
+<tr><th>Item</th><th class="n">Un</th><th class="n">Qtd</th><th class="n">Custo unit.</th><th class="n">Custo</th></tr>
+<tr><td>Chapa 15 mm lâmina 2F — carcaça (consumo)</td><td class="n">m²</td><td class="n">4,71</td><td class="n">479,62</td><td class="n">2.259</td></tr>
+<tr><td>Chapa 6 mm lâmina 1F — fundos (consumo)</td><td class="n">m²</td><td class="n">1,58</td><td class="n">428,57</td><td class="n">677</td></tr>
+<tr><td>Chapa 18 mm lâmina natural — ripado (consumo)</td><td class="n">m²</td><td class="n">1,51</td><td class="n">527,58</td><td class="n">797</td></tr>
+<tr><td>Laminação manual do ripado (pitch 5cm)</td><td class="n">m</td><td class="n">30</td><td class="n">6,00</td><td class="n">180</td></tr>
+<tr><td>Acabamento — 15mm 9,42 + 6mm 1,58 + ripado 1,51</td><td class="n">m²</td><td class="n">12,51</td><td class="n">350,00</td><td class="n">4.379</td></tr>
+<tr><td>Dobradiça Sensys (aéreo 3p + balcão 2p × 2)</td><td class="n">un</td><td class="n">10</td><td class="n">35,00</td><td class="n">350</td></tr>
+<tr><td>Puxador cava 45° (usinagem)</td><td class="n">—</td><td class="n">5</td><td class="n">—</td><td class="n">0</td></tr>
+<tr class="sum"><td colspan="4">Custo Gourmet</td><td class="n">R$ 8.642</td></tr>
+</table>
+
+<!-- SERRALHERIA -->
+<h2>4 · Serralheria Vinho <span class="sub">terceirizado · custo final fechado</span></h2>
+<table>
+<tr><th>Item</th><th class="n">Un</th><th class="n">Qtd</th><th class="n">Custo unit.</th><th class="n">Custo</th></tr>
+<tr><td>Estrutura metálica 15×210 · tubo 2×2 · pintura dourado fosco · pinos (mat.+acab.+log.)</td><td class="n">un</td><td class="n">2</td><td class="n">300,00</td><td class="n">600</td></tr>
+<tr class="sum"><td colspan="4">Custo Serralheria</td><td class="n">R$ 600</td></tr>
+</table>
+
+<!-- LACA -->
+<h2>3 · Salas TV + Jantar — laca <span class="sub">636×232 · OPCIONAL (módulo novo)</span></h2>
+<table>
+<tr><th>Item</th><th class="n">Un</th><th class="n">Qtd</th><th class="n">Custo unit.</th><th class="n">Custo</th></tr>
+<tr><td>Laca fosca Sayerlack (superfície, portas 2 faces)</td><td class="n">m²</td><td class="n">17,8</td><td class="n">650,00</td><td class="n">11.570</td></tr>
+<tr><td>MDF melamínico fosco 15 mm — carcaça/interior (consumo)*</td><td class="n">m²</td><td class="n">15,7</td><td class="n">26,38</td><td class="n">414</td></tr>
+<tr><td>MDF 6 mm — fundos (consumo)*</td><td class="n">m²</td><td class="n">14,8</td><td class="n">30,36</td><td class="n">449</td></tr>
+<tr><td>Vidro incolor — cristaleira 4 portas*</td><td class="n">m²</td><td class="n">2,1</td><td class="n">250,00</td><td class="n">525</td></tr>
+<tr><td>Puxador bolinha dourado fosco*</td><td class="n">un</td><td class="n">13</td><td class="n">25,00</td><td class="n">325</td></tr>
+<tr><td>Dobradiça Sensys (Hettich)</td><td class="n">un</td><td class="n">23</td><td class="n">35,00</td><td class="n">805</td></tr>
+<tr><td>Corrediça oculta (Hettich)</td><td class="n">par</td><td class="n">2</td><td class="n">150,00</td><td class="n">300</td></tr>
+<tr class="sum"><td colspan="4">Custo módulo laca (estimado)</td><td class="n">R$ 14.388</td></tr>
+</table>
+<div class="callout flag" style="margin-top:1.5mm;">Itens com <b>*</b> = referência de catálogo (MDF, vidro, puxador) — me passa os
+seus preços de trabalho pra travar. Superfície de laca (17,8 m²) é estimativa de elevação; firma com o plano de corte do módulo.</div>
+
+<!-- RECONCILIAÇÃO CHAPA -->
+<h2>Reconciliação de chapa freijó <span class="sub">consumo (no custo) × compra (caixa) × sobra</span></h2>
+<table>
+<tr><th>Chapa</th><th class="n">Consumo m²</th><th class="n">Custo consumo</th><th class="n">Chapas inteiras</th><th class="n">Custo compra</th><th class="n">Sobra (R$)</th></tr>
+<tr><td>15 mm lâmina 2F</td><td class="n">9,99</td><td class="n">4.791</td><td class="n">3</td><td class="n">6.000</td><td class="n">1.209</td></tr>
+<tr><td>6 mm lâmina 1F</td><td class="n">3,52</td><td class="n">1.509</td><td class="n">2</td><td class="n">2.400</td><td class="n">891</td></tr>
+<tr><td>18 mm lâmina natural</td><td class="n">1,51</td><td class="n">797</td><td class="n">1</td><td class="n">2.200</td><td class="n">1.403</td></tr>
+<tr class="sum"><td>Total freijó</td><td class="n">15,02</td><td class="n">R$ 7.097</td><td class="n">6</td><td class="n">R$ 10.600</td><td class="n">R$ 3.503</td></tr>
+</table>
+<div class="callout flag"><b>Aqui estava o erro da precificação anterior:</b> eu joguei os <b>R$ 3.503 de sobra</b> de chapa
+inteira dentro deste projeto (chapa a R$10.600). Custeando pelo <b>consumo</b> (R$7.097), o custo cai. A sobra é
+material real em estoque, mas alimenta outros móveis — decide se entra neste projeto (conservador) ou fica no estoque da empresa.</div>
+
+<!-- RESUMO -->
+<h2>Resumo de custo (consumo)</h2>
+<table>
+<tr><th>Bloco</th><th class="n">Custo (consumo)</th><th class="n">Custo (chapa inteira)</th></tr>
+<tr><td>1 · Móvel Entrada</td><td class="n">8.528</td><td class="n">—</td></tr>
+<tr><td>2 · Gourmet</td><td class="n">8.642</td><td class="n">—</td></tr>
+<tr><td>4 · Serralheria</td><td class="n">600</td><td class="n">600</td></tr>
+<tr class="sum"><td>Núcleo freijó + serralheria</td><td class="n">R$ 17.770</td><td class="n">R$ 21.274</td></tr>
+<tr><td>3 · Módulo laca (opcional)</td><td class="n">14.388</td><td class="n">14.475</td></tr>
+<tr class="sum"><td>Total com opcional</td><td class="n">R$ 32.158</td><td class="n">R$ 35.749</td></tr>
+</table>
+
+<div class="foot"><span>Valvic · marcenaria sob medida · uso interno</span><span>Decupagem de custo · Apartamento CJ (B+G)</span></div>
+</body></html>

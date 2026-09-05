@@ -1,0 +1,171 @@
+{
+ "cliente": "Ana Carolina Valente (Apto CV)",
+ "projeto": "Apto CV — Área de Serviço (arq. Bruna Rezende / Estúdio Gráza)",
+ "versao": "R00-v1",
+ "inv": 11500,
+ "mcAlvo": 37,
+ "_nota": "Parceria RT Bruna -> divisor 0,70. Executivo R00. Wrap-around 3-4 paredes ate o teto: gabinete inferior + torre alta + aereos bege + nichos + prateleiras. FORA (regra): bancada/rodabanca nanoglass = marmoraria; cuba-tanque + torneira = loucas/metais. Cores a definir (madeirado 01 + bege 05) = MDF cor. Friso bit 5x5mm (CNC). Contagem fina de chapa = plano de corte; medidas conferidas no local.",
+ "p": {
+  "nf": 5,
+  "parc": 7,
+  "vend": 0,
+  "rt": 10,
+  "vis": 250,
+  "outv": 0,
+  "prog": 0.8,
+  "coord": 1,
+  "marc": 5,
+  "serra": 0.2,
+  "manut": 0.2,
+  "log": 0,
+  "erro": 2
+ },
+ "lib": [
+  [
+   "MDF",
+   [
+    [
+     "mdf cor 15 (madeirado 01 + bege 05)",
+     500
+    ],
+    [
+     "mdf cor 6 (fundos)",
+     300
+    ]
+   ]
+  ],
+  [
+   "Cola e fita",
+   [
+    [
+     "Fita de borda - cor - mt",
+     3
+    ],
+    [
+     "Colagem - mt linear - máquina",
+     2.5
+    ]
+   ]
+  ],
+  [
+   "Dobradiças",
+   [
+    [
+     "Hardt",
+     8
+    ]
+   ]
+  ],
+  [
+   "Corrediças",
+   [
+    [
+     "Oculta Hardt",
+     70
+    ]
+   ]
+  ],
+  [
+   "Puxadores",
+   [
+    [
+     "Cava 35° usinada - mt",
+     50
+    ]
+   ]
+  ],
+  [
+   "Suportes / acessórios",
+   [
+    [
+     "Cabideiro fixo",
+     150
+    ],
+    [
+     "Sup. prateleiras - cj4",
+     3
+    ]
+   ]
+  ],
+  [
+   "Parafusos / montagem / consumíveis",
+   [
+    [
+     "Parafusos gerais",
+     25
+    ],
+    [
+     "Conj. parafuso e bucha",
+     1.8
+    ],
+    [
+     "Silicone acabamento",
+     30
+    ],
+    [
+     "Cola kit Teck bond",
+     35
+    ]
+   ]
+  ],
+  [
+   "Limpeza / embalagem",
+   [
+    [
+     "Embalagem",
+     50
+    ],
+    [
+     "Strech",
+     4
+    ],
+    [
+     "Estopa (pacote)",
+     10
+    ]
+   ]
+  ]
+ ],
+ "ambientes": [
+  {
+   "nome": "Área de Serviço",
+   "q": {
+    "MDF¦mdf cor 15 (madeirado 01 + bege 05)": 11,
+    "MDF¦mdf cor 6 (fundos)": 4,
+    "Cola e fita¦Fita de borda - cor - mt": 120,
+    "Cola e fita¦Colagem - mt linear - máquina": 120,
+    "Dobradiças¦Hardt": 44,
+    "Corrediças¦Oculta Hardt": 2,
+    "Puxadores¦Cava 35° usinada - mt": 9,
+    "Suportes / acessórios¦Cabideiro fixo": 1,
+    "Suportes / acessórios¦Sup. prateleiras - cj4": 15,
+    "Parafusos / montagem / consumíveis¦Parafusos gerais": 3,
+    "Parafusos / montagem / consumíveis¦Conj. parafuso e bucha": 10,
+    "Parafusos / montagem / consumíveis¦Silicone acabamento": 2,
+    "Parafusos / montagem / consumíveis¦Cola kit Teck bond": 2,
+    "Limpeza / embalagem¦Embalagem": 2,
+    "Limpeza / embalagem¦Strech": 4,
+    "Limpeza / embalagem¦Estopa (pacote)": 2
+   },
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
+   }
+  }
+ ],
+ "ativo": 0,
+ "diretrizes": "Parceria RT Bruna (divisor 0,70). MC alvo 37%. PEDRA/marmoraria e louças/metais SEMPRE FORA (regra fixa). Cores a definir = MDF cor. Sala do apê NÃO leva rack (exclusão do fundador). Estimativa sobre o executivo R00; conferir medidas no local; contagem fina de chapa no plano de corte.",
+ "rodrigo": "Parceiro RT. MC alvo 37% (faixa boa). Apto completo (7 ambientes) — acompanhar total.",
+ "duvidas": [
+  "Marca de dobradiça (usei Hardt padrão).",
+  "Contagem exata de chapa (estimada sobre o executivo).",
+  "Metros reais de puxador cava usinada."
+ ],
+ "theme": "light",
+ "_valorReal": "VALOR REAL do fundador (proposta v2) = R$ 11500. Item: Lavanderia/Área de Serviço. (Estimativa anterior da Lavinia era R$ 27600 — superestimada; ver calibracao-apto-cv.md.)"
+}

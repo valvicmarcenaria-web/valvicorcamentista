@@ -1,0 +1,140 @@
+{
+ "cliente": "Ana Carolina Valente (Apto CV)",
+ "projeto": "Apto CV — Lavabo (arq. Bruna Rezende / Estúdio Gráza)",
+ "versao": "R00-v1",
+ "inv": 4700,
+ "mcAlvo": 37,
+ "_nota": "Parceria RT Bruna -> divisor 0,70. Marcenaria: revestimento de PAREDE em MDF madeirado (01) + GABINETE CURVO sob a cuba (2 portas + prat. interna) + espelho + LED perfil. CURVA no gabinete -> +15% material (regra). FORA (regra): cuba esculpida + tampo em QUARTZITO Allure = marmoraria; torneira/porta-toalha/papeleira/arandela = loucas/metais/acessorios. Espelho ~ nosso (confirmar). Cores a definir. Medidas conferidas no local.",
+ "p": {
+  "nf": 5,
+  "parc": 7,
+  "vend": 0,
+  "rt": 10,
+  "vis": 250,
+  "outv": 0,
+  "prog": 0.8,
+  "coord": 1,
+  "marc": 5,
+  "serra": 0.2,
+  "manut": 0.2,
+  "log": 0,
+  "erro": 2
+ },
+ "lib": [
+  [
+   "MDF",
+   [
+    [
+     "mdf cor 15 (madeirado 01)",
+     500
+    ],
+    [
+     "mdf cor 6 (fundo)",
+     300
+    ]
+   ]
+  ],
+  [
+   "Cola e fita",
+   [
+    [
+     "Fita de borda - cor - mt",
+     3
+    ],
+    [
+     "Colagem - mt linear - máquina",
+     2.5
+    ]
+   ]
+  ],
+  [
+   "Dobradiças",
+   [
+    [
+     "Hardt",
+     8
+    ]
+   ]
+  ],
+  [
+   "Puxadores",
+   [
+    [
+     "Cava 35° usinada - mt",
+     50
+    ]
+   ]
+  ],
+  [
+   "Iluminação",
+   [
+    [
+     "LED - fita + perfil - mt",
+     150
+    ]
+   ]
+  ],
+  [
+   "Vidros e espelhos (m²)",
+   [
+    [
+     "Espelho prata",
+     600
+    ]
+   ]
+  ],
+  [
+   "Especiais / curva",
+   [
+    [
+     "Adicional curva (+15% material do gabinete)",
+     165
+    ]
+   ]
+  ],
+  [
+   "Parafusos / montagem / consumíveis",
+   [
+    [
+     "Consumíveis (parafuso/cola/silicone/embalagem)",
+     150
+    ]
+   ]
+  ]
+ ],
+ "ambientes": [
+  {
+   "nome": "Lavabo",
+   "q": {
+    "MDF¦mdf cor 15 (madeirado 01)": 5,
+    "MDF¦mdf cor 6 (fundo)": 1,
+    "Cola e fita¦Fita de borda - cor - mt": 40,
+    "Cola e fita¦Colagem - mt linear - máquina": 40,
+    "Dobradiças¦Hardt": 4,
+    "Puxadores¦Cava 35° usinada - mt": 3,
+    "Iluminação¦LED - fita + perfil - mt": 2,
+    "Vidros e espelhos (m²)¦Espelho prata": 1.5,
+    "Especiais / curva¦Adicional curva (+15% material do gabinete)": 1,
+    "Parafusos / montagem / consumíveis¦Consumíveis (parafuso/cola/silicone/embalagem)": 1
+   },
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
+   }
+  }
+ ],
+ "ativo": 0,
+ "diretrizes": "Parceria RT Bruna (0,70). MC 37%. Gabinete CURVO (+15% material). PEDRA (cuba+tampo quartzito) e louças/metais FORA (regra fixa). Espelho ~ nosso (confirmar). Estimativa sobre o executivo R00.",
+ "duvidas": [
+  "Espelho é nosso? (~1,5 m²)",
+  "Metros de LED e de cava usinada.",
+  "Curva: aplicar +5% MC no gabinete curvo? (mantive MC 37 no ambiente)."
+ ],
+ "theme": "light",
+ "_valorReal": "VALOR REAL do fundador (proposta v2) = R$ 4700. Item: Lavabo. (Estimativa anterior da Lavinia era R$ 15000 — superestimada; ver calibracao-apto-cv.md.)"
+}

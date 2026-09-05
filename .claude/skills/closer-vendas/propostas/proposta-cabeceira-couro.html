@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4; margin: 0; }
+  @font-face{ font-family:"Aurora Valvic"; src:url("aurora-valvic.ttf"); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root{ --mostarda:#E0A521; --ouro:#B0892F; --carvao:#201C18; --creme:#F4ECDD; --ivory:#FBF6EC;
+    --taupe:#8C7E69; --linha:#E5D9BE; --texto:#2A2520; }
+  body{ font-family:"Helvetica Neue",Arial,sans-serif; color:var(--texto); font-size:10.5pt; line-height:1.6; }
+  .page{ width:210mm; min-height:297mm; padding:22mm 24mm; position:relative; background:#fff; overflow:hidden; page-break-after:always; }
+  .page:last-child{ page-break-after:auto; }
+  .serif{ font-family:Georgia,"Times New Roman",serif; }
+  h1,h2,h3{ font-family:Georgia,serif; font-weight:normal; }
+  .muted{ color:var(--taupe); } .gold{ color:var(--ouro); }
+  .kicker{ display:flex; align-items:baseline; gap:7mm; margin-bottom:8mm; }
+  .kicker .num{ font-family:Georgia,serif; font-size:28pt; color:var(--linha); line-height:1; }
+  .kicker .lbl{ font-size:9pt; letter-spacing:5px; text-transform:uppercase; color:var(--ouro); padding-bottom:1mm; border-bottom:1px solid var(--mostarda); }
+  .lead{ font-size:14pt; line-height:1.6; color:#4a443c; } .lead b{ color:var(--texto); }
+  .lead.big{ font-size:18pt; line-height:1.5; }
+
+  /* CAPA com render-herói */
+  .cover{ background:var(--creme); padding:0; display:flex; flex-direction:column; justify-content:space-between; }
+  .cover .ctop{ padding:24mm 24mm 0; }
+  .cover .wmrow{ display:flex; justify-content:space-between; align-items:center; }
+  .cover .wordmark{ font-family:Georgia,serif; font-size:21pt; letter-spacing:2px; }
+  .cover .logo{ height:14mm; display:block; }
+  .cover .brandmark{ font-family:"Aurora Valvic"; font-size:28pt; color:var(--carvao); line-height:1; letter-spacing:0; }
+  .fw{ font-family:"Aurora Valvic"; letter-spacing:0; }
+  .cover .tag{ font-size:8.5pt; letter-spacing:3px; text-transform:uppercase; color:var(--taupe); }
+  .cover .eyebrow{ letter-spacing:7px; font-size:10.5pt; color:var(--ouro); text-transform:uppercase; margin-top:18mm; }
+  .cover .name{ font-size:42pt; line-height:1.06; margin:6mm 0 4mm; }
+  .cover .proj{ font-size:14.5pt; color:var(--taupe); font-style:italic; }
+  .cover .cfoot{ display:flex; justify-content:space-between; align-items:flex-end; border-top:1px solid var(--linha); padding:4mm 24mm 5mm; }
+  .cover .cfoot .k{ font-size:8pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); } .cover .cfoot .v{ font-family:Georgia,serif; font-size:11pt; }
+  .cover .hero{ height:150mm; }
+  .cover .hero img{ width:100%; height:100%; object-fit:cover; object-position:center 40%; display:block; }
+
+  /* peça */
+  .heroimg{ margin:7mm -24mm 0; height:78mm; }
+  .heroimg img{ width:100%; height:100%; object-fit:cover; object-position:center 40%; display:block; }
+  .specbox{ margin:7mm 0 2mm; background:var(--ivory); border:1px solid var(--linha); border-radius:3mm; padding:9mm 8mm 7mm; }
+  .specbox svg{ width:100%; height:40mm; display:block; }
+  .pcap{ display:flex; justify-content:space-between; font-size:8.5pt; letter-spacing:1.5px; text-transform:uppercase; color:var(--taupe); margin-top:5mm; padding-top:3mm; border-top:1px solid var(--linha); }
+  .pcap b{ color:var(--ouro); }
+
+  /* diferenciais */
+  .grid{ display:flex; flex-wrap:wrap; gap:6mm; margin-top:3mm; }
+  .feat{ width:calc(50% - 3mm); background:var(--creme); border-radius:2mm; padding:6mm; border-top:2px solid var(--mostarda); }
+  .feat .fi{ font-size:13pt; color:var(--ouro); } .feat h3{ font-size:12.5pt; margin:1mm 0 1.5mm; } .feat p{ font-size:9.4pt; color:#4a443c; }
+
+  /* investimento */
+  .price{ margin:2mm 0; background:var(--carvao); color:#F5ECDA; border-radius:3mm; padding:4.5mm 10mm; position:relative; overflow:hidden; }
+  .price .ringc{ position:absolute; width:62mm; height:62mm; border:1px solid rgba(224,165,33,.3); border-radius:50%; right:-20mm; top:-20mm; }
+  .price .pl{ font-size:9pt; letter-spacing:3px; text-transform:uppercase; color:var(--mostarda); }
+  .price .pv{ font-family:Georgia,serif; font-size:34pt; margin-top:2mm; }
+  .price .pd{ color:#d8c9a8; margin-top:2mm; font-size:9.5pt; }
+  .price .ptab{ width:100%; border-collapse:collapse; position:relative; z-index:2; }
+  .price .ptab td{ padding:1.55mm 0; border-bottom:1px solid rgba(224,165,33,.22); vertical-align:baseline; }
+  .price .ptab .pi{ font-family:Georgia,serif; font-size:13pt; color:#F5ECDA; }
+  .price .ptab .pi span{ display:block; font-family:"Helvetica Neue",Arial,sans-serif; font-size:8.3pt; color:#cbbd9d; margin-top:0.4mm; }
+  .price .ptab .pp{ text-align:right; font-family:Georgia,serif; font-size:16pt; color:#fff; white-space:nowrap; }
+  .price .ptab .ptot td{ border-bottom:none; padding-top:3mm; }
+  .price .ptab .ptot .pi{ font-size:13pt; color:var(--mostarda); }
+  .price .ptab .ptot .pp{ font-size:23pt; color:var(--mostarda); }
+  .info{ display:flex; gap:7mm; margin-top:3mm; } .info>div{ flex:1; border-left:2px solid var(--mostarda); padding-left:4mm; }
+  .info .k{ font-size:8.5pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe);} .info .vv{ font-size:11.5pt; font-family:Georgia,serif; margin-top:1mm;}
+  .gnote{ font-size:8.7pt; color:var(--taupe); margin-top:2mm; }
+  table{ width:100%; border-collapse:collapse; } .pay th{ text-align:left; font-size:8.5pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); padding:2mm 2mm; border-bottom:1px solid var(--mostarda); }
+  .pay td{ padding:2.0mm 2mm; border-bottom:1px solid var(--linha); font-size:10.5pt; } .pay .disc{ text-align:right; font-family:Georgia,serif; color:var(--ouro); }
+  .cta{ margin-top:3.5mm; font-size:11pt; } .cta b{ font-family:Georgia,serif; font-size:14pt; }
+  .pfoot{ position:absolute; bottom:13mm; left:24mm; right:24mm; font-size:8pt; color:var(--taupe); display:flex; justify-content:space-between; border-top:1px solid var(--linha); padding-top:3mm;}
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="page cover">
+  <div class="ctop">
+    <div class="wmrow"><span class="brandmark">Valvic</span></div>
+    <div class="eyebrow">Proposta exclusiva</div>
+    <div class="name serif">Cabeceira<br>sob medida</div>
+    <div class="proj serif">Suíte do casal · Vale dos Cristais</div>
+  </div>
+  <div class="cbottom">
+    <div class="cfoot">
+      <div><div class="k">Para</div><div class="v">Valdenir &amp; Maria</div></div>
+      <div><div class="k">Projeto</div><div class="v">Paula Galante</div></div>
+      <div><div class="k">Ano</div><div class="v">2026</div></div>
+    </div>
+    <div class="hero"><img src="img/render-ambientacao.jpg" alt=""></div>
+  </div>
+</div>
+
+<!-- 01 · A PEÇA -->
+<div class="page">
+  <div class="kicker"><span class="num serif">01</span><span class="lbl">A peça</span></div>
+  <p class="lead big">Uma parede inteira de cabeceira — <b>5,5 metros</b> em <b>seis módulos</b>,
+  ritmados por <b>frisos de 5 mm</b> entre os painéis.</p>
+  <p class="lead" style="margin-top:5mm;">É a peça que define a suíte — e você escolhe o acabamento:
+  <b>melamínico Cinza Sagrado</b>, <b>couro natural</b> ou <b>laca acetinada</b>. Em qualquer um deles,
+  <b>a Valvic executa e coordena tudo</b> — estrutura, revestimento e instalação — para o resultado
+  chegar impecável e alinhado de uma ponta à outra dos 5,5 metros.</p>
+
+  <div class="specbox">
+    <svg viewBox="0 0 560 130" fill="none" stroke="#B0892F" stroke-width="1.6" stroke-linejoin="round">
+      <text x="6" y="9" fill="#8C7E69" stroke="none" font-size="7" font-family="Arial">550 cm</text>
+      <g>
+        <rect x="8"   y="22" width="62"  height="98" rx="6"/>
+        <rect x="74"  y="22" width="92"  height="98" rx="6"/>
+        <rect x="170" y="22" width="98"  height="98" rx="6"/>
+        <rect x="272" y="22" width="98"  height="98" rx="6"/>
+        <rect x="374" y="22" width="92"  height="98" rx="6"/>
+        <rect x="470" y="22" width="82"  height="98" rx="6"/>
+      </g>
+      <g stroke-width="0.8" opacity=".5">
+        <path d="M20 40c10 4 30 4 40 0M88 40c20 4 44 4 64 0M186 40c22 4 46 4 66 0M288 40c22 4 46 4 66 0M390 40c20 4 44 4 64 0M484 40c16 4 36 4 54 0"/>
+      </g>
+      <g stroke="#E0A521" stroke-width="2" opacity=".9">
+        <line x1="72" y1="30" x2="72" y2="112"/><line x1="168" y1="30" x2="168" y2="112"/>
+        <line x1="270" y1="30" x2="270" y2="112"/><line x1="372" y1="30" x2="372" y2="112"/>
+        <line x1="468" y1="30" x2="468" y2="112"/>
+      </g>
+      <text x="178" y="128" fill="#B0892F" stroke="none" font-size="6.5" font-family="Arial">frisos de 5 mm entre os painéis</text>
+    </svg>
+    <div class="pcap"><span>Vista frontal · seis módulos · frisos de 5 mm · 550 × 120 cm</span><span><b>melamínico · couro · laca acetinada</b></span></div>
+  </div>
+  <div class="pfoot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Valdenir &amp; Maria — Cabeceira da suíte</span></div>
+</div>
+
+<!-- 02 · O COURO & O OFÍCIO -->
+<div class="page">
+  <div class="kicker"><span class="num serif">02</span><span class="lbl">O couro &amp; o ofício</span></div>
+  <p class="lead" style="margin-bottom:8mm;">O que faz uma cabeceira de couro envelhecer bonita —
+  e não enrugar, descolar ou ceder — está em detalhes que não aparecem na foto:</p>
+  <div class="grid">
+    <div class="feat"><div class="fi">✦</div><h3>Couro natural vaqueta La Novità</h3>
+      <p>Couro <b>natural</b>, não sintético — toque, respiro e a leve variação que só a pele real tem.
+      Selecionado peça a peça para uma superfície branca uniforme.</p></div>
+    <div class="feat"><div class="fi">✦</div><h3>Tapeçaria de precisão</h3>
+      <p>Espuma <b>D33</b> (firme, não cede) + manta acrílica para o caimento macio, e o couro
+      <b>esticado e grampeado à mão</b> com tensão uniforme — sem rugas, sem ondulação.</p></div>
+    <div class="feat"><div class="fi">✦</div><h3>Seis módulos perfeitos</h3>
+      <p>A parede de 5,5 m dividida em <b>seis módulos</b> — precisão no transporte, na instalação
+      e no alinhamento dos vincos, para a leitura ser contínua de uma ponta à outra.</p></div>
+    <div class="feat"><div class="fi">✦</div><h3>Fixação invisível</h3>
+      <p>Sistema <b>macho-fêmea</b> embutido: os módulos <b>flutuam</b> na parede, sem suporte
+      aparente, e podem ser removidos para manutenção sem danificar o acabamento.</p></div>
+    <div class="feat"><div class="fi">✦</div><h3>Medição e ajuste no local</h3>
+      <p>Conferimos as medidas <b>no local</b> antes de cortar — uma peça de 5,5 m não admite
+      folga. É marcenaria sob medida de verdade, não módulo de prateleira.</p></div>
+    <div class="feat"><div class="fi">✦</div><h3>Um interlocutor só</h3>
+      <p>Estrutura, couro e tapeçaria <b>coordenados pela Valvic</b> — você não fala com três
+      fornecedores. A responsabilidade do conjunto é nossa.</p></div>
+  </div>
+  <div class="pfoot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Valdenir &amp; Maria — Cabeceira da suíte</span></div>
+</div>
+
+<!-- 03 · INVESTIMENTO -->
+<div class="page">
+  <div class="kicker"><span class="num serif">03</span><span class="lbl">Investimento</span></div>
+  <p class="lead" style="margin-bottom:2mm; font-size:12.5pt;">A cabeceira em <b>três acabamentos</b>, à sua escolha — e os
+  <b>complementos do projeto</b>, todos executados e coordenados pela Valvic, com um interlocutor só.</p>
+
+  <div class="price"><div class="ringc"></div>
+    <div class="pl">Cabeceira · 550 × 120 cm · 6 módulos · escolha o acabamento</div>
+    <table class="ptab">
+      <tr><td class="pi">Melamínico Cinza Sagrado<span>painel rígido · entrega em 12 dias úteis</span></td><td class="pp">R$ 8.500</td></tr>
+      <tr><td class="pi">Couro vaqueta La Novità<span>estofado · entrega em 30 a 45 dias úteis</span></td><td class="pp">R$ 13.500</td></tr>
+      <tr><td class="pi">Laca acetinada<span>painel rígido · entrega em 45 a 50 dias úteis</span></td><td class="pp">R$ 16.000</td></tr>
+    </table>
+    <div class="pl" style="margin-top:3mm;">Complementos do projeto</div>
+    <table class="ptab">
+      <tr><td class="pi">Lavanderia e apoio<span>2 armários inferiores + 1 superior · MDF Gianduia Trama Ultra · ferragens Hettich · 12 dias úteis</span></td><td class="pp">R$ 6.500</td></tr>
+      <tr><td class="pi" style="border-bottom:none;">Complemento de painel · hall do elevador<span>painel complementar em marcenaria</span></td><td class="pp" style="border-bottom:none;">R$ 1.350</td></tr>
+    </table>
+  </div>
+
+  <div class="info">
+    <div><div class="k">Entrega</div><div class="vv">conforme o acabamento</div></div>
+    <div><div class="k">Validade</div><div class="vv">7 dias úteis</div></div>
+    <div><div class="k">Garantia</div><div class="vv">5 a 10 anos</div></div>
+  </div>
+  <p class="gnote"><b>Garantia:</b> couro — 5 anos estrutura · 1 ano revestimento; laca e melamínico — 5 anos
+  estrutura; lavanderia — 10 anos (ferragens Hettich). Não cobre desgaste natural, mau uso ou limpeza inadequada.</p>
+
+  <div class="kicker" style="margin:4mm 0 2.5mm;"><span class="num serif">04</span><span class="lbl">Condições</span></div>
+  <table class="pay">
+    <tr><th>Condição</th><th style="text-align:right;">Vantagem</th></tr>
+    <tr><td>40% de entrada + saldo na entrega</td><td class="disc">—</td></tr>
+    <tr><td>60% de entrada + saldo na entrega</td><td class="disc">3% de desconto</td></tr>
+    <tr><td>100% à vista (transferência)</td><td class="disc">6% de desconto</td></tr>
+  </table>
+
+  <p class="cta"><span class="gold serif" style="font-size:13pt;">✦</span>
+  &nbsp;<b>Vamos executar a sua suíte?</b><br>
+  <span class="muted">Reservamos a vaga na agenda de produção com a entrada e seguimos para a medição
+  final no local. Estou à disposição para apresentar a proposta pessoalmente.</span></p>
+  <div class="pfoot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Valdenir &amp; Maria — Cabeceira da suíte</span></div>
+</div>
+
+</body>
+</html>

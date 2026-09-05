@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size:A4; margin:0; }
+  @font-face{ font-family:"Aurora Valvic"; src:url("aurora-valvic.ttf"); }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  :root{ --mostarda:#E0A521; --ouro:#B0892F; --carvao:#201C18; --creme:#F4ECDD; --ivory:#FBF6EC;
+    --taupe:#8C7E69; --linha:#E5D9BE; --texto:#2A2520; }
+  body{ font-family:"Helvetica Neue",Arial,sans-serif; color:var(--texto); font-size:10.5pt; line-height:1.6; }
+  .page{ width:210mm; min-height:297mm; padding:22mm 24mm; position:relative; background:#fff; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+  .serif{ font-family:Georgia,"Times New Roman",serif; font-weight:normal; }
+  .fw{ font-family:"Aurora Valvic"; }
+  .eyebrow{ letter-spacing:5px; font-size:8.5pt; text-transform:uppercase; color:var(--ouro); }
+  .muted{ color:var(--taupe); }
+  .hl{ font-family:Georgia,serif; font-size:30pt; line-height:1.12; color:var(--carvao); }
+  .hl .it{ font-style:italic; color:var(--ouro); }
+  .lead{ font-size:10.5pt; color:#5b5347; line-height:1.6; max-width:150mm; margin-top:5mm; }
+
+  /* capa */
+  .cover{ background:var(--creme); display:flex; flex-direction:column; justify-content:space-between; padding:26mm; }
+  .cover .brandmark{ font-size:20pt; color:var(--carvao); }
+  .cover .brandmark .st{ color:var(--ouro); font-family:Georgia,serif; margin-right:2mm; }
+  .cover .brandmark .v{ font-family:"Aurora Valvic"; }
+  .cover .badge{ font-size:8pt; letter-spacing:3px; text-transform:uppercase; color:var(--ouro);
+    border:1px solid var(--mostarda); border-radius:2mm; padding:2mm 5mm; }
+  .cover .top{ display:flex; justify-content:space-between; align-items:center; }
+  .cover .eyebrow{ margin-bottom:5mm; }
+  .cover .name{ font-size:40pt; line-height:1.05; color:var(--carvao); margin:2mm 0 4mm; }
+  .cover .sub{ font-size:12.5pt; color:var(--texto); }
+  .cover .proj{ font-size:12pt; color:var(--taupe); font-style:italic; margin-top:1.5mm; }
+  .cover .rule{ height:1px; background:var(--linha); margin:7mm 0; }
+  .cover .frow{ display:flex; justify-content:space-between; align-items:flex-end; }
+  .cover .k{ font-size:8pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); }
+  .cover .val{ font-family:Georgia,serif; font-size:11.5pt; color:var(--carvao); margin-top:1mm; }
+  .cover .meta{ text-align:right; font-family:"Courier New",monospace; font-size:9pt; color:var(--taupe); letter-spacing:1px; }
+
+  /* descritivo */
+  .noteline{ font-family:"Courier New",monospace; font-size:7.6pt; letter-spacing:.5px; color:var(--ouro);
+    text-transform:uppercase; padding:3.5mm 0; border-top:1px solid var(--linha); border-bottom:1px solid var(--linha); margin:6mm 0 3mm; }
+  .drow{ display:flex; gap:6mm; padding:2.8mm 0; border-bottom:1px solid var(--linha); align-items:baseline; }
+  .drow:last-of-type{ border-bottom:none; }
+  .dnum{ font-family:"Courier New",monospace; font-size:8.5pt; color:var(--ouro); width:8mm; }
+  .dn{ font-family:Georgia,serif; font-size:14pt; color:var(--carvao); }
+  .dd{ font-size:9.3pt; color:#6a6155; margin-top:1.5mm; line-height:1.4; }
+  .dtag{ font-family:"Courier New",monospace; font-size:7.5pt; letter-spacing:.5px; color:var(--taupe); text-transform:uppercase; margin-top:1.5mm; }
+  .callout{ background:var(--ivory); border-left:3px solid var(--mostarda); padding:4.5mm 7mm; margin-top:5mm; font-size:9.3pt; color:#5b5347; line-height:1.5; }
+  .callout b{ color:var(--carvao); }
+
+  /* investimento */
+  .invhead{ background:var(--carvao); color:#EFE7D6; margin:-22mm -24mm 8mm; padding:16mm 24mm 12mm; }
+  .invhead .eyebrow{ color:var(--mostarda); }
+  .invhead h2{ font-family:Georgia,serif; font-weight:normal; font-size:30pt; color:#F3ECDD; margin:3mm 0 2mm; }
+  .invhead p{ color:#b6ab97; font-size:10pt; }
+  .totalbox{ border:1.6px solid var(--mostarda); border-radius:3mm; overflow:hidden; margin-bottom:7mm; }
+  .totalbox .t1{ display:flex; justify-content:space-between; align-items:center; padding:7mm 9mm; background:var(--ivory); }
+  .totalbox .tk{ font-size:8.5pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); }
+  .totalbox .tv{ font-family:Georgia,serif; font-size:30pt; color:var(--carvao); }
+  .totalbox .t2{ display:flex; justify-content:space-between; align-items:center; padding:6mm 9mm; background:var(--carvao); color:#EFE7D6; }
+  .totalbox .t2 .l .dk{ font-size:8pt; letter-spacing:2px; text-transform:uppercase; color:var(--mostarda); margin-bottom:1.5mm; }
+  .totalbox .t2 .l .dd2{ font-size:9.5pt; color:#c9bda4; }
+  .totalbox .t2 .r{ text-align:right; }
+  .totalbox .t2 .old{ font-size:10pt; color:#9c917d; text-decoration:line-through; }
+  .totalbox .t2 .new{ font-family:Georgia,serif; font-size:26pt; color:var(--mostarda); line-height:1; }
+  .pay{ display:flex; gap:6mm; margin-bottom:2mm; }
+  .pay .pp{ flex:1; border:1px solid var(--linha); border-radius:2mm; padding:5mm 6mm; background:var(--ivory); text-align:center; }
+  .pay .ppk{ font-size:8pt; letter-spacing:1.5px; text-transform:uppercase; color:var(--taupe); margin-bottom:2mm; }
+  .pay .ppv{ font-family:Georgia,serif; font-size:19pt; color:var(--carvao); }
+  .pay .ppv span{ font-family:"Helvetica Neue",Arial,sans-serif; font-size:8.5pt; color:var(--taupe); }
+  .cond{ display:flex; gap:6mm; margin-top:7mm; }
+  .cond > div{ flex:1; border-top:2px solid var(--mostarda); padding-top:3.5mm; }
+  .cond .ck{ font-size:8pt; letter-spacing:2px; text-transform:uppercase; color:var(--ouro); margin-bottom:2mm; }
+  .cond .cv{ font-family:Georgia,serif; font-size:12.5pt; color:var(--carvao); }
+  .cond .cs{ font-size:8.5pt; color:var(--taupe); margin-top:1mm; }
+  .escopo{ font-size:8.3pt; color:var(--taupe); margin-top:8mm; line-height:1.5; border-top:1px solid var(--linha); padding-top:4mm; }
+  .escopo b{ color:var(--carvao); }
+  .cta{ margin-top:12mm; }
+  .cta h2{ font-family:Georgia,serif; font-weight:normal; font-size:22pt; color:var(--carvao); }
+  .cta p{ font-size:10pt; color:#5b5347; margin-top:3mm; max-width:130mm; }
+  .pfoot{ position:absolute; bottom:14mm; left:24mm; right:24mm; font-size:8pt; color:var(--taupe);
+    display:flex; justify-content:space-between; border-top:1px solid var(--linha); padding-top:3mm; }
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="page cover">
+  <div class="top">
+    <span class="brandmark"><span class="st">✦</span><span class="v">Valvic</span></span>
+  </div>
+  <div>
+    <div class="eyebrow">Proposta · Marcenaria dos banheiros</div>
+    <div class="name serif">Alexandre<br>&amp; Gisele</div>
+    <div class="sub">Gabinetes sob medida — 5 suítes e banheiro de apoio</div>
+    <div class="proj serif">Reforma Residência · Cond. Retiro do Chalé — arq. Ionah Pinho</div>
+  </div>
+  <div>
+    <div class="rule"></div>
+    <div class="frow">
+      <div><div class="k">Para</div><div class="val">Alexandre &amp; Gisele</div></div>
+      <div><div class="k">Emissão</div><div class="val">Julho de 2026</div></div>
+      <div class="meta">Ref. Banheiros<br>Padrão Hardt</div>
+    </div>
+  </div>
+</div>
+
+<!-- DESCRITIVO -->
+<div class="page">
+  <div class="eyebrow" style="margin-bottom:6mm;">O que vamos executar</div>
+  <div class="hl">Seis gabinetes,<br><span class="it">o mesmo cuidado</span><br>de sempre.</div>
+  <p class="lead">Que bom seguir com vocês. Abaixo, cada ambiente do projeto da arquiteta Ionah Pinho —
+  executado e instalado pela Valvic, no padrão que vocês já conhecem.</p>
+
+  <div class="noteline">Ferragens ocultas soft-close Hardt · puxador perfil cava em alumínio natural · garantia de 5 anos</div>
+
+  <div class="drow"><div class="dnum">01</div><div style="flex:1;"><div class="dn">Banheiro Suíte 01</div><div class="dd">Gabinete de bancada com 2 portas de giro e 3 gavetas.</div></div><div class="dtag">Aréia Guararapes</div></div>
+  <div class="drow"><div class="dnum">02</div><div style="flex:1;"><div class="dn">Banheiro Suíte 02</div><div class="dd">Gabinete de bancada com 2 portas de giro e 3 gavetas.</div></div><div class="dtag">Chumbo Guararapes</div></div>
+  <div class="drow"><div class="dnum">03</div><div style="flex:1;"><div class="dn">Banheiro Suíte 03</div><div class="dd">Gabinete de bancada com 2 portas de giro e 3 gavetas.</div></div><div class="dtag">Chumbo Guararapes</div></div>
+  <div class="drow"><div class="dnum">04</div><div style="flex:1;"><div class="dn">Banheiro Suíte 04</div><div class="dd">Gabinete de bancada com 2 portas de giro e 3 gavetas.</div></div><div class="dtag">Gianduia Sense</div></div>
+  <div class="drow"><div class="dnum">05</div><div style="flex:1;"><div class="dn">Banheiro Suíte 05</div><div class="dd">Gabinete de bancada com 2 portas de giro e 3 gavetas.</div></div><div class="dtag">Aréia Guararapes</div></div>
+  <div class="drow"><div class="dnum">06</div><div style="flex:1;"><div class="dn">Banheiro de Apoio</div><div class="dd">Armário suspenso com 2 portas de giro.</div></div><div class="dtag">Aréia Guararapes</div></div>
+
+  <div class="callout">O <b>puxador em perfil cava de alumínio natural</b> percorre as portas e gavetas: o próprio
+  perfil forma a pegada e arremata a borda e o fechamento lateral, num acabamento contínuo e elegante. Ferragens
+  <b>ocultas com soft-close</b> em todas as gavetas.<br><br><b>Acabamento interno e externo na mesma cor</b> — cor a
+  ser <b>definida no local</b>, não contemplando a linha acetinada.</div>
+
+  <div class="pfoot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Alexandre &amp; Gisele — Banheiros</span></div>
+</div>
+
+<!-- INVESTIMENTO -->
+<div class="page">
+  <div class="invhead">
+    <div class="eyebrow">Investimento</div>
+    <h2>O seu investimento.</h2>
+    <p>Um valor único para o conjunto — condição de parceria de sempre.</p>
+  </div>
+
+  <div class="totalbox">
+    <div class="t1">
+      <div class="tk">Marcenaria dos 6 banheiros</div>
+      <div class="tv serif">R$ 15.500</div>
+    </div>
+    <div class="t2">
+      <div class="l">
+        <div class="dk">Condição de pagamento · 60% + 40%</div>
+        <div class="dd2">60% na entrada + 40% na entrega, com <b style="color:var(--mostarda);">10% de desconto</b>.</div>
+      </div>
+      <div class="r">
+        <div class="old">R$ 15.500</div>
+        <div class="new">R$ 13.950</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pay">
+    <div class="pp"><div class="ppk">Entrada · 60%</div><div class="ppv serif">R$ 8.400</div></div>
+    <div class="pp"><div class="ppk">Entrega · 40%</div><div class="ppv serif">R$ 5.550</div></div>
+  </div>
+
+  <div class="cond">
+    <div><div class="ck">Prazo</div><div class="cv serif">60 dias úteis</div><div class="cs">após medição e aprovação</div></div>
+    <div><div class="ck">Garantia</div><div class="cv serif">5 anos</div><div class="cs">estrutura e ferragens</div></div>
+    <div><div class="ck">Validade</div><div class="cv serif">7 dias</div><div class="cs">a partir da emissão</div></div>
+  </div>
+
+  <div class="cta">
+    <h2 class="serif">Seguimos?</h2>
+    <p>É só confirmar que já agendo a conferência de medidas e coloco os seis banheiros no cronograma.
+    Obrigado pela confiança de sempre, Alexandre e Gisele.</p>
+  </div>
+
+  <div class="pfoot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Alexandre &amp; Gisele — Banheiros</span></div>
+</div>
+
+</body>
+</html>

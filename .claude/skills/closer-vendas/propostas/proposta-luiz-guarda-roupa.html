@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size:A4; margin:0; }
+  @font-face{ font-family:"Aurora Valvic"; src:url("aurora-valvic.ttf"); }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  :root{ --mostarda:#E0A521; --ouro:#B0892F; --carvao:#201C18; --creme:#F4ECDD; --ivory:#FBF6EC;
+    --taupe:#8C7E69; --linha:#E5D9BE; --texto:#2A2520; }
+  body{ font-family:"Helvetica Neue",Arial,sans-serif; color:var(--texto); font-size:10pt; line-height:1.5; }
+  .page{ width:210mm; min-height:297mm; padding:18mm 20mm; position:relative; background:#fff; page-break-after:always; }
+  .page:last-child{ page-break-after:auto; }
+  .serif{ font-family:Georgia,"Times New Roman",serif; font-weight:normal; }
+  .fw{ font-family:"Aurora Valvic"; }
+  .eyebrow{ letter-spacing:4px; font-size:8pt; text-transform:uppercase; color:var(--ouro); }
+  .top{ display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid var(--carvao); padding-bottom:4mm; }
+  .brand{ font-size:18pt; color:var(--carvao); } .brand .st{ font-family:Georgia,serif; color:var(--ouro); margin-right:2mm; } .brand .v{ font-family:"Aurora Valvic"; }
+  .top .r{ text-align:right; font-family:"Courier New",monospace; font-size:8pt; color:var(--taupe); letter-spacing:1px; line-height:1.6; }
+  .head{ margin-top:7mm; }
+  .head .t{ font-family:Georgia,serif; font-size:27pt; color:var(--carvao); line-height:1.05; }
+  .head .s{ font-size:10pt; color:var(--taupe); margin-top:2mm; }
+
+  .body{ display:flex; gap:12mm; margin-top:9mm; }
+  .col-draw{ width:74mm; min-width:74mm; }
+  .draw{ background:var(--ivory); border:1px solid var(--linha); border-radius:2mm; padding:6mm 5mm; }
+  .draw svg{ width:100%; height:auto; display:block; }
+  .draw .cap{ text-align:center; font-family:"Courier New",monospace; font-size:7.5pt; color:var(--taupe); letter-spacing:1px; margin-top:3mm; text-transform:uppercase; }
+  .col-spec{ flex:1; }
+  .sec{ font-size:8pt; letter-spacing:2px; text-transform:uppercase; color:var(--ouro); margin:0 0 3mm; }
+  .sec.mt{ margin-top:7mm; }
+  .comp{ }
+  .comp .row{ display:flex; justify-content:space-between; align-items:baseline; padding:2.6mm 0; border-bottom:1px solid #f0eadd; }
+  .comp .row .n{ font-family:Georgia,serif; font-size:11.5pt; color:var(--carvao); }
+  .comp .row .d{ font-size:8.5pt; color:var(--taupe); }
+  .comp .row .m{ font-family:"Courier New",monospace; font-size:8.5pt; color:var(--ouro); white-space:nowrap; }
+  .spx{ font-size:9pt; color:#5b5347; line-height:1.6; } .spx b{ color:var(--carvao); }
+  .tags{ display:flex; flex-wrap:wrap; gap:2mm; margin-top:3mm; }
+  .tags span{ font-family:"Courier New",monospace; font-size:7.5pt; letter-spacing:.5px; text-transform:uppercase; color:var(--taupe); border:1px solid var(--linha); border-radius:1.5mm; padding:1.5mm 3mm; }
+
+  /* pag 2 */
+  .invhead{ background:var(--carvao); color:#EFE7D6; margin:-18mm -20mm 8mm; padding:14mm 20mm 10mm; }
+  .invhead .eyebrow{ color:var(--mostarda); }
+  .invhead h2{ font-family:Georgia,serif; font-size:26pt; color:#F3ECDD; margin:2mm 0 2mm; }
+  .invhead p{ color:#b6ab97; font-size:9.5pt; }
+  .cards{ display:flex; gap:4mm; }
+  .card{ flex:1; border:1px solid var(--linha); border-radius:2mm; padding:4.5mm 4.5mm; background:var(--ivory); }
+  .card.reco{ border:1.6px solid var(--mostarda); background:#fff; }
+  .card .k{ font-size:7pt; letter-spacing:1.5px; text-transform:uppercase; color:var(--taupe); } .card.reco .k{ color:var(--ouro); }
+  .card .nm{ font-family:Georgia,serif; font-size:12.5pt; color:var(--carvao); margin:1.5mm 0 1.5mm; line-height:1.1; }
+  .card .ds{ font-size:7.8pt; color:#5b5347; min-height:20mm; line-height:1.45; } .card .ds b{ color:var(--carvao); }
+  .card .vl{ font-family:Georgia,serif; font-size:19pt; color:var(--carvao); } .card.reco .vl{ color:var(--ouro); }
+  .card .gr{ font-family:"Courier New",monospace; font-size:7pt; color:var(--taupe); text-transform:uppercase; margin-top:1mm; }
+
+  .upg{ margin-top:8mm; }
+  .upg .u{ display:flex; justify-content:space-between; align-items:center; padding:3.4mm 0; border-bottom:1px solid #f0eadd; }
+  .upg .u .n{ font-family:Georgia,serif; font-size:11.5pt; color:var(--carvao); } .upg .u .n small{ font-family:"Helvetica Neue",Arial,sans-serif; font-size:8.5pt; color:var(--taupe); display:block; margin-top:.5mm; }
+  .upg .u .v{ font-family:Georgia,serif; font-size:13pt; color:var(--ouro); }
+
+  .cols{ display:flex; gap:9mm; margin-top:7mm; }
+  .cols .c{ flex:1; }
+  .pr{ display:flex; justify-content:space-between; padding:2.4mm 0; border-bottom:1px solid #f0eadd; font-size:9pt; }
+  .pr .dd{ font-family:"Courier New",monospace; font-size:8pt; color:var(--ouro); } .pr .dd.n{ color:var(--taupe); }
+  .cd{ padding:2.4mm 0; border-bottom:1px solid #f0eadd; } .cd .k{ font-size:7.5pt; letter-spacing:1.5px; text-transform:uppercase; color:var(--taupe); } .cd .v{ font-family:Georgia,serif; font-size:12pt; color:var(--carvao); margin-top:.5mm; }
+  .note{ font-size:8.2pt; color:var(--taupe); margin-top:5mm; line-height:1.45; }
+  .pfoot{ position:absolute; bottom:12mm; left:20mm; right:20mm; font-size:8pt; color:var(--taupe); display:flex; justify-content:space-between; border-top:1px solid var(--linha); padding-top:3mm; }
+</style>
+</head>
+<body>
+
+<!-- PÁGINA 1 -->
+<div class="page">
+  <div class="top">
+    <span class="brand"><span class="st">✦</span><span class="v">Valvic</span></span>
+    <span class="r">Proposta · Guarda-roupa<br>Para Luiz · Julho 2026</span>
+  </div>
+
+  <div class="head">
+    <div class="eyebrow">Marcenaria sob medida</div>
+    <div class="t serif">Guarda-roupa de embutir</div>
+    <div class="s">Móvel 145 × 215 × 49 cm · para o nicho de 146,5 × 216 cm · dois módulos iguais</div>
+  </div>
+
+  <div class="body">
+    <div class="col-draw">
+      <div class="draw">
+        <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+          <!-- corpo -->
+          <rect x="26" y="10" width="148" height="278" fill="#fff" stroke="#201C18" stroke-width="2"/>
+          <!-- divisoria central -->
+          <line x1="100" y1="10" x2="100" y2="288" stroke="#201C18" stroke-width="1.4"/>
+          <!-- divisorias horizontais (maleiro 37 / cabideiro 97 / gavetas 36 / sapateira 32; total util 202 ~ h270) -->
+          <!-- maleiro bottom -->
+          <line x1="26" y1="59" x2="174" y2="59" stroke="#201C18" stroke-width="1.2"/>
+          <!-- cabideiro bar -->
+          <line x1="34" y1="72" x2="92" y2="72" stroke="#8C7E69" stroke-width="2" stroke-linecap="round"/>
+          <line x1="108" y1="72" x2="166" y2="72" stroke="#8C7E69" stroke-width="2" stroke-linecap="round"/>
+          <!-- cabideiro bottom -->
+          <line x1="26" y1="188" x2="174" y2="188" stroke="#201C18" stroke-width="1.2"/>
+          <!-- gavetas (2 por lado) -->
+          <line x1="26" y1="212" x2="174" y2="212" stroke="#201C18" stroke-width="0.8"/>
+          <line x1="26" y1="236" x2="174" y2="236" stroke="#201C18" stroke-width="1.2"/>
+          <!-- puxadores -->
+          <rect x="52" y="199" width="18" height="2.2" rx="1" fill="#B0892F"/>
+          <rect x="130" y="199" width="18" height="2.2" rx="1" fill="#B0892F"/>
+          <rect x="52" y="223" width="18" height="2.2" rx="1" fill="#B0892F"/>
+          <rect x="130" y="223" width="18" height="2.2" rx="1" fill="#B0892F"/>
+          <!-- sapateira aberta (linhas de prateleira) -->
+          <line x1="26" y1="258" x2="174" y2="258" stroke="#c9bda4" stroke-width="0.7"/>
+          <line x1="26" y1="273" x2="174" y2="273" stroke="#c9bda4" stroke-width="0.7"/>
+          <!-- largura -->
+          <text x="100" y="8" font-size="7.5" fill="#201C18" text-anchor="middle">145 cm</text>
+        </svg>
+      </div>
+      <div class="cap">Vista frontal · medidas em cm</div>
+    </div>
+
+    <div class="col-spec">
+      <div class="sec">Composição</div>
+      <div class="comp">
+        <div class="row"><div><div class="n">Maleiro superior</div><div class="d">malas e roupa de cama</div></div><div class="m">37 cm</div></div>
+        <div class="row"><div><div class="n">Cabideiro</div><div class="d">2 barras (uma por módulo)</div></div><div class="m">97 cm</div></div>
+        <div class="row"><div><div class="n">Gavetas</div><div class="d">4 no total — 2 por lado</div></div><div class="m">36 cm</div></div>
+        <div class="row"><div><div class="n">Sapateira inferior</div><div class="d">aberta, com prateleiras</div></div><div class="m">32 cm</div></div>
+      </div>
+
+      <div class="sec mt">Especificação</div>
+      <p class="spx">Estrutura e acabamento em <b>MDF branco TX</b> (interno e externo). Fechamento em
+      <b>2 portas de correr, sistema RO65</b>. Divisória central de cima a baixo — <b>dois módulos iguais</b>.
+      Móvel executado sob medida para <b>encaixe no nicho</b>.</p>
+      <div class="tags">
+        <span>MDF branco TX</span><span>RO65 · correr</span><span>2 módulos</span><span>4 gavetas</span><span>cabideiro duplo</span><span>sapateira aberta</span>
+      </div>
+    </div>
+  </div>
+  <div class="pfoot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Luiz — guarda-roupa</span></div>
+</div>
+
+<!-- PÁGINA 2 -->
+<div class="page">
+  <div class="invhead">
+    <div class="eyebrow">Investimento</div>
+    <h2>Três versões.</h2>
+    <p>A mesma marcenaria e o mesmo layout nas três. Muda o pacote de ferragem — sistema de correr,
+    corrediça e puxador — e, com ele, o acabamento e a garantia.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="k">Econômica</div>
+      <div class="nm serif">Linha básica</div>
+      <div class="ds">Correr <b>Joeline</b> · corrediça telescópica básica · puxador <b>perfil G leve</b>. Configuração mais enxuta.</div>
+      <div class="vl serif">R$ 5.200</div>
+      <div class="gr">Garantia 1 ano</div>
+    </div>
+    <div class="card">
+      <div class="k">Padrão</div>
+      <div class="nm serif">Telescópica</div>
+      <div class="ds">Correr <b>RO65 com anti-empeno</b> · corrediça telescópica · puxador <b>cava usinado</b>. Mais robusta.</div>
+      <div class="vl serif">R$ 6.300</div>
+      <div class="gr">Garantia 2 anos</div>
+    </div>
+    <div class="card reco">
+      <div class="k">Recomendada</div>
+      <div class="nm serif">Oculta Hardt</div>
+      <div class="ds">Correr <b>RO65 com anti-empeno</b> · corrediça <b>oculta soft-close Hardt</b> · puxador cava. Fechamento silencioso.</div>
+      <div class="vl serif">R$ 7.600</div>
+      <div class="gr">Garantia 5 anos</div>
+    </div>
+  </div>
+
+  <div class="upg">
+    <div class="sec">Upgrades opcionais</div>
+    <div class="u"><div class="n">Acabamento externo em MDF cor<small>frentes e portas em MDF colorido, no lugar do branco TX</small></div><div class="v">+ R$ 800</div></div>
+    <div class="u"><div class="n">Iluminação LED no cabideiro<small>fita de LED horizontal no teto do cabideiro</small></div><div class="v">+ R$ 350</div></div>
+  </div>
+
+  <div class="cols">
+    <div class="c">
+      <div class="sec">Forma de pagamento</div>
+      <div class="pr"><span>Entrada — na aprovação</span><span class="dd">50%</span></div>
+      <div class="pr"><span>Saldo — na entrega</span><span class="dd">50%</span></div>
+    </div>
+    <div class="c">
+      <div class="sec">Condições</div>
+      <div class="cd"><div class="k">Prazo de entrega</div><div class="v serif">30 dias úteis</div></div>
+      <div class="cd"><div class="k">Execução</div><div class="v serif">Equipe própria</div></div>
+      <div class="cd"><div class="k">Validade da proposta</div><div class="v serif">7 dias úteis</div></div>
+    </div>
+  </div>
+
+  <p class="note">Valores para a marcenaria do guarda-roupa conforme layout, com medidas conferidas no local antes da
+  produção. Iluminação (LED) e acabamento em cor são upgrades opcionais, somados ao valor da versão escolhida.</p>
+
+  <div class="pfoot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Luiz — guarda-roupa</span></div>
+</div>
+
+</body>
+</html>

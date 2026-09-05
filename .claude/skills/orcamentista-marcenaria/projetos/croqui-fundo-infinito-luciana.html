@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  @font-face{ font-family:"Aurora Valvic"; src:url("../../closer-vendas/propostas/aurora-valvic.ttf"); }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  :root{ --petroleo:#243B45; --grafite:#2A2520; --ferrugem:#A8432A; --aco:#7C8A8F; --mostarda:#E0A521;
+    --ouro:#B0892F; --creme:#F4ECDD; --ivory:#FBF6EC; --taupe:#8C7E69; --linha:#D9CBA9; }
+  body{ font-family:"Helvetica Neue",Arial,sans-serif; color:var(--grafite); }
+  .page{ width:210mm; height:297mm; background:var(--creme); padding:12mm 13mm; position:relative; page-break-after:always; }
+  .page:last-child{ page-break-after:auto; }
+  .serif{ font-family:Georgia,serif; } .fw{ font-family:"Aurora Valvic"; }
+  .tb{ display:flex; justify-content:space-between; align-items:flex-end; border-bottom:1.5px solid var(--petroleo); padding-bottom:2.5mm; margin-bottom:4mm; }
+  .tb .brand{ font-family:"Aurora Valvic"; font-size:20pt; color:var(--grafite); line-height:1; }
+  .tb .tt{ font-family:Georgia,serif; font-size:13pt; color:var(--petroleo); }
+  .tb .ts{ font-size:7.5pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); margin-top:1mm; }
+  .tb .meta{ text-align:right; font-size:7.5pt; color:var(--taupe); line-height:1.5; }
+  .tb .meta b{ color:var(--petroleo); }
+  svg{ display:block; width:100%; }
+  .cap{ font-size:8pt; letter-spacing:2px; text-transform:uppercase; color:var(--ouro); margin:1mm 0 2mm; }
+  /* referências */
+  .refgrid{ display:grid; grid-template-columns:1fr 1fr; gap:4mm; }
+  .ref{ background:var(--ivory); border:1px solid var(--linha); border-radius:2mm; padding:3.5mm 4mm; display:flex; gap:3.5mm; }
+  .ref svg{ width:30mm; flex:0 0 30mm; height:21mm; background:#fff; border:1px solid var(--linha); border-radius:1mm; }
+  .ref h4{ font-family:Georgia,serif; font-size:9.7pt; color:var(--petroleo); font-weight:normal; margin-bottom:1mm; }
+  .ref p{ font-size:8pt; color:#3a352e; line-height:1.4; }
+  .ref .src{ font-size:7pt; color:var(--ouro); margin-top:1.5mm; letter-spacing:.3px; }
+  /* leitura / tabelas */
+  .lt{ background:var(--ivory); border:1px solid var(--linha); border-radius:2mm; padding:4.5mm 5mm; margin-top:3.5mm; }
+  .lt h4{ font-family:Georgia,serif; font-size:10pt; color:var(--petroleo); margin-bottom:2mm; font-weight:normal; }
+  .lt p, .lt li{ font-size:8.7pt; color:#3a352e; line-height:1.48; } .lt ul{ margin-left:4mm; }
+  .two{ display:flex; gap:5mm; margin-top:3.5mm; } .two>div{ flex:1; }
+  table{ width:100%; border-collapse:collapse; }
+  th{ text-align:left; font-size:7.3pt; letter-spacing:1px; text-transform:uppercase; color:var(--taupe); border-bottom:1px solid var(--ouro); padding:1.4mm 1mm; }
+  td{ font-size:8.4pt; padding:1.4mm 1mm; border-bottom:1px solid var(--linha); color:#3a352e; }
+  td.r{ text-align:right; font-family:Georgia,serif; }
+  .tag{ display:inline-block; font-size:7.3pt; color:var(--ferrugem); border:1px solid var(--ferrugem); border-radius:6px; padding:0 2mm; }
+  .foot{ position:absolute; bottom:8mm; left:13mm; right:13mm; display:flex; justify-content:space-between; font-size:7.3pt; color:var(--taupe); border-top:1px solid var(--linha); padding-top:2mm; }
+</style>
+</head>
+<body>
+
+<!-- PÁGINA 1 — REFERÊNCIAS -->
+<div class="page">
+  <div class="tb">
+    <div><div class="brand">Valvic</div>
+      <div class="tt serif">Fundo infinito branco · desmontável</div>
+      <div class="ts">Estudo construtivo · rev. com o Téo (produção · projeto-producao) · 1 — referências</div></div>
+    <div class="meta"><div>Cliente <b>Luciana &amp; Marcelo</b></div><div>Pesquisa de método (cyclorama / infinity cove)</div><div>jun · 2026</div></div>
+  </div>
+
+  <div class="cap">Referências de pesquisa — o que cada uma ensina pro projeto</div>
+  <div class="refgrid">
+
+    <div class="ref">
+      <svg viewBox="0 0 120 84" fill="none" stroke="#243B45" stroke-width="2">
+        <path d="M28 14 L28 50 A18 18 0 0 0 46 68 L98 68"/>
+        <g fill="#A8432A" stroke="none"><circle cx="28" cy="32" r="3"/><circle cx="37" cy="60" r="3"/><circle cx="72" cy="68" r="3"/></g>
+      </svg>
+      <div><h4>Sistemas pro freestanding</h4>
+        <p>Pro Cyc / UNISET: peças CNC <b>parafusadas</b>, pernas de aço, cove 76–106 cm. Valida marcenaria + metal <b>desmontável</b>.</p>
+        <div class="src">procyc.com · unisetcorp.com</div></div>
+    </div>
+
+    <div class="ref">
+      <svg viewBox="0 0 120 84" fill="none" stroke="#243B45" stroke-width="1.6">
+        <path d="M24 14 L24 50 A20 20 0 0 0 44 70 L100 70" stroke-width="2.4"/>
+        <path d="M40 14 L40 50 A20 20 0 0 0 60 70" stroke="#7C8A8F"/>
+        <path d="M56 14 L56 50 A20 20 0 0 0 76 70" stroke="#7C8A8F"/>
+        <path d="M72 14 L72 50 A20 20 0 0 0 92 70" stroke="#7C8A8F"/>
+      </svg>
+      <div><h4>Costelas "asa de avião"</h4>
+        <p>Curva feita por <b>costelas</b> (ribs) de ply/MDF que sustentam a pele fina. Espaçar <b>~30 cm</b> na curva pra não ondular.</p>
+        <div class="src">petapixel.com · ephotozine.com</div></div>
+    </div>
+
+    <div class="ref">
+      <svg viewBox="0 0 120 84" fill="none">
+        <path d="M30 16 L30 48 A22 22 0 0 0 52 70 L98 70" stroke="#243B45" stroke-width="2"/>
+        <path d="M36 16 L36 48 A16 16 0 0 0 52 64 L98 64" stroke="#7C8A8F" stroke-width="2"/>
+      </svg>
+      <div><h4>Casca da curva — método Valvic (Téo)</h4>
+        <p>Raio grande aceita <b>MDF flexível</b>; raio fechado = <b>dobra por vincos / fold-to-skin no CNC</b>
+        (pele ~1 mm, lisa). O Téo decide pelo raio e <b>gera o DXF</b> (Aspire).</p>
+        <div class="src">skill projeto-producao · dobra-de-mdf.md</div></div>
+    </div>
+
+    <div class="ref">
+      <svg viewBox="0 0 120 84" fill="none" stroke="#243B45" stroke-width="1.6">
+        <path d="M30 18 L30 46 A20 20 0 0 0 50 66 L96 66"/>
+        <g stroke="#A8432A" stroke-width="1"><path d="M50 46 L30 46" stroke-dasharray="2 2"/><path d="M50 46 L50 66" stroke-dasharray="2 2"/></g>
+        <text x="54" y="40" fill="#A8432A" font-size="8" font-family="Arial" stroke="none">R 40·60·100·150</text>
+      </svg>
+      <div><h4>Raio conforme o uso (EasiFrame)</h4>
+        <p>Sistemas de tubo curvo oferecem raios <b>400 / 600 / 1000 / 1500 mm</b>. O <b>uso</b> define o raio — daí a tabela da pág. 3.</p>
+        <div class="src">essentialphoto.co.uk</div></div>
+    </div>
+
+    <div class="ref">
+      <svg viewBox="0 0 120 84" fill="none" stroke="#243B45" stroke-width="1.3">
+        <g><path d="M60 66 L34 24"/><path d="M60 66 L46 20"/><path d="M60 66 L60 18"/><path d="M60 66 L74 20"/><path d="M60 66 L86 24"/></g>
+        <path d="M34 24 A40 40 0 0 1 86 24" stroke="#7C8A8F"/>
+      </svg>
+      <div><h4>Método "fatias de pizza"</h4>
+        <p>Alternativa de curva: cunhas de MDF/masonite coladas em leque + massa. Mais artesanal; usei como plano B da casca.</p>
+        <div class="src">studiosteffler · newbornbrasil</div></div>
+    </div>
+
+    <div class="ref">
+      <svg viewBox="0 0 120 84" fill="none">
+        <path d="M30 16 L30 48 A22 22 0 0 0 52 70 L98 70" stroke="#243B45" stroke-width="2.4"/>
+        <g stroke="#7C8A8F" stroke-width="1" opacity=".7"><path d="M34 26 q6 2 0 6"/><path d="M40 60 q6 2 12 0"/></g>
+        <text x="40" y="40" fill="#8C7E69" font-size="7.5" font-family="Arial">massa + lixa</text>
+      </svg>
+      <div><h4>Acabamento sem emenda (DIY budget)</h4>
+        <p>Emendas e parafusos sumidos com <b>massa (drywall mud) + lixa</b> antes de pintar. Base do tratamento da junta na laca.</p>
+        <div class="src">diyphotography.net</div></div>
+    </div>
+
+    <div class="ref">
+      <svg viewBox="0 0 120 84" fill="none" stroke="#243B45" stroke-width="1.6">
+        <rect x="40" y="12" width="42" height="56" rx="2" fill="#EDE6D5" stroke="#7C8A8F"/>
+        <line x1="40" y1="68" x2="22" y2="76"/><line x1="82" y1="68" x2="100" y2="76"/><line x1="22" y1="76" x2="100" y2="76"/>
+        <circle cx="30" cy="78" r="4" fill="#A8432A" stroke="none"/><circle cx="92" cy="78" r="4" fill="#A8432A" stroke="none"/>
+      </svg>
+      <div><h4>O que a Luciana tem hoje</h4>
+        <p>Fundo <b>móvel</b> de compensado em cavalete c/ rodízios (referência dela). Queremos a versão <b>fixa, branca em laca</b> e bem resolvida.</p>
+        <div class="src">referência enviada pela cliente</div></div>
+    </div>
+
+    <div class="ref" style="align-items:center;">
+      <svg viewBox="0 0 120 84" fill="none" stroke="#A8432A" stroke-width="1.6">
+        <path d="M30 18 L30 46 A20 20 0 0 0 50 66 L96 66" stroke="#243B45" stroke-width="2"/>
+        <path d="M30 24 L52 18" /><path d="M30 40 L52 34"/>
+        <line x1="50" y1="66" x2="30" y2="46" stroke-dasharray="4 2"/>
+      </svg>
+      <div><h4>Conclusão da pesquisa</h4>
+        <p>Convergência: <b>esqueleto que sustenta</b> + <b>costelas que fazem a curva</b> + <b>casca dupla</b> + <b>junta que disfarça a emenda</b>. Marcenaria é a pele. <span class="tag">levado ao Teo</span></p>
+      </div>
+    </div>
+
+  </div>
+  <div class="foot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Luciana &amp; Marcelo — Fundo infinito · estudo construtivo (1/3)</span></div>
+</div>
+
+<!-- PÁGINA 2 — CORTE ESTRUTURAL (SUSTENTAÇÃO) -->
+<div class="page">
+  <div class="tb">
+    <div><div class="brand">Valvic</div>
+      <div class="tt serif">Fundo infinito branco · desmontável</div>
+      <div class="ts">Estudo construtivo · 2 — corte estrutural (sustentação)</div></div>
+    <div class="meta"><div>Cliente <b>Luciana &amp; Marcelo</b></div><div>Esqueleto metalon 40×40 · 1,5 mm</div><div>NTS · cotas <b>a confirmar</b></div></div>
+  </div>
+
+  <div class="cap">A · Corte lateral — como a estrutura PARA EM PÉ (não é só a chapa)</div>
+  <svg viewBox="0 0 760 460" stroke-linejoin="round" stroke-linecap="round" fill="none">
+    <!-- piso -->
+    <line x1="40" y1="392" x2="730" y2="392" stroke="#8C7E69" stroke-width="1" stroke-dasharray="2 3"/>
+    <text x="44" y="404" fill="#8C7E69" font-size="8" font-family="Arial" stroke="none">piso existente (espinha de peixe)</text>
+
+    <!-- COSTELA estrutural (perfil verdadeiro no corte): vertical + curva + base -->
+    <path d="M200 80 L200 280 A112 112 0 0 0 312 392 L600 392" stroke="#243B45" stroke-width="2.4"/>
+    <!-- montante traseiro do plano vertical -->
+    <line x1="176" y1="92" x2="176" y2="300" stroke="#243B45" stroke-width="2.4"/>
+    <!-- travessas do vertical = metalon cortado (quadradinhos hachurados) @ ~55cm -->
+    <g stroke="#243B45" stroke-width="1.2">
+      <rect x="172" y="100" width="8" height="8" fill="#cfd6d8"/><rect x="172" y="156" width="8" height="8" fill="#cfd6d8"/>
+      <rect x="172" y="212" width="8" height="8" fill="#cfd6d8"/><rect x="172" y="268" width="8" height="8" fill="#cfd6d8"/>
+      <!-- liga montante à costela (largura do quadro vertical) -->
+      <line x1="180" y1="104" x2="200" y2="104"/><line x1="180" y1="160" x2="200" y2="160"/>
+      <line x1="180" y1="216" x2="200" y2="216"/><line x1="180" y1="272" x2="200" y2="272"/>
+    </g>
+    <!-- base: vigamento metalon cortado @40cm -->
+    <g stroke="#243B45" stroke-width="1.2">
+      <rect x="356" y="396" width="9" height="9" fill="#cfd6d8"/><rect x="416" y="396" width="9" height="9" fill="#cfd6d8"/>
+      <rect x="476" y="396" width="9" height="9" fill="#cfd6d8"/><rect x="536" y="396" width="9" height="9" fill="#cfd6d8"/>
+      <rect x="592" y="396" width="9" height="9" fill="#cfd6d8"/>
+    </g>
+    <!-- MÃO-FRANCESA traseira (anti-tombamento de costas) -->
+    <line x1="176" y1="150" x2="300" y2="392" stroke="#243B45" stroke-width="2"/>
+    <line x1="300" y1="392" x2="176" y2="300" stroke="#243B45" stroke-width="1.4"/>
+    <text x="120" y="250" fill="#243B45" font-size="8.5" font-family="Arial" stroke="none" transform="rotate(64 120 250)">mão-francesa (trava p/ não tombar de costas)</text>
+
+    <!-- PELE (2x6mm) — agora fina, por FORA da costela -->
+    <path d="M212 80 L212 280 A100 100 0 0 0 312 380 L600 380" stroke="#B8927A" stroke-width="1.4" stroke-dasharray="1 0"/>
+    <text x="218" y="150" fill="#9c6f54" font-size="8" font-family="Arial" stroke="none">pele 2×6 mm flexível (casca 12 mm)</text>
+
+    <!-- pés niveladores + feltro -->
+    <g><g fill="#7C8A8F" stroke="none"><rect x="305" y="392" width="14" height="7"/><rect x="585" y="392" width="14" height="7"/><rect x="168" y="300" width="14" height="7"/></g>
+       <g stroke="#A8432A" stroke-width="2"><line x1="305" y1="401" x2="319" y2="401"/><line x1="585" y1="401" x2="599" y2="401"/><line x1="168" y1="309" x2="182" y2="309"/></g></g>
+    <text x="330" y="416" fill="#5e6a6e" font-size="8" font-family="Arial" stroke="none">pés niveladores c/ feltro (não rodízio — não marca o piso)</text>
+
+    <!-- COTAS ferrugem -->
+    <g stroke="#A8432A" stroke-width="0.9" fill="#A8432A" font-family="Arial" font-size="9">
+      <line x1="150" y1="92" x2="150" y2="300"/>
+      <path d="M147 98 L150 92 L153 98" fill="none"/><path d="M147 294 L150 300 L153 294" fill="none"/>
+      <text x="134" y="205" transform="rotate(-90 134 205)" stroke="none">vertical ~190–240 cm (a conf.)</text>
+      <text x="320" y="338" stroke="none">R ≈ 70 cm</text>
+      <line x1="312" y1="280" x2="200" y2="280" stroke-dasharray="2 2"/><line x1="312" y1="280" x2="312" y2="392" stroke-dasharray="2 2"/>
+      <line x1="312" y1="440" x2="600" y2="440"/>
+      <path d="M318 437 L312 440 L318 443" fill="none"/><path d="M594 437 L600 440 L594 443" fill="none"/>
+      <text x="372" y="453" stroke="none">base ≥ 135 cm · (altura ÷ base ≤ 1,8)</text>
+    </g>
+
+    <!-- chamadas estruturais -->
+    <g font-family="Arial" font-size="8.5" fill="#243B45" stroke="none">
+      <text x="360" y="318">costela MDF 18 mm @30 cm (faz a curva)</text>
+      <text x="420" y="388">base pisável: tampo 18 mm + vigas @40 cm</text>
+    </g>
+  </svg>
+
+  <div class="two" style="margin-top:2mm;">
+    <div style="flex:0 0 44%;">
+      <div class="cap">B · Vista traseira — contraventamento (anti-racking)</div>
+      <svg viewBox="0 0 300 240" fill="none" stroke="#243B45" stroke-width="1.8">
+        <rect x="40" y="20" width="100" height="180"/><rect x="140" y="20" width="100" height="180"/>
+        <!-- travessas -->
+        <g stroke-width="1"><line x1="40" y1="65" x2="240" y2="65"/><line x1="40" y1="110" x2="240" y2="110"/><line x1="40" y1="155" x2="240" y2="155"/></g>
+        <!-- diagonais de contraventamento (Z) -->
+        <g stroke="#A8432A" stroke-width="1.6"><line x1="40" y1="200" x2="140" y2="20"/><line x1="240" y1="200" x2="140" y2="20"/></g>
+        <text x="150" y="225" fill="#A8432A" font-size="11" font-family="Arial" stroke="none" text-anchor="middle">diagonal/tirante c/ esticador</text>
+        <text x="150" y="12" fill="#243B45" font-size="10" font-family="Arial" stroke="none" text-anchor="middle">montantes @45 cm · 2 colunas de ~1,2 m</text>
+      </svg>
+    </div>
+    <div style="flex:1;">
+      <div class="lt" style="margin-top:7mm;">
+        <h4>Leitura técnica — a sustentação (direção do Teo)</h4>
+        <p>Não são 3 peças soltas: é um <b>"L" rígido contraventado</b>. A <b>base</b> (≥1,35 m) é o <b>outrigger</b> que
+        impede tombar pra frente — quem pisa vira contrapeso. Pra trás, <b>mãos-francesas</b> do topo até a base
+        (obrigatórias acima de ~2 m). Todo retângulo de metalon leva <b>diagonal</b> (traseira do fundo + base), senão
+        "abre" (racking). Regra: <b>altura ÷ profundidade da base ≤ 1,8</b>. <span class="tag">freestanding</span> <span class="tag">não tomba</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Luciana &amp; Marcelo — Fundo infinito · estudo construtivo (2/3)</span></div>
+</div>
+
+<!-- PÁGINA 3 — DETALHES + BITOLAS -->
+<div class="page">
+  <div class="tb">
+    <div><div class="brand">Valvic</div>
+      <div class="tt serif">Fundo infinito branco · desmontável</div>
+      <div class="ts">Estudo construtivo · 3 — detalhes construtivos + bitolas</div></div>
+    <div class="meta"><div>Cliente <b>Luciana &amp; Marcelo</b></div><div>Item do orçamento: <b>“fundo infinito — a definir”</b></div></div>
+  </div>
+
+  <div class="two">
+    <div>
+      <div class="cap">C · Detalhe da curva (cambota + pele dobrada)</div>
+      <svg viewBox="0 0 300 200" fill="none">
+        <!-- cambota (gabarito curvo) -->
+        <path d="M60 30 L60 110 A60 60 0 0 0 120 170 L260 170" stroke="#243B45" stroke-width="6" opacity=".25"/>
+        <!-- réguas/gabaritos ao longo da curva -->
+        <g fill="#7C8A8F" stroke="none"><circle cx="60" cy="60" r="3"/><circle cx="60" cy="92" r="3"/><circle cx="74" cy="128" r="3"/><circle cx="104" cy="158" r="3"/><circle cx="150" cy="170" r="3"/><circle cx="200" cy="170" r="3"/></g>
+        <!-- pele de MDF dobrada (fold-to-skin) -->
+        <path d="M70 30 L70 110 A50 50 0 0 0 120 160 L260 160" stroke="#9c6f54" stroke-width="2.4"/>
+        <!-- vincos sugeridos na zona da curva -->
+        <g stroke="#B8927A" stroke-width="0.8"><path d="M71 116 l6 -2"/><path d="M77 128 l6 -2"/><path d="M86 139 l6 -3"/><path d="M98 149 l5 -4"/><path d="M111 156 l5 -4"/></g>
+        <g fill="#243B45" font-family="Arial" font-size="9" stroke="none">
+          <text x="86" y="70">cambota MDF 18 mm (gabarito CNC)</text>
+          <text x="120" y="120">réguas de travamento</text>
+          <text x="120" y="150">pele de MDF dobrada · pele ~1 mm</text>
+        </g>
+      </svg>
+      <div class="cap" style="margin-top:3mm;">D · Junta desmontável (sem degrau na laca)</div>
+      <svg viewBox="0 0 300 170" fill="none">
+        <rect x="40" y="40" width="90" height="80" fill="#EDE6D5" stroke="#243B45" stroke-width="1.6"/>
+        <rect x="170" y="40" width="90" height="80" fill="#EDE6D5" stroke="#243B45" stroke-width="1.6"/>
+        <!-- pino-luva -->
+        <g stroke="#A8432A" stroke-width="2"><line x1="130" y1="60" x2="170" y2="60"/></g>
+        <circle cx="150" cy="60" r="4" fill="#A8432A" stroke="none"/>
+        <!-- cantoneira/parafuso -->
+        <g stroke="#243B45" stroke-width="1.4"><path d="M130 100 L150 100 L150 118"/><path d="M170 100 L150 100"/></g>
+        <circle cx="140" cy="100" r="2.5" fill="#243B45" stroke="none"/><circle cx="160" cy="100" r="2.5" fill="#243B45" stroke="none"/>
+        <text x="150" y="20" fill="#243B45" font-size="9" font-family="Arial" stroke="none" text-anchor="middle">emenda VERTICAL no plano reto</text>
+        <g fill="#A8432A" font-family="Arial" font-size="8.5" stroke="none"><text x="150" y="50" text-anchor="middle">pino-luva (alinha)</text></g>
+        <text x="150" y="138" fill="#243B45" font-size="8.5" font-family="Arial" stroke="none" text-anchor="middle">cantoneira M8 (segura) + massa flexível branca (reaplica)</text>
+      </svg>
+    </div>
+    <div>
+      <div class="cap">Raio da curva conforme o uso</div>
+      <table>
+        <tr><th>Uso</th><th>Raio</th><th>Largura</th></tr>
+        <tr><td>Produto / topo de corpo</td><td class="r">~50 cm</td><td class="r">1,5 m</td></tr>
+        <tr><td>Meio corpo / moda / vídeo</td><td class="r">~70 cm ✦</td><td class="r">2,0–2,4 m</td></tr>
+        <tr><td>Corpo inteiro / cenário</td><td class="r">100–150 cm</td><td class="r">3,0 m+</td></tr>
+      </table>
+      <p style="font-size:7.8pt; color:#8C7E69; margin-top:1.5mm;">✦ Teo recomenda <b>raio 70 cm</b> pro porte dela: curva suave, flexível não sofre, transporte ok.</p>
+
+      <div class="cap" style="margin-top:4mm;">Bitolas (direção do Teo · pré-medição)</div>
+      <table>
+        <tr><th>Componente</th><th>Especificação</th></tr>
+        <tr><td>Esqueleto</td><td>metalon <b>40×40 · 1,5 mm</b></td></tr>
+        <tr><td>Montantes vert.</td><td>@ 40–50 cm</td></tr>
+        <tr><td>Travessas</td><td>@ 50–60 cm</td></tr>
+        <tr><td>Cambota (curva)</td><td>MDF 18 mm <b>@ 30 cm</b> · raio 70 (gabarito CNC)</td></tr>
+        <tr><td>Réguas</td><td>travam a cambota · @ 15 cm</td></tr>
+        <tr><td>Pele da curva</td><td><b>MDF dobrado · fold-to-skin (pele ~1 mm)</b> ou flexível</td></tr>
+        <tr><td>Fundo / base</td><td>MDF 18 mm (2×15 se corpo inteiro)</td></tr>
+        <tr><td>Base pisável</td><td>vigas @40 cm · pés @50–60 cm</td></tr>
+        <tr><td>Contravento</td><td>diagonal/tirante traseira + base</td></tr>
+        <tr><td>Junta</td><td>pino-luva + cantoneira M8 + garra</td></tr>
+        <tr><td>Apoio</td><td>pés niveladores + feltro F5</td></tr>
+        <tr><td>Acabamento</td><td>laca PU <b>branca fosca</b>; lacar montado</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="lt">
+    <h4>Erros de bancada que o método já evita (Teo)</h4>
+    <ul>
+      <li><b>Curva pela técnica certa:</b> raio grande = flexível; raio fechado = <b>fold-to-skin no CNC</b> (pele ~1 mm, lisa). Zona de dobra = raio × ângulo (90° = R×1,571). <b>Téo gera o DXF (Aspire).</b></li>
+      <li><b>Cambota espaçada demais</b> ondula sob luz rasante → <b>@30 cm na curva</b>.</li>
+      <li><b>Lacar módulos separados</b> não casa o branco → <b>lacar montado, desmontar depois</b>; emenda sacrificial reaplicável.</li>
+      <li><b>Só parafuso</b> = degrau na remontagem → <b>pino-luva alinha</b> toda junta vista.</li>
+      <li><b>Sem diagonal</b> = bambo e tomba; <b>vão grande na base</b> = estala (apoio @40–50 cm); PU elástico na interface aço-madeira mata o rangido.</li>
+    </ul>
+  </div>
+
+  <div class="lt" style="margin-top:3mm;">
+    <h4>Para fechar o preço (sai do “a definir”)</h4>
+    <p>① <b>Uso principal</b> (produto / meio corpo / corpo inteiro) → trava <b>raio + largura</b> · ② <b>Medidas do local</b>
+    (largura, pé-direito, profundidade livre) → conferir in loco · ③ <b>1 curva</b> (fundo+base) ou <b>cove em U</b> (com laterais)?
+    Com isso eu tiro o quantitativo deste estudo e fecho o valor.</p>
+  </div>
+  <div class="foot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Luciana &amp; Marcelo — Fundo infinito · estudo construtivo (3/3)</span></div>
+</div>
+
+</body>
+</html>

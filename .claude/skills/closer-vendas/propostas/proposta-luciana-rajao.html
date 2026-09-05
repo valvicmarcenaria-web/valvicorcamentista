@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4; margin: 0; }
+  @font-face{ font-family:"Aurora Valvic"; src:url("aurora-valvic.ttf"); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root{ --mostarda:#E0A521; --ouro:#B0892F; --carvao:#201C18; --creme:#F4ECDD; --ivory:#FBF6EC;
+    --taupe:#8C7E69; --linha:#E5D9BE; --texto:#2A2520; }
+  body{ font-family:"Helvetica Neue",Arial,sans-serif; color:var(--texto); font-size:10.5pt; line-height:1.6; }
+  .page{ width:210mm; min-height:297mm; padding:19mm 26mm; position:relative; background:#fff; page-break-after:always; }
+  .page:last-child{ page-break-after:auto; }
+  .serif{ font-family:Georgia,"Times New Roman",serif; }
+  h1,h2,h3{ font-family:Georgia,serif; font-weight:normal; }
+  .muted{ color:var(--taupe); } .gold{ color:var(--ouro); }
+  .fw{ font-family:"Aurora Valvic"; letter-spacing:0; }
+  .kicker{ display:flex; align-items:baseline; gap:7mm; margin-bottom:9mm; }
+  .kicker .num{ font-family:Georgia,serif; font-size:26pt; color:var(--linha); line-height:1; }
+  .kicker .lbl{ font-size:9pt; letter-spacing:5px; text-transform:uppercase; color:var(--ouro); padding-bottom:1mm; border-bottom:1px solid var(--mostarda); }
+  .lead{ font-size:12.5pt; line-height:1.6; color:#4a443c; } .lead b{ color:var(--texto); }
+
+  /* CAPA */
+  .cover{ background:var(--creme); display:flex; flex-direction:column; justify-content:space-between; padding:26mm; }
+  .cover .brandmark{ font-family:"Aurora Valvic"; font-size:30pt; color:var(--carvao); line-height:1; }
+  .cover .eyebrow{ letter-spacing:7px; font-size:10pt; color:var(--ouro); text-transform:uppercase; margin-top:34mm; }
+  .cover .name{ font-size:40pt; line-height:1.08; margin:6mm 0 5mm; }
+  .cover .proj{ font-size:13.5pt; color:var(--taupe); font-style:italic; }
+  .cover .rule{ height:1px; background:var(--linha); margin:0 0 5mm; }
+  .cover .cfoot{ display:flex; justify-content:space-between; align-items:flex-end; }
+  .cover .cfoot .k{ font-size:8pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); }
+  .cover .cfoot .v{ font-family:Georgia,serif; font-size:11.5pt; }
+
+  /* ESCOPO — lista por ambiente em 2 colunas */
+  .scope{ column-count:2; column-gap:12mm; margin-top:2mm; }
+  .amb{ break-inside:avoid; padding:0 0 5.5mm; margin-bottom:5.5mm; border-bottom:1px solid var(--linha); }
+  .amb:last-child{ border-bottom:none; }
+  .amb h3{ font-size:8.5pt; letter-spacing:2.5px; text-transform:uppercase; color:var(--ouro); margin-bottom:2.5mm; }
+  .amb ul{ list-style:none; }
+  .amb li{ font-size:10pt; color:#3a352e; padding-left:5mm; position:relative; margin-bottom:1.5mm; line-height:1.45; }
+  .amb li::before{ content:""; position:absolute; left:0; top:2.4mm; width:2mm; height:2mm; border:1px solid var(--mostarda); border-radius:50%; }
+
+  /* ADICIONAIS */
+  .add{ margin-top:1mm; }
+  .add .row{ display:flex; justify-content:space-between; align-items:baseline; gap:8mm; padding:3.1mm 0; border-bottom:1px solid var(--linha); }
+  .add .row:last-child{ border-bottom:none; }
+  .add .at{ font-family:Georgia,serif; font-size:12pt; color:var(--texto); }
+  .add .ad{ font-size:9.3pt; color:var(--taupe); margin-top:1mm; max-width:135mm; }
+  .add .ap{ font-family:Georgia,serif; font-size:14pt; color:var(--ouro); white-space:nowrap; }
+  .add .ap.tbd{ font-size:10.5pt; font-style:italic; color:var(--taupe); }
+
+  /* INVESTIMENTO */
+  .price{ margin:2mm 0 0; background:var(--carvao); color:#F5ECDA; border-radius:3mm; padding:5mm 10mm; position:relative; overflow:hidden; }
+  .price .ringc{ position:absolute; width:60mm; height:60mm; border:1px solid rgba(224,165,33,.3); border-radius:50%; right:-20mm; top:-22mm; }
+  .price .pl{ font-size:9pt; letter-spacing:3px; text-transform:uppercase; color:var(--mostarda); margin-bottom:2mm; }
+  .ptab{ width:100%; border-collapse:collapse; position:relative; z-index:2; }
+  .ptab td{ padding:2.0mm 0; border-bottom:1px solid rgba(224,165,33,.22); vertical-align:baseline; }
+  .ptab .pi{ font-family:Georgia,serif; font-size:11.5pt; color:#F5ECDA; }
+  .ptab .pi span{ display:block; font-family:"Helvetica Neue",Arial,sans-serif; font-size:8pt; color:#cbbd9d; margin-top:.5mm; }
+  .ptab .pp{ text-align:right; font-family:Georgia,serif; font-size:13.5pt; color:#fff; white-space:nowrap; }
+  .ptab .pp.tbd{ font-size:10.5pt; font-style:italic; color:#cbbd9d; }
+  .ptab .ptot td{ border-bottom:none; padding-top:3mm; }
+  .ptab .ptot .pi{ font-size:12pt; color:var(--mostarda); }
+  .ptab .ptot .pp{ font-size:22pt; color:var(--mostarda); }
+
+  .cond{ display:flex; gap:8mm; margin-top:5mm; }
+  .cond>div{ flex:1; border-left:2px solid var(--mostarda); padding-left:4mm; }
+  .cond .k{ font-size:8.5pt; letter-spacing:2px; text-transform:uppercase; color:var(--taupe); }
+  .cond .v{ font-size:11pt; font-family:Georgia,serif; margin-top:1.5mm; line-height:1.4; }
+  .note{ font-size:8.7pt; color:var(--taupe); margin-top:4mm; line-height:1.5; }
+
+  .cta{ margin-top:5mm; font-size:11pt; } .cta b{ font-family:Georgia,serif; font-size:13.5pt; }
+  .pfoot{ position:absolute; bottom:14mm; left:26mm; right:26mm; font-size:8pt; color:var(--taupe); display:flex; justify-content:space-between; border-top:1px solid var(--linha); padding-top:3mm; }
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="page cover">
+  <div><span class="brandmark">Valvic</span></div>
+  <div>
+    <div class="eyebrow">Proposta de serviços</div>
+    <div class="name serif">Manutenção<br>&amp; acabamentos</div>
+    <div class="proj serif">Residência Luciana &amp; Marcelo</div>
+  </div>
+  <div>
+    <div class="rule"></div>
+    <div class="cfoot">
+      <div><div class="k">Para</div><div class="v">Luciana &amp; Marcelo</div></div>
+      <div><div class="k">Emissão</div><div class="v">Junho de 2026</div></div>
+      <div><div class="k">Validade</div><div class="v">15 dias</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 · ESCOPO -->
+<div class="page">
+  <div class="kicker"><span class="num serif">01</span><span class="lbl">Escopo da manutenção</span></div>
+  <p class="lead" style="margin-bottom:9mm;">Revisão e reparo pontual do mobiliário da residência, ambiente a
+  ambiente — <b>execução cuidadosa, com acabamento à altura da casa</b>.</p>
+
+  <div class="scope">
+    <div class="amb"><h3>Closet</h3><ul>
+      <li>Substituição da tranca de gaveta existente.</li>
+      <li>Recolagem da roda-teto do closet e da lateral.</li></ul></div>
+
+    <div class="amb"><h3>Quarto Ester</h3><ul>
+      <li>Retirada da porta para ajuste em fábrica e reinstalação no local.</li></ul></div>
+
+    <div class="amb"><h3>Roupeiro Davi</h3><ul>
+      <li>Substituição dos amortecedores do sistema deslizante.</li></ul></div>
+
+    <div class="amb"><h3>Roupeiro João Marcelo</h3><ul>
+      <li>Substituição dos amortecedores do sistema deslizante.</li></ul></div>
+
+    <div class="amb"><h3>Entrada dos quartos</h3><ul>
+      <li>Instalação de perfil de alumínio em uma porta existente.</li></ul></div>
+
+    <div class="amb"><h3>Cozinha</h3><ul>
+      <li>Batente para a porta.</li>
+      <li>Pendurador de toalha.</li>
+      <li>Calçar e recolar o puxador da porta.</li></ul></div>
+
+    <div class="amb"><h3>Roupeiro Lavanderia</h3><ul>
+      <li>Substituição dos amortecedores do sistema deslizante.</li></ul></div>
+
+    <div class="amb"><h3>Lavanderia</h3><ul>
+      <li>Batente para a porta.</li></ul></div>
+
+    <div class="amb"><h3>Lavabo</h3><ul>
+      <li>Calçar e recolar o puxador da porta.</li></ul></div>
+  </div>
+  <div class="pfoot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Luciana &amp; Marcelo — Manutenção &amp; acabamentos</span></div>
+</div>
+
+<!-- 02 · ADICIONAIS + INVESTIMENTO -->
+<div class="page">
+  <div class="kicker" style="margin-bottom:6mm;"><span class="num serif">02</span><span class="lbl">Itens adicionais</span></div>
+  <div class="add">
+    <div class="row">
+      <div><div class="at">Rouparia — novo marco de porta</div>
+        <div class="ad">Marco refeito em MDF Ultra Premium revestido em <b>lâmina natural de carvalho</b>, acabamento
+        <b>ebanizado</b> e verniz fosco; repintura da porta atual para harmonizar o tom.</div></div>
+      <div class="ap">R$ 2.400</div>
+    </div>
+    <div class="row">
+      <div><div class="at">Academia — acabamentos complementares</div>
+        <div class="ad">Acabamentos complementares em <b>MDF carvalho Malva Ultra</b>.</div></div>
+      <div class="ap">R$ 830</div>
+    </div>
+    <div class="row">
+      <div><div class="at">Sala — troca de painéis em tecido</div>
+        <div class="ad">Substituição de <b>dois painéis</b> revestidos em tecido, com base em MDF Ultra
+        (tecido fornecido pela cliente).</div></div>
+      <div class="ap">R$ 690</div>
+    </div>
+  </div>
+
+  <div class="kicker" style="margin:6mm 0 3mm;"><span class="num serif">03</span><span class="lbl">Investimento</span></div>
+  <div class="price"><div class="ringc"></div>
+    <div class="pl">Resumo</div>
+    <table class="ptab">
+      <tr><td class="pi">Manutenção da residência<span>escopo completo · 9 ambientes</span></td><td class="pp">R$ 8.350</td></tr>
+      <tr><td class="pi">Itens adicionais<span>rouparia · academia · sala</span></td><td class="pp">R$ 3.920</td></tr>
+      <tr class="ptot"><td class="pi">Investimento total</td><td class="pp">R$ 12.270</td></tr>
+    </table>
+  </div>
+
+  <div class="cond">
+    <div><div class="k">Pagamento</div><div class="v">3 parcelas (boleto)<br>30 · 60 · 90 dias</div></div>
+    <div><div class="k">Prazo</div><div class="v">Entrega total<br>em até 60 dias</div></div>
+    <div><div class="k">Execução</div><div class="v">Fracionada,<br>conforme acordo</div></div>
+  </div>
+  <p class="note">Os itens podem ser executados e faturados em etapas, conforme acordo entre as partes.
+  Valores válidos por 15 dias.</p>
+
+  <p class="cta"><span class="gold serif" style="font-size:13pt;">✦</span>
+  &nbsp;<b>Seguimos?</b><br>
+  <span class="muted">Com o aceite, agendamos a execução e organizamos as etapas pela sua agenda. Estou à
+  disposição para alinhar cada detalhe.</span></p>
+  <div class="pfoot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Luciana &amp; Marcelo — Manutenção &amp; acabamentos</span></div>
+</div>
+
+</body>
+</html>

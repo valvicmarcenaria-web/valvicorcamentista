@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size:A4; margin:0; }
+  @font-face{ font-family:"Aurora Valvic"; src:url("aurora-valvic.ttf"); }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  :root{ --mostarda:#E0A521; --ouro:#B0892F; --carvao:#201C18; --creme:#F4ECDD; --ivory:#FBF6EC;
+    --taupe:#8C7E69; --linha:#E5D9BE; --texto:#2A2520; }
+  body{ font-family:"Helvetica Neue",Arial,sans-serif; color:var(--texto); font-size:10pt; line-height:1.5; }
+  .page{ width:210mm; min-height:297mm; padding:18mm 20mm; position:relative; background:#fff; }
+  .serif{ font-family:Georgia,"Times New Roman",serif; font-weight:normal; }
+  .fw{ font-family:"Aurora Valvic"; }
+  .eyebrow{ letter-spacing:4px; font-size:8pt; text-transform:uppercase; color:var(--ouro); }
+  .top{ display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid var(--carvao); padding-bottom:4mm; }
+  .brand{ font-size:18pt; color:var(--carvao); } .brand .st{ font-family:Georgia,serif; color:var(--ouro); margin-right:2mm; }
+  .brand .v{ font-family:"Aurora Valvic"; }
+  .top .r{ text-align:right; font-family:"Courier New",monospace; font-size:8pt; color:var(--taupe); letter-spacing:1px; line-height:1.6; }
+  .head{ margin-top:7mm; display:flex; justify-content:space-between; align-items:flex-end; }
+  .head .t{ font-family:Georgia,serif; font-size:26pt; color:var(--carvao); }
+  .head .s{ font-size:9.5pt; color:var(--taupe); margin-top:1.5mm; }
+  .head .cli{ text-align:right; font-size:9pt; color:var(--taupe); }
+  .head .cli b{ font-family:Georgia,serif; font-size:13pt; color:var(--carvao); display:block; }
+
+  .sec{ font-size:8pt; letter-spacing:2.5px; text-transform:uppercase; color:var(--ouro); margin:9mm 0 1mm; }
+  .item{ display:flex; gap:6mm; padding:4mm 0; border-bottom:1px solid var(--linha); align-items:flex-start; }
+  .item .n{ flex:0 0 42mm; font-family:Georgia,serif; font-size:13pt; color:var(--carvao); }
+  .item .d{ flex:1; font-size:9.3pt; color:#5b5347; line-height:1.5; }
+  .item .d ul{ list-style:none; } .item .d li{ position:relative; padding-left:4mm; }
+  .item .d li:before{ content:"·"; position:absolute; left:0; color:var(--ouro); font-weight:bold; }
+  .item .v{ flex:0 0 26mm; text-align:right; font-family:Georgia,serif; font-size:14pt; color:var(--carvao); white-space:nowrap; }
+
+  .invest{ display:flex; justify-content:space-between; align-items:center; background:var(--carvao); color:#EFE7D6;
+    border-radius:2mm; padding:6mm 8mm; margin-top:6mm; }
+  .invest .l{ font-size:9pt; letter-spacing:2px; text-transform:uppercase; color:var(--mostarda); }
+  .invest .val{ font-family:Georgia,serif; font-size:28pt; color:var(--mostarda); }
+
+  .cols{ display:flex; gap:9mm; margin-top:6mm; }
+  .cols .c{ flex:1; }
+  .pay{ }
+  .pay .row{ display:flex; justify-content:space-between; gap:4mm; padding:2.6mm 0; border-bottom:1px solid #f0eadd; font-size:9pt; }
+  .pay .row .d{ font-family:"Courier New",monospace; font-size:8pt; letter-spacing:.5px; color:var(--ouro); white-space:nowrap; }
+  .pay .row .d.n{ color:var(--taupe); }
+  .cond .cr{ padding:2.6mm 0; border-bottom:1px solid #f0eadd; }
+  .cond .ck{ font-size:8pt; letter-spacing:1.5px; text-transform:uppercase; color:var(--taupe); }
+  .cond .cv{ font-family:Georgia,serif; font-size:12.5pt; color:var(--carvao); margin-top:.5mm; }
+
+  .cta{ margin-top:7mm; border-top:2px solid var(--mostarda); padding-top:4mm; }
+  .cta b{ font-family:Georgia,serif; font-size:13pt; color:var(--carvao); }
+  .cta span{ color:#5b5347; font-size:9.5pt; }
+  .pfoot{ position:absolute; bottom:12mm; left:20mm; right:20mm; font-size:8pt; color:var(--taupe);
+    display:flex; justify-content:space-between; border-top:1px solid var(--linha); padding-top:3mm; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top">
+    <span class="brand"><span class="st">✦</span><span class="v">Valvic</span></span>
+    <span class="r">Proposta · Quarto Tânia<br>Validação para fechamento</span>
+  </div>
+
+  <div class="head">
+    <div>
+      <div class="eyebrow">Marcenaria sob medida</div>
+      <div class="t serif">Quarto Tânia</div>
+      <div class="s">Apto Orlando &amp; Ivone · projeto arq. Ana Maria Castro</div>
+    </div>
+    <div class="cli"><span class="eyebrow">Para</span><b>Tânia</b>Julho de 2026</div>
+  </div>
+
+  <div class="sec">Descrição dos itens</div>
+  <div class="item">
+    <div class="n">Prateleiras</div>
+    <div class="d"><ul>
+      <li>Prateleiras suspensas em MDF Areia (Duratex)</li>
+      <li>50 mm de espessura, com suporte oculto</li>
+      <li>Suportes em serralheria</li>
+    </ul></div>
+    <div class="v">R$ 2.300</div>
+  </div>
+  <div class="item">
+    <div class="n">Painel de cabeceira</div>
+    <div class="d"><ul>
+      <li>Painel em MDF Carvalho Munique, com recuo para iluminação</li>
+      <li>Mesa de cabeceira suspensa: 1 gaveta com corrediça oculta e puxador cava</li>
+      <li>Fita de LED instalada</li>
+    </ul></div>
+    <div class="v">R$ 3.900</div>
+  </div>
+  <div class="item">
+    <div class="n">Cabeceira estofada</div>
+    <div class="d"><ul>
+      <li>Espuma D33 de 45 mm</li>
+      <li>Tecido linho, facto ou bouclé (a definir), com divisão vertical em partes iguais</li>
+    </ul></div>
+    <div class="v">R$ 2.600</div>
+  </div>
+
+  <div class="invest">
+    <div class="l">Investimento total</div>
+    <div class="val serif">R$ 8.800</div>
+  </div>
+
+  <div class="cols">
+    <div class="c pay">
+      <div class="sec" style="margin-top:0;">Formas de pagamento</div>
+      <div class="row"><span>Entrada 30% + saldo em até 10× no cartão</span><span class="d n">—</span></div>
+      <div class="row"><span>Entrada 50% + saldo em até 8× no cartão</span><span class="d">3% desc.</span></div>
+      <div class="row"><span>Entrada 70% + saldo em até 6× no cartão</span><span class="d">5% desc.</span></div>
+      <div class="row"><span>Entrada 70% + saldo via transferência</span><span class="d">7% desc.</span></div>
+    </div>
+    <div class="c cond">
+      <div class="sec" style="margin-top:0;">Condições</div>
+      <div class="cr"><div class="ck">Prazo de entrega</div><div class="cv serif">45 a 60 dias úteis</div></div>
+      <div class="cr"><div class="ck">Garantia</div><div class="cv serif">5 anos</div></div>
+      <div class="cr"><div class="ck">Validade da proposta</div><div class="cv serif">3 dias úteis</div></div>
+    </div>
+  </div>
+
+  <div class="cta"><b>Confere pra mim?</b> &nbsp;<span>Confirmando os itens e a condição, eu já agendo a conferência de
+  medidas e coloco o quarto no cronograma.</span></div>
+
+  <div class="pfoot"><span><span class="fw">Valvic</span> · marcenaria sob medida</span><span>Quarto Tânia — proposta para fechamento</span></div>
+</div>
+</body>
+</html>

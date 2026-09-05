@@ -1,0 +1,184 @@
+{
+ "cliente": "Valdenir & Maria (designer Paula Galante)",
+ "projeto": "Valdenir & Maria — Cabeceira em couro + Lavanderia (Vale dos Cristais)",
+ "versao": "v1",
+ "inv": 20000,
+ "mcAlvo": 40,
+ "_nota": "Valdenir&Maria (Paula Galante). DOIS itens adicionais de projeto: Cabeceira em couro R$13.500 (MC40%) + Lavanderia e apoio R$6.500 (preço fechado pelo fundador). Combinado R$20.000.",
+ "p": {
+  "nf": 5,
+  "parc": 7,
+  "vend": 0,
+  "rt": 10,
+  "vis": 250,
+  "outv": 0,
+  "prog": 0.8,
+  "coord": 1,
+  "marc": 5,
+  "serra": 0.2,
+  "manut": 0.2,
+  "log": 0,
+  "erro": 2
+ },
+ "lib": [
+  [
+   "MDF",
+   [
+    [
+     "mdf branco 15 (estrutura oculta)",
+     260
+    ],
+    [
+     "mdf Gianduia Trama Ultra 15",
+     700
+    ],
+    [
+     "mdf branco 6 (fundo)",
+     190
+    ]
+   ]
+  ],
+  [
+   "Estofaria (m²)",
+   [
+    [
+     "Couro vaqueta La Novità",
+     112
+    ],
+    [
+     "Espuma D33 45mm",
+     90
+    ],
+    [
+     "Manta acrílica",
+     18
+    ]
+   ]
+  ],
+  [
+   "Terceirizado / especiais",
+   [
+    [
+     "Tapeçaria - serviço (estofador)",
+     800
+    ],
+    [
+     "Frete do couro",
+     250
+    ],
+    [
+     "Logística dedicada (leva+busca tapeceiro)",
+     150
+    ],
+    [
+     "Fixação macho-fêmea + parafusos",
+     60
+    ],
+    [
+     "Consumíveis (cola/grampo/embalagem)",
+     50
+    ]
+   ]
+  ],
+  [
+   "Dobradiças",
+   [
+    [
+     "Hettich Sensys",
+     35
+    ]
+   ]
+  ],
+  [
+   "Puxadores",
+   [
+    [
+     "Perfil cava Rometal RM185 (3m)",
+     150
+    ]
+   ]
+  ],
+  [
+   "Cola e fita",
+   [
+    [
+     "Fita de borda cor - mt",
+     3
+    ],
+    [
+     "Colagem - mt máquina",
+     2.5
+    ]
+   ]
+  ],
+  [
+   "Especiais",
+   [
+    [
+     "Consumíveis lavanderia (paraf/embal.)",
+     150
+    ]
+   ]
+  ]
+ ],
+ "ambientes": [
+  {
+   "nome": "Cabeceira em couro (5,5×1,2m · 6 módulos)",
+   "q": {
+    "MDF¦mdf branco 15 (estrutura oculta)": 2,
+    "Estofaria (m²)¦Couro vaqueta La Novità": 10.8,
+    "Estofaria (m²)¦Espuma D33 45mm": 6.6,
+    "Estofaria (m²)¦Manta acrílica": 6.6,
+    "Terceirizado / especiais¦Tapeçaria - serviço (estofador)": 1,
+    "Terceirizado / especiais¦Frete do couro": 1,
+    "Terceirizado / especiais¦Logística dedicada (leva+busca tapeceiro)": 1,
+    "Terceirizado / especiais¦Fixação macho-fêmea + parafusos": 1,
+    "Terceirizado / especiais¦Consumíveis (cola/grampo/embalagem)": 1
+   },
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
+   }
+  },
+  {
+   "nome": "Lavanderia e apoio (2 arm. inf. 3 portas + 1 sup. 2 portas)",
+   "q": {
+    "MDF¦mdf Gianduia Trama Ultra 15": 2,
+    "MDF¦mdf branco 6 (fundo)": 1,
+    "Dobradiças¦Hettich Sensys": 10,
+    "Puxadores¦Perfil cava Rometal RM185 (3m)": 2,
+    "Cola e fita¦Fita de borda cor - mt": 30,
+    "Cola e fita¦Colagem - mt máquina": 30,
+    "Especiais¦Consumíveis lavanderia (paraf/embal.)": 1
+   },
+   "terc": {
+    "vid": 0,
+    "esq": 0,
+    "ser": 0,
+    "pin": 0,
+    "est": 0,
+    "laq": 0,
+    "log": 0
+   }
+  }
+ ],
+ "ativo": 0,
+ "collapsed": {
+  "MDF": true,
+  "Estofaria (m²)": true,
+  "Terceirizado / especiais": true
+ },
+ "diretrizes": "Paula Galante parceira (RT 10% líq). Couro+tapeçaria=terceirizados NOSSOS (coordenados). LED fornecido pelo CLIENTE (especificar na proposta). Couro: 9 m² a forrar × 1,20 perda. Espuma/manta = estimativa de pesquisa, confirmar na compra. Painel reto (sem curva). Macho-fêmea. Conferir medidas no local. Cabeceira e Lavanderia = itens adicionais de projeto (Valdenir&Maria/Paula Galante). Lavanderia: preço fechado R$6.500 (estimativa de material sem medidas).",
+ "rodrigo": "Itens adicionais de projeto. Cabeceira MC 40%. Lavanderia R$6.500 = preço fechado pelo fundador. Combinado ~37%.",
+ "duvidas": [
+  "Espuma D33 45mm + manta = estimativa, confirmar na compra.",
+  "Conferir medidas no local.",
+  "Lavanderia: medidas não fornecidas (material estimado); preço fechado pelo fundador."
+ ],
+ "theme": "light"
+}
