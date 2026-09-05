@@ -15,28 +15,32 @@ Condições herdadas da V1: escada padrão, prazo 45–60 dias úteis, validade 
 dias, garantia Gold 10 anos / Essencial 2 anos.
 """
 import pathlib
-P = pathlib.Path('/home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos')
-CSS = open('/tmp/css_premium.txt', encoding='utf-8').read().split('CSS = """')[1].rsplit('"""',1)[0]
+P = pathlib.Path(__file__).resolve().parent
+CSS = open(P/'css-juliana-premium.css', encoding='utf-8').read()
 
 ITENS = [
  ('Cozinha', 'Coluna de eletros, aéreos e balcões',
   'Coluna com <b>forno e micro-ondas embutidos</b> · vão de geladeira com tamponamento · '
   'balcões inferiores com gavetões · aéreos em três faces · prateleiras flutuantes · '
-  '<b>6 m de LED</b> com sensor · puxador em <b>cava usinada</b> (18 m).', 22700, 20100),
+  '<b>6 m de LED</b> com sensor · puxador em <b>perfil cava Rometal RM195</b>. '
+  'Interno todo em <b>branco</b>.', 23000, 20400),
  ('Cozinha', 'Mesa de refeições <span class="nv">novo</span>',
   'Base em <b>serralheria</b> com tampo em <b>MDF</b>. Item acrescentado nesta versão — '
   'fecha a cozinha como ambiente de refeição, não só de preparo.', 2350, 2350),
  ('Quarto de casal', '',
-  '<b>Cabeceira estofada</b> · painel · duas mesinhas suspensas com 2 gavetas cada · '
-  '<b>porta de passagem em sistema RO82</b> (folha + trilho) · 2 puxadores redondos '
-  'dourados · <b>3 m de LED</b> com sensor.', 19700, 17500),
+  '<b>Cabeceira estofada</b> · painel · duas mesinhas suspensas com duas gavetas cada · '
+  '<b>porta de passagem em sistema RO82 sem freio</b> (folha + trilho) · puxadores '
+  'redondos dourados · <b>3 m de LED</b> com sensor. Interno todo em <b>branco</b>.',
+  19600, 17400),
  ('Closet', 'Versão 2',
-  'Armários piso-teto em <b>21 chapas</b> · <b>50 dobradiças</b> e 18 corrediças · '
-  '<b>10 puxadores redondos dourados</b> · cabideiros e 30 cantoneiras · '
-  '<b>cômoda em laca vermelha com tampo de vidro</b>.', 34304, 28121),
+  'Armários piso-teto com portas até o forro · <b>12 gavetas e sapateiras internas</b> · '
+  'cabideiros · puxador <b>Next Meia Lua 64 mm</b> · '
+  '<b>cômoda de cinco gavetas em laca vermelha, com tampo de vidro</b>. '
+  'Interno todo em <b>branco</b>.', 36700, 31500),
 ]
 BRINDE = ('Lavabo', 'Gabinete suspenso',
-          'Gabinete suspenso amadeirado, com a cuba por conta do cliente.', 2000, 1800)
+          'Gabinete suspenso amadeirado, com o interno em branco e a cuba por '
+          'conta do cliente.', 2000, 1800)
 
 TG = sum(i[3] for i in ITENS)
 TE = sum(i[4] for i in ITENS)
@@ -193,14 +197,15 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       faltava para ela funcionar sozinha, sem depender da sala.</div></div>
 
     <div class="amb4"><div class="hd"><div class="t">Quarto de casal</div><div class="q">com porta de passagem</div></div>
-      <div class="d"><b>Cabeceira estofada</b> e painel · duas mesinhas suspensas de 2 gavetas ·
-      <b>porta de passagem em sistema RO82</b>, folha e trilho · 2 puxadores redondos dourados ·
-      <b>3 m de LED</b> com sensor.</div></div>
+      <div class="d"><b>Cabeceira estofada</b> e painel · duas mesinhas suspensas de duas
+      gavetas · <b>porta de passagem em sistema RO82 sem freio</b>, folha e trilho · puxadores
+      redondos dourados · <b>3 m de LED</b> com sensor. Interno em <b>branco</b>.</div></div>
 
-    <div class="amb4"><div class="hd"><div class="t">Closet · versão 2</div><div class="q">21 chapas</div></div>
-      <div class="d">Armários piso-teto com <b>50 dobradiças</b> e 18 corrediças ·
-      <b>10 puxadores redondos dourados</b> · cabideiros metálicos e 30 cantoneiras ·
-      <b>cômoda em laca vermelha com tampo de vidro</b>, o contraponto de cor do ambiente.</div></div>
+    <div class="amb4"><div class="hd"><div class="t">Closet · versão 2</div><div class="q">com cômoda lacada</div></div>
+      <div class="d">Armários piso-teto com portas até o forro · <b>12 gavetas e sapateiras
+      internas</b> · cabideiros metálicos · puxador <b>Next Meia Lua 64 mm</b> ·
+      <b>cômoda de cinco gavetas em laca vermelha com tampo de vidro</b>, o contraponto de cor
+      do ambiente. Interno em <b>branco</b>.</div></div>
   </div>
 
   <div class="pull" style="margin-top:9mm;">
@@ -257,7 +262,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   <div class="pull" style="margin-top:10mm;">
     <div class="t">Oito anos<br>de diferença.</div>
     <div class="d">Entre as duas linhas há <b>R$ {br(TG-TE)}</b> e <b>oito anos de garantia</b>.
-    Num closet de 50 dobradiças e numa cozinha de 36, a ferragem é o que se aciona milhares de
+    Num closet e numa cozinha inteiros, a ferragem é o que se aciona milhares de
     vezes — <b>é onde o móvel envelhece</b>, e é exatamente o que a linha Gold está comprando.</div>
   </div>
 

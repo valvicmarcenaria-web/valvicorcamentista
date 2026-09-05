@@ -131,3 +131,81 @@ a Gold ganha.
 > somar.
 
 ## Histórico — Fase 3 (V1, 8 ambientes)
+
+
+---
+
+## 🔧 Retificação de 02/09/2026 — o erro da laca e sete ajustes
+
+### ⛔⛔ O erro: a proposta descrevia o que o orçamento não pagava
+
+> **Jonathan:** *"Ponto crítico: você não orçou a laca da cômoda mas descreveu
+> na proposta. Registre esse erro como falha gravíssima. Nunca mais podemos
+> errar isso. O custo desse erro é gigante."*
+
+A proposta v2 dizia **"cômoda em laca vermelha com tampo de vidro"**. O
+orçamento lançou **MDF Vermelho melamínico** (2 chapas de 15 + 1 de 6 =
+R$ 1.300) e `laq = R$ 0` nos oito ambientes, nas duas linhas.
+
+Registrado como **falha gravíssima** em `referencias/validacao-orcamento.md`
+(com a tabela de palavras-gatilho), em `referencias/proposta-comercial.md` e no
+`MOLESKINE.md`. **A regra: se está no texto, tem de estar na conta.**
+
+### O segundo erro: contagem de puxadores
+
+Estavam lançados **10 puxadores no closet inteiro** — e, pelo Jonathan, **só a
+cômoda tem 12**. Com a cômoda passando a cinco gavetas, a conta fica: 5 × 2 na
+cômoda + 25 nas portas do closet = **35 puxadores**.
+
+### Os sete ajustes
+
+| # | O que mudou | Antes | Agora |
+|---|---|---|---|
+| 1 | **Laca da cômoda** | melamínico vermelho R$ 1.300, laca R$ 0 | **MDF cru** R$ 164 + **laca R$ 1.950** (3 m² × R$ 650) |
+| 2 | **Gavetas da cômoda** | 6 | **5** |
+| 3 | **Puxador do closet** | redondo dourado, 10 un × R$ 70 | **Next Meia Lua 64 mm**, 35 un × ★ R$ 35 |
+| 4 | **Puxador da cozinha** | cava usinada na madeira, 18 m × R$ 50 | **Perfil cava Rometal RM195**, 6 barras × R$ 250 |
+| 5 | **Porta de passagem** | RO82 completo R$ 2.000 | **RO82 sem freio** R$ 1.800 |
+| 6 | **Gavetas/sapateiras internas do closet** | 18 corrediças | **12 internas + 5 da cômoda = 17** |
+| 7 | **Descrições** | — | **interno de tudo em branco**; ⛔ **sem quantitativo de ferragem na proposta** |
+
+### O efeito no dinheiro
+
+| | Custo direto (8 amb.) | | Preço v2 (3 amb.) | MC |
+|---|--:|---|--:|--:|
+| **GOLD** antes | 48.640 | | 76.704 | 41,5% |
+| **GOLD** agora | **50.259** | | **79.300** | **40,8%** |
+| **ESSENCIAL** antes | 46.440 | | 65.721 | 37,9% |
+| **ESSENCIAL** agora | **48.139** | | **69.300** | **37,7%** |
+
+Com o total da v2 (incluindo a mesa de refeições de R$ 2.350):
+**Gold R$ 81.650 · Essencial R$ 71.650.** Eram 79.054 / 68.071.
+
+> **Se o preço não subir**, a MC dos oito ambientes cai de 40,8% para **39,5%**
+> no Gold e de 36,7% para **35,1%** no Essencial — o Essencial encosta no piso.
+
+### ★ Preços adotados nesta rodada
+
+| Item | Adotado | Origem |
+|---|--:|---|
+| **Laca / pintura** | R$ 650/m² | linha da base da casa, que a biblioteca deste job não tinha |
+| **MDF cru 15 / 6 mm** | R$ 82 / R$ 62 | idem |
+| **Puxador Next Meia Lua 64 mm** | ★ **R$ 35** | **não existe na base nem na biblioteca. CONFERIR o preço de compra** |
+| RO82 sem freio (kit completo) | R$ 1.800 | R$ 2.000 do kit menos os R$ 200 entre RO82 e RO82 Top |
+| Área lacada da cômoda | 3,0 m² | cinco frentes + duas laterais + tampo. **CONFERIR** |
+
+### Correção de infraestrutura
+
+O `build-juliana-v2.py` lia o CSS de `/tmp/css_premium.txt`, um arquivo
+temporário que não sobrevive à sessão — **o build estava quebrado**. O CSS foi
+recuperado do próprio HTML entregue e passou a morar em
+`projetos/css-juliana-premium.css`.
+
+### Em aberto
+
+1. **Preço de compra do Next Meia Lua 64 mm** — é a única adoção ★ sem
+   referência.
+2. **Os 25 puxadores das portas do closet** são estimativa por contagem de
+   dobradiça (50 ÷ 2). Conferir com o desenho.
+3. **Subir o preço ou aceitar a MC menor?** Os valores acima já sobem;
+   se preferir segurar o preço, a MC cai para 39,5 / 35,1.

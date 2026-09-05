@@ -246,3 +246,80 @@ A Valvic **não terceiriza a montagem**, e isso é argumento de venda: quem
 instala é quem produziu. Toda proposta tem de dizer isso na lista do que está
 dentro do valor. Tirar a linha da planilha e esquecer de escrever no papel é
 entregar de graça um diferencial que a concorrência não tem.
+
+---
+
+# ⛔⛔ FALHA GRAVÍSSIMA — DESCREVER NA PROPOSTA O QUE NÃO FOI ORÇADO
+
+**[Jonathan 02/09/2026, sobre o orçamento da Juliana]**
+
+> *"Ponto crítico: você não orçou a laca da cômoda mas descreveu na proposta.
+> Registre esse erro como falha gravíssima. Nunca mais podemos errar isso.
+> O custo desse erro é gigante."*
+
+## O que aconteceu
+
+A proposta v2 da Juliana descreve, com todas as letras:
+
+> *"cômoda em **laca vermelha** com tampo de vidro"*
+
+E o orçamento lançou:
+
+| O que a proposta promete | O que o orçamento pagou |
+|---|---|
+| Cômoda em **laca vermelha** | **MDF Vermelho melamínico** — 2 chapas de 15 mm + 1 de 6 mm = R$ 1.300 |
+| — | `terc.laq` = **R$ 0** em **todos** os 8 ambientes, nas **duas** linhas |
+
+**Laca e melamínico não são o mesmo produto.** Laca é MDF **cru** + pintura em
+cabine, a R$ 650/m² de peça lisa na base da casa. Melamínico já vem revestido de
+fábrica. A conta correta da cômoda troca a chapa (cor → cru) e **soma a laca**.
+
+## Por que o custo do erro é gigante
+
+O erro não é a diferença de preço. É que **a proposta é o contrato**. Assinada,
+a Valvic deve uma cômoda lacada e tem no orçamento uma cômoda melamínica. As
+saídas são todas ruins:
+
+1. **Executar laca e comer o prejuízo** — sai do bolso, e numa cômoda de porte
+   médio é da ordem de **R$ 1.500 a 2.000** só nesta peça.
+2. **Executar melamínico** — entrega diferente do que foi escrito. É quebra de
+   contrato e destrói a confiança, que custa muito mais que a laca.
+3. **Renegociar depois de assinado** — a pior das três: o cliente já decidiu com
+   base num número, e a casa aparece pedindo mais.
+
+E é um erro que **escala silenciosamente**: se acontecer numa casa inteira com
+laca em vários ambientes, são dezenas de milhares.
+
+## ⛔ A REGRA — o auditor de TODA proposta passa a checar isso
+
+> **Toda palavra de acabamento, ferragem ou material escrita na proposta tem de
+> ter uma linha correspondente no orçamento. Se está no texto, tem de estar na
+> conta. Se não está na conta, não pode estar no texto.**
+
+Palavras que **obrigam** linha no orçamento — nunca escrever sem conferir:
+
+| Palavra na proposta | Linha que TEM de existir |
+|---|---|
+| **laca**, lacado, pintado, laqueado | `Laca / Pintura` R$ 650/m² **e** chapa em **MDF cru**, não melamínico |
+| **espelho**, espelhado | `Espelho prata/bronze` por m² |
+| **vidro**, cristaleira, reflecta | `Vidro`/`Porta de vidro` por m² ou folha |
+| **estofado**, capitonê | `Estofado (terceiro)` |
+| marca de ferragem (**Blum**, Hettich, Hardt, Rometal, Häfele) | a linha daquela marca, não a genérica |
+| **LED**, iluminação, fita | `LED fita + perfil` por metro **e** driver/sensor |
+| **inox**, alumínio, latão, dourado | o perfil ou o puxador daquele acabamento |
+| **serralheria**, estrutura metálica | `Estrutura de serralheria` |
+| **mármore**, granito, pedra | ou está fora do escopo **e a proposta diz isso** |
+| **ripado**, cava usinada, meia esquadria | usinagem por metro |
+
+### Como conferir, na prática
+
+O caminho que pegou este erro é o certo e passa a ser obrigatório:
+**ler a descrição da proposta palavra por palavra contra a lista de materiais do
+orçamento** — não contra a memória do que foi levantado. O auditor de cada
+`build-*.py` tem de falhar quando uma dessas palavras aparecer no PDF sem a
+linha correspondente no motor.
+
+> Este é o gêmeo da regra de 17/08 sobre montagem: lá o risco era **tirar da
+> proposta** algo que a casa entrega. Aqui é **colocar na proposta** algo que a
+> casa não orçou. Os dois erros nascem do mesmo lugar — texto e conta escritos
+> em momentos diferentes, sem ninguém cruzar os dois no fim.

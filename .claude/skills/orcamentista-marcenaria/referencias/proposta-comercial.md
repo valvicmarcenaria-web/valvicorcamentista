@@ -198,3 +198,21 @@ corrediça:
 
 Aplicado em `build-cozinha-elena-v4.py`. As propostas anteriores que imprimiram
 **10 anos** estão desatualizadas nesse ponto.
+
+
+---
+
+## ⛔⛔ Se está no TEXTO, tem de estar na CONTA [Jonathan 02/09/2026]
+
+Regra completa em `validacao-orcamento.md`, seção **FALHA GRAVÍSSIMA**. O
+resumo, porque é aqui que o erro nasce:
+
+> A proposta da Juliana descreveu *"cômoda em **laca vermelha**"* e o orçamento
+> pagou **melamínico vermelho**, com `laq = R$ 0`. A proposta é o contrato:
+> assinada, a casa deve a laca e não tem o dinheiro dela na conta.
+
+**Antes de fechar qualquer proposta**, ler a descrição de cada item **palavra
+por palavra** contra a lista de materiais do motor — não contra a memória do
+levantamento. Palavras que obrigam linha no orçamento: **laca · espelho · vidro
+· estofado · marca de ferragem · LED · inox/dourado · serralheria · pedra ·
+ripado · cava usinada**.

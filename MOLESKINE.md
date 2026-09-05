@@ -220,6 +220,36 @@ fixo no painel lateral: hero de valor total, ticket, nº fechados, lista enxuta 
 **Gold R$ 55.800 (MC 42%) · Essencial R$ 49.200 (MC 37%).** Registro: `projetos/2026-kairon-juliana.md`.
 Falta: definir pagamento/validade e montar a proposta 2 linhas.
 
+### ⛔⛔ [2026-09-02] FALHA GRAVÍSSIMA — descrever na proposta o que não foi orçado
+
+**Jonathan, sobre o orçamento da Juliana:** *"Ponto crítico: você não orçou a
+laca da cômoda mas descreveu na proposta. Registre esse erro como falha
+gravíssima. Nunca mais podemos errar isso. O custo desse erro é gigante."*
+
+A proposta v2 da Juliana diz **"cômoda em laca vermelha com tampo de vidro"**.
+O orçamento lançou **MDF Vermelho melamínico** e `laq = R$ 0` em todos os 8
+ambientes, nas duas linhas. Laca é MDF **cru** + pintura em cabine a R$ 650/m²;
+melamínico já vem revestido. Não são o mesmo produto.
+
+**Por que o custo é gigante:** a proposta é o contrato. Assinada, a Valvic deve
+uma cômoda lacada e tem no orçamento uma melamínica. Ou come o prejuízo
+(R$ 1.500–2.000 só nesta peça), ou entrega diferente do escrito, ou renegocia
+depois de assinado — a pior das três. Numa casa com laca em vários ambientes,
+escala para dezenas de milhares.
+
+**A regra, registrada em `referencias/validacao-orcamento.md`:** toda palavra de
+acabamento, ferragem ou material escrita na proposta tem de ter linha
+correspondente no orçamento. **Se está no texto, tem de estar na conta.** Há
+uma tabela de palavras-gatilho lá — laca, espelho, vidro, estofado, marca de
+ferragem, LED, inox, serralheria, pedra, ripado — e o auditor de cada
+`build-*.py` passa a falhar quando uma delas aparecer no PDF sem a linha no
+motor.
+
+É o gêmeo da regra de 17/08 sobre montagem: lá o risco era **tirar da proposta**
+algo que a casa entrega; aqui é **colocar na proposta** algo que a casa não
+orçou. Mesma origem — texto e conta escritos em momentos diferentes, sem
+ninguém cruzar os dois no fim.
+
 ## Recados rápidos
 
 *(notas passageiras — podem ser apagadas após lidas)*
