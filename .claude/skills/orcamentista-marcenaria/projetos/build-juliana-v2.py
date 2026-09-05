@@ -23,7 +23,7 @@ ITENS = [
   'Coluna com <b>forno e micro-ondas embutidos</b> · vão de geladeira com tamponamento · '
   'balcões inferiores com gavetões · aéreos em três faces · prateleiras flutuantes · '
   '<b>6 m de LED</b> com sensor · puxador em <b>perfil cava Rometal RM195</b>. '
-  'Interno todo em <b>branco</b>.', 22700, 20100),
+  'Interno todo em <b>branco</b>.', 21900, 19300),
  ('Cozinha', 'Mesa de refeições <span class="nv">novo</span>',
   'Base em <b>serralheria</b> com tampo em <b>MDF</b>. Item acrescentado nesta versão — '
   'fecha a cozinha como ambiente de refeição, não só de preparo.', 2350, 2350),
@@ -31,12 +31,12 @@ ITENS = [
   '<b>Cabeceira estofada</b> · painel · duas mesinhas suspensas com duas gavetas cada · '
   '<b>porta de passagem em sistema RO82 sem freio</b> (folha + trilho) · puxadores '
   'redondos dourados · <b>3 m de LED</b> com sensor. Interno todo em <b>branco</b>.',
-  19700, 17500),
+  18700, 16500),
  ('Closet', 'Versão 2',
-  'Armários piso-teto com portas até o forro · <b>12 gavetas e sapateiras internas</b> · '
+  'Armários piso-teto com portas até o forro · <b>12 gavetas/sapateiras internas</b> · '
   'cabideiros · puxador <b>Next Meia Lua 64 mm</b> · '
-  '<b>cômoda de cinco gavetas em laca vermelha, com tampo de vidro</b>. '
-  'Interno todo em <b>branco</b>.', 33304, 27121),
+  '<b>cômoda de cinco gavetas em MDF melamínico vermelho, com tampo de vidro</b>. '
+  'Interno todo em <b>branco</b>.', 31304, 25121),
 ]
 BRINDE = ('Lavabo', 'Gabinete suspenso',
           'Gabinete suspenso amadeirado, com o interno em branco e a cuba por '
@@ -201,10 +201,10 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       gavetas · <b>porta de passagem em sistema RO82 sem freio</b>, folha e trilho · puxadores
       redondos dourados · <b>3 m de LED</b> com sensor. Interno em <b>branco</b>.</div></div>
 
-    <div class="amb4"><div class="hd"><div class="t">Closet · versão 2</div><div class="q">com cômoda lacada</div></div>
-      <div class="d">Armários piso-teto com portas até o forro · <b>12 gavetas e sapateiras
+    <div class="amb4"><div class="hd"><div class="t">Closet · versão 2</div><div class="q">com cômoda vermelha</div></div>
+      <div class="d">Armários piso-teto com portas até o forro · <b>12 gavetas/sapateiras
       internas</b> · cabideiros metálicos · puxador <b>Next Meia Lua 64 mm</b> ·
-      <b>cômoda de cinco gavetas em laca vermelha com tampo de vidro</b>, o contraponto de cor
+      <b>cômoda de cinco gavetas em MDF melamínico vermelho com tampo de vidro</b>, o contraponto de cor
       do ambiente. Interno em <b>branco</b>.</div></div>
   </div>
 

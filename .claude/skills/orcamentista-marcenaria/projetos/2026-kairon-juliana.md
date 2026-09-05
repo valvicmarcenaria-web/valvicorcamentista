@@ -289,3 +289,67 @@ caminho para consertar a margem da Essencial sem tirar nada do cliente.
    referência (adotei R$ 35).
 3. Os **25 puxadores das portas do closet** seguem como estimativa por contagem
    de dobradiça.
+
+
+---
+
+## Rodada de 02/09 (3ª parte) — mais R$ 3.800 de corte e a laca desfeita
+
+> *"Tirar 1.000 no quarto de casal. Tirar mais 2 mil do closet trocando a laca
+> por MDF melamínico. Na especificação de gavetas e sapateiras, colocar uma
+> barra para deixar claro que é um total de 12 itens deslizantes e não 12 de
+> cada. Tirar 800 da cozinha pela troca dos puxadores."*
+
+### A laca foi desfeita — e desta vez texto e conta batem
+
+A cômoda volta ao **MDF melamínico vermelho**. Isso **não repete o erro de
+02/09**: lá a proposta prometia laca e a conta pagava melamínico. Agora **as
+duas dizem melamínico**. O `laq` voltou a zero *e* a descrição do PDF foi
+reescrita — o auditor confere as duas pontas.
+
+### Os quatro cortes
+
+| Item | Antes | Corte | Agora |
+|---|--:|--:|--:|
+| Cozinha (troca dos puxadores) | 22.700 / 20.100 | **−800** | 21.900 / 19.300 |
+| Quarto de casal | 19.700 / 17.500 | **−1.000** | 18.700 / 16.500 |
+| Closet (laca → melamínico) | 33.304 / 27.121 | **−2.000** | 31.304 / 25.121 |
+| **TOTAL v2** | 79.054 / 68.071 | **−4.800** | **74.254 / 63.271** |
+| **TOTAL v3** (Telescópica) | — | — | **74.254 / 61.950** |
+
+*(o corte de R$ 1.000 do closet da rodada anterior está dentro dos −4.800)*
+
+### ⚠⚠ As duas linhas de baixo furaram o piso
+
+| Linha | Cozinha | Quarto | Closet | **3 ambientes** |
+|---|--:|--:|--:|--:|
+| **GOLD** | 36,0% | 41,2% | 37,2% | **37,9%** |
+| **ESSENCIAL** | **30,1%** | 38,0% | 32,4% | **33,2%** ⚠ |
+| **TELESCÓPICA** | 33,0% | 31,8% | 34,7% | **33,5%** ⚠ |
+
+**Essencial a 33,2% e Telescópica a 33,5%** — as duas abaixo do piso de 35% da
+casa. Só o Gold segue saudável, a 37,9%.
+
+### O corte da cozinha anda contra o custo
+
+O puxador mudou de **cava usinada na madeira** (18 m × R$ 50 = R$ 900) para
+**perfil cava Rometal RM195** (6 barras × R$ 250 = **R$ 1.500**). O custo
+**subiu R$ 600** e o preço **caiu R$ 800** — um giro de **R$ 1.400** de margem
+só nesse item. É por isso que a cozinha da Essencial foi de 32,0% para
+**30,1%**, a pior célula da tabela.
+
+> Se a intenção era repassar uma economia do puxador, ela não existe: o perfil
+> Rometal é mais caro que a cava usinada. O corte de R$ 800 é decisão de preço,
+> não devolução de custo.
+
+### Detalhe de texto
+
+"12 gavetas e sapateiras internas" virou **"12 gavetas/sapateiras internas"** —
+a barra deixa claro que é o total de itens deslizantes, não 12 de cada.
+
+### Em aberto
+
+1. **Essencial e Telescópica furaram o piso de 35%.** As saídas: segurar o
+   preço e aceitar a exceção, ou devolver parte dos cortes.
+2. A cozinha da Essencial a **30,1%** é o pior ponto do orçamento inteiro.
+3. Preço de compra do **Next Meia Lua 64 mm** segue sem referência.

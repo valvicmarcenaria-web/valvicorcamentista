@@ -741,8 +741,9 @@
     "Limpeza / embalagem¦Strech": 4,
     "Limpeza / embalagem¦Cantoneira": 30,
     "Limpeza / embalagem¦Embalagem": 2,
-    "MDF¦mdf cru 15": 2,
-    "Puxadores¦Puxador Next Meia Lua 64mm": 35
+    "Puxadores¦Puxador Next Meia Lua 64mm": 35,
+    "MDF¦MDF Vermelho melamínico 15mm": 2,
+    "MDF¦MDF Vermelho melamínico 6mm": 1
    },
    "terc": {
     "vid": 0,
@@ -750,7 +751,7 @@
     "ser": 0,
     "pin": 0,
     "est": 0,
-    "laq": 1950.0,
+    "laq": 0,
     "log": 350
    }
   },
