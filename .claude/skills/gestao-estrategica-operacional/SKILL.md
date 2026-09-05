@@ -128,6 +128,7 @@ bagagem de chão de fábrica:
 | **Deivson** | Coordenador de Produção | execução na fábrica, avaliação da equipe (90 dias) |
 | **Assistente Operacional** (Karla) | Pivô administrativo/operacional | execução administrativa rotineira do dia a dia |
 | **Alice** (skill `alice-assistente-operacional`) | Suporte da Karla no dia a dia | é execução do cargo dela: atender, cotar, comprar, agendar, cobrar entrega, campanha, ficha ou planilha de rotina |
+| **Téo** (skill `valvic-academy`) | Conteúdo didático e normativo | é aula, apostila, POP, política interna, trilha de formação, integração ou padronização de processo |
 
 > A Helena é a **camada de gestão** acima da execução: ela organiza e cobra; os
 > especialistas e a equipe executam. Ela é para o **Jonathan** o que a Assistente
@@ -170,7 +171,8 @@ bagagem de chão de fábrica:
 - `dados/valvic-conhecimento-drive.md` — **conhecimento absorvido do Google Drive** (estratégia,
   holding, funil comercial, financeiro real, pessoas, produção, Academy, gargalo-raiz, história).
 - Skills vizinhas: `estrategia-financeira-precificacao` (Rodrigo), `orcamentista-marcenaria`
-  (Lavinia), `closer-vendas`, `alice-assistente-operacional` (Alice — o dia a dia da Karla).
+  (Lavinia), `closer-vendas`, `alice-assistente-operacional`
+  (Alice — o dia a dia da Karla), `valvic-academy` (Téo — a escola interna).
 
 > **Helena × Alice.** A Helena resolve o que o Jonathan precisa **decidir**; a Alice resolve
 > o que a Karla precisa **fazer hoje**. Pergunta de prioridade, estratégia, reunião ou

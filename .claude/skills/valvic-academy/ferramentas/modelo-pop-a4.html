@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Modelo de POP — Valvic</title>
+<!--
+  MODELO DE POP (Procedimento Operacional Padrão) DA VALVIC
+
+   1. Copie para painel/pop-<assunto>.html
+   2. Preencha na ordem: identificação · quando se aplica · quem executa ·
+      o que precisa · passo a passo · pontos de conferência · se der errado · registro
+   3. O teste do bom POP: alguém que nunca fez consegue executar lendo?
+      E se der errado no meio, o documento diz o que fazer?
+   4. Gere: python3 ferramentas/gerar-pdf.py painel/arquivo.html
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0E2038;--navy2:#16314F;--gold:#C2A05A;--goldsoft:#d8bd80;
+--goldbg:#F6EDD6;--ink:#1b2733;--muted:#6c7785;--linha:#dfe4ea;
+--ok:#2F7D4F;--red:#B0413F;--blue:#2F5D8C}
+@page{size:A4 portrait;margin:0}
+*{box-sizing:border-box}
+body{margin:0;background:#8a8f96;font-family:'Inter',system-ui,sans-serif;color:var(--ink)}
+.sheet{width:210mm;height:297mm;margin:0 auto;background:#fff;padding:13mm 14mm;
+  display:flex;flex-direction:column;page-break-after:always;overflow:hidden}
+.sheet:last-child{page-break-after:auto}
+@media print{body{background:#fff}.sheet{margin:0}}
+
+.topo{display:flex;justify-content:space-between;align-items:flex-end;
+  border-bottom:2px solid var(--navy);padding-bottom:5px;margin-bottom:8px}
+.marca{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;
+  color:var(--navy);line-height:1}
+.marca small{display:block;font-family:'Inter',sans-serif;font-size:7.5px;font-weight:600;
+  letter-spacing:2.2px;text-transform:uppercase;color:var(--gold);margin-top:2px}
+.doc{text-align:right}
+.doc .tipo{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gold);
+  letter-spacing:2px}
+.doc h1{margin:1px 0 0;font-family:'Cormorant Garamond',serif;font-size:20px;
+  font-weight:600;color:var(--navy)}
+
+.ident{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--linha);
+  border-radius:3px;overflow:hidden;margin-bottom:4mm}
+.ident div{padding:2mm 3mm;border-right:1px solid var(--linha)}
+.ident div:last-child{border-right:0}
+.ident .r{font-size:7px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
+.ident .v{font-size:10px;font-weight:600;color:var(--navy2);margin-top:.5mm}
+
+.faixa{background:var(--navy);color:var(--goldsoft);font-size:8.5px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;padding:1.6mm 3mm;margin:4mm 0 2.5mm;
+  border-radius:2px}
+.faixa:first-of-type{margin-top:0}
+
+p{font-size:10.5px;line-height:1.5;margin:0 0 2.5mm}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.cx{border:1px solid var(--linha);border-left:3px solid var(--gold);border-radius:3px;
+  padding:3mm 4mm}
+.cx h4{margin:0 0 1.5mm;font-size:10px;color:var(--navy);font-weight:700}
+.cx ul{margin:0;padding-left:4.5mm;font-size:10px;line-height:1.5}
+
+/* passo a passo */
+ol.passos{counter-reset:p;list-style:none;margin:0;padding:0}
+ol.passos li{counter-increment:p;position:relative;padding:2mm 0 2mm 11mm;
+  border-bottom:1px solid var(--linha);font-size:10.5px;line-height:1.5}
+ol.passos li::before{content:counter(p);position:absolute;left:0;top:2mm;width:7mm;
+  height:7mm;background:var(--navy);color:var(--goldsoft);border-radius:50%;
+  font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
+ol.passos li b{color:var(--navy2)}
+
+table{width:100%;border-collapse:collapse;font-size:9.5px}
+th{background:var(--navy2);color:var(--goldsoft);font-size:8px;font-weight:600;
+  letter-spacing:.8px;text-transform:uppercase;padding:2mm;text-align:left}
+td{border-bottom:1px solid var(--linha);padding:2mm;vertical-align:top}
+tr:nth-child(even) td{background:#f7f9fb}
+
+.confere{background:var(--goldbg);border-left:3px solid var(--gold);border-radius:2px;
+  padding:3mm 4mm;font-size:10px;line-height:1.5}
+.erro{background:#fbf3f3;border-left:3px solid var(--red);border-radius:2px;
+  padding:3mm 4mm;font-size:10px;line-height:1.5}
+
+.marcar{display:inline-block;width:3.5mm;height:3.5mm;border:.4mm solid var(--navy);
+  border-radius:.6mm;vertical-align:-.5mm}
+
+.assina{display:grid;grid-template-columns:1fr 1fr;gap:14mm;margin-top:auto;padding-top:6mm}
+.assina div{border-top:1px solid var(--ink);padding-top:1.5mm;font-size:8.5px;color:var(--muted)}
+
+.rodape{margin-top:4mm;border-top:1px solid var(--linha);padding-top:4px;
+  display:flex;justify-content:space-between;font-size:7.5px;color:var(--muted);
+  letter-spacing:.5px;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <div class="topo">
+    <div class="marca">valvic<small>Marcenaria</small></div>
+    <div class="doc">
+      <div class="tipo">POP · PROCEDIMENTO OPERACIONAL PADRÃO</div>
+      <h1>Nome do procedimento</h1>
+    </div>
+  </div>
+
+  <div class="ident">
+    <div><div class="r">Código</div><div class="v">POP-00</div></div>
+    <div><div class="r">Versão</div><div class="v">1 · 09/2026</div></div>
+    <div><div class="r">Quem executa</div><div class="v">Cargo</div></div>
+    <div><div class="r">Aprovado por</div><div class="v">Nome</div></div>
+  </div>
+
+  <div class="duo">
+    <div class="cx">
+      <h4>Quando se aplica</h4>
+      <p style="font-size:10px;margin:0">A situação exata que dispara este procedimento.
+      <b>Não se aplica a:</b> a situação parecida que fica de fora.</p>
+    </div>
+    <div class="cx">
+      <h4>O que precisa antes de começar</h4>
+      <ul><li>Material</li><li>Ferramenta</li><li>Documento ou informação</li></ul>
+    </div>
+  </div>
+
+  <div class="faixa">Passo a passo</div>
+  <ol class="passos">
+    <li><b>Ação no imperativo.</b> Uma ação por passo, com o número que importa aqui dentro
+    — não numa observação lá embaixo.</li>
+    <li><b>Próxima ação.</b> Frase de uma ou duas linhas, no máximo.</li>
+    <li><b>Ação com critério.</b> Quando o passo exige julgamento, diga o critério.</li>
+  </ol>
+
+  <div class="faixa">Pontos de conferência</div>
+  <table>
+    <tr><th style="width:8mm">✓</th><th>O que se confere</th><th style="width:70mm">Critério de "está certo"</th></tr>
+    <tr><td><span class="marcar"></span></td><td>O ponto de parada</td>
+        <td>O critério observável — o que a pessoa vê, sente ou mede</td></tr>
+    <tr><td><span class="marcar"></span></td><td>Outro ponto</td>
+        <td>Outro critério, também observável</td></tr>
+  </table>
+
+  <div class="faixa">Se der errado</div>
+  <div class="erro">
+    <b>Desvio mais provável →</b> o que fazer, e <b>quem acionar</b>.<br>
+    <b>Segundo desvio →</b> o que fazer.<br>
+    Na dúvida, <b>pare e chame</b> — improviso nesta etapa custa mais que a espera.
+  </div>
+
+  <div class="faixa">Registro</div>
+  <div class="confere">
+    O que fica escrito depois de executado, em qual ficha, e onde essa ficha é guardada.
+  </div>
+
+  <div class="assina">
+    <div>Executado por · data</div>
+    <div>Conferido por · data</div>
+  </div>
+
+  <div class="rodape">
+    <span>Valvic Marcenaria · POP-00 · versão 1</span>
+    <span>Página 1</span>
+  </div>
+</div>
+
+</body>
+</html>

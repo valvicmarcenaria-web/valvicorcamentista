@@ -15,6 +15,7 @@ DEST="$HOME/.claude/skills"
 SRC="$(cd "$(dirname "$0")" && pwd)/.claude/skills"
 SKILLS=(
   "alice-assistente-operacional"        # Alice — o dia a dia da Karla
+  "valvic-academy"                      # Téo — conteúdo didático, POPs e políticas
   "gestao-estrategica-operacional"      # Helena — gestão e estratégia
   "orcamentista-marcenaria"             # Lavinia — orçamento
   "estrategia-financeira-precificacao"  # Rodrigo — finanças e preço

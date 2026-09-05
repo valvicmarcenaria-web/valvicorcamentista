@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Modelo de aula — Valvic Academy</title>
+<!--
+  MODELO DE AULA / APOSTILA DA VALVIC ACADEMY
+
+   1. Copie para painel/academy-modulo-NN-assunto.html
+   2. Uma <div class="sheet"> = uma folha A4. A primeira é a capa do módulo.
+   3. Siga a estrutura de 7 blocos (referencias/metodo-didatico.md):
+      por que importa · o que vai saber fazer · conteúdo · na prática ·
+      erro comum · como conferir · exercício
+   4. Gere: python3 ferramentas/gerar-pdf.py painel/arquivo.html
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0E2038;--navy2:#16314F;--gold:#C2A05A;--goldsoft:#d8bd80;
+--goldbg:#F6EDD6;--ink:#1b2733;--muted:#6c7785;--linha:#dfe4ea;
+--ok:#2F7D4F;--red:#B0413F;--blue:#2F5D8C}
+@page{size:A4 portrait;margin:0}
+*{box-sizing:border-box}
+body{margin:0;background:#8a8f96;font-family:'Inter',system-ui,sans-serif;color:var(--ink)}
+.sheet{width:210mm;height:297mm;margin:0 auto;background:#fff;padding:14mm 15mm;
+  display:flex;flex-direction:column;page-break-after:always;overflow:hidden}
+.sheet:last-child{page-break-after:auto}
+@media print{body{background:#fff}.sheet{margin:0}}
+
+/* ---------- capa do módulo ---------- */
+.capa{background:var(--navy);color:#fff;justify-content:center;padding:22mm 18mm}
+.capa .aca{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
+.capa .mod{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--goldsoft);
+  margin-top:16mm;letter-spacing:2px}
+.capa h1{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:600;
+  margin:2mm 0 0;line-height:1.05}
+.capa .sub{font-size:12px;color:#b9c3cf;margin-top:4mm;max-width:120mm;line-height:1.5}
+.capa .quem{margin-top:auto;border-top:1px solid rgba(194,160,90,.4);padding-top:5mm;
+  font-size:9.5px;color:#b9c3cf}
+.capa .quem b{color:var(--goldsoft)}
+
+/* ---------- cabeçalho de página interna ---------- */
+.topo{display:flex;justify-content:space-between;align-items:flex-end;
+  border-bottom:2px solid var(--navy);padding-bottom:5px;margin-bottom:9px}
+.marca{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;
+  color:var(--navy);line-height:1}
+.marca small{display:block;font-family:'Inter',sans-serif;font-size:7.5px;font-weight:600;
+  letter-spacing:2.2px;text-transform:uppercase;color:var(--gold);margin-top:2px}
+.topo .ctx{text-align:right;font-size:8.5px;color:var(--muted);letter-spacing:.4px}
+
+/* ---------- blocos de conteúdo ---------- */
+h2{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--navy);
+  margin:0 0 2mm;font-weight:600}
+h3{font-size:11.5px;color:var(--navy2);margin:5mm 0 1.5mm;font-weight:700}
+p{font-size:10.5px;line-height:1.55;margin:0 0 2.5mm}
+ul,ol{font-size:10.5px;line-height:1.55;margin:0 0 3mm;padding-left:5mm}
+li{margin-bottom:1mm}
+b,strong{color:var(--navy2)}
+
+.porque{background:var(--navy);color:#fff;border-radius:3px;padding:4mm 5mm;margin-bottom:4mm}
+.porque .r{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--goldsoft)}
+.porque p{margin:1.5mm 0 0;font-size:11.5px;line-height:1.5;color:#eef2f6}
+
+.objetivo{border:1px solid var(--gold);border-radius:3px;padding:4mm 5mm;margin-bottom:5mm;
+  background:#fffdf8}
+.objetivo .r{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);
+  font-weight:700}
+.objetivo ul{margin:2mm 0 0;font-size:10.5px}
+
+.pratica,.erro,.confere{border-radius:3px;padding:4mm 5mm;margin:4mm 0}
+.pratica{background:#f4f8f4;border-left:3px solid var(--ok)}
+.erro{background:#fbf3f3;border-left:3px solid var(--red)}
+.confere{background:var(--goldbg);border-left:3px solid var(--gold)}
+.pratica .r,.erro .r,.confere .r{font-size:8px;letter-spacing:2px;text-transform:uppercase;
+  font-weight:700;margin-bottom:1.5mm}
+.pratica .r{color:var(--ok)} .erro .r{color:var(--red)} .confere .r{color:#8a6d3b}
+.pratica p,.erro p,.confere p,.pratica li,.erro li,.confere li{font-size:10px}
+
+table{width:100%;border-collapse:collapse;font-size:9.5px;margin:3mm 0}
+th{background:var(--navy2);color:var(--goldsoft);font-size:8px;font-weight:600;
+  letter-spacing:.8px;text-transform:uppercase;padding:2mm;text-align:left}
+td{border-bottom:1px solid var(--linha);padding:2mm;vertical-align:top}
+tr:nth-child(even) td{background:#f7f9fb}
+
+.termo{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--navy2);
+  background:#f2f4f7;padding:.5mm 1.5mm;border-radius:2px}
+
+.exercicio{border:1.5px dashed var(--gold);border-radius:3px;padding:4mm 5mm;margin-top:auto}
+.exercicio .r{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);
+  font-weight:700}
+.exercicio p{margin:1.5mm 0 0;font-size:10.5px}
+.linhas{margin-top:2mm}
+.linhas div{border-bottom:1px solid var(--linha);height:6mm}
+
+.rodape{margin-top:auto;border-top:1px solid var(--linha);padding-top:4px;
+  display:flex;justify-content:space-between;font-size:7.5px;color:var(--muted);
+  letter-spacing:.5px;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<!-- ══════════ CAPA DO MÓDULO ══════════ -->
+<div class="sheet capa">
+  <div class="aca">Valvic Academy</div>
+  <div class="mod">MÓDULO 00</div>
+  <h1>Título do<br>módulo</h1>
+  <div class="sub">Uma linha que diz, sem enfeite, o que a pessoa vai saber fazer depois
+  de ler isto.</div>
+  <div class="quem">
+    <b>Para quem:</b> ajudante e marceneiro &nbsp;·&nbsp;
+    <b>Tempo:</b> 20 minutos &nbsp;·&nbsp;
+    <b>Onde se aplica:</b> fábrica<br>
+    <b>Versão</b> 1 · Setembro/2026
+  </div>
+</div>
+
+<!-- ══════════ PÁGINA DE CONTEÚDO ══════════ -->
+<div class="sheet">
+  <div class="topo">
+    <div class="marca">valvic<small>Academy</small></div>
+    <div class="ctx">Módulo 00 · Título do módulo</div>
+  </div>
+
+  <div class="porque">
+    <div class="r">Por que isto importa</div>
+    <p>O custo do erro, em uma frase — em dinheiro, em tempo ou em obra parada.</p>
+  </div>
+
+  <div class="objetivo">
+    <div class="r">Ao final você vai saber</div>
+    <ul>
+      <li>Verbo de ação — identificar, escolher, montar, conferir</li>
+      <li>Outro objetivo, também em verbo de ação</li>
+    </ul>
+  </div>
+
+  <h2>O conteúdo</h2>
+  <p>Um conceito por bloco. Frase curta. Começa pelo concreto — a peça, o caso, o erro — e
+  a regra vem como conclusão.</p>
+
+  <h3>Subtítulo do bloco</h3>
+  <p>Quando aparecer um termo da fábrica pela primeira vez, marque assim:
+  <span class="termo">filetagem</span> — e explique em seguida, uma vez só.</p>
+
+  <div class="pratica">
+    <div class="r">Na prática, aqui</div>
+    <p>Como se faz na Valvic, passo a passo. Com o número que importa dentro do passo.</p>
+  </div>
+
+  <div class="erro">
+    <div class="r">Erro comum</div>
+    <p>O que dá errado, como perceber antes, e quanto custa quando acontece.</p>
+  </div>
+
+  <div class="confere">
+    <div class="r">Como conferir</div>
+    <p>O critério observável de "está bom". Nada de adjetivo sem critério.</p>
+  </div>
+
+  <div class="exercicio">
+    <div class="r">Para responder</div>
+    <p>A pergunta que prova que entendeu — de preferência prática ou de situação.</p>
+    <div class="linhas"><div></div><div></div></div>
+  </div>
+
+  <div class="rodape">
+    <span>Valvic Academy · uso interno</span>
+    <span>Módulo 00 · pág. 2</span>
+  </div>
+</div>
+
+</body>
+</html>
