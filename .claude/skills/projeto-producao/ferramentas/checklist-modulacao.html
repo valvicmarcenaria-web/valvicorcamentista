@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checklist de Modulação — Valvic</title>
+<style>
+:root{--green:#3f6b4f;--purple:#8e3b8e;--gold:#9a7b1f;--brown:#7d5a2b;--line:#e3e3e3;--bg:#eef0ee;--ink:#2b2b2b;}
+*{box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif;}
+body{margin:0;background:var(--bg);color:var(--ink);padding:18px;}
+.card{background:#fff;border-radius:14px;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:20px;margin:0 auto 16px;max-width:720px;}
+h1{font-size:1.25rem;color:var(--green);margin:0 0 4px;font-weight:700;}
+.sub{color:#777;font-size:.86rem;margin-bottom:14px;}
+.row{display:flex;gap:14px;flex-wrap:wrap;}
+.row>div{flex:1;min-width:150px;}
+label{display:block;font-size:.82rem;color:#555;margin:10px 0 4px;}
+input,select,textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:11px 12px;font-size:.95rem;background:#fcfcfc;}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--green);background:#fff;}
+.h2{font-size:1rem;font-weight:700;color:#333;margin:0 0 12px;}
+.dim{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:10px;padding:6px 12px;margin-bottom:10px;background:#fcfcfc;}
+.dim .bad{width:34px;height:34px;border-radius:50%;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 34px;}
+.dim input{border:none;background:transparent;text-align:center;font-size:1.15rem;font-weight:600;}
+.dim .u{color:#999;font-size:.85rem;flex:0 0 34px;text-align:right;}
+.L{background:var(--purple)}.A{background:var(--green)}.P{background:var(--gold)}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;border-bottom:2px solid var(--line);margin-bottom:14px;}
+.tab{padding:9px 14px;border:none;background:none;cursor:pointer;font-size:.9rem;color:#777;border-bottom:3px solid transparent;margin-bottom:-2px;font-weight:600;}
+.tab.on{color:var(--green);border-bottom-color:var(--green);}
+.pane{display:none;animation:f .2s;}.pane.on{display:block;}
+@keyframes f{from{opacity:.4}to{opacity:1}}
+.chip{display:inline-flex;align-items:center;gap:6px;margin:4px 6px 4px 0;}
+.chip input{width:auto;}
+.btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;}
+.btn{border:none;border-radius:9px;padding:11px 18px;font-weight:700;cursor:pointer;font-size:.9rem;}
+.btn.p{background:var(--green);color:#fff;}.btn.s{background:#eee;color:#333;}
+svg{display:block;margin:6px auto 2px;}
+.hint{font-size:.78rem;color:#999;}
+</style></head>
+<body>
+
+<div class="card">
+  <h1>Checklist de Modulação — Valvic</h1>
+  <div class="sub">Preencha as dimensões e as abas de cada módulo. Salva sozinho no navegador.</div>
+  <div class="row">
+    <div><label>Cliente / Projeto</label><input id="proj" placeholder="ex.: Kênia & Fábio"></div>
+    <div><label>Módulo (M##)</label><input id="mod" placeholder="ex.: M01"></div>
+  </div>
+  <div class="row">
+    <div><label>Ambiente</label><input id="amb" placeholder="ex.: I.S. Subsolo"></div>
+    <div><label>Programador</label><input id="prog"></div>
+    <div><label>Data</label><input id="data" type="date"></div>
+  </div>
+  <div><label>Descrição do módulo</label><input id="desc" placeholder="ex.: Armário sob bancada — 3 gav + 3 portas de giro"></div>
+</div>
+
+<div class="card">
+  <div class="h2">Dimensões (mm)</div>
+  <svg width="240" height="170" viewBox="0 0 240 170">
+    <!-- caixa isométrica aberta na frente -->
+    <g fill="none" stroke="#777" stroke-width="1.6" stroke-linejoin="round">
+      <polygon points="55,150 165,150 165,60 55,60" fill="#fbfbfb"/>
+      <polyline points="55,60 95,35 205,35 165,60"/>
+      <polyline points="165,150 205,125 205,35"/>
+      <polyline points="55,150 95,125 95,35" stroke-dasharray="3,3"/>
+      <polyline points="95,125 205,125" stroke-dasharray="3,3"/>
+    </g>
+    <!-- cota L (largura) topo -->
+    <g stroke="var(--purple)" stroke-width="1.4"><line x1="55" y1="24" x2="205" y2="24"/>
+      <line x1="55" y1="20" x2="55" y2="28"/><line x1="205" y1="20" x2="205" y2="28"/></g>
+    <circle cx="130" cy="24" r="9" fill="var(--purple)"/><text x="130" y="28" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">L</text>
+    <!-- cota A (altura) esquerda -->
+    <g stroke="var(--green)" stroke-width="1.4"><line x1="40" y1="60" x2="40" y2="150"/>
+      <line x1="36" y1="60" x2="44" y2="60"/><line x1="36" y1="150" x2="44" y2="150"/></g>
+    <circle cx="40" cy="105" r="9" fill="var(--green)"/><text x="40" y="109" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">A</text>
+    <!-- cota P (profundidade) -->
+    <g stroke="var(--gold)" stroke-width="1.4"><line x1="214" y1="125" x2="214" y2="35"/></g>
+    <circle cx="222" cy="80" r="9" fill="var(--gold)"/><text x="222" y="84" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">P</text>
+  </svg>
+  <div class="dim"><div class="bad L">L</div><input id="larg" type="number" placeholder="0"><div class="u">mm</div></div>
+  <div class="hint" style="margin:-6px 0 8px 44px">Largura</div>
+  <div class="dim"><div class="bad A">A</div><input id="alt" type="number" placeholder="0"><div class="u">mm</div></div>
+  <div class="hint" style="margin:-6px 0 8px 44px">Altura</div>
+  <div class="dim"><div class="bad P">P</div><input id="prof" type="number" placeholder="0"><div class="u">mm</div></div>
+  <div class="hint" style="margin:-6px 0 0 44px">Profundidade</div>
+</div>
+
+<div class="card">
+  <div class="tabs">
+    <button class="tab on" data-t="t1">Caixaria</button>
+    <button class="tab" data-t="t2">Portas</button>
+    <button class="tab" data-t="t3">Puxador</button>
+    <button class="tab" data-t="t4">Ferragem</button>
+    <button class="tab" data-t="t5">Tamponamento</button>
+  </div>
+
+  <div class="pane on" id="t1">
+    <div class="h2">Caixaria (estrutura)</div>
+    <label>Espessura do MDF da caixaria (mm)</label>
+    <select id="esp_cx"><option value="">Selecione…</option><option>15</option><option>18</option><option>25</option><option>Outro</option></select>
+    <label>Espessura do fundo (mm)</label>
+    <select id="esp_fundo"><option value="">Selecione…</option><option>6</option><option>15</option><option>18</option></select>
+    <label>Cor / acabamento da caixaria</label><input id="cor_cx" placeholder="ex.: MDF Branco TX">
+    <label>Montagem</label>
+    <select id="montagem"><option value="">Selecione…</option><option>Parafuso (oculto)</option><option>Cavilha</option><option>Minifix</option><option>Cavilha + cola</option></select>
+  </div>
+
+  <div class="pane" id="t2">
+    <div class="h2">Portas / Frentes</div>
+    <label>Espessura das portas (mm)</label>
+    <select id="esp_porta"><option value="">Selecione…</option><option>15</option><option>18</option><option>25</option><option>Outro</option></select>
+    <label>Cor / acabamento das portas</label><input id="cor_porta" placeholder="ex.: MDF Duratex Freijó Puro">
+    <label>Tipo de abertura</label>
+    <select id="abertura"><option value="">Selecione…</option><option>Giro</option><option>Correr</option><option>Báscula / basculante</option><option>Gaveta</option><option>Retrátil</option></select>
+    <label>Nº de portas / gavetas</label><input id="n_frentes" placeholder="ex.: 3 portas + 3 gavetas">
+  </div>
+
+  <div class="pane" id="t3">
+    <div class="h2">Puxador</div>
+    <label>Tipo de puxador</label>
+    <select id="pux_tipo"><option value="">Selecione…</option><option>Perfil (alça)</option><option>Cava (usinada)</option><option>Concha / cuia</option><option>Puxador pronto</option><option>Passante</option><option>Sem puxador (toque)</option></select>
+    <label>Modelo / referência</label><input id="pux_modelo" placeholder="ex.: Sinnai 809 / cava 45°">
+    <label>Posição</label><input id="pux_pos" placeholder="ex.: superior horizontal / vertical lateral">
+    <label>Acabamento</label><input id="pux_acab" placeholder="ex.: preto / grafite / inox">
+  </div>
+
+  <div class="pane" id="t4">
+    <div class="h2">Ferragem</div>
+    <label>Dobradiça</label><input id="dobr" placeholder="ex.: caneco 35mm c/ amortecedor">
+    <label>Corrediça</label><input id="corr" placeholder="ex.: oculta Hardt c/ amortecedor (folga 18mm)">
+    <span class="chip"><input type="checkbox" id="amort"> <label style="margin:0">Amortecimento</label></span>
+    <span class="chip"><input type="checkbox" id="push"> <label style="margin:0">Sistema toque / push</label></span>
+    <label>Outras ferragens</label><input id="ferr_out" placeholder="ex.: pistão báscula, suporte prateleira, pés">
+  </div>
+
+  <div class="pane" id="t5">
+    <div class="h2">Tamponamento</div>
+    <label>Tem tamponamento?</label>
+    <select id="tamp"><option value="">Selecione…</option><option>Sim</option><option>Não</option></select>
+    <label>Onde</label>
+    <input id="tamp_onde" placeholder="ex.: lateral aparente, superior, inferior, fundo aparente">
+    <label>Espessura do tamponamento (mm)</label>
+    <select id="tamp_esp"><option value="">Selecione…</option><option>6</option><option>15</option><option>18</option></select>
+    <label>Observações</label><textarea id="obs" rows="3" placeholder="Observações de modulação…"></textarea>
+  </div>
+</div>
+
+<div class="card btns">
+  <button class="btn s" onclick="limpar()">Limpar</button>
+  <button class="btn s" onclick="exportar()">Exportar CSV</button>
+  <button class="btn p" onclick="window.print()">Salvar PDF / Imprimir</button>
+</div>
+
+<script>
+const ids=["proj","mod","amb","prog","data","desc","larg","alt","prof","esp_cx","esp_fundo","cor_cx","montagem","esp_porta","cor_porta","abertura","n_frentes","pux_tipo","pux_modelo","pux_pos","pux_acab","dobr","corr","amort","push","ferr_out","tamp","tamp_onde","tamp_esp","obs"];
+const KEY="valvic_checklist_modulacao";
+function val(id){const e=document.getElementById(id);return e.type==="checkbox"?e.checked:e.value;}
+function save(){const o={};ids.forEach(i=>o[i]=val(i));localStorage.setItem(KEY,JSON.stringify(o));}
+function load(){const s=localStorage.getItem(KEY);if(!s)return;const o=JSON.parse(s);ids.forEach(i=>{const e=document.getElementById(i);if(!e||o[i]==null)return;if(e.type==="checkbox")e.checked=o[i];else e.value=o[i];});}
+ids.forEach(i=>{const e=document.getElementById(i);if(e)e.addEventListener("input",save);});
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("on"));
+  document.querySelectorAll(".pane").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on");document.getElementById(b.dataset.t).classList.add("on");});
+function limpar(){if(confirm("Limpar todos os campos?")){localStorage.removeItem(KEY);ids.forEach(i=>{const e=document.getElementById(i);if(e){if(e.type==="checkbox")e.checked=false;else e.value="";}});}}
+function exportar(){
+  const o={};ids.forEach(i=>o[i]=val(i));
+  let csv="campo;valor\n";ids.forEach(i=>csv+=i+";"+(""+o[i]).replace(/;/g,",")+"\n");
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));
+  a.download=(o.mod||"modulo")+"_"+(o.proj||"valvic")+".csv";a.click();}
+load();
+</script>
+</body></html>

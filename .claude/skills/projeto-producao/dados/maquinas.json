@@ -1,0 +1,73 @@
+{
+  "_meta": {
+    "titulo": "Parque de máquinas da Valvic — produção",
+    "atualizado_em": "2026-06-24",
+    "status": "v3 — Solid TAF com folha do fabricante (Paulo): eixos corrigidos (Y2800/X1900), vácuo 11,7CV, peso 1720kg, capacidade 35 chapas/dia · 660/mês. Na expansão vira só especiais.",
+    "observacoes": "null = a confirmar. Cada máquina define limites que governam modelagem e corte. Marcas/modelos lidos das fotos IMG_7611..7615; specs do router e da coladeira confirmadas por fonte."
+  },
+  "maquinas": [
+    {
+      "nome": "Router CNC (nesting + cortes especiais)",
+      "marca": "Raizen",
+      "modelo": "Solid TAF",
+      "funcao": "Corta as chapas (nesting) a partir dos DXF do Marcenária Diferente E executa cortes especiais (friso LED, friso de dobra/V-groove, curva) via Aspire. UMA máquina, dois caminhos de software.",
+      "area_util_mm": { "x": 1900, "y": 2800, "z": 200 },
+      "cabe_chapa_inteira": "SIM — 1900x2800 acomoda a chapa de 1850x2750 (Y é o eixo longo)",
+      "velocidade_maxima_m_min": 40,
+      "capacidade": { "chapas_dia": 35, "chapas_mes": 660, "pecas_por_chapa_media": 26, "fonte": "folha do fabricante Solid TAF" },
+      "movimentacao": "guias lineares; lubrificação automática centralizada; redutor planetário Shimpo; servo motores Leadshine; fim de curso anticolisão eletrônico; painel de operação móvel; volante MPG com emergência",
+      "tensao": "380V 60Hz trifásica",
+      "papel_na_expansao": "passa a ser SÓ usinagens especiais (Aspire); o nesting vai p/ a CNC nova",
+      "spindle": { "potencia_kw": 9, "potencia_cv": 12, "rpm": "12000-24000", "frequencia_hz": "400-800", "cone": "ISO 30", "pinca": "ER 32", "refrigeracao": "ventilação elétrica" },
+      "vacuo": { "bomba_cv": 11.7, "camaras": 4, "acionamento": "manual" },
+      "troca_ferramenta": { "tipo": "automática (ATC)", "magazine": "linear", "capacidade": 10 },
+      "estrutura": "monobloco em aço estrutural, ~1720 kg",
+      "software_comando": "Controlador JRG · post-processador Vectric Aspire 'JRG CNC SOLID TAF'",
+      "dialeto_gcode": "mm, absoluto (G90 implícito); Z-ZERO NA CHAPA DE SACRIFÍCIO (CONFIRMADO) — INVARIANTE: Z nunca < -0.100; corte passante = Z-0.100 (descida = espessura+0.1); corte parcial = Z = espessura-profundidade; clearance = espessura+5.08mm; N# incremento 1; G00/G1/G2-G3 com I/J; spindle M3S24000; troca M6T<n>+G43 H<n>; M-codes próprios M158/M162 (liga) e M159/M163 (desliga) — par obrigatório, não inventar. Decodificado em referencias/aspire-cortes-especiais.md (exemplos reais em referencias/exemplos/).",
+      "magazine_capacidade": 10,
+      "ferramentas": [
+        { "posicao": 2, "tipo": "fresa reta", "diametro_mm": 6, "raio_mm": 3, "uso": "contorno/corte passante", "status": "em uso" },
+        { "posicao": 7, "tipo": "fresa 45 graus (chanfro/bisel)", "uso": "corre SOBRE uma linha (sem offset), S13500; come por lado = profundidade do chanfro (45 graus -> horizontal=vertical); Z=espessura+0,1 p/ chanfro completo", "fluxo_parcial": "chanfro em 1 lado: linha extra + T7 so nela; depois T2 corta o contorno por fora", "status": "em uso", "obs": "CONFIRMADO via .tap (M6T7) + Paulo 26/06. ANTES estava anotada errado como fresa reta 3mm." }
+      ],
+      "ferramentas_pendentes": "Magazine tem 10 ferramentas. Em uso confirmadas: T2 (reta 6mm), T7 (45 graus). A antiga anotacao 'T7=reta 3mm' estava ERRADA. Onde fica a fresa de 3mm (se houver) e as demais posicoes: a confirmar com o Paulo.",
+      "obs": "Recebe o DXF do MD e o post do Aspire. Eixos: Y longo (~2800), X curto (~1900); estaciona em Y2840 X51 Z50. Z-zero na mesa deduzido de .tap reais (a confirmar). Fonte specs: raizenmachine.com.br/solidtaf."
+    },
+    {
+      "nome": "Coladeira de borda",
+      "marca": "SCM",
+      "linha": "minimax",
+      "modelo": "me 25",
+      "funcao": "Filetagem automática (aplicação de fita de borda). Filetagem na máquina ~R$2,5/m (base de custos).",
+      "fita_usada_hoje": "0,4mm melamínica (a única usada na Valvic; a 22x0,45 da base de custos)",
+      "fita_capacidade": "melamínica/PVC/ABS 0,4–3mm; tiras de madeira até 5mm (NÃO usadas hoje)",
+      "painel": { "espessura_min_max_mm": "12-50", "comprimento_min_mm": 190 },
+      "mesa_mm": "2600 x 530 (altura 904)",
+      "velocidade_avanco_m_min": 7,
+      "cola": { "tipo": "EVA hot-melt (pellets)", "pote": "teflonado, aquecimento rápido", "temp_trabalho_C": "20–190 (operação melamina ~180–190)" },
+      "funcoes": "colagem + refile de topo (serra) + refile (trimming); opcional raspador e escova",
+      "producao_paineis_h": "20–50",
+      "alimentacao": "trifásico 220V",
+      "obs": "Hoje a Valvic usa só a fita fina (~0,4mm). 'Tempo de passagem' = comprimento da peça ÷ 7 m/min. Fonte: SCM Group / revendas."
+    },
+    {
+      "nome": "Esquadrejadeira",
+      "marca": "Raizen",
+      "modelo": "RZN 3200P",
+      "funcao": "Corte esquadrejado de chapas e peças (serra de bancada com carro esquadrejador ~3200mm).",
+      "obs": "IMG_7611. CONFIRMAR: altura máxima de corte, diâmetro do disco, se tem riscador."
+    },
+    {
+      "nome": "Tupia / fresadora",
+      "marca": null,
+      "funcao": "Usinagem de perfis/cavas com cabeçotes de fresa; também escova/brunidora vista ao lado.",
+      "obs": "IMG_7613. CONFIRMAR marca/modelo e cabeçotes disponíveis (puxador cava 45°, etc.)."
+    },
+    {
+      "nome": "Serra de esquadria / destopadeira",
+      "marca": null,
+      "inversor": "Razi",
+      "funcao": "Cortes de topo / destopo; discos de grande diâmetro.",
+      "obs": "IMG_7615. CONFIRMAR marca/modelo e diâmetro dos discos."
+    }
+  ]
+}

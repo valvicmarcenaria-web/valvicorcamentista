@@ -1,0 +1,144 @@
+# Dobra de MDF por vincos (kerf bending) — técnica Valvic
+
+> Como a Valvic curva chapa de MDF: ranhuras (fendas) paralelas que removem quase
+> toda a espessura, deixando uma **pele fina** que dobra. Decodificado de `.tap`
+> real (`exemplos/jrg-exemplo-dobra-mdf-kerf.tap`) + explicação do Paulo.
+> Técnica construtiva **e** parametrizável para gerar G-code (Degrau 4).
+
+## Princípio
+Fresa reta abre ranhuras paralelas no **lado interno** da curva, removendo material
+até sobrar uma **pele** contínua. A chapa dobra fechando as ranhuras; a pele fica
+na face **externa** (convexa). A curva é **facetada** (cada costela cheia fica reta;
+a dobra acontece nas peles finas entre elas) — quanto mais ranhuras, mais lisa.
+
+## Parâmetros do exemplo real (CONFIRMADOS)
+- **Ferramenta:** T2, **fresa reta 6mm**. (Não é V-bit — é fenda de fundo chato.)
+- **Chapa:** 15mm. **Pele deixada: 1mm.** → profundidade de corte **14mm**.
+- **Z de corte = +1,000** (`Z = espessura − profundidade = 15 − 14 = 1`). Z-zero no
+  sacrifício; respeita a trava (Z nunca < −0,1).
+- **Espaçamento das ranhuras: 12mm** (centro a centro).
+- **Largura da ranhura:** 6mm (= diâmetro da fresa). **Costela cheia entre elas:** 6mm.
+- **Sentido:** ranhuras ao longo de Y (~575mm); avanço passo a passo em X de 12mm,
+  em **serpentina** (corta sobe, anda 12mm no Z de corte, corta desce…).
+- Avanços: mergulho **F2500**, corte **F10000** (padrão observado p/ 6mm).
+- Clearance Z20,080 = 15 + 5,08 (confere a espessura).
+
+## Fórmula para o Téo gerar (parametrizável)
+Dado: largura do painel `W`, comprimento `L`, espessura `e`, pele `p` (ex.: 1mm),
+espaçamento `s` (ex.: 12mm), fresa Ø`d`:
+- **Z de corte** = `e − (e − p)` = **`p`** (= deixa a pele). Ex.: 15mm, pele 1 → Z+1.
+- **Nº de ranhuras** ≈ `W / s` (centradas no painel).
+- Cada ranhura é um corte reto de comprimento `L` no Z da pele; transição de `s` em
+  X entre ranhuras; **sempre validar Z ≥ −0,1**.
+
+## Fluxo completo da peça curva (a "cambota")
+
+A dobra não vive sozinha — ela **veste uma estrutura**. O conjunto de teste
+(`exemplos/jrg-exemplo-curva-completa-estrutura-mais-painel.tap`) mostra tudo num
+arquivo só, em 3 operações na ordem certa:
+
+1. **Estrutura** (contornos passantes Z−0,1): **base + teto** (dois painéis ~900mm
+   de largura com uma **quina curva de R203mm**) + **4 réguas** (~55×353mm) que
+   unem base e teto. As bordas têm pequenos **encaixes/abas** (os detalhes em
+   G2/G3) para montagem por encaixe.
+2. **Ranhuras de dobra** (parcial, Z+1) no **painel de revestimento**.
+3. **Corte de separação** (passante Z−0,1) que **solta o painel** por último.
+
+A **cambota** = a estrutura curva (base/teto + réguas) que dá a forma; o **painel
+ranhurado** é o MDF curvado que a veste. O painel tem **parte plana + parte
+ranhurada**: a plana cobre os trechos retos, a ranhurada (~324mm) abraça a quina
+de R203.
+
+## ⭐ Calibração raio ↔ espaçamento (DADO REAL deste conjunto)
+
+- **Quina da cambota: R203mm** (arco de 90° → comprimento ≈ **318,8mm**).
+- **Zona ranhurada do painel: ~324mm**, espaçamento **12mm**, pele **1mm**, 15mm.
+- **Nº de ranhuras ≈ comprimento do arco ÷ espaçamento** → 318,8 ÷ 12 ≈ **27** ✓
+  (bate com as ~27 ranhuras do arquivo).
+
+> **Regra emergente (a generalizar):** a zona ranhurada = comprimento do arco
+> (`ângulo × raio`); nº de vincos ≈ arco ÷ espaçamento. Para esta receita
+> (12mm / pele 1mm / 15mm) o raio fechado é **R≈203mm**. Falta confirmar se o
+> espaçamento muda o raio mínimo, ou se o raio é definido só pela cambota e o
+> espaçamento é fixo (12mm) por suavidade.
+
+## A confirmar / calibrar
+- **Raio mínimo:** R203 funcionou com folga? Qual o menor raio sem quebrar a pele
+  de 1mm? O espaçamento de 12mm muda esse limite?
+- **Espaçamento é sempre 12mm** ou varia conforme o raio/acabamento?
+- **Pele por espessura:** 1mm vale para 15mm. E para 18mm? E 6mm? (provável manter
+  ~1mm, confirmar.)
+- **Lado da pele:** confirmar que a pele (face lisa) vai sempre para **fora** da
+  curva e a ranhurada para dentro.
+- **Acabamento:** a face ranhurada some (vai colada/escondida) ou precisa de
+  preenchimento/forramento? Lâmina/laca por cima da curva?
+- **Limite de raio:** menor raio possível sem quebrar a pele.
+
+> **Status:** técnica capturada e parametrizável. Falta a **relação raio↔espaçamento**
+> (a calibrar com casos reais) para o Téo projetar uma dobra a partir do raio desejado.
+
+---
+
+# Variante 2 — Dobra por BOLSO contínuo até a pele (fold-to-skin)
+
+> Caso real do Paulo: criado-mudo curvo (`exemplos/2026-06-24_criado-mudo-curvo.*`).
+> Em vez de vários vincos, abre-se **um único bolso (área rebaixada)** até deixar a
+> pele. A pele dobra **lisa** (sem facetas), formando a lateral curva que **envolve**
+> teto e base. **Melhor acabamento que os vincos** — superfície externa contínua.
+
+## Quando usar bolso contínuo × vincos
+- **Bolso contínuo:** raio **suave/grande**, acabamento externo liso aparente. A pele
+  de 1mm dobra inteira. Foi o caso do criado (R120 — raio gentil).
+- **Vincos:** raios mais fechados / quando facetar é aceitável (a pele entre costelas
+  é que dobra). Foi o caso do cilindro (R203 com 27 vincos).
+
+## Parâmetros do caso real (MEDIDOS do `.tap` — criado-mudo, 24/06)
+> Fonte: `exemplos/2026-06-24_criado-mudo-curvo_teo.tap` (G-code real do Aspire).
+- **Raio da curva:** **R60 mm = Ø120**. No G-code o arco é **R63** = R60 + 3mm da
+  fresa (corta por fora da linha). 🚨 **O "120" do projeto é o DIÂMETRO, não o raio.**
+- **Canto:** **90°**.
+- **Pele:** **1 mm**. Deformação ≈ 1 ÷ (2×60) = **0,83%** → tranquilo, não trinca.
+- **Largura da zona de dobra (bolso):** **~95 mm (9,5 cm)** ✅ **e está CERTO**:
+  arco de 90° a R60 = 94,2 mm. (No `.tap`: span dos centros das ranhuras 89 mm +
+  Ø6 da fresa ≈ 95 mm.)
+- **Ferramenta:** T2, fresa 6 mm. **Ossos de cão R3** (= raio da fresa) nos encaixes.
+- **Z:** pele/dobra **Z+1,0** · estrutura passante **Z−0,1** · clearance 20,08.
+- **Chapa:** **15 mm (CONFIRMADO)** → bolso ~14 mm deixando 1 mm de pele.
+
+## Caso de teste 2 — lateral parametrizada (Téo gerou, 24/06)
+> `gerados/lateral_criado_r80_teste_teo.dxf` (gerador `gen_lateral_criado_r80_teste.py`).
+Dados CONFIRMADOS pelo Paulo: **R80 (raio, Ø160)**, canto 90°, altura 350, aba 600 +
+retorno 200, chapa 15 mm. Bolso de dobra = arco = 80×π/2 = **125,66 mm**; rebaixo 14 mm,
+pele 1 mm (deformação 0,62%). Comprimento desenvolvido 925,7 mm. **AGUARDANDO:** Paulo
+importar no Aspire e dizer se a geometria bate.
+
+## ⭐ Como o bolso vira CONTÍNUO (truque do acabamento liso)
+Ranhuras paralelas espaçadas **~5,7 mm** com fresa de **6 mm** → as passadas **se
+sobrepõem** (5,7 < 6) e o fundo sai **liso, sem costela** = bolso contínuo.
+(No cilindro era 12 mm > 6 → facetava. Aqui aperta o passo **abaixo do Ø da fresa**
+pra ficar liso.)
+
+## ⭐ Fórmula da zona de dobra (vale p/ bolso E p/ vincos)
+> **zona de dobra = comprimento do arco = 2π × R × (ângulo°/360) = R × ângulo(rad)**
+- Criado (R60, 90°): `2π × 60 ÷ 4 =` **94,2 mm** ≈ os 95 mm usados. ✅
+- Tabela (multiplicar pelo **raio**): **90° → ×1,571** · **45° → ×0,785** ·
+  **180° → ×3,142** · qualquer ângulo → **R × ângulo° × 0,01745**.
+- 🚨 **Raio × diâmetro:** usar sempre o **raio** na fórmula. Foi a confusão deste caso
+  (120 era diâmetro → R60). Com R120 *de verdade* a zona seria ~18,8 cm.
+
+## Checagem de segurança da pele (fold-to-skin)
+- Deformação na pele ≈ **espessura da pele ÷ (2 × raio)** → quanto maior o raio, mais
+  folgada a pele. Criado (R60, pele 1mm) = 0,83%, bem dentro do seguro.
+
+---
+
+# ⭐ REGRA GERAL DOS VINCOS (vale p/ TODA peça com ranhura)
+1. **Sair 10 mm para FORA da peça** nas duas pontas de cada vinco (avanço no vazio).
+2. **Ligar tudo em ZIGZAG CONTÍNUO** = **uma única polilinha** → a fresa **entra uma
+   vez e sai uma vez**; não levanta entre passadas (senão quebra as quinas).
+- **Cilindro / cinta reta:** vincos **paralelos** (verticais), passo ao longo do comprimento.
+  Ex.: `gen_criado_fabinho_M55` (cinta) e cilindro v3/v4.
+- **Cone (tronco):** vincos **radiais** convergindo ao ápice; saem 10 mm além do arco
+  interno (Sr−10) e do externo (SR+10); zigzag contínuo. Ex.: `gen_cone_leg`
+  (`gerados/pe_mesa_cone_O250_O600.dxf`).
+- Confirmado pelo Paulo em 26/06 ("as linhas da ranhura saem 1 cm pra fora e ligam em zigzag").
