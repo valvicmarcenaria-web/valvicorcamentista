@@ -1,0 +1,1801 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Valvic · Proposta Signature Cinemático</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+/* ─── TOKENS ─── */
+:root {
+  --obs:      #1C1C1A;
+  --obs-l:    #252523;
+  --obs-ll:   #2E2E2C;
+  --brass:    #A8895C;
+  --brass-l:  #BEA070;
+  --brass-10: rgba(168,137,92,.10);
+  --brass-20: rgba(168,137,92,.20);
+  --brass-40: rgba(168,137,92,.40);
+  --off-wh:   #EDE8DD;
+  --muted:    rgba(237,232,221,.42);
+  --muted-l:  rgba(237,232,221,.22);
+  --pw: 794px;
+  --ph: 1123px;
+}
+
+/* ─── RESET ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: #111; }
+body {
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 32px 16px;
+  font-family: 'Inter', sans-serif;
+  color: var(--off-wh);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ─── PAGE SHELL ─── */
+.page {
+  width: var(--pw);
+  height: var(--ph);
+  background: var(--obs);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  page-break-after: always;
+  break-after: page;
+}
+.page-6 {
+  height: auto;
+  min-height: var(--ph);
+}
+
+/* ─── TOOLBAR ─── */
+#toolbar {
+  width: var(--pw);
+  background: #0a0a09;
+  border: 1px solid var(--brass-20);
+  border-radius: 8px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+#toolbar button {
+  background: var(--brass);
+  color: #111;
+  border: none;
+  padding: 8px 20px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  cursor: pointer;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: background .2s;
+}
+#toolbar button:hover { background: var(--brass-l); }
+#toolbar button.secondary {
+  background: transparent;
+  color: var(--brass);
+  border: 1px solid var(--brass-40);
+}
+#toolbar button.secondary:hover { background: var(--brass-10); }
+#toolbar span {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: .06em;
+}
+
+/* ─── EDIT PANEL ─── */
+#edit-panel {
+  display: none;
+  width: var(--pw);
+  background: #0a0a09;
+  border: 1px solid var(--brass-20);
+  border-radius: 8px;
+  padding: 24px;
+}
+#edit-panel.visible { display: block; }
+#edit-panel h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: var(--brass);
+  margin-bottom: 20px;
+  font-weight: 400;
+  letter-spacing: .04em;
+}
+.edit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 20px;
+}
+.edit-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.edit-group.full { grid-column: 1 / -1; }
+.edit-group label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.edit-group input, .edit-group textarea {
+  background: var(--obs-ll);
+  border: 1px solid var(--brass-20);
+  color: var(--off-wh);
+  padding: 8px 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  border-radius: 2px;
+  outline: none;
+  transition: border-color .2s;
+}
+.edit-group input:focus, .edit-group textarea:focus { border-color: var(--brass-40); }
+.edit-group textarea { resize: vertical; min-height: 64px; }
+.edit-section-title {
+  grid-column: 1 / -1;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  color: var(--brass);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 8px 0 4px;
+  border-top: 1px solid var(--brass-10);
+  margin-top: 4px;
+}
+.edit-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+.edit-actions button {
+  background: var(--brass);
+  color: #111;
+  border: none;
+  padding: 10px 28px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  cursor: pointer;
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+.edit-actions button.cancel {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--brass-20);
+}
+
+/* ══════════════════════════════════════════
+   P1 — CAPA
+══════════════════════════════════════════ */
+.p1-topbar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 64px;
+  background: var(--obs);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 36px;
+  z-index: 10;
+}
+.p1-logo {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  letter-spacing: .22em;
+  color: var(--off-wh);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.p1-logo span { color: var(--brass); }
+.p1-badge {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .18em;
+  color: var(--brass);
+  text-transform: uppercase;
+  border: 1px solid var(--brass-40);
+  padding: 5px 12px;
+}
+.p1-hero {
+  position: absolute;
+  top: 64px; left: 0; right: 0;
+  height: calc(var(--ph) - 64px - 8px);
+  overflow: hidden;
+}
+.p1-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.p1-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    transparent 40%,
+    rgba(28,28,26,0.55) 65%,
+    rgba(28,28,26,0.92) 100%
+  );
+}
+.p1-text {
+  position: absolute;
+  bottom: 56px;
+  left: 0; right: 0;
+  padding: 0 52px;
+}
+.p1-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .2em;
+  color: var(--brass);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.p1-client {
+  font-family: 'Playfair Display', serif;
+  font-size: 62px;
+  font-weight: 300;
+  color: var(--off-wh);
+  line-height: 1.0;
+  margin-bottom: 10px;
+  letter-spacing: -.01em;
+}
+.p1-project {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--muted);
+  letter-spacing: .02em;
+}
+.p1-brass-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 8px;
+  background: linear-gradient(to right, var(--brass-40), var(--brass), var(--brass-40));
+}
+
+/* ══════════════════════════════════════════
+   P2 — DIFERENCIAIS
+══════════════════════════════════════════ */
+.p2-layout {
+  display: flex;
+  height: 100%;
+}
+.p2-photo {
+  width: 42%;
+  height: 100%;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.p2-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.p2-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+    transparent 60%,
+    rgba(37,37,35,0.7) 100%
+  );
+}
+.p2-content {
+  flex: 1;
+  background: var(--obs-l);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 52px 44px 52px 40px;
+  position: relative;
+}
+.p2-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .22em;
+  color: var(--brass);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.p2-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  font-weight: 400;
+  color: var(--off-wh);
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+.p2-headline em {
+  color: var(--brass);
+  font-style: italic;
+}
+.p2-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 36px;
+  font-weight: 300;
+}
+.p2-rule {
+  width: 40px;
+  height: 1px;
+  background: var(--brass);
+  margin-bottom: 36px;
+  opacity: .6;
+}
+.p2-diff-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.p2-diff-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--muted-l);
+}
+.p2-diff-item:first-child { border-top: 1px solid var(--muted-l); }
+.p2-diff-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  color: var(--brass);
+  letter-spacing: .06em;
+  padding-top: 2px;
+  flex-shrink: 0;
+  width: 22px;
+}
+.p2-diff-body {}
+.p2-diff-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--off-wh);
+  margin-bottom: 3px;
+  letter-spacing: .01em;
+}
+.p2-diff-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.5;
+  font-weight: 300;
+}
+.p2-footer-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--brass-40), var(--brass), var(--brass-40));
+}
+
+/* ══════════════════════════════════════════
+   P3 — O PROJETO
+══════════════════════════════════════════ */
+.p3-layout {
+  display: flex;
+  height: 100%;
+}
+.p3-render-col {
+  width: 46%;
+  height: 100%;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.p3-render-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.p3-letterbox-top {
+  position: absolute;
+  top: 100px; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--brass-40), var(--brass), var(--brass-40), transparent);
+  pointer-events: none;
+}
+.p3-letterbox-bottom {
+  position: absolute;
+  bottom: 100px; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--brass-40), var(--brass), var(--brass-40), transparent);
+  pointer-events: none;
+}
+.p3-render-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+    transparent 60%,
+    rgba(28,28,26,0.6) 100%
+  );
+  pointer-events: none;
+}
+.p3-content {
+  flex: 1;
+  background: var(--obs-l);
+  display: flex;
+  flex-direction: column;
+  padding: 52px 36px 0 36px;
+  position: relative;
+  overflow: hidden;
+}
+.p3-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .22em;
+  color: var(--brass);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.p3-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--off-wh);
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+.p3-headline em {
+  color: var(--brass);
+  font-style: italic;
+}
+.p3-rule {
+  width: 36px;
+  height: 1px;
+  background: var(--brass);
+  margin: 16px 0 24px;
+  opacity: .6;
+}
+.p3-ambient-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+  overflow: hidden;
+}
+.p3-ambient-item {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--muted-l);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.p3-ambient-item:first-child { border-top: 1px solid var(--muted-l); }
+.p3-ambient-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--brass);
+  flex-shrink: 0;
+}
+.p3-ambient-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--off-wh);
+  flex: 1;
+}
+.p3-ambient-note {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: 300;
+}
+.p3-specs-footer {
+  background: var(--obs);
+  margin: 0 -36px;
+  padding: 18px 36px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  border-top: 1px solid var(--brass-10);
+  flex-shrink: 0;
+}
+.p3-spec-cell {
+  padding: 10px 12px;
+  background: var(--obs-l);
+}
+.p3-spec-cell:first-child { background: transparent; padding-left: 0; }
+.p3-spec-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .15em;
+  color: var(--brass);
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.p3-spec-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  color: var(--off-wh);
+  font-weight: 400;
+}
+
+/* ══════════════════════════════════════════
+   P4 — LINHA DO TEMPO
+══════════════════════════════════════════ */
+.p4-layout {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--obs-l);
+}
+.p4-header {
+  background: var(--obs);
+  padding: 44px 52px 36px;
+  border-bottom: 1px solid var(--brass-10);
+  flex-shrink: 0;
+}
+.p4-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .22em;
+  color: var(--brass);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.p4-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  font-weight: 300;
+  color: var(--off-wh);
+  letter-spacing: -.01em;
+  line-height: 1.1;
+}
+.p4-headline em {
+  color: var(--brass);
+  font-style: italic;
+}
+.p4-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  padding: 0;
+  overflow: hidden;
+}
+.p4-col {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 48px;
+  gap: 0;
+}
+.p4-divider {
+  background: var(--brass-20);
+  align-self: stretch;
+}
+.p4-step {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--brass-10);
+  flex: 1;
+}
+.p4-step:last-child { border-bottom: none; }
+.p4-step-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--brass);
+  letter-spacing: .14em;
+  margin-bottom: 6px;
+}
+.p4-step-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--off-wh);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.p4-step-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.55;
+  font-weight: 300;
+}
+.p4-footer {
+  flex-shrink: 0;
+  background: var(--obs);
+  border-top: 1px solid var(--brass-10);
+  padding: 18px 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.p4-footer-brand {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .2em;
+  color: var(--off-wh);
+  text-transform: uppercase;
+}
+.p4-footer-brand span { color: var(--brass); }
+.p4-social {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.p4-social a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  text-decoration: none;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .1em;
+  transition: color .2s;
+}
+.p4-social a:hover { color: var(--brass); }
+.p4-social svg {
+  width: 14px; height: 14px;
+  fill: currentColor;
+}
+
+/* ══════════════════════════════════════════
+   P5 — DEPOIMENTO
+══════════════════════════════════════════ */
+.p5-fullbleed {
+  position: absolute;
+  inset: 0;
+}
+.p5-fullbleed img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.p5-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(28,28,26,0.15) 0%,
+    rgba(28,28,26,0.20) 35%,
+    rgba(28,28,26,0.75) 55%,
+    rgba(28,28,26,0.96) 80%,
+    rgba(10,10,8,1) 100%
+  );
+}
+.p5-content {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 0 72px 64px;
+}
+.p5-bigquote {
+  font-family: 'Playfair Display', serif;
+  font-size: 120px;
+  color: var(--brass);
+  line-height: .7;
+  opacity: .8;
+  margin-bottom: 8px;
+  user-select: none;
+}
+.p5-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--off-wh);
+  line-height: 1.5;
+  max-width: 560px;
+  margin-bottom: 28px;
+  letter-spacing: .01em;
+}
+.p5-rule {
+  width: 48px;
+  height: 1px;
+  background: var(--brass);
+  margin-bottom: 16px;
+  opacity: .7;
+}
+.p5-author {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--brass);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.p5-caption {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: 300;
+  letter-spacing: .06em;
+}
+
+/* ══════════════════════════════════════════
+   P6 — INVESTIMENTO
+══════════════════════════════════════════ */
+.p6-header {
+  background: #111110;
+  padding: 44px 52px 36px;
+  border-bottom: 1px solid var(--brass-10);
+}
+.p6-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .22em;
+  color: var(--brass);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.p6-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--off-wh);
+  letter-spacing: -.01em;
+  line-height: 1.1;
+}
+.p6-headline em {
+  color: var(--brass);
+  font-style: italic;
+}
+.p6-body {
+  background: var(--obs-l);
+  padding: 40px 52px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Investment Tables */
+.inv-table-wrap {}
+.inv-table-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .2em;
+  color: var(--brass);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.inv-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--brass-20);
+}
+.inv-table thead th {
+  background: var(--obs);
+  padding: 10px 14px;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .12em;
+  color: var(--brass);
+  text-transform: uppercase;
+  text-align: left;
+  border-bottom: 1px solid var(--brass-20);
+  font-weight: 400;
+}
+.inv-table thead th:last-child { text-align: right; }
+.inv-table tbody td {
+  padding: 10px 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--off-wh);
+  border-bottom: 1px solid var(--muted-l);
+  vertical-align: middle;
+  font-weight: 300;
+}
+.inv-table tbody td:last-child {
+  text-align: right;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--brass-l);
+}
+.inv-table tbody tr:last-child td { border-bottom: none; }
+.inv-table tbody tr:hover td { background: var(--brass-10); }
+.inv-table tfoot td {
+  padding: 12px 14px;
+  background: var(--obs);
+  border-top: 1px solid var(--brass-40);
+}
+.inv-table tfoot .tf-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .12em;
+  color: var(--brass);
+  text-transform: uppercase;
+}
+.inv-table tfoot .tf-total {
+  text-align: right;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--brass-l);
+}
+.inv-add-btn {
+  background: transparent;
+  border: 1px dashed var(--brass-20);
+  color: var(--muted);
+  padding: 6px 14px;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .1em;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-top: 6px;
+  display: none;
+  transition: border-color .2s, color .2s;
+}
+.inv-add-btn:hover { border-color: var(--brass-40); color: var(--brass); }
+body.edit-mode .inv-add-btn { display: inline-block; }
+.inv-del-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color .2s;
+}
+.inv-del-btn:hover { color: #c0392b; }
+body.edit-mode .inv-del-btn { display: inline; }
+
+/* Payment Conditions */
+.payment-section {}
+.payment-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--off-wh);
+  margin-bottom: 6px;
+  letter-spacing: .01em;
+}
+.payment-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.payment-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--brass-10);
+  border: 1px solid var(--brass-10);
+}
+.pay-card {
+  background: var(--obs);
+  padding: 16px 18px;
+}
+.pay-card-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .15em;
+  color: var(--brass);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.pay-card-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--off-wh);
+  margin-bottom: 3px;
+}
+.pay-card-note {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+/* Meta Cards */
+.meta-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.meta-card {
+  background: var(--obs);
+  border: 1px solid var(--brass-10);
+  padding: 18px 20px;
+  position: relative;
+}
+.meta-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--brass-40), transparent);
+}
+.meta-card-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .15em;
+  color: var(--brass);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.meta-card-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--off-wh);
+  margin-bottom: 3px;
+}
+.meta-card-note {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+/* CTA */
+.p6-cta {
+  background: var(--obs);
+  border-top: 1px solid var(--brass-10);
+  padding: 32px 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+.p6-cta-text {}
+.p6-cta-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--off-wh);
+  margin-bottom: 5px;
+}
+.p6-cta-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 300;
+}
+.p6-cta-actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.btn-cta {
+  background: var(--brass);
+  color: #111;
+  border: none;
+  padding: 12px 28px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  cursor: pointer;
+  text-transform: uppercase;
+  border-radius: 2px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background .2s;
+}
+.btn-cta:hover { background: var(--brass-l); }
+.btn-cta.outline {
+  background: transparent;
+  color: var(--brass);
+  border: 1px solid var(--brass-40);
+}
+.btn-cta.outline:hover { background: var(--brass-10); }
+
+/* ─── EDITABLE FIELDS ─── */
+[contenteditable="true"] {
+  outline: 1px dashed var(--brass-40);
+  border-radius: 2px;
+  cursor: text;
+  min-width: 20px;
+}
+[contenteditable="true"]:focus {
+  outline: 1px solid var(--brass);
+  background: rgba(168,137,92,.05);
+}
+
+/* ─── PRINT ─── */
+@media print {
+  body {
+    background: transparent;
+    padding: 0;
+    gap: 0;
+  }
+  #toolbar, #edit-panel { display: none !important; }
+  .page {
+    page-break-after: always;
+    break-after: page;
+  }
+  .page-6 { page-break-after: auto; }
+}
+@page {
+  size: 794px 1123px;
+  margin: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- ─── TOOLBAR ─── -->
+<div id="toolbar">
+  <button onclick="toggleEdit()">✦ Editar Proposta</button>
+  <button onclick="printPDF()" class="secondary">⎙ Exportar PDF</button>
+  <span>VALVIC MARCENARIA · SIGNATURE CINEMÁTICO</span>
+</div>
+
+<!-- ─── EDIT PANEL ─── -->
+<div id="edit-panel">
+  <h3>Personalização da Proposta</h3>
+  <div class="edit-grid">
+
+    <div class="edit-section-title">Identificação</div>
+    <div class="edit-group">
+      <label>Nome do Cliente</label>
+      <input type="text" id="ef-NOME_CLIENTE" placeholder="Ex: Família Silva"/>
+    </div>
+    <div class="edit-group">
+      <label>Projeto</label>
+      <input type="text" id="ef-PROJETO" placeholder="Ex: Apartamento Vila Nova"/>
+    </div>
+    <div class="edit-group">
+      <label>Data da Proposta</label>
+      <input type="text" id="ef-DATA_PROPOSTA"/>
+    </div>
+    <div class="edit-group">
+      <label>Validade (dias)</label>
+      <input type="text" id="ef-VALIDADE"/>
+    </div>
+
+    <div class="edit-section-title">Especificações Técnicas</div>
+    <div class="edit-group">
+      <label>Ferragem</label>
+      <input type="text" id="ef-FERRAGEM"/>
+    </div>
+    <div class="edit-group">
+      <label>Material</label>
+      <input type="text" id="ef-MATERIAL"/>
+    </div>
+    <div class="edit-group">
+      <label>Acabamento</label>
+      <input type="text" id="ef-ACABAMENTO"/>
+    </div>
+    <div class="edit-group">
+      <label>Prazo de Entrega (dias)</label>
+      <input type="text" id="ef-PRAZO"/>
+    </div>
+    <div class="edit-group">
+      <label>Garantia</label>
+      <input type="text" id="ef-GARANTIA_ANOS"/>
+    </div>
+    <div class="edit-group">
+      <label>Ajuste Essencial (item)</label>
+      <input type="text" id="ef-ESSENCIAL_AJUSTE"/>
+    </div>
+
+    <div class="edit-section-title">Valores</div>
+    <div class="edit-group">
+      <label>Total Completa (R$)</label>
+      <input type="text" id="ef-TOTAL_COMPLETA"/>
+    </div>
+    <div class="edit-group">
+      <label>Total Essencial (R$)</label>
+      <input type="text" id="ef-TOTAL_ESSENCIAL"/>
+    </div>
+
+    <div class="edit-section-title">Depoimento</div>
+    <div class="edit-group full">
+      <label>Texto do Depoimento</label>
+      <textarea id="ef-DEPOIMENTO"></textarea>
+    </div>
+    <div class="edit-group">
+      <label>Autor</label>
+      <input type="text" id="ef-DEP_AUTOR"/>
+    </div>
+    <div class="edit-group">
+      <label>Projeto do Autor</label>
+      <input type="text" id="ef-DEP_PROJETO"/>
+    </div>
+    <div class="edit-group full">
+      <label>Caption (abaixo do autor)</label>
+      <input type="text" id="ef-DEP_CAPTION"/>
+    </div>
+
+    <div class="edit-section-title">Fotos (URLs Google Drive ou diretas)</div>
+    <div class="edit-group full">
+      <label>Hero — P1 Capa</label>
+      <input type="text" id="ef-HERO_URL" placeholder="https://..."/>
+    </div>
+    <div class="edit-group full">
+      <label>Foto P2 — Diferenciais</label>
+      <input type="text" id="ef-P2_URL" placeholder="https://..."/>
+    </div>
+    <div class="edit-group full">
+      <label>Render P3 — O Projeto</label>
+      <input type="text" id="ef-RENDER_URL" placeholder="https://..."/>
+    </div>
+    <div class="edit-group full">
+      <label>Foto P4 — Linha do Tempo (opcional)</label>
+      <input type="text" id="ef-P4_URL" placeholder="https://... (opcional)"/>
+    </div>
+    <div class="edit-group full">
+      <label>Foto P5 — Depoimento (full bleed)</label>
+      <input type="text" id="ef-P5_URL" placeholder="https://..."/>
+    </div>
+
+  </div>
+  <div class="edit-actions">
+    <button onclick="applyEdit()">Aplicar</button>
+    <button class="cancel" onclick="toggleEdit()">Cancelar</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     P1 — CAPA
+══════════════════════════════════════════ -->
+<div class="page" id="page-1">
+  <div class="p1-topbar">
+    <div class="p1-logo">VALVIC<span>.</span>MARCENARIA</div>
+    <div class="p1-badge">PROPOSTA SIGNATURE</div>
+  </div>
+  <div class="p1-hero">
+    <img id="p1-img" src="" alt="Hero" onerror="this.style.opacity='0'"/>
+    <div class="p1-hero-overlay"></div>
+    <div class="p1-text">
+      <div class="p1-label">PROPOSTA PREPARADA PARA</div>
+      <div class="p1-client" id="p1-client">Cliente</div>
+      <div class="p1-project" id="p1-project">Projeto de marcenaria sob medida</div>
+    </div>
+  </div>
+  <div class="p1-brass-bar"></div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     P2 — DIFERENCIAIS
+══════════════════════════════════════════ -->
+<div class="page" id="page-2">
+  <div class="p2-layout">
+    <div class="p2-photo">
+      <img id="p2-img" src="" alt="Diferenciais" onerror="this.style.opacity='0'"/>
+      <div class="p2-photo-overlay"></div>
+    </div>
+    <div class="p2-content">
+      <div class="p2-eyebrow">POR QUE VALVIC</div>
+      <div class="p2-headline">Cada detalhe é uma<br/><em>escolha intencional</em></div>
+      <div class="p2-sub">Móveis que entregam beleza no primeiro olhar<br/>e performance por décadas.</div>
+      <div class="p2-rule"></div>
+      <div class="p2-diff-list">
+        <div class="p2-diff-item">
+          <div class="p2-diff-num">01</div>
+          <div class="p2-diff-body">
+            <div class="p2-diff-title">Blum MOVENTO BLUMOTION · Feather-Touch</div>
+            <div class="p2-diff-desc">Corrediças austríacas com fechamento silencioso e abertura por toque. Garantia vitalícia do fabricante.</div>
+          </div>
+        </div>
+        <div class="p2-diff-item">
+          <div class="p2-diff-num">02</div>
+          <div class="p2-diff-body">
+            <div class="p2-diff-title">Engenharia digital completa</div>
+            <div class="p2-diff-desc">Projeto 3D detalhado antes da produção — você aprova cada centímetro antes de qualquer corte.</div>
+          </div>
+        </div>
+        <div class="p2-diff-item">
+          <div class="p2-diff-num">03</div>
+          <div class="p2-diff-body">
+            <div class="p2-diff-title">Equipe própria do início ao fim</div>
+            <div class="p2-diff-desc">Sem terceiros na montagem. Os mesmos artesãos que produzem instalam — responsabilidade total, única.</div>
+          </div>
+        </div>
+        <div class="p2-diff-item">
+          <div class="p2-diff-num">04</div>
+          <div class="p2-diff-body">
+            <div class="p2-diff-title">Acabamento em cabine profissional</div>
+            <div class="p2-diff-desc">Laca aplicada em ambiente controlado, sem poeira, com espessura e uniformidade que painéis de fábrica não atingem.</div>
+          </div>
+        </div>
+        <div class="p2-diff-item">
+          <div class="p2-diff-num">05</div>
+          <div class="p2-diff-body">
+            <div class="p2-diff-title">Suporte pós-entrega</div>
+            <div class="p2-diff-desc">Acompanhamento após a entrega. Ajustes, regulagens e assistência sempre que precisar.</div>
+          </div>
+        </div>
+      </div>
+      <div class="p2-footer-bar"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     P3 — O PROJETO
+══════════════════════════════════════════ -->
+<div class="page" id="page-3">
+  <div class="p3-layout">
+    <div class="p3-render-col">
+      <img id="p3-img" src="" alt="Render" onerror="this.style.opacity='0'"/>
+      <div class="p3-letterbox-top"></div>
+      <div class="p3-letterbox-bottom"></div>
+      <div class="p3-render-overlay"></div>
+    </div>
+    <div class="p3-content">
+      <div class="p3-eyebrow">SEU PROJETO</div>
+      <div class="p3-headline">O que está sendo<br/><em>proposto</em></div>
+      <div class="p3-rule"></div>
+      <div class="p3-ambient-list" id="p3-ambient-list">
+        <div class="p3-ambient-item">
+          <div class="p3-ambient-dot"></div>
+          <div class="p3-ambient-name">Cozinha completa</div>
+          <div class="p3-ambient-note" contenteditable="false">—</div>
+        </div>
+        <div class="p3-ambient-item">
+          <div class="p3-ambient-dot"></div>
+          <div class="p3-ambient-name">Home office</div>
+          <div class="p3-ambient-note" contenteditable="false">—</div>
+        </div>
+        <div class="p3-ambient-item">
+          <div class="p3-ambient-dot"></div>
+          <div class="p3-ambient-name">Dormitório master</div>
+          <div class="p3-ambient-note" contenteditable="false">—</div>
+        </div>
+        <div class="p3-ambient-item">
+          <div class="p3-ambient-dot"></div>
+          <div class="p3-ambient-name">Closet integrado</div>
+          <div class="p3-ambient-note" contenteditable="false">—</div>
+        </div>
+        <div class="p3-ambient-item">
+          <div class="p3-ambient-dot"></div>
+          <div class="p3-ambient-name">Sala de estar</div>
+          <div class="p3-ambient-note" contenteditable="false">—</div>
+        </div>
+      </div>
+      <div class="p3-specs-footer">
+        <div class="p3-spec-cell">
+          <div class="p3-spec-label">Ferragem</div>
+          <div class="p3-spec-value" id="p3-ferragem">—</div>
+        </div>
+        <div class="p3-spec-cell">
+          <div class="p3-spec-label">Material</div>
+          <div class="p3-spec-value" id="p3-material">—</div>
+        </div>
+        <div class="p3-spec-cell">
+          <div class="p3-spec-label">Acabamento</div>
+          <div class="p3-spec-value" id="p3-acabamento">—</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     P4 — LINHA DO TEMPO
+══════════════════════════════════════════ -->
+<div class="page" id="page-4">
+  <div class="p4-layout">
+    <div class="p4-header">
+      <div class="p4-eyebrow">DO PROJETO À ENTREGA</div>
+      <div class="p4-headline">Uma jornada<br/><em>sem surpresas</em></div>
+    </div>
+    <div class="p4-body">
+      <div class="p4-col">
+        <div class="p4-step">
+          <div class="p4-step-num">01</div>
+          <div class="p4-step-name">Visita Técnica</div>
+          <div class="p4-step-desc">Medição presencial com laser e verificação de pontos críticos — hidráulica, elétrica, vãos. Base para um projeto sem retrabalho.</div>
+        </div>
+        <div class="p4-step">
+          <div class="p4-step-num">02</div>
+          <div class="p4-step-name">Projeto 3D</div>
+          <div class="p4-step-desc">Renderização foto-realista do seu ambiente mobiliado. Você vê antes de decidir — e ajusta até estar perfeito.</div>
+        </div>
+        <div class="p4-step">
+          <div class="p4-step-num">03</div>
+          <div class="p4-step-name">Aprovação &amp; Contrato</div>
+          <div class="p4-step-desc">Proposta detalhada, condições claras e contrato com tudo especificado. Sem letras miúdas, sem surpresas.</div>
+        </div>
+        <div class="p4-step">
+          <div class="p4-step-num">04</div>
+          <div class="p4-step-name">Engenharia de Produção</div>
+          <div class="p4-step-desc">Planos de corte otimizados, lista de materiais e ferragens confirmadas. Cada peça programada com precisão milimétrica.</div>
+        </div>
+      </div>
+      <div class="p4-divider"></div>
+      <div class="p4-col">
+        <div class="p4-step">
+          <div class="p4-step-num">05</div>
+          <div class="p4-step-name">Produção em Marcenaria</div>
+          <div class="p4-step-desc">Corte CNC, usinagem de furos e rebaixos, colagem de fita e acabamento em cabine com controle de qualidade em cada etapa.</div>
+        </div>
+        <div class="p4-step">
+          <div class="p4-step-num">06</div>
+          <div class="p4-step-name">Pré-Montagem</div>
+          <div class="p4-step-desc">Simulação completa antes do transporte. Peças numeradas, conferidas e embaladas individualmente para chegarem perfeitas.</div>
+        </div>
+        <div class="p4-step">
+          <div class="p4-step-num">07</div>
+          <div class="p4-step-name">Instalação</div>
+          <div class="p4-step-desc">Equipe própria, especializada. Instalação limpa, nivelada, alinhada. Você não precisa acompanhar — nós cuidamos de tudo.</div>
+        </div>
+        <div class="p4-step">
+          <div class="p4-step-num">08</div>
+          <div class="p4-step-name">Entrega &amp; Vistoria</div>
+          <div class="p4-step-desc">Limpeza final, regulagem de dobradiças e corrediças, vistoria conjunta. Só assinamos quando você estiver satisfeito.</div>
+        </div>
+      </div>
+    </div>
+    <div class="p4-footer">
+      <div class="p4-footer-brand">VALVIC<span>.</span>MARCENARIA</div>
+      <div class="p4-social">
+        <a href="https://instagram.com/valvicmarcenaria" target="_blank">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          @valvicmarcenaria
+        </a>
+        <a href="https://youtube.com/@valvicmarcenaria" target="_blank">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+          </svg>
+          YouTube
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     P5 — DEPOIMENTO
+══════════════════════════════════════════ -->
+<div class="page" id="page-5">
+  <div class="p5-fullbleed">
+    <img id="p5-img" src="" alt="Depoimento" onerror="this.style.opacity='0'"/>
+  </div>
+  <div class="p5-overlay"></div>
+  <div class="p5-content">
+    <div class="p5-bigquote">"</div>
+    <div class="p5-quote" id="p5-quote">Eu estou apaixonada... e não é só pela beleza... mas o comprometimento e dedicação desde o orçamento, até execução e entrega. Indico de olhos fechados!!!</div>
+    <div class="p5-rule"></div>
+    <div class="p5-author" id="p5-author">Graciene</div>
+    <div class="p5-caption" id="p5-caption">Projeto executado · Residência particular</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     P6 — INVESTIMENTO
+══════════════════════════════════════════ -->
+<div class="page page-6" id="page-6">
+  <div class="p6-header">
+    <div class="p6-eyebrow">INVESTIMENTO</div>
+    <div class="p6-headline">Sua proposta<br/><em>detalhada</em></div>
+  </div>
+
+  <div class="p6-body">
+
+    <!-- Tabela Completa -->
+    <div class="inv-table-wrap">
+      <div class="inv-table-label">OPÇÃO COMPLETA</div>
+      <table class="inv-table" id="table-completa">
+        <thead>
+          <tr>
+            <th style="width:48%">Ambiente / Item</th>
+            <th>Descrição</th>
+            <th style="width:16%">Valor</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-completa">
+          <tr>
+            <td>Cozinha completa</td>
+            <td>Armários altos, balcão e ilha · MDF 18mm · Laca PU fosca</td>
+            <td><button class="inv-del-btn" onclick="removeRow(this)" title="Remover">✕</button> R$ —</td>
+          </tr>
+          <tr>
+            <td>Dormitório master</td>
+            <td>Guarda-roupa 6 portas e criado · Blum MOVENTO</td>
+            <td><button class="inv-del-btn" onclick="removeRow(this)" title="Remover">✕</button> R$ —</td>
+          </tr>
+          <tr>
+            <td>Home office</td>
+            <td>Bancada com gaveteiro e estantes suspensas</td>
+            <td><button class="inv-del-btn" onclick="removeRow(this)" title="Remover">✕</button> R$ —</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2" class="tf-label">TOTAL OPÇÃO COMPLETA</td>
+            <td class="tf-total" id="tf-completa">R$ 0,00</td>
+          </tr>
+        </tfoot>
+      </table>
+      <button class="inv-add-btn" onclick="addRow('tbody-completa')">+ Adicionar item</button>
+    </div>
+
+    <!-- Tabela Essencial -->
+    <div class="inv-table-wrap">
+      <div class="inv-table-label">OPÇÃO ESSENCIAL <span style="font-size:9px;color:var(--muted);letter-spacing:.06em;font-family:'Inter',sans-serif;font-style:italic;" id="essencial-label-note">(sem item a especificar)</span></div>
+      <table class="inv-table" id="table-essencial">
+        <thead>
+          <tr>
+            <th style="width:48%">Ambiente / Item</th>
+            <th>Descrição</th>
+            <th style="width:16%">Valor</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-essencial">
+          <tr>
+            <td>Cozinha completa</td>
+            <td>Armários altos e balcão · sem ilha · MDF 18mm · Laca PU fosca</td>
+            <td><button class="inv-del-btn" onclick="removeRow(this)" title="Remover">✕</button> R$ —</td>
+          </tr>
+          <tr>
+            <td>Dormitório master</td>
+            <td>Guarda-roupa 6 portas · Blum MOVENTO · sem criado</td>
+            <td><button class="inv-del-btn" onclick="removeRow(this)" title="Remover">✕</button> R$ —</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2" class="tf-label">TOTAL OPÇÃO ESSENCIAL</td>
+            <td class="tf-total" id="tf-essencial">R$ 0,00</td>
+          </tr>
+        </tfoot>
+      </table>
+      <button class="inv-add-btn" onclick="addRow('tbody-essencial')">+ Adicionar item</button>
+    </div>
+
+    <!-- Condições de Pagamento -->
+    <div class="payment-section">
+      <div class="payment-title">Condições de Pagamento</div>
+      <div class="payment-sub">Parcelamento facilitado para tornar seu projeto possível. Consulte condições personalizadas.</div>
+      <div class="payment-grid">
+        <div class="pay-card">
+          <div class="pay-card-label">Entrada</div>
+          <div class="pay-card-val">50%</div>
+          <div class="pay-card-note">Na assinatura do contrato</div>
+        </div>
+        <div class="pay-card">
+          <div class="pay-card-label">Parcela</div>
+          <div class="pay-card-val">30%</div>
+          <div class="pay-card-note">Na entrega dos materiais</div>
+        </div>
+        <div class="pay-card">
+          <div class="pay-card-label">Final</div>
+          <div class="pay-card-val">20%</div>
+          <div class="pay-card-note">Na conclusão da montagem</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Meta Cards -->
+    <div class="meta-cards">
+      <div class="meta-card">
+        <div class="meta-card-label">Prazo de Entrega</div>
+        <div class="meta-card-val" id="mc-prazo">90 a 100 dias</div>
+        <div class="meta-card-note">Após aprovação e entrada do contrato</div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-card-label">Garantia</div>
+        <div class="meta-card-val" id="mc-garantia">Vitalícia</div>
+        <div class="meta-card-note">Para ferragens Blum. Estrutura: 5 anos</div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-card-label">Validade da Proposta</div>
+        <div class="meta-card-val" id="mc-validade">10 dias</div>
+        <div class="meta-card-note" id="mc-data-label">A partir de 17/06/2026</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="p6-cta">
+    <div class="p6-cta-text">
+      <div class="p6-cta-headline">Pronto para começar?</div>
+      <div class="p6-cta-sub">Entre em contato e dê o primeiro passo para o seu projeto dos sonhos.</div>
+    </div>
+    <div class="p6-cta-actions">
+      <a href="https://wa.me/5531999999999" class="btn-cta">WhatsApp</a>
+      <a href="https://instagram.com/valvicmarcenaria" class="btn-cta outline">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════ -->
+<script>
+(function() {
+
+  const SK = 'valvic_signature_cinema';
+
+  const DEFAULTS = {
+    NOME_CLIENTE:    'Cliente',
+    PROJETO:         'Projeto de marcenaria sob medida',
+    DATA_PROPOSTA:   '17/06/2026',
+    FERRAGEM:        'Blum Movento',
+    MATERIAL:        'MDF 18mm',
+    ACABAMENTO:      'Laca PU fosca',
+    ESSENCIAL_AJUSTE:'[especificar o ambiente ou item]',
+    DEPOIMENTO:      'Eu estou apaixonada... e não é só pela beleza... mas o comprometimento e dedicação desde o orçamento, até execução e entrega. Indico de olhos fechados!!! Muitíssimo obrigada...',
+    DEP_AUTOR:       'Graciene',
+    DEP_PROJETO:     'Vale dos Cristais',
+    DEP_CAPTION:     'Projeto executado · Residência particular',
+    PRAZO:           '90 a 100',
+    GARANTIA_ANOS:   'Vitalícia',
+    VALIDADE:        '10',
+    TOTAL_COMPLETA:  '0,00',
+    TOTAL_ESSENCIAL: '0,00',
+    HERO_URL:   'https://lh3.googleusercontent.com/d/1tIPkB_fxt1DYWHcj3-s5tdVyM7jocaTa=w1600',
+    P2_URL:     'https://lh3.googleusercontent.com/d/1SQriQN8H4RD2yjHQoLm84HQ65DCoQE1p=w1600',
+    RENDER_URL: 'https://lh3.googleusercontent.com/d/1uvflYxeVe0QkPMfWEOml6xPmR48f90ZY=w1600',
+    P4_URL:     '',
+    P5_URL:     'https://lh3.googleusercontent.com/d/1MsmhniA_z1HXRBw_bQ7D-VgujrDDxLNH=w1600',
+  };
+
+  const S = Object.assign({}, DEFAULTS, loadS());
+
+  /* ── Storage ── */
+  function loadS() {
+    try {
+      var raw = localStorage.getItem(SK);
+      return raw ? JSON.parse(raw) : {};
+    } catch(e) { return {}; }
+  }
+
+  function saveS() {
+    try { localStorage.setItem(SK, JSON.stringify(S)); } catch(e) {}
+  }
+
+  /* ── Drive Thumb ── */
+  function driveThumb(url) {
+    if (!url) return '';
+    // Handle /file/d/ID/ and /d/ID/ patterns
+    var m = url.match(/\/d\/([a-zA-Z0-9_-]{10,})/);
+    if (m) return 'https://lh3.googleusercontent.com/d/' + m[1] + '=w1600';
+    // Handle lh3 direct
+    if (url.indexOf('lh3.googleusercontent.com') !== -1) return url;
+    return url;
+  }
+
+  /* ── Photo setters ── */
+  function setHero(url) {
+    var u = url !== undefined ? url : S.HERO_URL;
+    if (u) {
+      var final = driveThumb(u);
+      document.getElementById('p1-img').src = final;
+      document.getElementById('p1-img').style.opacity = '1';
+    }
+  }
+
+  function setP2(url) {
+    var u = url !== undefined ? url : S.P2_URL;
+    if (u) {
+      var final = driveThumb(u);
+      document.getElementById('p2-img').src = final;
+      document.getElementById('p2-img').style.opacity = '1';
+    }
+  }
+
+  function setRender(url) {
+    var u = url !== undefined ? url : S.RENDER_URL;
+    if (u) {
+      var final = driveThumb(u);
+      document.getElementById('p3-img').src = final;
+      document.getElementById('p3-img').style.opacity = '1';
+    }
+  }
+
+  function setP4(url) {
+    // P4 has cinematic steps layout; photo background optional
+    var u = url !== undefined ? url : S.P4_URL;
+    // P4 background enhancement if URL provided
+    if (u) {
+      var final = driveThumb(u);
+      var p4 = document.getElementById('page-4');
+      p4.style.backgroundImage = 'url(' + final + ')';
+      p4.style.backgroundSize = 'cover';
+      p4.style.backgroundPosition = 'center';
+    }
+  }
+
+  function setP5(url) {
+    var u = url !== undefined ? url : S.P5_URL;
+    if (u) {
+      var final = driveThumb(u);
+      document.getElementById('p5-img').src = final;
+      document.getElementById('p5-img').style.opacity = '1';
+    }
+  }
+
+  /* ── Render all text fields ── */
+  function renderAll() {
+    setText('p1-client',   S.NOME_CLIENTE);
+    setText('p1-project',  S.PROJETO);
+    setText('p3-ferragem', S.FERRAGEM);
+    setText('p3-material', S.MATERIAL);
+    setText('p3-acabamento', S.ACABAMENTO);
+    setText('p5-quote',    S.DEPOIMENTO);
+    setText('p5-author',   S.DEP_AUTOR);
+    setText('p5-caption',  S.DEP_CAPTION);
+    setText('tf-completa', 'R$ ' + S.TOTAL_COMPLETA);
+    setText('tf-essencial','R$ ' + S.TOTAL_ESSENCIAL);
+    setText('mc-prazo',    S.PRAZO + ' dias');
+    setText('mc-garantia', S.GARANTIA_ANOS);
+    setText('mc-validade', S.VALIDADE + ' dias');
+    setText('mc-data-label', 'A partir de ' + S.DATA_PROPOSTA);
+    var elNote = document.getElementById('essencial-label-note');
+    if (elNote) elNote.textContent = '(sem ' + S.ESSENCIAL_AJUSTE + ')';
+    setHero();
+    setP2();
+    setRender();
+    setP4();
+    setP5();
+  }
+
+  function setText(id, val) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = val;
+  }
+
+  /* ── Edit Mode ── */
+  var editOpen = false;
+
+  function toggleEdit() {
+    editOpen = !editOpen;
+    var panel = document.getElementById('edit-panel');
+    if (editOpen) {
+      panel.classList.add('visible');
+      document.body.classList.add('edit-mode');
+      // Populate fields
+      var keys = Object.keys(DEFAULTS);
+      for (var i = 0; i < keys.length; i++) {
+        var k = keys[i];
+        var el = document.getElementById('ef-' + k);
+        if (el) el.value = S[k] || '';
+      }
+    } else {
+      panel.classList.remove('visible');
+      document.body.classList.remove('edit-mode');
+    }
+  }
+
+  function applyEdit() {
+    var keys = Object.keys(DEFAULTS);
+    for (var i = 0; i < keys.length; i++) {
+      var k = keys[i];
+      var el = document.getElementById('ef-' + k);
+      if (el) S[k] = el.value;
+    }
+    saveS();
+    saveRows('tbody-completa');
+    saveRows('tbody-essencial');
+    renderAll();
+    toggleEdit();
+  }
+
+  /* ── Table Row Management ── */
+  function addRow(tid) {
+    var tbody = document.getElementById(tid);
+    if (!tbody) return;
+    var tr = document.createElement('tr');
+    tr.innerHTML =
+      '<td contenteditable="true">Novo ambiente</td>' +
+      '<td contenteditable="true">Descrição do item</td>' +
+      '<td><button class="inv-del-btn" onclick="removeRow(this)" title="Remover">✕</button> R$ —</td>';
+    tbody.appendChild(tr);
+  }
+
+  function removeRow(btn) {
+    var tr = btn.closest('tr');
+    if (tr) tr.remove();
+  }
+
+  function saveRows(tid) {
+    try {
+      var tbody = document.getElementById(tid);
+      if (!tbody) return;
+      var rows = [];
+      var trs = tbody.querySelectorAll('tr');
+      for (var i = 0; i < trs.length; i++) {
+        var tds = trs[i].querySelectorAll('td');
+        if (tds.length >= 3) {
+          rows.push([tds[0].textContent, tds[1].textContent, tds[2].textContent.replace('✕','').trim()]);
+        }
+      }
+      localStorage.setItem(SK + '_rows_' + tid, JSON.stringify(rows));
+    } catch(e) {}
+  }
+
+  function restoreRows(tid, rows) {
+    var tbody = document.getElementById(tid);
+    if (!tbody || !rows || !rows.length) return;
+    tbody.innerHTML = '';
+    for (var i = 0; i < rows.length; i++) {
+      var r = rows[i];
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td>' + esc(r[0]) + '</td>' +
+        '<td>' + esc(r[1]) + '</td>' +
+        '<td><button class="inv-del-btn" onclick="removeRow(this)" title="Remover">✕</button> ' + esc(r[2]) + '</td>';
+      tbody.appendChild(tr);
+    }
+  }
+
+  function esc(s) {
+    return String(s || '')
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;');
+  }
+
+  /* ── Print ── */
+  function printPDF() {
+    // Save row state before printing
+    saveRows('tbody-completa');
+    saveRows('tbody-essencial');
+    window.print();
+  }
+
+  /* ── Init ── */
+  function init() {
+    // Restore saved rows
+    try {
+      var rowsC = JSON.parse(localStorage.getItem(SK + '_rows_tbody-completa') || 'null');
+      var rowsE = JSON.parse(localStorage.getItem(SK + '_rows_tbody-essencial') || 'null');
+      if (rowsC) restoreRows('tbody-completa', rowsC);
+      if (rowsE) restoreRows('tbody-essencial', rowsE);
+    } catch(e) {}
+    renderAll();
+  }
+
+  // Expose functions to global scope for inline handlers
+  window.toggleEdit    = toggleEdit;
+  window.applyEdit     = applyEdit;
+  window.printPDF      = printPDF;
+  window.addRow        = addRow;
+  window.removeRow     = removeRow;
+  window.saveRows      = saveRows;
+  window.restoreRows   = restoreRows;
+  window.esc           = esc;
+  window.driveThumb    = driveThumb;
+  window.setHero       = setHero;
+  window.setP2         = setP2;
+  window.setRender     = setRender;
+  window.setP4         = setP4;
+  window.setP5         = setP5;
+  window.saveS         = saveS;
+  window.loadS         = loadS;
+  window.init          = init;
+
+  // Boot
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+})();
+</script>
+</body>
+</html>

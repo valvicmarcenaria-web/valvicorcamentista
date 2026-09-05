@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Valvic · Signature Arquitetônico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─── */
+:root {
+  --obs:      #1C1C1A;
+  --obs-l:    #252523;
+  --obs-ll:   #2E2E2C;
+  --brass:    #A8895C;
+  --brass-l:  #BEA070;
+  --brass-10: rgba(168,137,92,.10);
+  --brass-20: rgba(168,137,92,.20);
+  --brass-40: rgba(168,137,92,.40);
+  --off-wh:   #EDE8DD;
+  --muted:    rgba(237,232,221,.42);
+  --pw: 794px;
+  --ph: 1123px;
+}
+
+/* ─── RESET ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #111;
+  font-family: 'Inter', sans-serif;
+  color: var(--off-wh);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ─── PAGES ─── */
+.page {
+  width: var(--pw);
+  height: var(--ph);
+  margin: 0 auto 32px;
+  position: relative;
+  overflow: hidden;
+  background: var(--obs);
+  page-break-after: always;
+  page-break-inside: avoid;
+}
+.page:last-child { margin-bottom: 0; }
+
+/* ─── REGISTRATION / CROP MARKS ─── */
+.reg { position: absolute; pointer-events: none; z-index: 100; }
+.reg-tl { top: 16px; left: 16px; }
+.reg-tr { top: 16px; right: 16px; }
+.reg-bl { bottom: 16px; left: 16px; }
+.reg-br { bottom: 16px; right: 16px; }
+.reg svg { display: block; }
+
+/* ─── PAGE BG NUMBER ─── */
+.page-bg-num {
+  position: absolute;
+  bottom: 32px;
+  right: 40px;
+  font-family: 'Space Mono', monospace;
+  font-size: 180px;
+  font-weight: 700;
+  color: var(--off-wh);
+  opacity: 0.04;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* ─── PAGE NUMBER TOP-RIGHT ─── */
+.page-num {
+  position: absolute;
+  top: 28px;
+  right: 52px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: var(--brass-40);
+  letter-spacing: 0.15em;
+  z-index: 50;
+}
+
+/* ─── HAIRLINE RULE ─── */
+.hr-brass {
+  width: 100%;
+  height: 0.5px;
+  background: var(--brass-40);
+  border: none;
+}
+.hr-brass-20 {
+  width: 100%;
+  height: 0.5px;
+  background: var(--brass-20);
+  border: none;
+}
+
+/* ─── SLASH DIVIDER ─── */
+.slash {
+  color: var(--brass);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85em;
+  margin: 0 6px;
+  opacity: 0.7;
+}
+
+/* ─── LOGO ─── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  color: var(--off-wh);
+}
+.logo-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.25em;
+  color: var(--brass);
+  display: block;
+  margin-top: 2px;
+}
+
+/* ─── BADGE ─── */
+.badge {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--brass);
+  border: 0.5px solid var(--brass-40);
+  padding: 5px 10px;
+  text-transform: uppercase;
+}
+
+/* ─── BRASS BOTTOM BAR ─── */
+.brass-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--brass) 30%, var(--brass-l) 50%, var(--brass) 70%, transparent);
+}
+
+/* ─── EDIT TOOLBAR ─── */
+#toolbar {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 9999;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.tb-btn {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 8px 14px;
+  border: 1px solid var(--brass-40);
+  background: rgba(28,28,26,.92);
+  color: var(--brass);
+  cursor: pointer;
+  transition: all .2s;
+  white-space: nowrap;
+}
+.tb-btn:hover { background: var(--brass-10); border-color: var(--brass); }
+
+/* ─── EDITABLE CELLS ─── */
+.editable-cell {
+  outline: none;
+  transition: background .15s;
+}
+body.edit-mode .editable-cell {
+  background: rgba(168,137,92,.08);
+  outline: 1px dashed var(--brass-40);
+  cursor: text;
+}
+
+/* ─── IMAGE PLACEHOLDERS ─── */
+.img-ph {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.img-slot {
+  position: relative;
+  overflow: hidden;
+}
+.img-slot-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent 60%, var(--obs));
+  pointer-events: none;
+}
+
+/* ─── URL INPUT ROW (edit mode) ─── */
+.url-row {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(28,28,26,.95);
+  padding: 6px 10px;
+  gap: 6px;
+  align-items: center;
+  z-index: 200;
+}
+body.edit-mode .url-row { display: flex; }
+.url-row label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  color: var(--brass);
+  white-space: nowrap;
+  letter-spacing: 0.1em;
+}
+.url-row input {
+  flex: 1;
+  background: var(--obs-ll);
+  border: 1px solid var(--brass-40);
+  color: var(--off-wh);
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  padding: 4px 8px;
+  outline: none;
+}
+.url-row input:focus { border-color: var(--brass); }
+.url-row button {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  padding: 4px 10px;
+  background: var(--brass-10);
+  border: 1px solid var(--brass-40);
+  color: var(--brass);
+  cursor: pointer;
+}
+.url-row button:hover { background: var(--brass-20); }
+
+/* ════════════════════════════════════════════════
+   P1 — CAPA
+════════════════════════════════════════════════ */
+#p1 { background: var(--obs); }
+
+#p1 .p1-top {
+  position: absolute;
+  top: 36px;
+  left: 52px;
+  right: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 10;
+}
+
+#p1 .p1-meta {
+  text-align: right;
+}
+#p1 .p1-meta-date {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  color: var(--brass);
+  letter-spacing: 0.15em;
+  display: block;
+}
+#p1 .p1-meta-ref {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  display: block;
+  margin-top: 4px;
+}
+
+#p1 .hero-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+#p1 .hero-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+#p1 .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(28,28,26,.7) 0%, transparent 35%, transparent 55%, rgba(28,28,26,.9) 100%),
+    linear-gradient(to right, rgba(28,28,26,.3) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+#p1 .p1-bottom {
+  position: absolute;
+  bottom: 52px;
+  left: 52px;
+  right: 52px;
+  z-index: 10;
+}
+#p1 .p1-divider-line {
+  width: 48px;
+  height: 0.5px;
+  background: var(--brass);
+  margin-bottom: 20px;
+}
+#p1 .p1-client {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--off-wh);
+  letter-spacing: -0.01em;
+}
+#p1 .p1-project {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--brass-l);
+  margin-top: 10px;
+}
+
+/* ════════════════════════════════════════════════
+   P2 — DIFERENCIAIS
+════════════════════════════════════════════════ */
+#p2 { background: var(--obs-l); }
+
+#p2 .p2-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+}
+
+#p2 .p2-left {
+  position: relative;
+  overflow: hidden;
+}
+#p2 .p2-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#p2 .p2-left-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(28,28,26,.2) 0%, rgba(28,28,26,.05) 60%, rgba(28,28,26,.7) 100%);
+  pointer-events: none;
+}
+#p2 .p2-callout {
+  position: absolute;
+  bottom: 40px;
+  left: 24px;
+  right: 24px;
+}
+#p2 .p2-callout-inner {
+  border-left: 2px solid var(--brass);
+  padding: 12px 16px;
+  background: rgba(28,28,26,.75);
+}
+#p2 .p2-callout-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--off-wh);
+}
+#p2 .p2-callout-text em {
+  color: var(--brass-l);
+  font-style: italic;
+}
+
+#p2 .p2-right {
+  padding: 52px 44px 44px 40px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+}
+
+#p2 .p2-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--brass);
+  margin-bottom: 6px;
+}
+#p2 .p2-slash-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 28px;
+}
+#p2 .p2-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--off-wh);
+  line-height: 1.3;
+}
+
+#p2 .diff-list {
+  list-style: none;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+#p2 .diff-item {
+  padding: 18px 0;
+  border-bottom: 0.5px solid var(--brass-20);
+}
+#p2 .diff-item:first-child {
+  border-top: 0.5px solid var(--brass-20);
+}
+#p2 .diff-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  color: var(--brass);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+#p2 .diff-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--off-wh);
+  margin-bottom: 4px;
+}
+#p2 .diff-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ════════════════════════════════════════════════
+   P3 — O PROJETO
+════════════════════════════════════════════════ */
+#p3 { background: var(--obs-ll); }
+
+#p3 .p3-header {
+  position: relative;
+  z-index: 10;
+  padding: 36px 52px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+#p3 .p3-header-left .p3-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--brass);
+  margin-bottom: 6px;
+}
+#p3 .p3-header-left .p3-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 300;
+  color: var(--off-wh);
+}
+#p3 .p3-header-right {
+  text-align: right;
+}
+#p3 .p3-client-name {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--brass-l);
+}
+
+#p3 .hr-brass { margin: 0 52px; width: calc(100% - 104px); }
+
+#p3 .p3-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 24px 52px 0;
+  height: 640px;
+}
+
+#p3 .p3-render {
+  position: relative;
+  overflow: hidden;
+  border: 0.5px solid var(--brass-20);
+}
+#p3 .p3-render img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#p3 .p3-render-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent 70%, var(--obs-ll));
+  pointer-events: none;
+}
+
+#p3 .p3-ambiente {
+  padding: 24px 0 24px 32px;
+  display: flex;
+  flex-direction: column;
+}
+#p3 .p3-amb-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--brass);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+#p3 .amb-list {
+  list-style: none;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+#p3 .amb-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 11px 0;
+  border-bottom: 0.5px solid var(--brass-20);
+}
+#p3 .amb-item:first-child { border-top: 0.5px solid var(--brass-20); }
+#p3 .amb-idx {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  color: var(--brass-40);
+  min-width: 20px;
+}
+#p3 .amb-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--off-wh);
+}
+
+#p3 .p3-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: var(--obs);
+  border-top: 0.5px solid var(--brass-20);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+#p3 .p3-spec {
+  padding: 20px 28px;
+  border-right: 0.5px solid var(--brass-20);
+}
+#p3 .p3-spec:last-child { border-right: none; }
+#p3 .p3-spec-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  color: var(--brass);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+#p3 .p3-spec-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--off-wh);
+}
+
+/* ════════════════════════════════════════════════
+   P4 — LINHA DO TEMPO
+════════════════════════════════════════════════ */
+#p4 { background: var(--obs); }
+
+#p4 .p4-header {
+  padding: 36px 52px 20px;
+  position: relative;
+  z-index: 2;
+}
+#p4 .p4-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--brass);
+  margin-bottom: 6px;
+}
+#p4 .p4-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 300;
+  color: var(--off-wh);
+}
+
+#p4 .p4-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 12px 52px;
+  position: relative;
+  z-index: 2;
+}
+
+#p4 .step {
+  padding: 20px 24px 20px 0;
+  border-bottom: 0.5px solid var(--brass-20);
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+#p4 .step:nth-child(odd) { border-right: 0.5px solid var(--brass-20); }
+#p4 .step:nth-last-child(-n+2) { border-bottom: none; }
+
+#p4 .step-circle {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--brass-40);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--brass);
+}
+#p4 .step:nth-child(odd) { padding-right: 32px; }
+#p4 .step:nth-child(even) { padding-left: 24px; padding-right: 0; }
+
+#p4 .step-content {}
+#p4 .step-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--off-wh);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+#p4 .step-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+#p4 .p4-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  border-top: 0.5px solid var(--brass-20);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 52px;
+  z-index: 10;
+}
+#p4 .p4-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  letter-spacing: 0.2em;
+  color: var(--off-wh);
+}
+#p4 .p4-social {
+  display: flex;
+  gap: 24px;
+}
+#p4 .p4-social a {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: var(--brass);
+  text-decoration: none;
+}
+#p4 .p4-social a:hover { color: var(--brass-l); }
+
+/* ════════════════════════════════════════════════
+   P5 — DEPOIMENTO
+════════════════════════════════════════════════ */
+#p5 { background: var(--obs-l); }
+
+#p5 .p5-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+}
+
+#p5 .p5-left {
+  padding: 64px 48px 64px 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+#p5 .p5-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--brass);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#p5 .p5-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 0.5px;
+  background: var(--brass);
+}
+
+#p5 .p5-open-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 80px;
+  color: var(--brass);
+  line-height: 0.5;
+  opacity: 0.4;
+  margin-bottom: 16px;
+}
+
+#p5 .p5-quote-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--off-wh);
+  margin-bottom: 36px;
+}
+
+#p5 .p5-author-wrap {
+  border-top: 0.5px solid var(--brass-20);
+  padding-top: 20px;
+}
+#p5 .p5-author {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--brass-l);
+}
+#p5 .p5-author-proj {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-top: 4px;
+}
+#p5 .p5-author-cap {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: var(--brass-40);
+  margin-top: 6px;
+  text-transform: uppercase;
+}
+
+#p5 .p5-right {
+  position: relative;
+  overflow: hidden;
+}
+#p5 .p5-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#p5 .p5-right-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(37,37,35,.6) 0%, transparent 30%);
+  pointer-events: none;
+}
+
+/* ════════════════════════════════════════════════
+   P6 — INVESTIMENTO
+════════════════════════════════════════════════ */
+#p6 { background: var(--obs); }
+
+#p6 .p6-header {
+  background: var(--obs-l);
+  padding: 32px 52px 28px;
+  border-bottom: 0.5px solid var(--brass-20);
+  position: relative;
+  z-index: 2;
+}
+#p6 .p6-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--brass);
+  margin-bottom: 6px;
+}
+#p6 .p6-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--off-wh);
+}
+
+#p6 .p6-body {
+  padding: 24px 52px 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Tables */
+#p6 .inv-table-wrap {
+  margin-bottom: 18px;
+}
+#p6 .inv-table-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--brass);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+#p6 .inv-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+#p6 .inv-table th {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  color: var(--brass);
+  text-transform: uppercase;
+  padding: 8px 10px;
+  border-bottom: 0.5px solid var(--brass-40);
+  text-align: left;
+}
+#p6 .inv-table th:last-child { text-align: right; }
+#p6 .inv-table td {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--off-wh);
+  padding: 9px 10px;
+  border-bottom: 0.5px solid var(--brass-10);
+}
+#p6 .inv-table td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+#p6 .inv-table tr.total-row td {
+  border-top: 0.5px solid var(--brass-40);
+  border-bottom: none;
+  font-weight: 600;
+  color: var(--brass-l);
+  font-size: 13px;
+  padding-top: 10px;
+}
+#p6 .inv-table .desc-col { width: 55%; }
+#p6 .inv-table .val-col { width: 20%; text-align: right; }
+
+/* Add/remove rows */
+.add-row-btn {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: var(--brass);
+  background: none;
+  border: 0.5px dashed var(--brass-40);
+  padding: 4px 10px;
+  cursor: pointer;
+  margin-top: 4px;
+  display: none;
+}
+body.edit-mode .add-row-btn { display: inline-block; }
+.remove-row-btn {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  color: var(--brass-40);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 6px;
+  display: none;
+}
+body.edit-mode .remove-row-btn { display: inline; }
+
+/* Payment table */
+#p6 .pay-table-wrap {
+  margin-bottom: 18px;
+}
+#p6 .pay-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+#p6 .pay-table th {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  color: var(--brass);
+  padding: 8px 10px;
+  border-bottom: 0.5px solid var(--brass-40);
+  text-align: left;
+}
+#p6 .pay-table td {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: var(--off-wh);
+  padding: 8px 10px;
+  border-bottom: 0.5px solid var(--brass-10);
+}
+
+/* Meta cards */
+#p6 .meta-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  border: 0.5px solid var(--brass-20);
+  margin-bottom: 16px;
+}
+#p6 .meta-card {
+  padding: 14px 18px;
+  border-right: 0.5px solid var(--brass-20);
+}
+#p6 .meta-card:last-child { border-right: none; }
+#p6 .meta-card-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  color: var(--brass);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+#p6 .meta-card-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--off-wh);
+}
+#p6 .meta-card-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+/* CTA */
+#p6 .p6-cta {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.6;
+  text-align: center;
+  padding: 10px 0 0;
+}
+
+/* ─── PRINT ─── */
+@media print {
+  @page {
+    size: 794px 1123px;
+    margin: 0;
+  }
+  body {
+    background: transparent;
+    margin: 0;
+  }
+  #toolbar { display: none !important; }
+  .url-row { display: none !important; }
+  .add-row-btn { display: none !important; }
+  .remove-row-btn { display: none !important; }
+  .page {
+    margin: 0;
+    page-break-after: always;
+    page-break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+@media screen {
+  body { padding: 24px 0 64px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── TOOLBAR ─── -->
+<div id="toolbar">
+  <button class="tb-btn" onclick="toggleEdit()">✦ EDITAR</button>
+  <button class="tb-btn" onclick="printPDF()">↓ PDF</button>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P1 — CAPA
+════════════════════════════════════════════════ -->
+<div class="page" id="p1">
+  <!-- Registration marks -->
+  <div class="reg reg-tl"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="0" y1="8" x2="12" y2="8" stroke="#A8895C" stroke-width="0.5"/><line x1="8" y1="0" x2="8" y2="12" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+  <div class="reg reg-tr"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="20" y1="8" x2="8" y2="8" stroke="#A8895C" stroke-width="0.5"/><line x1="12" y1="0" x2="12" y2="12" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+  <div class="reg reg-bl"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="0" y1="12" x2="12" y2="12" stroke="#A8895C" stroke-width="0.5"/><line x1="8" y1="20" x2="8" y2="8" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+  <div class="reg reg-br"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="20" y1="12" x2="8" y2="12" stroke="#A8895C" stroke-width="0.5"/><line x1="12" y1="20" x2="12" y2="8" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+
+  <div class="page-bg-num">01</div>
+  <div class="page-num">CAPA <span class="slash">/</span> 01</div>
+
+  <!-- Hero image -->
+  <div class="hero-wrap" id="hero-wrap">
+    <img id="hero-img" class="img-ph" src="" alt="Hero">
+    <div class="hero-overlay"></div>
+    <div class="url-row">
+      <label>HERO URL</label>
+      <input type="text" id="hero-url-input" placeholder="URL do Google Drive ou direto...">
+      <button onclick="setHero()">OK</button>
+    </div>
+  </div>
+
+  <!-- Top bar -->
+  <div class="p1-top">
+    <div class="logo">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <path d="M11 2L12.3 7.7L18 6L13.5 10L18 14L12.3 12.3L11 18L9.7 12.3L4 14L8.5 10L4 6L9.7 7.7Z" fill="#A8895C" opacity="0.9"/>
+      </svg>
+      <div>
+        <div class="logo-text">VALVIC</div>
+        <span class="logo-sub">MARCENARIA SOB MEDIDA</span>
+      </div>
+    </div>
+    <div class="p1-meta">
+      <span class="p1-meta-date" id="p1-date">—</span>
+      <span class="p1-meta-ref" id="p1-ref">PROPOSTA / SIGNATURE · ARQUITETÔNICO</span>
+      <div class="badge" style="margin-top:10px;">Signature · Arquitetônico</div>
+    </div>
+  </div>
+
+  <!-- Bottom content -->
+  <div class="p1-bottom">
+    <div class="p1-divider-line"></div>
+    <div class="p1-client"><span class="editable-cell" id="p1-client" contenteditable="false">—</span></div>
+    <div class="p1-project"><span class="editable-cell" id="p1-project" contenteditable="false">—</span></div>
+  </div>
+
+  <div class="brass-bar"></div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P2 — DIFERENCIAIS
+════════════════════════════════════════════════ -->
+<div class="page" id="p2">
+  <div class="reg reg-tl"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="0" y1="8" x2="12" y2="8" stroke="#A8895C" stroke-width="0.5"/><line x1="8" y1="0" x2="8" y2="12" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+  <div class="reg reg-tr"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="20" y1="8" x2="8" y2="8" stroke="#A8895C" stroke-width="0.5"/><line x1="12" y1="0" x2="12" y2="12" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+  <div class="reg reg-bl"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="0" y1="12" x2="12" y2="12" stroke="#A8895C" stroke-width="0.5"/><line x1="8" y1="20" x2="8" y2="8" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+  <div class="reg reg-br"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="20" y1="12" x2="8" y2="12" stroke="#A8895C" stroke-width="0.5"/><line x1="12" y1="20" x2="12" y2="8" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+
+  <div class="page-bg-num">02</div>
+  <div class="page-num">DIFERENCIAIS <span class="slash">/</span> 02</div>
+
+  <div class="p2-grid">
+    <!-- Left: photo + callout -->
+    <div class="p2-left">
+      <img id="p2-img" class="img-ph" src="" alt="Diferencial">
+      <div class="p2-left-overlay"></div>
+      <div class="p2-callout">
+        <div class="p2-callout-inner">
+          <p class="p2-callout-text">O detalhe / que você não vê<br>/ é o que faz<br><em>a diferença.</em></p>
+        </div>
+      </div>
+      <div class="url-row">
+        <label>P2 URL</label>
+        <input type="text" id="p2-url-input" placeholder="URL da imagem...">
+        <button onclick="setP2()">OK</button>
+      </div>
+    </div>
+
+    <!-- Right: differentials -->
+    <div class="p2-right">
+      <div class="p2-eyebrow">VALVIC <span class="slash">/</span> DIFERENCIAIS</div>
+      <ul class="diff-list">
+        <li class="diff-item">
+          <div class="diff-tag">01 <span class="slash">/</span> FERRAGEM</div>
+          <div class="diff-name">Blum Movento Blumotion</div>
+          <div class="diff-desc">Gavetas com amortecimento automático e fechamento suave em 100% das peças. Sem exceções, sem upgrade opcional.</div>
+        </li>
+        <li class="diff-item">
+          <div class="diff-tag">02 <span class="slash">/</span> ABERTURA</div>
+          <div class="diff-name">Feather-Touch Tip-On</div>
+          <div class="diff-desc">Portas push-to-open sem puxador. Um toque e o móvel abre — limpeza de linha total na face dos armários.</div>
+        </li>
+        <li class="diff-item">
+          <div class="diff-tag">03 <span class="slash">/</span> GARANTIA</div>
+          <div class="diff-name">Garantia Vitalícia Blum</div>
+          <div class="diff-desc">Toda a ferragem Blum tem garantia vitalícia do fabricante. Você não troca ferragem — nunca.</div>
+        </li>
+        <li class="diff-item">
+          <div class="diff-tag">04 <span class="slash">/</span> PROJETO</div>
+          <div class="diff-name">Projeto Executivo 3D</div>
+          <div class="diff-desc">Planejamento milimétrico antes da produção: vista, corte, alzado. O que está no papel, é o que você recebe.</div>
+        </li>
+        <li class="diff-item">
+          <div class="diff-tag">05 <span class="slash">/</span> INSTALAÇÃO</div>
+          <div class="diff-name">Equipe Própria</div>
+          <div class="diff-desc">Instalação executada pela mesma equipe que produziu. Responsabilidade integral do primeiro ao último parafuso.</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P3 — O PROJETO
+════════════════════════════════════════════════ -->
+<div class="page" id="p3">
+  <div class="reg reg-tl"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="0" y1="8" x2="12" y2="8" stroke="#A8895C" stroke-width="0.5"/><line x1="8" y1="0" x2="8" y2="12" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+  <div class="reg reg-tr"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="20" y1="8" x2="8" y2="8" stroke="#A8895C" stroke-width="0.5"/><line x1="12" y1="0" x2="12" y2="12" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+  <div class="reg reg-bl"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="0" y1="12" x2="12" y2="12" stroke="#A8895C" stroke-width="0.5"/><line x1="8" y1="20" x2="8" y2="8" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+  <div class="reg reg-br"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="20" y1="12" x2="8" y2="12" stroke="#A8895C" stroke-width="0.5"/><line x1="12" y1="20" x2="12" y2="8" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+
+  <div class="page-bg-num">03</div>
+  <div class="page-num">O PROJETO <span class="slash">/</span> 03</div>
+
+  <div class="p3-header">
+    <div class="p3-header-left">
+      <div class="p3-eyebrow">VALVIC <span class="slash">/</span> O PROJETO</div>
+      <div class="p3-title">Escopo <span style="font-style:italic;font-weight:300;"> planejado</span></div>
+    </div>
+    <div class="p3-header-right">
+      <div class="p3-client-name" id="p3-client">—</div>
+      <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);margin-top:4px;" id="p3-proj">—</div>
+    </div>
+  </div>
+
+  <hr class="hr-brass" style="margin: 0 52px; width: calc(100% - 104px);">
+
+  <div class="p3-body">
+    <!-- Render -->
+    <div class="p3-render img-slot">
+      <img id="render-img" class="img-ph" src="" alt="Render do projeto">
+      <div class="p3-render-overlay"></div>
+      <div class="url-row">
+        <label>RENDER</label>
+        <input type="text" id="render-url-input" placeholder="URL do render...">
+        <button onclick="setRender()">OK</button>
+      </div>
+    </div>
+
+    <!-- Ambiente list -->
+    <div class="p3-ambiente">
+      <div class="p3-amb-title">AMBIENTES <span class="slash">/</span> ITENS</div>
+      <ul class="amb-list" id="amb-list">
+        <li class="amb-item"><span class="amb-idx">01</span><span class="amb-name editable-cell" contenteditable="false">—</span></li>
+        <li class="amb-item"><span class="amb-idx">02</span><span class="amb-name editable-cell" contenteditable="false">—</span></li>
+        <li class="amb-item"><span class="amb-idx">03</span><span class="amb-name editable-cell" contenteditable="false">—</span></li>
+        <li class="amb-item"><span class="amb-idx">04</span><span class="amb-name editable-cell" contenteditable="false">—</span></li>
+        <li class="amb-item"><span class="amb-idx">05</span><span class="amb-name editable-cell" contenteditable="false">—</span></li>
+        <li class="amb-item"><span class="amb-idx">06</span><span class="amb-name editable-cell" contenteditable="false">—</span></li>
+        <li class="amb-item"><span class="amb-idx">07</span><span class="amb-name editable-cell" contenteditable="false">—</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer specs -->
+  <div class="p3-footer">
+    <div class="p3-spec">
+      <div class="p3-spec-label">FERRAGEM</div>
+      <div class="p3-spec-value editable-cell" id="p3-ferragem" contenteditable="false">—</div>
+    </div>
+    <div class="p3-spec">
+      <div class="p3-spec-label">MATERIAL</div>
+      <div class="p3-spec-value editable-cell" id="p3-material" contenteditable="false">—</div>
+    </div>
+    <div class="p3-spec">
+      <div class="p3-spec-label">ACABAMENTO</div>
+      <div class="p3-spec-value editable-cell" id="p3-acabamento" contenteditable="false">—</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P4 — LINHA DO TEMPO
+════════════════════════════════════════════════ -->
+<div class="page" id="p4">
+  <div class="reg reg-tl"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="0" y1="8" x2="12" y2="8" stroke="#A8895C" stroke-width="0.5"/><line x1="8" y1="0" x2="8" y2="12" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+  <div class="reg reg-tr"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="20" y1="8" x2="8" y2="8" stroke="#A8895C" stroke-width="0.5"/><line x1="12" y1="0" x2="12" y2="12" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+  <div class="reg reg-bl"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="0" y1="12" x2="12" y2="12" stroke="#A8895C" stroke-width="0.5"/><line x1="8" y1="20" x2="8" y2="8" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+  <div class="reg reg-br"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="20" y1="12" x2="8" y2="12" stroke="#A8895C" stroke-width="0.5"/><line x1="12" y1="20" x2="12" y2="8" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+
+  <div class="page-bg-num">04</div>
+  <div class="page-num">PROCESSO <span class="slash">/</span> 04</div>
+
+  <div class="p4-header">
+    <div class="p4-eyebrow">VALVIC <span class="slash">/</span> PROCESSO</div>
+    <div class="p4-title">Linha do Tempo <em style="font-family:'Playfair Display',serif;font-style:italic;font-weight:300;"> do projeto</em></div>
+  </div>
+
+  <hr class="hr-brass" style="margin: 0 52px 0; width: calc(100% - 104px);">
+
+  <div class="p4-grid">
+    <div class="step">
+      <div class="step-circle">01</div>
+      <div class="step-content">
+        <div class="step-name">Visita &amp; Escuta</div>
+        <div class="step-desc">Medição in loco e briefing detalhado. Entendemos o seu espaço, rotina e referências antes de desenhar uma linha.</div>
+      </div>
+    </div>
+    <div class="step" style="padding-left:32px;">
+      <div class="step-circle">02</div>
+      <div class="step-content">
+        <div class="step-name">Projeto 3D</div>
+        <div class="step-desc">Desenho executivo completo com perspectiva 3D. Você aprova cada detalhe antes da produção começar.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-circle">03</div>
+      <div class="step-content">
+        <div class="step-name">Proposta &amp; Aprovação</div>
+        <div class="step-desc">Proposta clara, sem surpresas. Escopo, prazo e condições definidos por escrito. Você decide com segurança.</div>
+      </div>
+    </div>
+    <div class="step" style="padding-left:32px;">
+      <div class="step-circle">04</div>
+      <div class="step-content">
+        <div class="step-name">Corte &amp; Produção</div>
+        <div class="step-desc">Produção em nossa marcenaria própria, com controle de qualidade em cada etapa — do corte à furação.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-circle">05</div>
+      <div class="step-content">
+        <div class="step-name">Pintura &amp; Acabamento</div>
+        <div class="step-desc">Acabamentos em laca, melamina ou madeira sólida. Aplicação em câmara controlada para resultado uniforme.</div>
+      </div>
+    </div>
+    <div class="step" style="padding-left:32px;">
+      <div class="step-circle">06</div>
+      <div class="step-content">
+        <div class="step-name">Ferragem &amp; Montagem</div>
+        <div class="step-desc">Ferragens Blum instaladas e reguladas com precisão. Cada gaveta, dobradiça e corrediça testada antes da entrega.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-circle">07</div>
+      <div class="step-content">
+        <div class="step-name">Instalação</div>
+        <div class="step-desc">Equipe própria cuida da instalação do início ao fim. Ambiente limpo, nivelado e pronto para uso no prazo combinado.</div>
+      </div>
+    </div>
+    <div class="step" style="padding-left:32px;">
+      <div class="step-circle">08</div>
+      <div class="step-content">
+        <div class="step-name">Garantia &amp; Suporte</div>
+        <div class="step-desc">Pós-venda ativo e garantia vitalícia na ferragem Blum. Qualquer ajuste após a entrega, estamos a uma mensagem.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p4-footer">
+    <div class="p4-brand">VALVIC</div>
+    <div class="p4-social">
+      <a href="https://instagram.com/valvicmarcenaria" target="_blank">@valvicmarcenaria</a>
+      <span class="slash" style="opacity:0.4;">/</span>
+      <a href="https://youtube.com/@valvicmarcenaria" target="_blank">YouTube</a>
+    </div>
+  </div>
+
+  <div class="brass-bar"></div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P5 — DEPOIMENTO
+════════════════════════════════════════════════ -->
+<div class="page" id="p5">
+  <div class="reg reg-tl"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="0" y1="8" x2="12" y2="8" stroke="#A8895C" stroke-width="0.5"/><line x1="8" y1="0" x2="8" y2="12" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+  <div class="reg reg-tr"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="20" y1="8" x2="8" y2="8" stroke="#A8895C" stroke-width="0.5"/><line x1="12" y1="0" x2="12" y2="12" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+  <div class="reg reg-bl"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="0" y1="12" x2="12" y2="12" stroke="#A8895C" stroke-width="0.5"/><line x1="8" y1="20" x2="8" y2="8" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+  <div class="reg reg-br"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="20" y1="12" x2="8" y2="12" stroke="#A8895C" stroke-width="0.5"/><line x1="12" y1="20" x2="12" y2="8" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+
+  <div class="page-bg-num">05</div>
+  <div class="page-num">DEPOIMENTO <span class="slash">/</span> 05</div>
+
+  <div class="p5-grid">
+    <!-- Left: quote -->
+    <div class="p5-left">
+      <div class="p5-eyebrow">CLIENTES <span class="slash">/</span> EXPERIÊNCIA</div>
+      <div class="p5-open-quote">"</div>
+      <p class="p5-quote-text">
+        <span class="editable-cell" id="p5-depoimento" contenteditable="false">—</span>
+      </p>
+      <div class="p5-author-wrap">
+        <div class="p5-author"><span class="editable-cell" id="p5-autor" contenteditable="false">—</span></div>
+        <div class="p5-author-proj"><span class="editable-cell" id="p5-projeto-dep" contenteditable="false">—</span></div>
+        <div class="p5-author-cap"><span class="editable-cell" id="p5-caption" contenteditable="false">—</span></div>
+      </div>
+    </div>
+
+    <!-- Right: photo -->
+    <div class="p5-right">
+      <img id="p5-img" class="img-ph" src="" alt="Foto depoimento">
+      <div class="p5-right-overlay"></div>
+      <div class="url-row">
+        <label>P5 URL</label>
+        <input type="text" id="p5-url-input" placeholder="URL da foto...">
+        <button onclick="setP5()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P6 — INVESTIMENTO
+════════════════════════════════════════════════ -->
+<div class="page" id="p6">
+  <div class="reg reg-tl"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="0" y1="8" x2="12" y2="8" stroke="#A8895C" stroke-width="0.5"/><line x1="8" y1="0" x2="8" y2="12" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+  <div class="reg reg-tr"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="20" y1="8" x2="8" y2="8" stroke="#A8895C" stroke-width="0.5"/><line x1="12" y1="0" x2="12" y2="12" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+  <div class="reg reg-bl"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="0" y1="12" x2="12" y2="12" stroke="#A8895C" stroke-width="0.5"/><line x1="8" y1="20" x2="8" y2="8" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+  <div class="reg reg-br"><svg width="20" height="20" viewBox="0 0 20 20"><line x1="20" y1="12" x2="8" y2="12" stroke="#A8895C" stroke-width="0.5"/><line x1="12" y1="20" x2="12" y2="8" stroke="#A8895C" stroke-width="0.5"/></svg></div>
+
+  <div class="page-bg-num">06</div>
+  <div class="page-num">INVESTIMENTO <span class="slash">/</span> 06</div>
+
+  <!-- Header -->
+  <div class="p6-header">
+    <div class="p6-eyebrow">VALVIC <span class="slash">/</span> INVESTIMENTO</div>
+    <div class="p6-title">Seu Investimento.</div>
+  </div>
+
+  <div class="p6-body">
+
+    <!-- Tabela Completa -->
+    <div class="inv-table-wrap">
+      <div class="inv-table-label">OPÇÃO COMPLETA</div>
+      <table class="inv-table" id="tbl-completa">
+        <thead>
+          <tr>
+            <th class="desc-col">Descrição</th>
+            <th>Ambiente</th>
+            <th class="val-col">Valor</th>
+            <th style="width:30px;"></th>
+          </tr>
+        </thead>
+        <tbody id="tbody-completa">
+          <tr>
+            <td><span class="editable-cell" contenteditable="false">Escopo completo conforme projeto</span></td>
+            <td><span class="editable-cell" contenteditable="false">Todos os ambientes</span></td>
+            <td>R$ <span class="editable-cell" contenteditable="false">0,00</span></td>
+            <td><button class="remove-row-btn" onclick="removeRow(this)">✕</button></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row">
+            <td colspan="2">TOTAL OPÇÃO COMPLETA</td>
+            <td>R$ <span class="editable-cell" id="total-completa" contenteditable="false">0,00</span></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+      <button class="add-row-btn" onclick="addRow('tbody-completa')">+ LINHA</button>
+    </div>
+
+    <!-- Tabela Essencial -->
+    <div class="inv-table-wrap">
+      <div class="inv-table-label">OPÇÃO ESSENCIAL</div>
+      <table class="inv-table" id="tbl-essencial">
+        <thead>
+          <tr>
+            <th class="desc-col">Descrição</th>
+            <th>Ajuste</th>
+            <th class="val-col">Valor</th>
+            <th style="width:30px;"></th>
+          </tr>
+        </thead>
+        <tbody id="tbody-essencial">
+          <tr>
+            <td><span class="editable-cell" contenteditable="false">Escopo essencial</span></td>
+            <td><span class="editable-cell" id="essencial-ajuste" contenteditable="false">—</span></td>
+            <td>R$ <span class="editable-cell" contenteditable="false">0,00</span></td>
+            <td><button class="remove-row-btn" onclick="removeRow(this)">✕</button></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row">
+            <td colspan="2">TOTAL OPÇÃO ESSENCIAL</td>
+            <td>R$ <span class="editable-cell" id="total-essencial" contenteditable="false">0,00</span></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+      <button class="add-row-btn" onclick="addRow('tbody-essencial')">+ LINHA</button>
+    </div>
+
+    <!-- Payment conditions -->
+    <div class="pay-table-wrap">
+      <div class="inv-table-label">CONDIÇÕES DE PAGAMENTO</div>
+      <table class="pay-table" id="tbl-pagamento">
+        <thead>
+          <tr>
+            <th>Condição</th>
+            <th>Parcelas</th>
+            <th>Detalhes</th>
+            <th style="width:30px;"></th>
+          </tr>
+        </thead>
+        <tbody id="tbody-pagamento">
+          <tr>
+            <td><span class="editable-cell" contenteditable="false">À vista</span></td>
+            <td><span class="editable-cell" contenteditable="false">1×</span></td>
+            <td><span class="editable-cell" contenteditable="false">Pix ou transferência — melhor condição</span></td>
+            <td><button class="remove-row-btn" onclick="removeRow(this)">✕</button></td>
+          </tr>
+          <tr>
+            <td><span class="editable-cell" contenteditable="false">Parcelado</span></td>
+            <td><span class="editable-cell" contenteditable="false">—</span></td>
+            <td><span class="editable-cell" contenteditable="false">Consultar condições</span></td>
+            <td><button class="remove-row-btn" onclick="removeRow(this)">✕</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="add-row-btn" onclick="addRow('tbody-pagamento')">+ CONDIÇÃO</button>
+    </div>
+
+    <!-- Meta cards -->
+    <div class="meta-cards">
+      <div class="meta-card">
+        <div class="meta-card-label">PRAZO DE ENTREGA</div>
+        <div class="meta-card-value"><span class="editable-cell" id="meta-prazo" contenteditable="false">—</span> dias</div>
+        <div class="meta-card-sub">após aprovação e sinal</div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-card-label">GARANTIA</div>
+        <div class="meta-card-value"><span class="editable-cell" id="meta-garantia" contenteditable="false">—</span></div>
+        <div class="meta-card-sub">ferragem Blum + mão de obra</div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-card-label">VALIDADE DA PROPOSTA</div>
+        <div class="meta-card-value"><span class="editable-cell" id="meta-validade" contenteditable="false">—</span> dias</div>
+        <div class="meta-card-sub">a partir desta data</div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <p class="p6-cta">
+      Para confirmar, basta nos enviar uma mensagem. Estamos prontos para começar.
+    </p>
+  </div>
+
+  <div class="brass-bar"></div>
+</div>
+
+<!-- ─────────────────────────────────────────────
+     JAVASCRIPT
+───────────────────────────────────────────── -->
+<script>
+'use strict';
+
+const SK = 'valvic_signature_arq';
+
+const DEFAULTS = {
+  NOME_CLIENTE:     'Cliente',
+  PROJETO:          'Projeto de marcenaria sob medida',
+  DATA_PROPOSTA:    '17/06/2026',
+  FERRAGEM:         'Blum Movento',
+  MATERIAL:         'MDF 18mm',
+  ACABAMENTO:       'Laca PU fosca',
+  ESSENCIAL_AJUSTE: '[especificar o ambiente ou item]',
+  DEPOIMENTO:       'Eu estou apaixonada... e não é só pela beleza... mas o comprometimento e dedicação desde o orçamento, até execução e entrega. Indico de olhos fechados!!! Muitíssimo obrigada...',
+  DEP_AUTOR:        'Graciene',
+  DEP_PROJETO:      'Vale dos Cristais',
+  DEP_CAPTION:      'Projeto executado · Residência particular',
+  PRAZO:            '90 a 100',
+  GARANTIA_ANOS:    'Vitalícia',
+  VALIDADE:         '10',
+  TOTAL_COMPLETA:   '0,00',
+  TOTAL_ESSENCIAL:  '0,00',
+  HERO_URL:   'https://lh3.googleusercontent.com/d/1tIPkB_fxt1DYWHcj3-s5tdVyM7jocaTa=w1600',
+  P2_URL:     'https://lh3.googleusercontent.com/d/1SQriQN8H4RD2yjHQoLm84HQ65DCoQE1p=w1600',
+  RENDER_URL: 'https://lh3.googleusercontent.com/d/1uvflYxeVe0QkPMfWEOml6xPmR48f90ZY=w1600',
+  P4_URL:     '',
+  P5_URL:     'https://lh3.googleusercontent.com/d/1MsmhniA_z1HXRBw_bQ7D-VgujrDDxLNH=w1600',
+};
+
+const S = Object.assign({}, DEFAULTS, loadS());
+
+/* ─── STORAGE ─── */
+function loadS() {
+  try { return JSON.parse(localStorage.getItem(SK) || '{}'); }
+  catch(e) { return {}; }
+}
+function saveS() {
+  try { localStorage.setItem(SK, JSON.stringify(S)); }
+  catch(e) {}
+}
+
+/* ─── DRIVE THUMB ─── */
+function driveThumb(url) {
+  if (!url) return '';
+  // Already normalized
+  if (url.includes('lh3.googleusercontent.com')) return url;
+  // Drive share link patterns
+  const m1 = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+  const m2 = url.match(/id=([a-zA-Z0-9_-]+)/);
+  const id = m1 ? m1[1] : (m2 ? m2[1] : null);
+  if (id) return `https://lh3.googleusercontent.com/d/${id}=w1600`;
+  return url;
+}
+
+/* ─── ESC HTML ─── */
+function esc(s) {
+  return String(s)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+/* ─── INIT ─── */
+function init() {
+  // P1
+  const el = (id) => document.getElementById(id);
+
+  el('p1-date').textContent   = S.DATA_PROPOSTA;
+  el('p1-client').textContent = S.NOME_CLIENTE;
+  el('p1-project').textContent= S.PROJETO;
+
+  // P3
+  el('p3-client').textContent    = S.NOME_CLIENTE;
+  el('p3-proj').textContent      = S.PROJETO;
+  el('p3-ferragem').textContent  = S.FERRAGEM;
+  el('p3-material').textContent  = S.MATERIAL;
+  el('p3-acabamento').textContent= S.ACABAMENTO;
+  el('essencial-ajuste').textContent = S.ESSENCIAL_AJUSTE;
+
+  // P5
+  el('p5-depoimento').textContent  = S.DEPOIMENTO;
+  el('p5-autor').textContent       = S.DEP_AUTOR;
+  el('p5-projeto-dep').textContent = S.DEP_PROJETO;
+  el('p5-caption').textContent     = S.DEP_CAPTION;
+
+  // P6 meta
+  el('meta-prazo').textContent    = S.PRAZO;
+  el('meta-garantia').textContent = S.GARANTIA_ANOS;
+  el('meta-validade').textContent = S.VALIDADE;
+  el('total-completa').textContent  = S.TOTAL_COMPLETA;
+  el('total-essencial').textContent = S.TOTAL_ESSENCIAL;
+
+  // Images
+  applyImg('hero-img',   S.HERO_URL);
+  applyImg('p2-img',     S.P2_URL);
+  applyImg('render-img', S.RENDER_URL);
+  applyImg('p5-img',     S.P5_URL);
+
+  // Pre-fill URL inputs
+  el('hero-url-input').value   = S.HERO_URL   || '';
+  el('p2-url-input').value     = S.P2_URL     || '';
+  el('render-url-input').value = S.RENDER_URL || '';
+  el('p5-url-input').value     = S.P5_URL     || '';
+
+  // Restore table rows
+  restoreRows('tbody-completa',  S._rows_completa);
+  restoreRows('tbody-essencial', S._rows_essencial);
+  restoreRows('tbody-pagamento', S._rows_pagamento);
+}
+
+function applyImg(imgId, url) {
+  const img = document.getElementById(imgId);
+  if (!img) return;
+  const resolved = driveThumb(url);
+  if (resolved) {
+    img.src = resolved;
+    img.style.display = 'block';
+  } else {
+    img.style.display = 'none';
+  }
+}
+
+/* ─── EDIT MODE ─── */
+function toggleEdit() {
+  const isEdit = document.body.classList.toggle('edit-mode');
+  const btn = document.querySelector('#toolbar .tb-btn');
+  btn.textContent = isEdit ? '✦ SALVAR' : '✦ EDITAR';
+
+  // Toggle contenteditable on all editable-cells
+  document.querySelectorAll('.editable-cell').forEach(el => {
+    el.contentEditable = isEdit ? 'true' : 'false';
+  });
+
+  if (!isEdit) {
+    // Save all editable cells to S
+    S.NOME_CLIENTE    = document.getElementById('p1-client').textContent.trim();
+    S.PROJETO         = document.getElementById('p1-project').textContent.trim();
+    S.FERRAGEM        = document.getElementById('p3-ferragem').textContent.trim();
+    S.MATERIAL        = document.getElementById('p3-material').textContent.trim();
+    S.ACABAMENTO      = document.getElementById('p3-acabamento').textContent.trim();
+    S.ESSENCIAL_AJUSTE= document.getElementById('essencial-ajuste').textContent.trim();
+    S.DEPOIMENTO      = document.getElementById('p5-depoimento').textContent.trim();
+    S.DEP_AUTOR       = document.getElementById('p5-autor').textContent.trim();
+    S.DEP_PROJETO     = document.getElementById('p5-projeto-dep').textContent.trim();
+    S.DEP_CAPTION     = document.getElementById('p5-caption').textContent.trim();
+    S.PRAZO           = document.getElementById('meta-prazo').textContent.trim();
+    S.GARANTIA_ANOS   = document.getElementById('meta-garantia').textContent.trim();
+    S.VALIDADE        = document.getElementById('meta-validade').textContent.trim();
+    S.TOTAL_COMPLETA  = document.getElementById('total-completa').textContent.trim();
+    S.TOTAL_ESSENCIAL = document.getElementById('total-essencial').textContent.trim();
+
+    // Sync cross-page client name
+    document.getElementById('p3-client').textContent = S.NOME_CLIENTE;
+    document.getElementById('p3-proj').textContent   = S.PROJETO;
+
+    saveRows('tbody-completa');
+    saveRows('tbody-essencial');
+    saveRows('tbody-pagamento');
+    saveS();
+  }
+}
+
+/* ─── PDF PRINT ─── */
+function printPDF() {
+  if (document.body.classList.contains('edit-mode')) toggleEdit();
+  setTimeout(() => window.print(), 200);
+}
+
+/* ─── TABLE ROWS ─── */
+function addRow(tbodyId) {
+  const tbody = document.getElementById(tbodyId);
+  if (!tbody) return;
+  const isPayment = tbodyId === 'tbody-pagamento';
+  let html = '';
+  if (isPayment) {
+    html = `<tr>
+      <td><span class="editable-cell" contenteditable="true">—</span></td>
+      <td><span class="editable-cell" contenteditable="true">—</span></td>
+      <td><span class="editable-cell" contenteditable="true">—</span></td>
+      <td><button class="remove-row-btn" onclick="removeRow(this)" style="display:inline;">✕</button></td>
+    </tr>`;
+  } else {
+    html = `<tr>
+      <td><span class="editable-cell" contenteditable="true">—</span></td>
+      <td><span class="editable-cell" contenteditable="true">—</span></td>
+      <td>R$ <span class="editable-cell" contenteditable="true">0,00</span></td>
+      <td><button class="remove-row-btn" onclick="removeRow(this)" style="display:inline;">✕</button></td>
+    </tr>`;
+  }
+  tbody.insertAdjacentHTML('beforeend', html);
+}
+
+function removeRow(btn) {
+  const tr = btn.closest('tr');
+  if (tr) tr.remove();
+}
+
+function saveRows(tbodyId) {
+  const tbody = document.getElementById(tbodyId);
+  if (!tbody) return;
+  const rows = [];
+  tbody.querySelectorAll('tr').forEach(tr => {
+    const cells = [];
+    tr.querySelectorAll('td').forEach(td => {
+      cells.push(td.innerHTML);
+    });
+    rows.push(cells);
+  });
+  S['_rows_' + tbodyId.replace('tbody-','')] = rows;
+}
+
+function restoreRows(tbodyId, rows) {
+  if (!rows || !rows.length) return;
+  const tbody = document.getElementById(tbodyId);
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  rows.forEach(cells => {
+    const tr = document.createElement('tr');
+    cells.forEach(cellHtml => {
+      const td = document.createElement('td');
+      td.innerHTML = cellHtml;
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  // Re-bind remove buttons
+  tbody.querySelectorAll('.remove-row-btn').forEach(btn => {
+    btn.onclick = function() { removeRow(this); };
+  });
+  // Apply edit mode to restored cells if currently editing
+  if (document.body.classList.contains('edit-mode')) {
+    tbody.querySelectorAll('.editable-cell').forEach(el => {
+      el.contentEditable = 'true';
+    });
+  }
+}
+
+/* ─── IMAGE SETTERS ─── */
+function setHero() {
+  const url = document.getElementById('hero-url-input').value.trim();
+  S.HERO_URL = url;
+  applyImg('hero-img', url);
+  saveS();
+}
+
+function setP2() {
+  const url = document.getElementById('p2-url-input').value.trim();
+  S.P2_URL = url;
+  applyImg('p2-img', url);
+  saveS();
+}
+
+function setRender() {
+  const url = document.getElementById('render-url-input').value.trim();
+  S.RENDER_URL = url;
+  applyImg('render-img', url);
+  saveS();
+}
+
+function setP4() {
+  // P4 does not currently have a primary image slot; placeholder for future use
+}
+
+function setP5() {
+  const url = document.getElementById('p5-url-input').value.trim();
+  S.P5_URL = url;
+  applyImg('p5-img', url);
+  saveS();
+}
+
+/* ─── BOOT ─── */
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>

@@ -23,6 +23,26 @@ encanta e fecha**.
 > identidade Valvic e (2) a **estratégia de fechamento** (discurso, condições,
 > tratamento de objeções).
 
+## 🧭 Protocolo Moleskine — centro único de aprendizado (OBRIGATÓRIO)
+
+O **`MOLESKINE.md`** (raiz do repositório) é o **centro único de aprendizado da
+Valvic**: concentra erros, acertos, direcionamentos do Jonathan e padrões de
+TODOS os agentes (Lavinia, Rodrigo, Vitor, Stefan, Wallison). Existe para
+**evitar erros recorrentes, otimizar processos e aprofundar cada especialista no
+empreendimento**. Três regras, sem exceção:
+
+1. **CONSULTAR ANTES.** Em TODA nova tarefa de orçamento, proposta ou demanda
+   estratégica, ler o Moleskine ANTES de agir — com atenção à seção do próprio
+   agente e ao bloco "❌ Erros recorrentes — nunca repetir". Não se começa do zero
+   quando o aprendizado já está catalogado.
+2. **EVOLUIR SEMPRE.** Incorporar os registros ao raciocínio: cada entrada torna
+   o agente mais profundo no negócio Valvic. A skill não é estática — amadurece a
+   cada nota. Quem lê o Moleskine deve sair mais especialista do que entrou.
+3. **REGISTRAR DEPOIS (automático).** Todo aprendizado novo — erro cometido,
+   acerto validado, direcionamento do Jonathan, padrão descoberto — é escrito no
+   Moleskine na hora, na seção do agente, com data. Sem esperar ser pedido.
+   Histórico vivo para o desenvolvimento de todos.
+
 ## Princípio nº 0 — o que é interno NUNCA chega ao cliente
 
 A proposta é a **camada do cliente**. Custo, MC, alertas do Rodrigo, dúvidas

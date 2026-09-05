@@ -119,6 +119,10 @@ minerada pelo próprio especialista a partir de todo o histórico do repositóri
 - Escada de pagamento casada com o caixa do Rodrigo (+antecipação = +desconto; ex. K&F 40/30/30) + aviso de reajuste (julho/2026) como urgência; validade por perfil.
 - Objeções: acolher→reenquadrar→conduzir; silêncio após o preço; nunca dar desconto antes de pedido (e só por antecipação). Cliente recorrente = reconhecimento, não convencimento.
 
+**🔎 Inteligência competitiva:**
+- **[2026-07-26] Grupo Todeschini confirmado** — Todeschini, **Italínea** e **Criare** são o MESMO grupo (Todeschini S.A., Bento Gonçalves/RS). Prova estrutural: a financeira cativa **Todescredi** atende as 3 marcas. Escalonamento por bolso: Todeschini (1ª linha/premium-tradição) → Italínea (volume/custo-benefício, "maior rede da América Latina", garantia fábrica 5a) → Criare (2ª linha/design acessível; nasceu na Móveis Carraro em 2003, comprada pela Todeschini ~2007). Apoio: Carraro/Morata (fábricas), Avantti (escritório), Todesflor (madeira). ⚠️ **Homônimo:** o "Grupo Todeschini" de Curitiba (estacionamentos/alimentação) NÃO é o mesmo. Data de entrada da Italínea = a confirmar.
+- **Como a Valvic vence planejado industrial:** não competir por preço na mesma prateleira — **mudar de eixo: preço → categoria**. Eles vendem módulo industrial (40/60/80cm) adaptado ao espaço → geram fresta, arremate/tamponamento, catálogo fechado, ferragem de pacote. Nós construímos PARA o espaço (milímetro, sem fresta, acabamento ilimitado, ferragem de escolha). Fraquezas operacionais deles (Reclame Aqui): atraso de prazo, montagem terceirizada com defeito, assistência lenta. **Regra de ouro: NUNCA falar mal — acolher→reenquadrar→conduzir; fazer as perguntas que expõem o limite deles** ("quem monta? o acabamento da arquiteta está no catálogo? a ferragem é Blum/Hettich ou a do pacote?"). Fechar na **garantia por ferragem** (trunfo objetivo). Dossiê tático (interno, não enviar ao cliente): `closer-vendas/ferramentas/dossie-grupo-todeschini.html`.
+
 ---
 
 ### 🎨 Aprendizados — Stefan (Design & Identidade Visual)
@@ -145,6 +149,8 @@ minerada pelo próprio especialista a partir de todo o histórico do repositóri
 - **Impressão A4:** `@page{size:A4;margin:0}`, `page-break-after:always` + `page-break-inside:avoid`, **`print-color-adjust:exact` com `-webkit-`**, `#controls` escondido no `@media print`.
 - **HTML auto-contido** (Google Fonts CDN, abre no browser, PDF via Ctrl+P) com spans `.token` editáveis — padrão de toda ferramenta Valvic.
 - **[2026-06-21] Logo errada vetorizada** — Stefan usou uma estrela/compass rose inventada; logo real é **wordmark tipográfico** em Aurora-Regular. Corrigido. ❌ NUNCA inventar marca sem ver o arquivo oficial primeiro.
+- **[2026-06-25] Cartão de visita — 1ª rodada fraca, refeita com referências** — Stefan entregou 3 conceitos (NOIR/MADEIRA/ATELIER) que Jonathan achou pouco criativos. Jonathan mandou refs (cartões de marcenaria/imobiliária ultra premium: Carara, Satori, Mastai, **Sylvain menuisier**) e o DNA comum era claro: **textura tátil de veio de madeira / curvas topográficas em letterpress profundo + fio metálico (foil) sobre charcoal soft-touch**. ❌ Lição: peça "ultra premium" sem referência vira "premium genérico" — PEDIR refs do cliente cedo. ✅ Resultado: conceito **CERNE** (`cartao-cerne-ultra-premium.html`) — veio de madeira gerado proceduralmente em SVG (grão fluindo + nó com anéis), deboss tátil + veias em foil latão, logo no "clareira" onde o veio se abre. Duplo sentido: cerne = coração da madeira + "o cerne da questão".
+- **[2026-06-25] Pipeline de validação visual** — gerar arte → `cairosvg` p/ PNG OU **Playwright/Chromium headless** (`/opt/pw-browsers/chromium`, `NODE_PATH=/opt/node22/lib/node_modules`) p/ screenshot do HTML → **Read da imagem p/ conferir com o próprio olho** → iterar. Pegou colisão logo×texto no verso que eu não veria no código. ✅ SEMPRE renderizar e olhar antes de entregar peça visual.
 
 **🏷️ MARCA VALVIC — REGISTRO OFICIAL (Stefan · 2026-06-21)**
 - **Tipo:** Wordmark tipográfico puro — **sem símbolo/ícone separado**.
@@ -776,3 +782,8 @@ prédio passar de **R$ 80k** (vários pavimentos), sua regra pede **MC mínima 4
 Avaliar subir a margem no fechamento do prédio inteiro ou manter 37% como exceção.
 
 Cobrar Andre Alphaville (R$ 70.800 em aberto) e Marcelo e Simony (R$ 34.850).
+---
+
+## Recados rápidos
+
+*(notas passageiras — podem ser apagadas após lidas)*
