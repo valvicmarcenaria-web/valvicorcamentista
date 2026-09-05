@@ -68,7 +68,7 @@ Política interna produz efeito trabalhista. Três cuidados que não são formal
 3. **Nada de exposição.** Política não cita nome, não expõe caso individual e não descreve
    pessoa. Comunicado interno que constrange alguém nominalmente vira prova contra a empresa.
 
-> **Regra do Téo:** política que crie **obrigação, sanção ou desconto** sai marcada como
+> **Regra do Lucas:** política que crie **obrigação, sanção ou desconto** sai marcada como
 > *"a validar com o jurídico antes de publicar"*. Escrever é da Academy; validar não é.
 
 ## Ciência e arquivo

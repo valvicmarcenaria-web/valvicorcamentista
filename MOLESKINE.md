@@ -7,7 +7,7 @@ pode ler e escrever aqui. Formato livre — marcar data e agente responsável.
 
 ## Tarefas abertas
 
-### [2026-09-05] Módulo VI da apostila — Acabamento e o padrão Valvic — Téo (Academy)
+### [2026-09-05] Módulo VI da apostila — Acabamento e o padrão Valvic — Lucas (Academy)
 **Solicitante:** Jonathan
 **Status:** 🟢 Escrito e gerado · aguardando aplicação com a equipe
 
@@ -36,7 +36,7 @@ o cliente mais vê". Escrito **sobre erro real da casa**, não sobre teoria:
 
 ---
 
-### [2026-09-05] POP-01 — Conferência de peça antes de sair da fábrica — Téo (Academy)
+### [2026-09-05] POP-01 — Conferência de peça antes de sair da fábrica — Lucas (Academy)
 **Solicitante:** Jonathan
 **Status:** 🟡 Escrito, aguardando aprovação da Direção e implantação
 

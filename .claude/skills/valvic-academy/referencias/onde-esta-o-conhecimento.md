@@ -36,7 +36,7 @@ E os **projetos reais** em `projetos/` — casos completos que valem ouro como e
 numa aula (`2026-kenia-e-fabio-casa-completa.md`, `2025-lucas-e-ana-apto101.md`, e a pasta
 `treino/` com calibrações).
 
-> Regra: o Téo **usa** esse acervo para ensinar. Se a dúvida for de número ou de spec para
+> Regra: o Lucas **usa** esse acervo para ensinar. Se a dúvida for de número ou de spec para
 > precificar, a bola é da Lavinia.
 
 ---
@@ -165,7 +165,7 @@ bases de dados atualizadas e correções**. Formato livre, com data e agente res
 Para a Academy ele serve de três formas:
 1. **Saber o que está em aberto** antes de propor conteúdo novo.
 2. **Achar decisões e números atualizados** que ainda não entraram em documento formal.
-3. **Deixar registrado** o que a Academy produziu e o que ficou pendente — quando o Téo
+3. **Deixar registrado** o que a Academy produziu e o que ficou pendente — quando o Lucas
    terminar algo relevante ou identificar um buraco, ele **anota no Moleskine**, com data,
    para a próxima sessão encontrar.
 
