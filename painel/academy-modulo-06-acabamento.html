@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Módulo VI · Acabamento e o padrão Valvic — Valvic Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0E2038;--navy2:#16314F;--gold:#C2A05A;--goldsoft:#d8bd80;
+--goldbg:#F6EDD6;--ink:#1b2733;--muted:#6c7785;--linha:#dfe4ea;
+--ok:#2F7D4F;--red:#B0413F;--blue:#2F5D8C}
+@page{size:A4 portrait;margin:0}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:#8a8f96;font-family:'Inter',system-ui,sans-serif;color:var(--ink)}
+.sheet{width:210mm;height:297mm;margin:0 auto;background:#fff;padding:13mm 15mm;
+  display:flex;flex-direction:column;page-break-after:always;overflow:hidden}
+.sheet:last-child{page-break-after:auto}
+@media print{body{background:#fff}.sheet{margin:0}}
+
+/* ---------- capa ---------- */
+.capa{background:var(--navy);color:#fff;justify-content:center;padding:22mm 18mm}
+.capa .aca{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
+.capa .mod{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--goldsoft);
+  margin-top:14mm;letter-spacing:2px}
+.capa h1{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:600;
+  margin:2mm 0 0;line-height:1.05}
+.capa .sub{font-size:12px;color:#b9c3cf;margin-top:4mm;max-width:122mm;line-height:1.55}
+.capa .sub b{color:#fff;font-weight:600}
+.capa .indice{margin-top:11mm;border-top:1px solid rgba(194,160,90,.35);padding-top:5mm;
+  max-width:132mm}
+.capa .indice .r{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:3mm}
+.capa .indice div.li{display:flex;gap:4mm;font-size:10.5px;color:#c9d2dc;
+  padding:1.6mm 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.capa .indice div.li span{font-family:'JetBrains Mono',monospace;color:var(--goldsoft);
+  font-size:9.5px;width:13mm;flex:none;white-space:nowrap}
+.capa .indice b{color:#fff;font-weight:600}
+.capa .frase{margin-top:9mm;border-left:2px solid var(--gold);padding-left:5mm;
+  font-family:'Cormorant Garamond',serif;font-size:19px;color:#fff;line-height:1.35;max-width:120mm}
+.capa .quem{margin-top:auto;border-top:1px solid rgba(194,160,90,.4);padding-top:5mm;
+  font-size:9.5px;color:#b9c3cf;line-height:1.7}
+.capa .quem b{color:var(--goldsoft)}
+
+/* ---------- cabeçalho interno ---------- */
+.topo{display:flex;justify-content:space-between;align-items:flex-end;
+  border-bottom:2px solid var(--navy);padding-bottom:5px;margin-bottom:8px}
+.marca{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;
+  color:var(--navy);line-height:1}
+.marca small{display:block;font-family:'Inter',sans-serif;font-size:7.5px;font-weight:600;
+  letter-spacing:2.2px;text-transform:uppercase;color:var(--gold);margin-top:2px}
+.topo .ctx{text-align:right;font-size:8.5px;color:var(--muted);letter-spacing:.4px}
+
+/* ---------- blocos ---------- */
+h2{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--navy);
+  margin:0 0 1.5mm;font-weight:600;line-height:1.15}
+h3{font-size:11px;color:var(--navy2);margin:3mm 0 1.2mm;font-weight:700}
+p{font-size:10.2px;line-height:1.5;margin:0 0 2.2mm}
+ul,ol{font-size:10.2px;line-height:1.5;margin:0 0 2.5mm;padding-left:5mm}
+li{margin-bottom:.9mm}
+b,strong{color:var(--navy2)}
+
+.porque{background:var(--navy);color:#fff;border-radius:3px;padding:3.6mm 4.6mm;margin-bottom:3.4mm}
+.porque .r{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--goldsoft)}
+.porque p{margin:1.4mm 0 0;font-size:10.6px;line-height:1.5;color:#eef2f6}
+.porque p+p{margin-top:1.8mm}
+.porque b{color:#fff}
+
+.objetivo{border:1px solid var(--gold);border-radius:3px;padding:3.4mm 4.6mm;margin-bottom:3.6mm;
+  background:#fffdf8}
+.objetivo .r{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);
+  font-weight:700}
+.objetivo ul{margin:1.6mm 0 0;font-size:10px;padding-left:4.5mm}
+.objetivo li{margin-bottom:.6mm}
+
+.pratica,.erro,.confere,.caso{border-radius:3px;padding:3.2mm 4.4mm;margin:2.8mm 0}
+.pratica{background:#f4f8f4;border-left:3px solid var(--ok)}
+.erro{background:#fbf3f3;border-left:3px solid var(--red)}
+.confere{background:var(--goldbg);border-left:3px solid var(--gold)}
+.caso{background:#f2f4f7;border-left:3px solid var(--navy2)}
+.pratica .r,.erro .r,.confere .r,.caso .r{font-size:8px;letter-spacing:2px;text-transform:uppercase;
+  font-weight:700;margin-bottom:1.3mm}
+.pratica .r{color:var(--ok)} .erro .r{color:var(--red)} .confere .r{color:#8a6d3b}
+.caso .r{color:var(--navy2)}
+.pratica p,.erro p,.confere p,.caso p,.pratica li,.erro li,.confere li,.caso li{font-size:9.8px;line-height:1.48}
+.pratica p:last-child,.erro p:last-child,.confere p:last-child,.caso p:last-child{margin-bottom:0}
+.pratica ul,.erro ul,.confere ul,.caso ul{margin-bottom:0;padding-left:4.5mm}
+.pratica ol,.confere ol{margin-bottom:0;padding-left:4.8mm}
+
+table{width:100%;border-collapse:collapse;font-size:9.3px;margin:2.2mm 0}
+th{background:var(--navy2);color:var(--goldsoft);font-size:7.6px;font-weight:600;
+  letter-spacing:.8px;text-transform:uppercase;padding:1.7mm 2mm;text-align:left}
+td{border-bottom:1px solid var(--linha);padding:1.6mm 2mm;vertical-align:top;line-height:1.4}
+tr:nth-child(even) td{background:#f7f9fb}
+td.q{text-align:center;font-family:'JetBrains Mono',monospace;font-weight:600;
+  color:var(--navy);width:13mm}
+td.fam{font-weight:600;color:var(--navy2);width:47mm}
+
+.termo{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--navy2);
+  background:#f2f4f7;padding:.4mm 1.4mm;border-radius:2px}
+
+.regra{background:var(--goldbg);border:1px solid var(--goldsoft);border-radius:3px;
+  padding:3.2mm 4.4mm;margin:3mm 0;font-family:'Cormorant Garamond',serif;
+  font-size:15.5px;color:var(--navy);line-height:1.35}
+.regra b{color:var(--navy);font-weight:700}
+
+.exercicio{border:1.5px dashed var(--gold);border-radius:3px;padding:3.4mm 4.4mm;margin-top:auto}
+.exercicio .r{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);
+  font-weight:700}
+.exercicio p{margin:1.3mm 0 0;font-size:10px}
+.linhas{margin-top:1.6mm}
+.linhas div{border-bottom:1px solid var(--linha);height:5.4mm}
+
+.chk{columns:2;column-gap:8mm;margin:2mm 0 0}
+.chk ul{margin:0;padding:0;list-style:none;font-size:9.6px}
+.chk li{position:relative;padding-left:5.4mm;margin-bottom:1.7mm;line-height:1.35;
+  break-inside:avoid}
+.chk li:before{content:'';position:absolute;left:0;top:.6mm;width:3.2mm;height:3.2mm;
+  border:1px solid var(--navy2);border-radius:1px;background:#fff}
+
+.duas{display:flex;gap:5mm}
+.duas>div{flex:1}
+
+.rodape{margin-top:auto;border-top:1px solid var(--linha);padding-top:4px;
+  display:flex;justify-content:space-between;font-size:7.5px;color:var(--muted);
+  letter-spacing:.5px;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ 1 · CAPA ══════════════════ -->
+<div class="sheet capa">
+  <div class="aca">Valvic Academy</div>
+  <div class="mod">MÓDULO VI</div>
+  <h1>Acabamento e o<br>padrão Valvic</h1>
+  <div class="sub">O que separa <b>montado</b> de <b>entregue</b>. Como reconhecer, executar
+  e conferir o acabamento que o cliente enxerga — e que é por ele que ele paga a diferença.</div>
+  <div class="frase">“O cliente não avalia a estrutura do móvel, que está certa.
+  Ele avalia o tapa-furo que faltou, o risco de caneta, a fita crepe esquecida e o friso
+  mal cortado.”</div>
+
+  <div class="indice">
+    <div class="r">O que tem dentro</div>
+    <div class="li"><span>pág. 2</span><div><b>A conta dos 37 pontos</b> — o que duas obras
+      nossas devolveram, agrupado por família de defeito</div></div>
+    <div class="li"><span>pág. 3</span><div><b>Arremate, friso e recorte</b> — a família
+      campeã, 11 casos, e o critério de “está bom”</div></div>
+    <div class="li"><span>pág. 4</span><div><b>Borda, tapa-furo, furação e regulagem</b> —
+      o acabamento que se faz na bancada, em minutos</div></div>
+    <div class="li"><span>pág. 5</span><div><b>Perfil de alumínio, LED e limpeza</b> —
+      o que o cliente vê primeiro e não tem conserto discreto</div></div>
+    <div class="li"><span>pág. 6</span><div><b>Os dois portões</b> — checklist da volta do
+      cliente e a avaliação</div></div>
+  </div>
+
+  <div class="quem">
+    <b>Para quem:</b> ajudante, marceneiro e montador &nbsp;·&nbsp;
+    <b>Tempo de leitura:</b> 25 minutos<br>
+    <b>Onde se aplica:</b> bancada da fábrica e montagem na obra &nbsp;·&nbsp;
+    <b>Base:</b> 37 pontos reais de duas obras nossas<br>
+    <b>Versão</b> 1 · Setembro/2026 &nbsp;·&nbsp; uso interno
+  </div>
+</div>
+
+<!-- ══════════════════ 2 · POR QUE E A CONTA DOS 37 ══════════════════ -->
+<div class="sheet">
+  <div class="topo">
+    <div class="marca">valvic<small>Academy</small></div>
+    <div class="ctx">Módulo VI · Acabamento e o padrão Valvic</div>
+  </div>
+
+  <div class="porque">
+    <div class="r">Por que isto importa</div>
+    <p>Duas obras nossas geraram <b>37 pontos de correção</b>: 21 numa cozinha e 16 numa obra
+    de quatro ambientes. <b>Nenhum era erro de estrutura</b> — o móvel estava certo por dentro.
+    Era arremate, friso, tapa-furo, perfil e limpeza.</p>
+    <p>E o preço não é o mesmo em todo lugar: <b>peça que sai errada da fábrica custa dez vezes
+    mais na obra</b> — viagem, hora de marceneiro, obra parada e desgaste com o cliente. Todo
+    este módulo existe para empurrar o erro para trás, para onde ele é barato.</p>
+  </div>
+
+  <div class="objetivo">
+    <div class="r">Ao final deste módulo você vai saber</div>
+    <ul>
+      <li><b>Reconhecer</b> as seis famílias de defeito de acabamento que mais repetem aqui</li>
+      <li><b>Executar</b> no padrão da casa: friso, arremate, borda, tapa-furo e regulagem</li>
+      <li><b>Conferir</b> a sua própria peça em 3 minutos, antes de ela sair da bancada</li>
+      <li><b>Fazer a volta do cliente</b> antes de dizer que a obra acabou</li>
+      <li><b>Dizer o critério</b> de “está bom” de cada item — sem depender de opinião</li>
+    </ul>
+  </div>
+
+  <h2>A conta dos 37 pontos</h2>
+  <p>Os dois documentos de acompanhamento de obra da casa listam, item a item, tudo o que
+  precisou voltar. Agrupados por família, é isto:</p>
+
+  <table>
+    <tr><th>Família de defeito</th><th style="text-align:center">Casos</th><th>O que era, na prática</th></tr>
+    <tr><td class="fam">Arremate, friso e recorte</td><td class="q">11</td><td>vão sem acabamento · recorte da barra ao lado da lava-louça · arremate da lateral do forno · friso entre nichos e entre painéis</td></tr>
+    <tr><td class="fam">Perfil de alumínio e LED</td><td class="q">5</td><td>perfil amassado · alumínio ondulado na base · acabamento do perfil de LED</td></tr>
+    <tr><td class="fam">Tapa-furo e tampa de dobradiça</td><td class="q">4</td><td>tapa-furos ausentes · dobradiça sem tampa, em vários pontos de dois ambientes</td></tr>
+    <tr><td class="fam">Regulagem e alinhamento</td><td class="q">3</td><td>báscula que só para na abertura total · puxador que não encosta no topo · acessório torto</td></tr>
+    <tr><td class="fam">Furação</td><td class="q">2</td><td>furo na fita, no montante · furo errado de suporte dentro do módulo aéreo</td></tr>
+    <tr><td class="fam">Limpeza e marcação</td><td class="q">2</td><td>risco de caneta em vários pontos · fita crepe no teto e dentro do móvel</td></tr>
+    <tr><td class="fam">Faltou definir antes</td><td class="q">7</td><td>espelho, pulsador, serralheria com LED, instalação da porta do elevador</td></tr>
+    <tr><td class="fam">Melhoria e peça nova <span style="font-weight:400;color:var(--muted)">(não é erro)</span></td><td class="q">3</td><td>—</td></tr>
+  </table>
+
+  <div class="caso">
+    <div class="r">O que a conta devolve</div>
+    <p><b>Dos 34 erros de verdade, 27 são acabamento puro</b> — oito em cada dez. Não são erros
+    difíceis: quase todos se resolvem com <b>três minutos de bancada</b> ou <b>vinte minutos de
+    vistoria</b>. E são quase todos do mesmo tipo. Isso é uma boa notícia:
+    <b>problema de um tipo só se resolve com método só</b>.</p>
+  </div>
+
+  <div class="regra">
+    <b>A regra do módulo:</b> todo encontro é acabamento. Onde duas peças se encontram —
+    peça com peça, móvel com parede, móvel com eletrodoméstico — é ali que o cliente olha,
+    e é ali que a obra é julgada.
+  </div>
+
+  <div class="exercicio">
+    <div class="r">Para responder antes de virar a página</div>
+    <p>Olhe o último móvel que você montou. Quantos <b>encontros</b> ele tem — peça com peça,
+    móvel com parede, móvel com eletro? Escreva o número e o ponto que você acha mais frágil.</p>
+    <div class="linhas"><div></div><div></div></div>
+  </div>
+
+  <div class="rodape">
+    <span>Valvic Academy · Módulo VI · uso interno</span>
+    <span>pág. 2 de 6</span>
+  </div>
+</div>
+
+<!-- ══════════════════ 3 · ARREMATE, FRISO E RECORTE ══════════════════ -->
+<div class="sheet">
+  <div class="topo">
+    <div class="marca">valvic<small>Academy</small></div>
+    <div class="ctx">Módulo VI · 1 de 4 famílias · arremate, friso e recorte</div>
+  </div>
+
+  <h2>Arremate, friso e recorte</h2>
+  <p><b>11 dos 37 pontos.</b> É a família campeã — e a que mais repete de obra para obra.</p>
+
+  <p><span class="termo">friso</span> é a linha que sobra entre duas peças que se encontram —
+  entre nichos, entre painéis, entre o painel e o marco. <span class="termo">arremate</span> é a
+  peça que fecha o encontro do móvel com o mundo: parede, rodapé, forno, lava-louça, teto.</p>
+
+  <div class="caso">
+    <div class="r">O caso real</div>
+    <p>O <b>acabamento dos frisos entre nichos</b> foi listado como “muito mal feito” numa
+    cozinha — e era <b>repetição</b> do que já tinha acontecido no painel do hall de outra obra.
+    Na obra de quatro ambientes, o friso apareceu <b>três vezes</b>. Erro que repete não é
+    distração: é etapa sem padrão.</p>
+  </div>
+
+  <h3>Por que o friso é o mais difícil</h3>
+  <p>Porque ele é a <b>última</b> peça e a <b>mais visível</b>: cortado depois de tudo pronto,
+  no fim do dia e no fim da obra, com o material que sobrou. É o único item do móvel em que
+  <b>o erro de 1 mm aparece</b> — a linha fica aberta numa ponta e fechada na outra, e o olho
+  pega isso de longe.</p>
+
+  <div class="pratica">
+    <div class="r">Na prática, aqui</div>
+    <ol>
+      <li><b>Meça o vão real, nos dois extremos e no meio.</b> Vão de obra não é vão de
+      projeto: parede fora de prumo abre e fecha o friso ao longo do comprimento.</li>
+      <li><b>Corte por último, com o móvel já fixado e nivelado</b> — nunca antes, para não
+      cortar contra uma medida que ainda vai mudar.</li>
+      <li><b>Recorte em cima de eletro não se faz “no olho”:</b> forno, cooktop e lava-louça
+      têm medida de catálogo. Confira a medida do aparelho antes de recortar a peça.</li>
+      <li><b>Acabou de encaixar, passe a mão.</b> O dedo pega degrau e aresta viva que o olho
+      ainda não pegou.</li>
+    </ol>
+  </div>
+
+  <div class="erro">
+    <div class="r">Erro comum</div>
+    <p><b>Decidir o friso na hora.</b> Quando ele vira decisão de última hora, sai da sobra:
+    cor aproximada, largura variável, corte torto. O sinal de alerta é a frase “depois a gente
+    resolve esse vão” — se ela apareceu na montagem, o friso já nasceu errado.</p>
+  </div>
+
+  <div class="confere">
+    <div class="r">Como conferir — o critério de “está bom”</div>
+    <ul>
+      <li>A linha do friso é <b>constante de ponta a ponta</b>: mede igual nos dois extremos e no meio.</li>
+      <li><b>Sem degrau</b> entre as peças — passe a mão em todo o comprimento, não só na frente.</li>
+      <li><b>Sem cola aparente</b>, sem falha e sem aresta viva.</li>
+      <li>O recorte em volta de eletro <b>acompanha a linha do aparelho</b>, com folga uniforme.</li>
+      <li>Olhe <b>de pé e de cócoras</b> — rodapé e base só se enxergam de baixo.</li>
+    </ul>
+  </div>
+
+  <h3>Os três encontros que mais falham</h3>
+  <table>
+    <tr><th>Encontro</th><th>O que fecha</th><th>O que deu errado nas nossas obras</th></tr>
+    <tr><td class="fam">Peça com peça</td><td>friso</td><td>frisos entre nichos e entre painéis — a linha abre de um lado</td></tr>
+    <tr><td class="fam">Móvel com a obra</td><td>arremate</td><td>arremate lateral da base do painel ausente · fechamento mal recortado no rodapé</td></tr>
+    <tr><td class="fam">Móvel com o eletro</td><td>recorte</td><td>lateral do forno mal recortada · recorte da barra ao lado da lava-louça</td></tr>
+  </table>
+
+  <div class="exercicio">
+    <div class="r">Exercício prático</div>
+    <p>Escolha um friso já instalado. <b>Meça a linha nos dois extremos e no meio.</b> Se as
+    três medidas não forem iguais, escreva em que ponto da execução a diferença entrou.</p>
+    <div class="linhas"><div></div><div></div></div>
+  </div>
+
+  <div class="rodape">
+    <span>Valvic Academy · Módulo VI · uso interno</span>
+    <span>pág. 3 de 6</span>
+  </div>
+</div>
+
+<!-- ══════════════════ 4 · BORDA, TAPA-FURO, FURAÇÃO E REGULAGEM ══════════════════ -->
+<div class="sheet">
+  <div class="topo">
+    <div class="marca">valvic<small>Academy</small></div>
+    <div class="ctx">Módulo VI · 2 de 4 famílias · o acabamento que se faz na fábrica</div>
+  </div>
+
+  <h2>Borda, tapa-furo, furação e regulagem</h2>
+  <p><b>9 dos 37 pontos.</b> Todos eles se resolvem <b>na bancada</b>, em minutos. Todos eles
+  custaram uma viagem porque chegaram na obra.</p>
+
+  <h3>A borda — e a verdade sobre a nossa coladeira</h3>
+  <p>O padrão da casa é <b>fita de 22 × 0,45 mm, na cor da chapa</b>. A cor tem de bater com a
+  chapa, não “ficar perto”. E há um ponto que precisa estar escrito, não escondido:
+  <b>a nossa coladeira (SCM ME25) não finaliza 100%</b>. O acabamento manual da borda
+  <b>é etapa do processo</b>, não retoque de quem sobrou tempo.</p>
+  <p>Régua de 6 mm — ripado fino — <b>não passa na coladeira</b>: a
+  <span class="termo">filetagem</span> é manual, mais lenta e custa cerca de
+  <b>R$ 4,00/m contra R$ 2,50/m</b> na máquina. Peça ripada, portanto, se planeja antes: ela
+  não se resolve no aperto do fim do dia.</p>
+
+  <div class="pratica">
+    <div class="r">Na prática, aqui</div>
+    <ul>
+      <li><b>Borda:</b> colagem 100%, sem descole, sem excesso e sem falha · refile limpo, sem
+      rebarba e sem queimado · canto no raio do padrão · peça sem cola aparente.</li>
+      <li><b>Tapa-furo:</b> <b>um por furo aparente</b>, na cor da peça. É o defeito mais barato
+      de evitar da lista inteira — e apareceu como “diversos tapa-furos ausentes”.</li>
+      <li><b>Tampa de dobradiça:</b> toda dobradiça aparente leva tampa. Foi listada como
+      ausente em <b>três pontos</b> de duas obras — é item de conferência, não de memória.</li>
+      <li><b>Furação:</b> furo na posição certa <b>e no lado certo</b>; profundidade correta em
+      minifix e cavilha. Furo errado dentro de módulo aéreo <b>não some</b>: ou tapa, ou troca a peça.</li>
+      <li><b>Regulagem:</b> portas e gavetas com <b>folga uniforme</b> e alinhadas; báscula
+      regulada para parar onde o cliente solta — e não só na abertura total; puxador
+      <b>encostando no topo</b> da lateral.</li>
+    </ul>
+  </div>
+
+  <div class="erro">
+    <div class="r">Erro comum</div>
+    <p><b>Achar que a peça “está boa o suficiente” porque a estrutura está certa.</b> Numa
+    gaveta divisora de talheres a colagem malfeita foi classificada como <b>acabamento
+    inaceitável</b> — a gaveta funcionava. Estrutura certa e acabamento errado é peça reprovada
+    do mesmo jeito.</p>
+  </div>
+
+  <div class="confere">
+    <div class="r">Como conferir — 3 minutos por módulo, na bancada</div>
+    <p>Isto tudo já tem procedimento escrito: <b>POP-01 — Conferência de peça antes de sair da
+    fábrica</b>, sobre os portões 4, 5 e 6 da Ficha de Conferência da OP. Passe o dedo nas
+    bordas dos quatro lados, abra e feche <b>todas</b> as portas e gavetas, confira tapa-furo um
+    por um. <b>Módulo sem bolinha verde não é embalado</b> — e quem assina, responde.</p>
+    <p><b>Quase todos os 21 itens daquela cozinha teriam sido pegos aqui</b>, com a peça ainda
+    na bancada, onde o conserto é barato.</p>
+  </div>
+
+  <div class="regra">
+    <b>A conta da bancada:</b> um tapa-furo custa centavos e trinta segundos. O mesmo tapa-furo
+    faltando na obra custa uma viagem, uma hora de marceneiro e uma frase do cliente que a
+    empresa não esquece.
+  </div>
+
+  <div class="exercicio">
+    <div class="r">Para responder</div>
+    <p>Chegou uma peça sua na obra com um furo de suporte no lugar errado, dentro de um aéreo,
+    e a montagem é hoje. O que você faz — e em que ponto da fábrica esse furo deveria ter sido
+    pego?</p>
+    <div class="linhas"><div></div><div></div></div>
+  </div>
+
+  <div class="rodape">
+    <span>Valvic Academy · Módulo VI · uso interno</span>
+    <span>pág. 4 de 6</span>
+  </div>
+</div>
+
+<!-- ══════════════════ 5 · PERFIL, LED E LIMPEZA ══════════════════ -->
+<div class="sheet">
+  <div class="topo">
+    <div class="marca">valvic<small>Academy</small></div>
+    <div class="ctx">Módulo VI · 3 e 4 de 4 famílias · o acabamento que só existe na obra</div>
+  </div>
+
+  <h2>Perfil de alumínio, LED e limpeza</h2>
+  <p><b>7 dos 37 pontos.</b> São os que o cliente vê primeiro ao entrar no ambiente — e os
+  únicos que <b>não têm conserto discreto</b>: alumínio marcado não se retoca, se troca.</p>
+
+  <h3>Perfil de alumínio — não perdoa</h3>
+  <p>Cinco pontos foram perfil: <b>amassado</b>, <b>ondulado na base</b> e
+  <b>acabamento mal feito no perfil de LED</b>. O alumínio ondulado da base de uma cabeceira era
+  <b>falha de fabricação</b> — e falha de fabricação se pega no <b>recebimento do material</b>,
+  com a ficha na mão, não depois de instalada na parede do cliente.</p>
+
+  <div class="pratica">
+    <div class="r">Na prática, aqui</div>
+    <ul>
+      <li><b>Conferiu no recebimento</b>: perfil vem reto, sem amassado e sem ondulação. Peça
+      torta volta para o fornecedor <b>no mesmo dia</b> — não sobe para a obra “para ver se dá”.</li>
+      <li><b>Viaja protegido</b>: cantoneira, plástico bolha e stretch, nunca solto embaixo de
+      peça pesada. Um perfil amassa dentro do baú, não na parede.</li>
+      <li><b>Corte e emenda de perfil</b> são acabamento visível: a emenda fica onde menos se
+      olha, nunca no meio do vão da frente.</li>
+      <li><b>LED:</b> a instalação e a regulagem têm <b>2 anos de garantia</b> — a fita LED em si
+      <b>não tem garantia</b>. Ou seja: perfil mal acabado <b>volta por nossa conta</b>, e por
+      dois anos.</li>
+    </ul>
+  </div>
+
+  <h3>Limpeza e marcação — o defeito mais barato de todos</h3>
+  <p>Dois pontos, e são os que mais irritam o cliente porque parecem descuido:
+  <b>riscos de caneta em vários pontos</b> e <b>fita crepe esquecida no teto e dentro do
+  móvel</b>. Nenhum dos dois custa dinheiro para evitar. Os dois custaram uma volta.</p>
+
+  <div class="erro">
+    <div class="r">Erro comum</div>
+    <ul>
+      <li><b>Marcar peça com caneta em face aparente.</b> Caneta não sai da melamina clara.
+      Marcação em face vista é a lápis, e sai antes de entregar.</li>
+      <li><b>Limpar só o que está na altura dos olhos.</b> A fita crepe esquecida estava no
+      <b>teto</b> e <b>dentro da cristaleira</b> — os dois lugares onde ninguém olha na pressa.</li>
+      <li><b>Mexer em instalação que não é nossa.</b> Numa cozinha, a tomada da lava-louças foi
+      deslocada — e o problema passou a ser nosso no momento em que a mão encostou nela. Se a
+      instalação atrapalha, isso é <b>pendência reportada</b>, não conserto improvisado.</li>
+    </ul>
+  </div>
+
+  <div class="confere">
+    <div class="r">Como conferir</div>
+    <ul>
+      <li>Ambiente <b>limpo antes da vistoria</b> — não se confere acabamento com pó em cima.</li>
+      <li>Perfil visto <b>de frente e de lado</b>, com a luz do ambiente acesa e apagada.</li>
+      <li><b>Nada de fita crepe</b>: teto, topo de aéreo, interior de gaveta e de cristaleira.</li>
+      <li>Nenhuma marcação de caneta ou lápis em face aparente, dentro ou fora.</li>
+    </ul>
+  </div>
+
+  <h3>O que não é acabamento — e por isso não se resolve com a mão</h3>
+  <p>Sete dos 37 pontos não eram execução: eram <b>falta de definição antes</b> — espelho,
+  pulsador, prateleira com serralheria e LED, e a instalação da porta do elevador. Esses não se
+  consertam com capricho na obra. Eles se resolvem <b>no escritório, de graça</b>, quando a
+  pergunta é feita a tempo. Na obra, viram parada e improviso. <b>O que você não sabe como vai
+  ser executado, você pergunta antes de subir a obra</b> — não descobre com o material já em cima.</p>
+
+  <div class="exercicio">
+    <div class="r">Para responder</div>
+    <p>Na sua próxima obra, qual é o ponto que você <b>ainda não sabe como vai ser executado</b>?
+    Escreva agora, e leve para a coordenação antes do primeiro dia de montagem.</p>
+    <div class="linhas"><div></div><div></div></div>
+  </div>
+
+  <div class="rodape">
+    <span>Valvic Academy · Módulo VI · uso interno</span>
+    <span>pág. 5 de 6</span>
+  </div>
+</div>
+
+<!-- ══════════════════ 6 · OS DOIS PORTÕES E A VERIFICAÇÃO ══════════════════ -->
+<div class="sheet">
+  <div class="topo">
+    <div class="marca">valvic<small>Academy</small></div>
+    <div class="ctx">Módulo VI · os dois portões e a verificação</div>
+  </div>
+
+  <h2>Os dois portões do acabamento</h2>
+  <p>Não existe acabamento bom sem dois momentos de parada. Eles somam <b>23 minutos</b> e são
+  o que separa a obra entregue da obra que volta.</p>
+
+  <div class="duas">
+    <div class="pratica" style="margin-top:0">
+      <div class="r">Portão 1 · na fábrica · 3 min por módulo</div>
+      <p><b>Conferência da peça antes de sair</b> — o <b>POP-01</b>, com a peça ainda na
+      bancada. Módulo sem bolinha verde não é embalado. Aqui o conserto custa minutos.</p>
+    </div>
+    <div class="confere" style="margin-top:0">
+      <div class="r">Portão 2 · na obra · 20 min</div>
+      <p><b>A volta do cliente.</b> Antes de dizer “acabou”, percorra o ambiente
+      <b>como se você fosse o cliente</b>, sem pressa e com a obra limpa. Só depois disso a obra
+      está entregue.</p>
+    </div>
+  </div>
+
+  <h3>Checklist — a volta do cliente</h3>
+  <div class="chk">
+    <ul>
+      <li>Abri <b>todas</b> as portas e gavetas, uma a uma</li>
+      <li>Passei a mão em <b>todos</b> os topos e frisos</li>
+      <li>Olhei o ambiente <b>de pé e de cócoras</b></li>
+      <li>Frisos com linha constante, sem degrau e sem cola</li>
+      <li>Arremates de parede, rodapé e eletro fechados</li>
+      <li>Todos os tapa-furos colocados, na cor</li>
+      <li>Todas as tampas de dobradiça colocadas</li>
+      <li>Portas e gavetas alinhadas, folga uniforme</li>
+      <li>Básculas param onde se solta, não só no fim</li>
+      <li>Perfis retos, sem amassado e sem ondulação</li>
+      <li>LED aceso e conferido, com a luz do teto apagada</li>
+      <li>Nenhuma fita crepe: teto, topo de aéreo, interiores</li>
+      <li>Nenhum risco de caneta em face aparente</li>
+      <li>Ambiente limpo e entulho recolhido</li>
+      <li>Pendências anotadas e comunicadas à coordenação</li>
+      <li>Vistoria feita <b>com</b> o cliente, e assinada</li>
+    </ul>
+  </div>
+
+  <div class="caso">
+    <div class="r">O que está em jogo</div>
+    <p>A Valvic vende <b>alto padrão</b>, e a garantia acompanha a ferragem do projeto — de
+    <b>2 anos</b> na linha padrão a <b>10 anos</b> na Hettich, e vitalícia na Blum.
+    <b>Instalação e regulagem têm 2 anos de garantia em qualquer projeto.</b> Traduzindo:
+    todo acabamento malfeito é uma viagem que a empresa vai pagar, de graça, por dois anos.
+    Empenho não compensa acabamento malfeito — o cliente não vê o esforço, vê a peça.</p>
+  </div>
+
+  <div class="duas">
+    <div class="exercicio" style="margin-top:2mm">
+      <div class="r">Avaliação · situação</div>
+      <p>A obra termina amanhã, faltam dois tapa-furos e uma tampa de dobradiça, e a caixa de
+      acessórios ficou na fábrica. O que você faz, e o que você comunica?</p>
+      <div class="linhas"><div></div><div></div></div>
+    </div>
+    <div class="exercicio" style="margin-top:2mm">
+      <div class="r">Avaliação · prática</div>
+      <p>Faça a volta do cliente num ambiente já montado, com este checklist na mão, e traga a
+      lista do que encontrou. <b>Encontrar zero item é motivo de conferir de novo</b>.</p>
+      <div class="linhas"><div></div><div></div></div>
+    </div>
+  </div>
+
+  <div class="confere" style="margin-bottom:0">
+    <div class="r">Quem aplica, quando, e como se verifica se pegou</div>
+    <p><b>Aplica:</b> a coordenação de produção, na fábrica, e o marceneiro responsável pela
+    obra, na montagem. &nbsp;<b>Quando:</b> na integração de quem entra, e como leitura de
+    abertura de toda obra nova. &nbsp;<b>Verificação:</b> a avaliação prática acima, mais a
+    contagem mensal das não conformidades de acabamento na Ficha de Conferência — a família que
+    mais repetir no mês vira a próxima aula.</p>
+    <p style="margin-top:1.6mm"><b>Este módulo é o porquê do POP-01.</b> O POP diz o que fazer;
+    aqui está a razão de cada passo. Quem lê os dois não precisa de ninguém explicando ao lado.</p>
+  </div>
+
+  <div class="erro" style="margin-bottom:0">
+    <div class="r">Pendente — o que este módulo ainda não ensina</div>
+    <p>Este módulo dá o <b>critério</b> de cada acabamento. A <b>técnica de execução</b> de dois
+    deles ainda está só na cabeça de quem faz, e precisa virar POP antes de a próxima pessoa
+    entrar:</p>
+    <ul>
+      <li><b>Friso:</b> com que ferramenta se corta, em que ordem, e como se ajusta quando a
+      parede está fora de prumo.</li>
+      <li><b>Perfil de alumínio:</b> como se corta, se emenda e se fixa sem marcar a peça.</li>
+    </ul>
+    <p style="margin-top:1.4mm">Perguntas para levantar com quem executa: <i>“me conta a última
+    vez que você fez um friso — o que você fez primeiro?”</i> e <i>“se o ajudante fizer isso
+    errado, como você percebe?”</i>. Do que sair dessas duas respostas nasce o POP-02.</p>
+  </div>
+
+  <div class="rodape">
+    <span>Valvic Academy · Módulo VI · Acabamento e o padrão Valvic · uso interno</span>
+    <span>pág. 6 de 6</span>
+  </div>
+</div>
+
+</body>
+</html>

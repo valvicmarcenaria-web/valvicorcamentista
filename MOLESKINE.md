@@ -7,6 +7,35 @@ pode ler e escrever aqui. Formato livre — marcar data e agente responsável.
 
 ## Tarefas abertas
 
+### [2026-09-05] Módulo VI da apostila — Acabamento e o padrão Valvic — Téo (Academy)
+**Solicitante:** Jonathan
+**Status:** 🟢 Escrito e gerado · aguardando aplicação com a equipe
+
+Jonathan pediu o módulo de acabamento da apostila — "é o que mais dá problema na obra e o que
+o cliente mais vê". Escrito **sobre erro real da casa**, não sobre teoria:
+- `painel/academy-modulo-06-acabamento.html` + `painel/Valvic_Academy_Modulo_06_Acabamento.pdf`
+  (6 folhas A4, `over_sheet: 0`)
+- Base: os **21 pontos** de `feedback-deivison-obra.html` + os **16 pontos** de
+  `feedback-samuel-obra.html` = 37 pontos, agrupados em famílias de defeito. Conclusão que
+  virou a espinha do módulo: **27 dos 34 erros são acabamento puro** (arremate/friso 11,
+  perfil e LED 5, tapa-furo e tampa 4, regulagem 3, furação 2, limpeza 2).
+- Outras fontes: `ficha-conferencia-producao.html` (portões 4-6), `pop-conferencia-de-peca.html`
+  (o módulo é o *porquê* do POP-01), `laminacao-e-construcao.md` (fita 22×0,45; filetagem
+  manual R$4,00/m × máquina R$2,50/m), `vivencia-marcenaria.md` (a coladeira SCM ME25 não
+  finaliza 100% — está escrito no módulo, não escondido), `garantia.md` (2/5/10/vitalícia +
+  instalação e regulagem 2 anos), `valor-do-produto.md`.
+- Nenhum nome de colaborador aparece no material — só o erro e a consequência.
+
+**Pendências para a próxima sessão:**
+1. Aplicar na integração e como leitura de abertura de obra nova (quem aplica está na pág. 6).
+2. **POP-02 — técnica de execução do friso e do perfil de alumínio.** É o buraco que o módulo
+   deixa explícito: o critério está escrito, a técnica ainda está só na cabeça de quem faz.
+   As duas perguntas para extrair do Paulo/marceneiro estão na última caixa da pág. 6.
+3. Verificação em 30 dias: contagem das NCs de acabamento na Ficha de Conferência — a família
+   que mais repetir vira a próxima aula.
+
+---
+
 ### [2026-09-05] POP-01 — Conferência de peça antes de sair da fábrica — Téo (Academy)
 **Solicitante:** Jonathan
 **Status:** 🟡 Escrito, aguardando aprovação da Direção e implantação
