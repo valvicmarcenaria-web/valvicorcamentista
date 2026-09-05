@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Campanha Cesta de Café — Parceiras · Valvic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0E2038; --navy2:#16314F; --gold:#C2A05A; --goldsoft:#d8bd80;
+  --goldbg:#F6EDD6; --ink:#1b2733; --muted:#6c7785; --linha:#dfe4ea;
+  --ok:#2F7D4F; --red:#B0413F; --blue:#2F5D8C;
+}
+@page{ size:A4 portrait; margin:0 }
+*{ box-sizing:border-box }
+body{ margin:0; background:#8a8f96; font-family:'Inter',system-ui,sans-serif; color:var(--ink) }
+
+.sheet{
+  width:210mm; height:297mm; margin:0 auto; background:#fff; position:relative;
+  padding:12mm 13mm 12mm; display:flex; flex-direction:column;
+  page-break-after:always; overflow:hidden;
+}
+.sheet:last-child{ page-break-after:auto }
+@media print{ body{ background:#fff } .sheet{ margin:0 } }
+
+.topo{ display:flex; justify-content:space-between; align-items:flex-end;
+  border-bottom:2px solid var(--navy); padding-bottom:5px; margin-bottom:8px }
+.marca{ font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:700;
+  color:var(--navy); letter-spacing:.5px; line-height:1 }
+.marca small{ display:block; font-family:'Inter',sans-serif; font-size:8px; font-weight:600;
+  letter-spacing:2.4px; text-transform:uppercase; color:var(--gold); margin-top:3px }
+.doc{ text-align:right }
+.doc h1{ margin:0; font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:600; color:var(--navy) }
+.doc .meta{ font-size:8.5px; color:var(--muted); letter-spacing:.4px; margin-top:2px }
+
+.faixa{ background:var(--navy); color:var(--goldsoft); font-size:8.5px; font-weight:600;
+  letter-spacing:2px; text-transform:uppercase; padding:4px 9px; margin:8px 0 6px; border-radius:2px }
+.faixa.clara{ background:var(--goldbg); color:var(--navy2) }
+
+table.tb{ width:100%; border-collapse:collapse; font-size:8.8px }
+table.tb th{ background:var(--navy2); color:var(--goldsoft); font-size:7.6px; font-weight:600;
+  letter-spacing:.7px; text-transform:uppercase; padding:4px 6px; text-align:left }
+table.tb td{ border-bottom:1px solid var(--linha); padding:4px 6px; vertical-align:top; line-height:1.35 }
+table.tb tr:nth-child(even) td{ background:#f7f9fb }
+.num{ text-align:right; font-variant-numeric:tabular-nums }
+table.linhas td{ height:46px }   /* espaço de caneta: a folha é preenchida à mão */
+.et{ font-family:'JetBrains Mono',monospace; font-size:8px; color:var(--gold); font-weight:600 }
+
+.cx{ display:inline-block; width:10px; height:10px; border:1.4px solid var(--navy);
+  border-radius:2px; vertical-align:-1px }
+
+.aviso{ background:var(--goldbg); border-left:3px solid var(--gold); border-radius:2px;
+  padding:6px 9px; font-size:8.6px; line-height:1.45; color:var(--navy2); margin:6px 0 }
+.aviso b{ color:var(--navy) }
+
+.cartao{ border:1px solid var(--linha); border-left:3px solid var(--gold); border-radius:3px;
+  padding:7px 9px; margin-bottom:5px }
+.cartao h3{ margin:0 0 2px; font-size:9px; color:var(--navy); font-weight:700;
+  letter-spacing:.3px; text-transform:uppercase }
+.cartao p{ margin:0; font-size:9.6px; line-height:1.5; color:var(--ink);
+  font-family:'Cormorant Garamond',serif; font-size:12px }
+.cartao .quando{ font-size:7.8px; color:var(--muted); margin-top:3px; font-family:'Inter',sans-serif }
+
+.duas{ display:grid; grid-template-columns:1fr 1fr; gap:7px }
+.bloco{ border:1px solid var(--linha); border-radius:3px; padding:7px 9px }
+.bloco h3{ margin:0 0 4px; font-size:9px; color:var(--navy); font-weight:700;
+  letter-spacing:.3px; text-transform:uppercase }
+.bloco ul{ margin:0; padding-left:14px; font-size:8.7px; line-height:1.5 }
+.bloco p{ margin:0 0 4px; font-size:8.7px; line-height:1.5 }
+.nao{ color:var(--red); font-weight:600 }
+.sim{ color:var(--ok); font-weight:600 }
+
+.rodape{ margin-top:auto; border-top:1px solid var(--linha); padding-top:4px;
+  display:flex; justify-content:space-between; font-size:7.5px; color:var(--muted);
+  letter-spacing:.5px; text-transform:uppercase }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════ FOLHA 1 — a campanha ══════════════════════════════ -->
+<div class="sheet">
+  <div class="topo">
+    <div class="marca">valvic<small>Marcenaria</small></div>
+    <div class="doc">
+      <h1>Campanha · Cesta de Café para as Parceiras</h1>
+      <div class="meta">Uso interno · Responsável: Karla · Entrega: sexta 11/09/2026</div>
+    </div>
+  </div>
+
+  <div class="faixa">As sete etapas — a campanha só existe com estas linhas escritas</div>
+  <table class="tb">
+    <tr><th style="width:16px"></th><th style="width:78px">Etapa</th><th>Definição</th></tr>
+    <tr><td class="et">1</td><td><b>Objetivo</b></td><td>Manter as 6 parceiras lembradas da Valvic sem pedir nada — para que o próximo convite de fábrica e a próxima indicação encontrem relação viva, não contato frio.</td></tr>
+    <tr><td class="et">2</td><td><b>Público</b></td><td>6 parceiras, nome a nome (lista na aba <i>Campanha Café</i>). Nenhuma a mais nesta rodada: campanha que cresce na véspera atrasa e sai pela metade.</td></tr>
+    <tr><td class="et">3</td><td><b>Gatilho</b></td><td><b>Sexta-feira, 11/09</b>, entrega até as 11h. Sexta é quando a semana afrouxa e o gesto é recebido como gesto. Setembro é o mês da onda de café no calendário da casa.</td></tr>
+    <tr><td class="et">4</td><td><b>Peça</b></td><td>Cesta de café pequena e bem apresentada + <b>cartão escrito à mão</b>, 3 a 4 linhas, sem pedido nenhum. Textos na folha 2.</td></tr>
+    <tr><td class="et">5</td><td><b>Executa</b></td><td><b>Karla</b>, do começo ao fim. Entrega em mãos quando der; motoboy quando o escritório for longe. Dono único — "a gente" não executa nada.</td></tr>
+    <tr><td class="et">6</td><td><b>Registro</b></td><td><code>planilhas/Valvic_Relacionamento_Parceiras.xlsx</code>, aba <b>Campanha Café</b>, preenchida <b>no mesmo dia</b> da entrega.</td></tr>
+    <tr><td class="et">7</td><td><b>Medida</b></td><td>Em <b>11/10</b>: 6 de 6 entregues · quantas responderam (meta 4) · quantas visitas à fábrica agendadas no contato seguinte · quantos contatos ou projetos novos.</td></tr>
+  </table>
+
+  <div class="faixa clara">A semana — 07/09 é feriado, a semana começa na terça</div>
+  <table class="tb">
+    <tr><th style="width:16px">✓</th><th style="width:74px">Quando</th><th>O que fazer</th></tr>
+    <tr><td><span class="cx"></span></td><td><b>Ter 08/09</b><br><span style="font-size:7.4px;color:#6c7785">manhã</span></td><td>Fechar a lista das 6 na planilha: nome, escritório, endereço de entrega, melhor horário e preferência (tem parceira que não bebe café). Endereço errado é o que mais estraga campanha de brinde.</td></tr>
+    <tr><td><span class="cx"></span></td><td><b>Ter 08/09</b><br><span style="font-size:7.4px;color:#6c7785">tarde</span></td><td>Cotar <b>3 fornecedores</b> de cesta e lançar na aba <i>Cotação Cesta</i>. Enviar ao <b>Jonathan</b> o pedido de autorização com o total das 6 — e esperar o "pode" por escrito.</td></tr>
+    <tr><td><span class="cx"></span></td><td><b>Qua 09/09</b></td><td>Com o aval na mão: fechar o pedido, pagar conforme a autorização e confirmar a entrega das cestas na fábrica para <b>quinta pela manhã</b>.</td></tr>
+    <tr><td><span class="cx"></span></td><td><b>Qui 10/09</b></td><td>Receber e <b>conferir</b> as 6 cestas (quantidade, apresentação, validade). Escrever os 6 cartões à mão, um por vez, com o nome de cada uma. Separar cesta + cartão em par.</td></tr>
+    <tr><td><span class="cx"></span></td><td><b>Sex 11/09</b><br><span style="font-size:7.4px;color:#6c7785">até 11h</span></td><td>Entregar. Registrar na planilha <b>no mesmo dia</b>: quem recebeu em mãos, quem não estava, o que disse.</td></tr>
+    <tr><td><span class="cx"></span></td><td><b>Seg 14/09</b></td><td>Registrar os retornos e marcar em <i>Próximo contato</i> a data de <b>duas semanas depois</b>. Nada de pedido nesse intervalo.</td></tr>
+    <tr><td><span class="cx"></span></td><td><b>Sáb 11/10</b></td><td>Fechar a medida de 30 dias no pé da aba <i>Campanha Café</i> e levar o resultado ao Jonathan.</td></tr>
+  </table>
+
+  <div class="faixa clara">As 6 parceiras — conferir na sexta, antes de sair</div>
+  <table class="tb linhas">
+    <tr><th style="width:16px"></th><th style="width:110px">Parceira</th><th style="width:58px">Endereço<br>conferido</th><th style="width:48px">Cesta</th><th style="width:48px">Cartão</th><th style="width:56px">Entregue</th><th>Retorno / observação</th></tr>
+    <tr><td class="et">1</td><td></td><td class="num"><span class="cx"></span></td><td class="num"><span class="cx"></span></td><td class="num"><span class="cx"></span></td><td class="num"><span class="cx"></span></td><td></td></tr>
+    <tr><td class="et">2</td><td></td><td class="num"><span class="cx"></span></td><td class="num"><span class="cx"></span></td><td class="num"><span class="cx"></span></td><td class="num"><span class="cx"></span></td><td></td></tr>
+    <tr><td class="et">3</td><td></td><td class="num"><span class="cx"></span></td><td class="num"><span class="cx"></span></td><td class="num"><span class="cx"></span></td><td class="num"><span class="cx"></span></td><td></td></tr>
+    <tr><td class="et">4</td><td></td><td class="num"><span class="cx"></span></td><td class="num"><span class="cx"></span></td><td class="num"><span class="cx"></span></td><td class="num"><span class="cx"></span></td><td></td></tr>
+    <tr><td class="et">5</td><td></td><td class="num"><span class="cx"></span></td><td class="num"><span class="cx"></span></td><td class="num"><span class="cx"></span></td><td class="num"><span class="cx"></span></td><td></td></tr>
+    <tr><td class="et">6</td><td></td><td class="num"><span class="cx"></span></td><td class="num"><span class="cx"></span></td><td class="num"><span class="cx"></span></td><td class="num"><span class="cx"></span></td><td></td></tr>
+  </table>
+
+  <div class="aviso"><b>O limite:</b> o valor das cestas é compra — vai com <b>3 cotações e
+  autorização prévia por escrito do Jonathan</b>. E <b>RT, comissão de indicação e desconto
+  são assunto dele</b>: se alguma parceira puxar esse assunto ao agradecer, a Karla agradece,
+  não responde e passa para o Jonathan no mesmo dia.</div>
+
+  <div class="rodape">
+    <span>Valvic Marcenaria · Vargas Decor Ltda · Construindo Legado</span>
+    <span>Folha 1 de 2 · Campanha Cesta de Café · Setembro/2026</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ FOLHA 2 — os cartões ══════════════════════════════ -->
+<div class="sheet">
+  <div class="topo">
+    <div class="marca">valvic<small>Marcenaria</small></div>
+    <div class="doc">
+      <h1>Os cartões — texto para escrever à mão</h1>
+      <div class="meta">Escolher um por parceira · 3 a 4 linhas · caneta preta ou azul-escura</div>
+    </div>
+  </div>
+
+  <div class="duas" style="margin-bottom:4px">
+    <div class="bloco">
+      <h3>Como escrever</h3>
+      <ul>
+        <li><span class="sim">À mão</span>, sempre. Cartão impresso vira mala direta.</li>
+        <li>Começa com <b>o nome dela</b> e termina com <b>equipe Valvic</b>.</li>
+        <li>Três a quatro linhas. Cartão longo constrange.</li>
+        <li>Um fato concreto vale mais que um adjetivo bonito.</li>
+        <li>Errou uma letra? Escreve outro. São seis, não sessenta.</li>
+      </ul>
+    </div>
+    <div class="bloco">
+      <h3>O que <span class="nao">não</span> entra no cartão</h3>
+      <ul>
+        <li><span class="nao">Nenhum pedido.</span> Indicação, projeto, reunião — nada.</li>
+        <li>Nada de preço, RT, condição ou desconto.</li>
+        <li>Sem logo grande, sem cartão de visita junto, sem QR code.</li>
+        <li>Sem "aguardamos seu contato" — isso é cobrança disfarçada.</li>
+      </ul>
+      <p style="margin-top:4px"><b>Por quê:</b> presente com pedido junto deixa de ser presente e vira fatura.</p>
+    </div>
+  </div>
+
+  <div class="faixa">Texto base — serve para qualquer uma das seis</div>
+  <div class="cartao">
+    <h3>Base</h3>
+    <p>[Nome], um café para a sua sexta.<br>
+    Obrigada por dividir seus projetos com a gente — é sempre um prazer trabalhar ao seu lado.<br>
+    Com carinho, equipe Valvic.</p>
+    <div class="quando">Use quando não houver um fato recente para citar.</div>
+  </div>
+
+  <div class="faixa clara">Variações — escolher pela situação de cada parceira</div>
+
+  <div class="cartao">
+    <h3>1 · Obra dela entregue há pouco</h3>
+    <p>[Nome], um café para a sua sexta.<br>
+    O [apartamento / a cozinha] da [cliente] ficou do jeito que você desenhou — foi bom demais fazer esse projeto com você.<br>
+    Com carinho, equipe Valvic.</p>
+    <div class="quando">O fato concreto é o que faz o cartão parecer escrito para ela, e não para seis.</div>
+  </div>
+
+  <div class="cartao">
+    <h3>2 · Projeto em andamento agora</h3>
+    <p>[Nome], um café para segurar a semana.<br>
+    A [obra da cliente] está andando bem e a gente segue de olho em cada detalhe. Obrigada pela confiança.<br>
+    Com carinho, equipe Valvic.</p>
+    <div class="quando">Tranquiliza sem prometer prazo. Prazo é assunto de mensagem, não de cartão.</div>
+  </div>
+
+  <div class="cartao">
+    <h3>3 · Parceria antiga, sem projeto agora</h3>
+    <p>[Nome], um café para a sua sexta.<br>
+    Faz um tempo que a gente não trabalha junto, mas por aqui a sua parceria não é esquecida. Um bom fim de semana!<br>
+    Com carinho, equipe Valvic.</p>
+    <div class="quando">Reconhece a distância com leveza — sem cobrar retorno nem explicação.</div>
+  </div>
+
+  <div class="cartao">
+    <h3>4 · Parceira nova, primeiro gesto</h3>
+    <p>[Nome], um café para a sua sexta.<br>
+    Ficamos felizes de ter começado essa parceria — que venham muitos projetos bonitos pela frente.<br>
+    Com carinho, equipe Valvic.</p>
+    <div class="quando">Primeiro contato de brinde: curto, caloroso, zero intimidade forçada.</div>
+  </div>
+
+  <div class="cartao">
+    <h3>5 · Quem já indicou vários projetos</h3>
+    <p>[Nome], um café para a sua sexta.<br>
+    Boa parte do que a gente entregou este ano passou pelas suas mãos. Obrigada por confiar seus clientes à Valvic.<br>
+    Com carinho, equipe Valvic.</p>
+    <div class="quando">Agradece a indicação já feita — sem nenhuma palavra sobre a próxima.</div>
+  </div>
+
+  <div class="cartao">
+    <h3>6 · Parceira que não bebe café</h3>
+    <p>[Nome], uma pausa doce para a sua sexta.<br>
+    Obrigada por dividir seus projetos com a gente — é sempre um prazer trabalhar ao seu lado.<br>
+    Com carinho, equipe Valvic.</p>
+    <div class="quando">Trocar o conteúdo da cesta e a primeira linha. Detalhe pequeno que ela percebe.</div>
+  </div>
+
+  <div class="aviso"><b>Depois da entrega:</b> quando ela agradecer, responda só agradecendo
+  de volta. O convite para conhecer a fábrica e qualquer outro assunto ficam para o
+  <b>próximo contato, duas semanas depois</b> — e vão na planilha, na coluna
+  <i>Próximo contato</i>.</div>
+
+  <div class="rodape">
+    <span>Valvic Marcenaria · Vargas Decor Ltda · Construindo Legado</span>
+    <span>Folha 2 de 2 · Campanha Cesta de Café · Setembro/2026</span>
+  </div>
+</div>
+
+</body>
+</html>
