@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Esquema — Planilha de Gestão Walton</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0E2038;--navy2:#16314F;--gold:#C2A05A;--goldsoft:#d8bd80;
+--goldbg:#F6EDD6;--ink:#1b2733;--muted:#6c7785;--linha:#dfe4ea;
+--ok:#2F7D4F;--red:#B0413F;--blue:#2F5D8C;--roxo:#6B4E8C}
+@page{size:A3 landscape;margin:0}
+*{box-sizing:border-box}
+body{margin:0;background:#8a8f96;font-family:'Inter',system-ui,sans-serif;color:var(--ink)}
+.sheet{width:420mm;height:297mm;margin:0 auto;background:#fff;padding:8mm 11mm 6mm;
+  display:flex;flex-direction:column;overflow:hidden}
+@media print{body{background:#fff}.sheet{margin:0}}
+
+.topo{display:flex;justify-content:space-between;align-items:flex-end;
+  border-bottom:2px solid var(--navy);padding-bottom:4px;margin-bottom:4mm}
+.marca{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--navy);line-height:1}
+.marca small{display:block;font-family:'Inter',sans-serif;font-size:7.5px;font-weight:600;
+  letter-spacing:2.2px;text-transform:uppercase;color:var(--gold);margin-top:2px}
+.doc{text-align:right}
+.doc h1{margin:0;font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;color:var(--navy)}
+.doc .meta{font-size:8px;color:var(--muted);letter-spacing:.5px;margin-top:1px}
+
+.rot{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.6mm}
+.rot span{color:var(--muted);font-weight:500;letter-spacing:.3px;text-transform:none;font-size:8.5px}
+
+/* ─── A · linha do tempo dos 5 eventos ─── */
+.eventos{display:grid;grid-template-columns:repeat(5,1fr);gap:2.5mm;margin-bottom:4mm}
+.ev{border:1px solid var(--linha);border-top:3px solid var(--navy);border-radius:3px;
+  padding:2.5mm 3mm;position:relative}
+.ev.mat{border-top-color:var(--roxo)} .ev.fab{border-top-color:var(--ok)}
+.ev.ins{border-top-color:var(--blue)} .ev.fat{border-top-color:var(--gold)}
+.ev .n{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted)}
+.ev .t{font-size:11.5px;font-weight:700;color:var(--navy);margin:.5mm 0 1mm}
+.ev .q{font-size:8.5px;line-height:1.4;color:var(--ink)}
+.ev .g{font-size:8px;color:var(--muted);margin-top:1.5mm;border-top:1px dotted var(--linha);padding-top:1mm}
+.ev .g b{color:var(--navy2)}
+
+.corpo{display:grid;grid-template-columns:88mm 1fr;gap:6mm}
+.base{display:grid;grid-template-columns:1fr 104mm;gap:6mm;margin-top:3.5mm}
+table.ano{font-size:8px} table.ano th{padding:1.2mm .8mm;text-align:center}
+table.ano th.m{width:15mm} table.ano td{padding:1.2mm .8mm;text-align:center}
+table.ano td.lb{text-align:left;font-weight:600;color:var(--navy2);width:34mm}
+table.ano tr.leitura td{background:#f2f6fa;color:var(--blue);font-style:italic}
+table.ano tr.leitura td.lb{color:var(--blue)}
+.val{border:1px solid var(--linha);border-radius:3px;padding:1.8mm 2.5mm;margin-bottom:1.4mm}
+.val .t{font-size:9px;font-weight:700;color:var(--navy);margin-bottom:.8mm}
+.val .q{font-size:8.2px;line-height:1.4;color:var(--ink)}
+.val .q b{color:var(--navy2)}
+.val.d{border-left:3px solid var(--ok)} .val.p{border-left:3px solid var(--red)}
+
+/* ─── abas ─── */
+.aba{display:flex;align-items:center;gap:2mm;border:1px solid var(--linha);border-radius:3px;
+  padding:1.8mm 2.5mm;margin-bottom:1.5mm;font-size:9px}
+.aba .num{width:5mm;height:5mm;border-radius:50%;background:var(--navy);color:var(--goldsoft);
+  font-size:8px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.aba .nm{font-weight:700;color:var(--navy);width:24mm;flex:0 0 auto}
+.aba .ds{color:var(--muted);font-size:8.5px;line-height:1.3}
+.aba.saida{background:#f7f9fb;border-style:dashed}
+.aba.saida .num{background:var(--gold);color:#fff}
+.aba.coracao{border-left:3px solid var(--red);background:#fffcfb}
+
+.nota{background:var(--goldbg);border-left:3px solid var(--gold);border-radius:2px;
+  padding:2.5mm 3mm;font-size:8.5px;line-height:1.45;color:var(--navy2);margin-top:3mm}
+.nota b{color:var(--navy)}
+
+/* ─── tabelas exemplo ─── */
+table{width:100%;border-collapse:collapse;font-size:8.5px}
+th{background:var(--navy2);color:var(--goldsoft);font-size:7.5px;font-weight:600;
+  letter-spacing:.6px;text-transform:uppercase;padding:1.5mm;text-align:left}
+td{border-bottom:1px solid var(--linha);padding:1.4mm 1.5mm}
+tr:nth-child(even) td{background:#f7f9fb}
+.num2{text-align:right;font-variant-numeric:tabular-nums}
+.calc{color:var(--blue);font-style:italic}
+.men{font-size:7px;background:var(--goldbg);color:#8a6d3b;padding:.2mm 1mm;border-radius:2px;
+  font-weight:600;letter-spacing:.3px}
+
+/* ─── fluxo do material ─── */
+.fluxo{display:grid;grid-template-columns:1fr 6mm 1fr 6mm 1fr;align-items:center;
+  gap:0;margin:2mm 0 0}
+.fx{border:1px solid var(--linha);border-radius:3px;padding:2.5mm;text-align:center}
+.fx .a{font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.fx .b{font-size:9.5px;font-weight:700;color:var(--navy);margin-top:.8mm;line-height:1.3}
+.fx .c{font-size:8px;color:var(--muted);margin-top:.8mm;line-height:1.35}
+.seta{text-align:center;color:var(--gold);font-size:14px;font-weight:700}
+.fx.destaque{border-color:var(--roxo);background:#faf8fc}
+
+/* ─── dashboard ─── */
+.dash{border:1.5px solid var(--navy);border-radius:4px;padding:2.4mm;background:#fbfcfd}
+.tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:2mm;margin-bottom:2.5mm}
+.tile{background:var(--navy);color:#fff;border-radius:3px;padding:2.5mm}
+.tile.destaque{background:var(--roxo)}
+.tile .r{font-size:6.8px;letter-spacing:1.1px;text-transform:uppercase;color:var(--goldsoft)}
+.tile.destaque .r{color:#e2d4f0}
+.tile .v{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;margin-top:.5mm;line-height:1}
+.tile .o{font-size:6.8px;color:#b9c3cf;margin-top:.5mm}
+.tile.destaque .o{color:#d8c9e8}
+
+.leituras{display:grid;grid-template-columns:repeat(5,1fr);gap:2mm}
+.lt{border:1px solid var(--linha);border-left:3px solid var(--blue);border-radius:3px;
+  padding:2mm 2.5mm;background:#fff}
+.lt.alerta{border-left-color:var(--red)}
+.lt.ok{border-left-color:var(--ok)}
+.lt .t{font-size:8.5px;font-weight:700;color:var(--navy)}
+.lt .c{font-family:'JetBrains Mono',monospace;font-size:7px;color:var(--muted);margin:.5mm 0}
+.lt .v{font-size:12px;font-weight:700;color:var(--navy2);font-variant-numeric:tabular-nums}
+.lt .q{font-size:7.5px;color:var(--muted);line-height:1.3;margin-top:.5mm}
+
+.rodape{margin-top:auto;border-top:1px solid var(--linha);padding-top:2mm;
+  display:flex;justify-content:space-between;font-size:7.5px;color:var(--muted);
+  letter-spacing:.5px;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="topo">
+    <div class="marca">valvic<small>Marcenaria</small></div>
+    <div class="doc">
+      <h1>Planilha de Gestão Mensal — esquema para validação</h1>
+      <div class="meta">Acompanhamento conjunto com o Walton · competência mensal · 2026</div>
+    </div>
+  </div>
+
+  <!-- ═══ A · OS CINCO EVENTOS ═══ -->
+  <div class="rot">A · O caminho do dinheiro <span>— cada métrica é um evento diferente, com data própria e fonte própria</span></div>
+  <div class="eventos">
+    <div class="ev">
+      <div class="n">EVENTO 1</div><div class="t">Venda</div>
+      <div class="q">Contrato assinado.<br>Vale pelo <b>projeto inteiro</b>.</div>
+      <div class="g">alimenta <b>R$ vendido</b><br>fonte: aba Projetos</div>
+    </div>
+    <div class="ev mat">
+      <div class="n">EVENTO 2</div><div class="t">Compra</div>
+      <div class="q">Material adquirido.<br>Valor <b>cheio</b>, mesmo parcelado.</div>
+      <div class="g">alimenta <b>material comprado</b><br>fonte: aba Compras</div>
+    </div>
+    <div class="ev fab">
+      <div class="n">EVENTO 3</div><div class="t">Fabricação</div>
+      <div class="q">Ambiente liberado no portão da fábrica.<br>Por <b>ambiente</b>.</div>
+      <div class="g">alimenta <b>R$ fabricado</b> e <b>material aplicado</b></div>
+    </div>
+    <div class="ev ins">
+      <div class="n">EVENTO 4</div><div class="t">Instalação</div>
+      <div class="q">Ambiente montado e aceito pelo cliente.<br>Por <b>ambiente</b>.</div>
+      <div class="g">alimenta <b>R$ instalado</b><br>fonte: aba Ambientes</div>
+    </div>
+    <div class="ev fat">
+      <div class="n">EVENTO 5</div><div class="t">Faturamento</div>
+      <div class="q">Nota fiscal emitida.<br>Segue o <b>contrato</b>, não a entrega.</div>
+      <div class="g">alimenta <b>R$ faturado</b><br>fonte: aba Faturamento</div>
+    </div>
+  </div>
+
+  <div class="corpo">
+
+    <!-- ═══ B · ARQUITETURA ═══ -->
+    <div>
+      <div class="rot">B · As abas <span>— você digita em 5 lugares; 13 lâminas se calculam</span></div>
+
+      <div class="aba"><div class="num">1</div><div class="nm">Projetos</div>
+        <div class="ds">1 linha por contrato · cliente, valor, data da venda</div></div>
+      <div class="aba coracao"><div class="num">2</div><div class="nm">Ambientes</div>
+        <div class="ds"><b>o coração</b> · 1 linha por ambiente, com valor e os dois meses</div></div>
+      <div class="aba"><div class="num">3</div><div class="nm">Faturamento</div>
+        <div class="ds">1 linha por nota · projeto, nº, valor, data</div></div>
+      <div class="aba"><div class="num">4</div><div class="nm">Compras</div>
+        <div class="ds">1 linha por compra · projeto (ou uso geral), valor, data</div></div>
+      <div class="aba"><div class="num">5</div><div class="nm">Custo Fixo</div>
+        <div class="ds">1 linha por mês · folha, estrutura, frota</div></div>
+
+      <div style="height:3mm"></div>
+      <div class="aba saida"><div class="num">▸</div><div class="nm">Jan … Dez</div>
+        <div class="ds">12 lâminas, uma por mês, cada uma com o dashboard abaixo</div></div>
+      <div class="aba saida"><div class="num">▸</div><div class="nm">Ano 2026</div>
+        <div class="ds">os 12 meses lado a lado — a leitura de tendência</div></div>
+      <div class="aba saida"><div class="num">▸</div><div class="nm">Instruções</div>
+        <div class="ds">as definições de cada evento, para não virar discussão depois</div></div>
+
+      <div class="nota">
+        <b>Por que não se digita nas lâminas do mês:</b> um mesmo ambiente é vendido em
+        setembro, fabricado em outubro e instalado em novembro. Se cada mês tivesse entrada
+        própria, ele seria digitado três vezes — e em dois meses as três versões divergem.
+        Você preenche uma vez; os meses leem.
+      </div>
+    </div>
+
+    <!-- ═══ C · CORAÇÃO + MATERIAL + DASHBOARD ═══ -->
+    <div style="display:flex;flex-direction:column;min-height:0">
+
+      <div class="rot">C · A aba Ambientes <span>— a granularidade que faz o número parar de ser estimativa</span></div>
+      <table>
+        <tr><th style="width:34mm">Projeto</th><th>Ambiente</th><th class="num2" style="width:22mm">Valor</th>
+            <th style="width:20mm">Mês fabric.</th><th style="width:20mm">Mês instal.</th>
+            <th style="width:24mm">Situação</th><th class="num2" style="width:26mm">Material apurado</th></tr>
+        <tr><td>Ana Carolina</td><td>Cozinha</td><td class="num2">38.000</td><td>Set</td><td>Out</td>
+            <td class="calc">Instalado</td><td class="num2 calc">rateado</td></tr>
+        <tr><td>Ana Carolina</td><td>Roupeiro do casal</td><td class="num2">27.000</td><td>Out</td><td>—</td>
+            <td class="calc">Fabricado</td><td class="num2">9.400</td></tr>
+        <tr><td>Ana Carolina</td><td>Home</td><td class="num2">18.000</td><td>—</td><td>—</td>
+            <td class="calc">A produzir</td><td class="num2 calc">rateado</td></tr>
+        <tr><td>Jairo</td><td>Cozinha</td><td class="num2">41.000</td><td>Set</td><td>Set</td>
+            <td class="calc">Instalado</td><td class="num2 calc">rateado</td></tr>
+        <tr><td>Jairo</td><td>Lavanderia</td><td class="num2">12.000</td><td>Set</td><td>Out</td>
+            <td class="calc">Fabricado</td><td class="num2 calc">rateado</td></tr>
+      </table>
+      <div style="font-size:8px;color:var(--muted);margin-top:1.2mm">
+        <span class="men">menu suspenso</span> projeto · mês fabricado · mês instalado &nbsp;·&nbsp;
+        <span class="calc">azul = calculado, não se digita</span> &nbsp;·&nbsp;
+        <b>Σ ambientes do projeto</b> é conferida contra o valor do contrato, e acende quando não fecha &nbsp;·&nbsp;
+        <b>Material apurado</b> é opcional: preenchido, substitui o rateio daquele ambiente
+      </div>
+
+      <div class="rot" style="margin-top:3mm">D · Como a compra vira <b style="color:var(--roxo)">material aplicado</b>
+        <span>— atrelado ao uso, não à data da compra</span></div>
+      <div class="fluxo">
+        <div class="fx"><div class="a">você lança</div>
+          <div class="b">A compra inteira,<br>com o projeto</div>
+          <div class="c">Valor cheio na data da compra.<br>Parcelamento não divide o valor —<br>parcela é caixa, não competência.</div></div>
+        <div class="seta">→</div>
+        <div class="fx"><div class="a">a planilha reparte</div>
+          <div class="b">Entre os ambientes<br>do projeto</div>
+          <div class="c">Na proporção do valor de cada um.<br>Você não reparte nota à mão.</div></div>
+        <div class="seta">→</div>
+        <div class="fx destaque"><div class="a">e conta no mês em que</div>
+          <div class="b">O ambiente<br>foi fabricado</div>
+          <div class="c">Mesma data do R$ fabricado —<br>por isso “material ÷ fabricado”<br>vira margem de verdade.</div></div>
+      </div>
+      <div style="font-size:8px;color:var(--muted);margin-top:1.5mm">
+        <b>Compra sem projeto</b> (fita, cola, parafuso, lixa, ferramenta) entra como
+        <b>material de uso geral</b>, pelo mês da compra, em linha própria — ratear isso seria precisão falsa.
+      </div>
+
+      <div class="rot" style="margin-top:3mm">E · O dashboard de cada mês <span>— exemplo com números de referência de setembro</span></div>
+      <div class="dash">
+        <div class="tiles">
+          <div class="tile"><div class="r">Custo fixo</div><div class="v">77,6k</div><div class="o">folha · estrutura · frota</div></div>
+          <div class="tile"><div class="r">R$ vendido</div><div class="v">335,0k</div><div class="o">contratos assinados</div></div>
+          <div class="tile destaque"><div class="r">Material aplicado</div><div class="v">75,5k</div><div class="o">dos ambientes fabricados</div></div>
+          <div class="tile"><div class="r">R$ fabricado</div><div class="v">212,0k</div><div class="o">ambientes liberados</div></div>
+          <div class="tile"><div class="r">R$ instalado</div><div class="v">178,2k</div><div class="o">ambientes aceitos</div></div>
+          <div class="tile"><div class="r">R$ faturado</div><div class="v">149,5k</div><div class="o">notas emitidas</div></div>
+        </div>
+        <div class="leituras">
+          <div class="lt alerta"><div class="t">Parado na fábrica</div>
+            <div class="c">fabricado − instalado</div><div class="v">R$ 33,8k</div>
+            <div class="q">móvel pronto esperando obra</div></div>
+          <div class="lt alerta"><div class="t">A faturar</div>
+            <div class="c">instalado − faturado</div><div class="v">R$ 28,7k</div>
+            <div class="q">entregue e sem nota</div></div>
+          <div class="lt ok"><div class="t">Material sobre o fabricado</div>
+            <div class="c">aplicado ÷ fabricado</div><div class="v">35,6%</div>
+            <div class="q">o termômetro da margem bruta</div></div>
+          <div class="lt"><div class="t">Material em estoque</div>
+            <div class="c">comprado acum. − aplicado acum.</div><div class="v">R$ 41,2k</div>
+            <div class="q">o número que explica caixa curto com resultado bom</div></div>
+          <div class="lt"><div class="t">Carteira a produzir</div>
+            <div class="c">vendido acum. − fabricado acum.</div><div class="v">R$ 497,1k</div>
+            <div class="q">quanto de trabalho a fábrica já tem contratado</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ F · ANO + G · VALIDAÇÃO ═══ -->
+  <div class="base">
+    <div>
+      <div class="rot">F · A aba Ano 2026 <span>— as mesmas linhas nos 12 meses; é aqui que se lê tendência</span></div>
+      <table class="ano">
+        <tr><th class="lb" style="text-align:left">R$ mil · competência</th>
+          <th class="m">Jan</th><th class="m">Fev</th><th class="m">Mar</th><th class="m">Abr</th>
+          <th class="m">Mai</th><th class="m">Jun</th><th class="m">Jul</th><th class="m">Ago</th>
+          <th class="m">Set</th><th class="m">Out</th><th class="m">Nov</th><th class="m">Dez</th></tr>
+        <tr><td class="lb">Custo fixo</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td>
+          <td>—</td><td>75,1</td><td>77,6</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td class="lb">R$ vendido</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td>
+          <td>—</td><td>360,4</td><td>335,0</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td class="lb">Material aplicado</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td>
+          <td>—</td><td>109,6</td><td>75,5</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td class="lb">R$ fabricado</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td>
+          <td>—</td><td>195,0</td><td>212,0</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td class="lb">R$ instalado</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td>
+          <td>—</td><td>178,2</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td class="lb">R$ faturado</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td>
+          <td>—</td><td>183,5</td><td>149,5</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr class="leitura"><td class="lb">Material sobre o fabricado</td><td>—</td><td>—</td><td>—</td><td>—</td>
+          <td>—</td><td>—</td><td>—</td><td>56,2%</td><td>35,6%</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr class="leitura"><td class="lb">Carteira a produzir</td><td>—</td><td>—</td><td>—</td><td>—</td>
+          <td>—</td><td>—</td><td>—</td><td>—</td><td>497,1</td><td>—</td><td>—</td><td>—</td></tr>
+      </table>
+      <div style="font-size:8px;color:var(--muted);margin-top:1.2mm">
+        Os meses nascem vazios e se preenchem conforme o ano anda. Ago e Set usam os números que já
+        apuramos, só para você ver a lâmina povoada — o <b>material aplicado</b> desses dois meses
+        ainda é por data de compra, e na planilha nova passa a seguir o ambiente fabricado.
+      </div>
+    </div>
+
+    <div>
+      <div class="rot">G · O que depende da sua validação</div>
+      <div class="val d"><div class="t">✓ Já decidido nesta conversa</div>
+        <div class="q">Lançamento <b>por ambiente</b>, com valor atrelado · material <b>atrelado ao uso</b>,
+        não à data da compra · <b>competência</b>, não caixa · <b>Jan a Dez de 2026</b>.</div></div>
+      <div class="val p"><div class="t">1 · Ambiente que atravessa o mês</div>
+        <div class="q">Conta <b>inteiro no mês em que ficou pronto</b>. Ambiente grande demais para um
+        mês se quebra em dois ambientes — lançar percentual traria de volta a estimativa que o
+        ambiente veio resolver.</div></div>
+      <div class="val p"><div class="t">2 · Rateio do material por valor</div>
+        <div class="q">É aproximação: cozinha consome mais material por real que um home, mas no total
+        do mês se compensa. A coluna <b>Material apurado</b> aceita o valor real quando você souber,
+        e o rateio se aplica só ao que sobrou.</div></div>
+      <div class="val p"><div class="t">3 · Quem marca "fabricado" e "instalado"</div>
+        <div class="q">Sugiro amarrar ao <b>POP-01</b>: fabricado é o ambiente liberado no portão;
+        instalado é o aceite do cliente. Falta definir <b>quem informa</b> — Deivison na fábrica
+        e Karla lançando?</div></div>
+      <div class="val p"><div class="t">4 · Caixa, se o Walton pedir</div>
+        <div class="q">Deixo pronta a coluna de <b>data de recebimento</b> no faturamento e o
+        <b>nº de parcelas</b> na compra. Não entram no dashboard agora, mas evitam refazer depois.</div></div>
+    </div>
+  </div>
+
+  <div class="rodape">
+    <span>Valvic Marcenaria · esquema para validação — não é a planilha final</span>
+    <span>Competência mensal, não caixa · os valores são ilustrativos</span>
+  </div>
+</div>
+</body>
+</html>
