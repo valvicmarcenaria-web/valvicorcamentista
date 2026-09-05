@@ -4,6 +4,8 @@ Este é o **mapa mestre** de tudo que a Valvic precisa ter escrito para deixar d
 cabeça das pessoas. É o documento de escopo da Academy: diz **o que existe**, **o que falta**,
 **quem é dono de cada buraco** e **em que ordem se produz**.
 
+> **Como este escopo vira apostila impressa e digital — volumes, encadernação e distribuição — está em `plano-editorial.md`.**
+>
 > Escopo definido com o Jonathan em setembro/2026. Substitui a discussão de "vamos fazer uma
 > apostila". Complementa `curriculo-marcenaria.md`, que segue valendo como a narrativa dos
 > módulos técnicos — mas **os IDs e o escopo fechado são aqui**.
@@ -110,8 +112,8 @@ O que dá sentido a todo o resto. Hoje é o bloco mais vazio do núcleo.
 | INST-01 | História da Valvic e os sócios — de onde viemos | 🧠 | Jonathan |
 | INST-02 | O que a Valvic vende — Linha Gold, garantia de 10 anos, o padrão prometido | 🟡 | `closer-vendas/referencias/valor-do-produto.md`, `garantia.md`, `identidade-marca.md` |
 | INST-03 | Quem é quem — organograma e o que cada cargo entrega | 🟡 | `painel/apostila-escopos-funcao.html` (10 cargos) |
-| INST-04 | **Fluxograma mestre — da venda à entrega** | 🔴 | existe só na versão investidor (`walton-fluxo-trabalho.html`, restrito). Precisa de versão de chão de fábrica |
-| INST-05 | Fluxos de apoio — compras, recebimento, assistência, não-conformidade | 🔴 | fichas existem, o fluxo não |
+| INST-04 | **Fluxograma mestre — da venda à entrega** | 🟡 | `projeto-producao/referencias/organizacao-fluxo-funcoes.md` + `projeto-producao/ferramentas/fluxo_funcoes_valvic.pdf` |
+| INST-05 | Fluxos de apoio — compras, recebimento, assistência, não-conformidade | 🟡 | `projeto-producao/referencias/contrato-de-informacao.md` (o que tem de chegar completo) |
 | INST-06 | As regras da casa — conduta, comunicação com cliente e arquiteto | 🟡 | espalhado em 5 documentos; `politicas-internas.md` |
 | INST-07 | Kit de integração — o primeiro dia | 🔴 | receita em `trilhas-e-avaliacao.md` §Integração |
 
@@ -120,9 +122,9 @@ Pré-requisito de tudo. Sem isso, nenhuma outra ficha é legível por quem chego
 
 | ID | Ficha | Estado | Fonte / dono |
 |---|---|---|---|
-| LING-01 | Anatomia do móvel — o nome de cada peça (lateral, base, tampo, costa, testeira, montante, frente) | 🔴 | Paulo / Deivison |
+| LING-01 | Anatomia do móvel — o nome de cada peça (lateral, base, tampo, costa, testeira, montante, frente) | 🟡 | `projeto-producao/referencias/modelo-construtivo.md`, `saber-de-marceneiro.md` |
 | LING-02 | Glossário técnico e o jargão da casa | 🟡 | Guia Técnico Mód. I (Drive) — ampliar |
-| LING-03 | Medida, cota, tolerância e folga — como a Valvic mede | 🧠 | Paulo |
+| LING-03 | Medida, cota, tolerância e folga — como a Valvic mede | 🟡🧠 | `projeto-producao/referencias/folhas-de-modulacao.md`; folgas reais ainda com o Paulo |
 
 ### Bloco 2 · MATERIAL `MAT`
 Hoje comprimido no "Módulo I" junto com ferragens e glossário. Vira bloco próprio.
@@ -131,8 +133,8 @@ Hoje comprimido no "Módulo I" junto com ferragens e glossário. Vira bloco pró
 |---|---|---|---|
 | MAT-01 | Substratos — MDF, MDP, compensado, chapa dura: o que é e onde entra | 🟡 | `orcamentista/referencias/chapas.md` |
 | MAT-02 | Dimensão, espessura e rendimento — 2.750 × 1.840; 6, 9, 15, 18, 25 mm; peso | 🟡 | `chapas.md` |
-| MAT-03 | Acabamentos de superfície — BP/melamínico, laminado (fórmica), lâmina natural, laca | 🟡 | `chapas.md` + `laminacao-e-construcao.md`; laca é 🧠 |
-| MAT-04 | Comportamento do material — umidade, área molhada, direção do padrão, flecha e vão máximo | 🔴 | Paulo |
+| MAT-03 | Acabamentos de superfície — BP/melamínico, laminado (fórmica), lâmina natural, laca | 🟡 | `chapas.md`, `laminacao-e-construcao.md`, `projeto-producao/referencias/saber-de-marceneiro.md` §1 (fórmica, lâmina e laca com as perguntas já formuladas) |
+| MAT-04 | Comportamento do material — umidade, área molhada, direção do padrão, flecha e vão máximo | 🟡🧠 | `projeto-producao/referencias/saber-de-marceneiro.md` §1 (prateleira >70 cm → 18 mm já é regra) |
 | MAT-05 | Recebimento e armazenagem — o defeito que se recusa na entrega | 🟡 | `painel/ficha-recebimento-material.html` |
 
 ### Bloco 3 · BORDAS `BOR`
@@ -150,7 +152,7 @@ Hoje comprimido no "Módulo I" junto com ferragens e glossário. Vira bloco pró
 
 | ID | Ficha | Estado | Fonte / dono |
 |---|---|---|---|
-| QUI-01 | Cola de contato — base solvente × base água, tempo aberto, aplicação nas duas faces | 🔴🧠 | Paulo |
+| QUI-01 | Cola de contato — base solvente × base água, tempo aberto, aplicação nas duas faces | 🔴🧠 | Paulo — gancho em `projeto-producao/referencias/saber-de-marceneiro.md` (fórmica: bolha/descolamento) |
 | QUI-02 | Cola branca PVA e cola PUR — onde cada uma, tempo de prensa | 🔴🧠 | Paulo |
 | QUI-03 | Silicones — **acético × neutro** (espelho e pedra exigem neutro), cor, aplicação | 🔴🧠 | Samuel (obra) |
 | QUI-04 | PU, espuma expansiva, calafetador e rejunte — onde entram no acabamento | 🔴🧠 | Samuel |
@@ -180,7 +182,7 @@ Pedido explícito do Jonathan, e hoje inexistente.
 | FIX-01 | Parafuso — como se lê a medida (Ø × comprimento), cabeça, ponta, rosca | 🔴 | — |
 | FIX-02 | **Tabela de aplicação e risco de atravessamento** — 4×16, 3,5×20, 4×25, 4×40 contra cada espessura | 🔴🧠 | Paulo / Deivison |
 | FIX-03 | Montagem desmontável — cavilha M8×30, minifix / excêntrico, tambor | 🟡 | `ferragens.md` |
-| FIX-04 | Furação sistema 32 e gabaritos | 🔴 | previsto no Mód. III |
+| FIX-04 | Furação sistema 32 e gabaritos | 🟡 | `projeto-producao/referencias/saber-de-marceneiro.md` §2 (padrão de furos = base do toolpath) |
 | FIX-05 | Fixação em parede — drywall, gesso, alvenaria, concreto: a bucha certa para cada uma | 🔴🧠 | Samuel |
 | FIX-06 | Dispositivos, gabaritos e ferramenta de montagem | 🟡 | `painel/checklist-insumos-ferramentas.html` |
 
@@ -192,11 +194,11 @@ Pedido explícito do Jonathan, e hoje inexistente.
 
 | ID | Ficha | Estado | Fonte / dono |
 |---|---|---|---|
-| CON-01 | Caixaria — esquadro, prumo, sequência de montagem | 🟡 | Mód. IV previsto |
+| CON-01 | Caixaria — esquadro, prumo, sequência de montagem | 🟡 | `projeto-producao/referencias/modelo-construtivo.md`; passante × apoiado, fundo por rasgo × parafusado |
 | CON-02 | Gaveta — as 6 peças, dimensionamento e folga | ✅🟡 | `laminacao-e-construcao.md` |
-| CON-03 | Portas e frentes — folga, alinhamento, regulagem | 🧠 | Deivison |
+| CON-03 | Portas e frentes — folga, alinhamento, regulagem | 🟡🧠 | `projeto-producao/referencias/saber-de-marceneiro.md` §2 (folgas reais); regulagem com o Deivison |
 | CON-04 | **Tipos de cava** — usinada 45°, cava perfil, cava em L, gola, cava de embutir: quando cada uma, profundidade, custo | 🔴🧠 | Jonathan / programador |
-| CON-05 | Ripado, filetagem e curvos | 🟡 | `laminacao-e-construcao.md` |
+| CON-05 | Ripado, filetagem e curvos | 🟡 | `laminacao-e-construcao.md`, `projeto-producao/referencias/painel-ripado.md`, `dobra-de-mdf.md` |
 | CON-06 | Tipologias — roupeiro/closet, cozinha, banheiro, rack/painel, home | 🟡 | `roupeiros.md`, `movel-roupeiro.md` |
 
 ### Bloco 8 · LEITURA DE PROJETO `PRJ`
@@ -207,16 +209,16 @@ Prioridade declarada — é a causa direta do gargalo da casa.
 | PRJ-01 | Anatomia do executivo — prancha, legenda, escala, revisão R01/R02 | 🔴 | caso real: Lucas & Ana, 84 pranchas |
 | PRJ-02 | Planta, vista, corte e detalhe — o que cada desenho responde | 🔴 | — |
 | PRJ-03 | Ler a cota e virar peça | 🔴 | — |
-| PRJ-04 | Lista de materiais — e onde o projeto diz qual ferragem vai | 🟡 | `quantitativo.md` |
-| PRJ-05 | Plano de corte e nesting — ler e conferir antes de cortar | 🟡 | `quantitativo.md` |
+| PRJ-04 | Lista de materiais — e onde o projeto diz qual ferragem vai | 🟡 | `quantitativo.md`, `projeto-producao/referencias/contrato-de-informacao.md` |
+| PRJ-05 | Plano de corte e nesting — ler e conferir antes de cortar | 🟡 | `quantitativo.md`, `projeto-producao/gerados/gen_nesting.py` |
 | PRJ-06 | **O que fazer quando o projeto não diz** — a regra de perguntar antes de assumir | 🔴 | `MOLESKINE.md` (aprendizados Lavinia) |
 
 ### Bloco 9 · DA FÁBRICA `FAB`
 | ID | Ficha | Estado |
 |---|---|---|
-| FAB-01 | Corte e nesting | 🟡 |
+| FAB-01 | Corte e nesting | 🟡 `gen_nesting.py` |
 | FAB-02 | Coladeira e filetagem — incluindo o acabamento manual que a ME25 exige | 🟡🧠 |
-| FAB-03 | Usinagem e CNC — a consequência do erro de programação | 🧠 |
+| FAB-03 | Usinagem e CNC — a consequência do erro de programação | 🟡 `aspire-cortes-especiais.md`, `maquinas.md` |
 | FAB-04 | Pré-montagem e embalagem | 🔴 |
 | FAB-05 | O que é uma peça aprovada | ✅ | `POP-01` + Módulo VI |
 
@@ -232,7 +234,7 @@ Prioridade declarada — é a causa direta do gargalo da casa.
 ### Bloco 11 · SEGURANÇA E ORGANIZAÇÃO `SEG` / `ORG`
 | ID | Ficha | Estado |
 |---|---|---|
-| SEG-01 | Máquina segura — serra, coladeira, furadeira, CNC | 🔴 |
+| SEG-01 | Máquina segura — serra, coladeira, furadeira, CNC | 🟡 `projeto-producao/referencias/maquinas.md` |
 | SEG-02 | EPI — o que se usa em cada tarefa | 🔴 |
 | SEG-03 | Carga e transporte — o acidente do RJ como caso de abertura | 🧠 |
 | SEG-04 | O que fazer em caso de acidente | 🔴 |
@@ -247,7 +249,7 @@ O Doc 12 do Valvic OS. Cada POP nasce **atrelado à ficha que o explica**.
 | POP-01 | Conferência de peça antes de sair da fábrica | ✅ aguarda aprovação da Direção | FAB-05 |
 | POP-02 | Friso e perfil de alumínio — a técnica | 🧠 perguntas já escritas no Mód. VI | OBR-04 |
 | POP-03 | Recebimento de material | 🔴 ficha existe, procedimento não | MAT-05 |
-| POP-04 | Medição em obra | 🔴 `ficha-medicao.html` existe | LING-03 |
+| POP-04 | Medição em obra | 🟡 `ficha-medicao.html` + `checklist_medicao_obra.pdf` | LING-03 |
 | POP-05 | Conferência de programação (pré-CNC) | 🔴 | PRJ-05 |
 | POP-06 | Montagem em obra e entrega | 🔴 | OBR-02 |
 | POP-07 | Assistência técnica e não-conformidade | 🔴 | INST-05 |
@@ -266,11 +268,21 @@ O Doc 12 do Valvic OS. Cada POP nasce **atrelado à ficha que o explica**.
 
 ## 4 · Contagem e realidade do escopo
 
-**77 fichas mapeadas.** Delas: **4 prontas**, **31 com fonte pronta faltando virar material**,
-**42 inexistentes** — e **24 dependem de extração** da cabeça do Jonathan, Paulo, Deivison ou
-Samuel.
+**82 fichas mapeadas.** Delas: **6 prontas**, **47 com fonte pronta faltando virar
+material**, **24 inexistentes** — e **18 dependem de extração** da cabeça do Jonathan, Paulo,
+Deivison ou Samuel.
 
-Isso é a medida honesta do gargalo: **um terço do núcleo da empresa só existe como conversa.**
+> **Recontagem de 09/2026, depois da unificação do repositório.** A fusão das branches
+> trouxe de volta a skill `projeto-producao` (folhas de modulação, modelo construtivo,
+> `saber-de-marceneiro.md`, fluxo de produção e funções, checklist de medição de obra,
+> máquinas, painel ripado, dobra de MDF). Sozinha, ela moveu **17 fichas** de "não existe"
+> para "tem fonte" — inclusive o fluxograma mestre, a anatomia do móvel, a furação sistema
+> 32 e o POP de medição.
+>
+> É a melhor prova do custo da fragmentação: um terço do que parecia buraco já estava
+> escrito, numa branch que ninguém abria.
+
+Ainda assim: **quase um quarto do núcleo da empresa só existe como conversa.**
 
 ---
 

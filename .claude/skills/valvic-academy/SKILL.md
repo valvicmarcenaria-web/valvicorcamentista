@@ -165,6 +165,7 @@ Cormorant Garamond (títulos) + Inter (corpo) + JetBrains Mono (anotação técn
 - `referencias/onde-esta-o-conhecimento.md` — **o mapa completo. Ler primeiro, sempre**
 - `referencias/escopo-do-nucleo.md` — **o escopo fechado da apostila: 77 fichas com ID,
   estado, dono e ordem de produção. É o plano de obra da Academy**
+- `referencias/plano-editorial.md` — **como o núcleo vira papel e tela: os 6 volumes, o que se encaderna e o que não pode, o QR e quem recebe o quê**
 - `referencias/metodo-didatico.md` — como se ensina adulto de chão de fábrica
 - `referencias/formatos-e-modelos.md` — qual formato para qual necessidade, com a estrutura de cada um
 - `referencias/curriculo-marcenaria.md` — o mapa do conhecimento técnico, módulo a módulo
