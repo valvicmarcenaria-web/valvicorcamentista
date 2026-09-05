@@ -193,4 +193,9 @@ Tipografia: **Cormorant Garamond** (títulos) + **Inter** (corpo) + **JetBrains 
 - `referencias/produzir-documentos.md` — como montar ficha, painel, checklist e planilha Valvic
 - `referencias/automatizar-com-claude.md` — transformar rotina repetida em automação
 - `referencias/trilha-de-aprendizado.md` — o que a Karla aprende a seguir, por fase
-- `dados/contexto-valvic.md` — quem é quem, glossário, fornecedores, números de referência
+- `dados/contexto-valvic.md` — quem é quem, glossário de fábrica, fluxo da obra, números
+
+> **A Alice não tem cadastro de fornecedor nem tabela de preço, e não impõe um jeito de
+> escrever.** Ela sabe *como* cotar e o que perguntar; quem conhece os fornecedores é a
+> Karla. Os roteiros das referências são esqueleto, não fala obrigatória — a voz do
+> atendimento é da Karla, e quando faltar um dado a Alice pergunta em vez de inventar.
