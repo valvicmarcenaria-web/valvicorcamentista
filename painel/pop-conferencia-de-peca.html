@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>POP-01 · Conferência de peça antes de sair da fábrica — Valvic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0E2038;--navy2:#16314F;--gold:#C2A05A;--goldsoft:#d8bd80;
+--goldbg:#F6EDD6;--ink:#1b2733;--muted:#6c7785;--linha:#dfe4ea;
+--ok:#2F7D4F;--red:#B0413F;--blue:#2F5D8C}
+@page{size:A4 portrait;margin:0}
+*{box-sizing:border-box}
+body{margin:0;background:#8a8f96;font-family:'Inter',system-ui,sans-serif;color:var(--ink)}
+.sheet{width:210mm;height:297mm;margin:0 auto 6mm;background:#fff;padding:12mm 14mm;
+  display:flex;flex-direction:column;page-break-after:always;overflow:hidden}
+.sheet:last-child{page-break-after:auto;margin-bottom:0}
+@media print{body{background:#fff}.sheet{margin:0}}
+
+.topo{display:flex;justify-content:space-between;align-items:flex-end;
+  border-bottom:2px solid var(--navy);padding-bottom:5px;margin-bottom:7px}
+.marca{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;
+  color:var(--navy);line-height:1}
+.marca small{display:block;font-family:'Inter',sans-serif;font-size:7.5px;font-weight:600;
+  letter-spacing:2.2px;text-transform:uppercase;color:var(--gold);margin-top:2px}
+.doc{text-align:right}
+.doc .tipo{font-family:'JetBrains Mono',monospace;font-size:8.5px;color:var(--gold);
+  letter-spacing:2px}
+.doc h1{margin:1px 0 0;font-family:'Cormorant Garamond',serif;font-size:19px;
+  font-weight:600;color:var(--navy);line-height:1.1}
+
+.ident{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--linha);
+  border-radius:3px;overflow:hidden;margin-bottom:3.2mm}
+.ident div{padding:1.8mm 3mm;border-right:1px solid var(--linha)}
+.ident div:last-child{border-right:0}
+.ident .r{font-size:7px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
+.ident .v{font-size:9.5px;font-weight:600;color:var(--navy2);margin-top:.5mm}
+
+.faixa{background:var(--navy);color:var(--goldsoft);font-size:8.5px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;padding:1.5mm 3mm;margin:3.2mm 0 2.2mm;
+  border-radius:2px;display:flex;justify-content:space-between}
+.faixa span{color:#fff;font-weight:500;letter-spacing:.6px;text-transform:none;opacity:.75}
+
+p{font-size:10.3px;line-height:1.45;margin:0 0 2mm}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.cx{border:1px solid var(--linha);border-left:3px solid var(--gold);border-radius:3px;
+  padding:2.6mm 3.5mm}
+.cx h4{margin:0 0 1.2mm;font-size:9.6px;color:var(--navy);font-weight:700}
+.cx p{font-size:9.6px;line-height:1.42;margin:0}
+.cx ul{margin:0;padding-left:4.2mm;font-size:9.6px;line-height:1.5}
+.cx ul li{margin-bottom:.4mm}
+
+.porque{background:var(--goldbg);border-left:3px solid var(--gold);border-radius:2px;
+  padding:2.8mm 4mm;margin-bottom:3mm}
+.porque p{font-size:10px;line-height:1.45;margin:0}
+.porque p+p{margin-top:1.6mm}
+.porque b{color:var(--navy)}
+
+ol.passos{counter-reset:p;list-style:none;margin:0;padding:0}
+ol.passos li{counter-increment:p;position:relative;padding:1.5mm 0 1.5mm 10mm;
+  border-bottom:1px solid var(--linha);font-size:10.1px;line-height:1.42}
+ol.passos li::before{content:counter(p);position:absolute;left:0;top:1.6mm;width:6.4mm;
+  height:6.4mm;background:var(--navy);color:var(--goldsoft);border-radius:50%;
+  font-size:9.5px;font-weight:700;display:flex;align-items:center;justify-content:center}
+ol.passos li b{color:var(--navy2)}
+ol.passos.b2{counter-reset:p 10}
+
+table{width:100%;border-collapse:collapse;font-size:9.3px}
+th{background:var(--navy2);color:var(--goldsoft);font-size:7.6px;font-weight:600;
+  letter-spacing:.8px;text-transform:uppercase;padding:1.6mm 2mm;text-align:left}
+td{border-bottom:1px solid var(--linha);padding:1.6mm 2mm;vertical-align:top;line-height:1.35}
+tr:nth-child(even) td{background:#f7f9fb}
+td b{color:var(--navy2)}
+
+.erro{background:#fbf3f3;border-left:3px solid var(--red);border-radius:2px;
+  padding:2.6mm 3.6mm;font-size:9.7px;line-height:1.5}
+.erro b{color:var(--red)}
+.confere{background:var(--goldbg);border-left:3px solid var(--gold);border-radius:2px;
+  padding:2.6mm 3.6mm;font-size:9.7px;line-height:1.45}
+
+.regra{border:1.5px solid var(--navy);border-radius:3px;padding:2.8mm 4mm;margin-top:3mm;
+  background:#fbfcfd}
+.regra h4{margin:0 0 1.2mm;font-size:9.6px;color:var(--navy);font-weight:700;
+  letter-spacing:.4px;text-transform:uppercase}
+.regra p{font-size:9.8px;line-height:1.45;margin:0}
+
+.marcar{display:inline-block;width:3.4mm;height:3.4mm;border:.4mm solid var(--navy);
+  border-radius:.6mm;vertical-align:-.5mm}
+.bola{display:inline-block;width:2.6mm;height:2.6mm;border-radius:50%;vertical-align:-.2mm;
+  margin-right:.6mm}
+
+.assina{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10mm;margin-top:auto;padding-top:5mm}
+.assina div{border-top:1px solid var(--ink);padding-top:1.4mm;font-size:8.2px;color:var(--muted)}
+
+.rodape{margin-top:3.5mm;border-top:1px solid var(--linha);padding-top:4px;
+  display:flex;justify-content:space-between;font-size:7.3px;color:var(--muted);
+  letter-spacing:.5px;text-transform:uppercase}
+
+/* folha 1 — texto um grau maior, que é a folha lida na bancada */
+.s1 .porque p{font-size:10.6px;line-height:1.5}
+.s1 .cx p,.s1 .cx ul{font-size:10.1px;line-height:1.5}
+.s1 .cx h4{font-size:10px}
+.s1 ol.passos li{font-size:10.8px;line-height:1.48;padding:2mm 0 2mm 10.5mm}
+.s1 ol.passos li::before{top:2mm}
+.s1 .faixa{margin:4mm 0 2.6mm;font-size:9px}
+.s1 .regra p{font-size:10.3px;line-height:1.5}
+.s1 .regra{padding:3.2mm 4mm}
+.s1 .rodape{margin-top:auto}
+</style>
+</head>
+<body>
+
+<!-- ============================ FOLHA 1 ============================ -->
+<div class="sheet s1">
+  <div class="topo">
+    <div class="marca">valvic<small>Marcenaria</small></div>
+    <div class="doc">
+      <div class="tipo">POP · PROCEDIMENTO OPERACIONAL PADRÃO</div>
+      <h1>Conferência de peça antes de sair da fábrica</h1>
+    </div>
+  </div>
+
+  <div class="ident">
+    <div><div class="r">Código</div><div class="v">POP-01</div></div>
+    <div><div class="r">Versão</div><div class="v">1 · 09/2026</div></div>
+    <div><div class="r">Quem executa</div><div class="v">Marceneiro do módulo</div></div>
+    <div><div class="r">Quem libera</div><div class="v">Coordenação de Produção</div></div>
+  </div>
+
+  <div class="porque">
+    <p><b>Por que este procedimento existe.</b> Peça que sai errada da fábrica custa
+    dez vezes mais na obra — viagem, hora de montador parada, prazo estourado e desgaste
+    com o cliente. Na bancada, o mesmo erro se resolve em minutos.</p>
+    <p>Numa cozinha entregue no primeiro semestre foram registrados <b>21 pontos de
+    acabamento</b>, dos quais 18 eram erro. Quase todos — tapa-furo faltando, fita
+    descolada, furação no lado errado, risco de caneta, fita crepe esquecida — teriam sido
+    pegos aqui, com a peça ainda na bancada. <b>O cliente não avalia a estrutura do móvel:
+    ele avalia o detalhe que ficou.</b></p>
+  </div>
+
+  <div class="duo">
+    <div class="cx">
+      <h4>Quando se aplica</h4>
+      <p>A <b>todo módulo pronto</b>, antes de embalar, e a <b>toda carga</b>, antes do
+      caminhão sair. Vale para peça de OP nova, peça refeita e peça que volta de retrabalho.<br>
+      <b>Não se aplica a:</b> conferência de material recebido de fornecedor (ficha de
+      recebimento) e conferência no ato da montagem em obra (portão 8 da ficha da OP).</p>
+    </div>
+    <div class="cx">
+      <h4>O que precisa antes de começar</h4>
+      <ul>
+        <li><b>Ficha de Conferência da OP</b> — a que viaja o fluxo inteiro</li>
+        <li><b>Matriz de Conferência</b> do ambiente + bolinhas adesivas</li>
+        <li><b>Projeto técnico impresso</b>, última versão</li>
+        <li>Romaneio da OP e etiquetas de volume</li>
+        <li>Trena, esquadro, pano e material de embalagem</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="faixa">Passo a passo · na bancada, módulo a módulo <span>3 minutos por módulo</span></div>
+  <ol class="passos">
+    <li><b>Pegue a Ficha da OP e a Matriz do ambiente antes de olhar a peça.</b>
+    Conferência feita de memória não vale e não se assina.</li>
+    <li><b>Confira o módulo contra o projeto impresso</b> — medida, ambiente e
+    <b>sentido de abertura</b>. Contra o projeto, nunca contra o que ficou na lembrança.</li>
+    <li><b>Meça as duas diagonais</b> do módulo montado a seco. Diagonais diferentes =
+    fora de esquadro: volta para a pré-montagem.</li>
+    <li><b>Passe o dedo nas bordas dos quatro lados.</b> Se pegar na unha — ressalto,
+    rebarba ou filete de cola — volta para o refile e a lixa.</li>
+    <li><b>Abra e feche todas as portas e gavetas.</b> Todas, uma a uma: soft-close atuando,
+    folgas uniformes e frentes no mesmo plano.</li>
+    <li><b>Confira ferragem e furação no lado certo:</b> dobradiça, corrediça, puxador,
+    minifix e cavilha na posição e na profundidade do projeto.</li>
+    <li><b>Coloque todos os tapa-furos</b> e confira um por um. É o item que mais chegou
+    faltando na obra.</li>
+    <li><b>Limpe a peça e olhe contra a luz:</b> pó, cola, mancha, risco de caneta e fita
+    crepe esquecida. Peça suja não passa.</li>
+    <li><b>Marque os seis critérios na Matriz e cole a bolinha adesiva no módulo.</b>
+    <span class="bola" style="background:#2F7D4F"></span>verde libera ·
+    <span class="bola" style="background:#C2A05A"></span>amarelo e
+    <span class="bola" style="background:#B0413F"></span>vermelho ficam retidos na estante.</li>
+    <li><b>Embale e identifique.</b> Ferragem do módulo em saco etiquetado, cantoneira,
+    bolha e stretch. No volume: <b>cliente + ambiente + módulo</b>. Depois assine o portão
+    na Ficha da OP — quem assina, responde.</li>
+  </ol>
+
+  <div class="regra">
+    <h4>A regra que faz o procedimento valer</h4>
+    <p>Módulo sem bolinha verde <b>não é embalado</b>. Volume sem etiqueta <b>não sobe no
+    caminhão</b>. Carga sem a liberação assinada <b>não sai do portão</b>. Não existe
+    "sai assim e a gente resolve na obra" — na obra o mesmo conserto custa uma viagem.</p>
+  </div>
+
+  <div class="rodape">
+    <span>Valvic Marcenaria · Vargas Decor Ltda · POP-01 · versão 1 · 09/2026</span>
+    <span>Bancada · 1/2</span>
+  </div>
+</div>
+
+<!-- ============================ FOLHA 2 ============================ -->
+<div class="sheet">
+  <div class="topo">
+    <div class="marca">valvic<small>Marcenaria</small></div>
+    <div class="doc">
+      <div class="tipo">POP-01 · CONFERÊNCIA DE PEÇA</div>
+      <h1>Carga, critérios e o que fazer se der errado</h1>
+    </div>
+  </div>
+
+  <div class="faixa">Passo a passo · antes do caminhão sair <span>Coordenação + motorista, juntos</span></div>
+  <ol class="passos b2">
+    <li><b>Confira volume por volume contra o romaneio</b>, em voz alta, com o motorista ao
+    lado. Quantidade e identificação de cada volume.</li>
+    <li><b>Carregue na ordem da montagem:</b> o que monta primeiro desce primeiro. Tampos e
+    peças grandes travados e protegidos.</li>
+    <li><b>Fotografe a carga fechada</b> e mande a foto no grupo com o número da OP.</li>
+    <li><b>Assine a Liberação Final da OP</b> e entregue ao motorista nota, romaneio e termo
+    de entrega. Só então o caminhão sai.</li>
+  </ol>
+
+  <div class="faixa">Pontos de conferência <span>o critério de "está certo" — sem adjetivo, só o que se vê e se mede</span></div>
+  <table>
+    <tr><th style="width:7mm">✓</th><th style="width:44mm">O que se confere</th><th>Critério de "está certo"</th></tr>
+    <tr><td><span class="marcar"></span></td><td><b>Medida e esquadro</b></td>
+      <td>Bate com o projeto impresso; <b>as duas diagonais dão o mesmo número</b>; peça sem empeno</td></tr>
+    <tr><td><span class="marcar"></span></td><td><b>Acabamento e borda</b></td>
+      <td>Borda 100% colada, sem descole, rebarba ou queima; <b>o dedo passa e não pega</b>; superfície sem risco, mancha ou caneta</td></tr>
+    <tr><td><span class="marcar"></span></td><td><b>Ferragem e funcionamento</b></td>
+      <td>Dobradiça e corrediça <b>no lado certo</b>, alinhadas e testadas: abre, fecha, soft-close atua, gaveta corre e porta não cai</td></tr>
+    <tr><td><span class="marcar"></span></td><td><b>Alinhamento e folgas</b></td>
+      <td>Portas e gavetas alinhadas, <b>folgas iguais dos dois lados</b>, frentes no mesmo plano</td></tr>
+    <tr><td><span class="marcar"></span></td><td><b>Tapa-furo e limpeza</b></td>
+      <td><b>Nenhum furo aparente</b>; sem pó, cola, fita crepe ou etiqueta de fábrica na face vista</td></tr>
+    <tr><td><span class="marcar"></span></td><td><b>Embalagem e kit</b></td>
+      <td>Ferragem do módulo em saco etiquetado — <b>nada solto</b>; volume identificado com cliente + ambiente + módulo</td></tr>
+  </table>
+
+  <div class="faixa">Se der errado</div>
+  <div class="erro">
+    <b>Achou problema no módulo →</b> bolinha amarela ou vermelha, módulo retido na estante e
+    registro na <b>Não Conformidade</b> (pág. 4 da Ficha da OP), com a causa provável.
+    Resolve e confere de novo antes de embalar.<br>
+    <b>A carga está atrasada e falta módulo conferido →</b> não libera o módulo pendente.
+    Avisa a Coordenação e sai a carga parcial, com o que falta anotado no romaneio.
+    <b>Carga parcial atrasa uma frente; peça errada atrasa a obra inteira.</b><br>
+    <b>Divergência entre romaneio e físico →</b> para o carregamento e resolve com a
+    Coordenação antes de fechar o baú. Nunca "acerta na obra".<br>
+    <b>Dúvida de projeto na hora da conferência →</b> para e chama a Coordenação.
+    Improviso nesta etapa é exatamente o que chega errado na obra.
+  </div>
+
+  <div class="duo" style="margin-top:3.2mm">
+    <div class="cx">
+      <h4>Registro — o que fica escrito</h4>
+      <ul>
+        <li><b>Matriz de Conferência</b> — uma por ambiente, com os seis critérios marcados</li>
+        <li><b>Ficha de Conferência da OP</b> — portões 5, 6 e 7 assinados</li>
+        <li><b>Não Conformidade</b> — todo módulo reprovado, com causa provável</li>
+        <li><b>Foto da carga</b> — no grupo, com o nº da OP</li>
+      </ul>
+      <p style="margin-top:1.4mm">As duas fichas ficam com a OP até o encerramento e são
+      arquivadas na pasta do cliente.</p>
+    </div>
+    <div class="cx">
+      <h4>Implantação — como isto pega</h4>
+      <ul>
+        <li><b>Quem conhece:</b> marceneiro, ajudante, embalagem, expedição, motorista e coordenação</li>
+        <li><b>Apresentação:</b> 10 minutos da manhã, com uma peça real na bancada</li>
+        <li><b>Primeira semana:</b> a Coordenação acompanha uma conferência de cada marceneiro</li>
+        <li><b>Verificação mensal:</b> somar as NCs por portão e por causa; a causa que mais repete vira ação de melhoria</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="regra">
+    <h4>Como saber se este POP está funcionando</h4>
+    <p>O número que importa é <b>retrabalho em obra por peça que saiu errada da fábrica</b>.
+    Conta-se pelas NCs abertas depois da entrega. Revisão do procedimento em <b>30 dias</b>,
+    com a lista de retrabalhos do período na mão. Se o número não cair, o problema não é a
+    ficha — é o portão que está sendo assinado sem ser conferido.</p>
+  </div>
+
+  <div class="assina">
+    <div>Escrito por · Valvic Academy · 09/2026</div>
+    <div>Aprovado por · Direção</div>
+    <div>Coordenação de Produção · data</div>
+  </div>
+
+  <div class="rodape">
+    <span>Valvic Marcenaria · Vargas Decor Ltda · POP-01 · versão 1 · 09/2026</span>
+    <span>Carga &amp; critérios · 2/2</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -7,6 +7,27 @@ pode ler e escrever aqui. Formato livre — marcar data e agente responsável.
 
 ## Tarefas abertas
 
+### [2026-09-05] POP-01 — Conferência de peça antes de sair da fábrica — Téo (Academy)
+**Solicitante:** Jonathan
+**Status:** 🟡 Escrito, aguardando aprovação da Direção e implantação
+
+Jonathan relatou que a **Ficha de Conferência já existe mas ninguém usa direito**, e continua
+saindo peça errada para a obra. Foi escrito o procedimento que faltava (o *como usar* a ficha):
+- `painel/pop-conferencia-de-peca.html` + `painel/Valvic_POP_Conferencia_De_Peca.pdf` (2 folhas A4)
+- Folha 1 = bancada, 10 passos, 3 min/módulo. Folha 2 = carga, 6 pontos de conferência com
+  critério observável, "se der errado", registro e implantação.
+- Fontes: `ficha-conferencia-producao.html` (portões 5-7), `matriz-conferencia.html`,
+  `feedback-deivison-obra.html` (a ferramenta 02 e os 21 pontos da cozinha).
+
+**Pendências para a próxima sessão:**
+1. Aprovação da Direção (o campo de assinatura está no rodapé da folha 2).
+2. Apresentar nos 10 minutos da manhã, com peça real na bancada.
+3. Revisão em **30 dias** com a lista de retrabalhos do período — o indicador é retrabalho em
+   obra por peça que saiu errada da fábrica.
+4. Próximo POP da fila (prioridade 2): **recebimento de material** — a ficha também já existe.
+
+---
+
 ### [2026-06-16] Novo layout de proposta — Vitor
 **Solicitante:** Jonathan  
 **Agente:** Vitor  

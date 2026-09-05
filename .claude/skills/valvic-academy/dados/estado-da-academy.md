@@ -21,6 +21,7 @@ Na arquitetura declarada do **"Valvic OS"** (≈15 documentos), a Academy é o *
 | **Escopos individuais** | `painel/escopo-*.html` | Marceneiro, ajudante, arquiteta, venda |
 | **Plano de Estágio** (Analista de Projetos / Suporte Comercial) | Drive | Pronto, com uma divergência a resolver: a proposta cita PJ/MEI e o plano interno cita convênio |
 | **Fichas e checklists de produção** | `painel/ficha-*.html`, `matriz-conferencia.html`, `checklist-insumos-ferramentas.html` | Prontos — falta o POP que diz **como usá-los** |
+| **POP-01 — Conferência de peça antes de sair da fábrica** | `painel/pop-conferencia-de-peca.html` | Escrito em 09/2026 · aguarda aprovação da Direção e implantação (revisão em 30 dias) |
 | **Casos reais de erro** | `painel/feedback-deivison-obra.html` (21 pontos) e `feedback-samuel-obra.html` (16 pontos) | Matéria-prima de aula |
 | **Apps de checklist digital** | pasta `apps` no Drive; ver `GUIA-APPS-E-FERRAMENTAS.md` | Existem — **cada um deveria ter POP e uma aula**, e não têm |
 
@@ -29,25 +30,23 @@ Na arquitetura declarada do **"Valvic OS"** (≈15 documentos), a Academy é o *
 **Alta prioridade** (ataca o gargalo direto):
 1. **Módulo II — leitura de projeto, cotas e montagem.** Previsto e nunca escrito. É a causa
    direta do "executou sem saber ler o que já estava definido".
-2. **POP de conferência de peça antes de sair da fábrica.** A ficha existe; o procedimento
-   não.
-3. **POP de recebimento de material.** A ficha existe (`ficha-recebimento-material.html`);
+2. **POP de recebimento de material.** A ficha existe (`ficha-recebimento-material.html`);
    o procedimento não.
-4. **Kit de integração** de quem entra. Hoje a pessoa nova aprende por osmose.
+3. **Kit de integração** de quem entra. Hoje a pessoa nova aprende por osmose.
 
 **Média:**
-5. Módulo de **acabamento e padrão Valvic**, montado sobre os 37 pontos reais de erro já
+4. Módulo de **acabamento e padrão Valvic**, montado sobre os 37 pontos reais de erro já
    documentados.
-6. **POP de medição** e **POP de conferência de programação (pré-CNC)**.
-7. **Trilhas dos demais cargos** — programador CNC, operador, montador, assistente
+5. **POP de medição** e **POP de conferência de programação (pré-CNC)**.
+6. **Trilhas dos demais cargos** — programador CNC, operador, montador, assistente
    operacional, projetos.
-8. **Consolidação das políticas internas** que hoje estão espalhadas em cinco documentos
+7. **Consolidação das políticas internas** que hoje estão espalhadas em cinco documentos
    diferentes.
 
 **Depois:**
-9. Módulos III a VIII do currículo (`referencias/curriculo-marcenaria.md`).
-10. Roteiros de vídeo das operações críticas.
-11. LMS com trilha por cargo — a visão declarada.
+8. Módulos III a VIII do currículo (`referencias/curriculo-marcenaria.md`).
+9. Roteiros de vídeo das operações críticas.
+10. LMS com trilha por cargo — a visão declarada.
 
 ## Decisões já tomadas que valem para todo material
 
