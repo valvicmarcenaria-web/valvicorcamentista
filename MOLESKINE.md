@@ -723,6 +723,13 @@ motor.
 algo que a casa entrega; aqui é **colocar na proposta** algo que a casa não
 orçou. Mesma origem — texto e conta escritos em momentos diferentes, sem
 ninguém cruzar os dois no fim.
+### [2026-07-02] Orçamento Juliana (Kairon & Juliana) — proposta enviada
+Expandido de 4 para 8 ambientes (+ Quarto de casal, Closet, Banheiros social+suíte, Roupeiro corredor).
+Anteprojeto Caio Oliveira. Caixa normal, sem RT, vend 3%.
+**Gold R$ 123.954 (MC 40%) · Essencial R$ 107.121 (MC ~35%).** Pagamento: entrada 30%+10x cartão (padrão),
+descontos até 7% para entrada maior. Garantia Gold 10 anos / Essencial 2 anos. Validade 7 dias.
+Registro: `projetos/2026-kairon-juliana.md`. Proposta final: `projetos/proposta-juliana-premium.html` / `.pdf`.
+Status: aguardando retorno da cliente.
 
 ## Recados rápidos
 
