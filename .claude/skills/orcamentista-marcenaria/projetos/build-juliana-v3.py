@@ -23,7 +23,7 @@ ITENS = [
   'Coluna com <b>forno e micro-ondas embutidos</b> · vão de geladeira com tamponamento · '
   'balcões inferiores com gavetões · aéreos em três faces · prateleiras flutuantes · '
   '<b>6 m de LED</b> com sensor · puxador em <b>perfil cava Rometal RM195</b>. '
-  'Interno todo em <b>branco</b>.', 22700, 20100),
+  'Interno todo em <b>branco</b>.', 22700, 19600),
  ('Cozinha', 'Mesa de refeições <span class="nv">novo</span>',
   'Base em <b>serralheria</b> com tampo em <b>MDF</b>. Item acrescentado nesta versão — '
   'fecha a cozinha como ambiente de refeição, não só de preparo.', 2350, 2350),
@@ -31,12 +31,12 @@ ITENS = [
   '<b>Cabeceira estofada</b> · painel · duas mesinhas suspensas com duas gavetas cada · '
   '<b>porta de passagem em sistema RO82 sem freio</b> (folha + trilho) · puxadores '
   'redondos dourados · <b>3 m de LED</b> com sensor. Interno todo em <b>branco</b>.',
-  19700, 17500),
+  19700, 15400),
  ('Closet', 'Versão 2',
   'Armários piso-teto com portas até o forro · <b>12 gavetas e sapateiras internas</b> · '
   'cabideiros · puxador <b>Next Meia Lua 64 mm</b> · '
   '<b>cômoda de cinco gavetas em laca vermelha, com tampo de vidro</b>. '
-  'Interno todo em <b>branco</b>.', 33304, 27121),
+  'Interno todo em <b>branco</b>.', 33304, 28400),
 ]
 BRINDE = ('Lavabo', 'Gabinete suspenso',
           'Gabinete suspenso amadeirado, com o interno em branco e a cuba por '
@@ -158,17 +158,17 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
 
 <!-- ══════ 1. CAPA ══════ -->
 <div class="page cover cover-t">
-  <div class="rules"></div><div class="v2">02</div>
+  <div class="rules"></div><div class="v2">03</div>
   <div class="inner">
     <div><div class="brand">valvic<span class="d">.</span></div><div class="bsub">MARCENARIA</div></div>
     <div class="mid">
-      <div class="kick">Proposta de marcenaria · versão 2</div>
+      <div class="kick">Proposta de marcenaria · versão 3</div>
       <div class="tit">Kairon<br>&amp; Juliana.</div>
       <div class="sub">Escopo priorizado · cozinha, quarto de casal e closet</div>
     </div>
     <div class="strip">
       <div class="c"><div class="k">Escopo</div><div class="v">3 ambientes + mesa</div></div>
-      <div class="c"><div class="k">Linhas</div><div class="v">Gold e Essencial</div></div>
+      <div class="c"><div class="k">Linhas</div><div class="v">Gold e Telescópica</div></div>
       <div class="c"><div class="k">Entrega</div><div class="v">45 a 60 dias úteis</div></div>
     </div>
   </div>
@@ -215,7 +215,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
     o preço.</div>
   </div>
 
-  <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Kairon &amp; Juliana · versão 2</span></div>
+  <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Kairon &amp; Juliana · versão 3</span></div>
 </div></div>
 
 <!-- ══════ 3. GOLD × ESSENCIAL ══════ -->
@@ -236,13 +236,13 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
         <li>Regulagem que <b>mantém a fresta igual</b> anos depois da instalação</li>
         <li><b>Garantia de 10 anos</b> — estrutura <em>e</em> ferragens</li>
       </ul></div>
-    <div><div class="k">Linha Essencial</div>
-      <div class="t">Hardt.</div>
+    <div><div class="k">Linha Telescópica</div>
+      <div class="t">Telescópica.</div>
       <div class="d">Ferragem nacional, mesma marcenaria.</div>
       <ul>
-        <li>Corrediça e abertura em <b>linha mais econômica</b></li>
+        <li>Corrediça <b>telescópica em todas as gavetas</b>, inclusive na cozinha</li>
         <li>Mesmo desenho, mesmas chapas, mesmo acabamento</li>
-        <li>Regulagem mais simples, sem ajuste tridimensional</li>
+        <li>A corrediça <b>aparece na lateral</b> e a gaveta não sai inteira</li>
         <li><b>Garantia de 2 anos</b></li>
       </ul></div>
   </div>
@@ -266,7 +266,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
     vezes — <b>é onde o móvel envelhece</b>, e é exatamente o que a linha Gold está comprando.</div>
   </div>
 
-  <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Kairon &amp; Juliana · versão 2</span></div>
+  <div class="pfoot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Kairon &amp; Juliana · versão 3</span></div>
 </div></div>
 
 <!-- ══════ 4. INVESTIMENTO ══════ -->
@@ -278,7 +278,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   <table class="dual">
     <thead><tr><th>Ambiente</th><th>Descrição</th>
       <th class="vh">Gold<br><span style="font-weight:400;text-transform:none;letter-spacing:0;">Hettich · 10 anos</span></th>
-      <th class="vh alt">Essencial<br><span style="font-weight:400;text-transform:none;letter-spacing:0;">Hardt · 2 anos</span></th></tr></thead>
+      <th class="vh alt">Telescópica<br><span style="font-weight:400;text-transform:none;letter-spacing:0;">telescópica · 2 anos</span></th></tr></thead>
     <tbody>
       {linhas}
       <tr class="bri"><td class="sv"><b>{BRINDE[0]}</b><small>{BRINDE[1]}</small></td>
@@ -292,7 +292,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
 
   <table class="pay-tb2">
     <thead><tr><th>Forma de pagamento</th><th class="r">Desconto</th>
-      <th class="r">Gold</th><th class="r">Essencial</th></tr></thead>
+      <th class="r">Gold</th><th class="r">Telescópica</th></tr></thead>
     <tbody>{esc}</tbody>
   </table>
 
@@ -300,7 +300,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
     <div><div class="k">Prazo de entrega</div><div class="d"><b>45 a 60 dias úteis</b> após a
       aprovação e a medição final no local.</div></div>
     <div><div class="k">Garantia</div><div class="d"><b>Gold: 10 anos</b> sobre estrutura e
-      ferragens · <b>Essencial: 2 anos</b>.</div></div>
+      ferragens · <b>Telescópica: 2 anos</b>.</div></div>
     <div><div class="k">Validade da proposta</div><div class="d"><b>7 dias corridos</b> a partir
       desta data.</div></div>
     <div><div class="k">Escopo Valvic</div><div class="d">Marcenaria, ferragens, vidros e espelhos
@@ -316,7 +316,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
 
 </body></html>"""
 
-(P/'proposta-juliana-v2.html').write_text(HTML, encoding='utf-8')
-print('wrote proposta-juliana-v2.html', len(HTML))
-print(f'GOLD R$ {br(TG)}  ·  ESSENCIAL R$ {br(TE)}  ·  diferença R$ {br(TG-TE)}')
-print(f'brinde lavabo: Gold {br(BRINDE[3])} / Essencial {br(BRINDE[4])}')
+(P/'proposta-juliana-v3-telescopica.html').write_text(HTML, encoding='utf-8')
+print('wrote proposta-juliana-v3-telescopica.html', len(HTML))
+print(f'GOLD R$ {br(TG)}  ·  TELESCÓPICA R$ {br(TE)}  ·  diferença R$ {br(TG-TE)}')
+print(f'brinde lavabo: Gold {br(BRINDE[3])} / Telescópica {br(BRINDE[4])}')

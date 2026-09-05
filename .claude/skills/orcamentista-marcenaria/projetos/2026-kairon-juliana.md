@@ -209,3 +209,83 @@ recuperado do próprio HTML entregue e passou a morar em
    dobradiça (50 ÷ 2). Conferir com o desenho.
 3. **Subir o preço ou aceitar a MC menor?** Os valores acima já sobem;
    se preferir segurar o preço, a MC cai para 39,5 / 35,1.
+
+
+---
+
+## Rodada de 02/09 (2ª parte) — valores originais, closet −1.000 e a linha Telescópica
+
+> *"Mantenha os valores originais mas refaça o descritivo observando as
+> alterações textuais. Reduza 1.000 no preço do closet. Crie uma nova versão
+> com a corrediça telescópica."*
+
+### V2 — preços de volta ao original, closet menos R$ 1.000
+
+| Ambiente | GOLD | ESSENCIAL |
+|---|--:|--:|
+| Cozinha | 22.700 | 20.100 |
+| Mesa de refeições | 2.350 | 2.350 |
+| Quarto de casal | 19.700 | 17.500 |
+| **Closet** (−1.000) | **33.304** | **27.121** |
+| **TOTAL** | **R$ 78.054** | **R$ 67.071** |
+
+O **descritivo** mantém as sete alterações: laca de verdade na cômoda de cinco
+gavetas, puxador Next Meia Lua 64 mm no closet, perfil cava Rometal RM195 na
+cozinha, RO82 sem freio, 12 gavetas e sapateiras internas, interno de tudo em
+branco, e **nenhum quantitativo de ferragem** no papel.
+
+### ⚠⚠ O que o desconto fez com a margem
+
+A laca entrou no custo e o preço voltou ao original **menos R$ 1.000**. As duas
+coisas puxam a MC para baixo ao mesmo tempo:
+
+| Linha | Cozinha | Quarto | Closet | **3 ambientes** |
+|---|--:|--:|--:|--:|
+| **GOLD** | 37,5% | 43,2% | 37,3% | **38,9%** |
+| **ESSENCIAL** | 32,0% | 40,4% | **32,9%** | **34,7%** ⚠ |
+| TELESCÓPICA | 34,9% | 35,0% | 35,1% | **35,0%** |
+
+**A Essencial ficou em 34,7%, abaixo do piso de 35% da casa** — e o closet dela,
+sozinho, em **32,9%**. A cozinha da Essencial já estava em 32,0% desde a v1.
+
+### V3 — a linha Telescópica
+
+`build-juliana-v3.py` → `proposta-juliana-v3-telescopica.pdf`, 4 páginas.
+Gold × Telescópica, mesma estrutura da v2.
+
+| Ambiente | GOLD | TELESCÓPICA |
+|---|--:|--:|
+| Cozinha | 22.700 | 19.600 |
+| Mesa de refeições | 2.350 | 2.350 |
+| Quarto de casal | 19.700 | 15.400 |
+| Closet | 33.304 | 28.400 |
+| **TOTAL** | **R$ 78.054** | **R$ 65.750** |
+
+Precificada **item a item na MC 35%**, o piso da casa. Orçamento em
+`orcamento-juliana-telescopica.json`.
+
+### O achado: a Essencial já era quase toda telescópica
+
+| | CD dos 3 ambientes |
+|---|--:|
+| Gold — oculta Quadro em tudo | R$ 31.128 |
+| Essencial | R$ 29.348 |
+| **Telescópica** | **R$ 28.548** |
+
+**Entre Essencial e Telescópica há só R$ 800 de custo.** A Essencial já usava
+telescópica no closet e no quarto de casal — a única corrediça que muda é a da
+**cozinha** (10 unidades, R$ 80 de diferença cada).
+
+**A leitura que isso abre:** se a Essencial passar a ser toda telescópica sem
+mexer no preço de R$ 67.071, a MC dela **volta de 34,7% para 35,9%** — acima do
+piso. Ou seja, a linha Telescópica não é só uma opção mais barata: ela é o
+caminho para consertar a margem da Essencial sem tirar nada do cliente.
+
+### Em aberto
+
+1. **A Essencial fica em 34,7%.** Ou sobe o preço, ou vira toda telescópica
+   (35,9%), ou o Jonathan aceita a exceção.
+2. **Preço de compra do Next Meia Lua 64 mm** — segue como a única adoção ★ sem
+   referência (adotei R$ 35).
+3. Os **25 puxadores das portas do closet** seguem como estimativa por contagem
+   de dobradiça.
