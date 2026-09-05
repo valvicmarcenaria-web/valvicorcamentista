@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Instala a skill da Valvic (Orçamentista Estratégico) na BASE GERAL do Claude
-# Code (~/.claude/skills), deixando-a disponível em todos os seus projetos.
+# Instala as skills da Valvic na BASE GERAL do Claude Code (~/.claude/skills),
+# deixando-as disponíveis em todos os seus projetos e em qualquer chat novo.
 #
 # Copia apenas o essencial — exclui fontes/ (arquivos pesados de referência
 # que ficam no repositório, não precisam ir para a base pessoal).
@@ -13,7 +13,13 @@ set -euo pipefail
 
 DEST="$HOME/.claude/skills"
 SRC="$(cd "$(dirname "$0")" && pwd)/.claude/skills"
-SKILLS=("orcamentista-marcenaria")
+SKILLS=(
+  "alice-assistente-operacional"        # Alice — o dia a dia da Karla
+  "gestao-estrategica-operacional"      # Helena — gestão e estratégia
+  "orcamentista-marcenaria"             # Lavinia — orçamento
+  "estrategia-financeira-precificacao"  # Rodrigo — finanças e preço
+  "closer-vendas"                       # Closer — proposta e fechamento
+)
 
 mkdir -p "$DEST"
 echo "Instalando skills da Valvic em: $DEST"
