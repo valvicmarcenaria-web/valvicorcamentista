@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ficha de Conferência de Recebimento — Chapa e Ferragem · Valvic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0E2038; --navy2:#16314F; --gold:#C2A05A; --goldsoft:#d8bd80;
+  --goldbg:#F6EDD6; --ink:#1b2733; --muted:#6c7785; --linha:#dfe4ea;
+  --ok:#2F7D4F; --red:#B0413F; --blue:#2F5D8C;
+}
+@page{ size:A4 portrait; margin:0 }
+*{ box-sizing:border-box }
+html{ -webkit-print-color-adjust:exact; print-color-adjust:exact }
+body{ margin:0; background:#8a8f96; font-family:'Inter',system-ui,sans-serif; color:var(--ink) }
+
+.sheet{
+  width:210mm; height:297mm; margin:0 auto; background:#fff; position:relative;
+  padding:11mm 12mm 10mm; display:flex; flex-direction:column;
+  page-break-after:always; overflow:hidden;
+}
+.sheet:last-child{ page-break-after:auto }
+@media print{ body{ background:#fff } .sheet{ margin:0 } .btn{ display:none } }
+
+.topo{ display:flex; justify-content:space-between; align-items:flex-end;
+  border-bottom:2px solid var(--navy); padding-bottom:5px; margin-bottom:8px }
+.marca{ font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:700;
+  color:var(--navy); letter-spacing:.5px; line-height:1 }
+.marca small{ display:block; font-family:'Inter',sans-serif; font-size:7.5px; font-weight:600;
+  letter-spacing:2.4px; text-transform:uppercase; color:var(--gold); margin-top:3px }
+.doc{ text-align:right }
+.doc h1{ margin:0; font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:600; color:var(--navy) }
+.doc .meta{ font-size:8px; color:var(--muted); letter-spacing:.4px; margin-top:2px }
+
+.faixa{ background:var(--navy); color:var(--goldsoft); font-size:8.5px; font-weight:600;
+  letter-spacing:2px; text-transform:uppercase; padding:4px 9px; margin:7px 0 5px; border-radius:2px;
+  display:flex; justify-content:space-between; align-items:center }
+.faixa .dica{ font-size:7.5px; letter-spacing:.4px; text-transform:none; color:#c8d2de; font-weight:400 }
+
+/* identificação */
+.ident{ display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+  border:1.3px solid var(--navy2); border-radius:4px; overflow:hidden }
+.ident .c{ padding:5px 8px; border-right:1px solid var(--linha); border-top:1px solid var(--linha) }
+.ident .c:nth-child(-n+4){ border-top:none }
+.ident .c:nth-child(4n){ border-right:none }
+.ident .c.w2{ grid-column:span 2 }
+.ident .l{ display:block; font-size:6.6px; letter-spacing:.9px; text-transform:uppercase;
+  color:var(--muted); margin-bottom:3px }
+.ident .f{ display:block; border-bottom:1px solid #b9c2cd; height:12px }
+.ident .f.mini{ font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--muted); border:none }
+
+/* aviso */
+.aviso{ background:var(--goldbg); border-left:3px solid var(--gold); border-radius:2px;
+  padding:6px 9px; font-size:8.6px; line-height:1.45; color:var(--navy2); margin:7px 0 }
+.aviso b{ color:var(--navy) }
+
+/* tabelas de conferência */
+table.tb{ width:100%; border-collapse:collapse; font-size:8.4px }
+table.tb th{ background:var(--navy2); color:var(--goldsoft); font-size:6.8px; font-weight:600;
+  letter-spacing:.6px; text-transform:uppercase; padding:4px 5px; text-align:left; line-height:1.2 }
+table.tb td{ border:1px solid var(--linha); height:21px; padding:2px 5px; vertical-align:middle }
+table.tb td.ctr{ text-align:center }
+table.tb tr:nth-child(even) td{ background:#f7f9fb }
+.sn{ font-family:'JetBrains Mono',monospace; font-size:7.6px; color:#9aa4b1; letter-spacing:.5px }
+
+/* checklist */
+.checks{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:2px 14px }
+.checks li{ display:flex; gap:6px; align-items:flex-start; font-size:8.5px; line-height:1.35; padding:2px 0 }
+.checks li .cb{ width:11px; height:11px; border:1.4px solid var(--navy2); border-radius:2px;
+  flex:0 0 11px; margin-top:1px; background:#fff }
+.checks li b{ color:var(--navy) }
+.checks li.crit{ background:#fbf1e9; border-radius:3px; padding:2px 6px; margin:0 -6px }
+.checks li.crit .cb{ border-color:var(--red) }
+
+/* desfecho */
+.final{ border:1.3px solid var(--navy2); border-radius:5px; overflow:hidden; margin-top:7px }
+.final .fh{ background:var(--navy); color:#fff; padding:4px 10px; font-size:8.5px;
+  font-weight:700; letter-spacing:1.4px; text-transform:uppercase }
+.final .fb{ padding:7px 10px; display:flex; gap:16px; align-items:center; flex-wrap:wrap }
+.final .opt{ display:flex; align-items:center; gap:6px; font-size:9px; font-weight:700 }
+.final .opt .cb{ width:13px; height:13px; border:1.5px solid var(--navy2); border-radius:3px }
+.final .opt.ap{ color:var(--ok) } .final .opt.ap .cb{ border-color:var(--ok) }
+.final .opt.rs{ color:var(--blue) } .final .opt.rs .cb{ border-color:var(--blue) }
+.final .opt.rp{ color:var(--red) } .final .opt.rp .cb{ border-color:var(--red) }
+
+.assina{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-top:9px }
+.assina div{ border-top:1px solid var(--ink); padding-top:3px; font-size:7.8px; color:var(--muted) }
+
+.destino{ font-size:8.2px; color:var(--ink); line-height:1.5; margin-top:7px;
+  border-left:3px solid var(--navy2); padding:4px 9px; background:#f7f9fb; border-radius:2px }
+.destino b{ color:var(--navy) }
+
+.rodape{ margin-top:auto; border-top:1px solid var(--linha); padding-top:4px;
+  display:flex; justify-content:space-between; font-size:7px; color:var(--muted);
+  letter-spacing:.5px; text-transform:uppercase }
+
+.btn{ position:fixed; top:16px; right:16px; z-index:9; background:var(--navy); color:#fff;
+  border:1px solid var(--gold); padding:9px 16px; border-radius:5px; font-size:12px;
+  font-weight:600; cursor:pointer }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Imprimir / PDF</button>
+
+<div class="sheet">
+  <div class="topo">
+    <div class="marca">valvic<small>Marcenaria</small></div>
+    <div class="doc">
+      <h1>Ficha de Conferência de Recebimento</h1>
+      <div class="meta">Chapa · Fita · Ferragem · Uso interno — uma ficha por entrega — conferir com o entregador presente</div>
+    </div>
+  </div>
+
+  <div class="faixa">Identificação da entrega <span class="dica">Preencher antes de abrir a carga</span></div>
+
+  <div class="ident">
+    <div class="c w2"><span class="l">Fornecedor</span><span class="f"></span></div>
+    <div class="c"><span class="l">Nº da nota fiscal</span><span class="f"></span></div>
+    <div class="c"><span class="l">Nº do pedido / OC</span><span class="f"></span></div>
+    <div class="c"><span class="l">Data da entrega</span><span class="f mini">___ / ___ / 20___</span></div>
+    <div class="c"><span class="l">Hora</span><span class="f mini">___ : ___</span></div>
+    <div class="c"><span class="l">Transportadora / motorista</span><span class="f"></span></div>
+    <div class="c"><span class="l">Placa</span><span class="f"></span></div>
+    <div class="c w2"><span class="l">Obra / cliente a que se destina</span><span class="f"></span></div>
+    <div class="c w2"><span class="l">Quem conferiu (nome legível)</span><span class="f"></span></div>
+  </div>
+
+  <div class="aviso"><b>A regra:</b> conferir <b>com o caminhão ainda aqui</b>. Divergência encontrada →
+  <b>foto</b> com o entregador presente, <b>escrever a ressalva no canhoto antes de assinar</b> e avisar o
+  fornecedor no mesmo dia. Depois que o caminhão sai sem ressalva escrita, a discussão está perdida.</div>
+
+  <div class="faixa">A · Chapa (MDF / MDP) <span class="dica">Chapa trocada é o erro mais caro — cor e espessura, uma a uma</span></div>
+
+  <table class="tb">
+    <tr>
+      <th style="width:31%">Descrição — cor / padrão / marca</th>
+      <th style="width:9%">Esp. (mm)</th>
+      <th style="width:9%">Qtd pedida</th>
+      <th style="width:9%">Qtd recebida</th>
+      <th style="width:9%">Cor confere</th>
+      <th style="width:9%">Esp. confere</th>
+      <th>Avaria (lasca, canto, empeno)</th>
+    </tr>
+    <tr><td></td><td></td><td></td><td></td><td class="ctr sn">S / N</td><td class="ctr sn">S / N</td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td class="ctr sn">S / N</td><td class="ctr sn">S / N</td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td class="ctr sn">S / N</td><td class="ctr sn">S / N</td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td class="ctr sn">S / N</td><td class="ctr sn">S / N</td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td class="ctr sn">S / N</td><td class="ctr sn">S / N</td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td class="ctr sn">S / N</td><td class="ctr sn">S / N</td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td class="ctr sn">S / N</td><td class="ctr sn">S / N</td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td class="ctr sn">S / N</td><td class="ctr sn">S / N</td><td></td></tr>
+  </table>
+
+  <div class="faixa">B · Ferragem, fita de borda e acessórios <span class="dica">Contar por caixa aberta — caixa fechada não é quantidade conferida</span></div>
+
+  <table class="tb">
+    <tr>
+      <th style="width:34%">Item — modelo / medida / marca</th>
+      <th style="width:11%">Un.</th>
+      <th style="width:11%">Qtd pedida</th>
+      <th style="width:11%">Qtd recebida</th>
+      <th style="width:12%">Confere o pedido</th>
+      <th>Observação (avaria, cor da fita, falta)</th>
+    </tr>
+    <tr><td></td><td></td><td></td><td></td><td class="ctr sn">S / N</td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td class="ctr sn">S / N</td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td class="ctr sn">S / N</td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td class="ctr sn">S / N</td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td class="ctr sn">S / N</td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td class="ctr sn">S / N</td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td class="ctr sn">S / N</td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td class="ctr sn">S / N</td><td></td></tr>
+  </table>
+
+  <div class="faixa clara" style="background:var(--goldbg); color:var(--navy2)">C · Os cinco pontos, sempre <span class="dica" style="color:#7c6a45">Nenhum item fica em branco</span></div>
+
+  <ul class="checks">
+    <li><span class="cb"></span><span><b>Quantidade</b> bate com a nota fiscal — volume por volume</span></li>
+    <li><span class="cb"></span><span><b>Cor, espessura e medida</b> batem com o pedido</span></li>
+    <li><span class="cb"></span><span><b>Avaria visível</b>: lasca, canto amassado, embalagem violada</span></li>
+    <li><span class="cb"></span><span><b>Cor da fita de borda</b> bate com a cor da chapa</span></li>
+    <li class="crit"><span class="cb"></span><span><b>Foto</b> de toda divergência, com o entregador ainda presente</span></li>
+    <li class="crit"><span class="cb"></span><span><b>Ressalva escrita no canhoto</b> antes de assinar</span></li>
+  </ul>
+
+  <div class="faixa">D · Divergência encontrada <span class="dica">Se não houve, escrever "sem divergência" na primeira linha</span></div>
+
+  <table class="tb">
+    <tr>
+      <th style="width:30%">Item</th>
+      <th style="width:30%">O que veio errado / faltou</th>
+      <th style="width:9%">Qtd</th>
+      <th style="width:9%">Foto</th>
+      <th>Fornecedor avisado — quem / hora</th>
+    </tr>
+    <tr><td></td><td></td><td></td><td class="ctr sn">S / N</td><td></td></tr>
+    <tr><td></td><td></td><td></td><td class="ctr sn">S / N</td><td></td></tr>
+    <tr><td></td><td></td><td></td><td class="ctr sn">S / N</td><td></td></tr>
+  </table>
+
+  <div class="final">
+    <div class="fh">Desfecho da entrega</div>
+    <div class="fb">
+      <span class="opt ap"><span class="cb"></span>Recebido sem divergência</span>
+      <span class="opt rs"><span class="cb"></span>Recebido com ressalva no canhoto</span>
+      <span class="opt rp"><span class="cb"></span>Recusado (parcial ou total)</span>
+    </div>
+  </div>
+
+  <div class="assina">
+    <div>Conferente Valvic · nome e assinatura</div>
+    <div>Entregador / motorista · nome e assinatura</div>
+    <div>Ciente da produção · Deivison</div>
+  </div>
+
+  <div class="destino"><b>Depois de preencher:</b> foto da ficha e do canhoto para a <b>Karla</b> no mesmo dia ·
+  ficha arquivada na pasta do fornecedor · divergência → mensagem ao fornecedor <b>no mesmo dia</b> e aviso ao
+  <b>Deivison</b> se o material era de obra da semana · pagamento só depois da conferência fechada.</div>
+
+  <div class="rodape">
+    <span>Valvic Marcenaria · Vargas Decor Ltda · Belo Horizonte / MG</span>
+    <span>Ficha de recebimento de material · rev. 09/2026</span>
+  </div>
+</div>
+
+</body>
+</html>
