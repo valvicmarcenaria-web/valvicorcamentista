@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+@page{ size:A4; margin:0; }
+*{ box-sizing:border-box; margin:0; padding:0; }
+body{ font-family:'Liberation Sans',Helvetica,Arial,sans-serif; color:#2A211A; }
+.serif{ font-family:'Liberation Serif',Georgia,'Times New Roman',serif; }
+.page{ width:210mm; height:297mm; position:relative; overflow:hidden; page-break-after:always; }
+.page:last-child{ page-break-after:auto; }
+
+/* ---------- CAPA ---------- */
+.cover{ background:#F3ECDE; padding:26mm 22mm 0; }
+.wordmark{ font-family:'Liberation Sans',Helvetica,sans-serif; font-weight:bold; font-size:30pt; letter-spacing:.01em; color:#241D16; }
+.eyebrow{ letter-spacing:.34em; text-transform:uppercase; font-size:9pt; color:#A6843E; font-weight:bold; }
+.cov-hl{ font-size:47pt; line-height:1.03; color:#2A211A; margin-top:15mm; }
+.cov-sub{ font-style:italic; font-size:15pt; color:#6E655A; margin-top:7mm; }
+.meta{ display:flex; gap:12mm; border-top:1px solid #D9CDB6; margin-top:23mm; padding-top:5mm; }
+.meta>div{ flex:0 0 auto; }
+.meta .lbl{ letter-spacing:.28em; font-size:7.5pt; color:#9A8E7C; text-transform:uppercase; }
+.meta .val{ font-size:12.5pt; color:#2A211A; margin-top:2.5mm; }
+.cband{ position:absolute; left:0; right:0; bottom:0; height:48mm; background:#1C1813; color:#F3ECDE;
+        display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.cband .gl{ width:30px; height:2px; background:#C2A052; margin-bottom:7mm; }
+.cband .bl{ font-weight:bold; letter-spacing:.04em; font-size:13pt; }
+.cband .bl .d{ color:#C2A052; }
+.cband .loc{ letter-spacing:.28em; text-transform:uppercase; font-size:7.5pt; color:#9A8E7C; margin-top:4mm; }
+
+/* ---------- FOLHA ---------- */
+.sheet{ background:#fff; padding:17mm 20mm 0; height:297mm; }
+.sechead{ display:flex; align-items:flex-end; gap:7mm; }
+.secnum{ font-size:36pt; line-height:.8; color:#E0CB95; }
+.sec-eb{ letter-spacing:.3em; text-transform:uppercase; font-size:9.5pt; color:#A6843E; font-weight:bold; padding-bottom:2mm; border-bottom:2px solid #E0CB95; }
+.lead{ font-size:11pt; color:#2A211A; line-height:1.6; margin-top:6mm; }
+.lead b{ color:#1C1813; }
+
+.card{ background:#1C1813; color:#F3ECDE; border-radius:5px; padding:8mm 9mm 9mm; margin-top:7mm; }
+.glabel{ color:#C2A052; letter-spacing:.22em; font-size:8.5pt; text-transform:uppercase; }
+.item{ display:flex; justify-content:space-between; align-items:flex-start; gap:8mm;
+       border-bottom:1px solid #39322A; padding:5.5mm 0; }
+.item .nm{ font-size:15.5pt; }
+.item .ds{ font-size:8.5pt; color:#A99E8C; margin-top:2mm; line-height:1.4; }
+.item .pr{ font-size:17pt; white-space:nowrap; }
+.total{ display:flex; justify-content:space-between; align-items:baseline; padding-top:6mm; }
+.total .tl{ letter-spacing:.16em; text-transform:uppercase; font-size:9pt; color:#C2A052; }
+.total .pr{ font-size:21pt; color:#F3ECDE; }
+
+.terms{ display:flex; gap:7mm; margin-top:8mm; }
+.term{ flex:1; border-left:2px solid #E0CB95; padding-left:4mm; }
+.term .t{ letter-spacing:.22em; text-transform:uppercase; font-size:7.5pt; color:#9A8E7C; }
+.term .b{ font-size:13.5pt; color:#2A211A; margin-top:2mm; line-height:1.2; }
+.fine{ font-size:7.8pt; color:#8A8074; margin-top:5mm; line-height:1.5; }
+
+.condhead{ display:flex; align-items:flex-end; gap:7mm; margin-top:11mm; }
+.cond{ width:100%; border-collapse:collapse; margin-top:5mm; }
+.cond th{ text-align:left; letter-spacing:.2em; text-transform:uppercase; font-size:7.5pt; color:#9A8E7C; padding:0 0 3mm; border-bottom:1px solid #E0D5C0; }
+.cond th.r,.cond td.r{ text-align:right; }
+.cond td{ font-size:10.5pt; padding:3.5mm 0; border-bottom:1px solid #EEE6D6; }
+.cond td.v{ color:#9A7B36; }
+
+.close{ margin-top:9mm; }
+.close .h{ font-size:16pt; color:#1C1813; }
+.close .h .s{ color:#C2A052; }
+.close p{ font-size:10pt; color:#6E655A; line-height:1.6; margin-top:3mm; }
+
+.pfoot{ position:absolute; bottom:10mm; left:20mm; right:20mm; display:flex; justify-content:space-between;
+        font-size:8pt; color:#9A8E7C; border-top:1px solid #E0D5C0; padding-top:3mm; }
+.pfoot .bl{ font-weight:bold; color:#6E655A; }
+.pfoot .bl .d{ color:#C2A052; }
+</style></head>
+<body>
+
+<!-- ========== PÁGINA 1 — CAPA ========== -->
+<div class="page cover">
+  <div class="wordmark">Valvic</div>
+  <div class="eyebrow" style="margin-top:20mm;">Proposta exclusiva</div>
+  <h1 class="serif cov-hl">Marcenaria<br>sob medida</h1>
+  <div class="serif cov-sub">Lavanderia &amp; complemento de painel · Vale dos Cristais</div>
+
+  <div class="meta">
+    <div style="min-width:46mm"><div class="lbl">Para</div><div class="serif val">Maria</div></div>
+    <div style="min-width:46mm"><div class="lbl">Projeto</div><div class="serif val">Paula Galante</div></div>
+    <div><div class="lbl">Ano</div><div class="serif val">2026</div></div>
+  </div>
+
+  <div class="cband">
+    <div class="gl"></div>
+    <div class="bl serif">Valvic<span class="d"> ·</span> marcenaria sob medida</div>
+    <div class="loc">Vale dos Cristais · 2026</div>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 2 — INVESTIMENTO + CONDIÇÕES ========== -->
+<div class="page sheet">
+  <div class="sechead">
+    <div class="serif secnum">01</div>
+    <div class="sec-eb">Investimento</div>
+  </div>
+  <p class="lead">Os <b>complementos do projeto</b> — lavanderia e o complemento de painel — todos executados e coordenados pela Valvic, com <b>um interlocutor só</b>.</p>
+
+  <div class="card">
+    <div class="glabel">Complementos do projeto · Vale dos Cristais</div>
+    <div class="item">
+      <div><div class="serif nm">Lavanderia e apoio</div>
+        <div class="ds">2 armários inferiores + 1 superior · MDF Gianduia Trama Ultra · ferragens Hettich · 12 dias úteis</div></div>
+      <div class="serif pr">R$ 6.500</div>
+    </div>
+    <div class="item">
+      <div><div class="serif nm">Complemento de painel · hall do elevador</div>
+        <div class="ds">painel complementar em marcenaria</div></div>
+      <div class="serif pr">R$ 1.350</div>
+    </div>
+    <div class="total">
+      <div class="tl">Total do escopo</div>
+      <div class="serif pr">R$ 7.850</div>
+    </div>
+  </div>
+
+  <div class="terms">
+    <div class="term"><div class="t">Entrega</div><div class="serif b">12 dias úteis</div></div>
+    <div class="term"><div class="t">Validade</div><div class="serif b">7 dias úteis</div></div>
+    <div class="term"><div class="t">Garantia</div><div class="serif b">5 a 10 anos</div></div>
+  </div>
+  <p class="fine"><b>Garantia:</b> lavanderia — 10 anos (ferragens Hettich); painel e marcenaria — 5 anos de estrutura. Não cobre desgaste natural, mau uso ou limpeza inadequada.</p>
+
+  <div class="condhead">
+    <div class="serif secnum">02</div>
+    <div class="sec-eb">Condições</div>
+  </div>
+  <table class="cond">
+    <thead><tr><th>Condição</th><th class="r">Vantagem</th></tr></thead>
+    <tbody>
+      <tr><td>40% de entrada + saldo na entrega</td><td class="r">—</td></tr>
+      <tr><td>60% de entrada + saldo na entrega</td><td class="r v">3% de desconto</td></tr>
+      <tr><td>100% à vista (transferência)</td><td class="r v">6% de desconto</td></tr>
+    </tbody>
+  </table>
+
+  <div class="close">
+    <div class="serif h"><span class="s">✦</span> Vamos executar?</div>
+    <p>Reservamos a vaga na agenda de produção com a entrada e seguimos para a medição final no local. Estou à disposição para apresentar a proposta pessoalmente.</p>
+  </div>
+
+  <div class="pfoot">
+    <span class="bl serif">Valvic<span class="d"> ·</span> marcenaria sob medida</span>
+    <span>Maria — Lavanderia &amp; complemento de painel</span>
+  </div>
+</div>
+
+</body></html>

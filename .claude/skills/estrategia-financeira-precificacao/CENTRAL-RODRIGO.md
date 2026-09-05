@@ -107,18 +107,45 @@ Ver método completo: `referencias/metodo-rodrigo.md`
 
 | Indicador | 6 meses | Média/mês |
 |---|---|---|
-| Receita Bruta reconhecida | R$ 493.029 | R$ 82.171 |
+| Receita Bruta | R$ 493.029 | **R$ 82.171** |
+| Deduções (comissões + impostos) | −R$ 23.012 | −R$ 3.835 |
 | Receita Líquida | R$ 470.017 | R$ 78.336 |
-| CPV (materiais) | −R$ 166.719 | −R$ 27.786 |
-| Despesas Operacionais | −R$ 283.315 | −R$ 47.219 |
-| Lucro Operacional | R$ 19.983 | R$ 3.330 (4%) |
-| **Resultado Final** | **−R$ 34.340** | **−R$ 5.723/mês** |
+| CPV (materiais variáveis) | −R$ 166.719 | −R$ 27.786 |
+| **Lucro Bruto (MC real DRE)** | **R$ 303.298** | **R$ 50.550 — 64,5% da RL** |
+| Despesas Fixas (Adm + Operac.) | −R$ 283.315 | **−R$ 47.219/mês** |
+| **Lucro Operacional** | **R$ 19.983** | **R$ 3.330 (4%)** |
+| Investimentos em máquinas | −R$ 34.966 | — |
+| Empréstimos/Dívidas | −R$ 2.336 | — |
+| **RESULTADO FINAL** | **−R$ 34.340** | **−R$ 5.723/mês** |
 
-> Nota: DRE mostra despesas menores (R$ 47k) que o custo-operacao (R$ 83,5k)
-> porque: (1) parcelas de dívidas passam por contas não totalmente registradas;
-> (2) alguns pagamentos saem pelo conta-sócios; (3) comissões em % calculadas
-> sobre faturamento contratado (R$ 246k referência), não sobre o reconhecido.
-> Usar o custo-operacao.html como fonte de verdade para decisões estratégicas.
+> **Reconciliação MC%:** a MC% do DRE (64,5%) difere da MC% do orçamento (43,5%)
+> porque o DRE considera CPV apenas materiais; a mão de obra direta (7 fixos)
+> está em "Despesas Administrativas". As duas visões são válidas para propósitos
+> diferentes: Lavinia usa 43,5% (MC de projeto); Rodrigo usa a estrutura do DRE
+> para o break-even da empresa.
+
+> **Por que o DRE mostra R$ 47k de despesa e o custo-operacao mostra R$ 83,5k:**
+> (1) parcelas de dívidas passam por contas não totalmente registradas;
+> (2) alguns pagamentos saem pelo conta-sócios; (3) comissões em % são calculadas
+> sobre faturamento contratado (R$ 246k de referência), não sobre o reconhecido.
+> **Para decisão estratégica, a fonte de verdade é o `custo-operacao.html`.**
+
+### Custo fixo confirmado (DRE)
+| Rubrica | Valor 6 meses | Média/mês |
+|---|---|---|
+| Despesas Comerciais | R$ 16.455 | R$ 2.742 |
+| Despesas Administrativas | R$ 232.477 | R$ 38.746 |
+| Despesas Operacionais | R$ 34.384 | R$ 5.731 |
+| **TOTAL FIXO** | **R$ 283.316** | **~R$ 47.219** |
+
+> ⚠️ Break-even de CAIXA é mais alto — o serviço das dívidas ativas (máquinas +
+> Paulo) é saída adicional. Levantar valores com Jonathan.
+
+### Break-even operacional real
+- Fórmula DRE: R$ 47.219 / 64,5% = **~R$ 73.200/mês de faturamento**
+- Fórmula orçamento (Lavinia): R$ 47.219 / 43,5% = **~R$ 108.550/mês**
+- Faturamento médio 2026: R$ 82.171/mês → opera acima do break-even operacional
+- Problema: resultado positivo é consumido por investimentos + ciclo de caixa ruim
 
 ### Status de caixa (Fluxo Mensal Jul/2025–Jun/2026)
 

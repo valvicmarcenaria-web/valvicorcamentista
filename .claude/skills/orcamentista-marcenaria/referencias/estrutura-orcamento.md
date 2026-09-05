@@ -86,3 +86,46 @@ Produção`.
 > Esta estrutura é o "esqueleto" que o agente preenche ao orçar: identifica o
 > ambiente (tipo), decompõe em itens, atribui CX e componentes da biblioteca,
 > marca flags e segue para o quantitativo e o custo (`custos.md`).
+
+---
+
+## ⛔ Rateio do preço por item — é por CUSTO, nunca por área de chapa
+
+**Corrigido pelo Jonathan em 29/08/2026**, no job da Flaviana e Igor: *"a
+precificação do gabinete inferior ficou superfaturada."*
+
+Os motores da casa vinham repartindo o investimento entre os itens pela
+**área de chapa** de cada um. Está errado, e o erro é grande sempre que os
+itens do job são de naturezas diferentes:
+
+| | m² de chapa | custo direto | por área | por custo |
+|---|--:|--:|--:|--:|
+| Armário aéreo (espelho, LED, drivers, 56 suportes) | 5,61 | R$ 3.503 | R$ 7.100 | **R$ 11.300** |
+| Gabinete inferior (caixa de madeira e gavetas) | 8,15 | R$ 1.784 | R$ 10.200 | **R$ 5.700** |
+| Porta de correr | 2,94 | R$ 1.415 | R$ 3.700 | **R$ 4.500** |
+
+Área de chapa não é custo: espelho, LED, drivers, ferragem e suportes não
+entram nela. O item de mais chapa e menos acessório fica caro, e o item que
+carrega os acessórios fica barato — o cliente compara com o mercado e o
+inferior parece superfaturado, porque **estava**.
+
+**A regra:** o preço de cada item é `INV × custo_direto_do_item / CD`, com a
+sobra de arredondamento indo para o item de maior custo. Dentro do custo
+direto:
+
+- **chapa** — dentro de cada grupo (material, espessura), a chapa comprada é
+  rateada pela área que cada item ocupa **naquele grupo**. É como ela é gasta.
+- **fita e filetagem** — pelo metro explícito do item; se o piso de 2,6 m/m²
+  valeu, o metro é do job inteiro e aí sim só a área explica.
+- **usinagem, LED, terceirizados e ferragem** — já são por item, entram direto.
+- **consumíveis e logística** — não têm dono: acompanham o resto,
+  proporcionalmente.
+
+Implementado como bloco `cd_amb` em `corte-flaviana.py` e `corte-giza.py`,
+com `assert abs(sum(cd_amb.values()) - CD) < 0.01` — se algum custo novo
+entrar no CD e ninguém colocar no rateio, o motor quebra na hora.
+
+> Onde os itens são irmãos (dois armários iguais, dois quartos parecidos), os
+> dois rateios dão quase o mesmo número — foi o caso da Giza e Renato, que não
+> se moveu. Isso não é motivo para manter o rateio por área: é só a coincidência
+> de um job homogêneo.

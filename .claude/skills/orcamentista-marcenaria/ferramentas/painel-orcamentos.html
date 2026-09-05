@@ -1,0 +1,193 @@
+<style>
+:root{
+  --bg:#F2ECDF; --panel:#FBF7EF; --panel-2:#F4EEE1; --ink:#221B12; --ink-soft:#6C6152;
+  --line:#E6DCC7; --line-soft:#EEE6D4; --accent:#A97C15;
+  --good:#3F7D58; --info:#4C6A86; --warn:#B07A1E; --bad:#A6443A;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#141009; --panel:#201911; --panel-2:#191309; --ink:#F1E9D8; --ink-soft:#A99E89;
+  --line:#332918; --line-soft:#271F13; --accent:#D9B25A;
+  --good:#7FBE94; --info:#9DB6CE; --warn:#DBAE5B; --bad:#DE9086;
+}}
+:root[data-theme="light"]{
+  --bg:#F2ECDF; --panel:#FBF7EF; --panel-2:#F4EEE1; --ink:#221B12; --ink-soft:#6C6152;
+  --line:#E6DCC7; --line-soft:#EEE6D4; --accent:#A97C15;
+  --good:#3F7D58; --info:#4C6A86; --warn:#B07A1E; --bad:#A6443A;
+}
+:root[data-theme="dark"]{
+  --bg:#141009; --panel:#201911; --panel-2:#191309; --ink:#F1E9D8; --ink-soft:#A99E89;
+  --line:#332918; --line-soft:#271F13; --accent:#D9B25A;
+  --good:#7FBE94; --info:#9DB6CE; --warn:#DBAE5B; --bad:#DE9086;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;}
+body{background:var(--bg); color:var(--ink); font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; -webkit-font-smoothing:antialiased;}
+.num{font-variant-numeric:tabular-nums;}
+.mini{max-width:400px; margin:0; padding:16px 15px 18px;}
+.fixo{position:sticky; top:0; z-index:5; background:var(--bg);
+      padding-bottom:9px; margin-bottom:-4px;}
+@media (min-width:820px){
+  .mini{max-width:420px;}
+}
+
+.hd{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:13px;}
+.mk{font-family:Georgia,serif; font-weight:700; font-size:18px; letter-spacing:.01em;}
+.mk .d{color:var(--accent);}
+.hd .r{font-size:11px; color:var(--ink-soft); letter-spacing:.02em;}
+
+.hero{background:var(--panel); border:1px solid var(--line); border-radius:13px; padding:15px 16px; position:relative; overflow:hidden;}
+.hero::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--accent);}
+.hero .lab{font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); font-weight:600;}
+.hero .big{font-family:Georgia,serif; font-weight:700; font-size:32px; color:var(--accent); line-height:1.05; margin:5px 0 4px; letter-spacing:-.01em;}
+.hero .cap{font-size:12.5px; color:var(--ink-soft);}
+.hero .cap b{color:var(--ink);}
+
+.stat{display:flex; gap:8px; margin:11px 0 4px;}
+.stat .s{flex:1; min-width:0; background:var(--panel); border:1px solid var(--line);
+        border-radius:10px; padding:7px 9px; font-size:11px; color:var(--ink-soft);}
+.stat .s .lb{display:flex; align-items:center; gap:5px; white-space:nowrap;}
+.stat .s b{display:block; font-size:13px; margin-top:2px; white-space:nowrap;}
+.stat .s b{color:var(--ink); font-weight:700;}
+.dot{width:8px; height:8px; border-radius:50%; flex:none;}
+.dg{background:var(--good);} .da{background:var(--warn);} .di{background:var(--info);} .db{background:var(--bad);}
+
+.lh{font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); font-weight:600; margin:16px 2px 5px;}
+.list{background:var(--panel); border:1px solid var(--line); border-radius:13px; padding:3px 13px;}
+.row{display:grid; grid-template-columns:auto 1fr auto; gap:9px; align-items:center; padding:8px 0; border-bottom:1px solid var(--line-soft);}
+.row:last-child{border-bottom:0;}
+.row .nm{font-size:13px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.row .nm small{display:block; font-weight:400; font-size:10.5px; color:var(--ink-soft); margin-top:1px; white-space:normal; line-height:1.35;}
+.row .v{font-size:13px; font-weight:700; text-align:right; white-space:nowrap;}
+.row .v small{display:block; font-weight:400; font-size:10px; color:var(--ink-soft);}
+
+.par{margin:12px 2px 0; font-size:11.5px; color:var(--ink-soft); display:flex; gap:12px; flex-wrap:wrap;}
+.par b{color:var(--bad);}
+.foot{margin-top:12px; text-align:center; font-size:10.5px; color:var(--ink-soft);}
+</style>
+
+<div class="mini">
+  <div class="fixo">
+  <div class="hd">
+    <span class="mk">valvic<span class="d">.</span></span>
+    <span class="r">Orçamentos · <span id="upd">28/07</span></span>
+  </div>
+
+  <div class="hero">
+    <div class="lab">Valor total fechado</div>
+    <div class="big num" id="total">—</div>
+    <div class="cap"><b id="cnt">–</b> orçamentos finalizados · ticket médio <b class="num" id="tk">–</b></div>
+  </div>
+
+  <div class="stat">
+    <span class="s"><span class="lb"><span class="dot dg"></span>fechado</span><b class="num" id="v-fec">–</b></span>
+    <span class="s"><span class="lb"><span class="dot di"></span>negociação</span><b class="num" id="v-neg">–</b></span>
+    <span class="s"><span class="lb"><span class="dot db"></span>orçado</span><b class="num" id="v-orc">–</b></span>
+    <span class="s"><span class="lb"><span class="dot da"></span>parado</span><b class="num" id="v-par">–</b></span>
+  </div>
+  </div>
+
+  <div class="lh">Fechados</div>
+  <div class="list" id="list"></div>
+
+  <div class="par" id="par"></div>
+  <div class="foot" id="foot"></div>
+</div>
+
+<script>
+const DATA_ATUALIZADA="02/09/2026";
+const ORCAMENTOS=[
+  {cliente:"Júnior — Lagoa Santa", ref:370000, max:395000, tag:"Casa completa · 9 amb · Res. Bouganville", status:"entregue", drive:"ok"},
+  {cliente:"Kênia & Fábio", ref:481000, max:null, tag:"Casa completa", status:"concluido", drive:"parcial"},
+  {cliente:"Lucas e Ana · apto 101", ref:169950, max:181800, tag:"Apto 168,61 m² · executivo de 84 pranchas A3 · arq. Giulia Simonetti, executivo Bruno Soriano · Silver R$ 169.950 · Gold R$ 181.800, os dois com garantia de 10 anos · entrega 45–60 dias úteis · nov/2025, revisão R02 · ⚠⚠ LINHA A CONFIRMAR: o material está em fontes/ com prefixo exemplo_ e o dossiê o trata como o caso que ensina o método da casa. Se for treino e não cliente real, esta linha sai e a carteira cai R$ 169.950", status:"parado", drive:"ausente"},
+  {cliente:"Casa L&M (Alphaville)", ref:179300, max:199300, tag:"Casa completa · 14 móveis · 6 amb", status:"entregue", drive:"ausente"},
+  {cliente:"Quartos Mateus & Manuela", ref:88800, max:98700, tag:"2 quartos · 12 móveis · MC 35%", status:"entregue", drive:"ausente"},
+  {cliente:"DEVA Veículos (IVECO)", ref:72400, max:null, tag:"Comercial · concessionária · 9 conjuntos em 2 setores · 89,9 m² · 30 chapas · projeto executivo da arq. Beatriz Fernandez Gontijo (Ofício) · 4 pranchas A1, AGO/26 rev.00 · COM RT 10% · MC 35% · Comercial R$ 31.600 + Vendas R$ 40.800 · logos IVECO fora do custo (fornecimento da montadora), mas o painel prevê o recorte · R$/m² 648 s/RT, dentro da faixa · proposta 4 pág. · ⚠⚠ BURACO DE ESCOPO: a planta da EX03 chama PAINEL PADRÃO IVECO e remete a detalhe específico que NÃO veio no pacote — pedir a prancha à arquiteta · ⚠ perfil em inox a R$ 85/m adotado (base só tem alumínio a 20) · ⚠ prazo e pagamento da proposta são premissas, não fechados", status:"orcado", drive:"ausente"},
+  {cliente:"Bancada com penteadeira · quarto", ref:16700, max:18800, tag:"1 parede de 3,12 × 2,57 · 19,8 m² · 8 chapas · SEM RT · MC 40% · duas linhas de ferragem: Hettich R$ 16.700 (gar. 10 anos) e Blum R$ 18.800 (gar. 20 anos) · entrada de 40% + 60% na entrega · 90 dias corridos · proposta 3 pág. · orçado sobre RENDER, não sobre prancha — não há executivo · ⚠ o corte é RACIONALIZADO: como o render especifica (3 cores × 4 espessuras) seriam 10 chapas e R$ 19.200 · ⚠ perfil Arezzo R$ 250/barra e dobradiça Blum R$ 60 adotados, sem linha na base · ⚠ LED a R$ 66/m: se for COB o preço sobe ~R$ 2.100 · ⚠ vão de 277 cm pede montante central, que o render não mostra · ⚠ garantia de 20 ANOS ainda não existe em referencias/ (a casa só tem 5 e 10)", status:"orcado", drive:"ausente"},
+  {cliente:"Giza e Renato · banheiros", ref:13900, max:null, tag:"2 armários de espelheira · 8,7 m² de chapa · 4 chapas · projeto executivo da arq. Dani Rosaria, 5 pranchas A3 rev.00 · COM RT 10% · entrega 60 dias corridos · proposta 4 pág., capa no render 3D do caderno · ⚠⚠ [Jonathan 29/08] PREÇO DO JOB FECHADO A DEDO em R$ 13.900 — o rateio a MC 40% pedia R$ 22.200. MC real despencou para 21,4% com RT (30,2% sem RT: a RT sozinha custa R$ 1.223 neste preço). Os R$ 8.300 saem da MARGEM, não do custo — nada mudou no levantamento. É a MENOR MC da carteira; o motor imprime o aviso para não ser lido como erro · ⭐ a proposta NÃO separa os dois ambientes, a pedido dele: uma linha só. A quebra interna é suíte R$ 8.600 (custo direto 4.270) + social R$ 5.300 (2.657) · ⭐ as folhas que ABREM viraram PORTA DE ALUMÍNIO terceirizada; as FIXAS caíram para 15 mm porque sozinhas puxavam uma chapa a 10% · ⭐ o branco virou MDF Branco Ártico ULTRA (área úmida) — ★ preço adotado por razão contra o melamínico fosco: 6/15/18 = 275/490/585. CONFERIR compra · ⭐ sai fita ABS (a casa não usa) e sai regulagem de prateleira (não tem) · ⚠ pagamento ainda não fechado (linha de base: 30%)", status:"orcado", drive:"ausente"},
+  {cliente:"Flaviana e Igor · banheiro da suíte", ref:18700, max:null, tag:"3 itens: aéreo R$ 7.500 + inferior R$ 7.700 + porta de correr R$ 3.500 · 15,1 m² · 6 chapas · projeto executivo da arq. Dani Rosaria, 8 pranchas A3 · COM RT 10% · entrega 60 dias corridos · proposta 5 pág. com os renders DO PROJETO · bancada de mármore é marmoraria, fora · ⭐⭐ [Jonathan 29/08] DOIS PREÇOS FECHADOS A DEDO: aéreo R$ 7.500 (o rateio pedia 10.800) e porta de correr R$ 3.500 (pedia 4.100) — o total virou a SOMA dos itens, não o que a MC pedia, e a MC real caiu de 40% para 33,5% com RT, ABAIXO DO PISO DE 35% DA CASA. Os R$ 3.900 saem da margem, não do custo. O motor imprime o aviso para não ser lido como erro · ⭐ as 3 folhas do aéreo viraram PORTA DE ALUMÍNIO terceirizada · ⭐ a folha da porta de correr é BRANCA linha ultra (eu tinha lançado amadeirado; o render mostra branca) · ⭐ o branco virou Ártico ULTRA, ★ preço adotado por razão · ⭐ desempenadores fora · ⭐ sai fita ABS e sai regulagem de prateleira · ⭐ [28/08] telescópica saiu, 5 gavetas em oculta Hardt (garantia 2→5 anos) · ⭐ [28/08] rateio por item passou de ÁREA DE CHAPA para CUSTO DIRETO · ⚠ as duas elevações do inferior NÃO fecham entre si, adotei a interna · ⚠ profundidade do inferior não é cotada: adotei 45 · ⚠ a casa faz porta de passagem em 42 mm e eu orcei 2×18 = 36 mm · ⚠ pagamento ainda não fechado", status:"orcado", drive:"ausente"},
+  {cliente:"Cláudia · quarto do Matheus", ref:8150, max:null, tag:"3 itens pequenos: armário aéreo com báscula Blum HK-xs, prateleiras com suporte oculto e painel livreiro amadeirado · REFAZIMENTO DE LAYOUT [Jonathan 31/08] de uma proposta que já existia — os valores são dela, o que mudou foi a forma e as condições · proposta 3 pág. com os renders do PDF original · ⭐ AS OPÇÕES 1 E 2 SÃO ALTERNATIVAS, não itens somáveis: a mesma parede com e sem o aéreo (os renders são o par com/sem). A proposta fecha por CONJUNTO — opção 1 + painel R$ 8.150 (lançado aqui) ou opção 2 + painel R$ 6.100. A tabela original deixava o cliente montar essa conta sozinho · ⭐ DUAS FORMAS DE PAGAR: à vista entrada de 70% + restante na entrega nos valores atuais, ou até 5× sem juros no cartão com 10% a mais (op.1+painel: 5× R$ 1.793; op.2+painel: 5× R$ 1.342) · entrega 60 dias corridos (eram 30 a 45 dias úteis) · garantia 5 anos (não constava) · validade 5 dias úteis (eram 2) · ⚠ SEM LEVANTAMENTO PRÓPRIO: não há motor de corte para este job, os valores vieram prontos. Não dá para conferir MC, R$/m² nem plano de corte — se for para revisar preço, precisa do levantamento · ⚠ os renders são do fornecedor e trazem marca d\u0027água IMAGEM ILUSTRATIVA, mantida como está", status:"orcado", drive:"ausente"},
+  {cliente:"Lídia de Souza · sala", ref:30500, max:null, tag:"4 itens em 2 paredes: cristaleira R$ 10.900 + painel do jantar R$ 8.100 + rack da TV R$ 7.900 + painel da TV R$ 3.600 · ⭐ a PAREDE DA TV tem preço FECHADO A DEDO em R$ 11.500 (implica MC 45,8%) e é repartida entre rack e painel pela PROPORÇÃO DO CUSTO DIRETO — 69,1% e 30,9%; no motor virou o conceito GRUPO_FIXO, com assert de que a soma bate · 28,2 m² · 13 chapas · caderno de marcenaria da decoradora Jéssica Sollero, 8 pág. A4, 01.SET.2026 · CASO B: texto em CURVAS, zero caracteres na camada — lido por rasterização a 200 dpi com rotação de 270° · COM RT 10% · ⭐ MC POR ITEM [Jonathan 02/09]: cristaleira 30%, os dois painéis 40% — MC misturada do job 38,7% · entrega 60 dias corridos · ⭐ ferragem [Jonathan 02/09, 3ª rodada]: a telescópica SAIU e entrou CORREDIÇA OCULTA Hettich Quadro; o pistão da báscula virou ARTICULADOR (Blum HK-xs no motor, MARCA FORA DA PROPOSTA a pedido dele). +R$ 430 de custo direto, garantia da corrediça sobe de 2 para 5 anos · proposta 5 pág. com os renders do caderno · R$/m² 850 s/RT, 16 acima do teto da faixa 626–834 — excursão de PREÇO, não de levantamento: aos R$ 27.000 da rodada anterior dava 765 · ⚠⚠ A CRISTALEIRA TEM VIDRO NAS DUAS COLUNAS? a elevação externa desenha o X só na direita, mas o render mostra a frente inteira envidraçada. Orcei como a elevação: +R$ 1.280 de custo se forem 4 folhas · ⚠⚠ o painel é de 6 mm como a prancha cota (22 = 6+16); tamponamento de 5,79 × 2,30 em 6 mm não fica plano em parede fora de prumo e O SARRAFEAMENTO NÃO ESTÁ NO PREÇO · ⚠ LED: a prancha diz 3000K sem dizer COB, adotei R$ 66/m — se for COB sobe ~R$ 800 · ⚠ a cadeia de cotas da parede da TV não fecha (200+30+30+10 = 270 contra 260 da cota geral) · ⚠ ripa de 3×2 cm orçada em 15 mm: a de 18 puxava chapa inteira a 5% · ⚠ ★ meia esquadria adotada a R$ 15/m (39,9 m no job); aos R$ 25/m da cava daria R$ 1.020, mais que toda a ferragem · ⭐ PAGAMENTO FECHADO: à vista R$ 30.500 (entrada de 30% + saldo na entrega) ou até 6× sem juros no cartão a R$ 33.550 (+10%) — a proposta destaca os R$ 3.050 que o à vista economiza", status:"orcado", drive:"ausente"},
+  {cliente:"Eliuton · Brisas da Pampulha · 2ª FASE", ref:133000, max:161900, tag:"SEGUNDO orçamento do mesmo cliente — a 1ª fase (cozinha, gourmet, serviço, banheiros) FECHOU em 20/08 a R$ 73.000 · 7 ambientes: quarto master R$ 23.800 + closet master R$ 21.300 + quarto dos pais R$ 21.800 + escritório R$ 19.800 + quarto da filha R$ 17.000 + quarto de visitas R$ 15.200 + sala de TV R$ 14.100 · 263,9 m² · 76 chapas · 68% aprov. · mesma escada de 3 cenários de 13/08 (telescópica 32% R$ 113.100 · HARDT 37% R$ 133.000 · Hettich 42% R$ 161.900, todos COM RT) · lançado no cenário HARDT, que é onde ele fechou a 1ª fase · ⚠⚠ NÃO HÁ ELEVAÇÃO DE MARCENARIA: a 1ª fase teve 18 pranchas a 1:25 com cota peça a peça; esta saiu de UMA planta de layout 1:50 + 31 renders SEM COTA. Todo comprimento é cota, toda altura e profundidade são ADOÇÃO. 15 dúvidas no motor · ⚠⚠ R$/m² deu 401, 36% ABAIXO do piso da faixa 626–834. Tem explicação (213 dos 264 m² são Branco TX e caixaria de roupeiro repete; custo direto por m² cai de 265 para 172) mas a faixa nunca foi aferida em job só de roupeiro — PRECISA DO OLHO DO JONATHAN. Por isso a PROPOSTA EM PDF NÃO FOI GERADA ainda · ⚠ o deck de renders tem a marca VALVIC: se esta fase veio direto e não pela arquiteta, a RT sai e o número vira R$ 105.800 · ⚠ ★ curva R$ 60/m (11,7 m), espelho de corte ORGÂNICO 1,8× o reto, cabeceira estofada R$ 650/m² como proxy da laca · ⚠ prazo e pagamento não definidos (a 1ª fase foi 65 dias)", status:"orcado", drive:"ausente"},
+  {cliente:"Resolve Consórcio", ref:147800, max:174800, tag:"Comercial · 14 amb", status:"entregue", drive:"ausente"},
+  {cliente:"Lilian Lee",    ref:127000, max:180500, tag:"Apto completo", status:"concluido", drive:"ausente"},
+  {cliente:"Kairon & Juliana", ref:107121, max:123954, tag:"Apto completo · 8 amb (Ess/Gold)", status:"entregue", drive:"ausente"},
+  {cliente:"SPE Nova Lima 1", ref:204000, max:null, tag:"Stand 88.200 + decorado 115.800 · 6 amb (DET 07 copa e DET 02 ilha gourmet entraram em 21/08) · 167,5 m² · MC decorado 35,0% exata · MC comb. 37,2% · gar. 5 anos · ⚠ motor de 07/08 ainda lança INSTALAÇÃO como custo direto (R$ 7.947): pela regra da casa o decorado cairia para ~98.100 — decidir com o Jonathan", status:"entregue", drive:"ausente"},
+  {cliente:"Nádia & Maurílio", ref:112500, max:null, tag:"9 conjuntos · 100% Gianduia Trama · Blum · 20/20/20/40 · ⚠ sem levantamento e sem preço da chapa", status:"entregue", drive:"ausente"},
+  {cliente:"Honda Minas Motos S. Efigênia", ref:19100, max:null, tag:"Showroom · MA-01 aéreo + MA-02 em L · 50/50 · via Mímesis Arq. · ⚠ MC real 44,4% (a proposta declarou 35%: havia montagem no custo direto, que não entra)", status:"entregue", drive:"ausente"},
+  {cliente:"Eliuton · Brisas da Pampulha", ref:73000, max:114100, tag:"🔒 FECHAMENTO 20/08 rev.4: 6 conjuntos — área de serviço e lavabo externo FORA · linha Intermediária · cheio R$ 81.200 → fechamento R$ 73.000 redondos (economia 8.200; desconto real 10,1%, por isso a proposta não anuncia percentual) · entrada R$ 22.000 + saldo R$ 51.000 à vista pós-entrega (22+51=73, tudo redondo; nem o desconto 10,1% nem a entrada 30,1% são anunciados como percentual) · prazo 65 dias · validade sáb 22/08 · MC 32,9% (cheio 37,6%) · ⚠ entrada cobre 64% do custo direto: R$ 12.418 de capital de giro · s/ RT · mármore fora", status:"orcado", drive:"ok"},
+  {cliente:"Carla · apartamento BH", ref:109300, max:127800, tag:"7 conjuntos · 132,9 m² · 37 chapas · COM RT 10% · HETTICH (MC 38%, gar. 10 anos) · interno Branco TX R$ 109.300 · upgrade tudo na cor +R$ 18.500 = R$ 127.800 · ⭐ pranchas com QUADRO DE PEÇAS: levantamento é transcrição, não estimativa · R$/m² 650 s/RT, dentro da faixa · proposta 9 pág. + DECK PREMIUM 16 pág. com os renders do projeto · ⚠ pasta do Drive contém contrato de OUTRO cliente (eliuton) · pedra da cozinha fora · ⚠⚠ CINCO FRENTES APARECEM NOS RENDERS E NÃO TÊM PRANCHA: banheiro social, banheiro da suíte, quarto com sofá, a bancada com espelho do quarto do roupeiro em L e a copa — confirmar escopo com a arquiteta antes de enviar", status:"orcado", drive:"ok"},
+  {cliente:"Carol e Vinícius · caderno Jéssica Sollero", ref:170200, max:202500, tag:"9 ambientes · 210 m² · 58 chapas · COM RT 10% · rev.2 21/08: sala de estar RELIDA (painel liso, só a faixa sob a TV é ripada, colunas e armário COM porta — eu tinha errado duas vezes) · quarto ML sem as portas de espelho · prazo até 90 dias · TELESCÓPICA FORA, entra upgrade de interior na cor da estrutura externa · 2 linhas: 5 anos R$ 170.200 · 10 anos R$ 191.700 · upgrade de interior na cor R$ 14.800 (igual nas duas, SEM nenhuma peça branca — nem caixa de gaveta) → R$ 185.000 / R$ 206.500 · apresentação premium 17 pág. A4 paisagem + proposta técnica 8 pág. · ⚠ caderno original perdido no container; só as perspectivas ficaram versionadas", status:"orcado", drive:"—"},
+  {cliente:"Luciana (A4D)", ref:142500, max:185000, tag:"Casa completa · 41 móveis em 10 ambientes · 286 m² · ~77 chapas · 3 linhas 142,5 / 165,5 / 185 mil · MC 30/35/38% · proposta 8 pág. em 18/08 · ⚠ 1ª rodada por módulo, não plano de corte · escopo de ambientes em aberto · pedras fora", status:"orcado", drive:"ok"},
+  {cliente:"Clínica Dermato-Nutrologia (Dra. Esther / Dra. Sarah)", ref:43200, max:47000, tag:"Comercial · 6 ambientes: recepção/espera com aparador curvo · 3 portas de correr · consultório · copa · DML · 2 cenários — portas em HPL R$ 43.200 · portas Itapuã Ultra com paredes revestidas em 6 mm e rodapé de alumínio R$ 47.000 · COM RT 10% · ⚠ MC 30% flat nos dois cenários, abaixo da faixa da casa (35–40%) · proposta de 19/06, sem movimento registrado desde então", status:"entregue", drive:"ok"},
+  {cliente:"Samara · quarto dos irmãos", ref:37500, max:null, tag:"Consultoria Luana Rizzi · leitura do fundador TRAVADA em 16/06 · MC real ~40,4% · parceira COM RT 10% (vendedor zerado) · painel com 2 chapas e 5 m de LED · os percentuais deste job viraram padrão da base · ⚠ há no Drive uma 2ª proposta de escopo reduzido (bancada + guarda-roupa) cujo valor não está lançado aqui", status:"entregue", drive:"ok"},
+  {cliente:"Sala Bia & Matheus (arq. Giovanna Camisassa)", ref:36000, max:70000, tag:"3 móveis: aparador em L + estante + cristaleira com portas de correr em vidro temperado jateado · 2 versões — melamínico Freijó R$ 36.000 (MC 36,3%) · lâmina natural Freijó R$ 70.000 (MC 36,1%) · Hettich Novisys + corrediça Quadro + fecha-toque Blum Tip-On · COM RT 10% · laca a R$ 450/m² é preço NEGOCIADO só deste projeto (a base segue 650) · prazo 100–120 dias · ⚠ áreas tiradas por escalímetro: conferir in loco antes de cortar", status:"entregue", drive:"ok"},
+  {cliente:"Valdenir & Maria (designer Paula Galante)", ref:8500, max:20000, tag:"Vale dos Cristais · cabeceira de 6 módulos com frisos de 5 mm + lavanderia e apoio · 3 acabamentos — melamínico Cinza Sagrado R$ 8.500 (MC 45,9%, 12 dias) · laca acetinada R$ 16.000 (MC 40%, 45–50 dias) · couro vaqueta R$ 13.500 + lavanderia R$ 6.500 = R$ 20.000 · couro e tapeçaria são terceirizados NOSSOS, coordenados · COM RT 10% · LED por conta do cliente · ⚠ áreas e medidas da lavanderia por estimativa: conferir no local", status:"entregue", drive:"ok"},
+  {cliente:"Mônica Cristina · banheiros", ref:15400, max:null, tag:"Banheiro social + banheiro da suíte, BH · v2 otimizada: corte a laser das 2 frentes numa viagem só e os fundos de 6 mm numa chapa só · split equilibrado de ~R$ 7.700 por banheiro · MC 37% · parceira Rubia COM RT 10% · economiza ~R$ 3.800 contra orçar os dois separados · proposta de 18/06, sem movimento registrado desde então", status:"entregue", drive:"ok"},
+  {cliente:"Aline Sanches", ref:77800, max:88700, tag:"Apto completo · Galeria 42", status:"entregue", drive:"ausente"},
+  {cliente:"Apto CJ (B+G Estúdio)", ref:48700, max:null, tag:"Opção 4 · lâmina + melamínico", status:"entregue", drive:"ausente"},
+  {cliente:"Cristaleira", ref:7500, max:null, tag:"Peça única · portas de vidro", status:"entregue", drive:"ausente"},
+  {cliente:"TRT 3ª Região", ref:74900, max:null, tag:"Licitação · Grupo 16 · via MLQ Eng.", status:"entregue", drive:"ausente"},
+  {cliente:"Jairo Samuel",  ref:70400,  max:83900,  tag:"Apto completo", status:"entregue",  drive:"ausente"},
+  {cliente:"Porto Verde (Leonardo)", ref:57800, max:null, tag:"Escritório · V2 sobre o 3D · 5 frentes", status:"entregue", drive:"ausente"},
+  {cliente:"Rômulo", ref:39000, max:58400, tag:"Apto · 4 amb · sem previsão", status:"parado", drive:"ok"},
+  {cliente:"Simony — Buritis", ref:34850, max:null, tag:"Contrato assinado · FECHADO", status:"concluido", drive:"ok"},
+  {cliente:"Dr. Luiz", ref:27000, max:null, tag:"Advocacia · 5 amb · novo espaço de atendimento", status:"entregue", drive:"parcial"},
+  {cliente:"Ed. Luxemburgo",ref:35295,  max:null,  tag:"Halls",         status:"concluido", drive:"ok"},
+  {cliente:"Raquel",        ref:25000,  max:30000,  tag:"Roupeiro 6,30m",status:"concluido", drive:"ok"},
+  {cliente:"Camila",        ref:24900,  max:null,   tag:"Closet",        status:"concluido", drive:"desatualizado"},
+  {cliente:"Graça",         ref:20100,  max:24000,  tag:"Despensa+Lav+Tanque", status:"entregue", drive:"ausente"},
+  {cliente:"Karina Ramos", ref:17500, max:21500, tag:"Escritório home office · sem retorno", status:"parado", drive:"ok"},
+  {cliente:"Hotel Ibis",    ref:16500,  max:null,   tag:"Hall comercial",status:"concluido", drive:"desatualizado"},
+  {cliente:"Regina Godinho", ref:13100, max:null, tag:"Escritório · 3º projeto · FECHADO", status:"concluido", drive:"ok"},
+  {cliente:"Flávia Moacir", ref:15000,  max:16950,  tag:"Portas, painéis e escaninhos · −11,5%", status:"entregue", drive:"ausente"},
+  {cliente:"Lirriet Libório", ref:9600, max:10700, tag:"Home office sob a escada · 2,60 m", status:"entregue", drive:"ausente"},
+  {cliente:"Armário superior · cozinha", ref:9700,  max:13050, tag:"3,02 m · 5 módulos · FECHADO ⚠ MC 19,5%", status:"entregue", drive:"ausente"},
+  {cliente:"Cozinha Elena (Rizzi Interiores)", ref:36700, max:38100, tag:"Cozinha · 9 móveis · telescópica × oculta · MC 30%", status:"entregue", drive:"ausente"},
+  {cliente:"Maria",         ref:7850,   max:null,   tag:"Lavanderia",    status:"entregue",  drive:"desatualizado"},
+];
+const PARADOS=[{n:"Cristiane",m:"escopo de venda"},{n:"Ana Carolina",m:"projeto recebido"},
+  {n:"Tania",m:"projeto recebido"},{n:"Bernardo",m:"escopo de venda"},
+  {n:"Carla Dressler",m:"escopo de venda"},{n:"Marina",m:"escopo de venda"},
+  {n:"Alexandrina",m:"escopo de venda"}];
+
+const brl=n=>new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL",maximumFractionDigits:0}).format(n);
+const kbrl=n=>n>=1000?"R$ "+(n/1000).toLocaleString("pt-BR",{maximumFractionDigits:0})+" mil":brl(n);
+const total=ORCAMENTOS.reduce((s,o)=>s+o.ref,0);
+const tk=Math.round(total/ORCAMENTOS.length);
+const dp=ORCAMENTOS.filter(o=>o.drive==="ausente"||o.drive==="desatualizado").length;
+const soma=st=>ORCAMENTOS.filter(o=>o.status===st).reduce((s,o)=>s+o.ref,0);
+const conta=st=>ORCAMENTOS.filter(o=>o.status===st).length;
+
+document.getElementById("total").textContent=brl(total);
+document.getElementById("cnt").textContent=ORCAMENTOS.length;
+document.getElementById("tk").textContent=kbrl(tk);
+document.getElementById("v-fec").textContent=kbrl(soma("concluido"));
+document.getElementById("v-neg").textContent=kbrl(soma("entregue"));
+document.getElementById("v-orc").textContent=conta("orcado")+" · "+kbrl(soma("orcado"));
+document.getElementById("v-par").textContent=conta("parado")+" · "+kbrl(soma("parado"));
+
+// a faixa tem de fechar com o total — se um estado novo aparecer e ninguém
+// criar o slot, o dinheiro some do cabeçalho sem ninguém perceber.
+const _porEstado=["concluido","entregue","orcado","parado"].reduce((a,st)=>a+soma(st),0);
+if(_porEstado!==total) console.warn("painel: faixa não fecha com o total",
+  {total, porEstado:_porEstado, faltando:total-_porEstado});
+document.getElementById("upd").textContent=DATA_ATUALIZADA;
+
+const DOT={concluido:"dg",entregue:"di",parado:"da",orcado:"db"};
+document.getElementById("list").innerHTML=ORCAMENTOS.map(o=>`
+  <div class="row">
+    <span class="dot ${DOT[o.status]}" title="${o.status}"></span>
+    <span class="nm">${o.cliente}<small>${o.tag}</small></span>
+    <span class="v num">${brl(o.ref)}${o.max?`<small>até ${kbrl(o.max)}</small>`:""}</span>
+  </div>`).join("");
+
+document.getElementById("par").innerHTML=`<span>⛔ <b>${PARADOS.length} em aberto</b> (escopo sem orçamento fechado)</span>`+
+  PARADOS.map(p=>`<span>${p.n} <span style="opacity:.7">(${p.m})</span></span>`).join("");
+document.getElementById("foot").textContent="Backup durável no Git · "+dp+" p/ subir no Drive";
+
+const root=document.documentElement;
+addEventListener("click",e=>{ if(e.target.closest(".mk")){
+  const dark=root.getAttribute("data-theme")==="dark"||(!root.getAttribute("data-theme")&&matchMedia("(prefers-color-scheme:dark)").matches);
+  root.setAttribute("data-theme",dark?"light":"dark");
+}});
+</script>

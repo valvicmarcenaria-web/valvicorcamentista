@@ -25,8 +25,22 @@ software de produção**.
 
 ## Princípios (valem nas 3 fases)
 
+- **CALCULAR, nunca ESTIMAR — é isso que faz um orçamentista de verdade.** O número de
+  chapas (e de tudo) sai do **cálculo peça-a-peça** — cada peça L×A decomposta e encaixada
+  na chapa 2,75×1,85 — **não** de estimativa por área/extensão "no olho". Estimar é, no
+  máximo, **conferência de sanidade** do cálculo; **nunca o número entregue**. **Nunca
+  afirmar um número que não se pode provar:** se falta cota, diga que falta e peça a medida —
+  não chute. Estimar é o caminho do prejuízo; calcular é o caminho do lucro.
 - **Quantitativo antes de preço.** Primeiro o levantamento físico (chapas, metros
   de fita, ferragens), depois o custo.
+- **Plano de corte SEMPRE.** Para o levantamento preciso do quantitativo, montar o
+  **plano de corte** (decompor peça a peça → encaixar nas chapas 2,75×1,85 m),
+  não fechar só pela estimativa de área. O plano de corte é o que dá o número exato
+  de chapas por cor/espessura e revela sobras/aproveitamento. **E nunca esquecer os
+  insumos:** cola (branca/de contato/bastão), parafusos/cavilhas/minifix, fita de
+  borda **+ filetagem**, cola de fita, LED/fonte/perfil, e os consumíveis de
+  acabamento, limpeza e **embalagem** (tinner, estopa, strech, cantoneira, papelão).
+  Insumo esquecido = MC que evapora na produção.
 - **CX define margem mínima, não custo.** A complexidade fixa o **piso de
   margem**, não muda o custo. Preço por markup divisor: `valorCliente =
   custoDir / (1 − margem)`.
@@ -75,8 +89,10 @@ e estimar pela escala, sinalizando.
     a resposta no projeto e em `materiais.json` (ref. ~R$660-710/m² reflecta
     bronze + perfil bronze, base Kenia&Fábio).
 
-> Calibração: erra para cima de propósito (melhor sobrar 1 chapa). Ver
-> `projetos/treino/` e `projetos/treino/calibracao-camila.md` (onde o olhar
+> Calibração: o arredondamento p/ cima (melhor sobrar 1 chapa) vale **no fecho do
+> cálculo peça-a-peça** — nunca como substituto dele. Estimar por área/extensão é
+> **só quando falta cota** e **sempre sinalizado como estimativa** (nunca cravado como
+> número fechado). Ver `projetos/treino/` e `calibracao-camila.md` (onde o olhar
 > falha: subestima fita de cor/ripado e prateleiras; superestima branco/LED;
 > sempre lançar consumíveis).
 
@@ -110,6 +126,22 @@ e estimar pela escala, sinalizando.
   proporção do material (o pacote dilui visita/setup → mais barato que separado).
 - **Proposta** (`proposta-comercial.md`): Linha Gold/Silver, garantia, prazo,
   pagamento, RT (10% líquido).
+- ⛔ **TRÊS REGRAS DO QUE NÃO VAI NA PROPOSTA** (`proposta-comercial.md`, topo —
+  o Jonathan já teve de pedir cada uma mais de uma vez).
+  ⚠️ **Valem só para o TEXTO que vai ao cliente. O levantamento de custo
+  continua cotado ao milímetro, peça a peça** — se a regra deixar o
+  levantamento menos preciso, ela foi mal lida.
+  1. **Nunca cotar medida de móvel na descrição.** Nem no título, nem entre
+     parênteses. Medida é documento técnico; na proposta vira objeção antes da
+     venda. Diga a dimensão **em palavras** quando ela for o argumento
+     ("do piso ao forro"). No motor, no plano de corte e no dossiê a cota é
+     **obrigatória**.
+  2. **Nunca explicar a formação do preço** — nada de chapa, nesting,
+     aproveitamento, custo ou margem. Só **benefício**: o que o cliente vê, sente
+     e usa. Justificar por dentro é abrir a planilha para negociação.
+  3. **Imagens do projeto entram no layout.** Render ou perspectiva do projeto
+     dele — nunca "imagem de referência" de terceiro. Sem imagem acessível,
+     **peça**.
 - **Visão Valvic OS:** cada caso também alimenta o motor/regras do sistema.
 
 ---

@@ -1,3 +1,10 @@
+> 🔀 **ARQUIVO INCORPORADO — NÃO É ORÇAMENTO AVULSO.**
+> Decisão Jonathan (16/06/2026): o banheiro (M35/M36) e a cozinha (M20/M21/M55)
+> **fazem parte do projeto completo do Fábio**. Trabalhe em
+> **`2026-kenia-e-fabio-casa-completa.md`** — é o orçamento ÚNICO da casa toda,
+> precificado como um todo a **MC ≥ 40% + entrada 40%** (não a MC 35% avulsa daqui).
+> Este arquivo fica só como histórico das cotações já feitas (vidros e material do banheiro).
+
 # Kenia & Fábio — Cozinha/Diversos (arq. Flávia · Inédita Arquitetura)
 
 Projeto executivo `RES.KF_F65_DET_MARC_R01` (22/04/2026). Marcenaria em MDF

@@ -1,0 +1,952 @@
+{
+  "cliente": "Kênia & Fábio",
+  "projeto": "Casa Completa",
+  "versao": "001",
+  "inv": 481000,
+  "mcAlvo": 42,
+  "p": {
+    "nf": 7,
+    "parc": 7,
+    "vend": 0,
+    "rt": 10,
+    "vis": 250,
+    "outv": 0,
+    "prog": 0.8,
+    "coord": 1,
+    "marc": 2.5,
+    "serra": 0.2,
+    "manut": 0.5,
+    "erro": 0.5
+  },
+  "lib": [
+    [
+      "MDF",
+      [
+        [
+          "mdf branco 6",
+          190
+        ],
+        [
+          "mdf branco 15",
+          260
+        ],
+        [
+          "mdf branco 18",
+          320
+        ],
+        [
+          "mdf branco 25",
+          420
+        ],
+        [
+          "mdf cor 6",
+          300
+        ],
+        [
+          "mdf cor 15",
+          500
+        ],
+        [
+          "mdf cor 18",
+          600
+        ],
+        [
+          "mdf cristallo 6",
+          400
+        ],
+        [
+          "mdf cristallo 15",
+          600
+        ],
+        [
+          "mdf cristallo 18",
+          700
+        ],
+        [
+          "mdf Acetinato 6",
+          1000
+        ],
+        [
+          "mdf Acetinato 15",
+          1300
+        ],
+        [
+          "mdf Acetinato 18",
+          1500
+        ],
+        [
+          "mdf com lâmina prensada +acab.",
+          2200
+        ],
+        [
+          "Palha sintética",
+          600
+        ],
+        [
+          "Compensado flexível",
+          400
+        ],
+        [
+          "MDF Itapuã 15mm (Duratex)",
+          500
+        ],
+        [
+          "MDF Itapuã 6mm",
+          300
+        ],
+        [
+          "MDF Areia 15mm (Guararapes)",
+          500
+        ],
+        [
+          "MDF Areia 6mm",
+          300
+        ],
+        [
+          "MDF Azul Profundo 15mm",
+          500
+        ],
+        [
+          "MDF Azul Profundo 6mm",
+          300
+        ]
+      ]
+    ],
+    [
+      "Cola e fita",
+      [
+        [
+          "Colagem - mt linear - máquina",
+          2.5
+        ],
+        [
+          "Colagem - mt linear - manual",
+          4
+        ],
+        [
+          "Fita de borda - branco tx - mt",
+          2
+        ],
+        [
+          "Fita de borda - cor - mt",
+          3
+        ],
+        [
+          "Demandas pontuais - espec.",
+          50
+        ]
+      ]
+    ],
+    [
+      "Dobradiças",
+      [
+        [
+          "Padrão",
+          6
+        ],
+        [
+          "Bigfer Inox",
+          20
+        ],
+        [
+          "Bigfer Ônix",
+          15
+        ],
+        [
+          "Hardt",
+          8
+        ],
+        [
+          "Häfele",
+          20
+        ],
+        [
+          "Hettich Novisys",
+          10
+        ],
+        [
+          "Hettich Sensys",
+          35
+        ],
+        [
+          "Hettich Sensys Onix",
+          40
+        ],
+        [
+          "Hettich Sensys Black",
+          40
+        ]
+      ]
+    ],
+    [
+      "Corrediças",
+      [
+        [
+          "Telescópica",
+          40
+        ],
+        [
+          "Oculta Hardt",
+          70
+        ],
+        [
+          "Oculta Quadro (Hettich)",
+          120
+        ],
+        [
+          "Oculta Actro (Hettich)",
+          400
+        ],
+        [
+          "Blum",
+          300
+        ]
+      ]
+    ],
+    [
+      "Sistema portas roupeiros",
+      [
+        [
+          "SS150 - 2 portas",
+          500
+        ],
+        [
+          "SS150 - 3 portas",
+          600
+        ],
+        [
+          "RO65 (Rometal)",
+          60
+        ],
+        [
+          "Dominus - 2 portas",
+          700
+        ],
+        [
+          "Dominus - 3 portas",
+          850
+        ],
+        [
+          "Trilho RO65 - 3mt",
+          80
+        ],
+        [
+          "Trilho RO65 - 2mt",
+          60
+        ],
+        [
+          "Trilho SS150 - 3mt",
+          200
+        ],
+        [
+          "Trilho SS150 - 2mt",
+          170
+        ],
+        [
+          "Trilho Dominus - 3mt",
+          350
+        ],
+        [
+          "Trilho Dominus - 2mt",
+          300
+        ],
+        [
+          "Desempenador sobrepor - par",
+          100
+        ],
+        [
+          "Desempenador embutido - par",
+          150
+        ]
+      ]
+    ],
+    [
+      "Sistema portas rack e suspenso",
+      [
+        [
+          "Ro21",
+          50
+        ],
+        [
+          "Multi 2 portas",
+          300
+        ],
+        [
+          "Multi 3 portas",
+          380
+        ],
+        [
+          "Linea 1 porta",
+          200
+        ],
+        [
+          "Linea 2 portas",
+          500
+        ],
+        [
+          "Trilho ro21 3mt",
+          40
+        ],
+        [
+          "Trilho Multi 3mt",
+          200
+        ],
+        [
+          "Trilho Linea 3mt - 2 portas",
+          150
+        ],
+        [
+          "Trilho Linea 3mt - 1 porta",
+          90
+        ]
+      ]
+    ],
+    [
+      "Articuladores",
+      [
+        [
+          "Pistão Normal",
+          20
+        ],
+        [
+          "Pistão com amortecimento",
+          30
+        ],
+        [
+          "Blum HK-xs",
+          180
+        ],
+        [
+          "Aventos (e outros)",
+          600
+        ]
+      ]
+    ],
+    [
+      "Sistema porta de passagem",
+      [
+        [
+          "Pivô 80k",
+          60
+        ],
+        [
+          "Pivô 200k",
+          180
+        ],
+        [
+          "Pivô no marco",
+          150
+        ],
+        [
+          "Sistema RO82",
+          200
+        ],
+        [
+          "Sistema RO82 top",
+          400
+        ],
+        [
+          "Trilho RO82 - 2mt",
+          200
+        ],
+        [
+          "Trilho RO82 - 3mt",
+          380
+        ],
+        [
+          "Sistema Volare",
+          150
+        ],
+        [
+          "Dobradiças ocultas basic",
+          120
+        ],
+        [
+          "Dobradiças ocultas häfele",
+          250
+        ]
+      ]
+    ],
+    [
+      "Puxadores",
+      [
+        [
+          "SP7000 anodizado",
+          70
+        ],
+        [
+          "SP7000 bronze",
+          90
+        ],
+        [
+          "Perfil cava RM195 - 3mt",
+          250
+        ],
+        [
+          "Perfil cava RM213 - 3mt",
+          100
+        ],
+        [
+          "Par tampinhas RM213",
+          4
+        ],
+        [
+          "Cava 35° usinada - mt",
+          50
+        ],
+        [
+          "Slim luna rometal",
+          20
+        ],
+        [
+          "Concha shell Zen",
+          80
+        ],
+        [
+          "Ponto Zen",
+          70
+        ],
+        [
+          "Especial 1 - Traço Metal/Couro Enlevo",
+          60
+        ]
+      ]
+    ],
+    [
+      "Suportes",
+      [
+        [
+          "Suporte espada",
+          25
+        ],
+        [
+          "Suporte oculto",
+          20
+        ],
+        [
+          "Serralheria prat. simples",
+          25
+        ],
+        [
+          "Serralheria bancada",
+          50
+        ]
+      ]
+    ],
+    [
+      "Parafusos / dispositivos / montagem",
+      [
+        [
+          "Parafusos gerais - especulação",
+          25
+        ],
+        [
+          "Conj. parafuso e bucha",
+          1.8
+        ],
+        [
+          "Sup. prateleiras - cj4",
+          3
+        ],
+        [
+          "Cola kit Teck bond",
+          35
+        ],
+        [
+          "PUR / PU",
+          50
+        ],
+        [
+          "Silicone acabamento",
+          30
+        ],
+        [
+          "Outros 1 - tábua de passar",
+          500
+        ]
+      ]
+    ],
+    [
+      "Iluminação",
+      [
+        [
+          "LED - fita + perfil - mt",
+          150
+        ],
+        [
+          "Sensor",
+          50
+        ]
+      ]
+    ],
+    [
+      "Vidros e espelhos (m²)",
+      [
+        [
+          "Vidro incolor temperado 6mm",
+          200
+        ],
+        [
+          "Vidro incolor temperado 8mm",
+          250
+        ],
+        [
+          "Vidro incolor temperado 10mm",
+          300
+        ],
+        [
+          "Espelho prata",
+          600
+        ],
+        [
+          "Espelho bronze",
+          900
+        ],
+        [
+          "Vidro reflecta bronze 6mm",
+          350
+        ],
+        [
+          "Vidro reflecta bronze 8mm",
+          450
+        ]
+      ]
+    ],
+    [
+      "Limpeza / embalagem",
+      [
+        [
+          "Tinner (litro)",
+          12
+        ],
+        [
+          "Estopa (pacote)",
+          10
+        ],
+        [
+          "Strech",
+          4
+        ],
+        [
+          "Cantoneira",
+          0.5
+        ],
+        [
+          "Embalagem",
+          50
+        ]
+      ]
+    ],
+    [
+      "Especiais",
+      [
+        [
+          "Logística específica",
+          150
+        ],
+        [
+          "Estrutura de serralheria",
+          150
+        ],
+        [
+          "Gaveta especial",
+          900
+        ]
+      ]
+    ]
+  ],
+  "ambientes": [
+    {
+      "nome": "Cozinha",
+      "q": {
+        "MDF¦mdf branco 15": 5,
+        "MDF¦MDF Areia 15mm (Guararapes)": 3,
+        "MDF¦MDF Itapuã 15mm (Duratex)": 2,
+        "MDF¦mdf branco 6": 4,
+        "MDF¦MDF Areia 6mm": 1,
+        "MDF¦MDF Itapuã 6mm": 1,
+        "Cola e fita¦Fita de borda - cor - mt": 130,
+        "Cola e fita¦Fita de borda - branco tx - mt": 90,
+        "Cola e fita¦Colagem - mt linear - máquina": 220,
+        "Dobradiças¦Hettich Novisys": 72,
+        "Corrediças¦Oculta Quadro (Hettich)": 16,
+        "Articuladores¦Blum HK-xs": 4,
+        "Puxadores¦Cava 35° usinada - mt": 27,
+        "Parafusos / dispositivos / montagem¦Conj. parafuso e bucha": 50,
+        "Parafusos / dispositivos / montagem¦Sup. prateleiras - cj4": 12,
+        "Iluminação¦LED - fita + perfil - mt": 12,
+        "Iluminação¦Sensor": 2
+      },
+      "terc": {
+        "vid": 0,
+        "esq": 1595,
+        "ser": 0,
+        "pin": 0,
+        "est": 0,
+        "laq": 0,
+        "log": 700
+      }
+    },
+    {
+      "nome": "Gourmet",
+      "q": {
+        "MDF¦MDF Areia 15mm (Guararapes)": 2,
+        "MDF¦mdf branco 15": 2,
+        "MDF¦mdf branco 6": 2,
+        "Cola e fita¦Fita de borda - cor - mt": 60,
+        "Cola e fita¦Colagem - mt linear - máquina": 60,
+        "Dobradiças¦Hettich Novisys": 18,
+        "Iluminação¦LED - fita + perfil - mt": 4,
+        "Iluminação¦Sensor": 1,
+        "Puxadores¦Cava 35° usinada - mt": 6,
+        "Corrediças¦Oculta Quadro (Hettich)": 4
+      },
+      "terc": {
+        "vid": 0,
+        "ser": 0,
+        "pin": 0,
+        "est": 0,
+        "laq": 0,
+        "esq": 0,
+        "log": 700
+      }
+    },
+    {
+      "nome": "Sala / Estar",
+      "q": {
+        "MDF¦MDF Itapuã 15mm (Duratex)": 3,
+        "MDF¦mdf branco 15": 3,
+        "MDF¦mdf branco 6": 3,
+        "Cola e fita¦Fita de borda - cor - mt": 150,
+        "Cola e fita¦Colagem - mt linear - máquina": 150,
+        "Dobradiças¦Hettich Novisys": 48,
+        "Iluminação¦LED - fita + perfil - mt": 5,
+        "Iluminação¦Sensor": 1,
+        "Puxadores¦Cava 35° usinada - mt": 15,
+        "Corrediças¦Oculta Quadro (Hettich)": 4
+      },
+      "terc": {
+        "vid": 0,
+        "ser": 900,
+        "pin": 0,
+        "est": 0,
+        "laq": 0,
+        "esq": 0,
+        "log": 700
+      }
+    },
+    {
+      "nome": "Lavanderia",
+      "q": {
+        "MDF¦MDF Areia 15mm (Guararapes)": 3,
+        "MDF¦MDF Itapuã 15mm (Duratex)": 1,
+        "MDF¦mdf branco 15": 4,
+        "MDF¦mdf branco 6": 4,
+        "Cola e fita¦Fita de borda - cor - mt": 160,
+        "Cola e fita¦Colagem - mt linear - máquina": 160,
+        "Dobradiças¦Hettich Novisys": 60,
+        "Sistema portas roupeiros¦SS150 - 3 portas": 1,
+        "Sistema portas roupeiros¦Trilho SS150 - 3mt": 1,
+        "Sistema portas roupeiros¦Desempenador embutido - par": 3,
+        "Puxadores¦Cava 35° usinada - mt": 15,
+        "Corrediças¦Oculta Quadro (Hettich)": 12
+      },
+      "terc": {
+        "vid": 0,
+        "ser": 300,
+        "pin": 0,
+        "est": 0,
+        "laq": 0,
+        "esq": 0,
+        "log": 700
+      }
+    },
+    {
+      "nome": "Subsolo / Despensa",
+      "q": {
+        "MDF¦MDF Itapuã 15mm (Duratex)": 1,
+        "MDF¦MDF Areia 15mm (Guararapes)": 1,
+        "MDF¦mdf branco 15": 3,
+        "MDF¦mdf branco 6": 2,
+        "Cola e fita¦Fita de borda - cor - mt": 42,
+        "Cola e fita¦Fita de borda - branco tx - mt": 48,
+        "Cola e fita¦Colagem - mt linear - máquina": 90,
+        "Dobradiças¦Hettich Novisys": 9,
+        "Sistema porta de passagem¦Sistema RO82": 2,
+        "Puxadores¦Cava 35° usinada - mt": 6,
+        "Corrediças¦Oculta Quadro (Hettich)": 3
+      },
+      "terc": {
+        "vid": 0,
+        "ser": 0,
+        "pin": 0,
+        "est": 0,
+        "laq": 0,
+        "esq": 0,
+        "log": 700
+      }
+    },
+    {
+      "nome": "Lavabo / Circulação",
+      "q": {
+        "MDF¦MDF Itapuã 15mm (Duratex)": 1,
+        "MDF¦mdf branco 15": 1,
+        "Cola e fita¦Fita de borda - cor - mt": 40,
+        "Cola e fita¦Colagem - mt linear - máquina": 40,
+        "Suportes¦Suporte oculto": 4,
+        "Puxadores¦Cava 35° usinada - mt": 3
+      },
+      "terc": {
+        "vid": 0,
+        "ser": 300,
+        "pin": 0,
+        "est": 0,
+        "laq": 0,
+        "esq": 0,
+        "log": 700
+      }
+    },
+    {
+      "nome": "Semissuíte (Banheiro)",
+      "q": {
+        "MDF¦MDF Areia 15mm (Guararapes)": 1,
+        "MDF¦mdf branco 15": 1,
+        "MDF¦mdf branco 6": 2,
+        "Cola e fita¦Fita de borda - cor - mt": 46,
+        "Cola e fita¦Colagem - mt linear - máquina": 46,
+        "Dobradiças¦Hettich Novisys": 14,
+        "Iluminação¦LED - fita + perfil - mt": 1.5,
+        "Iluminação¦Sensor": 1,
+        "Puxadores¦Cava 35° usinada - mt": 6,
+        "Corrediças¦Oculta Quadro (Hettich)": 3
+      },
+      "terc": {
+        "vid": 1056,
+        "ser": 0,
+        "pin": 0,
+        "est": 0,
+        "laq": 0,
+        "esq": 0,
+        "log": 700
+      }
+    },
+    {
+      "nome": "Banho Master",
+      "q": {
+        "MDF¦MDF Itapuã 15mm (Duratex)": 2,
+        "MDF¦mdf branco 15": 2,
+        "MDF¦mdf branco 6": 2,
+        "Cola e fita¦Fita de borda - cor - mt": 65,
+        "Cola e fita¦Colagem - mt linear - máquina": 65,
+        "Dobradiças¦Hettich Novisys": 24,
+        "Iluminação¦LED - fita + perfil - mt": 3,
+        "Iluminação¦Sensor": 1,
+        "Puxadores¦Cava 35° usinada - mt": 9,
+        "Corrediças¦Oculta Quadro (Hettich)": 6
+      },
+      "terc": {
+        "vid": 700,
+        "ser": 900,
+        "pin": 0,
+        "est": 0,
+        "laq": 0,
+        "esq": 0,
+        "log": 700
+      }
+    },
+    {
+      "nome": "I.S. Suíte 01",
+      "q": {
+        "MDF¦MDF Azul Profundo 15mm": 1,
+        "MDF¦MDF Itapuã 15mm (Duratex)": 1,
+        "MDF¦MDF Azul Profundo 6mm": 2,
+        "MDF¦mdf branco 15": 1,
+        "Cola e fita¦Fita de borda - cor - mt": 42,
+        "Cola e fita¦Colagem - mt linear - máquina": 42,
+        "Dobradiças¦Hettich Novisys": 9,
+        "Iluminação¦LED - fita + perfil - mt": 1.5,
+        "Iluminação¦Sensor": 1,
+        "Puxadores¦Cava 35° usinada - mt": 6,
+        "Corrediças¦Oculta Quadro (Hettich)": 6
+      },
+      "terc": {
+        "vid": 600,
+        "ser": 0,
+        "pin": 0,
+        "est": 0,
+        "laq": 0,
+        "esq": 0,
+        "log": 700
+      }
+    },
+    {
+      "nome": "Quarto Hóspedes",
+      "q": {
+        "MDF¦MDF Areia 15mm (Guararapes)": 2,
+        "MDF¦MDF Itapuã 15mm (Duratex)": 1,
+        "MDF¦mdf branco 15": 3,
+        "MDF¦mdf branco 6": 3,
+        "Cola e fita¦Fita de borda - cor - mt": 110,
+        "Cola e fita¦Colagem - mt linear - máquina": 110,
+        "Dobradiças¦Hettich Novisys": 6,
+        "Sistema portas roupeiros¦SS150 - 3 portas": 1,
+        "Sistema portas roupeiros¦Trilho SS150 - 3mt": 1,
+        "Sistema portas roupeiros¦Desempenador embutido - par": 3,
+        "Puxadores¦Slim luna rometal": 3,
+        "Puxadores¦Cava 35° usinada - mt": 6,
+        "Corrediças¦Oculta Quadro (Hettich)": 4
+      },
+      "terc": {
+        "vid": 1080,
+        "ser": 0,
+        "pin": 0,
+        "est": 0,
+        "laq": 0,
+        "esq": 0,
+        "log": 700
+      }
+    },
+    {
+      "nome": "Rouparia",
+      "q": {
+        "MDF¦mdf branco 15": 2,
+        "MDF¦mdf branco 6": 2,
+        "Cola e fita¦Fita de borda - branco tx - mt": 50,
+        "Cola e fita¦Colagem - mt linear - máquina": 50,
+        "Dobradiças¦Hettich Novisys": 12,
+        "Puxadores¦Cava 35° usinada - mt": 6
+      },
+      "terc": {
+        "vid": 0,
+        "ser": 0,
+        "pin": 0,
+        "est": 0,
+        "laq": 0,
+        "esq": 0,
+        "log": 700
+      }
+    },
+    {
+      "nome": "Suíte 03",
+      "q": {
+        "MDF¦MDF Areia 15mm (Guararapes)": 3,
+        "MDF¦mdf branco 15": 3,
+        "MDF¦mdf branco 6": 3,
+        "Cola e fita¦Fita de borda - cor - mt": 115,
+        "Cola e fita¦Colagem - mt linear - máquina": 115,
+        "Dobradiças¦Hettich Novisys": 10,
+        "Sistema portas roupeiros¦SS150 - 3 portas": 2,
+        "Sistema portas roupeiros¦Trilho SS150 - 3mt": 2,
+        "Sistema portas roupeiros¦Desempenador embutido - par": 6,
+        "Sistema porta de passagem¦Sistema RO82": 1,
+        "Puxadores¦Slim luna rometal": 3,
+        "Iluminação¦LED - fita + perfil - mt": 4,
+        "Iluminação¦Sensor": 2,
+        "Puxadores¦Cava 35° usinada - mt": 12,
+        "Corrediças¦Oculta Quadro (Hettich)": 14
+      },
+      "terc": {
+        "vid": 1380,
+        "ser": 0,
+        "pin": 0,
+        "est": 0,
+        "laq": 0,
+        "esq": 0,
+        "log": 700
+      }
+    },
+    {
+      "nome": "Suíte 02",
+      "q": {
+        "MDF¦MDF Areia 15mm (Guararapes)": 3,
+        "MDF¦mdf branco 15": 3,
+        "MDF¦mdf branco 6": 3,
+        "Cola e fita¦Fita de borda - cor - mt": 115,
+        "Cola e fita¦Colagem - mt linear - máquina": 115,
+        "Dobradiças¦Hettich Novisys": 10,
+        "Sistema portas roupeiros¦SS150 - 3 portas": 1,
+        "Sistema portas roupeiros¦Trilho SS150 - 3mt": 1,
+        "Sistema portas roupeiros¦Desempenador embutido - par": 3,
+        "Sistema porta de passagem¦Sistema RO82": 1,
+        "Puxadores¦Slim luna rometal": 3,
+        "Iluminação¦LED - fita + perfil - mt": 4,
+        "Iluminação¦Sensor": 2,
+        "Puxadores¦Cava 35° usinada - mt": 12,
+        "Corrediças¦Oculta Quadro (Hettich)": 14
+      },
+      "terc": {
+        "vid": 1380,
+        "ser": 0,
+        "pin": 0,
+        "est": 0,
+        "laq": 0,
+        "esq": 0,
+        "log": 700
+      }
+    },
+    {
+      "nome": "Suíte 01 (infantil)",
+      "q": {
+        "MDF¦MDF Areia 15mm (Guararapes)": 1,
+        "MDF¦MDF Itapuã 15mm (Duratex)": 1,
+        "MDF¦MDF Azul Profundo 15mm": 1,
+        "MDF¦MDF Azul Profundo 6mm": 2,
+        "MDF¦mdf branco 15": 3,
+        "MDF¦mdf branco 6": 2,
+        "Cola e fita¦Fita de borda - cor - mt": 140,
+        "Cola e fita¦Colagem - mt linear - máquina": 140,
+        "Dobradiças¦Hettich Novisys": 12,
+        "Sistema portas roupeiros¦SS150 - 3 portas": 1,
+        "Sistema portas roupeiros¦Trilho SS150 - 3mt": 1,
+        "Sistema portas roupeiros¦Desempenador embutido - par": 3,
+        "Sistema porta de passagem¦Sistema RO82": 1,
+        "Puxadores¦Slim luna rometal": 3,
+        "Iluminação¦LED - fita + perfil - mt": 2,
+        "Iluminação¦Sensor": 1,
+        "Puxadores¦Cava 35° usinada - mt": 9,
+        "Corrediças¦Oculta Quadro (Hettich)": 10
+      },
+      "terc": {
+        "vid": 1080,
+        "ser": 600,
+        "pin": 0,
+        "est": 1500,
+        "laq": 0,
+        "esq": 0,
+        "log": 700
+      }
+    },
+    {
+      "nome": "Suíte Master",
+      "q": {
+        "MDF¦MDF Areia 15mm (Guararapes)": 3,
+        "MDF¦MDF Itapuã 15mm (Duratex)": 2,
+        "MDF¦mdf branco 15": 5,
+        "MDF¦mdf branco 6": 5,
+        "Cola e fita¦Fita de borda - cor - mt": 220,
+        "Cola e fita¦Colagem - mt linear - máquina": 220,
+        "Dobradiças¦Hettich Novisys": 30,
+        "Sistema porta de passagem¦Sistema RO82": 1,
+        "Iluminação¦LED - fita + perfil - mt": 8,
+        "Iluminação¦Sensor": 2,
+        "Puxadores¦Cava 35° usinada - mt": 18,
+        "Corrediças¦Oculta Quadro (Hettich)": 12
+      },
+      "terc": {
+        "vid": 12750,
+        "ser": 0,
+        "pin": 0,
+        "est": 0,
+        "laq": 0,
+        "esq": 0,
+        "log": 700
+      }
+    }
+  ],
+  "ativo": 0,
+  "collapsed": {},
+  "theme": "dark",
+  "diretrizes": "ORÇAMENTO CASA COMPLETA — Kênia & Fábio (arq. Inédita/Flávia). ~60 módulos, 3 pavimentos, 15 ambientes.\nLevantamento Fase 1 (estimativa que erra p/ cima) — refinar com plano de corte real antes de produção.\nREGRA JONATHAN: pedra/marmoraria NUNCA entra (cliente). Bancadas, sóculos e escadas de pedra = fora.\nEscopo Valvic: MDF + ferragens + vidros/espelhos dos móveis + serralheria de apoio + LED embutido.\nREGRA JONATHAN (rev2): chapa INTEIRA por ambiente — fração arredonda SEMPRE pra cima (3,8 = 4).\nESTRUTURA INTERNA EM BRANCO TX em TODOS os ambientes: ~50% do 15mm (corpo/caixa) vai p/ Branco TX,\n  ~50% (portas/faces aparentes) fica na cor; fundos 6mm em Branco TX (acento decorativo p.ex. Azul fica na cor).\n  >> SPLIT 50/50 é ESTIMATIVA Fase 1 — Jonathan vai validar o quantitativo da Lavinia antes de fechar.\nPuxador = CAVA 35° USINADA (não perfil). Ferragens Hettich (dobradiça Novisys, corrediça Oculta Quadro).\nLogística POR AMBIENTE: R$300 (material bruto) + R$400 (equipe) = R$700. Portas de vidro = ESQUADRIA.\n  Itapuã/Areia/Azul = \"MDF cor\" R$500/15mm, R$300/6mm; Branco TX R$260/15mm, R$190/6mm.\nConfirmar antes do corte: (1) corrediça telescópica vs oculta (custo/garantia); (2) M12 18 vs 20mm;\n(3) RT da arquiteta (10% líq. embutido — se não houver parceria, MC sobe ~+4 pts).",
+  "rodrigo": "Rodrigo (jun/2026, caixa CRÍTICO): projeto grande (>R$80k) -> MC mínima 40% + ENTRADA 40% antes de produção,\nparcelas vinculadas a etapas de entrega. Alvo deste orçamento = 42% (margem p/ Vitor negociar até o piso 40%).\nNÃO ceder abaixo de 40%. Sem entrada real, não fecha. Encargos com NF 7%, parcelamento 7%, comissão Vitor 5%, RT 10%.\nANCORAGEM (Vitor): apresentar o TOTAL da casa primeiro (âncora); só então abrir por ambiente. Pacote completo\notimiza corte/frete -> melhor custo por m² que ambiente avulso. Suíte Master é o ambiente de maior valor (âncora interna).",
+  "duvidas": []
+}

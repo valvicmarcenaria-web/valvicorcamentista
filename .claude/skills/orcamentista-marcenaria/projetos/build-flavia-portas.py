@@ -1,0 +1,192 @@
+# -*- coding: utf-8 -*-
+# Proposta — Portas + painéis do vão da escada. Design minimalista, 2 páginas.
+import pathlib
+P = pathlib.Path('/home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos')
+
+HTML = """<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+:root{
+  --ink:#211E1A; --soft:#6B6559; --mut:#9C9587; --line:#E4DFD3; --paper:#fff;
+  --bg:#FAF8F3; --accent:#8A6B45; --accent-soft:#F1EAE0;
+}
+@page{size:A4;margin:0;}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;color:var(--ink);font-size:10.5pt;line-height:1.55;}
+.page{position:relative;width:210mm;height:297mm;padding:20mm 20mm 16mm;page-break-after:always;overflow:hidden;background:var(--paper);}
+.page:last-child{page-break-after:auto;}
+h1,h2,h3{margin:0;font-weight:600;}
+p{margin:0;}
+
+.hd{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1.5px solid var(--ink);padding-bottom:9mm;margin-bottom:11mm;}
+.brand{font-size:15pt;font-weight:700;letter-spacing:.02em;}
+.brand .dot{color:var(--accent);}
+.brand-sub{font-size:7.6pt;letter-spacing:.3em;color:var(--mut);margin-top:2px;text-transform:uppercase;}
+.hd .meta{text-align:right;font-size:8.6pt;color:var(--soft);line-height:1.7;}
+.hd .meta b{color:var(--ink);}
+
+.eyebrow{font-size:8pt;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:700;}
+.h1{font-size:22pt;font-weight:700;line-height:1.15;margin:3mm 0 6mm;letter-spacing:-.01em;}
+.lead{font-size:10.3pt;color:var(--soft);max-width:150mm;margin-bottom:10mm;}
+
+.scope{display:flex;gap:10mm;margin-bottom:9mm;}
+.scope .it{flex:1;border-top:2px solid var(--ink);padding-top:4mm;}
+.scope .it .k{font-size:11pt;font-weight:700;}
+.scope .it .d{font-size:8.8pt;color:var(--soft);margin-top:2mm;line-height:1.5;}
+
+.hl-row{display:flex;gap:6mm;margin-top:3mm;}
+.hl{flex:1;background:var(--accent-soft);border-radius:7px;padding:6mm 6.5mm;}
+.hl .t{font-size:11.5pt;font-weight:700;margin-bottom:2mm;}
+.hl .d{font-size:8.8pt;color:var(--soft);line-height:1.55;}
+.hl .d b{color:var(--ink);}
+
+.note{margin-top:3.4mm;padding-top:2.6mm;border-top:1px solid var(--line);font-size:8.4pt;color:var(--soft);line-height:1.55;}
+.note b{color:var(--ink);}
+
+.pfoot{position:absolute;left:20mm;right:20mm;bottom:14mm;display:flex;justify-content:space-between;font-size:7.6pt;color:var(--mut);letter-spacing:.08em;padding-top:3mm;border-top:1px solid var(--line);}
+
+/* PAGE 2 — investimento */
+.inv-box{border:1.5px solid var(--ink);border-radius:8px;padding:4.8mm 8mm;margin-top:2mm;}
+.comp{margin:3mm 0 2.5mm;padding-top:2.4mm;border-top:1px solid var(--line);}
+.comp .r{display:flex;justify-content:space-between;gap:6mm;font-size:8.6pt;color:var(--soft);
+    padding:1.1mm 0;}
+.comp .r b{color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap;}
+.comp .r.s{border-top:1px solid var(--line);margin-top:1.4mm;padding-top:2.4mm;}
+.comp .r.d b{color:var(--accent);}
+.inv-box .t{font-size:8pt;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);font-weight:700;}
+.inv-box .big{font-size:30pt;font-weight:700;margin:3mm 0 1mm;}
+.inv-box .cap{font-size:9pt;color:var(--soft);}
+
+.incl{margin:5mm 0 4mm;}
+.incl-t{font-size:7.4pt;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);font-weight:700;margin-bottom:2.6mm;}
+.incl ul{margin:0;padding:0;list-style:none;}
+.incl li{padding:1.3mm 0;border-bottom:1px solid var(--line);font-size:9.2pt;padding-left:5mm;position:relative;}
+.incl li::before{content:"";position:absolute;left:0;top:50%;margin-top:-2.5px;width:5px;height:5px;background:var(--accent);}
+
+.terms{display:flex;gap:5mm;margin-top:2mm;}
+.term{flex:1;border:1px solid var(--line);border-radius:6px;padding:3.6mm 4.6mm;}
+.term .k{font-size:7.4pt;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:700;}
+.term .v{font-size:12pt;font-weight:700;margin-top:2px;}
+.term .s{font-size:7.8pt;color:var(--soft);margin-top:.8mm;line-height:1.42;}
+</style></head>
+<body>
+
+<!-- PÁGINA 1 -->
+<div class="page">
+  <div class="hd">
+    <div><div class="brand">valvic<span class="dot">.</span></div><div class="brand-sub">MARCENARIA</div></div>
+    <div class="meta"><b>Flávia Moacir</b><br>Portas + painéis · vão da escada<br>7 de agosto de 2026</div>
+  </div>
+
+  <div class="eyebrow">Proposta técnica</div>
+  <div class="h1">Portas e painéis para<br>o vão da escada.</div>
+  <p class="lead">Marcenaria sob medida fechando os 4,45 m do vão — <b>dois painéis fixos</b>, uma
+  <b>porta pivotante</b> e uma <b>porta de correr</b> — e um <b>nicho de escaninhos</b> para a
+  correspondência dos moradores.</p>
+
+  <div class="scope">
+    <div class="it">
+      <div class="k">Porta pivotante</div>
+      <div class="d">MDF Itapuã Ultra, frente e verso. <b>Dobradiça invisível</b>, puxador em cava
+      e <b>fechadura</b>.</div>
+    </div>
+    <div class="it">
+      <div class="k">Porta de correr</div>
+      <div class="d">MDF Itapuã Ultra, frente e verso. Sistema deslizante <b>RO82 com duplo
+      amortecimento</b>, puxador em cava. Sem fechadura.</div>
+    </div>
+    <div class="it">
+      <div class="k">Dois painéis fixos</div>
+      <div class="d">Em MDF Itapuã Ultra, na mesma face das portas — completam os 4,45 m do vão,
+      do piso ao teto.</div>
+    </div>
+    <div class="it">
+      <div class="k">Nicho de escaninhos</div>
+      <div class="d"><b>6 nichos</b> em MDF Itapuã, com <b>porta e fechadura individuais</b> e
+      <b>usinagem para recebimento de correspondência</b>.</div>
+    </div>
+  </div>
+
+  <div class="hl-row">
+    <div class="hl">
+      <div class="t">Duas aberturas, dois sistemas</div>
+      <div class="d">A <b>pivotante</b> vai em dobradiça <b>100% invisível</b> — regulagem 3D, 180° de
+      abertura, <b>4 unidades</b> pelo peso da folha. A <b>de correr</b> vai no <b>RO82 com duplo
+      amortecimento</b>: freia nos dois sentidos, não bate ao abrir nem ao fechar.</div>
+    </div>
+    <div class="hl">
+      <div class="t">Rodapé de alumínio fosco 30 mm</div>
+      <div class="d">Perfil de <b>30 mm</b> na base das portas <b>e dos painéis</b>, correndo os
+      4,45 m sem interrupção. Protege do impacto e da água de limpeza, e dá à composição uma linha
+      contínua no encontro com o piso.</div>
+    </div>
+  </div>
+
+  <div class="hl-row" style="margin-top:6mm;">
+    <div class="hl" style="flex:1;">
+      <div class="t">Seis escaninhos, seis chaves</div>
+      <div class="d">Cada nicho com <b>porta e fechadura próprias</b> — a correspondência de um
+      morador não fica acessível ao outro. A <b>fenda usinada na própria porta</b> recebe cartas
+      e envelopes com o nicho fechado, sem precisar abrir. Em <b>MDF Itapuã</b>, acompanhando o
+      acabamento das portas e dos painéis.</div>
+    </div>
+  </div>
+
+  <div class="note"><b>Puxadores em cava</b> nas duas portas — usinados na própria folha, sem
+  ferragem aparente. <b>Fechadura apenas na pivotante</b>; a de correr fica livre.</div>
+
+  <div class="pfoot"><span>valvic. marcenaria</span><span>Portas · vão da escada · Flávia Moacir</span></div>
+</div>
+
+<!-- PÁGINA 2 — investimento -->
+<div class="page">
+  <div class="hd">
+    <div><div class="brand">valvic<span class="dot">.</span></div><div class="brand-sub">MARCENARIA</div></div>
+    <div class="meta"><b>Flávia Moacir</b><br>Portas + painéis · vão da escada<br>7 de agosto de 2026</div>
+  </div>
+
+  <div class="eyebrow">Investimento</div>
+  <div class="h1">Uma execução completa,<br>do corte à instalação.</div>
+
+  <div class="inv-box">
+    <div class="t">Investimento total · com desconto especial</div>
+    <div class="big">R$ 15.000</div>
+    <div class="comp">
+      <div class="r"><span>Portas e painéis do vão da escada</span><b>R$ 14.500</b></div>
+      <div class="r"><span>Nicho de escaninhos · 6 nichos com fechadura</span><b>R$ 2.450</b></div>
+      <div class="r s"><span>Subtotal</span><b>R$ 16.950</b></div>
+      <div class="r d"><span>Desconto especial <small style="opacity:.7">(11,5%)</small></span><b>− R$ 1.950</b></div>
+    </div>
+    <div class="cap">MDF Itapuã Ultra e Itapuã, rodapé de alumínio fosco de 30 mm, ferragens
+    Häfele e Rometal, fornecimento e instalação pela equipe própria Valvic.</div>
+  </div>
+
+  <div class="incl">
+    <div class="incl-t">O que está incluso</div>
+    <ul>
+      <li><b>Porta pivotante</b> em MDF Itapuã Ultra — dobradiça invisível, puxador em cava e fechadura</li>
+      <li><b>Porta de correr</b> em MDF Itapuã Ultra — sistema RO82 com duplo amortecimento, puxador em cava</li>
+      <li><b>Dois painéis fixos</b> completando os 4,45 m do vão, do piso ao teto</li>
+      <li><b>Rodapé de alumínio fosco de 30 mm</b> nas portas e nos painéis</li>
+      <li><b>Nicho de escaninhos</b> em MDF Itapuã — 6 nichos com fechadura e usinagem para correspondência</li>
+      <li>Fornecimento e instalação pela equipe própria Valvic</li>
+    </ul>
+  </div>
+
+  <div class="terms">
+    <div class="term"><div class="k">Pagamento</div><div class="v">50% + 50%</div><div class="s">Entrada na assinatura · saldo na entrega</div></div>
+    <div class="term"><div class="k">Prazo</div><div class="v">Até 45 dias</div><div class="s">Corridos, a partir da aprovação</div></div>
+    <div class="term"><div class="k">Ferragens</div><div class="v">Häfele · Rometal</div><div class="s">Dobradiça invisível · RO82 duplo amortecimento</div></div>
+  </div>
+
+  <div class="note">
+    <b>Não incluso:</b> arremates de obra civil, pintura de parede e pontos elétricos.
+    Medidas a confirmar no local.
+  </div>
+
+  <div class="pfoot"><span>valvic. marcenaria</span><span>Portas · vão da escada · Flávia Moacir · 07/08/2026</span></div>
+</div>
+
+</body></html>"""
+(P/'proposta-flavia-portas.html').write_text(HTML, encoding='utf-8')
+print('wrote proposta-flavia-portas.html', len(HTML))

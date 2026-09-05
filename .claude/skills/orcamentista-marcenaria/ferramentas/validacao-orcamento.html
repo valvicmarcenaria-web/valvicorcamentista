@@ -214,15 +214,14 @@ body.light .btn.primary{color:#fff}
      <div><label>Programador %</label><input id="p_prog" class="n" type="number" step="0.1" value="0.8" oninput="recalcDash()"></div>
      <div><label>Coordenador %</label><input id="p_coord" class="n" type="number" step="0.1" value="1" oninput="recalcDash()"></div>
      <div><label>Marceneiros %</label><input id="p_marc" class="n" type="number" step="0.1" value="2.5" oninput="recalcDash()"></div>
-     <div><label>Desg. serra/fresa %</label><input id="p_serra" class="n" type="number" step="0.1" value="0.5" oninput="recalcDash()"></div>
+     <div><label>Desg. serra/fresa %</label><input id="p_serra" class="n" type="number" step="0.1" value="0.2" oninput="recalcDash()"></div>
      <div><label>Manut. máquinas %</label><input id="p_manut" class="n" type="number" step="0.1" value="0.5" oninput="recalcDash()"></div>
-     <div><label>Logística R$</label><input id="p_log" class="n" type="number" value="0" oninput="recalcDash()"></div>
     </div>
-    <div class="hint">Comissão produção = (programador + coordenador + marceneiros) sobre o líquido.</div>
+    <div class="hint">Comissão produção = (programador + coordenador + marceneiros) sobre o líquido. Logística agora é lançada <b>por ambiente</b> (cada um carrega seu frete/entrega) — entra no Operacional.</div>
    </details>
    <details><summary>Outros</summary>
     <div class="grid g2">
-     <div><label>Margem de erro %</label><input id="p_erro" class="n" type="number" step="0.1" value="2" oninput="recalcDash()"></div>
+     <div><label>Margem de erro %</label><input id="p_erro" class="n" type="number" step="0.1" value="0.5" oninput="recalcDash()"></div>
     </div>
    </details>
   </div>
@@ -236,10 +235,12 @@ body.light .btn.primary{color:#fff}
    <h2 style="margin-bottom:8px">Serviços terceirizados <span class="mini">deste ambiente (R$) — alocados ao item, não no geral</span></h2>
    <div class="grid g3">
     <div><label>Vidraceiro</label><input id="tc_vid" class="n" type="number" value="0" oninput="setTerc('vid',this.value)"></div>
+    <div><label>Esquadria / portas de vidro</label><input id="tc_esq" class="n" type="number" value="0" oninput="setTerc('esq',this.value)"></div>
     <div><label>Serralheiro</label><input id="tc_ser" class="n" type="number" value="0" oninput="setTerc('ser',this.value)"></div>
     <div><label>Pintor</label><input id="tc_pin" class="n" type="number" value="0" oninput="setTerc('pin',this.value)"></div>
     <div><label>Estofador</label><input id="tc_est" class="n" type="number" value="0" oninput="setTerc('est',this.value)"></div>
     <div><label>Laqueamento</label><input id="tc_laq" class="n" type="number" value="0" oninput="setTerc('laq',this.value)"></div>
+    <div><label>Logística do ambiente R$</label><input id="tc_log" class="n" type="number" value="0" oninput="setTerc('log',this.value)"></div>
     <div style="display:flex;align-items:flex-end"><span class="hint" id="tcTot" style="margin:0"></span></div>
    </div>
   </div>
@@ -311,7 +312,7 @@ function askConfirm(t){return openModal(t,false);}
 
 /* ===== Estado ===== */
 let S=null;
-function blankTerc(){return {vid:0,ser:0,pin:0,est:0,laq:0};}
+function blankTerc(){return {vid:0,esq:0,ser:0,pin:0,est:0,laq:0,log:0};}
 function blankAmb(n){return {nome:n,q:{},terc:blankTerc()};}
 function normalize(){
  if(!S.lib)S.lib=defaultLib();
@@ -320,12 +321,12 @@ function normalize(){
  if(S.rodrigo===undefined)S.rodrigo="";
  if(!Array.isArray(S.duvidas))S.duvidas=[];
  S.duvidas.forEach(d=>{if(!d.para)d.para='Cliente';if(!d.cat)d.cat='material';if(!d.status)d.status='aberta';if(d.decisao===undefined)d.decisao='';});
- (S.ambientes||[]).forEach(a=>{if(!a.terc)a.terc=blankTerc();});
+ (S.ambientes||[]).forEach(a=>{if(!a.terc)a.terc=blankTerc();['esq','log'].forEach(k=>{if(a.terc[k]===undefined)a.terc[k]=0;});});
  if(S.t&&S.ambientes&&S.ambientes[0]){const g=S.t;["vid","ser","pin","est","laq"].forEach(k=>{if(g[k])S.ambientes[0].terc[k]=(S.ambientes[0].terc[k]||0)+g[k];});delete S.t;}
 }
 function defaultState(){return {
  cliente:"Camila",projeto:"Closet",versao:"001",inv:0,mcAlvo:38,
- p:{nf:4,parc:8,vend:3,rt:10,vis:250,outv:0,prog:0.8,coord:1,marc:2.5,serra:0.5,manut:0.5,log:0,erro:2},
+ p:{nf:4,parc:8,vend:3,rt:10,vis:250,outv:0,prog:0.8,coord:1,marc:2.5,serra:0.2,manut:0.5,erro:0.5},
  lib:defaultLib(),
  ambientes:[blankAmb("Roupeiro"),blankAmb("Ilha")],
  ativo:0, collapsed:{}, theme:'dark', diretrizes:"", rodrigo:"", duvidas:[]
@@ -345,9 +346,11 @@ function renderTabs(){
  document.getElementById('ambTabs').innerHTML=h;
 }
 function setAtivo(i){S.ativo=i;renderTabs();renderTerc();renderLib();}
-const TERC=["vid","ser","pin","est","laq"];
+const TERC=["vid","esq","ser","pin","est","laq"]; /* terceirizados (bucket Terceirizados) */
+const TERCALL=["vid","esq","ser","pin","est","laq","log"]; /* todos os campos por ambiente */
 function tercAmb(a){return TERC.reduce((s,k)=>s+((a.terc&&a.terc[k])||0),0);}
 function tercTotal(){return S.ambientes.reduce((s,a)=>s+tercAmb(a),0);}
+function logTotal(){return S.ambientes.reduce((s,a)=>s+((a.terc&&a.terc.log)||0),0);} /* logística por ambiente -> Operacional */
 
 /* value changes: update state + targeted totals only, no DOM rebuild */
 function setTerc(k,val){
@@ -357,7 +360,7 @@ function setTerc(k,val){
  document.getElementById('tcTot').textContent='Terceirizados deste ambiente: '+fmt(tercAmb(a));
  recalcDash();
 }
-function renderTerc(){const a=S.ambientes[S.ativo];if(!a.terc)a.terc=blankTerc();TERC.forEach(k=>{document.getElementById('tc_'+k).value=a.terc[k]||0;});document.getElementById('tcTot').textContent='Terceirizados deste ambiente: '+fmt(tercAmb(a));}
+function renderTerc(){const a=S.ambientes[S.ativo];if(!a.terc)a.terc=blankTerc();TERCALL.forEach(k=>{document.getElementById('tc_'+k).value=a.terc[k]||0;});document.getElementById('tcTot').textContent='Terceirizados deste ambiente: '+fmt(tercAmb(a));}
 
 async function addAmb(){
  const nm=await askText('Nome do ambiente:','Ambiente '+(S.ambientes.length+1));
@@ -491,7 +494,7 @@ function syncParams(){
  S.inv=n('inv');S.mcAlvo=n('mcAlvo');
  const p=S.p;
  p.nf=n('p_nf');p.parc=n('p_parc');p.vend=n('p_vend');p.rt=n('p_rt');p.vis=n('p_vis');p.outv=n('p_outv');
- p.prog=n('p_prog');p.coord=n('p_coord');p.marc=n('p_marc');p.serra=n('p_serra');p.manut=n('p_manut');p.log=n('p_log');p.erro=n('p_erro');
+ p.prog=n('p_prog');p.coord=n('p_coord');p.marc=n('p_marc');p.serra=n('p_serra');p.manut=n('p_manut');p.erro=n('p_erro');
 }
 function compute(inv){
  const p=S.p;
@@ -499,7 +502,7 @@ function compute(inv){
  const terc=tercTotal();
  const liq=inv*(1-(p.nf+p.parc)/100);
  const venda=inv*(p.nf+p.vend)/100 + liq*p.rt/100 + inv*p.parc/100 + p.vis + p.outv;
- const operac=liq*(p.prog+p.coord+p.marc)/100 + inv*(p.serra+p.manut)/100 + p.log;
+ const operac=liq*(p.prog+p.coord+p.marc)/100 + inv*(p.serra+p.manut)/100 + logTotal();
  const erro=inv*p.erro/100;
  const custo=material+terc+venda+operac+erro;
  const mc=inv-custo;const mcPct=inv>0?mc/inv*100:0;
@@ -515,7 +518,7 @@ function caixaTier(p){
 }
 function suggest(){
  const p=S.p;const material=materialTotal();const terc=tercTotal();
- const fixedR=material+terc+p.log+p.vis+p.outv;
+ const fixedR=material+terc+logTotal()+p.vis+p.outv;
  const liqF=1-(p.nf+p.parc)/100;
  const a=(p.nf+p.parc+p.vend+p.erro+p.serra+p.manut)/100;
  const b=(p.prog+p.coord+p.marc+p.rt)/100;
@@ -585,7 +588,7 @@ function boot(){
  document.getElementById('cliente').value=S.cliente;document.getElementById('projeto').value=S.projeto;document.getElementById('versao').value=S.versao;
  document.getElementById('inv').value=S.inv||0;document.getElementById('mcAlvo').value=S.mcAlvo||38;
  const p=S.p;document.getElementById('p_nf').value=p.nf;document.getElementById('p_parc').value=p.parc;document.getElementById('p_vend').value=p.vend;document.getElementById('p_rt').value=p.rt;document.getElementById('p_vis').value=p.vis;document.getElementById('p_outv').value=p.outv;
- document.getElementById('p_prog').value=p.prog;document.getElementById('p_coord').value=p.coord;document.getElementById('p_marc').value=p.marc;document.getElementById('p_serra').value=p.serra;document.getElementById('p_manut').value=p.manut;document.getElementById('p_log').value=p.log;document.getElementById('p_erro').value=p.erro;
+ document.getElementById('p_prog').value=p.prog;document.getElementById('p_coord').value=p.coord;document.getElementById('p_marc').value=p.marc;document.getElementById('p_serra').value=p.serra;document.getElementById('p_manut').value=p.manut;document.getElementById('p_erro').value=p.erro;
  document.getElementById('diretrizes').value=S.diretrizes||'';document.getElementById('rodrigo').value=S.rodrigo||'';
  applyTheme();updTag();renderTabs();renderTerc();renderDuvidas();recalc();
 }

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+@page{ size:A4; margin:13mm 15mm; }
+*{ box-sizing:border-box; }
+body{ font-family:Helvetica,Arial,sans-serif; color:#1A1A1A; font-size:10pt; line-height:1.5; }
+.serif{ font-family:Georgia,'Times New Roman',serif; }
+h1{ font-family:Georgia,serif; font-size:21pt; margin:0; }
+.eyebrow{ letter-spacing:.28em; text-transform:uppercase; font-size:7.5pt; font-weight:bold; color:#9C6B12; }
+.sub{ color:#4a463f; font-size:9.5pt; margin:2px 0 0; }
+.rule{ height:2px; width:48px; background:#C8901E; border:0; margin:10px 0 14px; }
+.internal{ background:#F6ECD3; border:1px solid #D9B25A; border-radius:3px; padding:4px 8px; font-size:8pt; color:#9C6B12; font-weight:bold; letter-spacing:.1em; display:inline-block; margin-bottom:12px; }
+h2{ font-family:Georgia,serif; font-size:13.5pt; margin:16px 0 4px; color:#1A1A1A; }
+table{ width:100%; border-collapse:collapse; margin:5px 0 8px; font-size:9pt; }
+th,td{ padding:3px 6px; text-align:left; border-bottom:1px solid #E4D8B8; }
+thead th{ background:#1A1A1A; color:#FDF6E3; font-size:7.5pt; letter-spacing:.1em; text-transform:uppercase; border:0; }
+td.r,th.r{ text-align:right; }
+.sub-row td{ background:#F6ECD3; font-weight:bold; }
+.grand td{ background:#C8901E; color:#1A1A1A; font-weight:bold; font-size:12pt; border:0; }
+.amb{ font-family:Georgia,serif; font-weight:bold; }
+.k{ color:#4a463f; }
+.two{ display:flex; gap:10mm; }
+.two>div{ flex:1; }
+ul{ margin:3px 0; padding-left:16px; }
+li{ margin:1.5px 0; font-size:9pt; color:#4a463f; }
+.foot{ margin-top:16px; border-top:1px solid #E4D8B8; padding-top:5px; font-size:7.5pt; color:#9a9080; letter-spacing:.08em; display:flex; justify-content:space-between; }
+.bl{ font-family:Georgia,serif; font-weight:bold; }
+.bl .d{ color:#C8901E; }
+.pay td{ font-size:9pt; }
+.note{ background:#F6ECD3; border:1px solid #D9B25A; border-radius:3px; padding:6px 9px; font-size:8.5pt; margin-top:10px; color:#4a463f; }
+</style></head>
+<body>
+
+<div class="eyebrow">Orçamento interno · Valvic Marcenaria</div>
+<h1 class="serif">Camila — Closet</h1>
+<p class="sub">Roupeiro em L (piso-teto) + Ilha · versão v3 (sem módulo superior, acabamento usinado) · Junho/2026</p>
+<hr class="rule">
+<span class="internal">USO INTERNO — VALIDAÇÃO POR MC · NÃO ENVIAR AO CLIENTE</span>
+
+<h2>1. Quantitativo por ambiente</h2>
+<div class="two">
+  <div>
+    <p class="amb">Roupeiro em L (piso-teto)</p>
+    <ul>
+      <li>Chapas: branco 6mm ×3 · branco 15mm ×5 · branco 18mm ×1 · cor 15mm ×4 (13 chapas)</li>
+      <li>Fita: 50 m branco + 40 m cor · filetagem 105 m (máquina)</li>
+      <li>3 portas de correr RO-65 (×3) + trilho 3 m + desempenador ×3 (piso-teto)</li>
+      <li>2 portas menores (43 cm) de giro → dobradiças Hardt ×8</li>
+      <li>Gavetas: corrediça oculta Hardt ×4 · puxador SP7000 ×6 · cava usinada 3,6 m</li>
+      <li>Acabamento USINADO (friso na CNC, dentro da margem — sem ripado)</li>
+      <li>LED 5 m + sensor · suportes ×21 · consumíveis/embalagem</li>
+      <li><b>Eliminados:</b> módulo superior, báscula/Multi, tábua de passar</li>
+    </ul>
+  </div>
+  <div>
+    <p class="amb">Ilha</p>
+    <ul>
+      <li>Chapas: cor 15mm ×2</li>
+      <li>Fita: 50 m cor · filetagem 50 m (máquina)</li>
+      <li>Corrediça oculta Hardt ×5 · puxador Enlevo (metal/couro) ×5</li>
+      <li>Tampo em vidro temperado 8 mm (0,7 m²)</li>
+      <li>Estrutura de serralheria <b>só da base</b> + logística = R$ 250</li>
+      <li><b>Eliminados:</b> gaveta especial (→ comum) e suporte de joias (bandeja)</li>
+    </ul>
+  </div>
+</div>
+
+<table>
+  <thead><tr><th>Ambiente</th><th class="r">Material (custo)</th></tr></thead>
+  <tbody>
+    <tr><td class="amb">Roupeiro em L</td><td class="r">R$ 7.562</td></tr>
+    <tr><td class="amb">Ilha</td><td class="r">R$ 2.474</td></tr>
+    <tr class="sub-row"><td>Total de material (15 chapas + fita + ferragens + LED + vidro)</td><td class="r">R$ 10.036</td></tr>
+  </tbody>
+</table>
+
+<h2>2. Composição e validação por MC%</h2>
+<table>
+  <tbody>
+    <tr><td class="k">Material (compra)</td><td class="r">R$ 10.036</td></tr>
+    <tr><td class="k">Visitas técnicas</td><td class="r">R$ 250</td></tr>
+    <tr><td class="k">Encargos s/ bruto — NF 4% · parcelamento 8% · vendedor 3% · serra/manut 1% · erro 2%</td><td class="r">R$ 4.950</td></tr>
+    <tr><td class="k">Encargos s/ líquido — comissão produção 4,3% · <b>RT 10%</b></td><td class="r">R$ 3.461</td></tr>
+    <tr><td class="k">Terceirizados</td><td class="r">R$ 0</td></tr>
+    <tr class="sub-row"><td>Custo total</td><td class="r">R$ 18.697</td></tr>
+    <tr><td class="k">Margem de contribuição (MC)</td><td class="r">R$ 8.803 · <b>32,0%</b></td></tr>
+    <tr class="grand"><td><span class="serif">Investimento (preço fechado)</span></td><td class="r"><span class="serif">R$ 27.500</span></td></tr>
+  </tbody>
+</table>
+<p class="sub">Alocação por ambiente (proporcional ao material): Roupeiro ≈ R$ 20.700 · Ilha ≈ R$ 6.800.</p>
+
+<h2>3. Condições de pagamento</h2>
+<table class="pay">
+  <tbody>
+    <tr><td class="k">30% entrada (R$ 8.250) + saldo em até 10× no cartão</td><td class="r">R$ 27.500</td></tr>
+    <tr><td class="k">50% entrada + saldo em até 8× — 3% desc.</td><td class="r">R$ 26.675</td></tr>
+    <tr><td class="k">70% entrada + saldo em até 6× — 5% desc.</td><td class="r">R$ 26.125</td></tr>
+    <tr><td class="k">70% à vista + saldo por transferência — 7% desc.</td><td class="r">R$ 25.575</td></tr>
+  </tbody>
+</table>
+
+<div class="note"><b>Notas.</b> MC fechada em <b>32%</b> · <b>RT 10%</b> do líquido (parceria) embutida. Ferragem <b>Hardt</b> (oculta + dobradiça) → garantia 5 anos. Roupeiro <b>piso-teto</b>, 2 cores (cinza + Cumaru usinado); friso usinado = tempo de CNC dentro da margem. Substitui o comparativo correr × báscula (não há mais módulo superior). Flag: cor 15 mantido em 4 chapas com portas piso-teto — se faltar, +1 chapa (~+R$ 650), confere no nesting.</div>
+
+<div class="foot"><span class="bl">valvic<span class="d">.</span> marcenaria</span><span>Camila · Closet · Orçamento v3 · uso interno</span></div>
+
+</body></html>

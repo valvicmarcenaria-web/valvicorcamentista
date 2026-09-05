@@ -1,0 +1,188 @@
+/* Valvic · CSS de APRESENTAÇÃO — A4 paisagem, padrão premium.
+   Referência de layout: "APRESENTAÇÃO — JUNIOR LAGOA SANTA OFICIAL" (Drive).
+   Deck conduzido por imagem, uma abertura por ambiente, tipografia editorial.
+   A paleta é a mesma de css-proposta.css — a casa tem UMA identidade. */
+:root{
+  --ink:#1A1714; --soft:#5C564C; --mut:#918A7C; --line:#E3DDD1; --hair:#F0EBE1;
+  --paper:#fff; --cream:#FAF7F1; --sand:#F1EBDF;
+  --gold:#9C7A3C; --gold-lt:#C6A567; --gold-pale:#F5EEDF; --deep:#241F1B;
+  --deeper:#15120F;
+}
+@page{size:A4 landscape;margin:0;}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;
+     color:var(--ink);font-size:9.2pt;line-height:1.6;background:#fff;}
+.serif{font-family:'Cormorant Garamond','Liberation Serif',Georgia,serif;}
+
+.slide{position:relative;width:297mm;height:210mm;overflow:hidden;
+       page-break-after:always;background:var(--paper);}
+.slide:last-of-type{page-break-after:avoid;}
+.pad{padding:15mm 18mm 12mm;height:100%;display:flex;flex-direction:column;}
+
+.eyebrow{font-size:6.9pt;letter-spacing:.32em;text-transform:uppercase;
+         color:var(--gold);font-weight:600;}
+.rule{height:1.5px;width:38px;background:var(--gold);margin:6px 0 9px;}
+.h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:30pt;
+    line-height:1.08;font-weight:500;letter-spacing:-.012em;}
+.h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:22pt;
+    line-height:1.12;font-weight:500;letter-spacing:-.01em;}
+.lead{color:var(--soft);font-size:9.4pt;max-width:135mm;}
+/* nas páginas de ambiente o rodapé vive SÓ na coluna de texto — sobre a
+   imagem ele ficaria ilegível e cortaria a foto ao meio. */
+.foot.r{left:186mm;}
+.foot{position:absolute;left:18mm;right:18mm;bottom:7mm;display:flex;
+      justify-content:space-between;font-size:6.4pt;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--mut);
+      border-top:1px solid var(--hair);padding-top:3mm;}
+
+/* ── capa e divisórias escuras ─────────────────────────────────────────── */
+.dark{background:var(--deep);color:#F6F1E7;}
+.dark .eyebrow{color:var(--gold-lt);}
+.dark .rule{background:var(--gold-lt);width:52px;height:2px;}
+.dark .foot{color:#8E8578;border-top-color:rgba(255,255,255,.13);}
+.cv{display:grid;grid-template-columns:1.02fr 1.28fr;height:100%;}
+.cv-l{padding:17mm 12mm 12mm 18mm;display:flex;flex-direction:column;}
+.cv-brand{font-size:8pt;letter-spacing:.44em;text-transform:uppercase;
+          color:var(--gold-lt);font-weight:600;}
+.cv-nome{font-family:'Cormorant Garamond',Georgia,serif;font-size:47pt;
+         line-height:1.02;font-weight:500;margin-top:4mm;letter-spacing:-.015em;}
+.cv-s{font-size:11pt;color:#CFC6B4;margin-top:6mm;font-weight:300;line-height:1.5;}
+.cv-meta{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:5mm 6mm;
+         border-top:1px solid rgba(255,255,255,.15);padding-top:5mm;}
+.cv-meta .k{font-size:6.4pt;letter-spacing:.22em;text-transform:uppercase;
+            color:var(--gold-lt);font-weight:600;}
+.cv-meta .v{font-size:9.6pt;color:#EDE6D9;margin-top:1.4mm;}
+.cv-r{position:relative;overflow:hidden;}
+.cv-r img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* ── abertura de ambiente: imagem grande + lista de móveis ─────────────── */
+.amb{display:grid;grid-template-columns:1.42fr 1fr;height:100%;}
+.amb-img{position:relative;overflow:hidden;background:var(--sand);}
+.amb-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.amb-img .tag{position:absolute;left:0;bottom:0;background:var(--deep);
+  color:var(--gold-lt);font-size:6.4pt;letter-spacing:.28em;text-transform:uppercase;
+  padding:3mm 6mm;font-weight:600;}
+.amb-txt{padding:15mm 15mm 12mm 12mm;display:flex;flex-direction:column;}
+.amb-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:15pt;
+       color:var(--gold-lt);line-height:1;}
+.mv{padding:2.15mm 0;border-bottom:1px solid var(--hair);display:flex;gap:3.4mm;
+    align-items:baseline;}
+.mv:last-child{border-bottom:none;}
+.mv .b{width:4px;height:4px;border-radius:50%;background:var(--gold-lt);
+       flex:none;transform:translateY(-1px);}
+.mv .t{font-size:8.9pt;font-weight:600;letter-spacing:-.004em;}
+.mv .d{color:var(--soft);font-size:8pt;font-weight:400;}
+.amb-nota{margin-top:7mm;background:var(--cream);border-left:2.5px solid var(--gold);
+          padding:3.2mm 4.4mm;}
+.amb-nota .t{font-size:6.6pt;letter-spacing:.2em;text-transform:uppercase;
+             color:var(--gold);font-weight:600;}
+.amb-nota p{color:var(--soft);font-size:8.2pt;margin:1.4mm 0 0;}
+
+/* ── mosaicos ──────────────────────────────────────────────────────────── */
+.mos{display:grid;gap:3mm;flex:1;min-height:0;}
+.mos img{width:100%;height:100%;object-fit:cover;display:block;}
+.mos figure{margin:0;position:relative;overflow:hidden;background:var(--sand);}
+.mos figcaption{position:absolute;left:0;bottom:0;right:0;
+  background:linear-gradient(transparent,rgba(20,17,14,.82));color:#F6F1E7;
+  font-size:6.6pt;letter-spacing:.2em;text-transform:uppercase;
+  padding:9mm 3.5mm 2.6mm;font-weight:600;}
+
+/* ── frentes de fornecimento ───────────────────────────────────────────── */
+.fr{display:grid;grid-template-columns:repeat(4,1fr);gap:4mm;margin-top:5mm;}
+.fr .c{border:1px solid var(--line);border-radius:2px;padding:4mm 4.4mm;
+       background:var(--paper);}
+.fr .n{font-family:'Cormorant Garamond',Georgia,serif;font-size:17pt;
+       color:var(--gold-lt);line-height:1;}
+.fr .t{font-size:9.2pt;font-weight:700;margin-top:2mm;}
+.fr .d{color:var(--soft);font-size:7.9pt;margin-top:1.4mm;line-height:1.48;}
+
+/* ── garantias ─────────────────────────────────────────────────────────── */
+.gar{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm;margin-top:6mm;
+     flex:1;min-height:0;}
+.gar .c{border:1px solid var(--line);border-radius:2px;padding:6mm 6mm 5mm;
+        display:flex;flex-direction:column;background:var(--paper);}
+.gar .c.hi{background:var(--deep);border-color:var(--deep);color:#F6F1E7;
+           box-shadow:0 3mm 9mm rgba(26,23,20,.14);}
+.gar .anos{font-family:'Cormorant Garamond',Georgia,serif;font-size:52pt;
+           line-height:.86;color:var(--gold);font-weight:500;}
+.gar .c.hi .anos{color:var(--gold-lt);}
+.gar .unid{font-size:7.4pt;letter-spacing:.28em;text-transform:uppercase;
+           color:var(--mut);font-weight:600;margin-top:2mm;}
+.gar .c.hi .unid{color:var(--gold-lt);}
+.gar .nm{font-size:11.5pt;font-weight:700;margin-top:4mm;}
+.gar .x{color:var(--soft);font-size:8.2pt;margin-top:2mm;}
+.gar .c.hi .x{color:#CFC6B4;}
+.gar .l{margin-top:auto;padding-top:4mm;border-top:1px solid var(--hair);}
+.gar .c.hi .l{border-top-color:rgba(255,255,255,.15);}
+.gar .l .k{font-size:6.3pt;letter-spacing:.2em;text-transform:uppercase;
+           color:var(--mut);font-weight:600;margin-top:2.4mm;}
+.gar .c.hi .l .k{color:var(--gold-lt);}
+.gar .l .v{font-size:8.2pt;margin-top:.6mm;}
+.selo{position:absolute;top:0;right:0;background:var(--gold);color:#fff;
+      font-size:6.2pt;letter-spacing:.24em;text-transform:uppercase;
+      padding:1.8mm 4mm;font-weight:700;}
+
+/* ── investimento ──────────────────────────────────────────────────────── */
+.inv{width:100%;border-collapse:collapse;}
+.inv th{font-size:6.6pt;letter-spacing:.18em;text-transform:uppercase;
+        color:var(--mut);font-weight:600;text-align:right;
+        padding:0 0 2.4mm;border-bottom:1px solid var(--line);}
+.inv th.l{text-align:left;}
+.inv td{padding:2.05mm 0;border-bottom:1px solid var(--hair);text-align:right;
+        font-variant-numeric:tabular-nums;font-size:9.4pt;}
+.inv td.l{text-align:left;font-size:9.2pt;}
+.inv td.hi,.inv th.hi{background:var(--gold-pale);padding-right:4mm;padding-left:4mm;}
+.inv td.hi{font-weight:700;}
+.inv tr.tot td{border-bottom:none;border-top:1.5px solid var(--ink);
+               font-size:13.5pt;font-weight:700;padding-top:3mm;}
+.inv tr.tot td.l{font-size:7.4pt;letter-spacing:.2em;text-transform:uppercase;
+                 font-weight:600;color:var(--mut);}
+.box{background:var(--cream);border-left:2.5px solid var(--gold);
+     padding:3.6mm 5mm;margin-top:4mm;}
+.box .t{font-size:6.8pt;letter-spacing:.2em;text-transform:uppercase;
+        color:var(--gold);font-weight:600;}
+.box p{color:var(--soft);font-size:8.5pt;margin:1.6mm 0 0;}
+
+/* ── condições ─────────────────────────────────────────────────────────── */
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8mm;margin-top:6mm;flex:1;}
+.term{padding:2.8mm 0;border-bottom:1px solid var(--hair);}
+.term:last-child{border-bottom:none;}
+.term .k{font-size:6.4pt;letter-spacing:.2em;text-transform:uppercase;
+         color:var(--gold);font-weight:600;}
+.term .v{font-size:9.2pt;margin-top:1mm;}
+.term .s{color:var(--soft);font-size:7.9pt;margin-top:.7mm;line-height:1.46;}
+.pay td{padding:2.1mm 0;border-bottom:1px solid var(--hair);font-size:8.4pt;}
+.pay td.d{text-align:right;font-weight:700;color:var(--gold);
+          font-variant-numeric:tabular-nums;}
+.fora li{margin-bottom:2.6mm;list-style:none;}
+.fora ul{margin:0;padding:0;}
+.fora .k{font-size:8.6pt;font-weight:700;}
+.fora .v{color:var(--soft);font-size:7.8pt;margin-top:.5mm;line-height:1.45;}
+.sig{margin-top:auto;padding-top:7mm;display:grid;grid-template-columns:1fr 1fr;gap:16mm;}
+.sig .ln{border-top:1px solid var(--ink);padding-top:2.4mm;font-size:8.4pt;
+         color:var(--soft);}
+
+/* ── abertura de ambiente, variante LARGA ──────────────────────────────────
+   Para móveis horizontais e longos — um painel de parede inteira, um rack de
+   três metros e meio. Recortar um render panorâmico numa coluna vertical joga
+   fora justamente o que interessa: o comprimento. Aqui a imagem ocupa uma
+   faixa de largura total e a lista de móveis desce em duas colunas. */
+.ambw{display:flex;flex-direction:column;height:100%;}
+.ambw .band{position:relative;overflow:hidden;background:var(--sand);
+            height:97mm;flex:none;}
+.ambw .band img{width:100%;height:100%;object-fit:cover;display:block;}
+.ambw .band .tag{position:absolute;left:0;bottom:0;background:var(--deep);
+  color:var(--gold-lt);font-size:6.4pt;letter-spacing:.28em;text-transform:uppercase;
+  padding:3mm 6mm;font-weight:600;}
+.ambw .low{padding:8mm 18mm 12mm;display:grid;grid-template-columns:1.5fr 1fr;
+           gap:11mm;flex:1;min-height:0;}
+.ambw .low .mv .t{font-size:8.6pt;}
+.ambw .low .mv .d{font-size:7.8pt;}
+
+/* ── variante EMOLDURADA ───────────────────────────────────────────────────
+   Quando o render de origem é pequeno, esticá-lo para sangrar a página só
+   mostra o pixel. Melhor apresentá-lo emoldurado, no tamanho em que ainda é
+   nítido, sobre o campo areia. */
+.amb-img.fit{display:flex;background:var(--sand);}
+.amb-img.fit img{width:auto;height:auto;max-width:76%;max-height:56%;margin:auto;
+                 object-fit:contain;box-shadow:0 3mm 10mm rgba(26,23,20,.20);}

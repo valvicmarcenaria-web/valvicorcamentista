@@ -1,0 +1,2528 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
+<title>Checklist de Modulação — Kênia & Fábio</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;color:#2b2b2b;margin:0;background:#eef0ee;font-size:13px}
+.bar{position:sticky;top:0;background:#1b3a2b;color:#fff;display:flex;gap:10px;align-items:center;padding:10px 16px;z-index:20}
+.bar b{font-size:15px;letter-spacing:1px}.bar .sp{flex:1}
+.bar button{background:#c9a14a;color:#1b3a2b;border:0;border-radius:6px;padding:8px 14px;font-weight:bold;cursor:pointer}
+.wrap{padding:18px;max-width:1180px;margin:0 auto}
+.head{background:#fff;border:1px solid #e0e0e0;border-radius:10px;padding:16px 18px;margin-bottom:16px}
+.head h1{margin:0;color:#1b3a2b;font-size:20px}
+.head .meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:10px}
+.head .meta label{font-size:12px;color:#555}
+.head .meta input{border:0;border-bottom:1px solid #999;padding:4px;min-width:170px;font-size:13px}
+.head .note{font-size:12px;color:#666;margin-top:10px;line-height:1.5}
+h2.amb{color:#1b3a2b;font-size:15px;margin:22px 0 10px;padding:7px 12px;background:#efe7cf;border-left:4px solid #c9a14a;border-radius:4px}
+h2.amb span{color:#9a8650;font-weight:normal;font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.card{background:#fff;border:1px solid #e2e2e2;border-radius:10px;padding:14px;break-inside:avoid}
+.chead{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;border-bottom:1px solid #eee;padding-bottom:8px;margin-bottom:10px}
+.chead .code{font-weight:bold;color:#fff;background:#1b3a2b;border-radius:5px;padding:2px 8px;font-size:12px}
+.chead .mv{flex:1;min-width:140px;font-size:12px;color:#333}
+.chead .cor{font-size:10.5px;color:#7a5a18;white-space:nowrap}
+.dims{position:relative;background:#fcfbf8;border:1px solid #eee;border-radius:8px;padding:12px 12px 6px;margin-bottom:10px}
+.dims-title{font-weight:bold;color:#1b3a2b;font-size:13px;margin-bottom:4px}
+.cube{width:96px;height:88px;display:block;margin:0 auto 6px}
+.dim{margin-bottom:10px}
+.dlab{font-size:12px;color:#444;margin-bottom:4px}
+.dlab .i{color:#2d6cdf;font-size:12px}
+.dfield{display:flex;align-items:center;gap:8px;border:1px solid #cfcfcf;border-radius:9px;padding:6px 12px;background:#fff}
+.dfield:focus-within{border-color:#c9a14a;box-shadow:0 0 0 2px rgba(201,161,74,.15)}
+.badge{width:26px;height:26px;border-radius:50%;color:#fff;font-weight:bold;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dnum{flex:1;border:0;text-align:center;font-size:16px;color:#333;outline:none;background:transparent}
+.mm{color:#888;font-size:12px}
+.extra{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.extra label{font-size:10.5px;color:#666;display:flex;flex-direction:column;gap:3px}
+.extra label.full{grid-column:1/3}
+.extra .x{border:0;border-bottom:1px solid #c7c7c7;padding:4px 2px;font-size:12px;background:#fcfbf7}
+.extra .x:focus{outline:none;border-bottom:1px solid #c9a14a;background:#fff7e6}
+@media print{
+ .bar{display:none} @page{size:A4;margin:9mm} body{background:#fff;font-size:11px}
+ .wrap{padding:0;max-width:none} .grid{grid-template-columns:1fr 1fr;gap:8px}
+ .card{border:1px solid #bbb} h2.amb,.chead .code{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ .badge{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style></head><body>
+<div class="bar"><b>VALVIC · Checklist de Modulação</b><span class="sp"></span>
+<button onclick="window.print()">Imprimir / PDF</button>
+<button onclick="exportCSV()">Exportar CSV</button>
+<button onclick="if(confirm('Limpar tudo?')){localStorage.removeItem(SK);location.reload()}">Limpar</button></div>
+<div class="wrap">
+<div class="head"><h1>Checklist de Modulação dos Armários — Kênia &amp; Fábio</h1>
+<div style="margin-top:4px;color:#555">Casa Completa · Arquiteta Inédita / Flávia · códigos M## conforme projeto.</div>
+<div class="meta"><label>Programador: <input data-k="_resp"></label><label>Data: <input data-k="_data"></label><label>Revisão: <input data-k="_rev"></label></div>
+<div class="note">Preencha as <b>Dimensões (mm)</b> de cada módulo — <b>L</b> Largura, <b>A</b> Altura, <b>P</b> Profundidade. Depois <b>Nº de módulos</b> (divisões/caixas), <b>Espessuras</b> (estrutura/porta/fundo, ex.: 15/18/6), <b>Abertura</b> e <b>Ferragem</b>. Salva automaticamente no navegador; use <b>Exportar CSV</b> pra reaproveitar os dados.</div></div>
+<h2 class="amb">I.S. Subsolo <span>· 2 módulo(s)</span></h2><div class="grid"><div class="card">
+  <div class="chead"><span class="code">M01</span><span class="mv">Armário sob bancada — 3 gav (1 falsa) + 3 portas de giro</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M01-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M01-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M01-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M01-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M01-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M01-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M01-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M01-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M02</span><span class="mv">Porta de correr</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M02-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M02-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M02-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M02-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M02-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M02-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M02-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M02-obs" placeholder=""></label>
+  </div>
+</div></div>
+<h2 class="amb">Quarto Hóspedes <span>· 4 módulo(s)</span></h2><div class="grid"><div class="card">
+  <div class="chead"><span class="code">M03</span><span class="mv">Painel de TV c/ porta de correr</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M03-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M03-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M03-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M03-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M03-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M03-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M03-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M03-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M04</span><span class="mv">Rack suspenso, curva R35</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M04-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M04-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M04-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M04-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M04-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M04-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M04-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M04-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M05</span><span class="mv">Guarda-roupa 3 portas correr (meio espelho prata), slim preto H30</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M05-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M05-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M05-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M05-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M05-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M05-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M05-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M05-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M06</span><span class="mv">Cabeceira, frisos 1×1</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M06-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M06-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M06-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M06-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M06-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M06-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M06-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M06-obs" placeholder=""></label>
+  </div>
+</div></div>
+<h2 class="amb">Lavanderia <span>· 5 módulo(s)</span></h2><div class="grid"><div class="card">
+  <div class="chead"><span class="code">M07</span><span class="mv">Armário sob bancada — 7 gavetões + 2 giro + 1 gav (vão p/ máquina)</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M07-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M07-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M07-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M07-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M07-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M07-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M07-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M07-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M08</span><span class="mv">Armário alto — 6 giro + 6 básculas + 3 prat. curvas</span><span class="cor">Areia + Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M08-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M08-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M08-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M08-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M08-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M08-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M08-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M08-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M09</span><span class="mv">Armário sob bancada — cabideiro retrátil + 2 gavetões</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M09-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M09-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M09-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M09-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M09-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M09-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M09-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M09-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M10</span><span class="mv">Armário alto — 2 nichos + arara cromada</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M10-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M10-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M10-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M10-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M10-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M10-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M10-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M10-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M11</span><span class="mv">Armário piso-teto — 3 portas correr (trilho), slim preto H30</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M11-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M11-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M11-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M11-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M11-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M11-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M11-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M11-obs" placeholder=""></label>
+  </div>
+</div></div>
+<h2 class="amb">Despensa <span>· 1 módulo(s)</span></h2><div class="grid"><div class="card">
+  <div class="chead"><span class="code">M12</span><span class="mv">6 prateleiras (despensa)</span><span class="cor">Branco TX</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M12-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M12-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M12-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M12-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M12-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M12-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M12-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M12-obs" placeholder=""></label>
+  </div>
+</div></div>
+<h2 class="amb">Sala <span>· 5 módulo(s)</span></h2><div class="grid"><div class="card">
+  <div class="chead"><span class="code">M13</span><span class="mv">Armário sob escada — 4 portas de giro</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M13-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M13-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M13-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M13-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M13-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M13-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M13-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M13-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M14</span><span class="mv">Painel c/ porta giro mimetizada, tranca+chave, recorte elevador</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M14-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M14-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M14-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M14-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M14-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M14-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M14-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M14-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M15</span><span class="mv">Painel de TV (piso-teto)</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M15-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M15-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M15-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M15-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M15-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M15-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M15-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M15-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M16</span><span class="mv">Rack ripado curva R35, portas ripadas, passante, LED 3000K</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M16-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M16-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M16-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M16-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M16-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M16-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M16-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M16-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M17</span><span class="mv">Rack ripado R35 + 4 prat. curvas metalon champagne, LED 3000K</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M17-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M17-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M17-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M17-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M17-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M17-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M17-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M17-obs" placeholder=""></label>
+  </div>
+</div></div>
+<h2 class="amb">Cozinha <span>· 6 módulo(s)</span></h2><div class="grid"><div class="card">
+  <div class="chead"><span class="code">M18</span><span class="mv">Painel/forro fixo no gesso, LED embutido</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M18-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M18-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M18-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M18-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M18-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M18-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M18-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M18-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M19</span><span class="mv">Armário-ilha — gavetão lixeira + 2 giro + gavetas + gav tempero</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M19-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M19-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M19-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M19-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M19-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M19-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M19-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M19-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M20</span><span class="mv">Torre eletros — 10 giro + báscula 4 vidro reflecta bronze</span><span class="cor">Areia + Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M20-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M20-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M20-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M20-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M20-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M20-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M20-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M20-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M21</span><span class="mv">Piso-teto — 7 giro + cristaleira vidro reflecta bronze, prat. LED</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M21-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M21-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M21-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M21-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M21-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M21-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M21-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M21-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M55</span><span class="mv">Armário-ilha — 4 giro + 4 gav + 4 gavetões</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M55-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M55-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M55-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M55-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M55-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M55-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M55-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M55-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M68</span><span class="mv">Mesa — bordas curvas</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M68-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M68-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M68-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M68-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M68-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M68-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M68-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M68-obs" placeholder=""></label>
+  </div>
+</div></div>
+<h2 class="amb">Gourmet <span>· 3 módulo(s)</span></h2><div class="grid"><div class="card">
+  <div class="chead"><span class="code">M22</span><span class="mv">Armário sob bancada — 5 giro + 4 gav + gav porta-espetos</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M22-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M22-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M22-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M22-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M22-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M22-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M22-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M22-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M23</span><span class="mv">Prateleira iluminada</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M23-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M23-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M23-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M23-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M23-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M23-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M23-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M23-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M24</span><span class="mv">Armário alto — portas ripadas, LED inferior</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M24-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M24-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M24-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M24-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M24-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M24-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M24-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M24-obs" placeholder=""></label>
+  </div>
+</div></div>
+<h2 class="amb">Lavabo Piscina <span>· 1 módulo(s)</span></h2><div class="grid"><div class="card">
+  <div class="chead"><span class="code">M25</span><span class="mv">Prateleira</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M25-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M25-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M25-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M25-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M25-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M25-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M25-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M25-obs" placeholder=""></label>
+  </div>
+</div></div>
+<h2 class="amb">Circulação <span>· 2 módulo(s)</span></h2><div class="grid"><div class="card">
+  <div class="chead"><span class="code">M26</span><span class="mv">Painel c/ porta giro mimetizada, recorte elevador, friso 1×1</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M26-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M26-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M26-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M26-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M26-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M26-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M26-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M26-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M27</span><span class="mv">Rack ripado curva R20, portas ripadas, passante</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M27-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M27-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M27-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M27-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M27-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M27-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M27-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M27-obs" placeholder=""></label>
+  </div>
+</div></div>
+<h2 class="amb">Rouparia <span>· 1 módulo(s)</span></h2><div class="grid"><div class="card">
+  <div class="chead"><span class="code">M28</span><span class="mv">Armário — 4 portas giro + nicho-cofre tranca+chave</span><span class="cor">Branco TX</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M28-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M28-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M28-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M28-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M28-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M28-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M28-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M28-obs" placeholder=""></label>
+  </div>
+</div></div>
+<h2 class="amb">Semissuíte <span>· 2 módulo(s)</span></h2><div class="grid"><div class="card">
+  <div class="chead"><span class="code">M35</span><span class="mv">Armário sob bancada — 3 gav (1 falsa) + 3 giro</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M35-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M35-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M35-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M35-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M35-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M35-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M35-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M35-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M36</span><span class="mv">Espelheira c/ armário — 2 giro espelhadas + 2 fixas, LED 3000K</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M36-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M36-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M36-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M36-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M36-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M36-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M36-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M36-obs" placeholder=""></label>
+  </div>
+</div></div>
+<h2 class="amb">Suíte 03 <span>· 6 módulo(s)</span></h2><div class="grid"><div class="card">
+  <div class="chead"><span class="code">M29</span><span class="mv">Guarda-roupa 3 portas correr (meio espelho prata), slim preto</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M29-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M29-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M29-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M29-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M29-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M29-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M29-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M29-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M30</span><span class="mv">Cabeceira curva, LED 3000K</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M30-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M30-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M30-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M30-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M30-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M30-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M30-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M30-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M31</span><span class="mv">Sapateira — 6 giro + 6 gavetas</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M31-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M31-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M31-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M31-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M31-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M31-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M31-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M31-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M32</span><span class="mv">Painel c/ espelho película jateada, base MDF</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M32-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M32-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M32-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M32-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M32-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M32-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M32-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M32-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M33</span><span class="mv">Escrivaninha pé curvo, caixa de tomada</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M33-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M33-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M33-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M33-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M33-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M33-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M33-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M33-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M34</span><span class="mv">Painel porta correr mimetizada + bandeira</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M34-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M34-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M34-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M34-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M34-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M34-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M34-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M34-obs" placeholder=""></label>
+  </div>
+</div></div>
+<h2 class="amb">Suíte 02 <span>· 6 módulo(s)</span></h2><div class="grid"><div class="card">
+  <div class="chead"><span class="code">M37</span><span class="mv">Guarda-roupa 3 portas correr (meio espelho prata), slim preto</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M37-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M37-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M37-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M37-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M37-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M37-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M37-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M37-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M38</span><span class="mv">Cabeceira curva, LED 3000K</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M38-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M38-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M38-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M38-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M38-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M38-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M38-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M38-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M39</span><span class="mv">Sapateira — 6 giro + 6 gavetas</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M39-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M39-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M39-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M39-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M39-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M39-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M39-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M39-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M40</span><span class="mv">Painel c/ espelho película jateada</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M40-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M40-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M40-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M40-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M40-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M40-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M40-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M40-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M41</span><span class="mv">Escrivaninha pé curvo, caixa de tomada</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M41-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M41-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M41-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M41-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M41-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M41-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M41-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M41-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M42</span><span class="mv">Painel porta correr mimetizada + bandeira</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M42-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M42-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M42-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M42-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M42-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M42-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M42-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M42-obs" placeholder=""></label>
+  </div>
+</div></div>
+<h2 class="amb">Suíte 01 (Infantil) <span>· 8 módulo(s)</span></h2><div class="grid"><div class="card">
+  <div class="chead"><span class="code">M43</span><span class="mv">Guarda-roupa 3 portas correr (meio espelho prata), slim preto</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M43-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M43-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M43-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M43-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M43-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M43-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M43-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M43-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M44</span><span class="mv">Cabeceira em "U", LED 3000K</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M44-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M44-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M44-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M44-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M44-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M44-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M44-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M44-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M45</span><span class="mv">Armário tampo em L — prat + 3 gav</span><span class="cor">Azul Profundo + Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M45-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M45-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M45-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M45-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M45-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M45-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M45-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M45-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M46</span><span class="mv">4 baús de brinquedo c/ rodízios</span><span class="cor">Azul Profundo + Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M46-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M46-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M46-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M46-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M46-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M46-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M46-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M46-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M47</span><span class="mv">Escrivaninha 3 gav + armário 2 giro, caixa de tomada</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M47-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M47-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M47-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M47-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M47-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M47-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M47-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M47-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M48</span><span class="mv">Estante metalon preto — 3 prat. chanfradas, LED 3000K</span><span class="cor">Azul Profundo</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M48-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M48-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M48-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M48-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M48-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M48-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M48-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M48-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M49</span><span class="mv">Mesa</span><span class="cor">Azul Profundo</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M49-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M49-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M49-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M49-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M49-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M49-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M49-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M49-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M50</span><span class="mv">Painel porta correr mimetizada + bandeira, tranca+chave</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M50-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M50-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M50-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M50-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M50-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M50-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M50-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M50-obs" placeholder=""></label>
+  </div>
+</div></div>
+<h2 class="amb">I.S. Suíte 01 <span>· 2 módulo(s)</span></h2><div class="grid"><div class="card">
+  <div class="chead"><span class="code">M51</span><span class="mv">Prateleira c/ LED embutido</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M51-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M51-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M51-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M51-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M51-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M51-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M51-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M51-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M52</span><span class="mv">Armário sob bancada — 3 gav (1 falsa) + 3 gavetões</span><span class="cor">Azul Profundo + Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M52-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M52-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M52-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M52-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M52-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M52-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M52-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M52-obs" placeholder=""></label>
+  </div>
+</div></div>
+<h2 class="amb">Banho Suíte 01 <span>· 1 módulo(s)</span></h2><div class="grid"><div class="card">
+  <div class="chead"><span class="code">M66</span><span class="mv">Espelho cristal, moldura preta, LED frontal 4000K</span><span class="cor">—</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M66-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M66-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M66-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M66-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M66-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M66-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M66-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M66-obs" placeholder=""></label>
+  </div>
+</div></div>
+<h2 class="amb">Banho Master <span>· 2 módulo(s)</span></h2><div class="grid"><div class="card">
+  <div class="chead"><span class="code">M53</span><span class="mv">Armário porta espelho prata, quadro metalon 2×2 champagne, LED</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M53-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M53-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M53-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M53-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M53-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M53-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M53-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M53-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M54</span><span class="mv">Armário sob bancada portas ripadas — 6 gav + 4 giro</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M54-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M54-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M54-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M54-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M54-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M54-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M54-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M54-obs" placeholder=""></label>
+  </div>
+</div></div>
+<h2 class="amb">Suíte Master <span>· 11 módulo(s)</span></h2><div class="grid"><div class="card">
+  <div class="chead"><span class="code">M56</span><span class="mv">Painel curvo ripado 2×2, espelho jateado LED frontal</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M56-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M56-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M56-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M56-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M56-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M56-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M56-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M56-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M57</span><span class="mv">Escrivaninha 2 gav, passante</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M57-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M57-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M57-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M57-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M57-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M57-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M57-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M57-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M58</span><span class="mv">Closet piso-teto — 3 correr vidro reflecta bronze + sapateiras</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M58-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M58-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M58-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M58-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M58-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M58-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M58-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M58-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M59</span><span class="mv">Closet piso-teto — 3 correr reflecta bronze, calceiro + 2 araras</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M59-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M59-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M59-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M59-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M59-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M59-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M59-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M59-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M60</span><span class="mv">Closet piso-teto — 3 correr reflecta bronze, 2 gav calceiro + 2 araras</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M60-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M60-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M60-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M60-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M60-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M60-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M60-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M60-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M61</span><span class="mv">Painel de TV em L, frisos + moldura bronze</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M61-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M61-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M61-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M61-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M61-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M61-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M61-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M61-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M62</span><span class="mv">Rack curva R20, 5 portas giro, passante</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M62-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M62-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M62-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M62-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M62-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M62-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M62-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M62-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M63</span><span class="mv">Painel ripado 2×2</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M63-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M63-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M63-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M63-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M63-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M63-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M63-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M63-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M64</span><span class="mv">Mesa de cabeceira borda R5, 1 gav passante, caixa tomada</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M64-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M64-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M64-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M64-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M64-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M64-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M64-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M64-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M65</span><span class="mv">Mesa de cabeceira borda R5, 1 gav passante, caixa tomada</span><span class="cor">Itapuã</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M65-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M65-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M65-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M65-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M65-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M65-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M65-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M65-obs" placeholder=""></label>
+  </div>
+</div>
+<div class="card">
+  <div class="chead"><span class="code">M67</span><span class="mv">Painel piso-teto c/ porta de correr</span><span class="cor">Areia</span></div>
+  <div class="dims">
+    <div class="dims-title">Dimensões (mm)</div>
+    <svg class="cube" viewBox="0 0 120 110">
+<polygon points="20,38 60,22 100,38 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="20,38 20,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<polygon points="100,38 100,86 60,102 60,54" fill="none" stroke="#9b9b9b" stroke-width="1.2"/>
+<text x="38" y="22" fill="#8e2f8e" font-size="9">L</text>
+<text x="9" y="64" fill="#2e9e5b" font-size="9">A</text>
+<text x="104" y="50" fill="#9c6f1e" font-size="9">P</text>
+</svg>
+    <div class="dim">
+  <div class="dlab">Largura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#8e2f8e">L</span>
+  <input class="dnum" data-k="M67-larg" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Altura: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#2e9e5b">A</span>
+  <input class="dnum" data-k="M67-alt" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+    <div class="dim">
+  <div class="dlab">Profundidade: <span class="i">&#9432;</span></div>
+  <div class="dfield"><span class="badge" style="background:#9c6f1e">P</span>
+  <input class="dnum" data-k="M67-prof" inputmode="numeric" placeholder="0"><span class="mm">mm</span></div>
+</div>
+  </div>
+  <div class="extra">
+    <label>Nº de módulos<input class="x" data-k="M67-nmod" placeholder="ex.: 2"></label>
+    <label>Espessuras (estr/porta/fundo)<input class="x" data-k="M67-esp" placeholder="ex.: 15/18/6"></label>
+    <label>Abertura<input class="x" data-k="M67-abert" placeholder="giro/correr/báscula/gaveta"></label>
+    <label>Ferragem<input class="x" data-k="M67-ferr" placeholder="dobradiça/corrediça…"></label>
+    <label class="full">Observações de modulação<input class="x" data-k="M67-obs" placeholder=""></label>
+  </div>
+</div></div>
+</div>
+<script>
+const SK='valvic_modulacao_kf';
+let S; try{S=JSON.parse(localStorage.getItem(SK)||'{}')}catch(e){S={}}
+function save(){localStorage.setItem(SK,JSON.stringify(S))}
+document.querySelectorAll('input[data-k]').forEach(el=>{const k=el.dataset.k; if(S[k]!=null)el.value=S[k]; el.addEventListener('input',()=>{S[k]=el.value;save()});});
+function exportCSV(){
+ const rows=[['Ambiente','M##','Móvel','Cor','Largura(mm)','Altura(mm)','Profundidade(mm)','Nº mód','Espessuras','Abertura','Ferragem','Obs']];
+ let amb='';
+ document.querySelectorAll('.wrap > *').forEach(el=>{
+   if(el.tagName==='H2'){amb=el.firstChild.textContent.trim();return}
+ });
+ document.querySelectorAll('h2.amb').forEach(h=>{
+   const a=h.firstChild.textContent.trim(); let n=h.nextElementSibling;
+   n.querySelectorAll('.card').forEach(c=>{
+     const code=c.querySelector('.code').textContent, mv=c.querySelector('.mv').textContent, cor=c.querySelector('.cor').textContent;
+     const g=k=>{const i=c.querySelector('[data-k="'+code+'-'+k+'"]');return i?i.value:''};
+     rows.push([a,code,mv,cor,g('larg'),g('alt'),g('prof'),g('nmod'),g('esp'),g('abert'),g('ferr'),g('obs')]);
+   });
+ });
+ const csv=rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n');
+ const b=new Blob(['\ufeff'+csv],{type:'text/csv'});const u=URL.createObjectURL(b);
+ const a=document.createElement('a');a.href=u;a.download='modulacao_kenia_fabio.csv';a.click();
+}
+</script></body></html>

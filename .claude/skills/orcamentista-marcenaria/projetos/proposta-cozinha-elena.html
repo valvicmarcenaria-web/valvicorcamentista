@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><style>
+:root{--ink:#211E1A;--soft:#6B6559;--mut:#9C9587;--line:#E4DFD3;--paper:#fff;
+      --accent:#8A6B45;--accent-soft:#F1EAE0;}
+@page{size:A4;margin:0;}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;color:var(--ink);
+     font-size:10.5pt;line-height:1.55;}
+.page{position:relative;width:210mm;height:297mm;padding:20mm 20mm 16mm;
+      page-break-after:always;overflow:hidden;background:var(--paper);}
+.page:last-of-type{page-break-after:avoid;}
+h1,h2,h3{margin:0;font-weight:600;} p{margin:0;}
+.hd{display:flex;justify-content:space-between;align-items:flex-start;
+    border-bottom:1.5px solid var(--ink);padding-bottom:7mm;margin-bottom:9mm;}
+.brand{font-size:15pt;font-weight:700;letter-spacing:.02em;}
+.brand .dot{color:var(--accent);}
+.brand-sub{font-size:7.6pt;letter-spacing:.3em;color:var(--mut);margin-top:2px;text-transform:uppercase;}
+.hd .meta{text-align:right;font-size:8.6pt;color:var(--soft);line-height:1.7;}
+.hd .meta b{color:var(--ink);}
+.eyebrow{font-size:8pt;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:700;}
+.h1{font-size:22pt;font-weight:700;line-height:1.15;margin:3mm 0 5mm;letter-spacing:-.01em;}
+.lead{font-size:10.3pt;color:var(--soft);max-width:152mm;margin-bottom:7mm;}
+.scope{display:flex;gap:7mm;margin-bottom:7mm;}
+.scope .it{flex:1;border-top:2px solid var(--ink);padding-top:3.4mm;}
+.scope .it .k{font-size:10.2pt;font-weight:700;line-height:1.25;}
+.scope .it .d{font-size:8.4pt;color:var(--soft);margin-top:2mm;line-height:1.46;}
+.hl-row{display:flex;gap:6mm;}
+.hl{flex:1;background:var(--accent-soft);border-radius:7px;padding:5mm 5.6mm;}
+.hl .t{font-size:11pt;font-weight:700;margin-bottom:2mm;}
+.hl .d{font-size:8.5pt;color:var(--soft);line-height:1.5;}
+.hl .d b{color:var(--ink);}
+.note{margin-top:4mm;padding-top:2.6mm;border-top:1px solid var(--line);
+      font-size:8.3pt;color:var(--soft);line-height:1.5;}
+.note b{color:var(--ink);}
+.pfoot{position:absolute;left:20mm;right:20mm;bottom:14mm;display:flex;
+       justify-content:space-between;font-size:7.6pt;color:var(--mut);
+       letter-spacing:.08em;padding-top:3mm;border-top:1px solid var(--line);}
+.fig{border:1px solid var(--line);border-radius:8px;padding:6mm 7mm 4mm;}
+.figcap{font-size:8pt;color:var(--mut);margin-top:3mm;padding-top:2.4mm;
+        border-top:1px solid var(--line);line-height:1.5;}
+.figcap b{color:var(--ink);}
+.mv{width:100%;border-collapse:collapse;margin-top:1mm;}
+.mv th{text-align:left;font-size:7.4pt;letter-spacing:.14em;text-transform:uppercase;
+       color:var(--mut);font-weight:700;padding:0 0 2mm;border-bottom:1.5px solid var(--ink);}
+.mv th.r,.mv td.r{text-align:right;}
+.mv td{font-size:8.8pt;padding:1.9mm 0;border-bottom:1px solid var(--line);color:var(--soft);}
+.mv td:first-child{color:var(--ink);font-weight:600;}
+.mv td.r{font-variant-numeric:tabular-nums;white-space:nowrap;}
+.spec{display:flex;gap:5mm;margin-top:5mm;}
+.spec .c{flex:1;border:1px solid var(--line);border-radius:6px;padding:4mm 4.4mm;}
+.spec .c .k{font-size:7.4pt;letter-spacing:.15em;text-transform:uppercase;
+            color:var(--accent);font-weight:700;margin-bottom:2.4mm;}
+.spec .c ul{margin:0;padding:0;list-style:none;}
+.spec .c li{font-size:8.3pt;color:var(--soft);line-height:1.42;padding:.9mm 0;
+            border-bottom:1px solid var(--line);}
+.spec .c li:last-child{border-bottom:none;}
+.spec .c li b{color:var(--ink);}
+.inv-box{border:1.5px solid var(--ink);border-radius:8px;padding:5mm 8mm;}
+.inv-box .t{font-size:8pt;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);font-weight:700;}
+.inv-box .big{font-size:30pt;font-weight:700;margin:2.6mm 0 1mm;}
+.inv-box .cap{font-size:9pt;color:var(--soft);}
+.comp{margin:3.4mm 0 1mm;padding-top:2.6mm;border-top:1px solid var(--line);}
+.comp .r{display:flex;justify-content:space-between;gap:6mm;font-size:8.8pt;
+         color:var(--soft);padding:1.3mm 0;}
+.comp .r b{color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap;}
+.esc{width:100%;border-collapse:collapse;margin-top:3mm;}
+.esc td{padding:1.9mm 0;border-bottom:1px solid var(--line);font-size:9pt;color:var(--soft);}
+.esc td:last-child{text-align:right;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;}
+.esc td.dsc{text-align:right;font-size:8.2pt;color:var(--accent);white-space:nowrap;padding-right:5mm;}
+.terms{display:flex;gap:5mm;margin-top:4mm;}
+.term{flex:1;border:1px solid var(--line);border-radius:6px;padding:3.2mm 4.2mm;}
+.term .k{font-size:7.4pt;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:700;}
+.term .v{font-size:11.5pt;font-weight:700;margin-top:2px;}
+.term .s{font-size:7.7pt;color:var(--soft);margin-top:.8mm;line-height:1.4;}
+.warn{background:var(--accent-soft);border-radius:7px;padding:4.4mm 5.6mm;margin-top:4mm;}
+.warn .k{font-size:7.4pt;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+         font-weight:700;margin-bottom:1.8mm;}
+.warn .d{font-size:8.6pt;color:var(--soft);line-height:1.5;}
+.warn .d b{color:var(--ink);}
+</style></head>
+<body>
+
+<!-- 1 -->
+<div class="page">
+  <div class="hd">
+    <div><div class="brand">valvic<span class="dot">.</span></div><div class="brand-sub">MARCENARIA</div></div>
+    <div class="meta"><b>Cozinha</b><br>Projeto Rizzi Interiores<br>7 de agosto de 2026</div>
+  </div>
+  <div class="eyebrow">Proposta técnica</div>
+  <div class="h1">Sua cozinha,<br>executada.</div>
+  <p class="lead">A marcenaria dos <b>nove móveis</b> do projeto da Rizzi Interiores — as três
+  cores, a torre quente do piso ao teto, o nicho em freijó e o painel ripado. Executada
+  exatamente como o projeto define, com a medição final feita por nós antes do corte.</p>
+
+  <div class="scope">
+    <div class="it">
+      <div class="k">O "L" da bancada<br>272 + 150 cm</div>
+      <div class="d">Dois corpos em <b>Azul Ardósia</b> fechando o "L", com portas de giro e
+      gavetas em cava. <b>11 gavetas</b> em corrediça oculta com amortecimento.</div>
+    </div>
+    <div class="it">
+      <div class="k">O bloco em freijó<br>150 cm</div>
+      <div class="d">Nicho de <b>110 cm</b> com prateleira, e acima dele <b>três básculas</b>
+      de 49 cm — o único volume a <b>45 cm</b> de profundidade, na altura de trabalho.</div>
+    </div>
+    <div class="it">
+      <div class="k">Torre quente<br>270 cm, piso ao teto</div>
+      <div class="d">Em <b>Cinza Urban</b>, com duas básculas, gavetas, vãos para os embutidos
+      e <b>tomadas embutidas na lateral esquerda</b>, como o projeto pede.</div>
+    </div>
+    <div class="it">
+      <div class="k">Painel ripado<br>e mesa</div>
+      <div class="d">Em <b>freijó</b>, integrando a cozinha à sala de jantar. A mesa apoiada
+      na lateral esquerda, conforme o projeto.</div>
+    </div>
+  </div>
+
+  <div class="hl-row">
+    <div class="hl">
+      <div class="t">Três cores nunca dividem chapa</div>
+      <div class="d">Azul Ardósia, Freijó e Cinza Urban são <b>compradas e cortadas em
+      separado</b> — cada cor tem seu plano de corte. É o que garante que o tom de uma porta
+      seja o mesmo da porta ao lado, e é por isso que um projeto tricolor não custa o mesmo
+      que um monocromático.</div>
+    </div>
+    <div class="hl">
+      <div class="t">Branco por dentro, cor por fora</div>
+      <div class="d">Toda a caixaria interna vai em <b>branco</b>: o interior fica claro e a
+      busca é mais fácil. As <b>frentes, tamponamentos e o nicho</b> vão nas cores do projeto —
+      é onde a cor aparece e onde ela é cobrada.</div>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>A medição no local vem antes do corte.</b> O documento de consultoria informa que suas
+    cotas foram tiradas de planta baixa e <b>não servem como referência para compra final</b>.
+    Nossa medição confirma cada vão antes de qualquer chapa ser cortada — e é parte do que
+    está incluso aqui.
+  </div>
+  <div class="pfoot"><span>valvic. marcenaria</span><span>Cozinha · projeto Rizzi Interiores · 07/08/2026</span></div>
+</div>
+
+<!-- 2 -->
+<div class="page">
+  <div class="hd">
+    <div><div class="brand">valvic<span class="dot">.</span></div><div class="brand-sub">MARCENARIA</div></div>
+    <div class="meta"><b>Cozinha</b><br>Projeto Rizzi Interiores<br>7 de agosto de 2026</div>
+  </div>
+  <div class="eyebrow">O desenho</div>
+  <div class="h1" style="font-size:19pt;margin-bottom:5mm;">Elevação desdobrada.</div>
+
+  <div class="fig">
+  <svg viewBox="0 0 880 492" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+  <line x1="14" y1="30.0" x2="866" y2="30.0" stroke="#211E1A" stroke-width="2.4"/>
+  <line x1="14" y1="421.5" x2="866" y2="421.5" stroke="#211E1A" stroke-width="2.4"/>
+  <rect x="25.0" y="407.0" width="394.4" height="14.5" fill="#C9C4BA" stroke="#211E1A" stroke-width="1.2"/>
+  <rect x="25.0" y="295.3" width="394.4" height="111.6" fill="#5D7480" stroke="#211E1A" stroke-width="1.6"/>
+  <rect x="25.0" y="291.0" width="394.4" height="4.3" fill="#CFCCC5" stroke="#211E1A" stroke-width="1.2"/>
+  <line x1="141.0" y1="295.3" x2="141.0" y2="407.0" stroke="#211E1A" stroke-width="0.9" opacity="0.5"/>
+  <line x1="228.0" y1="295.3" x2="228.0" y2="407.0" stroke="#211E1A" stroke-width="0.9" opacity="0.5"/>
+  <line x1="315.0" y1="295.3" x2="315.0" y2="407.0" stroke="#211E1A" stroke-width="0.9" opacity="0.5"/>
+  <rect x="419.4" y="407.0" width="217.5" height="14.5" fill="#C9C4BA" stroke="#211E1A" stroke-width="1.2"/>
+  <rect x="419.4" y="295.3" width="217.5" height="111.6" fill="#5D7480" stroke="#211E1A" stroke-width="1.6"/>
+  <rect x="419.4" y="291.0" width="217.5" height="4.3" fill="#CFCCC5" stroke="#211E1A" stroke-width="1.2"/>
+  <line x1="528.1" y1="295.3" x2="528.1" y2="407.0" stroke="#211E1A" stroke-width="0.9" opacity="0.5"/>
+  <line x1="25.0" y1="331.6" x2="141.0" y2="331.6" stroke="#211E1A" stroke-width="0.9" opacity="0.5"/>
+  <line x1="141.0" y1="369.3" x2="315.0" y2="369.3" stroke="#211E1A" stroke-width="0.9" opacity="0.5"/>
+  <line x1="141.0" y1="331.6" x2="315.0" y2="331.6" stroke="#211E1A" stroke-width="0.9" opacity="0.5"/>
+  <line x1="367.2" y1="295.3" x2="367.2" y2="407.0" stroke="#211E1A" stroke-width="0.9" opacity="0.35"/>
+  <line x1="419.4" y1="379.4" x2="528.1" y2="379.4" stroke="#211E1A" stroke-width="0.9" opacity="0.5"/>
+  <line x1="419.4" y1="351.9" x2="528.1" y2="351.9" stroke="#211E1A" stroke-width="0.9" opacity="0.5"/>
+  <line x1="419.4" y1="324.3" x2="528.1" y2="324.3" stroke="#211E1A" stroke-width="0.9" opacity="0.5"/>
+  <line x1="582.5" y1="295.3" x2="582.5" y2="407.0" stroke="#211E1A" stroke-width="0.9" opacity="0.35"/>
+  <rect x="51.1" y="124.2" width="217.5" height="159.5" fill="#EAF0F3" stroke="#8FA6B2" stroke-width="1.4"/>
+  <line x1="159.8" y1="124.2" x2="159.8" y2="283.8" stroke="#211E1A" stroke-width="1" opacity="0.3"/>
+  <text x="159.8" y="209.8" text-anchor="middle" font-size="10" fill="#7D93A0">janela</text>
+  <text x="344.0" y="204.0" text-anchor="middle" font-size="9" fill="#B5AEA0">parede</text>
+  <text x="344.0" y="224.3" text-anchor="middle" font-size="9" fill="#B5AEA0">revestida</text>
+  <rect x="419.4" y="189.5" width="217.5" height="101.5" fill="#B08856" stroke="#211E1A" stroke-width="1.6"/>
+  <line x1="419.4" y1="240.2" x2="636.9" y2="240.2" stroke="#8A6A40" stroke-width="1.6"/>
+  <rect x="419.4" y="131.5" width="217.5" height="58.0" fill="#B08856" stroke="#211E1A" stroke-width="1.6"/>
+  <line x1="490.4" y1="131.5" x2="490.4" y2="189.5" stroke="#211E1A" stroke-width="0.9" opacity="0.5"/>
+  <line x1="561.5" y1="131.5" x2="561.5" y2="189.5" stroke="#211E1A" stroke-width="0.9" opacity="0.5"/>
+  <rect x="419.4" y="30.0" width="217.5" height="101.5" fill="#5D7480" stroke="#211E1A" stroke-width="1.6"/>
+  <line x1="491.9" y1="30.0" x2="491.9" y2="131.5" stroke="#211E1A" stroke-width="0.9" opacity="0.35"/>
+  <line x1="564.4" y1="30.0" x2="564.4" y2="131.5" stroke="#211E1A" stroke-width="0.9" opacity="0.35"/>
+  <rect x="636.9" y="407.0" width="101.5" height="14.5" fill="#C9C4BA" stroke="#211E1A" stroke-width="1.2"/>
+  <rect x="636.9" y="30.0" width="101.5" height="377.0" fill="#E4E0D8" stroke="#211E1A" stroke-width="1.6"/>
+  <line x1="636.9" y1="349.0" x2="738.4" y2="349.0" stroke="#211E1A" stroke-width="0.9" opacity="0.5"/>
+  <line x1="636.9" y1="291.0" x2="738.4" y2="291.0" stroke="#211E1A" stroke-width="0.9" opacity="0.5"/>
+  <line x1="636.9" y1="204.0" x2="738.4" y2="204.0" stroke="#211E1A" stroke-width="0.9" opacity="0.5"/>
+  <line x1="636.9" y1="146.0" x2="738.4" y2="146.0" stroke="#211E1A" stroke-width="0.9" opacity="0.5"/>
+  <line x1="636.9" y1="88.0" x2="738.4" y2="88.0" stroke="#211E1A" stroke-width="0.9" opacity="0.5"/>
+  <rect x="648.5" y="212.7" width="78.3" height="69.6" fill="#B9B4AA" stroke="#8C877D" stroke-width="1.1"/>
+  <rect x="738.4" y="146.0" width="116.0" height="275.5" fill="none" stroke="#9C9587" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="796.4" y="279.4" text-anchor="middle" font-size="9.5" fill="#9C9587">geladeira</text>
+  <text x="796.4" y="299.7" text-anchor="middle" font-size="9.5" fill="#9C9587">do cliente</text>
+  <rect x="738.4" y="30.0" width="116.0" height="101.5" fill="#E4E0D8" stroke="#211E1A" stroke-width="1.6"/>
+  <line x1="796.4" y1="30.0" x2="796.4" y2="131.5" stroke="#211E1A" stroke-width="0.9" opacity="0.35"/>
+  <line x1="419.4" y1="14.0" x2="419.4" y2="437.5" stroke="#8A6B45" stroke-width="1.4" stroke-dasharray="6 4"/>
+  <text x="419.4" y="8.0" text-anchor="middle" font-size="9.5" font-weight="700" fill="#8A6B45" letter-spacing="1.2">CANTO DO "L"</text>
+  <text x="222.2" y="8.0" text-anchor="middle" font-size="9" fill="#9C9587" letter-spacing="1">PAREDE 1 · 332 cm</text>
+  <text x="636.9" y="8.0" text-anchor="middle" font-size="9" fill="#9C9587" letter-spacing="1">PAREDE 2 · 300 cm</text>
+  <line x1="14" y1="291.0" x2="14" y2="421.5" stroke="#9C9587" stroke-width=".8"/>
+  <line x1="10" y1="421.5" x2="18" y2="421.5" stroke="#9C9587" stroke-width=".8"/>
+  <line x1="10" y1="291.0" x2="18" y2="291.0" stroke="#9C9587" stroke-width=".8"/>
+  <text x="7" y="356.2" text-anchor="middle" font-size="9" fill="#6B6559" transform="rotate(-90 7 356.2)">90</text>
+  <line x1="14" y1="131.5" x2="14" y2="291.0" stroke="#9C9587" stroke-width=".8"/>
+  <line x1="10" y1="291.0" x2="18" y2="291.0" stroke="#9C9587" stroke-width=".8"/>
+  <line x1="10" y1="131.5" x2="18" y2="131.5" stroke="#9C9587" stroke-width=".8"/>
+  <text x="7" y="211.2" text-anchor="middle" font-size="9" fill="#6B6559" transform="rotate(-90 7 211.2)">110</text>
+  <line x1="14" y1="30.0" x2="14" y2="131.5" stroke="#9C9587" stroke-width=".8"/>
+  <line x1="10" y1="131.5" x2="18" y2="131.5" stroke="#9C9587" stroke-width=".8"/>
+  <line x1="10" y1="30.0" x2="18" y2="30.0" stroke="#9C9587" stroke-width=".8"/>
+  <text x="7" y="80.8" text-anchor="middle" font-size="9" fill="#6B6559" transform="rotate(-90 7 80.8)">70</text>
+  <line x1="25.0" y1="431.5" x2="854.4" y2="431.5" stroke="#E4DFD3" stroke-width="1"/>
+  <text x="222.2" y="447.5" text-anchor="middle" font-size="10" font-weight="600" fill="#211E1A">Pia · cooktop · janela</text>
+  <text x="222.2" y="459.5" text-anchor="middle" font-size="8.8" fill="#9C9587">272 cm</text>
+  <text x="528.1" y="447.5" text-anchor="middle" font-size="10" font-weight="600" fill="#211E1A">Bancada · nicho · aéreo</text>
+  <text x="528.1" y="459.5" text-anchor="middle" font-size="8.8" fill="#9C9587">150 cm</text>
+  <text x="687.6" y="447.5" text-anchor="middle" font-size="10" font-weight="600" fill="#211E1A">Torre quente</text>
+  <text x="687.6" y="459.5" text-anchor="middle" font-size="8.8" fill="#9C9587">70 cm</text>
+  <text x="796.4" y="447.5" text-anchor="middle" font-size="10" font-weight="600" fill="#211E1A">Geladeira</text>
+  <text x="796.4" y="459.5" text-anchor="middle" font-size="8.8" fill="#9C9587">80 cm</text>
+  <rect x="25" y="471.5" width="13" height="10" fill="#5D7480" stroke="#211E1A" stroke-width=".8"/>
+  <text x="44" y="480.0" font-size="9.2" fill="#6B6559">Azul Ardósia</text>
+  <rect x="215" y="471.5" width="13" height="10" fill="#B08856" stroke="#211E1A" stroke-width=".8"/>
+  <text x="234" y="480.0" font-size="9.2" fill="#6B6559">Freijó</text>
+  <rect x="350" y="471.5" width="13" height="10" fill="#E4E0D8" stroke="#211E1A" stroke-width=".8"/>
+  <text x="369" y="480.0" font-size="9.2" fill="#6B6559">Cinza Urban</text>
+  <rect x="510" y="471.5" width="13" height="10" fill="#CFCCC5" stroke="#211E1A" stroke-width=".8"/>
+  <text x="529" y="480.0" font-size="9.2" fill="#6B6559">Granito Itaúnas · do cliente</text>
+  </svg>
+    <div class="figcap"><b>As duas paredes abertas em uma só vista</b>, como no documento do
+    projeto. À esquerda do traço dourado, a parede da janela (332 cm); à direita, a parede da
+    torre e da geladeira (300 cm). Cotas em centímetros, <b>a confirmar na medição final</b>.</div>
+  </div>
+
+  <div class="note">
+    <b>Como as alturas se encaixam.</b> O armário de bancada tem 77 cm; somados ao sóculo
+    recuado de 10 e ao granito de 3, a bancada fica exatamente nos <b>90 cm</b> que o projeto
+    pede. Daí sobem os 110 cm do nicho em freijó e os 70 do aéreo — fechando os <b>270 cm</b>
+    de pé-direito, a mesma altura da torre quente. As três colunas do projeto fecham no mesmo
+    número, e é isso que permite orçar com esta precisão antes da medição.
+  </div>
+
+  <div class="spec" style="margin-top:6mm;">
+    <div class="c">
+      <div class="k">A medição confirma</div>
+      <ul>
+        <li>Pé-direito real e nível do piso</li>
+        <li>Largura exata das duas paredes</li>
+        <li>Esquadro do canto do "L"</li>
+        <li>Vão livre da janela</li>
+      </ul>
+    </div>
+    <div class="c">
+      <div class="k">E também</div>
+      <ul>
+        <li>Posição de tomadas e interruptores</li>
+        <li>Ponto de água, gás e esgoto</li>
+        <li>Vão real da geladeira</li>
+        <li>Medidas dos embutidos escolhidos</li>
+      </ul>
+    </div>
+    <div class="c">
+      <div class="k">Por que importa</div>
+      <ul>
+        <li>Cada cor tem <b>plano de corte próprio</b></li>
+        <li>Chapa cortada não volta atrás</li>
+        <li>Ajuste na medição custa <b>zero</b></li>
+        <li>Ajuste depois do corte custa chapa</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pfoot"><span>valvic. marcenaria</span><span>Cozinha · projeto Rizzi Interiores · 07/08/2026</span></div>
+</div>
+
+<!-- 3 -->
+<div class="page">
+  <div class="hd">
+    <div><div class="brand">valvic<span class="dot">.</span></div><div class="brand-sub">MARCENARIA</div></div>
+    <div class="meta"><b>Cozinha</b><br>Projeto Rizzi Interiores<br>7 de agosto de 2026</div>
+  </div>
+  <div class="eyebrow">Especificação</div>
+  <div class="h1" style="font-size:19pt;margin-bottom:5mm;">Os nove móveis.</div>
+
+  <table class="mv">
+    <tr><th>Móvel</th><th>Altura × Largura × Profundidade</th><th class="r">Cor</th></tr>
+    <tr><td>Armário de bancada</td><td>77 × 272 × 60 cm — portas de giro e gavetas em cava</td><td class="r">Azul Ardósia</td></tr>
+    <tr><td>Armário de bancada</td><td>77 × 150 × 60 cm — completa o "L"</td><td class="r">Azul Ardósia</td></tr>
+    <tr><td>Nicho</td><td>110 × 150 cm — com prateleira</td><td class="r">Freijó</td></tr>
+    <tr><td>Aéreo de básculas</td><td>40 × 147 × 45 cm — três básculas em cava</td><td class="r">Freijó</td></tr>
+    <tr><td>Aéreo</td><td>70 × 150 × 60 cm — três portas de giro em cava</td><td class="r">Azul Ardósia</td></tr>
+    <tr><td>Torre quente</td><td>270 × 70 × 60 cm — básculas, gavetas e tomadas embutidas</td><td class="r">Cinza Urban</td></tr>
+    <tr><td>Aéreo da geladeira</td><td>70 × 80 × 60 cm — duas portas de giro em cava</td><td class="r">Cinza Urban</td></tr>
+    <tr><td>Painel ripado</td><td>integrando a cozinha à sala de jantar</td><td class="r">Freijó</td></tr>
+    <tr><td>Mesa</td><td>com apoio na lateral esquerda</td><td class="r">Freijó</td></tr>
+  </table>
+
+  <div class="spec">
+    <div class="c">
+      <div class="k">Estrutura</div>
+      <ul>
+        <li>Caixaria em <b>15 mm</b></li>
+        <li>Prateleiras em <b>18 mm</b></li>
+        <li>Fundos em <b>6 mm</b></li>
+        <li>Frentes e acabamentos em <b>18 mm</b></li>
+        <li>Fita de borda em <b>todas</b> as faces aparentes</li>
+      </ul>
+    </div>
+    <div class="c">
+      <div class="k">Ferragens</div>
+      <ul>
+        <li><b>18 dobradiças</b> com amortecimento</li>
+        <li><b>14 corrediças ocultas</b> com amortecimento</li>
+        <li><b>5 articuladores</b> de báscula</li>
+        <li>Suportes metálicos de prateleira</li>
+        <li>Linha <b>Hardt</b></li>
+      </ul>
+    </div>
+    <div class="c">
+      <div class="k">Não incluso</div>
+      <ul>
+        <li>Granito, cuba e misturador</li>
+        <li>Porcelanato e revestimentos</li>
+        <li>Cooktop, forno, micro e coifa</li>
+        <li>Geladeira e purificador</li>
+        <li>Luminária, pontos elétricos e gesso</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>Cava em todas as frentes.</b> São <b>16,94 m</b> de cava usinada na CNC — o puxador é
+    a própria frente, sem peça aplicada. Nas três cores, com o mesmo perfil.
+  </div>
+  <div class="pfoot"><span>valvic. marcenaria</span><span>Cozinha · projeto Rizzi Interiores · 07/08/2026</span></div>
+</div>
+
+<!-- 4 -->
+<div class="page">
+  <div class="hd">
+    <div><div class="brand">valvic<span class="dot">.</span></div><div class="brand-sub">MARCENARIA</div></div>
+    <div class="meta"><b>Cozinha</b><br>Projeto Rizzi Interiores<br>7 de agosto de 2026</div>
+  </div>
+  <div class="eyebrow">Investimento</div>
+  <div class="h1" style="font-size:19pt;margin-bottom:5mm;">A cozinha completa.</div>
+
+  <div class="inv-box">
+    <div class="t">Investimento total</div>
+    <div class="big">R$ 38.100</div>
+    <div class="cap">Entrada de 30% + saldo em até 10× no cartão</div>
+    <div class="comp">
+      <div class="r"><span>Armários inferiores da bancada — 272 + 150 cm, 11 gavetas</span><b>R$ 13.300</b></div>
+      <div class="r"><span>Demais móveis — aéreos, nicho, torre quente, painel e mesa</span><b>R$ 24.800</b></div>
+    </div>
+  </div>
+
+  <table class="esc">
+    <tr><td>Entrada de 30% + saldo em até 10× no cartão</td><td class="dsc">—</td><td>R$ 38.100</td></tr>
+    <tr><td>Entrada de 50% + saldo em até 8× no cartão</td><td class="dsc">−3%</td><td>R$ 37.000</td></tr>
+  </table>
+
+  <div class="warn">
+    <div class="k">Os armários da bancada em linha própria</div>
+    <div class="d">Eles aparecem separados porque são o maior bloco isolado do projeto e o mais
+    fácil de faseiar. <b>Se forem executados depois</b>, o restante da cozinha fica em
+    <b>R$ 26.600</b> — e não nos R$ 24.800 acima, porque chapa comprada para o conjunto não
+    encolhe na mesma proporção quando o conjunto diminui, e a instalação continua sendo uma
+    cozinha inteira.</div>
+  </div>
+
+  <div class="terms">
+    <div class="term"><div class="k">Prazo</div><div class="v">60 dias</div>
+      <div class="s">Corridos, a partir da aprovação e da medição final</div></div>
+    <div class="term"><div class="k">Garantia</div><div class="v">10 anos</div>
+      <div class="s">Estrutura e ferragens · 2 anos nas corrediças</div></div>
+    <div class="term"><div class="k">Validade</div><div class="v">7 dias</div>
+      <div class="s">Chapa e ferragem sujeitas a reajuste</div></div>
+  </div>
+
+  <div class="note">
+    <b>Medição final antes do corte.</b> As medidas desta proposta vêm do documento de
+    consultoria, que declara não servir como referência para compra final. Nossa medição no
+    local é feita antes da liberação do corte e <b>eventuais ajustes de dimensão são acertados
+    ali</b>, com a proposta revisada por escrito antes da produção começar.
+  </div>
+  <div class="pfoot"><span>valvic. marcenaria</span><span>Cozinha · projeto Rizzi Interiores · 07/08/2026</span></div>
+</div>
+
+</body></html>
