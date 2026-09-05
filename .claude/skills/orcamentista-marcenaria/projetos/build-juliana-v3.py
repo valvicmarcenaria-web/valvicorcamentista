@@ -22,7 +22,8 @@ ITENS = [
  ('Cozinha', 'Coluna de eletros, aéreos e balcões',
   'Coluna com <b>forno e micro-ondas embutidos</b> · vão de geladeira com tamponamento · '
   'balcões inferiores com gavetões · aéreos em três faces · prateleiras flutuantes · '
-  '<b>6 m de LED</b> com sensor · puxador em <b>perfil cava Rometal RM195</b>. '
+  '<b>6 m de LED</b> com sensor · puxador em <b>perfil cava Rometal RM195</b> nos '
+  'balcões e <b>perfil slim</b> nos aéreos. '
   'Interno todo em <b>branco</b>.', 21900, 18800),
  ('Cozinha', 'Mesa de refeições <span class="nv">novo</span>',
   'Base em <b>serralheria</b> com tampo em <b>MDF</b>. Item acrescentado nesta versão — '
@@ -109,7 +110,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       vertical-align:bottom;}}
   .dual th.vh{{text-align:right; width:26mm; padding-left:3mm;}}
   .dual th.vh.alt{{color:var(--gold);}}
-  .dual td{{padding:2.4mm 0; border-bottom:1px solid var(--hair); vertical-align:top;}}
+  .dual td{{padding:1.7mm 0; border-bottom:1px solid var(--hair); vertical-align:top;}}
   .dual td.sv{{width:33mm; font-weight:700; color:var(--ink); font-size:9pt; padding-right:3mm;}}
   .dual td.sv small{{display:block; font-weight:400; color:var(--soft); font-size:7.8pt;}}
   .dual td.ds{{color:var(--soft); line-height:1.56; padding-right:4mm;}}
@@ -127,11 +128,11 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   .dual tr.bri td.vl:last-child{{border-radius:0 4px 4px 0;}}
   .dual tr.bri s{{color:#8C8071; font-weight:400;}}
 
-  .pay-tb2{{width:100%; border-collapse:collapse; font-size:9pt; margin-top:4mm;}}
+  .pay-tb2{{width:100%; border-collapse:collapse; font-size:9pt; margin-top:3mm;}}
   .pay-tb2 th{{font-size:6.4pt; letter-spacing:.14em; text-transform:uppercase; color:var(--mut);
       font-weight:700; border-bottom:1.5px solid var(--ink); padding:0 0 2mm; text-align:left;}}
   .pay-tb2 th.r, .pay-tb2 td.r{{text-align:right;}}
-  .pay-tb2 td{{padding:2.2mm 0; border-bottom:1px solid var(--hair);
+  .pay-tb2 td{{padding:1.9mm 0; border-bottom:1px solid var(--hair);
       font-variant-numeric:tabular-nums;}}
   .pay-tb2 td.r{{font-weight:700; white-space:nowrap; padding-left:4mm;}}
   .pay-tb2 td.r.alt{{color:var(--gold);}}
@@ -148,7 +149,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
   .same .d{{font-size:9pt; color:var(--soft); line-height:1.62; margin-top:1.4mm;}}
   .same .d b{{color:var(--ink);}}
 
-  .cnd{{display:grid; grid-template-columns:1fr 1fr; gap:5mm 8mm; margin-top:7mm;
+  .cnd{{display:grid; grid-template-columns:1fr 1fr; gap:3.4mm 8mm; margin-top:3.5mm;
       border-top:2px solid var(--ink); padding-top:4.6mm;}}
   .cnd .k{{font-size:6.4pt; letter-spacing:.16em; text-transform:uppercase; color:var(--gold);
       font-weight:700;}}
@@ -272,7 +273,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
 <!-- ══════ 4. INVESTIMENTO ══════ -->
 <div class="page"><div class="pad">
   <div class="eyebrow">Investimento</div>
-  <div class="h-sec serif" style="font-size:25pt;">Versão 2.</div>
+  <div class="h-sec serif" style="font-size:25pt;">Versão 2 <em>· com a linha telescópica.</em></div>
   <hr class="rule" style="margin:8px 0 8px;">
 
   <table class="dual">
@@ -307,7 +308,7 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><style>
       dos móveis e LED.</div></div>
   </div>
 
-  <div class="note" style="margin-top:4mm;"><b>Por conta do cliente:</b> tampos de pedra,
+  <div class="note" style="margin-top:2.5mm;"><b>Por conta do cliente:</b> tampos de pedra,
   revestimentos, forro de madeira, eletrodomésticos, cubas e torneiras. Valores do anteprojeto —
   medidas conferidas no local antes do corte.</div>
 

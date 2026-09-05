@@ -353,3 +353,100 @@ a barra deixa claro que é o total de itens deslizantes, não 12 de cada.
    preço e aceitar a exceção, ou devolver parte dos cortes.
 2. A cozinha da Essencial a **30,1%** é o pior ponto do orçamento inteiro.
 3. Preço de compra do **Next Meia Lua 64 mm** segue sem referência.
+
+
+---
+
+## Rodada de 02/09 (4ª parte) — a cotação do RM195 estava errada
+
+> *"Sua cotação está errada, não vamos usar seis barras, talvez no máximo 3.
+> Especifique os puxadores superiores com perfil slim."*
+
+### ⛔ Retificação de uma afirmação minha
+
+Na 3ª parte eu escrevi, em caixa de citação:
+
+> *"o perfil Rometal é mais caro que a cava usinada. O corte de R$ 800 é decisão
+> de preço, não devolução de custo."*
+
+**Isso está errado, e o erro era meu.** Eu tinha dividido os 18 m de cava usinada
+por 3 m de barra e lançado **6 barras**. O perfil não acompanha o balcão inteiro
+— ele vai **só onde há puxador**. Com 3 barras a conta se inverte:
+
+| | Cava usinada | Perfil Rometal |
+|---|--:|--:|
+| Inferiores | 18 m × R$ 50 = **R$ 900** | 3 × RM195 (R$ 250) = **R$ 750** |
+| Superiores | — | 3 × Slim Luna (R$ 20) = **R$ 60** |
+| **Total** | **R$ 900** | **R$ 810** |
+
+O custo da cozinha **caiu R$ 90** com a troca. O corte de R$ 800 no preço não é
+uma decisão contra o custo — é quase exatamente o repasse que faz sentido, e a
+frase da rodada anterior fica sem efeito.
+
+### Perfil slim nos aéreos
+
+O descritivo passou a separar as duas alturas: **perfil cava Rometal RM195 nos
+balcões** e **perfil slim nos aéreos**. Os dois estão lançados na conta
+(`Puxadores¦Perfil cava RM195 - 3mt` = 3 e `Puxadores¦Slim luna rometal` = 3),
+nas três linhas.
+
+### MC depois da correção
+
+| Linha | Cozinha | Quarto | Closet | **3 ambientes** |
+|---|--:|--:|--:|--:|
+| **GOLD** | 39,1% | 41,2% | 37,2% | **38,8%** |
+| **ESSENCIAL** | 33,6% | 38,0% | 32,4% | **34,3%** ⚠ |
+| **TELESCÓPICA** | 36,7% | 31,8% | 34,7% | **34,6%** ⚠ |
+
+A cozinha da Essencial saiu de 30,1% para **33,6%** só com a correção da
+cotação. As duas linhas de baixo seguem logo abaixo do piso de 35%.
+
+Conferência reproduzível em **`projetos/mc-juliana.py`** — lê os três JSONs,
+soma material pela biblioteca do próprio arquivo, soma terceirizados e logística
+e confere `MC = 0,80016 − custo/preço` contra os preços dos builds.
+
+### Layout
+
+As duas propostas transbordavam na página 4: o bloco *"Por conta do cliente"*
+caía **em cima do rodapé** (nota começando em 801,3 pt, topo do rodapé em
+801,4 pt). Apertei `.dual td` (2,4 → 1,7 mm), `.pay-tb2 td` (2,2 → 1,9 mm), a
+grade `.cnd` e a margem da nota. Conteúdo agora termina em **791,3 pt**, com
+10 pt de folga. Na v3 o título da página 4 virou **"Versão 2 · com a linha
+telescópica"** — antes dizia só "Versão 2." num documento cujo rodapé diz
+"versão 3".
+
+### ⚠ Achado: a Essencial compra Hettich e vende Hardt
+
+Auditando texto × conta, a **cozinha da Essencial está lançada com ferragem
+Hettich** — 36 dobradiças Novisys (R$ 10) e 10 corrediças Oculta Quadro
+(R$ 120) — **idêntica à Gold**. Mas a proposta vende essa coluna como
+**"Hardt · 2 anos"**. Quarto e closet da Essencial já estão em telescópica.
+Ou seja: **a Essencial e a Telescópica são o mesmo produto exceto por
+10 corrediças de cozinha.**
+
+Três saídas, com a conta de cada uma (preço do cliente intocado nas três):
+
+| Cenário | Cozinha | Quarto | Closet | **3 ambientes** |
+|---|--:|--:|--:|--:|
+| **A** · como está hoje | 33,6% | 38,0% | 32,4% | **34,3%** |
+| **B** · Hardt oculta em tudo (o que o texto promete) | 36,6% | 37,2% | 30,4% | **34,2%** |
+| **C** · telescópica em tudo, preço Essencial mantido | 38,2% | 38,0% | 32,4% | **35,7%** |
+
+**B** é a única que deixa texto e conta coerentes sem mudar o que o cliente lê.
+**C** é a única que passa do piso — mas aí a Essencial vira a Telescópica e um
+dos dois documentos perde razão de existir. **Decisão do Jonathan** — não mexi
+nos JSONs.
+
+### Em aberto
+
+1. **A escolha entre A, B e C acima.** Hoje a conta contradiz o descritivo.
+2. **A mesa de refeições (R$ 2.350) não tem linha de custo em lugar nenhum.**
+   Está no texto — *"base em serralheria com tampo em MDF"* — e `terc.ser` da
+   cozinha é **zero** nos três JSONs. A MC da cozinha reportada acima **exclui**
+   a mesa (receita e custo). Única referência de serralheria na casa: os
+   **R$ 600 de metalon** cravados pelo Jonathan na Honda Minas Motos. Preciso
+   do custo real antes de dizer qualquer margem sobre esse item.
+3. Preço de compra do **Next Meia Lua 64 mm** (★ R$ 35) segue sem referência, e
+   a unidade do **Slim Luna Rometal** (★ R$ 20) — barra ou metro? — também.
+4. Os **25 puxadores das portas do closet** seguem como estimativa por contagem
+   de dobradiça (50 ÷ 2).
