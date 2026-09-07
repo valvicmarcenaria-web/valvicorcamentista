@@ -135,6 +135,9 @@ peças vale mais que produzir avulso.
 
 - **`ferramentas/gerar-pdf.py`** — HTML → PDF, medindo se o conteúdo estourou a página.
   `python3 ferramentas/gerar-pdf.py arquivo.html`
+- **`ferramentas/ilustracoes/`** — as ilustrações técnicas em SVG e, no `LEIA-ME.md`, as
+  **convenções do desenho Valvic**: fundo branco, madeira bege, ferragem cinza-metal, rótulo
+  dentro da peça. Ler antes de desenhar qualquer figura nova.
 - **`ferramentas/modelo-aula-a4.html`** — a folha de **aula/apostila**: capa de módulo,
   objetivo, blocos de conteúdo, caixa "na prática", "erro comum", glossário, exercício.
 - **`ferramentas/modelo-pop-a4.html`** — a folha de **POP**: identificação, quando se aplica,

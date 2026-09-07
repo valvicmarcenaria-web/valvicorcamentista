@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" role="img" aria-label="Corte frontal comparando as duas corrediças: a telescópica, cujo corpo de treze milímetros ocupa o espaço entre a caixa da gaveta e a lateral, e a oculta, que corre sob o fundo e deixa a lateral limpa.">
+      <defs>
+        <pattern id="gradeC" width="16" height="16" patternUnits="userSpaceOnUse">
+          <path d="M16,0 L0,0 L0,16" fill="none" stroke="#0E2038" stroke-width=".5" opacity=".07"/></pattern>
+        <marker id="ctC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#B0413F"/></marker>
+        <marker id="ciC" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+          <path d="M10,0 L0,5 L10,10 z" fill="#B0413F"/></marker>
+      </defs>
+      <rect x="0" y="0" width="640" height="280" fill="#ffffff"/>
+      <rect x="0" y="0" width="640" height="280" fill="url(#gradeC)"/>
+      <line x1="320" y1="10" x2="320" y2="270" stroke="#d8d2c4" stroke-width="1"/>
+
+      <g transform="translate(0,0)">
+        <text x="150" y="26" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A" text-anchor="middle">TELESCÓPICA</text>
+        <text x="150" y="43" font-family="Inter,sans-serif" font-size="12" fill="#5f5b52" text-anchor="middle">fixa na lateral — aparece</text>
+        <rect x="24" y="60" width="22" height="150" fill="#ece0c8" stroke="#a89a78" stroke-width="1.3"/>
+        <text x="35" y="135" font-family="Inter,sans-serif" font-size="11" fill="#5a4d31" text-anchor="middle" transform="rotate(-90,35,135)">Lateral</text>
+        <rect x="254" y="60" width="22" height="150" fill="#ece0c8" stroke="#a89a78" stroke-width="1.3"/>
+        <text x="265" y="135" font-family="Inter,sans-serif" font-size="11" fill="#5a4d31" text-anchor="middle" transform="rotate(-90,265,135)">Lateral</text>
+        <rect x="46" y="98" width="14" height="76" fill="#6e737a" stroke="#3f444b" stroke-width="1.2"/>
+        <rect x="240" y="98" width="14" height="76" fill="#6e737a" stroke="#3f444b" stroke-width="1.2"/>
+        <rect x="60" y="92" width="180" height="88" fill="#ffffff" stroke="#a89a78" stroke-width="1.4"/>
+        <text x="150" y="142" font-family="Inter,sans-serif" font-size="12" fill="#5a4d31" text-anchor="middle">caixa da gaveta</text>
+        <line x1="46" y1="196" x2="60" y2="196" stroke="#B0413F" stroke-width="1.1" marker-start="url(#ciC)" marker-end="url(#ctC)"/>
+        <text x="53" y="212" font-family="'JetBrains Mono',monospace" font-size="11" fill="#B0413F" text-anchor="middle">13</text>
+        <line x1="240" y1="196" x2="254" y2="196" stroke="#B0413F" stroke-width="1.1" marker-start="url(#ciC)" marker-end="url(#ctC)"/>
+        <text x="247" y="212" font-family="'JetBrains Mono',monospace" font-size="11" fill="#B0413F" text-anchor="middle">13</text>
+        <text x="150" y="244" font-family="Inter,sans-serif" font-size="11.5" fill="#B0413F" text-anchor="middle">os 13 mm são o corpo da corrediça —</text>
+        <text x="150" y="261" font-family="Inter,sans-serif" font-size="11.5" fill="#B0413F" text-anchor="middle">não é folga, é a peça ocupando lugar</text>
+      </g>
+
+      <g transform="translate(320,0)">
+        <text x="150" y="26" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A" text-anchor="middle">OCULTA</text>
+        <text x="150" y="43" font-family="Inter,sans-serif" font-size="12" fill="#5f5b52" text-anchor="middle">corre sob o fundo — some</text>
+        <rect x="24" y="60" width="22" height="150" fill="#ece0c8" stroke="#a89a78" stroke-width="1.3"/>
+        <text x="35" y="135" font-family="Inter,sans-serif" font-size="11" fill="#5a4d31" text-anchor="middle" transform="rotate(-90,35,135)">Lateral</text>
+        <rect x="254" y="60" width="22" height="150" fill="#ece0c8" stroke="#a89a78" stroke-width="1.3"/>
+        <text x="265" y="135" font-family="Inter,sans-serif" font-size="11" fill="#5a4d31" text-anchor="middle" transform="rotate(-90,265,135)">Lateral</text>
+        <rect x="54" y="92" width="192" height="88" fill="#ffffff" stroke="#a89a78" stroke-width="1.4"/>
+        <text x="150" y="140" font-family="Inter,sans-serif" font-size="12" fill="#5a4d31" text-anchor="middle">caixa da gaveta</text>
+        <rect x="60" y="180" width="64" height="10" fill="#6e737a" stroke="#3f444b" stroke-width="1.2"/>
+        <rect x="176" y="180" width="64" height="10" fill="#6e737a" stroke="#3f444b" stroke-width="1.2"/>
+        <line x1="46" y1="98" x2="46" y2="174" stroke="#2F7D4F" stroke-width="3"/>
+        <text x="54" y="88" font-family="Inter,sans-serif" font-size="11.5" fill="#2F7D4F">lateral limpa</text>
+        <line x1="46" y1="204" x2="54" y2="204" stroke="#B0413F" stroke-width="1.1" marker-start="url(#ciC)" marker-end="url(#ctC)"/>
+        <text x="150" y="244" font-family="Inter,sans-serif" font-size="11.5" fill="#B0413F" text-anchor="middle">folga menor, e ela muda com o modelo —</text>
+        <text x="150" y="261" font-family="Inter,sans-serif" font-size="11.5" fill="#B0413F" text-anchor="middle">tire da tabela da corrediça comprada</text>
+      </g>
+    </svg>
