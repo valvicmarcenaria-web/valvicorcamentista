@@ -371,3 +371,76 @@ mas ainda não fecha: **R$ 3.486 de material saem do caixa antes da entrega.**
 3. As **15 dúvidas** de levantamento seguem de pé.
 4. A **modulação de 4 folhas** no roupeiro da filha precisa bater com a
    arquiteta.
+
+
+---
+
+## Rodada de 07/09 (3ª parte) — a proposta em 7 páginas
+
+> *"Não coloque valores nas primeiras apresentações dos ambientes, deixe apenas
+> para a lista. Crie uma lista separada contendo apenas os roupeiros. Reduza o
+> investimento no upgrade em 20% e apresente a soma do valor total também com o
+> upgrade. Esse tópico pode sair também: 'Não estão nesta proposta'."*
+
+### O que mudou no documento
+
+| | |
+|---|---|
+| **Páginas 2 a 4** | saíram os valores. O cliente lê o projeto antes de ler o preço |
+| **Página 5** | a lista completa, 13 itens, total R$ 141.800 |
+| **Página 6** ✱ nova | **só os roupeiros** — 5 linhas, total R$ 90.600 — mais o upgrade e a soma dos dois recortes com e sem ele |
+| **Página 7** | condições. Saiu o bloco *"Não estão nesta proposta"* |
+
+### O upgrade com −20%
+
+| | tabela | proposta |
+|---|--:|--:|
+| Só o closet master | 10.000 | **8.000** |
+| Todos os armários | 31.600 | **25.300** |
+
+E as seis combinações, todas conferidas contra o piso:
+
+| Combinação | custo direto | investimento | MC bruta | líquida |
+|---|--:|--:|--:|--:|
+| projeto completo · branco | 45.986 | **141.800** | 47,6% | 38,8% |
+| projeto completo + Gianduia no closet | 49.230 | **149.800** | 47,2% | 38,4% |
+| projeto completo + Gianduia em tudo | 56.247 | **167.100** | 46,4% | 37,6% |
+| só roupeiros · branco | 31.098 | **90.600** | 45,7% | 36,9% |
+| só roupeiros + Gianduia no closet | 34.342 | **98.600** | 45,2% | 36,4% |
+| só roupeiros + Gianduia em tudo | 41.157 | **115.900** | 44,5% | 35,7% |
+
+**Nenhuma fura o piso de 35%.** O desconto de 20% deixa o incremento do upgrade
+em **39,5%** nos dois níveis — o upgrade é, sozinho, mais rentável que o pacote.
+O motor tem um `assert` que barra o desconto se ele furar o piso.
+
+### ⚠ O que a retirada do bloco de exclusões custa
+
+O tópico *"Não estão nesta proposta"* saiu, como você pediu. **As duas exclusões
+que mais importam sobreviveram**, porque não estavam só ali:
+
+- **O painel do espelho orgânico** continua dito na página 4, em nota própria.
+- **A faixa de mármore** continua dita dentro da descrição do painel da sala.
+
+O que se perdeu foi a lista genérica: camas, colchões, sofás, poltronas, mesas,
+cadeiras, tapetes, cortinas, TVs, eletrodomésticos, ar-condicionado, gesso,
+sanca, elétrica e pintura. **Nenhuma delas é marcenaria**, então o risco é baixo
+— mas é a lista que, num pedido futuro de "e aquele armário do corredor?",
+resolvia a conversa sem discussão.
+
+### 🆕 Um achado que virou regra da casa
+
+Montando as páginas ilustradas percebi que **os renders mostram o interno dos
+roupeiros amadeirado, e a proposta-base entrega Branco TX.** Não é erro de
+conta — é o padrão orçado desde o começo. Mas é a **mesma família da falha de
+02/09**, com imagem no lugar de palavra: o cliente decide olhando o render.
+
+Duas coisas saíram disso:
+
+1. Na proposta, virou **argumento de venda do upgrade**: *"Os renders deste
+   projeto mostram o interno amadeirado — é o upgrade que entrega exatamente
+   aquilo."* Honesto e vendedor ao mesmo tempo.
+2. Registrei em `referencias/validacao-orcamento.md` a extensão da regra:
+   **se está na IMAGEM, ou está na CONTA, ou está DITO que não está.** Com as
+   duas saídas legítimas (recortar o enquadramento ou escrever a exclusão na
+   mesma página) e o cuidado com **legenda de foto**, que é texto de proposta e
+   vale contrato.

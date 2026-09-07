@@ -323,3 +323,49 @@ linha correspondente no motor.
 > proposta** algo que a casa entrega. Aqui é **colocar na proposta** algo que a
 > casa não orçou. Os dois erros nascem do mesmo lugar — texto e conta escritos
 > em momentos diferentes, sem ninguém cruzar os dois no fim.
+
+---
+
+# ⛔ A EXTENSÃO DA REGRA — O RENDER TAMBÉM PROMETE
+
+**[Eliuton 2ª fase, 07/09/2026]** A regra de 02/09 fala de **palavras**. Mas uma
+proposta ilustrada promete também pela **imagem**, e imagem promete mais forte
+que texto: o cliente decide olhando o render, não lendo o descritivo.
+
+Dois casos apareceram no mesmo job:
+
+| O que o render mostra | O que o orçamento paga |
+|---|---|
+| **Painel do espelho orgânico** no quarto master | **Nada** — saiu do escopo a pedido do Jonathan |
+| **Interno dos roupeiros amadeirado** em todos os ambientes | **MDF Branco TX** — o interno branco é o padrão orçado |
+
+Nenhum dos dois é erro de conta. Os dois viram **expectativa de graça** se a
+proposta usar o render e ficar calada.
+
+## ⛔ A REGRA
+
+> **Se está na IMAGEM, ou está na CONTA, ou está DITO que não está.**
+> Todo render que entra numa proposta é lido item a item contra o orçamento.
+> O que aparece na foto e não está na conta tem de aparecer escrito como
+> exclusão, na mesma página, com o mesmo destaque.
+
+As duas saídas legítimas, quando o render mostra o que não vendemos:
+
+1. **Recortar a imagem** para o item não aparecer — foi o que fiz com o rack
+   suspenso do master, cortando o painel do espelho fora do enquadramento.
+2. **Dizer, na mesma página:** *"O painel do espelho orgânico não está nesta
+   proposta. Ele aparece nos renders do quarto master."*
+
+E quando o render mostra um **acabamento melhor** do que o orçado, isso não é só
+risco — **é o argumento do upgrade**. Na 2ª fase do Eliuton virou a frase de
+venda da página do Gianduia Trama: *"Os renders deste projeto mostram o interno
+amadeirado — é o upgrade que entrega exatamente aquilo."*
+
+## O terceiro cuidado: a legenda
+
+Legenda de foto é texto de proposta e vale contrato. Escrevi
+*"Closet master · a 1ª fase fechou em 20/08 e está em produção"* sob um render
+do closet da **2ª fase** — a frase é verdadeira sobre a 1ª fase e falsa sobre a
+foto. Corrigido para *"render do projeto desta 2ª fase"*.
+
+> **Legenda descreve a foto que está em cima dela, não o contexto ao redor.**

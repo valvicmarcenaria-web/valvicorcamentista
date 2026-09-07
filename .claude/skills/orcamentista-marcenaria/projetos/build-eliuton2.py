@@ -87,8 +87,21 @@ ENTRADA = 42500                      # 30,0% de 141.800, redondo
 SALDO   = TOTAL - ENTRADA
 assert SALDO == 99300 and abs(ENTRADA/TOTAL - 0.30) < 0.002
 
-UP_CLOSET = 10000                    # Gianduia só no closet aberto
-UP_TUDO   = 31600                    # Gianduia em todos os internos
+# [Jonathan 07/09] upgrade com 20% de desconto sobre o valor de tabela
+UP_CLOSET_T, UP_TUDO_T = 10000, 31600         # tabela, na MC do pacote
+UP_CLOSET = round(UP_CLOSET_T*0.80/100)*100   #  8.000
+UP_TUDO   = round(UP_TUDO_T*0.80/100)*100     # 25.300
+assert (UP_CLOSET, UP_TUDO) == (8000, 25300)
+# custo direto do upgrade, de corte-eliuton2.py — para conferir a margem
+CD_UP_CLOSET, CD_UP_TUDO = 3244, 10261
+BASE_MC = 1 - 0.162 - 0.88*0.043
+for _p, _c in ((UP_CLOSET, CD_UP_CLOSET), (UP_TUDO, CD_UP_TUDO)):
+    assert BASE_MC - _c/_p > 0.35, (_p, _c)   # o desconto não fura o piso
+
+# roupeiros — a lista separada que o cliente pediu para olhar primeiro
+ROUPEIROS = [i for i in ITENS if i[1].startswith(('Closet aberto', 'Roupeiro'))]
+TOTAL_ROUP = sum(i[4] for i in ROUPEIROS)
+assert len(ROUPEIROS) == 5 and TOTAL_ROUP == 90600, (len(ROUPEIROS), TOTAL_ROUP)
 
 def brl(v): return f'{v:,.0f}'.replace(',', '.')
 def img(n): return f'img-eliuton2/{n}.jpg'
@@ -157,23 +170,23 @@ CSS = (open(P/'css-proposta.css', encoding='utf-8').read()
 .nota b{color:var(--ink);}
 """)
 
+NP = 7
 def foot(n):
     return (f'<div class="foot"><span>valvic marcenaria</span>'
-            f'<span>{CLIENTE} · 2ª fase</span><span>{n} / 6</span></div>')
+            f'<span>{CLIENTE} · 2ª fase</span><span>{n} / {NP}</span></div>')
 
 def bloco(it, full=False, cls=''):
     amb, nome, im, desc, v = it
     ph = (f'<div class="ph"><img class="{cls}" src="{img(im)}" alt=""></div>') if im else ''
     return (f'<div class="{"full" if full else ""}">{ph}'
             f'<div class="a">{amb}</div><div class="t">{nome}</div>'
-            f'<div class="d">{desc}</div>'
-            f'<div class="v">R$ {brl(v)}</div></div>')
+            f'<div class="d">{desc}</div></div>')
 
 def compacto(*its):
     """Itens sem render próprio — entram como cartão de texto, mas ENTRAM.
     Nenhum item da tabela de preço pode ficar de fora do memorial."""
     cs = ''.join(f'<div><div class="a">{a}</div><div class="t">{n}</div>'
-                 f'<div class="d">{d}</div><div class="v">R$ {brl(v)}</div></div>'
+                 f'<div class="d">{d}</div></div>'
                  for a, n, _i, d, v in its)
     return f'<div class="comp">{cs}</div>'
 
@@ -205,9 +218,8 @@ p2 = f"""<div class="page"><div class="pad">
     {bloco(ITENS[3])}
     {bloco(ITENS[4])}
   </div>
-  <div class="nota">Os dois maiores móveis desta fase. Juntos somam
-  <b>R$ {brl(ITENS[3][4] + ITENS[4][4])}</b> dos R$ {brl(TOTAL)} da proposta —
-  e são os dois que o cliente abre todos os dias.</div>
+  <div class="nota">Os dois maiores móveis desta fase — e os dois que se abrem
+  todos os dias. O investimento de cada item está na página 5.</div>
   <div class="ph banda2" style="margin-top:auto;"><img src="{img('pais2')}" alt="">
     <div class="cap">Quarto dos pais · o nicho de TV sai do próprio corpo do
     roupeiro, com reforço e passa-cabo.</div>
@@ -259,6 +271,18 @@ for amb, nome, im, desc, v in ITENS:
     linhas += (f'<tr><td class="a">{a}</td><td class="i">{nome}</td>'
                f'<td class="r">R$ {brl(v)}</td></tr>')
 
+linhas = ''
+_amb = None
+for amb, nome, im, desc, v in ITENS:
+    a = amb if amb != _amb else ''
+    _amb = amb
+    linhas += (f'<tr><td class="a">{a}</td><td class="i">{nome}</td>'
+               f'<td class="r">R$ {brl(v)}</td></tr>')
+
+lroup = ''.join(f'<tr><td class="a">{a}</td><td class="i">{n}</td>'
+                f'<td class="r">R$ {brl(v)}</td></tr>'
+                for a, n, _i, _d, v in ROUPEIROS)
+
 p5 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">Investimento</div>
   <div class="h-sec serif">Item a item.</div>
@@ -266,29 +290,73 @@ p5 = f"""<div class="page"><div class="pad">
   <table class="inv2">
     <thead><tr><th>Ambiente</th><th>Item</th><th class="r">Investimento</th></tr></thead>
     <tbody>{linhas}
-      <tr class="tot"><td></td><td>Total</td><td class="r">R$ {brl(TOTAL)}</td></tr>
+      <tr class="tot"><td></td><td>Total · projeto completo</td>
+        <td class="r">R$ {brl(TOTAL)}</td></tr>
     </tbody>
   </table>
-
-  <div class="up">
-    <div class="k">Opcional</div>
-    <div class="t serif">Interno em MDF Gianduia Trama.</div>
-    <div class="d">Hoje o interno de todos os roupeiros é <b>MDF branco</b> —
-    caixaria, fundos, prateleiras e frentes de gaveteiro. O upgrade troca esse
-    interno pelo <b>Gianduia Trama</b>, amadeirado com textura. <b>As portas não
-    mudam.</b></div>
-    <div class="l"><span><b>Só o closet master</b> — é o único móvel aberto:
-      nele o interno é a fachada</span><b>+ R$ {brl(UP_CLOSET)}</b></div>
-    <div class="l"><span><b>Todos os roupeiros e o closet</b></span>
-      <b>+ R$ {brl(UP_TUDO)}</b></div>
-    <div class="d" style="margin-top:3mm;">Valores sujeitos a confirmação da
-    tabela do fornecedor da chapa Gianduia Trama.</div>
+  <div class="nota">Todos os itens descritos nas páginas anteriores estão neste
+  valor, incluídos projeto executivo, ferragens, iluminação e a
+  <b>montagem por equipe própria</b>. Na página seguinte, o recorte
+  <b>só com os armários</b> e a opção de interno em Gianduia Trama.</div>
+  <div class="ph banda2" style="margin-top:auto;"><img src="{img('filha2')}" alt="">
+    <div class="cap">Quarto da filha · o roupeiro ocupa a parede de 3,81 m,
+    do piso ao forro.</div>
   </div>
   {foot(5)}
 </div></div>"""
 
-# ── 6 · prazo, pagamento, garantia e fronteiras ───────────────────────────
+# ── 6 · só os roupeiros ──────────────────────────────────────────────────
 p6 = f"""<div class="page"><div class="pad">
+  <div class="eyebrow">Investimento · recorte</div>
+  <div class="h-sec serif">Só os roupeiros.</div>
+  <div class="rule"></div>
+  <p class="lead">Se a prioridade for guardar roupa antes de tudo, este é o
+  recorte: <b>os cinco armários</b>, com a mesma ferragem, o mesmo prazo e a
+  mesma garantia do projeto completo.</p>
+  <table class="inv2">
+    <thead><tr><th>Ambiente</th><th>Item</th><th class="r">Investimento</th></tr></thead>
+    <tbody>{lroup}
+      <tr class="tot"><td></td><td>Total · só os roupeiros</td>
+        <td class="r">R$ {brl(TOTAL_ROUP)}</td></tr>
+    </tbody>
+  </table>
+
+  <div class="up">
+    <div class="k">Opcional · em qualquer um dos dois recortes</div>
+    <div class="t serif">Interno em MDF Gianduia Trama.</div>
+    <div class="d">Hoje o interno dos armários é <b>MDF branco</b> — caixaria,
+    fundos, prateleiras e frentes de gaveteiro. O upgrade troca esse interno pelo
+    <b>Gianduia Trama</b>, amadeirado com textura. <b>As portas não mudam.</b>
+    <b>Os renders deste projeto mostram o interno amadeirado</b> — é o upgrade
+    que entrega exatamente aquilo.</div>
+    <div class="l"><span><b>Só o closet master</b> — é o único móvel aberto:
+      nele o interno é a fachada</span><b>+ R$ {brl(UP_CLOSET)}</b></div>
+    <div class="l"><span><b>Todos os armários</b></span>
+      <b>+ R$ {brl(UP_TUDO)}</b></div>
+  </div>
+
+  <table class="inv2" style="margin-top:5mm;">
+    <thead><tr><th>Com o upgrade</th><th class="r">Só os roupeiros</th>
+      <th class="r">Projeto completo</th></tr></thead>
+    <tbody>
+      <tr><td class="i">Interno em branco</td>
+        <td class="r">R$ {brl(TOTAL_ROUP)}</td>
+        <td class="r">R$ {brl(TOTAL)}</td></tr>
+      <tr><td class="i">+ Gianduia no closet master</td>
+        <td class="r">R$ {brl(TOTAL_ROUP+UP_CLOSET)}</td>
+        <td class="r">R$ {brl(TOTAL+UP_CLOSET)}</td></tr>
+      <tr><td class="i">+ Gianduia em todos os armários</td>
+        <td class="r">R$ {brl(TOTAL_ROUP+UP_TUDO)}</td>
+        <td class="r">R$ {brl(TOTAL+UP_TUDO)}</td></tr>
+    </tbody>
+  </table>
+  <div class="nota">Valores do upgrade sujeitos à confirmação da tabela do
+  fornecedor da chapa Gianduia Trama.</div>
+  {foot(6)}
+</div></div>"""
+
+# ── 7 · prazo, pagamento, garantia e fronteiras ───────────────────────────
+p7 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">Condições</div>
   <div class="h-sec serif">Prazo, pagamento<br>e fronteiras.</div>
   <div class="rule"></div>
@@ -317,15 +385,7 @@ p6 = f"""<div class="page"><div class="pad">
       transporte e <b>montagem por equipe própria</b>.</div></div>
   </div>
 
-  <div class="nota" style="margin-top:7mm;">
-  <b>Não estão nesta proposta:</b> tudo o que foi contratado na 1ª fase (cozinha,
-  área gourmet, área de serviço e banheiros); o <b>painel do espelho orgânico</b>
-  do quarto master; a <b>faixa de mármore</b> atrás da TV da sala, que é
-  marmoraria; camas, colchões, sofás, poltronas, mesas, cadeiras, tapetes e
-  cortinas; TVs e eletrodomésticos; ar-condicionado, gesso, sanca, elétrica e
-  pintura.</div>
-
-  <div class="nota"><b>Medidas.</b> Os valores acima partem da planta cotada da
+  <div class="nota" style="margin-top:7mm;"><b>Medidas.</b> Os valores acima partem da planta cotada da
   arquiteta e do projeto de renders. <b>As medidas são conferidas no local antes
   do corte</b> — se alguma diferir do projeto, avisamos antes de produzir.</div>
 
@@ -333,14 +393,14 @@ p6 = f"""<div class="page"><div class="pad">
     <div class="cap">Closet master · render do projeto desta 2ª fase.</div>
   </div>
   <div class="eyebrow" style="margin-top:6mm;">{ARQUITETA}</div>
-  {foot(6)}
+  {foot(7)}
 </div></div>"""
 
 HTML = ('<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">'
         '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:'
         'wght@400;500;600;700&family=DM+Sans:wght@300;400;500;700&display=swap" '
         f'rel="stylesheet"><style>{CSS}</style></head><body>'
-        f'{p1}{p2}{p3}{p4}{p5}{p6}</body></html>')
+        f'{p1}{p2}{p3}{p4}{p5}{p6}{p7}</body></html>')
 
 (P/'proposta-eliuton2.html').write_text(HTML, encoding='utf-8')
 tmp = HTML.replace('src="img-eliuton2/', f'src="file://{P}/img-eliuton2/')

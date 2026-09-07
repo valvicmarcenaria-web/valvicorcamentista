@@ -711,6 +711,26 @@ for f_ in (1.00, 1.10, 1.20, 1.30):
     print(f'      Trama {(f_-1)*100:>3.0f}% acima do fosco → R$ {brl(_p,0)}'
           f'   (+R$ {brl(_p-INV,0)} sobre o Branco TX)')
 
+# [Jonathan 07/09] o upgrade vai à proposta com 20% de desconto sobre a tabela
+UP_C, UP_T = round(DELTA_C*0.8/100)*100, round(DELTA_G*0.8/100)*100
+print(f'\n  [Jonathan] upgrade na proposta com −20%: closet R$ {brl(UP_C,0)} · '
+      f'tudo R$ {brl(UP_T,0)}')
+print(f'  {"combinação":<38}{"custo direto":>14}{"investimento":>14}'
+      f'{"MC bruta":>10}{"líquida":>9}')
+for nome, cd_, pv in (
+        ('projeto completo · branco',              CD_F,      INV),
+        ('projeto completo + Gianduia no closet',  rc['cd'],  INV+UP_C),
+        ('projeto completo + Gianduia em tudo',    rg['cd'],  INV+UP_T),
+        ('só roupeiros · branco',                  rr['cd'],  P_ROUPS),
+        ('só roupeiros + Gianduia no closet',      rcr['cd'], P_ROUPS+UP_C),
+        ('só roupeiros + Gianduia em tudo',        rgr['cd'], P_ROUPS+UP_T)):
+    mb = mc_conferida(pv, cd_)
+    print(f'  {nome:<38}{"R$ "+brl(cd_,0):>14}{"R$ "+brl(pv,0):>14}'
+          f'{mb*100:>9.1f}%{(mb-LIQF_*RT_PCT)*100:>8.1f}%'
+          f'{"  ⚠ ABAIXO DO PISO" if mb-LIQF_*RT_PCT < 0.35 else ""}')
+print(f'  MC só do incremento: closet {mc_conferida(UP_C, rc["cd"]-CD_F)*100:.1f}% · '
+      f'tudo {mc_conferida(UP_T, rg["cd"]-CD_F)*100:.1f}%')
+
 print('\n' + '─'*W)
 print(f'DÚVIDAS E CONFERÊNCIAS — {len(D["DUV"])} itens')
 for i, (a, t) in enumerate(D['DUV'], 1):
