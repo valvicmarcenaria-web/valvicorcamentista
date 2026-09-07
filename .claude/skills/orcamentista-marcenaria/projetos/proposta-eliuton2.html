@@ -1,0 +1,380 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"><style>
+:root{
+  --ink:#1A1714; --soft:#5C564C; --mut:#918A7C; --line:#E3DDD1; --hair:#F0EBE1;
+  --paper:#fff; --cream:#FAF7F1; --sand:#F1EBDF;
+  --gold:#9C7A3C; --gold-lt:#C6A567; --gold-pale:#F5EEDF; --deep:#241F1B;
+}
+@page{size:A4;margin:0;}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;
+     color:var(--ink);font-size:9.6pt;line-height:1.62;}
+.serif{font-family:'Cormorant Garamond','Liberation Serif',Georgia,serif;}
+.page{position:relative;width:210mm;height:297mm;overflow:hidden;
+      background:var(--paper);page-break-after:always;}
+.page:last-of-type{page-break-after:avoid;}
+.pad{padding:17mm 19mm 14mm;height:100%;display:flex;flex-direction:column;}
+h1,h2,h3{margin:0;font-weight:600;}
+p{margin:0;}
+.eyebrow{font-size:7.2pt;letter-spacing:.30em;text-transform:uppercase;
+         color:var(--gold);font-weight:700;}
+.rule{height:1.5px;width:40px;background:var(--gold);margin:7px 0 13px;}
+.h-sec{font-family:'Cormorant Garamond',Georgia,serif;font-size:23pt;
+       line-height:1.12;font-weight:600;letter-spacing:-.01em;}
+.lead{color:var(--soft);font-size:9.9pt;max-width:150mm;}
+.foot{margin-top:auto;padding-top:8mm;border-top:1px solid var(--hair);
+      display:flex;justify-content:space-between;font-size:7.2pt;
+      letter-spacing:.16em;text-transform:uppercase;color:var(--mut);}
+
+/* capa */
+.cover{background:var(--deep);color:#F6F1E7;}
+.cover .pad{padding:24mm 19mm 16mm;}
+.cover .eyebrow{color:var(--gold-lt);}
+.cover .rule{background:var(--gold-lt);width:56px;height:2px;}
+.cv-t{font-family:'Cormorant Garamond',Georgia,serif;font-size:38pt;
+      line-height:1.05;font-weight:600;letter-spacing:-.015em;margin-top:3mm;max-width:150mm;}
+.cv-nome{font-family:'Cormorant Garamond',Georgia,serif;font-size:74pt;
+         line-height:.98;font-weight:600;letter-spacing:-.025em;margin-top:4mm;
+         color:#F7F2E8;}
+.cv-s{font-size:13pt;color:#CFC6B4;margin-top:7mm;font-weight:300;
+      line-height:1.45;}
+.cv-meta{margin-top:13mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6mm;
+         border-top:1px solid rgba(255,255,255,.16);padding-top:7mm;}
+.cv-meta .k{font-size:6.9pt;letter-spacing:.2em;text-transform:uppercase;
+            color:var(--gold-lt);font-weight:700;}
+.cv-meta .v{font-size:10.4pt;color:#EDE6D9;margin-top:2mm;}
+.cv-brand{font-size:8.6pt;letter-spacing:.42em;text-transform:uppercase;
+          color:#E8DFCB;font-weight:700;}
+.cv-num{position:absolute;right:19mm;top:22mm;font-family:'Cormorant Garamond',Georgia,serif;
+        font-size:110pt;line-height:1;color:rgba(198,165,103,.13);font-weight:600;}
+
+/* itens */
+.it{padding:3.1mm 0;border-bottom:1px solid var(--hair);display:flex;gap:6mm;}
+.it:last-child{border-bottom:none;}
+.it-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:14.5pt;color:var(--gold-lt);
+      font-weight:600;min-width:9mm;line-height:1.1;}
+.it-t{font-size:10.4pt;font-weight:600;letter-spacing:-.005em;}
+.it-d{color:var(--soft);font-size:8.4pt;margin-top:1mm;line-height:1.5;}
+
+/* cenários */
+.cen{border:1px solid var(--line);border-radius:2px;padding:4.6mm 5.6mm;
+     margin-bottom:3.4mm;background:var(--cream);}
+.cen.hi{background:var(--gold-pale);border-color:var(--gold-lt);}
+.cen-h{display:flex;align-items:baseline;gap:4mm;}
+.cen-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:20pt;
+       color:var(--gold);font-weight:600;line-height:1;}
+.cen-t{font-size:12.5pt;font-weight:600;}
+.cen-g{margin-left:auto;font-size:7.6pt;letter-spacing:.16em;text-transform:uppercase;
+       color:#fff;background:var(--gold);padding:2.2mm 3.4mm;border-radius:2px;
+       font-weight:700;white-space:nowrap;}
+.cen-x{color:var(--soft);font-size:8.7pt;margin-top:2mm;}
+.cen-l{margin-top:2.8mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm;
+       border-top:1px solid var(--line);padding-top:3.2mm;}
+.cen-l .k{font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;
+          color:var(--mut);font-weight:700;}
+.cen-l .v{font-size:8.7pt;margin-top:1mm;line-height:1.4;}
+
+/* tabela de investimento */
+table{width:100%;border-collapse:collapse;}
+.inv th{font-size:6.9pt;letter-spacing:.16em;text-transform:uppercase;
+        color:var(--mut);font-weight:700;text-align:right;padding:0 0 3mm;
+        border-bottom:1.5px solid var(--gold);}
+.inv th.l{text-align:left;}
+.inv td{padding:2.4mm 0;border-bottom:1px solid var(--hair);text-align:right;
+        font-variant-numeric:tabular-nums;font-size:9.6pt;}
+.inv td.l{text-align:left;font-size:9.5pt;}
+.inv td.hi{background:var(--gold-pale);font-weight:600;
+           padding-right:2.6mm;padding-left:2.6mm;}
+.inv th.hi{background:var(--gold-pale);padding-right:2.6mm;padding-left:2.6mm;
+           color:var(--gold);}
+.inv tr.tot td{border-bottom:none;border-top:1.5px solid var(--ink);
+               padding-top:3mm;font-size:13.5pt;font-weight:600;
+               font-family:'Cormorant Garamond',Georgia,serif;}
+.inv tr.tot td.l{font-family:inherit;font-size:8pt;letter-spacing:.18em;
+                 text-transform:uppercase;font-weight:700;}
+
+.box{background:var(--cream);border-left:2.5px solid var(--gold);
+     padding:4mm 5.2mm;margin-top:4mm;}
+.box .t{font-size:7.4pt;letter-spacing:.18em;text-transform:uppercase;
+        color:var(--gold);font-weight:700;}
+.box p{color:var(--soft);font-size:9pt;margin-top:2mm;}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:9mm;}
+.term{padding:3.4mm 0;border-bottom:1px solid var(--hair);}
+.term:last-child{border-bottom:none;}
+.term .k{font-size:6.9pt;letter-spacing:.18em;text-transform:uppercase;
+         color:var(--gold);font-weight:700;}
+.term .v{font-size:9.5pt;margin-top:1.2mm;}
+.term .s{color:var(--soft);font-size:8.5pt;margin-top:.8mm;}
+.pay td{padding:2.6mm 0;border-bottom:1px solid var(--hair);font-size:9pt;}
+.pay td.d{text-align:right;font-weight:600;color:var(--gold);
+          font-variant-numeric:tabular-nums;}
+.fora .k{font-size:9.3pt;font-weight:600;}
+.fora .v{color:var(--soft);font-size:8.6pt;margin-top:.8mm;}
+.fora li{margin-bottom:3.2mm;list-style:none;}
+.fora ul{margin:0;padding:0;}
+.sig{margin-top:auto;padding-top:9mm;display:grid;grid-template-columns:1fr 1fr;gap:14mm;}
+.sig .ln{border-top:1px solid var(--ink);padding-top:2.4mm;font-size:8.4pt;
+         color:var(--soft);}
+
+/* ── PAINÉIS DE IMAGEM ────────────────────────────────────────────────────
+   As vistas do projeto executivo saem do modelo 3D com FUNDO PRETO. Em vez
+   de recortar (o preto não é só borda — entra nos cantos do corte isométrico),
+   o painel é preto de propósito: a imagem encosta no fundo sem emenda e a
+   página ganha uma banda escura que conversa com a capa.
+   `.z` dá um zoom leve para comer a moldura preta fina das elevações.        */
+.ph{background:#000;overflow:hidden;position:relative;}
+.ph img{display:block;width:100%;height:100%;object-fit:cover;}
+.ph.ct img{object-fit:contain;}
+.ph img.z{transform:scale(1.09);}
+.ph img.z2{transform:scale(1.16);}
+.ph .cap{position:absolute;left:0;right:0;bottom:0;padding:6mm 4mm 2.8mm;
+  font-size:6.6pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-lt);font-weight:700;
+  background:linear-gradient(transparent,rgba(0,0,0,.9));}
+
+/* capa partida: texto à esquerda, vista do projeto à direita */
+.cv2{display:grid;grid-template-columns:1.06fr 1fr;height:100%;}
+.cv2 .txt{padding:24mm 13mm 16mm 19mm;display:flex;flex-direction:column;
+  min-width:0;}
+.cv2 .ph{border-left:1px solid rgba(198,165,103,.30);}
+.cv2 .cv-t{font-size:31pt;}
+.cv2 .cv-s{font-size:11.4pt;margin-top:6mm;}
+.cv2 .cv-meta{grid-template-columns:1fr;gap:4mm;margin-top:10mm;padding-top:6mm;}
+.cv2 .cv-meta>div{display:grid;grid-template-columns:34mm 1fr;align-items:baseline;}
+.cv2 .cv-meta .v{margin-top:0;font-size:9.8pt;}
+
+/* capa com render fotográfico de topo */
+.cvfoto{display:grid;grid-template-rows:auto 146mm 1fr;height:100%;}
+.cvfoto .top{padding:13mm 19mm 8mm;}
+.cvfoto .txt{padding:11mm 19mm 14mm;display:flex;flex-direction:column;}
+.cvfoto .cv-t{font-size:33pt;}
+
+/* dupla de vistas lado a lado */
+.dupla{display:grid;grid-template-columns:1fr 1fr;gap:6mm;}
+.dupla .ph{height:58mm;}
+.dupla .t{font-size:10.6pt;font-weight:600;margin-top:3.6mm;}
+.dupla .d{color:var(--soft);font-size:8.5pt;margin-top:1.4mm;line-height:1.52;}
+
+/* banda de largura total, sangrando nas laterais da página */
+.banda{margin:0 -19mm;height:74mm;}
+.dupla.sangra{margin:0 -19mm;gap:0;}
+.dupla.sangra .ph{height:172mm;}
+.dupla.sangra.baixa .ph{height:106mm;}
+.dupla.sangra .ph+.ph{border-left:1px solid rgba(198,165,103,.22);}
+
+/* página partida: vista alta à esquerda, texto à direita */
+.split{display:grid;grid-template-columns:74mm 1fr;gap:9mm;flex:1;
+  min-height:0;margin-top:2mm;}
+.split .ph{height:100%;}
+
+/* garantia — bloco técnico, uma linha por componente */
+.gar{border:1px solid var(--line);border-radius:2px;padding:5mm 5.5mm;
+  background:var(--cream);}
+.gar-h{display:flex;align-items:baseline;gap:4mm;
+  border-bottom:1px solid var(--line);padding-bottom:3mm;}
+.gar-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:30pt;
+  color:var(--gold);font-weight:600;line-height:.9;}
+.gar-u{font-size:7pt;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--mut);font-weight:700;}
+.gar-x{margin-left:auto;color:var(--soft);font-size:8.4pt;text-align:right;
+  max-width:78mm;line-height:1.45;}
+.gar-l{display:flex;justify-content:space-between;gap:5mm;
+  padding:2.3mm 0;border-bottom:1px solid var(--hair);font-size:8.8pt;}
+.gar-l:last-child{border-bottom:none;}
+.gar-l .k{color:var(--soft);}
+.gar-l .v{font-weight:700;white-space:nowrap;}
+
+.itg{display:grid;grid-template-columns:1fr 1fr;gap:7mm 8mm;margin-top:5mm;}
+.itg .ph{height:46mm;border-radius:2px;}
+.itg .t{font-size:10.4pt;font-weight:700;margin-top:3.4mm;line-height:1.25;}
+.itg .a{font-size:6.9pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.itg .d{color:var(--soft);font-size:8.3pt;margin-top:1.8mm;line-height:1.5;}
+.itg .v{font-weight:700;font-size:9.6pt;margin-top:2.2mm;}
+.itg .full{grid-column:1 / -1;}
+.itg .full .ph{height:52mm;}
+.ph img.baixo{object-position:center 66%;}
+.itg.duo .ph{height:80mm;}
+.banda2{margin:0 -19mm;height:68mm;}
+.comp{display:grid;grid-template-columns:1fr 1fr;gap:5mm 9mm;margin-top:6mm;
+  border-top:1px solid var(--line);padding-top:4.5mm;}
+.comp .t{font-size:8.8pt;font-weight:700;line-height:1.25;}
+.comp .a{font-size:6.4pt;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;margin-bottom:1mm;}
+.comp .d{color:var(--soft);font-size:7.6pt;margin-top:1.4mm;line-height:1.45;}
+.comp .v{font-weight:700;font-size:8.6pt;margin-top:1.8mm;}
+.inv2{width:100%;border-collapse:collapse;font-size:8.8pt;margin-top:4mm;}
+.inv2 th{font-size:6.6pt;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mut);font-weight:700;border-bottom:1.5px solid var(--ink);
+  padding:0 0 2mm;text-align:left;}
+.inv2 th.r{text-align:right;}
+.inv2 td{padding:1.9mm 0;border-bottom:1px solid var(--hair);vertical-align:top;}
+.inv2 td.a{width:34mm;color:var(--gold);font-size:7.2pt;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:700;padding-top:2.5mm;}
+.inv2 td.i{font-weight:600;}
+.inv2 td.r{text-align:right;font-weight:700;white-space:nowrap;padding-left:6mm;}
+.inv2 tr.tot td{border-bottom:0;border-top:2px solid var(--ink);
+  padding-top:3.4mm;font-size:13pt;font-weight:700;}
+.inv2 tr.tot td.r{font-family:'Cormorant Garamond',Georgia,serif;font-size:25pt;}
+.up{margin-top:5mm;border:1px solid var(--gold-lt);border-radius:2px;
+  background:var(--gold-pale);padding:5mm 6mm;}
+.up .k{font-size:6.9pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.up .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:19pt;
+  font-weight:600;margin-top:1.5mm;line-height:1.1;}
+.up .d{color:var(--soft);font-size:8.4pt;margin-top:2.4mm;}
+.up .l{display:grid;grid-template-columns:1fr auto;gap:4mm;
+  border-top:1px solid rgba(156,122,60,.24);padding:2.4mm 0 0;margin-top:3mm;}
+.up .l b{font-weight:700;white-space:nowrap;}
+.pf{display:grid;grid-template-columns:1fr 1fr;gap:6mm;margin-top:6mm;}
+.pf .c{border:1px solid var(--line);border-radius:2px;padding:5.5mm 6mm;}
+.pf .c.hi{background:var(--deep);border-color:var(--deep);color:#F6F1E7;}
+.pf .k{font-size:6.9pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.pf .c.hi .k{color:var(--gold-lt);}
+.pf .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:29pt;
+  line-height:1.05;font-weight:600;margin-top:2mm;}
+.pf .s{color:var(--soft);font-size:8.4pt;margin-top:2.4mm;line-height:1.5;}
+.pf .c.hi .s{color:#CFC6B4;}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:4mm 8mm;margin-top:4mm;}
+.fr .k{font-size:6.9pt;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.fr .d{color:var(--soft);font-size:8.6pt;margin-top:1.2mm;line-height:1.52;}
+.fr .d b{color:var(--ink);}
+.nota{margin-top:5mm;padding-left:4mm;border-left:2px solid var(--gold-lt);
+  font-size:8.2pt;color:var(--soft);line-height:1.5;}
+.nota b{color:var(--ink);}
+</style></head><body><div class="page cover"><div class="cvfoto">
+  <div class="top"><div class="cv-brand">valvic marcenaria</div></div>
+  <div class="ph"><img src="img-eliuton2/capa.jpg" alt=""></div>
+  <div class="txt">
+    <div class="eyebrow">Proposta comercial · 2ª fase</div>
+    <div class="cv-t serif">Os quartos,<br>os closets<br>e a sala.</div>
+    <div class="cv-meta">
+      <div><div class="k">Cliente</div><div class="v">Eliuton Ribeiro</div></div>
+      <div><div class="k">Obra</div><div class="v">Residência Brisas da Pampulha</div></div>
+      <div><div class="k">Data</div><div class="v">07 de setembro de 2026</div></div>
+    </div>
+  </div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">O que entra</div>
+  <div class="h-sec serif">Os roupeiros primeiro.</div>
+  <div class="rule"></div>
+  <p class="lead">São <b>cinco roupeiros e um closet</b> — o coração desta fase.
+  Todos do piso ao forro, com cabideiro, prateleira, gaveteiro interno e a mesma
+  ferragem <b>Hardt</b> da 1ª fase: corrediça oculta com amortecimento e
+  dobradiça com regulagem em três dimensões.</p>
+  <div class="itg duo">
+    <div class=""><div class="ph"><img class="" src="img-eliuton2/closet.jpg" alt=""></div><div class="a">Closet master</div><div class="t">Closet aberto · dois lados de 2,94 m</div><div class="d">Os <b>dois lados</b> do closet, sem portas: cabideiro duplo em quatro vãos, <b>seis prateleiras superiores</b> e <b>cinco sapateiras</b>, todas com <b>LED embutido</b>, e <b>dois gaveteiros de quatro gavetas</b>. É o móvel em que o interno é a fachada — não há porta para escondê-lo.</div><div class="v">R$ 24.000</div></div>
+    <div class=""><div class="ph"><img class="" src="img-eliuton2/pais.jpg" alt=""></div><div class="a">Quarto dos pais</div><div class="t">Roupeiro em L com nicho de TV</div><div class="d">Roupeiro em L de <b>3,42 m + 2,30 m</b> do piso ao forro, <b>dez portas</b>, dez prateleiras, quatro cabideiros e <b>gaveteiro de cinco gavetas</b>. <b>Nicho de TV amadeirado embutido no corpo</b>, com reforço, passa-cabo e LED. A TV e o ponto elétrico são da obra.</div><div class="v">R$ 26.500</div></div>
+  </div>
+  <div class="nota">Os dois maiores móveis desta fase. Juntos somam
+  <b>R$ 50.500</b> dos R$ 141.800 da proposta —
+  e são os dois que o cliente abre todos os dias.</div>
+  <div class="ph banda2" style="margin-top:auto;"><img src="img-eliuton2/pais2.jpg" alt="">
+    <div class="cap">Quarto dos pais · o nicho de TV sai do próprio corpo do
+    roupeiro, com reforço e passa-cabo.</div>
+  </div>
+  <div class="foot"><span>valvic marcenaria</span><span>Eliuton Ribeiro · 2ª fase</span><span>2 / 6</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">O que entra</div>
+  <div class="h-sec serif">Três roupeiros,<br>três soluções de porta.</div>
+  <div class="rule"></div>
+  <p class="lead">Porta de abrir onde há espaço para ela girar; porta
+  deslizante onde não há. É decisão de circulação, não de preço.</p>
+  <div class="itg">
+    <div class=""><div class="ph"><img class="" src="img-eliuton2/filha.jpg" alt=""></div><div class="a">Quarto da filha</div><div class="t">Roupeiro com portas deslizantes Dominus</div><div class="d">Roupeiro de <b>3,81 m</b> com <b>quatro folhas deslizantes</b> em sistema <b>Dominus (Rometal)</b> — trilhos ocultos, duplo amortecimento e desempenadores anti-empeno em todas as folhas. Dez prateleiras, quatro cabideiros e gaveteiro de quatro gavetas.</div><div class="v">R$ 16.500</div></div>
+    <div class=""><div class="ph"><img class="" src="img-eliuton2/visitas.jpg" alt=""></div><div class="a">Quarto de visitas</div><div class="t">Roupeiro de correr · 2,45 m</div><div class="d">Roupeiro de <b>2,45 m</b> com <b>três folhas deslizantes</b> em sistema Dominus, portas lisas sem puxador aparente. Oito prateleiras, três cabideiros e gaveteiro de quatro gavetas.</div><div class="v">R$ 14.200</div></div>
+    <div class=""><div class="ph"><img class="" src="img-eliuton2/escritorio.jpg" alt=""></div><div class="a">Escritório</div><div class="t">Roupeiro · 2,50 m</div><div class="d">Roupeiro de <b>2,50 m</b> do piso ao forro, quatro portas, oito prateleiras, três cabideiros e gaveteiro de três gavetas.</div><div class="v">R$ 9.400</div></div>
+    <div class=""><div class="ph"><img class="" src="img-eliuton2/escritorio2.jpg" alt=""></div><div class="a">Escritório</div><div class="t">Painel de TV com nichos</div><div class="d">Painel amadeirado de <b>3,00 m</b> com <b>seis nichos suspensos</b> iluminados em LED.</div><div class="v">R$ 5.600</div></div>
+  </div>
+  <div class="comp"><div><div class="a">Quarto da filha</div><div class="t">Bancada / penteadeira</div><div class="d">Bancada de <b>1,66 m</b> sob a janela, tampo em <b>25 mm</b>, duas gavetas e <b>LED sob o tampo</b>.</div><div class="v">R$ 2.700</div></div><div><div class="a">Escritório</div><div class="t">Bancada de trabalho curva</div><div class="d">Bancada de <b>2,00 m</b> com <b>ponta curva</b>, tampo em <b>25 mm</b> para não fletir no vão, montante lateral e duas gavetas.</div><div class="v">R$ 5.500</div></div></div>
+  <div class="foot"><span>valvic marcenaria</span><span>Eliuton Ribeiro · 2ª fase</span><span>3 / 6</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">O que entra</div>
+  <div class="h-sec serif">O quarto master<br>e a sala.</div>
+  <div class="rule"></div>
+  <div class="itg">
+    <div class=""><div class="ph"><img class="" src="img-eliuton2/master.jpg" alt=""></div><div class="a">Quarto master</div><div class="t">Painel de cabeceira com cabeceira estofada</div><div class="d">Painel amadeirado de <b>3,60 m</b> na parede da cabeceira mais <b>1,50 m</b> de retorno na lateral, com <b>topo curvo</b> contínuo e rasgo de LED sob o forro. <b>Cabeceira estofada de 2,00 × 1,00 m</b> integrada ao painel.</div><div class="v">R$ 11.400</div></div>
+    <div class=""><div class="ph"><img class="" src="img-eliuton2/rack.jpg" alt=""></div><div class="a">Quarto master</div><div class="t">Rack suspenso de TV</div><div class="d">Rack de <b>1,80 m</b> suspenso, quatro portas, cantos curvos e passa-cabo. Sem apoio no piso — a limpeza passa por baixo.</div><div class="v">R$ 2.400</div></div>
+    <div class="full"><div class="ph"><img class="baixo" src="img-eliuton2/sala.jpg" alt=""></div><div class="a">Sala de TV</div><div class="t">Painel de TV com ripado</div><div class="d">Painel de <b>4,00 × 2,60 m</b> ocupando a parede inteira, <b>doze nichos iluminados</b>, rasgo de LED e <b>faixa ripada</b> de 55 réguas a passo constante. <b>A faixa de mármore atrás da TV é da marmoraria e não está nesta proposta</b> — executamos o recorte e o encosto da marcenaria nela.</div><div class="v">R$ 16.000</div></div>
+  </div>
+  <div class="comp"><div><div class="a">Quarto master</div><div class="t">Criados-mudos (2)</div><div class="d">Dois criados suspensos de <b>85</b> e <b>80 cm</b>, três gavetas cada, com <b>cantos arredondados</b> e frente em cava usinada. Corrediça oculta com amortecimento.</div><div class="v">R$ 3.700</div></div><div><div class="a">Sala de TV</div><div class="t">Bancada suspensa · 3,20 m</div><div class="d">Bancada suspensa de <b>3,20 m</b>, quatro portas com cava usinada, sem apoio no piso.</div><div class="v">R$ 3.900</div></div></div>
+  <div class="nota"><b>O painel do espelho orgânico não está nesta proposta.</b>
+  Ele aparece nos renders do quarto master — o painel amadeirado de 1,20 m com o
+  espelho de corte orgânico na parede lateral. Ficou fora do escopo a seu pedido.
+  Se voltar, orçamos à parte.</div>
+  <div class="foot"><span>valvic marcenaria</span><span>Eliuton Ribeiro · 2ª fase</span><span>4 / 6</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Investimento</div>
+  <div class="h-sec serif">Item a item.</div>
+  <div class="rule"></div>
+  <table class="inv2">
+    <thead><tr><th>Ambiente</th><th>Item</th><th class="r">Investimento</th></tr></thead>
+    <tbody><tr><td class="a">Quarto master</td><td class="i">Painel de cabeceira com cabeceira estofada</td><td class="r">R$ 11.400</td></tr><tr><td class="a"></td><td class="i">Criados-mudos (2)</td><td class="r">R$ 3.700</td></tr><tr><td class="a"></td><td class="i">Rack suspenso de TV</td><td class="r">R$ 2.400</td></tr><tr><td class="a">Closet master</td><td class="i">Closet aberto · dois lados de 2,94 m</td><td class="r">R$ 24.000</td></tr><tr><td class="a">Quarto dos pais</td><td class="i">Roupeiro em L com nicho de TV</td><td class="r">R$ 26.500</td></tr><tr><td class="a">Quarto da filha</td><td class="i">Roupeiro com portas deslizantes Dominus</td><td class="r">R$ 16.500</td></tr><tr><td class="a"></td><td class="i">Bancada / penteadeira</td><td class="r">R$ 2.700</td></tr><tr><td class="a">Quarto de visitas</td><td class="i">Roupeiro de correr · 2,45 m</td><td class="r">R$ 14.200</td></tr><tr><td class="a">Escritório</td><td class="i">Roupeiro · 2,50 m</td><td class="r">R$ 9.400</td></tr><tr><td class="a"></td><td class="i">Painel de TV com nichos</td><td class="r">R$ 5.600</td></tr><tr><td class="a"></td><td class="i">Bancada de trabalho curva</td><td class="r">R$ 5.500</td></tr><tr><td class="a">Sala de TV</td><td class="i">Painel de TV com ripado</td><td class="r">R$ 16.000</td></tr><tr><td class="a"></td><td class="i">Bancada suspensa · 3,20 m</td><td class="r">R$ 3.900</td></tr>
+      <tr class="tot"><td></td><td>Total</td><td class="r">R$ 141.800</td></tr>
+    </tbody>
+  </table>
+
+  <div class="up">
+    <div class="k">Opcional</div>
+    <div class="t serif">Interno em MDF Gianduia Trama.</div>
+    <div class="d">Hoje o interno de todos os roupeiros é <b>MDF branco</b> —
+    caixaria, fundos, prateleiras e frentes de gaveteiro. O upgrade troca esse
+    interno pelo <b>Gianduia Trama</b>, amadeirado com textura. <b>As portas não
+    mudam.</b></div>
+    <div class="l"><span><b>Só o closet master</b> — é o único móvel aberto:
+      nele o interno é a fachada</span><b>+ R$ 10.000</b></div>
+    <div class="l"><span><b>Todos os roupeiros e o closet</b></span>
+      <b>+ R$ 31.600</b></div>
+    <div class="d" style="margin-top:3mm;">Valores sujeitos a confirmação da
+    tabela do fornecedor da chapa Gianduia Trama.</div>
+  </div>
+  <div class="foot"><span>valvic marcenaria</span><span>Eliuton Ribeiro · 2ª fase</span><span>5 / 6</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Condições</div>
+  <div class="h-sec serif">Prazo, pagamento<br>e fronteiras.</div>
+  <div class="rule"></div>
+
+  <div class="pf">
+    <div class="c hi"><div class="k">Condição especial</div>
+      <div class="v">R$ 42.500</div>
+      <div class="s">Entrada na assinatura — 30% do total. Libera a compra de
+      material e a entrada do projeto na fila de produção.</div></div>
+    <div class="c"><div class="k">Saldo à vista, na entrega</div>
+      <div class="v">R$ 99.300</div>
+      <div class="s">Pago após a instalação concluída e conferida na obra.
+      <b>Não há parcela durante a produção.</b></div></div>
+  </div>
+
+  <div class="fr" style="margin-top:7mm;">
+    <div><div class="k">Prazo de entrega</div><div class="d"><b>70 dias corridos</b>,
+      contados da assinatura, do pagamento da entrada e da medição final no
+      local.</div></div>
+    <div><div class="k">Garantia</div><div class="d"><b>5 anos</b> sobre
+      estrutura e ferragens — a mesma linha Hardt com que a 1ª fase foi
+      contratada.</div></div>
+    <div><div class="k">Validade da proposta</div><div class="d">7 dias corridos a partir desta data.</div></div>
+    <div><div class="k">Escopo Valvic</div><div class="d">Projeto executivo,
+      chapas, ferragens, iluminação em LED com driver, sistemas deslizantes,
+      transporte e <b>montagem por equipe própria</b>.</div></div>
+  </div>
+
+  <div class="nota" style="margin-top:7mm;">
+  <b>Não estão nesta proposta:</b> tudo o que foi contratado na 1ª fase (cozinha,
+  área gourmet, área de serviço e banheiros); o <b>painel do espelho orgânico</b>
+  do quarto master; a <b>faixa de mármore</b> atrás da TV da sala, que é
+  marmoraria; camas, colchões, sofás, poltronas, mesas, cadeiras, tapetes e
+  cortinas; TVs e eletrodomésticos; ar-condicionado, gesso, sanca, elétrica e
+  pintura.</div>
+
+  <div class="nota"><b>Medidas.</b> Os valores acima partem da planta cotada da
+  arquiteta e do projeto de renders. <b>As medidas são conferidas no local antes
+  do corte</b> — se alguma diferir do projeto, avisamos antes de produzir.</div>
+
+  <div class="ph banda" style="margin-top:auto;"><img src="img-eliuton2/closet2.jpg" alt="">
+    <div class="cap">Closet master · render do projeto desta 2ª fase.</div>
+  </div>
+  <div class="eyebrow" style="margin-top:6mm;">Arq. Luciana Beatriz Simplício · Núcleo SC Arquitetura</div>
+  <div class="foot"><span>valvic marcenaria</span><span>Eliuton Ribeiro · 2ª fase</span><span>6 / 6</span></div>
+</div></div></body></html>

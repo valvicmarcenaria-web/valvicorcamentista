@@ -240,3 +240,134 @@ Sensibilidade no pacote cheio (a Gianduia responde por R$ 19.600 de chapa):
    fatia do pacote, a diferença sai do nosso bolso.
 4. As **15 dúvidas** de levantamento seguem todas de pé — não há elevação de
    marcenaria neste pacote.
+
+
+---
+
+## Rodada de 07/09 (2ª parte) — preço cravado item a item · R$ 141.800
+
+> *"Do quarto master, retire o painel de espelho. Closet master R$ 24k. Roupeiro
+> em L com o nicho de TV 26.500. Roupeiro filha com portas deslizantes com
+> sistema Dominus 16.500. Sala painel de TV 16k. Escritório, bancada curva
+> 5.500. O restante mantenha os valores propostos. Na separação dos itens
+> mantenha o valor. Prazo de entrega 70 dias corridos. Forma de pagamento:
+> condição especial. Acrescente a opção de upgrade para interno em Gianduia
+> Trama."*
+
+### Duas mudanças de escopo, não só de preço
+
+**⛔ Saiu o painel do espelho orgânico** do quarto master — o painel de 1,20 m
+em amadeirado, 2,4 m de curva e o espelho de corte orgânico (0,96 m² a 1,8× o
+reto, R$ 1.036,80). Era a **maior adoção ★ do pacote** e a dúvida mais cara.
+Com ele saem 2,53 m² de chapa e a dúvida 4.
+
+**🔄 O roupeiro da filha virou deslizante Dominus.** Saem 6 portas de 63 e 12
+dobradiças; entram **4 folhas de 98 sobre 2 trilhos** mais R$ 2.330 de sistema.
+Adotei 4 folhas e não 3 porque **131 × 250 em MDF 18 pesa ~44 kg por folha** —
+fora do que o Dominus comporta. ★ O sistema de 4 portas (R$ 1.150) e as 2 barras
+de trilho (R$ 700) são escala do preço de 3 portas do quarto de visitas.
+**CONFERIR com a Rometal.** O render mostra portas de abrir — a proposta
+descreve o que foi contratado.
+
+### O número
+
+| | |
+|---|--:|
+| Chapa | 261,38 m² · **75 chapas** · 69% de aproveitamento |
+| Custo direto | R$ 45.986 |
+| **Investimento** | **R$ 141.800** |
+| MC bruta | 47,6% |
+| **MC líquida da RT** | **38,8%** |
+| R$/m² de chapa | 543 com RT · 493 sem |
+
+**Subiu R$ 16.800 sobre os R$ 125.000 — e isso com um item a menos.** A MC
+líquida saiu de 34,8% (abaixo do piso) para **38,8%**, a mais saudável do
+pacote desde o começo. O R$/m² de 493 encosta na faixa da casa (626–834) sem
+alcançá-la — segue sendo job de roupeiro, com 213 m² de Branco TX.
+
+### Item a item, com a MC de cada linha
+
+| Ambiente | Item | custo dir. | investimento | MC |
+|---|---|--:|--:|--:|
+| Quarto master | Painel de cabeceira com cabeceira estofada | 4.140 | **11.400** | 43,7% |
+| | Criados-mudos (2) | 1.328 | **3.700** | 44,1% |
+| | Rack suspenso de TV | 866 | **2.400** | 43,9% |
+| Closet master | ◼ Closet aberto · dois lados de 2,94 m | 7.262 | **24.000** | 49,8% |
+| Quarto dos pais | ◼ Roupeiro em L com nicho de TV | 7.421 | **26.500** | 52,0% |
+| Quarto da filha | ◼ Roupeiro com portas deslizantes Dominus | 7.297 | **16.500** | **35,8%** |
+| | Bancada / penteadeira | 973 | **2.700** | 44,0% |
+| Quarto de visitas | ◼ Roupeiro de correr · 2,45 m | 5.171 | **14.200** | 43,6% |
+| Escritório | ◼ Roupeiro · 2,50 m | 3.408 | **9.400** | 43,8% |
+| | Painel de TV com nichos | 2.014 | **5.600** | 44,1% |
+| | Bancada de trabalho curva | 1.308 | **5.500** | 56,2% |
+| Sala de TV | Painel de TV com ripado | 3.368 | **16.000** | **59,0%** |
+| | Bancada suspensa · 3,20 m | 1.429 | **3.900** | 43,4% |
+| **TOTAL** | | **45.986** | **R$ 141.800** | **47,6%** |
+
+**O roupeiro da filha é a linha mais magra, a 35,8%.** O preço subiu R$ 3.200
+(13.300 → 16.500) mas o custo subiu R$ 2.456 com o Dominus — a troca de porta
+de abrir por deslizante come quase todo o aumento. Ainda passa do piso, mas é a
+linha a proteger se aparecer negociação.
+
+**A sala a 59,0% e a bancada curva a 56,2%** são as duas linhas gordas — se
+alguma coisa tiver de ceder, é ali.
+
+### Se ele fechar só os roupeiros
+
+| | |
+|---|--:|
+| Soma dos cinco roupeiros cravados | **R$ 90.600** |
+| Custo direto do pacote sozinho | R$ 31.098 (205,71 m² · 59 chapas) |
+| MC bruta 45,7% · **líquida** | **36,9%** |
+
+Os roupeiros são **64% do preço** mas **68% do custo direto** — tirando os oito
+itens que não são roupeiro, o aproveitamento de chapa piora e o frete não cai
+junto (reduzi a logística de R$ 2.300 para R$ 1.700). **A MC ainda fica acima do
+piso**, então o cenário só-roupeiro é vendável pelos valores cravados, sem
+remendo.
+
+### O upgrade Gianduia Trama entrou na proposta
+
+| Opção | delta |
+|---|--:|
+| **Só o closet master** — o único móvel aberto, onde o interno é a fachada | **+ R$ 10.000** |
+| **Todos os roupeiros e o closet** | **+ R$ 31.600** |
+
+Segue com o aviso: **o preço da Gianduia Trama não está na base**, adotado o
+piso do Melamínico Fosco. A proposta diz, em letra visível, que os valores estão
+sujeitos à confirmação da tabela do fornecedor.
+
+### A proposta
+
+`build-eliuton2.py` → **`proposta-eliuton2.pdf`**, 6 páginas, com 13 renders
+recortados do deck em `img-eliuton2/`.
+
+- **Prazo 70 dias corridos** · **garantia 5 anos** (linha Hardt, a mesma da 1ª
+  fase) · validade 7 dias.
+- **Condição especial:** entrada de **R$ 42.500** na assinatura (30,0% redondos)
+  e saldo de **R$ 99.300** à vista na entrega, sem parcela durante a produção —
+  o mesmo desenho com que a 1ª fase fechou em 20/08.
+- Os **13 itens** aparecem no memorial, não só na tabela: os nove com render
+  próprio em bloco ilustrado, os quatro sem render em cartão de texto.
+  Nenhuma linha de preço fica sem descrição.
+- ⛔ A proposta **diz** que o painel do espelho orgânico não está incluído —
+  ele aparece nos renders do master, e render que mostra o que não vendemos
+  vira expectativa de graça.
+- Tirei **"espelhos e vidros dos móveis"** da linha de escopo: com o painel do
+  espelho fora, não sobrou uma única linha de espelho ou vidro na conta. Era
+  promessa sem custo — exatamente a falha de 02/09, na direção contrária.
+
+### Exposição de caixa
+
+Entrada de **R$ 42.500** contra custo direto de **R$ 45.986**: a entrada cobre
+**92%** do custo. Na 1ª fase eram R$ 22.000 contra R$ 34.418 — 64%. Bem melhor,
+mas ainda não fecha: **R$ 3.486 de material saem do caixa antes da entrega.**
+
+### Em aberto
+
+1. **Cotar a Gianduia Trama** — o upgrade está na proposta como faixa.
+2. **Cotar o Dominus de 4 portas com a Rometal** — R$ 1.850 de sistema + trilho
+   é escala, não cotação.
+3. As **15 dúvidas** de levantamento seguem de pé.
+4. A **modulação de 4 folhas** no roupeiro da filha precisa bater com a
+   arquiteta.

@@ -230,13 +230,10 @@ def montar(INT='BR', so=None):
         corpo('BR', A, lc, 50.0, 45.0, 0, nome=f'criado {i}')
         gaveteiro('BR', A, lc-3, 45.0, 3, 14.0, nome=f'criado {i}')
         curva(A, 1.2)
-    # painel lateral com espelho orgânico + rack suspenso de TV
-    item('Painel do espelho orgânico')
-    painel('AM', 15, A, 'painel do espelho 1200 × 2400', 120, H_PAINEL)
-    curva(A, 2.4)
-    _m2esp = 0.60*1.60
-    terc(A, f'Espelho prata de CORTE ORGÂNICO ({_m2esp:.2f} m²)',
-         _m2esp*ESPELHO_M2*ESPELHO_CURVO, est=True)
+    # ⛔ [Jonathan 07/09] O PAINEL DO ESPELHO ORGÂNICO SAIU DO ESCOPO.
+    #    Ele levava embora o painel de 120 × 240 em amadeirado, 2,4 m de curva
+    #    e o espelho de corte orgânico (0,96 m² a 1,8× o reto, R$ 1.036,80) —
+    #    a maior das adoções ★ do pacote. Com ele some também a dúvida 4.
     item('Rack suspenso de TV')
     corpo('AM', A, 180.0, 35.0, 40.0, 3, nome='rack suspenso')
     add('AM', 18, A, 'rack · porta', 45, 35, 4)
@@ -254,9 +251,6 @@ def montar(INT='BR', so=None):
     duv(A, 'a cabeceira ESTOFADA foi orçada a R$ 650/m² usando a linha de laca da '
            'base como proxy. ★ CONFERIR com o tapeceiro — pode ser terceirizado '
            'inteiro, e aí sai do nosso escopo.')
-    duv(A, 'o ESPELHO É ORGÂNICO (formato de nuvem, sem raio constante). Corte '
-           'curvo em espelho é lapidação ponto a ponto: adotei 1,8× o preço do '
-           'espelho reto. ★ CONFERIR com a espelharia — pode ser bem mais.')
 
     # ───────────────────────────────────────────────────────────────────────────
     # 2 · CLOSET MASTER — closet 02, 7,21 m². Dois lados de 294, aberto.
@@ -310,8 +304,13 @@ def montar(INT='BR', so=None):
     A = 'Quarto da filha'
     item('Roupeiro · 381', roup=True)
     corpo(INT_(), A, 381.0, H_ROUP, P_ROUP, 5, nome='roupeiro', fundo=INT_())
-    add('BR', 18, A, 'roupeiro · porta 630 × 2500', 63, H_ROUP, 6)
-    fer(A, dobr=12)
+    # [Jonathan 07/09] portas DESLIZANTES em sistema Dominus, não mais de abrir.
+    # 381 de vão → 4 folhas de 98 sobre 2 trilhos. Três folhas dariam 131 de
+    # largura, e 131 × 250 em MDF 18 pesa ~44 kg por folha: fora do Dominus.
+    add('BR', 18, A, 'roupeiro · porta de correr 980 × 2500', 98, H_ROUP, 4)
+    terc(A, 'Sistema deslizante Dominus, 4 portas', 1150.0, est=True)
+    terc(A, 'Trilho Dominus, 2 barras de 3 m', 700.0, est=True)
+    terc(A, 'Desempenadores anti-empeno (4 portas × 2)', 8*60.0)
     prateleiras(INT_(), A, 60.0, P_ROUP, 10, 'prateleira do roupeiro')
     cabideiro(A, 60.0, 4, com_led=False)
     gaveteiro(INT_(), A, 57.0, P_ROUP, 4, 18.0, nome='gaveteiro do roupeiro')
@@ -325,10 +324,15 @@ def montar(INT='BR', so=None):
     fita(A, 'bancada', 2*(1.66+0.45))
     item('Roupeiro · 381', roup=True)
     esq(A, 2*(3.81+2.50))
-    fita(A, 'portas, prateleiras e bordas', 6*2*(0.63+2.50) + 10*0.60 + 2*(3.81+2.50))
+    fita(A, 'portas, prateleiras e bordas', 4*2*(0.98+2.50) + 10*0.60 + 2*(3.81+2.50))
     duv(A, 'o roupeiro saiu com 381, que é a cota da faixa de marcenaria na planta. '
-           'Seis portas de 63 é a modulação que fecha. A bancada de 166 é a cota '
-           'da parede sob a janela.')
+           'A bancada de 166 é a cota da parede sob a janela.')
+    duv(A, '[Jonathan 07/09] as portas viraram DESLIZANTES em sistema Dominus. '
+           'Adotei 4 folhas de 98 sobre 2 trilhos: três folhas dariam 131 de '
+           'largura e ~44 kg por folha, acima do que o Dominus comporta. ★ O '
+           'sistema de 4 portas (R$ 1.150) e as 2 barras de trilho (R$ 700) são '
+           'escala do preço de 3 portas do quarto de visitas — CONFERIR com a '
+           'Rometal. Saem 12 dobradiças do pacote.')
 
     # ───────────────────────────────────────────────────────────────────────────
     # 5 · QUARTO DE VISITAS — suíte 04, 11,26 m². Roupeiro 245.
@@ -524,8 +528,33 @@ R = {i: calcular(D, i) for i in range(len(CENARIOS))}
 CD_F = R[FECHADO]['cd']
 cdi  = R[FECHADO]['cdi']
 
-PRECO_FECHADO = 125000        # [Jonathan 07/09/2026] cenário 2 · Hardt · com RT
-INV = PRECO_FECHADO
+# ═══════════════════════════════════════════════════════════════════════════
+# [Jonathan 07/09/2026] PREÇO CRAVADO ITEM A ITEM — cenário 2 · Hardt · com RT.
+# Não é mais rateio: cada linha tem o valor que ele definiu. O painel do
+# espelho saiu do escopo. "Na separação dos itens mantenha o valor."
+# ═══════════════════════════════════════════════════════════════════════════
+PRECO_ITEM = {
+    ('Quarto master',     'Painel de cabeceira com estofado'):    11400,
+    ('Quarto master',     'Criados-mudos (2)'):                    3700,
+    ('Quarto master',     'Rack suspenso de TV'):                  2400,
+    ('Closet master',     'Closet aberto · dois lados de 294'):   24000,
+    ('Quarto dos pais',   'Roupeiro em L · 342 + 230'):           26500,   # ↓ com o nicho
+    ('Quarto dos pais',   'Nicho de TV embutido no roupeiro'):        0,   # vendido junto
+    ('Quarto da filha',   'Roupeiro · 381'):                      16500,   # deslizante Dominus
+    ('Quarto da filha',   'Bancada/penteadeira · 166'):            2700,
+    ('Quarto de visitas', 'Roupeiro de correr · 245'):            14200,
+    ('Escritório',        'Roupeiro · 250'):                       9400,
+    ('Escritório',        'Painel de TV com nichos · 300'):        5600,
+    ('Escritório',        'Bancada de trabalho curva · 200'):      5500,
+    ('Sala de TV',        'Painel de TV com ripado · 400 × 260'): 16000,
+    ('Sala de TV',        'Bancada suspensa · 320'):               3900,
+}
+# o nicho é vendido dentro do roupeiro em L — uma linha só na proposta
+UNIR = {('Quarto dos pais', 'Nicho de TV embutido no roupeiro'):
+        ('Quarto dos pais', 'Roupeiro em L · 342 + 230')}
+assert set(PRECO_ITEM) == set(ITENS), (set(PRECO_ITEM) ^ set(ITENS))
+INV = sum(PRECO_ITEM.values())
+PRAZO = '70 dias corridos'
 
 _fora = [(m, e, a, d, c, l) for m, e, a, it, d, c, l, q in D['P']
          if max(c, l) > CH_C or min(c, l) > CH_L]
@@ -588,15 +617,18 @@ print('\n' + '─'*W)
 print(f'INVESTIMENTO POR AMBIENTE E POR ITEM   (R$ {brl(INV,0)} · cenário '
       f'{CENARIOS[FECHADO][0]}, com RT)')
 print('─'*W)
-PV = repartir(INV, cdi, ITENS)
-print(f'  {"":40}{"m² chapa":>10}{"custo dir.":>13}{"investimento":>14}')
+PV = dict(PRECO_ITEM)
+print(f'  {"":40}{"m² chapa":>10}{"custo dir.":>13}{"investimento":>14}{"MC":>8}')
 for a in ORD_AMB:
     ks = [k for k in ITENS if k[0] == a]
     print(f'  {a}')
     for k in ks:
         mk = '  ◼' if D['ROUP'][k] else '   '
+        kk = UNIR.get(k, k)
+        cd_k = sum(cdi[x] for x in ITENS if UNIR.get(x, x) == kk) if kk == k else 0
+        mc = f'{mc_conferida(PV[kk], cd_k)*100:>6.1f}%' if PV[k] else '     —'
         print(f'  {mk} {k[1]:<35}{R[FECHADO]["area_it"][k]:>6.2f} m²'
-              f'{"R$ "+brl(cdi[k],0):>13}{"R$ "+brl(PV[k],0):>14}')
+              f'{"R$ "+brl(cdi[k],0):>13}{"R$ "+brl(PV[k],0):>14}{mc:>8}')
     if len(ks) > 1:
         print(f'  {"":4}{"subtotal do ambiente":.<35}{sum(R[FECHADO]["area_it"][k] for k in ks):>6.2f} m²'
               f'{"R$ "+brl(sum(cdi[k] for k in ks),0):>13}'
@@ -606,26 +638,28 @@ print(f'  {"TOTAL":<40}{r["area_tot"]:>6.2f} m²{"R$ "+brl(CD_F,0):>13}'
 print('  ◼ = roupeiro / closet')
 
 print('\n' + '─'*W)
-print('SE ELE FECHAR SÓ OS ROUPEIROS')
+print('SE ELE FECHAR SÓ OS ROUPEIROS   (a prioridade declarada do cliente)')
 print('─'*W)
-fatia = sum(PV[k] for k in ROUPS)
-print(f'  a · fatia dos R$ {brl(INV,0)} .................... R$ {brl(fatia,0)}')
-print(f'      (proporção do custo dentro do pacote cheio — só vale se o resto vier junto)')
 rr = calcular(D, FECHADO, chaves=set(ROUPS), log=LOG_ROUP)
-p_roup = round(rr['cd']/div(MC_LIQ, True)/100)*100
-print(f'  b · orçamento PRÓPRIO dos roupeiros .......... R$ {brl(p_roup,0)}')
-print(f'      {rr["area_tot"]:.2f} m² · {rr["tot_ch"]} chapas · aprov. '
-      f'{rr["area_tot"]/(rr["tot_ch"]*CH_AREA)*100:.0f}% · custo direto R$ {brl(rr["cd"],0)}')
-print(f'      logística reduzida para R$ {brl(LOG_ROUP,0)} (2 carretos, 2 visitas)')
-print(f'      mesma MC líquida de {MC_LIQ*100:.1f}% do pacote cheio')
-print(f'  ► diferença b − a: R$ {brl(p_roup-fatia,0)}')
-print('    A fatia (a) é MENOR porque o pacote cheio dilui chapa, fita e frete')
-print('    entre 13 itens. Tirando 8 deles, o aproveitamento de chapa cai e o')
-print('    frete não cai junto. (b) é o número honesto para vender só roupeiro.')
-print('\n  Por ambiente, no cenário só-roupeiro:')
-PVR = repartir(p_roup, rr['cdi'], ROUPS)
+P_ROUPS = sum(PV[k] for k in ROUPS)
+MCB_R = mc_conferida(P_ROUPS, rr['cd'])
+print(f'  Soma dos itens cravados ........... R$ {brl(P_ROUPS,0)}')
+print(f'  Custo direto do pacote sozinho .... R$ {brl(rr["cd"],0)}   '
+      f'({rr["area_tot"]:.2f} m² · {rr["tot_ch"]} chapas · aprov. '
+      f'{rr["area_tot"]/(rr["tot_ch"]*CH_AREA)*100:.0f}%)')
+print(f'  MC bruta {MCB_R*100:.1f}% · LÍQUIDA DA RT {(MCB_R-LIQF_*RT_PCT)*100:.1f}%')
+print(f'  Logística reduzida para R$ {brl(LOG_ROUP,0)} (2 carretos, 2 visitas)')
+print(f'\n  ⚠ O custo NÃO cai na proporção do preço: os roupeiros são '
+      f'{P_ROUPS/INV*100:.0f}% do')
+print(f'    preço mas {rr["cd"]/CD_F*100:.0f}% do custo direto. Tirando os 8 itens '
+      f'que não são')
+print('    roupeiro, o aproveitamento de chapa piora e o frete não cai junto.')
+print(f'    A MC ainda fica em {(MCB_R-LIQF_*RT_PCT)*100:.1f}% líquidos — acima do piso.')
+print('\n  Os cinco roupeiros, pelos valores cravados:')
 for k in ROUPS:
-    print(f'    {k[0]+" · "+k[1]:<50}{"R$ "+brl(PVR[k],0):>12}')
+    if PV[k]:
+        print(f'    {k[0]+" · "+k[1]:<50}{"R$ "+brl(PV[k],0):>12}')
+print(f'    {"TOTAL":<50}{"R$ "+brl(P_ROUPS,0):>12}')
 
 print('\n' + '─'*W)
 print('UPGRADE ★ — INTERNO EM MDF GIANDUIA TRAMA')
@@ -641,6 +675,10 @@ inv_cr = round(rcr['cd']/div(MC_LIQ, True)/100)*100
 d_cd, d_cdr = rg['cd'] - CD_F, rgr['cd'] - rr['cd']
 inv_g  = round(rg['cd']/div(MC_LIQ, True)/100)*100
 inv_gr = round(rgr['cd']/div(MC_LIQ, True)/100)*100
+# deltas de upgrade, na MC líquida do pacote — é assim que vão para a proposta
+DELTA_C  = round((rc['cd']  - CD_F)/div(MC_LIQ, True)/100)*100   # só o closet
+DELTA_G  = round((rg['cd']  - CD_F)/div(MC_LIQ, True)/100)*100   # tudo
+DELTA_GR = round((rgr['cd'] - rr['cd'])/div(MC_LIQ, True)/100)*100
 print('  O QUE MUDA: caixaria, fundos, prateleiras e frentes de gaveteiro dos')
 print('  cinco roupeiros e do closet. NÃO mudam as portas (seguem Branco TX)')
 print('  nem os criados-mudos do master.')
@@ -648,15 +686,15 @@ print(f'\n  {"":34}{"custo direto":>14}{"investimento":>14}{"delta":>12}')
 print(f'  {"pacote cheio · interno Branco TX":<34}{"R$ "+brl(CD_F,0):>14}'
       f'{"R$ "+brl(INV,0):>14}{"":>12}')
 print(f'  {"pacote cheio · SÓ o closet aberto":<34}{"R$ "+brl(rc["cd"],0):>14}'
-      f'{"R$ "+brl(inv_c,0):>14}{"+R$ "+brl(inv_c-INV,0):>12}')
+      f'{"R$ "+brl(INV+DELTA_C,0):>14}{"+R$ "+brl(DELTA_C,0):>12}')
 print(f'  {"pacote cheio · interno Gianduia":<34}{"R$ "+brl(rg["cd"],0):>14}'
-      f'{"R$ "+brl(inv_g,0):>14}{"+R$ "+brl(inv_g-INV,0):>12}')
+      f'{"R$ "+brl(INV+DELTA_G,0):>14}{"+R$ "+brl(DELTA_G,0):>12}')
 print(f'  {"só roupeiros · interno Branco TX":<34}{"R$ "+brl(rr["cd"],0):>14}'
-      f'{"R$ "+brl(p_roup,0):>14}{"":>12}')
+      f'{"R$ "+brl(P_ROUPS,0):>14}{"":>12}')
 print(f'  {"só roupeiros · SÓ o closet aberto":<34}{"R$ "+brl(rcr["cd"],0):>14}'
-      f'{"R$ "+brl(inv_cr,0):>14}{"+R$ "+brl(inv_cr-p_roup,0):>12}')
+      f'{"R$ "+brl(P_ROUPS+DELTA_C,0):>14}{"+R$ "+brl(DELTA_C,0):>12}')
 print(f'  {"só roupeiros · interno Gianduia":<34}{"R$ "+brl(rgr["cd"],0):>14}'
-      f'{"R$ "+brl(inv_gr,0):>14}{"+R$ "+brl(inv_gr-p_roup,0):>12}')
+      f'{"R$ "+brl(P_ROUPS+DELTA_GR,0):>14}{"+R$ "+brl(DELTA_GR,0):>12}')
 print(f'\n  Custo do upgrade: R$ {brl(d_cd,0)} no pacote cheio · '
       f'R$ {brl(d_cdr,0)} só nos roupeiros.')
 print(f'  Chapas: {rg["tot_ch"]} contra {r["tot_ch"]} no cheio '
