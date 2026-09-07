@@ -521,6 +521,31 @@ acompanhamento** pronta pro Jonathan. Nada sai sem material entre 30–40% do pr
 
 ---
 
+## 🔧 [2026-09-07] Ferragens: 4 perguntas para o Encarregado de Produção — Lucas (Academy)
+
+**Solicitante:** Jonathan · **Status:** 🔴 Pendente · cabe em 20 minutos
+
+Pesquisa técnica do Volume 2 (Ferragens) fechada e conferida entre fontes — registro completo
+em `.claude/skills/valvic-academy/referencias/pesquisa-ferragens.md`. Quatro coisas não estão
+na internet porque são decisão nossa:
+
+1. **Pistão: comum ou inversa?** ⚠️ O `orcamentista-marcenaria/referencias/ferragens.md`
+   registra *"Pistão a gás força inversa: 60N e 100N (básculas/aéreos)"*. Tecnicamente não
+   fecha: báscula de aéreo abre para CIMA, e porta que abre para cima pede pistão **comum**;
+   a força inversa é para porta que abre para BAIXO, segurando a descida. Ou a nota está mal
+   rotulada, ou aplicamos inversa em portas de abrir para baixo e o registro generalizou.
+   **Não corrigir sem confirmar — é compra real.**
+2. **Qual calço a Valvic usa.** Hettich trabalha com 0 / 1,5 / 3,0 mm; outras linhas com
+   0 / 3 / 6 / 9 mm. Calço não é intercambiável entre marcas — troca o recobrimento e
+   desregula a porta.
+3. **Distância do furo à borda** na nossa furação padrão de 18 mm (faixa de mercado: 3 a 5 mm).
+   Define o recobrimento de todo projeto.
+4. **Hardt, Hettich ou Blum no capítulo?** O ferragens.md diz que Hardt é ~70% da compra real,
+   mas Hettich e Blum são as marcas de projeto e de garantia. A apostila ensina o que usamos
+   ou o que existe no mercado? Muda o índice do Volume 2.
+
+---
+
 ## 🗂️ Estado dos projetos (status board)
 
 ### [2026-06-18] Centro único de aprendizado + novo membro Wallison (W) ✅
