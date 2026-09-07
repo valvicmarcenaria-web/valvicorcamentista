@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Conferência Final de Obra — Direção · Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  :root{ --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f;
+         --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd;
+         --green:#2f7d4f; --amber:#c47d0e; --red:#b0413f; --blue:#2f5d8c; --critbg:#fbf1e9; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3;
+        font-size:10.5px; line-height:1.4; -webkit-font-smoothing:antialiased; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:16px auto;
+          box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column;
+          page-break-after:always; }
+  .sheet:last-child{ page-break-after:auto; }
+  .ph{ background:var(--navy); color:#fff; padding:7mm 13mm 5.5mm; position:relative; }
+  .ph::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:2.5px;
+              background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 42%,transparent 100%); }
+  .ph .top{ display:flex; align-items:center; gap:11px; }
+  .ph .mono{ width:34px; height:34px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:4px;
+             display:flex; align-items:center; justify-content:center;
+             font-family:'Cormorant Garamond',serif; font-weight:700; font-size:17px; color:var(--gold); }
+  .ph .co{ font-size:10px; font-weight:700; letter-spacing:2.4px; text-transform:uppercase; }
+  .ph .sub{ font-size:8.2px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:700; margin-top:5px; line-height:1.05; }
+  .ph .kx{ font-size:8px; letter-spacing:2.6px; text-transform:uppercase; color:var(--gold); margin-top:2px; }
+  .body{ flex:1; padding:5mm 13mm 0; display:flex; flex-direction:column; min-height:0; }
+  .fill{ display:inline-block; border-bottom:1px solid var(--navy2); height:12px; flex:1; }
+  .hdr{ border:1px solid var(--line); border-radius:7px; padding:6px 11px; background:#f4f1ea; margin-bottom:6px; }
+  .hdr .grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:5px 12px; }
+  .field{ display:flex; align-items:baseline; gap:5px; font-size:9.6px; }
+  .field .fl{ color:var(--muted); white-space:nowrap; } .field .fl b{ color:var(--navy); font-weight:700; }
+  .sec{ display:flex; align-items:center; gap:8px; margin:7px 0 4px; } .sec:first-child{ margin-top:0; }
+  .sec .bar{ width:14px; height:2px; background:var(--gold); }
+  .sec .tx{ font-size:9.2px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:var(--navy); }
+  .sec .tx small{ color:var(--muted); font-weight:600; letter-spacing:.3px; text-transform:none; }
+  .cb{ display:inline-block; width:12px; height:12px; border:1.3px solid var(--navy2); border-radius:2.5px;
+       flex-shrink:0; vertical-align:-2px; background:#fff; }
+
+  .papel{ background:var(--navy); border-radius:7px; padding:8px 12px; margin-bottom:6px; }
+  .papel .nh{ font-size:7.2px; letter-spacing:1.3px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+  .papel p{ font-size:9.2px; line-height:1.5; color:rgba(255,255,255,.9); margin-top:3px; }
+  .papel p b{ color:#fff; }
+
+  table{ width:100%; border-collapse:collapse; table-layout:fixed; }
+  thead th{ background:var(--navy2); color:#fff; font-size:7.6px; font-weight:700; letter-spacing:.3px;
+            text-transform:uppercase; padding:4px 6px; text-align:left; border:1px solid var(--navy); }
+  thead th.c{ text-align:center; }
+  tbody td{ border:1px solid var(--line); padding:3px 6px; font-size:9.2px; height:21px; vertical-align:middle; }
+  tbody td.c{ text-align:center; }
+  tbody tr:nth-child(even) td{ background:#f7f5ef; }
+  .amb thead th{ writing-mode:horizontal-tb; font-size:7px; padding:5px 2px; text-align:center; }
+  .amb tbody td{ height:22px; }
+  .cbx{ display:inline-block; width:12px; height:12px; border:1.3px solid var(--navy2); border-radius:2.5px; background:#fff; }
+  .it{ font-size:9.2px; }
+  .it b{ color:var(--navy); }
+  .hot td{ background:var(--critbg) !important; }
+
+  .esc{ display:flex; gap:5px; justify-content:center; font-size:8px; }
+  .esc span{ display:inline-flex; align-items:center; gap:3px; }
+  .bx{ display:inline-block; width:11px; height:11px; border:1.3px solid var(--navy2); border-radius:2.5px; background:#fff; }
+  .bx.g{ border-color:var(--green); } .bx.a{ border-color:var(--amber); } .bx.r{ border-color:var(--red); }
+
+  .lines{ border:1px solid var(--line); border-radius:7px; background:#fff; padding:7px 11px; }
+  .lines .ln{ border-bottom:1px solid var(--line2); height:17px; }
+  .note{ background:#fffaf0; border:1px solid #eed9a8; border-radius:7px; padding:6px 11px; margin-top:5px; }
+  .note .nh{ font-size:7.2px; letter-spacing:1.2px; text-transform:uppercase; color:var(--gold-dk); font-weight:700; margin-bottom:3px; }
+  .note p{ font-size:9px; line-height:1.45; color:#5a4a2c; } .note p b{ color:var(--navy); }
+
+  .dec{ border:1.4px solid var(--navy2); border-radius:8px; overflow:hidden; margin-top:6px; }
+  .dec .dh{ background:var(--navy); color:#fff; padding:5px 11px; font-size:8.8px; font-weight:800;
+            letter-spacing:.8px; text-transform:uppercase; }
+  .dec .db{ padding:8px 11px; }
+  .dec .opts{ display:flex; gap:18px; align-items:center; flex-wrap:wrap; }
+  .dec .opt{ display:flex; align-items:center; gap:6px; font-size:9.4px; font-weight:700; }
+  .dec .opt.g{ color:var(--green); } .dec .opt.a{ color:var(--amber); } .dec .opt.r{ color:var(--red); }
+  .sign2{ display:flex; gap:24px; margin-top:10px; } .sign2 .c{ flex:1; text-align:center; }
+  .sign2 .line{ border-top:1px solid var(--navy2); margin-bottom:4px; } .sign2 .cap{ font-size:8.6px; color:var(--muted); }
+
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:5px 13mm; display:flex;
+       justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf .pl{ font-size:7.2px; color:var(--muted); }
+  .pf .pr{ font-size:8px; color:var(--navy); font-weight:700; letter-spacing:.8px; } .pf .pr span{ color:var(--gold); }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff;
+        border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<!-- ══════════ FOLHA 1 — OS MÓVEIS, AMBIENTE POR AMBIENTE ══════════ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div>
+      <div class="sub">Vargas Decor Ltda · BH/MG · Conferência da direção · Folha 1 de 2</div></div></div>
+    <div class="tt">Conferência Final de Obra — Direção</div>
+    <div class="kx">Os móveis, ambiente por ambiente</div>
+  </div>
+  <div class="body">
+
+    <div class="papel">
+      <div class="nh">O que esta conferência é</div>
+      <p>A vistoria técnica já foi feita pelo montador e a conferência de saída pela fábrica. <b>Esta
+      não repete nenhuma das duas</b> — se repetir, quem faz antes para de fazer. Aqui se valida o
+      <b>padrão que a Valvic promete</b>: percorra o ambiente como o cliente percorreria, olhando de
+      frente, de lado e de perto. O que estiver fora do padrão vira pendência numerada, com dono e prazo.</p>
+    </div>
+
+    <div class="hdr"><div class="grid">
+      <div class="field"><span class="fl"><b>Cliente / OP:</b></span><span class="fill"></span></div>
+      <div class="field"><span class="fl">Data da conferência:</span><span class="fill"></span></div>
+      <div class="field"><span class="fl">Equipe que executou:</span><span class="fill"></span></div>
+      <div class="field"><span class="fl">Nº de dias de obra:</span><span class="fill"></span></div>
+    </div></div>
+
+    <div class="sec"><span class="bar"></span><span class="tx">1 · Itens × ambientes
+      <small>· escreva o nome do ambiente nas colunas · ✓ conforme · nº da pendência quando não</small></span></div>
+    <table class="amb">
+      <thead><tr>
+        <th style="width:31%">Item a validar</th>
+        <th class="c">Ambiente 1</th><th class="c">Ambiente 2</th><th class="c">Ambiente 3</th>
+        <th class="c">Ambiente 4</th><th class="c">Ambiente 5</th><th class="c">Ambiente 6</th>
+      </tr></thead>
+      <tbody>
+        <tr><td colspan="7" style="background:#f0ece2;font-size:7.6px;font-weight:700;letter-spacing:1px;
+            text-transform:uppercase;color:var(--navy);height:16px">Nome do ambiente →</td></tr>
+        <tr class="hot"><td class="it"><b>Impressão de conjunto</b> — parece caro? é isto que vendemos?</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="it">Alinhamento geral e <b>folgas uniformes</b> vistas de frente</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="it">Frentes no mesmo plano; sem barriga e sem desnível</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr class="hot"><td class="it"><b>Acabamento e arremate</b> — friso, canto, encontro com parede</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="it">Borda íntegra; superfície sem risco, mancha ou marca</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="it">Tapa-furo e tampa de dobradiça colocados, na cor certa</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="it">Portas, gavetas e correr: funcionam macios e sem ruído</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="it">Puxadores e ferragens finais — alinhados e firmes</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr class="hot"><td class="it"><b>Iluminação</b> — LED aceso, perfil reto, emenda e cor uniformes</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="it">Tampo, cuba e recortes: alinhados, vedados, sem folga</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="it">Silicone e vedação limpos, sem excesso</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="it">Encontro com a obra — piso, parede, teto, rodapé</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="it">Interior limpo; gavetas e prateleiras sem pó ou cola</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td class="it">Ambiente do cliente entregue limpo, sem entulho</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr class="hot"><td class="it"><b>Detalhe que o cliente vai notar</b> antes de nós</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">2 · Pendências
+      <small>· o número usado na tabela acima</small></span></div>
+    <table>
+      <thead><tr>
+        <th class="c" style="width:6%">Nº</th><th style="width:17%">Ambiente</th>
+        <th style="width:37%">O que está fora do padrão</th>
+        <th style="width:16%">Quem resolve</th><th style="width:12%">Até quando</th>
+        <th class="c" style="width:12%">Resolvido</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="c">1</td><td></td><td></td><td></td><td></td><td class="c"><span class="cbx"></span></td></tr>
+        <tr><td class="c">2</td><td></td><td></td><td></td><td></td><td class="c"><span class="cbx"></span></td></tr>
+        <tr><td class="c">3</td><td></td><td></td><td></td><td></td><td class="c"><span class="cbx"></span></td></tr>
+        <tr><td class="c">4</td><td></td><td></td><td></td><td></td><td class="c"><span class="cbx"></span></td></tr>
+        <tr><td class="c">5</td><td></td><td></td><td></td><td></td><td class="c"><span class="cbx"></span></td></tr>
+        <tr><td class="c">6</td><td></td><td></td><td></td><td></td><td class="c"><span class="cbx"></span></td></tr>
+        <tr><td class="c">7</td><td></td><td></td><td></td><td></td><td class="c"><span class="cbx"></span></td></tr>
+        <tr><td class="c">8</td><td></td><td></td><td></td><td></td><td class="c"><span class="cbx"></span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pf"><div class="pl">Conferência Final de Obra · Direção · Valvic Marcenaria — Vargas Decor Ltda</div>
+    <div class="pr">MÓVEIS &amp; AMBIENTES <span>·</span> 1/2</div></div>
+</section>
+
+<!-- ══════════ FOLHA 2 — EQUIPE, PROCESSO, CLIENTE E DECISÃO ══════════ -->
+<section class="sheet">
+  <div class="ph">
+    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div>
+      <div class="sub">Conferência da direção · Folha 2 de 2 · Cliente / OP: ______________</div></div></div>
+    <div class="tt">Equipe, Processo, Cliente e Decisão</div>
+    <div class="kx">O que a obra ensinou · e o que muda por causa dela</div>
+  </div>
+  <div class="body">
+
+    <div class="sec"><span class="bar"></span><span class="tx">3 · Equipe
+      <small>· uma linha por pessoa · A acima do padrão · P no padrão · B abaixo</small></span></div>
+    <table>
+      <thead><tr>
+        <th style="width:20%">Quem</th><th class="c" style="width:11%">Técnica</th>
+        <th class="c" style="width:11%">Organização<br>e limpeza</th><th class="c" style="width:11%">Conduta com<br>o cliente</th>
+        <th class="c" style="width:11%">Autonomia</th><th style="width:36%">O que falar com ele</th>
+      </tr></thead>
+      <tbody>
+        <tr><td></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td></td></tr>
+        <tr><td></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td></td></tr>
+        <tr><td></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td></td></tr>
+        <tr><td></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td></td></tr>
+        <tr><td></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td></td></tr>
+        <tr><td></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td class="c"><div class="esc"><span><span class="bx g"></span>A</span><span><span class="bx"></span>P</span><span><span class="bx r"></span>B</span></div></td>
+          <td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">4 · Processo
+      <small>· a coluna que decide é a última: já aconteceu antes?</small></span></div>
+    <table>
+      <thead><tr>
+        <th style="width:44%">O que se pergunta da obra</th><th class="c" style="width:13%">Sim</th>
+        <th class="c" style="width:13%">Não</th><th style="width:30%">Se sim: o quê · <b>já aconteceu antes?</b></th>
+      </tr></thead>
+      <tbody>
+        <tr><td>O projeto chegou completo à obra? (medida, detalhe, ferragem)</td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx"></span></td><td></td></tr>
+        <tr class="hot"><td><b>Faltou material</b> ou item de terceiro em algum momento?</td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx"></span></td><td></td></tr>
+        <tr class="hot"><td><b>Houve peça errada</b> vinda da fábrica? quantas?</td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx"></span></td><td></td></tr>
+        <tr><td>Houve retrabalho em obra? de quê?</td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx"></span></td><td></td></tr>
+        <tr><td>Precisou de viagem extra à obra? quantas?</td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx"></span></td><td></td></tr>
+        <tr><td>Precisou de hora extra ou de freelance fora do previsto?</td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx"></span></td><td></td></tr>
+        <tr><td>O prazo combinado foi cumprido? se não, quantos dias de desvio</td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx"></span></td><td></td></tr>
+        <tr><td>Terceiros (pedra, vidro, elétrica) atrasaram ou atrapalharam?</td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx"></span></td><td></td></tr>
+        <tr><td>A obra estava pronta para receber o móvel no dia combinado?</td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx"></span></td><td></td></tr>
+        <tr class="hot"><td><b>Esta obra deu lucro como estava previsto?</b> (com o Rodrigo, depois)</td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx"></span></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><span class="bar"></span><span class="tx">5 · Cliente
+      <small>· esta é a hora em que a satisfação está fresca</small></span></div>
+    <div class="lines" style="padding:8px 11px">
+      <div style="display:flex;gap:22px;font-size:9.4px;font-weight:700;margin-bottom:6px;flex-wrap:wrap">
+        <span style="color:var(--green)"><span class="cb" style="border-color:var(--green)"></span> Muito satisfeito</span>
+        <span><span class="cb"></span> Satisfeito</span>
+        <span style="color:var(--red)"><span class="cb" style="border-color:var(--red)"></span> Insatisfeito</span>
+        <span style="margin-left:auto;color:var(--muted);font-weight:600">Nota de 0 a 10: ______</span>
+      </div>
+      <div style="font-size:9.2px;color:var(--muted);margin-bottom:2px">O que ele mais elogiou:</div>
+      <div class="ln"></div>
+      <div style="font-size:9.2px;color:var(--muted);margin:4px 0 2px">O que o incomodou — mesmo que pequeno:</div>
+      <div class="ln"></div>
+      <div style="display:flex;gap:20px;font-size:9.2px;margin-top:7px;flex-wrap:wrap">
+        <span><span class="cb"></span> Autoriza <b>foto e vídeo</b> para portfólio</span>
+        <span><span class="cb"></span> Aceita dar <b>depoimento</b></span>
+        <span><span class="cb"></span> Tem <b>alguém para indicar</b></span>
+      </div>
+      <div style="font-size:9.2px;color:var(--muted);margin:5px 0 2px">Quem ele indicou / o que ficou combinado:</div>
+      <div class="ln"></div>
+    </div>
+
+    <div class="dec">
+      <div class="dh">6 · Decisão da direção</div>
+      <div class="db">
+        <div class="opts">
+          <div class="opt g"><span class="cb"></span>ENTREGA APROVADA</div>
+          <div class="opt a"><span class="cb"></span>APROVADA COM PENDÊNCIA — prazo: ______</div>
+          <div class="opt r"><span class="cb"></span>NÃO APROVADA — refazer</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px">
+          <div><div style="font-size:9.2px;color:var(--muted);margin-bottom:2px">O que vira <b>correção da fábrica</b>:</div>
+            <div style="border-bottom:1px solid var(--line2);height:16px"></div></div>
+          <div><div style="font-size:9.2px;color:var(--muted);margin-bottom:2px">O que vira <b>conversa com a equipe</b>:</div>
+            <div style="border-bottom:1px solid var(--line2);height:16px"></div></div>
+        </div>
+        <div style="font-size:9.2px;color:var(--muted);margin:6px 0 2px">Se algo aqui <b>já aconteceu antes</b>, o que muda no processo a partir desta obra:</div>
+        <div style="border-bottom:1px solid var(--line2);height:16px"></div>
+        <div class="sign2">
+          <div class="c"><div class="line"></div><div class="cap">Direção · data</div></div>
+          <div class="c"><div class="line"></div><div class="cap">Coordenação de produção · ciente</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><div class="pl">Conferência Final de Obra · Direção · Valvic Marcenaria — Vargas Decor Ltda</div>
+    <div class="pr">EQUIPE · PROCESSO · CLIENTE <span>·</span> 2/2</div></div>
+</section>
+</body>
+</html>
