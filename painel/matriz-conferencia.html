@@ -44,7 +44,7 @@
   /* matriz */
   table.mx{ width:100%; border-collapse:collapse; table-layout:fixed; }
   table.mx th{ background:var(--navy2); color:#fff; font-size:6.6px; font-weight:700; letter-spacing:.2px; text-transform:uppercase; padding:5px 3px; text-align:center; vertical-align:middle; line-height:1.15; border:1px solid var(--navy); }
-  table.mx th.mod{ text-align:left; padding-left:8px; width:27%; } table.mx th.obs{ width:16%; text-align:left; padding-left:8px; } table.mx th.ade{ width:9%; }
+  table.mx th.mod{ text-align:left; padding-left:8px; width:24%; } table.mx th.obs{ width:15%; text-align:left; padding-left:8px; } table.mx th.ade{ width:8%; }
   table.mx td{ border:1px solid var(--line); height:24px; padding:2px; text-align:center; vertical-align:middle; font-size:8px; }
   table.mx td.mod{ text-align:left; padding-left:8px; }
   table.mx tbody tr:nth-child(even) td{ background:#f7f5ef; }
@@ -67,37 +67,6 @@
 </head>
 <body>
 <button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
-
-<!-- ============ PÁGINA A — COMO CONFERIR (código de cores + critérios) ============ -->
-<section class="sheet">
-  <div class="ph">
-    <div class="top"><div class="mono">V</div><div><div class="co">Valvic Marcenaria</div><div class="sub">Vargas Decor Ltda · Belo Horizonte / MG · Conferência de Produção</div></div></div>
-    <div class="tt">Como Conferir — Código &amp; Critérios</div>
-    <div class="kx">Imprimir 1× e deixar na bancada de conferência</div>
-  </div>
-  <div class="body">
-    <div class="sec"><span class="bar"></span><span class="tx">Código de cores <small>· bolinha adesiva na peça + o mesmo círculo pintado na matriz</small></span></div>
-    <div class="colors">
-      <div class="colr"><span class="cd g"></span><div><div class="ct">Verde · Conferido</div><div class="cs">Item aprovado e liberado. Todos os itens 🟢 = ambiente/lote libera.</div></div></div>
-      <div class="colr"><span class="cd a"></span><div><div class="ct">Amarelo · Pendência</div><div class="cs">Falta algo (ferragem, item do lote, ajuste simples). Não libera ainda.</div></div></div>
-      <div class="colr"><span class="cd r"></span><div><div class="ct">Vermelho · Retorna</div><div class="cs">Reprovado — volta à etapa. Registrar na Não Conformidade.</div></div></div>
-      <div class="colr"><span class="cd b"></span><div><div class="ct">Azul · Em produção</div><div class="cs">Ainda em fabricação/andamento. Não entrou na conferência final.</div></div></div>
-    </div>
-    <div class="note"><div class="nh">Como usar (manual, sem app)</div><p>O marceneiro confere o item → <b>cola a bolinha adesiva</b> da cor certa <b>na peça/módulo</b> e <b>pinta o mesmo círculo</b> na coluna "Adesivo" da matriz. A estante passa a ser lida por cor de longe. <b>Uma cor por módulo</b> (o status geral dele) — as caixas de conferência dizem o porquê.</p></div>
-
-    <div class="sec"><span class="bar"></span><span class="tx">O que significa "OK" em cada coluna</span></div>
-    <ul class="crit">
-      <li><b>Medida / esquadro</b> — a peça bate com o projeto; diagonais iguais; sem empeno.</li>
-      <li><b>Acabamento</b> — borda 100% (sem descole/rebarba/queima); superfície sem risco, mancha, cola aparente ou <b>marca de caneta</b>.</li>
-      <li><b>Ferragem / funcionamento</b> — dobradiça/corrediça no <b>lado certo</b>, alinhada; testada: abre/fecha, soft-close, gaveta corre, porta não cai.</li>
-      <li><b>Alinhamento / folgas</b> — portas e gavetas alinhadas; <b>folgas uniformes</b>; frentes no mesmo plano.</li>
-      <li><b>Limpeza</b> — peça limpa, sem pó/cola/marca; pronta para embalar.</li>
-      <li><b>Embalagem / kit</b> — ferragem do módulo em <b>saco etiquetado</b>; peça protegida e <b>identificada</b> (cliente + ambiente + módulo).</li>
-    </ul>
-    <div class="note navy"><div class="nh">Regra de liberação</div><p>Confere-se <b>item por item</b> (cada módulo é uma linha). A liberação é <b>por ambiente</b> — ou por <b>módulo/lote</b> quando o ambiente vai fragmentado. <b>Só libera o que está tudo 🟢.</b> O que está 🟡 ou 🔴 fica retido e vira pendência.</p></div>
-  </div>
-  <div class="pf"><div class="pl">Matriz de Conferência · Valvic Marcenaria — Vargas Decor Ltda · Conferência de Produção</div><div class="pr">CÓDIGO & CRITÉRIOS <span>·</span> A</div></div>
-</section>
 
 <!-- ============ PÁGINA B — MATRIZ DE CONFERÊNCIA (por ambiente) ============ -->
 <section class="sheet">
@@ -124,10 +93,11 @@
       <thead>
         <tr>
           <th class="mod">Módulo / Item</th>
-          <th>Medida<br>esquadro</th>
+          <th>Medida</th>
           <th>Acaba-<br>mento</th>
           <th>Ferragem<br>func.</th>
           <th>Alinh.<br>folgas</th>
+          <th>LED</th>
           <th>Limpeza</th>
           <th>Embal.<br>kit</th>
           <th class="ade">Adesivo</th>
@@ -135,18 +105,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
-        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
-        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
-        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
-        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
-        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
-        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
-        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
-        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
-        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
-        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
-        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
+        <tr><td class="mod"></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="cbx"></span></td><td><span class="odot"></span></td><td></td></tr>
       </tbody>
     </table>
     <p style="font-size:7.6px;color:var(--muted);margin-top:4px;font-style:italic">Marque a caixa de cada critério conferido. Na coluna "Adesivo", pinte o círculo com a cor do status geral do módulo (🟢🟡🔴🔵) e cole a bolinha na peça.</p>
@@ -160,7 +130,7 @@
       </div>
     </div>
   </div>
-  <div class="pf"><div class="pl">Matriz de Conferência · Valvic Marcenaria — Vargas Decor Ltda · Conferência de Produção</div><div class="pr">MATRIZ POR AMBIENTE <span>·</span> B</div></div>
+  <div class="pf"><div class="pl">Matriz de Conferência · Valvic Marcenaria — Vargas Decor Ltda · Conferência de Produção</div><div class="pr">MATRIZ POR AMBIENTE</div></div>
 </section>
 
 </body>
