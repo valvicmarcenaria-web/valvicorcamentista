@@ -85,9 +85,13 @@ ITENS = [
 TOTAL = sum(i[4] for i in ITENS)
 assert TOTAL == 141800 and len(ITENS) == 12, (TOTAL, len(ITENS))
 
-ENTRADA = 42500                      # 30,0% de 141.800, redondo
-SALDO   = TOTAL - ENTRADA
-assert SALDO == 99300 and abs(ENTRADA/TOTAL - 0.30) < 0.002
+# [Jonathan 07/09] CONDIÇÃO ESPECIAL: 100% NA ENTREGA. Sem entrada.
+# ⚠ A Valvic banca R$ 45.640 de custo direto por 70 dias corridos, sem um real
+#   do cliente antes da instalação. Na 1ª fase a entrada de R$ 22.000 cobria
+#   64% do custo; aqui cobre ZERO. Registrado no dossiê como exposição de caixa.
+ENTRADA = 0
+SALDO   = TOTAL
+assert ENTRADA == 0 and SALDO == TOTAL
 
 # [Jonathan 07/09] upgrade com 20% de desconto sobre o valor de tabela
 UP_CLOSET_T, UP_TUDO_T = 10000, 31600         # tabela, na MC do pacote
@@ -371,19 +375,20 @@ p7 = f"""<div class="page"><div class="pad">
 
   <div class="pf">
     <div class="c hi"><div class="k">Condição especial</div>
-      <div class="v">R$ {brl(ENTRADA)}</div>
-      <div class="s">Entrada na assinatura — 30% do total. Libera a compra de
-      material e a entrada do projeto na fila de produção.</div></div>
-    <div class="c"><div class="k">Saldo à vista, na entrega</div>
+      <div class="v">100%<br>na entrega</div>
+      <div class="s">Nenhum pagamento na assinatura e nenhuma parcela durante a
+      produção. A Valvic compra o material, produz e instala <b>antes de receber
+      qualquer valor</b>.</div></div>
+    <div class="c"><div class="k">Pagamento único</div>
       <div class="v">R$ {brl(SALDO)}</div>
-      <div class="s">Pago após a instalação concluída e conferida na obra.
-      <b>Não há parcela durante a produção.</b></div></div>
+      <div class="s">À vista, <b>após a instalação concluída e conferida na
+      obra</b>. É uma condição excepcional, aberta em função do histórico da
+      1ª fase.</div></div>
   </div>
 
   <div class="fr" style="margin-top:7mm;">
     <div><div class="k">Prazo de entrega</div><div class="d"><b>{PRAZO}</b>,
-      contados da assinatura, do pagamento da entrada e da medição final no
-      local.</div></div>
+      contados da assinatura e da medição final no local.</div></div>
     <div><div class="k">Garantia</div><div class="d"><b>{GARANTIA}</b> sobre
       estrutura e ferragens — a mesma linha Hardt com que a 1ª fase foi
       contratada.</div></div>
@@ -414,5 +419,5 @@ assert 'img-eliuton2' not in HTML and '<img' not in HTML   # proposta SEM render
 pathlib.Path('/tmp/in.html').write_text(HTML, encoding='utf-8')
 subprocess.run(['node', '/tmp/r.js', str(P/'proposta-eliuton2.pdf')], check=True)
 print(f'proposta-eliuton2.pdf · total R$ {brl(TOTAL)} · '
-      f'entrada {brl(ENTRADA)} + saldo {brl(SALDO)} · prazo {PRAZO}')
+      f'100% na entrega · prazo {PRAZO}')
 print(f'upgrade Gianduia: closet +{brl(UP_CLOSET)} · tudo +{brl(UP_TUDO)}')

@@ -539,3 +539,53 @@ completo e **36,9 · 36,4 · 35,8** só nos armários.
 2. **Os 4,0 m de LED no rasgo do painel da sala** são adoção minha.
 3. Cotar a **Gianduia Trama** e o **Dominus de 4 portas**.
 4. As 15 dúvidas de levantamento seguem de pé.
+
+
+---
+
+## Rodada de 07/09 (5ª parte) — condição especial: 100% na entrega
+
+> *"Atualize a condição de pagamento para condição especial para 100% na
+> entrega."*
+
+Feito. A página 7 passa a dizer, em caixa escura: **nenhum pagamento na
+assinatura, nenhuma parcela durante a produção, R$ 141.800 à vista após a
+instalação conferida na obra.** Caiu também *"do pagamento da entrada"* da linha
+de prazo — os 70 dias agora correm da assinatura e da medição.
+
+### ⚠⚠ O que isso faz com o caixa
+
+| | entrada | custo direto | cobertura | **exposição** |
+|---|--:|--:|--:|--:|
+| 1ª fase (fechada 20/08) | 22.000 | 34.418 | 64% | R$ 12.418 |
+| 2ª fase · versão anterior | 42.500 | 45.986 | 92% | R$ 3.486 |
+| **2ª fase · agora** | **0** | **45.640** | **0%** | **R$ 45.640** |
+
+**A exposição multiplica por 13** em relação à versão que você aprovou há
+poucas horas. A Valvic compra chapa, ferragem, LED e terceirizados, paga frete e
+instala **R$ 45.640 de custo direto ao longo de 70 dias corridos sem receber um
+real**. Com o upgrade Gianduia em todos os armários, a exposição sobe para
+**R$ 55.901**.
+
+E há um custo que a MC não enxerga: **70 dias de capital parado**. A ★ um ponto
+percentual ao mês, são cerca de **R$ 1.070** — algo como **0,75 ponto de MC**
+que some sem aparecer na conta. A MC de 39,0% segue verdadeira no papel; o
+retorno real do dinheiro é menor que ela.
+
+**Não é objeção — é a informação.** É uma condição forte de venda: tira todo o
+risco do cliente e é imbatível contra concorrente que pede 50% adiantado. Faz
+sentido com quem já fechou R$ 73.000 e pagou. Só precisa ser decisão de caixa
+consciente, e a essa altura do mês só você sabe se o caixa aguenta segurar
+R$ 45.640 por 70 dias enquanto os outros jobs correm.
+
+**Se quiser um meio-termo**, o mais comum e que preserva quase todo o apelo:
+entrada simbólica de 10% (**R$ 14.200**) só para travar a compra de material, e
+90% na entrega. Corta um terço da exposição sem tirar a força da oferta. É
+mudar uma linha do build.
+
+### Em aberto
+
+1. **A decisão de caixa acima** — está entregue como você pediu; a leitura
+   financeira fica registrada.
+2. Os **seis nichos do painel do escritório** seguem sem conferência.
+3. Cotar **Gianduia Trama** e **Dominus de 4 portas**.
