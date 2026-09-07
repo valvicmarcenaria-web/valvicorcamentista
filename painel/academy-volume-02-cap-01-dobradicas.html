@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Valvic Academy · Volume 2 · Capítulo 1 — Dobradiças</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0E2038; --navy2:#16314F;
+  --gold:#E0A521; --gold-dk:#B8860B; --gold-soft:#F0C463; --cream:#FDF6E3;
+  --ink:#1A1A1A; --muted:#6b6660; --linha:#e0dcd3;
+  --ok:#2F7D4F; --red:#B0413F; --madeira:#ece0c8;
+}
+@page{size:A4 portrait;margin:0}
+*{box-sizing:border-box}
+body{margin:0;background:#8a8f96;font-family:'Inter',system-ui,sans-serif;color:var(--ink)}
+
+/* ───── folha A4 · grid 6 col (4+2) · linha-base 5,5 mm ───── */
+.sheet{width:210mm;height:297mm;margin:0 auto;background:#fff;
+  padding:20mm 15mm 24mm 24mm;display:flex;flex-direction:column;
+  page-break-after:always;position:relative;overflow:hidden}
+.sheet:last-child{page-break-after:auto}
+.sheet:nth-of-type(even){padding-left:15mm;padding-right:24mm}
+@media print{body{background:#fff}.sheet{margin:0}}
+
+.corpo{flex:1;min-height:0}
+
+/* ───── cabeçalho e rodapé ───── */
+.topo{display:flex;justify-content:space-between;align-items:flex-end;
+  border-bottom:.6mm solid var(--navy);padding-bottom:1.6mm;margin-bottom:5.5mm}
+.marca{font-family:'Cormorant Garamond',serif;font-size:16pt;font-weight:700;
+  color:var(--navy);line-height:1}
+.marca small{display:block;font-family:'Inter',sans-serif;font-size:5.5pt;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dk);margin-top:.4mm}
+.ctx{text-align:right;font-size:7pt;color:var(--muted);letter-spacing:.03em}
+.rodape{border-top:.25mm solid var(--linha);padding-top:1.6mm;margin-top:5.5mm;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:6.5pt;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+.qr{width:9mm;height:9mm;flex:none;border:.3mm solid var(--navy);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;font-size:4.5pt;color:var(--navy);
+  text-align:center;line-height:1.1;letter-spacing:0;text-transform:none}
+
+/* ───── tipografia ───── */
+h2{font-family:'Cormorant Garamond',serif;font-size:21pt;color:var(--navy);
+  font-weight:600;line-height:1.1;margin:0 0 2.75mm}
+h3{font-size:12pt;font-weight:700;color:var(--navy2);margin:5.5mm 0 1.4mm;line-height:1.2}
+h3 .n{font-family:'JetBrains Mono',monospace;color:var(--gold-dk);margin-right:.5em}
+h3:first-child{margin-top:0}
+p{font-size:10.5pt;line-height:15.6pt;margin:0 0 2.75mm}
+ul{font-size:10.5pt;line-height:15.6pt;margin:0 0 2.75mm;padding-left:5mm}
+li{margin-bottom:.8mm}
+b,strong{color:var(--navy2)}
+.mono{font-family:'JetBrains Mono',monospace;font-size:9.5pt;color:var(--navy2)}
+
+/* ───── grid 4 + 2 ───── */
+.c42{display:grid;grid-template-columns:112.6mm 54.2mm;gap:4.2mm}
+.aside{font-size:8.5pt;line-height:12.5pt;color:var(--muted)}
+.aside .r{font-size:6.5pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold-dk);margin-bottom:1.2mm}
+.aside .cota{font-family:'JetBrains Mono',monospace;color:var(--navy2);display:block;margin-top:2mm}
+.aside p{font-size:8.5pt;line-height:12.5pt;margin:0 0 2mm}
+
+/* ───── caixas ───── */
+.box{padding:3.5mm 4mm;margin:4.1mm 0;font-size:9.5pt;line-height:14pt}
+.box .r{font-size:6.5pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  margin-bottom:1.4mm;display:flex;justify-content:space-between;align-items:baseline;gap:1em}
+.box p{margin:0;font-size:9.5pt;line-height:14pt}
+.box p + p{margin-top:2mm}
+.box ul{font-size:9.5pt;line-height:14pt;margin:1.5mm 0 0}
+.padrao{background:var(--cream);border-left:1.2mm solid var(--gold)}
+.padrao .r{color:var(--gold-dk)}
+.erro{background:#fbf3f3;border-left:1.2mm solid var(--red)}
+.erro .r{color:var(--red)}
+.pratica{background:#f3f7f4;border-left:1.2mm solid var(--ok)}
+.pratica .r{color:var(--ok)}
+.custo{font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--red)}
+.pend{background:#f6f6f4;border-left:1.2mm solid var(--muted)}
+.pend .r{color:var(--muted)}
+
+/* ───── tabela ───── */
+table{width:100%;border-collapse:collapse;font-size:9.5pt;margin:2.75mm 0;
+  font-variant-numeric:tabular-nums}
+th{background:var(--navy2);color:var(--gold-soft);font-size:6.5pt;font-weight:600;
+  letter-spacing:.07em;text-transform:uppercase;padding:1.8mm 2mm;text-align:left}
+td{border-bottom:.25mm solid var(--linha);padding:1.7mm 2mm;vertical-align:top;line-height:13pt}
+tr:nth-child(even) td{background:#faf8f4}
+td.k{font-family:'JetBrains Mono',monospace;font-size:9pt;color:var(--navy2);white-space:nowrap}
+
+/* ───── figura ───── */
+figure{margin:2.75mm 0;width:171mm}
+figure svg{width:100%;height:auto;display:block;border:.25mm solid #d8d2c4}
+figcaption{font-size:8.5pt;line-height:12.5pt;color:var(--muted);margin-top:1.6mm}
+figcaption b{color:var(--navy2)}
+.fotoslot{width:171mm;background:repeating-linear-gradient(135deg,#f3f1ec 0 3mm,#eae7e0 3mm 6mm);
+  border:.3mm dashed var(--gold-dk);display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;font-size:9pt;color:var(--gold-dk);
+  text-align:center;line-height:1.6;white-space:pre-line}
+
+/* ───── capa ───── */
+.capa{background:var(--navy);color:#fff;padding:24mm 20mm}
+.capa .aca{font-size:7pt;letter-spacing:.35em;text-transform:uppercase;color:var(--gold)}
+.capa .vol{font-family:'JetBrains Mono',monospace;font-size:9pt;color:var(--gold-soft);
+  letter-spacing:.18em;margin-top:52mm}
+.capa h1{font-family:'Cormorant Garamond',serif;font-size:44pt;font-weight:600;
+  margin:2mm 0 0;line-height:1.02;color:#fff}
+.capa .sub{font-size:11pt;line-height:16pt;color:#b3ada2;margin-top:6mm;max-width:118mm}
+.capa .rule{height:.25mm;background:rgba(224,165,33,.45);margin-top:auto}
+.capa .quem{padding-top:5mm;font-size:8pt;line-height:12.5pt;color:#b3ada2}
+.capa .quem b{color:var(--gold-soft)}
+
+/* ───── abertura de capítulo ───── */
+.capnum{font-family:'Cormorant Garamond',serif;font-size:72pt;line-height:.8;
+  color:var(--gold);font-weight:600}
+.capttl{font-family:'Cormorant Garamond',serif;font-size:32pt;color:var(--navy);
+  font-weight:600;line-height:1.05;margin:3mm 0 0}
+
+/* ───── índice ───── */
+.toc{font-size:10pt;line-height:15.6pt}
+.toc .grp{font-family:'JetBrains Mono',monospace;font-size:7pt;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--gold-dk);margin:5.5mm 0 1.5mm}
+.toc .row{display:flex;align-items:baseline;gap:2mm}
+.toc .row .dots{flex:1;border-bottom:.25mm dotted var(--linha);transform:translateY(-1mm)}
+.toc .row .pg{font-family:'JetBrains Mono',monospace;font-size:9pt;color:var(--muted)}
+.toc .row.sub{padding-left:6mm;color:var(--muted);font-size:9.5pt}
+
+/* ───── checklist ───── */
+.chk{list-style:none;padding:0;margin:2.75mm 0}
+.chk li{display:flex;gap:2.5mm;align-items:flex-start;margin-bottom:2.4mm;
+  font-size:10pt;line-height:15.6pt}
+.chk span{width:4mm;height:4mm;border:.3mm solid var(--navy2);flex:none;margin-top:.9mm}
+.linhas div{border-bottom:.25mm solid var(--linha);height:7mm}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ 1 · CAPA ═══════════════ -->
+<div class="sheet capa">
+  <div class="aca">Valvic Academy</div>
+  <div class="vol">VOLUME 2 · CAPÍTULO 1</div>
+  <h1>Ferragens<br>Dobradiças</h1>
+  <div class="sub">O que a dobradiça faz, como se escolhe olhando a porta, e por que a
+  escolha errada não tem conserto.</div>
+  <div class="rule"></div>
+  <div class="quem">
+    <b>Para quem:</b> marceneiro · montador · programador · projetos<br>
+    <b>Edição</b> 1 · Setembro/2026 &nbsp;·&nbsp; <b>Validação técnica:</b> Encarregado de Produção<br>
+    <b>Base técnica:</b> pesquisa conferida entre fabricantes — Hettich, Blum, FGVTN, Soprano
+  </div>
+</div>
+
+<!-- ═══════════════ 2 · COMO USAR ═══════════════ -->
+<div class="sheet">
+  <div class="topo"><div class="marca">valvic<small>Academy</small></div>
+    <div class="ctx">Volume 2 · Ferragens</div></div>
+  <div class="corpo">
+    <h2>Como usar esta apostila</h2>
+    <div class="c42">
+      <div>
+        <p>Ela não é para ler de uma vez. É para consultar na hora de decidir — e por isso
+        cada assunto tem número: <span class="mono">1.2</span> é sempre "Reta, curva e super
+        curva", nesta edição e nas próximas. Quando alguém disser "ver 1.2", é aqui.</p>
+        <p>Quatro caixas se repetem, e cada uma tem um papel:</p>
+      </div>
+      <div class="aside">
+        <div class="r">O rodapé</div>
+        <p>Toda página traz o QR da versão viva. Se a apostila na sua mão estiver velha, o QR
+        abre a atual e você vê a diferença sozinho.</p>
+        <p>Folha impressa vale <b>12 meses</b>.</p>
+      </div>
+    </div>
+
+    <div class="box padrao"><div class="r"><span>Padrão Valvic</span><span class="mono" style="font-size:7pt">rev. 1 · set/2026</span></div>
+      <p>A decisão da casa: marca, modelo e medida que usamos. <b>Leva sempre data de
+      revisão</b> — quando trocamos de fornecedor, é esta caixa que muda.</p></div>
+
+    <div class="box erro"><div class="r"><span>Erro comum</span></div>
+      <p>O que dá errado, como se percebe antes, e <b>quanto custa</b> em dinheiro e em tempo.
+      Sem número, seria conselho.</p></div>
+
+    <div class="box pratica"><div class="r"><span>Na prática</span></div>
+      <p>O jeito de fazer na bancada, incluindo o atalho de quem tem vinte anos de ofício.</p></div>
+
+    <div class="box pend"><div class="r"><span>A confirmar</span></div>
+      <p>O que ainda <b>não</b> está definido pela casa. Aparece assim, honestamente, em vez de
+      um número inventado. Se você souber a resposta, procure o Encarregado de Produção.</p></div>
+
+    <h3>Uma regra que vale para tudo aqui</h3>
+    <p>Onde a medida depende do modelo da ferragem, esta apostila ensina <b>onde encontrar</b>
+    e <b>o que a medida significa</b> — e não crava um número. Número que a bancada desmente é
+    pior que nenhum: ele parece autoridade.</p>
+  </div>
+  <div class="rodape"><span>Valvic Academy · Volume 2</span>
+    <span class="qr">QR<br>versão<br>viva</span><span>2</span></div>
+</div>
+
+<!-- ═══════════════ 3 · ÍNDICE ═══════════════ -->
+<div class="sheet">
+  <div class="topo"><div class="marca">valvic<small>Academy</small></div>
+    <div class="ctx">Volume 2 · Ferragens</div></div>
+  <div class="corpo">
+    <h2>Índice</h2>
+    <div class="toc">
+      <div class="grp">Abertura</div>
+      <div class="row"><span>Como usar esta apostila</span><span class="dots"></span><span class="pg">2</span></div>
+      <div class="grp">1 · Dobradiças</div>
+      <div class="row sub"><span>1.1 Caneco, braço e calço</span><span class="dots"></span><span class="pg">5</span></div>
+      <div class="row sub"><span>1.2 Reta, curva e super curva</span><span class="dots"></span><span class="pg">6</span></div>
+      <div class="row sub"><span>1.3 O ângulo de abertura</span><span class="dots"></span><span class="pg">8</span></div>
+      <div class="row sub"><span>1.4 Quantidade, regulagem e fecho</span><span class="dots"></span><span class="pg">9</span></div>
+      <div class="row sub"><span>Antes de seguir — confira se pegou</span><span class="dots"></span><span class="pg">10</span></div>
+      <div class="grp">Em produção — próximos capítulos</div>
+      <div class="row sub"><span>2 · Corrediças</span><span class="dots"></span><span class="pg">—</span></div>
+      <div class="row sub"><span>3 · Articuladores e básculas</span><span class="dots"></span><span class="pg">—</span></div>
+      <div class="row sub"><span>4 · Sistemas deslizantes</span><span class="dots"></span><span class="pg">—</span></div>
+      <div class="row sub"><span>5 · Puxadores, perfis e iluminação</span><span class="dots"></span><span class="pg">—</span></div>
+      <div class="grp">Fecho</div>
+      <div class="row"><span>O que ainda falta confirmar</span><span class="dots"></span><span class="pg">11</span></div>
+    </div>
+    <div class="box pend" style="margin-top:11mm"><div class="r"><span>Esta é a edição 1</span></div>
+      <p>Sai com o <b>capítulo 1 completo</b>. Os capítulos 2 a 5 entram nas próximas edições,
+      na ordem acima. O índice já mostra onde eles vão — para você saber o que existe e o que
+      ainda não.</p></div>
+  </div>
+  <div class="rodape"><span>Valvic Academy · Volume 2</span>
+    <span class="qr">QR<br>versão<br>viva</span><span>3</span></div>
+</div>
+
+<!-- ═══════════════ 4 · ABERTURA DO CAPÍTULO ═══════════════ -->
+<div class="sheet">
+  <div class="corpo" style="display:flex;flex-direction:column">
+    <div class="fotoslot" style="height:105mm;margin:-20mm -15mm 0 -24mm;width:210mm">FOTO · 210 × 105 mm — a fotografar
+as três dobradiças abertas sobre a bancada</div>
+    <div style="margin-top:12mm">
+      <div class="capnum">01</div>
+      <div class="capttl">Dobradiças</div>
+    </div>
+    <div class="box padrao" style="margin-top:9mm">
+      <div class="r"><span>Depois deste capítulo você sabe</span></div>
+      <ul style="padding-left:5mm">
+        <li>Escolher a dobradiça certa olhando a porta: sobreposta, parcialmente sobreposta ou embutida.</li>
+        <li>Separar duas coisas que quase todo mundo mistura: curvatura e ângulo.</li>
+        <li>Definir o ângulo pelo que está atrás da porta, não pelo tamanho dela.</li>
+        <li>Saber quantas dobradiças a porta pede, e regular as três direções.</li>
+      </ul>
+    </div>
+    <p style="color:var(--muted);font-size:10pt;margin-top:5.5mm">
+    <b style="color:var(--red)">O que custa errar:</b> braço errado obriga a refurar a porta.
+    Furo de caneco de 35 mm não tem conserto — a porta vai para o lixo e volta ao corte.
+    <span class="custo">R$ 180 e três dias</span>, com a obra parada esperando.</p>
+  </div>
+  <div class="rodape"><span>1 · Dobradiças</span>
+    <span class="qr">QR<br>versão<br>viva</span><span>4</span></div>
+</div>
+
+<!-- ═══════════════ 5 · 1.1 ═══════════════ -->
+<div class="sheet">
+  <div class="topo"><div class="marca">valvic<small>Academy</small></div>
+    <div class="ctx">1 · Dobradiças &nbsp;|&nbsp; 1.1 Caneco, braço e calço</div></div>
+  <div class="corpo">
+    <h3><span class="n">1.1</span>Caneco, braço e calço</h3>
+    <div class="c42">
+      <div>
+        <p>A dobradiça de móvel tem três partes, e vale saber o nome de cada uma porque é
+        assim que se pede na loja e se conversa na bancada.</p>
+        <p><b>O caneco</b> — também chamado copo — é a parte redonda que entra na porta. Ele
+        tem <b>35 mm de diâmetro</b>, e isso não muda entre marcas nem entre modelos: a broca
+        de 35 serve para tudo. Existem canecos de 26 e de 40 mm, mas em móvel planejado o de
+        linha é o 35.</p>
+        <p><b>O braço</b> liga o caneco ao calço. É nele que está a diferença entre reta,
+        curva e super curva — assunto de <span class="mono">1.2</span>.</p>
+        <p><b>O calço</b> — ou base — é a peça que parafusa na face interna da lateral. Os
+        dois furos ficam a <b>48 mm um do outro</b>, deslocados <b>6 mm</b> do centro do
+        caneco. É o padrão <span class="mono">48/6</span>, e é o que faz o gabarito de um
+        fabricante servir no de outro.</p>
+      </div>
+      <div class="aside">
+        <div class="r">Na bancada</div>
+        <p>A curvatura vem <b>gravada no braço</b>. Não confie na cor da embalagem: fornecedor
+        troca embalagem, não troca gravação.</p>
+        <span class="cota">caneco &nbsp;&nbsp; Ø 35 mm</span>
+        <span class="cota">furo à borda &nbsp; 3 a 5 mm</span>
+        <span class="cota">centro &nbsp;&nbsp;&nbsp; 21 a 23 mm</span>
+        <span class="cota">base &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; padrão 48/6</span>
+        <span class="cota">porta &nbsp;&nbsp;&nbsp;&nbsp; 15 a 22 mm</span>
+      </div>
+    </div>
+
+    <h3>Onde o furo do caneco fica na porta</h3>
+    <p>A distância entre a borda da porta e a beirada do furo é a <b>distância do furo</b>, e
+    ela fica entre <b>3 e 5 mm</b> conforme a tabela do modelo. Some o raio do caneco —
+    17,5 mm — e você tem onde marcar o centro: <b>21 a 23 mm da borda</b>.</p>
+
+    <div class="box erro"><div class="r"><span>Erro comum</span></div>
+      <p>Furar mais perto da borda do que a tabela manda, para "ganhar" recobrimento. O copo
+      fica com parede fina, e na primeira regulagem o MDF racha na borda. A porta não tem
+      conserto: volta ao corte.</p></div>
+
+    <div class="box padrao"><div class="r"><span>Padrão Valvic</span><span class="mono" style="font-size:7pt">rev. 1 · set/2026</span></div>
+      <p>Linha Gold usa <b>Hettich Sensys 8645i</b>, caneco 35 mm, 110°, com amortecimento
+      integrado — e a corrediça oculta soft-close no mesmo módulo. A ferragem faz parte da
+      <b>garantia de 10 anos</b>: não se substitui por equivalente sem autorização.</p></div>
+  </div>
+  <div class="rodape"><span>1 · Dobradiças</span>
+    <span class="qr">QR<br>versão<br>viva</span><span>5</span></div>
+</div>
+
+<!-- ═══════════════ 6 · 1.2 ═══════════════ -->
+<div class="sheet">
+  <div class="topo"><div class="marca">valvic<small>Academy</small></div>
+    <div class="ctx">1 · Dobradiças &nbsp;|&nbsp; 1.2 Reta, curva e super curva</div></div>
+  <div class="corpo">
+    <h3><span class="n">1.2</span>Reta, curva e super curva</h3>
+    <div class="c42">
+      <div>
+        <p>Antes de tudo, separe duas coisas que quase todo mundo mistura. A <b>curvatura do
+        braço</b> diz <b>onde a porta pousa</b> em relação à lateral. O <b>ângulo</b> diz
+        <b>quanto ela abre</b>. São independentes: existe reta de 110° e existe super curva de
+        110°.</p>
+        <p>Feita essa separação, a curvatura vira uma conta simples: <b>ela é o quanto da
+        lateral a porta deixa de cobrir</b>. Numa lateral de 18 mm, que é a nossa, dá para
+        conferir olhando o desenho.</p>
+      </div>
+      <div class="aside">
+        <div class="r">A conta</div>
+        <p>Lateral 18 mm.<br>Cobre 18 → braço <b>0</b><br>Cobre 9 → braço <b>9,5</b><br>Cobre 0 → braço <b>16</b></p>
+        <p>Quem entende isso escolhe a dobradiça olhando o desenho do arquiteto, sem decorar
+        tabela.</p>
+      </div>
+    </div>
+    <figure>
+<svg viewBox="0 0 640 375" role="img" aria-label="Os três tipos de dobradiça em três colunas. Em cima, o esquema do canto do móvel com a porta, a dobradiça e a lateral rotuladas. Na sobreposta a porta alinha com a face externa da lateral. Na parcialmente sobreposta ela para no meio da lateral. Na embutida a lateral tampona a porta. Embaixo, o espaço reservado para a foto de cada dobradiça.">
+      <defs>
+        <pattern id="grade" width="16" height="16" patternUnits="userSpaceOnUse">
+          <path d="M16,0 L0,0 L0,16" fill="none" stroke="#0E2038" stroke-width=".5" opacity=".07"/>
+        </pattern>
+        <pattern id="hach" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <rect width="10" height="10" fill="#f6f3ec"/>
+          <line x1="0" y1="0" x2="0" y2="10" stroke="#d9cfb4" stroke-width="3"/>
+        </pattern>
+        <marker id="ctA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#B0413F"/></marker>
+        <marker id="ciA" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+          <path d="M10,0 L0,5 L10,10 z" fill="#B0413F"/></marker>
+      </defs>
+      <rect x="0" y="0" width="640" height="375" fill="#ffffff"/>
+      <rect x="0" y="0" width="640" height="375" fill="url(#grade)"/>
+      <line x1="209" y1="10" x2="209" y2="365" stroke="#d8d2c4" stroke-width="1"/>
+      <line x1="422" y1="10" x2="422" y2="365" stroke="#d8d2c4" stroke-width="1"/>
+
+      <!-- ══════ A · SOBREPOSTA ══════ -->
+      <g transform="translate(0,0)">
+        <text x="104" y="24" font-family="Inter,sans-serif" font-size="13" fill="#5f5b52" text-anchor="middle">para porta</text>
+        <text x="104" y="41" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A" text-anchor="middle">sobreposta</text>
+
+        <circle cx="126" cy="152" r="46" fill="none" stroke="#c9c2b2" stroke-width="1"/>
+        <rect x="112" y="62" width="30" height="88" fill="#ece0c8" stroke="#a89a78" stroke-width="1.3"/>
+        <text x="127" y="106" font-family="Inter,sans-serif" font-size="11.5" fill="#5a4d31" text-anchor="middle" transform="rotate(-90,127,106)">Lateral</text>
+        <rect x="76" y="82" width="32" height="68" fill="#6e737a" stroke="#3f444b" stroke-width="1.3"/>
+        <text x="92" y="116" font-family="Inter,sans-serif" font-size="11.5" fill="#ffffff" text-anchor="middle" transform="rotate(-90,92,116)">Dobradiça</text>
+        <!-- porta: alinha com a face externa da lateral -->
+        <rect x="34" y="150" width="108" height="30" fill="#ece0c8" stroke="#a89a78" stroke-width="1.3"/>
+        <rect x="40" y="156" width="42" height="18" fill="#ffffff" stroke="#a89a78" stroke-width=".9"/>
+        <text x="61" y="169" font-family="Inter,sans-serif" font-size="11.5" fill="#5a4d31" text-anchor="middle">Porta</text>
+        <!-- alinhamento das faces externas -->
+        <line x1="142" y1="52" x2="142" y2="196" stroke="#B0413F" stroke-width=".9" stroke-dasharray="4 3"/>
+        <text x="152" y="60" font-family="Inter,sans-serif" font-size="10.5" fill="#B0413F">faces alinhadas</text>
+        <line x1="112" y1="150" x2="112" y2="196" stroke="#B0413F" stroke-width=".8" stroke-dasharray="3 3"/>
+        <line x1="112" y1="192" x2="142" y2="192" stroke="#B0413F" stroke-width="1.1" marker-start="url(#ciA)" marker-end="url(#ctA)"/>
+        <text x="127" y="212" font-family="'JetBrains Mono',monospace" font-size="11.5" fill="#B0413F" text-anchor="middle">18 mm</text>
+        <text x="104" y="229" font-family="Inter,sans-serif" font-size="11" fill="#5f5b52" text-anchor="middle">cobre a lateral inteira</text>
+        <text x="104" y="245" font-family="Inter,sans-serif" font-size="11" fill="#B0413F" text-anchor="middle">alinha ou recua até 3 mm</text>
+
+        <circle cx="104" cy="300" r="42" fill="url(#hach)" stroke="#B8860B" stroke-width="1.2" stroke-dasharray="5 4"/>
+        <text x="104" y="296" font-family="'JetBrains Mono',monospace" font-size="11" fill="#8a6a12" text-anchor="middle">FOTO</text>
+        <text x="104" y="310" font-family="'JetBrains Mono',monospace" font-size="10" fill="#8a6a12" text-anchor="middle">a fotografar</text>
+        <text x="104" y="360" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A" text-anchor="middle">dobradiça reta</text>
+        <text x="104" y="374" font-family="'JetBrains Mono',monospace" font-size="11.5" fill="#B8860B" text-anchor="middle">curvatura 0 mm</text>
+      </g>
+
+      <!-- ══════ B · PARCIALMENTE SOBREPOSTA ══════ -->
+      <g transform="translate(213,0)">
+        <text x="104" y="24" font-family="Inter,sans-serif" font-size="13" fill="#5f5b52" text-anchor="middle">para porta parcialmente</text>
+        <text x="104" y="41" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A" text-anchor="middle">sobreposta</text>
+
+        <circle cx="126" cy="152" r="46" fill="none" stroke="#c9c2b2" stroke-width="1"/>
+        <rect x="112" y="62" width="30" height="88" fill="#ece0c8" stroke="#a89a78" stroke-width="1.3"/>
+        <text x="127" y="106" font-family="Inter,sans-serif" font-size="11.5" fill="#5a4d31" text-anchor="middle" transform="rotate(-90,127,106)">Lateral</text>
+        <rect x="76" y="82" width="32" height="68" fill="#6e737a" stroke="#3f444b" stroke-width="1.3"/>
+        <text x="92" y="116" font-family="Inter,sans-serif" font-size="11.5" fill="#ffffff" text-anchor="middle" transform="rotate(-90,92,116)">Dobradiça</text>
+        <rect x="133" y="150" width="59" height="30" fill="#f6f1e6" stroke="#c4b998" stroke-width="1.1" stroke-dasharray="4 3"/>
+        <text x="162" y="169" font-family="Inter,sans-serif" font-size="10" fill="#8a7d5e" text-anchor="middle">2ª porta</text>
+        <!-- porta: para no meio da lateral -->
+        <rect x="34" y="150" width="93" height="30" fill="#ece0c8" stroke="#a89a78" stroke-width="1.3"/>
+        <rect x="40" y="156" width="42" height="18" fill="#ffffff" stroke="#a89a78" stroke-width=".9"/>
+        <text x="61" y="169" font-family="Inter,sans-serif" font-size="11.5" fill="#5a4d31" text-anchor="middle">Porta</text>
+        <line x1="127" y1="52" x2="127" y2="196" stroke="#B0413F" stroke-width=".9" stroke-dasharray="4 3"/>
+        <text x="137" y="60" font-family="Inter,sans-serif" font-size="10.5" fill="#B0413F">eixo da lateral</text>
+        <line x1="112" y1="150" x2="112" y2="196" stroke="#B0413F" stroke-width=".8" stroke-dasharray="3 3"/>
+        <line x1="112" y1="192" x2="127" y2="192" stroke="#B0413F" stroke-width="1.1" marker-start="url(#ciA)" marker-end="url(#ctA)"/>
+        <text x="119" y="212" font-family="'JetBrains Mono',monospace" font-size="11.5" fill="#B0413F" text-anchor="middle">9 mm</text>
+        <text x="104" y="229" font-family="Inter,sans-serif" font-size="11" fill="#5f5b52" text-anchor="middle">para no meio da lateral</text>
+        <text x="104" y="245" font-family="Inter,sans-serif" font-size="11" fill="#5f5b52" text-anchor="middle">duas portas dividem a mesma lateral</text>
+
+        <circle cx="104" cy="300" r="42" fill="url(#hach)" stroke="#B8860B" stroke-width="1.2" stroke-dasharray="5 4"/>
+        <text x="104" y="296" font-family="'JetBrains Mono',monospace" font-size="11" fill="#8a6a12" text-anchor="middle">FOTO</text>
+        <text x="104" y="310" font-family="'JetBrains Mono',monospace" font-size="10" fill="#8a6a12" text-anchor="middle">a fotografar</text>
+        <text x="104" y="360" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A" text-anchor="middle">dobradiça curva</text>
+        <text x="104" y="374" font-family="'JetBrains Mono',monospace" font-size="11.5" fill="#B8860B" text-anchor="middle">curvatura 9,5 mm</text>
+      </g>
+
+      <!-- ══════ C · EMBUTIDA ══════ -->
+      <g transform="translate(426,0)">
+        <text x="104" y="24" font-family="Inter,sans-serif" font-size="13" fill="#5f5b52" text-anchor="middle">para porta</text>
+        <text x="104" y="41" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A" text-anchor="middle">embutida</text>
+
+        <circle cx="126" cy="152" r="46" fill="none" stroke="#c9c2b2" stroke-width="1"/>
+        <!-- a lateral desce e TAMPONA a porta -->
+        <rect x="112" y="62" width="30" height="118" fill="#ece0c8" stroke="#a89a78" stroke-width="1.3"/>
+        <text x="127" y="112" font-family="Inter,sans-serif" font-size="11.5" fill="#5a4d31" text-anchor="middle" transform="rotate(-90,127,112)">Lateral</text>
+        <rect x="76" y="82" width="32" height="68" fill="#6e737a" stroke="#3f444b" stroke-width="1.3"/>
+        <text x="92" y="116" font-family="Inter,sans-serif" font-size="11.5" fill="#ffffff" text-anchor="middle" transform="rotate(-90,92,116)">Dobradiça</text>
+        <!-- porta: encosta na face interna, e a lateral passa na frente dela -->
+        <rect x="34" y="150" width="78" height="30" fill="#ece0c8" stroke="#a89a78" stroke-width="1.3"/>
+        <rect x="40" y="156" width="42" height="18" fill="#ffffff" stroke="#a89a78" stroke-width=".9"/>
+        <text x="61" y="169" font-family="Inter,sans-serif" font-size="11.5" fill="#5a4d31" text-anchor="middle">Porta</text>
+        <line x1="146" y1="150" x2="164" y2="150" stroke="#B0413F" stroke-width="1"/>
+        <line x1="146" y1="180" x2="164" y2="180" stroke="#B0413F" stroke-width="1"/>
+        <line x1="160" y1="150" x2="160" y2="180" stroke="#B0413F" stroke-width="1.1" marker-start="url(#ciA)" marker-end="url(#ctA)"/>
+        <text x="127" y="212" font-family="'JetBrains Mono',monospace" font-size="11.5" fill="#B0413F" text-anchor="middle">0 mm</text>
+        <text x="104" y="229" font-family="Inter,sans-serif" font-size="11" fill="#5f5b52" text-anchor="middle">a porta não cobre nada</text>
+        <text x="104" y="245" font-family="Inter,sans-serif" font-size="11" fill="#B0413F" text-anchor="middle">a lateral tampona a porta</text>
+
+        <circle cx="104" cy="300" r="42" fill="url(#hach)" stroke="#B8860B" stroke-width="1.2" stroke-dasharray="5 4"/>
+        <text x="104" y="296" font-family="'JetBrains Mono',monospace" font-size="11" fill="#8a6a12" text-anchor="middle">FOTO</text>
+        <text x="104" y="310" font-family="'JetBrains Mono',monospace" font-size="10" fill="#8a6a12" text-anchor="middle">a fotografar</text>
+        <text x="104" y="360" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A" text-anchor="middle">dobradiça super curva</text>
+        <text x="104" y="374" font-family="'JetBrains Mono',monospace" font-size="11.5" fill="#B8860B" text-anchor="middle">curvatura 16 mm</text>
+      </g>
+    </svg>
+<figcaption><b>Fig. 1.3</b> — Esquema do canto do móvel: a lateral em pé, a porta deitada e a dobradiça entre as duas. <b>A curvatura do braço é o quanto da lateral a porta deixa de cobrir.</b> Na sobreposta a porta cobre os 18 mm e alinha com a face externa — ou recua até 3 mm, nunca avança. Na parcial ela para no meio, cobre 9 mm. Na embutida ela não cobre nada, e é a lateral que tampona a porta.</figcaption>
+</figure>
+    <h3>As três, uma a uma</h3>
+    <p><b>Reta — curvatura 0.</b> A porta cobre a lateral inteira, <b>alinhada com a face
+    externa ou recuada até 3 mm para dentro. Nunca avançando para fora.</b> É a dobradiça da
+    porta que fecha sozinha um vão, e de qualquer módulo em que a lateral não aparece.</p>
+  </div>
+  <div class="rodape"><span>1 · Dobradiças</span>
+    <span class="qr">QR<br>versão<br>viva</span><span>6</span></div>
+</div>
+
+<!-- ═══════════════ 7 · 1.2 continuação ═══════════════ -->
+<div class="sheet">
+  <div class="topo"><div class="marca">valvic<small>Academy</small></div>
+    <div class="ctx">1 · Dobradiças &nbsp;|&nbsp; 1.2 Reta, curva e super curva</div></div>
+  <div class="corpo">
+    <h3>As três, uma a uma <span style="font-weight:400;color:var(--muted);font-size:9.5pt">· continuação</span></h3>
+    <p><b>Curva — curvatura 9,5.</b> A porta para no meio da lateral. É o que se usa quando
+    <b>duas portas dividem a mesma lateral</b> — cada uma pega a sua metade, e entre elas fica
+    a folga. Na Hettich, essa é a montagem chamada <b>Alta</b>.</p>
+    <p><b>Super curva — curvatura 16.</b> A porta fica dentro do vão e <b>é a lateral que
+    tampona a porta</b>: de frente, quem aparece é a lateral, e a porta some atrás dela. Pede
+    folga em volta e é a que mais sofre com parede fora de prumo. Na Hettich, montagem
+    <b>Super alta</b>.</p>
+
+    <table>
+      <thead><tr><th>Dobradiça</th><th>Curvatura</th><th>A porta</th><th>Hettich chama</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Reta</td><td class="k">0 mm</td><td>cobre a lateral inteira, rente</td><td>Baixa</td></tr>
+        <tr><td class="k">Curva</td><td class="k">9,5 mm</td><td>para no meio da lateral</td><td>Alta</td></tr>
+        <tr><td class="k">Super curva</td><td class="k">16 mm</td><td>não cobre — a lateral tampona</td><td>Super alta</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box erro"><div class="r"><span>Erro comum</span></div>
+      <p>Pedir a dobradiça pela cor da caixa, ou pegar a que sobrou na prateleira. Braço errado
+      não regula: ou a porta bate na lateral, ou sobra folga que não fecha. E como o caneco já
+      está furado, a correção é <span class="custo">porta nova — R$ 180 e três dias</span>.</p>
+      <p><b>Como perceber antes:</b> a curvatura vem gravada no braço. Confira a gravação
+      contra o projeto <b>antes</b> de furar, não depois.</p></div>
+
+    <div class="box pratica"><div class="r"><span>Na prática</span></div>
+      <p>Na dúvida entre reta e curva, olhe a lateral no desenho: se ela aparece na frente do
+      móvel dividindo duas portas, é curva. Se ela some atrás de uma porta só, é reta.</p></div>
+  </div>
+  <div class="rodape"><span>1 · Dobradiças</span>
+    <span class="qr">QR<br>versão<br>viva</span><span>7</span></div>
+</div>
+
+<!-- ═══════════════ 8 · 1.3 ÂNGULOS ═══════════════ -->
+<div class="sheet">
+  <div class="topo"><div class="marca">valvic<small>Academy</small></div>
+    <div class="ctx">1 · Dobradiças &nbsp;|&nbsp; 1.3 O ângulo de abertura</div></div>
+  <div class="corpo">
+    <h3><span class="n">1.3</span>O ângulo se escolhe pelo que está atrás da porta</h3>
+    <p>O ângulo não é conforto, é <b>acesso</b>. A pergunta certa não é "que tamanho tem a
+    porta", e sim <b>"o que precisa sair de dentro"</b>. Gaveta interna e prateleira extraível
+    exigem que a folha saia da frente do vão — e isso só acontece com grande ângulo.</p>
+
+    <table>
+      <thead><tr><th>Ângulo</th><th>Para quê</th><th>Atenção</th></tr></thead>
+      <tbody>
+        <tr><td class="k">95° – 110°</td><td>Porta comum de armário e de cozinha</td><td>É o padrão. <b>Não serve com gaveta interna</b></td></tr>
+        <tr><td class="k">155°</td><td>Módulo com gaveta interna ou prateleira extraível</td><td>É o "grande ângulo", especificado para isso</td></tr>
+        <tr><td class="k">165° – 175°</td><td>Armário de canto e canto de 90°</td><td>Confira o vão livre antes de fechar o projeto</td></tr>
+        <tr><td class="k">45° · 90° · 270°</td><td>Móvel em ângulo e aplicações especiais</td><td>Item de encomenda, não de estoque</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box erro"><div class="r"><span>Erro comum</span></div>
+      <p>Especificar 110° num módulo que tem gaveta interna. A gaveta raspa na folha da porta
+      todas as vezes que abre — e o cliente sente isso como móvel malfeito, não como ferragem
+      errada. A correção é <span class="custo">volta de equipe à obra e refuração da
+      porta</span>.</p>
+      <p><b>Como perceber antes:</b> na conferência do projeto, todo módulo com gaveta interna
+      recebe uma marca. A dobradiça desses vai comprada à parte.</p></div>
+
+    <div class="box padrao"><div class="r"><span>Padrão Valvic</span><span class="mono" style="font-size:7pt">rev. 1 · set/2026</span></div>
+      <p>Todo módulo com <b>gaveta interna sai com 155°</b>. A conferência é no projeto, antes
+      da compra — nunca na montagem.</p></div>
+
+    <div class="box pend"><div class="r"><span>A confirmar</span></div>
+      <p>O ângulo padrão que a casa compra para porta comum — 95°, 100° ou 110° — e se há
+      exceção para porta de cozinha. Perguntar ao Encarregado de Produção.</p></div>
+  </div>
+  <div class="rodape"><span>1 · Dobradiças</span>
+    <span class="qr">QR<br>versão<br>viva</span><span>8</span></div>
+</div>
+
+<!-- ═══════════════ 9 · 1.4 ═══════════════ -->
+<div class="sheet">
+  <div class="topo"><div class="marca">valvic<small>Academy</small></div>
+    <div class="ctx">1 · Dobradiças &nbsp;|&nbsp; 1.4 Quantidade, regulagem e fecho</div></div>
+  <div class="corpo">
+    <h3><span class="n">1.4</span>Quantas, e como se regula</h3>
+    <p>A quantidade sai da <b>altura da porta</b>. Porta pesada — maciço, vidro, portas muito
+    largas — ganha uma a mais que a tabela.</p>
+
+    <table>
+      <thead><tr><th>Altura da porta</th><th>Dobradiças</th><th>Onde aparece</th></tr></thead>
+      <tbody>
+        <tr><td class="k">até 900 mm</td><td class="k">2</td><td>aéreo, balcão, módulo baixo</td></tr>
+        <tr><td class="k">~1600 mm</td><td class="k">3</td><td>porta de roupeiro, coluna</td></tr>
+        <tr><td class="k">~2000 mm</td><td class="k">4</td><td>porta de piso a teto</td></tr>
+        <tr><td class="k">~2400 mm</td><td class="k">5</td><td>pé-direito alto</td></tr>
+      </tbody>
+    </table>
+
+    <h3>A regulagem nas três direções</h3>
+    <p>A dobradiça de caneco regula depois de montada, e é isso que salva a montagem quando a
+    parede não está no prumo. São três ajustes independentes:</p>
+    <table>
+      <thead><tr><th>Ajuste</th><th>Faixa</th><th>Resolve</th></tr></thead>
+      <tbody>
+        <tr><td>Recobrimento (lateral)</td><td class="k">± 2 mm</td><td>porta encostando na vizinha, ou folga desigual</td></tr>
+        <tr><td>Profundidade</td><td class="k">+3 / −2 mm</td><td>porta empenada em relação à frente do móvel</td></tr>
+        <tr><td>Altura</td><td class="k">no calço</td><td>porta caída ou desalinhada com a vizinha</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box pratica"><div class="r"><span>Na prática</span></div>
+      <p>A Sensys <b>fecha sozinha a partir de 35°</b> de abertura. Se a porta não puxa
+      sozinha nesse ponto, não é defeito da mola: é regulagem de profundidade fora do lugar, ou
+      calço errado.</p></div>
+
+    <div class="box pend"><div class="r"><span>A confirmar</span></div>
+      <p><b>Qual calço a Valvic usa.</b> A Hettich trabalha com <span class="mono">0 · 1,5 ·
+      3,0 mm</span>; outras linhas usam <span class="mono">0 · 3 · 6 · 9 mm</span>.
+      <b>Calço não é intercambiável entre marcas</b> — trocar muda o recobrimento e desregula a
+      porta. E a distância do furo à borda da nossa furação padrão, dentro da faixa de 3 a
+      5 mm.</p></div>
+  </div>
+  <div class="rodape"><span>1 · Dobradiças</span>
+    <span class="qr">QR<br>versão<br>viva</span><span>9</span></div>
+</div>
+
+<!-- ═══════════════ 10 · FECHO ═══════════════ -->
+<div class="sheet">
+  <div class="topo"><div class="marca">valvic<small>Academy</small></div>
+    <div class="ctx">1 · Dobradiças &nbsp;|&nbsp; fecho do capítulo</div></div>
+  <div class="corpo">
+    <h2>Antes de seguir</h2>
+    <h3>Confira se pegou</h3>
+    <ul class="chk">
+      <li><span></span>Sei nomear as três partes da dobradiça e dizer para que serve cada uma.</li>
+      <li><span></span>Sei dizer, olhando a porta montada, se ela é sobreposta, parcial ou embutida.</li>
+      <li><span></span>Sei que curvatura e ângulo são coisas diferentes, e sei explicar a diferença.</li>
+      <li><span></span>Sei escolher o ângulo pelo que tem atrás da porta, não pelo tamanho dela.</li>
+      <li><span></span>Sei onde marcar o centro do caneco e o que acontece se furar perto demais.</li>
+      <li><span></span>Sei quantas dobradiças a porta pede pela altura dela.</li>
+      <li><span></span>Sei regular as três direções e sei o que cada uma corrige.</li>
+    </ul>
+
+    <div class="box padrao"><div class="r"><span>Tarefa prática</span></div>
+      <p>Pegue uma porta de 900 mm na bancada. Marque a furação das dobradiças, diga em voz
+      alta quantas vão e por quê, e justifique a escolha do braço olhando a lateral do módulo.
+      Depois de montada, regule até o rebaixo ficar igual dos dois lados e a porta puxar
+      sozinha no fim do curso.</p>
+      <p><b>Quem confirma:</b> Encarregado de Produção (fábrica) ou Encarregado de Montagem
+      (obra). Sem a tarefa feita, o capítulo 2 não começa.</p></div>
+
+    <h3>Anotações</h3>
+    <div class="linhas"><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+  <div class="rodape"><span>1 · Dobradiças</span>
+    <span class="qr">QR<br>versão<br>viva</span><span>10</span></div>
+</div>
+
+<!-- ═══════════════ 11 · PENDÊNCIAS ═══════════════ -->
+<div class="sheet">
+  <div class="topo"><div class="marca">valvic<small>Academy</small></div>
+    <div class="ctx">Volume 2 · o que falta</div></div>
+  <div class="corpo">
+    <h2>O que ainda falta confirmar</h2>
+    <p>Esta apostila nasceu de pesquisa conferida entre fabricantes e material de montador.
+    O que está escrito, está sustentado. <b>O que a casa ainda não decidiu aparece aqui</b>, em
+    vez de virar número inventado.</p>
+
+    <table>
+      <thead><tr><th>Pergunta</th><th>Por que só a produção responde</th></tr></thead>
+      <tbody>
+        <tr><td><b>Qual calço usamos</b></td>
+          <td>Hettich trabalha com 0 / 1,5 / 3,0 mm; outras linhas com 0 / 3 / 6 / 9. Calço não é intercambiável entre marcas.</td></tr>
+        <tr><td><b>Distância do furo à borda</b></td>
+          <td>A faixa de mercado é 3 a 5 mm. Qual usamos na furação padrão de 18 mm define o recobrimento de todo projeto.</td></tr>
+        <tr><td><b>Ângulo padrão de compra</b></td>
+          <td>95°, 100° ou 110° para porta comum — e se há exceção para cozinha.</td></tr>
+        <tr><td><b>Hardt, Hettich ou Blum</b></td>
+          <td>Hettich e Blum são as marcas de projeto e de garantia; Hardt é a maior parte da compra real. A apostila ensina o que usamos ou o que existe?</td></tr>
+        <tr><td><b>Pistão: comum ou inversa</b></td>
+          <td>Nosso registro diz "força inversa em básculas/aéreos", e isso não fecha: báscula abre para cima, e porta que abre para cima pede pistão comum. Vale para o capítulo 3.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box padrao"><div class="r"><span>Como esta apostila melhora</span></div>
+      <p>Cada resposta vira uma caixa <b>Padrão Valvic</b> datada, e esta página encolhe. Quando
+      ela ficar vazia, o capítulo está fechado.</p>
+      <p>Antes de qualquer capítulo ir para a gráfica, <b>quem monta olha os desenhos</b>. Fonte
+      de fabricante acerta o catálogo; só quem monta sabe como a peça de fato assenta.</p></div>
+
+    <p style="font-size:8.5pt;line-height:12.5pt;color:var(--muted);margin-top:7mm">
+    <b>Base técnica desta edição:</b> Hettich Brasil (Sensys 8645i e 8657i), Blum (CLIP top
+    BLUMOTION e catálogo 2022/2023), FGVTN, Soprano, Häfele Brasil, Portal do Montador de
+    Móveis, Guia do Marceneiro, Guia da Marcenaria, Completa e Canal da Marcenaria.
+    Registro completo com as divergências entre fontes:
+    <span class="mono" style="font-size:8pt">valvic-academy/referencias/pesquisa-ferragens.md</span></p>
+  </div>
+  <div class="rodape"><span>Valvic Academy · Volume 2</span>
+    <span class="qr">QR<br>versão<br>viva</span><span>11</span></div>
+</div>
+
+</body>
+</html>

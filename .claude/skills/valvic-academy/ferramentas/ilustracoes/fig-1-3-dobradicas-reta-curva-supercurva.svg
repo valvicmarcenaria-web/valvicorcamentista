@@ -39,7 +39,7 @@
         <line x1="112" y1="192" x2="142" y2="192" stroke="#B0413F" stroke-width="1.1" marker-start="url(#ciA)" marker-end="url(#ctA)"/>
         <text x="127" y="212" font-family="'JetBrains Mono',monospace" font-size="11.5" fill="#B0413F" text-anchor="middle">18 mm</text>
         <text x="104" y="229" font-family="Inter,sans-serif" font-size="11" fill="#5f5b52" text-anchor="middle">cobre a lateral inteira</text>
-        <text x="104" y="245" font-family="Inter,sans-serif" font-size="11" fill="#B0413F" text-anchor="middle">alinha, ou recua até 3 mm — nunca avança</text>
+        <text x="104" y="245" font-family="Inter,sans-serif" font-size="11" fill="#B0413F" text-anchor="middle">alinha ou recua até 3 mm</text>
 
         <circle cx="104" cy="300" r="42" fill="url(#hach)" stroke="#B8860B" stroke-width="1.2" stroke-dasharray="5 4"/>
         <text x="104" y="296" font-family="'JetBrains Mono',monospace" font-size="11" fill="#8a6a12" text-anchor="middle">FOTO</text>
@@ -97,11 +97,9 @@
         <line x1="146" y1="150" x2="164" y2="150" stroke="#B0413F" stroke-width="1"/>
         <line x1="146" y1="180" x2="164" y2="180" stroke="#B0413F" stroke-width="1"/>
         <line x1="160" y1="150" x2="160" y2="180" stroke="#B0413F" stroke-width="1.1" marker-start="url(#ciA)" marker-end="url(#ctA)"/>
-        <text x="168" y="169" font-family="Inter,sans-serif" font-size="10.5" fill="#B0413F">a lateral tampona</text>
-        <text x="168" y="182" font-family="Inter,sans-serif" font-size="10.5" fill="#B0413F">a porta</text>
         <text x="127" y="212" font-family="'JetBrains Mono',monospace" font-size="11.5" fill="#B0413F" text-anchor="middle">0 mm</text>
         <text x="104" y="229" font-family="Inter,sans-serif" font-size="11" fill="#5f5b52" text-anchor="middle">a porta não cobre nada</text>
-        <text x="104" y="245" font-family="Inter,sans-serif" font-size="11" fill="#5f5b52" text-anchor="middle">quem aparece de frente é a lateral</text>
+        <text x="104" y="245" font-family="Inter,sans-serif" font-size="11" fill="#B0413F" text-anchor="middle">a lateral tampona a porta</text>
 
         <circle cx="104" cy="300" r="42" fill="url(#hach)" stroke="#B8860B" stroke-width="1.2" stroke-dasharray="5 4"/>
         <text x="104" y="296" font-family="'JetBrains Mono',monospace" font-size="11" fill="#8a6a12" text-anchor="middle">FOTO</text>
