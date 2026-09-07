@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Conferência de Saída — Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  :root{ --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f;
+         --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd;
+         --green:#2f7d4f; --amber:#c9a227; --red:#b0413f; --blue:#2f5d8c; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3;
+        font-size:9.5px; line-height:1.4; -webkit-font-smoothing:antialiased; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:16px auto;
+          box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; }
+  .ph{ background:var(--navy); color:#fff; padding:8mm 13mm 6mm; position:relative; }
+  .ph::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:2.5px;
+              background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 42%,transparent 100%); }
+  .ph .top{ display:flex; align-items:center; gap:11px; }
+  .ph .mono{ width:34px; height:34px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:4px;
+             display:flex; align-items:center; justify-content:center;
+             font-family:'Cormorant Garamond',serif; font-weight:700; font-size:17px; color:var(--gold); }
+  .ph .co{ font-size:10px; font-weight:700; letter-spacing:2.4px; text-transform:uppercase; }
+  .ph .sub{ font-size:7.5px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:700; margin-top:6px; line-height:1.05; }
+  .ph .kx{ font-size:7.3px; letter-spacing:2.6px; text-transform:uppercase; color:var(--gold); margin-top:2px; }
+  .body{ flex:1; padding:5mm 13mm 0; display:flex; flex-direction:column; min-height:0; }
+  .fill{ display:inline-block; border-bottom:1px solid var(--navy2); height:11px; flex:1; }
+  .sec{ display:flex; align-items:center; gap:9px; margin:7px 0 4px; }
+  .sec .bar{ width:15px; height:2px; background:var(--gold); }
+  .sec .tx{ font-size:8px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); }
+  .sec .tx small{ color:var(--muted); font-weight:600; letter-spacing:.3px; text-transform:none; }
+  .box{ border:1px solid var(--line); border-radius:7px; padding:8px 11px; background:#fff; }
+  .box.pad{ background:#f4f1ea; }
+  .grid{ display:grid; gap:5px 12px; } .g2{ grid-template-columns:1fr 1fr; } .g4{ grid-template-columns:repeat(4,1fr); }
+  .field{ display:flex; align-items:baseline; gap:5px; font-size:8.5px; }
+  .field .fl{ color:var(--muted); white-space:nowrap; } .field .fl b{ color:var(--navy); font-weight:700; }
+  .cb{ display:inline-block; width:11px; height:11px; border:1.3px solid var(--navy2); border-radius:2.5px;
+       flex-shrink:0; vertical-align:-1px; background:#fff; }
+
+  /* o papel desta folha — a faixa que evita a discussão técnica */
+  .papel{ background:var(--navy); border-radius:7px; padding:8px 12px; margin-bottom:7px; }
+  .papel .nh{ font-size:6.8px; letter-spacing:1.3px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+  .papel p{ font-size:8.4px; line-height:1.5; color:rgba(255,255,255,.9); margin-top:3px; }
+  .papel p b{ color:#fff; }
+
+  /* listas de conferência */
+  table.ck{ width:100%; border-collapse:collapse; table-layout:fixed; }
+  table.ck th{ background:var(--navy2); color:#fff; font-size:6.6px; font-weight:700; letter-spacing:.3px;
+               text-transform:uppercase; padding:4px 6px; text-align:left; border:1px solid var(--navy); }
+  table.ck th.c{ text-align:center; }
+  table.ck td{ border:1px solid var(--line); padding:3px 6px; font-size:8.4px; vertical-align:middle; }
+  table.ck td.c{ text-align:center; }
+  table.ck tbody tr:nth-child(even) td{ background:#f7f5ef; }
+  table.ck .cbx{ display:inline-block; width:11px; height:11px; border:1.3px solid var(--navy2);
+                 border-radius:2.5px; background:#fff; }
+  table.ck .cbx.r{ border-color:var(--red); }
+  .obsl{ border-bottom:1px dotted var(--line2); display:block; height:9px; }
+
+  /* insumos */
+  table.in{ width:100%; border-collapse:collapse; table-layout:fixed; }
+  table.in th{ background:var(--navy2); color:#fff; font-size:6.4px; font-weight:700; letter-spacing:.2px;
+               text-transform:uppercase; padding:4px 5px; text-align:left; border:1px solid var(--navy); }
+  table.in th.c{ text-align:center; }
+  table.in td{ border:1px solid var(--line); padding:2.5px 5px; font-size:8.2px; height:17px; }
+  table.in td.c{ text-align:center; }
+  table.in tbody tr:nth-child(even) td{ background:#f7f5ef; }
+  table.in .cbx{ display:inline-block; width:10px; height:10px; border:1.3px solid var(--navy2);
+                 border-radius:2.5px; background:#fff; }
+  .duas{ display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+
+  .note{ background:#fffaf0; border:1px solid #eed9a8; border-radius:7px; padding:6px 11px; margin-top:6px; }
+  .note .nh{ font-size:6.8px; letter-spacing:1.3px; text-transform:uppercase; color:var(--gold-dk);
+             font-weight:700; margin-bottom:3px; }
+  .note p{ font-size:8.2px; line-height:1.45; color:#5a4a2c; } .note p b{ color:var(--navy); }
+
+  .libera{ border:1.4px solid var(--navy2); border-radius:8px; overflow:hidden; margin-top:7px; }
+  .libera .lh{ background:var(--navy); color:#fff; padding:4px 11px; font-size:8.2px; font-weight:800;
+               letter-spacing:.8px; text-transform:uppercase; }
+  .libera .lb{ padding:7px 11px; }
+  .libera .opts{ display:flex; gap:20px; align-items:center; }
+  .libera .opt{ display:flex; align-items:center; gap:6px; font-size:8.8px; font-weight:700; }
+  .libera .opt.ok{ color:var(--green); } .libera .opt.rt{ color:var(--red); }
+  .libera .opt .cb{ width:13px; height:13px; }
+  .libera .pend{ margin-top:6px; font-size:8.2px; color:var(--muted); }
+  .libera .pend .l{ display:block; border-bottom:1px solid var(--line2); height:11px; margin-top:4px; }
+  .libera .ass{ display:flex; gap:16px; margin-top:8px; }
+  .libera .ass div{ flex:1; border-top:1px solid var(--navy2); padding-top:3px; font-size:7.6px; color:var(--muted); }
+
+  .pf{ border-top:1px solid var(--line2); background:#f4f1ea; padding:5px 13mm; display:flex;
+       justify-content:space-between; align-items:center; margin-top:auto; }
+  .pf .pl{ font-size:6.6px; color:var(--muted); }
+  .pf .pr{ font-size:7.4px; color:var(--navy); font-weight:700; letter-spacing:.8px; }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff;
+        border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; cursor:pointer; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } .btn{ display:none; } }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<section class="sheet">
+  <div class="ph">
+    <div class="top">
+      <div class="mono">V</div>
+      <div><div class="co">Valvic Marcenaria</div>
+      <div class="sub">Conferência de Saída — imprimir 1 por ambiente</div></div>
+    </div>
+    <div class="tt">Conferência de Saída — Acabamento, Limpeza e Insumos</div>
+    <div class="kx">A última olhada antes de o móvel sair da fábrica</div>
+  </div>
+
+  <div class="body">
+
+    <div class="papel">
+      <div class="nh">O que se confere aqui — e o que não</div>
+      <p>Esta folha vem <b>depois</b> da Matriz de Conferência do Marceneiro. O que é técnico —
+      medida, esquadro, ferragem, alinhamento — já foi conferido e corrigido pelo <b>Deivison</b>.
+      Aqui se olha <b>o que o cliente vai ver quando abrir a embalagem</b>: acabamento aparente,
+      limpeza e se o kit do móvel está completo. <b>Não se discute execução</b> — o que estiver
+      errado volta para o Deivison com a pendência escrita.</p>
+    </div>
+
+    <div class="box pad" style="margin-bottom:6px">
+      <div class="grid g4" style="margin-bottom:5px">
+        <div class="field"><span class="fl"><b>Cliente / OP:</b></span><span class="fill"></span></div>
+        <div class="field"><span class="fl"><b>Ambiente:</b></span><span class="fill"></span></div>
+        <div class="field"><span class="fl">Conferido por:</span><span class="fill"></span></div>
+        <div class="field"><span class="fl">Data:</span><span class="fill"></span></div>
+      </div>
+      <div class="grid g2">
+        <div class="field"><span class="fl">Matriz do marceneiro liberada?</span>
+          <span style="font-size:8.4px"><span class="cb"></span> sim &nbsp;&nbsp;
+          <span class="cb"></span> não — <b style="color:#b0413f">não conferir ainda</b></span></div>
+        <div class="field"><span class="fl">Nº de módulos do ambiente:</span><span class="fill"></span></div>
+      </div>
+    </div>
+
+    <!-- ═════ 1 · ACABAMENTO ═════ -->
+    <div class="sec"><span class="bar"></span><span class="tx">1 · Acabamento
+      <small>· o que o cliente vê</small></span></div>
+    <table class="ck">
+      <thead><tr>
+        <th style="width:56%">O que olhar</th>
+        <th class="c" style="width:8%">OK</th>
+        <th class="c" style="width:8%">Não</th>
+        <th style="width:28%">Onde / qual módulo</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Borda colada em toda a volta — sem descolar, rebarba ou queimado</td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx r"></span></td><td><span class="obsl"></span></td></tr>
+        <tr><td>Fita de borda na cor certa — bate com a chapa</td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx r"></span></td><td><span class="obsl"></span></td></tr>
+        <tr><td>Superfície sem risco, mancha, cola aparente ou <b>marca de caneta</b></td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx r"></span></td><td><span class="obsl"></span></td></tr>
+        <tr><td>Tapa-furo em todo furo aparente, na cor da chapa</td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx r"></span></td><td><span class="obsl"></span></td></tr>
+        <tr><td>Tampa de dobradiça colocada em todas as dobradiças</td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx r"></span></td><td><span class="obsl"></span></td></tr>
+        <tr><td>Portas e gavetas com <b>folgas iguais</b> dos dois lados; frentes no mesmo plano</td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx r"></span></td><td><span class="obsl"></span></td></tr>
+        <tr><td>Perfil de alumínio e de LED sem amassado, sem onda, emenda alinhada</td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx r"></span></td><td><span class="obsl"></span></td></tr>
+        <tr><td>Friso e arremate uniformes ao longo de toda a peça</td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx r"></span></td><td><span class="obsl"></span></td></tr>
+      </tbody>
+    </table>
+
+    <!-- ═════ 2 · LIMPEZA ═════ -->
+    <div class="sec"><span class="bar"></span><span class="tx">2 · Limpeza
+      <small>· a peça sai como chega na casa do cliente</small></span></div>
+    <table class="ck">
+      <thead><tr>
+        <th style="width:56%">O que olhar</th>
+        <th class="c" style="width:8%">OK</th>
+        <th class="c" style="width:8%">Não</th>
+        <th style="width:28%">Onde / qual módulo</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Sem pó, cavaco ou resto de cola — passar a mão por dentro e por fora</td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx r"></span></td><td><span class="obsl"></span></td></tr>
+        <tr><td>Sem fita crepe, etiqueta de fábrica ou filme de proteção esquecido</td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx r"></span></td><td><span class="obsl"></span></td></tr>
+        <tr><td>Vidro, espelho e ferragem limpos, sem digital e sem respingo</td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx r"></span></td><td><span class="obsl"></span></td></tr>
+        <tr><td>Embalagem íntegra e <b>identificada</b>: cliente + ambiente + módulo</td>
+            <td class="c"><span class="cbx"></span></td><td class="c"><span class="cbx r"></span></td><td><span class="obsl"></span></td></tr>
+      </tbody>
+    </table>
+
+    <!-- ═════ 3 · INSUMOS ═════ -->
+    <div class="sec"><span class="bar"></span><span class="tx">3 · Insumos e kit do móvel
+      <small>· o que falta aqui vira obra parada lá</small></span></div>
+    <div class="duas">
+      <table class="in">
+        <thead><tr><th style="width:46%">Item</th><th class="c" style="width:18%">Previsto</th>
+          <th class="c" style="width:18%">Separado</th><th class="c" style="width:18%">Confere</th></tr></thead>
+        <tbody>
+          <tr><td>Dobradiças</td><td class="c"></td><td class="c"></td><td class="c"><span class="cbx"></span></td></tr>
+          <tr><td>Corrediças</td><td class="c"></td><td class="c"></td><td class="c"><span class="cbx"></span></td></tr>
+          <tr><td>Puxadores</td><td class="c"></td><td class="c"></td><td class="c"><span class="cbx"></span></td></tr>
+          <tr><td>Articulador / báscula</td><td class="c"></td><td class="c"></td><td class="c"><span class="cbx"></span></td></tr>
+          <tr><td>Suportes de prateleira</td><td class="c"></td><td class="c"></td><td class="c"><span class="cbx"></span></td></tr>
+          <tr><td>Tapa-furo (cartela)</td><td class="c"></td><td class="c"></td><td class="c"><span class="cbx"></span></td></tr>
+          <tr><td>Parafusos e buchas</td><td class="c"></td><td class="c"></td><td class="c"><span class="cbx"></span></td></tr>
+          <tr><td>Pés / niveladores</td><td class="c"></td><td class="c"></td><td class="c"><span class="cbx"></span></td></tr>
+        </tbody>
+      </table>
+      <table class="in">
+        <thead><tr><th style="width:46%">Item</th><th class="c" style="width:18%">Previsto</th>
+          <th class="c" style="width:18%">Separado</th><th class="c" style="width:18%">Confere</th></tr></thead>
+        <tbody>
+          <tr><td>Perfil de LED</td><td class="c"></td><td class="c"></td><td class="c"><span class="cbx"></span></td></tr>
+          <tr><td>Fita de LED + fonte / driver</td><td class="c"></td><td class="c"></td><td class="c"><span class="cbx"></span></td></tr>
+          <tr><td><b>Calafetador / silicone</b></td><td class="c"></td><td class="c"></td><td class="c"><span class="cbx"></span></td></tr>
+          <tr><td>Veda-fresta e acabamentos</td><td class="c"></td><td class="c"></td><td class="c"><span class="cbx"></span></td></tr>
+          <tr><td>Cesto / acessório interno</td><td class="c"></td><td class="c"></td><td class="c"><span class="cbx"></span></td></tr>
+          <tr><td><span class="obsl"></span></td><td class="c"></td><td class="c"></td><td class="c"><span class="cbx"></span></td></tr>
+          <tr><td><span class="obsl"></span></td><td class="c"></td><td class="c"></td><td class="c"><span class="cbx"></span></td></tr>
+          <tr><td><span class="obsl"></span></td><td class="c"></td><td class="c"></td><td class="c"><span class="cbx"></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <div class="nh">A regra do kit</div>
+      <p>Cada item vai em <b>saco etiquetado com o módulo a que pertence</b> — não tudo num saco só.
+      <b>Previsto</b> sai do projeto ou da lista de materiais; se não houver lista, escreva o que
+      foi combinado e confira contra isso. Item que não se aplica ao ambiente: risque a linha.</p>
+    </div>
+
+    <!-- ═════ 4 · RESULTADO ═════ -->
+    <div class="libera">
+      <div class="lh">Resultado da conferência de saída</div>
+      <div class="lb">
+        <div class="opts">
+          <div class="opt ok"><span class="cb"></span>LIBERADO — pode carregar</div>
+          <div class="opt rt"><span class="cb"></span>RETIDO — volta ao Deivison</div>
+        </div>
+        <div class="pend">Pendências (o que é, em qual módulo, e quem resolve):
+          <span class="l"></span><span class="l"></span></div>
+        <div class="ass">
+          <div>Conferido por · data</div>
+          <div>Devolvido ao Deivison em · hora</div>
+          <div>Reconferido e liberado em</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <div class="pl">Conferência de Saída · Valvic Marcenaria — Vargas Decor Ltda · Acabamento, limpeza e insumos</div>
+    <div class="pr">CONFERÊNCIA DE SAÍDA</div>
+  </div>
+</section>
+</body>
+</html>
