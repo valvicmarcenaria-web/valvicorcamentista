@@ -444,3 +444,98 @@ Duas coisas saíram disso:
    duas saídas legítimas (recortar o enquadramento ou escrever a exclusão na
    mesma página) e o cuidado com **legenda de foto**, que é texto de proposta e
    vale contrato.
+
+
+---
+
+## Rodada de 07/09 (4ª parte) — a sala corrigida e a proposta sem render
+
+> *"Isso não tem: doze nichos iluminados. O painel da TV é MDF sim. Mantenha o
+> valor total em 19.900 e retire a descrição Bancada suspensa. Retire também as
+> imagens 3D dessa proposta, é um caso isolado de cliente. Adicione uma
+> descrição falando do quanto o interior do móvel em uma cor que não seja branco
+> agrega no valor percebido do móvel, consequentemente elevando a percepção de
+> valor da casa."*
+
+### ⛔ Três leituras minhas do render estavam erradas na sala de TV
+
+| O que eu li do render | O que é |
+|---|---|
+| **Doze nichos iluminados** | **Não existem.** Saíram 12 peças de 45 × 30 em amadeirado, a fita das bordas e 3,5 m de LED |
+| A faixa de mármore é **marmoraria**, fora do escopo | **O painel é MDF, inteiro.** A faixa é padrão de chapa. Está no nosso escopo e sempre esteve na conta |
+| **Bancada suspensa** é um móvel à parte | É a **faixa ripada inferior do próprio painel**. Eu estava descrevendo a mesma peça duas vezes |
+
+**Isso é leitura de render virando quantitativo** — o risco que o dossiê já
+apontava na abertura, agora materializado. Sem elevação de marcenaria, cada
+detalhe que eu leio de uma imagem é uma aposta, e três delas caíram no mesmo
+móvel. O LED que sobrou é **★ 4,0 m no rasgo horizontal do painel**, também
+leitura de render: **CONFERIR se existe mesmo.**
+
+A sala virou **um item só: `Painel de TV · 400 × 260`, R$ 19.900** — o total que
+o Jonathan pediu para manter, agora numa linha em vez de duas.
+
+### O número, depois da correção
+
+| | antes | agora |
+|---|--:|--:|
+| Chapa | 261,38 m² · 76 ch. | **259,76 m² · 75 ch.** |
+| Custo direto | 45.986 | **R$ 45.640** |
+| Investimento | 141.800 | **R$ 141.800** |
+| MC líquida | 38,8% | **39,0%** |
+| Sala de TV (MC do item) | 59,0% | **58,6%** |
+
+O preço não mudou; o custo caiu R$ 346 e a margem subiu 0,2 ponto.
+
+### Proposta SEM render — decisão de caso, não regra
+
+A proposta foi refeita **sem uma única imagem 3D**. O cliente já viu o deck de
+31 renders; aqui a proposta é o documento comercial, não a apresentação do
+projeto. **Isso NÃO revoga o padrão da casa** — proposta ilustrada segue sendo o
+default; está anotado como decisão deste cliente no cabeçalho de
+`build-eliuton2.py`.
+
+O documento foi redesenhado para funcionar só com tipografia:
+
+| Página | |
+|---|---|
+| 1 | capa escura, sem foto |
+| 2 | **memorial numerado 01–05** — os cinco armários |
+| 3 | **memorial 06–12** — master, escritório e sala |
+| 4 ✱ nova | **A construção** — chapa, borda, corrediça, dobradiça, deslizante, iluminação, puxador e montagem — mais o bloco de **garantia de 5 anos** e o argumento de por que a ferragem define o prazo |
+| 5 | investimento item a item · R$ 141.800 |
+| 6 | só os armários · R$ 90.600 · upgrade · somas |
+| 7 | condições |
+
+A página 4 **existe porque as fotos saíram**: sem imagem, o documento precisava
+de um lugar para dizer o que estava implícito no render — como o móvel é feito.
+Saiu melhor que a versão ilustrada nesse ponto.
+
+Também caiu a frase *"os renders deste projeto mostram o interno amadeirado"* da
+página do upgrade — não há mais render na proposta para sustentá-la. **A regra
+de imagem registrada na 3ª parte continua valendo** para as propostas
+ilustradas; só não se aplica a esta.
+
+### O texto do upgrade
+
+> *"Um armário de **interno branco** é um armário. Um armário de **interno
+> amadeirado** é um móvel — e a diferença aparece no único momento que importa:
+> **quando a porta abre.** O branco é o fundo neutro que a indústria usa por ser
+> o mais barato de produzir; ele some. O **Gianduia Trama** faz o contrário: dá
+> profundidade, aquece a luz do LED e transforma prateleira, cabideiro e gaveta
+> numa composição. É o detalhe que separa marcenaria de armário de loja — o que
+> a visita nota sem saber explicar. **No closet aberto ele não é acabamento: é a
+> fachada do ambiente.** E o que se percebe do móvel se transfere para a casa —
+> interno assim é o que faz um imóvel ser lembrado como bem-feito, na visita, na
+> foto e na hora de avaliar."*
+
+As seis combinações seguem todas acima do piso: **39,0 · 38,6 · 37,8** no projeto
+completo e **36,9 · 36,4 · 35,8** só nos armários.
+
+### Em aberto
+
+1. **Os seis nichos do painel do escritório.** A correção do Jonathan foi sobre a
+   sala. O escritório segue com seis nichos iluminados, que também são leitura de
+   render — **CONFERIR se existem**, pela mesma razão que os doze não existiam.
+2. **Os 4,0 m de LED no rasgo do painel da sala** são adoção minha.
+3. Cotar a **Gianduia Trama** e o **Dominus de 4 portas**.
+4. As 15 dúvidas de levantamento seguem de pé.

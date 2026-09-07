@@ -391,32 +391,37 @@ def montar(INT='BR', so=None):
            '2,2 m de curva. Tampo em 25 mm para não fletir nos 2 m de vão.')
 
     # ───────────────────────────────────────────────────────────────────────────
-    # 7 · SALA DE TV — 15,25 m². Painel de 400 com nichos, ripado e bancada.
+    # 7 · SALA DE TV — 15,25 m². UM item só: painel de 400 com ripado e bancada.
+    # [Jonathan 07/09] TRÊS CORREÇÕES:
+    #   1. NÃO existem os doze nichos iluminados que eu tinha lido do render.
+    #   2. O PAINEL É MDF — a faixa que parece mármore é padrão de chapa, não
+    #      marmoraria. Entra inteira no nosso escopo, e não sai do orçamento.
+    #   3. A bancada suspensa deixa de ser linha própria: ela É a faixa ripada
+    #      inferior do painel. Um móvel, um item, R$ 19.900.
     # ───────────────────────────────────────────────────────────────────────────
     A = 'Sala de TV'
-    item('Painel de TV com ripado · 400 × 260')
+    item('Painel de TV · 400 × 260')
     painel('AM', 15, A, 'painel de TV 4000 × 2600', 400, 260)
-    add('AM', 15, A, 'nicho iluminado · fundo, laterais e prateleira', 45, 30, 12)
-    led(A, 'LED nos nichos e no rasgo do painel', 7.5)
-    terc(A, 'Drivers da iluminação do painel', 2*DRIVER_UN)
-    item('Bancada suspensa · 320')
+    led(A, 'LED no rasgo horizontal do painel', 4.0)
+    terc(A, 'Driver da iluminação do painel', DRIVER_UN)
     corpo('AM', A, 320.0, 40.0, 40.0, 3, nome='bancada suspensa')
     add('AM', 18, A, 'bancada suspensa · porta', 80, 40, 4)
     fer(A, dobr=8)
     usin(A, 4*0.80)
     # ripado da faixa inferior do painel — ripa de 3 cm a passo de 6
-    item('Painel de TV com ripado · 400 × 260')
     N_RIP = 55
     add('AM', 15, A, 'ripa do painel', 3, 90, N_RIP)
-    esq(A, 2*(4.00+2.60))
-    fita(A, 'painel, nichos e ripado',
-         2*(4.00+2.60) + 12*2*(0.45+0.30) + N_RIP*2*(0.03+0.90))
-    item('Bancada suspensa · 320')
-    esq(A, 2*(3.20+0.40))
-    fita(A, 'bancada suspensa', 4*2*(0.80+0.40) + 2*(3.20+0.40))
-    duv(A, 'a sala de TV tem 15,25 m² e o render mostra o painel ocupando a parede '
-           'inteira, com faixa de mármore atrás da TV. ⛔ O MÁRMORE É MARMORARIA, '
-           'está FORA — prevemos o recorte e o encosto da marcenaria nele.')
+    esq(A, 2*(4.00+2.60) + 2*(3.20+0.40))
+    fita(A, 'painel, ripado e bancada',
+         2*(4.00+2.60) + N_RIP*2*(0.03+0.90)
+         + 4*2*(0.80+0.40) + 2*(3.20+0.40))
+    duv(A, '[Jonathan 07/09] o PAINEL É MDF, inteiro. A faixa que parece mármore '
+           'no render é padrão de chapa, não marmoraria — está no nosso escopo e '
+           'na conta. Cai a exclusão que eu tinha escrito.')
+    duv(A, '[Jonathan 07/09] NÃO existem os doze nichos iluminados que eu li do '
+           'render. Saíram do orçamento (12 peças de 45 × 30 em amadeirado, a '
+           'fita das bordas e 3,5 m de LED). O LED que sobra é ★ 4,0 m no rasgo '
+           'horizontal do painel — CONFERIR se existe mesmo.')
     duv(A, 'o ripado da faixa inferior saiu com 55 ripas de 3 cm a passo de 6, que '
            'é a leitura do render. Sem elevação, é estimativa: cada 10 ripas a '
            'mais ou a menos mexem ~R$ 250 no custo.')
@@ -546,8 +551,7 @@ PRECO_ITEM = {
     ('Escritório',        'Roupeiro · 250'):                       9400,
     ('Escritório',        'Painel de TV com nichos · 300'):        5600,
     ('Escritório',        'Bancada de trabalho curva · 200'):      5500,
-    ('Sala de TV',        'Painel de TV com ripado · 400 × 260'): 16000,
-    ('Sala de TV',        'Bancada suspensa · 320'):               3900,
+    ('Sala de TV',        'Painel de TV · 400 × 260'):            19900,
 }
 # o nicho é vendido dentro do roupeiro em L — uma linha só na proposta
 UNIR = {('Quarto dos pais', 'Nicho de TV embutido no roupeiro'):

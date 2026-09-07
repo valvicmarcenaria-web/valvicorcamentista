@@ -6,6 +6,11 @@ com RT. Total R$ 141.800. Prazo 70 dias corridos. Condição especial de
 pagamento — entrada de 30% na assinatura e saldo à vista na entrega, o mesmo
 desenho com que a 1ª fase fechou em 20/08 (R$ 73.000).
 
+⛔ [Jonathan 07/09] SEM RENDER NESTA PROPOSTA. É decisão de CASO — este
+   cliente já viu o deck de 31 renders; a proposta aqui é o documento
+   comercial, não a apresentação do projeto. NÃO é regra nova da casa:
+   proposta ilustrada segue sendo o padrão.
+
 ⛔ O PAINEL DO ESPELHO ORGÂNICO SAIU DO ESCOPO. Ele aparece nos renders do
    quarto master — por isso a proposta DIZ que ele não está incluído. Render
    que mostra o que não vendemos vira expectativa de graça.
@@ -71,17 +76,14 @@ ITENS = [
  ('Escritório', 'Bancada de trabalho curva', None,
   'Bancada de <b>2,00 m</b> com <b>ponta curva</b>, tampo em <b>25 mm</b> para '
   'não fletir no vão, montante lateral e duas gavetas.', 5500),
- ('Sala de TV', 'Painel de TV com ripado', 'sala',
-  'Painel de <b>4,00 × 2,60 m</b> ocupando a parede inteira, <b>doze nichos '
-  'iluminados</b>, rasgo de LED e <b>faixa ripada</b> de 55 réguas a passo '
-  'constante. <b>A faixa de mármore atrás da TV é da marmoraria e não está '
-  'nesta proposta</b> — executamos o recorte e o encosto da marcenaria nela.', 16000),
- ('Sala de TV', 'Bancada suspensa · 3,20 m', None,
-  'Bancada suspensa de <b>3,20 m</b>, quatro portas com cava usinada, sem apoio '
-  'no piso.', 3900),
+ ('Sala de TV', 'Painel de TV · 4,00 × 2,60 m', None,
+  'Painel <b>em MDF</b> ocupando a parede inteira, com rasgo horizontal de LED e '
+  '<b>faixa ripada</b> de 55 réguas a passo constante. Na faixa inferior, '
+  '<b>bancada suspensa de 3,20 m</b> com quatro portas em cava usinada, sem apoio '
+  'no piso — a limpeza passa por baixo.', 19900),
 ]
 TOTAL = sum(i[4] for i in ITENS)
-assert TOTAL == 141800, TOTAL
+assert TOTAL == 141800 and len(ITENS) == 12, (TOTAL, len(ITENS))
 
 ENTRADA = 42500                      # 30,0% de 141.800, redondo
 SALDO   = TOTAL - ENTRADA
@@ -93,7 +95,7 @@ UP_CLOSET = round(UP_CLOSET_T*0.80/100)*100   #  8.000
 UP_TUDO   = round(UP_TUDO_T*0.80/100)*100     # 25.300
 assert (UP_CLOSET, UP_TUDO) == (8000, 25300)
 # custo direto do upgrade, de corte-eliuton2.py — para conferir a margem
-CD_UP_CLOSET, CD_UP_TUDO = 3244, 10261
+CD_UP_CLOSET, CD_UP_TUDO = 3243, 10261
 BASE_MC = 1 - 0.162 - 0.88*0.043
 for _p, _c in ((UP_CLOSET, CD_UP_CLOSET), (UP_TUDO, CD_UP_TUDO)):
     assert BASE_MC - _c/_p > 0.35, (_p, _c)   # o desconto não fura o piso
@@ -104,51 +106,43 @@ TOTAL_ROUP = sum(i[4] for i in ROUPEIROS)
 assert len(ROUPEIROS) == 5 and TOTAL_ROUP == 90600, (len(ROUPEIROS), TOTAL_ROUP)
 
 def brl(v): return f'{v:,.0f}'.replace(',', '.')
-def img(n): return f'img-eliuton2/{n}.jpg'
 
-CSS = (open(P/'css-proposta.css', encoding='utf-8').read()
-       + open(P/'css-proposta-img.css', encoding='utf-8').read() + """
-.itg{display:grid;grid-template-columns:1fr 1fr;gap:7mm 8mm;margin-top:5mm;}
-.itg .ph{height:46mm;border-radius:2px;}
-.itg .t{font-size:10.4pt;font-weight:700;margin-top:3.4mm;line-height:1.25;}
-.itg .a{font-size:6.9pt;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--gold);font-weight:700;}
-.itg .d{color:var(--soft);font-size:8.3pt;margin-top:1.8mm;line-height:1.5;}
-.itg .v{font-weight:700;font-size:9.6pt;margin-top:2.2mm;}
-.itg .full{grid-column:1 / -1;}
-.itg .full .ph{height:52mm;}
-.ph img.baixo{object-position:center 66%;}
-.itg.duo .ph{height:80mm;}
-.banda2{margin:0 -19mm;height:68mm;}
-.comp{display:grid;grid-template-columns:1fr 1fr;gap:5mm 9mm;margin-top:6mm;
-  border-top:1px solid var(--line);padding-top:4.5mm;}
-.comp .t{font-size:8.8pt;font-weight:700;line-height:1.25;}
-.comp .a{font-size:6.4pt;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--gold);font-weight:700;margin-bottom:1mm;}
-.comp .d{color:var(--soft);font-size:7.6pt;margin-top:1.4mm;line-height:1.45;}
-.comp .v{font-weight:700;font-size:8.6pt;margin-top:1.8mm;}
+CSS = (open(P/'css-proposta.css', encoding='utf-8').read() + """
+/* ── memorial numerado · proposta SEM render ─────────────────────────── */
+.mem{padding:4.4mm 0;border-bottom:1px solid var(--hair);}
+.mem:last-child{border-bottom:none;}
+.mem-h{display:flex;align-items:baseline;gap:5mm;}
+.mem-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:19pt;
+  color:var(--gold-lt);font-weight:600;line-height:1;min-width:11mm;}
+.mem-t{font-size:11.4pt;font-weight:700;letter-spacing:-.005em;}
+.mem-a{margin-left:auto;font-size:6.8pt;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gold);font-weight:700;
+  white-space:nowrap;padding-top:1mm;}
+.mem-d{color:var(--soft);font-size:8.9pt;line-height:1.58;margin:2mm 0 0 16mm;}
+.mem-d b{color:var(--ink);}
 .inv2{width:100%;border-collapse:collapse;font-size:8.8pt;margin-top:4mm;}
 .inv2 th{font-size:6.6pt;letter-spacing:.16em;text-transform:uppercase;
   color:var(--mut);font-weight:700;border-bottom:1.5px solid var(--ink);
   padding:0 0 2mm;text-align:left;}
 .inv2 th.r{text-align:right;}
-.inv2 td{padding:1.9mm 0;border-bottom:1px solid var(--hair);vertical-align:top;}
+.inv2 td{padding:2.1mm 0;border-bottom:1px solid var(--hair);vertical-align:top;}
 .inv2 td.a{width:34mm;color:var(--gold);font-size:7.2pt;letter-spacing:.14em;
-  text-transform:uppercase;font-weight:700;padding-top:2.5mm;}
+  text-transform:uppercase;font-weight:700;padding-top:2.7mm;}
 .inv2 td.i{font-weight:600;}
 .inv2 td.r{text-align:right;font-weight:700;white-space:nowrap;padding-left:6mm;}
 .inv2 tr.tot td{border-bottom:0;border-top:2px solid var(--ink);
   padding-top:3.4mm;font-size:13pt;font-weight:700;}
 .inv2 tr.tot td.r{font-family:'Cormorant Garamond',Georgia,serif;font-size:25pt;}
 .up{margin-top:5mm;border:1px solid var(--gold-lt);border-radius:2px;
-  background:var(--gold-pale);padding:5mm 6mm;}
+  background:var(--gold-pale);padding:5.5mm 6.5mm;}
 .up .k{font-size:6.9pt;letter-spacing:.2em;text-transform:uppercase;
   color:var(--gold);font-weight:700;}
-.up .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:19pt;
+.up .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:20pt;
   font-weight:600;margin-top:1.5mm;line-height:1.1;}
-.up .d{color:var(--soft);font-size:8.4pt;margin-top:2.4mm;}
+.up .d{color:var(--soft);font-size:8.6pt;margin-top:2.6mm;line-height:1.56;}
+.up .d b{color:var(--ink);}
 .up .l{display:grid;grid-template-columns:1fr auto;gap:4mm;
-  border-top:1px solid rgba(156,122,60,.24);padding:2.4mm 0 0;margin-top:3mm;}
+  border-top:1px solid rgba(156,122,60,.24);padding:2.6mm 0 0;margin-top:3.2mm;}
 .up .l b{font-weight:700;white-space:nowrap;}
 .pf{display:grid;grid-template-columns:1fr 1fr;gap:6mm;margin-top:6mm;}
 .pf .c{border:1px solid var(--line);border-radius:2px;padding:5.5mm 6mm;}
@@ -160,7 +154,7 @@ CSS = (open(P/'css-proposta.css', encoding='utf-8').read()
   line-height:1.05;font-weight:600;margin-top:2mm;}
 .pf .s{color:var(--soft);font-size:8.4pt;margin-top:2.4mm;line-height:1.5;}
 .pf .c.hi .s{color:#CFC6B4;}
-.fr{display:grid;grid-template-columns:1fr 1fr;gap:4mm 8mm;margin-top:4mm;}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:4.5mm 8mm;margin-top:7mm;}
 .fr .k{font-size:6.9pt;letter-spacing:.18em;text-transform:uppercase;
   color:var(--gold);font-weight:700;}
 .fr .d{color:var(--soft);font-size:8.6pt;margin-top:1.2mm;line-height:1.52;}
@@ -175,102 +169,113 @@ def foot(n):
     return (f'<div class="foot"><span>valvic marcenaria</span>'
             f'<span>{CLIENTE} · 2ª fase</span><span>{n} / {NP}</span></div>')
 
-def bloco(it, full=False, cls=''):
-    amb, nome, im, desc, v = it
-    ph = (f'<div class="ph"><img class="{cls}" src="{img(im)}" alt=""></div>') if im else ''
-    return (f'<div class="{"full" if full else ""}">{ph}'
-            f'<div class="a">{amb}</div><div class="t">{nome}</div>'
-            f'<div class="d">{desc}</div></div>')
-
-def compacto(*its):
-    """Itens sem render próprio — entram como cartão de texto, mas ENTRAM.
-    Nenhum item da tabela de preço pode ficar de fora do memorial."""
-    cs = ''.join(f'<div><div class="a">{a}</div><div class="t">{n}</div>'
-                 f'<div class="d">{d}</div></div>'
-                 for a, n, _i, d, v in its)
-    return f'<div class="comp">{cs}</div>'
+N_IT = [0]
+def mem(it):
+    amb, nome, _im, desc, v = it
+    N_IT[0] += 1
+    return (f'<div class="mem"><div class="mem-h">'
+            f'<div class="mem-n serif">{N_IT[0]:02d}</div>'
+            f'<div class="mem-t">{nome}</div>'
+            f'<div class="mem-a">{amb}</div></div>'
+            f'<div class="mem-d">{desc}</div></div>')
 
 # ── 1 · capa ──────────────────────────────────────────────────────────────
-p1 = f"""<div class="page cover"><div class="cvfoto">
-  <div class="top"><div class="cv-brand">valvic marcenaria</div></div>
-  <div class="ph"><img src="{img('capa')}" alt=""></div>
-  <div class="txt">
-    <div class="eyebrow">Proposta comercial · 2ª fase</div>
-    <div class="cv-t serif">Os quartos,<br>os closets<br>e a sala.</div>
-    <div class="cv-meta">
-      <div><div class="k">Cliente</div><div class="v">{CLIENTE}</div></div>
-      <div><div class="k">Obra</div><div class="v">{OBRA}</div></div>
-      <div><div class="k">Data</div><div class="v">{DATA}</div></div>
-    </div>
+p1 = f"""<div class="page cover"><div class="pad">
+  <div class="cv-num serif">02</div>
+  <div class="cv-brand">valvic marcenaria</div>
+  <div class="cv-t serif" style="margin-top:26mm;">Proposta comercial<br>2ª fase</div>
+  <div class="cv-nome serif">Os quartos,<br>os closets<br>e a sala.</div>
+  <div class="cv-s">Cinco roupeiros, um closet, os painéis do quarto master e da
+  sala, e as bancadas do escritório e do quarto da filha.</div>
+  <div class="cv-meta" style="margin-top:auto;">
+    <div><div class="k">Cliente</div><div class="v">{CLIENTE}</div></div>
+    <div><div class="k">Obra</div><div class="v">{OBRA}</div></div>
+    <div><div class="k">Data</div><div class="v">{DATA}</div></div>
   </div>
 </div></div>"""
 
-# ── 2 · os roupeiros, primeira parte ──────────────────────────────────────
+# ── 2 · memorial · os armários ────────────────────────────────────────────
+ARM = [i for i in ITENS if i[1].startswith(('Closet aberto', 'Roupeiro'))]
+RESTO = [i for i in ITENS if i not in ARM]
+
 p2 = f"""<div class="page"><div class="pad">
-  <div class="eyebrow">O que entra</div>
+  <div class="eyebrow">Memorial descritivo · os armários</div>
   <div class="h-sec serif">Os roupeiros primeiro.</div>
   <div class="rule"></div>
-  <p class="lead">São <b>cinco roupeiros e um closet</b> — o coração desta fase.
-  Todos do piso ao forro, com cabideiro, prateleira, gaveteiro interno e a mesma
-  ferragem <b>Hardt</b> da 1ª fase: corrediça oculta com amortecimento e
-  dobradiça com regulagem em três dimensões.</p>
-  <div class="itg duo">
-    {bloco(ITENS[3])}
-    {bloco(ITENS[4])}
-  </div>
-  <div class="nota">Os dois maiores móveis desta fase — e os dois que se abrem
-  todos os dias. O investimento de cada item está na página 5.</div>
-  <div class="ph banda2" style="margin-top:auto;"><img src="{img('pais2')}" alt="">
-    <div class="cap">Quarto dos pais · o nicho de TV sai do próprio corpo do
-    roupeiro, com reforço e passa-cabo.</div>
-  </div>
+  <p class="lead">São <b>cinco armários</b> — o coração desta fase. Todos do piso
+  ao forro, com cabideiro, prateleira e gaveteiro interno, e a mesma ferragem
+  <b>Hardt</b> da 1ª fase: corrediça oculta com amortecimento e dobradiça com
+  regulagem em três dimensões. <b>Interno em MDF branco</b>, com a opção de
+  Gianduia Trama na página 6.</p>
+  {''.join(mem(i) for i in ARM)}
   {foot(2)}
 </div></div>"""
 
-# ── 3 · os roupeiros, segunda parte ───────────────────────────────────────
+# ── 3 · memorial · os demais ──────────────────────────────────────────────
 p3 = f"""<div class="page"><div class="pad">
-  <div class="eyebrow">O que entra</div>
-  <div class="h-sec serif">Três roupeiros,<br>três soluções de porta.</div>
+  <div class="eyebrow">Memorial descritivo · os demais</div>
+  <div class="h-sec serif">O master, o escritório<br>e a sala.</div>
   <div class="rule"></div>
-  <p class="lead">Porta de abrir onde há espaço para ela girar; porta
-  deslizante onde não há. É decisão de circulação, não de preço.</p>
-  <div class="itg">
-    {bloco(ITENS[5])}
-    {bloco(ITENS[7])}
-    {bloco(ITENS[8])}
-    {bloco(ITENS[9])}
-  </div>
-  {compacto(ITENS[6], ITENS[10])}
+  {''.join(mem(i) for i in RESTO)}
   {foot(3)}
 </div></div>"""
 
-# ── 4 · os demais ambientes ───────────────────────────────────────────────
+# ── 4 · técnica ───────────────────────────────────────────────────────────
 p4 = f"""<div class="page"><div class="pad">
-  <div class="eyebrow">O que entra</div>
-  <div class="h-sec serif">O quarto master<br>e a sala.</div>
+  <div class="eyebrow">Como é feito</div>
+  <div class="h-sec serif">A construção.</div>
   <div class="rule"></div>
-  <div class="itg">
-    {bloco(ITENS[0])}
-    {bloco(ITENS[2])}
-    {bloco(ITENS[11], full=True, cls='baixo')}
+  <p class="lead">O que não aparece na descrição de cada móvel, porque vale para
+  todos eles. É aqui que um armário se diferencia de outro depois de instalado —
+  não no desenho, que qualquer um copia, mas <b>no que se aciona todos os
+  dias</b>.</p>
+  <div class="fr" style="margin-top:6mm;">
+    <div><div class="k">Chapa</div><div class="d"><b>MDF de 15 e 18 mm</b> na
+      estrutura e nas portas, <b>25 mm</b> nos tampos de bancada — a espessura que
+      não fleta no vão. Fundo em 6 mm.</div></div>
+    <div><div class="k">Borda</div><div class="d"><b>Fita de borda extra fina de
+      0,4 mm</b>, colada em máquina, e <b>meia esquadria</b> nos encontros
+      aparentes: o canto fecha em 45°, sem topo de chapa à vista.</div></div>
+    <div><div class="k">Corrediça</div><div class="d"><b>Oculta Hardt com
+      amortecimento</b>, por baixo da gaveta — não aparece na lateral e fecha
+      sozinha no fim do curso.</div></div>
+    <div><div class="k">Dobradiça</div><div class="d"><b>Hardt com regulagem em
+      três dimensões</b>: a fresta entre portas continua igual anos depois da
+      instalação.</div></div>
+    <div><div class="k">Deslizante</div><div class="d">Sistema <b>Dominus
+      (Rometal)</b> nos roupeiros de correr — trilhos ocultos, duplo amortecimento
+      e desempenadores anti-empeno em todas as folhas.</div></div>
+    <div><div class="k">Iluminação</div><div class="d"><b>Fita de LED em perfil de
+      alumínio</b>, embutida na própria peça, com driver dimensionado por
+      circuito.</div></div>
+    <div><div class="k">Puxador</div><div class="d"><b>Cava usinada na CNC</b> no
+      próprio material, onde há puxador aparente. Nos deslizantes, folha lisa sem
+      puxador.</div></div>
+    <div><div class="k">Montagem</div><div class="d"><b>Equipe própria da Valvic</b>,
+      do corte à instalação, com a mesma conferência de medida no local antes do
+      corte.</div></div>
   </div>
-  {compacto(ITENS[1], ITENS[12])}
-  <div class="nota"><b>O painel do espelho orgânico não está nesta proposta.</b>
-  Ele aparece nos renders do quarto master — o painel amadeirado de 1,20 m com o
-  espelho de corte orgânico na parede lateral. Ficou fora do escopo a seu pedido.
-  Se voltar, orçamos à parte.</div>
+  <div class="pf" style="margin-top:9mm;">
+    <div class="c hi"><div class="k">Garantia</div>
+      <div class="v">5 anos</div>
+      <div class="s">Sobre <b>estrutura e ferragens</b> — a mesma linha Hardt com
+      que a 1ª fase foi contratada em agosto. Cobre corrediça, dobradiça,
+      deslizante, pistão e a integridade da caixaria.</div></div>
+    <div class="c"><div class="k">Por que a ferragem define o prazo</div>
+      <div class="s">A chapa não se desgasta: ela é cortada, colada e fica.
+      <b>O que envelhece num armário é o que se move.</b> Num closet e em cinco
+      roupeiros, corrediça e dobradiça são acionadas <b>milhares de vezes</b> —
+      é onde o móvel se perde, e é o que a Hardt está comprando.</div></div>
+  </div>
+
+  <div class="nota" style="margin-top:8mm;"><b>O painel do espelho orgânico não
+  está nesta proposta.</b> O painel amadeirado de 1,20 m com o espelho de corte
+  orgânico, na parede lateral do quarto master, ficou fora do escopo a seu
+  pedido. Se voltar, orçamos à parte.</div>
   {foot(4)}
 </div></div>"""
 
 # ── 5 · investimento ──────────────────────────────────────────────────────
-linhas = ''
-_amb = None
-for amb, nome, im, desc, v in ITENS:
-    a = amb if amb != _amb else ''
-    _amb = amb
-    linhas += (f'<tr><td class="a">{a}</td><td class="i">{nome}</td>'
-               f'<td class="r">R$ {brl(v)}</td></tr>')
-
 linhas = ''
 _amb = None
 for amb, nome, im, desc, v in ITENS:
@@ -294,21 +299,17 @@ p5 = f"""<div class="page"><div class="pad">
         <td class="r">R$ {brl(TOTAL)}</td></tr>
     </tbody>
   </table>
-  <div class="nota">Todos os itens descritos nas páginas anteriores estão neste
-  valor, incluídos projeto executivo, ferragens, iluminação e a
-  <b>montagem por equipe própria</b>. Na página seguinte, o recorte
-  <b>só com os armários</b> e a opção de interno em Gianduia Trama.</div>
-  <div class="ph banda2" style="margin-top:auto;"><img src="{img('filha2')}" alt="">
-    <div class="cap">Quarto da filha · o roupeiro ocupa a parede de 3,81 m,
-    do piso ao forro.</div>
-  </div>
+  <div class="nota">Todos os itens do memorial estão neste valor, incluídos
+  projeto executivo, ferragens, iluminação e a <b>montagem por equipe
+  própria</b>. Na página seguinte, o recorte <b>só com os armários</b> e a opção
+  de interno em Gianduia Trama.</div>
   {foot(5)}
 </div></div>"""
 
-# ── 6 · só os roupeiros ──────────────────────────────────────────────────
+# ── 6 · só os roupeiros + upgrade ─────────────────────────────────────────
 p6 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">Investimento · recorte</div>
-  <div class="h-sec serif">Só os roupeiros.</div>
+  <div class="h-sec serif">Só os armários.</div>
   <div class="rule"></div>
   <p class="lead">Se a prioridade for guardar roupa antes de tudo, este é o
   recorte: <b>os cinco armários</b>, com a mesma ferragem, o mesmo prazo e a
@@ -316,27 +317,34 @@ p6 = f"""<div class="page"><div class="pad">
   <table class="inv2">
     <thead><tr><th>Ambiente</th><th>Item</th><th class="r">Investimento</th></tr></thead>
     <tbody>{lroup}
-      <tr class="tot"><td></td><td>Total · só os roupeiros</td>
+      <tr class="tot"><td></td><td>Total · só os armários</td>
         <td class="r">R$ {brl(TOTAL_ROUP)}</td></tr>
     </tbody>
   </table>
 
   <div class="up">
-    <div class="k">Opcional · em qualquer um dos dois recortes</div>
+    <div class="k">Opcional · vale para os dois recortes</div>
     <div class="t serif">Interno em MDF Gianduia Trama.</div>
-    <div class="d">Hoje o interno dos armários é <b>MDF branco</b> — caixaria,
-    fundos, prateleiras e frentes de gaveteiro. O upgrade troca esse interno pelo
-    <b>Gianduia Trama</b>, amadeirado com textura. <b>As portas não mudam.</b>
-    <b>Os renders deste projeto mostram o interno amadeirado</b> — é o upgrade
-    que entrega exatamente aquilo.</div>
-    <div class="l"><span><b>Só o closet master</b> — é o único móvel aberto:
-      nele o interno é a fachada</span><b>+ R$ {brl(UP_CLOSET)}</b></div>
+    <div class="d">Um armário de <b>interno branco</b> é um armário. Um armário de
+    <b>interno amadeirado</b> é um móvel — e a diferença aparece no único momento
+    que importa: <b>quando a porta abre.</b> O branco é o fundo neutro que a
+    indústria usa por ser o mais barato de produzir; ele some. O <b>Gianduia
+    Trama</b> faz o contrário: dá profundidade, aquece a luz do LED e transforma
+    prateleira, cabideiro e gaveta numa composição. É o detalhe que separa
+    marcenaria de armário de loja — o que a visita nota sem saber explicar.
+    <b>No closet aberto ele não é acabamento: é a fachada do ambiente.</b> E o que
+    se percebe do móvel se transfere para a casa — interno assim é o que faz um
+    imóvel ser lembrado como bem-feito, na visita, na foto e na hora de avaliar.
+    O upgrade troca <b>caixaria, fundos, prateleiras e frentes de gaveteiro</b>;
+    <b>as portas não mudam.</b></div>
+    <div class="l"><span><b>Só o closet master</b> — o único móvel aberto</span>
+      <b>+ R$ {brl(UP_CLOSET)}</b></div>
     <div class="l"><span><b>Todos os armários</b></span>
       <b>+ R$ {brl(UP_TUDO)}</b></div>
   </div>
 
   <table class="inv2" style="margin-top:5mm;">
-    <thead><tr><th>Com o upgrade</th><th class="r">Só os roupeiros</th>
+    <thead><tr><th>Com o upgrade</th><th class="r">Só os armários</th>
       <th class="r">Projeto completo</th></tr></thead>
     <tbody>
       <tr><td class="i">Interno em branco</td>
@@ -389,10 +397,9 @@ p7 = f"""<div class="page"><div class="pad">
   arquiteta e do projeto de renders. <b>As medidas são conferidas no local antes
   do corte</b> — se alguma diferir do projeto, avisamos antes de produzir.</div>
 
-  <div class="ph banda" style="margin-top:auto;"><img src="{img('closet2')}" alt="">
-    <div class="cap">Closet master · render do projeto desta 2ª fase.</div>
+  <div style="margin-top:auto;padding-top:8mm;border-top:1px solid var(--hair);">
+    <div class="eyebrow">{ARQUITETA}</div>
   </div>
-  <div class="eyebrow" style="margin-top:6mm;">{ARQUITETA}</div>
   {foot(7)}
 </div></div>"""
 
@@ -402,10 +409,9 @@ HTML = ('<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">'
         f'rel="stylesheet"><style>{CSS}</style></head><body>'
         f'{p1}{p2}{p3}{p4}{p5}{p6}{p7}</body></html>')
 
+assert 'img-eliuton2' not in HTML and '<img' not in HTML   # proposta SEM render
 (P/'proposta-eliuton2.html').write_text(HTML, encoding='utf-8')
-tmp = HTML.replace('src="img-eliuton2/', f'src="file://{P}/img-eliuton2/')
-assert '{' not in ''.join(s.split('"')[1] for s in tmp.split('src=')[1:])
-pathlib.Path('/tmp/in.html').write_text(tmp, encoding='utf-8')
+pathlib.Path('/tmp/in.html').write_text(HTML, encoding='utf-8')
 subprocess.run(['node', '/tmp/r.js', str(P/'proposta-eliuton2.pdf')], check=True)
 print(f'proposta-eliuton2.pdf · total R$ {brl(TOTAL)} · '
       f'entrada {brl(ENTRADA)} + saldo {brl(SALDO)} · prazo {PRAZO}')
