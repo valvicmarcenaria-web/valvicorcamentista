@@ -16,7 +16,7 @@ Fixadas em setembro/2026 a partir da referência aprovada pelo Jonathan.
 | **Cota e alerta** | Vermelho `#B0413F`, linha fina, seta nas duas pontas, chamada tracejada | Só onde a medida é obrigação |
 | **Confirmação** | Verde `#2F7D4F` | Para o que está certo. Nunca decorativo |
 | **Rótulo** | **Dentro da peça**, girado −90° nas verticais | Dispensa legenda — é o que a referência faz |
-| **Detalhe** | Moldura circular isolando a peça | Um círculo por coluna, nunca mais |
+| **Área de foto** | Moldura circular hachurada, contorno tracejado dourado | **A peça em si é foto, não desenho** |
 | **Divisória** | Filete `#D8D2C4` entre colunas | Separa sem pesar |
 
 Tipografia: Inter para rótulo e legenda, JetBrains Mono para cota e medida.
@@ -25,11 +25,25 @@ Nada de texto explicativo dentro do desenho — isso é da legenda.
 > **O dourado da marca não entra no desenho técnico.** Ele segue no texto, nos títulos e nas
 > caixas, onde funciona. Dentro do desenho, ferragem é cinza-metal.
 
+## A regra de escopo do desenho
+
+**Desenhamos esquema. Não desenhamos a peça.**
+
+- **Esquema** é relação entre peças, cota e movimento — geometria. É o que o desenho vetorial
+  faz bem, e é o que ensina a decidir.
+- **A peça** — a dobradiça articulada, a textura, a forma do objeto — **é foto**. Tentar
+  desenhá-la produz figura ruim, e figura ruim numa apostila técnica destrói a confiança em
+  tudo que está ao redor dela.
+
+Fixado em 07/09/2026, depois de uma tentativa malsucedida de desenhar a dobradiça. Onde a
+peça precisa aparecer, reserve a área de foto e mantenha o texto de referência (nome e
+medida) — a apostila circula com o espaço marcado até a foto existir.
+
 ## Arquivos
 
 | Arquivo | Figura | O que mostra |
 |---|---|---|
-| `fig-1-3-dobradicas-reta-curva-supercurva.svg` | **1.3** | Três colunas: esquema do canto (lateral, dobradiça e porta rotuladas por dentro) com a cota de quanto da lateral a porta cobre — 18 / 9 / 0 mm — e o perfil de cada dobradiça em moldura circular, com o braço cada vez mais desviado |
+| `fig-1-3-dobradicas-reta-curva-supercurva.svg` | **1.3** | Três colunas: esquema do canto (lateral, dobradiça e porta rotuladas por dentro) com a cota de quanto da lateral a porta cobre — 18 / 9 / 0 mm. Na reta a porta **alinha com a face externa**; na super curva **a lateral tampona a porta**. Área de foto reservada em cada coluna |
 | `fig-2-5-corredica-telescopica-x-oculta.svg` | **2.5** | Corte frontal: a telescópica com os 13 mm do corpo entre a caixa e a lateral; a oculta sob o fundo, lateral limpa, folga dependente do modelo |
 | `fig-3-1-pistao-comum-x-forca-inversa.svg` | **3.1** | O comum empurrando a porta que abre para cima; o de força inversa segurando a que abre para baixo |
 
@@ -46,7 +60,8 @@ imagem. No modelo A4 a figura ocupa a largura inteira do texto — **171 mm** �
 1. Leia a convenção acima e siga à risca. Desenho fora do padrão custa mais caro que desenho
    nenhum: quebra a leitura de todo o volume.
 2. `viewBox` proporcional ao espaço da apostila. Largura 640 dá boa resolução de traço.
-3. **Três leituras sempre que couber:** o corte, a cota que explica e a peça isolada.
+3. **Duas leituras sempre que couber:** o esquema com a relação entre as peças, e a cota que
+   a explica. A terceira leitura — a peça em si — é a área de foto.
 4. Rótulo dentro da peça; explicação na legenda, fora do desenho.
 5. `role="img"` e `aria-label` descrevendo o que a figura mostra — a versão digital é lida por
    quem não enxerga o desenho.

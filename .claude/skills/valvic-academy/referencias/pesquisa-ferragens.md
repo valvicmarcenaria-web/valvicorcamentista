@@ -95,8 +95,8 @@ recobrimento e desregula a porta. 🟡 **Falta definir qual a Valvic usa.**
 
 | | Pistão comum | Força inversa |
 |---|---|---|
-| A porta abre | **Para cima** (báscula de aéreo) | **Para baixo** |
-| O pistão | **Empurra** — vence o peso e sobe a porta | **Segura** — trabalha contra a queda |
+| A porta abre | **Para cima** — pivô no topo (báscula de aéreo) | **Para baixo** — pivô embaixo, a porta gira **para fora e para baixo** |
+| O pistão | **Empurra** — vence o peso e sustenta aberta | **Segura** — trabalha contra a queda, liberando aos poucos |
 
 | Força | Peso de porta |
 |---|---|

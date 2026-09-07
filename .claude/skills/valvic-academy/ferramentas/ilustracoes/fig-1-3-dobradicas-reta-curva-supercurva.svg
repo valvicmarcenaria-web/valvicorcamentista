@@ -1,114 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Os três tipos de dobradiça em três colunas. Em cima, o esquema do canto do móvel com a porta, a dobradiça e a lateral rotuladas, mostrando quanto da lateral cada porta cobre: a inteira na sobreposta, a metade na parcialmente sobreposta, e nada na embutida. Embaixo, cada dobradiça vista de perfil dentro de uma moldura circular, com a curvatura do braço.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 375" role="img" aria-label="Os três tipos de dobradiça em três colunas. Em cima, o esquema do canto do móvel com a porta, a dobradiça e a lateral rotuladas. Na sobreposta a porta alinha com a face externa da lateral. Na parcialmente sobreposta ela para no meio da lateral. Na embutida a lateral tampona a porta. Embaixo, o espaço reservado para a foto de cada dobradiça.">
       <defs>
         <pattern id="grade" width="16" height="16" patternUnits="userSpaceOnUse">
           <path d="M16,0 L0,0 L0,16" fill="none" stroke="#0E2038" stroke-width=".5" opacity=".07"/>
+        </pattern>
+        <pattern id="hach" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <rect width="10" height="10" fill="#f6f3ec"/>
+          <line x1="0" y1="0" x2="0" y2="10" stroke="#d9cfb4" stroke-width="3"/>
         </pattern>
         <marker id="ctA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
           <path d="M0,0 L10,5 L0,10 z" fill="#B0413F"/></marker>
         <marker id="ciA" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="5" markerHeight="5" orient="auto">
           <path d="M10,0 L0,5 L10,10 z" fill="#B0413F"/></marker>
       </defs>
-      <rect x="0" y="0" width="640" height="400" fill="#ffffff"/>
-      <rect x="0" y="0" width="640" height="400" fill="url(#grade)"/>
-      <line x1="209" y1="10" x2="209" y2="390" stroke="#d8d2c4" stroke-width="1"/>
-      <line x1="422" y1="10" x2="422" y2="390" stroke="#d8d2c4" stroke-width="1"/>
+      <rect x="0" y="0" width="640" height="375" fill="#ffffff"/>
+      <rect x="0" y="0" width="640" height="375" fill="url(#grade)"/>
+      <line x1="209" y1="10" x2="209" y2="365" stroke="#d8d2c4" stroke-width="1"/>
+      <line x1="422" y1="10" x2="422" y2="365" stroke="#d8d2c4" stroke-width="1"/>
 
-      <!-- ══════ COLUNA A · SOBREPOSTA ══════ -->
+      <!-- ══════ A · SOBREPOSTA ══════ -->
       <g transform="translate(0,0)">
         <text x="104" y="24" font-family="Inter,sans-serif" font-size="13" fill="#5f5b52" text-anchor="middle">para porta</text>
         <text x="104" y="41" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A" text-anchor="middle">sobreposta</text>
 
-        <circle cx="128" cy="150" r="46" fill="none" stroke="#c9c2b2" stroke-width="1"/>
-        <!-- lateral -->
+        <circle cx="126" cy="152" r="46" fill="none" stroke="#c9c2b2" stroke-width="1"/>
         <rect x="112" y="62" width="30" height="88" fill="#ece0c8" stroke="#a89a78" stroke-width="1.3"/>
         <text x="127" y="106" font-family="Inter,sans-serif" font-size="11.5" fill="#5a4d31" text-anchor="middle" transform="rotate(-90,127,106)">Lateral</text>
-        <!-- dobradiça -->
         <rect x="76" y="82" width="32" height="68" fill="#6e737a" stroke="#3f444b" stroke-width="1.3"/>
         <text x="92" y="116" font-family="Inter,sans-serif" font-size="11.5" fill="#ffffff" text-anchor="middle" transform="rotate(-90,92,116)">Dobradiça</text>
-        <!-- porta: cobre a lateral inteira -->
-        <rect x="34" y="150" width="116" height="30" fill="#ece0c8" stroke="#a89a78" stroke-width="1.3"/>
+        <!-- porta: alinha com a face externa da lateral -->
+        <rect x="34" y="150" width="108" height="30" fill="#ece0c8" stroke="#a89a78" stroke-width="1.3"/>
         <rect x="40" y="156" width="42" height="18" fill="#ffffff" stroke="#a89a78" stroke-width=".9"/>
         <text x="61" y="169" font-family="Inter,sans-serif" font-size="11.5" fill="#5a4d31" text-anchor="middle">Porta</text>
-        <!-- cota: quanto da lateral a porta cobre -->
-        <line x1="112" y1="146" x2="112" y2="196" stroke="#B0413F" stroke-width=".8" stroke-dasharray="3 3"/>
-        <line x1="142" y1="146" x2="142" y2="196" stroke="#B0413F" stroke-width=".8" stroke-dasharray="3 3"/>
+        <!-- alinhamento das faces externas -->
+        <line x1="142" y1="52" x2="142" y2="196" stroke="#B0413F" stroke-width=".9" stroke-dasharray="4 3"/>
+        <text x="152" y="60" font-family="Inter,sans-serif" font-size="10.5" fill="#B0413F">faces alinhadas</text>
+        <line x1="112" y1="150" x2="112" y2="196" stroke="#B0413F" stroke-width=".8" stroke-dasharray="3 3"/>
         <line x1="112" y1="192" x2="142" y2="192" stroke="#B0413F" stroke-width="1.1" marker-start="url(#ciA)" marker-end="url(#ctA)"/>
         <text x="127" y="212" font-family="'JetBrains Mono',monospace" font-size="11.5" fill="#B0413F" text-anchor="middle">18 mm</text>
-        <text x="104" y="228" font-family="Inter,sans-serif" font-size="11" fill="#5f5b52" text-anchor="middle">cobre a lateral inteira</text>
+        <text x="104" y="229" font-family="Inter,sans-serif" font-size="11" fill="#5f5b52" text-anchor="middle">cobre a lateral inteira</text>
+        <text x="104" y="245" font-family="Inter,sans-serif" font-size="11" fill="#B0413F" text-anchor="middle">alinha, ou recua até 3 mm — nunca avança</text>
 
-        <!-- a dobradiça de perfil -->
-        <circle cx="104" cy="300" r="54" fill="#ffffff" stroke="#c9c2b2" stroke-width="1"/>
-        <rect x="62" y="266" width="40" height="17" rx="3" fill="#6e737a" stroke="#3f444b" stroke-width="1.2"/>
-        <circle cx="82" cy="274" r="5" fill="#3f444b"/>
-        <path d="M96,283 L96,306 L118,306 L118,320" fill="none" stroke="#6e737a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
-        <path d="M96,283 L96,306 L118,306 L118,320" fill="none" stroke="#3f444b" stroke-width="1" stroke-linejoin="round" opacity=".55"/>
-        <rect x="100" y="318" width="42" height="14" fill="#6e737a" stroke="#3f444b" stroke-width="1.2"/>
-        <circle cx="110" cy="325" r="2.2" fill="#eceae4"/><circle cx="132" cy="325" r="2.2" fill="#eceae4"/>
-        <text x="104" y="374" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A" text-anchor="middle">dobradiça reta</text>
-        <text x="104" y="390" font-family="'JetBrains Mono',monospace" font-size="11.5" fill="#B8860B" text-anchor="middle">curvatura 0 mm</text>
+        <circle cx="104" cy="300" r="42" fill="url(#hach)" stroke="#B8860B" stroke-width="1.2" stroke-dasharray="5 4"/>
+        <text x="104" y="296" font-family="'JetBrains Mono',monospace" font-size="11" fill="#8a6a12" text-anchor="middle">FOTO</text>
+        <text x="104" y="310" font-family="'JetBrains Mono',monospace" font-size="10" fill="#8a6a12" text-anchor="middle">a fotografar</text>
+        <text x="104" y="360" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A" text-anchor="middle">dobradiça reta</text>
+        <text x="104" y="374" font-family="'JetBrains Mono',monospace" font-size="11.5" fill="#B8860B" text-anchor="middle">curvatura 0 mm</text>
       </g>
 
-      <!-- ══════ COLUNA B · PARCIALMENTE SOBREPOSTA ══════ -->
+      <!-- ══════ B · PARCIALMENTE SOBREPOSTA ══════ -->
       <g transform="translate(213,0)">
         <text x="104" y="24" font-family="Inter,sans-serif" font-size="13" fill="#5f5b52" text-anchor="middle">para porta parcialmente</text>
         <text x="104" y="41" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A" text-anchor="middle">sobreposta</text>
 
-        <circle cx="128" cy="150" r="46" fill="none" stroke="#c9c2b2" stroke-width="1"/>
+        <circle cx="126" cy="152" r="46" fill="none" stroke="#c9c2b2" stroke-width="1"/>
         <rect x="112" y="62" width="30" height="88" fill="#ece0c8" stroke="#a89a78" stroke-width="1.3"/>
         <text x="127" y="106" font-family="Inter,sans-serif" font-size="11.5" fill="#5a4d31" text-anchor="middle" transform="rotate(-90,127,106)">Lateral</text>
         <rect x="76" y="82" width="32" height="68" fill="#6e737a" stroke="#3f444b" stroke-width="1.3"/>
         <text x="92" y="116" font-family="Inter,sans-serif" font-size="11.5" fill="#ffffff" text-anchor="middle" transform="rotate(-90,92,116)">Dobradiça</text>
-        <!-- a segunda porta, do módulo vizinho -->
-        <rect x="146" y="150" width="46" height="30" fill="#f6f1e6" stroke="#c4b998" stroke-width="1.1" stroke-dasharray="4 3"/>
-        <text x="169" y="169" font-family="Inter,sans-serif" font-size="10" fill="#8a7d5e" text-anchor="middle">2ª porta</text>
+        <rect x="133" y="150" width="59" height="30" fill="#f6f1e6" stroke="#c4b998" stroke-width="1.1" stroke-dasharray="4 3"/>
+        <text x="162" y="169" font-family="Inter,sans-serif" font-size="10" fill="#8a7d5e" text-anchor="middle">2ª porta</text>
         <!-- porta: para no meio da lateral -->
-        <rect x="34" y="150" width="94" height="30" fill="#ece0c8" stroke="#a89a78" stroke-width="1.3"/>
+        <rect x="34" y="150" width="93" height="30" fill="#ece0c8" stroke="#a89a78" stroke-width="1.3"/>
         <rect x="40" y="156" width="42" height="18" fill="#ffffff" stroke="#a89a78" stroke-width=".9"/>
         <text x="61" y="169" font-family="Inter,sans-serif" font-size="11.5" fill="#5a4d31" text-anchor="middle">Porta</text>
-        <line x1="112" y1="146" x2="112" y2="196" stroke="#B0413F" stroke-width=".8" stroke-dasharray="3 3"/>
-        <line x1="128" y1="146" x2="128" y2="196" stroke="#B0413F" stroke-width=".8" stroke-dasharray="3 3"/>
-        <line x1="112" y1="192" x2="128" y2="192" stroke="#B0413F" stroke-width="1.1" marker-start="url(#ciA)" marker-end="url(#ctA)"/>
-        <text x="120" y="212" font-family="'JetBrains Mono',monospace" font-size="11.5" fill="#B0413F" text-anchor="middle">9 mm</text>
-        <text x="104" y="228" font-family="Inter,sans-serif" font-size="11" fill="#5f5b52" text-anchor="middle">para no meio da lateral</text>
+        <line x1="127" y1="52" x2="127" y2="196" stroke="#B0413F" stroke-width=".9" stroke-dasharray="4 3"/>
+        <text x="137" y="60" font-family="Inter,sans-serif" font-size="10.5" fill="#B0413F">eixo da lateral</text>
+        <line x1="112" y1="150" x2="112" y2="196" stroke="#B0413F" stroke-width=".8" stroke-dasharray="3 3"/>
+        <line x1="112" y1="192" x2="127" y2="192" stroke="#B0413F" stroke-width="1.1" marker-start="url(#ciA)" marker-end="url(#ctA)"/>
+        <text x="119" y="212" font-family="'JetBrains Mono',monospace" font-size="11.5" fill="#B0413F" text-anchor="middle">9 mm</text>
+        <text x="104" y="229" font-family="Inter,sans-serif" font-size="11" fill="#5f5b52" text-anchor="middle">para no meio da lateral</text>
+        <text x="104" y="245" font-family="Inter,sans-serif" font-size="11" fill="#5f5b52" text-anchor="middle">duas portas dividem a mesma lateral</text>
 
-        <circle cx="104" cy="300" r="54" fill="#ffffff" stroke="#c9c2b2" stroke-width="1"/>
-        <rect x="60" y="266" width="40" height="17" rx="3" fill="#6e737a" stroke="#3f444b" stroke-width="1.2"/>
-        <circle cx="80" cy="274" r="5" fill="#3f444b"/>
-        <path d="M94,283 L94,298 L106,298 L106,310 L120,310 L120,320" fill="none" stroke="#6e737a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
-        <path d="M94,283 L94,298 L106,298 L106,310 L120,310 L120,320" fill="none" stroke="#3f444b" stroke-width="1" stroke-linejoin="round" opacity=".55"/>
-        <rect x="102" y="318" width="42" height="14" fill="#6e737a" stroke="#3f444b" stroke-width="1.2"/>
-        <circle cx="112" cy="325" r="2.2" fill="#eceae4"/><circle cx="134" cy="325" r="2.2" fill="#eceae4"/>
-        <text x="104" y="374" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A" text-anchor="middle">dobradiça curva</text>
-        <text x="104" y="390" font-family="'JetBrains Mono',monospace" font-size="11.5" fill="#B8860B" text-anchor="middle">curvatura 9,5 mm</text>
+        <circle cx="104" cy="300" r="42" fill="url(#hach)" stroke="#B8860B" stroke-width="1.2" stroke-dasharray="5 4"/>
+        <text x="104" y="296" font-family="'JetBrains Mono',monospace" font-size="11" fill="#8a6a12" text-anchor="middle">FOTO</text>
+        <text x="104" y="310" font-family="'JetBrains Mono',monospace" font-size="10" fill="#8a6a12" text-anchor="middle">a fotografar</text>
+        <text x="104" y="360" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A" text-anchor="middle">dobradiça curva</text>
+        <text x="104" y="374" font-family="'JetBrains Mono',monospace" font-size="11.5" fill="#B8860B" text-anchor="middle">curvatura 9,5 mm</text>
       </g>
 
-      <!-- ══════ COLUNA C · EMBUTIDA ══════ -->
+      <!-- ══════ C · EMBUTIDA ══════ -->
       <g transform="translate(426,0)">
         <text x="104" y="24" font-family="Inter,sans-serif" font-size="13" fill="#5f5b52" text-anchor="middle">para porta</text>
         <text x="104" y="41" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A" text-anchor="middle">embutida</text>
 
-        <circle cx="128" cy="150" r="46" fill="none" stroke="#c9c2b2" stroke-width="1"/>
-        <rect x="112" y="62" width="30" height="88" fill="#ece0c8" stroke="#a89a78" stroke-width="1.3"/>
-        <text x="127" y="106" font-family="Inter,sans-serif" font-size="11.5" fill="#5a4d31" text-anchor="middle" transform="rotate(-90,127,106)">Lateral</text>
+        <circle cx="126" cy="152" r="46" fill="none" stroke="#c9c2b2" stroke-width="1"/>
+        <!-- a lateral desce e TAMPONA a porta -->
+        <rect x="112" y="62" width="30" height="118" fill="#ece0c8" stroke="#a89a78" stroke-width="1.3"/>
+        <text x="127" y="112" font-family="Inter,sans-serif" font-size="11.5" fill="#5a4d31" text-anchor="middle" transform="rotate(-90,127,112)">Lateral</text>
         <rect x="76" y="82" width="32" height="68" fill="#6e737a" stroke="#3f444b" stroke-width="1.3"/>
         <text x="92" y="116" font-family="Inter,sans-serif" font-size="11.5" fill="#ffffff" text-anchor="middle" transform="rotate(-90,92,116)">Dobradiça</text>
-        <!-- porta: não cobre a lateral, fica dentro do vão -->
+        <!-- porta: encosta na face interna, e a lateral passa na frente dela -->
         <rect x="34" y="150" width="78" height="30" fill="#ece0c8" stroke="#a89a78" stroke-width="1.3"/>
         <rect x="40" y="156" width="42" height="18" fill="#ffffff" stroke="#a89a78" stroke-width=".9"/>
         <text x="61" y="169" font-family="Inter,sans-serif" font-size="11.5" fill="#5a4d31" text-anchor="middle">Porta</text>
-        <line x1="112" y1="140" x2="112" y2="196" stroke="#B0413F" stroke-width=".8" stroke-dasharray="3 3"/>
+        <line x1="146" y1="150" x2="164" y2="150" stroke="#B0413F" stroke-width="1"/>
+        <line x1="146" y1="180" x2="164" y2="180" stroke="#B0413F" stroke-width="1"/>
+        <line x1="160" y1="150" x2="160" y2="180" stroke="#B0413F" stroke-width="1.1" marker-start="url(#ciA)" marker-end="url(#ctA)"/>
+        <text x="168" y="169" font-family="Inter,sans-serif" font-size="10.5" fill="#B0413F">a lateral tampona</text>
+        <text x="168" y="182" font-family="Inter,sans-serif" font-size="10.5" fill="#B0413F">a porta</text>
         <text x="127" y="212" font-family="'JetBrains Mono',monospace" font-size="11.5" fill="#B0413F" text-anchor="middle">0 mm</text>
-        <text x="104" y="228" font-family="Inter,sans-serif" font-size="11" fill="#5f5b52" text-anchor="middle">não cobre — fica no vão</text>
+        <text x="104" y="229" font-family="Inter,sans-serif" font-size="11" fill="#5f5b52" text-anchor="middle">a porta não cobre nada</text>
+        <text x="104" y="245" font-family="Inter,sans-serif" font-size="11" fill="#5f5b52" text-anchor="middle">quem aparece de frente é a lateral</text>
 
-        <circle cx="104" cy="300" r="54" fill="#ffffff" stroke="#c9c2b2" stroke-width="1"/>
-        <rect x="58" y="266" width="40" height="17" rx="3" fill="#6e737a" stroke="#3f444b" stroke-width="1.2"/>
-        <circle cx="78" cy="274" r="5" fill="#3f444b"/>
-        <path d="M92,283 L92,294 L74,294 L74,312 L122,312 L122,320" fill="none" stroke="#6e737a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
-        <path d="M92,283 L92,294 L74,294 L74,312 L122,312 L122,320" fill="none" stroke="#3f444b" stroke-width="1" stroke-linejoin="round" opacity=".55"/>
-        <rect x="104" y="318" width="42" height="14" fill="#6e737a" stroke="#3f444b" stroke-width="1.2"/>
-        <circle cx="114" cy="325" r="2.2" fill="#eceae4"/><circle cx="136" cy="325" r="2.2" fill="#eceae4"/>
-        <text x="104" y="374" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A" text-anchor="middle">dobradiça super curva</text>
-        <text x="104" y="390" font-family="'JetBrains Mono',monospace" font-size="11.5" fill="#B8860B" text-anchor="middle">curvatura 16 mm</text>
+        <circle cx="104" cy="300" r="42" fill="url(#hach)" stroke="#B8860B" stroke-width="1.2" stroke-dasharray="5 4"/>
+        <text x="104" y="296" font-family="'JetBrains Mono',monospace" font-size="11" fill="#8a6a12" text-anchor="middle">FOTO</text>
+        <text x="104" y="310" font-family="'JetBrains Mono',monospace" font-size="10" fill="#8a6a12" text-anchor="middle">a fotografar</text>
+        <text x="104" y="360" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A" text-anchor="middle">dobradiça super curva</text>
+        <text x="104" y="374" font-family="'JetBrains Mono',monospace" font-size="11.5" fill="#B8860B" text-anchor="middle">curvatura 16 mm</text>
       </g>
     </svg>
