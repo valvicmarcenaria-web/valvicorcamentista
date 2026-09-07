@@ -1,0 +1,53 @@
+.sheet{width:210mm;min-height:297mm;background:#fff;color:#1b2733;margin:0 auto 20px;
+  padding:12mm 13mm;box-shadow:0 10px 34px rgba(11,22,40,.2);display:flex;flex-direction:column;
+  font-size:10.5px;line-height:1.4;page-break-after:always;overflow:hidden}
+.sheet:last-child{page-break-after:auto}
+@media (max-width:1100px){.sheet{width:100%;min-height:0;padding:16px}}
+.sh-h{background:#0E2038;color:#fff;margin:-12mm -13mm 7mm;padding:7mm 13mm 5.5mm;
+  border-bottom:2.5px solid #C2A05A}
+@media (max-width:1100px){.sh-h{margin:-16px -16px 14px;padding:16px}}
+.sh-h .co{font-size:9.5px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase}
+.sh-h .sb{font-size:8px;color:rgba(255,255,255,.55);margin-top:2px}
+.sh-h .tt{font-family:'Cormorant Garamond',Georgia,serif;font-size:19px;font-weight:700;margin-top:5px}
+.sh-h .kx{font-size:8px;letter-spacing:2.4px;text-transform:uppercase;color:#C2A05A;margin-top:2px}
+.sh-id{border:1px solid #e8e3d8;border-radius:7px;background:#f4f1ea;padding:7px 11px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:5px 13px;font-size:9.4px;margin-bottom:7px}
+.sh-id b{color:#0E2038}
+.sh-id .v{font-family:'JetBrains Mono',monospace;font-weight:600;color:#16314f}
+.sh-sec{display:flex;align-items:center;gap:8px;margin:9px 0 4px}
+.sh-sec .bar{width:14px;height:2px;background:#C2A05A;flex:0 0 auto}
+.sh-sec .tx{font-size:9px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:#0E2038}
+.sh-sec .tx small{color:#6c7785;font-weight:600;letter-spacing:.3px;text-transform:none}
+.sheet table{width:100%;border-collapse:collapse;table-layout:fixed}
+.sheet th{background:#16314f;color:#fff;font-size:7.2px;font-weight:700;letter-spacing:.2px;
+  text-transform:uppercase;padding:4px 4px;text-align:left;border:1px solid #0E2038;
+  overflow-wrap:anywhere;line-height:1.2}
+.sheet th.c{text-align:center}
+.sheet td{border:1px solid #e8e3d8;padding:3px 6px;font-size:9.2px;height:21px;vertical-align:middle}
+.sheet td.c{text-align:center}
+.sheet tbody tr:nth-child(even) td{background:#f7f5ef}
+.sheet tr.hot td{background:#fbf1e9!important}
+/* o ambiente ocupa uma célula própria, e a linha dourada é a separação entre um e outro */
+.sheet td.amb{background:#f4f1ea!important;font-weight:700;color:#0E2038;font-size:9px;
+  letter-spacing:.2px;vertical-align:top;padding-top:6px}
+.sheet tr.grp td{border-top:1.6px solid #C2A05A}
+.sheet td.sub{background:#faf8f3!important;color:#6c7785;font-size:8.4px;font-style:italic}
+.bx{display:inline-block;width:12px;height:12px;border:1.3px solid #16314f;border-radius:2.5px;background:#fff}
+.bx.r{border-color:#b0413f}
+.sh-note{background:#fffaf0;border:1px solid #eed9a8;border-radius:7px;padding:6px 11px;margin-top:6px;
+  font-size:9px;line-height:1.45;color:#5a4a2c}
+.sh-note b{color:#0E2038}
+.sh-navy{background:#0E2038;border-radius:7px;padding:8px 12px;margin-bottom:7px;color:rgba(255,255,255,.9);
+  font-size:9.2px;line-height:1.5}
+.sh-navy b{color:#fff}
+.sh-navy.alerta{background:#b0413f}
+.sh-navy .nh{font-size:7.2px;letter-spacing:1.3px;text-transform:uppercase;color:#C2A05A;
+  font-weight:700;margin-bottom:3px}
+.sh-navy.alerta .nh{color:#ffdedc}
+.sh-ln{border-bottom:1px solid #dfdacd;height:16px}
+.sh-sign{display:flex;gap:22px;margin-top:auto;padding-top:12px}
+.sh-sign div{flex:1;border-top:1px solid #16314f;padding-top:4px;font-size:8.4px;color:#6c7785}
+.sh-f{border-top:1px solid #dfdacd;margin:auto -13mm 0;padding:5px 13mm 0;display:flex;
+  justify-content:space-between;font-size:7.2px;color:#6c7785;text-transform:uppercase;letter-spacing:.5px}
+@media (max-width:1100px){.sh-f{margin:auto -16px 0;padding:8px 16px 0}}
+.sh-f .r{color:#0E2038;font-weight:700}
