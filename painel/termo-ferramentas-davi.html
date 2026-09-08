@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Termo de entrega e responsabilidade de ferramentas — Davi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0E2038; --navy2:#16314F; --gold:#C2A05A; --goldsoft:#d8bd80;
+  --goldbg:#F6EDD6; --ink:#1b2733; --muted:#6c7785; --linha:#dfe4ea;
+  --ok:#2F7D4F; --red:#B0413F; --blue:#2F5D8C;
+}
+@page{ size:A4 portrait; margin:0 }
+*{ box-sizing:border-box }
+body{ margin:0; background:#8a8f96; font-family:'Inter',system-ui,sans-serif; color:var(--ink) }
+.sheet{
+  width:210mm; height:297mm; margin:0 auto; background:#fff; position:relative;
+  padding:13mm 14mm 14mm; display:flex; flex-direction:column;
+  page-break-after:always; overflow:hidden;
+}
+.sheet:last-child{ page-break-after:auto }
+@media print{ body{ background:#fff } .sheet{ margin:0 } }
+
+.topo{ display:flex; justify-content:space-between; align-items:flex-end;
+  border-bottom:2px solid var(--navy); padding-bottom:6px; margin-bottom:10px }
+.marca{ font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:700;
+  color:var(--navy); letter-spacing:.5px; line-height:1 }
+.marca small{ display:block; font-family:'Inter',sans-serif; font-size:8px; font-weight:600;
+  letter-spacing:2.4px; text-transform:uppercase; color:var(--gold); margin-top:3px }
+.doc{ text-align:right }
+.doc h1{ margin:0; font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:600; color:var(--navy) }
+.doc .meta{ font-size:8.5px; color:var(--muted); letter-spacing:.4px; margin-top:2px }
+
+.faixa{ background:var(--navy); color:var(--goldsoft); font-size:9px; font-weight:600;
+  letter-spacing:2px; text-transform:uppercase; padding:5px 9px; margin:9px 0 7px; border-radius:2px }
+.faixa.clara{ background:var(--goldbg); color:var(--navy2) }
+.faixa span{ float:right; font-weight:400; letter-spacing:.4px; text-transform:none; opacity:.85 }
+
+table.tb{ width:100%; border-collapse:collapse; font-size:9px }
+table.tb th{ background:var(--navy2); color:var(--goldsoft); font-size:8px; font-weight:600;
+  letter-spacing:.8px; text-transform:uppercase; padding:5px 6px; text-align:left }
+table.tb td{ border-bottom:1px solid var(--linha); padding:5px 6px; vertical-align:top }
+.num{ text-align:right; font-variant-numeric:tabular-nums }
+.mono{ font-family:'JetBrains Mono',monospace; font-size:8.5px }
+.pre{ color:var(--muted) }
+
+table.id{ width:100%; border-collapse:collapse; font-size:9px }
+table.id td{ padding:4px 6px 3px; vertical-align:bottom }
+table.id .rot{ font-size:7.5px; font-weight:600; color:var(--muted); text-transform:uppercase;
+  letter-spacing:.6px; width:78px }
+table.id .val{ font-size:10px; font-weight:700; color:var(--navy); border-bottom:1px solid var(--linha) }
+table.id .val.vazio{ background:#fcfaf4 }
+
+.total{ display:flex; justify-content:space-between; align-items:center; background:var(--navy);
+  color:#fff; padding:6px 10px; border-radius:2px; margin-top:-1px }
+.total .rot{ font-size:9px; font-weight:700; letter-spacing:.8px; text-transform:uppercase }
+.total .val{ font-family:'Cormorant Garamond',serif; font-size:15px; font-weight:700; color:var(--goldsoft) }
+.nota{ font-size:8px; font-style:italic; color:var(--muted); margin:4px 0 0 }
+
+ol.cl{ margin:0; padding-left:16px }
+ol.cl li{ font-size:8.5px; line-height:1.42; color:#33414F; margin-bottom:4px }
+ol.cl li b{ color:var(--navy); text-transform:uppercase; font-size:8px; letter-spacing:.4px }
+
+.decl{ font-size:9px; line-height:1.45; color:#33414F; margin:0 }
+.assina{ display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:16px }
+.assina div{ border-top:1px solid var(--ink); padding-top:4px; text-align:center }
+.assina .n{ font-size:9px; font-weight:700; color:var(--navy) }
+.assina .s{ font-size:8px; color:var(--muted) }
+.local{ text-align:center; font-size:9px; color:#33414F; margin-top:14px }
+
+.aviso{ background:var(--goldbg); border-left:3px solid var(--gold); border-radius:2px;
+  padding:7px 9px; font-size:8.5px; line-height:1.45; color:var(--navy2); margin:8px 0 }
+
+.rodape{ margin-top:auto; border-top:1px solid var(--linha); padding-top:5px;
+  display:flex; justify-content:space-between; font-size:7.5px; color:var(--muted);
+  letter-spacing:.5px; text-transform:uppercase }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ FOLHA 1 ══════════════════ -->
+<div class="sheet">
+  <div class="topo">
+    <div class="marca">valvic<small>Marcenaria</small></div>
+    <div class="doc">
+      <h1>Termo de Entrega e Responsabilidade</h1>
+      <div class="meta">Ferramentas e equipamentos cedidos para uso profissional · vínculo CLT</div>
+    </div>
+  </div>
+
+  <div class="faixa">Identificação<span>Folha 1 de 2 — as duas folhas compõem um único termo</span></div>
+
+  <table class="id">
+    <tr>
+      <td class="rot">Nome completo</td><td class="val">Davi</td>
+      <td class="rot">CPF</td><td class="val vazio">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="rot">Função</td><td class="val">Ajudante</td>
+      <td class="rot">Vínculo</td><td class="val">CLT</td>
+    </tr>
+    <tr>
+      <td class="rot">Data da entrega</td><td class="val vazio">&nbsp;</td>
+      <td class="rot">Local de guarda</td><td class="val">Fábrica / canteiro de obra</td>
+    </tr>
+    <tr>
+      <td class="rot">Empresa</td><td class="val" colspan="3">Vargas Decor Ltda — Valvic Marcenaria · CNPJ 17.269.304/0001-51 · Belo Horizonte / MG</td>
+    </tr>
+  </table>
+
+  <div class="faixa clara">Relação de itens entregues<span>conferir etiqueta e estado no ato da entrega</span></div>
+
+  <table class="tb">
+    <tr>
+      <th style="width:112px">Código</th>
+      <th>Descrição do item</th>
+      <th style="width:56px">Marca</th>
+      <th style="width:80px">Etiqueta / nº série</th>
+      <th style="width:60px">Estado</th>
+      <th style="width:74px" class="num">Valor de referência</th>
+    </tr>
+    <tr>
+      <td class="mono">PARAF-MAK-DHP482</td>
+      <td>Parafusadeira / furadeira de impacto a bateria 18V, com 2 baterias</td>
+      <td>Makita</td>
+      <td class="mono pre">____________</td>
+      <td class="pre">__________</td>
+      <td class="num">R$ 890,00</td>
+    </tr>
+    <tr>
+      <td class="mono pre">________________</td>
+      <td class="pre">_______________________________________________________</td>
+      <td class="pre">________</td>
+      <td class="mono pre">____________</td>
+      <td class="pre">__________</td>
+      <td class="num pre">____________</td>
+    </tr>
+  </table>
+
+  <div class="total">
+    <span class="rot">Total de referência dos itens entregues</span>
+    <span class="val">R$ 890,00</span>
+  </div>
+  <p class="nota">O valor de referência serve apenas para identificar o bem. Não constitui caução,
+  depósito, garantia nem autorização prévia de desconto.</p>
+
+  <div class="faixa">Condições</div>
+
+  <ol class="cl">
+    <li><b>Objeto</b> — A EMPRESA entrega ao COLABORADOR, em caráter de cessão para uso exclusivamente
+    profissional, as ferramentas e equipamentos relacionados no quadro acima, que permanecem sendo de
+    propriedade integral da EMPRESA.</li>
+
+    <li><b>Uso</b> — Os itens destinam-se exclusivamente à execução das atividades de trabalho. É vedado
+    emprestá-los, cedê-los, aliená-los ou utilizá-los em serviços particulares ou para terceiros.</li>
+
+    <li><b>Guarda</b> — Os itens NÃO podem ser levados para a residência do COLABORADOR. A guarda deve
+    ocorrer nas dependências da EMPRESA ou no canteiro de obra, em local seguro indicado pela coordenação.</li>
+
+    <li><b>Desgaste natural</b> — O desgaste decorrente do uso normal e a manutenção preventiva correm
+    por conta da EMPRESA, sem qualquer ônus para o COLABORADOR.</li>
+
+    <li><b>Dano por uso indevido</b> — Havendo dano decorrente de uso indevido, imprudência ou negligência
+    comprovada, o COLABORADOR se compromete a REPOR o item por outro de mesma especificação e em estado
+    equivalente, no prazo de 30 (trinta) dias, adquirindo-o por sua própria conta e da forma que lhe for
+    mais conveniente. Não havendo reposição no prazo, e MEDIANTE AUTORIZAÇÃO EXPRESSA E ESPECÍFICA do
+    COLABORADOR, o valor poderá ser descontado em folha, nos termos do art. 462, §1º, da CLT.</li>
+
+    <li><b>Furto ou roubo</b> — Em caso de furto ou roubo, o COLABORADOR deve comunicar imediatamente a
+    coordenação e registrar Boletim de Ocorrência em até 48 (quarenta e oito) horas. Comprovado o fato,
+    não haverá qualquer ônus para o COLABORADOR.</li>
+
+    <li><b>Extravio</b> — O extravio sem registro de Boletim de Ocorrência equipara-se, para os efeitos
+    deste termo, ao dano por negligência previsto na cláusula 5.</li>
+
+    <li><b>Devolução</b> — Os itens devem ser devolvidos sempre que solicitados pela EMPRESA e,
+    obrigatoriamente, no ato do desligamento, mediante registro no quadro de devolução deste termo.</li>
+
+    <li><b>Registro fotográfico</b> — O registro fotográfico do estado dos itens, feito na data da
+    entrega, integra este termo para todos os efeitos.</li>
+  </ol>
+
+  <div class="rodape">
+    <span>Valvic Marcenaria · Vargas Decor Ltda</span>
+    <span>Termo de ferramentas · Davi · Folha 1 de 2</span>
+  </div>
+</div>
+
+<!-- ══════════════════ FOLHA 2 ══════════════════ -->
+<div class="sheet">
+  <div class="topo">
+    <div class="marca">valvic<small>Marcenaria</small></div>
+    <div class="doc">
+      <h1>Termo de Entrega e Responsabilidade</h1>
+      <div class="meta">Davi · Ajudante · CLT — continuação</div>
+    </div>
+  </div>
+
+  <div class="faixa">Declaração e assinaturas</div>
+
+  <p class="decl">Declaro ter recebido os itens acima relacionados, conferido seu estado de conservação e
+  estar ciente das condições deste termo, que assino em duas vias de igual teor. Fica o COLABORADOR
+  responsável pela guarda e pelo uso adequado dos itens enquanto estiverem sob sua posse.</p>
+
+  <div class="assina">
+    <div><div class="n">Davi</div><div class="s">Colaborador · CPF _______________________</div></div>
+    <div><div class="n">Valvic Marcenaria — Vargas Decor Ltda</div><div class="s">Representante legal</div></div>
+  </div>
+
+  <p class="local">Belo Horizonte / MG, ______ de ____________________ de __________</p>
+
+  <div class="assina" style="margin-top:22px">
+    <div><div class="n">Testemunha 1</div><div class="s">Nome e CPF</div></div>
+    <div><div class="n">Testemunha 2</div><div class="s">Nome e CPF</div></div>
+  </div>
+
+  <div class="aviso"><b>Antes de colher a assinatura:</b> conferir o número de série ou a etiqueta de
+  patrimônio da máquina, anotar o estado de conservação e <b>tirar a foto</b> — a cláusula 9 faz do
+  registro fotográfico parte do termo. Sem a foto, discutir estado depois vira palavra contra palavra.</div>
+
+  <div class="faixa clara">Registro de devolução<span>preencher no ato da devolução ou do desligamento</span></div>
+
+  <table class="tb">
+    <tr>
+      <th style="width:66px">Data</th>
+      <th>Itens devolvidos</th>
+      <th style="width:92px">Estado na devolução</th>
+      <th style="width:88px">Pendências</th>
+      <th style="width:88px">Recebido por</th>
+    </tr>
+    <tr><td style="height:26px"></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="height:26px"></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td style="height:26px"></td><td></td><td></td><td></td><td></td></tr>
+  </table>
+
+  <div class="faixa clara">Controle interno<span>não faz parte do que o colaborador assina</span></div>
+
+  <table class="tb">
+    <tr>
+      <th style="width:26px">✓</th><th>Etapa</th>
+      <th style="width:110px">Responsável</th><th style="width:78px">Feito em</th>
+    </tr>
+    <tr><td></td><td>Foto do estado da ferramenta na entrega, salva na pasta do colaborador no Drive</td><td>Karla</td><td class="mono">__/__/____</td></tr>
+    <tr><td></td><td>Termo assinado nas duas vias — uma para o colaborador, uma para a pasta</td><td>Karla</td><td class="mono">__/__/____</td></tr>
+    <tr><td></td><td>Lançamento na planilha <span class="mono">Valvic_Controle_Patrimonio.xlsx</span>: Responsável, Estado na entrega, Data de entrega e Termo assinado = Sim</td><td>Karla</td><td class="mono">__/__/____</td></tr>
+    <tr><td></td><td>Checklist de insumos e ferramentas entregue junto com o kit</td><td>Deivison</td><td class="mono">__/__/____</td></tr>
+  </table>
+
+  <div class="rodape">
+    <span>Valvic Marcenaria · Vargas Decor Ltda</span>
+    <span>Termo de ferramentas · Davi · Folha 2 de 2</span>
+  </div>
+</div>
+
+</body>
+</html>
