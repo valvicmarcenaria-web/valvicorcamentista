@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<title>Roteiro de obra — Cesar · Luciana Rajão e Graciane</title>
+<title>Roteiro de obra — Cesar · 09/09/2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -16,227 +16,179 @@
 *{ box-sizing:border-box }
 body{ margin:0; background:#8a8f96; font-family:'Inter',system-ui,sans-serif; color:var(--ink) }
 .sheet{ width:210mm; height:297mm; margin:0 auto; background:#fff; position:relative;
-  padding:12mm 13mm 13mm; display:flex; flex-direction:column;
+  padding:9mm 11mm 10mm; display:flex; flex-direction:column;
   page-break-after:always; overflow:hidden }
 .sheet:last-child{ page-break-after:auto }
 @media print{ body{ background:#fff } .sheet{ margin:0 } }
 
 .topo{ display:flex; justify-content:space-between; align-items:flex-end;
-  border-bottom:2px solid var(--navy); padding-bottom:6px; margin-bottom:9px }
-.marca{ font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:700;
+  border-bottom:2px solid var(--navy); padding-bottom:5px; margin-bottom:7px }
+.marca{ font-family:'Cormorant Garamond',serif; font-size:23px; font-weight:700;
   color:var(--navy); letter-spacing:.5px; line-height:1 }
-.marca small{ display:block; font-family:'Inter',sans-serif; font-size:8px; font-weight:600;
-  letter-spacing:2.4px; text-transform:uppercase; color:var(--gold); margin-top:3px }
+.marca small{ display:block; font-family:'Inter',sans-serif; font-size:7.5px; font-weight:600;
+  letter-spacing:2.2px; text-transform:uppercase; color:var(--gold); margin-top:2px }
 .doc{ text-align:right }
-.doc h1{ margin:0; font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:600; color:var(--navy) }
-.doc .meta{ font-size:8.5px; color:var(--muted); letter-spacing:.4px; margin-top:2px }
+.doc h1{ margin:0; font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:600; color:var(--navy) }
+.doc .meta{ font-size:8px; color:var(--muted); letter-spacing:.4px; margin-top:1px }
 
-.faixa{ background:var(--navy); color:var(--goldsoft); font-size:9px; font-weight:600;
-  letter-spacing:2px; text-transform:uppercase; padding:5px 9px; margin:8px 0 6px; border-radius:2px }
+.faixa{ background:var(--navy); color:var(--goldsoft); font-size:8.5px; font-weight:600;
+  letter-spacing:1.8px; text-transform:uppercase; padding:3.5px 8px; margin:6px 0 3px; border-radius:2px }
 .faixa.clara{ background:var(--goldbg); color:var(--navy2) }
-.faixa span{ float:right; font-weight:400; letter-spacing:.4px; text-transform:none; opacity:.9 }
+.faixa.urg{ background:var(--red); color:#fff }
+.faixa span{ float:right; font-weight:400; letter-spacing:.3px; text-transform:none; opacity:.92 }
 
-table.tb{ width:100%; border-collapse:collapse; font-size:9px }
-table.tb th{ background:var(--navy2); color:var(--goldsoft); font-size:8px; font-weight:600;
-  letter-spacing:.8px; text-transform:uppercase; padding:4px 6px; text-align:left }
-table.tb td{ border-bottom:1px solid var(--linha); padding:5px 6px; vertical-align:top }
+table.tb{ width:100%; border-collapse:collapse; font-size:8.5px }
+table.tb th{ background:var(--navy2); color:var(--goldsoft); font-size:7.5px; font-weight:600;
+  letter-spacing:.7px; text-transform:uppercase; padding:3px 5px; text-align:left }
+table.tb td{ border-bottom:1px solid var(--linha); padding:2.8px 5px; vertical-align:top }
 table.tb tr:nth-child(even) td{ background:#f8fafb }
-.num{ text-align:right; font-variant-numeric:tabular-nums }
 .ctr{ text-align:center }
-.mono{ font-family:'JetBrains Mono',monospace; font-size:8.5px }
-.cx{ display:inline-block; width:11px; height:11px; border:1.4px solid var(--navy);
+.mono{ font-family:'JetBrains Mono',monospace; font-size:8px }
+.cx{ display:inline-block; width:10px; height:10px; border:1.3px solid var(--navy);
   border-radius:2px; vertical-align:-1px }
-.ord{ display:inline-block; width:15px; height:15px; line-height:15px; text-align:center;
-  background:var(--navy); color:var(--goldsoft); border-radius:50%; font-size:8px; font-weight:700 }
-.dica{ display:block; font-size:8px; color:var(--muted); margin-top:2px; line-height:1.35 }
+.ord{ display:inline-block; width:14px; height:14px; line-height:14px; text-align:center;
+  background:var(--navy); color:var(--goldsoft); border-radius:50%; font-size:7.5px; font-weight:700 }
+.ord.r{ background:var(--red); color:#fff }
+.d{ display:block; font-size:7.5px; color:var(--muted); margin-top:1px; line-height:1.3 }
 
-.cab{ display:grid; grid-template-columns:repeat(4,1fr); gap:5px; margin-bottom:2px }
-.cab .c{ border:1px solid var(--linha); border-left:3px solid var(--gold); border-radius:2px; padding:5px 8px }
-.cab .r{ font-size:7px; font-weight:600; letter-spacing:.8px; text-transform:uppercase; color:var(--muted) }
-.cab .v{ font-size:11px; font-weight:700; color:var(--navy); margin-top:1px }
-.cab .v.g{ color:var(--red) }
+.cab{ display:grid; grid-template-columns:repeat(4,1fr); gap:4px }
+.cab .c{ border:1px solid var(--linha); border-left:3px solid var(--gold); border-radius:2px; padding:4px 7px }
+.cab .c.r{ border-left-color:var(--red) }
+.cab .rot{ font-size:6.8px; font-weight:600; letter-spacing:.7px; text-transform:uppercase; color:var(--muted) }
+.cab .v{ font-size:10.5px; font-weight:700; color:var(--navy); margin-top:1px }
+.cab .v.vr{ color:var(--red) }
 
-.aviso{ background:var(--goldbg); border-left:3px solid var(--gold); border-radius:2px;
-  padding:6px 9px; font-size:8.5px; line-height:1.45; color:var(--navy2); margin:7px 0 }
-.aviso.r{ background:#fbf0ef; border-left-color:var(--red) }
+.aviso{ background:#fbf0ef; border-left:3px solid var(--red); border-radius:2px;
+  padding:5px 8px; font-size:8.5px; line-height:1.4; color:var(--navy2); margin:6px 0 }
+.aviso b{ color:var(--red) }
 
-ol.reg{ margin:0; padding-left:15px }
-ol.reg li{ font-size:8.5px; line-height:1.45; color:#33414F; margin-bottom:3px }
-ol.reg li b{ color:var(--navy) }
+.regras{ display:grid; grid-template-columns:1fr 1fr; gap:4px 14px; margin-top:3px }
+.regras p{ margin:0; font-size:8px; line-height:1.38; color:#33414F }
+.regras p b{ color:var(--navy) }
 
-.assina{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:12px }
-.assina div{ border-top:1px solid var(--ink); padding-top:4px; text-align:center }
-.assina .n{ font-size:9px; font-weight:700; color:var(--navy) }
-.assina .s{ font-size:8px; color:var(--muted) }
+.assina{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:10px }
+.assina div{ border-top:1px solid var(--ink); padding-top:3px; text-align:center }
+.assina .n{ font-size:8.5px; font-weight:700; color:var(--navy) }
+.assina .s{ font-size:7.5px; color:var(--muted) }
 
-.rodape{ margin-top:auto; border-top:1px solid var(--linha); padding-top:5px;
-  display:flex; justify-content:space-between; font-size:7.5px; color:var(--muted);
-  letter-spacing:.5px; text-transform:uppercase }
+.rodape{ margin-top:auto; border-top:1px solid var(--linha); padding-top:4px;
+  display:flex; justify-content:space-between; font-size:7px; color:var(--muted);
+  letter-spacing:.4px; text-transform:uppercase }
 </style>
 </head>
 <body>
 
-<!-- ═══════════ FOLHA 1 ═══════════ -->
 <div class="sheet">
   <div class="topo">
     <div class="marca">valvic<small>Marcenaria</small></div>
     <div class="doc">
       <h1>Roteiro de Obra — Assistência</h1>
-      <div class="meta">Duas obras no mesmo dia · Folha 1 de 2 · setembro/2026</div>
+      <div class="meta">Cesar · quarta-feira, 09/09/2026 · duas obras · folha única</div>
     </div>
   </div>
 
   <div class="cab">
-    <div class="c"><div class="r">Executante</div><div class="v">Cesar</div></div>
-    <div class="c"><div class="r">Data</div><div class="v mono">___ / ___ / 2026</div></div>
-    <div class="c"><div class="r">Obra 1 · janela fixa</div><div class="v g">Luciana · 9h–15h</div></div>
-    <div class="c"><div class="r">Obra 2 · em seguida</div><div class="v">Graciane</div></div>
+    <div class="c"><div class="rot">Executante</div><div class="v">Cesar</div></div>
+    <div class="c"><div class="rot">Data</div><div class="v">Qua · 09/09</div></div>
+    <div class="c"><div class="rot">Luciana Rajão</div><div class="v">9h – 15h</div></div>
+    <div class="c r"><div class="rot">Graciane · fechar hoje</div><div class="v vr">após as 15h</div></div>
   </div>
 
-  <div class="aviso r"><b>A janela da Luciana é rígida: 9h às 15h.</b> São seis frentes em seis
-  horas. Se atrasar, <b>não improvise a ordem</b> — siga a numeração abaixo e ligue para o
-  Deivison. O que não couber vira retorno agendado, não hora extra no local.</div>
+  <div class="aviso"><b>A Graciane tem de ficar resolvida hoje.</b> A Luciana, não — o que não couber vira retorno agendado. Portanto: <b>sair da Luciana às 15h, com pendência ou sem.</b></div>
 
-  <div class="faixa">Carga — conferir na fábrica antes de sair<span>sem isto, a viagem se perde</span></div>
+  <div class="faixa">Carga — conferir na fábrica antes de sair<span>peça ou ferragem esquecida = frente perdida</span></div>
 
   <table class="tb">
-    <tr><th style="width:24px">✓</th><th>O que levar</th><th style="width:150px">Para qual frente</th><th style="width:88px">Conferido por</th></tr>
-    <tr><td><span class="cx"></span></td><td><b>Rodapé já cortado</b> no comprimento da entrada da área íntima<span class="dica">peça pronta — se não estiver cortada, avisar o Deivison hoje, não amanhã</span></td><td>Luciana · item 5</td><td></td></tr>
-    <tr><td><span class="cx"></span></td><td><b>Alizares da rouparia</b> + cola e pinos</td><td>Luciana · item 3</td><td></td></tr>
-    <tr><td><span class="cx"></span></td><td><b>Freios / amortecedores do roupeiro</b> — conferir a quantidade e o modelo</td><td>Luciana · item 4</td><td></td></tr>
-    <tr><td><span class="cx"></span></td><td><b>Suportes de cabideiro</b> + buchas e parafusos</td><td>Luciana · item 6</td><td></td></tr>
-    <tr><td><span class="cx"></span></td><td><b>Dobradiças, parafusos e tapa-furo</b> na cor das portas</td><td>Luciana · itens 2 e 3</td><td></td></tr>
-    <tr><td><span class="cx"></span></td><td><b>Parafusos na cor do freijó</b></td><td>Graciane · item 3</td><td></td></tr>
-    <tr><td><span class="cx"></span></td><td><b>Fixação do painel do cinema</b> — bucha, parafuso e o que o painel pedir</td><td>Graciane · item 2</td><td></td></tr>
-    <tr><td><span class="cx"></span></td><td><b>Manta / plástico bolha e espaço no carro</b> para trazer o painel de tecido</td><td>Luciana · item 7</td><td></td></tr>
-    <tr><td><span class="cx"></span></td><td>Kit de ferramentas + <b>baterias carregadas</b> · trena · nível · aspirador</td><td>as duas obras</td><td></td></tr>
+    <tr><th style="width:22px">✓</th><th>O que levar</th><th style="width:132px">Para qual frente</th><th style="width:74px">Conferido</th></tr>
+    <tr><td><span class="cx"></span></td><td><b>Parafusos na cor do freijó</b> · <b>fixação do painel do cinema</b> (bucha e parafuso)<span class="d">sem elas o dia não fecha</span></td><td>Graciane · 2 e 3</td><td></td></tr>
+    <tr><td><span class="cx"></span></td><td><b>Rodapé já cortado</b> no comprimento da entrada da área íntima<span class="d">se não estiver pronto, avisar o Deivison agora</span></td><td>Luciana · 5</td><td></td></tr>
+    <tr><td><span class="cx"></span></td><td><b>Alizares da rouparia</b> + cola e pinos</td><td>Luciana · 3</td><td></td></tr>
+    <tr><td><span class="cx"></span></td><td><b>Freios / amortecedores do roupeiro</b> — conferir quantidade e modelo</td><td>Luciana · 4</td><td></td></tr>
+    <tr><td><span class="cx"></span></td><td><b>Suportes de cabideiro</b> + buchas e parafusos</td><td>Luciana · 6</td><td></td></tr>
+    <tr><td><span class="cx"></span></td><td><b>Dobradiças, parafusos e tapa-furo</b> na cor das portas</td><td>Luciana · 2 e 3</td><td></td></tr>
+    <tr><td><span class="cx"></span></td><td><b>Manta ou plástico bolha</b> e espaço no carro para trazer o painel de tecido</td><td>Luciana · 7</td><td></td></tr>
+    <tr><td><span class="cx"></span></td><td>Kit de ferramentas · <b>baterias carregadas</b> · trena · nível · aspirador</td><td>as duas</td><td></td></tr>
   </table>
 
-  <div class="faixa clara">Obra 1 · Luciana Rajão<span>9h às 15h — executar nesta ordem</span></div>
+  <div class="faixa clara">Obra 1 · Luciana Rajão — 9h às 15h<span>nesta ordem · o que sobrar vira retorno</span></div>
 
   <table class="tb">
-    <tr><th style="width:24px">Nº</th><th style="width:24px">✓</th><th>Frente</th><th style="width:64px" class="ctr">Feito</th><th style="width:150px">Observação / pendência</th></tr>
-
+    <tr><th style="width:22px">Nº</th><th style="width:22px">✓</th><th>Frente</th><th style="width:52px" class="ctr">Hora</th><th style="width:126px">Observação / pendência</th></tr>
     <tr><td class="ctr"><span class="ord">1</span></td><td><span class="cx"></span></td>
-      <td><b>Medir e fotografar o painel de tecido do studio</b>
-      <span class="dica">ANTES de mexer. Medida, foto do conjunto e foto da fixação. É o que permite fabricar o novo.</span></td>
+      <td><b>Medir e fotografar o painel de tecido do studio</b><span class="d">antes de mexer — é o que permite fabricar o novo</span></td>
       <td class="ctr mono">__:__</td><td></td></tr>
-
     <tr><td class="ctr"><span class="ord">2</span></td><td><span class="cx"></span></td>
-      <td><b>Reinstalação da porta do quarto</b><span class="dica">testar abertura e fechamento antes de liberar</span></td>
+      <td><b>Reinstalação da porta do quarto</b><span class="d">testar abertura e fechamento antes de liberar</span></td>
       <td class="ctr mono">__:__</td><td></td></tr>
-
     <tr><td class="ctr"><span class="ord">3</span></td><td><span class="cx"></span></td>
       <td><b>Reinstalação da porta e dos alizares da rouparia</b></td>
       <td class="ctr mono">__:__</td><td></td></tr>
-
     <tr><td class="ctr"><span class="ord">4</span></td><td><span class="cx"></span></td>
-      <td><b>Instalar os freios do roupeiro</b><span class="dica">conferir todas as portas, não só as que travam</span></td>
+      <td><b>Instalar os freios do roupeiro</b><span class="d">conferir todas as portas, não só as que travam</span></td>
       <td class="ctr mono">__:__</td><td></td></tr>
-
     <tr><td class="ctr"><span class="ord">5</span></td><td><span class="cx"></span></td>
       <td><b>Instalar o rodapé na entrada da área íntima</b></td>
       <td class="ctr mono">__:__</td><td></td></tr>
-
     <tr><td class="ctr"><span class="ord">6</span></td><td><span class="cx"></span></td>
-      <td><b>Instalar os suportes de cabideiro na lavanderia</b><span class="dica">conferir altura com a cliente antes de furar</span></td>
+      <td><b>Instalar os suportes de cabideiro na lavanderia</b><span class="d">conferir a altura com a cliente antes de furar</span></td>
       <td class="ctr mono">__:__</td><td></td></tr>
-
     <tr><td class="ctr"><span class="ord">7</span></td><td><span class="cx"></span></td>
-      <td><b>Remover o painel de tecido do studio e carregar</b>
-      <span class="dica">por último, para sair direto no carro. Só remover se o item 1 já estiver medido e fotografado.</span></td>
+      <td><b>Remover o painel de tecido e carregar no carro</b><span class="d">só remover se o item 1 já estiver medido e fotografado</span></td>
       <td class="ctr mono">__:__</td><td></td></tr>
-
-    <tr><td></td><td><span class="cx"></span></td><td><b>Limpeza do local e retirada de entulho</b></td>
-      <td class="ctr mono">__:__</td><td></td></tr>
-    <tr><td></td><td><span class="cx"></span></td><td><b>Foto de cada frente concluída</b> — mandar no grupo antes de sair</td>
+    <tr><td class="ctr mono" style="font-size:7.5px">14:30</td><td><span class="cx"></span></td>
+      <td><b>Parar, limpar, fotografar o que ficou pronto e sair</b><span class="d">avisar a Graciane do horário real de chegada</span></td>
       <td class="ctr mono">__:__</td><td></td></tr>
   </table>
 
-  <div class="rodape">
-    <span>Valvic Marcenaria · Vargas Decor Ltda</span>
-    <span>Roteiro de obra · Cesar · Folha 1 de 2</span>
-  </div>
-</div>
-
-<!-- ═══════════ FOLHA 2 ═══════════ -->
-<div class="sheet">
-  <div class="topo">
-    <div class="marca">valvic<small>Marcenaria</small></div>
-    <div class="doc">
-      <h1>Roteiro de Obra — Assistência</h1>
-      <div class="meta">Cesar · Obra 2 e fechamento do dia · Folha 2 de 2</div>
-    </div>
-  </div>
-
-  <div class="faixa clara">Obra 2 · Graciane<span>após a Luciana — confirmar chegada por mensagem</span></div>
-
-  <div class="aviso"><b>Antes de sair da Luciana, avise a Graciane com o horário real de chegada.</b>
-  O item 1 depende de uma funcionária estar no local para apresentar as portas — sem ela, essa
-  frente não acontece e a viagem rende um terço.</div>
+  <div class="faixa urg">Obra 2 · Graciane — depois das 15h<span>tem de ficar resolvida hoje</span></div>
 
   <table class="tb">
-    <tr><th style="width:24px">Nº</th><th style="width:24px">✓</th><th>Frente</th><th style="width:64px" class="ctr">Feito</th><th style="width:150px">Observação / pendência</th></tr>
-
-    <tr><td class="ctr"><span class="ord">1</span></td><td><span class="cx"></span></td>
-      <td><b>Regular as portas apresentadas pela funcionária</b>
-      <span class="dica">anotar quantas e quais foram reguladas — é o que fecha o chamado</span></td>
+    <tr><th style="width:22px">Nº</th><th style="width:22px">✓</th><th>Frente</th><th style="width:52px" class="ctr">Hora</th><th style="width:126px">Observação / pendência</th></tr>
+    <tr><td class="ctr"><span class="ord r">1</span></td><td><span class="cx"></span></td>
+      <td><b>Regular as portas apresentadas pela funcionária</b><span class="d">confirmar de manhã que ela estará no local · anotar quantas e quais</span></td>
       <td class="ctr mono">__:__</td><td></td></tr>
-
-    <tr><td class="ctr"><span class="ord">2</span></td><td><span class="cx"></span></td>
-      <td><b>Fixar o painel da área de cinema</b><span class="dica">conferir o que há atrás antes de furar — elétrica e dreno de ar</span></td>
+    <tr><td class="ctr"><span class="ord r">2</span></td><td><span class="cx"></span></td>
+      <td><b>Fixar o painel da área de cinema</b><span class="d">conferir o que passa atrás antes de furar — elétrica e dreno</span></td>
       <td class="ctr mono">__:__</td><td></td></tr>
-
-    <tr><td class="ctr"><span class="ord">3</span></td><td><span class="cx"></span></td>
+    <tr><td class="ctr"><span class="ord r">3</span></td><td><span class="cx"></span></td>
       <td><b>Completar os parafusos do armário de freijó</b> junto à bancada curva</td>
       <td class="ctr mono">__:__</td><td></td></tr>
-
-    <tr><td></td><td><span class="cx"></span></td><td><b>Limpeza do local</b> e <b>foto de cada frente</b> no grupo</td>
+    <tr><td></td><td><span class="cx"></span></td><td><b>Limpeza do local e foto de cada frente no grupo</b></td>
       <td class="ctr mono">__:__</td><td></td></tr>
   </table>
 
-  <div class="faixa">Regras em obra — valem nas duas casas</div>
+  <div class="faixa clara">Regras em obra — valem nas duas casas</div>
+  <div class="regras">
+    <p><b>Pedido fora desta folha?</b> Anote no quadro abaixo, agradeça e diga que a Valvic retorna. Não execute e não prometa prazo.</p>
+    <p><b>Preço, prazo ou desconto?</b> "Isso é com o Jonathan, vou pedir para ele te retornar." Nunca dar número, nem estimativa.</p>
+    <p><b>Achou defeito não previsto?</b> Fotografe, anote e ligue para o Deivison. Não diagnostique na frente da cliente.</p>
+    <p><b>Furar parede:</b> conferir o que passa atrás. Elétrica rompida custa mais que o dia inteiro de serviço.</p>
+  </div>
 
-  <ol class="reg">
-    <li><b>Cliente pediu algo que não está nesta folha?</b> Anote no quadro abaixo, agradeça e
-    diga que a Valvic retorna. <b>Não execute e não prometa prazo.</b> Serviço fora da lista
-    entra pelo Jonathan.</li>
-    <li><b>Perguntou preço, prazo ou desconto?</b> "Isso é com o Jonathan, vou pedir para ele
-    te retornar." Nunca dar número — nem estimativa, nem "deve ser rapidinho".</li>
-    <li><b>Achou defeito ou algo que não estava previsto?</b> Fotografe, anote e ligue para o
-    Deivison na hora. Não diagnostique na frente do cliente.</li>
-    <li><b>Furar parede:</b> conferir o que passa atrás. Prejuízo de elétrica ou hidráulica
-    custa mais que o serviço inteiro do dia.</li>
-    <li><b>Saiu de uma obra:</b> local limpo, entulho recolhido, foto no grupo. É o que a
-    cliente conta para a arquiteta dela.</li>
-  </ol>
-
-  <div class="faixa clara">Fechamento do dia — preencher antes de voltar para a fábrica</div>
+  <div class="faixa clara">Fechamento — preencher antes de voltar para a fábrica</div>
 
   <table class="tb">
-    <tr><th style="width:70px">Obra</th><th>O que ficou pendente</th><th style="width:130px">Por quê</th><th style="width:96px">Precisa de quê</th></tr>
-    <tr><td>Luciana</td><td style="height:24px"></td><td></td><td></td></tr>
-    <tr><td>Luciana</td><td style="height:24px"></td><td></td><td></td></tr>
-    <tr><td>Graciane</td><td style="height:24px"></td><td></td><td></td></tr>
-    <tr><td>Graciane</td><td style="height:24px"></td><td></td><td></td></tr>
+    <tr><th style="width:62px">Obra</th><th>O que ficou pendente</th><th style="width:116px">Por quê</th><th style="width:86px">Precisa de quê</th></tr>
+    <tr><td>Luciana</td><td style="height:17px"></td><td></td><td></td></tr>
+    <tr><td>Luciana</td><td style="height:17px"></td><td></td><td></td></tr>
+    <tr><td>Graciane</td><td style="height:17px"></td><td></td><td></td></tr>
   </table>
 
-  <table class="tb" style="margin-top:6px">
-    <tr><th style="width:24px">✓</th><th>Antes de encerrar</th></tr>
-    <tr><td><span class="cx"></span></td><td>Painel de tecido do studio <b>entregue na fábrica</b>, com a medida anotada e as fotos</td></tr>
-    <tr><td><span class="cx"></span></td><td>Ferramentas conferidas e de volta — nada esquecido nas duas casas</td></tr>
+  <table class="tb" style="margin-top:4px">
+    <tr><th style="width:22px">✓</th><th>Antes de encerrar o dia</th></tr>
+    <tr><td><span class="cx"></span></td><td><b>Painel de tecido entregue na fábrica</b>, com a medida anotada e as fotos</td></tr>
+    <tr><td><span class="cx"></span></td><td>Ferramentas conferidas e de volta · sobra de material devolvida ao estoque</td></tr>
     <tr><td><span class="cx"></span></td><td>Esta folha entregue à Karla, preenchida</td></tr>
-    <tr><td><span class="cx"></span></td><td>Sobra de material devolvida ao estoque</td></tr>
   </table>
 
   <div class="assina">
-    <div><div class="n">Cesar</div><div class="s">Executante · data e hora do retorno</div></div>
+    <div><div class="n">Cesar</div><div class="s">Executante · hora do retorno</div></div>
     <div><div class="n">Deivison / Karla</div><div class="s">Recebido na fábrica</div></div>
   </div>
 
   <div class="rodape">
     <span>Valvic Marcenaria · Vargas Decor Ltda</span>
-    <span>Roteiro de obra · Cesar · Folha 2 de 2</span>
+    <span>Roteiro de obra · Cesar · 09/09/2026</span>
   </div>
 </div>
 
