@@ -119,7 +119,55 @@ direto:
   valeu, o metro é do job inteiro e aí sim só a área explica.
 - **usinagem, LED, terceirizados e ferragem** — já são por item, entram direto.
 - **consumíveis e logística** — não têm dono: acompanham o resto,
-  proporcionalmente.
+  proporcionalmente, **sobre a base que NÃO depende do cenário** (ver abaixo).
+
+### ⛔ A base do rateio de consumível e logística vem ANTES da ferragem
+
+**Corrigido pelo Jonathan em 09/09/2026**, no job da Luiza e Raphael, sobre um
+orçamento em duas versões de ferragem: *"tem algo muito incoerente no seu
+cálculo. Por que item que não tem ferragem, como a cabeceira por exemplo, está
+alterando valor de uma versão para outra?"*
+
+Eu rateava consumível e logística sobre o custo bruto **já com a ferragem
+dentro**:
+
+```python
+bruto = sum(cdi.values())                       # ⛔ inclui a ferragem
+for k in cdi: cdi[k] += (consum + LOG)*cdi[k]/bruto
+```
+
+Quando o job tem **mais de um cenário de ferragem**, isso vaza: ao encarecer a
+ferragem, os itens que TÊM ferragem puxam uma fatia maior do bolo de
+consumível e frete, e os que NÃO TÊM ficam **mais baratos** de uma versão para
+a outra. A cabeceira estofada da Luiza — que não leva uma dobradiça sequer —
+caía de R$ 3.091 para R$ 3.053 só porque a ferragem dos OUTROS móveis subiu.
+
+E é errado mesmo com um cenário só: **consumível é 6% de chapa + fita**, não
+tem relação nenhuma com ferragem.
+
+```python
+base_fixa = sum(cdi.values())                   # ✅ ainda SEM ferragem
+for k in cdi: cdi[k] += (consum + LOG)*cdi[k]/base_fixa
+for k, v in FER.items():                        # ferragem entra DEPOIS
+    cdi[k] += v[0]*f['dobr'] + v[1]*f['corr'] + v[2]*f['pist']
+```
+
+**A guarda:** todo motor com mais de um cenário de ferragem passa a carregar
+
+```python
+for k in ITENS:
+    if FER.get(k, [0,0,0]) == [0,0,0]:
+        assert abs(cd_cen0[k] - cd_cen1[k]) < 0.01
+```
+
+> **Item sem ferragem tem de ter CUSTO idêntico em todos os cenários.** Se
+> mudou, o rateio está vazando.
+
+O **preço** desse item ainda pode mudar entre versões, e aí é legítimo: se a MC
+do pacote sobe de 32% para 40%, o mesmo custo vende por mais. Mas isso é
+decisão comercial visível, não sobra de rateio — e vale avisar o Jonathan,
+porque o cliente que comparar as duas propostas linha a linha vai perguntar por
+que a mesma cabeceira mudou de preço, e não há resposta de ferragem para dar.
 
 Implementado como bloco `cd_amb` em `corte-flaviana.py` e `corte-giza.py`,
 com `assert abs(sum(cd_amb.values()) - CD) < 0.01` — se algum custo novo

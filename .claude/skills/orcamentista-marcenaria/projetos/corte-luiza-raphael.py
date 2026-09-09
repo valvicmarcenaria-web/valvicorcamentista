@@ -439,11 +439,19 @@ def cd_por_item(cen):
     for k, mm in CURVA: cdi[k] += mm*CURVA_M
     for k, _, mm in LED: cdi[k] += mm*LED_M
     for k, _, v, _e in TERC: cdi[k] += v
+    # ⛔ [Jonathan 09/09] CONSUMÍVEL E LOGÍSTICA SE RATEIAM ANTES DA FERRAGEM.
+    #    Eu rateava os dois sobre o custo bruto JÁ COM a ferragem dentro. O
+    #    efeito: quando a ferragem encarece, os itens que TÊM ferragem puxam
+    #    uma fatia maior do bolo, e os que NÃO TÊM — cabeceira, divisórias de
+    #    acrílico, painel de TV — ficavam mais BARATOS de uma versão para a
+    #    outra. Não faz sentido: nada neles muda. E consumível é 6% de chapa
+    #    + fita, não tem relação nenhuma com ferragem.
+    #    A base do rateio agora é a parte do custo que NÃO depende do cenário.
+    base_fixa = sum(cdi.values())
+    for k in list(cdi): cdi[k] += (consum + LOG)*cdi[k]/base_fixa
     f = CENARIOS[cen][3]
     for k, v in FER.items():
         cdi[k] += v[0]*f['dobr'] + v[1]*f['corr'] + v[2]*f['pist']
-    bruto = sum(cdi.values())
-    for k in list(cdi): cdi[k] += (consum + LOG)*cdi[k]/bruto
     assert abs(sum(cdi.values()) - CD(cen)) < 0.01, (sum(cdi.values()), CD(cen))
     return dict(cdi)
 
@@ -567,6 +575,10 @@ print('\n' + '─'*W)
 print('CUSTO E VENDA, ITEM A ITEM')
 print('─'*W)
 PV = {}
+_c0, _c1 = cd_por_item(0), cd_por_item(1)
+for k in ORD_IT:
+    if FER.get(k, [0, 0, 0]) == [0, 0, 0]:
+        assert abs(_c0[k] - _c1[k]) < 0.01, (k, _c0[k], _c1[k])
 for i in range(len(CENARIOS)):
     cdi = cd_por_item(i)
     base = CD(i)
@@ -588,6 +600,32 @@ for a in ORD_AMB:
           f'{"R$ "+brl(sum(PV[1][1][k] for k in ks),0):>11}')
 print(f'  {"TOTAL":<52}{"R$ "+brl(CD(0),0):>11}{"R$ "+brl(PRECOS[0],0):>12}'
       f'{"R$ "+brl(CD(1),0):>12}{"R$ "+brl(PRECOS[1],0):>11}')
+
+SEM_FER = [k for k in ORD_IT if FER.get(k, [0, 0, 0]) == [0, 0, 0]]
+CD_SF = sum(_c0[k] for k in SEM_FER)
+print('\n' + '─'*W)
+print('⚠ E OS ITENS QUE NÃO TÊM FERRAGEM NENHUMA?')
+print('─'*W)
+print('  Três itens não levam uma dobradiça, corrediça ou pistão sequer:')
+for k in SEM_FER:
+    print(f'     {k[0]+" · "+k[1]:<62}custo R$ {brl(_c0[k],0):>7}')
+print(f'     {"— custo direto somado":<62}      R$ {brl(CD_SF,0):>7}')
+print('  O CUSTO deles é idêntico nas duas versões. Mas o PREÇO muda, porque a')
+print('  MC do pacote muda de 32% para 40% — a mesma cabeceira sai por')
+print(f'  R$ {brl(PV[0][1][SEM_FER[0]],0)} numa versão e R$ {brl(PV[1][1][SEM_FER[0]],0)} na outra.')
+print('  É coerente com as MCs que você cravou, mas o cliente que comparar as')
+print('  duas propostas linha a linha vai perguntar por quê — e não há resposta')
+print('  de ferragem para dar.')
+_pv_sf = round(CD_SF/div(CENARIOS[0][2], True)/100)*100
+_pv_cf = round((CD(1)-CD_SF)/div(CENARIOS[1][2], True)/100)*100
+print(f'\n  ALTERNATIVA: cobrar 32% nesses três itens NAS DUAS versões, e deixar')
+print(f'  os 40% só para o que realmente muda de ferragem.')
+print(f'     itens sem ferragem, a 32% nas duas .......... R$ {brl(_pv_sf,0):>8}')
+print(f'     itens com ferragem, a 40% (Hettich) ......... R$ {brl(_pv_cf,0):>8}')
+print(f'     → Hettich passaria de R$ {brl(PRECOS[1],0)} para '
+      f'R$ {brl(_pv_sf+_pv_cf,0)}   (−R$ {brl(PRECOS[1]-_pv_sf-_pv_cf,0)})')
+print('  Aí as duas propostas batem linha a linha em tudo que não muda.')
+print('  ⚠ DECISÃO SUA — não mexi no preço.')
 
 print('\n' + '─'*W)
 print('⚠ O QUE AS QUATRO CORES CUSTAM')

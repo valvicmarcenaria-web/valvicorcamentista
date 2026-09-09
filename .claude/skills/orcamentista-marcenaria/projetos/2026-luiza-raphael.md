@@ -146,3 +146,81 @@ As que mexem em dinheiro:
 6. **"porta temp." de 30 ao lado do forno** — li como porta de temperos.
 7. **Dobradiça camarão** ★ R$ 180 pelo conjunto, sem linha na base.
 8. **Bancada e rodabanca são pedra** (marmoraria) e estão FORA.
+
+---
+
+## ⛔ Correção de 09/09 — o rateio estava vazando entre as versões
+
+> *"Tem algo muito incoerente no seu cálculo. Por que item que não tem ferragem,
+> como a cabeceira por exemplo, está alterando valor de uma versão para outra?"*
+
+**Ele está certo, e era bug meu.** Eu rateava consumível e logística sobre o
+custo bruto **já com a ferragem dentro**. Quando a ferragem encarece, os itens
+que têm ferragem puxam uma fatia maior desse bolo, e os que não têm ficam mais
+baratos. A cabeceira caía de **R$ 3.091 para R$ 3.053** só porque a ferragem
+dos OUTROS móveis subiu.
+
+E é errado mesmo com um cenário só: **consumível é 6% de chapa + fita**, não
+tem relação nenhuma com ferragem.
+
+**Corrigido:** consumível e logística passam a ratear sobre a base que NÃO
+depende do cenário; a ferragem entra depois, só onde existe. Registrado em
+`referencias/estrutura-orcamento.md` com a guarda:
+
+```python
+for k in ITENS:
+    if FER.get(k, [0,0,0]) == [0,0,0]:
+        assert abs(cd_cen0[k] - cd_cen1[k]) < 0.01
+```
+
+Agora os três itens sem ferragem têm **custo idêntico nas duas versões**:
+
+| Item | custo, nas duas |
+|---|--:|
+| Cabeceira estofada | R$ 3.111 |
+| Divisórias em acrílico | R$ 904 |
+| Painel de TV da sala | R$ 2.184 |
+| **soma** | **R$ 6.199** |
+
+Os totais não se moveram (R$ 21.248 / R$ 23.659 de custo direto; R$ 54.200 /
+R$ 75.800 de venda) — o erro redistribuía dentro do bolo, não mudava o bolo.
+
+### ⚠ O que sobra depois da correção — e é decisão sua
+
+O **custo** desses três itens agora bate. O **preço** ainda muda, porque a MC do
+pacote vai de 32% para 40%: a mesma cabeceira sai por **R$ 8.000** numa versão
+e **R$ 10.000** na outra. É coerente com as MCs que você cravou, mas **o cliente
+que comparar as duas propostas linha a linha vai perguntar por quê — e não há
+resposta de ferragem para dar.**
+
+Alternativa, se quiser fechar essa brecha:
+
+| | R$ |
+|---|--:|
+| itens sem ferragem, a 32% nas **duas** versões | 15.800 |
+| itens com ferragem, a 40% (Hettich) | 55.900 |
+| **Hettich passaria de R$ 75.800 para** | **R$ 71.700** (−4.100) |
+
+Aí as duas propostas batem linha a linha em tudo que não muda. Não mexi no
+preço.
+
+### Tabela corrigida
+
+| Ambiente | Item | custo | **Telescóp.** | custo | **Hettich** |
+|---|---|--:|--:|--:|--:|
+| **Quarto casal** | Cabeceira estofada · 3,10 × 1,10 | 3.111 | **8.000** | 3.111 | **10.000** |
+| | Penteadeira em Carvalho · 1,30 × 0,40 | 1.979 | **5.000** | 2.139 | **6.900** |
+| | **Divisórias em acrílico** | 904 | **2.300** | 904 | **2.900** |
+| | *subtotal* | *5.993* | ***15.300*** | *6.153* | ***19.800*** |
+| **Espaço gourmet** | Portas da lavanderia · 1,33 × 2,615 | 1.319 | **3.400** | 1.724 | **5.500** |
+| | Armário superior da lavanderia | 1.133 | **2.900** | 1.376 | **4.400** |
+| | Armário inferior da lavanderia · 0,68 | 659 | **1.700** | 813 | **2.600** |
+| | Vassoureiro · 0,37 × 2,495 | 1.718 | **4.400** | 1.853 | **5.900** |
+| | Armário superior do gourmet · 2,30 | 1.339 | **3.400** | 1.663 | **5.300** |
+| | Básculas em Jequitibá · 1,50 | 2.281 | **5.800** | 2.429 | **7.800** |
+| | Armário inferior do gourmet · 4,295 | 2.842 | **7.200** | 3.524 | **11.300** |
+| | *subtotal* | *11.292* | ***28.800*** | *13.383* | ***42.800*** |
+| **Sala cobertura** | Painel de TV · 3,975 × 1,00 | 2.184 | **5.600** | 2.184 | **7.000** |
+| | Rack · 2,00 × 0,47 | 1.779 | **4.500** | 1.939 | **6.200** |
+| | *subtotal* | *3.963* | ***10.100*** | *4.123* | ***13.200*** |
+| **TOTAL** | | **21.248** | **R$ 54.200** | **23.659** | **R$ 75.800** |
