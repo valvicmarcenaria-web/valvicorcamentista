@@ -71,7 +71,7 @@
   th{ background:var(--navy2); color:#fff; font-size:8.8px; font-weight:700; letter-spacing:.5px;
     text-transform:uppercase; padding:1.3mm 2.2mm; text-align:left; border:1px solid var(--navy) }
   th.c{ text-align:center }
-  td{ border:1px solid var(--line); padding:.5mm 2mm; font-size:10px; vertical-align:middle; height:4.3mm }
+  td{ border:1px solid var(--line); padding:.35mm 1.8mm; font-size:9.6px; vertical-align:middle; height:3.5mm }
   td.c{ text-align:center }
   tr:nth-child(even) td{ background:#f7f5ef }
   td.quem{ font-weight:700; color:var(--navy); font-size:11.2px }
@@ -82,14 +82,17 @@
   .grp td{ border-top:1.6px solid var(--gold) }
   td.cor{ width:2mm; padding:0; border-left:none; border-right:none }
 
-  .placar{ display:grid; grid-template-columns:repeat(4,1fr); gap:2.6mm; margin-top:2.4mm }
+    .fecho{ display:flex; gap:3mm; margin-top:2.6mm; align-items:stretch }
+  .fecho .kpi{ width:52mm; flex:0 0 auto }
+  .fecho .linhas{ flex:1; margin-top:0 }
+  .kpi .de{ font-size:11px; color:var(--muted) }
   .kpi{ border:1px solid var(--line); border-radius:4px; background:#fff; padding:1.8mm 2.6mm }
   .kpi .r{ font-size:8.8px; letter-spacing:1.6px; text-transform:uppercase; color:var(--muted); font-weight:700 }
   .kpi .cx{ display:flex; gap:2mm; align-items:baseline; margin-top:1mm }
-  .kpi .ln{ border-bottom:1px solid var(--navy2); flex:1; height:4.4mm }
+  .kpi .ln{ border-bottom:1px solid var(--navy2); flex:1; height:4mm }
   .kpi .o{ font-size:9.4px; color:var(--muted); margin-top:1mm; line-height:1.3 }
 
-  .linhas{ border:1px solid var(--line); border-radius:4px; background:#fff; padding:1.6mm 3.4mm; margin-top:1.6mm }
+  .linhas{ border:1px solid var(--line); border-radius:4px; background:#fff; padding:2mm 3.4mm }
   .linhas .h{ font-size:9.4px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
     color:var(--navy); margin-bottom:2mm }
   .linhas .ln{ border-bottom:1px solid var(--line2); height:5.4mm }
@@ -166,8 +169,8 @@ const FRENTES = [
     onde:'Fábrica',
     tarefas:['<b>Montagem das garras</b>',
              '<b>Limpeza</b> das peças',
-             '<b>Embalagem</b> das peças'],
-    nota:'' },
+             '<b>Embalagem</b> das peças — só com a aprovação da Karla'],
+    nota:'Nada é embalado antes de a Karla vistoriar a peça.', alerta:true },
 
   { bloco:'apoio', quem:'Deivison', papel:'Coordenação', proj:'interno',
     onde:'Fábrica e externo',
@@ -175,27 +178,37 @@ const FRENTES = [
              '<b>Alocar a vistoria do carro</b> com o Filipe',
              '<b>Iniciar o ajuste da mesa de cabeceira</b> — o Jomar dá continuidade',
              'Alinhar com o Jomar o <b>corte do fundo do armário</b>, quando a medida chegar',
-             'Levar <b>peças de amostra</b> na Rejane',
-             'Buscar os <b>envelopamentos</b>',
+             '<b>Rejane:</b> levar as peças de amostra e buscar os envelopamentos — mesma saída',
              '<b>Última hora:</b> planejar o sábado e a próxima semana'],
-    nota:'Duas saídas externas: libere a fábrica antes da primeira.', alerta:true },
+    nota:'Libere a fábrica antes de sair para a Rejane.', alerta:true },
 
   { bloco:'apoio', quem:'Filipe', papel:'Programação · demanda externa', proj:'interno',
     onde:'Externo',
     tarefas:['Levar o <b>carro para a vistoria</b>'],
     nota:'Alocado pelo Deivison.' },
 
-  { bloco:'apoio', quem:'Karla e Davi', papel:'Administrativo · manhã', proj:'interno',
+  { bloco:'apoio', quem:'Karla', papel:'Administrativo e conferência', proj:'interno',
+    onde:'Fábrica',
+    tarefas:['<b>Demandas administrativas</b> do início do dia',
+             '<b>Organização do estoque</b>, junto com o Davi',
+             '<b>Vistoria:</b> nicho e armário da cozinha — Simony',
+             '<b>Vistoria:</b> mesas de cabeceira — Augusto',
+             '<b>Vistoria:</b> painéis e portas do lavabo',
+             '<b>Vistoria:</b> prateleira da sala'],
+    nota:'A embalagem do Wallace espera a sua aprovação — vistorie na ordem em que as peças ficam prontas.',
+    alerta:true },
+
+  { bloco:'apoio', quem:'Davi', papel:'Ajudante · manhã na fábrica', proj:'interno',
     onde:'Fábrica · estoque',
-    tarefas:['<b>Davi:</b> orientar o Wallace no <b>protocolo de limpeza</b> da casa — antes de começar',
-             '<b>Organização do estoque</b>'],
-    nota:'O Davi sai ao meio-dia para a obra da Maria.' },
+    tarefas:['Orientar o <b>Wallace</b> no <b>protocolo de limpeza</b> da casa — antes de começar',
+             '<b>Organização do estoque</b>, junto com a Karla'],
+    nota:'Sai ao meio-dia para a lavanderia da Maria, com o Cézar.' },
 ];
 
 const AMARRAS = [
   '<b>Ajuste do móvel inferior e nicho da cozinha</b> (Joelson): priorizar para <b>envio na obra</b>, para o Samuel.',
   'A <b>medida do fundo do armário</b> sai do Samuel com a medida do furo; o Deivison alinha com o Jomar e a fábrica corta.',
-  'A <b>mesa de cabeceira</b> do Augusto: o Deivison começa, o Jomar finaliza. Não é frente nova, é continuidade.',
+  'A <b>vistoria da Karla vem antes da embalagem</b>: o Wallace não embala peça que ela não aprovou.',
   'O <b>Davi divide o dia</b>: protocolo com o Wallace, estoque com a Karla, e lavanderia da Maria a partir das 12h.',
   'O <b>Deivison libera as frentes antes de sair</b> — sem a liberação, a fábrica espera.',
 ];
@@ -228,7 +241,7 @@ const folha1 = `
   ${topo('Programação do Dia','Vargas Decor Ltda · marque cada tarefa ao concluir')}
   ${bloco('Obra','três frentes fora da fábrica','obra',3)}
   ${bloco('Fábrica','quatro frentes na casa','fabrica',4)}
-  ${bloco('Apoio e externo','coordenação, administrativo e demanda externa','apoio',3)}
+  ${bloco('Apoio e externo','coordenação, administrativo e demanda externa','apoio',4)}
   <div class="amarras">
     <div class="h">As cinco amarras do dia — o que trava as outras frentes</div>
     <div class="lista">${AMARRAS.map((a,i)=>`
@@ -259,33 +272,23 @@ const folha2 = `
   <div class="faixa">Frente a frente<span>marque uma das três colunas em cada tarefa — e escreva o porquê quando não fechar</span></div>
   <table>
     <thead><tr><th class="cor" style="width:2mm;padding:0"></th>
-      <th style="width:34mm">Quem</th><th>Tarefa planejada</th>
-      <th class="c" style="width:16mm">Feito</th><th class="c" style="width:16mm">Parcial</th>
-      <th class="c" style="width:16mm">Não feito</th>
-      <th style="width:62mm">Por quê — se não fechou</th>
-      <th style="width:50mm">Fica para quando</th></tr></thead>
+      <th style="width:30mm">Quem</th><th>Tarefa planejada</th>
+      <th class="c" style="width:14mm">Feito</th><th class="c" style="width:14mm">Parcial</th>
+      <th class="c" style="width:14mm">Não feito</th>
+      <th style="width:50mm">Por quê — se não fechou</th>
+      <th style="width:38mm">Fica para quando</th></tr></thead>
     <tbody>${linhasResultado}</tbody>
   </table>
 
-  <div class="placar">
+  <div class="fecho">
     <div class="kpi"><div class="r">Frentes que fecharam</div>
-      <div class="cx"><span class="ln"></span><span style="font-size:12px;color:var(--muted)">de ${FRENTES.length}</span></div>
-      <div class="o">frente fechada = todas as tarefas dela feitas</div></div>
+      <div class="cx"><span class="ln"></span><span class="de">de ${FRENTES.length}</span></div></div>
     <div class="kpi"><div class="r">Tarefas feitas</div>
-      <div class="cx"><span class="ln"></span><span style="font-size:12px;color:var(--muted)">de ${FRENTES.reduce((n,f)=>n+f.tarefas.length,0)}</span></div>
-      <div class="o">o número que vai para o painel da equipe</div></div>
-    <div class="kpi"><div class="r">As cinco amarras seguraram?</div>
-      <div class="cx" style="gap:4mm;font-size:9.5px">
-        <span><span class="bx ok"></span> sim</span><span><span class="bx no"></span> não</span></div>
-      <div class="o">se alguma falhou, é ela que explica o dia</div></div>
-    <div class="kpi"><div class="r">Frente parada esperando</div>
-      <div class="cx"><span class="ln"></span></div>
-      <div class="o">quanto tempo, e esperando o quê</div></div>
-  </div>
-
-  <div class="linhas">
-    <div class="h">O que travou — e o que muda na programação de amanhã</div>
-    <div class="ln"></div>
+      <div class="cx"><span class="ln"></span><span class="de">de ${FRENTES.reduce((n,f)=>n+f.tarefas.length,0)}</span></div></div>
+    <div class="linhas">
+      <div class="h">O que travou — e o que muda na programação de amanhã</div>
+      <div class="ln"></div>
+    </div>
   </div>
 
   <div class="pf"><span>Resultado do Dia · Valvic Marcenaria — preencher no fim do expediente e entregar à coordenação</span>
