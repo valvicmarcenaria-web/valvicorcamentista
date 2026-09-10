@@ -13,15 +13,15 @@
          --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd;
          --green:#2f7d4f; --amber:#c47d0e; --red:#b0413f; --blue:#2f5d8c }
   html{ -webkit-print-color-adjust:exact; print-color-adjust:exact }
-  body{ font-family:'Inter',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:10px; line-height:1.4 }
+  body{ font-family:'Inter',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:11.5px; line-height:1.42 }
   .sheet{ width:420mm; height:297mm; background:var(--cream); margin:16px auto; overflow:hidden;
     box-shadow:0 10px 40px rgba(11,22,40,.22); display:flex; flex-direction:column;
-    padding:9mm 11mm 7mm; page-break-after:always }
+    padding:7mm 10mm 5mm; page-break-after:always }
   .sheet:last-child{ page-break-after:auto }
   @media print{ body{ background:#fff } .sheet{ margin:0; box-shadow:none } .btn{ display:none } }
 
   .topo{ display:flex; justify-content:space-between; align-items:flex-end;
-    border-bottom:2.5px solid var(--navy); padding-bottom:5px; margin-bottom:5mm }
+    border-bottom:2.5px solid var(--navy); padding-bottom:4px; margin-bottom:3.6mm }
   .marca{ font-family:'Cormorant Garamond',serif; font-size:27px; font-weight:700; color:var(--navy); line-height:1 }
   .marca small{ display:block; font-family:'Inter',sans-serif; font-size:8px; font-weight:600;
     letter-spacing:2.6px; text-transform:uppercase; color:var(--gold); margin-top:3px }
@@ -30,69 +30,69 @@
   .doc .meta{ font-size:9px; color:var(--muted); letter-spacing:.5px; margin-top:1px }
   .doc .dia{ font-size:9px; font-weight:700; letter-spacing:2.4px; text-transform:uppercase; color:var(--gold) }
 
-  .faixa{ background:var(--navy); color:var(--gold-soft); font-size:8.5px; font-weight:700;
-    letter-spacing:2.2px; text-transform:uppercase; padding:2mm 3mm; border-radius:2px; margin-bottom:3mm;
+  .faixa{ background:var(--navy); color:var(--gold-soft); font-size:9.6px; font-weight:700;
+    letter-spacing:2.2px; text-transform:uppercase; padding:1.5mm 3mm; border-radius:2px; margin-bottom:2.2mm;
     display:flex; align-items:center; gap:3mm }
-  .faixa span{ color:#9fb0c6; font-weight:500; letter-spacing:.3px; text-transform:none; font-size:8.5px }
+  .faixa span{ color:#9fb0c6; font-weight:500; letter-spacing:.3px; text-transform:none; font-size:9.6px }
 
-  .grade{ display:grid; gap:3mm; margin-bottom:5mm }
+  .grade{ display:grid; gap:2.6mm; margin-bottom:3.4mm }
   .g3{ grid-template-columns:repeat(3,1fr) } .g4{ grid-template-columns:repeat(4,1fr) }
   .g2{ grid-template-columns:1fr 1fr }
 
-  .frente{ border:1px solid var(--line); border-top:3.5px solid var(--cor,#6c7785); border-radius:4px;
-    background:#fff; padding:3mm 3.5mm; display:flex; flex-direction:column }
-  .frente .quem{ font-size:13px; font-weight:800; color:var(--navy); line-height:1.15 }
-  .frente .papel{ font-size:8.5px; color:var(--muted); margin-top:.5mm }
-  .frente .onde{ display:inline-block; font-size:8px; font-weight:700; letter-spacing:.8px;
+  .frente{ border:1px solid var(--line); border-top:3px solid var(--cor,#6c7785); border-radius:4px;
+    background:#fff; padding:2.4mm 3mm; display:flex; flex-direction:column }
+  .frente .quem{ font-size:14.5px; font-weight:800; color:var(--navy); line-height:1.15 }
+  .frente .papel{ font-size:9.6px; color:var(--muted); margin-top:.5mm }
+  .frente .onde{ display:inline-block; font-size:8.8px; font-weight:700; letter-spacing:.8px;
     text-transform:uppercase; color:#fff; background:var(--cor,#6c7785); border-radius:9px;
     padding:.8mm 2.4mm; margin-top:1.5mm; align-self:flex-start }
-  .frente ul{ list-style:none; margin-top:2.5mm }
-  .frente li{ display:flex; gap:2mm; align-items:flex-start; font-size:10px; line-height:1.35;
-    padding:1.4mm 0; border-bottom:1px dotted var(--line2) }
+  .frente ul{ list-style:none; margin-top:1.8mm }
+  .frente li{ display:flex; gap:2mm; align-items:flex-start; font-size:11.4px; line-height:1.35;
+    padding:1.2mm 0; border-bottom:1px dotted var(--line2) }
   .frente li:last-child{ border-bottom:none }
   .cb{ display:inline-block; width:3.4mm; height:3.4mm; border:.4mm solid var(--navy2); border-radius:.6mm;
     flex:0 0 auto; margin-top:.4mm; background:#fff }
   .frente li b{ color:var(--navy) }
-  .nota{ margin-top:auto; padding-top:2mm; font-size:8.5px; color:var(--muted); font-style:italic }
+  .nota{ margin-top:auto; padding-top:1.6mm; font-size:9.6px; color:var(--muted); font-style:italic }
   .nota.alerta{ color:var(--red); font-style:normal; font-weight:600 }
 
-  .amarras{ border:1.4px solid var(--gold); border-radius:4px; background:#fffaf0; padding:3mm 4mm; margin-top:auto }
-  .amarras .h{ font-size:8.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+  .amarras{ border:1.4px solid var(--gold); border-radius:4px; background:#fffaf0; padding:2.4mm 3.4mm; margin-top:auto }
+  .amarras .h{ font-size:9.4px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
     color:var(--gold-dk); margin-bottom:2mm }
-  .amarras .lista{ display:grid; grid-template-columns:repeat(4,1fr); gap:4mm }
+  .amarras .lista{ display:grid; grid-template-columns:repeat(5,1fr); gap:3.5mm }
   .amarras .it{ display:flex; gap:2.5mm; align-items:flex-start }
   .amarras .n{ width:5mm; height:5mm; flex:0 0 auto; border-radius:50%; background:var(--navy);
     color:var(--gold-soft); font-size:8.5px; font-weight:700; display:flex; align-items:center; justify-content:center }
-  .amarras .tx{ font-size:9px; line-height:1.4; color:#4a3f28 }
+  .amarras .tx{ font-size:10.2px; line-height:1.4; color:#4a3f28 }
   .amarras .tx b{ color:var(--navy) }
 
   /* ── folha 2 ── */
   table{ width:100%; border-collapse:collapse; table-layout:fixed }
-  th{ background:var(--navy2); color:#fff; font-size:8px; font-weight:700; letter-spacing:.5px;
-    text-transform:uppercase; padding:1.6mm 2.5mm; text-align:left; border:1px solid var(--navy) }
+  th{ background:var(--navy2); color:#fff; font-size:8.8px; font-weight:700; letter-spacing:.5px;
+    text-transform:uppercase; padding:1.3mm 2.2mm; text-align:left; border:1px solid var(--navy) }
   th.c{ text-align:center }
-  td{ border:1px solid var(--line); padding:1mm 2.5mm; font-size:9.2px; vertical-align:middle; height:6mm }
+  td{ border:1px solid var(--line); padding:.5mm 2mm; font-size:10px; vertical-align:middle; height:4.3mm }
   td.c{ text-align:center }
   tr:nth-child(even) td{ background:#f7f5ef }
-  td.quem{ font-weight:700; color:var(--navy); font-size:10px }
-  td.quem small{ display:block; font-weight:400; color:var(--muted); font-size:8.5px }
+  td.quem{ font-weight:700; color:var(--navy); font-size:11.2px }
+  td.quem small{ display:block; font-weight:400; color:var(--muted); font-size:9.4px }
   td.tarefa b{ color:var(--navy) }
   .bx{ display:inline-block; width:4mm; height:4mm; border:.4mm solid var(--navy2); border-radius:.6mm; background:#fff }
   .bx.ok{ border-color:var(--green) } .bx.pc{ border-color:var(--amber) } .bx.no{ border-color:var(--red) }
   .grp td{ border-top:1.6px solid var(--gold) }
   td.cor{ width:2mm; padding:0; border-left:none; border-right:none }
 
-  .placar{ display:grid; grid-template-columns:repeat(4,1fr); gap:3mm; margin-top:3mm }
-  .kpi{ border:1px solid var(--line); border-radius:4px; background:#fff; padding:2.2mm 3mm }
-  .kpi .r{ font-size:8px; letter-spacing:1.6px; text-transform:uppercase; color:var(--muted); font-weight:700 }
-  .kpi .cx{ display:flex; gap:2mm; align-items:baseline; margin-top:1.5mm }
-  .kpi .ln{ border-bottom:1px solid var(--navy2); flex:1; height:5mm }
-  .kpi .o{ font-size:8.5px; color:var(--muted); margin-top:1.5mm; line-height:1.35 }
+  .placar{ display:grid; grid-template-columns:repeat(4,1fr); gap:2.6mm; margin-top:2.4mm }
+  .kpi{ border:1px solid var(--line); border-radius:4px; background:#fff; padding:1.8mm 2.6mm }
+  .kpi .r{ font-size:8.8px; letter-spacing:1.6px; text-transform:uppercase; color:var(--muted); font-weight:700 }
+  .kpi .cx{ display:flex; gap:2mm; align-items:baseline; margin-top:1mm }
+  .kpi .ln{ border-bottom:1px solid var(--navy2); flex:1; height:4.4mm }
+  .kpi .o{ font-size:9.4px; color:var(--muted); margin-top:1mm; line-height:1.3 }
 
-  .linhas{ border:1px solid var(--line); border-radius:4px; background:#fff; padding:2.4mm 4mm; margin-top:2.5mm }
-  .linhas .h{ font-size:8.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+  .linhas{ border:1px solid var(--line); border-radius:4px; background:#fff; padding:1.6mm 3.4mm; margin-top:1.6mm }
+  .linhas .h{ font-size:9.4px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
     color:var(--navy); margin-bottom:2mm }
-  .linhas .ln{ border-bottom:1px solid var(--line2); height:6mm }
+  .linhas .ln{ border-bottom:1px solid var(--line2); height:5.4mm }
 
   .pf{ border-top:1px solid var(--line2); padding-top:2mm; margin-top:auto; display:flex;
     justify-content:space-between; font-size:7.5px; color:var(--muted); letter-spacing:.5px; text-transform:uppercase }
@@ -120,11 +120,13 @@ const P = {
 const FRENTES = [
   { bloco:'obra', quem:'Samuel e Jonathan', papel:'Instalação', proj:'simony',
     onde:'Obra · Simony',
-    tarefas:['Finalizar <b>acabamento da porta</b>',
+    tarefas:['<b>Enviar a medida do fundo do armário</b> — com a medida do furo — para corte na fábrica',
+             'Finalizar <b>acabamento da porta</b>',
              'Instalar <b>LEDs da cozinha</b>',
              'Ajustar <b>vão do depurador</b>',
              'Instalar <b>nicho do quarto de hóspede</b>'],
-    nota:'Vão de Uber — o carro fica na fábrica.' },
+    nota:'A medida sai primeiro: a fábrica precisa dela para cortar. Vão de Uber — o carro fica na fábrica.',
+    alerta:true },
 
   { bloco:'obra', quem:'Cézar e Davi', papel:'Instalação · a partir das 12h', proj:'maria',
     onde:'Obra · Maria',
@@ -135,15 +137,17 @@ const FRENTES = [
     onde:'Obra · Augusto',
     tarefas:['Instalar <b>puxadores</b>',
              '<b>Prateleira</b> que foi sem furo',
-             '<b>Reforço</b> embaixo do tampo do rack'],
-    nota:'Frente de acerto — são as pendências que sobraram da entrega.' },
+             '<b>Reforço</b> embaixo do tampo do rack',
+             '<b>E as demais demandas necessárias</b> da obra'],
+    nota:'' },
 
   { bloco:'fabrica', quem:'Joelson', papel:'CNC e máquinas', proj:'simony',
     onde:'Fábrica',
-    tarefas:['<b>Ajuste do móvel inferior da cozinha</b> — primeiro da fila',
-             'Fabricar <b>nicho da cozinha</b>',
+    tarefas:['<b>Ajuste do móvel inferior da cozinha</b> — prioridade de envio',
+             'Fabricar <b>nicho da cozinha</b> — prioridade de envio',
              'Cortar <b>painéis do banho do casal</b>'],
-    nota:'O ajuste sai antes de tudo: o Samuel está na obra esperando.', alerta:true },
+    nota:'Priorizar para envio na obra, para o Samuel — vale para o ajuste do móvel e o nicho da cozinha.',
+    alerta:true },
 
   { bloco:'fabrica', quem:'Jhon', papel:'Marceneiro · primeira semana', proj:'simony',
     onde:'Fábrica',
@@ -152,38 +156,48 @@ const FRENTES = [
              'Finalizar a <b>prateleira da sala</b>'],
     nota:'É novo na casa — conferir a primeira peça antes de seguir.' },
 
-  { bloco:'fabrica', quem:'Jomar', papel:'Marcenaria', proj:'simony',
+  { bloco:'fabrica', quem:'Jomar', papel:'Marcenaria', proj:'augusto',
     onde:'Fábrica',
-    tarefas:['Cortar e fitar a <b>tampa da caixa de energia</b>',
-             'Fazer as <b>garras dos painéis</b>'],
-    nota:'' },
+    tarefas:['<b>Corte das peças</b> para as garras',
+             'Finalizar a <b>mesa de cabeceira</b> do Augusto'],
+    nota:'A mesa de cabeceira vem começada pelo Deivison — é continuidade, não começo.' },
 
   { bloco:'fabrica', quem:'Wallace', papel:'Ajudante · primeira semana', proj:'fabrica',
     onde:'Fábrica',
     tarefas:['<b>Montagem das garras</b>',
              '<b>Limpeza</b> das peças',
              '<b>Embalagem</b> das peças'],
-    nota:'Trabalha junto com o Jomar nas garras.' },
+    nota:'' },
 
   { bloco:'apoio', quem:'Deivison', papel:'Coordenação', proj:'interno',
     onde:'Fábrica e externo',
     tarefas:['<b>Liberar as frentes</b> de todo mundo — antes de sair',
-             'Levar o <b>carro para a vistoria</b>',
+             '<b>Alocar a vistoria do carro</b> com o Filipe',
+             '<b>Iniciar o ajuste da mesa de cabeceira</b> — o Jomar dá continuidade',
+             'Alinhar com o Jomar o <b>corte do fundo do armário</b>, quando a medida chegar',
              'Levar <b>peças de amostra</b> na Rejane',
-             'Buscar os <b>envelopamentos</b>'],
-    nota:'Três saídas no mesmo dia: libere a fábrica antes da primeira.', alerta:true },
+             'Buscar os <b>envelopamentos</b>',
+             '<b>Última hora:</b> planejar o sábado e a próxima semana'],
+    nota:'Duas saídas externas: libere a fábrica antes da primeira.', alerta:true },
+
+  { bloco:'apoio', quem:'Filipe', papel:'Programação · demanda externa', proj:'interno',
+    onde:'Externo',
+    tarefas:['Levar o <b>carro para a vistoria</b>'],
+    nota:'Alocado pelo Deivison.' },
 
   { bloco:'apoio', quem:'Karla e Davi', papel:'Administrativo · manhã', proj:'interno',
     onde:'Fábrica · estoque',
-    tarefas:['<b>Organização do estoque</b>'],
+    tarefas:['<b>Davi:</b> orientar o Wallace no <b>protocolo de limpeza</b> da casa — antes de começar',
+             '<b>Organização do estoque</b>'],
     nota:'O Davi sai ao meio-dia para a obra da Maria.' },
 ];
 
 const AMARRAS = [
-  'O <b>ajuste do móvel inferior</b> (Joelson) é o primeiro da fila. O Samuel está na obra e para se ele atrasar.',
-  'O <b>Davi divide o dia</b>: estoque com a Karla pela manhã, lavanderia da Maria com o Cézar a partir das 12h.',
-  'O <b>Deivison libera as frentes antes de sair</b>. São três saídas externas — sem a liberação, a fábrica inteira espera.',
-  'A <b>lavanderia da Maria</b> tem de estar separada e conferida antes das 12h, ou o Cézar sai com peça faltando.',
+  '<b>Ajuste do móvel inferior e nicho da cozinha</b> (Joelson): priorizar para <b>envio na obra</b>, para o Samuel.',
+  'A <b>medida do fundo do armário</b> sai do Samuel com a medida do furo; o Deivison alinha com o Jomar e a fábrica corta.',
+  'A <b>mesa de cabeceira</b> do Augusto: o Deivison começa, o Jomar finaliza. Não é frente nova, é continuidade.',
+  'O <b>Davi divide o dia</b>: protocolo com o Wallace, estoque com a Karla, e lavanderia da Maria a partir das 12h.',
+  'O <b>Deivison libera as frentes antes de sair</b> — sem a liberação, a fábrica espera.',
 ];
 
 /* ═══ montagem ═══ */
@@ -214,9 +228,9 @@ const folha1 = `
   ${topo('Programação do Dia','Vargas Decor Ltda · marque cada tarefa ao concluir')}
   ${bloco('Obra','três frentes fora da fábrica','obra',3)}
   ${bloco('Fábrica','quatro frentes na casa','fabrica',4)}
-  ${bloco('Apoio e externo','coordenação e administrativo','apoio',2)}
+  ${bloco('Apoio e externo','coordenação, administrativo e demanda externa','apoio',3)}
   <div class="amarras">
-    <div class="h">As quatro amarras do dia — o que trava as outras frentes</div>
+    <div class="h">As cinco amarras do dia — o que trava as outras frentes</div>
     <div class="lista">${AMARRAS.map((a,i)=>`
       <div class="it"><span class="n">${i+1}</span><span class="tx">${a}</span></div>`).join('')}</div>
   </div>
@@ -255,12 +269,12 @@ const folha2 = `
 
   <div class="placar">
     <div class="kpi"><div class="r">Frentes que fecharam</div>
-      <div class="cx"><span class="ln"></span><span style="font-size:12px;color:var(--muted)">de 9</span></div>
+      <div class="cx"><span class="ln"></span><span style="font-size:12px;color:var(--muted)">de ${FRENTES.length}</span></div>
       <div class="o">frente fechada = todas as tarefas dela feitas</div></div>
     <div class="kpi"><div class="r">Tarefas feitas</div>
-      <div class="cx"><span class="ln"></span><span style="font-size:12px;color:var(--muted)">de 22</span></div>
+      <div class="cx"><span class="ln"></span><span style="font-size:12px;color:var(--muted)">de ${FRENTES.reduce((n,f)=>n+f.tarefas.length,0)}</span></div>
       <div class="o">o número que vai para o painel da equipe</div></div>
-    <div class="kpi"><div class="r">As quatro amarras seguraram?</div>
+    <div class="kpi"><div class="r">As cinco amarras seguraram?</div>
       <div class="cx" style="gap:4mm;font-size:9.5px">
         <span><span class="bx ok"></span> sim</span><span><span class="bx no"></span> não</span></div>
       <div class="o">se alguma falhou, é ela que explica o dia</div></div>
@@ -271,7 +285,7 @@ const folha2 = `
 
   <div class="linhas">
     <div class="h">O que travou — e o que muda na programação de amanhã</div>
-    <div class="ln"></div><div class="ln"></div>
+    <div class="ln"></div>
   </div>
 
   <div class="pf"><span>Resultado do Dia · Valvic Marcenaria — preencher no fim do expediente e entregar à coordenação</span>
