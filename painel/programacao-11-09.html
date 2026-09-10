@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Programação do dia — 11/09 · Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page{ size:A3 landscape; margin:0 }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0 }
+  :root{ --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f;
+         --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd;
+         --green:#2f7d4f; --amber:#c47d0e; --red:#b0413f; --blue:#2f5d8c }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact }
+  body{ font-family:'Inter',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:10px; line-height:1.4 }
+  .sheet{ width:420mm; height:297mm; background:var(--cream); margin:16px auto; overflow:hidden;
+    box-shadow:0 10px 40px rgba(11,22,40,.22); display:flex; flex-direction:column;
+    padding:9mm 11mm 7mm; page-break-after:always }
+  .sheet:last-child{ page-break-after:auto }
+  @media print{ body{ background:#fff } .sheet{ margin:0; box-shadow:none } .btn{ display:none } }
+
+  .topo{ display:flex; justify-content:space-between; align-items:flex-end;
+    border-bottom:2.5px solid var(--navy); padding-bottom:5px; margin-bottom:5mm }
+  .marca{ font-family:'Cormorant Garamond',serif; font-size:27px; font-weight:700; color:var(--navy); line-height:1 }
+  .marca small{ display:block; font-family:'Inter',sans-serif; font-size:8px; font-weight:600;
+    letter-spacing:2.6px; text-transform:uppercase; color:var(--gold); margin-top:3px }
+  .doc{ text-align:right }
+  .doc h1{ margin:0; font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:600; color:var(--navy) }
+  .doc .meta{ font-size:9px; color:var(--muted); letter-spacing:.5px; margin-top:1px }
+  .doc .dia{ font-size:9px; font-weight:700; letter-spacing:2.4px; text-transform:uppercase; color:var(--gold) }
+
+  .faixa{ background:var(--navy); color:var(--gold-soft); font-size:8.5px; font-weight:700;
+    letter-spacing:2.2px; text-transform:uppercase; padding:2mm 3mm; border-radius:2px; margin-bottom:3mm;
+    display:flex; align-items:center; gap:3mm }
+  .faixa span{ color:#9fb0c6; font-weight:500; letter-spacing:.3px; text-transform:none; font-size:8.5px }
+
+  .grade{ display:grid; gap:3mm; margin-bottom:5mm }
+  .g3{ grid-template-columns:repeat(3,1fr) } .g4{ grid-template-columns:repeat(4,1fr) }
+  .g2{ grid-template-columns:1fr 1fr }
+
+  .frente{ border:1px solid var(--line); border-top:3.5px solid var(--cor,#6c7785); border-radius:4px;
+    background:#fff; padding:3mm 3.5mm; display:flex; flex-direction:column }
+  .frente .quem{ font-size:13px; font-weight:800; color:var(--navy); line-height:1.15 }
+  .frente .papel{ font-size:8.5px; color:var(--muted); margin-top:.5mm }
+  .frente .onde{ display:inline-block; font-size:8px; font-weight:700; letter-spacing:.8px;
+    text-transform:uppercase; color:#fff; background:var(--cor,#6c7785); border-radius:9px;
+    padding:.8mm 2.4mm; margin-top:1.5mm; align-self:flex-start }
+  .frente ul{ list-style:none; margin-top:2.5mm }
+  .frente li{ display:flex; gap:2mm; align-items:flex-start; font-size:10px; line-height:1.35;
+    padding:1.4mm 0; border-bottom:1px dotted var(--line2) }
+  .frente li:last-child{ border-bottom:none }
+  .cb{ display:inline-block; width:3.4mm; height:3.4mm; border:.4mm solid var(--navy2); border-radius:.6mm;
+    flex:0 0 auto; margin-top:.4mm; background:#fff }
+  .frente li b{ color:var(--navy) }
+  .nota{ margin-top:auto; padding-top:2mm; font-size:8.5px; color:var(--muted); font-style:italic }
+  .nota.alerta{ color:var(--red); font-style:normal; font-weight:600 }
+
+  .amarras{ border:1.4px solid var(--gold); border-radius:4px; background:#fffaf0; padding:3mm 4mm; margin-top:auto }
+  .amarras .h{ font-size:8.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+    color:var(--gold-dk); margin-bottom:2mm }
+  .amarras .lista{ display:grid; grid-template-columns:repeat(4,1fr); gap:4mm }
+  .amarras .it{ display:flex; gap:2.5mm; align-items:flex-start }
+  .amarras .n{ width:5mm; height:5mm; flex:0 0 auto; border-radius:50%; background:var(--navy);
+    color:var(--gold-soft); font-size:8.5px; font-weight:700; display:flex; align-items:center; justify-content:center }
+  .amarras .tx{ font-size:9px; line-height:1.4; color:#4a3f28 }
+  .amarras .tx b{ color:var(--navy) }
+
+  /* ── folha 2 ── */
+  table{ width:100%; border-collapse:collapse; table-layout:fixed }
+  th{ background:var(--navy2); color:#fff; font-size:8px; font-weight:700; letter-spacing:.5px;
+    text-transform:uppercase; padding:1.6mm 2.5mm; text-align:left; border:1px solid var(--navy) }
+  th.c{ text-align:center }
+  td{ border:1px solid var(--line); padding:1mm 2.5mm; font-size:9.2px; vertical-align:middle; height:6mm }
+  td.c{ text-align:center }
+  tr:nth-child(even) td{ background:#f7f5ef }
+  td.quem{ font-weight:700; color:var(--navy); font-size:10px }
+  td.quem small{ display:block; font-weight:400; color:var(--muted); font-size:8.5px }
+  td.tarefa b{ color:var(--navy) }
+  .bx{ display:inline-block; width:4mm; height:4mm; border:.4mm solid var(--navy2); border-radius:.6mm; background:#fff }
+  .bx.ok{ border-color:var(--green) } .bx.pc{ border-color:var(--amber) } .bx.no{ border-color:var(--red) }
+  .grp td{ border-top:1.6px solid var(--gold) }
+  td.cor{ width:2mm; padding:0; border-left:none; border-right:none }
+
+  .placar{ display:grid; grid-template-columns:repeat(4,1fr); gap:3mm; margin-top:3mm }
+  .kpi{ border:1px solid var(--line); border-radius:4px; background:#fff; padding:2.2mm 3mm }
+  .kpi .r{ font-size:8px; letter-spacing:1.6px; text-transform:uppercase; color:var(--muted); font-weight:700 }
+  .kpi .cx{ display:flex; gap:2mm; align-items:baseline; margin-top:1.5mm }
+  .kpi .ln{ border-bottom:1px solid var(--navy2); flex:1; height:5mm }
+  .kpi .o{ font-size:8.5px; color:var(--muted); margin-top:1.5mm; line-height:1.35 }
+
+  .linhas{ border:1px solid var(--line); border-radius:4px; background:#fff; padding:2.4mm 4mm; margin-top:2.5mm }
+  .linhas .h{ font-size:8.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+    color:var(--navy); margin-bottom:2mm }
+  .linhas .ln{ border-bottom:1px solid var(--line2); height:6mm }
+
+  .pf{ border-top:1px solid var(--line2); padding-top:2mm; margin-top:auto; display:flex;
+    justify-content:space-between; font-size:7.5px; color:var(--muted); letter-spacing:.5px; text-transform:uppercase }
+  .pf .r{ color:var(--navy); font-weight:700 }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff;
+    border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; cursor:pointer }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+<div id="app"></div>
+
+<script>
+/* ═══ os projetos e suas cores ═══ */
+const P = {
+  simony:  {n:'Simony',                 c:'#0E2038'},
+  maria:   {n:'Maria · Vale dos Cristais', c:'#8C3F63'},
+  augusto: {n:'Augusto',                c:'#B0413F'},
+  rejane:  {n:'Rejane',                 c:'#A8562E'},
+  fabrica: {n:'Fábrica',                c:'#55627A'},
+  interno: {n:'Interno',                c:'#6c7785'},
+};
+
+/* ═══ a programação de quinta, 11 de setembro ═══ */
+const FRENTES = [
+  { bloco:'obra', quem:'Samuel e Jonathan', papel:'Instalação', proj:'simony',
+    onde:'Obra · Simony',
+    tarefas:['Finalizar <b>acabamento da porta</b>',
+             'Instalar <b>LEDs da cozinha</b>',
+             'Ajustar <b>vão do depurador</b>',
+             'Instalar <b>nicho do quarto de hóspede</b>'],
+    nota:'Vão de Uber — o carro fica na fábrica.' },
+
+  { bloco:'obra', quem:'Cézar e Davi', papel:'Instalação · a partir das 12h', proj:'maria',
+    onde:'Obra · Maria',
+    tarefas:['Instalar a <b>lavanderia</b> da Maria'],
+    nota:'O Davi vem do estoque; a manhã não pode estourar.', alerta:true },
+
+  { bloco:'obra', quem:'Jackson e Rafael', papel:'Instalação · Rafael é freelancer', proj:'augusto',
+    onde:'Obra · Augusto',
+    tarefas:['Instalar <b>puxadores</b>',
+             '<b>Prateleira</b> que foi sem furo',
+             '<b>Reforço</b> embaixo do tampo do rack'],
+    nota:'Frente de acerto — são as pendências que sobraram da entrega.' },
+
+  { bloco:'fabrica', quem:'Joelson', papel:'CNC e máquinas', proj:'simony',
+    onde:'Fábrica',
+    tarefas:['<b>Ajuste do móvel inferior da cozinha</b> — primeiro da fila',
+             'Fabricar <b>nicho da cozinha</b>',
+             'Cortar <b>painéis do banho do casal</b>'],
+    nota:'O ajuste sai antes de tudo: o Samuel está na obra esperando.', alerta:true },
+
+  { bloco:'fabrica', quem:'Jhon', papel:'Marceneiro · primeira semana', proj:'simony',
+    onde:'Fábrica',
+    tarefas:['Finalizar o <b>painel</b>',
+             'Finalizar a <b>porta do lavabo</b>',
+             'Finalizar a <b>prateleira da sala</b>'],
+    nota:'É novo na casa — conferir a primeira peça antes de seguir.' },
+
+  { bloco:'fabrica', quem:'Jomar', papel:'Marcenaria', proj:'simony',
+    onde:'Fábrica',
+    tarefas:['Cortar e fitar a <b>tampa da caixa de energia</b>',
+             'Fazer as <b>garras dos painéis</b>'],
+    nota:'' },
+
+  { bloco:'fabrica', quem:'Wallace', papel:'Ajudante · primeira semana', proj:'fabrica',
+    onde:'Fábrica',
+    tarefas:['<b>Montagem das garras</b>',
+             '<b>Limpeza</b> das peças',
+             '<b>Embalagem</b> das peças'],
+    nota:'Trabalha junto com o Jomar nas garras.' },
+
+  { bloco:'apoio', quem:'Deivison', papel:'Coordenação', proj:'interno',
+    onde:'Fábrica e externo',
+    tarefas:['<b>Liberar as frentes</b> de todo mundo — antes de sair',
+             'Levar o <b>carro para a vistoria</b>',
+             'Levar <b>peças de amostra</b> na Rejane',
+             'Buscar os <b>envelopamentos</b>'],
+    nota:'Três saídas no mesmo dia: libere a fábrica antes da primeira.', alerta:true },
+
+  { bloco:'apoio', quem:'Karla e Davi', papel:'Administrativo · manhã', proj:'interno',
+    onde:'Fábrica · estoque',
+    tarefas:['<b>Organização do estoque</b>'],
+    nota:'O Davi sai ao meio-dia para a obra da Maria.' },
+];
+
+const AMARRAS = [
+  'O <b>ajuste do móvel inferior</b> (Joelson) é o primeiro da fila. O Samuel está na obra e para se ele atrasar.',
+  'O <b>Davi divide o dia</b>: estoque com a Karla pela manhã, lavanderia da Maria com o Cézar a partir das 12h.',
+  'O <b>Deivison libera as frentes antes de sair</b>. São três saídas externas — sem a liberação, a fábrica inteira espera.',
+  'A <b>lavanderia da Maria</b> tem de estar separada e conferida antes das 12h, ou o Cézar sai com peça faltando.',
+];
+
+/* ═══ montagem ═══ */
+const esc = s => s;
+const cartao = f => `
+  <div class="frente" style="--cor:${P[f.proj].c}">
+    <div class="quem">${f.quem}</div>
+    <div class="papel">${f.papel}</div>
+    <div class="onde">${f.onde}</div>
+    <ul>${f.tarefas.map(t=>`<li><span class="cb"></span><span>${t}</span></li>`).join('')}</ul>
+    ${f.nota?`<div class="nota${f.alerta?' alerta':''}">${f.nota}</div>`:''}
+  </div>`;
+
+const bloco = (rot, sub, chave, cols) => `
+  <div class="faixa">${rot}<span>${sub}</span></div>
+  <div class="grade g${cols}">${FRENTES.filter(f=>f.bloco===chave).map(cartao).join('')}</div>`;
+
+const topo = (h1, kx) => `
+  <div class="topo">
+    <div class="marca">valvic<small>Marcenaria</small></div>
+    <div class="doc"><div class="dia">Sexta-feira · 11 de setembro de 2026</div>
+      <h1>${h1}</h1><div class="meta">${kx}</div></div>
+  </div>`;
+
+/* ── folha 1 · programação ── */
+const folha1 = `
+<section class="sheet">
+  ${topo('Programação do Dia','Vargas Decor Ltda · marque cada tarefa ao concluir')}
+  ${bloco('Obra','três frentes fora da fábrica','obra',3)}
+  ${bloco('Fábrica','quatro frentes na casa','fabrica',4)}
+  ${bloco('Apoio e externo','coordenação e administrativo','apoio',2)}
+  <div class="amarras">
+    <div class="h">As quatro amarras do dia — o que trava as outras frentes</div>
+    <div class="lista">${AMARRAS.map((a,i)=>`
+      <div class="it"><span class="n">${i+1}</span><span class="tx">${a}</span></div>`).join('')}</div>
+  </div>
+  <div class="pf"><span>Programação do Dia · Valvic Marcenaria — Vargas Decor Ltda</span>
+    <span class="r">11/09 · SEXTA</span></div>
+</section>`;
+
+/* ── folha 2 · acompanhamento ── */
+const linhasResultado = FRENTES.map(f=>{
+  const n = f.tarefas.length;
+  return f.tarefas.map((t,k)=>`
+    <tr class="${k===0?'grp':''}">
+      ${k===0?`<td class="cor" rowspan="${n}" style="background:${P[f.proj].c}"></td>
+        <td class="quem" rowspan="${n}">${f.quem}<small>${P[f.proj].n}</small></td>`:''}
+      <td class="tarefa">${t}</td>
+      <td class="c"><span class="bx ok"></span></td>
+      <td class="c"><span class="bx pc"></span></td>
+      <td class="c"><span class="bx no"></span></td>
+      <td></td><td></td>
+    </tr>`).join('');
+}).join('');
+
+const folha2 = `
+<section class="sheet">
+  ${topo('Resultado do Dia','o que foi planejado × o que aconteceu')}
+  <div class="faixa">Frente a frente<span>marque uma das três colunas em cada tarefa — e escreva o porquê quando não fechar</span></div>
+  <table>
+    <thead><tr><th class="cor" style="width:2mm;padding:0"></th>
+      <th style="width:34mm">Quem</th><th>Tarefa planejada</th>
+      <th class="c" style="width:16mm">Feito</th><th class="c" style="width:16mm">Parcial</th>
+      <th class="c" style="width:16mm">Não feito</th>
+      <th style="width:62mm">Por quê — se não fechou</th>
+      <th style="width:50mm">Fica para quando</th></tr></thead>
+    <tbody>${linhasResultado}</tbody>
+  </table>
+
+  <div class="placar">
+    <div class="kpi"><div class="r">Frentes que fecharam</div>
+      <div class="cx"><span class="ln"></span><span style="font-size:12px;color:var(--muted)">de 9</span></div>
+      <div class="o">frente fechada = todas as tarefas dela feitas</div></div>
+    <div class="kpi"><div class="r">Tarefas feitas</div>
+      <div class="cx"><span class="ln"></span><span style="font-size:12px;color:var(--muted)">de 22</span></div>
+      <div class="o">o número que vai para o painel da equipe</div></div>
+    <div class="kpi"><div class="r">As quatro amarras seguraram?</div>
+      <div class="cx" style="gap:4mm;font-size:9.5px">
+        <span><span class="bx ok"></span> sim</span><span><span class="bx no"></span> não</span></div>
+      <div class="o">se alguma falhou, é ela que explica o dia</div></div>
+    <div class="kpi"><div class="r">Frente parada esperando</div>
+      <div class="cx"><span class="ln"></span></div>
+      <div class="o">quanto tempo, e esperando o quê</div></div>
+  </div>
+
+  <div class="linhas">
+    <div class="h">O que travou — e o que muda na programação de amanhã</div>
+    <div class="ln"></div><div class="ln"></div>
+  </div>
+
+  <div class="pf"><span>Resultado do Dia · Valvic Marcenaria — preencher no fim do expediente e entregar à coordenação</span>
+    <span class="r">11/09 · SEXTA</span></div>
+</section>`;
+
+document.getElementById('app').innerHTML = folha1 + folha2;
+</script>
+</body>
+</html>
