@@ -542,14 +542,41 @@ print('PREÇO — duas versões, o mesmo desenho, COM RT de 10%')
 print('═'*W)
 print(f'  {"Versão":<18}{"Custo direto":>14}{"MC alvo":>9}{"Investimento":>15}'
       f'{"MC bruta":>10}{"líquida":>9}   Garantia')
-PRECOS = []
+# ⛔ [Jonathan 09/09] ITEM QUE NÃO MUDA ENTRE AS VERSÕES TEM UM PREÇO SÓ.
+#    "A cabeceira estofada deve custar o mesmo valor para o cliente em ambos
+#     os contextos, assim como em todos os demais contextos semelhantes."
+#    Item sem ferragem nenhuma não tem versão: é o MESMO móvel, com o MESMO
+#    custo. Ele é precificado UMA VEZ, na MC da versão base, e esse preço vai
+#    idêntico para as duas propostas. Só o que realmente muda de ferragem
+#    carrega a MC da sua versão.
+MC_BASE = CENARIOS[0][2]
+CDI = [cd_por_item(i) for i in range(len(CENARIOS))]
+SEM_FER = [k for k in ORD_IT if FER.get(k, [0, 0, 0]) == [0, 0, 0]]
+COM_FER = [k for k in ORD_IT if k not in SEM_FER]
+PV_FIXO = {k: round(CDI[0][k]/div(MC_BASE, True)/100)*100 for k in SEM_FER}
+CD_SF   = sum(CDI[0][k] for k in SEM_FER)
+PV_SF   = sum(PV_FIXO.values())
+
+PRECOS, PV = [], {}
 for i, (nome, ferr, mc, f, gar) in enumerate(CENARIOS):
-    cd = CD(i)
-    pv = round(cd/div(mc, True)/100)*100
+    cd_var = sum(CDI[i][k] for k in COM_FER)
+    pv_var = round(cd_var/div(mc, True)/100)*100
+    v = {k: round(pv_var*CDI[i][k]/cd_var/100)*100 for k in COM_FER}
+    _maior = max(COM_FER, key=lambda k: CDI[i][k])
+    v[_maior] += pv_var - sum(v.values())
+    v.update(PV_FIXO)
+    PV[i] = (CDI[i], v)
+    pv = PV_SF + pv_var
     PRECOS.append(pv)
-    mb = mc_conferida(pv, cd)
-    print(f'  {nome:<18}{"R$ "+brl(cd,0):>14}{mc*100:>8.0f}%{"R$ "+brl(pv,0):>15}'
+    mb = mc_conferida(pv, CD(i))
+    print(f'  {nome:<18}{"R$ "+brl(CD(i),0):>14}{mc*100:>8.0f}%{"R$ "+brl(pv,0):>15}'
           f'{mb*100:>9.1f}%{(mb-LIQF_*RT_PCT)*100:>8.1f}%   {gar}')
+for k in SEM_FER:                       # a guarda do Jonathan
+    assert PV[0][1][k] == PV[1][1][k], (k, PV[0][1][k], PV[1][1][k])
+print(f'\n  Itens SEM ferragem, preço ÚNICO na MC de {MC_BASE*100:.0f}%: '
+      f'R$ {brl(PV_SF,0)} nas duas versões')
+print(f'  Itens COM ferragem: MC da versão · '
+      f'R$ {brl(PRECOS[0]-PV_SF,0)} (32%) · R$ {brl(PRECOS[1]-PV_SF,0)} (40%)')
 SEM_RT = [round(CD(i)/div(CENARIOS[i][2], False)/100)*100 for i in range(2)]
 print(f'  {"":<18}{"sem RT":>14}{"":>9}{"R$/m² sem RT":>15}{"R$/m² com RT":>19}')
 for i in range(2):
@@ -565,27 +592,24 @@ print(f'     o mesmo, repassado na MC de 32% ...... R$ {brl(_pv_ferr,0):>8}')
 print(f'     margem adicional (32% → 40%) ......... R$ {brl(PRECOS[1]-PRECOS[0]-_pv_ferr,0):>8}')
 print(f'  Ou seja: R$ {brl(_d_ferr,0)} de ferragem a mais e '
       f'R$ {brl(PRECOS[1]-PRECOS[0]-_pv_ferr,0)} de margem a mais.')
-print(f'  As duas MCs foram cravadas por você — o número está certo, mas a')
-print(f'  conversa com o cliente é essa: o salto de preço é decisão de margem,')
-print(f'  não custo de ferragem. A dobradiça Hettich SENSYS (R$ 35) sozinha vale')
+print(f'  A MC LÍQUIDA da versão Hettich fica em '
+      f'{(mc_conferida(PRECOS[1], CD(1))-LIQF_*RT_PCT)*100:.1f}%, e não nos 40%')
+print(f'  cravados: os itens sem ferragem carregam 32% nas duas versões, então')
+print(f'  os 40% valem só sobre os {PRECOS[1]-PV_SF:,.0f} de itens com ferragem.'
+      .replace(',', '.'))
+print(f'  É o preço da coerência linha a linha — e é o que o cliente consegue')
+print(f'  comparar sem fazer pergunta que a gente não sabe responder.')
+print(f'  A dobradiça Hettich SENSYS (R$ 35) sozinha vale')
 print(f'  R$ {brl(53*(35-8),0)} dos R$ {brl(_d_ferr,0)}. Com a NOVISYS (R$ 10) a ferragem')
 print(f'  ficaria em R$ {brl(53*10 + 11*120 + 10*30,0)}, quase igual à telescópica.')
 
 print('\n' + '─'*W)
 print('CUSTO E VENDA, ITEM A ITEM')
 print('─'*W)
-PV = {}
-_c0, _c1 = cd_por_item(0), cd_por_item(1)
+_c0, _c1 = CDI[0], CDI[1]
 for k in ORD_IT:
     if FER.get(k, [0, 0, 0]) == [0, 0, 0]:
         assert abs(_c0[k] - _c1[k]) < 0.01, (k, _c0[k], _c1[k])
-for i in range(len(CENARIOS)):
-    cdi = cd_por_item(i)
-    base = CD(i)
-    v = {k: round(PRECOS[i]*cdi[k]/base/100)*100 for k in ORD_IT}
-    maior = max(ORD_IT, key=lambda k: cdi[k])
-    v[maior] += PRECOS[i] - sum(v.values())
-    PV[i] = (cdi, v)
 print(f'  {"":52}{"custo dir.":>11}{"TELESCÓP.":>12}{"custo dir.":>12}{"HETTICH":>11}')
 for a in ORD_AMB:
     print(f'  {a}')
@@ -601,31 +625,19 @@ for a in ORD_AMB:
 print(f'  {"TOTAL":<52}{"R$ "+brl(CD(0),0):>11}{"R$ "+brl(PRECOS[0],0):>12}'
       f'{"R$ "+brl(CD(1),0):>12}{"R$ "+brl(PRECOS[1],0):>11}')
 
-SEM_FER = [k for k in ORD_IT if FER.get(k, [0, 0, 0]) == [0, 0, 0]]
-CD_SF = sum(_c0[k] for k in SEM_FER)
 print('\n' + '─'*W)
-print('⚠ E OS ITENS QUE NÃO TÊM FERRAGEM NENHUMA?')
+print('OS ITENS QUE NÃO MUDAM ENTRE AS VERSÕES')
 print('─'*W)
-print('  Três itens não levam uma dobradiça, corrediça ou pistão sequer:')
+print('  Não levam uma dobradiça, corrediça ou pistão sequer — são o MESMO')
+print('  móvel nas duas propostas, com o mesmo custo e o MESMO PREÇO:')
+print(f'     {"":<66}{"custo":>10}{"venda":>11}')
 for k in SEM_FER:
-    print(f'     {k[0]+" · "+k[1]:<62}custo R$ {brl(_c0[k],0):>7}')
-print(f'     {"— custo direto somado":<62}      R$ {brl(CD_SF,0):>7}')
-print('  O CUSTO deles é idêntico nas duas versões. Mas o PREÇO muda, porque a')
-print('  MC do pacote muda de 32% para 40% — a mesma cabeceira sai por')
-print(f'  R$ {brl(PV[0][1][SEM_FER[0]],0)} numa versão e R$ {brl(PV[1][1][SEM_FER[0]],0)} na outra.')
-print('  É coerente com as MCs que você cravou, mas o cliente que comparar as')
-print('  duas propostas linha a linha vai perguntar por quê — e não há resposta')
-print('  de ferragem para dar.')
-_pv_sf = round(CD_SF/div(CENARIOS[0][2], True)/100)*100
-_pv_cf = round((CD(1)-CD_SF)/div(CENARIOS[1][2], True)/100)*100
-print(f'\n  ALTERNATIVA: cobrar 32% nesses três itens NAS DUAS versões, e deixar')
-print(f'  os 40% só para o que realmente muda de ferragem.')
-print(f'     itens sem ferragem, a 32% nas duas .......... R$ {brl(_pv_sf,0):>8}')
-print(f'     itens com ferragem, a 40% (Hettich) ......... R$ {brl(_pv_cf,0):>8}')
-print(f'     → Hettich passaria de R$ {brl(PRECOS[1],0)} para '
-      f'R$ {brl(_pv_sf+_pv_cf,0)}   (−R$ {brl(PRECOS[1]-_pv_sf-_pv_cf,0)})')
-print('  Aí as duas propostas batem linha a linha em tudo que não muda.')
-print('  ⚠ DECISÃO SUA — não mexi no preço.')
+    print(f'     {(k[0]+" · "+k[1])[:64]:<66}{"R$ "+brl(CDI[0][k],0):>10}'
+          f'{"R$ "+brl(PV_FIXO[k],0):>11}')
+print(f'     {"— somados":.<66}{"R$ "+brl(CD_SF,0):>10}{"R$ "+brl(PV_SF,0):>11}')
+print(f'  Precificados uma vez só, na MC de {MC_BASE*100:.0f}% com RT.')
+print(f'  {PV_SF/PRECOS[0]*100:.0f}% da proposta telescópica e '
+      f'{PV_SF/PRECOS[1]*100:.0f}% da Hettich saem por este preço fixo.')
 
 print('\n' + '─'*W)
 print('⚠ O QUE AS QUATRO CORES CUSTAM')

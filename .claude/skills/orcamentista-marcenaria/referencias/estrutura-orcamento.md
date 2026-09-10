@@ -163,11 +163,51 @@ for k in ITENS:
 > **Item sem ferragem tem de ter CUSTO idêntico em todos os cenários.** Se
 > mudou, o rateio está vazando.
 
-O **preço** desse item ainda pode mudar entre versões, e aí é legítimo: se a MC
-do pacote sobe de 32% para 40%, o mesmo custo vende por mais. Mas isso é
-decisão comercial visível, não sobra de rateio — e vale avisar o Jonathan,
-porque o cliente que comparar as duas propostas linha a linha vai perguntar por
-que a mesma cabeceira mudou de preço, e não há resposta de ferragem para dar.
+### ⛔⛔ E O PREÇO TAMBÉM. Item que não muda tem UM preço só.
+
+**Cravado pelo Jonathan em 09/09/2026**, no mesmo job, depois de eu corrigir só
+o custo e deixar o preço variando:
+
+> *"A cabeceira estofada deve custar o mesmo valor para o cliente em ambos os
+> contextos, assim como em todos os demais contextos semelhantes."*
+
+Corrigir o custo não bastava. Num orçamento em **duas ou mais versões**, o item
+que não muda de uma para a outra é **o mesmo móvel** — mesmo desenho, mesma
+chapa, mesmo custo. Se ele aparece por R$ 7.900 numa proposta e R$ 10.000 na
+outra, a proposta se contradiz na cara do cliente, e não há resposta técnica
+para dar quando ele perguntar.
+
+**A regra:**
+
+> **Item que não muda entre as versões é precificado UMA VEZ, na MC da versão
+> BASE, e esse preço vai idêntico para todas as propostas. Só o que realmente
+> muda carrega a MC da sua versão.**
+
+Versão base = a mais barata, a que o cliente vê primeiro. Não dá para mostrar
+R$ 7.900 numa e R$ 10.000 na outra pelo mesmo móvel; o preço que vale é o menor.
+
+```python
+MC_BASE = CENARIOS[0][2]
+SEM_FER = [k for k in ITENS if FER.get(k, [0,0,0]) == [0,0,0]]
+COM_FER = [k for k in ITENS if k not in SEM_FER]
+PV_FIXO = {k: round(CDI[0][k]/div(MC_BASE, True)/100)*100 for k in SEM_FER}
+for i, cen in enumerate(CENARIOS):                 # só os que mudam
+    pv_var = round(sum(CDI[i][k] for k in COM_FER)/div(cen[2], True)/100)*100
+    ...
+for k in SEM_FER:                                  # a guarda
+    assert PV[0][k] == PV[1][k]
+```
+
+**A consequência, e ela é real:** a MC efetiva da versão cara fica **abaixo do
+alvo**. Na Luiza e Raphael a Hettich saiu em **38,2% líquidos e não nos 40%
+cravados**, porque os R$ 15.800 de itens sem ferragem carregam 32% nas duas — e
+o total caiu de R$ 75.800 para **R$ 71.700**. É o preço da coerência linha a
+linha, e vale dizer isso ao Jonathan junto com o número.
+
+> **O critério não é "sem ferragem", é "NÃO MUDA".** Ferragem é o que separa as
+> versões neste caso; noutro pode ser a chapa, o vidro ou um terceirizado. A
+> pergunta a fazer em cada item é: *este móvel é diferente na outra versão?* Se
+> não for, o preço é um só.
 
 Implementado como bloco `cd_amb` em `corte-flaviana.py` e `corte-giza.py`,
 com `assert abs(sum(cd_amb.values()) - CD) < 0.01` — se algum custo novo

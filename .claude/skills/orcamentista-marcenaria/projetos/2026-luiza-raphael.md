@@ -224,3 +224,76 @@ preço.
 | | Rack · 2,00 × 0,47 | 1.779 | **4.500** | 1.939 | **6.200** |
 | | *subtotal* | *3.963* | ***10.100*** | *4.123* | ***13.200*** |
 | **TOTAL** | | **21.248** | **R$ 54.200** | **23.659** | **R$ 75.800** |
+
+---
+
+## ⛔⛔ Correção de 09/09 (2ª parte) — o PREÇO também tem de ser o mesmo
+
+> *"Você ainda não entendeu, veja só: `Cabeceira estofada · 3.111 · 8.000 ·
+> 3.111 · 10.000`. A cabeceira estofada deve custar o mesmo valor para o cliente
+> em ambos os contextos, assim como em todos os demais contextos semelhantes."*
+
+Eu tinha corrigido só o **custo** e apresentado a coerência do preço como
+"alternativa, decisão sua". **Não era alternativa — era o certo.** Um item que
+não muda entre as versões é o mesmo móvel; mostrá-lo por R$ 7.900 numa proposta
+e R$ 10.000 na outra é a proposta se contradizendo na cara do cliente.
+
+**Implementado:** item sem ferragem é precificado **uma vez, na MC da versão
+base (32%)**, e esse preço vai idêntico para as duas propostas. Só o que muda
+de ferragem carrega a MC da sua versão. Com `assert PV[0][k] == PV[1][k]` para
+todo item sem ferragem.
+
+| Item que não muda | custo | **preço, nas duas** |
+|---|--:|--:|
+| Cabeceira estofada · 3,10 × 1,10 | 3.111 | **R$ 7.900** |
+| Divisórias em acrílico da penteadeira | 904 | **R$ 2.300** |
+| Painel de TV da sala · 3,975 × 1,00 | 2.184 | **R$ 5.600** |
+| **somados** | **6.199** | **R$ 15.800** |
+
+São **29% da proposta telescópica e 22% da Hettich** saindo por preço fixo.
+
+Registrado em `referencias/estrutura-orcamento.md`, com o critério generalizado:
+**não é "sem ferragem", é "NÃO MUDA"** — noutro job pode ser a chapa, o vidro ou
+um terceirizado que separa as versões.
+
+### O que isso fez com o número
+
+| Versão | Custo direto | MC alvo | **Investimento** | MC líquida |
+|---|--:|--:|--:|--:|
+| **1 · Telescópica** | 21.248 | 32% | **R$ 54.200** | 32,0% |
+| **2 · Hettich** | 23.659 | 40% | **R$ 71.700** ↓ | **38,2%** |
+
+A Hettich **caiu R$ 4.100** e a MC líquida dela fica em **38,2%, não nos 40%
+cravados** — os R$ 15.800 de itens sem ferragem carregam 32% nas duas versões,
+então os 40% valem só sobre os R$ 55.900 de itens com ferragem. É o preço da
+coerência linha a linha.
+
+E a diferença entre as duas propostas caiu de R$ 21.600 para **R$ 17.500**:
+R$ 2.411 de ferragem e R$ 11.400 de margem.
+
+### Tabela final
+
+| Ambiente | Item | custo | **Telescóp.** | custo | **Hettich** |
+|---|---|--:|--:|--:|--:|
+| **Quarto casal** | Cabeceira estofada · 3,10 × 1,10 | 3.111 | **7.900** | 3.111 | **7.900** |
+| | Penteadeira em Carvalho · 1,30 × 0,40 | 1.979 | **5.000** | 2.139 | **6.800** |
+| | **Divisórias em acrílico** | 904 | **2.300** | 904 | **2.300** |
+| | *subtotal* | *5.993* | ***15.200*** | *6.153* | ***17.000*** |
+| **Espaço gourmet** | Portas da lavanderia · 1,33 × 2,615 | 1.319 | **3.400** | 1.724 | **5.500** |
+| | Armário superior da lavanderia | 1.133 | **2.900** | 1.376 | **4.400** |
+| | Armário inferior da lavanderia · 0,68 | 659 | **1.700** | 813 | **2.600** |
+| | Vassoureiro · 0,37 × 2,495 | 1.718 | **4.400** | 1.853 | **5.900** |
+| | Armário superior do gourmet · 2,30 | 1.339 | **3.400** | 1.663 | **5.300** |
+| | Básculas em Jequitibá · 1,50 | 2.281 | **5.800** | 2.429 | **7.800** |
+| | Armário inferior do gourmet · 4,295 | 2.842 | **7.300** | 3.524 | **11.400** |
+| | *subtotal* | *11.292* | ***28.900*** | *13.383* | ***42.900*** |
+| **Sala cobertura** | Painel de TV · 3,975 × 1,00 | 2.184 | **5.600** | 2.184 | **5.600** |
+| | Rack · 2,00 × 0,47 | 1.779 | **4.500** | 1.939 | **6.200** |
+| | *subtotal* | *3.963* | ***10.100*** | *4.123* | ***11.800*** |
+| **TOTAL** | | **21.248** | **R$ 54.200** | **23.659** | **R$ 71.700** |
+
+### Os outros jobs em versões
+
+Conferi a **Juliana & Kairon**, que tem três linhas: o único item sem ferragem é
+a **mesa de refeições**, e ela já estava a R$ 2.350 nas duas colunas. A regra já
+valia lá — sem correção a fazer.
