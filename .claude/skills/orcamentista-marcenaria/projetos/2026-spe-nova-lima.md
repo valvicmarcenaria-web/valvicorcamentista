@@ -85,3 +85,42 @@ folhas são **espelhadas em esquadria de alumínio**, que é o caso pesado.
 4. O motor `corte-spe-decorado.py` **não foi rodado de novo** com a ferragem
    nova: o preço agora é cravado, então o motor só serve de referência de custo.
    Se o escopo mudar, rodar antes.
+
+### 2º ajuste de 10/09 — interno em Branco TX e LED do cliente
+
+> *"Informe que o interno dos armários será em MDF Branco TX. Que os LEDs serão
+> fornecidos pelo cliente."*
+
+**Interno.** A nota de acabamentos dizia "caixaria interna em branco", vago.
+Agora diz com todas as letras: **"O interno de todos os armários é MDF Branco
+TX — caixaria, prateleiras, fundos e caixas de gaveta."**
+
+**LED.** Saiu do escopo Valvic. Três lugares mudaram:
+
+| Onde | Antes | Agora |
+|---|---|---|
+| Acabamentos | "espelhos, laca, estofados e **iluminação em LED** coordenados pela Valvic e entregues instalados" | o LED sai da lista |
+| Puxadores e iluminação | "iluminação em fita de LED com perfil de alumínio, embutida na própria peça" | "**a iluminação em LED é fornecida pelo cliente** — fita, perfil e drivers. A Valvic entrega os nichos, a sanca e o cortineiro com o **rasgo e o embutimento usinados, prontos para receber a fita**" |
+| Não inclusos | — | abre com **"Iluminação em LED — fita, perfil e drivers, fornecidos pelo cliente"** |
+
+⛔ **E onde o descritivo prometia luz, passou a prometer o preparo.** "Sanca
+iluminada" virou "sanca preparada para iluminação"; "módulo de nichos
+iluminados" e "torre de nichos iluminados" viraram "preparado para iluminação".
+Móvel que promete luz sem entregar a fita é a falha de 02/09 outra vez, agora
+pelo lado do que sai do escopo. Auditei o PDF: **nenhum "iluminado" sobrou.**
+
+### O que o LED faz com a margem
+
+| | custo direto | MC em R$ 168.000 |
+|---|--:|--:|
+| escopo original | 87.403 | 28,0% |
+| − rebaixamento de ferragem (R$ 4.210) | 83.193 | 30,5% |
+| **− LED do decorado (16,7 m × R$ 130 = R$ 2.171)** | **81.022** | **31,8%** |
+
+A MC sobe **1,3 ponto** e o número do cliente não muda. Segue abaixo do piso de
+35% — para chegar lá o preço seria R$ 180.000, e para manter os 37,2%
+combinados de antes, R$ 189.200.
+
+⚠ A **sanca do pilar do stand** também perde o LED, mas o stand está com preço
+travado desde 17/07 e o custo dele não está aberto neste motor — a economia real
+é um pouco maior que os R$ 2.171.

@@ -9,6 +9,20 @@
   · "não fale sobre quantitativo de material nem metragem de nada"
   · "não precisa desmembrar os ambientes, apenas cite todos"
 
+[Jonathan 10/09, 2º ajuste]
+  · o INTERNO dos armários é MDF Branco TX — dito com todas as letras
+  · os LEDs são FORNECIDOS PELO CLIENTE — saem do escopo Valvic
+
+⚠ O LED sai do custo: 16,7 m no decorado a R$ 130/m (fita + perfil com
+  difusor) = R$ 2.171. O custo direto cai de R$ 83.193 para R$ 81.022 e a MC
+  em R$ 168.000 sobe de 30,5% para 31,8%. A sanca do pilar do stand também
+  perde o LED, mas o stand está com preço travado desde 17/07 e não tenho a
+  linha dele separada.
+
+⛔ Onde o descritivo dizia "iluminado" / "iluminada", passa a dizer
+  "preparado para iluminação". Móvel que promete luz e não entrega a fita é a
+  mesma falha de 02/09 na direção da imagem.
+
 → Some a tabela de dez frentes com valor por linha. Fica UM número.
 → Saem TODAS as cotas, m² e contagens do descritivo. O escopo continua
   completo — o que sai é a régua, não o móvel.
@@ -39,7 +53,7 @@ AMBIENTES = [
    'Gourmet e lounge — painéis das paredes, armário gourmet, móvel do lounge, '
    'porta ripada e forro',
    'Corretores e pilar central — painel de backdrop com nicho recuado e painel '
-   'do pilar com moldura de hidrante e sanca iluminada',
+   'do pilar com moldura de hidrante e sanca preparada para iluminação',
    'Pérgola em perfil metálico revestido em MDF madeirado',
    'Portas — copa, armário gourmet e acesso ao QG',
  ]),
@@ -48,10 +62,10 @@ AMBIENTES = [
    'alto com nichos',
    'Sala — painelaria com nichos de espelho, espelho emoldurado e porta '
    'embutida',
-   'Quarto — roupeiro espelhado, módulo de nichos em laca brilhante, cabeceira '
-   'estofada, painel de TV, bancada e criado suspenso',
-   'Suíte — torre de nichos iluminados, roupeiro espelhado, painel ripado, '
-   'cabeceira estofada e cortineiro',
+   'Quarto — roupeiro espelhado, módulo de nichos em laca brilhante preparado '
+   'para iluminação, cabeceira estofada, painel de TV, bancada e criado suspenso',
+   'Suíte — torre de nichos preparada para iluminação, roupeiro espelhado, '
+   'painel ripado, cabeceira estofada e cortineiro',
    'Copa — armário com portas de giro, gaveteiro central e prateleiras',
    'Ilha gourmet — corpo com os quatro lados em acabamento, nicho ventilado '
    'para a adega e armário',
@@ -99,7 +113,8 @@ HTML = f"""<!DOCTYPE html>
   <hr class="rule">
   <p class="lead">Leitura fiel do seu executivo — parede a parede, das pranchas
   MOB 01 e MOB 02 do stand e MO 03, DET 02, DET 05, DET 06 e DET 07 do decorado.
-  Fornecimento, terceiros coordenados e instalação por equipe própria Valvic.</p>
+  Fornecimento, terceiros coordenados e instalação por equipe própria Valvic.
+  Medidas conferidas no local antes do corte.</p>
 
   <div class="block">
     <div class="nm">Stand de vendas</div>
@@ -118,10 +133,20 @@ HTML = f"""<!DOCTYPE html>
     <b>Stand:</b> MDF Arauco Realce Cravo Trend nos painéis aparentes e Moscada
     Matt nas caixas e móveis; pérgola em perfil metálico revestido em MDF
     madeirado. <b>Decorado:</b> Anis Matt e Frapé Matt na cozinha, sala, suíte,
-    copa e ilha; Ciliegio Poro e laca brilhante Sayerlack M072 no quarto;
-    caixaria interna em branco. Rodapé em perfil de inox escovado, item de
-    serralheria fornecido por parceiro e coordenado pela Valvic. Espelhos, laca,
-    estofados e iluminação em LED coordenados pela Valvic e entregues instalados.
+    copa e ilha; Ciliegio Poro e laca brilhante Sayerlack M072 no quarto.
+    <b>O interno de todos os armários é MDF Branco TX</b> — caixaria,
+    prateleiras, fundos e caixas de gaveta. Rodapé em perfil de inox escovado,
+    item de serralheria fornecido por parceiro e coordenado pela Valvic.
+    Espelhos, laca e estofados coordenados pela Valvic e entregues instalados.
+  </div>
+
+  <div class="note" style="margin-top:4mm;">
+    <div class="h">Não inclusos</div>
+    <b>Iluminação em LED — fita, perfil e drivers, fornecidos pelo cliente.</b>
+    Forro e caixas em gypsum, porta veneziana e vidro temperado do pilar
+    (terceiros), pintura, cortinas, tapetes, eletrodomésticos, bancadas e
+    rodabancas de pedra, cubas e metais, pontos elétricos e hidráulicos e obra
+    civil.
   </div>
 
   <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>SPE Nova Lima 1 · Projeto Lodi Motta</span></div>
@@ -172,12 +197,13 @@ HTML = f"""<!DOCTYPE html>
   <div class="note" style="margin-top:4mm;">
     <div class="h">Puxadores e iluminação</div>
     Puxador em <b>cava usinada</b> no próprio material, com fita de bordo,
-    conforme o detalhe das pranchas. Iluminação em <b>fita de LED com perfil de
-    alumínio</b>, embutida na própria peça, nos nichos, na sanca do pilar e no
-    cortineiro da suíte.
+    conforme o detalhe das pranchas. <b>A iluminação em LED é fornecida pelo
+    cliente</b> — fita, perfil e drivers. A Valvic entrega os nichos, a sanca do
+    pilar e o cortineiro da suíte com o <b>rasgo e o embutimento usinados,
+    prontos para receber a fita</b>.
   </div>
 
-  <div class="hero" style="margin-top:3mm;">
+  <div class="hero" style="margin-top:1mm;">
     <div class="t">Investimento total</div>
     <div class="big serif">R$ {br(TOT)}</div>
     <div class="cap">Stand de vendas e apartamento decorado, escopo completo —
@@ -185,7 +211,7 @@ HTML = f"""<!DOCTYPE html>
     equipe própria Valvic. Uma execução, do desenho ao encaixe.</div>
   </div>
 
-  <div class="split" style="margin-top:4mm;">
+  <div class="split" style="margin-top:3mm;">
     <div>
       <h3 class="blk">Condições de pagamento</h3>
       <div class="hrule"></div>
@@ -205,13 +231,6 @@ HTML = f"""<!DOCTYPE html>
     </div>
   </div>
 
-  <div class="note" style="margin-top:4mm;">
-    <div class="h">Não inclusos</div>
-    Forro e caixas em gypsum, porta veneziana e vidro temperado do pilar
-    (terceiros), pintura, cortinas, tapetes, eletrodomésticos, bancadas e
-    rodabancas de pedra, cubas e metais, pontos elétricos e hidráulicos e obra
-    civil. Medidas conferidas no local antes do corte.
-  </div>
 
   <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>SPE Nova Lima 1 · Projeto Lodi Motta · 10/09/2026</span></div>
 </div>
