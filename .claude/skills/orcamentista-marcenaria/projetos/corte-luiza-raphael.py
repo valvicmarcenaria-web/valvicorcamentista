@@ -96,7 +96,12 @@ BASC_VIDRO    = 280.0   # porta basculante reflecta bronze + perfil bronze +
                         # puxador sotille + furos — referência CONFIRMADA
                         # (Kenia & Fábio 12/06/2026, 4 un = R$ 1.120)
 ESTOFADO_M2   = 650.0   # ★ proxy da linha Laca/Pintura R$ 650/m²
-ACRILICO      = 800.0   # [Jonathan 09/09] CRAVADO: os 2 divisores da gaveta
+# ⛔ [Jonathan 09/09] "o custo do acrílico informado já seria o custo de venda
+#    ao cliente. Considere R$ 1.200." Então R$ 1.200 é PREÇO DE VENDA fechado,
+#    não custo. O custo de COMPRA dos dois divisores não foi informado.
+ACRILICO_PV   = 1200.0  # preço de venda CRAVADO, igual nas duas versões
+ACRILICO      = 450.0   # ★ custo de compra ADOTADO — dois organizadores de
+                        #   acrílico sob medida. SEM referência na base.
 DOBR_CAMARAO  = 180.0   # ★ conjunto de dobradiça camarão (porta que dobra)
 VASSOUREIRO   = 350.0   # ★ vassoureiro deslizante, acessório pronto
 GANCHOS       = 60.0    # ★ jogo de ganchos de vassoura/rodo
@@ -178,6 +183,11 @@ add('CV', 18, A, 'penteadeira · frente de gaveta 550×100', 55, 10, 2)
 gaveta(A, 'penteadeira', 55.0, 40.0, 7.0, 2)
 fer(A, corr=2)
 terc(A, 'Espelho prata colado 1,30 × 1,00 m (R40) — 1 folha', ESPELHO_COL)
+# [Jonathan 09/09] "a penteadeira você considerou o espelho com iluminação?"
+# Não tinha — o caderno não escreve LED no quarto, mas o render da folha 3
+# mostra o espelho com LED de contorno acendendo por trás. ENTROU.
+led(A, 'LED de contorno do espelho (60 + arco R40 + 90 + 100)', 3.15)
+terc(A, 'Driver da iluminação do espelho', DRIVER_UN)
 terc(A, 'Tampo em vidro incolor temperado 8 mm (0,52 m²)', 1.30*0.40*VIDRO_TEMP_M2)
 chanf(A, 2*0.55)
 curva(A, math.pi*0.40/2 + math.pi*0.20/2)  # R40 do espelho + R20 da quina
@@ -193,11 +203,31 @@ duv(A, 'a gaveta da penteadeira tem 10 cm de FRENTE (80 − 70 da elevação B),
        'ou seja ~7 cm úteis. É gaveta rasa de organização — coerente com os '
        'divisores de acrílico. CONFERIR se é isso mesmo.')
 
+# [Jonathan 09/09] "no projeto técnico não mostra o gaveteiro auxiliar, no
+# render sim. Pode considerar com o gaveteiro." Torre de 3 gavetas sob a
+# ponta direita da bancada, do piso ao tampo. ★ 45 × 72 × 40 lido do render.
+item('Gaveteiro auxiliar da penteadeira · 3 gavetas')
+add('CV', 15, A, 'gaveteiro aux. · lateral', 72, 40, 2)
+add('CV', 15, A, 'gaveteiro aux. · base', 45, 40, 1)
+add('BR', 6,  A, 'gaveteiro aux. · fundo', 45, 72, 1)
+add('CV', 18, A, 'gaveteiro aux. · frente de gaveta 450 × 240', 45, 24, 3)
+gaveta(A, 'gaveteiro aux.', 45.0, 40.0, 20.0, 3)
+fer(A, corr=3)
+chanf(A, 3*0.45)
+fita(A, 'gaveteiro aux. · frentes e bordas', 3*2*(0.45+0.24) + 2*(0.45+0.72))
+fita(A, 'gaveteiro aux. · caixas de gaveta', 3*2*(0.45+0.40), cor=False)
+duv(A, '[Jonathan 09/09] o GAVETEIRO AUXILIAR não está no projeto técnico, só '
+       'no render da folha 3. ★ Adotei 45 × 72 × 40 com 3 gavetas, lido da '
+       'imagem. CONFERIR largura e número de gavetas com a Jéssica.')
+
 item('Divisórias internas em acrílico da penteadeira')
-terc(A, '[Jonathan] Dois divisores de acrílico sob medida — CRAVADO', ACRILICO, est=True)
+terc(A, 'Dois divisores de acrílico sob medida (★ custo de compra)', ACRILICO, est=True)
 duv(A, 'a folha 1 detalha os divisores: dois blocos de 13+13+13+12 na largura '
-       'e 14/11/11 na profundidade, um por gaveta. [Jonathan 09/09] o custo '
-       'de R$ 800 é CRAVADO e o item vai SEPARADO na tabela.')
+       'e 14/11/11 na profundidade, um por gaveta. [Jonathan 09/09] o PREÇO DE '
+       'VENDA é CRAVADO em R$ 1.200, igual nas duas versões. ★ O CUSTO DE '
+       'COMPRA não foi informado — adotei R$ 450 pelos dois. É o único número '
+       'deste orçamento que eu inventei inteiro: CONFERIR com o acrilista, '
+       'porque ele é quem define a MC desta linha.')
 
 # ───────────────────────────────────────────────────────────────────────────
 # 2 · ESPAÇO GOURMET — folhas 1 a 5. Corrida única: 133+37+429,5 = 599,5
