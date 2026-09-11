@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Alinhamento de Pagamento — César · Valvic Marcenaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  @page{ size:A4 portrait; margin:0 }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0 }
+  :root{ --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f;
+         --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd;
+         --green:#2f7d4f; --amber:#c47d0e; --red:#b0413f; --blue:#2f5d8c }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact }
+  body{ font-family:'Inter',Arial,sans-serif; color:var(--ink); background:#d9dde3; font-size:10.5px; line-height:1.45 }
+  .sheet{ width:210mm; height:297mm; background:var(--cream); margin:16px auto; overflow:hidden;
+    box-shadow:0 10px 40px rgba(11,22,40,.22); display:flex; flex-direction:column;
+    padding:11mm 13mm 8mm; page-break-after:always }
+  .sheet:last-child{ page-break-after:auto }
+  @media print{ body{ background:#fff } .sheet{ margin:0; box-shadow:none } .btn{ display:none } }
+
+  .topo{ display:flex; justify-content:space-between; align-items:flex-end;
+    border-bottom:2.5px solid var(--navy); padding-bottom:5px; margin-bottom:4.5mm }
+  .marca{ font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:700; color:var(--navy); line-height:1 }
+  .marca small{ display:block; font-family:'Inter',sans-serif; font-size:7.5px; font-weight:600;
+    letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-top:3px }
+  .doc{ text-align:right }
+  .doc h1{ margin:0; font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:600; color:var(--navy) }
+  .doc .meta{ font-size:8.5px; color:var(--muted); letter-spacing:.4px; margin-top:1px }
+  .doc .tag{ font-size:8px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:var(--red) }
+
+  .sec{ display:flex; align-items:center; gap:8px; margin:4mm 0 2mm }
+  .sec:first-child{ margin-top:0 }
+  .sec .bar{ width:15px; height:2px; background:var(--gold); flex:0 0 auto }
+  .sec .tx{ font-size:9px; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:var(--navy) }
+  .sec .tx small{ color:var(--muted); font-weight:600; letter-spacing:.3px; text-transform:none }
+
+  .acordo{ display:grid; grid-template-columns:repeat(4,1fr); gap:2.5mm }
+  .bx{ border:1px solid var(--line); border-radius:5px; background:#fff; padding:3mm 3.5mm }
+  .bx .r{ font-size:8px; letter-spacing:1.4px; text-transform:uppercase; color:var(--muted); font-weight:700 }
+  .bx .v{ font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:700; color:var(--navy);
+    line-height:1.1; margin-top:1mm }
+  .bx .v small{ font-family:'Inter',sans-serif; font-size:10px; font-weight:600; color:var(--muted) }
+  .bx .o{ font-size:8.5px; color:var(--muted); line-height:1.35; margin-top:1mm }
+  .bx.ok{ border-color:var(--green) } .bx.ok .v{ color:var(--green) }
+  .bx.abrir{ border-color:var(--amber) } .bx.abrir .v{ color:var(--amber) }
+
+  table{ width:100%; border-collapse:collapse; table-layout:fixed }
+  th{ background:var(--navy2); color:#fff; font-size:7.6px; font-weight:700; letter-spacing:.5px;
+    text-transform:uppercase; padding:1.5mm 2.2mm; text-align:left; border:1px solid var(--navy) }
+  th.n{ text-align:right }
+  td{ border:1px solid var(--line); padding:1.1mm 2.2mm; font-size:9.8px; vertical-align:middle }
+  td.n{ text-align:right; font-family:'JetBrains Mono',monospace; font-variant-numeric:tabular-nums }
+  td.d{ font-family:'JetBrains Mono',monospace; font-size:9.5px; color:var(--navy2) }
+  tr:nth-child(even) td{ background:#f7f5ef }
+  tr.tot td{ background:var(--navy)!important; color:#fff; font-weight:700; border-color:var(--navy) }
+  tr.tot td.n{ color:var(--gold-soft) }
+  tr.sub td{ background:#f0ece2!important; font-weight:600 }
+  .nat{ display:inline-block; font-size:7.5px; font-weight:700; letter-spacing:.5px; text-transform:uppercase;
+    border-radius:9px; padding:.6mm 2mm; color:#fff }
+  .nat.sal{ background:var(--navy2) } .nat.ant{ background:var(--amber) }
+  .nat.dia{ background:var(--blue) } .nat.com{ background:var(--green) }
+
+  .nota{ background:#fffaf0; border:1px solid #eed9a8; border-radius:5px; padding:2.2mm 3.2mm; margin-top:2mm }
+  .nota .h{ font-size:7.6px; letter-spacing:1.4px; text-transform:uppercase; color:var(--gold-dk);
+    font-weight:700; margin-bottom:1.5mm }
+  .nota p{ font-size:9.4px; line-height:1.45; color:#5a4a2c } .nota p b{ color:var(--navy) }
+  .nota.navy{ background:var(--navy); border:none } .nota.navy .h{ color:var(--gold) }
+  .nota.navy p{ color:rgba(255,255,255,.9) } .nota.navy p b{ color:#fff }
+  .nota + .nota{ margin-top:2mm }
+
+  .dec{ border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:5px;
+    padding:2.2mm 3mm; background:#fff }
+  .dec + .dec{ margin-top:1.8mm }
+  .dec .t{ font-size:11px; font-weight:700; color:var(--navy); margin-bottom:1mm }
+  .dec .s{ font-size:9.5px; line-height:1.45; color:var(--ink) }
+  .dec .s b{ color:var(--navy) }
+  .dec .esc{ display:flex; gap:5mm; margin-top:1.5mm; font-size:9.2px; flex-wrap:wrap }
+  .dec .esc span{ display:inline-flex; gap:1.5mm; align-items:center }
+  .cb{ display:inline-block; width:3.4mm; height:3.4mm; border:.4mm solid var(--navy2);
+    border-radius:.6mm; background:#fff }
+  .rec{ font-size:9.3px; color:var(--green); font-weight:600; margin-top:1.5mm }
+
+  .ass{ display:flex; gap:14mm; margin-top:auto; padding-top:5mm }
+  .ass div{ flex:1; border-top:1px solid var(--navy2); padding-top:1.5mm; font-size:8.5px; color:var(--muted) }
+  .pf{ border-top:1px solid var(--line2); padding-top:2mm; margin-top:3.5mm; display:flex;
+    justify-content:space-between; font-size:7.2px; color:var(--muted); letter-spacing:.5px; text-transform:uppercase }
+  .pf .r{ color:var(--navy); font-weight:700 }
+  .btn{ position:fixed; top:16px; right:16px; z-index:99; background:var(--navy); color:#fff;
+    border:1px solid var(--gold); padding:10px 18px; border-radius:6px; font-size:12px; cursor:pointer }
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⤓ Exportar PDF</button>
+
+<!-- ══════════ FOLHA 1 ══════════ -->
+<section class="sheet">
+  <div class="topo">
+    <div class="marca">valvic<small>Marcenaria</small></div>
+    <div class="doc"><div class="tag">Restrito · dado de remuneração</div>
+      <h1>Alinhamento de Pagamento — César</h1>
+      <div class="meta">Vargas Decor Ltda · posição de 11/09/2026 · ciclo agosto e setembro</div></div>
+  </div>
+
+  <div class="sec"><span class="bar"></span><span class="tx">O acordo <small>· prestação de serviços</small></span></div>
+  <div class="acordo">
+    <div class="bx"><div class="r">Fixo mensal</div><div class="v">3.900<small> /mês</small></div>
+      <div class="o">PJ · prestação de serviços</div></div>
+    <div class="bx ok"><div class="r">Agosto</div><div class="v">Fechado</div>
+      <div class="o">os R$ 3.900 foram integralmente quitados</div></div>
+    <div class="bx"><div class="r">Setembro · a pagar</div><div class="v">2.900</div>
+      <div class="o">3.900 menos a parcela antecipada em 07/08</div></div>
+    <div class="bx abrir"><div class="r">Comissões em aberto</div><div class="v">1.980</div>
+      <div class="o">Cristiane, Luciana e a lavanderia da Maria</div></div>
+  </div>
+
+  <div class="sec"><span class="bar"></span><span class="tx">Agosto — o que foi pago
+    <small>· e a que cada pagamento se refere</small></span></div>
+  <table>
+    <thead><tr><th style="width:16mm">Data</th><th>Pagamento</th>
+      <th style="width:28mm">Natureza</th><th class="n" style="width:22mm">Valor</th>
+      <th class="n" style="width:30mm">Imputado a</th></tr></thead>
+    <tbody>
+      <tr><td class="d">07/08</td><td>Adiantamento — <b>1ª de 2 parcelas</b></td>
+        <td><span class="nat sal">salário</span></td><td class="n">1.000</td><td class="n">agosto</td></tr>
+      <tr><td class="d">07/08</td><td>Adiantamento — <b>2ª parcela</b></td>
+        <td><span class="nat ant">antecipação</span></td><td class="n">1.000</td><td class="n">setembro</td></tr>
+      <tr><td class="d">15/08</td><td>Adiantamento</td>
+        <td><span class="nat sal">salário</span></td><td class="n">900</td><td class="n">agosto</td></tr>
+      <tr><td class="d">15/08</td><td>Diárias</td>
+        <td><span class="nat dia">diária</span></td><td class="n">600</td><td class="n">agosto</td></tr>
+      <tr><td class="d">22/08</td><td>Diária</td>
+        <td><span class="nat dia">diária</span></td><td class="n">250</td><td class="n">agosto</td></tr>
+      <tr><td class="d">28/08</td><td>Fração do salário</td>
+        <td><span class="nat sal">salário</span></td><td class="n">1.000</td><td class="n">agosto</td></tr>
+      <tr class="tot"><td colspan="3">Saiu do caixa em agosto</td><td class="n">4.750</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec"><span class="bar"></span><span class="tx">Agosto — o fechamento do salário</span></div>
+  <table>
+    <thead><tr><th>Conta</th><th class="n" style="width:30mm">Valor</th></tr></thead>
+    <tbody>
+      <tr><td>Devido no mês</td><td class="n">3.900</td></tr>
+      <tr><td>Pago dentro de agosto <span style="color:var(--muted)">— 1.000 + 900 + 1.000</span></td>
+        <td class="n">2.900</td></tr>
+      <tr><td>Saldo pago em <b>11/09</b></td><td class="n">1.000</td></tr>
+      <tr class="tot"><td>Salário de agosto — quitado</td><td class="n">3.900</td></tr>
+      <tr class="sub"><td>Diárias de agosto — fora do fixo</td><td class="n">850</td></tr>
+    </tbody>
+  </table>
+
+  <div class="nota navy"><div class="h">O que a conciliação mostra</div>
+    <p><b>Agosto fecha exatamente nos R$ 3.900</b> — a lógica do parcelamento está correta e não há
+    diferença a acertar. Vale notar uma coincidência que pode confundir a leitura do caixa: saíram
+    R$ 4.750 em agosto, e a competência do mês também foi R$ 4.750. Os números batem porque
+    <b>R$ 1.000 que era de setembro saiu em agosto</b> (a 2ª parcela do adiantamento) e
+    <b>R$ 1.000 que era de agosto saiu em setembro</b> (o saldo pago em 11/09). Uma compensa a outra —
+    não é o mesmo dinheiro.</p></div>
+
+  <div class="nota"><div class="h">Um ajuste de nomenclatura que vale fazer</div>
+    <p>O contrato é de <b>prestação de serviços</b>, mas os lançamentos usam vocabulário de folha —
+    "adiantamento salarial", "fração de salário", "diária". Em um contrato PJ, o correto é
+    <b>antecipação de nota</b> ou <b>parcela do serviço</b>. Trocar os termos nos lançamentos não muda
+    nenhum valor e reduz um risco que já está mapeado no escopo de função.</p></div>
+
+  <div class="pf"><span>Alinhamento de Pagamento · César · Valvic Marcenaria — Vargas Decor Ltda</span>
+    <span class="r">AGOSTO · 1/2</span></div>
+</section>
+
+<!-- ══════════ FOLHA 2 ══════════ -->
+<section class="sheet">
+  <div class="topo">
+    <div class="marca">valvic<small>Marcenaria</small></div>
+    <div class="doc"><div class="tag">Restrito · dado de remuneração</div>
+      <h1>Setembro, comissões e o que decidir</h1>
+      <div class="meta">César · continuação</div></div>
+  </div>
+
+  <div class="sec"><span class="bar"></span><span class="tx">Setembro — o calendário de pagamento</span></div>
+  <table>
+    <thead><tr><th style="width:16mm">Data</th><th>Pagamento</th>
+      <th style="width:28mm">Natureza</th><th class="n" style="width:22mm">Valor</th>
+      <th class="n" style="width:22mm">Situação</th></tr></thead>
+    <tbody>
+      <tr><td class="d">11/09</td><td>Saldo do <b>salário de agosto</b></td>
+        <td><span class="nat sal">salário</span></td><td class="n">1.000</td><td class="n">pago</td></tr>
+      <tr><td class="d">11/09</td><td>Comissão — <b>projeto Augusto</b></td>
+        <td><span class="nat com">comissão</span></td><td class="n">1.000</td><td class="n">pago</td></tr>
+      <tr><td class="d">15/09</td><td>Adiantamento de setembro</td>
+        <td><span class="nat sal">salário</span></td><td class="n">1.000</td><td class="n">a pagar</td></tr>
+      <tr><td class="d">15/09</td><td>Comissão — <b>Luciana Rajão</b></td>
+        <td><span class="nat com">comissão</span></td><td class="n">350</td><td class="n">a pagar</td></tr>
+      <tr><td class="d">15/09</td><td>Comissão — <b>lavanderia da Maria</b></td>
+        <td><span class="nat com">comissão</span></td><td class="n">130</td><td class="n">a pagar</td></tr>
+      <tr><td class="d">18/09</td><td>Comissão — <b>projeto Cristiane</b> <span style="color:var(--muted)">(reagendada)</span></td>
+        <td><span class="nat com">comissão</span></td><td class="n">1.500</td><td class="n">a pagar</td></tr>
+      <tr><td class="d">fecham.</td><td>Saldo do <b>salário de setembro</b></td>
+        <td><span class="nat sal">salário</span></td><td class="n">1.900</td><td class="n">a pagar</td></tr>
+      <tr class="tot"><td colspan="3">Desembolso previsto em setembro</td><td class="n">6.880</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="nota" style="background:#f4f1ea;border-color:var(--line)">
+    <div class="h" style="color:var(--navy)">Como se chega aos R$ 2.900 de setembro</div>
+    <p style="color:var(--ink);font-family:'JetBrains Mono',monospace;font-size:9.6px">
+      3.900 <span style="color:var(--muted)">fixo do mês</span>
+      &nbsp;−&nbsp; 1.000 <span style="color:var(--muted)">parcela antecipada em 07/08</span>
+      &nbsp;=&nbsp; <b>2.900 a pagar</b>
+      &nbsp;&nbsp;·&nbsp;&nbsp; desses, 1.000 em 15/09 e <b>1.900 no fechamento</b></p></div>
+
+  <div class="acordo" style="grid-template-columns:repeat(3,1fr);margin-top:3mm">
+    <div class="bx abrir"><div class="r">Comissões em aberto</div><div class="v">1.980</div>
+      <div class="o">Cristiane 1.500 · Luciana 350 · Maria 130 — todas com data no calendário acima</div></div>
+    <div class="bx"><div class="r">Comissões já pagas no ciclo</div><div class="v">1.000</div>
+      <div class="o">projeto Augusto, em 11/09</div></div>
+    <div class="bx"><div class="r">Ciclo agosto + setembro</div><div class="v">11.630</div>
+      <div class="o">fixo, diárias e comissões somados</div></div>
+  </div>
+
+  <div class="sec"><span class="bar"></span><span class="tx">A decisão que falta
+    <small>· a atuação na obra da Cristiane, em suporte ao Samuel</small></span></div>
+
+  <div class="nota"><div class="h">Por que ficou em aberto</div>
+    <p>Suporte a outro montador não tem entrega própria: a obra é do Samuel, e a comissão de
+    instalação também. Não havia regra pronta que se aplicasse — e por isso o valor não foi combinado
+    antes de começar. <b>O custo de deixar em aberto é sempre o mesmo:</b> quem executou espera um
+    número maior do que quem paga tinha em mente.</p></div>
+
+  <table style="margin-top:2.5mm">
+    <thead><tr><th style="width:44mm">Opção</th><th>Como funciona</th><th style="width:56mm">O problema</th>
+      <th class="n" style="width:16mm">Adotar</th></tr></thead>
+    <tbody>
+      <tr><td><b>A · Diária</b></td>
+        <td>Como em agosto — R$ 600 e R$ 250 já pagos assim</td>
+        <td>Remunera presença, não conclusão — e numa frente de apoio é a conclusão que interessa</td>
+        <td class="n"><span class="cb"></span></td></tr>
+      <tr><td><b>B · Percentual da comissão</b></td>
+        <td>Uma fatia da comissão de instalação daquele ambiente</td>
+        <td>Saindo da do Samuel, cria atrito entre os dois; por fora, o ambiente custa duas comissões</td>
+        <td class="n"><span class="cb"></span></td></tr>
+      <tr style="background:#f4f8f4"><td><b>C · Valor fechado pela frente</b>
+        <span style="color:var(--green);font-weight:700"> — recomendada</span></td>
+        <td>Um valor único por frente de apoio, combinado <b>antes</b> de começar</td>
+        <td>Exige combinar antes — que é exatamente o hábito que falta</td>
+        <td class="n"><span class="cb"></span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="dec" style="border-left-color:var(--green);margin-top:2.5mm">
+    <div class="t">Se for a opção C, é isto que fecha o caso</div>
+    <div class="s">É a única das três que se resolve olhando para trás sem gerar discussão: define-se um
+    valor pela frente de apoio, paga-se <b>junto com a comissão da Cristiane em 18/09</b>, e encerra —
+    sem mexer na comissão do Samuel e sem abrir precedente de diária para apoio.</div>
+    <div class="esc"><span>Valor da frente: R$ ______________</span>
+      <span>Pagar em: ____ / ____</span>
+      <span><span class="cb"></span> combinado com o César</span></div></div>
+
+  <div class="nota navy"><div class="h">A regra que evita a próxima</div>
+    <p><b>Frente de apoio se combina antes de começar</b>, com valor e forma escritos — mesmo que seja
+    uma linha no WhatsApp. Foi o que faltou aqui, e é o que vai faltar de novo no próximo projeto em
+    que alguém entrar para ajudar. Vale virar combinado da casa, não acerto caso a caso.</p></div>
+
+  <div class="ass"><div>César · ciente e de acordo · data</div><div>Jonathan · direção · data</div></div>
+
+  <div class="pf"><span>Alinhamento de Pagamento · César · documento restrito — não circular</span>
+    <span class="r">SETEMBRO · 2/2</span></div>
+</section>
+</body>
+</html>
