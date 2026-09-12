@@ -415,3 +415,86 @@ inteira, não só para este job.
 3. **Os R$ 650 por gaveta** que você mencionou em 09/09 seguem sem definição —
    não apliquei nada.
 4. As 13 dúvidas de levantamento seguem de pé.
+
+---
+
+## Rodada de 12/09 (2ª parte) — gourmet como item único, penteadeira cravada, vendedor fora
+
+> *"Área gourmet está muito superfaturada, ela não passa de 30 mil o preço de
+> venda em ferragens Hettich. Precifique ela como um único item. O gaveteiro
+> auxiliar também, 5 mil reais está muito errado — uma chapa de 15 mm, 3
+> corrediças e os demais custos dá aproximadamente 1.300 de custo total. Pode
+> considerar a penteadeira toda, tirando apenas os acrílicos, com um custo de
+> venda final de 8.500 com o gaveteiro, bancada e espelho iluminado. Pode tirar
+> o custo do vendedor."*
+
+### Sobre o gaveteiro: **o custo estava certo, o preço estava errado**
+
+Você estimou ~R$ 1.300 de custo total. O motor tinha **R$ 1.145** (telescópica)
+e **R$ 1.390** (Hettich) — bate. O que estava errado eram os **R$ 5.000 de
+venda**, que saíam de aplicar 40% de MC num item pequeno. Agora ele entra
+dentro da penteadeira, e a penteadeira inteira vale **R$ 8.500**.
+
+### O que mudou na estrutura
+
+| | antes | agora |
+|---|---|---|
+| Comissão de vendedor | 10% do líquido | **fora** — base sobe de 67,68% para **76,52%** |
+| Espaço gourmet | 7 itens somando 49.700 na Hettich | **1 item, teto de R$ 30.000** |
+| Penteadeira | 3 itens (bancada 6.200 + gaveteiro 5.000 + acrílico) | **1 item a R$ 8.500** + acrílico à parte |
+| Itens na proposta | 13 | **5** |
+
+### Custo, venda e MC de cada item
+
+| Ambiente | Item | custo T | **venda T** | MC | custo H | **venda H** | MC |
+|---|---|--:|--:|--:|--:|--:|--:|
+| **Quarto casal** | Cabeceira estofada · 3,10 × 1,10 | 3.149 | **7.100** | 32,2% | 3.149 | **7.100** | 32,2% |
+| | **Penteadeira completa** (bancada, gaveteiro e espelho iluminado) | 2.699 | **8.500** | **44,8%** | 3.107 | **8.500** | 40,0% |
+| | **Divisórias em acrílico** | 518 | **1.200** | 33,3% | 518 | **1.200** | 33,3% |
+| | *subtotal* | *6.366* | ***16.800*** | *38,6%* | *6.774* | ***16.800*** | *36,2%* |
+| **Espaço gourmet** | **Conjunto completo** | 11.618 | **26.100** | 32,0% | 13.751 | **30.000** | **30,7%** |
+| **Sala cobertura** | Painel de TV · 3,975 × 1,00 | 2.224 | **5.000** | 32,0% | 2.224 | **5.000** | 32,0% |
+| | Rack · 2,00 × 0,47 | 1.826 | **4.100** | 32,0% | 1.989 | **5.400** | 39,7% |
+| | *subtotal* | *4.050* | ***9.100*** | *32,0%* | *4.213* | ***10.400*** | *36,0%* |
+| **TOTAL** | | **22.033** | **R$ 52.000** | **34,1%** | **24.737** | **R$ 57.200** | **33,3%** |
+
+**R$/m² de chapa: 789 e 867** — a telescópica cai dentro da faixa 626–834 e a
+Hettich encosta nela. Com os R$ 61.400/84.300 de antes eram 931 e 1.278.
+
+### ⛔⛔ O teto do gourmet inverteu as duas linhas
+
+**A Hettich ficou MENOS rentável que a Telescópica: 33,3% contra 34,1%.**
+
+O teto de R$ 30.000 entrega **30,7%** no gourmet Hettich, contra os 40% de alvo.
+E o gourmet é **56% do custo do job** — quando ele cede, a versão inteira cede
+com ele. A versão premium, que deveria ser a mais rentável, virou a pior.
+
+| Para o gourmet Hettich… | preço |
+|---|--:|
+| chegar aos 40% de alvo | R$ 37.700 |
+| a Hettich só empatar a MC da Telescópica | R$ 32.500 |
+| **teto que você cravou** | **R$ 30.000** |
+
+Os **R$ 2.500 entre 30.000 e 32.500** são o que separa a Hettich de ser a
+melhor ou a pior das duas.
+
+### A escada de pagamento, na base nova
+
+| Condição | base | MC Telescópica | MC Hettich |
+|---|--:|--:|--:|
+| Entrada 70% + transferência | 76,52% | **34,1%** | **33,3%** |
+| até 6× no cartão | 70,49% | 28,1% | 27,2% |
+| até 8× no cartão | 68,48% | 26,1% | 25,2% |
+| até 10× no cartão | 66,47% | **24,1%** | **23,2%** |
+
+Acréscimo necessário para bancar o cartão: **+15,7%** (6×), **+22,0%** (8×),
+**+29,1%** (10×). Sem o vendedor o acréscimo é menor que os +17,7/25/33,4 da
+rodada anterior, mas segue bem acima dos +10% que a casa pratica.
+
+### Em aberto
+
+1. **O teto de R$ 30.000 no gourmet** inverte as duas linhas. Decisão sua.
+2. **O custo de compra do acrílico** (★ R$ 450) segue sem cotação — a R$ 1.200
+   de venda a linha dá 33,3%.
+3. **Os +10% de acréscimo de cartão** não cobrem nem 6×.
+4. As 13 dúvidas de levantamento seguem de pé.

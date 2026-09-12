@@ -29,8 +29,9 @@ W = 100
 CH_C, CH_L = 275.0, 185.0
 CH_AREA = 2.75*1.85
 
-# [Jonathan] este job é COM RT. Vendedor: adotado SIM (padrão do modelo).
-RT_ON, VEND_ON = True, True
+# [Jonathan 12/09] "pode tirar o custo do vendedor". Com RT, SEM vendedor —
+# a venda vem pela decoradora. Base sobe de 67,68% para 76,52%.
+RT_ON, VEND_ON = True, False
 BASE = M.base(parcelas=0, rt=RT_ON, vendedor=VEND_ON)      # à vista
 def div(mc): return BASE - mc
 def mc_conferida(p, c): return BASE - c/p
@@ -176,7 +177,7 @@ duv(A, 'a cabeceira é ESTOFADA em Bouclé sobre estrutura de MDF. ★ Adotei '
        '— R$ 2.217 nos 3,41 m². CONFERIR com o estofador: pode vir bem '
        'diferente, e é o maior terceirizado do quarto.')
 
-item('Penteadeira em MDF Carvalho · 1,30 × 0,40 m')
+item('Penteadeira completa · bancada, gaveteiro e espelho iluminado')
 add('CV', 15, A, 'penteadeira · tampo 1300 × 400',        130, 40)
 add('CV', 15, A, 'penteadeira · lateral da caixa',         40, 10, 2)
 add('CV', 15, A, 'penteadeira · travessa de fundo',       130, 10)
@@ -205,10 +206,9 @@ duv(A, 'a gaveta da penteadeira tem 10 cm de FRENTE (80 − 70 da elevação B),
        'ou seja ~7 cm úteis. É gaveta rasa de organização — coerente com os '
        'divisores de acrílico. CONFERIR se é isso mesmo.')
 
-# [Jonathan 09/09] "no projeto técnico não mostra o gaveteiro auxiliar, no
-# render sim. Pode considerar com o gaveteiro." Torre de 3 gavetas sob a
-# ponta direita da bancada, do piso ao tampo. ★ 45 × 72 × 40 lido do render.
-item('Gaveteiro auxiliar da penteadeira · 3 gavetas')
+# [Jonathan 09/09] o gaveteiro auxiliar está só no render. ★ 45 × 72 × 40 com
+# 3 gavetas. [Jonathan 12/09] entra DENTRO da penteadeira — um item só, junto
+# com a bancada e o espelho iluminado, por R$ 8.500 de venda.
 add('CV', 15, A, 'gaveteiro aux. · lateral', 72, 40, 2)
 add('CV', 15, A, 'gaveteiro aux. · base', 45, 40, 1)
 add('BR', 6,  A, 'gaveteiro aux. · fundo', 45, 72, 1)
@@ -236,7 +236,7 @@ duv(A, 'a folha 1 detalha os divisores: dois blocos de 13+13+13+12 na largura '
 # ───────────────────────────────────────────────────────────────────────────
 A = 'Espaço gourmet'
 
-item('Portas da lavanderia · 1,33 × 2,615 m')
+item('Conjunto do espaço gourmet')
 add('GF', 18, A, 'porta da lavanderia 450 × 2615', 45, 261.5, 2)
 add('GF', 18, A, 'porta da lavanderia 430 × 2615', 43, 261.5, 1)
 fer(A, dobr=15)                                    # 5 por folha de 2,615
@@ -248,7 +248,7 @@ duv(A, 'as 3 folhas de 2,615 m fecham o nicho da lavanderia e a folha diz '
        '"dobradiça camarão". ★ Adotei R$ 180 pelo conjunto do mecanismo, sem '
        'linha na base. CONFERIR quantas folhas realmente dobram.')
 
-item('Armário superior da lavanderia · 1,33 × 1,075 m')
+# item('Armário superior da lavanderia · 1,33 × 1,075 m')
 add('GF', 15, A, 'sup. lavanderia · lateral', 107.5, 35, 2)
 add('GF', 15, A, 'sup. lavanderia · tampo e base', 130, 35, 2)
 add('GF', 15, A, 'sup. lavanderia · divisória', 104.5, 35, 1)
@@ -264,7 +264,7 @@ fita(A, 'sup. lavanderia · portas e bordas',
      2*2*(0.435+1.075) + 2*(0.40+1.075) + 2*(1.30+0.35))
 fita(A, 'sup. lavanderia · frente das prateleiras', 2*0.87 + 2*0.40, cor=False)
 
-item('Armário inferior da lavanderia · 0,68 m')
+# item('Armário inferior da lavanderia · 0,68 m')
 add('GF', 15, A, 'inf. lavanderia · lateral', 72, 70, 2)
 add('GF', 15, A, 'inf. lavanderia · base', 68, 70, 1)
 add('BR', 6,  A, 'inf. lavanderia · fundo', 68, 72, 1)
@@ -278,7 +278,7 @@ fita(A, 'inf. lavanderia · frentes e bordas',
      2*2*(0.68+0.36) + 2*(0.68+0.70) + 0.68)
 fita(A, 'inf. lavanderia · caixa do gavetão', 2*(0.68+0.70), cor=False)
 
-item('Vassoureiro · 0,37 × 2,495 m')
+# item('Vassoureiro · 0,37 × 2,495 m')
 add('GF', 15, A, 'vassoureiro · lateral', 249.5, 72, 2)
 add('GF', 15, A, 'vassoureiro · tampo e base', 37, 72, 2)
 add('BR', 6,  A, 'vassoureiro · fundo', 37, 246.5, 1)
@@ -293,7 +293,7 @@ chanf(A, 2.465)
 fita(A, 'vassoureiro · porta e bordas', 2*(0.37+2.465) + 2*(0.37+2.495))
 fita(A, 'vassoureiro · frente das prateleiras', 3*0.37, cor=False)
 
-item('Armário superior do gourmet · 2,30 × 0,725 m')
+# item('Armário superior do gourmet · 2,30 × 0,725 m')
 add('GF', 15, A, 'sup. gourmet · lateral', 72.5, 35, 2)
 add('GF', 15, A, 'sup. gourmet · tampo e base', 230, 35, 2)
 add('GF', 15, A, 'sup. gourmet · divisória', 69.5, 35, 2)
@@ -309,7 +309,7 @@ fita(A, 'sup. gourmet · portas e bordas',
      4*2*(0.40+0.725) + 2*2*(0.35+0.725) + 2*(2.30+0.35))
 fita(A, 'sup. gourmet · frente das prateleiras', 2*0.77 + 0.68, cor=False)
 
-item('Básculas em MDF Jequitibá · 1,50 × 0,35 m')
+# item('Básculas em MDF Jequitibá · 1,50 × 0,35 m')
 add('JQ', 15, A, 'básculas · lateral', 35, 35, 2)
 add('JQ', 15, A, 'básculas · tampo e base', 150, 35, 2)
 add('JQ', 15, A, 'básculas · divisória', 35, 35, 1)
@@ -328,7 +328,7 @@ duv(A, 'a báscula de VIDRO entrou pela referência CONFIRMADA da base '
        'sotille + furos = R$ 280 a folha de 0,96 × 0,41). A nossa é 0,70 × '
        '0,35, MENOR — o preço é conservador.')
 
-item('Armário inferior do gourmet · 4,295 m')
+# item('Armário inferior do gourmet · 4,295 m')
 add('GF', 15, A, 'inf. gourmet · lateral e divisória', 72, 70, 7)
 painel('GF', 15, A, 'inf. gourmet · base', 429.5, 70, 1)
 painel('BR', 6,  A, 'inf. gourmet · fundo', 429.5, 72, 1)
@@ -596,33 +596,54 @@ print(f'  {"Versão":<18}{"Custo direto":>14}{"MC alvo":>9}{"Investimento":>15}'
 MC_BASE = CENARIOS[0][2]
 CDI = [cd_por_item(i) for i in range(len(CENARIOS))]
 SEM_FER = [k for k in ORD_IT if FER.get(k, [0, 0, 0]) == [0, 0, 0]]
-COM_FER = [k for k in ORD_IT if k not in SEM_FER]
-# [Jonathan 09/09] item que não muda entre as versões tem UM preço só
-# [Jonathan 09/09] e o acrílico tem PREÇO DE VENDA CRAVADO, não calculado
+
+# ═══ PREÇOS CRAVADOS PELO JONATHAN ═══════════════════════════════════════
+# [12/09] "a área gourmet está muito superfaturada, ela não passa de 30 mil o
+#   preço de venda em ferragens Hettich. Precifique ela como um único item."
+# [12/09] "pode considerar a penteadeira toda, tirando apenas os acrílicos, com
+#   um custo de venda final de 8.500 com o gaveteiro, bancada e espelho
+#   iluminado."
+# [09/09] os divisores de acrílico: R$ 1.200 de venda.
+# (None = calcular pela MC do cenário)
+PENT_K  = ('Quarto casal', 'Penteadeira completa · bancada, gaveteiro e espelho iluminado')
 ACRIL_K = ('Quarto casal', 'Divisórias internas em acrílico da penteadeira')
-PV_FIXO = {k: round(CDI[0][k]/div(MC_BASE)/100)*100 for k in SEM_FER}
-PV_FIXO[ACRIL_K] = int(ACRILICO_PV)
-CD_SF, PV_SF = sum(CDI[0][k] for k in SEM_FER), sum(PV_FIXO.values())
-assert ACRIL_K in SEM_FER, 'o acrílico tem de ser item sem ferragem'
+GOUR_K  = ('Espaço gourmet', 'Conjunto do espaço gourmet')
+PRECO_FIXO = {PENT_K:  (8500, 8500),
+              ACRIL_K: (int(ACRILICO_PV), int(ACRILICO_PV)),
+              GOUR_K:  (None, 30000)}
+for k in PRECO_FIXO: assert k in ORD_IT, k
+
+LIVRES = [k for k in ORD_IT if k not in PRECO_FIXO]
+# dos livres, os que não mudam entre versões têm preço único (regra de 09/09)
+LIVRE_FIXO = {k: round(CDI[0][k]/div(MC_BASE)/100)*100
+              for k in LIVRES if k in SEM_FER}
+LIVRE_VAR  = [k for k in LIVRES if k not in SEM_FER]
 
 PRECOS, PV = [], {}
 for i, (nome, ferr, mc, f, gar) in enumerate(CENARIOS):
-    cd_var = sum(CDI[i][k] for k in COM_FER)
-    pv_var = round(cd_var/div(mc)/100)*100
-    v = {k: round(pv_var*CDI[i][k]/cd_var/100)*100 for k in COM_FER}
-    v[max(COM_FER, key=lambda k: CDI[i][k])] += pv_var - sum(v.values())
-    v.update(PV_FIXO)
+    v = dict(LIVRE_FIXO)
+    for k, pr in PRECO_FIXO.items():
+        if pr[i] is not None: v[k] = pr[i]
+    pend = [k for k in ORD_IT if k not in v]          # calcular pela MC alvo
+    if pend:
+        cd_p = sum(CDI[i][k] for k in pend)
+        pv_p = round(cd_p/div(mc)/100)*100
+        for k in pend: v[k] = round(pv_p*CDI[i][k]/cd_p/100)*100
+        v[max(pend, key=lambda k: CDI[i][k])] += pv_p - sum(v[k] for k in pend)
     PV[i] = (CDI[i], v)
-    pv = PV_SF + pv_var
+    pv = sum(v.values())
     PRECOS.append(pv)
     print(f'  {nome:<18}{"R$ "+brl(CD(i),0):>14}{mc*100:>8.0f}%'
           f'{"R$ "+brl(pv,0):>15}{mc_conferida(pv, CD(i))*100:>13.1f}%   {gar}')
 for k in SEM_FER:
     assert PV[0][1][k] == PV[1][1][k], (k, PV[0][1][k], PV[1][1][k])
-print(f'\n  Itens que NÃO mudam entre as versões: preço ÚNICO na MC de '
-      f'{MC_BASE*100:.0f}% → R$ {brl(PV_SF,0)}')
-print(f'  Itens que mudam de ferragem: R$ {brl(PRECOS[0]-PV_SF,0)} (32%) · '
-      f'R$ {brl(PRECOS[1]-PV_SF,0)} (40%)')
+print('\n  PREÇOS CRAVADOS por você (iguais nas duas versões salvo indicado):')
+for k, pr in PRECO_FIXO.items():
+    q = f'R$ {brl(pr[1],0)} só na Hettich · calculado na Telescópica' \
+        if pr[0] is None else f'R$ {brl(pr[0],0)} nas duas'
+    print(f'     {(k[0]+" · "+k[1])[:56]:<58}{q}')
+PV_SF = sum(PV[0][1][k] for k in SEM_FER)
+print(f'  Itens que NÃO mudam entre as versões: R$ {brl(PV_SF,0)}')
 print(f'  Diferença entre as versões: R$ {brl(PRECOS[1]-PRECOS[0],0)} '
       f'— ferragem R$ {brl(custo_ferr(1)-custo_ferr(0),0)} de custo, o resto é margem')
 print(f'  Embalagem (2% do custo direto): R$ {brl(embalagem(0),0)} · '
@@ -685,33 +706,46 @@ for a in ORD_AMB:
              sum(PV[1][0][k] for k in ks), sum(PV[1][1][k] for k in ks), pt='  ')
 print('  ' + '-'*(47+9+10+8+10+10+8))
 _lin('TOTAL DO PROJETO', CD(0), PRECOS[0], CD(1), PRECOS[1])
-# alerta: item que fica ABAIXO DO ALVO da sua própria versão (não do piso —
-# a Telescópica tem alvo de 32%, que já é decisão abaixo do piso)
-_ab = [k for k in ORD_IT
-       if mc_conferida(PV[0][1][k], PV[0][0][k]) < CENARIOS[0][2] - 0.01
-       or mc_conferida(PV[1][1][k], PV[1][0][k]) < CENARIOS[1][2] - 0.01]
+# ── alertas de margem ────────────────────────────────────────────────────
+print(f'\n  ⚠ LEITURA DE MARGEM')
+_ab = [k for k in ORD_IT if min(mc_conferida(PV[i][1][k], PV[i][0][k])
+                                for i in range(len(CENARIOS))) < M.MC_PISO]
 if _ab:
-    print(f'\n  ⚠ Itens ABAIXO DO ALVO da própria versão:')
+    print(f'     Abaixo do piso de {M.MC_PISO:.0%} da casa em alguma versão:')
     for k in _ab:
-        print(f'     {(k[0]+" · "+k[1])[:56]:<58}'
-              f'T {mc_conferida(PV[0][1][k], PV[0][0][k])*100:>5.1f}% (alvo 32)  '
-              f'H {mc_conferida(PV[1][1][k], PV[1][0][k])*100:>5.1f}% (alvo 40)')
-print(f'\n  ⚠ A versão Telescópica tem ALVO de 32%, abaixo do piso de '
-      f'{M.MC_PISO:.0%} da casa — decisão sua de 09/09, não resultado de conta.')
-print(f'    Para a Telescópica no piso de 35%: R$ '
-      f'{brl(PV_SF + M.preco(sum(CDI[0][k] for k in COM_FER), 0.35, rt=RT_ON, vendedor=VEND_ON), 0)}')
+        print(f'       {(k[0]+" · "+k[1])[:52]:<54}'
+              f'T {mc_conferida(PV[0][1][k], PV[0][0][k])*100:>5.1f}%   '
+              f'H {mc_conferida(PV[1][1][k], PV[1][0][k])*100:>5.1f}%')
+_mc0 = mc_conferida(PRECOS[0], CD(0))
+_mc1 = mc_conferida(PRECOS[1], CD(1))
+if _mc1 < _mc0:
+    print(f'\n  ⛔⛔ A VERSÃO HETTICH FICOU MENOS RENTÁVEL QUE A TELESCÓPICA:')
+    print(f'       Telescópica {_mc0*100:.1f}%  ·  Hettich {_mc1*100:.1f}%  '
+          f'— {(_mc0-_mc1)*100:.1f} pontos A MENOS na versão premium.')
+    print(f'       Causa: o teto de R$ {brl(PRECO_FIXO[GOUR_K][1],0)} no gourmet '
+          f'entrega {mc_conferida(PRECO_FIXO[GOUR_K][1], CDI[1][GOUR_K])*100:.1f}% '
+          f'na Hettich,')
+    print(f'       contra os {CENARIOS[1][2]*100:.0f}% de alvo. O gourmet é '
+          f'{CDI[1][GOUR_K]/CD(1)*100:.0f}% do custo do job — quando ele cede,')
+    print(f'       a versão inteira cede com ele.')
+    _g40 = M.preco(CDI[1][GOUR_K], CENARIOS[1][2], rt=RT_ON, vendedor=VEND_ON)
+    print(f'       Para o gourmet Hettich chegar aos 40%: R$ {brl(_g40,0)}.')
+    print(f'       Para a Hettich empatar a MC da Telescópica: gourmet a R$ '
+          f'{brl(M.preco(CDI[1][GOUR_K], _mc0, rt=RT_ON, vendedor=VEND_ON),0)}.')
+print(f'\n     A Telescópica tem ALVO de 32%, abaixo do piso de {M.MC_PISO:.0%} '
+      f'— decisão sua de 09/09.')
 
 print('\n' + '─'*W)
 print('OS ITENS QUE NÃO MUDAM ENTRE AS VERSÕES')
 print('─'*W)
 print('  Não levam uma dobradiça, corrediça ou pistão sequer — são o MESMO')
 print('  móvel nas duas propostas, com o mesmo custo e o MESMO PREÇO:')
-print(f'     {"":<66}{"custo":>10}{"venda":>11}')
+print(f'     {"":<58}{"custo":>10}{"venda":>11}')
 for k in SEM_FER:
-    print(f'     {(k[0]+" · "+k[1])[:64]:<66}{"R$ "+brl(CDI[0][k],0):>10}'
-          f'{"R$ "+brl(PV_FIXO[k],0):>11}')
-print(f'     {"— somados":.<66}{"R$ "+brl(CD_SF,0):>10}{"R$ "+brl(PV_SF,0):>11}')
-print(f'  Precificados uma vez só, na MC de {MC_BASE*100:.0f}% com RT.')
+    print(f'     {(k[0]+" · "+k[1])[:56]:<58}{"R$ "+brl(CDI[0][k],0):>10}'
+          f'{"R$ "+brl(PV[0][1][k],0):>11}')
+print(f'     {"— somados":.<58}{"R$ "+brl(sum(CDI[0][k] for k in SEM_FER),0):>10}'
+      f'{"R$ "+brl(PV_SF,0):>11}')
 print(f'  {PV_SF/PRECOS[0]*100:.0f}% da proposta telescópica e '
       f'{PV_SF/PRECOS[1]*100:.0f}% da Hettich saem por este preço fixo.')
 
