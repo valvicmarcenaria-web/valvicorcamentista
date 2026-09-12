@@ -23,14 +23,16 @@ render, só o que a folha cota.
 """
 from collections import defaultdict
 import math
+import motor_mc as M          # ⭐ fonte única dos encargos — modelo-de-custo.md
 
 W = 100
 CH_C, CH_L = 275.0, 185.0
 CH_AREA = 2.75*1.85
-A_, LIQF_, B_ = 0.162, 0.88, 0.043
-BASE = 1 - A_ - LIQF_*B_
-RT_PCT = 0.10
-def div(mc, rt=False): return BASE - mc - (LIQF_*RT_PCT if rt else 0.0)
+
+# [Jonathan] este job é COM RT. Vendedor: adotado SIM (padrão do modelo).
+RT_ON, VEND_ON = True, True
+BASE = M.base(parcelas=0, rt=RT_ON, vendedor=VEND_ON)      # à vista
+def div(mc): return BASE - mc
 def mc_conferida(p, c): return BASE - c/p
 
 def _pack_faixa(pcs):
@@ -445,15 +447,21 @@ m_cur   = sum(m for _, m in CURVA); custo_curva = m_cur*CURVA_M
 m_led   = sum(m for _, _, m in LED); custo_led  = m_led*LED_M
 custo_terc = sum(v for _, _, v, _ in TERC)
 consum = (custo_chapa + custo_fita)*0.06        # parafuso, cavilha, cola, fita
+# [Jonathan 12/09] EMBALAGEM = 2% do custo direto, SOMA ao consumível.
+# Caixa e plástico para transportar; o consumível é o que vai NO móvel.
 
 def custo_ferr(cen):
     f = CENARIOS[cen][3]
     return sum(v[0]*f['dobr'] + v[1]*f['corr'] + v[2]*f['pist']
                for v in FER.values())
-def CD(cen):
+def _cd_sem_emb(cen):
     return (custo_chapa + custo_fita + custo_filet + custo_chanf + custo_esq
             + custo_curva + custo_led + custo_terc + consum + custo_ferr(cen)
             + LOG)
+def CD(cen):
+    return M.com_embalagem(_cd_sem_emb(cen))
+def embalagem(cen):
+    return _cd_sem_emb(cen)*M.EMBALAGEM
 
 def cd_por_item(cen):
     cdi = defaultdict(float)
@@ -482,7 +490,10 @@ def cd_por_item(cen):
     f = CENARIOS[cen][3]
     for k, v in FER.items():
         cdi[k] += v[0]*f['dobr'] + v[1]*f['corr'] + v[2]*f['pist']
-    assert abs(sum(cdi.values()) - CD(cen)) < 0.01, (sum(cdi.values()), CD(cen))
+    # EMBALAGEM: 2% do custo DO PRÓPRIO ITEM, aplicada por último. Assim item
+    # sem ferragem segue idêntico entre cenários (regra do Jonathan de 09/09).
+    for k in list(cdi): cdi[k] *= 1 + M.EMBALAGEM
+    assert abs(sum(cdi.values()) - CD(cen)) < 0.05, (sum(cdi.values()), CD(cen))
     return dict(cdi)
 
 ORD_AMB = list(dict.fromkeys(a for a, _ in ORD_IT))
@@ -568,92 +579,127 @@ for i, (nome, ferr, mc, f, gar) in enumerate(CENARIOS):
           f'pist. R$ {f["pist"]:>3.0f}  →  R$ {brl(custo_ferr(i)):>9}   {ferr}')
 
 print('\n' + '═'*W)
-print('PREÇO — duas versões, o mesmo desenho, COM RT de 10%')
+print('ENCARGOS — modelo-de-custo.md · cascata em três degraus')
+print('═'*W)
+for n, v in M.encargos(parcelas=0, rt=RT_ON, vendedor=VEND_ON).items():
+    if v: print(f'  {n:<30}{v*100:>7.2f}% do preço')
+print(f'  {"— TOTAL DE ENCARGOS":<30}'
+      f'{(1-BASE)*100:>7.2f}%     (à vista · com RT e vendedor)')
+print(f'  {"BASE (custo direto + MC)":<30}{BASE*100:>7.2f}%')
+
+print('\n' + '═'*W)
+print('PREÇO — duas versões, o mesmo desenho · COM RT · pagamento à vista')
 print('═'*W)
 print(f'  {"Versão":<18}{"Custo direto":>14}{"MC alvo":>9}{"Investimento":>15}'
-      f'{"MC bruta":>10}{"líquida":>9}   Garantia')
-# ⛔ [Jonathan 09/09] ITEM QUE NÃO MUDA ENTRE AS VERSÕES TEM UM PREÇO SÓ.
-#    "A cabeceira estofada deve custar o mesmo valor para o cliente em ambos
-#     os contextos, assim como em todos os demais contextos semelhantes."
-#    Item sem ferragem nenhuma não tem versão: é o MESMO móvel, com o MESMO
-#    custo. Ele é precificado UMA VEZ, na MC da versão base, e esse preço vai
-#    idêntico para as duas propostas. Só o que realmente muda de ferragem
-#    carrega a MC da sua versão.
+      f'{"MC conferida":>14}   Garantia')
+
 MC_BASE = CENARIOS[0][2]
 CDI = [cd_por_item(i) for i in range(len(CENARIOS))]
 SEM_FER = [k for k in ORD_IT if FER.get(k, [0, 0, 0]) == [0, 0, 0]]
 COM_FER = [k for k in ORD_IT if k not in SEM_FER]
-PV_FIXO = {k: round(CDI[0][k]/div(MC_BASE, True)/100)*100 for k in SEM_FER}
-CD_SF   = sum(CDI[0][k] for k in SEM_FER)
-PV_SF   = sum(PV_FIXO.values())
+# [Jonathan 09/09] item que não muda entre as versões tem UM preço só
+# [Jonathan 09/09] e o acrílico tem PREÇO DE VENDA CRAVADO, não calculado
+ACRIL_K = ('Quarto casal', 'Divisórias internas em acrílico da penteadeira')
+PV_FIXO = {k: round(CDI[0][k]/div(MC_BASE)/100)*100 for k in SEM_FER}
+PV_FIXO[ACRIL_K] = int(ACRILICO_PV)
+CD_SF, PV_SF = sum(CDI[0][k] for k in SEM_FER), sum(PV_FIXO.values())
+assert ACRIL_K in SEM_FER, 'o acrílico tem de ser item sem ferragem'
 
 PRECOS, PV = [], {}
 for i, (nome, ferr, mc, f, gar) in enumerate(CENARIOS):
     cd_var = sum(CDI[i][k] for k in COM_FER)
-    pv_var = round(cd_var/div(mc, True)/100)*100
+    pv_var = round(cd_var/div(mc)/100)*100
     v = {k: round(pv_var*CDI[i][k]/cd_var/100)*100 for k in COM_FER}
-    _maior = max(COM_FER, key=lambda k: CDI[i][k])
-    v[_maior] += pv_var - sum(v.values())
+    v[max(COM_FER, key=lambda k: CDI[i][k])] += pv_var - sum(v.values())
     v.update(PV_FIXO)
     PV[i] = (CDI[i], v)
     pv = PV_SF + pv_var
     PRECOS.append(pv)
-    mb = mc_conferida(pv, CD(i))
-    print(f'  {nome:<18}{"R$ "+brl(CD(i),0):>14}{mc*100:>8.0f}%{"R$ "+brl(pv,0):>15}'
-          f'{mb*100:>9.1f}%{(mb-LIQF_*RT_PCT)*100:>8.1f}%   {gar}')
-for k in SEM_FER:                       # a guarda do Jonathan
+    print(f'  {nome:<18}{"R$ "+brl(CD(i),0):>14}{mc*100:>8.0f}%'
+          f'{"R$ "+brl(pv,0):>15}{mc_conferida(pv, CD(i))*100:>13.1f}%   {gar}')
+for k in SEM_FER:
     assert PV[0][1][k] == PV[1][1][k], (k, PV[0][1][k], PV[1][1][k])
-print(f'\n  Itens SEM ferragem, preço ÚNICO na MC de {MC_BASE*100:.0f}%: '
-      f'R$ {brl(PV_SF,0)} nas duas versões')
-print(f'  Itens COM ferragem: MC da versão · '
-      f'R$ {brl(PRECOS[0]-PV_SF,0)} (32%) · R$ {brl(PRECOS[1]-PV_SF,0)} (40%)')
-SEM_RT = [round(CD(i)/div(CENARIOS[i][2], False)/100)*100 for i in range(2)]
-print(f'  {"":<18}{"sem RT":>14}{"":>9}{"R$/m² sem RT":>15}{"R$/m² com RT":>19}')
-for i in range(2):
-    print(f'  {CENARIOS[i][0]:<18}{"R$ "+brl(SEM_RT[i],0):>14}{"":>9}'
-          f'{SEM_RT[i]/area_tot:>15.0f}{PRECOS[i]/area_tot:>19.0f}')
-print('  (faixa da casa: 626–834 por m² de chapa, sem RT)')
+print(f'\n  Itens que NÃO mudam entre as versões: preço ÚNICO na MC de '
+      f'{MC_BASE*100:.0f}% → R$ {brl(PV_SF,0)}')
+print(f'  Itens que mudam de ferragem: R$ {brl(PRECOS[0]-PV_SF,0)} (32%) · '
+      f'R$ {brl(PRECOS[1]-PV_SF,0)} (40%)')
+print(f'  Diferença entre as versões: R$ {brl(PRECOS[1]-PRECOS[0],0)} '
+      f'— ferragem R$ {brl(custo_ferr(1)-custo_ferr(0),0)} de custo, o resto é margem')
+print(f'  Embalagem (2% do custo direto): R$ {brl(embalagem(0),0)} · '
+      f'R$ {brl(embalagem(1),0)}')
+print(f'  R$/m² de chapa: {PRECOS[0]/area_tot:.0f} · {PRECOS[1]/area_tot:.0f}'
+      f'   (faixa da casa 626–834)')
 
-print(f'\n  ⚠ A DIFERENÇA DE R$ {brl(PRECOS[1]-PRECOS[0],0)} ENTRE AS DUAS VERSÕES SE DECOMPÕE ASSIM:')
-_d_ferr = custo_ferr(1) - custo_ferr(0)
-_pv_ferr = round(_d_ferr/div(CENARIOS[0][2], True)/100)*100
-print(f'     ferragem, custo real ................. R$ {brl(_d_ferr,0):>8}')
-print(f'     o mesmo, repassado na MC de 32% ...... R$ {brl(_pv_ferr,0):>8}')
-print(f'     margem adicional (32% → 40%) ......... R$ {brl(PRECOS[1]-PRECOS[0]-_pv_ferr,0):>8}')
-print(f'  Ou seja: R$ {brl(_d_ferr,0)} de ferragem a mais e '
-      f'R$ {brl(PRECOS[1]-PRECOS[0]-_pv_ferr,0)} de margem a mais.')
-print(f'  A MC LÍQUIDA da versão Hettich fica em '
-      f'{(mc_conferida(PRECOS[1], CD(1))-LIQF_*RT_PCT)*100:.1f}%, e não nos 40%')
-print(f'  cravados: os itens sem ferragem carregam 32% nas duas versões, então')
-print(f'  os 40% valem só sobre os {PRECOS[1]-PV_SF:,.0f} de itens com ferragem.'
-      .replace(',', '.'))
-print(f'  É o preço da coerência linha a linha — e é o que o cliente consegue')
-print(f'  comparar sem fazer pergunta que a gente não sabe responder.')
-print(f'  A dobradiça Hettich SENSYS (R$ 35) sozinha vale')
-print(f'  R$ {brl(53*(35-8),0)} dos R$ {brl(_d_ferr,0)}. Com a NOVISYS (R$ 10) a ferragem')
-print(f'  ficaria em R$ {brl(53*10 + 11*120 + 10*30,0)}, quase igual à telescópica.')
+print('\n' + '─'*W)
+print('⚠ A ESCADA DE PAGAMENTO — cada degrau tem a SUA base e a SUA MC')
+print('─'*W)
+ESCADA = [('Entrada 70% + saldo via transferência', 0, 0.00),
+          ('Entrada 70% + saldo em até 6× no cartão', 6, 0.00),
+          ('Entrada 50% + saldo em até 8× no cartão', 8, 0.00),
+          ('Entrada 30% + saldo em até 10× no cartão', 10, 0.00)]
+print(f'  {"condição":<42}{"base":>8}' +
+      ''.join(f'{"MC "+c[0][:3]:>12}' for c in CENARIOS))
+for rot, parc, _d in ESCADA:
+    b = M.base(parcelas=parc, rt=RT_ON, vendedor=VEND_ON)
+    mcs = ''.join(f'{(b - CD(i)/PRECOS[i])*100:>11.1f}%' for i in range(len(CENARIOS)))
+    print(f'  {rot:<42}{b*100:>7.2f}%{mcs}')
+print('\n  ⛔ Com o MESMO preço, o cartão em 10× come '
+      f'{(BASE-M.base(parcelas=10, rt=RT_ON, vendedor=VEND_ON))*100:.1f} pontos de MC.')
+print('     Se o cartão for oferecido SEM acréscimo, o preço tem de nascer na')
+print('     base dele — ou o acréscimo vai para o cliente, como na Lídia (+10%).')
+print(f'\n  Preço que entrega a MC alvo JÁ NA BASE DO CARTÃO 10×:')
+for i, (nome, _f, mc, _g, _x) in enumerate(CENARIOS):
+    try:
+        p10 = M.preco(CD(i), mc, parcelas=10, rt=RT_ON, vendedor=VEND_ON)
+        print(f'     {nome:<18}R$ {brl(p10,0):>9}   '
+              f'(+{(p10/PRECOS[i]-1)*100:.0f}% sobre o preço à vista)')
+    except ValueError as e:
+        print(f'     {nome:<18}IMPOSSÍVEL — {e}')
+print(f'\n  Acréscimo necessário no preço à vista para bancar o cartão:')
+for parc in (6, 8, 10):
+    b = M.base(parcelas=parc, rt=RT_ON, vendedor=VEND_ON)
+    acr = (BASE - CENARIOS[0][2])/(b - CENARIOS[0][2]) - 1
+    print(f'     até {parc:>2}× .......... +{acr*100:.1f}%')
 
 print('\n' + '─'*W)
 print('CUSTO E VENDA, ITEM A ITEM')
 print('─'*W)
-_c0, _c1 = CDI[0], CDI[1]
-for k in ORD_IT:
-    if FER.get(k, [0, 0, 0]) == [0, 0, 0]:
-        assert abs(_c0[k] - _c1[k]) < 0.01, (k, _c0[k], _c1[k])
-print(f'  {"":52}{"custo dir.":>11}{"TELESCÓP.":>12}{"custo dir.":>12}{"HETTICH":>11}')
+for k in SEM_FER:
+    assert abs(CDI[0][k] - CDI[1][k]) < 0.01, (k, CDI[0][k], CDI[1][k])
+def _lin(rot, c0, v0, c1, v1, pt=''):
+    m0 = mc_conferida(v0, c0)*100 if v0 else 0
+    m1 = mc_conferida(v1, c1)*100 if v1 else 0
+    print(f'  {pt}{rot[:46]:<47}{"R$ "+brl(c0,0):>9}{"R$ "+brl(v0,0):>10}'
+          f'{m0:>7.1f}%{"R$ "+brl(c1,0):>10}{"R$ "+brl(v1,0):>10}{m1:>7.1f}%')
+print(f'  {"":47}{"── TELESCÓPICA · MC 32% ──":>26}{"── HETTICH · MC 40% ──":>27}')
+print(f'  {"item":<47}{"custo":>9}{"venda":>10}{"MC":>8}{"custo":>10}{"venda":>10}{"MC":>8}')
+print('  ' + '-'*(47+9+10+8+10+10+8))
 for a in ORD_AMB:
-    print(f'  {a}')
-    for k in [k for k in ORD_IT if k[0] == a]:
-        print(f'    {k[1]:<50}{"R$ "+brl(PV[0][0][k],0):>11}'
-              f'{"R$ "+brl(PV[0][1][k],0):>12}{"R$ "+brl(PV[1][0][k],0):>12}'
-              f'{"R$ "+brl(PV[1][1][k],0):>11}')
     ks = [k for k in ORD_IT if k[0] == a]
-    print(f'    {"— subtotal":.<50}{"R$ "+brl(sum(PV[0][0][k] for k in ks),0):>11}'
-          f'{"R$ "+brl(sum(PV[0][1][k] for k in ks),0):>12}'
-          f'{"R$ "+brl(sum(PV[1][0][k] for k in ks),0):>12}'
-          f'{"R$ "+brl(sum(PV[1][1][k] for k in ks),0):>11}')
-print(f'  {"TOTAL":<52}{"R$ "+brl(CD(0),0):>11}{"R$ "+brl(PRECOS[0],0):>12}'
-      f'{"R$ "+brl(CD(1),0):>12}{"R$ "+brl(PRECOS[1],0):>11}')
+    print(f'  {a}')
+    for k in ks:
+        _lin(k[1], PV[0][0][k], PV[0][1][k], PV[1][0][k], PV[1][1][k], pt='  ')
+    if len(ks) > 1:
+        _lin('— subtotal do ambiente',
+             sum(PV[0][0][k] for k in ks), sum(PV[0][1][k] for k in ks),
+             sum(PV[1][0][k] for k in ks), sum(PV[1][1][k] for k in ks), pt='  ')
+print('  ' + '-'*(47+9+10+8+10+10+8))
+_lin('TOTAL DO PROJETO', CD(0), PRECOS[0], CD(1), PRECOS[1])
+# alerta: item que fica ABAIXO DO ALVO da sua própria versão (não do piso —
+# a Telescópica tem alvo de 32%, que já é decisão abaixo do piso)
+_ab = [k for k in ORD_IT
+       if mc_conferida(PV[0][1][k], PV[0][0][k]) < CENARIOS[0][2] - 0.01
+       or mc_conferida(PV[1][1][k], PV[1][0][k]) < CENARIOS[1][2] - 0.01]
+if _ab:
+    print(f'\n  ⚠ Itens ABAIXO DO ALVO da própria versão:')
+    for k in _ab:
+        print(f'     {(k[0]+" · "+k[1])[:56]:<58}'
+              f'T {mc_conferida(PV[0][1][k], PV[0][0][k])*100:>5.1f}% (alvo 32)  '
+              f'H {mc_conferida(PV[1][1][k], PV[1][0][k])*100:>5.1f}% (alvo 40)')
+print(f'\n  ⚠ A versão Telescópica tem ALVO de 32%, abaixo do piso de '
+      f'{M.MC_PISO:.0%} da casa — decisão sua de 09/09, não resultado de conta.')
+print(f'    Para a Telescópica no piso de 35%: R$ '
+      f'{brl(PV_SF + M.preco(sum(CDI[0][k] for k in COM_FER), 0.35, rt=RT_ON, vendedor=VEND_ON), 0)}')
 
 print('\n' + '─'*W)
 print('OS ITENS QUE NÃO MUDAM ENTRE AS VERSÕES')

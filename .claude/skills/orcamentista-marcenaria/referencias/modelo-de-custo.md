@@ -112,10 +112,16 @@ levantado peça a peça.
 | **Ferragens** | dobradiças, corrediças, articuladores, sistemas deslizantes, puxadores |
 | **Dispositivos de montagem e insumos de fixação** | cavilha, cantoneira, VB, tambor, parafuso estrutural |
 | **Consumíveis** | cola instantânea, parafusos, limpeza, acabamentos |
-| **Embalagem** | **2% do custo direto do projeto** |
+| **Embalagem** | **2% do custo direto do projeto** — ver nota |
 | **Vidros e espelhos** | |
 | **Material elétrico** | fita de LED, perfil, driver, sensor, cabo |
 | **Acessórios** | escorredor de prato, divisor de acrílico, cabideiro, sapateira deslizante |
+
+> ⛔ **[Jonathan 12/09] A EMBALAGEM SOMA, NÃO SUBSTITUI os consumíveis.** São
+> coisas diferentes: consumível é cola, parafuso, limpeza e acabamento aplicados
+> **no móvel** (os motores usam 6% de chapa + fita); embalagem é caixa, plástico
+> e canto de proteção **para transportar** o móvel, 2% do custo direto. As duas
+> linhas convivem.
 
 > **Fita de borda e filetagem** entram no material bruto, em duas linhas
 > separadas: a fita é insumo (R$/m) e a filetagem é aplicação (R$/m de máquina).

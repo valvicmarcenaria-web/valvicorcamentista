@@ -297,3 +297,121 @@ R$ 2.411 de ferragem e R$ 11.400 de margem.
 Conferi a **Juliana & Kairon**, que tem três linhas: o único item sem ferragem é
 a **mesa de refeições**, e ela já estava a R$ 2.350 nas duas colunas. A regra já
 valia lá — sem correção a fazer.
+
+---
+
+## Rodada de 12/09 — refeito no modelo de custo correto
+
+Depois do alinhamento do método (`referencias/modelo-de-custo.md`), o motor
+passou a importar `motor_mc.py` e a **embalagem de 2% do custo direto entrou
+somando** ao consumível de 6% — [Jonathan 12/09] *"a embalagem soma, não
+substitui"*. Também entraram as duas coisas pedidas em 09/09: o **LED de
+contorno do espelho** da penteadeira e o **gaveteiro auxiliar de 3 gavetas**.
+
+### Os encargos deste job — à vista, com RT e vendedor
+
+| Degrau | Encargo | % do preço |
+|---|---|--:|
+| 1 · bruto | nota fiscal | 5,00% |
+| | margem de erro | 2,00% |
+| | desgaste de serra e fresa | 0,50% |
+| | manutenção de máquinas | 0,50% |
+| 2 · líquido | RT | 9,50% |
+| | comissão de vendedor | 9,50% |
+| 3 · líquido 2 | coordenação | 0,76% |
+| | programação | 0,76% |
+| | fabricação | 1,90% |
+| | montagem | 1,90% |
+| | **TOTAL** | **32,32%** |
+| | **BASE (custo direto + MC)** | **67,68%** |
+
+### Custo e venda, item a item, com a MC de cada linha
+
+| Ambiente | Item | custo T | **venda T** | MC | custo H | **venda H** | MC |
+|---|---|--:|--:|--:|--:|--:|--:|
+| **Quarto casal** | Cabeceira estofada · 3,10 × 1,10 | 3.149 | **8.800** | 31,9% | 3.149 | **8.800** | 31,9% |
+| | Penteadeira em Carvalho · 1,30 × 0,40 | 1.554 | **4.400** | 32,4% | 1.717 | **6.200** | 40,0% |
+| | Gaveteiro auxiliar · 3 gavetas | 1.145 | **3.200** | 31,9% | 1.390 | **5.000** | 39,9% |
+| | **Divisórias em acrílico** (preço cravado) | 518 | **1.200** | **24,5%** | 518 | **1.200** | **24,5%** |
+| | *subtotal* | *6.366* | ***17.600*** | *31,5%* | *6.774* | ***21.200*** | *35,7%* |
+| **Espaço gourmet** | Portas da lavanderia · 1,33 × 2,615 | 1.344 | **3.800** | 32,3% | 1.757 | **6.300** | 39,8% |
+| | Armário superior da lavanderia | 1.171 | **3.300** | 32,2% | 1.418 | **5.100** | 39,9% |
+| | Armário inferior da lavanderia · 0,68 | 681 | **1.900** | 31,9% | 838 | **3.000** | 39,8% |
+| | Vassoureiro · 0,37 × 2,495 | 1.761 | **4.900** | 31,8% | 1.898 | **6.900** | 40,2% |
+| | Armário superior do gourmet · 2,30 | 1.384 | **3.900** | 32,2% | 1.715 | **6.200** | 40,0% |
+| | Básculas em Jequitibá · 1,50 | 2.332 | **6.500** | 31,8% | 2.483 | **9.000** | 40,1% |
+| | Armário inferior do gourmet · 4,295 | 2.945 | **8.200** | 31,8% | 3.641 | **13.200** | 40,1% |
+| | *subtotal* | *11.618* | ***32.500*** | *31,9%* | *13.751* | ***49.700*** | *40,0%* |
+| **Sala cobertura** | Painel de TV · 3,975 × 1,00 | 2.224 | **6.200** | 31,8% | 2.224 | **6.200** | 31,8% |
+| | Rack · 2,00 × 0,47 | 1.826 | **5.100** | 31,9% | 1.989 | **7.200** | 40,1% |
+| | *subtotal* | *4.050* | ***11.300*** | *31,8%* | *4.213* | ***13.400*** | *36,2%* |
+| **TOTAL** | | **22.033** | **R$ 61.400** | **31,8%** | **24.737** | **R$ 84.300** | **38,3%** |
+
+Os quatro itens que **não mudam** entre as versões — cabeceira, divisórias de
+acrílico e painel da sala — somam **R$ 16.200** e saem pelo mesmo preço nas
+duas, na MC de 32%. Por isso a Hettich fecha em 38,3% e não nos 40% cheios.
+
+### O que mudou em relação ao número de 09/09
+
+| | modelo antigo | **modelo correto** | delta |
+|---|--:|--:|--:|
+| Custo direto · Telescópica | 21.248 | **22.033** | +785 |
+| Custo direto · Hettich | 23.659 | **24.737** | +1.078 |
+| **Telescópica** | 54.200 | **R$ 61.400** | **+13%** |
+| **Hettich** | 71.700 | **R$ 84.300** | **+18%** |
+
+O custo subiu pela embalagem (R$ 432 / 485), pelo LED do espelho e pelo
+gaveteiro auxiliar. O **preço subiu porque a base caiu de 71,2% para 67,7%** —
+o modelo antigo cobrava vendedor a 3% onde são 10% e produção a 4,3% onde são
+7%.
+
+### ⚠ Três coisas para você decidir
+
+**1 · O acrílico está a 24,5% de MC.** Você cravou a venda em R$ 1.200 e o
+custo de compra dos dois divisores é o **★ R$ 450 que eu adotei sem referência**
+— com o rateio e a embalagem vira R$ 518. Se o acrilista cobrar menos, a MC
+sobe; se cobrar R$ 600, cai para 17%. **É o único número deste orçamento que
+inventei inteiro.**
+
+**2 · A Telescópica tem alvo de 32%, abaixo do piso de 35%.** Decisão sua de
+09/09. No piso de 35% ela sairia por **R$ 65.600**.
+
+**3 · O R$/m² de chapa deu 931 e 1.278, contra a faixa da casa de 626–834.**
+⛔ **A faixa está velha:** ela foi calibrada em jobs precificados no modelo
+antigo, que subestimava encargo em ~3,5 pontos à vista. Corrigida pelo mesmo
+fator, a faixa vira **~714–951**. A Telescópica (931) cabe nela; a Hettich
+(1.278) segue acima, mas é job de quatro cores com espelho, vidro, estofado e
+acrílico — não é job de roupeiro. **Recalibrar a faixa contra os jobs fechados
+é tarefa própria.**
+
+### ⛔⛔ A escada de pagamento não fecha
+
+| Condição | base | MC Telescópica | MC Hettich |
+|---|--:|--:|--:|
+| Entrada 70% + saldo via transferência | 67,68% | **31,8%** | **38,3%** |
+| Entrada 70% + até 6× no cartão | 62,32% | 26,4% | 33,0% |
+| Entrada 50% + até 8× no cartão | 60,54% | 24,7% | 31,2% |
+| Entrada 30% + até 10× no cartão | 58,75% | **22,9%** | **29,4%** |
+
+**No mesmo preço, o cartão em 10× come 8,9 pontos de MC.** Precificar já na
+base do cartão daria R$ 82.400 e R$ 131.900 — inviável. O caminho é o
+**acréscimo ao cliente**, e ele é maior do que a casa vem praticando:
+
+| Parcelas | acréscimo necessário | o que a casa pratica |
+|---|--:|---|
+| até 6× | **+17,7%** | +10% (Lídia) |
+| até 8× | **+25,0%** | — |
+| até 10× | **+33,4%** | preço de tabela, sem acréscimo |
+
+**Os +10% da Lídia cobrem só metade do custo de 6×.** Isso vale para a casa
+inteira, não só para este job.
+
+### Em aberto
+
+1. **A comissão de vendedor** — adotei 10% (padrão do modelo). Se a venda vem
+   pela decoradora com RT e **sem vendedor**, a base sobe para 76,52% e os
+   preços caem para **R$ 54.200 e R$ 73.700**. Precisa da sua confirmação.
+2. **O custo de compra do acrílico** (★ R$ 450).
+3. **Os R$ 650 por gaveta** que você mencionou em 09/09 seguem sem definição —
+   não apliquei nada.
+4. As 13 dúvidas de levantamento seguem de pé.

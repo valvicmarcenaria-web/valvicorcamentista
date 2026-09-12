@@ -79,7 +79,13 @@ def mc(preco_venda, custo_direto, parcelas=0, rt=True, vendedor=True):
 
 
 def com_embalagem(custo_sem_embalagem):
-    """Embalagem = 2% do custo direto. Fecha sobre o próprio custo."""
+    """Embalagem = 2% do custo direto, SOMADA ao resto.
+
+    [Jonathan 12/09] Ela NÃO substitui os consumíveis. Consumível é cola,
+    parafuso, limpeza e acabamento aplicados NO móvel (os motores usam 6% de
+    chapa + fita); embalagem é caixa e plástico para TRANSPORTAR o móvel. As
+    duas linhas convivem no custo direto.
+    """
     return custo_sem_embalagem * (1 + EMBALAGEM)
 
 
