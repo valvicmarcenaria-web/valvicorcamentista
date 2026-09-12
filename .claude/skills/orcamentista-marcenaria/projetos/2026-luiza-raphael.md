@@ -498,3 +498,53 @@ rodada anterior, mas segue bem acima dos +10% que a casa pratica.
    de venda a linha dá 33,3%.
 3. **Os +10% de acréscimo de cartão** não cobrem nem 6×.
 4. As 13 dúvidas de levantamento seguem de pé.
+
+---
+
+## Proposta entregue — 12/09/2026
+
+`build-luiza-raphael.py` → **`proposta-luiza-raphael.pdf`**, 7 páginas, com os
+**seis renders do próprio caderno** recortados em `img-luiza-raphael/`
+(detecção automática das fotos na página rasterizada, todas em 4:3).
+
+| Página | |
+|---|---|
+| 1 | capa — render da sala, dados do cliente e da decoradora |
+| 2 | **Quarto casal** — dois renders + os três itens descritos |
+| 3 | **Espaço gourmet** — dois renders + o conjunto completo |
+| 4 | **Sala da cobertura** — dois renders + painel e rack |
+| 5 | **As duas linhas** — a ferragem lado a lado, o que não muda, e a nota dos três itens de preço igual |
+| 6 | **Investimento** — 5 itens × 2 colunas + o que está incluído + borda, terceiros e luz |
+| 7 | **Condições** — escada de pagamento, prazo, garantia, fronteiras e a banda de fecho |
+
+### A escada de pagamento, calculada pelo modelo
+
+| Forma de pagamento | acréscimo | Telescópica | Hettich |
+|---|--:|--:|--:|
+| Entrada 30% + saldo via transferência | valor de tabela | **R$ 52.000** | **R$ 57.200** |
+| Entrada 30% + até 6× no cartão | +17% / +16% | R$ 60.600 | R$ 66.500 |
+| Entrada 30% + até 10× no cartão | +31% / +30% | R$ 68.200 | R$ 74.500 |
+
+O acréscimo é **calculado para segurar a mesma MC do pagamento à vista** —
+não é número redondo de hábito. A proposta diz isso ao cliente com todas as
+letras: *"o acréscimo do cartão é o custo da operadora, repassado sem margem —
+por isso o pagamento via transferência é sempre o melhor valor."*
+
+### Conferências feitas
+
+- **Texto × conta:** 28 palavras-gatilho auditadas (espelho, vidro temperado,
+  estofado Bouclé, acrílico, Sensys, telescópica, Hardt, pistão, LED, driver,
+  camarão, vassoureiro, escorredor, sotille, reflecta bronze, as quatro cores
+  de MDF, Branco TX, chanfro, meia esquadria, fita de borda, dobradiça de 90°,
+  cantos arredondados, pedra). **Todas com linha no motor.**
+- **Duas exclusões ditas na própria página do ambiente**, não escondidas no
+  rodapé: a **pedra da bancada** (p3) e o **revestimento de madeira da parede
+  da sala** que aparece no render e não existe no caderno (p4).
+- Nenhuma página transborda.
+
+### Em aberto (inalterado)
+
+1. O teto de R$ 30.000 no gourmet deixa a Hettich menos rentável que a
+   Telescópica — 33,3% contra 34,1%.
+2. Custo de compra do acrílico (★ R$ 450).
+3. As 13 dúvidas de levantamento.
