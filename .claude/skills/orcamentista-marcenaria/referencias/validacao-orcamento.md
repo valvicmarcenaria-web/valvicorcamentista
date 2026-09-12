@@ -38,7 +38,17 @@ A planilha valida o orçamento **de trás para frente**: dado um Investimento
 
 **5. Margem de erro** — contingência.
 
-## Percentuais reais (sobre o Investimento) — inferidos de 11 projetos
+## ⛔ SUPERADO — os percentuais válidos estão em `modelo-de-custo.md`
+
+> **[Jonathan 12/09/2026]** A cascata de encargos foi cravada e passou a morar
+> em **`referencias/modelo-de-custo.md`**, implementada em
+> `projetos/motor_mc.py`. A tabela abaixo é **histórica** — foi inferida de 11
+> projetos e erra em quatro linhas: nota fiscal (é 5%, não 7%), taxa de cartão
+> (é 1,2% POR PARCELA, não 7% fixo), comissão de vendedor (é 10%, não 5%) e
+> comissão de produção (é 7% aberta em quatro, não 5%). Fica registrada para
+> leitura de orçamento antigo. **Não usar para precificar.**
+
+## Percentuais históricos (sobre o Investimento) — inferidos de 11 projetos
 
 | Encargo                  | % do Investimento        | Observação                         |
 |--------------------------|--------------------------|------------------------------------|
@@ -202,8 +212,10 @@ num job de R$ 118.800 — 8% do orçamento em erro de unidade.
 **Por quê.** Montador e marceneiro são **salário fixo** — a estrutura da Valvic
 tem 7 profissionais que recebem todo mês, com ou sem obra. A produção é fixa,
 não por demanda. O que é variável e entra no orçamento é a **comissão**, e a
-comissão **já está dentro do motor**, nos coeficientes `a = 0,162` e
-`liqF·b = 0,0378`.
+comissão **já está dentro do motor**, nas comissões de produção do degrau 3 de
+`modelo-de-custo.md` — fabricação 2,5% e montagem 2,5% do líquido 2.
+*(Até 11/09 isso vivia nos coeficientes `a = 0,162` e `liqF·b = 0,0378`, que
+foram substituídos.)*
 
 Lançar dia de montador como custo direto conta a mesma mão de obra **duas
 vezes**: uma no salário que a empresa paga de qualquer jeito, outra na comissão

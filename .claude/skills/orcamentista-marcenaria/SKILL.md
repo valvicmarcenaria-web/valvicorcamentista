@@ -44,6 +44,10 @@ software de produção**.
 - **CX define margem mínima, não custo.** A complexidade fixa o **piso de
   margem**, não muda o custo. Preço por markup divisor: `valorCliente =
   custoDir / (1 − margem)`.
+- **A MC é DIRECIONADA, não descoberta.** Ela é escolhida por projeto e por
+  **nível de complexidade — do projeto todo ou de um item específico**. O motor
+  calcula o preço que entrega a MC escolhida. Piso da casa **35%**, ideal 35–40%;
+  abaixo do piso é decisão de preço declarada, nunca resultado de conta.
 - **Validação por MC%.** Orçamento validado de trás para frente: material +
   operacional + terceirizados + venda + margem de erro → **MC ideal 35–40%**
   (ajustável pela **situação de caixa**, ver Fase 3).
@@ -103,9 +107,21 @@ e estimar pela escala, sinalizando.
 2. **Custo de material** = Σ(quant × preço de compra) de `dados/materiais.json`.
    Lembrar: fita tem **dois custos** — insumo + **filetagem** (máquina ~R$2,5/m,
    manual ~R$4/m). Ver `laminacao-e-construcao.md`.
-3. **Fechamento** (modelo da planilha real, ver `validacao-orcamento.md` e
-   `notas-marcos-planilha.md`): operacional + terceirizados + venda + margem de
-   erro; **MC = Investimento − Custo total**.
+3. **Fechamento — ⭐ `modelo-de-custo.md` é a FONTE ÚNICA**, implementada em
+   `projetos/motor_mc.py`. Nenhum motor redefine coeficiente de encargo: todos
+   importam de lá. A cascata, sobre o preço de venda:
+   **degrau 1 (bruto)** nota fiscal 5% · **taxa de cartão 1,2% POR PARCELA**
+   (só quando há cartão: 6× = 7,2%, 10× = 12%) · margem de erro 2% ·
+   desgaste de serra 0,5% · manutenção 0,5%;
+   **degrau 2 (líquido = bruto − NF − cartão)** RT 10% · vendedor 10%, mesma base;
+   **degrau 3 (líquido 2 = líquido − RT − vendedor)** produção 7% =
+   coordenação 1 + programação 1 + fabricação 2,5 + montagem 2,5.
+   `PREÇO = custo_direto / (BASE − MC)` · `MC = BASE − custo_direto/preço`.
+   ⛔ **Cada degrau da escada de pagamento tem a SUA base e a SUA MC** — rodar
+   `M.mc()` em todos e conferir o pior. Preço de tabela com cartão em 10×
+   custa **8,9 pontos** mais de encargo que o mesmo preço à vista.
+   Custo direto: matéria-prima (oito linhas) + terceirizados + logística
+   (três fretes) + **embalagem, 2% do próprio custo direto**.
 4. **Ferramenta oficial = `ferramentas/validacao-orcamento.html`** (o app). A
    partir de agora **o orçamento é feito no app**: biblioteca editável, ambientes,
    indicadores de MC e situação de caixa, importar/exportar JSON. Os outros HTML
@@ -154,9 +170,12 @@ e estimar pela escala, sinalizando.
 `movel-roupeiro.md` · `metodo-aprendizado.md` · `processo-orcamento.md` ·
 `logistica.md` · `parametros-orcamento.md`.
 
-**Custo e validação:** `validacao-orcamento.md` (modelo MC%, % reais, situação de
-caixa) · `notas-marcos-planilha.md` (aprendizados da planilha real) · `custos.md`
-(CX, markup) · `chapas.md` · `ferragens.md` · `estrutura-orcamento.md`.
+**Custo e validação:** ⭐ **`modelo-de-custo.md` — a cascata de encargos e o
+levantamento do custo direto; é a fonte única, tudo o mais que divergir é
+histórico** · `validacao-orcamento.md` (blocos de custo, situação de caixa,
+falhas registradas; a tabela de % é SUPERADA) · `notas-marcos-planilha.md`
+(histórico da planilha; SUPERADO) · `custos.md` (CX, markup) · `chapas.md` ·
+`ferragens.md` · `estrutura-orcamento.md` (rateio por item).
 
 **Estratégia/proposta:** `otimizacao-custos.md` · `proposta-comercial.md` ·
 `posicionamento.md`.
