@@ -522,13 +522,13 @@ rodada anterior, mas segue bem acima dos +10% que a casa pratica.
 | Forma de pagamento | acréscimo | Telescópica | Hettich |
 |---|--:|--:|--:|
 | Entrada 30% + saldo via transferência | valor de tabela | **R$ 52.000** | **R$ 57.200** |
-| Entrada 30% + até 6× no cartão | +17% / +16% | R$ 60.600 | R$ 66.500 |
-| Entrada 30% + até 10× no cartão | +31% / +30% | R$ 68.200 | R$ 74.500 |
+| Entrada 30% + até 6× no cartão | +8% / +9% | R$ 56.400 | R$ 62.100 |
+| Entrada 30% + até 10× no cartão | +15% / +15% | R$ 59.900 | R$ 65.800 |
 
-O acréscimo é **calculado para segurar a mesma MC do pagamento à vista** —
-não é número redondo de hábito. A proposta diz isso ao cliente com todas as
-letras: *"o acréscimo do cartão é o custo da operadora, repassado sem margem —
-por isso o pagamento via transferência é sempre o melhor valor."*
+O acréscimo segura a **MC em reais**, não em percentual — `motor_mc.preco_repasse()`.
+A proposta diz isso ao cliente com todas as letras: *"o acréscimo do cartão é a
+taxa da operadora, repassada sem margem — a Valvic recebe exatamente o mesmo nas
+três condições."*
 
 ### Conferências feitas
 
@@ -548,3 +548,63 @@ por isso o pagamento via transferência é sempre o melhor valor."*
    Telescópica — 33,3% contra 34,1%.
 2. Custo de compra do acrílico (★ R$ 450).
 3. As 13 dúvidas de levantamento.
+
+
+---
+
+## 12/09/2026 · duas correções do Jonathan, as duas viraram regra de casa
+
+### 1 · nunca pôr metragem na proposta
+
+> *"Não precisa ficar colocando metragem de nada na proposta. Eu já pedi isso
+> pra você várias vezes, mas você está esquecendo. Então grave essa regra da
+> Skill."*
+
+Ele tinha razão: eu tratei a instrução do SPE Nova Lima como pedido daquele
+job. É **regra de casa**. Gravada em `referencias/proposta-comercial.md` e no
+`SKILL.md` (bloco ⛔⛔ abrindo a FASE 3).
+
+Nesta proposta saíram: cabeceira *3,10 × 1,10 m* → "ocupando a parede inteira" ·
+bancada *1,30 × 0,40 m* → "bancada suspensa" · acrílicos *13 · 13 · 13 · 12 cm*
+→ só "a malha de compartimentos do detalhe da prancha" · corrida *de 5,99 m* →
+"a corrida inteira" · vassoureiro *de 2,50 m* → "do piso ao teto" · painel
+*3,975 × 1,00 m* → "ocupando a parede inteira" · rack *de 2,00 m* → "rack
+suspenso" · fita de borda *de 0,4 mm* → "extra fina" · "as duas básculas" →
+"ambas". Os leads das páginas perderam "cotadas a 1/25", "quase seis metros" e
+a numeração das pranchas.
+
+**O auditor agora roda no PDF final** — regex de medida e de contagem de peça.
+Resultado desta proposta: **LIMPO** nos dois.
+
+### 2 · o acréscimo do cartão estava errado
+
+> *"por que que parcelamento no cartão está ficando tão alto, dezessete por
+> cento e trinta por cento, se é apenas um ponto dois por parcela?"*
+
+Ele estava certo, e o erro era estrutural: eu segurava a **MC percentual**, o
+que fazia a MC em reais subir de R$ 17.755 para R$ 23.271 em 10×. Isso é
+**remarcar o cartão** — exatamente o contrário do que a própria proposta
+promete ao cliente.
+
+O certo é segurar a **MC em reais**:
+
+```python
+⛔ P = CD / (base(parcelas) − mc_pct)      →  +31%
+✅ P = (mc_rs + CD) / base(parcelas)       →  +15,2%
+```
+
+Os 15,2% ainda passam dos 12% nominais porque a taxa incide sobre o preço já
+acrescido e NF, margem de erro, serra, manutenção, RT e produção correm sobre o
+acréscimo — é **gross-up, não margem**. Em 10× a operadora leva R$ 7.183 e o
+preço sobe R$ 7.857.
+
+Gravado em `referencias/modelo-de-custo.md` e implementado em
+`motor_mc.preco_repasse()`.
+
+### 3 · layout
+
+Páginas 3, 4 e 5 estavam com 230–290 pt de branco no pé (a norma da casa é
+82–92 pt). Ambientes de item único passaram a **imagem solo no topo + banda
+sangrada ancorada no rodapé**, o mesmo tratamento que a p7 já usava. Na p5 os
+cartões estavam na ordem **02 → 01**; agora leem 01 Telescópica à esquerda e
+02 Hettich à direita, com o destaque dourado na Hettich.

@@ -88,6 +88,44 @@ MC conferida de um preço =  BASE − custo_direto / preço
 **Piso da casa: MC 35%. Faixa ideal: 35–40%.** Abaixo do piso é decisão de
 preço do Jonathan, declarada — nunca resultado de conta.
 
+### ⛔ O acréscimo do cartão segura a MC em REAIS, nunca em percentual
+
+**Corrigido pelo Jonathan em 12/09/2026:** *"por que o parcelamento no cartão
+está ficando tão alto, 17% e 30%, se é apenas 1,2% por parcela? Em 10 parcelas
+aumentaria só 12%. O cálculo está errado."*
+
+Estava. Eu calculava o preço parcelado **segurando a MC percentual**:
+
+```python
+P = CD / (base(parcelas) − mc_pct)          # ⛔ +31% em 10×
+```
+
+Isso faz a **margem em reais SUBIR junto com o preço** — de R$ 17.755 para
+R$ 23.271 no job da Luiza. Ou seja, **marca up o custo da operadora em vez de
+repassá-lo**, e contradiz o que a própria proposta diz ao cliente.
+
+```python
+mc_rs = preco_avista * mc(preco_avista, CD)
+P = (mc_rs + CD) / base(parcelas)           # ✅ +15% em 10×
+```
+
+| | à vista | 6× | 10× |
+|---|--:|--:|--:|
+| taxa nominal do cartão | — | 7,2% | 12,0% |
+| **acréscimo correto** | — | **+8,5%** | **+15,2%** |
+| MC em reais | 17.755 | **17.755** | **17.755** |
+| ~~acréscimo errado (MC % constante)~~ | — | ~~+16,6%~~ | ~~+31,1%~~ |
+| ~~MC em reais que isso gerava~~ | — | ~~20.699~~ | ~~23.271~~ |
+
+**Por que o acréscimo (15,2%) é maior que a taxa nominal (12%)?** Porque a taxa
+incide sobre o preço **já acrescido**, e porque nota fiscal, margem de erro,
+serra, manutenção, RT e comissões também correm sobre o acréscimo. No exemplo:
+a operadora leva R$ 7.183 e o preço sobe R$ 7.857 — os R$ 674 de diferença são
+os demais encargos sobre o próprio acréscimo. É **gross-up, não margem**, e dá
+para explicar isso ao cliente sem constrangimento.
+
+Implementado em `motor_mc.preco_repasse()`.
+
 ---
 
 ## 2 · O levantamento do custo direto

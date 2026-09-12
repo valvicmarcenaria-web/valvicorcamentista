@@ -9,10 +9,15 @@ Modelo de custo: `referencias/modelo-de-custo.md` via `motor_mc.py`.
 acrílico R$ 1.200 · espaço gourmet R$ 30.000 na Hettich (teto). Sem comissão de
 vendedor. Prazo 70 dias corridos.
 
-⛔ A ESCADA DE PAGAMENTO SEGUE O MODELO, NÃO O HÁBITO. A taxa de cartão é
-   1,2% por parcela sobre o valor total — 7,2% em 6× e 12% em 10%. O acréscimo
-   da proposta é calculado para SEGURAR A MESMA MC do pagamento à vista, e por
-   isso é maior que os +10% que a casa vinha praticando.
+⛔⛔ [Jonathan 12/09] SEM METRAGEM NENHUMA NA PROPOSTA. Regra da casa, não
+   deste job — `referencias/proposta-comercial.md`. Nenhuma cota, m², contagem
+   de porta, gaveta, prateleira, metro de fita ou de LED. Descreve-se o móvel e
+   o benefício; material, ferragem, função, prazo, garantia e preço ficam.
+
+⛔ [Jonathan 12/09] O ACRÉSCIMO DO CARTÃO SEGURA A MC EM REAIS, não em
+   percentual — `motor_mc.preco_repasse()`. Segurar o percentual fazia a margem
+   subir junto com o preço (+31% em 10×), o que marca up a taxa da operadora em
+   vez de repassá-la. O certo é +8% em 6× e +15% em 10×.
 
 Imagens: renders do próprio caderno, recortados em `img-luiza-raphael/`.
 """
@@ -30,38 +35,36 @@ RT_ON, VEND_ON = True, False
 # ── os cinco itens · (ambiente, nome, imagem, descritivo, preço T, preço H) ──
 ITENS = [
  ('Quarto casal', 'Cabeceira estofada em tecido Bouclé', 'quarto',
-  'Cabeceira de <b>3,10 × 1,10 m</b> em <b>tecido Bouclé</b> sobre estrutura de '
-  'MDF, com <b>cantos superiores arredondados</b> e acabamento em <b>meia '
+  'Cabeceira em <b>tecido Bouclé</b> sobre estrutura de MDF, ocupando a parede '
+  'inteira, com <b>cantos superiores arredondados</b> e acabamento em <b>meia '
   'esquadria</b>. Instalada acima do rodapé, sem apoio no piso.', 7100, 7100),
  ('Quarto casal', 'Penteadeira completa', 'penteadeira',
-  'Bancada de <b>1,30 × 0,40 m</b> em <b>MDF Carvalho Arauco</b>, com quina '
-  'arredondada e <b>tampo em vidro incolor temperado</b>. Duas gavetas rasas de '
-  'organização e <b>gaveteiro auxiliar de três gavetas</b> ao lado. '
-  '<b>Espelho prata colado de 1,30 × 1,00 m</b>, com canto em arco e '
-  '<b>iluminação em LED contornando a borda</b>. Puxador em chanfro usinado; '
-  'interno em MDF Branco TX.', 8500, 8500),
+  'Bancada suspensa em <b>MDF Carvalho Arauco</b>, com quina arredondada e '
+  '<b>tampo em vidro incolor temperado</b>. Gavetas rasas de organização e '
+  '<b>gaveteiro auxiliar</b> ao lado. <b>Espelho prata colado</b> com canto em '
+  'arco e <b>iluminação em LED contornando a borda</b>, acendendo por trás. '
+  'Puxador em chanfro usinado; interno em MDF Branco TX.', 8500, 8500),
  ('Quarto casal', 'Divisórias internas em acrílico', None,
-  'Dois divisores em <b>acrílico sob medida</b>, um por gaveta, com a malha de '
-  'compartimentos do detalhe da prancha — <b>13 · 13 · 13 · 12 cm</b> na largura '
-  'e três profundidades. Feitos para maquiagem e joias, removíveis para limpeza.',
-  1200, 1200),
+  'Divisores em <b>acrílico sob medida</b>, um por gaveta, com a malha de '
+  'compartimentos do detalhe da prancha. Feitos para maquiagem e joias, '
+  'removíveis para limpeza.', 1200, 1200),
  ('Espaço gourmet', 'Conjunto completo do espaço gourmet', 'gourmet',
-  'A corrida inteira, de <b>5,99 m</b>, em <b>MDF Grafito Chess</b> com as '
-  'básculas em <b>MDF Jequitibá</b>: portas da lavanderia do piso ao teto em '
-  '<b>dobradiça camarão</b> · armário superior e inferior da lavanderia · '
-  '<b>vassoureiro de 2,50 m</b> com vassoureiro deslizante, ganchos e três '
-  'prateleiras · armário superior do gourmet com seis portas · <b>duas básculas '
-  'em Jequitibá com pistão a gás</b>, uma em <b>vidro reflecta bronze com perfil '
-  'e puxador sotille bronze</b> e outra com <b>escorredor metálico interno</b>, '
-  'as duas com <b>LED 4000K</b> por baixo · armário inferior de <b>4,30 m</b> '
-  'com básculas, gavetões, quatro gavetas, nicho do forno e porta de temperos. '
-  'Puxador em chanfro usinado; interno em MDF Branco TX.', 26100, 30000),
+  'A corrida inteira em <b>MDF Grafito Chess</b>, com as básculas em <b>MDF '
+  'Jequitibá</b>: portas da lavanderia do piso ao teto em <b>dobradiça '
+  'camarão</b> · armário superior e inferior da lavanderia · <b>vassoureiro do '
+  'piso ao teto</b>, com vassoureiro deslizante, ganchos e prateleiras · '
+  'armário superior do gourmet · <b>básculas em Jequitibá com pistão a gás</b>, '
+  'uma em <b>vidro reflecta bronze com perfil e puxador sotille bronze</b> e '
+  'outra com <b>escorredor metálico interno</b>, ambas com <b>LED 4000K</b> '
+  'por baixo · armário inferior com básculas, gavetões, gavetas, nicho do forno '
+  'e porta de temperos. Puxador em chanfro usinado; interno em MDF Branco TX.',
+  26100, 30000),
  ('Sala da cobertura', 'Painel de TV e rack', 'sala',
-  '<b>Painel de 3,975 × 1,00 m</b> em <b>MDF Griss Chess</b>, construído em '
-  'caixa de 6 cm para receber <b>LED 3000K nas bordas superior e inferior</b> '
-  'sem perfil aparente, com acabamento em meia esquadria e <b>dobradiça de 90° '
-  'para rotação da TV</b>. <b>Rack suspenso de 2,00 m</b> com dois gavetões, '
-  '<b>cantos arredondados</b> e puxador em chanfro usinado.', 9100, 10400),
+  'Painel em <b>MDF Griss Chess</b> ocupando a parede inteira, construído em '
+  'caixa para receber <b>LED 3000K nas bordas superior e inferior</b> sem perfil '
+  'aparente, com acabamento em meia esquadria e <b>dobradiça de 90° para '
+  'rotação da TV</b>. <b>Rack suspenso</b> com gavetões, <b>cantos '
+  'arredondados</b> e puxador em chanfro usinado.', 9100, 10400),
 ]
 
 VERSOES = [
@@ -82,8 +85,9 @@ ESCADA = [('Entrada 30% + saldo via transferência', 0),
           ('Entrada 30% + saldo em até 10× no cartão', 10)]
 PAG = []
 for rot, parc in ESCADA:
-    vs = [round(CD[i]/(M.base(parcelas=parc, rt=RT_ON, vendedor=VEND_ON) - MC[i])/100)*100
-          if parc else TOT[i] for i in range(2)]
+    vs = [TOT[i] if not parc else
+          M.preco_repasse(CD[i], TOT[i], parc, rt=RT_ON, vendedor=VEND_ON)
+          for i in range(2)]
     PAG.append((rot, parc, vs, [v/TOT[i]-1 for i, v in enumerate(vs)]))
 
 def br(v): return f'{v:,.0f}'.replace(',', '.')
@@ -99,11 +103,11 @@ CSS = (open(P/'css-proposta.css', encoding='utf-8').read()
 .amb .d{color:var(--soft);font-size:8.9pt;line-height:1.6;margin-top:2.2mm;}
 .amb .d b{color:var(--ink);}
 .par{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin:0 -19mm;}
-.par .ph{height:74mm;}
+.par .ph{height:82mm;}
 .par .ph:first-child{border-radius:0 2px 2px 0;}
-.solo{margin:0 -19mm;height:84mm;}
-.lin2{display:grid;grid-template-columns:1fr 1fr;gap:7mm;margin-top:6mm;}
-.lin2 > div{border:1.5px solid var(--line);border-radius:6px;padding:8mm 7mm;}
+.solo{margin:0 -19mm;height:76mm;}
+.lin2{display:grid;grid-template-columns:1fr 1fr;gap:7mm;margin-top:8mm;}
+.lin2 > div{border:1.5px solid var(--line);border-radius:6px;padding:11mm 9mm;}
 .lin2 > div.g{border-color:var(--gold);background:rgba(201,169,106,.07);}
 .lin2 .cod{font-family:'Cormorant Garamond',Georgia,serif;font-size:28pt;
   color:var(--gold-lt);font-weight:600;line-height:1;}
@@ -190,9 +194,8 @@ p2 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">Ambiente 01</div>
   <div class="h-sec serif">Quarto casal</div>
   <div class="rule"></div>
-  <p class="lead">Leitura fiel das folhas 1 e 2 do seu caderno — planta, elevação
-  A e elevação B, cotadas a 1/25. Cada medida abaixo saiu da prancha, não de
-  estimativa.</p>
+  <p class="lead">Leitura fiel do seu caderno de marcenaria — planta, elevações
+  e cortes. Cada peça saiu da prancha cotada, não de estimativa por área.</p>
   <div class="par" style="margin-top:6mm;">
     <div class="ph"><img src="{img('quarto')}" alt=""></div>
     <div class="ph"><img src="{img('penteadeira')}" alt=""></div>
@@ -208,17 +211,19 @@ p3 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">Ambiente 02</div>
   <div class="h-sec serif">Espaço gourmet</div>
   <div class="rule"></div>
-  <p class="lead">Uma corrida única de quase seis metros, das folhas 1 a 5 —
-  planta, elevação externa, elevação interna e os cortes AA, BB e CC. Lavanderia
-  fechada, vassoureiro do piso ao teto e a bancada inteira.</p>
-  <div class="par" style="margin-top:6mm;">
-    <div class="ph"><img src="{img('lavanderia')}" alt=""></div>
-    <div class="ph"><img src="{img('gourmet')}" alt=""></div>
+  <p class="lead">Uma corrida única, da lavanderia ao forno: planta, elevação
+  externa, elevação interna e os três cortes do caderno. Lavanderia fechada por
+  portas do piso ao teto, vassoureiro inteiro e a bancada completa.</p>
+  <div class="ph solo" style="margin-top:6mm;"><img src="{img('gourmet')}" alt="">
+    <div class="cap">Espaço gourmet · render do caderno de marcenaria.</div>
   </div>
   {bloco(3, ITENS[3], 4)}
   <div class="nota"><b>Bancada e rodabanca são de pedra</b> e não estão neste
   valor — a marcenaria entrega o corpo, o recorte da cuba e o encosto na pedra.
   Eletrodomésticos, cuba e torneira também são de fornecimento do cliente.</div>
+  <div class="ph banda" style="margin-top:auto;height:52mm;"><img src="{img('lavanderia')}" alt="">
+    <div class="cap">Lavanderia integrada · portas do piso ao teto.</div>
+  </div>
   {foot(3)}
 </div></div>"""
 
@@ -227,18 +232,19 @@ p4 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">Ambiente 03</div>
   <div class="h-sec serif">Sala da cobertura</div>
   <div class="rule"></div>
-  <p class="lead">Das folhas 1 a 3 da sala — planta, elevações A e B e o corte
-  AA. O painel é construído em caixa para que a luz nasça da borda, sem perfil
-  aparente.</p>
-  <div class="par" style="margin-top:6mm;">
-    <div class="ph"><img src="{img('sala')}" alt=""></div>
-    <div class="ph"><img src="{img('estar-jantar')}" alt=""></div>
+  <p class="lead">Planta, elevações e corte da sala. O painel é construído em
+  caixa para que a luz nasça da própria borda, sem perfil aparente.</p>
+  <div class="ph solo" style="margin-top:6mm;"><img src="{img('sala')}" alt="">
+    <div class="cap">Painel de TV e rack · render do caderno de marcenaria.</div>
   </div>
   {bloco(4, ITENS[4], 5)}
   <div class="nota"><b>O revestimento de madeira da parede</b> que aparece no
   render atrás do painel <b>não está descrito no caderno</b> e não está neste
   valor. Se ele fizer parte do escopo, orçamos à parte. A TV e o ponto elétrico
   são da obra.</div>
+  <div class="ph banda" style="margin-top:auto;height:60mm;"><img src="{img('estar-jantar')}" alt="">
+    <div class="cap">O painel visto do estar e jantar.</div>
+  </div>
   {foot(4)}
 </div></div>"""
 
@@ -263,9 +269,9 @@ p5 = f"""<div class="page"><div class="pad">
   estofado e o LED são <b>idênticos</b> nas duas linhas. O que muda é a ferragem
   — e, com ela, o tempo de garantia.</p>
 
-  <div class="lin2">{card(VERSOES[1], g=True)}{card(VERSOES[0])}</div>
+  <div class="lin2">{card(VERSOES[0])}{card(VERSOES[1], g=True)}</div>
 
-  <div class="mesmo">
+  <div class="mesmo" style="margin-top:auto;">
     <div><div class="k">O que não muda</div><div class="d"><b>O desenho e as
       medidas.</b> Mesmos móveis, mesma modulação, mesma distribuição interna
       nos dois casos.</div></div>
@@ -277,7 +283,7 @@ p5 = f"""<div class="page"><div class="pad">
       corte.</div></div>
   </div>
 
-  <div class="nota" style="margin-top:8mm;">Três itens <b>não levam ferragem
+  <div class="nota" style="margin-top:8mm;margin-bottom:2mm;">Três itens <b>não levam ferragem
   nenhuma</b> — a cabeceira estofada, os divisores de acrílico e o painel da
   sala. Eles são o mesmo móvel nas duas linhas e por isso têm <b>o mesmo preço
   nas duas</b>, sem diferença de um real.</div>
@@ -325,9 +331,9 @@ p6 = f"""<div class="page"><div class="pad">
   antes do corte. Se alguma diferir do caderno, avisamos antes de produzir.</div>
 
   <div class="mesmo" style="margin-top:8mm;">
-    <div><div class="k">Na borda</div><div class="d"><b>Fita de borda extra fina
-      de 0,4 mm</b>, colada em máquina, e <b>meia esquadria</b> nos encontros
-      aparentes: o canto fecha em 45°, sem topo de chapa à vista.</div></div>
+    <div><div class="k">Na borda</div><div class="d"><b>Fita de borda extra fina</b>,
+      colada em máquina, e <b>meia esquadria</b> nos encontros aparentes:
+      o canto fecha sem topo de chapa à vista.</div></div>
     <div><div class="k">Nos terceiros</div><div class="d"><b>Espelho, vidro
       temperado, estofamento e acrílico</b> entram coordenados pela Valvic e
       <b>entregues instalados</b> — não sobra ponta para você resolver.</div></div>
@@ -360,8 +366,9 @@ p7 = f"""<div class="page"><div class="pad">
   </table>
   <div class="nota" style="margin-top:3mm;">A entrada libera a compra de
   material e a entrada do projeto na fila de produção; o saldo é pago na
-  entrega. <b>O acréscimo do cartão é o custo da operadora</b>, repassado sem
-  margem — por isso o pagamento via transferência é sempre o melhor valor.</div>
+  entrega. <b>O acréscimo do cartão é a taxa da operadora, repassada sem
+  margem</b> — a Valvic recebe exatamente o mesmo nas três condições. Por isso o
+  pagamento via transferência é sempre o melhor valor para você.</div>
 
   <div class="cnd">
     <div><div class="k">Prazo de entrega</div><div class="d"><b>{PRAZO}</b>,

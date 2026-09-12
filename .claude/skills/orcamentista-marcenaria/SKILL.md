@@ -131,6 +131,13 @@ e estimar pela escala, sinalizando.
 
 ## FASE 3 — ESTRATÉGIA (margem, otimização, proposta)
 
+> ⛔⛔ **A PROPOSTA NÃO LEVA METRAGEM NEM QUANTITATIVO.** [Jonathan 12/09/2026]
+> Nenhuma cota, m², contagem de porta, gaveta, prateleira, ripa, chapa, metro
+> de fita ou de LED, número de dobradiça ou corrediça. Descreve-se o **móvel e
+> o benefício**; material, acabamento, marca de ferragem, função, prazo,
+> garantia e preço ficam. Antes de entregar, rodar o regex de cota no PDF —
+> qualquer ocorrência é erro. Regra completa em `proposta-comercial.md`.
+
 - **Situação de caixa — perguntar em TODA demanda.** Define a MC mínima aceitável:
   crítico ≤25% · ruim ≤30% · normal 30–37% · bom 37–45% · ótimo >45%
   (`validacao-orcamento.md`). Caixa baixo → aceita MC menor por fluxo.
@@ -177,7 +184,8 @@ falhas registradas; a tabela de % é SUPERADA) · `notas-marcos-planilha.md`
 (histórico da planilha; SUPERADO) · `custos.md` (CX, markup) · `chapas.md` ·
 `ferragens.md` · `estrutura-orcamento.md` (rateio por item).
 
-**Estratégia/proposta:** `otimizacao-custos.md` · `proposta-comercial.md` ·
+**Estratégia/proposta:** `otimizacao-custos.md` · ⭐ **`proposta-comercial.md`
+— inclui a regra ⛔ NUNCA PÔR METRAGEM NEM QUANTITATIVO NA PROPOSTA** ·
 `posicionamento.md`.
 
 **Dados e ferramentas:** `dados/materiais.json` (fonte de verdade dos preços) ·

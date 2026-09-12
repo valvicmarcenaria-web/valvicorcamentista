@@ -78,6 +78,26 @@ def mc(preco_venda, custo_direto, parcelas=0, rt=True, vendedor=True):
     return base(parcelas, rt, vendedor) - custo_direto/preco_venda
 
 
+def preco_repasse(custo_direto, preco_avista, parcelas, rt=True, vendedor=True):
+    """Preço na condição parcelada que REPASSA o cartão sem marcar margem.
+
+    ⛔ [Jonathan 12/09/2026] O acréscimo do cartão segura a MC em **REAIS**, não
+    em percentual. Segurar o percentual faz a margem em reais SUBIR junto com o
+    preço — ou seja, marca up o custo da operadora em vez de repassá-lo, e
+    contradiz o que a proposta diz ao cliente.
+
+        ⛔ errado:  P = CD / (base(parcelas) − mc_pct)     → +31% em 10×
+        ✅ certo :  P = (MC_R$ + CD) / base(parcelas)      → +15% em 10×
+
+    O acréscimo fica ACIMA da taxa nominal (15% contra os 12% de 10 × 1,2%)
+    porque a taxa incide sobre o preço JÁ acrescido, e porque nota fiscal,
+    margem de erro, serra, manutenção, RT e comissões também correm sobre o
+    acréscimo. A diferença é o *gross-up*, não margem.
+    """
+    mc_rs = preco_avista*mc(preco_avista, custo_direto, 0, rt, vendedor)
+    return round((mc_rs + custo_direto)/base(parcelas, rt, vendedor)/100)*100
+
+
 def com_embalagem(custo_sem_embalagem):
     """Embalagem = 2% do custo direto, SOMADA ao resto.
 
@@ -108,6 +128,13 @@ if __name__ == '__main__':
     print(f'  {"BASE (custo + MC)":<26}' + ''.join(f'{base(**k)*100:>10.2f}%' for _, k in CEN))
     print(f'  {"MC máxima possível":<26}' + ''.join(f'{base(**k)*100:>10.2f}%' for _, k in CEN))
     print(f'\n  Piso da casa: MC {MC_PISO:.0%} · faixa ideal {MC_IDEAL[0]:.0%}–{MC_IDEAL[1]:.0%}')
+    print('\n  REPASSE DO CARTÃO — MC em R$ constante (nunca em %):')
+    _cd, _p0 = 22033.0, 52000
+    for _n in (6, 10):
+        _p = preco_repasse(_cd, _p0, _n, rt=True, vendedor=False)
+        print(f'     {_n:>2}× ... R$ {brl(_p,0):>9}  +{_p/_p0-1:>5.1%}   '
+              f'taxa nominal {CARTAO_PP*_n:.1%} · MC segue '
+              f'R$ {brl(_p*base(_n, True, False)-_cd, 0)}')
     print(f'\n  ⚠ Com cartão em 10× a base cai de {base()*100:.2f}% para '
           f'{base(parcelas=10)*100:.2f}% — {(base()-base(parcelas=10))*100:.1f} pontos.')
     print(f'    Preço de tabela com cartão NÃO é o mesmo preço de tabela à vista.')

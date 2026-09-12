@@ -216,3 +216,60 @@ por palavra** contra a lista de materiais do motor — não contra a memória do
 levantamento. Palavras que obrigam linha no orçamento: **laca · espelho · vidro
 · estofado · marca de ferragem · LED · inox/dourado · serralheria · pedra ·
 ripado · cava usinada**.
+
+
+---
+
+# ⛔⛔ NUNCA PÔR METRAGEM NEM QUANTITATIVO NA PROPOSTA
+
+**[Jonathan 12/09/2026]** *"Não precisa ficar colocando metragem de nada na
+proposta. Eu já pedi isso pra você várias vezes, mas você está esquecendo.
+Então grave essa regra na skill."*
+
+Ele pediu no SPE Nova Lima (10/09) — *"não fale sobre quantitativo de material
+nem metragem de nada"* — e eu tratei como decisão daquele job. **Não era.
+É regra da casa, vale para toda proposta.**
+
+## A regra
+
+> **A proposta descreve o MÓVEL e o BENEFÍCIO. Nunca a medida, nunca a
+> quantidade.** Sai tudo: cota em metro e centímetro, m², contagem de portas,
+> gavetas, prateleiras, ripas, chapas, metros de fita, metros de LED, número de
+> dobradiças, corrediças ou pistões.
+
+| ⛔ Não escrever | ✅ Escrever |
+|---|---|
+| "Cabeceira estofada de 3,10 × 1,10 m" | "Cabeceira estofada em tecido Bouclé" |
+| "Painel de 3,975 × 1,00 m" | "Painel de TV com iluminação nas bordas" |
+| "vassoureiro de 2,50 m com três prateleiras" | "vassoureiro do piso ao teto, com vassoureiro deslizante" |
+| "armário inferior de 4,30 m com quatro gavetas" | "armário inferior com gavetões, gavetas e porta de temperos" |
+| "roupeiro de 1,54 m com duas portas de correr" | "roupeiro com portas de correr espelhadas" |
+| "6 m de LED com sensor" | "iluminação em LED embutida, com sensor" |
+| "28 ripas em perfil metálico" | "pérgola em perfil metálico revestido em MDF" |
+
+## Por quê
+
+1. **Medida é levantamento, não venda.** O cliente não compra metro quadrado,
+   compra o móvel pronto. Cota na proposta convida a comparar preço por metro
+   com quem orça por metro — e a casa não orça assim.
+2. **Cota vira contrato.** "3,10 m" escrito numa proposta é uma medida que a
+   obra pode desmentir. A proposta já diz que a medida é conferida no local
+   antes do corte; escrever a cota briga com a própria cláusula.
+3. **Quantitativo expõe a conta.** Número de dobradiças e metros de fita é
+   informação de custo, não de benefício — e abre flanco para negociar item.
+
+## O que PODE ficar
+
+- O **material e o acabamento**: MDF Carvalho, Grafito Chess, Branco TX no
+  interno, vidro temperado, espelho prata, Bouclé.
+- A **ferragem por marca e linha**: Hettich Sensys, corrediça telescópica,
+  Dominus, RO65.
+- A **função**: gavetão, báscula, porta de temperos, nicho ventilado, cava
+  usinada, meia esquadria, LED embutido.
+- **Prazo, garantia, condição de pagamento e o preço.**
+- Especificação técnica de durabilidade (ciclos de uma dobradiça, norma) — não
+  é metragem do móvel.
+
+> **O auditor de proposta passa a rodar isto:** regex atrás de
+> `\d+[.,]?\d*\s*(m|cm|mm|m²)` e de contagem de peça no PDF final.
+> **Qualquer ocorrência é erro.**
