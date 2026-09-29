@@ -57,17 +57,18 @@ LACA_M2      = 650.0
 VIDRO_M2     = 300.0    # incolor temperado
 VIDRO_CAN_M2 = 420.0    # ★ canelado — 40% acima do incolor
 VIDRO_BRZ_M2 = 420.0    # ★ bronze   — 40% acima do incolor
-ESPELHO_M2   = 600.0
+ESPELHO_M2   = 650.0    # [Jonathan 29/09] linha própria, R$ 650/m²
 ALUM_M       = 85.0     # ★ perfil de alumínio (bronze / preto fosco), por metro
 ESTOFADO_M2  = 450.0
 TUBO_ALU_M   = 60.0     # tubo 2×2 preto
 LED_M        = 150.0    # LED COB fita + perfil
 USIN_MUX_M2  = 380.0    # ★ usinagem do muxarabi
 
-p, FER, TER = [], defaultdict(float), defaultdict(float)
+p, FER, TER, ESP = [], defaultdict(float), defaultdict(float), defaultdict(float)
 def a(mov, mat, desc, c, l, q=1): p.append((mov, mat, desc, c, l, q))
 def f(mov, v): FER[mov] += v
 def t(mov, v): TER[mov] += v
+def e(mov, m2): ESP[mov] += m2*ESPELHO_M2   # espelho, linha separada
 
 # ══════════════════════════════════════════════════════════════════════════
 # STAND
@@ -340,26 +341,36 @@ t(K, 2.62*0.80*ESTOFADO_M2)
 
 # ── BANHEIRO SOCIAL ───────────────────────────────────────────────────────
 K = 'Banheiro social · gabinete e prateleiras'
-a(K,'TA18','Frente do gabinete',           55, 30, 2)
-a(K,'BR15','Lateral e base',               55, 42, 4)
-a(K,'BR6' ,'Fundo',                        55, 62, 1)
+# ⚠ corrigido 29/09 na E04: a bancada tem 85 (32,5 + 32,5 + 20) e o espelho
+#   acima dela é 85 × 120 — eu tinha lançado 1,2 × 3,70 m, parede inteira.
+a(K,'TA18','Frente do gabinete',           37, 32, 2)
+a(K,'BR15','Lateral e base',               37, 42, 4)
+a(K,'BR6' ,'Fundo',                        37, 85, 1)
 a(K,'TA18','Prateleira suspensa',          62, 15, 6)
 a(K,'TA18','Lateral da torre',            140, 15, 2)
-a(K,'BR18','Chapa de apoio do espelho',   120, 62, 3)
+a(K,'BR18','Chapa de apoio do espelho',   120, 85, 1)
 f(K, 4*DOBR + 6*SUP_PRAT)
-t(K, 1.2*3.70*ESPELHO_M2 + 1.4*LED_M + 0.6*CAVA_M)
+e(K, 0.85*1.20)
+t(K, 1.4*LED_M + 0.6*CAVA_M)
 
 # ── BANHEIRO CASAL ────────────────────────────────────────────────────────
-K = 'Banheiro casal · gabinete e muxarabi'
-a(K,'TA18','Frente do gabinete',           40, 35, 2)
-a(K,'BR15','Lateral e base',               40, 42, 4)
-a(K,'BR6' ,'Fundo',                        40, 72, 1)
+K = 'Banheiro casal · gabinete, espelho e muxarabi'
+# ⚠ corrigido 29/09 na E03: o armário tem 140 e QUATRO portas de 35, e a
+#   parede leva um ESPELHO COM MOLDURA EM MDF TAUARI de 188 × 116 que não
+#   estava na conta.
+a(K,'TA18','Frente do gabinete',           40, 35, 4)
+a(K,'BR15','Lateral e base',               40, 42, 6)
+a(K,'BR6' ,'Fundo',                        40,140, 1)
+a(K,'TA18','Moldura do espelho',          192,  4, 2)
+a(K,'TA18','Moldura do espelho (lateral)',120,  4, 2)
+a(K,'BR18','Chapa de apoio do espelho',   116, 94, 2)
 a(K,'TA18','Prateleira',                   35, 22, 4)
 a(K,'TA18','Lateral da torre',            120, 22, 2)
 a(K,'TA15','Ripa do muxarabi',            120,  2, 46)
 a(K,'TA6' ,'Fundo do muxarabi',           120, 35, 1)
-f(K, 4*DOBR + 4*SUP_PRAT)
-t(K, 1.20*0.35*USIN_MUX_M2 + 0.8*LED_M + 0.7*CAVA_M)
+f(K, 8*DOBR + 4*SUP_PRAT)
+e(K, 1.88*1.16)
+t(K, 1.20*0.35*USIN_MUX_M2 + 0.8*LED_M + 1.4*CAVA_M)
 
 # ══════════════════════════════════════════════════════════════════════════
 # CÁLCULO
@@ -450,7 +461,7 @@ consum = base_fixa*0.06                       # cola, parafuso, limpeza, acabame
 LOG_TOT = sum(LOG.values())
 for mov in MOVS:
     cdi[mov] += (consum + LOG_TOT)*cdi[mov]/base_fixa if base_fixa else 0
-for mov in MOVS: cdi[mov] += FER[mov] + TER[mov]
+for mov in MOVS: cdi[mov] += FER[mov] + TER[mov] + ESP[mov]
 for mov in MOVS: cdi[mov] *= 1 + M.EMBALAGEM  # embalagem 2%, por último
 
 CD = sum(cdi.values())
@@ -461,14 +472,15 @@ CD = sum(cdi.values())
 #   O alvo continua sendo dado por complexidade de PEÇA — é onde a diferença
 #   é real. O que muda é o fechamento: o ambiente recebe um preço só, com o
 #   alvo ponderado pelo custo dos seus itens.
-RT_ON, COMISSAO = False, 0.05
+RT_ON, COMISSAO = False, False
 BASE = M.base(parcelas=0, rt=RT_ON, vendedor=COMISSAO)
 
-MC_ITEM = defaultdict(lambda: 0.38)
+CORTE_MC = 0.05          # [Jonathan 29/09] "reduza 5% de MC"
+MC_ITEM = defaultdict(lambda: 0.38 - CORTE_MC)
 for mov in MOVS:
-    if any(k in mov for k in ('painel', 'painéis', 'forro', 'Painel')): MC_ITEM[mov] = 0.35
+    if any(k in mov for k in ('painel', 'painéis', 'forro', 'Painel')): MC_ITEM[mov] = 0.35 - CORTE_MC
     if any(k in mov for k in ('estante', 'muxarabi', 'bancadas de trabalho',
-                              'guarda-roupa', 'divisória')):            MC_ITEM[mov] = 0.40
+                              'guarda-roupa', 'divisória')):            MC_ITEM[mov] = 0.40 - CORTE_MC
 
 AMBS = list(dict.fromkeys(AMB[m] for m in MOVS))
 ITENS_DE = {am: [m for m in MOVS if AMB[m] == am] for am in AMBS}
@@ -491,7 +503,7 @@ if __name__ == '__main__':
     print('═'*88)
     print('MARCELO TOLENTINO — BRZ NOVA LIMA · stand de vendas + apto decorado')
     print('═'*88)
-    print(f'\nBASE = {BASE*100:.2f}%   à vista · SEM RT · comissão de venda {COMISSAO:.0%}')
+    print(f'\nBASE = {BASE*100:.2f}%   à vista · SEM RT · SEM comissão de venda')
 
     print('\nPLANO DE CORTE')
     tc = 0
@@ -512,9 +524,10 @@ if __name__ == '__main__':
     print('\nABERTURA DO CUSTO DIRETO')
     for rot, v in (('chapa', tc), ('fita de borda', sum(fita_custo.values())),
                    ('consumíveis', consum), ('logística', LOG_TOT),
-                   ('ferragem', sum(FER.values())), ('terceirizados', sum(TER.values())),
+                   ('ferragem', sum(FER.values())), ('espelhos', sum(ESP.values())),
+                   ('terceirizados', sum(TER.values())),
                    ('embalagem (2%)', CD - (tc+sum(fita_custo.values())+consum+LOG_TOT
-                                            +sum(FER.values())+sum(TER.values())))):
+                                            +sum(FER.values())+sum(ESP.values())+sum(TER.values())))):
         print(f'  {rot:<18}R$ {br(v):>9}{v/CD*100:>7.1f}%')
     print(f'  {"CUSTO DIRETO":<18}R$ {br(CD):>9}{100:>7.1f}%')
 

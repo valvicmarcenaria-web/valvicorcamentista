@@ -172,3 +172,92 @@ a linha certa é a terceira.
 segurar a MC em reais porque é repasse de taxa de terceiro. Aqui é o
 contrário — é margem própria que ficou livre, e quem decide para quem ela
 vai é a casa.
+
+---
+
+## 29/09/2026 (3º ajuste) — sem comissão, espelhos à parte, MC −5 pontos
+
+> *"Vamos tirar a comissão de venda. Acrescentar os espelhos: coloque um
+> custo separado, considere um custo de 650,00 o metro quadrado.
+> Reduza 5% de MC também."*
+
+### ⚠ Dois erros meus que os espelhos revelaram
+
+Ir atrás dos espelhos me obrigou a abrir as **folhas 03 dos dois banheiros**,
+que eu não tinha lido na primeira passada. As duas tinham correção:
+
+| | eu tinha lido | a prancha diz |
+|---|---|---|
+| Espelho do banheiro social | parede inteira, **1,2 × 3,70 = 4,44 m²** | sobre a bancada, **0,85 × 1,20 = 1,02 m²** |
+| Espelho do banheiro casal | **não existia na conta** | **espelho com moldura em MDF Tauari, 1,88 × 1,16 = 2,18 m²** |
+| Armário do banheiro casal | 1 frente de 40 × 35 | **140 de largura, 4 portas de 35** |
+
+O erro do social era de R$ 2,2 mil de custo a mais; o do casal, de R$ 1,4 mil
+a menos. Quase se anulam no total, mas estavam os dois errados.
+
+⛔ **A regra de 07/09 pegou de novo pelo avesso: eu parei de ler antes do fim.**
+Quatro folhas ficaram fechadas (as "03" dos banheiros e as de imagens) porque
+achei que banheiro é sempre gabinete e prateleira. Prancha que não foi aberta
+não é prancha lida.
+
+### Espelho vira linha própria
+
+`ESP` entra ao lado de `FER` e `TER`, a **R$ 650/m²**. Não passa pelo rateio
+de consumível e logística — é compra direta, como a ferragem.
+
+| | m² | R$ |
+|---|--:|--:|
+| Banheiro social · espelho prata colado | 1,02 | 663 |
+| Banheiro casal · espelho com moldura | 2,18 | 1.418 |
+| **Total** | **3,20** | **2.081** |
+
+### O modelo agora
+
+`RT_ON, COMISSAO = False, False` → **BASE 85,35%**.
+
+| | encargos | BASE |
+|---|--:|--:|
+| com RT 10% e vendedor 10% | 32,32% | 67,68% |
+| sem RT, comissão 5% (rodada anterior) | 19,07% | 80,93% |
+| **sem RT, sem comissão** | **14,65%** | **85,35%** |
+
+### O corte de MC
+
+Li *"reduza 5% de MC"* como **5 pontos percentuais**: os alvos por
+complexidade saem de 35 / 38 / 40 para **30 / 33 / 35**.
+
+| Ambiente | m² de chapa | custo | venda | MC |
+|---|--:|--:|--:|--:|
+| Copa | 27,1 | 4.623 | 8.610 | 31,7% |
+| Sala de reunião | 8,5 | 2.830 | 5.410 | 33,0% |
+| Sala de ativos | 44,4 | 7.862 | 15.520 | 34,7% |
+| Lounge | 26,7 | 6.132 | 11.080 | 30,0% |
+| Gourmet | 47,8 | 9.635 | 17.600 | 30,6% |
+| **Stand** | **154,4** | **31.081** | **58.220** | **32,0%** |
+| Cozinha e área de serviço | 69,6 | 22.036 | 42.450 | 33,4% |
+| Sala e varanda | 40,9 | 9.994 | 19.300 | 33,6% |
+| Quarto casal | 29,7 | 11.122 | 21.750 | 34,2% |
+| Quarto solteiro | 25,2 | 9.497 | 18.630 | 34,4% |
+| Banheiro social | 3,2 | 1.554 | 2.970 | 33,0% |
+| Banheiro casal | 6,9 | 3.906 | 7.760 | 35,0% |
+| **Decorado** | **175,5** | **58.108** | **112.860** | **33,9%** |
+| **TOTAL** | **329,8** | **89.189** | **171.080** | **33,2%** |
+
+### ⚠⚠ A MC de 33,2% está ABAIXO do piso da casa
+
+`modelo-de-custo.md` crava piso em **35%**, faixa ideal 35–40%. Este
+fechamento fica **1,8 ponto abaixo do piso**, e o Lounge (30,0%) e o Gourmet
+(30,6%) ficam **5 pontos abaixo**.
+
+| leitura | preço | MC | MC R$ |
+|---|--:|--:|--:|
+| **−5 pontos: 30 / 33 / 35** ← entregue | **171.080** | **33,2%** | **56.776** |
+| −5% relativo: 33,3 / 36,1 / 38 | 181.830 | 36,3% | 66.003 |
+| no piso da casa, MC 35% | 177.140 | 35,0% | 62.000 |
+| sem corte (rodada anterior) | 189.160 | 38,2% | 72.259 |
+
+Somando as três rodadas: o preço saiu de **R$ 232.430** para **R$ 171.080**,
+−26%, com o **mesmo custo direto**. Dos R$ 61 mil, R$ 43 mil vieram de tirar
+RT e comissão (encargo que a casa deixou de pagar) e **R$ 18 mil vieram da
+margem**. É decisão de preço do Jonathan, registrada — não é consequência
+técnica.

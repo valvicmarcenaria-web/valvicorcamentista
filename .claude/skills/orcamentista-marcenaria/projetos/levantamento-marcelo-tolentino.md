@@ -235,9 +235,9 @@ Pé-direito 240. Parede em porcelanato cinza existente padrão construtora.
 
 **Marcenaria Valvic:**
 1. **Armário (gabinete) em MDF Tauari Guararapes com puxador cava** —
-   h=55, base 23.
-2. **Chapa de MDF para o espelho prata colado** — 120 de altura.
-   Espelho é vidraceiro; a chapa é nossa.
+   bancada de **85** (32,5 + 32,5 + 20), **2 portas de abrir**, frente h=37.
+2. **Espelho prata colado em chapa de MDF** — **85 × 120 = 1,02 m²**
+   (corrigido 29/09 na E04: eu tinha lido a parede inteira, 1,2 × 3,70).
 3. **Prateleiras suspensas em MDF Tauari Guararapes** — torre de **6
    prateleiras** (21 cada), 140 de altura, prof. 15, com **fita de LED na
    lateral da prateleira**.
@@ -253,9 +253,14 @@ incolor com borda preto fosco em alumínio 5 cm, LED.
 Pé-direito 240.
 
 **Marcenaria Valvic:**
-1. **Armário (gabinete) em MDF Tauari Guararapes com puxador cava** — h=40,
-   rodapé 15.
-2. ⭐ **Torre de prateleiras em MDF Tauari Guararapes com FUNDO EM MUXARABI** —
+1. **Armário (gabinete) em MDF Tauari Guararapes com puxador cava** —
+   **140 de largura, 4 portas de 35**, frente h=40, rodapé 15
+   (corrigido 29/09 na E03: eu tinha lido 2 portas).
+2. ⭐ **Espelho com moldura em MDF Tauari Guararapes** — **188 × 116 = 2,18 m²**,
+   moldura de 2 em volta. **Não estava na primeira leitura** — apareceu na E03,
+   folha que eu ainda não tinha aberto. A E04 mostra o mesmo espelho de topo,
+   não um segundo.
+3. ⭐ **Torre de prateleiras em MDF Tauari Guararapes com FUNDO EM MUXARABI** —
    120 de altura, 4 prateleiras (35 / 25 / 25 / 25).
    **Muxarabi de nichos de 5 × 5 cm com ripa de 1,5** (DET.01) — usinagem
    fina, item de complexidade alta.
