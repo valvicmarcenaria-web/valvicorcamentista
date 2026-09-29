@@ -455,64 +455,83 @@ for mov in MOVS: cdi[mov] *= 1 + M.EMBALAGEM  # embalagem 2%, por último
 
 CD = sum(cdi.values())
 
-# ── MC direcionada por complexidade ───────────────────────────────────────
-MC_ALVO = defaultdict(lambda: 0.38)
-for mov in MOVS:
-    if any(k in mov for k in ('painel', 'painéis', 'forro', 'Painel')): MC_ALVO[mov] = 0.35
-    if any(k in mov for k in ('estante', 'muxarabi', 'bancadas de trabalho',
-                              'guarda-roupa', 'divisória')):            MC_ALVO[mov] = 0.40
-BASE = M.base(parcelas=0, rt=True, vendedor=False)
+# ── MC direcionada por complexidade, fechada POR AMBIENTE ────────────────
+# [Jonathan 29/09] "Deixar apenas uma comissão de venda de 5%, sem RT."
+# [Jonathan 29/09] "Separe os custos por ambiente e não por item."
+#   O alvo continua sendo dado por complexidade de PEÇA — é onde a diferença
+#   é real. O que muda é o fechamento: o ambiente recebe um preço só, com o
+#   alvo ponderado pelo custo dos seus itens.
+RT_ON, COMISSAO = False, 0.05
+BASE = M.base(parcelas=0, rt=RT_ON, vendedor=COMISSAO)
 
-PV = {mov: round(cdi[mov]/(BASE - MC_ALVO[mov])/10)*10 for mov in MOVS}
-TOT = sum(PV.values())
-MC_REAL = {mov: BASE - cdi[mov]/PV[mov] for mov in MOVS}
+MC_ITEM = defaultdict(lambda: 0.38)
+for mov in MOVS:
+    if any(k in mov for k in ('painel', 'painéis', 'forro', 'Painel')): MC_ITEM[mov] = 0.35
+    if any(k in mov for k in ('estante', 'muxarabi', 'bancadas de trabalho',
+                              'guarda-roupa', 'divisória')):            MC_ITEM[mov] = 0.40
+
+AMBS = list(dict.fromkeys(AMB[m] for m in MOVS))
+ITENS_DE = {am: [m for m in MOVS if AMB[m] == am] for am in AMBS}
+CD_AMB   = {am: sum(cdi[m] for m in ITENS_DE[am]) for am in AMBS}
+AR_AMB   = {am: sum(area_mov[m] for m in ITENS_DE[am]) for am in AMBS}
+MC_ALVO  = {am: sum(cdi[m]*MC_ITEM[m] for m in ITENS_DE[am])/CD_AMB[am] for am in AMBS}
+
+PV      = {am: round(CD_AMB[am]/(BASE - MC_ALVO[am])/10)*10 for am in AMBS}
+TOT     = sum(PV.values())
+CD      = sum(CD_AMB.values())
+MC_REAL = {am: BASE - CD_AMB[am]/PV[am] for am in AMBS}
+FR_DE   = {am: FRENTE[ITENS_DE[am][0]] for am in AMBS}
+
+assert abs(sum(CD_AMB.values()) - sum(cdi.values())) < 0.01
+assert abs(sum(PV.values()) - TOT) < 0.01
 
 # ══════════════════════════════════════════════════════════════════════════
 if __name__ == '__main__':
     br = lambda v: f'{v:,.0f}'.replace(',', '.')
-    print('═'*96)
+    print('═'*88)
     print('MARCELO TOLENTINO — BRZ NOVA LIMA · stand de vendas + apto decorado')
-    print('═'*96)
-    print(f'\nBASE = {BASE*100:.2f}%  (à vista · com RT · sem vendedor)\n')
+    print('═'*88)
+    print(f'\nBASE = {BASE*100:.2f}%   à vista · SEM RT · comissão de venda {COMISSAO:.0%}')
 
-    print('PLANO DE CORTE')
+    print('\nPLANO DE CORTE')
     tc = 0
     for m in sorted(CH, key=lambda k: (k[:2], k)):
         n = CH[m]; c = n*PRECO[m]; tc += c
-        print(f'  {NOME[m]:<16}{area[m]:>7.2f} m² → {n:>3} chapa(s) × R$ {PRECO[m]:>6.0f} '
-              f'= R$ {br(c):>9}   aprov. {area[m]/(n*CH_AREA)*100:>3.0f}%')
+        print(f'  {NOME[m]:<16}{area[m]:>7.2f} m² → {n:>3} chapa × R$ {PRECO[m]:>5.0f} '
+              f'= R$ {br(c):>7}   aprov. {area[m]/(n*CH_AREA)*100:>3.0f}%')
     tch = sum(CH.values())
     print(f'  {"TOTAL":<16}{ar_tot:>7.2f} m² → {tch:>3} chapas'
-          f'                 R$ {br(tc):>9}   médio {ar_tot/(tch*CH_AREA)*100:.0f}%')
+          f'                R$ {br(tc):>7}   médio {ar_tot/(tch*CH_AREA)*100:.0f}%')
 
-    print('\nLOGÍSTICA (por endereço)')
+    print('\nLOGÍSTICA (por endereço, não por ambiente)')
     for fr, d in log_fr.items():
-        print(f'  {fr:<10}{fr_area[fr]:>7.1f} m²  frete compra {br(d["compra"]):>5} · '
-              f'frete entrega {br(d["entrega"]):>5} · equipe {br(d["equipe"]):>5} · '
-              f'setup {br(d["setup"]):>5}   = R$ {br(sum(d.values())):>6}')
+        print(f'  {fr:<10}{fr_area[fr]:>6.1f} m²   compra {br(d["compra"]):>5} · '
+              f'entrega {br(d["entrega"]):>5} · equipe {br(d["equipe"]):>5} · '
+              f'medição {br(d["setup"]):>5}  = R$ {br(sum(d.values())):>6}')
 
-    print(f'\nCUSTO DIRETO  R$ {br(CD)}   ·   chapa {br(tc)} · fita {br(sum(fita_custo.values()))}'
-          f' · consumível {br(consum)} · logística {br(LOG_TOT)}'
-          f' · ferragem {br(sum(FER.values()))} · terceiros {br(sum(TER.values()))}')
+    print('\nABERTURA DO CUSTO DIRETO')
+    for rot, v in (('chapa', tc), ('fita de borda', sum(fita_custo.values())),
+                   ('consumíveis', consum), ('logística', LOG_TOT),
+                   ('ferragem', sum(FER.values())), ('terceirizados', sum(TER.values())),
+                   ('embalagem (2%)', CD - (tc+sum(fita_custo.values())+consum+LOG_TOT
+                                            +sum(FER.values())+sum(TER.values())))):
+        print(f'  {rot:<18}R$ {br(v):>9}{v/CD*100:>7.1f}%')
+    print(f'  {"CUSTO DIRETO":<18}R$ {br(CD):>9}{100:>7.1f}%')
 
-    print('\n' + '─'*96)
-    print(f'{"ITEM":<48}{"m² chapa":>9}{"CUSTO":>11}{"VENDA":>11}{"MC":>7}')
-    print('─'*96)
-    _amb = None
-    for mov in MOVS:
-        am = AMB[mov]
-        if am != _amb: print(f'\n  {am.upper()}'); _amb = am
-        nome = mov.split(' · ')[1] if ' · ' in mov else mov
-        print(f'    {nome:<44}{area_mov[mov]:>8.2f}{br(cdi[mov]):>11}{br(PV[mov]):>11}'
-              f'{MC_REAL[mov]*100:>6.1f}%')
-    print('─'*96)
-    print(f'{"TOTAL":<48}{ar_tot:>8.2f}{br(CD):>11}{br(TOT):>11}'
-          f'{(BASE - CD/TOT)*100:>6.1f}%')
-
-    print('\nPOR FRENTE')
-    for frente, ambs in (('STAND', ('Copa','Sala de reunião','Sala de ativos','Lounge','Gourmet')),
-                         ('DECORADO', ('Cozinha','Sala','Quarto casal','Quarto solteiro',
-                                       'Banheiro social','Banheiro casal'))):
-        c = sum(cdi[m] for m in MOVS if AMB[m] in ambs)
-        v = sum(PV[m]  for m in MOVS if AMB[m] in ambs)
-        print(f'  {frente:<12}custo R$ {br(c):>9}   venda R$ {br(v):>9}   MC {(BASE-c/v)*100:.1f}%')
+    print('\n' + '─'*88)
+    print(f'{"AMBIENTE":<26}{"m² chapa":>10}{"CUSTO":>12}{"VENDA":>12}{"MC alvo":>10}{"MC":>8}')
+    print('─'*88)
+    for fr in ('Stand', 'Decorado'):
+        print(f'\n  {fr.upper()}')
+        for am in AMBS:
+            if FR_DE[am] != fr: continue
+            print(f'    {am:<22}{AR_AMB[am]:>10.2f}{br(CD_AMB[am]):>12}{br(PV[am]):>12}'
+                  f'{MC_ALVO[am]*100:>9.1f}%{MC_REAL[am]*100:>7.1f}%')
+        c = sum(CD_AMB[a] for a in AMBS if FR_DE[a] == fr)
+        v = sum(PV[a] for a in AMBS if FR_DE[a] == fr)
+        print(f'    {"subtotal "+fr.lower():<22}{fr_area[fr]:>10.2f}{br(c):>12}{br(v):>12}'
+              f'{"":>10}{(BASE-c/v)*100:>7.1f}%')
+    print('─'*88)
+    print(f'  {"TOTAL":<24}{ar_tot:>10.2f}{br(CD):>12}{br(TOT):>12}{"":>10}'
+          f'{(BASE - CD/TOT)*100:>7.1f}%')
+    print('─'*88)

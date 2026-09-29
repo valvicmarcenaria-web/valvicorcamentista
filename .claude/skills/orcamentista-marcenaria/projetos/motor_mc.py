@@ -45,12 +45,24 @@ EMBALAGEM = 0.02      # sobre o CUSTO DIRETO do projeto, não sobre o preço
 MC_PISO, MC_IDEAL = 0.35, (0.35, 0.40)
 
 
+def _taxa(v, padrao):
+    """rt e vendedor aceitam bool (liga/desliga no padrão) ou a alíquota.
+
+    [Jonathan 29/09/2026] A comissão de venda não é sempre 10%. No Marcelo
+    Tolentino ela é 5% e não há RT. Passar `vendedor=0.05` fixa a alíquota;
+    `True` mantém o padrão da casa e `False` zera a linha.
+    """
+    if v is True:  return padrao
+    if v is False or v is None: return 0.0
+    return float(v)
+
+
 def encargos(parcelas=0, rt=True, vendedor=True):
     """Encargos percentuais sobre o preço, abertos linha a linha."""
     cartao = CARTAO_PP * parcelas
     liq    = 1 - NF - cartao                   # base do RT e do vendedor
-    e_rt   = liq * RT       if rt       else 0.0
-    e_vend = liq * VENDEDOR if vendedor else 0.0
+    e_rt   = liq * _taxa(rt, RT)
+    e_vend = liq * _taxa(vendedor, VENDEDOR)
     liq2   = liq - e_rt - e_vend               # base das comissões de produção
     d = {'nota fiscal': NF, 'taxa de cartão': cartao, 'margem de erro': ERRO,
          'desgaste de serra': SERRA, 'manutenção de máquinas': MANUT,

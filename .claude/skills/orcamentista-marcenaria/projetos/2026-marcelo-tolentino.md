@@ -104,3 +104,71 @@ armário; painelaria legitimamente fica abaixo dela. O que vale conferir é a
 7. ⚠ A **bancada do gourmet é alvenaria pré-executada** com granito por cima;
    a prancha manda "ajustar de acordo com a alvenaria". O armário interno é
    nosso e depende dessa medida — **conferir no local antes do corte**.
+
+---
+
+## 29/09/2026 (2º ajuste) — comissão de 5%, sem RT, fechamento por ambiente
+
+> *"Vamos deixar apenas uma comissão de venda de 5%, sem considerar RT.
+> Separe os custos por ambiente e não por item."*
+
+### O que mudou no modelo
+
+`motor_mc.py` ganhou `_taxa()`: `rt` e `vendedor` passam a aceitar **a
+alíquota**, não só ligado/desligado. `True` mantém o padrão da casa, `False`
+zera, e um número fixa a taxa. Aqui: `rt=False, vendedor=0.05`.
+
+| | encargos | BASE |
+|---|--:|--:|
+| antes — com RT 10%, sem vendedor | 23,48% | 76,52% |
+| **agora — sem RT, comissão 5%** | **19,07%** | **80,93%** |
+
+São **+4,42 pontos** de base livre.
+
+### O fechamento
+
+| Ambiente | m² de chapa | custo | venda | MC |
+|---|--:|--:|--:|--:|
+| Copa | 27,1 | 4.591 | 10.370 | 36,7% |
+| Sala de reunião | 8,5 | 2.837 | 6.610 | 38,0% |
+| Sala de ativos | 44,4 | 7.931 | 19.230 | 39,7% |
+| Lounge | 26,7 | 6.119 | 13.320 | 35,0% |
+| Gourmet | 47,8 | 9.470 | 20.900 | 35,6% |
+| **Stand** | **154,4** | **30.948** | **70.430** | **37,0%** |
+| Cozinha e área de serviço | 69,6 | 21.976 | 51.720 | 38,4% |
+| Sala e varanda | 40,9 | 9.854 | 23.270 | 38,6% |
+| Quarto casal | 29,7 | 11.107 | 26.620 | 39,2% |
+| Quarto solteiro | 25,2 | 9.461 | 22.770 | 39,4% |
+| Banheiro social | 4,8 | 3.829 | 8.920 | 38,0% |
+| Banheiro casal | 3,6 | 1.842 | 4.500 | 40,0% |
+| **Decorado** | **173,8** | **58.069** | **137.800** | **38,8%** |
+| **TOTAL** | **328,1** | **89.017** | **208.230** | **38,2%** |
+
+O alvo de MC continua vindo da **complexidade da peça** — é onde a diferença
+é real. O que mudou é o fechamento: cada ambiente recebe **um preço só**, com
+o alvo ponderado pelo custo dos seus itens. Por isso a Copa fecha em 36,7%
+(mistura painel a 35% com armário a 38%) e o Banheiro casal em 40% (só o
+muxarabi).
+
+### ⚠ O que os 4,42 pontos fizeram com a margem em reais
+
+Segurar a **MC em percentual** faz o preço cair e **a margem em reais cair
+junto** — o cliente fica com 100% do que o RT liberou:
+
+| leitura | preço | MC % | MC R$ |
+|---|--:|--:|--:|
+| antes (com RT) | 232.430 | 38,2% | 88.826 |
+| **segurando a MC% em 38,2%** | **208.230** | **38,2%** | **79.508** |
+| segurando a MC em reais | 219.740 | 40,4% | 88.824 |
+| mantendo o preço de antes | 232.430 | 42,6% | 99.094 |
+
+**São R$ 9.318 a menos de contribuição em reais pelo mesmo trabalho.** O
+método da casa direciona MC em percentual, então entreguei a primeira linha.
+Mas a decisão de preço é do Jonathan: tirar o RT não torna o móvel mais
+barato de fazer, e se a intenção era ficar com a folga em vez de repassá-la,
+a linha certa é a terceira.
+
+⛔ Não confundir com a regra do cartão (12/09): lá o acréscimo **tem** de
+segurar a MC em reais porque é repasse de taxa de terceiro. Aqui é o
+contrário — é margem própria que ficou livre, e quem decide para quem ela
+vai é a casa.
