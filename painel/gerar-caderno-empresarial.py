@@ -435,7 +435,7 @@ expansão</b> com os investimentos abertos item a item.</p>
   <div class="kpi f"><div class="kl">Falta produzir</div><div class="kv"><small>R$</small> 497<small>,1 mil</small></div><div class="kd">66% da carteira ainda por fabricar</div></div>
 </div>
 <div class="kpis k4 mts">
-  <div class="kpi e"><div class="kl">Equipe</div><div class="kv">16<small> + 2 sócios</small></div><div class="kd">9 PJ e 7 CLT · folha de R$ 78,2 mil por mês</div></div>
+  <div class="kpi e"><div class="kl">Equipe</div><div class="kv">17<small> + 2 sócios</small></div><div class="kd">9 PJ e 8 CLT · folha de R$ 80,6 mil por mês</div></div>
   <div class="kpi a"><div class="kl">Custo fixo mensal</div><div class="kv"><small>R$</small> 77,2<small> mil</small></div><div class="kd">Folha R$ 62,6k + estrutura R$ 14,6k · setembro</div></div>
   <div class="kpi d"><div class="kl">Parque produtivo</div><div class="kv"><small>R$</small> 506<small> mil</small></div><div class="kd">Instalado e em grande parte quitado</div></div>
   <div class="kpi c"><div class="kl">Horizonte</div><div class="kv"><small>R$</small> 1<small> mi/mês</small></div><div class="kd">Meta aspiracional · hoje o teto é ~R$ 250 mil</div></div>
@@ -754,7 +754,7 @@ page('Parte II · Estrutura & Pessoas', 'Folha mensal · dado de remuneração',
     <tr><td class="nm">Jonathan Oliveira</td><td>Diretor Comercial &amp; Experiência</td><td><span class="badge b-soc">Sócio</span></td><td class="num sub">10.000</td><td class="dt">pró-labore</td></tr>
     <tr><td class="nm">Paulo Henrique</td><td>Diretor de Operações &amp; Tecnologia</td><td><span class="badge b-soc">Sócio</span></td><td class="num sub">10.000</td><td class="dt">pró-labore</td></tr>
     <tr class="sec2"><td colspan="5">Prestação de serviços · PJ</td></tr>
-    <tr><td class="nm">Ronald</td><td class="dt">função a confirmar</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">6.500</td><td class="dt">sem comissão · VT 550</td></tr>
+    <tr><td class="nm">Ronald</td><td>Marceneiro</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">6.500</td><td class="dt">sem comissão · VT 550</td></tr>
     <tr><td class="nm">Lorrane</td><td>Projetista</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">4.800</td><td class="dt">com comissão</td></tr>
     <tr><td class="nm">Deivison</td><td>Coordenador de Produção</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">4.000</td><td class="dt">com comissão</td></tr>
     <tr><td class="nm">Bruna</td><td>Arquiteta · projeto e programação</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">4.000</td><td class="dt">sem comissão</td></tr>
@@ -765,15 +765,15 @@ page('Parte II · Estrutura & Pessoas', 'Folha mensal · dado de remuneração',
     <tr><td class="nm">Jhon</td><td>Marceneiro</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">3.300</td><td class="dt">com comissão</td></tr>
     <tr class="sec2"><td colspan="5">Carteira assinada · CLT</td></tr>
     <tr><td class="nm">Lucas</td><td>Projetista</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">3.500</td><td class="dt">VT 520</td></tr>
-    <tr><td class="nm">Davi</td><td>Ajudante</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.200</td><td class="dt">VT 450 + VR 300</td></tr>
+    <tr><td class="nm">Davi</td><td>Marceneiro Júnior</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.200</td><td class="dt">VT 450 + VR 300</td></tr>
+    <tr><td class="nm">Karla</td><td>Administrativo</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.000</td><td class="dt">VT 550 + VR 500</td></tr>
     <tr><td class="nm">Jomar</td><td>Marceneiro</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.000</td><td class="dt">VT 400 + VR 300</td></tr>
-    <tr><td class="nm">Bruno</td><td class="dt">função a confirmar</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.000</td><td class="dt">VT 300 + VR 300</td></tr>
-    <tr><td class="nm">Wallace</td><td>Ajudante</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.750</td><td class="dt">VT 400 + VR 300</td></tr>
-    <tr><td class="nm">Douglas</td><td class="dt">função a confirmar</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.620</td><td class="dt">VT 300 + VR 300</td></tr>
+    <tr><td class="nm">Bruno</td><td>Auxiliar de Marceneiro</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.000</td><td class="dt">VT 300 + VR 300</td></tr>
+    <tr><td class="nm">Wallace</td><td>Trainee</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.750</td><td class="dt">VT 400 + VR 300</td></tr>
+    <tr><td class="nm">Douglas</td><td>Trainee</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.620</td><td class="dt">VT 300 + VR 300</td></tr>
     <tr><td class="nm">Jonathan Godoy</td><td>Ajudante Geral</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.620</td><td class="dt">VT 300 + VR 300</td></tr>
-    <tr class="enc"><td colspan="3">Benefícios · VT e VR</td><td class="num">5.020</td><td class="dt" style="color:#96803f">VT 3.220 + VR 1.800</td></tr>
-    <tr class="enc"><td colspan="3">INSS sobre o pró-labore · GPS</td><td class="num">715</td><td class="dt" style="color:#96803f">encargo dos sócios</td></tr>
-    <tr class="tot"><td colspan="3">Folha mensal · 18 pessoas <span class="fn">2 sócios · 9 PJ · 7 CLT</span></td><td class="num">78.225</td><td></td></tr>
+    <tr class="enc"><td colspan="3">Benefícios · VT e VR</td><td class="num">6.070</td><td class="dt" style="color:#96803f">VT 3.770 + VR 2.300</td></tr>
+    <tr class="tot"><td colspan="3">Folha mensal · 19 pessoas <span class="fn">2 sócios · 9 PJ · 8 CLT</span></td><td class="num">80.560</td><td></td></tr>
   </tbody>
 </table>
 
@@ -1009,9 +1009,9 @@ page('Parte III · Economia da Operação', 'Custo fixo · agosto e setembro de 
 <div class="cards c3">
   <div class="card"><div class="ct">PJ · produção, projeto e tecnologia</div><h4>Ronald, Lorrane, Deivison, Bruna, Samuel, Cesar, Joelson, Jackson, Jhon</h4>
     <p>Os papéis de <b>maior autonomia técnica</b> e remuneração variável relevante. Comissionados por etapa executada.</p></div>
-  <div class="card"><div class="ct">CLT · projeto, formação e apoio</div><h4>Lucas, Davi, Jomar, Bruno, Wallace, Douglas, J. Godoy</h4>
-    <p>Funções de <b>projeto, formação e apoio</b>, com vale-transporte e vale-refeição por pessoa —
-    <b>R$ 5.020 por mês</b> no conjunto, sendo R$ 3.220 de VT e R$ 1.800 de VR.</p></div>
+  <div class="card"><div class="ct">CLT · projeto, administrativo, formação e apoio</div><h4>Lucas, Karla, Davi, Jomar, Bruno, Wallace, Douglas, J. Godoy</h4>
+    <p>Funções de <b>projeto, administrativo, formação e apoio</b>, com vale-transporte e vale-refeição
+    por pessoa — <b>R$ 6.070 por mês</b> no conjunto, sendo R$ 3.770 de VT e R$ 2.300 de VR.</p></div>
   <div class="card"><div class="ct">Variável · só existe com venda</div><h4>Comissões e participação</h4>
     <p>2,5% fabricação + 2,5% montagem por profissional, 1,0% de coordenação para o Deivson e R$ 2,00/chapa para
     o Joelson. A Bruna tem <b>50% dos projetos que vender</b>. <b>Nada disso é folha fixa.</b></p></div>
@@ -1032,7 +1032,7 @@ page('Parte III · Economia da Operação', 'Custo fixo · agosto e setembro de 
 
 # ── 17 folha e estrutura, item a item
 page('Parte III · Economia da Operação', 'Custo fixo · detalhamento', 'Folha e estrutura, item a item',
-     'Cada pessoa e cada rubrica do custo fixo mensal. A folha está atualizada para o quadro atual, de 18 pessoas.',
+     'Cada pessoa e cada rubrica do custo fixo mensal. A folha está atualizada para o quadro atual, de 19 pessoas.',
      """
 <div class="sec"><span class="bar"></span><span class="tx">Folha de pagamento</span><span class="ct">custo total por pessoa · fixo mais VT e VR</span></div>
 <table class="xt">
@@ -1041,7 +1041,7 @@ page('Parte III · Economia da Operação', 'Custo fixo · detalhamento', 'Folha
   <tbody>
     <tr><td class="nm">Jonathan Oliveira</td><td>Diretor Comercial &amp; Experiência</td><td><span class="badge b-soc">Sócio</span></td><td class="num sub">10.000</td></tr>
     <tr><td class="nm">Paulo Henrique</td><td>Diretor de Operações &amp; Tecnologia</td><td><span class="badge b-soc">Sócio</span></td><td class="num sub">10.000</td></tr>
-    <tr><td class="nm">Ronald</td><td class="dt">função a confirmar</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">7.050</td></tr>
+    <tr><td class="nm">Ronald</td><td>Marceneiro</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">7.050</td></tr>
     <tr><td class="nm">Lorrane</td><td>Projetista</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">4.800</td></tr>
     <tr><td class="nm">Lucas</td><td>Projetista</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">4.020</td></tr>
     <tr><td class="nm">Deivison</td><td>Coordenador de Produção</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">4.000</td></tr>
@@ -1051,14 +1051,14 @@ page('Parte III · Economia da Operação', 'Custo fixo · detalhamento', 'Folha
     <tr><td class="nm">Joelson</td><td>Operador CNC &amp; máquinas</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">3.800</td></tr>
     <tr><td class="nm">Jackson</td><td>Marceneiro Pleno</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">3.600</td></tr>
     <tr><td class="nm">Jhon</td><td>Marceneiro</td><td><span class="badge b-pj">PJ</span></td><td class="num sub">3.300</td></tr>
-    <tr><td class="nm">Davi</td><td>Ajudante</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.950</td></tr>
+    <tr><td class="nm">Karla</td><td>Administrativo</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">3.050</td></tr>
+    <tr><td class="nm">Davi</td><td>Marceneiro Júnior</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.950</td></tr>
     <tr><td class="nm">Jomar</td><td>Marceneiro</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.700</td></tr>
-    <tr><td class="nm">Bruno</td><td class="dt">função a confirmar</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.600</td></tr>
-    <tr><td class="nm">Wallace</td><td>Ajudante</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.450</td></tr>
-    <tr><td class="nm">Douglas</td><td class="dt">função a confirmar</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.220</td></tr>
+    <tr><td class="nm">Bruno</td><td>Auxiliar de Marceneiro</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.600</td></tr>
+    <tr><td class="nm">Wallace</td><td>Trainee</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.450</td></tr>
+    <tr><td class="nm">Douglas</td><td>Trainee</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.220</td></tr>
     <tr><td class="nm">Jonathan Godoy</td><td>Ajudante Geral</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.220</td></tr>
-    <tr><td class="nm">INSS sobre pró-labore</td><td class="dt">Encargo dos sócios · GPS</td><td class="dt">—</td><td class="num sub">715</td></tr>
-    <tr class="tot"><td colspan="3">Total da folha · 18 pessoas <span class="fn">fixo mais VT e VR; as comissões são variáveis e entram por venda</span></td><td class="num">78.225</td></tr>
+    <tr class="tot"><td colspan="3">Total da folha · 19 pessoas <span class="fn">fixo mais VT e VR; as comissões são variáveis e entram por venda</span></td><td class="num">80.560</td></tr>
   </tbody>
 </table>
 
