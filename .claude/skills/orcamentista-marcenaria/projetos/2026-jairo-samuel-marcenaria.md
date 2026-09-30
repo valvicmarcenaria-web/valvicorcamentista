@@ -81,3 +81,50 @@ as prateleiras/tampo MDF (cozinha, mesa/painel suíte) · **bancadas de pedra** 
 8. Situação de caixa: **não perguntada** — MCs já vieram definidas (37%/42%).
 
 **Arquivos:** `orcamento-jairo-samuel.json` · este `.md`. Caderno-fonte no upload da sessão.
+
+---
+
+## 30/09/2026 — rateio do fechamento em R$ 63.000
+
+> *"Agora vamos separar os itens do Jairo, considerando que foi vendido por
+> 63k."*
+
+Base: a **linha Essencial** (Hardt · 5 anos), R$ 70.400, com a alocação por
+ambiente que já estava registrada aqui. Fator `63.000 / 70.400 = 0,894886`
+— desconto de **10,51%**.
+
+| Ambiente | de tabela | **rateado** | % |
+|---|--:|--:|--:|
+| Sala — Cristaleira | 10.000 | **8.950** | 14,2% |
+| Cozinha completa | 28.000 | **25.050** | 39,8% |
+| Quarto Hóspede — Cabeceira | 5.000 | **4.470** | 7,1% |
+| Quarto Hóspede — Roupeiro | 12.700 | **11.370** | 18,0% |
+| Quarto Suíte — Roupeiro | 10.500 | **9.400** | 14,9% |
+| Quarto Suíte — Painel + mesa | 4.200 | **3.760** | 6,0% |
+| **TOTAL** | **70.400** | **63.000** | **100%** |
+
+Rateio proporcional, arredondado a R$ 10, com a sobra na maior linha. Fecha
+exatamente em R$ 63.000.
+
+**É o mais limpo dos três rateios de hoje:** os seis ambientes da
+distribuição batem um a um com a alocação da proposta, sem fusão, sem item
+órfão e sem valor estimado.
+
+### O que o desconto fez com a margem
+
+Custo direto da linha base: **R$ 26.332** (`fixedR` do fechamento v002).
+
+| | a R$ 70.400 | a R$ 63.000 |
+|---|--:|--:|
+| **modelo de custo da casa** (12/09) · BASE 76,52% | 39,1% | **34,7%** |
+| modelo do motor antigo deste job · BASE 69,42% | 32,0% | 27,6% |
+
+⚠ Pelo modelo vigente, o fechamento entrega **MC 34,7% — 0,3 ponto abaixo
+do piso de 35%**. Praticamente no piso, bem diferente do que o motor antigo
+deste job sugeria (27,6%).
+
+⛔ **A diferença entre as duas linhas é o erro de modelo corrigido em
+12/09.** O motor do Jairo é de fevereiro e carrega a sua própria cópia de
+coeficientes (`1 − 0,18 − 0,88·b`), que subestima a base em 7 pontos. Vale a
+leitura de cima; a de baixo fica só para explicar por que o número antigo
+era outro. Ver `referencias/modelo-de-custo.md`.
