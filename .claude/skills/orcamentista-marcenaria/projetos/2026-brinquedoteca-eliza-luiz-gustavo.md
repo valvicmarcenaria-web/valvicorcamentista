@@ -371,3 +371,45 @@ que respondem pela segurança de uma criança a 2,85 m do chão.
 
 Os demais podem ser decisão comercial — o cliente pode fornecer, ou ficar
 para uma segunda fase. Mas precisam estar **ditos**, não esquecidos.
+
+---
+
+## 30/09 — RT, MC 45% e a cozinha cravada
+
+> *"vamos considerar RT e subir a MC para 45%"* · *"a cozinha de brinquedo
+> vamos subir para 12k"*
+
+BASE cai de 85,35% para **76,52%** (o RT come 8,83 pontos). MC alvo **45%**.
+A cozinha de brinquedo passa a ter **preço cravado de R$ 12.000**, não
+calculado — o que lhe dá MC de 48,8%, acima do alvo.
+
+| | item | custo | **venda** | MC |
+|--:|---|--:|--:|--:|
+| 1 | Passarela suspensa | 2.768 | **8.780** | 45,0% |
+| 2 | Gradis de contenção das redes (com as cordas) | 10.085 | **32.000** | 45,0% |
+| 3 | Plataformas acolchoadas | 3.449 | **10.940** | 45,0% |
+| 4 | Piscina de espuma — só a estrutura | 5.079 | **16.120** | 45,0% |
+| 5 | Banco extenso | 2.328 | **7.390** | 45,0% |
+| 6 | Parede de desenho com painel em fórmica | 3.211 | **10.190** | 45,0% |
+| 7 | Parede estrutural 1 (efeito tijolinho) | 5.210 | **16.530** | 45,0% |
+| 8 | Casinha — paredes | 2.939 | **9.330** | 45,0% |
+| 9 | Casinha — escada | 1.791 | **5.680** | 45,0% |
+| 10 | Janelas e pórticos moldurados, laca branca | 8.341 | **26.470** | 45,0% |
+| 11 | Escorregador com túnel de teto curvo e gradil | 6.399 | **20.300** | 45,0% |
+| 12 | **Cozinha de brinquedo** | 3.326 | **12.000** | **48,8%** ← cravado |
+| | **TOTAL** | **54.926** | **R$ 175.740** | **45,3%** |
+
+### O que cada decisão custou ao cliente
+
+| | preço | efeito |
+|---|--:|--:|
+| antes — sem RT, MC 42% | 126.700 | |
+| só o RT entrando | 159.100 | **+25,6%** |
+| RT + MC 45% | 174.300 | +9,6% |
+| + cozinha cravada em 12k | **175.740** | +0,8% |
+
+⭐ **O RT sozinho vale +25,6% no preço** — R$ 32.400. Dos quais R$ 16.558
+saem para o parceiro e o resto é o que a casa precisa recompor para não
+perder margem. A MC da casa em reais fica em **R$ 78.439**.
+
+O custo direto não mudou em nada: **R$ 54.926**. Tudo aqui é preço.

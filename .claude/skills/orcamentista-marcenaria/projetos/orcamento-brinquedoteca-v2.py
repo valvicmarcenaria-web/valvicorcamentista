@@ -238,8 +238,20 @@ CD_SIS = sum(i['total'] for i in ITENS)
 LOG = 6*150.0 + 18*260.0 + 3*275.0
 CONSUM = CD_SIS*0.03
 CD = (CD_SIS + LOG + CONSUM)*(1 + M.EMBALAGEM)
-BASE = M.base(parcelas=0, rt=False, vendedor=False)
-MC = 0.42
+# [Jonathan 30/09] entra RT e a MC sobe para 45%
+RT_ON = True
+BASE = M.base(parcelas=0, rt=RT_ON, vendedor=False)
+MC = 0.45
+
+# [Jonathan 30/09] preço CRAVADO, não calculado por MC
+PRECO_FIXO = {'Cozinha de brinquedo': 12000}
+
+# custo direto de cada item = custo próprio + sua fatia de logística,
+# consumível e embalagem, rateada pelo custo (regra da casa)
+CDI = {i['nome']: i['total']*CD/CD_SIS for i in ITENS}
+PV  = {n: PRECO_FIXO.get(n, round(c/(BASE-MC)/10)*10) for n, c in CDI.items()}
+TOT = sum(PV.values())
+MC_REAL = {n: BASE - CDI[n]/PV[n] for n in PV}
 
 if __name__ == '__main__':
     br  = lambda v: f'{v:,.2f}'.replace(',','§').replace('.',',').replace('§','.')
@@ -255,19 +267,22 @@ if __name__ == '__main__':
         print(f'       {"CUSTO":<52}{"":>8} {"":<4}   {"":>8}   {br(i["total"]):>10}')
         print(f'       {"VENDA (MC "+f"{MC:.0%}"+")":<52}{"":>8} {"":<4}   {"":>8}   {br0(p):>10}')
     print(f'\n{"═"*W}')
-    print(f'{"":<44}{"custo":>12}{"venda":>12}')
-    tot_v = 0
-    for n, i in enumerate(ITENS, 1):
-        p = round(i['total']/(BASE-MC)/10)*10; tot_v += p
-        print(f'  {n:>2} {i["nome"]:<40}{br0(i["total"]):>12}{br0(p):>12}')
+    print(f'{"":<44}{"custo":>12}{"venda":>12}{"MC":>8}')
+    for k, i in enumerate(ITENS, 1):
+        nm = i['nome']; fx = ' ←cravado' if nm in PRECO_FIXO else ''
+        print(f'  {k:>2} {nm:<40}{br0(CDI[nm]):>12}{br0(PV[nm]):>12}'
+              f'{MC_REAL[nm]*100:>7.1f}%{fx}')
     print(f'  {"":<43}{"":>12}{"":>12}')
     print(f'  {"Soma dos itens":<43}{br0(CD_SIS):>12}')
     print(f'  {"+ logística, 18 dias de equipe, 3 visitas":<43}{br0(LOG):>12}')
     print(f'  {"+ consumíveis de fábrica (3%)":<43}{br0(CONSUM):>12}')
     print(f'  {"+ embalagem (2%)":<43}{br0(CD-(CD_SIS+LOG+CONSUM)):>12}')
     print(f'  {"CUSTO DIRETO":<43}{br0(CD):>12}')
-    P = round(CD/(BASE-MC)/100)*100
-    print(f'\n  BASE {BASE*100:.2f}% · MC {MC:.0%}   →   INVESTIMENTO  R$ {br0(P)}')
+    P = TOT
+    print(f'\n  BASE {BASE*100:.2f}% · MC alvo {MC:.0%} · MC real {(BASE-CD/TOT)*100:.1f}%')
+    print(f'  INVESTIMENTO  R$ {br0(P)}')
+    print(f'    brinquedoteca (11 itens)   R$ {br0(P-PRECO_FIXO["Cozinha de brinquedo"]):>9}')
+    print(f'    cozinha de brinquedo       R$ {br0(PRECO_FIXO["Cozinha de brinquedo"]):>9}  ← cravado')
     print(f'\n  v1 (agregada)     R$ 445.000')
     print(f'  v1 (decomposta)   R$ 318.100')
     print(f'  v2 (esta)         R$ {br0(P)}   ·  {P/318100-1:+.1%} sobre a v1 decomposta')
