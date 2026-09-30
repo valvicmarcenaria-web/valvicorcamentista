@@ -312,3 +312,59 @@ gaveteiro de 3 gavetas com TANDEM, que custa um pouco mais.
 2. **Levantamento** — resolveria a margem de uma vez.
 3. **Largura da Cristaleira 2** — declarada "a confirmar na medição".
 4. **Realinhar o folder comercial**, que segue com 7 conjuntos, Areia e R$ 112.508.
+
+---
+
+## 30/09/2026 — rateio do valor de venda por ambiente
+
+> *"Dividindo entre: lavanderia 1, lavanderia 2, cozinha (inferiores,
+> superiores e ilha), cristaleira 1 e cristaleira 2, painel de TV e closet.
+> Valor de venda do projeto — R$ 112.500."*
+> *"Faltou o armário do corredor."*
+
+São **8 linhas**. A base é a tabela do folder premium (7 conjuntos,
+R$ 127.850) mais os dois itens que entraram no memorial da 3ª rodada: o
+**painel de TV** (R$ 2.250, que voltou ao projeto) e a **Cristaleira 2**.
+
+| Ambiente | de tabela | **rateado** | % | vem de |
+|---|--:|--:|--:|---|
+| Lavanderia 1 | 5.850 | **4.910** | 4,4% | lavanderia do térreo |
+| Lavanderia 2 | 5.850 | **4.910** | 4,4% | lavanderia superior |
+| Cozinha | 67.500 | **56.610** | 50,3% | bancada (52.400) + ilha e geladeiras (15.100) |
+| Cristaleira 1 | 5.650 | **4.740** | 4,2% | cozinha · cristaleira |
+| Cristaleira 2 | ★ 4.000 | **3.360** | 3,0% | ★ nunca orçada |
+| Painel de TV | 2.250 | **1.890** | 1,7% | painel de TV |
+| Closet | 36.700 | **30.790** | 27,4% | closet do casal |
+| Armário do corredor | 6.300 | **5.290** | 4,7% | hall dos dormitórios |
+| **TOTAL** | **134.100** | **112.500** | **100%** | |
+
+Fator `112.500 / 134.100 = 0,838926` — desconto de **16,11%**.
+
+✅ **Isso confirma a previsão da 3ª rodada**, que dizia: *"com a cristaleira
+nova a um valor coerente com a Cristaleira 1, vai para ~16%"*. Foi para
+16,11%.
+
+### ★ A Cristaleira 2 continua sendo o único número inventado
+
+Os R$ 4.000 saem da proporção com a Cristaleira 1 (R$ 5.650 por 80 cm e
+3 portas → ~R$ 4.000 por 2 portas). **Não há orçamento dela.** Sensibilidade:
+
+| se a Cristaleira 2 valer | desconto | Crist. 2 | Cozinha | Closet |
+|---|--:|--:|--:|--:|
+| não entra no escopo | 13,53% | — | 58.370 | 31.740 |
+| R$ 3.000 | 15,48% | 2.540 | 57.050 | 31.020 |
+| **R$ 4.000** ← adotado | **16,11%** | **3.360** | **56.630** | **30.790** |
+| R$ 5.650 (igual à Crist. 1) | 17,13% | 4.680 | 55.940 | 30.410 |
+| R$ 8.000 | 18,54% | 6.520 | 54.990 | 29.900 |
+
+Entre os extremos a Cozinha varia ~R$ 1.400 e o Closet ~R$ 800 — é pouco
+para o rateio, mas o **desconto efetivo varia 5 pontos**, e é esse número
+que aparece se alguém comparar a tabela com o fechado.
+
+### ⛔ O que este rateio NÃO resolve
+
+Continua valendo tudo o que está registrado acima: **não há levantamento
+neste job**. O rateio distribui um valor de venda sobre uma tabela que nunca
+foi auditada por dentro, e a troca de toda a marcenaria para **Gianduia
+Trama** (4ª/5ª rodadas) segue sem preço de compra na base. O rateio dá
+estrutura contábil ao contrato, não dá margem conferida.
