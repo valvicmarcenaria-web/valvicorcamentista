@@ -283,3 +283,91 @@ amarela e endurece).
 ⛔ **A tentação aqui é usar uma espuma só para tudo, e é o erro clássico.**
 D20 no degrau é inseguro e D33 na piscina mata o brinquedo. São seis
 aplicações e pelo menos quatro especificações diferentes.
+
+---
+
+# v2 — a separação do Jonathan e os custos revisados
+
+> *"precisamos ser mais realista, acho que vc superestimou muito os custos"*
+> \+ a lista de 11 itens, e a observação de que **todas as paredes entregam
+> em MDF ultra premium CRU**, com o acabamento por conta da cliente.
+
+`orcamento-brinquedoteca-v2.py` → **R$ 126.700**, custo direto R$ 54.926.
+
+## ⛔ Os dois erros que inflavam tudo
+
+**1 · Eu usei preço de VENDA como custo de mão de obra.** Marcenaria a
+R$ 65/h é o que se *cobra*. Marceneiro com encargos *custa* R$ 36/h. O mesmo
+na serralheria: R$ 24/m serve para peça complexa, mas parede com montante
+reto rende 45 m/dia e sai a **R$ 12/m**.
+
+**2 · Calculei a superfície de pintura como área em planta × 2,6.** Chute em
+cima de chute. O certo é **perímetro do perfil × metro linear**: metalon
+60×40 tem 0,20 m de perímetro, então 1 m de perfil = 0,20 m² de superfície.
+A passarela caiu de 8,63 m² para **2,63 m²** de pintura. E R$ 220/m² é preço
+de peça pequena e detalhada — estrutura em lote pinta a **R$ 120/m²**.
+
+**3 · A selagem saiu.** As paredes entregam cruas. Eu estava cobrando
+preparo de superfície num escopo que não tem preparo.
+
+## De onde vem a queda de R$ 318.100 → R$ 126.700
+
+| | custo | venda |
+|---|--:|--:|
+| v1 decomposta — escopo cheio, custos antigos | 134.144 | 318.100 |
+| mesmo escopo reduzido, custos **antigos** | 79.899 | 184.300 |
+| escopo reduzido, custos **revisados** | 54.926 | **126.700** |
+
+| | | |
+|---|--:|--:|
+| → efeito **escopo** (itens que saíram da lista) | −133.800 | **70%** |
+| → efeito **preço** (meus custos estavam altos) | −57.600 | **30%** |
+
+⭐ **Setenta por cento da queda é escopo, não preço.** Meus custos estavam
+altos — 30% altos, o que é muito e eu corrigi. Mas o grosso da diferença é
+que a lista de 11 itens **cobre uma parte do projeto**, não o projeto.
+
+## Os itens
+
+| | item | custo | **venda** |
+|--:|---|--:|--:|
+| 1 | Passarela suspensa | 2.323 | **5.360** |
+| 2 | Gradis de contenção das redes (com as cordas) | 8.457 | **19.510** |
+| 3 | Plataformas acolchoadas | 2.892 | **6.670** |
+| 4 | Piscina de espuma — só a estrutura | 4.259 | **9.830** |
+| 5 | Banco extenso | 1.952 | **4.500** |
+| 6 | Parede de desenho com painel em fórmica | 2.693 | **6.210** |
+| 7 | Parede estrutural 1 (efeito tijolinho) | 4.369 | **10.080** |
+| 8 | Casinha — paredes | 2.465 | **5.690** |
+| 9 | Casinha — escada | 1.502 | **3.460** |
+| 10 | Janelas e pórticos moldurados, laca branca | 6.995 | **16.140** |
+| 11 | Escorregador com túnel de teto curvo e gradil | 5.366 | **12.380** |
+| 12 | Cozinha de brinquedo | 2.789 | **6.430** |
+| | **Soma dos itens** | **46.062** | |
+| | + logística, 18 dias de equipe, 3 visitas · consumíveis · embalagem | 8.864 | |
+| | **CUSTO DIRETO** | **54.926** | |
+| | **INVESTIMENTO** · BASE 85,35% · MC 42% | | **R$ 126.700** |
+
+## ⚠ Onze coisas estão nas pranchas e não estão na lista
+
+| | item | onde está |
+|--:|---|---|
+| 1 | **Laje do mezanino** (estrado + chapa + vinílico) | PR07/PR08, citada duas vezes |
+| 2 | **Rede de descanso** | PR04, 3,97 m² — o gradil que você listou contém *esta* rede |
+| 3 | Blocos da piscina | você tirou, mas sem eles o poço não é brinquedo |
+| 4 | **Zona de queda** sob passarela e plataformas | NBR 16071, queda de 2,85 m |
+| 5 | Telas de proteção | citadas em 4 pranchas |
+| 6 | Parede de escalada | PR03/PR05/PR07 |
+| 7 | Escada horizontal | PR05/PR06 |
+| 8 | Balanço sob viga | PR03 |
+| 9 | Paredes leste e oeste | só a norte e a de desenho entraram |
+| 10 | Painel imantado, painel de bobina, prateleiras, mesinha | PR03/PR05 |
+| 11 | **Projeto estrutural e ART** | RISCO 1 |
+
+Os itens 1, 2, 4 e 11 me preocupam de verdade. A **passarela existe mas a
+laje que ela serve não está na lista**; o **gradil de contenção da rede está
+orçado mas a rede não**; e a **zona de queda** e a **ART** são os dois itens
+que respondem pela segurança de uma criança a 2,85 m do chão.
+
+Os demais podem ser decisão comercial — o cliente pode fornecer, ou ficar
+para uma segunda fase. Mas precisam estar **ditos**, não esquecidos.
