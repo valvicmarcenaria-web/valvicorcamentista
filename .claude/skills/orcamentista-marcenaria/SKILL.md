@@ -135,8 +135,13 @@ e estimar pela escala, sinalizando.
      acento, e conferir que cada frase do HTML saiu no PDF. O auditor de
      posição NÃO pega bloco engolido por `overflow:hidden`; no Marcelo
      Tolentino a escada de pagamento inteira sumiu e o transbordo disse "ok".
-  2. **transbordo** — último bloco contra o topo do rodapé.
+  2. **transbordo** — último bloco contra o topo do rodapé, **e rodapé
+     ausente conta como transbordo**: quando a página estoura, é o rodapé que
+     é empurrado para fora, e usar o pé da folha como régua responde "ok".
   3. **metragem e quantitativo** — regex de medida e de contagem de peça.
+  ⛔ **Causa raiz:** `.pad` é coluna flex; caixa com `overflow:hidden` e
+  `flex-shrink` padrão **encolhe** e corta sem empurrar nada. Toda caixa de
+  conteúdo fechado leva **`flex:none`**.
   Ver `referencias/proposta-comercial.md`.
 
 FASE 3 — ESTRATÉGIA (margem, otimização, proposta)

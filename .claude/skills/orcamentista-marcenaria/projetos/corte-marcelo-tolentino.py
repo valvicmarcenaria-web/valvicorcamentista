@@ -21,6 +21,19 @@ FLAGS
   3 ★ Muxarabi do banheiro casal: usinagem fina (ripa 1,5 / vão 5). Sem
     referência na base — lancei como mão de obra de usinagem por m².
   4 Corrediça telescópica derruba a garantia para 2 anos (ferragens.md).
+  5 ★ Salão principal · SEM MOLA. Tip-on mecânico só funciona com dobradiça
+    sem mola — a mola briga com o pulsador e a porta volta a abrir sozinha.
+    Novisys e Sensys têm versão sem mola; é ela que tem de ser comprada.
+    Confirmar na cotação, senão as 14 portas não fecham no toque.
+  6 ★ 2 pulsadores por porta no armário ripado. A Blum especifica 2 unidades
+    acima de 1,20 m de altura de porta; estas têm 2,20 m. 14 portas = 28.
+  7 Não entram nesta conta, e é de propósito: granito cinza andorinha
+    escovado (marmoraria), rodapé Santa Luzia H=15 (perfil comercial, corre
+    por toda a sala inclusive nas paredes que não são nossas), molduras das
+    fotos 85×150 e as TVs touch (comunicação visual).
+  8 ⚠ O hidrante tem de continuar acessível e sinalizado. A tampa de acesso
+    está lançada, mas o revestimento não pode criar trava nem exigir
+    ferramenta — conferir com a segurança da obra antes de produzir.
 """
 from collections import defaultdict
 import motor_mc as M
@@ -35,11 +48,12 @@ FORM = 400.0                                    # fórmica (copa)
 PRECO = {'BR6':BR6, 'BR15':BR15, 'BR18':BR18, 'FOR':FORM}
 # cores do projeto: TA Tauari · CM Carvalho Munique · CP Cinza Pixel
 #                   CE Cinza Essencial · CB Cerrado Bold
-for c in ('TA','CM','CP','CE','CB'):
+#                   PA Preto Absoluto Duratex (pilar do salão principal)
+for c in ('TA','CM','CP','CE','CB','PA'):
     PRECO[c+'6'], PRECO[c+'15'], PRECO[c+'18'] = COR6, COR15, COR18
 NOME = {'BR6':'branco 6','BR15':'branco 15','BR18':'branco 18','FOR':'fórmica'}
 for c, n in (('TA','Tauari'),('CM','Carv.Munique'),('CP','Cinza Pixel'),
-             ('CE','Cinza Essenc.'),('CB','Cerrado Bold')):
+             ('CE','Cinza Essenc.'),('CB','Cerrado Bold'),('PA','Preto Absol.')):
     for e in ('6','15','18'): NOME[c+e] = f'{n} {e}'
 
 FITA_BR, FITA_COR = 2.0, 3.0
@@ -89,6 +103,9 @@ ESTOFADO_M2  = 450.0
 TUBO_ALU_M   = 60.0     # tubo 2×2 preto
 LED_M        = 150.0    # LED COB fita + perfil
 USIN_MUX_M2  = 380.0    # ★ usinagem do muxarabi
+RIPADO_M2    = 70.0     # ★ montagem do ripado: colagem e alinhamento das ripas
+                        #   (a chapa das ripas e a fita entram como peça no corte)
+BITE_M       = 20.0     # ★ bite 0,5×0,5 nas juntas do pilar, por metro de aresta
 
 p, FER, TER, ESP = [], defaultdict(Q), defaultdict(float), defaultdict(float)
 def a(mov, mat, desc, c, l, q=1): p.append((mov, mat, desc, c, l, q))
@@ -99,6 +116,65 @@ def e(mov, m2): ESP[mov] += m2*ESPELHO_M2   # espelho, linha separada
 # ══════════════════════════════════════════════════════════════════════════
 # STAND
 # ══════════════════════════════════════════════════════════════════════════
+
+# ── SALÃO PRINCIPAL ───────────────────────────────────────────────────────
+# [Jonathan 30/09] "adicionar esses itens. se atente para os armários com
+#   portas ripadas, considere abertura por toque, com feche toque da Blum."
+# Sala de 690 × 1040, pé-direito 260. Prancha BRZ_Salão principal, rev. 01.
+K = 'Salão principal · armário ripado com abertura por toque'
+# E01: 690 de extensão × 220 de altura × 60 de profundidade.
+# 14 portas de 49,4 × 220, abrindo aos pares (dobradiça alternada esq./dir.).
+# O ripado medido na elevação: passo 9,3 · ripa 6,2 · vão 3,1 → 5 ripas/porta.
+# ⛔ SEM PUXADOR: abertura por toque, pulsador Blum. Ver FLAG 6.
+a(K,'TA18','Porta ripada (base)',         220, 49.4, 14)
+a(K,'TA15','Ripa do ripado',              220,  6.2, 70)
+a(K,'BR15','Lateral e divisória',         220, 58,   15)
+a(K,'BR15','Base e travessa',             230, 58,    6)
+a(K,'BR6' ,'Fundo',                       220, 173,   4)
+a(K,'BR15','Prateleira interna',           47, 58,   56)
+a(K,'TA18','Rodapé recuado aparente',     230, 10,    3)
+f(K, 70*DOBR + 28*TIPON + 56*SUP_PRAT)
+t(K, 15.2*RIPADO_M2)                      # 14 portas × 1,087 m² de frente
+
+K = 'Salão principal · armário liso da entrada'
+# E05: porta única de 55,5 × 220 embutida na parede pintada, prateleiras H=40.
+# Sem puxador também — porta rente à parede, pulsador Blum.
+a(K,'TA18','Porta',                       220, 55.5, 1)
+a(K,'BR15','Lateral',                     220, 33,   2)
+a(K,'BR15','Base e travessa',              52, 33,   2)
+a(K,'BR6' ,'Fundo',                       220, 55,   1)
+a(K,'BR15','Prateleira interna',           52, 32,   4)
+f(K, 5*DOBR + 2*TIPON + 4*SUP_PRAT)
+
+K = 'Salão principal · painel liso piso/teto'
+# 172 × 260 na face sul da parede da entrada, com retorno de 17 na testeira.
+a(K,'TA18','Painel',                      260, 43, 4)
+a(K,'TA18','Retorno de testeira',         260, 17, 1)
+a(K,'BR15','Montante de fixação',         260, 10, 4)
+
+K = 'Salão principal · pilar revestido em painel preto'
+# E06/E07: pilar do hidrante, 200 × 40 em planta, revestido piso/teto (260)
+# nas quatro faces em MDF Preto Absoluto Duratex, bite 0,5×0,5 nas juntas.
+a(K,'PA18','Face maior',                  260, 100, 4)
+a(K,'PA18','Face estreita',               260,  40, 2)
+a(K,'PA18','Tampa de acesso ao hidrante',  90,  35, 1)
+a(K,'BR15','Montante e sarrafo',          260,  10, 6)
+f(K, 2*DOBR)
+t(K, 20.8*BITE_M)                         # 4 arestas + 4 juntas × 2,60
+
+K = 'Salão principal · bancada da secretária'
+# E01/E02/Corte AA: 170 × 85 × 100 (corpo 93 + tampo de granito 7).
+# Frente inclinada — 40 no topo, 18 na base. Tampo de trabalho a 75.
+# ⚠ o granito cinza andorinha escovado é da marmoraria, não entra aqui.
+a(K,'TA18','Frente inclinada',            170, 102, 1)
+a(K,'TA18','Lateral aparente',            100,  85, 2)
+a(K,'TA18','Tampo de trabalho',           115,  45, 1)
+a(K,'BR15','Base de apoio do granito',    168,  83, 1)
+a(K,'BR15','Montante',                     93,  83, 4)
+a(K,'BR15','Travessa',                    165,  40, 3)
+a(K,'BR15','Prateleira interna',          165,  40, 1)
+a(K,'BR6' ,'Fechamento posterior',        168,  93, 1)
+f(K, 1*SUP_PRAT)
 
 # ── COPA ──────────────────────────────────────────────────────────────────
 K = 'Copa · armário inferior e ilha'
@@ -182,7 +258,7 @@ a(K,'TA18','Painel',                      260, 44, 2)
 a(K,'TA18','Porta',                       230, 100, 1)
 a(K,'TA18','Bandeira sobre a porta',       30, 100, 1)
 a(K,'BR15','Marco e montante',            260, 12, 4)
-f(K, 4*DOBR)
+f(K, 5*DOBR)                              # porta de 230 × 100: 5 dobradiças
 t(K, 2.3*CAVA_M)
 
 # ── BANCADA GOURMET ───────────────────────────────────────────────────────
@@ -437,11 +513,16 @@ def papel(mat, d):
     dl = d.lower()
     if mat == 'FOR':       return 'FOR'      # fórmica, sem espessura de chapa
     if mat.endswith('6'):  return 'F'        # fundo, 6 mm nos dois
+    # ⛔ porta ripada: 18 mm nos DOIS cenários. Ripa colada numa face só faz
+    #   par bimetálico; 49,4 × 220 em 15 mm empena, e empenada não fecha no
+    #   toque. Aqui a espessura é requisito, não nível de acabamento.
+    if 'ripad' in dl:      return 'E18'
     if 'bandeira' in dl or 'tampo e maleiro' in dl: return 'E'
     if any(k in dl for k in ('porta', 'frente', 'prateleira')): return 'PP'
     return 'E'                                # estrutura, 15 mm nos dois
 
-ESP_CEN = {'standard': {'E':'15', 'PP':'15'}, 'gold': {'E':'15', 'PP':'18'}}
+ESP_CEN = {'standard': {'E':'15', 'PP':'15', 'E18':'18'},
+           'gold':     {'E':'15', 'PP':'18', 'E18':'18'}}
 def mat_cen(mat, pap, cen):
     if pap == 'FOR': return 'FOR'
     cor = mat[:-2] if mat[-2:] in ('15', '18') else mat[:-1]
@@ -486,7 +567,7 @@ fita_custo = {mov: fita_mov[mov]*1.10*((FITA_BR+FITA_COR)/2) for mov in MOVS}
 #   com o número de ambientes.
 CARRETO, DIARIA, VISITA = 150.0, 260.0, 275.0
 AMB = {mov: mov.split(' · ')[0] for mov in MOVS}
-STAND_AMB = ('Copa','Sala de reunião','Sala de ativos','Lounge','Gourmet')
+STAND_AMB = ('Salão principal','Copa','Sala de reunião','Sala de ativos','Lounge','Gourmet')
 FRENTE = {mov: ('Stand' if AMB[mov] in STAND_AMB else 'Decorado') for mov in MOVS}
 fr_area = defaultdict(float)
 for mov in MOVS: fr_area[FRENTE[mov]] += area_mov[mov]
@@ -564,7 +645,7 @@ for mov in MOVS:
     b = 0.38
     if any(k in mov for k in ('painel', 'painéis', 'forro', 'Painel')): b = 0.35
     if any(k in mov for k in ('estante', 'muxarabi', 'bancadas de trabalho',
-                              'guarda-roupa', 'divisória')):            b = 0.40
+                              'guarda-roupa', 'divisória', 'ripado')):  b = 0.40
     MC_ITEM[mov] = {'standard': b - CORTE_STD, 'gold': b - CORTE_STD + DELTA_GOLD}
 
 AMBS     = list(dict.fromkeys(AMB[m] for m in MOVS))

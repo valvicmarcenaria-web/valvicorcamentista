@@ -9,6 +9,59 @@ só de referência de custo unitário.
 
 ---
 
+## STAND · SALÃO PRINCIPAL  (3 folhas — prancha entregue em 30/09, rev. 01)
+
+Salão **690 × 1040**, pé-direito **260**. Rodapé cinza Santa Luzia H=15
+(perfil comercial, corre por toda a sala, **não é nosso**).
+Doze estações de trabalho, sofás, maquete 300×150, área de bistrô e
+sala de reunião envidraçada no canto.
+
+**Marcenaria Valvic:**
+1. ⭐ **Armário ripado piso/teto** (Elev 01, DET.01) — **MDF Tauari
+   Guararapes com acabamento ripado**. **690 de extensão × 220 de altura ×
+   60 de profundidade**. **14 portas de 49,4**, todas "ABRE", abrindo aos
+   pares (dobradiça alternada, os símbolos de giro formam sete "X" na
+   elevação). Prateleiras internas H=40.
+   **Ripado medido na elevação: passo 9,3 · ripa 6,2 · vão 3,1** — 73 ripas
+   ao longo dos 690, o que dá 5 ripas por porta.
+   ⛔ **Sem puxador: abertura por toque, fecho toque da Blum** [Jonathan
+   30/09]. Duas unidades por porta (a Blum especifica 2 acima de 1,20 m de
+   altura de porta; estas têm 2,20 m) → 28 pulsadores.
+   ⛔ **A dobradiça tem de ser SEM MOLA** — mola briga com pulsador
+   mecânico e a porta volta a abrir sozinha.
+2. **Armário liso da entrada** (Elev 05) — MDF Tauari Guararapes,
+   **porta única de 55,5 × 220**, "ABRE", embutida na parede pintada,
+   **prateleiras internas H=40**. Nicho de ~66 × 39 na alvenaria.
+   Sem puxador na elevação — lancei também com fecho toque.
+3. **Painel liso piso/teto em MDF Tauari Guararapes** — face sul da parede
+   da entrada, **172 de extensão × 260**, parede de 17 de espessura
+   (testeira de retorno).
+4. **Pilar do hidrante revestido** (Elev 06 e 07) — **painel liso piso/teto
+   em MDF PRETO ABSOLUTO DURATEX**, **200 × 40 em planta × 260 de altura**,
+   quatro faces. Cada face de 200 sai em duas folhas de 100 com
+   **bite 0,5 × 0,5** na junta. Elev 06 leva duas fotos 85×150 (moldura é
+   comunicação visual); Elev 07 leva o **nicho do INCÊNDIO ("conferir
+   medidas")** — precisa de tampa de acesso.
+   ⚠ O hidrante tem de continuar acessível e sinalizado.
+5. **Bancada da secretária** (Elev 01/02/03 e Corte AA) — **MDF Tauari
+   Guararapes com frente inclinada**. **170 × 85 × 100** de altura
+   (corpo 93 + tampo de granito 7). A frente inclina: **40 no topo,
+   18 na base**. Tampo de trabalho a **h=75**, 115 × 45. Chumbada na
+   **alvenaria de apoio** (projeção na planta).
+   ⚠ O **granito cinza andorinha escovado** que fecha por cima é da
+   marmoraria — **não é nosso**.
+
+Terceiros/obra: divisória e porta pivotante em vidro temperado H=260;
+porta de entrada em vidro Hporta=279 com perfil de 10; porta padrão
+construtora; granito cinza andorinha escovado; rodapé cinza Santa Luzia
+H=15; pintura cinza urbano Suvinil; molduras das fotos 85×150; TVs touch;
+TV 75"; maquete 300×150; impressoras; e o mobiliário solto — sofá Torquato,
+6 cadeiras giratórias Inne marrom, 12 cadeiras pretas Doimo, 4 biombos
+Creative 1396 Inne, 6 plataformas individuais Inne, 3 mesas cone bistrô
+Inne, 9 banquetas Doimo.
+
+---
+
 ## STAND · COPA  (5 folhas)
 
 Ambiente 260 × ~250. PD do painel: piso/teto.

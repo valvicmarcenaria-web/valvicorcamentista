@@ -33,14 +33,14 @@ def img(n): return f'img-marcelo-tolentino/{n}.jpg'
 CSS = (open(P/'css-proposta.css', encoding='utf-8').read()
        + open(P/'css-proposta-img.css', encoding='utf-8').read() + """
 /* ── proposta Marcelo Tolentino ───────────────────────────────────────── */
-.amb{margin-top:6.5mm;}
+.amb{margin-top:4.5mm;}
 .amb .num{font-family:'Cormorant Garamond',Georgia,serif;font-size:14pt;
   color:var(--gold-lt);font-weight:600;line-height:1;}
 .amb .t{font-size:11.8pt;font-weight:700;letter-spacing:-.01em;margin-top:.6mm;}
 .amb .d{color:var(--soft);font-size:8.8pt;line-height:1.66;margin-top:2mm;}
 .amb .d b{color:var(--ink);font-weight:600;}
 .par{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin:0 -19mm;}
-.par .ph{height:62mm;}
+.par .ph{height:42mm;}
 .solo{margin:0 -19mm;height:80mm;}
 .banda{margin:0 -19mm;height:52mm;}
 
@@ -71,13 +71,13 @@ table.invA th{font-size:6.9pt;letter-spacing:.17em;text-transform:uppercase;
   color:var(--mut);font-weight:700;padding:0 0 2.4mm;text-align:left;}
 table.invA th.r,table.invA td.r{text-align:right;}
 table.invA th.alt{color:var(--gold);}
-table.invA td{padding:2.1mm 0;border-top:1px solid var(--hair);vertical-align:top;}
+table.invA td{padding:1.65mm 0;border-top:1px solid var(--hair);vertical-align:top;}
 table.invA td.a{font-size:6.9pt;letter-spacing:.14em;text-transform:uppercase;
   color:var(--gold-lt);font-weight:700;padding-right:4mm;width:26mm;}
 table.invA td.i{font-weight:600;}
 table.invA td.alt{background:rgba(201,169,106,.07);padding-right:2.5mm;}
 table.invA th.alt{padding-right:2.5mm;}
-table.invA tr.tot td{border-top:1.6px solid var(--ink);padding-top:2.8mm;
+table.invA tr.tot td{border-top:1.6px solid var(--ink);padding-top:2.4mm;
   font-family:'Cormorant Garamond',Georgia,serif;font-size:17pt;font-weight:700;}
 table.invA tr.tot td.a,table.invA tr.tot td.i{font-family:inherit;font-size:9.4pt;}
 
@@ -86,7 +86,9 @@ table.invA tr.tot td.a,table.invA tr.tot td.i{font-family:inherit;font-size:9.4p
   color:var(--gold);font-weight:700;}
 .cndP .d{color:var(--soft);font-size:8.3pt;margin-top:1mm;line-height:1.46;}
 .cndP .d b{color:var(--ink);}
-.escP{margin-top:4mm;border:1px solid var(--line);border-radius:5px;overflow:hidden;}
+.escP{margin-top:4mm;border:1px solid var(--line);border-radius:5px;
+  overflow:hidden;flex:none;}  /* flex:none — sem isto o flex encolhe a
+     caixa e o overflow:hidden come a última parcela em silêncio */
 .escP .l{display:flex;justify-content:space-between;align-items:baseline;
   padding:2.1mm 5mm;border-bottom:1px solid var(--hair);font-size:8.8pt;}
 .escP .l:last-child{border-bottom:none;}
@@ -132,26 +134,33 @@ p2 = f"""<div class="page"><div class="pad">
     <div class="ph"><img src="{img('ativos')}" alt=""></div>
   </div>
 
-  {amb('01', 'Lounge',
+  {amb('01', 'Salão principal',
+       'A parede do salão inteira em <b>armário ripado de MDF Tauari '
+       'Guararapes</b>, do piso ao teto e <b>sem puxador</b>: as portas abrem '
+       'ao toque, com <b>fecho toque da Blum</b>. Na entrada, armário liso com '
+       'a porta rente à parede e painel do piso ao teto no mesmo Tauari. O '
+       'pilar do hidrante desaparece dentro de um revestimento em <b>MDF Preto '
+       'Absoluto Duratex</b> com <b>bite usinado entre as folhas</b>, e a '
+       'recepção recebe <b>bancada em Tauari com frente inclinada</b>.')}
+  {amb('02', 'Lounge',
        'Painel liso do piso ao teto em <b>MDF Carvalho Munique Duratex</b>, e '
        'painel em <b>MDF Tauari Guararapes</b> com <b>porta de passagem '
        'embutida e puxador cava</b> — fechada, a porta desaparece no painel.')}
-  {amb('02', 'Sala de ativos',
+  {amb('03', 'Sala de ativos',
        'Bancadas de trabalho em <b>MDF Carvalho Munique Guararapes</b> com '
        '<b>canaleta de fiação usinada sob o tampo</b>. Divisórias entre '
-       'estações em <b>MDF Cinza Pixel Guararapes</b> e aparador de apoio no '
-       'mesmo carvalho.')}
-  {amb('03', 'Sala de reunião',
-       'Aparador para cafeteira em <b>MDF Cerrado Bold Arauco</b>, com nicho '
-       'preparado para receber o porcelanato e frentes em <b>fecho toque</b>.')}
-  {amb('04', 'Bancada gourmet',
+       'estações em <b>MDF Cinza Pixel Guararapes</b> e aparador no mesmo '
+       'carvalho.')}
+  {amb('04', 'Sala de reunião',
+       'Aparador para cafeteira em <b>MDF Cerrado Bold Arauco</b>, com frentes '
+       'em <b>fecho toque</b> e nicho preparado para o porcelanato.')}
+  {amb('05', 'Bancada gourmet',
        'Painéis lisos e <b>forro</b> em <b>MDF Tauari Guararapes</b> — teto e '
        'parede no mesmo desenho. Sob a bancada de granito, armários em Tauari '
        'com nicho para os frigobares.')}
-  {amb('05', 'Copa',
+  {amb('06', 'Copa',
        'Painel do piso ao teto em <b>Tauari</b> com porta embutida e puxador '
-       'cava. Armário inferior madeirado em <b>fórmica branca</b> com '
-       'gaveteiro, e a ilha central com nicho para o micro-ondas.')}
+       'cava, armário inferior em <b>fórmica branca</b> e ilha central.')}
   {foot(2)}
 </div></div>"""
 
@@ -166,27 +175,27 @@ p3 = f"""<div class="page"><div class="pad">
     <div class="ph"><img src="{img('quarto-casal')}" alt=""></div>
   </div>
 
-  {amb('06', 'Cozinha e área de serviço',
+  {amb('07', 'Cozinha e área de serviço',
        'Base em <b>MDF Tauari Guararapes</b>. Superiores em <b>fecho toque</b> '
        'com <b>LED embutido</b>; torre de eletros com <b>porta escamoteável</b>; '
        'inferiores da bancada principal em <b>laca fosca verde com puxador '
        'cava</b>. Cristaleira e divisória de correr em <b>perfil de alumínio '
        'preto fosco com vidro canelado</b>.')}
-  {amb('07', 'Sala e varanda',
+  {amb('08', 'Sala e varanda',
        'Estante do piso ao teto em <b>Tauari</b>, com <b>nichos em Carvalho '
        'Munique Duratex avançando do plano</b> e <b>LED sob eles</b>. Painel '
        'liso com <b>bite usinado</b> entre as folhas e mesa de jantar em '
        'Tauari com <b>chanfro usinado no tampo</b>.')}
-  {amb('08', 'Quarto casal',
+  {amb('09', 'Quarto casal',
        'Guarda-roupa em Tauari com <b>portas de correr em vidro e perfil de '
        'alumínio bronze</b>. Cabeceira e peseira baú <b>estofadas em linho</b> '
        'sobre estrutura de marcenaria, e prateleiras suspensas em <b>tubo de '
        'alumínio preto</b>.')}
-  {amb('09', 'Quarto solteiro',
+  {amb('10', 'Quarto solteiro',
        'Guarda-roupa em Tauari com <b>portas de correr em vidro bronze e '
        'perfil bronze</b>. Escrivaninha, nicho na cabeceira e prateleiras '
        'suspensas com <b>nichos em Cinza Essencial Duratex</b>.')}
-  {amb('10', 'Banheiros',
+  {amb('11', 'Banheiros',
        'No casal, gabinete em Tauari com puxador cava, <b>espelho com moldura '
        'em Tauari</b> e torre de prateleiras com <b>fundo em muxarabi</b> '
        'usinado. No social, gabinete em Tauari, espelho prata colado sobre '
@@ -233,8 +242,8 @@ p4 = f"""<div class="page"><div class="pad">
     <div><div class="k">Não muda</div><div class="d"><b>O desenho.</b> Mesma
       modulação e mesma distribuição interna nos dois casos.</div></div>
     <div><div class="k">Não muda</div><div class="d"><b>Acabamento.</b> Tauari,
-      Carvalho Munique, Cinza Pixel, Cerrado Bold, Cinza Essencial, a laca
-      verde, os vidros e os espelhos.</div></div>
+      Carvalho Munique, Preto Absoluto, Cinza Pixel, Cerrado Bold, Cinza
+      Essencial, a laca verde, os vidros e os espelhos.</div></div>
     <div><div class="k">Não muda</div><div class="d"><b>Quem faz.</b> Equipe
       própria do corte à instalação, com a medida conferida no local.</div></div>
   </div>
@@ -247,7 +256,8 @@ p4 = f"""<div class="page"><div class="pad">
 </div></div>"""
 
 # ── 5 · investimento e condições ──────────────────────────────────────────
-NOME_AMB = {'Copa':'Copa','Sala de reunião':'Sala de reunião',
+NOME_AMB = {'Salão principal':'Salão principal','Copa':'Copa',
+            'Sala de reunião':'Sala de reunião',
             'Sala de ativos':'Sala de ativos','Lounge':'Lounge',
             'Gourmet':'Bancada gourmet','Cozinha':'Cozinha e área de serviço',
             'Sala':'Sala e varanda','Quarto casal':'Quarto casal',
@@ -310,10 +320,11 @@ p5 = f"""<div class="page"><div class="pad">
       <b>Gold: {mt.GARANTIA['gold']}</b>, sobre estrutura e ferragens.</div></div>
   </div>
 
-  <div class="nota"><b>Não inclusos:</b> pedras e bancadas, alvenaria da bancada
-  gourmet, bancada e sóculo existentes da copa, louças, metais,
-  eletrodomésticos, esquadrias, box, gesso, pintura, revestimentos, elétrica,
-  hidráulica e o mobiliário solto.</div>
+  <div class="nota"><b>Não inclusos:</b> pedras e bancadas, alvenaria de apoio,
+  rodapé, bancada e sóculo existentes da copa, louças, metais,
+  eletrodomésticos, esquadrias em vidro e alumínio, box, gesso, pintura,
+  revestimentos, comunicação visual, elétrica, hidráulica e o mobiliário
+  solto.</div>
 
   {foot(5)}
 </div></div>"""

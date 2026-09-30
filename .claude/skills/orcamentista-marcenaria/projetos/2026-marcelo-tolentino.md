@@ -541,3 +541,150 @@ completa, pela segunda vez no mesmo dia.
 
 Valores inalterados: **Standard R$ 151.990 · Gold R$ 193.250**, espelhos em
 linha própria.
+
+---
+
+## 30/09/2026 (5º) — entra o salão principal
+
+> *"Agora, vamos voltar ao orçamento do Marcelo Tolentino e adicionar esses
+> itens. Se atente para os armários com portas ripadas, considere abertura
+> por toque, com fecho toque da Blum."*
+
+Prancha **BRZ Estande de Vendas - Nova Lima_Salão principal**, 3 folhas A1,
+rev. 01 de 30/09. Chegou depois das outras onze. Levantamento completo em
+`levantamento-marcelo-tolentino.md`.
+
+### O que entrou
+
+| item | m² de chapa | custo std | custo gold |
+|---|--:|--:|--:|
+| armário ripado com abertura por toque | 83.1 | 17.957 | 20.419 |
+| armário liso da entrada | 4.9 | 946 | 1.138 |
+| painel liso piso/teto | 6.0 | 1.162 | 1.170 |
+| pilar revestido em painel preto | 14.4 | 3.952 | 3.999 |
+| bancada da secretária | 12.6 | 1.818 | 1.896 |
+| **Salão principal** | **120.9** | **25.835** | **28.622** |
+
+O salão sozinho tem **121 m² de chapa** — mais que a Cozinha (69,6) e
+quase o dobro do Gourmet (47,8). Passa a ser **o maior ambiente do contrato**.
+
+### ⭐ O armário ripado — o que o desenho realmente diz
+
+A elevação 01 é uma parede de **690 × 220**, com **14 portas de 49,4**. Não
+contei as ripas no olho: extraí os vetores da prancha e medi o passo.
+
+| | |
+|---|--:|
+| verticais longas na elevação | 161 |
+| passo dominante | **9,3 cm** (ripa 6,2 · vão 3,1) |
+| ripas ao longo dos 690 | **73** |
+| por porta | **5** |
+
+Daí o lançamento: **porta base + 5 ripas de 6,2 × 220 coladas**, com a fita
+de borda das ripas entrando no corte como peça de verdade. São **316 m de
+fita** só nas ripas — é isso que faz frente ripada custar o que custa, não a
+usinagem.
+
+### ⛔ Três decisões técnicas que o "abertura por toque" obriga
+
+**1 · A dobradiça tem de ser sem mola.** Tip-on mecânico e mola trabalham um
+contra o outro: a mola empurra a porta de volta contra o pulsador e ela
+reabre sozinha. Novisys e Sensys têm versão sem mola — é ela que tem de
+entrar na compra. **Está na cotação como condição, não como preferência.**
+
+**2 · Dois pulsadores por porta.** A Blum especifica duas unidades acima de
+1,20 m de altura de porta. Estas têm 2,20 m. São **28 pulsadores**, não 14 —
+**R$ 2.800**, o item de ferragem mais caro do contrato inteiro, e ele **não
+muda entre standard e gold**.
+
+**3 · A porta ripada trava em 18 mm nos DOIS cenários.** Ripa colada numa
+face só faz par bimetálico: a porta encurva para o lado das ripas. Em
+49,4 × 220 e 15 mm ela empena, e **porta empenada não fecha no toque** — o
+pulsador não engata. Aqui a espessura é requisito de funcionamento, não
+nível de acabamento, então `papel()` ganhou o papel `E18` e a regra de
+cenário não alcança essa peça.
+
+Ferragem do salão: **R$ 3.862** na standard, **R$ 5.786** na gold —
+a diferença é só a dobradiça, porque o pulsador é o mesmo.
+
+### Uma correção de arrasto
+
+A **porta de 230 × 100 do Lounge** estava com 4 dobradiças. Para essa altura
+são 5, como as do salão. Corrigido — custa R$ 10 na standard e R$ 35 na gold,
+e o preço do ambiente nem se mexeu no arredondamento.
+
+### O que ficou de fora, de propósito
+
+Granito cinza andorinha escovado (marmoraria) · rodapé cinza Santa Luzia
+H=15 (perfil comercial, corre também nas paredes que não são nossas) ·
+divisória e porta pivotante em vidro temperado · porta de entrada em vidro
+com perfil de 10 · molduras das fotos 85×150 e TVs touch (comunicação
+visual) · pintura · mobiliário solto.
+
+### O fechamento
+
+| Ambiente | m² | custo std | **venda std** | MC | custo gold | **venda gold** | MC |
+|---|--:|--:|--:|--:|--:|--:|--:|
+| Salão principal | 120.9 | 25.835 | **47.360** | 30.8% | 28.622 | **61.600** | 38.9% |
+| Copa | 27.1 | 4.577 | **8.100** | 28.8% | 5.477 | **11.310** | 36.9% |
+| Sala de reunião | 8.5 | 2.480 | **4.480** | 30.0% | 2.870 | **6.060** | 38.0% |
+| Sala de ativos | 44.4 | 7.222 | **13.450** | 31.7% | 7.959 | **17.360** | 39.5% |
+| Lounge | 26.7 | 5.226 | **8.960** | 27.0% | 5.521 | **10.970** | 35.0% |
+| Gourmet | 47.8 | 8.452 | **14.670** | 27.7% | 8.873 | **17.920** | 35.8% |
+| **Stand** | **275.3** | **53.791** | **97.020** | **29.9%** | **59.323** | **125.220** | **38.0%** |
+| Cozinha | 69.6 | 21.972 | **40.020** | 30.4% | 23.804 | **50.710** | 38.4% |
+| Sala e varanda | 40.8 | 9.167 | **16.780** | 30.7% | 9.448 | **20.270** | 38.7% |
+| Quarto casal | 29.7 | 10.491 | **19.370** | 31.2% | 11.900 | **25.830** | 39.3% |
+| Quarto solteiro | 25.2 | 8.739 | **16.200** | 31.4% | 10.170 | **22.180** | 39.5% |
+| Banheiro social | 3.2 | 1.482 | **2.680** | 30.1% | 1.611 | **3.400** | 38.0% |
+| Banheiro casal | 6.9 | 3.256 | **6.100** | 32.0% | 3.489 | **7.690** | 40.0% |
+| **Decorado** | **175.4** | **55.106** | **101.150** | **30.9%** | **60.421** | **130.080** | **38.9%** |
+| **TOTAL** | **450.7** | **108.898** | **R$ 198.170** | **30.4%** | **119.744** | **R$ 255.300** | **38.4%** |
+
+Gold − standard: **R$ 57.130** (+28.8%).
+Espelhos seguem à parte e iguais: **R$ 2.081**.
+
+A MC não se mexeu (standard 30,3 → 30.4%,
+gold 38,3 → 38.4%): **o alerta de
+30/09 continua de pé — se o cliente fechar a Standard, o contrato inteiro
+roda abaixo do piso de 35% da casa.** Com o salão dentro, agora são
+R$ 198.170 rodando a 30.4%.
+
+### ⛔⛔ A proposta perdeu conteúdo DUAS vezes, e o auditor de transbordo achou tudo ok
+
+Ao caber o sexto ambiente na página 2 e a décima-terceira linha na tabela da
+página 5, duas coisas sumiram: **o bloco inteiro da Copa** e, pela quarta
+vez, **a última parcela da escada de pagamento**.
+
+**A causa raiz, enfim identificada:** `.pad` é coluna flex. Uma caixa com
+`overflow:hidden` e `flex-shrink` padrão **encolhe** quando a coluna estoura,
+e o conteúdo que sobra é cortado **sem empurrar o rodapé**. O auditor de
+transbordo mede a distância até o rodapé e responde "folga 27 pt, ok".
+
+Duas correções, as duas gravadas:
+
+```css
+.escP{ ... overflow:hidden; flex:none; }   /* sem isto, a caixa encolhe em silêncio */
+```
+
+E o auditor de transbordo ganhou a checagem que faltava: **rodapé ausente é
+transbordo.** Na página 2 o estouro tinha empurrado o rodapé para fora da
+folha; o auditor caía em `pg.rect.y1` e dizia "folga 28 pt" com duas linhas
+de texto escritas por cima de onde o rodapé deveria estar.
+
+```python
+fb = [b for b in bl if 'valvicmarcenaria' in norm(b[4])]
+if not fb and i > 1: print('⛔ RODAPÉ PERDIDO — a página estourou')
+```
+
+### A proposta
+
+`proposta-marcelo-tolentino.pdf`, **5 páginas**. O salão principal abre o
+estande como item **01** e o decorado renumera para 07–11.
+
+| | |
+|---|--:|
+| **Linha Standard** · 2 anos de garantia | **R$ 198.170** |
+| **Linha Gold** · 10 anos de garantia | **R$ 255.300** |
+
+Três passes limpos: conteúdo perdido · transbordo · metragem e contagem.

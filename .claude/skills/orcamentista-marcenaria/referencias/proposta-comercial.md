@@ -305,13 +305,45 @@ assert not perdidos
 linha no meio da frase e insere `\n` onde o HTML não tem nada — comparar com
 `\s+ → ' '` dá dezenas de falsos positivos.
 
-**Os dois auditores rodam juntos em toda proposta, nesta ordem:**
+**Os três auditores rodam juntos em toda proposta, nesta ordem:**
 
 | | o que pega |
 |---|---|
 | 1 · conteúdo perdido (HTML → PDF) | bloco que a página engoliu |
-| 2 · transbordo (posição) | bloco que invadiu o rodapé |
+| 2 · transbordo (posição **e rodapé ausente**) | bloco que invadiu o rodapé |
 | 3 · metragem e quantitativo | o que não pode estar escrito |
+
+### ⛔⛔ A causa raiz, achada em 30/09: `flex-shrink` + `overflow:hidden`
+
+`.pad` é **coluna flex**. Uma caixa filha com `overflow:hidden` e
+`flex-shrink` no padrão (1) **encolhe** quando a coluna estoura — e o
+conteúdo que sobra é cortado **sem empurrar nada para baixo**. O rodapé fica
+no lugar, o auditor de posição mede "folga 27 pt" e responde ok.
+
+> **Toda caixa de conteúdo fechado — escada de pagamento, tabela de
+> condições, cartões de linha — leva `flex:none`.** Assim o estouro vira
+> transbordo visível, que o auditor 2 pega, em vez de sumiço silencioso.
+
+```css
+.escP{ ...; overflow:hidden; flex:none; }
+```
+
+Sem isso a escada de pagamento sumiu **quatro vezes** na mesma proposta.
+
+### ⛔ E rodapé ausente É transbordo
+
+O auditor 2 usava o rodapé como régua e caía em `pg.rect.y1` quando não o
+achava. Só que **o rodapé some justamente quando a página estoura** — foi o
+que aconteceu na página do estande do Marcelo Tolentino, com duas linhas de
+texto escritas por cima de onde o rodapé deveria estar, e o auditor
+respondendo "folga 28 pt".
+
+```python
+fb = [b for b in bl if 'valvicmarcenaria' in norm(b[4])]
+if not fb and pagina > 1:            # a capa não tem rodapé
+    print('⛔ RODAPÉ PERDIDO — a página estourou')
+foot_y = min([b[1] for b in fb] or [pg.rect.y1])
+```
 
 ---
 
