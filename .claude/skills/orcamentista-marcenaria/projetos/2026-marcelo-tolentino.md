@@ -507,3 +507,37 @@ Duas coisas foram gravadas na skill:
 | **Boleto** | *"20% em boleto para dias após a entrega"* — assumi **30 dias** |
 | **Prazo** | não foi dado: propus **estande 60 dias · decorado 90 dias** |
 | **Validade** | **10 dias corridos** |
+
+
+---
+
+## 30/09/2026 (4º) — a proposta enxugada
+
+> *"A página 2 é completamente dispensável. Os textos ficaram muito longos,
+> não precisa se ater para o que compra e para o que vende não. Fale apenas
+> da marcenaria, pode ser mais sucinto nos textos. Estamos vendendo
+> marcenaria, não stand, não decorado. Reduza a quantidade de página
+> significativamente."*
+
+**De 10 páginas para 5.** Saiu a página "O contrato" inteira e saiu toda a
+narrativa comercial — *"um estande que vende e um decorado que convence"*,
+*"é o ambiente que o comprador olha primeiro"*, *"o estande recebe quem
+chega"*. Nada disso é marcenaria.
+
+| antes | agora |
+|---|---|
+| 1 capa · 2 o contrato · 3–4 estande · 5–7 decorado · 8 as linhas · 9 investimento · 10 condições | **1 capa · 2 estande · 3 decorado · 4 as linhas · 5 investimento e condições** |
+
+Os onze ambientes passaram a caber em duas páginas, cada um em **duas ou
+três linhas** dizendo só o que é o móvel, em que material e com que detalhe
+construtivo. A capa perdeu o slogan e ficou em **"Marcenaria sob medida."**
+
+⛔ **O auditor de conteúdo perdido, criado nesta mesma rodada, ganhou o dia
+duas vezes.** Ao compactar a página de investimento, a escada de pagamento
+perdeu primeiro duas linhas e depois uma — e nas duas vezes o auditor de
+transbordo continuou dizendo "ok", porque o bloco cortado não existe para
+ele. Sem o auditor novo a proposta teria ido sem a condição de pagamento
+completa, pela segunda vez no mesmo dia.
+
+Valores inalterados: **Standard R$ 151.990 · Gold R$ 193.250**, espelhos em
+linha própria.
