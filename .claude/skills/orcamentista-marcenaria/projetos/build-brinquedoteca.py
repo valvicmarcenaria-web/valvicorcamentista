@@ -17,7 +17,7 @@ with contextlib.redirect_stdout(io.StringIO()): spec.loader.exec_module(oq)
 
 br = lambda v: f'{v:,.0f}'.replace(',', '.')
 CLIENTE, PROJETO = 'Eliza e Luiz Gustavo', 'Helena Antunes Arquitetura e Interiores'
-DATA, PRAZO, VALIDADE, GARANTIA = '30 de setembro de 2026', '75 dias corridos', '10 dias', '5 anos'
+DATA, PRAZO, VALIDADE, GARANTIA = '30 de setembro de 2026', '90 dias corridos', '10 dias', '10 anos'
 NP = 4
 img = lambda n: f'img-brinquedoteca/{n}.jpg'
 CSS = open(P/'css-brinquedoteca.css', encoding='utf-8').read()
@@ -25,15 +25,15 @@ CSS = open(P/'css-brinquedoteca.css', encoding='utf-8').read()
 # nome e descrição de proposta — sem medida, sem contagem
 CONJ = [
  ('Passarela suspensa', 'Estrutura em aço, piso em compensado naval e pintura automotiva.'),
- ('Gradis de contenção', 'Quadro metálico com corda combinada de alma em aço, tensionada fio a fio.'),
+ ('Gradis de contenção', 'Quadro metálico com corda combinada de alma em aço, com a rede do mezanino e as telas de proteção.'),
  ('Plataformas acolchoadas', 'Degraus estruturados, espuma de alta densidade e courvin náutico.'),
  ('Piscina de espuma', 'Estrutura de contenção, fundo e paredes acolchoados.'),
  ('Banco extenso', 'Estrutura em aço com assento acolchoado em courvin náutico.'),
  ('Parede de desenho', 'Painel em laminado branco, para escrever e apagar.'),
- ('Parede estrutural principal', 'Estrutura em aço e MDF ultra premium cru, plano e pronto para o acabamento.'),
+ ('Parede estrutural principal', 'Estrutura em aço e MDF ultra premium cru, pronto para o acabamento.'),
  ('Casinha — paredes', 'Fachada e laterais em MDF ultra premium cru, dupla face.'),
  ('Casinha — escada', 'Estrutura em aço com degraus forrados e pintura automotiva.'),
- ('Janelas e pórticos moldurados', 'Frisos e venezianas usinados peça a peça, em laca branca.'),
+ ('Janelas e pórticos moldurados', 'Estilo veneziana em usinagem plana, com frisos, em laca branca.'),
  ('Escorregador com túnel curvo', 'Teto em arco sobre gabarito, pista em laminado e gradil de proteção.'),
  ('Cozinha de brinquedo', 'Módulo lúdico sob medida, em MDF ultra premium cru.'),
 ]
@@ -79,11 +79,11 @@ p2 = f"""<div class="pg"><div class="in">
       espuma: a que <b>afunda</b> na piscina, a que <b>sustenta</b> no
       degrau, a que <b>absorve</b> na parede.</div></div>
     <div><div class="k">Superfície</div><div class="v"><b>MDF ultra premium
-      cru</b>, plano e sem emenda aparente — entregue pronto para o
-      acabamento que a cliente escolher.</div></div>
+      cru</b>, plano e alinhado — entregue pronto para o acabamento que a
+      cliente escolher.</div></div>
     <div><div class="k">Acabamento nosso</div><div class="v">Janelas e
-      pórticos saem <b>em laca branca</b>, com friso e veneziana usinados
-      peça a peça.</div></div>
+      pórticos saem <b>em laca branca</b>, com friso e usinagem
+      plana no estilo veneziana.</div></div>
   </div>
   {pe(2)}
 </div></div>"""
@@ -118,7 +118,7 @@ p4 = f"""<div class="pg"><div class="in">
     <div class="l"><span class="p disp">30%</span><span class="q">na entrega, com tudo montado e conferido</span></div>
   </div>
 
-  <div class="gr" style="margin-top:11mm;">
+  <div class="gr" style="margin-top:11mm;grid-template-columns:1fr 1fr 1fr;">
     <div><div class="k">Prazo</div><div class="v"><b>{PRAZO}</b>, contados da
       assinatura, do pagamento da entrada e da conferência de medidas no
       local.</div></div>
@@ -127,9 +127,6 @@ p4 = f"""<div class="pg"><div class="in">
       fabricamos e instalamos.</div></div>
     <div><div class="k">Validade</div><div class="v"><b>{VALIDADE}</b> a
       partir desta data.</div></div>
-    <div><div class="k">Engenharia</div><div class="v">A estrutura suspensa
-      é <b>dimensionada e assinada por engenheiro</b>, com ART emitida antes
-      da fabricação.</div></div>
   </div>
 
   <div class="ph sangra" style="margin-top:12mm;height:78mm;">
@@ -137,10 +134,11 @@ p4 = f"""<div class="pg"><div class="in">
 
   <div class="obs">Tudo é fabricado, pintado, estofado e instalado por <b>equipe
   própria</b>. Acompanham o fornecimento: projeto executivo, estrutura
-  metálica, chapas, espumas, courvin, cordas, laca das janelas, pintura
-  automotiva, transporte e montagem. <b>Não acompanham:</b> o acabamento das
-  paredes e o efeito de tijolinho, a rede do mezanino e os blocos da piscina,
-  telas de proteção, obra civil, elétrica, piso e revestimentos. Medidas
+  metálica, chapas, espumas, courvin, cordas, <b>a rede do mezanino</b>,
+  <b>as telas de proteção</b>, laca das janelas, pintura automotiva,
+  transporte e montagem. <b>Não acompanham:</b> o acabamento das paredes e o
+  efeito de tijolinho, os blocos da piscina, obra civil, elétrica, piso e
+  revestimentos. Medidas
   conferidas no local antes da fabricação.</div>
   {pe(4)}
 </div></div>"""

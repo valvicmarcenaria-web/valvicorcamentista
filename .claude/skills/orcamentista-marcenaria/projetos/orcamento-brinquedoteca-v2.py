@@ -92,7 +92,16 @@ it('Gradis de contenção das redes', f'{L_GR:.2f} × {H_GR:.2f} m · {n_fios} f
  ('Passagem e tensionamento da corda',                 M_CORDA,'m',6.0),
  ('Chumbador',                                            14.0,'un',CHUMB),
  (f'Pintura automotiva — {S_gr:.2f} m²',                  S_gr,'m²',PINT_AUTO),
-], obs=f'⭐ corda: {M_CORDA:.1f} m × R$ {CORDA_COMB:.2f}/m')
+ # [Jonathan 30/09] a rede e as telas passam a ESTAR INCLUSAS
+ ('Rede de descanso do mezanino — poliamida malha 4 cm',   3.97,'m²',320.0),
+ ('Cabo de aço 6 mm no perímetro da rede',                 10.0,'m',CABO_PERIM),
+ ('Esticador, sapatilha e grampo',                         16.0,'un',28.0),
+ ('Chumbador estrutural da rede',                          18.0,'un',CHUMB_EST),
+ ('Instalação e tensionamento da rede',                     8.0,'h',42.0),
+ ('Telas de proteção',                                     14.0,'m²',250.0),
+ ('Metalon 30×30×1,2 — quadro das telas',                  26.0,'m',mL('30x30x1,2')),
+ ('Mão de obra de serralheria das telas',                  26.0,'m',MO_SERR_REP),
+], obs=f'⭐ corda: {M_CORDA:.1f} m × R$ {CORDA_COMB:.2f}/m · inclui a REDE e as TELAS')
 
 # ══ 3 · PLATAFORMAS ACOLCHOADAS ══════════════════════════════════════════
 Lpl, Bpl, Hpl, N_PL = 0.95, 0.60, 0.57, 5
@@ -199,8 +208,8 @@ it('Janelas e pórticos moldurados', f'{N_JAN} janelas + {N_PORT} pórticos · l
  ('MDF ultra 15 mm — folhas, marco, peitoril e moldura',   2.8,'ch',MDF_U15),
  ('Metalon 30×30×1,2 — reforço de marco',                 22.0,'m',mL('30x30x1,2')),
  ('Friso decorativo usinado',                             34.0,'m',14.0),
- ('Veneziana fixa usinada (ripa a ripa)',                  4.4,'m²',185.0),
- ('Mão de obra de marcenaria (usinagem e montagem)',      46.0,'h',MO_MARC_H),
+ ('Estilo veneziana — usinagem plana na face',             4.4,'m²',110.0),
+ ('Mão de obra de marcenaria (usinagem e montagem)',      38.0,'h',MO_MARC_H),
  (f'⭐ Laca branca aplicada — {A_LACA:.1f} m²',          A_LACA,'m²',LACA_M2),
  ('Dobradiça e ferragem das folhas de giro',              14.0,'un',12.0),
 ], obs='⭐ único item com acabamento nosso — o resto entrega cru')
@@ -245,13 +254,22 @@ MC = 0.45
 
 # [Jonathan 30/09] preço CRAVADO, não calculado por MC
 PRECO_FIXO = {'Cozinha de brinquedo': 12000}
+ALVO_TOTAL = 185000   # [Jonathan 30/09] investimento cravado
 
 # custo direto de cada item = custo próprio + sua fatia de logística,
 # consumível e embalagem, rateada pelo custo (regra da casa)
 CDI = {i['nome']: i['total']*CD/CD_SIS for i in ITENS}
-PV  = {n: PRECO_FIXO.get(n, round(c/(BASE-MC)/10)*10) for n, c in CDI.items()}
+# o total é CRAVADO: a cozinha tem preço próprio e o restante é rateado
+_resto = [n for n in CDI if n not in PRECO_FIXO]
+_alvo  = ALVO_TOTAL - sum(PRECO_FIXO.values())
+_base  = sum(CDI[n] for n in _resto)
+PV = dict(PRECO_FIXO)
+for n in _resto: PV[n] = round(CDI[n]*_alvo/_base/10)*10
+_dif = _alvo - sum(PV[n] for n in _resto)
+_mai = max(_resto, key=lambda n: PV[n]); PV[_mai] += _dif
 TOT = sum(PV.values())
 MC_REAL = {n: BASE - CDI[n]/PV[n] for n in PV}
+assert TOT == ALVO_TOTAL
 
 if __name__ == '__main__':
     br  = lambda v: f'{v:,.2f}'.replace(',','§').replace('.',',').replace('§','.')

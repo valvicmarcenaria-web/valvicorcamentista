@@ -454,3 +454,28 @@ fragmentado.
 > eles leem texto. **Render extraído de prancha girada exige conferência
 > visual com um texto legível dentro da imagem.** Aqui foi o letreiro que
 > denunciou; numa foto sem texto teria passado.
+
+---
+
+## 30/09 — correções na proposta
+
+| | |
+|---|---|
+| Bloco de **engenharia/ART** | **removido** da proposta |
+| Garantia | 5 → **10 anos** |
+| Prazo | 75 → **90 dias corridos** |
+| Painéis | *"sem emenda aparente"* → **"plano e alinhado"** — os painéis têm emenda |
+| Janelas | veneziana ripa a ripa → **estilo veneziana em usinagem plana** |
+| **Rede do mezanino e telas de proteção** | saem dos não-inclusos e **entram no escopo** |
+| Investimento | **R$ 185.000**, cravado |
+
+A rede e as telas entraram no custo dentro do item 02 (gradis de contenção),
+que é onde fazem sentido — o gradil é o quadro que as recebe. Custo direto
+subiu de R$ 54.926 para **R$ 61.296**. Com o total cravado em R$ 185.000, a
+**MC fica em 43,4%** (a cozinha segue cravada em R$ 12.000, com 49,2%).
+
+⛔ **Registrado: a ART saiu da proposta, não do problema.** As pranchas
+continuam devolvendo o dimensionamento da estrutura suspensa para quem
+executa (PR04 e PR05, em três lugares). Tirar a linha do documento não muda
+quem responde se algo ceder — muda só quem o cliente vê responder. É decisão
+do Jonathan e fica assim anotada.
