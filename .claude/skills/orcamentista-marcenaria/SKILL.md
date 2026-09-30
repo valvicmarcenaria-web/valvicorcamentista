@@ -129,7 +129,17 @@ e estimar pela escala, sinalizando.
 5. **Cross-checks:** nº de cj4 (suportes) = nº de prateleiras móveis; chapa de
    cor consistente com a fita de cor.
 
-## FASE 3 — ESTRATÉGIA (margem, otimização, proposta)
+## 
+⛔⛔ **AUDITAR A PROPOSTA EM TRÊS PASSADAS, NESTA ORDEM** [30/09/2026]
+  1. **conteúdo perdido** — normalizar HTML e PDF tirando todo espaço e
+     acento, e conferir que cada frase do HTML saiu no PDF. O auditor de
+     posição NÃO pega bloco engolido por `overflow:hidden`; no Marcelo
+     Tolentino a escada de pagamento inteira sumiu e o transbordo disse "ok".
+  2. **transbordo** — último bloco contra o topo do rodapé.
+  3. **metragem e quantitativo** — regex de medida e de contagem de peça.
+  Ver `referencias/proposta-comercial.md`.
+
+FASE 3 — ESTRATÉGIA (margem, otimização, proposta)
 
 > ⛔⛔ **A PROPOSTA NÃO LEVA METRAGEM NEM QUANTITATIVO.** [Jonathan 12/09/2026]
 > Nenhuma cota, m², contagem de porta, gaveta, prateleira, ripa, chapa, metro

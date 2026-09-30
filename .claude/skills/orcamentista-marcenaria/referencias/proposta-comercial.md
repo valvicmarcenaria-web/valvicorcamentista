@@ -273,3 +273,59 @@ nem metragem de nada"* — e eu tratei como decisão daquele job. **Não era.
 > **O auditor de proposta passa a rodar isto:** regex atrás de
 > `\d+[.,]?\d*\s*(m|cm|mm|m²)` e de contagem de peça no PDF final.
 > **Qualquer ocorrência é erro.**
+
+---
+
+## ⛔⛔ O AUDITOR DE TRANSBORDO NÃO VÊ O QUE FOI CORTADO [30/09/2026]
+
+No Marcelo Tolentino a **escada de pagamento inteira sumiu da proposta** e o
+auditor de transbordo disse **"ok"**. A página tinha estourado, o
+`overflow:hidden` da `.page` cortou o bloco, e o auditor — que mede a posição
+do último bloco **que renderizou** — não tinha o que medir.
+
+**Medir o que saiu não prova que saiu tudo.** O auditor de posição só pega
+conteúdo que vazou *visivelmente* para cima do rodapé. Conteúdo que a página
+engoliu é invisível para ele.
+
+### O auditor certo compara HTML → PDF
+
+```python
+def norm(t):
+    t = unicodedata.normalize('NFKD', t)
+    return re.sub(r'[^0-9a-zA-Z%]', '', t).lower()   # tira espaço e acento
+
+pdf = norm(texto_extraido_do_pdf)
+txt = html.unescape(re.sub(r'<[^>]+>', ' ', html_do_corpo))
+perdidos = [f for f in re.split(r'[.·—\n]', txt)
+            if len(f.strip()) >= 25 and norm(f) not in pdf]
+assert not perdidos
+```
+
+⚠ **A normalização tem de tirar o espaço todo**, não só colapsar. O PDF quebra
+linha no meio da frase e insere `\n` onde o HTML não tem nada — comparar com
+`\s+ → ' '` dá dezenas de falsos positivos.
+
+**Os dois auditores rodam juntos em toda proposta, nesta ordem:**
+
+| | o que pega |
+|---|---|
+| 1 · conteúdo perdido (HTML → PDF) | bloco que a página engoliu |
+| 2 · transbordo (posição) | bloco que invadiu o rodapé |
+| 3 · metragem e quantitativo | o que não pode estar escrito |
+
+---
+
+## ⛔ COLISÃO DE CLASSE COM O `css-proposta.css` — a segunda vez
+
+`css-proposta.css` já define `.inv`, `.pay`, `.esc` e `.cnd`, e o `.inv td`
+dele força `text-align:right`. Redefinir essas classes no build **não
+sobrescreve** — o navegador soma as duas regras e a última vence por
+especificidade, não por ordem de arquivo.
+
+Sintoma: na Luiza e Raphael (12/09) os nomes dos itens saíram alinhados à
+direita; no Marcelo Tolentino (30/09) aconteceu **de novo**, e junto a escada
+de pagamento sumiu.
+
+> **Toda classe nova de um build leva sufixo do job ou um `P`:**
+> `.invA`, `.escP`, `.cndP`. Nunca reutilizar um nome que já está no CSS base.
+> Antes de estilizar, `grep -n "^\.nome" css-proposta*.css`.

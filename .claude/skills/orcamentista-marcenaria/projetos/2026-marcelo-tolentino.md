@@ -456,3 +456,54 @@ alto e forro suspenso em 15 mm flexionam.
 
 Não mexi — a especificação foi explícita. Mas os dois pontos são de
 durabilidade, não de acabamento, e aparecem depois da entrega.
+
+---
+
+## 30/09/2026 (3º) — a proposta
+
+> *"O painel e forro pode manter de 15 mm. Agora pode gerar a proposta.
+> Forma de pagamento: entrada de 40% + 20% no início das montagens + 20% na
+> entrega final + 20% em boleto [30] dias após a entrega."*
+
+`build-marcelo-tolentino.py` → `proposta-marcelo-tolentino.pdf`, **10 páginas**,
+com os dois cenários lado a lado. Painel e forro ficam em 15 mm, como decidido.
+
+| | |
+|---|--:|
+| **Linha Standard** · 2 anos de garantia | **R$ 151.990** |
+| **Linha Gold** · 10 anos de garantia | **R$ 193.250** |
+
+Espelhos em **linha própria** na tabela, como pedido: R$ 3.860 na Standard e
+R$ 4.530 na Gold — saem do valor do ambiente e aparecem destacados.
+
+### A exceção de metragem
+
+A regra de 12/09 proíbe qualquer medida na proposta. O Jonathan pediu em
+30/09 que a **espessura da chapa apareça**, porque é o que separa as duas
+linhas. O auditor passou a ter uma **lista de exceção fechada — `15 mm` e
+`18 mm` — e barra todo o resto**. Resultado: limpo nos dois regex, com as
+duas exceções usadas e nenhuma outra medida no documento.
+
+### ⛔⛔ A escada de pagamento sumiu e o auditor disse "ok"
+
+A página de investimento estourou, o `overflow:hidden` engoliu o bloco
+inteiro da escada, e o auditor de transbordo **não viu**: ele mede a posição
+do último bloco *que renderizou*, e não havia o que medir.
+
+Duas coisas foram gravadas na skill:
+
+1. **Auditor de conteúdo perdido (HTML → PDF)**, que passou a rodar antes do
+   de transbordo. Normaliza os dois lados tirando espaço e acento e confere
+   que cada frase do HTML saiu no PDF.
+2. **Colisão de classe CSS pela segunda vez.** `css-proposta.css` já define
+   `.inv`, `.pay`, `.esc` e `.cnd`, e o `.inv td` dele força
+   `text-align:right`. Mordeu na Luiza em 12/09 e mordeu aqui. Agora toda
+   classe nova leva sufixo: `.invA`, `.escP`, `.cndP`.
+
+### Assumido, à espera de confirmação
+
+| | |
+|---|---|
+| **Boleto** | *"20% em boleto para dias após a entrega"* — assumi **30 dias** |
+| **Prazo** | não foi dado: propus **estande 60 dias · decorado 90 dias** |
+| **Validade** | **10 dias corridos** |
