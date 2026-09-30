@@ -261,3 +261,97 @@ Somando as três rodadas: o preço saiu de **R$ 232.430** para **R$ 171.080**,
 RT e comissão (encargo que a casa deixou de pagar) e **R$ 18 mil vieram da
 margem**. É decisão de preço do Jonathan, registrada — não é consequência
 técnica.
+
+---
+
+## 30/09/2026 — dois cenários de investimento
+
+> *"Cenário 1 — linha standard: ferragens que já consideramos nessa proposta
+> (aqui vamos reduzir MC em mais 3 pontos). Cenário 2 — linha gold: ferragens
+> Hettich, MC de 8% acima da standard. Mantenha os valores dos espelhos
+> separados."*
+
+### Como o motor passou a rodar dois cenários
+
+A ferragem deixou de ser lançada em **reais** e passou a ser lançada em
+**quantidade**. `DOBR`, `CORR`, `TIPON`, `RO65P_PORTA`, `RO65P_TRILHO` e
+`SUP_PRAT` viraram objetos `Q`, um dicionário com `__mul__` e `__add__` —
+então `8*CORR + 4*DOBR` continua escrito igual nos itens, mas agora devolve
+`{'corr':8, 'dobr':4}`. O preço entra depois, por cenário. **Nenhuma das 20
+chamadas `f()` precisou ser reescrita.**
+
+⛔ A guarda de 09/09 continua valendo e está no código:
+
+```python
+for mov in MOVS:
+    if not FER[mov]:
+        assert abs(CDI['standard'][mov] - CDI['gold'][mov]) < 0.01, mov
+```
+
+Chapa, fita, consumível, logística, terceirizados e **espelho** são idênticos
+nos dois cenários. Só a ferragem muda — e a embalagem, que é 2% dela.
+
+### As duas linhas
+
+| | ferragem | garantia | alvos de MC |
+|---|---|--:|--:|
+| **Standard** | Hettich Novisys · corrediça telescópica · RO65 Prime | **2 anos** | 27 · 30 · 32 |
+| **Gold** | Hettich Sensys · corrediça oculta Quadro · RO65 Prime | **10 anos** | 35 · 38 · 40 |
+
+Li *"8% acima"* como **8 pontos**, coerente com o *"3 pontos"* que o Jonathan
+escreveu na mesma frase. Some-se: a Gold devolve exatamente os alvos
+35 / 38 / 40 com que este orçamento começou.
+
+### O fechamento
+
+| Ambiente | m² | custo std | **venda std** | MC | custo gold | **venda gold** | MC |
+|---|--:|--:|--:|--:|--:|--:|--:|
+| Copa | 27,1 | 4.623 | **8.150** | 28,6% | 5.480 | **11.290** | 36,8% |
+| Sala de reunião | 8,5 | 2.830 | **5.110** | 30,0% | 3.085 | **6.510** | 38,0% |
+| Sala de ativos | 44,4 | 7.862 | **14.650** | 31,7% | 8.066 | **17.640** | 39,6% |
+| Lounge | 26,7 | 6.132 | **10.510** | 27,0% | 6.234 | **12.380** | 35,0% |
+| Gourmet | 47,8 | 9.635 | **16.690** | 27,6% | 9.941 | **20.020** | 35,7% |
+| **Stand** | **154,4** | **31.081** | **55.110** | **29,0%** | **32.805** | **67.840** | **37,0%** |
+| Cozinha | 69,6 | 22.036 | **40.130** | 30,4% | 23.413 | **49.890** | 38,4% |
+| Sala e varanda | 40,8 | 9.994 | **18.250** | 30,6% | 9.994 | **21.370** | 38,6% |
+| Quarto casal | 29,7 | 11.122 | **20.540** | 31,2% | 11.745 | **25.460** | 39,2% |
+| Quarto solteiro | 25,2 | 9.497 | **17.590** | 31,4% | 10.150 | **22.100** | 39,4% |
+| Banheiro social | 3,2 | 1.554 | **2.810** | 30,1% | 1.656 | **3.500** | 38,0% |
+| Banheiro casal | 6,9 | 3.906 | **7.320** | 32,0% | 4.110 | **9.060** | 40,0% |
+| **Decorado** | **175,4** | **58.108** | **106.640** | **30,9%** | **61.066** | **131.380** | **38,9%** |
+| **TOTAL** | **329,8** | **89.189** | **161.750** | **30,2%** | **93.871** | **199.220** | **38,2%** |
+
+**Espelhos, linha à parte e igual nos dois:** banheiro social R$ 663 ·
+banheiro casal R$ 1.418 · **total R$ 2.081**.
+
+### A escada bate com o que a casa já sabia
+
+| | |
+|---|--:|
+| Gold − Standard, no preço | **R$ 37.470** (+23,2%) |
+| Gold − Standard, em ferragem de verdade | **R$ 4.590** |
+| Quanto da diferença é margem | **87,7%** |
+
+`ferragens.md` já registrava isso: *"84% da diferença entre o cenário mais
+barato e o mais caro é margem e só 13% é ferragem a mais."* Aqui deu 87,7% e
+12,3%. O que sustenta a escada comercialmente não é a peça — é a **garantia,
+que dobra de 2 para 10 anos**.
+
+### ⚠⚠ A Standard está 4,8 pontos abaixo do piso da casa
+
+| rodada | preço | MC |
+|---|--:|--:|
+| 29/09 · com RT e comissão | 232.430 | 38,2% |
+| 29/09 · sem RT, comissão 5% | 208.230 | 38,2% |
+| 29/09 · sem comissão, −5 pontos | 171.080 | 33,2% |
+| **30/09 · standard, −3 pontos a mais** | **161.750** | **30,2%** |
+| **30/09 · gold, +8 pontos** | **199.220** | **38,2%** |
+
+O piso da casa é **35%**. A Standard fecha em 30,2%, e dentro dela o **Lounge
+(27,0%)**, o **Gourmet (27,6%)** e a **Copa (28,6%)** ficam perto de 7 pontos
+abaixo. A Gold volta exatamente ao 38,2% de onde o orçamento partiu.
+
+Não é problema técnico — é a escada funcionando: a Standard é a linha de
+entrada e a Gold é a que paga a casa. Mas **se o cliente fechar a Standard, o
+contrato inteiro roda abaixo do piso**, e isso precisa ser decisão consciente,
+não consequência da escada.

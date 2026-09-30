@@ -44,12 +44,37 @@ for c, n in (('TA','Tauari'),('CM','Carv.Munique'),('CP','Cinza Pixel'),
 
 FITA_BR, FITA_COR = 2.0, 3.0
 
-# ── ferragens ─────────────────────────────────────────────────────────────
-DOBR   = 10.0     # Hettich Novisys
-CORR   = 40.0     # telescópica
-TIPON  = 100.0    # ★ pulsador (fecho toque)
-RO65P_PORTA, RO65P_TRILHO = 120.0, 160.0   # ★ RO65 Prime — PROVISÓRIO
-SUP_PRAT = 1.50
+# ── ferragens: os itens lançam QUANTIDADE, o cenário dá o preço ──────────
+# [Jonathan 30/09] Dois cenários de investimento:
+#   standard = a ferragem desta proposta        · garantia 2 anos
+#   gold     = Hettich (Sensys + oculta Quadro) · garantia 10 anos
+class Q(dict):
+    """Unidade de ferragem. `4*DOBR + 8*CORR` vira {'dobr':4,'corr':8}."""
+    def __mul__(self, n): return Q({k: v*n for k, v in self.items()})
+    __rmul__ = __mul__
+    def __add__(self, o):
+        r = Q(self)
+        for k, v in (o or {}).items(): r[k] = r.get(k, 0) + v
+        return r
+    __radd__ = __add__
+
+DOBR, CORR, TIPON         = Q({'dobr':1}), Q({'corr':1}), Q({'tipon':1})
+RO65P_PORTA, RO65P_TRILHO = Q({'ro_porta':1}), Q({'ro_trilho':1})
+SUP_PRAT                  = Q({'sup':1})
+
+CEN = ('standard', 'gold')
+PRECO_FER = {
+    # ★ RO65 Prime provisório nos DOIS cenários — a Hettich não tem sistema de
+    #   roupeiro de correr na nossa base. Ver FLAG 5.
+    'standard': dict(dobr=10.0, corr=40.0,  tipon=100.0,
+                     ro_porta=120.0, ro_trilho=160.0, sup=1.50),
+    'gold':     dict(dobr=35.0, corr=120.0, tipon=100.0,
+                     ro_porta=120.0, ro_trilho=160.0, sup=1.50),
+}
+LINHA    = {'standard': 'Hettich Novisys · corrediça telescópica · RO65 Prime',
+            'gold':     'Hettich Sensys · corrediça oculta Quadro Hettich · RO65 Prime'}
+GARANTIA = {'standard': '2 anos', 'gold': '10 anos'}
+
 CAVA_M = 50.0     # perfil cava usinado, por metro de frente
 
 # ── terceiros ─────────────────────────────────────────────────────────────
@@ -64,9 +89,9 @@ TUBO_ALU_M   = 60.0     # tubo 2×2 preto
 LED_M        = 150.0    # LED COB fita + perfil
 USIN_MUX_M2  = 380.0    # ★ usinagem do muxarabi
 
-p, FER, TER, ESP = [], defaultdict(float), defaultdict(float), defaultdict(float)
+p, FER, TER, ESP = [], defaultdict(Q), defaultdict(float), defaultdict(float)
 def a(mov, mat, desc, c, l, q=1): p.append((mov, mat, desc, c, l, q))
-def f(mov, v): FER[mov] += v
+def f(mov, q): FER[mov] = FER[mov] + q
 def t(mov, v): TER[mov] += v
 def e(mov, m2): ESP[mov] += m2*ESPELHO_M2   # espelho, linha separada
 
@@ -453,59 +478,80 @@ for mov in MOVS:
     share = area_mov[mov]/fr_area[fr] if fr_area[fr] else 0
     LOG[mov] = sum(log_fr[fr].values())*share
 
-# ── custo direto por móvel ────────────────────────────────────────────────
-# ⛔ base do rateio de consumível e logística vem ANTES da ferragem
-cdi = {mov: chapa_mov[mov] + fita_custo[mov] for mov in MOVS}
-base_fixa = sum(cdi.values())
+# ── custo direto por móvel, POR CENÁRIO ───────────────────────────────────
+# ⛔ base do rateio de consumível e logística vem ANTES da ferragem, senão o
+#   item sem ferragem muda de custo de um cenário para o outro.
+fixo = {mov: chapa_mov[mov] + fita_custo[mov] for mov in MOVS}
+base_fixa = sum(fixo.values())
 consum = base_fixa*0.06                       # cola, parafuso, limpeza, acabamento
 LOG_TOT = sum(LOG.values())
 for mov in MOVS:
-    cdi[mov] += (consum + LOG_TOT)*cdi[mov]/base_fixa if base_fixa else 0
-for mov in MOVS: cdi[mov] += FER[mov] + TER[mov] + ESP[mov]
-for mov in MOVS: cdi[mov] *= 1 + M.EMBALAGEM  # embalagem 2%, por último
+    fixo[mov] += (consum + LOG_TOT)*fixo[mov]/base_fixa if base_fixa else 0
+    fixo[mov] += TER[mov] + ESP[mov]          # terceiros e espelho não mudam
 
-CD = sum(cdi.values())
+def custo_fer(mov, cen):
+    pr = PRECO_FER[cen]
+    return sum(pr[k]*q for k, q in FER[mov].items())
+
+CDI = {c: {mov: (fixo[mov] + custo_fer(mov, c))*(1 + M.EMBALAGEM) for mov in MOVS}
+       for c in CEN}
+CD  = {c: sum(CDI[c].values()) for c in CEN}
+
+# ⛔ guarda: item SEM ferragem tem de custar o MESMO nos dois cenários
+for mov in MOVS:
+    if not FER[mov]:
+        assert abs(CDI['standard'][mov] - CDI['gold'][mov]) < 0.01, mov
 
 # ── MC direcionada por complexidade, fechada POR AMBIENTE ────────────────
-# [Jonathan 29/09] "Deixar apenas uma comissão de venda de 5%, sem RT."
-# [Jonathan 29/09] "Separe os custos por ambiente e não por item."
-#   O alvo continua sendo dado por complexidade de PEÇA — é onde a diferença
-#   é real. O que muda é o fechamento: o ambiente recebe um preço só, com o
-#   alvo ponderado pelo custo dos seus itens.
+# [Jonathan 29/09] sem RT e sem comissão de venda · MC −5 pontos
+# [Jonathan 30/09] standard leva mais −3 pontos · gold fica 8 pontos acima
 RT_ON, COMISSAO = False, False
 BASE = M.base(parcelas=0, rt=RT_ON, vendedor=COMISSAO)
+CORTE_STD, DELTA_GOLD = 0.08, 0.08            # 5 + 3 pontos · gold +8 pontos
 
-CORTE_MC = 0.05          # [Jonathan 29/09] "reduza 5% de MC"
-MC_ITEM = defaultdict(lambda: 0.38 - CORTE_MC)
+MC_ITEM = {}
 for mov in MOVS:
-    if any(k in mov for k in ('painel', 'painéis', 'forro', 'Painel')): MC_ITEM[mov] = 0.35 - CORTE_MC
+    b = 0.38
+    if any(k in mov for k in ('painel', 'painéis', 'forro', 'Painel')): b = 0.35
     if any(k in mov for k in ('estante', 'muxarabi', 'bancadas de trabalho',
-                              'guarda-roupa', 'divisória')):            MC_ITEM[mov] = 0.40 - CORTE_MC
+                              'guarda-roupa', 'divisória')):            b = 0.40
+    MC_ITEM[mov] = {'standard': b - CORTE_STD, 'gold': b - CORTE_STD + DELTA_GOLD}
 
-AMBS = list(dict.fromkeys(AMB[m] for m in MOVS))
+AMBS     = list(dict.fromkeys(AMB[m] for m in MOVS))
 ITENS_DE = {am: [m for m in MOVS if AMB[m] == am] for am in AMBS}
-CD_AMB   = {am: sum(cdi[m] for m in ITENS_DE[am]) for am in AMBS}
 AR_AMB   = {am: sum(area_mov[m] for m in ITENS_DE[am]) for am in AMBS}
-MC_ALVO  = {am: sum(cdi[m]*MC_ITEM[m] for m in ITENS_DE[am])/CD_AMB[am] for am in AMBS}
+FR_DE    = {am: FRENTE[ITENS_DE[am][0]] for am in AMBS}
 
-PV      = {am: round(CD_AMB[am]/(BASE - MC_ALVO[am])/10)*10 for am in AMBS}
-TOT     = sum(PV.values())
-CD      = sum(CD_AMB.values())
-MC_REAL = {am: BASE - CD_AMB[am]/PV[am] for am in AMBS}
-FR_DE   = {am: FRENTE[ITENS_DE[am][0]] for am in AMBS}
+CD_AMB  = {c: {am: sum(CDI[c][m] for m in ITENS_DE[am]) for am in AMBS} for c in CEN}
+MC_ALVO = {c: {am: sum(CDI[c][m]*MC_ITEM[m][c] for m in ITENS_DE[am])/CD_AMB[c][am]
+               for am in AMBS} for c in CEN}
+PV      = {c: {am: round(CD_AMB[c][am]/(BASE - MC_ALVO[c][am])/10)*10 for am in AMBS}
+           for c in CEN}
+TOT     = {c: sum(PV[c].values()) for c in CEN}
+MC_REAL = {c: {am: BASE - CD_AMB[c][am]/PV[c][am] for am in AMBS} for c in CEN}
 
-assert abs(sum(CD_AMB.values()) - sum(cdi.values())) < 0.01
-assert abs(sum(PV.values()) - TOT) < 0.01
+ESP_AMB = {am: sum(ESP[m] for m in ITENS_DE[am]) for am in AMBS}
+ESP_TOT = sum(ESP.values())
+
+for c in CEN:
+    assert abs(sum(CD_AMB[c].values()) - CD[c]) < 0.01
+    assert abs(sum(PV[c].values()) - TOT[c]) < 0.01
 
 # ══════════════════════════════════════════════════════════════════════════
 if __name__ == '__main__':
     br = lambda v: f'{v:,.0f}'.replace(',', '.')
-    print('═'*88)
+    W = 98
+    print('═'*W)
     print('MARCELO TOLENTINO — BRZ NOVA LIMA · stand de vendas + apto decorado')
-    print('═'*88)
-    print(f'\nBASE = {BASE*100:.2f}%   à vista · SEM RT · SEM comissão de venda')
+    print('═'*W)
+    print(f'\nBASE {BASE*100:.2f}%   à vista · sem RT · sem comissão de venda')
+    print(f'\n{"":<12}{"ferragem":<52}{"garantia":>10}{"alvos de MC":>22}')
+    for c in CEN:
+        alvos = sorted({MC_ITEM[m][c] for m in MOVS})
+        print(f'  {c:<10}{LINHA[c]:<52}{GARANTIA[c]:>10}'
+              f'{"  ·  ".join(f"{a*100:.0f}%" for a in alvos):>22}')
 
-    print('\nPLANO DE CORTE')
+    print('\nPLANO DE CORTE  (idêntico nos dois cenários)')
     tc = 0
     for m in sorted(CH, key=lambda k: (k[:2], k)):
         n = CH[m]; c = n*PRECO[m]; tc += c
@@ -515,36 +561,52 @@ if __name__ == '__main__':
     print(f'  {"TOTAL":<16}{ar_tot:>7.2f} m² → {tch:>3} chapas'
           f'                R$ {br(tc):>7}   médio {ar_tot/(tch*CH_AREA)*100:.0f}%')
 
-    print('\nLOGÍSTICA (por endereço, não por ambiente)')
-    for fr, d in log_fr.items():
-        print(f'  {fr:<10}{fr_area[fr]:>6.1f} m²   compra {br(d["compra"]):>5} · '
-              f'entrega {br(d["entrega"]):>5} · equipe {br(d["equipe"]):>5} · '
-              f'medição {br(d["setup"]):>5}  = R$ {br(sum(d.values())):>6}')
-
     print('\nABERTURA DO CUSTO DIRETO')
-    for rot, v in (('chapa', tc), ('fita de borda', sum(fita_custo.values())),
-                   ('consumíveis', consum), ('logística', LOG_TOT),
-                   ('ferragem', sum(FER.values())), ('espelhos', sum(ESP.values())),
-                   ('terceirizados', sum(TER.values())),
-                   ('embalagem (2%)', CD - (tc+sum(fita_custo.values())+consum+LOG_TOT
-                                            +sum(FER.values())+sum(ESP.values())+sum(TER.values())))):
-        print(f'  {rot:<18}R$ {br(v):>9}{v/CD*100:>7.1f}%')
-    print(f'  {"CUSTO DIRETO":<18}R$ {br(CD):>9}{100:>7.1f}%')
+    fer = {c: sum(custo_fer(m, c) for m in MOVS) for c in CEN}
+    emb = {c: CD[c] - (tc+sum(fita_custo.values())+consum+LOG_TOT+fer[c]
+                       +sum(TER.values())+ESP_TOT) for c in CEN}
+    print(f'  {"":<20}{"standard":>12}{"gold":>12}')
+    for rot, v in (('chapa', (tc, tc)), ('fita de borda', (sum(fita_custo.values()),)*2),
+                   ('consumíveis', (consum,)*2), ('logística', (LOG_TOT,)*2),
+                   ('ferragem', (fer['standard'], fer['gold'])),
+                   ('espelhos', (ESP_TOT,)*2),
+                   ('terceirizados', (sum(TER.values()),)*2),
+                   ('embalagem (2%)', (emb['standard'], emb['gold']))):
+        d = '  ←  muda' if abs(v[0]-v[1]) > 1 else ''
+        print(f'  {rot:<20}{br(v[0]):>12}{br(v[1]):>12}{d}')
+    print(f'  {"CUSTO DIRETO":<20}{br(CD["standard"]):>12}{br(CD["gold"]):>12}')
 
-    print('\n' + '─'*88)
-    print(f'{"AMBIENTE":<26}{"m² chapa":>10}{"CUSTO":>12}{"VENDA":>12}{"MC alvo":>10}{"MC":>8}')
-    print('─'*88)
+    print('\n' + '─'*W)
+    print(f'{"AMBIENTE":<26}{"m²":>7}' + ''.join(f'{"CUSTO "+c[:3]:>12}{"VENDA "+c[:3]:>12}{"MC":>7}' for c in CEN))
+    print('─'*W)
     for fr in ('Stand', 'Decorado'):
         print(f'\n  {fr.upper()}')
         for am in AMBS:
             if FR_DE[am] != fr: continue
-            print(f'    {am:<22}{AR_AMB[am]:>10.2f}{br(CD_AMB[am]):>12}{br(PV[am]):>12}'
-                  f'{MC_ALVO[am]*100:>9.1f}%{MC_REAL[am]*100:>7.1f}%')
-        c = sum(CD_AMB[a] for a in AMBS if FR_DE[a] == fr)
-        v = sum(PV[a] for a in AMBS if FR_DE[a] == fr)
-        print(f'    {"subtotal "+fr.lower():<22}{fr_area[fr]:>10.2f}{br(c):>12}{br(v):>12}'
-              f'{"":>10}{(BASE-c/v)*100:>7.1f}%')
-    print('─'*88)
-    print(f'  {"TOTAL":<24}{ar_tot:>10.2f}{br(CD):>12}{br(TOT):>12}{"":>10}'
-          f'{(BASE - CD/TOT)*100:>7.1f}%')
-    print('─'*88)
+            linha = f'    {am:<22}{AR_AMB[am]:>7.1f}'
+            for c in CEN:
+                linha += f'{br(CD_AMB[c][am]):>12}{br(PV[c][am]):>12}{MC_REAL[c][am]*100:>6.1f}%'
+            print(linha)
+        linha = f'    {"subtotal "+fr.lower():<22}{fr_area[fr]:>7.1f}'
+        for c in CEN:
+            cc = sum(CD_AMB[c][a] for a in AMBS if FR_DE[a] == fr)
+            vv = sum(PV[c][a]     for a in AMBS if FR_DE[a] == fr)
+            linha += f'{br(cc):>12}{br(vv):>12}{(BASE-cc/vv)*100:>6.1f}%'
+        print(linha)
+    print('─'*W)
+    linha = f'  {"TOTAL":<24}{ar_tot:>7.1f}'
+    for c in CEN:
+        linha += f'{br(CD[c]):>12}{br(TOT[c]):>12}{(BASE-CD[c]/TOT[c])*100:>6.1f}%'
+    print(linha)
+    print('─'*W)
+    d = TOT['gold'] - TOT['standard']
+    print(f'\n  gold − standard  =  R$ {br(d)}   (+{d/TOT["standard"]*100:.1f}%)'
+          f'   ·   ferragem a mais custa R$ {br(fer["gold"]-fer["standard"])}')
+
+    print(f'\nESPELHOS — mesmo custo nos dois cenários, linha à parte')
+    for am in AMBS:
+        if ESP_AMB[am] <= 0: continue
+        print(f'  {am:<26}{ESP_AMB[am]/ESPELHO_M2:>6.2f} m² × R$ {ESPELHO_M2:.0f} = '
+              f'R$ {br(ESP_AMB[am]):>6}')
+    print(f'  {"TOTAL":<26}{ESP_TOT/ESPELHO_M2:>6.2f} m²'
+          f'{"":>13} R$ {br(ESP_TOT):>6}')
