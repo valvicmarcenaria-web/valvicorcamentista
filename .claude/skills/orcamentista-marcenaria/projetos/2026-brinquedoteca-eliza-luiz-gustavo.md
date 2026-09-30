@@ -174,3 +174,112 @@ estrutural com ART** e a **cláusula da pintura**.
 4. **Área de parede** — estimei 75,5 m² por perímetro × altura × 72%. As
    pranchas não trazem quadro de áreas; precisa de medição.
 5. **Memorial descritivo** que transforme a mensagem de 30/09 em documento.
+
+---
+
+# ORÇAMENTO POR DECOMPOSIÇÃO — `orcamento-brinquedoteca.py`
+
+> *[Jonathan 30/09] "um processo que utilizo muito e me ajuda a ter clareza é
+> fazer alguns croquis de cada peça e estimar o custo relacionado a ela."*
+
+Refiz o orçamento inteiro peça a peça. **O preço caiu de R$ 445.000 para
+R$ 318.100 — 28%.** E o custo quase não mudou (R$ 140.663 → R$ 134.144).
+A queda foi quase toda de **MC: de 48% + 15% de contingência para 42%**.
+
+⭐ **A decomposição não barateou o job. Barateou o RISCO — e o risco estava
+no preço.** Quando metade do custo é chute, a margem de segurança vira
+imposto que o cliente paga pela minha ignorância.
+
+## Estrutura de separação — por SISTEMA, não por ambiente
+
+O espaço é um só; é o **sistema** que define quem fabrica, em que ordem e com
+que risco.
+
+| Sistema | custo | % | maior item |
+|---|--:|--:|---|
+| 1 · Estrutura e vedação | 25.487 | 21,3% | parede norte · 5.436 |
+| 3 · Proteção e contenção | 21.784 | 18,2% | gradil com corda · 11.227 |
+| 4 · Amortecimento | 19.659 | 16,4% | piscina de espuma · 11.643 |
+| 7 · Acabamentos | 17.427 | 14,5% | pintura automotiva · 10.726 |
+| 2 · Circulação em altura | 11.750 | 9,8% | escadas com forração · 3.416 |
+| 5 · Brinquedos | 10.850 | 9,0% | túnel escorregador · 5.583 |
+| 6 · Mobiliário | 9.139 | 7,6% | banco extenso · 2.234 |
+| 8 · Engenharia | 3.800 | 3,2% | projeto estrutural e ART |
+| **Sistemas** | **119.897** | | |
+| + logística, 22 dias de equipe, 4 visitas · consumíveis · embalagem | 14.247 | | |
+| **CUSTO DIRETO** | **134.144** | | |
+
+**BASE 85,35% · MC 42% → brinquedoteca R$ 309.400 + cozinha R$ 8.700 =
+R$ 318.100.**
+
+### Onde está o dinheiro, por natureza
+
+| | | |
+|---|--:|--:|
+| espuma e estofaria | 17.410 | 14,5% |
+| chapa (MDF, compensado, laminado) | 16.702 | 13,9% |
+| serralheria — mão de obra | 13.104 | 10,9% |
+| **corda, cabo e rede** | **12.979** | **10,8%** |
+| pintura automotiva | 9.886 | 8,2% |
+| serralheria — material | 9.868 | 8,2% |
+| mão de obra de marcenaria | 7.345 | 6,1% |
+
+A **mão de obra de serralheria custa mais que o metalon** (13.104 contra
+9.868). Num R$/m² agregado isso fica invisível — e é justamente o que mais
+varia de serralheiro para serralheiro.
+
+---
+
+## ⭐ §CORDA — o custo por metro linear
+
+| | extensão | R$/m | total |
+|---|--:|--:|--:|
+| **Gradil de proteção** — 10 fios a cada 12 cm em 9,13 m | **91,3 m** | **95,00** | **8.674** |
+| **Perímetro da rede de descanso** — cabo de aço 6 mm + esticador | **10,0 m** | **46,00** | **462** |
+| Rede de descanso em si (3,97 m² de malha de poliamida) | | 700,00/m² | 2.779 |
+
+### ⛔ A corda do gradil tem de ser COMBINADA, não poliamida simples
+
+| | R$/m | 91,3 m |
+|---|--:|--:|
+| Poliamida 16 mm simples | 22,00 | 2.009 |
+| **Combinada 16 mm — alma de aço galvanizado + poliamida trançada** | **95,00** | **8.674** |
+
+A diferença é **R$ 6.665**, e ela não é economia — é risco transferido.
+**Poliamida pura estica** com carga e com o tempo. Num gradil onde criança se
+pendura, o vão entre fios **abre** — e vão que abre é exatamente o que a NBR
+16071 persegue, porque é por onde passa o corpo e não passa a cabeça. A
+combinada não estica porque quem trabalha é a alma de aço; a poliamida por
+fora é só o toque e a cor.
+
+---
+
+## ⭐ §ESPUMA — especificação por aplicação
+
+Densidade em kg/m³, poliuretano flexível **poliéter** (não poliéster:
+poliéter respira e não hidrolisa; poliéster resiste mais à umidade mas
+amarela e endurece).
+
+| Aplicação | Espuma | Esp. | Por quê |
+|---|---|--:|---|
+| **Piscina de espuma** (blocos soltos) | **D20** revestida | bloco 20 cm | Tem de **afundar**. D28+ deixa o poço duro e o brinquedo perde a função; abaixo de D18 desintegra em meses com o atrito bloco contra bloco |
+| **Plataformas** (a criança pisa em pé) | **D33** | 4 cm | Pisada concentrada. D23 achata em poucos meses e cria degrau irregular — que vira risco de tropeço |
+| **Degraus de escada e rampa** | **D33** | 3 cm | Mesma lógica, mais crítica: pé que afunda no degrau **perde a referência de altura** |
+| **Parede em zona de impacto lateral** | **D23** | 4 cm | Aqui o objetivo é **absorver**, não sustentar. Densidade alta devolve o impacto |
+| **Banco extenso** (assento) | **D28** | 5 cm | Padrão de assento de uso intenso. D23 é doméstico e afunda com o uso coletivo |
+| **Zona de queda sob passarela** | ⛔ **não é espuma de estofado** | 10 cm | **Placa de impacto certificada**, dimensionada pela altura de queda de 2,85 m |
+
+### Três coisas que vão junto com a espuma
+
+1. **Revestimento em courvin náutico** — PVC com proteção UV e antifungo,
+   limpa com pano úmido. Tecido em brinquedoteca é inviável: absorve suor e
+   não higieniza.
+2. **Retardante de chama.** Se o espaço for de uso coletivo (condomínio,
+   escola), a espuma precisa de aditivo retardante **com laudo**. Encarece
+   15–20% e **tem de ser pedido ao fabricante** — não é espuma de prateleira.
+3. **Só a zona de queda precisa de certificado.** As outras cinco aplicações
+   são conforto e durabilidade; a de queda é segurança e responde a norma.
+
+⛔ **A tentação aqui é usar uma espuma só para tudo, e é o erro clássico.**
+D20 no degrau é inseguro e D33 na piscina mata o brinquedo. São seis
+aplicações e pelo menos quatro especificações diferentes.
