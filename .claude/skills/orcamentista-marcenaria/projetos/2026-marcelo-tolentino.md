@@ -355,3 +355,104 @@ Não é problema técnico — é a escada funcionando: a Standard é a linha de
 entrada e a Gold é a que paga a casa. Mas **se o cliente fechar a Standard, o
 contrato inteiro roda abaixo do piso**, e isso precisa ser decisão consciente,
 não consequência da escada.
+
+---
+
+## 30/09/2026 (2º) — Dominus na gold, LED nosso, espessura por cenário
+
+> *"1 - ok. 2 - mude o sistema para o Dominus. LED é fornecimento nosso.
+> Outra coisa que vale apontar na proposta é a espessura das chapas: na
+> standard estrutura, porta e prateleiras de 15; na gold as portas e
+> prateleiras passam para 18 mm."*
+
+### O que mudou
+
+**Roupeiro.** `ROUPEIRO_2P` virou item único de ferragem, precificado por
+cenário: standard **RO65 Prime** (★ provisório, R$ 400 o conjunto de duas
+portas com trilho) · gold **Dominus Rometal** (R$ 700 + trilho de 2 m R$ 300
+= R$ 1.000). São dois roupeiros, então a gold paga R$ 1.200 a mais aqui.
+
+**LED entra no nosso escopo.** Fui atrás das marcas de LED nas elevações e
+achei uma que tinha passado: **a estante da sala leva LED sob os nichos em
+Carvalho Munique** — as setas aparecem na E01 e na E04. Lancei 4,5 m.
+Conferi o quarto casal e o solteiro: **não têm nenhuma marca de LED.**
+Total no escopo: **10,1 m** — cozinha (sob os suspensos), estante da sala,
+banheiro social (lateral das prateleiras) e banheiro casal. R$ 1.515.
+
+**Espessura por cenário.** As peças passaram a ser classificadas por papel —
+`FUNDO` (6 mm nos dois), `PORTA/PRAT` e `ESTRUTURA` — e a espessura é
+resolvida na hora do corte:
+
+| | estrutura | porta e prateleira | fundo |
+|---|--:|--:|--:|
+| standard | 15 | **15** | 6 |
+| gold | 15 | **18** | 6 |
+
+O plano de corte agora sai **um por cenário**: 94 chapas nos dois, mas a
+standard usa 88,8 m² de Tauari 15 e a gold reparte em 63 m² de 15 e 26 m²
+de 18.
+
+### ⛔ O rateio vazou de novo — e a causa era nova
+
+O `assert` de item-sem-ferragem quebrou no *"Gourmet · painéis e forro"*. A
+regra de 29/08 mandava ratear por custo com a base tomada **antes da
+ferragem**, e isso bastava enquanto só a ferragem diferia entre versões. Com
+a espessura variando, **a própria chapa entrou na base do rateio** e um item
+100% estrutura passou a pegar uma fatia diferente em cada cenário.
+
+Duas correções no motor:
+
+```python
+⛔ antes:  consumível e logística rateados por CUSTO (base contaminada)
+✅ agora:  consumível = 6% da chapa e fita DO PRÓPRIO item, sem rateio
+           logística  = rateada pela ÁREA de chapa, que não muda entre cenários
+```
+
+Sobrou um desvio de até **2,07%** nos itens só-estrutura, e ele é legítimo:
+no gold parte da chapa de 15 migra para 18, o número de chapas de 15 cai e o
+aproveitamento muda, então o m² de 15 custa um pouco diferente. É plano de
+corte compartilhado, não vazamento — os itens sem chapa própria fecham em
+0,00%. A guarda passou a tolerar 3% e o motivo está escrito no código.
+
+### O fechamento
+
+| Ambiente | m² | custo std | **venda std** | MC | custo gold | **venda gold** | MC |
+|---|--:|--:|--:|--:|--:|--:|--:|
+| Copa | 27,1 | 4.630 | **8.190** | 28,8% | 5.477 | **11.320** | 37,0% |
+| Sala de reunião | 8,5 | 2.496 | **4.510** | 30,0% | 2.892 | **6.110** | 38,0% |
+| Sala de ativos | 44,4 | 7.297 | **13.590** | 31,7% | 8.046 | **17.550** | 39,5% |
+| Lounge | 26,7 | 5.267 | **9.030** | 27,0% | 5.481 | **10.890** | 35,0% |
+| Gourmet | 47,8 | 8.554 | **14.850** | 27,7% | 8.798 | **17.770** | 35,8% |
+| **Stand** | **154,4** | **28.243** | **50.170** | **29,1%** | **30.693** | **63.640** | **37,1%** |
+| Cozinha | 69,6 | 22.107 | **40.260** | 30,4% | 23.764 | **50.630** | 38,4% |
+| Sala e varanda | 40,8 | 9.257 | **16.940** | 30,7% | 9.314 | **19.980** | 38,7% |
+| Quarto casal | 29,7 | 10.555 | **19.490** | 31,2% | 11.899 | **25.820** | 39,3% |
+| Quarto solteiro | 25,2 | 8.797 | **16.310** | 31,4% | 10.150 | **22.130** | 39,5% |
+| Banheiro social | 3,2 | 1.488 | **2.690** | 30,0% | 1.599 | **3.380** | 38,0% |
+| Banheiro casal | 6,9 | 3.269 | **6.130** | 32,0% | 3.477 | **7.670** | 40,0% |
+| **Decorado** | **175,4** | **55.472** | **101.820** | **30,9%** | **60.203** | **129.610** | **38,9%** |
+| **TOTAL** | **329,8** | **83.715** | **R$ 151.990** | **30,3%** | **90.897** | **R$ 193.250** | **38,3%** |
+
+Gold − standard: **R$ 41.260** (+27,1%), com **R$ 5.790** de ferragem e chapa
+a mais. Espelhos seguem à parte e iguais: **R$ 2.081**.
+
+### ⚠⚠ A espessura de 15 mm cria dois riscos técnicos
+
+**1 · Vinte e cinco prateleiras longas ficam em 15 mm na standard.**
+Vãos de 76 a 118 cm nos aparadores, na cozinha e nos dois roupeiros.
+`roupeiros.md` é explícito: *"prateleira com comprimento > 70 cm → 18 mm
+(evita empeno; ≤ 70 cm fica 15 mm)"*. Em 15 mm elas barrigam com carga.
+
+**2 · Painel de parede piso/teto e o forro do gourmet ficam em 15 mm nos
+DOIS cenários**, porque painel não é porta nem prateleira. São 31 peças de
+210 a 262 cm de altura, incluindo o **forro suspenso do gourmet**. Painel
+alto e forro suspenso em 15 mm flexionam.
+
+| | standard | gold |
+|---|--:|--:|
+| como pedido | 151.990 | 193.250 |
+| com painel, forro e prateleira longa em 18 | **158.030** | **197.550** |
+| custo da exceção | **+6.040** | **+4.300** |
+
+Não mexi — a especificação foi explícita. Mas os dois pontos são de
+durabilidade, não de acabamento, e aparecem depois da entrega.

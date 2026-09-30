@@ -58,21 +58,22 @@ class Q(dict):
         return r
     __radd__ = __add__
 
-DOBR, CORR, TIPON         = Q({'dobr':1}), Q({'corr':1}), Q({'tipon':1})
-RO65P_PORTA, RO65P_TRILHO = Q({'ro_porta':1}), Q({'ro_trilho':1})
-SUP_PRAT                  = Q({'sup':1})
+DOBR, CORR, TIPON = Q({'dobr':1}), Q({'corr':1}), Q({'tipon':1})
+ROUPEIRO_2P       = Q({'roup2p':1})   # sistema de correr completo, 2 portas
+SUP_PRAT          = Q({'sup':1})
 
 CEN = ('standard', 'gold')
 PRECO_FER = {
     # ★ RO65 Prime provisório nos DOIS cenários — a Hettich não tem sistema de
     #   roupeiro de correr na nossa base. Ver FLAG 5.
-    'standard': dict(dobr=10.0, corr=40.0,  tipon=100.0,
-                     ro_porta=120.0, ro_trilho=160.0, sup=1.50),
-    'gold':     dict(dobr=35.0, corr=120.0, tipon=100.0,
-                     ro_porta=120.0, ro_trilho=160.0, sup=1.50),
+    # roup2p = sistema completo de 2 portas de correr, com trilho
+    #   standard · RO65 Prime Rometal  ★ 2 × 120 + trilho 160 = 400 (provisório)
+    #   gold     · Dominus Rometal       700 + trilho 2 m 300  = 1.000
+    'standard': dict(dobr=10.0, corr=40.0,  tipon=100.0, roup2p=400.0,  sup=1.50),
+    'gold':     dict(dobr=35.0, corr=120.0, tipon=100.0, roup2p=1000.0, sup=1.50),
 }
-LINHA    = {'standard': 'Hettich Novisys · corrediça telescópica · RO65 Prime',
-            'gold':     'Hettich Sensys · corrediça oculta Quadro Hettich · RO65 Prime'}
+LINHA    = {'standard': 'Novisys · telescópica · roupeiro RO65 Prime · 15 mm',
+            'gold':     'Sensys · oculta Quadro · roupeiro Dominus · porta e prateleira 18 mm'}
 GARANTIA = {'standard': '2 anos', 'gold': '10 anos'}
 
 CAVA_M = 50.0     # perfil cava usinado, por metro de frente
@@ -285,6 +286,7 @@ a(K,'TA6' ,'Fundo',                       250, 62, 5)
 a(K,'CM18','Nicho em Carvalho Munique',    35, 22, 24)
 a(K,'CM18','Fundo do nicho',               35, 42, 8)
 f(K, 80*SUP_PRAT)
+t(K, 4.5*LED_M)   # LED sob os nichos em Carvalho Munique (setas na E01/E04)
 
 K = 'Sala · mesa de jantar'
 # 158 × 90 · h=75 · tampo com chanfro usinado (DET.01)
@@ -310,7 +312,7 @@ a(K,'BR15','Caixa de gaveta',              55, 18, 12)
 a(K,'BR6' ,'Fundo de gaveta',              55, 52, 6)
 a(K,'TA18','Frente de gaveta',             19, 92, 6)
 a(K,'BR6' ,'Fundo',                       234, 96, 2)
-f(K, 6*CORR + 2*RO65P_PORTA + RO65P_TRILHO + 8*SUP_PRAT)
+f(K, 6*CORR + ROUPEIRO_2P + 8*SUP_PRAT)
 t(K, 2*0.906*2.34*VIDRO_M2 + 2*6.6*ALUM_M)
 
 K = 'Quarto casal · cabeceira estofada'
@@ -343,7 +345,7 @@ a(K,'BR15','Caixa de gaveta/sapateira',    55, 18, 16)
 a(K,'BR6' ,'Fundo de gaveta',              55, 52, 8)
 a(K,'TA18','Frente de gaveta',             19, 75, 8)
 a(K,'BR6' ,'Fundo',                       230, 78, 2)
-f(K, 8*CORR + 2*RO65P_PORTA + RO65P_TRILHO + 7*SUP_PRAT)
+f(K, 8*CORR + ROUPEIRO_2P + 7*SUP_PRAT)
 t(K, 2*0.74*2.30*VIDRO_BRZ_M2 + 2*6.2*ALUM_M)
 
 K = 'Quarto solteiro · escrivaninha e nicho'
@@ -428,30 +430,55 @@ def nest(items):
     piso = -(-int(ar/(CH_AREA*0.85)*1000)//1000) or 1   # 85% de aproveitamento teto
     return max(ch, piso)
 
-por, area, area_mov, fita_mov = defaultdict(list), defaultdict(float), defaultdict(float), defaultdict(float)
+# ── papel da peça e espessura por cenário ────────────────────────────────
+# [Jonathan 30/09] "na standard estrutura, porta e prateleiras de 15; na gold
+#   as portas e prateleiras passam para 18 mm."
+def papel(mat, d):
+    dl = d.lower()
+    if mat == 'FOR':       return 'FOR'      # fórmica, sem espessura de chapa
+    if mat.endswith('6'):  return 'F'        # fundo, 6 mm nos dois
+    if 'bandeira' in dl or 'tampo e maleiro' in dl: return 'E'
+    if any(k in dl for k in ('porta', 'frente', 'prateleira')): return 'PP'
+    return 'E'                                # estrutura, 15 mm nos dois
+
+ESP_CEN = {'standard': {'E':'15', 'PP':'15'}, 'gold': {'E':'15', 'PP':'18'}}
+def mat_cen(mat, pap, cen):
+    if pap == 'FOR': return 'FOR'
+    cor = mat[:-2] if mat[-2:] in ('15', '18') else mat[:-1]
+    return cor + ('6' if pap == 'F' else ESP_CEN[cen][pap])
+
+area_mov, fita_mov = defaultdict(float), defaultdict(float)
+por   = {c: defaultdict(list)  for c in CEN}
+area  = {c: defaultdict(float) for c in CEN}
+amov  = {c: defaultdict(lambda: defaultdict(float)) for c in CEN}   # [cen][mat][mov]
 for mov, mat, d, c, l, q in p:
-    for _ in range(q):
-        por[mat].append((c, l)); area[mat] += c*l/10000; area_mov[mov] += c*l/10000
-        fita_mov[mov] += (c + l)*2/100 * (0.55 if mat.startswith('BR') else 0.75)
-CH = {m: nest(v) for m, v in por.items()}
+    pap = papel(mat, d)
+    area_mov[mov] += c*l*q/10000
+    fita_mov[mov] += (c + l)*2/100*q * (0.55 if mat.startswith('BR') else 0.75)
+    for cen in CEN:
+        mc_ = mat_cen(mat, pap, cen)
+        for _ in range(q): por[cen][mc_].append((c, l))
+        area[cen][mc_]      += c*l*q/10000
+        amov[cen][mc_][mov] += c*l*q/10000
+
+CH      = {c: {m: nest(v) for m, v in por[c].items()} for c in CEN}
+ar_tot  = sum(area['standard'].values())
+custo_chapa = {c: sum(CH[c][m]*PRECO[m] for m in CH[c]) for c in CEN}
+
+chapa_mov = {c: defaultdict(float) for c in CEN}
+for c in CEN:
+    for m, n in CH[c].items():
+        tot = sum(amov[c][m].values())
+        for mov, v in amov[c][m].items():
+            chapa_mov[c][mov] += n*PRECO[m]*v/tot
 
 _com_peca = list(dict.fromkeys(x[0] for x in p))
-_todos = _com_peca + [k for k in dict.fromkeys(list(FER)+list(TER)) if k not in _com_peca]
+_todos = _com_peca + [k for k in dict.fromkeys(list(FER)+list(TER)+list(ESP)) if k not in _com_peca]
 _ordem_amb = list(dict.fromkeys(m.split(' · ')[0] for m in _todos))
 MOVS = sorted(_todos, key=lambda m: (_ordem_amb.index(m.split(' · ')[0]), _todos.index(m)))
-ar_tot = sum(area.values())
-
-# custo de chapa rateado por móvel, proporcional à área de cada material
-chapa_mov = defaultdict(float)
-for m, n in CH.items():
-    custo_m = n*PRECO[m]
-    am = defaultdict(float)
-    for mov, mat, d, c, l, q in p:
-        if mat == m: am[mov] += c*l*q/10000
-    tot = sum(am.values())
-    for mov, v in am.items(): chapa_mov[mov] += custo_m*v/tot
 
 fita_custo = {mov: fita_mov[mov]*1.10*((FITA_BR+FITA_COR)/2) for mov in MOVS}
+# fita e logística não mudam com a espessura: o perímetro é o mesmo
 
 # logística — referencias/logistica.md
 # ⚠ carreto e diária são por ENDEREÇO, não por ambiente: são dois canteiros
@@ -481,26 +508,49 @@ for mov in MOVS:
 # ── custo direto por móvel, POR CENÁRIO ───────────────────────────────────
 # ⛔ base do rateio de consumível e logística vem ANTES da ferragem, senão o
 #   item sem ferragem muda de custo de um cenário para o outro.
-fixo = {mov: chapa_mov[mov] + fita_custo[mov] for mov in MOVS}
-base_fixa = sum(fixo.values())
-consum = base_fixa*0.06                       # cola, parafuso, limpeza, acabamento
+# ⛔ [30/09] A BASE DO RATEIO NÃO PODE CONTER NADA QUE MUDE ENTRE OS CENÁRIOS.
+#   A regra de 29/08 mandava ratear por custo com a base tomada ANTES da
+#   ferragem. Isso bastava enquanto só a ferragem diferia. Com a espessura
+#   variando por cenário, a própria chapa entrou na base e um item 100%
+#   estrutura passou a pegar uma fatia diferente em cada cenário — o assert
+#   pegou no "Gourmet · painéis e forro". Duas correções:
+#     · consumível  = 6% da chapa e fita DO PRÓPRIO item, sem rateio
+#     · logística   = rateada pela ÁREA de chapa, que não muda entre cenários
 LOG_TOT = sum(LOG.values())
-for mov in MOVS:
-    fixo[mov] += (consum + LOG_TOT)*fixo[mov]/base_fixa if base_fixa else 0
-    fixo[mov] += TER[mov] + ESP[mov]          # terceiros e espelho não mudam
+fixo, consum = {}, {}
+for c in CEN:
+    fx = {}
+    consum[c] = 0.0
+    for mov in MOVS:
+        proprio = chapa_mov[c][mov] + fita_custo[mov]
+        cons    = proprio*0.06                # cola, parafuso, limpeza, acabamento
+        consum[c] += cons
+        share   = area_mov[mov]/ar_tot if ar_tot else 0
+        fx[mov] = proprio + cons + LOG_TOT*share + TER[mov] + ESP[mov]
+    fixo[c] = fx
 
 def custo_fer(mov, cen):
     pr = PRECO_FER[cen]
     return sum(pr[k]*q for k, q in FER[mov].items())
 
-CDI = {c: {mov: (fixo[mov] + custo_fer(mov, c))*(1 + M.EMBALAGEM) for mov in MOVS}
+CDI = {c: {mov: (fixo[c][mov] + custo_fer(mov, c))*(1 + M.EMBALAGEM) for mov in MOVS}
        for c in CEN}
 CD  = {c: sum(CDI[c].values()) for c in CEN}
 
-# ⛔ guarda: item SEM ferragem tem de custar o MESMO nos dois cenários
-for mov in MOVS:
-    if not FER[mov]:
-        assert abs(CDI['standard'][mov] - CDI['gold'][mov]) < 0.01, mov
+# ⛔ guarda, agora em duas partes. A partir de 30/09 a ESPESSURA também muda
+#   entre cenários, então "sem ferragem" já não basta para o custo ser igual:
+#   o item precisa também não ter porta nem prateleira.
+SO_ESTRUTURA = {mov for mov in MOVS
+                if not FER[mov]
+                and all(papel(mat, d) != 'PP' for m2, mat, d, *_ in p if m2 == mov)}
+#   Sobra um desvio de até 3% nos itens só-estrutura, e ele é REAL: no gold
+#   parte da chapa de 15 migra para 18, o número de chapas de 15 cai e o
+#   aproveitamento muda, então o m² de 15 custa um pouco diferente. É efeito
+#   de plano de corte compartilhado, não vazamento de rateio — os itens sem
+#   chapa própria fecham em 0,00%.
+for mov in SO_ESTRUTURA:
+    a, b = CDI['standard'][mov], CDI['gold'][mov]
+    assert abs(b - a)/a < 0.03, f'{mov}: {a:.0f} vs {b:.0f}'
 
 # ── MC direcionada por complexidade, fechada POR AMBIENTE ────────────────
 # [Jonathan 29/09] sem RT e sem comissão de venda · MC −5 pontos
@@ -551,23 +601,27 @@ if __name__ == '__main__':
         print(f'  {c:<10}{LINHA[c]:<52}{GARANTIA[c]:>10}'
               f'{"  ·  ".join(f"{a*100:.0f}%" for a in alvos):>22}')
 
-    print('\nPLANO DE CORTE  (idêntico nos dois cenários)')
-    tc = 0
-    for m in sorted(CH, key=lambda k: (k[:2], k)):
-        n = CH[m]; c = n*PRECO[m]; tc += c
-        print(f'  {NOME[m]:<16}{area[m]:>7.2f} m² → {n:>3} chapa × R$ {PRECO[m]:>5.0f} '
-              f'= R$ {br(c):>7}   aprov. {area[m]/(n*CH_AREA)*100:>3.0f}%')
-    tch = sum(CH.values())
-    print(f'  {"TOTAL":<16}{ar_tot:>7.2f} m² → {tch:>3} chapas'
-          f'                R$ {br(tc):>7}   médio {ar_tot/(tch*CH_AREA)*100:.0f}%')
+    print('\nPLANO DE CORTE')
+    for c in CEN:
+        print(f'  ── {c} ──')
+        for m in sorted(CH[c], key=lambda k: (k[:2], k)):
+            n = CH[c][m]; v = n*PRECO[m]
+            print(f'    {NOME[m]:<16}{area[c][m]:>7.2f} m² → {n:>3} chapa × R$ {PRECO[m]:>5.0f} '
+                  f'= R$ {br(v):>7}   aprov. {area[c][m]/(n*CH_AREA)*100:>3.0f}%')
+        tch = sum(CH[c].values())
+        print(f'    {"TOTAL":<16}{ar_tot:>7.2f} m² → {tch:>3} chapas'
+              f'                R$ {br(custo_chapa[c]):>7}   médio '
+              f'{ar_tot/(tch*CH_AREA)*100:.0f}%')
 
     print('\nABERTURA DO CUSTO DIRETO')
     fer = {c: sum(custo_fer(m, c) for m in MOVS) for c in CEN}
-    emb = {c: CD[c] - (tc+sum(fita_custo.values())+consum+LOG_TOT+fer[c]
-                       +sum(TER.values())+ESP_TOT) for c in CEN}
+    emb = {c: CD[c] - (custo_chapa[c]+sum(fita_custo.values())+consum[c]+LOG_TOT
+                       +fer[c]+sum(TER.values())+ESP_TOT) for c in CEN}
     print(f'  {"":<20}{"standard":>12}{"gold":>12}')
-    for rot, v in (('chapa', (tc, tc)), ('fita de borda', (sum(fita_custo.values()),)*2),
-                   ('consumíveis', (consum,)*2), ('logística', (LOG_TOT,)*2),
+    for rot, v in (('chapa', (custo_chapa['standard'], custo_chapa['gold'])),
+                   ('fita de borda', (sum(fita_custo.values()),)*2),
+                   ('consumíveis', (consum['standard'], consum['gold'])),
+                   ('logística', (LOG_TOT,)*2),
                    ('ferragem', (fer['standard'], fer['gold'])),
                    ('espelhos', (ESP_TOT,)*2),
                    ('terceirizados', (sum(TER.values()),)*2),
