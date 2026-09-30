@@ -413,3 +413,44 @@ saem para o parceiro e o resto é o que a casa precisa recompor para não
 perder margem. A MC da casa em reais fica em **R$ 78.439**.
 
 O custo direto não mudou em nada: **R$ 54.926**. Tudo aqui é preço.
+
+---
+
+## 30/09 — a proposta
+
+> *"pode montar a proposta. linda, única, minimalista, exclusiva, padrão único."*
+
+`build-brinquedoteca.py` → `proposta-brinquedoteca.pdf`, **4 páginas**.
+
+**CSS próprio** (`css-brinquedoteca.css`), não o das propostas de marcenaria:
+verde do projeto sobre off-white, display Fraunces em peso leve, Inter no
+texto, **sem caixa e sem borda grossa** — só filete de 1 px. Números grandes,
+muito respiro, nenhuma moldura.
+
+| | |
+|---|---|
+| 1 | Capa — render sangrado, nome em display sobre o verde |
+| 2 | *Não é um móvel. É um lugar.* — o conceito e os quatro pilares |
+| 3 | *Peça a peça, uma só obra.* — os doze conjuntos e o total |
+| 4 | *Como acontece.* — pagamento, prazo, garantia, engenharia, fronteiras |
+
+**R$ 175.740** · pagamento 40 / 30 / 30 · prazo 75 dias corridos · garantia
+5 anos · ART antes da fabricação.
+
+### ⛔ A imagem estava espelhada e o auditor não pega isso
+
+As pranchas estão giradas 270°. Ao extrair o XObject da imagem eu perdi a
+transformação da página e girei para o lado errado — **o letreiro "LA PETITE
+PÂTISSERIE" saiu invertido na capa**. Rotação não espelha; o que parecia
+espelho era a rotação no sentido contrário.
+
+Testei as quatro hipóteses lado a lado (−90, +90, cada uma com e sem flip) e
+a correta é **`rotate(+90, expand=True)`**. Tentei antes rasterizar a região
+da página em vez do XObject, o que aplicaria a transformação — mas
+`get_image_rects` devolve vários retângulos por imagem e o recorte saiu
+fragmentado.
+
+> 🧠 **Para o moleskine.** Nenhum dos três auditores pega imagem invertida —
+> eles leem texto. **Render extraído de prancha girada exige conferência
+> visual com um texto legível dentro da imagem.** Aqui foi o letreiro que
+> denunciou; numa foto sem texto teria passado.

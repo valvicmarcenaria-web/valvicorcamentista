@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"><style>/* BRINQUEDOTECA — padrão único. Minimalista, sem caixa, sem borda grossa. */
+:root{
+  --tinta:#16211B; --verde:#2C4034; --verde-lt:#5E7A66;
+  --terra:#B0704E; --papel:#FBFAF7; --linha:#E2DFD6; --mut:#8E8A80;
+}
+@page{size:A4;margin:0;}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{margin:0;font-family:'Inter','Helvetica Neue',Arial,sans-serif;
+     color:var(--tinta);font-size:9.4pt;line-height:1.7;
+     font-feature-settings:'liga' 1,'kern' 1;}
+.disp{font-family:'Fraunces','Cormorant Garamond',Georgia,serif;font-weight:300;}
+.pg{position:relative;width:210mm;height:297mm;overflow:hidden;
+    background:var(--papel);page-break-after:always;}
+.pg:last-of-type{page-break-after:avoid;}
+.in{padding:22mm 24mm 18mm;height:100%;display:flex;flex-direction:column;}
+h1,h2,h3,p{margin:0;font-weight:inherit;}
+
+.sel{font-size:6.8pt;letter-spacing:.42em;text-transform:uppercase;
+     color:var(--verde-lt);font-weight:500;}
+.ttl{font-size:29pt;line-height:1.14;letter-spacing:-.018em;margin-top:6mm;}
+.ttl em{font-style:italic;color:var(--verde);}
+.hair{height:1px;background:var(--linha);margin:7mm 0;}
+.txt{color:#4A463E;max-width:132mm;font-size:9.6pt;}
+.txt + .txt{margin-top:4mm;}
+
+/* capa */
+.cv{background:var(--verde);color:#F4F2EC;}
+.cv .in{padding:0;}
+.cv .ph{flex:1;position:relative;overflow:hidden;}
+.cv .ph img{width:100%;height:100%;object-fit:cover;}
+.cv .pe{padding:16mm 24mm 18mm;}
+.cv .sel{color:#A9BFAF;}
+.cv .nm{font-size:40pt;line-height:1.04;letter-spacing:-.028em;margin-top:5mm;}
+.cv .sub{margin-top:7mm;color:#C3CFC5;font-size:10pt;max-width:120mm;}
+
+.ph{background:var(--verde);overflow:hidden;position:relative;}
+.ph img{display:block;width:100%;height:100%;object-fit:cover;}
+.sangra{margin:0 -24mm;}
+
+/* lista de conjuntos */
+.cj{display:grid;grid-template-columns:8mm 1fr auto;gap:0 6mm;
+    padding:3.0mm 0;border-bottom:1px solid var(--linha);align-items:baseline;}
+.cj:first-of-type{border-top:1px solid var(--linha);}
+.cj .n{font-size:8pt;color:var(--verde-lt);letter-spacing:.06em;}
+.cj .t{font-size:9.9pt;letter-spacing:-.005em;}
+.cj .d{color:var(--mut);font-size:7.9pt;margin-top:.6mm;line-height:1.42;}
+.cj .v{font-size:11pt;white-space:nowrap;letter-spacing:-.01em;}
+.cj.tot{border-bottom:none;border-top:1.4px solid var(--tinta);
+        padding-top:4.6mm;margin-top:1mm;}
+.cj.tot .t{font-size:11pt;}
+.cj.tot .v{font-size:21pt;letter-spacing:-.025em;}
+
+.gr{display:grid;grid-template-columns:1fr 1fr;gap:9mm 12mm;margin-top:8mm;}
+.gr .k{font-size:6.8pt;letter-spacing:.3em;text-transform:uppercase;
+       color:var(--verde-lt);font-weight:500;}
+.gr .v{margin-top:1.6mm;font-size:9.4pt;color:#4A463E;line-height:1.6;}
+.gr .v b{color:var(--tinta);font-weight:600;}
+
+.esc2{margin-top:7mm;}
+.esc2 .l{display:flex;align-items:baseline;gap:6mm;padding:3mm 0;
+         border-bottom:1px solid var(--linha);}
+.esc2 .l:last-child{border-bottom:none;}
+.esc2 .p{font-size:13pt;color:var(--verde);min-width:16mm;letter-spacing:-.02em;}
+.esc2 .q{color:#4A463E;flex:1;font-size:9.2pt;}
+
+.obs{margin-top:auto;padding-top:7mm;border-top:1px solid var(--linha);
+     font-size:8pt;color:var(--mut);line-height:1.62;}
+.obs b{color:#4A463E;font-weight:600;}
+.pe2{margin-top:auto;padding-top:8mm;display:flex;justify-content:space-between;
+     font-size:6.8pt;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);}
+</style></head><body><div class="pg cv"><div class="in">
+  <div class="ph"><img src="img-brinquedoteca/capa.jpg" alt=""></div>
+  <div class="pe">
+    <div class="sel">Proposta · Brinquedoteca</div>
+    <div class="nm disp">Eliza<br>&amp; Luiz Gustavo</div>
+    <div class="sub">Uma pequena rua construída dentro de casa — para subir,
+    escalar, escorregar e se esconder. Projeto Helena Antunes Arquitetura e Interiores.</div>
+  </div>
+</div></div><div class="pg"><div class="in">
+  <div class="sel">O que vamos construir</div>
+  <h1 class="ttl disp">Não é um móvel.<br><em>É um lugar.</em></h1>
+  <div class="hair"></div>
+  <p class="txt">Uma brinquedoteca não se resolve com marcenaria. O que
+  sustenta uma criança lá no alto é <b>aço</b>; o que a
+  protege quando ela erra é <b>espuma na densidade certa</b>; e o que faz a
+  casinha parecer uma casa de verdade é <b>usinagem peça a peça</b>.</p>
+  <p class="txt">São ofícios distintos no mesmo contrato — serralheria, marcenaria,
+  estofaria e pintura automotiva — sob um único responsável. A
+  Valvic desenha, fabrica, pinta, estofa e instala com equipe própria.</p>
+
+  <div class="ph sangra" style="margin-top:10mm;height:96mm;">
+    <img src="img-brinquedoteca/geral.jpg" alt=""></div>
+
+  <div class="gr">
+    <div><div class="k">Estrutura</div><div class="v">Perfil de aço
+      dimensionado por peça, <b>pintura automotiva</b> em cabine — a mesma
+      que se aplica em carroceria.</div></div>
+    <div><div class="k">Amortecimento</div><div class="v">Cada uso pede uma
+      espuma: a que <b>afunda</b> na piscina, a que <b>sustenta</b> no
+      degrau, a que <b>absorve</b> na parede.</div></div>
+    <div><div class="k">Superfície</div><div class="v"><b>MDF ultra premium
+      cru</b>, plano e sem emenda aparente — entregue pronto para o
+      acabamento que a cliente escolher.</div></div>
+    <div><div class="k">Acabamento nosso</div><div class="v">Janelas e
+      pórticos saem <b>em laca branca</b>, com friso e veneziana usinados
+      peça a peça.</div></div>
+  </div>
+  <div class="pe2"><span>Valvic Marcenaria</span><span>Eliza e Luiz Gustavo · Brinquedoteca</span><span>2 / 4</span></div>
+</div></div><div class="pg"><div class="in">
+  <div class="sel">Os conjuntos</div>
+  <h1 class="ttl disp">Peça a peça,<br><em>uma só obra.</em></h1>
+  <div class="hair"></div>
+  <div class="cj"><div class="n">01</div><div><div class="t">Passarela suspensa</div><div class="d">Estrutura em aço, piso em compensado naval e pintura automotiva.</div></div><div class="v">R$ 8.790</div></div><div class="cj"><div class="n">02</div><div><div class="t">Gradis de contenção</div><div class="d">Quadro metálico com corda combinada de alma em aço, tensionada fio a fio.</div></div><div class="v">R$ 32.000</div></div><div class="cj"><div class="n">03</div><div><div class="t">Plataformas acolchoadas</div><div class="d">Degraus estruturados, espuma de alta densidade e courvin náutico.</div></div><div class="v">R$ 10.940</div></div><div class="cj"><div class="n">04</div><div><div class="t">Piscina de espuma</div><div class="d">Estrutura de contenção, fundo e paredes acolchoados.</div></div><div class="v">R$ 16.120</div></div><div class="cj"><div class="n">05</div><div><div class="t">Banco extenso</div><div class="d">Estrutura em aço com assento acolchoado em courvin náutico.</div></div><div class="v">R$ 7.390</div></div><div class="cj"><div class="n">06</div><div><div class="t">Parede de desenho</div><div class="d">Painel em laminado branco, para escrever e apagar.</div></div><div class="v">R$ 10.190</div></div><div class="cj"><div class="n">07</div><div><div class="t">Parede estrutural principal</div><div class="d">Estrutura em aço e MDF ultra premium cru, plano e pronto para o acabamento.</div></div><div class="v">R$ 16.530</div></div><div class="cj"><div class="n">08</div><div><div class="t">Casinha — paredes</div><div class="d">Fachada e laterais em MDF ultra premium cru, dupla face.</div></div><div class="v">R$ 9.330</div></div><div class="cj"><div class="n">09</div><div><div class="t">Casinha — escada</div><div class="d">Estrutura em aço com degraus forrados e pintura automotiva.</div></div><div class="v">R$ 5.680</div></div><div class="cj"><div class="n">10</div><div><div class="t">Janelas e pórticos moldurados</div><div class="d">Frisos e venezianas usinados peça a peça, em laca branca.</div></div><div class="v">R$ 26.470</div></div><div class="cj"><div class="n">11</div><div><div class="t">Escorregador com túnel curvo</div><div class="d">Teto em arco sobre gabarito, pista em laminado e gradil de proteção.</div></div><div class="v">R$ 20.300</div></div><div class="cj"><div class="n">12</div><div><div class="t">Cozinha de brinquedo</div><div class="d">Módulo lúdico sob medida, em MDF ultra premium cru.</div></div><div class="v">R$ 12.000</div></div>
+  <div class="cj tot"><div class="n"></div>
+    <div><div class="t">Investimento total</div></div>
+    <div class="v disp">R$ 175.740</div></div>
+  <div class="pe2"><span>Valvic Marcenaria</span><span>Eliza e Luiz Gustavo · Brinquedoteca</span><span>3 / 4</span></div>
+</div></div><div class="pg"><div class="in">
+  <div class="sel">Condições</div>
+  <h1 class="ttl disp">Como acontece.</h1>
+  <div class="hair"></div>
+
+  <div class="esc2">
+    <div class="l"><span class="p disp">40%</span><span class="q">na assinatura — libera a compra do aço, da espuma e das chapas</span></div>
+    <div class="l"><span class="p disp">30%</span><span class="q">no início da montagem no local</span></div>
+    <div class="l"><span class="p disp">30%</span><span class="q">na entrega, com tudo montado e conferido</span></div>
+  </div>
+
+  <div class="gr" style="margin-top:11mm;">
+    <div><div class="k">Prazo</div><div class="v"><b>75 dias corridos</b>, contados da
+      assinatura, do pagamento da entrada e da conferência de medidas no
+      local.</div></div>
+    <div><div class="k">Garantia</div><div class="v"><b>5 anos</b> sobre
+      estrutura, solda e ferragens — termo da Valvic sobre o conjunto que
+      fabricamos e instalamos.</div></div>
+    <div><div class="k">Validade</div><div class="v"><b>10 dias</b> a
+      partir desta data.</div></div>
+    <div><div class="k">Engenharia</div><div class="v">A estrutura suspensa
+      é <b>dimensionada e assinada por engenheiro</b>, com ART emitida antes
+      da fabricação.</div></div>
+  </div>
+
+  <div class="ph sangra" style="margin-top:12mm;height:78mm;">
+    <img src="img-brinquedoteca/mezanino.jpg" alt=""></div>
+
+  <div class="obs">Tudo é fabricado, pintado, estofado e instalado por <b>equipe
+  própria</b>. Acompanham o fornecimento: projeto executivo, estrutura
+  metálica, chapas, espumas, courvin, cordas, laca das janelas, pintura
+  automotiva, transporte e montagem. <b>Não acompanham:</b> o acabamento das
+  paredes e o efeito de tijolinho, a rede do mezanino e os blocos da piscina,
+  telas de proteção, obra civil, elétrica, piso e revestimentos. Medidas
+  conferidas no local antes da fabricação.</div>
+  <div class="pe2"><span>Valvic Marcenaria</span><span>Eliza e Luiz Gustavo · Brinquedoteca</span><span>4 / 4</span></div>
+</div></div></body></html>
