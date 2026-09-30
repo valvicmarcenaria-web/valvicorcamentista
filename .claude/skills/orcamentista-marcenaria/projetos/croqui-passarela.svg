@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="622.4000000000001" height="300" font-family="DejaVu Sans, sans-serif">
+<rect width="100%" height="100%" fill="#fff"/>
+<rect x="70" y="60" width="442.40000000000003" height="10" fill="#3A342C"/>
+<rect x="70" y="94" width="442.40000000000003" height="10" fill="#3A342C"/>
+<rect x="67.0" y="68" width="6" height="28" fill="#8A8377"/>
+<rect x="103.86666666666667" y="68" width="6" height="28" fill="#8A8377"/>
+<rect x="140.73333333333335" y="68" width="6" height="28" fill="#8A8377"/>
+<rect x="177.6" y="68" width="6" height="28" fill="#8A8377"/>
+<rect x="214.46666666666667" y="68" width="6" height="28" fill="#8A8377"/>
+<rect x="251.33333333333334" y="68" width="6" height="28" fill="#8A8377"/>
+<rect x="288.2" y="68" width="6" height="28" fill="#8A8377"/>
+<rect x="325.06666666666666" y="68" width="6" height="28" fill="#8A8377"/>
+<rect x="361.93333333333334" y="68" width="6" height="28" fill="#8A8377"/>
+<rect x="398.8" y="68" width="6" height="28" fill="#8A8377"/>
+<rect x="435.6666666666667" y="68" width="6" height="28" fill="#8A8377"/>
+<rect x="472.53333333333336" y="68" width="6" height="28" fill="#8A8377"/>
+<rect x="509.4" y="68" width="6" height="28" fill="#8A8377"/>
+<line x1="125.30000000000001" y1="104" x2="79.30000000000001" y2="166" stroke="#3A342C" stroke-width="7"/>
+<line x1="235.9" y1="104" x2="189.9" y2="166" stroke="#3A342C" stroke-width="7"/>
+<line x1="346.5" y1="104" x2="300.5" y2="166" stroke="#3A342C" stroke-width="7"/>
+<line x1="457.1" y1="104" x2="411.1" y2="166" stroke="#3A342C" stroke-width="7"/>
+<rect x="44" y="30" width="18" height="200" fill="#E6DFD2"/>
+<rect x="70" y="49" width="442.40000000000003" height="11" fill="#C9A96A"/>
+<text x="291.20000000000005" y="40" text-anchor="middle" font-size="12" fill="#9C7A3C">compensado naval 18 mm + piso vinílico</text>
+<line x1="70" y1="190" x2="512.4000000000001" y2="190" stroke="#9C7A3C"/>
+<text x="291.20000000000005" y="184" text-anchor="middle" font-size="13" fill="#9C7A3C">5.53 m · a +2,85 m do piso</text>
+<rect x="70" y="212" width="14" height="10" fill="#3A342C"/>
+<text x="92" y="221" font-size="12" fill="#333">2 longarinas + 4 mãos-francesas · metalon 60×40×2,0 · 14.5 m</text>
+<rect x="70" y="232" width="14" height="10" fill="#8A8377"/>
+<text x="92" y="241" font-size="12" fill="#333">13 travessas · metalon 40×40×1,5 · 7.8 m</text>
+</svg>
