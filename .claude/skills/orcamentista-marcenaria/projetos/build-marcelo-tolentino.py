@@ -23,7 +23,7 @@ CLIENTE   = 'Marcelo Tolentino'
 OBRA      = 'BRZ · Nova Lima'
 PROJETO   = 'Zilda Santiago e Anamaria Diniz'
 DATA      = '30 de setembro de 2026'
-PRAZO     = '30 de novembro de 2026'   # ★ ver FLAG DATA no fim do arquivo
+PRAZO     = '15 de novembro de 2026'   # ★ ver FLAG DATA no fim do arquivo
 VALIDADE  = '2 de outubro de 2026'
 NP        = 5
 

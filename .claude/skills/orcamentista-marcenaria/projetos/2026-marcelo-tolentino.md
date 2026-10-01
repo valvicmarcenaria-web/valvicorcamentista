@@ -764,12 +764,17 @@ Espelhos seguem em linha própria na tabela: **R$ 3.670**.
 
 Três passes de auditoria limpos.
 
-### ⚠ O que eu preenchi, e você precisa conferir
+### A data de entrega
 
-> *"entrega até dia de novembro"* — **faltou o número do dia.**
+> *"entrega até dia de novembro"* — faltou o número do dia; preenchi 30 de
+> novembro e marquei. **Corrigido pelo Jonathan: "até dia 15 de novembro".**
 
-Coloquei **30 de novembro de 2026**: é o último dia do mês, portanto a
-leitura mais segura de "até dia ... de novembro", e bate com os 60 dias
-corridos que o estande já tinha. ⛔ **Para o decorado é um aperto** — ele
-estava em 90 dias, o que cairia em 30 de dezembro. Fechar os dois em 30 de
-novembro encurta o decorado em um mês. **Confirmar antes de enviar.**
+**Até 15 de novembro de 2026.** São **45 dias corridos** da data da proposta.
+
+⚠ Dois pontos para a produção, não para o documento:
+
+1. O estande estava dimensionado em **60 dias** e o decorado em **90**.
+   A data fecha os dois em **45** — é um aperto de 15 dias no estande e de
+   **45 dias no decorado**, metade do prazo original.
+2. **15/11/2026 cai num domingo**, e é feriado de Proclamação da República.
+   Na prática o último dia útil é **sexta, 13 de novembro**.
