@@ -23,9 +23,8 @@ CLIENTE   = 'Marcelo Tolentino'
 OBRA      = 'BRZ · Nova Lima'
 PROJETO   = 'Zilda Santiago e Anamaria Diniz'
 DATA      = '30 de setembro de 2026'
-PRAZO_ST  = '60 dias corridos'
-PRAZO_DEC = '90 dias corridos'
-VALIDADE  = '10 dias corridos'
+PRAZO     = '30 de novembro de 2026'   # ★ ver FLAG DATA no fim do arquivo
+VALIDADE  = '2 de outubro de 2026'
 NP        = 5
 
 def img(n): return f'img-marcelo-tolentino/{n}.jpg'
@@ -223,18 +222,22 @@ def card(cen, g=False):
     return f"""<div class="{'g' if g else ''}">
       <div class="cod serif">{'02' if g else '01'}</div>
       <div class="nm serif">Linha<br>{'Gold' if g else 'Standard'}</div>
+      <div style="font-size:7pt;letter-spacing:.18em;text-transform:uppercase;
+        font-weight:700;color:{'#9C7A3C' if g else '#1A1714'};margin-top:1.5mm;">
+        {'Upgrade disponível' if g else 'Linha desta proposta'}</div>
       <ul>{li}</ul>
       <div class="gar">Garantia Valvic de <b>{mt.GARANTIA[cen]}</b> sobre
         estrutura e ferragens</div>
     </div>"""
 
 p4 = f"""<div class="page"><div class="pad">
-  <div class="eyebrow">As duas linhas</div>
-  <div class="h-sec serif">A mesma marcenaria.<br><em>A ferragem e a chapa decidem.</em></div>
+  <div class="eyebrow">A especificação</div>
+  <div class="h-sec serif">O que entra<br><em>em cada peça.</em></div>
   <div class="rule"></div>
-  <p class="lead">O desenho, as chapas de acabamento, os espelhos, os vidros,
-  a laca, o estofado e o LED são <b>idênticos</b> nas duas linhas. O que muda
-  é a ferragem, a espessura da porta e da prateleira — e o tempo de garantia.</p>
+  <p class="lead">A marcenaria fecha na <b>linha Standard</b>. A linha Gold
+  permanece disponível como upgrade — muda a ferragem, a espessura da porta e
+  da prateleira, e o tempo de garantia. O desenho, as chapas de acabamento,
+  os espelhos, os vidros, a laca, o estofado e o LED são idênticos nas duas.</p>
 
   <div class="lin2">{card('standard')}{card('gold', g=True)}</div>
 
@@ -264,7 +267,8 @@ NOME_AMB = {'Salão principal':'Salão principal','Copa':'Copa',
             'Quarto solteiro':'Quarto solteiro','Banheiro social':'Banheiro social',
             'Banheiro casal':'Banheiro casal'}
 
-ESP_PV = {c: {am: round(mt.ESP_AMB[am]/(mt.BASE - mt.MC_ALVO[c][am])/10)*10
+ESP_PV = {c: {am: round(mt.ESP_AMB[am]/(mt.BASE - (mt.MC_ALVO[c][am]
+                                                  + mt.DELTA_FECH[c]))/10)*10
               for am in mt.AMBS} for c in mt.CEN}
 AMB_PV = {c: {am: mt.PV[c][am] - ESP_PV[c][am] for am in mt.AMBS} for c in mt.CEN}
 ESP_TOT_PV = {c: sum(ESP_PV[c].values()) for c in mt.CEN}
@@ -275,11 +279,9 @@ for am in mt.AMBS:
     rot = ('Estande' if fr == 'Stand' else 'Decorado') if fr != _fr else ''
     _fr = fr
     linhas += (f'<tr><td class="a">{rot}</td><td class="i">{NOME_AMB[am]}</td>'
-               f'<td class="r">R$ {br(AMB_PV["standard"][am])}</td>'
-               f'<td class="r alt">R$ {br(AMB_PV["gold"][am])}</td></tr>')
+               f'<td class="r">R$ {br(AMB_PV["standard"][am])}</td></tr>')
 linhas += (f'<tr><td class="a">Terceiros</td><td class="i">Espelhos</td>'
-           f'<td class="r">R$ {br(ESP_TOT_PV["standard"])}</td>'
-           f'<td class="r alt">R$ {br(ESP_TOT_PV["gold"])}</td></tr>')
+           f'<td class="r">R$ {br(ESP_TOT_PV["standard"])}</td></tr>')
 
 TOT_ST, TOT_GO = mt.TOT['standard'], mt.TOT['gold']
 
@@ -290,34 +292,32 @@ p5 = f"""<div class="page"><div class="pad">
 
   <table class="invA">
     <thead><tr><th></th><th></th>
-      <th class="r">Standard<br><span style="font-weight:400;text-transform:none;letter-spacing:0;">{mt.GARANTIA['standard']} de garantia</span></th>
-      <th class="r alt">Gold<br><span style="font-weight:400;text-transform:none;letter-spacing:0;">{mt.GARANTIA['gold']} de garantia</span></th></tr></thead>
+      <th class="r">Investimento<br><span style="font-weight:400;text-transform:none;letter-spacing:0;">linha Standard · {mt.GARANTIA['standard']} de garantia</span></th></tr></thead>
     <tbody>{linhas}
       <tr class="tot"><td class="a"></td><td class="i">Investimento total</td>
-        <td class="r">R$ {br(TOT_ST)}</td>
-        <td class="r alt">R$ {br(TOT_GO)}</td></tr>
+        <td class="r">R$ {br(TOT_ST)}</td></tr>
     </tbody>
   </table>
 
   <div class="escP">
-    <div class="l"><span class="p">40%</span><span class="q">na assinatura</span></div>
-    <div class="l"><span class="p">20%</span><span class="q">no início das montagens</span></div>
-    <div class="l"><span class="p">20%</span><span class="q">na entrega final</span></div>
-    <div class="l"><span class="p">20%</span><span class="q">em boleto, 30 dias após a entrega</span></div>
+    <div class="l"><span class="p">50%</span><span class="q">de entrada, na assinatura</span></div>
+    <div class="l"><span class="p">20%</span><span class="q">no início da montagem</span></div>
+    <div class="l"><span class="p">15%</span><span class="q">na entrega</span></div>
+    <div class="l"><span class="p">15%</span><span class="q">30 dias após a entrega</span></div>
   </div>
 
   <div class="cndP">
     <div><div class="k">Prazo de entrega</div><div class="d">
-      <b>Estande: {PRAZO_ST}</b> · <b>Decorado: {PRAZO_DEC}</b>, contados da
-      assinatura, da entrada e da medição final no local.</div></div>
+      <b>Até {PRAZO}</b>, contado da assinatura, da entrada e da medição
+      final no local.</div></div>
     <div><div class="k">Escopo Valvic</div><div class="d">
       Do corte à instalação com <b>equipe própria</b>, e os terceiros de pedra,
       vidro, laca, espelho e estofado <b>entregues instalados</b>.</div></div>
     <div><div class="k">Validade da proposta</div><div class="d">
-      <b>{VALIDADE}</b> a partir desta data.</div></div>
+      <b>Até {VALIDADE}</b>.</div></div>
     <div><div class="k">Garantia</div><div class="d">
-      <b>Standard: {mt.GARANTIA['standard']}</b> ·
-      <b>Gold: {mt.GARANTIA['gold']}</b>, sobre estrutura e ferragens.</div></div>
+      <b>{mt.GARANTIA['standard']}</b> sobre estrutura e ferragens, na linha
+      desta proposta.</div></div>
   </div>
 
   <div class="nota"><b>Não inclusos:</b> pedras e bancadas, alvenaria de apoio,
@@ -345,8 +345,9 @@ subprocess.run(['node', '/tmp/r.js', str(P/'proposta-marcelo-tolentino.pdf')],
                check=True, env=env)
 
 print(f'proposta-marcelo-tolentino.pdf · {NP} páginas')
-print(f'  Standard  R$ {br(TOT_ST):>9}')
-print(f'  Gold      R$ {br(TOT_GO):>9}')
-for c in mt.CEN:
-    assert abs(sum(AMB_PV[c].values()) + ESP_TOT_PV[c] - mt.TOT[c]) < 1, c
+print(f'  Investimento  R$ {br(TOT_ST):>9}   (linha Standard)')
+print(f'  Prazo         {PRAZO}')
+print(f'  Validade      até {VALIDADE}')
+assert abs(sum(AMB_PV['standard'].values()) + ESP_TOT_PV['standard']
+           - mt.TOT['standard']) < 1
 print('  soma confere com o total')

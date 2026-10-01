@@ -688,3 +688,88 @@ estande como item **01** e o decorado renumera para 07–11.
 | **Linha Gold** · 10 anos de garantia | **R$ 255.300** |
 
 Três passes limpos: conteúdo perdido · transbordo · metragem e contagem.
+
+---
+
+## 01/10/2026 — fechamento em R$ 189.000
+
+> *"coloque a proposta com um investimento de 189k · entrega até dia de
+> novembro · validade da proposta até amanhã · forma de pagamento 50% de
+> entrada, 20% no início da montagem, 15% na entrega, 15% em 30 dias após a
+> entrega"*
+
+### A proposta vira documento de fechamento
+
+| antes | agora |
+|---|---|
+| duas linhas lado a lado, com dois investimentos | **um investimento**, na linha Standard |
+| validade de 10 dias corridos | **até 2 de outubro de 2026** — um dia |
+| 40 / 20 / 20 / 20 | **50 / 20 / 15 / 15** |
+| estande 60 dias · decorado 90 dias | **até 30 de novembro de 2026** |
+
+A página das duas linhas **não saiu** — virou *"O que entra em cada peça"*,
+com a Standard marcada como **linha desta proposta** e a Gold como **upgrade
+disponível**. Numa proposta com validade de um dia, dois totais competindo
+atrapalham o fechamento; a especificação das duas, não.
+
+### O que o alvo custou
+
+| | preço | MC |
+|---|--:|--:|
+| sem alvo, pela escada de MC | 198.170 | 30,4% |
+| **fechado em 189k** ← entregue | **189.000** | **27,7%** |
+| desconto | **9.170** | **−2,7 pontos** |
+
+A escada de MC por complexidade desceu **2,7 pontos inteira**, por bisseção,
+para que a distância entre painelaria (35), armário (38) e item especial (40)
+continuasse valendo. Mesma régua, deslocada — como no United.
+
+### ⚠⚠ A Standard agora roda 7,3 pontos abaixo do piso da casa
+
+Já estava 4,6 pontos abaixo antes deste corte. O piso é **35%**; o
+fechamento roda a **27,7%**.
+
+| rodada | preço | MC |
+|---|--:|--:|
+| 29/09 · com RT e comissão | 232.430 | 38,2% |
+| 29/09 · sem RT, comissão 5% | 208.230 | 38,2% |
+| 29/09 · sem comissão, −5 pontos | 171.080 | 33,2% |
+| 30/09 · standard −3 pontos, + salão principal | 198.170 | 30,4% |
+| **01/10 · fechado em 189k** | **189.000** | **27,7%** |
+
+E dentro dele o **Lounge, a Copa e o Gourmet** ficam perto de **10 pontos**
+abaixo do piso. Não é problema técnico — é a escada comercial funcionando, e
+o contrato é grande o bastante para absorver. Mas **R$ 189 mil rodando a
+27,7% é decisão consciente**, registrada aqui, não consequência do método.
+
+### O fechamento
+
+| ambiente | custo | **venda** | MC |
+|---|--:|--:|--:|
+| Salão principal | 25.835 | **45.150** | 28.1% |
+| Copa | 4.577 | **7.740** | 26.2% |
+| Sala de reunião | 2.480 | **4.270** | 27.3% |
+| Sala de ativos | 7.222 | **12.820** | 29.0% |
+| Lounge | 5.226 | **8.560** | 24.3% |
+| Gourmet | 8.452 | **14.020** | 25.1% |
+| Cozinha | 21.972 | **38.170** | 27.8% |
+| Sala | 9.167 | **16.000** | 28.1% |
+| Quarto casal | 10.491 | **18.470** | 28.5% |
+| Quarto solteiro | 8.739 | **15.440** | 28.8% |
+| Banheiro social | 1.482 | **2.550** | 27.2% |
+| Banheiro casal | 3.256 | **5.810** | 29.3% |
+| **TOTAL** | **108.898** | **R$ 189.000** | **27.7%** |
+
+Espelhos seguem em linha própria na tabela: **R$ 3.670**.
+
+Três passes de auditoria limpos.
+
+### ⚠ O que eu preenchi, e você precisa conferir
+
+> *"entrega até dia de novembro"* — **faltou o número do dia.**
+
+Coloquei **30 de novembro de 2026**: é o último dia do mês, portanto a
+leitura mais segura de "até dia ... de novembro", e bate com os 60 dias
+corridos que o estande já tinha. ⛔ **Para o decorado é um aperto** — ele
+estava em 90 dias, o que cairia em 30 de dezembro. Fechar os dois em 30 de
+novembro encurta o decorado em um mês. **Confirmar antes de enviar.**

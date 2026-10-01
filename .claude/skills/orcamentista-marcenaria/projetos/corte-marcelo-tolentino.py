@@ -656,8 +656,22 @@ FR_DE    = {am: FRENTE[ITENS_DE[am][0]] for am in AMBS}
 CD_AMB  = {c: {am: sum(CDI[c][m] for m in ITENS_DE[am]) for am in AMBS} for c in CEN}
 MC_ALVO = {c: {am: sum(CDI[c][m]*MC_ITEM[m][c] for m in ITENS_DE[am])/CD_AMB[c][am]
                for am in AMBS} for c in CEN}
-PV      = {c: {am: round(CD_AMB[c][am]/(BASE - MC_ALVO[c][am])/10)*10 for am in AMBS}
-           for c in CEN}
+# ⭐ [Jonathan 01/10] "coloque a proposta com um investimento de 189k".
+#   O alvo vale para a linha STANDARD, que é a que fecha. A escada de MC por
+#   complexidade desce um mesmo delta inteira, por bisseção, para que a
+#   distância entre painelaria, armário e item especial continue valendo.
+ALVO_STD = 189000.0
+def _tot_cen(c, d):
+    return sum(round(CD_AMB[c][am]/(BASE - (MC_ALVO[c][am] + d))/10)*10 for am in AMBS)
+_lo, _hi = -0.35, 0.0
+for _ in range(80):
+    _mid = (_lo + _hi)/2
+    if _tot_cen('standard', _mid) < ALVO_STD: _lo = _mid
+    else: _hi = _mid
+DELTA_FECH = {'standard': (_lo + _hi)/2, 'gold': 0.0}
+
+PV      = {c: {am: round(CD_AMB[c][am]/(BASE - (MC_ALVO[c][am] + DELTA_FECH[c]))/10)*10
+               for am in AMBS} for c in CEN}
 TOT     = {c: sum(PV[c].values()) for c in CEN}
 MC_REAL = {c: {am: BASE - CD_AMB[c][am]/PV[c][am] for am in AMBS} for c in CEN}
 
@@ -737,6 +751,18 @@ if __name__ == '__main__':
     d = TOT['gold'] - TOT['standard']
     print(f'\n  gold − standard  =  R$ {br(d)}   (+{d/TOT["standard"]*100:.1f}%)'
           f'   ·   ferragem a mais custa R$ {br(fer["gold"]-fer["standard"])}')
+
+    print(f'\n⭐ FECHAMENTO EM R$ {br(ALVO_STD)} — o que o alvo custou')
+    _sem = _tot_cen('standard', 0.0)
+    print(f'  {"sem alvo, pela escada de MC":<34}R$ {br(_sem):>9}'
+          f'   MC {(BASE-CD["standard"]/_sem)*100:>5.1f}%')
+    print(f'  {"fechado em 189k ← entregue":<34}R$ {br(TOT["standard"]):>9}'
+          f'   MC {(BASE-CD["standard"]/TOT["standard"])*100:>5.1f}%')
+    print(f'  {"desconto":<34}R$ {br(_sem-TOT["standard"]):>9}'
+          f'   {DELTA_FECH["standard"]*100:>5.1f} pontos de MC')
+    print(f'  ⚠ A standard já rodava abaixo do piso de 35% da casa. Em 189k ela')
+    print(f'    roda a {(BASE-CD["standard"]/TOT["standard"])*100:.1f}% — '
+          f'{35-(BASE-CD["standard"]/TOT["standard"])*100:.1f} pontos abaixo do piso.')
 
     print(f'\nESPELHOS — mesmo custo nos dois cenários, linha à parte')
     for am in AMBS:
