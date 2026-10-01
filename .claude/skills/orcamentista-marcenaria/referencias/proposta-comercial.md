@@ -330,6 +330,24 @@ no lugar, o auditor de posição mede "folga 27 pt" e responde ok.
 
 Sem isso a escada de pagamento sumiu **quatro vezes** na mesma proposta.
 
+### ⛔ Numeração de item NÃO é contagem de peça [01/10/2026]
+
+O auditor 3 usava `\s*` entre o número e o substantivo, e `\s` come a quebra
+de linha. No United SP a numeração de item ("03" numa linha, "Prateleiras
+suspensas" na seguinte) virou `03 prateleiras` no texto extraído e foi
+acusada como quantitativo.
+
+> O número e o substantivo têm de estar **na mesma linha**: `[\t ]*`, nunca
+> `\s*`. E, já que se mexe nele, a lista de substantivos cresce — faltavam
+> `painel`, `fechamento` e `suporte`. **Estreitar o falso positivo é motivo
+> para apertar o regex, nunca para afrouxá-lo.**
+
+```python
+(r'\b\d{1,2}[\t ]*(portas?|gavetas?|prateleiras?|nichos?|módulos?|'
+ r'ripas?|dobradiças?|corrediças?|folhas?|peças?|chapas?|pulsadores?|'
+ r'painéis|paineis|painel|fechamentos?|suportes?)\b', 'contagem'),
+```
+
 ### ⛔ E rodapé ausente É transbordo
 
 O auditor 2 usava o rodapé como régua e caía em `pg.rect.y1` quando não o
