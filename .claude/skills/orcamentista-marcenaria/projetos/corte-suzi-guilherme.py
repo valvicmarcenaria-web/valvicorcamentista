@@ -169,6 +169,23 @@ a(K,'CP18','Saia frontal',                210, 15, 1)
 ENCA[K] += 2.20*0.70 + 2*0.70*0.70
 
 # ══════════════════════════════════════════════════════════════════════════
+# DIVISÓRIAS  ⭐ [Jonathan 01/10] "adicione 3 divisórias, sendo 2 em L e 1
+# reta, com um custo total delas de 13.300"
+# ⚠ NÃO HÁ PRANCHA DESTAS PEÇAS. Não há medida, material nem ambiente — o
+#   número é dado, não levantado. Não dá para auditar, só para aplicar.
+# ⭐ Lido como CUSTO DIRETO, não como preço: é a palavra que o Jonathan usa
+#   para entrada de custo o tempo todo ("custo de R$ 1.500 por porta",
+#   "custo unitário de 30,00", "considere os seguintes custos"), enquanto
+#   para preço ele escreve "preço" ou "em 25k". Ver o comparativo no fim —
+#   a outra leitura muda o total em mais de R$ 20 mil.
+# ⚠ O valor é tomado como custo COMPLETO das três, logística inclusa: não há
+#   área de chapa para ratear e não quis inflar o número dele por fora.
+# ══════════════════════════════════════════════════════════════════════════
+DIV_K     = 'Divisórias · duas em L e uma reta'
+DIV_CUSTO = 13300.0
+DIV_MC    = 0.38          # padrão da casa: sem prancha não dá para graduar
+
+# ══════════════════════════════════════════════════════════════════════════
 # CÁLCULO
 # ══════════════════════════════════════════════════════════════════════════
 def _pack(pcs):
@@ -223,9 +240,8 @@ lam_custo  = {mov: LAM[mov]*(LAMINA_M2 + VERNIZ_M2) for mov in MOVS}
 # logística — referencias/logistica.md, praça regional
 CARRETO, DIARIA, VISITA = 150.0, 260.0, 275.0
 AMB  = {mov: mov.split(' · ')[0] for mov in MOVS}
-AMBS = list(dict.fromkeys(AMB[m] for m in MOVS))
 carretos = max(2, ceil(ar_tot/18)); dias = max(3, ceil(ar_tot/12))
-LOG_TOT = carretos*CARRETO + dias*DIARIA + (2 + len(AMBS)*0.5)*VISITA
+LOG_TOT = carretos*CARRETO + dias*DIARIA + (2 + 2*0.5)*VISITA
 
 PRECO_FER = dict(dobr=DOBR_UN, dobrvid=DOBR_VID, tipon=TIPON_UN, sup=SUP_PRAT)
 def custo_fer(mov): return sum(PRECO_FER[k]*q for k, q in FER[mov].items())
@@ -237,6 +253,12 @@ for mov in MOVS:
     share   = area_mov[mov]/ar_tot if ar_tot else 0
     CDI[mov] = (proprio + cons + LOG_TOT*share + TER[mov]
                 + custo_fer(mov))*(1 + M.EMBALAGEM)
+CDI[DIV_K] = DIV_CUSTO
+MOVS = MOVS + [DIV_K]
+for _d in (fita_custo, enc_custo, lam_custo): _d[DIV_K] = 0.0
+AMB[DIV_K] = 'Divisórias'
+area_mov[DIV_K] = 0.0
+MC_ITEM_EXTRA = {DIV_K: DIV_MC}
 CD = sum(CDI.values())
 consum = sum((chapa_mov[m]+fita_custo[m]+enc_custo[m]+lam_custo[m])*0.06 for m in MOVS)
 
@@ -248,8 +270,9 @@ for mov in MOVS:
     b = 0.38
     if 'painel' in mov:                                      b = 0.35
     if any(k in mov for k in ('cristaleira','nichos','café')): b = 0.40
-    MC_ITEM[mov] = b
+    MC_ITEM[mov] = MC_ITEM_EXTRA.get(mov, b)
 
+AMBS    = list(dict.fromkeys(AMB[m] for m in MOVS))
 ITENS   = {am: [m for m in MOVS if AMB[m] == am] for am in AMBS}
 AR_AMB  = {am: sum(area_mov[m] for m in ITENS[am]) for am in AMBS}
 CD_AMB  = {am: sum(CDI[m] for m in ITENS[am]) for am in AMBS}
@@ -345,6 +368,21 @@ if __name__ == '__main__':
     print(f'  {"desconto concedido":<34}R$ {br(TOT-TOT_FECH):>9}')
     print(f'  O desconto custa {(BASE-CD/TOT)*100 - MC_FECH*100:.1f} pontos de MC — todo ele sai da margem,')
     print('  porque o custo direto não muda por fechar o pacote inteiro.')
+
+    print('\n⛔⛔ AS DIVISÓRIAS: R$ 13.300 É CUSTO OU É PREÇO?')
+    pv_c = round(DIV_CUSTO/(BASE - DIV_MC)/10)*10
+    t_c, t_p = TOT, TOT - pv_c + DIV_CUSTO
+    print(f'  {"":<36}{"as três":>11}{"TOTAL":>12}{"com −7%":>12}')
+    print(f'  {"lido como CUSTO ← entregue":<36}{br(pv_c):>11}{br(t_c):>12}'
+          f'{br(round(t_c*0.93/10)*10):>12}')
+    print(f'  {"lido como PREÇO":<36}{br(DIV_CUSTO):>11}{br(t_p):>12}'
+          f'{br(round(t_p*0.93/10)*10):>12}')
+    print(f'  diferença: R$ {br(t_c-t_p)}')
+    print('  Li como CUSTO porque é a palavra que você usa para entrada de custo')
+    print('  (R$ 1.500 por porta, R$ 30 o suporte, "os seguintes custos"), e')
+    print('  "preço" quando é preço (o tampo a 3.600, a mobilização em 25k).')
+    print(f'  ⚠ Mas R$ {br(pv_c)} pelas três divisórias é mais da metade do resto')
+    print('    do contrato, e não há prancha delas. Uma palavra sua inverte.')
 
     print('\n★ FLAG 1 — e se não houvesse RT?')
     b2 = M.base(parcelas=0, rt=False, vendedor=False)

@@ -265,3 +265,73 @@ quanto ele custa está aqui.**
 | **Fechamento completo (−7%)** | **R$ 64.470** |
 
 Três passes de auditoria limpos.
+
+---
+
+## 01/10/2026 (3º) — as três divisórias
+
+> *"preciso que vc adicione 3 divisórias, sendo 2 em L e 1 reta com um custo
+> total delas de 13.300"*
+
+### ⚠ Não há prancha destas peças
+
+Não há medida, material, altura nem ambiente. **O número é dado, não
+levantado** — não dá para auditar, só para aplicar. Entraram como item
+próprio, num grupo próprio, com o custo fechado de R$ 13.300.
+
+Na proposta a linha diz o que de fato se sabe e não promete o que não se
+sabe: *"duas divisórias em L e uma reta, no mesmo padrão construtivo e no
+mesmo acabamento do restante do projeto. **Medidas, posição e acabamento
+final a confirmar com a arquiteta** antes do corte."*
+
+⛔ **Esta proposta não deve ir ao cliente antes de a divisória ter
+detalhamento.** Preço fechado sobre escopo aberto é como se perde dinheiro
+em obra.
+
+### ⛔⛔ R$ 13.300 é custo ou é preço? A diferença é R$ 21.230
+
+| leitura | as três | TOTAL | com −7% |
+|---|--:|--:|--:|
+| **lido como CUSTO** ← entregue | **34.530** | **103.850** | **96.580** |
+| lido como PREÇO | 13.300 | 82.620 | 76.840 |
+
+Li como **custo** por um critério de linguagem que se repete em toda esta
+conversa:
+
+| o Jonathan escreve | e quer dizer |
+|---|---|
+| *"custo de R$ 1.500 por porta"* · *"custo unitário de 30,00"* · *"considere os seguintes custos"* | **entrada de custo** |
+| *"a um preço de 3.600"* · *"a mobilização em 25k"* | **preço de venda** |
+
+Aqui ele escreveu **"custo total delas"**.
+
+⚠ **Mas o teste de escala desconfia da leitura.** R$ 34.530 pelas três
+divisórias é **50% de todo o resto do contrato** — mais que a
+cristaleira, que é a maior peça desenhada do projeto. Para um item sem
+prancha, é muita coisa.
+
+Fiquei com a palavra dele e deixei a conta montada dos dois jeitos. **Uma
+palavra inverte**, e o motor tem a linha pronta.
+
+### O fechamento
+
+| | item a item | fechamento (−7%) |
+|---|--:|--:|
+| Sala | 48.410 | |
+| Escritório | 20.910 | |
+| **Divisórias** | **34.530** | |
+| **TOTAL** | **R$ 103.850** | **R$ 96.580** |
+| MC | 37.7% | 34.8% |
+
+### Uma decisão de redação que vale registrar
+
+A regra de 12/09 proíbe **quantitativo** na proposta. "Duas em L e uma reta"
+é contagem — mas de **entregável**, não de componente. A linha que apliquei:
+
+> **Contar porta, gaveta, prateleira, ripa ou chapa é quantitativo e está
+> proibido. Nomear o que o cliente recebe — duas mesas, um painel, três
+> divisórias — é escopo, e sem isso a proposta não diz o que vende.**
+
+A própria página 2 desta proposta já se chamava *"O bar, e as duas mesas"* e
+passou nos três auditores desde a primeira versão. O critério é consistente,
+e agora está escrito.

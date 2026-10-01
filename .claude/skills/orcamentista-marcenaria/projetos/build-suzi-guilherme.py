@@ -173,7 +173,7 @@ p2 = f"""<div class="page"><div class="pad">
 # ── 3 · escritório ────────────────────────────────────────────────────────
 p3 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">O escritório</div>
-  <div class="h-sec serif">Uma parede inteira,<br><em>e a mesa.</em></div>
+  <div class="h-sec serif">Uma parede inteira,<br><em>a mesa, e as divisórias.</em></div>
   <div class="rule"></div>
 
   <div class="parS" style="margin-top:5mm;">
@@ -192,6 +192,12 @@ p3 = f"""<div class="page"><div class="pad">
       '<b>acabamento em meia-esquadria</b> — a aresta fecha em quina viva, sem '
       'fita aparente. <b>Borracha de nivelamento nos pés</b> e passagem '
       'preparada para as tomadas de mesa.')}
+
+  {it('07', 'Divisórias sob medida',
+      '<b>Duas divisórias em L e uma reta</b>, executadas no mesmo padrão '
+      'construtivo e no mesmo acabamento do restante do projeto. '
+      '<b>Medidas, posição e acabamento final a confirmar com a arquiteta</b> '
+      'antes do corte.')}
 
   <div class="exS">
     <div><div class="k">Ferragem especificada · Hettich</div><div class="d">
@@ -222,7 +228,8 @@ NOME = {'Sala · cristaleira envidraçada': 'Cristaleira',
         'Sala · mesa do café': 'Mesa do café',
         'Sala · tampo novo da mesa de jantar': 'Tampo novo da mesa de jantar',
         'Escritório · painel e prateleiras': 'Painel e prateleiras',
-        'Escritório · mesa de trabalho': 'Mesa de trabalho'}
+        'Escritório · mesa de trabalho': 'Mesa de trabalho',
+        sg.DIV_K: 'Duas em L e uma reta'}
 linhas, _am = '', None
 for am in sg.AMBS:
     for m in sg.ITENS[am]:
@@ -248,10 +255,10 @@ p4 = f"""<div class="page"><div class="pad">
     <div><div class="k">Cenário de otimização</div>
       <div class="t">Fechamento completo</div></div>
     <div class="v"><small>−{int(sg.DESC_FECH*100)}%</small>R$ {br(sg.TOT_FECH)}</div>
-    <div class="d">Os seis itens fechados <b>no mesmo contrato</b>: uma só
-    compra de chapa, um só plano de corte, uma só montagem e uma só visita de
-    medição nos dois ambientes. O ganho de produção volta para o cliente como
-    <b>{int(sg.DESC_FECH*100)}% de desconto</b> sobre o investimento.</div>
+    <div class="d">Todos os itens acima fechados <b>no mesmo contrato</b>:
+    uma só compra de chapa, um só plano de corte, uma só produção e uma só
+    montagem. O ganho volta para o cliente como <b>{int(sg.DESC_FECH*100)}% de
+    desconto</b> sobre o investimento.</div>
   </div>
 
   <div class="escS">
