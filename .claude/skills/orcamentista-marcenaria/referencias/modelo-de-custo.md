@@ -217,6 +217,39 @@ o cartão era variável, então cobrava 8% onde a realidade é 12%.
 
 ---
 
+## 3.1 · ⛔ SEPARAR UMA LINHA NÃO É DESCONTÁ-LA [01/10/2026]
+
+No United SP a logística de São Paulo (R$ 16.000 fechados) saiu de dentro do
+preço dos móveis e virou **bloco próprio na proposta**. A pergunta que isso
+abre não é de layout, é de preço: **a que MC o bloco separado vai?**
+
+| a mobilização sai a… | bloco | TOTAL | Δ |
+|---|--:|--:|--:|
+| custo seco, sem encargo nenhum | 16.000 | 160.230 | **−27.100** |
+| só com os encargos, MC zero | 21.330 | 165.560 | −21.770 |
+| MC 20% | 28.880 | 173.110 | −14.220 |
+| MC 30% | 35.090 | 179.320 | −8.010 |
+| **MC do conjunto** ← entregue | **43.100** | **187.330** | **0** |
+
+> **Tirar um custo de dentro do preço e repassá-lo "a custo" é um desconto de
+> R$ 27 mil disfarçado de organização da proposta.**
+
+Dois motivos para o bloco levar os mesmos encargos:
+
+1. **A cascata não pergunta o que é a linha.** A NF de 5%, o cartão, o RT de
+   10% e o rateio de produção de 7% caem sobre o faturamento — não sobre
+   "móvel". Repassar o carreto a custo é pagar a NF e o RT do carreto do
+   próprio bolso.
+2. **Quem adianta o caixa e carrega o risco é a casa.** Se a obra escorrega e
+   precisa de mais uma viagem, de mais diárias de hotel, é a casa que paga.
+
+O que a separação ganha é **comercial, não contábil**: o cliente passa a ver
+uma linha identificável, e a casa ganha uma linha que se renegocia **sem
+reabrir o preço do móvel**. Se for para dar desconto, que seja escolha —
+e o lugar de escolher é esta tabela.
+
+---
+
 ## 4 · Como usar
 
 ```python

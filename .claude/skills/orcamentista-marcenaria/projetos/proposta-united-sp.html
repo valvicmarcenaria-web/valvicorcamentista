@@ -211,29 +211,47 @@ table.invU{width:100%;border-collapse:collapse;margin-top:4mm;font-size:9pt;}
 table.invU th{font-size:6.9pt;letter-spacing:.17em;text-transform:uppercase;
   color:var(--mut);font-weight:700;padding:0 0 2.4mm;text-align:left;}
 table.invU th.r,table.invU td.r{text-align:right;}
-table.invU td{padding:2.3mm 0;border-top:1px solid var(--hair);vertical-align:top;}
+table.invU td{padding:1.7mm 0;border-top:1px solid var(--hair);vertical-align:top;}
 table.invU td.a{font-size:6.9pt;letter-spacing:.14em;text-transform:uppercase;
   color:var(--gold-lt);font-weight:700;padding-right:4mm;width:30mm;}
 table.invU td.i{font-weight:600;}
 table.invU tr.sub td{border-top:1px solid var(--line);color:var(--soft);
-  font-size:8.2pt;padding-top:1.8mm;}
-table.invU tr.tot td{border-top:1.6px solid var(--ink);padding-top:3mm;
-  font-family:'Cormorant Garamond',Georgia,serif;font-size:19pt;font-weight:700;}
+  font-size:8pt;padding:1.3mm 0;}
+table.invU tr.tot td{border-top:1.6px solid var(--ink);padding-top:2.2mm;
+  font-family:'Cormorant Garamond',Georgia,serif;font-size:15pt;font-weight:700;}
 table.invU tr.tot td.a,table.invU tr.tot td.i{font-family:inherit;font-size:9.6pt;}
 
-.escU{margin-top:5mm;border:1px solid var(--line);border-radius:5px;
+.escU{margin-top:4mm;border:1px solid var(--line);border-radius:5px;
   overflow:hidden;flex:none;}
 .escU .l{display:flex;justify-content:space-between;align-items:baseline;
-  padding:2.5mm 5mm;border-bottom:1px solid var(--hair);font-size:9pt;}
+  padding:2mm 5mm;border-bottom:1px solid var(--hair);font-size:9pt;}
 .escU .l:last-child{border-bottom:none;}
 .escU .l .p{font-weight:700;font-size:11pt;color:var(--gold);min-width:14mm;}
 .escU .l .q{color:var(--soft);flex:1;padding-left:4mm;}
 
-.cndU{display:grid;grid-template-columns:1fr 1fr;gap:3.8mm 7mm;margin-top:5mm;
+.mobU{margin-top:4mm;border:1.5px solid var(--gold);border-radius:5px;
+  background:var(--gold-pale);padding:3.6mm 5.2mm;display:grid;
+  grid-template-columns:1fr auto;gap:2mm 7mm;align-items:start;flex:none;}
+.mobU .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.mobU .t{font-size:11pt;font-weight:700;margin-top:1mm;}
+.mobU .d{color:var(--soft);font-size:8.3pt;line-height:1.56;margin-top:1.8mm;
+  grid-column:1/2;grid-row:2/3;}
+.mobU .d b{color:var(--ink);font-weight:600;}
+.mobU .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:21pt;
+  font-weight:700;white-space:nowrap;grid-column:2/3;grid-row:1/3;
+  align-self:center;text-align:right;}
+.totU{display:flex;justify-content:space-between;align-items:baseline;
+  margin-top:3.6mm;padding-top:2.4mm;border-top:1.6px solid var(--ink);flex:none;}
+.totU .l{font-size:9.6pt;font-weight:600;}
+.totU .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:23pt;
+  font-weight:700;}
+
+.cndU{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm 5mm;margin-top:4mm;
   flex:none;}
 .cndU .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
   color:var(--gold);font-weight:700;}
-.cndU .d{color:var(--soft);font-size:8.4pt;margin-top:1mm;line-height:1.48;}
+.cndU .d{color:var(--soft);font-size:8pt;margin-top:1mm;line-height:1.42;}
 .cndU .d b{color:var(--ink);}
 .notaU{margin-top:4.5mm;padding-left:4mm;border-left:2.5px solid var(--gold-lt);
   font-size:8pt;color:var(--soft);line-height:1.5;flex:none;}
@@ -287,10 +305,11 @@ table.invU tr.tot td.a,table.invU tr.tot td.i{font-family:inherit;font-size:9.6p
       projeto desenha. É o que dá a leitura de volume maciço nas bordas.</div></div>
 
     <div><div class="k">O painel sem emenda</div><div class="d">
-      O painel do hall sobe em duas partes: o <b>pano ripado inteiro</b> e,
-      acima dele, a <b>sanca que recebe a luz indireta</b>. A divisão não é
-      estética — é o que permite entregar o ripado <b>sem emenda horizontal
-      atravessando o hall na altura dos olhos</b>.</div></div>
+      O painel do hall sobe em duas partes: o <b>pano ripado, que fecha em
+      2,73&nbsp;m</b>, e acima dele a <b>sanca que recebe a luz indireta</b>
+      até o teto. A divisão não é estética — é o que permite entregar o
+      ripado <b>inteiro, sem emenda horizontal atravessando o hall na altura
+      dos olhos</b>.</div></div>
 
     <div><div class="k">Ferragem</div><div class="d">
       Dobradiça <b>Hettich Sensys</b>, com pistão em gel e regulagem nos três
@@ -325,11 +344,24 @@ table.invU tr.tot td.a,table.invU tr.tot td.i{font-family:inherit;font-size:9.6p
 
   <table class="invU">
     <thead><tr><th></th><th></th><th class="r">Investimento</th></tr></thead>
-    <tbody><tr><td class="a">8º andar</td><td class="i">Copa</td><td class="r">R$ 40.010</td></tr><tr><td class="a"></td><td class="i">Hall dos elevadores</td><td class="r">R$ 43.220</td></tr><tr><td class="a"></td><td class="i">Prateleiras suspensas</td><td class="r">R$ 10.150</td></tr><tr><td class="a"></td><td class="i">Fechamento dos quadros de energia</td><td class="r">R$ 7.880</td></tr><tr class="sub"><td class="a"></td><td class="i">subtotal do 8º andar</td><td class="r">R$ 101.260</td></tr><tr><td class="a">9º andar</td><td class="i">Copa</td><td class="r">R$ 28.080</td></tr><tr><td class="a"></td><td class="i">Hall dos elevadores</td><td class="r">R$ 43.220</td></tr><tr><td class="a"></td><td class="i">Prateleiras suspensas</td><td class="r">R$ 8.060</td></tr><tr><td class="a"></td><td class="i">Fechamento dos quadros de energia</td><td class="r">R$ 7.880</td></tr><tr class="sub"><td class="a"></td><td class="i">subtotal do 9º andar</td><td class="r">R$ 87.240</td></tr>
-      <tr class="tot"><td class="a"></td><td class="i">Investimento total</td>
-        <td class="r">R$ 188.500</td></tr>
-    </tbody>
+    <tbody><tr><td class="a">8º andar</td><td class="i">Copa</td><td class="r">R$ 27.320</td></tr><tr><td class="a"></td><td class="i">Hall dos elevadores</td><td class="r">R$ 35.180</td></tr><tr><td class="a"></td><td class="i">Prateleiras suspensas</td><td class="r">R$ 8.090</td></tr><tr><td class="a"></td><td class="i">Fechamento dos quadros de energia</td><td class="r">R$ 6.220</td></tr><tr><td class="a">9º andar</td><td class="i">Copa</td><td class="r">R$ 19.580</td></tr><tr><td class="a"></td><td class="i">Hall dos elevadores</td><td class="r">R$ 35.180</td></tr><tr><td class="a"></td><td class="i">Prateleiras suspensas</td><td class="r">R$ 6.440</td></tr><tr><td class="a"></td><td class="i">Fechamento dos quadros de energia</td><td class="r">R$ 6.220</td></tr><tr class="tot"><td class="a"></td><td class="i">Marcenaria</td><td class="r">R$ 144.230</td></tr></tbody>
   </table>
+
+  <div class="mobU">
+    <div><div class="k">Obra fora de sede</div>
+      <div class="t">Mobilização e logística de obra</div></div>
+    <div class="v">R$ 43.100</div>
+    <div class="d">Equipe própria da Valvic em São Paulo: <b>transporte e
+    carreto de entrega</b>, <b>deslocamento da equipe</b>, <b>hospedagem e
+    alimentação</b> durante toda a permanência e <b>jornada estendida</b> para
+    cumprir o prazo nos dois pavimentos. Linha destacada de propósito — o
+    preço da marcenaria acima não a embute.</div>
+  </div>
+
+  <div class="totU">
+    <span class="l">Investimento total</span>
+    <span class="v">R$ 187.330</span>
+  </div>
 
   <div class="escU">
     <div class="l"><span class="p">40%</span><span class="q">na assinatura</span></div>
@@ -338,24 +370,20 @@ table.invU tr.tot td.a,table.invU tr.tot td.i{font-family:inherit;font-size:9.6p
   </div>
 
   <div class="cndU">
-    <div><div class="k">Prazo de entrega</div><div class="d">
-      <b>75 dias corridos</b>, contados da assinatura, da entrada e da medição final
-      nos dois pavimentos.</div></div>
-    <div><div class="k">Escopo Valvic</div><div class="d">
-      Do corte à instalação com <b>equipe própria</b>, incluindo transporte,
-      hospedagem e permanência da equipe em São Paulo.</div></div>
-    <div><div class="k">Validade da proposta</div><div class="d">
+    <div><div class="k">Prazo</div><div class="d">
+      <b>75 dias corridos</b>, da assinatura, da entrada e da medição final.</div></div>
+    <div><div class="k">Execução</div><div class="d">
+      Do corte à instalação, com <b>equipe própria</b> da casa.</div></div>
+    <div><div class="k">Validade</div><div class="d">
       <b>10 dias corridos</b> a partir desta data.</div></div>
     <div><div class="k">Garantia</div><div class="d">
-      <b>10 anos</b> sobre estrutura e ferragens, em termo da Valvic sobre o
-      conjunto que fornecemos e instalamos.</div></div>
+      <b>10 anos</b> sobre estrutura e ferragens.</div></div>
   </div>
 
-  <div class="notaU"><b>Não inclusos:</b> granito e demais pedras, cubas,
-  torneiras, geladeiras e eletrodomésticos, portas e divisórias de vidro,
-  esquadrias, as estações de trabalho do contact center, piso e luminárias dos
-  halls, comunicação visual, gesso, pintura, revestimentos, elétrica e
-  hidráulica.</div>
+  <div class="notaU"><b>Não inclusos:</b> pedras, cubas, torneiras,
+  eletrodomésticos, vidros e esquadrias, as estações de trabalho do contact
+  center, piso e luminárias dos halls, comunicação visual, gesso, pintura,
+  revestimentos, elétrica e hidráulica.</div>
 
   <div class="foot"><span>Valvic Marcenaria</span><span>United · São Paulo · pavimentos 8 e 9</span><span>4 / 4</span></div>
 </div></div></body></html>

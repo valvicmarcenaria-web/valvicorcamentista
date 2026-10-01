@@ -182,17 +182,17 @@ t(K, 2.76*CAVA_M)
 for pav in ('8', '9'):
     K = f'Hall {pav}° · painel ripado azul petróleo'
     # 6,78 × 2,80, ripado de passo 5,0 cm, com duas portas mimetizadas
-    # ⛔⛔ O PAINEL TEM 2,80 E A CHAPA TEM 2,75. Ver FLAG 6: o ripado para em
-    #    2,70 e os 10 de cima viram a sanca que a própria prancha já pede
-    #    para a iluminação indireta. Sem isso, emenda horizontal no meio do
-    #    ripado, à altura dos olhos, no hall do elevador.
-    a(K,'AP18','Painel ripado',           270, 63, 8)      # 5,04 de painel
+    # ⛔⛔ O PAINEL TEM 2,80 E A CHAPA TEM 2,75. Ver FLAG 6: o pano ripado
+    #    para em 2,73 [Jonathan 01/10] e o que sobra até o teto vira a sanca
+    #    que a própria prancha já pede para a iluminação indireta.
+    #    Sem isso, emenda horizontal no meio do ripado, no hall do elevador.
+    a(K,'AP18','Painel ripado',           273, 63, 8)      # 5,04 de painel
     a(K,'AP18','Porta mimetizada do hidrante', 216, 75, 1)
     a(K,'AP18','Porta mimetizada da escada',   216, 95, 1)
-    a(K,'AP18','Bandeira sobre a porta',   54, 75, 1)
-    a(K,'AP18','Bandeira sobre a porta',   54, 95, 1)
-    a(K,'AP18','Sanca de iluminação',     226, 25, 3)      # 6,78 × 25
-    a(K,'BR15','Montante e sarrafo',      270, 10, 14)
+    a(K,'AP18','Bandeira sobre a porta',   57, 75, 1)
+    a(K,'AP18','Bandeira sobre a porta',   57, 95, 1)
+    a(K,'AP18','Sanca de iluminação',     226, 20, 3)      # prateleira do LED
+    a(K,'BR15','Montante e sarrafo',      273, 10, 14)
     a(K,'AT18','Nicho · fundo e laterais',140, 40, 2)
     a(K,'AT18','Nicho · base e topo',     140, 10, 4)
     a(K,'AT18','Nicho · lateral',          40, 10, 4)
@@ -201,12 +201,12 @@ for pav in ('8', '9'):
 
     K = f'Hall {pav}° · painel liso Tauari'
     # 4,74 × 2,80, liso, com o vão da porta dupla de vidro (vidro não é nosso)
-    a(K,'TA18','Painel',                  270, 52, 6)
-    a(K,'TA18','Retorno de topo',         270, 25, 2)
-    a(K,'TA18','Marco do vão de vidro',   270, 15, 2)
-    a(K,'TA18','Bandeira sobre o vão',     57, 93, 2)
-    a(K,'TA18','Sanca de iluminação',     237, 25, 2)      # 4,74 × 25
-    a(K,'BR15','Montante e sarrafo',      270, 10, 8)
+    a(K,'TA18','Painel',                  273, 52, 6)
+    a(K,'TA18','Retorno de topo',         273, 25, 2)
+    a(K,'TA18','Marco do vão de vidro',   273, 15, 2)
+    a(K,'TA18','Bandeira sobre o vão',     60, 93, 2)
+    a(K,'TA18','Sanca de iluminação',     237, 20, 2)      # prateleira do LED
+    a(K,'BR15','Montante e sarrafo',      273, 10, 8)
     t(K, 4.74*LED_M)
 
 # ══════════════════════════════════════════════════════════════════════════
@@ -299,14 +299,19 @@ PRECO_FER = dict(dobr=DOBR_UN, corr=CORR_UN, sup=SUP_PRAT,
                  supocu=SUP_OCU, fecha=FECHA_UN)
 def custo_fer(mov): return sum(PRECO_FER[k]*q for k, q in FER[mov].items())
 
+# ⭐ [Jonathan 01/10] "coloque esses custos de forma estratégica na proposta,
+#   mais separada do valor dos móveis."
+# ⛔ A logística SAI do rateio por item e vira BLOCO PRÓPRIO, precificado à
+#   parte. O móvel passa a custar o que ele custa; a ida a São Paulo aparece
+#   com nome e preço seus. Isso dá ao cliente uma linha identificável e dá à
+#   casa uma linha que se renegocia sem reabrir o preço do móvel.
 CDI = {}
 for mov in MOVS:
     proprio = chapa_mov[mov] + fita_custo[mov] + enc_custo[mov]
     cons    = proprio*0.06
-    share   = area_mov[mov]/ar_tot if ar_tot else 0
-    CDI[mov] = (proprio + cons + LOG_TOT*share + TER[mov]
-                + custo_fer(mov))*(1 + M.EMBALAGEM)
-CD = sum(CDI.values())
+    CDI[mov] = (proprio + cons + TER[mov] + custo_fer(mov))*(1 + M.EMBALAGEM)
+CD_MOV = sum(CDI.values())
+CD     = CD_MOV + LOG_TOT*(1 + M.EMBALAGEM)
 consum = sum((chapa_mov[m] + fita_custo[m] + enc_custo[m])*0.06 for m in MOVS)
 
 # ── margem ────────────────────────────────────────────────────────────────
@@ -329,9 +334,20 @@ PAV = {am: ('9° pavimento' if ('9°' in am) else '8° pavimento') for am in AMB
 CD_AMB  = {am: sum(CDI[m] for m in ITENS[am]) for am in AMBS}
 MC_ALVO = {am: sum(CDI[m]*MC_ITEM[m] for m in ITENS[am])/CD_AMB[am] for am in AMBS}
 PV      = {am: round(CD_AMB[am]/(BASE - MC_ALVO[am])/10)*10 for am in AMBS}
-TOT     = sum(PV.values())
+TOT_MOV = sum(PV.values())
 MC_REAL = {am: BASE - CD_AMB[am]/PV[am] for am in AMBS}
-assert abs(sum(CD_AMB.values()) - CD) < 0.01
+assert abs(sum(CD_AMB.values()) - CD_MOV) < 0.01
+
+# ── MOBILIZAÇÃO E LOGÍSTICA DE OBRA ──────────────────────────────────────
+# ⚠ Separar NÃO é descontar. A mobilização leva os mesmos encargos do resto
+#   (a NF, o RT e o rateio de produção caem sobre ela do mesmo jeito) e a MC
+#   do conjunto, para que tirar a logística de dentro do móvel seja uma
+#   mudança de APRESENTAÇÃO e não um corte de preço silencioso.
+#   Ver, no fim, a escada do que cada alternativa custaria.
+CD_MOB  = LOG_TOT*(1 + M.EMBALAGEM)
+MC_MOB  = sum(CDI[m]*MC_ITEM[m] for m in MOVS)/CD_MOV      # MC média do job
+PV_MOB  = round(CD_MOB/(BASE - MC_MOB)/10)*10
+TOT     = TOT_MOV + PV_MOB
 
 # ══════════════════════════════════════════════════════════════════════════
 if __name__ == '__main__':
@@ -360,12 +376,14 @@ if __name__ == '__main__':
                 + consum + LOG_TOT + fer + sum(TER.values()))
     for rot, v in (('chapa', custo_chapa), ('fita de borda', sum(fita_custo.values())),
                    ('miolo encorpado', sum(enc_custo.values())),
-                   ('consumíveis', consum), ('logística SP', LOG_TOT),
+                   ('consumíveis', consum),
                    ('ferragem', fer), ('serviços e usinagem', sum(TER.values())),
                    ('embalagem (2%)', emb)):
         print(f'  {rot:<22}{br(v):>12}')
+    print(f'  {"custo dos móveis":<22}{br(CD_MOV):>12}')
+    print(f'  {"mobilização (à parte)":<22}{br(CD_MOB):>12}')
     print(f'  {"CUSTO DIRETO":<22}{br(CD):>12}')
-    print(f'\n  logística fechada [Jonathan]: ' +
+    print(f'\n  mobilização [Jonathan]: ' +
           ' · '.join(f'{k} {br(v)}' for k, v in LOG.items()))
 
     print('\n' + '─'*W)
@@ -383,9 +401,26 @@ if __name__ == '__main__':
         print(f'    {"subtotal":<36}{ar:>7.1f}{br(cc):>12}{br(vv):>12}'
               f'{(BASE-cc/vv)*100:>7.1f}%')
     print('─'*W)
-    print(f'  {"TOTAL":<38}{ar_tot:>7.1f}{br(CD):>12}{br(TOT):>12}'
+    print(f'  {"MÓVEIS":<38}{ar_tot:>7.1f}{br(CD_MOV):>12}{br(TOT_MOV):>12}'
+          f'{(BASE-CD_MOV/TOT_MOV)*100:>7.1f}%')
+    print(f'  {"Mobilização e logística de obra":<38}{"":>7}{br(CD_MOB):>12}'
+          f'{br(PV_MOB):>12}{(BASE-CD_MOB/PV_MOB)*100:>7.1f}%')
+    print(f'  {"TOTAL":<38}{"":>7}{br(CD):>12}{br(TOT):>12}'
           f'{(BASE-CD/TOT)*100:>7.1f}%')
     print('─'*W)
+
+    print('\n⚠ A MOBILIZAÇÃO PRECISA LEVAR MARGEM — separar não é descontar')
+    print(f'  {"como a mobilização é precificada":<44}{"bloco":>10}{"TOTAL":>12}{"Δ":>12}')
+    for rot, mc in (('a custo seco, sem encargo nenhum', None),
+                    ('só com os encargos, MC zero',      0.0),
+                    ('MC 20%',                           0.20),
+                    ('MC 30%',                           0.30),
+                    (f'MC do conjunto ({MC_MOB*100:.1f}%)  ← entregue', MC_MOB)):
+        v = LOG_TOT if mc is None else round(CD_MOB/(BASE-mc)/10)*10
+        print(f'  {rot:<44}{br(v):>10}{br(TOT_MOV+v):>12}'
+              f'{br(TOT_MOV+v-TOT):>12}')
+    print('  Os encargos caem sobre a mobilização igual: a NF, o RT e o rateio')
+    print('  de produção não perguntam se a linha é móvel ou caminhão.')
 
     print('\n★ FLAG 1 — e se a ferragem fosse a linha de entrada?')
     nd = sum(FER[m]['dobr'] for m in MOVS); nc = sum(FER[m]['corr'] for m in MOVS)

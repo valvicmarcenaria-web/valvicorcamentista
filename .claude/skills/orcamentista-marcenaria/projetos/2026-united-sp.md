@@ -201,3 +201,65 @@ faltavam — o auditor saiu mais estrito, não mais frouxo.
    puxador na ripa resolve a abertura. A **sinalização** continua sendo da
    obra, e precisa existir — porta de escada que não se identifica é
    problema de vistoria, não de marcenaria.
+
+---
+
+## 01/10/2026 (2º) — painel a 2,73 e a logística como bloco próprio
+
+> *"refaça com o custo do painel considerando 273 de altura e mencione na
+> proposta essa informação. coloque esses custos [a logística] de forma
+> estratégica na proposta, mais separada do valor dos móveis. pense em uma
+> nomenclatura profissional para esse bloco de custos."*
+
+### O pano ripado fecha em 2,73
+
+A rodada anterior tinha parado o ripado em 2,70 por conta própria. O Jonathan
+fixou **2,73** — sobram 7 até o teto para a sanca da luz indireta, e o painel
+continua saindo de chapa inteira (a chapa tem 2,75).
+
+⭐ **E a informação vai EXPLÍCITA na proposta.** É exceção autorizada à regra
+de metragem, pelo mesmo motivo que a espessura entrou no Marcelo Tolentino:
+é a informação que explica por que o painel não encosta no teto. Dito na
+proposta, vira decisão combinada; omitido, vira reclamação na entrega. O
+auditor passou a liberar `2,73 m` e só ela.
+
+### Mobilização e logística de obra
+
+A logística saiu do rateio por item e virou **bloco próprio, com nome**:
+
+> **OBRA FORA DE SEDE · Mobilização e logística de obra**
+> Equipe própria da Valvic em São Paulo: transporte e carreto de entrega,
+> deslocamento da equipe, hospedagem e alimentação durante toda a permanência
+> e jornada estendida para cumprir o prazo nos dois pavimentos.
+
+Na proposta aparecem **o escopo do bloco e um preço só** — não os quatro
+valores de custo. Bloco de mobilização em proposta B2B se cota por verba
+fechada; abrir R$ 8.000 de carreto é publicar a nossa base de custo sem
+necessidade.
+
+### ⚠ A decisão que a separação obrigou
+
+Separar não é descontar. Repassar o bloco a custo seco custaria
+**R$ 27.100** — está registrado em `modelo-de-custo.md`, seção 3.1, com a
+escada inteira. Entreguei o bloco **na MC do conjunto**, para que a mudança
+seja de apresentação e não um corte de preço silencioso. Se for para
+descontar, que seja escolha.
+
+### O fechamento
+
+| | |
+|---|--:|
+| **Marcenaria** | **R$ 144.230** |
+| **Mobilização e logística de obra** | **R$ 43.100** |
+| **Investimento total** | **R$ 187.330** |
+
+MC **38,7%**. Caiu R$ 1.170 contra a rodada anterior — efeito do painel a
+2,73 e do arredondamento do bloco separado.
+
+### ⛔ A página de investimento estourou, e os dois auditores pegaram
+
+O bloco novo não cabia. O auditor de conteúdo acusou a perda do "Não
+inclusos" e o de transbordo acusou **rodapé perdido** — a checagem criada
+ontem, no Marcelo Tolentino, ganhou o dia na primeira proposta seguinte.
+Resolvido tirando os subtotais por andar (o agrupamento já se lê pela
+etiqueta da esquerda) e pondo as condições em quatro colunas.

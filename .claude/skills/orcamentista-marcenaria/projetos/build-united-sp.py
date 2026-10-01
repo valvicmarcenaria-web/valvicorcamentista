@@ -6,7 +6,9 @@ Números vêm de `corte-united-sp.py`; nada é digitado à mão aqui.
 ⛔⛔ NUNCA PÔR METRAGEM NEM QUANTITATIVO NA PROPOSTA
    (referencias/proposta-comercial.md · SKILL.md FASE 3)
    Sem cota, sem m², sem contagem de porta, painel, prateleira ou suporte.
-   Aqui NÃO há exceção liberada — nem espessura de chapa.
+   ⭐ EXCEÇÃO ÚNICA, autorizada pelo Jonathan em 01/10: a ALTURA DO PANO
+   RIPADO DO HALL (2,73 m) aparece, porque é a informação que explica por
+   que o painel não encosta no teto. O auditor libera só ela.
 ⛔ Classes novas levam sufixo U: `.invU`, `.escU`, `.cndU`, `.phU`, `.itU`.
    (`css-proposta.css` já define `.inv`, `.pay`, `.it`, `.esc`, `.cnd`.)
 """
@@ -57,29 +59,47 @@ table.invU{width:100%;border-collapse:collapse;margin-top:4mm;font-size:9pt;}
 table.invU th{font-size:6.9pt;letter-spacing:.17em;text-transform:uppercase;
   color:var(--mut);font-weight:700;padding:0 0 2.4mm;text-align:left;}
 table.invU th.r,table.invU td.r{text-align:right;}
-table.invU td{padding:2.3mm 0;border-top:1px solid var(--hair);vertical-align:top;}
+table.invU td{padding:1.7mm 0;border-top:1px solid var(--hair);vertical-align:top;}
 table.invU td.a{font-size:6.9pt;letter-spacing:.14em;text-transform:uppercase;
   color:var(--gold-lt);font-weight:700;padding-right:4mm;width:30mm;}
 table.invU td.i{font-weight:600;}
 table.invU tr.sub td{border-top:1px solid var(--line);color:var(--soft);
-  font-size:8.2pt;padding-top:1.8mm;}
-table.invU tr.tot td{border-top:1.6px solid var(--ink);padding-top:3mm;
-  font-family:'Cormorant Garamond',Georgia,serif;font-size:19pt;font-weight:700;}
+  font-size:8pt;padding:1.3mm 0;}
+table.invU tr.tot td{border-top:1.6px solid var(--ink);padding-top:2.2mm;
+  font-family:'Cormorant Garamond',Georgia,serif;font-size:15pt;font-weight:700;}
 table.invU tr.tot td.a,table.invU tr.tot td.i{font-family:inherit;font-size:9.6pt;}
 
-.escU{margin-top:5mm;border:1px solid var(--line);border-radius:5px;
+.escU{margin-top:4mm;border:1px solid var(--line);border-radius:5px;
   overflow:hidden;flex:none;}
 .escU .l{display:flex;justify-content:space-between;align-items:baseline;
-  padding:2.5mm 5mm;border-bottom:1px solid var(--hair);font-size:9pt;}
+  padding:2mm 5mm;border-bottom:1px solid var(--hair);font-size:9pt;}
 .escU .l:last-child{border-bottom:none;}
 .escU .l .p{font-weight:700;font-size:11pt;color:var(--gold);min-width:14mm;}
 .escU .l .q{color:var(--soft);flex:1;padding-left:4mm;}
 
-.cndU{display:grid;grid-template-columns:1fr 1fr;gap:3.8mm 7mm;margin-top:5mm;
+.mobU{margin-top:4mm;border:1.5px solid var(--gold);border-radius:5px;
+  background:var(--gold-pale);padding:3.6mm 5.2mm;display:grid;
+  grid-template-columns:1fr auto;gap:2mm 7mm;align-items:start;flex:none;}
+.mobU .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.mobU .t{font-size:11pt;font-weight:700;margin-top:1mm;}
+.mobU .d{color:var(--soft);font-size:8.3pt;line-height:1.56;margin-top:1.8mm;
+  grid-column:1/2;grid-row:2/3;}
+.mobU .d b{color:var(--ink);font-weight:600;}
+.mobU .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:21pt;
+  font-weight:700;white-space:nowrap;grid-column:2/3;grid-row:1/3;
+  align-self:center;text-align:right;}
+.totU{display:flex;justify-content:space-between;align-items:baseline;
+  margin-top:3.6mm;padding-top:2.4mm;border-top:1.6px solid var(--ink);flex:none;}
+.totU .l{font-size:9.6pt;font-weight:600;}
+.totU .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:23pt;
+  font-weight:700;}
+
+.cndU{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm 5mm;margin-top:4mm;
   flex:none;}
 .cndU .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
   color:var(--gold);font-weight:700;}
-.cndU .d{color:var(--soft);font-size:8.4pt;margin-top:1mm;line-height:1.48;}
+.cndU .d{color:var(--soft);font-size:8pt;margin-top:1mm;line-height:1.42;}
 .cndU .d b{color:var(--ink);}
 .notaU{margin-top:4.5mm;padding-left:4mm;border-left:2.5px solid var(--gold-lt);
   font-size:8pt;color:var(--soft);line-height:1.5;flex:none;}
@@ -168,10 +188,11 @@ p3 = f"""<div class="page"><div class="pad">
       projeto desenha. É o que dá a leitura de volume maciço nas bordas.</div></div>
 
     <div><div class="k">O painel sem emenda</div><div class="d">
-      O painel do hall sobe em duas partes: o <b>pano ripado inteiro</b> e,
-      acima dele, a <b>sanca que recebe a luz indireta</b>. A divisão não é
-      estética — é o que permite entregar o ripado <b>sem emenda horizontal
-      atravessando o hall na altura dos olhos</b>.</div></div>
+      O painel do hall sobe em duas partes: o <b>pano ripado, que fecha em
+      2,73&nbsp;m</b>, e acima dele a <b>sanca que recebe a luz indireta</b>
+      até o teto. A divisão não é estética — é o que permite entregar o
+      ripado <b>inteiro, sem emenda horizontal atravessando o hall na altura
+      dos olhos</b>.</div></div>
 
     <div><div class="k">Ferragem</div><div class="d">
       Dobradiça <b>Hettich Sensys</b>, com pistão em gel e regulagem nos três
@@ -218,10 +239,8 @@ for pv in ('8° pavimento', '9° pavimento'):
         _pv = pv
         linhas += (f'<tr><td class="a">{rot}</td><td class="i">{NOME[am]}</td>'
                    f'<td class="r">R$ {br(u.PV[am])}</td></tr>')
-    sub = sum(u.PV[a] for a in u.AMBS if u.PAV[a] == pv)
-    linhas += (f'<tr class="sub"><td class="a"></td>'
-               f'<td class="i">subtotal do {"8º" if pv.startswith("8") else "9º"} andar</td>'
-               f'<td class="r">R$ {br(sub)}</td></tr>')
+linhas += (f'<tr class="tot"><td class="a"></td><td class="i">Marcenaria</td>'
+           f'<td class="r">R$ {br(u.TOT_MOV)}</td></tr>')
 
 p4 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">Investimento</div>
@@ -230,11 +249,24 @@ p4 = f"""<div class="page"><div class="pad">
 
   <table class="invU">
     <thead><tr><th></th><th></th><th class="r">Investimento</th></tr></thead>
-    <tbody>{linhas}
-      <tr class="tot"><td class="a"></td><td class="i">Investimento total</td>
-        <td class="r">R$ {br(u.TOT)}</td></tr>
-    </tbody>
+    <tbody>{linhas}</tbody>
   </table>
+
+  <div class="mobU">
+    <div><div class="k">Obra fora de sede</div>
+      <div class="t">Mobilização e logística de obra</div></div>
+    <div class="v">R$ {br(u.PV_MOB)}</div>
+    <div class="d">Equipe própria da Valvic em São Paulo: <b>transporte e
+    carreto de entrega</b>, <b>deslocamento da equipe</b>, <b>hospedagem e
+    alimentação</b> durante toda a permanência e <b>jornada estendida</b> para
+    cumprir o prazo nos dois pavimentos. Linha destacada de propósito — o
+    preço da marcenaria acima não a embute.</div>
+  </div>
+
+  <div class="totU">
+    <span class="l">Investimento total</span>
+    <span class="v">R$ {br(u.TOT)}</span>
+  </div>
 
   <div class="escU">
     <div class="l"><span class="p">40%</span><span class="q">na assinatura</span></div>
@@ -243,24 +275,20 @@ p4 = f"""<div class="page"><div class="pad">
   </div>
 
   <div class="cndU">
-    <div><div class="k">Prazo de entrega</div><div class="d">
-      <b>{PRAZO}</b>, contados da assinatura, da entrada e da medição final
-      nos dois pavimentos.</div></div>
-    <div><div class="k">Escopo Valvic</div><div class="d">
-      Do corte à instalação com <b>equipe própria</b>, incluindo transporte,
-      hospedagem e permanência da equipe em São Paulo.</div></div>
-    <div><div class="k">Validade da proposta</div><div class="d">
+    <div><div class="k">Prazo</div><div class="d">
+      <b>{PRAZO}</b>, da assinatura, da entrada e da medição final.</div></div>
+    <div><div class="k">Execução</div><div class="d">
+      Do corte à instalação, com <b>equipe própria</b> da casa.</div></div>
+    <div><div class="k">Validade</div><div class="d">
       <b>{VALID}</b> a partir desta data.</div></div>
     <div><div class="k">Garantia</div><div class="d">
-      <b>10 anos</b> sobre estrutura e ferragens, em termo da Valvic sobre o
-      conjunto que fornecemos e instalamos.</div></div>
+      <b>10 anos</b> sobre estrutura e ferragens.</div></div>
   </div>
 
-  <div class="notaU"><b>Não inclusos:</b> granito e demais pedras, cubas,
-  torneiras, geladeiras e eletrodomésticos, portas e divisórias de vidro,
-  esquadrias, as estações de trabalho do contact center, piso e luminárias dos
-  halls, comunicação visual, gesso, pintura, revestimentos, elétrica e
-  hidráulica.</div>
+  <div class="notaU"><b>Não inclusos:</b> pedras, cubas, torneiras,
+  eletrodomésticos, vidros e esquadrias, as estações de trabalho do contact
+  center, piso e luminárias dos halls, comunicação visual, gesso, pintura,
+  revestimentos, elétrica e hidráulica.</div>
 
   {foot(4)}
 </div></div>"""
@@ -279,6 +307,8 @@ env = dict(os.environ, NODE_PATH='/opt/node22/lib/node_modules',
 subprocess.run(['node', '/tmp/r.js', str(P/'proposta-united-sp.pdf')],
                check=True, env=env)
 print(f'proposta-united-sp.pdf · {NP} páginas')
-print(f'  Investimento total  R$ {br(u.TOT)}')
-assert abs(sum(u.PV.values()) - u.TOT) < 1
+print(f'  Marcenaria      R$ {br(u.TOT_MOV):>9}')
+print(f'  Mobilização     R$ {br(u.PV_MOB):>9}')
+print(f'  TOTAL           R$ {br(u.TOT):>9}')
+assert abs(sum(u.PV.values()) + u.PV_MOB - u.TOT) < 1
 print('  soma confere com o total')
