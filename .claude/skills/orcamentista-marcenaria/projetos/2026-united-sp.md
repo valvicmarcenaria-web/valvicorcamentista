@@ -341,3 +341,72 @@ A referência exata de modelo sai na cotação; a linha está fechada.
 | **Marcenaria** | **54.597** | **162.310** | **42.9%** |
 | **Mobilização e logística de obra** | **16.320** | **25.000** | **11.2%** |
 | **TOTAL** | **70.917** | **R$ 187.310** | **38.7%** |
+
+---
+
+## 01/10/2026 (4º) — três divisórias, a R$ 13.300 de venda
+
+> *"preciso que vc adicione 3 divisórias, sendo 2 em L e 1 reta com um custo
+> total delas de 13.300"* · *"é no orçamento da united essa alteração"* ·
+> *"mas o valor de venda é o valor informado"*
+
+⚠ Entraram primeiro no Suzi e Guilherme, por erro meu de atribuição, e lidas
+como **custo**. As duas coisas foram corrigidas: são do **United**, e
+R$ 13.300 é **venda**.
+
+### ⚠ Preço fechado, custo ainda não levantado
+
+**Não há prancha das divisórias.** Provavelmente estão nas **folhas 16 a 20**,
+que nunca chegaram. Sem medida, material nem pavimento.
+
+Como o que está fechado é o **preço**, o que falta é o **custo** — e é ele que
+decide se o negócio é bom. Lancei o custo implícito pela MC padrão da casa
+para o item não distorcer a MC do conjunto, e deixei no motor o **teto de
+custo** que esse preço suporta:
+
+| | teto de custo das três |
+|---|--:|
+| segurando a MC padrão de 38% | **R$ 5.122** |
+| no piso da casa, MC 35% | R$ 5.521 |
+| ponto de equilíbrio, MC zero | R$ 10.176 |
+
+⛔ **Quando a prancha chegar, é contra o teto de R$ 5.122 que o
+levantamento tem de bater.** Acima disso, R$ 13.300 deixa de pagar a margem
+da casa; acima de R$ 10.176, deixa de pagar o próprio custo.
+
+Na proposta a linha diz só o que se sabe: *"duas divisórias em L e uma reta,
+no mesmo padrão construtivo e na mesma paleta do restante do fit-out.
+**Medidas, posição e acabamento a confirmar em projeto** antes do corte."*
+
+### A divisória fica FORA da compensação
+
+A mobilização continua fechada em R$ 25.000 e a compensação continua
+segurando o total dos móveis desenhados. **A divisória entra por fora, com
+preço próprio**, porque o preço dela já veio fechado — pô-la dentro da
+bisseção faria o deslocamento de MC dos outros itens mudar para acomodar um
+número que não se move.
+
+### O fechamento
+
+| | |
+|---|--:|
+| 8º andar | 86.430 |
+| 9º andar | 75.840 |
+| **Divisórias** | **13.300** |
+| **Marcenaria** | **175.570** |
+| **Mobilização e logística de obra** | **25.000** |
+| **TOTAL** | **R$ 200.570** · MC 38.6% |
+
+### ⛔ E uma correção no meu próprio relatório
+
+O quadro da compensação estava imprimindo o **valor compensado nos dois
+lados** — mostrava R$ 175.570 de móveis tanto na linha "bloco na MC do
+conjunto" quanto na linha entregue, o que fazia a comparação não comparar
+nada. Eu imprimia `ALVO_MOV` (que já é o alvo compensado) onde devia estar o
+total dos móveis **antes** da compensação. Guardei `TOT_MOV0` e o quadro
+voltou a dizer o que promete:
+
+| | móveis | mobilização | TOTAL |
+|---|--:|--:|--:|
+| bloco na MC do conjunto | 157.530 | 43.040 | 200.570 |
+| **bloco fechado em 25k** ← entregue | **175.570** | **25.000** | **200.570** |

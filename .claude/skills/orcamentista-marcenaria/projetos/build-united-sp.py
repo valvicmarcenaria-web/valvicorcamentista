@@ -166,7 +166,13 @@ p2 = f"""<div class="page"><div class="pad">
       'Distribuídas pelas salas de reunião, lounges e áreas de apoio dos dois '
       'andares, inclusive uma em L.')}
 
-  {it('04', 'Fechamento dos quadros de energia',
+  {it('04', 'Divisórias sob medida',
+      '<b>Duas divisórias em L e uma reta</b>, executadas no mesmo padrão '
+      'construtivo e na mesma paleta do restante do fit-out. '
+      '<b>Medidas, posição e acabamento a confirmar em projeto</b> antes do '
+      'corte.')}
+
+  {it('05', 'Fechamento dos quadros de energia',
       'Fechamento em <b>MDF Guararapes Azul Petróleo</b> no mesmo tom do painel '
       'do hall, com <b>porta e tranca por chave</b>, alinhado às portas '
       'existentes. Nos dois pavimentos.')}
@@ -230,14 +236,16 @@ NOME = {'Cozinha 8°':'Copa', 'Hall 8°':'Hall dos elevadores',
         'Quadros de energia 8°':'Fechamento dos quadros de energia',
         'Cozinha 9°':'Copa', 'Hall 9°':'Hall dos elevadores',
         'Prateleiras 9°':'Prateleiras suspensas',
-        'Quadros de energia 9°':'Fechamento dos quadros de energia'}
+        'Quadros de energia 9°':'Fechamento dos quadros de energia',
+        'Divisórias':'Duas em L e uma reta'}
 
 linhas, _pv = '', None
-for pv in ('8° pavimento', '9° pavimento'):
+for pv in ('8° pavimento', '9° pavimento', 'Divisórias'):
     for am in u.AMBS:
         if u.PAV[am] != pv: continue
-        rot = pv.replace(' pavimento', '° andar').replace('°°', '°') if pv != _pv else ''
-        rot = ('8º andar' if pv.startswith('8') else '9º andar') if pv != _pv else ''
+        rot = ('' if pv == _pv else
+               ('8º andar' if pv.startswith('8') else
+                '9º andar' if pv.startswith('9') else 'Divisórias'))
         _pv = pv
         linhas += (f'<tr><td class="a">{rot}</td><td class="i">{NOME[am]}</td>'
                    f'<td class="r">R$ {br(u.PV[am])}</td></tr>')

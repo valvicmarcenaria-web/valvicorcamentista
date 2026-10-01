@@ -238,6 +238,20 @@ for pav in ('8', '9'):
     f(K, dobr=4*3, fecha=2)
 
 # ══════════════════════════════════════════════════════════════════════════
+# DIVISÓRIAS  ⭐ [Jonathan 01/10] "adicione 3 divisórias, sendo 2 em L e 1
+# reta" · "o valor de venda é o valor informado" → R$ 13.300 de VENDA
+# ⚠ NÃO HÁ PRANCHA DESTAS PEÇAS — provavelmente estão nas folhas 16 a 20,
+#   que não chegaram. Sem medida, material nem pavimento.
+# ⛔ Como o PREÇO é que está fechado, o que falta é o custo. Lancei o custo
+#   IMPLÍCITO pela MC padrão da casa (38%), para o item não distorcer a MC
+#   do conjunto — e deixei no relatório o TETO DE CUSTO que esse preço
+#   suporta. É esse teto que vale conferir quando a prancha chegar.
+# ══════════════════════════════════════════════════════════════════════════
+DIV_K     = 'Divisórias · duas em L e uma reta'
+DIV_VENDA = 13300.0
+DIV_MC    = 0.38
+
+# ══════════════════════════════════════════════════════════════════════════
 # CÁLCULO
 # ══════════════════════════════════════════════════════════════════════════
 def _pack(pcs):
@@ -313,6 +327,11 @@ for mov in MOVS:
     proprio = chapa_mov[mov] + fita_custo[mov] + enc_custo[mov]
     cons    = proprio*0.06
     CDI[mov] = (proprio + cons + TER[mov] + custo_fer(mov))*(1 + M.EMBALAGEM)
+# a divisória entra pelo preço; o custo é o implícito pela MC de 38%
+CDI[DIV_K] = DIV_VENDA*(M.base(parcelas=0, rt=True, vendedor=False) - DIV_MC)
+MOVS = MOVS + [DIV_K]
+area_mov[DIV_K] = 0.0
+for _d in (fita_custo, enc_custo, chapa_mov): _d[DIV_K] = 0.0
 CD_MOV = sum(CDI.values())
 CD     = CD_MOV + LOG_TOT*(1 + M.EMBALAGEM)
 consum = sum((chapa_mov[m] + fita_custo[m] + enc_custo[m])*0.06 for m in MOVS)
@@ -326,18 +345,20 @@ for mov in MOVS:
     b = 0.38
     if 'painel' in mov:                            b = 0.35
     if any(k in mov for k in ('ripado', 'Prateleiras', 'bancada alta')): b = 0.40
-    MC_ITEM[mov] = b
+    MC_ITEM[mov] = DIV_MC if mov == DIV_K else b
 
 AMB   = {mov: mov.split(' · ')[0] for mov in MOVS}
 AMBS  = list(dict.fromkeys(AMB[m] for m in MOVS))
 ITENS = {am: [m for m in MOVS if AMB[m] == am] for am in AMBS}
 AR_AMB = {am: sum(area_mov[m] for m in ITENS[am]) for am in AMBS}
-PAV = {am: ('9° pavimento' if ('9°' in am) else '8° pavimento') for am in AMBS}
+PAV = {am: ('Divisórias' if am == 'Divisórias' else
+              ('9° pavimento' if '9°' in am else '8° pavimento')) for am in AMBS}
 
 CD_AMB  = {am: sum(CDI[m] for m in ITENS[am]) for am in AMBS}
 MC_ALVO = {am: sum(CDI[m]*MC_ITEM[m] for m in ITENS[am])/CD_AMB[am] for am in AMBS}
 PV      = {am: round(CD_AMB[am]/(BASE - MC_ALVO[am])/10)*10 for am in AMBS}
-TOT_MOV = sum(PV.values())
+TOT_MOV0 = sum(PV.values())      # móveis ANTES da compensação, para o quadro
+TOT_MOV  = TOT_MOV0
 MC_REAL = {am: BASE - CD_AMB[am]/PV[am] for am in AMBS}
 assert abs(sum(CD_AMB.values()) - CD_MOV) < 0.01
 
@@ -361,8 +382,10 @@ ALVO_MOV = TOT_ALVO - PV_MOB
 # A compensação desloca a ESCADA INTEIRA de MC por um mesmo delta, para que a
 # diferença entre painelaria (35), armário (38) e item especial (40) continue
 # valendo. Não é um acréscimo linear no preço: é a mesma régua, deslocada.
+CD_AMB_C = {am: v for am, v in CD_AMB.items() if am != 'Divisórias'}
 def _mov_total(d):
-    return sum(round(CD_AMB[am]/(BASE - (MC_ALVO[am] + d))/10)*10 for am in AMBS)
+    return (sum(round(CD_AMB[am]/(BASE - (MC_ALVO[am] + d))/10)*10
+                for am in CD_AMB_C) + DIV_VENDA)
 lo, hi = 0.0, 0.35
 for _ in range(80):
     mid = (lo + hi)/2
@@ -370,7 +393,9 @@ for _ in range(80):
     else: hi = mid
 DELTA_MC = (lo + hi)/2
 
-PV      = {am: round(CD_AMB[am]/(BASE - (MC_ALVO[am] + DELTA_MC))/10)*10 for am in AMBS}
+PV      = {am: (DIV_VENDA if am == 'Divisórias'
+                else round(CD_AMB[am]/(BASE - (MC_ALVO[am] + DELTA_MC))/10)*10)
+           for am in AMBS}
 TOT_MOV = sum(PV.values())
 MC_REAL = {am: BASE - CD_AMB[am]/PV[am] for am in AMBS}
 TOT     = TOT_MOV + PV_MOB
@@ -417,7 +442,7 @@ if __name__ == '__main__':
     print('\n' + '─'*W)
     print(f'{"ITEM":<40}{"m²":>7}{"CUSTO":>12}{"VENDA":>12}{"MC":>8}')
     print('─'*W)
-    for pv in ('8° pavimento', '9° pavimento'):
+    for pv in ('8° pavimento', '9° pavimento', 'Divisórias'):
         print(f'\n  {pv.upper()}')
         for am in AMBS:
             if PAV[am] != pv: continue
@@ -439,7 +464,7 @@ if __name__ == '__main__':
 
     print('\n⭐ A COMPENSAÇÃO — para onde a margem foi')
     print(f'  {"":<34}{"móveis":>12}{"mobilização":>14}{"TOTAL":>12}')
-    print(f'  {"bloco na MC do conjunto":<34}{br(round(ALVO_MOV)):>12}'
+    print(f'  {"bloco na MC do conjunto":<34}{br(TOT_MOV0):>12}'
           f'{br(PV_NEUT):>14}{br(TOT_ALVO):>12}')
     print(f'  {"bloco fechado em 25k ← entregue":<34}{br(TOT_MOV):>12}'
           f'{br(PV_MOB):>14}{br(TOT):>12}')
@@ -451,6 +476,18 @@ if __name__ == '__main__':
     print(f'    É consequência de enxugar o bloco: a margem não sumiu, mudou de linha.')
     print(f'    Se o cliente comparar o preço do MÓVEL com outra marcenaria, ele está')
     print(f'    {(TOT_MOV/ALVO_NEUTRO-1)*100 if False else (TOT_MOV/(TOT_ALVO-PV_NEUT)-1)*100:.1f}% acima da versão em que a logística carregava a própria parte.')
+
+    print('\n⚠ AS DIVISÓRIAS — preço fechado, custo ainda não levantado')
+    print(f'  venda fechada ..................... R$ {br(DIV_VENDA)}')
+    print(f'  custo implícito pela MC de {DIV_MC*100:.0f}% ..... R$ {br(CDI[DIV_K])}')
+    print('  TETO DE CUSTO que esse preço suporta:')
+    for rot, mc in (('segurando a MC padrão de 38%', 0.38),
+                    ('no piso da casa, MC 35%',      0.35),
+                    ('ponto de equilíbrio, MC zero', 0.00)):
+        print(f'    {rot:<34}R$ {br(DIV_VENDA*(BASE-mc)):>8}')
+    print('  ⛔ Não há prancha das divisórias — provavelmente estão nas folhas')
+    print('     16 a 20, que não chegaram. Quando chegarem, é contra o teto de')
+    print(f'     R$ {br(DIV_VENDA*(BASE-0.38))} que o levantamento tem de bater.')
 
     nd = sum(FER[m]['dobr'] for m in MOVS); nc = sum(FER[m]['corr'] for m in MOVS)
     print(f'\nFERRAGEM HETTICH — especificada [Jonathan 01/10]')
