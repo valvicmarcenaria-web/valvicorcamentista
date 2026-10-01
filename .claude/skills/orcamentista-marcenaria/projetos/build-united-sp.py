@@ -145,7 +145,8 @@ p2 = f"""<div class="page"><div class="pad">
   </div>
 
   {it('01', 'Copas',
-      'Bancadas corridas em <b>MDF Guararapes Tauari</b>, com os aéreos em '
+      'Bancadas corridas em <b>MDF Guararapes Tauari</b>, com <b>ferragem '
+      'Hettich</b> — dobradiça Sensys e corrediça oculta Quadro. Os aéreos em '
       '<b>puxador passante</b> e os inferiores em <b>puxador cava</b> — nenhuma '
       'alça aparente. Prateleiras e aéreos em <b>MDF Guararapes Dual Black</b> '
       'desenham a faixa escura sobre a pedra. No oitavo andar entram ainda o '
@@ -194,11 +195,12 @@ p3 = f"""<div class="page"><div class="pad">
       ripado <b>inteiro, sem emenda horizontal atravessando o hall na altura
       dos olhos</b>.</div></div>
 
-    <div><div class="k">Ferragem</div><div class="d">
-      Dobradiça <b>Hettich Sensys</b>, com pistão em gel e regulagem nos três
-      eixos, e corrediça <b>oculta Quadro com Silent System</b>. Em copa
-      corporativa a ferragem abre e fecha o dia inteiro — é ela que decide a
-      vida útil do móvel.</div></div>
+    <div><div class="k">Ferragem especificada · Hettich</div><div class="d">
+      Dobradiça <b>Hettich Sensys</b>, com <b>amortecimento integrado</b> e
+      regulagem nos três eixos. Corrediça <b>Hettich Quadro oculta</b>, de
+      <b>extração total</b>, com <b>Silent System</b>. Em copa corporativa a
+      ferragem abre e fecha o dia inteiro — é ela que decide a vida útil do
+      móvel, e é ela que sustenta a garantia de dez anos.</div></div>
 
     <div><div class="k">Iluminação</div><div class="d">
       <b>LED COB em perfil</b>, embutido na sanca dos painéis dos dois halls,
@@ -282,7 +284,7 @@ p4 = f"""<div class="page"><div class="pad">
     <div><div class="k">Validade</div><div class="d">
       <b>{VALID}</b> a partir desta data.</div></div>
     <div><div class="k">Garantia</div><div class="d">
-      <b>10 anos</b> sobre estrutura e ferragens.</div></div>
+      <b>10 anos</b> sobre estrutura e ferragem <b>Hettich</b>.</div></div>
   </div>
 
   <div class="notaU"><b>Não inclusos:</b> pedras, cubas, torneiras,

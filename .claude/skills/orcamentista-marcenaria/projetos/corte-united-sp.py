@@ -18,10 +18,10 @@ DEFINIÇÕES DO JONATHAN [01/10]
   ⭐ COM RT
 
 FLAGS
-  1 ★ Linha de ferragem não especificada. Adotei Hettich Sensys + corrediça
-    oculta Quadro — é obra corporativa, com RT, e a garantia da casa nessa
-    linha é de 10 anos. Com Novisys + telescópica o custo cai, e a garantia
-    cai para 2 anos (ferragens.md). Ver o comparativo no fim.
+  1 ⭐ FERRAGEM HETTICH, especificada [Jonathan 01/10]: dobradiça SENSYS e
+    corrediça oculta QUADRO com Silent System. Confirma o que já estava
+    precificado — o número não muda. A referência exata de modelo sai na
+    cotação; a linha está fechada.
   2 ★ Iluminação indireta sob os painéis do hall: a prancha manda, mas não
     ficou dito se é nosso fornecimento. Lancei por nossa conta. São dois
     painéis × dois pavimentos.
@@ -62,7 +62,10 @@ for c, n in (('TA','Tauari'),('DB','Dual Black'),('AP','Azul Petról.'),
 
 FITA_BR, FITA_COR = 2.0, 3.0
 
-# ── ferragem ★ FLAG 1 ─────────────────────────────────────────────────────
+# ── ferragem ⭐ HETTICH, especificada pelo Jonathan em 01/10 ──────────────
+#   Dobradiça  Hettich SENSYS — amortecimento integrado, regulagem nos 3 eixos
+#   Corrediça  Hettich QUADRO oculta, extração total, com Silent System
+#   Garantia da casa nessa linha: 10 anos (ferragens.md)
 DOBR_UN  = 35.0    # Hettich Sensys
 CORR_UN  = 120.0   # Corrediça oculta Quadro (Hettich), o par
 SUP_OCU  = 30.0    # ⭐ [Jonathan] suporte oculto de prateleira, de 40 em 40
@@ -344,10 +347,35 @@ assert abs(sum(CD_AMB.values()) - CD_MOV) < 0.01
 #   do conjunto, para que tirar a logística de dentro do móvel seja uma
 #   mudança de APRESENTAÇÃO e não um corte de preço silencioso.
 #   Ver, no fim, a escada do que cada alternativa custaria.
-CD_MOB  = LOG_TOT*(1 + M.EMBALAGEM)
-MC_MOB  = sum(CDI[m]*MC_ITEM[m] for m in MOVS)/CD_MOV      # MC média do job
-PV_MOB  = round(CD_MOB/(BASE - MC_MOB)/10)*10
+CD_MOB   = LOG_TOT*(1 + M.EMBALAGEM)
+MC_NEUT  = sum(CDI[m]*MC_ITEM[m] for m in MOVS)/CD_MOV     # MC média do job
+PV_NEUT  = round(CD_MOB/(BASE - MC_NEUT)/10)*10            # bloco sem compensar
+TOT_ALVO = TOT_MOV + PV_NEUT                               # ⭐ o total a segurar
+
+# ⭐ [Jonathan 01/10] "vamos colocar a mobilização e logística de obra em 25k,
+#   faça as compensações." O bloco fecha em 25.000 e a diferença volta para o
+#   móvel — o TOTAL não se mexe. O que se mexe é onde a margem está.
+PV_MOB   = 25000.0
+ALVO_MOV = TOT_ALVO - PV_MOB
+
+# A compensação desloca a ESCADA INTEIRA de MC por um mesmo delta, para que a
+# diferença entre painelaria (35), armário (38) e item especial (40) continue
+# valendo. Não é um acréscimo linear no preço: é a mesma régua, deslocada.
+def _mov_total(d):
+    return sum(round(CD_AMB[am]/(BASE - (MC_ALVO[am] + d))/10)*10 for am in AMBS)
+lo, hi = 0.0, 0.35
+for _ in range(80):
+    mid = (lo + hi)/2
+    if _mov_total(mid) < ALVO_MOV: lo = mid
+    else: hi = mid
+DELTA_MC = (lo + hi)/2
+
+PV      = {am: round(CD_AMB[am]/(BASE - (MC_ALVO[am] + DELTA_MC))/10)*10 for am in AMBS}
+TOT_MOV = sum(PV.values())
+MC_REAL = {am: BASE - CD_AMB[am]/PV[am] for am in AMBS}
 TOT     = TOT_MOV + PV_MOB
+MC_MOB  = BASE - CD_MOB/PV_MOB
+MC_MOVEIS = BASE - CD_MOV/TOT_MOV
 
 # ══════════════════════════════════════════════════════════════════════════
 if __name__ == '__main__':
@@ -409,22 +437,30 @@ if __name__ == '__main__':
           f'{(BASE-CD/TOT)*100:>7.1f}%')
     print('─'*W)
 
-    print('\n⚠ A MOBILIZAÇÃO PRECISA LEVAR MARGEM — separar não é descontar')
-    print(f'  {"como a mobilização é precificada":<44}{"bloco":>10}{"TOTAL":>12}{"Δ":>12}')
-    for rot, mc in (('a custo seco, sem encargo nenhum', None),
-                    ('só com os encargos, MC zero',      0.0),
-                    ('MC 20%',                           0.20),
-                    ('MC 30%',                           0.30),
-                    (f'MC do conjunto ({MC_MOB*100:.1f}%)  ← entregue', MC_MOB)):
-        v = LOG_TOT if mc is None else round(CD_MOB/(BASE-mc)/10)*10
-        print(f'  {rot:<44}{br(v):>10}{br(TOT_MOV+v):>12}'
-              f'{br(TOT_MOV+v-TOT):>12}')
-    print('  Os encargos caem sobre a mobilização igual: a NF, o RT e o rateio')
-    print('  de produção não perguntam se a linha é móvel ou caminhão.')
+    print('\n⭐ A COMPENSAÇÃO — para onde a margem foi')
+    print(f'  {"":<34}{"móveis":>12}{"mobilização":>14}{"TOTAL":>12}')
+    print(f'  {"bloco na MC do conjunto":<34}{br(round(ALVO_MOV)):>12}'
+          f'{br(PV_NEUT):>14}{br(TOT_ALVO):>12}')
+    print(f'  {"bloco fechado em 25k ← entregue":<34}{br(TOT_MOV):>12}'
+          f'{br(PV_MOB):>14}{br(TOT):>12}')
+    print(f'  {"MC de cada parte, agora":<34}{MC_MOVEIS*100:>11.1f}%'
+          f'{MC_MOB*100:>13.1f}%{(BASE-CD/TOT)*100:>11.1f}%')
+    print(f'\n  A escada de MC por complexidade subiu {DELTA_MC*100:.1f} pontos inteira —')
+    print(f'  painelaria, armário e item especial mantêm a distância entre si.')
+    print(f'  ⚠ O móvel passa a ler {MC_MOVEIS*100:.1f}% de MC, acima da faixa 35–40 da casa.')
+    print(f'    É consequência de enxugar o bloco: a margem não sumiu, mudou de linha.')
+    print(f'    Se o cliente comparar o preço do MÓVEL com outra marcenaria, ele está')
+    print(f'    {(TOT_MOV/ALVO_NEUTRO-1)*100 if False else (TOT_MOV/(TOT_ALVO-PV_NEUT)-1)*100:.1f}% acima da versão em que a logística carregava a própria parte.')
 
-    print('\n★ FLAG 1 — e se a ferragem fosse a linha de entrada?')
     nd = sum(FER[m]['dobr'] for m in MOVS); nc = sum(FER[m]['corr'] for m in MOVS)
-    eco = nd*(35-10) + nc*(120-40)
-    print(f'  {nd:.0f} dobradiças e {nc:.0f} pares de corrediça.')
-    print(f'  Novisys + telescópica custaria R$ {br(eco)} a menos de custo direto,')
-    print(f'  ≈ R$ {br(eco/(BASE-0.38))} de venda — e a garantia cai de 10 para 2 anos.')
+    print(f'\nFERRAGEM HETTICH — especificada [Jonathan 01/10]')
+    print(f'  Dobradiça Hettich Sensys ....... {nd:>3.0f} un  × R$ {DOBR_UN:>6.2f}'
+          f'  = R$ {br(nd*DOBR_UN):>7}')
+    print(f'  Corrediça oculta Quadro ........ {nc:>3.0f} par × R$ {CORR_UN:>6.2f}'
+          f'  = R$ {br(nc*CORR_UN):>7}')
+    nso = sum(FER[m]['supocu'] for m in MOVS)
+    print(f'  Suporte oculto de prateleira ... {nso:>3.0f} un  × R$ {SUP_OCU:>6.2f}'
+          f'  = R$ {br(nso*SUP_OCU):>7}')
+    print(f'  Fechadura com chave ............ {sum(FER[m]["fecha"] for m in MOVS):>3.0f} un  '
+          f'× R$ {FECHA_UN:>6.2f}  = R$ {br(sum(FER[m]["fecha"] for m in MOVS)*FECHA_UN):>7}')
+    print(f'  Garantia da casa nessa linha: 10 anos.')

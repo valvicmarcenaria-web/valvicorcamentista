@@ -263,3 +263,81 @@ inclusos" e o de transbordo acusou **rodapé perdido** — a checagem criada
 ontem, no Marcelo Tolentino, ganhou o dia na primeira proposta seguinte.
 Resolvido tirando os subtotais por andar (o agrupamento já se lê pela
 etiqueta da esquerda) e pondo as condições em quatro colunas.
+
+---
+
+## 01/10/2026 (3º) — mobilização em 25k e ferragem Hettich fechada
+
+> *"vamos colocar a mobilização e logística de obra em 25k, faça as
+> compensações. especifique ferragens Hettich."*
+
+### A compensação
+
+O bloco fecha em **R$ 25.000** e os R$ 18.100 de diferença voltam para o
+móvel. **O total não se mexe** — o que se mexe é onde a margem está.
+
+| | móveis | mobilização | TOTAL |
+|---|--:|--:|--:|
+| bloco na MC do conjunto | 162.330 | 43.100 | 187.330 |
+| **bloco fechado em 25k** ← entregue | **162.310** | **25.000** | **187.310** |
+| MC de cada parte, agora | **42.9%** | **11.2%** | **38.7%** |
+
+A compensação **desloca a escada inteira de MC por um mesmo delta**
+(**+4.2 pontos**), resolvido por bisseção, em vez de somar um
+acréscimo linear no preço. Assim painelaria (35), armário (38) e item
+especial (40) mantêm a distância entre si — é a mesma régua, deslocada:
+
+```python
+def _mov_total(d):
+    return sum(round(CD_AMB[am]/(BASE - (MC_ALVO[am] + d))/10)*10 for am in AMBS)
+lo, hi = 0.0, 0.35
+for _ in range(80):
+    mid = (lo+hi)/2
+    if _mov_total(mid) < ALVO_MOV: lo = mid
+    else: hi = mid
+```
+
+### ⚠ O que a compensação custa, e onde ela aparece
+
+O móvel passa a ler **42.9% de MC — acima da faixa 35–40 da casa**.
+A margem não sumiu; mudou de linha. A consequência é de exposição comercial,
+não de saúde financeira:
+
+> **Se o cliente comparar o preço do MÓVEL com outra marcenaria, ele está
+> 12,5% acima da versão em que a logística carregava a própria parte.**
+
+E a mobilização passa a rodar a **11.2%**, bem abaixo do piso — ou seja,
+a ida a São Paulo quase não paga margem, e quem paga é o armário. É escolha
+comercial legítima (o bloco de logística fica num valor que o cliente aceita
+sem discutir), mas precisa estar registrada como escolha.
+
+### Ferragem Hettich, especificada
+
+| | | |
+|---|--:|--:|
+| Dobradiça **Hettich Sensys** — amortecimento integrado, regulagem nos 3 eixos | 88 un | R$ 3.080 |
+| Corrediça **Hettich Quadro** oculta — extração total, Silent System | 12 par | R$ 1.440 |
+| Suporte oculto de prateleira | 74 un | R$ 2.220 |
+| Fechadura com chave | 4 un | R$ 180 |
+
+Confirma o que já estava precificado desde a primeira rodada — **o número não
+muda por causa da ferragem**. O que muda é que deixa de ser adoção minha e
+passa a ser especificação, e a proposta agora **nomeia a Hettich** no escopo
+das copas, na página de execução e na linha de garantia.
+A referência exata de modelo sai na cotação; a linha está fechada.
+
+### O fechamento
+
+| item | custo | **venda** | MC |
+|---|--:|--:|--:|
+| Cozinha 8° | 10.434 | **30.710** | 42.5% |
+| Hall 8° | 13.263 | **39.610** | 43.0% |
+| Prateleiras 8° | 2.955 | **9.150** | 44.2% |
+| Quadros de energia 8° | 2.395 | **6.980** | 42.2% |
+| Cozinha 9° | 7.542 | **21.990** | 42.2% |
+| Hall 9° | 13.263 | **39.610** | 43.0% |
+| Prateleiras 9° | 2.350 | **7.280** | 44.2% |
+| Quadros de energia 9° | 2.395 | **6.980** | 42.2% |
+| **Marcenaria** | **54.597** | **162.310** | **42.9%** |
+| **Mobilização e logística de obra** | **16.320** | **25.000** | **11.2%** |
+| **TOTAL** | **70.917** | **R$ 187.310** | **38.7%** |
