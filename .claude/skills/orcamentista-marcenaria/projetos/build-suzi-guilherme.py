@@ -61,11 +61,27 @@ table.invS td.a{font-size:6.9pt;letter-spacing:.14em;text-transform:uppercase;
 table.invS td.i{font-weight:600;}
 table.invS tr.sub td{border-top:1px solid var(--line);color:var(--soft);
   font-size:8.2pt;padding:1.5mm 0;}
-table.invS tr.tot td{border-top:1.6px solid var(--ink);padding-top:2.6mm;
-  font-family:'Cormorant Garamond',Georgia,serif;font-size:21pt;font-weight:700;}
+table.invS tr.tot td{border-top:1.6px solid var(--ink);padding-top:2.4mm;
+  font-family:'Cormorant Garamond',Georgia,serif;font-size:16pt;font-weight:700;}
 table.invS tr.tot td.a,table.invS tr.tot td.i{font-family:inherit;font-size:9.6pt;}
 
-.escS{margin-top:5mm;border:1px solid var(--line);border-radius:5px;
+.otmS{margin-top:4mm;border:1.5px solid var(--gold);border-radius:5px;
+  background:var(--gold-pale);padding:3.8mm 5.2mm;display:grid;
+  grid-template-columns:1fr auto;gap:2mm 7mm;align-items:start;flex:none;}
+.otmS .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.otmS .t{font-size:11pt;font-weight:700;margin-top:1mm;}
+.otmS .d{color:var(--soft);font-size:8.3pt;line-height:1.56;margin-top:1.8mm;
+  grid-column:1/2;grid-row:2/3;}
+.otmS .d b{color:var(--ink);font-weight:600;}
+.otmS .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:23pt;
+  font-weight:700;white-space:nowrap;grid-column:2/3;grid-row:1/3;
+  align-self:center;text-align:right;line-height:1;}
+.otmS .v small{display:block;font-family:'DM Sans',sans-serif;font-size:7.4pt;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--gold);
+  font-weight:700;margin-bottom:1.4mm;}
+
+.escS{margin-top:4mm;border:1px solid var(--line);border-radius:5px;
   overflow:hidden;flex:none;}
 .escS .l{display:flex;justify-content:space-between;align-items:baseline;
   padding:2.3mm 5mm;border-bottom:1px solid var(--hair);font-size:9pt;}
@@ -141,9 +157,12 @@ p2 = f"""<div class="page"><div class="pad">
       'Pés e prateleira na mesma lâmina de nogueira.')}
 
   {it('04', 'Tampo novo da mesa de jantar',
-      '<b>Tampo novo</b>, em <b>lâmina natural</b>, com a aresta encorpada '
-      'para ler cheia e <b>acabamento em meia-esquadria</b>. A estrutura em '
-      'madeira pintada de preto é existente e <b>permanece</b>.')}
+      '<b>Tampo novo em lâmina natural</b>, acabado em <b>verniz PU de alta '
+      'resistência</b>, com a aresta encorpada para ler cheia e '
+      '<b>acabamento em meia-esquadria</b>. Construído em face laminada sobre '
+      '<b>moldura estruturada</b> — fica leve, não sobrecarrega a estrutura '
+      'existente e não barriga com o vão. A estrutura em madeira pintada de '
+      'preto é existente e <b>permanece</b>.')}
 
   <div class="phS" style="margin-top:auto;height:50mm;">
     <img class="ct" src="{img('mesa-cafe')}" alt="">
@@ -175,6 +194,15 @@ p3 = f"""<div class="page"><div class="pad">
       'preparada para as tomadas de mesa.')}
 
   <div class="exS">
+    <div><div class="k">Ferragem especificada · Hettich</div><div class="d">
+      Dobradiça <b>Hettich Sensys</b>, com <b>amortecimento integrado</b> e
+      regulagem nos três eixos, e <b>Hettich Push to open Silent</b> no
+      armário de abertura por toque. É a ferragem que sustenta a garantia de
+      dez anos.</div></div>
+    <div><div class="k">Acabamento das peças em lâmina</div><div class="d">
+      <b>Verniz PU de alta resistência</b> em três demãos sobre a lâmina
+      natural, nas duas mesas da sala — superfície que aguenta copo, calor e
+      limpeza sem marcar.</div></div>
     <div><div class="k">Dois acabamentos, de propósito</div><div class="d">
       O bar e o escritório são em <b>MDF melamínico</b> — superfície fechada,
       estável e de manutenção simples, que é o que um bar e uma mesa de
@@ -211,13 +239,23 @@ p4 = f"""<div class="page"><div class="pad">
   <table class="invS">
     <thead><tr><th></th><th></th><th class="r">Investimento</th></tr></thead>
     <tbody>{linhas}
-      <tr class="tot"><td class="a"></td><td class="i">Investimento total</td>
+      <tr class="tot"><td class="a"></td><td class="i">Investimento item a item</td>
         <td class="r">R$ {br(sg.TOT)}</td></tr>
     </tbody>
   </table>
 
+  <div class="otmS">
+    <div><div class="k">Cenário de otimização</div>
+      <div class="t">Fechamento completo</div></div>
+    <div class="v"><small>−{int(sg.DESC_FECH*100)}%</small>R$ {br(sg.TOT_FECH)}</div>
+    <div class="d">Os seis itens fechados <b>no mesmo contrato</b>: uma só
+    compra de chapa, um só plano de corte, uma só montagem e uma só visita de
+    medição nos dois ambientes. O ganho de produção volta para o cliente como
+    <b>{int(sg.DESC_FECH*100)}% de desconto</b> sobre o investimento.</div>
+  </div>
+
   <div class="escS">
-    <div class="l"><span class="p">40%</span><span class="q">na assinatura</span></div>
+    <div class="l"><span class="p">40%</span><span class="q">na assinatura — sobre o valor de fechamento</span></div>
     <div class="l"><span class="p">30%</span><span class="q">no início das montagens</span></div>
     <div class="l"><span class="p">30%</span><span class="q">na entrega final</span></div>
   </div>
@@ -258,6 +296,7 @@ env = dict(os.environ, NODE_PATH='/opt/node22/lib/node_modules',
 subprocess.run(['node', '/tmp/r.js', str(P/'proposta-suzi-guilherme.pdf')],
                check=True, env=env)
 print(f'proposta-suzi-guilherme.pdf · {NP} páginas')
-print(f'  Investimento total  R$ {br(sg.TOT)}')
+print(f'  item a item          R$ {br(sg.TOT):>9}')
+print(f'  fechamento completo  R$ {br(sg.TOT_FECH):>9}  (−{int(sg.DESC_FECH*100)}%)')
 assert abs(sum(sg.PV_IT.values()) - sg.TOT) < 1
 print('  soma confere com o total')

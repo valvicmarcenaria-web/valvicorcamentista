@@ -17,8 +17,9 @@ FLAGS
   1 ★ RT. Não foi dito. O projeto veio do detalhamento de uma arquiteta, que
     é o caso em que a casa trabalha COM RT — lancei assim. Sem RT o preço cai
     ~13%; está no comparativo no fim.
-  2 ★ Linha de ferragem não especificada. Adotei Hettich Sensys e pulsador
-    Blum no fecho-toque, coerente com residência de alto padrão.
+  2 ⭐ FERRAGEM HETTICH, especificada [Jonathan 01/10]: dobradiça SENSYS e
+    fecho-toque PUSH TO OPEN SILENT. A dobradiça do armário de fecho-toque
+    tem de ser a versão SEM MOLA — mola e pulsador mecânico brigam.
   3 ★ Dobradiça para porta de vidro não está na base. Lancei R$ 45/un.
     As portas vêm do vidraceiro a R$ 1.500 com o puxador; a dobradiça monta
     na nossa caixa, então é nossa. Confirmar se já vem com a porta.
@@ -41,27 +42,36 @@ CH_AREA = 2.75*1.85
 BR6, BR15, BR18 = 190.0, 260.0, 330.0          # branco TX, interno
 COR6, COR15, COR18 = 300.0, 500.0, 600.0       # melamínico de cor/amadeirado
 CRU15, CRU18 = 230.0, 300.0                    # MDF cru, para receber lâmina
-PRECO = {'BR6':BR6, 'BR15':BR15, 'BR18':BR18, 'CR15':CRU15, 'CR18':CRU18}
+CRU6 = 180.0
+PRECO = {'BR6':BR6, 'BR15':BR15, 'BR18':BR18,
+         'CR6':CRU6, 'CR15':CRU15, 'CR18':CRU18}
 # AM melamínico amadeirado (bar) · NE Nero Guararapes · CP Cinza Perfeito
 for c in ('AM','NE','CP'):
     PRECO[c+'6'], PRECO[c+'15'], PRECO[c+'18'] = COR6, COR15, COR18
 NOME = {'BR6':'branco 6','BR15':'branco 15','BR18':'branco 18',
-        'CR15':'MDF cru 15','CR18':'MDF cru 18'}
+        'CR6':'MDF cru 6','CR15':'MDF cru 15','CR18':'MDF cru 18'}
 for c, n in (('AM','Amadeirado'),('NE','Nero'),('CP','Cinza Perf.')):
     for e in ('6','15','18'): NOME[c+e] = f'{n} {e}'
 FITA_BR, FITA_COR = 2.0, 3.0
 
-# ── ferragem ★ FLAG 2 e 3 ─────────────────────────────────────────────────
+# ── ferragem ⭐ HETTICH, especificada pelo Jonathan em 01/10 ──────────────
+#   Dobradiça  Hettich SENSYS — amortecimento integrado, regulagem nos 3 eixos
+#   Fecho-toque Hettich PUSH TO OPEN SILENT (no lugar do pulsador Blum, para
+#              o conjunto ficar todo Hettich)
+#   ⚠ push-to-open mecânico exige dobradiça SEM MOLA — a mola briga com o
+#     pulsador. A Sensys tem a versão sem mola; é ela que entra na compra.
 DOBR_UN   = 35.0    # Hettich Sensys
 DOBR_VID  = 45.0    # ★ dobradiça para porta de vidro — não está na base
-TIPON_UN  = 100.0   # Pulsador Blum (fecho-toque)
+TIPON_UN  = 100.0   # Hettich Push to open Silent
 SUP_PRAT  = 1.50
 
 # ── terceiros e serviços ──────────────────────────────────────────────────
 PORTA_VIDRO = 1500.0   # ⭐ [Jonathan] porta em vidro espelhado bronze,
                        #   COM o puxador em perfil metálico bronze incluso
 VIDRO_ESCR  = 550.0    # ★ vidro leitoso branco de escrever, por m² — FLAG 4
-LAMINA_M2   = 320.0    # lâmina natural aplicada: lâmina, cola, prensa, verniz
+LAMINA_M2   = 220.0    # lâmina natural aplicada: lâmina, cola, prensa, lixa
+VERNIZ_M2   = 120.0    # ⭐ [Jonathan] VERNIZ PU DE ALTA RESISTÊNCIA, 3 demãos
+                       #   — linha própria para a especificação ficar explícita
 MARCHET_M2  = 1800.0   # ★ marchetaria em xadrez de 5 × 5, por m² — FLAG 5
 LED_M       = 150.0    # LED COB fita + perfil
 ALUM_M      = 85.0     # perfil de alumínio cinza 2 × 1
@@ -117,12 +127,18 @@ lam(K, 0.93)                              # pés, prateleira, topos e sotopo
 t(K, 1.10*0.55*MARCHET_M2)                # ⭐ marchetaria do tampo
 
 K = 'Sala · tampo novo da mesa de jantar'
-# 220 × 110, aresta aparente de 5, em lâmina natural.
+# 220 × 110, aresta aparente de 5, em LÂMINA NATURAL com verniz PU.
 # ⛔ a estrutura em madeira pintada de preto é existente e fica
-a(K,'CR18','Tampo · face',                220, 110, 2)
+# ⚠ CORREÇÃO [01/10]: a primeira versão lançou DUAS chapas de 18 maciças para
+#   dar os 5 cm de aresta. Não é assim que se faz e nem é melhor: tampo de
+#   220 × 110 maciço em MDF pesa ~55 kg e sobrecarrega a estrutura existente.
+#   O certo é face de 18, moldura de sarrafo e fundo de 6 — mais leve, mais
+#   estável e mais barato.
+a(K,'CR18','Tampo · face',                220, 110, 1)
+a(K,'CR6' ,'Tampo · fundo',               220, 110, 1)
 a(K,'CR18','Aresta · testeira',           660,  5, 1)
 ENCA[K] += 2.42
-lam(K, 2.42*2 + 0.33)                     # duas faces e a aresta
+lam(K, 2.42 + 0.33)                       # face superior e a aresta
 
 # ══════════════════════════════════════════════════════════════════════════
 # ESCRITÓRIO
@@ -202,7 +218,7 @@ _com = list(dict.fromkeys(x[0] for x in p))
 MOVS = _com + [k for k in dict.fromkeys(list(FER)+list(TER)) if k not in _com]
 fita_custo = {mov: fita_mov[mov]*1.10*((FITA_BR+FITA_COR)/2) for mov in MOVS}
 enc_custo  = {mov: ENCA[mov]*ENCORP_M2 for mov in MOVS}
-lam_custo  = {mov: LAM[mov]*LAMINA_M2  for mov in MOVS}
+lam_custo  = {mov: LAM[mov]*(LAMINA_M2 + VERNIZ_M2) for mov in MOVS}
 
 # logística — referencias/logistica.md, praça regional
 CARRETO, DIARIA, VISITA = 150.0, 260.0, 275.0
@@ -237,10 +253,21 @@ for mov in MOVS:
 ITENS   = {am: [m for m in MOVS if AMB[m] == am] for am in AMBS}
 AR_AMB  = {am: sum(area_mov[m] for m in ITENS[am]) for am in AMBS}
 CD_AMB  = {am: sum(CDI[m] for m in ITENS[am]) for am in AMBS}
-PV_IT   = {m: round(CDI[m]/(BASE - MC_ITEM[m])/10)*10 for m in MOVS}
+
+# ⭐ [Jonathan 01/10] "especifique o tampo novo em lâmina natural a um preço
+#   de 3.600". Preço FECHADO do item — ver o alerta no fim: nesse valor ele
+#   roda abaixo do custo.
+PRECO_FIXO = {'Sala · tampo novo da mesa de jantar': 3600.0}
+PV_IT   = {m: PRECO_FIXO.get(m, round(CDI[m]/(BASE - MC_ITEM[m])/10)*10)
+           for m in MOVS}
 PV      = {am: sum(PV_IT[m] for m in ITENS[am]) for am in AMBS}
 TOT     = sum(PV.values())
 MC_REAL = {m: BASE - CDI[m]/PV_IT[m] for m in MOVS}
+
+# ⭐ CENÁRIO DE OTIMIZAÇÃO — 7% para fechamento completo [Jonathan 01/10]
+DESC_FECH = 0.07
+TOT_FECH  = round(TOT*(1 - DESC_FECH)/10)*10
+MC_FECH   = BASE - CD/TOT_FECH
 
 # ══════════════════════════════════════════════════════════════════════════
 if __name__ == '__main__':
@@ -292,6 +319,32 @@ if __name__ == '__main__':
     print(f'  {"TOTAL":<42}{ar_tot:>7.1f}{br(CD):>11}{br(TOT):>11}'
           f'{(BASE-CD/TOT)*100:>7.1f}%')
     print('─'*W)
+
+    mt = 'Sala · tampo novo da mesa de jantar'
+    liq = PV_IT[mt]*BASE
+    print('\n⚠ O TAMPO DA MESA DE JANTAR A R$ 3.600 FICA ABAIXO DO PISO DA CASA')
+    print('  (e NÃO abaixo do custo — a correção da construção, abaixo, mudou isso)')
+    print(f'  custo direto do item .............. R$ {br(CDI[mt])}')
+    print(f'  preço fechado ..................... R$ {br(PV_IT[mt])}')
+    print(f'  líquido depois dos encargos ....... R$ {br(liq)}'
+          f'   (BASE {BASE*100:.2f}%)')
+    print(f'  sobra ............................. R$ {br(liq - CDI[mt])}'
+          f'   → MC {MC_REAL[mt]*100:+.1f}%')
+    print(f'  ponto de equilíbrio (MC zero) ..... R$ {br(round(CDI[mt]/BASE/10)*10)}')
+    print(f'  no piso da casa (MC 35%) .......... R$ {br(round(CDI[mt]/(BASE-0.35)/10)*10)}')
+    print('  ⛔ A primeira versão deste motor dava R$ 3.011 de custo e o preço')
+    print('     fechado teria ficado NEGATIVO. O erro era meu: eu tinha lançado')
+    print('     duas chapas de 18 maciças para dar os 5 cm de aresta. Tampo de')
+    print('     220 × 110 maciço pesa ~55 kg e sobrecarrega a estrutura que fica.')
+    print('     Face de 18 + moldura de sarrafo + fundo de 6 é mais leve, mais')
+    print(f'     estável e R$ {br(3011-CDI[mt])} mais barato.')
+
+    print('\n⭐ CENÁRIO DE OTIMIZAÇÃO — 7% para fechamento completo')
+    print(f'  {"item a item":<34}R$ {br(TOT):>9}   MC {(BASE-CD/TOT)*100:>5.1f}%')
+    print(f'  {"fechamento completo (−7%)":<34}R$ {br(TOT_FECH):>9}   MC {MC_FECH*100:>5.1f}%')
+    print(f'  {"desconto concedido":<34}R$ {br(TOT-TOT_FECH):>9}')
+    print(f'  O desconto custa {(BASE-CD/TOT)*100 - MC_FECH*100:.1f} pontos de MC — todo ele sai da margem,')
+    print('  porque o custo direto não muda por fechar o pacote inteiro.')
 
     print('\n★ FLAG 1 — e se não houvesse RT?')
     b2 = M.base(parcelas=0, rt=False, vendedor=False)

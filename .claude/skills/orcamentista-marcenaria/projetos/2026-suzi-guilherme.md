@@ -162,3 +162,106 @@ Três passes de auditoria limpos.
    manda conferir medidas no local. **Vale dobrado aqui.**
 7. ⚠ Sala em rev. 01 de 30/04 e escritório em rev. 01 de 11/06 — seis
    semanas de diferença. Conferir se a sala não ganhou revisão depois.
+
+---
+
+## 01/10/2026 (2º) — especificações e o cenário de fechamento
+
+> *"especifique o tampo novo em lâmina natural a um preço de 3.600 ·
+> especifique acabamento em verniz PU de alta resistência · especifique
+> ferragens Hettich · aplique um cenário de otimização de 7% de desconto
+> para fechamento completo."*
+
+### ⛔ A correção que o preço fechado revelou
+
+Pôr R$ 3.600 no tampo da mesa de jantar me obrigou a olhar o custo do item —
+e achei um **erro meu na construção**.
+
+Eu tinha lançado **duas chapas de 18 maciças** para dar os 5 cm de aresta
+aparente. Não é assim que se faz e **nem é melhor**: um tampo de 220 × 110
+maciço em MDF pesa cerca de **55 kg** e sobrecarrega justamente a estrutura
+em madeira pintada que o projeto manda **manter**.
+
+O certo é **face de 18 + moldura de sarrafo + fundo de 6**: mais leve, mais
+estável contra empeno, e mais barato.
+
+| | custo direto do tampo |
+|---|--:|
+| como eu tinha lançado (duas chapas maciças) | 3.011 |
+| **construção correta** | **2.104** |
+
+⚠ **Sem essa correção, R$ 3.600 teria ficado abaixo do custo.** O líquido de
+R$ 3.600 depois dos encargos é R$ 2.755 — menos que os R$ 3.011 da versão
+errada. Eu teria reportado prejuízo onde o problema era o meu modelo.
+
+### O tampo a R$ 3.600, agora
+
+| | |
+|---|--:|
+| custo direto | 2.104 |
+| preço fechado | **3.600** |
+| líquido depois dos encargos (BASE 76.52%) | 2.755 |
+| sobra | 651 → **MC 18.1%** |
+| ponto de equilíbrio (MC zero) | 2.750 |
+| no piso da casa (MC 35%) | 5.070 |
+
+**Roda, mas abaixo do piso de 35% da casa.** É decisão de preço registrada,
+não consequência técnica.
+
+### Verniz PU vira linha própria
+
+`LAMINA_M2` foi partido em dois para a especificação ficar auditável:
+**lâmina, cola, prensa e lixa a R$ 220/m²** e **verniz PU de alta resistência,
+três demãos, a R$ 120/m²**. Antes os R$ 320 eram um número só e o verniz
+estava escondido dentro dele — agora ele tem nome, preço e aparece na
+proposta.
+
+### Ferragem Hettich
+
+Dobradiça **Hettich Sensys** e, no armário de abertura por toque, **Hettich
+Push to open Silent** — troquei o pulsador Blum para o conjunto ficar todo
+Hettich, como pedido.
+
+⚠ **A dobradiça do armário de fecho-toque tem de ser a versão SEM MOLA.**
+Mola e pulsador mecânico trabalham um contra o outro e a porta reabre
+sozinha. Mesma condição de compra que ficou registrada no Marcelo Tolentino.
+
+### O fechamento
+
+| item | custo | **venda** | MC |
+|---|--:|--:|--:|
+| cristaleira envidraçada | 10.518 | **28.810** | 40.0% |
+| bar com nichos de vinho | 3.960 | **10.850** | 40.0% |
+| mesa do café | 1.880 | **5.150** | 40.0% |
+| tampo novo da mesa de jantar | 2.104 | **3.600** | 18.1% |
+| painel e prateleiras | 6.142 | **14.790** | 35.0% |
+| mesa de trabalho | 2.355 | **6.120** | 38.0% |
+| **Investimento item a item** | **26.959** | **69.320** | **37.6%** |
+| **Fechamento completo (−7%)** | **26.959** | **64.470** | **34.7%** |
+
+### ⚠ O que os 7% custam
+
+| | |
+|---|--:|
+| desconto concedido | **R$ 4.850** |
+| queda de MC | **2.9 pontos** |
+| MC depois do desconto | **34.7%** |
+
+**Todo o desconto sai da margem** — o custo direto não muda por fechar o
+pacote inteiro. E a MC resultante de **34.7%** fica **0.3 ponto abaixo do
+piso de 35%** da casa.
+
+Na proposta o desconto está justificado pelo ganho real de produção — uma só
+compra de chapa, um só plano de corte, uma só montagem, uma só visita de
+medição nos dois ambientes. Isso é verdade e vale alguma coisa; o que não é
+verdade é que valha exatamente 7%. **O número é comercial, e a conta de
+quanto ele custa está aqui.**
+
+### Resumo da rodada
+
+| | |
+|---|--:|
+| **Investimento item a item** | **R$ 69.320** |
+| **Fechamento completo (−7%)** | **R$ 64.470** |
+
+Três passes de auditoria limpos.
