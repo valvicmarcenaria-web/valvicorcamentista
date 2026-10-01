@@ -1,0 +1,341 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"><style>
+:root{
+  --ink:#1A1714; --soft:#5C564C; --mut:#918A7C; --line:#E3DDD1; --hair:#F0EBE1;
+  --paper:#fff; --cream:#FAF7F1; --sand:#F1EBDF;
+  --gold:#9C7A3C; --gold-lt:#C6A567; --gold-pale:#F5EEDF; --deep:#241F1B;
+}
+@page{size:A4;margin:0;}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;
+     color:var(--ink);font-size:9.6pt;line-height:1.62;}
+.serif{font-family:'Cormorant Garamond','Liberation Serif',Georgia,serif;}
+.page{position:relative;width:210mm;height:297mm;overflow:hidden;
+      background:var(--paper);page-break-after:always;}
+.page:last-of-type{page-break-after:avoid;}
+.pad{padding:17mm 19mm 14mm;height:100%;display:flex;flex-direction:column;}
+h1,h2,h3{margin:0;font-weight:600;}
+p{margin:0;}
+.eyebrow{font-size:7.2pt;letter-spacing:.30em;text-transform:uppercase;
+         color:var(--gold);font-weight:700;}
+.rule{height:1.5px;width:40px;background:var(--gold);margin:7px 0 13px;}
+.h-sec{font-family:'Cormorant Garamond',Georgia,serif;font-size:23pt;
+       line-height:1.12;font-weight:600;letter-spacing:-.01em;}
+.lead{color:var(--soft);font-size:9.9pt;max-width:150mm;}
+.foot{margin-top:auto;padding-top:8mm;border-top:1px solid var(--hair);
+      display:flex;justify-content:space-between;font-size:7.2pt;
+      letter-spacing:.16em;text-transform:uppercase;color:var(--mut);}
+
+/* capa */
+.cover{background:var(--deep);color:#F6F1E7;}
+.cover .pad{padding:24mm 19mm 16mm;}
+.cover .eyebrow{color:var(--gold-lt);}
+.cover .rule{background:var(--gold-lt);width:56px;height:2px;}
+.cv-t{font-family:'Cormorant Garamond',Georgia,serif;font-size:38pt;
+      line-height:1.05;font-weight:600;letter-spacing:-.015em;margin-top:3mm;max-width:150mm;}
+.cv-nome{font-family:'Cormorant Garamond',Georgia,serif;font-size:74pt;
+         line-height:.98;font-weight:600;letter-spacing:-.025em;margin-top:4mm;
+         color:#F7F2E8;}
+.cv-s{font-size:13pt;color:#CFC6B4;margin-top:7mm;font-weight:300;
+      line-height:1.45;}
+.cv-meta{margin-top:13mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6mm;
+         border-top:1px solid rgba(255,255,255,.16);padding-top:7mm;}
+.cv-meta .k{font-size:6.9pt;letter-spacing:.2em;text-transform:uppercase;
+            color:var(--gold-lt);font-weight:700;}
+.cv-meta .v{font-size:10.4pt;color:#EDE6D9;margin-top:2mm;}
+.cv-brand{font-size:8.6pt;letter-spacing:.42em;text-transform:uppercase;
+          color:#E8DFCB;font-weight:700;}
+.cv-num{position:absolute;right:19mm;top:22mm;font-family:'Cormorant Garamond',Georgia,serif;
+        font-size:110pt;line-height:1;color:rgba(198,165,103,.13);font-weight:600;}
+
+/* itens */
+.it{padding:3.1mm 0;border-bottom:1px solid var(--hair);display:flex;gap:6mm;}
+.it:last-child{border-bottom:none;}
+.it-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:14.5pt;color:var(--gold-lt);
+      font-weight:600;min-width:9mm;line-height:1.1;}
+.it-t{font-size:10.4pt;font-weight:600;letter-spacing:-.005em;}
+.it-d{color:var(--soft);font-size:8.4pt;margin-top:1mm;line-height:1.5;}
+
+/* cenários */
+.cen{border:1px solid var(--line);border-radius:2px;padding:4.6mm 5.6mm;
+     margin-bottom:3.4mm;background:var(--cream);}
+.cen.hi{background:var(--gold-pale);border-color:var(--gold-lt);}
+.cen-h{display:flex;align-items:baseline;gap:4mm;}
+.cen-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:20pt;
+       color:var(--gold);font-weight:600;line-height:1;}
+.cen-t{font-size:12.5pt;font-weight:600;}
+.cen-g{margin-left:auto;font-size:7.6pt;letter-spacing:.16em;text-transform:uppercase;
+       color:#fff;background:var(--gold);padding:2.2mm 3.4mm;border-radius:2px;
+       font-weight:700;white-space:nowrap;}
+.cen-x{color:var(--soft);font-size:8.7pt;margin-top:2mm;}
+.cen-l{margin-top:2.8mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm;
+       border-top:1px solid var(--line);padding-top:3.2mm;}
+.cen-l .k{font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;
+          color:var(--mut);font-weight:700;}
+.cen-l .v{font-size:8.7pt;margin-top:1mm;line-height:1.4;}
+
+/* tabela de investimento */
+table{width:100%;border-collapse:collapse;}
+.inv th{font-size:6.9pt;letter-spacing:.16em;text-transform:uppercase;
+        color:var(--mut);font-weight:700;text-align:right;padding:0 0 3mm;
+        border-bottom:1.5px solid var(--gold);}
+.inv th.l{text-align:left;}
+.inv td{padding:2.4mm 0;border-bottom:1px solid var(--hair);text-align:right;
+        font-variant-numeric:tabular-nums;font-size:9.6pt;}
+.inv td.l{text-align:left;font-size:9.5pt;}
+.inv td.hi{background:var(--gold-pale);font-weight:600;
+           padding-right:2.6mm;padding-left:2.6mm;}
+.inv th.hi{background:var(--gold-pale);padding-right:2.6mm;padding-left:2.6mm;
+           color:var(--gold);}
+.inv tr.tot td{border-bottom:none;border-top:1.5px solid var(--ink);
+               padding-top:3mm;font-size:13.5pt;font-weight:600;
+               font-family:'Cormorant Garamond',Georgia,serif;}
+.inv tr.tot td.l{font-family:inherit;font-size:8pt;letter-spacing:.18em;
+                 text-transform:uppercase;font-weight:700;}
+
+.box{background:var(--cream);border-left:2.5px solid var(--gold);
+     padding:4mm 5.2mm;margin-top:4mm;}
+.box .t{font-size:7.4pt;letter-spacing:.18em;text-transform:uppercase;
+        color:var(--gold);font-weight:700;}
+.box p{color:var(--soft);font-size:9pt;margin-top:2mm;}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:9mm;}
+.term{padding:3.4mm 0;border-bottom:1px solid var(--hair);}
+.term:last-child{border-bottom:none;}
+.term .k{font-size:6.9pt;letter-spacing:.18em;text-transform:uppercase;
+         color:var(--gold);font-weight:700;}
+.term .v{font-size:9.5pt;margin-top:1.2mm;}
+.term .s{color:var(--soft);font-size:8.5pt;margin-top:.8mm;}
+.pay td{padding:2.6mm 0;border-bottom:1px solid var(--hair);font-size:9pt;}
+.pay td.d{text-align:right;font-weight:600;color:var(--gold);
+          font-variant-numeric:tabular-nums;}
+.fora .k{font-size:9.3pt;font-weight:600;}
+.fora .v{color:var(--soft);font-size:8.6pt;margin-top:.8mm;}
+.fora li{margin-bottom:3.2mm;list-style:none;}
+.fora ul{margin:0;padding:0;}
+.sig{margin-top:auto;padding-top:9mm;display:grid;grid-template-columns:1fr 1fr;gap:14mm;}
+.sig .ln{border-top:1px solid var(--ink);padding-top:2.4mm;font-size:8.4pt;
+         color:var(--soft);}
+
+/* ── PAINÉIS DE IMAGEM ────────────────────────────────────────────────────
+   As vistas do projeto executivo saem do modelo 3D com FUNDO PRETO. Em vez
+   de recortar (o preto não é só borda — entra nos cantos do corte isométrico),
+   o painel é preto de propósito: a imagem encosta no fundo sem emenda e a
+   página ganha uma banda escura que conversa com a capa.
+   `.z` dá um zoom leve para comer a moldura preta fina das elevações.        */
+.ph{background:#000;overflow:hidden;position:relative;}
+.ph img{display:block;width:100%;height:100%;object-fit:cover;}
+.ph.ct img{object-fit:contain;}
+.ph img.z{transform:scale(1.09);}
+.ph img.z2{transform:scale(1.16);}
+.ph .cap{position:absolute;left:0;right:0;bottom:0;padding:6mm 4mm 2.8mm;
+  font-size:6.6pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-lt);font-weight:700;
+  background:linear-gradient(transparent,rgba(0,0,0,.9));}
+
+/* capa partida: texto à esquerda, vista do projeto à direita */
+.cv2{display:grid;grid-template-columns:1.06fr 1fr;height:100%;}
+.cv2 .txt{padding:24mm 13mm 16mm 19mm;display:flex;flex-direction:column;
+  min-width:0;}
+.cv2 .ph{border-left:1px solid rgba(198,165,103,.30);}
+.cv2 .cv-t{font-size:31pt;}
+.cv2 .cv-s{font-size:11.4pt;margin-top:6mm;}
+.cv2 .cv-meta{grid-template-columns:1fr;gap:4mm;margin-top:10mm;padding-top:6mm;}
+.cv2 .cv-meta>div{display:grid;grid-template-columns:34mm 1fr;align-items:baseline;}
+.cv2 .cv-meta .v{margin-top:0;font-size:9.8pt;}
+
+/* capa com render fotográfico de topo */
+.cvfoto{display:grid;grid-template-rows:auto 146mm 1fr;height:100%;}
+.cvfoto .top{padding:13mm 19mm 8mm;}
+.cvfoto .txt{padding:11mm 19mm 14mm;display:flex;flex-direction:column;}
+.cvfoto .cv-t{font-size:33pt;}
+
+/* dupla de vistas lado a lado */
+.dupla{display:grid;grid-template-columns:1fr 1fr;gap:6mm;}
+.dupla .ph{height:58mm;}
+.dupla .t{font-size:10.6pt;font-weight:600;margin-top:3.6mm;}
+.dupla .d{color:var(--soft);font-size:8.5pt;margin-top:1.4mm;line-height:1.52;}
+
+/* banda de largura total, sangrando nas laterais da página */
+.banda{margin:0 -19mm;height:74mm;}
+.dupla.sangra{margin:0 -19mm;gap:0;}
+.dupla.sangra .ph{height:172mm;}
+.dupla.sangra.baixa .ph{height:106mm;}
+.dupla.sangra .ph+.ph{border-left:1px solid rgba(198,165,103,.22);}
+
+/* página partida: vista alta à esquerda, texto à direita */
+.split{display:grid;grid-template-columns:74mm 1fr;gap:9mm;flex:1;
+  min-height:0;margin-top:2mm;}
+.split .ph{height:100%;}
+
+/* garantia — bloco técnico, uma linha por componente */
+.gar{border:1px solid var(--line);border-radius:2px;padding:5mm 5.5mm;
+  background:var(--cream);}
+.gar-h{display:flex;align-items:baseline;gap:4mm;
+  border-bottom:1px solid var(--line);padding-bottom:3mm;}
+.gar-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:30pt;
+  color:var(--gold);font-weight:600;line-height:.9;}
+.gar-u{font-size:7pt;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--mut);font-weight:700;}
+.gar-x{margin-left:auto;color:var(--soft);font-size:8.4pt;text-align:right;
+  max-width:78mm;line-height:1.45;}
+.gar-l{display:flex;justify-content:space-between;gap:5mm;
+  padding:2.3mm 0;border-bottom:1px solid var(--hair);font-size:8.8pt;}
+.gar-l:last-child{border-bottom:none;}
+.gar-l .k{color:var(--soft);}
+.gar-l .v{font-weight:700;white-space:nowrap;}
+
+/* ── proposta Suzi e Guilherme ────────────────────────────────────────── */
+.phS{background:#fff;overflow:hidden;position:relative;border:1px solid var(--hair);}
+.phS img{display:block;width:100%;height:100%;object-fit:cover;}
+.phS img.ct{object-fit:contain;}
+.parS{display:grid;grid-template-columns:1fr 1fr;gap:4mm;}
+.parS .phS{height:56mm;}
+
+.itS{margin-top:5mm;}
+.itS .n{font-family:'Cormorant Garamond',Georgia,serif;font-size:14pt;
+  color:var(--gold-lt);font-weight:600;line-height:1;}
+.itS .t{font-size:11.4pt;font-weight:700;letter-spacing:-.01em;margin-top:.6mm;}
+.itS .d{color:var(--soft);font-size:8.7pt;line-height:1.64;margin-top:1.8mm;}
+.itS .d b{color:var(--ink);font-weight:600;}
+
+.exS{display:grid;grid-template-columns:1fr 1fr;gap:4.6mm 7mm;margin-top:5mm;}
+.exS > div{border-top:1.5px solid var(--line);padding-top:3mm;}
+.exS .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.exS .d{color:var(--soft);font-size:8.5pt;line-height:1.58;margin-top:1.5mm;}
+.exS .d b{color:var(--ink);font-weight:600;}
+
+table.invS{width:100%;border-collapse:collapse;margin-top:4mm;font-size:9pt;}
+table.invS th{font-size:6.9pt;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--mut);font-weight:700;padding:0 0 2.4mm;text-align:left;}
+table.invS th.r,table.invS td.r{text-align:right;}
+table.invS td{padding:2mm 0;border-top:1px solid var(--hair);vertical-align:top;}
+table.invS td.a{font-size:6.9pt;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold-lt);font-weight:700;padding-right:4mm;width:24mm;}
+table.invS td.i{font-weight:600;}
+table.invS tr.sub td{border-top:1px solid var(--line);color:var(--soft);
+  font-size:8.2pt;padding:1.5mm 0;}
+table.invS tr.tot td{border-top:1.6px solid var(--ink);padding-top:2.6mm;
+  font-family:'Cormorant Garamond',Georgia,serif;font-size:21pt;font-weight:700;}
+table.invS tr.tot td.a,table.invS tr.tot td.i{font-family:inherit;font-size:9.6pt;}
+
+.escS{margin-top:5mm;border:1px solid var(--line);border-radius:5px;
+  overflow:hidden;flex:none;}
+.escS .l{display:flex;justify-content:space-between;align-items:baseline;
+  padding:2.3mm 5mm;border-bottom:1px solid var(--hair);font-size:9pt;}
+.escS .l:last-child{border-bottom:none;}
+.escS .l .p{font-weight:700;font-size:11pt;color:var(--gold);min-width:14mm;}
+.escS .l .q{color:var(--soft);flex:1;padding-left:4mm;}
+.cndS{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm 5mm;margin-top:5mm;
+  flex:none;}
+.cndS .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.cndS .d{color:var(--soft);font-size:8pt;margin-top:1mm;line-height:1.44;}
+.cndS .d b{color:var(--ink);}
+.notaS{margin-top:4.5mm;padding-left:4mm;border-left:2.5px solid var(--gold-lt);
+  font-size:8pt;color:var(--soft);line-height:1.5;flex:none;}
+.notaS b{color:var(--ink);}
+</style></head><body><div class="page cover"><div class="cv2">
+  <div class="txt">
+    <div class="eyebrow">Proposta comercial</div>
+    <div class="cv-t serif">Marcenaria<br>sob medida.</div>
+    <div class="cv-nome serif" style="font-size:40pt;">Suzi<br>e Guilherme</div>
+    <div class="cv-s">Sala e escritório — projeto de interiores
+    Luiza Costa.</div>
+    <div class="cv-meta">
+      <div><div class="k">Cliente</div><div class="v">Suzi e Guilherme</div></div>
+      <div><div class="k">Ambientes</div><div class="v">Sala e escritório</div></div>
+      <div><div class="k">Projeto</div><div class="v">Luiza Costa</div></div>
+      <div><div class="k">Data</div><div class="v">1º de outubro de 2026</div></div>
+    </div>
+    <div style="margin-top:auto;"><div class="cv-brand">Valvic Marcenaria</div></div>
+  </div>
+  <div class="ph"><img src="img-suzi-guilherme/bar-vista.jpg" alt=""></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">A sala</div>
+  <div class="h-sec serif">O bar, e as duas mesas.</div>
+  <div class="rule"></div>
+
+  <div class="parS" style="margin-top:5mm;">
+    <div class="phS"><img class="ct" src="img-suzi-guilherme/bar-fechado.jpg" alt=""></div>
+    <div class="phS"><img class="ct" src="img-suzi-guilherme/bar-aberto.jpg" alt=""></div>
+  </div>
+
+  <div class="itS"><div class="n serif">01</div><div class="t">Cristaleira</div><div class="d">Frente inteira em <b>portas de vidro espelhado bronze</b>, com <b>puxador em perfil metálico bronze</b> — o vidro e o puxador entram no nosso fornecimento, <b>entregues instalados</b>. Por dentro, prateleiras em <b>MDF melamínico amadeirado</b> com <b>fita de LED embutida</b>, que acende o cristal através do espelhado.</div></div>
+
+  <div class="itS"><div class="n serif">02</div><div class="t">Bar com nichos de vinho</div><div class="d">O módulo que fecha o canto, no mesmo <b>MDF melamínico amadeirado</b>: <b>nichos de vinho</b> em grade de ripas, prateleiras com LED e, na base, armário de <b>abertura por toque</b> ao lado do vão preparado para a cervejeira.</div></div>
+
+  <div class="itS"><div class="n serif">03</div><div class="t">Mesa do café</div><div class="d">Aqui o acabamento muda: a mesa é em <b>lâmina natural</b>. O tampo é <b>marchetaria de verdade</b> — quadrados de <b>nogueira e carvalho</b> alternados, cortados e assentados um a um, prensados e envernizados. Pés e prateleira na mesma lâmina de nogueira.</div></div>
+
+  <div class="itS"><div class="n serif">04</div><div class="t">Tampo novo da mesa de jantar</div><div class="d"><b>Tampo novo</b>, em <b>lâmina natural</b>, com a aresta encorpada para ler cheia e <b>acabamento em meia-esquadria</b>. A estrutura em madeira pintada de preto é existente e <b>permanece</b>.</div></div>
+
+  <div class="phS" style="margin-top:auto;height:50mm;">
+    <img class="ct" src="img-suzi-guilherme/mesa-cafe.jpg" alt="">
+  </div>
+  <div class="foot"><span>Valvic Marcenaria</span><span>Suzi e Guilherme · projeto Luiza Costa</span><span>2 / 4</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">O escritório</div>
+  <div class="h-sec serif">Uma parede inteira,<br><em>e a mesa.</em></div>
+  <div class="rule"></div>
+
+  <div class="parS" style="margin-top:5mm;">
+    <div class="phS"><img class="ct" src="img-suzi-guilherme/escritorio-2.jpg" alt=""></div>
+    <div class="phS"><img class="ct" src="img-suzi-guilherme/escritorio-1.jpg" alt=""></div>
+  </div>
+
+  <div class="itS"><div class="n serif">05</div><div class="t">Painel e prateleiras</div><div class="d">Painel do piso ao teto em <b>MDF Nero Guararapes</b>, arrematado em <b>perfil de alumínio cinza</b>. Sobre ele, prateleiras em Nero e em <b>MDF Cinza Perfeito Guararapes</b>, e o <b>vidro leitoso branco de escrever</b> — também no nosso fornecimento, entregue instalado.</div></div>
+
+  <div class="itS"><div class="n serif">06</div><div class="t">Mesa de trabalho</div><div class="d">Em <b>MDF Cinza Perfeito Guararapes</b>, com tampo encorpado e <b>acabamento em meia-esquadria</b> — a aresta fecha em quina viva, sem fita aparente. <b>Borracha de nivelamento nos pés</b> e passagem preparada para as tomadas de mesa.</div></div>
+
+  <div class="exS">
+    <div><div class="k">Dois acabamentos, de propósito</div><div class="d">
+      O bar e o escritório são em <b>MDF melamínico</b> — superfície fechada,
+      estável e de manutenção simples, que é o que um bar e uma mesa de
+      trabalho pedem. <b>A lâmina natural fica só nas duas mesas da sala</b>,
+      onde a madeira é o assunto.</div></div>
+    <div><div class="k">Medição</div><div class="d">
+      Medição no local <b>antes do corte</b>, nos dois ambientes. O projeto é
+      de reforma e convive com peças existentes — a medida de projeto e a
+      medida da parede raramente são a mesma.</div></div>
+  </div>
+  <div class="foot"><span>Valvic Marcenaria</span><span>Suzi e Guilherme · projeto Luiza Costa</span><span>3 / 4</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Investimento</div>
+  <div class="h-sec serif">Peça a peça.</div>
+  <div class="rule"></div>
+
+  <table class="invS">
+    <thead><tr><th></th><th></th><th class="r">Investimento</th></tr></thead>
+    <tbody><tr><td class="a">Sala</td><td class="i">Cristaleira</td><td class="r">R$ 28.810</td></tr><tr><td class="a"></td><td class="i">Bar com nichos de vinho</td><td class="r">R$ 10.850</td></tr><tr><td class="a"></td><td class="i">Mesa do café</td><td class="r">R$ 5.100</td></tr><tr><td class="a"></td><td class="i">Tampo novo da mesa de jantar</td><td class="r">R$ 7.820</td></tr><tr><td class="a">Escritório</td><td class="i">Painel e prateleiras</td><td class="r">R$ 14.790</td></tr><tr><td class="a"></td><td class="i">Mesa de trabalho</td><td class="r">R$ 6.120</td></tr>
+      <tr class="tot"><td class="a"></td><td class="i">Investimento total</td>
+        <td class="r">R$ 73.490</td></tr>
+    </tbody>
+  </table>
+
+  <div class="escS">
+    <div class="l"><span class="p">40%</span><span class="q">na assinatura</span></div>
+    <div class="l"><span class="p">30%</span><span class="q">no início das montagens</span></div>
+    <div class="l"><span class="p">30%</span><span class="q">na entrega final</span></div>
+  </div>
+
+  <div class="cndS">
+    <div><div class="k">Prazo</div><div class="d">
+      <b>60 dias corridos</b>, da assinatura, da entrada e da medição final.</div></div>
+    <div><div class="k">Execução</div><div class="d">
+      Do corte à instalação, com <b>equipe própria</b> da casa.</div></div>
+    <div><div class="k">Validade</div><div class="d">
+      <b>10 dias corridos</b> a partir desta data.</div></div>
+    <div><div class="k">Garantia</div><div class="d">
+      <b>10 anos</b> sobre estrutura e ferragens.</div></div>
+  </div>
+
+  <div class="notaS"><b>Incluso no nosso fornecimento:</b> as portas em vidro
+  espelhado bronze com o puxador em perfil metálico, o vidro leitoso de
+  escrever, a fita de LED e o perfil de alumínio — todos entregues
+  instalados.<br>
+  <b>Não inclusos:</b> mármore e demais pedras, cervejeira e
+  eletrodomésticos, elétrica e luminotécnica, alvenaria, pintura, gesso,
+  persianas, tapetes, estofados e os restauros de mobiliário existente.</div>
+
+  <div class="foot"><span>Valvic Marcenaria</span><span>Suzi e Guilherme · projeto Luiza Costa</span><span>4 / 4</span></div>
+</div></div></body></html>
