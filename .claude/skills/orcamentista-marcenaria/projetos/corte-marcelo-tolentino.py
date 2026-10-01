@@ -31,6 +31,10 @@ FLAGS
     escovado (marmoraria), rodapé Santa Luzia H=15 (perfil comercial, corre
     por toda a sala inclusive nas paredes que não são nossas), molduras das
     fotos 85×150 e as TVs touch (comunicação visual).
+  9 ★ Melamínico VERDE, cor próxima da laca, na caixa do armário em laca da
+    cozinha. A referência exata se escolhe contra a amostra da laca — não há
+    verde na paleta deste projeto para comparar. Lancei no preço de
+    melamínico de cor (R$ 500 a chapa de 15, R$ 300 a de 6).
   8 ⚠ O hidrante tem de continuar acessível e sinalizado. A tampa de acesso
     está lançada, mas o revestimento não pode criar trava nem exigir
     ferramenta — conferir com a segurança da obra antes de produzir.
@@ -49,11 +53,13 @@ PRECO = {'BR6':BR6, 'BR15':BR15, 'BR18':BR18, 'FOR':FORM}
 # cores do projeto: TA Tauari · CM Carvalho Munique · CP Cinza Pixel
 #                   CE Cinza Essencial · CB Cerrado Bold
 #                   PA Preto Absoluto Duratex (pilar do salão principal)
-for c in ('TA','CM','CP','CE','CB','PA'):
+#                   VD melamínico verde, cor próxima da laca ★ ver FLAG 9
+for c in ('TA','CM','CP','CE','CB','PA','VD'):
     PRECO[c+'6'], PRECO[c+'15'], PRECO[c+'18'] = COR6, COR15, COR18
 NOME = {'BR6':'branco 6','BR15':'branco 15','BR18':'branco 18','FOR':'fórmica'}
 for c, n in (('TA','Tauari'),('CM','Carv.Munique'),('CP','Cinza Pixel'),
-             ('CE','Cinza Essenc.'),('CB','Cerrado Bold'),('PA','Preto Absol.')):
+             ('CE','Cinza Essenc.'),('CB','Cerrado Bold'),('PA','Preto Absol.'),
+             ('VD','Verde p/ laca')):
     for e in ('6','15','18'): NOME[c+e] = f'{n} {e}'
 
 FITA_BR, FITA_COR = 2.0, 3.0
@@ -317,10 +323,13 @@ f(K, 10*DOBR + 5*TIPON + 4*SUP_PRAT)
 
 K = 'Cozinha · armário inferior em laca verde'
 # E01 217,5 · 5 portas de 43,5 · h=91 · LACA FOSCA VERDE + puxador cava
+# ⭐ [Jonathan 01/10] "onde terá o acabamento em laca na cozinha, a estrutura
+#   interna será em melamínico em COR PRÓXIMA" — e não em branco. Caixa branca
+#   atrás de frente em laca verde aparece na fresta e no vão da porta aberta.
 a(K,'BR18','Frente para laca',             91, 43, 5)
-a(K,'BR15','Lateral e divisória',          91, 58, 6)
-a(K,'BR15','Base e travessa',             215, 58, 3)
-a(K,'BR6' ,'Fundo',                       215, 91, 1)
+a(K,'VD15','Lateral e divisória',          91, 58, 6)
+a(K,'VD15','Base e travessa',             215, 58, 3)
+a(K,'VD6' ,'Fundo',                       215, 91, 1)
 f(K, 10*DOBR)
 t(K, 5*0.91*0.435*2*LACA_M2)               # laca nas duas faces das 5 frentes
 t(K, 2.2*CAVA_M)
@@ -672,6 +681,13 @@ DELTA_FECH = {'standard': (_lo + _hi)/2, 'gold': 0.0}
 
 PV      = {c: {am: round(CD_AMB[c][am]/(BASE - (MC_ALVO[c][am] + DELTA_FECH[c]))/10)*10
                for am in AMBS} for c in CEN}
+# o arredondamento de R$ 10 por ambiente deixa resíduo contra o alvo: ele vai
+# para o maior ambiente sem espelho, para o total bater no número combinado
+_resto = ALVO_STD - sum(PV['standard'].values())
+if _resto:
+    _maior = max((a for a in AMBS if sum(ESP[m] for m in ITENS_DE[a]) <= 0),
+                 key=lambda a: PV['standard'][a])
+    PV['standard'][_maior] += _resto
 TOT     = {c: sum(PV[c].values()) for c in CEN}
 MC_REAL = {c: {am: BASE - CD_AMB[c][am]/PV[c][am] for am in AMBS} for c in CEN}
 

@@ -6,17 +6,17 @@ Gerado de `corte-marcelo-tolentino.py` por
 
 | | standard | gold |
 |---|--:|--:|
-| chapas | **129** | **131** |
+| chapas | **129** | **132** |
 | m² líquidos de peça | 450,73 | 450,73 |
-| aproveitamento médio | 69% | 68% |
-| custo de chapa | 48.500 | 51.230 |
+| aproveitamento médio | 69% | 67% |
+| custo de chapa | 49.090 | 52.080 |
 
 ## Chapa · standard
 
 | material | m² | chapas | aprov. | R$/chapa | R$ |
 |---|--:|--:|--:|--:|--:|
-| branco 15 | 171,53 | 46 | 73% | 260 | 11.960 |
-| branco 6 | 54,38 | 16 | 67% | 190 | 3.040 |
+| branco 15 | 164,63 | 44 | 74% | 260 | 11.440 |
+| branco 6 | 52,43 | 15 | 69% | 190 | 2.850 |
 | Cerrado Bold 15 | 3,32 | 2 | 33% | 500 | 1.000 |
 | Cinza Essenc. 15 | 0,86 | 1 | 17% | 500 | 500 |
 | Carv.Munique 15 | 32,67 | 9 | 71% | 500 | 4.500 |
@@ -26,15 +26,17 @@ Gerado de `corte-marcelo-tolentino.py` por
 | Tauari 15 | 125,96 | 36 | 69% | 500 | 18.000 |
 | Tauari 18 | 24,76 | 7 | 70% | 600 | 4.200 |
 | Tauari 6 | 8,17 | 3 | 54% | 300 | 900 |
-| **TOTAL** | **450,73** | **129** | | | **48.500** |
+| Verde p/ laca 15 | 6,91 | 2 | 68% | 500 | 1.000 |
+| Verde p/ laca 6 | 1,96 | 1 | 38% | 300 | 300 |
+| **TOTAL** | **450,73** | **129** | | | **49.090** |
 
 ## Chapa · gold
 
 | material | m² | chapas | aprov. | R$/chapa | R$ |
 |---|--:|--:|--:|--:|--:|
-| branco 15 | 142,33 | 37 | 76% | 260 | 9.620 |
+| branco 15 | 135,42 | 36 | 74% | 260 | 9.360 |
 | branco 18 | 29,20 | 9 | 64% | 330 | 2.970 |
-| branco 6 | 54,38 | 16 | 67% | 190 | 3.040 |
+| branco 6 | 52,43 | 15 | 69% | 190 | 2.850 |
 | Cerrado Bold 15 | 1,78 | 1 | 35% | 500 | 500 |
 | Cerrado Bold 18 | 1,54 | 1 | 30% | 600 | 600 |
 | Cinza Essenc. 15 | 0,86 | 1 | 17% | 500 | 500 |
@@ -46,15 +48,17 @@ Gerado de `corte-marcelo-tolentino.py` por
 | Tauari 15 | 96,63 | 28 | 68% | 500 | 14.000 |
 | Tauari 18 | 54,09 | 16 | 66% | 600 | 9.600 |
 | Tauari 6 | 8,17 | 3 | 54% | 300 | 900 |
-| **TOTAL** | **450,73** | **131** | | | **51.230** |
+| Verde p/ laca 15 | 6,91 | 2 | 68% | 500 | 1.000 |
+| Verde p/ laca 6 | 1,96 | 1 | 38% | 300 | 300 |
+| **TOTAL** | **450,73** | **132** | | | **52.080** |
 
 ## Fita de borda
 
 | tipo | perímetro útil (m) | comprar com 10% (m) |
 |---|--:|--:|
-| branca (peça interna) | 813,98 | 895,38 |
-| de cor (peça aparente) | 1.293,32 | 1.422,65 |
-| **TOTAL** | **2.107,29** | **2.318,02** |
+| branca (peça interna) | 791,77 | 870,95 |
+| de cor (peça aparente) | 1.323,60 | 1.455,96 |
+| **TOTAL** | **2.115,37** | **2.326,91** |
 
 ## Ferragem
 
@@ -103,19 +107,19 @@ Total de terceirizados do projeto: **R$ 21.350**, igual nos dois cenários.
 
 | ambiente | m² de chapa | custo std | custo gold |
 |---|--:|--:|--:|
-| Salão principal | 120,92 | 25.835 | 28.622 |
-| Copa | 27,06 | 4.577 | 5.477 |
-| Sala de reunião | 8,49 | 2.480 | 2.870 |
-| Sala de ativos | 44,37 | 7.222 | 7.959 |
-| Lounge | 26,68 | 5.226 | 5.521 |
-| Gourmet | 47,77 | 8.452 | 8.873 |
-| Cozinha | 69,62 | 21.972 | 23.804 |
-| Sala | 40,85 | 9.167 | 9.448 |
-| Quarto casal | 29,73 | 10.491 | 11.900 |
-| Quarto solteiro | 25,16 | 8.739 | 10.170 |
-| Banheiro social | 3,17 | 1.482 | 1.611 |
-| Banheiro casal | 6,92 | 3.256 | 3.489 |
-| **TOTAL** | **450,73** | **108.898** | **119.744** |
+| Salão principal | 120,92 | 25.791 | 28.655 |
+| Copa | 27,06 | 4.567 | 5.491 |
+| Sala de reunião | 8,49 | 2.476 | 2.872 |
+| Sala de ativos | 44,37 | 7.215 | 7.986 |
+| Lounge | 26,68 | 5.224 | 5.529 |
+| Gourmet | 47,77 | 8.443 | 8.889 |
+| Cozinha | 69,62 | 22.735 | 24.634 |
+| Sala | 40,85 | 9.167 | 9.452 |
+| Quarto casal | 29,73 | 10.478 | 11.904 |
+| Quarto solteiro | 25,16 | 8.727 | 10.169 |
+| Banheiro social | 3,17 | 1.481 | 1.613 |
+| Banheiro casal | 6,92 | 3.254 | 3.493 |
+| **TOTAL** | **450,73** | **109.559** | **120.687** |
 
 A lista de peças completa — **188 lançamentos** — está em
 `plano-de-corte-marcelo-tolentino.csv`.

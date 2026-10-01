@@ -778,3 +778,52 @@ Três passes de auditoria limpos.
    **45 dias no decorado**, metade do prazo original.
 2. **15/11/2026 cai num domingo**, e é feriado de Proclamação da República.
    Na prática o último dia útil é **sexta, 13 de novembro**.
+
+---
+
+## 01/10/2026 (2º) — sai a linha Gold, entra a caixa em cor
+
+> *"retire a linha gold da proposta · especifique que onde terá o acabamento
+> em laca na cozinha a estrutura interna será em melamínico em cor próxima"*
+
+### A Gold sai do documento
+
+A página passa a descrever **uma especificação**, não a comparar duas. Com
+isso o bloco **"não muda"** perdeu o sentido — ele dizia *"mesma modulação nos
+dois casos"*, e não há mais dois casos. Virou três fatos que se sustentam
+sozinhos: **modulação**, **acabamento** e **quem faz**.
+
+A Gold continua viva no motor e neste dossiê. Sai só do documento que fecha.
+
+### ⭐ Onde há laca, a caixa acompanha
+
+A caixa do armário em **laca fosca verde** da cozinha deixa de ser branca e
+passa a **melamínico de cor próxima à da laca**. Não é detalhe de catálogo:
+caixa branca atrás de frente colorida **aparece na fresta entre as frentes e
+no vão da porta aberta** — a peça lê uma cor por fora e outra por dentro.
+
+Entrou no motor como cor própria (`VD`), nas peças de lateral, divisória,
+base, travessa e fundo daquele item.
+
+★ **A referência exata se escolhe contra a amostra da laca.** Não há verde na
+paleta deste projeto para comparar; lancei no preço de melamínico de cor.
+
+### O que isso custou
+
+| | |
+|---|--:|
+| chapa, antes | 48.500 |
+| **chapa, agora** | **49.090** |
+| custo direto | 109.559 |
+| preço (fechado) | **189.000** |
+| **MC** | **27.4%** |
+
+O preço está travado em R$ 189.000, então **o custo a mais saiu da margem**:
+a MC caiu de 27,7% para **27.4%**, agora **7.6 pontos abaixo do
+piso de 35%** da casa.
+
+### E uma correção de arredondamento
+
+A bisseção arredonda cada ambiente para R$ 10 e o resíduo fazia o total
+fechar em R$ 188.990 em vez de R$ 189.000. O resto passa a ser lançado no
+**maior ambiente sem espelho**, para o documento bater no número combinado.

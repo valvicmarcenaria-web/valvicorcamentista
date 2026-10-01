@@ -197,6 +197,15 @@ table{width:100%;border-collapse:collapse;}
 .banda{margin:0 -19mm;height:52mm;}
 
 .lin2{display:grid;grid-template-columns:1fr 1fr;gap:6mm;margin-top:6mm;}
+.lin2.um{grid-template-columns:1fr;}
+.lin2.um > div{display:grid;grid-template-columns:auto 1fr;gap:0 9mm;
+  align-items:start;}
+.lin2.um .cod{grid-row:1;}
+.lin2.um .nm{grid-row:2;grid-column:1;}
+.lin2.um ul{grid-row:1/4;grid-column:2;margin-top:1mm;columns:2;
+  column-gap:8mm;}
+.lin2.um li{break-inside:avoid;}
+.lin2.um .gar{grid-row:3;grid-column:1;align-self:end;}
 .lin2 > div{border:1.5px solid var(--line);border-radius:6px;padding:9mm 8mm;}
 .lin2 > div.g{border-color:var(--gold);background:rgba(201,169,106,.07);}
 .lin2 .cod{font-family:'Cormorant Garamond',Georgia,serif;font-size:26pt;
@@ -289,7 +298,7 @@ table.invA tr.tot td.a,table.invA tr.tot td.i{font-family:inherit;font-size:9.4p
     <div class="ph"><img src="img-marcelo-tolentino/quarto-casal.jpg" alt=""></div>
   </div>
 
-  <div class="amb"><div class="num serif">07</div><div class="t">Cozinha e área de serviço</div><div class="d">Base em <b>MDF Tauari Guararapes</b>. Superiores em <b>fecho toque</b> com <b>LED embutido</b>; torre de eletros com <b>porta escamoteável</b>; inferiores da bancada principal em <b>laca fosca verde com puxador cava</b>. Cristaleira e divisória de correr em <b>perfil de alumínio preto fosco com vidro canelado</b>.</div></div>
+  <div class="amb"><div class="num serif">07</div><div class="t">Cozinha e área de serviço</div><div class="d">Base em <b>MDF Tauari Guararapes</b>. Superiores em <b>fecho toque</b> com <b>LED embutido</b>; torre de eletros com <b>porta escamoteável</b>; inferiores da bancada principal em <b>laca fosca verde com puxador cava</b>, com a <b>caixa interna em melamínico de cor próxima à da laca</b>. Cristaleira e divisória de correr em <b>perfil de alumínio preto fosco com vidro canelado</b>.</div></div>
   <div class="amb"><div class="num serif">08</div><div class="t">Sala e varanda</div><div class="d">Estante do piso ao teto em <b>Tauari</b>, com <b>nichos em Carvalho Munique Duratex avançando do plano</b> e <b>LED sob eles</b>. Painel liso com <b>bite usinado</b> entre as folhas e mesa de jantar em Tauari com <b>chanfro usinado no tampo</b>.</div></div>
   <div class="amb"><div class="num serif">09</div><div class="t">Quarto casal</div><div class="d">Guarda-roupa em Tauari com <b>portas de correr em vidro e perfil de alumínio bronze</b>. Cabeceira e peseira baú <b>estofadas em linho</b> sobre estrutura de marcenaria, e prateleiras suspensas em <b>tubo de alumínio preto</b>.</div></div>
   <div class="amb"><div class="num serif">10</div><div class="t">Quarto solteiro</div><div class="d">Guarda-roupa em Tauari com <b>portas de correr em vidro bronze e perfil bronze</b>. Escrivaninha, nicho na cabeceira e prateleiras suspensas com <b>nichos em Cinza Essencial Duratex</b>.</div></div>
@@ -299,45 +308,38 @@ table.invA tr.tot td.a,table.invA tr.tot td.i{font-family:inherit;font-size:9.4p
   <div class="eyebrow">A especificação</div>
   <div class="h-sec serif">O que entra<br><em>em cada peça.</em></div>
   <div class="rule"></div>
-  <p class="lead">A marcenaria fecha na <b>linha Standard</b>. A linha Gold
-  permanece disponível como upgrade — muda a ferragem, a espessura da porta e
-  da prateleira, e o tempo de garantia. O desenho, as chapas de acabamento,
-  os espelhos, os vidros, a laca, o estofado e o LED são idênticos nas duas.</p>
+  <p class="lead">A ferragem, a chapa e a construção que entram em cada peça
+  desta proposta.</p>
 
-  <div class="lin2"><div class="">
-      <div class="cod serif">01</div>
+  <div class="lin2 um"><div class="">
       <div class="nm serif">Linha<br>Standard</div>
-      <div style="font-size:7pt;letter-spacing:.18em;text-transform:uppercase;
-        font-weight:700;color:#1A1714;margin-top:1.5mm;">
-        Linha desta proposta</div>
+
       <ul><li>Dobradiça <b>Hettich Novisys</b></li><li>Corrediça <b>telescópica</b></li><li>Roupeiro em <b>sistema de correr RO65 Prime, da Rometal</b></li><li>Estrutura, portas e prateleiras em <b>MDF de&nbsp;15&nbsp;mm</b></li></ul>
       <div class="gar">Garantia Valvic de <b>2 anos</b> sobre
-        estrutura e ferragens</div>
-    </div><div class="g">
-      <div class="cod serif">02</div>
-      <div class="nm serif">Linha<br>Gold</div>
-      <div style="font-size:7pt;letter-spacing:.18em;text-transform:uppercase;
-        font-weight:700;color:#9C7A3C;margin-top:1.5mm;">
-        Upgrade disponível</div>
-      <ul><li>Dobradiça <b>Hettich Sensys</b> — pistão em gel e regulagem nos três eixos</li><li>Corrediça <b>oculta Quadro, da Hettich</b>, com Silent System</li><li>Roupeiro em <b>sistema de correr Dominus, da Rometal</b></li><li>Portas e prateleiras em <b>MDF de&nbsp;18&nbsp;mm</b> — mais rígidas, assentam melhor e não barrigam</li></ul>
-      <div class="gar">Garantia Valvic de <b>10 anos</b> sobre
         estrutura e ferragens</div>
     </div></div>
 
   <div class="mesmo">
-    <div><div class="k">Não muda</div><div class="d"><b>O desenho.</b> Mesma
-      modulação e mesma distribuição interna nos dois casos.</div></div>
-    <div><div class="k">Não muda</div><div class="d"><b>Acabamento.</b> Tauari,
-      Carvalho Munique, Preto Absoluto, Cinza Pixel, Cerrado Bold, Cinza
-      Essencial, a laca verde, os vidros e os espelhos.</div></div>
-    <div><div class="k">Não muda</div><div class="d"><b>Quem faz.</b> Equipe
-      própria do corte à instalação, com a medida conferida no local.</div></div>
+    <div><div class="k">Modulação</div><div class="d">A mesma em todo o
+      conjunto, do estande ao decorado — <b>distribuição interna desenhada
+      peça a peça</b>, não adaptada de módulo pronto.</div></div>
+    <div><div class="k">Acabamento</div><div class="d"><b>Tauari, Carvalho
+      Munique, Preto Absoluto, Cinza Pixel, Cerrado Bold e Cinza Essencial</b>,
+      mais a laca verde, os vidros e os espelhos.</div></div>
+    <div><div class="k">Quem faz</div><div class="d"><b>Equipe própria</b> do
+      corte à instalação, com a medida conferida no local antes de
+      cortar.</div></div>
   </div>
 
-  <div class="nota" style="margin-top:auto;">A garantia é <b>termo da Valvic
+  <div class="nota"><b>Onde há laca, a caixa acompanha.</b> Nos armários da
+  cozinha com frente em <b>laca fosca verde</b>, a estrutura interna sai em
+  <b>MDF melamínico de cor próxima à da laca</b>, não em branco. É o que
+  impede a caixa branca de aparecer na fresta entre as frentes e no vão da
+  porta aberta — a peça lê a mesma cor por fora e por dentro.</div>
+
+  <div class="nota">A garantia é <b>termo da Valvic
   sobre o conjunto que fornecemos e instalamos</b>, não repasse de garantia de
-  fabricante. A diferença entre as linhas está nos <b>ciclos testados de
-  abertura, no amortecimento e na regulagem</b>.</div>
+  fabricante, e cobre <b>estrutura e ferragens</b>.</div>
   <div class="foot"><span>Valvic Marcenaria</span><span>Marcelo Tolentino · BRZ · Nova Lima</span><span>4 / 5</span></div>
 </div></div><div class="page"><div class="pad">
   <div class="eyebrow">Investimento</div>
@@ -347,7 +349,7 @@ table.invA tr.tot td.a,table.invA tr.tot td.i{font-family:inherit;font-size:9.4p
   <table class="invA">
     <thead><tr><th></th><th></th>
       <th class="r">Investimento<br><span style="font-weight:400;text-transform:none;letter-spacing:0;">linha Standard · 2 anos de garantia</span></th></tr></thead>
-    <tbody><tr><td class="a">Estande</td><td class="i">Salão principal</td><td class="r">R$ 45.150</td></tr><tr><td class="a"></td><td class="i">Copa</td><td class="r">R$ 7.740</td></tr><tr><td class="a"></td><td class="i">Sala de reunião</td><td class="r">R$ 4.270</td></tr><tr><td class="a"></td><td class="i">Sala de ativos</td><td class="r">R$ 12.820</td></tr><tr><td class="a"></td><td class="i">Lounge</td><td class="r">R$ 8.560</td></tr><tr><td class="a"></td><td class="i">Bancada gourmet</td><td class="r">R$ 14.020</td></tr><tr><td class="a">Decorado</td><td class="i">Cozinha e área de serviço</td><td class="r">R$ 38.170</td></tr><tr><td class="a"></td><td class="i">Sala e varanda</td><td class="r">R$ 16.000</td></tr><tr><td class="a"></td><td class="i">Quarto casal</td><td class="r">R$ 18.470</td></tr><tr><td class="a"></td><td class="i">Quarto solteiro</td><td class="r">R$ 15.440</td></tr><tr><td class="a"></td><td class="i">Banheiro social</td><td class="r">R$ 1.410</td></tr><tr><td class="a"></td><td class="i">Banheiro casal</td><td class="r">R$ 3.280</td></tr><tr><td class="a">Terceiros</td><td class="i">Espelhos</td><td class="r">R$ 3.670</td></tr>
+    <tbody><tr><td class="a">Estande</td><td class="i">Salão principal</td><td class="r">R$ 44.810</td></tr><tr><td class="a"></td><td class="i">Copa</td><td class="r">R$ 7.670</td></tr><tr><td class="a"></td><td class="i">Sala de reunião</td><td class="r">R$ 4.240</td></tr><tr><td class="a"></td><td class="i">Sala de ativos</td><td class="r">R$ 12.730</td></tr><tr><td class="a"></td><td class="i">Lounge</td><td class="r">R$ 8.510</td></tr><tr><td class="a"></td><td class="i">Bancada gourmet</td><td class="r">R$ 13.930</td></tr><tr><td class="a">Decorado</td><td class="i">Cozinha e área de serviço</td><td class="r">R$ 39.250</td></tr><tr><td class="a"></td><td class="i">Sala e varanda</td><td class="r">R$ 15.900</td></tr><tr><td class="a"></td><td class="i">Quarto casal</td><td class="r">R$ 18.330</td></tr><tr><td class="a"></td><td class="i">Quarto solteiro</td><td class="r">R$ 15.320</td></tr><tr><td class="a"></td><td class="i">Banheiro social</td><td class="r">R$ 1.400</td></tr><tr><td class="a"></td><td class="i">Banheiro casal</td><td class="r">R$ 3.250</td></tr><tr><td class="a">Terceiros</td><td class="i">Espelhos</td><td class="r">R$ 3.660</td></tr>
       <tr class="tot"><td class="a"></td><td class="i">Investimento total</td>
         <td class="r">R$ 189.000</td></tr>
     </tbody>

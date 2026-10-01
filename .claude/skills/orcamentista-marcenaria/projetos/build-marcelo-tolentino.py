@@ -44,6 +44,15 @@ CSS = (open(P/'css-proposta.css', encoding='utf-8').read()
 .banda{margin:0 -19mm;height:52mm;}
 
 .lin2{display:grid;grid-template-columns:1fr 1fr;gap:6mm;margin-top:6mm;}
+.lin2.um{grid-template-columns:1fr;}
+.lin2.um > div{display:grid;grid-template-columns:auto 1fr;gap:0 9mm;
+  align-items:start;}
+.lin2.um .cod{grid-row:1;}
+.lin2.um .nm{grid-row:2;grid-column:1;}
+.lin2.um ul{grid-row:1/4;grid-column:2;margin-top:1mm;columns:2;
+  column-gap:8mm;}
+.lin2.um li{break-inside:avoid;}
+.lin2.um .gar{grid-row:3;grid-column:1;align-self:end;}
 .lin2 > div{border:1.5px solid var(--line);border-radius:6px;padding:9mm 8mm;}
 .lin2 > div.g{border-color:var(--gold);background:rgba(201,169,106,.07);}
 .lin2 .cod{font-family:'Cormorant Garamond',Georgia,serif;font-size:26pt;
@@ -178,7 +187,8 @@ p3 = f"""<div class="page"><div class="pad">
        'Base em <b>MDF Tauari Guararapes</b>. Superiores em <b>fecho toque</b> '
        'com <b>LED embutido</b>; torre de eletros com <b>porta escamoteável</b>; '
        'inferiores da bancada principal em <b>laca fosca verde com puxador '
-       'cava</b>. Cristaleira e divisória de correr em <b>perfil de alumínio '
+       'cava</b>, com a <b>caixa interna em melamínico de cor próxima à da '
+       'laca</b>. Cristaleira e divisória de correr em <b>perfil de alumínio '
        'preto fosco com vidro canelado</b>.')}
   {amb('08', 'Sala e varanda',
        'Estante do piso ao teto em <b>Tauari</b>, com <b>nichos em Carvalho '
@@ -220,11 +230,8 @@ def card(cen, g=False):
     }[cen]
     li = ''.join(f'<li>{x}</li>' for x in itens)
     return f"""<div class="{'g' if g else ''}">
-      <div class="cod serif">{'02' if g else '01'}</div>
       <div class="nm serif">Linha<br>{'Gold' if g else 'Standard'}</div>
-      <div style="font-size:7pt;letter-spacing:.18em;text-transform:uppercase;
-        font-weight:700;color:{'#9C7A3C' if g else '#1A1714'};margin-top:1.5mm;">
-        {'Upgrade disponível' if g else 'Linha desta proposta'}</div>
+
       <ul>{li}</ul>
       <div class="gar">Garantia Valvic de <b>{mt.GARANTIA[cen]}</b> sobre
         estrutura e ferragens</div>
@@ -234,27 +241,32 @@ p4 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">A especificação</div>
   <div class="h-sec serif">O que entra<br><em>em cada peça.</em></div>
   <div class="rule"></div>
-  <p class="lead">A marcenaria fecha na <b>linha Standard</b>. A linha Gold
-  permanece disponível como upgrade — muda a ferragem, a espessura da porta e
-  da prateleira, e o tempo de garantia. O desenho, as chapas de acabamento,
-  os espelhos, os vidros, a laca, o estofado e o LED são idênticos nas duas.</p>
+  <p class="lead">A ferragem, a chapa e a construção que entram em cada peça
+  desta proposta.</p>
 
-  <div class="lin2">{card('standard')}{card('gold', g=True)}</div>
+  <div class="lin2 um">{card('standard')}</div>
 
   <div class="mesmo">
-    <div><div class="k">Não muda</div><div class="d"><b>O desenho.</b> Mesma
-      modulação e mesma distribuição interna nos dois casos.</div></div>
-    <div><div class="k">Não muda</div><div class="d"><b>Acabamento.</b> Tauari,
-      Carvalho Munique, Preto Absoluto, Cinza Pixel, Cerrado Bold, Cinza
-      Essencial, a laca verde, os vidros e os espelhos.</div></div>
-    <div><div class="k">Não muda</div><div class="d"><b>Quem faz.</b> Equipe
-      própria do corte à instalação, com a medida conferida no local.</div></div>
+    <div><div class="k">Modulação</div><div class="d">A mesma em todo o
+      conjunto, do estande ao decorado — <b>distribuição interna desenhada
+      peça a peça</b>, não adaptada de módulo pronto.</div></div>
+    <div><div class="k">Acabamento</div><div class="d"><b>Tauari, Carvalho
+      Munique, Preto Absoluto, Cinza Pixel, Cerrado Bold e Cinza Essencial</b>,
+      mais a laca verde, os vidros e os espelhos.</div></div>
+    <div><div class="k">Quem faz</div><div class="d"><b>Equipe própria</b> do
+      corte à instalação, com a medida conferida no local antes de
+      cortar.</div></div>
   </div>
 
-  <div class="nota" style="margin-top:auto;">A garantia é <b>termo da Valvic
+  <div class="nota"><b>Onde há laca, a caixa acompanha.</b> Nos armários da
+  cozinha com frente em <b>laca fosca verde</b>, a estrutura interna sai em
+  <b>MDF melamínico de cor próxima à da laca</b>, não em branco. É o que
+  impede a caixa branca de aparecer na fresta entre as frentes e no vão da
+  porta aberta — a peça lê a mesma cor por fora e por dentro.</div>
+
+  <div class="nota">A garantia é <b>termo da Valvic
   sobre o conjunto que fornecemos e instalamos</b>, não repasse de garantia de
-  fabricante. A diferença entre as linhas está nos <b>ciclos testados de
-  abertura, no amortecimento e na regulagem</b>.</div>
+  fabricante, e cobre <b>estrutura e ferragens</b>.</div>
   {foot(4)}
 </div></div>"""
 
