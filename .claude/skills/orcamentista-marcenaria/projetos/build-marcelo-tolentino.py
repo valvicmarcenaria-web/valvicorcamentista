@@ -211,7 +211,9 @@ p3 = f"""<div class="page"><div class="pad">
        'No casal, gabinete em Tauari com puxador cava, <b>espelho com moldura '
        'em Tauari</b> e torre de prateleiras com <b>fundo em muxarabi</b> '
        'usinado. No social, gabinete em Tauari, espelho prata colado sobre '
-       'chapa e prateleiras com <b>LED embutido na lateral</b>.')}
+       'chapa e prateleiras com <b>LED embutido na lateral</b>. <b>Em frente '
+       'ao banheiro, painel liso no mesmo Tauari</b>, a detalhar em '
+       'projeto.')}
   {foot(3)}
 </div></div>"""
 

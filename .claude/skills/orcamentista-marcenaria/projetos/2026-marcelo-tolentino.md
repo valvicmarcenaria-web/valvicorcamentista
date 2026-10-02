@@ -827,3 +827,55 @@ piso de 35%** da casa.
 A bisseção arredonda cada ambiente para R$ 10 e o resíduo fazia o total
 fechar em R$ 188.990 em vez de R$ 189.000. O resto passa a ser lançado no
 **maior ambiente sem espelho**, para o documento bater no número combinado.
+
+---
+
+## 02/10/2026 — painel no lugar da pedra, alvo em 197k
+
+> *"vamos adicionar um painel de tauari no lounge, onde hoje no projeto é uma
+> pedra · tirar os painéis em frente ao banheiro e adicionar um painel em
+> frente · mude o valor do orçamento para 197k"*
+
+### ⭐ A pedra do lounge vira marcenaria
+
+O **painel em granito marrom tabaco escovado H=180** das elevações 02 (oeste,
+390) e 03 (sul, 280) era **da marmoraria**. Vira painel de **Tauari nosso**.
+
+A conta de altura fecha sozinha e confirma a leitura: **180 de Tauari embaixo
++ 80 de Carvalho Munique em cima = 260**, o pé-direito do lounge. A parede
+passa a ler madeira do piso ao teto, sem a quebra do granito no meio.
+
+**+12,1 m² de chapa** e **+3 chapas** no plano de corte. O Lounge sai de
+26,7 para **40,5 m²** — é o ambiente que mais cresceu nesta rodada.
+
+### O alvo
+
+| | preço | MC |
+|---|--:|--:|
+| sem alvo, pela escada de MC | 205.510 | 30,3% |
+| **fechado em 197k** ← entregue | **197.000** | **27,9%** |
+| desconto | 8.510 | −2,4 pontos |
+
+Continua **7,1 pontos abaixo do piso de 35%** da casa. O painel novo entrou
+e o preço subiu R$ 8.000 — ou seja, **o escopo a mais foi quase todo
+repassado**, e a MC praticamente não se mexeu (27,4% → 27,9%).
+
+### ⚠ O painel em frente ao banheiro: mencionado, não quantificado
+
+Pedi para localizar quais painéis saíam — não há banheiro nos ambientes do
+estande, e nem o lounge nem a sala do decorado têm painel voltado para
+banheiro nas plantas. Resposta: **"iremos adicionar, apenas mencione"**.
+
+Entrou no texto dos Banheiros, página 3: *"Em frente ao banheiro, painel liso
+no mesmo Tauari, **a detalhar em projeto**."* Nada foi retirado e nada foi
+lançado no motor.
+
+⛔ **Escopo aberto dentro de preço fechado.** É a mesma situação das
+divisórias do United: o preço está travado em R$ 197.000 e o painel ainda não
+tem medida. Quando o detalhamento vier, **o custo dele sai da margem**, que
+já está 7,1 pontos abaixo do piso.
+
+Para referência, ao custo e à MC deste contrato, **cada m² de painelaria de
+Tauari pesa cerca de R$ 320 de custo direto**. Um painel de, digamos, 3 m² ×
+2,50 consome ~R$ 2.400 — mais de um ponto de MC. Vale dimensioná-lo antes de
+assinar.
