@@ -6,16 +6,16 @@ Gerado de `corte-marcelo-tolentino.py` por
 
 | | standard | gold |
 |---|--:|--:|
-| chapas | **129** | **132** |
-| m² líquidos de peça | 450,73 | 450,73 |
-| aproveitamento médio | 69% | 67% |
-| custo de chapa | 49.090 | 52.080 |
+| chapas | **134** | **137** |
+| m² líquidos de peça | 464,59 | 464,59 |
+| aproveitamento médio | 68% | 67% |
+| custo de chapa | 51.590 | 54.580 |
 
 ## Chapa · standard
 
 | material | m² | chapas | aprov. | R$/chapa | R$ |
 |---|--:|--:|--:|--:|--:|
-| branco 15 | 164,63 | 44 | 74% | 260 | 11.440 |
+| branco 15 | 166,43 | 44 | 74% | 260 | 11.440 |
 | branco 6 | 52,43 | 15 | 69% | 190 | 2.850 |
 | Cerrado Bold 15 | 3,32 | 2 | 33% | 500 | 1.000 |
 | Cinza Essenc. 15 | 0,86 | 1 | 17% | 500 | 500 |
@@ -23,18 +23,18 @@ Gerado de `corte-marcelo-tolentino.py` por
 | Cinza Pixel 15 | 12,75 | 3 | 84% | 500 | 1.500 |
 | fórmica | 3,53 | 1 | 69% | 400 | 400 |
 | Preto Absol. 15 | 12,79 | 5 | 50% | 500 | 2.500 |
-| Tauari 15 | 125,96 | 36 | 69% | 500 | 18.000 |
+| Tauari 15 | 138,02 | 41 | 66% | 500 | 20.500 |
 | Tauari 18 | 24,76 | 7 | 70% | 600 | 4.200 |
 | Tauari 6 | 8,17 | 3 | 54% | 300 | 900 |
 | Verde p/ laca 15 | 6,91 | 2 | 68% | 500 | 1.000 |
 | Verde p/ laca 6 | 1,96 | 1 | 38% | 300 | 300 |
-| **TOTAL** | **450,73** | **129** | | | **49.090** |
+| **TOTAL** | **464,59** | **134** | | | **51.590** |
 
 ## Chapa · gold
 
 | material | m² | chapas | aprov. | R$/chapa | R$ |
 |---|--:|--:|--:|--:|--:|
-| branco 15 | 135,42 | 36 | 74% | 260 | 9.360 |
+| branco 15 | 137,22 | 36 | 75% | 260 | 9.360 |
 | branco 18 | 29,20 | 9 | 64% | 330 | 2.970 |
 | branco 6 | 52,43 | 15 | 69% | 190 | 2.850 |
 | Cerrado Bold 15 | 1,78 | 1 | 35% | 500 | 500 |
@@ -45,20 +45,20 @@ Gerado de `corte-marcelo-tolentino.py` por
 | Cinza Pixel 15 | 12,75 | 3 | 84% | 500 | 1.500 |
 | fórmica | 3,53 | 1 | 69% | 400 | 400 |
 | Preto Absol. 15 | 12,79 | 5 | 50% | 500 | 2.500 |
-| Tauari 15 | 96,63 | 28 | 68% | 500 | 14.000 |
+| Tauari 15 | 108,69 | 33 | 65% | 500 | 16.500 |
 | Tauari 18 | 54,09 | 16 | 66% | 600 | 9.600 |
 | Tauari 6 | 8,17 | 3 | 54% | 300 | 900 |
 | Verde p/ laca 15 | 6,91 | 2 | 68% | 500 | 1.000 |
 | Verde p/ laca 6 | 1,96 | 1 | 38% | 300 | 300 |
-| **TOTAL** | **450,73** | **132** | | | **52.080** |
+| **TOTAL** | **464,59** | **137** | | | **54.580** |
 
 ## Fita de borda
 
 | tipo | perímetro útil (m) | comprar com 10% (m) |
 |---|--:|--:|
-| branca (peça interna) | 791,77 | 870,95 |
-| de cor (peça aparente) | 1.323,60 | 1.455,96 |
-| **TOTAL** | **2.115,37** | **2.326,91** |
+| branca (peça interna) | 812,67 | 893,94 |
+| de cor (peça aparente) | 1.360,65 | 1.496,72 |
+| **TOTAL** | **2.173,32** | **2.390,65** |
 
 ## Ferragem
 
@@ -107,19 +107,19 @@ Total de terceirizados do projeto: **R$ 21.350**, igual nos dois cenários.
 
 | ambiente | m² de chapa | custo std | custo gold |
 |---|--:|--:|--:|
-| Salão principal | 120,92 | 25.791 | 28.655 |
-| Copa | 27,06 | 4.567 | 5.491 |
+| Salão principal | 120,92 | 25.856 | 28.719 |
+| Copa | 27,06 | 4.611 | 5.532 |
 | Sala de reunião | 8,49 | 2.476 | 2.872 |
-| Sala de ativos | 44,37 | 7.215 | 7.986 |
-| Lounge | 26,68 | 5.224 | 5.529 |
-| Gourmet | 47,77 | 8.443 | 8.889 |
-| Cozinha | 69,62 | 22.735 | 24.634 |
-| Sala | 40,85 | 9.167 | 9.452 |
-| Quarto casal | 29,73 | 10.478 | 11.904 |
-| Quarto solteiro | 25,16 | 8.727 | 10.169 |
-| Banheiro social | 3,17 | 1.481 | 1.613 |
-| Banheiro casal | 6,92 | 3.254 | 3.493 |
-| **TOTAL** | **450,73** | **109.559** | **120.687** |
+| Sala de ativos | 44,37 | 7.216 | 7.984 |
+| Lounge | 40,54 | 8.026 | 8.361 |
+| Gourmet | 47,77 | 8.637 | 9.108 |
+| Cozinha | 69,62 | 22.844 | 24.705 |
+| Sala | 40,85 | 9.346 | 9.624 |
+| Quarto casal | 29,73 | 10.548 | 11.978 |
+| Quarto solteiro | 25,16 | 8.799 | 10.240 |
+| Banheiro social | 3,17 | 1.488 | 1.615 |
+| Banheiro casal | 6,92 | 3.271 | 3.507 |
+| **TOTAL** | **464,59** | **113.118** | **124.246** |
 
-A lista de peças completa — **188 lançamentos** — está em
+A lista de peças completa — **191 lançamentos** — está em
 `plano-de-corte-marcelo-tolentino.csv`.

@@ -258,6 +258,16 @@ a(K,'CM18','Faixa sul',                    80, 70, 4)   # 280 × 80
 a(K,'CM18','Parede leste',                260, 61, 7)   # 427 × 260
 a(K,'BR15','Montante de fixação',         260, 10, 12)
 
+K = 'Lounge · painel Tauari no lugar da pedra'
+# ⭐ [Jonathan 02/10] "adicionar um painel de Tauari no lounge, onde hoje no
+#   projeto é uma pedra". A pedra é o PAINEL EM GRANITO MARROM TABACO
+#   ESCOVADO H=180 das elevações 02 (oeste, 390) e 03 (sul, 280) — era da
+#   marmoraria. Vira marcenaria nossa, em Tauari.
+#   A faixa de 80 em Carvalho Munique continua por cima: 180 + 80 = 260.
+a(K,'TA18','Painel oeste',                180, 65, 6)   # 390 de extensão
+a(K,'TA18','Painel sul',                  180, 70, 4)   # 280 de extensão
+a(K,'BR15','Montante de fixação',         180, 10, 10)
+
 K = 'Lounge · painel Tauari com porta'
 # 187,5 × 260, porta de abrir de 100 com puxador cava
 a(K,'TA18','Painel',                      260, 44, 2)
@@ -669,7 +679,7 @@ MC_ALVO = {c: {am: sum(CDI[c][m]*MC_ITEM[m][c] for m in ITENS_DE[am])/CD_AMB[c][
 #   O alvo vale para a linha STANDARD, que é a que fecha. A escada de MC por
 #   complexidade desce um mesmo delta inteira, por bisseção, para que a
 #   distância entre painelaria, armário e item especial continue valendo.
-ALVO_STD = 189000.0
+ALVO_STD = 197000.0   # ⭐ [Jonathan 02/10]
 def _tot_cen(c, d):
     return sum(round(CD_AMB[c][am]/(BASE - (MC_ALVO[c][am] + d))/10)*10 for am in AMBS)
 _lo, _hi = -0.35, 0.0
@@ -772,11 +782,11 @@ if __name__ == '__main__':
     _sem = _tot_cen('standard', 0.0)
     print(f'  {"sem alvo, pela escada de MC":<34}R$ {br(_sem):>9}'
           f'   MC {(BASE-CD["standard"]/_sem)*100:>5.1f}%')
-    print(f'  {"fechado em 189k ← entregue":<34}R$ {br(TOT["standard"]):>9}'
+    print(f'  {"fechado no alvo ← entregue":<34}R$ {br(TOT["standard"]):>9}'
           f'   MC {(BASE-CD["standard"]/TOT["standard"])*100:>5.1f}%')
     print(f'  {"desconto":<34}R$ {br(_sem-TOT["standard"]):>9}'
           f'   {DELTA_FECH["standard"]*100:>5.1f} pontos de MC')
-    print(f'  ⚠ A standard já rodava abaixo do piso de 35% da casa. Em 189k ela')
+    print(f'  ⚠ A standard já rodava abaixo do piso de 35% da casa. No alvo ela')
     print(f'    roda a {(BASE-CD["standard"]/TOT["standard"])*100:.1f}% — '
           f'{35-(BASE-CD["standard"]/TOT["standard"])*100:.1f} pontos abaixo do piso.')
 

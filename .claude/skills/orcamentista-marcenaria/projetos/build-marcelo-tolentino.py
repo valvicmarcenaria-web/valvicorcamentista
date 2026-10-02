@@ -151,9 +151,12 @@ p2 = f"""<div class="page"><div class="pad">
        'Absoluto Duratex</b> com <b>bite usinado entre as folhas</b>, e a '
        'recepção recebe <b>bancada em Tauari com frente inclinada</b>.')}
   {amb('02', 'Lounge',
-       'Painel liso do piso ao teto em <b>MDF Carvalho Munique Duratex</b>, e '
-       'painel em <b>MDF Tauari Guararapes</b> com <b>porta de passagem '
-       'embutida e puxador cava</b> — fechada, a porta desaparece no painel.')}
+       'As paredes do lounge inteiras em marcenaria: a <b>faixa alta em MDF '
+       'Carvalho Munique Duratex</b> e, abaixo dela, <b>painel em MDF Tauari '
+       'Guararapes no lugar da pedra</b> — a parede lê madeira do piso ao '
+       'teto, sem a quebra do granito. Mais o painel em Tauari com <b>porta '
+       'de passagem embutida e puxador cava</b>: fechada, a porta desaparece '
+       'no painel.')}
   {amb('03', 'Sala de ativos',
        'Bancadas de trabalho em <b>MDF Carvalho Munique Guararapes</b> com '
        '<b>canaleta de fiação usinada sob o tampo</b>. Divisórias entre '
