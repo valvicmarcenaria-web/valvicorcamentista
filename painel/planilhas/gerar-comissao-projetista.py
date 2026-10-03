@@ -11,9 +11,12 @@ pessoa que recebe — e regra de comissão que não está escrita vira discussã
 
 A conta: a comissão incide sobre o **líquido**, não sobre o contrato.
 
-    líquido  = valor do contrato − RT − taxa de máquina − nota fiscal
-               − comissão do vendedor − outros custos de venda
-    comissão = líquido × percentual (1% por padrão, editável por linha)
+Os custos de venda são lançados em PERCENTUAL do contrato, não em reais — é assim que
+eles são combinados (nota 6%, taxa da máquina 1,5%, RT 5%...). A planilha converte.
+
+    custos   = valor do contrato × (nota% + taxa% + RT% + vendedor% + outros%)
+    líquido  = valor do contrato − custos
+    comissão = líquido × percentual do projetista (1% por padrão, editável por linha)
 
 EDITE ESTE SCRIPT, NUNCA O .XLSX — a próxima geração sobrescreve o arquivo.
 
@@ -25,6 +28,8 @@ import sys
 import unicodedata
 
 from openpyxl import Workbook
+from openpyxl.chart import BarChart, DoughnutChart, Reference
+from openpyxl.chart.label import DataLabelList
 from openpyxl.formatting.rule import FormulaRule
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.utils import get_column_letter
@@ -50,17 +55,24 @@ MES_EXT = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
            'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
 STATUS = ['Em aberto', 'Pago']
 
-# (título, largura, tipo) — 'e' preenche, 'c' calcula, 'v' é a comissão do vendedor
+# (título, largura, tipo)
+#   'e' preenche        'p' preenche em percentual do contrato
+#   'c' calcula         'v' calcula e fica em destaque (a comissão do projetista)
 COLS = [
     ('Mês', 8, 'e'), ('Cliente', 24, 'e'), ('Ambiente / projeto', 26, 'e'),
     ('Valor do contrato', 16, 'e'),
-    ('RT', 13, 'e'), ('Taxa de máquina', 14, 'e'), ('Nota fiscal', 13, 'e'),
-    ('Comissão do vendedor', 15, 'v'), ('Outros custos', 13, 'e'),
+    ('Nota fiscal', 11, 'p'), ('Taxa de máquina', 12, 'p'), ('RT', 11, 'p'),
+    ('Comissão do vendedor', 13, 'p'), ('Outros custos', 11, 'p'),
     ('Total de custos', 15, 'c'), ('Valor líquido', 16, 'c'),
-    ('%', 7, 'e'), ('Comissão a receber', 17, 'c'),
+    ('%', 7, 'e'), ('Comissão a receber', 18, 'v'),
     ('Status', 13, 'e'), ('Pagamento em', 13, 'e'),
     ('Conferir', 26, 'c'),
 ]
+CUSTOS = 'E'            # primeira coluna de custo
+CUSTOS_FIM = 'I'        # última coluna de custo
+TETO_CUSTO = 0.40       # soma de custos acima disto acende a coluna Conferir.
+                        # Na prática os projetos ficam entre 15% e 22%, então 40% dá folga
+                        # e ainda pega o erro clássico: 60% digitado no lugar de 6%.
 PRIMEIRA, ULTIMA = 4, 3 + LINHAS
 
 
@@ -100,8 +112,8 @@ def aba_comissoes(wb, nome):
     ws.title = 'Comissões'
     ws.sheet_properties.tabColor = GOLD
     faixa(ws, 1, f'VALVIC MARCENARIA   ·   COMISSÕES   ·   {nome.upper()}',
-          'A comissão incide sobre o valor líquido — o contrato menos os custos de venda. '
-          'Preencha as colunas claras; as azuis se calculam sozinhas.', len(COLS))
+          'Os custos de venda entram em PERCENTUAL do contrato. A comissão incide sobre o '
+          'valor líquido. Preencha as colunas claras; as azuis se calculam sozinhas.', len(COLS))
 
     for i, (titulo, larg, tipo) in enumerate(COLS, start=1):
         c = ws.cell(row=3, column=i, value=titulo)
@@ -115,33 +127,36 @@ def aba_comissoes(wb, nome):
     ws.row_dimensions[3].height = 32
     ws.freeze_panes = 'D4'
 
-    din = {4, 5, 6, 7, 8, 9, 10, 11, 13}
+    din = {4, 10, 11, 13}       # colunas em reais
+    pct = {5, 6, 7, 8, 9, 12}   # colunas em percentual
     for r in range(PRIMEIRA, ULTIMA + 1):
         par = (r - PRIMEIRA) % 2
         for i, (_, _, tipo) in enumerate(COLS, start=1):
             c = ws.cell(row=r, column=i)
             c.border = BORDA
-            if tipo == 'c':
+            if tipo == 'v':
+                c.fill = PatternFill('solid', fgColor=GOLDBG)
+                c.font = Font(name='Calibri', size=11, bold=True, color=NAVY)
+            elif tipo == 'c':
                 c.fill = PatternFill('solid', fgColor=CALC)
                 c.font = Font(name='Calibri', size=10, color=NAVY2, italic=True)
-            elif tipo == 'v':
-                c.fill = PatternFill('solid', fgColor=GOLDBG)
-                c.font = Font(name='Calibri', size=10, color=INK)
             else:
                 c.fill = PatternFill('solid', fgColor=ZEBRA if par else 'FFFFFF')
                 c.font = Font(name='Calibri', size=10, color=INK)
             if i in din:
                 c.number_format = DIN
-        ws.cell(row=r, column=12).number_format = PCT
+            elif i in pct:
+                c.number_format = PCT
         ws.cell(row=r, column=15).number_format = DATA
+        soma = f'SUM(${CUSTOS}{r}:${CUSTOS_FIM}{r})'
         # ── as contas ──
-        ws.cell(row=r, column=10, value=f'=IF($D{r}="","",SUM($E{r}:$I{r}))')
+        ws.cell(row=r, column=10, value=f'=IF($D{r}="","",ROUND($D{r}*{soma},2))')
         ws.cell(row=r, column=11, value=f'=IF($D{r}="","",$D{r}-$J{r})')
         ws.cell(row=r, column=12, value=f'=IF($D{r}="","",{PCT_PADRAO})')
         ws.cell(row=r, column=13, value=f'=IF($D{r}="","",ROUND($K{r}*$L{r},2))')
         ws.cell(row=r, column=16, value=(
             f'=IF($D{r}="","",'
-            f'IF($J{r}>$D{r},"custos maiores que o contrato",'
+            f'IF({soma}>={TETO_CUSTO},"custos acima de {TETO_CUSTO:.0%} do contrato",'
             f'IF(AND($N{r}="Pago",$O{r}=""),"marcado como pago, sem a data",'
             f'IF($A{r}="","falta o mês",""))))'))
         ws.cell(row=r, column=16).font = Font(name='Calibri', size=9.5, color='B0413F', bold=True)
@@ -177,64 +192,61 @@ def aba_comissoes(wb, nome):
 def aba_painel(wb, nome):
     ws = wb.create_sheet('Painel')
     ws.sheet_properties.tabColor = NAVY2
-    for col, larg in zip('ABCDEFG', [4, 26, 15, 16, 16, 16, 16]):
+    for col, larg in zip('ABCDEFGHI', [4, 24, 15, 15, 15, 15, 15, 15, 15]):
         ws.column_dimensions[col].width = larg
     faixa(ws, 1, f'PAINEL   ·   {nome.upper()}',
-          'Tudo se calcula a partir da aba Comissões. Nada se digita aqui.', 7)
+          'Tudo se calcula a partir da aba Comissões. Nada se digita aqui.', 9)
 
     C = "Comissões"
     def band(linha, texto):
-        ws.merge_cells(start_row=linha, start_column=2, end_row=linha, end_column=7)
+        ws.merge_cells(start_row=linha, start_column=2, end_row=linha, end_column=9)
         c = ws.cell(row=linha, column=2, value=texto)
         c.fill = PatternFill('solid', fgColor=GOLDBG)
         c.font = Font(name='Calibri', size=10, bold=True, color=NAVY2)
         c.alignment = Alignment(horizontal='left', vertical='center', indent=1)
         ws.row_dimensions[linha].height = 20
 
+    # ── quatro indicadores do ano, lado a lado ──
     band(4, 'NO ANO')
     kpis = [
-        ('Projetos lançados', f'=COUNTIF(\'{C}\'!$D:$D,">0")', '0'),
-        ('Custos de venda', f"=SUM('{C}'!$J:$J)", DIN),
-        ('Valor líquido', f"=SUM('{C}'!$K:$K)", DIN),
-        ('Comissão total', f"=SUM('{C}'!$M:$M)", DIN),
-        ('Já paga', f"=SUMIF('{C}'!$N:$N,\"Pago\",'{C}'!$M:$M)", DIN),
-        ('Em aberto', f"=SUMIF('{C}'!$N:$N,\"Em aberto\",'{C}'!$M:$M)", DIN),
+        ('Projetos lançados', f'=COUNTIF(\'{C}\'!$D:$D,">0")', '0', NAVY),
+        ('Comissão total', f"=SUM('{C}'!$M:$M)", DIN, NAVY),
+        ('Já paga', f"=SUMIF('{C}'!$N:$N,\"Pago\",'{C}'!$M:$M)", DIN, OK),
+        ('Em aberto', f"=SUMIF('{C}'!$N:$N,\"Em aberto\",'{C}'!$M:$M)", DIN, ABERTO),
     ]
-    linha = 5
-    for i, (rot, formula, fmt) in enumerate(kpis):
-        col = 2 + (i % 3) * 2
-        if i == 3:
-            linha = 8
-        r = ws.cell(row=linha, column=col, value=rot)
+    for i, (rot, formula, fmt, cor) in enumerate(kpis):
+        col = 2 + i * 2
+        r = ws.cell(row=5, column=col, value=rot)
         r.font = Font(name='Calibri', size=9, bold=True, color=MUTED)
-        ws.merge_cells(start_row=linha, start_column=col, end_row=linha, end_column=col + 1)
-        v = ws.cell(row=linha + 1, column=col, value=formula)
+        ws.merge_cells(start_row=5, start_column=col, end_row=5, end_column=col + 1)
+        v = ws.cell(row=6, column=col, value=formula)
         v.number_format = fmt
-        cor = OK if rot == 'Já paga' else (ABERTO if rot == 'Em aberto' else NAVY)
-        v.font = Font(name='Calibri', size=15, bold=True, color=cor)
+        v.font = Font(name='Calibri', size=16, bold=True, color=cor)
         v.alignment = Alignment(horizontal='left', vertical='center')
-        ws.merge_cells(start_row=linha + 1, start_column=col, end_row=linha + 1, end_column=col + 1)
-        ws.row_dimensions[linha + 1].height = 24
+        ws.merge_cells(start_row=6, start_column=col, end_row=6, end_column=col + 1)
+    ws.row_dimensions[6].height = 26
 
-    band(11, 'MÊS A MÊS')
-    cab = ['Mês', 'Projetos', 'Líquido', 'Comissão', 'Paga', 'Em aberto']
+    # ── mês a mês ──
+    band(8, 'MÊS A MÊS')
+    cab = ['Mês', 'Projetos', 'Comissão', 'Paga', 'Em aberto']
+    ULT = 2 + len(cab) - 1                      # última coluna da tabela (F)
     for i, t in enumerate(cab):
-        c = ws.cell(row=12, column=2 + i, value=t)
+        c = ws.cell(row=9, column=2 + i, value=t)
         c.fill = PatternFill('solid', fgColor=NAVY)
         c.font = Font(name='Calibri', size=9.5, bold=True, color=GOLDSOFT)
         c.alignment = Alignment(horizontal='center', vertical='center')
         c.border = BORDA
-    ws.row_dimensions[12].height = 22
+    ws.row_dimensions[9].height = 22
 
+    P1, P2 = 10, 21                             # primeiro e último mês
     for i, (m, ext) in enumerate(zip(MESES, MES_EXT)):
-        r = 13 + i
+        r = P1 + i
         ws.cell(row=r, column=2, value=ext).font = Font(name='Calibri', size=10, bold=True, color=NAVY2)
         ws.cell(row=r, column=3, value=f"=COUNTIFS('{C}'!$A:$A,\"{m}\",'{C}'!$D:$D,\">0\")")
-        ws.cell(row=r, column=4, value=f"=SUMIF('{C}'!$A:$A,\"{m}\",'{C}'!$K:$K)")
-        ws.cell(row=r, column=5, value=f"=SUMIF('{C}'!$A:$A,\"{m}\",'{C}'!$M:$M)")
-        ws.cell(row=r, column=6, value=f"=SUMIFS('{C}'!$M:$M,'{C}'!$A:$A,\"{m}\",'{C}'!$N:$N,\"Pago\")")
-        ws.cell(row=r, column=7, value=f"=SUMIFS('{C}'!$M:$M,'{C}'!$A:$A,\"{m}\",'{C}'!$N:$N,\"Em aberto\")")
-        for c in range(2, 8):
+        ws.cell(row=r, column=4, value=f"=SUMIF('{C}'!$A:$A,\"{m}\",'{C}'!$M:$M)")
+        ws.cell(row=r, column=5, value=f"=SUMIFS('{C}'!$M:$M,'{C}'!$A:$A,\"{m}\",'{C}'!$N:$N,\"Pago\")")
+        ws.cell(row=r, column=6, value=f"=SUMIFS('{C}'!$M:$M,'{C}'!$A:$A,\"{m}\",'{C}'!$N:$N,\"Em aberto\")")
+        for c in range(2, ULT + 1):
             cel = ws.cell(row=r, column=c)
             cel.border = BORDA
             cel.fill = PatternFill('solid', fgColor=ZEBRA if i % 2 else 'FFFFFF')
@@ -242,22 +254,50 @@ def aba_painel(wb, nome):
                 cel.number_format = DIN
             if c == 3:
                 cel.alignment = Alignment(horizontal='center')
-            if c not in (2,):
+            if c != 2:
                 cel.font = Font(name='Calibri', size=10, color=NAVY2)
 
-    r = 25
-    ws.cell(row=r, column=2, value='Total do ano').font = Font(name='Calibri', size=10, bold=True, color=GOLDSOFT)
-    for c in range(3, 8):
+    TOT = P2 + 1                                # linha do total do ano (22)
+    ws.cell(row=TOT, column=2, value='Total do ano').font = Font(
+        name='Calibri', size=10, bold=True, color=GOLDSOFT)
+    for c in range(3, ULT + 1):
         L = get_column_letter(c)
-        cel = ws.cell(row=r, column=c, value=f'=SUM({L}13:{L}24)')
+        cel = ws.cell(row=TOT, column=c, value=f'=SUM({L}{P1}:{L}{P2})')
         cel.number_format = '0' if c == 3 else DIN
         cel.font = Font(name='Calibri', size=10, bold=True, color=GOLDSOFT)
-    for c in range(2, 8):
-        cel = ws.cell(row=r, column=c)
+    for c in range(2, ULT + 1):
+        cel = ws.cell(row=TOT, column=c)
         cel.fill = PatternFill('solid', fgColor=NAVY)
         cel.border = BORDA
         if c == 3:
             cel.alignment = Alignment(horizontal='center')
+
+    # ── gráficos: o ano mês a mês, e a divisão entre pago e em aberto ──
+    band(24, 'GRÁFICOS')
+
+    barras = BarChart()
+    barras.type = 'col'
+    barras.title = 'Comissão por mês'
+    barras.y_axis.title = None
+    barras.x_axis.title = None
+    barras.legend = None
+    barras.height, barras.width = 8.6, 14.5
+    barras.add_data(Reference(ws, min_col=4, min_row=9, max_row=P2), titles_from_data=True)
+    barras.set_categories(Reference(ws, min_col=2, min_row=P1, max_row=P2))
+    barras.series[0].graphicalProperties.solidFill = GOLD
+    barras.series[0].graphicalProperties.line.solidFill = GOLD
+    ws.add_chart(barras, 'B26')
+
+    rosca = DoughnutChart(holeSize=52)
+    rosca.title = 'Comissão paga e em aberto'
+    rosca.height, rosca.width = 8.6, 9.5
+    rosca.add_data(Reference(ws, min_col=5, max_col=6, min_row=TOT, max_row=TOT), from_rows=True)
+    rosca.set_categories(Reference(ws, min_col=5, max_col=6, min_row=9, max_row=9))
+    rosca.dataLabels = DataLabelList()
+    rosca.dataLabels.showVal = False
+    rosca.dataLabels.showPercent = True
+    ws.add_chart(rosca, 'F26')
+
     return ws
 
 
@@ -270,18 +310,23 @@ def aba_regra(wb, nome):
           'A mesma regra para todos os projetos. Qualquer dúvida se resolve olhando esta aba.', 3)
     blocos = [
         ('A conta', 'A comissão incide sobre o VALOR LÍQUIDO do projeto, nunca sobre o valor de contrato. '
-                    'Líquido = contrato − RT − taxa de máquina − nota fiscal − comissão do vendedor − outros custos de venda.'),
+                    'Líquido = valor do contrato − custos de venda. Os custos de venda são a soma dos '
+                    'percentuais lançados (nota fiscal, taxa de máquina, RT, comissão do vendedor e outros) '
+                    'aplicada sobre o contrato.'),
         ('O percentual', f'{PCT_PADRAO:.0%} sobre o líquido. A coluna "%" existe em cada linha porque um projeto '
                          'pode ter percentual diferente — quando houver, o combinado é anotado ali antes do lançamento.'),
-        ('Custos de venda', 'São os custos que a venda carrega e que não ficam com a empresa: RT da arquiteta ou '
-                            'decoradora, taxa da máquina de cartão, imposto da nota fiscal, a comissão do vendedor '
-                            'e eventuais outros. Cada um tem a sua coluna, para ficar à vista de onde saiu.'),
+        ('Custos de venda', 'São os custos que a venda carrega e que não ficam com a empresa: imposto da nota '
+                            'fiscal, taxa da máquina de cartão, RT da arquiteta ou decoradora, a comissão do '
+                            'vendedor e eventuais outros. Cada um tem a sua coluna e é lançado em PERCENTUAL '
+                            'do contrato — é como eles são combinados. A planilha converte para reais.'),
         ('Status', 'EM ABERTO — a comissão está na fila, a pagar. PAGO — pago, com a data preenchida. '
                    'Só entra nesta planilha o projeto que já foi direcionado para ela.'),
         ('Quem preenche', 'A Valvic lança e atualiza. A planilha é compartilhada com o projetista para '
                           'acompanhamento — conferir é bem-vindo; qualquer divergência se fala antes do pagamento.'),
-        ('A coluna Conferir', 'Acende sozinha quando falta o mês, quando o projeto está marcado como pago sem data, '
-                              'ou quando os custos de venda somam mais que o contrato. É uma rede contra erro de digitação.'),
+        ('A coluna Conferir', 'Acende sozinha quando falta o mês, quando o projeto está marcado como pago sem '
+                              f'data, ou quando os percentuais de custo somam mais de {TETO_CUSTO:.0%} do '
+                              'contrato. É uma rede contra erro de digitação: um 60% no lugar de 6%. Projeto '
+                              'que realmente passe disso existe — aí é só conferir e seguir.'),
     ]
     r = 4
     for titulo, texto in blocos:
