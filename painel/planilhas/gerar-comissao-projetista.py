@@ -37,7 +37,7 @@ LINHAS = 120          # 12 meses × 10 projetos, o teto que o Jonathan indicou
 NAVY, NAVY2, GOLD = '0E2038', '16314F', 'C2A05A'
 GOLDSOFT, GOLDBG, CREME = 'D8BD80', 'F6EDD6', 'FBFAF7'
 INK, MUTED, LINHA, ZEBRA = '1B2733', '6C7785', 'E8E3D8', 'F7F5EF'
-OK, OKBG, ABERTO, ABERTOBG, PREV, CALC = '2F7D4F', 'E6F0E9', 'A8700F', 'FAEFDC', '2F5D8C', 'EAF1F8'
+OK, OKBG, ABERTO, ABERTOBG, CALC = '2F7D4F', 'E6F0E9', 'A8700F', 'FAEFDC', 'EAF1F8'
 
 _f = Side(style='thin', color='D6DBE2')
 BORDA = Border(left=_f, right=_f, top=_f, bottom=_f)
@@ -48,7 +48,7 @@ DATA = 'DD/MM/YYYY'
 MESES = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
 MES_EXT = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
            'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
-STATUS = ['Previsto', 'Em aberto', 'Pago']
+STATUS = ['Em aberto', 'Pago']
 
 # (título, largura, tipo) — 'e' preenche, 'c' calcula, 'v' é a comissão do vendedor
 COLS = [
@@ -58,7 +58,7 @@ COLS = [
     ('Comissão do vendedor', 15, 'v'), ('Outros custos', 13, 'e'),
     ('Total de custos', 15, 'c'), ('Valor líquido', 16, 'c'),
     ('%', 7, 'e'), ('Comissão a receber', 17, 'c'),
-    ('Status', 13, 'e'), ('Pagamento em', 13, 'e'), ('Referência', 16, 'e'),
+    ('Status', 13, 'e'), ('Pagamento em', 13, 'e'),
     ('Conferir', 26, 'c'),
 ]
 PRIMEIRA, ULTIMA = 4, 3 + LINHAS
@@ -139,12 +139,12 @@ def aba_comissoes(wb, nome):
         ws.cell(row=r, column=11, value=f'=IF($D{r}="","",$D{r}-$J{r})')
         ws.cell(row=r, column=12, value=f'=IF($D{r}="","",{PCT_PADRAO})')
         ws.cell(row=r, column=13, value=f'=IF($D{r}="","",ROUND($K{r}*$L{r},2))')
-        ws.cell(row=r, column=17, value=(
+        ws.cell(row=r, column=16, value=(
             f'=IF($D{r}="","",'
             f'IF($J{r}>$D{r},"custos maiores que o contrato",'
             f'IF(AND($N{r}="Pago",$O{r}=""),"marcado como pago, sem a data",'
             f'IF($A{r}="","falta o mês",""))))'))
-        ws.cell(row=r, column=17).font = Font(name='Calibri', size=9.5, color='B0413F', bold=True)
+        ws.cell(row=r, column=16).font = Font(name='Calibri', size=9.5, color='B0413F', bold=True)
 
     menu(ws, MESES, f'A{PRIMEIRA}:A{ULTIMA}')
     menu(ws, STATUS, f'N{PRIMEIRA}:N{ULTIMA}')
@@ -155,13 +155,11 @@ def aba_comissoes(wb, nome):
     ws.conditional_formatting.add(f'N{PRIMEIRA}:N{ULTIMA}',
         FormulaRule(formula=[f'$N{PRIMEIRA}="Em aberto"'],
                     fill=PatternFill('solid', fgColor=ABERTOBG), font=Font(color=ABERTO, bold=True)))
-    ws.conditional_formatting.add(f'N{PRIMEIRA}:N{ULTIMA}',
-        FormulaRule(formula=[f'$N{PRIMEIRA}="Previsto"'], font=Font(color=PREV, bold=True)))
-    ws.conditional_formatting.add(f'Q{PRIMEIRA}:Q{ULTIMA}',
-        FormulaRule(formula=[f'$Q{PRIMEIRA}<>""'], fill=PatternFill('solid', fgColor='FBE3E2')))
+    ws.conditional_formatting.add(f'P{PRIMEIRA}:P{ULTIMA}',
+        FormulaRule(formula=[f'$P{PRIMEIRA}<>""'], fill=PatternFill('solid', fgColor='FBE3E2')))
 
     # filtro no cabecalho: permite isolar um mes ou um status sem mexer em nada
-    ws.auto_filter.ref = f'A3:Q{ULTIMA}'
+    ws.auto_filter.ref = f'A3:P{ULTIMA}'
 
     # impressao: paisagem, uma pagina de largura, cabecalho repetido a cada folha
     ws.page_setup.orientation = 'landscape'
@@ -179,14 +177,14 @@ def aba_comissoes(wb, nome):
 def aba_painel(wb, nome):
     ws = wb.create_sheet('Painel')
     ws.sheet_properties.tabColor = NAVY2
-    for col, larg in zip('ABCDEFGH', [4, 26, 15, 15, 15, 15, 15, 15]):
+    for col, larg in zip('ABCDEFG', [4, 26, 15, 16, 16, 16, 16]):
         ws.column_dimensions[col].width = larg
     faixa(ws, 1, f'PAINEL   ·   {nome.upper()}',
-          'Tudo se calcula a partir da aba Comissões. Nada se digita aqui.', 8)
+          'Tudo se calcula a partir da aba Comissões. Nada se digita aqui.', 7)
 
     C = "Comissões"
     def band(linha, texto):
-        ws.merge_cells(start_row=linha, start_column=2, end_row=linha, end_column=8)
+        ws.merge_cells(start_row=linha, start_column=2, end_row=linha, end_column=7)
         c = ws.cell(row=linha, column=2, value=texto)
         c.fill = PatternFill('solid', fgColor=GOLDBG)
         c.font = Font(name='Calibri', size=10, bold=True, color=NAVY2)
@@ -196,18 +194,16 @@ def aba_painel(wb, nome):
     band(4, 'NO ANO')
     kpis = [
         ('Projetos lançados', f'=COUNTIF(\'{C}\'!$D:$D,">0")', '0'),
-        ('Valor de contrato', f"=SUM('{C}'!$D:$D)", DIN),
         ('Custos de venda', f"=SUM('{C}'!$J:$J)", DIN),
         ('Valor líquido', f"=SUM('{C}'!$K:$K)", DIN),
         ('Comissão total', f"=SUM('{C}'!$M:$M)", DIN),
         ('Já paga', f"=SUMIF('{C}'!$N:$N,\"Pago\",'{C}'!$M:$M)", DIN),
         ('Em aberto', f"=SUMIF('{C}'!$N:$N,\"Em aberto\",'{C}'!$M:$M)", DIN),
-        ('Prevista', f"=SUMIF('{C}'!$N:$N,\"Previsto\",'{C}'!$M:$M)", DIN),
     ]
     linha = 5
     for i, (rot, formula, fmt) in enumerate(kpis):
-        col = 2 + (i % 4) * 2
-        if i == 4:
+        col = 2 + (i % 3) * 2
+        if i == 3:
             linha = 8
         r = ws.cell(row=linha, column=col, value=rot)
         r.font = Font(name='Calibri', size=9, bold=True, color=MUTED)
@@ -221,7 +217,7 @@ def aba_painel(wb, nome):
         ws.row_dimensions[linha + 1].height = 24
 
     band(11, 'MÊS A MÊS')
-    cab = ['Mês', 'Projetos', 'Contrato', 'Líquido', 'Comissão', 'Paga', 'Em aberto']
+    cab = ['Mês', 'Projetos', 'Líquido', 'Comissão', 'Paga', 'Em aberto']
     for i, t in enumerate(cab):
         c = ws.cell(row=12, column=2 + i, value=t)
         c.fill = PatternFill('solid', fgColor=NAVY)
@@ -234,12 +230,11 @@ def aba_painel(wb, nome):
         r = 13 + i
         ws.cell(row=r, column=2, value=ext).font = Font(name='Calibri', size=10, bold=True, color=NAVY2)
         ws.cell(row=r, column=3, value=f"=COUNTIFS('{C}'!$A:$A,\"{m}\",'{C}'!$D:$D,\">0\")")
-        ws.cell(row=r, column=4, value=f"=SUMIF('{C}'!$A:$A,\"{m}\",'{C}'!$D:$D)")
-        ws.cell(row=r, column=5, value=f"=SUMIF('{C}'!$A:$A,\"{m}\",'{C}'!$K:$K)")
-        ws.cell(row=r, column=6, value=f"=SUMIF('{C}'!$A:$A,\"{m}\",'{C}'!$M:$M)")
-        ws.cell(row=r, column=7, value=f"=SUMIFS('{C}'!$M:$M,'{C}'!$A:$A,\"{m}\",'{C}'!$N:$N,\"Pago\")")
-        ws.cell(row=r, column=8, value=f"=SUMIFS('{C}'!$M:$M,'{C}'!$A:$A,\"{m}\",'{C}'!$N:$N,\"Em aberto\")")
-        for c in range(2, 9):
+        ws.cell(row=r, column=4, value=f"=SUMIF('{C}'!$A:$A,\"{m}\",'{C}'!$K:$K)")
+        ws.cell(row=r, column=5, value=f"=SUMIF('{C}'!$A:$A,\"{m}\",'{C}'!$M:$M)")
+        ws.cell(row=r, column=6, value=f"=SUMIFS('{C}'!$M:$M,'{C}'!$A:$A,\"{m}\",'{C}'!$N:$N,\"Pago\")")
+        ws.cell(row=r, column=7, value=f"=SUMIFS('{C}'!$M:$M,'{C}'!$A:$A,\"{m}\",'{C}'!$N:$N,\"Em aberto\")")
+        for c in range(2, 8):
             cel = ws.cell(row=r, column=c)
             cel.border = BORDA
             cel.fill = PatternFill('solid', fgColor=ZEBRA if i % 2 else 'FFFFFF')
@@ -252,12 +247,12 @@ def aba_painel(wb, nome):
 
     r = 25
     ws.cell(row=r, column=2, value='Total do ano').font = Font(name='Calibri', size=10, bold=True, color=GOLDSOFT)
-    for c in range(3, 9):
+    for c in range(3, 8):
         L = get_column_letter(c)
         cel = ws.cell(row=r, column=c, value=f'=SUM({L}13:{L}24)')
         cel.number_format = '0' if c == 3 else DIN
         cel.font = Font(name='Calibri', size=10, bold=True, color=GOLDSOFT)
-    for c in range(2, 9):
+    for c in range(2, 8):
         cel = ws.cell(row=r, column=c)
         cel.fill = PatternFill('solid', fgColor=NAVY)
         cel.border = BORDA
@@ -281,8 +276,8 @@ def aba_regra(wb, nome):
         ('Custos de venda', 'São os custos que a venda carrega e que não ficam com a empresa: RT da arquiteta ou '
                             'decoradora, taxa da máquina de cartão, imposto da nota fiscal, a comissão do vendedor '
                             'e eventuais outros. Cada um tem a sua coluna, para ficar à vista de onde saiu.'),
-        ('Status', 'PREVISTO — o projeto está lançado mas a comissão ainda não entrou na fila de pagamento. '
-                   'EM ABERTO — está na fila, a pagar. PAGO — pago, com data e referência preenchidas.'),
+        ('Status', 'EM ABERTO — a comissão está na fila, a pagar. PAGO — pago, com a data preenchida. '
+                   'Só entra nesta planilha o projeto que já foi direcionado para ela.'),
         ('Quem preenche', 'A Valvic lança e atualiza. A planilha é compartilhada com o projetista para '
                           'acompanhamento — conferir é bem-vindo; qualquer divergência se fala antes do pagamento.'),
         ('A coluna Conferir', 'Acende sozinha quando falta o mês, quando o projeto está marcado como pago sem data, '
