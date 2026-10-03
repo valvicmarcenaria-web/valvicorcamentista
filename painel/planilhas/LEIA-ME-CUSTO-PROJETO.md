@@ -32,9 +32,9 @@ blocos de lançamento vêm depois:
 identificação · resultado + resumo por categoria     ← linhas 6 a 24
 1 · valor de venda
 2 · custos de venda
-3 · ambientes, produção e montagem        12 linhas
+3 · ambientes, produção, montagem, projeto  12 linhas
 4 · comissões operacionais
-5 · comissões por colaborador             12 linhas
+5 · comissões por colaborador             18 linhas
 6 · material, terceirizados e logística   16 categorias
 7 · retrabalho                            12 linhas
 8 · livro de compras e despesas           60 linhas
@@ -135,29 +135,32 @@ R$ 73.036,90 são R$ 3.651,85.
 
 Cada ambiente tem um valor em reais. A planilha calcula o peso dele no projeto e
 aplica esse peso sobre a receita líquida — essa é a **base do ambiente**. Sobre
-ela incidem dois percentuais independentes: o de quem produziu e o de quem montou.
+ela incidem três percentuais independentes: o de quem produziu, o de quem montou
+e o de quem projetou.
 
 O exemplo, exatamente como você descreveu:
 
-| Ambiente | Valor | Peso | Produção | | Montagem | |
-|---|---:|---:|---|---:|---|---:|
-| Cozinha | 30.000 | 33,3% | Jackson 3% | 730,37 | Samuel 2% | 486,91 |
-| Suíte | 20.000 | 22,2% | Samuel 3% | 486,91 | Cezar 2% | 324,61 |
-| Lavanderia | 10.000 | 11,1% | Joelson 3% | 243,46 | Samuel 2% | 162,30 |
-| Sala | 30.000 | 33,3% | Deivson 3% | 730,37 | Jackson 2% | 486,91 |
+| Ambiente | Valor | Peso | Produção | | Montagem | | Projeto | |
+|---|---:|---:|---|---:|---|---:|---|---:|
+| Cozinha | 30.000 | 33,3% | Jackson 3% | 730,37 | Samuel 2% | 486,91 | Lorrane 1% | 243,46 |
+| Suíte | 20.000 | 22,2% | Samuel 3% | 486,91 | Cesar 2% | 324,61 | Lorrane 1% | 162,30 |
+| Lavanderia | 10.000 | 11,1% | Joelson 3% | 243,46 | Samuel 2% | 162,30 | Lucas 1% | 81,15 |
+| Sala | 30.000 | 33,3% | Deivison 3% | 730,37 | Jackson 2% | 486,91 | Lucas 1% | 243,46 |
 
-E o consolidado **por colaborador** sai sozinho, somando produção, montagem e
-coordenação. A lista tem **só quem recebe comissão** — marceneiros, ajudantes e o
-coordenador (Deivson, Samuel, Cezar, Jackson, Jomar, Joelson, Jonathan Godoy e
-"Terceiro / avulso"), com 4 linhas livres:
+E o consolidado **por colaborador** sai sozinho, somando produção, montagem,
+projeto e coordenação. O cadastro vem da aba **Listas**: coluna A com quem executa
+(marceneiros, coordenador e operador de máquinas) e coluna H com os projetistas.
+Ajudante geral não entra — não assume ambiente, logo não entra no rateio.
 
-| Colaborador | Produção | Montagem | Coordenação | Total |
-|---|---:|---:|---:|---:|
-| Deivson | 730,37 | — | 730,37 | **1.460,74** |
-| Jackson | 730,37 | 486,91 | — | **1.217,28** |
-| Samuel | 486,91 | 649,21 | — | **1.136,12** |
-| Cezar | — | 324,61 | — | **324,61** |
-| Joelson | 243,46 | — | — | **243,46** |
+| Colaborador | Produção | Montagem | Projeto | Coordenação | Total |
+|---|---:|---:|---:|---:|---:|
+| Deivison | 730,37 | — | — | 730,37 | **1.460,74** |
+| Jackson | 730,37 | 486,91 | — | — | **1.217,28** |
+| Samuel | 486,91 | 649,21 | — | — | **1.136,12** |
+| Lorrane | — | — | 405,76 | — | **405,76** |
+| Cesar | — | 324,61 | — | — | **324,61** |
+| Lucas | — | — | 324,61 | — | **324,61** |
+| Joelson | 243,46 | — | — | — | **243,46** |
 
 A soma dos ambientes precisa fechar com o valor de venda — a linha de total
 avisa quando não fecha.
@@ -276,11 +279,12 @@ colaborador, o resumo por categoria, a margem, a faixa de resultado do topo e o
 cálculo de atraso na entrega. Confere cada uma das 16 categorias de compra contra a soma
 independente do livro de lançamentos, nos três estados. Confere também que a ficha em
 branco não gera lixo, que o modelo e o exemplo têm **exatamente as mesmas fórmulas**, e
-que a lista de comissões não tem ninguém que não seja marceneiro, ajudante ou coordenador.
+que a lista de comissões tem exatamente o cadastro novo e não tem quem não assume
+ambiente (ajudante geral e administrativo).
 
 Um teste extra (`TESTE 0`) confere as **âncoras de texto** de cada bloco: se alguém mudar
 o mapa de linhas da ficha sem atualizar o Painel, o teste acusa antes de o número sair
-errado. E o `TESTE 10` confere os **menus suspensos**: que as nove faixas de validação
+errado. E o `TESTE 10` confere os **menus suspensos**: que as dez faixas de validação
 carregam a lista literal (e não uma referência a outra aba), que cada lista bate item a
 item com a aba Listas, que nenhuma passa de 255 caracteres, que a setinha aparece na
 célula, que a célula em branco é aceita, que toda categoria da ficha existe na lista, e
@@ -296,3 +300,44 @@ o motor de teste e o Excel podem divergir em R$ 0,01. Os testes desses valores
 aceitam essa tolerância, e em compensação verificam **exatamente** que o custo
 total é a soma das seis categorias e que o consolidado por pessoa fecha com o
 subtotal das comissões.
+
+
+---
+
+## Migrar de uma versão anterior
+
+A ficha mudou de forma em out/2026: ganhou a linha **comissão de projetista** no
+bloco 4, as três colunas de **projetista** no bloco 3 e seis linhas no bloco 5.
+Tudo o que ficava abaixo do bloco 4 desceu de linha.
+
+Inserir linha no arquivo pronto não resolve: o openpyxl não reescreve as
+referências das fórmulas, e são dezesseis abas de projeto. O caminho é o
+contrário — gerar a estrutura nova e trazer para ela só o que foi digitado à mão:
+
+```
+python3 gerar-custo-projeto.py                      # estrutura nova, em branco
+python3 testar-custo-projeto.py                     # 367 verificações
+python3 migrar-custo-projeto.py ANTIGO.xlsx         # traz os preenchimentos
+```
+
+O migrador só **lê** o arquivo antigo. Ele imprime um relatório de tudo o que
+fez: quantas células trouxe por aba, que nomes normalizou contra o cadastro, que
+rótulos de categoria voltaram ao padrão e que valores mudaram de lugar.
+
+Três coisas que ele resolve, porque apareceram de verdade:
+
+- **Valor de venda digitado no KPI A13.** A13 é fórmula (`=IF(D28="";C28;D28)`).
+  Digitar nela funciona na tela, mas deixa o bloco 1 vazio e mata a coluna
+  *Orçado* inteira. O migrador leva o número para `D28` e a fórmula volta.
+- **Realizado de categoria digitado à mão.** A coluna *Realizado* do bloco 6 vem
+  do livro de lançamentos. Número digitado ali apaga o SUMIFS. O migrador cria o
+  lançamento equivalente no bloco 8, com status *Pago*, e marca a descrição com
+  "conferir".
+- **Nome de categoria renomeado.** O SUMIFS casa pelo texto: renomear
+  "Outro terceirizado" para "Outro terceirizado / hora extra" faz o realizado
+  daquela linha virar zero, silenciosamente. O rótulo volta ao padrão.
+
+E uma que ele **não** resolve: duas pessoas na mesma célula ("jackson/cesar").
+Dividir a comissão exige saber a proporção. O relatório avisa e a célula fica
+como texto livre — o que significa que ela não entra no consolidado do bloco 5
+até alguém decidir.

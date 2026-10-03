@@ -19,18 +19,15 @@ EX = 'Exemplo P-2026-041'
 FM = 'Ficha Modelo'
 PG = 'Painel Geral'
 
-# mapa de linhas da ficha (o TESTE 0 confirma que ainda vale)
-R_RES0, R_RESF, R_CUSTO_TOT, R_MC, R_ALERTA = 16, 21, 22, 23, 24
-R_VENDA = 28
-R_IMP, R_MAQ, R_TRX, R_CVEND, R_PROJ, R_RTP = 32, 33, 34, 35, 36, 37
-R_CV_SUB, R_LIQ = 38, 39
-R_AMB0, R_AMBF, R_AMB_TOT = 43, 54, 55
-R_COORD, R_PRODC, R_MONTC, R_CO_SUB = 59, 60, 61, 62
-R_CL0, R_CLF, R_CL_TOT = 66, 77, 78
-OC = {'Material': (82, 88, 89), 'Serviços terceirizados': (90, 93, 94),
-      'Logística': (95, 99, 100)}
-R_RB0, R_RBF, R_RB_SUB = 104, 115, 116
-R_LAN0, R_LANF, R_LAN_TOT = 120, 179, 180
+# Mapa de linhas da ficha: lido do mapa-ficha.json que o gerador escreve, para
+# o teste nunca testar contra uma estrutura antiga. O TESTE 0 confere o mapa
+# contra os rótulos que estão de fato na planilha.
+import json
+with open('mapa-ficha.json', encoding='utf-8') as _fp:
+    M = json.load(_fp)
+globals().update({k: v for k, v in M.items() if isinstance(v, int)})
+OC = {g: (M['LINHAS_OC'][cats[0]], M['LINHAS_OC'][cats[-1]], M['R_SUBGRUPO'][g])
+      for g, cats in M['GRUPOS'].items()}
 
 # Tolerância de 1 centavo em valores que nascem de ROUND() sobre um produto em
 # ponto flutuante — o motor de teste e o Excel podem divergir no último centavo.
@@ -84,9 +81,11 @@ ANCORAS = [(R_VENDA, 1, 'Valor de venda do projeto'), (R_LIQ, 1, '(=) RECEITA L�
            (R_CO_SUB, 1, '(=) SUBTOTAL DAS COMISSÕES'),
            (R_CUSTO_TOT, 1, '(=) CUSTO TOTAL DO PROJETO'),
            (R_MC, 1, '(=) MARGEM DE CONTRIBUIÇÃO'),
-           (89, 1, '(=) SUBTOTAL · MATERIAL'),
-           (94, 1, '(=) SUBTOTAL · SERVIÇOS TERCEIRIZADOS'),
-           (100, 1, '(=) SUBTOTAL · LOGÍSTICA'),
+           (M['R_SUBGRUPO']['Material'], 1, '(=) SUBTOTAL · MATERIAL'),
+           (M['R_SUBGRUPO']['Serviços terceirizados'], 1,
+            '(=) SUBTOTAL · SERVIÇOS TERCEIRIZADOS'),
+           (M['R_SUBGRUPO']['Logística'], 1, '(=) SUBTOTAL · LOGÍSTICA'),
+           (R_PROJC, 1, 'Comissão de projetista'),
            (R_CL_TOT, 1, 'TOTAL'), (R_LAN_TOT, 1, 'TOTAL LANÇADO NO LIVRO')]
 for r, c, txt in ANCORAS:
     ck(f'  âncora linha {r}', wbv[FM].cell(r, c).value, txt)
@@ -102,24 +101,26 @@ rt_r = xr(0.05 * (V - imp - maq - trx_r))
 cv_o = xr(imp + maq + trx_o + cvend + proj + rt_o)
 cv_r = xr(imp + maq + trx_r + cvend + proj + rt_r)
 liq_o, liq_r = xr(V - cv_o), xr(V - cv_r)
-AMB = [('Cozinha', 30000, 'Jackson', 0.03, 'Samuel', 0.02),
-       ('Suíte', 20000, 'Samuel', 0.03, 'Cezar', 0.02),
-       ('Lavanderia', 10000, 'Joelson', 0.03, 'Samuel', 0.02),
-       ('Sala', 30000, 'Deivson', 0.03, 'Jackson', 0.02)]
-prod, mont, por_pessoa = {}, {}, {}
-tot_prod = tot_mont = 0.0
-for nome, val, pq, pp, mq, mp in AMB:
+AMB = [('Cozinha', 30000, 'Jackson', 0.03, 'Samuel', 0.02, 'Lorrane', 0.01),
+       ('Suíte', 20000, 'Samuel', 0.03, 'Cesar', 0.02, 'Lorrane', 0.01),
+       ('Lavanderia', 10000, 'Joelson', 0.03, 'Samuel', 0.02, 'Lucas', 0.01),
+       ('Sala', 30000, 'Deivison', 0.03, 'Jackson', 0.02, 'Lucas', 0.01)]
+prod, mont, projt, por_pessoa = {}, {}, {}, {}
+tot_prod = tot_mont = tot_proj = 0.0
+for nome, val, pq, pp, mq, mp, jq, jp in AMB:
     p = val / V
     vp, vm = xr(p * liq_r * pp), xr(p * liq_r * mp)
-    prod[nome], mont[nome] = vp, vm
-    tot_prod += vp; tot_mont += vm
+    vj = xr(p * liq_r * jp)
+    prod[nome], mont[nome], projt[nome] = vp, vm, vj
+    tot_prod += vp; tot_mont += vm; tot_proj += vj
     por_pessoa[pq] = por_pessoa.get(pq, 0) + vp
     por_pessoa[mq] = por_pessoa.get(mq, 0) + vm
-tot_prod, tot_mont = xr(tot_prod), xr(tot_mont)
+    por_pessoa[jq] = por_pessoa.get(jq, 0) + vj
+tot_prod, tot_mont, tot_proj = xr(tot_prod), xr(tot_mont), xr(tot_proj)
 coord_o, coord_r = xr(0.01 * liq_o), xr(0.01 * liq_r)
-com_o = xr(coord_o + xr(0.03 * liq_o) + xr(0.02 * liq_o))
-com_r = xr(coord_r + tot_prod + tot_mont)
-por_pessoa['Deivson'] = por_pessoa.get('Deivson', 0) + coord_r
+com_o = xr(coord_o + xr(0.03 * liq_o) + xr(0.02 * liq_o) + xr(0.01 * liq_o))
+com_r = xr(coord_r + tot_prod + tot_mont + tot_proj)
+por_pessoa['Deivison'] = por_pessoa.get('Deivison', 0) + coord_r
 
 # categorias, a partir do livro de lançamentos lido do arquivo
 lanc = []
@@ -158,30 +159,43 @@ for ref, esp in ((f'C{R_IMP}', imp), (f'D{R_IMP}', imp), (f'C{R_MAQ}', maq),
 print(f'  {testes - n0} verificações')
 
 n0 = testes
-print('\nTESTE 2 · ambientes — comissão de produção e de montagem')
-for i, (nome, val, pq, pp, mq, mp) in enumerate(AMB):
+print('\nTESTE 2 · ambientes — comissão de produção, montagem e projeto')
+for i, (nome, val, pq, pp, mq, mp, jq, jp) in enumerate(AMB):
     r = R_AMB0 + i
     ck(f'  {nome} · % do total', C(EX, f'B{r}'), val / V, tol=1e-9)
     ck(f'  {nome} · produção ({pq})', C(EX, f'F{r}'), prod[nome])
     ck(f'  {nome} · montagem ({mq})', C(EX, f'I{r}'), mont[nome])
+    ck(f'  {nome} · projeto ({jq})', C(EX, f'L{r}'), projt[nome])
+    ck(f'  {nome} · total do ambiente', C(EX, f'M{r}'),
+       xr(prod[nome] + mont[nome] + projt[nome]), tol=CENTAVO)
 ck('  soma dos ambientes', C(EX, f'C{R_AMB_TOT}'), V)
 ck('  total produção', C(EX, f'F{R_AMB_TOT}'), tot_prod)
 ck('  total montagem', C(EX, f'I{R_AMB_TOT}'), tot_mont)
+ck('  total projetista', C(EX, f'L{R_AMB_TOT}'), tot_proj)
+ck('  total do ambiente = produção + montagem + projeto',
+   C(EX, f'M{R_AMB_TOT}'), xr(tot_prod + tot_mont + tot_proj), tol=CENTAVO)
+ck('  comissão de projetista realizada', C(EX, f'D{R_PROJC}'), tot_proj)
 ck('  conferência dos ambientes', str(C(EX, f'D{R_AMB_TOT}'))[:2], 'OK')
 print(f'  {testes - n0} verificações')
 
 n0 = testes
 print('\nTESTE 3 · comissões por colaborador (só quem recebe)')
 nomes = [ws.cell(r, 1).value for r in range(R_CL0, R_CLF + 1) if ws.cell(r, 1).value]
-ck('  a lista tem 8 nomes e 4 linhas livres', len(nomes), 8)
-for proibido in ('Bruna', 'Hugo', 'Karla', 'Filipe'):
+N_ROSTER = len(M['EQUIPE']) + len(M['PROJETISTAS'])
+ck(f'  a lista tem {N_ROSTER} nomes e {N_COL - N_ROSTER} linhas livres',
+   len(nomes), N_ROSTER)
+# quem não assume ambiente não entra: ajudante geral e o administrativo
+for proibido in ('Jonathan Godoy', 'Alex', 'Karla', 'Hugo', 'Filipe'):
     ck(f'  {proibido} não está na lista de comissões', proibido in nomes, False)
+for quem in ('Jhon', 'Ronald', 'Lorrane', 'Lucas'):
+    ck(f'  {quem} está no cadastro novo', quem in nomes, True)
+ck('  Bruna não recebe produção nem montagem', 'Bruna' in M['EQUIPE'], False)
 for r in range(R_CL0, R_CLF + 1):
     nome = ws.cell(r, 1).value
     if nome:
-        ck(f'  {nome} · total', C(EX, f'H{r}'), xr(por_pessoa.get(nome, 0)))
-ck('  soma por pessoa', C(EX, f'H{R_CL_TOT}'), com_r, tol=CENTAVO)
-ck('  soma por pessoa = subtotal de comissões', C(EX, f'H{R_CL_TOT}'),
+        ck(f'  {nome} · total', C(EX, f'J{r}'), xr(por_pessoa.get(nome, 0)))
+ck('  soma por pessoa', C(EX, f'J{R_CL_TOT}'), com_r, tol=CENTAVO)
+ck('  soma por pessoa = subtotal de comissões', C(EX, f'J{R_CL_TOT}'),
    C(EX, f'D{R_CO_SUB}'), tol=1e-9)
 print(f'  {testes - n0} verificações')
 
@@ -284,19 +298,25 @@ dif = sum(1 for r in range(1, 185) for c in range(1, 11)
 ck('  fórmulas idênticas', dif, 0)
 ck('  mesmo nº de mesclagens', len(fm.merged_cells.ranges), len(ws.merged_cells.ranges))
 ck('  12 linhas de ambiente', R_AMBF - R_AMB0 + 1, 12)
-ck('  12 linhas de colaborador', R_CLF - R_CL0 + 1, 12)
+ck(f'  {N_COL} linhas de colaborador', R_CLF - R_CL0 + 1, N_COL)
 ck('  12 linhas de retrabalho', R_RBF - R_RB0 + 1, 12)
 ck('  60 linhas de lançamento', R_LANF - R_LAN0 + 1, 60)
 print(f'  {testes - n0} verificações')
 
 n0 = testes
 print('\nTESTE 10 · menus suspensos (Categoria, Forma de pagamento, Status)')
-NOMES_ESPERADOS = {'CATEGORIA_COMPRA': 'Listas!$D$2:$D$17',
-                   'FORMA_PAGAMENTO': 'Listas!$E$2:$E$9',
-                   'STATUS_COMPRA': 'Listas!$F$2:$F$4',
-                   'EQUIPE_COMISSAO': 'Listas!$A$2:$A$9',
-                   'VENDEDOR': 'Listas!$B$2:$B$6',
-                   'CAUSA_RETRABALHO': 'Listas!$C$2:$C$10'}
+# cada nome definido cobre exatamente a coluna da aba Listas, do 2 até o fim
+def faixa(col, n):
+    return f'Listas!${col}$2:${col}${n + 1}'
+
+N_EQUIPE, N_PROJ = len(M['EQUIPE']), len(M['PROJETISTAS'])
+NOMES_ESPERADOS = {'CATEGORIA_COMPRA': faixa('D', len(M['CATEGORIAS_COMPRA'])),
+                   'FORMA_PAGAMENTO': faixa('E', 8),
+                   'STATUS_COMPRA': faixa('F', 3),
+                   'EQUIPE_COMISSAO': faixa('A', N_EQUIPE),
+                   'VENDEDOR': faixa('B', 5),
+                   'CAUSA_RETRABALHO': faixa('C', 9),
+                   'PROJETISTA': faixa('H', N_PROJ)}
 for nome, alvo in NOMES_ESPERADOS.items():
     d = wbv.defined_names.get(nome)
     ck(f'  nome definido {nome}', d.attr_text if d else '<ausente>', alvo)
@@ -309,13 +329,18 @@ def lit(col, n):
     assert all(itens), f'lista da coluna {col} tem buraco'
     return '"' + ','.join(itens) + '"'
 
-LISTAS = {'CATEGORIA': lit(4, 16), 'PAGAMENTO': lit(5, 8), 'STATUS': lit(6, 3),
-          'EQUIPE': lit(1, 8), 'VENDEDOR': lit(2, 5), 'CAUSA': lit(3, 9)}
-VAL_ESPERADAS = {'B120:B179': 'CATEGORIA', 'G120:G179': 'PAGAMENTO',
-                 'I120:I179': 'STATUS', 'D43:D54': 'EQUIPE',
-                 'G43:G54': 'EQUIPE', 'A66:A77': 'EQUIPE',
-                 'B104:B115': 'CAUSA', 'D7:E7': 'VENDEDOR',
-                 'F9:G9': 'EQUIPE'}
+LISTAS = {'CATEGORIA': lit(4, len(M['CATEGORIAS_COMPRA'])), 'PAGAMENTO': lit(5, 8),
+          'STATUS': lit(6, 3), 'EQUIPE': lit(1, N_EQUIPE), 'VENDEDOR': lit(2, 5),
+          'CAUSA': lit(3, 9), 'PROJETISTA': lit(8, N_PROJ),
+          'ROSTER': '"' + ','.join(M['EQUIPE'] + M['PROJETISTAS']) + '"'}
+VAL_ESPERADAS = {
+    f'B{R_LAN0}:B{R_LANF}': 'CATEGORIA', f'G{R_LAN0}:G{R_LANF}': 'PAGAMENTO',
+    f'I{R_LAN0}:I{R_LANF}': 'STATUS',
+    f'D{R_AMB0}:D{R_AMBF}': 'EQUIPE', f'G{R_AMB0}:G{R_AMBF}': 'EQUIPE',
+    f'J{R_AMB0}:J{R_AMBF}': 'PROJETISTA',
+    f'A{R_CL0}:A{R_CLF}': 'ROSTER',
+    f'B{R_RB0}:B{R_RBF}': 'CAUSA', f'D{R_ID2}:E{R_ID2}': 'VENDEDOR',
+    f'F{R_ID4}:G{R_ID4}': 'EQUIPE'}
 for chave, valor in LISTAS.items():
     ck(f'  lista {chave} cabe no formato (até 255 caracteres)', len(valor) <= 255, True)
 for aba in (FM, EX):

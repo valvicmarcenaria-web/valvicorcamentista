@@ -771,7 +771,7 @@ page('Parte II · Estrutura & Pessoas', 'Folha mensal · dado de remuneração',
     <tr><td class="nm">Bruno</td><td>Auxiliar de Marceneiro</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.000</td><td class="dt">VT 300 + VR 300</td></tr>
     <tr><td class="nm">Wallace</td><td>Trainee</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.750</td><td class="dt">VT 400 + VR 300</td></tr>
     <tr><td class="nm">Douglas</td><td>Trainee</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.620</td><td class="dt">VT 300 + VR 300</td></tr>
-    <tr><td class="nm">Jonathan Godoy</td><td>Ajudante Geral</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.620</td><td class="dt">VT 300 + VR 300</td></tr>
+    <tr><td class="nm">Alex</td><td>Ajudante Geral</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">1.620</td><td class="dt">VT 300 + VR 300</td></tr>
     <tr class="enc"><td colspan="3">Benefícios · VT e VR</td><td class="num">6.070</td><td class="dt" style="color:#96803f">VT 3.770 + VR 2.300</td></tr>
     <tr class="tot"><td colspan="3">Folha mensal · 19 pessoas <span class="fn">2 sócios · 9 PJ · 8 CLT</span></td><td class="num">80.560</td><td></td></tr>
   </tbody>
@@ -1057,7 +1057,7 @@ page('Parte III · Economia da Operação', 'Custo fixo · detalhamento', 'Folha
     <tr><td class="nm">Bruno</td><td>Auxiliar de Marceneiro</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.600</td></tr>
     <tr><td class="nm">Wallace</td><td>Trainee</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.450</td></tr>
     <tr><td class="nm">Douglas</td><td>Trainee</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.220</td></tr>
-    <tr><td class="nm">Jonathan Godoy</td><td>Ajudante Geral</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.220</td></tr>
+    <tr><td class="nm">Alex</td><td>Ajudante Geral</td><td><span class="badge b-clt">CLT</span></td><td class="num sub">2.220</td></tr>
     <tr class="tot"><td colspan="3">Total da folha · 19 pessoas <span class="fn">fixo mais VT e VR; as comissões são variáveis e entram por venda</span></td><td class="num">80.560</td></tr>
   </tbody>
 </table>
