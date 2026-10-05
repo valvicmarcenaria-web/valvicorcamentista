@@ -66,7 +66,49 @@ custo dela está sendo pago pelos outros ambientes do rateio.
 
 **Com um valor de proposta para ela, o rateio sai em segundos.**
 
-### O rateio
+### O rateio — versão final
+
+> *"dilua um custo de 1.300 na despensa e recompense nos demais ambientes"* ·
+> *"lembrando que o valor tem que fechar em 34850"*
+
+A Despensa deixa de sair zerada: entra com **R$ 1.300**, e os demais rateiam
+o que sobra. **O contrato fecha em R$ 34.850**, não mais em 35.000.
+
+| | base da proposta | % do total | **valor em 34.850** |
+|---|--:|--:|--:|
+| Cozinha | 12.900 | 29,65% | **10.334** |
+| Porta lavabo | 6.800 | 15,63% | **5.447** |
+| Porta da sala | 2.900 | 6,67% | **2.323** |
+| Banho social | 4.580 | 10,53% | **3.669** |
+| Banho suite | 3.900 | 8,96% | **3.124** |
+| Bancada Duda | 6.100 | 14,02% | **4.887** |
+| Prateleiras Duda | 2.300 | 5,29% | **1.843** |
+| Quarto de hospede | 2.400 | 5,52% | **1.923** |
+| **Despensa** | ★ fixada | **3,73%** | **1.300** |
+| **TOTAL** | | **100,00%** | **34.850** |
+
+**Como foi feito:** a Despensa é lançada primeiro, por valor fixo. Os
+R$ 33.550 que sobram são rateados entre os outros oito **na proporção do
+valor de proposta de cada um** — ou seja, cada um recebe **80,11% do que
+valia na proposta**, contra os 83,57% da versão anterior. O resíduo de
+arredondamento vai para a Cozinha, para o total bater exato.
+
+Nenhum ambiente foi mexido fora da proporção: a recomposição é uniforme.
+
+| | antes (35.000, Despensa zerada) | agora (34.850, Despensa a 1.300) |
+|---|--:|--:|
+| Cozinha | 10.780 | 10.334 |
+| Porta lavabo | 5.683 | 5.447 |
+| Porta da sala | 2.424 | 2.323 |
+| Banho social | 3.828 | 3.669 |
+| Banho suite | 3.259 | 3.124 |
+| Bancada Duda | 5.098 | 4.887 |
+| Prateleiras Duda | 1.922 | 1.843 |
+| Quarto de hospede | 2.006 | 1.923 |
+| Despensa | 0 | **1.300** |
+
+### O rateio anterior, para registro
+
 
 | | base da proposta | % do total | valor em 35k |
 |---|--:|--:|--:|
