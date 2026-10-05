@@ -10,16 +10,19 @@
   :root{ --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f;
          --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd;
          --green:#2f7d4f; --amber:#c47d0e; --red:#b0413f; --blue:#2f5d8c;
-         --okbg:#eef4f0; --redbg:#fbefee; --ambbg:#fdf6e8; --goldbg:#f6edd6; --bluebg:#eef2f8; }
+         --okbg:#eff5f1; --redbg:#fcf2f1; --ambbg:#fdf8ee; --goldbg:#f8f1de; --bluebg:#f0f4f9; }
   html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
   body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3;
-        font-size:10.5px; line-height:1.4; -webkit-font-smoothing:antialiased; }
+        font-size:10.5px; line-height:1.45; -webkit-font-smoothing:antialiased; }
   .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:16px auto;
           box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column;
           page-break-after:always; }
   .sheet:last-child{ page-break-after:auto; }
+  /* sem esta regra o 16px de margem vira uma pagina fantasma na impressao */
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } }
 
-  .ph{ background:var(--navy); color:#fff; padding:6.5mm 12mm 5mm; position:relative; }
+  /* ───── cabeçalho ───── */
+  .ph{ background:var(--navy); color:#fff; padding:6.5mm 12mm 5.5mm; position:relative; }
   .ph::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:2.5px;
               background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 42%,transparent 100%); }
   .ph .top{ display:flex; align-items:center; gap:11px; }
@@ -28,7 +31,7 @@
              font-family:'Cormorant Garamond',serif; font-weight:700; font-size:16px; color:var(--gold); }
   .ph .co{ font-size:9.6px; font-weight:700; letter-spacing:2.4px; text-transform:uppercase; }
   .ph .sub{ font-size:8px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
-  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:700; margin-top:5px; line-height:1.05; }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; margin-top:5px; line-height:1.05; }
   .ph .kx{ font-size:7.8px; letter-spacing:2.6px; text-transform:uppercase; color:var(--gold); margin-top:3px; }
   .ph .sel{ position:absolute; right:12mm; top:6.5mm; text-align:right; }
   .ph .sel .tag{ display:inline-block; background:var(--red); color:#fff; font-size:7.4px; font-weight:700;
@@ -36,50 +39,71 @@
   .ph .sel .pg{ font-size:7.4px; color:rgba(255,255,255,.55); letter-spacing:1.6px;
                 text-transform:uppercase; margin-top:5px; }
 
-  .body{ flex:1; padding:5mm 12mm 0; display:flex; flex-direction:column; min-height:0; }
+  .body{ flex:1; padding:7mm 12mm 0; display:flex; flex-direction:column; min-height:0; }
 
-  .sec{ display:flex; align-items:center; gap:8px; margin:8px 0 5px; }
+  /* ───── ícones ───── */
+  svg text{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; }
+  .ic{ width:15px; height:15px; flex-shrink:0; fill:none; stroke:currentColor;
+       stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+  .ic.g{ width:17px; height:17px; }
+
+  /* ───── seção ───── */
+  .sec{ display:flex; align-items:center; gap:7px; margin:13px 0 8px; color:var(--gold-dk); }
   .sec:first-child{ margin-top:0; }
-  .sec .bar{ width:14px; height:2px; background:var(--gold); flex-shrink:0; }
-  .sec .tx{ font-size:9.2px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:var(--navy); }
-  .sec .tx small{ color:var(--muted); font-weight:600; letter-spacing:.3px; text-transform:none; }
+  .sec .tx{ font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); }
+  .sec .tx small{ color:var(--muted); font-weight:500; letter-spacing:.3px; text-transform:none; }
+  .sec .ln{ flex:1; height:1px; background:var(--line2); }
 
-  .papel{ background:var(--navy); border-radius:7px; padding:9px 13px; }
-  .papel .nh{ font-size:7.2px; letter-spacing:1.3px; text-transform:uppercase; color:var(--gold); font-weight:700; }
-  .papel p{ font-size:9.8px; line-height:1.52; color:rgba(255,255,255,.9); margin-top:4px; }
-  .papel p b{ color:#fff; }
+  /* ───── abertura ───── */
+  .hero{ border-left:3px solid var(--gold); padding:4px 0 5px 15px; }
+  .hero .big{ font-family:'Cormorant Garamond',serif; font-size:23px; font-weight:700;
+               color:var(--navy); line-height:1.2; }
+  .hero p{ font-size:10px; line-height:1.62; margin-top:7px; color:var(--ink); }
+  .hero p b{ color:var(--navy); }
 
-  p.tx{ font-size:9.8px; line-height:1.55; }
-  p.tx+p.tx{ margin-top:5px; }
-  p.tx b{ color:var(--navy); }
+  /* ───── fita da jornada ───── */
+  .fita{ display:flex; align-items:stretch; gap:0; margin-top:2px; }
+  .fita .et{ flex:1; background:#fff; border:1px solid var(--line); border-right:0;
+             padding:9px 4px 10px; text-align:center; }
+  .fita .et:first-child{ border-radius:6px 0 0 6px; }
+  .fita .et:last-child{ border-right:1px solid var(--line); border-radius:0 6px 6px 0; }
+  .fita .et .ia{ color:var(--gold-dk); display:flex; justify-content:center; margin-bottom:3px; }
+  .fita .et .nm{ font-size:8.2px; font-weight:700; letter-spacing:.7px; text-transform:uppercase;
+                 color:var(--navy); }
+  .fita .et .ds{ font-size:7.8px; color:var(--muted); line-height:1.3; margin-top:2px; }
 
-  table{ width:100%; border-collapse:collapse; table-layout:fixed; }
-  thead th{ background:var(--navy2); color:#fff; font-size:7.4px; font-weight:700; letter-spacing:.3px;
-            text-transform:uppercase; padding:5px 6px; text-align:left; border:1px solid var(--navy); }
-  thead th.c{ text-align:center; } thead th.r{ text-align:right; }
-  tbody td{ border:1px solid var(--line); padding:4px 6px; font-size:9.4px; vertical-align:middle; }
-  tbody td.c{ text-align:center; } tbody td.r{ text-align:right; font-variant-numeric:tabular-nums; }
-  tbody tr:nth-child(even) td{ background:#f7f5ef; }
-  tbody td b{ color:var(--navy); }
-  tr.dest td{ background:var(--goldbg) !important; }
-  tr.dest td b{ color:var(--gold-dk); }
+  /* ───── cards ───── */
+  .grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:9px; }
+  .grid2{ display:grid; grid-template-columns:repeat(2,1fr); gap:9px; }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:6px; padding:9px 11px; }
+  .card .ch{ display:flex; align-items:center; gap:6px; color:var(--gold-dk); }
+  .card .ch b{ font-size:9.2px; color:var(--navy); letter-spacing:.2px; }
+  .card p{ font-size:9.1px; line-height:1.52; color:var(--muted); margin-top:4px; }
+  .card p b{ color:var(--ink); font-weight:600; }
 
-  .lista{ display:flex; gap:7px; align-items:flex-start; padding:3.5px 0; border-bottom:1px dotted var(--line2); }
-  .lista:last-child{ border-bottom:0; }
-  .lista .pt{ width:5px; height:5px; border-radius:50%; background:var(--gold); flex-shrink:0; margin-top:6px; }
-  .lista .tx{ flex:1; font-size:9.5px; line-height:1.45; }
-  .lista .tx b{ color:var(--navy); }
-
-  .box{ border-radius:6px; padding:8px 11px; font-size:9.5px; line-height:1.5; }
-  .box .bh{ font-size:7.2px; font-weight:700; letter-spacing:1.3px; text-transform:uppercase; margin-bottom:4px; }
+  /* ───── caixas ───── */
+  .box{ border-radius:6px; padding:10px 13px; font-size:9.5px; line-height:1.55; }
+  .box .bh{ display:flex; align-items:center; gap:6px; font-size:7.3px; font-weight:700;
+            letter-spacing:1.3px; text-transform:uppercase; margin-bottom:5px; }
   .box.ok{ background:var(--okbg); border:1px solid #cfe0d5; } .box.ok .bh{ color:var(--green); }
   .box.no{ background:var(--redbg); border:1px solid #efd4d2; } .box.no .bh{ color:var(--red); }
   .box.am{ background:var(--ambbg); border:1px solid #ecdcb6; } .box.am .bh{ color:var(--amber); }
   .box.gd{ background:var(--goldbg); border:1px solid #e4d4ab; } .box.gd .bh{ color:var(--gold-dk); }
   .box.bl{ background:var(--bluebg); border:1px solid #d3dcea; } .box.bl .bh{ color:var(--blue); }
-  .box ul{ margin-left:14px; } .box li{ margin-top:3px; }
-  .two{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-  .mt{ margin-top:7px; }
+  .box ul{ margin-left:14px; } .box li{ margin-top:4px; }
+  .mt{ margin-top:9px; }
+
+  /* ───── tabela ───── */
+  table{ width:100%; border-collapse:collapse; table-layout:fixed; }
+  thead th{ background:var(--navy2); color:#fff; font-size:7.3px; font-weight:700; letter-spacing:.4px;
+            text-transform:uppercase; padding:5px 7px; text-align:left; border:1px solid var(--navy); }
+  thead th.c{ text-align:center; } thead th.r{ text-align:right; }
+  tbody td{ border:1px solid var(--line); padding:6px 7px; font-size:9.6px; vertical-align:middle; }
+  tbody td.c{ text-align:center; } tbody td.r{ text-align:right; font-variant-numeric:tabular-nums; }
+  tbody tr:nth-child(even) td{ background:#f7f5ef; }
+  tbody td b{ color:var(--navy); }
+  .gcol{ background:var(--goldbg) !important; }
+  .gcol b{ color:var(--gold-dk) !important; }
 
   .rf{ margin-top:auto; padding:3mm 12mm 3.5mm; border-top:1px solid var(--line);
        display:flex; justify-content:space-between; align-items:center;
@@ -90,7 +114,7 @@
 </head>
 <body>
 
-<!-- ════════════════ FOLHA 1 · O CARGO E O PERFIL ════════════════ -->
+<!-- ═══════════ FOLHA 1 · O CARGO E O PERFIL ═══════════ -->
 <section class="sheet">
   <div class="ph">
     <div class="top">
@@ -100,106 +124,159 @@
         <div class="sub">Vargas Decor Ltda · Belo Horizonte / MG</div>
       </div>
     </div>
-    <div class="tt">A Vaga de Vendedor(a) — o cargo e o perfil</div>
-    <div class="kx">Para entender quem é essa pessoa e o que ela faz</div>
-    <div class="sel">
-      <span class="tag">Uso interno</span>
-      <div class="pg">Folha 1 de 2</div>
-    </div>
+    <div class="tt">A Vaga de Vendedor(a)</div>
+    <div class="kx">O cargo · o perfil · quem é essa pessoa</div>
+    <div class="sel"><span class="tag">Uso interno</span><div class="pg">Folha 1 de 2</div></div>
   </div>
 
   <div class="body">
-    <div class="papel">
-      <div class="nh">O cargo, em três frases</div>
-      <p>É a pessoa que <b>traz cliente novo para a fábrica</b> — e que conduz esse cliente do
-      primeiro contato até o contrato assinado.</p>
-      <p>Não é um atendente de loja esperando quem entra. É alguém que <b>sai, prospecta e constrói
-      relacionamento</b> com arquitetos, decoradoras, engenheiros, construtores e corretores, porque
-      é dessa rede que a venda de alto padrão nasce.</p>
-      <p>E é alguém que <b>entende de marcenaria de verdade</b>: conhece processo, material,
-      acabamento e ferragem. Por isso consegue propor a solução, orçar certo e prometer só o que a
-      fábrica entrega.</p>
+    <div class="hero">
+      <div class="big">É a pessoa que traz cliente novo para a fábrica.</div>
+      <p>Não é atendente de loja esperando quem entra: <b>sai, prospecta e constrói relacionamento</b>
+      com arquitetos, decoradoras, engenheiros, construtores e corretores — é dessa rede que a venda
+      de alto padrão nasce. E <b>entende de marcenaria de verdade</b>, por isso propõe a solução,
+      orça certo e promete só o que a fábrica entrega.</p>
     </div>
 
-    <div class="sec"><div class="bar"></div><div class="tx">O que essa pessoa faz no dia a dia</div></div>
-    <div class="lista"><div class="pt"></div><div class="tx"><b>Vende móveis planejados sob medida</b>
-      para cliente final de alto poder aquisitivo.</div></div>
-    <div class="lista"><div class="pt"></div><div class="tx"><b>Cultiva a rede de profissionais.</b>
-      Visita arquiteto, decoradora, engenheiro, construtor e corretor. Mantém a relação viva mesmo
-      quando não tem projeto na mesa — é o que faz a indicação chegar.</div></div>
-    <div class="lista"><div class="pt"></div><div class="tx"><b>Frequenta obra.</b> É onde o projeto
-      encontra a realidade, e onde o cliente decide se confia.</div></div>
-    <div class="lista"><div class="pt"></div><div class="tx"><b>Participa dos eventos do setor</b>
-      representando a Valvic.</div></div>
-    <div class="lista"><div class="pt"></div><div class="tx"><b>Conduz o atendimento inteiro:</b>
-      entende a necessidade, propõe a solução de móvel, monta o orçamento no sistema da casa e
-      conduz o fechamento.</div></div>
-    <div class="lista"><div class="pt"></div><div class="tx"><b>Mantém o CRM atualizado</b> — do
-      primeiro contato ao contrato. É por ali que se acompanha o que está em negociação e se confere
-      a comissão no fechamento do mês.</div></div>
+    <div class="sec">
+      <svg class="ic g" viewBox="0 0 24 24"><path d="M3 12h18"/><path d="M15 6l6 6-6 6"/></svg>
+      <div class="tx">A jornada que ela conduz</div><div class="ln"></div>
+    </div>
+    <div class="fita">
+      <div class="et">
+        <div class="ia"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></svg></div>
+        <div class="nm">Prospecta</div><div class="ds">busca o cliente novo</div>
+      </div>
+      <div class="et">
+        <div class="ia"><svg class="ic" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5"/><circle cx="17.5" cy="9" r="2.3"/><path d="M16 14.4c2.7.3 4.4 2 4.4 4.9"/></svg></div>
+        <div class="nm">Relaciona</div><div class="ds">arquiteto, obra, evento</div>
+      </div>
+      <div class="et">
+        <div class="ia"><svg class="ic" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9.5 4h5v3h-5z"/><path d="M8.5 12h7M8.5 16h4.5"/></svg></div>
+        <div class="nm">Atende</div><div class="ds">levanta a necessidade</div>
+      </div>
+      <div class="et">
+        <div class="ia"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></div>
+        <div class="nm">Propõe</div><div class="ds">solução e orçamento</div>
+      </div>
+      <div class="et">
+        <div class="ia"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div class="nm">Fecha</div><div class="ds">negocia e assina</div>
+      </div>
+      <div class="et">
+        <div class="ia"><svg class="ic" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7.5" ry="2.8"/><path d="M4.5 6v12c0 1.6 3.4 2.8 7.5 2.8s7.5-1.2 7.5-2.8V6"/><path d="M4.5 12c0 1.6 3.4 2.8 7.5 2.8s7.5-1.2 7.5-2.8"/></svg></div>
+        <div class="nm">Registra</div><div class="ds">CRM em dia</div>
+      </div>
+    </div>
 
-    <div class="sec"><div class="bar"></div><div class="tx">O perfil
-      <small>— o que essa pessoa precisa ter, sem exceção</small></div></div>
-    <div class="lista"><div class="pt"></div><div class="tx"><b>Conhecer o universo da marcenaria por
-      dentro.</b> Processo de fabricação, material, acabamento, ferragem. É o que permite conversar
-      de igual para igual com o arquiteto e com a fábrica.</div></div>
-    <div class="lista"><div class="pt"></div><div class="tx"><b>Experiência comprovada vendendo
-      planejados para cliente de alto poder aquisitivo.</b> Já atendeu esse perfil e sabe lidar com
-      a exigência que vem junto.</div></div>
-    <div class="lista"><div class="pt"></div><div class="tx"><b>Venda ativa.</b> Prospecta por conta
-      própria. Quem só vendeu com lead vindo de anúncio não serve para esta vaga.</div></div>
-    <div class="lista"><div class="pt"></div><div class="tx"><b>Trânsito com a cadeia de
-      profissionais</b> — arquiteto, decoradora, engenheiro, construtor, corretor.</div></div>
-    <div class="lista"><div class="pt"></div><div class="tx"><b>Saber elaborar solução de móvel em
-      software da área.</b> O sistema que a casa usa é baseado em <b>SketchUp</b>.</div></div>
-    <div class="lista"><div class="pt"></div><div class="tx"><b>Ler projeto</b> — planta, elevação,
-      render — com naturalidade.</div></div>
-    <div class="lista"><div class="pt"></div><div class="tx"><b>Disciplina de registro.</b> CRM em
-      dia e follow-up que não cai.</div></div>
-    <div class="lista"><div class="pt"></div><div class="tx"><b>Ambição.</b> A remuneração é desenhada
-      para quem quer ganhar muito. Quem busca estabilidade vai se frustrar aqui.</div></div>
+    <div class="sec">
+      <svg class="ic g" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
+      <div class="tx">O dia a dia <small>— onde o tempo dela vai</small></div><div class="ln"></div>
+    </div>
+    <div class="grid3">
+      <div class="card">
+        <div class="ch"><svg class="ic" viewBox="0 0 24 24"><rect x="4" y="8" width="7" height="12"/><rect x="13" y="4" width="7" height="16"/><path d="M2 20h20"/></svg><b>Rua e obra</b></div>
+        <p><b>A maior parte do tempo.</b> Escritório de arquitetura, obra, casa do cliente. É vaga de
+        rua, não de mesa — o híbrido dá base, não trabalho de casa.</p>
+      </div>
+      <div class="card">
+        <div class="ch"><svg class="ic" viewBox="0 0 24 24"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg><b>Atendimento e proposta</b></div>
+        <p><b>Parte grande.</b> Levanta a necessidade, propõe a solução de móvel, orça no sistema da
+        casa e negocia até o fechamento.</p>
+      </div>
+      <div class="card">
+        <div class="ch"><svg class="ic" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7"/><path d="M15 8h5v5"/></svg><b>Prospecção</b></div>
+        <p><b>Fatia menor, mas não pode faltar.</b> Contato novo e retomada de quem esfriou. Quem para
+        de prospectar vende bem num mês e mal no outro.</p>
+      </div>
+    </div>
 
-    <div class="two mt">
+    <div class="sec">
+      <svg class="ic g" viewBox="0 0 24 24"><path d="M9 11l2 2 4-4"/><path d="M12 3l7.5 3.2v5.1c0 4.5-3.1 8.7-7.5 9.9-4.4-1.2-7.5-5.4-7.5-9.9V6.2z"/></svg>
+      <div class="tx">O perfil <small>— o que essa pessoa precisa ter, sem exceção</small></div><div class="ln"></div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div class="ch"><svg class="ic" viewBox="0 0 24 24"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg><b>Universo da marcenaria por dentro</b></div>
+        <p>Processo de fabricação, material, acabamento, ferragem. É o que permite conversar de igual
+        para igual com o arquiteto <b>e</b> com a fábrica.</p>
+      </div>
+      <div class="card">
+        <div class="ch"><svg class="ic" viewBox="0 0 24 24"><path d="M3 20V9l9-6 9 6v11"/><path d="M9 20v-6h6v6"/></svg><b>Venda para alto poder aquisitivo</b></div>
+        <p>Experiência comprovada vendendo planejados para esse perfil. Já atendeu e sabe lidar com a
+        exigência que vem junto.</p>
+      </div>
+      <div class="card">
+        <div class="ch"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></svg><b>Venda ativa</b></div>
+        <p>Prospecta por conta própria. <b>Quem só vendeu com lead vindo de anúncio não serve para
+        esta vaga.</b></p>
+      </div>
+      <div class="card">
+        <div class="ch"><svg class="ic" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5"/><circle cx="17.5" cy="9" r="2.3"/><path d="M16 14.4c2.7.3 4.4 2 4.4 4.9"/></svg><b>Trânsito com a cadeia</b></div>
+        <p>Arquiteto, decoradora, engenheiro, construtor, corretor. Relação viva, não lista de
+        contatos.</p>
+      </div>
+      <div class="card">
+        <div class="ch"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12.5" rx="2"/><path d="M8.5 20.5h7M12 16.5v4"/></svg><b>Solução de móvel em software</b></div>
+        <p>Sabe elaborar a solução em software da área. O sistema que a casa usa é baseado em
+        <b>SketchUp</b>.</p>
+      </div>
+      <div class="card">
+        <div class="ch"><svg class="ic" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7"/><path d="M15 8h5v5"/></svg><b>Ambição</b></div>
+        <p>A remuneração é desenhada para quem quer ganhar muito. <b>Quem busca estabilidade vai se
+        frustrar aqui.</b></p>
+      </div>
+    </div>
+
+    <div class="grid2 mt">
       <div class="box no">
-        <div class="bh">O que esta vaga não é</div>
+        <div class="bh"><svg class="ic" viewBox="0 0 24 24" style="width:13px;height:13px"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg>O que esta vaga não é</div>
         <ul>
-          <li>Não é vendedor de loja de móvel modulado</li>
-          <li>Não é atendente que espera o cliente chegar</li>
-          <li>Não é alguém que recebe lead pronto do marketing</li>
-          <li>Não é projetista — quem desenha o projeto executivo é a equipe de projeto</li>
+          <li>Vendedor de loja de móvel modulado</li>
+          <li>Atendente que espera o cliente chegar</li>
+          <li>Alguém que recebe lead pronto do marketing</li>
+          <li>Projetista — quem desenha o executivo é a equipe de projeto</li>
         </ul>
       </div>
       <div class="box bl">
-        <div class="bh">Com quem essa pessoa conversa na casa</div>
+        <div class="bh"><svg class="ic" viewBox="0 0 24 24" style="width:13px;height:13px"><path d="M8 10h8M8 14h5"/><path d="M4 5h16v12H9l-5 4z"/></svg>Com quem conversa na casa</div>
         <ul>
-          <li><b>Projeto</b> — para transformar a venda em projeto executável</li>
-          <li><b>Coordenação de produção</b> — para saber o prazo real antes de prometer</li>
-          <li><b>Administrativo</b> — contrato, nota, cadastro e pasta do cliente</li>
+          <li><b>Projeto</b> — transformar a venda em projeto executável</li>
+          <li><b>Coordenação de produção</b> — saber o prazo real antes de prometer</li>
+          <li><b>Administrativo</b> — contrato, nota, cadastro, pasta do cliente</li>
           <li><b>Direção</b> — condição comercial fora do padrão</li>
         </ul>
       </div>
     </div>
 
-    <div class="sec"><div class="bar"></div><div class="tx">Como é a semana dessa pessoa
-      <small>— referência para entender o formato do trabalho, não uma regra de jornada</small></div></div>
-    <div class="lista"><div class="pt"></div><div class="tx"><b>A maior parte do tempo é fora.</b>
-      Escritório de arquitetura, obra, casa do cliente. <b>É uma vaga de rua, não de mesa</b> — o
-      formato híbrido existe para dar base, não para trabalhar de casa.</div></div>
-    <div class="lista"><div class="pt"></div><div class="tx"><b>Uma parte grande é atendimento e
-      proposta:</b> levantar a necessidade, propor a solução, orçar e negociar.</div></div>
-    <div class="lista"><div class="pt"></div><div class="tx"><b>Uma fatia menor, que não pode faltar,
-      é prospecção:</b> contato novo e retomada de quem esfriou. É o que enche o funil dos meses
-      seguintes — quem para de prospectar vende bem num mês e mal no outro.</div></div>
-    <div class="lista"><div class="pt"></div><div class="tx"><b>E o registro:</b> CRM em dia e
-      alinhamento com projeto e produção. É a menor parte do tempo e a que sustenta todo o
-      resto.</div></div>
+    <div class="sec">
+      <svg class="ic g" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7"/><path d="M15 8h5v5"/></svg>
+      <div class="tx">Como saber se deu certo <small>— o que olhar nos primeiros meses</small></div><div class="ln"></div>
+    </div>
+    <div class="grid3">
+      <div class="card">
+        <div class="ch"><svg class="ic" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5"/><circle cx="17.5" cy="9" r="2.3"/><path d="M16 14.4c2.7.3 4.4 2 4.4 4.9"/></svg><b>A rede crescendo</b></div>
+        <p>Está visitando arquiteto e decoradora <b>toda semana</b>, e os nomes novos aparecem no
+        CRM. Sem isso, nada do resto acontece.</p>
+      </div>
+      <div class="card">
+        <div class="ch"><svg class="ic" viewBox="0 0 24 24"><path d="M4 5h16l-6 7v6l-4 2v-8z"/></svg><b>O funil enchendo</b></div>
+        <p>Tem <b>várias propostas em andamento ao mesmo tempo</b>, não uma de cada vez. É o
+        indicador que antecede a venda.</p>
+      </div>
+      <div class="card">
+        <div class="ch"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg><b>Paciência com o ciclo</b></div>
+        <p>Venda de alto padrão <b>demora</b> — a primeira fechar devagar é normal. O que não pode
+        demorar é a rede e o funil.</p>
+      </div>
+    </div>
 
     <div class="box am mt">
-      <div class="bh">Por que o perfil é tão específico</div>
+      <div class="bh"><svg class="ic" viewBox="0 0 24 24" style="width:13px;height:13px"><path d="M12 9v4.5M12 17h.01"/><path d="M10.3 3.9 2.4 17.4A2 2 0 0 0 4.1 20.4h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>Por que o perfil é tão específico</div>
       Na marcenaria de alto padrão, quem vende precisa saber o que está vendendo. Vendedor que não
-      conhece material e processo <b>promete o que a fábrica não entrega</b> — e aí o custo volta
-      como retrabalho, atraso e cliente insatisfeito. Por isso o conhecimento técnico está entre os
-      requisitos obrigatórios, e não entre os desejáveis.
+      conhece material e processo <b>promete o que a fábrica não entrega</b> — e o custo volta como
+      retrabalho, atraso e cliente insatisfeito. Por isso o conhecimento técnico é requisito
+      obrigatório, não desejável.
     </div>
   </div>
 
@@ -209,7 +286,7 @@
   </div>
 </section>
 
-<!-- ════════════════ FOLHA 2 · REMUNERAÇÃO E IMPACTO ════════════════ -->
+<!-- ═══════════ FOLHA 2 · REMUNERAÇÃO ═══════════ -->
 <section class="sheet">
   <div class="ph">
     <div class="top">
@@ -219,118 +296,128 @@
         <div class="sub">Vargas Decor Ltda · Belo Horizonte / MG</div>
       </div>
     </div>
-    <div class="tt">A Remuneração e as Duas Contas</div>
+    <div class="tt">A Remuneração</div>
     <div class="kx">Quanto o vendedor ganha · quanto custa para a empresa</div>
-    <div class="sel">
-      <span class="tag">Confidencial</span>
-      <div class="pg">Folha 2 de 2</div>
-    </div>
+    <div class="sel"><span class="tag">Confidencial</span><div class="pg">Folha 2 de 2</div></div>
   </div>
 
   <div class="body">
-    <div class="papel">
-      <div class="nh">Como a remuneração funciona</div>
-      <p><b>Um valor fixo por mês</b>, que é o piso, <b>mais uma comissão que sobe conforme o
-      resultado.</b> Quanto mais o vendedor vende no mês, maior o percentual — e o percentual novo
-      vale sobre <b>tudo</b> o que ele vendeu, não só sobre o que passou da faixa.</p>
-      <p>A comissão incide sobre o <b>valor líquido</b>: a venda menos o imposto da nota e a taxa de
-      máquina. O mês fecha <b>no dia 25</b> e o pagamento sai no <b>mês vigente</b> — o vendedor
-      recebe sem esperar o cliente pagar as parcelas.</p>
+    <div class="grid3">
+      <div class="card">
+        <div class="ch"><svg class="ic" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.8"/><path d="M6 10.5v3M18 10.5v3"/></svg><b>Parcela fixa</b></div>
+        <p>Um valor fixo por mês, <b>conforme contrato PJ</b>. É o piso — existe mesmo no mês fraco.</p>
+      </div>
+      <div class="card">
+        <div class="ch"><svg class="ic" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7"/><path d="M15 8h5v5"/></svg><b>Comissão escalada</b></div>
+        <p>Sobe por faixa de volume. O percentual novo vale sobre <b>tudo</b> o que vendeu no mês, não
+        só sobre o excedente.</p>
+      </div>
+      <div class="card">
+        <div class="ch"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="M15.5 15.5 17 17"/></svg><b>Fecha dia 25</b></div>
+        <p>Pagamento no <b>mês vigente</b>. Venda fechada <b>depois do dia 25 entra no mês seguinte</b>.</p>
+      </div>
     </div>
 
-    <div class="sec"><div class="bar"></div><div class="tx">A escala</div></div>
+    <div class="sec">
+      <svg class="ic g" viewBox="0 0 24 24"><path d="M3 20h4v-4h5v-4h5V8h4"/></svg>
+      <div class="tx">A escada <small>— quanto mais vende, maior o percentual sobre o mês inteiro</small></div><div class="ln"></div>
+    </div>
+
+    <svg viewBox="0 0 700 250" style="width:100%;display:block">
+      <defs>
+        <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1e4269"/><stop offset="100%" stop-color="#0E2038"/>
+        </linearGradient>
+      </defs>
+      <line x1="0" y1="196" x2="700" y2="196" stroke="#dfdacd" stroke-width="1"/>
+      <text x="4" y="14" font-size="8.8" fill="#6c7785">Sobre o valor líquido do mês — a venda menos imposto e taxa de máquina, cerca de 92,5% do que foi vendido</text>
+      <rect x="6" y="138" width="164" height="58" fill="url(#bar)" rx="3"/>
+      <rect x="6" y="138" width="164" height="3.5" fill="#C2A05A" rx="1.75"/>
+      <text x="88" y="170" text-anchor="middle" font-size="22" font-weight="700" fill="#d8bd80">2%</text>
+      <text x="88" y="214" text-anchor="middle" font-size="10" font-weight="700" fill="#0E2038">até 299 mil</text>
+      <text x="88" y="228" text-anchor="middle" font-size="8.8" fill="#6c7785">a 250 mil vendidos</text>
+      <text x="88" y="243" text-anchor="middle" font-size="11" font-weight="700" fill="#a9863f">R$ 6.625 / mês</text>
+      <rect x="182" y="104" width="164" height="92" fill="url(#bar)" rx="3"/>
+      <rect x="182" y="104" width="164" height="3.5" fill="#C2A05A" rx="1.75"/>
+      <text x="264" y="136" text-anchor="middle" font-size="22" font-weight="700" fill="#d8bd80">3%</text>
+      <text x="264" y="214" text-anchor="middle" font-size="10" font-weight="700" fill="#0E2038">300 a 399 mil</text>
+      <text x="264" y="228" text-anchor="middle" font-size="8.8" fill="#6c7785">a 350 mil vendidos</text>
+      <text x="264" y="243" text-anchor="middle" font-size="11" font-weight="700" fill="#a9863f">R$ 11.712 / mês</text>
+      <rect x="358" y="70" width="164" height="126" fill="url(#bar)" rx="3"/>
+      <rect x="358" y="70" width="164" height="3.5" fill="#C2A05A" rx="1.75"/>
+      <text x="440" y="102" text-anchor="middle" font-size="22" font-weight="700" fill="#d8bd80">4%</text>
+      <text x="440" y="214" text-anchor="middle" font-size="10" font-weight="700" fill="#0E2038">400 a 499 mil</text>
+      <text x="440" y="228" text-anchor="middle" font-size="8.8" fill="#6c7785">a 450 mil vendidos</text>
+      <text x="440" y="243" text-anchor="middle" font-size="11" font-weight="700" fill="#a9863f">R$ 18.650 / mês</text>
+      <rect x="534" y="36" width="164" height="160" fill="url(#bar)" rx="3"/>
+      <rect x="534" y="36" width="164" height="3.5" fill="#C2A05A" rx="1.75"/>
+      <text x="616" y="68" text-anchor="middle" font-size="22" font-weight="700" fill="#d8bd80">5%</text>
+      <text x="616" y="214" text-anchor="middle" font-size="10" font-weight="700" fill="#0E2038">500 mil acima</text>
+      <text x="616" y="228" text-anchor="middle" font-size="8.8" fill="#6c7785">a 550 mil vendidos</text>
+      <text x="616" y="243" text-anchor="middle" font-size="11" font-weight="700" fill="#a9863f">R$ 27.437 / mês</text>
+    </svg>
+
+    <div class="box gd" style="margin-top:3px">
+      <div class="bh"><svg class="ic" viewBox="0 0 24 24" style="width:13px;height:13px"><path d="M12 19V5M5 12l7-7 7 7"/></svg>Cruzar um degrau muda o mês inteiro</div>
+      <b>299 → 300 mil: + R$ 2.793</b> &nbsp;·&nbsp; <b>399 → 400 mil: + R$ 3.728</b> &nbsp;·&nbsp;
+      <b>499 → 500 mil: + R$ 4.662</b> — por apenas R$ 1.000 vendidos a mais. É o que faz o vendedor
+      correr no fim do mês.
+    </div>
+
+    <div class="sec">
+      <svg class="ic g" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg>
+      <div class="tx">As duas contas <small>— como é PJ, o custo da empresa é exatamente o ganho do vendedor</small></div><div class="ln"></div>
+    </div>
     <table>
       <thead><tr>
-        <th style="width:30%">Venda no mês</th><th class="c" style="width:16%">Comissão</th>
-        <th>Sobre o quê</th>
+        <th style="width:15%">Venda no mês</th><th class="c" style="width:8%">%</th>
+        <th class="r" style="width:15%">Ganho no mês</th><th class="r" style="width:16%">Ganho no ano</th>
+        <th class="r" style="width:14%">% da venda</th><th class="r">Custo a cada 100 mil vendidos</th>
       </tr></thead>
       <tbody>
-        <tr><td><b>até 299 mil</b></td><td class="c"><b>2%</b></td>
-          <td rowspan="4" style="vertical-align:middle">Sobre o <b>valor líquido</b> do mês — a venda
-            menos imposto e taxa de máquina, algo em torno de <b>92,5%</b> do que foi vendido.</td></tr>
-        <tr><td><b>300 a 399 mil</b></td><td class="c"><b>3%</b></td></tr>
-        <tr><td><b>400 a 499 mil</b></td><td class="c"><b>4%</b></td></tr>
-        <tr><td><b>500 mil acima</b></td><td class="c"><b>5%</b></td></tr>
+        <tr><td><b>150.000</b></td><td class="c">2%</td><td class="r"><b>4.775</b></td><td class="r">57.300</td><td class="r">3,18%</td><td class="r">3.183</td></tr>
+        <tr><td><b>250.000</b></td><td class="c">2%</td><td class="r"><b>6.625</b></td><td class="r">79.500</td><td class="r gcol"><b>2,65%</b></td><td class="r gcol"><b>2.650</b></td></tr>
+        <tr><td><b>350.000</b></td><td class="c">3%</td><td class="r"><b>11.712</b></td><td class="r">140.550</td><td class="r">3,35%</td><td class="r">3.346</td></tr>
+        <tr><td><b>450.000</b></td><td class="c">4%</td><td class="r"><b>18.650</b></td><td class="r">223.800</td><td class="r">4,14%</td><td class="r">4.144</td></tr>
+        <tr><td><b>550.000</b></td><td class="c">5%</td><td class="r"><b>27.437</b></td><td class="r">329.250</td><td class="r gcol"><b>4,99%</b></td><td class="r gcol"><b>4.989</b></td></tr>
       </tbody>
     </table>
 
-    <div class="sec"><div class="bar"></div><div class="tx">1 · O que o vendedor ganha</div></div>
-    <table>
-      <thead><tr>
-        <th style="width:17%">Venda no mês</th><th class="c" style="width:9%">%</th>
-        <th class="r" style="width:15%">Líquido</th><th class="r" style="width:15%">Comissão</th>
-        <th class="r" style="width:12%">Fixo</th><th class="r" style="width:16%">No mês</th>
-        <th class="r">No ano</th>
-      </tr></thead>
-      <tbody>
-        <tr><td><b>150.000</b></td><td class="c">2%</td><td class="r">138.750</td><td class="r">2.775</td><td class="r">2.000</td><td class="r"><b>4.775</b></td><td class="r">57.300</td></tr>
-        <tr><td><b>250.000</b></td><td class="c">2%</td><td class="r">231.250</td><td class="r">4.625</td><td class="r">2.000</td><td class="r"><b>6.625</b></td><td class="r">79.500</td></tr>
-        <tr class="dest"><td><b>350.000</b></td><td class="c">3%</td><td class="r">323.750</td><td class="r">9.712</td><td class="r">2.000</td><td class="r"><b>11.712</b></td><td class="r">140.550</td></tr>
-        <tr><td><b>450.000</b></td><td class="c">4%</td><td class="r">416.250</td><td class="r">16.650</td><td class="r">2.000</td><td class="r"><b>18.650</b></td><td class="r">223.800</td></tr>
-        <tr><td><b>550.000</b></td><td class="c">5%</td><td class="r">508.750</td><td class="r">25.437</td><td class="r">2.000</td><td class="r"><b>27.437</b></td><td class="r">329.250</td></tr>
-      </tbody>
-    </table>
-
-    <div class="sec"><div class="bar"></div><div class="tx">2 · O que custa para a empresa
-      <small>— é o mesmo valor: o custo da empresa é o ganho do vendedor</small></div></div>
-    <table>
-      <thead><tr>
-        <th style="width:17%">Venda no mês</th><th class="r" style="width:17%">Custo no mês</th>
-        <th class="r" style="width:17%">Custo no ano</th>
-        <th class="r" style="width:17%">% da venda</th><th class="r">Custo a cada 100 mil vendidos</th>
-      </tr></thead>
-      <tbody>
-        <tr><td><b>150.000</b></td><td class="r">4.775</td><td class="r">57.300</td><td class="r">3,18%</td><td class="r">3.183</td></tr>
-        <tr><td><b>250.000</b></td><td class="r">6.625</td><td class="r">79.500</td><td class="r"><b>2,65%</b></td><td class="r"><b>2.650</b></td></tr>
-        <tr class="dest"><td><b>350.000</b></td><td class="r">11.712</td><td class="r">140.550</td><td class="r">3,35%</td><td class="r">3.346</td></tr>
-        <tr><td><b>450.000</b></td><td class="r">18.650</td><td class="r">223.800</td><td class="r">4,14%</td><td class="r">4.144</td></tr>
-        <tr><td><b>550.000</b></td><td class="r">27.437</td><td class="r">329.250</td><td class="r"><b>4,99%</b></td><td class="r"><b>4.989</b></td></tr>
-      </tbody>
-    </table>
-
-    <div class="two mt">
-      <div class="box gd">
-        <div class="bh">A leitura — o custo sobe, mas o volume paga</div>
-        Vender mais encarece o vendedor: de <b>2,65%</b> da venda a 250 mil para <b>4,99%</b> a 550
-        mil. Quase o dobro por real vendido. Mas a conta inteira fecha a favor:
-        <ul>
-          <li>Subir de 299 mil para 550 mil no mês custa <b>+ R$ 19.906</b> de vendedor</li>
-          <li>E traz <b>R$ 251 mil</b> de venda a mais, que a 30% de margem valem <b>R$ 75.300</b></li>
-          <li>Sobram <b>R$ 55.394</b> no mês</li>
-        </ul>
-        <b>A escala cara é a escala boa</b> — desde que a fábrica entregue o volume.
-      </div>
+    <div class="grid2 mt">
       <div class="box ok">
-        <div class="bh">Onde está o salto — e o que ele provoca</div>
-        Como o percentual novo vale sobre o mês inteiro, cruzar a faixa muda muito:
+        <div class="bh"><svg class="ic" viewBox="0 0 24 24" style="width:13px;height:13px"><path d="M20 6 9 17l-5-5"/></svg>A escala cara é a escala boa</div>
+        O vendedor encarece conforme sobe: de <b>2,65%</b> da venda a 250 mil para <b>4,99%</b> a 550
+        mil — quase o dobro por real vendido. Mas a conta inteira fecha a favor:
         <ul>
-          <li>299 → 300 mil: a empresa paga <b>+ R$ 2.793</b></li>
-          <li>399 → 400 mil: <b>+ R$ 3.727</b></li>
-          <li>499 → 500 mil: <b>+ R$ 4.662</b></li>
+          <li>Subir de 299 para 550 mil custa <b>+ R$ 19.906</b></li>
+          <li>Traz <b>R$ 251 mil</b> de venda a mais → a 30% de margem, <b>R$ 75.300</b></li>
+          <li><b>Sobram R$ 55.394 no mês</b></li>
         </ul>
-        É o que faz o vendedor correr no fim do mês — e também o que pode levá-lo a dar desconto
-        para fechar. Como a comissão é sobre o líquido, o desconto corta a base dele também: existe
-        uma trava natural, mas ela não é total.
+        Desde que a fábrica entregue o volume.
+      </div>
+      <div class="box bl">
+        <div class="bh"><svg class="ic" viewBox="0 0 24 24" style="width:13px;height:13px"><path d="M9 11l2 2 4-4"/><path d="M12 3l7.5 3.2v5.1c0 4.5-3.1 8.7-7.5 9.9-4.4-1.2-7.5-5.4-7.5-9.9V6.2z"/></svg>Definido</div>
+        <ul>
+          <li><b>Vínculo: PJ.</b> Não há encargo trabalhista sobre a comissão — o custo da empresa é o
+            valor da tabela, sem acréscimo.</li>
+          <li><b>O fixo</b> é parcela fixa <b>conforme contrato PJ</b>, não salário nem ajuda de custo.</li>
+          <li><b>Corte do mês:</b> fecha dia 25. O que fechar depois disso <b>conta no mês
+            seguinte</b> — inclusive para a faixa de comissão.</li>
+        </ul>
       </div>
     </div>
 
     <div class="box no mt">
-      <div class="bh">Três coisas que ainda precisam ser decididas antes de contratar</div>
-      <ul>
-        <li><b>CLT ou PJ.</b> Muda muito o custo. Em PJ, o custo da empresa é exatamente o valor da
-          tabela. Em CLT, somam-se férias, 13º, FGTS e provisões — na ordem de <b>35% a 40%</b> para
-          empresa do Simples, o que a 550 mil de venda significa cerca de <b>R$ 10 mil a mais por
-          mês</b>. Confirmar o percentual com a contabilidade.</li>
-        <li><b>Distrato.</b> A comissão sai no mês do fechamento, antes de o cliente pagar as
-          parcelas. Se o contrato cair depois, estorna no mês seguinte ou a empresa absorve?</li>
-        <li><b>A palavra "fixo".</b> Se for CLT é salário; se for PJ é parcela fixa do contrato.
-          "Ajuda de custo" é reembolso de despesa — não serve para nenhum dos dois.</li>
-      </ul>
+      <div class="bh"><svg class="ic" viewBox="0 0 24 24" style="width:13px;height:13px"><path d="M12 9v4.5M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>Falta uma definição: o distrato</div>
+      A comissão é paga no mês do fechamento, <b>antes de o cliente pagar as parcelas</b>. Se o
+      contrato cair depois, o valor já saiu. Precisa estar no contrato PJ: <b>estorna no acerto
+      seguinte</b> ou <b>a empresa absorve</b>. Sem essa cláusula, a decisão acaba sendo tomada no
+      calor do primeiro distrato — que é a pior hora para decidir.
     </div>
   </div>
 
   <div class="rf">
-    <div><b>A remuneração e as duas contas</b> — Valvic Marcenaria</div>
+    <div><b>A remuneração · Vendedor(a)</b> — Valvic Marcenaria</div>
     <div class="cf">Confidencial · não circula com candidato</div>
   </div>
 </section>
