@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<title>Escopo Técnico da Vaga — Vendedor(a) · USO INTERNO</title>
+<title>A Vaga de Vendedor(a) — cargo, perfil e remuneração · USO INTERNO</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   @page { size: A4 portrait; margin: 0; }
@@ -10,7 +10,7 @@
   :root{ --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f;
          --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd;
          --green:#2f7d4f; --amber:#c47d0e; --red:#b0413f; --blue:#2f5d8c;
-         --okbg:#eef4f0; --redbg:#fbefee; --ambbg:#fdf6e8; --goldbg:#f6edd6; }
+         --okbg:#eef4f0; --redbg:#fbefee; --ambbg:#fdf6e8; --goldbg:#f6edd6; --bluebg:#eef2f8; }
   html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
   body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3;
         font-size:10.5px; line-height:1.4; -webkit-font-smoothing:antialiased; }
@@ -19,8 +19,7 @@
           page-break-after:always; }
   .sheet:last-child{ page-break-after:auto; }
 
-  /* ── cabeçalho ── */
-  .ph{ background:var(--navy); color:#fff; padding:6mm 12mm 5mm; position:relative; }
+  .ph{ background:var(--navy); color:#fff; padding:6.5mm 12mm 5mm; position:relative; }
   .ph::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:2.5px;
               background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 42%,transparent 100%); }
   .ph .top{ display:flex; align-items:center; gap:11px; }
@@ -29,89 +28,59 @@
              font-family:'Cormorant Garamond',serif; font-weight:700; font-size:16px; color:var(--gold); }
   .ph .co{ font-size:9.6px; font-weight:700; letter-spacing:2.4px; text-transform:uppercase; }
   .ph .sub{ font-size:8px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
-  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:700; margin-top:4px; line-height:1.05; }
-  .ph .kx{ font-size:7.8px; letter-spacing:2.6px; text-transform:uppercase; color:var(--gold); margin-top:2px; }
-  .ph .sel{ position:absolute; right:12mm; top:6mm; text-align:right; }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:700; margin-top:5px; line-height:1.05; }
+  .ph .kx{ font-size:7.8px; letter-spacing:2.6px; text-transform:uppercase; color:var(--gold); margin-top:3px; }
+  .ph .sel{ position:absolute; right:12mm; top:6.5mm; text-align:right; }
   .ph .sel .tag{ display:inline-block; background:var(--red); color:#fff; font-size:7.4px; font-weight:700;
                  letter-spacing:1.3px; text-transform:uppercase; padding:3px 8px; border-radius:3px; }
   .ph .sel .pg{ font-size:7.4px; color:rgba(255,255,255,.55); letter-spacing:1.6px;
                 text-transform:uppercase; margin-top:5px; }
 
-  .body{ flex:1; padding:4.5mm 12mm 0; display:flex; flex-direction:column; min-height:0; }
+  .body{ flex:1; padding:5mm 12mm 0; display:flex; flex-direction:column; min-height:0; }
 
-  /* ── seções ── */
-  .sec{ display:flex; align-items:center; gap:8px; margin:6px 0 4px; }
+  .sec{ display:flex; align-items:center; gap:8px; margin:8px 0 5px; }
   .sec:first-child{ margin-top:0; }
   .sec .bar{ width:14px; height:2px; background:var(--gold); flex-shrink:0; }
-  .sec .tx{ font-size:9px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:var(--navy); }
+  .sec .tx{ font-size:9.2px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:var(--navy); }
   .sec .tx small{ color:var(--muted); font-weight:600; letter-spacing:.3px; text-transform:none; }
 
-  /* ── bloco escuro de abertura ── */
-  .papel{ background:var(--navy); border-radius:7px; padding:8px 12px; margin-bottom:6px; }
+  .papel{ background:var(--navy); border-radius:7px; padding:9px 13px; }
   .papel .nh{ font-size:7.2px; letter-spacing:1.3px; text-transform:uppercase; color:var(--gold); font-weight:700; }
-  .papel p{ font-size:9.4px; line-height:1.5; color:rgba(255,255,255,.9); margin-top:3px; }
+  .papel p{ font-size:9.8px; line-height:1.52; color:rgba(255,255,255,.9); margin-top:4px; }
   .papel p b{ color:#fff; }
-  .papel p+p{ margin-top:4px; }
 
-  /* ── tabelas ── */
+  p.tx{ font-size:9.8px; line-height:1.55; }
+  p.tx+p.tx{ margin-top:5px; }
+  p.tx b{ color:var(--navy); }
+
   table{ width:100%; border-collapse:collapse; table-layout:fixed; }
   thead th{ background:var(--navy2); color:#fff; font-size:7.4px; font-weight:700; letter-spacing:.3px;
-            text-transform:uppercase; padding:4px 6px; text-align:left; border:1px solid var(--navy); }
+            text-transform:uppercase; padding:5px 6px; text-align:left; border:1px solid var(--navy); }
   thead th.c{ text-align:center; } thead th.r{ text-align:right; }
-  tbody td{ border:1px solid var(--line); padding:3.5px 6px; font-size:9.2px; vertical-align:top; }
+  tbody td{ border:1px solid var(--line); padding:4px 6px; font-size:9.4px; vertical-align:middle; }
   tbody td.c{ text-align:center; } tbody td.r{ text-align:right; font-variant-numeric:tabular-nums; }
   tbody tr:nth-child(even) td{ background:#f7f5ef; }
   tbody td b{ color:var(--navy); }
-  .cbx{ display:inline-block; width:11px; height:11px; border:1.3px solid var(--navy2);
-        border-radius:2.5px; background:#fff; }
-  .fill{ display:inline-block; border-bottom:1px solid var(--line2); height:11px; width:100%; }
+  tr.dest td{ background:var(--goldbg) !important; }
+  tr.dest td b{ color:var(--gold-dk); }
 
-  /* ── listas de critério ── */
-  .crit{ display:flex; gap:7px; align-items:flex-start; padding:4px 0; border-bottom:1px dotted var(--line2); }
-  .crit:last-child{ border-bottom:0; }
-  .crit .n{ width:14px; height:14px; flex-shrink:0; border-radius:3px; background:var(--navy);
-            color:var(--gold); font-size:7.6px; font-weight:700; display:flex;
-            align-items:center; justify-content:center; margin-top:1px; }
-  .crit .tx{ flex:1; font-size:9.3px; line-height:1.42; }
-  .crit .tx b{ color:var(--navy); }
-  .crit .tx em{ color:var(--muted); font-style:normal; }
+  .lista{ display:flex; gap:7px; align-items:flex-start; padding:3.5px 0; border-bottom:1px dotted var(--line2); }
+  .lista:last-child{ border-bottom:0; }
+  .lista .pt{ width:5px; height:5px; border-radius:50%; background:var(--gold); flex-shrink:0; margin-top:6px; }
+  .lista .tx{ flex:1; font-size:9.5px; line-height:1.45; }
+  .lista .tx b{ color:var(--navy); }
 
-  /* ── caixas coloridas ── */
-  .box{ border-radius:6px; padding:7px 10px; font-size:9.2px; line-height:1.45; }
-  .box .bh{ font-size:7.2px; font-weight:700; letter-spacing:1.3px; text-transform:uppercase; margin-bottom:3px; }
+  .box{ border-radius:6px; padding:8px 11px; font-size:9.5px; line-height:1.5; }
+  .box .bh{ font-size:7.2px; font-weight:700; letter-spacing:1.3px; text-transform:uppercase; margin-bottom:4px; }
   .box.ok{ background:var(--okbg); border:1px solid #cfe0d5; } .box.ok .bh{ color:var(--green); }
   .box.no{ background:var(--redbg); border:1px solid #efd4d2; } .box.no .bh{ color:var(--red); }
   .box.am{ background:var(--ambbg); border:1px solid #ecdcb6; } .box.am .bh{ color:var(--amber); }
   .box.gd{ background:var(--goldbg); border:1px solid #e4d4ab; } .box.gd .bh{ color:var(--gold-dk); }
-  .box ul{ margin-left:13px; } .box li{ margin-top:2px; }
-  .two{ display:grid; grid-template-columns:1fr 1fr; gap:7px; }
-  .mt{ margin-top:6px; }
+  .box.bl{ background:var(--bluebg); border:1px solid #d3dcea; } .box.bl .bh{ color:var(--blue); }
+  .box ul{ margin-left:14px; } .box li{ margin-top:3px; }
+  .two{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .mt{ margin-top:7px; }
 
-  /* ── pergunta de entrevista ── */
-  .q{ border:1px solid var(--line); border-radius:6px; padding:4px 9px; background:#fff; margin-bottom:3px; }
-  .q .qh{ display:flex; gap:7px; align-items:baseline; }
-  .q .qn{ font-size:7.2px; font-weight:700; letter-spacing:1.2px; color:var(--gold-dk);
-          text-transform:uppercase; flex-shrink:0; }
-  .q .qt{ font-size:9.6px; font-weight:600; color:var(--navy); line-height:1.35; }
-  .q .ans{ display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-top:4px; }
-  .q .ans div{ font-size:8.8px; line-height:1.4; }
-  .q .ans .g{ color:#235d3c; } .q .ans .r{ color:#8e3634; }
-  .q .ans b{ font-size:7.2px; letter-spacing:1.1px; text-transform:uppercase; display:block; margin-bottom:1px; }
-  .q .nota{ display:flex; align-items:center; gap:6px; margin-top:4px; padding-top:4px;
-            border-top:1px dotted var(--line2); font-size:8.4px; color:var(--muted); }
-  .q .nota .pts{ display:flex; gap:4px; }
-  .q .nota .pts span{ width:14px; height:14px; border:1.2px solid var(--navy2); border-radius:2.5px;
-                      background:#fff; font-size:7.4px; display:flex; align-items:center;
-                      justify-content:center; color:var(--navy2); font-weight:700; }
-
-  /* ── rodapé ── */
-  .tri thead th{ font-size:6.6px; padding:4px 3px; text-align:center; }
-  .tri tbody td{ height:19px; padding:2px 4px; font-size:8.6px; }
-  .tri tbody td.e{ background:#fff; }
-  .tri tbody tr:nth-child(even) td.e{ background:#f7f5ef; }
-  .assin{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-top:7px; }
-  .assin .li{ border-top:1px solid var(--navy2); padding-top:3px; font-size:7.6px;
-              color:var(--muted); letter-spacing:.4px; }
   .rf{ margin-top:auto; padding:3mm 12mm 3.5mm; border-top:1px solid var(--line);
        display:flex; justify-content:space-between; align-items:center;
        font-size:7.4px; color:var(--muted); letter-spacing:.3px; }
@@ -121,439 +90,247 @@
 </head>
 <body>
 
-<!-- ════════════════ FOLHA 1 ════════════════ -->
+<!-- ════════════════ FOLHA 1 · O CARGO E O PERFIL ════════════════ -->
 <section class="sheet">
   <div class="ph">
     <div class="top">
       <div class="mono">V</div>
       <div>
         <div class="co">Valvic Marcenaria</div>
-        <div class="sub">Vargas Decor Ltda · Belo Horizonte / MG · Processo seletivo</div>
+        <div class="sub">Vargas Decor Ltda · Belo Horizonte / MG</div>
       </div>
     </div>
-    <div class="tt">Escopo Técnico da Vaga — Vendedor(a)</div>
-    <div class="kx">O que estamos comprando · como filtrar · o que não se fala</div>
+    <div class="tt">A Vaga de Vendedor(a) — o cargo e o perfil</div>
+    <div class="kx">Para entender quem é essa pessoa e o que ela faz</div>
     <div class="sel">
       <span class="tag">Uso interno</span>
-      <div class="pg">Folha 1 de 3</div>
+      <div class="pg">Folha 1 de 2</div>
     </div>
   </div>
 
   <div class="body">
     <div class="papel">
-      <div class="nh">O que estamos comprando</div>
-      <p>Não é um vendedor de móvel. É alguém que <b>já vive o mercado de planejados</b> e sabe
-      conduzir o cliente de alto poder aquisitivo do primeiro contato ao contrato — porque conhece
-      processo, material, acabamento e ferragem, e por isso <b>fala a mesma língua da fábrica e do
-      arquiteto</b>.</p>
-      <p>A venda aqui nasce de <b>relacionamento</b>: arquiteto, decoradora, engenheiro, construtor,
-      corretor. Nasce de estar na obra e no evento. Quem espera lead cair não serve.</p>
-      <p>E precisa de <b>fome</b>. A remuneração é desenhada para quem quer ganhar muito —
-      quem busca estabilidade vai se frustrar e nos custar um semestre.</p>
+      <div class="nh">O cargo, em três frases</div>
+      <p>É a pessoa que <b>traz cliente novo para a fábrica</b> — e que conduz esse cliente do
+      primeiro contato até o contrato assinado.</p>
+      <p>Não é um atendente de loja esperando quem entra. É alguém que <b>sai, prospecta e constrói
+      relacionamento</b> com arquitetos, decoradoras, engenheiros, construtores e corretores, porque
+      é dessa rede que a venda de alto padrão nasce.</p>
+      <p>E é alguém que <b>entende de marcenaria de verdade</b>: conhece processo, material,
+      acabamento e ferragem. Por isso consegue propor a solução, orçar certo e prometer só o que a
+      fábrica entrega.</p>
     </div>
 
-    <div class="sec"><div class="bar"></div><div class="tx">1 · Eliminatórios
-      <small>— falta um, não avança. Marque na triagem do currículo e confirme na conversa.</small></div></div>
+    <div class="sec"><div class="bar"></div><div class="tx">O que essa pessoa faz no dia a dia</div></div>
+    <div class="lista"><div class="pt"></div><div class="tx"><b>Vende móveis planejados sob medida</b>
+      para cliente final de alto poder aquisitivo.</div></div>
+    <div class="lista"><div class="pt"></div><div class="tx"><b>Cultiva a rede de profissionais.</b>
+      Visita arquiteto, decoradora, engenheiro, construtor e corretor. Mantém a relação viva mesmo
+      quando não tem projeto na mesa — é o que faz a indicação chegar.</div></div>
+    <div class="lista"><div class="pt"></div><div class="tx"><b>Frequenta obra.</b> É onde o projeto
+      encontra a realidade, e onde o cliente decide se confia.</div></div>
+    <div class="lista"><div class="pt"></div><div class="tx"><b>Participa dos eventos do setor</b>
+      representando a Valvic.</div></div>
+    <div class="lista"><div class="pt"></div><div class="tx"><b>Conduz o atendimento inteiro:</b>
+      entende a necessidade, propõe a solução de móvel, monta o orçamento no sistema da casa e
+      conduz o fechamento.</div></div>
+    <div class="lista"><div class="pt"></div><div class="tx"><b>Mantém o CRM atualizado</b> — do
+      primeiro contato ao contrato. É por ali que se acompanha o que está em negociação e se confere
+      a comissão no fechamento do mês.</div></div>
 
-    <div class="crit"><div class="n">1</div><div class="tx"><b>Universo da marcenaria por dentro.</b>
-      Processo de fabricação, material, acabamento, ferragem. <em>Verifique: a pessoa cita marca e
-      modelo de ferragem sem você pedir? Sabe por que usaria MDF ou MDP?</em></div></div>
-    <div class="crit"><div class="n">2</div><div class="tx"><b>Venda comprovada de planejados para
-      cliente de alto poder aquisitivo.</b> <em>Verifique: ticket médio declarado e tipo de obra —
-      apartamento de alto padrão, casa, cobertura. Loja de modulado não conta.</em></div></div>
-    <div class="crit"><div class="n">3</div><div class="tx"><b>Venda ativa.</b> Prospecta, cria
-      relacionamento, vai à obra e ao evento. <em>Verifique: pergunte como conseguiu o último cliente
-      novo. Se a resposta for "veio do site", é eliminatório.</em></div></div>
-    <div class="crit"><div class="n">4</div><div class="tx"><b>Trânsito com a cadeia de profissionais</b>
-      — arquiteto, decoradora, engenheiro, construtor, corretor. <em>Verifique: pede três nomes de
-      profissionais que ela visitou no último mês. Quem tem, responde na hora.</em></div></div>
-    <div class="crit"><div class="n">5</div><div class="tx"><b>Elaborar solução de móvel em software
-      da área.</b> O sistema da casa é baseado em SketchUp. <em>Verifique: peça para mostrar algo que
-      fez. "Sei mexer" sem nada para mostrar não vale.</em></div></div>
-    <div class="crit"><div class="n">6</div><div class="tx"><b>Ler projeto</b> — planta, elevação,
-      render — e conversar de igual para igual com arquiteto. <em>Verifique: na entrevista técnica,
-      abra um projeto real da casa e peça a leitura.</em></div></div>
-    <div class="crit"><div class="n">7</div><div class="tx"><b>Disciplina de CRM.</b> Registro em dia,
-      follow-up que não cai. <em>Verifique: qual CRM usou e qual era a cadência. Resposta vaga é
-      alerta — vendedor bom de rua e ruim de registro nos custa caro.</em></div></div>
-    <div class="crit"><div class="n">8</div><div class="tx"><b>Ambição declarada.</b> <em>Verifique:
-      sabe de cabeça quanto vendeu nos últimos 12 meses e quanto quer ganhar. Quem não sabe o próprio
-      número não persegue meta.</em></div></div>
+    <div class="sec"><div class="bar"></div><div class="tx">O perfil
+      <small>— o que essa pessoa precisa ter, sem exceção</small></div></div>
+    <div class="lista"><div class="pt"></div><div class="tx"><b>Conhecer o universo da marcenaria por
+      dentro.</b> Processo de fabricação, material, acabamento, ferragem. É o que permite conversar
+      de igual para igual com o arquiteto e com a fábrica.</div></div>
+    <div class="lista"><div class="pt"></div><div class="tx"><b>Experiência comprovada vendendo
+      planejados para cliente de alto poder aquisitivo.</b> Já atendeu esse perfil e sabe lidar com
+      a exigência que vem junto.</div></div>
+    <div class="lista"><div class="pt"></div><div class="tx"><b>Venda ativa.</b> Prospecta por conta
+      própria. Quem só vendeu com lead vindo de anúncio não serve para esta vaga.</div></div>
+    <div class="lista"><div class="pt"></div><div class="tx"><b>Trânsito com a cadeia de
+      profissionais</b> — arquiteto, decoradora, engenheiro, construtor, corretor.</div></div>
+    <div class="lista"><div class="pt"></div><div class="tx"><b>Saber elaborar solução de móvel em
+      software da área.</b> O sistema que a casa usa é baseado em <b>SketchUp</b>.</div></div>
+    <div class="lista"><div class="pt"></div><div class="tx"><b>Ler projeto</b> — planta, elevação,
+      render — com naturalidade.</div></div>
+    <div class="lista"><div class="pt"></div><div class="tx"><b>Disciplina de registro.</b> CRM em
+      dia e follow-up que não cai.</div></div>
+    <div class="lista"><div class="pt"></div><div class="tx"><b>Ambição.</b> A remuneração é desenhada
+      para quem quer ganhar muito. Quem busca estabilidade vai se frustrar aqui.</div></div>
 
-    <div class="sec mt"><div class="bar"></div><div class="tx">2 · Pesa a favor
-      <small>— não elimina, mas decide entre dois finalistas</small></div></div>
-    <div class="two">
-      <div class="box ok">
-        <div class="bh">Diferenciais</div>
-        <ul>
-          <li>Carteira própria de arquitetos, decoradores e clientes</li>
-          <li>Vivência de chão de fábrica — sabe o que a produção entrega</li>
-          <li>Projeto executivo ou detalhamento de marcenaria</li>
-          <li>Já vendeu em marcenaria com fábrica própria</li>
-          <li>Presença em feira e evento do setor</li>
-        </ul>
-      </div>
+    <div class="two mt">
       <div class="box no">
-        <div class="bh">Sinais de alerta</div>
+        <div class="bh">O que esta vaga não é</div>
         <ul>
-          <li>Só vendeu com lead vindo de marketing</li>
-          <li>Não sabe dizer o próprio número do ano</li>
-          <li>Nunca atendeu arquiteto diretamente</li>
-          <li>Quer fixo alto e comissão pequena — é o inverso do desenho</li>
-          <li>Fala mal do empregador anterior sem nenhuma autocrítica</li>
-          <li>Pergunta primeiro de benefício e horário</li>
+          <li>Não é vendedor de loja de móvel modulado</li>
+          <li>Não é atendente que espera o cliente chegar</li>
+          <li>Não é alguém que recebe lead pronto do marketing</li>
+          <li>Não é projetista — quem desenha o projeto executivo é a equipe de projeto</li>
+        </ul>
+      </div>
+      <div class="box bl">
+        <div class="bh">Com quem essa pessoa conversa na casa</div>
+        <ul>
+          <li><b>Projeto</b> — para transformar a venda em projeto executável</li>
+          <li><b>Coordenação de produção</b> — para saber o prazo real antes de prometer</li>
+          <li><b>Administrativo</b> — contrato, nota, cadastro e pasta do cliente</li>
+          <li><b>Direção</b> — condição comercial fora do padrão</li>
         </ul>
       </div>
     </div>
+
+    <div class="sec"><div class="bar"></div><div class="tx">Como é a semana dessa pessoa
+      <small>— referência para entender o formato do trabalho, não uma regra de jornada</small></div></div>
+    <div class="lista"><div class="pt"></div><div class="tx"><b>A maior parte do tempo é fora.</b>
+      Escritório de arquitetura, obra, casa do cliente. <b>É uma vaga de rua, não de mesa</b> — o
+      formato híbrido existe para dar base, não para trabalhar de casa.</div></div>
+    <div class="lista"><div class="pt"></div><div class="tx"><b>Uma parte grande é atendimento e
+      proposta:</b> levantar a necessidade, propor a solução, orçar e negociar.</div></div>
+    <div class="lista"><div class="pt"></div><div class="tx"><b>Uma fatia menor, que não pode faltar,
+      é prospecção:</b> contato novo e retomada de quem esfriou. É o que enche o funil dos meses
+      seguintes — quem para de prospectar vende bem num mês e mal no outro.</div></div>
+    <div class="lista"><div class="pt"></div><div class="tx"><b>E o registro:</b> CRM em dia e
+      alinhamento com projeto e produção. É a menor parte do tempo e a que sustenta todo o
+      resto.</div></div>
 
     <div class="box am mt">
-      <div class="bh">O que a Karla pode dizer ao candidato</div>
-      <b style="font-weight:600;color:var(--green)">Pode:</b> tudo o que está no anúncio · que a
-      remuneração é <b>fixo mensal mais comissão escalada por faixa de volume do mês</b> · que o
-      fechamento é <b>dia 25 com pagamento no mês vigente</b> · formato híbrido com base em BH ·
-      fábrica própria · as etapas do processo e o prazo de retorno.<br>
-      <b style="font-weight:600;color:var(--red)">Não pode:</b> o valor do fixo · os percentuais e as
-      faixas · faturamento, tamanho da carteira ou nome de cliente · nome e remuneração de ninguém da
-      equipe. <b>Essa conversa é do Jonathan, na etapa 3.</b>
+      <div class="bh">Por que o perfil é tão específico</div>
+      Na marcenaria de alto padrão, quem vende precisa saber o que está vendendo. Vendedor que não
+      conhece material e processo <b>promete o que a fábrica não entrega</b> — e aí o custo volta
+      como retrabalho, atraso e cliente insatisfeito. Por isso o conhecimento técnico está entre os
+      requisitos obrigatórios, e não entre os desejáveis.
     </div>
-
-    <div class="box gd mt">
-      <div class="bh">Se o candidato insistir no salário na primeira conversa</div>
-      "A remuneração é fixo mais comissão escalada, e o desenho é para quem vende bem ganhar bem.
-      Os números o Jonathan abre na conversa dele, com a simulação na frente."
-      <b>— e registre que perguntou.</b> Insistência excessiva no fixo, antes de falar do próprio
-      resultado, é informação sobre o perfil.
-    </div>
-
-    <div class="sec mt"><div class="bar"></div><div class="tx">3 · Ficha de triagem
-      <small>— uma linha por currículo recebido · marque ✓ ou ✗ em cada eliminatório</small></div></div>
-    <table class="tri">
-      <thead><tr>
-        <th style="width:17%;text-align:left">Candidato</th>
-        <th style="width:11%">Origem</th>
-        <th style="width:9%">Venda 12 m</th>
-        <th style="width:8%">Ticket</th>
-        <th style="width:4.2%">1</th><th style="width:4.2%">2</th><th style="width:4.2%">3</th>
-        <th style="width:4.2%">4</th><th style="width:4.2%">5</th><th style="width:4.2%">6</th>
-        <th style="width:4.2%">7</th><th style="width:4.2%">8</th>
-        <th style="width:21%;text-align:left">Decisão / data</th>
-      </tr></thead>
-      <tbody>
-        <tr><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td></tr>
-        <tr><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td></tr>
-        <tr><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td></tr>
-        <tr><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td></tr>
-        <tr><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td></tr>
-        <tr><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td></tr>
-        <tr><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td></tr>
-        <tr><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td></tr>
-        <tr><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td></tr>
-        <tr><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td><td class="e"></td></tr>
-        
-      </tbody>
-    </table>
   </div>
 
   <div class="rf">
-    <div><b>Escopo técnico da vaga · Vendedor(a)</b> — Valvic Marcenaria</div>
-    <div class="cf">Confidencial · não circula com candidato</div>
+    <div><b>A vaga de Vendedor(a) · cargo e perfil</b> — Valvic Marcenaria</div>
+    <div class="cf">Uso interno</div>
   </div>
 </section>
 
-<!-- ════════════════ FOLHA 2 ════════════════ -->
+<!-- ════════════════ FOLHA 2 · REMUNERAÇÃO E IMPACTO ════════════════ -->
 <section class="sheet">
   <div class="ph">
     <div class="top">
       <div class="mono">V</div>
       <div>
         <div class="co">Valvic Marcenaria</div>
-        <div class="sub">Vargas Decor Ltda · Belo Horizonte / MG · Processo seletivo</div>
+        <div class="sub">Vargas Decor Ltda · Belo Horizonte / MG</div>
       </div>
     </div>
-    <div class="tt">Roteiro de Entrevista — Vendedor(a)</div>
-    <div class="kx">Cada pergunta verifica um eliminatório · nota de 0 a 3</div>
-    <div class="sel">
-      <span class="tag">Uso interno</span>
-      <div class="pg">Folha 2 de 3</div>
-    </div>
-  </div>
-
-  <div class="body">
-    <div class="box gd" style="margin-bottom:6px">
-      <div class="bh">Como usar</div>
-      Candidato: <span class="fill" style="width:120px"></span>&nbsp;&nbsp;
-      Data: <span class="fill" style="width:60px"></span>&nbsp;&nbsp;
-      Quem entrevistou: <span class="fill" style="width:90px"></span>&nbsp;&nbsp;
-      Total: <span class="fill" style="width:40px"></span> / 24<br>
-      <b>0</b> = não respondeu · <b>1</b> = genérico · <b>2</b> = concreto · <b>3</b> = concreto com
-      número ou nome. Nota 0 em qualquer pergunta de 1 a 5 encerra o processo.
-    </div>
-
-    <div class="q">
-      <div class="qh"><div class="qn">1 · Marcenaria</div><div class="qt">Me explica a diferença
-        entre MDF e MDP, e quando você usaria cada um num projeto de alto padrão.</div></div>
-      <div class="ans">
-        <div class="g"><b>Boa resposta</b>Fala de densidade, usinagem, comportamento com umidade,
-          onde cada um cabe. Cita linha ou fornecedor.</div>
-        <div class="r"><b>Alerta</b>"MDF é melhor." Genérico, sem aplicação. Ou não sabe.</div>
-      </div>
-      <div class="nota"><span>Nota</span><div class="pts"><span>0</span><span>1</span><span>2</span><span>3</span></div>
-        <span style="flex:1;border-bottom:1px dotted var(--line2)"></span></div>
-    </div>
-
-    <div class="q">
-      <div class="qh"><div class="qn">2 · Marcenaria</div><div class="qt">Um cliente quer porta de
-        2,40 m em laca. O que você checa antes de prometer?</div></div>
-      <div class="ans">
-        <div class="g"><b>Boa resposta</b>Empenamento, reforço, peso na dobradiça, limite da chapa,
-          prazo da pintura, acesso e transporte. Levanta a dúvida antes de vender.</div>
-        <div class="r"><b>Alerta</b>"A fábrica resolve." Promete primeiro e checa depois — é
-          exatamente o que gera retrabalho.</div>
-      </div>
-      <div class="nota"><span>Nota</span><div class="pts"><span>0</span><span>1</span><span>2</span><span>3</span></div>
-        <span style="flex:1;border-bottom:1px dotted var(--line2)"></span></div>
-    </div>
-
-    <div class="q">
-      <div class="qh"><div class="qn">3 · Venda ativa</div><div class="qt">Como você conseguiu seu
-        último cliente novo? Conta o caminho inteiro.</div></div>
-      <div class="ans">
-        <div class="g"><b>Boa resposta</b>Descreve a origem e o próprio movimento: indicação de
-          arquiteto que ela cultivou, visita a obra, conversa em evento.</div>
-        <div class="r"><b>Alerta</b>"Veio do site", "a empresa me passou". <b>Eliminatório.</b></div>
-      </div>
-      <div class="nota"><span>Nota</span><div class="pts"><span>0</span><span>1</span><span>2</span><span>3</span></div>
-        <span style="flex:1;border-bottom:1px dotted var(--line2)"></span></div>
-    </div>
-
-    <div class="q">
-      <div class="qh"><div class="qn">4 · Rede</div><div class="qt">Quantos arquitetos ou decoradores
-        você visitou no último mês? Me diz três nomes.</div></div>
-      <div class="ans">
-        <div class="g"><b>Boa resposta</b>Número e nomes na hora, com o contexto de cada um. Quem tem
-          rede não precisa pensar.</div>
-        <div class="r"><b>Alerta</b>Hesita, não tem número, cita só escritório sem nome de pessoa.</div>
-      </div>
-      <div class="nota"><span>Nota</span><div class="pts"><span>0</span><span>1</span><span>2</span><span>3</span></div>
-        <span style="flex:1;border-bottom:1px dotted var(--line2)"></span></div>
-    </div>
-
-    <div class="q">
-      <div class="qh"><div class="qn">5 · Resultado</div><div class="qt">Quanto você vendeu nos
-        últimos 12 meses e qual o ticket médio dos seus projetos?</div></div>
-      <div class="ans">
-        <div class="g"><b>Boa resposta</b>Número de cabeça, com faixa de ticket e o maior projeto que
-          fechou. Sabe o próprio jogo.</div>
-        <div class="r"><b>Alerta</b>Não sabe, desvia, ou dá número redondo demais que não sustenta na
-          segunda pergunta.</div>
-      </div>
-      <div class="nota"><span>Nota</span><div class="pts"><span>0</span><span>1</span><span>2</span><span>3</span></div>
-        <span style="flex:1;border-bottom:1px dotted var(--line2)"></span></div>
-    </div>
-
-    <div class="q">
-      <div class="qh"><div class="qn">6 · Alto padrão</div><div class="qt">Me conta de um cliente
-        muito exigente que você atendeu. O que ele cobrou e como você conduziu?</div></div>
-      <div class="ans">
-        <div class="g"><b>Boa resposta</b>Detalhe concreto. Trata a exigência como parte do serviço,
-          não como problema do cliente.</div>
-        <div class="r"><b>Alerta</b>Fala mal do cliente. Ou nunca atendeu esse perfil e tenta
-          generalizar.</div>
-      </div>
-      <div class="nota"><span>Nota</span><div class="pts"><span>0</span><span>1</span><span>2</span><span>3</span></div>
-        <span style="flex:1;border-bottom:1px dotted var(--line2)"></span></div>
-    </div>
-
-    <div class="q">
-      <div class="qh"><div class="qn">7 · Negociação</div><div class="qt">O cliente diz que o
-        orçamento está caro. O que você responde?</div></div>
-      <div class="ans">
-        <div class="g"><b>Boa resposta</b>Ancora em material, processo, ferragem, garantia e prazo.
-          Reabre o escopo antes de mexer no preço.</div>
-        <div class="r"><b>Alerta</b>Desconto como primeira resposta. Esse perfil come a sua margem e
-          a comissão dele.</div>
-      </div>
-      <div class="nota"><span>Nota</span><div class="pts"><span>0</span><span>1</span><span>2</span><span>3</span></div>
-        <span style="flex:1;border-bottom:1px dotted var(--line2)"></span></div>
-    </div>
-
-    <div class="q">
-      <div class="qh"><div class="qn">8 · Ambição</div><div class="qt">Onde você quer estar em dois
-        anos — e quanto quer estar ganhando?</div></div>
-      <div class="ans">
-        <div class="g"><b>Boa resposta</b>Número concreto e um caminho para ele. Quer crescer e diz
-          como.</div>
-        <div class="r"><b>Alerta</b>Resposta vaga, ou foco em estabilidade, benefício e horário.</div>
-      </div>
-      <div class="nota"><span>Nota</span><div class="pts"><span>0</span><span>1</span><span>2</span><span>3</span></div>
-        <span style="flex:1;border-bottom:1px dotted var(--line2)"></span></div>
-    </div>
-
-    <div class="box am">
-      <div class="bh">Mais duas, se sobrar tempo</div>
-      <b>SketchUp —</b> "Me mostra algo que você modelou." Pede arquivo ou print na hora: sem nada
-      para mostrar, a exigência 5 não está verificada.&nbsp;&nbsp;·&nbsp;&nbsp;
-      <b>CRM —</b> "Que CRM usou e qual era a rotina de follow-up?" Nomear a ferramenta e a cadência
-      vale 3; "anotava no caderno" vale 1.
-    </div>
-
-    <div class="box ok mt">
-      <div class="bh">Parecer — preencher logo depois, antes de falar com qualquer um</div>
-      <div style="display:flex;gap:14px;align-items:baseline;margin-bottom:5px">
-        <span>Nota total: <span class="fill" style="width:44px"></span> / 24</span>
-        <span>Zerou alguma de 1 a 5? <span class="cbx"></span> sim &nbsp; <span class="cbx"></span> não</span>
-        <span>Recomendo: <span class="cbx"></span> segue &nbsp; <span class="cbx"></span> não segue
-          &nbsp; <span class="cbx"></span> em dúvida</span>
-      </div>
-      Observações — o que mais chamou atenção, a favor e contra:
-      <span class="fill" style="height:14px;margin-top:6px"></span>
-      <span class="fill" style="height:14px;margin-top:6px"></span>
-      <div style="margin-top:5px">Encaminhado para:
-        <span class="fill" style="width:150px"></span></div>
-    </div>
-  </div>
-
-  <div class="rf">
-    <div><b>Roteiro de entrevista · Vendedor(a)</b> — Valvic Marcenaria</div>
-    <div class="cf">Confidencial · não circula com candidato</div>
-  </div>
-</section>
-
-<!-- ════════════════ FOLHA 3 ════════════════ -->
-<section class="sheet">
-  <div class="ph">
-    <div class="top">
-      <div class="mono">V</div>
-      <div>
-        <div class="co">Valvic Marcenaria</div>
-        <div class="sub">Vargas Decor Ltda · Belo Horizonte / MG · Processo seletivo</div>
-      </div>
-    </div>
-    <div class="tt">Remuneração, Teste e Processo</div>
-    <div class="kx">Os números desta folha não saem da sala</div>
+    <div class="tt">A Remuneração e as Duas Contas</div>
+    <div class="kx">Quanto o vendedor ganha · quanto custa para a empresa</div>
     <div class="sel">
       <span class="tag">Confidencial</span>
-      <div class="pg">Folha 3 de 3</div>
+      <div class="pg">Folha 2 de 2</div>
     </div>
   </div>
 
   <div class="body">
-    <div class="sec"><div class="bar"></div><div class="tx">A escala de comissão
-      <small>— sobre o líquido, por faixa de volume do mês</small></div></div>
+    <div class="papel">
+      <div class="nh">Como a remuneração funciona</div>
+      <p><b>Um valor fixo por mês</b>, que é o piso, <b>mais uma comissão que sobe conforme o
+      resultado.</b> Quanto mais o vendedor vende no mês, maior o percentual — e o percentual novo
+      vale sobre <b>tudo</b> o que ele vendeu, não só sobre o que passou da faixa.</p>
+      <p>A comissão incide sobre o <b>valor líquido</b>: a venda menos o imposto da nota e a taxa de
+      máquina. O mês fecha <b>no dia 25</b> e o pagamento sai no <b>mês vigente</b> — o vendedor
+      recebe sem esperar o cliente pagar as parcelas.</p>
+    </div>
 
+    <div class="sec"><div class="bar"></div><div class="tx">A escala</div></div>
     <table>
       <thead><tr>
-        <th style="width:21%">Venda no mês</th><th class="c" style="width:9%">%</th>
-        <th class="r" style="width:16%">Exemplo de venda</th><th class="r" style="width:16%">Líquido ≈ 92,5%</th>
-        <th class="r" style="width:16%">Comissão</th><th class="r" style="width:22%">Total com o fixo</th>
+        <th style="width:30%">Venda no mês</th><th class="c" style="width:16%">Comissão</th>
+        <th>Sobre o quê</th>
       </tr></thead>
       <tbody>
-        <tr><td rowspan="2" style="vertical-align:middle"><b>até 299 mil</b></td>
-            <td class="c" rowspan="2" style="vertical-align:middle"><b>2%</b></td>
-            <td class="r">150.000</td><td class="r">138.750</td><td class="r">2.775</td><td class="r"><b>4.775</b></td></tr>
-        <tr><td class="r">250.000</td><td class="r">231.250</td><td class="r">4.625</td><td class="r"><b>6.625</b></td></tr>
-        <tr><td><b>300 a 399 mil</b></td><td class="c"><b>3%</b></td><td class="r">350.000</td><td class="r">323.750</td><td class="r">9.712</td><td class="r"><b>11.712</b></td></tr>
-        <tr><td><b>400 a 499 mil</b></td><td class="c"><b>4%</b></td><td class="r">450.000</td><td class="r">416.250</td><td class="r">16.650</td><td class="r"><b>18.650</b></td></tr>
-        <tr><td><b>500 mil acima</b></td><td class="c"><b>5%</b></td><td class="r">550.000</td><td class="r">508.750</td><td class="r">25.437</td><td class="r"><b>27.437</b></td></tr>
+        <tr><td><b>até 299 mil</b></td><td class="c"><b>2%</b></td>
+          <td rowspan="4" style="vertical-align:middle">Sobre o <b>valor líquido</b> do mês — a venda
+            menos imposto e taxa de máquina, algo em torno de <b>92,5%</b> do que foi vendido.</td></tr>
+        <tr><td><b>300 a 399 mil</b></td><td class="c"><b>3%</b></td></tr>
+        <tr><td><b>400 a 499 mil</b></td><td class="c"><b>4%</b></td></tr>
+        <tr><td><b>500 mil acima</b></td><td class="c"><b>5%</b></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><div class="bar"></div><div class="tx">1 · O que o vendedor ganha</div></div>
+    <table>
+      <thead><tr>
+        <th style="width:17%">Venda no mês</th><th class="c" style="width:9%">%</th>
+        <th class="r" style="width:15%">Líquido</th><th class="r" style="width:15%">Comissão</th>
+        <th class="r" style="width:12%">Fixo</th><th class="r" style="width:16%">No mês</th>
+        <th class="r">No ano</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><b>150.000</b></td><td class="c">2%</td><td class="r">138.750</td><td class="r">2.775</td><td class="r">2.000</td><td class="r"><b>4.775</b></td><td class="r">57.300</td></tr>
+        <tr><td><b>250.000</b></td><td class="c">2%</td><td class="r">231.250</td><td class="r">4.625</td><td class="r">2.000</td><td class="r"><b>6.625</b></td><td class="r">79.500</td></tr>
+        <tr class="dest"><td><b>350.000</b></td><td class="c">3%</td><td class="r">323.750</td><td class="r">9.712</td><td class="r">2.000</td><td class="r"><b>11.712</b></td><td class="r">140.550</td></tr>
+        <tr><td><b>450.000</b></td><td class="c">4%</td><td class="r">416.250</td><td class="r">16.650</td><td class="r">2.000</td><td class="r"><b>18.650</b></td><td class="r">223.800</td></tr>
+        <tr><td><b>550.000</b></td><td class="c">5%</td><td class="r">508.750</td><td class="r">25.437</td><td class="r">2.000</td><td class="r"><b>27.437</b></td><td class="r">329.250</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec"><div class="bar"></div><div class="tx">2 · O que custa para a empresa
+      <small>— é o mesmo valor: o custo da empresa é o ganho do vendedor</small></div></div>
+    <table>
+      <thead><tr>
+        <th style="width:17%">Venda no mês</th><th class="r" style="width:17%">Custo no mês</th>
+        <th class="r" style="width:17%">Custo no ano</th>
+        <th class="r" style="width:17%">% da venda</th><th class="r">Custo a cada 100 mil vendidos</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><b>150.000</b></td><td class="r">4.775</td><td class="r">57.300</td><td class="r">3,18%</td><td class="r">3.183</td></tr>
+        <tr><td><b>250.000</b></td><td class="r">6.625</td><td class="r">79.500</td><td class="r"><b>2,65%</b></td><td class="r"><b>2.650</b></td></tr>
+        <tr class="dest"><td><b>350.000</b></td><td class="r">11.712</td><td class="r">140.550</td><td class="r">3,35%</td><td class="r">3.346</td></tr>
+        <tr><td><b>450.000</b></td><td class="r">18.650</td><td class="r">223.800</td><td class="r">4,14%</td><td class="r">4.144</td></tr>
+        <tr><td><b>550.000</b></td><td class="r">27.437</td><td class="r">329.250</td><td class="r"><b>4,99%</b></td><td class="r"><b>4.989</b></td></tr>
       </tbody>
     </table>
 
     <div class="two mt">
       <div class="box gd">
-        <div class="bh">A escala é retroativa</div>
-        O percentual da faixa alcançada vale sobre <b>tudo</b> que foi vendido no mês, não só sobre o
-        excedente. Por isso cada degrau tem um salto:
+        <div class="bh">A leitura — o custo sobe, mas o volume paga</div>
+        Vender mais encarece o vendedor: de <b>2,65%</b> da venda a 250 mil para <b>4,99%</b> a 550
+        mil. Quase o dobro por real vendido. Mas a conta inteira fecha a favor:
         <ul>
-          <li>299 → 300 mil: <b>+ R$ 2.793</b></li>
+          <li>Subir de 299 mil para 550 mil no mês custa <b>+ R$ 19.906</b> de vendedor</li>
+          <li>E traz <b>R$ 251 mil</b> de venda a mais, que a 30% de margem valem <b>R$ 75.300</b></li>
+          <li>Sobram <b>R$ 55.394</b> no mês</li>
+        </ul>
+        <b>A escala cara é a escala boa</b> — desde que a fábrica entregue o volume.
+      </div>
+      <div class="box ok">
+        <div class="bh">Onde está o salto — e o que ele provoca</div>
+        Como o percentual novo vale sobre o mês inteiro, cruzar a faixa muda muito:
+        <ul>
+          <li>299 → 300 mil: a empresa paga <b>+ R$ 2.793</b></li>
           <li>399 → 400 mil: <b>+ R$ 3.727</b></li>
           <li>499 → 500 mil: <b>+ R$ 4.662</b></li>
         </ul>
-        É o argumento mais forte da proposta — e o que o Jonathan mostra na mesa, na etapa 3.
-      </div>
-      <div class="box no">
-        <div class="bh">Decidir antes de propor a alguém</div>
-        <ul>
-          <li><b>Distrato.</b> A comissão sai no mês do fechamento, antes do cliente pagar as
-            parcelas. Se o contrato cair depois, estorna no mês seguinte ou a casa absorve?</li>
-          <li><b>Vínculo.</b> O fixo é salário CLT ou parcela fixa de contrato PJ? "Ajuda de custo"
-            é reembolso — não serve para nenhum dos dois, e virar passivo é questão de tempo.</li>
-          <li><b>Base do cálculo.</b> Líquido = venda − imposto − taxa de máquina − taxas. É a mesma
-            definição que a Ficha de Custo usa para o RT. Precisa estar escrito no contrato.</li>
-        </ul>
+        É o que faz o vendedor correr no fim do mês — e também o que pode levá-lo a dar desconto
+        para fechar. Como a comissão é sobre o líquido, o desconto corta a base dele também: existe
+        uma trava natural, mas ela não é total.
       </div>
     </div>
 
-    <div class="sec mt"><div class="bar"></div><div class="tx">Teste prático
-      <small>— é o único jeito de verificar o SketchUp de verdade</small></div></div>
-    <div class="box ok">
-      <div class="bh">Como aplicar</div>
-      Entregue um <b>ambiente real já executado pela casa</b> — planta, medidas e as fotos do
-      resultado retiradas. Peça a solução de marcenaria modelada, com <b>48 horas</b> de prazo, e uma
-      <b>apresentação de 15 minutos</b> como se fosse para o cliente.<br>
-      <b>O que você está avaliando:</b> se a solução é fabricável · se respeita módulo, prumo e
-      acesso · se escolheu material e ferragem compatíveis com o padrão · e, acima de tudo,
-      <b>como apresenta</b> — porque é isso que o cliente vai comprar. Compare com o que a casa
-      executou de verdade.
+    <div class="box no mt">
+      <div class="bh">Três coisas que ainda precisam ser decididas antes de contratar</div>
+      <ul>
+        <li><b>CLT ou PJ.</b> Muda muito o custo. Em PJ, o custo da empresa é exatamente o valor da
+          tabela. Em CLT, somam-se férias, 13º, FGTS e provisões — na ordem de <b>35% a 40%</b> para
+          empresa do Simples, o que a 550 mil de venda significa cerca de <b>R$ 10 mil a mais por
+          mês</b>. Confirmar o percentual com a contabilidade.</li>
+        <li><b>Distrato.</b> A comissão sai no mês do fechamento, antes de o cliente pagar as
+          parcelas. Se o contrato cair depois, estorna no mês seguinte ou a empresa absorve?</li>
+        <li><b>A palavra "fixo".</b> Se for CLT é salário; se for PJ é parcela fixa do contrato.
+          "Ajuda de custo" é reembolso de despesa — não serve para nenhum dos dois.</li>
+      </ul>
     </div>
-
-    <div class="sec mt"><div class="bar"></div><div class="tx">Processo · quem faz o quê</div></div>
-    <table>
-      <thead><tr>
-        <th class="c" style="width:7%">#</th><th style="width:27%">Etapa</th>
-        <th style="width:14%">Quem</th><th>O que acontece</th>
-      </tr></thead>
-      <tbody>
-        <tr><td class="c"><b>1</b></td><td><b>Triagem de currículo</b></td><td>Karla</td>
-          <td>Confere os 8 eliminatórios. <b>Descarta quem não mandou os três dados pedidos no
-            anúncio</b> — venda dos 12 meses, ticket médio e duas indicações.</td></tr>
-        <tr><td class="c"><b>2</b></td><td><b>Conversa de 20 minutos</b></td><td>Karla</td>
-          <td>Vídeo ou telefone. Perguntas 3, 4 e 5 do roteiro. Confirma disponibilidade híbrida,
-            pretensão e carteira. Anota a nota e encaminha.</td></tr>
-        <tr><td class="c"><b>3</b></td><td><b>Entrevista técnica</b></td><td>Jonathan</td>
-          <td>Roteiro completo, leitura de projeto real e <b>abertura da remuneração</b> com a
-            simulação da escala.</td></tr>
-        <tr><td class="c"><b>4</b></td><td><b>Teste prático</b></td><td>Jonathan + Lorrane</td>
-          <td>Ambiente real no SketchUp, 48 h, apresentação de 15 min.</td></tr>
-        <tr><td class="c"><b>5</b></td><td><b>Proposta</b></td><td>Jonathan</td>
-          <td>Com distrato, vínculo e base de cálculo já definidos e por escrito.</td></tr>
-      </tbody>
-    </table>
-
-    <div class="box am mt">
-      <div class="bh">Uma leitura de dimensionamento, para a conversa da etapa 3</div>
-      A faixa de 2% vai do zero a 299 mil. Como a casa inteira girava perto de 380 mil por mês, é
-      provável que o vendedor <b>viva na primeira faixa nos primeiros meses</b>, ganhando entre 4,7 e
-      7,5 mil. Quem vem de alto padrão compara isso com o que já recebe. Duas saídas, e é bom ter uma
-      escolhida antes da conversa: <b>subir a faixa 1</b>, ou <b>combinar uma garantia nos primeiros
-      meses</b> enquanto a carteira sobe.
-    </div>
-
-    <div class="sec mt"><div class="bar"></div><div class="tx">Onde divulgar
-      <small>— responsabilidade da Karla · o anúncio completo vai nos três primeiros</small></div></div>
-    <table>
-      <thead><tr>
-        <th style="width:26%">Canal</th><th style="width:21%">Formato</th><th>Por que esse</th>
-      </tr></thead>
-      <tbody>
-        <tr><td><b>LinkedIn</b></td><td>Anúncio completo</td>
-          <td>Onde está o vendedor que já trabalha e não está procurando. Publicar no perfil da
-            empresa, e o Jonathan compartilha no dele.</td></tr>
-        <tr><td><b>Site de vagas</b></td><td>Anúncio completo</td>
-          <td>Volume. Espere muito currículo fora do perfil — é o que a ficha de triagem resolve.</td></tr>
-        <tr><td><b>Grupos de marcenaria e planejados</b></td><td>Anúncio completo</td>
-          <td>WhatsApp e Facebook do setor em BH. Alta chance de vir gente que já conhece o mercado.</td></tr>
-        <tr><td><b>Rede de arquitetos e decoradores da casa</b></td><td>Mensagem curta, direta</td>
-          <td><b>É a melhor fonte.</b> Eles sabem quem vende bem e quem atende bem — e a indicação já
-            vem com referência.</td></tr>
-        <tr><td><b>Equipe interna</b></td><td>Aviso + indicação</td>
-          <td>Quem é da área conhece gente da área. Vale combinar como reconhecer uma indicação que
-            dê certo.</td></tr>
-      </tbody>
-    </table>
   </div>
 
   <div class="rf">
-    <div><b>Remuneração, teste e processo · Vendedor(a)</b> — Valvic Marcenaria</div>
+    <div><b>A remuneração e as duas contas</b> — Valvic Marcenaria</div>
     <div class="cf">Confidencial · não circula com candidato</div>
   </div>
 </section>
