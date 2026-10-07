@@ -381,6 +381,58 @@ que um layout novo pôs a marca no topo.
 achar o pedaço errado.** Quando o passe 2 der um número estranho, é o passe 2
 que está errado, não a página.
 
+#### ⛔⛔ E `i > 1` NUNCA dispara em documento de UMA página
+
+No mesmo dia, a folha do pórtico **perdeu o rodapé inteiro** e os três passes
+disseram "tudo ok". Duas falhas somadas:
+
+* O passe 2 só avisava `if not fb and i > 1`, porque a **capa** não tem
+  rodapé. Só que numa folha única `i` é sempre 1 — justamente o caso em que
+  a página 1 **tem** rodapé. O guarda calava o único alarme que importava.
+* O passe 1 não pegou porque procurava **presença**, e "Valvic Marcenaria"
+  sobreviveu no cabeçalho.
+
+Os dois consertos são o mesmo conserto: **contar, não procurar.**
+
+```python
+quer_foot = html.count('class="foot"')    # quantos o HTML manda imprimir
+tem_foot  = 0
+for i, pg in enumerate(doc, 1):
+    fb = [b for b in bl if 'valvicmarcenaria' in norm(b[4])
+          and b[1] > pg.rect.y1*0.80]     # só o terço de baixo é rodapé
+    tem_foot += 1 if fb else 0
+if tem_foot < quer_foot:
+    print('⛔ RODAPÉ PERDIDO — alguma página estourou')
+```
+
+E no passe 1, `Counter` em vez de `in`:
+
+```python
+quer = Counter(norm(f) for f in frags)
+if npdf.count(n) < quer[n]:               # 2× no HTML e 1× no PDF = perdeu
+    perdidos.append(f)
+```
+
+⭐ **Presença não é contagem.** Todo trecho que o layout repete — marca,
+data, nome do cliente — some sem alarme enquanto o auditor só perguntar
+"está aí?".
+
+⭐ O auditor **saiu do `/tmp`**: mora em `ferramentas/auditor-proposta.py`.
+Três vezes ele foi reescrito de memória depois que o container reiniciou.
+
+### Exceções autorizadas à regra de metragem
+
+| medida | quando | por quê |
+|---|---|---|
+| `15 mm` · `18 mm` | 30/09 | espessura de chapa — separa as duas linhas |
+| `2,73 m` | 01/10 | altura do pano ripado do hall (United) |
+| `50 mm` | 07/10 | largura da régua do ripado (pórtico) |
+
+⭐ O critério não é o tamanho do número: é **especificação × quantitativo**.
+O passo do ripado — régua de 50, vão de 15 — **é o produto**: sem ele o
+cliente não sabe o que está comprando, do mesmo jeito que não saberia sem a
+espessura. Já "quantos metros de ripado" é quantitativo e continua proibido.
+
 ---
 
 ## ⛔ COLISÃO DE CLASSE COM O `css-proposta.css` — a segunda vez
