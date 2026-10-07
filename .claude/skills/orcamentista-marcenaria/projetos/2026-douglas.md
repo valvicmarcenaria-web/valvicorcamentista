@@ -69,24 +69,27 @@ início é combinada na assinatura"*.
 
 ---
 
-## ⛔⛔ 12% POR CIMA NÃO REPÕE 12% DE TAXA
+## ⛔⛔ A TAXA NÃO SOME POR NÃO SER COBRADA — SÓ MUDA DE DONO
 
-> *"vamos acrescentar 12% no percentual a ser dividido no cartão"*
+> *"refaça os valores considerando o valor cheio do orçamento, sem considerar
+> acréscimo"* — Jonathan, 07/10
 
-A taxa incide sobre o valor **já acrescido**:
+**Decisão: valor cheio nos dois cenários.** Caiu o acréscimo de 12% que a
+versão anterior punha sobre a parte parcelada. A parcela passa de
+R$ 6.079,36 para **R$ 5.428,00** e o cliente paga, nos dois cenários,
+exatamente os R$ 67.850.
 
-| | como pedido (+12%) | neutro (÷ 0,88) |
-|---|--:|--:|
-| total parcelado | 60.793,60 | 61.681,82 |
-| **10 parcelas de** | **6.079,36** | **6.168,18** |
-| taxa de cartão (12%) | 7.295,23 | 7.401,82 |
-| líquido da parte parcelada | 53.498,37 | **54.280,00** |
-| a casa recebe | 67.068,37 | **67.850,00** |
+⚠ O que mudou de verdade não foi o preço: foi **quem paga a taxa do cartão**.
+1,2% × 10 parcelas = 12% sobre R$ 54.280 = **R$ 6.513,60**, agora por conta
+da casa. É **9,6% do total** — mais caro que os 7% da melhor oferta de
+desconto da v1.
 
-**Faltam R$ 781,63.** O acréscimo que repõe a taxa é **+13,64%**, não +12% —
-a diferença para o cliente é de **R$ 88,82 na parcela**, 1,4%.
+É o mesmo princípio do `modelo-de-custo.md` §3.1 de cabeça para baixo:
+separar uma linha não é descontá-la; **não cobrar a taxa não a apaga.**
 
-Entregue como pedido (+12%, parcela de R$ 6.079,36). **Trocar é uma linha.**
+**Registro aritmético, para quando se quiser repassar:** o acréscimo neutro é
+**÷ 0,88 (+13,64%)**, nunca +12% — a taxa incide sobre o valor já acrescido,
+então +12% deixaria R$ 781,63 na mesa. Parcela neutra: R$ 6.168,18.
 
 ---
 
@@ -94,19 +97,35 @@ Entregue como pedido (+12%, parcela de R$ 6.079,36). **Trocar é uma linha.**
 
 | | cenário 1 · cartão | cenário 2 · boleto |
 |---|--:|--:|
-| o cliente paga | 74.363,60 | **67.850,00** |
+| o cliente paga | 67.850,00 | 67.850,00 |
 | entrada | 13.570,00 | 13.570,00 |
-| e depois | 10 × 6.079,36 | 4 × 13.570,00 |
-| taxa que a casa paga | 7.295,23 | — |
-| **a casa recebe, líquido** | **67.068,37** | **67.850,00** |
+| e depois | 10 × **5.428,00** | 4 × 13.570,00 |
+| taxa que a casa paga | 6.513,60 | — |
+| **a casa recebe, líquido** | 61.336,40 | **67.850,00** |
 | último recebimento | dia 300 | dia 150 |
-| **valor presente** | **63.700,56** | **65.635,10** |
+| **VP · o que a casa recebe** | 58.329,43 | **65.635,10** |
+| VP · o que o cliente paga | **64.432,99** | 65.635,10 |
 
-⚠ **O cenário 1 custa R$ 6.513,60 a mais ao cliente e ainda entrega
-R$ 1.934,53 a MENOS de valor presente para a casa.** Os dois servem, mas não
-pelo mesmo motivo: o 1 é para quem precisa de parcela baixa, o 2 é o melhor
-negócio para os dois lados. Por isso o cenário 2 está marcado como
-**recomendado** na proposta.
+Para a casa, o cenário 1 custa **R$ 7.305,66 de valor presente**.
+
+### ⛔ E o cliente tem razão econômica para escolher o cenário 1
+
+A valor cheio o nominal é o mesmo, mas o cartão espalha o desembolso por dez
+meses: em valor presente **o cliente paga R$ 1.202,10 a menos no cartão**.
+Quem decide racionalmente escolhe justamente o cenário que custa
+R$ 6.513,60 à casa. **O cartão virou a escolha padrão.**
+
+Oferecer os dois lado a lado e contar com o cenário 2 é torcer, não
+precificar. Três formas de corrigir sem mexer no preço:
+
+1. **Menos parcelas no cartão** — 6× custa 7,2% em vez de 12% (R$ 2.606 a
+   menos de taxa) e ainda deixa parcela de R$ 9.047.
+2. **Dar ao cenário 2 algo que custe menos que R$ 6.513,60** — um brinde de
+   escopo, um prazo melhor, uma garantia estendida.
+3. **Repassar a taxa**, com o acréscimo neutro de +13,64%.
+
+Entregue como pedido — valor cheio nos dois, cenário 2 marcado como
+**recomendado**. A decisão é de mesa, não de planilha.
 
 ---
 
@@ -127,7 +146,8 @@ Três passes de auditoria limpos.
 
 ## Em aberto
 
-1. ★ **+12% ou +13,64%?** Ver o quadro acima — R$ 781,63.
+1. ★ **O cenário 1 vai ser o escolhido** — é o mais barato para o cliente em
+   valor presente e custa R$ 6.513,60 à casa. Ver as três saídas acima.
 2. ★ **A produção começa quando?** Dia 0 ou dia 60. Muda o caixa e o texto
    do prazo.
 3. ★ **Os cinco itens marcados "até dia 20"** na v1 — M01, M02, M05, M06 e

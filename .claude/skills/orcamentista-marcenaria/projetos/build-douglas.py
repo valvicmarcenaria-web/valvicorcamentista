@@ -133,10 +133,11 @@ p2 = f"""<div class="page"><div class="pad">
 # ── 3 · como fechar ───────────────────────────────────────────────────────
 p3 = f"""<div class="page"><div class="pad">
   <div class="eyebrow">Como fechar</div>
-  <div class="h-sec serif">Duas formas.<br><em>A agenda é a mesma.</em></div>
+  <div class="h-sec serif">Duas formas.<br><em>O mesmo valor.</em></div>
   <div class="rule"></div>
-  <p class="lead">A entrada reserva sua vaga na produção. O restante
-  acompanha a abertura do empreendimento — você escolhe em que ritmo.</p>
+  <p class="lead">A entrada reserva sua vaga na produção e o restante acompanha
+  a abertura do empreendimento. <b>O investimento é o mesmo nas duas</b> —
+  o que muda é só o ritmo.</p>
 
   <div class="cenD">
     <div>
@@ -146,19 +147,19 @@ p3 = f"""<div class="page"><div class="pad">
       <div class="mais">e mais<br>
         <b style="font-size:15pt;">10 parcelas de R$ {br2(dg.C1_PARCELA)}</b><br>
         no cartão de crédito</div>
-      <div class="sel">Para quem prefere <b>diluir ao máximo</b> o
-      desembolso mensal, ao longo de dez meses.</div>
+      <div class="sel">Para quem prefere <b>diluir ao máximo</b> o desembolso
+      mensal, em dez parcelas a partir do mês seguinte.</div>
     </div>
     <div class="g">
       <div class="cod">Cenário 2 · boleto · recomendado</div>
-      <div class="nm">Valor<br>cheio, sem juros</div>
+      <div class="nm">Começa<br>em 60 dias</div>
       <div class="big"><small>Entrada</small>R$ {br(dg.VAL_ENT)}</div>
       <div class="mais">e mais<br>
         <b style="font-size:15pt;">4 boletos de R$ {br(dg.VAL_BOL)}</b><br>
         o primeiro só em 60 dias</div>
-      <div class="sel"><b>Cinco pagamentos iguais, sem nenhum acréscimo</b> —
-      é o cenário mais barato dos dois, e começa a pesar só quando o
-      empreendimento já estiver de pé.</div>
+      <div class="sel"><b>Cinco pagamentos iguais</b> e nenhum desembolso nos
+      dois primeiros meses — começa a pesar só quando o empreendimento já
+      estiver de pé.</div>
     </div>
   </div>
 
