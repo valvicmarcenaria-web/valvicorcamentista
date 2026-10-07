@@ -32,17 +32,19 @@
   .ph .sub{ font-size:8px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
   .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:700; margin-top:5px; line-height:1.05; }
   .ph .kx{ font-size:7.8px; letter-spacing:2.6px; text-transform:uppercase; color:var(--gold); margin-top:3px; }
-  .ph .per{ position:absolute; right:12mm; top:7mm; text-align:right; }
-  .ph .per .lb{ font-size:7.2px; letter-spacing:1.8px; text-transform:uppercase; color:rgba(255,255,255,.5); }
-  .ph .per .dt{ font-size:13px; font-weight:700; color:var(--gold-soft); margin-top:3px; letter-spacing:.5px; }
+  .ph .per{ position:absolute; right:12mm; top:6mm; text-align:center;
+            border:1.5px solid var(--gold); border-radius:6px; padding:7px 15px 8px; }
+  .ph .per .lb{ font-size:7.2px; letter-spacing:2.2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+  .ph .per .dt{ font-size:19px; font-weight:700; color:#fff; margin-top:2px; letter-spacing:.3px; line-height:1.1; }
+  .ph .per .ds{ font-size:7.6px; color:rgba(255,255,255,.55); letter-spacing:.5px; margin-top:1px; }
 
-  .body{ flex:1; padding:6mm 12mm 0; display:flex; flex-direction:column; min-height:0; }
+  .body{ flex:1; padding:8mm 12mm 0; display:flex; flex-direction:column; min-height:0; }
 
   .ic{ width:14px; height:14px; flex-shrink:0; fill:none; stroke:currentColor;
        stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
   .ic.g{ width:16px; height:16px; }
 
-  .sec{ display:flex; align-items:center; gap:7px; margin:11px 0 6px; color:var(--gold-dk); }
+  .sec{ display:flex; align-items:center; gap:7px; margin:19px 0 10px; color:var(--gold-dk); }
   .sec:first-child{ margin-top:0; }
   .sec .tx{ font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); }
   .sec .tx small{ color:var(--muted); font-weight:500; letter-spacing:.3px; text-transform:none; }
@@ -50,7 +52,7 @@
 
   /* ── faixa de indicadores ── */
   .kpis{ display:grid; grid-template-columns:repeat(3,1fr); gap:9px; }
-  .kpi{ border-radius:7px; padding:10px 13px; border:1px solid var(--line); background:#fff; }
+  .kpi{ border-radius:7px; padding:13px 15px; border:1px solid var(--line); background:#fff; }
   .kpi .kl{ display:flex; align-items:center; gap:5px; font-size:7.3px; font-weight:700;
             letter-spacing:1.3px; text-transform:uppercase; color:var(--muted); }
   .kpi .kv{ font-size:23px; font-weight:700; letter-spacing:-.5px; margin-top:4px; color:var(--navy); }
@@ -60,10 +62,10 @@
   .kpi.gld{ background:var(--goldbg); border-color:#e4d4ab; } .kpi.gld .kv{ color:var(--gold-dk); } .kpi.gld .kl{ color:var(--gold-dk); }
 
   table{ width:100%; border-collapse:collapse; table-layout:fixed; }
-  thead th{ background:var(--navy2); color:#fff; font-size:7.3px; font-weight:700; letter-spacing:.4px;
-            text-transform:uppercase; padding:5px 8px; text-align:left; border:1px solid var(--navy); }
+  thead th{ background:var(--navy2); color:#fff; font-size:7.6px; font-weight:700; letter-spacing:.4px;
+            text-transform:uppercase; padding:7px 9px; text-align:left; border:1px solid var(--navy); }
   thead th.c{ text-align:center; } thead th.r{ text-align:right; }
-  tbody td{ border:1px solid var(--line); padding:5px 8px; font-size:9.8px; vertical-align:middle; }
+  tbody td{ border:1px solid var(--line); padding:10px 9px; font-size:10.4px; vertical-align:middle; }
   tbody td.c{ text-align:center; } tbody td.r{ text-align:right; font-variant-numeric:tabular-nums; }
   tbody tr:nth-child(even) td{ background:#f7f5ef; }
   tbody td b{ color:var(--navy); }
@@ -74,6 +76,24 @@
   .pz.ok{ background:#e3eee8; color:var(--green); }
   .pz.aw{ background:#f8ecd3; color:var(--gold-dk); }
   .pz.na{ background:#eceff2; color:var(--muted); }
+
+  /* faixa fina — o aporte entra como contexto, não como manchete */
+  .faixa{ display:flex; align-items:center; gap:10px; background:#f3f0e8;
+          border:1px solid var(--line2); border-left:3px solid var(--gold); border-radius:5px;
+          padding:10px 14px; font-size:9.4px; color:var(--muted); }
+  .faixa .tt{ font-size:7.2px; font-weight:700; letter-spacing:1.3px; text-transform:uppercase;
+              color:var(--gold-dk); white-space:nowrap; }
+  .faixa .vl{ margin-left:auto; font-size:12px; font-weight:700; color:var(--navy); white-space:nowrap; }
+  .faixa b{ color:var(--navy2); }
+
+  /* tabela em destaque — o que já foi entregue e ainda não entrou */
+  .foco{ border:2px solid var(--gold); border-radius:7px; overflow:hidden; }
+  .foco thead th{ background:var(--navy); border-color:var(--navy); font-size:7.8px; padding:6px 9px; }
+  .foco tbody td{ font-size:13px; padding:13px 11px; border-color:#ece6d6; }
+  .foco tbody tr:nth-child(even) td{ background:#faf6ea; }
+  .foco tbody tr td:first-child b{ font-size:12px; }
+  .foco tr.tot td{ background:var(--navy) !important; }
+  .foco tr.tot td b{ font-size:13.5px; }
 
   .box{ border-radius:6px; padding:9px 12px; font-size:9.5px; line-height:1.55; }
   .box .bh{ display:flex; align-items:center; gap:6px; font-size:7.3px; font-weight:700;
@@ -103,115 +123,95 @@
     </div>
     <div class="tt">Posição Financeira</div>
     <div class="kx">Aportes · contas atrasadas · recebimentos a entrar</div>
-    <div class="per"><div class="lb">Período</div><div class="dt">01/08 a 09/10</div></div>
+    <div class="per"><div class="lb">Período apurado</div><div class="dt">01/08 a 09/10</div>
+      <div class="ds">70 dias</div></div>
   </div>
 
   <div class="body">
     <div class="kpis">
-      <div class="kpi gld">
-        <div class="kl"><svg class="ic" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>Aporte líquido</div>
-        <div class="kv">R$ 258,1 mil</div>
-        <div class="kd">300,1 mil aportados − 42 mil abatidos</div>
-      </div>
       <div class="kpi red">
         <div class="kl"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Boletos atrasados</div>
         <div class="kv">R$ 75 mil</div>
         <div class="kd">posição em 09/10</div>
       </div>
+      <div class="kpi gld big">
+        <div class="kl"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Entregue, ainda não recebido</div>
+        <div class="kv">R$ 105 mil</div>
+        <div class="kd">3 projetos já na casa do cliente</div>
+      </div>
       <div class="kpi grn">
-        <div class="kl"><svg class="ic" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7"/><path d="M15 8h5v5"/></svg>A receber</div>
-        <div class="kv">R$ 336 mil</div>
-        <div class="kd">105 mil entregue + 231 mil de outubro</div>
+        <div class="kl"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>Previsão de outubro</div>
+        <div class="kv">R$ 221 mil</div>
+        <div class="kd">7 projetos a entregar</div>
       </div>
     </div>
 
-    <div class="sec">
-      <svg class="ic g" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.8"/><path d="M6 10.5v3M18 10.5v3"/></svg>
-      <div class="tx">Aportes realizados</div><div class="ln"></div>
+    <div class="faixa mt">
+      <span class="tt">Aportes no período</span>
+      <span>240.000 + 60.100 <b>−</b> 42.000 abatidos pelos projetos Leonardo e Luiz</span>
+      <span class="vl">R$ 258.100 líquidos</span>
     </div>
-    <table>
-      <thead><tr>
-        <th style="width:46%">Movimento</th><th style="width:27%">Referência</th><th class="r">Valor</th>
-      </tr></thead>
-      <tbody>
-        <tr><td><b>Aporte inicial</b></td><td>no período</td><td class="r">240.000</td></tr>
-        <tr><td><b>Aporte complementar</b></td><td>semana passada</td><td class="r">60.100</td></tr>
-        <tr><td><b>(−) Projetos Leonardo e Luiz</b></td><td>abatimento</td><td class="r">− 42.000</td></tr>
-        <tr class="tot"><td colspan="2"><b>APORTE LÍQUIDO</b></td><td class="r"><b>258.100</b></td></tr>
-      </tbody>
-    </table>
+
+
+
+    <div class="sec">
+      <svg class="ic g" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
+      <div class="tx">Quando entra <small>— R$ 326 mil a receber, por data</small></div><div class="ln"></div>
+    </div>
+    <svg viewBox="0 0 700 86" style="width:100%;display:block">
+      <line x1="40" y1="30" x2="660" y2="30" stroke="#dfdacd" stroke-width="2"/>
+      <circle cx="120" cy="30" r="6.5" fill="#2f7d4f"/>
+      <circle cx="350" cy="30" r="6.5" fill="#C2A05A"/>
+      <circle cx="590" cy="30" r="6.5" fill="#9aa4b0"/>
+      <text x="120" y="16" text-anchor="middle" font-size="9.4" font-weight="700" fill="#2f7d4f">sexta 09/10</text>
+      <text x="120" y="53" text-anchor="middle" font-size="16" font-weight="700" fill="#0E2038">R$ 62 mil</text>
+      <text x="120" y="69" text-anchor="middle" font-size="8.8" fill="#6c7785">Augusto + Jairo</text>
+      <text x="350" y="16" text-anchor="middle" font-size="9.4" font-weight="700" fill="#a9863f">sexta 16/10</text>
+      <text x="350" y="53" text-anchor="middle" font-size="16" font-weight="700" fill="#0E2038">+ R$ 48 mil</text>
+      <text x="350" y="69" text-anchor="middle" font-size="8.8" fill="#6c7785">Maria</text>
+      <text x="590" y="16" text-anchor="middle" font-size="9.4" font-weight="700" fill="#6c7785">sem data</text>
+      <text x="590" y="53" text-anchor="middle" font-size="16" font-weight="700" fill="#6c7785">R$ 216 mil</text>
+      <text x="590" y="69" text-anchor="middle" font-size="8.8" fill="#6c7785">7 projetos</text>
+    </svg>
 
     <div class="sec">
       <svg class="ic g" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
-      <div class="tx">Entregue, ainda não recebido <small>— R$ 105 mil</small></div><div class="ln"></div>
+      <div class="tx">Entregue, ainda não recebido <small>— móvel na casa do cliente, dinheiro a entrar</small></div><div class="ln"></div>
     </div>
+    <div class="foco">
     <table>
       <thead><tr>
         <th style="width:38%">Cliente</th><th style="width:35%">Previsão de recebimento</th><th class="r">Valor</th>
       </tr></thead>
       <tbody>
-        <tr><td><b>Augusto</b></td><td><span class="pz ok">até sexta · 09/10</span></td><td class="r">27.000</td></tr>
-        <tr><td><b>Maria</b></td><td><span class="pz aw">até sexta · 16/10</span></td><td class="r">48.000</td></tr>
-        <tr><td><b>Cristiane</b></td><td><span class="pz na">a definir</span></td><td class="r">30.000</td></tr>
-        <tr class="tot"><td colspan="2"><b>SUBTOTAL</b></td><td class="r"><b>105.000</b></td></tr>
+        <tr><td><b>Augusto</b></td><td><span class="pz ok">até sexta · 09/10</span></td><td class="r"><b>27.000</b></td></tr>
+        <tr><td><b>Maria</b></td><td><span class="pz aw">até sexta · 16/10</span></td><td class="r"><b>48.000</b></td></tr>
+        <tr><td><b>Cristiane</b></td><td><span class="pz na">a definir</span></td><td class="r"><b>30.000</b></td></tr>
+        <tr class="tot"><td colspan="2"><b>TOTAL ENTREGUE A RECEBER</b></td><td class="r"><b>105.000</b></td></tr>
       </tbody>
     </table>
+    </div>
 
     <div class="sec">
       <svg class="ic g" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
-      <div class="tx">Previsão de entrega e receita — outubro <small>— R$ 231 mil</small></div><div class="ln"></div>
+      <div class="tx">Previsão de entrega e receita — outubro <small>— R$ 221 mil</small></div><div class="ln"></div>
     </div>
     <table>
       <thead><tr>
         <th style="width:38%">Cliente</th><th style="width:35%">Previsão de recebimento</th><th class="r">Valor</th>
       </tr></thead>
       <tbody>
-        <tr><td><b>Ana Carolina</b></td><td><span class="pz na">a definir</span></td><td class="r">100.000</td></tr>
+        <tr><td><b>Nadia</b></td><td><span class="pz na">a definir</span></td><td class="r">90.000</td></tr>
         <tr><td><b>Jairo</b></td><td><span class="pz ok">até sexta · 09/10</span></td><td class="r">35.000</td></tr>
         <tr><td><b>Andrea</b></td><td><span class="pz na">a definir</span></td><td class="r">32.000</td></tr>
         <tr><td><b>Leonardo</b></td><td><span class="pz na">a definir</span></td><td class="r">30.000</td></tr>
         <tr><td><b>Cristiane</b> <span style="color:var(--muted);font-size:8.4px">· segundo projeto</span></td><td><span class="pz na">a definir</span></td><td class="r">20.000</td></tr>
         <tr><td><b>Richard</b></td><td><span class="pz na">a definir</span></td><td class="r">7.000</td></tr>
         <tr><td><b>Flávia</b></td><td><span class="pz na">a definir</span></td><td class="r">7.000</td></tr>
-        <tr class="tot"><td colspan="2"><b>SUBTOTAL</b></td><td class="r"><b>231.000</b></td></tr>
+        <tr class="tot"><td colspan="2"><b>SUBTOTAL</b></td><td class="r"><b>221.000</b></td></tr>
       </tbody>
     </table>
 
-    <div class="sec">
-      <svg class="ic g" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
-      <div class="tx">Quando entra</div><div class="ln"></div>
-    </div>
-    <svg viewBox="0 0 700 92" style="width:100%;display:block">
-      <line x1="40" y1="30" x2="660" y2="30" stroke="#dfdacd" stroke-width="2"/>
-      <circle cx="120" cy="30" r="6" fill="#2f7d4f"/>
-      <circle cx="350" cy="30" r="6" fill="#C2A05A"/>
-      <circle cx="590" cy="30" r="6" fill="#9aa4b0"/>
-      <text x="120" y="17" text-anchor="middle" font-size="9" font-weight="700" fill="#2f7d4f">sexta 09/10</text>
-      <text x="120" y="50" text-anchor="middle" font-size="15" font-weight="700" fill="#0E2038">R$ 62 mil</text>
-      <text x="120" y="65" text-anchor="middle" font-size="8.6" fill="#6c7785">Augusto + Jairo</text>
-      <text x="120" y="79" text-anchor="middle" font-size="8.6" fill="#6c7785">com data confirmada</text>
-      <text x="350" y="17" text-anchor="middle" font-size="9" font-weight="700" fill="#a9863f">sexta 16/10</text>
-      <text x="350" y="50" text-anchor="middle" font-size="15" font-weight="700" fill="#0E2038">+ R$ 48 mil</text>
-      <text x="350" y="65" text-anchor="middle" font-size="8.6" fill="#6c7785">Maria</text>
-      <text x="350" y="79" text-anchor="middle" font-size="8.6" fill="#6c7785">acumulado de R$ 110 mil</text>
-      <text x="590" y="17" text-anchor="middle" font-size="9" font-weight="700" fill="#6c7785">sem data</text>
-      <text x="590" y="50" text-anchor="middle" font-size="15" font-weight="700" fill="#6c7785">R$ 226 mil</text>
-      <text x="590" y="65" text-anchor="middle" font-size="8.6" fill="#6c7785">8 projetos</text>
-      <text x="590" y="79" text-anchor="middle" font-size="8.6" fill="#6c7785">67% do total a receber</text>
-    </svg>
-
-    <div class="two mt">
-      <div class="box ok">
-        <div class="bh"><svg class="ic" viewBox="0 0 24 24" style="width:13px;height:13px"><path d="M20 6 9 17l-5-5"/></svg>A carteira cobre o atraso</div>
-        Os <b>R$ 336 mil a receber</b> são <b>4,5 vezes</b> os R$ 75 mil de boletos atrasados. Somando
-        o aporte líquido, a posição total é de <b>R$ 594,1 mil</b>.
-      </div>
-      <div class="box am">
-        <div class="bh"><svg class="ic" viewBox="0 0 24 24" style="width:13px;height:13px"><path d="M12 9v4.5M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>O gargalo é a data, não o valor</div>
-        Até 09/10 entram <b>R$ 62 mil</b> — ainda <b>R$ 13 mil abaixo</b> do atraso. A posição só vira
-        com a Maria, em 16/10. E <b>R$ 226 mil não têm data definida</b>.
-      </div>
-    </div>
   </div>
 
   <div class="rf">
