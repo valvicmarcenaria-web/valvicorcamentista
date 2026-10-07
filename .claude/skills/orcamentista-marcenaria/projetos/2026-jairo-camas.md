@@ -102,9 +102,22 @@ que o cliente já recebeu.
 > fechamento da agenda"*
 
 A abertura prometia *"manter tudo numa única data de instalação"* — e não
-vai ser assim. Trocada por: *"estamos fechando a agenda de produção do ano
-— aceita dentro da validade, a entrega acontece ainda em 2026"*. A mesma
-garantia entrou na célula de prazo, que é onde ela vale.
+vai ser assim.
+
+⛔ A primeira troca ficou **impositiva** [Jonathan]: *"aceita dentro da
+validade, a entrega acontece ainda em 2026"* condiciona o cliente logo na
+abertura — lê como régua, não como oferta.
+
+Versão final, que oferece em vez de condicionar:
+
+> *"Estamos **fechando a agenda de produção do ano** — e há uma vaga
+> reservada para entregar as suas camas **ainda em 2026**."*
+
+⭐ **A condição não sumiu: foi para onde pertence.** A célula de validade,
+"7 dias úteis", já limita o aceite a 16/10 — e 16/10 + 60 corridos dá
+15/12. As duas células do quadro sustentam a promessa **sem que nenhuma
+frase imponha nada ao cliente**. O prazo ficou apenas *"60 dias corridos,
+contados do aceite — com entrega ainda em 2026"*.
 
 ### ⭐ A promessa se sustenta — conferida antes de escrever
 
