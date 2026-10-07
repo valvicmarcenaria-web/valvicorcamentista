@@ -360,8 +360,26 @@ respondendo "folga 28 pt".
 fb = [b for b in bl if 'valvicmarcenaria' in norm(b[4])]
 if not fb and pagina > 1:            # a capa não tem rodapé
     print('⛔ RODAPÉ PERDIDO — a página estourou')
-foot_y = min([b[1] for b in fb] or [pg.rect.y1])
+foot_y = max([b[1] for b in fb] or [pg.rect.y1])   # ⛔ max, nunca min
+ult    = max(b[3] for b in bl if b[1] < foot_y - 1)
 ```
+
+#### ⛔ E `min()` pega o CABEÇALHO, não o rodapé
+
+Na folha única do Douglas a marca aparece **duas vezes**: no cabeçalho
+(y = 51,7) e no rodapé (y = 820,7). O `min()` escolheu o cabeçalho e o
+auditor anunciou *"último bloco 0.0 · rodapé 51.7 · folga 51.7 pt"* — um
+número sem significado, numa página que naquele momento **estava mesmo
+estourando** e só foi pega pelo passe 1.
+
+A régua é a ocorrência **mais baixa** da marca, e o conteúdo é só o que está
+acima dela. Enquanto todo layout tinha a marca apenas no rodapé, `min()` e
+`max()` davam o mesmo resultado e o erro ficou latente — apareceu no dia em
+que um layout novo pôs a marca no topo.
+
+⭐ A lição não é sobre `min`: **toda régua que se procura por conteúdo pode
+achar o pedaço errado.** Quando o passe 2 der um número estranho, é o passe 2
+que está errado, não a página.
 
 ---
 

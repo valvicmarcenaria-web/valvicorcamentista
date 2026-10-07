@@ -1,0 +1,259 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1A1714; --soft:#5C564C; --mut:#918A7C; --line:#E3DDD1; --hair:#F0EBE1;
+  --paper:#fff; --cream:#FAF7F1; --sand:#F1EBDF;
+  --gold:#9C7A3C; --gold-lt:#C6A567; --gold-pale:#F5EEDF; --deep:#241F1B;
+}
+@page{size:A4;margin:0;}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;
+     color:var(--ink);font-size:9.6pt;line-height:1.62;}
+.serif{font-family:'Cormorant Garamond','Liberation Serif',Georgia,serif;}
+.page{position:relative;width:210mm;height:297mm;overflow:hidden;
+      background:var(--paper);page-break-after:always;}
+.page:last-of-type{page-break-after:avoid;}
+.pad{padding:17mm 19mm 14mm;height:100%;display:flex;flex-direction:column;}
+h1,h2,h3{margin:0;font-weight:600;}
+p{margin:0;}
+.eyebrow{font-size:7.2pt;letter-spacing:.30em;text-transform:uppercase;
+         color:var(--gold);font-weight:700;}
+.rule{height:1.5px;width:40px;background:var(--gold);margin:7px 0 13px;}
+.h-sec{font-family:'Cormorant Garamond',Georgia,serif;font-size:23pt;
+       line-height:1.12;font-weight:600;letter-spacing:-.01em;}
+.lead{color:var(--soft);font-size:9.9pt;max-width:150mm;}
+.foot{margin-top:auto;padding-top:8mm;border-top:1px solid var(--hair);
+      display:flex;justify-content:space-between;font-size:7.2pt;
+      letter-spacing:.16em;text-transform:uppercase;color:var(--mut);}
+
+/* capa */
+.cover{background:var(--deep);color:#F6F1E7;}
+.cover .pad{padding:24mm 19mm 16mm;}
+.cover .eyebrow{color:var(--gold-lt);}
+.cover .rule{background:var(--gold-lt);width:56px;height:2px;}
+.cv-t{font-family:'Cormorant Garamond',Georgia,serif;font-size:38pt;
+      line-height:1.05;font-weight:600;letter-spacing:-.015em;margin-top:3mm;max-width:150mm;}
+.cv-nome{font-family:'Cormorant Garamond',Georgia,serif;font-size:74pt;
+         line-height:.98;font-weight:600;letter-spacing:-.025em;margin-top:4mm;
+         color:#F7F2E8;}
+.cv-s{font-size:13pt;color:#CFC6B4;margin-top:7mm;font-weight:300;
+      line-height:1.45;}
+.cv-meta{margin-top:13mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6mm;
+         border-top:1px solid rgba(255,255,255,.16);padding-top:7mm;}
+.cv-meta .k{font-size:6.9pt;letter-spacing:.2em;text-transform:uppercase;
+            color:var(--gold-lt);font-weight:700;}
+.cv-meta .v{font-size:10.4pt;color:#EDE6D9;margin-top:2mm;}
+.cv-brand{font-size:8.6pt;letter-spacing:.42em;text-transform:uppercase;
+          color:#E8DFCB;font-weight:700;}
+.cv-num{position:absolute;right:19mm;top:22mm;font-family:'Cormorant Garamond',Georgia,serif;
+        font-size:110pt;line-height:1;color:rgba(198,165,103,.13);font-weight:600;}
+
+/* itens */
+.it{padding:3.1mm 0;border-bottom:1px solid var(--hair);display:flex;gap:6mm;}
+.it:last-child{border-bottom:none;}
+.it-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:14.5pt;color:var(--gold-lt);
+      font-weight:600;min-width:9mm;line-height:1.1;}
+.it-t{font-size:10.4pt;font-weight:600;letter-spacing:-.005em;}
+.it-d{color:var(--soft);font-size:8.4pt;margin-top:1mm;line-height:1.5;}
+
+/* cenários */
+.cen{border:1px solid var(--line);border-radius:2px;padding:4.6mm 5.6mm;
+     margin-bottom:3.4mm;background:var(--cream);}
+.cen.hi{background:var(--gold-pale);border-color:var(--gold-lt);}
+.cen-h{display:flex;align-items:baseline;gap:4mm;}
+.cen-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:20pt;
+       color:var(--gold);font-weight:600;line-height:1;}
+.cen-t{font-size:12.5pt;font-weight:600;}
+.cen-g{margin-left:auto;font-size:7.6pt;letter-spacing:.16em;text-transform:uppercase;
+       color:#fff;background:var(--gold);padding:2.2mm 3.4mm;border-radius:2px;
+       font-weight:700;white-space:nowrap;}
+.cen-x{color:var(--soft);font-size:8.7pt;margin-top:2mm;}
+.cen-l{margin-top:2.8mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm;
+       border-top:1px solid var(--line);padding-top:3.2mm;}
+.cen-l .k{font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;
+          color:var(--mut);font-weight:700;}
+.cen-l .v{font-size:8.7pt;margin-top:1mm;line-height:1.4;}
+
+/* tabela de investimento */
+table{width:100%;border-collapse:collapse;}
+.inv th{font-size:6.9pt;letter-spacing:.16em;text-transform:uppercase;
+        color:var(--mut);font-weight:700;text-align:right;padding:0 0 3mm;
+        border-bottom:1.5px solid var(--gold);}
+.inv th.l{text-align:left;}
+.inv td{padding:2.4mm 0;border-bottom:1px solid var(--hair);text-align:right;
+        font-variant-numeric:tabular-nums;font-size:9.6pt;}
+.inv td.l{text-align:left;font-size:9.5pt;}
+.inv td.hi{background:var(--gold-pale);font-weight:600;
+           padding-right:2.6mm;padding-left:2.6mm;}
+.inv th.hi{background:var(--gold-pale);padding-right:2.6mm;padding-left:2.6mm;
+           color:var(--gold);}
+.inv tr.tot td{border-bottom:none;border-top:1.5px solid var(--ink);
+               padding-top:3mm;font-size:13.5pt;font-weight:600;
+               font-family:'Cormorant Garamond',Georgia,serif;}
+.inv tr.tot td.l{font-family:inherit;font-size:8pt;letter-spacing:.18em;
+                 text-transform:uppercase;font-weight:700;}
+
+.box{background:var(--cream);border-left:2.5px solid var(--gold);
+     padding:4mm 5.2mm;margin-top:4mm;}
+.box .t{font-size:7.4pt;letter-spacing:.18em;text-transform:uppercase;
+        color:var(--gold);font-weight:700;}
+.box p{color:var(--soft);font-size:9pt;margin-top:2mm;}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:9mm;}
+.term{padding:3.4mm 0;border-bottom:1px solid var(--hair);}
+.term:last-child{border-bottom:none;}
+.term .k{font-size:6.9pt;letter-spacing:.18em;text-transform:uppercase;
+         color:var(--gold);font-weight:700;}
+.term .v{font-size:9.5pt;margin-top:1.2mm;}
+.term .s{color:var(--soft);font-size:8.5pt;margin-top:.8mm;}
+.pay td{padding:2.6mm 0;border-bottom:1px solid var(--hair);font-size:9pt;}
+.pay td.d{text-align:right;font-weight:600;color:var(--gold);
+          font-variant-numeric:tabular-nums;}
+.fora .k{font-size:9.3pt;font-weight:600;}
+.fora .v{color:var(--soft);font-size:8.6pt;margin-top:.8mm;}
+.fora li{margin-bottom:3.2mm;list-style:none;}
+.fora ul{margin:0;padding:0;}
+.sig{margin-top:auto;padding-top:9mm;display:grid;grid-template-columns:1fr 1fr;gap:14mm;}
+.sig .ln{border-top:1px solid var(--ink);padding-top:2.4mm;font-size:8.4pt;
+         color:var(--soft);}
+
+
+/* ── folha única · Douglas ────────────────────────────────────────────── */
+/* ⛔ flex:none em TODO bloco fechado: .pad é coluna flex e um box com
+      overflow:hidden ENCOLHE em silêncio quando a coluna estoura. */
+.topU{display:flex;justify-content:space-between;align-items:baseline;gap:8mm;
+  padding-bottom:4.5mm;border-bottom:1px solid var(--hair);flex:none;}
+.topU .b{font-family:'Cormorant Garamond',Georgia,serif;font-size:13.5pt;
+  font-weight:700;letter-spacing:.02em;}
+.topU .m{font-size:7.2pt;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--mut);font-weight:700;text-align:right;}
+
+.leadU{color:var(--soft);font-size:9.2pt;line-height:1.56;flex:none;
+  max-width:162mm;}   /* 172mm é medida larga demais para 9,2pt */
+.leadU p{margin:0 0 2.6mm;}
+.leadU p:last-child{margin-bottom:0;}
+.leadU b{color:var(--ink);font-weight:600;}
+
+.escopoU{margin-top:4.5mm;padding:3.6mm 0;border-top:1px solid var(--hair);
+  border-bottom:1px solid var(--hair);font-size:8.2pt;color:var(--soft);
+  line-height:1.54;flex:none;}
+.escopoU b{color:var(--ink);font-weight:600;}
+
+.ofU{margin-top:5mm;border:1.5px solid var(--gold);border-radius:6px;
+  background:rgba(201,169,106,.07);padding:6mm;flex:none;}
+.ofU .k{font-size:7.2pt;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.ofU .tot{font-family:'Cormorant Garamond',Georgia,serif;font-size:34pt;
+  font-weight:700;line-height:1;margin-top:1.6mm;}
+.ofU .sp{height:1px;background:var(--gold-lt);opacity:.55;margin:4.5mm 0 4mm;}
+.ofU .duo{display:flex;gap:7mm;align-items:center;}
+.ofU .duo > div{flex:1;}
+.ofU .duo .x{flex:none;font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:19pt;color:var(--gold);font-weight:700;}
+.ofU .duo small{display:block;font-size:7.2pt;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--mut);font-weight:700;}
+.ofU .duo b{display:block;font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:23pt;font-weight:700;line-height:1.05;margin-top:1.3mm;}
+.ofU .duo em{display:block;font-style:normal;font-size:8.1pt;color:var(--soft);
+  margin-top:1mm;}
+.ofU .venc{margin-top:4mm;padding-top:3mm;border-top:1px solid var(--hair);
+  font-size:8.2pt;color:var(--soft);}
+.ofU .venc b{color:var(--ink);font-weight:600;}
+
+.valU{margin-top:5mm;padding:4.2mm 5.5mm;background:var(--ink);color:#fff;
+  border-radius:4px;display:flex;align-items:baseline;gap:6mm;flex:none;}
+.valU .k{flex:none;font-size:7.2pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-lt);font-weight:700;}
+.valU .d{flex:none;font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:14.5pt;font-weight:700;}
+.valU .t{flex:1;font-size:8.1pt;color:#D7D0C3;line-height:1.5;text-align:right;}
+
+.cndU{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm;margin-top:5mm;
+  padding-top:3.6mm;border-top:1px solid var(--hair);flex:none;}
+.cndU .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.cndU .d{color:var(--soft);font-size:8.2pt;margin-top:1mm;line-height:1.46;}
+.cndU .d b{color:var(--ink);}
+.notaU{margin-top:4.5mm;padding-left:4mm;border-left:2.5px solid var(--gold-lt);
+  font-size:7.9pt;color:var(--soft);line-height:1.5;flex:none;}
+.notaU b{color:var(--ink);}
+</style></head><body>
+
+<div class="page"><div class="pad">
+
+  <div class="topU">
+    <div class="b">Valvic Marcenaria</div>
+    <div class="m">Proposta de fechamento<br>Douglas · 7 de outubro de 2026</div>
+  </div>
+
+  <div style="margin-top:7mm;" class="eyebrow">Agenda de produção · 2026</div>
+  <div class="h-sec serif" style="font-size:27pt;">A sua obra,<br>
+    <em>dentro da nossa agenda.</em></div>
+  <div class="rule"></div>
+
+  <div class="leadU">
+    <p>Douglas, conforme a conversa que tivemos: somos uma empresa que
+    <b>olha além da marcenaria a ser entregue</b>. Prezamos pela qualidade de
+    cada entrega — mas o que nos move é <b>construir histórias e
+    relacionamentos de longo prazo</b>.</p>
+
+    <p>Entendemos o <b>momento de investimento</b> que a abertura de um
+    empreendimento exige. É com essas informações em mãos que estruturamos
+    esta proposta: para <b>viabilizar a execução do projeto</b> agora, com o
+    desembolso acompanhando a abertura.</p>
+
+    <p>Estamos fechando a agenda de produção do ano, e a sua obra é uma das
+    que queremos dentro dela.</p>
+  </div>
+
+  <div class="escopoU"><b>O projeto inteiro, como apresentado:</b> balcão de
+  recepção, painéis curvos com iluminação embutida, escaninho, prateleiras e
+  rack suspenso, carrinho, banco, mesa, armário com prateleiras em haste de
+  aço e os armários da copa. Do corte à instalação, com <b>equipe própria</b>
+  da casa.</div>
+
+  <div class="ofU">
+    <div class="k">O investimento</div>
+    <div class="tot">R$ 67.850</div>
+    <div class="sp"></div>
+    <div class="duo">
+      <div><small>Entrada · 20%</small>
+        <b>R$ 13.570</b><em>na assinatura, reserva de agenda</em></div>
+      <div class="x">+</div>
+      <div><small>6 boletos de</small>
+        <b>R$ 9.046,67</b><em>o primeiro só em 60 dias</em></div>
+    </div>
+    <div class="venc"><b>Vencimentos</b> em 60, 90, 120, 150, 180 e 210 dias, contados da
+    assinatura. Sem juros e sem acréscimo — o investimento é o mesmo do
+    projeto apresentado.</div>
+  </div>
+
+  <div class="valU">
+    <div class="k">Válida até</div>
+    <div class="d">Sexta-feira, 9 de outubro</div>
+    <div class="t">É o prazo em que a vaga na agenda deste ano<br>
+    ainda está reservada para você.</div>
+  </div>
+
+  <div class="cndU">
+    <div><div class="k">Prazo</div><div class="d">
+      <b>60 dias de produção</b>, contados do início da execução, combinado na
+      assinatura.</div></div>
+    <div><div class="k">Garantia</div><div class="d">
+      <b>10 anos</b> sobre estrutura e ferragens, com ferragem Hettich e
+      acabamento da linha Premium.</div></div>
+    <div><div class="k">Projeto</div><div class="d">
+      Medida conferida <b>no local</b> antes do corte.</div></div>
+  </div>
+
+  <div class="notaU"><b>Não inclusos:</b> alvenaria, elétrica e hidráulica,
+  pintura de parede, gesso, revestimentos, pedras e bancadas, eletrodomésticos,
+  luminárias e o mobiliário solto.</div>
+
+  <div class="foot"><span>Valvic Marcenaria</span>
+    <span>Douglas · proposta de fechamento</span>
+    <span>7 de outubro de 2026</span></div>
+
+</div></div>
+</body></html>

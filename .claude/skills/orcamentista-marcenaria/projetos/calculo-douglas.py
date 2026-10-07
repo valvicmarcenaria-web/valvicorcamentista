@@ -74,6 +74,22 @@ C1_FLUXO_CLI = [(0, VAL_ENT)] + [(30*k, C1_PARCELA) for k in range(1, C1_N+1)]
 VAL_BOL = A_PARC/N_BOL
 FLUXO   = [(0, VAL_ENT)] + [(DIA_1 + PASSO*k, VAL_BOL) for k in range(N_BOL)]
 
+# ══════════════════════════════════════════════════════════════════════════
+# CENÁRIO 3 — entrada de 20% + 6 boletos a partir do dia 60  [Jonathan 07/10]
+# "entrada de 20% + restante em 6 boletos com o primeiro a partir de 60 dias"
+# É o cenário 2 esticado de 4 para 6 boletos: mesma lógica, parcela menor,
+# último recebimento no dia 210 em vez de 150.
+# ⚠ 54.280 ÷ 6 = 9.046,6667 — não fecha em centavos. A proposta mostra
+#   R$ 9.046,67 e o ÚLTIMO boleto fecha a diferença de R$ 0,02.
+# ══════════════════════════════════════════════════════════════════════════
+N_BOL6   = 6
+VAL_BOL6 = round(A_PARC/N_BOL6, 2)                       # 9.046,67
+RESID6   = round(A_PARC - VAL_BOL6*N_BOL6, 2)            # −0,02, no último
+FLUXO6   = ([(0, VAL_ENT)]
+            + [(DIA_1 + PASSO*k, VAL_BOL6) for k in range(N_BOL6 - 1)]
+            + [(DIA_1 + PASSO*(N_BOL6 - 1), VAL_BOL6 + RESID6)])
+assert abs(sum(v for _, v in FLUXO6) - TOTAL) < 0.005, 'a escada não fecha'
+
 # ── valor presente ────────────────────────────────────────────────────────
 # ⭐ taxa = 1,2% a.m., que é a MESMA que `modelo-de-custo.md` já cobra por
 #   parcela de cartão. Usar a taxa da própria casa evita escolher um número
@@ -87,7 +103,8 @@ def vp(fluxos): return sum(v/(1 + I)**(d/30) for d, v in fluxos)
 #   cartão de graça. Aqui toda opção paga o que custa.
 OPCOES = [
   ('⭐ CENÁRIO 1 · 20% + 10× cartão', 0.00, [(0,0.20,0)]+[(30*k,0.80/C1_N,C1_N) for k in range(1,C1_N+1)]),
-  ('⭐ CENÁRIO 2 · 20% + 4 boletos',  0.00, [(0,0.20,0)]+[(DIA_1+PASSO*k,0.20,0) for k in range(N_BOL)]),
+  ('⭐ CENÁRIO 3 · 20% + 6 boletos',  0.00, [(0,0.20,0)]+[(DIA_1+PASSO*k,0.80/N_BOL6,0) for k in range(N_BOL6)]),
+  ('   CENÁRIO 2 · 20% + 4 boletos',  0.00, [(0,0.20,0)]+[(DIA_1+PASSO*k,0.20,0) for k in range(N_BOL)]),
   ('v1 · 30% entrada + 10× cartão',  0.00, [(0,0.30,0)]+[(30*k,0.70/10,10) for k in range(1,11)]),
   ('v1 · 50% entrada + 8× cartão',   0.03, [(0,0.50,0)]+[(30*k,0.50/8,8)   for k in range(1,9)]),
   ('v1 · 70% entrada + 6× cartão',   0.05, [(0,0.70,0)]+[(30*k,0.30/6,6)   for k in range(1,7)]),
@@ -133,7 +150,18 @@ if __name__ == '__main__':
     print(f'  cada boleto ...................... R$ {br(VAL_BOL)}')
     print(f'  ⭐ os cinco pagamentos são IGUAIS — 20% cada')
 
-    print('\nPERFIL DE CAIXA')
+    print(f'\n{"═"*W}')
+    print(f'CENÁRIO 3 · entrada de {ENTRADA*100:.0f}% + {N_BOL6} boletos '
+          f'a partir do dia {DIA_1}   ⭐ O ENTREGUE')
+    print(f'{"═"*W}')
+    print(f'  entrada, reserva de agenda ....... R$ {br2(VAL_ENT)}')
+    print(f'  ⭐ cada boleto ................... R$ {br2(VAL_BOL6)}')
+    print(f'  o último fecha os centavos ....... R$ {br2(VAL_BOL6+RESID6)}'
+          f'   (resíduo {br2(RESID6)})')
+    print(f'  último recebimento ............... dia {DIA_1+PASSO*(N_BOL6-1)}')
+    print(f'  soma ............................. R$ {br2(sum(v for _,v in FLUXO6))}')
+
+    print('\nPERFIL DE CAIXA · cenário 2 (4 boletos)')
     print(f'  {"dia":>5}{"recebe":>11}{"acumulado":>12}{"% do total":>12}')
     ac = 0
     for d, v in FLUXO:

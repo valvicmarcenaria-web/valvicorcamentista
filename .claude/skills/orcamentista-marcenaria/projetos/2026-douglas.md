@@ -177,3 +177,67 @@ Três passes de auditoria limpos nas quatro páginas: folga 398 / 45,0 / 165,0
 4. ★ **M10/11/13 a R$ 4.900 é o lote ou cada um?** Só o M07 dizia "cada
    unidade"; assumi lote. Se for cada, o total vai a R$ 77.650.
 5. **Validade de 5 dias úteis** é proposta minha; a v1 usava 2.
+
+---
+
+## 07/10/2026 — a folha única
+
+> *"me entregue uma única página · entrada de 20% + restante em 6 boletos
+> com o primeiro a partir de 60 dias · proposta válida até sexta dia 09"* ·
+> *"documento de uma página só evidenciando a oportunidade com o viés de
+> parceria atrelado ao objetivo de fechamento da agenda do ano"*
+
+`proposta-douglas-1pagina.pdf` · build: `build-douglas-1pg.py`.
+
+⭐ **Não substitui o de 4 páginas — é outro instrumento.** Aquele apresenta
+e compara; este fecha. Os dois ficam no repositório.
+
+### A condição · cenário 3
+
+| | |
+|---|--:|
+| investimento | R$ 67.850 |
+| entrada, 20%, na assinatura | R$ 13.570 |
+| **6 boletos de** | **R$ 9.046,67** |
+| vencimentos | 60, 90, 120, 150, 180 e 210 dias |
+| último recebimento | dia 210 |
+| **valor presente** a 1,2% a.m. | **R$ 65.024** |
+
+⚠ **54.280 ÷ 6 = 9.046,6667 — não fecha em centavos.** A proposta mostra
+R$ 9.046,67 e o **último boleto fecha os R$ 0,02** (R$ 9.046,65). O
+`assert` no `calculo-douglas.py` garante que a escada soma exatamente
+R$ 67.850.
+
+Contra o cenário 2 (4 boletos), os dois meses a mais custam **R$ 611 de
+valor presente** — barato: é menos de 1% do contrato para tirar R$ 4.523 de
+cada vencimento do cliente.
+
+### A abertura, nas palavras do Jonathan
+
+A conversa que ele teve com o cliente virou os três parágrafos de abertura:
+olhamos **além da marcenaria a ser entregue** · prezamos pela qualidade,
+mas o que move é **construir histórias e relacionamentos de longo prazo** ·
+entendemos o **momento de investimento** da abertura · e é com essas
+informações que a proposta foi estruturada, **para viabilizar a execução**.
+
+O terceiro parágrafo amarra isso ao prazo: *"estamos fechando a agenda de
+produção do ano, e a sua obra é uma das que queremos dentro dela"*. A
+validade deixa de ser uma régua administrativa e passa a ter um motivo
+verdadeiro — é o que a faixa escura diz: *"é o prazo em que a vaga na
+agenda deste ano ainda está reservada para você"*.
+
+09/10/2026 **é sexta-feira**, confere.
+
+### ⛔ O auditor 2 mediu o cabeçalho
+
+A folha única põe "Valvic Marcenaria" **no topo e no rodapé**. O auditor
+procurava a marca e usava `min()` — pegou o cabeçalho (y = 51,7) e
+anunciou *"folga 51,7 pt"* numa página que **estava estourando**. Só o
+passe 1 pegou. Corrigido para `max()` em `/tmp/aud3.py` e registrado em
+`referencias/proposta-comercial.md`.
+
+Enquanto todo layout tinha a marca só no rodapé, `min()` e `max()` davam o
+mesmo número e o erro ficou latente. **Toda régua que se procura por
+conteúdo pode achar o pedaço errado.**
+
+Três passes limpos: folga 27,1 pt.
