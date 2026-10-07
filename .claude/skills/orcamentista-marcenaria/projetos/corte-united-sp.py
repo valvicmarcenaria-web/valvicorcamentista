@@ -247,9 +247,23 @@ for pav in ('8', '9'):
 #   do conjunto — e deixei no relatório o TETO DE CUSTO que esse preço
 #   suporta. É esse teto que vale conferir quando a prancha chegar.
 # ══════════════════════════════════════════════════════════════════════════
-DIV_K     = 'Divisórias · duas em L e uma reta'
-DIV_VENDA = 13300.0
-DIV_MC    = 0.38
+# ⭐ [Jonathan 07/10] segunda linha: elevação das divisórias EXISTENTES das
+#   estações de trabalho — faixa em MDF melamínico fosco de 40 mm encimada
+#   por vidro temperado de 10 mm comum, lapidação reta, em alturas iguais.
+#   R$ 6.800 de VENDA, mesma convenção da primeira linha.
+# ⚠ 40 mm NÃO É CHAPA DE PRATELEIRA: melamínico vem em 15/18/25. A faixa é
+#   construída — duas faces mais miolo, como o montante encorpado do hall.
+#   É custo de montagem, não de chapa, e some dentro de um preço fechado.
+# ⚠ "na extensão referenciada no projeto" — a extensão NÃO VEIO. De novo
+#   escopo aberto dentro de preço fechado, como a primeira linha.
+DIVS = [('Divisórias · duas em L e uma reta',                      13300.0, 0.38),
+        ('Divisórias existentes · elevação das estações de trabalho', 6800.0, 0.38)]
+DIV_KS    = [k for k, _, _ in DIVS]
+DIV_AMBS  = {k.split(' · ')[0] for k in DIV_KS}
+DIV_MCS   = {k: mc for k, _, mc in DIVS}
+DIV_PV    = {k.split(' · ')[0]: v for k, v, _ in DIVS}
+DIV_TOTAL = sum(v for _, v, _ in DIVS)
+DIV_K, DIV_VENDA, DIV_MC = DIVS[0][0], DIVS[0][1], DIVS[0][2]   # compat
 
 # ══════════════════════════════════════════════════════════════════════════
 # CÁLCULO
@@ -327,11 +341,13 @@ for mov in MOVS:
     proprio = chapa_mov[mov] + fita_custo[mov] + enc_custo[mov]
     cons    = proprio*0.06
     CDI[mov] = (proprio + cons + TER[mov] + custo_fer(mov))*(1 + M.EMBALAGEM)
-# a divisória entra pelo preço; o custo é o implícito pela MC de 38%
-CDI[DIV_K] = DIV_VENDA*(M.base(parcelas=0, rt=True, vendedor=False) - DIV_MC)
-MOVS = MOVS + [DIV_K]
-area_mov[DIV_K] = 0.0
-for _d in (fita_custo, enc_custo, chapa_mov): _d[DIV_K] = 0.0
+# as divisórias entram pelo PREÇO; o custo é o implícito pela MC de 38%
+_BASE_DIV = M.base(parcelas=0, rt=True, vendedor=False)
+for _k, _v, _mc in DIVS:
+    CDI[_k] = _v*(_BASE_DIV - _mc)
+    area_mov[_k] = 0.0
+    for _d in (fita_custo, enc_custo, chapa_mov): _d[_k] = 0.0
+MOVS = MOVS + DIV_KS
 CD_MOV = sum(CDI.values())
 CD     = CD_MOV + LOG_TOT*(1 + M.EMBALAGEM)
 consum = sum((chapa_mov[m] + fita_custo[m] + enc_custo[m])*0.06 for m in MOVS)
@@ -345,13 +361,13 @@ for mov in MOVS:
     b = 0.38
     if 'painel' in mov:                            b = 0.35
     if any(k in mov for k in ('ripado', 'Prateleiras', 'bancada alta')): b = 0.40
-    MC_ITEM[mov] = DIV_MC if mov == DIV_K else b
+    MC_ITEM[mov] = DIV_MCS.get(mov, b)
 
 AMB   = {mov: mov.split(' · ')[0] for mov in MOVS}
 AMBS  = list(dict.fromkeys(AMB[m] for m in MOVS))
 ITENS = {am: [m for m in MOVS if AMB[m] == am] for am in AMBS}
 AR_AMB = {am: sum(area_mov[m] for m in ITENS[am]) for am in AMBS}
-PAV = {am: ('Divisórias' if am == 'Divisórias' else
+PAV = {am: ('Divisórias' if am in DIV_AMBS else
               ('9° pavimento' if '9°' in am else '8° pavimento')) for am in AMBS}
 
 CD_AMB  = {am: sum(CDI[m] for m in ITENS[am]) for am in AMBS}
@@ -382,10 +398,10 @@ ALVO_MOV = TOT_ALVO - PV_MOB
 # A compensação desloca a ESCADA INTEIRA de MC por um mesmo delta, para que a
 # diferença entre painelaria (35), armário (38) e item especial (40) continue
 # valendo. Não é um acréscimo linear no preço: é a mesma régua, deslocada.
-CD_AMB_C = {am: v for am, v in CD_AMB.items() if am != 'Divisórias'}
+CD_AMB_C = {am: v for am, v in CD_AMB.items() if am not in DIV_AMBS}
 def _mov_total(d):
     return (sum(round(CD_AMB[am]/(BASE - (MC_ALVO[am] + d))/10)*10
-                for am in CD_AMB_C) + DIV_VENDA)
+                for am in CD_AMB_C) + DIV_TOTAL)
 lo, hi = 0.0, 0.35
 for _ in range(80):
     mid = (lo + hi)/2
@@ -393,7 +409,7 @@ for _ in range(80):
     else: hi = mid
 DELTA_MC = (lo + hi)/2
 
-PV      = {am: (DIV_VENDA if am == 'Divisórias'
+PV      = {am: (DIV_PV[am] if am in DIV_AMBS
                 else round(CD_AMB[am]/(BASE - (MC_ALVO[am] + DELTA_MC))/10)*10)
            for am in AMBS}
 TOT_MOV = sum(PV.values())
@@ -478,16 +494,30 @@ if __name__ == '__main__':
     print(f'    {(TOT_MOV/ALVO_NEUTRO-1)*100 if False else (TOT_MOV/(TOT_ALVO-PV_NEUT)-1)*100:.1f}% acima da versão em que a logística carregava a própria parte.')
 
     print('\n⚠ AS DIVISÓRIAS — preço fechado, custo ainda não levantado')
-    print(f'  venda fechada ..................... R$ {br(DIV_VENDA)}')
-    print(f'  custo implícito pela MC de {DIV_MC*100:.0f}% ..... R$ {br(CDI[DIV_K])}')
-    print('  TETO DE CUSTO que esse preço suporta:')
-    for rot, mc in (('segurando a MC padrão de 38%', 0.38),
-                    ('no piso da casa, MC 35%',      0.35),
-                    ('ponto de equilíbrio, MC zero', 0.00)):
-        print(f'    {rot:<34}R$ {br(DIV_VENDA*(BASE-mc)):>8}')
-    print('  ⛔ Não há prancha das divisórias — provavelmente estão nas folhas')
-    print('     16 a 20, que não chegaram. Quando chegarem, é contra o teto de')
-    print(f'     R$ {br(DIV_VENDA*(BASE-0.38))} que o levantamento tem de bater.')
+    for _k, _v, _mc in DIVS:
+        print(f'\n  {_k}')
+        print(f'    venda fechada ................... R$ {br(_v)}')
+        print(f'    custo implícito pela MC de {_mc*100:.0f}% ... R$ {br(CDI[_k])}')
+        print('    TETO DE CUSTO que esse preço suporta:')
+        for rot, mc in (('segurando a MC padrão de 38%', 0.38),
+                        ('no piso da casa, MC 35%',      0.35),
+                        ('ponto de equilíbrio, MC zero', 0.00)):
+            print(f'      {rot:<32}R$ {br(_v*(BASE-mc)):>8}')
+    print(f'\n  As duas somam R$ {br(DIV_TOTAL)} de venda.')
+    print('  ⛔ Não há prancha de nenhuma das duas. As três divisórias novas')
+    print('     provavelmente estão nas folhas 16 a 20, que não chegaram; da')
+    print('     elevação das estações, falta "a extensão referenciada no')
+    print('     projeto". Quando chegarem, é contra estes tetos que o')
+    print('     levantamento tem de bater.')
+    print('\n  ⚠ A FAIXA DE 40 mm NÃO É CHAPA. Melamínico vem em 15/18/25 —')
+    print('     40 mm é construído: duas faces mais miolo, como o montante')
+    print('     encorpado do hall. É custo de MONTAGEM, que não aparece no')
+    print('     metro quadrado e some dentro de um preço fechado.')
+    _tv = 6800.0*(BASE-0.38)
+    print(f'\n  ⚠ E o vidro é terceiro. Temperado de 10 mm com lapidação reta')
+    print(f'     corre por R$ 350 a 550/m² em São Paulo, mais a ferragem de')
+    print(f'     fixação. Dentro do teto de R$ {br(_tv)} sobram poucos metros')
+    print(f'     quadrados de vidro depois de pagar a faixa de MDF.')
 
     nd = sum(FER[m]['dobr'] for m in MOVS); nc = sum(FER[m]['corr'] for m in MOVS)
     print(f'\nFERRAGEM HETTICH — especificada [Jonathan 01/10]')

@@ -52,16 +52,16 @@ CSS = (open(P/'css-proposta.css', encoding='utf-8').read() + """
 .leadU p:last-child{margin-bottom:0;}
 .leadU b{color:var(--ink);font-weight:600;}
 
-.escopoU{margin-top:4.5mm;padding:3.6mm 0;border-top:1px solid var(--hair);
+.escopoU{margin-top:4mm;padding:3.2mm 0;border-top:1px solid var(--hair);
   border-bottom:1px solid var(--hair);font-size:8.2pt;color:var(--soft);
   line-height:1.54;flex:none;}
 .escopoU b{color:var(--ink);font-weight:600;}
 
-.ofU{margin-top:5mm;border:1.5px solid var(--gold);border-radius:6px;
-  background:rgba(201,169,106,.07);padding:6mm;flex:none;}
+.ofU{margin-top:4.5mm;border:1.5px solid var(--gold);border-radius:6px;
+  background:rgba(201,169,106,.07);padding:5.4mm;flex:none;}
 .ofU .k{font-size:7.2pt;letter-spacing:.18em;text-transform:uppercase;
   color:var(--gold);font-weight:700;}
-.ofU .tot{font-family:'Cormorant Garamond',Georgia,serif;font-size:34pt;
+.ofU .tot{font-family:'Cormorant Garamond',Georgia,serif;font-size:31pt;
   font-weight:700;line-height:1;margin-top:1.6mm;}
 .ofU .sp{height:1px;background:var(--gold-lt);opacity:.55;margin:4.5mm 0 4mm;}
 .ofU .duo{display:flex;gap:7mm;align-items:center;}
@@ -74,11 +74,11 @@ CSS = (open(P/'css-proposta.css', encoding='utf-8').read() + """
   font-size:23pt;font-weight:700;line-height:1.05;margin-top:1.3mm;}
 .ofU .duo em{display:block;font-style:normal;font-size:8.1pt;color:var(--soft);
   margin-top:1mm;}
-.ofU .venc{margin-top:4mm;padding-top:3mm;border-top:1px solid var(--hair);
+.ofU .venc{margin-top:3.4mm;padding-top:2.6mm;border-top:1px solid var(--hair);
   font-size:8.2pt;color:var(--soft);}
 .ofU .venc b{color:var(--ink);font-weight:600;}
 
-.valU{margin-top:5mm;padding:4.2mm 5.5mm;background:var(--ink);color:#fff;
+.valU{margin-top:4.5mm;padding:3.8mm 5.5mm;background:var(--ink);color:#fff;
   border-radius:4px;display:flex;align-items:baseline;gap:6mm;flex:none;}
 .valU .k{flex:none;font-size:7.2pt;letter-spacing:.2em;text-transform:uppercase;
   color:var(--gold-lt);font-weight:700;}
@@ -86,13 +86,13 @@ CSS = (open(P/'css-proposta.css', encoding='utf-8').read() + """
   font-size:14.5pt;font-weight:700;}
 .valU .t{flex:1;font-size:8.1pt;color:#D7D0C3;line-height:1.5;text-align:right;}
 
-.cndU{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm;margin-top:5mm;
-  padding-top:3.6mm;border-top:1px solid var(--hair);flex:none;}
+.cndU{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm;margin-top:4.2mm;
+  padding-top:3.2mm;border-top:1px solid var(--hair);flex:none;}
 .cndU .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
   color:var(--gold);font-weight:700;}
 .cndU .d{color:var(--soft);font-size:8.2pt;margin-top:1mm;line-height:1.46;}
 .cndU .d b{color:var(--ink);}
-.notaU{margin-top:4.5mm;padding-left:4mm;border-left:2.5px solid var(--gold-lt);
+.notaU{margin-top:3.8mm;padding-left:4mm;border-left:2.5px solid var(--gold-lt);
   font-size:7.9pt;color:var(--soft);line-height:1.5;flex:none;}
 .notaU b{color:var(--ink);}
 """)

@@ -410,3 +410,86 @@ voltou a dizer o que promete:
 |---|--:|--:|--:|
 | bloco na MC do conjunto | 157.530 | 43.040 | 200.570 |
 | **bloco fechado em 25k** ← entregue | **175.570** | **25.000** | **200.570** |
+
+---
+
+## 07/10/2026 — segunda linha de divisórias
+
+> *"acrescentar o seguinte item: divisórias de estações de trabalho
+> existentes feitas em mdf melamínico fosco com 40mm de espessura na
+> extensão referenciada no projeto na altura de 300mm seguido de acoplamento
+> de vidro na extensão em mais 300mm de altura. Sendo vidro temperado de
+> 10mm comum com lapidação reta. R$ 6.800"*
+
+Lançada como as primeiras: **R$ 6.800 de VENDA**, pela convenção que o
+Jonathan fixou em 01/10 (*"o valor de venda é o valor informado"*). Ambiente
+próprio, para aparecer em linha separada no quadro de investimento.
+
+| | antes | agora |
+|---|--:|--:|
+| Marcenaria | 175.570 | **182.340** |
+| Mobilização | 25.000 | 25.000 |
+| **TOTAL** | **200.570** | **R$ 207.340** |
+| MC | 38,6% | 38,6% |
+
+### ⚠ Por que +6.770 e não +6.800
+
+Os R$ 30 que faltam **não são arredondamento**. A compensação da mobilização
+mira `ALVO_MOV = TOT_MOV0 + PV_NEUT − 25.000`, e `PV_NEUT` é o preço que o
+bloco teria carregando a **MC média do job**. O item novo entra a 38%, que é
+um pouco abaixo da média que o job tinha — a média cai, o preço neutro da
+mobilização cai de 43.040 para 43.010, e o total acompanha.
+
+⭐ É consequência fiel do modelo, não defeito: o bloco de logística é
+indexado à MC do conjunto, então mexer no conjunto mexe nele.
+
+### ⚠ O teto de custo da linha nova
+
+| | |
+|---|--:|
+| venda fechada | R$ 6.800 |
+| custo implícito à MC de 38% | **R$ 2.619** |
+| teto no piso da casa, MC 35% | R$ 2.823 |
+| ponto de equilíbrio | R$ 5.203 |
+
+⛔ **Escopo aberto dentro de preço fechado, pela segunda vez.** *"Na extensão
+referenciada no projeto"* — a extensão não veio, como não vieram as folhas
+16 a 20 das três primeiras divisórias.
+
+Dois custos que somem dentro de um preço fechado:
+
+* **40 mm não é chapa.** Melamínico vem em 15/18/25 — a faixa é construída,
+  duas faces mais miolo, como o montante encorpado do hall. É custo de
+  **montagem**, que não aparece no metro quadrado.
+* **O vidro é terceiro.** Temperado de 10 mm com lapidação reta corre por
+  R$ 350 a 550/m² em São Paulo, mais a ferragem de fixação. Dentro de
+  R$ 2.619 sobram poucos metros quadrados de vidro **depois** de pagar a
+  faixa de MDF.
+
+### ⛔ A contradição que o item novo criou no documento
+
+A linha de "não inclusos" da página 4 dizia **"vidros e esquadrias"** e
+**"as estações de trabalho do contact center"** — e o item novo é
+exatamente vidro temperado sobre as divisórias dessas estações. O mesmo
+documento vendia e excluía a mesma coisa.
+
+Reescrita: *"esquadrias e os demais vidros da obra — **o vidro temperado das
+divisórias é nosso** —, o **mobiliário** das estações de trabalho do contact
+center"*.
+
+⭐ **Todo item novo tem de ser lido contra a lista de exclusões.** O escopo
+cresce por onde se adiciona; a exclusão continua onde estava.
+
+### ⛔ E o rodapé escorregou
+
+Com o card 04 maior e a tabela com mais uma linha, os rodapés das páginas 2
+e 4 desceram para **2,1 mm e 4,4 mm da borda** — e os três passes disseram
+"tudo ok", porque a folga é medida *até o rodapé* e o rodapé desceu junto.
+Nova checagem de margem mínima de 12 mm em
+`referencias/proposta-comercial.md`. Depois de compactar: 793,0 e 797,5.
+
+### Em aberto
+
+★ Confirmar se os **300 mm de cada faixa** (MDF e vidro) são medidos a
+partir do topo da divisória existente, e qual a **extensão total** — é ela
+que decide se R$ 6.800 fecha.

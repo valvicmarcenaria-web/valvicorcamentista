@@ -39,6 +39,8 @@ print(f'1 · CONTEÚDO PERDIDO  ......  {"OK" if not perdidos else str(len(perdi
 for f in perdidos: print('     ⛔', f[:110])
 
 # ── 2 · transbordo ──────────────────────────────────────────────────────
+MM = 72/25.4                 # pt por mm
+MARGEM_MIN = 12*MM           # padrão da casa: 12 mm até a borda
 print('2 · TRANSBORDO')
 ok2 = True
 # ⛔ quantos rodapés o HTML MANDA imprimir — a capa não tem, as demais têm.
@@ -65,6 +67,16 @@ for i, pg in enumerate(doc, 1):
           f'  ·  folga {folga:6.1f} pt{flag}')
     if pg.rect.height > 845:
         ok2 = False; print(f'     pág {i}: ⛔ ALTURA {pg.rect.height:.0f} pt — a página esticou')
+    # ⛔ O RODAPÉ PODE ESCORREGAR SEM SUMIR. Quando a coluna flex estoura, o
+    #   rodapé desce para dentro da margem inferior em vez de desaparecer —
+    #   e aí "folga até o rodapé" continua ok, porque a régua desceu junto
+    #   com o que ela mede. A margem até a BORDA DA FOLHA é fixa e não mente.
+    if fb:
+        margem = pg.rect.y1 - max(b[3] for b in fb)
+        if margem < MARGEM_MIN:
+            ok2 = False
+            print(f'     pág {i}: ⛔ RODAPÉ A {margem/MM:.1f} mm DA BORDA '
+                  f'(mínimo {MARGEM_MIN/MM:.0f}) — a página comeu a margem')
 
 if tem_foot < quer_foot:
     ok2 = False
@@ -83,13 +95,18 @@ PROIB = [
      r'painéis|paineis|painel|fechamentos?|suportes?)\b', 'contagem'),
     (r'\b\d+\s*×\s*\d+',                      'cota cruzada'),
 ]
-EXCECAO = re.compile(r'\b(15|18|50)\s*mm\b|\b2,73\s*m\b')
+EXCECAO = re.compile(r'\b(10|15|18|40|50)\s*mm\b|\b2,73\s*m\b')
 #  15/18 mm liberado por Jonathan em 30/09 (separa as duas linhas)
 #  2,73 m  liberado por Jonathan em 01/10 (altura do pano ripado do hall)
 #  50 mm   liberado por Jonathan em 07/10 — largura da régua do ripado.
 #    ⭐ É ESPECIFICAÇÃO DO DESENHO, não quantitativo: o passo do ripado
 #      (régua de 50, vão de 15) É o produto. Sem ele o cliente não sabe o
 #      que está comprando, do mesmo jeito que não saberia sem a espessura.
+#  40 mm   liberado por Jonathan em 07/10 — faixa de MDF da divisória.
+#  10 mm   liberado por Jonathan em 07/10 — vidro temperado da divisória.
+#    ⭐ ESPESSURA DE MATERIAL é especificação. ALTURA é metragem e fica
+#      de fora: os 300 mm de cada faixa NÃO entram na proposta, que diz
+#      apenas 'as duas em alturas iguais'.
 achados = []
 for pg in doc:
     for rgx, rot in PROIB:

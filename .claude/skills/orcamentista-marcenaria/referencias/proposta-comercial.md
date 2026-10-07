@@ -420,6 +420,32 @@ data, nome do cliente — some sem alarme enquanto o auditor só perguntar
 ⭐ O auditor **saiu do `/tmp`**: mora em `ferramentas/auditor-proposta.py`.
 Três vezes ele foi reescrito de memória depois que o container reiniciou.
 
+#### ⛔⛔ E o rodapé pode ESCORREGAR sem sumir
+
+Terceira falha do mesmo passe, no mesmo dia. Quando a coluna flex estoura, o
+rodapé nem sempre desaparece: ele **desce para dentro da margem inferior**.
+A "folga até o rodapé" continua ok — porque a régua desceu junto com o que
+ela mede. Na United, depois de entrar a segunda divisória, o rodapé da
+página 2 foi parar a **2,1 mm da borda** da folha, contra 14,5 mm na página
+3, e os três passes disseram "tudo ok".
+
+A margem até a **borda da folha** é fixa e não desce com nada:
+
+```python
+MM, MARGEM_MIN = 72/25.4, 12*72/25.4      # padrão da casa: 12 mm
+if fb:
+    margem = pg.rect.y1 - max(b[3] for b in fb)
+    if margem < MARGEM_MIN:
+        print(f'⛔ RODAPÉ A {margem/MM:.1f} mm DA BORDA')
+```
+
+⭐ O teste, assim que entrou, pegou a **folha única do Douglas** com o rodapé
+a 5,0 mm da borda — um documento que já tinha passado limpo três vezes.
+
+⭐ As três falhas do passe 2 são a mesma falha: **ele mediu tudo em relação
+ao rodapé, e o rodapé é justamente o que se move quando a página estoura.**
+Uma régua só serve se estiver presa em algo que não se mexe. Aqui, a folha.
+
 ### Exceções autorizadas à regra de metragem
 
 | medida | quando | por quê |
@@ -427,6 +453,14 @@ Três vezes ele foi reescrito de memória depois que o container reiniciou.
 | `15 mm` · `18 mm` | 30/09 | espessura de chapa — separa as duas linhas |
 | `2,73 m` | 01/10 | altura do pano ripado do hall (United) |
 | `50 mm` | 07/10 | largura da régua do ripado (pórtico) |
+| `40 mm` | 07/10 | espessura da faixa de MDF da divisória (United) |
+| `10 mm` | 07/10 | espessura do vidro temperado da divisória (United) |
+
+⛔ **ESPESSURA é especificação; ALTURA é metragem.** Os 300 mm de cada faixa
+da divisória da United **não entraram** na proposta — ela diz apenas *"as
+duas em alturas iguais"*, que dá o escopo sem dar a cota. A espessura do
+vidro, ao contrário, tem de constar: é ela que separa um temperado de 10 de
+um de 8, e é nela que nasce a discussão se ficar implícita.
 
 ⭐ O critério não é o tamanho do número: é **especificação × quantitativo**.
 O passo do ripado — régua de 50, vão de 15 — **é o produto**: sem ele o

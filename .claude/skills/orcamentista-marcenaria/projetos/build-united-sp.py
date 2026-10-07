@@ -38,14 +38,14 @@ CSS = (open(P/'css-proposta.css', encoding='utf-8').read()
 .phU img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;}
 .phU img.ct{object-fit:contain;}
 
-.itU{margin-top:5.4mm;}
+.itU{margin-top:4.4mm;}
 .itU .n{font-family:'Cormorant Garamond',Georgia,serif;font-size:14pt;
   color:var(--gold-lt);font-weight:600;line-height:1;}
 .itU .t{font-size:11.4pt;font-weight:700;letter-spacing:-.01em;margin-top:.6mm;}
-.itU .d{color:var(--soft);font-size:8.7pt;line-height:1.64;margin-top:1.8mm;}
+.itU .d{color:var(--soft);font-size:8.7pt;line-height:1.56;margin-top:1.5mm;}
 .itU .d b{color:var(--ink);font-weight:600;}
 .parU{display:grid;grid-template-columns:1fr 1fr;gap:4mm;}
-.parU .phU{height:62mm;}
+.parU .phU{height:54mm;}
 .bandaU{height:46mm;}
 
 .exU{display:grid;grid-template-columns:1fr 1fr;gap:5mm 7mm;margin-top:5mm;}
@@ -55,11 +55,11 @@ CSS = (open(P/'css-proposta.css', encoding='utf-8').read()
 .exU .d{color:var(--soft);font-size:8.6pt;line-height:1.6;margin-top:1.6mm;}
 .exU .d b{color:var(--ink);font-weight:600;}
 
-table.invU{width:100%;border-collapse:collapse;margin-top:4mm;font-size:9pt;}
+table.invU{width:100%;border-collapse:collapse;margin-top:3.2mm;font-size:9pt;}
 table.invU th{font-size:6.9pt;letter-spacing:.17em;text-transform:uppercase;
   color:var(--mut);font-weight:700;padding:0 0 2.4mm;text-align:left;}
 table.invU th.r,table.invU td.r{text-align:right;}
-table.invU td{padding:1.7mm 0;border-top:1px solid var(--hair);vertical-align:top;}
+table.invU td{padding:1.35mm 0;border-top:1px solid var(--hair);vertical-align:top;}
 table.invU td.a{font-size:6.9pt;letter-spacing:.14em;text-transform:uppercase;
   color:var(--gold-lt);font-weight:700;padding-right:4mm;width:30mm;}
 table.invU td.i{font-weight:600;}
@@ -69,15 +69,15 @@ table.invU tr.tot td{border-top:1.6px solid var(--ink);padding-top:2.2mm;
   font-family:'Cormorant Garamond',Georgia,serif;font-size:15pt;font-weight:700;}
 table.invU tr.tot td.a,table.invU tr.tot td.i{font-family:inherit;font-size:9.6pt;}
 
-.escU{margin-top:4mm;border:1px solid var(--line);border-radius:5px;
+.escU{margin-top:3.2mm;border:1px solid var(--line);border-radius:5px;
   overflow:hidden;flex:none;}
 .escU .l{display:flex;justify-content:space-between;align-items:baseline;
-  padding:2mm 5mm;border-bottom:1px solid var(--hair);font-size:9pt;}
+  padding:1.7mm 5mm;border-bottom:1px solid var(--hair);font-size:9pt;}
 .escU .l:last-child{border-bottom:none;}
 .escU .l .p{font-weight:700;font-size:11pt;color:var(--gold);min-width:14mm;}
 .escU .l .q{color:var(--soft);flex:1;padding-left:4mm;}
 
-.mobU{margin-top:4mm;border:1.5px solid var(--gold);border-radius:5px;
+.mobU{margin-top:3.4mm;border:1.5px solid var(--gold);border-radius:5px;
   background:var(--gold-pale);padding:3.6mm 5.2mm;display:grid;
   grid-template-columns:1fr auto;gap:2mm 7mm;align-items:start;flex:none;}
 .mobU .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
@@ -95,13 +95,13 @@ table.invU tr.tot td.a,table.invU tr.tot td.i{font-family:inherit;font-size:9.6p
 .totU .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:23pt;
   font-weight:700;}
 
-.cndU{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm 5mm;margin-top:4mm;
+.cndU{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm 5mm;margin-top:3.2mm;
   flex:none;}
 .cndU .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
   color:var(--gold);font-weight:700;}
 .cndU .d{color:var(--soft);font-size:8pt;margin-top:1mm;line-height:1.42;}
 .cndU .d b{color:var(--ink);}
-.notaU{margin-top:4.5mm;padding-left:4mm;border-left:2.5px solid var(--gold-lt);
+.notaU{margin-top:3.6mm;padding-left:4mm;border-left:2.5px solid var(--gold-lt);
   font-size:8pt;color:var(--soft);line-height:1.5;flex:none;}
 .notaU b{color:var(--ink);}
 """)
@@ -166,11 +166,13 @@ p2 = f"""<div class="page"><div class="pad">
       'Distribuídas pelas salas de reunião, lounges e áreas de apoio dos dois '
       'andares, inclusive uma em L.')}
 
-  {it('04', 'Divisórias sob medida',
-      '<b>Duas divisórias em L e uma reta</b>, executadas no mesmo padrão '
-      'construtivo e na mesma paleta do restante do fit-out. '
-      '<b>Medidas, posição e acabamento a confirmar em projeto</b> antes do '
-      'corte.')}
+  {it('04', 'Divisórias',
+      '<b>Duas em L e uma reta</b>, no mesmo padrão construtivo e na mesma '
+      'paleta do restante do fit-out. Nas <b>estações de trabalho</b>, '
+      'elevação das divisórias existentes: faixa em <b>MDF melamínico fosco '
+      'de 40 mm</b> encimada por <b>vidro temperado de 10 mm com lapidação '
+      'reta</b>, as duas em alturas iguais. '
+      '<b>Medidas e posição a confirmar em projeto</b> antes do corte.')}
 
   {it('05', 'Fechamento dos quadros de energia',
       'Fechamento em <b>MDF Guararapes Azul Petróleo</b> no mesmo tom do painel '
@@ -237,7 +239,8 @@ NOME = {'Cozinha 8°':'Copa', 'Hall 8°':'Hall dos elevadores',
         'Cozinha 9°':'Copa', 'Hall 9°':'Hall dos elevadores',
         'Prateleiras 9°':'Prateleiras suspensas',
         'Quadros de energia 9°':'Fechamento dos quadros de energia',
-        'Divisórias':'Duas em L e uma reta'}
+        'Divisórias':'Duas em L e uma reta',
+        'Divisórias existentes':'Elevação das estações de trabalho'}
 
 linhas, _pv = '', None
 for pv in ('8° pavimento', '9° pavimento', 'Divisórias'):
@@ -296,9 +299,10 @@ p4 = f"""<div class="page"><div class="pad">
   </div>
 
   <div class="notaU"><b>Não inclusos:</b> pedras, cubas, torneiras,
-  eletrodomésticos, vidros e esquadrias, as estações de trabalho do contact
-  center, piso e luminárias dos halls, comunicação visual, gesso, pintura,
-  revestimentos, elétrica e hidráulica.</div>
+  eletrodomésticos, esquadrias e os demais vidros da obra — <b>o vidro
+  temperado das divisórias é nosso</b> —, o mobiliário das estações de
+  trabalho do contact center, piso e luminárias dos halls, comunicação
+  visual, gesso, pintura, revestimentos, elétrica e hidráulica.</div>
 
   {foot(4)}
 </div></div>"""
