@@ -13,6 +13,7 @@ CONTEXTO [Jonathan 07/10]
   ⭐ M07 "Painel e móvel" passa a contar como 3 unidades.
 """
 br  = lambda v: f'{v:,.0f}'.replace(',', '.')
+br2 = lambda v: f'{v:,.2f}'.replace(',','X').replace('.',',').replace('X','.')
 
 # ── itens da proposta v1 ──────────────────────────────────────────────────
 ITENS = [('M01','Balcão recepção',           7500, 1, 'até dia 20'),
@@ -28,10 +29,36 @@ ITENS = [('M01','Balcão recepção',           7500, 1, 'até dia 20'),
          ('M14','Painel curvo',              3900, 1, '')]
 TOTAL = sum(v*q for _,_,v,q,_ in ITENS)
 
+# ══════════════════════════════════════════════════════════════════════════
+# CENÁRIO 1 — entrada de 20% + 10× no cartão  [Jonathan 07/10]
+# "acrescentar 12% no percentual a ser dividido no cartão, evidenciando a
+#  parcela ao invés do valor total"
+# ⚠ 12% POR CIMA NÃO REPÕE 12% DE TAXA. A taxa incide sobre o valor já
+#   acrescido: 54.280 × 1,12 = 60.793,60, taxa de 12% = 7.295,23, líquido
+#   53.498,37 — faltam R$ 781,63. O acréscimo neutro seria ÷ 0,88 (+13,64%),
+#   com parcela de R$ 6.168,18. Entregue como pedido; ver o quadro no fim.
+# ══════════════════════════════════════════════════════════════════════════
+TX_CARTAO = 0.012          # modelo-de-custo.md: 1,2% por parcela
+C1_N      = 10
+C1_ACRES  = 0.12
 # ── escada proposta ───────────────────────────────────────────────────────
 ENTRADA, N_BOL, DIA_1, PASSO = 0.20, 4, 60, 30
 VAL_ENT = TOTAL*ENTRADA
-VAL_BOL = TOTAL*(1-ENTRADA)/N_BOL
+A_PARC  = TOTAL*(1 - ENTRADA)          # a parte que não é entrada
+
+# cenário 1 · cartão
+C1_TOTPARC = A_PARC*(1 + C1_ACRES)
+C1_PARCELA = C1_TOTPARC/C1_N
+C1_TAXA    = C1_TOTPARC*TX_CARTAO*C1_N
+C1_CLIENTE = VAL_ENT + C1_TOTPARC
+C1_LIQUIDO = C1_CLIENTE - C1_TAXA
+C1_FLUXO   = [(0, VAL_ENT)] + [(30*k, C1_PARCELA*(1 - TX_CARTAO*C1_N))
+                               for k in range(1, C1_N + 1)]
+# o acréscimo que deixaria a casa inteira
+C1_NEUTRO  = A_PARC/(1 - TX_CARTAO*C1_N)/C1_N
+
+# cenário 2 · boletos
+VAL_BOL = A_PARC/N_BOL
 FLUXO   = [(0, VAL_ENT)] + [(DIA_1 + PASSO*k, VAL_BOL) for k in range(N_BOL)]
 
 # ── valor presente ────────────────────────────────────────────────────────
@@ -62,7 +89,22 @@ if __name__ == '__main__':
     print(f'{"":<11}{"(v1, com M07 × 1)":<24}{"":>12}{br(_v1):>10}'
           f'   +{br(TOTAL-_v1)} com M07 × 3')
 
-    print(f'\nESCADA · entrada de {ENTRADA*100:.0f}% + {N_BOL} boletos a partir do dia {DIA_1}')
+    print(f'\n{"═"*W}')
+    print(f'CENÁRIO 1 · entrada de {ENTRADA*100:.0f}% + {C1_N}× no cartão '
+          f'(+{C1_ACRES*100:.0f}% sobre a parte parcelada)')
+    print(f'{"═"*W}')
+    print(f'  entrada .......................... R$ {br2(VAL_ENT)}')
+    print(f'  ⭐ {C1_N} parcelas de ................ R$ {br2(C1_PARCELA)}')
+    print(f'  o cliente paga, no total ......... R$ {br2(C1_CLIENTE)}')
+    print(f'  taxa de cartão ({TX_CARTAO*C1_N*100:.0f}%) ............ R$ {br2(C1_TAXA)}')
+    print(f'  a casa recebe, líquido ........... R$ {br2(C1_LIQUIDO)}')
+    print(f'  ⚠ contra os R$ {br(TOTAL)} de investimento, faltam R$ {br2(TOTAL-C1_LIQUIDO)}')
+    print(f'    o acréscimo neutro seria ÷ 0,88 '
+          f'(+{(1/(1-TX_CARTAO*C1_N)-1)*100:.2f}%), parcela de R$ {br2(C1_NEUTRO)}')
+
+    print(f'\n{"═"*W}')
+    print(f'CENÁRIO 2 · entrada de {ENTRADA*100:.0f}% + {N_BOL} boletos a partir do dia {DIA_1}')
+    print(f'{"═"*W}')
     print(f'  entrada, reserva de agenda ....... R$ {br(VAL_ENT)}')
     print(f'  cada boleto ...................... R$ {br(VAL_BOL)}')
     print(f'  ⭐ os cinco pagamentos são IGUAIS — 20% cada')
@@ -82,6 +124,24 @@ if __name__ == '__main__':
     best = max(x[2] for x in res)
     for rot, nom, v in res:
         print(f'  {rot:<34}{br(nom):>10}{br(v):>10}{v-best:>+11.0f}')
-    print('\n  ⭐ O cenário proposto é o MELHOR em valor presente de todos — o')
+    print(f'\n{"═"*W}')
+    print('OS DOIS CENÁRIOS, LADO A LADO')
+    print(f'{"═"*W}')
+    print(f'  {"":<30}{"cenário 1":>14}{"cenário 2":>14}')
+    print(f'  {"":<30}{"cartão 10×":>14}{"4 boletos":>14}')
+    print(f'  {"o cliente paga":<30}{br2(C1_CLIENTE):>14}{br2(TOTAL):>14}')
+    print(f'  {"entrada":<30}{br2(VAL_ENT):>14}{br2(VAL_ENT):>14}')
+    print(f'  {"e depois":<30}{"10 × "+br2(C1_PARCELA):>14}{"4 × "+br2(VAL_BOL):>14}')
+    print(f'  {"taxa que a casa paga":<30}{br2(C1_TAXA):>14}{"—":>14}')
+    print(f'  {"a casa recebe, líquido":<30}{br2(C1_LIQUIDO):>14}{br2(TOTAL):>14}')
+    print(f'  {"último recebimento":<30}{"dia 300":>14}{"dia 150":>14}')
+    print(f'  {"valor presente":<30}{br2(vp(C1_FLUXO)):>14}{br2(vp(FLUXO)):>14}')
+    print(f'\n  ⚠ O cenário 1 custa mais ao cliente (R$ {br2(C1_CLIENTE-TOTAL)} a mais) e ainda')
+    print(f'    entrega R$ {br2(vp(FLUXO)-vp(C1_FLUXO))} a MENOS de valor presente para a casa.')
+    print('    O cartão parcela em 10 meses e cobra 12% por isso; o boleto fecha')
+    print('    em 5 meses e não cobra nada. Os dois servem — mas não pelo mesmo motivo:')
+    print('    o cenário 1 é para quem precisa de parcela baixa, o 2 é o melhor negócio.')
+
+    print('\n  ⭐ O cenário 2 é o MELHOR em valor presente de todos — o')
     print('     desconto de 3 a 7% das outras opções custa mais à casa do que')
     print('     os 150 dias de espera custam a 1,2% ao mês.')
