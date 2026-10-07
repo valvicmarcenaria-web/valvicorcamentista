@@ -95,7 +95,8 @@ PROIB = [
      r'painéis|paineis|painel|fechamentos?|suportes?)\b', 'contagem'),
     (r'\b\d+\s*×\s*\d+',                      'cota cruzada'),
 ]
-EXCECAO = re.compile(r'\b(10|15|18|40|50)\s*mm\b|\b2,73\s*m\b')
+EXCECAO = re.compile(r'\b(10|15|18|30|40|50)\s*mm\b|\b2,73\s*m\b'
+                     r'|\b30\s*×\s*20\b')
 #  15/18 mm liberado por Jonathan em 30/09 (separa as duas linhas)
 #  2,73 m  liberado por Jonathan em 01/10 (altura do pano ripado do hall)
 #  50 mm   liberado por Jonathan em 07/10 — largura da régua do ripado.
@@ -104,6 +105,10 @@ EXCECAO = re.compile(r'\b(10|15|18|40|50)\s*mm\b|\b2,73\s*m\b')
 #      que está comprando, do mesmo jeito que não saberia sem a espessura.
 #  40 mm   liberado por Jonathan em 07/10 — faixa de MDF da divisória.
 #  10 mm   liberado por Jonathan em 07/10 — vidro temperado da divisória.
+#  30 mm   liberado por Jonathan em 07/10 — painel da cama do Jairo.
+#  30 × 20 liberado por Jonathan em 07/10 — PERFIL de metalon. Não é
+#    cota: é o nome comercial do tubo, como 'MDF 15'. A cota cruzada
+#    proibida continua sendo a da PEÇA (uma porta de 45 × 70).
 #    ⭐ ESPESSURA DE MATERIAL é especificação. ALTURA é metragem e fica
 #      de fora: os 300 mm de cada faixa NÃO entram na proposta, que diz
 #      apenas 'as duas em alturas iguais'.

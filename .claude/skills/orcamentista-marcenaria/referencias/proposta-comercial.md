@@ -455,6 +455,8 @@ Uma régua só serve se estiver presa em algo que não se mexe. Aqui, a folha.
 | `50 mm` | 07/10 | largura da régua do ripado (pórtico) |
 | `40 mm` | 07/10 | espessura da faixa de MDF da divisória (United) |
 | `10 mm` | 07/10 | espessura do vidro temperado da divisória (United) |
+| `30 mm` | 07/10 | espessura do painel da cama (Jairo) |
+| `30 × 20` | 07/10 | **perfil** de metalon — nome comercial do tubo, não cota |
 
 ⛔ **ESPESSURA é especificação; ALTURA é metragem.** Os 300 mm de cada faixa
 da divisória da United **não entraram** na proposta — ela diz apenas *"as
