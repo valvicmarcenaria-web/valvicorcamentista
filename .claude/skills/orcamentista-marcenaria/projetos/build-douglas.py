@@ -22,7 +22,7 @@ br  = lambda v: f'{v:,.0f}'.replace(',', '.')
 br2 = lambda v: f'{v:,.2f}'.replace(',', 'X').replace('.', ',').replace('X', '.')
 CLIENTE, DATA = 'Douglas', '7 de outubro de 2026'
 PRAZO, VALID  = '60 dias de produção', '5 dias úteis'
-NP = 3
+NP = 4   # ⭐ um cenário por página [Jonathan 07/10]
 
 CSS = (open(P/'css-proposta.css', encoding='utf-8').read() + """
 /* ── proposta de fechamento · Douglas ─────────────────────────────────── */
@@ -58,6 +58,29 @@ table.invD tr.tot td.c,table.invD tr.tot td.i{font-family:inherit;font-size:9.6p
 .cenD .sel{margin-top:auto;padding-top:4mm;font-size:8.2pt;color:var(--soft);
   line-height:1.5;}
 .cenD .sel b{color:var(--ink);}
+
+.heroD{display:flex;align-items:center;gap:7mm;margin-top:6mm;padding:7mm;
+  border:1.5px solid var(--line);border-radius:6px;flex:none;}
+.heroD.g{border-color:var(--gold);background:rgba(201,169,106,.07);}
+.heroD > div{flex:1;}
+.heroD .x{flex:none;font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:21pt;color:var(--gold);font-weight:700;}
+.heroD small{display:block;font-size:7.4pt;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--mut);font-weight:700;}
+.heroD b{display:block;font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:29pt;font-weight:700;line-height:1.05;margin-top:1.6mm;}
+.heroD em{display:block;font-style:normal;font-size:8.4pt;color:var(--soft);
+  margin-top:1.2mm;}
+
+.escD{margin-top:6mm;flex:none;}
+.escD .ttl{font-size:6.9pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--mut);font-weight:700;padding-bottom:2mm;}
+.escD .r{display:flex;justify-content:space-between;align-items:baseline;
+  gap:6mm;padding:2.5mm 0;border-top:1px solid var(--hair);}
+.escD .q{font-size:8.6pt;color:var(--soft);}
+.escD .q b{color:var(--ink);font-weight:600;}
+.escD .v{flex:none;font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:13.5pt;font-weight:700;}
 
 .cndD{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm 6mm;margin-top:6mm;
   padding-top:4mm;border-top:1px solid var(--hair);flex:none;}
@@ -126,44 +149,17 @@ p2 = f"""<div class="page"><div class="pad">
   <div class="notaD" style="margin-top:auto;"><b>Ferragem e acabamento da
   linha Premium</b>, como especificado: dobradiças Hettich, sistema deslizante
   Rometal, corrediças ocultas com fechamento suave, articuladores premium e
-  fita de borda extra fina. <b>Garantia de 10 anos.</b></div>
+  fita de borda extra fina.</div>
+  <div class="notaD"><b>Não inclusos:</b> alvenaria, elétrica e hidráulica,
+  pintura de parede, gesso, revestimentos, pedras e bancadas, eletrodomésticos,
+  luminárias e o mobiliário solto.</div>
   {foot(2)}
 </div></div>"""
 
-# ── 3 · como fechar ───────────────────────────────────────────────────────
-p3 = f"""<div class="page"><div class="pad">
-  <div class="eyebrow">Como fechar</div>
-  <div class="h-sec serif">Duas formas.<br><em>O mesmo valor.</em></div>
-  <div class="rule"></div>
-  <p class="lead">A entrada reserva sua vaga na produção e o restante acompanha
-  a abertura do empreendimento. <b>O investimento é o mesmo nas duas</b> —
-  o que muda é só o ritmo.</p>
-
-  <div class="cenD">
-    <div>
-      <div class="cod">Cenário 1 · cartão</div>
-      <div class="nm">Parcela<br>menor</div>
-      <div class="big"><small>Entrada</small>R$ {br(dg.VAL_ENT)}</div>
-      <div class="mais">e mais<br>
-        <b style="font-size:15pt;">10 parcelas de R$ {br2(dg.C1_PARCELA)}</b><br>
-        no cartão de crédito</div>
-      <div class="sel">Para quem prefere <b>diluir ao máximo</b> o desembolso
-      mensal, em dez parcelas a partir do mês seguinte.</div>
-    </div>
-    <div class="g">
-      <div class="cod">Cenário 2 · boleto · recomendado</div>
-      <div class="nm">Começa<br>em 60 dias</div>
-      <div class="big"><small>Entrada</small>R$ {br(dg.VAL_ENT)}</div>
-      <div class="mais">e mais<br>
-        <b style="font-size:15pt;">4 boletos de R$ {br(dg.VAL_BOL)}</b><br>
-        o primeiro só em 60 dias</div>
-      <div class="sel"><b>Cinco pagamentos iguais</b> e nenhum desembolso nos
-      dois primeiros meses — começa a pesar só quando o empreendimento já
-      estiver de pé.</div>
-    </div>
-  </div>
-
-  <div class="cndD">
+# ── condições, repetidas nas duas páginas de cenário ──────────────────────
+# ⭐ Não é redundância: com um cenário por página, cada página precisa ser uma
+#    oferta completa — o cliente decide olhando para uma folha só.
+CND = f"""<div class="cndD">
     <div><div class="k">Reserva de agenda</div><div class="d">
       A entrada <b>reserva sua vaga na produção</b>. A data de início é
       combinada na assinatura.</div></div>
@@ -177,19 +173,89 @@ p3 = f"""<div class="page"><div class="pad">
       <b>{VALID}</b> a partir desta data.</div></div>
     <div><div class="k">Projeto</div><div class="d">
       Medida conferida <b>no local</b> antes do corte.</div></div>
+  </div>"""
+
+# ── 3 · cenário 1 · cartão ────────────────────────────────────────────────
+p3 = f"""<div class="page"><div class="pad">
+  <div class="eyebrow">Como fechar · opção 1 de 2</div>
+  <div class="h-sec serif">Parcela menor,<br><em>ao longo de dez meses.</em></div>
+  <div class="rule"></div>
+  <p class="lead">Para quem prefere <b>diluir ao máximo</b> o desembolso
+  mensal. A entrada reserva sua vaga na produção e o restante acompanha os
+  dez meses seguintes, no cartão de crédito.</p>
+
+  <div class="heroD">
+    <div><small>Entrada</small><b>R$ {br(dg.VAL_ENT)}</b>
+      <em>na assinatura</em></div>
+    <div class="x">+</div>
+    <div><small>{dg.C1_N} parcelas de</small><b>R$ {br2(dg.C1_PARCELA)}</b>
+      <em>no cartão de crédito</em></div>
   </div>
 
-  <div class="notaD"><b>Não inclusos:</b> alvenaria, elétrica e hidráulica,
-  pintura de parede, gesso, revestimentos, pedras e bancadas, eletrodomésticos,
-  luminárias e o mobiliário solto.</div>
+  <div class="escD">
+    <div class="ttl">Quando cada pagamento acontece</div>
+    <div class="r"><div class="q"><b>Na assinatura</b> · entrada, reserva de
+      agenda</div><div class="v">R$ {br(dg.VAL_ENT)}</div></div>
+    <div class="r"><div class="q"><b>30 dias depois</b> · primeira parcela no
+      cartão</div><div class="v">R$ {br2(dg.C1_PARCELA)}</div></div>
+    <div class="r"><div class="q">Da segunda à nona · mensais, no mesmo
+      dia</div><div class="v">R$ {br2(dg.C1_PARCELA)}</div></div>
+    <div class="r"><div class="q"><b>No décimo mês</b> · última
+      parcela</div><div class="v">R$ {br2(dg.C1_PARCELA)}</div></div>
+  </div>
+
+  <div class="notaD" style="margin-top:6mm;"><b>Valor cheio, sem acréscimo.</b>
+  O parcelamento no cartão não encarece o projeto: o investimento é o mesmo
+  das duas formas — <b>R$ {br(dg.TOTAL)}</b>.</div>
+
+  {CND}
   {foot(3)}
 </div></div>"""
+
+# ── 4 · cenário 2 · boleto · recomendado ──────────────────────────────────
+ESC2 = ''.join(
+    f'<div class="r"><div class="q"><b>Em {d} dias</b> · '
+    f'{["primeiro","segundo","terceiro","quarto"][k]} boleto</div>'
+    f'<div class="v">R$ {br(dg.VAL_BOL)}</div></div>'
+    for k, (d, _) in enumerate(dg.FLUXO[1:]))
+
+p4 = f"""<div class="page"><div class="pad">
+  <div class="eyebrow">Como fechar · opção 2 de 2 · recomendada</div>
+  <div class="h-sec serif">Nada a pagar<br><em>nos dois primeiros meses.</em></div>
+  <div class="rule"></div>
+  <p class="lead">Para quem quer <b>fechar agora e pagar depois</b>. A entrada
+  reserva sua vaga e o primeiro boleto só vence em 60 dias — quando o
+  empreendimento já estiver de pé.</p>
+
+  <div class="heroD g">
+    <div><small>Entrada</small><b>R$ {br(dg.VAL_ENT)}</b>
+      <em>na assinatura</em></div>
+    <div class="x">+</div>
+    <div><small>{dg.N_BOL} boletos de</small><b>R$ {br(dg.VAL_BOL)}</b>
+      <em>o primeiro só em 60 dias</em></div>
+  </div>
+
+  <div class="escD">
+    <div class="ttl">Quando cada pagamento acontece</div>
+    <div class="r"><div class="q"><b>Na assinatura</b> · entrada, reserva de
+      agenda</div><div class="v">R$ {br(dg.VAL_ENT)}</div></div>
+    {ESC2}
+  </div>
+
+  <div class="notaD" style="margin-top:6mm;"><b>Cinco pagamentos iguais, sem
+  juros.</b> O investimento é o mesmo das duas formas — <b>R$ {br(dg.TOTAL)}</b>
+  — e aqui ele se encerra em cinco meses.</div>
+
+  {CND}
+  {foot(4)}
+</div></div>"""
+
 
 HTML = ('<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">'
         '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:'
         'wght@400;500;600;700&family=DM+Sans:wght@300;400;500;700&display=swap" '
         'rel="stylesheet"><style>' + CSS + '</style></head><body>'
-        + p1 + p2 + p3 + '</body></html>')
+        + p1 + p2 + p3 + p4 + '</body></html>')
 
 (P/'proposta-douglas.html').write_text(HTML, encoding='utf-8')
 open('/tmp/in.html', 'w', encoding='utf-8').write(HTML)

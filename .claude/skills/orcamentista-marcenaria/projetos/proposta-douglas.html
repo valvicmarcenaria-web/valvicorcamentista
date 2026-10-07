@@ -151,6 +151,29 @@ table.invD tr.tot td.c,table.invD tr.tot td.i{font-family:inherit;font-size:9.6p
   line-height:1.5;}
 .cenD .sel b{color:var(--ink);}
 
+.heroD{display:flex;align-items:center;gap:7mm;margin-top:6mm;padding:7mm;
+  border:1.5px solid var(--line);border-radius:6px;flex:none;}
+.heroD.g{border-color:var(--gold);background:rgba(201,169,106,.07);}
+.heroD > div{flex:1;}
+.heroD .x{flex:none;font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:21pt;color:var(--gold);font-weight:700;}
+.heroD small{display:block;font-size:7.4pt;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--mut);font-weight:700;}
+.heroD b{display:block;font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:29pt;font-weight:700;line-height:1.05;margin-top:1.6mm;}
+.heroD em{display:block;font-style:normal;font-size:8.4pt;color:var(--soft);
+  margin-top:1.2mm;}
+
+.escD{margin-top:6mm;flex:none;}
+.escD .ttl{font-size:6.9pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--mut);font-weight:700;padding-bottom:2mm;}
+.escD .r{display:flex;justify-content:space-between;align-items:baseline;
+  gap:6mm;padding:2.5mm 0;border-top:1px solid var(--hair);}
+.escD .q{font-size:8.6pt;color:var(--soft);}
+.escD .q b{color:var(--ink);font-weight:600;}
+.escD .v{flex:none;font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:13.5pt;font-weight:700;}
+
 .cndD{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm 6mm;margin-top:6mm;
   padding-top:4mm;border-top:1px solid var(--hair);flex:none;}
 .cndD .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
@@ -188,39 +211,42 @@ table.invD tr.tot td.c,table.invD tr.tot td.i{font-family:inherit;font-size:9.6p
   <div class="notaD" style="margin-top:auto;"><b>Ferragem e acabamento da
   linha Premium</b>, como especificado: dobradiças Hettich, sistema deslizante
   Rometal, corrediças ocultas com fechamento suave, articuladores premium e
-  fita de borda extra fina. <b>Garantia de 10 anos.</b></div>
-  <div class="foot"><span>Valvic Marcenaria</span><span>Douglas · proposta de fechamento</span><span>2 / 3</span></div>
+  fita de borda extra fina.</div>
+  <div class="notaD"><b>Não inclusos:</b> alvenaria, elétrica e hidráulica,
+  pintura de parede, gesso, revestimentos, pedras e bancadas, eletrodomésticos,
+  luminárias e o mobiliário solto.</div>
+  <div class="foot"><span>Valvic Marcenaria</span><span>Douglas · proposta de fechamento</span><span>2 / 4</span></div>
 </div></div><div class="page"><div class="pad">
-  <div class="eyebrow">Como fechar</div>
-  <div class="h-sec serif">Duas formas.<br><em>O mesmo valor.</em></div>
+  <div class="eyebrow">Como fechar · opção 1 de 2</div>
+  <div class="h-sec serif">Parcela menor,<br><em>ao longo de dez meses.</em></div>
   <div class="rule"></div>
-  <p class="lead">A entrada reserva sua vaga na produção e o restante acompanha
-  a abertura do empreendimento. <b>O investimento é o mesmo nas duas</b> —
-  o que muda é só o ritmo.</p>
+  <p class="lead">Para quem prefere <b>diluir ao máximo</b> o desembolso
+  mensal. A entrada reserva sua vaga na produção e o restante acompanha os
+  dez meses seguintes, no cartão de crédito.</p>
 
-  <div class="cenD">
-    <div>
-      <div class="cod">Cenário 1 · cartão</div>
-      <div class="nm">Parcela<br>menor</div>
-      <div class="big"><small>Entrada</small>R$ 13.570</div>
-      <div class="mais">e mais<br>
-        <b style="font-size:15pt;">10 parcelas de R$ 5.428,00</b><br>
-        no cartão de crédito</div>
-      <div class="sel">Para quem prefere <b>diluir ao máximo</b> o desembolso
-      mensal, em dez parcelas a partir do mês seguinte.</div>
-    </div>
-    <div class="g">
-      <div class="cod">Cenário 2 · boleto · recomendado</div>
-      <div class="nm">Começa<br>em 60 dias</div>
-      <div class="big"><small>Entrada</small>R$ 13.570</div>
-      <div class="mais">e mais<br>
-        <b style="font-size:15pt;">4 boletos de R$ 13.570</b><br>
-        o primeiro só em 60 dias</div>
-      <div class="sel"><b>Cinco pagamentos iguais</b> e nenhum desembolso nos
-      dois primeiros meses — começa a pesar só quando o empreendimento já
-      estiver de pé.</div>
-    </div>
+  <div class="heroD">
+    <div><small>Entrada</small><b>R$ 13.570</b>
+      <em>na assinatura</em></div>
+    <div class="x">+</div>
+    <div><small>10 parcelas de</small><b>R$ 5.428,00</b>
+      <em>no cartão de crédito</em></div>
   </div>
+
+  <div class="escD">
+    <div class="ttl">Quando cada pagamento acontece</div>
+    <div class="r"><div class="q"><b>Na assinatura</b> · entrada, reserva de
+      agenda</div><div class="v">R$ 13.570</div></div>
+    <div class="r"><div class="q"><b>30 dias depois</b> · primeira parcela no
+      cartão</div><div class="v">R$ 5.428,00</div></div>
+    <div class="r"><div class="q">Da segunda à nona · mensais, no mesmo
+      dia</div><div class="v">R$ 5.428,00</div></div>
+    <div class="r"><div class="q"><b>No décimo mês</b> · última
+      parcela</div><div class="v">R$ 5.428,00</div></div>
+  </div>
+
+  <div class="notaD" style="margin-top:6mm;"><b>Valor cheio, sem acréscimo.</b>
+  O parcelamento no cartão não encarece o projeto: o investimento é o mesmo
+  das duas formas — <b>R$ 67.850</b>.</div>
 
   <div class="cndD">
     <div><div class="k">Reserva de agenda</div><div class="d">
@@ -237,9 +263,48 @@ table.invD tr.tot td.c,table.invD tr.tot td.i{font-family:inherit;font-size:9.6p
     <div><div class="k">Projeto</div><div class="d">
       Medida conferida <b>no local</b> antes do corte.</div></div>
   </div>
+  <div class="foot"><span>Valvic Marcenaria</span><span>Douglas · proposta de fechamento</span><span>3 / 4</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Como fechar · opção 2 de 2 · recomendada</div>
+  <div class="h-sec serif">Nada a pagar<br><em>nos dois primeiros meses.</em></div>
+  <div class="rule"></div>
+  <p class="lead">Para quem quer <b>fechar agora e pagar depois</b>. A entrada
+  reserva sua vaga e o primeiro boleto só vence em 60 dias — quando o
+  empreendimento já estiver de pé.</p>
 
-  <div class="notaD"><b>Não inclusos:</b> alvenaria, elétrica e hidráulica,
-  pintura de parede, gesso, revestimentos, pedras e bancadas, eletrodomésticos,
-  luminárias e o mobiliário solto.</div>
-  <div class="foot"><span>Valvic Marcenaria</span><span>Douglas · proposta de fechamento</span><span>3 / 3</span></div>
+  <div class="heroD g">
+    <div><small>Entrada</small><b>R$ 13.570</b>
+      <em>na assinatura</em></div>
+    <div class="x">+</div>
+    <div><small>4 boletos de</small><b>R$ 13.570</b>
+      <em>o primeiro só em 60 dias</em></div>
+  </div>
+
+  <div class="escD">
+    <div class="ttl">Quando cada pagamento acontece</div>
+    <div class="r"><div class="q"><b>Na assinatura</b> · entrada, reserva de
+      agenda</div><div class="v">R$ 13.570</div></div>
+    <div class="r"><div class="q"><b>Em 60 dias</b> · primeiro boleto</div><div class="v">R$ 13.570</div></div><div class="r"><div class="q"><b>Em 90 dias</b> · segundo boleto</div><div class="v">R$ 13.570</div></div><div class="r"><div class="q"><b>Em 120 dias</b> · terceiro boleto</div><div class="v">R$ 13.570</div></div><div class="r"><div class="q"><b>Em 150 dias</b> · quarto boleto</div><div class="v">R$ 13.570</div></div>
+  </div>
+
+  <div class="notaD" style="margin-top:6mm;"><b>Cinco pagamentos iguais, sem
+  juros.</b> O investimento é o mesmo das duas formas — <b>R$ 67.850</b>
+  — e aqui ele se encerra em cinco meses.</div>
+
+  <div class="cndD">
+    <div><div class="k">Reserva de agenda</div><div class="d">
+      A entrada <b>reserva sua vaga na produção</b>. A data de início é
+      combinada na assinatura.</div></div>
+    <div><div class="k">Prazo</div><div class="d">
+      <b>60 dias de produção</b>, contados do início da execução.</div></div>
+    <div><div class="k">Garantia</div><div class="d">
+      <b>10 anos</b> sobre estrutura e ferragens.</div></div>
+    <div><div class="k">Execução</div><div class="d">
+      Do corte à instalação, com <b>equipe própria</b> da casa.</div></div>
+    <div><div class="k">Validade</div><div class="d">
+      <b>5 dias úteis</b> a partir desta data.</div></div>
+    <div><div class="k">Projeto</div><div class="d">
+      Medida conferida <b>no local</b> antes do corte.</div></div>
+  </div>
+  <div class="foot"><span>Valvic Marcenaria</span><span>Douglas · proposta de fechamento</span><span>4 / 4</span></div>
 </div></div></body></html>

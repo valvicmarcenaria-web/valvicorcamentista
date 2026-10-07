@@ -131,16 +131,36 @@ Entregue como pedido — valor cheio nos dois, cenário 2 marcado como
 
 ## A proposta
 
-`proposta-douglas.pdf`, **3 páginas** — capa, o investimento, como fechar.
+`proposta-douglas.pdf`, **4 páginas** — capa, o investimento, cenário 1,
+cenário 2.
+
+> *"me entregue as opções em páginas separadas"* — Jonathan, 07/10
+
+⭐ **Cada cenário tem a sua página inteira**, e cada página é uma **oferta
+completa**: título próprio, para quem é, o número grande, o calendário de
+pagamento e as condições gerais repetidas. O cliente decide olhando para uma
+folha só — não é redundância, é o que permite destacar e assinar uma.
+
+O espaço da página inteira pagou por conteúdo que **não cabia no formato
+lado a lado**: o *calendário de pagamento*, que diz quando cada parcela
+acontece. Num documento de fechamento isso vale mais que a comparação.
+
+⛔ O bloco **"não inclusos"** morava na antiga página 3 e saiu junto na
+reescrita — a auditoria compara HTML → PDF e **não pega o que se apaga da
+fonte**. Voltou para a página 2, junto do escopo, que é onde responde à
+pergunta que levanta. "Garantia de 10 anos" saiu da nota da página 2 porque
+passou a constar nas condições das duas páginas de cenário.
 
 ⛔ **É fechamento, não apresentação.** Saíram os cases, a linha do tempo, o
 "por que a Valvic" e a página de configuração técnica: o cliente já viu tudo
 isso na v1. O que sobrou é o que fecha — o que é, quanto é, e como pagar.
 
-No cenário 1, **a parcela é o número grande** e o total não aparece, como
-pedido.
+No cenário 1, **a parcela é o número grande** e o total não aparece no bloco
+de destaque, como pedido — ele só reaparece na nota que garante que as duas
+formas custam o mesmo.
 
-Três passes de auditoria limpos.
+Três passes de auditoria limpos nas quatro páginas: folga 398 / 45,0 / 165,0
+/ 128,2 pt.
 
 ---
 
