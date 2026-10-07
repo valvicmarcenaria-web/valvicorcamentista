@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Posição · 01/08 a 09/10 — Valvic Marcenaria</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  :root{ --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80; --gold-dk:#a9863f;
+         --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8; --line2:#dfdacd;
+         --green:#2f7d4f; --amber:#c47d0e; --red:#b0413f; --blue:#2f5d8c;
+         --okbg:#eff5f1; --redbg:#fcf2f1; --ambbg:#fdf8ee; --goldbg:#f8f1de; --bluebg:#f0f4f9; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3;
+        font-size:10.5px; line-height:1.45; -webkit-font-smoothing:antialiased; }
+  .sheet{ position:relative; width:210mm; height:297mm; background:var(--cream); margin:16px auto;
+          box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column;
+          page-break-after:always; }
+  .sheet:last-child{ page-break-after:auto; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } }
+  svg text{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; }
+
+  .ph{ background:var(--navy); color:#fff; padding:6.5mm 12mm 5.5mm; position:relative; }
+  .ph::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:2.5px;
+              background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 42%,transparent 100%); }
+  .ph .top{ display:flex; align-items:center; gap:11px; }
+  .ph .mono{ width:32px; height:32px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:4px;
+             display:flex; align-items:center; justify-content:center;
+             font-family:'Cormorant Garamond',serif; font-weight:700; font-size:16px; color:var(--gold); }
+  .ph .co{ font-size:9.6px; font-weight:700; letter-spacing:2.4px; text-transform:uppercase; }
+  .ph .sub{ font-size:8px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:700; margin-top:5px; line-height:1.05; }
+  .ph .kx{ font-size:7.8px; letter-spacing:2.6px; text-transform:uppercase; color:var(--gold); margin-top:3px; }
+  .ph .per{ position:absolute; right:12mm; top:7mm; text-align:right; }
+  .ph .per .lb{ font-size:7.2px; letter-spacing:1.8px; text-transform:uppercase; color:rgba(255,255,255,.5); }
+  .ph .per .dt{ font-size:13px; font-weight:700; color:var(--gold-soft); margin-top:3px; letter-spacing:.5px; }
+
+  .body{ flex:1; padding:6mm 12mm 0; display:flex; flex-direction:column; min-height:0; }
+
+  .ic{ width:14px; height:14px; flex-shrink:0; fill:none; stroke:currentColor;
+       stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+  .ic.g{ width:16px; height:16px; }
+
+  .sec{ display:flex; align-items:center; gap:7px; margin:11px 0 6px; color:var(--gold-dk); }
+  .sec:first-child{ margin-top:0; }
+  .sec .tx{ font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); }
+  .sec .tx small{ color:var(--muted); font-weight:500; letter-spacing:.3px; text-transform:none; }
+  .sec .ln{ flex:1; height:1px; background:var(--line2); }
+
+  /* ── faixa de indicadores ── */
+  .kpis{ display:grid; grid-template-columns:repeat(3,1fr); gap:9px; }
+  .kpi{ border-radius:7px; padding:10px 13px; border:1px solid var(--line); background:#fff; }
+  .kpi .kl{ display:flex; align-items:center; gap:5px; font-size:7.3px; font-weight:700;
+            letter-spacing:1.3px; text-transform:uppercase; color:var(--muted); }
+  .kpi .kv{ font-size:23px; font-weight:700; letter-spacing:-.5px; margin-top:4px; color:var(--navy); }
+  .kpi .kd{ font-size:8.4px; color:var(--muted); margin-top:1px; }
+  .kpi.red{ background:var(--redbg); border-color:#efd4d2; } .kpi.red .kv{ color:var(--red); } .kpi.red .kl{ color:var(--red); }
+  .kpi.grn{ background:var(--okbg); border-color:#cfe0d5; } .kpi.grn .kv{ color:var(--green); } .kpi.grn .kl{ color:var(--green); }
+  .kpi.gld{ background:var(--goldbg); border-color:#e4d4ab; } .kpi.gld .kv{ color:var(--gold-dk); } .kpi.gld .kl{ color:var(--gold-dk); }
+
+  table{ width:100%; border-collapse:collapse; table-layout:fixed; }
+  thead th{ background:var(--navy2); color:#fff; font-size:7.3px; font-weight:700; letter-spacing:.4px;
+            text-transform:uppercase; padding:5px 8px; text-align:left; border:1px solid var(--navy); }
+  thead th.c{ text-align:center; } thead th.r{ text-align:right; }
+  tbody td{ border:1px solid var(--line); padding:5px 8px; font-size:9.8px; vertical-align:middle; }
+  tbody td.c{ text-align:center; } tbody td.r{ text-align:right; font-variant-numeric:tabular-nums; }
+  tbody tr:nth-child(even) td{ background:#f7f5ef; }
+  tbody td b{ color:var(--navy); }
+  tr.tot td{ background:var(--navy) !important; color:#fff; font-weight:700; border-color:var(--navy); }
+  tr.tot td b{ color:var(--gold-soft); }
+  .pz{ display:inline-block; font-size:8.2px; font-weight:700; letter-spacing:.4px; padding:1.5px 7px;
+       border-radius:9px; }
+  .pz.ok{ background:#e3eee8; color:var(--green); }
+  .pz.aw{ background:#f8ecd3; color:var(--gold-dk); }
+  .pz.na{ background:#eceff2; color:var(--muted); }
+
+  .box{ border-radius:6px; padding:9px 12px; font-size:9.5px; line-height:1.55; }
+  .box .bh{ display:flex; align-items:center; gap:6px; font-size:7.3px; font-weight:700;
+            letter-spacing:1.3px; text-transform:uppercase; margin-bottom:4px; }
+  .box.ok{ background:var(--okbg); border:1px solid #cfe0d5; } .box.ok .bh{ color:var(--green); }
+  .box.no{ background:var(--redbg); border:1px solid #efd4d2; } .box.no .bh{ color:var(--red); }
+  .box.am{ background:var(--ambbg); border:1px solid #ecdcb6; } .box.am .bh{ color:var(--amber); }
+  .box.bl{ background:var(--bluebg); border:1px solid #d3dcea; } .box.bl .bh{ color:var(--blue); }
+  .two{ display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+  .mt{ margin-top:8px; }
+
+  .rf{ margin-top:auto; padding:3mm 12mm 3.5mm; border-top:1px solid var(--line);
+       display:flex; justify-content:space-between; align-items:center;
+       font-size:7.4px; color:var(--muted); letter-spacing:.3px; }
+  .rf b{ color:var(--navy); letter-spacing:1.3px; text-transform:uppercase; }
+</style>
+</head>
+<body>
+<section class="sheet">
+  <div class="ph">
+    <div class="top">
+      <div class="mono">V</div>
+      <div>
+        <div class="co">Valvic Marcenaria</div>
+        <div class="sub">Vargas Decor Ltda · Belo Horizonte / MG</div>
+      </div>
+    </div>
+    <div class="tt">Posição Financeira</div>
+    <div class="kx">Aportes · contas atrasadas · recebimentos a entrar</div>
+    <div class="per"><div class="lb">Período</div><div class="dt">01/08 a 09/10</div></div>
+  </div>
+
+  <div class="body">
+    <div class="kpis">
+      <div class="kpi gld">
+        <div class="kl"><svg class="ic" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>Aporte líquido</div>
+        <div class="kv">R$ 258,1 mil</div>
+        <div class="kd">300,1 mil aportados − 42 mil abatidos</div>
+      </div>
+      <div class="kpi red">
+        <div class="kl"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Boletos atrasados</div>
+        <div class="kv">R$ 75 mil</div>
+        <div class="kd">posição em 09/10</div>
+      </div>
+      <div class="kpi grn">
+        <div class="kl"><svg class="ic" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7"/><path d="M15 8h5v5"/></svg>A receber</div>
+        <div class="kv">R$ 336 mil</div>
+        <div class="kd">105 mil entregue + 231 mil de outubro</div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <svg class="ic g" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.8"/><path d="M6 10.5v3M18 10.5v3"/></svg>
+      <div class="tx">Aportes realizados</div><div class="ln"></div>
+    </div>
+    <table>
+      <thead><tr>
+        <th style="width:46%">Movimento</th><th style="width:27%">Referência</th><th class="r">Valor</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><b>Aporte inicial</b></td><td>no período</td><td class="r">240.000</td></tr>
+        <tr><td><b>Aporte complementar</b></td><td>semana passada</td><td class="r">60.100</td></tr>
+        <tr><td><b>(−) Projetos Leonardo e Luiz</b></td><td>abatimento</td><td class="r">− 42.000</td></tr>
+        <tr class="tot"><td colspan="2"><b>APORTE LÍQUIDO</b></td><td class="r"><b>258.100</b></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec">
+      <svg class="ic g" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+      <div class="tx">Entregue, ainda não recebido <small>— R$ 105 mil</small></div><div class="ln"></div>
+    </div>
+    <table>
+      <thead><tr>
+        <th style="width:38%">Cliente</th><th style="width:35%">Previsão de recebimento</th><th class="r">Valor</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><b>Augusto</b></td><td><span class="pz ok">até sexta · 09/10</span></td><td class="r">27.000</td></tr>
+        <tr><td><b>Maria</b></td><td><span class="pz aw">até sexta · 16/10</span></td><td class="r">48.000</td></tr>
+        <tr><td><b>Cristiane</b></td><td><span class="pz na">a definir</span></td><td class="r">30.000</td></tr>
+        <tr class="tot"><td colspan="2"><b>SUBTOTAL</b></td><td class="r"><b>105.000</b></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec">
+      <svg class="ic g" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+      <div class="tx">Previsão de entrega e receita — outubro <small>— R$ 231 mil</small></div><div class="ln"></div>
+    </div>
+    <table>
+      <thead><tr>
+        <th style="width:38%">Cliente</th><th style="width:35%">Previsão de recebimento</th><th class="r">Valor</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><b>Ana Carolina</b></td><td><span class="pz na">a definir</span></td><td class="r">100.000</td></tr>
+        <tr><td><b>Jairo</b></td><td><span class="pz ok">até sexta · 09/10</span></td><td class="r">35.000</td></tr>
+        <tr><td><b>Andrea</b></td><td><span class="pz na">a definir</span></td><td class="r">32.000</td></tr>
+        <tr><td><b>Leonardo</b></td><td><span class="pz na">a definir</span></td><td class="r">30.000</td></tr>
+        <tr><td><b>Cristiane</b> <span style="color:var(--muted);font-size:8.4px">· segundo projeto</span></td><td><span class="pz na">a definir</span></td><td class="r">20.000</td></tr>
+        <tr><td><b>Richard</b></td><td><span class="pz na">a definir</span></td><td class="r">7.000</td></tr>
+        <tr><td><b>Flávia</b></td><td><span class="pz na">a definir</span></td><td class="r">7.000</td></tr>
+        <tr class="tot"><td colspan="2"><b>SUBTOTAL</b></td><td class="r"><b>231.000</b></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec">
+      <svg class="ic g" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
+      <div class="tx">Quando entra</div><div class="ln"></div>
+    </div>
+    <svg viewBox="0 0 700 92" style="width:100%;display:block">
+      <line x1="40" y1="30" x2="660" y2="30" stroke="#dfdacd" stroke-width="2"/>
+      <circle cx="120" cy="30" r="6" fill="#2f7d4f"/>
+      <circle cx="350" cy="30" r="6" fill="#C2A05A"/>
+      <circle cx="590" cy="30" r="6" fill="#9aa4b0"/>
+      <text x="120" y="17" text-anchor="middle" font-size="9" font-weight="700" fill="#2f7d4f">sexta 09/10</text>
+      <text x="120" y="50" text-anchor="middle" font-size="15" font-weight="700" fill="#0E2038">R$ 62 mil</text>
+      <text x="120" y="65" text-anchor="middle" font-size="8.6" fill="#6c7785">Augusto + Jairo</text>
+      <text x="120" y="79" text-anchor="middle" font-size="8.6" fill="#6c7785">com data confirmada</text>
+      <text x="350" y="17" text-anchor="middle" font-size="9" font-weight="700" fill="#a9863f">sexta 16/10</text>
+      <text x="350" y="50" text-anchor="middle" font-size="15" font-weight="700" fill="#0E2038">+ R$ 48 mil</text>
+      <text x="350" y="65" text-anchor="middle" font-size="8.6" fill="#6c7785">Maria</text>
+      <text x="350" y="79" text-anchor="middle" font-size="8.6" fill="#6c7785">acumulado de R$ 110 mil</text>
+      <text x="590" y="17" text-anchor="middle" font-size="9" font-weight="700" fill="#6c7785">sem data</text>
+      <text x="590" y="50" text-anchor="middle" font-size="15" font-weight="700" fill="#6c7785">R$ 226 mil</text>
+      <text x="590" y="65" text-anchor="middle" font-size="8.6" fill="#6c7785">8 projetos</text>
+      <text x="590" y="79" text-anchor="middle" font-size="8.6" fill="#6c7785">67% do total a receber</text>
+    </svg>
+
+    <div class="two mt">
+      <div class="box ok">
+        <div class="bh"><svg class="ic" viewBox="0 0 24 24" style="width:13px;height:13px"><path d="M20 6 9 17l-5-5"/></svg>A carteira cobre o atraso</div>
+        Os <b>R$ 336 mil a receber</b> são <b>4,5 vezes</b> os R$ 75 mil de boletos atrasados. Somando
+        o aporte líquido, a posição total é de <b>R$ 594,1 mil</b>.
+      </div>
+      <div class="box am">
+        <div class="bh"><svg class="ic" viewBox="0 0 24 24" style="width:13px;height:13px"><path d="M12 9v4.5M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>O gargalo é a data, não o valor</div>
+        Até 09/10 entram <b>R$ 62 mil</b> — ainda <b>R$ 13 mil abaixo</b> do atraso. A posição só vira
+        com a Maria, em 16/10. E <b>R$ 226 mil não têm data definida</b>.
+      </div>
+    </div>
+  </div>
+
+  <div class="rf">
+    <div><b>Posição financeira · 01/08 a 09/10</b> — Valvic Marcenaria · Vargas Decor Ltda</div>
+    <div>Valores em reais</div>
+  </div>
+</section>
+</body>
+</html>
