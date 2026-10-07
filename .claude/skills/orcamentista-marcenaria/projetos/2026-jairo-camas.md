@@ -95,6 +95,33 @@ que o cliente já recebeu.
 
 ---
 
+## 07/10/2026 — sai a entrega junto, entra a entrega em 2026
+
+> *"mude apenas a questão da entrega junto. isso não vai acontecer. mas
+> assegure a entrega ainda esse ano considerando que estamos fazendo o
+> fechamento da agenda"*
+
+A abertura prometia *"manter tudo numa única data de instalação"* — e não
+vai ser assim. Trocada por: *"estamos fechando a agenda de produção do ano
+— aceita dentro da validade, a entrega acontece ainda em 2026"*. A mesma
+garantia entrou na célula de prazo, que é onde ela vale.
+
+### ⭐ A promessa se sustenta — conferida antes de escrever
+
+| | |
+|---|---|
+| hoje | 07/10/2026 |
+| fim da validade (7 dias úteis) | **16/10/2026** |
+| aceite hoje + 60 corridos | 06/12/2026 |
+| **aceite no último dia da validade + 60** | **15/12/2026** |
+| último aceite possível para entregar em 2026 | 01/11/2026 |
+
+Mesmo aceitando no **último dia da validade**, sobram **16 dias** até o fim
+do ano. Por isso a frase é condicionada à validade e não ao aceite em
+aberto: depois de **1º de novembro** ela deixaria de ser verdadeira.
+
+---
+
 ## Em aberto
 
 1. ★ **Qual cama vai em qual quarto?** São três camas para dois quartos no

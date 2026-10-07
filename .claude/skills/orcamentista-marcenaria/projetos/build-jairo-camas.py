@@ -132,7 +132,8 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
   <div class="leadJ">Jairo, <b>a marcenaria do apartamento já está em
   produção</b> — e as camas entram no mesmo caderno, com o mesmo Carvalho
   Hanover que atravessa a cristaleira, a cabeceira e o painel da suíte.
-  Fechar agora é manter tudo numa <b>única data de instalação</b>.</div>
+  Estamos <b>fechando a agenda de produção do ano</b> — aceita dentro da
+  validade, a entrega acontece <b>ainda em 2026</b>.</div>
 
   <div class="duoJ">
     <div class="fig">
@@ -185,7 +186,8 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
 
   <div class="cndJ">
     <div><div class="k">Prazo</div><div class="d">
-      <b>{jc.PRAZO}</b>, contados do aceite.</div></div>
+      <b>{jc.PRAZO}</b>, contados do aceite — com <b>entrega ainda em
+      2026</b> dentro da validade desta proposta.</div></div>
     <div><div class="k">Garantia</div><div class="d">
       <b>10 anos</b> sobre estrutura e ferragens.</div></div>
     <div><div class="k">Execução</div><div class="d">
