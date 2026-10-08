@@ -18,7 +18,7 @@ P = pathlib.Path(__file__).resolve().parent
 spec = importlib.util.spec_from_file_location('al', P/'corte-alice.py')
 al = importlib.util.module_from_spec(spec); sys.modules['al'] = al
 with contextlib.redirect_stdout(io.StringIO()): spec.loader.exec_module(al)
-MEL = al.V[2]                      # ⭐ a versão em MDF melamínico
+COR, BRANCO = al.COR, al.BRANCO    # ⭐ os dois cenários de interno
 
 br = lambda v: f'{v:,.0f}'.replace(',', '.')
 CLIENTE, DATA = 'Alice', '8 de outubro de 2026'
@@ -92,30 +92,40 @@ CSS = (open(P/'css-proposta.css', encoding='utf-8').read() + """
 .tecAL .d{color:var(--soft);font-size:8.3pt;margin-top:1mm;line-height:1.5;}
 .tecAL .d b{color:var(--ink);}
 
-table.invAL{width:100%;border-collapse:collapse;margin-top:4mm;font-size:9pt;}
+table.invAL{width:100%;border-collapse:collapse;margin-top:3mm;font-size:9pt;}
 table.invAL th{font-size:6.9pt;letter-spacing:.17em;text-transform:uppercase;
   color:var(--mut);font-weight:700;padding:0 0 2.2mm;text-align:left;}
 table.invAL th.r,table.invAL td.r{text-align:right;}
-table.invAL td{padding:1.8mm 0;border-top:1px solid var(--hair);
+table.invAL td{padding:1.35mm 0;border-top:1px solid var(--hair);
   vertical-align:top;}
 table.invAL td.a{font-size:6.9pt;letter-spacing:.14em;text-transform:uppercase;
   color:var(--gold);font-weight:700;width:34mm;padding-top:2.4mm;}
 table.invAL td.i{font-weight:600;}
-table.invAL tr.tot td{border-top:1.6px solid var(--ink);padding-top:3mm;
-  font-family:'Cormorant Garamond',Georgia,serif;font-size:22pt;font-weight:700;}
+table.invAL tr.tot td{border-top:1.6px solid var(--ink);padding-top:2.4mm;
+  font-family:'Cormorant Garamond',Georgia,serif;font-size:20pt;font-weight:700;}
 table.invAL tr.tot td.a,table.invAL tr.tot td.i{font-family:inherit;
   font-size:9.6pt;}
 
-.escAL{margin-top:5mm;flex:none;}
+.escAL{margin-top:3.6mm;flex:none;}
 .escAL .ttl{font-size:6.9pt;letter-spacing:.2em;text-transform:uppercase;
   color:var(--mut);font-weight:700;padding-bottom:1.6mm;}
 .escAL .l{display:flex;justify-content:space-between;align-items:baseline;
-  gap:6mm;padding:1.7mm 0;border-top:1px solid var(--hair);font-size:8.5pt;
+  gap:6mm;padding:1.35mm 0;border-top:1px solid var(--hair);font-size:8.5pt;
   color:var(--soft);}
 .escAL .l .x{flex:none;font-size:8pt;letter-spacing:.1em;text-transform:uppercase;
   color:var(--gold);font-weight:700;}
 
-.valAL{margin-top:5mm;padding:4.2mm 5.5mm;background:var(--ink);color:#fff;
+.invAL th.g,.invAL td.g{color:var(--gold);}
+.invAL tr.tot td.g{color:var(--gold);}
+.duasAL{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin-top:4mm;
+  flex:none;}
+.duasAL > div{border:1.2px solid var(--line);border-radius:5px;padding:3.6mm;}
+.duasAL > div.g{border-color:var(--gold);background:rgba(201,169,106,.07);}
+.duasAL .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.duasAL .d{color:var(--soft);font-size:8.3pt;margin-top:1.4mm;line-height:1.5;}
+.duasAL .d b{color:var(--ink);font-weight:600;}
+.valAL{margin-top:4mm;padding:3.6mm 5.5mm;background:var(--ink);color:#fff;
   border-radius:4px;display:flex;align-items:baseline;gap:6mm;flex:none;}
 .valAL .k{flex:none;font-size:7.2pt;letter-spacing:.2em;text-transform:uppercase;
   color:var(--gold-lt);font-weight:700;}
@@ -123,13 +133,13 @@ table.invAL tr.tot td.a,table.invAL tr.tot td.i{font-family:inherit;
   font-size:14.5pt;font-weight:700;}
 .valAL .t{flex:1;font-size:8.1pt;color:#D7D0C3;line-height:1.5;text-align:right;}
 
-.cndAL{display:grid;grid-template-columns:repeat(4,1fr);gap:5mm;margin-top:4.5mm;
-  padding-top:3.2mm;border-top:1px solid var(--hair);flex:none;}
+.cndAL{display:grid;grid-template-columns:repeat(4,1fr);gap:5mm;margin-top:3.6mm;
+  padding-top:2.6mm;border-top:1px solid var(--hair);flex:none;}
 .cndAL .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
   color:var(--gold);font-weight:700;}
 .cndAL .d{color:var(--soft);font-size:8pt;margin-top:1mm;line-height:1.44;}
 .cndAL .d b{color:var(--ink);}
-.notaAL{margin-top:4mm;padding-left:4mm;border-left:2.5px solid var(--gold-lt);
+.notaAL{margin-top:3.2mm;padding-left:4mm;border-left:2.5px solid var(--gold-lt);
   font-size:7.9pt;color:var(--soft);line-height:1.5;flex:none;}
 .notaAL b{color:var(--ink);}
 """)
@@ -148,7 +158,8 @@ linhas = ''
 for k in al.AMBS:
     amb, nome = CURTO[k]
     linhas += (f'<tr><td class="a">{amb}</td><td class="i">{nome}</td>'
-               f'<td class="r">R$ {br(MEL["PV"][k])}</td></tr>')
+               f'<td class="r">R$ {br(COR["PV"][k])}</td>'
+               f'<td class="r g">R$ {br(BRANCO["PV"][k])}</td></tr>')
 
 p1 = f"""<div class="page"><div class="pad">
   <div class="topAL">
@@ -192,17 +203,30 @@ p2 = f"""<div class="page"><div class="pad">
     <div class="m">Proposta comercial<br>{CLIENTE} · {DATA}</div>
   </div>
 
-  <div style="margin-top:6mm;" class="eyebrow">O investimento</div>
-  <div class="h-sec serif" style="font-size:26pt;">Ambiente a ambiente.</div>
+  <div style="margin-top:5mm;" class="eyebrow">O investimento</div>
+  <div class="h-sec serif" style="font-size:23pt;">Ambiente a ambiente.</div>
   <div class="rule"></div>
 
   <table class="invAL">
-    <thead><tr><th></th><th></th><th class="r">Investimento</th></tr></thead>
+    <thead><tr><th></th><th></th>
+      <th class="r">Interno na cor</th>
+      <th class="r g">Interno branco</th></tr></thead>
     <tbody>{linhas}
       <tr class="tot"><td class="a"></td><td class="i">Investimento total</td>
-        <td class="r">R$ {br(MEL['TOT'])}</td></tr>
+        <td class="r">R$ {br(COR['TOT'])}</td>
+        <td class="r g">R$ {br(BRANCO['TOT'])}</td></tr>
     </tbody>
   </table>
+
+  <div class="duasAL">
+    <div><div class="k">Interno na cor</div><div class="d">
+      O <b>mesmo padrão por dentro e por fora</b>: abre a porta e o armário
+      continua. É o acabamento que o caderno desenha.</div></div>
+    <div class="g"><div class="k">Interno branco</div><div class="d">
+      Frentes e peças aparentes na cor, <b>caixaria em Branco TX</b>. Clareia
+      o interior, facilita enxergar o que está guardado — e economiza
+      <b>R$ {br(COR['TOT'] - BRANCO['TOT'])}</b>.</div></div>
+  </div>
 
   <div class="valAL">
     <div class="k">Válida até</div>
@@ -235,7 +259,7 @@ p2 = f"""<div class="page"><div class="pad">
   </div>
 
   <div class="notaAL"><b>A definir com a arquiteta:</b> o padrão amadeirado
-  do melamínico e o acabamento interno do puxador rasgo. <b>Não inclusos:</b>
+  do melamínico, o cenário de interno e o acabamento do puxador rasgo. <b>Não inclusos:</b>
   bancadas e cubas, eletrodomésticos, espelhos além do armário do banheiro,
   iluminação, elétrica e hidráulica, gesso, pintura e revestimentos.</div>
   {foot(2)}
@@ -254,7 +278,10 @@ env = dict(os.environ, NODE_PATH='/opt/node22/lib/node_modules',
 subprocess.run(['node', '/tmp/r.js', str(P/'proposta-alice.pdf')],
                check=True, env=env)
 print(f'proposta-alice.pdf · {NP} páginas')
-print(f'  Investimento   R$ {br(MEL["TOT"])}')
-print(f'  MC             {(MEL["BASE"]-MEL["CD"]/MEL["TOT"])*100:.1f}%')
+print(f'  Interno na cor     R$ {br(COR["TOT"])}'
+      f'   MC {(COR["BASE"]-COR["CD"]/COR["TOT"])*100:.1f}%')
+print(f'  Interno branco     R$ {br(BRANCO["TOT"])}'
+      f'   MC {(BRANCO["BASE"]-BRANCO["CD"]/BRANCO["TOT"])*100:.1f}%')
+print(f'  economia           R$ {br(COR["TOT"]-BRANCO["TOT"])}')
 print(f'  Prazo          {PRAZO}')
 print(f'  Validade       {VALIDADE}')

@@ -178,3 +178,63 @@ Quem assina o desenho é a Alícia — a escolha do padrão é dela.
    local resolve.
 3. ★ **Cor do melamínico** — define chapa de R$ 500/600 (cor) ou R$ 260/330
    (branco TX). Se parte for branco interno, o custo cai.
+
+---
+
+## 08/10/2026 — MC a 40% e os dois cenários de interno
+
+> *"bora jogar a margem para 40% · e propor os dois cenários, interno
+> branco e interno na cor"*
+
+Cada peça passou a declarar se é **aparente** (vai na cor) ou **caixaria
+interna** (sai em Branco TX no cenário econômico). Não é um desconto
+genérico: é a chapa certa em cada peça.
+
+**Aparente** — frentes de porta e de gaveta, laterais de ponta, a base dos
+aéreos (que se vê por baixo), rodapé, rodateto e as prateleiras da sala,
+que aparecem dos dois lados.
+**Interna** — divisórias do miolo, tampo, travessas, fundo, prateleiras
+dentro de armário fechado e as caixas de gaveta.
+
+| Ambiente | interno **na cor** | interno **branco** | economia |
+|---|--:|--:|--:|
+| Cozinha · armário inferior | 6.860 | 5.570 | 1.290 |
+| Cozinha · armário superior | 3.200 | 2.580 | 620 |
+| Área de serviço | 2.960 | 2.370 | 590 |
+| Banheiro · sob bancada | 1.290 | 1.160 | 130 |
+| Banheiro · armário-espelho | 1.750 | 1.650 | 100 |
+| Sala · prateleiras | 1.680 | 1.670 | 10 |
+| Quarto · roupeiro | 11.060 | 8.920 | 2.140 |
+| **TOTAL** | **28.800** | **23.920** | **4.880** |
+| MC | 40,0% | 40,0% | |
+
+⭐ A sala quase não muda (R$ 10): a prateleira é toda aparente, então não
+há caixaria para trocar. O roupeiro é onde mais economiza (R$ 2.140) —
+é o móvel com mais interior fechado.
+
+### ⛔ A sobra de corte não é de um ambiente
+
+Na primeira rodada a **prateleira da sala saía MAIS CARA no cenário mais
+barato** — R$ 1.690 contra R$ 1.680. Artefato de ratear chapa inteira: com
+a cor cabendo em 4 chapas em vez de 12, cada m² de cor passou a carregar
+mais arredondamento, e um item 100% em cor pagava a conta.
+
+Corrigido: **cada peça paga a própria taxa de material** (preço da chapa
+dividido pela área útil dela), e a **sobra de corte rateia pela área
+total** — porque a sobra é do corte, não do ambiente. Agora toda linha é
+igual ou menor no cenário branco, como tem de ser.
+
+### A MC
+
+De 38% para **40%** em todos os ambientes. Na versão em cor isso levou o
+preço de R$ 27.650 para R$ 28.800 — **+R$ 1.150, +4,2%**.
+
+### A proposta
+
+`proposta-alice.pdf`, 2 páginas, com **as duas colunas de preço** e um
+bloco explicando o que separa os cenários. Três passes limpos: folga 27,0
+e 41,3 pt.
+
+⛔ A página 2 estourou na primeira montagem e **perdeu o rodapé inteiro** —
+o bloco dos dois cenários somou altura. O auditor pegou pelas duas vias
+novas: contagem de rodapé no HTML × PDF e margem até a borda.
