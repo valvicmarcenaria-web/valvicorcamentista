@@ -41,7 +41,12 @@ APROV    = 0.80
 
 PRECO_CN  = {15: 400.0, 18: 500.0, 30: 600.0}   # [Jonathan 08/10]
 PRECO_MDF = {15: 500.0, 18: 600.0}              # melamínico COR, base da casa
-VERNIZ_M2 = 350.0                               # [Jonathan 08/10]
+# ⭐ [Jonathan 08/10] "pode cortar o custo do verniz em 50%". O corte vale
+#   sobre o CUSTO — some no preço, não na área: continuamos envernizando as
+#   mesmas faces. É negociação com o verniciador, não redução de escopo.
+VERNIZ_TAB   = 350.0                            # [Jonathan 08/10]
+VERNIZ_CORTE = 0.50                             # [Jonathan 08/10]
+VERNIZ_M2    = VERNIZ_TAB*(1 - VERNIZ_CORTE)    # R$ 175,00 o m²
 FITA_M    = 3.0 + 2.5          # fita cor + filetagem na coladeira (base)
 
 # ── ferragem ★ estimada — o Jonathan só passou chapa e verniz ─────────────
@@ -215,10 +220,12 @@ if __name__ == '__main__':
 
     print(f'\n⛔ A CORREÇÃO: ÁREA DE ACABAMENTO')
     print(f'  área de peça ............................ {br1(area_pc):>7} m²')
-    print(f'  v1 — as duas faces de TUDO .............. {br1(103.6):>7} m²'
-          f'   R$ {br(103.6*VERNIZ_M2)}')
-    print(f'  agora — só as faces que aparecem ........ {br1(acab_m2):>7} m²'
-          f'   R$ {br(V[0]["acab"] and sum(V[0]["acab"].values())/1)}')
+    print(f'  v1 — as duas faces de TUDO, a R$ {br(VERNIZ_TAB)}/m² .. '
+          f'{br1(103.6):>7} m²   R$ {br(103.6*VERNIZ_TAB)}')
+    print(f'  só as faces que aparecem, a R$ {br(VERNIZ_TAB)}/m² ... '
+          f'{br1(acab_m2):>7} m²   R$ {br(acab_m2*VERNIZ_TAB)}')
+    print(f'  ⭐ e com o corte de {VERNIZ_CORTE*100:.0f}%, a R$ {br(VERNIZ_M2)}/m² ...... '
+          f'{br1(acab_m2):>7} m²   R$ {br(sum(V[0]["acab"].values()))}')
     print('  Saíram do acabamento: o verso do fundo (encosta na parede), o')
     print('  interior das caixas de gaveta, o rodapé, o rodateto e as')
     print('  travessas. ⭐ A base da casa já dizia: "Laca/Pintura, m² EM PEÇA".')

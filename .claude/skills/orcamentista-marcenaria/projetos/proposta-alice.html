@@ -1,0 +1,277 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"><style>
+:root{
+  --ink:#1A1714; --soft:#5C564C; --mut:#918A7C; --line:#E3DDD1; --hair:#F0EBE1;
+  --paper:#fff; --cream:#FAF7F1; --sand:#F1EBDF;
+  --gold:#9C7A3C; --gold-lt:#C6A567; --gold-pale:#F5EEDF; --deep:#241F1B;
+}
+@page{size:A4;margin:0;}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;
+     color:var(--ink);font-size:9.6pt;line-height:1.62;}
+.serif{font-family:'Cormorant Garamond','Liberation Serif',Georgia,serif;}
+.page{position:relative;width:210mm;height:297mm;overflow:hidden;
+      background:var(--paper);page-break-after:always;}
+.page:last-of-type{page-break-after:avoid;}
+.pad{padding:17mm 19mm 14mm;height:100%;display:flex;flex-direction:column;}
+h1,h2,h3{margin:0;font-weight:600;}
+p{margin:0;}
+.eyebrow{font-size:7.2pt;letter-spacing:.30em;text-transform:uppercase;
+         color:var(--gold);font-weight:700;}
+.rule{height:1.5px;width:40px;background:var(--gold);margin:7px 0 13px;}
+.h-sec{font-family:'Cormorant Garamond',Georgia,serif;font-size:23pt;
+       line-height:1.12;font-weight:600;letter-spacing:-.01em;}
+.lead{color:var(--soft);font-size:9.9pt;max-width:150mm;}
+.foot{margin-top:auto;padding-top:8mm;border-top:1px solid var(--hair);
+      display:flex;justify-content:space-between;font-size:7.2pt;
+      letter-spacing:.16em;text-transform:uppercase;color:var(--mut);}
+
+/* capa */
+.cover{background:var(--deep);color:#F6F1E7;}
+.cover .pad{padding:24mm 19mm 16mm;}
+.cover .eyebrow{color:var(--gold-lt);}
+.cover .rule{background:var(--gold-lt);width:56px;height:2px;}
+.cv-t{font-family:'Cormorant Garamond',Georgia,serif;font-size:38pt;
+      line-height:1.05;font-weight:600;letter-spacing:-.015em;margin-top:3mm;max-width:150mm;}
+.cv-nome{font-family:'Cormorant Garamond',Georgia,serif;font-size:74pt;
+         line-height:.98;font-weight:600;letter-spacing:-.025em;margin-top:4mm;
+         color:#F7F2E8;}
+.cv-s{font-size:13pt;color:#CFC6B4;margin-top:7mm;font-weight:300;
+      line-height:1.45;}
+.cv-meta{margin-top:13mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6mm;
+         border-top:1px solid rgba(255,255,255,.16);padding-top:7mm;}
+.cv-meta .k{font-size:6.9pt;letter-spacing:.2em;text-transform:uppercase;
+            color:var(--gold-lt);font-weight:700;}
+.cv-meta .v{font-size:10.4pt;color:#EDE6D9;margin-top:2mm;}
+.cv-brand{font-size:8.6pt;letter-spacing:.42em;text-transform:uppercase;
+          color:#E8DFCB;font-weight:700;}
+.cv-num{position:absolute;right:19mm;top:22mm;font-family:'Cormorant Garamond',Georgia,serif;
+        font-size:110pt;line-height:1;color:rgba(198,165,103,.13);font-weight:600;}
+
+/* itens */
+.it{padding:3.1mm 0;border-bottom:1px solid var(--hair);display:flex;gap:6mm;}
+.it:last-child{border-bottom:none;}
+.it-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:14.5pt;color:var(--gold-lt);
+      font-weight:600;min-width:9mm;line-height:1.1;}
+.it-t{font-size:10.4pt;font-weight:600;letter-spacing:-.005em;}
+.it-d{color:var(--soft);font-size:8.4pt;margin-top:1mm;line-height:1.5;}
+
+/* cenários */
+.cen{border:1px solid var(--line);border-radius:2px;padding:4.6mm 5.6mm;
+     margin-bottom:3.4mm;background:var(--cream);}
+.cen.hi{background:var(--gold-pale);border-color:var(--gold-lt);}
+.cen-h{display:flex;align-items:baseline;gap:4mm;}
+.cen-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:20pt;
+       color:var(--gold);font-weight:600;line-height:1;}
+.cen-t{font-size:12.5pt;font-weight:600;}
+.cen-g{margin-left:auto;font-size:7.6pt;letter-spacing:.16em;text-transform:uppercase;
+       color:#fff;background:var(--gold);padding:2.2mm 3.4mm;border-radius:2px;
+       font-weight:700;white-space:nowrap;}
+.cen-x{color:var(--soft);font-size:8.7pt;margin-top:2mm;}
+.cen-l{margin-top:2.8mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm;
+       border-top:1px solid var(--line);padding-top:3.2mm;}
+.cen-l .k{font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;
+          color:var(--mut);font-weight:700;}
+.cen-l .v{font-size:8.7pt;margin-top:1mm;line-height:1.4;}
+
+/* tabela de investimento */
+table{width:100%;border-collapse:collapse;}
+.inv th{font-size:6.9pt;letter-spacing:.16em;text-transform:uppercase;
+        color:var(--mut);font-weight:700;text-align:right;padding:0 0 3mm;
+        border-bottom:1.5px solid var(--gold);}
+.inv th.l{text-align:left;}
+.inv td{padding:2.4mm 0;border-bottom:1px solid var(--hair);text-align:right;
+        font-variant-numeric:tabular-nums;font-size:9.6pt;}
+.inv td.l{text-align:left;font-size:9.5pt;}
+.inv td.hi{background:var(--gold-pale);font-weight:600;
+           padding-right:2.6mm;padding-left:2.6mm;}
+.inv th.hi{background:var(--gold-pale);padding-right:2.6mm;padding-left:2.6mm;
+           color:var(--gold);}
+.inv tr.tot td{border-bottom:none;border-top:1.5px solid var(--ink);
+               padding-top:3mm;font-size:13.5pt;font-weight:600;
+               font-family:'Cormorant Garamond',Georgia,serif;}
+.inv tr.tot td.l{font-family:inherit;font-size:8pt;letter-spacing:.18em;
+                 text-transform:uppercase;font-weight:700;}
+
+.box{background:var(--cream);border-left:2.5px solid var(--gold);
+     padding:4mm 5.2mm;margin-top:4mm;}
+.box .t{font-size:7.4pt;letter-spacing:.18em;text-transform:uppercase;
+        color:var(--gold);font-weight:700;}
+.box p{color:var(--soft);font-size:9pt;margin-top:2mm;}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:9mm;}
+.term{padding:3.4mm 0;border-bottom:1px solid var(--hair);}
+.term:last-child{border-bottom:none;}
+.term .k{font-size:6.9pt;letter-spacing:.18em;text-transform:uppercase;
+         color:var(--gold);font-weight:700;}
+.term .v{font-size:9.5pt;margin-top:1.2mm;}
+.term .s{color:var(--soft);font-size:8.5pt;margin-top:.8mm;}
+.pay td{padding:2.6mm 0;border-bottom:1px solid var(--hair);font-size:9pt;}
+.pay td.d{text-align:right;font-weight:600;color:var(--gold);
+          font-variant-numeric:tabular-nums;}
+.fora .k{font-size:9.3pt;font-weight:600;}
+.fora .v{color:var(--soft);font-size:8.6pt;margin-top:.8mm;}
+.fora li{margin-bottom:3.2mm;list-style:none;}
+.fora ul{margin:0;padding:0;}
+.sig{margin-top:auto;padding-top:9mm;display:grid;grid-template-columns:1fr 1fr;gap:14mm;}
+.sig .ln{border-top:1px solid var(--ink);padding-top:2.4mm;font-size:8.4pt;
+         color:var(--soft);}
+
+
+/* ── Alice · melamínico ───────────────────────────────────────────────── */
+/* ⛔ flex:none em TODO bloco fechado: .pad é coluna flex e um box com
+      overflow:hidden ENCOLHE em silêncio quando a coluna estoura. */
+.topAL{display:flex;justify-content:space-between;align-items:baseline;gap:8mm;
+  padding-bottom:4.2mm;border-bottom:1px solid var(--hair);flex:none;}
+.topAL .b{font-family:'Cormorant Garamond',Georgia,serif;font-size:13.5pt;
+  font-weight:700;letter-spacing:.02em;}
+.topAL .m{font-size:7.2pt;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--mut);font-weight:700;text-align:right;}
+
+.leadAL{color:var(--soft);font-size:9.2pt;line-height:1.56;max-width:160mm;
+  flex:none;}
+.leadAL b{color:var(--ink);font-weight:600;}
+
+.itAL{margin-top:4.2mm;flex:none;}
+.itAL .r{display:flex;gap:6mm;padding:2.6mm 0;border-top:1px solid var(--hair);}
+.itAL .a{flex:none;width:30mm;font-size:6.9pt;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold);font-weight:700;padding-top:.8mm;}
+.itAL .t{flex:1;}
+.itAL .n{font-weight:600;font-size:9.4pt;}
+.itAL .d{color:var(--soft);font-size:8.3pt;line-height:1.5;margin-top:.8mm;}
+.itAL .d b{color:var(--ink);font-weight:600;}
+
+.tecAL{display:grid;grid-template-columns:repeat(2,1fr);gap:4mm 7mm;
+  margin-top:5mm;padding-top:4mm;border-top:1px solid var(--hair);flex:none;}
+.tecAL .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.tecAL .d{color:var(--soft);font-size:8.3pt;margin-top:1mm;line-height:1.5;}
+.tecAL .d b{color:var(--ink);}
+
+table.invAL{width:100%;border-collapse:collapse;margin-top:4mm;font-size:9pt;}
+table.invAL th{font-size:6.9pt;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--mut);font-weight:700;padding:0 0 2.2mm;text-align:left;}
+table.invAL th.r,table.invAL td.r{text-align:right;}
+table.invAL td{padding:1.8mm 0;border-top:1px solid var(--hair);
+  vertical-align:top;}
+table.invAL td.a{font-size:6.9pt;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;width:34mm;padding-top:2.4mm;}
+table.invAL td.i{font-weight:600;}
+table.invAL tr.tot td{border-top:1.6px solid var(--ink);padding-top:3mm;
+  font-family:'Cormorant Garamond',Georgia,serif;font-size:22pt;font-weight:700;}
+table.invAL tr.tot td.a,table.invAL tr.tot td.i{font-family:inherit;
+  font-size:9.6pt;}
+
+.escAL{margin-top:5mm;flex:none;}
+.escAL .ttl{font-size:6.9pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--mut);font-weight:700;padding-bottom:1.6mm;}
+.escAL .l{display:flex;justify-content:space-between;align-items:baseline;
+  gap:6mm;padding:1.7mm 0;border-top:1px solid var(--hair);font-size:8.5pt;
+  color:var(--soft);}
+.escAL .l .x{flex:none;font-size:8pt;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+
+.valAL{margin-top:5mm;padding:4.2mm 5.5mm;background:var(--ink);color:#fff;
+  border-radius:4px;display:flex;align-items:baseline;gap:6mm;flex:none;}
+.valAL .k{flex:none;font-size:7.2pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-lt);font-weight:700;}
+.valAL .d{flex:none;font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:14.5pt;font-weight:700;}
+.valAL .t{flex:1;font-size:8.1pt;color:#D7D0C3;line-height:1.5;text-align:right;}
+
+.cndAL{display:grid;grid-template-columns:repeat(4,1fr);gap:5mm;margin-top:4.5mm;
+  padding-top:3.2mm;border-top:1px solid var(--hair);flex:none;}
+.cndAL .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.cndAL .d{color:var(--soft);font-size:8pt;margin-top:1mm;line-height:1.44;}
+.cndAL .d b{color:var(--ink);}
+.notaAL{margin-top:4mm;padding-left:4mm;border-left:2.5px solid var(--gold-lt);
+  font-size:7.9pt;color:var(--soft);line-height:1.5;flex:none;}
+.notaAL b{color:var(--ink);}
+</style></head><body><div class="page"><div class="pad">
+  <div class="topAL">
+    <div class="b">Valvic Marcenaria</div>
+    <div class="m">Proposta comercial<br>Alice · 8 de outubro de 2026</div>
+  </div>
+
+  <div style="margin-top:6mm;" class="eyebrow">Apartamento</div>
+  <div class="h-sec serif" style="font-size:26pt;">A casa inteira,<br>
+    <em>de uma vez só.</em></div>
+  <div class="rule"></div>
+  <div class="leadAL">Alice, o detalhamento da <b>Alícia Vasconcelos</b> chegou
+  completo — cozinha, área de serviço, banheiro, sala e quarto, com cada
+  gaveta e cada prateleira já desenhadas. Esta proposta executa esse
+  caderno <b>inteiro</b>, em <b>MDF melamínico</b>, sem dividir a obra em
+  etapas: uma medição, uma produção, uma instalação.</div>
+
+  <div class="itAL"><div class="r"><div class="a">Cozinha</div><div class="t"><div class="n">Armário sob a bancada</div><div class="d">Armário sob a bancada com porta de giro, gavetas e a gaveta de temperos. Puxador ponto preto e <b>portas com abertura de 180°</b>.</div></div></div><div class="r"><div class="a"></div><div class="t"><div class="n">Armário suspenso</div><div class="d">Armário suspenso com portas de giro, prateleiras internas e puxador ponto preto. <b>Rodateto recuado</b> no encontro com o forro.</div></div></div><div class="r"><div class="a">Área de serviço</div><div class="t"><div class="n">Armário sob a bancada</div><div class="d">Armário sob a bancada com portas de giro, prateleira interna e puxador ponto preto.</div></div></div><div class="r"><div class="a">Banheiro</div><div class="t"><div class="n">Armário sob a bancada</div><div class="d">Armário sob a bancada com <b>porta basculante</b> e gaveta, puxador ponto preto.</div></div></div><div class="r"><div class="a"></div><div class="t"><div class="n">Armário-espelho</div><div class="d">Armário com <b>espelho colado na porta</b>, prateleiras internas e <b>puxador passante</b> usinado na própria peça.</div></div></div><div class="r"><div class="a">Sala de estar</div><div class="t"><div class="n">Prateleiras suspensas</div><div class="d">Prateleiras com ponta arredondada, em <b>suporte invisível chumbado na parede</b> — sem mão-francesa e sem parafuso à vista.</div></div></div><div class="r"><div class="a">Quarto</div><div class="t"><div class="n">Roupeiro</div><div class="d">Roupeiro do piso ao forro com maleiro, portas de giro em <b>18 mm</b>, prateleiras, gavetas, <b>sapateira deslizante</b>, cabideiro e <b>cabideiro deslizante para calças</b>.</div></div></div></div>
+
+  <div class="tecAL">
+    <div><div class="k">Estrutura</div><div class="d">
+      <b>MDF melamínico de 15 mm</b>, com <b>18 mm nas portas do roupeiro</b>
+      — a espessura que evita empeno em porta alta. Fita de borda em todas
+      as bordas aparentes.</div></div>
+    <div><div class="k">Ferragem</div><div class="d">
+      <b>Amortecedor em todas as ferragens</b> e <b>corrediça telescópica</b>
+      em todas as gavetas, como o projeto pede.</div></div>
+    <div><div class="k">Rodateto recuado</div><div class="d">
+      Em <b>todos</b> os armários que chegam ao forro, no encontro desenhado
+      pela arquiteta — a marcenaria morre no gesso sem fresta.</div></div>
+    <div><div class="k">Medição</div><div class="d">
+      <b>No local, antes do corte.</b> O caderno adverte em todas as
+      pranchas: conferir medidas no local.</div></div>
+  </div>
+  <div class="foot"><span>Valvic Marcenaria</span><span>Alice · marcenaria completa</span><span>1 / 2</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="topAL">
+    <div class="b">Valvic Marcenaria</div>
+    <div class="m">Proposta comercial<br>Alice · 8 de outubro de 2026</div>
+  </div>
+
+  <div style="margin-top:6mm;" class="eyebrow">O investimento</div>
+  <div class="h-sec serif" style="font-size:26pt;">Ambiente a ambiente.</div>
+  <div class="rule"></div>
+
+  <table class="invAL">
+    <thead><tr><th></th><th></th><th class="r">Investimento</th></tr></thead>
+    <tbody><tr><td class="a">Cozinha</td><td class="i">Armário sob a bancada</td><td class="r">R$ 6.580</td></tr><tr><td class="a"></td><td class="i">Armário suspenso</td><td class="r">R$ 3.070</td></tr><tr><td class="a">Área de serviço</td><td class="i">Armário sob a bancada</td><td class="r">R$ 2.840</td></tr><tr><td class="a">Banheiro</td><td class="i">Armário sob a bancada</td><td class="r">R$ 1.240</td></tr><tr><td class="a"></td><td class="i">Armário-espelho</td><td class="r">R$ 1.670</td></tr><tr><td class="a">Sala de estar</td><td class="i">Prateleiras suspensas</td><td class="r">R$ 1.680</td></tr><tr><td class="a">Quarto</td><td class="i">Roupeiro</td><td class="r">R$ 10.570</td></tr>
+      <tr class="tot"><td class="a"></td><td class="i">Investimento total</td>
+        <td class="r">R$ 27.650</td></tr>
+    </tbody>
+  </table>
+
+  <div class="valAL">
+    <div class="k">Válida até</div>
+    <div class="d">Sábado, 10 de outubro</div>
+    <div class="t">Estamos fechando a agenda de produção do ano —<br>
+    e há uma vaga reservada para a sua obra.</div>
+  </div>
+
+  <div class="escAL">
+    <div class="ttl">Condições de pagamento</div>
+    <div class="l"><div>30% de entrada + restante em até 10× no cartão</div>
+      <div class="x">sem desconto</div></div>
+    <div class="l"><div>50% de entrada + restante em até 8× no cartão</div>
+      <div class="x">−3%</div></div>
+    <div class="l"><div>70% de entrada + restante em até 6× no cartão</div>
+      <div class="x">−5%</div></div>
+    <div class="l"><div>70% de entrada + saldo por transferência</div>
+      <div class="x">−7%</div></div>
+  </div>
+
+  <div class="cndAL">
+    <div><div class="k">Prazo</div><div class="d">
+      <b>60 dias corridos</b>, contados do aceite e da medição final.</div></div>
+    <div><div class="k">Garantia</div><div class="d">
+      <b>10 anos</b> sobre estrutura e ferragens.</div></div>
+    <div><div class="k">Execução</div><div class="d">
+      Do corte à instalação, com <b>equipe própria</b> da casa.</div></div>
+    <div><div class="k">Projeto</div><div class="d">
+      Executado sobre o caderno <b>DET_ALICE R00</b>.</div></div>
+  </div>
+
+  <div class="notaAL"><b>A definir com a arquiteta:</b> o padrão amadeirado
+  do melamínico e o acabamento interno do puxador rasgo. <b>Não inclusos:</b>
+  bancadas e cubas, eletrodomésticos, espelhos além do armário do banheiro,
+  iluminação, elétrica e hidráulica, gesso, pintura e revestimentos.</div>
+  <div class="foot"><span>Valvic Marcenaria</span><span>Alice · marcenaria completa</span><span>2 / 2</span></div>
+</div></div></body></html>

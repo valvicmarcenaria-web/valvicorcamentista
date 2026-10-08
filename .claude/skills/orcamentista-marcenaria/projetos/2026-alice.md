@@ -112,3 +112,69 @@ com o verniciador.
    da sala são duas de 1,5 coladas e o custo dobra ali.
 6. ★ **Largura da cozinha** — a planta cota os módulos, não o corpo
    corrido. Adotei 2,60 m no inferior e 1,60 m no superior.
+
+---
+
+## 08/10/2026 — corte de 50% no verniz, e depois melamínico
+
+> *"pode cortar o custo do verniz em 50%"* · *"mudança de planos. Será tudo
+> em melamínico mesmo."*
+
+O corte do verniz vale sobre o **custo** — mesmas faces envernizadas, preço
+negociado com o verniciador. O rate efetivo caiu de R$ 350 para **R$ 175/m²**
+e a versão com verniz foi de R$ 96.480 para **R$ 62.270**.
+
+| versão | antes | com o corte |
+|---|--:|--:|
+| compensado com verniz | 96.480 | **62.270** |
+| compensado natural | 28.070 | 28.070 |
+| MDF melamínico | 27.650 | 27.650 |
+
+⭐ **Decidido: melamínico.** O corte no verniz reduziu a distância, mas não
+a inverteu — o melamínico segue menos da metade, e sem o risco de mancha e
+inchamento que o compensado cru traz em cozinha, área de serviço e banheiro.
+
+---
+
+## A proposta
+
+`proposta-alice.pdf` · build `build-alice.py` · **2 páginas**.
+
+| | |
+|---|--:|
+| **investimento** | **R$ 27.650** |
+| custo direto | R$ 13.060 |
+| **MC** | **38,1%** |
+| chapas | 13 (doze de 15 mm, uma de 18 mm) |
+| prazo | 60 dias corridos |
+| validade | **sábado, 10 de outubro** |
+
+Página 1 lista os sete móveis com o que cada um tem, e a faixa técnica
+(estrutura, ferragem, rodateto recuado, medição). Página 2 traz o preço
+ambiente a ambiente, a validade amarrada ao fechamento da agenda do ano, a
+escada de pagamento padrão da casa e as condições.
+
+Três passes de auditoria limpos: folga 27,0 e 81,1 pt.
+
+### ⛔ Duas coisas que o melamínico muda no projeto, e que estão na folha
+
+1. **Prateleiras da sala.** O caderno pede **30 mm**, que não existe em
+   melamínico — são **duas chapas de 15 coladas** para chegar à mesma
+   espessura. Por isso ali o melamínico quase empata com o compensado.
+2. **Puxador rasgo do quarto.** A usinagem **expõe o miolo do MDF** dentro
+   do rasgo. Precisa de acabamento interno ou de perfil — está na linha
+   "a definir com a arquiteta", junto do padrão amadeirado.
+
+⭐ E a terceira, que não cabe na folha mas vale na conversa: **o projeto
+desenha madeira aparente.** Melamínico amadeirado chega perto, não é igual.
+Quem assina o desenho é a Alícia — a escolha do padrão é dela.
+
+### Em aberto
+
+1. ★ **Ferragem e espelho** seguem estimados (~31% do custo nesta versão,
+   porque sem verniz a ferragem pesa muito mais).
+2. ★ **Largura da cozinha** — a planta cota os módulos, não o corpo
+   corrido. Adotei 2,60 m no inferior e 1,60 m no superior; a medição no
+   local resolve.
+3. ★ **Cor do melamínico** — define chapa de R$ 500/600 (cor) ou R$ 260/330
+   (branco TX). Se parte for branco interno, o custo cai.
