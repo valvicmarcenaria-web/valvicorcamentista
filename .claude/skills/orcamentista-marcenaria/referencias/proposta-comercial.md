@@ -446,6 +446,36 @@ a 5,0 mm da borda — um documento que já tinha passado limpo três vezes.
 ao rodapé, e o rodapé é justamente o que se move quando a página estoura.**
 Uma régua só serve se estiver presa em algo que não se mexe. Aqui, a folha.
 
+---
+
+## ⛔⛔ OS TRÊS PASSES NÃO CONFEREM ARITMÉTICA
+
+Em 09/10 a proposta da Raquel Oliveira saiu com a **tabela sem a linha das
+prateleiras** — as colunas somavam R$ 18.780 e o total dizia R$ 26.120. Os
+três passes responderam **TUDO OK**, porque conteúdo, transbordo e
+metragem estavam todos corretos. O que estava errado era a **conta**.
+
+A trava vai no BUILD, não no auditor — é lá que a lista e o total existem:
+
+```python
+for _v, _i in ((LACA, 2), (MEL, 3)):
+    _soma = sum(it[_i] for it in ITENS)
+    assert abs(_soma - TOT[_v]) < 0.5, (
+        f'⛔ A TABELA NÃO FECHA em {_v}: as linhas somam {_soma:,.0f} e o '
+        f'total diz {TOT[_v]:,.0f}. Falta ou sobra item na lista.')
+```
+
+⭐ **Instalada nos builds, ela achou um segundo erro no mesmo dia**, já
+entregue: a proposta da Raquel Franco tinha R$ 200 de diferença entre as
+linhas e o total. Causa: o total vinha do motor, que usa os preços do
+**cenário laqueado** para todos os itens, enquanto a tabela imprime os
+preços do **melamínico** nas linhas que não mudam — e o rateio da sobra de
+chapa faz cada item variar um pouco entre cenários.
+
+⭐ **O total impresso passa a ser a SOMA DO QUE ESTÁ IMPRESSO.** É a única
+versão que o cliente consegue conferir com uma calculadora na mão — e é
+ele quem vai conferir.
+
 ### Exceções autorizadas à regra de metragem
 
 | medida | quando | por quê |

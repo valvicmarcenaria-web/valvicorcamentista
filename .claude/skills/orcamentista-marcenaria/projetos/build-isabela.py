@@ -52,6 +52,13 @@ ITENS = [
   'suspensa</b>. Puxador <b>Tinyhob</b>, como especificado.'),
 ]
 TOTAL = iz.TOT
+# ⛔⛔ TRAVA DE SOMA: a tabela TEM de fechar com o total. Nenhum dos três
+#   passes de auditoria confere aritmética — um item esquecido na lista
+#   sai no PDF sem ninguém ver.
+_s = sum(it[2] for it in ITENS)
+assert abs(_s - TOTAL) < 0.5, (
+    f'⛔ A TABELA NÃO FECHA: as linhas somam {_s:,.0f} e o total diz '
+    f'{TOTAL:,.0f}. Falta ou sobra item na lista.')
 
 CSS = (open(P/'css-proposta.css', encoding='utf-8').read() + """
 /* ── Raquel · quarto infantil ─────────────────────────────────────────── */

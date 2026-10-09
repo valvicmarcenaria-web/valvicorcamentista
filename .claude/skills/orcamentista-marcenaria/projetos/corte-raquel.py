@@ -68,21 +68,8 @@ QUAD_N    = 5
 # ⛔ 2 cm não é chapa: cada prateleira são duas de 15 coladas e usinadas.
 QUAD_PCS  = QUAD_N*2
 
-def roupeiro(versao):
-    """Devolve (custo_direto, detalhe). versao: 'laca' ou 'melaminico'."""
-    pcs, d = [], {}
-    # as prateleiras de canto são NOVAS nas duas versões
-    pcs.append((15, 'Prateleira de canto · camada', 59, 59, QUAD_PCS))
-    if versao == 'melaminico':
-        # ⭐ só as PORTAS. A caixaria do roupeiro fica onde está.
-        pcs.append((18, 'Porta nova do roupeiro', 268, 62.5, 4))
-        fer = QUAD_N*2*SUPINV      # ⛔ sem dobradiça e sem puxador
-        laca_m2 = 0.0
-    else:
-        # a frente que já existe é lixada, preparada e lacada no lugar
-        fer = QUAD_N*2*SUPINV
-        laca_m2 = FRENTE_M2 + QUAD_N*QUAD_M2*2 \
-                  + QUAD_N*(math.pi*0.59/2 + 2*0.59)*0.02
+def _peca(pcs, fer, laca_m2):
+    """Custo direto de um conjunto de peças, com o rateio de chapa próprio."""
     area = {}
     for esp, _, c, l, q in pcs:
         area[esp] = area.get(esp, 0.0) + c*l*q/1e4
@@ -90,18 +77,38 @@ def roupeiro(versao):
     custo_ch = sum(chapas[e]*PRECO[e] for e in chapas)
     fita = sum(2*(c+l)*q/100*0.75*FITA_M for _, _, c, l, q in pcs)
     laca = laca_m2*LACA_M2
-    proprio = custo_ch + fita + laca
-    cd = (proprio*1.06 + fer)*(1 + M.EMBALAGEM)
-    d = dict(chapas=chapas, custo_ch=custo_ch, fita=fita, laca=laca,
-             laca_m2=laca_m2, fer=fer, area=area, CD=cd)
-    return cd, d
+    cd = ((custo_ch + fita + laca)*1.06 + fer)*(1 + M.EMBALAGEM)
+    return cd, dict(chapas=chapas, custo_ch=custo_ch, fita=fita, laca=laca,
+                    laca_m2=laca_m2, fer=fer, area=area, CD=cd)
 
-CD_R = {v: roupeiro(v) for v in ('laca', 'melaminico')}
+# ⭐ [Jonathan 09/10] "refaça colocando separado apenas o valor das
+#   prateleiras." As duas linhas voltam a ser independentes.
+def prateleiras(versao):
+    """As cinco de canto, em quadrante. Novas nas duas versões."""
+    pcs = [(15, 'Prateleira de canto · camada', 59, 59, QUAD_PCS)]
+    fer = QUAD_N*2*SUPINV          # ⛔ suporte invisível fica: não é
+                                   #   dobradiça nem puxador
+    laca_m2 = 0.0 if versao == 'melaminico' else (
+        # as duas faces da prateleira pronta, mais o canto curvo
+        QUAD_N*QUAD_M2*2 + QUAD_N*(math.pi*0.59/2 + 2*0.59)*0.02)
+    return _peca(pcs, fer, laca_m2)
+
+def roupeiro(versao):
+    """A frente do roupeiro. Laqueada no lugar, ou portas novas."""
+    if versao == 'melaminico':
+        # ⭐ só as PORTAS. A caixaria do roupeiro fica onde está.
+        return _peca([(18, 'Porta nova do roupeiro', 268, 62.5, 4)], 0.0, 0.0)
+    # a frente que já existe é lixada, preparada e laqueada no lugar
+    return _peca([], 0.0, FRENTE_M2)
+
+CD_P = {v: prateleiras(v) for v in ('laca', 'melaminico')}
+CD_R = {v: roupeiro(v)    for v in ('laca', 'melaminico')}
+PV_P = {v: round(CD_P[v][0]/(BASE - MC_ALVO)/10)*10 for v in CD_P}
 PV_R = {v: round(CD_R[v][0]/(BASE - MC_ALVO)/10)*10 for v in CD_R}
 
-TOT   = {v: sum(p for _, p, _ in FECHADOS) + PV_R[v] for v in PV_R}
+TOT   = {v: sum(p for _, p, _ in FECHADOS) + PV_P[v] + PV_R[v] for v in PV_R}
 CD_F  = {n: p*(BASE - MC_ALVO) for n, p, _ in FECHADOS}   # custo implícito
-CD_T  = {v: sum(CD_F.values()) + CD_R[v][0] for v in PV_R}
+CD_T  = {v: sum(CD_F.values()) + CD_P[v][0] + CD_R[v][0] for v in PV_R}
 
 NOME_V = {'laca': 'Laca fosca Sayerlack J029',
           'melaminico': 'Portas novas em MDF melamínico'}
@@ -114,7 +121,9 @@ if __name__ == '__main__':
     print('─'*W)
     for n, p, _ in FECHADOS:
         print(f'{n:<40}{br(p):>13}{br(p):>14}   fechado')
-    print(f'{"Roupeiro e prateleiras de canto":<40}'
+    print(f'{"Prateleiras de canto":<40}'
+          f'{br(PV_P["laca"]):>13}{br(PV_P["melaminico"]):>14}')
+    print(f'{"Roupeiro · a frente":<40}'
           f'{br(PV_R["laca"]):>13}{br(PV_R["melaminico"]):>14}')
     print('─'*W)
     print(f'{"INVESTIMENTO":<40}{br(TOT["laca"]):>13}{br(TOT["melaminico"]):>14}')
@@ -125,11 +134,12 @@ if __name__ == '__main__':
     print(f'\n{"═"*W}')
     print('A LINHA CALCULADA, POR DENTRO')
     print(f'{"═"*W}')
-    print(f'  {"":<28}{"laca":>13}{"melamínico":>14}')
-    for rot, k in (('chapa','custo_ch'), ('fita','fita'), ('laca','laca'),
-                   ('ferragem ★','fer'), ('CUSTO DIRETO','CD')):
-        print(f'  {rot:<28}{br(CD_R["laca"][1][k]):>13}'
-              f'{br(CD_R["melaminico"][1][k]):>14}')
+    for rot_, dd in (('PRATELEIRAS DE CANTO', CD_P), ('ROUPEIRO · A FRENTE', CD_R)):
+        print(f'\n  {rot_:<28}{"laca":>13}{"melamínico":>14}')
+        for rot, k in (('chapa','custo_ch'), ('fita','fita'), ('laca','laca'),
+                       ('ferragem ★','fer'), ('CUSTO DIRETO','CD')):
+            print(f'  {rot:<28}{br(dd["laca"][1][k]):>13}'
+                  f'{br(dd["melaminico"][1][k]):>14}')
     print(f'  {"chapas (un)":<28}'
           f'{sum(CD_R["laca"][1]["chapas"].values()):>13.0f}'
           f'{sum(CD_R["melaminico"][1]["chapas"].values()):>14.0f}')

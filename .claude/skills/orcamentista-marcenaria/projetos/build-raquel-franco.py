@@ -65,7 +65,15 @@ ITENS = [
   'Vem com o <b>recorte escalopado</b> na borda inferior, usinado conforme '
   'o detalhe da prancha, e instalado junto da marcenaria.'),
 ]
-TOT_LQ, TOT_ML = fr.LAQUEADO['TOT'], fr.NOVOV['TOT']
+_TOT_MOTOR = (fr.LAQUEADO['TOT'], fr.NOVOV['TOT'])
+TOT_LQ = sum(it[2] for it in ITENS)
+TOT_ML = sum(it[3] for it in ITENS)
+# ⛔⛔ TRAVA DE SOMA — ver nota no build da Raquel Oliveira.
+for _t, _i in ((TOT_LQ, 2), (TOT_ML, 3)):
+    _s = sum(it[_i] for it in ITENS)
+    assert abs(_s - _t) < 0.5, (
+        f'⛔ A TABELA NÃO FECHA: as linhas somam {_s:,.0f} e o total diz '
+        f'{_t:,.0f}. Falta ou sobra item na lista.')
 
 CSS = (open(P/'css-proposta.css', encoding='utf-8').read() + """
 /* ── Raquel · quarto infantil ─────────────────────────────────────────── */

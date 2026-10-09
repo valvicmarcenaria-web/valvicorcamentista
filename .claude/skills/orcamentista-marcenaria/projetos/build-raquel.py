@@ -54,13 +54,22 @@ ITENS = [
   '<b>MDF Sal Rosa Arauco</b>. E com <b>ajuste de altura</b>: a mesa sobe '
   'junto com quem senta nela, e acompanha a criança por anos em vez de '
   'virar móvel pequeno.'),
- ('Guardar', 'Roupeiro e prateleiras', rq.PV_R[LACA], rq.PV_R[MEL],
+ ('Guardar', 'Prateleiras de canto', rq.PV_P[LACA], rq.PV_P[MEL],
   'As <b>cinco prateleiras de canto</b> em quadrante, com a <b>ponta em '
-  'curva</b> e <b>suporte invisível</b> — nenhuma mão-francesa à vista. '
-  'E a <b>frente do roupeiro renovada</b>, de duas formas possíveis — '
-  'lado a lado <b>na página seguinte</b>.'),
+  'curva</b> e <b>suporte invisível</b> — nenhuma mão-francesa e nenhum '
+  'parafuso à vista. Saem <b>laqueadas ou em melamínico</b>, acompanhando '
+  'o roupeiro.'),
+ ('Guardar', 'Roupeiro · a frente', rq.PV_R[LACA], rq.PV_R[MEL],
+  'A <b>frente do roupeiro</b> renovada, mantendo a caixaria que já está '
+  'no quarto. Duas formas possíveis — lado a lado <b>na página '
+  'seguinte</b>.'),
 ]
 TOT = {v: rq.TOT[v] for v in (LACA, MEL)}
+for _v, _i in ((LACA, 2), (MEL, 3)):
+    _soma = sum(it[_i] for it in ITENS)
+    assert abs(_soma - TOT[_v]) < 0.5, (
+        f'⛔ A TABELA NÃO FECHA em {_v}: as linhas somam {_soma:,.0f} e o '
+        f'total diz {TOT[_v]:,.0f}. Falta ou sobra item na lista.')
 
 CSS = (open(P/'css-proposta.css', encoding='utf-8').read() + """
 /* ── Raquel · quarto infantil ─────────────────────────────────────────── */
@@ -81,17 +90,17 @@ CSS = (open(P/'css-proposta.css', encoding='utf-8').read() + """
   margin-top:4.2mm;flex:none;}
 .parRQ .phRQ{border-radius:5px;overflow:hidden;line-height:0;
   border:1px solid var(--hair);}
-.parRQ .phRQ img{display:block;width:100%;height:49mm;object-fit:cover;
+.parRQ .phRQ img{display:block;width:100%;height:42mm;object-fit:cover;
   object-position:center;}
 .capRQ{font-size:7pt;color:var(--mut);letter-spacing:.04em;margin-top:1.6mm;
   flex:none;}
 .itRQ{margin-top:4mm;flex:none;}
-.itRQ .r{display:flex;gap:6mm;padding:2.5mm 0;border-top:1px solid var(--hair);}
+.itRQ .r{display:flex;gap:6mm;padding:1.9mm 0;border-top:1px solid var(--hair);}
 .itRQ .a{flex:none;width:26mm;font-size:6.9pt;letter-spacing:.14em;
   text-transform:uppercase;color:var(--gold);font-weight:700;padding-top:1mm;}
 .itRQ .t{flex:1;}
 .itRQ .n{font-weight:600;font-size:10pt;}
-.itRQ .d{color:var(--soft);font-size:8.4pt;line-height:1.5;margin-top:1mm;}
+.itRQ .d{color:var(--soft);font-size:8.2pt;line-height:1.45;margin-top:.9mm;}
 .itRQ .d b{color:var(--ink);font-weight:600;}
 
 .tecRQ{display:grid;grid-template-columns:repeat(2,1fr);gap:3.2mm 7mm;
