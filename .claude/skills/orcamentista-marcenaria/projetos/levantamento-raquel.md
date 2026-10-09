@@ -170,3 +170,50 @@ fecha em R$ 5.900**.
 ⛔ **A mesa ganhou ajuste de altura** — mecanismo que não estava no projeto
 nem no preço anterior. Dentro de R$ 1.134 de teto, cabe pouco além dele.
 ★ Confirmar o sistema e o custo.
+
+
+---
+
+## 09/10/2026 — imagens do caderno, "laqueada" e a ferragem fora
+
+> *"use imagens do projeto tbm · uma correção: não é lacada, é laqueada ·
+> pode tirar o custo das dobradiças · deixe especificado que não estão
+> inclusos dobradiças para as portas e nem puxadores"*
+
+### ⛔ As imagens tiveram de ser escolhidas por causa da metragem
+
+Os desenhos de produto — **cama, mesa e prateleira** — trazem as cotas no
+próprio desenho (200, 125, 70, 100, 50, 80, 59). **Metragem não vai para
+proposta, nem desenhada.** A Vista 2 também sai: tem cotas dentro do quadro
+(45, 30, 25, 205, 142, 175).
+
+Sobraram as **Vistas 1 e 4**, cujas cotas ficam fora do quadro. Recortadas
+no interior do ambiente, entram como faixa no topo da página 1, creditadas
+à designer.
+
+⭐ Tentei primeiro o 3D da mesa recortado abaixo da cota, mas sobravam
+pontas de linha de chamada soltas — ficaria desleixado numa proposta
+premium. Duas imagens limpas valem mais que três com uma ruim.
+
+### A ferragem sai do custo e entra como exclusão
+
+Dobradiça de porta e puxador saíram. ⭐ **O suporte invisível da prateleira
+ficou**: não é dobradiça nem puxador, e sem ele a prateleira não sobe.
+
+| | antes | agora |
+|---|--:|--:|
+| Roupeiro e prateleiras · melamínico | 7.690 | **5.890** |
+| **INVESTIMENTO · melamínico** | 16.090 | **14.290** |
+| INVESTIMENTO · laqueada | 26.120 | 26.120 |
+
+A diferença entre os cenários sobe para **R$ 11.830**.
+
+### ⛔ A contradição que a exclusão criou
+
+O card de portas novas prometia *"portas novas em MDF melamínico **com
+dobradiça nova**"* — na mesma página em que a nota passou a dizer que
+dobradiça não está inclusa. Reescrito.
+
+⭐ É a terceira vez na semana: **todo item novo tem de ser lido contra o
+resto do documento.** Na United foi a lista de exclusões que negava o vidro
+vendido; aqui foi o card que prometia a ferragem excluída.

@@ -40,7 +40,10 @@ LACA_M2 = 650.0                         # base da casa, "m² em peça lisa"
 MC_ALVO = 0.40                          # ⭐ [Jonathan 08/10]
 BASE    = M.base(parcelas=0, rt=False, vendedor=False)   # ★ sem RT
 
-DOBR, PUX, SUPINV = 35.0, 25.0, 60.0
+# ⛔ [Jonathan 09/10] dobradiça de porta e puxador SAEM do custo e viram
+#   exclusão escrita na proposta. O suporte invisível da prateleira FICA:
+#   não é dobradiça nem puxador, e sem ele a prateleira não sobe.
+SUPINV = 60.0
 
 # ── itens a PREÇO FECHADO ─────────────────────────────────────────────────
 # Mesma convenção das divisórias da United: entra pelo preço, e o custo é o
@@ -70,7 +73,7 @@ def roupeiro(versao):
     if versao == 'melaminico':
         # ⭐ só as PORTAS. A caixaria do roupeiro fica onde está.
         pcs.append((18, 'Porta nova do roupeiro', 268, 62.5, 4))
-        fer = 20*DOBR + 4*PUX + QUAD_N*2*SUPINV
+        fer = QUAD_N*2*SUPINV      # ⛔ sem dobradiça e sem puxador
         laca_m2 = 0.0
     else:
         # a frente que já existe é lixada, preparada e lacada no lugar
@@ -142,13 +145,13 @@ if __name__ == '__main__':
     _pn = CD_R['melaminico'][1]['custo_ch'] - CD_R['laca'][1]['custo_ch'] \
           + (CD_R['melaminico'][1]['fer'] - CD_R['laca'][1]['fer'])
     print(f'  lacar a frente do roupeiro ({br1(FRENTE_M2)} m² a R$ {br(LACA_M2)}) .. R$ {br(_lf)}')
-    print(f'  fazer as quatro portas novas, com dobradiça ....... R$ {br(_pn)}')
+    print(f'  fazer as quatro portas novas (sem ferragem) ...... R$ {br(_pn)}')
     print(f'  ⭐ A PORTA NOVA CUSTA {_pn/_lf*100:.0f}% DO QUE CUSTA PINTAR A VELHA.')
     print()
     print('  É o mesmo que o Jonathan viu no roupeiro completo: a R$ 650/m²,')
     print('  a laca é cara demais para competir com chapa. E a porta nova')
-    print('  resolve o que a pintura não resolve — dobradiça nova, borda nova,')
-    print('  e dez anos de garantia sobre uma peça que é nossa.')
+    print('  resolve o que a pintura não resolve — borda nova e dez anos')
+    print('  de garantia sobre uma peça que é nossa.')
     print(f'\n  No total: R$ {br(TOT["laca"])} contra R$ {br(TOT["melaminico"])} — '
           f'R$ {br(TOT["laca"]-TOT["melaminico"])} de diferença.')
 

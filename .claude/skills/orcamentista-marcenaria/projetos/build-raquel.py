@@ -13,7 +13,7 @@ Números de `corte-raquel.py`; nada digitado à mão.
    ENTREGÁVEL — é um dos quatro itens cotados —, não contagem de peça.
 ⛔ Classes novas levam sufixo RQ.
 """
-import pathlib, subprocess, importlib.util, sys, io, contextlib, os
+import pathlib, subprocess, importlib.util, sys, io, contextlib, os, base64
 
 P = pathlib.Path(__file__).resolve().parent
 spec = importlib.util.spec_from_file_location('rq', P/'corte-raquel.py')
@@ -27,6 +27,15 @@ with contextlib.redirect_stdout(io.StringIO()): spec.loader.exec_module(rq)
 #   cenários, então só a linha do roupeiro tem duas colunas. Era isso que
 #   impedia o lado a lado antes — a cama aparecia com dois preços.
 LACA, MEL = 'laca', 'melaminico'
+
+def uri(nome):
+    return ('data:image/jpeg;base64,'
+            + base64.b64encode((P/'img'/nome).read_bytes()).decode())
+# ⭐ [Jonathan 09/10] "use imagens do projeto também".
+# ⛔ Só as DUAS vistas sem cota dentro do quadro. A Vista 2 e os desenhos
+#   de produto (cama, mesa, prateleira) trazem as medidas no desenho — e
+#   metragem não vai para proposta, nem desenhada.
+IMG1, IMG4 = uri('raquel-vista1.jpg'), uri('raquel-vista4.jpg')
 
 br = lambda v: f'{v:,.0f}'.replace(',', '.')
 CLIENTE, DATA = 'Raquel Oliveira', '9 de outubro de 2026'
@@ -68,8 +77,16 @@ CSS = (open(P/'css-proposta.css', encoding='utf-8').read() + """
   flex:none;}
 .leadRQ b{color:var(--ink);font-weight:600;}
 
-.itRQ{margin-top:5mm;flex:none;}
-.itRQ .r{display:flex;gap:6mm;padding:3.4mm 0;border-top:1px solid var(--hair);}
+.parRQ{display:grid;grid-template-columns:1.46fr 1.03fr;gap:4mm;
+  margin-top:4.2mm;flex:none;}
+.parRQ .phRQ{border-radius:5px;overflow:hidden;line-height:0;
+  border:1px solid var(--hair);}
+.parRQ .phRQ img{display:block;width:100%;height:53mm;object-fit:cover;
+  object-position:center;}
+.capRQ{font-size:7pt;color:var(--mut);letter-spacing:.04em;margin-top:1.6mm;
+  flex:none;}
+.itRQ{margin-top:4mm;flex:none;}
+.itRQ .r{display:flex;gap:6mm;padding:3mm 0;border-top:1px solid var(--hair);}
 .itRQ .a{flex:none;width:26mm;font-size:6.9pt;letter-spacing:.14em;
   text-transform:uppercase;color:var(--gold);font-weight:700;padding-top:1mm;}
 .itRQ .t{flex:1;}
@@ -162,6 +179,12 @@ p1 = f"""<div class="page"><div class="pad">
   detalhado — e a marcenaria dele é o que fica: a cama, a mesa, as
   prateleiras de canto e a frente do roupeiro.</div>
 
+  <div class="parRQ">
+    <div class="phRQ"><img src="{IMG1}" alt=""></div>
+    <div class="phRQ"><img src="{IMG4}" alt=""></div>
+  </div>
+  <div class="capRQ">As vistas do caderno da {DESIGNER}</div>
+
   <div class="itRQ">{itens}</div>
 
   <div class="tecRQ">
@@ -194,7 +217,7 @@ p2 = f"""<div class="page"><div class="pad">
 
   <table class="invRQ">
     <thead><tr><th></th><th></th>
-      <th class="r">Frente lacada</th>
+      <th class="r">Frente laqueada</th>
       <th class="r g">Portas novas</th></tr></thead>
     <tbody>{linhas}
       <tr class="tot"><td class="a"></td><td class="i">Investimento total</td>
@@ -204,16 +227,16 @@ p2 = f"""<div class="page"><div class="pad">
   </table>
 
   <div class="duasRQ">
-    <div><div class="k">Frente lacada</div><div class="d">
+    <div><div class="k">Frente laqueada</div><div class="d">
       A frente do roupeiro que já está no quarto recebe <b>laca fosca
       Sayerlack J029</b>, aplicada por nós, e as prateleiras saem na mesma
       cor. <b>O móvel é de terceiro:</b> garantimos a aplicação, não a
       estrutura dele.</div></div>
     <div class="g"><div class="k">Portas novas · recomendada</div><div class="d">
-      As portas saem e entram <b>portas novas em MDF melamínico</b> com
-      <b>dobradiça nova</b> — a caixaria continua, porque está boa.
-      Revestimento de fábrica, que não descasca, <b>dez anos de garantia</b>
-      e <b>R$ {br(TOT[LACA]-TOT[MEL])} a menos</b>.</div></div>
+      As portas saem e entram <b>portas novas em MDF melamínico</b> — a
+      caixaria continua, porque está boa. Revestimento de fábrica, que
+      <b>não descasca e não pede manutenção</b>, <b>dez anos de garantia</b>
+      sobre peça nossa e <b>R$ {br(TOT[LACA]-TOT[MEL])} a menos</b>.</div></div>
   </div>
 
   <div class="valRQ">
@@ -247,7 +270,9 @@ p2 = f"""<div class="page"><div class="pad">
       <b>{VALIDADE}</b> a partir desta data.</div></div>
   </div>
 
-  <div class="notaRQ"><b>Não inclusos:</b> papel de parede,
+  <div class="notaRQ"><b>⛔ Ferragem das portas:</b> <b>dobradiças e
+  puxadores não estão inclusos</b> — nem na opção laqueada, nem na de
+  portas novas. <b>Não inclusos também:</b> papel de parede,
   iluminação e pendentes, colchões, roupa de cama, cadeira, mesa lateral,
   dossel, quadros, o bandô e o mobiliário solto.</div>
   {foot(2)}
@@ -266,7 +291,7 @@ env = dict(os.environ, NODE_PATH='/opt/node22/lib/node_modules',
 subprocess.run(['node', '/tmp/r.js', str(P/'proposta-raquel.pdf')],
                check=True, env=env)
 print(f'proposta-raquel.pdf · {NP} páginas  ·  os dois cenários num arquivo')
-print(f'  {"":<28}{"lacada":>10}{"portas novas":>14}')
+print(f'  {"":<28}{"laqueada":>10}{"portas novas":>14}')
 for _, n, pl, pm, _d in ITENS:
     print(f'  {n:<28}{br(pl):>10}{br(pm):>14}')
 print(f'  {"INVESTIMENTO":<28}{br(TOT[LACA]):>10}{br(TOT[MEL]):>14}')
