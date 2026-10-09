@@ -58,6 +58,10 @@ ITENS = [
   '<b>porcelana</b>.'),
  ('Banheiro', 'Armário-torre', G['Banheiro · armário superior'],
   'Em <b>MDF Verde Ultra</b>, do piso ao teto, com <b>puxador passante</b>.'),
+ ('Banheiro', 'Espelho', G['Banheiro · espelho'],
+  '⭐ <b>Fornecido por nós</b> — não é item à parte para comprar depois. '
+  'Vem com o <b>recorte escalopado</b> na borda inferior, usinado conforme '
+  'o detalhe da prancha, e instalado junto da marcenaria.'),
 ]
 TOTAL = fr.NOVOV['TOT']
 
@@ -72,18 +76,18 @@ CSS = (open(P/'css-proposta.css', encoding='utf-8').read() + """
 .topRQ .m{font-size:7.2pt;letter-spacing:.17em;text-transform:uppercase;
   color:var(--mut);font-weight:700;text-align:right;}
 
-.leadRQ{color:var(--soft);font-size:9.2pt;line-height:1.56;max-width:160mm;
+.leadRQ{color:var(--soft);font-size:9pt;line-height:1.5;max-width:160mm;
   flex:none;}
 .leadRQ b{color:var(--ink);font-weight:600;}
 
 .heroRQ{margin-top:4.2mm;border-radius:5px;overflow:hidden;line-height:0;
   border:1px solid var(--hair);flex:none;}
-.heroRQ img{display:block;width:100%;height:42mm;object-fit:cover;
+.heroRQ img{display:block;width:100%;height:38mm;object-fit:cover;
   object-position:center 68%;}
 .capRQ{font-size:7pt;color:var(--mut);letter-spacing:.04em;margin-top:1.6mm;
   flex:none;}
 .itRQ{margin-top:4mm;flex:none;}
-.itRQ .r{display:flex;gap:6mm;padding:2mm 0;border-top:1px solid var(--hair);}
+.itRQ .r{display:flex;gap:6mm;padding:1.6mm 0;border-top:1px solid var(--hair);}
 .itRQ .a{flex:none;width:26mm;font-size:6.9pt;letter-spacing:.14em;
   text-transform:uppercase;color:var(--gold);font-weight:700;padding-top:1mm;}
 .itRQ .t{flex:1;}
@@ -129,6 +133,16 @@ table.invRQ tr.tot td.a,table.invRQ tr.tot td.i{font-family:inherit;
   color:var(--gold);font-weight:700;}
 .duasRQ .d{color:var(--soft);font-size:8.3pt;margin-top:1.4mm;line-height:1.5;}
 .duasRQ .d b{color:var(--ink);font-weight:600;}
+.cmpRQ{margin-top:4.5mm;flex:none;}
+.cmpRQ .l{display:flex;justify-content:space-between;align-items:center;
+  gap:6mm;padding:3mm 4mm;border:1.2px solid var(--line);border-radius:5px;
+  margin-bottom:2.6mm;}
+.cmpRQ .l.g{border-color:var(--gold);background:rgba(201,169,106,.07);}
+.cmpRQ .q{font-size:8.4pt;color:var(--soft);line-height:1.45;}
+.cmpRQ .q b{color:var(--ink);font-weight:600;}
+.cmpRQ .v{flex:none;font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:17pt;font-weight:700;}
+.cmpRQ .l.g .v{color:var(--gold);}
 .porqueRQ{margin-top:4.5mm;border:1.5px solid var(--gold);border-radius:5px;
   background:rgba(201,169,106,.07);padding:4.6mm 5mm;flex:none;}
 .porqueRQ .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
@@ -260,6 +274,19 @@ p3 = f"""<div class="page"><div class="pad">
   <div class="leadRQ">É a única coisa em que nos afastamos do caderno — e
   vale explicar por quê, porque a recomendação <b>não é de preço</b>.</div>
 
+  <div class="cmpRQ">
+    <div class="l"><div class="q">Aproveitando a estrutura e as portas,
+      com preparo de superfície e laca</div>
+      <div class="v">R$ {br(fr.APROV_V['PV']['Roupeiro'])}</div></div>
+    <div class="l g"><div class="q"><b>Roupeiro novo, todo em melamínico</b>
+      — sem laca, sem preparo de madeira antiga, sem vistoria</div>
+      <div class="v">R$ {br(fr.NOVOV['PV']['Roupeiro'])}</div></div>
+  </div>
+  <div class="capRQ">Aproveitar custaria
+  <b>R$ {br(fr.APROV_V['PV']['Roupeiro'] - fr.NOVOV['PV']['Roupeiro'])} a mais.</b>
+  A laca sobre as portas existentes, sozinha, já custa mais que a chapa de
+  um roupeiro inteiro.</div>
+
   <div class="porqueRQ">
     <div class="k">Por que o roupeiro sai novo</div>
     <div class="d">O caderno sugere <b>preservar a estrutura e reaproveitar
@@ -267,7 +294,7 @@ p3 = f"""<div class="page"><div class="pad">
     — e não é por preço: <b>aproveitar sairia mais caro</b> que fazer novo.
     Preparar e lacar portas antigas custa mais que a chapa de um roupeiro
     inteiro, e ainda acrescenta vistoria, desmontagem, transporte e
-    remedição.<br><br>
+    remedição — é o quadro acima.<br><br>
     O que pesa mais, porém, é o <b>risco</b>. Aproveitando, a Valvic passa a
     responder por uma <b>estrutura que não construiu</b> e não consegue
     inspecionar por dentro, pela <b>aderência da laca sobre madeira antiga

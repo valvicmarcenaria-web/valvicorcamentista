@@ -52,6 +52,12 @@ FER_UN = {'dobr':35.0, 'corr':85.0, 'puxador':25.0, 'cabide':60.0,
 TOMADA_CX = 260.0      # ★ caixa de tomadas embutida no tampo
 PORCELANA = 45.0       # ★ puxador de porcelana, por unidade
 CURVA_M   = 420.0      # ★ face curva: pós-formagem / lâmina flexível, por m²
+# ⭐ [Jonathan 09/10] "pode incluir o espelho no orçamento frisando o
+#   fornecimento. custo neste caso de 600,00 o metro quad."
+ESPELHO_M2 = 600.0
+# ★ a prancha cota 76 de largura no DETALHE ESPELHO e não cota a altura.
+#   Adotei 140 — o vão livre entre a bancada e o alto da parede.
+ESP_L, ESP_A = 0.76, 1.40
 
 PCS, FER, TER, LACA = {}, {}, {}, {}
 def amb(k):
@@ -152,6 +158,11 @@ a(K,'ultra',18,'Porta',                48,  30, 2)
 a(K,'ultra',15,'Prateleira',           42,  25, 2)
 f(K, dobr=8)
 ter(K, 4*PORCELANA)
+
+# ⭐ ESPELHO — fornecimento nosso, com o RECORTE ESCALOPADO da prancha.
+K = 'Banheiro · espelho'
+amb(K)
+ter(K, ESP_L*ESP_A*ESPELHO_M2)
 
 K = 'Banheiro · armário superior'
 a(K,'ultra',15,'Lateral',             165,  27, 2)
@@ -277,6 +288,8 @@ if __name__ == '__main__':
     print(f'  · ⚠ AS FACES CURVAS do módulo cama e do módulo mesa. Em')
     print(f'    melamínico a curva é pós-formagem ou lâmina flexível —')
     print(f'    lancei R$ {br(CURVA_M)}/m². ★ Confirmar o processo.')
-    print('  · o ESPELHO ESCALOPADO do banheiro: o espelho é de terceiro,')
-    print('    mas o recorte ondulado pode ser nosso. Fora do preço.')
+    print(f'  · ⭐ O ESPELHO entrou: {ESP_L:.2f} × {ESP_A:.2f} m a R$ {br(ESPELHO_M2)}/m² '
+          f'= R$ {br(ESP_L*ESP_A*ESPELHO_M2)} de custo,')
+    print(f'    R$ {br(NOVOV["PV"]["Banheiro · espelho"])} de preço. ★ A prancha cota a LARGURA (76) e')
+    print('    não a altura; adotei 140. O recorte escalopado é nosso.')
     print('  · caixa de tomadas e puxador de porcelana ★ estimados.')

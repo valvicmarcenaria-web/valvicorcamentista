@@ -22,9 +22,27 @@ Motor `corte-raquel-franco.py` · proposta `build-raquel-franco.py`.
 | **Roupeiro novo** | **12.770** |
 | Banheiro · armário sob a cuba | 2.490 |
 | Banheiro · armário-torre | 1.800 |
-| **INVESTIMENTO** | **R$ 36.410** |
+| Banheiro · **espelho** | **1.780** |
+| **INVESTIMENTO** | **R$ 38.190** |
 
-Custo direto R$ 13.299 · **MC 40,0%** · 17 chapas · base 76,52% com RT.
+Custo direto R$ 13.950 · **MC 40,0%** · 17 chapas · base 76,52% com RT.
+
+### 09/10 — o espelho entra, e a comparação vai para a proposta
+
+> *"pode incluir o espelho no orçamento frisando o fornecimento. custo
+> neste caso de 600,00 o metro quad. · inclua tbm uma versão do roupeiro
+> sem laca, sendo todo em melamínico"*
+
+⭐ **Espelho a R$ 600/m² — fornecimento nosso.** Na proposta ele tem linha
+própria, com a palavra *"fornecido por nós"* em destaque: espelho é o
+item que o cliente costuma descobrir depois que não estava incluso. Vem
+com o **recorte escalopado** da prancha e instalado junto da marcenaria.
+★ A prancha cota a **largura (76)** e não a altura; adotei **140**.
+
+⭐ **A versão sem laca, toda em melamínico, já era a entregue** — o
+roupeiro novo nunca teve laca. O que faltava era **mostrá-la como versão**:
+agora a página 3 traz as duas lado a lado, com número, antes do texto que
+explica a recomendação. O argumento deixou de ser só qualitativo.
 
 ---
 
@@ -83,6 +101,6 @@ peça de terceiro.**
    arredondados** dos aéreos. Em melamínico a curva é pós-formagem ou
    lâmina flexível; lancei R$ 420/m². ★ Confirmar o processo — é o item
    que mais pode fugir.
-3. **O espelho escalopado do banheiro**: o espelho é de terceiro, mas o
-   recorte ondulado pode ser nosso. **Fora do preço.**
+3. ★ **A altura do espelho** — a prancha cota só a largura. Adotei 140;
+   cada 10 cm a mais valem ~R$ 130 de preço.
 4. Caixa de tomadas e puxador de porcelana ★ estimados.
