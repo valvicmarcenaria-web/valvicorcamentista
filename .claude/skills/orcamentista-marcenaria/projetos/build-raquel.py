@@ -22,10 +22,11 @@ with contextlib.redirect_stdout(io.StringIO()): spec.loader.exec_module(rq)
 # ⭐ [Jonathan 09/10] duas versões, cada uma no SEU PDF. Lado a lado elas
 #   mostrariam a cama com dois preços — a sobra de chapa dilui diferente
 #   quando se compram 12 chapas em vez de 4 — e isso só confunde o cliente.
-CEN   = sys.argv[1] if len(sys.argv) > 1 else 'melaminico'
-MEL   = CEN == 'melaminico'
-V     = 'melaminico' if MEL else 'laca'
-SUF   = '' if MEL else '-laca'
+# ⭐ [Jonathan 09/10] "coloque ambas as opções em um único arquivo".
+#   Agora dá: cama e mesa entram a PREÇO FECHADO e não mudam entre os
+#   cenários, então só a linha do roupeiro tem duas colunas. Era isso que
+#   impedia o lado a lado antes — a cama aparecia com dois preços.
+LACA, MEL = 'laca', 'melaminico'
 
 br = lambda v: f'{v:,.0f}'.replace(',', '.')
 CLIENTE, DATA = 'Raquel Oliveira', '9 de outubro de 2026'
@@ -33,49 +34,24 @@ DESIGNER = 'Rubia Nascimento'
 PRAZO, VALIDADE = '60 dias corridos', '7 dias úteis'
 NP = 2
 
-# ── os três itens ────────────────────────────────────────────────────────
-ROUPEIRO_TXT = (
-  'As <b>portas do roupeiro</b> saem e entram <b>portas novas em MDF '
-  'melamínico</b>, com dobradiça nova — a caixaria que está lá continua, '
-  'porque está boa. Junto, as <b>cinco prateleiras de canto</b> em '
-  'quadrante, no mesmo padrão, com <b>suporte invisível</b>.'
-  if MEL else
-  'A <b>frente do roupeiro</b> recebe <b>laca fosca Sayerlack J029</b>, '
-  'aplicada por nós sobre o móvel que já está no quarto. Junto, as '
-  '<b>cinco prateleiras de canto</b> em quadrante, lacadas na mesma cor, '
-  'com <b>suporte invisível</b>.')
-
 ITENS = [
- ('Dormir',  'Cama com bicama', rq.FECHADOS[0][1],
+ ('Dormir',  'Cama com bicama', rq.FECHADOS[0][1], rq.FECHADOS[0][1],
   'Cama em <b>MDF Itapuã Duratex</b> com cabeceira <b>ripada</b> e laterais '
   'em <b>palha indiana quadriculada</b>, entrançada e instalada à mão. Por '
   'baixo, a <b>bicama sobre rodízio</b>, que sai inteira para receber a '
   'visita e volta para debaixo da cama no dia seguinte.'),
- ('Estudar', 'Mesa com ajuste de altura', rq.FECHADOS[1][1],
+ ('Estudar', 'Mesa com ajuste de altura', rq.FECHADOS[1][1], rq.FECHADOS[1][1],
   'Mesa de estudo com <b>tampo ripado em Itapuã</b> e laterais em <b>MDF '
   'Sal Rosa Arauco</b>, bordas <b>levemente arredondadas</b> como a '
   'designer desenhou. E com <b>ajuste de altura</b>: a mesa sobe junto com '
   'quem senta nela.'),
- ('Guardar', 'Roupeiro e prateleiras', rq.PV_R[V], ROUPEIRO_TXT),
+ ('Guardar', 'Roupeiro e prateleiras', rq.PV_R[LACA], rq.PV_R[MEL],
+  'As <b>cinco prateleiras de canto</b> em quadrante, com o canto '
+  'arredondado e <b>suporte invisível</b> — nenhuma mão-francesa à vista. '
+  'E a <b>frente do roupeiro renovada</b>, de duas formas possíveis — '
+  'lado a lado <b>na página seguinte</b>.'),
 ]
-TOTAL = rq.TOT[V]
-
-TXT_ACAB = ('<b>MDF melamínico</b> nas portas novas e nas prateleiras, com '
-            'fita de borda — revestimento de fábrica, que não descasca e '
-            'não pede manutenção.') if MEL else (
-           '<b>Laca fosca Sayerlack J029</b> na frente do roupeiro e nas '
-           'prateleiras — a mesma cor, o mesmo brilho, aplicada por nós.')
-TXT_LEAD = ('as portas novas do roupeiro com as prateleiras de canto.'
-            if MEL else
-            'a frente do roupeiro lacada, com as prateleiras de canto.')
-TXT_GAR  = (' nas peças novas, portas incluídas'
-            if MEL else ' das peças novas')
-TXT_NOTA = ('<b>Sobre o roupeiro:</b> trocamos as portas e mantemos a '
-            'caixaria, que está boa — o móvel não sai do quarto. '
-            if MEL else
-            '<b>Sobre o roupeiro:</b> o móvel é de terceiro e a laca é '
-            'aplicada sobre o que já está lá — garantimos a aplicação, não '
-            'a estrutura do móvel. ')
+TOT = {v: rq.TOT[v] for v in (LACA, MEL)}
 
 CSS = (open(P/'css-proposta.css', encoding='utf-8').read() + """
 /* ── Raquel · quarto infantil ─────────────────────────────────────────── */
@@ -130,6 +106,15 @@ table.invRQ tr.tot td.a,table.invRQ tr.tot td.i{font-family:inherit;
 .escRQ .l .x{flex:none;font-size:8pt;letter-spacing:.1em;text-transform:uppercase;
   color:var(--gold);font-weight:700;}
 
+.invRQ th.g,.invRQ td.g{color:var(--gold);}
+.duasRQ{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin-top:4.5mm;
+  flex:none;}
+.duasRQ > div{border:1.2px solid var(--line);border-radius:5px;padding:3.6mm;}
+.duasRQ > div.g{border-color:var(--gold);background:rgba(201,169,106,.07);}
+.duasRQ .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.duasRQ .d{color:var(--soft);font-size:8.3pt;margin-top:1.4mm;line-height:1.5;}
+.duasRQ .d b{color:var(--ink);font-weight:600;}
 .valRQ{margin-top:4.5mm;padding:4mm 5.5mm;background:var(--ink);color:#fff;
   border-radius:4px;display:flex;align-items:baseline;gap:6mm;flex:none;}
 .valRQ .k{flex:none;font-size:7.2pt;letter-spacing:.2em;text-transform:uppercase;
@@ -156,11 +141,12 @@ def foot(n):
 itens = ''.join(
     f'<div class="r"><div class="a">{a}</div><div class="t">'
     f'<div class="n">{n}</div><div class="d">{d}</div></div></div>'
-    for a, n, _, d in ITENS)
+    for a, n, _pl, _pm, d in ITENS)
 
 linhas = ''.join(
     f'<tr><td class="a">{a}</td><td class="i">{n}</td>'
-    f'<td class="r">R$ {br(p)}</td></tr>' for a, n, p, _ in ITENS)
+    f'<td class="r">R$ {br(pl)}</td><td class="r g">R$ {br(pm)}</td></tr>'
+    for a, n, pl, pm, _d in ITENS)
 
 p1 = f"""<div class="page"><div class="pad">
   <div class="topRQ">
@@ -173,14 +159,16 @@ p1 = f"""<div class="page"><div class="pad">
     <em>cresce junto.</em></div>
   <div class="rule"></div>
   <div class="leadRQ">Raquel, o projeto da <b>{DESIGNER}</b> chegou
-  detalhado — e a marcenaria dele é o que fica: a cama, a mesa e
-  {TXT_LEAD}</div>
+  detalhado — e a marcenaria dele é o que fica: a cama, a mesa, as
+  prateleiras de canto e a frente do roupeiro.</div>
 
   <div class="itRQ">{itens}</div>
 
   <div class="tecRQ">
     <div><div class="k">Acabamento</div><div class="d">
-      {TXT_ACAB}</div></div>
+      <b>MDF Itapuã Duratex</b> e <b>Sal Rosa Arauco</b> na cama e na mesa,
+      com fita de borda. No roupeiro, as duas formas da página
+      seguinte.</div></div>
     <div><div class="k">Palha indiana</div><div class="d">
       <b>Quadriculada</b>, entrançada e <b>instalada</b> no caixilho da
       cama — trabalho manual, feito peça a peça.</div></div>
@@ -205,12 +193,28 @@ p2 = f"""<div class="page"><div class="pad">
   <div class="rule"></div>
 
   <table class="invRQ">
-    <thead><tr><th></th><th></th><th class="r">Investimento</th></tr></thead>
+    <thead><tr><th></th><th></th>
+      <th class="r">Frente lacada</th>
+      <th class="r g">Portas novas</th></tr></thead>
     <tbody>{linhas}
       <tr class="tot"><td class="a"></td><td class="i">Investimento total</td>
-        <td class="r">R$ {br(TOTAL)}</td></tr>
+        <td class="r">R$ {br(TOT[LACA])}</td>
+        <td class="r g">R$ {br(TOT[MEL])}</td></tr>
     </tbody>
   </table>
+
+  <div class="duasRQ">
+    <div><div class="k">Frente lacada</div><div class="d">
+      A frente do roupeiro que já está no quarto recebe <b>laca fosca
+      Sayerlack J029</b>, aplicada por nós, e as prateleiras saem na mesma
+      cor. <b>O móvel é de terceiro:</b> garantimos a aplicação, não a
+      estrutura dele.</div></div>
+    <div class="g"><div class="k">Portas novas · recomendada</div><div class="d">
+      As portas saem e entram <b>portas novas em MDF melamínico</b> com
+      <b>dobradiça nova</b> — a caixaria continua, porque está boa.
+      Revestimento de fábrica, que não descasca, <b>dez anos de garantia</b>
+      e <b>R$ {br(TOT[LACA]-TOT[MEL])} a menos</b>.</div></div>
+  </div>
 
   <div class="valRQ">
     <div class="k">Entrega</div>
@@ -235,14 +239,15 @@ p2 = f"""<div class="page"><div class="pad">
     <div><div class="k">Prazo</div><div class="d">
       <b>{PRAZO}</b>, contados do aceite e da medição.</div></div>
     <div><div class="k">Garantia</div><div class="d">
-      <b>10 anos</b> sobre estrutura e ferragens{TXT_GAR}.</div></div>
+      <b>10 anos</b> sobre estrutura e ferragens das peças
+      novas.</div></div>
     <div><div class="k">Execução</div><div class="d">
       Do corte à instalação, com <b>equipe própria</b> da casa.</div></div>
     <div><div class="k">Validade</div><div class="d">
       <b>{VALIDADE}</b> a partir desta data.</div></div>
   </div>
 
-  <div class="notaRQ">{TXT_NOTA}<b>Não inclusos:</b> papel de parede,
+  <div class="notaRQ"><b>Não inclusos:</b> papel de parede,
   iluminação e pendentes, colchões, roupa de cama, cadeira, mesa lateral,
   dossel, quadros, o bandô e o mobiliário solto.</div>
   {foot(2)}
@@ -254,13 +259,16 @@ HTML = ('<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">'
         'rel="stylesheet"><style>' + CSS + '</style></head><body>'
         + p1 + p2 + '</body></html>')
 
-(P/f'proposta-raquel{SUF}.html').write_text(HTML, encoding='utf-8')
+(P/'proposta-raquel.html').write_text(HTML, encoding='utf-8')
 open('/tmp/in.html', 'w', encoding='utf-8').write(HTML)
 env = dict(os.environ, NODE_PATH='/opt/node22/lib/node_modules',
            PW_CHROME='/opt/pw-browsers/chromium-1194/chrome-linux/chrome')
-subprocess.run(['node', '/tmp/r.js', str(P/f'proposta-raquel{SUF}.pdf')],
+subprocess.run(['node', '/tmp/r.js', str(P/'proposta-raquel.pdf')],
                check=True, env=env)
-print(f'proposta-raquel{SUF}.pdf · {NP} páginas  ·  cenário: {CEN}')
-for _, n, p, _d in ITENS: print(f'  {n:<28} R$ {br(p):>8}')
-print(f'  {"INVESTIMENTO":<28} R$ {br(TOTAL):>8}'
-      f'   MC {(rq.BASE - rq.CD_T[V]/TOTAL)*100:.1f}%')
+print(f'proposta-raquel.pdf · {NP} páginas  ·  os dois cenários num arquivo')
+print(f'  {"":<28}{"lacada":>10}{"portas novas":>14}')
+for _, n, pl, pm, _d in ITENS:
+    print(f'  {n:<28}{br(pl):>10}{br(pm):>14}')
+print(f'  {"INVESTIMENTO":<28}{br(TOT[LACA]):>10}{br(TOT[MEL]):>14}')
+print(f'  {"MC":<28}{(rq.BASE-rq.CD_T[LACA]/TOT[LACA])*100:>9.1f}%'
+      f'{(rq.BASE-rq.CD_T[MEL]/TOT[MEL])*100:>13.1f}%')
