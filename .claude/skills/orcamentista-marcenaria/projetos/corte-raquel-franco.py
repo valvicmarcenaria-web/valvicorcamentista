@@ -203,6 +203,24 @@ def calcula(pcs, laca, fer, ter_):
 
 NOVOV = calcula(PCS, LACA, FER, TER)
 
+# ── ⭐ [Jonathan 09/10] os DOIS CENÁRIOS são ambos NOVOS ─────────────────
+#   "não quero que apresente valores aproveitando o antigo (...) proponha
+#    os dois cenários, com laca e sem laca, mas ambos novos."
+#   LAQUEADO: mesmo roupeiro novo, mas construído em Branco TX e acabado
+#   em LACA FOSCA SAYERLACK J029 — a cor que a designer especificou.
+#   ⛔ A laca se mede "m² EM PEÇA" (base da casa): a peça entra uma vez,
+#     com o verso junto no serviço.
+PCS_LQ = {k: list(v) for k, v in PCS.items()}
+PCS_LQ['Roupeiro'] = [('br', e, d, c, l, q, fc) if cor == 'cor' else
+                      (cor, e, d, c, l, q, fc)
+                      for cor, e, d, c, l, q, fc in PCS['Roupeiro']]
+LACA_LQ = dict(LACA)
+# portas (2 × 0,75 × 2,67) + faces aparentes: laterais de ponta e rodateto
+LACA_LQ['Roupeiro'] = 2*0.75*2.67 + 1.52*0.06 + 0.30
+FER_LQ = {k: dict(FER[k]) for k in AMBS}
+TER_LQ = dict(TER)
+LAQUEADO = calcula(PCS_LQ, LACA_LQ, FER_LQ, TER_LQ)
+
 # ── o caminho do APROVEITAMENTO, só para comparar ────────────────────────
 # Mantém a estrutura e as portas existentes; laca nas portas (2 × 75 × 267
 # = 4,0 m²) e executa só o interno em Branco TX.
@@ -240,9 +258,28 @@ if __name__ == '__main__':
           f'{sum(NOVOV["chapas"].values()):.0f} chapas')
 
     print(f'\n{"═"*W}')
-    print('⛔⛔ O ROUPEIRO: APROVEITAR NÃO COMPENSA')
+    print('⭐ OS DOIS CENÁRIOS DO ROUPEIRO — AMBOS NOVOS  [Jonathan 09/10]')
     print(f'{"═"*W}')
     kr = 'Roupeiro'
+    print(f'  {"":<40}{"laqueado":>12}{"melamínico":>14}')
+    print(f'  {"o roupeiro":<40}{br(LAQUEADO["PV"][kr]):>12}'
+          f'{br(NOVOV["PV"][kr]):>14}')
+    print(f'  {"INVESTIMENTO total":<40}{br(LAQUEADO["TOT"]):>12}'
+          f'{br(NOVOV["TOT"]):>14}')
+    print(f'  {"diferença":<40}{"":>12}'
+          f'{br(LAQUEADO["TOT"]-NOVOV["TOT"]):>14}')
+    print()
+    print(f'  LAQUEADO ... corpo em Branco TX e acabamento em LACA FOSCA')
+    print(f'               SAYERLACK J029, a cor que a designer especificou.')
+    print(f'               {br1(LACA_LQ[kr])} m² de laca a R$ {br(LACA_M2)}/m².')
+    print('  MELAMÍNICO . revestimento de fábrica, sem repintura ao longo')
+    print('               da vida do móvel. É o mais barato e o mais durável.')
+
+    print(f'\n{"═"*W}')
+    print('⛔ INTERNO — por que o antigo não entra (NÃO VAI NA PROPOSTA)')
+    print(f'{"═"*W}')
+    kr = 'Roupeiro'
+    print('  ⛔ [Jonathan 09/10] estes números NÃO aparecem na proposta.')
     print(f'  {"":<42}{"aproveitando":>14}{"novo":>12}')
     print(f'  {"preço do roupeiro":<42}{br(APROV_V["PV"][kr]):>14}'
           f'{br(NOVOV["PV"][kr]):>12}')

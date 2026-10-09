@@ -33,37 +33,39 @@ def uri(nome):
             + base64.b64encode((P/'img'/nome).read_bytes()).decode())
 IMG = uri('franco-render.jpg')      # ⭐ o render do próprio caderno
 
-G = fr.NOVOV['PV']
+G, L = fr.NOVOV['PV'], fr.LAQUEADO['PV']
 # ⛔ descrições curtas: são oito itens. O que o cliente não deduz sozinho
 #   fica na faixa técnica; aqui, uma linha por peça.
 ITENS = [
- ('Quarto', 'Escrivaninha em L', G['Escrivaninha em L'],
+ ('Quarto', 'Escrivaninha em L', G['Escrivaninha em L'], G['Escrivaninha em L'],
   'Tampo em <b>MDF Noce Amêndoa</b> de corpo cheio, com as gavetas '
   '<b>embutidas na própria espessura</b>, <b>caixa de tomadas</b> e nicho.'),
  ('Quarto', 'Armários aéreos', G['Armário aéreo menor'] + G['Armário aéreo maior'],
+  G['Armário aéreo menor'] + G['Armário aéreo maior'],
   'Dois volumes suspensos em <b>MDF Lume</b>, de cantos arredondados e '
   '<b>puxador passante</b> — sem ferragem aparente.'),
- ('Quarto', 'Prateleira superior', G['Prateleira superior'],
+ ('Quarto', 'Prateleira superior', G['Prateleira superior'], G['Prateleira superior'],
   'Em <b>MDF Cancún</b>, de corpo cheio, sobre <b>suporte invisível</b>.'),
  ('Quarto', 'Módulos cama e mesa', G['Módulo cama'] + G['Módulo mesa'],
+  G['Módulo cama'] + G['Módulo mesa'],
   'Em <b>MDF Lume</b>, com a <b>face curva</b> do desenho e o recuo para '
   'descer a persiana.'),
- ('Quarto', 'Painel de cabeceira', G['Painel de cabeceira'],
+ ('Quarto', 'Painel de cabeceira', G['Painel de cabeceira'], G['Painel de cabeceira'],
   'Em L pelas duas paredes, em <b>MDF Cancún</b> e <b>Sal Rosa</b>.'),
- ('Quarto', 'Roupeiro novo', G['Roupeiro'],
+ ('Quarto', 'Roupeiro novo', L['Roupeiro'], G['Roupeiro'],
   'Prateleiras, gavetas, <b>duas sapateiras deslizantes</b>, cabideiro '
-  'oval e o vão como puxador. <b>Por que novo: página 3.</b>'),
- ('Banheiro', 'Armário sob a cuba', G['Banheiro · armário inferior'],
+  'oval e o vão como puxador. <b>Laqueado ou em melamínico: página 3.</b>'),
+ ('Banheiro', 'Armário sob a cuba', G['Banheiro · armário inferior'], G['Banheiro · armário inferior'],
   'Em <b>MDF Verde Ultra</b>, resistente à umidade, com puxadores de '
   '<b>porcelana</b>.'),
- ('Banheiro', 'Armário-torre', G['Banheiro · armário superior'],
+ ('Banheiro', 'Armário-torre', G['Banheiro · armário superior'], G['Banheiro · armário superior'],
   'Em <b>MDF Verde Ultra</b>, do piso ao teto, com <b>puxador passante</b>.'),
- ('Banheiro', 'Espelho', G['Banheiro · espelho'],
+ ('Banheiro', 'Espelho', G['Banheiro · espelho'], G['Banheiro · espelho'],
   '⭐ <b>Fornecido por nós</b> — não é item à parte para comprar depois. '
   'Vem com o <b>recorte escalopado</b> na borda inferior, usinado conforme '
   'o detalhe da prancha, e instalado junto da marcenaria.'),
 ]
-TOTAL = fr.NOVOV['TOT']
+TOT_LQ, TOT_ML = fr.LAQUEADO['TOT'], fr.NOVOV['TOT']
 
 CSS = (open(P/'css-proposta.css', encoding='utf-8').read() + """
 /* ── Raquel · quarto infantil ─────────────────────────────────────────── */
@@ -133,6 +135,7 @@ table.invRQ tr.tot td.a,table.invRQ tr.tot td.i{font-family:inherit;
   color:var(--gold);font-weight:700;}
 .duasRQ .d{color:var(--soft);font-size:8.3pt;margin-top:1.4mm;line-height:1.5;}
 .duasRQ .d b{color:var(--ink);font-weight:600;}
+.invRQ th.g,.invRQ td.g{color:var(--gold);}
 .cmpRQ{margin-top:4.5mm;flex:none;}
 .cmpRQ .l{display:flex;justify-content:space-between;align-items:center;
   gap:6mm;padding:3mm 4mm;border:1.2px solid var(--line);border-radius:5px;
@@ -176,11 +179,12 @@ def foot(n):
 itens = ''.join(
     f'<div class="r"><div class="a">{a}</div><div class="t">'
     f'<div class="n">{n}</div><div class="d">{d}</div></div></div>'
-    for a, n, _p, d in ITENS)
+    for a, n, _pl, _pm, d in ITENS)
 
 linhas = ''.join(
     f'<tr><td class="a">{a}</td><td class="i">{n}</td>'
-    f'<td class="r">R$ {br(p)}</td></tr>' for a, n, p, _d in ITENS)
+    f'<td class="r">R$ {br(pl)}</td><td class="r g">R$ {br(pm)}</td></tr>'
+    for a, n, pl, pm, _d in ITENS)
 
 p1 = f"""<div class="page"><div class="pad">
   <div class="topRQ">
@@ -216,10 +220,13 @@ p2 = f"""<div class="page"><div class="pad">
   <div class="rule"></div>
 
   <table class="invRQ">
-    <thead><tr><th></th><th></th><th class="r">Investimento</th></tr></thead>
+    <thead><tr><th></th><th></th>
+      <th class="r">Roupeiro laqueado</th>
+      <th class="r g">Roupeiro melamínico</th></tr></thead>
     <tbody>{linhas}
       <tr class="tot"><td class="a"></td><td class="i">Investimento total</td>
-        <td class="r">R$ {br(TOTAL)}</td></tr>
+        <td class="r">R$ {br(TOT_LQ)}</td>
+        <td class="r g">R$ {br(TOT_ML)}</td></tr>
     </tbody>
   </table>
 
@@ -275,26 +282,28 @@ p3 = f"""<div class="page"><div class="pad">
   vale explicar por quê, porque a recomendação <b>não é de preço</b>.</div>
 
   <div class="cmpRQ">
-    <div class="l"><div class="q">Aproveitando a estrutura e as portas,
-      com preparo de superfície e laca</div>
-      <div class="v">R$ {br(fr.APROV_V['PV']['Roupeiro'])}</div></div>
-    <div class="l g"><div class="q"><b>Roupeiro novo, todo em melamínico</b>
-      — sem laca, sem preparo de madeira antiga, sem vistoria</div>
+    <div class="l"><div class="q"><b>Novo, laqueado</b> — corpo em Branco
+      TX e acabamento em <b>laca fosca Sayerlack J029</b>, a cor que a
+      designer especificou</div>
+      <div class="v">R$ {br(fr.LAQUEADO['PV']['Roupeiro'])}</div></div>
+    <div class="l g"><div class="q"><b>Novo, em melamínico</b> —
+      revestimento de fábrica, que não pede repintura ao longo da vida do
+      móvel</div>
       <div class="v">R$ {br(fr.NOVOV['PV']['Roupeiro'])}</div></div>
   </div>
-  <div class="capRQ">Aproveitar custaria
-  <b>R$ {br(fr.APROV_V['PV']['Roupeiro'] - fr.NOVOV['PV']['Roupeiro'])} a mais.</b>
-  A laca sobre as portas existentes, sozinha, já custa mais que a chapa de
-  um roupeiro inteiro.</div>
+  <div class="capRQ">Os dois são <b>roupeiros novos</b>. O que muda é o
+  acabamento: a laca dá a cor exata do projeto; o melamínico dá
+  durabilidade e custa
+  <b>R$ {br(fr.LAQUEADO['PV']['Roupeiro'] - fr.NOVOV['PV']['Roupeiro'])} a menos</b>.</div>
 
   <div class="porqueRQ">
     <div class="k">Por que o roupeiro sai novo</div>
     <div class="d">O caderno sugere <b>preservar a estrutura e reaproveitar
     as portas</b>, com preparo de superfície e laca. <b>Não recomendamos</b>
-    — e não é por preço: <b>aproveitar sairia mais caro</b> que fazer novo.
-    Preparar e lacar portas antigas custa mais que a chapa de um roupeiro
-    inteiro, e ainda acrescenta vistoria, desmontagem, transporte e
-    remedição — é o quadro acima.<br><br>
+    — e, ao contrário do que parece, <b>não é um caminho mais barato</b>.
+    Preparar e lacar portas antigas exige lixamento, selagem e cura, e
+    ainda acrescenta vistoria da estrutura, desmontagem, transporte e
+    remedição do vão. O que se economiza em chapa volta em processo.<br><br>
     O que pesa mais, porém, é o <b>risco</b>. Aproveitando, a Valvic passa a
     responder por uma <b>estrutura que não construiu</b> e não consegue
     inspecionar por dentro, pela <b>aderência da laca sobre madeira antiga
@@ -343,6 +352,10 @@ env = dict(os.environ, NODE_PATH='/opt/node22/lib/node_modules',
 subprocess.run(['node', '/tmp/r.js', str(P/'proposta-raquel-franco.pdf')],
                check=True, env=env)
 print(f'proposta-raquel-franco.pdf · {NP} páginas')
-for _, n, p, _d in ITENS: print(f'  {n:<28} R$ {br(p):>8}')
-print(f'  {"INVESTIMENTO":<28} R$ {br(TOTAL):>8}'
-      f'   MC {(fr.BASE - fr.NOVOV["CD"]/TOTAL)*100:.1f}%  ·  com RT')
+print(f'  {"":<28}{"laqueado":>11}{"melamínico":>13}')
+for _, n, pl, pm, _d in ITENS:
+    print(f'  {n:<28}{br(pl):>11}{br(pm):>13}')
+print(f'  {"INVESTIMENTO":<28}{br(TOT_LQ):>11}{br(TOT_ML):>13}')
+print(f'  {"MC":<28}'
+      f'{(fr.BASE - fr.LAQUEADO["CD"]/TOT_LQ)*100:>10.1f}%'
+      f'{(fr.BASE - fr.NOVOV["CD"]/TOT_ML)*100:>12.1f}%   com RT')

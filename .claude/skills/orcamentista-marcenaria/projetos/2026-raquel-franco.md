@@ -104,3 +104,38 @@ peça de terceiro.**
 3. ★ **A altura do espelho** — a prancha cota só a largura. Adotei 140;
    cada 10 cm a mais valem ~R$ 130 de preço.
 4. Caixa de tomadas e puxador de porcelana ★ estimados.
+
+
+---
+
+## 09/10 — os dois cenários passam a ser ambos NOVOS
+
+> *"sobre o roupeiro, não quero que apresente valores aproveitando o
+> antigo, quero que fale como vc abordou que não aproveita o roupeiro
+> antigo e que proponha os dois cenários, com laca e sem laca, mas ambos
+> novos"*
+
+⛔ **O número do aproveitamento saiu da proposta.** Fica só no motor, com
+a marca "NÃO VAI NA PROPOSTA". O argumento permanece inteiro na página 3 —
+sem cifra, e sem perder força: *"ao contrário do que parece, não é um
+caminho mais barato (...) o que se economiza em chapa volta em processo"*.
+
+### Os dois cenários
+
+| | laqueado | melamínico |
+|---|--:|--:|
+| **Roupeiro** | **18.900** | **12.770** |
+| INVESTIMENTO total | **44.120** | **38.190** |
+
+**Laqueado** — corpo em **Branco TX** e acabamento em **laca fosca
+Sayerlack J029**, a cor que a designer especificou. 4,4 m² de laca a
+R$ 650/m² em peça.
+**Melamínico** — revestimento de fábrica, sem repintura ao longo da vida
+do móvel, **R$ 6.130 a menos**.
+
+⭐ A troca é honesta dos dois lados: a laca entrega **a cor exata do
+projeto**; o melamínico entrega **durabilidade e preço**. Nenhum dos dois
+carrega o risco do móvel antigo.
+
+A tabela da página 2 ganhou **duas colunas** — só a linha do roupeiro
+muda, todo o resto é idêntico nos dois cenários.
