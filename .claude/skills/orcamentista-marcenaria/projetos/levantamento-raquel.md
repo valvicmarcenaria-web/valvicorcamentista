@@ -243,3 +243,51 @@ formato com perfil de aresta na mesma página.
 
 ★ Se a quina abaulada for condição da designer, o caminho é outro material
 — e aí muda o preço da mesa.
+
+---
+
+## 09/10 — prateleiras separadas, e o fator de 1/3
+
+> *"refaça colocando separado apenas o valor das prateleiras"* · *"essas
+> prateleiras representam 1 terço do valor que vc colocou em ambos os
+> cenários · refaça redistribuindo os valores entre itens sem alterar o
+> valor inicial"*
+
+| | laqueada | melamínico |
+|---|--:|--:|
+| Cama com bicama | 5.900 | 5.900 |
+| Mesa com ajuste de altura | 2.500 | 2.500 |
+| **Prateleiras de canto** | **2.450** | **920** |
+| **Roupeiro · a frente** | **15.270** | **4.970** |
+| **INVESTIMENTO** | **26.120** | **14.290** |
+
+⭐ **O total não mudou.** A sobra foi toda para o **roupeiro**, que é a
+outra linha calculada — cama e mesa têm preço fechado pelo Jonathan e não
+se mexem.
+
+### ⛔ O que o fator de 1/3 faz com a linha
+
+| | laca | melamínico |
+|---|--:|--:|
+| custo direto das prateleiras | 3.327 | 1.258 |
+| preço pela MC de 40% | 7.340 | 2.770 |
+| **preço agora, a 1/3** | **2.450** | **920** |
+| **MC da linha** | **−50%** | **−51%** |
+
+⭐ Como o total é o mesmo, **a margem do trabalho não muda**: o que sai das
+prateleiras entra no roupeiro. A redistribuição é de apresentação.
+
+⛔ **O risco é a cliente comprar só as prateleiras.** Nesse recorte a casa
+vende abaixo do custo direto. Se houver chance de fatiar o pedido, a linha
+precisa de piso.
+
+### ⚠ E um erro meu que isso expôs
+
+Lancei a laca das prateleiras pelas **duas faces** — 2,9 m², R$ 1.914. A
+convenção da casa, que **eu mesma estabeleci no orçamento da Alice**, é
+*"Laca/Pintura — m² EM PEÇA LISA"*: a peça entra **uma vez**, com o verso
+junto no serviço. Pelo certo são 1,4 m² = R$ 889.
+
+⛔ **R$ 1.025 de custo a mais do que deveria.** Não corrigi porque corrigir
+**muda o total**, e o pedido foi para não mudar. ★ Fica para decisão: se
+corrigir, o total cai — e o fator de 1/3 fica menos abaixo do custo.

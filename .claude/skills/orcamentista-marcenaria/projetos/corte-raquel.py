@@ -103,10 +103,20 @@ def roupeiro(versao):
 
 CD_P = {v: prateleiras(v) for v in ('laca', 'melaminico')}
 CD_R = {v: roupeiro(v)    for v in ('laca', 'melaminico')}
-PV_P = {v: round(CD_P[v][0]/(BASE - MC_ALVO)/10)*10 for v in CD_P}
-PV_R = {v: round(CD_R[v][0]/(BASE - MC_ALVO)/10)*10 for v in CD_R}
+# preço que a MC alvo pediria, antes da decisão comercial
+PV_P0 = {v: round(CD_P[v][0]/(BASE - MC_ALVO)/10)*10 for v in CD_P}
+PV_R0 = {v: round(CD_R[v][0]/(BASE - MC_ALVO)/10)*10 for v in CD_R}
+TOT   = {v: sum(p for _, p, _ in FECHADOS) + PV_P0[v] + PV_R0[v] for v in PV_R0}
 
-TOT   = {v: sum(p for _, p, _ in FECHADOS) + PV_P[v] + PV_R[v] for v in PV_R}
+# ⭐ [Jonathan 09/10] "essas prateleiras representam 1 terço do valor que
+#   você colocou em ambos os cenários · refaça redistribuindo os valores
+#   entre itens sem alterar o valor inicial."
+#   ⛔ O TOTAL NÃO MUDA. O que muda é só ONDE o valor aparece: a sobra vai
+#     para o roupeiro, que é a outra linha calculada — cama e mesa têm
+#     preço fechado pelo Jonathan e não se mexem.
+PRAT_FATOR = 1/3
+PV_P = {v: round(PV_P0[v]*PRAT_FATOR/10)*10 for v in PV_P0}
+PV_R = {v: TOT[v] - sum(p for _, p, _ in FECHADOS) - PV_P[v] for v in PV_P}
 CD_F  = {n: p*(BASE - MC_ALVO) for n, p, _ in FECHADOS}   # custo implícito
 CD_T  = {v: sum(CD_F.values()) + CD_P[v][0] + CD_R[v][0] for v in PV_R}
 
@@ -150,6 +160,41 @@ if __name__ == '__main__':
     print('  MELAMÍNICO .. portas novas (as quatro, a frente inteira) e as')
     print('                prateleiras em melamínico. ⛔ A CAIXARIA DO ROUPEIRO')
     print('                FICA ONDE ESTÁ: não é móvel novo.')
+
+    print(f'\n{"═"*W}')
+    print('⛔⛔ O QUE O FATOR DE 1/3 FAZ COM A LINHA DAS PRATELEIRAS')
+    print(f'{"═"*W}')
+    print('  O total não mudou — mudou onde o valor aparece. Mas a linha')
+    print('  das prateleiras passou a ser vendida ABAIXO DO CUSTO DIRETO:')
+    print(f'\n  {"":<34}{"laca":>12}{"melamínico":>14}')
+    for rot, d in (('custo direto das prateleiras', lambda v: CD_P[v][0]),
+                   ('preço pela MC de 40%',         lambda v: PV_P0[v]),
+                   ('preço agora, a 1/3',           lambda v: PV_P[v])):
+        print(f'  {rot:<34}{br(d("laca")):>12}{br(d("melaminico")):>14}')
+    for v, lab in (('laca','laca'), ('melaminico','melamínico')):
+        mc = (BASE - CD_P[v][0]/PV_P[v])*100
+        print(f'  MC da linha em {lab:<19}{mc:>11.0f}%' if v=='laca'
+              else f'  MC da linha em {lab:<19}{"":>12}{mc:>13.0f}%')
+    print()
+    print('  ⭐ Como o TOTAL é o mesmo, a MARGEM DO TRABALHO não muda: o que')
+    print(f'     sai das prateleiras entra no roupeiro, que vai a '
+          f'R$ {br(PV_R["laca"])} / R$ {br(PV_R["melaminico"])}.')
+    print('  ⛔ O RISCO É SE A CLIENTE COMPRAR SÓ AS PRATELEIRAS. Nesse')
+    print('     recorte a casa vende abaixo do custo. Se houver chance de')
+    print('     fatiar o pedido, a linha precisa de piso.')
+
+    print(f'\n{"═"*W}')
+    print('⚠ E UM ERRO MEU QUE ISSO EXPÔS — a laca das prateleiras')
+    print(f'{"═"*W}')
+    _conv = QUAD_N*QUAD_M2*LACA_M2
+    _hoje = CD_P['laca'][1]['laca']
+    print(f'  Lancei a laca das prateleiras pelas DUAS FACES: '
+          f'{br1(CD_P["laca"][1]["laca_m2"])} m² = R$ {br(_hoje)}.')
+    print(f'  A convenção da casa é "m² EM PEÇA LISA" — a peça entra UMA')
+    print(f'  vez, com o verso junto: {br1(QUAD_N*QUAD_M2)} m² = R$ {br(_conv)}.')
+    print(f'  ⛔ São R$ {br(_hoje-_conv)} de custo a mais que eu pus. Não corrigi')
+    print('     porque corrigir muda o TOTAL, e o Jonathan pediu para não')
+    print('     mudar. ★ Fica para decisão: se corrigir, o total cai.')
 
     print(f'\n{"═"*W}')
     print('⛔⛔ PINTAR A FRENTE CUSTA MAIS QUE TROCAR AS PORTAS')
