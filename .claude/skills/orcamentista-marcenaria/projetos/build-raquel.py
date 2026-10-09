@@ -22,10 +22,10 @@ with contextlib.redirect_stdout(io.StringIO()): spec.loader.exec_module(rq)
 # ⭐ [Jonathan 09/10] duas versões, cada uma no SEU PDF. Lado a lado elas
 #   mostrariam a cama com dois preços — a sobra de chapa dilui diferente
 #   quando se compram 12 chapas em vez de 4 — e isso só confunde o cliente.
-CEN   = sys.argv[1] if len(sys.argv) > 1 else 'laca'
-TROCA = CEN == 'troca'
-L     = rq.V_TROCA if TROCA else rq.V_LACA
-SUF   = '-troca' if TROCA else ''
+CEN   = sys.argv[1] if len(sys.argv) > 1 else 'melaminico'
+MEL   = CEN == 'melaminico'
+V     = 'melaminico' if MEL else 'laca'
+SUF   = '' if MEL else '-laca'
 
 br = lambda v: f'{v:,.0f}'.replace(',', '.')
 CLIENTE, DATA = 'Raquel Oliveira', '9 de outubro de 2026'
@@ -33,39 +33,49 @@ DESIGNER = 'Rubia Nascimento'
 PRAZO, VALIDADE = '60 dias corridos', '7 dias úteis'
 NP = 2
 
-DESC = {
- 'Cama com bicama':
-   'Cama em <b>MDF Itapuã Duratex</b> com cabeceira <b>ripada</b> e laterais '
-   'em <b>palha indiana quadriculada</b>. Por baixo, a <b>bicama sobre '
-   'rodízio</b>, que sai inteira para receber a visita e volta para debaixo '
-   'da cama no dia seguinte.',
- 'Mesa':
-   'Mesa de estudo com <b>tampo ripado em Itapuã</b> e laterais em '
-   '<b>MDF Sal Rosa Arauco</b>. Todas as <b>bordas levemente arredondadas</b>, '
-   'como a designer desenhou — num quarto de criança isso não é detalhe de '
-   'estilo.',
- 'Prateleiras de canto':
-   '<b>Cinco prateleiras em quadrante</b>, com o canto arredondado e '
-   '<b>suporte invisível</b> — nenhuma mão-francesa e nenhum parafuso à '
-   'vista. ' + ('Em <b>MDF melamínico</b>, no mesmo padrão do roupeiro novo.'
-                if TROCA else
-                'Acabamento em <b>laca fosca Sayerlack J029</b>.'),
- 'Roupeiro existente · revestimento':
-   ('<b>Roupeiro novo</b>, em <b>MDF melamínico</b>, no lugar do que está '
-    'hoje no quarto — com portas de giro, prateleiras, gavetas e cabideiro. '
-    '<b>A retirada e o descarte do móvel antigo são nossos.</b>')
-   if TROCA else
-   ('O roupeiro <b>que já está no quarto</b> ganha a mesma <b>laca fosca '
-    'Sayerlack J029</b> das prateleiras — passa a fazer parte do projeto em '
-    'vez de destoar dele.'),
-}
-CURTO = {
- 'Cama com bicama':                   ('Dormir',   'Cama com bicama'),
- 'Mesa':                              ('Estudar',  'Mesa'),
- 'Prateleiras de canto':              ('Guardar',  'Prateleiras de canto'),
- 'Roupeiro existente · revestimento': ('Integrar',
-   'Roupeiro novo' if TROCA else 'Roupeiro existente'),
-}
+# ── os três itens ────────────────────────────────────────────────────────
+ROUPEIRO_TXT = (
+  'As <b>portas do roupeiro</b> saem e entram <b>portas novas em MDF '
+  'melamínico</b>, com dobradiça nova — a caixaria que está lá continua, '
+  'porque está boa. Junto, as <b>cinco prateleiras de canto</b> em '
+  'quadrante, no mesmo padrão, com <b>suporte invisível</b>.'
+  if MEL else
+  'A <b>frente do roupeiro</b> recebe <b>laca fosca Sayerlack J029</b>, '
+  'aplicada por nós sobre o móvel que já está no quarto. Junto, as '
+  '<b>cinco prateleiras de canto</b> em quadrante, lacadas na mesma cor, '
+  'com <b>suporte invisível</b>.')
+
+ITENS = [
+ ('Dormir',  'Cama com bicama', rq.FECHADOS[0][1],
+  'Cama em <b>MDF Itapuã Duratex</b> com cabeceira <b>ripada</b> e laterais '
+  'em <b>palha indiana quadriculada</b>, entrançada e instalada à mão. Por '
+  'baixo, a <b>bicama sobre rodízio</b>, que sai inteira para receber a '
+  'visita e volta para debaixo da cama no dia seguinte.'),
+ ('Estudar', 'Mesa com ajuste de altura', rq.FECHADOS[1][1],
+  'Mesa de estudo com <b>tampo ripado em Itapuã</b> e laterais em <b>MDF '
+  'Sal Rosa Arauco</b>, bordas <b>levemente arredondadas</b> como a '
+  'designer desenhou. E com <b>ajuste de altura</b>: a mesa sobe junto com '
+  'quem senta nela.'),
+ ('Guardar', 'Roupeiro e prateleiras', rq.PV_R[V], ROUPEIRO_TXT),
+]
+TOTAL = rq.TOT[V]
+
+TXT_ACAB = ('<b>MDF melamínico</b> nas portas novas e nas prateleiras, com '
+            'fita de borda — revestimento de fábrica, que não descasca e '
+            'não pede manutenção.') if MEL else (
+           '<b>Laca fosca Sayerlack J029</b> na frente do roupeiro e nas '
+           'prateleiras — a mesma cor, o mesmo brilho, aplicada por nós.')
+TXT_LEAD = ('as portas novas do roupeiro com as prateleiras de canto.'
+            if MEL else
+            'a frente do roupeiro lacada, com as prateleiras de canto.')
+TXT_GAR  = (' nas peças novas, portas incluídas'
+            if MEL else ' das peças novas')
+TXT_NOTA = ('<b>Sobre o roupeiro:</b> trocamos as portas e mantemos a '
+            'caixaria, que está boa — o móvel não sai do quarto. '
+            if MEL else
+            '<b>Sobre o roupeiro:</b> o móvel é de terceiro e a laca é '
+            'aplicada sobre o que já está lá — garantimos a aplicação, não '
+            'a estrutura do móvel. ')
 
 CSS = (open(P/'css-proposta.css', encoding='utf-8').read() + """
 /* ── Raquel · quarto infantil ─────────────────────────────────────────── */
@@ -139,35 +149,18 @@ table.invRQ tr.tot td.a,table.invRQ tr.tot td.i{font-family:inherit;
 .notaRQ b{color:var(--ink);}
 """)
 
-# ── textos que mudam com o cenário ───────────────────────────────────────
-TXT_ACAB = ('<b>MDF melamínico</b> no roupeiro e nas prateleiras, com fita '
-            'de borda — revestimento de fábrica, que não descasca e não pede '
-            'manutenção.') if TROCA else (
-           '<b>Laca fosca Sayerlack J029</b> nas prateleiras e no roupeiro — '
-           'a mesma cor, o mesmo brilho, aplicada por nós.')
-TXT_LEAD = ('o <b>roupeiro novo</b>, que substitui o que está lá hoje.'
-            if TROCA else
-            'o roupeiro que já está no quarto e passa a conversar com o resto.')
-TXT_GAR  = '' if TROCA else ' das peças novas'
-TXT_NOTA = ('<b>Tudo é nosso:</b> com o roupeiro novo, as quatro peças saem '
-            'da nossa produção e entram na garantia de dez anos por inteiro. '
-            ) if TROCA else (
-           '<b>Sobre o roupeiro existente:</b> o móvel é de terceiro e a laca '
-           'é aplicada sobre o que já está lá — garantimos a aplicação, não a '
-           'estrutura do móvel. ')
-
 def foot(n):
     return (f'<div class="foot"><span>Valvic Marcenaria</span>'
             f'<span>{CLIENTE} · quarto</span><span>{n} / {NP}</span></div>')
 
 itens = ''.join(
-    f'<div class="r"><div class="a">{CURTO[k][0]}</div><div class="t">'
-    f'<div class="n">{CURTO[k][1]}</div><div class="d">{DESC[k]}</div>'
-    f'</div></div>' for k in rq.AMBS)
+    f'<div class="r"><div class="a">{a}</div><div class="t">'
+    f'<div class="n">{n}</div><div class="d">{d}</div></div></div>'
+    for a, n, _, d in ITENS)
 
 linhas = ''.join(
-    f'<tr><td class="a">{CURTO[k][0]}</td><td class="i">{CURTO[k][1]}</td>'
-    f'<td class="r">R$ {br(L["PV"][k])}</td></tr>' for k in rq.AMBS)
+    f'<tr><td class="a">{a}</td><td class="i">{n}</td>'
+    f'<td class="r">R$ {br(p)}</td></tr>' for a, n, p, _ in ITENS)
 
 p1 = f"""<div class="page"><div class="pad">
   <div class="topRQ">
@@ -180,8 +173,8 @@ p1 = f"""<div class="page"><div class="pad">
     <em>cresce junto.</em></div>
   <div class="rule"></div>
   <div class="leadRQ">Raquel, o projeto da <b>{DESIGNER}</b> chegou
-  detalhado — e a marcenaria dele é o que fica. São <b>quatro peças</b>:
-  a cama, a mesa, as prateleiras e {TXT_LEAD}</div>
+  detalhado — e a marcenaria dele é o que fica: a cama, a mesa e
+  {TXT_LEAD}</div>
 
   <div class="itRQ">{itens}</div>
 
@@ -215,7 +208,7 @@ p2 = f"""<div class="page"><div class="pad">
     <thead><tr><th></th><th></th><th class="r">Investimento</th></tr></thead>
     <tbody>{linhas}
       <tr class="tot"><td class="a"></td><td class="i">Investimento total</td>
-        <td class="r">R$ {br(L['TOT'])}</td></tr>
+        <td class="r">R$ {br(TOTAL)}</td></tr>
     </tbody>
   </table>
 
@@ -268,6 +261,6 @@ env = dict(os.environ, NODE_PATH='/opt/node22/lib/node_modules',
 subprocess.run(['node', '/tmp/r.js', str(P/f'proposta-raquel{SUF}.pdf')],
                check=True, env=env)
 print(f'proposta-raquel{SUF}.pdf · {NP} páginas  ·  cenário: {CEN}')
-for k in rq.AMBS: print(f'  {CURTO[k][1]:<24} R$ {br(L["PV"][k]):>8}')
-print(f'  {"INVESTIMENTO":<24} R$ {br(L["TOT"]):>8}'
-      f'   MC {(L["BASE"]-L["CD"]/L["TOT"])*100:.1f}%')
+for _, n, p, _d in ITENS: print(f'  {n:<28} R$ {br(p):>8}')
+print(f'  {"INVESTIMENTO":<28} R$ {br(TOTAL):>8}'
+      f'   MC {(rq.BASE - rq.CD_T[V]/TOTAL)*100:.1f}%')

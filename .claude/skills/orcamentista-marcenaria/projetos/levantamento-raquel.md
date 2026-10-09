@@ -114,3 +114,59 @@ A que está no motor (portas de giro, prateleiras, gavetas e cabideiro) é
 
 ★ Entrou também a **retirada e o descarte** do móvel antigo (R$ 450
 estimado), que no cenário da laca não existe.
+
+
+---
+
+## 09/10/2026 — o escopo certo do roupeiro, e os preços fechados
+
+> *"não faremos o roupeiro completamente novo não, será apenas as portas e
+> as prateleiras, não tem lógica custar 14 mil isso não · unifique o custo
+> do roupeiro e das prateleiras, tanto da laca quanto em melamínico · a
+> mesa com ajuste de altura o preço de venda é de 2.500 · a cama pode ser
+> 5.900"*
+
+⛔ **Eu tinha projetado um roupeiro inteiro** — laterais, fundo, caixaria,
+gavetas, cabideiro — quando o que se troca são **as portas**. A caixaria
+que está no quarto fica. Corrigido.
+
+### A estrutura agora
+
+| Item | laca | **melamínico** |
+|---|--:|--:|
+| Cama com bicama | 5.900 | 5.900 |
+| Mesa com ajuste de altura | 2.500 | 2.500 |
+| Roupeiro e prateleiras de canto | 17.720 | **7.690** |
+| **INVESTIMENTO** | **26.120** | **16.090** |
+
+Cama e mesa entram **pelo preço** (convenção das divisórias da United); o
+que se audita neles é o teto de custo. A linha do roupeiro é calculada.
+
+### ⛔⛔ Pintar a frente custa MAIS que trocar as portas
+
+| | |
+|---|--:|
+| lacar a frente do roupeiro (6,70 m² a R$ 650) | R$ 4.355 |
+| fazer as quatro portas novas, com dobradiça | **R$ 2.000** |
+
+⭐ **A porta nova custa 46% do que custa pintar a velha.** É o mesmo que o
+Jonathan enxergou no roupeiro completo: a R$ 650/m², a laca não compete
+com chapa. E a porta nova resolve o que a pintura não resolve — dobradiça
+nova, borda nova e dez anos de garantia sobre uma peça que é nossa.
+
+No total, **R$ 10.030** de diferença.
+
+### ⚠ Os dois tetos que apertam
+
+| | venda | teto a 40% | a 35% | equilíbrio |
+|---|--:|--:|--:|--:|
+| Cama com bicama | 5.900 | **2.676** | 2.971 | 5.036 |
+| Mesa com ajuste de altura | 2.500 | **1.134** | 1.259 | 2.134 |
+
+⛔ **A palha come 57% do teto da cama.** São R$ 1.520 (1,60 m² a R$ 950
+instalada) dentro de R$ 2.676. Se a palha pegar também a cabeceira, **não
+fecha em R$ 5.900**.
+
+⛔ **A mesa ganhou ajuste de altura** — mecanismo que não estava no projeto
+nem no preço anterior. Dentro de R$ 1.134 de teto, cabe pouco além dele.
+★ Confirmar o sistema e o custo.
