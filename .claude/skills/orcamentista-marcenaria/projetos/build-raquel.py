@@ -50,13 +50,13 @@ ITENS = [
   'baixo, a <b>bicama sobre rodízio</b>, que sai inteira para receber a '
   'visita e volta para debaixo da cama no dia seguinte.'),
  ('Estudar', 'Mesa com ajuste de altura', rq.FECHADOS[1][1], rq.FECHADOS[1][1],
-  'Mesa de estudo com <b>tampo ripado em Itapuã</b> e laterais em <b>MDF '
-  'Sal Rosa Arauco</b>, bordas <b>levemente arredondadas</b> como a '
-  'designer desenhou. E com <b>ajuste de altura</b>: a mesa sobe junto com '
-  'quem senta nela.'),
+  'Mesa de estudo com tampo em <b>MDF Itapuã Duratex</b> e laterais em '
+  '<b>MDF Sal Rosa Arauco</b>. E com <b>ajuste de altura</b>: a mesa sobe '
+  'junto com quem senta nela, e acompanha a criança por anos em vez de '
+  'virar móvel pequeno.'),
  ('Guardar', 'Roupeiro e prateleiras', rq.PV_R[LACA], rq.PV_R[MEL],
-  'As <b>cinco prateleiras de canto</b> em quadrante, com o canto '
-  'arredondado e <b>suporte invisível</b> — nenhuma mão-francesa à vista. '
+  'As <b>cinco prateleiras de canto</b> em quadrante, com a <b>ponta em '
+  'curva</b> e <b>suporte invisível</b> — nenhuma mão-francesa à vista. '
   'E a <b>frente do roupeiro renovada</b>, de duas formas possíveis — '
   'lado a lado <b>na página seguinte</b>.'),
 ]
@@ -81,21 +81,21 @@ CSS = (open(P/'css-proposta.css', encoding='utf-8').read() + """
   margin-top:4.2mm;flex:none;}
 .parRQ .phRQ{border-radius:5px;overflow:hidden;line-height:0;
   border:1px solid var(--hair);}
-.parRQ .phRQ img{display:block;width:100%;height:53mm;object-fit:cover;
+.parRQ .phRQ img{display:block;width:100%;height:49mm;object-fit:cover;
   object-position:center;}
 .capRQ{font-size:7pt;color:var(--mut);letter-spacing:.04em;margin-top:1.6mm;
   flex:none;}
 .itRQ{margin-top:4mm;flex:none;}
-.itRQ .r{display:flex;gap:6mm;padding:3mm 0;border-top:1px solid var(--hair);}
+.itRQ .r{display:flex;gap:6mm;padding:2.5mm 0;border-top:1px solid var(--hair);}
 .itRQ .a{flex:none;width:26mm;font-size:6.9pt;letter-spacing:.14em;
   text-transform:uppercase;color:var(--gold);font-weight:700;padding-top:1mm;}
 .itRQ .t{flex:1;}
 .itRQ .n{font-weight:600;font-size:10pt;}
-.itRQ .d{color:var(--soft);font-size:8.5pt;line-height:1.55;margin-top:1.2mm;}
+.itRQ .d{color:var(--soft);font-size:8.4pt;line-height:1.5;margin-top:1mm;}
 .itRQ .d b{color:var(--ink);font-weight:600;}
 
-.tecRQ{display:grid;grid-template-columns:repeat(2,1fr);gap:4mm 7mm;
-  margin-top:5mm;padding-top:4mm;border-top:1px solid var(--hair);flex:none;}
+.tecRQ{display:grid;grid-template-columns:repeat(2,1fr);gap:3.2mm 7mm;
+  margin-top:4mm;padding-top:3.2mm;border-top:1px solid var(--hair);flex:none;}
 .tecRQ .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
   color:var(--gold);font-weight:700;}
 .tecRQ .d{color:var(--soft);font-size:8.3pt;margin-top:1mm;line-height:1.5;}
@@ -172,7 +172,7 @@ p1 = f"""<div class="page"><div class="pad">
   </div>
 
   <div style="margin-top:6mm;" class="eyebrow">Quarto</div>
-  <div class="h-sec serif" style="font-size:26pt;">Um quarto que<br>
+  <div class="h-sec serif" style="font-size:24pt;">Um quarto que<br>
     <em>cresce junto.</em></div>
   <div class="rule"></div>
   <div class="leadRQ">Raquel, o projeto da <b>{DESIGNER}</b> chegou
@@ -195,9 +195,11 @@ p1 = f"""<div class="page"><div class="pad">
     <div><div class="k">Palha indiana</div><div class="d">
       <b>Quadriculada</b>, entrançada e <b>instalada</b> no caixilho da
       cama — trabalho manual, feito peça a peça.</div></div>
-    <div><div class="k">Bordas</div><div class="d">
-      <b>Levemente arredondadas</b> em toda a mesa, como a designer
-      desenhou — num quarto de criança, é segurança.</div></div>
+    <div><div class="k">Bordas · o que muda</div><div class="d">
+      O caderno pede <b>quinas levemente abauladas</b>. <b>Em MDF
+      melamínico isso não é possível</b>: o revestimento é um filme de
+      superfície, e arredondar a quina expõe o miolo. A borda sai
+      <b>reta, com fita</b> em todo o perímetro.</div></div>
     <div><div class="k">Medição</div><div class="d">
       <b>No local, antes do corte.</b> O caderno pede isso em todas as
       pranchas.</div></div>

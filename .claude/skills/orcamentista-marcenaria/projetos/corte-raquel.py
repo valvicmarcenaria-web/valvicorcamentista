@@ -53,8 +53,11 @@ FECHADOS = [
      'MDF Itapuã, cabeceira ripada, palha indiana nas laterais e bicama '
      'sobre rodízio'),
     ('Mesa com ajuste de altura', 2500.0,
-     'tampo ripado em Itapuã, laterais em Sal Rosa, bordas arredondadas e '
-     '⭐ AJUSTE DE ALTURA [Jonathan 09/10]'),
+     'tampo em Itapuã, laterais em Sal Rosa e ⭐ AJUSTE DE ALTURA. '
+     '⛔ [Jonathan 09/10] o tampo NÃO É RIPADO — era leitura minha da '
+     'textura do desenho. E ⛔ EM MELAMÍNICO NÃO SE ABAÚLA A QUINA: o '
+     'revestimento é filme de superfície, arredondar expõe o miolo. '
+     'A borda sai reta com fita, e isso está escrito na proposta.'),
 ]
 
 # ── a linha calculada: ROUPEIRO + PRATELEIRAS ─────────────────────────────

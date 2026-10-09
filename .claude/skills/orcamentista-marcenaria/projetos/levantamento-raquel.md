@@ -217,3 +217,29 @@ dobradiça não está inclusa. Reescrito.
 ⭐ É a terceira vez na semana: **todo item novo tem de ser lido contra o
 resto do documento.** Na United foi a lista de exclusões que negava o vidro
 vendido; aqui foi o card que prometia a ferragem excluída.
+
+---
+
+## 09/10/2026 — duas correções na mesa
+
+> *"uma correção da mesa, o tampo não é ripado e em mdf melamínico não é
+> possível abaular as quinas, deixe isso descrito na proposta"*
+
+1. **O tampo não é ripado.** Eu li as linhas paralelas da vista superior
+   como ripado; é a textura da madeira no desenho. Corrigido para tampo em
+   MDF Itapuã Duratex.
+2. ⛔ **Em melamínico não se abaúla a quina.** O caderno pede *"bordas
+   levemente arredondadas"*; o revestimento melamínico é um **filme de
+   superfície**, e arredondar a aresta **expõe o miolo**. A borda sai
+   **reta, com fita**.
+
+A proposta passou a dizer isso em bloco próprio na página 1, "Bordas · o
+que muda" — dito antes, é informação; dito depois, é discussão na entrega.
+
+⚠ A prateleira de canto continua com **ponta em curva**: isso é o
+**formato** da peça, que a fita flexível acompanha sem problema. Troquei
+"canto arredondado" por "ponta em curva" justamente para não confundir
+formato com perfil de aresta na mesma página.
+
+★ Se a quina abaulada for condição da designer, o caminho é outro material
+— e aí muda o preço da mesa.
