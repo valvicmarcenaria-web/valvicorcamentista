@@ -1,0 +1,271 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"><style>
+:root{
+  --ink:#1A1714; --soft:#5C564C; --mut:#918A7C; --line:#E3DDD1; --hair:#F0EBE1;
+  --paper:#fff; --cream:#FAF7F1; --sand:#F1EBDF;
+  --gold:#9C7A3C; --gold-lt:#C6A567; --gold-pale:#F5EEDF; --deep:#241F1B;
+}
+@page{size:A4;margin:0;}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;
+     color:var(--ink);font-size:9.6pt;line-height:1.62;}
+.serif{font-family:'Cormorant Garamond','Liberation Serif',Georgia,serif;}
+.page{position:relative;width:210mm;height:297mm;overflow:hidden;
+      background:var(--paper);page-break-after:always;}
+.page:last-of-type{page-break-after:avoid;}
+.pad{padding:17mm 19mm 14mm;height:100%;display:flex;flex-direction:column;}
+h1,h2,h3{margin:0;font-weight:600;}
+p{margin:0;}
+.eyebrow{font-size:7.2pt;letter-spacing:.30em;text-transform:uppercase;
+         color:var(--gold);font-weight:700;}
+.rule{height:1.5px;width:40px;background:var(--gold);margin:7px 0 13px;}
+.h-sec{font-family:'Cormorant Garamond',Georgia,serif;font-size:23pt;
+       line-height:1.12;font-weight:600;letter-spacing:-.01em;}
+.lead{color:var(--soft);font-size:9.9pt;max-width:150mm;}
+.foot{margin-top:auto;padding-top:8mm;border-top:1px solid var(--hair);
+      display:flex;justify-content:space-between;font-size:7.2pt;
+      letter-spacing:.16em;text-transform:uppercase;color:var(--mut);}
+
+/* capa */
+.cover{background:var(--deep);color:#F6F1E7;}
+.cover .pad{padding:24mm 19mm 16mm;}
+.cover .eyebrow{color:var(--gold-lt);}
+.cover .rule{background:var(--gold-lt);width:56px;height:2px;}
+.cv-t{font-family:'Cormorant Garamond',Georgia,serif;font-size:38pt;
+      line-height:1.05;font-weight:600;letter-spacing:-.015em;margin-top:3mm;max-width:150mm;}
+.cv-nome{font-family:'Cormorant Garamond',Georgia,serif;font-size:74pt;
+         line-height:.98;font-weight:600;letter-spacing:-.025em;margin-top:4mm;
+         color:#F7F2E8;}
+.cv-s{font-size:13pt;color:#CFC6B4;margin-top:7mm;font-weight:300;
+      line-height:1.45;}
+.cv-meta{margin-top:13mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6mm;
+         border-top:1px solid rgba(255,255,255,.16);padding-top:7mm;}
+.cv-meta .k{font-size:6.9pt;letter-spacing:.2em;text-transform:uppercase;
+            color:var(--gold-lt);font-weight:700;}
+.cv-meta .v{font-size:10.4pt;color:#EDE6D9;margin-top:2mm;}
+.cv-brand{font-size:8.6pt;letter-spacing:.42em;text-transform:uppercase;
+          color:#E8DFCB;font-weight:700;}
+.cv-num{position:absolute;right:19mm;top:22mm;font-family:'Cormorant Garamond',Georgia,serif;
+        font-size:110pt;line-height:1;color:rgba(198,165,103,.13);font-weight:600;}
+
+/* itens */
+.it{padding:3.1mm 0;border-bottom:1px solid var(--hair);display:flex;gap:6mm;}
+.it:last-child{border-bottom:none;}
+.it-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:14.5pt;color:var(--gold-lt);
+      font-weight:600;min-width:9mm;line-height:1.1;}
+.it-t{font-size:10.4pt;font-weight:600;letter-spacing:-.005em;}
+.it-d{color:var(--soft);font-size:8.4pt;margin-top:1mm;line-height:1.5;}
+
+/* cenários */
+.cen{border:1px solid var(--line);border-radius:2px;padding:4.6mm 5.6mm;
+     margin-bottom:3.4mm;background:var(--cream);}
+.cen.hi{background:var(--gold-pale);border-color:var(--gold-lt);}
+.cen-h{display:flex;align-items:baseline;gap:4mm;}
+.cen-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:20pt;
+       color:var(--gold);font-weight:600;line-height:1;}
+.cen-t{font-size:12.5pt;font-weight:600;}
+.cen-g{margin-left:auto;font-size:7.6pt;letter-spacing:.16em;text-transform:uppercase;
+       color:#fff;background:var(--gold);padding:2.2mm 3.4mm;border-radius:2px;
+       font-weight:700;white-space:nowrap;}
+.cen-x{color:var(--soft);font-size:8.7pt;margin-top:2mm;}
+.cen-l{margin-top:2.8mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm;
+       border-top:1px solid var(--line);padding-top:3.2mm;}
+.cen-l .k{font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;
+          color:var(--mut);font-weight:700;}
+.cen-l .v{font-size:8.7pt;margin-top:1mm;line-height:1.4;}
+
+/* tabela de investimento */
+table{width:100%;border-collapse:collapse;}
+.inv th{font-size:6.9pt;letter-spacing:.16em;text-transform:uppercase;
+        color:var(--mut);font-weight:700;text-align:right;padding:0 0 3mm;
+        border-bottom:1.5px solid var(--gold);}
+.inv th.l{text-align:left;}
+.inv td{padding:2.4mm 0;border-bottom:1px solid var(--hair);text-align:right;
+        font-variant-numeric:tabular-nums;font-size:9.6pt;}
+.inv td.l{text-align:left;font-size:9.5pt;}
+.inv td.hi{background:var(--gold-pale);font-weight:600;
+           padding-right:2.6mm;padding-left:2.6mm;}
+.inv th.hi{background:var(--gold-pale);padding-right:2.6mm;padding-left:2.6mm;
+           color:var(--gold);}
+.inv tr.tot td{border-bottom:none;border-top:1.5px solid var(--ink);
+               padding-top:3mm;font-size:13.5pt;font-weight:600;
+               font-family:'Cormorant Garamond',Georgia,serif;}
+.inv tr.tot td.l{font-family:inherit;font-size:8pt;letter-spacing:.18em;
+                 text-transform:uppercase;font-weight:700;}
+
+.box{background:var(--cream);border-left:2.5px solid var(--gold);
+     padding:4mm 5.2mm;margin-top:4mm;}
+.box .t{font-size:7.4pt;letter-spacing:.18em;text-transform:uppercase;
+        color:var(--gold);font-weight:700;}
+.box p{color:var(--soft);font-size:9pt;margin-top:2mm;}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:9mm;}
+.term{padding:3.4mm 0;border-bottom:1px solid var(--hair);}
+.term:last-child{border-bottom:none;}
+.term .k{font-size:6.9pt;letter-spacing:.18em;text-transform:uppercase;
+         color:var(--gold);font-weight:700;}
+.term .v{font-size:9.5pt;margin-top:1.2mm;}
+.term .s{color:var(--soft);font-size:8.5pt;margin-top:.8mm;}
+.pay td{padding:2.6mm 0;border-bottom:1px solid var(--hair);font-size:9pt;}
+.pay td.d{text-align:right;font-weight:600;color:var(--gold);
+          font-variant-numeric:tabular-nums;}
+.fora .k{font-size:9.3pt;font-weight:600;}
+.fora .v{color:var(--soft);font-size:8.6pt;margin-top:.8mm;}
+.fora li{margin-bottom:3.2mm;list-style:none;}
+.fora ul{margin:0;padding:0;}
+.sig{margin-top:auto;padding-top:9mm;display:grid;grid-template-columns:1fr 1fr;gap:14mm;}
+.sig .ln{border-top:1px solid var(--ink);padding-top:2.4mm;font-size:8.4pt;
+         color:var(--soft);}
+
+
+/* ── Raquel · quarto infantil ─────────────────────────────────────────── */
+/* ⛔ flex:none em TODO bloco fechado: .pad é coluna flex e um box com
+      overflow:hidden ENCOLHE em silêncio quando a coluna estoura. */
+.topRQ{display:flex;justify-content:space-between;align-items:baseline;gap:8mm;
+  padding-bottom:4.2mm;border-bottom:1px solid var(--hair);flex:none;}
+.topRQ .b{font-family:'Cormorant Garamond',Georgia,serif;font-size:13.5pt;
+  font-weight:700;letter-spacing:.02em;}
+.topRQ .m{font-size:7.2pt;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--mut);font-weight:700;text-align:right;}
+
+.leadRQ{color:var(--soft);font-size:9.2pt;line-height:1.56;max-width:160mm;
+  flex:none;}
+.leadRQ b{color:var(--ink);font-weight:600;}
+
+.itRQ{margin-top:5mm;flex:none;}
+.itRQ .r{display:flex;gap:6mm;padding:3.4mm 0;border-top:1px solid var(--hair);}
+.itRQ .a{flex:none;width:26mm;font-size:6.9pt;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold);font-weight:700;padding-top:1mm;}
+.itRQ .t{flex:1;}
+.itRQ .n{font-weight:600;font-size:10pt;}
+.itRQ .d{color:var(--soft);font-size:8.5pt;line-height:1.55;margin-top:1.2mm;}
+.itRQ .d b{color:var(--ink);font-weight:600;}
+
+.tecRQ{display:grid;grid-template-columns:repeat(2,1fr);gap:4mm 7mm;
+  margin-top:5mm;padding-top:4mm;border-top:1px solid var(--hair);flex:none;}
+.tecRQ .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.tecRQ .d{color:var(--soft);font-size:8.3pt;margin-top:1mm;line-height:1.5;}
+.tecRQ .d b{color:var(--ink);}
+
+table.invRQ{width:100%;border-collapse:collapse;margin-top:3.4mm;font-size:9pt;}
+table.invRQ th{font-size:6.9pt;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--mut);font-weight:700;padding:0 0 2.2mm;text-align:left;}
+table.invRQ th.r,table.invRQ td.r{text-align:right;}
+table.invRQ td{padding:2mm 0;border-top:1px solid var(--hair);vertical-align:top;}
+table.invRQ td.a{font-size:6.9pt;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;width:28mm;padding-top:2.6mm;}
+table.invRQ td.i{font-weight:600;}
+table.invRQ tr.tot td{border-top:1.6px solid var(--ink);padding-top:3mm;
+  font-family:'Cormorant Garamond',Georgia,serif;font-size:22pt;font-weight:700;}
+table.invRQ tr.tot td.a,table.invRQ tr.tot td.i{font-family:inherit;
+  font-size:9.6pt;}
+
+.escRQ{margin-top:4.5mm;flex:none;}
+.escRQ .ttl{font-size:6.9pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--mut);font-weight:700;padding-bottom:1.6mm;}
+.escRQ .l{display:flex;justify-content:space-between;align-items:baseline;
+  gap:6mm;padding:1.6mm 0;border-top:1px solid var(--hair);font-size:8.5pt;
+  color:var(--soft);}
+.escRQ .l .x{flex:none;font-size:8pt;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+
+.valRQ{margin-top:4.5mm;padding:4mm 5.5mm;background:var(--ink);color:#fff;
+  border-radius:4px;display:flex;align-items:baseline;gap:6mm;flex:none;}
+.valRQ .k{flex:none;font-size:7.2pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-lt);font-weight:700;}
+.valRQ .d{flex:none;font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:14.5pt;font-weight:700;}
+.valRQ .t{flex:1;font-size:8.1pt;color:#D7D0C3;line-height:1.5;text-align:right;}
+
+.cndRQ{display:grid;grid-template-columns:repeat(4,1fr);gap:5mm;margin-top:4.5mm;
+  padding-top:3.2mm;border-top:1px solid var(--hair);flex:none;}
+.cndRQ .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.cndRQ .d{color:var(--soft);font-size:8pt;margin-top:1mm;line-height:1.44;}
+.cndRQ .d b{color:var(--ink);}
+.notaRQ{margin-top:3.6mm;padding-left:4mm;border-left:2.5px solid var(--gold-lt);
+  font-size:7.9pt;color:var(--soft);line-height:1.5;flex:none;}
+.notaRQ b{color:var(--ink);}
+</style></head><body><div class="page"><div class="pad">
+  <div class="topRQ">
+    <div class="b">Valvic Marcenaria</div>
+    <div class="m">Proposta comercial<br>Raquel Oliveira · 9 de outubro de 2026</div>
+  </div>
+
+  <div style="margin-top:6mm;" class="eyebrow">Quarto</div>
+  <div class="h-sec serif" style="font-size:26pt;">Um quarto que<br>
+    <em>cresce junto.</em></div>
+  <div class="rule"></div>
+  <div class="leadRQ">Raquel, o projeto da <b>Rubia Nascimento</b> chegou
+  detalhado — e a marcenaria dele é o que fica. São <b>quatro peças</b>:
+  a cama, a mesa, as prateleiras e o <b>roupeiro novo</b>, que substitui o que está lá hoje.</div>
+
+  <div class="itRQ"><div class="r"><div class="a">Dormir</div><div class="t"><div class="n">Cama com bicama</div><div class="d">Cama em <b>MDF Itapuã Duratex</b> com cabeceira <b>ripada</b> e laterais em <b>palha indiana quadriculada</b>. Por baixo, a <b>bicama sobre rodízio</b>, que sai inteira para receber a visita e volta para debaixo da cama no dia seguinte.</div></div></div><div class="r"><div class="a">Estudar</div><div class="t"><div class="n">Mesa</div><div class="d">Mesa de estudo com <b>tampo ripado em Itapuã</b> e laterais em <b>MDF Sal Rosa Arauco</b>. Todas as <b>bordas levemente arredondadas</b>, como a designer desenhou — num quarto de criança isso não é detalhe de estilo.</div></div></div><div class="r"><div class="a">Guardar</div><div class="t"><div class="n">Prateleiras de canto</div><div class="d"><b>Cinco prateleiras em quadrante</b>, com o canto arredondado e <b>suporte invisível</b> — nenhuma mão-francesa e nenhum parafuso à vista. Em <b>MDF melamínico</b>, no mesmo padrão do roupeiro novo.</div></div></div><div class="r"><div class="a">Integrar</div><div class="t"><div class="n">Roupeiro novo</div><div class="d"><b>Roupeiro novo</b>, em <b>MDF melamínico</b>, no lugar do que está hoje no quarto — com portas de giro, prateleiras, gavetas e cabideiro. <b>A retirada e o descarte do móvel antigo são nossos.</b></div></div></div></div>
+
+  <div class="tecRQ">
+    <div><div class="k">Acabamento</div><div class="d">
+      <b>MDF melamínico</b> no roupeiro e nas prateleiras, com fita de borda — revestimento de fábrica, que não descasca e não pede manutenção.</div></div>
+    <div><div class="k">Palha indiana</div><div class="d">
+      <b>Quadriculada</b>, entrançada e <b>instalada</b> no caixilho da
+      cama — trabalho manual, feito peça a peça.</div></div>
+    <div><div class="k">Bordas</div><div class="d">
+      <b>Levemente arredondadas</b> em toda a mesa, como a designer
+      desenhou — num quarto de criança, é segurança.</div></div>
+    <div><div class="k">Medição</div><div class="d">
+      <b>No local, antes do corte.</b> O caderno pede isso em todas as
+      pranchas.</div></div>
+  </div>
+  <div class="foot"><span>Valvic Marcenaria</span><span>Raquel Oliveira · quarto</span><span>1 / 2</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="topRQ">
+    <div class="b">Valvic Marcenaria</div>
+    <div class="m">Proposta comercial<br>Raquel Oliveira · 9 de outubro de 2026</div>
+  </div>
+
+  <div style="margin-top:6mm;" class="eyebrow">O investimento</div>
+  <div class="h-sec serif" style="font-size:25pt;">Peça a peça.</div>
+  <div class="rule"></div>
+
+  <table class="invRQ">
+    <thead><tr><th></th><th></th><th class="r">Investimento</th></tr></thead>
+    <tbody><tr><td class="a">Dormir</td><td class="i">Cama com bicama</td><td class="r">R$ 7.520</td></tr><tr><td class="a">Estudar</td><td class="i">Mesa</td><td class="r">R$ 1.050</td></tr><tr><td class="a">Guardar</td><td class="i">Prateleiras de canto</td><td class="r">R$ 2.750</td></tr><tr><td class="a">Integrar</td><td class="i">Roupeiro novo</td><td class="r">R$ 14.510</td></tr>
+      <tr class="tot"><td class="a"></td><td class="i">Investimento total</td>
+        <td class="r">R$ 25.830</td></tr>
+    </tbody>
+  </table>
+
+  <div class="valRQ">
+    <div class="k">Entrega</div>
+    <div class="d">Ainda em 2026</div>
+    <div class="t">Estamos fechando a agenda de produção do ano —<br>
+    e há uma vaga reservada para o quarto.</div>
+  </div>
+
+  <div class="escRQ">
+    <div class="ttl">Condições de pagamento</div>
+    <div class="l"><div>30% de entrada + restante em até 10× no cartão</div>
+      <div class="x">sem desconto</div></div>
+    <div class="l"><div>50% de entrada + restante em até 8× no cartão</div>
+      <div class="x">−3%</div></div>
+    <div class="l"><div>70% de entrada + restante em até 6× no cartão</div>
+      <div class="x">−5%</div></div>
+    <div class="l"><div>70% de entrada + saldo por transferência</div>
+      <div class="x">−7%</div></div>
+  </div>
+
+  <div class="cndRQ">
+    <div><div class="k">Prazo</div><div class="d">
+      <b>60 dias corridos</b>, contados do aceite e da medição.</div></div>
+    <div><div class="k">Garantia</div><div class="d">
+      <b>10 anos</b> sobre estrutura e ferragens.</div></div>
+    <div><div class="k">Execução</div><div class="d">
+      Do corte à instalação, com <b>equipe própria</b> da casa.</div></div>
+    <div><div class="k">Validade</div><div class="d">
+      <b>7 dias úteis</b> a partir desta data.</div></div>
+  </div>
+
+  <div class="notaRQ"><b>Tudo é nosso:</b> com o roupeiro novo, as quatro peças saem da nossa produção e entram na garantia de dez anos por inteiro. <b>Não inclusos:</b> papel de parede,
+  iluminação e pendentes, colchões, roupa de cama, cadeira, mesa lateral,
+  dossel, quadros, o bandô e o mobiliário solto.</div>
+  <div class="foot"><span>Valvic Marcenaria</span><span>Raquel Oliveira · quarto</span><span>2 / 2</span></div>
+</div></div></body></html>

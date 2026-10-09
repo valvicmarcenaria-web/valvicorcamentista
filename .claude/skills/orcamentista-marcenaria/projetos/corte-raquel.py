@@ -38,7 +38,12 @@ PRECO = {15: 500.0, 18: 600.0}          # MDF cor (Itapuã, Sal Rosa) — base
 FITA_M  = 3.0 + 2.5                     # fita cor + filetagem
 LACA_M2 = 650.0                         # base da casa, "m² em peça lisa"
 PLOT_M2 = 180.0                         # ★ adesivo + aplicação, estimado
-PALHA_M2 = 320.0                        # ★ palha indiana + caixilho, estimado
+# ⭐ [Jonathan 09/10] "palinha considere 950,00 o mt quadrado instalada"
+#   ⚠ A R$ 950 INSTALADA, cada m² de palha vale R$ 2.095 de PREÇO. Onde ela
+#     entra deixou de ser detalhe: a prancha traz a legenda apontando para a
+#     cama, não o pano. Adotei as duas laterais (1,60 m²) e isso precisa de
+#     confirmação da designer antes de fechar.
+PALHA_M2 = 950.0                        # [Jonathan 09/10], instalada
 MC_ALVO = 0.40                          # ⭐ [Jonathan 08/10]
 
 FER_UN = {'rodizio': 25.0, 'corr': 85.0, 'supinv': 60.0}
@@ -100,15 +105,54 @@ K = 'Roupeiro existente · revestimento'
 amb(K)
 laca(K, 2.50*2.68)
 
+# ── 4b · ROUPEIRO NOVO — cenário de TROCA  ⭐ [Jonathan 09/10] ────────────
+# "crie uma versão com troca das peças atuais por outro MDF melamínico."
+# ⛔⛔ O PROJETO NÃO DETALHA O INTERIOR DO ROUPEIRO. A Vista 3 mostra o móvel
+#   existente como um PLANO de 250 × 268 — não há planta, não há corte, não
+#   há legenda de gavetas nem de cabideiro. Fazer um novo é PROJETAR um,
+#   e a configuração interna é que manda no preço.
+#   ⭐ A configuração abaixo é MINHA, não da designer. Precisa do aval dela.
+ROUPEIRO_NOVO = [
+    (15,'Lateral e divisória',   268,  60, 4, 2),
+    (15,'Base, tampo e travessa',247,  60, 3, 1),
+    (15,'Fundo',                 250, 268, 1, 1),
+    (18,'Porta',                 268,  62, 4, 2),
+    (15,'Prateleira',             60,  58, 6, 2),
+    (18,'Frente de gaveta',       20,  60, 4, 2),
+    (15,'Gaveta · lateral',       55,  18, 8, 1),
+    (15,'Gaveta · frente e fundo',57,  18, 8, 1),
+    (15,'Gaveta · fundo',         57,  55, 4, 1),
+    (15,'Rodapé',                250,   4, 1, 1),
+    (15,'Rodateto recuado',      250,   2, 1, 1),
+]
+FER_NOVO = dict(dobr=12, corr=4, cabide=2)
+FER_UN.update({'dobr': 35.0, 'cabide': 60.0})
+# ⚠ e a retirada do móvel que está lá — desmontagem, descida e descarte.
+RETIRADA = 450.0                        # ★ estimado
+
 AMBS = list(PCS)
 
 # ══════════════════════════════════════════════════════════════════════════
-def versao(nome, acab_m2):
-    """acab_m2: preço do m² de acabamento — laca (650) ou plotagem (180)."""
+def versao(nome, acab_m2, roupeiro_novo=False):
+    """acab_m2: preço do m² de acabamento — laca (650) ou plotagem (180).
+    roupeiro_novo: troca o móvel existente por um NOVO em melamínico, e aí
+    as prateleiras também saem em melamínico com fita, sem laca."""
+    KR = 'Roupeiro existente · revestimento'
+    KP = 'Prateleiras de canto'
+    pcs  = {k: list(v) for k, v in PCS.items()}
+    lac  = dict(LACA)
+    fer_ = {k: dict(FER[k]) for k in AMBS}
+    ter_ = dict(TER)
+    if roupeiro_novo:
+        pcs[KR] = list(ROUPEIRO_NOVO)       # vira móvel, deixa de ser pintura
+        lac[KR] = 0.0
+        lac[KP] = 0.0                       # prateleira acompanha: melamínico
+        for x, v in FER_NOVO.items(): fer_[KR][x] = fer_[KR].get(x, 0) + v
+        ter_[KR] += RETIRADA
     area_mat, ch_amb, fita_amb = {}, {}, {}
     for k in AMBS: ch_amb[k] = fita_amb[k] = 0.0
     for k in AMBS:
-        for esp, _, c, l, q, fc in PCS[k]:
+        for esp, _, c, l, q, fc in pcs[k]:
             area_mat[esp] = area_mat.get(esp, 0.0) + c*l*q/1e4
             fita_amb[k]  += 2*(c+l)*q/100*(0.75 if fc == 2 else 0.4)*FITA_M
     chapas   = {e: -(-v/(CH_M2*APROV)//1) for e, v in area_mat.items()}
@@ -116,19 +160,19 @@ def versao(nome, acab_m2):
     taxa = {e: PRECO[e]/(CH_M2*APROV) for e in area_mat}
     area_k = {}
     for k in AMBS:
-        area_k[k] = sum(c*l*q/1e4 for _, _, c, l, q, _ in PCS[k])
-        ch_amb[k] = sum(c*l*q/1e4*taxa[esp] for esp, _, c, l, q, _ in PCS[k])
+        area_k[k] = sum(c*l*q/1e4 for _, _, c, l, q, _ in pcs[k])
+        ch_amb[k] = sum(c*l*q/1e4*taxa[esp] for esp, _, c, l, q, _ in pcs[k])
     sobra = sum(custo_ch.values()) - sum(area_mat[e]*taxa[e] for e in area_mat)
     at = sum(area_k.values())
     for k in AMBS:
         if at: ch_amb[k] += sobra*area_k[k]/at
-    acab = {k: LACA[k]*acab_m2 for k in AMBS}
+    acab = {k: lac[k]*acab_m2 for k in AMBS}
     palh = {k: PALHA[k]*PALHA_M2 for k in AMBS}
-    fer  = {k: sum(FER[k][x]*FER_UN[x] for x in FER_UN) for k in AMBS}
+    fer  = {k: sum(fer_[k].get(x, 0)*FER_UN[x] for x in FER_UN) for k in AMBS}
     CDI = {}
     for k in AMBS:
         proprio = ch_amb[k] + fita_amb[k] + acab[k] + palh[k]
-        CDI[k] = (proprio*1.06 + fer[k] + TER[k])*(1 + M.EMBALAGEM)
+        CDI[k] = (proprio*1.06 + fer[k] + ter_[k])*(1 + M.EMBALAGEM)
     BASE = M.base(parcelas=0, rt=False, vendedor=False)
     PV = {k: round(CDI[k]/(BASE - MC_ALVO)/10)*10 for k in AMBS}
     return dict(nome=nome, chapas=chapas, ch=ch_amb, fita=fita_amb, acab=acab,
@@ -137,6 +181,7 @@ def versao(nome, acab_m2):
 
 V_LACA = versao('Laca fosca Sayerlack J029', LACA_M2)
 V_PLOT = versao('Plotagem em adesivo',       PLOT_M2)
+V_TROCA = versao('Troca por melamínico novo', LACA_M2, roupeiro_novo=True)
 
 if __name__ == '__main__':
     W = 86
@@ -190,6 +235,32 @@ if __name__ == '__main__':
     print('    ela é alta sobre um material barato, e o trabalho é o custo.')
 
     print(f'\n{"═"*W}')
+    print('⛔⛔ A LACA NO EXISTENTE NÃO FECHA CONTRA UM ROUPEIRO NOVO')
+    print(f'{"═"*W}')
+    KR = 'Roupeiro existente · revestimento'
+    _un = LACA_M2*1.06*(1+M.EMBALAGEM)/(V_LACA['BASE']-MC_ALVO)
+    print(f'  O roupeiro NOVO completo sai por R$ {br(V_TROCA["PV"][KR])} —')
+    print('  número que o Jonathan confirmou como preço de mercado (09/10).')
+    print(f'  Pintar só a FRENTE do que já está lá custa R$ {br(V_LACA["PV"][KR])}.')
+    print()
+    print(f'  {"o que a laca cobre":<34}{"área":>9}{"preço":>11}')
+    for rot, m2 in (('só a frente (o lançado)',        2.50*2.68),
+                    ('frente + verso das portas',      2.50*2.68 + 5.00),
+                    ('frente, verso, laterais e miolo', 16.0)):
+        print(f'  {rot:<34}{br1(m2):>7} m²{br(m2*_un):>11}')
+    print()
+    print(f'  ⛔ Já na hipótese mais enxuta a pintura custa {V_LACA["PV"][KR]/V_TROCA["PV"][KR]*100:.0f}% de um')
+    print('     roupeiro novo INTEIRO. E se a laca pegar o verso das portas —')
+    print('     que é o mínimo para não abrir a porta e ver o móvel velho —')
+    print('     ela passa do preço do novo.')
+    print(f'  ⭐ No TOTAL o cenário da troca já é mais barato: R$ {br(V_TROCA["TOT"])}')
+    print(f'     contra R$ {br(V_LACA["TOT"])}, porque as prateleiras em melamínico')
+    print(f'     custam R$ {br(V_LACA["PV"]["Prateleiras de canto"]-V_TROCA["PV"]["Prateleiras de canto"])} a menos que lacadas.')
+    print('     A laca entrega tinta sobre móvel de terceiro, sem garantia de')
+    print('     estrutura. A troca entrega móvel novo com 10 anos. Mesmo')
+    print('     dinheiro, outro produto.')
+
+    print(f'\n{"═"*W}')
     print('⛔ O ITEM DE RISCO: LACA SOBRE ROUPEIRO EXISTENTE')
     print(f'{"═"*W}')
     print(f'  O roupeiro JÁ EXISTE e provavelmente é melamínico. Laca sobre')
@@ -210,8 +281,13 @@ if __name__ == '__main__':
     for v in (V_LACA, V_PLOT):
         t2 = sum(round(v['CDI'][k]/(b2 - MC_ALVO)/10)*10 for k in AMBS)
         print(f'    RT de 10%, {v["nome"][:28]:<28} R$ {br(v["TOT"])} → R$ {br(t2)}')
-    print('  · preço da PALHA INDIANA (estimada a R$ '+br(PALHA_M2)+'/m²) e dos')
-    print('    rodízios da bicama — nenhum dos dois veio.')
+    _pm2 = sum(PALHA.values())
+    _un  = PALHA_M2*1.06*(1+M.EMBALAGEM)/(V_LACA['BASE']-MC_ALVO)
+    print(f'  · ⛔ ONDE ENTRA A PALHA. A R$ {br(PALHA_M2)}/m² instalada, cada m²')
+    print(f'    vale R$ {br(_un)} de PREÇO. Adotei {br1(_pm2)} m² (as duas')
+    print(f'    laterais da cama) = R$ {br(_pm2*_un)}. A prancha mostra a')
+    print('    legenda, não o pano — a designer tem de confirmar o pano.')
+    print('  · preço dos rodízios da bicama — não veio.')
     print('  · preço da PLOTAGEM (estimada a R$ '+br(PLOT_M2)+'/m²).')
     print('  · ⛔ o bandô/cortineiro da Vista 4 é "de gesso OU MDF". Se for')
     print('    MDF é nosso, e não está no preço: são ~2,97 m de frente.')
