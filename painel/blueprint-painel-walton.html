@@ -34,7 +34,7 @@
   .ph .leg .it{ display:flex; align-items:center; gap:5px; font-size:8px; color:rgba(255,255,255,.75); }
   .ph .leg .dot{ width:9px; height:9px; border-radius:2px; }
 
-  .body{ flex:1; padding:6mm 11mm 0; display:flex; flex-direction:column; min-height:0; gap:5.5mm; }
+  .body{ flex:1; padding:5.5mm 11mm 0; display:flex; flex-direction:column; min-height:0; gap:4.6mm; }
 
   /* ─── fluxo principal: 3 colunas com setas ─── */
   .fluxo{ display:grid; grid-template-columns:1fr 26px 0.82fr 26px 1.05fr; gap:0; align-items:stretch; }
@@ -80,7 +80,7 @@
   .saida.pan .hd{ background:var(--navy3); color:#fff; } .saida.pan .hd span{ color:var(--gold-soft); }
   .saida.ind .hd{ background:var(--blue); color:#fff; } .saida.ind .hd span{ color:#cfe0f2; }
   .saida .bd{ padding:9px 12px 10px; }
-  .pg{ border:1px solid var(--line); border-radius:5px; padding:8px 10px; margin-bottom:7px; background:#fcfbf8; }
+  .pg{ border:1px solid var(--line); border-radius:5px; padding:6px 9px; margin-bottom:5px; background:#fcfbf8; }
   .pg:last-child{ margin-bottom:0; }
   .pg .pt{ font-size:8.4px; font-weight:700; letter-spacing:1.1px; text-transform:uppercase;
            color:var(--navy); margin-bottom:3px; }
@@ -89,19 +89,19 @@
   .chip.g{ background:var(--goldbg); color:var(--gold-dk); font-weight:700; }
 
   /* ─── cascata ─── */
-  .casc{ border:1px solid var(--line2); border-radius:7px; background:#fff; padding:10px 13px 11px; }
+  .casc{ border:1px solid var(--line2); border-radius:7px; background:#fff; padding:8px 13px 9px; }
   .casctt{ display:flex; align-items:center; gap:7px; margin-bottom:5px; }
   .casctt .tx{ font-size:8.6px; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:var(--navy); }
   .casctt .ds{ font-size:8px; color:var(--muted); }
 
   /* ─── rodapé em três caixas ─── */
   .tri{ display:grid; grid-template-columns:1fr 1fr 0.9fr; gap:7px; }
-  .cx{ border-radius:6px; padding:10px 13px 11px; font-size:9.2px; line-height:1.5; }
+  .cx{ border-radius:6px; padding:8px 12px 9px; font-size:9px; line-height:1.45; }
   .cx .ct{ font-size:7.4px; font-weight:700; letter-spacing:1.3px; text-transform:uppercase; margin-bottom:4px; }
   .cx.gd{ background:var(--goldbg); border:1px solid #e4d4ab; } .cx.gd .ct{ color:var(--gold-dk); }
   .cx.no{ background:var(--redbg); border:1px solid #efd4d2; } .cx.no .ct{ color:var(--red); }
   .cx.bl{ background:var(--bluebg); border:1px solid #d3dcea; } .cx.bl .ct{ color:var(--blue); }
-  .cx ul{ margin-left:14px; } .cx li{ margin-top:4px; }
+  .cx ul{ margin-left:14px; } .cx li{ margin-top:2.6px; }
   .cx b{ color:var(--navy); }
 
   .rf{ margin-top:auto; padding:2.6mm 11mm 3mm; border-top:1px solid var(--line);
@@ -167,6 +167,10 @@
               <span class="ds">— número, data e valor no bloco 1, com a conferência "ainda a faturar"</span></div></div>
             <div class="lin"><span class="tag no">novo</span><div><b>Conferência de venda</b>
               <span class="ds">— acende quando o valor da ficha difere do investimento do Controle de Pagamentos</span></div></div>
+            <div class="lin"><span class="tag no">novo</span><div><b>Botão "Abrir ficha"</b>
+              <span class="ds">— no Controle de Pagamentos. Seleciona a linha do projeto e o script
+              duplica a Ficha Modelo, nomeia com o cliente, preenche o valor e registra no Painel
+              Geral. Botão, não automático: senão nasce ficha de cada linha digitada errada</span></div></div>
           </div>
         </div>
 
@@ -227,27 +231,47 @@
           <div class="hd"><b>Painel Looker</b><span>Walton · só leitura</span></div>
           <div class="bd">
             <div class="pg">
-              <div class="pt">Página 1 · Posição e operação</div>
+              <div class="pt">1 · Posição e operação</div>
               <div class="ch">
                 <span class="chip g">Aporte</span><span class="chip">Recebido no mês</span>
                 <span class="chip">A receber</span><span class="chip">Previsto no mês</span>
-                <span class="chip">Linha do tempo de entrada</span>
-                <span class="chip">A receber por projeto</span>
+                <span class="chip">Linha do tempo</span><span class="chip">A receber por projeto</span>
                 <span class="chip g">Vendido</span><span class="chip g">Fabricado</span>
                 <span class="chip g">Instalado</span><span class="chip g">Faturado</span>
-                <span class="chip">Parado na fábrica</span><span class="chip">Custo fixo do mês</span>
+                <span class="chip">Parado na fábrica</span><span class="chip">Custo fixo</span>
                 <span class="chip">MC % do mês</span><span class="chip">Ocupação vs R$ 500 mil</span>
-                <span class="chip">Produção em valor cheio</span><span class="chip">Série mensal</span>
               </div>
             </div>
             <div class="pg">
-              <div class="pt">Página 2 · Margem por projeto</div>
+              <div class="pt">2 · Margem por projeto</div>
               <div class="ch">
                 <span class="chip">Cliente e projeto</span><span class="chip">Venda</span>
                 <span class="chip">Custo total</span><span class="chip g">MC em R$ e em %</span>
-                <span class="chip">Orçado × realizado</span><span class="chip">Desvio de custo</span>
+                <span class="chip">Orçado × realizado</span><span class="chip">Desvio</span>
                 <span class="chip">Entrega e atraso</span>
               </div>
+            </div>
+            <div class="pg">
+              <div class="pt">3 · Comissões por categoria</div>
+              <div class="ch">
+                <span class="chip g">Vendedores</span>
+                <span class="chip g">Projetistas e coordenação</span>
+                <span class="chip g">Operação</span>
+                <span class="chip">Sem nome, só o agregado</span>
+              </div>
+            </div>
+            <div class="pg">
+              <div class="pt">4 · Volume produzido por colaborador</div>
+              <div class="ch">
+                <span class="chip g">Nominal</span><span class="chip">Agrupado por categoria</span>
+                <span class="chip">R$ produzido no mês</span><span class="chip">Série do ano</span>
+              </div>
+            </div>
+            <div style="border-top:1px solid var(--line2);margin-top:2px;padding-top:6px;
+                        font-size:8.6px;line-height:1.45;color:var(--muted)">
+              <b style="color:var(--navy)">Todas as páginas com visão anual e filtro mês a mês.</b>
+              E uma nota fixa no painel: <b style="color:var(--navy)">os valores da equipe são de
+              produção, não de caixa</b> — mostram o que foi gerado, não o que foi pago.
             </div>
           </div>
         </div>
@@ -255,16 +279,17 @@
         <div class="saida ind">
           <div class="hd"><b>Planilhas individuais</b><span>subpasta comissoes_individuais</span></div>
           <div class="bd">
-            <div class="lin"><span class="tag ja">1</span><div><b>Comissões dos projetos</b>
-              <span class="ds">— puxado da Base, não editável. Aparece sozinho quando a ficha é preenchida</span></div></div>
-            <div class="lin"><span class="tag ja">2</span><div><b>Avulsos</b>
-              <span class="ds">— área manual: serviço extra, ajuste, diária</span></div></div>
-            <div class="lin"><span class="tag ja">3</span><div><b>Pagamentos recebidos</b>
-              <span class="ds">— área manual: data, valor, forma</span></div></div>
+            <div class="lin"><span class="tag no">todas</span><div><b>Dashboard</b>
+              <span class="ds">— gerado, pago e a receber, no ano e no mês</span></div></div>
+            <div class="lin"><span class="tag no">todas</span><div><b>Comissões — uma linha por cliente/projeto</b>
+              <span class="ds">— independente de quantos ambientes. Valor puxado da Base; <b>data de
+              pagamento e status</b> digitados, como na planilha da Lorrane</span></div></div>
+            <div class="lin"><span class="tag no">operação</span><div><b>Avulsos</b>
+              <span class="ds">— aba separada, só para marceneiros, ajudantes e freelancers. Vendedor
+              e projetista têm apenas comissão de trabalho</span></div></div>
             <div class="lin" style="border-top:1px solid var(--line2);margin-top:3px;padding-top:5px">
-              <div><b>No topo: gerado − pago = a receber.</b>
-              <span class="ds">Conta corrente, não marcação linha a linha — bloco importado reordena
-              e a marcação gruda na linha errada.</span></div></div>
+              <div><b>A data do pagamento é digitada.</b>
+              <span class="ds">Depende do acordo com cada profissional — não se calcula.</span></div></div>
           </div>
         </div>
       </div>
@@ -322,18 +347,24 @@
           <li><b>Meta e teto de produção:</b> R$ 500 mil por mês.</li>
           <li><b>Fabricado e instalado não batem no mesmo mês</b> — e está certo. O que explica a diferença é o parado na fábrica.</li>
           <li><b>Importa uma vez, edita sempre no mesmo arquivo.</b> Subir uma planilha nova quebra o painel.</li>
+          <li><b>Três categorias</b>, no painel e na organização da planilha: <b>vendedores</b> ·
+            <b>projetistas e coordenação</b> · <b>operação</b> (marceneiros, ajudantes, freelancers).</li>
         </ul>
       </div>
       <div class="cx no">
         <div class="ct">O que o Walton não vê</div>
         <ul>
           <li>Salário e folha — em nenhuma tabela</li>
-          <li>Produção por marceneiro com nome — só o valor cheio</li>
-          <li>Comissão de qualquer pessoa — vendedor, projetista ou marceneiro</li>
+          <li><b>Comissão com nome</b> — na página 3 só o agregado por categoria</li>
+          <li>O que foi efetivamente <b>pago</b> a cada pessoa — o painel mostra produção, não caixa</li>
           <li>As planilhas individuais — pasta separada, fora do painel</li>
           <li>Contas a pagar e boletos atrasados — fora do escopo</li>
           <li>Fornecedor e preço de compra</li>
         </ul>
+        <div style="margin-top:4px;padding-top:4px;border-top:1px dotted #e4c9c6">
+          <b>Ele vê com nome</b> apenas o <b>volume produzido</b> na página 4 — desempenho, não
+          remuneração.
+        </div>
         <div style="margin-top:4px;padding-top:4px;border-top:1px dotted #e4c9c6">
           O Looker é compartilhado como <b>relatório</b>, não como planilha: ele abre com as
           credenciais de quem publica e <b>não alcança nenhum arquivo</b>.
@@ -346,8 +377,9 @@
           <li>Estrutura nova nas duas planilhas, preservando o preenchimento</li>
           <li>Conversão para <b>Google Sheets nativo</b>, ao lado dos .xlsx — você confere antes de aposentar</li>
           <li>Base · Comissões</li>
-          <li>Planilhas individuais na subpasta</li>
-          <li>As 2 páginas no Looker e o link para o Walton</li>
+          <li>Planilhas individuais na subpasta, por categoria</li>
+          <li>Script do botão <b>"Abrir ficha"</b> — eu escrevo, você cola em Extensões</li>
+          <li>As <b>4 páginas</b> no Looker e o link para o Walton</li>
         </ul>
       </div>
     </div>
