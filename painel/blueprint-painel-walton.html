@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Blueprint · Painel de Gestão — Valvic Marcenaria</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A3 landscape; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  :root{ --navy:#0E2038; --navy2:#16314f; --navy3:#1e4269; --gold:#C2A05A; --gold-soft:#d8bd80;
+         --gold-dk:#a9863f; --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8;
+         --line2:#dfdacd; --green:#2f7d4f; --amber:#c47d0e; --red:#b0413f; --blue:#2f5d8c;
+         --okbg:#eff5f1; --redbg:#fcf2f1; --ambbg:#fdf8ee; --goldbg:#f8f1de; --bluebg:#f0f4f9; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3;
+        font-size:10px; line-height:1.45; -webkit-font-smoothing:antialiased; }
+  .sheet{ position:relative; width:420mm; height:297mm; background:var(--cream); margin:16px auto;
+          box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } }
+  svg text{ font-family:'Inter',Arial,sans-serif; }
+
+  .ph{ background:var(--navy); color:#fff; padding:5.5mm 11mm 4.5mm; position:relative; }
+  .ph::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:2.5px;
+              background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 38%,transparent 100%); }
+  .ph .top{ display:flex; align-items:center; gap:11px; }
+  .ph .mono{ width:30px; height:30px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:4px;
+             display:flex; align-items:center; justify-content:center;
+             font-family:'Cormorant Garamond',serif; font-weight:700; font-size:15px; color:var(--gold); }
+  .ph .co{ font-size:9px; font-weight:700; letter-spacing:2.4px; text-transform:uppercase; }
+  .ph .sub{ font-size:7.6px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:700; margin-top:4px; line-height:1.05; }
+  .ph .kx{ font-size:7.6px; letter-spacing:2.6px; text-transform:uppercase; color:var(--gold); margin-top:2px; }
+  .ph .leg{ position:absolute; right:11mm; top:7mm; display:flex; gap:16px; align-items:center; }
+  .ph .leg .it{ display:flex; align-items:center; gap:5px; font-size:8px; color:rgba(255,255,255,.75); }
+  .ph .leg .dot{ width:9px; height:9px; border-radius:2px; }
+
+  .body{ flex:1; padding:6mm 11mm 0; display:flex; flex-direction:column; min-height:0; gap:5.5mm; }
+
+  /* ─── fluxo principal: 3 colunas com setas ─── */
+  .fluxo{ display:grid; grid-template-columns:1fr 26px 0.82fr 26px 1.05fr; gap:0; align-items:stretch; }
+  .seta{ display:flex; align-items:center; justify-content:center; color:var(--gold-dk); }
+
+  .col{ display:flex; flex-direction:column; gap:9px; }
+  .coltt{ display:flex; align-items:center; gap:7px; margin-bottom:1px; }
+  .coltt .n{ width:16px; height:16px; border-radius:50%; background:var(--gold); color:var(--navy);
+             font-size:9px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+  .coltt .tx{ font-size:8.6px; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:var(--navy); }
+  .coltt .ds{ font-size:8px; color:var(--muted); }
+
+  .arq{ border:1px solid var(--line2); border-radius:7px; background:#fff; overflow:hidden; flex:1; }
+  .arq .hd{ background:var(--navy); color:#fff; padding:6px 10px; display:flex; align-items:baseline; gap:7px; }
+  .arq .hd b{ font-size:10.2px; letter-spacing:.3px; }
+  .arq .hd span{ font-size:7.8px; color:var(--gold-soft); letter-spacing:1.2px; text-transform:uppercase; }
+  .arq .bd{ padding:9px 12px 10px; }
+  .lin{ display:flex; align-items:flex-start; gap:6px; font-size:9.4px; padding:4px 0;
+        border-bottom:1px dotted var(--line); line-height:1.35; }
+  .lin:last-child{ border-bottom:0; }
+  .lin .tag{ font-size:7px; font-weight:700; letter-spacing:.5px; padding:1px 5px; border-radius:8px;
+             flex-shrink:0; margin-top:.5px; }
+  .lin .tag.ja{ background:#e4eee8; color:var(--green); }
+  .lin .tag.no{ background:var(--gold); color:var(--navy); }
+  .lin b{ color:var(--navy); }
+  .lin .ds{ color:var(--muted); }
+
+  .base{ border:2px solid var(--gold); border-radius:7px; background:var(--goldbg); overflow:hidden; flex:1;
+         display:flex; flex-direction:column; }
+  .base .hd{ background:var(--gold); color:var(--navy); padding:6px 10px; }
+  .base .hd b{ font-size:10.2px; } .base .hd span{ font-size:7.6px; letter-spacing:1.2px;
+             text-transform:uppercase; display:block; color:#5d4a1c; }
+  .base .bd{ padding:10px 12px; font-size:9.4px; line-height:1.55; flex:1; }
+  .base .bd b{ color:var(--navy); }
+  .base .gr{ background:#fff; border:1px solid #e4d4ab; border-radius:5px; padding:7px 9px;
+             font-size:8.7px; margin-top:7px; color:var(--muted); line-height:1.45; }
+  .base .gr b{ color:var(--navy); }
+
+  .saida{ border:1px solid var(--line2); border-radius:7px; background:#fff; overflow:hidden; }
+  .saida .hd{ padding:6px 10px; display:flex; align-items:baseline; gap:7px; }
+  .saida .hd b{ font-size:10.2px; }
+  .saida .hd span{ font-size:7.6px; letter-spacing:1.2px; text-transform:uppercase; }
+  .saida.pan .hd{ background:var(--navy3); color:#fff; } .saida.pan .hd span{ color:var(--gold-soft); }
+  .saida.ind .hd{ background:var(--blue); color:#fff; } .saida.ind .hd span{ color:#cfe0f2; }
+  .saida .bd{ padding:9px 12px 10px; }
+  .pg{ border:1px solid var(--line); border-radius:5px; padding:8px 10px; margin-bottom:7px; background:#fcfbf8; }
+  .pg:last-child{ margin-bottom:0; }
+  .pg .pt{ font-size:8.4px; font-weight:700; letter-spacing:1.1px; text-transform:uppercase;
+           color:var(--navy); margin-bottom:3px; }
+  .pg .ch{ display:flex; flex-wrap:wrap; gap:3px 4px; }
+  .chip{ font-size:8.6px; background:#eef1f5; color:var(--navy2); border-radius:9px; padding:2.5px 8px; }
+  .chip.g{ background:var(--goldbg); color:var(--gold-dk); font-weight:700; }
+
+  /* ─── cascata ─── */
+  .casc{ border:1px solid var(--line2); border-radius:7px; background:#fff; padding:10px 13px 11px; }
+  .casctt{ display:flex; align-items:center; gap:7px; margin-bottom:5px; }
+  .casctt .tx{ font-size:8.6px; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:var(--navy); }
+  .casctt .ds{ font-size:8px; color:var(--muted); }
+
+  /* ─── rodapé em três caixas ─── */
+  .tri{ display:grid; grid-template-columns:1fr 1fr 0.9fr; gap:7px; }
+  .cx{ border-radius:6px; padding:10px 13px 11px; font-size:9.2px; line-height:1.5; }
+  .cx .ct{ font-size:7.4px; font-weight:700; letter-spacing:1.3px; text-transform:uppercase; margin-bottom:4px; }
+  .cx.gd{ background:var(--goldbg); border:1px solid #e4d4ab; } .cx.gd .ct{ color:var(--gold-dk); }
+  .cx.no{ background:var(--redbg); border:1px solid #efd4d2; } .cx.no .ct{ color:var(--red); }
+  .cx.bl{ background:var(--bluebg); border:1px solid #d3dcea; } .cx.bl .ct{ color:var(--blue); }
+  .cx ul{ margin-left:14px; } .cx li{ margin-top:4px; }
+  .cx b{ color:var(--navy); }
+
+  .rf{ margin-top:auto; padding:2.6mm 11mm 3mm; border-top:1px solid var(--line);
+       display:flex; justify-content:space-between; align-items:center;
+       font-size:7.4px; color:var(--muted); letter-spacing:.3px; }
+  .rf b{ color:var(--navy); letter-spacing:1.3px; text-transform:uppercase; }
+</style>
+</head>
+<body>
+<section class="sheet">
+  <div class="ph">
+    <div class="top">
+      <div class="mono">V</div>
+      <div>
+        <div class="co">Valvic Marcenaria</div>
+        <div class="sub">Vargas Decor Ltda · Belo Horizonte / MG</div>
+      </div>
+    </div>
+    <div class="tt">Blueprint · Painel de Gestão</div>
+    <div class="kx">Onde se preenche · o que se calcula · quem vê</div>
+    <div class="leg">
+      <div class="it"><span class="dot" style="background:#4e8a68"></span>já existe</div>
+      <div class="it"><span class="dot" style="background:#C2A05A"></span>a criar</div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- ═══════ FLUXO ═══════ -->
+    <div class="fluxo">
+
+      <!-- COLUNA 1 · ONDE SE PREENCHE -->
+      <div class="col">
+        <div class="coltt"><div class="n">1</div><div class="tx">Onde se preenche</div>
+          <div class="ds">— as duas planilhas, no Google Sheets</div></div>
+
+        <div class="arq">
+          <div class="hd"><b>Controle de Pagamentos</b><span>o dinheiro</span></div>
+          <div class="bd">
+            <div class="lin"><span class="tag ja">já</span><div><b>2023 · 2024 · 2025 · 2026</b>
+              <span class="ds">— uma linha por projeto, com cliente, investimento, forma de pagamento e até 5 recebimentos com data</span></div></div>
+            <div class="lin"><span class="tag ja">já</span><div><b>Análise &amp; Sazonalidade</b>
+              <span class="ds">— fluxo de caixa realizado, mês a mês, 4 anos</span></div></div>
+            <div class="lin"><span class="tag ja">já</span><div><b>Aporte Walton</b>
+              <span class="ds">— entradas, saídas e saldo</span></div></div>
+            <div class="lin"><span class="tag no">novo</span><div><b>Previsão · valor e data</b>
+              <span class="ds">— duas colunas nas abas do ano. Preenchidas quando a condição é combinada com o cliente</span></div></div>
+            <div class="lin"><span class="tag no">novo</span><div><b>Custo do mês da empresa</b>
+              <span class="ds">— aba nova: custo fixo e despesa, um valor por mês</span></div></div>
+          </div>
+        </div>
+
+        <div class="arq">
+          <div class="hd"><b>Custo por Projeto</b><span>o projeto por dentro</span></div>
+          <div class="bd">
+            <div class="lin"><span class="tag ja">já</span><div><b>Painel Geral</b>
+              <span class="ds">— uma linha por projeto: venda, custo, margem, entrega</span></div></div>
+            <div class="lin"><span class="tag ja">já</span><div><b>Uma ficha por projeto</b>
+              <span class="ds">— ambientes, quem produziu, quem montou, quem projetou, compras e custos</span></div></div>
+            <div class="lin"><span class="tag no">novo</span><div><b>fabricado em · montado em</b>
+              <span class="ds">— duas datas por ambiente, no bloco 3. É o que separa chão de fábrica de casa do cliente</span></div></div>
+            <div class="lin"><span class="tag no">novo</span><div><b>Notas emitidas — até 4</b>
+              <span class="ds">— número, data e valor no bloco 1, com a conferência "ainda a faturar"</span></div></div>
+            <div class="lin"><span class="tag no">novo</span><div><b>Conferência de venda</b>
+              <span class="ds">— acende quando o valor da ficha difere do investimento do Controle de Pagamentos</span></div></div>
+          </div>
+        </div>
+
+        <div class="cx no" style="padding:6px 10px">
+          <div class="ct">Aposenta</div>
+          <b>Gestão Mensal 2026.</b> Cinco dos seis números dela passam a ser calculados; o que só ela
+          guardava vai para o Controle de Pagamentos. Duas fontes do mesmo número sempre divergem.
+        </div>
+      </div>
+
+      <div class="seta">
+        <svg width="22" height="26" viewBox="0 0 22 26" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M2 13h16"/><path d="M13 7l6 6-6 6"/></svg>
+      </div>
+
+      <!-- COLUNA 2 · O QUE SE CALCULA -->
+      <div class="col">
+        <div class="coltt"><div class="n">2</div><div class="tx">O que se calcula</div></div>
+        <div class="base">
+          <div class="hd"><b>Base · Comissões</b><span>aba dentro da Custo por Projeto</span></div>
+          <div class="bd">
+            Uma linha por <b>ambiente × etapa</b> — produção, montagem e projeto — com cliente,
+            valor, pessoa, percentual, comissão e <b>a data da etapa</b>.
+            <div class="gr">Montada <b>por fórmula, sem script</b>. Projeto novo registrado no
+              Painel Geral entra na base sozinho.</div>
+            <div class="gr"><b>Resolve um problema que não é de painel:</b> hoje, para fechar a
+              comissão do mês, alguém abre uma ficha por vez. Vira um filtro.</div>
+            <div class="gr"><b>A data da etapa é a data da comissão.</b> É ela que diz quando o
+              marceneiro passa a ter aquele valor a receber.</div>
+            <div style="margin-top:8px">
+              <div style="font-size:7.3px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;
+                          color:var(--gold-dk);margin-bottom:4px">As colunas da base</div>
+              <div class="ch">
+                <span class="chip">Mês</span><span class="chip">Cliente</span>
+                <span class="chip">Projeto</span><span class="chip">Ambiente</span>
+                <span class="chip g">Etapa</span><span class="chip g">Pessoa</span>
+                <span class="chip">Valor do ambiente</span><span class="chip">%</span>
+                <span class="chip g">Comissão</span><span class="chip g">Data da etapa</span>
+              </div>
+            </div>
+            <div class="gr" style="margin-top:8px"><b>É a mesma base</b> que alimenta a produção da
+              página 1 do painel — em valor cheio, sem nome — e o extrato de cada pessoa. Um dado,
+              duas leituras.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="seta">
+        <svg width="22" height="26" viewBox="0 0 22 26" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M2 13h16"/><path d="M13 7l6 6-6 6"/></svg>
+      </div>
+
+      <!-- COLUNA 3 · QUEM VÊ -->
+      <div class="col">
+        <div class="coltt"><div class="n">3</div><div class="tx">Quem vê</div></div>
+
+        <div class="saida pan">
+          <div class="hd"><b>Painel Looker</b><span>Walton · só leitura</span></div>
+          <div class="bd">
+            <div class="pg">
+              <div class="pt">Página 1 · Posição e operação</div>
+              <div class="ch">
+                <span class="chip g">Aporte</span><span class="chip">Recebido no mês</span>
+                <span class="chip">A receber</span><span class="chip">Previsto no mês</span>
+                <span class="chip">Linha do tempo de entrada</span>
+                <span class="chip">A receber por projeto</span>
+                <span class="chip g">Vendido</span><span class="chip g">Fabricado</span>
+                <span class="chip g">Instalado</span><span class="chip g">Faturado</span>
+                <span class="chip">Parado na fábrica</span><span class="chip">Custo fixo do mês</span>
+                <span class="chip">MC % do mês</span><span class="chip">Ocupação vs R$ 500 mil</span>
+                <span class="chip">Produção em valor cheio</span><span class="chip">Série mensal</span>
+              </div>
+            </div>
+            <div class="pg">
+              <div class="pt">Página 2 · Margem por projeto</div>
+              <div class="ch">
+                <span class="chip">Cliente e projeto</span><span class="chip">Venda</span>
+                <span class="chip">Custo total</span><span class="chip g">MC em R$ e em %</span>
+                <span class="chip">Orçado × realizado</span><span class="chip">Desvio de custo</span>
+                <span class="chip">Entrega e atraso</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="saida ind">
+          <div class="hd"><b>Planilhas individuais</b><span>subpasta comissoes_individuais</span></div>
+          <div class="bd">
+            <div class="lin"><span class="tag ja">1</span><div><b>Comissões dos projetos</b>
+              <span class="ds">— puxado da Base, não editável. Aparece sozinho quando a ficha é preenchida</span></div></div>
+            <div class="lin"><span class="tag ja">2</span><div><b>Avulsos</b>
+              <span class="ds">— área manual: serviço extra, ajuste, diária</span></div></div>
+            <div class="lin"><span class="tag ja">3</span><div><b>Pagamentos recebidos</b>
+              <span class="ds">— área manual: data, valor, forma</span></div></div>
+            <div class="lin" style="border-top:1px solid var(--line2);margin-top:3px;padding-top:5px">
+              <div><b>No topo: gerado − pago = a receber.</b>
+              <span class="ds">Conta corrente, não marcação linha a linha — bloco importado reordena
+              e a marcação gruda na linha errada.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ CASCATA ═══════ -->
+    <div class="casc">
+      <div class="casctt"><div class="tx">A cascata do ambiente</div>
+        <div class="ds">— cada ambiente caminha por estas cinco etapas, e cada uma tem sua fonte</div></div>
+      <svg viewBox="0 0 1180 104" style="width:100%;display:block">
+        <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L7,3 L0,6 z" fill="#a9863f"/></marker></defs>
+
+        <rect x="2"   y="16" width="196" height="40" rx="5" fill="#0E2038"/>
+        <rect x="248" y="16" width="196" height="40" rx="5" fill="#16314f"/>
+        <rect x="494" y="16" width="196" height="40" rx="5" fill="#1e4269"/>
+        <rect x="740" y="16" width="196" height="40" rx="5" fill="#2f5d8c"/>
+        <rect x="982" y="16" width="196" height="40" rx="5" fill="#2f7d4f"/>
+
+        <text x="100"  y="33" text-anchor="middle" font-size="12" font-weight="700" fill="#d8bd80">VENDIDO</text>
+        <text x="346"  y="33" text-anchor="middle" font-size="12" font-weight="700" fill="#d8bd80">FABRICADO</text>
+        <text x="592"  y="33" text-anchor="middle" font-size="12" font-weight="700" fill="#d8bd80">INSTALADO</text>
+        <text x="838"  y="33" text-anchor="middle" font-size="12" font-weight="700" fill="#e3edf8">FATURADO</text>
+        <text x="1080" y="33" text-anchor="middle" font-size="12" font-weight="700" fill="#dff0e6">RECEBIDO</text>
+
+        <text x="100"  y="48" text-anchor="middle" font-size="8.4" fill="rgba(255,255,255,.68)">contrato fechado</text>
+        <text x="346"  y="48" text-anchor="middle" font-size="8.4" fill="rgba(255,255,255,.68)">pronto no chão de fábrica</text>
+        <text x="592"  y="48" text-anchor="middle" font-size="8.4" fill="rgba(255,255,255,.68)">montado na casa do cliente</text>
+        <text x="838"  y="48" text-anchor="middle" font-size="8.4" fill="rgba(255,255,255,.68)">nota emitida</text>
+        <text x="1080" y="48" text-anchor="middle" font-size="8.4" fill="rgba(255,255,255,.68)">dinheiro em caixa</text>
+
+        <line x1="202" y1="36" x2="240" y2="36" stroke="#a9863f" stroke-width="1.6" marker-end="url(#ar)"/>
+        <line x1="448" y1="36" x2="486" y2="36" stroke="#a9863f" stroke-width="1.6" marker-end="url(#ar)"/>
+        <line x1="694" y1="36" x2="732" y2="36" stroke="#a9863f" stroke-width="1.6" marker-end="url(#ar)"/>
+        <line x1="940" y1="36" x2="974" y2="36" stroke="#a9863f" stroke-width="1.6" marker-end="url(#ar)"/>
+
+        <text x="100"  y="72" text-anchor="middle" font-size="8.2" fill="#6c7785">data de entrada · ficha</text>
+        <text x="346"  y="72" text-anchor="middle" font-size="8.2" fill="#6c7785">coluna fabricado em</text>
+        <text x="592"  y="72" text-anchor="middle" font-size="8.2" fill="#6c7785">coluna montado em</text>
+        <text x="838"  y="72" text-anchor="middle" font-size="8.2" fill="#6c7785">notas do bloco 1</text>
+        <text x="1080" y="72" text-anchor="middle" font-size="8.2" fill="#6c7785">Controle de Pagamentos</text>
+
+        <path d="M346 80 L346 90 L592 90 L592 80" stroke="#c47d0e" stroke-width="1.3" fill="none" stroke-dasharray="3 2"/>
+        <rect x="392" y="82" width="154" height="17" rx="8" fill="#fdf8ee" stroke="#ecdcb6"/>
+        <text x="469" y="94" text-anchor="middle" font-size="8.6" font-weight="700" fill="#c47d0e">parado na fábrica</text>
+      </svg>
+    </div>
+
+    <!-- ═══════ RODAPÉ ═══════ -->
+    <div class="tri">
+      <div class="cx gd">
+        <div class="ct">As regras que valem</div>
+        <ul>
+          <li><b>Comissão do vendedor</b> fecha dia 25; o que fechar depois conta no mês seguinte. <b>Todas as demais, conforme data.</b></li>
+          <li><b>Meta e teto de produção:</b> R$ 500 mil por mês.</li>
+          <li><b>Fabricado e instalado não batem no mesmo mês</b> — e está certo. O que explica a diferença é o parado na fábrica.</li>
+          <li><b>Importa uma vez, edita sempre no mesmo arquivo.</b> Subir uma planilha nova quebra o painel.</li>
+        </ul>
+      </div>
+      <div class="cx no">
+        <div class="ct">O que o Walton não vê</div>
+        <ul>
+          <li>Salário e folha — em nenhuma tabela</li>
+          <li>Produção por marceneiro com nome — só o valor cheio</li>
+          <li>Comissão de qualquer pessoa — vendedor, projetista ou marceneiro</li>
+          <li>As planilhas individuais — pasta separada, fora do painel</li>
+          <li>Contas a pagar e boletos atrasados — fora do escopo</li>
+          <li>Fornecedor e preço de compra</li>
+        </ul>
+        <div style="margin-top:4px;padding-top:4px;border-top:1px dotted #e4c9c6">
+          O Looker é compartilhado como <b>relatório</b>, não como planilha: ele abre com as
+          credenciais de quem publica e <b>não alcança nenhum arquivo</b>.
+        </div>
+      </div>
+      <div class="cx bl">
+        <div class="ct">A ordem da construção</div>
+        <ul>
+          <li>Subpasta <b>comissoes_individuais</b></li>
+          <li>Estrutura nova nas duas planilhas, preservando o preenchimento</li>
+          <li>Conversão para <b>Google Sheets nativo</b>, ao lado dos .xlsx — você confere antes de aposentar</li>
+          <li>Base · Comissões</li>
+          <li>Planilhas individuais na subpasta</li>
+          <li>As 2 páginas no Looker e o link para o Walton</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="rf">
+    <div><b>Blueprint · Painel de Gestão</b> — Valvic Marcenaria · Vargas Decor Ltda</div>
+    <div>Looker Studio · fonte: Google Sheets na pasta gestao_adm</div>
+  </div>
+</section>
+</body>
+</html>
