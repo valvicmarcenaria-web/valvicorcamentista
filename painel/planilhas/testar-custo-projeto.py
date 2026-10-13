@@ -28,6 +28,7 @@ with open('mapa-ficha.json', encoding='utf-8') as _fp:
 globals().update({k: v for k, v in M.items() if isinstance(v, int)})
 OC = {g: (M['LINHAS_OC'][cats[0]], M['LINHAS_OC'][cats[-1]], M['R_SUBGRUPO'][g])
       for g, cats in M['GRUPOS'].items()}
+CA = M['COL_AMB']        # colunas do bloco de ambientes
 
 # Tolerância de 1 centavo em valores que nascem de ROUND() sobre um produto em
 # ponto flutuante — o motor de teste e o Excel podem divergir no último centavo.
@@ -164,16 +165,16 @@ for i, (nome, val, pq, pp, mq, mp, jq, jp) in enumerate(AMB):
     r = R_AMB0 + i
     ck(f'  {nome} · % do total', C(EX, f'B{r}'), val / V, tol=1e-9)
     ck(f'  {nome} · produção ({pq})', C(EX, f'F{r}'), prod[nome])
-    ck(f'  {nome} · montagem ({mq})', C(EX, f'I{r}'), mont[nome])
-    ck(f'  {nome} · projeto ({jq})', C(EX, f'L{r}'), projt[nome])
-    ck(f'  {nome} · total do ambiente', C(EX, f'M{r}'),
+    ck(f'  {nome} · montagem ({mq})', C(EX, f'{CA["mont_com"]}{r}'), mont[nome])
+    ck(f'  {nome} · projeto ({jq})', C(EX, f'{CA["proj_com"]}{r}'), projt[nome])
+    ck(f'  {nome} · total do ambiente', C(EX, f'{CA["total"]}{r}'),
        xr(prod[nome] + mont[nome] + projt[nome]), tol=CENTAVO)
 ck('  soma dos ambientes', C(EX, f'C{R_AMB_TOT}'), V)
 ck('  total produção', C(EX, f'F{R_AMB_TOT}'), tot_prod)
-ck('  total montagem', C(EX, f'I{R_AMB_TOT}'), tot_mont)
-ck('  total projetista', C(EX, f'L{R_AMB_TOT}'), tot_proj)
+ck('  total montagem', C(EX, f'{CA["mont_com"]}{R_AMB_TOT}'), tot_mont)
+ck('  total projetista', C(EX, f'{CA["proj_com"]}{R_AMB_TOT}'), tot_proj)
 ck('  total do ambiente = produção + montagem + projeto',
-   C(EX, f'M{R_AMB_TOT}'), xr(tot_prod + tot_mont + tot_proj), tol=CENTAVO)
+   C(EX, f'{CA["total"]}{R_AMB_TOT}'), xr(tot_prod + tot_mont + tot_proj), tol=CENTAVO)
 ck('  comissão de projetista realizada', C(EX, f'D{R_PROJC}'), tot_proj)
 ck('  conferência dos ambientes', str(C(EX, f'D{R_AMB_TOT}'))[:2], 'OK')
 print(f'  {testes - n0} verificações')
@@ -257,9 +258,12 @@ print(f'  {testes - n0} verificações')
 
 n0 = testes
 print('\nTESTE 7 · a ficha em branco não pode gerar lixo')
+_CAT1 = M['LINHAS_OC'][M['CATEGORIAS_COMPRA'][0]]      # primeira linha de categoria
 for ref in ('A13', 'C13', 'E13', 'G13', 'I13', f'D{R_CV_SUB}', f'D{R_LIQ}',
-            f'F{R_AMB0}', f'I{R_AMB0}', f'H{R_CL0}', f'D{R_RES0}', f'D{R_CUSTO_TOT}',
-            f'D{R_MC}', 'H9', 'J9', f'D{89}', f'G{89}'):
+            f'D{R_NF_SUB}',
+            f'F{R_AMB0}', f'{CA["mont_com"]}{R_AMB0}', f'{CA["proj_com"]}{R_AMB0}',
+            f'J{R_CL0}', f'D{R_RES0}', f'D{R_CUSTO_TOT}',
+            f'D{R_MC}', 'H9', 'J9', f'D{_CAT1}', f'G{_CAT1}'):
     v = C(FM, ref)
     ck(f'  {FM}!{ref} vazia', '' if v in ('', 0, 0.0) else v, '')
 print(f'  {testes - n0} verificações')
@@ -336,8 +340,9 @@ LISTAS = {'CATEGORIA': lit(4, len(M['CATEGORIAS_COMPRA'])), 'PAGAMENTO': lit(5, 
 VAL_ESPERADAS = {
     f'B{R_LAN0}:B{R_LANF}': 'CATEGORIA', f'G{R_LAN0}:G{R_LANF}': 'PAGAMENTO',
     f'I{R_LAN0}:I{R_LANF}': 'STATUS',
-    f'D{R_AMB0}:D{R_AMBF}': 'EQUIPE', f'G{R_AMB0}:G{R_AMBF}': 'EQUIPE',
-    f'J{R_AMB0}:J{R_AMBF}': 'PROJETISTA',
+    f'D{R_AMB0}:D{R_AMBF}': 'EQUIPE',
+    f'{CA["mont_quem"]}{R_AMB0}:{CA["mont_quem"]}{R_AMBF}': 'EQUIPE',
+    f'{CA["proj_quem"]}{R_AMB0}:{CA["proj_quem"]}{R_AMBF}': 'PROJETISTA',
     f'A{R_CL0}:A{R_CLF}': 'ROSTER',
     f'B{R_RB0}:B{R_RBF}': 'CAUSA', f'D{R_ID2}:E{R_ID2}': 'VENDEDOR',
     f'F{R_ID4}:G{R_ID4}': 'EQUIPE'}

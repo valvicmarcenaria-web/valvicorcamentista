@@ -101,14 +101,17 @@ NOMES = {'CATEGORIA_COMPRA': 'D', 'FORMA_PAGAMENTO': 'E', 'STATUS_COMPRA': 'F',
          'EQUIPE_COMISSAO': 'A', 'VENDEDOR': 'B', 'CAUSA_RETRABALHO': 'C',
          'PROJETISTA': 'H'}
 
-# 13 colunas: as 10 originais mais quem projetou o ambiente, o % e a comissão.
-# PAD é quanto cada bloco que fechava na coluna J precisa crescer para
-# continuar encostando na borda direita da ficha.
-NCOL = 13
+# 15 colunas: as 10 originais, mais o projetista do ambiente (quem, % e comissão)
+# e as duas datas de etapa — fabricado em e montado em. São elas que separam o
+# chão de fábrica da casa do cliente, e que dão data à comissão.
+# PAD é quanto cada bloco que fechava na coluna J precisa crescer para continuar
+# encostando na borda direita da ficha.
+NCOL = 15
 PAD = NCOL - 10
 LP = {c: get_column_letter(c) for c in range(1, 61)}
-W_FICHA = [30, 10, 14, 18, 8, 13, 18, 8, 13, 16, 8, 13, 14]
+W_FICHA = [28, 9, 14, 16, 7, 13, 13, 16, 7, 13, 13, 15, 7, 13, 14]
 N_AMB, N_COL, N_RETRAB, N_LANC = 12, 18, 12, 60
+N_NOTA = 4          # notas fiscais por projeto — o teto que o Jonathan definiu
 
 wb = openpyxl.Workbook()
 wb.remove(wb.active)
@@ -223,10 +226,16 @@ R_ALERTA = R_MC + 1                            # 24
 LIMITE_PAINEL = R_ALERTA
 
 R_VEN_T, R_VEN_H, R_VENDA = 26, 27, 28
-R_CV_T, R_CV_H = 30, 31
-R_IMP, R_MAQ, R_TRX, R_CVEND, R_PROJ, R_RTP = 32, 33, 34, 35, 36, 37
-R_CV_SUB, R_LIQ = 38, 39
-R_AMB_T, R_AMB_H, R_AMB0 = 41, 42, 43
+R_NF_H = R_VENDA + 1                       # cabeçalho das notas
+R_NF0 = R_NF_H + 1                         # primeira nota
+R_NFF = R_NF0 + N_NOTA - 1
+R_NF_SUB = R_NFF + 1                       # total faturado e quanto falta faturar
+R_CV_T, R_CV_H = R_NF_SUB + 2, R_NF_SUB + 3
+R_IMP = R_CV_H + 1
+R_MAQ, R_TRX, R_CVEND, R_PROJ, R_RTP = (R_IMP + 1, R_IMP + 2, R_IMP + 3,
+                                        R_IMP + 4, R_IMP + 5)
+R_CV_SUB, R_LIQ = R_RTP + 1, R_RTP + 2
+R_AMB_T, R_AMB_H, R_AMB0 = R_LIQ + 2, R_LIQ + 3, R_LIQ + 4
 R_AMBF = R_AMB0 + N_AMB - 1
 R_AMB_TOT = R_AMBF + 1
 R_CO_T, R_CO_H = R_AMB_TOT + 2, R_AMB_TOT + 3
@@ -266,12 +275,14 @@ print(f'ficha: resumo {R_RES0}-{R_MC} · venda {R_VENDA} · líquido {R_LIQ} · 
       f'lançamentos {R_LAN0}-{R_LANF} · fim {R_NOTA}')
 
 
+# ambiente: A nome · B % · C valor · D-E-F-G produção (quem, %, comissão, data)
+#           H-I-J-K montagem · L-M-N projetista · O total do ambiente
 AMB_PROD_Q = f'$D${R_AMB0}:$D${R_AMBF}'
 AMB_PROD_V = f'$F${R_AMB0}:$F${R_AMBF}'
-AMB_MONT_Q = f'$G${R_AMB0}:$G${R_AMBF}'
-AMB_MONT_V = f'$I${R_AMB0}:$I${R_AMBF}'
-AMB_PROJ_Q = f'$J${R_AMB0}:$J${R_AMBF}'
-AMB_PROJ_V = f'$L${R_AMB0}:$L${R_AMBF}'
+AMB_MONT_Q = f'$H${R_AMB0}:$H${R_AMBF}'
+AMB_MONT_V = f'$J${R_AMB0}:$J${R_AMBF}'
+AMB_PROJ_Q = f'$L${R_AMB0}:$L${R_AMBF}'
+AMB_PROJ_V = f'$N${R_AMB0}:$N${R_AMBF}'
 CAB_CUSTO = [(1, 1, 'Item'), (2, 1, '%'), (3, 1, 'Orçado (R$)'), (4, 1, 'Realizado (R$)'),
              (5, 2, 'Desvio (R$)'), (7, 1, '% da venda'), (8, 3 + PAD, 'Observação')]
 
@@ -423,12 +434,42 @@ def montar_ficha(ws):
     ws.row_dimensions[R_ALERTA + 1].height = 8
 
     # ── 1 · valor de venda
-    titulo_secao(ws, R_VEN_T, NCOL, '1 · Valor de venda')
+    titulo_secao(ws, R_VEN_T, NCOL, '1 · Valor de venda e notas emitidas',
+                 'o que foi vendido e o que já virou nota — a diferença é o que falta faturar')
     cab(ws, R_VEN_H, CAB_CUSTO)
     linha_custo(ws, R_VENDA, 'Valor de venda do projeto', 'rs',
                 dica='Orçado = valor da proposta · Realizado = valor fechado')
     ws[f'G{R_VENDA}'] = None
-    ws.row_dimensions[R_VENDA + 1].height = 8
+
+    # ── notas fiscais do projeto ──
+    cab(ws, R_NF_H, [(1, 1, 'Nota fiscal'), (2, 1, 'Número'), (3, 1, 'Data'),
+                     (4, 1, 'Valor (R$)'), (5, 2, ''), (7, 1, '% da venda'),
+                     (8, 3 + PAD, 'Observação')], alt=22)
+    for i, r in enumerate(range(R_NF0, R_NFF + 1), start=1):
+        ws.row_dimensions[r].height = 17
+        bloco(ws, r, 1, 1, f'Nota {i}', f=Font(name=F, size=9.5, color=INK), bg=WHITE, al=LEFTI)
+        bloco(ws, r, 2, 1, None, f=F_ENT, bg=INPUT, al=CTR)
+        bloco(ws, r, 3, 1, None, f=font(9.5), bg=INPUT, al=CTR, nf=DATA)
+        bloco(ws, r, 4, 1, None, f=Font(name=F, size=9.5, bold=True, color=NAVY),
+              bg=INPUT, al=RIGHT, nf=MOEDA)
+        bloco(ws, r, 5, 2, None, bg=WHITE)
+        bloco(ws, r, 7, 1, f'=IF(OR($D{r}="",{VENDA}="",{VENDA}=0),"",$D{r}/{VENDA})',
+              f=Font(name=F, size=9, color=MUTED), bg=CALC, al=CTR, nf=PCT1)
+        bloco(ws, r, 8, 3 + PAD, None, f=Font(name=F, size=8.5, color=INK), bg=INPUT, al=LEFTI)
+    ws.row_dimensions[R_NF_SUB].height = 20
+    bloco(ws, R_NF_SUB, 1, 3, '(=) TOTAL FATURADO  →', f=F_SUB, bg=NAVY2, al=RIGHT)
+    bloco(ws, R_NF_SUB, 4, 1, f'=ROUND(SUM($D${R_NF0}:$D${R_NFF}),2)',
+          f=Font(name=F, size=10, bold=True, color=GOLDS), bg=NAVY2, al=RIGHT, nf=MOEDA)
+    bloco(ws, R_NF_SUB, 5, 2, None, bg=NAVY2)
+    bloco(ws, R_NF_SUB, 7, 1,
+          f'=IF(OR({VENDA}="",{VENDA}=0),"",$D${R_NF_SUB}/{VENDA})',
+          f=Font(name=F, size=9.5, bold=True, color=GOLDS), bg=NAVY2, al=CTR, nf=PCT1)
+    bloco(ws, R_NF_SUB, 8, 3 + PAD,
+          f'=IF(OR({VENDA}="",{VENDA}=0),"",'
+          f'IF(ROUND({VENDA}-$D${R_NF_SUB},2)<=0,"   Projeto totalmente faturado.",'
+          f'"   Ainda a faturar: "&TEXT({VENDA}-$D${R_NF_SUB},"R$ #,##0.00")))',
+          f=Font(name=F, size=9, bold=True, color=GOLDS), bg=NAVY2, al=LEFTI)
+    ws.row_dimensions[R_NF_SUB + 1].height = 8
 
     # ── 2 · custos de venda
     titulo_secao(ws, R_CV_T, NCOL, '2 · Custos de venda',
@@ -469,10 +510,12 @@ def montar_ficha(ws):
                  'cada ambiente com quem produziu, quem montou e quem projetou · a comissão incide sobre a receita líquida')
     cab(ws, R_AMB_H, [(1, 1, 'Ambiente'), (2, 1, '% do total'), (3, 1, 'Valor do ambiente (R$)'),
                       (4, 1, 'Produção — quem'), (5, 1, '%'), (6, 1, 'Comissão produção (R$)'),
-                      (7, 1, 'Montagem — quem'), (8, 1, '%'), (9, 1, 'Comissão montagem (R$)'),
-                      (10, 1, 'Projetista — quem'), (11, 1, '%'),
-                      (12, 1, 'Comissão projetista (R$)'),
-                      (13, 1, 'Total do ambiente')], alt=32)
+                      (7, 1, 'Fabricado em'),
+                      (8, 1, 'Montagem — quem'), (9, 1, '%'), (10, 1, 'Comissão montagem (R$)'),
+                      (11, 1, 'Montado em'),
+                      (12, 1, 'Projetista — quem'), (13, 1, '%'),
+                      (14, 1, 'Comissão projetista (R$)'),
+                      (15, 1, 'Total do ambiente')], alt=32)
     for r in range(R_AMB0, R_AMBF + 1):
         ws.row_dimensions[r].height = 18
         bloco(ws, r, 1, 1, None, f=F_ENT, bg=INPUT, al=LEFTI)
@@ -485,28 +528,30 @@ def montar_ficha(ws):
         bloco(ws, r, 6, 1, f'=IF(OR($B{r}="",$E{r}="",$D${R_LIQ}=""),"",'
                            f'ROUND($B{r}*$D${R_LIQ}*$E{r},2))',
               f=F_CALC, bg=CALC, al=RIGHT, nf=MOEDA)
-        bloco(ws, r, 7, 1, None, f=F_ENT, bg=INPUT, al=LEFTI)
-        bloco(ws, r, 8, 1, None, f=F_PCT, bg=INPUT, al=CTR, nf=PCT1)
-        bloco(ws, r, 9, 1, f'=IF(OR($B{r}="",$H{r}="",$D${R_LIQ}=""),"",'
-                           f'ROUND($B{r}*$D${R_LIQ}*$H{r},2))',
+        bloco(ws, r, 7, 1, None, f=font(9), bg=INPUT, al=CTR, nf=DATA)
+        bloco(ws, r, 8, 1, None, f=F_ENT, bg=INPUT, al=LEFTI)
+        bloco(ws, r, 9, 1, None, f=F_PCT, bg=INPUT, al=CTR, nf=PCT1)
+        bloco(ws, r, 10, 1, f'=IF(OR($B{r}="",$I{r}="",$D${R_LIQ}=""),"",'
+                            f'ROUND($B{r}*$D${R_LIQ}*$I{r},2))',
               f=F_CALC, bg=CALC, al=RIGHT, nf=MOEDA)
-        bloco(ws, r, 10, 1, None, f=F_ENT, bg=INPUT, al=LEFTI)
-        bloco(ws, r, 11, 1, None, f=F_PCT, bg=INPUT, al=CTR, nf=PCT1)
-        bloco(ws, r, 12, 1, f'=IF(OR($B{r}="",$K{r}="",$D${R_LIQ}=""),"",'
-                            f'ROUND($B{r}*$D${R_LIQ}*$K{r},2))',
+        bloco(ws, r, 11, 1, None, f=font(9), bg=INPUT, al=CTR, nf=DATA)
+        bloco(ws, r, 12, 1, None, f=F_ENT, bg=INPUT, al=LEFTI)
+        bloco(ws, r, 13, 1, None, f=F_PCT, bg=INPUT, al=CTR, nf=PCT1)
+        bloco(ws, r, 14, 1, f'=IF(OR($B{r}="",$M{r}="",$D${R_LIQ}=""),"",'
+                            f'ROUND($B{r}*$D${R_LIQ}*$M{r},2))',
               f=F_CALC, bg=CALC, al=RIGHT, nf=MOEDA)
-        bloco(ws, r, 13, 1, f'=IF(AND($F{r}="",$I{r}="",$L{r}=""),"",'
-                            f'ROUND(IF($F{r}="",0,$F{r})+IF($I{r}="",0,$I{r})'
-                            f'+IF($L{r}="",0,$L{r}),2))',
+        bloco(ws, r, 15, 1, f'=IF(AND($F{r}="",$J{r}="",$N{r}=""),"",'
+                            f'ROUND(IF($F{r}="",0,$F{r})+IF($J{r}="",0,$J{r})'
+                            f'+IF($N{r}="",0,$N{r}),2))',
               f=Font(name=F, size=9.5, bold=True, color=NAVY2), bg=CALC, al=RIGHT, nf=MOEDA)
     dv(ws, literal(EQUIPE), f'D{R_AMB0}:D{R_AMBF}')
-    dv(ws, literal(EQUIPE), f'G{R_AMB0}:G{R_AMBF}')
-    dv(ws, literal(PROJETISTAS), f'J{R_AMB0}:J{R_AMBF}')
+    dv(ws, literal(EQUIPE), f'H{R_AMB0}:H{R_AMBF}')
+    dv(ws, literal(PROJETISTAS), f'L{R_AMB0}:L{R_AMBF}')
     ws.row_dimensions[R_AMB_TOT].height = 20
     bloco(ws, R_AMB_TOT, 1, 1, 'SOMA DOS AMBIENTES', f=F_SUB, bg=NAVY2, al=RIGHT)
     bloco(ws, R_AMB_TOT, 2, 1, f'=IF({VENDA}=0,"",$C${R_AMB_TOT}/{VENDA})',
           f=Font(name=F, size=9.5, bold=True, color=GOLDS), bg=NAVY2, al=CTR, nf=PCT1)
-    for col in (3, 6, 9, 12, 13):
+    for col in (3, 6, 10, 14, 15):
         bloco(ws, R_AMB_TOT, col, 1, f'=ROUND(SUM({LP[col]}{R_AMB0}:{LP[col]}{R_AMBF}),2)',
               f=Font(name=F, size=10, bold=True, color=GOLDS), bg=NAVY2, al=RIGHT, nf=MOEDA)
     bloco(ws, R_AMB_TOT, 4, 2,
@@ -514,8 +559,10 @@ def montar_ficha(ws):
           f'"OK · os ambientes somam o valor de venda",'
           f'"ATENÇÃO: diferença de "&TEXT($C${R_AMB_TOT}-{VENDA},"R$ #,##0.00")))',
           f=Font(name=F, size=8.5, bold=True, color=GOLDS), bg=NAVY2, al=CTR)
-    bloco(ws, R_AMB_TOT, 7, 2, None, bg=NAVY2)
-    bloco(ws, R_AMB_TOT, 10, 2, None, bg=NAVY2)
+    bloco(ws, R_AMB_TOT, 7, 1, None, bg=NAVY2)
+    bloco(ws, R_AMB_TOT, 8, 2, None, bg=NAVY2)
+    bloco(ws, R_AMB_TOT, 11, 1, None, bg=NAVY2)
+    bloco(ws, R_AMB_TOT, 12, 2, None, bg=NAVY2)
     ws.row_dimensions[R_AMB_TOT + 1].height = 8
 
     # ── 4 · comissões operacionais
@@ -528,10 +575,10 @@ def montar_ficha(ws):
     for rr, rot, orig, dica in (
             (R_PRODC, 'Comissão de produção', f'$F${R_AMB_TOT}',
              'orçado = % único estimado · realizado = soma dos ambientes'),
-            (R_MONTC, 'Comissão de montagem', f'$I${R_AMB_TOT}',
+            (R_MONTC, 'Comissão de montagem', f'$J${R_AMB_TOT}',
              'orçado = % único estimado · realizado = soma dos ambientes'),
-            (R_PROJC, 'Comissão de projetista', f'$L${R_AMB_TOT}',
-             'quem projetou cada ambiente está na coluna J do bloco 3')):
+            (R_PROJC, 'Comissão de projetista', f'$N${R_AMB_TOT}',
+             'quem projetou cada ambiente está na coluna L do bloco 3')):
         linha_custo(ws, rr, rot, 'pct', base_o=f'$C${R_LIQ}', base_r=f'$D${R_LIQ}', dica=dica)
         bloco(ws, rr, 4, 1, f'=IF({orig}=0,"",{orig})', f=F_CALC, bg=CALC, al=RIGHT, nf=MOEDA)
     subtotal(ws, R_CO_SUB, '(=) SUBTOTAL DAS COMISSÕES', R_COORD, R_PROJC)
@@ -797,8 +844,8 @@ def preencher(ws, d):
         r = R_AMB0 + i
         ws[f'A{r}'] = nome; ws[f'C{r}'] = val
         ws[f'D{r}'] = pq; ws[f'E{r}'] = pp
-        ws[f'G{r}'] = mq; ws[f'H{r}'] = mp
-        ws[f'J{r}'] = jq; ws[f'K{r}'] = jp
+        ws[f'H{r}'] = mq; ws[f'I{r}'] = mp
+        ws[f'L{r}'] = jq; ws[f'M{r}'] = jp
     ws[f'B{R_COORD}'] = d['coord']
     ws[f'B{R_PRODC}'] = d['prod_o']; ws[f'B{R_MONTC}'] = d['mont_o']
     ws[f'B{R_PROJC}'] = d['proj_o']
@@ -819,9 +866,12 @@ def preencher(ws, d):
 # Para abrir um projeto novo daqui em diante: no Excel ou no Sheets, botão direito
 # na "Ficha Modelo" → duplicar, e registrar o nome da aba no Painel Geral.
 PROJETOS_ABAS = [
-    'Ana Carolina ', 'Luiz ', 'Jairo', 'Andrea ', 'Cristiane Chrys Andrade',
-    'EPE Formas ', 'Flavia ', 'Graciene ', 'Larissa ', 'Leonardo ',
-    'Carla Dresller', 'Maria ', 'Nadia ', 'Shelf', 'Simony',
+    'Ana Carolina ', 'Andrea ', 'Cristiane Chrys Andrade',
+    'EPE Formas ', 'Flavia ', 'Jairo',
+    'Graciene ', 'Larissa ', 'Leonardo ',
+    'Luiz ', 'Carla Dresller', 'Maria ',
+    'Nadia ', 'Richard', 'Shelf',
+    'Simony',
 ]
 
 ficha = wb.create_sheet('Ficha Modelo')
@@ -1051,6 +1101,61 @@ print_cfg(pg, f'A1:R{R_FIM_PG}')
 
 
 # ══════════════════════════════════════════════════════════════════════
+#  ABA · Base · Comissões
+#
+#  Aba de máquina, não de gente: cabeçalho na linha 1, dados a partir da 2,
+#  sem faixa de marca e sem célula mesclada — é assim que o Looker Studio e o
+#  IMPORTRANGE conseguem ler.
+#
+#  Uma linha por ambiente de cada projeto. As referências são diretas à aba do
+#  projeto, não INDIRECT: INDIRECT é volátil e recalcula a planilha inteira a
+#  cada toque. Projeto novo entra quando o botão "Abrir ficha" acrescenta o
+#  bloco de 12 linhas — a mesma rotina que cria a ficha.
+# ══════════════════════════════════════════════════════════════════════
+CAB_BASE = [
+    ('Projeto', 22, None), ('Cliente', 24, None),
+    ('Ambiente', 22, None), ('% do total', 9, PCT1), ('Valor do ambiente', 15, MOEDA),
+    ('Produção — quem', 16, None), ('% produção', 9, PCT1),
+    ('Comissão produção', 15, MOEDA), ('Fabricado em', 12, DATA),
+    ('Montagem — quem', 16, None), ('% montagem', 9, PCT1),
+    ('Comissão montagem', 15, MOEDA), ('Montado em', 12, DATA),
+    ('Projetista — quem', 16, None), ('% projeto', 9, PCT1),
+    ('Comissão projetista', 15, MOEDA), ('Total do ambiente', 15, MOEDA),
+]
+bs = wb.create_sheet('Base · Comissões')
+bs.sheet_properties.tabColor = GOLD
+bs.sheet_view.showGridLines = False
+bs.freeze_panes = 'C2'
+for i, (titulo, larg, _) in enumerate(CAB_BASE, start=1):
+    c = bs.cell(1, i, titulo)
+    c.font = Font(name=F, size=8.5, bold=True, color=WHITE)
+    c.fill = fill(NAVY2); c.alignment = CTRW
+    c.border = Border(bottom=side(GOLD, 'medium'))
+    bs.column_dimensions[get_column_letter(i)].width = larg
+bs.row_dimensions[1].height = 30
+
+_ABAS_BASE = PROJETOS_ABAS + ['Exemplo P-2026-041']
+_lin = 2
+for _i, _aba in enumerate(_ABAS_BASE):
+    _pg_row = P0 + _i                       # a linha desse projeto no Painel Geral
+    _ref = f"'{_aba}'"
+    for _j in range(N_AMB):
+        _fr = R_AMB0 + _j                   # a linha do ambiente na ficha
+        bs.cell(_lin, 1, f"=IF($C{_lin}=\"\",\"\",'Painel Geral'!$B${_pg_row})")
+        bs.cell(_lin, 2, f"=IF($C{_lin}=\"\",\"\",'Painel Geral'!$C${_pg_row})")
+        for _k, _col in enumerate('ABCDEFGHIJKLMNO'):
+            bs.cell(_lin, 3 + _k, f'=IF({_ref}!${_col}${_fr}="","",{_ref}!${_col}${_fr})')
+        for _k, (_, _, _nf) in enumerate(CAB_BASE, start=1):
+            cel = bs.cell(_lin, _k)
+            cel.font = font(9)
+            if _nf:
+                cel.number_format = _nf
+            cel.border = Border(bottom=side(LINE))
+        _lin += 1
+print(f'base de comissões: {_lin - 2} linhas · {len(_ABAS_BASE)} projetos × {N_AMB} ambientes')
+
+
+# ══════════════════════════════════════════════════════════════════════
 #  ABA · Listas
 # ══════════════════════════════════════════════════════════════════════
 ls = wb.create_sheet('Listas')
@@ -1199,8 +1304,13 @@ print('nomes definidos:', ', '.join(sorted(NOMES)))
 import json
 MAPA = {k: v for k, v in globals().items()
         if k.startswith(('R_', 'N_')) and isinstance(v, int)}
+# as colunas do bloco de ambientes, para quem precisar ler a ficha de fora
+COL_AMB = {'ambiente': 'A', 'pct_total': 'B', 'valor': 'C',
+           'prod_quem': 'D', 'prod_pct': 'E', 'prod_com': 'F', 'fabricado_em': 'G',
+           'mont_quem': 'H', 'mont_pct': 'I', 'mont_com': 'J', 'montado_em': 'K',
+           'proj_quem': 'L', 'proj_pct': 'M', 'proj_com': 'N', 'total': 'O'}
 MAPA.update({'NCOL': NCOL, 'EQUIPE': EQUIPE, 'PROJETISTAS': PROJETISTAS,
-             'PROJETOS_ABAS': PROJETOS_ABAS,
+             'PROJETOS_ABAS': PROJETOS_ABAS, 'COL_AMB': COL_AMB,
              'CATEGORIAS_COMPRA': CATEGORIAS_COMPRA, 'LINHAS_OC': LINHAS_OC,
              'R_SUBGRUPO': R_SUBGRUPO,
              'GRUPOS': {g: cats for g, cats in GRUPOS}})
