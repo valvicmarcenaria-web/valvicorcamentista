@@ -79,16 +79,32 @@ MARCENARIA"*.
 
 ## O orçamento — `corte-orlando-ivone.py`
 
-MC **40%**, **sem RT**, chapa **MDF Ultra** (resistente à umidade).
-⭐ [Jonathan 13/10] **interno branco e externo em amadeirado fosco.**
+⭐ [Jonathan 13/10] **MC de 35% com RT de 10%**, interno branco e externo
+em amadeirado fosco. Chapa **MDF Ultra** (resistente à umidade).
 
 | | preço |
 |---|--:|
-| Armário inferior | **R$ 4.590** |
-| Armário superior · espelheira | **R$ 6.990** |
-| **INVESTIMENTO** | **R$ 11.580** |
+| Armário inferior | **R$ 5.020** |
+| Armário superior · espelheira | **R$ 7.640** |
+| **INVESTIMENTO** | **R$ 12.660** |
 
-Com RT de 10%: **R$ 14.390** (inferior 5.710 · superior 8.680).
+* o mesmo custo **sem RT** daria R$ 10.440 — o RT custa R$ 2.220 ao cliente
+* na **MC de 40%** de antes, com RT, seria R$ 14.390
+
+⛔ **35% é o piso da casa** (`MC_PISO`). Abaixo disto não há negociação, há
+prejuízo de estrutura: a MC ainda tem de pagar o custo fixo.
+
+### ⛔⛔ A MC caiu 5 pontos e o cliente paga mais caro
+
+| | preço | MC em R$ |
+|---|--:|--:|
+| MC 40% sem RT (ontem) | R$ 11.580 | R$ 4.629 |
+| MC 35% com RT (hoje) | **R$ 12.660** | **R$ 4.432** |
+
+O cliente paga **R$ 1.080 a mais** e a casa ganha **R$ 197 a menos**. No
+meio ficam **R$ 1.203 de RT**. Os cinco pontos de margem que abrimos não
+chegam ao cliente — pagam a arquiteta, e sobra conta para ele.
+⚠ Se a ideia era baixar o preço, o caminho é tirar o RT, não a margem.
 
 ### Composição do custo direto — R$ 5.254
 
@@ -108,24 +124,29 @@ telescópicas (R$ 340) · 6 puxadores Zen Phenix 20 cm ★ (R$ 330).
 alumínio ★ R$ 75/m (R$ 794) · preparo das 3 peças fixas, berço e passagem
 do driver ★ (R$ 270).
 
-### Composição do preço — R$ 11.580
+⛔ **Chapa é só um terço do custo.** Dois terços são ferragem, espelho e
+alumínio — coisa que se compra, não se fabrica. Por isso este banheiro não
+barateia cortando madeira.
+
+### Composição do preço — R$ 12.660
 
 | | R$ | % do preço |
 |---|--:|--:|
-| custo direto | 5.254 | 45,38% |
-| nota fiscal | 579 | 5,00% |
-| margem de erro | 232 | 2,00% |
-| desgaste de serra e fresa | 58 | 0,50% |
-| manutenção de máquinas | 58 | 0,50% |
-| produção · coordenação | 110 | 0,95% |
-| produção · programação | 110 | 0,95% |
-| produção · fabricação | 275 | 2,38% |
-| produção · montagem | 275 | 2,38% |
-| **MARGEM DE CONTRIBUIÇÃO** | **4.629** | **39,97%** |
-| **PREÇO** | **11.580** | **100%** |
+| custo direto | 5.254 | 41,50% |
+| nota fiscal | 633 | 5,00% |
+| margem de erro | 253 | 2,00% |
+| desgaste de serra e fresa | 63 | 0,50% |
+| manutenção de máquinas | 63 | 0,50% |
+| **RT** | **1.203** | **9,50%** |
+| produção · coordenação | 108 | 0,85% |
+| produção · programação | 108 | 0,85% |
+| produção · fabricação | 271 | 2,14% |
+| produção · montagem | 271 | 2,14% |
+| **MARGEM DE CONTRIBUIÇÃO** | **4.432** | **35,01%** |
+| **PREÇO** | **12.660** | **100%** |
 
-Base da casa 85,35% — sem RT e sem comissão de vendedor. ⚠ A MC não é
-lucro: dela ainda sai o custo fixo da fábrica.
+Base da casa **76,52%** — com RT de 10%, sem comissão de vendedor. ⚠ A MC
+não é lucro: dela ainda sai o custo fixo da fábrica.
 
 **A espelheira é 60% do orçamento**, e dois terços do custo dela não é
 madeira — é espelho, perfil de alumínio e oito dobradiças carregando folha
@@ -134,7 +155,7 @@ de espelho, que não perdoa desalinho.
 ### ⛔ Metade da chapa deste orçamento é sobra
 
 Pagamos 4 chapas, R$ 1.703, para usar o equivalente a R$ 832. A sobra é
-**R$ 871 — 51% da chapa, 17% do custo direto, R$ 1.920 de preço**. Não é
+**R$ 871 — 51% da chapa, 17% do custo direto, R$ 2.097 de preço**. Não é
 erro: num banheiro de 3,43 m² a chapa inteira não cabe no móvel. O pior é
 o 15 mm branco: 4,2 m² obrigam a comprar duas chapas de 4,07.
 
@@ -151,13 +172,13 @@ fosco.
 
 | | como pedido | tudo amadeirado |
 |---|--:|--:|
-| Armário inferior | 4.590 | 5.790 |
-| Armário superior | 6.990 | 7.720 |
-| **INVESTIMENTO** | **11.580** | **13.510** |
+| Armário inferior | 5.020 | 6.320 |
+| Armário superior | 7.640 | 8.430 |
+| **INVESTIMENTO** | **12.660** | **14.750** |
 | chapa | 1.703 | 2.470 |
 | chapas compradas | 4 | 4 |
 
-Economia de **R$ 1.930 (14%)** sem tirar nada do que se vê.
+Economia de **R$ 2.090 (14%)** sem tirar nada do que se vê.
 
 ⭐ E deu certo por um motivo que não é óbvio: **todo o aparente foi para
 18 mm**. Numa obra deste tamanho misturar duas cores normalmente
@@ -190,9 +211,12 @@ a economia encolhe. Vale a pena segurar o 18.
    projeto da Raquel Franco, onde a designer especificou "MDF Verde/Ultra".
    Em MDF comum sai mais barato e sai **sem a garantia de 10 anos** na parte
    que molha.
-4. **RT.** Sem instrução. Orçado sem. Ana Maria Castro é arquiteta nova
-   para nós — não é a Rubia Nascimento da Isabela e das duas Raquéis, onde
-   o Jonathan mandou considerar RT.
+4. **⭐ RT de 10% incluído** [Jonathan 13/10], para Ana Maria Castro —
+   R$ 1.203 dentro do preço. ⚠ Falta combinar com ela **o que o RT cobre**:
+   acompanhamento de obra, conferência de medida e aprovação de amostra
+   entram? E quando é pago, na assinatura ou na entrega? A parceria de RT
+   da casa (`fontes/valvic_parceria_rt_arquitetos.pdf`) tem essa página;
+   vale mandar antes de a proposta sair.
 5. **Puxador Zen Phenix 20 cm cromado** — especificado por nome. ★ Entrou a
    R$ 55 a unidade, estimado, seis unidades. Na Raquel o Jonathan mandou
    tirar puxador e dobradiça do preço; aqui mantive, porque a prancha
