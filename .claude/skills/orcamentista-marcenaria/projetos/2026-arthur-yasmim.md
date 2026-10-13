@@ -3,22 +3,13 @@
 **Arquivo:** `Apresentação de Projeto de Arthur & Yasmim.pdf`, Drive da casa,
 pasta `projetos`, 13/10/2026. **181 MB.**
 
-## ⛔ NÃO CONSEGUI LER O PROJETO — e o motivo é só técnico
+## O arquivo
 
-| tentativa | resultado |
-|---|---|
-| download direto (`drive.usercontent.google.com`) | **403 da política de saída** da sessão — host bloqueado, não se contorna |
-| conector do Drive · `read_file_content` | devolveu **vazio** |
-| conector do Drive · snippet de conteúdo | devolveu **vazio** |
-| conector do Drive · `download_file_content` | devolve base64 — **181 MB não cabe** |
-| pasta do Drive | só existe este arquivo; não há versão leve |
-
-O PDF é **apresentação em imagem**, sem camada de texto — por isso o conector
-não extrai nada. ⭐ **Preciso do arquivo mais leve**, de qualquer uma destas
-formas: PDF comprimido, só as páginas de marcenaria, ou as páginas mandadas
-aqui no chat como nos outros projetos.
-
----
+O PDF do Drive tem **181 MB**, é apresentação em imagem sem camada de texto,
+e não abre por aqui: o download direto cai em **403 da política de saída** da
+sessão e o conector do Drive devolve conteúdo vazio. ⭐ **As páginas do
+CLOSET chegaram pelo chat em 13/10** — é com elas que este levantamento foi
+feito. O resto do caderno ainda falta.
 
 ## O pedido da cliente, lido
 
@@ -61,6 +52,68 @@ quer, inclusive um número que não está nas três opções dela.
 
 ---
 
+---
+
+## ⭐ Os parâmetros [Jonathan 13/10]
+
+> "considere a versão principal com corrediças ocultas da Hettich e um
+> downgrade para telescópica · sem RT e MC de 37%"
+
+* **versão principal** — corrediça **oculta Hettich**
+* **downgrade** — **telescópica**, e **só isso muda**: mesma chapa, mesmo
+  vidro, mesma garantia
+* **sem RT** — a cliente está falando direto com a casa, não há arquiteto
+  na conversa
+* **MC 37%** — acima do piso de 35%, base da casa **85,35%**
+
+### ⭐ Seis preços que são um preço e dois deltas
+
+Os dois eixos são independentes e cada um é uma reta:
+
+```
+porta    V3 (toda Fendi) → V1 (+5 bronze) → V2 (+16 bronze)
+corrediça   telescópica  → oculta Hettich
+```
+
+Logo: **um levantamento completo, um Δ por porta de bronze e um Δ por
+corrediça**. Seis números saem de três contas, e a proposta cabe numa
+tabela só.
+
+---
+
+## O CLOSET, pelo que as páginas mostram
+
+Walk-in de **410 cm** de largura, marcenaria de **260 cm** de altura
+(piso ao teto). **Dez módulos numerados** em volta: 1 a 5 na parede do
+fundo, 6 e 7 na lateral direita, 8 e 9 embaixo, 10 no canto inferior
+esquerdo. Outras cotas soltas nas pranchas: 166 · 105 · 87 na planta;
+200 · 185 · 98 · 79 · 102 · 85 · 60 · 21 na elevação. ⚠ São cotas de
+apresentação, não de executivo — não fecham um corte.
+
+**O que se vê:**
+* **portas de vidro em perfil de alumínio escuro**, com puxador vertical
+  embutido no perfil — é o "reflecta bronze" do projeto
+* ⭐ **as gavetas ficam ATRÁS do vidro**, visíveis de fora
+* **módulo 3 é a penteadeira**: painel ripado escuro, espelho com LED
+  perimetral, tampo e dois blocos de gavetas. **Sem porta**
+* **LED em quase toda prateleira**, no espelho e na sapateira
+* **a sapateira fica FORA do closet**, no corredor ao lado da porta:
+  prateleiras **inclinadas**, todas iluminadas, com porta-botas em cima e
+  uma coluna lateral estreita de prateleiras menores. **Hoje é aberta** —
+  é nela que entra a porta inteiriça de espelho
+* módulo de bolsas com **duas folhas de vidro** e prateleiras iluminadas
+
+### ⭐ A conta das 17 portas fecha no closet
+
+Dos dez módulos, a penteadeira não tem porta e a sapateira ganha a porta
+de espelho. Sobram **oito módulos de duas folhas = 16 folhas de vidro**,
+mais **1 espelho inteiriço = 17**. É exatamente o número da cliente — ou
+seja, **as três versões são todas do closet**.
+
+⚠ Mas ela diz "5 portas no reflecta bronze": 5 é ímpar e os módulos são de
+duas folhas. Ou algum módulo tem folha única, ou ela está contando por
+módulo em algum ponto. **A conferir com ela antes de orçar.**
+
 ## ★ O que já dá para antecipar
 
 1. **Não é troca de cor, é troca de construção.** Reflecta bronze é
@@ -77,22 +130,35 @@ quer, inclusive um número que não está nas três opções dela.
    inteiriço é peso concentrado em dobradiça: pede reforço, dobradiça
    dimensionada e tolerância zero a empeno. Ela aparece igual nas três, o
    que é bom — não polui a comparação.
-4. ⛔ **Dezessete portas não são o orçamento.** O que está atrás delas —
+4. ⭐ **A corrediça aparece através do vidro.** As gavetas ficam atrás das
+   portas de vidro. Com telescópica, vê-se o trilho pela lateral da gaveta;
+   com a **oculta Hettich**, não se vê nada e a gaveta parece flutuar. Num
+   closet todo envidraçado isso não é detalhe de catálogo — é o que o
+   cliente olha todo dia. É o melhor argumento da versão principal.
+5. ⚠ **A iluminação é metade do que o render vende.** LED em quase toda
+   prateleira, no espelho da penteadeira e em toda a sapateira. Precisa
+   ficar claro o que é nosso (perfil, fita, usinagem) e o que é da
+   elétrica (fonte, driver, circuito).
+6. ⛔ **Dezessete portas não são o orçamento.** O que está atrás delas —
    caixaria, prateleiras, gavetas, cabideiros, iluminação — costuma pesar
    mais. A cliente está pedindo três versões do que **se vê**; o preço vai
    ser decidido pelo que **não se vê**.
 
 ---
 
-## ★ O que preciso do projeto para orçar
+## ★ O que ainda preciso para orçar
 
-1. Quais **ambientes e móveis**, e onde estão as 17 portas.
-2. **Medidas** de cada porta e de cada módulo.
-3. Se o reflecta bronze do projeto é **vidro em perfil de alumínio** — e
-   qual perfil — ou vidro colado em chapa.
-4. O **interno de cada móvel**: prateleiras, gavetas, cabideiros, sapateira,
-   nichos, iluminação.
-5. **Ferragem especificada**: dobradiça, corrediça, puxador.
-6. A **medida da porta da sapateira** e a altura livre dela.
-7. Se há **marcenaria sem porta** no projeto (painéis, bancadas, rodapés),
-   que entra no preço e não entra nas três versões.
+1. ⭐ **As páginas dos módulos 1 a 10** — a prancha "Numeração" numera os
+   dez, e em caderno assim vem uma página por módulo com o interno e as
+   medidas. **São elas que faltam.**
+2. A **largura e a profundidade** de cada módulo.
+3. A **sapateira**: largura, profundidade, altura livre e quantas
+   prateleiras inclinadas. É ela que recebe a porta inteiriça de espelho.
+4. Se o reflecta bronze vai em **perfil de alumínio** — e qual perfil e
+   qual puxador (o render mostra puxador embutido no próprio perfil).
+5. **Ferragem**: dobradiça (porta de vidro pede dobradiça própria) e o
+   modelo de corrediça oculta Hettich a considerar.
+6. **Iluminação**: quantos metros de fita, em que prateleiras, e de quem é
+   a fonte.
+7. Se há **marcenaria fora do closet** no mesmo orçamento — o caderno é do
+   apartamento inteiro.
