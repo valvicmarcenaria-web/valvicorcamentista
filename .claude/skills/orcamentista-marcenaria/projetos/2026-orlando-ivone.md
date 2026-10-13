@@ -80,79 +80,132 @@ MARCENARIA"*.
 ## O orçamento — `corte-orlando-ivone.py`
 
 MC **40%**, **sem RT**, chapa **MDF Ultra** (resistente à umidade).
+⭐ [Jonathan 13/10] **interno branco e externo em amadeirado fosco.**
 
 | | preço |
 |---|--:|
-| Armário inferior | **R$ 5.800** |
-| Armário superior · espelheira | **R$ 7.710** |
-| **INVESTIMENTO** | **R$ 13.510** |
+| Armário inferior | **R$ 4.590** |
+| Armário superior · espelheira | **R$ 6.990** |
+| **INVESTIMENTO** | **R$ 11.580** |
 
-Com RT de 10%: **R$ 16.770** (inferior 7.200 · superior 9.570).
+Com RT de 10%: **R$ 14.390** (inferior 5.710 · superior 8.680).
 
-**A espelheira é 57% do orçamento**, e dois terços do custo dela não é
-madeira: R$ 913 de espelho prata (a R$ 600/m², a base do Jonathan),
-R$ 794 ★ de perfil de alumínio e oito dobradiças carregando folha de
-espelho, que não perdoa desalinho.
+### Composição do custo direto — R$ 5.254
+
+| | inferior | superior | total | % |
+|---|--:|--:|--:|--:|
+| chapa · 1 amadeirada + 3 brancas | 1.017 | 686 | **1.703** | 32,4% |
+| fita de borda e filetagem | 146 | 118 | 264 | 5,0% |
+| consumíveis · 6% de chapa e fita | 70 | 48 | 118 | 2,2% |
+| ferragem | 810 | 280 | **1.090** | 20,7% |
+| terceiros · espelho e perfil | — | 1.976 | **1.976** | 37,6% |
+| embalagem · 2% do custo | 41 | 62 | 103 | 2,0% |
+| **CUSTO DIRETO** | **2.084** | **3.171** | **5.254** | 100% |
+
+*Ferragem:* 12 dobradiças com amortecedor (R$ 420) · 4 corrediças
+telescópicas (R$ 340) · 6 puxadores Zen Phenix 20 cm ★ (R$ 330).
+*Terceiros:* espelho prata 4 folhas a R$ 600/m² (R$ 913) · perfil de
+alumínio ★ R$ 75/m (R$ 794) · preparo das 3 peças fixas, berço e passagem
+do driver ★ (R$ 270).
+
+### Composição do preço — R$ 11.580
+
+| | R$ | % do preço |
+|---|--:|--:|
+| custo direto | 5.254 | 45,38% |
+| nota fiscal | 579 | 5,00% |
+| margem de erro | 232 | 2,00% |
+| desgaste de serra e fresa | 58 | 0,50% |
+| manutenção de máquinas | 58 | 0,50% |
+| produção · coordenação | 110 | 0,95% |
+| produção · programação | 110 | 0,95% |
+| produção · fabricação | 275 | 2,38% |
+| produção · montagem | 275 | 2,38% |
+| **MARGEM DE CONTRIBUIÇÃO** | **4.629** | **39,97%** |
+| **PREÇO** | **11.580** | **100%** |
+
+Base da casa 85,35% — sem RT e sem comissão de vendedor. ⚠ A MC não é
+lucro: dela ainda sai o custo fixo da fábrica.
+
+**A espelheira é 60% do orçamento**, e dois terços do custo dela não é
+madeira — é espelho, perfil de alumínio e oito dobradiças carregando folha
+de espelho, que não perdoa desalinho.
 
 ### ⛔ Metade da chapa deste orçamento é sobra
 
-Pagamos 4 chapas, R$ 2.470, para usar o equivalente a R$ 1.223. A sobra é
-**R$ 1.247 — 50% da chapa, 20% do custo direto, R$ 2.750 de preço**. Não é
-erro: num banheiro de 3,43 m² a chapa inteira não cabe no móvel.
+Pagamos 4 chapas, R$ 1.703, para usar o equivalente a R$ 832. A sobra é
+**R$ 871 — 51% da chapa, 17% do custo direto, R$ 1.920 de preço**. Não é
+erro: num banheiro de 3,43 m² a chapa inteira não cabe no móvel. O pior é
+o 15 mm branco: 4,2 m² obrigam a comprar duas chapas de 4,07.
 
-⭐ **Se vier o resto do apartamento junto, a sobra se dilui.** As pranchas
-são a `31_.2` e a `31_.6` de um caderno que tem mais folhas. Vale perguntar
-à arquiteta o que mais tem de marcenaria antes de fechar só o banheiro.
+⭐ **Se vier o resto do apartamento junto, a sobra se dilui.** São a `31_.2`
+e a `31_.6` de um caderno que tem mais folhas. Vale perguntar à arquiteta o
+que mais tem de marcenaria antes de fechar só o banheiro.
 
-### ⛔ Misturar duas cores neste banheiro sai mais caro
+### ⭐ Interno branco e externo amadeirado — e por que deu certo
 
-| | render | legenda | tudo branco |
-|---|--:|--:|--:|
-| Armário inferior | 5.800 | 6.580 | 4.160 |
-| Armário superior | 7.710 | 7.790 | 6.680 |
-| **INVESTIMENTO** | **13.510** | **14.370** | **10.840** |
-| chapas compradas | 4 | 6 | 4 |
+Caixaria em MDF Ultra branco; portas, frentes de gaveta, as três peças
+fixas da espelheira, a lateral direita dos dois móveis (que fica solta, sem
+parede) e a base da espelheira (que se enxerga por baixo) em amadeirado
+fosco.
 
-O do meio — a leitura literal da legenda, superior branco e inferior de cor
-— é **o mais caro dos três**, R$ 860 acima do render, com a chapa branca
-custando 35% **menos** que a de cor. O motivo é aritmética de chapa: duas
-famílias de cor obrigam a comprar o mínimo de uma chapa em cada espessura
-de cada cor. Seis chapas para um banheiro que usa oito metros e meio. A
-pior delas: 0,27 m² de 18 mm branco pagando R$ 429 de chapa inteira.
+| | como pedido | tudo amadeirado |
+|---|--:|--:|
+| Armário inferior | 4.590 | 5.790 |
+| Armário superior | 6.990 | 7.720 |
+| **INVESTIMENTO** | **11.580** | **13.510** |
+| chapa | 1.703 | 2.470 |
+| chapas compradas | 4 | 4 |
 
-Economizar de verdade é **tudo branco**: R$ 10.840, 20% abaixo. ⚠ Mas o
-render é o que o cliente comprou com os olhos, e a madeira escura é o único
-calor naquele banheiro de pedra.
+Economia de **R$ 1.930 (14%)** sem tirar nada do que se vê.
+
+⭐ E deu certo por um motivo que não é óbvio: **todo o aparente foi para
+18 mm**. Numa obra deste tamanho misturar duas cores normalmente
+**encarece** — cada cor obriga a comprar o mínimo de uma chapa em cada
+espessura, e sobra quase tudo. Concentrando o amadeirado numa espessura só,
+ele cabe em **uma** chapa (1,71 m² de 4,07 aproveitáveis) e as outras três
+saem brancas, 35% mais baratas. Mesmas 4 chapas de antes, R$ 767 a menos
+de chapa.
+
+⛔ Se alguma peça aparente voltar para 15 mm, entra uma **quinta** chapa e
+a economia encolhe. Vale a pena segurar o 18.
 
 ---
 
 ## ★ Em aberto
 
 1. **A cor.** *"MDF A DEFINIR"* embaixo, *"MDF BRANCO"* em cima, e o render
-   com os dois **amadeirados escuros**, peças fixas inclusive. Orçado pelo
-   render. Precisa da arquiteta.
-2. **Resistência à umidade.** A prancha **não** pede chapa Ultra — nós
+   com os dois amadeirados. Fechado como o Jonathan mandou em 13/10:
+   **interno branco, externo amadeirado fosco**. ⚠ Falta o **nome do
+   padrão** — a arquiteta não especificou decor nenhum, e dentro do
+   amadeirado o preço de chapa muda de fornecedor para fornecedor.
+2. **⚠ Amadeirado em chapa Ultra.** A linha resistente à umidade tem menos
+   padrões amadeirados que a comum. Se o decor escolhido não existir em
+   Ultra, ou se troca o padrão, ou a peça aparente sai em chapa comum — e
+   aí ela é a que menos sofre, porque o que molha é a caixaria, que fica
+   em Ultra.
+3. **Resistência à umidade.** A prancha **não** pede chapa Ultra — nós
    colocamos, porque é banheiro, embaixo de cuba e ao lado de box. ★ A Ultra
    não está na base da casa; estimada em +30% sobre a chapa de cor, como no
    projeto da Raquel Franco, onde a designer especificou "MDF Verde/Ultra".
    Em MDF comum sai mais barato e sai **sem a garantia de 10 anos** na parte
    que molha.
-3. **RT.** Sem instrução. Orçado sem. Ana Maria Castro é arquiteta nova
+4. **RT.** Sem instrução. Orçado sem. Ana Maria Castro é arquiteta nova
    para nós — não é a Rubia Nascimento da Isabela e das duas Raquéis, onde
    o Jonathan mandou considerar RT.
-4. **Puxador Zen Phenix 20 cm cromado** — especificado por nome. ★ Entrou a
+5. **Puxador Zen Phenix 20 cm cromado** — especificado por nome. ★ Entrou a
    R$ 55 a unidade, estimado, seis unidades. Na Raquel o Jonathan mandou
    tirar puxador e dobradiça do preço; aqui mantive, porque a prancha
    especifica o modelo.
-5. **O interior do armário inferior não está desenhado.** Adotei uma
+6. **O interior do armário inferior não está desenhado.** Adotei uma
    prateleira recortada no vão das portas. Divisória, cesto ou gaveta
    interna é acréscimo.
-6. **O driver.** Fazemos o berço e a passagem na peça fixa. A fonte, a
+7. **O driver.** Fazemos o berço e a passagem na peça fixa. A fonte, a
    arandela e a ligação são da elétrica.
-7. **O sóculo** é alvenaria da obra. ⚠ Tem de estar pronto, nivelado e
+8. **O sóculo** é alvenaria da obra. ⚠ Tem de estar pronto, nivelado e
    revestido antes da montagem. Se não estiver, ou o móvel espera ou vai
    em pé regulável — e aí muda o desenho.
-8. **Divergência da prancha:** a elevação 01 cota **15** de testeira sob a
+9. **Divergência da prancha:** a elevação 01 cota **15** de testeira sob a
    bancada e a nota da planta diz **TESTEIRA = 20**. Muda o recuo da frente.
-9. **Revisão 00, "não plotar".** Medida de obra por nossa conta antes de
+10. **Revisão 00, "não plotar".** Medida de obra por nossa conta antes de
    produzir.

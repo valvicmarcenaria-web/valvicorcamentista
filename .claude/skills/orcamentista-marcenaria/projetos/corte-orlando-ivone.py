@@ -50,16 +50,23 @@ PRECO = {('cor',6):300.0, ('cor',15):500.0, ('cor',18):600.0,
          ('br',6):190.0,  ('br',15):260.0,  ('br',18):330.0,
          ('ultra',6):390.0, ('ultra',15):650.0, ('ultra',18):780.0,
          ('ultrabr',6):247.0, ('ultrabr',15):338.0, ('ultrabr',18):429.0}
-FITA_M  = 3.0 + 2.5            # fita de cor + filetagem
+FITA_COR = 3.0 + 2.5           # fita amadeirada + filetagem na coladeira
+FITA_BR  = 2.0 + 2.5           # fita branca + filetagem
 MC_ALVO = 0.40                 # ⭐ [Jonathan 08/10]
 RT_ON   = False                # ★ sem instrução do Jonathan; ver EM ABERTO
 BASE    = M.base(parcelas=0, rt=RT_ON, vendedor=False)
 
-FER_UN = {'dobr':35.0, 'corr':85.0, 'puxador':55.0}
+FER_UN  = {'dobr':35.0, 'corr':85.0, 'puxador':55.0}
+FER_NOME = {'dobr':'dobradiça com amortecedor',
+            'corr':'corrediça telescópica',
+            'puxador':'puxador Zen Phenix 20 cm'}
 # ⭐ [Jonathan 09/10] espelho a R$ 600,00 o m², fornecimento nosso.
 ESPELHO_M2 = 600.0
 PERFIL_M   = 75.0     # ★ perfil de alumínio prata da porta de espelho, por m
 ARANDELA_PC= 90.0     # ★ usinagem da passagem e berço do driver, por peça fixa
+
+NOME_CH = {'ultra': 'Ultra amadeirado', 'ultrabr': 'Ultra branco',
+           'cor': 'MDF cor', 'br': 'Branco TX'}
 
 PCS, FER, TER = {}, {}, {}
 def amb(k):
@@ -72,24 +79,33 @@ def f(k, **kw):
     for key, v in kw.items(): FER[k][key] += v
 def ter(k, v): amb(k); TER[k] += v
 
+# ⭐ [Jonathan 13/10] "considere interno branco e externo em amadeirado
+#   fosco". A caixaria vai em MDF Ultra BRANCO e tudo o que se vê — portas,
+#   frentes de gaveta, as três peças fixas da espelheira, a lateral direita
+#   dos dois móveis (que fica solta, sem parede) e a base da espelheira
+#   (que se enxerga por baixo) — vai em AMADEIRADO FOSCO.
+#   ⭐ E todo o aparente foi para 18 mm de propósito: assim o amadeirado
+#     cabe em UMA chapa só. Ver o quadro no fim.
+
 # ══ 1 · ARMÁRIO INFERIOR ══════════════════════════════════════════════════
 # 119 de frente × 63 de altura × 46 de profundidade, sobre sóculo de 15.
 # Frente: 71,5 de portas de giro (2 folhas) + 47,5 de gavetas (4).
 # Gavetas de cima para baixo: 10 · 17 · 17 · 17. A cuba cai sobre o vão
 # das portas — por isso as gavetas não têm conflito com o sifão.
 K = 'Armário inferior'
-a(K,'ultra',15,'Lateral',                 63,  46, 2)
-a(K,'ultra',15,'Divisória vertical',      63,  46, 1)
-a(K,'ultra',15,'Base',                   115,  46, 1)
-a(K,'ultra',15,'Travessa superior',      115,  10, 2)
-a(K,'ultra', 6,'Fundo',                  119,  63, 1, 1)
-a(K,'ultra',18,'Porta de giro',           61,  36, 2)
-a(K,'ultra',18,'Frente de gaveta',        48,  10, 1)
-a(K,'ultra',18,'Frente de gaveta',        48,  17, 3)
-a(K,'ultra',15,'Gaveta · lateral',        42,  12, 8, 1)
-a(K,'ultra',15,'Gaveta · frente e fundo', 44,  12, 8, 1)
-a(K,'ultra',15,'Gaveta · fundo',          44,  42, 4, 1)
-a(K,'ultra',15,'Prateleira interna',      68,  42, 1)     # ★ ver EM ABERTO
+a(K,'ultra',  18,'Lateral aparente',        63,  46, 1)   # amadeirado
+a(K,'ultrabr',15,'Lateral de parede',       63,  46, 1)
+a(K,'ultrabr',15,'Divisória vertical',      63,  46, 1)
+a(K,'ultrabr',15,'Base',                   115,  46, 1)
+a(K,'ultrabr',15,'Travessa superior',      115,  10, 2)
+a(K,'ultrabr', 6,'Fundo',                  119,  63, 1, 1)
+a(K,'ultra',  18,'Porta de giro',           61,  36, 2)   # amadeirado
+a(K,'ultra',  18,'Frente de gaveta',        48,  10, 1)   # amadeirado
+a(K,'ultra',  18,'Frente de gaveta',        48,  17, 3)   # amadeirado
+a(K,'ultrabr',15,'Gaveta · lateral',        42,  12, 8, 1)
+a(K,'ultrabr',15,'Gaveta · frente e fundo', 44,  12, 8, 1)
+a(K,'ultrabr',15,'Gaveta · fundo',          44,  42, 4, 1)
+a(K,'ultrabr',15,'Prateleira interna',      68,  42, 1)   # ★ ver EM ABERTO
 f(K, dobr=4, corr=4, puxador=6)   # puxador Zen Phenix 20 cm cromado
 
 # ══ 2 · ARMÁRIO SUPERIOR · ESPELHEIRA ═════════════════════════════════════
@@ -101,12 +117,14 @@ f(K, dobr=4, corr=4, puxador=6)   # puxador Zen Phenix 20 cm cromado
 # Por dentro, duas prateleiras por vão (23 · 30 · 30 na elevação 04).
 K = 'Armário superior'
 ESP_L, ESP_A, ESP_N = 0.4225, 0.90, 4
-a(K,'ultra',15,'Lateral',                 90,  15, 2)
-a(K,'ultra',15,'Divisória vertical',      90,  15, 1)
-a(K,'ultra',15,'Base e tampo',           191,  15, 2)
-a(K,'ultra', 6,'Fundo',                  195,  90, 1, 1)
-a(K,'ultra',15,'Prateleira',              95,  13, 4)
-a(K,'ultra',18,'Peça fixa frontal',       90,  10, 3)
+a(K,'ultra',  18,'Lateral aparente',        90,  15, 1)   # amadeirado
+a(K,'ultrabr',15,'Lateral de parede',       90,  15, 1)
+a(K,'ultrabr',15,'Divisória vertical',      90,  15, 1)
+a(K,'ultra',  18,'Base · vista por baixo', 191,  15, 1)   # amadeirado
+a(K,'ultrabr',15,'Tampo',                  191,  15, 1)
+a(K,'ultrabr', 6,'Fundo',                  195,  90, 1, 1)
+a(K,'ultrabr',15,'Prateleira',              95,  13, 4)
+a(K,'ultra',  18,'Peça fixa frontal',       90,  10, 3)   # amadeirado
 f(K, dobr=8)
 ter(K, ESP_N*ESP_L*ESP_A*ESPELHO_M2                      # espelho prata
      + ESP_N*2*(ESP_L+ESP_A)*PERFIL_M                    # perfil de alumínio
@@ -122,7 +140,8 @@ def calcula(pcs):
         for cor, esp, _, c, l, q, fc in pcs[k]:
             m = (cor, esp)
             area_mat[m] = area_mat.get(m, 0.0) + c*l*q/1e4
-            fita[k] += 2*(c+l)*q/100*(0.75 if fc == 2 else 0.4)*FITA_M
+            fm = FITA_BR if cor.endswith('br') else FITA_COR
+            fita[k] += 2*(c+l)*q/100*(0.75 if fc == 2 else 0.4)*fm
     chapas   = {m: -(-v/(CH_M2*APROV)//1) for m, v in area_mat.items()}
     custo_ch = {m: chapas[m]*PRECO[m] for m in chapas}
     # ⛔ cada peça paga a própria taxa; a sobra de corte rateia pela área
@@ -147,17 +166,11 @@ ch, fita, fer_custo, CDI = COR['ch'], COR['fita'], COR['fer'], COR['CDI']
 area_mat, chapas, custo_ch = COR['area'], COR['chapas'], COR['custo_ch']
 CD, PV, TOT = COR['CD'], COR['PV'], COR['TOT']
 
-# ── cenário da LEGENDA: a prancha escreve "ARMÁRIO SUPERIOR EM MDF BRANCO",
-#   enquanto o render mostra os dois amadeirados. Só a espelheira muda.
-PCS_BR = {k: list(v) for k, v in PCS.items()}
-PCS_BR['Armário superior'] = [('ultrabr', e, d, c, l, q, fc)
-                              for _, e, d, c, l, q, fc in PCS['Armário superior']]
-BRANCO = calcula(PCS_BR)
-
-# ── e o cenário em que a chapa é UMA SÓ família: tudo em Ultra branco.
-PCS_TB = {k: [('ultrabr', e, d, c, l, q, fc) for _, e, d, c, l, q, fc in v]
+# ── para comparar: TUDO amadeirado, interno inclusive, que era o orçamento
+#   de antes da instrução do Jonathan de 13/10.
+PCS_TC = {k: [('ultra', e, d, c, l, q, fc) for _, e, d, c, l, q, fc in v]
           for k, v in PCS.items()}
-TUDOBR = calcula(PCS_TB)
+TUDOCOR = calcula(PCS_TC)
 
 # o mesmo custo com RT de 10%, para a decisão do Jonathan
 BASE_RT = M.base(parcelas=0, rt=True, vendedor=False)
@@ -174,7 +187,7 @@ if __name__ == '__main__':
     print(f'\n{"CHAPA":<22}{"área líq.":>12}{"chapas":>9}{"R$/chapa":>11}{"custo":>11}')
     print('─'*W)
     for m in sorted(area_mat, key=lambda x: (x[0], x[1])):
-        print(f'{("MDF " + m[0].upper() + "  " + str(m[1]) + " mm"):<22}'
+        print(f'{(NOME_CH[m[0]] + "  " + str(m[1]) + " mm"):<22}'
               f'{br1(area_mat[m]):>10} m²{chapas[m]:>9.0f}'
               f'{br(PRECO[m]):>11}{br(custo_ch[m]):>11}')
     print('─'*W)
@@ -198,6 +211,62 @@ if __name__ == '__main__':
     print(f'  ⭐ COM RT de 10% o mesmo custo dá R$ {br(TOT_RT)} '
           f'— o RT vale R$ {br(TOT_RT-TOT)} ({(TOT_RT/TOT-1)*100:.1f}%)')
     print(f'     inferior R$ {br(PV_RT[AMBS[0]])}  ·  superior R$ {br(PV_RT[AMBS[1]])}')
+
+    # ══ COMPOSIÇÃO DE CUSTO ════════════════════════════════════════════
+    print(f'\n{"═"*W}')
+    print('COMPOSIÇÃO DO CUSTO DIRETO — de onde vem o R$ ' + br(CD))
+    print(f'{"═"*W}')
+    cons = {k: (ch[k]+fita[k])*0.06 for k in AMBS}
+    emb  = {k: CDI[k]/(1+M.EMBALAGEM)*M.EMBALAGEM for k in AMBS}
+    _am = int(sum(v for m, v in chapas.items() if m[0] == 'ultra'))
+    _bo = int(sum(chapas.values())) - _am
+    LIN = [(f'chapa  ·  {_am} amadeirada + {_bo} brancas', {k: ch[k] for k in AMBS}),
+           ('fita de borda e filetagem',      dict(fita)),
+           ('consumíveis  ·  6% de chapa e fita', cons),
+           ('ferragem',                       dict(fer_custo)),
+           ('terceiros  ·  espelho e perfil', dict(TER)),
+           ('embalagem  ·  2% do custo',      emb)]
+    print(f'{"":<38}{"inferior":>11}{"superior":>11}{"total":>11}{"%":>8}')
+    print('─'*W)
+    for nome, d in LIN:
+        t = sum(d.values())
+        print(f'{nome:<38}{br(d[AMBS[0]]):>11}{br(d[AMBS[1]]):>11}'
+              f'{br(t):>11}{t/CD*100:>7.1f}%')
+    print('─'*W)
+    print(f'{"CUSTO DIRETO":<38}{br(CDI[AMBS[0]]):>11}{br(CDI[AMBS[1]]):>11}'
+          f'{br(CD):>11}{100.0:>7.1f}%')
+
+    print(f'\n  a ferragem, aberta:')
+    for x in FER_UN:
+        n = sum(FER[k][x] for k in AMBS)
+        if n: print(f'    {FER_NOME[x]:<28}{n:>3} × R$ {br(FER_UN[x]):>5}'
+                    f'  =  R$ {br(n*FER_UN[x])}')
+    print(f'  os terceiros, abertos:')
+    print(f'    espelho prata        {ESP_N} folhas a R$ {br(ESPELHO_M2)}/m²  =  '
+          f'R$ {br(ESP_N*ESP_L*ESP_A*ESPELHO_M2)}')
+    print(f'    perfil de alumínio   ★ R$ {br(PERFIL_M)}/m              =  '
+          f'R$ {br(ESP_N*2*(ESP_L+ESP_A)*PERFIL_M)}')
+    print(f'    preparo das 3 fixas  ★ berço e passagem do driver  =  '
+          f'R$ {br(3*ARANDELA_PC)}')
+
+    # ══ COMPOSIÇÃO DO PREÇO ════════════════════════════════════════════
+    print(f'\n{"═"*W}')
+    print('COMPOSIÇÃO DO PREÇO — para onde vai o R$ ' + br(TOT))
+    print(f'{"═"*W}')
+    enc = M.encargos(parcelas=0, rt=RT_ON, vendedor=False)
+    print(f'{"":<38}{"R$":>12}{"% do preço":>14}')
+    print('─'*W)
+    print(f'{"custo direto":<38}{br(CD):>12}{CD/TOT*100:>13.2f}%')
+    for nome, v in enc.items():
+        if v: print(f'{nome:<38}{br(TOT*v):>12}{v*100:>13.2f}%')
+    print('─'*W)
+    mc_r = TOT - CD - sum(TOT*v for v in enc.values())
+    print(f'{"MARGEM DE CONTRIBUIÇÃO":<38}{br(mc_r):>12}{mc_r/TOT*100:>13.2f}%')
+    print(f'{"PREÇO":<38}{br(TOT):>12}{100.0:>13.2f}%')
+    print(f'\n  base da casa {BASE*100:.2f}% — sem RT e sem comissão de vendedor.')
+    print(f'  ⚠ A MC não é lucro: dela ainda sai o custo fixo da fábrica.')
+    print(f'  ⛔ E dentro do custo direto há R$ {br(COR["sobra"])} de SOBRA de chapa,')
+    print(f'    {COR["sobra"]/CD*100:.0f}% do custo direto — ver o quadro da sobra adiante.')
 
     print(f'\n{"═"*W}')
     print('⭐ A ESPELHEIRA É QUASE METADE DO ORÇAMENTO')
@@ -241,43 +310,48 @@ if __name__ == '__main__':
     print('    tem de marcenaria antes de fechar só o banheiro.')
 
     print(f'\n{"═"*W}')
-    print('⛔ MISTURAR DUAS CORES NESTE BANHEIRO SAI MAIS CARO')
+    print('⭐ INTERNO BRANCO E EXTERNO AMADEIRADO — E POR QUE DEU CERTO')
     print(f'{"═"*W}')
-    print('  A legenda da 31_.2 diz "ARMÁRIO SUPERIOR EM MDF BRANCO" e o')
-    print('  render mostra as peças fixas em AMADEIRADO ESCURO, iguais ao')
-    print('  armário de baixo. Fiz as contas das três leituras:')
-    print(f'\n  {"":<34}{"render":>11}{"legenda":>11}{"tudo branco":>13}')
-    print('  ' + '─'*69)
+    print('  [Jonathan 13/10] Caixaria em MDF Ultra branco; portas, frentes')
+    print('  de gaveta, as três peças fixas da espelheira, a lateral direita')
+    print('  dos dois móveis e a base da espelheira em amadeirado fosco.')
+    print(f'\n  {"":<36}{"como pedido":>14}{"tudo amadeirado":>18}')
+    print('  ' + '─'*68)
     for k in AMBS:
-        print(f'  {k:<34}{br(PV[k]):>11}{br(BRANCO["PV"][k]):>11}'
-              f'{br(TUDOBR["PV"][k]):>13}')
-    print(f'  {"INVESTIMENTO":<34}{br(TOT):>11}{br(BRANCO["TOT"]):>11}'
-          f'{br(TUDOBR["TOT"]):>13}')
-    print(f'  {"chapas compradas":<34}{sum(chapas.values()):>11.0f}'
-          f'{sum(BRANCO["chapas"].values()):>11.0f}'
-          f'{sum(TUDOBR["chapas"].values()):>13.0f}')
-    print(f'\n  ⛔ O do meio é o mais caro dos três — R$ {br(BRANCO["TOT"]-TOT)} ACIMA do')
-    print('    render, com a chapa branca custando 35% MENOS que a de cor.')
-    print('    O motivo é aritmética de chapa, não de madeira: duas famílias')
-    print('    de cor obrigam a comprar o mínimo de uma chapa em CADA')
-    print('    espessura de CADA cor. São seis chapas para um banheiro que')
-    print('    usa oito metros e meio.')
-    _pior = f'{BRANCO["area"][("ultrabr",18)]:.2f}'.replace('.', ',')
-    print(f'    A pior delas: {_pior} m² de 18 mm branco pagando '
-          f'R$ {br(PRECO[("ultrabr",18)])} de chapa inteira.')
-    print(f'\n  ⭐ Se o cliente quiser economizar de verdade, é TUDO BRANCO:')
-    print(f'    R$ {br(TUDOBR["TOT"])}, R$ {br(TOT-TUDOBR["TOT"])} abaixo do render '
-          f'({(1-TUDOBR["TOT"]/TOT)*100:.0f}%).')
-    print('    ⚠ Mas o render é o que o cliente comprou com os olhos, e a')
-    print('      madeira escura é o único calor naquele banheiro de pedra.')
+        print(f'  {k:<36}{br(PV[k]):>14}{br(TUDOCOR["PV"][k]):>18}')
+    print(f'  {"INVESTIMENTO":<36}{br(TOT):>14}{br(TUDOCOR["TOT"]):>18}')
+    print(f'  {"chapa":<36}{br(sum(custo_ch.values())):>14}'
+          f'{br(sum(TUDOCOR["custo_ch"].values())):>18}')
+    print(f'  {"chapas compradas":<36}{sum(chapas.values()):>14.0f}'
+          f'{sum(TUDOCOR["chapas"].values()):>18.0f}')
+    print(f'\n  Economia de R$ {br(TUDOCOR["TOT"]-TOT)} '
+          f'({(1-TOT/TUDOCOR["TOT"])*100:.0f}%) sem tirar nada do que se vê.')
+    print('\n  ⭐ E deu certo por um motivo que não é óbvio: TODO O APARENTE')
+    print('    FOI PARA 18 mm. Numa obra deste tamanho, misturar duas cores')
+    print('    normalmente ENCARECE — cada cor obriga a comprar o mínimo de')
+    print('    uma chapa em cada espessura, e sobra quase tudo. Concentrando')
+    print(f'    o amadeirado numa espessura só, ele cabe em UMA chapa '
+          f'({area_mat[("ultra",18)]:.2f}'.replace('.', ',') + ' m²')
+    print('    de 4,07 aproveitáveis) e as outras três saem brancas, 35%')
+    print('    mais baratas. Mesmas 4 chapas de antes, R$ '
+          f'{br(sum(TUDOCOR["custo_ch"].values())-sum(custo_ch.values()))} a menos.')
+    print('    ⛔ Se alguma peça aparente voltar para 15 mm, entra uma QUINTA')
+    print('      chapa e a economia encolhe. Vale a pena segurar o 18.')
 
     print(f'\n{"═"*W}')
     print('★ EM ABERTO')
     print(f'{"═"*W}')
-    print('  · ⛔ A COR. "MDF A DEFINIR" embaixo, "MDF BRANCO" em cima, e o')
-    print('    render com os dois amadeirados. Orçado pelo render — e o')
-    print('    quadro acima mostra que a leitura literal da legenda é a')
-    print('    mais cara das três. Precisa da arquiteta para fechar.')
+    print('  · ⛔ A COR. A prancha diz "MDF A DEFINIR" embaixo e "MDF BRANCO"')
+    print('    em cima; o render mostra os dois amadeirados. Fechado como o')
+    print('    Jonathan mandou em 13/10: interno branco, externo amadeirado')
+    print('    fosco. ⚠ Falta o NOME do padrão — a arquiteta não especificou')
+    print('    decor nenhum, e o preço de chapa muda de fornecedor para')
+    print('    fornecedor dentro do amadeirado.')
+    print('  · ⚠ AMADEIRADO EM CHAPA ULTRA. A linha resistente à umidade tem')
+    print('    MENOS padrões amadeirados que a linha comum. Se o decor')
+    print('    escolhido não existir em Ultra, ou se troca o padrão, ou a')
+    print('    peça aparente sai em chapa comum — e aí ela é a que menos')
+    print('    sofre, porque o que molha é a caixaria, que fica em Ultra.')
     print('  · ⛔ RESISTÊNCIA À UMIDADE. A arquiteta não pediu chapa Ultra.')
     print('    Nós colocamos. ★ +30% estimado sobre a cor — se o cliente')
     print('    quiser MDF comum, sai mais barato e sai sem a nossa garantia')
