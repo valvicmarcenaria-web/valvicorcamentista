@@ -52,8 +52,8 @@ PRECO = {('cor',6):300.0, ('cor',15):500.0, ('cor',18):600.0,
          ('ultrabr',6):247.0, ('ultrabr',15):338.0, ('ultrabr',18):429.0}
 FITA_COR = 3.0 + 2.5           # fita amadeirada + filetagem na coladeira
 FITA_BR  = 2.0 + 2.5           # fita branca + filetagem
-MC_ALVO = 0.40                 # ⭐ [Jonathan 08/10]
-RT_ON   = False                # ★ sem instrução do Jonathan; ver EM ABERTO
+MC_ALVO = 0.35                 # ⭐ [Jonathan 13/10] "traz a MC para 35%"
+RT_ON   = True                 # ⭐ [Jonathan 13/10] "e inclui a RT"
 BASE    = M.base(parcelas=0, rt=RT_ON, vendedor=False)
 
 FER_UN  = {'dobr':35.0, 'corr':85.0, 'puxador':55.0}
@@ -172,10 +172,12 @@ PCS_TC = {k: [('ultra', e, d, c, l, q, fc) for _, e, d, c, l, q, fc in v]
           for k, v in PCS.items()}
 TUDOCOR = calcula(PCS_TC)
 
-# o mesmo custo com RT de 10%, para a decisão do Jonathan
-BASE_RT = M.base(parcelas=0, rt=True, vendedor=False)
-PV_RT   = {k: round(CDI[k]/(BASE_RT - MC_ALVO)/10)*10 for k in AMBS}
-TOT_RT  = sum(PV_RT.values())
+# ── o que o mesmo custo daria nas outras duas combinações ───────────────
+BASE_SRT = M.base(parcelas=0, rt=False, vendedor=False)
+PV_SRT   = {k: round(CDI[k]/(BASE_SRT - MC_ALVO)/10)*10 for k in AMBS}
+TOT_SRT  = sum(PV_SRT.values())          # mesma MC, sem RT
+PV_40    = {k: round(CDI[k]/(BASE - 0.40)/10)*10 for k in AMBS}
+TOT_40   = sum(PV_40.values())           # com RT, na MC de 40% de antes
 
 if __name__ == '__main__':
     W = 90
@@ -207,10 +209,14 @@ if __name__ == '__main__':
           f'{br(sum(fita.values())):>8}'
           f'{br(sum(fer_custo.values())+sum(TER.values())):>13}'
           f'{br(CD):>10}{br(TOT):>10}{(BASE-CD/TOT)*100:>7.1f}%')
-    print(f'  sem RT · base {BASE*100:.2f}%  ·  {sum(chapas.values()):.0f} chapas')
-    print(f'  ⭐ COM RT de 10% o mesmo custo dá R$ {br(TOT_RT)} '
-          f'— o RT vale R$ {br(TOT_RT-TOT)} ({(TOT_RT/TOT-1)*100:.1f}%)')
-    print(f'     inferior R$ {br(PV_RT[AMBS[0]])}  ·  superior R$ {br(PV_RT[AMBS[1]])}')
+    print(f'  ⭐ MC de 35% COM RT de 10% — base {BASE*100:.2f}%  ·  '
+          f'{sum(chapas.values()):.0f} chapas  [Jonathan 13/10]')
+    print(f'  · o MESMO custo SEM RT daria R$ {br(TOT_SRT)} — '
+          f'o RT custa R$ {br(TOT-TOT_SRT)} ao cliente ({(TOT/TOT_SRT-1)*100:.1f}%)')
+    print(f'  · na MC de 40% de antes, com RT, seria R$ {br(TOT_40)} — '
+          f'descemos R$ {br(TOT_40-TOT)} ({(1-TOT/TOT_40)*100:.1f}%)')
+    print(f'  ⛔ 35% é o PISO da casa (MC_PISO). Abaixo disto não há negociação,')
+    print(f'    há prejuízo de estrutura: a MC ainda tem de pagar o custo fixo.')
 
     # ══ COMPOSIÇÃO DE CUSTO ════════════════════════════════════════════
     print(f'\n{"═"*W}')
@@ -263,8 +269,20 @@ if __name__ == '__main__':
     mc_r = TOT - CD - sum(TOT*v for v in enc.values())
     print(f'{"MARGEM DE CONTRIBUIÇÃO":<38}{br(mc_r):>12}{mc_r/TOT*100:>13.2f}%')
     print(f'{"PREÇO":<38}{br(TOT):>12}{100.0:>13.2f}%')
-    print(f'\n  base da casa {BASE*100:.2f}% — sem RT e sem comissão de vendedor.')
+    print(f'\n  base da casa {BASE*100:.2f}% — com RT de 10%, sem comissão de vendedor.')
     print(f'  ⚠ A MC não é lucro: dela ainda sai o custo fixo da fábrica.')
+    print(f'\n  ⛔⛔ A MC CAIU 5 PONTOS E O CLIENTE PAGA MAIS CARO.')
+    _mc40 = TOT_40*(BASE-CD/TOT_40)
+    _ant  = sum(round(CDI[k]/(BASE_SRT-0.40)/10)*10 for k in AMBS)
+    _mcan = _ant*(BASE_SRT-CD/_ant)
+    print(f'    MC 40% sem RT (ontem) ...... preço R$ {br(_ant)}  ·  MC R$ {br(_mcan)}')
+    print(f'    MC 35% com RT (hoje) ....... preço R$ {br(TOT)}  ·  MC R$ {br(TOT-CD-sum(TOT*v for v in enc.values()))}')
+    print(f'    O cliente paga R$ {br(TOT-_ant)} A MAIS e a casa ganha '
+          f'R$ {br(_mcan-(TOT-CD-sum(TOT*v for v in enc.values()))):} A MENOS.')
+    print(f'    No meio ficam R$ {br(TOT*enc["RT"])} de RT. Os 5 pontos de margem que')
+    print('    abrimos não chegam ao cliente — pagam a arquiteta, e sobra')
+    print('    conta para ele. ⚠ Se a ideia era baixar o preço, o caminho é')
+    print('    tirar o RT, não a margem.')
     print(f'  ⛔ E dentro do custo direto há R$ {br(COR["sobra"])} de SOBRA de chapa,')
     print(f'    {COR["sobra"]/CD*100:.0f}% do custo direto — ver o quadro da sobra adiante.')
 
@@ -301,8 +319,8 @@ if __name__ == '__main__':
           f'{COR["sobra"]/sum(custo_ch.values())*100:.0f}% da chapa,')
     print(f'  {COR["sobra"]/CD*100:.0f}% do custo direto, R$ {br(COR["sobra"]/(BASE-MC_ALVO))} de preço.')
     print('  Não é erro: num banheiro de 3,43 m² a chapa inteira não cabe no')
-    print('  móvel. O 18 mm é o pior — uma chapa comprada para fazer as')
-    print('  portas, as frentes de gaveta e as três peças fixas.')
+    print('  móvel. O pior é o 15 mm branco: 4,2 m² obrigam a comprar duas')
+    print('  chapas de 4,07 e a segunda entra quase inteira para sobrar.')
     print('  ⭐ SE VIER O RESTO DO APARTAMENTO JUNTO, a sobra se dilui nos')
     print('    outros ambientes e este banheiro fica mais barato. É [31]')
     print('    APTO ORLANDO E IVONE, prancha 31_.2 e 31_.6 — há mais')
@@ -356,9 +374,12 @@ if __name__ == '__main__':
     print('    Nós colocamos. ★ +30% estimado sobre a cor — se o cliente')
     print('    quiser MDF comum, sai mais barato e sai sem a nossa garantia')
     print('    de 10 anos na parte que molha.')
-    print('  · RT: não há instrução. Orçado SEM. Arquiteta nova para nós —')
-    print('    Ana Maria Castro, não é a Rubia dos projetos da Isabela e das')
-    print('    Raquéis, onde o Jonathan mandou considerar RT.')
+    print('  · ⭐ RT DE 10% INCLUÍDO [Jonathan 13/10], para Ana Maria Castro.')
+    print(f'    São R$ {br(TOT*enc["RT"])} dentro do preço. ⚠ Falta combinar com ela o')
+    print('    que o RT cobre: acompanhamento de obra, conferência de medida')
+    print('    e aprovação de amostra entram? E quando é pago — na assinatura')
+    print('    ou na entrega? A parceria de RT da casa tem essa página; vale')
+    print('    mandar antes de a proposta sair.')
     print('  · PUXADOR ZEN PHENIX 20 cm cromado — especificado por nome na')
     print('    prancha. ★ Entrou a R$ 55 a unidade, estimado. Na Raquel o')
     print('    Jonathan mandou TIRAR puxador e dobradiça; aqui mantive,')
