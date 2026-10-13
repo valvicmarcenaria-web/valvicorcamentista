@@ -63,6 +63,12 @@ PESSOAS = [
 CLASSE_NOME = {'venda': 'Vendas', 'projeto': 'Projeto e coordenação',
                'operacao': 'Operação'}
 
+# Endereço da Custo por Projeto no Drive. Fica gravado em Painel!C4 de cada
+# planilha — ninguém precisa colar nada. Se a planilha for recriada com outro
+# arquivo, troque aqui e gere de novo.
+FONTE = ('https://docs.google.com/spreadsheets/d/'
+         '1tTJXG4w7lDvIcnd0dyr219-leOPwuURqrBk6lJIr18I/edit')
+
 N_PROJ = 40          # slots de projeto, o mesmo teto do Painel Geral
 N_AMB = 12           # ambientes por projeto, como na ficha
 N_AVULSO = 30        # linhas de avulso
@@ -266,13 +272,14 @@ def aba_painel(wb, nome, funcao, classe, com, avu):
     ws.cell(3, 2, 'Endereço da planilha Custo por Projeto').font = Font(
         name=F, size=9, bold=True, color=NAVY)
     ws.merge_cells('B4:B4')
-    ws.cell(4, 2, 'cole o link aqui →').font = Font(name=F, size=9, color=MUTED)
-    cfg = ws.cell(4, 3)
+    ws.cell(4, 2, 'já preenchido →').font = Font(name=F, size=9, color=MUTED)
+    cfg = ws.cell(4, 3, FONTE)
     cfg.fill = PatternFill('solid', fgColor=GOLDBG)
     cfg.border = BORDA
     cfg.font = Font(name=F, size=9, color=INK)
     ws.merge_cells(start_row=4, start_column=3, end_row=4, end_column=7)
-    ws.cell(5, 2, 'Enquanto estiver vazio, a planilha fica em branco — não é erro.').font = \
+    ws.cell(5, 2, 'Na primeira abertura o Google pede para autorizar a conexão. '
+                  'Clique em Permitir acesso — é uma vez só.').font = \
         Font(name=F, size=8.5, italic=True, color=MUTED)
 
     cp0, cpf = com
