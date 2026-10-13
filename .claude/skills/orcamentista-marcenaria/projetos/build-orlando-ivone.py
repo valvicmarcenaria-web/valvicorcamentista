@@ -30,27 +30,55 @@ ARQ = 'Ana Maria Castro'
 PRAZO, VALIDADE = '60 dias corridos', '7 dias úteis'
 NP = 2
 
+# ⭐ [Jonathan 13/10] a SEGUNDA VERSÃO: sem MDF Ultra, perfil de alumínio
+#   comum, ferragens Bigfer, corrediça telescópica sem amortecimento,
+#   2 anos de garantia, MC de 32%.
+VER = (sys.argv[1] if len(sys.argv) > 1 else 'premium')
+assert VER in ('premium', 'essencial'), f'⛔ versão desconhecida: {VER}'
+R = oi.PREMIUM if VER == 'premium' else oi.ESSENCIAL
+GARANTIA = R['v']['garantia']
+SAIDA = 'proposta-orlando-ivone' + ('' if VER == 'premium' else '-essencial')
+
 def uri(nome):
     return ('data:image/jpeg;base64,'
             + base64.b64encode((P/'img-orlando-ivone'/nome).read_bytes()).decode())
 IMG1, IMG2 = uri('render-marcenaria.jpg'), uri('render-espelheira.jpg')
 
-ITENS = [
- ('Sob a bancada', 'Armário inferior', oi.PV['Armário inferior'],
+D_INF = {
+ 'premium':
   'Frente em <b>amadeirado fosco</b> e caixaria em <b>branco</b>. Portas de '
   'giro de um lado e, do outro, as gavetas — todas sobre <b>corrediça '
   'oculta Hettich</b>, que some sob a gaveta, abre inteira e fecha com '
   'amortecimento. Puxador <b>Zen Phenix cromado</b>, como a arquiteta '
-  'especificou.'),
- ('Espelheira', 'Armário superior, com espelho', oi.PV['Armário superior'],
+  'especificou.',
+ 'essencial':
+  'Frente em <b>amadeirado fosco</b> e caixaria em <b>branco</b>. Portas de '
+  'giro de um lado e, do outro, as gavetas, sobre <b>corrediça telescópica '
+  'Bigfer</b> — abre inteira, <b>sem amortecimento</b>. Dobradiça e puxador '
+  'também <b>Bigfer</b>, cromados, de linha.',
+}
+D_SUP = {
+ 'premium':
   'A parede inteira sobre a bancada. <b>Folhas de espelho prata em perfil '
   'de alumínio</b>, que abrem e guardam por dentro, com prateleiras. Entre '
   'elas, as <b>peças fixas em amadeirado</b> que recebem as arandelas — e, '
   'por trás, o <b>berço e a passagem do driver</b>, como o projeto pede. '
   'Sem puxador aparente: a folha avança sobre a peça fixa e é por ali que '
-  'se pega.'),
+  'se pega.',
+ 'essencial':
+  'A parede inteira sobre a bancada. <b>Folhas de espelho prata</b> em '
+  '<b>perfil de alumínio comum</b>, que abrem e guardam por dentro, com '
+  'prateleiras. Entre elas, as <b>peças fixas em amadeirado</b> que recebem '
+  'as arandelas — e, por trás, o <b>berço e a passagem do driver</b>, como '
+  'o projeto pede. Sem puxador aparente: a folha avança sobre a peça fixa '
+  'e é por ali que se pega.',
+}
+ITENS = [
+ ('Sob a bancada', 'Armário inferior', R['PV']['Armário inferior'], D_INF[VER]),
+ ('Espelheira', 'Armário superior, com espelho', R['PV']['Armário superior'],
+  D_SUP[VER]),
 ]
-TOTAL = oi.TOT
+TOTAL = R['TOT']
 # ⛔⛔ TRAVA DE SOMA: a tabela TEM de fechar com o total. Nenhum dos três
 #   passes de auditoria confere aritmética — um item esquecido na lista
 #   sai no PDF sem ninguém ver.
@@ -143,6 +171,29 @@ table.invOI tr.tot td.a,table.invOI tr.tot td.i{font-family:inherit;
   color:var(--gold);font-weight:700;margin-bottom:1.2mm;}
 """)
 
+TEC1 = {
+ 'premium': ('Chapa resistente à umidade',
+   'É banheiro: embaixo de cuba e ao lado de box. A caixaria inteira vai '
+   'em <b>MDF Ultra</b>, de miolo resistente à umidade. O projeto não '
+   'pedia — nós fazemos assim porque é o que <b>sustenta a garantia de '
+   'dez anos</b>.'),
+ 'essencial': ('O que esta versão é',
+   'Mesmo desenho, mesma mão de obra e a mesma gente montando — em '
+   '<b>MDF comum</b>, com <b>ferragem Bigfer</b> e corrediça <b>sem '
+   'amortecimento</b>. É o móvel certo para quem quer o projeto executado '
+   'agora; e é por ser assim que a <b>garantia é de dois anos</b>, e não '
+   'de dez.'),
+}
+TEC1_K, TEC1_D = TEC1[VER]
+# ⚠ a arquiteta especificou o puxador POR NOME. Trocar sem dizer seria
+#   entregar outra coisa e deixar a conversa para a montagem.
+NOTA_VER = ('' if VER == 'premium' else
+  '<b>Nesta versão</b> o puxador <b>não é o Zen Phenix</b> do projeto: entra '
+  'um cromado de linha. O espelho e as folhas são os mesmos; o que muda é '
+  'o perfil, que é o comum.<br>')
+PERFIL = ('perfil de alumínio' if VER == 'premium'
+          else 'perfil de alumínio comum')
+
 def foot(n):
     return (f'<div class="foot"><span>Valvic Marcenaria</span>'
             f'<span>{CLIENTE} · banho suíte master</span><span>{n} / {NP}</span></div>')
@@ -181,19 +232,16 @@ p1 = f"""<div class="page"><div class="pad">
   <div class="itOI">{itens}</div>
 
   <div class="tecOI">
-    <div><div class="k">Chapa resistente à umidade</div><div class="d">
-      É banheiro: embaixo de cuba e ao lado de box. A caixaria inteira vai
-      em <b>MDF Ultra</b>, de miolo resistente à umidade. O projeto não
-      pedia — nós fazemos assim porque é o que <b>sustenta a garantia</b>.</div></div>
+    <div><div class="k">{TEC1_K}</div><div class="d">{TEC1_D}</div></div>
     <div><div class="k">Branco por dentro, madeira por fora</div><div class="d">
       Por fora, o <b>amadeirado fosco</b> do projeto. Por dentro, branco:
       armário de banheiro é fundo e cheio, e no branco se <b>enxerga o que
       está guardado</b>.</div></div>
     <div><div class="k">Espelho e alumínio</div><div class="d">
-      O <b>espelho prata</b> e o <b>perfil de alumínio</b> das folhas são
-      fornecimento nosso, montados e alinhados por nós. Folha de espelho
-      <b>não perdoa desalinho</b> — por isso ela sai da nossa bancada, e
-      não da obra.</div></div>
+      O <b>espelho prata</b> e o <b>{PERFIL}</b> das folhas são fornecimento
+      nosso, montados e alinhados por nós. Folha de espelho <b>não perdoa
+      desalinho</b> — por isso ela sai da nossa bancada, e não da
+      obra.</div></div>
     <div><div class="k">Medição no local</div><div class="d">
       O projeto está na <b>revisão 00</b>, marcada como estudo para
       análise. <b>Medimos no local antes de cortar</b> — é o que impede
@@ -244,7 +292,7 @@ p2 = f"""<div class="page"><div class="pad">
     <div><div class="k">Prazo</div><div class="d">
       <b>{PRAZO}</b>, contados do aceite e da medição no local.</div></div>
     <div><div class="k">Garantia</div><div class="d">
-      <b>10 anos</b> sobre estrutura e ferragens.</div></div>
+      <b>{GARANTIA}</b> sobre estrutura e ferragens.</div></div>
     <div><div class="k">Execução</div><div class="d">
       Do corte à instalação, com <b>equipe própria</b> da casa.</div></div>
     <div><div class="k">Validade</div><div class="d">
@@ -253,16 +301,16 @@ p2 = f"""<div class="page"><div class="pad">
 
   <div class="notaOI">
     <div class="h">O que está e o que não está nesta proposta</div>
-    <b>Está:</b> os dois móveis, com a ferragem, o espelho prata e o perfil
-    de alumínio das folhas, a medição no local, a entrega e a instalação.<br>
+    <b>Está:</b> os dois móveis, com a ferragem, o espelho prata e o
+    {PERFIL} das folhas, a medição no local, a entrega e a instalação.<br>
     <b>Não está:</b> a bancada, <b>o seu apoio e fixação</b>, a rodabanca,
     a testeira, o acabamento do sóculo e o nicho do box — todos de
     <b>marmoraria</b> e de obra; o <b>sóculo em alvenaria</b>; o <b>box de correr</b>; as <b>louças, metais e
     acessórios</b> especificados no projeto; as <b>arandelas, o driver e a
     instalação elétrica</b> — nossa é a usinagem da passagem e o berço na
     peça fixa; o <b>porcelanato e as soleiras</b>.<br>
-    O projeto está na <b>revisão 00</b>, marcada como estudo para análise.
-    Alteração de desenho depois do aceite é revista em conjunto.</div>
+    {NOTA_VER}O projeto está na <b>revisão 00</b>, marcada como estudo para
+    análise. Alteração de desenho depois do aceite é revista em conjunto.</div>
   {foot(2)}
 </div></div>"""
 
@@ -272,11 +320,11 @@ HTML = ('<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">'
         'rel="stylesheet"><style>' + CSS + '</style></head><body>'
         + p1 + p2 + '</body></html>')
 
-(P/'proposta-orlando-ivone.html').write_text(HTML, encoding='utf-8')
+(P/f'{SAIDA}.html').write_text(HTML, encoding='utf-8')
 open('/tmp/in.html', 'w', encoding='utf-8').write(HTML)
-R = pathlib.Path('/tmp/r.js')
-if not R.exists():          # ⛔ /tmp some em reinício de container
-    R.write_text("""const { chromium } = require('playwright');
+RJS = pathlib.Path('/tmp/r.js')
+if not RJS.exists():          # ⛔ /tmp some em reinício de container
+    RJS.write_text("""const { chromium } = require('playwright');
 (async () => {
   const out = process.argv[2];
   const browser = await chromium.launch({
@@ -292,9 +340,8 @@ if not R.exists():          # ⛔ /tmp some em reinício de container
 })();""")
 env = dict(os.environ, NODE_PATH='/opt/node22/lib/node_modules',
            PW_CHROME='/opt/pw-browsers/chromium-1194/chrome-linux/chrome')
-subprocess.run(['node', str(R), str(P/'proposta-orlando-ivone.pdf')],
-               check=True, env=env)
-print(f'proposta-orlando-ivone.pdf · {NP} páginas')
+subprocess.run(['node', str(RJS), str(P/f'{SAIDA}.pdf')], check=True, env=env)
+print(f'{SAIDA}.pdf · {NP} páginas · versão {VER} · garantia de {GARANTIA}')
 for _, n, p, _d in ITENS: print(f'  {n:<32} R$ {br(p):>8}')
 print(f'  {"INVESTIMENTO":<32} R$ {br(TOTAL):>8}'
-      f'   MC {(oi.BASE - oi.CD/TOTAL)*100:.1f}%  ·  com RT')
+      f'   MC {(oi.BASE - R["CD"]/TOTAL)*100:.1f}%  ·  com RT')

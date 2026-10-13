@@ -197,6 +197,72 @@ a economia encolhe. Vale a pena segurar o 18.
 
 ---
 
+## ⭐ A segunda versão · ESSENCIAL  [Jonathan 13/10]
+
+> "sem MDF Ultra, esquadria de alumínio com perfil comum, ferragens Bigfer,
+> corrediças telescópicas sem amortecimento. 2 anos de garantia. MC de 32%."
+
+Mesmo desenho, mesma mão de obra, mesmas duas idas à obra. O que muda é do
+que o móvel é feito — e a garantia segue o que ele é feito.
+
+| | Premium | Essencial | diferença |
+|---|--:|--:|--:|
+| Armário inferior | 5.020 | 3.220 | −1.800 |
+| Armário superior | 7.640 | 5.640 | −2.000 |
+| **INVESTIMENTO** | **12.660** | **8.860** | **−3.800** |
+| custo direto | 5.254 | 3.945 | −1.310 |
+| margem de contribuição | 4.432 | 2.834 | −1.598 |
+| MC | 35% | **32%** | |
+| garantia | 10 anos | **2 anos** | |
+
+**A Essencial é 30% mais barata.** De onde vêm os R$ 3.800:
+
+| | R$ | % |
+|---|--:|--:|
+| do **custo** — chapa comum, Bigfer, perfil comum, sem amortecimento | 1.310 | 34% |
+| da **nossa margem** | 1.598 | 42% |
+| de nota fiscal, RT e comissões, que caem junto com o preço | 892 | 23% |
+
+⛔ **Só um terço do desconto é material.** O resto é margem e imposto. O
+cliente não leva o mesmo móvel mais barato — é outro móvel — e ainda assim
+a casa ganha R$ 1.598 a menos pela **mesma** mão de obra.
+
+### ⛔⛔ 32% está abaixo do piso da casa (`MC_PISO` = 35%)
+
+No piso, a mesma Essencial sairia a **R$ 9.500**. Abrir três pontos custou
+R$ 640 de preço e R$ 490 de margem. A MC ainda tem de pagar o custo fixo
+da fábrica: aceitável se este banheiro for a porta de entrada do resto do
+apartamento, caro se for um serviço solto.
+
+⚠ **A garantia de 2 anos é o que torna a Essencial honesta.** Sem Ultra,
+sem amortecimento e com ferragem de entrada, dez anos seria promessa que o
+móvel não sustenta.
+
+### O que a Essencial troca
+
+| | Premium | Essencial |
+|---|---|---|
+| chapa | MDF Ultra, resistente à umidade | MDF comum |
+| dobradiça | com amortecedor, R$ 35 | Bigfer, R$ 15 ★ |
+| corrediça | oculta Hettich, R$ 85 ⚠ | telescópica Bigfer sem amortecimento, R$ 45 ★ |
+| puxador | Zen Phenix cromado, R$ 55 ★ | cromado de linha, R$ 30 ★ |
+| perfil da folha de espelho | linha de esquadria, R$ 75/m ★ | comum, R$ 45/m ★ |
+| espelho prata | o mesmo, R$ 600/m² | o mesmo |
+| chapa comprada | 4 (1 amadeirada + 3 brancas) | 4, as mesmas quantidades |
+
+⚠ **O puxador Zen Phenix sai na Essencial.** A arquiteta o especificou por
+nome; a proposta da Essencial diz isso em letra clara, porque trocar sem
+avisar é entregar outra coisa e deixar a conversa para a montagem.
+
+★ Nem a ferragem Bigfer nem o perfil comum estão na base da casa — os dois
+estão estimados.
+
+**Propostas:** `proposta-orlando-ivone.pdf` (Premium) e
+`proposta-orlando-ivone-essencial.pdf`. O mesmo build gera as duas:
+`python3 build-orlando-ivone.py [premium|essencial]`.
+
+---
+
 ## ★ Em aberto
 
 1. **A cor.** *"MDF A DEFINIR"* embaixo, *"MDF BRANCO"* em cima, e o render

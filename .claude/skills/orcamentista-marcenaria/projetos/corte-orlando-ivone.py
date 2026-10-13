@@ -18,17 +18,30 @@ O ESCOPO DA MARCENARIA — a legenda da prancha 31_.2 traz só dois itens:
   02 · ARMÁRIO SUPERIOR EM MDF BRANCO COM PORTAS DE GIRO COM PERFIL DE
        ALUMÍNIO E ESPELHO PRATA. PREVER PARTES FIXAS PARA ILUMINAÇÃO FRONTAL
 
+⛔ [Jonathan 13/10] O ARMÁRIO NÃO SUSTENTA A BANCADA. A pedra tem apoio e
+   fixação próprios, de obra; o móvel entra por baixo dela.
+
 ⛔⛔ O QUE NÃO É NOSSO — e a proposta tem de dizer, porque num banheiro
    deste tamanho a marcenaria é a MENOR parte do que o cliente vê:
    · MARMORARIA: bancada e rodabanca em mármore branco (H=90, rodabanca 35,
-     testeira 20), acabamento do sóculo e o NICHO em mármore de toda a
-     parede do box, com acabamento em 45° (10 de profundidade, 35 de altura)
+     testeira 20), o APOIO E A FIXAÇÃO da bancada, acabamento do sóculo e o
+     NICHO em mármore de toda a parede do box, com acabamento em 45°
    · SÓCULO em alvenaria (obra), que recebe a marcenaria
    · BOX de correr de 3 folhas 134×215, vidro temperado e perfis (vidraceiro)
    · LOUÇAS E METAIS Deca (VS.1, CB.1, TR.1, DH.1, BA.1/2, C.1, TO.1/2,
      PA.1, RA.1/2, RG) e o chuveiro CH.1, existente, a ser mantido
    · ARANDELAS, driver/fonte, luminárias, tomadas, forro e pintura
-   · PORCELANATO 90×90 de piso e parede e as soleiras S1 em mármore
+   · PORCELANATO 90 × 90 de piso e parede e as soleiras S1 em mármore
+
+══ AS DUAS VERSÕES ═══════════════════════════════════════════════════════
+⭐ [Jonathan 13/10] "interno branco e externo em amadeirado fosco" ·
+   "traz a MC para 35% e inclui a RT"                     → PREMIUM
+⭐ [Jonathan 13/10] "sem MDF Ultra, esquadria de alumínio com perfil comum,
+   ferragens Bigfer, corrediças telescópicas sem amortecimento, 2 anos de
+   garantia, MC de 32%"                                   → ESSENCIAL
+
+⛔ As duas são o MESMO desenho e a MESMA mão de obra. O que muda é do que
+   o móvel é feito — e a garantia segue o que ele é feito, não o contrário.
 """
 import importlib.util, pathlib, sys
 P = pathlib.Path(__file__).resolve().parent
@@ -38,56 +51,67 @@ spec.loader.exec_module(M)
 
 br  = lambda v: f'{v:,.0f}'.replace(',', '.')
 br1 = lambda v: f'{v:,.1f}'.replace(',','X').replace('.',',').replace('X','.')
+vg  = lambda v: f'{v:.2f}'.replace('.', ',')
 
 CH_M2, APROV = 2.75*1.85, 0.80
-# ⛔ É BANHEIRO. A prancha diz só "MDF a definir" — não especifica chapa
-#   resistente à umidade. A casa não entrega armário de banheiro em MDF
-#   comum: debaixo de cuba e ao lado de box, o miolo incha. Orçado em
-#   MDF ULTRA (verde, resistente à umidade), como a arquiteta da Raquel
-#   Franco especificou no projeto dela.
-#   ★ A chapa Ultra não está na base da casa; estimada em +30% sobre a cor.
+# ★ A chapa Ultra (resistente à umidade) não está na base da casa;
+#   estimada em +30% sobre a equivalente comum, como na Raquel Franco.
 PRECO = {('cor',6):300.0, ('cor',15):500.0, ('cor',18):600.0,
          ('br',6):190.0,  ('br',15):260.0,  ('br',18):330.0,
          ('ultra',6):390.0, ('ultra',15):650.0, ('ultra',18):780.0,
          ('ultrabr',6):247.0, ('ultrabr',15):338.0, ('ultrabr',18):429.0}
+NOME_CH = {'ultra':'Ultra amadeirado', 'ultrabr':'Ultra branco',
+           'cor':'MDF amadeirado', 'br':'MDF Branco TX'}
 FITA_COR = 3.0 + 2.5           # fita amadeirada + filetagem na coladeira
 FITA_BR  = 2.0 + 2.5           # fita branca + filetagem
-MC_ALVO = 0.35                 # ⭐ [Jonathan 13/10] "traz a MC para 35%"
-RT_ON   = True                 # ⭐ [Jonathan 13/10] "e inclui a RT"
-BASE    = M.base(parcelas=0, rt=RT_ON, vendedor=False)
+RT_ON    = True                # ⭐ [Jonathan 13/10] "e inclui a RT"
+BASE     = M.base(parcelas=0, rt=RT_ON, vendedor=False)
 
-FER_UN  = {'dobr':35.0, 'corr':85.0, 'puxador':55.0}
-FER_NOME = {'dobr':'dobradiça com amortecedor',
-            'corr':'corrediça OCULTA Hettich',
-            'puxador':'puxador Zen Phenix 20 cm'}
-# ⚠⚠ [Jonathan 13/10] "corrediças serão ocultas de Hettich — não precisa
-#   alterar o valor". Os R$ 85 são a TELESCÓPICA da base da casa. Corrediça
-#   oculta Hettich com amortecimento custa de duas a três vezes isso. Ou
-#   seja: há custo real acima do orçado nesta linha. Ver EM ABERTO.
 # ⭐ [Jonathan 09/10] espelho a R$ 600,00 o m², fornecimento nosso.
-ESPELHO_M2 = 600.0
-PERFIL_M   = 75.0     # ★ perfil de alumínio prata da porta de espelho, por m
-ARANDELA_PC= 90.0     # ★ usinagem da passagem e berço do driver, por peça fixa
+ESPELHO_M2  = 600.0
+ARANDELA_PC = 90.0    # ★ usinagem da passagem e berço do driver, por peça fixa
 
-NOME_CH = {'ultra': 'Ultra amadeirado', 'ultrabr': 'Ultra branco',
-           'cor': 'MDF cor', 'br': 'Branco TX'}
+# ══ AS DUAS VERSÕES ══════════════════════════════════════════════════════
+# ⚠⚠ PREMIUM · a corrediça OCULTA Hettich está pelo preço da telescópica da
+#   casa, por instrução do Jonathan de não mexer no valor. Ver EM ABERTO.
+# ★ ESSENCIAL · ferragem Bigfer e perfil de alumínio comum, preços
+#   estimados — nenhum dos dois está na base da casa.
+VERSAO = {
+ 'premium': dict(
+    nome='Premium', mc=0.35, garantia='10 anos',
+    chapa={'ext':'ultra', 'int':'ultrabr'},
+    fer={'dobr':35.0, 'corr':85.0, 'puxador':55.0},
+    fer_nome={'dobr':'dobradiça com amortecedor',
+              'corr':'corrediça OCULTA Hettich',
+              'puxador':'puxador Zen Phenix cromado'},
+    perfil=75.0, perfil_nome='perfil de alumínio, linha de esquadria'),
+ 'essencial': dict(
+    nome='Essencial', mc=0.32, garantia='2 anos',
+    chapa={'ext':'cor', 'int':'br'},
+    fer={'dobr':15.0, 'corr':45.0, 'puxador':30.0},
+    fer_nome={'dobr':'dobradiça Bigfer',
+              'corr':'corrediça telescópica Bigfer, sem amortecimento',
+              'puxador':'puxador cromado Bigfer'},
+    perfil=45.0, perfil_nome='perfil de alumínio comum'),
+}
 
-PCS, FER, TER = {}, {}, {}
+PCS, FER, TER_FIX = {}, {}, {}
 def amb(k):
-    PCS.setdefault(k, []); TER.setdefault(k, 0.0)
-    FER.setdefault(k, dict.fromkeys(FER_UN, 0))
-def a(k, cor, esp, desc, c, l, q=1, fc=2):
-    amb(k); PCS[k].append((cor, esp, desc, c, l, q, fc))
+    PCS.setdefault(k, []); TER_FIX.setdefault(k, 0.0)
+    FER.setdefault(k, dict.fromkeys(('dobr','corr','puxador'), 0))
+def a(k, mat, esp, desc, c, l, q=1, fc=2):
+    """mat = 'ext' (aparente, amadeirado) ou 'int' (caixaria, branco)."""
+    amb(k); PCS[k].append((mat, esp, desc, c, l, q, fc))
 def f(k, **kw):
     amb(k)
     for key, v in kw.items(): FER[k][key] += v
-def ter(k, v): amb(k); TER[k] += v
+def ter(k, v): amb(k); TER_FIX[k] += v
 
 # ⭐ [Jonathan 13/10] "considere interno branco e externo em amadeirado
-#   fosco". A caixaria vai em MDF Ultra BRANCO e tudo o que se vê — portas,
-#   frentes de gaveta, as três peças fixas da espelheira, a lateral direita
-#   dos dois móveis (que fica solta, sem parede) e a base da espelheira
-#   (que se enxerga por baixo) — vai em AMADEIRADO FOSCO.
+#   fosco". A caixaria vai em branco e tudo o que se vê — portas, frentes
+#   de gaveta, as três peças fixas da espelheira, a lateral direita dos
+#   dois móveis (que fica solta, sem parede) e a base da espelheira (que
+#   se enxerga por baixo) — vai em AMADEIRADO FOSCO.
 #   ⭐ E todo o aparente foi para 18 mm de propósito: assim o amadeirado
 #     cabe em UMA chapa só. Ver o quadro no fim.
 
@@ -97,20 +121,20 @@ def ter(k, v): amb(k); TER[k] += v
 # Gavetas de cima para baixo: 10 · 17 · 17 · 17. A cuba cai sobre o vão
 # das portas — por isso as gavetas não têm conflito com o sifão.
 K = 'Armário inferior'
-a(K,'ultra',  18,'Lateral aparente',        63,  46, 1)   # amadeirado
-a(K,'ultrabr',15,'Lateral de parede',       63,  46, 1)
-a(K,'ultrabr',15,'Divisória vertical',      63,  46, 1)
-a(K,'ultrabr',15,'Base',                   115,  46, 1)
-a(K,'ultrabr',15,'Travessa superior',      115,  10, 2)
-a(K,'ultrabr', 6,'Fundo',                  119,  63, 1, 1)
-a(K,'ultra',  18,'Porta de giro',           61,  36, 2)   # amadeirado
-a(K,'ultra',  18,'Frente de gaveta',        48,  10, 1)   # amadeirado
-a(K,'ultra',  18,'Frente de gaveta',        48,  17, 3)   # amadeirado
-a(K,'ultrabr',15,'Gaveta · lateral',        42,  12, 8, 1)
-a(K,'ultrabr',15,'Gaveta · frente e fundo', 44,  12, 8, 1)
-a(K,'ultrabr',15,'Gaveta · fundo',          44,  42, 4, 1)
-a(K,'ultrabr',15,'Prateleira interna',      68,  42, 1)   # ★ ver EM ABERTO
-f(K, dobr=4, corr=4, puxador=6)   # puxador Zen Phenix 20 cm cromado
+a(K,'ext',18,'Lateral aparente',        63,  46, 1)
+a(K,'int',15,'Lateral de parede',       63,  46, 1)
+a(K,'int',15,'Divisória vertical',      63,  46, 1)
+a(K,'int',15,'Base',                   115,  46, 1)
+a(K,'int',15,'Travessa superior',      115,  10, 2)
+a(K,'int', 6,'Fundo',                  119,  63, 1, 1)
+a(K,'ext',18,'Porta de giro',           61,  36, 2)
+a(K,'ext',18,'Frente de gaveta',        48,  10, 1)
+a(K,'ext',18,'Frente de gaveta',        48,  17, 3)
+a(K,'int',15,'Gaveta · lateral',        42,  12, 8, 1)
+a(K,'int',15,'Gaveta · frente e fundo', 44,  12, 8, 1)
+a(K,'int',15,'Gaveta · fundo',          44,  42, 4, 1)
+a(K,'int',15,'Prateleira interna',      68,  42, 1)     # ★ ver EM ABERTO
+f(K, dobr=4, corr=4, puxador=6)
 
 # ══ 2 · ARMÁRIO SUPERIOR · ESPELHEIRA ═════════════════════════════════════
 # 195 × 90 × 15, 30,5 abaixo do forro e 35 acima da bancada.
@@ -121,67 +145,133 @@ f(K, dobr=4, corr=4, puxador=6)   # puxador Zen Phenix 20 cm cromado
 # Por dentro, duas prateleiras por vão (23 · 30 · 30 na elevação 04).
 K = 'Armário superior'
 ESP_L, ESP_A, ESP_N = 0.4225, 0.90, 4
-a(K,'ultra',  18,'Lateral aparente',        90,  15, 1)   # amadeirado
-a(K,'ultrabr',15,'Lateral de parede',       90,  15, 1)
-a(K,'ultrabr',15,'Divisória vertical',      90,  15, 1)
-a(K,'ultra',  18,'Base · vista por baixo', 191,  15, 1)   # amadeirado
-a(K,'ultrabr',15,'Tampo',                  191,  15, 1)
-a(K,'ultrabr', 6,'Fundo',                  195,  90, 1, 1)
-a(K,'ultrabr',15,'Prateleira',              95,  13, 4)
-a(K,'ultra',  18,'Peça fixa frontal',       90,  10, 3)   # amadeirado
+a(K,'ext',18,'Lateral aparente',        90,  15, 1)
+a(K,'int',15,'Lateral de parede',       90,  15, 1)
+a(K,'int',15,'Divisória vertical',      90,  15, 1)
+a(K,'ext',18,'Base · vista por baixo', 191,  15, 1)
+a(K,'int',15,'Tampo',                  191,  15, 1)
+a(K,'int', 6,'Fundo',                  195,  90, 1, 1)
+a(K,'int',15,'Prateleira',              95,  13, 4)
+a(K,'ext',18,'Peça fixa frontal',       90,  10, 3)
 f(K, dobr=8)
-ter(K, ESP_N*ESP_L*ESP_A*ESPELHO_M2                      # espelho prata
-     + ESP_N*2*(ESP_L+ESP_A)*PERFIL_M                    # perfil de alumínio
-     + 3*ARANDELA_PC)                                    # preparo das fixas
+ter(K, ESP_N*ESP_L*ESP_A*ESPELHO_M2 + 3*ARANDELA_PC)   # espelho + preparo
+ESPELHO_RS = ESP_N*ESP_L*ESP_A*ESPELHO_M2
+PERFIL_ML  = ESP_N*2*(ESP_L+ESP_A)                     # metros de perfil
 
 AMBS = list(PCS)
 
 # ══════════════════════════════════════════════════════════════════════════
-def calcula(pcs):
+def calcula(v):
+    """v = uma entrada de VERSAO. Devolve custo e preço por ambiente."""
+    mapa = v['chapa']
+    ter_ = {k: TER_FIX[k] for k in AMBS}
+    ter_['Armário superior'] += PERFIL_ML*v['perfil']
     area_mat, ch, fita, area_k = {}, {}, {}, {}
     for k in AMBS:
         ch[k] = fita[k] = 0.0
-        for cor, esp, _, c, l, q, fc in pcs[k]:
-            m = (cor, esp)
+        for mat, esp, _, c, l, q, fc in PCS[k]:
+            m = (mapa[mat], esp)
             area_mat[m] = area_mat.get(m, 0.0) + c*l*q/1e4
-            fm = FITA_BR if cor.endswith('br') else FITA_COR
+            fm = FITA_BR if m[0].endswith('br') else FITA_COR
             fita[k] += 2*(c+l)*q/100*(0.75 if fc == 2 else 0.4)*fm
-    chapas   = {m: -(-v/(CH_M2*APROV)//1) for m, v in area_mat.items()}
+    chapas   = {m: -(-x/(CH_M2*APROV)//1) for m, x in area_mat.items()}
     custo_ch = {m: chapas[m]*PRECO[m] for m in chapas}
     # ⛔ cada peça paga a própria taxa; a sobra de corte rateia pela área
     #   total (lição da Alice — ratear chapa inteira inverte cenário).
     taxa = {m: PRECO[m]/(CH_M2*APROV) for m in area_mat}
     for k in AMBS:
-        area_k[k] = sum(c*l*q/1e4 for _,_,_,c,l,q,_ in pcs[k])
-        ch[k] = sum(c*l*q/1e4*taxa[(cor,esp)] for cor,esp,_,c,l,q,_ in pcs[k])
+        area_k[k] = sum(c*l*q/1e4 for _,_,_,c,l,q,_ in PCS[k])
+        ch[k] = sum(c*l*q/1e4*taxa[(mapa[mat], esp)]
+                    for mat, esp, _, c, l, q, _ in PCS[k])
     sobra = sum(custo_ch.values()) - sum(area_mat[m]*taxa[m] for m in area_mat)
     at = sum(area_k.values())
     for k in AMBS: ch[k] += sobra*area_k[k]/at
-    fer_c = {k: sum(FER[k][x]*FER_UN[x] for x in FER_UN) for k in AMBS}
-    CDI = {k: ((ch[k] + fita[k])*1.06 + fer_c[k] + TER[k])*(1 + M.EMBALAGEM)
+    fer_c = {k: sum(FER[k][x]*v['fer'][x] for x in v['fer']) for k in AMBS}
+    cons  = {k: (ch[k]+fita[k])*0.06 for k in AMBS}
+    CDI = {k: (ch[k] + fita[k] + cons[k] + fer_c[k] + ter_[k])*(1 + M.EMBALAGEM)
            for k in AMBS}
-    PV  = {k: round(CDI[k]/(BASE - MC_ALVO)/10)*10 for k in AMBS}
-    return dict(ch=ch, fita=fita, fer=fer_c, CDI=CDI, PV=PV, chapas=chapas,
-                custo_ch=custo_ch, area=area_mat, sobra=sobra,
-                CD=sum(CDI.values()), TOT=sum(PV.values()))
+    PV  = {k: round(CDI[k]/(BASE - v['mc'])/10)*10 for k in AMBS}
+    emb = {k: CDI[k]/(1 + M.EMBALAGEM)*M.EMBALAGEM for k in AMBS}
+    return dict(v=v, ch=ch, fita=fita, cons=cons, fer=fer_c, ter=ter_, emb=emb,
+                CDI=CDI, PV=PV, chapas=chapas, custo_ch=custo_ch, area=area_mat,
+                sobra=sobra, CD=sum(CDI.values()), TOT=sum(PV.values()))
 
-COR = calcula(PCS)
-ch, fita, fer_custo, CDI = COR['ch'], COR['fita'], COR['fer'], COR['CDI']
-area_mat, chapas, custo_ch = COR['area'], COR['chapas'], COR['custo_ch']
-CD, PV, TOT = COR['CD'], COR['PV'], COR['TOT']
+PREMIUM   = calcula(VERSAO['premium'])
+ESSENCIAL = calcula(VERSAO['essencial'])
 
-# ── para comparar: TUDO amadeirado, interno inclusive, que era o orçamento
-#   de antes da instrução do Jonathan de 13/10.
-PCS_TC = {k: [('ultra', e, d, c, l, q, fc) for _, e, d, c, l, q, fc in v]
-          for k, v in PCS.items()}
-TUDOCOR = calcula(PCS_TC)
+# compatibilidade com o build da versão 1
+ch, fita, fer_custo = PREMIUM['ch'], PREMIUM['fita'], PREMIUM['fer']
+CDI, PV, TOT, CD = PREMIUM['CDI'], PREMIUM['PV'], PREMIUM['TOT'], PREMIUM['CD']
+area_mat, chapas, custo_ch = PREMIUM['area'], PREMIUM['chapas'], PREMIUM['custo_ch']
+MC_ALVO = VERSAO['premium']['mc']
 
-# ── o que o mesmo custo daria nas outras duas combinações ───────────────
-BASE_SRT = M.base(parcelas=0, rt=False, vendedor=False)
-PV_SRT   = {k: round(CDI[k]/(BASE_SRT - MC_ALVO)/10)*10 for k in AMBS}
-TOT_SRT  = sum(PV_SRT.values())          # mesma MC, sem RT
-PV_40    = {k: round(CDI[k]/(BASE - 0.40)/10)*10 for k in AMBS}
-TOT_40   = sum(PV_40.values())           # com RT, na MC de 40% de antes
+# ── para comparar: TUDO amadeirado, interno inclusive ───────────────────
+def _tudo_ext(v):
+    g = dict(v); g['chapa'] = {'ext': v['chapa']['ext'], 'int': v['chapa']['ext']}
+    return calcula(g)
+TUDOCOR = _tudo_ext(VERSAO['premium'])
+
+
+def quadro(R, W=90):
+    """Composição de custo e de preço de uma versão."""
+    v = R['v']
+    print(f'\n{"═"*W}')
+    print(f'VERSÃO {v["nome"].upper()}  ·  MC {v["mc"]*100:.0f}%  ·  '
+          f'garantia de {v["garantia"]}  ·  R$ {br(R["TOT"])}')
+    print(f'{"═"*W}')
+    print(f'{"CHAPA":<24}{"área líq.":>12}{"chapas":>9}{"R$/chapa":>11}{"custo":>11}')
+    print('─'*W)
+    for m in sorted(R['area'], key=str):
+        print(f'{(NOME_CH[m[0]] + "  " + str(m[1]) + " mm"):<24}'
+              f'{br1(R["area"][m]):>10} m²{R["chapas"][m]:>9.0f}'
+              f'{br(PRECO[m]):>11}{br(R["custo_ch"][m]):>11}')
+    print('─'*W)
+    print(f'{"TOTAL":<24}{br1(sum(R["area"].values())):>10} m²'
+          f'{sum(R["chapas"].values()):>9.0f}{"":>11}'
+          f'{br(sum(R["custo_ch"].values())):>11}')
+
+    print(f'\n{"":<38}{"inferior":>11}{"superior":>11}{"total":>11}{"%":>8}')
+    print('─'*W)
+    _am = int(sum(x for m, x in R['chapas'].items() if m[0] == v['chapa']['ext']))
+    _bo = int(sum(R['chapas'].values())) - _am
+    LIN = [(f'chapa  ·  {_am} amadeirada + {_bo} brancas', R['ch']),
+           ('fita de borda e filetagem',          R['fita']),
+           ('consumíveis  ·  6% de chapa e fita', R['cons']),
+           ('ferragem',                           R['fer']),
+           ('terceiros  ·  espelho e perfil',     R['ter']),
+           ('embalagem  ·  2% do custo',          R['emb'])]
+    for nome, d in LIN:
+        t = sum(d.values())
+        print(f'{nome:<38}{br(d[AMBS[0]]):>11}{br(d[AMBS[1]]):>11}'
+              f'{br(t):>11}{t/R["CD"]*100:>7.1f}%')
+    print('─'*W)
+    print(f'{"CUSTO DIRETO":<38}{br(R["CDI"][AMBS[0]]):>11}'
+          f'{br(R["CDI"][AMBS[1]]):>11}{br(R["CD"]):>11}{100.0:>7.1f}%')
+    print('\n  a ferragem, aberta:')
+    for x in v['fer']:
+        n = sum(FER[k][x] for k in AMBS)
+        if n: print(f'    {v["fer_nome"][x]:<44}{n:>3} × R$ {br(v["fer"][x]):>5}'
+                    f'  =  R$ {br(n*v["fer"][x])}')
+    print('  os terceiros, abertos:')
+    print(f'    espelho prata, {ESP_N} folhas a R$ {br(ESPELHO_M2)}/m²'
+          f'{"":<13}=  R$ {br(ESPELHO_RS)}')
+    print(f'    {v["perfil_nome"]:<44}★ R$ {br(v["perfil"])}/m  =  '
+          f'R$ {br(PERFIL_ML*v["perfil"])}')
+    print(f'    {"preparo das 3 peças fixas, berço e passagem":<44}'
+          f'{"":>13}=  R$ {br(3*ARANDELA_PC)}')
+
+    enc = M.encargos(parcelas=0, rt=RT_ON, vendedor=False)
+    print(f'\n{"":<38}{"R$":>12}{"% do preço":>14}')
+    print('─'*W)
+    print(f'{"custo direto":<38}{br(R["CD"]):>12}{R["CD"]/R["TOT"]*100:>13.2f}%')
+    for nome, x in enc.items():
+        if x: print(f'{nome:<38}{br(R["TOT"]*x):>12}{x*100:>13.2f}%')
+    print('─'*W)
+    mc_r = R['TOT'] - R['CD'] - sum(R['TOT']*x for x in enc.values())
+    print(f'{"MARGEM DE CONTRIBUIÇÃO":<38}{br(mc_r):>12}{mc_r/R["TOT"]*100:>13.2f}%')
+    print(f'{"PREÇO":<38}{br(R["TOT"]):>12}{100.0:>13.2f}%')
+    return mc_r
+
 
 if __name__ == '__main__':
     W = 90
@@ -190,138 +280,89 @@ if __name__ == '__main__':
     print('arquiteta Ana Maria Castro · CAU A94939-6 · 12/10/2026')
     print('═'*W)
 
-    print(f'\n{"CHAPA":<22}{"área líq.":>12}{"chapas":>9}{"R$/chapa":>11}{"custo":>11}')
-    print('─'*W)
-    for m in sorted(area_mat, key=lambda x: (x[0], x[1])):
-        print(f'{(NOME_CH[m[0]] + "  " + str(m[1]) + " mm"):<22}'
-              f'{br1(area_mat[m]):>10} m²{chapas[m]:>9.0f}'
-              f'{br(PRECO[m]):>11}{br(custo_ch[m]):>11}')
-    print('─'*W)
-    print(f'{"TOTAL":<22}{br1(sum(area_mat.values())):>10} m²'
-          f'{sum(chapas.values()):>9.0f}{"":>11}{br(sum(custo_ch.values())):>11}')
+    mcP = quadro(PREMIUM, W)
+    mcE = quadro(ESSENCIAL, W)
 
     print(f'\n{"═"*W}')
-    print(f'{"PEÇA":<24}{"chapa":>9}{"fita":>8}{"ferr.+terc.":>13}'
-          f'{"custo":>10}{"preço":>10}{"MC":>8}')
-    print('─'*W)
+    print('⭐ AS DUAS VERSÕES, LADO A LADO')
+    print(f'{"═"*W}')
+    print(f'  {"":<34}{"Premium":>13}{"Essencial":>13}{"diferença":>13}')
+    print('  ' + '─'*72)
     for k in AMBS:
-        print(f'{k:<24}{br(ch[k]):>9}{br(fita[k]):>8}'
-              f'{br(fer_custo[k]+TER[k]):>13}{br(CDI[k]):>10}{br(PV[k]):>10}'
-              f'{(BASE-CDI[k]/PV[k])*100:>7.1f}%')
-    print('─'*W)
-    print(f'{"INVESTIMENTO":<24}{br(sum(ch.values())):>9}'
-          f'{br(sum(fita.values())):>8}'
-          f'{br(sum(fer_custo.values())+sum(TER.values())):>13}'
-          f'{br(CD):>10}{br(TOT):>10}{(BASE-CD/TOT)*100:>7.1f}%')
-    print(f'  ⭐ MC de 35% COM RT de 10% — base {BASE*100:.2f}%  ·  '
-          f'{sum(chapas.values()):.0f} chapas  [Jonathan 13/10]')
-    print(f'  · o MESMO custo SEM RT daria R$ {br(TOT_SRT)} — '
-          f'o RT custa R$ {br(TOT-TOT_SRT)} ao cliente ({(TOT/TOT_SRT-1)*100:.1f}%)')
-    print(f'  · na MC de 40% de antes, com RT, seria R$ {br(TOT_40)} — '
-          f'descemos R$ {br(TOT_40-TOT)} ({(1-TOT/TOT_40)*100:.1f}%)')
-    print(f'  ⛔ 35% é o PISO da casa (MC_PISO). Abaixo disto não há negociação,')
-    print(f'    há prejuízo de estrutura: a MC ainda tem de pagar o custo fixo.')
-
-    # ══ COMPOSIÇÃO DE CUSTO ════════════════════════════════════════════
-    print(f'\n{"═"*W}')
-    print('COMPOSIÇÃO DO CUSTO DIRETO — de onde vem o R$ ' + br(CD))
-    print(f'{"═"*W}')
-    cons = {k: (ch[k]+fita[k])*0.06 for k in AMBS}
-    emb  = {k: CDI[k]/(1+M.EMBALAGEM)*M.EMBALAGEM for k in AMBS}
-    _am = int(sum(v for m, v in chapas.items() if m[0] == 'ultra'))
-    _bo = int(sum(chapas.values())) - _am
-    LIN = [(f'chapa  ·  {_am} amadeirada + {_bo} brancas', {k: ch[k] for k in AMBS}),
-           ('fita de borda e filetagem',      dict(fita)),
-           ('consumíveis  ·  6% de chapa e fita', cons),
-           ('ferragem',                       dict(fer_custo)),
-           ('terceiros  ·  espelho e perfil', dict(TER)),
-           ('embalagem  ·  2% do custo',      emb)]
-    print(f'{"":<38}{"inferior":>11}{"superior":>11}{"total":>11}{"%":>8}')
-    print('─'*W)
-    for nome, d in LIN:
-        t = sum(d.values())
-        print(f'{nome:<38}{br(d[AMBS[0]]):>11}{br(d[AMBS[1]]):>11}'
-              f'{br(t):>11}{t/CD*100:>7.1f}%')
-    print('─'*W)
-    print(f'{"CUSTO DIRETO":<38}{br(CDI[AMBS[0]]):>11}{br(CDI[AMBS[1]]):>11}'
-          f'{br(CD):>11}{100.0:>7.1f}%')
-
-    print(f'\n  a ferragem, aberta:')
-    for x in FER_UN:
-        n = sum(FER[k][x] for k in AMBS)
-        if n: print(f'    {FER_NOME[x]:<28}{n:>3} × R$ {br(FER_UN[x]):>5}'
-                    f'  =  R$ {br(n*FER_UN[x])}')
-    print(f'  os terceiros, abertos:')
-    print(f'    espelho prata        {ESP_N} folhas a R$ {br(ESPELHO_M2)}/m²  =  '
-          f'R$ {br(ESP_N*ESP_L*ESP_A*ESPELHO_M2)}')
-    print(f'    perfil de alumínio   ★ R$ {br(PERFIL_M)}/m              =  '
-          f'R$ {br(ESP_N*2*(ESP_L+ESP_A)*PERFIL_M)}')
-    print(f'    preparo das 3 fixas  ★ berço e passagem do driver  =  '
-          f'R$ {br(3*ARANDELA_PC)}')
-
-    # ══ COMPOSIÇÃO DO PREÇO ════════════════════════════════════════════
-    print(f'\n{"═"*W}')
-    print('COMPOSIÇÃO DO PREÇO — para onde vai o R$ ' + br(TOT))
-    print(f'{"═"*W}')
-    enc = M.encargos(parcelas=0, rt=RT_ON, vendedor=False)
-    print(f'{"":<38}{"R$":>12}{"% do preço":>14}')
-    print('─'*W)
-    print(f'{"custo direto":<38}{br(CD):>12}{CD/TOT*100:>13.2f}%')
-    for nome, v in enc.items():
-        if v: print(f'{nome:<38}{br(TOT*v):>12}{v*100:>13.2f}%')
-    print('─'*W)
-    mc_r = TOT - CD - sum(TOT*v for v in enc.values())
-    print(f'{"MARGEM DE CONTRIBUIÇÃO":<38}{br(mc_r):>12}{mc_r/TOT*100:>13.2f}%')
-    print(f'{"PREÇO":<38}{br(TOT):>12}{100.0:>13.2f}%')
-    print(f'\n  base da casa {BASE*100:.2f}% — com RT de 10%, sem comissão de vendedor.')
-    print(f'  ⚠ A MC não é lucro: dela ainda sai o custo fixo da fábrica.')
-    print(f'\n  ⛔⛔ A MC CAIU 5 PONTOS E O CLIENTE PAGA MAIS CARO.')
-    _mc40 = TOT_40*(BASE-CD/TOT_40)
-    _ant  = sum(round(CDI[k]/(BASE_SRT-0.40)/10)*10 for k in AMBS)
-    _mcan = _ant*(BASE_SRT-CD/_ant)
-    print(f'    MC 40% sem RT (ontem) ...... preço R$ {br(_ant)}  ·  MC R$ {br(_mcan)}')
-    print(f'    MC 35% com RT (hoje) ....... preço R$ {br(TOT)}  ·  MC R$ {br(TOT-CD-sum(TOT*v for v in enc.values()))}')
-    print(f'    O cliente paga R$ {br(TOT-_ant)} A MAIS e a casa ganha '
-          f'R$ {br(_mcan-(TOT-CD-sum(TOT*v for v in enc.values()))):} A MENOS.')
-    print(f'    No meio ficam R$ {br(TOT*enc["RT"])} de RT. Os 5 pontos de margem que')
-    print('    abrimos não chegam ao cliente — pagam a arquiteta, e sobra')
-    print('    conta para ele. ⚠ Se a ideia era baixar o preço, o caminho é')
-    print('    tirar o RT, não a margem.')
-    print(f'  ⛔ E dentro do custo direto há R$ {br(COR["sobra"])} de SOBRA de chapa,')
-    print(f'    {COR["sobra"]/CD*100:.0f}% do custo direto — ver o quadro da sobra adiante.')
+        print(f'  {k:<34}{br(PREMIUM["PV"][k]):>13}{br(ESSENCIAL["PV"][k]):>13}'
+              f'{br(ESSENCIAL["PV"][k]-PREMIUM["PV"][k]):>13}')
+    print(f'  {"INVESTIMENTO":<34}{br(PREMIUM["TOT"]):>13}{br(ESSENCIAL["TOT"]):>13}'
+          f'{br(ESSENCIAL["TOT"]-PREMIUM["TOT"]):>13}')
+    print(f'  {"custo direto":<34}{br(PREMIUM["CD"]):>13}{br(ESSENCIAL["CD"]):>13}'
+          f'{br(ESSENCIAL["CD"]-PREMIUM["CD"]):>13}')
+    print(f'  {"margem de contribuição":<34}{br(mcP):>13}{br(mcE):>13}'
+          f'{br(mcE-mcP):>13}')
+    print(f'  {"MC":<34}{VERSAO["premium"]["mc"]*100:>12.0f}%'
+          f'{VERSAO["essencial"]["mc"]*100:>12.0f}%{"":>13}')
+    print(f'  {"garantia":<34}{VERSAO["premium"]["garantia"]:>13}'
+          f'{VERSAO["essencial"]["garantia"]:>13}')
+    print(f'\n  A Essencial é {(1-ESSENCIAL["TOT"]/PREMIUM["TOT"])*100:.0f}% '
+          f'mais barata — R$ {br(PREMIUM["TOT"]-ESSENCIAL["TOT"])} a menos.')
+    _dt = PREMIUM['TOT'] - ESSENCIAL['TOT']
+    _dc = PREMIUM['CD'] - ESSENCIAL['CD']
+    _dm = mcP - mcE
+    _de = _dt - _dc - _dm          # encargos que caem junto com o preço
+    print(f'  ⛔ De onde vêm os R$ {br(_dt)} de diferença:')
+    print(f'    R$ {br(_dc)} ({_dc/_dt*100:.0f}%) saem do CUSTO — chapa comum, ferragem')
+    print('             Bigfer, perfil comum, corrediça sem amortecimento;')
+    print(f'    R$ {br(_dm)} ({_dm/_dt*100:.0f}%) saem da NOSSA MARGEM;')
+    print(f'    R$ {br(_de)} ({_de/_dt*100:.0f}%) são nota fiscal, RT e comissões, que caem')
+    print('             junto porque correm sobre o preço.')
+    print('    ⛔ Só um terço do desconto é material. O resto é margem e')
+    print('      imposto. O cliente não leva o mesmo móvel mais barato — é')
+    print('      outro móvel — e ainda assim a casa ganha R$ '
+          f'{br(_dm)} a menos')
+    print('      pela MESMA mão de obra: mesmo desenho, mesmo corte, mesma')
+    print('      montagem, mesmas duas idas à obra.')
+    _p35 = sum(round(ESSENCIAL['CDI'][k]/(BASE-M.MC_PISO)/10)*10 for k in AMBS)
+    print(f'\n  ⛔⛔ 32% ESTÁ ABAIXO DO PISO DA CASA (MC_PISO = '
+          f'{M.MC_PISO*100:.0f}%).')
+    print(f'    No piso, a mesma Essencial sairia a R$ {br(_p35)} — '
+          f'abrir 3 pontos')
+    print(f'    custou R$ {br(_p35-ESSENCIAL["TOT"])} de preço e '
+          f'R$ {br(_p35*(BASE-ESSENCIAL["CD"]/_p35)-mcE)} de margem. A MC ainda tem de')
+    print('    pagar o custo fixo da fábrica: aceitável se este banheiro for')
+    print('    a porta de entrada do resto do apartamento, caro se for um')
+    print('    serviço solto.')
+    print('    ⚠ E a garantia de 2 anos é o que torna a Essencial honesta:')
+    print('      sem Ultra, sem amortecimento e com ferragem de entrada,')
+    print('      10 anos seria promessa que o móvel não sustenta.')
 
     print(f'\n{"═"*W}')
-    print('⭐ A ESPELHEIRA É QUASE METADE DO ORÇAMENTO')
+    print('⭐ A ESPELHEIRA É A MAIOR PARTE DAS DUAS')
     print(f'{"═"*W}')
-    ks = 'Armário superior'
-    print(f'  R$ {br(PV[ks])} de R$ {br(TOT)} — {PV[ks]/TOT*100:.0f}%. '
-          f'E dois terços disso não é')
-    print('  madeira: é espelho prata, perfil de alumínio e oito dobradiças')
-    print('  carregando folha de espelho, que não perdoa desalinho.')
-    esp = ESP_N*ESP_L*ESP_A*ESPELHO_M2
-    per = ESP_N*2*(ESP_L+ESP_A)*PERFIL_M
-    print(f'    espelho prata ........ R$ {br(esp)}')
-    print(f'    perfil de alumínio ... R$ {br(per)}   ★ estimado a R$ {br(PERFIL_M)}/m')
-    print(f'    preparo das fixas .... R$ {br(3*ARANDELA_PC)}   ★ passagem e berço do driver')
+    for R in (PREMIUM, ESSENCIAL):
+        ks = 'Armário superior'
+        print(f'  {R["v"]["nome"]:<11} R$ {br(R["PV"][ks])} de R$ {br(R["TOT"])}'
+              f' — {R["PV"][ks]/R["TOT"]*100:.0f}%')
+    print('  Espelho, perfil de alumínio e as dobradiças que carregam folha')
+    print('  de espelho não são madeira — e é por isso que ela não barateia')
+    print('  tanto quanto o armário de baixo.')
 
     print(f'\n{"═"*W}')
     print('⛔ O QUE A PROPOSTA PRECISA DIZER QUE NÃO É NOSSO')
     print(f'{"═"*W}')
-    print('  bancada, rodabanca, testeira, sóculo e o nicho do box — tudo')
-    print('  MARMORARIA. Box de correr — vidraceiro. Louças e metais Deca,')
-    print('  arandelas e driver, tomadas, forro, pintura e porcelanato —')
-    print('  obra. Num banheiro de 3,43 m² o cliente olha o conjunto e')
-    print('  compara com o preço da marcenaria. Se a proposta não separa,')
-    print('  a marcenaria leva a culpa do orçamento inteiro.')
+    print('  bancada, APOIO E FIXAÇÃO da bancada, rodabanca, testeira, sóculo')
+    print('  e o nicho do box — marmoraria e obra. Box de correr — vidraceiro.')
+    print('  Louças e metais Deca, arandelas e driver, tomadas, forro, pintura')
+    print('  e porcelanato — obra. Num banheiro de 3,43 m² o cliente olha o')
+    print('  conjunto e compara com o preço da marcenaria. Se a proposta não')
+    print('  separa, a marcenaria leva a culpa do orçamento inteiro.')
 
     print(f'\n{"═"*W}')
     print('⛔ METADE DA CHAPA DESTE ORÇAMENTO É SOBRA')
     print(f'{"═"*W}')
-    liq = sum(area_mat[m]*(PRECO[m]/(CH_M2*APROV)) for m in area_mat)
-    print(f'  Pagamos {sum(chapas.values()):.0f} chapas, R$ {br(sum(custo_ch.values()))}, para usar o')
-    print(f'  equivalente a R$ {br(liq)}. A sobra é R$ {br(COR["sobra"])} — '
-          f'{COR["sobra"]/sum(custo_ch.values())*100:.0f}% da chapa,')
-    print(f'  {COR["sobra"]/CD*100:.0f}% do custo direto, R$ {br(COR["sobra"]/(BASE-MC_ALVO))} de preço.')
+    for R in (PREMIUM, ESSENCIAL):
+        liq = sum(R['area'][m]*(PRECO[m]/(CH_M2*APROV)) for m in R['area'])
+        print(f'  {R["v"]["nome"]:<11}{sum(R["chapas"].values()):.0f} chapas, '
+              f'R$ {br(sum(R["custo_ch"].values()))} — usa R$ {br(liq)}, '
+              f'sobra R$ {br(R["sobra"])} '
+              f'({R["sobra"]/sum(R["custo_ch"].values())*100:.0f}%)')
     print('  Não é erro: num banheiro de 3,43 m² a chapa inteira não cabe no')
     print('  móvel. O pior é o 15 mm branco: 4,2 m² obrigam a comprar duas')
     print('  chapas de 4,07 e a segunda entra quase inteira para sobrar.')
@@ -334,29 +375,25 @@ if __name__ == '__main__':
     print(f'\n{"═"*W}')
     print('⭐ INTERNO BRANCO E EXTERNO AMADEIRADO — E POR QUE DEU CERTO')
     print(f'{"═"*W}')
-    print('  [Jonathan 13/10] Caixaria em MDF Ultra branco; portas, frentes')
-    print('  de gaveta, as três peças fixas da espelheira, a lateral direita')
-    print('  dos dois móveis e a base da espelheira em amadeirado fosco.')
-    print(f'\n  {"":<36}{"como pedido":>14}{"tudo amadeirado":>18}')
+    print('  [Jonathan 13/10] Caixaria em branco; portas, frentes de gaveta,')
+    print('  as três peças fixas da espelheira, a lateral direita dos dois')
+    print('  móveis e a base da espelheira em amadeirado fosco.')
+    print(f'\n  {"":<36}{"Premium":>14}{"tudo amadeirado":>18}')
     print('  ' + '─'*68)
     for k in AMBS:
-        print(f'  {k:<36}{br(PV[k]):>14}{br(TUDOCOR["PV"][k]):>18}')
-    print(f'  {"INVESTIMENTO":<36}{br(TOT):>14}{br(TUDOCOR["TOT"]):>18}')
-    print(f'  {"chapa":<36}{br(sum(custo_ch.values())):>14}'
-          f'{br(sum(TUDOCOR["custo_ch"].values())):>18}')
-    print(f'  {"chapas compradas":<36}{sum(chapas.values()):>14.0f}'
+        print(f'  {k:<36}{br(PREMIUM["PV"][k]):>14}{br(TUDOCOR["PV"][k]):>18}')
+    print(f'  {"INVESTIMENTO":<36}{br(PREMIUM["TOT"]):>14}{br(TUDOCOR["TOT"]):>18}')
+    print(f'  {"chapas compradas":<36}{sum(PREMIUM["chapas"].values()):>14.0f}'
           f'{sum(TUDOCOR["chapas"].values()):>18.0f}')
-    print(f'\n  Economia de R$ {br(TUDOCOR["TOT"]-TOT)} '
-          f'({(1-TOT/TUDOCOR["TOT"])*100:.0f}%) sem tirar nada do que se vê.')
+    print(f'\n  Economia de R$ {br(TUDOCOR["TOT"]-PREMIUM["TOT"])} '
+          f'({(1-PREMIUM["TOT"]/TUDOCOR["TOT"])*100:.0f}%) sem tirar nada do que se vê.')
     print('\n  ⭐ E deu certo por um motivo que não é óbvio: TODO O APARENTE')
     print('    FOI PARA 18 mm. Numa obra deste tamanho, misturar duas cores')
     print('    normalmente ENCARECE — cada cor obriga a comprar o mínimo de')
     print('    uma chapa em cada espessura, e sobra quase tudo. Concentrando')
     print(f'    o amadeirado numa espessura só, ele cabe em UMA chapa '
-          f'({area_mat[("ultra",18)]:.2f}'.replace('.', ',') + ' m²')
-    print('    de 4,07 aproveitáveis) e as outras três saem brancas, 35%')
-    print('    mais baratas. Mesmas 4 chapas de antes, R$ '
-          f'{br(sum(TUDOCOR["custo_ch"].values())-sum(custo_ch.values()))} a menos.')
+          f'({vg(PREMIUM["area"][("ultra",18)])} m²')
+    print('    de 4,07 aproveitáveis) e as outras três saem brancas.')
     print('    ⛔ Se alguma peça aparente voltar para 15 mm, entra uma QUINTA')
     print('      chapa e a economia encolhe. Vale a pena segurar o 18.')
 
@@ -369,43 +406,43 @@ if __name__ == '__main__':
     print('    fosco. ⚠ Falta o NOME do padrão — a arquiteta não especificou')
     print('    decor nenhum, e o preço de chapa muda de fornecedor para')
     print('    fornecedor dentro do amadeirado.')
+    print('  · ⛔ RESISTÊNCIA À UMIDADE. A arquiteta não pediu chapa Ultra;')
+    print('    nós pusemos na Premium. ★ +30% estimado sobre a comum. A')
+    print('    ESSENCIAL sai em MDF comum, por instrução do Jonathan — e é')
+    print('    exatamente por isso que a garantia dela é de 2 anos.')
     print('  · ⚠ AMADEIRADO EM CHAPA ULTRA. A linha resistente à umidade tem')
-    print('    MENOS padrões amadeirados que a linha comum. Se o decor')
-    print('    escolhido não existir em Ultra, ou se troca o padrão, ou a')
-    print('    peça aparente sai em chapa comum — e aí ela é a que menos')
-    print('    sofre, porque o que molha é a caixaria, que fica em Ultra.')
-    print('  · ⛔ RESISTÊNCIA À UMIDADE. A arquiteta não pediu chapa Ultra.')
-    print('    Nós colocamos. ★ +30% estimado sobre a cor — se o cliente')
-    print('    quiser MDF comum, sai mais barato e sai sem a nossa garantia')
-    print('    de 10 anos na parte que molha.')
-    print('  · ⭐ RT DE 10% INCLUÍDO [Jonathan 13/10], para Ana Maria Castro.')
-    print(f'    São R$ {br(TOT*enc["RT"])} dentro do preço. ⚠ Falta combinar com ela o')
-    print('    que o RT cobre: acompanhamento de obra, conferência de medida')
-    print('    e aprovação de amostra entram? E quando é pago — na assinatura')
-    print('    ou na entrega? A parceria de RT da casa tem essa página; vale')
-    print('    mandar antes de a proposta sair.')
-    print('  · PUXADOR ZEN PHENIX 20 cm cromado — especificado por nome na')
-    print('    prancha. ★ Entrou a R$ 55 a unidade, estimado. Na Raquel o')
-    print('    Jonathan mandou TIRAR puxador e dobradiça; aqui mantive,')
-    print('    porque a prancha especifica o modelo.')
-    print(f'  · ⚠⚠ CORREDIÇA OCULTA HETTICH pelo preço da telescópica.')
-    print(f'    [Jonathan 13/10] mandou não mexer no valor. A linha está em')
-    print(f'    R$ {br(4*FER_UN["corr"])}; oculta Hettich com amortecimento custa de duas a')
+    print('    MENOS padrões amadeirados que a comum. Se o decor escolhido')
+    print('    não existir em Ultra, a peça aparente da Premium sai em chapa')
+    print('    comum — e é a que menos sofre, porque o que molha é a caixaria.')
+    print('  · ⭐ RT DE 10% INCLUÍDO NAS DUAS [Jonathan 13/10], para Ana Maria')
+    print(f'    Castro. São R$ {br(PREMIUM["TOT"]*M.encargos(0, RT_ON, False)["RT"])} '
+          f'na Premium e R$ {br(ESSENCIAL["TOT"]*M.encargos(0, RT_ON, False)["RT"])} '
+          f'na Essencial. ⚠ Falta combinar')
+    print('    com ela o que o RT cobre e quando é pago.')
+    print('  · ⚠⚠ PREMIUM · CORREDIÇA OCULTA HETTICH pelo preço da telescópica.')
+    print('    [Jonathan 13/10] mandou não mexer no valor. A linha está em')
+    print(f'    R$ {br(4*VERSAO["premium"]["fer"]["corr"])}; oculta Hettich com amortecimento custa de duas a')
     print('    três vezes isso. Se for 2,5×, são cerca de R$ 510 de custo a')
-    print(f'    mais, R$ {br(510/(BASE-MC_ALVO))} de preço que não estão aqui — e saem da')
+    print(f'    mais, R$ {br(510/(BASE-VERSAO["premium"]["mc"]))} de preço que não estão aqui — e saem da')
     print('    margem. Fica registrado: a decisão é do Jonathan, a conta é esta.')
+    print('  · ★ ESSENCIAL · ferragem BIGFER e PERFIL DE ALUMÍNIO COMUM estão')
+    print('    ESTIMADOS — nenhum dos dois está na base da casa. Dobradiça a')
+    _fe = VERSAO['essencial']
+    print(f'    R$ {br(_fe["fer"]["dobr"])}, corrediça a R$ {br(_fe["fer"]["corr"])}, '
+          f'puxador a R$ {br(_fe["fer"]["puxador"])} e perfil a '
+          f'R$ {br(_fe["perfil"])}/m.')
+    print('    ⚠ O puxador especificado é o ZEN PHENIX — na Essencial ele sai')
+    print('      e entra um cromado de linha. Isso muda o que o cliente vê e')
+    print('      a arquiteta precisa saber.')
     print('  · O interior do armário inferior não está desenhado. Adotei uma')
     print('    prateleira recortada no vão das portas. Se vier divisória,')
     print('    cesto ou gaveta interna, é acréscimo.')
     print('  · "PREVER INSTALAÇÃO DO DRIVE NA PARTE FIXA DA MARCENARIA":')
     print('    fazemos o berço e a passagem. A fonte, a arandela e a ligação')
     print('    são da elétrica.')
-    print('  · O SÓCULO é alvenaria da obra (0,41 m² de pedra na legenda de')
-    print('    piso). ⚠ Ele tem de estar pronto, nivelado e revestido antes')
-    print('    da montagem. Se não estiver, ou o móvel espera ou vai em pé')
-    print('    regulável — e aí muda o desenho.')
+    print('  · O SÓCULO é alvenaria da obra. ⚠ Tem de estar pronto, nivelado')
+    print('    e revestido antes da montagem.')
     print('  · A elevação cota 15 de testeira sob a bancada e a nota da')
-    print('    planta diz TESTEIRA = 20. ⚠ Divergência da prancha. Muda o')
-    print('    recuo da frente do armário; a conferir com a arquiteta.')
+    print('    planta diz TESTEIRA = 20. ⚠ Divergência da prancha.')
     print('  · Revisão 00, carimbada "NÃO PLOTAR, ESTUDO ENVIADO PARA')
     print('    ANÁLISE". Medida de obra por nossa conta antes de produzir.')
