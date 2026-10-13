@@ -56,6 +56,10 @@ orçamento inteiro.
 
 ### 1 · Armário inferior · 119 × 63 × 46, sobre sóculo de 15
 
+⛔ [Jonathan 13/10] **o armário NÃO sustenta a bancada.** A pedra tem apoio
+e fixação próprios, de obra; o móvel entra por baixo dela. A proposta diz
+isso e lista o apoio da bancada entre os itens que não são nossos.
+
 Frente de **71,5 de portas de giro** (duas folhas) **+ 47,5 de gavetas**
 (quatro, de cima para baixo 10 · 17 · 17 · 17). Bancada de pedra a 90 do
 piso; o corpo começa 15 abaixo dela. A **cuba cai sobre o vão das portas**,
@@ -119,7 +123,7 @@ chegam ao cliente — pagam a arquiteta, e sobra conta para ele.
 | **CUSTO DIRETO** | **2.084** | **3.171** | **5.254** | 100% |
 
 *Ferragem:* 12 dobradiças com amortecedor (R$ 420) · 4 corrediças
-telescópicas (R$ 340) · 6 puxadores Zen Phenix 20 cm ★ (R$ 330).
+**ocultas Hettich** (R$ 340) · 6 puxadores Zen Phenix 20 cm ★ (R$ 330).
 *Terceiros:* espelho prata 4 folhas a R$ 600/m² (R$ 913) · perfil de
 alumínio ★ R$ 75/m (R$ 794) · preparo das 3 peças fixas, berço e passagem
 do driver ★ (R$ 270).
@@ -211,25 +215,32 @@ a economia encolhe. Vale a pena segurar o 18.
    projeto da Raquel Franco, onde a designer especificou "MDF Verde/Ultra".
    Em MDF comum sai mais barato e sai **sem a garantia de 10 anos** na parte
    que molha.
-4. **⭐ RT de 10% incluído** [Jonathan 13/10], para Ana Maria Castro —
+4. **⚠⚠ Corrediça oculta Hettich pelo preço da telescópica.**
+   [Jonathan 13/10] "corrediças serão ocultas de Hettich — não precisa
+   alterar o valor". A linha está em R$ 340, que é a telescópica da base
+   da casa. Oculta Hettich com amortecimento custa de duas a três vezes
+   isso: a 2,5× são cerca de **R$ 510 de custo a mais**, R$ 1.230 de preço
+   que não estão no orçamento — e que saem da margem. A decisão é do
+   Jonathan; fica registrada a conta.
+5. **⭐ RT de 10% incluído** [Jonathan 13/10], para Ana Maria Castro —
    R$ 1.203 dentro do preço. ⚠ Falta combinar com ela **o que o RT cobre**:
    acompanhamento de obra, conferência de medida e aprovação de amostra
    entram? E quando é pago, na assinatura ou na entrega? A parceria de RT
    da casa (`fontes/valvic_parceria_rt_arquitetos.pdf`) tem essa página;
    vale mandar antes de a proposta sair.
-5. **Puxador Zen Phenix 20 cm cromado** — especificado por nome. ★ Entrou a
+6. **Puxador Zen Phenix 20 cm cromado** — especificado por nome. ★ Entrou a
    R$ 55 a unidade, estimado, seis unidades. Na Raquel o Jonathan mandou
    tirar puxador e dobradiça do preço; aqui mantive, porque a prancha
    especifica o modelo.
-6. **O interior do armário inferior não está desenhado.** Adotei uma
+7. **O interior do armário inferior não está desenhado.** Adotei uma
    prateleira recortada no vão das portas. Divisória, cesto ou gaveta
    interna é acréscimo.
-7. **O driver.** Fazemos o berço e a passagem na peça fixa. A fonte, a
+8. **O driver.** Fazemos o berço e a passagem na peça fixa. A fonte, a
    arandela e a ligação são da elétrica.
-8. **O sóculo** é alvenaria da obra. ⚠ Tem de estar pronto, nivelado e
+9. **O sóculo** é alvenaria da obra. ⚠ Tem de estar pronto, nivelado e
    revestido antes da montagem. Se não estiver, ou o móvel espera ou vai
    em pé regulável — e aí muda o desenho.
-9. **Divergência da prancha:** a elevação 01 cota **15** de testeira sob a
+10. **Divergência da prancha:** a elevação 01 cota **15** de testeira sob a
    bancada e a nota da planta diz **TESTEIRA = 20**. Muda o recuo da frente.
-10. **Revisão 00, "não plotar".** Medida de obra por nossa conta antes de
+11. **Revisão 00, "não plotar".** Medida de obra por nossa conta antes de
    produzir.

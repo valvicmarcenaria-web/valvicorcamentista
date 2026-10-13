@@ -36,11 +36,12 @@ def uri(nome):
 IMG1, IMG2 = uri('render-marcenaria.jpg'), uri('render-espelheira.jpg')
 
 ITENS = [
- ('Bancada', 'Armário da bancada', oi.PV['Armário inferior'],
+ ('Sob a bancada', 'Armário inferior', oi.PV['Armário inferior'],
   'Frente em <b>amadeirado fosco</b> e caixaria em <b>branco</b>. Portas de '
   'giro de um lado e, do outro, as gavetas — todas sobre <b>corrediça '
-  'telescópica</b>, que abre a gaveta inteira. Puxador <b>Zen Phenix '
-  'cromado</b>, como a arquiteta especificou.'),
+  'oculta Hettich</b>, que some sob a gaveta, abre inteira e fecha com '
+  'amortecimento. Puxador <b>Zen Phenix cromado</b>, como a arquiteta '
+  'especificou.'),
  ('Espelheira', 'Armário superior, com espelho', oi.PV['Armário superior'],
   'A parede inteira sobre a bancada. <b>Folhas de espelho prata em perfil '
   'de alumínio</b>, que abrem e guardam por dentro, com prateleiras. Entre '
@@ -167,8 +168,9 @@ p1 = f"""<div class="page"><div class="pad">
   <div class="rule"></div>
   <div class="leadOI">Orlando, Ivone, o projeto da arquiteta
   <b>{ARQ}</b> chegou resolvido. A marcenaria dele são <b>dois móveis</b>:
-  o armário que sustenta a bancada e a <b>espelheira</b> que toma a parede
-  inteira acima dela — e é ela que faz o banheiro parecer o dobro do que é.</div>
+  o armário que vai <b>sob a bancada</b> e a <b>espelheira</b> que toma a
+  parede inteira acima dela — e é ela que faz o banheiro parecer o dobro
+  do que é.</div>
 
   <div class="parOI">
     <div class="phOI"><img src="{IMG1}" alt=""></div>
@@ -192,11 +194,11 @@ p1 = f"""<div class="page"><div class="pad">
       fornecimento nosso, montados e alinhados por nós. Folha de espelho
       <b>não perdoa desalinho</b> — por isso ela sai da nossa bancada, e
       não da obra.</div></div>
-    <div><div class="k">Sequência de obra</div><div class="d">
-      O sóculo é alvenaria e a bancada é da marmoraria. Entramos
-      <b>depois do sóculo pronto e nivelado</b>; a pedra é medida sobre o
-      armário já instalado. São <b>duas idas</b>: o armário antes da pedra,
-      a espelheira depois.</div></div>
+    <div><div class="k">Medição no local</div><div class="d">
+      O projeto está na <b>revisão 00</b>, marcada como estudo para
+      análise. <b>Medimos no local antes de cortar</b> — é o que impede
+      surpresa de prumo e de esquadro no encontro com a parede, e o que
+      garante o encaixe com a pedra.</div></div>
   </div>
   {foot(1)}
 </div></div>"""
@@ -253,18 +255,14 @@ p2 = f"""<div class="page"><div class="pad">
     <div class="h">O que está e o que não está nesta proposta</div>
     <b>Está:</b> os dois móveis, com a ferragem, o espelho prata e o perfil
     de alumínio das folhas, a medição no local, a entrega e a instalação.<br>
-    <b>Não está:</b> a bancada, a rodabanca, a testeira, o acabamento do
-    sóculo e o nicho do box — todos de <b>marmoraria</b>; o <b>sóculo em
-    alvenaria</b>; o <b>box de correr</b>; as <b>louças, metais e
+    <b>Não está:</b> a bancada, <b>o seu apoio e fixação</b>, a rodabanca,
+    a testeira, o acabamento do sóculo e o nicho do box — todos de
+    <b>marmoraria</b> e de obra; o <b>sóculo em alvenaria</b>; o <b>box de correr</b>; as <b>louças, metais e
     acessórios</b> especificados no projeto; as <b>arandelas, o driver e a
     instalação elétrica</b> — nossa é a usinagem da passagem e o berço na
     peça fixa; o <b>porcelanato e as soleiras</b>.<br>
     O projeto está na <b>revisão 00</b>, marcada como estudo para análise.
     Alteração de desenho depois do aceite é revista em conjunto.</div>
-  <div class="sig">
-    <div class="ln">Valvic Marcenaria</div>
-    <div class="ln">De acordo · {CLIENTE}</div>
-  </div>
   {foot(2)}
 </div></div>"""
 

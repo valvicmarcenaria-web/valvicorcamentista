@@ -58,8 +58,12 @@ BASE    = M.base(parcelas=0, rt=RT_ON, vendedor=False)
 
 FER_UN  = {'dobr':35.0, 'corr':85.0, 'puxador':55.0}
 FER_NOME = {'dobr':'dobradiça com amortecedor',
-            'corr':'corrediça telescópica',
+            'corr':'corrediça OCULTA Hettich',
             'puxador':'puxador Zen Phenix 20 cm'}
+# ⚠⚠ [Jonathan 13/10] "corrediças serão ocultas de Hettich — não precisa
+#   alterar o valor". Os R$ 85 são a TELESCÓPICA da base da casa. Corrediça
+#   oculta Hettich com amortecimento custa de duas a três vezes isso. Ou
+#   seja: há custo real acima do orçado nesta linha. Ver EM ABERTO.
 # ⭐ [Jonathan 09/10] espelho a R$ 600,00 o m², fornecimento nosso.
 ESPELHO_M2 = 600.0
 PERFIL_M   = 75.0     # ★ perfil de alumínio prata da porta de espelho, por m
@@ -384,6 +388,12 @@ if __name__ == '__main__':
     print('    prancha. ★ Entrou a R$ 55 a unidade, estimado. Na Raquel o')
     print('    Jonathan mandou TIRAR puxador e dobradiça; aqui mantive,')
     print('    porque a prancha especifica o modelo.')
+    print(f'  · ⚠⚠ CORREDIÇA OCULTA HETTICH pelo preço da telescópica.')
+    print(f'    [Jonathan 13/10] mandou não mexer no valor. A linha está em')
+    print(f'    R$ {br(4*FER_UN["corr"])}; oculta Hettich com amortecimento custa de duas a')
+    print('    três vezes isso. Se for 2,5×, são cerca de R$ 510 de custo a')
+    print(f'    mais, R$ {br(510/(BASE-MC_ALVO))} de preço que não estão aqui — e saem da')
+    print('    margem. Fica registrado: a decisão é do Jonathan, a conta é esta.')
     print('  · O interior do armário inferior não está desenhado. Adotei uma')
     print('    prateleira recortada no vão das portas. Se vier divisória,')
     print('    cesto ou gaveta interna, é acréscimo.')
