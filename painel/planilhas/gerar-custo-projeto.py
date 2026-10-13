@@ -1121,6 +1121,9 @@ CAB_BASE = [
     ('Comissão montagem', 15, MOEDA), ('Montado em', 12, DATA),
     ('Projetista — quem', 16, None), ('% projeto', 9, PCT1),
     ('Comissão projetista', 15, MOEDA), ('Total do ambiente', 15, MOEDA),
+    # a comissão do projetista não tem data de etapa própria — nasce com a venda,
+    # então é a data de entrada do projeto que a situa no mês
+    ('Data de entrada', 12, DATA),
 ]
 bs = wb.create_sheet('Base · Comissões')
 bs.sheet_properties.tabColor = GOLD
@@ -1145,6 +1148,7 @@ for _i, _aba in enumerate(_ABAS_BASE):
         bs.cell(_lin, 2, f"=IF($C{_lin}=\"\",\"\",'Painel Geral'!$C${_pg_row})")
         for _k, _col in enumerate('ABCDEFGHIJKLMNO'):
             bs.cell(_lin, 3 + _k, f'=IF({_ref}!${_col}${_fr}="","",{_ref}!${_col}${_fr})')
+        bs.cell(_lin, 18, f'=IF($C{_lin}="","",IF({_ref}!$F${R_ID2}="","",{_ref}!$F${R_ID2}))')
         for _k, (_, _, _nf) in enumerate(CAB_BASE, start=1):
             cel = bs.cell(_lin, _k)
             cel.font = font(9)
