@@ -34,7 +34,7 @@ TOTAL = sr.PV
 #   mudar calado embaixo da proposta é a BASE do preço: se alguém desligar
 #   o RT ou mexer na MC no motor, a folha sai com outro número sem avisar.
 assert sr.RT_ON is True,            '⛔ O RT SAIU DO MOTOR [Jonathan 14/10 pediu COM RT]'
-assert abs(sr.MC_ALVO - 0.35) < 1e-9, f'⛔ A MC MUDOU: {sr.MC_ALVO:.3f} ≠ 0,350'
+assert abs(sr.MC_ALVO - 0.30) < 1e-9, f'⛔ A MC MUDOU: {sr.MC_ALVO:.3f} ≠ 0,300'
 assert TOTAL == sr.PV and TOTAL > 0, '⛔ O PREÇO NÃO VEIO DO MOTOR'
 
 ITENS = [

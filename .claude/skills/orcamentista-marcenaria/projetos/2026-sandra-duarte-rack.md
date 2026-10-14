@@ -32,23 +32,30 @@ temperado reflecta champagne**.
 
 ## O orçamento — `corte-sandra-rack.py`
 
-MC **35%** ★ · **com RT** ⭐ [Jonathan 14/10] · base 76,52%
+MC **30%** ⭐ [Jonathan 14/10] · **com RT** ⭐ · base 76,52%
+
+⚠ **30% está abaixo do piso da casa (35%).** É instrução dele; fica
+registrado.
 
 | | R$ |
 |---|--:|
-| chapa · 1 Metalic + 1 Branco TX | 1.410 |
+| chapa · 1 Metalic + 1 Branco TX | 860 |
 | fita de borda e filetagem | 68 |
-| consumíveis · 6% | 89 |
+| consumíveis · 6% | 56 |
 | vidro, bisotê e perfil | 1.359 |
 | ferragem | 856 |
 | iluminação | 248 |
-| embalagem · 2% | 81 |
-| **custo direto** | **4.110** |
-| **PREÇO** | **R$ 9.900** |
+| embalagem · 2% | 69 |
+| **custo direto** | **3.515** |
+| **PREÇO** | **R$ 7.560** |
 
 ⭐ **A RT de 10% entrou por instrução do Jonathan (14/10)**, para a
-arquiteta **Junia Ordones**. Sem ela o rack sairia a **R$ 8.160** — a RT
-vale **R$ 1.740** no preço. A MC de 35% continua ★ adotada por mim.
+arquiteta **Junia Ordones**. Sem ela o rack sairia a **R$ 6.350** — a RT
+vale **R$ 1.210** no preço.
+
+⚠ **E a MC desceu a 30%**, também por instrução dele. A 35% o mesmo rack
+sairia a **R$ 8.470**: a queda de margem **devolve R$ 910 ao cliente e tira
+os mesmos R$ 910 da casa**.
 
 ---
 
@@ -65,22 +72,34 @@ tampo inferior e base — o miolo vai em **Branco TX**:
 | área, m² | 3,77 | 1,78 |
 | chapas | 1 | 1 |
 
-Em Metalic nas duas camadas seriam R$ 2.300 — **R$ 890 a mais**. A própria
+Em Metalic nas duas camadas seriam R$ 1.200 — **R$ 340 a mais**. A própria
 arquiteta abre essa porta na nota do tampo posterior.
 
-## ⭐ E a Metalic Champagne sai barata neste móvel
+## ⭐ A Metalic Champagne não cobra prêmio nenhum
 
-Em MDF de cor comum o rack daria **R$ 9.350**: a linha premium custa **só
-R$ 550 a mais, 6% do preço**. O móvel é pequeno e, com o miolo em Branco
-TX, **uma chapa de Metalic resolve**. Trocá-la por chapa comum quase não
-compra nada — é um bom argumento para manter o que a arquiteta desenhou.
+⭐ [Jonathan 14/10] **"A chapa custa 600,00"** — eu havia estimado
+R$ 1.150, quase o dobro. A R$ 600 a Metalic **empata com o MDF de cor comum
+de 18 mm da base da casa**: o mesmo rack em cor comum daria os **mesmos
+R$ 7.560**. Trocar o padrão que a arquiteta especificou **não economiza um
+centavo** — não há o que negociar aí.
+
+Só o corpo todo em **Branco TX** desceria, para **R$ 6.770**: R$ 790 de
+diferença para perder o champagne inteiro. É outro móvel.
+
+⭐ **Vale atualizar a base da casa** com o preço da linha Metalic.
+
+## ⭐ Agora o maior insumo é o vidro
+
+Com a chapa a R$ 600, a composição virou: **vidro 39% do custo direto,
+chapa 24%**. A maior incerteza do orçamento deixou de ser a marcenaria e
+passou a ser a **vidraçaria** — é lá que a cotação tem de bater agora.
 
 ---
 
 ## ★ Em aberto
 
-1. ⛔⛔ **O preço da chapa Metalic.** ★ R$ 1.150 é estimativa minha — a
-   linha **não está na base da casa**. Maior incerteza do orçamento.
+1. ⭐ **O preço da chapa Metalic fechou em R$ 600** [Jonathan 14/10].
+   Saiu o maior ★ do orçamento, e com ele R$ 550 de chapa.
 2. ⛔⛔ **Furo de 3 cm em vidro temperado.** A prancha oferece *"puxador
    tipo furo de 3 cm **ou** em alumínio slim colado"*. ⚠ **Furo em
    temperado tem de ser feito antes da têmpera** — depois não se fura, e a
@@ -93,8 +112,8 @@ compra nada — é um bom argumento para manter o que a arquiteta desenhou.
    Decide construção, puxador e preço.
 4. ★ **O vidro reflecta champagne** também é estimado. Cotar junto com o
    **bisotê**, que é serviço de vidraceiro, não nosso.
-5. ⚠ **A MC não veio.** Adotei **35%**, como no Sigma. ⭐ A **RT de 10%**
-   veio: Jonathan mandou incluir em 14/10.
+5. ⚠ **MC de 30%, abaixo do piso da casa (35%)** ⭐ [Jonathan 14/10], e
+   **RT de 10% incluída** ⭐ [Jonathan 14/10].
 6. **Ponto de energia.** A fonte do LED fica embutida na nossa base: ela
    precisa de tomada alcançável e de acesso para manutenção.
 

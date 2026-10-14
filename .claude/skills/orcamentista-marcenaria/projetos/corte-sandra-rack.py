@@ -22,15 +22,17 @@ O MÓVEL — um rack só, SOLTO do painel existente, sobre rodízios ocultos.
     em CAVA no tampo inferior, aos fundos, voltada para o fundo.
 
 AS CHAPAS
-  **MDF GUARARAPES LINHA METALIC, cor CHAMPAGNE** — ⛔ não está na base da
-  casa. É linha premium; estimada abaixo e é o maior ★ do orçamento.
+  **MDF GUARARAPES LINHA METALIC, cor CHAMPAGNE** — ⭐ [Jonathan 14/10]
+  **R$ 600 a chapa**, o MESMO preço do MDF de cor comum da base. O maior ★
+  do orçamento caiu: o padrão champagne não cobra prêmio de chapa.
   **VIDRO TEMPERADO REFLECTA CHAMPAGNE** — 6, 8 e 10 mm.
 
 ⛔⛔ TUDO EM 30 mm — laterais, fundos, base, tampo inferior, nicho e
    prateleira. **MDF não existe em 30 mm**: é chapa dupla colada. Dobra a
    área de chapa de TODO o corpo, e em chapa cara.
 
-★ Sem instrução de MC e de RT. Adotei **MC 35% e sem RT**, como no Sigma.
+⭐ [Jonathan 14/10] **MC 30% e COM RT.** ⚠ 30% está ABAIXO do piso da
+casa (35%) — é instrução dele, fica registrado.
 """
 import importlib.util, pathlib, sys
 P = pathlib.Path(__file__).resolve().parent
@@ -43,15 +45,16 @@ br1 = lambda v: f'{v:,.1f}'.replace(',','X').replace('.',',').replace('X','.')
 vg  = lambda v, n=2: f'{v:.{n}f}'.replace('.', ',')
 
 CH_M2, APROV = 2.75*1.85, 0.80
-MC_ALVO = 0.35                        # ★ adotado
+MC_ALVO = 0.30                        # ⭐ [Jonathan 14/10] ⚠ abaixo do piso (35%)
 RT_ON   = True                        # ⭐ [Jonathan 14/10] "adicione a RT"
 BASE = M.base(parcelas=0, rt=RT_ON, vendedor=False)
 
 # ── insumos ──────────────────────────────────────────────────────────────
-# ⛔⛔ A LINHA METALIC NÃO ESTÁ NA BASE DA CASA. A base traz MDF de cor a
-#   R$ 500 (15 mm) e R$ 600 (18 mm). A Metalic é acabamento especial —
-#   estimada em ~2,3× a chapa de cor. É o maior ★ deste orçamento.
-METALIC_15 = 1150.0    # ★ chapa 15 mm Guararapes Metalic Champagne
+# ⭐ [Jonathan 14/10] "A CHAPA CUSTA 600,00". Eu havia estimado R$ 1.150
+#   — quase o dobro. A Metalic Champagne custa o MESMO que o MDF de cor
+#   comum de 18 mm da base da casa: o acabamento premium não cobra prêmio
+#   de chapa. Some o maior ★ do orçamento.
+METALIC_15 = 600.0     # ⭐ chapa Guararapes Metalic Champagne [Jonathan 14/10]
 BR_15      = 260.0     # Branco TX 15 — a camada interna da chapa dupla
 FITA_M     = 3.0 + 2.5 # fita de cor + filetagem
 
@@ -126,14 +129,23 @@ CD = ((CH_CUSTO + FITA_CUSTO)*1.06 + CD_VID + CD_FER + CD_LED)*(1 + M.EMBALAGEM)
 PV = round(CD/(BASE - MC_ALVO)/10)*10
 
 # ── e se a chapa não fosse Metalic ───────────────────────────────────────
-PV_COR = round((((chapas+chapas_br)*600.0 + FITA_CUSTO)*1.06 + CD_VID + CD_FER + CD_LED)
+# ⛔ O CONTRAFACTUAL VIROU DE LADO. Enquanto a Metalic era ★ R$ 1.150, a
+#   pergunta era "quanto custa o padrão champagne". A R$ 600 ela EMPATA com
+#   o MDF de cor comum da base — trocar por cor não economiza um centavo.
+#   O único piso abaixo dela é o Branco TX, que é outro móvel.
+PV_COR = round((((chapas*600.0 + chapas_br*BR_15) + FITA_CUSTO)*1.06
+                + CD_VID + CD_FER + CD_LED)
+               *(1 + M.EMBALAGEM)/(BASE - MC_ALVO)/10)*10
+PV_BR  = round((((chapas+chapas_br)*BR_15 + FITA_CUSTO)*1.06
+                + CD_VID + CD_FER + CD_LED)
                *(1 + M.EMBALAGEM)/(BASE - MC_ALVO)/10)*10
 
 if __name__ == '__main__':
     W = 88
     print('═'*W)
     print('SANDRA DUARTE — RACK  ·  arquiteta Junia Ordones  ·  outubro/26')
-    print(f'MC {MC_ALVO*100:.0f}% ★ · COM RT ⭐ · base {BASE*100:.2f}%')
+    print(f'MC {MC_ALVO*100:.0f}% ⭐ · COM RT ⭐ · base {BASE*100:.2f}%'
+          f'   ⚠ a MC está abaixo do piso da casa ({M.MC_PISO:.0%})')
     print('═'*W)
     print(f'\n{"PEÇA · chapa dupla de 15 + 15":<42}{"medida":>12}'
           f'{"Metalic":>10}{"Branco":>9}')
@@ -144,7 +156,7 @@ if __name__ == '__main__':
     print('─'*W)
     print(f'{"ÁREA, em m²":<42}{"":>12}{area_met:>10.2f}{area_br:>9.2f}')
     print(f'{"CHAPAS":<42}{"":>12}{chapas:>10.0f}{chapas_br:>9.0f}')
-    print(f'  ⛔ {chapas:.0f} de Metalic a ★ R$ {br(METALIC_15)} + {chapas_br:.0f} de Branco TX '
+    print(f'  ⭐ {chapas:.0f} de Metalic a R$ {br(METALIC_15)} + {chapas_br:.0f} de Branco TX '
           f'a R$ {br(BR_15)} = R$ {br(CH_CUSTO)}')
     print('  ⛔⛔ O PROJETO PEDE 30 mm EM TODO O CORPO, e MDF não existe em')
     print('    30 mm: é chapa dupla colada. Dobra a área de chapa do móvel.')
@@ -185,22 +197,24 @@ if __name__ == '__main__':
     print('  ' + '─'*46)
     print(f'  {"CUSTO DIRETO":<34}R$ {br(CD):>9}')
     print(f'  {"PREÇO":<34}R$ {br(PV):>9}')
-    print(f'\n  ⭐ A chapa é {CH_CUSTO/CD*100:.0f}% do custo direto e o vidro é '
-          f'{CD_VID/CD*100:.0f}%.')
-    print(f'    Juntos, {(CH_CUSTO+CD_VID)/CD*100:.0f}% — e os dois são ★ estimados.')
-    print(f'\n  ⭐ E A METALIC CHAMPAGNE SAI BARATA NESTE MÓVEL. Em MDF de')
-    print(f'    cor comum o rack daria R$ {br(PV_COR)} — a linha premium custa só')
-    print(f'    R$ {br(PV-PV_COR)} a mais, {PV/PV_COR-1:.0%} do preço. O móvel é pequeno e, com')
-    print('    o miolo em Branco TX, UMA chapa de Metalic resolve. É um bom')
-    print('    argumento: o acabamento que a arquiteta especificou quase não')
-    print('    pesa, e trocá-lo por chapa comum não compra quase nada.')
+    print(f'\n  ⭐ Agora o VIDRO é o maior insumo: {CD_VID/CD*100:.0f}% do custo direto,')
+    print(f'    contra {CH_CUSTO/CD*100:.0f}% de chapa. Com a Metalic a R$ {br(METALIC_15)}, a maior')
+    print('    incerteza do orçamento passou a ser a VIDRAÇARIA — é lá que')
+    print('    a cotação tem de bater agora.')
+    print(f'\n  ⭐ E A METALIC CHAMPAGNE NÃO COBRA PRÊMIO NENHUM. A R$ {br(METALIC_15)} ela')
+    print(f'    EMPATA com o MDF de cor comum da base: o mesmo rack em cor')
+    print(f'    comum daria os mesmos R$ {br(PV_COR)}. Trocar o padrão que a arquiteta')
+    print('    especificou não economiza um centavo — não há o que negociar aí.')
+    print(f'    Só o corpo todo em Branco TX desceria, para R$ {br(PV_BR)}, e aí é')
+    print(f'    outro móvel: {br(PV-PV_BR)} de diferença para perder o champagne inteiro.')
 
     print(f'\n{"═"*W}')
     print('★ EM ABERTO')
     print(f'{"═"*W}')
-    print(f'  · ⛔⛔ O PREÇO DA CHAPA METALIC. ★ R$ {br(METALIC_15)} é estimativa minha —')
-    print('    a linha não está na base da casa. É a maior incerteza do')
-    print('    orçamento e precisa de cotação antes de qualquer proposta.')
+    print(f'  · ⭐ O PREÇO DA CHAPA METALIC FECHOU: R$ {br(METALIC_15)} [Jonathan 14/10].')
+    print('    Eu havia estimado R$ 1.150 — quase o dobro. Saiu o maior ★ do')
+    print('    orçamento, e com ele R$ 550 de chapa. ⭐ Vale atualizar a base')
+    print('    da casa: a Metalic Champagne empata com o MDF de cor comum.')
     print('  · ⛔⛔ FURO DE 3 cm EM VIDRO TEMPERADO. A prancha oferece')
     print('    "puxador tipo furo de 3 cm OU alumínio slim colado". ⚠ Furo em')
     print('    temperado tem de ser feito ANTES da têmpera — depois não se')
@@ -219,7 +233,12 @@ if __name__ == '__main__':
     print(f'  · ⭐ RT DE 10% INCLUÍDO [Jonathan 14/10], para a arquiteta Junia')
     print(f'    Ordones. Sem ela o rack sairia a '
           f'R$ {br(round(CD/(_srt-MC_ALVO)/10)*10)} — o RT vale')
-    print(f'    R$ {br(PV - round(CD/(_srt-MC_ALVO)/10)*10)}. ★ A MC de 35% continua adotada por mim.')
+    print(f'    R$ {br(PV - round(CD/(_srt-MC_ALVO)/10)*10)}.')
+    print(f'  · ⚠ A MC DE {MC_ALVO:.0%} ESTÁ ABAIXO DO PISO DA CASA ({M.MC_PISO:.0%}) '
+          f'[Jonathan 14/10].')
+    _p35 = round(CD/(BASE-0.35)/10)*10
+    print(f'    A 35% o rack sairia a R$ {br(_p35)} — a queda de margem devolve')
+    print(f'    R$ {br(_p35-PV)} ao cliente e tira o mesmo da casa. Fica registrado.')
     print('  · "CONFERIR MEDIDAS E PONTO DE ENERGIA NO LOCAL": o ponto de')
     print('    energia é da elétrica, mas a fonte do LED fica embutida na')
     print('    nossa base — ela precisa de tomada alcançável e de manutenção.')
