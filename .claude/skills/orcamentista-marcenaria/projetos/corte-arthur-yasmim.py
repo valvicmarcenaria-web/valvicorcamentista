@@ -312,6 +312,83 @@ if __name__ == '__main__':
     print('      desenhou é a que mais dilui a nossa margem — e é bom saber')
     print('      disso ANTES de a cliente escolher, não depois.')
 
+    # ══ COMO NÃO SUPERFATURAR A PORTA ═════════════════════════════════
+    print(f'\n{"═"*W}')
+    print('⭐⭐ COMO NÃO SUPERFATURAR A PORTA  [Jonathan 14/10]')
+    print(f'{"═"*W}')
+    print(f'  Custo R$ {br(cd_fu)}, venda R$ {br(u_fu)} — '
+          f'{u_fu/cd_fu:.2f}× o custo. É muito, e o')
+    print('  motivo NÃO é a margem: é a CASCATA. A porta está pagando')
+    print('  desgaste de serra, manutenção de máquina, programação e')
+    print('  fabricação — e ela não encosta na serra. Chega montada.')
+    print('\n  O que a porta comprada REALMENTE usa:')
+    enc_cheio = M.encargos(0, RT_ON, False)
+    USA = {'nota fiscal': 'sim, é faturada',
+           'margem de erro': 'sim, quebra acontece',
+           'desgaste de serra': '⛔ NÃO — não passa na serra',
+           'manutenção de máquinas': '⛔ NÃO — não usa máquina',
+           'produção · coordenacao': 'sim, alguém compra e confere',
+           'produção · programacao': '⛔ NÃO — não há o que programar',
+           'produção · fabricacao': '⛔ NÃO — não fabricamos',
+           'produção · montagem': 'sim, nós penduramos'}
+    for k, v in USA.items():
+        if enc_cheio.get(k): print(f'    {k:<26}{enc_cheio[k]*100:>6.2f}%   {v}')
+    LIQ = 1 - M.NF
+    ENC_REV = M.NF + M.ERRO + LIQ*(M.PRODUCAO['coordenacao'] + M.PRODUCAO['montagem'])
+    BASE_REV = 1 - ENC_REV
+    print(f'\n  ⭐ base da casa {BASE*100:.2f}%  →  base de REVENDA '
+          f'{BASE_REV*100:.2f}%')
+
+    MARG_FIXA = 400.0    # ★ receber, guardar, pendurar, alinhar e garantir
+    def pA(cd): return round(cd/(BASE - MC_PORTA)/10)*10
+    def pB(cd): return round(cd/(BASE_REV - MC_PORTA)/10)*10
+    def pC(cd): return round((cd + MARG_FIXA)/BASE_REV/10)*10
+
+    POL = [('A · hoje — cascata cheia, MC 25%', pA),
+           ('B · cascata de revenda, MC 25%',   pB),
+           (f'C · cascata de revenda + R$ {br(MARG_FIXA)} por folha', pC)]
+    print(f'\n  {"":<42}{"fumê":>9}{"espelho":>9}{"× custo":>10}')
+    print('  ' + '─'*72)
+    for nome, f_ in POL:
+        print(f'  {nome:<42}{br(f_(cd_fu)):>9}{br(f_(cd_es)):>9}'
+              f'{f_(cd_fu)/cd_fu:>9.2f}×')
+
+    print(f'\n  {"":<42}{"V1":>9}{"V2":>9}{"V3":>9}')
+    print('  ' + '─'*72)
+    for nome, f_ in POL:
+        t = [nf*f_(cd_fu) + nd*u_fe + ne*f_(cd_es) for _n, nf, nd, ne in CEN]
+        print(f'  {nome:<42}' + ''.join(f'{br(x):>9}' for x in t))
+    print('  ' + '─'*72)
+    _mcA = 16*(pA(cd_fu)*BASE     - cd_fu) + 2*(pA(cd_es)*BASE     - cd_es)
+    _mcB = 16*(pB(cd_fu)*BASE_REV - cd_fu) + 2*(pB(cd_es)*BASE_REV - cd_es)
+    print(f'  {"↑ e a MC que a casa leva na V2:":<42}'
+          f'{"":>9}{br(_mcA):>9}'.replace(br(_mcA), '') + '')
+    print(f'    A · R$ {br(_mcA)}   ·   B · R$ {br(_mcB)}   ·   '
+          f'C · R$ {br(18*MARG_FIXA)}')
+
+    print('\n  ⭐⭐ A OPÇÃO C É A HONESTA, E NÃO SÓ POR SER MAIS BARATA:')
+    print('    margem em PERCENTUAL sobre item comprado premia comprar caro —')
+    print('    se o fornecedor subir o preço, a nossa margem em reais sobe')
+    print('    junto, pelo mesmo trabalho. Em REAIS POR FOLHA isso não')
+    print('    acontece: receber, guardar, pendurar, alinhar e garantir uma')
+    print('    porta custa o mesmo, valha ela R$ 900 ou R$ 1.300.')
+    print('\n  ⭐ E ela se apresenta bem ao cliente, em duas linhas. Na V2:')
+    _cdV2 = 16*cd_fu + 2*cd_es
+    _forn = round(_cdV2/BASE_REV/10)*10
+    _serv = round(18*MARG_FIXA/BASE_REV/10)*10
+    print(f'      fornecimento das portas ........... R$ {br(_forn)}')
+    print(f'      instalação, alinhamento e garantia  R$ {br(_serv)}')
+    print(f'      {"":<34}  ─────────')
+    print(f'      {"":<34}  R$ {br(_forn + _serv)}')
+    print('    A cliente pode ligar para o vidraceiro e conferir a primeira')
+    print('    linha — e vai bater. É o oposto de parecer superfaturado.')
+    print(f'\n  ⚠ Os R$ {br(MARG_FIXA)} por folha são ★ meus. Mexa neles e tudo anda:')
+    for mf in (300, 400, 500):
+        t = [nf*round((cd_fu+mf)/BASE_REV/10)*10 + nd*u_fe
+             + ne*round((cd_es+mf)/BASE_REV/10)*10 for _n, nf, nd, ne in CEN]
+        print(f'      R$ {br(mf)} por folha →  V1 {br(t[0])}  ·  V2 {br(t[1])}'
+              f'  ·  V3 {br(t[2])}')
+
     print(f'\n{"═"*W}')
     print('⛔⛔ O QUE FALTA — e por que ainda não há três preços')
     print(f'{"═"*W}')

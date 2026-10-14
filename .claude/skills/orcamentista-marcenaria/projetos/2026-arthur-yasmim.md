@@ -317,6 +317,75 @@ dilui a nossa margem** — e é bom saber antes de a cliente escolher.
 as **compradas**, a de Fendi volta a R$ 870 e a V3 sobe para R$ 18.120 —
 diga e eu troco uma linha.
 
+---
+
+## ⭐⭐ Como não superfaturar a porta  [Jonathan 14/10]
+
+> "dessa forma o orçamento está ficando superfaturado. Como seria um outro
+> cenário onde o custo do item não seja repassado ao cliente com tanto
+> aumento de margens?"
+
+Custo R$ 1.673, venda R$ 2.770 — **1,66× o custo**. É muito, e **o motivo
+não é a margem: é a cascata.** A porta está pagando desgaste de serra,
+manutenção de máquina, programação e fabricação. Ela não encosta na serra:
+chega montada.
+
+| encargo | | a porta usa? |
+|---|--:|---|
+| nota fiscal | 5,00% | sim, é faturada |
+| margem de erro | 2,00% | sim, quebra acontece |
+| desgaste de serra | 0,50% | ⛔ não passa na serra |
+| manutenção de máquinas | 0,50% | ⛔ não usa máquina |
+| produção · coordenação | 0,95% | sim, alguém compra e confere |
+| produção · programação | 0,95% | ⛔ não há o que programar |
+| produção · fabricação | 2,38% | ⛔ não fabricamos |
+| produção · montagem | 2,38% | sim, nós penduramos |
+
+⭐ **base da casa 85,35% → base de REVENDA 89,67%**
+
+### As três políticas
+
+| | fumê | espelho | × custo |
+|---|--:|--:|--:|
+| **A · hoje** — cascata cheia, MC 25% | 2.770 | 2.100 | 1,66× |
+| **B · cascata de revenda**, MC 25% | 2.590 | 1.960 | 1,55× |
+| **C · cascata de revenda + R$ 400/folha** | **2.310** | **1.860** | **1,38×** |
+
+| | V1 | V2 | V3 |
+|---|--:|--:|--:|
+| **A · hoje** | 25.750 | 48.520 | 15.400 |
+| **B · cascata de revenda** | 24.570 | 45.360 | 15.120 |
+| **C · R$ 400 por folha** | **22.970** | **40.680** | **14.920** |
+| MC da casa na V2 | 12.117 | 11.382 | 7.200 |
+
+### ⭐⭐ A C é a honesta, e não só por ser mais barata
+
+**Margem em percentual sobre item comprado premia comprar caro** — se o
+fornecedor sobe o preço, a nossa margem em reais sobe junto, pelo mesmo
+trabalho. Em **reais por folha** isso não acontece: receber, guardar,
+pendurar, alinhar e garantir uma porta custa o mesmo, valha ela R$ 900 ou
+R$ 1.300.
+
+E ela se apresenta em duas linhas. Na V2:
+
+```
+fornecimento das portas ...........  R$ 32.670
+instalação, alinhamento e garantia   R$  8.030
+                                     ─────────
+                                     R$ 40.700
+```
+
+A cliente pode ligar para o vidraceiro e conferir a primeira linha — **e
+vai bater**. É o oposto de parecer superfaturado.
+
+⚠ Os R$ 400 por folha são ★ meus:
+
+| por folha | V1 | V2 | V3 |
+|---|--:|--:|--:|
+| R$ 300 | 22.180 | 38.680 | 14.680 |
+| **R$ 400** | **22.970** | **40.680** | **14.920** |
+| R$ 500 | 23.740 | 42.660 | 15.140 |
+
 ## ★ O que já dá para antecipar
 
 1. **Não é troca de cor, é troca de construção.** Reflecta bronze é
