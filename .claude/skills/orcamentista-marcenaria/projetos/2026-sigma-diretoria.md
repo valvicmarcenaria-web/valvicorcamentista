@@ -65,6 +65,29 @@ isso é decisão de agenda, não de orçamento.
 
 ---
 
+## A proposta
+
+`proposta-sigma.pdf` — três páginas, **CSS próprio**, não o da casa.
+[Jonathan 14/10] *"capricha no layout, é cliente recorrente, não crie muita
+narrativa, organize bem os valores e seja ousado no design."*
+
+⭐ **A paleta sai do próprio projeto**: Grafito, Jequitibá e Lino, as três
+chapas que a Braz especificou. A proposta tem a cara do móvel que ela vende.
+
+* **capa** — faixa Grafito à esquerda com o investimento em corpo grande,
+  e o **móvel do café sangrando** na direita em toda a altura. É o item que
+  vale 55% do orçamento; é ele que abre.
+* **página 2** — uma linha por móvel: código da prancha em corpo grande na
+  cor Jequitibá, nome, uma frase, valor à direita. Fecha numa faixa Grafito
+  com marcenaria, iluminação e o total.
+* **página 3** — pagamento, prazo/garantia/execução/validade, o que não está
+  incluso e o que se confirma antes da produção.
+
+⛔ Sem metragem e sem contagem. Os códigos 01…06 são da prancha, não
+quantidade — rodado com `--excecoes '10 anos|10×|8×|6×'`.
+
+---
+
 ## ★ Em aberto
 
 1. ⛔⛔ **A tela de bambu** é o maior ★. Entrou a R$ 480/m² aplicada
