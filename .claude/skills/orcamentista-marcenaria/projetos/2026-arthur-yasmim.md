@@ -181,32 +181,50 @@ nove perguntas para o fornecedor.
 
 Folha de 0,53 × 2,50 — 1,31 m² de vão e **6,05 m de perímetro**.
 
-| | bronze | Fendi |
+| | fumê ⚠ | Fendi |
 |---|--:|--:|
-| porta pronta ★ · chapa de 18 | **1.500** | 225 |
+| porta pronta ⭐ · chapa de 18 | **1.300** | 225 |
 | fita de borda | — | 33 |
-| duas dobradiças | no fornecedor | 70 |
-| fixação e regulagem ★ · consumíveis | 60 | 22 |
-| **custo direto por porta** | **1.591** | **351** |
-| **preço por porta** · MC 37%, sem RT | **3.291** | **725** |
+| 4 dobradiças ★ | 280 | 140 |
+| fixação e regulagem ★ · consumíveis | 60 | 24 |
+| **custo direto por porta** | **1.673** | **422** |
+| **preço por porta** · MC 37%, sem RT | **3.460** | **873** |
 
-⛔ **O número que falta é um só**: quanto o fornecedor cobra pela folha
-pronta. Tudo o mais já está fechado.
+⭐ **[Jonathan 14/10] A cotação chegou:** porta fumê **R$ 1.300** e porta de
+espelho **R$ 900** a folha, valores unitários, **sem dobradiça**. A
+dobradiça virou compra nossa — ★ R$ 70, **quatro por folha** a 2,50 de
+altura (⚠ alguns fabricantes pedem cinco), e tem de ser a que o **perfil**
+aceita: ela fixa no alumínio, não se encaixota no vidro.
 
-| compra a folha → | 900 | 1.200 | **1.500** ★ | 1.800 | 2.100 |
-|---|--:|--:|--:|--:|--:|
-| preço por porta | 2.025 | 2.658 | **3.291** | 3.924 | 4.557 |
-| V1 · 5 bronze, acima da V3 | 6.500 | 9.664 | **12.829** | 15.993 | 19.158 |
-| V2 · 16 bronze, acima da V3 | 20.800 | 30.926 | **41.052** | 51.179 | 61.305 |
+⚠⚠ **A cotação voltou como "fumê" e o projeto pede "reflecta bronze".** Não
+é a mesma coisa: fumê é vidro **tingido na massa**, translúcido; reflecta é
+vidro com **camada refletiva**, que espelha e custa mais. O render da
+arquiteta mostra as portas **refletindo o ambiente** — é reflecta. ⛔ Ou o
+fornecedor trocou o produto, ou a palavra foi nossa. **Confirmar antes de
+fechar**: se for reflecta, o preço da folha sobe e todo o quadro anda.
 
-⛔ Entre as pontas da tabela a V2 varia **R$ 40.505**. É a cotação que
-decide o orçamento, não nós.
+⚠ **A porta de Fendi tem 2,50 de altura em 18 mm.** Folha alta e estreita
+em melamínico empena com o tempo. A de vidro não tem esse problema — o
+perfil de alumínio é o que a mantém reta. Na versão toda em Fendi isso
+precisa ser dito à cliente.
+
+### Os três cenários, com a cotação real
+
+| | folhas de vidro | a mais que a V3 |
+|---|--:|--:|
+| V3 · todas em Fendi | 0 | — |
+| V1 · 5 fumê + 11 Fendi | 5 | **12.934** |
+| V2 · todas em fumê, como o projeto | 16 | **41.390** |
 
 ### O espelho da sapateira · igual nas três
 
 ⭐ [Jonathan 13/10] **o vão de 1,12 leva DUAS folhas**, de 0,56 cada.
-Custo R$ 3.668, **preço R$ 7.587** (espelho R$ 1.680 · perfil R$ 1.346 ★ ·
-seis dobradiças R$ 570 ★).
+Custo R$ 2.530, **preço R$ 5.232** — duas folhas prontas R$ 1.800
+(R$ 900 cada ⭐) · oito dobradiças R$ 560 ★ · fixação R$ 120 ★.
+
+⭐ **O espelho é mais barato que o fumê** — R$ 900 contra R$ 1.300 a folha.
+Contraintuitivo e útil: a porta que a cliente quer na sapateira é a mais
+barata das três, não a mais cara.
 
 ⭐ **Dividir resolve o peso.** Em folha única eram 2,80 m² — mais de 25 kg
 só de vidro, de giro, em balanço numa folha de 2,50 de altura: descairia.

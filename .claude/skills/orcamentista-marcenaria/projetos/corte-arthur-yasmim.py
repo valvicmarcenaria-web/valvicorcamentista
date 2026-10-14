@@ -62,10 +62,16 @@ ESP_FL = ESP_L/ESP_N_FOLHAS
 # ⭐⭐ [Jonathan 13/10] "nós adquirimos a porta PRONTA". A porta de vidro
 #   não se monta aqui: entra como item comprado, folha a folha, com perfil,
 #   vidro, dobradiça e puxador do fornecedor.
-#   ⛔ Estes dois são ★ PLACEHOLDERS até a cotação voltar. A relação para
-#     cotar está em `relacao-portas-arthur-yasmim.md`.
-PORTA_RB_UN  = 1500.0   # ★ porta pronta reflecta bronze, 52,5 × 250, a folha
-PORTA_ESP_UN = 1600.0   # ★ porta pronta de espelho, 56 × 250, a folha
+#   ⭐⭐ [Jonathan 14/10] COTAÇÃO FECHADA, valores unitários, SEM DOBRADIÇA:
+#     porta fumê R$ 1.300 · porta de espelho R$ 900.
+PORTA_RB_UN  = 1300.0   # ⭐ porta pronta fumê, 52,5 × 250, a folha
+PORTA_ESP_UN =  900.0   # ⭐ porta pronta de espelho, 56 × 250, a folha
+# ⛔ A dobradiça NÃO vem com a porta — é compra nossa. Para folha de 2,50 de
+#   altura e ~17 kg são QUATRO por folha. ★ E tem de ser a dobradiça que o
+#   PERFIL aceita: ela não se encaixota no vidro, fixa no alumínio. Conferir
+#   o modelo com o próprio fornecedor da porta.
+DOBR_PERFIL  = 70.0     # ★ dobradiça para perfil de alumínio
+N_DOBR       = 4        # por folha, de 2,50 de altura
 INSTALA_UN   = 60.0     # ★ fixação e regulagem na nossa caixa, por folha
 MDF_18    = 600.0    # MDF cor 18 mm — base da casa
 FITA_M    = 3.0 + 2.5
@@ -78,6 +84,7 @@ area_f   = FOLHA_L*FOLHA_A
 perim_f  = 2*(FOLHA_L + FOLHA_A)
 RB = dict(
     porta   = N_VIDRO*PORTA_RB_UN,
+    dobr    = N_VIDRO*N_DOBR*DOBR_PERFIL,
     instala = N_VIDRO*INSTALA_UN)
 RB['cd'] = sum(RB.values())*(1 + M.EMBALAGEM)
 
@@ -87,7 +94,7 @@ chapas  = -(-area_t/(CH_M2*APROV)//1)
 FE = dict(
     chapa = chapas*MDF_18,
     fita  = N_VIDRO*perim_f*FITA_M,
-    dobr  = N_VIDRO*2*DOBR_MDF)
+    dobr  = N_VIDRO*N_DOBR*DOBR_MDF)   # ⛔ mesma altura, mesmas quatro
 FE['cd'] = (FE['chapa'] + FE['fita'])*1.06 + FE['dobr']
 FE['cd'] *= (1 + M.EMBALAGEM)
 
@@ -100,6 +107,7 @@ DELTA_FOLHA = DELTA_PV/N_VIDRO
 #   Numa folha de 2,50 de altura, de giro, a dobradiça trabalha em balanço.
 ESP = dict(
     porta   = ESP_N_FOLHAS*PORTA_ESP_UN,
+    dobr    = ESP_N_FOLHAS*N_DOBR*DOBR_PERFIL,
     instala = ESP_N_FOLHAS*INSTALA_UN)
 ESP['cd'] = sum(ESP.values())*(1 + M.EMBALAGEM)
 ESP['pv'] = preco(ESP['cd'])
@@ -122,17 +130,26 @@ if __name__ == '__main__':
     print(f'\n{"═"*W}')
     print(f'AS 16 FOLHAS — folha de {vg(FOLHA_L)} × {vg(FOLHA_A)} m, módulo de duas')
     print(f'{"═"*W}')
-    print(f'{"":<34}{"REFLECTA BRONZE":>18}{"MDF FENDI":>16}')
+    print(f'{"":<34}{"FUMÊ ⚠":>18}{"MDF FENDI":>16}')
     print('─'*W)
     print(f'{"porta pronta / chapa de 18":<34}{br(RB["porta"]):>18}{br(FE["chapa"]):>16}')
     print(f'{"fita de borda":<34}{"—":>18}{br(FE["fita"]):>16}')
-    print(f'{"dobradiça":<34}{"no fornecedor":>18}{br(FE["dobr"]):>16}')
+    print(f'{"dobradiça · " + str(N_DOBR) + " por folha":<34}{br(RB["dobr"]):>18}{br(FE["dobr"]):>16}')
     print(f'{"fixação e regulagem":<34}{br(RB["instala"]):>18}{"—":>16}')
     print('─'*W)
     print(f'{"CUSTO DIRETO":<34}{br(RB["cd"]):>18}{br(FE["cd"]):>16}')
     print(f'{"preço":<34}{br(preco(RB["cd"])):>18}{br(preco(FE["cd"])):>16}')
-    print(f'\n  ⭐ A porta de vidro é ITEM COMPRADO [Jonathan 13/10] — entra')
-    print(f'    pronta, a R$ {br(PORTA_RB_UN)} ★ a folha. A de Fendi nós fabricamos.')
+    print(f'\n  ⭐ A porta de vidro é ITEM COMPRADO — entra pronta, a '
+          f'R$ {br(PORTA_RB_UN)} a folha,')
+    print(f'    SEM dobradiça [Jonathan 14/10]. A de Fendi nós fabricamos.')
+    print(f'\n  ⚠⚠ A COTAÇÃO VOLTOU COMO "FUMÊ" E O PROJETO PEDE "REFLECTA')
+    print('    BRONZE". Não é a mesma coisa: fumê é vidro TINGIDO na massa,')
+    print('    cinza-marrom e translúcido; reflecta é vidro com CAMADA')
+    print('    REFLETIVA, que espelha e custa mais. O render da arquiteta')
+    print('    mostra as portas refletindo o ambiente — é reflecta.')
+    print('    ⛔ Se o fornecedor cotou fumê, ou ele trocou o produto ou a')
+    print('      palavra foi nossa. Confirmar ANTES de fechar: se for mesmo')
+    print('      reflecta, o preço da folha sobe e todo este quadro anda.')
 
     print(f'\n{"═"*W}')
     print('⭐ O CUSTO DE CADA PORTA, UMA A UMA')
@@ -141,11 +158,11 @@ if __name__ == '__main__':
           f'e {vg(perim_f)} m de perímetro')
     print(f'\n{"":<40}{"bronze":>12}{"Fendi":>12}')
     print('─'*W)
-    print(f'{"porta pronta ★ · chapa de 18":<40}'
+    print(f'{"porta pronta ⭐ · chapa de 18":<40}'
           f'{br(RB["porta"]/N_VIDRO):>12}{br(FE["chapa"]/N_VIDRO):>12}')
     print(f'{"fita de borda":<40}{"—":>12}{br(FE["fita"]/N_VIDRO):>12}')
-    print(f'{"duas dobradiças":<40}'
-          f'{"no fornecedor":>12}{br(FE["dobr"]/N_VIDRO):>12}')
+    print(f'{str(N_DOBR) + " dobradiças ★":<40}'
+          f'{br(RB["dobr"]/N_VIDRO):>12}{br(FE["dobr"]/N_VIDRO):>12}')
     print(f'{"fixação e regulagem ★ · consumíveis":<40}'
           f'{br(RB["instala"]/N_VIDRO):>12}'
           f'{br(FE["cd"]/N_VIDRO - (FE["chapa"]+FE["fita"]+FE["dobr"])/N_VIDRO):>12}')
@@ -155,26 +172,21 @@ if __name__ == '__main__':
     print(f'{"PREÇO POR PORTA  ·  MC 37%, sem RT":<40}'
           f'{br(preco(RB["cd"])/N_VIDRO):>12}{br(preco(FE["cd"])/N_VIDRO):>12}')
 
-    print(f'\n  ⛔ O NÚMERO QUE FALTA É UM SÓ: quanto o fornecedor cobra pela')
-    print('    folha pronta. Tudo o mais já está fechado. Quando a cotação')
-    print('    voltar, é trocar uma linha do motor.')
-    print(f'\n  {"compra a folha →":<20}'
-          + ''.join(f'{br(v):>9}' for v in (900, 1200, 1500, 1800, 2100)))
-    print('  ' + '─'*65)
-    _l1 = '  preço por porta'.ljust(20)
-    _l2 = '  V1 · 5 bronze'.ljust(20)
-    _l3 = '  V2 · 16 bronze'.ljust(20)
-    for c in (900, 1200, 1500, 1800, 2100):
-        cd1 = (c + INSTALA_UN)*(1 + M.EMBALAGEM)
-        d   = preco(cd1) - preco(FE['cd'])/N_VIDRO
-        _l1 += f'{br(preco(cd1)):>9}'
-        _l2 += f'{br(5*d):>9}'
-        _l3 += f'{br(16*d):>9}'
-    for ln in (_l1, '  ' + '─'*65, _l2, _l3): print(ln)
-    print('\n    As duas últimas linhas são o quanto cada versão fica ACIMA da')
-    print('    V3, que é toda em Fendi. ⛔ Entre as pontas da tabela a V2')
-    print(f'    varia R$ {br(16*(preco((2100+INSTALA_UN)*1.02) - preco((900+INSTALA_UN)*1.02)))} — '
-          f'é a cotação que decide o orçamento, não nós.')
+    print(f'\n  ⭐ A COTAÇÃO CHEGOU e o preço da porta está cravado. O que')
+    print(f'    sobra de ★ na folha de vidro é só a dobradiça: '
+          f'R$ {br(N_DOBR*DOBR_PERFIL)} dos')
+    print(f'    R$ {br(RB["cd"]/N_VIDRO)} de custo — {N_DOBR*DOBR_PERFIL/(RB["cd"]/N_VIDRO)*100:.0f}%. '
+          f'Erra 30% nela e o preço da porta')
+    print(f'    anda R$ {br(preco(0.30*N_DOBR*DOBR_PERFIL*1.02))}. Não muda orçamento; muda conferência.')
+    print(f'\n  ⚠ A dobradiça TEM DE SER A QUE O PERFIL ACEITA — ela fixa no')
+    print('    alumínio, não se encaixota no vidro. Vale perguntar ao mesmo')
+    print('    fornecedor qual modelo o perfil dele recebe, já que ele não')
+    print('    fornece. E confirmar se quatro por folha bastam a 2,50 de')
+    print('    altura: a tabela de alguns fabricantes pede cinco.')
+    print(f'\n  ⚠ A PORTA DE FENDI TEM 2,50 DE ALTURA E 18 mm. Folha alta e')
+    print('    estreita em melamínico empena com o tempo. ⭐ A de vidro não')
+    print('    tem esse problema — o perfil de alumínio é o que a mantém reta.')
+    print('    Na versão toda em Fendi isso precisa ser dito à cliente.')
 
     print(f'\n{"═"*W}')
     print('⭐ O Δ QUE RESPONDE A PERGUNTA DA CLIENTE')
@@ -197,17 +209,22 @@ if __name__ == '__main__':
     print(f'  Vão de {vg(ESP_L)} × {vg(ESP_A)} m, cotado na prancha, em '
           f'DUAS folhas de {vg(ESP_FL)}  [Jonathan 13/10]')
     print(f'  Custo R$ {br(ESP["cd"])}, preço R$ {br(ESP["pv"])}.')
-    print(f'    duas folhas prontas .. R$ {br(ESP["porta"])}   ★ R$ {br(PORTA_ESP_UN)} a folha, a cotar')
+    print(f'    duas folhas prontas .. R$ {br(ESP["porta"])}   ⭐ R$ {br(PORTA_ESP_UN)} a folha')
+    print(f'    dobradiça ............ R$ {br(ESP["dobr"])}   ★ {N_DOBR} por folha')
     print(f'    fixação e regulagem .. R$ {br(ESP["instala"])}   ★')
+    print(f'\n  ⭐ O ESPELHO É MAIS BARATO QUE O FUMÊ — R$ {br(PORTA_ESP_UN)} contra '
+          f'R$ {br(PORTA_RB_UN)}')
+    print('    a folha. Contraintuitivo e útil: a porta que a cliente quer na')
+    print('    sapateira é a mais barata das três, não a mais cara.')
     print(f'\n  ⭐ DIVIDIR RESOLVE O PESO. Em folha única eram {vg(ESP_L*ESP_A)} m² — mais de')
     print('    25 kg só de vidro, de giro, em balanço numa folha de 2,50 de')
     print(f'    altura: descairia. Em duas de {vg(ESP_FL)}, cada folha fica com '
           f'{vg(ESP_FL*ESP_A)} m²')
     print('    e a dobradiça trabalha dentro do que aguenta. De giro passa a')
     print('    ser viável — não precisa ser de correr.')
-    print('\n  ⚠ Pedir ao fornecedor o preço das DUAS folhas e, por')
-    print('    curiosidade, o da folha única de 1,12 — para sabermos quanto')
-    print('    custa a decisão, e não só que ela é a certa.')
+    print('\n  ⚠ Ainda vale pedir, por comparação, o preço da folha única')
+    print('    de 1,12 — para sabermos quanto custou a decisão de dividir, e')
+    print('    não só que ela é a certa.')
     print('  ⚠⚠ MAS A CLIENTE PEDIU "UMA PORTA INTEIRIÇA DE ESPELHO". Em duas')
     print('    folhas aparece uma JUNTA VERTICAL no meio do espelho, bem na')
     print('    altura do rosto. Ela precisa saber disso antes, não depois —')
@@ -231,10 +248,13 @@ if __name__ == '__main__':
     print(f'\n{"═"*W}')
     print('⛔⛔ O QUE FALTA — e por que ainda não há três preços')
     print(f'{"═"*W}')
-    print(f'  1 · A COTAÇÃO DA PORTA PRONTA. É {RB["porta"]/RB["cd"]*100:.0f}% do custo da versão')
-    print('      bronze e está ★ em placeholder. ⭐ A RELAÇÃO PARA COTAR JÁ')
-    print('      ESTÁ PRONTA em `relacao-portas-arthur-yasmim.md`: folhas,')
-    print('      medidas, especificação e as nove perguntas para o fornecedor.')
+    print(f'  1 · ✅ A COTAÇÃO DA PORTA CHEGOU [Jonathan 14/10]: fumê '
+          f'R$ {br(PORTA_RB_UN)} e')
+    print(f'      espelho R$ {br(PORTA_ESP_UN)} a folha, sem dobradiça. '
+          f'É {RB["porta"]/RB["cd"]*100:.0f}% do custo da')
+    print('      folha de vidro e deixou de ser palpite.')
+    print('      ⚠ Faltou a resposta das outras perguntas da relação — a')
+    print('        altura máxima de folha da linha é a que mais importa.')
     print('  2 · A MODULAÇÃO. O caderno numera dez módulos mas não traz a')
     print('      página de cada um. Sem as larguras e profundidades não há')
     print('      preço do closet — só o Δ entre as versões, que é este.')
