@@ -17,7 +17,7 @@ DADOS = dict(
     emissao        = '14/10/2026',
     fixo_mensal    = 3600.00,
     dias_periodo   = 14,                 # dias corridos de 01 até o último dia
-    dias_nao_prest = 2,
+    dias_nao_prest = 3,
     comissao       = 650.00,
     pecas          = [                   # material comprado pela empresa para serviço próprio
         ('2 chapas Branco TX 15 mm',        440.00),
