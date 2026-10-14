@@ -9,9 +9,9 @@ AQUI, nunca no HTML final — a próxima geração apaga qualquer mudança feita
 
 # ---------------------------------------------------------------- dados do caso
 DADOS = dict(
-    prestador      = '',                 # em branco: preencher à mão ou aqui
-    cnpj           = '',
-    funcao         = '',
+    prestador      = 'Jackson Martins Duarte Neto',
+    cnpj           = '',                 # em branco: preencher à mão ou aqui
+    funcao         = 'Marceneiro Pleno · PJ',
     ultimo_dia     = '14/10/2026',
     periodo        = '01 a 14/10/2026',
     emissao        = '14/10/2026',
@@ -58,7 +58,7 @@ body{ margin:0; background:#8a8f96; font-family:'Inter',system-ui,sans-serif; co
 .doc h1{ margin:0; font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:600; color:var(--navy) }
 .doc .m{ font-size:8px; color:var(--muted); letter-spacing:.4px; margin-top:2px }
 
-.ident{ display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-bottom:9px }
+.ident{ display:grid; grid-template-columns:repeat(5,1fr); gap:6px; margin-bottom:9px }
 .ident .c{ border:1px solid var(--linha); border-top:2px solid var(--gold);
   border-radius:2px; padding:6px 8px }
 .ident .r{ font-size:7px; letter-spacing:1.3px; text-transform:uppercase; color:var(--muted) }
@@ -89,6 +89,8 @@ tr.liq td.num{ color:var(--goldsoft); font-size:12px }
 .card{ border:1px solid var(--linha); border-left:3px solid var(--gold); border-radius:2px;
   padding:7px 10px; margin-top:7px }
 .card.r{ border-left-color:var(--red) } .card.b{ border-left-color:var(--blue) }
+.duo{ display:grid; grid-template-columns:1fr 1fr; gap:7px }
+.duo .card{ margin-top:7px }
 .card h3{ margin:0 0 3px; font-size:9px; color:var(--navy); font-weight:700 }
 .card p{ margin:0; font-size:8.5px; line-height:1.45; color:#45525f }
 .card p + p{ margin-top:3px }
@@ -129,10 +131,10 @@ __FONTES__
   </div>
 
   <div class="ident">
-    <div class="c"><div class="r">Prestador</div>__PRESTADOR__</div>
+    <div class="c" style="grid-column:span 2"><div class="r">Prestador</div>__PRESTADOR__</div>
     <div class="c"><div class="r">CNPJ</div>__CNPJ__</div>
+    <div class="c"><div class="r">Função · contrato</div><div class="v" style="font-size:9px">__FUNCAO__</div></div>
     <div class="c"><div class="r">Último dia prestado</div><div class="v">__ULTIMO__</div></div>
-    <div class="c"><div class="r">Contrato</div><div class="v">Prestação de serviços</div></div>
   </div>
 
   <div class="faixa">1 · Apuração do serviço — período __PERIODO__</div>
@@ -168,37 +170,40 @@ __FONTES__
   </div>
 
   <div class="card r">
-    <h3>Três pontos que ainda podem mudar este número — confirmar antes de pagar</h3>
+    <h3>O que confirmar antes de pagar — pode mudar este número</h3>
     <p><b>1 · Aviso prévio contratual.</b> Contrato de prestação de serviços costuma prever
     aviso de 30 dias. Se o contrato tiver essa cláusula e a dispensa for imediata, há indenização
     a somar — pelo fixo atual, R$ __FIXO__. <b>Ler o contrato assinado antes de fechar o valor.</b></p>
     <p><b>2 · Nota fiscal.</b> Pagamento de PJ só sai contra NF emitida no valor do acerto.
     Pedir a nota antes de agendar o pagamento, e conferir a descrição do serviço.</p>
-    <p><b>3 · Aceite do desconto do MDF.</b> Compensar os R$ __MDF__ exige concordância por
+    <p><b>3 · Fechamento da comissão.</b> A remuneração variável dele é <b>2,5% de fabricação + 2,5%
+    de montagem</b>, por obra. Conferir se os R$ __COMISSAO__ cobrem tudo que venceu até __ULTIMO__ —
+    inclusive montagem concluída e ainda não lançada.</p>
+    <p><b>4 · Aceite do desconto do MDF.</b> Compensar os R$ __MDF__ exige concordância por
     escrito do prestador — é o que a assinatura desta folha registra. Sem o aceite, paga-se
     R$ __BRUTO__ e a dívida é cobrada em separado.</p>
   </div>
 
-  <div class="card b">
-    <h3>Contrato PJ não gera verbas rescisórias</h3>
-    <p>Não há aviso prévio legal, 13º, férias + 1/3, FGTS nem multa de 40% — isso é de contrato CLT.
-    O acerto de um prestador é apenas <b>serviço prestado + variáveis em aberto − compensações</b>,
-    exatamente o que está apurado acima.</p>
-  </div>
-
-  <div class="card">
-    <h3>Um ajuste de vocabulário que vale fazer no lançamento</h3>
-    <p>Em contrato PJ não existe "falta": existe <b>dia não prestado</b>. Controlar falta é
-    registro de subordinação e é justamente o que pesa num pedido de vínculo — o mesmo risco
-    já apontado no alinhamento do César. O valor não muda; muda o que fica escrito.</p>
+  <div class="duo">
+    <div class="card b">
+      <h3>PJ não gera verba rescisória</h3>
+      <p>Sem aviso prévio legal, 13º, férias + 1/3, FGTS ou multa de 40% — isso é de contrato CLT.
+      O acerto de prestador é <b>serviço + variáveis em aberto − compensações</b>, como apurado acima.</p>
+    </div>
+    <div class="card">
+      <h3>Vocabulário do lançamento</h3>
+      <p>Em contrato PJ não existe "falta": existe <b>dia não prestado</b>. Controlar falta é registro
+      de subordinação — o mesmo risco já apontado no alinhamento do César. O valor não muda.</p>
+    </div>
   </div>
 
   <div class="faixa">3 · Devolução antes do pagamento</div>
   <div class="dev">
-    <div><span class="cx"></span> Ferramentas sob termo de guarda</div>
+    <div><span class="cx"></span> Veículo da frota — chave, documento e km registrado</div>
     <div><span class="cx"></span> Chaves da fábrica e do depósito</div>
-    <div><span class="cx"></span> Material e sobras em poder do prestador</div>
-    <div><span class="cx"></span> Acessos — Calcme, grupos e Drive</div>
+    <div><span class="cx"></span> Ferramentas em comodato — conferir no Controle de Patrimônio</div>
+    <div><span class="cx"></span> Material e sobras de obra em poder do prestador</div>
+    <div><span class="cx"></span> Acessos — Calcme, grupos de WhatsApp e Drive</div>
   </div>
 
   <div class="assina">
@@ -216,7 +221,7 @@ __FONTES__
 for k, v in [
     ('__CSS__', CSS), ('__EMISSAO__', D['emissao']), ('__ULTIMO__', D['ultimo_dia']),
     ('__PERIODO__', D['periodo']), ('__PRESTADOR__', cel(D['prestador'])),
-    ('__CNPJ__', cel(D['cnpj'])), ('__FIXO__', brl(D['fixo_mensal'])),
+    ('__CNPJ__', cel(D['cnpj'])), ('__FUNCAO__', D['funcao']), ('__FIXO__', brl(D['fixo_mensal'])),
     ('__DIARIA__', brl(D['diaria'])), ('__DIAS__', str(D['dias_periodo'])),
     ('__NAO__', str(D['dias_nao_prest'])), ('__REMUN__', str(D['dias_remun'])),
     ('__SERVICO__', brl(D['servico'])), ('__COMISSAO__', brl(D['comissao'])),
