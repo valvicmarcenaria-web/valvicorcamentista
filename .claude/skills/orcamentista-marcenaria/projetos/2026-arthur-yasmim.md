@@ -259,6 +259,64 @@ um de alumínio** — sem isso as três versões são três palpites.
 ⭐ **A quantidade para cotar já está pronta:** 21,0 m² de reflecta bronze,
 2,80 m² de espelho e 104,0 m de perfil.
 
+---
+
+## ⭐⭐ Os cenários · valor de venda das portas  [Jonathan 14/10]
+
+> "considere uma MC de 25% para as portas, senão o preço vai ficar inviável
+> para o cliente"
+
+Faz sentido além do preço: **a porta pronta é revenda.** Chega montada do
+fornecedor e nós só penduramos. Margem segue trabalho agregado, e aqui ele
+é pouco. O resto do closet segue a 37%.
+
+| unitário | custo | **venda** |
+|---|--:|--:|
+| porta fumê | 1.673 | **2.770** |
+| porta de espelho · sapateira | 1.265 | **2.100** |
+| porta em MDF Fendi | 422 | **700** |
+
+| cenário | fumê | Fendi | espelho | **VENDA** | custo | MC R$ |
+|---|--:|--:|--:|--:|--:|--:|
+| **1 · mista** | 5 | 11 | 2 | **25.750** | 15.536 | 6.442 |
+| **2 · como o projeto** | 16 | — | 2 | **48.520** | 29.294 | 12.117 |
+| **3 · toda em Fendi** | — | 16 | 2 | **15.400** | 9.282 | 3.862 |
+
+A V2 custa **R$ 33.120** a mais que a V3. A V1, **R$ 10.350**.
+
+⚠ São os valores **das portas**, não do closet — o resto depende da
+modulação, que ainda falta.
+
+### O que a MC de 25% fez com o preço
+
+| | a 37% seria | a 25% é | diferença |
+|---|--:|--:|--:|
+| 1 · mista | 32.110 | **25.750** | −6.360 |
+| 2 · como o projeto | 60.600 | **48.520** | −12.080 |
+| 3 · toda em Fendi | 19.160 | **15.400** | −3.760 |
+
+Na V2 a casa abre **R$ 10.310 de margem** — de R$ 22.428 para R$ 12.117.
+Não é desconto, é decisão de preço: a porta chega montada e a margem de
+revenda não é a de fabricação.
+
+### ⛔⛔ Mas isso puxa a MC do projeto para baixo do piso
+
+Com porta a 25% e o resto a 37%, para a MC cheia voltar aos **35%** da casa
+o **resto do closet precisa valer 5× as portas**:
+
+| | portas | resto precisa valer |
+|---|--:|--:|
+| 1 · mista | 25.750 | ≥ 128.750 |
+| 2 · como o projeto | 48.520 | **≥ 242.600** |
+| 3 · toda em Fendi | 15.400 | ≥ 77.000 |
+
+⛔ Na V2 isso é improvável. **A versão que o projeto desenhou é a que mais
+dilui a nossa margem** — e é bom saber antes de a cliente escolher.
+
+⚠ Apliquei os 25% a **todas** as portas, como pedido. Se a intenção era só
+as **compradas**, a de Fendi volta a R$ 870 e a V3 sobe para R$ 18.120 —
+diga e eu troco uma linha.
+
 ## ★ O que já dá para antecipar
 
 1. **Não é troca de cor, é troca de construção.** Reflecta bronze é

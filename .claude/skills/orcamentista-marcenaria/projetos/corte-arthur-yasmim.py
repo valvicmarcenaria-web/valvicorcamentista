@@ -43,7 +43,12 @@ br  = lambda v: f'{v:,.0f}'.replace(',', '.')
 br1 = lambda v: f'{v:,.1f}'.replace(',','X').replace('.',',').replace('X','.')
 vg  = lambda v, n=2: f'{v:.{n}f}'.replace('.', ',')
 
-MC_ALVO = 0.37                      # ⭐ [Jonathan 13/10]
+MC_ALVO = 0.37                      # ⭐ [Jonathan 13/10] — o que fabricamos
+# ⭐⭐ [Jonathan 14/10] "considere uma MC de 25% para as portas, senão o
+#   preço vai ficar inviável para o cliente". Faz sentido além do preço: a
+#   porta pronta é REVENDA — chega montada, nós só penduramos. Margem segue
+#   trabalho agregado, e aqui ele é pouco.
+MC_PORTA = 0.25
 RT_ON   = False                     # ⭐ [Jonathan 13/10] sem RT
 BASE    = M.base(parcelas=0, rt=RT_ON, vendedor=False)
 CH_M2, APROV = 2.75*1.85, 0.80
@@ -77,7 +82,10 @@ MDF_18    = 600.0    # MDF cor 18 mm — base da casa
 FITA_M    = 3.0 + 2.5
 DOBR_MDF   = 35.0    # dobradiça com amortecedor — base da casa
 
-def preco(cd):  return cd/(BASE - MC_ALVO)
+def preco(cd, mc=None):
+    return cd/(BASE - (MC_ALVO if mc is None else mc))
+def pv10(cd, mc=None):               # preço arredondado à dezena, como a casa
+    return round(preco(cd, mc)/10)*10
 
 # ── 16 folhas em REFLECTA BRONZE ─────────────────────────────────────────
 area_f   = FOLHA_L*FOLHA_A
@@ -244,6 +252,65 @@ if __name__ == '__main__':
     print('    trilho pela lateral da gaveta, o dia inteiro, através da porta.')
     print('    Com a oculta não se vê nada e a gaveta parece flutuar. Num')
     print('    closet envidraçado esse é o argumento — não o amortecimento.')
+
+    print(f'\n{"═"*W}')
+    print('⭐⭐ OS CENÁRIOS — VALOR DE VENDA DAS PORTAS')
+    print(f'{"═"*W}')
+    print(f'  portas a MC {MC_PORTA*100:.0f}%  [Jonathan 14/10]  ·  '
+          f'o resto do closet segue a {MC_ALVO*100:.0f}%')
+    cd_fu = (PORTA_RB_UN  + N_DOBR*DOBR_PERFIL + INSTALA_UN)*(1 + M.EMBALAGEM)
+    cd_es = (PORTA_ESP_UN + N_DOBR*DOBR_PERFIL + INSTALA_UN)*(1 + M.EMBALAGEM)
+    cd_fe = FE['cd']/N_VIDRO
+    u_fu, u_es, u_fe = (pv10(cd_fu, MC_PORTA), pv10(cd_es, MC_PORTA),
+                        pv10(cd_fe, MC_PORTA))
+    print(f'\n  {"unitário de venda":<34}{"custo":>10}{"venda":>10}')
+    print('  ' + '─'*56)
+    for nome, cd, pv in (('porta fumê', cd_fu, u_fu),
+                         ('porta de espelho · sapateira', cd_es, u_es),
+                         ('porta em MDF Fendi', cd_fe, u_fe)):
+        print(f'  {nome:<34}{br(cd):>10}{br(pv):>10}')
+
+    CEN = [('1 · mista',               5, 11, 2),
+           ('2 · como o projeto',     16,  0, 2),
+           ('3 · toda em Fendi',       0, 16, 2)]
+    print(f'\n  {"":<24}{"fumê":>7}{"Fendi":>7}{"espelho":>9}'
+          f'{"VENDA":>12}{"custo":>10}{"MC R$":>10}')
+    print('  ' + '─'*80)
+    TOT = {}
+    for nome, nf, nd, ne in CEN:
+        venda = nf*u_fu + nd*u_fe + ne*u_es
+        custo = nf*cd_fu + nd*cd_fe + ne*cd_es
+        TOT[nome] = (venda, custo)
+        print(f'  {nome:<24}{nf:>7}{nd:>7}{ne:>9}{br(venda):>12}'
+              f'{br(custo):>10}{br(venda*(BASE-custo/venda)):>10}')
+    print('  ' + '─'*80)
+    v1, v2, v3 = (TOT[c[0]][0] for c in CEN)
+    print(f'  {"a V2 custa a mais que a V3":<24}{"":>23}{br(v2-v3):>12}')
+    print(f'  {"a V1 custa a mais que a V3":<24}{"":>23}{br(v1-v3):>12}')
+
+    print(f'\n  ⭐ O QUE A MC DE 25% FEZ COM O PREÇO:')
+    for nome, nf, nd, ne in CEN:
+        a37 = nf*pv10(cd_fu) + nd*pv10(cd_fe) + ne*pv10(cd_es)
+        print(f'    {nome:<22} a 37% seria R$ {br(a37):>7}  ·  '
+              f'a 25% é R$ {br(TOT[nome][0]):>7}  ·  '
+              f'−R$ {br(a37-TOT[nome][0])}')
+    print('\n    ⛔ E o que a casa abre de margem nisso, na V2, são')
+    _a37 = 16*pv10(cd_fu) + 2*pv10(cd_es)
+    _c37 = 16*cd_fu + 2*cd_es
+    print(f'      R$ {br(_a37*(BASE-_c37/_a37) - v2*(BASE-TOT[CEN[1][0]][1]/v2))} — '
+          f'de R$ {br(_a37*(BASE-_c37/_a37))} para R$ {br(v2*(BASE-TOT[CEN[1][0]][1]/v2))}.')
+    print('      É uma decisão de preço, não um desconto: a porta chega')
+    print('      montada e a margem de revenda não é a de fabricação.')
+
+    print(f'\n  ⛔⛔ MAS ISSO PUXA A MC DO PROJETO PARA BAIXO DO PISO.')
+    print('    Com porta a 25% e o resto a 37%, para a MC cheia voltar aos')
+    print('    35% da casa o RESTO DO CLOSET precisa valer 5× as portas:')
+    for nome, _nf, _nd, _ne in CEN:
+        d = TOT[nome][0]
+        print(f'      {nome:<22} portas R$ {br(d):>7}  →  resto ≥ R$ {br(5*d)}')
+    print('    ⛔ Na V2 isso é improvável. Ou seja: a versão que o projeto')
+    print('      desenhou é a que mais dilui a nossa margem — e é bom saber')
+    print('      disso ANTES de a cliente escolher, não depois.')
 
     print(f'\n{"═"*W}')
     print('⛔⛔ O QUE FALTA — e por que ainda não há três preços')
