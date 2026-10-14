@@ -164,15 +164,50 @@ vão**: folha estreita e alta é o pior caso, muito perímetro por m².
 ⛔ Entre a V2 e a V3 há **R$ 29.677**, só nas portas. A escolha da cliente
 não é de cor — é de dezenas de milhares.
 
-### A porta inteiriça de espelho · igual nas três
+### O custo de cada porta, uma a uma
 
-1,12 × 2,50, cotada na prancha: custo R$ 2.914, **preço R$ 6.026**
-(espelho R$ 1.680 · perfil R$ 796 ★ · quatro dobradiças R$ 380 ★).
+Folha de 0,53 × 2,50 — 1,31 m² de vão e **6,05 m de perímetro**.
 
-⛔ **Atenção ao peso.** 2,80 m² de espelho de 4 mm passam de 25 kg só de
-vidro, mais o perfil. Numa folha de 2,50 de altura, **de giro**, isso
-trabalha em balanço na dobradiça e descai com o tempo. ⭐ O caminho técnico
-é **de correr**. Inteiriça ela pode ter; de giro é que não deveria.
+| | bronze | Fendi |
+|---|--:|--:|
+| vidro a R$ 280/m² ★ · chapa de 18 | 368 | 225 |
+| perfil a R$ 110/m ★ · fita de borda | **666** | 33 |
+| duas dobradiças | 190 | 70 |
+| consumíveis e embalagem | 24 | 22 |
+| **custo direto por porta** | **1.247** | **351** |
+| **preço por porta** · MC 37%, sem RT | **2.580** | **725** |
+
+⚠ **83% do custo da porta de vidro são os dois ★ estimados.** A
+sensibilidade do preço por porta:
+
+| | vidro 200 | 250 | 280 | 350 |
+|---|--:|--:|--:|--:|
+| perfil 80/m ★ | 1.976 | 2.114 | 2.197 | 2.391 |
+| **perfil 110/m ★** | 2.359 | 2.497 | **2.580** | 2.774 |
+| perfil 140/m ★ | 2.741 | 2.880 | 2.963 | 3.157 |
+
+⛔ Entre o canto barato e o caro a porta varia mais de R$ 1.000 —
+multiplicado por 16, mais de **R$ 16.000** no orçamento.
+
+### O espelho da sapateira · igual nas três
+
+⭐ [Jonathan 13/10] **o vão de 1,12 leva DUAS folhas**, de 0,56 cada.
+Custo R$ 3.668, **preço R$ 7.587** (espelho R$ 1.680 · perfil R$ 1.346 ★ ·
+seis dobradiças R$ 570 ★).
+
+⭐ **Dividir resolve o peso.** Em folha única eram 2,80 m² — mais de 25 kg
+só de vidro, de giro, em balanço numa folha de 2,50 de altura: descairia.
+Em duas de 0,56, cada folha fica com 1,40 m² e a dobradiça trabalha dentro
+do que aguenta. **De giro passa a ser viável** — não precisa ser de correr.
+
+⚠ Dividir custa R$ 755 de custo a mais (R$ 1.561 de preço): mais metro de
+perfil e mais duas dobradiças. É o preço de o móvel não descair.
+
+⚠⚠ **Mas a cliente pediu "uma porta inteiriça de espelho".** Em duas folhas
+aparece uma **junta vertical** no meio do espelho, na altura do rosto. Ela
+precisa saber antes, não depois — e, se insistir em folha única, o caminho
+é de correr. ⚠ A conta de portas também muda: 16 + 2 = **18 folhas**, não
+as 17 que ela contou.
 
 ### Principal × downgrade · só a corrediça
 

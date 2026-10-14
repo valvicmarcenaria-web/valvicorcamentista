@@ -51,7 +51,12 @@ CH_M2, APROV = 2.75*1.85, 0.80
 # ── a folha ───────────────────────────────────────────────────────────────
 FOLHA_L, FOLHA_A = 0.525, 2.50      # módulo de 105 com duas folhas
 N_VIDRO, N_TOTAL = 16, 17           # 16 folhas + o espelho da sapateira
-ESP_L, ESP_A = 1.12, 2.50           # o espelho, cotado na prancha
+ESP_L, ESP_A = 1.12, 2.50           # o VÃO do espelho, cotado na prancha
+# ⭐ [Jonathan 13/10] "a porta de espelho no vão de 1,12 precisa ser duas
+#   portas". São duas folhas de 56 — e isso resolve o problema de peso que
+#   eu tinha levantado: cada folha cai para metade da área.
+ESP_N_FOLHAS = 2
+ESP_FL = ESP_L/ESP_N_FOLHAS
 
 # ── preços ────────────────────────────────────────────────────────────────
 # ⛔⛔ NEM O VIDRO NEM O PERFIL ESTÃO NA BASE DA CASA. São ★ estimados — e
@@ -94,9 +99,9 @@ DELTA_FOLHA = DELTA_PV/N_VIDRO
 # ⛔ 1,12 × 2,50 = 2,8 m². Em espelho 4 mm isso passa de 25 kg só de vidro.
 #   Numa folha de 2,50 de altura, de giro, a dobradiça trabalha em balanço.
 ESP = dict(
-    espelho = ESP_L*ESP_A*ESPELHO_M2,
-    perfil  = 2*(ESP_L + ESP_A)*PERFIL_M,
-    dobr    = 4*DOBR_VIDRO)          # ★ quatro, pelo peso
+    espelho = ESP_L*ESP_A*ESPELHO_M2,                       # a área é a mesma
+    perfil  = ESP_N_FOLHAS*2*(ESP_FL + ESP_A)*PERFIL_M,     # o perímetro, não
+    dobr    = ESP_N_FOLHAS*3*DOBR_VIDRO)                    # ★ três por folha
 ESP['cd'] = sum(ESP.values())*(1 + M.EMBALAGEM)
 ESP['pv'] = preco(ESP['cd'])
 
@@ -133,6 +138,42 @@ if __name__ == '__main__':
     print('    Folha estreita e alta é o pior caso: muito perímetro por m².')
 
     print(f'\n{"═"*W}')
+    print('⭐ O CUSTO DE CADA PORTA, UMA A UMA')
+    print(f'{"═"*W}')
+    print(f'  folha de {vg(FOLHA_L)} × {vg(FOLHA_A)} m = {vg(area_f)} m² de vão '
+          f'e {vg(perim_f)} m de perímetro')
+    print(f'\n{"":<40}{"bronze":>12}{"Fendi":>12}')
+    print('─'*W)
+    print(f'{"vidro a R$ " + br(RB_M2) + "/m² ★ · chapa de 18":<40}'
+          f'{br(RB["vidro"]/N_VIDRO):>12}{br(FE["chapa"]/N_VIDRO):>12}')
+    print(f'{"perfil a R$ " + br(PERFIL_M) + "/m ★ · fita de borda":<40}'
+          f'{br(RB["perfil"]/N_VIDRO):>12}{br(FE["fita"]/N_VIDRO):>12}')
+    print(f'{"duas dobradiças":<40}'
+          f'{br(RB["dobr"]/N_VIDRO):>12}{br(FE["dobr"]/N_VIDRO):>12}')
+    print(f'{"consumíveis e embalagem":<40}'
+          f'{br(RB["cd"]/N_VIDRO - (RB["vidro"]+RB["perfil"]+RB["dobr"])/N_VIDRO):>12}'
+          f'{br(FE["cd"]/N_VIDRO - (FE["chapa"]+FE["fita"]+FE["dobr"])/N_VIDRO):>12}')
+    print('─'*W)
+    print(f'{"CUSTO DIRETO POR PORTA":<40}'
+          f'{br(RB["cd"]/N_VIDRO):>12}{br(FE["cd"]/N_VIDRO):>12}')
+    print(f'{"PREÇO POR PORTA  ·  MC 37%, sem RT":<40}'
+          f'{br(preco(RB["cd"])/N_VIDRO):>12}{br(preco(FE["cd"])/N_VIDRO):>12}')
+
+    print(f'\n  ⚠ 83% do custo da porta de vidro são os DOIS ★ estimados.')
+    print('    Como o preço anda com eles, a sensibilidade:')
+    print(f'\n  {"vidro R$/m² →":<16}' + ''.join(f'{br(v):>10}' for v in (200, 250, 280, 350)))
+    print('  ' + '─'*58)
+    for pm in (80, 110, 140):
+        linha = f'  perfil {br(pm)}/m ★'.ljust(18)
+        for vm in (200, 250, 280, 350):
+            cd1 = (area_f*vm + perim_f*pm + 2*DOBR_VIDRO)*(1 + M.EMBALAGEM)
+            linha += f'{br(preco(cd1)):>10}'
+        print(linha)
+    print('\n    ⛔ Entre o canto barato e o caro da tabela a porta varia mais')
+    print('      de R$ 1.000 — multiplicado por 16, é mais de R$ 16.000 no')
+    print('      orçamento. É por isso que a cotação vem antes do preço.')
+
+    print(f'\n{"═"*W}')
     print('⭐ O Δ QUE RESPONDE A PERGUNTA DA CLIENTE')
     print(f'{"═"*W}')
     print(f'  cada folha de reflecta bronze custa, a mais que uma de Fendi:')
@@ -148,19 +189,34 @@ if __name__ == '__main__':
     print('    A escolha dela não é de cor: é de dezenas de milhares.')
 
     print(f'\n{"═"*W}')
-    print('⭐ A PORTA INTEIRIÇA DE ESPELHO — igual nas três versões')
+    print('⭐ O ESPELHO DA SAPATEIRA — igual nas três versões')
     print(f'{"═"*W}')
-    print(f'  {vg(ESP_L)} × {vg(ESP_A)} m, cotada na prancha. Custo R$ {br(ESP["cd"])}, '
-          f'preço R$ {br(ESP["pv"])}.')
+    print(f'  Vão de {vg(ESP_L)} × {vg(ESP_A)} m, cotado na prancha, em '
+          f'DUAS folhas de {vg(ESP_FL)}  [Jonathan 13/10]')
+    print(f'  Custo R$ {br(ESP["cd"])}, preço R$ {br(ESP["pv"])}.')
     print(f'    espelho .............. R$ {br(ESP["espelho"])}   (R$ {br(ESPELHO_M2)}/m², base do Jonathan)')
-    print(f'    perfil de alumínio ... R$ {br(ESP["perfil"])}   ★')
-    print(f'    dobradiça ............ R$ {br(ESP["dobr"])}   ★ quatro, pelo peso')
-    print(f'\n  ⛔ ATENÇÃO AO PESO. {vg(ESP_L*ESP_A)} m² de espelho de 4 mm passam de 25 kg')
-    print('    só de vidro, mais o perfil. Numa folha de 2,50 de altura, de')
-    print('    giro, isso trabalha em balanço na dobradiça e descai com o')
-    print('    tempo. ⭐ O caminho técnico é DE CORRER, não de giro — e aí')
-    print('    muda a ferragem, não o espelho. A cliente pediu "inteiriça";')
-    print('    inteiriça ela pode ter, de giro é que não deveria.')
+    print(f'    perfil de alumínio ... R$ {br(ESP["perfil"])}   ★ o perímetro cresce com a divisão')
+    print(f'    dobradiça ............ R$ {br(ESP["dobr"])}   ★ três por folha')
+    print(f'\n  ⭐ DIVIDIR RESOLVE O PESO. Em folha única eram {vg(ESP_L*ESP_A)} m² — mais de')
+    print('    25 kg só de vidro, de giro, em balanço numa folha de 2,50 de')
+    print(f'    altura: descairia. Em duas de {vg(ESP_FL)}, cada folha fica com '
+          f'{vg(ESP_FL*ESP_A)} m²')
+    print('    e a dobradiça trabalha dentro do que aguenta. De giro passa a')
+    print('    ser viável — não precisa ser de correr.')
+    _esp1 = (ESP_L*ESP_A*ESPELHO_M2 + 2*(ESP_L+ESP_A)*PERFIL_M
+             + 4*DOBR_VIDRO)*(1 + M.EMBALAGEM)
+    print(f'\n  ⚠ Dividir custa R$ {br(ESP["cd"]-_esp1)} de custo a mais '
+          f'(R$ {br(preco(ESP["cd"]-_esp1))} de preço):')
+    print('    mais metro de perfil e mais duas dobradiças. É o preço de o')
+    print('    móvel não descair — e vale cada centavo.')
+    print('  ⚠⚠ MAS A CLIENTE PEDIU "UMA PORTA INTEIRIÇA DE ESPELHO". Em duas')
+    print('    folhas aparece uma JUNTA VERTICAL no meio do espelho, bem na')
+    print('    altura do rosto. Ela precisa saber disso antes, não depois —')
+    print('    e, se insistir em folha única, o caminho é DE CORRER.')
+    print(f'\n  ⚠ E a CONTA DE PORTAS muda: {N_VIDRO} de vidro + {ESP_N_FOLHAS} de espelho = '
+          f'{N_VIDRO+ESP_N_FOLHAS} folhas,')
+    print(f'    não as {N_TOTAL} que a cliente contou. O escopo é o mesmo; o número')
+    print('    que ela repetir ao marido é que não vai bater com o nosso.')
 
     print(f'\n{"═"*W}')
     print('⭐ PRINCIPAL × DOWNGRADE — só a corrediça muda')
