@@ -113,7 +113,7 @@ tr.liq td.num{ color:var(--goldsoft); font-size:12px }
 .cx{ display:inline-block; width:10px; height:10px; border:1.3px solid var(--navy);
   border-radius:2px; flex:0 0 auto }
 
-.assina{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:auto; padding-top:10px }
+.assina{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:auto; padding-top:10px; margin-bottom:2px }
 .assina > div{ border-top:1px solid var(--ink); padding-top:3px; text-align:center }
 .assina .n{ font-size:8.5px; font-weight:700; color:var(--navy) }
 .assina .s{ font-size:7.5px; color:var(--muted) }
@@ -158,14 +158,19 @@ tr.liq td.num{ color:var(--goldsoft); font-size:12px }
     <tr><td>Serviço prestado — 01 a 14/10/2026</td><td class="ob">prestação de serviços</td><td class="num">R$ 1.440,00</td></tr>
     <tr><td>Comissão em aberto</td><td class="ob">variável já apurada</td><td class="num">R$ 650,00</td></tr>
     <tr class="tot"><td>Bruto do acerto</td><td class="ob">serviço + comissão</td><td class="num">R$ 2.090,00</td></tr>
-    <tr><td>Compensação — compra de MDF</td><td class="ob">dívida do prestador com a empresa</td><td class="num">− R$ 643,00</td></tr>
+    <tr><td>Compensação — material comprado pela empresa</td>
+        <td class="ob">destinado a <b>serviço próprio do prestador</b> — não aplicado em obra da Valvic</td>
+        <td class="num">− R$ 643,00</td></tr>
+    <tr><td style="padding-left:22px" class="ob">2 chapas Branco TX 15 mm</td><td class="ob">compra de material</td><td class="num ob">R$ 440,00</td></tr>
+    <tr><td style="padding-left:22px" class="ob">1 chapa Branco TX 6 mm</td><td class="ob">compra de material</td><td class="num ob">R$ 175,00</td></tr>
+    <tr><td style="padding-left:22px" class="ob">50 m de fita de borda Branco TX 22 mm</td><td class="ob">compra de material</td><td class="num ob">R$ 28,00</td></tr>
     <tr class="liq"><td>Líquido a pagar no acerto</td><td class="ob" style="color:#b9c3cf">mediante nota fiscal</td><td class="num">R$ 1.447,00</td></tr>
   </table>
 
   <div class="kpis">
     <div class="kpi"><div class="r">Serviço</div><div class="v">1.440,00</div><div class="o">12 dias × 120,00</div></div>
     <div class="kpi"><div class="r">Comissão</div><div class="v">650,00</div><div class="o">já apurada</div></div>
-    <div class="kpi"><div class="r">Compensação</div><div class="v">− 643,00</div><div class="o">compra de MDF</div></div>
+    <div class="kpi"><div class="r">Compensação</div><div class="v">− 643,00</div><div class="o">material · serviço próprio</div></div>
     <div class="kpi" style="background:var(--gold);color:var(--navy)">
       <div class="r" style="color:var(--navy2)">Líquido a pagar</div><div class="v">1.447,00</div>
       <div class="o" style="color:var(--navy2)">com nota fiscal</div></div>
@@ -181,7 +186,7 @@ tr.liq td.num{ color:var(--goldsoft); font-size:12px }
     <p><b>3 · Fechamento da comissão.</b> A remuneração variável dele é <b>2,5% de fabricação + 2,5%
     de montagem</b>, por obra. Conferir se os R$ 650,00 cobrem tudo que venceu até 14/10/2026 —
     inclusive montagem concluída e ainda não lançada.</p>
-    <p><b>4 · Aceite do desconto do MDF.</b> Compensar os R$ 643,00 exige concordância por
+    <p><b>4 · Aceite do desconto do material.</b> Compensar os R$ 643,00 exige concordância por
     escrito do prestador — é o que a assinatura desta folha registra. Sem o aceite, paga-se
     R$ 2.090,00 e a dívida é cobrada em separado.</p>
   </div>
@@ -199,23 +204,11 @@ tr.liq td.num{ color:var(--goldsoft); font-size:12px }
     </div>
   </div>
 
-  <div class="faixa">3 · Devolução antes do pagamento</div>
-  <div class="dev">
-    <div><span class="cx"></span> Veículo da frota — chave, documento e km registrado</div>
-    <div><span class="cx"></span> Chaves da fábrica e do depósito</div>
-    <div><span class="cx"></span> Ferramentas em comodato — conferir no Controle de Patrimônio</div>
-    <div><span class="cx"></span> Material e sobras de obra em poder do prestador</div>
-    <div><span class="cx"></span> Acessos — Calcme, grupos de WhatsApp e Drive</div>
-  </div>
-
   <div class="assina">
     <div><div class="n">Prestador</div><div class="s">Dou plena quitação e concordo com a compensação · ___/___/______</div></div>
     <div><div class="n">Valvic Marcenaria — Vargas Decor Ltda</div><div class="s">Autorização de pagamento · Jonathan ou Paulo</div></div>
   </div>
 
-  <div class="rodape"><span>Valvic Marcenaria · Vargas Decor Ltda</span>
-    <span>Acerto de dispensa · PJ · 14/10/2026</span></div>
-</div>
 
 </body>
 </html>

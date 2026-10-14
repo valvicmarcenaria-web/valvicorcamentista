@@ -19,13 +19,18 @@ DADOS = dict(
     dias_periodo   = 14,                 # dias corridos de 01 até o último dia
     dias_nao_prest = 2,
     comissao       = 650.00,
-    divida_mdf     = 643.00,
+    pecas          = [                   # material comprado pela empresa para serviço próprio
+        ('2 chapas Branco TX 15 mm',        440.00),
+        ('1 chapa Branco TX 6 mm',          175.00),
+        ('50 m de fita de borda Branco TX 22 mm', 28.00),
+    ],
 )
 
 D = DADOS
 D['diaria']     = D['fixo_mensal'] / 30            # regra dos 30 avos
 D['dias_remun'] = D['dias_periodo'] - D['dias_nao_prest']
 D['servico']    = D['dias_remun'] * D['diaria']
+D['divida_mdf'] = sum(v for _, v in D['pecas'])
 D['bruto']      = D['servico'] + D['comissao']
 D['liquido']    = D['bruto'] - D['divida_mdf']
 # método alternativo, só para a caixa de comparação
@@ -100,7 +105,7 @@ tr.liq td.num{ color:var(--goldsoft); font-size:12px }
 .cx{ display:inline-block; width:10px; height:10px; border:1.3px solid var(--navy);
   border-radius:2px; flex:0 0 auto }
 
-.assina{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:auto; padding-top:10px }
+.assina{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:auto; padding-top:10px; margin-bottom:2px }
 .assina > div{ border-top:1px solid var(--ink); padding-top:3px; text-align:center }
 .assina .n{ font-size:8.5px; font-weight:700; color:var(--navy) }
 .assina .s{ font-size:7.5px; color:var(--muted) }
@@ -109,6 +114,14 @@ tr.liq td.num{ color:var(--goldsoft); font-size:12px }
   display:flex; justify-content:space-between; font-size:7px; color:var(--muted);
   letter-spacing:.5px; text-transform:uppercase }
 """
+
+LINHA_PECA = ('    <tr><td style="padding-left:22px" class="ob">__ITEM__</td>'
+              '<td class="ob">compra de material</td>'
+              '<td class="num ob">__VALOR__</td></tr>')
+PECAS_HTML = '\n'.join(
+    LINHA_PECA.replace('__ITEM__', n).replace('__VALOR__', 'R$ ' + brl(v))
+    for n, v in DADOS['pecas'])
+
 
 def cel(v):
     return f'<div class="v">{v}</div>' if v else '<div class="v b">____________</div>'
@@ -156,14 +169,17 @@ __FONTES__
     <tr><td>Serviço prestado — __PERIODO__</td><td class="ob">prestação de serviços</td><td class="num">R$ __SERVICO__</td></tr>
     <tr><td>Comissão em aberto</td><td class="ob">variável já apurada</td><td class="num">R$ __COMISSAO__</td></tr>
     <tr class="tot"><td>Bruto do acerto</td><td class="ob">serviço + comissão</td><td class="num">R$ __BRUTO__</td></tr>
-    <tr><td>Compensação — compra de MDF</td><td class="ob">dívida do prestador com a empresa</td><td class="num">− R$ __MDF__</td></tr>
+    <tr><td>Compensação — material comprado pela empresa</td>
+        <td class="ob">destinado a <b>serviço próprio do prestador</b> — não aplicado em obra da Valvic</td>
+        <td class="num">− R$ __MDF__</td></tr>
+__PECAS__
     <tr class="liq"><td>Líquido a pagar no acerto</td><td class="ob" style="color:#b9c3cf">mediante nota fiscal</td><td class="num">R$ __LIQUIDO__</td></tr>
   </table>
 
   <div class="kpis">
     <div class="kpi"><div class="r">Serviço</div><div class="v">__SERVICO__</div><div class="o">__REMUN__ dias × __DIARIA__</div></div>
     <div class="kpi"><div class="r">Comissão</div><div class="v">__COMISSAO__</div><div class="o">já apurada</div></div>
-    <div class="kpi"><div class="r">Compensação</div><div class="v">− __MDF__</div><div class="o">compra de MDF</div></div>
+    <div class="kpi"><div class="r">Compensação</div><div class="v">− __MDF__</div><div class="o">material · serviço próprio</div></div>
     <div class="kpi" style="background:var(--gold);color:var(--navy)">
       <div class="r" style="color:var(--navy2)">Líquido a pagar</div><div class="v">__LIQUIDO__</div>
       <div class="o" style="color:var(--navy2)">com nota fiscal</div></div>
@@ -179,7 +195,7 @@ __FONTES__
     <p><b>3 · Fechamento da comissão.</b> A remuneração variável dele é <b>2,5% de fabricação + 2,5%
     de montagem</b>, por obra. Conferir se os R$ __COMISSAO__ cobrem tudo que venceu até __ULTIMO__ —
     inclusive montagem concluída e ainda não lançada.</p>
-    <p><b>4 · Aceite do desconto do MDF.</b> Compensar os R$ __MDF__ exige concordância por
+    <p><b>4 · Aceite do desconto do material.</b> Compensar os R$ __MDF__ exige concordância por
     escrito do prestador — é o que a assinatura desta folha registra. Sem o aceite, paga-se
     R$ __BRUTO__ e a dívida é cobrada em separado.</p>
   </div>
@@ -197,23 +213,11 @@ __FONTES__
     </div>
   </div>
 
-  <div class="faixa">3 · Devolução antes do pagamento</div>
-  <div class="dev">
-    <div><span class="cx"></span> Veículo da frota — chave, documento e km registrado</div>
-    <div><span class="cx"></span> Chaves da fábrica e do depósito</div>
-    <div><span class="cx"></span> Ferramentas em comodato — conferir no Controle de Patrimônio</div>
-    <div><span class="cx"></span> Material e sobras de obra em poder do prestador</div>
-    <div><span class="cx"></span> Acessos — Calcme, grupos de WhatsApp e Drive</div>
-  </div>
-
   <div class="assina">
     <div><div class="n">Prestador</div><div class="s">Dou plena quitação e concordo com a compensação · ___/___/______</div></div>
     <div><div class="n">Valvic Marcenaria — Vargas Decor Ltda</div><div class="s">Autorização de pagamento · Jonathan ou Paulo</div></div>
   </div>
 
-  <div class="rodape"><span>Valvic Marcenaria · Vargas Decor Ltda</span>
-    <span>Acerto de dispensa · PJ · __EMISSAO__</span></div>
-</div>
 
 </body>
 </html>'''
@@ -225,7 +229,7 @@ for k, v in [
     ('__DIARIA__', brl(D['diaria'])), ('__DIAS__', str(D['dias_periodo'])),
     ('__NAO__', str(D['dias_nao_prest'])), ('__REMUN__', str(D['dias_remun'])),
     ('__SERVICO__', brl(D['servico'])), ('__COMISSAO__', brl(D['comissao'])),
-    ('__BRUTO__', brl(D['bruto'])), ('__MDF__', brl(D['divida_mdf'])),
+    ('__BRUTO__', brl(D['bruto'])), ('__MDF__', brl(D['divida_mdf'])), ('__PECAS__', PECAS_HTML),
     ('__LIQUIDO__', brl(D['liquido'])),
 ]:
     HTML = HTML.replace(k, v)
