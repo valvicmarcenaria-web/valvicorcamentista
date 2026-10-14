@@ -75,12 +75,16 @@ PORTA_ESP_UN =  900.0   # ⭐ porta pronta de espelho, 56 × 250, a folha
 #   altura e ~17 kg são QUATRO por folha. ★ E tem de ser a dobradiça que o
 #   PERFIL aceita: ela não se encaixota no vidro, fixa no alumínio. Conferir
 #   o modelo com o próprio fornecedor da porta.
-DOBR_PERFIL  = 70.0     # ★ dobradiça para perfil de alumínio
+DOBR_PERFIL  = 12.0     # ⭐ [Jonathan 14/10] "nossa dobradiça custa 12,00"
 N_DOBR       = 4        # por folha, de 2,50 de altura
 INSTALA_UN   = 60.0     # ★ fixação e regulagem na nossa caixa, por folha
 MDF_18    = 600.0    # MDF cor 18 mm — base da casa
 FITA_M    = 3.0 + 2.5
-DOBR_MDF   = 35.0    # dobradiça com amortecedor — base da casa
+# ⚠⚠ A base da casa carrega R$ 35 em `dobr` desde sempre, e foi com ela
+#   que saíram Isabela, as duas Raquéis e o Orlando e Ivone. Se a nossa
+#   dobradiça custa R$ 12, aquela linha está TRIPLICADA nesses orçamentos.
+#   ⛔ Não mexi nos outros projetos por conta própria — ver EM ABERTO.
+DOBR_MDF   = 12.0    # ⭐ [Jonathan 14/10], igual à de perfil
 
 def preco(cd, mc=None):
     return cd/(BASE - (MC_ALVO if mc is None else mc))
@@ -169,7 +173,7 @@ if __name__ == '__main__':
     print(f'{"porta pronta ⭐ · chapa de 18":<40}'
           f'{br(RB["porta"]/N_VIDRO):>12}{br(FE["chapa"]/N_VIDRO):>12}')
     print(f'{"fita de borda":<40}{"—":>12}{br(FE["fita"]/N_VIDRO):>12}')
-    print(f'{str(N_DOBR) + " dobradiças ★":<40}'
+    print(f'{str(N_DOBR) + " dobradiças ⭐":<40}'
           f'{br(RB["dobr"]/N_VIDRO):>12}{br(FE["dobr"]/N_VIDRO):>12}')
     print(f'{"fixação e regulagem ★ · consumíveis":<40}'
           f'{br(RB["instala"]/N_VIDRO):>12}'
@@ -180,17 +184,15 @@ if __name__ == '__main__':
     print(f'{"PREÇO POR PORTA  ·  MC 37%, sem RT":<40}'
           f'{br(preco(RB["cd"])/N_VIDRO):>12}{br(preco(FE["cd"])/N_VIDRO):>12}')
 
-    print(f'\n  ⭐ A COTAÇÃO CHEGOU e o preço da porta está cravado. O que')
-    print(f'    sobra de ★ na folha de vidro é só a dobradiça: '
-          f'R$ {br(N_DOBR*DOBR_PERFIL)} dos')
-    print(f'    R$ {br(RB["cd"]/N_VIDRO)} de custo — {N_DOBR*DOBR_PERFIL/(RB["cd"]/N_VIDRO)*100:.0f}%. '
-          f'Erra 30% nela e o preço da porta')
-    print(f'    anda R$ {br(preco(0.30*N_DOBR*DOBR_PERFIL*1.02))}. Não muda orçamento; muda conferência.')
+    print(f'\n  ⭐ A folha de vidro está cravada de ponta a ponta: porta '
+          f'R$ {br(PORTA_RB_UN)},')
+    print(f'    dobradiça R$ {br(DOBR_PERFIL)} e o resto é fixação. Não sobra ★ relevante.')
     print(f'\n  ⚠ A dobradiça TEM DE SER A QUE O PERFIL ACEITA — ela fixa no')
-    print('    alumínio, não se encaixota no vidro. Vale perguntar ao mesmo')
-    print('    fornecedor qual modelo o perfil dele recebe, já que ele não')
-    print('    fornece. E confirmar se quatro por folha bastam a 2,50 de')
-    print('    altura: a tabela de alguns fabricantes pede cinco.')
+    print('    alumínio, não se encaixota no vidro. ⛔ A R$ 12 a unidade,')
+    print('    confirmar que a NOSSA dobradiça serve no perfil dele — se')
+    print('    precisar da dobradiça específica da linha, o número muda.')
+    print('    E confirmar se quatro por folha bastam a 2,50 de altura: a')
+    print('    tabela de alguns fabricantes pede cinco.')
     print(f'\n  ⚠ A PORTA DE FENDI TEM 2,50 DE ALTURA E 18 mm. Folha alta e')
     print('    estreita em melamínico empena com o tempo. ⭐ A de vidro não')
     print('    tem esse problema — o perfil de alumínio é o que a mantém reta.')
@@ -391,10 +393,13 @@ if __name__ == '__main__':
     print('      margem: é nota fiscal, margem de erro e as duas comissões')
     print('      que o item de fato usa. Se a cliente ligar para o vidraceiro,')
     print('      ela acha os R$ ' + br(_compra) + ' e a diferença se explica em uma frase.')
-    print(f'\n    ⛔ A dobradiça sozinha é R$ {br(18*N_DOBR*DOBR_PERFIL)} de compra — '
-          f'{18*N_DOBR*DOBR_PERFIL/_compra*100:.0f}% do valor')
-    print('      das portas. Ela estava escondida dentro de "fornecimento" e')
-    print('      é por isso que aquela linha tinha ficado inchada.')
+    print(f'\n    ⭐ Com a dobradiça a R$ {br(DOBR_PERFIL)} ela virou miudeza — '
+          f'R$ {br(18*N_DOBR*DOBR_PERFIL)} de compra,')
+    f_ = 18*N_DOBR*DOBR_PERFIL/_compra*100
+    print(f'      {f_:.0f}% do valor das portas. Quando eu a estimava em R$ 70 ela')
+    print(f'      era R$ {br(18*N_DOBR*70)} e distorcia o quadro. Hoje a separação das duas')
+    print('      linhas vale pela CLAREZA, não pelo valor: "fornecimento"')
+    print('      tem de conter só a folha comprada, e nada mais.')
     print(f'\n  ⚠ Os R$ {br(MARG_FIXA)} por folha são ★ meus. Mexa neles e tudo anda:')
     for mf in (300, 400, 500):
         t = [nf*round((cd_fu+mf)/BASE_REV/10)*10 + nd*u_fe
@@ -412,15 +417,23 @@ if __name__ == '__main__':
     print('      folha de vidro e deixou de ser palpite.')
     print('      ⚠ Faltou a resposta das outras perguntas da relação — a')
     print('        altura máxima de folha da linha é a que mais importa.')
-    print('  2 · A MODULAÇÃO. O caderno numera dez módulos mas não traz a')
+    print('  2 · ⚠⚠ A DOBRADIÇA DA BASE DA CASA PODE ESTAR TRIPLICADA.')
+    print(f'      Aqui ela entrou a R$ {br(DOBR_PERFIL)} [Jonathan 14/10]. A base da casa')
+    print('      usa R$ 35 em `dobr`, e foi com ela que saíram a Isabela, as')
+    print('      duas Raquéis e o Orlando e Ivone. ⛔ Ou são itens diferentes')
+    print('      — com e sem amortecedor —, ou aqueles orçamentos estão com a')
+    print('      linha de dobradiça três vezes maior. No Orlando e Ivone são')
+    print('      12 dobradiças: R$ 420 lançados contra R$ 144 reais.')
+    print('      Não mexi em nada por conta própria — precisa da sua palavra.')
+    print('  3 · A MODULAÇÃO. O caderno numera dez módulos mas não traz a')
     print('      página de cada um. Sem as larguras e profundidades não há')
     print('      preço do closet — só o Δ entre as versões, que é este.')
-    print('  3 · "5 PORTAS NO REFLECTA BRONZE" — 5 é ímpar e os módulos são')
+    print('  4 · "5 PORTAS NO REFLECTA BRONZE" — 5 é ímpar e os módulos são')
     print('      de duas folhas. Ou algum módulo tem folha única, ou ela')
     print('      contou por módulo em algum ponto. A confirmar com ela.')
-    print('  4 · ILUMINAÇÃO EM LINHA SEPARADA [Jonathan 13/10]. Falta medir')
+    print('  5 · ILUMINAÇÃO EM LINHA SEPARADA [Jonathan 13/10]. Falta medir')
     print('      quantos metros de fita e em quantas prateleiras, e separar o')
     print('      que é nosso (perfil, usinagem, instalação) do que é da')
     print('      elétrica (fonte, driver, circuito).')
-    print(f'  5 · ★ {N_GAV} gavetas foram CONTADAS NOS RENDERS. Muda o Δ da')
+    print(f'  6 · ★ {N_GAV} gavetas foram CONTADAS NOS RENDERS. Muda o Δ da')
     print('      corrediça na proporção direta.')

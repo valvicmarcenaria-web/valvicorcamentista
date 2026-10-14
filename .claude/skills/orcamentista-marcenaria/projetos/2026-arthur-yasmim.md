@@ -272,17 +272,17 @@ fornecedor e nós só penduramos. Margem segue trabalho agregado, e aqui ele
 
 | unitário | custo | **venda** |
 |---|--:|--:|
-| porta fumê | 1.673 | **2.770** |
-| porta de espelho · sapateira | 1.265 | **2.100** |
-| porta em MDF Fendi | 422 | **700** |
+| porta fumê | 1.436 | **2.380** |
+| porta de espelho · sapateira | 1.028 | **1.700** |
+| porta em MDF Fendi | 328 | **540** |
 
 | cenário | fumê | Fendi | espelho | **VENDA** | custo | MC R$ |
 |---|--:|--:|--:|--:|--:|--:|
-| **1 · mista** | 5 | 11 | 2 | **25.750** | 15.536 | 6.442 |
-| **2 · como o projeto** | 16 | — | 2 | **48.520** | 29.294 | 12.117 |
-| **3 · toda em Fendi** | — | 16 | 2 | **15.400** | 9.282 | 3.862 |
+| **1 · mista** | 5 | 11 | 2 | **21.240** | 12.847 | 5.281 |
+| **2 · como o projeto** | 16 | — | 2 | **41.480** | 25.035 | 10.368 |
+| **3 · toda em Fendi** | — | 16 | 2 | **12.040** | 7.308 | 2.969 |
 
-A V2 custa **R$ 33.120** a mais que a V3. A V1, **R$ 10.350**.
+A V2 custa **R$ 29.440** a mais que a V3. A V1, **R$ 9.200**.
 
 ⚠ São os valores **das portas**, não do closet — o resto depende da
 modulação, que ainda falta.
@@ -291,11 +291,11 @@ modulação, que ainda falta.
 
 | | a 37% seria | a 25% é | diferença |
 |---|--:|--:|--:|
-| 1 · mista | 32.110 | **25.750** | −6.360 |
-| 2 · como o projeto | 60.600 | **48.520** | −12.080 |
-| 3 · toda em Fendi | 19.160 | **15.400** | −3.760 |
+| 1 · mista | 26.590 | **21.240** | −5.350 |
+| 2 · como o projeto | 51.780 | **41.480** | −10.300 |
+| 3 · toda em Fendi | 15.140 | **12.040** | −3.100 |
 
-Na V2 a casa abre **R$ 10.310 de margem** — de R$ 22.428 para R$ 12.117.
+Na V2 a casa abre **R$ 8.791 de margem** — de R$ 19.159 para R$ 10.368.
 Não é desconto, é decisão de preço: a porta chega montada e a margem de
 revenda não é a de fabricação.
 
@@ -306,9 +306,9 @@ o **resto do closet precisa valer 5× as portas**:
 
 | | portas | resto precisa valer |
 |---|--:|--:|
-| 1 · mista | 25.750 | ≥ 128.750 |
-| 2 · como o projeto | 48.520 | **≥ 242.600** |
-| 3 · toda em Fendi | 15.400 | ≥ 77.000 |
+| 1 · mista | 21.240 | ≥ 106.200 |
+| 2 · como o projeto | 41.480 | **≥ 207.400** |
+| 3 · toda em Fendi | 12.040 | ≥ 60.200 |
 
 ⛔ Na V2 isso é improvável. **A versão que o projeto desenhou é a que mais
 dilui a nossa margem** — e é bom saber antes de a cliente escolher.
@@ -347,16 +347,16 @@ chega montada.
 
 | | fumê | espelho | × custo |
 |---|--:|--:|--:|
-| **A · hoje** — cascata cheia, MC 25% | 2.770 | 2.100 | 1,66× |
-| **B · cascata de revenda**, MC 25% | 2.590 | 1.960 | 1,55× |
-| **C · cascata de revenda + R$ 400/folha** | **2.310** | **1.860** | **1,38×** |
+| **A · hoje** — cascata cheia, MC 25% | 2.380 | 1.700 | 1,66× |
+| **B · cascata de revenda**, MC 25% | 2.220 | 1.590 | 1,55× |
+| **C · cascata de revenda + R$ 400/folha** | **2.050** | **1.590** | **1,43×** |
 
 | | V1 | V2 | V3 |
 |---|--:|--:|--:|
-| **A · hoje** | 25.750 | 48.520 | 15.400 |
-| **B · cascata de revenda** | 24.570 | 45.360 | 15.120 |
-| **C · R$ 400 por folha** | **22.970** | **40.680** | **14.920** |
-| MC da casa na V2 | 12.117 | 11.382 | 7.200 |
+| **A · hoje** | 21.240 | 41.480 | 12.040 |
+| **B · cascata de revenda** | 20.220 | 38.700 | 11.820 |
+| **C · R$ 400 por folha** | **19.370** | **35.980** | **11.820** |
+| MC da casa na V2 | 10.368 | 9.669 | 7.200 |
 
 ### ⭐⭐ A C é a honesta, e não só por ser mais barata
 
@@ -370,9 +370,9 @@ E ela se apresenta em duas linhas. Na V2:
 
 ```
 fornecimento das portas · 18 folhas   R$ 25.710
-ferragem, instalação e garantia ....  R$ 14.990
+ferragem, instalação e garantia ....  R$ 10.240
                                       ─────────
-                                      R$ 40.700
+                                      R$ 35.950
 ```
 
 ⛔ **Correção [Jonathan 14/10]:** a primeira versão desta linha dizia
@@ -385,16 +385,19 @@ margem: é nota fiscal, margem de erro e as duas comissões que o item de
 fato usa. Se a cliente ligar para o vidraceiro, acha os R$ 22.600 e a
 diferença se explica em uma frase.
 
-⛔ **A dobradiça sozinha é R$ 5.040 de compra — 22% do valor das portas.**
-Era ela que inchava a linha anterior.
+⭐ **[Jonathan 14/10] a nossa dobradiça custa R$ 12, não os R$ 70 que eu
+estimei.** Com isso ela virou miudeza: R$ 864 de compra, 4% do valor das
+portas, contra os R$ 5.040 do meu palpite. A separação das duas linhas
+continua valendo — mas pela **clareza**, não pelo valor: "fornecimento"
+tem de conter só a folha comprada.
 
 ⚠ Os R$ 400 por folha são ★ meus:
 
 | por folha | V1 | V2 | V3 |
 |---|--:|--:|--:|
-| R$ 300 | 22.180 | 38.680 | 14.680 |
-| **R$ 400** | **22.970** | **40.680** | **14.920** |
-| R$ 500 | 23.740 | 42.660 | 15.140 |
+| R$ 300 | 18.580 | 37.000 | 11.580 |
+| **R$ 400** | **19.370** | **35.980** | **11.820** |
+| R$ 500 | 20.140 | 37.960 | 12.040 |
 
 ## ★ O que já dá para antecipar
 
@@ -425,6 +428,20 @@ Era ela que inchava a linha anterior.
    caixaria, prateleiras, gavetas, cabideiros, iluminação — costuma pesar
    mais. A cliente está pedindo três versões do que **se vê**; o preço vai
    ser decidido pelo que **não se vê**.
+
+---
+
+## ⚠⚠ A dobradiça da base da casa pode estar triplicada
+
+[Jonathan 14/10] **"nossa dobradiça custa 12,00, não 70,00".** Aqui ela
+entrou a R$ 12. ⛔ Mas a **base da casa usa R$ 35** em `dobr`, e foi com
+ela que saíram a **Isabela**, as **duas Raquéis** e o **Orlando e Ivone**.
+
+Ou são itens diferentes — com e sem amortecedor —, ou aqueles orçamentos
+estão com a linha de dobradiça **três vezes maior**. No Orlando e Ivone são
+12 dobradiças: **R$ 420 lançados contra R$ 144 reais**.
+
+**Não mexi em nada por conta própria.** Precisa da palavra do Jonathan.
 
 ---
 
