@@ -43,7 +43,8 @@ br1 = lambda v: f'{v:,.1f}'.replace(',','X').replace('.',',').replace('X','.')
 vg  = lambda v, n=2: f'{v:.{n}f}'.replace('.', ',')
 
 CH_M2, APROV = 2.75*1.85, 0.80
-MC_ALVO, RT_ON = 0.35, False          # ★ adotado
+MC_ALVO = 0.35                        # ★ adotado
+RT_ON   = True                        # ⭐ [Jonathan 14/10] "adicione a RT"
 BASE = M.base(parcelas=0, rt=RT_ON, vendedor=False)
 
 # ── insumos ──────────────────────────────────────────────────────────────
@@ -132,7 +133,7 @@ if __name__ == '__main__':
     W = 88
     print('═'*W)
     print('SANDRA DUARTE — RACK  ·  arquiteta Junia Ordones  ·  outubro/26')
-    print(f'MC {MC_ALVO*100:.0f}% ★ · sem RT ★ · base {BASE*100:.2f}%')
+    print(f'MC {MC_ALVO*100:.0f}% ★ · COM RT ⭐ · base {BASE*100:.2f}%')
     print('═'*W)
     print(f'\n{"PEÇA · chapa dupla de 15 + 15":<42}{"medida":>12}'
           f'{"Metalic":>10}{"Branco":>9}')
@@ -214,8 +215,11 @@ if __name__ == '__main__':
     print('  · ⭐ "O tampo posterior em MDF não é necessariamente no padrão')
     print('    Metalic Champagne" — a própria arquiteta abre essa porta. Em')
     print('    chapa comum ali, economiza-se sem aparecer.')
-    print('  · ⚠ MC e RT não vieram. Adotei 35% e sem RT. A arquiteta Junia')
-    print('    Ordones assina o projeto — se houver RT, o preço muda.')
+    _srt = M.base(parcelas=0, rt=False, vendedor=False)
+    print(f'  · ⭐ RT DE 10% INCLUÍDO [Jonathan 14/10], para a arquiteta Junia')
+    print(f'    Ordones. Sem ela o rack sairia a '
+          f'R$ {br(round(CD/(_srt-MC_ALVO)/10)*10)} — o RT vale')
+    print(f'    R$ {br(PV - round(CD/(_srt-MC_ALVO)/10)*10)}. ★ A MC de 35% continua adotada por mim.')
     print('  · "CONFERIR MEDIDAS E PONTO DE ENERGIA NO LOCAL": o ponto de')
     print('    energia é da elétrica, mas a fonte do LED fica embutida na')
     print('    nossa base — ela precisa de tomada alcançável e de manutenção.')

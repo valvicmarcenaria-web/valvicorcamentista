@@ -32,7 +32,7 @@ temperado reflecta champagne**.
 
 ## O orçamento — `corte-sandra-rack.py`
 
-MC **35%** ★ · **sem RT** ★ · base 85,35%
+MC **35%** ★ · **com RT** ⭐ [Jonathan 14/10] · base 76,52%
 
 | | R$ |
 |---|--:|
@@ -44,7 +44,11 @@ MC **35%** ★ · **sem RT** ★ · base 85,35%
 | iluminação | 248 |
 | embalagem · 2% | 81 |
 | **custo direto** | **4.110** |
-| **PREÇO** | **R$ 8.160** |
+| **PREÇO** | **R$ 9.900** |
+
+⭐ **A RT de 10% entrou por instrução do Jonathan (14/10)**, para a
+arquiteta **Junia Ordones**. Sem ela o rack sairia a **R$ 8.160** — a RT
+vale **R$ 1.740** no preço. A MC de 35% continua ★ adotada por mim.
 
 ---
 
@@ -66,8 +70,8 @@ arquiteta abre essa porta na nota do tampo posterior.
 
 ## ⭐ E a Metalic Champagne sai barata neste móvel
 
-Em MDF de cor comum o rack daria **R$ 7.710**: a linha premium custa **só
-R$ 450 a mais, 6% do preço**. O móvel é pequeno e, com o miolo em Branco
+Em MDF de cor comum o rack daria **R$ 9.350**: a linha premium custa **só
+R$ 550 a mais, 6% do preço**. O móvel é pequeno e, com o miolo em Branco
 TX, **uma chapa de Metalic resolve**. Trocá-la por chapa comum quase não
 compra nada — é um bom argumento para manter o que a arquiteta desenhou.
 
@@ -89,7 +93,30 @@ compra nada — é um bom argumento para manter o que a arquiteta desenhou.
    Decide construção, puxador e preço.
 4. ★ **O vidro reflecta champagne** também é estimado. Cotar junto com o
    **bisotê**, que é serviço de vidraceiro, não nosso.
-5. ⚠ **MC e RT não vieram.** Adotei 35% e sem RT. A arquiteta assina o
-   projeto — se houver RT, o preço muda.
+5. ⚠ **A MC não veio.** Adotei **35%**, como no Sigma. ⭐ A **RT de 10%**
+   veio: Jonathan mandou incluir em 14/10.
 6. **Ponto de energia.** A fonte do LED fica embutida na nossa base: ela
    precisa de tomada alcançável e de acesso para manutenção.
+
+---
+
+## A proposta — `build-sandra-rack.py`
+
+**`proposta-sandra-rack.pdf`, duas páginas** ⭐ [Jonathan 14/10: *"pode
+fazer a proposta de 2 páginas apenas"*].
+
+* **Página 1, escura** — capa e valor na mesma folha, porque com duas
+  folhas não cabe uma capa muda: garantia de dez anos, vidro e metal,
+  iluminação entregue acesa. **Sem preço.**
+* **Página 2, clara** — o móvel em cinco linhas (corpo, portas, tampo,
+  prateleira, luz), o investimento, a condição de pagamento, o que não
+  está incluso e o que se confirma antes de produzir.
+* **Pagamento: 50% de entrada + 50% na entrega** ⭐ [Jonathan 14/10],
+  **condição única** — sem escada de desconto por entrada.
+* Prazo 60 dias corridos · garantia 10 anos · validade 7 dias úteis.
+* ⛔ **Sem imagem.** A única arte da pasta é a prancha técnica, cotada de
+  ponta a ponta — e metragem não vai para proposta, nem desenhada. A folha
+  é tipográfica: espresso, champagne e pérola, a paleta do próprio móvel.
+* Única espessura citada ao cliente: o **vidro de 10 mm** do tampo, que é
+  especificação de material, liberada por Jonathan em 07/10.
+* Três passes do auditor: **tudo OK**.
