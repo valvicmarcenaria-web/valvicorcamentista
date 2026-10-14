@@ -63,9 +63,15 @@ PESSOAS = [
 CLASSE_NOME = {'venda': 'Vendas', 'projeto': 'Projeto e coordenação',
                'operacao': 'Operação'}
 
-# Endereço da Custo por Projeto no Drive. Fica gravado em Painel!C4 de cada
-# planilha — ninguém precisa colar nada. Se a planilha for recriada com outro
-# arquivo, troque aqui e gere de novo.
+# Endereço da Custo por Projeto no Drive, escrito DENTRO da fórmula do
+# IMPORTRANGE — não numa célula de configuração.
+#
+# Por que não numa célula: ao colar um link do Drive numa célula, o Google o
+# converte sozinho num chip de arquivo. Chip não é texto, o IMPORTRANGE não o
+# lê, e a planilha fica zerada sem dar erro — o pior tipo de defeito, o que
+# parece estar funcionando. Dentro da fórmula não há o que converter.
+#
+# Se a Custo por Projeto for recriada noutro arquivo, troque aqui e gere de novo.
 FONTE = ('https://docs.google.com/spreadsheets/d/'
          '1tTJXG4w7lDvIcnd0dyr219-leOPwuURqrBk6lJIr18I/edit')
 
@@ -142,9 +148,7 @@ def aba_base(wb):
     """Traz a Base inteira uma vez só. É o único IMPORTRANGE da planilha."""
     ws = wb.create_sheet('_base')
     ws.sheet_state = 'hidden'
-    ws['A1'] = (f'=IF($Painel.$C$4="","",'
-                f'IFERROR(IMPORTRANGE(Painel!$C$4,"{BASE_ABA}!A1:R{BASE_FIM}"),""))'
-                .replace('$Painel.$C$4', 'Painel!$C$4'))
+    ws['A1'] = f'=IFERROR(IMPORTRANGE("{FONTE}","{BASE_ABA}!A1:R{BASE_FIM}"),"")'
     return ws
 
 
@@ -269,30 +273,25 @@ def aba_painel(wb, nome, funcao, classe, com, avu):
     faixa(ws, 1, f'{nome.upper()}   ·   {funcao}',
           f'{CLASSE_NOME[classe]}  ·  tudo se calcula sozinho a partir da aba Comissões.', 7)
 
-    ws.cell(3, 2, 'Endereço da planilha Custo por Projeto').font = Font(
-        name=F, size=9, bold=True, color=NAVY)
-    ws.merge_cells('B4:B4')
-    ws.cell(4, 2, 'já preenchido →').font = Font(name=F, size=9, color=MUTED)
-    cfg = ws.cell(4, 3, FONTE)
-    cfg.fill = PatternFill('solid', fgColor=GOLDBG)
-    cfg.border = BORDA
-    cfg.font = Font(name=F, size=9, color=INK)
-    ws.merge_cells(start_row=4, start_column=3, end_row=4, end_column=7)
-    ws.cell(5, 2, 'Na primeira abertura o Google pede para autorizar a conexão. '
-                  'Clique em Permitir acesso — é uma vez só.').font = \
-        Font(name=F, size=8.5, italic=True, color=MUTED)
+    ws.merge_cells(start_row=3, start_column=2, end_row=3, end_column=7)
+    c = ws.cell(3, 2, '  Os números vêm sozinhos da Custo por Projeto. Na primeira abertura o '
+                      'Google pede para autorizar a conexão — clique em Permitir acesso. É uma vez só.')
+    c.fill = PatternFill('solid', fgColor=GOLDBG)
+    c.font = Font(name=F, size=9, color=NAVY2)
+    c.alignment = Alignment(horizontal='left', vertical='center')
+    ws.row_dimensions[3].height = 22
 
     cp0, cpf = com
     kpis = [('Comissão no ano', f"=ROUND(SUM('Comissões'!$E${cp0}:$E${cpf}),2)", NAVY),
             ('Já paga', f'=ROUND(SUMIF(\'Comissões\'!$G${cp0}:$G${cpf},"Pago",'
                         f"'Comissões'!$E${cp0}:$E${cpf}),2)", OK),
-            ('A receber', f"=ROUND($C$9-$E$9,2)", ABERTO)]
+            ('A receber', f"=ROUND($C$7-$E$7,2)", ABERTO)]
     if avu:
         ap0, apf = avu
         kpis.append(('Avulsos no ano', f"=ROUND(SUM('Avulsos'!$C${ap0}:$C${apf}),2)", NAVY2))
     for i, (rot, formula, cor) in enumerate(kpis):
         c0 = 3 + i * 2 if i < 3 else 3
-        linha = 8 if i < 3 else 11
+        linha = 6 if i < 3 else 9
         if i == 3:
             c0 = 3
         r = ws.cell(linha, c0, rot)
@@ -304,7 +303,7 @@ def aba_painel(wb, nome, funcao, classe, com, avu):
         ws.merge_cells(start_row=linha + 1, start_column=c0, end_row=linha + 1, end_column=c0 + 1)
         ws.row_dimensions[linha + 1].height = 26
 
-    lm = 14 if avu else 12
+    lm = 12 if avu else 10
     ws.merge_cells(start_row=lm, start_column=2, end_row=lm, end_column=7)
     c = ws.cell(lm, 2, 'MÊS A MÊS   ·   pela data combinada de pagamento')
     c.fill = PatternFill('solid', fgColor=GOLDBG)
