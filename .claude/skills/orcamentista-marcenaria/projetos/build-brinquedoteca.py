@@ -24,18 +24,29 @@ CSS = open(P/'css-brinquedoteca.css', encoding='utf-8').read()
 
 # nome e descrição de proposta — sem medida, sem contagem
 CONJ = [
- ('Passarela suspensa', 'Estrutura em aço, piso em compensado naval e pintura automotiva.'),
- ('Gradis de contenção', 'Quadro metálico com corda combinada de alma em aço, com a rede do mezanino e as telas de proteção.'),
- ('Plataformas acolchoadas', 'Degraus estruturados, espuma de alta densidade e courvin náutico.'),
- ('Piscina de espuma', 'Estrutura de contenção, fundo e paredes acolchoados.'),
- ('Banco extenso', 'Estrutura em aço com assento acolchoado em courvin náutico.'),
- ('Parede de desenho', 'Painel em laminado branco, para escrever e apagar.'),
- ('Parede estrutural principal', 'Estrutura em aço e MDF ultra premium cru, pronto para o acabamento.'),
- ('Casinha — paredes', 'Fachada e laterais em MDF ultra premium cru, dupla face.'),
- ('Casinha — escada', 'Estrutura em aço com degraus forrados e pintura automotiva.'),
- ('Janelas e pórticos moldurados', 'Estilo veneziana em usinagem plana, com frisos, em laca branca.'),
- ('Escorregador com túnel curvo', 'Teto em arco sobre gabarito, pista em laminado e gradil de proteção.'),
- ('Cozinha de brinquedo', 'Módulo lúdico sob medida, em MDF ultra premium cru.'),
+ ('Passarela suspensa',
+  'Estrutura em aço com pintura automotiva.'),
+ ('Gradis de contenção',
+  'Quadro metálico com corda combinada de alma em aço, em todos os pontos '
+  'de contenção, com a rede do mezanino e as telas de proteção.'),
+ ('Plataformas acolchoadas',
+  'Degraus estruturados, espuma de alta densidade e courvin náutico.'),
+ ('Piscina de espuma',
+  'Estrutura de contenção, fundo e paredes acolchoados.'),
+ ('Banco extenso',
+  'Estrutura em aço com assento acolchoado, estofado em linho.'),
+ ('Parede norte',
+  'Estrutura em aço e MDF ultra premium cru, pronto para o efeito tijolinho.'),
+ ('Casinha — paredes',
+  'Fachada e laterais em MDF ultra premium cru, dupla face.'),
+ ('Casinha — escada',
+  'MDF ultra premium, com os degraus em revestimento emborrachado.'),
+ ('Janelas e pórticos moldurados',
+  'Estilo veneziana em usinagem plana, com frisos, em laca branca.'),
+ ('Escorregador com túnel curvo',
+  'Teto em arco sobre gabarito, pista em laminado e gradil de proteção.'),
+ ('Cozinha de brinquedo',
+  'Módulo lúdico sob medida, em MDF ultra premium cru.'),
 ]
 NOMES = [i['nome'] for i in oq.ITENS]
 assert len(CONJ) == len(NOMES), (len(CONJ), len(NOMES))
@@ -64,9 +75,16 @@ p2 = f"""<div class="pg"><div class="in">
   sustenta uma criança lá no alto é <b>aço</b>; o que a
   protege quando ela erra é <b>espuma na densidade certa</b>; e o que faz a
   casinha parecer uma casa de verdade é <b>usinagem peça a peça</b>.</p>
-  <p class="txt">São ofícios distintos no mesmo contrato — serralheria, marcenaria,
-  estofaria e pintura automotiva — sob um único responsável. A
-  Valvic desenha, fabrica, pinta, estofa e instala com equipe própria.</p>
+  <p class="txt">São <b>ofícios distintos no mesmo contrato</b> — serralheria,
+  marcenaria, estofaria, pintura automotiva e instalação — e insumos que não
+  se compram no mesmo lugar: perfil de aço, corda de alma de aço, espuma em
+  densidades diferentes, MDF ultra premium, laca, tecido e revestimento
+  emborrachado.</p>
+  <p class="txt">Contratados em separado, <b>cada um responde pelo seu pedaço
+  e ninguém responde pelo conjunto</b> — e é no encontro entre eles que a
+  obra para. Aqui é um fornecedor só: <b>um cronograma, uma medição, uma
+  garantia</b>. A Valvic desenha, fabrica, pinta, estofa e instala com
+  equipe própria.</p>
 
   <div class="ph sangra" style="margin-top:10mm;height:96mm;">
     <img src="{img('geral')}" alt=""></div>

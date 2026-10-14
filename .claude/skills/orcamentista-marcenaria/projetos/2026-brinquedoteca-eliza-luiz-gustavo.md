@@ -479,3 +479,67 @@ continuam devolvendo o dimensionamento da estrutura suspensa para quem
 executa (PR04 e PR05, em três lugares). Tirar a linha do documento não muda
 quem responde se algo ceder — muda só quem o cliente vê responder. É decisão
 do Jonathan e fica assim anotada.
+
+---
+
+# ⭐ REVISÃO DE 14/10/2026 — ajuste de descrição e de escopo
+
+[Jonathan 14/10] passou item a item. Três mudanças são de **descrição**, duas
+são de **escopo e custo**.
+
+| | mudança | efeito |
+|---|---|---|
+| **01** Passarela | descrição passa a *"estrutura em aço com pintura automotiva"* | só texto |
+| **02** Gradis | *"em todos os pontos de contenção"* | ⚠ ver abaixo |
+| **05** Banco | sai o courvin náutico, entra **estofado em linho** | ⚠ **encareceu** |
+| **06** Parede de desenho | **SAI** | −1 item |
+| **07** Parede | passa a se chamar **Parede norte** | só texto |
+| **09** Escada | **MDF com revestimento emborrachado**, sem aço e sem pintura | barateou |
+| pág. 2 | o **efeito da articulação** de insumos e profissionais | só texto |
+
+## ⛔ O total caiu: R$ 185.000 → **R$ 176.800**
+
+O alvo de 30/09 era **cravado**. Com um item a menos e a escada mais
+simples, deixar cravado seria o cliente levar menos pelo mesmo valor. O
+motor passou a derivar o alvo do custo:
+
+```python
+ALVO_30_09, CD_30_09 = 185000, 61296.38
+ALVO_TOTAL = round(ALVO_30_09*CD/CD_30_09/10)*10
+```
+
+⭐ Isso **preserva exatamente a MC de 43,382%** que o Jonathan cravou — o
+preço cai na mesma proporção do custo, e nenhum item herda o preço do
+vizinho. Se ele quiser segurar os 185.000, é uma linha.
+
+## ⚠ O banco ficou MAIS CARO com o linho
+
+Courvin náutico custa R$ 52/m²; linho para estofaria, ★ R$ 95/m². O item foi
+de **R$ 6.850 para R$ 7.680**. A troca foi pedida como simplificação e saiu
+como acréscimo.
+
+⛔ **E há um ponto técnico.** Courvin náutico é PVC com proteção UV e
+antifungo — numa brinquedoteca ele existe por causa de suco, tinta e mão
+suja. **Linho mancha e não se limpa do mesmo jeito.** Vale a cliente saber
+antes de escolher.
+
+★ **"linho ou facto"** — não reconheço "facto" como tecido de estofaria.
+Orçado em linho; o nome a confirmar.
+
+## ★ Em aberto depois desta revisão
+
+1. ⛔ **A parede de desenho saiu INTEIRA**, não só o painel. Era uma parede
+   estruturada de 4,00 × 2,55 que existia para receber a fórmica. **Se a
+   parede tiver de ficar sem o painel, é outro item** — e volta a custar.
+2. ⚠ **O item 03 (plataformas acolchoadas) continua em courvin náutico.** O
+   Jonathan só mandou tirar do banco. Confirmar se é intencional — ficaram
+   dois acabamentos diferentes na mesma obra.
+3. ⚠ **"Gradis de todos os locais"** está costeado sobre **9,13 m** de
+   gradil mais a rede do mezanino. Se "todos os locais" somar mais metro,
+   é acréscimo, não está no preço.
+4. ⚠ **A escada em MDF.** Sem banzo metálico, um lance de 2,60 com criança
+   depende da rigidez da lateral — orçada em **duas camadas de 18 mm**. Se
+   o cálculo pedir mais, ou engrossa a lateral ou volta um reforço.
+5. ⭐ A proposta agora **nomeia a parede norte** — e isso torna visível que
+   **leste e oeste não estão no orçamento**, o que já era verdade e estava
+   mudo.

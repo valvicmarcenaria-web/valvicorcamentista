@@ -49,6 +49,13 @@ LACA_M2      = 210.0              # ★ laca branca aplicada (fundo + 2 demãos)
 PINT_AUTO    = 120.0              # ★ R$/m² de superfície REAL, em lote
 ESP = {'D23':820., 'D28':960., 'D33':1100.}   # ★ R$/m³ de placa
 COURVIN, COSTURA = 52.0, 55.0     # ★ R$/m²
+# ⭐ [Jonathan 14/10] o BANCO sai do courvin náutico e passa a estofado em
+#   TECIDO (linho). ⚠ Tecido de linho em brinquedoteca mancha e não se
+#   limpa como PVC — ver EM ABERTO no dossiê.
+TECIDO_M2     = 95.0              # ★ linho para estofaria, por m²
+# ⭐ [Jonathan 14/10] a ESCADA da casinha sai do aço e passa a MDF com
+#   revestimento emborrachado. Sem metalon e sem pintura automotiva.
+EMBORRACHADO  = 130.0             # ★ manta emborrachada aplicada, por m²
 CORDA_COMB = 62.0                 # ★ combinada 16 mm, nacional
 CABO_PERIM = 38.0                 # ★ cabo de aço 6 mm + esticador
 
@@ -147,7 +154,7 @@ it('Banco extenso', f'{L_BC:.2f} × {B_BC:.2f} m', [
  ('Compensado plastificado 18 mm — base do assento',      1.0,'ch',COMP_PLAST18),
  ('Espuma D28 de 5 cm — assento de uso intenso',
                                        L_BC*B_BC*0.05,'m³',ESP['D28']),
- ('Courvin náutico',                    L_BC*B_BC*1.9,'m²',COURVIN),
+ ('⭐ Tecido de linho para estofaria',  L_BC*B_BC*1.9,'m²',TECIDO_M2),
  ('Corte, costura e grampeamento',      L_BC*B_BC*1.9,'m²',COSTURA),
  ('Chumbador',                                           14.0,'un',CHUMB),
  (f'Pintura automotiva — {S_bc:.2f} m²',                 S_bc,'m²',PINT_AUTO),
@@ -175,10 +182,11 @@ def parede(nome, L, H, dim_extra='', mont=0.60, trav=1.00, dupla=False,
     return it(nome, f'{L:.2f} × {H:.2f} m · {m2:.2f} m² de chapa {dim_extra}',
               lin, obs=obs or f'{m_p:.1f} m de metalon · entrega CRUA')
 
-# ══ 6 · PAREDE DE DESENHO com painel em fórmica ══════════════════════════
-parede('Parede de desenho (painel em fórmica)', 4.00, 2.55,
-       forra=('Laminado fórmica branca + cola de contato', 4.00*1.60,'m²',FORMICA_M2),
-       obs='fórmica branca na faixa de alcance da criança — escreve e apaga')
+# ══ 6 · ⛔ PAREDE DE DESENHO — FORA DO ESCOPO [Jonathan 14/10] ═══════════
+#   "vamos tirar o painel de desenho". O item saiu INTEIRO, não só a
+#   fórmica: era uma parede estruturada de 4,00 × 2,55 que existia para
+#   receber o painel. ⚠ Se a parede tiver de ficar sem o painel, é outro
+#   item — ver EM ABERTO no dossiê.
 
 # ══ 7 · PAREDE ESTRUTURAL 1 (efeito tijolinho, por conta da cliente) ═════
 parede('Parede estrutural 1 (efeito tijolinho)', 8.165, 2.80,
@@ -187,19 +195,20 @@ parede('Parede estrutural 1 (efeito tijolinho)', 8.165, 2.80,
 # ══ 8 · ESTRUTURA DA CASINHA — paredes e escada ══════════════════════════
 parede('Casinha — paredes', 2.85, 2.85, dupla=True, mont=0.50,
        obs='fachada e laterais, dupla face · entrega CRUA')
-m_ec = 2*2.6 + 8*0.30
+# ⭐ [Jonathan 14/10] "as escadas serão em MDF com revestimento
+#   emborrachado. Não terá aço em pintura." Sai o metalon, sai a pintura
+#   automotiva, sai a espuma com courvin. Entra MDF e manta emborrachada.
+M2_LAT = 2*2.60*0.35*2       # duas laterais, duas camadas
+M2_DEG = 8*0.70*0.30         # oito degraus
+M2_REV = M2_DEG*1.30         # revestimento com o espelho e a quina do degrau
 it('Casinha — escada', '2,60 m de lance', [
- ('Metalon 40×40×1,5 — banzos e degraus',                m_ec,'m',mL('40x40x1,5')),
- ('Mão de obra de serralheria',                          m_ec,'m',MO_SERR_EST),
- ('Consumível de solda',        m_ec*mL('40x40x1,5'),'vb',CONSUM_S),
- ('Compensado plastificado 18 mm — piso dos degraus',     0.9,'ch',COMP_PLAST18),
- ('Espuma D33 de 3 cm — forração do degrau',         3.6*0.03,'m³',ESP['D33']),
- ('Courvin náutico',                                  3.6*1.6,'m²',COURVIN),
- ('Corte, costura e grampeamento',                    3.6*1.6,'m²',COSTURA),
- ('Chumbador',                                           10.0,'un',CHUMB),
- (f'Pintura automotiva — {sup("40x40x1,5", m_ec):.2f} m²',
-                                      sup('40x40x1,5', m_ec),'m²',PINT_AUTO),
-])
+ ('MDF ultra premium 18 mm — laterais em duas camadas', M2_LAT/4.07,'ch',MDF_U18),
+ ('MDF ultra premium 18 mm — degraus',                  M2_DEG/4.07,'ch',MDF_U18),
+ ('⭐ Revestimento emborrachado dos degraus',                M2_REV,'m²',EMBORRACHADO),
+ ('Usinagem, montagem e esquadro',                             18.0,'h',MO_MARC_H),
+ ('Fita de borda e consumível de montagem',          M2_LAT+M2_DEG,'m²',PARAF_M2),
+ ('Chumbador e ferragem de fixação',                           14.0,'un',CHUMB),
+], obs='⭐ sem aço e sem pintura automotiva [Jonathan 14/10]')
 
 # ══ 9 · JANELAS E PÓRTICOS MOLDURADOS — laca branca ══════════════════════
 N_JAN, N_PORT = 4, 2
@@ -254,7 +263,14 @@ MC = 0.45
 
 # [Jonathan 30/09] preço CRAVADO, não calculado por MC
 PRECO_FIXO = {'Cozinha de brinquedo': 12000}
-ALVO_TOTAL = 185000   # [Jonathan 30/09] investimento cravado
+# [Jonathan 30/09] investimento cravado em 185.000 sobre um custo direto de
+# R$ 61.296,38 — o que embutiu uma MC de 43,38%.
+# ⭐ [Jonathan 14/10] o escopo mudou: saiu a parede de desenho e a escada
+#   deixou de ser de aço. O preço NÃO pode ficar cravado: o cliente levaria
+#   menos pelo mesmo valor. O alvo passa a cair na MESMA PROPORÇÃO do custo,
+#   o que preserva exatamente a margem que o Jonathan cravou.
+ALVO_30_09, CD_30_09 = 185000, 61296.38
+ALVO_TOTAL = round(ALVO_30_09*CD/CD_30_09/10)*10
 
 # custo direto de cada item = custo próprio + sua fatia de logística,
 # consumível e embalagem, rateada pelo custo (regra da casa)
@@ -270,6 +286,7 @@ _mai = max(_resto, key=lambda n: PV[n]); PV[_mai] += _dif
 TOT = sum(PV.values())
 MC_REAL = {n: BASE - CDI[n]/PV[n] for n in PV}
 assert TOT == ALVO_TOTAL
+MC_CRAVADA_30_09 = 0.43382
 
 if __name__ == '__main__':
     br  = lambda v: f'{v:,.2f}'.replace(',','§').replace('.',',').replace('§','.')

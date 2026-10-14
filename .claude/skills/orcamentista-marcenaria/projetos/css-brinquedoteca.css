@@ -39,7 +39,7 @@ h1,h2,h3,p{margin:0;font-weight:inherit;}
 
 /* lista de conjuntos */
 .cj{display:grid;grid-template-columns:8mm 1fr auto;gap:0 6mm;
-    padding:3.0mm 0;border-bottom:1px solid var(--linha);align-items:baseline;}
+    padding:2.5mm 0;border-bottom:1px solid var(--linha);align-items:baseline;}
 .cj:first-of-type{border-top:1px solid var(--linha);}
 .cj .n{font-size:8pt;color:var(--verde-lt);letter-spacing:.06em;}
 .cj .t{font-size:9.9pt;letter-spacing:-.005em;}
