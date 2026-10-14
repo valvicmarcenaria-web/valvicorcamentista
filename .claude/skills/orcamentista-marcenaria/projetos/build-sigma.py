@@ -24,12 +24,13 @@ br = lambda v: f'{v:,.0f}'.replace(',', '.')
 CLIENTE, OBRA, DATA = 'Reginaldo', 'Sigma · Belo Horizonte', '14 de outubro de 2026'
 ARQ = 'Braz Arquitetura & Interiores'
 PRAZO, VALIDADE, GARANTIA = '60 dias corridos', '7 dias úteis', '10 anos'
-NP = 3
+NP = 4
 
 def uri(n):
     return ('data:image/jpeg;base64,'
             + base64.b64encode((P/'img-sigma'/n).read_bytes()).decode())
 HERO, NICHOS, MESA = uri('sigma-hero.jpg'), uri('sigma-nichos.jpg'), uri('sigma-mesa.jpg')
+SALA = uri('sigma-sala.jpg')
 
 ITENS = [
  ('01', 'Aparador', 'Portas em tela de bambu, tampo e base em Grafito.',
@@ -129,6 +130,30 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
   color:var(--jeq-lt);font-weight:700;}
 .band .v{font-variant-numeric:tabular-nums;}
 
+/* ── página de valor ────────────────────────────────────────────────── */
+.vw{position:relative;height:106mm;overflow:hidden;line-height:0;flex:none;
+  margin:0 -19mm;}
+.vw img{width:100%;height:106mm;object-fit:cover;object-position:center 58%;}
+.vw .ov{position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(33,36,38,.92) 0%,
+             rgba(33,36,38,.45) 38%,rgba(33,36,38,0) 72%);}
+.vw .cap{position:absolute;left:19mm;right:19mm;bottom:9mm;color:#F4EFE8;
+  line-height:1.15;}
+.vw .cap .k{font-size:6.8pt;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--jeq-lt);font-weight:700;}
+.vw .cap .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:26pt;
+  font-weight:600;letter-spacing:-.01em;margin-top:2.4mm;}
+.vrow{display:grid;grid-template-columns:38mm 1fr;gap:7mm;align-items:baseline;
+  padding:6mm 0;border-top:1px solid var(--line);flex:none;}
+.vrow:first-of-type{border-top:1.6px solid var(--ink);margin-top:9mm;}
+.vrow .k{font-size:7pt;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--jeq);font-weight:700;padding-top:2.4mm;}
+.vrow .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:23pt;
+  font-weight:600;line-height:1.05;letter-spacing:-.01em;}
+.vrow .d{color:var(--soft);font-size:9pt;line-height:1.55;margin-top:2mm;
+  max-width:118mm;}
+.vrow .d b{color:var(--ink);font-weight:600;}
+
 .strip{margin-top:6mm;display:grid;grid-template-columns:1fr 1fr;gap:3mm;
   flex:none;}
 .strip .ph{border-radius:3px;overflow:hidden;line-height:0;}
@@ -181,6 +206,45 @@ p1 = f"""<div class="page"><div class="cv">
   <div class="R"><img src="{HERO}" alt=""></div>
 </div></div>"""
 
+pv = f"""<div class="page"><div class="pad">
+  <div class="hd"><div class="b">Valvic Marcenaria</div>
+    <div class="m">{CLIENTE} · {DATA}</div></div>
+
+  <div class="vw" style="margin-top:8mm;">
+    <img src="{NICHOS}" alt="">
+    <div class="ov"></div>
+    <div class="cap">
+      <div class="k">O que vai junto com o móvel</div>
+      <div class="t">Três coisas que não aparecem<br>no desenho — e decidem
+        o resultado.</div>
+    </div>
+  </div>
+
+  <div class="vrow">
+    <div class="k">Garantia</div>
+    <div><div class="t serif">Dez anos.</div>
+      <div class="d">Estrutura e ferragens dos cinco móveis. Não é selo de
+      catálogo: é o prazo em que respondemos pelo que entregamos, com
+      <b>equipe própria</b>, do corte à instalação.</div></div>
+  </div>
+  <div class="vrow">
+    <div class="k">Ferragem</div>
+    <div><div class="t serif">Hettich, alemã.</div>
+      <div class="d"><b>Corrediça oculta</b> nas gavetas — o trilho some por
+      baixo, a gaveta abre inteira e fecha com amortecimento. <b>Dobradiça
+      com amortecedor</b> nas portas. É a ferragem que define se o móvel
+      ainda fecha bem no décimo ano.</div></div>
+  </div>
+  <div class="vrow">
+    <div class="k">Iluminação</div>
+    <div><div class="t serif">Entregue acesa.</div>
+      <div class="d">Fita e perfil <b>usinados dentro da própria peça</b>,
+      não aparafusados depois. A marcenaria chega iluminada e alinhada —
+      <b>a nossa parte vem instalada</b>, e a obra só liga o circuito.</div></div>
+  </div>
+  {foot(2)}
+</div></div>"""
+
 rows = ''.join(
     f'<div class="row"><div class="n">{c}</div>'
     f'<div><div class="t">{n}</div><div class="d">{d}</div></div>'
@@ -199,7 +263,7 @@ p2 = f"""<div class="page"><div class="pad">
     <div class="l sep"><span class="lab">Investimento total</span>
       <span class="big">R$ {br(TOTAL)}</span></div>
   </div>
-  {foot(2)}
+  {foot(3)}
 </div></div>"""
 
 p3 = f"""<div class="page"><div class="pad">
@@ -253,14 +317,14 @@ p3 = f"""<div class="page"><div class="pad">
     em tela de bambu</b> depende de amostra aprovada por vocês e pela
     arquiteta.</div>
   </div>
-  {foot(3)}
+  {foot(4)}
 </div></div>"""
 
 HTML = ('<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">'
         '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:'
         'wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" '
         'rel="stylesheet"><style>' + CSS + '</style></head><body>'
-        + p1 + p2 + p3 + '</body></html>')
+        + p1 + pv + p2 + p3 + '</body></html>')
 
 (P/'proposta-sigma.html').write_text(HTML, encoding='utf-8')
 open('/tmp/in.html', 'w', encoding='utf-8').write(HTML)

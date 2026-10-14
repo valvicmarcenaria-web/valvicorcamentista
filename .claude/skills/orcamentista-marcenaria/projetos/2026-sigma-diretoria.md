@@ -77,6 +77,11 @@ chapas que a Braz especificou. A proposta tem a cara do móvel que ela vende.
 * **capa** — faixa Grafito à esquerda com o investimento em corpo grande,
   e o **móvel do café sangrando** na direita em toda a altura. É o item que
   vale 55% do orçamento; é ele que abre.
+* ⭐ **página de valor, ANTES do preço** [Jonathan 14/10] — imagem dos
+  nichos iluminados sangrando de borda a borda, com o título sobre o
+  escuro, e três blocos: **garantia de dez anos**, **ferragem Hettich
+  alemã** (corrediça oculta e dobradiça com amortecedor) e **iluminação
+  entregue acesa**. Três frases, nenhuma narrativa.
 * **página 2** — uma linha por móvel: código da prancha em corpo grande na
   cor Jequitibá, nome, uma frase, valor à direita. Fecha numa faixa Grafito
   com marcenaria, iluminação e o total.
@@ -90,6 +95,11 @@ quantidade — rodado com `--excecoes '10 anos|10×|8×|6×'`.
 
 ## ★ Em aberto
 
+0. ⚠⚠ **A proposta agora NOMEIA A HETTICH.** Isso deixou de ser detalhe
+   interno: virou promessa escrita. A corrediça oculta está no orçamento a
+   **R$ 190 ★, ainda sem cotação** — e é o item que sustenta a frase. Se a
+   Hettich oculta custar mais, ou o preço sobe ou a promessa cai. **Cotar
+   antes de enviar.**
 1. ⛔⛔ **A tela de bambu** é o maior ★. Entrou a R$ 480/m² aplicada
    (R$ 383 de custo nas quatro portas). A casa tem base de **palhinha**
    (R$ 950/m² instalada), que é outro material e mais caro. **Precisa de
