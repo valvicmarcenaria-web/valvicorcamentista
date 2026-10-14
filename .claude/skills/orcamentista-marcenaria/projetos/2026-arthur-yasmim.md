@@ -65,6 +65,7 @@ quer, inclusive um número que não está nas três opções dela.
 * **sem RT** — a cliente está falando direto com a casa, não há arquiteto
   na conversa
 * **MC 37%** — acima do piso de 35%, base da casa **85,35%**
+* **iluminação em linha separada** [Jonathan 13/10]
 
 ### ⭐ Seis preços que são um preço e dois deltas
 
@@ -113,6 +114,84 @@ seja, **as três versões são todas do closet**.
 ⚠ Mas ela diz "5 portas no reflecta bronze": 5 é ímpar e os módulos são de
 duas folhas. Ou algum módulo tem folha única, ou ela está contando por
 módulo em algum ponto. **A conferir com ela antes de orçar.**
+
+---
+
+## As cotas que chegaram  [13/10, segunda leva]
+
+| | |
+|---|---|
+| closet | **410** de vão livre entre as duas fileiras · **260** de altura |
+| penteadeira | **105** de largura, módulo 3, sem porta |
+| módulo tipo | **105** de largura com **duas folhas** → folha de **52,5** |
+| sapateira | **110** + coluna lateral de **23**, prateleiras **inclinadas**, porta-botas de **42** no alto, vãos de **24** e **30** |
+| espelho | **112 × 250** |
+| fileira direita | **166** de comprimento |
+| outras | 200 · 185 · 98 · 79 · 102 · 85 · 60 · 21 · 87 na elevação e na planta |
+
+⭐ A sapateira fica **fora do closet**, no corredor, ao lado da porta — e o
+espelho de 112 × 250 está desenhado **ao lado dela**, não na frente.
+
+---
+
+## ⭐ O Δ que responde a pergunta da cliente — `corte-arthur-yasmim.py`
+
+As três versões diferem **só nas folhas**. Então o Δ por folha responde a
+pergunta sem depender da modulação, que ainda falta.
+
+**As 16 folhas**, de 0,53 × 2,50 cada:
+
+| | reflecta bronze | MDF Fendi |
+|---|--:|--:|
+| vidro / chapa | 5.880 | 3.600 |
+| perfil de alumínio / fita | **10.648** | 532 |
+| dobradiça | 3.040 | 1.120 |
+| **custo direto** | **19.959** | **5.610** |
+| **preço** | **41.281** | **11.604** |
+
+⛔⛔ **O perfil de alumínio é a maior linha das duas colunas** — R$ 10.648,
+mais que o próprio vidro. São **96,8 m de perfil** para fechar **21 m² de
+vão**: folha estreita e alta é o pior caso, muito perímetro por m².
+
+**Cada folha de bronze custa R$ 1.855 de preço a mais que uma de Fendi:**
+
+| | folhas de bronze | a mais que a V3 |
+|---|--:|--:|
+| V3 · todas em Fendi | 0 | — |
+| V1 · 5 bronze + 11 Fendi | 5 | **9.274** |
+| V2 · todas em bronze, como o projeto | 16 | **29.677** |
+
+⛔ Entre a V2 e a V3 há **R$ 29.677**, só nas portas. A escolha da cliente
+não é de cor — é de dezenas de milhares.
+
+### A porta inteiriça de espelho · igual nas três
+
+1,12 × 2,50, cotada na prancha: custo R$ 2.914, **preço R$ 6.026**
+(espelho R$ 1.680 · perfil R$ 796 ★ · quatro dobradiças R$ 380 ★).
+
+⛔ **Atenção ao peso.** 2,80 m² de espelho de 4 mm passam de 25 kg só de
+vidro, mais o perfil. Numa folha de 2,50 de altura, **de giro**, isso
+trabalha em balanço na dobradiça e descai com o tempo. ⭐ O caminho técnico
+é **de correr**. Inteiriça ela pode ter; de giro é que não deveria.
+
+### Principal × downgrade · só a corrediça
+
+Oculta Hettich R$ 190 o par ★ contra telescópica R$ 85 (base da casa),
+sobre ★ 24 gavetas: **R$ 5.316 de preço**.
+
+⭐ **As gavetas ficam atrás do vidro.** Com telescópica vê-se o trilho pela
+lateral da gaveta, o dia inteiro, através da porta. Com a oculta não se vê
+nada. Num closet envidraçado é esse o argumento — não o amortecimento.
+
+### ⛔⛔ Por que ainda não há três preços
+
+**Nem o vidro nem o perfil estão na base da casa.** Os dois são ★ estimados
+(R$ 280/m² e R$ 110/m) e juntos são **83% do custo da versão bronze**.
+Antes de mandar três números, precisamos de **um orçamento de vidraceiro e
+um de alumínio** — sem isso as três versões são três palpites.
+
+⭐ **A quantidade para cotar já está pronta:** 21,0 m² de reflecta bronze,
+2,80 m² de espelho e 104,0 m de perfil.
 
 ## ★ O que já dá para antecipar
 
