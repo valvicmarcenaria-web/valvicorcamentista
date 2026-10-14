@@ -39,7 +39,10 @@ br1 = lambda v: f'{v:,.1f}'.replace(',','X').replace('.',',').replace('X','.')
 CH_M2, APROV = 2.75*1.85, 0.80
 PRECO = {6: 300.0, 15: 500.0, 18: 600.0}      # MDF cor — base da casa
 FITA_M  = 3.0 + 2.5
-MC_ALVO = 0.37                                 # ⭐ marcenaria
+# ⭐ [Jonathan 14/10] "vamos considerar a marcenaria com 30% de MC".
+# ⛔ São 5 pontos ABAIXO do MC_PISO da casa (35%). Aplicado também à
+#   iluminação, que é fabricação e instalação nossa como a marcenaria.
+MC_ALVO = 0.30
 MC_PORTA= 0.25
 RT_ON   = False
 BASE    = M.base(parcelas=0, rt=RT_ON, vendedor=False)
@@ -260,6 +263,36 @@ if __name__ == '__main__':
             pt = portas(nf, nd)
             print(f'  {nome:<34}{br(R["TOT"]):>12}{br(pt):>11}{br(LED_PV):>12}'
                   f'{br(R["TOT"] + pt + LED_PV):>12}')
+
+    print(f'\n{"═"*W}')
+    print(f'⛔⛔ A MC DE {MC_ALVO*100:.0f}% ESTÁ ABAIXO DO PISO DA CASA '
+          f'({M.MC_PISO*100:.0f}%)')
+    print(f'{"═"*W}')
+    _p37 = sum(round(OCULTA['CDI'][k]/(BASE-0.37)/10)*10 for k in AMBS)
+    _p35 = sum(round(OCULTA['CDI'][k]/(BASE-M.MC_PISO)/10)*10 for k in AMBS)
+    print(f'  a marcenaria, com corrediça oculta:')
+    print(f'    a 37% ....... R$ {br(_p37)}')
+    print(f'    a 35%, piso . R$ {br(_p35)}')
+    print(f'    a {MC_ALVO*100:.0f}% ....... R$ {br(OCULTA["TOT"])}   '
+          f'−R$ {br(_p37-OCULTA["TOT"])} contra os 37%')
+    # MC cheia do projeto, cenário 2 com oculta
+    # ⛔ a MC cheia NÃO se tira de uma base só: marcenaria e iluminação
+    #   correm na cascata da casa, a porta na de revenda. Cada parte paga
+    #   os encargos dela.
+    _pv_m = OCULTA['TOT'] + LED_PV
+    _pv_p = portas(16, 0)
+    _cd2  = OCULTA['CD'] + LED_CD + 16*CD_FU + 2*CD_ES
+    _enc  = _pv_m*(1 - BASE) + _pv_p*(1 - BASE_REV)
+    _mc2  = (_pv_m + _pv_p) - _cd2 - _enc
+    _mcp  = _mc2/(_pv_m + _pv_p)
+    print(f'\n  ⛔ E a MC CHEIA do projeto no cenário 2 — marcenaria e')
+    print(f'    iluminação na cascata da casa, porta na de revenda — fica em')
+    print(f'    R$ {br(_mc2)} sobre R$ {br(_pv_m+_pv_p)}, ou seja {_mcp*100:.1f}%.')
+    print('    Quem paga o custo fixo da fábrica é a MC, e ela está')
+    print(f'    {M.MC_PISO*100 - _mcp*100:.1f} pontos abaixo do piso.')
+    print('    ⭐ Não é um erro: é uma decisão de preço para ganhar a obra.')
+    print('      Só precisa ser tomada sabendo que, nesta, a fábrica não')
+    print('      cobre a estrutura — e a próxima tem de cobrir pelas duas.')
 
     print(f'\n{"═"*W}')
     print('★ A MODULAÇÃO ADOTADA — e por que ela fecha')
