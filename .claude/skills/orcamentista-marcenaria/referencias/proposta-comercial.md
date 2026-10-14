@@ -537,3 +537,23 @@ pedido de cotação com o rodapé comido ou com um bloco perdido na conversão
 
 ⛔ `--compra` é para documento que vai ao FORNECEDOR. Se o papel vai ao
 cliente, ele audita inteiro, sem exceção.
+
+## ⭐ O briefing do cliente volta ao cliente  [14/10/2026]
+
+A proibição de **quantitativo** existe para a proposta não entregar a
+nossa lista de peças. Ela **não vale para o número que o próprio cliente
+usou para definir o pedido**.
+
+Na Arthur & Yasmim a cliente escreveu *"5 portas no reflecta bronze, 11 no
+fendi"* e pediu três orçamentos a partir disso. Sem os números, a versão 1
+não se entende. Isso é briefing dela voltando para ela.
+
+O auditor aceita `--excecoes "termo|termo|termo"`, que libera só os termos
+listados no passe 3:
+
+```
+python3 ferramentas/auditor-proposta.py p.html p.pdf --excecoes 'dez módulos|duas folhas'
+```
+
+⛔ A exceção é por documento e por termo, nunca geral. Se o número não veio
+do cliente, ele não entra.

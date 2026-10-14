@@ -9,7 +9,15 @@ import pymupdf as fitz
 #   de COMPRA — relação de peças para cotar com fornecedor — a medida é o
 #   assunto: sem cota ele não cota. `--compra` pula o passe 3, e só ele.
 COMPRA = '--compra' in sys.argv
-argv = [a for a in sys.argv[1:] if not a.startswith('--')]
+# ⭐ [14/10/2026] `--excecoes "a|b|c"` libera termos que o CLIENTE pôs no
+#   briefing e sem os quais a proposta não se entende. Ver
+#   referencias/proposta-comercial.md.
+EXTRA = ''
+for i, _a in enumerate(sys.argv):
+    if _a == '--excecoes' and i+1 < len(sys.argv): EXTRA = sys.argv[i+1]
+_skip = {i+1 for i, a in enumerate(sys.argv) if a == '--excecoes'}
+argv = [a for i, a in enumerate(sys.argv)
+        if i > 0 and not a.startswith('--') and i not in _skip]
 html_p, pdf_p = pathlib.Path(argv[0]), pathlib.Path(argv[1])
 html = html_p.read_text(encoding='utf-8')
 doc  = fitz.open(pdf_p)
@@ -121,7 +129,9 @@ achados = []
 for pg in (() if COMPRA else doc):
     for rgx, rot in PROIB:
         for m in re.finditer(rgx, pg.get_text(), re.I):
-            if EXCECAO.fullmatch(m.group(0).strip()): continue
+            _g = m.group(0).strip()
+            if EXCECAO.fullmatch(_g): continue
+            if EXTRA and re.fullmatch(EXTRA, _g, re.I): continue
             achados.append((rot, m.group(0), pg.number+1))
 if COMPRA:
     print('3 · METRAGEM E CONTAGEM  ...  PULADO — documento de compra')
