@@ -369,14 +369,24 @@ R$ 1.300.
 E ela se apresenta em duas linhas. Na V2:
 
 ```
-fornecimento das portas ...........  R$ 32.670
-instalação, alinhamento e garantia   R$  8.030
-                                     ─────────
-                                     R$ 40.700
+fornecimento das portas · 18 folhas   R$ 25.710
+ferragem, instalação e garantia ....  R$ 14.990
+                                      ─────────
+                                      R$ 40.700
 ```
 
-A cliente pode ligar para o vidraceiro e conferir a primeira linha — **e
-vai bater**. É o oposto de parecer superfaturado.
+⛔ **Correção [Jonathan 14/10]:** a primeira versão desta linha dizia
+R$ 32.670 e estava errada — tinha **dobradiça e mão de obra dentro**.
+Fornecimento é só a folha comprada.
+
+**A nota do fornecedor é R$ 22.600** (16 fumê a 1.300 + 2 espelho a 900).
+A nossa linha de fornecimento fica R$ 25.710, **14% acima** — e isso não é
+margem: é nota fiscal, margem de erro e as duas comissões que o item de
+fato usa. Se a cliente ligar para o vidraceiro, acha os R$ 22.600 e a
+diferença se explica em uma frase.
+
+⛔ **A dobradiça sozinha é R$ 5.040 de compra — 22% do valor das portas.**
+Era ela que inchava a linha anterior.
 
 ⚠ Os R$ 400 por folha são ★ meus:
 

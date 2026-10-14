@@ -373,15 +373,28 @@ if __name__ == '__main__':
     print('    acontece: receber, guardar, pendurar, alinhar e garantir uma')
     print('    porta custa o mesmo, valha ela R$ 900 ou R$ 1.300.')
     print('\n  ⭐ E ela se apresenta bem ao cliente, em duas linhas. Na V2:')
-    _cdV2 = 16*cd_fu + 2*cd_es
-    _forn = round(_cdV2/BASE_REV/10)*10
-    _serv = round(18*MARG_FIXA/BASE_REV/10)*10
-    print(f'      fornecimento das portas ........... R$ {br(_forn)}')
-    print(f'      instalação, alinhamento e garantia  R$ {br(_serv)}')
-    print(f'      {"":<34}  ─────────')
-    print(f'      {"":<34}  R$ {br(_forn + _serv)}')
-    print('    A cliente pode ligar para o vidraceiro e conferir a primeira')
-    print('    linha — e vai bater. É o oposto de parecer superfaturado.')
+    # ⛔ [Jonathan 14/10] "o fornecimento das portas não dá 32.670". Não dá
+    #   mesmo: aquela linha tinha dobradiça e mão de obra dentro. FORNECIMENTO
+    #   é só a folha comprada; dobradiça e fixação são serviço nosso.
+    _compra = 16*PORTA_RB_UN + 2*PORTA_ESP_UN          # a nota do fornecedor
+    _cd_forn = _compra*(1 + M.EMBALAGEM)
+    _cd_serv = 18*(N_DOBR*DOBR_PERFIL + INSTALA_UN)*(1 + M.EMBALAGEM)
+    _forn = round(_cd_forn/BASE_REV/10)*10
+    _serv = round((_cd_serv + 18*MARG_FIXA)/BASE_REV/10)*10
+    print(f'      fornecimento das portas · 18 folhas  R$ {br(_forn)}')
+    print(f'      ferragem, instalação e garantia .... R$ {br(_serv)}')
+    print(f'      {"":<36}  ─────────')
+    print(f'      {"":<36}  R$ {br(_forn + _serv)}')
+    print(f'\n    ⭐ A NOTA DO FORNECEDOR É R$ {br(_compra)} — 16 folhas de fumê a')
+    print(f'      R$ {br(PORTA_RB_UN)} e 2 de espelho a R$ {br(PORTA_ESP_UN)}. A nossa linha de')
+    print(f'      fornecimento fica R$ {br(_forn)}, {(_forn/_compra-1)*100:.0f}% acima — e isso NÃO é')
+    print('      margem: é nota fiscal, margem de erro e as duas comissões')
+    print('      que o item de fato usa. Se a cliente ligar para o vidraceiro,')
+    print('      ela acha os R$ ' + br(_compra) + ' e a diferença se explica em uma frase.')
+    print(f'\n    ⛔ A dobradiça sozinha é R$ {br(18*N_DOBR*DOBR_PERFIL)} de compra — '
+          f'{18*N_DOBR*DOBR_PERFIL/_compra*100:.0f}% do valor')
+    print('      das portas. Ela estava escondida dentro de "fornecimento" e')
+    print('      é por isso que aquela linha tinha ficado inchada.')
     print(f'\n  ⚠ Os R$ {br(MARG_FIXA)} por folha são ★ meus. Mexa neles e tudo anda:')
     for mf in (300, 400, 500):
         t = [nf*round((cd_fu+mf)/BASE_REV/10)*10 + nd*u_fe
