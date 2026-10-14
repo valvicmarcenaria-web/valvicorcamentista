@@ -515,3 +515,25 @@ de pagamento sumiu.
 > **Toda classe nova de um build leva sufixo do job ou um `P`:**
 > `.invA`, `.escP`, `.cndP`. Nunca reutilizar um nome que já está no CSS base.
 > Antes de estilizar, `grep -n "^\.nome" css-proposta*.css`.
+
+---
+
+## ⭐ Documento de COMPRA é a exceção da metragem  [14/10/2026]
+
+A proibição de metragem e quantitativo vale para o que vai ao **cliente**.
+Num documento de **compra** — relação de peças para cotar com fornecedor —
+a medida é o assunto: sem cota ele não cota, e sem quantidade não há preço
+unitário.
+
+O auditor passou a aceitar `--compra`, que **pula só o passe 3**:
+
+```
+python3 ferramentas/auditor-proposta.py doc.html doc.pdf --compra
+```
+
+Os passes 1 (conteúdo perdido) e 2 (transbordo) continuam valendo — um
+pedido de cotação com o rodapé comido ou com um bloco perdido na conversão
+é tão ruim quanto uma proposta.
+
+⛔ `--compra` é para documento que vai ao FORNECEDOR. Se o papel vai ao
+cliente, ele audita inteiro, sem exceção.

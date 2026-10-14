@@ -164,30 +164,43 @@ vão**: folha estreita e alta é o pior caso, muito perímetro por m².
 ⛔ Entre a V2 e a V3 há **R$ 29.677**, só nas portas. A escolha da cliente
 não é de cor — é de dezenas de milhares.
 
+### ⭐ A porta é COMPRADA PRONTA  [Jonathan 13/10]
+
+> "nós adquirimos a porta pronta · me dê a relação das portas com as
+> especificações para que eu faça a cotação com o fornecedor"
+
+O motor foi invertido: a porta de vidro deixou de ser vidro + perfil +
+dobradiça somados aqui e virou **item comprado, folha a folha**. Só a porta
+em MDF Fendi continua sendo de fabricação nossa.
+
+**A relação para cotar está pronta** em `relacao-portas-arthur-yasmim.md`
+e `relacao-portas-arthur-yasmim.pdf` — folhas, medidas, especificação e as
+nove perguntas para o fornecedor.
+
 ### O custo de cada porta, uma a uma
 
 Folha de 0,53 × 2,50 — 1,31 m² de vão e **6,05 m de perímetro**.
 
 | | bronze | Fendi |
 |---|--:|--:|
-| vidro a R$ 280/m² ★ · chapa de 18 | 368 | 225 |
-| perfil a R$ 110/m ★ · fita de borda | **666** | 33 |
-| duas dobradiças | 190 | 70 |
-| consumíveis e embalagem | 24 | 22 |
-| **custo direto por porta** | **1.247** | **351** |
-| **preço por porta** · MC 37%, sem RT | **2.580** | **725** |
+| porta pronta ★ · chapa de 18 | **1.500** | 225 |
+| fita de borda | — | 33 |
+| duas dobradiças | no fornecedor | 70 |
+| fixação e regulagem ★ · consumíveis | 60 | 22 |
+| **custo direto por porta** | **1.591** | **351** |
+| **preço por porta** · MC 37%, sem RT | **3.291** | **725** |
 
-⚠ **83% do custo da porta de vidro são os dois ★ estimados.** A
-sensibilidade do preço por porta:
+⛔ **O número que falta é um só**: quanto o fornecedor cobra pela folha
+pronta. Tudo o mais já está fechado.
 
-| | vidro 200 | 250 | 280 | 350 |
-|---|--:|--:|--:|--:|
-| perfil 80/m ★ | 1.976 | 2.114 | 2.197 | 2.391 |
-| **perfil 110/m ★** | 2.359 | 2.497 | **2.580** | 2.774 |
-| perfil 140/m ★ | 2.741 | 2.880 | 2.963 | 3.157 |
+| compra a folha → | 900 | 1.200 | **1.500** ★ | 1.800 | 2.100 |
+|---|--:|--:|--:|--:|--:|
+| preço por porta | 2.025 | 2.658 | **3.291** | 3.924 | 4.557 |
+| V1 · 5 bronze, acima da V3 | 6.500 | 9.664 | **12.829** | 15.993 | 19.158 |
+| V2 · 16 bronze, acima da V3 | 20.800 | 30.926 | **41.052** | 51.179 | 61.305 |
 
-⛔ Entre o canto barato e o caro a porta varia mais de R$ 1.000 —
-multiplicado por 16, mais de **R$ 16.000** no orçamento.
+⛔ Entre as pontas da tabela a V2 varia **R$ 40.505**. É a cotação que
+decide o orçamento, não nós.
 
 ### O espelho da sapateira · igual nas três
 

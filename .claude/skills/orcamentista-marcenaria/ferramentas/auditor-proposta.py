@@ -5,7 +5,12 @@ import sys, re, unicodedata, pathlib, json, subprocess, os
 from collections import Counter
 import pymupdf as fitz
 
-html_p, pdf_p = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
+# ⭐ [14/10/2026] O passe 3 vale para o que vai ao CLIENTE. Num documento
+#   de COMPRA — relação de peças para cotar com fornecedor — a medida é o
+#   assunto: sem cota ele não cota. `--compra` pula o passe 3, e só ele.
+COMPRA = '--compra' in sys.argv
+argv = [a for a in sys.argv[1:] if not a.startswith('--')]
+html_p, pdf_p = pathlib.Path(argv[0]), pathlib.Path(argv[1])
 html = html_p.read_text(encoding='utf-8')
 doc  = fitz.open(pdf_p)
 pdf  = '\n'.join(pg.get_text() for pg in doc)
@@ -113,12 +118,15 @@ EXCECAO = re.compile(r'\b(10|15|18|30|40|50)\s*mm\b|\b2,73\s*m\b'
 #      de fora: os 300 mm de cada faixa NÃO entram na proposta, que diz
 #      apenas 'as duas em alturas iguais'.
 achados = []
-for pg in doc:
+for pg in (() if COMPRA else doc):
     for rgx, rot in PROIB:
         for m in re.finditer(rgx, pg.get_text(), re.I):
             if EXCECAO.fullmatch(m.group(0).strip()): continue
             achados.append((rot, m.group(0), pg.number+1))
-print(f'3 · METRAGEM E CONTAGEM  ...  {"OK" if not achados else str(len(achados))+" OCORRÊNCIA(S)"}')
+if COMPRA:
+    print('3 · METRAGEM E CONTAGEM  ...  PULADO — documento de compra')
+else:
+    print(f'3 · METRAGEM E CONTAGEM  ...  {"OK" if not achados else str(len(achados))+" OCORRÊNCIA(S)"}')
 for rot, g, n in achados: print(f'     ⛔ pág {n}  {rot}: "{g}"')
 
 print()
