@@ -148,7 +148,13 @@ def aba_base(wb):
     """Traz a Base inteira uma vez só. É o único IMPORTRANGE da planilha."""
     ws = wb.create_sheet('_base')
     ws.sheet_state = 'hidden'
-    ws['A1'] = f'=IFERROR(IMPORTRANGE("{FONTE}","{BASE_ABA}!A1:R{BASE_FIM}"),"")'
+    # SEM IFERROR, de propósito. O botão "Permitir acesso" do Google aparece
+    # junto com o #REF! que o IMPORTRANGE devolve enquanto a conexão não foi
+    # autorizada. Envolver em IFERROR engole esse #REF!, a célula fica vazia e
+    # não há como autorizar — foi o que travou as quinze planilhas na primeira
+    # tentativa. E depois de autorizada, erro aqui é coisa que se quer ver:
+    # significa que a planilha-fonte sumiu ou foi renomeada.
+    ws['A1'] = f'=IMPORTRANGE("{FONTE}","{BASE_ABA}!A1:R{BASE_FIM}")'
     return ws
 
 
