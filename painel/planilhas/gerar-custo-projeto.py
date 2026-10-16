@@ -1124,6 +1124,11 @@ CAB_BASE = [
     # a comissão do projetista não tem data de etapa própria — nasce com a venda,
     # então é a data de entrada do projeto que a situa no mês
     ('Data de entrada', 12, DATA),
+    # Coordenação é por PROJETO, não por ambiente. Por isso aparece só na
+    # primeira linha de cada bloco: repetida nas doze, o SUMIFS a multiplicaria.
+    ('Coordenador', 16, None), ('Comissão coordenação', 15, MOEDA),
+    # o projetista recebe sobre o líquido — estes dois mostram a conta
+    ('Receita líquida do projeto', 16, MOEDA), ('Valor de venda', 15, MOEDA),
 ]
 bs = wb.create_sheet('Base · Comissões')
 bs.sheet_properties.tabColor = GOLD
@@ -1149,6 +1154,11 @@ for _i, _aba in enumerate(_ABAS_BASE):
         for _k, _col in enumerate('ABCDEFGHIJKLMNO'):
             bs.cell(_lin, 3 + _k, f'=IF({_ref}!${_col}${_fr}="","",{_ref}!${_col}${_fr})')
         bs.cell(_lin, 18, f'=IF($C{_lin}="","",IF({_ref}!$F${R_ID2}="","",{_ref}!$F${R_ID2}))')
+        if _j == 0:      # coordenação e totais do projeto, uma vez por bloco
+            bs.cell(_lin, 19, f'=IF($C{_lin}="","",IF({_ref}!$F${R_ID4}="","",{_ref}!$F${R_ID4}))')
+            bs.cell(_lin, 20, f'=IF($C{_lin}="","",IF({_ref}!$D${R_COORD}="",0,{_ref}!$D${R_COORD}))')
+            bs.cell(_lin, 21, f'=IF($C{_lin}="","",IF({_ref}!$D${R_LIQ}="",0,{_ref}!$D${R_LIQ}))')
+            bs.cell(_lin, 22, f'=IF($C{_lin}="","",IF({_ref}!$A$13="",0,{_ref}!$A$13))')
         for _k, (_, _, _nf) in enumerate(CAB_BASE, start=1):
             cel = bs.cell(_lin, _k)
             cel.font = font(9)
