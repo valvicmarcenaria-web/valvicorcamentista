@@ -1,4 +1,4 @@
-# SANDRA DUARTE — rack da sala
+# SANDRA DUARTE — rack e painel de TV
 
 **Prancha única A1**, arquiteta **JUNIA ORDONES**, outubro/26, escala 1/25.
 Residencial. ⛔ *"As medidas deverão ser conferidas no local"* e *"conferir
@@ -96,6 +96,60 @@ passou a ser a **vidraçaria** — é lá que a cotação tem de bater agora.
 
 ---
 
+## ⭐ Painel de TV — item à parte  [Jonathan 16/10]
+
+> *"adicione com um valor à parte um painel de TV liso de 142 cm de
+> largura, apoiado no rodapé (a se validar a possibilidade de ser inteiro).
+> Investimento — 2.300"*
+
+⛔ **O preço é dele, não meu.** R$ 2.300 veio fechado; abaixo eu só confiro.
+
+| | R$ |
+|---|--:|
+| chapa · 1 Metalic de pé | 600 |
+| fita de borda e filetagem | 40 |
+| estrutura de fixação | 180 |
+| consumíveis e embalagem | 56 |
+| **custo direto** | **875** |
+| **PREÇO** ⭐ dele | **R$ 2.300** |
+| **MC que esse preço entrega** | **38,5%** |
+
+⭐ **R$ 2.300 está bom:** entrega MC de **38,5%**, dentro da faixa ideal da
+casa (35–40%) — e **acima dos 30% do rack**.
+
+### ⭐ "A se validar a possibilidade de ser inteiro" — dá
+
+A chapa é **2,75 × 1,85**. **De pé**, os 142 de largura cabem folgados no
+1,85 e sobra altura até 2,75. O painel sai de **uma peça só, sem emenda**,
+desde que a altura não passe de **2,75**.
+
+⭐ **E a altura quase não mexe no preço:** de 2,00 a 2,75 é **sempre uma
+chapa**, e só a fita de borda anda. A sobra (um filete de 0,43 de largura)
+não vira outro painel — a peça inteira toma a chapa.
+
+### ⚠ Onde os R$ 2.300 deixam de cobrir — dois degraus
+
+| | custo direto | MC |
+|---|--:|--:|
+| **como orçado** · liso, chapa simples, até 2,75 de altura | 875 | **38,5%** |
+| altura **acima de 2,75** — 2ª chapa e uma emenda | 1.533 | 9,9% |
+| painel em **30 mm**, chapa dupla como o resto do móvel | 1.200 | 24,4% |
+
+Orçei **liso, em chapa simples, apoiado no rodapé** — que é o que ele
+pediu. Os dois degraus são **aviso, não orçamento**.
+
+---
+
+## O investimento
+
+| | R$ |
+|---|--:|
+| rack | 7.560 |
+| painel de TV | 2.300 |
+| **total** | **R$ 9.860** |
+
+---
+
 ## ★ Em aberto
 
 1. ⭐ **O preço da chapa Metalic fechou em R$ 600** [Jonathan 14/10].
@@ -116,6 +170,11 @@ passou a ser a **vidraçaria** — é lá que a cotação tem de bater agora.
    **RT de 10% incluída** ⭐ [Jonathan 14/10].
 6. **Ponto de energia.** A fonte do LED fica embutida na nossa base: ela
    precisa de tomada alcançável e de acesso para manutenção.
+7. ⚠ **A altura do painel não veio.** Não mexe no preço enquanto ficar
+   abaixo de 2,75 — mas decide se ele sai inteiro. Medir no local.
+8. ⚠ **O painel existente.** O projeto trazia o rack **solto dele**; agora
+   vendemos um painel novo. Se o novo substitui o atual, a **retirada do
+   atual não está no preço**. Confirmar com a Sandra.
 
 ---
 
@@ -127,9 +186,13 @@ fazer a proposta de 2 páginas apenas"*].
 * **Página 1, escura** — capa e valor na mesma folha, porque com duas
   folhas não cabe uma capa muda: garantia de dez anos, vidro e metal,
   iluminação entregue acesa. **Sem preço.**
-* **Página 2, clara** — o móvel em cinco linhas (corpo, portas, tampo,
-  prateleira, luz), o investimento, a condição de pagamento, o que não
+* **Página 2, clara** — dois blocos com preço próprio: o **rack**, em
+  cinco linhas (corpo, portas, tampo, prateleira, luz), e o **painel de
+  TV**; abaixo, o investimento total, a condição de pagamento, o que não
   está incluso e o que se confirma antes de produzir.
+  ⭐ Prazo, garantia, execução e validade viraram **uma linha só** na
+  página 2 — repetiam inteiros o quadro da capa, e o segundo item precisava
+  do espaço.
 * **Pagamento: 50% de entrada + 50% na entrega** ⭐ [Jonathan 14/10],
   **condição única** — sem escada de desconto por entrada.
 * Prazo 60 dias corridos · garantia 10 anos · validade 7 dias úteis.

@@ -6,7 +6,9 @@ Residencial. ⛔ "AS MEDIDAS DEVERÃO SER CONFERIDAS NO LOCAL" e "CONFERIR
 MEDIDAS E PONTO DE ENERGIA NO LOCAL PARA CONFIRMAR CORTES ANTES DA
 PRODUÇÃO".
 
-O MÓVEL — um rack só, SOLTO do painel existente, sobre rodízios ocultos.
+O MÓVEL — um rack, SOLTO do painel existente, sobre rodízios ocultos, e
+  ⭐ [Jonathan 16/10] um PAINEL DE TV LISO de 142 de largura, apoiado no
+  rodapé, cobrado À PARTE por R$ 2.300 — preço dele, conferido por mim.
   138 de largura × 35 de profundidade × 80 de altura (corpo de 70 sobre
   base de 10), e uma prateleira superior que chega a 83.
 
@@ -140,6 +142,40 @@ PV_BR  = round((((chapas+chapas_br)*BR_15 + FITA_CUSTO)*1.06
                 + CD_VID + CD_FER + CD_LED)
                *(1 + M.EMBALAGEM)/(BASE - MC_ALVO)/10)*10
 
+# ── ⭐ PAINEL DE TV  [Jonathan 16/10] ─────────────────────────────────────
+# "painel de tv liso de 142 cm de largura, apoiado no rodapé (a se validar
+#  a possibilidade de ser inteiro) — investimento 2.300"
+#
+# ⛔ O PREÇO É DELE, NÃO MEU. R$ 2.300 veio fechado. O que eu faço aqui é
+#   conferir se ele cobre o custo e em que MC cai — e achar o degrau onde
+#   deixa de cobrir.
+# ⚠ A ALTURA NÃO VEIO. Mas, para a CHAPA, ela quase não importa: a peça
+#   inteira toma uma chapa de pé e a sobra é um filete que não vira outro
+#   painel. De 2,00 a 2,75 de altura é SEMPRE UMA CHAPA — e o preço anda só
+#   o que anda a fita de borda. O degrau está em 2,75.
+PAINEL_L   = 1.42       # ⭐ [Jonathan] 142 cm de largura
+PAINEL_H   = 2.20       # ★ estimativa minha — a altura não veio
+PAINEL_PV  = 2300.0     # ⭐ [Jonathan] investimento fechado por ele
+CH_L, CH_C = 1.85, 2.75 # a chapa DE PÉ: 1,42 de largura cabe folgado no 1,85
+FIXA_PAINEL = 180.0     # ★ estrutura de fixação, buchas e parafusos
+
+# ⭐ A RESPOSTA DO "SE DÁ PARA SER INTEIRO": DÁ.
+#   1,42 cabe no 1,85 da chapa, e sobra altura até 2,75. O painel sai de
+#   UMA PEÇA SÓ, sem emenda, desde que não passe de 2,75 de altura.
+INTEIRO = PAINEL_L <= CH_L and PAINEL_H <= CH_C
+
+def painel_cd(h, dupla=False, chapa=METALIC_15):
+    """Custo direto do painel. `dupla` = 30 mm, chapa colada como o rack."""
+    ch = chapa + (BR_15 if dupla else 0)     # ⛔ uma chapa de pé por camada
+    if h > CH_C:                             # não cabe inteiro: 2ª chapa
+        ch += chapa + (BR_15 if dupla else 0)
+    fita = 2*(PAINEL_L + h)*FITA_M*(2 if dupla else 1)
+    return ((ch + fita)*1.06 + FIXA_PAINEL)*(1 + M.EMBALAGEM)
+
+CD_PAINEL = painel_cd(PAINEL_H)
+MC_PAINEL = BASE - CD_PAINEL/PAINEL_PV       # a MC que o preço dele entrega
+TOTAL = PV + PAINEL_PV
+
 if __name__ == '__main__':
     W = 88
     print('═'*W)
@@ -209,6 +245,50 @@ if __name__ == '__main__':
     print(f'    outro móvel: {br(PV-PV_BR)} de diferença para perder o champagne inteiro.')
 
     print(f'\n{"═"*W}')
+    print('⭐ PAINEL DE TV — ITEM À PARTE  [Jonathan 16/10]')
+    print(f'{"═"*W}')
+    print(f'  Liso, 142 de largura, apoiado no rodapé, no mesmo padrão '
+          f'champagne.')
+    print(f'  ⛔ O investimento é DELE: R$ {br(PAINEL_PV)}. Abaixo eu só confiro.')
+    print(f'\n  {"chapa · 1 Metalic de pé":<34}R$ {br(METALIC_15):>9}')
+    print(f'  {"fita de borda e filetagem":<34}'
+          f'R$ {br(2*(PAINEL_L+PAINEL_H)*FITA_M):>9}')
+    print(f'  {"estrutura de fixação":<34}R$ {br(FIXA_PAINEL):>9}')
+    print(f'  {"consumíveis e embalagem":<34}'
+          f'R$ {br(CD_PAINEL - METALIC_15 - 2*(PAINEL_L+PAINEL_H)*FITA_M - FIXA_PAINEL):>9}')
+    print('  ' + '─'*46)
+    print(f'  {"CUSTO DIRETO":<34}R$ {br(CD_PAINEL):>9}')
+    print(f'  {"PREÇO ⭐ dele":<34}R$ {br(PAINEL_PV):>9}')
+    print(f'  {"MC que esse preço entrega":<34}{MC_PAINEL*100:>10.1f}%')
+    print(f'\n  ⭐ R$ {br(PAINEL_PV)} ESTÁ BOM: entrega MC de {MC_PAINEL:.1%}, DENTRO da faixa')
+    print(f'    ideal da casa ({M.MC_IDEAL[0]:.0%}–{M.MC_IDEAL[1]:.0%}) — e acima dos {MC_ALVO:.0%} do rack.')
+
+    print(f'\n  ⭐ "A SE VALIDAR A POSSIBILIDADE DE SER INTEIRO" — DÁ.')
+    print(f'    A chapa é 2,75 × 1,85. De pé, os 1,42 de largura cabem')
+    print(f'    folgados no 1,85, e sobra altura até 2,75. O painel sai de')
+    print(f'    UMA PEÇA SÓ, sem emenda — {"confirmado" if INTEIRO else "⛔ NÃO CABE"} na altura de '
+          f'{vg(PAINEL_H)} que estimei.')
+    print(f'    ⭐ E a altura quase não mexe no preço: de 2,00 a 2,75 é')
+    print(f'      SEMPRE UMA CHAPA, e só a fita de borda anda.')
+
+    print(f'\n  ⚠ ONDE R$ {br(PAINEL_PV)} DEIXA DE COBRIR — os dois degraus:')
+    _alto = painel_cd(2.95)
+    _dupla = painel_cd(PAINEL_H, dupla=True)
+    print(f'    · ALTURA ACIMA DE 2,75 — entra uma 2ª chapa e uma emenda.')
+    print(f'      Custo direto vai a R$ {br(_alto)} e a MC cai para '
+          f'{(BASE-_alto/PAINEL_PV)*100:.1f}%.')
+    print(f'    · PAINEL EM 30 mm, chapa dupla como o resto do móvel.')
+    print(f'      Custo direto vai a R$ {br(_dupla)} e a MC cai para '
+          f'{(BASE-_dupla/PAINEL_PV)*100:.1f}%.')
+    print(f'    Orçei LISO, em chapa simples, apoiado no rodapé — que é o')
+    print(f'    que ele pediu. Os dois degraus são aviso, não orçamento.')
+
+    print(f'\n{"═"*W}')
+    print(f'  {"RACK":<34}R$ {br(PV):>9}')
+    print(f'  {"PAINEL DE TV":<34}R$ {br(PAINEL_PV):>9}')
+    print(f'  {"INVESTIMENTO TOTAL":<34}R$ {br(TOTAL):>9}')
+
+    print(f'\n{"═"*W}')
     print('★ EM ABERTO')
     print(f'{"═"*W}')
     print(f'  · ⭐ O PREÇO DA CHAPA METALIC FECHOU: R$ {br(METALIC_15)} [Jonathan 14/10].')
@@ -239,6 +319,11 @@ if __name__ == '__main__':
     _p35 = round(CD/(BASE-0.35)/10)*10
     print(f'    A 35% o rack sairia a R$ {br(_p35)} — a queda de margem devolve')
     print(f'    R$ {br(_p35-PV)} ao cliente e tira o mesmo da casa. Fica registrado.')
+    print('  · ⚠ A ALTURA DO PAINEL NÃO VEIO. Não mexe no preço enquanto')
+    print('    ficar abaixo de 2,75 — mas decide se ele sai inteiro. Medir.')
+    print('  · ⚠ O PAINEL EXISTENTE. O projeto trazia o rack SOLTO dele; agora')
+    print('    vendemos um painel novo. Se o novo SUBSTITUI o atual, a')
+    print('    RETIRADA do atual não está no preço. Confirmar com a Sandra.')
     print('  · "CONFERIR MEDIDAS E PONTO DE ENERGIA NO LOCAL": o ponto de')
     print('    energia é da elétrica, mas a fonte do LED fica embutida na')
     print('    nossa base — ela precisa de tomada alcançável e de manutenção.')

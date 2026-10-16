@@ -24,27 +24,30 @@ sr = importlib.util.module_from_spec(spec); sys.modules['sr'] = sr
 with contextlib.redirect_stdout(io.StringIO()): spec.loader.exec_module(sr)
 
 br = lambda v: f'{v:,.0f}'.replace(',', '.')
-CLIENTE, OBRA, DATA = 'Sandra Duarte', 'Sala de estar', '14 de outubro de 2026'
+CLIENTE, OBRA, DATA = 'Sandra Duarte', 'Sala de estar', '16 de outubro de 2026'
 ARQ = 'Junia Ordones'
 PRAZO, VALIDADE, GARANTIA = '60 dias corridos', '7 dias úteis', '10 anos'
 NP = 2
-TOTAL = sr.PV
+RACK, PAINEL, TOTAL = sr.PV, sr.PAINEL_PV, sr.TOTAL
 
 # ⛔⛔ TRAVA. Não há soma de itens para fechar — há UM móvel. O que pode
 #   mudar calado embaixo da proposta é a BASE do preço: se alguém desligar
 #   o RT ou mexer na MC no motor, a folha sai com outro número sem avisar.
 assert sr.RT_ON is True,            '⛔ O RT SAIU DO MOTOR [Jonathan 14/10 pediu COM RT]'
 assert abs(sr.MC_ALVO - 0.30) < 1e-9, f'⛔ A MC MUDOU: {sr.MC_ALVO:.3f} ≠ 0,300'
-assert TOTAL == sr.PV and TOTAL > 0, '⛔ O PREÇO NÃO VEIO DO MOTOR'
+assert RACK == sr.PV and RACK > 0,  '⛔ O PREÇO NÃO VEIO DO MOTOR'
+assert PAINEL == 2300,              '⛔ O PAINEL NÃO ESTÁ NO PREÇO DO JONATHAN'
+assert abs(RACK + PAINEL - TOTAL) < 0.5, (
+    f'⛔ O TOTAL NÃO FECHA: {RACK:,.0f} + {PAINEL:,.0f} ≠ {TOTAL:,.0f}')
 
 ITENS = [
  ('Corpo', 'Em MDF Guararapes linha Metalic, cor champagne, com nicho aberto '
-  'à frente e o interior no mesmo padrão da frente. Base recuada sobre '
-  '<b>rodízios giratórios ocultos</b>: o rack sai do lugar para limpar e '
-  'passar fiação, e volta alinhado.'),
+  'à frente e o interior no mesmo padrão. Base recuada sobre <b>rodízios '
+  'giratórios ocultos</b>: sai do lugar para limpar e passar fiação, e '
+  'volta alinhado.'),
  ('Portas', 'De giro em <b>vidro temperado reflecta champagne</b>, '
-  'enquadradas em perfil de alumínio slim e montadas sobre dobradiça própria '
-  'para vidro, com regulagem nos três sentidos.'),
+  'enquadradas em perfil de alumínio slim, sobre dobradiça própria para '
+  'vidro, com regulagem nos três sentidos.'),
  ('Tampo', 'Em <b>vidro temperado de 10 mm</b>, com bisotê na frente e na '
   'lateral aparente e lapidação reta ao fundo — a borda é trabalhada onde '
   'a vista alcança.'),
@@ -52,7 +55,7 @@ ITENS = [
   'e em <b>suporte de metal tubular champagne</b>, sem mão-francesa aparente.'),
  ('Luz', 'Fita <b>2700 K</b> em perfil de alumínio com difusor leitoso, '
   'embutida em cava usinada na própria peça e voltada para o fundo, para '
-  'iluminar sem espelhar no vidro. <b>Entregue instalada e acesa.</b>'),
+  'iluminar sem espelhar no vidro. <b>Entregue acesa.</b>'),
 ]
 
 CSS = """
@@ -109,58 +112,70 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
 .hd .m{font-size:7pt;letter-spacing:.16em;text-transform:uppercase;
   color:var(--mut);font-weight:700;}
 .eye{font-size:7pt;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--cha);font-weight:700;margin-top:5mm;flex:none;}
-.h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:26pt;
+  color:var(--cha);font-weight:700;margin-top:4mm;flex:none;}
+.h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:24pt;
   line-height:1.04;font-weight:600;letter-spacing:-.02em;margin-top:2mm;flex:none;}
-.rows{margin-top:5mm;flex:none;}
+.grp{margin-top:4.5mm;flex:none;}
+.gh{display:flex;justify-content:space-between;align-items:baseline;gap:8mm;
+  border-top:1.6px solid var(--ink);padding-top:3.4mm;}
+.gh .gt{font-family:'Cormorant Garamond',Georgia,serif;font-size:19pt;
+  font-weight:600;letter-spacing:-.01em;line-height:1;}
+.gh .gs{color:var(--soft);font-size:8.6pt;line-height:1.46;margin-top:2mm;
+  max-width:116mm;}
+.gh .gs b{color:var(--ink);font-weight:600;}
+.gh .gv{font-family:'Cormorant Garamond',Georgia,serif;font-size:19pt;
+  font-weight:700;text-align:right;line-height:1;white-space:nowrap;
+  font-variant-numeric:tabular-nums;}
+.rows{margin-top:0;flex:none;}
 .row{display:grid;grid-template-columns:26mm 1fr;gap:6mm;align-items:baseline;
-  padding:3mm 0;border-top:1px solid var(--line);}
-.row:first-child{border-top:1.6px solid var(--ink);}
+  padding:2.5mm 0;border-top:1px solid var(--line);}
+.row:first-child{border-top:1px solid var(--line);}
 .row .k{font-family:'Cormorant Garamond',Georgia,serif;font-size:16pt;
   font-weight:700;color:var(--cha);line-height:1;padding-top:.6mm;}
 .row .d{color:var(--soft);font-size:8.6pt;line-height:1.46;}
 .row .d b{color:var(--ink);font-weight:600;}
 
-.band{margin-top:6mm;background:var(--esp);color:#F3EDE3;border-radius:3px;
-  padding:6mm 7mm;display:flex;justify-content:space-between;
+.band{margin-top:5mm;background:var(--esp);color:#F3EDE3;border-radius:3px;
+  padding:5mm 7mm;display:flex;justify-content:space-between;
   align-items:flex-end;gap:8mm;flex:none;}
 .band .lab{font-size:7.4pt;letter-spacing:.26em;text-transform:uppercase;
   color:var(--cha-lt);font-weight:700;}
 .band .s{font-size:9pt;color:#C2BAAD;margin-top:2.4mm;max-width:92mm;}
-.band .big{font-family:'Cormorant Garamond',Georgia,serif;font-size:37pt;
+.band .big{font-family:'Cormorant Garamond',Georgia,serif;font-size:34pt;
   font-weight:700;color:#fff;line-height:.92;letter-spacing:-.025em;
   font-variant-numeric:tabular-nums;white-space:nowrap;}
-.pay{margin-top:5mm;display:flex;justify-content:space-between;
+.pay{margin-top:4mm;display:flex;justify-content:space-between;
   align-items:baseline;gap:6mm;padding-top:3.6mm;
   border-top:1.6px solid var(--ink);font-size:10pt;color:var(--soft);flex:none;}
 .pay b{color:var(--ink);font-weight:600;}
 .pay .x{flex:none;font-size:7pt;letter-spacing:.26em;text-transform:uppercase;
   color:var(--cha);font-weight:700;}
-.four{display:grid;grid-template-columns:repeat(4,1fr);gap:6mm;margin-top:5mm;
-  padding-top:4mm;border-top:1px solid var(--line);flex:none;}
-.four .k{font-size:6.8pt;letter-spacing:.22em;text-transform:uppercase;
+.strip{margin-top:4.5mm;padding-top:3.4mm;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;gap:5mm;font-size:8.6pt;
+  color:var(--soft);flex:none;}
+.strip span{white-space:nowrap;}
+.strip b{color:var(--ink);font-weight:600;}
+.strip .k{font-size:6.6pt;letter-spacing:.22em;text-transform:uppercase;
   color:var(--cha);font-weight:700;}
-.four .v{font-size:11.5pt;font-weight:600;margin-top:1.4mm;}
-.four .s{color:var(--soft);font-size:8pt;margin-top:.8mm;line-height:1.4;}
-.notes{margin-top:5.5mm;display:grid;grid-template-columns:1fr 1fr;gap:4mm;
+.notes{margin-top:4.5mm;display:grid;grid-template-columns:1fr 1fr;gap:4mm;
   flex:none;}
-.notes .bx{background:var(--pearl);border-radius:3px;padding:5mm 5.5mm;}
+.notes .bx{background:var(--pearl);border-radius:3px;padding:4.5mm 5mm;}
 .notes .bx.w{background:#fff;border:1px solid var(--line);}
 .notes .k{font-size:6.8pt;letter-spacing:.22em;text-transform:uppercase;
   color:var(--cha);font-weight:700;}
-.notes .d{color:var(--soft);font-size:7.9pt;line-height:1.42;margin-top:1.8mm;}
+.notes .d{color:var(--soft);font-size:7.6pt;line-height:1.4;margin-top:1.6mm;}
 .notes .d b{color:var(--ink);font-weight:600;}
 """
 
 def foot(n):
     return (f'<div class="foot"><span>Valvic Marcenaria</span>'
-            f'<span>{CLIENTE} · rack da sala</span><span>{n} / {NP}</span></div>')
+            f'<span>{CLIENTE} · sala de estar</span><span>{n} / {NP}</span></div>')
 
 p1 = f"""<div class="page dk"><div class="pad">
   <div class="mark">Valvic Marcenaria</div>
   <div style="height:26mm;flex:none;"></div>
   <div class="kick">Proposta comercial</div>
-  <h1>Rack<br>da sala.</h1>
+  <h1>Rack<br>e painel.</h1>
   <div class="sub"><b>{CLIENTE}</b> · {OBRA}<br>Projeto <b>{ARQ}</b></div>
 
   <div class="vrow" style="margin-top:13mm;">
@@ -203,13 +218,26 @@ p2 = f"""<div class="page"><div class="pad p2">
   <div class="hd"><div class="b">Valvic Marcenaria</div>
     <div class="m">{CLIENTE} · {DATA}</div></div>
   <div class="eye">O móvel</div>
-  <div class="h1 serif">O que entra,<br>e quanto é.</div>
-  <div class="rows">{rows}</div>
+  <div class="h1 serif">O que entra, e quanto é.</div>
+  <div class="grp">
+    <div class="gh"><div class="gt">Rack da sala</div>
+      <div class="gv">R$ {br(RACK)}</div></div>
+    <div class="rows">{rows}</div>
+  </div>
+
+  <div class="grp">
+    <div class="gh">
+      <div><div class="gt">Painel de TV</div>
+        <div class="gs">Liso, no mesmo padrão champagne, <b>apoiado no
+        rodapé</b> e fixado à parede, <b>em peça única, sem emenda
+        aparente</b>, com a passagem de cabos por trás.</div></div>
+      <div class="gv">R$ {br(PAINEL)}</div></div>
+  </div>
 
   <div class="band">
     <div><div class="lab">Investimento total</div>
-      <div class="s">Fornecimento no padrão especificado pela arquiteta,
-      iluminação instalada e montagem no local.</div></div>
+      <div class="s">Os dois itens no padrão especificado pela arquiteta,
+      com iluminação instalada e montagem no local.</div></div>
     <div class="big">R$ {br(TOTAL)}</div>
   </div>
 
@@ -218,30 +246,27 @@ p2 = f"""<div class="page"><div class="pad p2">
     <div class="x">condição única</div>
   </div>
 
-  <div class="four">
-    <div><div class="k">Prazo</div><div class="v">{PRAZO}</div>
-      <div class="s">Do aceite e da medição.</div></div>
-    <div><div class="k">Garantia</div><div class="v">{GARANTIA}</div>
-      <div class="s">Estrutura e ferragens.</div></div>
-    <div><div class="k">Execução</div><div class="v">Equipe própria</div>
-      <div class="s">Do corte à instalação.</div></div>
-    <div><div class="k">Validade</div><div class="v">{VALIDADE}</div>
-      <div class="s">A partir desta data.</div></div>
+  <div class="strip">
+    <span><span class="k">Prazo</span> <b>{PRAZO}</b></span>
+    <span><span class="k">Garantia</span> <b>{GARANTIA}</b></span>
+    <span><span class="k">Execução</span> <b>Equipe própria</b></span>
+    <span><span class="k">Validade</span> <b>{VALIDADE}</b></span>
   </div>
 
   <div class="notes">
     <div class="bx"><div class="k">O que não está incluso</div>
-      <div class="d">O <b>painel existente</b> da parede, que o projeto
-      mantém — o rack é solto dele. A <b>televisão, os equipamentos</b> e o
-      seu cabeamento. O <b>ponto de tomada, o circuito e o interruptor</b>,
-      que são elétrica de obra. <b>Alvenaria, pintura e iluminação de
+      <div class="d">A <b>televisão, os equipamentos</b> e o seu
+      cabeamento. O <b>ponto de tomada, o circuito e o interruptor</b>, que
+      são elétrica de obra. A <b>retirada do painel existente</b>, se o
+      novo tomar o lugar dele. <b>Alvenaria, pintura e iluminação de
       teto.</b></div></div>
     <div class="bx w"><div class="k">A confirmar antes da produção</div>
       <div class="d">A prancha pede <b>conferir as medidas e o ponto de
       energia no local</b> — fazemos a medição antes do corte. O
       <b>puxador</b>: recomendamos o perfil slim colado, porque furo em
-      vidro temperado é feito antes da têmpera e não admite ajuste depois da
-      medição. E <b>amostra</b> do padrão champagne, no MDF e no vidro.</div></div>
+      vidro temperado é feito antes da têmpera e não admite ajuste depois da medição. A <b>altura do painel</b>, que a medição fecha
+      — é ela que confirma a peça única. E <b>amostra</b> do padrão
+      champagne, no MDF e no vidro.</div></div>
   </div>
   {foot(2)}
 </div></div>"""
@@ -260,6 +285,9 @@ subprocess.run(['node', '/tmp/r.js', str(P/'proposta-sandra-rack.pdf')],
                check=True, env=env)
 print(f'proposta-sandra-rack.pdf · {NP} páginas')
 print(f'  MC {sr.MC_ALVO*100:.0f}% · COM RT · base {sr.BASE*100:.2f}%')
-print(f'  custo direto      R$ {br(sr.CD):>7}')
+print(f'  custo direto      R$ {br(sr.CD + sr.CD_PAINEL):>7}')
+print(f'  rack              R$ {br(RACK):>7}')
+print(f'  painel de TV      R$ {br(PAINEL):>7}  ⭐ preço do Jonathan · '
+      f'MC {sr.MC_PAINEL:.1%}')
 print(f'  INVESTIMENTO      R$ {br(TOTAL):>7}')
 print(f'  pagamento         50% de entrada + 50% na entrega')
