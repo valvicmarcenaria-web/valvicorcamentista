@@ -52,7 +52,6 @@ PESSOAS = [
     ('Ronald', 'Marceneiro', 'operacao', 'PJ'),
     ('Samuel', 'Marceneiro Sênior', 'operacao', 'PJ'),
     ('Cesar', 'Marceneiro', 'operacao', 'PJ'),
-    ('Jackson', 'Marceneiro Pleno', 'operacao', 'PJ'),
     ('Jhon', 'Marceneiro', 'operacao', 'PJ'),
     ('Joelson', 'Operador CNC e máquinas', 'operacao', 'PJ'),
     ('Davi', 'Marceneiro Júnior', 'operacao', 'CLT'),

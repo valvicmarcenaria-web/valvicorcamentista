@@ -49,7 +49,6 @@ FOLHA = [
     ('Samuel', 'Marceneiro Sênior', 'PJ', 3900, 0, 0),
     ('Cesar', 'Marceneiro', 'PJ', 3900, 0, 0),
     ('Joelson', 'Operador CNC & máquinas', 'PJ', 3800, 0, 0),
-    ('Jackson', 'Marceneiro Pleno', 'PJ', 3600, 0, 0),
     ('Jhon', 'Marceneiro', 'PJ', 3300, 0, 0),
     ('Lucas', 'Projetista', 'CLT', 3500, 520, 0),
     ('Davi', 'Marceneiro Júnior', 'CLT', 2200, 450, 300),

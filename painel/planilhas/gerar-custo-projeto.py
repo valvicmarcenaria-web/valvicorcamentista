@@ -48,9 +48,12 @@ DIAS = '0 "dias"'
 # Quem executa e recebe comissão de produção, montagem ou coordenação.
 # Estrutura de set/2026: marceneiros, coordenador e operador de máquinas.
 # Ajudante geral não entra — não assume ambiente, logo não entra no rateio.
-EQUIPE = ['Deivison', 'Ronald', 'Samuel', 'Cesar', 'Jackson', 'Jhon',
+EQUIPE = ['Deivison', 'Ronald', 'Samuel', 'Cesar', 'Jhon',
           'Joelson', 'Davi', 'Jomar', 'Bruno', 'Wallace', 'Douglas',
           'Terceiro / avulso']
+# Jackson saiu da equipe em out/2026. Fora do menu para não receber ambiente
+# novo — mas o nome continua nas fichas antigas, e a comissão que ele já gerou
+# continua somando. Desligamento não apaga o que foi feito.
 # Quem projeta o ambiente. Comissão de projetista, 1% do líquido por padrão.
 PROJETISTAS = ['Lorrane', 'Lucas', 'Bruna', 'Externo / avulso']
 VENDEDORES = ['Jonathan', 'Vitor', 'Indicação', 'Arquiteto parceiro', 'Outro']
