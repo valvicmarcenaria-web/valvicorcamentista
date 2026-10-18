@@ -32,6 +32,11 @@ const FICHA = {
   vendaRealizada: 'D28',  // bloco 1
   ambLinha0: 49,          // bloco 3 · primeiro ambiente
   ambQtd: 12,
+  coordenador: 'F9',      // quem coordena o projeto
+  comCoord: 'D65',        // bloco 4 · comissão de coordenação
+  liquido: 'D45',         // bloco 2 · receita líquida
+  venda: 'A13',           // KPI do topo · valor de venda
+  colsBase: 22,           // largura da Base · Comissões
   painelLinha0: 11,       // Painel Geral · primeira vaga de projeto
   painelLinhaF: 50,
   baseLinha0: 2,          // Base · primeira linha de dados
@@ -196,14 +201,33 @@ function escreverBlocoBase_(destino, i, nomeAba) {
       linha.push('=IF(' + ab + '!$' + c + '$' + fr + '="","",' + ab + '!$' + c + '$' + fr + ')');
     });
     linha.push('=IF($C' + r + '="","",IF(' + ab + '!$F$7="","",' + ab + '!$F$7))');
+    // Coordenação e totais do projeto entram SÓ na primeira linha do bloco.
+    // Repetidos nas doze, o SUMIFS das planilhas individuais os multiplicaria
+    // por doze — foi assim que a comissão do coordenador se perdeu antes.
+    if (j === 0) {
+      linha.push(cel_(ab, FICHA.coordenador, r, true));
+      linha.push(cel_(ab, FICHA.comCoord, r, false));
+      linha.push(cel_(ab, FICHA.liquido, r, false));
+      linha.push(cel_(ab, FICHA.venda, r, false));
+    } else {
+      linha.push('', '', '', '');
+    }
     linhas.push(linha);
   }
   base.getRange(r0, 1, FICHA.ambQtd, linhas[0].length).setFormulas(linhas);
+}
+
+/** Célula do projeto trazida para a base, com o endereço absoluto certo. */
+function cel_(ab, ref, r, texto) {
+  const abs = '$' + ref.charAt(0) + '$' + ref.slice(1);
+  const vazio = texto ? '""' : '0';
+  return '=IF($C' + r + '="","",IF(' + ab + '!' + abs + '="",' + vazio +
+         ',' + ab + '!' + abs + '))';
 }
 
 /** Limpa o bloco de um índice que não tem projeto. */
 function limparBlocoBase_(destino, i) {
   const base = destino.getSheetByName(FICHA.base);
   const r0 = FICHA.baseLinha0 + i * FICHA.ambQtd;
-  base.getRange(r0, 1, FICHA.ambQtd, 18).clearContent();
+  base.getRange(r0, 1, FICHA.ambQtd, FICHA.colsBase).clearContent();
 }
