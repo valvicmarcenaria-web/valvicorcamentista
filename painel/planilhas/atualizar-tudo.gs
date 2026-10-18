@@ -78,28 +78,38 @@ const CALC = '#eaf1f8', ZEBRA = '#f7f5ef', OKBG = '#e6f0e9', ABERTOBG = '#faefdc
 const MOEDA = 'R$ #,##0.00', PCT = '0.0%', DATA = 'dd/mm/yyyy';
 
 
+/**
+ * O relatório sai no "Registro de execução", embaixo do editor — não numa
+ * janela. Janela de confirmação só existe em script preso a uma planilha, e
+ * este precisa rodar preso ou solto, tanto faz.
+ */
 function atualizarTudo() {
-  const ui = SpreadsheetApp.getUi();
-  const r = ui.alert('Atualizar a estrutura?',
-    'Vai ampliar a Base · Comissões e reescrever a aba Comissões das 14 planilhas '
-    + 'individuais.\n\nO que foi digitado à mão (data, status, nota, observação) é '
-    + 'preservado, casado pelo nome do projeto.\n\nLeva cerca de um minuto.',
-    ui.ButtonSet.OK_CANCEL);
-  if (r !== ui.Button.OK) return;
+  const log = [];
+  const diz = function (t) { log.push(t); console.log(t); };
 
-  const relatorio = [];
-  relatorio.push('Base · Comissões: ' + atualizarBase_() + ' projetos, 27 colunas');
+  diz('── começando ──');
+  try {
+    diz('Base · Comissões: ' + atualizarBase_() + ' projeto(s), 27 colunas');
+  } catch (e) {
+    diz('Base · Comissões: FALHOU — ' + e.message);
+    diz('As individuais não foram tocadas: sem a Base nova elas não teriam de onde ler.');
+    return log.join('\n');
+  }
 
+  let ok = 0, erro = 0;
   PESSOAS.forEach(function (p) {
     try {
       const n = atualizarIndividual_(p);
-      relatorio.push(p.nome + ': ok' + (n ? ' · ' + n + ' linha(s) preenchida(s) preservada(s)' : ''));
+      ok++;
+      diz(p.nome + ': ok' + (n ? '  ·  ' + n + ' linha(s) preenchida(s) preservada(s)' : ''));
     } catch (e) {
-      relatorio.push(p.nome + ': FALHOU — ' + e.message);
+      erro++;
+      diz(p.nome + ': FALHOU — ' + e.message);
     }
   });
 
-  ui.alert('Pronto.', relatorio.join('\n'), ui.ButtonSet.OK);
+  diz('── fim: ' + ok + ' atualizada(s)' + (erro ? ', ' + erro + ' com erro' : '') + ' ──');
+  return log.join('\n');
 }
 
 
