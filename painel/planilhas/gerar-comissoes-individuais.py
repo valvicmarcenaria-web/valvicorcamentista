@@ -44,21 +44,28 @@ from openpyxl.worksheet.datavalidation import DataValidation
 # ── quem recebe planilha, e em que classe ───────────────────────────────
 # a classe define o formato: só a operação tem aba de avulsos
 PESSOAS = [
-    # nome, função, classe, vínculo
-    ('Lorrane', 'Projetista', 'projeto', 'PJ'),
-    ('Lucas', 'Projetista', 'projeto', 'CLT'),
-    ('Bruna', 'Arquiteta · projeto e programação', 'projeto', 'PJ'),
-    ('Deivison', 'Coordenador de Produção', 'projeto', 'PJ'),
-    ('Ronald', 'Marceneiro', 'operacao', 'PJ'),
-    ('Samuel', 'Marceneiro Sênior', 'operacao', 'PJ'),
-    ('Cesar', 'Marceneiro', 'operacao', 'PJ'),
-    ('Jhon', 'Marceneiro', 'operacao', 'PJ'),
-    ('Joelson', 'Operador CNC e máquinas', 'operacao', 'PJ'),
-    ('Davi', 'Marceneiro Júnior', 'operacao', 'CLT'),
-    ('Jomar', 'Marceneiro', 'operacao', 'CLT'),
-    ('Bruno', 'Auxiliar de Marceneiro', 'operacao', 'CLT'),
-    ('Wallace', 'Trainee', 'operacao', 'CLT'),
-    ('Douglas', 'Trainee', 'operacao', 'CLT'),
+    # nome, função, categoria, vínculo, avulsos
+    #
+    # categoria é como a pessoa aparece agrupada no painel do Walton.
+    # avulsos é outra coisa: quem faz serviço fora de projeto tem a aba.
+    # Projetista e vendedor recebem pelo trabalho do projeto e nada mais;
+    # o coordenador é chão de fábrica, e faz avulso como qualquer um da
+    # produção — por isso as duas colunas são separadas e não derivadas
+    # uma da outra.
+    ('Lorrane', 'Projetista', 'projeto', 'PJ', False),
+    ('Lucas', 'Projetista', 'projeto', 'CLT', False),
+    ('Bruna', 'Arquiteta · projeto e programação', 'projeto', 'PJ', False),
+    ('Deivison', 'Coordenador de Produção', 'projeto', 'PJ', True),
+    ('Ronald', 'Marceneiro', 'operacao', 'PJ', True),
+    ('Samuel', 'Marceneiro Sênior', 'operacao', 'PJ', True),
+    ('Cesar', 'Marceneiro', 'operacao', 'PJ', True),
+    ('Jhon', 'Marceneiro', 'operacao', 'PJ', True),
+    ('Joelson', 'Operador CNC e máquinas', 'operacao', 'PJ', True),
+    ('Davi', 'Marceneiro Júnior', 'operacao', 'CLT', True),
+    ('Jomar', 'Marceneiro', 'operacao', 'CLT', True),
+    ('Bruno', 'Auxiliar de Marceneiro', 'operacao', 'CLT', True),
+    ('Wallace', 'Trainee', 'operacao', 'CLT', True),
+    ('Douglas', 'Trainee', 'operacao', 'CLT', True),
 ]
 CLASSE_NOME = {'venda': 'Vendas', 'projeto': 'Projeto e coordenação',
                'operacao': 'Operação'}
@@ -266,8 +273,8 @@ def aba_avulsos(wb, nome):
     cols = [('Data', 13), ('Descrição do serviço', 44), ('Valor (R$)', 15),
             ('Pagamento combinado', 16), ('Status', 13), ('Observação', 30)]
     faixa(ws, 1, f'AVULSOS   ·   {nome.upper()}',
-          'O que não está preso a um projeto: serviço extra, diária, ajuste. '
-          'Tudo digitado aqui.', len(cols))
+          'O que não está preso a projeto: serviço extra, diária, ajuste, '
+          'deslocamento. Tudo digitado aqui.', len(cols))
     cabecalho(ws, 3, cols)
     ws.freeze_panes = 'A4'
     p0 = 4
@@ -398,11 +405,11 @@ def sem_acento(t):
     return ''.join(c for c in t if not unicodedata.combining(c))
 
 
-def gerar(nome, funcao, classe, vinculo, pasta):
+def gerar(nome, funcao, classe, vinculo, avulsos, pasta):
     wb = Workbook()
     wb.remove(wb.active)
     com = aba_comissoes(wb, nome, classe, vinculo)
-    avu = aba_avulsos(wb, nome) if classe == 'operacao' else None
+    avu = aba_avulsos(wb, nome) if avulsos else None
     aba_base(wb)
     aba_painel(wb, nome, funcao, classe, vinculo, com, avu)
     wb.active = 0
@@ -414,7 +421,8 @@ def gerar(nome, funcao, classe, vinculo, pasta):
 if __name__ == '__main__':
     pasta = sys.argv[1] if len(sys.argv) > 1 else '.'
     os.makedirs(pasta, exist_ok=True)
-    for nome, funcao, classe, vinculo in PESSOAS:
-        a = gerar(nome, funcao, classe, vinculo, pasta)
-        print(f'  {CLASSE_NOME[classe]:<24} {vinculo:<4} {os.path.basename(a)}')
+    for nome, funcao, classe, vinculo, avulsos in PESSOAS:
+        a = gerar(nome, funcao, classe, vinculo, avulsos, pasta)
+        print(f'  {CLASSE_NOME[classe]:<24} {vinculo:<4} '
+              f'{"avulsos" if avulsos else "       "}  {os.path.basename(a)}')
     print(f'\n{len(PESSOAS)} planilhas em {pasta}')
