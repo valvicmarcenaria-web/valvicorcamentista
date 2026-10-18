@@ -89,6 +89,7 @@ function atualizarTudo() {
 
   diz('── começando ──');
   try {
+    diz('Painel Geral: ' + repararPainelGeral_() + ' projeto(s) registrado(s)');
     diz('Base · Comissões: ' + atualizarBase_() + ' projeto(s), 27 colunas');
   } catch (e) {
     diz('Base · Comissões: FALHOU — ' + e.message);
@@ -117,6 +118,32 @@ function atualizarTudo() {
 //  Base · Comissões
 // ════════════════════════════════════════════════════════════════════════
 
+/**
+ * Reescreve a lista de projetos do Painel Geral a partir das abas que existem
+ * de verdade, na ordem em que estão na planilha.
+ *
+ * Existe porque uma versão anterior deste script apagava o registro quando não
+ * achava a aba — e não achava porque dez abas têm espaço no fim do nome
+ * ('Ana Carolina ') e o código aplicava trim antes de procurar. Dez registros
+ * foram perdidos. Reconstruir a partir das abas é mais seguro do que confiar no
+ * que sobrou: a verdade é a aba existir, não o nome estar escrito ali.
+ */
+function repararPainelGeral_() {
+  const ss = SpreadsheetApp.openById(ID_CUSTO);
+  const pg = ss.getSheetByName(FICHA.painel);
+  const FIXAS = ['Instruções', FICHA.painel, 'Ficha Modelo', 'Listas', FICHA.base];
+  const abas = ss.getSheets().map(function (sh) { return sh.getName(); })
+                 .filter(function (n) { return FIXAS.indexOf(n) < 0; });
+
+  const n = FICHA.pgf - FICHA.pg0 + 1;
+  const vals = [];
+  for (let i = 0; i < n; i++) vals.push([i < abas.length ? abas[i] : '']);
+  pg.getRange(FICHA.pg0, 2, n, 1).setValues(vals);
+  SpreadsheetApp.flush();
+  return abas.length;
+}
+
+
 function atualizarBase_() {
   const ss = SpreadsheetApp.openById(ID_CUSTO);
   const pg = ss.getSheetByName(FICHA.painel);
@@ -137,12 +164,17 @@ function atualizarBase_() {
       .setFontWeight('bold').setWrap(true).setHorizontalAlignment('center');
   base.setFrozenRows(1);
 
+  // SEM trim: dez abas têm espaço no fim do nome, e getSheetByName é literal.
+  // E sem apagar nada do Painel Geral: se o nome não casar, apenas se registra
+  // no log. Apagar registro foi o que destruiu a lista na primeira tentativa.
   const nomes = pg.getRange(FICHA.pg0, 2, FICHA.pgf - FICHA.pg0 + 1, 1).getValues();
   let n = 0;
   for (let i = 0; i < nomes.length; i++) {
-    const nome = String(nomes[i][0] || '').trim();
-    if (!nome || !ss.getSheetByName(nome)) {
-      if (nome) pg.getRange(FICHA.pg0 + i, 2).clearContent();   // registro órfão
+    const nome = String(nomes[i][0] || '');
+    if (!nome) continue;
+    if (!ss.getSheetByName(nome)) {
+      console.log('  aviso: linha ' + (FICHA.pg0 + i) + ' do Painel Geral diz "'
+                  + nome + '" e não há aba com esse nome. Nada foi apagado.');
       continue;
     }
     escreverBlocoBase_(base, i, nome);
@@ -295,6 +327,11 @@ function atualizarIndividual_(p) {
 
   // 2 · reescreve a aba
   const cols = layout_(p);
+  // Descongelar ANTES de mesclar: o Google recusa mesclar células que cruzam a
+  // fronteira do congelamento, e a aba vem congelada do formato anterior.
+  sh.setFrozenRows(0);
+  sh.setFrozenColumns(0);
+  sh.getRange(1, 1, sh.getMaxRows(), sh.getMaxColumns()).breakApart();
   sh.clear();
   sh.clearConditionalFormatRules();
   const nc = cols.length;
