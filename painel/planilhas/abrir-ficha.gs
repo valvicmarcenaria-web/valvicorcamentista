@@ -193,18 +193,25 @@ function reconstruirBase() {
   const painel = destino.getSheetByName(FICHA.painel);
   const nomes = painel.getRange(FICHA.painelLinha0, 2,
                                 FICHA.painelLinhaF - FICHA.painelLinha0 + 1, 1).getValues();
-  let n = 0;
+  let n = 0, avisos = [];
   for (let i = 0; i < nomes.length; i++) {
-    const nome = String(nomes[i][0] || '').trim();
-    if (nome && destino.getSheetByName(nome)) {
-      escreverBlocoBase_(destino, i, nome);
-      n++;
-    } else {
-      limparBlocoBase_(destino, i);
+    // SEM trim: dez abas têm espaço no fim do nome e getSheetByName é literal.
+    const nome = String(nomes[i][0] || '');
+    if (!nome) { limparBlocoBase_(destino, i); continue; }
+    if (!destino.getSheetByName(nome)) {
+      // Nome escrito no Painel Geral sem aba correspondente. NÃO apaga: pode
+      // ser a aba renomeada à mão, e apagar o bloco levaria junto o trabalho
+      // de quem lançou os ambientes. Só avisa.
+      avisos.push('linha ' + (FICHA.painelLinha0 + i) + ': "' + nome + '"');
+      continue;
     }
+    escreverBlocoBase_(destino, i, nome);
+    n++;
   }
   SpreadsheetApp.flush();
-  ui.alert('Base reconstruída com ' + n + ' projeto(s).');
+  ui.alert('Base reconstruída com ' + n + ' projeto(s).'
+    + (avisos.length ? '\n\nSem aba correspondente, nada foi apagado:\n'
+                       + avisos.join('\n') : ''));
 }
 
 
