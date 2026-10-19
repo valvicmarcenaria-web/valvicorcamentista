@@ -79,6 +79,27 @@ const MOEDA = 'R$ #,##0.00', PCT = '0.0%', DATA = 'dd/mm/yyyy';
 
 
 /**
+ * UMA SÓ, para testar antes de mexer nas catorze.
+ *
+ * Rode esta primeiro: escolha "testarUma" no seletor de função, ao lado do
+ * botão Executar. Ela mexe só na planilha do Samuel e não toca na Base nem
+ * no Painel Geral. Se o log disser "ok", aí sim rode atualizarTudo.
+ */
+function testarUma() {
+  const NOME = 'Samuel';          // troque aqui para testar com outra pessoa
+  let achou = null;
+  PESSOAS.forEach(function (p) { if (p.nome === NOME) achou = p; });
+  if (!achou) { console.log('Não existe ' + NOME + ' na lista PESSOAS.'); return; }
+  try {
+    const n = atualizarIndividual_(achou);
+    console.log(NOME + ': ok' + (n ? '  ·  ' + n + ' linha(s) preservada(s)' : ''));
+  } catch (e) {
+    console.log(NOME + ': FALHOU — ' + e.message);
+  }
+}
+
+
+/**
  * O relatório sai no "Registro de execução", embaixo do editor — não numa
  * janela. Janela de confirmação só existe em script preso a uma planilha, e
  * este precisa rodar preso ou solto, tanto faz.
@@ -362,7 +383,9 @@ function atualizarIndividual_(p) {
   sh.setRowHeight(3, 30);
   cols.forEach(function (c, i) { sh.setColumnWidth(i + 1, c.w * 7); });
   sh.setFrozenRows(3);
-  sh.setFrozenColumns(2);
+  // Sem congelar colunas: as linhas 1 e 2 sao mescladas de ponta a ponta, e o
+  // Google recusa congelar duas colunas quando isso partiria a celula mesclada
+  // ao meio. A aba tem no maximo doze colunas — cabe na tela sem congelamento.
 
   for (let i = 0; i < nc; i++) {
     const c = cols[i];
