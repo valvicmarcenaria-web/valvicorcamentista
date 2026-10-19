@@ -353,6 +353,35 @@ function layout_(p) {
     };
   };
 
+  // Participação do projetista no projeto: quanto dos ambientes, em R$, leva o
+  // nome dele, dividido pelo valor de todos os ambientes daquele projeto.
+  //
+  // Por que medir por valor e não por quantidade de ambientes: uma cozinha de
+  // 30 mil e um lavabo de 4 mil contam igual se a gente contar peças. Em
+  // dinheiro, cada um pesa o que pesa.
+  //
+  // A conta se normaliza sozinha — se os ambientes não somarem exatamente o
+  // valor de venda, a proporção continua correta, porque o denominador é a
+  // soma dos ambientes lançados, não o valor de venda.
+  const COL_PART = 'C';   // a coluna Participação é a terceira no layout abaixo
+  const participacao = function (r) {
+    const fx = '_base!$' + B.projeto + '$2:$' + B.projeto + '$' + BASE_FIM;
+    const fv = '_base!$' + B.valor + '$2:$' + B.valor + '$' + BASE_FIM;
+    const fq = '_base!$' + B.projQuem + '$2:$' + B.projQuem + '$' + BASE_FIM;
+    return '=IF($A' + r + '="","",IFERROR('
+      + 'SUMIFS(' + fv + ',' + fx + ',$A' + r + ',' + fq + ',"' + p.nome + '")'
+      + '/SUMIFS(' + fv + ',' + fx + ',$A' + r + '),0))';
+  };
+
+  // Valor do projeto reduzido à fatia dele.
+  const fatia = function (col) {
+    return function (r) {
+      const lb = 2 + (r - LIN0) * FICHA.ambQtd;
+      return '=IF($A' + r + '="","",ROUND(IFERROR(_base!$' + B[col] + '$' + lb
+        + ',0)*$' + COL_PART + r + ',2))';
+    };
+  };
+
   let cols = [
     { t: 'Projeto', w: 24, calc: true, f: function (r) {
         const lb = 2 + (r - LIN0) * FICHA.ambQtd;
@@ -364,13 +393,14 @@ function layout_(p) {
 
   if (p.perfil === 'projetista') {
     cols = cols.concat([
-      { t: 'Valor de venda', w: 14, calc: true, nf: MOEDA, f: doProjeto('venda') },
+      { t: 'Participação', w: 11, calc: true, nf: PCT, f: participacao },
+      { t: 'Valor de venda · sua parte', w: 15, calc: true, nf: MOEDA, f: fatia('venda') },
       { t: 'Imposto %', w: 10, calc: true, nf: PCT, f: doProjeto('imposto') },
       { t: 'Taxa de máquina %', w: 11, calc: true, nf: PCT, f: doProjeto('maquina') },
       { t: 'RT %', w: 9, calc: true, nf: PCT, f: doProjeto('rt') },
       { t: 'Comissão do vendedor %', w: 11, calc: true, nf: PCT, f: doProjeto('vendedor') },
-      { t: 'Custos de venda', w: 14, calc: true, nf: MOEDA, f: doProjeto('custoVenda') },
-      { t: 'Receita líquida', w: 14, calc: true, nf: MOEDA, f: doProjeto('liquido') },
+      { t: 'Custos de venda · sua parte', w: 15, calc: true, nf: MOEDA, f: fatia('custoVenda') },
+      { t: 'Receita líquida · sua parte', w: 15, calc: true, nf: MOEDA, f: fatia('liquido') },
       { t: 'Comissão a receber', w: 15, calc: true, nf: MOEDA, total: true,
         f: soma('projCom', 'projQuem') },
     ]);
@@ -469,7 +499,12 @@ function atualizarIndividual_(p) {
   sh.setRowHeight(1, 28);
   sh.getRange(2, 1, 1, nc).merge()
     .setValue('As colunas azuis vêm sozinhas da Custo por Projeto. Preencha a data '
-      + 'combinada, o status' + (p.pj ? ', a nota fiscal' : '') + ' e a observação.')
+      + 'combinada, o status' + (p.pj ? ', a nota fiscal' : '') + ' e a observação.'
+      + (p.perfil === 'projetista'
+         ? '   ·   Venda, custos e receita líquida aparecem na sua parte: o valor '
+           + 'do projeto multiplicado pela Participação, que é quanto dos ambientes, '
+           + 'em R$, está no seu nome.'
+         : ''))
     .setBackground('#f6edd6').setFontColor(NAVY2).setFontSize(9).setFontStyle('italic');
   sh.setRowHeight(2, 18);
 
