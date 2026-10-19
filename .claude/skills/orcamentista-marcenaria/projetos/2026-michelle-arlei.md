@@ -262,16 +262,35 @@ página dos banhos, não na da suíte.
 
 ## A proposta — `build-michelle-arlei.py`
 
-**`proposta-michelle-arlei.pdf`, dez páginas.** ⭐ [Jonathan 19/10:
-*"não estenda textos demais, mas use bastante imagens do projeto em 3D;
-dê uma certa ênfase para o valor com desconto à vista; apresente de forma
-sucinta a versão na linha premium da Hettich"*].
+**`proposta-michelle-arlei.pdf`, doze páginas.**
 
-* **Capa** com render sangrando e faixa escura. Sem preço.
-* **Seis páginas de ambiente**, uma linha de texto cada e a galeria como
-  coluna elástica — a imagem come toda a folga da folha.
-* **Página de valores** com o à vista como número grande e o cheio ao
-  lado, menor, mais a escada de pagamento da casa.
-* **Uma página para a Hettich**, com o argumento da garantia: 2 → 10 anos.
-* **Condições** e o que não está incluso.
+⭐ [Jonathan 19/10, segunda rodada] *"o layout não ficou legal não. **Nunca
+apresente preço sem antes gerar valor** na proposta. Fale um pouco da
+empresa e dos processos antes de expor valores. Mostre as duas linhas
+antes, fale das diferenças. As imagens ficaram muito grandes, crie um
+layout mais criativo. Descreva os itens junto com a listagem dos
+ambientes, só listando item por item mesmo."*
+
+A ordem passou a ser:
+
+1. **Capa** — render sangrando e faixa escura.
+2. **Quem faz** — marcenaria própria, e as cinco etapas do processo.
+3. **As duas linhas** — Essencial × Premium e o quadro de diferenças,
+   **sem nenhum preço**.
+4–9. **Os ambientes** — mosaico assimétrico que alterna de lado a cada
+   página e a **lista item a item**, com faixa de acabamentos no pé.
+10. **O investimento** — o primeiro número da proposta, com o à vista
+   em destaque.
+11. **As duas linhas com preço** — Essencial × Premium.
+12. **Condições.**
+
+⛔ O build trava com `assert` se aparecer qualquer `R$` antes da página
+do investimento — a regra não depende da minha boa-fé ao editar.
+
+⛔ **Armadilha do flex, de novo:** `.mos{flex:1}` com `min-height` grande
+come todo o espaço livre e os irmãos **sem `flex:none`** encolhem e
+transbordam **por cima da imagem**. Foi assim que um título foi parar
+dentro da foto na página 2. `overflow:hidden` no mosaico e `flex:none`
+em todo bloco fechado.
+
 * Três passes do auditor: **tudo OK**.
