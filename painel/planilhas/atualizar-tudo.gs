@@ -301,9 +301,14 @@ function atualizarIndividual_(p) {
   if (!sh) throw new Error('aba Comissões não encontrada');
 
   // 1 · guarda o que foi digitado, casado pelo nome do projeto
+  // A aba pode estar VAZIA: uma versão anterior deste script dava clear() e só
+  // depois quebrava na mesclagem, deixando as catorze abas em branco. Numa aba
+  // vazia getLastColumn() devolve 0 e o getRange abaixo estoura. Então se não
+  // há cabeçalho, não há o que guardar — segue direto para a reconstrução.
   const guardado = {};
   let nGuardado = 0;
-  const cab = sh.getRange(3, 1, 1, sh.getLastColumn()).getValues()[0];
+  const nCab = sh.getLastColumn();
+  const cab = nCab >= 1 ? sh.getRange(3, 1, 1, nCab).getValues()[0] : [];
   const idx = {};
   cab.forEach(function (t, i) {
     const s = String(t || '');
@@ -312,7 +317,7 @@ function atualizarIndividual_(p) {
     else if (s.indexOf('Repassado') === 0) idx.nf = i + 1;
     else if (s.indexOf('Observa') === 0) idx.obs = i + 1;
   });
-  for (let r = LIN0; r < LIN0 + N_PROJ; r++) {
+  for (let r = LIN0; nCab >= 1 && r < LIN0 + N_PROJ; r++) {
     const proj = String(sh.getRange(r, 1).getDisplayValue() || '').trim();
     if (!proj) continue;
     const g = {};
@@ -335,6 +340,11 @@ function atualizarIndividual_(p) {
   sh.clear();
   sh.clearConditionalFormatRules();
   const nc = cols.length;
+
+  // a aba precisa ter colunas e linhas bastantes antes de escrever
+  if (sh.getMaxColumns() < nc) sh.insertColumnsAfter(sh.getMaxColumns(), nc - sh.getMaxColumns());
+  const precisa = LIN0 + N_PROJ + 2;
+  if (sh.getMaxRows() < precisa) sh.insertRowsAfter(sh.getMaxRows(), precisa - sh.getMaxRows());
 
   sh.getRange(1, 1, 1, nc).merge().setValue('COMISSÕES   ·   ' + p.nome.toUpperCase())
     .setBackground(NAVY).setFontColor(GOLDS).setFontSize(14).setFontWeight('bold')
