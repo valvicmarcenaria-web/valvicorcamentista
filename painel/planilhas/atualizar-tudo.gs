@@ -73,6 +73,54 @@ const B = {
 const BASE_FIM = 482;
 const N_PROJ = 40, LIN0 = 4;
 
+/**
+ * O separador de argumentos das fórmulas.
+ *
+ * Numa planilha em português o Google espera ponto e vírgula — SOMA(A1;B1) —
+ * e em inglês espera vírgula. O Apps Script grava o texto que a gente manda,
+ * sem traduzir. Foi por isso que a Base inteira virou #ERROR!: escrevemos
+ * vírgula numa planilha pt_BR.
+ *
+ * Em vez de chutar, calibrar_() faz um teste: escreve =SUM(1,2) numa aba
+ * temporária e vê se o resultado é 3. Se não for, a planilha usa ponto e
+ * vírgula. A aba temporária é apagada em seguida, dê certo ou dê errado.
+ */
+let SEP = ',';
+
+function calibrar_(ss) {
+  const tmp = ss.insertSheet('__teste_separador__');
+  try {
+    tmp.getRange(1, 1).setFormula('=SUM(1,2)');
+    SpreadsheetApp.flush();
+    SEP = (tmp.getRange(1, 1).getValue() === 3) ? ',' : ';';
+  } catch (e) {
+    SEP = ';';
+  } finally {
+    ss.deleteSheet(tmp);
+  }
+  return SEP;
+}
+
+/** Troca as vírgulas separadoras pelo que a planilha entende, poupando o que
+ *  estiver dentro de aspas — "Pago" não pode virar "Pago;". */
+function fx_(f) {
+  if (SEP === ',' || typeof f !== 'string' || f.charAt(0) !== '=') return f;
+  let fora = true, out = '';
+  for (let i = 0; i < f.length; i++) {
+    const c = f.charAt(i);
+    if (c === '"') fora = !fora;
+    out += (c === ',' && fora) ? SEP : c;
+  }
+  return out;
+}
+
+/** setFormula e setFormulas passando pelo tradutor. */
+function posF_(rg, f) { return rg.setFormula(fx_(f)); }
+function posFs_(rg, m) {
+  return rg.setFormulas(m.map(function (lin) { return lin.map(fx_); }));
+}
+
+
 const NAVY = '#0e2038', NAVY2 = '#16314f', GOLDS = '#d8bd80';
 const CALC = '#eaf1f8', ZEBRA = '#f7f5ef', OKBG = '#e6f0e9', ABERTOBG = '#faefdc';
 const MOEDA = 'R$ #,##0.00', PCT = '0.0%', DATA = 'dd/mm/yyyy';
@@ -201,6 +249,7 @@ function repararPainelGeral_() {
 
 function atualizarBase_() {
   const ss = SpreadsheetApp.openById(ID_CUSTO);
+  console.log('  separador desta planilha: "' + calibrar_(ss) + '"');
   const pg = ss.getSheetByName(FICHA.painel);
   const base = ss.getSheetByName(FICHA.base);
 
@@ -279,7 +328,7 @@ function escreverBlocoBase_(base, i, nomeAba) {
     }
     linhas.push(L);
   }
-  base.getRange(r0, 1, FICHA.ambQtd, FICHA.colsBase).setFormulas(linhas);
+  posFs_(base.getRange(r0, 1, FICHA.ambQtd, FICHA.colsBase), linhas);
 }
 
 
@@ -352,8 +401,21 @@ function layout_(p) {
 
 function atualizarIndividual_(p) {
   const ss = SpreadsheetApp.openById(p.id);
+  calibrar_(ss);
   const sh = ss.getSheetByName('Comissões');
   if (!sh) throw new Error('aba Comissões não encontrada');
+
+  // O _base foi criado quando a Base tinha 22 colunas (até V). Agora tem 27
+  // (até AA), e sem alargar o IMPORTRANGE as colunas de imposto, máquina, RT,
+  // vendedor e custos de venda chegam vazias nas planilhas dos projetistas.
+  // Só o trecho do intervalo é trocado: o resto da fórmula fica como está,
+  // inclusive o separador que ela já usa e a autorização já concedida.
+  const bs = ss.getSheetByName('_base');
+  if (bs) {
+    const atual = bs.getRange('A1').getFormula();
+    const nova = atual.replace(/!A1:[A-Z]+\d+/, '!A1:AA' + BASE_FIM);
+    if (nova && nova !== atual) bs.getRange('A1').setFormula(nova);
+  }
 
   // 1 · guarda o que foi digitado, casado pelo nome do projeto
   // A aba pode estar VAZIA: uma versão anterior deste script dava clear() e só
@@ -427,7 +489,7 @@ function atualizarIndividual_(p) {
     const fs = [];
     for (let r = LIN0; r < LIN0 + N_PROJ; r++) fs.push([c.f(r)]);
     const rg = sh.getRange(LIN0, i + 1, N_PROJ, 1);
-    rg.setFormulas(fs).setBackground(CALC).setFontColor(NAVY2).setFontSize(10);
+    posFs_(rg, fs).setBackground(CALC).setFontColor(NAVY2).setFontSize(10);
     if (c.nf) rg.setNumberFormat(c.nf);
     if (c.total) rg.setFontWeight('bold'); else rg.setFontStyle('italic');
   }
@@ -456,15 +518,15 @@ function atualizarIndividual_(p) {
   const rTot = LIN0 + N_PROJ;
   sh.getRange(rTot, 1, 1, nc).setBackground(NAVY);
   sh.getRange(rTot, 1).setValue('TOTAL').setFontColor(GOLDS).setFontWeight('bold');
-  sh.getRange(rTot, iTot)
-    .setFormula('=ROUND(SUM(' + LT + LIN0 + ':' + LT + (rTot - 1) + '),2)')
+  posF_(sh.getRange(rTot, iTot),
+        '=ROUND(SUM(' + LT + LIN0 + ':' + LT + (rTot - 1) + '),2)')
     .setNumberFormat(MOEDA).setFontColor(GOLDS).setFontWeight('bold');
 
   const faixa = sh.getRange(LIN0, 1, N_PROJ, nc);
   const LS = colLetra_(cols.findIndex(function (c) { return c.manual === 'status'; }) + 1);
   sh.setConditionalFormatRules([
     SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied(
-      '=AND($A' + LIN0 + '<>"",$' + LT + LIN0 + '=0)')
+      fx_('=AND($A' + LIN0 + '<>"",$' + LT + LIN0 + '=0)'))
       .setFontColor('#dde0e4').setRanges([faixa]).build(),
     SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied(
       '=$' + LS + LIN0 + '="Pago"')
@@ -503,10 +565,10 @@ function atualizarPainel_(ss, LT, LP, LS) {
   if (!pa) return;
   const p0 = LIN0, pf = LIN0 + N_PROJ - 1;
   const C = "'Comissões'!";
-  pa.getRange('C7').setFormula('=ROUND(SUM(' + C + '$' + LT + '$' + p0 + ':$' + LT + '$' + pf + '),2)');
-  pa.getRange('E7').setFormula('=ROUND(SUMIF(' + C + '$' + LS + '$' + p0 + ':$' + LS + '$' + pf
+  posF_(pa.getRange('C7'), '=ROUND(SUM(' + C + '$' + LT + '$' + p0 + ':$' + LT + '$' + pf + '),2)');
+  posF_(pa.getRange('E7'), '=ROUND(SUMIF(' + C + '$' + LS + '$' + p0 + ':$' + LS + '$' + pf
     + ',"Pago",' + C + '$' + LT + '$' + p0 + ':$' + LT + '$' + pf + '),2)');
-  pa.getRange('G7').setFormula('=ROUND($C$7-$E$7,2)');
+  posF_(pa.getRange('G7'), '=ROUND($C$7-$E$7,2)');
 
   // a tabela mês a mês começa onde estiver o rótulo "Janeiro"
   let lj = 0;
@@ -518,18 +580,18 @@ function atualizarPainel_(ss, LT, LP, LS) {
     const r = lj + m;
     const ini = 'DATE(YEAR(TODAY()),' + (m + 1) + ',1)';
     const fim = 'EOMONTH(DATE(YEAR(TODAY()),' + (m + 1) + ',1),0)';
-    pa.getRange(r, 3).setFormula('=ROUND(SUMIFS(' + C + '$' + LT + '$' + p0 + ':$' + LT + '$' + pf
+    posF_(pa.getRange(r, 3), '=ROUND(SUMIFS(' + C + '$' + LT + '$' + p0 + ':$' + LT + '$' + pf
       + ',' + C + '$' + LP + '$' + p0 + ':$' + LP + '$' + pf + ',">="&' + ini
       + ',' + C + '$' + LP + '$' + p0 + ':$' + LP + '$' + pf + ',"<="&' + fim + '),2)');
-    pa.getRange(r, 4).setFormula('=ROUND(SUMIFS(' + C + '$' + LT + '$' + p0 + ':$' + LT + '$' + pf
+    posF_(pa.getRange(r, 4), '=ROUND(SUMIFS(' + C + '$' + LT + '$' + p0 + ':$' + LT + '$' + pf
       + ',' + C + '$' + LP + '$' + p0 + ':$' + LP + '$' + pf + ',">="&' + ini
       + ',' + C + '$' + LP + '$' + p0 + ':$' + LP + '$' + pf + ',"<="&' + fim
       + ',' + C + '$' + LS + '$' + p0 + ':$' + LS + '$' + pf + ',"Pago"),2)');
-    pa.getRange(r, 5).setFormula('=ROUND($C' + r + '-$D' + r + ',2)');
+    posF_(pa.getRange(r, 5), '=ROUND($C' + r + '-$D' + r + ',2)');
   }
-  pa.getRange(lj + 12, 3).setFormula('=ROUND(SUM(C' + lj + ':C' + (lj + 11) + '),2)');
-  pa.getRange(lj + 12, 4).setFormula('=ROUND(SUM(D' + lj + ':D' + (lj + 11) + '),2)');
-  pa.getRange(lj + 12, 5).setFormula('=ROUND(SUM(E' + lj + ':E' + (lj + 11) + '),2)');
+  posF_(pa.getRange(lj + 12, 3), '=ROUND(SUM(C' + lj + ':C' + (lj + 11) + '),2)');
+  posF_(pa.getRange(lj + 12, 4), '=ROUND(SUM(D' + lj + ':D' + (lj + 11) + '),2)');
+  posF_(pa.getRange(lj + 12, 5), '=ROUND(SUM(E' + lj + ':E' + (lj + 11) + '),2)');
 }
 
 

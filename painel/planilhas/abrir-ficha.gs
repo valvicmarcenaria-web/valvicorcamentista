@@ -36,11 +36,52 @@ const FICHA = {
   comCoord: 'D65',        // bloco 4 · comissão de coordenação
   liquido: 'D45',         // bloco 2 · receita líquida
   venda: 'A13',           // KPI do topo · valor de venda
-  colsBase: 22,           // largura da Base · Comissões
+  imposto: 'B38',         // bloco 2 · descontos sobre a venda
+  maquina: 'B39',
+  vendedor: 'B41',
+  rt: 'B43',
+  custoVenda: 'D44',
+  colsBase: 27,           // largura da Base · Comissões
   painelLinha0: 11,       // Painel Geral · primeira vaga de projeto
   painelLinhaF: 50,
   baseLinha0: 2,          // Base · primeira linha de dados
 };
+
+/**
+ * Separador de argumentos. Numa planilha em português o Google espera
+ * ponto e vírgula; o Apps Script grava o texto cru, sem traduzir. Escrever
+ * vírgula numa planilha pt_BR transforma a fórmula inteira em #ERROR!.
+ * calibrar_() descobre qual é, escrevendo =SUM(1,2) numa aba temporária e
+ * conferindo se dá 3. A aba é apagada em seguida.
+ */
+let SEP = ',';
+
+function calibrar_(ss) {
+  const tmp = ss.insertSheet('__teste_separador__');
+  try {
+    tmp.getRange(1, 1).setFormula('=SUM(1,2)');
+    SpreadsheetApp.flush();
+    SEP = (tmp.getRange(1, 1).getValue() === 3) ? ',' : ';';
+  } catch (e) {
+    SEP = ';';
+  } finally {
+    ss.deleteSheet(tmp);
+  }
+  return SEP;
+}
+
+/** Troca as vírgulas separadoras, poupando o que estiver dentro de aspas. */
+function fx_(f) {
+  if (SEP === ',' || typeof f !== 'string' || f.charAt(0) !== '=') return f;
+  let fora = true, out = '';
+  for (let i = 0; i < f.length; i++) {
+    const c = f.charAt(i);
+    if (c === '"') fora = !fora;
+    out += (c === ',' && fora) ? SEP : c;
+  }
+  return out;
+}
+
 
 const COLS_AMB = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O'];
 
@@ -121,6 +162,7 @@ function abrirFicha() {
   painel.getRange(vaga, 2).setValue(cliente);
 
   // 4 · estende a base
+  calibrar_(destino);
   const i = vaga - FICHA.painelLinha0;
   escreverBlocoBase_(destino, i, cliente);
 
@@ -147,6 +189,7 @@ function reconstruirBase() {
   if (r !== ui.Button.OK) return;
 
   const destino = SpreadsheetApp.openById(ID_CUSTO);
+  calibrar_(destino);
   const painel = destino.getSheetByName(FICHA.painel);
   const nomes = painel.getRange(FICHA.painelLinha0, 2,
                                 FICHA.painelLinhaF - FICHA.painelLinha0 + 1, 1).getValues();
@@ -209,12 +252,18 @@ function escreverBlocoBase_(destino, i, nomeAba) {
       linha.push(cel_(ab, FICHA.comCoord, r, false));
       linha.push(cel_(ab, FICHA.liquido, r, false));
       linha.push(cel_(ab, FICHA.venda, r, false));
+      linha.push(cel_(ab, FICHA.imposto, r, false));
+      linha.push(cel_(ab, FICHA.maquina, r, false));
+      linha.push(cel_(ab, FICHA.rt, r, false));
+      linha.push(cel_(ab, FICHA.vendedor, r, false));
+      linha.push(cel_(ab, FICHA.custoVenda, r, false));
     } else {
-      linha.push('', '', '', '');
+      linha.push('', '', '', '', '', '', '', '', '');
     }
     linhas.push(linha);
   }
-  base.getRange(r0, 1, FICHA.ambQtd, linhas[0].length).setFormulas(linhas);
+  base.getRange(r0, 1, FICHA.ambQtd, linhas[0].length)
+      .setFormulas(linhas.map(function (lin) { return lin.map(fx_); }));
 }
 
 /** Célula do projeto trazida para a base, com o endereço absoluto certo. */
