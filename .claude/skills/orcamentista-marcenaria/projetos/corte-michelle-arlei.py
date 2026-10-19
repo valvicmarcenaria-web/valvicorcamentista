@@ -26,7 +26,7 @@ AS NOTAS DA PRANCHA (repetidas em todas as folhas de detalhe):
   6. Observar pontos de tomada para recorte no móvel
 
 ⭐ [Jonathan 18/10] **"vamos orçar na linha ESSENCIAL com 35% de MC e com
-   RT."** ⭐ [Jonathan 19/10] **"vamos subir a MC para 38%."** — dentro da
+   RT."** ⭐ [Jonathan 19/10] **"vamos subir para 40% a MC."** — o topo da
    faixa ideal da casa (35–40%). A linha Essencial, neste projeto, é:
      · **interior e caixaria em Branco TX**, cor só onde aparece
      · **corrediça telescópica** com amortecedor — é o que a prancha pede
@@ -51,7 +51,7 @@ vg  = lambda v, n=2: f'{v:.{n}f}'.replace('.', ',')
 
 CH_M2, APROV = 2.75*1.85, 0.80
 LINHA   = 'essencial'                # ⭐ [Jonathan 18/10]
-MC_ALVO = 0.38                       # ⭐ [Jonathan 19/10] "subir a MC para 38%"
+MC_ALVO = 0.40                       # ⭐ [Jonathan 19/10] "subir para 40%"
 RT_ON   = True                       # ⭐ [Jonathan 18/10] "e com RT"
 BASE    = M.base(parcelas=0, rt=RT_ON, vendedor=False)
 
@@ -61,19 +61,25 @@ COR  = {6: 300.0, 15: 500.0, 18: 600.0}     # MDF de cor — base da casa
 CORES = ('Gianduia', 'Itapuã', 'Areia', 'Brisa', 'Alecrim')
 FITA_BR, FITA_COR = 2.0 + 2.5, 3.0 + 2.5
 
-# ── ferragem, por unidade ───────────────────────────────────────────────
-DOBR     = 12.0     # ⭐ [Jonathan 14/10] dobradiça com amortecedor
-CORR_TEL = 85.0     # corrediça telescópica reforçada com amortecedor, par
-BASCULA  = 60.0     # ★ par de pistões a gás com amortecimento
-TOQUE    = 25.0     # ★ fecho-toque (M12, puxador fecho-toque)
-CABIDE   = 60.0     # cabideiro, por metro de vão
-CORRER_M = 420.0    # ★ sistema de correr embutido, por folha (M20)
+# ── ferragem, por unidade · DUAS LINHAS ─────────────────────────────────
+# ⭐ [Jonathan 19/10] "apresente de forma sucinta a versão na linha premium
+#   da Hettich, mostrando a vantagem de tempo de garantia."
+# ⛔ A GARANTIA É A DA CORREDIÇA, e é ela que muda:
+#     telescópica → 2 anos  ·  oculta Hettich → 10 anos
+#   (referencias/proposta-comercial.md, corrigido por Jonathan em 07/08;
+#    a oculta HARDT é que dá 5 — a Hettich é a linha Gold da casa.)
+LINHAS = {
+ 'essencial': dict(dobr=12.0,  corr=85.0,  basc=60.0,  toque=25.0,
+                   correr=420.0, led=65.0, garantia='2 anos'),
+ 'premium':   dict(dobr=35.0,  corr=190.0, basc=185.0, toque=45.0,
+                   correr=620.0, led=85.0, garantia='10 anos'),
+}
+CABIDE   = 60.0     # cabideiro, por metro de vão — igual nas duas
 # ⭐ PUXADOR CAVA NÃO É FERRAGEM: é usinagem na própria peça. Não entra
 #   aqui — entra no tempo de fabricação, que a cascata já carrega.
 
 # ── terceiros e serviços ────────────────────────────────────────────────
-LED_M      = 65.0 if LINHA == 'essencial' else 85.0   # fita + perfil +
-                    # usinagem da cava + instalação, por metro
+# LED: fita + perfil + usinagem da cava + instalação, por metro — por linha
 SERRALHA_M = 180.0  # ★ estrutura metálica preta, por metro linear
 RODAPE_M   = 95.0   # ★ perfil L de alumínio abas desiguais, por metro
 ESTOFADO   = 95.0   # ★ tecido do banco do closet, por m²
@@ -88,8 +94,11 @@ SUPORTE_TV = 180.0  # ★ apoio/reforço para suporte de TV
 #     fc  = 2 fita nos quatro lados · 1 fita só na frente
 # ════════════════════════════════════════════════════════════════════════
 PCS, FER, TER, LED, AMB_DE = [], {}, {}, {}, {}
-FER_UN = {'dobr': DOBR, 'corr': CORR_TEL, 'basc': BASCULA,
-          'toque': TOQUE, 'cabide': CABIDE, 'correr': CORRER_M}
+FER_KEYS = ('dobr', 'corr', 'basc', 'toque', 'cabide', 'correr')
+def fer_un(linha):
+    d = dict(LINHAS[linha]); d['cabide'] = CABIDE
+    return {k: d[k] for k in FER_KEYS}
+FER_UN = fer_un(LINHA)      # a linha adotada, para quem só quer um número
 
 def mov(amb, mv):
     AMB_DE[mv] = amb
@@ -103,14 +112,20 @@ def f(mv, **kw):
 def ter(mv, v): TER[mv] += v
 def led(mv, m): LED[mv] += m
 
-def caixa(mv, larg, alt, prof, cor, prats=0, fundo=True):
+def caixa(mv, larg, alt, prof, cor, prats=0, fundo=True, aberto=False):
     """Caixaria padrão: duas laterais, base e tampo, fundo e prateleiras.
-    ⭐ Laterais e horizontais em 15; o que aparece de frente é a fita."""
+    ⭐ Laterais e horizontais em 15; o que aparece de frente é a fita.
+    ⛔⛔ `aberto=True` → NÃO HÁ MIOLO ESCONDIDO. Num móvel sem porta, a
+      caixaria É o acabamento: prateleira, lateral e fundo ficam à vista e
+      têm de sair na cor do projeto, não em Branco TX. Foi o render do
+      closet que mostrou isso — a prancha não diz, e a linha Essencial
+      teria entregado um closet aberto branco por dentro."""
+    c = cor if aberto else 'int'
     i = larg - 3.0
-    a(mv, 15, 'Lateral',         alt, prof, 2, 'int', 1)
-    a(mv, 15, 'Base e tampo',      i, prof, 2, 'int', 1)
-    if prats: a(mv, 15, 'Prateleira', i, prof-2, prats, 'int', 1)
-    if fundo: a(mv, 6, 'Fundo',   larg, alt, 1, 'int', 0)
+    a(mv, 15, 'Lateral',         alt, prof, 2, c, 1)
+    a(mv, 15, 'Base e tampo',      i, prof, 2, c, 1)
+    if prats: a(mv, 15, 'Prateleira', i, prof-2, prats, c, 1)
+    if fundo: a(mv, 6, 'Fundo',   larg, alt, 1, c, 0)
 
 def porta(mv, larg, alt, q, cor, dobr=2):
     a(mv, 18, 'Porta de giro · puxador cava', larg, alt, q, cor)
@@ -163,7 +178,8 @@ gaveta('M04', 15, 20, 60, 2, 'Gianduia')      # temperos e pano de prato
 a('M04', 15, 'Sócalo em alvenaria · fechamento', 410, 10, 1, 'int', 1)
 
 mov('Cozinha', 'M22')       # torre quente: básculas, micro-ondas e forno
-caixa('M22', 155, 250, 70, 'Itapuã', prats=4)
+# ⛔ Os nichos de forno e de micro-ondas são ABERTOS: o que os forra aparece.
+caixa('M22', 155, 250, 70, 'Itapuã', prats=4, aberto=True)
 a('M22', 18, 'Báscula · puxador cava',  66, 51, 1, 'Itapuã')
 a('M22', 18, 'Báscula · puxador cava',  81, 51, 1, 'Itapuã')
 a('M22', 18, 'Báscula · puxador cava',  66, 48, 1, 'Itapuã')
@@ -298,10 +314,12 @@ led('M20', 3.89)
 ter('M20', 2.70*3*SERRALHA_M + SUPORTE_TV + 3.89*RODAPE_M)
 
 mov('Suíte master', 'M21')        # closet
-caixa('M21', 96, 270, 60, 'Itapuã', prats=3)
-caixa('M21', 99, 270, 60, 'Itapuã', prats=3)
-caixa('M21', 98, 270, 60, 'Areia',  prats=5)
-caixa('M21', 99, 270, 60, 'Itapuã', prats=3)
+# ⛔⛔ CLOSET ABERTO, sem porta — confirmado no render do caderno. Toda a
+#   caixaria aparece e sai na cor.
+caixa('M21', 96, 270, 60, 'Itapuã', prats=3, aberto=True)
+caixa('M21', 99, 270, 60, 'Itapuã', prats=3, aberto=True)
+caixa('M21', 98, 270, 60, 'Areia',  prats=5, aberto=True)
+caixa('M21', 99, 270, 60, 'Itapuã', prats=3, aberto=True)
 a('M21', 18, 'Maleiro · frente',  96, 57, 4, 'Itapuã')
 f('M21', cabide=3.0)
 gaveta('M21', 45, 14, 60, 8, 'Itapuã')
@@ -326,9 +344,12 @@ for mv in MOVEIS:
         if m == mv and cor != 'int': _c[cor] = _c.get(cor, 0) + c*l*q
     COR_PRINC[mv] = max(_c, key=_c.get) if _c else 'Itapuã'
 
-def calcula(interior_cor=False):
+def calcula(interior_cor=False, linha=None):
     """interior_cor=False → miolo em Branco TX (linha Essencial).
-       interior_cor=True  → tudo na cor do móvel (o cenário caro)."""
+       interior_cor=True  → tudo na cor do móvel (o cenário caro).
+       linha → 'essencial' (telescópica) ou 'premium' (oculta Hettich)."""
+    linha = linha or LINHA
+    FU, LED_M = fer_un(linha), LINHAS[linha]['led']
     def cor_de(mv, cor):
         if cor != 'int': return cor
         return COR_PRINC[mv] if interior_cor else 'Branco TX'
@@ -350,7 +371,7 @@ def calcula(interior_cor=False):
     for mv, esp, d, c, l, q, cor, fc in PCS:
         ch_mv[mv] = ch_mv.get(mv, 0.0) + c*l*q/1e4*taxa[(cor_de(mv, cor), esp)]
     for mv in MOVEIS: ch_mv[mv] = ch_mv.get(mv, 0.0) + sobra*area_mv[mv]/at
-    fer_mv = {mv: sum(FER[mv][x]*FER_UN[x] for x in FER_UN) for mv in MOVEIS}
+    fer_mv = {mv: sum(FER[mv][x]*FU[x] for x in FU) for mv in MOVEIS}
     led_mv = {mv: LED[mv]*LED_M for mv in MOVEIS}
     CD = {mv: ((ch_mv[mv] + fita_mv.get(mv, 0))*1.06 + fer_mv[mv]
                + TER[mv] + led_mv[mv])*(1 + M.EMBALAGEM) for mv in MOVEIS}
@@ -360,9 +381,18 @@ def calcula(interior_cor=False):
                 area_mv=area_mv, CD=CD, PV=PV,
                 CD_TOT=sum(CD.values()), TOT=sum(PV.values()))
 
-R   = calcula(False)        # ⭐ LINHA ESSENCIAL — o que vai ao cliente
-R_C = calcula(True)         # cenário: tudo na cor
-TOTAL = R['TOT']
+R   = calcula(False, 'essencial')   # ⭐ o que vai ao cliente
+R_C = calcula(True,  'essencial')   # cenário: tudo na cor
+PREM = calcula(False, 'premium')    # ⭐ a versão Hettich, 10 anos
+TOTAL, TOTAL_PREM = R['TOT'], PREM['TOT']
+GARANTIA = {k: LINHAS[k]['garantia'] for k in LINHAS}
+
+# ── desconto à vista ⭐ [Jonathan 19/10] "ênfase para o valor com desconto" ─
+# A escada da casa (referencias/proposta-comercial.md) vai até 7% quando o
+# saldo não passa pelo cartão. É essa a ponta que o cliente vê em destaque.
+DESC_VISTA = 0.07
+VISTA      = round(TOTAL*(1 - DESC_VISTA)/10)*10
+VISTA_PREM = round(TOTAL_PREM*(1 - DESC_VISTA)/10)*10
 
 # ── por ambiente ────────────────────────────────────────────────────────
 AMBS = []
@@ -455,3 +485,22 @@ if __name__ == '__main__':
     print('  · ⚠ ELETRODOMÉSTICOS são dos clientes. A prancha manda')
     print('    "compatibilizar armário com forno e micro-ondas comprados')
     print('    pelos clientes, NÃO EXECUTAR SEM ESSA COMPATIBILIZAÇÃO".')
+
+    print(f'\n{"═"*W}')
+    print('⭐ A VERSÃO PREMIUM — FERRAGEM HETTICH')
+    print(f'{"═"*W}')
+    print(f'  {"Essencial · telescópica · " + GARANTIA["essencial"]:<40}'
+          f'R$ {br(TOTAL):>9}')
+    print(f'  {"Premium · oculta Hettich · " + GARANTIA["premium"]:<40}'
+          f'R$ {br(TOTAL_PREM):>9}')
+    print(f'  {"diferença":<40}R$ {br(TOTAL_PREM-TOTAL):>9}'
+          f'   ({TOTAL_PREM/TOTAL-1:.0%})')
+    print(f'\n  ⭐ {TOTAL_PREM/TOTAL-1:.0%} a mais compra CINCO VEZES mais garantia '
+          f'({GARANTIA["essencial"]} → {GARANTIA["premium"]}).')
+    print('    A corrediça oculta é o que muda: o trilho some por baixo, a')
+    print('    gaveta abre inteira e fecha amortecida — e é a peça que decide')
+    print('    se o móvel ainda fecha bem no décimo ano.')
+    print(f'\n{"═"*W}')
+    print(f'  {"À VISTA · −" + f"{DESC_VISTA:.0%}":<40}')
+    print(f'  {"Essencial":<40}R$ {br(VISTA):>9}')
+    print(f'  {"Premium":<40}R$ {br(VISTA_PREM):>9}')
