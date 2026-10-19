@@ -702,12 +702,16 @@ function atualizarPainel_(ss, LT, LP, LS) {
   // ── mês a mês ──
   const lm = L + 2;
   faixa(lm, 'MÊS A MÊS   ·   pela data combinada de pagamento');
-  const cab = ['Mês', 'Comissões', 'Avulsos', 'Total', 'Já pago', 'A receber'];
-  pa.getRange(lm + 1, 2, 1, 6).setValues([cab])
+  // Quem não tem aba de Avulsos não ganha a coluna de Avulsos: coluna que só
+  // pode dar zero é ruído. Para esses, a de Comissões já é o total.
+  const cab = temAvulso
+    ? ['Mês', 'Comissões', 'Avulsos', 'Total', 'Já pago', 'A receber']
+    : ['Mês', 'Comissões', 'Já pago', 'A receber'];
+  const nc = cab.length;
+  pa.getRange(lm + 1, 2, 1, nc).setValues([cab])
     .setBackground(NAVY).setFontColor(GOLDS).setFontSize(9).setFontWeight('bold')
     .setHorizontalAlignment('center');
 
-  const zero = '0';
   for (let m = 0; m < 12; m++) {
     const r = lm + 2 + m;
     const ini = 'DATE(YEAR(TODAY()),' + (m + 1) + ',1)';
@@ -722,26 +726,31 @@ function atualizarPainel_(ss, LT, LP, LS) {
     pa.getRange(r, 2).setValue(MESES[m])
       .setFontColor(NAVY2).setFontSize(10).setFontWeight('bold');
     posF_(pa.getRange(r, 3), '=ROUND(' + noMes(cCom, cDt) + ',2)');
-    posF_(pa.getRange(r, 4), temAvulso ? '=ROUND(' + noMes(aVal, aDt) + ',2)' : '=' + zero);
-    posF_(pa.getRange(r, 5), '=ROUND($C' + r + '+$D' + r + ',2)');
-    posF_(pa.getRange(r, 6), '=ROUND(' + pagoNoMes(cCom, cDt, cSt)
-      + (temAvulso ? '+' + pagoNoMes(aVal, aDt, aSt) : '') + ',2)');
-    posF_(pa.getRange(r, 7), '=ROUND($E' + r + '-$F' + r + ',2)');
-    pa.getRange(r, 3, 1, 5).setNumberFormat(MOEDA).setFontColor(NAVY2).setFontSize(10);
-    if (m % 2) pa.getRange(r, 2, 1, 6).setBackground(ZEBRA);
+    if (temAvulso) {
+      posF_(pa.getRange(r, 4), '=ROUND(' + noMes(aVal, aDt) + ',2)');
+      posF_(pa.getRange(r, 5), '=ROUND($C' + r + '+$D' + r + ',2)');
+      posF_(pa.getRange(r, 6), '=ROUND(' + pagoNoMes(cCom, cDt, cSt)
+        + '+' + pagoNoMes(aVal, aDt, aSt) + ',2)');
+      posF_(pa.getRange(r, 7), '=ROUND($E' + r + '-$F' + r + ',2)');
+    } else {
+      posF_(pa.getRange(r, 4), '=ROUND(' + pagoNoMes(cCom, cDt, cSt) + ',2)');
+      posF_(pa.getRange(r, 5), '=ROUND($C' + r + '-$D' + r + ',2)');
+    }
+    pa.getRange(r, 3, 1, nc - 1).setNumberFormat(MOEDA).setFontColor(NAVY2).setFontSize(10);
+    if (m % 2) pa.getRange(r, 2, 1, nc).setBackground(ZEBRA);
   }
   const rt = lm + 14;
-  pa.getRange(rt, 2, 1, 6).setBackground(NAVY);
+  pa.getRange(rt, 2, 1, nc).setBackground(NAVY);
   pa.getRange(rt, 2).setValue('Total do ano').setFontColor(GOLDS).setFontWeight('bold');
-  for (let c = 3; c <= 7; c++) {
+  for (let c = 3; c <= nc + 1; c++) {
     const Lc = colLetra_(c);
     posF_(pa.getRange(rt, c), '=ROUND(SUM(' + Lc + (lm + 2) + ':' + Lc + (lm + 13) + '),2)');
     pa.getRange(rt, c).setNumberFormat(MOEDA).setFontColor(GOLDS).setFontWeight('bold');
   }
-  pa.getRange(lm + 1, 2, 14, 6).setBorder(true, true, true, true, true, true,
+  pa.getRange(lm + 1, 2, 14, nc).setBorder(true, true, true, true, true, true,
     '#d6dbe2', SpreadsheetApp.BorderStyle.SOLID);
 
-  pa.getRange(rt + 2, 2, 1, 6).merge().setValue(
+  pa.getRange(rt + 2, 2, 1, nc).merge().setValue(
     'O mês é o da DATA COMBINADA de pagamento, digitada à mão. Linha sem data '
     + 'combinada entra no total do ano e em mês nenhum — é isso que mostra o que '
     + 'ainda não foi acordado. Divergência se fala antes do pagamento.')
