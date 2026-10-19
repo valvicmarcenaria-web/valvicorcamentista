@@ -43,6 +43,11 @@ assert abs(sr.MC_ALVO - 0.30) < 1e-9, f'⛔ A MC MUDOU: {sr.MC_ALVO:.3f} ≠ 0,3
 assert RACK == sr.PV and RACK > 0,  '⛔ O PREÇO NÃO VEIO DO MOTOR'
 assert PAINEL == 3900,              '⛔ O PAINEL NÃO ESTÁ NO PREÇO DO JONATHAN'
 assert sr.N_FRISO == 2,             '⛔ NÃO SÃO MAIS DOIS FRISOS'
+# ⛔⛔ "SE ESTÁ NO TEXTO, TEM DE ESTAR NA CONTA": a folha diz perfil slim
+#   LAQUEADO e puxador. Se o motor voltar ao perfil de alumínio ou perder o
+#   puxador, a proposta estaria prometendo o que o orçamento não paga.
+assert sr.PERFIL_SLIM == 160.0,     '⛔ O PERFIL DAS PORTAS NÃO É MAIS LAQUEADO'
+assert sr.PUX_SLIM > 0 and sr.PUX_TOQUE > 0, '⛔ O PUXADOR SUMIU DA CONTA'
 assert abs(RACK + PAINEL - TOTAL) < 0.5, (
     f'⛔ O TOTAL NÃO FECHA: {RACK:,.0f} + {PAINEL:,.0f} ≠ {TOTAL:,.0f}')
 
@@ -51,9 +56,10 @@ ITENS = [
   'à frente e o interior no mesmo padrão. Base recuada sobre <b>rodízios '
   'giratórios ocultos</b>: sai do lugar para limpar e passar fiação, e '
   'volta alinhado.'),
- ('Portas', 'De giro em <b>vidro temperado reflecta champagne</b>, '
-  'enquadradas em perfil de alumínio slim, sobre dobradiça própria para '
-  'vidro, com regulagem nos três sentidos.'),
+ ('Portas', 'De giro em <b>perfil slim laqueado</b> e <b>vidro reflecta '
+  'champagne</b>, sobre dobradiça própria para vidro, com regulagem nos '
+  'três sentidos. Puxador por <b>fecho-toque</b> ou em <b>perfil slim</b>, '
+  'a escolher.'),
  ('Tampo', 'Em <b>vidro temperado de 10 mm</b>, com bisotê na frente e na '
   'lateral aparente e lapidação reta ao fundo — a borda é trabalhada onde '
   'a vista alcança.'),
@@ -134,7 +140,7 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
   font-variant-numeric:tabular-nums;}
 .rows{margin-top:0;flex:none;}
 .row{display:grid;grid-template-columns:26mm 1fr;gap:6mm;align-items:baseline;
-  padding:2.2mm 0;border-top:1px solid var(--line);}
+  padding:2mm 0;border-top:1px solid var(--line);}
 .row:first-child{border-top:1px solid var(--line);}
 .row .k{font-family:'Cormorant Garamond',Georgia,serif;font-size:16pt;
   font-weight:700;color:var(--cha);line-height:1;padding-top:.6mm;}
@@ -169,7 +175,7 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
 .notes .bx.w{background:#fff;border:1px solid var(--line);}
 .notes .k{font-size:6.8pt;letter-spacing:.22em;text-transform:uppercase;
   color:var(--cha);font-weight:700;}
-.notes .d{color:var(--soft);font-size:7.6pt;line-height:1.4;margin-top:1.6mm;}
+.notes .d{color:var(--soft);font-size:7.5pt;line-height:1.38;margin-top:1.5mm;}
 .notes .d b{color:var(--ink);font-weight:600;}
 """
 
@@ -270,11 +276,11 @@ p2 = f"""<div class="page"><div class="pad p2">
     <div class="bx w"><div class="k">A confirmar antes da produção</div>
       <div class="d">A prancha pede <b>conferir as medidas e o ponto de
       energia no local</b> — fazemos a medição antes do corte. O
-      <b>puxador</b>: recomendamos o perfil slim colado, porque furo em
-      vidro temperado é feito antes da têmpera e não admite ajuste depois da
-      medição. A <b>altura do painel</b>, que a medição fecha — é ela que
-      confirma a peça única. E <b>amostra</b> do padrão champagne e da
-      <b>cor da laca dos frisos</b>.</div></div>
+      <b>puxador</b> das portas: fecho-toque ou perfil slim — <b>nenhum dos
+      dois exige furo no vidro</b>, então a medição no local continua livre
+      para ajustar. A <b>altura do painel</b>, que a medição fecha — é ela
+      que confirma a peça única. E <b>amostra</b> do padrão champagne e da
+      <b>cor da laca</b>, dos frisos e do perfil das portas.</div></div>
   </div>
   {foot(2)}
 </div></div>"""

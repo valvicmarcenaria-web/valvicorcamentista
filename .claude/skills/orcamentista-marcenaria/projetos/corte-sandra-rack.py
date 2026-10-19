@@ -70,7 +70,18 @@ FITA_M     = 3.0 + 2.5 # fita de cor + filetagem
 VIDRO = {6: 320.0, 8: 390.0, 10: 480.0}   # ★ temperado reflecta, R$/m²
 BISOTE_M   = 90.0      # ★ bisotê de 1,5 cm, por metro
 LAPID_M    = 25.0      # ★ lapidação reta, por metro
-PERFIL_SLIM= 120.0     # ★ perfil de alumínio slim champagne, por m
+# ⭐⭐ [Jonathan 19/10] "Portas em perfil slim LAQUEADO e vidro reflecta
+#   champagne, puxadores por FECHE TOQUE OU PERFIL SLIM."
+# ⛔⛔ "SE ESTÁ NO TEXTO, TEM DE ESTAR NA CONTA." A descrição nova trouxe
+#   DUAS coisas que o orçamento não pagava:
+#     1. o perfil deixou de ser alumínio champagne (R$ 120/m) e passou a
+#        ser LAQUEADO — mesmo produto do friso do painel, R$ 160/m;
+#     2. apareceu PUXADOR, que antes não existia: a porta era vidro com
+#        dobradiça e ponto.
+#   ⭐ E ORÇO O CAMINHO MAIS CARO DOS DOIS que a frase oferece. Quando a
+#     proposta dá duas opções ao cliente, a conta tem de cobrir as duas.
+PERFIL_SLIM= 160.0     # ★ perfil slim LAQUEADO, por m — era 120 em alumínio
+TOQUE_VIDRO= 45.0      # ★ fecho-toque magnético para porta de vidro, por un
 LED_M      = 95.0      # ★ fita 4,8 W/m + perfil com difusor leitoso + cava
 LED_FONTE  = 120.0     # ★ fonte, embutida na base
 RODIZIO    = 45.0      # ★ rodízio giratório oculto
@@ -117,8 +128,12 @@ VID = {
  'Prateleira interna em vidro de 8 mm': a_prat*VIDRO[8],
  'Bisotê de 1,5 cm · frente e lateral': m_bisote*BISOTE_M,
  'Lapidação reta · face posterior':  m_lapid*LAPID_M,
- '⭐ Perfil slim de enquadramento das portas': m_perfil*PERFIL_SLIM,
+ '⭐ Perfil slim laqueado de enquadramento das portas': m_perfil*PERFIL_SLIM,
+ '⭐ Puxador em perfil slim · o mais caro dos dois': N_PORTA*PORTA_A*PERFIL_SLIM,
 }
+# ⭐ o outro caminho do puxador, para comparar
+PUX_TOQUE = N_PORTA*TOQUE_VIDRO
+PUX_SLIM  = N_PORTA*PORTA_A*PERFIL_SLIM
 FER = {
  'Dobradiça de porta de vidro':      N_PORTA*2*DOBR_VIDRO,
  'Rodízio giratório oculto':         4*RODIZIO,
@@ -258,10 +273,18 @@ if __name__ == '__main__':
     for k, v in VID.items(): print(f'  {k:<48}R$ {br(v):>8}')
     print(f'  {"":<48}{"─"*11}')
     print(f'  {"":<48}R$ {br(CD_VID):>8}')
-    print(f'\n  ⚠ A prancha deixa EM ABERTO: "verificar a necessidade de')
-    print('    enquadrar as portas em perfis de alumínio slim". Orçei COM o')
-    print(f'    perfil — R$ {br(m_perfil*PERFIL_SLIM)}. Sem ele a porta é vidro puro com')
-    print('    dobradiça de pinça, e aí o puxador tem de ser FURO NO VIDRO.')
+    print(f'\n  ⭐⭐ A PRANCHA PERGUNTAVA, O JONATHAN RESPONDEU [19/10]: as')
+    print('    portas SÃO em perfil slim LAQUEADO, com puxador por fecho-toque')
+    print('    ou por perfil slim. Isso fecha a contradição mais feia deste')
+    print('    orçamento: ⛔ nenhum dos dois puxadores precisa de FURO NO')
+    print('    VIDRO, e por isso a têmpera deixa de brigar com o "conferir as')
+    print('    medidas no local". O furo de 3 cm da prancha está descartado.')
+    print(f'\n  ⭐ ORÇADO O CAMINHO MAIS CARO DOS DOIS puxadores que a frase')
+    print(f'    oferece: perfil slim, R$ {br(PUX_SLIM)}. Por fecho-toque seriam')
+    print(f'    R$ {br(PUX_TOQUE)} — R$ {br(PUX_SLIM-PUX_TOQUE)} a menos de custo. A conta cobre os dois.')
+    print(f'\n  ⚠ E O PERFIL SUBIU: de alumínio champagne a R$ 120/m para')
+    print(f'    LAQUEADO a ★ R$ {br(PERFIL_SLIM)}/m — o mesmo perfil do friso do painel.')
+    print(f'    Só o enquadramento passou de R$ {br(m_perfil*120.0)} para R$ {br(m_perfil*PERFIL_SLIM)}.')
 
     print(f'\n{"═"*W}')
     print('FERRAGEM E ILUMINAÇÃO')

@@ -120,10 +120,10 @@ passou a ser a **vidraçaria** — é lá que a cotação tem de bater agora.
 | consumíveis · 6% | 38 |
 | embalagem · 2% | 26 |
 | **custo direto** | **1.339** |
-| ⭐ **RT do projeto inteiro** | **974** |
-| **a cobrir, no painel** | **2.313** |
+| ⭐ **RT do projeto inteiro** | **1.043** |
+| **a cobrir, no painel** | **2.382** |
 | **PREÇO** ⭐ dele | **R$ 3.900** |
-| **MC que sobra no painel** | **26.1%** |
+| **MC que sobra no painel** | **24.3%** |
 
 Os **frisos são 34% do custo direto do painel**: de R$ 875 sem
 eles para R$ 1.339 com eles.
@@ -139,8 +139,8 @@ rasgo e laca. **Não está na base da casa**; vale cotar.
 > **alocada apenas no custo do painel**."*
 
 A RT devida à arquiteta é **9.5% do preço de venda** — 10% sobre o líquido, e
-o líquido é o bruto menos a nota. Sobre o total de R$ 10.250, dá
-**R$ 974**.
+o líquido é o bruto menos a nota. Sobre o total de R$ 10.980, dá
+**R$ 1.043**.
 
 ⛔ **Isso não muda o que a arquiteta recebe.** Muda de onde o dinheiro sai:
 o **rack passa a ser precificado sem RT na cascata** (base 85.35%) e o
@@ -148,15 +148,15 @@ o **rack passa a ser precificado sem RT na cascata** (base 85.35%) e o
 
 | | MC | R$ |
 |---|--:|--:|
-| Rack · MC alvo | 30.0% | 6.350 |
-| **Painel · MC que sobra** | **26.1%** | 3.900 |
-| **Conjunto** | **28.5%** | **10.250** |
+| Rack · MC alvo | 30.0% | 7.080 |
+| **Painel · MC que sobra** | **24.3%** | 3.900 |
+| **Conjunto** | **28.0%** | **10.980** |
 
-O painel carrega sozinho a RT de um projeto de R$ 10.250, e por isso fica
-com **26.1%** em vez dos 30% do rack. O **conjunto fecha em 28.5%**.
+O painel carrega sozinho a RT de um projeto de R$ 10.980, e por isso fica
+com **24.3%** em vez dos 30% do rack. O **conjunto fecha em 28.0%**.
 
 ⭐ Para o painel segurar 30% carregando a mesma RT, o preço dele teria de
-ser **R$ 4.240** — R$ 340 acima dos R$ 3.900.
+ser **R$ 4.390** — R$ 490 acima dos R$ 3.900.
 
 ---
 
@@ -164,9 +164,9 @@ ser **R$ 4.240** — R$ 340 acima dos R$ 3.900.
 
 | | R$ |
 |---|--:|
-| rack · sem RT | 6.350 |
+| rack · sem RT | 7.080 |
 | painel de TV · liso com dois frisos | 3.900 |
-| **total** | **R$ 10.250** |
+| **total** | **R$ 10.980** |
 
 ---
 
@@ -174,16 +174,29 @@ ser **R$ 4.240** — R$ 340 acima dos R$ 3.900.
 
 1. ⭐ **O preço da chapa Metalic fechou em R$ 600** [Jonathan 14/10].
    Saiu o maior ★ do orçamento, e com ele R$ 550 de chapa.
-2. ⛔⛔ **Furo de 3 cm em vidro temperado.** A prancha oferece *"puxador
+2. ⭐ **Furo de 3 cm em vidro temperado — resolvido** pela decisão do
+   item 3: nem fecho-toque nem perfil slim furam o vidro. Fica o registro
+   do porquê de não furar: A prancha oferece *"puxador
    tipo furo de 3 cm **ou** em alumínio slim colado"*. ⚠ **Furo em
    temperado tem de ser feito antes da têmpera** — depois não se fura, e a
    peça não se reaproveita. E a mesma prancha manda **conferir as medidas
    no local antes de cortar**. As duas coisas não cabem juntas: ou a medida
    está fechada antes do vidro, ou o puxador é o **slim colado**.
    ⭐ **Recomendo o slim colado.**
-3. ⚠ **O enquadramento das portas.** A prancha pergunta e não responde
-   (*"verificar a necessidade"*). Orçei **com** perfil slim — R$ 576.
-   Decide construção, puxador e preço.
+3. ⭐⭐ **O enquadramento das portas — respondido** [Jonathan 19/10]:
+   *"portas em **perfil slim laqueado** e vidro reflecta champagne,
+   puxadores por **fecho-toque ou perfil slim**"*.
+   ⭐ Isso **fecha a contradição mais feia deste orçamento**: nenhum dos
+   dois puxadores precisa de **furo no vidro**, então a têmpera deixa de
+   brigar com o *"conferir as medidas no local"*. O furo de 3 cm da
+   prancha está descartado.
+   ⛔ **E entrou na conta**, porque entrou no texto: o perfil passou de
+   alumínio champagne (R$ 120/m) para **laqueado** (★ R$ 160/m), e
+   **apareceu puxador**, que antes não existia. Só isso levou o rack de
+   **R$ 6.350 para R$ 7.080**.
+   ⭐ Orçado o **caminho mais caro dos dois** que a frase oferece — puxador
+   em perfil slim, R$ 205, contra R$ 90 do fecho-toque. Quando a proposta
+   dá duas opções ao cliente, a conta cobre as duas.
 4. ★ **O vidro reflecta champagne** também é estimado. Cotar junto com o
    **bisotê**, que é serviço de vidraceiro, não nosso.
 5. ⚠ **MC de 30%, abaixo do piso da casa (35%)** ⭐ [Jonathan 14/10], e
