@@ -123,6 +123,10 @@ function posFs_(rg, m) {
 
 const NAVY = '#0e2038', NAVY2 = '#16314f', GOLDS = '#d8bd80';
 const CALC = '#eaf1f8', ZEBRA = '#f7f5ef', OKBG = '#e6f0e9', ABERTOBG = '#faefdc';
+const GOLDBG = '#f6edd6', MUTED = '#6c7785', OK = '#2f7d4f', ABERTO = '#c47d0e';
+const AV0 = 4, AVF = 33;          // faixa de lançamentos da aba Avulsos
+const MESES = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho',
+  'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 const MOEDA = 'R$ #,##0.00', PCT = '0.0%', DATA = 'dd/mm/yyyy';
 
 
@@ -598,35 +602,129 @@ function atualizarIndividual_(p) {
 function atualizarPainel_(ss, LT, LP, LS) {
   const pa = ss.getSheetByName('Painel');
   if (!pa) return;
-  const p0 = LIN0, pf = LIN0 + N_PROJ - 1;
-  const C = "'Comissões'!";
-  posF_(pa.getRange('C7'), '=ROUND(SUM(' + C + '$' + LT + '$' + p0 + ':$' + LT + '$' + pf + '),2)');
-  posF_(pa.getRange('E7'), '=ROUND(SUMIF(' + C + '$' + LS + '$' + p0 + ':$' + LS + '$' + pf
-    + ',"Pago",' + C + '$' + LT + '$' + p0 + ':$' + LT + '$' + pf + '),2)');
-  posF_(pa.getRange('G7'), '=ROUND($C$7-$E$7,2)');
 
-  // a tabela mês a mês começa onde estiver o rótulo "Janeiro"
-  let lj = 0;
-  for (let r = 10; r <= 20; r++) {
-    if (String(pa.getRange(r, 2).getDisplayValue()).trim() === 'Janeiro') { lj = r; break; }
+  const C = "'Comissões'!";
+  const A = "'Avulsos'!";
+  const temAvulso = !!ss.getSheetByName('Avulsos');
+  const p0 = LIN0, pf = LIN0 + N_PROJ - 1;
+
+  const cCom = C + '$' + LT + '$' + p0 + ':$' + LT + '$' + pf;   // valor
+  const cSt  = C + '$' + LS + '$' + p0 + ':$' + LS + '$' + pf;   // status
+  const cDt  = C + '$' + LP + '$' + p0 + ':$' + LP + '$' + pf;   // data combinada
+  const aVal = A + '$C$' + AV0 + ':$C$' + AVF;
+  const aDt  = A + '$D$' + AV0 + ':$D$' + AVF;
+  const aSt  = A + '$E$' + AV0 + ':$E$' + AVF;
+
+  // Linhas 1 a 3 (título, subtítulo e o aviso de autorização) ficam como estão.
+  // Daí para baixo é tudo fórmula e rótulo, nada digitado — pode ser refeito.
+  if (pa.getMaxRows() < 40) pa.insertRowsAfter(pa.getMaxRows(), 40 - pa.getMaxRows());
+  if (pa.getMaxColumns() < 8) pa.insertColumnsAfter(pa.getMaxColumns(), 8 - pa.getMaxColumns());
+  pa.setFrozenRows(0);
+  const corpo = pa.getRange(5, 1, pa.getMaxRows() - 4, pa.getMaxColumns());
+  corpo.breakApart();
+  corpo.clear();
+  pa.clearConditionalFormatRules();
+
+  const faixa = function (lin, texto) {
+    pa.getRange(lin, 2, 1, 7).merge().setValue('  ' + texto)
+      .setBackground(GOLDBG).setFontColor(NAVY2).setFontSize(10).setFontWeight('bold')
+      .setVerticalAlignment('middle');
+    pa.setRowHeight(lin, 20);
+  };
+
+  // três cartões lado a lado: C+D, E+F, G+H
+  const cartoes = function (lin, itens) {
+    itens.forEach(function (it, i) {
+      const c0 = 3 + i * 2;
+      pa.getRange(lin, c0, 1, 2).merge().setValue(it[0])
+        .setFontColor(MUTED).setFontSize(9).setFontWeight('bold');
+      pa.getRange(lin + 1, c0, 1, 2).merge();
+      posF_(pa.getRange(lin + 1, c0), it[1]);
+      pa.getRange(lin + 1, c0).setNumberFormat(MOEDA)
+        .setFontColor(it[2]).setFontSize(16).setFontWeight('bold');
+    });
+    pa.setRowHeight(lin + 1, 26);
+  };
+
+  // ── comissões ──
+  faixa(5, 'COMISSÕES   ·   pelo que está lançado na Custo por Projeto');
+  cartoes(6, [
+    ['No ano', '=ROUND(SUM(' + cCom + '),2)', NAVY],
+    ['Já paga', '=ROUND(SUMIF(' + cSt + ',"Pago",' + cCom + '),2)', OK],
+    ['A receber', '=ROUND($C$7-$E$7,2)', ABERTO],
+  ]);
+
+  // ── avulsos ──
+  let L = 9;
+  if (temAvulso) {
+    faixa(9, 'AVULSOS   ·   o que você lançou na aba Avulsos');
+    cartoes(10, [
+      ['No ano', '=ROUND(SUM(' + aVal + '),2)', NAVY],
+      ['Já pago', '=ROUND(SUMIF(' + aSt + ',"Pago",' + aVal + '),2)', OK],
+      ['A receber', '=ROUND($C$11-$E$11,2)', ABERTO],
+    ]);
+    L = 13;
   }
-  if (!lj) return;
+
+  // ── total a receber ──
+  pa.getRange(L, 2, 1, 2).merge().setValue('  A RECEBER   ·   TOTAL')
+    .setBackground(NAVY).setFontColor(GOLDS).setFontSize(11).setFontWeight('bold')
+    .setVerticalAlignment('middle');
+  pa.getRange(L, 4, 1, 4).merge();
+  posF_(pa.getRange(L, 4), temAvulso ? '=ROUND($G$7+$G$11,2)' : '=ROUND($G$7,2)');
+  pa.getRange(L, 4).setNumberFormat(MOEDA).setBackground(NAVY).setFontColor(GOLDS)
+    .setFontSize(18).setFontWeight('bold').setHorizontalAlignment('right')
+    .setVerticalAlignment('middle');
+  pa.setRowHeight(L, 34);
+
+  // ── mês a mês ──
+  const lm = L + 2;
+  faixa(lm, 'MÊS A MÊS   ·   pela data combinada de pagamento');
+  const cab = ['Mês', 'Comissões', 'Avulsos', 'Total', 'Já pago', 'A receber'];
+  pa.getRange(lm + 1, 2, 1, 6).setValues([cab])
+    .setBackground(NAVY).setFontColor(GOLDS).setFontSize(9).setFontWeight('bold')
+    .setHorizontalAlignment('center');
+
+  const zero = '0';
   for (let m = 0; m < 12; m++) {
-    const r = lj + m;
+    const r = lm + 2 + m;
     const ini = 'DATE(YEAR(TODAY()),' + (m + 1) + ',1)';
     const fim = 'EOMONTH(DATE(YEAR(TODAY()),' + (m + 1) + ',1),0)';
-    posF_(pa.getRange(r, 3), '=ROUND(SUMIFS(' + C + '$' + LT + '$' + p0 + ':$' + LT + '$' + pf
-      + ',' + C + '$' + LP + '$' + p0 + ':$' + LP + '$' + pf + ',">="&' + ini
-      + ',' + C + '$' + LP + '$' + p0 + ':$' + LP + '$' + pf + ',"<="&' + fim + '),2)');
-    posF_(pa.getRange(r, 4), '=ROUND(SUMIFS(' + C + '$' + LT + '$' + p0 + ':$' + LT + '$' + pf
-      + ',' + C + '$' + LP + '$' + p0 + ':$' + LP + '$' + pf + ',">="&' + ini
-      + ',' + C + '$' + LP + '$' + p0 + ':$' + LP + '$' + pf + ',"<="&' + fim
-      + ',' + C + '$' + LS + '$' + p0 + ':$' + LS + '$' + pf + ',"Pago"),2)');
-    posF_(pa.getRange(r, 5), '=ROUND($C' + r + '-$D' + r + ',2)');
+    const noMes = function (val, dt) {
+      return 'SUMIFS(' + val + ',' + dt + ',">="&' + ini + ',' + dt + ',"<="&' + fim + ')';
+    };
+    const pagoNoMes = function (val, dt, st) {
+      return 'SUMIFS(' + val + ',' + dt + ',">="&' + ini + ',' + dt + ',"<="&' + fim
+             + ',' + st + ',"Pago")';
+    };
+    pa.getRange(r, 2).setValue(MESES[m])
+      .setFontColor(NAVY2).setFontSize(10).setFontWeight('bold');
+    posF_(pa.getRange(r, 3), '=ROUND(' + noMes(cCom, cDt) + ',2)');
+    posF_(pa.getRange(r, 4), temAvulso ? '=ROUND(' + noMes(aVal, aDt) + ',2)' : '=' + zero);
+    posF_(pa.getRange(r, 5), '=ROUND($C' + r + '+$D' + r + ',2)');
+    posF_(pa.getRange(r, 6), '=ROUND(' + pagoNoMes(cCom, cDt, cSt)
+      + (temAvulso ? '+' + pagoNoMes(aVal, aDt, aSt) : '') + ',2)');
+    posF_(pa.getRange(r, 7), '=ROUND($E' + r + '-$F' + r + ',2)');
+    pa.getRange(r, 3, 1, 5).setNumberFormat(MOEDA).setFontColor(NAVY2).setFontSize(10);
+    if (m % 2) pa.getRange(r, 2, 1, 6).setBackground(ZEBRA);
   }
-  posF_(pa.getRange(lj + 12, 3), '=ROUND(SUM(C' + lj + ':C' + (lj + 11) + '),2)');
-  posF_(pa.getRange(lj + 12, 4), '=ROUND(SUM(D' + lj + ':D' + (lj + 11) + '),2)');
-  posF_(pa.getRange(lj + 12, 5), '=ROUND(SUM(E' + lj + ':E' + (lj + 11) + '),2)');
+  const rt = lm + 14;
+  pa.getRange(rt, 2, 1, 6).setBackground(NAVY);
+  pa.getRange(rt, 2).setValue('Total do ano').setFontColor(GOLDS).setFontWeight('bold');
+  for (let c = 3; c <= 7; c++) {
+    const Lc = colLetra_(c);
+    posF_(pa.getRange(rt, c), '=ROUND(SUM(' + Lc + (lm + 2) + ':' + Lc + (lm + 13) + '),2)');
+    pa.getRange(rt, c).setNumberFormat(MOEDA).setFontColor(GOLDS).setFontWeight('bold');
+  }
+  pa.getRange(lm + 1, 2, 14, 6).setBorder(true, true, true, true, true, true,
+    '#d6dbe2', SpreadsheetApp.BorderStyle.SOLID);
+
+  pa.getRange(rt + 2, 2, 1, 6).merge().setValue(
+    'O mês é o da DATA COMBINADA de pagamento, digitada à mão. Linha sem data '
+    + 'combinada entra no total do ano e em mês nenhum — é isso que mostra o que '
+    + 'ainda não foi acordado. Divergência se fala antes do pagamento.')
+    .setFontColor(MUTED).setFontSize(9).setFontStyle('italic').setWrap(true);
+  pa.setRowHeight(rt + 2, 34);
 }
 
 
