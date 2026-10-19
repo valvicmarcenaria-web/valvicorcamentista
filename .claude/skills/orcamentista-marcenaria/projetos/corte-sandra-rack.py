@@ -48,7 +48,14 @@ vg  = lambda v, n=2: f'{v:.{n}f}'.replace('.', ',')
 
 CH_M2, APROV = 2.75*1.85, 0.80
 MC_ALVO = 0.30                        # ⭐ [Jonathan 14/10] ⚠ abaixo do piso (35%)
-RT_ON   = True                        # ⭐ [Jonathan 14/10] "adicione a RT"
+# ⭐⭐ [Jonathan 19/10] "adicione também a RT do projeto completo, mas a RT
+#   precisa estar ALOCADA APENAS NO CUSTO DO PAINEL."
+#   → O RACK sai da cascata SEM RT (base 85,35%), e a RT do projeto inteiro
+#     — rack mais painel — é paga por dentro do preço do PAINEL.
+#   ⛔ Isso NÃO muda o que a arquiteta recebe: a RT continua sendo 9,5% do
+#     preço total. Muda de onde o dinheiro sai.
+RT_ON   = False                       # ⭐ o rack, sem RT na cascata
+RT_NO_PAINEL = True                   # ⭐ toda a RT do projeto, no painel
 BASE = M.base(parcelas=0, rt=RT_ON, vendedor=False)
 
 # ── insumos ──────────────────────────────────────────────────────────────
@@ -147,6 +154,8 @@ PV_BR  = round((((chapas+chapas_br)*BR_15 + FITA_CUSTO)*1.06
 #         investimento 2.300"
 # ⭐ 19/10: "vamos atualizar o painel para RIPADO com ripas de 2×2 e o valor
 #           para R$ 7.500"
+# ⭐ 19/10, depois: "vamos VOLTAR COM O PAINEL LISO, dessa vez acrescentando
+#           DOIS FRISOS COM PERFIL LAQUEADO. A 3.100"
 #
 # ⛔ O PREÇO É DELE, NÃO MEU. O que eu faço aqui é conferir se cobre o custo
 #   e em que MC cai.
@@ -155,7 +164,9 @@ PV_BR  = round((((chapas+chapas_br)*BR_15 + FITA_CUSTO)*1.06
 #   2,75 — acima disso entra uma segunda chapa e uma emenda.
 PAINEL_L   = 1.42       # ⭐ [Jonathan] 142 cm de largura
 PAINEL_H   = 2.20       # ★ estimativa minha — a altura não veio
-PAINEL_PV  = 7500.0     # ⭐ [Jonathan 19/10] investimento fechado por ele
+PAINEL_PV  = 3100.0     # ⭐ [Jonathan 19/10] investimento fechado por ele
+PERFIL_LAQ = 160.0      # ★ friso em perfil laqueado: perfil, rasgo e laca, por m
+N_FRISO    = 2          # ⭐ [Jonathan 19/10] "dois frisos com perfil laqueado"
 CH_L, CH_C = 1.85, 2.75 # a chapa DE PÉ: 1,42 de largura cabe folgado no 1,85
 FIXA_PAINEL = 180.0     # ★ estrutura de fixação, buchas e parafusos
 RIPA, VAO  = 2.0, 2.0   # ⭐ [Jonathan 19/10] ripas de 2×2
@@ -166,7 +177,8 @@ SERRA_RIPA = 1.10       # ★ perda de serra ao tirar ripa de 2 cm da chapa
 #   emenda enquanto o painel não passar de 2,75.
 INTEIRO = PAINEL_L <= CH_L and PAINEL_H <= CH_C
 
-def painel_parcelas(h, dupla=False, chapa=METALIC_15, ripado=True):
+def painel_parcelas(h, dupla=False, chapa=METALIC_15, ripado=False,
+                    frisos=N_FRISO):
     """Custo direto do painel. `dupla` = 30 mm, chapa colada como o rack.
 
     ⛔⛔ O QUE ENCARECE O RIPADO NÃO É A CHAPA, É A FITA. A ripa de 2 cm sai
@@ -185,22 +197,33 @@ def painel_parcelas(h, dupla=False, chapa=METALIC_15, ripado=True):
         a_ripa = PAINEL_L*h*RIPA/(RIPA + VAO)*SERRA_RIPA
         ch_ripa = -(-a_ripa/(CH_M2*APROV)//1)*chapa
         fita_r = (PAINEL_L*100/(RIPA + VAO))*2*h*FITA_M
+    friso = frisos*PAINEL_L*PERFIL_LAQ
     cons = (base + ch_ripa + fita_b + fita_r)*0.06
-    sub  = base + ch_ripa + fita_b + fita_r + cons + FIXA_PAINEL
+    sub  = base + ch_ripa + fita_b + fita_r + cons + friso + FIXA_PAINEL
     emb  = sub*M.EMBALAGEM
     return dict(chapa_base=base, chapa_ripa=ch_ripa, fita_base=fita_b,
-                fita_ripa=fita_r, cons=cons, fixa=FIXA_PAINEL, emb=emb,
-                total=sub + emb)
+                fita_ripa=fita_r, friso=friso, cons=cons, fixa=FIXA_PAINEL,
+                emb=emb, total=sub + emb)
 
 def painel_cd(h, **kw): return painel_parcelas(h, **kw)['total']
 
 PP        = painel_parcelas(PAINEL_H)
 CD_PAINEL = PP['total']
-CD_LISO   = painel_cd(PAINEL_H, ripado=False)
-N_RIPA    = PAINEL_L*100/(RIPA + VAO)
-M_FITA_RIPA = N_RIPA*2*PAINEL_H
-MC_PAINEL = BASE - CD_PAINEL/PAINEL_PV       # a MC que o preço dele entrega
-TOTAL = PV + PAINEL_PV
+CD_SEM_FRISO = painel_cd(PAINEL_H, frisos=0)
+TOTAL     = PV + PAINEL_PV
+
+# ── ⭐ A RT DO PROJETO INTEIRO, PAGA DENTRO DO PAINEL ────────────────────
+# A RT devida à arquiteta é 9,5% do preço de venda — 10% sobre o líquido,
+# e o líquido é o bruto menos a nota. Sobre o TOTAL, não sobre o painel.
+RT_RATE  = M.encargos(parcelas=0, rt=True, vendedor=False)['RT']
+RT_TOTAL = RT_RATE*TOTAL if RT_NO_PAINEL else 0.0
+# ⛔ A MC do painel é o que sobra DEPOIS de ele pagar a RT dos dois móveis.
+MC_PAINEL = BASE - (CD_PAINEL + RT_TOTAL)/PAINEL_PV
+# ⭐ e o preço que o painel precisaria ter para segurar a MC do rack
+#   carregando a mesma RT:  PVp(B − mc) = CDp + rt·(PVr + PVp)
+PV_PAINEL_30 = round((CD_PAINEL + RT_RATE*PV)/(BASE - MC_ALVO - RT_RATE)/10)*10
+# ── a MC do conjunto ────────────────────────────────────────────────────
+MC_CONJ = (TOTAL - (CD + CD_PAINEL) - RT_TOTAL - (1 - BASE)*TOTAL)/TOTAL
 
 if __name__ == '__main__':
     W = 88
@@ -271,63 +294,54 @@ if __name__ == '__main__':
     print(f'    outro móvel: {br(PV-PV_BR)} de diferença para perder o champagne inteiro.')
 
     print(f'\n{"═"*W}')
-    print('⭐ PAINEL DE TV — ITEM À PARTE  [Jonathan 16/10 · ripado 19/10]')
+    print('⭐ PAINEL DE TV — ITEM À PARTE  [Jonathan 16/10 · liso com frisos 19/10]')
     print(f'{"═"*W}')
-    print(f'  RIPADO com ripas de {vg(RIPA,0)} × {vg(RIPA,0)} cm e vão de '
-          f'{vg(VAO,0)}, 142 de largura,')
-    print(f'  apoiado no rodapé, no mesmo padrão champagne.')
+    print(f'  LISO, 142 de largura, apoiado no rodapé, no padrão champagne,')
+    print(f'  com {N_FRISO} FRISOS EM PERFIL LAQUEADO.')
     print(f'  ⛔ O investimento é DELE: R$ {br(PAINEL_PV)}. Abaixo eu só confiro.')
-    print(f'\n  {"chapa · base de pé":<34}R$ {br(PP["chapa_base"]):>9}')
-    print(f'  {"chapa · as ripas":<34}R$ {br(PP["chapa_ripa"]):>9}')
+    print(f'\n  {"chapa · uma Metalic de pé":<34}R$ {br(PP["chapa_base"]):>9}')
     print(f'  {"fita · bordas do painel":<34}R$ {br(PP["fita_base"]):>9}')
-    print(f'  {"⛔ fita · arestas das ripas":<34}R$ {br(PP["fita_ripa"]):>9}')
+    print(f'  {f"⭐ {N_FRISO} frisos em perfil laqueado":<34}R$ {br(PP["friso"]):>9}')
     print(f'  {"estrutura de fixação":<34}R$ {br(PP["fixa"]):>9}')
     print(f'  {"consumíveis · 6%":<34}R$ {br(PP["cons"]):>9}')
     print(f'  {"embalagem · 2%":<34}R$ {br(PP["emb"]):>9}')
     print('  ' + '─'*46)
     print(f'  {"CUSTO DIRETO":<34}R$ {br(CD_PAINEL):>9}')
+    print(f'  {"⭐ RT DO PROJETO INTEIRO":<34}R$ {br(RT_TOTAL):>9}')
+    print('  ' + '─'*46)
+    print(f'  {"a cobrir, no painel":<34}R$ {br(CD_PAINEL + RT_TOTAL):>9}')
     print(f'  {"PREÇO ⭐ dele":<34}R$ {br(PAINEL_PV):>9}')
-    print(f'  {"MC que esse preço entrega":<34}{MC_PAINEL*100:>10.1f}%')
-
-    _faixa = M.MC_IDEAL[0] <= MC_PAINEL <= M.MC_IDEAL[1]
-    print(f'\n  {"⭐" if _faixa else "⚠"} R$ {br(PAINEL_PV)} entrega MC de {MC_PAINEL:.1%} — '
-          f'{"dentro da" if _faixa else "ACIMA da"} faixa')
-    print(f'    ideal da casa ({M.MC_IDEAL[0]:.0%}–{M.MC_IDEAL[1]:.0%}), e bem acima dos '
-          f'{MC_ALVO:.0%} do rack.')
-    if not _faixa:
-        _p40 = round(CD_PAINEL/(BASE-M.MC_IDEAL[1])/10)*10
-        print(f'    No teto da faixa (40%) o painel sairia a R$ {br(_p40)}. Fica')
-        print(f'    registrado: o preço é dele, a margem é {MC_PAINEL:.1%}.')
-
-    print(f'\n  ⛔⛔ O QUE ENCARECE O RIPADO NÃO É A CHAPA, É A FITA.')
-    print(f'    A ripa de {vg(RIPA,0)} cm sai da chapa com a face melamínica na frente')
-    print(f'    e o MIOLO CRU nos dois lados — e os dois lados ficam à vista')
-    print(f'    no vão. São {N_RIPA:.0f} ripas e {M_FITA_RIPA:.0f} m de fita só nelas,')
-    print(f'    R$ {br(PP["fita_ripa"])}, contra R$ {br(PP["fita_base"])} de fita no painel liso inteiro.')
-    print(f'    ⭐ Do liso ao ripado o custo direto vai de R$ {br(CD_LISO)} para')
-    print(f'      R$ {br(CD_PAINEL)} — R$ {br(CD_PAINEL-CD_LISO)} a mais, '
-          f'{CD_PAINEL/CD_LISO-1:.0%}.')
-
-    print(f'\n  ⭐ E A RIPA SAI INTEIRA. A chapa tem 2,75 de comprimento, então')
-    print(f'    a ripa corre a altura toda sem emenda enquanto o painel não')
-    print(f'    passar de 2,75 — {"confirmado" if INTEIRO else "⛔ NÃO CABE"} na altura de '
-          f'{vg(PAINEL_H)} que estimei.')
-
-    print(f'\n  ⚠ ONDE R$ {br(PAINEL_PV)} APERTA — os dois degraus:')
-    _alto = painel_cd(2.95)
-    _dupla = painel_cd(PAINEL_H, dupla=True)
-    print(f'    · ALTURA ACIMA DE 2,75 — 2ª chapa, emenda e mais fita de ripa.')
-    print(f'      Custo direto vai a R$ {br(_alto)} e a MC cai para '
-          f'{(BASE-_alto/PAINEL_PV)*100:.1f}%.')
-    print(f'    · PAINEL EM 30 mm, chapa dupla como o resto do móvel.')
-    print(f'      Custo direto vai a R$ {br(_dupla)} e a MC cai para '
-          f'{(BASE-_dupla/PAINEL_PV)*100:.1f}%.')
-    print(f'    Orçei RIPADO em chapa simples, apoiado no rodapé — que é o')
-    print(f'    que ele pediu. Os dois degraus são aviso, não orçamento.')
+    print(f'  {"MC que sobra no painel":<34}{MC_PAINEL*100:>10.1f}%')
+    print(f'\n  ⭐ Os frisos são {PP["friso"]/CD_PAINEL*100:.0f}% do custo direto do painel: '
+          f'de R$ {br(CD_SEM_FRISO)}')
+    print(f'    sem eles para R$ {br(CD_PAINEL)} com eles, R$ {br(CD_PAINEL-CD_SEM_FRISO)} a mais.')
 
     print(f'\n{"═"*W}')
-    print(f'  {"RACK":<34}R$ {br(PV):>9}')
-    print(f'  {"PAINEL DE TV · ripado":<34}R$ {br(PAINEL_PV):>9}')
+    print('⭐⭐ A RT DO PROJETO INTEIRO, ALOCADA SÓ NO PAINEL  [Jonathan 19/10]')
+    print(f'{"═"*W}')
+    print(f'  A RT devida à arquiteta é {RT_RATE:.1%} do preço de venda — 10% sobre o')
+    print(f'  líquido, e o líquido é o bruto menos a nota. Sobre o TOTAL de')
+    print(f'  R$ {br(TOTAL)}, dá R$ {br(RT_TOTAL)}.')
+    print(f'\n  ⛔ ISSO NÃO MUDA O QUE A ARQUITETA RECEBE. Muda de onde sai: o')
+    print(f'    rack passa a ser precificado SEM RT na cascata (base '
+          f'{BASE*100:.2f}%)')
+    print(f'    e o painel paga a conta dos dois.')
+    print(f'\n  {"RACK · MC alvo":<34}{MC_ALVO*100:>9.1f}%   R$ {br(PV):>8}')
+    print(f'  {"PAINEL · MC que sobra":<34}{MC_PAINEL*100:>9.1f}%   R$ {br(PAINEL_PV):>8}')
+    print(f'  {"CONJUNTO":<34}{MC_CONJ*100:>9.1f}%   R$ {br(TOTAL):>8}')
+    print(f'\n  ⚠⚠ O PAINEL FICA COM {MC_PAINEL:.1%} DE MC — ele carrega sozinho uma RT')
+    print(f'    que é de R$ {br(TOTAL)} de projeto. E o CONJUNTO cai para '
+          f'{MC_CONJ:.1%},')
+    print(f'    contra os {MC_ALVO:.0%} do rack e os {M.MC_PISO:.0%} de piso da casa.')
+    print(f'    ⭐ Para o painel segurar {MC_ALVO:.0%} carregando a mesma RT, o preço')
+    print(f'      dele teria de ser R$ {br(PV_PAINEL_30)} — R$ {br(PV_PAINEL_30-PAINEL_PV)} acima dos '
+          f'R$ {br(PAINEL_PV)}.')
+    print(f'    ⛔ Não é erro de conta: é o efeito de concentrar num item a')
+    print(f'      comissão do projeto inteiro. Fica registrado.')
+
+    print(f'\n{"═"*W}')
+    print(f'  {"RACK · sem RT":<34}R$ {br(PV):>9}')
+    print(f'  {"PAINEL DE TV · liso com frisos":<34}R$ {br(PAINEL_PV):>9}')
     print(f'  {"INVESTIMENTO TOTAL":<34}R$ {br(TOTAL):>9}')
 
     print(f'\n{"═"*W}')
@@ -351,11 +365,11 @@ if __name__ == '__main__':
     print('  · ⭐ "O tampo posterior em MDF não é necessariamente no padrão')
     print('    Metalic Champagne" — a própria arquiteta abre essa porta. Em')
     print('    chapa comum ali, economiza-se sem aparecer.')
-    _srt = M.base(parcelas=0, rt=False, vendedor=False)
-    print(f'  · ⭐ RT DE 10% INCLUÍDO [Jonathan 14/10], para a arquiteta Junia')
-    print(f'    Ordones. Sem ela o rack sairia a '
-          f'R$ {br(round(CD/(_srt-MC_ALVO)/10)*10)} — o RT vale')
-    print(f'    R$ {br(PV - round(CD/(_srt-MC_ALVO)/10)*10)}.')
+    print(f'  · ⭐ A RT DE 10% CONTINUA NO PROJETO, mas agora SÓ NO PAINEL')
+    print(f'    [Jonathan 19/10], para a arquiteta Junia Ordones. São')
+    print(f'    R$ {br(RT_TOTAL)} sobre o total, pagos por dentro do painel — o rack')
+    print(f'    saiu da cascata com RT e por isso caiu de R$ '
+          f'{br(round(CD/(M.base(0, True, False)-MC_ALVO)/10)*10)} para R$ {br(PV)}.')
     print(f'  · ⚠ A MC DE {MC_ALVO:.0%} ESTÁ ABAIXO DO PISO DA CASA ({M.MC_PISO:.0%}) '
           f'[Jonathan 14/10].')
     _p35 = round(CD/(BASE-0.35)/10)*10
@@ -363,6 +377,9 @@ if __name__ == '__main__':
     print(f'    R$ {br(_p35-PV)} ao cliente e tira o mesmo da casa. Fica registrado.')
     print('  · ⚠ A ALTURA DO PAINEL NÃO VEIO. Não mexe no preço enquanto')
     print('    ficar abaixo de 2,75 — mas decide se ele sai inteiro. Medir.')
+    print(f'  · ★ O FRISO EM PERFIL LAQUEADO está estimado em R$ {br(PERFIL_LAQ)}/m,')
+    print('    com perfil, usinagem do rasgo e laca. Não está na base da casa')
+    print('    e é 34% do custo direto do painel — vale cotar.')
     print('  · ⚠ O PAINEL EXISTENTE. O projeto trazia o rack SOLTO dele; agora')
     print('    vendemos um painel novo. Se o novo SUBSTITUI o atual, a')
     print('    RETIRADA do atual não está no preço. Confirmar com a Sandra.')

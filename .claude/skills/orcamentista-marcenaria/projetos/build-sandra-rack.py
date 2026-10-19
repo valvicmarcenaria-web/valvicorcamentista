@@ -33,11 +33,16 @@ RACK, PAINEL, TOTAL = sr.PV, sr.PAINEL_PV, sr.TOTAL
 # ⛔⛔ TRAVA. Não há soma de itens para fechar — há UM móvel. O que pode
 #   mudar calado embaixo da proposta é a BASE do preço: se alguém desligar
 #   o RT ou mexer na MC no motor, a folha sai com outro número sem avisar.
-assert sr.RT_ON is True,            '⛔ O RT SAIU DO MOTOR [Jonathan 14/10 pediu COM RT]'
+# ⭐ [Jonathan 19/10] a RT saiu da cascata do rack e passou a ser paga por
+#   dentro do painel. A trava muda de forma, não de intenção: o projeto
+#   continua OBRIGADO a carregar a RT da arquiteta.
+assert sr.RT_ON is False and sr.RT_NO_PAINEL is True, (
+    '⛔ A RT NÃO ESTÁ ALOCADA NO PAINEL [Jonathan 19/10]')
+assert sr.RT_TOTAL > 0,             '⛔ O PROJETO FICOU SEM RT'
 assert abs(sr.MC_ALVO - 0.30) < 1e-9, f'⛔ A MC MUDOU: {sr.MC_ALVO:.3f} ≠ 0,300'
 assert RACK == sr.PV and RACK > 0,  '⛔ O PREÇO NÃO VEIO DO MOTOR'
-assert PAINEL == 7500,              '⛔ O PAINEL NÃO ESTÁ NO PREÇO DO JONATHAN'
-assert sr.RIPA == 2.0 and sr.VAO == 2.0, '⛔ A RIPA NÃO É MAIS 2 × 2'
+assert PAINEL == 3100,              '⛔ O PAINEL NÃO ESTÁ NO PREÇO DO JONATHAN'
+assert sr.N_FRISO == 2,             '⛔ NÃO SÃO MAIS DOIS FRISOS'
 assert abs(RACK + PAINEL - TOTAL) < 0.5, (
     f'⛔ O TOTAL NÃO FECHA: {RACK:,.0f} + {PAINEL:,.0f} ≠ {TOTAL:,.0f}')
 
@@ -229,10 +234,10 @@ p2 = f"""<div class="page"><div class="pad p2">
   <div class="grp">
     <div class="gh">
       <div><div class="gt">Painel de TV</div>
-        <div class="gs"><b>Ripado</b>, no mesmo padrão champagne,
-        <b>apoiado no rodapé</b> e fixado à parede. As <b>ripas correm
-        inteiras, da base ao topo, sem emenda</b>, e a passagem de cabos
-        fica por trás.</div></div>
+        <div class="gs">Liso, no mesmo padrão champagne, <b>apoiado no
+        rodapé</b> e fixado à parede, com <b>dois frisos em perfil
+        laqueado</b> cortando a face. Sai <b>em peça única, sem emenda
+        aparente</b>, com a passagem de cabos por trás.</div></div>
       <div class="gv">R$ {br(PAINEL)}</div></div>
   </div>
 
@@ -268,8 +273,8 @@ p2 = f"""<div class="page"><div class="pad p2">
       <b>puxador</b>: recomendamos o perfil slim colado, porque furo em
       vidro temperado é feito antes da têmpera e não admite ajuste depois da
       medição. A <b>altura do painel</b>, que a medição fecha — é ela que
-      confirma a ripa inteira. E <b>amostra</b> do padrão champagne, no MDF
-      e no vidro.</div></div>
+      confirma a peça única. E <b>amostra</b> do padrão champagne e da
+      <b>cor da laca dos frisos</b>.</div></div>
   </div>
   {foot(2)}
 </div></div>"""
@@ -287,7 +292,9 @@ env = dict(os.environ, NODE_PATH='/opt/node22/lib/node_modules',
 subprocess.run(['node', '/tmp/r.js', str(P/'proposta-sandra-rack.pdf')],
                check=True, env=env)
 print(f'proposta-sandra-rack.pdf · {NP} páginas')
-print(f'  MC {sr.MC_ALVO*100:.0f}% · COM RT · base {sr.BASE*100:.2f}%')
+print(f'  rack: MC {sr.MC_ALVO*100:.0f}% · sem RT na cascata · '
+      f'base {sr.BASE*100:.2f}%')
+print(f'  RT do projeto R$ {br(sr.RT_TOTAL)} · paga por dentro do painel')
 print(f'  custo direto      R$ {br(sr.CD + sr.CD_PAINEL):>7}')
 print(f'  rack              R$ {br(RACK):>7}')
 print(f'  painel de TV      R$ {br(PAINEL):>7}  ⭐ preço do Jonathan · '

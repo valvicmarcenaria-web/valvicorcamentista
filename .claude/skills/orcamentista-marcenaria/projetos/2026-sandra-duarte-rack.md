@@ -96,60 +96,70 @@ passou a ser a **vidraçaria** — é lá que a cotação tem de bater agora.
 
 ---
 
-## ⭐ Painel de TV — item à parte  [Jonathan 16/10 · ripado 19/10]
+## ⭐ Painel de TV — item à parte  [Jonathan 16/10 · liso com frisos 19/10]
 
 > *"adicione com um valor à parte um painel de TV liso de 142 cm de
 > largura, apoiado no rodapé (a se validar a possibilidade de ser inteiro).
 > Investimento — 2.300"*
 >
-> ⭐ 19/10: *"vamos atualizar o painel para **ripado com ripas de 2×2** e o
-> valor para **R$ 7.500**"*
+> ⭐ 19/10: *"vamos atualizar o painel para ripado com ripas de 2×2 e o
+> valor para R$ 7.500"*
+>
+> ⭐ 19/10, depois: *"vamos **voltar com o painel liso**, dessa vez
+> acrescentando **dois frisos com perfil laqueado**. A **3.100**"*
 
-⛔ **O preço é dele, não meu.** R$ 7.500 veio fechado; abaixo eu só confiro.
+⛔ **O preço é dele, não meu.** Abaixo eu só confiro.
 
 | | R$ |
 |---|--:|
-| chapa · base de pé | 600 |
-| chapa · as ripas | 600 |
+| chapa · uma Metalic de pé | 600 |
 | fita · bordas do painel | 40 |
-| ⛔ **fita · arestas das ripas** | **859** |
+| ⭐ **dois frisos em perfil laqueado** | **454** |
 | estrutura de fixação | 180 |
-| consumíveis · 6% | 126 |
-| embalagem · 2% | 48 |
-| **custo direto** | **2.453** |
-| **PREÇO** ⭐ dele | **R$ 7.500** |
-| **MC que esse preço entrega** | **43,8%** |
+| consumíveis · 6% | 38 |
+| embalagem · 2% | 26 |
+| **custo direto** | **1.339** |
+| ⭐ **RT do projeto inteiro** | **898** |
+| **a cobrir, no painel** | **2.237** |
+| **PREÇO** ⭐ dele | **R$ 3.100** |
+| **MC que sobra no painel** | **13.2%** |
 
-⚠ **43,8% está acima da faixa ideal da casa** (35–40%). No teto da faixa o
-painel sairia a **R$ 6.720**. O preço é dele; fica registrado qual margem
-ele entrega.
+Os **frisos são 34% do custo direto do painel**: de R$ 875 sem
+eles para R$ 1.339 com eles.
 
-### ⛔⛔ O que encarece o ripado não é a chapa, é a fita
+★ O **perfil laqueado** está estimado em **R$ 160/m** — perfil, usinagem do
+rasgo e laca. **Não está na base da casa**; vale cotar.
 
-A ripa de 2 cm sai da chapa com a **face melamínica na frente e o miolo cru
-nos dois lados** — e os dois lados **ficam à vista no vão**. São **36 ripas
-e 156 m de fita só nelas**, R$ 859, contra R$ 40 de fita no painel liso
-inteiro.
+---
 
-Do liso ao ripado o custo direto vai de **R$ 875 para R$ 2.453** — R$ 1.578
-a mais, **180%**. A chapa só dobrou; a fita multiplicou por vinte.
+## ⭐⭐ A RT do projeto inteiro, alocada só no painel  [Jonathan 19/10]
 
-### ⭐ "A se validar a possibilidade de ser inteiro" — dá, e agora vale para a ripa
+> *"adicione também a RT do projeto completo, mas a RT precisa estar
+> **alocada apenas no custo do painel**."*
 
-A chapa é **2,75 × 1,85**. **De pé**, os 142 de largura cabem folgados no
-1,85 e sobra comprimento até 2,75 — então **a ripa corre a altura toda sem
-emenda** enquanto o painel não passar de 2,75.
+A RT devida à arquiteta é **9.5% do preço de venda** — 10% sobre o líquido, e
+o líquido é o bruto menos a nota. Sobre o total de R$ 9.450, dá
+**R$ 898**.
 
-### ⚠ Onde os R$ 7.500 apertam — dois degraus
+⛔ **Isso não muda o que a arquiteta recebe.** Muda de onde o dinheiro sai:
+o **rack passa a ser precificado sem RT na cascata** (base 85.35%) e o
+**painel paga a conta dos dois**.
 
-| | custo direto | MC |
+| | MC | R$ |
 |---|--:|--:|
-| **como orçado** · ripado, chapa simples, até 2,75 de altura | 2.453 | **43,8%** |
-| altura **acima de 2,75** — 2ª chapa, emenda e mais fita de ripa | 3.427 | 30,8% |
-| painel em **30 mm**, chapa dupla como o resto do móvel | 2.777 | 39,5% |
+| Rack · MC alvo | 30.0% | 6.350 |
+| **Painel · MC que sobra** | **13.2%** | 3.100 |
+| **Conjunto** | **24.5%** | **9.450** |
 
-Orçei **ripado em chapa simples, apoiado no rodapé** — que é o que ele
-pediu. Os dois degraus são **aviso, não orçamento**.
+⚠⚠ **O painel fica com 13.2% de MC** — ele carrega sozinho uma RT que é de
+R$ 9.450 de projeto. E o **conjunto cai para 24.5%**, contra os 30% do
+rack e os 35% de piso da casa.
+
+⭐ Para o painel segurar 30% carregando a mesma RT, o preço dele teria de
+ser **R$ 4.240** — R$ 1.140 acima dos R$ 3.100.
+
+⛔ Não é erro de conta: é o efeito de **concentrar num item a comissão do
+projeto inteiro**. Fica registrado.
 
 ---
 
@@ -157,9 +167,9 @@ pediu. Os dois degraus são **aviso, não orçamento**.
 
 | | R$ |
 |---|--:|
-| rack | 7.560 |
-| painel de TV · ripado | 7.500 |
-| **total** | **R$ 15.060** |
+| rack · sem RT | 6.350 |
+| painel de TV · liso com dois frisos | 3.100 |
+| **total** | **R$ 9.450** |
 
 ---
 
@@ -201,11 +211,12 @@ fazer a proposta de 2 páginas apenas"*].
   iluminação entregue acesa. **Sem preço.**
 * **Página 2, clara** — dois blocos com preço próprio: o **rack**, em
   cinco linhas (corpo, portas, tampo, prateleira, luz), e o **painel de
-  TV ripado**; abaixo, o investimento total, a condição de pagamento, o
-  que não está incluso e o que se confirma antes de produzir.
-  ⛔ A descrição do painel saiu de *"peça única, sem emenda aparente"* —
-  que era a venda do painel **liso** — para *"as ripas correm inteiras, da
-  base ao topo"*, que é o que o ripado entrega.
+  TV liso com dois frisos**; abaixo, o investimento total, a condição de
+  pagamento, o que não está incluso e o que se confirma antes de produzir.
+  ⛔ A descrição do painel foi e voltou junto com o produto: *"peça única,
+  sem emenda aparente"* no liso, *"as ripas correm inteiras"* no ripado, e
+  de volta à peça única agora, **com os dois frisos**. A amostra que o
+  cliente aprova passou a incluir a **cor da laca**.
   ⭐ Prazo, garantia, execução e validade viraram **uma linha só** na
   página 2 — repetiam inteiros o quadro da capa, e o segundo item precisava
   do espaço.
