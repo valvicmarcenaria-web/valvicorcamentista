@@ -51,7 +51,6 @@ vg  = lambda v, n=2: f'{v:.{n}f}'.replace('.', ',')
 
 CH_M2, APROV = 2.75*1.85, 0.80
 LINHA   = 'essencial'                # ⭐ [Jonathan 18/10]
-MC_ALVO = 0.40                       # ⭐ [Jonathan 19/10] "subir para 40%"
 RT_ON   = True                       # ⭐ [Jonathan 18/10] "e com RT"
 BASE    = M.base(parcelas=0, rt=RT_ON, vendedor=False)
 
@@ -68,13 +67,17 @@ FITA_BR, FITA_COR = 2.0 + 2.5, 3.0 + 2.5
 #     telescópica → 2 anos  ·  oculta Hettich → 10 anos
 #   (referencias/proposta-comercial.md, corrigido por Jonathan em 07/08;
 #    a oculta HARDT é que dá 5 — a Hettich é a linha Gold da casa.)
+# ⭐ [Jonathan 19/10] "a MC da premium vamos subir para 43%." Cada linha
+#   passa a ter a PRÓPRIA margem — a Premium não é só ferragem mais cara,
+#   é também mais margem. ⚠ 43% está ACIMA da faixa ideal da casa (35–40%).
 LINHAS = {
  'essencial': dict(dobr=12.0,  corr=85.0,  basc=60.0,  toque=25.0,
-                   correr=420.0, led=65.0, garantia='2 anos'),
+                   correr=420.0, led=65.0, garantia='2 anos',  mc=0.40),
  'premium':   dict(dobr=35.0,  corr=190.0, basc=185.0, toque=45.0,
-                   correr=620.0, led=85.0, garantia='10 anos'),
+                   correr=620.0, led=85.0, garantia='10 anos', mc=0.43),
 }
 CABIDE   = 60.0     # cabideiro, por metro de vão — igual nas duas
+MC_ALVO  = LINHAS[LINHA]['mc']       # a MC da linha adotada
 # ⭐ PUXADOR CAVA NÃO É FERRAGEM: é usinagem na própria peça. Não entra
 #   aqui — entra no tempo de fabricação, que a cascata já carrega.
 
@@ -349,7 +352,7 @@ def calcula(interior_cor=False, linha=None):
        interior_cor=True  → tudo na cor do móvel (o cenário caro).
        linha → 'essencial' (telescópica) ou 'premium' (oculta Hettich)."""
     linha = linha or LINHA
-    FU, LED_M = fer_un(linha), LINHAS[linha]['led']
+    FU, LED_M, mc = fer_un(linha), LINHAS[linha]['led'], LINHAS[linha]['mc']
     def cor_de(mv, cor):
         if cor != 'int': return cor
         return COR_PRINC[mv] if interior_cor else 'Branco TX'
@@ -375,7 +378,7 @@ def calcula(interior_cor=False, linha=None):
     led_mv = {mv: LED[mv]*LED_M for mv in MOVEIS}
     CD = {mv: ((ch_mv[mv] + fita_mv.get(mv, 0))*1.06 + fer_mv[mv]
                + TER[mv] + led_mv[mv])*(1 + M.EMBALAGEM) for mv in MOVEIS}
-    PV = {mv: round(CD[mv]/(BASE - MC_ALVO)/10)*10 for mv in MOVEIS}
+    PV = {mv: round(CD[mv]/(BASE - mc)/10)*10 for mv in MOVEIS}
     return dict(area=area, chapas=chapas, custo_ch=custo_ch, sobra=sobra,
                 ch=ch_mv, fita=fita_mv, fer=fer_mv, led=led_mv, ter=dict(TER),
                 area_mv=area_mv, CD=CD, PV=PV,
@@ -490,9 +493,9 @@ if __name__ == '__main__':
     print('⭐ A VERSÃO PREMIUM — FERRAGEM HETTICH')
     print(f'{"═"*W}')
     print(f'  {"Essencial · telescópica · " + GARANTIA["essencial"]:<40}'
-          f'R$ {br(TOTAL):>9}')
+          f'R$ {br(TOTAL):>9}   MC {LINHAS["essencial"]["mc"]:.0%}')
     print(f'  {"Premium · oculta Hettich · " + GARANTIA["premium"]:<40}'
-          f'R$ {br(TOTAL_PREM):>9}')
+          f'R$ {br(TOTAL_PREM):>9}   MC {LINHAS["premium"]["mc"]:.0%}')
     print(f'  {"diferença":<40}R$ {br(TOTAL_PREM-TOTAL):>9}'
           f'   ({TOTAL_PREM/TOTAL-1:.0%})')
     print(f'\n  ⭐ {TOTAL_PREM/TOTAL-1:.0%} a mais compra CINCO VEZES mais garantia '

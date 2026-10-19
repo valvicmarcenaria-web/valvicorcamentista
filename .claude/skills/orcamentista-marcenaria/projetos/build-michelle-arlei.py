@@ -75,6 +75,8 @@ assert set(_amb_pg) == set(ma.AMBS), (
     f'{set(_amb_pg) ^ set(ma.AMBS)}')
 assert abs(sum(ma.PV_AMB[a] for a in _amb_pg) - TOT) < 0.5, '⛔ O TOTAL NÃO FECHA'
 assert abs(ma.MC_ALVO - 0.40) < 1e-9, f'⛔ A MC MUDOU: {ma.MC_ALVO:.3f}'
+assert abs(ma.LINHAS['premium']['mc'] - 0.43) < 1e-9, (
+    f'⛔ A MC DA PREMIUM MUDOU: {ma.LINHAS["premium"]["mc"]:.3f} ≠ 0,430')
 assert ma.RT_ON is True, '⛔ O RT SAIU DO MOTOR'
 assert VISTA == round(TOT*(1-DESC)/10)*10, '⛔ O À VISTA NÃO FECHA'
 NP = len(PG) + 4
@@ -129,7 +131,7 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
 .gal.fix{flex:none;}
 .gal.fix img{height:62mm;}
 .gal.two-up{display:grid;grid-template-columns:1fr 1fr;gap:2mm;}
-.gal.two-up img{height:48mm;}
+.gal.two-up img{height:43mm;}
 .it{display:grid;grid-template-columns:1fr 32mm;gap:6mm;align-items:baseline;
   padding:3.6mm 0;border-top:1px solid var(--line);flex:none;}
 .it:first-of-type{border-top:1.4px solid var(--ink);margin-top:6mm;}
@@ -322,7 +324,7 @@ paginas.append(f"""<div class="page"><div class="pad">
     <div><div class="lab">A diferença</div>
       <div class="big" style="font-size:38pt;">R$ {br(TOT_P-TOT)}</div>
       <div class="s">Sobre o valor cheio — <b>{(TOT_P/TOT-1):.0%} a mais</b>
-      pela ferragem que fica.</div></div>
+      pela ferragem alemã e pela garantia que vem com ela.</div></div>
     <div class="rt"><div class="k">Garantia</div>
       <div class="v" style="font-size:19pt;color:#fff;">{GAR_E} → {GAR_P}</div></div>
   </div>

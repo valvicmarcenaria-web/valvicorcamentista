@@ -13,6 +13,7 @@ quarto das gêmeas e suíte master com closet.
 
 ⭐ [Jonathan 18/10] **"vamos orçar na linha essencial com 35% de MC e com RT."**
 ⭐ [Jonathan 19/10] **"vamos subir para 40% a MC e pode montar a proposta."**
+⭐ [Jonathan 19/10] **"a MC da premium vamos subir para 43%."**
 
 MC **40%** · **com RT** · base **76.52%** — dentro da faixa ideal da casa (35%–40%).
 
@@ -183,12 +184,19 @@ sem cartão.
 |---|--:|--:|
 | corrediça | telescópica | **oculta, alemã** |
 | garantia | **2 anos** | **10 anos** |
-| valor cheio | 114.800 | **137.190** |
-| à vista −7% | 106.760 | **127.590** |
+| MC | 40% | **43%** |
+| valor cheio | 114.800 | **149.460** |
+| à vista −7% | 106.760 | **139.000** |
 
-A diferença é **R$ 22.390**, 20% sobre o cheio — e compra **cinco vezes
+A diferença é **R$ 34.660**, 30% sobre o cheio — e compra **cinco vezes
 mais garantia**. Muda a corrediça (oculta com amortecimento), a
 dobradiça, o articulador das básculas e o perfil de LED.
+
+⚠ **A Premium não é só ferragem mais cara: é também mais margem.** A MC
+dela é **43%**, contra 40% da Essencial, e está **acima da faixa
+ideal da casa** (35%–40%). Dos
+R$ 34.660 de diferença, **R$ 22.390 são
+ferragem e R$ 12.270 são margem**.
 
 ⛔ **A garantia é a da corrediça.** Telescópica = 2 anos; oculta Hettich =
 10 anos. A oculta **Hardt** é que dá 5 — não confundir
