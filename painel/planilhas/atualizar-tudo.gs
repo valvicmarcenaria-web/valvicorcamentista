@@ -79,6 +79,40 @@ const MOEDA = 'R$ #,##0.00', PCT = '0.0%', DATA = 'dd/mm/yyyy';
 
 
 /**
+ * SÓ LÊ. Não escreve nada, não apaga nada, não altera uma célula sequer.
+ *
+ * Mostra no Registro de execução o que está de fato dentro das células do
+ * Samuel: a fórmula escrita e o que o Google devolveu. É assim que se acha a
+ * origem de um #ERROR! — olhando a célula de origem, não a que exibe o erro.
+ */
+function diagnostico() {
+  const NOME = 'Samuel';
+  let p = null;
+  PESSOAS.forEach(function (x) { if (x.nome === NOME) p = x; });
+  if (!p) { console.log('Não existe ' + NOME + ' na lista.'); return; }
+
+  const ss = SpreadsheetApp.openById(p.id);
+  console.log('abas: ' + ss.getSheets().map(function (s) { return s.getName(); }).join(' | '));
+  console.log('locale: ' + ss.getSpreadsheetLocale());
+
+  const mostra = function (aba, refs) {
+    const sh = ss.getSheetByName(aba);
+    if (!sh) { console.log(aba + ': NÃO EXISTE'); return; }
+    refs.forEach(function (ref) {
+      const c = sh.getRange(ref);
+      console.log(aba + '!' + ref
+        + '\n     fórmula: ' + (c.getFormula() || '(sem fórmula)')
+        + '\n     mostra : ' + c.getDisplayValue());
+    });
+  };
+
+  mostra('_base', ['A1', 'A2', 'B2', 'F2', 'H2']);
+  mostra('Comissões', ['A3', 'C3', 'D3', 'E3', 'A4', 'C4', 'D4', 'E4']);
+  mostra('Painel', ['C7', 'C14']);
+}
+
+
+/**
  * UMA SÓ, para testar antes de mexer nas catorze.
  *
  * Rode esta primeiro: escolha "testarUma" no seletor de função, ao lado do
