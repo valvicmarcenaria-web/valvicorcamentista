@@ -26,7 +26,8 @@ AS NOTAS DA PRANCHA (repetidas em todas as folhas de detalhe):
   6. Observar pontos de tomada para recorte no móvel
 
 ⭐ [Jonathan 18/10] **"vamos orçar na linha ESSENCIAL com 35% de MC e com
-   RT."** A linha Essencial, neste projeto, é:
+   RT."** ⭐ [Jonathan 19/10] **"vamos subir a MC para 38%."** — dentro da
+   faixa ideal da casa (35–40%). A linha Essencial, neste projeto, é:
      · **interior e caixaria em Branco TX**, cor só onde aparece
      · **corrediça telescópica** com amortecedor — é o que a prancha pede
      · **dobradiça com amortecedor a R$ 12**, a nacional da casa
@@ -50,7 +51,7 @@ vg  = lambda v, n=2: f'{v:.{n}f}'.replace('.', ',')
 
 CH_M2, APROV = 2.75*1.85, 0.80
 LINHA   = 'essencial'                # ⭐ [Jonathan 18/10]
-MC_ALVO = 0.35                       # ⭐ [Jonathan 18/10] — é o piso da casa
+MC_ALVO = 0.38                       # ⭐ [Jonathan 19/10] "subir a MC para 38%"
 RT_ON   = True                       # ⭐ [Jonathan 18/10] "e com RT"
 BASE    = M.base(parcelas=0, rt=RT_ON, vendedor=False)
 
@@ -428,6 +429,11 @@ if __name__ == '__main__':
     print('    quiser cor por dentro, é essa a conta.')
     _srt = M.base(parcelas=0, rt=False, vendedor=False)
     _sem = sum(round(R['CD'][mv]/(_srt-MC_ALVO)/10)*10 for mv in MOVEIS)
+    _p35 = sum(round(R['CD'][mv]/(BASE-0.35)/10)*10 for mv in MOVEIS)
+    print(f'  · ⭐ MC DE {MC_ALVO:.0%} [Jonathan 19/10], dentro da faixa ideal da casa')
+    print(f'    ({M.MC_IDEAL[0]:.0%}–{M.MC_IDEAL[1]:.0%}). A 35% a casa sairia a '
+          f'R$ {br(_p35)} — os três pontos')
+    print(f'    valem R$ {br(TOTAL-_p35)}.')
     print(f'  · ⭐ RT DE 10% INCLUÍDA [Jonathan 18/10]. Sem ela a casa sairia')
     print(f'    a R$ {br(_sem)} — a RT vale R$ {br(TOTAL-_sem)}.')
     print('  · ⛔⛔ A PRATELEIRA M03 TEM 3,23 m E A CHAPA TEM 2,75.')
