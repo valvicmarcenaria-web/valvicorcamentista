@@ -138,29 +138,51 @@ const MOEDA = 'R$ #,##0.00', PCT = '0.0%', DATA = 'dd/mm/yyyy';
  * origem de um #ERROR! — olhando a célula de origem, não a que exibe o erro.
  */
 function diagnostico() {
-  const NOME = 'Samuel';
+  const NOME = 'Lorrane';          // troque aqui para olhar outra pessoa
   let p = null;
   PESSOAS.forEach(function (x) { if (x.nome === NOME) p = x; });
   if (!p) { console.log('Não existe ' + NOME + ' na lista.'); return; }
 
   const ss = SpreadsheetApp.openById(p.id);
+  console.log('=== ' + NOME + ' · ' + p.perfil + ' · ' + (p.pj ? 'PJ' : 'CLT') + ' ===');
   console.log('abas: ' + ss.getSheets().map(function (s) { return s.getName(); }).join(' | '));
-  console.log('locale: ' + ss.getSpreadsheetLocale());
 
-  const mostra = function (aba, refs) {
-    const sh = ss.getSheetByName(aba);
-    if (!sh) { console.log(aba + ': NÃO EXISTE'); return; }
-    refs.forEach(function (ref) {
-      const c = sh.getRange(ref);
-      console.log(aba + '!' + ref
-        + '\n     fórmula: ' + (c.getFormula() || '(sem fórmula)')
-        + '\n     mostra : ' + c.getDisplayValue());
-    });
-  };
+  // ── Comissões: cabeçalho e a primeira linha ──
+  const sh = ss.getSheetByName('Comissões');
+  const nc = sh.getLastColumn();
+  const cab = sh.getRange(3, 1, 1, nc).getDisplayValues()[0];
+  console.log('\nComissões · ' + nc + ' colunas:');
+  cab.forEach(function (t, i) {
+    console.log('   ' + colLetra_(i + 1) + ' = ' + t);
+  });
+  console.log('\nlinha 4, o que está digitado nas colunas manuais:');
+  cab.forEach(function (t, i) {
+    if (/^(Pagamento|Status|Repassado|Observa)/.test(String(t))) {
+      const c = sh.getRange(4, i + 1);
+      console.log('   ' + colLetra_(i + 1) + ' ' + t + ' = ' + JSON.stringify(c.getDisplayValue())
+                  + '   (tipo: ' + (c.getValue() instanceof Date ? 'DATA' : typeof c.getValue()) + ')');
+    }
+  });
 
-  mostra('_base', ['A1', 'A2', 'B2', 'F2', 'H2']);
-  mostra('Comissões', ['A3', 'C3', 'D3', 'E3', 'A4', 'C4', 'D4', 'E4']);
-  mostra('Painel', ['C7', 'C14']);
+  // ── Painel: linha a linha, do 5 em diante ──
+  const pa = ss.getSheetByName('Painel');
+  console.log('\nPainel, linhas 5 a 30:');
+  for (let r = 5; r <= 30; r++) {
+    const vs = pa.getRange(r, 2, 1, 6).getDisplayValues()[0];
+    if (vs.join('').trim() === '') continue;
+    console.log('   ' + (r < 10 ? ' ' : '') + r + ' | ' + vs.join(' | '));
+  }
+
+  // ── a fórmula do primeiro mês, seja qual for a linha ──
+  for (let r = 5; r <= 30; r++) {
+    if (String(pa.getRange(r, 2).getDisplayValue()).trim() === 'Janeiro') {
+      console.log('\nJaneiro está na linha ' + r + '. Fórmulas:');
+      for (let c = 3; c <= 7; c++) {
+        console.log('   ' + colLetra_(c) + r + '  ' + (pa.getRange(r, c).getFormula() || '(vazia)'));
+      }
+      break;
+    }
+  }
 }
 
 
