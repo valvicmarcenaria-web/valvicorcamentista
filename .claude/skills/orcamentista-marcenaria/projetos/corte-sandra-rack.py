@@ -164,7 +164,7 @@ PV_BR  = round((((chapas+chapas_br)*BR_15 + FITA_CUSTO)*1.06
 #   2,75 — acima disso entra uma segunda chapa e uma emenda.
 PAINEL_L   = 1.42       # ⭐ [Jonathan] 142 cm de largura
 PAINEL_H   = 2.20       # ★ estimativa minha — a altura não veio
-PAINEL_PV  = 3100.0     # ⭐ [Jonathan 19/10] investimento fechado por ele
+PAINEL_PV  = 3900.0     # ⭐ [Jonathan 19/10] investimento fechado por ele
 PERFIL_LAQ = 160.0      # ★ friso em perfil laqueado: perfil, rasgo e laca, por m
 N_FRISO    = 2          # ⭐ [Jonathan 19/10] "dois frisos com perfil laqueado"
 CH_L, CH_C = 1.85, 2.75 # a chapa DE PÉ: 1,42 de largura cabe folgado no 1,85

@@ -106,7 +106,8 @@ passou a ser a **vidraçaria** — é lá que a cotação tem de bater agora.
 > valor para R$ 7.500"*
 >
 > ⭐ 19/10, depois: *"vamos **voltar com o painel liso**, dessa vez
-> acrescentando **dois frisos com perfil laqueado**. A **3.100**"*
+> acrescentando **dois frisos com perfil laqueado**"* — e, na sequência,
+> *"pode atualizar o painel para **3.900**"*
 
 ⛔ **O preço é dele, não meu.** Abaixo eu só confiro.
 
@@ -119,10 +120,10 @@ passou a ser a **vidraçaria** — é lá que a cotação tem de bater agora.
 | consumíveis · 6% | 38 |
 | embalagem · 2% | 26 |
 | **custo direto** | **1.339** |
-| ⭐ **RT do projeto inteiro** | **898** |
-| **a cobrir, no painel** | **2.237** |
-| **PREÇO** ⭐ dele | **R$ 3.100** |
-| **MC que sobra no painel** | **13.2%** |
+| ⭐ **RT do projeto inteiro** | **974** |
+| **a cobrir, no painel** | **2.313** |
+| **PREÇO** ⭐ dele | **R$ 3.900** |
+| **MC que sobra no painel** | **26.1%** |
 
 Os **frisos são 34% do custo direto do painel**: de R$ 875 sem
 eles para R$ 1.339 com eles.
@@ -138,8 +139,8 @@ rasgo e laca. **Não está na base da casa**; vale cotar.
 > **alocada apenas no custo do painel**."*
 
 A RT devida à arquiteta é **9.5% do preço de venda** — 10% sobre o líquido, e
-o líquido é o bruto menos a nota. Sobre o total de R$ 9.450, dá
-**R$ 898**.
+o líquido é o bruto menos a nota. Sobre o total de R$ 10.250, dá
+**R$ 974**.
 
 ⛔ **Isso não muda o que a arquiteta recebe.** Muda de onde o dinheiro sai:
 o **rack passa a ser precificado sem RT na cascata** (base 85.35%) e o
@@ -148,18 +149,14 @@ o **rack passa a ser precificado sem RT na cascata** (base 85.35%) e o
 | | MC | R$ |
 |---|--:|--:|
 | Rack · MC alvo | 30.0% | 6.350 |
-| **Painel · MC que sobra** | **13.2%** | 3.100 |
-| **Conjunto** | **24.5%** | **9.450** |
+| **Painel · MC que sobra** | **26.1%** | 3.900 |
+| **Conjunto** | **28.5%** | **10.250** |
 
-⚠⚠ **O painel fica com 13.2% de MC** — ele carrega sozinho uma RT que é de
-R$ 9.450 de projeto. E o **conjunto cai para 24.5%**, contra os 30% do
-rack e os 35% de piso da casa.
+O painel carrega sozinho a RT de um projeto de R$ 10.250, e por isso fica
+com **26.1%** em vez dos 30% do rack. O **conjunto fecha em 28.5%**.
 
 ⭐ Para o painel segurar 30% carregando a mesma RT, o preço dele teria de
-ser **R$ 4.240** — R$ 1.140 acima dos R$ 3.100.
-
-⛔ Não é erro de conta: é o efeito de **concentrar num item a comissão do
-projeto inteiro**. Fica registrado.
+ser **R$ 4.240** — R$ 340 acima dos R$ 3.900.
 
 ---
 
@@ -168,8 +165,8 @@ projeto inteiro**. Fica registrado.
 | | R$ |
 |---|--:|
 | rack · sem RT | 6.350 |
-| painel de TV · liso com dois frisos | 3.100 |
-| **total** | **R$ 9.450** |
+| painel de TV · liso com dois frisos | 3.900 |
+| **total** | **R$ 10.250** |
 
 ---
 

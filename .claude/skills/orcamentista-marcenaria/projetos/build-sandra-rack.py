@@ -41,7 +41,7 @@ assert sr.RT_ON is False and sr.RT_NO_PAINEL is True, (
 assert sr.RT_TOTAL > 0,             '⛔ O PROJETO FICOU SEM RT'
 assert abs(sr.MC_ALVO - 0.30) < 1e-9, f'⛔ A MC MUDOU: {sr.MC_ALVO:.3f} ≠ 0,300'
 assert RACK == sr.PV and RACK > 0,  '⛔ O PREÇO NÃO VEIO DO MOTOR'
-assert PAINEL == 3100,              '⛔ O PAINEL NÃO ESTÁ NO PREÇO DO JONATHAN'
+assert PAINEL == 3900,              '⛔ O PAINEL NÃO ESTÁ NO PREÇO DO JONATHAN'
 assert sr.N_FRISO == 2,             '⛔ NÃO SÃO MAIS DOIS FRISOS'
 assert abs(RACK + PAINEL - TOTAL) < 0.5, (
     f'⛔ O TOTAL NÃO FECHA: {RACK:,.0f} + {PAINEL:,.0f} ≠ {TOTAL:,.0f}')
