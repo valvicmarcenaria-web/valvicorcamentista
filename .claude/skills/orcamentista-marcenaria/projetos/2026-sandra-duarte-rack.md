@@ -96,46 +96,59 @@ passou a ser a **vidraçaria** — é lá que a cotação tem de bater agora.
 
 ---
 
-## ⭐ Painel de TV — item à parte  [Jonathan 16/10]
+## ⭐ Painel de TV — item à parte  [Jonathan 16/10 · ripado 19/10]
 
 > *"adicione com um valor à parte um painel de TV liso de 142 cm de
 > largura, apoiado no rodapé (a se validar a possibilidade de ser inteiro).
 > Investimento — 2.300"*
+>
+> ⭐ 19/10: *"vamos atualizar o painel para **ripado com ripas de 2×2** e o
+> valor para **R$ 7.500**"*
 
-⛔ **O preço é dele, não meu.** R$ 2.300 veio fechado; abaixo eu só confiro.
+⛔ **O preço é dele, não meu.** R$ 7.500 veio fechado; abaixo eu só confiro.
 
 | | R$ |
 |---|--:|
-| chapa · 1 Metalic de pé | 600 |
-| fita de borda e filetagem | 40 |
+| chapa · base de pé | 600 |
+| chapa · as ripas | 600 |
+| fita · bordas do painel | 40 |
+| ⛔ **fita · arestas das ripas** | **859** |
 | estrutura de fixação | 180 |
-| consumíveis e embalagem | 56 |
-| **custo direto** | **875** |
-| **PREÇO** ⭐ dele | **R$ 2.300** |
-| **MC que esse preço entrega** | **38,5%** |
+| consumíveis · 6% | 126 |
+| embalagem · 2% | 48 |
+| **custo direto** | **2.453** |
+| **PREÇO** ⭐ dele | **R$ 7.500** |
+| **MC que esse preço entrega** | **43,8%** |
 
-⭐ **R$ 2.300 está bom:** entrega MC de **38,5%**, dentro da faixa ideal da
-casa (35–40%) — e **acima dos 30% do rack**.
+⚠ **43,8% está acima da faixa ideal da casa** (35–40%). No teto da faixa o
+painel sairia a **R$ 6.720**. O preço é dele; fica registrado qual margem
+ele entrega.
 
-### ⭐ "A se validar a possibilidade de ser inteiro" — dá
+### ⛔⛔ O que encarece o ripado não é a chapa, é a fita
+
+A ripa de 2 cm sai da chapa com a **face melamínica na frente e o miolo cru
+nos dois lados** — e os dois lados **ficam à vista no vão**. São **36 ripas
+e 156 m de fita só nelas**, R$ 859, contra R$ 40 de fita no painel liso
+inteiro.
+
+Do liso ao ripado o custo direto vai de **R$ 875 para R$ 2.453** — R$ 1.578
+a mais, **180%**. A chapa só dobrou; a fita multiplicou por vinte.
+
+### ⭐ "A se validar a possibilidade de ser inteiro" — dá, e agora vale para a ripa
 
 A chapa é **2,75 × 1,85**. **De pé**, os 142 de largura cabem folgados no
-1,85 e sobra altura até 2,75. O painel sai de **uma peça só, sem emenda**,
-desde que a altura não passe de **2,75**.
+1,85 e sobra comprimento até 2,75 — então **a ripa corre a altura toda sem
+emenda** enquanto o painel não passar de 2,75.
 
-⭐ **E a altura quase não mexe no preço:** de 2,00 a 2,75 é **sempre uma
-chapa**, e só a fita de borda anda. A sobra (um filete de 0,43 de largura)
-não vira outro painel — a peça inteira toma a chapa.
-
-### ⚠ Onde os R$ 2.300 deixam de cobrir — dois degraus
+### ⚠ Onde os R$ 7.500 apertam — dois degraus
 
 | | custo direto | MC |
 |---|--:|--:|
-| **como orçado** · liso, chapa simples, até 2,75 de altura | 875 | **38,5%** |
-| altura **acima de 2,75** — 2ª chapa e uma emenda | 1.533 | 9,9% |
-| painel em **30 mm**, chapa dupla como o resto do móvel | 1.200 | 24,4% |
+| **como orçado** · ripado, chapa simples, até 2,75 de altura | 2.453 | **43,8%** |
+| altura **acima de 2,75** — 2ª chapa, emenda e mais fita de ripa | 3.427 | 30,8% |
+| painel em **30 mm**, chapa dupla como o resto do móvel | 2.777 | 39,5% |
 
-Orçei **liso, em chapa simples, apoiado no rodapé** — que é o que ele
+Orçei **ripado em chapa simples, apoiado no rodapé** — que é o que ele
 pediu. Os dois degraus são **aviso, não orçamento**.
 
 ---
@@ -145,8 +158,8 @@ pediu. Os dois degraus são **aviso, não orçamento**.
 | | R$ |
 |---|--:|
 | rack | 7.560 |
-| painel de TV | 2.300 |
-| **total** | **R$ 9.860** |
+| painel de TV · ripado | 7.500 |
+| **total** | **R$ 15.060** |
 
 ---
 
@@ -188,8 +201,11 @@ fazer a proposta de 2 páginas apenas"*].
   iluminação entregue acesa. **Sem preço.**
 * **Página 2, clara** — dois blocos com preço próprio: o **rack**, em
   cinco linhas (corpo, portas, tampo, prateleira, luz), e o **painel de
-  TV**; abaixo, o investimento total, a condição de pagamento, o que não
-  está incluso e o que se confirma antes de produzir.
+  TV ripado**; abaixo, o investimento total, a condição de pagamento, o
+  que não está incluso e o que se confirma antes de produzir.
+  ⛔ A descrição do painel saiu de *"peça única, sem emenda aparente"* —
+  que era a venda do painel **liso** — para *"as ripas correm inteiras, da
+  base ao topo"*, que é o que o ripado entrega.
   ⭐ Prazo, garantia, execução e validade viraram **uma linha só** na
   página 2 — repetiam inteiros o quadro da capa, e o segundo item precisava
   do espaço.

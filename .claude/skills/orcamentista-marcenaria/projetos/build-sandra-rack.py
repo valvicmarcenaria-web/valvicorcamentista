@@ -24,7 +24,7 @@ sr = importlib.util.module_from_spec(spec); sys.modules['sr'] = sr
 with contextlib.redirect_stdout(io.StringIO()): spec.loader.exec_module(sr)
 
 br = lambda v: f'{v:,.0f}'.replace(',', '.')
-CLIENTE, OBRA, DATA = 'Sandra Duarte', 'Sala de estar', '16 de outubro de 2026'
+CLIENTE, OBRA, DATA = 'Sandra Duarte', 'Sala de estar', '19 de outubro de 2026'
 ARQ = 'Junia Ordones'
 PRAZO, VALIDADE, GARANTIA = '60 dias corridos', '7 dias úteis', '10 anos'
 NP = 2
@@ -36,7 +36,8 @@ RACK, PAINEL, TOTAL = sr.PV, sr.PAINEL_PV, sr.TOTAL
 assert sr.RT_ON is True,            '⛔ O RT SAIU DO MOTOR [Jonathan 14/10 pediu COM RT]'
 assert abs(sr.MC_ALVO - 0.30) < 1e-9, f'⛔ A MC MUDOU: {sr.MC_ALVO:.3f} ≠ 0,300'
 assert RACK == sr.PV and RACK > 0,  '⛔ O PREÇO NÃO VEIO DO MOTOR'
-assert PAINEL == 2300,              '⛔ O PAINEL NÃO ESTÁ NO PREÇO DO JONATHAN'
+assert PAINEL == 7500,              '⛔ O PAINEL NÃO ESTÁ NO PREÇO DO JONATHAN'
+assert sr.RIPA == 2.0 and sr.VAO == 2.0, '⛔ A RIPA NÃO É MAIS 2 × 2'
 assert abs(RACK + PAINEL - TOTAL) < 0.5, (
     f'⛔ O TOTAL NÃO FECHA: {RACK:,.0f} + {PAINEL:,.0f} ≠ {TOTAL:,.0f}')
 
@@ -115,7 +116,7 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
   color:var(--cha);font-weight:700;margin-top:4mm;flex:none;}
 .h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:24pt;
   line-height:1.04;font-weight:600;letter-spacing:-.02em;margin-top:2mm;flex:none;}
-.grp{margin-top:4.5mm;flex:none;}
+.grp{margin-top:4mm;flex:none;}
 .gh{display:flex;justify-content:space-between;align-items:baseline;gap:8mm;
   border-top:1.6px solid var(--ink);padding-top:3.4mm;}
 .gh .gt{font-family:'Cormorant Garamond',Georgia,serif;font-size:19pt;
@@ -128,7 +129,7 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
   font-variant-numeric:tabular-nums;}
 .rows{margin-top:0;flex:none;}
 .row{display:grid;grid-template-columns:26mm 1fr;gap:6mm;align-items:baseline;
-  padding:2.5mm 0;border-top:1px solid var(--line);}
+  padding:2.2mm 0;border-top:1px solid var(--line);}
 .row:first-child{border-top:1px solid var(--line);}
 .row .k{font-family:'Cormorant Garamond',Georgia,serif;font-size:16pt;
   font-weight:700;color:var(--cha);line-height:1;padding-top:.6mm;}
@@ -228,9 +229,10 @@ p2 = f"""<div class="page"><div class="pad p2">
   <div class="grp">
     <div class="gh">
       <div><div class="gt">Painel de TV</div>
-        <div class="gs">Liso, no mesmo padrão champagne, <b>apoiado no
-        rodapé</b> e fixado à parede, <b>em peça única, sem emenda
-        aparente</b>, com a passagem de cabos por trás.</div></div>
+        <div class="gs"><b>Ripado</b>, no mesmo padrão champagne,
+        <b>apoiado no rodapé</b> e fixado à parede. As <b>ripas correm
+        inteiras, da base ao topo, sem emenda</b>, e a passagem de cabos
+        fica por trás.</div></div>
       <div class="gv">R$ {br(PAINEL)}</div></div>
   </div>
 
@@ -264,9 +266,10 @@ p2 = f"""<div class="page"><div class="pad p2">
       <div class="d">A prancha pede <b>conferir as medidas e o ponto de
       energia no local</b> — fazemos a medição antes do corte. O
       <b>puxador</b>: recomendamos o perfil slim colado, porque furo em
-      vidro temperado é feito antes da têmpera e não admite ajuste depois da medição. A <b>altura do painel</b>, que a medição fecha
-      — é ela que confirma a peça única. E <b>amostra</b> do padrão
-      champagne, no MDF e no vidro.</div></div>
+      vidro temperado é feito antes da têmpera e não admite ajuste depois da
+      medição. A <b>altura do painel</b>, que a medição fecha — é ela que
+      confirma a ripa inteira. E <b>amostra</b> do padrão champagne, no MDF
+      e no vidro.</div></div>
   </div>
   {foot(2)}
 </div></div>"""
