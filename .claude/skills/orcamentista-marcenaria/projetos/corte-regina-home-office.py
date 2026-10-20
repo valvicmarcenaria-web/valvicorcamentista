@@ -12,7 +12,8 @@ Briefing por WhatsApp, com uma imagem de referência:
   com ESPESSURA VISUAL DE 5 cm
 
 ⭐ [Jonathan 20/10] "MDF melamínico, corrediça oculta da rede, SEM RT e
-   margem de contribuição de 35%."
+   margem de contribuição de 35%." → depois: **"é Hettich mesmo"** e
+   **"suba a margem para 37%"** — dentro da faixa ideal da casa (35–40%).
 
 ⛔⛔ "ESPESSURA VISUAL DE 5 cm" NÃO É PEÇA DE 5 cm. MDF não existe em 50 mm,
    e colar três chapas para chegar lá seria jogar dinheiro fora. A peça é
@@ -38,7 +39,7 @@ br  = lambda v: f'{v:,.0f}'.replace(',', '.')
 vg  = lambda v, n=2: f'{v:.{n}f}'.replace('.', ',')
 
 CH_M2, APROV = 2.75*1.85, 0.80
-MC_ALVO = 0.35                       # ⭐ [Jonathan 20/10]
+MC_ALVO = 0.37                       # ⭐ [Jonathan 20/10] "suba a margem para 37%"
 RT_ON   = False                      # ⭐ [Jonathan 20/10] "sem RT"
 BASE    = M.base(parcelas=0, rt=RT_ON, vendedor=False)
 

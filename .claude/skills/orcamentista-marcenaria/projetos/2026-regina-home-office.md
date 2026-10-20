@@ -13,7 +13,7 @@ Briefing por **WhatsApp**, com uma imagem de referência (20/10/2026).
 ⭐ [Jonathan 20/10] **"MDF melamínico, corrediça oculta da rede, sem RT e
 uma margem de contribuição de 35%."**
 
-MC **35%** · **sem RT** · base **85.35%**
+MC **37%** · **sem RT** · base **85.35%**
 
 ---
 
@@ -54,13 +54,13 @@ peça de 2,30. É o preço de um móvel comprido num ambiente pequeno.
 
 | móvel | | custo | **preço** |
 |---|---|--:|--:|
-| **Mesa** | 2,30 × 0,80 × 0,75, tampo com espessura visual de 5 cm, apoiado no gaveteiro e numa lateral | 711 | **1.410** |
-| **Gaveteiro** | três gavetas pequenas e uma gaveta arquivo, corrediça oculta, puxador cava | 1.478 | **2.940** |
-| **Móvel do PC** | nicho acoplado sob o tampo para o computador | 166 | **330** |
-| **Painel** | 2,30 × 1,05, espessura visual de 5 cm, com os recortes das tomadas | 719 | **1.430** |
-| **Prateleira** | 2,30 × 0,25, espessura visual de 5 cm, sobre suporte oculto | 466 | **930** |
+| **Mesa** | 2,30 × 0,80 × 0,75, tampo com espessura visual de 5 cm, apoiado no gaveteiro e numa lateral | 711 | **1.470** |
+| **Gaveteiro** | três gavetas pequenas e uma gaveta arquivo, corrediça oculta, puxador cava | 1.478 | **3.060** |
+| **Móvel do PC** | nicho acoplado sob o tampo para o computador | 166 | **340** |
+| **Painel** | 2,30 × 1,05, espessura visual de 5 cm, com os recortes das tomadas | 719 | **1.490** |
+| **Prateleira** | 2,30 × 0,25, espessura visual de 5 cm, sobre suporte oculto | 466 | **960** |
 | | **custo direto** | **3.540** | |
-| | **INVESTIMENTO** | | **R$ 7.040** |
+| | **INVESTIMENTO** | | **R$ 7.320** |
 
 ---
 
@@ -72,7 +72,7 @@ peça de 2,30. É o preço de um móvel comprido num ambiente pequeno.
 2. ⚠ **A espessura da mesa não veio.** A cliente deu os 5 cm visuais para
    o **painel** e a **prateleira**. Adotei o mesmo no tampo da mesa, que é
    o que a imagem mostra. Com tampo liso de 18 mm a mesa cairia
-   **R$ 100**, de R$ 1.410 para R$ 1.310.
+   **R$ 100**, de R$ 1.470 para R$ 1.370.
 3. ⚠ **"Previsão de tomadas elétricas":** os **recortes** no painel são
    nossos; a **tomada, o ponto e o circuito** são da elétrica. Se a
    cliente quiser **caixa de tomada embutida** na marcenaria, é item à
@@ -88,6 +88,12 @@ peça de 2,30. É o preço de um móvel comprido num ambiente pequeno.
    escopo ali, não está neste preço.
 7. ⛔ **Medir no local antes de cortar.** As três peças de 2,30 cabem
    inteiras na chapa, mas só se a parede confirmar os 2,30.
+8. ⛔ **O puxador não está no briefing escrito**, mas a imagem da cliente
+   mostra **barra preta** nas gavetas. Orçei barra a ★ R$ 35/un. Em
+   puxador cava usinado na frente, a ferragem some e o gaveteiro cai.
+9. ⚠ **A imagem mostra a mesa virando a quina**, com um retorno na parede
+   da direita. O briefing escrito diz 2,30 × 0,80 e é isso que está
+   orçado. **Se houver retorno, é outro módulo.**
 
 ---
 
@@ -98,15 +104,15 @@ fixou em 19/10: **nenhum preço antes de gerar valor**.
 
 * **Capa** com a referência da cliente e faixa escura. Sem preço.
 * **Quem faz** — marcenaria própria, as cinco etapas do processo, a
-  garantia de 10 anos atrelada à corrediça Hettich, e um bloco explicando
-  a **espessura aparente construída em caixa** — o argumento de que o
-  móvel entrega o desenho sem o peso.
+  garantia de **10 anos** atrelada à corrediça Hettich, e um bloco
+  explicando a **espessura aparente construída em caixa**: o móvel
+  entrega o desenho sem o peso.
 * **O projeto, peça por peça**, com a referência de novo.
 * **Investimento**, com o à vista em destaque e a escada de pagamento.
 * ⛔ O build trava com `assert` se aparecer qualquer `R$` antes da última
-  página, e se o motor e a proposta deixarem de falar dos mesmos móveis —
-  foi essa segunda trava que pegou "Painel" × "Painel do fundo".
+  página, e se o motor e a proposta deixarem de falar dos mesmos móveis
+  — foi essa segunda trava que pegou *"Painel"* × *"Painel do fundo"*.
 * ⭐ A única imagem é a **referência da própria cliente**, recortada do
-  print de WhatsApp e nomeada como tal. **Não é render nosso**, e a folha
-  diz isso.
+  print de WhatsApp e nomeada como tal. **Não é render nosso**, e a
+  folha diz isso.
 * Três passes do auditor: **tudo OK**.

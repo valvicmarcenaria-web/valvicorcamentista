@@ -61,7 +61,7 @@ assert set(i for i, _ in ITENS) == set(rg.MOVEIS), (
     f'⛔ A PROPOSTA NÃO COBRE OS MESMOS MÓVEIS DO MOTOR: '
     f'{set(i for i, _ in ITENS) ^ set(rg.MOVEIS)}')
 assert abs(sum(rg.PV[i] for i, _ in ITENS) - TOT) < 0.5, '⛔ O TOTAL NÃO FECHA'
-assert abs(rg.MC_ALVO - 0.35) < 1e-9, f'⛔ A MC MUDOU: {rg.MC_ALVO:.3f}'
+assert abs(rg.MC_ALVO - 0.37) < 1e-9, f'⛔ A MC MUDOU: {rg.MC_ALVO:.3f}'
 assert rg.RT_ON is False,           '⛔ ENTROU RT [Jonathan pediu SEM]'
 assert rg.CORR_OC == 190.0,         '⛔ A CORREDIÇA NÃO É MAIS A HETTICH'
 assert VISTA == round(TOT*(1-DESC)/10)*10, '⛔ O À VISTA NÃO FECHA'
