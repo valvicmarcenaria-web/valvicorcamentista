@@ -11,7 +11,7 @@ DADOS = dict(
     nome      = 'Luiz Eustáquio Barbosa Junior',
     cpf       = '136.576.126-61',
     cnpj      = '69.124.960/0001-60',
-    funcao    = '',                       # em branco: preencher à mão
+    funcao    = 'programação e desenvolvimento de software',
     inicio    = '14/09/2026',
     fim       = '09/10/2026',
     cidade    = 'Belo Horizonte',
@@ -134,18 +134,14 @@ __FONTES__
   elas qualquer vínculo empregatício, societário ou de representação, razão pela qual <b>não são
   devidas verbas de natureza trabalhista</b> de espécie alguma.</div>
 
-  <div class="cl"><span class="t">Cláusula 4ª — Da devolução.</span> O PRESTADOR declara haver
-  devolvido à CONTRATANTE todos os bens, ferramentas, equipamentos, materiais, chaves, documentos
-  e acessos a sistemas que estiveram sob sua guarda em razão da prestação, nada retendo em seu
-  poder.</div>
-
-  <div class="cl"><span class="t">Cláusula 5ª — Do sigilo e da propriedade intelectual.</span>
+  <div class="cl"><span class="t">Cláusula 4ª — Do sigilo e da propriedade intelectual.</span>
   Permanecem em vigor, por prazo indeterminado, as obrigações de <b>sigilo</b> sobre informações de
-  clientes, projetos, processos produtivos, preços, custos e fornecedores da CONTRATANTE. Projetos,
-  desenhos, medidas e soluções técnicas desenvolvidos durante a prestação pertencem
-  <b>exclusivamente à CONTRATANTE</b>.</div>
+  clientes, projetos, processos, preços, custos e fornecedores da CONTRATANTE. Todo o
+  <b>código-fonte, scripts, documentação, bases de dados e soluções</b> desenvolvidos durante a
+  prestação pertencem <b>exclusivamente à CONTRATANTE</b>, obrigando-se o PRESTADOR a não os
+  utilizar, reproduzir ou ceder a terceiros, a qualquer título.</div>
 
-  <div class="cl"><span class="t">Cláusula 6ª — Do foro.</span> Fica eleito o foro da Comarca de
+  <div class="cl"><span class="t">Cláusula 5ª — Do foro.</span> Fica eleito o foro da Comarca de
   __CIDADE__ / __UF__ para dirimir quaisquer questões oriundas deste termo, com renúncia a
   qualquer outro, por mais privilegiado que seja.</div>
 
