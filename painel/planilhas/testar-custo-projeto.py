@@ -344,7 +344,7 @@ VAL_ESPERADAS = {
     f'{CA["mont_quem"]}{R_AMB0}:{CA["mont_quem"]}{R_AMBF}': 'EQUIPE',
     f'{CA["proj_quem"]}{R_AMB0}:{CA["proj_quem"]}{R_AMBF}': 'PROJETISTA',
     f'A{R_CL0}:A{R_CLF}': 'ROSTER',
-    f'B{R_RB0}:B{R_RBF}': 'CAUSA', f'D{R_ID2}:E{R_ID2}': 'VENDEDOR',
+    f'B{R_RB0}:B{R_RBF}': 'CAUSA', f'D{R_ID4}:E{R_ID4}': 'VENDEDOR',
     f'F{R_ID4}:G{R_ID4}': 'EQUIPE'}
 for chave, valor in LISTAS.items():
     ck(f'  lista {chave} cabe no formato (até 255 caracteres)', len(valor) <= 255, True)

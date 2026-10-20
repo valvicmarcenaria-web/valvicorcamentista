@@ -752,7 +752,9 @@ def montar_ficha(ws):
         formula=[f'$J${R_ID4}="Atrasado"'], fill=fill(REDBG), font=Font(bold=True, color=RED)))
     ws.conditional_formatting.add(f'A{R_KPI_V}:J{R_KPI_V}', FormulaRule(
         formula=[f'AND($G${R_KPI_V}<>"",$G${R_KPI_V}<0.25)'], fill=fill(REDBG)))
-    dv(ws, literal(VENDEDORES), f'D{R_ID2}:E{R_ID2}')
+    # D9:E9 é VENDEDOR. Já esteve em D7, que é Nº do projeto — o campo errado
+    # tinha menu e o certo não tinha nenhum.
+    dv(ws, literal(VENDEDORES), f'D{R_ID4}:E{R_ID4}')
     dv(ws, literal(EQUIPE), f'F{R_ID4}:G{R_ID4}')
     ws.freeze_panes = f'A{R_VEN_T}'
     print_cfg(ws, f'A1:{LP[NCOL]}{R_NOTA}')

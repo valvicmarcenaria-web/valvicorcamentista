@@ -131,6 +131,53 @@ const MOEDA = 'R$ #,##0.00', PCT = '0.0%', DATA = 'dd/mm/yyyy';
 
 
 /**
+ * Põe o menu de vendedor na célula certa, em todas as fichas.
+ *
+ * O gerador pendurou a lista de vendedores em D7, que é "Nº do projeto", em
+ * vez de D9, que é "Vendedor". Resultado: o campo errado tinha menu e o certo
+ * não tinha nenhum. Esta função tira de lá e põe aqui, na Ficha Modelo e em
+ * todas as abas de projeto.
+ *
+ * Não apaga conteúdo. Se alguém digitou alguma coisa em D7 ou D9, o texto
+ * continua: só a regra de validação muda.
+ */
+function corrigirMenuVendedor() {
+  const VENDEDORES = ['Jonathan', 'Vitor', 'Indicação', 'Arquiteto parceiro', 'Outro'];
+  const FIXAS = ['Instruções', FICHA.painel, 'Listas', FICHA.base];
+
+  const ss = SpreadsheetApp.openById(ID_CUSTO);
+  const regra = SpreadsheetApp.newDataValidation()
+    .requireValueInList(VENDEDORES, true)
+    .setAllowInvalid(true)          // nome fora da lista avisa, não bloqueia
+    .setHelpText('Quem vendeu este projeto.')
+    .build();
+
+  let n = 0;
+  ss.getSheets().forEach(function (sh) {
+    const nome = sh.getName();
+    if (FIXAS.indexOf(nome) >= 0) return;
+    if (sh.getMaxRows() < 9 || sh.getMaxColumns() < 5) return;
+
+    // confere que é mesmo uma ficha antes de mexer
+    const rotulo = String(sh.getRange('A8').getDisplayValue() || '').trim().toUpperCase();
+    if (rotulo.indexOf('PROJETO') !== 0) {
+      console.log('pulei "' + nome + '": A8 diz "' + rotulo + '", não parece ficha.');
+      return;
+    }
+
+    sh.getRange('D7:E7').clearDataValidations();
+    sh.getRange('D9:E9').setDataValidation(regra);
+    n++;
+  });
+
+  SpreadsheetApp.flush();
+  console.log('menu de vendedor corrigido em ' + n + ' ficha(s), incluindo a Ficha Modelo.');
+  console.log('D7 voltou a ser campo livre (Nº do projeto). D9 agora tem a lista: '
+              + VENDEDORES.join(', ') + '.');
+}
+
+
+/**
  * Completa a identificação e a venda de uma ficha que ficou pela metade.
  *
  * Escreve SÓ em célula vazia. Se já houver algo digitado, ela é pulada e o log
