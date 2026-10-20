@@ -131,6 +131,67 @@ const MOEDA = 'R$ #,##0.00', PCT = '0.0%', DATA = 'dd/mm/yyyy';
 
 
 /**
+ * Completa a identificação e a venda de uma ficha que ficou pela metade.
+ *
+ * Escreve SÓ em célula vazia. Se já houver algo digitado, ela é pulada e o log
+ * diz qual — preencher ficha não pode significar apagar o que alguém decidiu.
+ *
+ * Os dados vêm da Controle de Pagamentos. O que não está lá — vendedor,
+ * coordenador, entrega prevista, quem produziu, quem montou, quem projetou e
+ * os percentuais de comissão — continua em branco, porque é decisão sua e eu
+ * não tenho de onde tirar.
+ */
+function completarFichas() {
+  const PENDENTES = [
+    { aba: 'Richard',
+      cliente: 'Richard e Camila',
+      projeto: 'Roupeiro',
+      entrada: new Date(2026, 6, 27),      // 27/07/2026 · data do 1º pagamento
+      venda: 19000,
+      imposto: 0.05,                       // Simples, igual a todos os outros projetos
+      ambientes: [['Roupeiro', 19000]] },
+  ];
+
+  const ss = SpreadsheetApp.openById(ID_CUSTO);
+  PENDENTES.forEach(function (d) {
+    const sh = ss.getSheetByName(d.aba);
+    if (!sh) { console.log(d.aba + ': aba não encontrada.'); return; }
+    console.log('── ' + d.aba + ' ──');
+
+    const poe = function (ref, valor, rotulo) {
+      const c = sh.getRange(ref);
+      const atual = c.getValue();
+      if (atual !== '' && atual !== null) {
+        console.log('  pulei ' + ref + ' (' + rotulo + '): já tem "'
+                    + c.getDisplayValue() + '"');
+        return;
+      }
+      c.setValue(valor);
+      console.log('  escrevi ' + ref + ' (' + rotulo + '): ' + c.getDisplayValue());
+    };
+
+    poe('A7', d.cliente, 'cliente');
+    poe('A9', d.projeto, 'projeto');
+    if (d.entrada) poe('F7', d.entrada, 'data de entrada');
+    poe('D28', d.venda, 'valor de venda realizado');
+    if (d.imposto != null) poe('B38', d.imposto, 'imposto sobre a nota');
+
+    (d.ambientes || []).forEach(function (amb, i) {
+      const r = FICHA.amb0 + i;
+      poe('A' + r, amb[0], 'ambiente');
+      poe('C' + r, amb[1], 'valor do ambiente');
+    });
+  });
+
+  SpreadsheetApp.flush();
+  console.log('\nFalta preencher à mão: vendedor, coordenador, entrega prevista, '
+            + 'e no bloco de ambientes quem produziu, quem montou, quem projetou '
+            + 'e os percentuais de cada um.');
+  console.log('Depois disso, rode atualizarTudo para a Base e as individuais lerem.');
+}
+
+
+/**
  * SÓ LÊ. Não escreve nada, não apaga nada, não altera uma célula sequer.
  *
  * Mostra no Registro de execução o que está de fato dentro das células do
