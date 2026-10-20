@@ -7,7 +7,8 @@
 Projeto [31] APTO ORLANDO E IVONE, arquiteta Ana Maria Castro, CAU A94939-6,
 Rua Passa Tempo, Belo Horizonte. Revisão 00 de 12/10/2026.
 
-Prazo de 60 dias corridos · validade de 7 dias úteis (até 22/10) — aceite
+Prazo: 50 dias na Premium ⭐ [Jonathan 20/10], 60 na Essencial · validade
+de 7 dias úteis (até 22/10) — aceite
 no limite + 60 corridos cai em 21/12, ainda em 2026.
 
 Números de `corte-orlando-ivone.py`; nada digitado à mão.
@@ -27,7 +28,7 @@ with contextlib.redirect_stdout(io.StringIO()): spec.loader.exec_module(oi)
 br = lambda v: f'{v:,.0f}'.replace(',', '.')
 CLIENTE, DATA = 'Orlando e Ivone', '13 de outubro de 2026'
 ARQ = 'Ana Maria Castro'
-PRAZO, VALIDADE = '60 dias corridos', '7 dias úteis'
+VALIDADE = '7 dias úteis'   # ⭐ o PRAZO virou campo da versão [20/10]
 NP = 2
 
 # ⭐ [Jonathan 13/10] a SEGUNDA VERSÃO: sem MDF Ultra, perfil de alumínio
@@ -36,7 +37,7 @@ NP = 2
 VER = (sys.argv[1] if len(sys.argv) > 1 else 'premium')
 assert VER in ('premium', 'essencial'), f'⛔ versão desconhecida: {VER}'
 R = oi.PREMIUM if VER == 'premium' else oi.ESSENCIAL
-GARANTIA = R['v']['garantia']
+GARANTIA, PRAZO = R['v']['garantia'], R['v']['prazo']
 SAIDA = 'proposta-orlando-ivone' + ('' if VER == 'premium' else '-essencial')
 
 def uri(nome):

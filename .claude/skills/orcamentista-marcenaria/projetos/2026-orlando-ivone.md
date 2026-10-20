@@ -310,3 +310,20 @@ estão estimados.
    bancada e a nota da planta diz **TESTEIRA = 20**. Muda o recuo da frente.
 11. **Revisão 00, "não plotar".** Medida de obra por nossa conta antes de
    produzir.
+
+---
+
+## ⭐ Prazo por versão  [Jonathan 20/10]
+
+> *"preciso voltar na primeira versão da proposta que fizemos para o
+> Orlando e Ivone. Mude **apenas o prazo para 50 dias**."*
+
+* **Premium — 50 dias corridos** ⭐
+* **Essencial — 60 dias corridos**, inalterado: ele pediu só a primeira.
+
+⛔ O prazo era **uma constante só no build**, compartilhada pelas duas
+folhas — mudá-la ali teria mexido também na Essencial, que não foi pedida.
+Virou **campo da versão**, ao lado da garantia e da ferragem, que já eram.
+
+⚠ **A data da proposta continua 13/10** e a validade é de 7 dias úteis
+(vence 22/10). Se for reenviar depois disso, a folha precisa ser redatada.

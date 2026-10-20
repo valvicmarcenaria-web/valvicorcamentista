@@ -79,6 +79,7 @@ ARANDELA_PC = 90.0    # ★ usinagem da passagem e berço do driver, por peça f
 VERSAO = {
  'premium': dict(
     nome='Premium', mc=0.35, garantia='10 anos',
+    prazo='50 dias corridos',        # ⭐ [Jonathan 20/10] era 60
     chapa={'ext':'ultra', 'int':'ultrabr'},
     fer={'dobr':35.0, 'corr':85.0, 'puxador':55.0},
     fer_nome={'dobr':'dobradiça com amortecedor',
@@ -87,6 +88,7 @@ VERSAO = {
     perfil=75.0, perfil_nome='perfil de alumínio, linha de esquadria'),
  'essencial': dict(
     nome='Essencial', mc=0.32, garantia='2 anos',
+    prazo='60 dias corridos',        # ⚠ inalterado: ele pediu só a primeira
     chapa={'ext':'cor', 'int':'br'},
     fer={'dobr':15.0, 'corr':45.0, 'puxador':30.0},
     fer_nome={'dobr':'dobradiça Bigfer',
