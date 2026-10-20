@@ -487,24 +487,36 @@ function layout_(p) {
     };
   };
 
-  // Participação do projetista no projeto: quanto dos ambientes, em R$, leva o
-  // nome dele, dividido pelo valor de todos os ambientes daquele projeto.
+  // A fatia do projetista, medida do jeito que não mente.
   //
-  // Por que medir por valor e não por quantidade de ambientes: uma cozinha de
-  // 30 mil e um lavabo de 4 mil contam igual se a gente contar peças. Em
-  // dinheiro, cada um pesa o que pesa.
+  // Valor de venda · sua parte é a SOMA DIRETA dos ambientes que levam o nome
+  // dele. Nada de proporção para chegar nela: é o dinheiro dos ambientes dele.
   //
-  // A conta se normaliza sozinha — se os ambientes não somarem exatamente o
-  // valor de venda, a proporção continua correta, porque o denominador é a
-  // soma dos ambientes lançados, não o valor de venda.
-  const COL_PART = 'C';   // a coluna Participação é a terceira no layout abaixo
+  // Participação é essa soma dividida pelo VALOR DE VENDA DO PROJETO — não
+  // pela soma dos ambientes lançados. A primeira versão dividia pelos
+  // ambientes lançados e, numa ficha com um ambiente de 20 mil num projeto de
+  // 47 mil, esse único ambiente virava 100%: o projetista aparecia com o
+  // projeto inteiro. A conta se protegia de ficha incompleta escondendo que a
+  // ficha estava incompleta.
+  //
+  // Efeito colateral desejado: se a soma dos ambientes passar do valor de
+  // venda, a Participação passa de 100% e fica à vista. Erro que aparece é
+  // erro que se corrige.
+  const COL_PART = 'C';   // Participação
+  const COL_PARTE = 'D';  // Valor de venda · sua parte
+
+  const parteVenda = function (r) {
+    return '=IF($A' + r + '="","",ROUND(SUMIFS('
+      + '_base!$' + B.valor + '$2:$' + B.valor + '$' + BASE_FIM
+      + ',_base!$' + B.projeto + '$2:$' + B.projeto + '$' + BASE_FIM + ',$A' + r
+      + ',_base!$' + B.projQuem + '$2:$' + B.projQuem + '$' + BASE_FIM
+      + ',"' + p.nome + '"),2))';
+  };
+
   const participacao = function (r) {
-    const fx = '_base!$' + B.projeto + '$2:$' + B.projeto + '$' + BASE_FIM;
-    const fv = '_base!$' + B.valor + '$2:$' + B.valor + '$' + BASE_FIM;
-    const fq = '_base!$' + B.projQuem + '$2:$' + B.projQuem + '$' + BASE_FIM;
-    return '=IF($A' + r + '="","",IFERROR('
-      + 'SUMIFS(' + fv + ',' + fx + ',$A' + r + ',' + fq + ',"' + p.nome + '")'
-      + '/SUMIFS(' + fv + ',' + fx + ',$A' + r + '),0))';
+    const lb = 2 + (r - LIN0) * FICHA.ambQtd;
+    return '=IF($A' + r + '="","",IFERROR($' + COL_PARTE + r
+      + '/_base!$' + B.venda + '$' + lb + ',0))';
   };
 
   // Valor do projeto reduzido à fatia dele.
@@ -528,7 +540,7 @@ function layout_(p) {
   if (p.perfil === 'projetista') {
     cols = cols.concat([
       { t: 'Participação', w: 11, calc: true, nf: PCT, f: participacao },
-      { t: 'Valor de venda · sua parte', w: 15, calc: true, nf: MOEDA, f: fatia('venda') },
+      { t: 'Valor de venda · sua parte', w: 15, calc: true, nf: MOEDA, f: parteVenda },
       { t: 'Imposto %', w: 10, calc: true, nf: PCT, f: doProjeto('imposto') },
       { t: 'Taxa de máquina %', w: 11, calc: true, nf: PCT, f: doProjeto('maquina') },
       { t: 'RT %', w: 9, calc: true, nf: PCT, f: doProjeto('rt') },
