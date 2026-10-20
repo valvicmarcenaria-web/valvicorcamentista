@@ -49,11 +49,16 @@ BR   = {6: 190.0, 15: 260.0, 18: 330.0}
 COR  = {6: 300.0, 15: 500.0, 18: 600.0}
 FITA_BR, FITA_COR = 2.0 + 2.5, 3.0 + 2.5
 
-# ⭐ [Jonathan 20/10] "corrediça OCULTA DA REDE" — a oculta de distribuição
-#   nacional, não a importada. ★ R$ 120 o par; a Hettich custa R$ 190.
-#   ⚠ Garantia da oculta na casa: 5 anos (a telescópica dá 2).
-CORR_OC   = 120.0
+# ⭐ [Jonathan 20/10] "corrediça oculta da rede" → "É HETTICH MESMO".
+#   A oculta importada, R$ 190 o par — a de distribuição nacional sairia a
+#   R$ 120. ⭐ E a garantia sobe junto: a oculta Hettich é a linha Gold da
+#   casa, 10 ANOS, contra 5 da oculta nacional e 2 da telescópica.
+CORR_OC   = 190.0
+GARANTIA  = '10 anos'
 SUP_PRAT  = 120.0    # ★ suporte oculto da prateleira, barra chata embutida
+# ⛔ A imagem da cliente mostra PUXADOR DE BARRA PRETA nas gavetas — não
+#   cava. O briefing escrito não fala de puxador; vale o que a imagem mostra.
+PUXADOR   = 35.0     # ★ puxador em barra, preto fosco, por unidade
 VISUAL    = 5.0      # cm de espessura aparente, por pedido da cliente
 
 # ── as peças ─────────────────────────────────────────────────────────────
@@ -86,14 +91,14 @@ mov('Gaveteiro')
 a('Gaveteiro', 15, 'Lateral',                72, 55, 2, 'int', 1)
 a('Gaveteiro', 15, 'Base e horizontais',     37, 55, 2, 'int', 1)
 a('Gaveteiro',  6, 'Fundo',                  40, 72, 1, 'int', 0)
-a('Gaveteiro', 18, 'Frente de gaveta · cava',38, 15, 3, 'cor', 2)
-a('Gaveteiro', 18, 'Frente da gaveta arquivo · cava', 38, 27, 1, 'cor', 2)
+a('Gaveteiro', 18, 'Frente de gaveta',       38, 15, 3, 'cor', 2)
+a('Gaveteiro', 18, 'Frente da gaveta arquivo', 38, 27, 1, 'cor', 2)
 a('Gaveteiro', 15, 'Gaveta · laterais',      50, 12, 6, 'int', 1)
 a('Gaveteiro', 15, 'Gaveta · frente e fundo',30, 12, 6, 'int', 1)
 a('Gaveteiro', 15, 'Gaveta arquivo · laterais', 50, 24, 2, 'int', 1)
 a('Gaveteiro', 15, 'Gaveta arquivo · frente e fundo', 30, 24, 2, 'int', 1)
 a('Gaveteiro',  6, 'Gaveta · fundos',        30, 50, 4, 'int', 0)
-fer('Gaveteiro', 4*CORR_OC)          # ⭐ quatro pares de oculta
+fer('Gaveteiro', 4*CORR_OC + 4*PUXADOR)   # ⭐ quatro oculta e quatro puxadores
 
 # ── 3 · MÓVEL DO PC, acoplado sob o tampo ────────────────────────────────
 mov('Móvel do PC')
@@ -220,11 +225,20 @@ if __name__ == '__main__':
     print('  · ⚠ COMO A MESA SE APOIA. Orçei com o gaveteiro de um lado e uma')
     print('    lateral do outro, amarrados por travessa. Se a cliente quiser')
     print('    a mesa FLUTUANDO na parede, entra estrutura metálica e muda.')
-    print('  · ★ "CORREDIÇA OCULTA DA REDE" — orçada a R$ 120 o par, a oculta')
-    print('    de distribuição nacional. A Hettich sai a R$ 190. ⚠ Garantia da')
-    print('    oculta na casa: 5 anos.')
+    print(f'  · ⭐ CORREDIÇA OCULTA HETTICH [Jonathan 20/10], R$ {br(CORR_OC)} o par —')
+    print('    confirmado por ele. A oculta nacional sairia a R$ 120, R$ 280')
+    print(f'    a menos nas quatro gavetas. ⭐ E a Hettich traz {GARANTIA} de')
+    print('    garantia, contra 5 da oculta nacional e 2 da telescópica.')
     print('  · ⚠ O ÁUDIO DE 6 SEGUNDOS que veio depois do briefing não foi')
     print('    transcrito para mim, e a mensagem seguinte foi apagada. Se')
     print('    houver escopo ali, não está neste preço.')
+    print(f'  · ⛔ O PUXADOR NÃO ESTÁ NO BRIEFING ESCRITO, mas a imagem da')
+    print(f'    cliente mostra BARRA PRETA nas gavetas. Orçei barra a '
+          f'★ R$ {br(PUXADOR)}/un.')
+    print('    Em puxador cava usinado na própria frente, a ferragem some e')
+    print(f'    o gaveteiro cai R$ {br(round(4*PUXADOR*(1+M.EMBALAGEM)/(BASE-MC_ALVO)/10)*10)}.')
+    print('  · ⚠ A IMAGEM MOSTRA A MESA VIRANDO A QUINA, com um retorno na')
+    print('    parede da direita. O briefing escrito diz 2,30 × 0,80 e é isso')
+    print('    que está orçado. Se houver retorno, é outro módulo.')
     print('  · ⛔ MEDIR NO LOCAL antes de cortar: as três peças de 2,30 cabem')
     print('    inteiras na chapa, mas só se a parede confirmar os 2,30.')

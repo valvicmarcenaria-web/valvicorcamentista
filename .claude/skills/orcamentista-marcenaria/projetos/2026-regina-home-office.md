@@ -55,12 +55,12 @@ peça de 2,30. É o preço de um móvel comprido num ambiente pequeno.
 | móvel | | custo | **preço** |
 |---|---|--:|--:|
 | **Mesa** | 2,30 × 0,80 × 0,75, tampo com espessura visual de 5 cm, apoiado no gaveteiro e numa lateral | 711 | **1.410** |
-| **Gaveteiro** | três gavetas pequenas e uma gaveta arquivo, corrediça oculta, puxador cava | 1.049 | **2.080** |
+| **Gaveteiro** | três gavetas pequenas e uma gaveta arquivo, corrediça oculta, puxador cava | 1.478 | **2.940** |
 | **Móvel do PC** | nicho acoplado sob o tampo para o computador | 166 | **330** |
 | **Painel** | 2,30 × 1,05, espessura visual de 5 cm, com os recortes das tomadas | 719 | **1.430** |
 | **Prateleira** | 2,30 × 0,25, espessura visual de 5 cm, sobre suporte oculto | 466 | **930** |
-| | **custo direto** | **3.112** | |
-| | **INVESTIMENTO** | | **R$ 6.180** |
+| | **custo direto** | **3.540** | |
+| | **INVESTIMENTO** | | **R$ 7.040** |
 
 ---
 
@@ -80,7 +80,7 @@ peça de 2,30. É o preço de um móvel comprido num ambiente pequeno.
 4. ⚠ **Como a mesa se apoia.** Orçei com o **gaveteiro de um lado e uma
    lateral do outro**, amarrados por travessa. Se a cliente quiser a mesa
    **flutuando na parede**, entra estrutura metálica e o preço muda.
-5. ★ **"Corrediça oculta da rede"** — orçada a **R$ 120 o par**, a
+5. ★ **"Corrediça oculta da rede"** — orçada a **R$ 190 o par**, a
    oculta de distribuição nacional. A Hettich sai a R$ 190.
    ⚠ Garantia da oculta na casa: **5 anos** (a telescópica dá 2).
 6. ⚠ **O áudio de 6 segundos** que veio depois do briefing não foi
@@ -88,3 +88,25 @@ peça de 2,30. É o preço de um móvel comprido num ambiente pequeno.
    escopo ali, não está neste preço.
 7. ⛔ **Medir no local antes de cortar.** As três peças de 2,30 cabem
    inteiras na chapa, mas só se a parede confirmar os 2,30.
+
+---
+
+## A proposta — `build-regina.py`
+
+**`proposta-regina.pdf`, quatro páginas.** Segue a ordem que o Jonathan
+fixou em 19/10: **nenhum preço antes de gerar valor**.
+
+* **Capa** com a referência da cliente e faixa escura. Sem preço.
+* **Quem faz** — marcenaria própria, as cinco etapas do processo, a
+  garantia de 10 anos atrelada à corrediça Hettich, e um bloco explicando
+  a **espessura aparente construída em caixa** — o argumento de que o
+  móvel entrega o desenho sem o peso.
+* **O projeto, peça por peça**, com a referência de novo.
+* **Investimento**, com o à vista em destaque e a escada de pagamento.
+* ⛔ O build trava com `assert` se aparecer qualquer `R$` antes da última
+  página, e se o motor e a proposta deixarem de falar dos mesmos móveis —
+  foi essa segunda trava que pegou "Painel" × "Painel do fundo".
+* ⭐ A única imagem é a **referência da própria cliente**, recortada do
+  print de WhatsApp e nomeada como tal. **Não é render nosso**, e a folha
+  diz isso.
+* Três passes do auditor: **tudo OK**.
