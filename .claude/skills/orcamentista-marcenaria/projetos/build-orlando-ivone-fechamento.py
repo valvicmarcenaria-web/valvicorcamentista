@@ -41,15 +41,24 @@ ITENS = [
   oi.PREMIUM['PV']['Armário superior']),
 ]
 BRUTO = sum(i[3] for i in ITENS)
-DESC  = 0.05                      # ⭐ [Jonathan 21/10]
-LIQ   = round(BRUTO*(1 - DESC), 2)
+# ⭐⭐ [Jonathan 21/10] "vamos apresentar o valor cheio REDONDO DE 12K".
+#   O número fechado é o do cliente; o desconto é o que sobra dele.
+LIQ     = 12000.0
+DESC    = 1 - LIQ/BRUTO           # 5,21% — sai do redondo, não o contrário
 ENTRADA = round(LIQ/2, 2)
 N_PARC  = 6
 PARCELA = round((LIQ - ENTRADA)/N_PARC, 2)
+# ⭐ [Jonathan 21/10] "evidencie sutilmente o valor maior de desconto além
+#   da tabela." A escada da casa dá 3% para quem entra com 50% — os 5% são
+#   de 70% de entrada. Eles pedem a entrada menor E as parcelas menores.
+DESC_TAB  = 0.03
+LIQ_TAB   = round(BRUTO*(1 - DESC_TAB), 2)
+EXTRA     = round(LIQ_TAB - LIQ, 2)
 
 # ⛔⛔ TRAVAS
 assert BRUTO == oi.PREMIUM['TOT'] == 12660, f'⛔ O BRUTO MUDOU: {BRUTO}'
 assert abs(ENTRADA + PARCELA*N_PARC - LIQ) < 0.05, '⛔ O PARCELAMENTO NÃO FECHA'
+assert EXTRA > 0, '⛔ O DESCONTO DEIXOU DE SER MAIOR QUE O DA TABELA'
 assert V['prazo'] == '50 dias corridos', '⛔ O PRAZO MUDOU'
 
 def uri(n):
@@ -77,9 +86,9 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
 .h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:23pt;
   line-height:1.03;font-weight:600;letter-spacing:-.02em;margin-top:1.5mm;flex:none;}
 .ph{margin:4mm -16mm 0;line-height:0;flex:none;}
-.ph img{width:100%;height:32mm;object-fit:cover;display:block;}
-.it{display:grid;grid-template-columns:24mm 1fr 26mm;gap:5mm;
-  padding:3mm 0;border-top:1px solid var(--line);align-items:baseline;flex:none;}
+.ph img{width:100%;height:40mm;object-fit:cover;display:block;}
+.it{display:grid;grid-template-columns:24mm 1fr;gap:5mm;
+  padding:3.6mm 0;border-top:1px solid var(--line);align-items:baseline;flex:none;}
 .it:first-of-type{border-top:1.4px solid var(--ink);margin-top:6mm;}
 .it .k{font-size:6.4pt;letter-spacing:.2em;text-transform:uppercase;
   color:var(--ac);font-weight:700;}
@@ -106,6 +115,11 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
   color:#8E867A;font-weight:700;}
 .band .rt .v{font-size:13pt;color:#B6AEA1;margin-top:1.2mm;
   text-decoration:line-through;font-variant-numeric:tabular-nums;}
+.band .dv{font-family:'Cormorant Garamond',Georgia,serif;font-size:16pt;
+  color:var(--ac-lt);margin-top:1mm;font-variant-numeric:tabular-nums;}
+.plus{margin-top:3mm;padding-left:4mm;border-left:2px solid var(--ac-lt);
+  font-size:8.2pt;line-height:1.45;color:var(--soft);flex:none;}
+.plus b{color:var(--ac);font-weight:700;}
 .pay{margin-top:5mm;display:grid;grid-template-columns:1fr 1fr;gap:4mm;flex:none;}
 .pay .c{border:1px solid var(--line);border-radius:3px;padding:4.6mm 5.5mm;}
 .pay .k{font-size:6.6pt;letter-spacing:.22em;text-transform:uppercase;
@@ -124,17 +138,19 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
 .notes .bx.w{background:#fff;border:1px solid var(--line);}
 .notes .k{font-size:6.6pt;letter-spacing:.22em;text-transform:uppercase;
   color:var(--ac);font-weight:700;}
-.notes .d{color:var(--soft);font-size:7.1pt;line-height:1.34;margin-top:1.4mm;}
+.notes .d{color:var(--soft);font-size:7.5pt;line-height:1.4;margin-top:1.6mm;}
 .notes .d b{color:var(--ink);font-weight:600;}
 .foot{margin-top:auto;padding-top:5mm;border-top:1px solid var(--hair);
   display:flex;justify-content:space-between;font-size:6.6pt;
   letter-spacing:.18em;text-transform:uppercase;color:var(--mut);flex:none;}
 """
 
+# ⭐ [Jonathan 21/10] "sem desmembrar os itens" — os dois móveis aparecem
+#   descritos, com o valor UM SÓ embaixo.
 itens = ''.join(
  f'<div class="it"><div class="k">{k}</div>'
- f'<div><div class="t">{t}</div><div class="d">{d}</div></div>'
- f'<div class="v">{br(v)}</div></div>' for k, t, d, v in ITENS)
+ f'<div><div class="t">{t}</div><div class="d">{d}</div></div></div>'
+ for k, t, d, _v in ITENS)
 
 HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -148,20 +164,20 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
 
   {itens}
 
-  <div class="sum">
-    <div class="r"><span>Soma dos móveis</span>
-      <span><b>R$ {br2(BRUTO)}</b></span></div>
-    <div class="r d"><span>Desconto da condição de pagamento · {DESC:.0%}</span>
-      <span>− R$ {br2(BRUTO - LIQ)}</span></div>
+  <div class="band">
+    <div><div class="lab">Investimento · os dois móveis</div>
+      <div class="big">R$ {br(LIQ)}</div>
+      <div class="s">Com o desconto da condição de pagamento já
+      aplicado.</div></div>
+    <div class="rt"><div class="k">Sem desconto</div>
+      <div class="v">R$ {br2(BRUTO)}</div>
+      <div class="k" style="margin-top:3mm;">Desconto</div>
+      <div class="dv">− R$ {br2(BRUTO - LIQ)}</div></div>
   </div>
 
-  <div class="band">
-    <div><div class="lab">Investimento</div>
-      <div class="big">R$ {br2(LIQ)}</div>
-      <div class="s">Com o desconto já aplicado.</div></div>
-    <div class="rt"><div class="k">Sem desconto</div>
-      <div class="v">R$ {br2(BRUTO)}</div></div>
-  </div>
+  <div class="plus">A tabela desta condição prevê <b>{DESC_TAB:.0%}</b> de
+  desconto. Aqui estão <b>{DESC:.1%}</b> — <b>R$ {br2(EXTRA)} além</b> do que a
+  escada dá, para fechar no valor redondo.</div>
 
   <div class="pay">
     <div class="c"><div class="k">Entrada · 50%</div>
@@ -212,9 +228,10 @@ env = dict(os.environ, NODE_PATH='/opt/node22/lib/node_modules',
 subprocess.run(['node', '/tmp/r.js', str(P/'proposta-orlando-ivone-fechamento.pdf')],
                check=True, env=env)
 print('proposta-orlando-ivone-fechamento.pdf · 1 página')
-for _k, n, _d, v in ITENS: print(f'  {n:<32} R$ {br2(v):>10}')
-print(f'  {"soma":<32} R$ {br2(BRUTO):>10}')
-print(f'  {"desconto " + f"{DESC:.0%}":<32} − R$ {br2(BRUTO-LIQ):>8}')
+print(f'  {"soma dos móveis":<32} R$ {br2(BRUTO):>10}')
+print(f'  {"desconto " + f"{DESC:.2%}":<32} − R$ {br2(BRUTO-LIQ):>8}')
+print(f'  {"(a tabela daria " + f"{DESC_TAB:.0%}" + ")":<32} − R$ {br2(BRUTO-LIQ_TAB):>8}'
+      f'   → R$ {br2(EXTRA)} além')
 print(f'  {"INVESTIMENTO":<32} R$ {br2(LIQ):>10}')
 print(f'  {"entrada 50%":<32} R$ {br2(ENTRADA):>10}')
 print(f'  {f"{N_PARC}× no cartão":<32} R$ {br2(PARCELA):>10}')

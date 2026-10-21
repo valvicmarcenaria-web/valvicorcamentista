@@ -339,15 +339,24 @@ Virou **campo da versão**, ao lado da garantia e da ferragem, que já eram.
 
 **`proposta-orlando-ivone-fechamento.pdf`, uma página.**
 
+⭐ [Jonathan 21/10, em seguida] *"vamos apresentar o valor cheio redondo de
+12k, sem desmembrar os itens. Evidencie sutilmente o valor maior de
+desconto além da tabela."*
+
 | | R$ |
 |---|--:|
-| Armário inferior | 5.020,00 |
-| Armário superior, com espelho | 7.640,00 |
 | soma dos móveis | 12.660,00 |
-| **desconto · 5%** | **− 633,00** |
-| **INVESTIMENTO** | **12.027,00** |
-| entrada · 50% | 6.013,50 |
-| saldo · 6× no cartão | 6 × 1.002,25 |
+| **desconto · 5,21%** | **− 660,00** |
+| **INVESTIMENTO** | **12.000,00** |
+| entrada · 50% | 6.000,00 |
+| saldo · 6× no cartão | 6 × 1.000,00 |
+
+⭐ **O redondo é o ponto de partida, não o resultado.** O motor fixa
+R$ 12.000 e **o desconto sai dele** — 5,21%, não o contrário. É por isso
+que a entrada e as parcelas caem redondas também.
+
+⛔ **Sem desmembrar:** os dois móveis aparecem **descritos**, sem valor
+individual. O número é um só.
 
 ⚠⚠ **A escada da casa daria 3% nessa condição, não 5%.**
 
@@ -357,14 +366,20 @@ Virou **campo da versão**, ao lado da garantia e da ferragem, que já eram.
 | **70%** de entrada + até 6× no cartão | **5%** |
 | o que eles pediram: **50% de entrada + 6×** | — |
 
-Eles estão pedindo **a entrada menor E as parcelas menores**. ⭐ O Jonathan
-mandou dar os 5% — decisão dele, registrada. **Custa R$ 253 a mais** do que
-os 3% da tabela (R$ 12.280 contra R$ 12.027).
+Eles estão pedindo **a entrada menor E as parcelas menores**. ⭐ Decisão do
+Jonathan, registrada. Pela tabela o valor seria **R$ 12.280,20**; o redondo
+de R$ 12.000 custa **R$ 280,20 a mais**.
 
-⛔ **Valor de item não se mexeu** (regra de 21/10): os dois móveis mantêm
-R$ 5.020 e R$ 7.640. O desconto incide sobre o **total** e aparece como
-**linha própria** — o cliente vê de onde saiu, e o valor cheio fica ao lado,
-riscado.
+⭐ **E isso virou argumento na folha**, em destaque sutil — uma linha com
+filete, abaixo do valor: *"a tabela desta condição prevê 3% de desconto.
+Aqui estão 5,2% — R$ 280,20 além do que a escada dá, para fechar no valor
+redondo."* O cliente vê que ganhou algo fora da régua, e a casa registra
+que foi concessão, não erro de tabela.
+
+⛔ **Valor de item não se mexeu** (regra de 21/10): o orçamento interno
+mantém R$ 5.020 e R$ 7.640. O que mudou é a **forma de apresentar** — um
+valor só — e o desconto, que incide sobre o total. O valor cheio fica ao
+lado, riscado.
 
 A folha ainda traz prazo de **50 dias corridos** (alterado em 20/10),
 garantia de 10 anos, validade de 7 dias úteis e os dois blocos de **está** e
