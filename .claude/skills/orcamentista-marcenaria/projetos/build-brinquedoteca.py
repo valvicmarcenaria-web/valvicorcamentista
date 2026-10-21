@@ -27,27 +27,37 @@ CONJ = [
  ('Passarela suspensa',
   'Estrutura em aço com pintura automotiva.'),
  ('Gradis de contenção',
-  'Corda de alma em aço e <b>malha de corda náutica com cabo de aço '
-  'entrelaçado</b>, dupla na estrutura suspensa. Inclui a rede do mezanino.'),
+  'Quadro metálico com corda de alma em aço. As telas de proteção são '
+  '<b>malha de cordas náuticas de 8 mm com 10 cm entre nós</b>, com fios '
+  'de <b>cabo de aço de 3 mm entrelaçados</b> para garantir mais '
+  'resistência. Na <b>estrutura suspensa a malha é aplicada duplamente</b>, '
+  'para diminuir o espaço entre nós e garantir mais segurança. Fixadas com '
+  '<b>ganchos soldados</b>. Inclui a rede do mezanino.'),
  ('Plataformas acolchoadas',
-  'Degraus estruturados, <b>espuma de alta densidade</b> e revestimento '
-  'em tecido.'),
+  'Estrutura em serralheria revestida em compensado, <b>pontas curvas</b>, '
+  'espuma <b>D33 de 20 mm</b> na parte superior e na curva, revestimento '
+  'completo em tecido.'),
  ('Piscina de espuma',
-  'Estrutura de contenção, fundo e paredes acolchoados, com o <b>painel de '
-  'guarda-corpo</b> acolchoado.'),
+  'Estrutura de contenção, fundo e paredes acolchoados, com <b>piso '
+  'emborrachado de 20 mm</b>.'),
  ('Banco extenso',
-  'Estrutura em aço com assento acolchoado e fechamento aparente em '
-  '<b>MDF Berneck, padrão Tabasco</b>.'),
+  'Estrutura em <b>MDF melamínico</b> — como sugestão de cor, o padrão '
+  'Tabasco da Berneck. Assento com <b>almofada em espuma D33 de 45 mm</b>, '
+  'revestida em tecido a definir.'),
  ('Parede norte',
   'Estrutura em aço e MDF ultra premium cru, pronto para o efeito tijolinho.'),
  ('Casinha — paredes',
-  'Fachada e laterais em MDF ultra premium cru, dupla face.'),
+  'Fachada e laterais em MDF ultra premium cru.'),
  ('Casinha — escada',
   'MDF ultra premium, com os degraus em revestimento emborrachado.'),
  ('Janelas e pórticos moldurados',
-  'Estilo veneziana em usinagem plana, com frisos, em laca branca.'),
+  'Estilo veneziana em usinagem plana, com frisos, em laca branca, mais a '
+  '<b>placa decorativa personalizada</b> e os <b>nichos da parede de '
+  'tijolinhos</b>.'),
  ('Escorregador com túnel curvo',
   'Teto em arco sobre gabarito, pista em laminado e gradil de proteção.'),
+ ('Toldo personalizado',
+  'Sob medida, em lona, com estrutura tubular e fixação.'),
  ('Pintura ou papel de parede — aplicação',
   '<b>Mão de obra</b> da pintura acrílica dos painéis, por dentro e por '
   'fora, <b>ou</b> da aplicação de vinil adesivo e papel na torre. '
@@ -150,16 +160,24 @@ pENG = f"""<div class="pg"><div class="in">
       — e o material vem de vocês.</div></div>
   </div>
 
-  <div class="ref">
-    <div class="ph"><img src="{img('tabasco-berneck')}" alt=""></div>
+  <div class="ref2">
     <div>
-      <div class="k">Sugestão de acabamento · banco</div>
-      <div class="t disp">Padrão <em>Tabasco</em>,<br>da Berneck.</div>
-      <div class="d">Para o <b>fechamento aparente do banco</b>, sugerimos o
-      padrão <b>Tabasco da Berneck</b> — a imagem ao lado é
-      referência do padrão, não do nosso projeto. É uma cor
-      que aguenta o uso de uma brinquedoteca e <b>conversa com o assento
-      estofado</b> sem pedir manutenção.</div>
+      <div class="ph"><img src="{img('malha-corda')}" alt=""></div>
+      <div class="k">Referência · malha de corda</div>
+      <div class="t disp">Nó a nó, em corda náutica.</div>
+      <div class="d">É assim que a malha se fecha: <b>corda com nó em cada
+      cruzamento</b>, não tela de rede. A nossa leva ainda os <b>fios de
+      cabo de aço entrelaçados</b> e, na estrutura suspensa, <b>vem
+      dupla</b>.</div>
+    </div>
+    <div>
+      <div class="ph"><img src="{img('tabasco-berneck')}" alt=""></div>
+      <div class="k">Sugestão de cor · banco</div>
+      <div class="t disp">Padrão Tabasco, da Berneck.</div>
+      <div class="d">Para a estrutura em MDF melamínico do banco,
+      sugerimos o padrão <b>Tabasco da Berneck</b>. A imagem é referência
+      do padrão, não do nosso projeto — e <b>é uma sugestão</b>, que vocês
+      confirmam ou trocam.</div>
     </div>
   </div>
   {pe(3)}
@@ -172,7 +190,7 @@ for k, ((nome, desc), chave) in enumerate(zip(CONJ, NOMES), 1):
                f'<div><div class="t">{nome}</div><div class="d">{desc}</div></div>'
                f'<div class="v">R$ {br(oq.PV[chave])}</div></div>')
 
-p3 = f"""<div class="pg"><div class="in" style="padding-top:15mm;">
+p3 = f"""<div class="pg"><div class="in" style="padding-top:12mm;">
   <div class="sel">Os conjuntos</div>
   <h1 class="ttl disp">Peça a peça,<br><em>uma só obra.</em></h1>
   <div class="hair"></div>
@@ -206,9 +224,6 @@ p4 = f"""<div class="pg"><div class="in">
       partir desta data.</div></div>
   </div>
 
-  <div class="ph sangra" style="margin-top:11mm;height:74mm;">
-    <img src="{img('mezanino')}" alt=""></div>
-
   <div class="obs">Tudo é fabricado, pintado, estofado e instalado por
   <b>equipe própria</b>. Acompanham o fornecimento: projeto executivo,
   estrutura metálica em <b>chapa 16</b>, chapas, espumas, tecidos,
@@ -217,14 +232,24 @@ p4 = f"""<div class="pg"><div class="in">
   <b>É mão de obra nossa e material de vocês:</b> a
   <b>pintura acrílica</b> dos painéis e o <b>papel de parede</b> da torre
   — aplicamos, e a tinta, a massa e o papel são fornecidos pela
-  cliente. <b>Não acompanham:</b> os <b>blocos de espuma</b> da piscina;
-  a <b>base imantada</b>; o <b>conjunto de mesas com cadeiras</b>; o
-  <b>balanço</b>; o <b>material de pintura e de vinílicos</b> — tinta,
-  massa, vinil e papel; o <b>revestimento de piso interno da casinha</b>;
-  <b>couro natural</b> em qualquer revestimento; o efeito de tijolinho;
-  obra civil, elétrica, piso e revestimentos do ambiente. O <b>tecido dos
-  acolchoados</b> ainda será definido com vocês. Medidas conferidas no
-  local antes da fabricação.</div>
+  cliente. O <b>tecido dos acolchoados</b> ainda será definido com vocês, e
+  as medidas são conferidas no local antes da fabricação.</div>
+
+  <div class="fora">
+    <div class="k">O que não está incluso</div>
+    <ul class="lst">
+      <li><b>Blocos de espuma</b> da piscina</li>
+      <li><b>Base imantada</b></li>
+      <li><b>Conjunto de mesas com cadeiras</b></li>
+      <li><b>Balanço</b></li>
+      <li><b>Material de pintura e de vinílicos</b> — tinta, massa, vinil
+        e papel</li>
+      <li><b>Revestimento de piso interno da casinha</b></li>
+      <li><b>Couro natural</b> em qualquer revestimento</li>
+      <li>O <b>efeito de tijolinho</b> da parede norte</li>
+      <li>Obra civil, elétrica, piso e revestimentos do ambiente</li>
+    </ul>
+  </div>
   {pe(5)}
 </div></div>"""
 

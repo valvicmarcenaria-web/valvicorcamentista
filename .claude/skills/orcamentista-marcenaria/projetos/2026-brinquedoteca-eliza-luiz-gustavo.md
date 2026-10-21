@@ -548,106 +548,107 @@ Orçado em linho; o nome a confirmar.
 
 # ⭐ Revisão de 21/10 — especificação de materiais
 
-> *"vamos mudar a abordagem"* — o briefing foi reapresentado inteiro.
+| | R$ |
+|---|--:|
+| 14/10 | 176.800 |
+| **agora** | **193.620** |
+
+## ⛔⛔⛔ A regra que nasceu nesta rodada
+
+> *"Na página de valores, você mudou valores da proposta original. Adicione
+> uma regra da skill para alterar valores **apenas se expressamente
+> solicitado**."*
+
+Gravada em **`SKILL.md`** e em **`referencias/proposta-comercial.md`**.
+
+O erro era **mecânico**: o motor rateava um alvo pelo custo, então bastava
+um custo novo em qualquer canto para **a tabela inteira andar**. O cliente
+via onze números diferentes a cada rodada sem ter pedido um.
+
+⭐ **A correção:** os preços passam a ser **declarados**, não calculados —
+`PV_DECLARADO` no motor, congelado nos valores de 14/10. O motor segue
+apurando custo e margem de cada item, que é trabalho interno; **o número
+que vai ao cliente só muda quando ele pedir, item a item**. Um `assert`
+trava se o motor e a tabela deixarem de falar dos mesmos itens.
+
+### O que mudou de valor nesta rodada — e só isso
 
 | | R$ |
 |---|--:|
-| antes (14/10) | 176.800 |
-| **agora** | **187.580** |
+| Janelas e pórticos · **atualizado por ele** | 22.480 → **25.400** |
+| Pintura ou vinil/papel · **novo** | **12.500** |
+| Toldo personalizado · **novo** | **1.400** |
+| todos os outros nove | **parados** |
 
-## ⛔⛔ A regra que ele fixou nesta rodada
-
-> *"o custo dos gradis de contenção não é para mudar valor, é só para mudar
-> **texto**. Valor será acrescentado apenas conforme solicitação."*
-
-**Só mexe em valor o que vier com um número.** Tudo o mais é redação. Foi
-assim que esta revisão foi fechada, e é o que o reapresentar do briefing
-confirmou: ele diz *"informe que"*, *"reforçar que"*, *"uma sugestão é"* —
-verbos de texto.
-
-### O que mudou de valor — uma coisa só
-
-| | R$ | |
-|---|--:|---|
-| **Pintura ou vinil/papel · mão de obra** | **+12.500** | ⭐ valor cravado por ele |
-| malha de corda · revertida | ~~+28.660~~ | só texto |
-| guarda-corpo acolchoado da piscina · revertido | ~~+3.860~~ | só informar |
-| metalon chapa 16 nas paredes · revertido | ~~+1.380~~ | só informar |
-| fechamento Tabasco do banco · revertido | ~~+1.200~~ | só sugerir |
-| opcional de laca fosca · removido | ~~+8.000~~ | saiu do briefing |
-
-⭐ **A regra ficou assim, e vale daqui para a frente neste projeto:**
-*só mexe em valor o que vier com número; o resto é redação.*
-
-### E como cada reversão ficou honesta na folha
+## O que foi só texto
 
 | | |
 |---|---|
-| **Guarda-corpo da piscina** | O acolchoamento do poço já orçado cobre **2,3 vezes a área** da piscina — fundo **mais** paredes e bordas. O painel já estava pago; o que mudou foi dizer **qual espuma**. |
-| **Metalon chapa 16** | A barra ficou **no mesmo preço já orçado** e o rótulo passou a dizer o que a parede leva. ⚠ Se o seu fornecedor cobrar mais pela chapa 16 do que pela 18, o orçamento está curto em ~R$ 1.400. |
-| **Tabasco** | Saiu da descrição do banco e **ficou só no bloco de referência**, com a frase *"é uma sugestão: se vocês quiserem seguir por ela, orçamos o fechamento à parte"*. A folha não promete mais o que a conta não paga. |
+| malha de corda náutica | ~~+28.660~~ |
+| guarda-corpo acolchoado | ~~+3.860~~ |
+| metalon chapa 16 | ~~+1.380~~ |
+| fechamento Tabasco | ~~+1.200~~ |
 
-### Não inclusos — lista fechada [Jonathan 21/10]
+## Os descritivos, como ele pediu
 
+* **Gradis:** a alma de aço descrita palavra por palavra — malha de cordas
+  náuticas de 8 mm com 10 cm entre nós, fios de cabo de aço de 3 mm
+  entrelaçados, **dupla na estrutura suspensa**, fixada com ganchos
+  soldados.
+* **Plataformas:** estrutura em serralheria revestida em compensado,
+  **pontas curvas**, espuma D33 de 20 mm na parte superior e na curva,
+  revestimento completo em tecido.
+* **Piscina:** com **piso emborrachado de 20 mm**.
+* **Banco:** estrutura em **MDF melamínico**, com o Tabasco **apresentado
+  como sugestão**; assento com almofada em **espuma D33 de 45 mm**.
+* **Casinha — paredes:** saiu o *"dupla face"*.
+* **Janelas e pórticos:** entraram a **placa decorativa personalizada** e
+  os **nichos da parede de tijolinhos**.
+
+## As duas referências
+
+A página 3 passou a trazer **as duas lado a lado**: a **malha de corda**
+(nó a nó, em corda náutica) e o **padrão Tabasco**. As duas nomeadas como
+referência, não como render do projeto.
+
+## O não incluso
+
+Virou **lista com marcador, em caixa de destaque sutil**, em duas colunas:
 blocos de espuma · base imantada · conjunto de mesas com cadeiras ·
-balanço · material de pintura e de vinílicos (tinta, massa, vinil e papel)
-· revestimento de piso interno da casinha · couro natural em qualquer
-revestimento · efeito de tijolinho · obra civil, elétrica, piso e
-revestimentos do ambiente.
+balanço · material de pintura e de vinílicos · revestimento de piso interno
+da casinha · couro natural · efeito de tijolinho · obra civil, elétrica,
+piso e revestimentos.
 
-## ⭐⭐ Os R$ 12.500 da pintura são VALOR, não custo
+## ★ A margem, já que o valor não muda
 
-Ele confirmou: é o **valor do item na proposta**, como a cozinha cravada em
-R$ 12.000 — e não o custo de compra. O item é **aditivo**: o alvo escala
-sobre o custo do resto e a pintura entra **por cima**.
+| item | custo | valor | MC |
+|---|--:|--:|--:|
+| Passarela suspensa | 2.706 | 8.190 | 43.5% |
+| Gradis de contenção das redes | 17.637 | 53.370 | 43.5% |
+| Plataformas acolchoadas | 3.596 | 10.190 | 41.2% |
+| Piscina de espuma — estrutura | 4.962 | 15.010 | 43.5% |
+| Banco extenso | 2.538 | 7.680 | 43.5% |
+| Parede estrutural 1 (efeito tijolinho) | 5.090 | 15.400 | 43.5% |
+| Casinha — paredes | 2.872 | 8.690 | 43.5% |
+| Casinha — escada | 1.611 | 4.870 | 43.4% |
+| Janelas e pórticos moldurados | 7.430 | 25.400 | 47.3% |
+| Escorregador com túnel de teto curvo | 6.252 | 18.920 | 43.5% |
+| Toldo personalizado | 783 | 1.400 | 20.6% |
+| Pintura acrílica e papel de parede — mão de obra | 7.777 | 12.500 | 14.3% |
+| Cozinha de brinquedo | 3.249 | 12.000 | 49.4% |
+| **conjunto** | **66.503** | **193.620** | **42.2%** |
 
-⚠ **E isso tem preço para a casa.** O custo da mão de obra, pela conta de
-R$ 130/m² que ele mesmo deu na primeira rodada, dá R$ 7.759 com o rateio.
-A R$ 12.500 de venda, **esse item entrega MC de 14.2%** — contra os
-43.4% do resto da obra. A **MC do conjunto cai para
-41.4%**. É decisão dele, registrada.
+⚠ Os dois itens de margem baixa são os que ele cravou: a **pintura a
+14.3%** e o **toldo a 20.6%**. O conjunto fecha em
+**42.2%**, contra os 43,4% de 14/10.
 
-## As especificações — texto
+## ★ Em aberto
 
-**1 · Telas de proteção: malha de corda náutica.**
-Corda de 8 mm, nós a cada 10 cm, **cabo de aço de 3 mm entrelaçado**,
-**dupla na estrutura suspensa**, presa em **ganchos soldados**.
-⚠⚠ Pelas minhas taxas, corda + cabo + gancho + tecelagem dariam
-**R$ 9.040** nos 14 m²; a conta paga **R$ 3.500** — **R$ 5.540 de
-diferença**. Ou minhas estimativas estão altas, ou **a folha promete uma
-malha que o orçamento não paga**, que é o erro da laca da Juliana.
-⛔ **Cotar a malha antes de fechar.**
-
-**2 · Espuma D33 de 20 mm** nas **plataformas de subida** e no **painel de
-guarda-corpo da piscina**, em **tecido a definir**.
-⛔ **Couro natural não está contemplado** — escrito na proposta.
-
-**3 · Pintura acrílica OU vinil adesivo / papel de parede** — **mão de obra
-apenas**. ⛔⛔ **Tinta, massa, vinil e papel são fornecimento do
-contratante**, com todas as letras na folha.
-
-**4 · Banco com fechamento em MDF Berneck, padrão Tabasco** — sugestão da
-casa, com **a imagem de referência num bloco próprio** da página 3,
-nomeada como *referência do padrão, não do nosso projeto*.
-
-**5 · Metalon 50 × 30 em chapa 16** nas paredes. A proposta diz por quê:
-**chapa mais grossa, por resistência e segurança**, principalmente sob a
-**ponte suspensa** e a **grade de cordas suspensa**.
-⭐ O perfil `50 × 30` entrou na **exceção permanente do auditor**, pelo
-mesmo motivo do `30 × 20`: nome comercial de tubo, não cota de peça.
-
-**6 · "Mais que uma marcenaria."** A página 2 ganhou o parágrafo: *a Valvic
-não se apresenta como uma marcenaria; é uma empresa que **articula
-soluções***. E a **página 3 é nova**, para sustentar isso com engenharia —
-infraestrutura, malha de corda, amortecimento e acabamento.
-
-## ★ Em aberto desta revisão
-
-1. ⛔ **Cotar a malha de corda** — é o maior risco do orçamento agora.
-2. ★ **As taxas novas são estimativas minhas**: corda, cabo, gancho,
-   tecelagem, papel, chapa Tabasco e metalon chapa 16.
-3. ⚠ **O tecido dos acolchoados não foi definido** — o preço usa linho de
-   estofaria a R$ 95/m². Tecido náutico ou PVC muda.
-4. ⚠ **A área de pintura "interna e externa"** foi lida como **as duas
-   faces de cada painel**. Na parede estrutural, só uma face é chapeada —
-   pintar a outra significa pintar o lado da estrutura.
+1. ⛔ **Cotar a malha de corda.** A folha descreve corda náutica tecida nó
+   a nó com cabo de aço; a conta paga R$ 3.500, e minha estimativa por
+   componente dá R$ 9.040. **Maior risco do orçamento.**
+2. ★ **O custo do toldo é estimativa minha** (R$ 783 com rateio). O
+   valor de R$ 1.400 foi cravado por ele.
+3. ⚠ **Metalon chapa 16:** a barra ficou no preço já orçado. Se o
+   fornecedor cobrar mais pela 16 do que pela 18, falta ~R$ 1.400.
+4. ⚠ **O tecido dos acolchoados não foi definido.**

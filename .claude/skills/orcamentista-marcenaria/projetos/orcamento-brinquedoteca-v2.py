@@ -332,7 +332,19 @@ it('Escorregador com túnel de teto curvo', f'{L_TU:.2f} m · vão {B_TU:.2f} ×
                                       sup('40x40x1,5', m_tu),'m²',PINT_AUTO),
 ], obs='a curvatura é HORA de marcenaria sobre gabarito, não chapa')
 
-# ══ 11 · ⭐ PINTURA ACRÍLICA E PAPEL DE PAREDE — SÓ A MÃO DE OBRA ════════
+# ══ 11 · ⭐ TOLDO PERSONALIZADO  [Jonathan 21/10] ════════════════════════
+# "adicionar toldo personalizado com o custo de 1.400"
+# ⭐ LEITURA: 1.400 é o VALOR do item na proposta, pela mesma régua que ele
+#   confirmou na pintura — ele escreve "custo" e quer dizer o número que
+#   vai à folha. O custo abaixo é ★ estimativa minha, só para a margem.
+it('Toldo personalizado', 'sob medida, em lona', [
+ ('Estrutura tubular e fixação',                          6.0,'m',38.0),
+ ('Lona sob medida, com bainha e ilhoses',                4.2,'m²',52.0),
+ ('Costura e acabamento da lona',                         4.2,'m²',28.0),
+ ('Mão de obra de montagem e instalação',                 3.0,'h',36.0),
+], obs='★ custo estimado por mim · o VALOR foi cravado pelo Jonathan')
+
+# ══ 12 · ⭐ PINTURA ACRÍLICA E PAPEL DE PAREDE — SÓ A MÃO DE OBRA ════════
 # [Jonathan 21/10] "adicionar a mão de obra da pintura acrílica nos painéis
 #   e aplicação de papel de parede na torre principal. OBS: o fornecimento
 #   dos materiais será por conta do contratante. A nível de cálculo de
@@ -354,7 +366,7 @@ it('Pintura acrílica e papel de parede — mão de obra',
 ], obs='⛔ MÃO DE OBRA APENAS — tinta, massa, vinil e papel são fornecimento '
        'do contratante [Jonathan 21/10] · custo cravado por ele')
 
-# ══ 12 · COZINHA DE BRINQUEDO ════════════════════════════════════════════
+# ══ 13 · COZINHA DE BRINQUEDO ════════════════════════════════════════════
 it('Cozinha de brinquedo', 'módulo lúdico sob medida', [
  ('MDF ultra 18 mm — corpo, bancada e frentes',            3.0,'ch',MDF_U18),
  ('MDF ultra 15 mm — internos e fundo',                    1.0,'ch',MDF_U15),
@@ -382,9 +394,32 @@ MC = 0.45
 #     anterior com a pintura a R$ 23.150 e devolveu 12.500 — do mesmo jeito
 #     que cravou a cozinha em 12.000 em 30/09. E a conjunção é "OU": é
 #     pintura ACRÍLICA ou vinil/papel, não as duas somadas.
-# ⭐ A pintura tem PREÇO CRAVADO, como a cozinha [Jonathan 21/10].
-NOME_PINT  = 'Pintura acrílica e papel de parede — mão de obra'
-PRECO_FIXO = {'Cozinha de brinquedo': 12000, NOME_PINT: PINTURA_PV}
+NOME_PINT = 'Pintura acrílica e papel de parede — mão de obra'
+
+# ⛔⛔⛔ REGRA DA CASA, A PARTIR DE 21/10 [Jonathan]:
+#   "Na página de valores, você mudou valores da proposta original.
+#    Alterar valores APENAS SE EXPRESSAMENTE SOLICITADO."
+#   → O preço de cada item passa a ser DECLARADO, não recalculado. O motor
+#     segue apurando custo e margem — isso é trabalho interno — mas o
+#     número que vai ao cliente SÓ MUDA QUANDO ELE PEDIR, item a item.
+#   ⛔ Era o rateio automático que mexia em tudo: bastava um custo novo em
+#     qualquer canto para a tabela inteira andar, e o cliente via onze
+#     números diferentes a cada rodada sem ter pedido um.
+PV_DECLARADO = {
+ 'Passarela suspensa':                      8190,   # 14/10
+ 'Gradis de contenção das redes':          53370,   # 14/10
+ 'Plataformas acolchoadas':                10190,   # 14/10
+ 'Piscina de espuma — estrutura':          15010,   # 14/10
+ 'Banco extenso':                           7680,   # 14/10
+ 'Parede estrutural 1 (efeito tijolinho)': 15400,   # 14/10
+ 'Casinha — paredes':                       8690,   # 14/10
+ 'Casinha — escada':                        4870,   # 14/10
+ 'Janelas e pórticos moldurados':          25400,   # ⭐ [21/10] era 22.480
+ 'Escorregador com túnel de teto curvo':   18920,   # 14/10
+ 'Toldo personalizado':                     1400,   # ⭐ [21/10] novo
+ NOME_PINT:                                12500,   # ⭐ [21/10] novo
+ 'Cozinha de brinquedo':                   12000,   # cravado em 30/09
+}
 # [Jonathan 30/09] investimento cravado em 185.000 sobre um custo direto de
 # R$ 61.296,38 — o que embutiu uma MC de 43,38%.
 # ⭐ [Jonathan 14/10] o escopo mudou: saiu a parede de desenho e a escada
@@ -397,27 +432,14 @@ ALVO_30_09, CD_30_09 = 185000, 61296.38
 # consumível e embalagem, rateada pelo custo (regra da casa)
 CDI = {i['nome']: i['total']*CD/CD_SIS for i in ITENS}
 
-# ⭐⭐ A PINTURA É ADITIVA, não sai de dentro do alvo. O alvo escala sobre o
-#   custo do RESTO — o escopo que já existia em 30/09 — e a mão de obra de
-#   pintura entra POR CIMA, com o valor que o Jonathan cravou. Carvá-la de
-#   dentro do alvo faria o cliente pagar o mesmo por mais serviço.
-# ⭐⭐ A PINTURA É ADITIVA: o alvo escala sobre o custo do RESTO — o escopo
-#   que já existia — e a mão de obra de pintura entra POR CIMA, com o valor
-#   que o Jonathan cravou. Carvá-la de dentro do alvo faria o cliente pagar
-#   o mesmo por mais serviço.
-CD_PINT = CDI[NOME_PINT]
-ALVO_TOTAL = round(ALVO_30_09*(CD - CD_PINT)/CD_30_09/10)*10 + PINTURA_PV
-# o total é CRAVADO: a cozinha tem preço próprio e o restante é rateado
-_resto = [n for n in CDI if n not in PRECO_FIXO]
-_alvo  = ALVO_TOTAL - sum(PRECO_FIXO.values())
-_base  = sum(CDI[n] for n in _resto)
-PV = dict(PRECO_FIXO)
-for n in _resto: PV[n] = round(CDI[n]*_alvo/_base/10)*10
-_dif = _alvo - sum(PV[n] for n in _resto)
-_mai = max(_resto, key=lambda n: PV[n]); PV[_mai] += _dif
+# ⛔ A TABELA DECLARADA TEM DE COBRIR EXATAMENTE OS ITENS DO MOTOR — se
+#   alguém criar um item e esquecer o preço, ou renomear um, isto trava.
+assert set(PV_DECLARADO) == set(CDI), (
+    f'⛔ MOTOR E TABELA DE PREÇO DIVERGEM: {set(PV_DECLARADO) ^ set(CDI)}')
+PV = dict(PV_DECLARADO)
 TOT = sum(PV.values())
 MC_REAL = {n: BASE - CDI[n]/PV[n] for n in PV}
-assert TOT == ALVO_TOTAL
+MC_CONJ = BASE - CD/TOT
 MC_CRAVADA_30_09 = 0.43382
 
 if __name__ == '__main__':
@@ -436,7 +458,7 @@ if __name__ == '__main__':
     print(f'\n{"═"*W}')
     print(f'{"":<44}{"custo":>12}{"venda":>12}{"MC":>8}')
     for k, i in enumerate(ITENS, 1):
-        nm = i['nome']; fx = ' ←cravado' if nm in PRECO_FIXO else ''
+        nm = i['nome']; fx = ''
         print(f'  {k:>2} {nm:<40}{br0(CDI[nm]):>12}{br0(PV[nm]):>12}'
               f'{MC_REAL[nm]*100:>7.1f}%{fx}')
     print(f'  {"":<43}{"":>12}{"":>12}')
@@ -448,8 +470,9 @@ if __name__ == '__main__':
     P = TOT
     print(f'\n  BASE {BASE*100:.2f}% · MC alvo {MC:.0%} · MC real {(BASE-CD/TOT)*100:.1f}%')
     print(f'  INVESTIMENTO  R$ {br0(P)}')
-    print(f'    brinquedoteca (11 itens)   R$ {br0(P-PRECO_FIXO["Cozinha de brinquedo"]):>9}')
-    print(f'    cozinha de brinquedo       R$ {br0(PRECO_FIXO["Cozinha de brinquedo"]):>9}  ← cravado')
+    print(f'    MC do conjunto             {MC_CONJ*100:>9.1f}%')
+    print(f'\n  ⛔ PREÇOS DECLARADOS, não rateados [Jonathan 21/10]: o número')
+    print('    de cada item só muda quando ele pedir, item a item.')
     print(f'\n  v1 (agregada)     R$ 445.000')
     print(f'  v1 (decomposta)   R$ 318.100')
     print(f'  v2 (esta)         R$ {br0(P)}   ·  {P/318100-1:+.1%} sobre a v1 decomposta')

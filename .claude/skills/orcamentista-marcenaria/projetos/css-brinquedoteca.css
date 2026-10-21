@@ -39,11 +39,11 @@ h1,h2,h3,p{margin:0;font-weight:inherit;}
 
 /* lista de conjuntos */
 .cj{display:grid;grid-template-columns:8mm 1fr auto;gap:0 6mm;
-    padding:1.7mm 0;border-bottom:1px solid var(--linha);align-items:baseline;}
+    padding:1.1mm 0;border-bottom:1px solid var(--linha);align-items:baseline;}
 .cj:first-of-type{border-top:1px solid var(--linha);}
 .cj .n{font-size:8pt;color:var(--verde-lt);letter-spacing:.06em;}
-.cj .t{font-size:9.9pt;letter-spacing:-.005em;}
-.cj .d{color:var(--mut);font-size:7.9pt;margin-top:.6mm;line-height:1.42;}
+.cj .t{font-size:9.4pt;letter-spacing:-.005em;}
+.cj .d{color:var(--mut);font-size:7.4pt;margin-top:.5mm;line-height:1.38;}
 .cj .v{font-size:11pt;white-space:nowrap;letter-spacing:-.01em;}
 .cj.tot{border-bottom:none;border-top:1.4px solid var(--tinta);
         padding-top:4.6mm;margin-top:1mm;}
@@ -70,17 +70,17 @@ h1,h2,h3,p{margin:0;font-weight:inherit;}
      font-size:6.8pt;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);}
 
 /* ── [21/10] blocos novos: referência de acabamento e opcional ───────── */
-.ref{display:grid;grid-template-columns:1fr 1fr;gap:9mm;margin-top:9mm;
+.ref{display:grid;grid-template-columns:1fr 1fr;gap:8mm;margin-top:7mm;
   align-items:center;}
-.ref .ph{height:72mm;margin:0;}
+.ref .ph{height:50mm;margin:0;}
 .ref .k{font-size:7pt;letter-spacing:.26em;text-transform:uppercase;
   color:var(--terra);font-weight:600;}
-.ref .t{font-family:'Fraunces',Georgia,serif;font-size:21pt;line-height:1.12;
+.ref .t{font-family:'Fraunces',Georgia,serif;font-size:18pt;line-height:1.12;
   font-weight:300;margin-top:3mm;}
-.ref .d{font-size:9.2pt;line-height:1.6;color:var(--verde-lt);margin-top:4mm;}
+.ref .d{font-size:8.6pt;line-height:1.52;color:var(--verde-lt);margin-top:3mm;}
 .ref .d b{color:var(--tinta);font-weight:600;}
-.eng{margin-top:9mm;}
-.eng .r{display:grid;grid-template-columns:40mm 1fr;gap:8mm;padding:5mm 0;
+.eng{margin-top:7mm;}
+.eng .r{display:grid;grid-template-columns:38mm 1fr;gap:7mm;padding:3.6mm 0;
   border-top:1px solid var(--linha);align-items:baseline;}
 .eng .r:first-child{border-top:1px solid var(--tinta);}
 .eng .k{font-size:7pt;letter-spacing:.24em;text-transform:uppercase;
@@ -97,3 +97,26 @@ h1,h2,h3,p{margin:0;font-weight:inherit;}
 .opt .d{font-size:9pt;line-height:1.55;color:var(--verde-lt);margin-top:3mm;}
 .opt .v{font-family:'Fraunces',Georgia,serif;font-size:25pt;font-weight:300;
   text-align:right;white-space:nowrap;}
+
+/* ── [21/10] o que não está incluso: destaque sutil, sem caixa pesada ─ */
+.fora{margin-top:6mm;padding:6mm 7mm;background:#F2F0EA;flex:none;
+  border-left:2px solid var(--terra);border-radius:2px;}
+.fora .k{font-size:7pt;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--terra);font-weight:600;}
+.lst{margin:4mm 0 0;padding:0;list-style:none;columns:2;column-gap:9mm;
+  font-size:8.6pt;line-height:1.5;color:var(--verde-lt);}
+.lst li{break-inside:avoid;padding-left:4mm;position:relative;
+  margin-bottom:1.6mm;}
+.lst li:before{content:'';position:absolute;left:0;top:1.9mm;width:1.6mm;
+  height:1.6mm;background:var(--terra);border-radius:50%;}
+.lst b{color:var(--tinta);font-weight:600;}
+
+/* ── [21/10] duas referências lado a lado, numa faixa só ─────────────── */
+.ref2{display:grid;grid-template-columns:1fr 1fr;gap:8mm;margin-top:8mm;}
+.ref2 .ph{height:46mm;margin:0 0 4mm;}
+.ref2 .k{font-size:6.8pt;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--terra);font-weight:600;}
+.ref2 .t{font-family:'Fraunces',Georgia,serif;font-size:15pt;font-weight:300;
+  line-height:1.15;margin-top:2mm;}
+.ref2 .d{font-size:8.2pt;line-height:1.5;color:var(--verde-lt);margin-top:3mm;}
+.ref2 .d b{color:var(--tinta);font-weight:600;}

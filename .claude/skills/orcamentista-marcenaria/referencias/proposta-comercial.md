@@ -5,6 +5,36 @@ Como a Valvic apresenta o orçamento ao cliente (referência:
 (planilha) vira uma proposta institucional com preço **por ambiente** em
 **duas linhas: Gold e Silver**.
 
+## ⛔⛔⛔ VALOR SÓ MUDA SE FOR EXPRESSAMENTE PEDIDO
+[Jonathan 21/10/2026] — *"Na página de valores, você mudou valores da
+proposta original. Adicione uma regra da skill para alterar valores apenas
+se expressamente solicitado."*
+
+**Uma vez que um valor foi ao cliente, ele é um compromisso.** Refazer a
+conta e deixar o número andar sozinho é erro, mesmo que a conta nova esteja
+mais certa: o cliente recebe uma folha diferente sem ter pedido nada, e
+perde a confiança nas duas.
+
+| Situação | O que fazer |
+|---|---|
+| Mudou a **descrição** de um item | o valor **não se mexe** |
+| Mudou um **custo** interno | o valor **não se mexe**; a margem muda, e isso é assunto nosso |
+| Entrou um **item novo** | **só** o item novo tem valor; o resto fica |
+| Jonathan deu um **número** para um item | **esse** item muda, só ele |
+| Jonathan pediu MC nova, ou linha nova (Essencial/Premium) | aí sim a tabela inteira se refaz |
+
+⛔ **O perigo é mecânico, não de distração.** Motor que rateia um alvo pelo
+custo — como o da brinquedoteca — faz a tabela inteira andar a cada custo
+novo em qualquer canto. Onde houver rateio assim, **congelar os preços numa
+tabela declarada** assim que a proposta for ao cliente, e mudar item a item
+a partir dali. Ver `projetos/orcamento-brinquedoteca-v2.py`, `PV_DECLARADO`.
+
+⭐ **Como reportar:** quando um custo mudar e o valor ficar parado, **dizer
+qual margem aquilo passou a entregar**. O número que não mudou na folha do
+cliente tem de mudar no relatório interno.
+
+---
+
 ## ⛔ REGRAS DO QUE **NÃO** VAI NA PROPOSTA
 
 Três coisas que o Jonathan já teve de pedir mais de uma vez. Se aparecerem numa

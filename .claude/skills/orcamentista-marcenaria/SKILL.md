@@ -146,6 +146,17 @@ e estimar pela escala, sinalizando.
 
 FASE 3 — ESTRATÉGIA (margem, otimização, proposta)
 
+> ⛔⛔⛔ **VALOR SÓ MUDA SE FOR EXPRESSAMENTE PEDIDO.** [Jonathan 21/10/2026]
+> Depois que um valor foi ao cliente, ele é compromisso. Mudou a descrição,
+> mudou um custo, entrou item novo — **o valor dos outros itens não se
+> mexe**. Só muda o item que ele nomear, ou a tabela inteira quando ele
+> pedir MC nova ou linha nova. ⛔ Motor que rateia alvo pelo custo faz a
+> tabela andar sozinha: **congelar os preços numa tabela declarada** assim
+> que a proposta for ao cliente. ⭐ E quando o custo mudar com o valor
+> parado, **reportar a margem nova** — o relatório interno muda mesmo
+> quando a folha do cliente não muda. Regra completa em
+> `proposta-comercial.md`.
+
 > ⛔⛔ **A PROPOSTA NÃO LEVA METRAGEM NEM QUANTITATIVO.** [Jonathan 12/09/2026]
 > Nenhuma cota, m², contagem de porta, gaveta, prateleira, ripa, chapa, metro
 > de fita ou de LED, número de dobradiça ou corrediça. Descreve-se o **móvel e
