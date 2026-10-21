@@ -327,3 +327,45 @@ Virou **campo da versão**, ao lado da garantia e da ferragem, que já eram.
 
 ⚠ **A data da proposta continua 13/10** e a validade é de 7 dias úteis
 (vence 22/10). Se for reenviar depois disso, a folha precisa ser redatada.
+
+---
+
+## ⭐ Fechamento — 21/10  ·  `build-orlando-ivone-fechamento.py`
+
+> A arquiteta, por mensagem: *"eles vão fechar com vocês com **50% de
+> entrada e restante no cartão de 6×**. Você atualiza pra mim?"*
+> ⭐ [Jonathan 21/10] *"aplique o desconto de 5% e gere uma nova proposta
+> com os valores e informações importantes, tudo em uma única página."*
+
+**`proposta-orlando-ivone-fechamento.pdf`, uma página.**
+
+| | R$ |
+|---|--:|
+| Armário inferior | 5.020,00 |
+| Armário superior, com espelho | 7.640,00 |
+| soma dos móveis | 12.660,00 |
+| **desconto · 5%** | **− 633,00** |
+| **INVESTIMENTO** | **12.027,00** |
+| entrada · 50% | 6.013,50 |
+| saldo · 6× no cartão | 6 × 1.002,25 |
+
+⚠⚠ **A escada da casa daria 3% nessa condição, não 5%.**
+
+| condição | desconto |
+|---|--:|
+| 50% de entrada + até **8×** no cartão | **3%** |
+| **70%** de entrada + até 6× no cartão | **5%** |
+| o que eles pediram: **50% de entrada + 6×** | — |
+
+Eles estão pedindo **a entrada menor E as parcelas menores**. ⭐ O Jonathan
+mandou dar os 5% — decisão dele, registrada. **Custa R$ 253 a mais** do que
+os 3% da tabela (R$ 12.280 contra R$ 12.027).
+
+⛔ **Valor de item não se mexeu** (regra de 21/10): os dois móveis mantêm
+R$ 5.020 e R$ 7.640. O desconto incide sobre o **total** e aparece como
+**linha própria** — o cliente vê de onde saiu, e o valor cheio fica ao lado,
+riscado.
+
+A folha ainda traz prazo de **50 dias corridos** (alterado em 20/10),
+garantia de 10 anos, validade de 7 dias úteis e os dois blocos de **está** e
+**não está** nesta proposta.
