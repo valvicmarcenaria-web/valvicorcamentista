@@ -504,6 +504,7 @@ function layout_(p) {
   // erro que se corrige.
   const COL_PART = 'C';   // Participação
   const COL_PARTE = 'D';  // Valor de venda · sua parte
+  const COL_CUSTO = 'I';  // Custos de venda · sua parte
 
   const parteVenda = function (r) {
     return '=IF($A' + r + '="","",ROUND(SUMIFS('
@@ -546,7 +547,13 @@ function layout_(p) {
       { t: 'RT %', w: 9, calc: true, nf: PCT, f: doProjeto('rt') },
       { t: 'Comissão do vendedor %', w: 11, calc: true, nf: PCT, f: doProjeto('vendedor') },
       { t: 'Custos de venda · sua parte', w: 15, calc: true, nf: MOEDA, f: fatia('custoVenda') },
-      { t: 'Receita líquida · sua parte', w: 15, calc: true, nf: MOEDA, f: fatia('liquido') },
+      { t: 'Receita líquida · sua parte', w: 15, calc: true, nf: MOEDA, f: function (r) {
+          // sua parte MENOS os custos da sua parte. A conta fecha na tela:
+          // D − I = J. Antes era a líquida do projeto vezes a participação,
+          // que dava o mesmo número mas obrigava a confiar na proporção em vez
+          // de conferir subtraindo.
+          return '=IF($A' + r + '="","",ROUND($' + COL_PARTE + r
+            + '-$' + COL_CUSTO + r + ',2))'; } },
       { t: 'Comissão a receber', w: 15, calc: true, nf: MOEDA, total: true,
         f: soma('projCom', 'projQuem') },
     ]);
