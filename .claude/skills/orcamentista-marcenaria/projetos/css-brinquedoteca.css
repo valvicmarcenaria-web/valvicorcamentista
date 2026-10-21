@@ -39,7 +39,7 @@ h1,h2,h3,p{margin:0;font-weight:inherit;}
 
 /* lista de conjuntos */
 .cj{display:grid;grid-template-columns:8mm 1fr auto;gap:0 6mm;
-    padding:2.5mm 0;border-bottom:1px solid var(--linha);align-items:baseline;}
+    padding:1.7mm 0;border-bottom:1px solid var(--linha);align-items:baseline;}
 .cj:first-of-type{border-top:1px solid var(--linha);}
 .cj .n{font-size:8pt;color:var(--verde-lt);letter-spacing:.06em;}
 .cj .t{font-size:9.9pt;letter-spacing:-.005em;}
@@ -68,3 +68,32 @@ h1,h2,h3,p{margin:0;font-weight:inherit;}
 .obs b{color:#4A463E;font-weight:600;}
 .pe2{margin-top:auto;padding-top:8mm;display:flex;justify-content:space-between;
      font-size:6.8pt;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);}
+
+/* ── [21/10] blocos novos: referência de acabamento e opcional ───────── */
+.ref{display:grid;grid-template-columns:1fr 1fr;gap:9mm;margin-top:9mm;
+  align-items:center;}
+.ref .ph{height:72mm;margin:0;}
+.ref .k{font-size:7pt;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--terra);font-weight:600;}
+.ref .t{font-family:'Fraunces',Georgia,serif;font-size:21pt;line-height:1.12;
+  font-weight:300;margin-top:3mm;}
+.ref .d{font-size:9.2pt;line-height:1.6;color:var(--verde-lt);margin-top:4mm;}
+.ref .d b{color:var(--tinta);font-weight:600;}
+.eng{margin-top:9mm;}
+.eng .r{display:grid;grid-template-columns:40mm 1fr;gap:8mm;padding:5mm 0;
+  border-top:1px solid var(--linha);align-items:baseline;}
+.eng .r:first-child{border-top:1px solid var(--tinta);}
+.eng .k{font-size:7pt;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--terra);font-weight:600;}
+.eng .d{font-size:9.4pt;line-height:1.6;color:var(--verde-lt);}
+.eng .d b{color:var(--tinta);font-weight:600;}
+.opt{margin-top:9mm;border:1px solid var(--linha);border-radius:3px;
+  padding:8mm;display:grid;grid-template-columns:1fr 42mm;gap:8mm;
+  align-items:center;}
+.opt .k{font-size:7pt;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--terra);font-weight:600;}
+.opt .t{font-family:'Fraunces',Georgia,serif;font-size:19pt;font-weight:300;
+  margin-top:2mm;line-height:1.15;}
+.opt .d{font-size:9pt;line-height:1.55;color:var(--verde-lt);margin-top:3mm;}
+.opt .v{font-family:'Fraunces',Georgia,serif;font-size:25pt;font-weight:300;
+  text-align:right;white-space:nowrap;}

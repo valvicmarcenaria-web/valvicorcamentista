@@ -39,7 +39,7 @@ h1,h2,h3,p{margin:0;font-weight:inherit;}
 
 /* lista de conjuntos */
 .cj{display:grid;grid-template-columns:8mm 1fr auto;gap:0 6mm;
-    padding:2.5mm 0;border-bottom:1px solid var(--linha);align-items:baseline;}
+    padding:1.7mm 0;border-bottom:1px solid var(--linha);align-items:baseline;}
 .cj:first-of-type{border-top:1px solid var(--linha);}
 .cj .n{font-size:8pt;color:var(--verde-lt);letter-spacing:.06em;}
 .cj .t{font-size:9.9pt;letter-spacing:-.005em;}
@@ -68,6 +68,35 @@ h1,h2,h3,p{margin:0;font-weight:inherit;}
 .obs b{color:#4A463E;font-weight:600;}
 .pe2{margin-top:auto;padding-top:8mm;display:flex;justify-content:space-between;
      font-size:6.8pt;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);}
+
+/* ── [21/10] blocos novos: referência de acabamento e opcional ───────── */
+.ref{display:grid;grid-template-columns:1fr 1fr;gap:9mm;margin-top:9mm;
+  align-items:center;}
+.ref .ph{height:72mm;margin:0;}
+.ref .k{font-size:7pt;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--terra);font-weight:600;}
+.ref .t{font-family:'Fraunces',Georgia,serif;font-size:21pt;line-height:1.12;
+  font-weight:300;margin-top:3mm;}
+.ref .d{font-size:9.2pt;line-height:1.6;color:var(--verde-lt);margin-top:4mm;}
+.ref .d b{color:var(--tinta);font-weight:600;}
+.eng{margin-top:9mm;}
+.eng .r{display:grid;grid-template-columns:40mm 1fr;gap:8mm;padding:5mm 0;
+  border-top:1px solid var(--linha);align-items:baseline;}
+.eng .r:first-child{border-top:1px solid var(--tinta);}
+.eng .k{font-size:7pt;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--terra);font-weight:600;}
+.eng .d{font-size:9.4pt;line-height:1.6;color:var(--verde-lt);}
+.eng .d b{color:var(--tinta);font-weight:600;}
+.opt{margin-top:9mm;border:1px solid var(--linha);border-radius:3px;
+  padding:8mm;display:grid;grid-template-columns:1fr 42mm;gap:8mm;
+  align-items:center;}
+.opt .k{font-size:7pt;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--terra);font-weight:600;}
+.opt .t{font-family:'Fraunces',Georgia,serif;font-size:19pt;font-weight:300;
+  margin-top:2mm;line-height:1.15;}
+.opt .d{font-size:9pt;line-height:1.55;color:var(--verde-lt);margin-top:3mm;}
+.opt .v{font-family:'Fraunces',Georgia,serif;font-size:25pt;font-weight:300;
+  text-align:right;white-space:nowrap;}
 </style></head><body><div class="pg cv"><div class="in">
   <div class="ph"><img src="img-brinquedoteca/capa.jpg" alt=""></div>
   <div class="pe">
@@ -92,8 +121,13 @@ h1,h2,h3,p{margin:0;font-weight:inherit;}
   <p class="txt">Contratados em separado, <b>cada um responde pelo seu pedaço
   e ninguém responde pelo conjunto</b> — e é no encontro entre eles que a
   obra para. Aqui é um fornecedor só: <b>um cronograma, uma medição, uma
-  garantia</b>. A Valvic desenha, fabrica, pinta, estofa e instala com
-  equipe própria.</p>
+  garantia</b>.</p>
+  <p class="txt"><b>É por isso que a Valvic não se apresenta como uma
+  marcenaria.</b> Somos uma empresa que <b>articula soluções</b>: quem
+  dimensiona o aço, quem escolhe a densidade da espuma, quem tece a malha
+  de corda, quem usina a curva e quem instala <b>respondem ao mesmo
+  projeto e ao mesmo contrato</b>. A marcenaria é uma das mãos — não é o
+  limite do que entregamos.</p>
 
   <div class="ph sangra" style="margin-top:10mm;height:96mm;">
     <img src="img-brinquedoteca/geral.jpg" alt=""></div>
@@ -112,16 +146,60 @@ h1,h2,h3,p{margin:0;font-weight:inherit;}
       pórticos saem <b>em laca branca</b>, com friso e usinagem
       plana no estilo veneziana.</div></div>
   </div>
-  <div class="pe2"><span>Valvic Marcenaria</span><span>Eliza e Luiz Gustavo · Brinquedoteca</span><span>2 / 4</span></div>
+  <div class="pe2"><span>Valvic Marcenaria</span><span>Eliza e Luiz Gustavo · Brinquedoteca</span><span>2 / 5</span></div>
 </div></div><div class="pg"><div class="in">
+  <div class="sel">Como isso se sustenta</div>
+  <h1 class="ttl disp">O que segura<br><em>uma criança no alto.</em></h1>
+  <div class="hair"></div>
+
+  <div class="eng">
+    <div class="r"><div class="k">Infraestrutura</div>
+      <div class="d">As paredes sobem sobre <b>metalon 50 × 30 em chapa
+      16</b>. É uma <b>chapa mais grossa</b> do que a de divisória
+      comum — escolhida de propósito, por <b>resistência e
+      segurança</b>, principalmente onde ficam a <b>ponte suspensa</b> e a
+      <b>grade de cordas suspensa</b>. É o que não aparece e é
+      o que sustenta.</div></div>
+    <div class="r"><div class="k">Malha de corda</div>
+      <div class="d">As telas de proteção são <b>malha de corda
+      náutica</b> tecida nó a nó, com <b>fios de cabo de aço
+      entrelaçados</b> para resistência. Na <b>estrutura suspensa a malha
+      é dupla</b>, o que reduz o vão entre os nós pela metade.
+      Presa à estrutura por <b>ganchos soldados</b>, não por
+      amarração.</div></div>
+    <div class="r"><div class="k">Amortecimento</div>
+      <div class="d">Nas <b>plataformas de subida</b> e no <b>painel de
+      guarda-corpo da piscina</b> entra <b>espuma de alta densidade</b>,
+      revestida em <b>tecido a definir com vocês</b>. <b>Couro natural
+      não está contemplado</b> neste valor.</div></div>
+    <div class="r"><div class="k">Acabamento</div>
+      <div class="d">Os painéis entregam <b>crus, planos e alinhados</b>.
+      A pintura acrílica e o papel são <b>aplicados por nós</b>
+      — e o material vem de vocês.</div></div>
+  </div>
+
+  <div class="ref">
+    <div class="ph"><img src="img-brinquedoteca/tabasco-berneck.jpg" alt=""></div>
+    <div>
+      <div class="k">Sugestão de acabamento · banco</div>
+      <div class="t disp">Padrão <em>Tabasco</em>,<br>da Berneck.</div>
+      <div class="d">Para o <b>fechamento aparente do banco</b>, sugerimos o
+      padrão <b>Tabasco da Berneck</b> — a imagem ao lado é
+      referência do padrão, não do nosso projeto. É uma cor
+      que aguenta o uso de uma brinquedoteca e <b>conversa com o assento
+      estofado</b> sem pedir manutenção.</div>
+    </div>
+  </div>
+  <div class="pe2"><span>Valvic Marcenaria</span><span>Eliza e Luiz Gustavo · Brinquedoteca</span><span>3 / 5</span></div>
+</div></div><div class="pg"><div class="in" style="padding-top:15mm;">
   <div class="sel">Os conjuntos</div>
   <h1 class="ttl disp">Peça a peça,<br><em>uma só obra.</em></h1>
   <div class="hair"></div>
-  <div class="cj"><div class="n">01</div><div><div class="t">Passarela suspensa</div><div class="d">Estrutura em aço com pintura automotiva.</div></div><div class="v">R$ 8.190</div></div><div class="cj"><div class="n">02</div><div><div class="t">Gradis de contenção</div><div class="d">Quadro metálico com corda combinada de alma em aço, em todos os pontos de contenção, com a rede do mezanino e as telas de proteção.</div></div><div class="v">R$ 53.370</div></div><div class="cj"><div class="n">03</div><div><div class="t">Plataformas acolchoadas</div><div class="d">Degraus estruturados, espuma de alta densidade e courvin náutico.</div></div><div class="v">R$ 10.190</div></div><div class="cj"><div class="n">04</div><div><div class="t">Piscina de espuma</div><div class="d">Estrutura de contenção, fundo e paredes acolchoados.</div></div><div class="v">R$ 15.010</div></div><div class="cj"><div class="n">05</div><div><div class="t">Banco extenso</div><div class="d">Estrutura em aço com assento acolchoado, estofado em linho.</div></div><div class="v">R$ 7.680</div></div><div class="cj"><div class="n">06</div><div><div class="t">Parede norte</div><div class="d">Estrutura em aço e MDF ultra premium cru, pronto para o efeito tijolinho.</div></div><div class="v">R$ 15.400</div></div><div class="cj"><div class="n">07</div><div><div class="t">Casinha — paredes</div><div class="d">Fachada e laterais em MDF ultra premium cru, dupla face.</div></div><div class="v">R$ 8.690</div></div><div class="cj"><div class="n">08</div><div><div class="t">Casinha — escada</div><div class="d">MDF ultra premium, com os degraus em revestimento emborrachado.</div></div><div class="v">R$ 4.870</div></div><div class="cj"><div class="n">09</div><div><div class="t">Janelas e pórticos moldurados</div><div class="d">Estilo veneziana em usinagem plana, com frisos, em laca branca.</div></div><div class="v">R$ 22.480</div></div><div class="cj"><div class="n">10</div><div><div class="t">Escorregador com túnel curvo</div><div class="d">Teto em arco sobre gabarito, pista em laminado e gradil de proteção.</div></div><div class="v">R$ 18.920</div></div><div class="cj"><div class="n">11</div><div><div class="t">Cozinha de brinquedo</div><div class="d">Módulo lúdico sob medida, em MDF ultra premium cru.</div></div><div class="v">R$ 12.000</div></div>
+  <div class="cj"><div class="n">01</div><div><div class="t">Passarela suspensa</div><div class="d">Estrutura em aço com pintura automotiva.</div></div><div class="v">R$ 7.990</div></div><div class="cj"><div class="n">02</div><div><div class="t">Gradis de contenção</div><div class="d">Corda de alma em aço e <b>malha de corda náutica com cabo de aço entrelaçado</b>, dupla na estrutura suspensa. Inclui a rede do mezanino.</div></div><div class="v">R$ 71.160</div></div><div class="cj"><div class="n">03</div><div><div class="t">Plataformas acolchoadas</div><div class="d">Degraus estruturados, <b>espuma de alta densidade</b> e revestimento em tecido.</div></div><div class="v">R$ 10.620</div></div><div class="cj"><div class="n">04</div><div><div class="t">Piscina de espuma</div><div class="d">Estrutura de contenção, fundo e paredes acolchoados, com o <b>painel de guarda-corpo</b> acolchoado.</div></div><div class="v">R$ 18.850</div></div><div class="cj"><div class="n">05</div><div><div class="t">Banco extenso</div><div class="d">Estrutura em aço com assento acolchoado e fechamento aparente em <b>MDF Berneck, padrão Tabasco</b>.</div></div><div class="v">R$ 8.800</div></div><div class="cj"><div class="n">06</div><div><div class="t">Parede norte</div><div class="d">Estrutura em aço e MDF ultra premium cru, pronto para o efeito tijolinho.</div></div><div class="v">R$ 16.090</div></div><div class="cj"><div class="n">07</div><div><div class="t">Casinha — paredes</div><div class="d">Fachada e laterais em MDF ultra premium cru, dupla face.</div></div><div class="v">R$ 8.930</div></div><div class="cj"><div class="n">08</div><div><div class="t">Casinha — escada</div><div class="d">MDF ultra premium, com os degraus em revestimento emborrachado.</div></div><div class="v">R$ 4.760</div></div><div class="cj"><div class="n">09</div><div><div class="t">Janelas e pórticos moldurados</div><div class="d">Estilo veneziana em usinagem plana, com frisos, em laca branca.</div></div><div class="v">R$ 21.950</div></div><div class="cj"><div class="n">10</div><div><div class="t">Escorregador com túnel curvo</div><div class="d">Teto em arco sobre gabarito, pista em laminado e gradil de proteção.</div></div><div class="v">R$ 18.470</div></div><div class="cj"><div class="n">11</div><div><div class="t">Pintura e papel de parede — aplicação</div><div class="d"><b>Mão de obra</b> da pintura dos painéis, por dentro e por fora, e do papel na torre. <b>O material é fornecido pela cliente.</b></div></div><div class="v">R$ 22.970</div></div><div class="cj"><div class="n">12</div><div><div class="t">Cozinha de brinquedo</div><div class="d">Módulo lúdico sob medida, em MDF ultra premium cru.</div></div><div class="v">R$ 12.000</div></div>
   <div class="cj tot"><div class="n"></div>
     <div><div class="t">Investimento total</div></div>
-    <div class="v disp">R$ 176.800</div></div>
-  <div class="pe2"><span>Valvic Marcenaria</span><span>Eliza e Luiz Gustavo · Brinquedoteca</span><span>3 / 4</span></div>
+    <div class="v disp">R$ 222.590</div></div>
+  <div class="pe2"><span>Valvic Marcenaria</span><span>Eliza e Luiz Gustavo · Brinquedoteca</span><span>4 / 5</span></div>
 </div></div><div class="pg"><div class="in">
   <div class="sel">Condições</div>
   <h1 class="ttl disp">Como acontece.</h1>
@@ -144,16 +222,27 @@ h1,h2,h3,p{margin:0;font-weight:inherit;}
       partir desta data.</div></div>
   </div>
 
-  <div class="ph sangra" style="margin-top:12mm;height:78mm;">
-    <img src="img-brinquedoteca/mezanino.jpg" alt=""></div>
+  <div class="opt">
+    <div><div class="k">Opcional de acabamento</div>
+      <div class="t disp">Entregar laqueado.</div>
+      <div class="d">No lugar de receber os painéis crus e pintá-los,
+      vocês podem recebê-los <b>em laca fosca, aplicados por nós</b>,
+      prontos. É acabamento de fábrica, em cabine, e dispensa a pintura
+      no local.</div></div>
+    <div class="v">+ R$ 8.000</div>
+  </div>
 
-  <div class="obs">Tudo é fabricado, pintado, estofado e instalado por <b>equipe
-  própria</b>. Acompanham o fornecimento: projeto executivo, estrutura
-  metálica, chapas, espumas, courvin, cordas, <b>a rede do mezanino</b>,
-  <b>as telas de proteção</b>, laca das janelas, pintura automotiva,
-  transporte e montagem. <b>Não acompanham:</b> o acabamento das paredes e o
-  efeito de tijolinho, os blocos da piscina, obra civil, elétrica, piso e
-  revestimentos. Medidas
-  conferidas no local antes da fabricação.</div>
-  <div class="pe2"><span>Valvic Marcenaria</span><span>Eliza e Luiz Gustavo · Brinquedoteca</span><span>4 / 4</span></div>
+  <div class="obs">Tudo é fabricado, pintado, estofado e instalado por
+  <b>equipe própria</b>. Acompanham o fornecimento: projeto executivo,
+  estrutura metálica em <b>chapa 16</b>, chapas, espumas, tecidos,
+  cordas, <b>a malha de corda náutica</b>, <b>a rede do mezanino</b>, laca
+  das janelas, pintura automotiva, transporte e montagem.
+  <b>É mão de obra nossa e material de vocês:</b> a
+  <b>pintura acrílica</b> dos painéis e o <b>papel de parede</b> da torre
+  — aplicamos, e a tinta, a massa e o papel são fornecidos pela
+  cliente. <b>Não acompanham:</b> o efeito de tijolinho, os blocos da
+  piscina, <b>couro natural</b> no revestimento, obra civil, elétrica, piso
+  e revestimentos. O <b>tecido dos acolchoados</b> ainda será definido com
+  vocês. Medidas conferidas no local antes da fabricação.</div>
+  <div class="pe2"><span>Valvic Marcenaria</span><span>Eliza e Luiz Gustavo · Brinquedoteca</span><span>5 / 5</span></div>
 </div></div></body></html>

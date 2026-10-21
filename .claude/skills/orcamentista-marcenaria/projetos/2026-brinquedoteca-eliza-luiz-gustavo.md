@@ -543,3 +543,82 @@ Orçado em linho; o nome a confirmar.
 5. ⭐ A proposta agora **nomeia a parede norte** — e isso torna visível que
    **leste e oeste não estão no orçamento**, o que já era verdade e estava
    mudo.
+
+---
+
+# ⭐ Revisão de 21/10 — especificação de materiais
+
+> *"preciso especificar alguns materiais"* — Jonathan, 21/10.
+
+| | R$ |
+|---|--:|
+| antes (14/10) | 176.800 |
+| **agora** | **222.590** |
+
+O alvo não é cravado: ele **cai e sobe na mesma proporção do custo**, o que
+preserva a MC de 43.382% que o Jonathan fixou em 30/09. O escopo cresceu,
+o preço cresceu junto.
+
+## As seis especificações
+
+**1 · Telas de proteção viram malha de corda náutica.**
+Corda de 8 mm, nós a cada 10 cm, com **cabo de aço de 3 mm entrelaçado**.
+Na **estrutura suspensa a malha é dupla**, o que reduz o vão entre nós pela
+metade. Fixada com **ganchos soldados**.
+⛔ O custo deixou de ser "tela comprada por m²" e virou **corda + cabo +
+gancho + tecelagem**. 1 m² de malha de 10 × 10 cm leva **20 m de corda** —
+dez fios num sentido e dez no outro. Na dupla, 40 m. São **560 m de corda**
+nos 14 m² de tela, e a **tecelagem nó a nó** é o que manda no preço.
+★ Corda R$ 8.50/m · cabo R$ 6.50/m · gancho R$ 7.20/un ·
+tecelagem R$ 120/m² — todos estimados por mim.
+
+**2 · Espuma D33 de 20 mm** nas **plataformas de subida** e no **painel de
+guarda-corpo da piscina**, revestida em **tecido a definir**.
+⛔ **Couro natural não está contemplado** — está escrito na proposta.
+O guarda-corpo da piscina é item **novo**: não existia no orçamento anterior.
+
+**3 · Pintura acrílica e papel de parede — só a mão de obra.**
+★ R$ 130/m² de pintura [Jonathan], **interna e externa**: 45.7 m².
+★ R$ 45/m² de aplicação de papel na torre principal: 16.2 m² — essa taxa
+é estimativa minha, ele só deu a da pintura.
+⛔⛔ **Tinta, massa e papel são fornecimento do contratante.** Está na
+proposta com todas as letras, senão a casa compra tinta de graça.
+
+**4 · Banco com fechamento em MDF Berneck, padrão Tabasco.**
+Sugestão da casa, com a **imagem de referência** num bloco próprio da
+página 3 — nomeada como *referência do padrão, não do nosso projeto*.
+★ Chapa estimada em R$ 600.
+
+**5 · Metalon 50 × 30 em chapa 16** nas paredes, no lugar da chapa 18.
+★ R$ 118 a barra, contra R$ 95 da 1,2 mm. A proposta diz por quê:
+**chapa mais grossa, por resistência e segurança**, principalmente sob a
+**ponte suspensa** e a **grade de cordas suspensa**.
+⭐ O perfil `50 × 30` entrou na **exceção permanente do auditor**, pelo
+mesmo motivo do `30 × 20`: é nome comercial de tubo, não cota de peça.
+
+**6 · Opcional de laca fosca: + R$ 8.000.**
+⚠ **Escopo adotado por mim:** entregar os **painéis laqueados** em vez de
+crus — isto é, no lugar da pintura acrílica no local. O pedido dizia só
+*"adicione a possibilidade de ser laqueado"*, logo depois da frase do
+banco. **Se a laca era só do banco, o valor e o texto mudam.**
+
+## ⭐ "Mais que uma marcenaria"
+
+A página 2 ganhou o parágrafo que ele pediu: *"a Valvic não se apresenta
+como uma marcenaria. Somos uma empresa que **articula soluções**"* — quem
+dimensiona o aço, quem escolhe a espuma, quem tece a malha, quem usina a
+curva e quem instala respondem **ao mesmo projeto e ao mesmo contrato**.
+
+A **página 3 é nova** e existe para sustentar isso com engenharia:
+infraestrutura, malha de corda, amortecimento e acabamento.
+
+## ★ Em aberto desta revisão
+
+1. ⚠ **A laca de R$ 8.000 cobre o quê?** Painéis inteiros ou só o banco.
+2. ★ **Todas as taxas novas são estimativas minhas**, menos a pintura:
+   corda, cabo, gancho, tecelagem, papel, chapa Tabasco e metalon chapa 16.
+3. ⚠ **O tecido dos acolchoados não foi definido** — o preço usa linho de
+   estofaria a R$ 95/m². Tecido náutico ou PVC muda.
+4. ⚠ **A área de pintura "interna e externa"** foi lida como **as duas
+   faces de cada painel**. Na parede estrutural, só uma face é chapeada —
+   pintar a outra significa pintar o lado da estrutura.

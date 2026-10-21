@@ -17,8 +17,9 @@ with contextlib.redirect_stdout(io.StringIO()): spec.loader.exec_module(oq)
 
 br = lambda v: f'{v:,.0f}'.replace(',', '.')
 CLIENTE, PROJETO = 'Eliza e Luiz Gustavo', 'Helena Antunes Arquitetura e Interiores'
-DATA, PRAZO, VALIDADE, GARANTIA = '30 de setembro de 2026', '90 dias corridos', '10 dias', '10 anos'
-NP = 4
+DATA, PRAZO, VALIDADE, GARANTIA = '21 de outubro de 2026', '90 dias corridos', '10 dias', '10 anos'
+NP = 5
+LACA = oq.LACA_FOSCA_PV
 img = lambda n: f'img-brinquedoteca/{n}.jpg'
 CSS = open(P/'css-brinquedoteca.css', encoding='utf-8').read()
 
@@ -27,14 +28,17 @@ CONJ = [
  ('Passarela suspensa',
   'Estrutura em aço com pintura automotiva.'),
  ('Gradis de contenção',
-  'Quadro metálico com corda combinada de alma em aço, em todos os pontos '
-  'de contenção, com a rede do mezanino e as telas de proteção.'),
+  'Corda de alma em aço e <b>malha de corda náutica com cabo de aço '
+  'entrelaçado</b>, dupla na estrutura suspensa. Inclui a rede do mezanino.'),
  ('Plataformas acolchoadas',
-  'Degraus estruturados, espuma de alta densidade e courvin náutico.'),
+  'Degraus estruturados, <b>espuma de alta densidade</b> e revestimento '
+  'em tecido.'),
  ('Piscina de espuma',
-  'Estrutura de contenção, fundo e paredes acolchoados.'),
+  'Estrutura de contenção, fundo e paredes acolchoados, com o <b>painel de '
+  'guarda-corpo</b> acolchoado.'),
  ('Banco extenso',
-  'Estrutura em aço com assento acolchoado, estofado em linho.'),
+  'Estrutura em aço com assento acolchoado e fechamento aparente em '
+  '<b>MDF Berneck, padrão Tabasco</b>.'),
  ('Parede norte',
   'Estrutura em aço e MDF ultra premium cru, pronto para o efeito tijolinho.'),
  ('Casinha — paredes',
@@ -45,6 +49,9 @@ CONJ = [
   'Estilo veneziana em usinagem plana, com frisos, em laca branca.'),
  ('Escorregador com túnel curvo',
   'Teto em arco sobre gabarito, pista em laminado e gradil de proteção.'),
+ ('Pintura e papel de parede — aplicação',
+  '<b>Mão de obra</b> da pintura dos painéis, por dentro e por fora, e do '
+  'papel na torre. <b>O material é fornecido pela cliente.</b>'),
  ('Cozinha de brinquedo',
   'Módulo lúdico sob medida, em MDF ultra premium cru.'),
 ]
@@ -83,8 +90,13 @@ p2 = f"""<div class="pg"><div class="in">
   <p class="txt">Contratados em separado, <b>cada um responde pelo seu pedaço
   e ninguém responde pelo conjunto</b> — e é no encontro entre eles que a
   obra para. Aqui é um fornecedor só: <b>um cronograma, uma medição, uma
-  garantia</b>. A Valvic desenha, fabrica, pinta, estofa e instala com
-  equipe própria.</p>
+  garantia</b>.</p>
+  <p class="txt"><b>É por isso que a Valvic não se apresenta como uma
+  marcenaria.</b> Somos uma empresa que <b>articula soluções</b>: quem
+  dimensiona o aço, quem escolhe a densidade da espuma, quem tece a malha
+  de corda, quem usina a curva e quem instala <b>respondem ao mesmo
+  projeto e ao mesmo contrato</b>. A marcenaria é uma das mãos — não é o
+  limite do que entregamos.</p>
 
   <div class="ph sangra" style="margin-top:10mm;height:96mm;">
     <img src="{img('geral')}" alt=""></div>
@@ -106,14 +118,61 @@ p2 = f"""<div class="pg"><div class="in">
   {pe(2)}
 </div></div>"""
 
-# ── 3 · os conjuntos e o investimento ────────────────────────────────────
+# ── 3 · como isso se sustenta + a referencia de acabamento ──────────────
+pENG = f"""<div class="pg"><div class="in">
+  <div class="sel">Como isso se sustenta</div>
+  <h1 class="ttl disp">O que segura<br><em>uma criança no alto.</em></h1>
+  <div class="hair"></div>
+
+  <div class="eng">
+    <div class="r"><div class="k">Infraestrutura</div>
+      <div class="d">As paredes sobem sobre <b>metalon 50 × 30 em chapa
+      16</b>. É uma <b>chapa mais grossa</b> do que a de divisória
+      comum — escolhida de propósito, por <b>resistência e
+      segurança</b>, principalmente onde ficam a <b>ponte suspensa</b> e a
+      <b>grade de cordas suspensa</b>. É o que não aparece e é
+      o que sustenta.</div></div>
+    <div class="r"><div class="k">Malha de corda</div>
+      <div class="d">As telas de proteção são <b>malha de corda
+      náutica</b> tecida nó a nó, com <b>fios de cabo de aço
+      entrelaçados</b> para resistência. Na <b>estrutura suspensa a malha
+      é dupla</b>, o que reduz o vão entre os nós pela metade.
+      Presa à estrutura por <b>ganchos soldados</b>, não por
+      amarração.</div></div>
+    <div class="r"><div class="k">Amortecimento</div>
+      <div class="d">Nas <b>plataformas de subida</b> e no <b>painel de
+      guarda-corpo da piscina</b> entra <b>espuma de alta densidade</b>,
+      revestida em <b>tecido a definir com vocês</b>. <b>Couro natural
+      não está contemplado</b> neste valor.</div></div>
+    <div class="r"><div class="k">Acabamento</div>
+      <div class="d">Os painéis entregam <b>crus, planos e alinhados</b>.
+      A pintura acrílica e o papel são <b>aplicados por nós</b>
+      — e o material vem de vocês.</div></div>
+  </div>
+
+  <div class="ref">
+    <div class="ph"><img src="{img('tabasco-berneck')}" alt=""></div>
+    <div>
+      <div class="k">Sugestão de acabamento · banco</div>
+      <div class="t disp">Padrão <em>Tabasco</em>,<br>da Berneck.</div>
+      <div class="d">Para o <b>fechamento aparente do banco</b>, sugerimos o
+      padrão <b>Tabasco da Berneck</b> — a imagem ao lado é
+      referência do padrão, não do nosso projeto. É uma cor
+      que aguenta o uso de uma brinquedoteca e <b>conversa com o assento
+      estofado</b> sem pedir manutenção.</div>
+    </div>
+  </div>
+  {pe(3)}
+</div></div>"""
+
+# ── 4 · os conjuntos e o investimento ────────────────────────────────────
 linhas = ''
 for k, ((nome, desc), chave) in enumerate(zip(CONJ, NOMES), 1):
     linhas += (f'<div class="cj"><div class="n">{k:02d}</div>'
                f'<div><div class="t">{nome}</div><div class="d">{desc}</div></div>'
                f'<div class="v">R$ {br(oq.PV[chave])}</div></div>')
 
-p3 = f"""<div class="pg"><div class="in">
+p3 = f"""<div class="pg"><div class="in" style="padding-top:15mm;">
   <div class="sel">Os conjuntos</div>
   <h1 class="ttl disp">Peça a peça,<br><em>uma só obra.</em></h1>
   <div class="hair"></div>
@@ -121,10 +180,10 @@ p3 = f"""<div class="pg"><div class="in">
   <div class="cj tot"><div class="n"></div>
     <div><div class="t">Investimento total</div></div>
     <div class="v disp">R$ {br(oq.TOT)}</div></div>
-  {pe(3)}
+  {pe(4)}
 </div></div>"""
 
-# ── 4 · condições ────────────────────────────────────────────────────────
+# ── 5 · condições ────────────────────────────────────────────────────────
 p4 = f"""<div class="pg"><div class="in">
   <div class="sel">Condições</div>
   <h1 class="ttl disp">Como acontece.</h1>
@@ -147,24 +206,35 @@ p4 = f"""<div class="pg"><div class="in">
       partir desta data.</div></div>
   </div>
 
-  <div class="ph sangra" style="margin-top:12mm;height:78mm;">
-    <img src="{img('mezanino')}" alt=""></div>
+  <div class="opt">
+    <div><div class="k">Opcional de acabamento</div>
+      <div class="t disp">Entregar laqueado.</div>
+      <div class="d">No lugar de receber os painéis crus e pintá-los,
+      vocês podem recebê-los <b>em laca fosca, aplicados por nós</b>,
+      prontos. É acabamento de fábrica, em cabine, e dispensa a pintura
+      no local.</div></div>
+    <div class="v">+ R$ {br(LACA)}</div>
+  </div>
 
-  <div class="obs">Tudo é fabricado, pintado, estofado e instalado por <b>equipe
-  própria</b>. Acompanham o fornecimento: projeto executivo, estrutura
-  metálica, chapas, espumas, courvin, cordas, <b>a rede do mezanino</b>,
-  <b>as telas de proteção</b>, laca das janelas, pintura automotiva,
-  transporte e montagem. <b>Não acompanham:</b> o acabamento das paredes e o
-  efeito de tijolinho, os blocos da piscina, obra civil, elétrica, piso e
-  revestimentos. Medidas
-  conferidas no local antes da fabricação.</div>
-  {pe(4)}
+  <div class="obs">Tudo é fabricado, pintado, estofado e instalado por
+  <b>equipe própria</b>. Acompanham o fornecimento: projeto executivo,
+  estrutura metálica em <b>chapa 16</b>, chapas, espumas, tecidos,
+  cordas, <b>a malha de corda náutica</b>, <b>a rede do mezanino</b>, laca
+  das janelas, pintura automotiva, transporte e montagem.
+  <b>É mão de obra nossa e material de vocês:</b> a
+  <b>pintura acrílica</b> dos painéis e o <b>papel de parede</b> da torre
+  — aplicamos, e a tinta, a massa e o papel são fornecidos pela
+  cliente. <b>Não acompanham:</b> o efeito de tijolinho, os blocos da
+  piscina, <b>couro natural</b> no revestimento, obra civil, elétrica, piso
+  e revestimentos. O <b>tecido dos acolchoados</b> ainda será definido com
+  vocês. Medidas conferidas no local antes da fabricação.</div>
+  {pe(5)}
 </div></div>"""
 
 HTML = ('<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">'
         '<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;'
         '9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">'
-        '<style>' + CSS + '</style></head><body>' + p1 + p2 + p3 + p4 + '</body></html>')
+        '<style>' + CSS + '</style></head><body>' + p1 + p2 + pENG + p3 + p4 + '</body></html>')
 
 (P/'proposta-brinquedoteca.html').write_text(HTML, encoding='utf-8')
 tmp = HTML.replace('src="img-brinquedoteca/', f'src="file://{P}/img-brinquedoteca/')
