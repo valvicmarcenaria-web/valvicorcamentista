@@ -206,6 +206,9 @@ p4 = f"""<div class="pg"><div class="in">
       partir desta data.</div></div>
   </div>
 
+  <div class="ph sangra" style="margin-top:11mm;height:74mm;">
+    <img src="{img('mezanino')}" alt=""></div>
+
   <div class="obs">Tudo é fabricado, pintado, estofado e instalado por
   <b>equipe própria</b>. Acompanham o fornecimento: projeto executivo,
   estrutura metálica em <b>chapa 16</b>, chapas, espumas, tecidos,
@@ -214,10 +217,14 @@ p4 = f"""<div class="pg"><div class="in">
   <b>É mão de obra nossa e material de vocês:</b> a
   <b>pintura acrílica</b> dos painéis e o <b>papel de parede</b> da torre
   — aplicamos, e a tinta, a massa e o papel são fornecidos pela
-  cliente. <b>Não acompanham:</b> o efeito de tijolinho, os blocos da
-  piscina, <b>couro natural</b> no revestimento, obra civil, elétrica, piso
-  e revestimentos. O <b>tecido dos acolchoados</b> ainda será definido com
-  vocês. Medidas conferidas no local antes da fabricação.</div>
+  cliente. <b>Não acompanham:</b> os <b>blocos de espuma</b> da piscina;
+  a <b>base imantada</b>; o <b>conjunto de mesas com cadeiras</b>; o
+  <b>balanço</b>; o <b>material de pintura e de vinílicos</b> — tinta,
+  massa, vinil e papel; o <b>revestimento de piso interno da casinha</b>;
+  <b>couro natural</b> em qualquer revestimento; o efeito de tijolinho;
+  obra civil, elétrica, piso e revestimentos do ambiente. O <b>tecido dos
+  acolchoados</b> ainda será definido com vocês. Medidas conferidas no
+  local antes da fabricação.</div>
   {pe(5)}
 </div></div>"""
 

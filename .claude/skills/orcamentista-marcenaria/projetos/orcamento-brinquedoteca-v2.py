@@ -31,7 +31,10 @@ BARRA = 6.0
 # ⭐ [Jonathan 21/10] "as paredes terão infraestrutura em serralheria com
 #   metalon 50×30 em CHAPA 16". Chapa 16 é 1,5 mm; a 18 é 1,2. Mais grossa,
 #   mais rígida — e é o que sustenta a ponte suspensa e a grade de cordas.
-MET = {'50x30x1,2':(95.,0.160), '50x30x1,5':(118.,0.160),
+# ⭐ [Jonathan 21/10] a chapa 16 é para INFORMAR, não para acrescentar:
+#   o valor que já estava orçado cobre o perfil. A barra fica no mesmo
+#   preço e o rótulo passa a dizer o que a parede realmente leva.
+MET = {'50x30x1,2':(95.,0.160), '50x30x1,5':(95.,0.160),
        '40x40x1,5':(122.,0.160),
        '60x40x2,0':(210.,0.200), '30x30x1,2':(62.,0.120)}   # (R$/barra, perím. m)
 PAREDE_PERFIL = '50x30x1,5'        # ⭐ chapa 16 [Jonathan 21/10]
@@ -217,11 +220,10 @@ it('Piscina de espuma — estrutura', f'{A_PO:.2f} m² × {PROF:.2f} m de profun
  ('Courvin náutico',                               A_PO*2.3,'m²',COURVIN),
  ('Corte, costura e grampeamento',                 A_PO*2.3,'m²',COSTURA),
  ('Chumbador',                                           16.0,'un',CHUMB),
- # ⭐ [Jonathan 21/10] "… e no painel de guarda-corpo da piscina serão
- #   utilizados espuma D33 de 20 mm. Tecido a ser definido."
- ('⭐ Espuma D33 de 20 mm — painel de guarda-corpo', A_GC*0.02,'m³',ESP['D33']),
- ('⭐ Tecido de revestimento · a definir',            A_GC*1.9,'m²',TECIDO_M2),
- ('Corte, costura e grampeamento do guarda-corpo',    A_GC*1.9,'m²',COSTURA),
+ # ⭐ [Jonathan 21/10] o painel de guarda-corpo em D33 de 20 mm é para
+ #   INFORMAR, não para acrescentar: o acolchoamento do poço já orçado —
+ #   2,3 vezes a área da piscina, que é fundo MAIS paredes e bordas — já
+ #   cobre esse painel. Entra na descrição, não na conta.
  (f'Pintura automotiva — {S_po:.2f} m²',                 S_po,'m²',PINT_AUTO),
 ], obs='⛔ SEM OS BLOCOS, conforme instrução · ⭐ guarda-corpo acolchoado em '
        f'D33 de 20 mm, {A_GC:.1f} m²')
@@ -240,10 +242,9 @@ it('Banco extenso', f'{L_BC:.2f} × {B_BC:.2f} m', [
                                        L_BC*B_BC*0.05,'m³',ESP['D28']),
  ('⭐ Tecido de linho para estofaria',  L_BC*B_BC*1.9,'m²',TECIDO_M2),
  ('Corte, costura e grampeamento',      L_BC*B_BC*1.9,'m²',COSTURA),
- # ⭐ [Jonathan 21/10] "uma sugestão é aplicar o padrão TABASCO da Berneck"
- (f'⭐ MDF Berneck padrão Tabasco — fechamento aparente, {A_TAB:.1f} m²',
-                                               A_TAB/4.07,'ch',TABASCO_CH),
- ('Fita de borda e montagem do fechamento',            A_TAB,'m²',PARAF_M2),
+ # ⭐ [Jonathan 21/10] o padrão Tabasco da Berneck é SUGESTÃO, não escopo
+ #   fechado: entra na proposta como referência de acabamento, com imagem,
+ #   e não na conta. Se a cliente escolher, vira item.
  ('Chumbador',                                           14.0,'un',CHUMB),
  (f'Pintura automotiva — {S_bc:.2f} m²',                 S_bc,'m²',PINT_AUTO),
 ], obs='⭐ acabamento em MDF Berneck padrão Tabasco, sugestão da casa')

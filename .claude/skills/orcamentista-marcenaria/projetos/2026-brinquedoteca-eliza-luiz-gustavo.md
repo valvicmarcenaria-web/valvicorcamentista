@@ -553,7 +553,7 @@ Orçado em linho; o nome a confirmar.
 | | R$ |
 |---|--:|
 | antes (14/10) | 176.800 |
-| **agora** | **194.110** |
+| **agora** | **187.580** |
 
 ## ⛔⛔ A regra que ele fixou nesta rodada
 
@@ -565,20 +565,35 @@ assim que esta revisão foi fechada, e é o que o reapresentar do briefing
 confirmou: ele diz *"informe que"*, *"reforçar que"*, *"uma sugestão é"* —
 verbos de texto.
 
-### O que mudou de valor, e só isso
+### O que mudou de valor — uma coisa só
 
 | | R$ | |
 |---|--:|---|
-| **Pintura ou papel · mão de obra** | **+12.500** | ⭐ valor cravado por ele |
-| guarda-corpo acolchoado da piscina | +3.860 | ★ material novo |
-| metalon chapa 16 nas paredes | +1.380 | ★ chapa mais grossa |
-| fechamento Tabasco do banco | +1.200 | ★ acabamento novo |
-| malha de corda · **revertida** | ~~+28.660~~ | ⭐ só texto |
-| opcional de laca fosca · **removido** | ~~+8.000~~ | saiu do briefing |
+| **Pintura ou vinil/papel · mão de obra** | **+12.500** | ⭐ valor cravado por ele |
+| malha de corda · revertida | ~~+28.660~~ | só texto |
+| guarda-corpo acolchoado da piscina · revertido | ~~+3.860~~ | só informar |
+| metalon chapa 16 nas paredes · revertido | ~~+1.380~~ | só informar |
+| fechamento Tabasco do banco · revertido | ~~+1.200~~ | só sugerir |
+| opcional de laca fosca · removido | ~~+8.000~~ | saiu do briefing |
 
-As três do meio somam R$ 6.440 e ficaram **porque entraram no texto da
-proposta** — e o que está no texto tem de estar na conta. Se alguma não era
-para mudar valor, é uma palavra.
+⭐ **A regra ficou assim, e vale daqui para a frente neste projeto:**
+*só mexe em valor o que vier com número; o resto é redação.*
+
+### E como cada reversão ficou honesta na folha
+
+| | |
+|---|---|
+| **Guarda-corpo da piscina** | O acolchoamento do poço já orçado cobre **2,3 vezes a área** da piscina — fundo **mais** paredes e bordas. O painel já estava pago; o que mudou foi dizer **qual espuma**. |
+| **Metalon chapa 16** | A barra ficou **no mesmo preço já orçado** e o rótulo passou a dizer o que a parede leva. ⚠ Se o seu fornecedor cobrar mais pela chapa 16 do que pela 18, o orçamento está curto em ~R$ 1.400. |
+| **Tabasco** | Saiu da descrição do banco e **ficou só no bloco de referência**, com a frase *"é uma sugestão: se vocês quiserem seguir por ela, orçamos o fechamento à parte"*. A folha não promete mais o que a conta não paga. |
+
+### Não inclusos — lista fechada [Jonathan 21/10]
+
+blocos de espuma · base imantada · conjunto de mesas com cadeiras ·
+balanço · material de pintura e de vinílicos (tinta, massa, vinil e papel)
+· revestimento de piso interno da casinha · couro natural em qualquer
+revestimento · efeito de tijolinho · obra civil, elétrica, piso e
+revestimentos do ambiente.
 
 ## ⭐⭐ Os R$ 12.500 da pintura são VALOR, não custo
 
@@ -588,9 +603,9 @@ sobre o custo do resto e a pintura entra **por cima**.
 
 ⚠ **E isso tem preço para a casa.** O custo da mão de obra, pela conta de
 R$ 130/m² que ele mesmo deu na primeira rodada, dá R$ 7.759 com o rateio.
-A R$ 12.500 de venda, **esse item entrega MC de 14.4%** — contra os
-43.4% do resto da obra. A **MC do conjunto cai de 43.4% para
-41.5%**. É decisão dele, registrada.
+A R$ 12.500 de venda, **esse item entrega MC de 14.2%** — contra os
+43.4% do resto da obra. A **MC do conjunto cai para
+41.4%**. É decisão dele, registrada.
 
 ## As especificações — texto
 
