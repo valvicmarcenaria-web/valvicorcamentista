@@ -84,8 +84,13 @@ GANCHO_CM  = 20.0     # ★ gancho a cada 20 cm no perímetro (10 na malha dupla
 # ⭐ [Jonathan 21/10] MÃO DE OBRA de pintura acrílica e de papel de parede.
 #   ⛔ O FORNECIMENTO DO MATERIAL É DO CONTRATANTE — tinta, massa e papel
 #     não estão no nosso preço. Só a aplicação.
-PINT_ACRIL = 130.0    # ⭐ [Jonathan 21/10] R$/m² de aplicação
+PINT_ACRIL = 130.0    # ⭐ [Jonathan 21/10] R$/m² — a primeira instrução
 PAPEL_MO   = 45.0     # ★ aplicação de papel de parede, R$/m²
+# ⭐⭐ [Jonathan 21/10, respondendo] R$ 12.500 é O VALOR DO ITEM na
+#   proposta, não o custo. O custo segue a conta por m² acima — e a
+#   diferença entre os dois é a margem que esse item entrega, que é baixa
+#   e está registrada no relatório.
+PINTURA_PV = 12500.0
 
 # ⭐ [Jonathan 21/10] o BANCO ganha acabamento: MDF Berneck padrão TABASCO.
 TABASCO_CH = 600.0    # ★ chapa melamínica Berneck Tabasco, 18 mm
@@ -337,12 +342,16 @@ it('Escorregador com túnel de teto curvo', f'{L_TU:.2f} m · vão {B_TU:.2f} ×
 A_PINT, A_PAPEL = sum(M2_PINTURA), sum(M2_PAPEL)
 it('Pintura acrílica e papel de parede — mão de obra',
    f'{A_PINT:.1f} m² de pintura · {A_PAPEL:.1f} m² de papel', [
+ # ⭐⭐ [Jonathan 21/10] "Custo da mão de obra da pintura OU aplicação de
+ #   vinil adesivo / papel de parede — 12.500". Custo FECHADO por ele, no
+ #   lugar da minha conta por m². A conjunção é "OU": é a pintura acrílica
+ #   ou o vinil/papel, e o valor cobre a mão de obra escolhida.
  (f'⭐ Pintura acrílica — interna e externa, {A_PINT:.1f} m²',
                                                   A_PINT,'m²',PINT_ACRIL),
- (f'⭐ Aplicação de papel de parede na torre principal, {A_PAPEL:.1f} m²',
+ (f'⭐ Aplicação de vinil ou papel na torre principal, {A_PAPEL:.1f} m²',
                                                  A_PAPEL,'m²',PAPEL_MO),
-], obs='⛔ MÃO DE OBRA APENAS — tinta, massa e papel são fornecimento do '
-       'contratante [Jonathan 21/10]')
+], obs='⛔ MÃO DE OBRA APENAS — tinta, massa, vinil e papel são fornecimento '
+       'do contratante [Jonathan 21/10] · custo cravado por ele')
 
 # ══ 12 · COZINHA DE BRINQUEDO ════════════════════════════════════════════
 it('Cozinha de brinquedo', 'módulo lúdico sob medida', [
@@ -366,7 +375,15 @@ BASE = M.base(parcelas=0, rt=RT_ON, vendedor=False)
 MC = 0.45
 
 # [Jonathan 30/09] preço CRAVADO, não calculado por MC
-PRECO_FIXO = {'Cozinha de brinquedo': 12000}
+# ⭐⭐ [Jonathan 21/10] "Custo da mão de obra da pintura OU aplicação de
+#   vinil adesivo / papel de parede — 12.500."
+#   ⛔ LEITURA: é o VALOR do item, não o custo de compra. Ele viu a folha
+#     anterior com a pintura a R$ 23.150 e devolveu 12.500 — do mesmo jeito
+#     que cravou a cozinha em 12.000 em 30/09. E a conjunção é "OU": é
+#     pintura ACRÍLICA ou vinil/papel, não as duas somadas.
+# ⭐ A pintura tem PREÇO CRAVADO, como a cozinha [Jonathan 21/10].
+NOME_PINT  = 'Pintura acrílica e papel de parede — mão de obra'
+PRECO_FIXO = {'Cozinha de brinquedo': 12000, NOME_PINT: PINTURA_PV}
 # [Jonathan 30/09] investimento cravado em 185.000 sobre um custo direto de
 # R$ 61.296,38 — o que embutiu uma MC de 43,38%.
 # ⭐ [Jonathan 14/10] o escopo mudou: saiu a parede de desenho e a escada
@@ -374,11 +391,21 @@ PRECO_FIXO = {'Cozinha de brinquedo': 12000}
 #   menos pelo mesmo valor. O alvo passa a cair na MESMA PROPORÇÃO do custo,
 #   o que preserva exatamente a margem que o Jonathan cravou.
 ALVO_30_09, CD_30_09 = 185000, 61296.38
-ALVO_TOTAL = round(ALVO_30_09*CD/CD_30_09/10)*10
 
 # custo direto de cada item = custo próprio + sua fatia de logística,
 # consumível e embalagem, rateada pelo custo (regra da casa)
 CDI = {i['nome']: i['total']*CD/CD_SIS for i in ITENS}
+
+# ⭐⭐ A PINTURA É ADITIVA, não sai de dentro do alvo. O alvo escala sobre o
+#   custo do RESTO — o escopo que já existia em 30/09 — e a mão de obra de
+#   pintura entra POR CIMA, com o valor que o Jonathan cravou. Carvá-la de
+#   dentro do alvo faria o cliente pagar o mesmo por mais serviço.
+# ⭐⭐ A PINTURA É ADITIVA: o alvo escala sobre o custo do RESTO — o escopo
+#   que já existia — e a mão de obra de pintura entra POR CIMA, com o valor
+#   que o Jonathan cravou. Carvá-la de dentro do alvo faria o cliente pagar
+#   o mesmo por mais serviço.
+CD_PINT = CDI[NOME_PINT]
+ALVO_TOTAL = round(ALVO_30_09*(CD - CD_PINT)/CD_30_09/10)*10 + PINTURA_PV
 # o total é CRAVADO: a cozinha tem preço próprio e o restante é rateado
 _resto = [n for n in CDI if n not in PRECO_FIXO]
 _alvo  = ALVO_TOTAL - sum(PRECO_FIXO.values())

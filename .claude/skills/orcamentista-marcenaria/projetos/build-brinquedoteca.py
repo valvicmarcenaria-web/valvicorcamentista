@@ -19,7 +19,6 @@ br = lambda v: f'{v:,.0f}'.replace(',', '.')
 CLIENTE, PROJETO = 'Eliza e Luiz Gustavo', 'Helena Antunes Arquitetura e Interiores'
 DATA, PRAZO, VALIDADE, GARANTIA = '21 de outubro de 2026', '90 dias corridos', '10 dias', '10 anos'
 NP = 5
-LACA = oq.LACA_FOSCA_PV
 img = lambda n: f'img-brinquedoteca/{n}.jpg'
 CSS = open(P/'css-brinquedoteca.css', encoding='utf-8').read()
 
@@ -49,9 +48,10 @@ CONJ = [
   'Estilo veneziana em usinagem plana, com frisos, em laca branca.'),
  ('Escorregador com túnel curvo',
   'Teto em arco sobre gabarito, pista em laminado e gradil de proteção.'),
- ('Pintura e papel de parede — aplicação',
-  '<b>Mão de obra</b> da pintura dos painéis, por dentro e por fora, e do '
-  'papel na torre. <b>O material é fornecido pela cliente.</b>'),
+ ('Pintura ou papel de parede — aplicação',
+  '<b>Mão de obra</b> da pintura acrílica dos painéis, por dentro e por '
+  'fora, <b>ou</b> da aplicação de vinil adesivo e papel na torre. '
+  '<b>O material é fornecido pela cliente.</b>'),
  ('Cozinha de brinquedo',
   'Módulo lúdico sob medida, em MDF ultra premium cru.'),
 ]
@@ -204,16 +204,6 @@ p4 = f"""<div class="pg"><div class="in">
       fabricamos e instalamos.</div></div>
     <div><div class="k">Validade</div><div class="v"><b>{VALIDADE}</b> a
       partir desta data.</div></div>
-  </div>
-
-  <div class="opt">
-    <div><div class="k">Opcional de acabamento</div>
-      <div class="t disp">Entregar laqueado.</div>
-      <div class="d">No lugar de receber os painéis crus e pintá-los,
-      vocês podem recebê-los <b>em laca fosca, aplicados por nós</b>,
-      prontos. É acabamento de fábrica, em cabine, e dispensa a pintura
-      no local.</div></div>
-    <div class="v">+ R$ {br(LACA)}</div>
   </div>
 
   <div class="obs">Tudo é fabricado, pintado, estofado e instalado por

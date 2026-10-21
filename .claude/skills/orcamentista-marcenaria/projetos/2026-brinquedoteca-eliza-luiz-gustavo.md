@@ -548,108 +548,89 @@ Orçado em linho; o nome a confirmar.
 
 # ⭐ Revisão de 21/10 — especificação de materiais
 
-> *"preciso especificar alguns materiais"* — Jonathan, 21/10.
+> *"vamos mudar a abordagem"* — o briefing foi reapresentado inteiro.
 
 | | R$ |
 |---|--:|
 | antes (14/10) | 176.800 |
-| **agora** | **205.020** |
+| **agora** | **194.110** |
 
-O alvo não é cravado: ele **cai e sobe na mesma proporção do custo**, o que
-preserva a MC de 43.382% que o Jonathan fixou em 30/09. O escopo cresceu,
-o preço cresceu junto.
+## ⛔⛔ A regra que ele fixou nesta rodada
 
-## As seis especificações
+> *"o custo dos gradis de contenção não é para mudar valor, é só para mudar
+> **texto**. Valor será acrescentado apenas conforme solicitação."*
 
-## ⛔⛔ A CORREÇÃO DO JONATHAN — 21/10, logo depois
+**Só mexe em valor o que vier com um número.** Tudo o mais é redação. Foi
+assim que esta revisão foi fechada, e é o que o reapresentar do briefing
+confirmou: ele diz *"informe que"*, *"reforçar que"*, *"uma sugestão é"* —
+verbos de texto.
 
-> *"o custo dos gradis de contenção não é para mudar valor, é só para
-> mudar **texto**. Valor será acrescentado apenas conforme solicitação."*
+### O que mudou de valor, e só isso
 
-Eu havia **re-custeado** a malha de corda e isso sozinho jogou o preço em
-**+R$ 28.660**. Revertido: a linha mantém **o mesmo valor da tela que havia
-antes** e só a **descrição** mudou.
-
-⚠⚠ **Mas o buraco fica registrado.** Pelas minhas taxas, corda + cabo +
-gancho + tecelagem dariam **R$ 9.040** nos 14 m²; a conta paga
-**R$ 3.500**. São **R$ 5.540 de diferença**. Ou as minhas estimativas
-estão altas, ou **a folha promete uma malha que o orçamento não paga** — e
-esse é exatamente o erro da laca da Juliana. ⛔ **Cotar a malha antes de
-fechar.**
-
-### O que ficou e quanto cada coisa vale
-
-| | Δ no preço | |
+| | R$ | |
 |---|--:|---|
+| **Pintura ou papel · mão de obra** | **+12.500** | ⭐ valor cravado por ele |
+| guarda-corpo acolchoado da piscina | +3.860 | ★ material novo |
+| metalon chapa 16 nas paredes | +1.380 | ★ chapa mais grossa |
+| fechamento Tabasco do banco | +1.200 | ★ acabamento novo |
 | malha de corda · **revertida** | ~~+28.660~~ | ⭐ só texto |
-| pintura e papel · mão de obra | **+23.150** | ⭐ ele deu a taxa |
-| guarda-corpo acolchoado da piscina | **+3.860** | ★ material novo |
-| metalon chapa 16 nas paredes | **+1.380** | ★ chapa mais grossa |
-| fechamento Tabasco do banco | **+1.200** | ★ acabamento novo |
+| opcional de laca fosca · **removido** | ~~+8.000~~ | saiu do briefing |
 
-As três últimas somam **R$ 6.440** e eu as mantive **porque entraram no
-texto da proposta** — e o que está no texto tem de estar na conta. Se
-alguma delas não era para mudar valor, é só dizer qual.
+As três do meio somam R$ 6.440 e ficaram **porque entraram no texto da
+proposta** — e o que está no texto tem de estar na conta. Se alguma não era
+para mudar valor, é uma palavra.
 
----
+## ⭐⭐ Os R$ 12.500 da pintura são VALOR, não custo
 
-**1 · Telas de proteção viram malha de corda náutica.**
-Corda de 8 mm, nós a cada 10 cm, com **cabo de aço de 3 mm entrelaçado**.
-Na **estrutura suspensa a malha é dupla**, o que reduz o vão entre nós pela
-metade. Fixada com **ganchos soldados**.
-⛔ A descrição deixou de ser "tela comprada" e virou **corda + cabo +
-gancho + tecelagem** — ⚠ mas, por instrução do Jonathan, **o valor não
-mudou**. 1 m² de malha de 10 × 10 cm leva **20 m de corda** —
-dez fios num sentido e dez no outro. Na dupla, 40 m. São **560 m de corda**
-nos 14 m² de tela, e a **tecelagem nó a nó** é o que manda no preço.
-★ Corda R$ 8.50/m · cabo R$ 6.50/m · gancho R$ 7.20/un ·
-tecelagem R$ 120/m² — todos estimados por mim.
+Ele confirmou: é o **valor do item na proposta**, como a cozinha cravada em
+R$ 12.000 — e não o custo de compra. O item é **aditivo**: o alvo escala
+sobre o custo do resto e a pintura entra **por cima**.
+
+⚠ **E isso tem preço para a casa.** O custo da mão de obra, pela conta de
+R$ 130/m² que ele mesmo deu na primeira rodada, dá R$ 7.759 com o rateio.
+A R$ 12.500 de venda, **esse item entrega MC de 14.4%** — contra os
+43.4% do resto da obra. A **MC do conjunto cai de 43.4% para
+41.5%**. É decisão dele, registrada.
+
+## As especificações — texto
+
+**1 · Telas de proteção: malha de corda náutica.**
+Corda de 8 mm, nós a cada 10 cm, **cabo de aço de 3 mm entrelaçado**,
+**dupla na estrutura suspensa**, presa em **ganchos soldados**.
+⚠⚠ Pelas minhas taxas, corda + cabo + gancho + tecelagem dariam
+**R$ 9.040** nos 14 m²; a conta paga **R$ 3.500** — **R$ 5.540 de
+diferença**. Ou minhas estimativas estão altas, ou **a folha promete uma
+malha que o orçamento não paga**, que é o erro da laca da Juliana.
+⛔ **Cotar a malha antes de fechar.**
 
 **2 · Espuma D33 de 20 mm** nas **plataformas de subida** e no **painel de
-guarda-corpo da piscina**, revestida em **tecido a definir**.
-⛔ **Couro natural não está contemplado** — está escrito na proposta.
-O guarda-corpo da piscina é item **novo**: não existia no orçamento anterior.
+guarda-corpo da piscina**, em **tecido a definir**.
+⛔ **Couro natural não está contemplado** — escrito na proposta.
 
-**3 · Pintura acrílica e papel de parede — só a mão de obra.**
-★ R$ 130/m² de pintura [Jonathan], **interna e externa**: 45.7 m².
-★ R$ 45/m² de aplicação de papel na torre principal: 16.2 m² — essa taxa
-é estimativa minha, ele só deu a da pintura.
-⛔⛔ **Tinta, massa e papel são fornecimento do contratante.** Está na
-proposta com todas as letras, senão a casa compra tinta de graça.
+**3 · Pintura acrílica OU vinil adesivo / papel de parede** — **mão de obra
+apenas**. ⛔⛔ **Tinta, massa, vinil e papel são fornecimento do
+contratante**, com todas as letras na folha.
 
-**4 · Banco com fechamento em MDF Berneck, padrão Tabasco.**
-Sugestão da casa, com a **imagem de referência** num bloco próprio da
-página 3 — nomeada como *referência do padrão, não do nosso projeto*.
-★ Chapa estimada em R$ 600.
+**4 · Banco com fechamento em MDF Berneck, padrão Tabasco** — sugestão da
+casa, com **a imagem de referência num bloco próprio** da página 3,
+nomeada como *referência do padrão, não do nosso projeto*.
 
-**5 · Metalon 50 × 30 em chapa 16** nas paredes, no lugar da chapa 18.
-★ R$ 118 a barra, contra R$ 95 da 1,2 mm. A proposta diz por quê:
+**5 · Metalon 50 × 30 em chapa 16** nas paredes. A proposta diz por quê:
 **chapa mais grossa, por resistência e segurança**, principalmente sob a
 **ponte suspensa** e a **grade de cordas suspensa**.
 ⭐ O perfil `50 × 30` entrou na **exceção permanente do auditor**, pelo
-mesmo motivo do `30 × 20`: é nome comercial de tubo, não cota de peça.
+mesmo motivo do `30 × 20`: nome comercial de tubo, não cota de peça.
 
-**6 · Opcional de laca fosca: + R$ 8.000.**
-⚠ **Escopo adotado por mim:** entregar os **painéis laqueados** em vez de
-crus — isto é, no lugar da pintura acrílica no local. O pedido dizia só
-*"adicione a possibilidade de ser laqueado"*, logo depois da frase do
-banco. **Se a laca era só do banco, o valor e o texto mudam.**
-
-## ⭐ "Mais que uma marcenaria"
-
-A página 2 ganhou o parágrafo que ele pediu: *"a Valvic não se apresenta
-como uma marcenaria. Somos uma empresa que **articula soluções**"* — quem
-dimensiona o aço, quem escolhe a espuma, quem tece a malha, quem usina a
-curva e quem instala respondem **ao mesmo projeto e ao mesmo contrato**.
-
-A **página 3 é nova** e existe para sustentar isso com engenharia:
+**6 · "Mais que uma marcenaria."** A página 2 ganhou o parágrafo: *a Valvic
+não se apresenta como uma marcenaria; é uma empresa que **articula
+soluções***. E a **página 3 é nova**, para sustentar isso com engenharia —
 infraestrutura, malha de corda, amortecimento e acabamento.
 
 ## ★ Em aberto desta revisão
 
-1. ⚠ **A laca de R$ 8.000 cobre o quê?** Painéis inteiros ou só o banco.
-2. ★ **Todas as taxas novas são estimativas minhas**, menos a pintura:
-   corda, cabo, gancho, tecelagem, papel, chapa Tabasco e metalon chapa 16.
+1. ⛔ **Cotar a malha de corda** — é o maior risco do orçamento agora.
+2. ★ **As taxas novas são estimativas minhas**: corda, cabo, gancho,
+   tecelagem, papel, chapa Tabasco e metalon chapa 16.
 3. ⚠ **O tecido dos acolchoados não foi definido** — o preço usa linho de
    estofaria a R$ 95/m². Tecido náutico ou PVC muda.
 4. ⚠ **A área de pintura "interna e externa"** foi lida como **as duas
