@@ -636,8 +636,13 @@ function atualizarIndividual_(p) {
   // fronteira do congelamento, e a aba vem congelada do formato anterior.
   sh.setFrozenRows(0);
   sh.setFrozenColumns(0);
-  sh.getRange(1, 1, sh.getMaxRows(), sh.getMaxColumns()).breakApart();
-  sh.clear();
+  const tudo = sh.getRange(1, 1, sh.getMaxRows(), sh.getMaxColumns());
+  tudo.breakApart();
+  tudo.clear();
+  // clear() leva conteúdo e formato, mas NÃO leva validação de dados. Sem esta
+  // linha a lista "Em aberto / Pago" ficava grudada na coluna onde o Status
+  // morava no layout anterior, enquanto o cabeçalho andava para o lado.
+  tudo.clearDataValidations();
   sh.clearConditionalFormatRules();
   const nc = cols.length;
 
@@ -772,6 +777,7 @@ function atualizarPainel_(ss, LT, LP, LS) {
   const corpo = pa.getRange(5, 1, pa.getMaxRows() - 4, pa.getMaxColumns());
   corpo.breakApart();
   corpo.clear();
+  corpo.clearDataValidations();
   pa.clearConditionalFormatRules();
 
   const faixa = function (lin, texto) {
