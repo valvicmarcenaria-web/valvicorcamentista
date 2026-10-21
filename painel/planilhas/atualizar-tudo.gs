@@ -866,21 +866,49 @@ function atualizarPainel_(ss, LT, LP, LS) {
     pa.getRange(r, 3, 1, nc - 1).setNumberFormat(MOEDA).setFontColor(NAVY2).setFontSize(10);
     if (m % 2) pa.getRange(r, 2, 1, nc).setBackground(ZEBRA);
   }
-  const rt = lm + 14;
+  // ── o que ainda não tem data combinada ──
+  //
+  // Sem esta linha a tabela mostrava "Total do ano R$ 0,00" enquanto o cartão
+  // de cima mostrava o total cheio: dois números com o mesmo nome discordando.
+  // Agora o que não foi acordado tem lugar próprio, e a tabela fecha com o
+  // cartão. É também o jeito de enxergar o que falta combinar.
+  const rs = lm + 14;
+  const somaMes = function (L) { return 'SUM(' + L + (lm + 2) + ':' + L + (lm + 13) + ')'; };
+  pa.getRange(rs, 2).setValue('Sem data combinada')
+    .setFontColor(ABERTO).setFontSize(10).setFontWeight('bold').setFontStyle('italic');
+  const pago7 = temAvulso ? '($E$7+$E$11)' : '$E$7';
+  if (temAvulso) {
+    posF_(pa.getRange(rs, 3), '=ROUND($C$7-' + somaMes('C') + ',2)');
+    posF_(pa.getRange(rs, 4), '=ROUND($C$11-' + somaMes('D') + ',2)');
+    posF_(pa.getRange(rs, 5), '=ROUND($C' + rs + '+$D' + rs + ',2)');
+    posF_(pa.getRange(rs, 6), '=ROUND(' + pago7 + '-' + somaMes('F') + ',2)');
+    posF_(pa.getRange(rs, 7), '=ROUND($E' + rs + '-$F' + rs + ',2)');
+  } else {
+    posF_(pa.getRange(rs, 3), '=ROUND($C$7-' + somaMes('C') + ',2)');
+    posF_(pa.getRange(rs, 4), '=ROUND(' + pago7 + '-' + somaMes('D') + ',2)');
+    posF_(pa.getRange(rs, 5), '=ROUND($C' + rs + '-$D' + rs + ',2)');
+  }
+  pa.getRange(rs, 3, 1, nc - 1).setNumberFormat(MOEDA)
+    .setFontColor(ABERTO).setFontSize(10).setFontWeight('bold');
+  pa.getRange(rs, 2, 1, nc).setBackground(ABERTOBG);
+
+  // ── total do ano: os doze meses MAIS o que não tem data ──
+  const rt = lm + 15;
   pa.getRange(rt, 2, 1, nc).setBackground(NAVY);
   pa.getRange(rt, 2).setValue('Total do ano').setFontColor(GOLDS).setFontWeight('bold');
   for (let c = 3; c <= nc + 1; c++) {
     const Lc = colLetra_(c);
-    posF_(pa.getRange(rt, c), '=ROUND(SUM(' + Lc + (lm + 2) + ':' + Lc + (lm + 13) + '),2)');
+    posF_(pa.getRange(rt, c), '=ROUND(SUM(' + Lc + (lm + 2) + ':' + Lc + rs + '),2)');
     pa.getRange(rt, c).setNumberFormat(MOEDA).setFontColor(GOLDS).setFontWeight('bold');
   }
-  pa.getRange(lm + 1, 2, 14, nc).setBorder(true, true, true, true, true, true,
+  pa.getRange(lm + 1, 2, 15, nc).setBorder(true, true, true, true, true, true,
     '#d6dbe2', SpreadsheetApp.BorderStyle.SOLID);
 
   pa.getRange(rt + 2, 2, 1, nc).merge().setValue(
-    'O mês é o da DATA COMBINADA de pagamento, digitada à mão. Linha sem data '
-    + 'combinada entra no total do ano e em mês nenhum — é isso que mostra o que '
-    + 'ainda não foi acordado. Divergência se fala antes do pagamento.')
+    'O mês é o da DATA COMBINADA de pagamento, digitada à mão na aba Comissões. '
+    + 'O que ainda não tem data cai na linha "Sem data combinada" — é o que falta '
+    + 'acordar, e por isso a tabela fecha com o total lá de cima. '
+    + 'Divergência se fala antes do pagamento.')
     .setFontColor(MUTED).setFontSize(9).setFontStyle('italic').setWrap(true);
   pa.setRowHeight(rt + 2, 34);
 }
