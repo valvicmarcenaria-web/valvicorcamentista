@@ -140,7 +140,13 @@ M_CORDA = n_fios*L_GR
 m_gr = 2*L_GR + math.ceil(L_GR/1.2+1)*H_GR
 S_gr = sup('50x30x1,2', m_gr)
 A_TELA, PERIM_TELA = 14.0, 26.0
+# ⭐ a malha continua calculada — não para entrar no preço, mas para eu
+#   saber o tamanho do buraco entre o que a folha promete e o que a conta
+#   paga. É esse número que vai para o dossiê e para a cotação.
 _mc, _mb, _mg = malha(A_TELA, PERIM_TELA, dupla=True)
+_MALHA_EST = (_mc*CORDA_NAU8 + _mb*CABO_ACO3 + _mg*GANCHO_SOL
+              + A_TELA*MALHA_MO)
+_MALHA_NA_CONTA = 14.0*250.0
 it('Gradis de contenção das redes', f'{L_GR:.2f} × {H_GR:.2f} m · {n_fios} fios', [
  ('Metalon 50×30×1,2 — quadro e montantes',               m_gr,'m',mL('50x30x1,2')),
  ('Mão de obra de serralheria',                           m_gr,'m',MO_SERR_EST),
@@ -159,15 +165,19 @@ it('Gradis de contenção das redes', f'{L_GR:.2f} × {H_GR:.2f} m · {n_fios} f
  ('Instalação e tensionamento da rede',                     8.0,'h',42.0),
  ('Metalon 30×30×1,2 — quadro das telas',                  26.0,'m',mL('30x30x1,2')),
  ('Mão de obra de serralheria das telas',                  26.0,'m',MO_SERR_REP),
- # ⭐⭐ [Jonathan 21/10] a tela comprada sai; entra malha de corda náutica,
- #   DUPLA, porque esta é a estrutura suspensa.
- (f'⭐ Corda náutica 8 mm — malha de {NO_CM:.0f} em {NO_CM:.0f} cm, DUPLA',
-                                                      _mc,'m',CORDA_NAU8),
- ('⭐ Cabo de aço 3 mm entrelaçado na malha',          _mb,'m',CABO_ACO3),
- ('⭐ Gancho soldado de fixação da malha',             _mg,'un',GANCHO_SOL),
- ('⭐ Tecelagem nó a nó e tensionamento da malha',    A_TELA,'m²',MALHA_MO),
-], obs=f'⭐ corda do gradil: {M_CORDA:.1f} m · ⭐ malha DUPLA de corda náutica '
-       f'em {A_TELA:.0f} m² · inclui a REDE')
+ # ⭐⭐ [Jonathan 21/10] A TELA VIRA MALHA DE CORDA NÁUTICA — mas ele foi
+ #   explícito depois: "o custo dos gradis de contenção NÃO É PARA MUDAR
+ #   VALOR, é só para mudar texto. Valor será acrescentado apenas conforme
+ #   solicitação." Então a linha mantém o MESMO valor da tela que havia, e
+ #   só a descrição muda.
+ # ⚠⚠ MINHA ESTIMATIVA POR COMPONENTE NÃO FECHA COM ESSE VALOR. Corda,
+ #   cabo, gancho e tecelagem, pelas minhas taxas, dariam R$ {_MALHA_EST:,.0f}
+ #   — contra os R$ {14*250:,.0f} desta linha. Ou as minhas taxas estão altas, ou
+ #   a malha custa mais do que o orçamento paga. ⛔ COTAR ANTES DE FECHAR.
+ ('⭐ Malha de corda náutica com cabo de aço entrelaçado, '
+  'dupla na estrutura suspensa, em ganchos soldados',      14.0,'m²',250.0),
+], obs=f'⭐ corda do gradil: {M_CORDA:.1f} m · ⭐ malha de corda náutica em '
+       f'{A_TELA:.0f} m², valor mantido [Jonathan 21/10] · inclui a REDE')
 
 # ══ 3 · PLATAFORMAS ACOLCHOADAS ══════════════════════════════════════════
 Lpl, Bpl, Hpl, N_PL = 0.95, 0.60, 0.57, 5

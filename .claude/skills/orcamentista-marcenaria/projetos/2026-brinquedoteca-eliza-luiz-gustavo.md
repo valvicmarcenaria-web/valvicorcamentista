@@ -553,7 +553,7 @@ Orçado em linho; o nome a confirmar.
 | | R$ |
 |---|--:|
 | antes (14/10) | 176.800 |
-| **agora** | **222.590** |
+| **agora** | **205.020** |
 
 O alvo não é cravado: ele **cai e sobe na mesma proporção do custo**, o que
 preserva a MC de 43.382% que o Jonathan fixou em 30/09. O escopo cresceu,
@@ -561,12 +561,45 @@ o preço cresceu junto.
 
 ## As seis especificações
 
+## ⛔⛔ A CORREÇÃO DO JONATHAN — 21/10, logo depois
+
+> *"o custo dos gradis de contenção não é para mudar valor, é só para
+> mudar **texto**. Valor será acrescentado apenas conforme solicitação."*
+
+Eu havia **re-custeado** a malha de corda e isso sozinho jogou o preço em
+**+R$ 28.660**. Revertido: a linha mantém **o mesmo valor da tela que havia
+antes** e só a **descrição** mudou.
+
+⚠⚠ **Mas o buraco fica registrado.** Pelas minhas taxas, corda + cabo +
+gancho + tecelagem dariam **R$ 9.040** nos 14 m²; a conta paga
+**R$ 3.500**. São **R$ 5.540 de diferença**. Ou as minhas estimativas
+estão altas, ou **a folha promete uma malha que o orçamento não paga** — e
+esse é exatamente o erro da laca da Juliana. ⛔ **Cotar a malha antes de
+fechar.**
+
+### O que ficou e quanto cada coisa vale
+
+| | Δ no preço | |
+|---|--:|---|
+| malha de corda · **revertida** | ~~+28.660~~ | ⭐ só texto |
+| pintura e papel · mão de obra | **+23.150** | ⭐ ele deu a taxa |
+| guarda-corpo acolchoado da piscina | **+3.860** | ★ material novo |
+| metalon chapa 16 nas paredes | **+1.380** | ★ chapa mais grossa |
+| fechamento Tabasco do banco | **+1.200** | ★ acabamento novo |
+
+As três últimas somam **R$ 6.440** e eu as mantive **porque entraram no
+texto da proposta** — e o que está no texto tem de estar na conta. Se
+alguma delas não era para mudar valor, é só dizer qual.
+
+---
+
 **1 · Telas de proteção viram malha de corda náutica.**
 Corda de 8 mm, nós a cada 10 cm, com **cabo de aço de 3 mm entrelaçado**.
 Na **estrutura suspensa a malha é dupla**, o que reduz o vão entre nós pela
 metade. Fixada com **ganchos soldados**.
-⛔ O custo deixou de ser "tela comprada por m²" e virou **corda + cabo +
-gancho + tecelagem**. 1 m² de malha de 10 × 10 cm leva **20 m de corda** —
+⛔ A descrição deixou de ser "tela comprada" e virou **corda + cabo +
+gancho + tecelagem** — ⚠ mas, por instrução do Jonathan, **o valor não
+mudou**. 1 m² de malha de 10 × 10 cm leva **20 m de corda** —
 dez fios num sentido e dez no outro. Na dupla, 40 m. São **560 m de corda**
 nos 14 m² de tela, e a **tecelagem nó a nó** é o que manda no preço.
 ★ Corda R$ 8.50/m · cabo R$ 6.50/m · gancho R$ 7.20/un ·
