@@ -88,6 +88,10 @@ const N_PROJ = 40, LIN0 = 4;
 let SEP = ',';
 
 function calibrar_(ss) {
+  // Se uma execução anterior morreu no meio, a aba de teste pode ter ficado.
+  // insertSheet com nome repetido dá erro, então tira a velha antes.
+  const velha = ss.getSheetByName('__teste_separador__');
+  if (velha) ss.deleteSheet(velha);
   const tmp = ss.insertSheet('__teste_separador__');
   try {
     tmp.getRange(1, 1).setFormula('=SUM(1,2)');
