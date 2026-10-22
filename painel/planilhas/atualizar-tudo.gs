@@ -885,9 +885,9 @@ function adicionarGestaoTecnica() {
       sh.getRange(g, 8, 1, 8).merge();
       sh.getRange(g, 1).setValue('Gestão técnica');
     }
-    if (sh.getRange(g, 2).getValue() === '') {
-      sh.getRange(g, 2).setValue(0.005);
-    }
+    // O percentual NÃO é escrito por aqui. A célula nasce vazia, com o formato
+    // de percentual e nada dentro: quem decide o número é quem gerencia, e
+    // valor que o script inventa é valor que ninguém confere.
     sh.getRange(g, 2).setNumberFormat('0.0%');
     posF_(sh.getRange(g, 3), '=IF($B' + g + '="","",ROUND($B' + g + '*$C$45,2))');
     posF_(sh.getRange(g, 4), '=IF($B' + g + '="","",ROUND($B' + g + '*$D$45,2))');
@@ -897,7 +897,6 @@ function adicionarGestaoTecnica() {
     sh.getRange(g, 7).setNumberFormat('0.0%');
     sh.getRange(g, 8).setDataValidation(regra)
       .setHorizontalAlignment('left').setFontWeight('bold').setFontColor(NAVY2);
-    if (!jaTem) sh.getRange(g, 8).setValue('');   // limpa a dica herdada de cima
 
     // ── 2 · bloco 5 passa a somar a gestão junto da coordenação ──
     //
@@ -979,67 +978,6 @@ function corrigirMenuVendedor() {
   console.log('menu de vendedor corrigido em ' + n + ' ficha(s), incluindo a Ficha Modelo.');
   console.log('D7 voltou a ser campo livre (Nº do projeto). D9 agora tem a lista: '
               + VENDEDORES.join(', ') + '.');
-}
-
-
-/**
- * Completa a identificação e a venda de uma ficha que ficou pela metade.
- *
- * Escreve SÓ em célula vazia. Se já houver algo digitado, ela é pulada e o log
- * diz qual — preencher ficha não pode significar apagar o que alguém decidiu.
- *
- * Os dados vêm da Controle de Pagamentos. O que não está lá — vendedor,
- * coordenador, entrega prevista, quem produziu, quem montou, quem projetou e
- * os percentuais de comissão — continua em branco, porque é decisão sua e eu
- * não tenho de onde tirar.
- */
-function completarFichas() {
-  const PENDENTES = [
-    { aba: 'Richard',
-      cliente: 'Richard e Camila',
-      projeto: 'Roupeiro',
-      entrada: new Date(2026, 6, 27),      // 27/07/2026 · data do 1º pagamento
-      venda: 19000,
-      imposto: 0.05,                       // Simples, igual a todos os outros projetos
-      ambientes: [['Roupeiro', 19000]] },
-  ];
-
-  const ss = SpreadsheetApp.openById(ID_CUSTO);
-  PENDENTES.forEach(function (d) {
-    const sh = ss.getSheetByName(d.aba);
-    if (!sh) { console.log(d.aba + ': aba não encontrada.'); return; }
-    console.log('── ' + d.aba + ' ──');
-
-    const poe = function (ref, valor, rotulo) {
-      const c = sh.getRange(ref);
-      const atual = c.getValue();
-      if (atual !== '' && atual !== null) {
-        console.log('  pulei ' + ref + ' (' + rotulo + '): já tem "'
-                    + c.getDisplayValue() + '"');
-        return;
-      }
-      c.setValue(valor);
-      console.log('  escrevi ' + ref + ' (' + rotulo + '): ' + c.getDisplayValue());
-    };
-
-    poe('A7', d.cliente, 'cliente');
-    poe('A9', d.projeto, 'projeto');
-    if (d.entrada) poe('F7', d.entrada, 'data de entrada');
-    poe('D28', d.venda, 'valor de venda realizado');
-    if (d.imposto != null) poe('B38', d.imposto, 'imposto sobre a nota');
-
-    (d.ambientes || []).forEach(function (amb, i) {
-      const r = FICHA.amb0 + i;
-      poe('A' + r, amb[0], 'ambiente');
-      poe('C' + r, amb[1], 'valor do ambiente');
-    });
-  });
-
-  SpreadsheetApp.flush();
-  console.log('\nFalta preencher à mão: vendedor, coordenador, entrega prevista, '
-            + 'e no bloco de ambientes quem produziu, quem montou, quem projetou '
-            + 'e os percentuais de cada um.');
-  console.log('Depois disso, rode atualizarTudo para a Base e as individuais lerem.');
 }
 
 
@@ -1311,7 +1249,7 @@ function atualizarTudo() {
 
   diz('── começando ──');
   try {
-    diz('Painel Geral: ' + repararPainelGeral_() + ' projeto(s) registrado(s)');
+    diz('Painel Geral: ' + repararPainelGeral_() + ' projeto(s)');
     diz('Base · Comissões: ' + atualizarBase_() + ' projeto(s), '
       + FICHA.colsBase + ' colunas');
   } catch (e) {
@@ -1371,11 +1309,41 @@ function repararPainelGeral_() {
                  .filter(function (n) { return FIXAS.indexOf(n) < 0; });
 
   const n = FICHA.pgf - FICHA.pg0 + 1;
-  const vals = [];
-  for (let i = 0; i < n; i++) vals.push([i < abas.length ? abas[i] : '']);
-  pg.getRange(FICHA.pg0, 2, n, 1).setValues(vals);
+  const atual = pg.getRange(FICHA.pg0, 2, n, 1).getValues()
+                  .map(function (r) { return String(r[0] || ''); });
+
+  // SÓ ACRESCENTA. Nunca apaga, nunca troca o que já está escrito — nem o que
+  // parece sobra. O que estiver lá é de alguém, e a versão que apagava já
+  // destruiu dez registros uma vez.
+  const jaEstao = {};
+  atual.forEach(function (v) { if (v) jaEstao[v] = true; });
+
+  let escritas = 0;
+  abas.forEach(function (aba) {
+    if (jaEstao[aba]) return;
+    for (let i = 0; i < n; i++) {
+      if (atual[i] === '') {
+        pg.getRange(FICHA.pg0 + i, 2).setValue(aba);
+        atual[i] = aba;
+        jaEstao[aba] = true;
+        escritas++;
+        return;
+      }
+    }
+    console.log('  aviso: sem vaga livre no Painel Geral para "' + aba + '".');
+  });
+
+  const orfaos = atual.filter(function (v) {
+    return v && abas.indexOf(v) < 0;
+  });
+  if (orfaos.length) {
+    console.log('  aviso: registrado no Painel Geral sem aba correspondente, '
+                + 'e deixado como está: ' + orfaos.join(' | '));
+  }
+
   SpreadsheetApp.flush();
-  return abas.length;
+  return atual.filter(function (v) { return v !== ''; }).length
+         + (escritas ? ' (' + escritas + ' acrescentado[s])' : '');
 }
 
 
