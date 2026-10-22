@@ -168,7 +168,8 @@ function escreverTabela_(ss, nome, cab, linhas) {
   let sh = ss.getSheetByName(nome);
   if (!sh) sh = ss.insertSheet(nome);
   sh.clear();
-  sh.clearDataValidations();
+  // clearDataValidations existe em intervalo, não em aba.
+  sh.getRange(1, 1, sh.getMaxRows(), sh.getMaxColumns()).clearDataValidations();
   if (sh.getMaxColumns() < cab.length) {
     sh.insertColumnsAfter(sh.getMaxColumns(), cab.length - sh.getMaxColumns());
   }
@@ -179,7 +180,9 @@ function escreverTabela_(ss, nome, cab, linhas) {
     .setBackground(NAVY2).setFontColor('#ffffff').setFontWeight('bold').setFontSize(9);
   if (linhas.length) sh.getRange(2, 1, linhas.length, cab.length).setValues(linhas);
   sh.setFrozenRows(1);
-  sh.getRange(1, 1, 1, cab.length).createFilter();
+  const filtro = sh.getFilter();
+  if (filtro) filtro.remove();
+  if (linhas.length) sh.getRange(1, 1, linhas.length + 1, cab.length).createFilter();
   sh.setTabColor('#6c7785');
   return linhas.length;
 }
