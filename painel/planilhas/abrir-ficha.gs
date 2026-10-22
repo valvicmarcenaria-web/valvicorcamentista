@@ -41,7 +41,9 @@ const FICHA = {
   vendedor: 'B41',
   rt: 'B43',
   custoVenda: 'D44',
-  colsBase: 27,           // largura da Base · Comissões
+  custoTotal: 'D22',      // bloco resumo · coluna D = realizado
+  margem: 'D23',
+  colsBase: 29,           // largura da Base · Comissões
   painelLinha0: 11,       // Painel Geral · primeira vaga de projeto
   painelLinhaF: 50,
   baseLinha0: 2,          // Base · primeira linha de dados
@@ -264,8 +266,10 @@ function escreverBlocoBase_(destino, i, nomeAba) {
       linha.push(cel_(ab, FICHA.rt, r, false));
       linha.push(cel_(ab, FICHA.vendedor, r, false));
       linha.push(cel_(ab, FICHA.custoVenda, r, false));
+      linha.push(cel_(ab, FICHA.custoTotal, r, false));
+      linha.push(cel_(ab, FICHA.margem, r, false));
     } else {
-      linha.push('', '', '', '', '', '', '', '', '');
+      linha.push('', '', '', '', '', '', '', '', '', '', '');
     }
     linhas.push(linha);
   }

@@ -58,7 +58,8 @@ const FICHA = {
   entrada: 'F7', coordenador: 'F9', venda: 'A13',
   imposto: 'B38', maquina: 'B39', vendedor: 'B41', rt: 'B43',
   custoVenda: 'D44', liquido: 'D45', comCoord: 'D65',
-  colsBase: 27,
+  custoTotal: 'D22', margem: 'D23',   // bloco resumo · coluna D = realizado
+  colsBase: 29,
 };
 const COLS_AMB = 'ABCDEFGHIJKLMNO'.split('');
 
@@ -158,8 +159,10 @@ function montarBasesDoPainel() {
   const p = basesProjetosERecebimentos_(ss);
   const cf = baseCustoFixo_(ss);
   SpreadsheetApp.flush();
-  return p.projetos + ' projeto(s), ' + p.recebimentos + ' recebimento(s), '
-       + cf + ' linha(s) de custo fixo';
+  const r = p.projetos + ' projeto(s), ' + p.recebimentos + ' recebimento(s), '
+          + cf + ' linha(s) de custo fixo';
+  console.log('Bases do painel: ' + r);   // rodando sozinha, o log é o único retorno
+  return r;
 }
 
 
@@ -503,7 +506,8 @@ function atualizarTudo() {
   diz('── começando ──');
   try {
     diz('Painel Geral: ' + repararPainelGeral_() + ' projeto(s) registrado(s)');
-    diz('Base · Comissões: ' + atualizarBase_() + ' projeto(s), 27 colunas');
+    diz('Base · Comissões: ' + atualizarBase_() + ' projeto(s), '
+      + FICHA.colsBase + ' colunas');
   } catch (e) {
     diz('Base · Comissões: FALHOU — ' + e.message);
     diz('As individuais não foram tocadas: sem a Base nova elas não teriam de onde ler.');
@@ -576,7 +580,8 @@ function atualizarBase_() {
     'Data de entrada', 'Coordenador', 'Comissão coordenação',
     'Receita líquida do projeto', 'Valor de venda',
     'Imposto %', 'Taxa de máquina %', 'RT %', 'Comissão do vendedor %',
-    'Custos de venda'];
+    'Custos de venda',
+    'Custo total do projeto', 'Margem de contribuição'];
 
   base.clear();
   base.getRange(1, 1, 1, CAB.length).setValues([CAB])
@@ -639,8 +644,11 @@ function escreverBlocoBase_(base, i, nomeAba) {
       L.push(cel_(ab, FICHA.rt, r, false));
       L.push(cel_(ab, FICHA.vendedor, r, false));
       L.push(cel_(ab, FICHA.custoVenda, r, false));
+      // custo total e margem: é daqui que sai a MC por projeto no painel
+      L.push(cel_(ab, FICHA.custoTotal, r, false));
+      L.push(cel_(ab, FICHA.margem, r, false));
     } else {
-      L.push('', '', '', '', '', '', '', '', '');
+      L.push('', '', '', '', '', '', '', '', '', '', '');
     }
     linhas.push(L);
   }
@@ -778,7 +786,7 @@ function atualizarIndividual_(p) {
   const bs = ss.getSheetByName('_base');
   if (bs) {
     const atual = bs.getRange('A1').getFormula();
-    const nova = atual.replace(/!A1:[A-Z]+\d+/, '!A1:AA' + BASE_FIM);
+    const nova = atual.replace(/!A1:[A-Z]+\d+/, '!A1:AC' + BASE_FIM);
     if (nova && nova !== atual) bs.getRange('A1').setFormula(nova);
   }
 
