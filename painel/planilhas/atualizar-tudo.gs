@@ -130,6 +130,175 @@ const MESES = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julh
 const MOEDA = 'R$ #,##0.00', PCT = '0.0%', DATA = 'dd/mm/yyyy';
 
 
+// ════════════════════════════════════════════════════════════════════════
+//  BASES DO PAINEL  ·  as tabelas que o Looker Studio consegue ler
+// ════════════════════════════════════════════════════════════════════════
+//
+// O Looker lê TABELA: uma linha de cabeçalho e, abaixo, linhas iguais entre si.
+// As abas de ano da Controle de Pagamentos não são tabela — têm linha divisória
+// de mês no meio, cabeçalho mesclado e até cinco pagamentos na mesma linha.
+// A aba Custo Fixo é pior: cada pessoa com o salário dela, que é exatamente o
+// que não pode chegar ao painel do Walton.
+//
+// Estas três abas são a tradução. São VALORES, não fórmulas: é uma foto, e por
+// isso precisam ser refeitas quando os dados mudam. O atualizarTudo já faz isso.
+
+const ID_PAG = '1zC1cjkDpMA7FPYSf4_CO7WrqhIjmJ7ciXR_QGQ4XA9A';
+const ANOS = ['2026', '2025', '2024', '2023'];
+const C_BLOCOS = [9, 12, 15, 18, 21];     // I, L, O, R, U · valor, data, descrição
+const LIN_ITEM0 = 10;                      // primeira linha de projeto na aba de ano
+
+
+function montarBasesDoPainel() {
+  const ss = SpreadsheetApp.openById(ID_PAG);
+  const p = basesProjetosERecebimentos_(ss);
+  const cf = baseCustoFixo_(ss);
+  SpreadsheetApp.flush();
+  return p.projetos + ' projeto(s), ' + p.recebimentos + ' recebimento(s), '
+       + cf + ' linha(s) de custo fixo';
+}
+
+
+/** Escreve uma tabela limpa: cabeçalho fixo em cima, dados embaixo, nada mais. */
+function escreverTabela_(ss, nome, cab, linhas) {
+  let sh = ss.getSheetByName(nome);
+  if (!sh) sh = ss.insertSheet(nome);
+  sh.clear();
+  sh.clearDataValidations();
+  if (sh.getMaxColumns() < cab.length) {
+    sh.insertColumnsAfter(sh.getMaxColumns(), cab.length - sh.getMaxColumns());
+  }
+  const precisa = linhas.length + 2;
+  if (sh.getMaxRows() < precisa) sh.insertRowsAfter(sh.getMaxRows(), precisa - sh.getMaxRows());
+
+  sh.getRange(1, 1, 1, cab.length).setValues([cab])
+    .setBackground(NAVY2).setFontColor('#ffffff').setFontWeight('bold').setFontSize(9);
+  if (linhas.length) sh.getRange(2, 1, linhas.length, cab.length).setValues(linhas);
+  sh.setFrozenRows(1);
+  sh.getRange(1, 1, 1, cab.length).createFilter();
+  sh.setTabColor('#6c7785');
+  return linhas.length;
+}
+
+
+/**
+ * Varre as abas de ano e devolve duas tabelas:
+ *   Base · Projetos      — uma linha por projeto
+ *   Base · Recebimentos  — uma linha por pagamento, com data de verdade
+ *
+ * A linha divisória de mês é reconhecida pelo nome do mês na coluna A. Ela não
+ * vira linha de dado: vira o mês de competência das linhas que vêm abaixo dela.
+ */
+function basesProjetosERecebimentos_(ss) {
+  const projetos = [], recebimentos = [], puladas = [];
+
+  ANOS.forEach(function (ano) {
+    const sh = ss.getSheetByName(ano);
+    if (!sh) return;
+    const fim = sh.getLastRow();
+    if (fim < LIN_ITEM0) return;
+
+    const n = fim - LIN_ITEM0 + 1;
+    const vals = sh.getRange(LIN_ITEM0, 1, n, 23).getValues();
+    let mes = '';
+
+    for (let i = 0; i < n; i++) {
+      const L = vals[i];
+      const a = String(L[0] || '').trim();
+      if (!a) continue;
+
+      const iMes = MESES.indexOf(a);
+      if (iMes >= 0) { mes = a; continue; }        // divisória: só guarda o mês
+
+      const investimento = Number(L[2]) || 0;
+      const recebido = Number(L[4]) || 0;
+      if (!investimento && !recebido) {
+        // Linha com nome e sem dinheiro nenhum. Pode ser rascunho, pode ser
+        // projeto digitado pela metade. Não entra na base, mas aparece no log:
+        // linha que some calada é linha que ninguém conserta.
+        puladas.push(ano + ' linha ' + (LIN_ITEM0 + i) + ': "' + a + '"');
+        continue;
+      }
+
+      const cliente = a;
+      const projeto = String(L[1] || '').trim();
+      projetos.push([ano, mes, cliente, projeto, investimento,
+                     recebido, Number(L[5]) || 0, Number(L[6]) || 0,
+                     String(L[7] || '').trim(), String(L[3] || '').trim()]);
+
+      C_BLOCOS.forEach(function (c0, k) {
+        const valor = Number(L[c0 - 1]) || 0;
+        if (!valor) return;
+        const data = L[c0];                         // coluna seguinte
+        const desc = String(L[c0 + 1] || '').trim();
+        const ehData = data instanceof Date;
+        recebimentos.push([
+          ano, cliente, projeto, k + 1, valor,
+          ehData ? data : '',
+          ehData ? data.getFullYear() : '',
+          ehData ? MESES[data.getMonth()] : '',
+          ehData ? Utilities.formatDate(data, Session.getScriptTimeZone(), 'yyyy-MM') : '',
+          desc || (ehData ? '' : String(data || '').trim()),
+        ]);
+      });
+    }
+  });
+
+  escreverTabela_(ss, 'Base · Projetos',
+    ['Ano', 'Mês da venda', 'Cliente', 'Projeto', 'Investimento', 'Recebido',
+     'Saldo a receber', '% recebido', 'Situação', 'Forma de pagamento'], projetos);
+
+  escreverTabela_(ss, 'Base · Recebimentos',
+    ['Ano do contrato', 'Cliente', 'Projeto', 'Nº do pagamento', 'Valor', 'Data',
+     'Ano', 'Mês', 'Competência', 'Descrição'], recebimentos);
+
+  if (puladas.length) {
+    console.log('  linhas com nome e sem valor, fora da base:');
+    puladas.forEach(function (t) { console.log('    ' + t); });
+  }
+  return { projetos: projetos.length, recebimentos: recebimentos.length };
+}
+
+
+/**
+ * Só os cinco totais da aba Custo Fixo. Nome e salário de ninguém.
+ *
+ * É de propósito: o Looker lê a aba inteira que a gente apontar para ele, e a
+ * Custo Fixo tem uma linha por pessoa. Apontar o painel do Walton para lá
+ * colocaria a folha inteira dentro da fonte de dados do relatório. Aqui só
+ * atravessam os agregados.
+ */
+function baseCustoFixo_(ss) {
+  const sh = ss.getSheetByName('Custo Fixo');
+  if (!sh) { console.log('aviso: aba "Custo Fixo" não encontrada.'); return 0; }
+
+  const ALVOS = [
+    ['TOTAL DA FOLHA', 'Folha de pagamento', 'Custo fixo'],
+    ['TOTAL DA ESTRUTURA', 'Estrutura', 'Custo fixo'],
+    ['TOTAL DOS INVESTIMENTOS', 'Investimentos', 'Investimento'],
+    ['CUSTO FIXO OPERACIONAL', 'Custo operacional · folha + estrutura', 'Total'],
+    ['COM INVESTIMENTOS', 'Custo total · com investimentos', 'Total'],
+  ];
+  const fim = sh.getLastRow();
+  const rot = sh.getRange(1, 1, fim, 1).getDisplayValues();
+  const val = sh.getRange(1, 8, fim, 1).getValues();
+
+  const linhas = [];
+  ALVOS.forEach(function (alvo) {
+    for (let r = 0; r < fim; r++) {
+      if (String(rot[r][0] || '').trim().toUpperCase().indexOf(alvo[0]) === 0) {
+        linhas.push([alvo[1], alvo[2], Number(val[r][0]) || 0, new Date()]);
+        return;
+      }
+    }
+    console.log('aviso: não achei "' + alvo[0] + '" na aba Custo Fixo.');
+  });
+
+  return escreverTabela_(ss, 'Base · Custo Fixo',
+    ['Indicador', 'Grupo', 'Valor', 'Atualizado em'], linhas);
+}
+
+
 /**
  * Põe o menu de vendedor na célula certa, em todas as fichas.
  *
@@ -345,6 +514,12 @@ function atualizarTudo() {
       diz(p.nome + ': FALHOU — ' + e.message);
     }
   });
+
+  try {
+    diz('Bases do painel: ' + montarBasesDoPainel());
+  } catch (e) {
+    diz('Bases do painel: FALHOU — ' + e.message);
+  }
 
   diz('── fim: ' + ok + ' atualizada(s)' + (erro ? ', ' + erro + ' com erro' : '') + ' ──');
   return log.join('\n');
