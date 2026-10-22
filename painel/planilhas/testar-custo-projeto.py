@@ -119,9 +119,11 @@ for nome, val, pq, pp, mq, mp, jq, jp in AMB:
     por_pessoa[jq] = por_pessoa.get(jq, 0) + vj
 tot_prod, tot_mont, tot_proj = xr(tot_prod), xr(tot_mont), xr(tot_proj)
 coord_o, coord_r = xr(0.01 * liq_o), xr(0.01 * liq_r)
-com_o = xr(coord_o + xr(0.03 * liq_o) + xr(0.02 * liq_o) + xr(0.01 * liq_o))
-com_r = xr(coord_r + tot_prod + tot_mont + tot_proj)
+gest_o, gest_r = xr(0.005 * liq_o), xr(0.005 * liq_r)
+com_o = xr(coord_o + gest_o + xr(0.03 * liq_o) + xr(0.02 * liq_o) + xr(0.01 * liq_o))
+com_r = xr(coord_r + gest_r + tot_prod + tot_mont + tot_proj)
 por_pessoa['Deivison'] = por_pessoa.get('Deivison', 0) + coord_r
+por_pessoa['Bruna'] = por_pessoa.get('Bruna', 0) + gest_r
 
 # categorias, a partir do livro de lançamentos lido do arquivo
 lanc = []
@@ -344,6 +346,7 @@ VAL_ESPERADAS = {
     f'{CA["mont_quem"]}{R_AMB0}:{CA["mont_quem"]}{R_AMBF}': 'EQUIPE',
     f'{CA["proj_quem"]}{R_AMB0}:{CA["proj_quem"]}{R_AMBF}': 'PROJETISTA',
     f'A{R_CL0}:A{R_CLF}': 'ROSTER',
+    f'H{M["R_GEST"]}': 'ROSTER',
     f'B{R_RB0}:B{R_RBF}': 'CAUSA', f'D{R_ID4}:E{R_ID4}': 'VENDEDOR',
     f'F{R_ID4}:G{R_ID4}': 'EQUIPE'}
 for chave, valor in LISTAS.items():

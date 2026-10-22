@@ -36,7 +36,8 @@ const ID_CUSTO = '1tTJXG4w7lDvIcnd0dyr219-leOPwuURqrBk6lJIr18I';
 const PESSOAS = [
   { nome: 'Lorrane',  perfil: 'projetista',  pj: true,  id: '1VamDp_gzbRMMuWYSSrJoxjhfUDfMbJDjyVnGOliO2x0' },
   { nome: 'Lucas',    perfil: 'projetista',  pj: false, id: '18O6qW0T0JrFtvyhcSM_QPrNoQgNQg1XVCtBn1WDLAzI' },
-  { nome: 'Bruna',    perfil: 'projetista',  pj: true,  id: '1kIvZ5chhDav8t7R_xh1c03ctqGXs2ZDc17WD8BglFk0' },
+  { nome: 'Bruna',    perfil: 'projetista',  pj: true,  gestao: true,
+    id: '1kIvZ5chhDav8t7R_xh1c03ctqGXs2ZDc17WD8BglFk0' },
   { nome: 'Deivison', perfil: 'coordenacao', pj: true,  id: '1QLcbZFBHPVtpJ7tlEZ-h9uA1JF5dWeRUspIWDw1LYRQ' },
   { nome: 'Ronald',   perfil: 'operacao',    pj: true,  id: '1ZQ_WSDSj1PYYIDLx6UxIQ2wZbqdkS9wNYjPnFNrHWw0' },
   { nome: 'Samuel',   perfil: 'operacao',    pj: true,  id: '1V5V3_yyABqnZKhvFRbR6XKBvZXLxQ9nFVnDqcgYeBM4' },
@@ -59,7 +60,9 @@ const FICHA = {
   imposto: 'B38', maquina: 'B39', vendedor: 'B41', rt: 'B43',
   custoVenda: 'D44', liquido: 'D45', comCoord: 'D65',
   custoTotal: 'D22', margem: 'D23',   // bloco resumo · coluna D = realizado
-  colsBase: 29,
+  comGestao: 'D66',                   // gestão técnica · 0,5% do líquido
+  gestorTecnico: 'H66',               // o nome mora na própria linha da comissão
+  colsBase: 31,
 };
 const COLS_AMB = 'ABCDEFGHIJKLMNO'.split('');
 
@@ -70,6 +73,7 @@ const B = {
   projQuem: 'N', projCom: 'P', coordQuem: 'S', coordCom: 'T',
   liquido: 'U', venda: 'V',
   imposto: 'W', maquina: 'X', rt: 'Y', vendedor: 'Z', custoVenda: 'AA',
+  gestQuem: 'AD', gestCom: 'AE',
 };
 const BASE_FIM = 482;
 const N_PROJ = 40, LIN0 = 4;
@@ -130,6 +134,12 @@ const NAVY = '#0e2038', NAVY2 = '#16314f', GOLDS = '#d8bd80';
 const CALC = '#eaf1f8', ZEBRA = '#f7f5ef', OKBG = '#e6f0e9', ABERTOBG = '#faefdc';
 const GOLDBG = '#f6edd6', MUTED = '#6c7785', OK = '#2f7d4f', ABERTO = '#c47d0e';
 const INK = '#1b2733';
+
+// O cadastro da ficha, igual ao do bloco 5. Jackson saiu da equipe mas o nome
+// continua nas fichas antigas, e a comissão que ele gerou continua somando.
+const EQUIPE_FICHA = ['Deivison', 'Ronald', 'Samuel', 'Cesar', 'Jhon', 'Joelson',
+  'Davi', 'Jomar', 'Bruno', 'Wallace', 'Douglas', 'Terceiro / avulso'];
+const PROJETISTAS_FICHA = ['Lorrane', 'Lucas', 'Bruna', 'Externo / avulso'];
 const AV0 = 4, AVF = 33;          // faixa de lançamentos da aba Avulsos
 const MESES = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho',
   'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
@@ -430,7 +440,7 @@ function abaMargem_(ss, d) {
 
 // ── aba 3 · Comissões por categoria ─────────────────────────────────────
 function abaComissoes_(ss, d, ano) {
-  const W = 8;
+  const W = 9;
   const sh = abaLimpa_(ss, 'Comissões', W);
   cabecalhoPainel_(sh, 'COMISSÕES POR CATEGORIA',
     'O mês é o da FABRICAÇÃO   ·   custo da operação por tipo de trabalho, sem nome de ninguém', W);
@@ -442,7 +452,7 @@ function abaComissoes_(ss, d, ano) {
   };
   const linhas = [];
   let semData = [0, 0, 0];
-  for (let m = 0; m < 12; m++) linhas.push([MESES[m], 0, 0, 0, 0, 0]);
+  for (let m = 0; m < 12; m++) linhas.push([MESES[m], 0, 0, 0, 0, 0, 0]);
 
   d.ambientes.forEach(function (L) {
     const c = cat(L);
@@ -454,26 +464,31 @@ function abaComissoes_(ss, d, ano) {
       semData[0] += c[0]; semData[1] += c[1]; semData[2] += c[2];
     }
   });
-  // coordenação é por projeto, não por ambiente
-  let coordTotal = 0;
-  d.base.forEach(function (L) { coordTotal += Number(L[19]) || 0; });
+  // coordenação e gestão técnica são por projeto, não por ambiente: ficam fora
+  // do mês a mês porque não têm data de etapa própria
+  let coordTotal = 0, gestTotal = 0;
+  d.base.forEach(function (L) {
+    coordTotal += Number(L[19]) || 0;
+    gestTotal += Number(L[30]) || 0;
+  });
 
-  linhas.forEach(function (r) { r[5] = r[1] + r[2] + r[3] + r[4]; });
-  linhas.push(['Sem data de fabricação', semData[0], semData[1], semData[2], 0,
+  linhas.forEach(function (r) { r[6] = r[1] + r[2] + r[3] + r[4] + r[5]; });
+  linhas.push(['Sem data de fabricação', semData[0], semData[1], semData[2], 0, 0,
                semData[0] + semData[1] + semData[2]]);
-  linhas.push(['Total', 0, 0, 0, coordTotal, 0]);
+  linhas.push(['Total', 0, 0, 0, coordTotal, gestTotal, 0]);
   const t = linhas[13];
   for (let i = 0; i < 13; i++) { t[1] += linhas[i][1]; t[2] += linhas[i][2]; t[3] += linhas[i][3]; }
-  t[5] = t[1] + t[2] + t[3] + t[4];
+  t[6] = t[1] + t[2] + t[3] + t[4] + t[5];
 
   let lin = 5;
   secaoPainel_(sh, lin, 'QUANTO A OPERAÇÃO CUSTA, POR TIPO DE TRABALHO', W); lin += 2;
   const l0 = lin;
   lin = tabelaPainel_(sh, lin, 2,
-    ['Mês da fabricação', 'Produção', 'Montagem', 'Projeto', 'Coordenação', 'Total'],
-    linhas, [null, MOEDA, MOEDA, MOEDA, MOEDA, MOEDA]);
-  sh.getRange(l0 + 13, 2, 1, 6).setBackground('#faefdc').setFontColor('#c47d0e').setFontWeight('bold');
-  sh.getRange(l0 + 14, 2, 1, 6).setBackground(NAVY).setFontColor(GOLDS).setFontWeight('bold');
+    ['Mês da fabricação', 'Produção', 'Montagem', 'Projeto', 'Coordenação',
+     'Gestão técnica', 'Total'],
+    linhas, [null, MOEDA, MOEDA, MOEDA, MOEDA, MOEDA, MOEDA]);
+  sh.getRange(l0 + 13, 2, 1, 7).setBackground('#faefdc').setFontColor('#c47d0e').setFontWeight('bold');
+  sh.getRange(l0 + 14, 2, 1, 7).setBackground(NAVY).setFontColor(GOLDS).setFontWeight('bold');
 
   const g = sh.newChart().setChartType(Charts.ChartType.COLUMN)
     .addRange(sh.getRange(l0, 2, 13, 4))
@@ -490,9 +505,9 @@ function abaComissoes_(ss, d, ano) {
   let liquido = 0;
   d.base.forEach(function (L) { liquido += Number(L[20]) || 0; });
   secaoPainel_(sh, lin, 'PESO DA OPERAÇÃO', W); lin += 2;
-  cartaoPainel_(sh, lin, 2, 'Comissão total', t[5], NAVY);
+  cartaoPainel_(sh, lin, 2, 'Comissão total', t[6], NAVY);
   cartaoPainel_(sh, lin, 4, 'Receita líquida', liquido, '#2f5d8c');
-  cartaoPainel_(sh, lin, 6, 'Comissão ÷ receita', liquido ? t[5] / liquido : 0, '#c47d0e', '0.0%');
+  cartaoPainel_(sh, lin, 6, 'Comissão ÷ receita', liquido ? t[6] / liquido : 0, '#c47d0e', '0.0%');
   lin += 4;
 
   sh.getRange(lin, 2, 1, W - 1).merge().setValue(
@@ -530,16 +545,22 @@ function abaEquipe_(ss, d) {
   const mont = junta(9, 4);
   const proj = junta(13, 4);
 
-  const coordM = {};
-  d.base.forEach(function (L) {
-    const quem = String(L[18] || '').trim();
-    if (!quem) return;
-    if (!coordM[quem]) coordM[quem] = { v: 0, n: 0 };
-    coordM[quem].v += Number(L[21]) || 0;
-    coordM[quem].n++;
-  });
-  const coord = Object.keys(coordM).map(function (k) { return [k, coordM[k].v, coordM[k].n]; })
-    .sort(function (a, b) { return b[1] - a[1]; });
+  // coordenação e gestão técnica são por projeto: o nome está na primeira linha
+  // do bloco de doze, e a venda do projeto também
+  const porProjetoQuem = function (iQuem) {
+    const m = {};
+    d.base.forEach(function (L) {
+      const quem = String(L[iQuem] || '').trim();
+      if (!quem) return;
+      if (!m[quem]) m[quem] = { v: 0, n: 0 };
+      m[quem].v += Number(L[21]) || 0;
+      m[quem].n++;
+    });
+    return Object.keys(m).map(function (k) { return [k, m[k].v, m[k].n]; })
+      .sort(function (a, b) { return b[1] - a[1]; });
+  };
+  const coord = porProjetoQuem(18);
+  const gest = porProjetoQuem(29);
 
   let lin = 5;
   secaoPainel_(sh, lin, 'OPERAÇÃO   ·   chão de fábrica e obra', W); lin += 2;
@@ -555,6 +576,10 @@ function abaEquipe_(ss, d) {
   const e = tabelaPainel_(sh, lin, 6, ['Coordenador', 'Venda coordenada', 'Projetos'],
                           coord, [null, MOEDA, '0']);
   lin = Math.max(c, e);
+
+  secaoPainel_(sh, lin, 'GESTÃO TÉCNICA', W); lin += 2;
+  lin = tabelaPainel_(sh, lin, 2, ['Gestor técnico', 'Venda sob gestão', 'Projetos'],
+                      gest, [null, MOEDA, '0']);
 
   sh.getRange(lin, 2, 1, W - 1).merge().setValue(
     'Ambiente sem nome preenchido não aparece em nenhuma destas tabelas, e mesmo assim gera comissão. '
@@ -778,6 +803,99 @@ function baseCustoFixo_(ss) {
 
   return escreverTabela_(ss, 'Base · Custo Fixo',
     ['Indicador', 'Grupo', 'Valor', 'Atualizado em'], linhas);
+}
+
+
+/**
+ * Acrescenta a linha de GESTÃO TÉCNICA no bloco 4 de todas as fichas, e a
+ * coluna correspondente no bloco 5.
+ *
+ * Gestão técnica é da mesma natureza da coordenação: uma pessoa por projeto,
+ * percentual sobre a receita líquida. 0,5%. A diferença é onde mora o nome —
+ * o da coordenação está na identificação, no topo da ficha, e o da gestão
+ * técnica fica na própria linha da comissão, coluna H. A identificação não tem
+ * campo livre, e nome colado na comissão que ele gera é mais difícil de
+ * esquecer de preencher.
+ *
+ * RODE QUANTAS VEZES PRECISAR. A função confere ficha por ficha se a linha já
+ * existe e pula as que já têm. Se o Google interromper no meio por tempo —
+ * são dezoito fichas e muita mesclagem —, é só rodar de novo: ela continua
+ * de onde parou.
+ */
+function adicionarGestaoTecnica() {
+  const ROSTER = EQUIPE_FICHA.concat(PROJETISTAS_FICHA);
+  const regra = SpreadsheetApp.newDataValidation()
+    .requireValueInList(ROSTER, true).setAllowInvalid(true)
+    .setHelpText('Quem faz a gestão técnica deste projeto.').build();
+
+  const ss = SpreadsheetApp.openById(ID_CUSTO);
+  const FIXAS = ['Instruções', FICHA.painel, 'Listas', FICHA.base];
+  let feitas = 0, puladas = 0;
+
+  ss.getSheets().forEach(function (sh) {
+    const nome = sh.getName();
+    if (FIXAS.indexOf(nome) >= 0) return;
+
+    // ── acha a linha da coordenação; é por ela que a ficha se reconhece ──
+    let rc = 0;
+    const rot = sh.getRange(50, 1, 40, 1).getDisplayValues();
+    for (let i = 0; i < rot.length; i++) {
+      if (String(rot[i][0] || '').indexOf('Coordenação de produção') === 0) { rc = 50 + i; break; }
+    }
+    if (!rc) { console.log('pulei "' + nome + '": não achei a linha de coordenação.'); return; }
+
+    if (String(sh.getRange(rc + 1, 1).getDisplayValue() || '').indexOf('Gestão técnica') === 0) {
+      puladas++;
+      return;
+    }
+
+    // ── 1 · a linha nova no bloco 4 ──
+    sh.insertRowAfter(rc);
+    const g = rc + 1;
+    sh.getRange(g, 1, 1, 15).breakApart();
+    sh.getRange(g, 5, 1, 2).merge();
+    sh.getRange(g, 8, 1, 8).merge();
+
+    sh.getRange(g, 1).setValue('Gestão técnica');
+    sh.getRange(g, 2).setValue(0.005).setNumberFormat('0.0%');
+    posF_(sh.getRange(g, 3), '=IF($B' + g + '="","",ROUND($B' + g + '*$C$45,2))');
+    posF_(sh.getRange(g, 4), '=IF($B' + g + '="","",ROUND($B' + g + '*$D$45,2))');
+    posF_(sh.getRange(g, 5), '=IF(OR($C' + g + '="",$D' + g + '=""),"",ROUND($D' + g + '-$C' + g + ',2))');
+    posF_(sh.getRange(g, 7), '=IF(OR($D' + g + '="",$A$13="",$A$13=0),"",$D' + g + '/$A$13)');
+    sh.getRange(g, 3, 1, 3).setNumberFormat(MOEDA);
+    sh.getRange(g, 7).setNumberFormat('0.0%');
+    sh.getRange(g, 8).setValue('').setDataValidation(regra)
+      .setHorizontalAlignment('left').setFontWeight('bold').setFontColor(NAVY2);
+
+    // ── 2 · bloco 5 passa a somar a gestão junto da coordenação ──
+    //
+    // Uma coluna só, e não uma coluna nova: a ficha tem quinze colunas fixas e
+    // abrir mais uma empurraria o bloco inteiro. Na mesma linha nunca há os
+    // dois — quem coordena não é quem faz gestão técnica —, então somar na
+    // mesma casa não mistura dinheiro de gente diferente.
+    let rh = 0;
+    const rot2 = sh.getRange(g, 1, 30, 1).getDisplayValues();
+    for (let i = 0; i < rot2.length; i++) {
+      if (String(rot2[i][0] || '').trim() === 'Colaborador') { rh = g + i; break; }
+    }
+    if (!rh) { console.log('aviso: "' + nome + '" ganhou a linha, mas não achei o bloco 5.'); feitas++; return; }
+
+    sh.getRange(rh, 8).setValue('Coordenação / Gestão técnica (R$)').setWrap(true);
+    for (let r = rh + 1; r < rh + 30; r++) {
+      const quem = String(sh.getRange(r, 1).getDisplayValue() || '').trim();
+      if (quem === 'TOTAL') break;
+      if (!quem) continue;
+      posF_(sh.getRange(r, 8),
+        '=IF($A' + r + '="","",IF($A' + r + '=$F$9,IF($D$' + rc + '="",0,$D$' + rc + '),0)'
+        + '+IF($A' + r + '=$H$' + g + ',IF($D$' + g + '="",0,$D$' + g + '),0))');
+    }
+    feitas++;
+  });
+
+  SpreadsheetApp.flush();
+  const r = feitas + ' ficha(s) com a linha nova, ' + puladas + ' já tinha(m)';
+  console.log('Gestão técnica: ' + r);
+  return r;
 }
 
 
@@ -1059,7 +1177,8 @@ function atualizarBase_() {
     'Receita líquida do projeto', 'Valor de venda',
     'Imposto %', 'Taxa de máquina %', 'RT %', 'Comissão do vendedor %',
     'Custos de venda',
-    'Custo total do projeto', 'Margem de contribuição'];
+    'Custo total do projeto', 'Margem de contribuição',
+    'Gestor técnico', 'Comissão gestão técnica'];
 
   base.clear();
   base.getRange(1, 1, 1, CAB.length).setValues([CAB])
@@ -1125,8 +1244,10 @@ function escreverBlocoBase_(base, i, nomeAba) {
       // custo total e margem: é daqui que sai a MC por projeto no painel
       L.push(cel_(ab, FICHA.custoTotal, r, false));
       L.push(cel_(ab, FICHA.margem, r, false));
+      L.push(cel_(ab, FICHA.gestorTecnico, r, true));
+      L.push(cel_(ab, FICHA.comGestao, r, false));
     } else {
-      L.push('', '', '', '', '', '', '', '', '', '', '');
+      L.push('', '', '', '', '', '', '', '', '', '', '', '', '');
     }
     linhas.push(L);
   }
@@ -1225,6 +1346,22 @@ function layout_(p) {
       { t: 'Comissão a receber', w: 15, calc: true, nf: MOEDA, total: true,
         f: soma('projCom', 'projQuem') },
     ]);
+    if (p.gestao) {
+      // Gestão técnica é por PROJETO, como a coordenação do Deivison: 0,5% da
+      // receita líquida. Na Base ela vive na primeira linha do bloco de doze,
+      // então o SUMIFS por projeto pega uma linha só e não multiplica.
+      cols[cols.length - 1] = { t: 'Comissão de projeto', w: 14, calc: true, nf: MOEDA,
+                                f: soma('projCom', 'projQuem') };
+      cols.push({ t: 'Gestão técnica', w: 14, calc: true, nf: MOEDA,
+                  f: soma('gestCom', 'gestQuem') });
+      cols.push({ t: 'Total a receber', w: 15, calc: true, nf: MOEDA, total: true,
+        f: function (r) {
+          const iP = cols.findIndex(function (c) { return c.t === 'Comissão de projeto'; }) + 1;
+          const iG = cols.findIndex(function (c) { return c.t === 'Gestão técnica'; }) + 1;
+          return '=IF($A' + r + '="","",ROUND($' + colLetra_(iP) + r
+               + '+$' + colLetra_(iG) + r + ',2))';
+        } });
+    }
   } else if (p.perfil === 'coordenacao') {
     cols = cols.concat([
       { t: 'Produção', w: 13, calc: true, nf: MOEDA, f: soma('prodCom', 'prodQuem') },
@@ -1264,7 +1401,7 @@ function atualizarIndividual_(p) {
   const bs = ss.getSheetByName('_base');
   if (bs) {
     const atual = bs.getRange('A1').getFormula();
-    const nova = atual.replace(/!A1:[A-Z]+\d+/, '!A1:AC' + BASE_FIM);
+    const nova = atual.replace(/!A1:[A-Z]+\d+/, '!A1:AE' + BASE_FIM);
     if (nova && nova !== atual) bs.getRange('A1').setFormula(nova);
   }
 

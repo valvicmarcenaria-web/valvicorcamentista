@@ -54,6 +54,10 @@ EQUIPE = ['Deivison', 'Ronald', 'Samuel', 'Cesar', 'Jhon',
 # Jackson saiu da equipe em out/2026. Fora do menu para não receber ambiente
 # novo — mas o nome continua nas fichas antigas, e a comissão que ele já gerou
 # continua somando. Desligamento não apaga o que foi feito.
+# Gestão técnica: 0,5% da receita líquida do projeto. Mesma lógica da
+# coordenação, cargo diferente.
+PCT_GESTAO = 0.005
+
 # Quem projeta o ambiente. Comissão de projetista, 1% do líquido por padrão.
 PROJETISTAS = ['Lorrane', 'Lucas', 'Bruna', 'Externo / avulso']
 VENDEDORES = ['Jonathan', 'Vitor', 'Indicação', 'Arquiteto parceiro', 'Outro']
@@ -242,8 +246,9 @@ R_AMB_T, R_AMB_H, R_AMB0 = R_LIQ + 2, R_LIQ + 3, R_LIQ + 4
 R_AMBF = R_AMB0 + N_AMB - 1
 R_AMB_TOT = R_AMBF + 1
 R_CO_T, R_CO_H = R_AMB_TOT + 2, R_AMB_TOT + 3
-R_COORD, R_PRODC, R_MONTC = R_CO_H + 1, R_CO_H + 2, R_CO_H + 3
-R_PROJC, R_CO_SUB = R_CO_H + 4, R_CO_H + 5
+R_COORD, R_GEST = R_CO_H + 1, R_CO_H + 2
+R_PRODC, R_MONTC = R_CO_H + 3, R_CO_H + 4
+R_PROJC, R_CO_SUB = R_CO_H + 5, R_CO_H + 6
 R_CL_T, R_CL_H, R_CL0 = R_CO_SUB + 2, R_CO_SUB + 3, R_CO_SUB + 4
 R_CLF = R_CL0 + N_COL - 1
 R_CL_TOT = R_CLF + 1
@@ -575,6 +580,14 @@ def montar_ficha(ws):
     linha_custo(ws, R_COORD, 'Coordenação de produção', 'pct',
                 base_o=f'$C${R_LIQ}', base_r=f'$D${R_LIQ}',
                 dica='quem coordena está na identificação, no topo da ficha')
+    # Gestão técnica: mesma natureza da coordenação — percentual sobre o líquido,
+    # uma pessoa por projeto. O nome fica na própria linha, na coluna H, e não na
+    # identificação lá em cima: a identificação não tem campo livre, e o nome
+    # colado na comissão que ele gera é mais difícil de esquecer de preencher.
+    linha_custo(ws, R_GEST, 'Gestão técnica', 'pct',
+                base_o=f'$C${R_LIQ}', base_r=f'$D${R_LIQ}')
+    ws[f'B{R_GEST}'] = PCT_GESTAO
+    dv(ws, literal(EQUIPE + PROJETISTAS), f'H{R_GEST}')   # mesma lista do bloco 5
     for rr, rot, orig, dica in (
             (R_PRODC, 'Comissão de produção', f'$F${R_AMB_TOT}',
              'orçado = % único estimado · realizado = soma dos ambientes'),
@@ -591,7 +604,12 @@ def montar_ficha(ws):
     titulo_secao(ws, R_CL_T, NCOL, '5 · Comissões por colaborador',
                  'consolidado automático — quem produziu, quem montou, quem projetou e o coordenador')
     cab(ws, R_CL_H, [(1, 1, 'Colaborador'), (2, 2, 'Produção (R$)'), (4, 2, 'Montagem (R$)'),
-                     (6, 2, 'Projeto (R$)'), (8, 2, 'Coordenação (R$)'),
+                     (6, 2, 'Projeto (R$)'),
+                     # Coordenação e gestão técnica dividem a mesma casa: a ficha
+                     # tem quinze colunas fixas e abrir mais uma empurraria o
+                     # bloco inteiro. Na mesma linha nunca há as duas — quem
+                     # coordena não é quem faz gestão técnica.
+                     (8, 2, 'Coordenação / Gestão técnica (R$)'),
                      (10, 4, 'Total no projeto (R$)')])
     ROSTER = EQUIPE + PROJETISTAS
     assert len(ROSTER) <= N_COL, f'cadastro com {len(ROSTER)} nomes, bloco 5 tem {N_COL} linhas'
@@ -606,7 +624,8 @@ def montar_ficha(ws):
         bloco(ws, r, 6, 2, f'=IF($A{r}="","",ROUND(SUMIF({AMB_PROJ_Q},$A{r},{AMB_PROJ_V}),2))',
               f=F_CALC, bg=CALC, al=RIGHT, nf=MOEDA)
         bloco(ws, r, 8, 2, f'=IF($A{r}="","",IF($A{r}=$F${R_ID4},'
-                           f'IF($D${R_COORD}="",0,$D${R_COORD}),0))',
+                           f'IF($D${R_COORD}="",0,$D${R_COORD}),0)'
+                           f'+IF($A{r}=$H${R_GEST},IF($D${R_GEST}="",0,$D${R_GEST}),0))',
               f=F_CALC, bg=CALC, al=RIGHT, nf=MOEDA)
         bloco(ws, r, 10, 4, f'=IF($A{r}="","",ROUND($B{r}+$D{r}+$F{r}+$H{r},2))',
               f=Font(name=F, size=10, bold=True, color=NAVY), bg=CALC, al=RIGHT, nf=MOEDA)
@@ -852,6 +871,7 @@ def preencher(ws, d):
         ws[f'H{r}'] = mq; ws[f'I{r}'] = mp
         ws[f'L{r}'] = jq; ws[f'M{r}'] = jp
     ws[f'B{R_COORD}'] = d['coord']
+    ws[f'H{R_GEST}'] = 'Bruna'      # gestão técnica tem dono, igual à coordenação
     ws[f'B{R_PRODC}'] = d['prod_o']; ws[f'B{R_MONTC}'] = d['mont_o']
     ws[f'B{R_PROJC}'] = d['proj_o']
     for cat, val in d['orcado_cat'].items():
@@ -1135,6 +1155,10 @@ CAB_BASE = [
     # o projetista recebe sobre o líquido — estes dois mostram a conta
     ('Receita líquida do projeto', 16, MOEDA), ('Valor de venda', 15, MOEDA),
 ]
+# Nota: esta Base nasce com 22 colunas. A forma final — 31 colunas, com
+# imposto, máquina, RT, vendedor, custos de venda, custo total, margem e
+# gestão técnica — é escrita por atualizar-tudo.gs, que é quem manda nela
+# no arquivo vivo. Aqui fica só o esqueleto de um arquivo recém-nascido.
 bs = wb.create_sheet('Base · Comissões')
 bs.sheet_properties.tabColor = GOLD
 bs.sheet_view.showGridLines = False
