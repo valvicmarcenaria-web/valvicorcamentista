@@ -59,6 +59,7 @@ const FICHA = {
  * conferindo se dá 3. A aba é apagada em seguida.
  */
 let SEP = ',';
+let CALIBRADO = false;
 
 function calibrar_(ss) {
   const tmp = ss.insertSheet('__teste_separador__');
@@ -71,6 +72,7 @@ function calibrar_(ss) {
   } finally {
     ss.deleteSheet(tmp);
   }
+  CALIBRADO = true;
   return SEP;
 }
 
@@ -276,6 +278,11 @@ function escreverBlocoBase_(destino, i, nomeAba) {
       linha.push('', '', '', '', '', '', '', '', '', '', '', '', '');
     }
     linhas.push(linha);
+  }
+  if (!CALIBRADO) {
+    // Já aconteceu: fórmula gravada com vírgula numa planilha que quer ponto e
+    // vírgula, e a ficha inteira vira #ERROR! sem nenhum aviso. Melhor parar.
+    throw new Error('fórmula escrita sem calibrar o separador.');
   }
   base.getRange(r0, 1, FICHA.ambQtd, linhas[0].length)
       .setFormulas(linhas.map(function (lin) { return lin.map(fx_); }));

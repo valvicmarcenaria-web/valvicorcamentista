@@ -91,6 +91,7 @@ const N_PROJ = 40, LIN0 = 4;
  * vírgula. A aba temporária é apagada em seguida, dê certo ou dê errado.
  */
 let SEP = ',';
+let CALIBRADO = false;
 
 function calibrar_(ss) {
   // Se uma execução anterior morreu no meio, a aba de teste pode ter ficado.
@@ -107,6 +108,7 @@ function calibrar_(ss) {
   } finally {
     ss.deleteSheet(tmp);
   }
+  CALIBRADO = true;
   return SEP;
 }
 
@@ -123,10 +125,27 @@ function fx_(f) {
   return out;
 }
 
-/** setFormula e setFormulas passando pelo tradutor. */
-function posF_(rg, f) { return rg.setFormula(fx_(f)); }
+/**
+ * setFormula e setFormulas passando pelo tradutor.
+ *
+ * A trava do CALIBRADO existe porque esse erro já aconteceu duas vezes: uma
+ * função nova escreve fórmula sem ter chamado calibrar_ antes, grava vírgula
+ * numa planilha que quer ponto e vírgula, e a ficha inteira vira #ERROR! sem
+ * nenhum aviso. Agora a execução para e diz o nome da função que esqueceu.
+ */
+function posF_(rg, f) {
+  exigirCalibracao_();
+  return rg.setFormula(fx_(f));
+}
 function posFs_(rg, m) {
+  exigirCalibracao_();
   return rg.setFormulas(m.map(function (lin) { return lin.map(fx_); }));
+}
+
+function exigirCalibracao_() {
+  if (CALIBRADO) return;
+  throw new Error('fórmula escrita sem calibrar o separador. '
+    + 'Chame calibrar_(ss) antes de escrever fórmula nesta planilha.');
 }
 
 
@@ -832,8 +851,12 @@ function adicionarGestaoTecnica() {
     .setHelpText('Quem faz a gestão técnica deste projeto.').build();
 
   const ss = SpreadsheetApp.openById(ID_CUSTO);
+  // SEM ISTO AS FÓRMULAS NASCEM QUEBRADAS. A planilha é pt_BR e quer ponto e
+  // vírgula; o Apps Script grava o texto cru. Toda função que escreve fórmula
+  // tem de calibrar antes — esqueci numa e a ficha inteira virou #ERROR!.
+  calibrar_(ss);
   const FIXAS = ['Instruções', FICHA.painel, 'Listas', FICHA.base];
-  let feitas = 0, puladas = 0;
+  let feitas = 0, refeitas = 0;
 
   ss.getSheets().forEach(function (sh) {
     const nome = sh.getName();
@@ -847,28 +870,34 @@ function adicionarGestaoTecnica() {
     }
     if (!rc) { console.log('pulei "' + nome + '": não achei a linha de coordenação.'); return; }
 
-    if (String(sh.getRange(rc + 1, 1).getDisplayValue() || '').indexOf('Gestão técnica') === 0) {
-      puladas++;
-      return;
-    }
-
-    // ── 1 · a linha nova no bloco 4 ──
-    sh.insertRowAfter(rc);
+    // Se a linha já existe, as fórmulas são reescritas assim mesmo. É de
+    // propósito: a primeira versão desta função gravou fórmula com o separador
+    // errado e deixou as fichas em #ERROR!. Função que só sabe criar não
+    // conserta o que ela própria estragou.
+    const jaTem = String(sh.getRange(rc + 1, 1).getDisplayValue() || '')
+                    .indexOf('Gestão técnica') === 0;
     const g = rc + 1;
-    sh.getRange(g, 1, 1, 15).breakApart();
-    sh.getRange(g, 5, 1, 2).merge();
-    sh.getRange(g, 8, 1, 8).merge();
 
-    sh.getRange(g, 1).setValue('Gestão técnica');
-    sh.getRange(g, 2).setValue(0.005).setNumberFormat('0.0%');
+    if (!jaTem) {
+      sh.insertRowAfter(rc);
+      sh.getRange(g, 1, 1, 15).breakApart();
+      sh.getRange(g, 5, 1, 2).merge();
+      sh.getRange(g, 8, 1, 8).merge();
+      sh.getRange(g, 1).setValue('Gestão técnica');
+    }
+    if (sh.getRange(g, 2).getValue() === '') {
+      sh.getRange(g, 2).setValue(0.005);
+    }
+    sh.getRange(g, 2).setNumberFormat('0.0%');
     posF_(sh.getRange(g, 3), '=IF($B' + g + '="","",ROUND($B' + g + '*$C$45,2))');
     posF_(sh.getRange(g, 4), '=IF($B' + g + '="","",ROUND($B' + g + '*$D$45,2))');
     posF_(sh.getRange(g, 5), '=IF(OR($C' + g + '="",$D' + g + '=""),"",ROUND($D' + g + '-$C' + g + ',2))');
     posF_(sh.getRange(g, 7), '=IF(OR($D' + g + '="",$A$13="",$A$13=0),"",$D' + g + '/$A$13)');
     sh.getRange(g, 3, 1, 3).setNumberFormat(MOEDA);
     sh.getRange(g, 7).setNumberFormat('0.0%');
-    sh.getRange(g, 8).setValue('').setDataValidation(regra)
+    sh.getRange(g, 8).setDataValidation(regra)
       .setHorizontalAlignment('left').setFontWeight('bold').setFontColor(NAVY2);
+    if (!jaTem) sh.getRange(g, 8).setValue('');   // limpa a dica herdada de cima
 
     // ── 2 · bloco 5 passa a somar a gestão junto da coordenação ──
     //
@@ -881,7 +910,11 @@ function adicionarGestaoTecnica() {
     for (let i = 0; i < rot2.length; i++) {
       if (String(rot2[i][0] || '').trim() === 'Colaborador') { rh = g + i; break; }
     }
-    if (!rh) { console.log('aviso: "' + nome + '" ganhou a linha, mas não achei o bloco 5.'); feitas++; return; }
+    if (!rh) {
+      console.log('aviso: "' + nome + '" tem a linha, mas não achei o bloco 5.');
+      if (jaTem) { refeitas++; } else { feitas++; }
+      return;
+    }
 
     sh.getRange(rh, 8).setValue('Coordenação / Gestão técnica (R$)').setWrap(true);
     for (let r = rh + 1; r < rh + 30; r++) {
@@ -892,11 +925,11 @@ function adicionarGestaoTecnica() {
         '=IF($A' + r + '="","",IF($A' + r + '=$F$9,IF($D$' + rc + '="",0,$D$' + rc + '),0)'
         + '+IF($A' + r + '=$H$' + g + ',IF($D$' + g + '="",0,$D$' + g + '),0))');
     }
-    feitas++;
+    if (jaTem) { refeitas++; } else { feitas++; }
   });
 
   SpreadsheetApp.flush();
-  const r = feitas + ' ficha(s) com a linha nova, ' + puladas + ' já tinha(m)';
+  const r = feitas + ' ficha(s) com a linha nova, ' + refeitas + ' com as fórmulas refeitas';
   console.log('Gestão técnica: ' + r);
   return r;
 }
