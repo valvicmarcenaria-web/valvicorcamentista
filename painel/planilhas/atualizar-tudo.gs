@@ -1044,6 +1044,160 @@ function completarFichas() {
 
 
 /**
+ * CONFERE TUDO. Não escreve nada, não cria aba, não apaga nada.
+ *
+ * Existe porque descobrir defeito por print de tela é caro: a planilha já está
+ * errada quando alguém percebe. Esta função percorre a cadeia inteira — ficha,
+ * Base, planilhas individuais, bases do painel, painel do Walton — e devolve
+ * uma lista de ok e FALHA no Registro de execução.
+ *
+ * Rode ANTES e DEPOIS de qualquer atualizarTudo. Antes, para saber de onde se
+ * está partindo; depois, para saber o que mudou.
+ */
+function validar() {
+  const L = [];
+  let n = 0, mau = 0;
+  const diz = function (t) { L.push(t); console.log(t); };
+  const ok = function (t, cond, det) {
+    n++;
+    if (!cond) mau++;
+    diz((cond ? '  ok    ' : '  FALHA ') + t + (det ? '   ·   ' + det : ''));
+  };
+  const ERRO = /^#(ERROR|REF|VALUE|NAME|DIV|N\/A|NUM|NULL)/;
+  const conta = function (vals) {
+    let c = 0;
+    vals.forEach(function (lin) {
+      lin.forEach(function (v) { if (ERRO.test(String(v))) c++; });
+    });
+    return c;
+  };
+
+  diz('════ CUSTO POR PROJETO ════');
+  const cp = SpreadsheetApp.openById(ID_CUSTO);
+  const FIXAS = ['Instruções', FICHA.painel, 'Ficha Modelo', 'Listas', FICHA.base];
+  const fichas = cp.getSheets().map(function (s) { return s.getName(); })
+                   .filter(function (x) { return FIXAS.indexOf(x) < 0; });
+
+  const pg = cp.getSheetByName(FICHA.painel);
+  const reg = pg.getRange(FICHA.pg0, 2, FICHA.pgf - FICHA.pg0 + 1, 1).getDisplayValues()
+                .map(function (r) { return String(r[0] || ''); })
+                .filter(function (x) { return x !== ''; });
+  ok('Painel Geral registra todas as fichas', reg.length === fichas.length,
+     reg.length + ' registrada(s) para ' + fichas.length + ' aba(s)');
+  const faltam = fichas.filter(function (f) { return reg.indexOf(f) < 0; });
+  ok('nenhuma ficha fora do Painel Geral', faltam.length === 0, faltam.join(' | '));
+
+  // ── Base · Comissões ──
+  const base = cp.getSheetByName(FICHA.base);
+  ok('Base · Comissões tem ' + FICHA.colsBase + ' colunas',
+     base.getLastColumn() === FICHA.colsBase, 'achei ' + base.getLastColumn());
+  const bv = base.getRange(2, 1, Math.max(1, base.getLastRow() - 1), base.getLastColumn())
+                 .getDisplayValues();
+  ok('Base sem célula de erro', conta(bv) === 0, conta(bv) + ' célula(s)');
+
+  // ── dinheiro sem dono, lido da Base ──
+  let semDono = 0, qtdSemDono = 0;
+  const bn = base.getRange(2, 1, Math.max(1, base.getLastRow() - 1), base.getLastColumn())
+                 .getValues();
+  bn.forEach(function (r) {
+    [[5, 7], [9, 11], [13, 15], [18, 19], [29, 30]].forEach(function (par) {
+      const quem = String(r[par[0]] || '').trim();
+      const val = Number(r[par[1]]) || 0;
+      if (val > 0 && !quem) { semDono += val; qtdSemDono++; }
+    });
+  });
+  ok('toda comissão tem dono', qtdSemDono === 0,
+     qtdSemDono + ' lançamento(s), R$ ' + semDono.toFixed(2));
+
+  // ── ficha por ficha ──
+  let semGestao = [], comErro = [], ambDifere = [];
+  fichas.concat(['Ficha Modelo']).forEach(function (nome) {
+    const sh = cp.getSheetByName(nome);
+    if (!sh || sh.getLastRow() < 70) { comErro.push(nome + ' (curta demais)'); return; }
+    const rot = String(sh.getRange('A66').getDisplayValue() || '');
+    if (rot.indexOf('Gestão técnica') !== 0) semGestao.push(nome);
+    const chave = sh.getRange('A13:A13').getDisplayValues()
+      .concat(sh.getRange('D22:D23').getDisplayValues())
+      .concat(sh.getRange('D45:D45').getDisplayValues())
+      .concat(sh.getRange('D65:D66').getDisplayValues())
+      .concat(sh.getRange('D70:D70').getDisplayValues());
+    if (conta(chave) > 0) comErro.push(nome);
+    const venda = Number(sh.getRange('A13').getValue()) || 0;
+    const soma = Number(sh.getRange('C61').getValue()) || 0;
+    if (venda > 0 && soma > 0 && Math.abs(venda - soma) > 1) {
+      ambDifere.push(nome + ' (R$ ' + (soma - venda).toFixed(2) + ')');
+    }
+  });
+  ok('todas as fichas têm a linha de gestão técnica', semGestao.length === 0,
+     semGestao.join(' | '));
+  ok('nenhuma ficha com erro nas células-chave', comErro.length === 0, comErro.join(' | '));
+  ok('ambientes somam o valor de venda', ambDifere.length === 0, ambDifere.join(' | '));
+
+  diz('');
+  diz('════ CONTROLE DE PAGAMENTOS ════');
+  const pgto = SpreadsheetApp.openById(ID_PAG);
+  [['Base · Projetos', 10], ['Base · Recebimentos', 10], ['Base · Custo Fixo', 4]]
+    .forEach(function (b) {
+      const sh = pgto.getSheetByName(b[0]);
+      ok(b[0] + ' existe e tem linha', !!sh && sh.getLastRow() > 1,
+         sh ? (sh.getLastRow() - 1) + ' linha(s)' : 'aba ausente');
+      if (sh) ok(b[0] + ' com ' + b[1] + ' colunas', sh.getLastColumn() === b[1],
+                 'achei ' + sh.getLastColumn());
+    });
+  const cf = pgto.getSheetByName('Base · Custo Fixo');
+  if (cf && cf.getLastRow() > 1) {
+    const v = cf.getRange(2, 3, cf.getLastRow() - 1, 1).getValues();
+    const zerados = v.filter(function (x) { return !Number(x[0]); }).length;
+    ok('custo fixo sem total zerado', zerados === 0, zerados + ' zerado(s)');
+  }
+
+  diz('');
+  diz('════ PLANILHAS INDIVIDUAIS ════');
+  PESSOAS.forEach(function (p) {
+    const ss = SpreadsheetApp.openById(p.id);
+    const sh = ss.getSheetByName('Comissões');
+    if (!sh) { ok(p.nome, false, 'aba Comissões não encontrada'); return; }
+
+    const esperado = layout_(p).map(function (c) { return c.t; });
+    const achado = sh.getRange(3, 1, 1, sh.getLastColumn()).getDisplayValues()[0]
+                     .map(function (x) { return String(x).trim(); });
+    const igual = esperado.length === achado.length
+      && esperado.every(function (t, i) { return t === achado[i]; });
+
+    const bs = ss.getSheetByName('_base');
+    const imp = bs ? bs.getRange('A1').getFormula() : '';
+    const faixaOk = imp.indexOf('A1:AE') > 0;
+    const dado = bs ? conta(bs.getRange('A2:B3').getDisplayValues()) === 0 : false;
+    const pa = ss.getSheetByName('Painel');
+    const erroPainel = pa ? conta(pa.getRange(5, 2, 26, 6).getDisplayValues()) : 99;
+
+    ok(p.nome + ' · colunas conferem com o perfil "' + p.perfil + '"', igual,
+       igual ? '' : 'esperado ' + esperado.length + ', achei ' + achado.length);
+    ok(p.nome + ' · IMPORTRANGE vai até AE', faixaOk, imp ? '' : 'sem _base');
+    ok(p.nome + ' · a Base chega sem erro', dado);
+    ok(p.nome + ' · Painel sem célula de erro', erroPainel === 0, erroPainel + ' célula(s)');
+  });
+
+  diz('');
+  diz('════ PAINEL DE GESTÃO ════');
+  const pn = SpreadsheetApp.openById(ID_PAINEL);
+  ['Visão geral', 'Margem por projeto', 'Comissões', 'Equipe', 'Como ler']
+    .forEach(function (aba) {
+      const sh = pn.getSheetByName(aba);
+      if (!sh) { ok('aba ' + aba, false, 'não existe'); return; }
+      const e = conta(sh.getRange(1, 1, Math.min(sh.getLastRow(), 60),
+                                  Math.max(1, sh.getLastColumn())).getDisplayValues());
+      ok('aba ' + aba + ' sem erro', e === 0, e + ' célula(s)');
+    });
+
+  diz('');
+  diz('════ ' + n + ' verificações · ' + mau + ' falha(s) ════');
+  if (!mau) diz('Pode apresentar.');
+  return L.join('\n');
+}
+
+
+/**
  * SÓ LÊ. Não escreve nada, não apaga nada, não altera uma célula sequer.
  *
  * Mostra no Registro de execução o que está de fato dentro das células do
