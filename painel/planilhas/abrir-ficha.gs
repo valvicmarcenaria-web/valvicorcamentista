@@ -45,7 +45,9 @@ const FICHA = {
   margem: 'D23',
   comGestao: 'D66',       // gestão técnica · 0,5% do líquido
   gestorTecnico: 'H66',   // o nome mora na própria linha da comissão
-  colsBase: 31,           // largura da Base · Comissões
+  vendedorNome: 'D9',
+  comVenda: 'D41',
+  colsBase: 33,           // largura da Base · Comissões
   painelLinha0: 11,       // Painel Geral · primeira vaga de projeto
   painelLinhaF: 50,
   baseLinha0: 2,          // Base · primeira linha de dados
@@ -274,8 +276,10 @@ function escreverBlocoBase_(destino, i, nomeAba) {
       linha.push(cel_(ab, FICHA.margem, r, false));
       linha.push(cel_(ab, FICHA.gestorTecnico, r, true));
       linha.push(cel_(ab, FICHA.comGestao, r, false));
+      linha.push(cel_(ab, FICHA.vendedorNome, r, true));
+      linha.push(cel_(ab, FICHA.comVenda, r, false));
     } else {
-      linha.push('', '', '', '', '', '', '', '', '', '', '', '', '');
+      linha.push('', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
     }
     linhas.push(linha);
   }
