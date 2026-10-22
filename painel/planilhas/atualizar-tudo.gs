@@ -36,7 +36,7 @@ const ID_CUSTO = '1tTJXG4w7lDvIcnd0dyr219-leOPwuURqrBk6lJIr18I';
 const PESSOAS = [
   { nome: 'Lorrane',  perfil: 'projetista',  pj: true,  id: '1VamDp_gzbRMMuWYSSrJoxjhfUDfMbJDjyVnGOliO2x0' },
   { nome: 'Lucas',    perfil: 'projetista',  pj: false, id: '18O6qW0T0JrFtvyhcSM_QPrNoQgNQg1XVCtBn1WDLAzI' },
-  { nome: 'Bruna',    perfil: 'projetista',  pj: true,  gestao: true,
+  { nome: 'Bruna',    perfil: 'gestao',      pj: true,
     id: '1kIvZ5chhDav8t7R_xh1c03ctqGXs2ZDc17WD8BglFk0' },
   { nome: 'Deivison', perfil: 'coordenacao', pj: true,  id: '1QLcbZFBHPVtpJ7tlEZ-h9uA1JF5dWeRUspIWDw1LYRQ' },
   { nome: 'Ronald',   perfil: 'operacao',    pj: true,  id: '1ZQ_WSDSj1PYYIDLx6UxIQ2wZbqdkS9wNYjPnFNrHWw0' },
@@ -139,7 +139,10 @@ const INK = '#1b2733';
 // continua nas fichas antigas, e a comissão que ele gerou continua somando.
 const EQUIPE_FICHA = ['Deivison', 'Ronald', 'Samuel', 'Cesar', 'Jhon', 'Joelson',
   'Davi', 'Jomar', 'Bruno', 'Wallace', 'Douglas', 'Terceiro / avulso'];
-const PROJETISTAS_FICHA = ['Lorrane', 'Lucas', 'Bruna', 'Externo / avulso'];
+// A Bruna saiu do menu de projetista: passou a Gestora Técnica e não desenha
+// projeto. Continua no cadastro do bloco 5, porque recebe.
+const PROJETISTAS_FICHA = ['Lorrane', 'Lucas', 'Externo / avulso'];
+const GESTORES_FICHA = ['Bruna'];
 const AV0 = 4, AVF = 33;          // faixa de lançamentos da aba Avulsos
 const MESES = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho',
   'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
@@ -823,7 +826,7 @@ function baseCustoFixo_(ss) {
  * de onde parou.
  */
 function adicionarGestaoTecnica() {
-  const ROSTER = EQUIPE_FICHA.concat(PROJETISTAS_FICHA);
+  const ROSTER = EQUIPE_FICHA.concat(PROJETISTAS_FICHA).concat(GESTORES_FICHA);
   const regra = SpreadsheetApp.newDataValidation()
     .requireValueInList(ROSTER, true).setAllowInvalid(true)
     .setHelpText('Quem faz a gestão técnica deste projeto.').build();
@@ -1346,22 +1349,18 @@ function layout_(p) {
       { t: 'Comissão a receber', w: 15, calc: true, nf: MOEDA, total: true,
         f: soma('projCom', 'projQuem') },
     ]);
-    if (p.gestao) {
-      // Gestão técnica é por PROJETO, como a coordenação do Deivison: 0,5% da
-      // receita líquida. Na Base ela vive na primeira linha do bloco de doze,
-      // então o SUMIFS por projeto pega uma linha só e não multiplica.
-      cols[cols.length - 1] = { t: 'Comissão de projeto', w: 14, calc: true, nf: MOEDA,
-                                f: soma('projCom', 'projQuem') };
-      cols.push({ t: 'Gestão técnica', w: 14, calc: true, nf: MOEDA,
-                  f: soma('gestCom', 'gestQuem') });
-      cols.push({ t: 'Total a receber', w: 15, calc: true, nf: MOEDA, total: true,
-        f: function (r) {
-          const iP = cols.findIndex(function (c) { return c.t === 'Comissão de projeto'; }) + 1;
-          const iG = cols.findIndex(function (c) { return c.t === 'Gestão técnica'; }) + 1;
-          return '=IF($A' + r + '="","",ROUND($' + colLetra_(iP) + r
-               + '+$' + colLetra_(iG) + r + ',2))';
-        } });
-    }
+  } else if (p.perfil === 'gestao') {
+    // Gestão técnica é por PROJETO, como a coordenação do Deivison: 0,5% da
+    // receita líquida. Na Base ela vive na primeira linha do bloco de doze,
+    // então o SUMIFS por projeto pega uma linha só e não multiplica por doze.
+    //
+    // A receita líquida aparece porque é a base do cálculo. Comissão que a
+    // pessoa não consegue conferir sozinha é comissão que gera desconfiança.
+    cols = cols.concat([
+      { t: 'Receita líquida do projeto', w: 16, calc: true, nf: MOEDA, f: doProjeto('liquido') },
+      { t: 'Gestão técnica · a receber', w: 16, calc: true, nf: MOEDA, total: true,
+        f: soma('gestCom', 'gestQuem') },
+    ]);
   } else if (p.perfil === 'coordenacao') {
     cols = cols.concat([
       { t: 'Produção', w: 13, calc: true, nf: MOEDA, f: soma('prodCom', 'prodQuem') },

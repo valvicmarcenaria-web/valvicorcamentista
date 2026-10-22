@@ -59,7 +59,11 @@ EQUIPE = ['Deivison', 'Ronald', 'Samuel', 'Cesar', 'Jhon',
 PCT_GESTAO = 0.005
 
 # Quem projeta o ambiente. Comissão de projetista, 1% do líquido por padrão.
-PROJETISTAS = ['Lorrane', 'Lucas', 'Bruna', 'Externo / avulso']
+# Quem desenha ambiente. A Bruna saiu daqui em out/2026: passou a Gestora
+# Técnica e não desenha projeto. Continua no ROSTER do bloco 5, porque
+# recebe — só não aparece mais no menu de projetista do ambiente.
+PROJETISTAS = ['Lorrane', 'Lucas', 'Externo / avulso']
+GESTORES = ['Bruna']
 VENDEDORES = ['Jonathan', 'Vitor', 'Indicação', 'Arquiteto parceiro', 'Outro']
 CAUSAS = ['Erro de projeto', 'Erro de medição', 'Erro de produção', 'Erro de montagem',
           'Falha de material', 'Dano no transporte', 'Mudança pedida pelo cliente',
@@ -587,7 +591,7 @@ def montar_ficha(ws):
     linha_custo(ws, R_GEST, 'Gestão técnica', 'pct',
                 base_o=f'$C${R_LIQ}', base_r=f'$D${R_LIQ}')
     ws[f'B{R_GEST}'] = PCT_GESTAO
-    dv(ws, literal(EQUIPE + PROJETISTAS), f'H{R_GEST}')   # mesma lista do bloco 5
+    dv(ws, literal(EQUIPE + PROJETISTAS + GESTORES), f'H{R_GEST}')   # mesma lista do bloco 5
     for rr, rot, orig, dica in (
             (R_PRODC, 'Comissão de produção', f'$F${R_AMB_TOT}',
              'orçado = % único estimado · realizado = soma dos ambientes'),
@@ -611,7 +615,7 @@ def montar_ficha(ws):
                      # coordena não é quem faz gestão técnica.
                      (8, 2, 'Coordenação / Gestão técnica (R$)'),
                      (10, 4, 'Total no projeto (R$)')])
-    ROSTER = EQUIPE + PROJETISTAS
+    ROSTER = EQUIPE + PROJETISTAS + GESTORES
     assert len(ROSTER) <= N_COL, f'cadastro com {len(ROSTER)} nomes, bloco 5 tem {N_COL} linhas'
     for i, r in enumerate(range(R_CL0, R_CLF + 1)):
         ws.row_dimensions[r].height = 17
@@ -1353,6 +1357,7 @@ COL_AMB = {'ambiente': 'A', 'pct_total': 'B', 'valor': 'C',
            'mont_quem': 'H', 'mont_pct': 'I', 'mont_com': 'J', 'montado_em': 'K',
            'proj_quem': 'L', 'proj_pct': 'M', 'proj_com': 'N', 'total': 'O'}
 MAPA.update({'NCOL': NCOL, 'EQUIPE': EQUIPE, 'PROJETISTAS': PROJETISTAS,
+             'GESTORES': GESTORES,
              'PROJETOS_ABAS': PROJETOS_ABAS, 'COL_AMB': COL_AMB,
              'CATEGORIAS_COMPRA': CATEGORIAS_COMPRA, 'LINHAS_OC': LINHAS_OC,
              'R_SUBGRUPO': R_SUBGRUPO,

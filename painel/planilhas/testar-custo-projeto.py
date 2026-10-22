@@ -184,7 +184,7 @@ print(f'  {testes - n0} verificações')
 n0 = testes
 print('\nTESTE 3 · comissões por colaborador (só quem recebe)')
 nomes = [ws.cell(r, 1).value for r in range(R_CL0, R_CLF + 1) if ws.cell(r, 1).value]
-N_ROSTER = len(M['EQUIPE']) + len(M['PROJETISTAS'])
+N_ROSTER = len(M['EQUIPE']) + len(M['PROJETISTAS']) + len(M['GESTORES'])
 ck(f'  a lista tem {N_ROSTER} nomes e {N_COL - N_ROSTER} linhas livres',
    len(nomes), N_ROSTER)
 # quem não assume ambiente não entra: ajudante geral e o administrativo
@@ -193,6 +193,8 @@ for proibido in ('Jonathan Godoy', 'Alex', 'Karla', 'Hugo', 'Filipe'):
 for quem in ('Jhon', 'Ronald', 'Lorrane', 'Lucas'):
     ck(f'  {quem} está no cadastro novo', quem in nomes, True)
 ck('  Bruna não recebe produção nem montagem', 'Bruna' in M['EQUIPE'], False)
+ck('  Bruna não desenha projeto', 'Bruna' in M['PROJETISTAS'], False)
+ck('  Bruna recebe, e por isso está no bloco 5', 'Bruna' in nomes, True)
 for r in range(R_CL0, R_CLF + 1):
     nome = ws.cell(r, 1).value
     if nome:
@@ -338,7 +340,7 @@ def lit(col, n):
 LISTAS = {'CATEGORIA': lit(4, len(M['CATEGORIAS_COMPRA'])), 'PAGAMENTO': lit(5, 8),
           'STATUS': lit(6, 3), 'EQUIPE': lit(1, N_EQUIPE), 'VENDEDOR': lit(2, 5),
           'CAUSA': lit(3, 9), 'PROJETISTA': lit(8, N_PROJ),
-          'ROSTER': '"' + ','.join(M['EQUIPE'] + M['PROJETISTAS']) + '"'}
+          'ROSTER': '"' + ','.join(M['EQUIPE'] + M['PROJETISTAS'] + M['GESTORES']) + '"'}
 VAL_ESPERADAS = {
     f'B{R_LAN0}:B{R_LANF}': 'CATEGORIA', f'G{R_LAN0}:G{R_LANF}': 'PAGAMENTO',
     f'I{R_LAN0}:I{R_LANF}': 'STATUS',
