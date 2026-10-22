@@ -1097,17 +1097,41 @@ function validar() {
 
   // ── dinheiro sem dono, lido da Base ──
   let semDono = 0, qtdSemDono = 0;
+  const FRENTES = [[5, 7, 'produção'], [9, 11, 'montagem'], [13, 15, 'projeto'],
+                   [18, 19, 'coordenação'], [29, 30, 'gestão técnica']];
+  const porFrente = {}, porProjeto = {};
   const bn = base.getRange(2, 1, Math.max(1, base.getLastRow() - 1), base.getLastColumn())
                  .getValues();
   bn.forEach(function (r) {
-    [[5, 7], [9, 11], [13, 15], [18, 19], [29, 30]].forEach(function (par) {
-      const quem = String(r[par[0]] || '').trim();
-      const val = Number(r[par[1]]) || 0;
-      if (val > 0 && !quem) { semDono += val; qtdSemDono++; }
+    FRENTES.forEach(function (f) {
+      const quem = String(r[f[0]] || '').trim();
+      const val = Number(r[f[1]]) || 0;
+      if (val <= 0 || quem) return;
+      semDono += val;
+      qtdSemDono++;
+      if (!porFrente[f[2]]) porFrente[f[2]] = { v: 0, n: 0 };
+      porFrente[f[2]].v += val;
+      porFrente[f[2]].n++;
+      const proj = String(r[0] || '').trim() || '(sem projeto)';
+      porProjeto[proj] = (porProjeto[proj] || 0) + val;
     });
   });
   ok('toda comissão tem dono', qtdSemDono === 0,
      qtdSemDono + ' lançamento(s), R$ ' + semDono.toFixed(2));
+
+  // Saber que há dinheiro sem dono não resolve nada. Saber em qual frente e em
+  // qual projeto é o que faz alguém levantar e ir preencher.
+  if (qtdSemDono) {
+    FRENTES.forEach(function (f) {
+      const x = porFrente[f[2]];
+      if (x) diz('          · ' + f[2] + ': R$ ' + x.v.toFixed(2)
+                 + '  em ' + x.n + ' lançamento(s)');
+    });
+    const piores = Object.keys(porProjeto)
+      .sort(function (a, b) { return porProjeto[b] - porProjeto[a]; }).slice(0, 5);
+    diz('          · onde mais dói: '
+        + piores.map(function (p) { return p + ' R$ ' + porProjeto[p].toFixed(2); }).join('  |  '));
+  }
 
   // ── ficha por ficha ──
   let semGestao = [], comErro = [], ambDifere = [];
@@ -1125,7 +1149,9 @@ function validar() {
     const venda = Number(sh.getRange('A13').getValue()) || 0;
     const soma = Number(sh.getRange('C61').getValue()) || 0;
     if (venda > 0 && soma > 0 && Math.abs(venda - soma) > 1) {
-      ambDifere.push(nome + ' (R$ ' + (soma - venda).toFixed(2) + ')');
+      const d = soma - venda;
+      ambDifere.push(nome.trim() + ': ' + (d < 0 ? 'faltam R$ ' + (-d).toFixed(2)
+                                                 : 'sobram R$ ' + d.toFixed(2)));
     }
   });
   ok('todas as fichas têm a linha de gestão técnica', semGestao.length === 0,
