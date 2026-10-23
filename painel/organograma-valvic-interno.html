@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Organograma interno · Valvic Marcenaria — Out/2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A3 landscape; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  :root{ --navy:#0E2038; --navy2:#16314f; --gold:#C2A05A; --gold-soft:#d8bd80;
+         --gold-dk:#a9863f; --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8;
+         --line2:#dfdacd; --green:#2f7d4f; --amber:#c47d0e; --blue:#2f5d8c; --red:#b0413f;
+         --ambbg:#fdf8ee; --goldbg:#f8f1de; --bluebg:#f0f4f9; --redbg:#fcf2f1; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3;
+        font-size:10px; line-height:1.4; -webkit-font-smoothing:antialiased; }
+  .sheet{ position:relative; width:420mm; height:297mm; background:var(--cream); margin:16px auto;
+          box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } }
+
+  .ph{ background:var(--navy); color:#fff; padding:4.5mm 11mm 3.5mm; position:relative; }
+  .ph::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:2.5px;
+              background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 38%,transparent 100%); }
+  .ph .top{ display:flex; align-items:center; gap:11px; }
+  .ph .mono{ width:28px; height:28px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:4px;
+             display:flex; align-items:center; justify-content:center;
+             font-family:'Cormorant Garamond',serif; font-weight:700; font-size:14px; color:var(--gold); }
+  .ph .co{ font-size:8.6px; font-weight:700; letter-spacing:2.3px; text-transform:uppercase; }
+  .ph .sub{ font-size:7.4px; color:rgba(255,255,255,.5); margin-top:1px; }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; margin-top:2px; line-height:1.05; }
+  .ph .kx{ font-size:7.4px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-top:1px; }
+  .ph .leg{ position:absolute; right:11mm; top:7mm; display:flex; gap:13px; align-items:center; }
+  .ph .leg .it{ display:flex; align-items:center; gap:5px; font-size:7.8px; color:rgba(255,255,255,.78); }
+  .ph .leg .dot{ width:9px; height:9px; border-radius:2px; }
+  .ph .sel{ position:absolute; right:11mm; bottom:4mm; font-size:7.6px; font-weight:700;
+            letter-spacing:1.6px; text-transform:uppercase; color:#fff; background:var(--red);
+            padding:2px 9px; border-radius:3px; }
+
+  .body{ flex:1; padding:3.5mm 11mm 0; display:flex; flex-direction:column; gap:2.6mm; min-height:0; }
+
+  .kpis{ display:grid; grid-template-columns:repeat(6,1fr); gap:2.6mm; }
+  .kpi{ border:1px solid var(--line2); border-radius:6px; background:#fff; padding:4px 9px; }
+  .kpi .r{ font-size:7px; font-weight:700; letter-spacing:1.3px; text-transform:uppercase; color:var(--muted); }
+  .kpi .v{ font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:700; color:var(--navy); line-height:1.1; }
+  .kpi .v small{ font-family:'Inter',sans-serif; font-size:9px; font-weight:600; color:var(--muted); }
+  .kpi .d{ font-size:7.2px; color:var(--muted); }
+
+  /* ─── tela do organograma ─── */
+  .org{ position:relative; width:398mm; height:176mm; }
+  .org svg{ position:absolute; inset:0; width:100%; height:100%; }
+  .nd{ position:absolute; }
+
+  .raiz{ border:1.5px solid var(--gold); border-radius:7px; background:var(--navy); color:#fff;
+         padding:4px 14px; text-align:center; }
+  .raiz .q{ font-size:6.8px; letter-spacing:1.9px; text-transform:uppercase; color:var(--gold-soft); }
+  .raiz .n{ font-family:'Cormorant Garamond',serif; font-size:14px; font-weight:700; line-height:1.15; }
+  .raiz .f{ font-size:7.4px; color:rgba(255,255,255,.7); }
+
+  .dir{ border:1.5px solid var(--gold); border-radius:7px; background:#fff; overflow:hidden; }
+  .dir .hd{ background:var(--navy); color:#fff; padding:4px 9px; text-align:center; position:relative; }
+  .dir .hd .q{ font-size:6.6px; letter-spacing:1.7px; text-transform:uppercase; color:var(--gold-soft); }
+  .dir .hd .n{ font-family:'Cormorant Garamond',serif; font-size:14.5px; font-weight:700; line-height:1.1; }
+  .dir .hd .f{ font-size:7.4px; color:rgba(255,255,255,.72); }
+  .dir .hd .rs{ position:absolute; right:7px; top:50%; transform:translateY(-50%);
+                font-size:9px; font-weight:700; color:var(--gold-soft); }
+  .dir .bd{ padding:3.5px 7px 4.5px; display:flex; flex-wrap:wrap; gap:2.5px; justify-content:center; }
+  .tag{ font-size:7.2px; padding:1px 5.5px; border-radius:9px; background:var(--goldbg);
+        color:var(--navy2); border:1px solid var(--line2); }
+
+  .area{ border:1px solid var(--line2); border-radius:6px; background:#fff; overflow:hidden; }
+  .area .hd{ background:var(--navy2); color:#fff; padding:3.5px 8px; display:flex;
+             align-items:baseline; justify-content:space-between; gap:8px; }
+  .area .hd b{ font-size:8.8px; }
+  .area .hd span{ font-size:7px; color:var(--gold-soft); letter-spacing:1.1px; text-transform:uppercase; }
+  .area .bd{ padding:4px 6px 5px; display:flex; flex-direction:column; gap:2.5px; }
+  .g4{ display:grid; grid-template-columns:repeat(4,1fr); gap:2.5px; }
+
+  .p{ display:flex; align-items:center; gap:5px; border:1px solid var(--line); border-radius:5px;
+      padding:2.5px 6px; background:#fff; }
+  .p .ini{ width:17px; height:17px; border-radius:50%; flex-shrink:0; display:flex; align-items:center;
+           justify-content:center; font-size:8px; font-weight:700; color:#fff; }
+  .p .tx{ flex:1; min-width:0; }
+  .p .nm{ font-size:8.8px; font-weight:700; color:var(--navy); line-height:1.15; }
+  .p .fn{ font-size:7.2px; color:var(--muted); line-height:1.2; }
+  .p .rr{ text-align:right; flex-shrink:0; }
+  .p .sal{ font-size:8.8px; font-weight:700; color:var(--navy2); line-height:1.15; }
+  .p .com{ font-size:7.2px; font-weight:600; color:var(--gold-dk); line-height:1.2; }
+  .p .ben{ font-size:6.6px; color:var(--muted); }
+  .p.socio .ini{ background:var(--navy); }
+  .p.pj .ini{ background:var(--blue); }
+  .p.clt .ini{ background:var(--green); }
+  .p.vaga{ border-style:dashed; border-color:var(--gold-dk); background:var(--ambbg); }
+  .p.vaga .ini{ background:var(--amber); }
+  .p.lider{ border-color:var(--gold); border-width:1.5px; background:var(--goldbg); }
+
+  .notas{ display:grid; grid-template-columns:1.25fr 1fr 1fr; gap:2.6mm; }
+  .nota{ border-left:3px solid var(--gold); background:var(--goldbg); padding:4px 8px;
+         border-radius:0 4px 4px 0; font-size:7.6px; line-height:1.42; }
+  .nota b{ color:var(--navy); }
+  .nota.az{ border-left-color:var(--blue); background:var(--bluebg); }
+  .nota.vm{ border-left-color:var(--red); background:var(--redbg); }
+
+  .pf{ margin-top:auto; border-top:1px solid var(--line2); padding:2.2mm 11mm 2.6mm;
+       display:flex; justify-content:space-between; align-items:center; font-size:7.2px; color:var(--muted); }
+  .pf .cl{ font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--red); }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="ph">
+    <div class="leg">
+      <div class="it"><span class="dot" style="background:#0E2038"></span>Sócio</div>
+      <div class="it"><span class="dot" style="background:#2f5d8c"></span>PJ</div>
+      <div class="it"><span class="dot" style="background:#2f7d4f"></span>CLT</div>
+      <div class="it"><span class="dot" style="background:#c47d0e"></span>Vaga aberta</div>
+    </div>
+    <div class="sel">Não circular</div>
+    <div class="top">
+      <div class="mono">V</div>
+      <div>
+        <div class="co">Valvic Marcenaria</div>
+        <div class="sub">Vargas Decor Ltda &nbsp;·&nbsp; CNPJ 17.269.304/0001-51 &nbsp;·&nbsp; Belo Horizonte / MG</div>
+      </div>
+    </div>
+    <div class="tt">Organograma com remuneração</div>
+    <div class="kx">Versão interna &nbsp;·&nbsp; posição de outubro de 2026</div>
+  </div>
+
+  <div class="body">
+
+    <div class="kpis">
+      <div class="kpi"><div class="r">Pessoas na folha</div><div class="v">18</div>
+        <div class="d">2 sócios · 8 PJ · 8 CLT</div></div>
+      <div class="kpi"><div class="r">Fixo + benefícios</div><div class="v"><small>R$</small> 76.960</div>
+        <div class="d">antes dos encargos</div></div>
+      <div class="kpi"><div class="r">Encargos CLT</div><div class="v"><small>R$</small> 9.108</div>
+        <div class="d">33% sobre o fixo dos 8 CLT</div></div>
+      <div class="kpi"><div class="r">Folha mensal</div><div class="v"><small>R$</small> 86.068</div>
+        <div class="d">fonte: aba Custo Fixo</div></div>
+      <div class="kpi"><div class="r">Pró-labore</div><div class="v"><small>R$</small> 20.000</div>
+        <div class="d">26% da folha · 2 sócios</div></div>
+      <div class="kpi"><div class="r">Comissão da operação</div><div class="v">15–22<small>%</small></div>
+        <div class="d">sobre a receita líquida</div></div>
+    </div>
+
+    <div class="org">
+      <svg viewBox="0 0 398 176" preserveAspectRatio="none">
+        <g fill="none" stroke="#a9863f" stroke-width="0.5">
+          <!-- sociedade → diretores -->
+          <path d="M199 15 L199 20 M105 20 L293 20 M105 20 L105 25 M293 20 L293 25"/>
+          <!-- Jonathan → comercial e administrativo -->
+          <path d="M105 55 L105 60 M52 60 L146 60 M52 60 L52 65 M146 60 L146 65"/>
+          <!-- Paulo → projeto e gestão técnica -->
+          <path d="M293 55 L293 60 M251 60 L293 60 M251 60 L251 65"/>
+          <!-- Paulo → produção, contornando pela direita -->
+          <path d="M293 60 L380 60 L380 117 L199 117 L199 122"/>
+        </g>
+        <!-- linha pontilhada: projeto também atende o comercial -->
+        <g fill="none" stroke="#2f5d8c" stroke-width="0.5" stroke-dasharray="1.6 1.4">
+          <path d="M105 55 L105 62.5 L251 62.5 L251 65"/>
+        </g>
+        <text x="178" y="61.4" font-size="2.6" fill="#2f5d8c"
+              font-family="Inter, Arial" font-weight="600">apoio ao comercial</text>
+      </svg>
+
+      <!-- ─── raiz ─── -->
+      <div class="nd" style="left:104mm; top:0; width:190mm">
+        <div class="raiz">
+          <div class="q">Sociedade</div>
+          <div class="n">Walton &nbsp;·&nbsp; Jonathan Oliveira &nbsp;·&nbsp; Paulo Henrique</div>
+          <div class="f">sócio investidor · sócio-diretor · sócio-diretor</div>
+        </div>
+      </div>
+
+      <!-- ─── diretores ─── -->
+      <div class="nd" style="left:30mm; top:25mm; width:150mm">
+        <div class="dir">
+          <div class="hd">
+            <div class="q">Sócio · Direção</div>
+            <div class="n">Jonathan Oliveira</div>
+            <div class="f">Diretor Comercial &amp; Experiência</div>
+            <div class="rs">R$ 10.000</div>
+          </div>
+          <div class="bd">
+            <span class="tag">Comercial e fechamento</span>
+            <span class="tag">Relacionamento com parceiras</span>
+            <span class="tag">Pós-venda</span>
+            <span class="tag">Jurídico e contábil</span>
+            <span class="tag">RH</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="nd" style="left:218mm; top:25mm; width:150mm">
+        <div class="dir">
+          <div class="hd">
+            <div class="q">Sócio · Direção</div>
+            <div class="n">Paulo Henrique</div>
+            <div class="f">Diretor de Operações &amp; Tecnologia</div>
+            <div class="rs">R$ 10.000</div>
+          </div>
+          <div class="bd">
+            <span class="tag">Produção e máquinas</span>
+            <span class="tag">Programação CNC</span>
+            <span class="tag">Compras técnicas</span>
+            <span class="tag">Manutenção</span>
+            <span class="tag">Formação da equipe</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── áreas ─── -->
+      <div class="nd" style="left:8mm; top:65mm; width:88mm">
+        <div class="area">
+          <div class="hd"><b>Comercial</b><span>1 vaga</span></div>
+          <div class="bd">
+            <div class="p vaga"><div class="ini">?</div>
+              <div class="tx"><div class="nm">Vendedor(a)</div>
+                <div class="fn">vaga em aberto</div></div>
+              <div class="rr"><div class="sal">R$ 2.000</div>
+                <div class="com">2% a 5% escalonado</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nd" style="left:102mm; top:65mm; width:88mm">
+        <div class="area">
+          <div class="hd"><b>Administrativo e Financeiro</b><span>1</span></div>
+          <div class="bd">
+            <div class="p clt"><div class="ini">K</div>
+              <div class="tx"><div class="nm">Karla</div>
+                <div class="fn">compras, cobrança, nota fiscal</div></div>
+              <div class="rr"><div class="sal">R$ 2.000</div>
+                <div class="ben">+ R$ 1.050 benef.</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nd" style="left:196mm; top:65mm; width:110mm">
+        <div class="area">
+          <div class="hd"><b>Projeto e Gestão Técnica</b><span>3 pessoas</span></div>
+          <div class="bd">
+            <div class="p pj lider"><div class="ini">B</div>
+              <div class="tx"><div class="nm">Bruna</div>
+                <div class="fn">Gestora Técnica</div></div>
+              <div class="rr"><div class="sal">R$ 4.000</div>
+                <div class="com">0,5% gestão</div></div></div>
+            <div class="p pj"><div class="ini">L</div>
+              <div class="tx"><div class="nm">Lorrane</div>
+                <div class="fn">Projetista</div></div>
+              <div class="rr"><div class="sal">R$ 4.800</div>
+                <div class="com">1,0% projeto</div></div></div>
+            <div class="p clt"><div class="ini">L</div>
+              <div class="tx"><div class="nm">Lucas</div>
+                <div class="fn">Projetista</div></div>
+              <div class="rr"><div class="sal">R$ 3.500</div>
+                <div class="com">1,0% projeto</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── produção ─── -->
+      <div class="nd" style="left:8mm; top:122mm; width:382mm">
+        <div class="area">
+          <div class="hd"><b>Produção</b><span>12 pessoas &nbsp;·&nbsp; comissão sobre a receita líquida do ambiente</span></div>
+          <div class="bd">
+            <div class="p pj lider"><div class="ini">D</div>
+              <div class="tx"><div class="nm">Deivison</div>
+                <div class="fn">Coordenador de Produção · coordena os projetos em andamento</div></div>
+              <div class="rr"><div class="sal">R$ 4.000</div>
+                <div class="com">1,0% coordenação</div></div></div>
+            <div class="g4">
+              <div class="p pj"><div class="ini">J</div>
+                <div class="tx"><div class="nm">Joelson</div><div class="fn">Operador CNC</div></div>
+                <div class="rr"><div class="sal">R$ 3.800</div><div class="com">2,5%</div></div></div>
+              <div class="p pj"><div class="ini">R</div>
+                <div class="tx"><div class="nm">Ronald</div><div class="fn">Marceneiro</div></div>
+                <div class="rr"><div class="sal">R$ 6.500</div><div class="com">2,5%</div></div></div>
+              <div class="p pj"><div class="ini">S</div>
+                <div class="tx"><div class="nm">Samuel</div><div class="fn">Marceneiro Sênior</div></div>
+                <div class="rr"><div class="sal">R$ 3.900</div><div class="com">2,5%</div></div></div>
+              <div class="p pj"><div class="ini">C</div>
+                <div class="tx"><div class="nm">Cesar</div><div class="fn">Marceneiro</div></div>
+                <div class="rr"><div class="sal">R$ 3.900</div><div class="com">2,5%</div></div></div>
+              <div class="p pj"><div class="ini">J</div>
+                <div class="tx"><div class="nm">Jhon</div><div class="fn">Marceneiro</div></div>
+                <div class="rr"><div class="sal">R$ 3.300</div><div class="com">2,5%</div></div></div>
+              <div class="p clt"><div class="ini">J</div>
+                <div class="tx"><div class="nm">Jomar</div><div class="fn">Marceneiro</div></div>
+                <div class="rr"><div class="sal">R$ 2.000</div><div class="com">2,5%</div></div></div>
+              <div class="p clt"><div class="ini">D</div>
+                <div class="tx"><div class="nm">Davi</div><div class="fn">Marceneiro Júnior</div></div>
+                <div class="rr"><div class="sal">R$ 2.200</div><div class="com">2,5%</div></div></div>
+              <div class="p clt"><div class="ini">B</div>
+                <div class="tx"><div class="nm">Bruno</div><div class="fn">Auxiliar de Marceneiro</div></div>
+                <div class="rr"><div class="sal">R$ 2.000</div><div class="com">2,5%</div></div></div>
+              <div class="p clt"><div class="ini">W</div>
+                <div class="tx"><div class="nm">Wallace</div><div class="fn">Auxiliar de Marceneiro</div></div>
+                <div class="rr"><div class="sal">R$ 1.750</div><div class="com">2,5%</div></div></div>
+              <div class="p clt"><div class="ini">D</div>
+                <div class="tx"><div class="nm">Douglas</div><div class="fn">Trainee</div></div>
+                <div class="rr"><div class="sal">R$ 1.620</div><div class="com">2,5%</div></div></div>
+              <div class="p clt"><div class="ini">A</div>
+                <div class="tx"><div class="nm">Alex</div><div class="fn">Trainee</div></div>
+                <div class="rr"><div class="sal">R$ 1.620</div><div class="com">2,5%</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notas">
+      <div class="nota vm">
+        <b>O percentual é por ambiente, não por pessoa.</b> O que está no quadro é o valor usual
+        praticado. Produção e montagem variam de 2,0% a 2,7% e coordenação de 0,5% a 1,0%,
+        conforme o que foi digitado na ficha de cada projeto. Quem manda é a ficha.
+      </div>
+      <div class="nota az">
+        <b>Metade da equipe contratada é PJ.</b> Oito de dezesseis, e não são os periféricos: o
+        coordenador de produção, a gestora técnica e quatro dos seis marceneiros experientes.
+      </div>
+      <div class="nota">
+        <b>Projeto atende os dois lados.</b> A linha pontilhada mostra que projetistas e gestão
+        técnica também respondem ao comercial — é quem transforma a conversa com o cliente em
+        projeto executável.
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <div>Valvic Marcenaria · organograma com remuneração · outubro/2026 · fonte: aba Custo Fixo e fichas de projeto</div>
+    <div class="cl">Confidencial · não circular</div>
+  </div>
+</div>
+</body>
+</html>
