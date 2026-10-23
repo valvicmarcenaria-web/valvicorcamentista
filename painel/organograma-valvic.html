@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Organograma · Valvic Marcenaria — Out/2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A3 landscape; margin: 0; }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  :root{ --navy:#0E2038; --navy2:#16314f; --navy3:#1e4269; --gold:#C2A05A; --gold-soft:#d8bd80;
+         --gold-dk:#a9863f; --cream:#FBFAF7; --ink:#1b2733; --muted:#6c7785; --line:#e8e3d8;
+         --line2:#dfdacd; --green:#2f7d4f; --amber:#c47d0e; --red:#b0413f; --blue:#2f5d8c;
+         --okbg:#eff5f1; --ambbg:#fdf8ee; --goldbg:#f8f1de; --bluebg:#f0f4f9; }
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:var(--ink); background:#d9dde3;
+        font-size:10px; line-height:1.4; -webkit-font-smoothing:antialiased; }
+  .sheet{ position:relative; width:420mm; height:297mm; background:var(--cream); margin:16px auto;
+          box-shadow:0 10px 40px rgba(11,22,40,.22); overflow:hidden; display:flex; flex-direction:column; }
+  @media print{ body{ background:#fff; } .sheet{ margin:0; box-shadow:none; } }
+
+  .ph{ background:var(--navy); color:#fff; padding:5mm 11mm 4mm; position:relative; }
+  .ph::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:2.5px;
+              background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 38%,transparent 100%); }
+  .ph .top{ display:flex; align-items:center; gap:11px; }
+  .ph .mono{ width:30px; height:30px; flex-shrink:0; border:1.5px solid var(--gold); border-radius:4px;
+             display:flex; align-items:center; justify-content:center;
+             font-family:'Cormorant Garamond',serif; font-weight:700; font-size:15px; color:var(--gold); }
+  .ph .co{ font-size:9px; font-weight:700; letter-spacing:2.4px; text-transform:uppercase; }
+  .ph .sub{ font-size:7.6px; color:rgba(255,255,255,.5); letter-spacing:.4px; margin-top:2px; }
+  .ph .tt{ font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700; margin-top:3px; line-height:1.05; }
+  .ph .kx{ font-size:7.6px; letter-spacing:2.6px; text-transform:uppercase; color:var(--gold); margin-top:2px; }
+  .ph .leg{ position:absolute; right:11mm; top:8mm; display:flex; gap:14px; align-items:center; }
+  .ph .leg .it{ display:flex; align-items:center; gap:5px; font-size:8px; color:rgba(255,255,255,.78); }
+  .ph .leg .dot{ width:9px; height:9px; border-radius:2px; }
+
+  .body{ flex:1; padding:4.5mm 11mm 0; display:flex; flex-direction:column; gap:3.6mm; min-height:0; }
+
+  /* ─── KPIs ─── */
+  .kpis{ display:grid; grid-template-columns:repeat(5,1fr); gap:3mm; }
+  .kpi{ border:1px solid var(--line2); border-radius:7px; background:#fff; padding:6px 10px; }
+  .kpi .r{ font-size:7.4px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); }
+  .kpi .v{ font-family:'Cormorant Garamond',serif; font-size:23px; font-weight:700; color:var(--navy); line-height:1.1; }
+  .kpi .v small{ font-family:'Inter',sans-serif; font-size:10px; font-weight:600; color:var(--muted); }
+  .kpi .d{ font-size:7.8px; color:var(--muted); margin-top:1px; }
+
+  /* ─── organograma ─── */
+  .org{ flex:1; display:grid; grid-template-columns:1.52fr 1.52fr 0.82fr; gap:4.5mm; min-height:0; }
+  .cel{ display:flex; flex-direction:column; gap:2.6mm; min-height:0; }
+
+  .chefe{ border:1.5px solid var(--gold); border-radius:8px; background:#fff; overflow:hidden; }
+  .chefe .hd{ background:var(--navy); color:#fff; padding:6px 11px; }
+  .chefe .hd .q{ font-size:7.4px; letter-spacing:1.9px; text-transform:uppercase; color:var(--gold-soft); }
+  .chefe .hd .n{ font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:700; line-height:1.1; }
+  .chefe .hd .f{ font-size:8.4px; color:rgba(255,255,255,.72); margin-top:1px; }
+  .chefe .bd{ padding:6px 11px 8px; display:flex; flex-wrap:wrap; gap:4px; }
+  .tag{ font-size:8px; padding:2px 7px; border-radius:10px; background:var(--goldbg); color:var(--navy2);
+        border:1px solid var(--line2); }
+
+  .area{ border:1px solid var(--line2); border-radius:7px; background:#fff; overflow:hidden;
+         display:flex; flex-direction:column; min-height:0; }
+  .area > .hd{ background:var(--navy2); color:#fff; padding:4.5px 10px; display:flex;
+               align-items:baseline; justify-content:space-between; }
+  .area > .hd b{ font-size:9.6px; letter-spacing:.3px; }
+  .area > .hd span{ font-size:7.6px; color:var(--gold-soft); letter-spacing:1.3px; text-transform:uppercase; }
+  .area > .bd{ padding:6px 8px 7px; display:flex; flex-direction:column; gap:3.5px; min-height:0; }
+
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:3.5px; }
+  .grid3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:3.5px; }
+
+  .p{ display:flex; align-items:center; gap:6px; border:1px solid var(--line); border-radius:5px;
+      padding:3.5px 7px; background:#fff; }
+  .p .ini{ width:19px; height:19px; border-radius:50%; flex-shrink:0; display:flex; align-items:center;
+           justify-content:center; font-size:8.4px; font-weight:700; color:#fff; }
+  .p .tx{ min-width:0; }
+  .p .nm{ font-size:9.4px; font-weight:700; color:var(--navy); line-height:1.15; }
+  .p .fn{ font-size:7.8px; color:var(--muted); line-height:1.2; }
+  .p.socio .ini{ background:var(--navy); }
+  .p.pj .ini{ background:var(--blue); }
+  .p.clt .ini{ background:var(--green); }
+  .p.vaga{ border-style:dashed; border-color:var(--gold-dk); background:var(--ambbg); }
+  .p.vaga .ini{ background:var(--amber); }
+  .p.lider{ border-color:var(--gold); border-width:1.5px; background:var(--goldbg); }
+
+  .nota{ border-left:3px solid var(--gold); background:var(--goldbg); padding:5px 9px;
+         border-radius:0 4px 4px 0; font-size:8px; line-height:1.45; color:var(--ink); }
+  .nota b{ color:var(--navy); }
+
+  .pf{ margin-top:auto; border-top:1px solid var(--line2); padding:2.8mm 11mm 3.2mm;
+       display:flex; justify-content:space-between; align-items:center; font-size:7.4px; color:var(--muted); }
+  .pf .cl{ font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold-dk); }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="ph">
+    <div class="leg">
+      <div class="it"><span class="dot" style="background:#0E2038"></span>Sócio</div>
+      <div class="it"><span class="dot" style="background:#2f5d8c"></span>PJ</div>
+      <div class="it"><span class="dot" style="background:#2f7d4f"></span>CLT</div>
+      <div class="it"><span class="dot" style="background:#c47d0e"></span>Vaga aberta</div>
+    </div>
+    <div class="top">
+      <div class="mono">V</div>
+      <div>
+        <div class="co">Valvic Marcenaria</div>
+        <div class="sub">Vargas Decor Ltda &nbsp;·&nbsp; CNPJ 17.269.304/0001-51 &nbsp;·&nbsp; Belo Horizonte / MG</div>
+      </div>
+    </div>
+    <div class="tt">Organograma</div>
+    <div class="kx">Estrutura de pessoal &nbsp;·&nbsp; posição de outubro de 2026</div>
+  </div>
+
+  <div class="body">
+
+    <div class="kpis">
+      <div class="kpi"><div class="r">Pessoas na folha</div><div class="v">18</div>
+        <div class="d">2 sócios · 8 PJ · 8 CLT</div></div>
+      <div class="kpi"><div class="r">Produção</div><div class="v">12</div>
+        <div class="d">chão de fábrica e montagem</div></div>
+      <div class="kpi"><div class="r">Projeto e técnica</div><div class="v">3</div>
+        <div class="d">gestão técnica e projetistas</div></div>
+      <div class="kpi"><div class="r">Administrativo</div><div class="v">1</div>
+        <div class="d">+ 1 vaga comercial em aberto</div></div>
+      <div class="kpi"><div class="r">Folha mensal</div>
+        <div class="v"><small>R$</small> 86.068</div>
+        <div class="d">com encargos · fonte: aba Custo Fixo</div></div>
+    </div>
+
+    <div class="org">
+
+      <!-- ─── coluna 1 · Jonathan ─── -->
+      <div class="cel">
+        <div class="chefe">
+          <div class="hd">
+            <div class="q">Sócio · Direção</div>
+            <div class="n">Jonathan Oliveira</div>
+            <div class="f">Diretor Comercial &amp; Experiência</div>
+          </div>
+          <div class="bd">
+            <span class="tag">Comercial e fechamento</span>
+            <span class="tag">Relacionamento com parceiras</span>
+            <span class="tag">Pós-venda</span>
+            <span class="tag">Jurídico e contábil</span>
+            <span class="tag">Visão e expansão</span>
+          </div>
+        </div>
+
+        <div class="area">
+          <div class="hd"><b>Comercial</b><span>1 vaga</span></div>
+          <div class="bd">
+            <div class="p vaga"><div class="ini">?</div><div class="tx">
+              <div class="nm">Vendedor(a) · vaga em aberto</div>
+              <div class="fn">Venda ativa de marcenaria de alto padrão · SketchUp · CRM</div></div></div>
+          </div>
+        </div>
+
+        <div class="area">
+          <div class="hd"><b>Administrativo e operacional</b><span>1 pessoa</span></div>
+          <div class="bd">
+            <div class="p clt"><div class="ini">K</div><div class="tx">
+              <div class="nm">Karla</div>
+              <div class="fn">Assistente Operacional · administrativo, compras, cobrança, RH</div></div></div>
+          </div>
+        </div>
+
+        <div class="nota">
+          <b>Onde a estrutura dói deste lado.</b> Todo o cliente passa pelo Jonathan, e a vaga
+          comercial em aberto mantém nele a venda inteira. É a contratação que mais muda o
+          desenho desta coluna.
+        </div>
+      </div>
+
+      <!-- ─── coluna 2 · Paulo ─── -->
+      <div class="cel">
+        <div class="chefe">
+          <div class="hd">
+            <div class="q">Sócio · Direção</div>
+            <div class="n">Paulo Henrique</div>
+            <div class="f">Diretor de Operações &amp; Tecnologia</div>
+          </div>
+          <div class="bd">
+            <span class="tag">Produção e máquinas</span>
+            <span class="tag">Programação CNC</span>
+            <span class="tag">Compras técnicas</span>
+            <span class="tag">Manutenção</span>
+            <span class="tag">Formação da equipe</span>
+          </div>
+        </div>
+
+        <div class="area">
+          <div class="hd"><b>Projeto e gestão técnica</b><span>3 pessoas</span></div>
+          <div class="bd">
+            <div class="p pj lider"><div class="ini">B</div><div class="tx">
+              <div class="nm">Bruna</div>
+              <div class="fn">Gestora Técnica · comissão de 0,5% do líquido por projeto</div></div></div>
+            <div class="grid2">
+              <div class="p pj"><div class="ini">L</div><div class="tx">
+                <div class="nm">Lorrane</div><div class="fn">Projetista</div></div></div>
+              <div class="p clt"><div class="ini">L</div><div class="tx">
+                <div class="nm">Lucas</div><div class="fn">Projetista</div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="area">
+          <div class="hd"><b>Produção</b><span>12 pessoas</span></div>
+          <div class="bd">
+            <div class="p pj lider"><div class="ini">D</div><div class="tx">
+              <div class="nm">Deivison</div>
+              <div class="fn">Coordenador de Produção · coordena os projetos em andamento</div></div></div>
+            <div class="grid3">
+              <div class="p pj"><div class="ini">J</div><div class="tx">
+                <div class="nm">Joelson</div><div class="fn">Operador CNC e máquinas</div></div></div>
+              <div class="p pj"><div class="ini">R</div><div class="tx">
+                <div class="nm">Ronald</div><div class="fn">Marceneiro</div></div></div>
+              <div class="p pj"><div class="ini">S</div><div class="tx">
+                <div class="nm">Samuel</div><div class="fn">Marceneiro Sênior</div></div></div>
+              <div class="p pj"><div class="ini">C</div><div class="tx">
+                <div class="nm">Cesar</div><div class="fn">Marceneiro</div></div></div>
+              <div class="p pj"><div class="ini">J</div><div class="tx">
+                <div class="nm">Jhon</div><div class="fn">Marceneiro</div></div></div>
+              <div class="p clt"><div class="ini">J</div><div class="tx">
+                <div class="nm">Jomar</div><div class="fn">Marceneiro</div></div></div>
+              <div class="p clt"><div class="ini">D</div><div class="tx">
+                <div class="nm">Davi</div><div class="fn">Marceneiro Júnior</div></div></div>
+              <div class="p clt"><div class="ini">B</div><div class="tx">
+                <div class="nm">Bruno</div><div class="fn">Auxiliar de Marceneiro</div></div></div>
+              <div class="p clt"><div class="ini">W</div><div class="tx">
+                <div class="nm">Wallace</div><div class="fn">Trainee</div></div></div>
+              <div class="p clt"><div class="ini">D</div><div class="tx">
+                <div class="nm">Douglas</div><div class="fn">Trainee</div></div></div>
+              <div class="p clt"><div class="ini">A</div><div class="tx">
+                <div class="nm">Alex</div><div class="fn">Ajudante Geral</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── coluna 3 · sociedade e notas ─── -->
+      <div class="cel">
+        <div class="area">
+          <div class="hd"><b>Sociedade</b><span>investimento</span></div>
+          <div class="bd">
+            <div class="p socio"><div class="ini">W</div><div class="tx">
+              <div class="nm">Walton</div>
+              <div class="fn">Sócio investidor · grupo de construtoras e incorporadora</div></div></div>
+            <div class="p socio"><div class="ini">O</div><div class="tx">
+              <div class="nm">Otávio</div>
+              <div class="fn">Assessor do investidor</div></div></div>
+            <div class="p socio"><div class="ini">J</div><div class="tx">
+              <div class="nm">Jonathan Oliveira</div><div class="fn">Sócio-diretor</div></div></div>
+            <div class="p socio"><div class="ini">P</div><div class="tx">
+              <div class="nm">Paulo Henrique</div><div class="fn">Sócio-diretor</div></div></div>
+          </div>
+        </div>
+
+        <div class="area">
+          <div class="hd"><b>Composição</b><span>vínculo</span></div>
+          <div class="bd">
+            <div class="p"><div class="ini" style="background:#0E2038">2</div><div class="tx">
+              <div class="nm">Sócios</div><div class="fn">pró-labore</div></div></div>
+            <div class="p"><div class="ini" style="background:#2f5d8c">8</div><div class="tx">
+              <div class="nm">PJ</div><div class="fn">Ronald, Lorrane, Deivison, Bruna, Samuel, Cesar, Joelson, Jhon</div></div></div>
+            <div class="p"><div class="ini" style="background:#2f7d4f">8</div><div class="tx">
+              <div class="nm">CLT</div><div class="fn">Lucas, Davi, Karla, Jomar, Bruno, Wallace, Douglas, Alex</div></div></div>
+          </div>
+        </div>
+
+        <div class="nota">
+          <b>Mudanças desde julho/2026.</b> Jackson saiu da equipe em outubro. Jonathan Godoy
+          foi substituído por Alex. A Bruna deixou de desenhar projeto e assumiu a Gestão
+          Técnica. Saíram Filipe, Jennifer, Carla e Cezar, que ainda constavam no organograma
+          anterior.
+        </div>
+
+        <div class="nota" style="border-left-color:var(--blue); background:var(--bluebg)">
+          <b>Metade da equipe é PJ.</b> Oito de dezesseis contratados, incluindo o coordenador
+          de produção, a gestora técnica e quatro dos seis marceneiros experientes. É flexível
+          e é frágil ao mesmo tempo — vale olhar com o investidor.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="pf">
+    <div>Valvic Marcenaria · organograma de outubro/2026 · fonte: aba Custo Fixo da Controle de Pagamentos</div>
+    <div class="cl">Confidencial · uso interno</div>
+  </div>
+</div>
+</body>
+</html>
