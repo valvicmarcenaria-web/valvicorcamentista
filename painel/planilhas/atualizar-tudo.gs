@@ -2027,6 +2027,90 @@ function lerAporte_(ss) {
 }
 
 
+/**
+ * Tira o controle de ORÇADO × REALIZADO de onde ele aparecia como indicador:
+ * MC % orçada, Δ p.p. e Desvio de custo.
+ *
+ * Motivo: esse controle não acontecia no dia a dia. A coluna Orçado ficava
+ * vazia em todos os projetos, e indicador que ninguém alimenta não fica
+ * neutro — ele senta ao lado do indicador que importa e rouba a atenção com
+ * um zero que parece informação.
+ *
+ * O QUE SAI são células de FÓRMULA e rótulos, não preenchimento de ninguém.
+ * As colunas "Orçado (R$)" dos blocos continuam existindo: se um dia a prática
+ * mudar, o número volta sem refazer nada.
+ *
+ * Idempotente: rode quantas vezes quiser.
+ */
+function removerControleOrcado() {
+  const ss = SpreadsheetApp.openById(ID_CUSTO);
+  calibrar_(ss);
+  const FIXAS = ['Instruções', FICHA.painel, 'Listas', FICHA.base];
+  let fichas = 0;
+
+  // ── 1 · o topo de cada ficha ──
+  ss.getSheets().forEach(function (sh) {
+    const nome = sh.getName();
+    if (FIXAS.indexOf(nome) >= 0) return;
+    if (sh.getMaxRows() < 20 || sh.getMaxColumns() < 15) return;
+    if (String(sh.getRange('A8').getDisplayValue() || '').trim().toUpperCase().indexOf('PROJETO') !== 0) return;
+
+    // a faixa de KPI vai da coluna 7 à 15; desmancha e refaz só ela
+    sh.getRange(12, 7, 2, 9).breakApart();
+    sh.getRange(12, 8, 2, 8).clearContent();      // H e I em diante, rótulo e fórmula
+
+    sh.getRange(12, 7, 1, 9).merge().setValue('MC %')
+      .setFontSize(7.5).setFontWeight('bold').setFontColor(MUTED)
+      .setHorizontalAlignment('center').setVerticalAlignment('middle')
+      .setBackground('#ffffff');
+    sh.getRange(13, 7, 1, 9).merge()
+      .setNumberFormat('0.0%').setFontSize(13).setFontWeight('bold').setFontColor(NAVY)
+      .setHorizontalAlignment('center').setVerticalAlignment('middle')
+      .setBackground(GOLDBG);
+    fichas++;
+  });
+
+  // ── 2 · a tabela do Painel Geral ──
+  const pg = ss.getSheetByName(FICHA.painel);
+  const hd = FICHA.pg0 - 1;                      // linha de cabeçalho
+  const n = FICHA.pgf - FICHA.pg0 + 1;
+
+  pg.getRange(hd, 15, 1, 4).breakApart().clearContent();
+  pg.getRange(hd, 15).setValue('Diagnóstico');
+
+  const fs = [];
+  for (let i = 0; i < n; i++) {
+    const r = FICHA.pg0 + i;
+    fs.push(['=IF($N' + r + '="","",IF($N' + r + '>=0.35,"Margem boa",'
+             + 'IF($N' + r + '>=0.25,"Margem apertada","Margem crítica")))']);
+  }
+  pg.getRange(FICHA.pg0, 16, n, 3).clearContent();
+  posFs_(pg.getRange(FICHA.pg0, 15, n, 1), fs);
+  pg.getRange(FICHA.pg0, 15, n, 1).setHorizontalAlignment('center')
+    .setFontSize(8.5).setFontWeight('bold').setFontColor(NAVY2);
+  pg.getRange(FICHA.pgf + 1, 15, 1, 4).clearContent();
+
+  // as cores do diagnóstico mudam de coluna; as outras regras ficam como estão
+  const faixa = pg.getRange(FICHA.pg0, 15, n, 1);
+  const regras = pg.getConditionalFormatRules().filter(function (r) {
+    return r.getRanges().every(function (g) { return g.getColumn() !== 15; });
+  });
+  [['Margem boa', '#e2f0e7', '#2f7d4f'],
+   ['Margem apertada', '#fbf1dc', '#b57a16'],
+   ['Margem crítica', '#fbe7e6', '#b0413f']].forEach(function (x) {
+    regras.push(SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo(x[0])
+      .setBackground(x[1]).setFontColor(x[2]).setBold(true).setRanges([faixa]).build());
+  });
+  pg.setConditionalFormatRules(regras);
+
+  SpreadsheetApp.flush();
+  const r = fichas + ' ficha(s) sem MC % orçada e sem desvio de custo, '
+          + 'Painel Geral sem as três colunas do orçado';
+  console.log('Controle de orçado: ' + r);
+  return r;
+}
+
+
 // ════════════════════════════════════════════════════════════════════════
 //  COMPETÊNCIA MENSAL
 // ════════════════════════════════════════════════════════════════════════

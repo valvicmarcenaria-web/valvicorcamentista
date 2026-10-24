@@ -246,8 +246,6 @@ ck('  KPI venda', C(EX, 'A13'), V)
 ck('  KPI custo total', C(EX, 'C13'), custo_r, tol=CENTAVO)
 ck('  KPI MC R$', C(EX, 'E13'), mc_r, tol=CENTAVO)
 ck('  KPI MC %', C(EX, 'G13'), mc_r / V, tol=CENTAVO / V)
-ck('  KPI MC % orçada', C(EX, 'H13'), mc_o / V, tol=CENTAVO / V)
-ck('  KPI desvio de custo', C(EX, 'I13'), xr(custo_r - custo_o), tol=CENTAVO)
 ac = xr(sum(v for _, v, st in lanc if st == 'A comprar'))
 ap = xr(sum(v for _, v, st in lanc if st == 'Comprado (a pagar)'))
 ck(f'  ainda a comprar (numérico, lido pelo Painel)', C(EX, f'I{R_ALERTA}'), ac)
@@ -263,13 +261,17 @@ print(f'  {testes - n0} verificações')
 n0 = testes
 print('\nTESTE 7 · a ficha em branco não pode gerar lixo')
 _CAT1 = M['LINHAS_OC'][M['CATEGORIAS_COMPRA'][0]]      # primeira linha de categoria
-for ref in ('A13', 'C13', 'E13', 'G13', 'I13', f'D{R_CV_SUB}', f'D{R_LIQ}',
+for ref in ('A13', 'C13', 'E13', 'G13', f'D{R_CV_SUB}', f'D{R_LIQ}',
             f'D{R_NF_SUB}',
             f'F{R_AMB0}', f'{CA["mont_com"]}{R_AMB0}', f'{CA["proj_com"]}{R_AMB0}',
             f'J{R_CL0}', f'D{R_RES0}', f'D{R_CUSTO_TOT}',
             f'D{R_MC}', 'H9', 'J9', f'D{_CAT1}', f'G{_CAT1}'):
     v = C(FM, ref)
     ck(f'  {FM}!{ref} vazia', '' if v in ('', 0, 0.0) else v, '')
+# o controle de orçado saiu em out/2026 — que não volte pela porta dos fundos
+_rot12 = ' '.join(str(wbv[FM].cell(12, c).value or '') for c in range(1, M['NCOL'] + 1))
+ck('  ficha não traz mais MC % ORÇADA', 'ORÇADA' in _rot12.upper(), False)
+ck('  ficha não traz mais DESVIO DE CUSTO', 'DESVIO DE CUSTO' in _rot12.upper(), False)
 print(f'  {testes - n0} verificações')
 
 n0 = testes
@@ -277,8 +279,10 @@ print('\nTESTE 8 · o Painel aponta para os endereços certos da ficha')
 pg = wbv[PG]
 P0 = next(r for r in range(1, pg.max_row + 1) if pg.cell(r, 2).value == EX)
 ESPERADO = {3: 'A7', 4: 'A9', 5: 'F7', 6: 'H7', 7: 'J7', 8: 'H9', 9: 'J9',
-            10: 'A13', 11: 'C13', 12: f'I{R_ALERTA}', 13: 'E13', 14: 'G13',
-            15: 'H13', 17: 'I13'}
+            10: 'A13', 11: 'C13', 12: f'I{R_ALERTA}', 13: 'E13', 14: 'G13'}
+_diag = wbv[PG].cell(P0, 15).value or ''
+ck('  Painel col O é o Diagnóstico, calculado na própria linha',
+   _diag.startswith('=IF($N'), True)
 for col, ref in ESPERADO.items():
     f = pg.cell(P0, col).value or ''
     m = re.search(r"&\"'!([A-Z]+[0-9]+)\"\)", f)

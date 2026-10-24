@@ -386,9 +386,11 @@ def montar_ficha(ws):
     # ── faixa de resultado + resumo por categoria (no topo)
     titulo_secao(ws, R_TOP, NCOL, 'Resultado do projeto',
                  'tudo aqui se atualiza conforme você lança os custos mais abaixo')
+    # MC % ORÇADA e DESVIO DE CUSTO saíram em out/2026: o controle de orçado
+    # contra realizado não acontecia no dia a dia, e indicador que ninguém
+    # alimenta vira ruído em cima do indicador que importa.
     KPIS = [(1, 2, 'VALOR DE VENDA', MOEDA0), (3, 2, 'CUSTO TOTAL', MOEDA0),
-            (5, 2, 'MARGEM DE CONTRIBUIÇÃO', MOEDA0), (7, 1, 'MC %', PCT1),
-            (8, 1, 'MC % ORÇADA', PCT1), (9, 2 + PAD, 'DESVIO DE CUSTO', MOEDA0)]
+            (5, 2, 'MARGEM DE CONTRIBUIÇÃO', MOEDA0), (7, 4 + PAD, 'MC %', PCT1)]
     for c0, span, rot, nf in KPIS:
         bloco(ws, R_KPI_L, c0, span, rot, f=Font(name=F, size=7.5, bold=True, color=MUTED),
               bg=WHITE, al=CTR, bd=False)
@@ -764,9 +766,6 @@ def montar_ficha(ws):
     ws[f'C{R_KPI_V}'] = f'=IF($D${R_CUSTO_TOT}=0,"",$D${R_CUSTO_TOT})'
     ws[f'E{R_KPI_V}'] = f'=IF({VENDA}="","",$D${R_MC})'
     ws[f'G{R_KPI_V}'] = f'=IF(OR({VENDA}="",{VENDA}=0),"",$D${R_MC}/{VENDA})'
-    ws[f'H{R_KPI_V}'] = f'=IF(OR($C${R_VENDA}="",$C${R_VENDA}=0),"",$C${R_MC}/$C${R_VENDA})'
-    ws[f'I{R_KPI_V}'] = (f'=IF(OR($C${R_CUSTO_TOT}=0,$D${R_CUSTO_TOT}=0),"",'
-                         f'ROUND($D${R_CUSTO_TOT}-$C${R_CUSTO_TOT},2))')
 
     # ── nota de rodapé
     ws.row_dimensions[R_NOTA].height = 50
@@ -971,7 +970,7 @@ r = titulo_secao(pg, r + 3, NC_PG, 'Projetos',
                  'digite na coluna ABA o nome exato da lâmina de cada projeto')
 HDR_PG = ['#', 'Aba do projeto', 'Cliente', 'Projeto', 'Entrada', 'Prevista', 'Entregue',
           'Dias', 'Entrega', 'Venda', 'Custo total', 'A comprar', 'MC (R$)', 'MC %',
-          'MC % orç.', 'Δ p.p.', 'Desvio de custo', 'Diagnóstico']
+          'Diagnóstico', '', '', '']
 r = cab(pg, r, [(i + 1, 1, h) for i, h in enumerate(HDR_PG)], alt=30)
 assert r == P0, f'P0 esperado {P0}, obtido {r}'
 
@@ -985,8 +984,7 @@ REFS = [(3, f'A{R_ID2}', None, LEFTI), (4, f'A{R_ID4}', None, LEFTI),
         (7, f'J{R_ID2}', DATA, CTR), (8, f'H{R_ID4}', '0', CTR),
         (9, f'J{R_ID4}', None, CTR), (10, f'A{R_KPI_V}', MOEDA0, RIGHT),
         (11, f'C{R_KPI_V}', MOEDA0, RIGHT), (12, f'I{R_ALERTA}', MOEDA0, RIGHT),
-        (13, f'E{R_KPI_V}', MOEDA0, RIGHT), (14, f'G{R_KPI_V}', PCT1, CTR),
-        (15, f'H{R_KPI_V}', PCT1, CTR), (17, f'I{R_KPI_V}', MOEDA0, RIGHT)]
+        (13, f'E{R_KPI_V}', MOEDA0, RIGHT), (14, f'G{R_KPI_V}', PCT1, CTR)]
 
 for i, rr in enumerate(range(P0, PF + 1), start=1):
     pg.row_dimensions[rr].height = 17
@@ -996,10 +994,7 @@ for i, rr in enumerate(range(P0, PF + 1), start=1):
     for col, ref, nf, al in REFS:
         bloco(pg, rr, col, 1, puxa(rr, ref), f=Font(name=F, size=9.5, color=NAVY2),
               bg=CALC, al=al, nf=nf)
-    bloco(pg, rr, 16, 1, f'=IF(OR($N{rr}="",$O{rr}=""),"",ROUND(($N{rr}-$O{rr})*100,1))',
-          f=Font(name=F, size=9.5, bold=True, color=NAVY2), bg=CALC, al=CTR,
-          nf='+0.0;-0.0;0.0')
-    bloco(pg, rr, 18, 1,
+    bloco(pg, rr, 15, 1,
           f'=IF($N{rr}="","",IF($N{rr}>=0.35,"Margem boa",'
           f'IF($N{rr}>=0.25,"Margem apertada","Margem crítica")))',
           f=Font(name=F, size=8.5, bold=True, color=NAVY2), bg=CALC, al=CTR)
@@ -1017,24 +1012,17 @@ for col in (10, 11, 12, 13):
           f=Font(name=F, size=10, bold=True, color=GOLDS), bg=NAVY2, al=RIGHT, nf=MOEDA0)
 bloco(pg, PF + 1, 14, 1, f'=IF($J${PF+1}=0,"",$M${PF+1}/$J${PF+1})',
       f=Font(name=F, size=10, bold=True, color=GOLDS), bg=NAVY2, al=CTR, nf=PCT1)
-bloco(pg, PF + 1, 15, 2, None, bg=NAVY2)
-bloco(pg, PF + 1, 17, 1, f'=ROUND(SUM($Q${P0}:$Q${PF}),2)',
-      f=Font(name=F, size=10, bold=True, color=GOLDS), bg=NAVY2, al=RIGHT, nf=MOEDA0)
-bloco(pg, PF + 1, 18, 1, None, bg=NAVY2)
+bloco(pg, PF + 1, 15, 4, None, bg=NAVY2)
 for txt, bg, cor in (('Margem boa', OKBG, OK), ('Margem apertada', AMBBG, AMBER),
                      ('Margem crítica', REDBG, RED)):
-    pg.conditional_formatting.add(f'R{P0}:R{PF}', FormulaRule(
-        formula=[f'$R{P0}="{txt}"'], fill=fill(bg), font=Font(bold=True, color=cor),
+    pg.conditional_formatting.add(f'O{P0}:O{PF}', FormulaRule(
+        formula=[f'$O{P0}="{txt}"'], fill=fill(bg), font=Font(bold=True, color=cor),
         stopIfTrue=True))
 for txt, bg, cor in (('No prazo', OKBG, OK), ('Atrasado', REDBG, RED),
                      ('Em produção', BLUEBG, BLUE)):
     pg.conditional_formatting.add(f'I{P0}:I{PF}', FormulaRule(
         formula=[f'$I{P0}="{txt}"'], fill=fill(bg), font=Font(bold=True, color=cor),
         stopIfTrue=True))
-pg.conditional_formatting.add(f'Q{P0}:Q{PF}', FormulaRule(
-    formula=[f'AND($Q{P0}<>"",$Q{P0}>0)'], font=Font(bold=True, color=RED)))
-pg.conditional_formatting.add(f'Q{P0}:Q{PF}', FormulaRule(
-    formula=[f'AND($Q{P0}<>"",$Q{P0}<0)'], font=Font(bold=True, color=OK)))
 pg.conditional_formatting.add(f'L{P0}:L{PF}', FormulaRule(
     formula=[f'AND($L{P0}<>"",$L{P0}>0)'], fill=fill(AMBBG), font=Font(bold=True, color=AMBER)))
 for c in range(C_AUX0, C_AUX0 + len(CATEGORIAS) * 2):
