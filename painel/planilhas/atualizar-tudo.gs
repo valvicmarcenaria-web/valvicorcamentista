@@ -2723,7 +2723,10 @@ function migrarParaGestao2026() {
   const dst = SpreadsheetApp.openById(ID_G26);
   const feitas = [], puladas = [];
 
-  [[ANO_G26, 'Pagamentos ' + ANO_G26], ['Listas', 'Listas']].forEach(function (par) {
+  // Listas PRIMEIRO. A aba de ano referencia Listas!$A$2:$A$15 para saber
+  // quais linhas são divisoras de mês; copiada antes dela, a referência vira
+  // #REF! e não se conserta quando a Listas chega depois.
+  [['Listas', 'Listas'], [ANO_G26, 'Pagamentos ' + ANO_G26]].forEach(function (par) {
     if (dst.getSheetByName(par[1])) { puladas.push(par[1]); return; }
     const o = org.getSheetByName(par[0]);
     if (!o) { console.log('  aviso: aba "' + par[0] + '" não existe na origem.'); return; }
@@ -2740,6 +2743,43 @@ function migrarParaGestao2026() {
   const r = (feitas.length ? 'copiada(s): ' + feitas.join(', ') : 'nada novo a copiar')
           + (puladas.length ? ' · já existia(m): ' + puladas.join(', ') : '');
   console.log('Gestão 2026: ' + r);
+  return r;
+}
+
+
+/**
+ * Refaz a cópia da aba de pagamentos e das Listas, na ordem certa.
+ *
+ * A primeira cópia quebrou seis células da faixa de KPI do ano. A suspeita é
+ * de ordem: a aba de ano foi copiada ANTES da Listas, e ela referencia
+ * Listas!$A$2:$A$15 para saber quais linhas são divisoras de mês. Referência
+ * a aba que ainda não existe no destino vira #REF! e não se conserta sozinha
+ * quando a aba chega depois.
+ *
+ * Esta função apaga as duas no destino e copia de novo, Listas primeiro.
+ * O que você tiver digitado na aba Clientes não é tocado — ela é refeita por
+ * abaClientes_, que lê e devolve as colunas manuais.
+ */
+function recopiarPagamentos() {
+  const org = SpreadsheetApp.openById(ID_PAG);
+  const dst = SpreadsheetApp.openById(ID_G26);
+
+  ['Pagamentos ' + ANO_G26, 'Listas'].forEach(function (n) {
+    const velha = dst.getSheetByName(n);
+    if (velha) dst.deleteSheet(velha);
+  });
+  const r = migrarParaGestao2026();
+
+  // ── diagnóstico: as oito células da faixa de KPI, fórmula e resultado ──
+  const sh = dst.getSheetByName('Pagamentos ' + ANO_G26);
+  if (sh) {
+    console.log('\nfaixa de KPI do ano, depois da cópia:');
+    [1, 4, 6, 8, 9, 12, 15, 18].forEach(function (c) {
+      const cel = sh.getRange(7, c);
+      console.log('  col ' + colLetra_(c) + ': ' + cel.getDisplayValue()
+                  + '\n     ' + (cel.getFormula() || '(valor digitado)'));
+    });
+  }
   return r;
 }
 
@@ -2897,6 +2937,10 @@ function abaPainelGeralG26_() {
   secaoPainel_(sh, lin, 'PROJETO A PROJETO', W); lin += 2;
   const l0 = lin;
   const tot = ['Total', '', '', '', '', venda, custo, margem, venda ? margem / venda : 0];
+  // A coluna de competência é TEXTO. Escrita como valor comum, o Google lê
+  // "Out/2026" como data e guarda 01/10/2026 — o mesmo erro que já tinha
+  // acontecido quando o campo era digitado.
+  sh.getRange(lin + 1, 6, linhas.length + 1, 1).setNumberFormat('@');
   lin = tabelaPainel_(sh, lin, 2, CAB, linhas.concat([tot]), FMT);
   sh.getRange(l0 + linhas.length + 1, 2, 1, CAB.length)
     .setBackground(NAVY).setFontColor(GOLDS).setFontWeight('bold');
