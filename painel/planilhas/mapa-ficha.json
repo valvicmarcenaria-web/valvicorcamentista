@@ -221,5 +221,9 @@
  "R_TRX": 40,
  "R_VENDA": 28,
  "R_VEN_H": 27,
- "R_VEN_T": 26
+ "R_VEN_T": 26,
+ "STATUS_RT": [
+  "Em aberto",
+  "Pago"
+ ]
 }

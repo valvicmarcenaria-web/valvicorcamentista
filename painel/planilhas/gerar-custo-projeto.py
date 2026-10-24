@@ -72,6 +72,10 @@ VENDEDORES = ['Jonathan', 'Vitor', 'Indicação', 'Arquiteto parceiro', 'Outro']
 _MES3 = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
          'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
 COMPETENCIAS = [f'{m}/{a}' for a in (2026, 2027) for m in _MES3]
+
+# O RT do parceiro vira pagamento a terceiro com data própria. Saber quanto foi
+# PAGO é diferente de saber quanto foi devido.
+STATUS_RT = ['Em aberto', 'Pago']
 CAUSAS = ['Erro de projeto', 'Erro de medição', 'Erro de produção', 'Erro de montagem',
           'Falha de material', 'Dano no transporte', 'Mudança pedida pelo cliente',
           'Falha de fornecedor', 'Outro']
@@ -522,8 +526,15 @@ def montar_ficha(ws):
                 base_o=f'$C${R_VENDA}', base_r=VENDA, dica='% sobre o valor de venda')
     linha_custo(ws, R_PROJ, 'Projeto / anteprojeto (externo)', 'rs',
                 dica='projetista ou arquiteto contratado para o projeto')
-    linha_custo(ws, R_RTP, 'RT do parceiro', 'pct', base_o=BRT_O, base_r=BRT_R,
-                dica='% sobre o líquido: venda menos impostos, máquina e taxas')
+    linha_custo(ws, R_RTP, 'RT do parceiro', 'pct', base_o=BRT_O, base_r=BRT_R)
+    # o RT é o único custo de venda que vira pagamento a terceiro com data
+    # própria; por isso ganha status aqui, colado no valor que ele gera
+    ws.unmerge_cells(start_row=R_RTP, start_column=8, end_row=R_RTP, end_column=NCOL)
+    bloco(ws, R_RTP, 8, 2, None, f=Font(name=F, size=9, bold=True, color=NAVY2),
+          bg=INPUT, al=CTR)
+    bloco(ws, R_RTP, 10, NCOL - 9, 'status do pagamento do RT ao parceiro',
+          f=Font(name=F, size=8.5, color=INK), bg=INPUT, al=LEFTI)
+    dv(ws, literal(STATUS_RT), f'H{R_RTP}:I{R_RTP}')
     subtotal(ws, R_CV_SUB, '(=) SUBTOTAL DOS CUSTOS DE VENDA', R_IMP, R_RTP)
     ws.row_dimensions[R_LIQ].height = 24
     bloco(ws, R_LIQ, 1, 2, '(=) RECEITA LÍQUIDA',
@@ -975,7 +986,7 @@ r = titulo_secao(pg, r + 3, NC_PG, 'Projetos',
                  'digite na coluna ABA o nome exato da lâmina de cada projeto')
 HDR_PG = ['#', 'Aba do projeto', 'Cliente', 'Projeto', 'Entrada', 'Prevista', 'Entregue',
           'Dias', 'Entrega', 'Venda', 'Custo total', 'A comprar', 'MC (R$)', 'MC %',
-          'Diagnóstico', '', '', '']
+          '', '', '', '']
 r = cab(pg, r, [(i + 1, 1, h) for i, h in enumerate(HDR_PG)], alt=30)
 assert r == P0, f'P0 esperado {P0}, obtido {r}'
 
@@ -999,10 +1010,6 @@ for i, rr in enumerate(range(P0, PF + 1), start=1):
     for col, ref, nf, al in REFS:
         bloco(pg, rr, col, 1, puxa(rr, ref), f=Font(name=F, size=9.5, color=NAVY2),
               bg=CALC, al=al, nf=nf)
-    bloco(pg, rr, 15, 1,
-          f'=IF($N{rr}="","",IF($N{rr}>=0.35,"Margem boa",'
-          f'IF($N{rr}>=0.25,"Margem apertada","Margem crítica")))',
-          f=Font(name=F, size=8.5, bold=True, color=NAVY2), bg=CALC, al=CTR)
     for k in range(len(CATEGORIAS)):
         for j, col_f in enumerate(('C', 'D')):
             c = pg.cell(rr, C_AUX0 + k * 2 + j, puxa(rr, f'{col_f}{R_RES0 + k}'))
@@ -1018,11 +1025,6 @@ for col in (10, 11, 12, 13):
 bloco(pg, PF + 1, 14, 1, f'=IF($J${PF+1}=0,"",$M${PF+1}/$J${PF+1})',
       f=Font(name=F, size=10, bold=True, color=GOLDS), bg=NAVY2, al=CTR, nf=PCT1)
 bloco(pg, PF + 1, 15, 4, None, bg=NAVY2)
-for txt, bg, cor in (('Margem boa', OKBG, OK), ('Margem apertada', AMBBG, AMBER),
-                     ('Margem crítica', REDBG, RED)):
-    pg.conditional_formatting.add(f'O{P0}:O{PF}', FormulaRule(
-        formula=[f'$O{P0}="{txt}"'], fill=fill(bg), font=Font(bold=True, color=cor),
-        stopIfTrue=True))
 for txt, bg, cor in (('No prazo', OKBG, OK), ('Atrasado', REDBG, RED),
                      ('Em produção', BLUEBG, BLUE)):
     pg.conditional_formatting.add(f'I{P0}:I{PF}', FormulaRule(
@@ -1367,7 +1369,7 @@ COL_AMB = {'ambiente': 'A', 'pct_total': 'B', 'valor': 'C',
            'mont_quem': 'H', 'mont_pct': 'I', 'mont_com': 'J', 'montado_em': 'K',
            'proj_quem': 'L', 'proj_pct': 'M', 'proj_com': 'N', 'total': 'O'}
 MAPA.update({'NCOL': NCOL, 'EQUIPE': EQUIPE, 'PROJETISTAS': PROJETISTAS,
-             'COMPETENCIAS': COMPETENCIAS,
+             'COMPETENCIAS': COMPETENCIAS, 'STATUS_RT': STATUS_RT,
              'GESTORES': GESTORES,
              'PROJETOS_ABAS': PROJETOS_ABAS, 'COL_AMB': COL_AMB,
              'CATEGORIAS_COMPRA': CATEGORIAS_COMPRA, 'LINHAS_OC': LINHAS_OC,

@@ -49,7 +49,10 @@ const FICHA = {
   comVenda: 'D41',
   competencia: 'D10',     // linha 10 · era espaçador
   entregaSituacao: 'J9',
-  colsBase: 35,           // largura da Base · Comissões
+  faturado: 'D34',
+  rtValor: 'D43',
+  rtStatus: 'H43',
+  colsBase: 38,           // largura da Base · Comissões
   painelLinha0: 11,       // Painel Geral · primeira vaga de projeto
   painelLinhaF: 50,
   baseLinha0: 2,          // Base · primeira linha de dados
@@ -254,8 +257,8 @@ function escreverBlocoBase_(destino, i, nomeAba) {
     const r = r0 + j;
     const fr = FICHA.ambLinha0 + j;
     const linha = [
-      '=IF($C' + r + '="","",\'' + FICHA.painel + '\'!$B$' + pgLinha + ')',
-      '=IF($C' + r + '="","",\'' + FICHA.painel + '\'!$C$' + pgLinha + ')',
+      '=IF(' + (j === 0 ? ab + '!$A$7' : '$C' + r) + '="","",\'' + FICHA.painel + '\'!$B$' + pgLinha + ')',
+      '=IF(' + (j === 0 ? ab + '!$A$7' : '$C' + r) + '="","",\'' + FICHA.painel + '\'!$C$' + pgLinha + ')',
     ];
     COLS_AMB.forEach(function (c) {
       linha.push('=IF(' + ab + '!$' + c + '$' + fr + '="","",' + ab + '!$' + c + '$' + fr + ')');
@@ -282,8 +285,12 @@ function escreverBlocoBase_(destino, i, nomeAba) {
       linha.push(cel_(ab, FICHA.comVenda, r, false));
       linha.push(cel_(ab, FICHA.competencia, r, true));
       linha.push(cel_(ab, FICHA.entregaSituacao, r, true));
+      linha.push(cel_(ab, FICHA.faturado, r, false));
+      linha.push(cel_(ab, FICHA.rtValor, r, false));
+      linha.push(cel_(ab, FICHA.rtStatus, r, true));
     } else {
-      linha.push('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+      linha.push('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
+                 '', '', '', '');
     }
     linhas.push(linha);
   }
@@ -298,9 +305,11 @@ function escreverBlocoBase_(destino, i, nomeAba) {
 
 /** Célula do projeto trazida para a base, com o endereço absoluto certo. */
 function cel_(ab, ref, r, texto) {
+  // guarda é o CLIENTE da ficha, não o ambiente: projeto com venda e sem
+  // ambiente lançado precisa aparecer nos painéis
   const abs = '$' + ref.charAt(0) + '$' + ref.slice(1);
   const vazio = texto ? '""' : '0';
-  return '=IF($C' + r + '="","",IF(' + ab + '!' + abs + '="",' + vazio +
+  return '=IF(' + ab + '!$A$7="","",IF(' + ab + '!' + abs + '="",' + vazio +
          ',' + ab + '!' + abs + '))';
 }
 
