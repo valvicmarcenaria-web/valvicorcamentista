@@ -373,15 +373,20 @@ def montar_ficha(ws):
                        f'IF(TODAY()>$H${R_ID2},"Atrasado","Em produção"),'
                        f'IF($H${R_ID4}<=0,"No prazo","Atrasado")))')
     # ── mês de competência, na linha que era espaçador ──
+    #
+    # NÃO é digitado: sai do mês da ENTREGA REAL. Receita e custo do projeto
+    # passam a pesar no mês em que ele foi entregue — projeto em produção não
+    # tem competência, e é isso mesmo: ainda não virou resultado.
     ws.row_dimensions[R_COMP].height = 18
     bloco(ws, R_COMP, 1, 3, 'MÊS DE COMPETÊNCIA',
           f=Font(name=F, size=8, bold=True, color=MUTED), bg=WHITE, al=RIGHT)
-    bloco(ws, R_COMP, 4, 2, None,
-          f=Font(name=F, size=11, bold=True, color=NAVY), bg=INPUT, al=CTR)
+    bloco(ws, R_COMP, 4, 2,
+          f'=IF($J${R_ID2}="","",CHOOSE(MONTH($J${R_ID2}),'
+          + ','.join(f'"{m}"' for m in _MES3) + f')&"/"&YEAR($J${R_ID2}))',
+          f=Font(name=F, size=11, bold=True, color=NAVY), bg=CALC, al=CTR)
     bloco(ws, R_COMP, 6, 5 + PAD,
-          'o mês em que a receita e o custo deste projeto pesam no painel de competência',
+          'vem do mês da ENTREGA REAL — enquanto o projeto não for entregue, não tem competência',
           f=Font(name=F, size=8, italic=True, color=MUTED), bg=WHITE, al=LEFTI)
-    dv(ws, literal(COMPETENCIAS), f'D{R_COMP}:E{R_COMP}')
 
     # ── faixa de resultado + resumo por categoria (no topo)
     titulo_secao(ws, R_TOP, NCOL, 'Resultado do projeto',

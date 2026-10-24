@@ -1160,8 +1160,8 @@ function validar() {
      semGestao.join(' | '));
   ok('todas as fichas têm o campo de competência', semCampoComp.length === 0,
      semCampoComp.join(' | '));
-  ok('toda ficha tem um mês de competência escolhido', semMes.length === 0,
-     semMes.length + ' sem mês: ' + semMes.join(' | '));
+  ok('projeto entregue tem competência', semMes.length === 0,
+     semMes.length + ' sem entrega real, logo sem competência: ' + semMes.join(' | '));
   ok('nenhuma ficha com erro nas células-chave', comErro.length === 0, comErro.join(' | '));
   ok('ambientes somam o valor de venda', ambDifere.length === 0, ambDifere.join(' | '));
 
@@ -1215,6 +1215,13 @@ function validar() {
   const pn = SpreadsheetApp.openById(ID_PAINEL);
   const pcomp = pgto.getSheetByName('Painel de Competência');
   ok('Painel de Competência existe', !!pcomp);
+  const pprod = pgto.getSheetByName('Produção e Entrega');
+  ok('Produção e Entrega existe', !!pprod);
+  if (pprod) {
+    const e = conta(pprod.getRange(1, 1, Math.min(pprod.getLastRow(), 120),
+                                   Math.max(1, pprod.getLastColumn())).getDisplayValues());
+    ok('Produção e Entrega sem célula de erro', e === 0, e + ' célula(s)');
+  }
   if (pcomp) {
     const e = conta(pcomp.getRange(1, 1, Math.min(pcomp.getLastRow(), 120),
                                    Math.max(1, pcomp.getLastColumn())).getDisplayValues());
@@ -1364,6 +1371,12 @@ function atualizarTudo() {
     diz('Painel de Competência: ' + abaPainelCompetencia_());
   } catch (e) {
     diz('Painel de Competência: FALHOU — ' + e.message);
+  }
+
+  try {
+    diz('Produção e Entrega: ' + abaPainelProducao_());
+  } catch (e) {
+    diz('Produção e Entrega: FALHOU — ' + e.message);
   }
 
   diz('── fim: ' + ok + ' atualizada(s)' + (erro ? ', ' + erro + ' com erro' : '') + ' ──');
@@ -2125,14 +2138,6 @@ function removerControleOrcado() {
 
 const MES3 = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
               'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
-const COMPETENCIAS = (function () {
-  const l = [];
-  [2026, 2027].forEach(function (a) {
-    MES3.forEach(function (m) { l.push(m + '/' + a); });
-  });
-  return l;
-})();
-
 /** 'Out/2026' → 24315, para ordenar. Texto estranho vai para o fim. */
 function ordemComp_(c) {
   const p = String(c || '').split('/');
@@ -2159,15 +2164,12 @@ function compDeHoje_() {
  * quantas vezes quiser: o mês já escolhido nunca é alterado.
  */
 function adicionarCompetencia() {
-  const regra = SpreadsheetApp.newDataValidation()
-    .requireValueInList(COMPETENCIAS, true).setAllowInvalid(true)
-    .setHelpText('Mês em que a receita e o custo deste projeto pesam.').build();
-
   const ss = SpreadsheetApp.openById(ID_CUSTO);
+  calibrar_(ss);
   const FIXAS = ['Instruções', FICHA.painel, 'Listas', FICHA.base];
   const ROTULO = 'MÊS DE COMPETÊNCIA';
   let feitas = 0, refeitas = 0;
-  const ocupadas = [];
+  const ocupadas = [], trocados = [];
 
   ss.getSheets().forEach(function (sh) {
     const nome = sh.getName();
@@ -2196,13 +2198,23 @@ function adicionarCompetencia() {
       .setFontSize(8).setFontWeight('bold').setFontColor(MUTED)
       .setHorizontalAlignment('right').setVerticalAlignment('middle')
       .setBackground('#ffffff');
+    // o que estiver digitado aqui vira fórmula. Nada se perde: o mês passa a
+    // sair da entrega real, que é de onde ele deveria ter vindo desde o começo.
+    const antes = String(sh.getRange(10, 4).getDisplayValue() || '').trim();
+    if (antes && !sh.getRange(10, 4).getFormula()) {
+      trocados.push(nome.trim() + ' tinha "' + antes + '"');
+    }
     sh.getRange(10, 4, 1, 2).merge()
       .setFontSize(11).setFontWeight('bold').setFontColor(NAVY)
       .setHorizontalAlignment('center').setVerticalAlignment('middle')
-      .setBackground('#fff9e3')
-      .setDataValidation(regra);
+      .setBackground(CALC)
+      .clearDataValidations();
+    posF_(sh.getRange(10, 4),
+      '=IF($J$7="","",CHOOSE(MONTH($J$7),'
+      + MES3.map(function (x) { return '"' + x + '"'; }).join(',')
+      + ')&"/"&YEAR($J$7))');
     sh.getRange(10, 6, 1, 10).merge().setValue(
-      'o mês em que a receita e o custo deste projeto pesam no painel de competência')
+      'vem do mês da ENTREGA REAL — enquanto não for entregue, não tem competência')
       .setFontSize(8).setFontStyle('italic').setFontColor(MUTED)
       .setHorizontalAlignment('left').setVerticalAlignment('middle')
       .setBackground('#ffffff');
@@ -2210,6 +2222,10 @@ function adicionarCompetencia() {
     if (jaTem) { refeitas++; } else { feitas++; }
   });
 
+  if (trocados.length) {
+    console.log('  o valor digitado virou fórmula da entrega real em:');
+    trocados.forEach(function (t) { console.log('    ' + t); });
+  }
   if (ocupadas.length) {
     console.log('  NÃO MEXI nestas, a linha 10 tinha conteúdo:');
     ocupadas.forEach(function (t) { console.log('    ' + t); });
@@ -2382,6 +2398,145 @@ function abaPainelCompetencia_() {
   const r = projetos.length + ' projeto(s) em ' + ordem.length + ' competência(s)'
           + (semComp.length ? ', ' + semComp.length + ' sem mês escolhido' : '');
   console.log('Painel de Competência: ' + r);
+  return r;
+}
+
+
+/**
+ * Aba "Painel de Produção e Entrega", na Controle de Pagamentos.
+ *
+ * Mede AMBIENTE, não projeto, e pela data de cada etapa: o que saiu da fábrica
+ * pela coluna "Fabricado em", o que foi montado na casa do cliente pela coluna
+ * "Montado em".
+ *
+ * É de propósito que isto NÃO bata com o Painel de Competência. Lá o projeto
+ * inteiro pesa de uma vez, no mês da entrega. Aqui o trabalho pesa em pedaços,
+ * no mês em que cada pedaço aconteceu. Um mede resultado, o outro mede
+ * atividade — e a diferença entre produzido e entregue é obra pronta parada,
+ * que é dinheiro já gasto e ainda não fechado.
+ */
+function abaPainelProducao_() {
+  const ano = new Date().getFullYear();
+  const cp = SpreadsheetApp.openById(ID_CUSTO);
+  const base = cp.getSheetByName(FICHA.base);
+  if (!base) throw new Error('Base · Comissões não encontrada.');
+  const n = base.getLastRow() - 1;
+  const bv = n > 0 ? base.getRange(2, 1, n, base.getLastColumn()).getValues() : [];
+
+  const amb = [];
+  bv.forEach(function (L) {
+    const nome = String(L[2] || '').trim();
+    if (!nome) return;
+    amb.push({
+      projeto: String(L[0] || '').trim(), cliente: String(L[1] || '').trim(),
+      ambiente: nome, valor: Number(L[4]) || 0,
+      fab: L[8] instanceof Date ? L[8] : null,
+      mont: L[12] instanceof Date ? L[12] : null,
+    });
+  });
+
+  const W = 17;
+  const ss = SpreadsheetApp.openById(ID_PAG);
+  const sh = abaLimpa_(ss, 'Produção e Entrega', W);
+  cabecalhoPainel_(sh, 'PRODUÇÃO E ENTREGA   ·   ' + ano,
+    'Mede o ambiente, não o projeto   ·   produzido pela data de fabricação, entregue pela data de montagem   ·   '
+    + 'não bate com a competência, e não deve bater', W);
+  sh.setColumnWidth(2, 180);
+  for (let c = 3; c <= W; c++) sh.setColumnWidth(c, 92);
+
+  // ── acumulados ──
+  const prod = novaMatriz_(), entr = novaMatriz_();
+  const qtdP = novaMatriz_(), qtdE = novaMatriz_();
+  amb.forEach(function (a) {
+    if (a.fab) { somaNaMatriz_(prod, 'v', a.fab, a.valor, ano); somaNaMatriz_(qtdP, 'v', a.fab, 1, ano); }
+    if (a.mont) { somaNaMatriz_(entr, 'v', a.mont, a.valor, ano); somaNaMatriz_(qtdE, 'v', a.mont, 1, ano); }
+  });
+
+  const prontos = amb.filter(function (a) { return a.fab && !a.mont; });
+  const emProd = amb.filter(function (a) { return !a.fab; });
+  const soma = function (l) { return l.reduce(function (s, a) { return s + a.valor; }, 0); };
+
+  const m = new Date().getMonth();
+  let lin = 5;
+  secaoPainel_(sh, lin, 'RESUMO DE ' + MESES[m].toUpperCase() + '/' + ano, W); lin += 2;
+  cartaoPainel_(sh, lin, 2, 'Produzido no mês', prod.v ? prod.v[m] : 0, NAVY);
+  cartaoPainel_(sh, lin, 4, 'Entregue no mês', entr.v ? entr.v[m] : 0, '#2f7d4f');
+  cartaoPainel_(sh, lin, 6, 'Pronto, não entregue', soma(prontos), '#c47d0e');
+  cartaoPainel_(sh, lin, 8, 'Ainda em produção', soma(emProd), '#2f5d8c');
+  lin += 4;
+
+  // ── mês a mês ──
+  secaoPainel_(sh, lin, 'MÊS A MÊS', W); lin += 2;
+  const linhas = [];
+  ['Ambientes produzidos', 'Valor produzido', 'Ambientes entregues', 'Valor entregue']
+    .forEach(function (rot, i) {
+      const fonte = [qtdP, prod, qtdE, entr][i];
+      linhas.push([rot].concat(fonte.v || [0,0,0,0,0,0,0,0,0,0,0,0,0,0]));
+    });
+  const dif = ['Produzido − entregue'];
+  for (let c = 0; c < 14; c++) dif.push((linhas[1][c + 1] || 0) - (linhas[3][c + 1] || 0));
+  linhas.push(dif);
+  const l0 = lin;
+  lin = tabelaPainel_(sh, lin, 2, cabMeses_('Medida'), linhas,
+    [null].concat('0,MOEDA,0,MOEDA,MOEDA'.split(',').map(function () { return null; })));
+  // formatos certos linha a linha
+  [[1, '0'], [2, MOEDA], [3, '0'], [4, MOEDA], [5, MOEDA]].forEach(function (x) {
+    sh.getRange(l0 + x[0], 3, 1, 14).setNumberFormat(x[1]);
+  });
+  sh.getRange(l0 + 5, 2, 1, 15).setBackground(ABERTOBG)
+    .setFontColor('#c47d0e').setFontWeight('bold');
+
+  // ── o que está pronto e parado ──
+  const CAB = ['Cliente', 'Projeto', 'Ambiente', 'Valor', 'Fabricado em', 'Montado em'];
+  const FMT = [null, null, null, MOEDA, 'dd/mm/yyyy', 'dd/mm/yyyy'];
+  const linhasDe = function (l) {
+    return l.sort(function (a, b) { return b.valor - a.valor; })
+      .map(function (a) {
+        return [a.cliente, a.projeto, a.ambiente, a.valor, a.fab || '', a.mont || ''];
+      });
+  };
+
+  secaoPainel_(sh, lin, 'PRONTO E NÃO ENTREGUE   ·   obra feita, dinheiro ainda não fechado', W);
+  lin += 2;
+  if (prontos.length) {
+    const li = lin;
+    const ls = linhasDe(prontos);
+    ls.push(['Total', '', '', soma(prontos), '', '']);
+    lin = tabelaPainel_(sh, lin, 2, CAB, ls, FMT);
+    sh.getRange(li + ls.length, 2, 1, 6).setBackground(ABERTOBG)
+      .setFontColor('#c47d0e').setFontWeight('bold');
+  } else {
+    sh.getRange(lin, 2).setValue('Nada pronto esperando montagem.')
+      .setFontColor(MUTED).setFontStyle('italic');
+    lin += 2;
+  }
+
+  secaoPainel_(sh, lin, 'AINDA EM PRODUÇÃO   ·   sem data de fabricação', W); lin += 2;
+  if (emProd.length) {
+    const li = lin;
+    const ls = linhasDe(emProd);
+    ls.push(['Total', '', '', soma(emProd), '', '']);
+    lin = tabelaPainel_(sh, lin, 2, CAB, ls, FMT);
+    sh.getRange(li + ls.length, 2, 1, 6).setBackground(NAVY)
+      .setFontColor(GOLDS).setFontWeight('bold');
+  } else {
+    sh.getRange(lin, 2).setValue('Tudo que está lançado já foi fabricado.')
+      .setFontColor(MUTED).setFontStyle('italic');
+    lin += 2;
+  }
+
+  sh.getRange(lin, 2, 1, W - 2).merge().setValue(
+    'Produzido e entregue não batem no mesmo mês, e não é erro: um ambiente sai da fábrica num mês '
+    + 'e é montado noutro. A linha âmbar é a diferença — obra pronta que ainda não chegou ao cliente. '
+    + 'Ambiente sem data de fabricação conta como em produção, mesmo que já esteja pronto: o que '
+    + 'não tem data lançada, o painel não enxerga.')
+    .setFontColor(MUTED).setFontSize(9).setFontStyle('italic').setWrap(true);
+  sh.setRowHeight(lin, 34);
+
+  SpreadsheetApp.flush();
+  const r = amb.length + ' ambiente(s) · ' + prontos.length + ' pronto(s) não entregue(s) · '
+          + emProd.length + ' em produção';
+  console.log('Produção e Entrega: ' + r);
   return r;
 }
 

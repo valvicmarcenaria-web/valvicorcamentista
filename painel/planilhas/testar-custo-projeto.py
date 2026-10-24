@@ -270,6 +270,9 @@ for ref in ('A13', 'C13', 'E13', 'G13', f'D{R_CV_SUB}', f'D{R_LIQ}',
     ck(f'  {FM}!{ref} vazia', '' if v in ('', 0, 0.0) else v, '')
 # o controle de orçado saiu em out/2026 — que não volte pela porta dos fundos
 _rot12 = ' '.join(str(wbv[FM].cell(12, c).value or '') for c in range(1, M['NCOL'] + 1))
+# competência saiu do menu e virou fórmula da entrega real
+_c10 = str(wbv[FM].cell(M['R_COMP'], 4).value or '')
+ck('  competência vem da entrega real', _c10.startswith('=IF($J$7='), True)
 ck('  ficha não traz mais MC % ORÇADA', 'ORÇADA' in _rot12.upper(), False)
 ck('  ficha não traz mais DESVIO DE CUSTO', 'DESVIO DE CUSTO' in _rot12.upper(), False)
 print(f'  {testes - n0} verificações')
@@ -345,7 +348,7 @@ LISTAS = {'CATEGORIA': lit(4, len(M['CATEGORIAS_COMPRA'])), 'PAGAMENTO': lit(5, 
           'STATUS': lit(6, 3), 'EQUIPE': lit(1, N_EQUIPE), 'VENDEDOR': lit(2, 5),
           'CAUSA': lit(3, 9), 'PROJETISTA': lit(8, N_PROJ),
           'ROSTER': '"' + ','.join(M['EQUIPE'] + M['PROJETISTAS'] + M['GESTORES']) + '"',
-          'COMPETENCIA': '"' + ','.join(M['COMPETENCIAS']) + '"'}
+          }
 VAL_ESPERADAS = {
     f'B{R_LAN0}:B{R_LANF}': 'CATEGORIA', f'G{R_LAN0}:G{R_LANF}': 'PAGAMENTO',
     f'I{R_LAN0}:I{R_LANF}': 'STATUS',
@@ -354,7 +357,6 @@ VAL_ESPERADAS = {
     f'{CA["proj_quem"]}{R_AMB0}:{CA["proj_quem"]}{R_AMBF}': 'PROJETISTA',
     f'A{R_CL0}:A{R_CLF}': 'ROSTER',
     f'H{M["R_GEST"]}': 'ROSTER',
-    f'D{M["R_COMP"]}:E{M["R_COMP"]}': 'COMPETENCIA',
     f'B{R_RB0}:B{R_RBF}': 'CAUSA', f'D{R_ID4}:E{R_ID4}': 'VENDEDOR',
     f'F{R_ID4}:G{R_ID4}': 'EQUIPE'}
 for chave, valor in LISTAS.items():
