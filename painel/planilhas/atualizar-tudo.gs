@@ -63,7 +63,9 @@ const FICHA = {
   comGestao: 'D66',                   // gestão técnica · 0,5% do líquido
   gestorTecnico: 'H66',               // o nome mora na própria linha da comissão
   vendedorNome: 'D9', comVenda: 'D41',
-  colsBase: 33,
+  competencia: 'D10',                 // linha 10 · era espaçador
+  entregaSituacao: 'J9',              // No prazo · Atrasado · Em produção
+  colsBase: 35,
 };
 const COLS_AMB = 'ABCDEFGHIJKLMNO'.split('');
 
@@ -1128,12 +1130,18 @@ function validar() {
   }
 
   // ── ficha por ficha ──
-  let semGestao = [], comErro = [], ambDifere = [];
+  let semGestao = [], comErro = [], ambDifere = [], semCampoComp = [], semMes = [];
   fichas.concat(['Ficha Modelo']).forEach(function (nome) {
     const sh = cp.getSheetByName(nome);
     if (!sh || sh.getLastRow() < 70) { comErro.push(nome + ' (curta demais)'); return; }
     const rot = String(sh.getRange('A66').getDisplayValue() || '');
     if (rot.indexOf('Gestão técnica') !== 0) semGestao.push(nome);
+    if (String(sh.getRange('A10').getDisplayValue() || '').indexOf('MÊS DE COMPETÊNCIA') !== 0) {
+      semCampoComp.push(nome.trim());
+    } else if (!String(sh.getRange('D10').getDisplayValue() || '').trim()
+               && nome !== 'Ficha Modelo') {
+      semMes.push(nome.trim());
+    }
     const chave = sh.getRange('A13:A13').getDisplayValues()
       .concat(sh.getRange('D22:D23').getDisplayValues())
       .concat(sh.getRange('D45:D45').getDisplayValues())
@@ -1150,6 +1158,10 @@ function validar() {
   });
   ok('todas as fichas têm a linha de gestão técnica', semGestao.length === 0,
      semGestao.join(' | '));
+  ok('todas as fichas têm o campo de competência', semCampoComp.length === 0,
+     semCampoComp.join(' | '));
+  ok('toda ficha tem um mês de competência escolhido', semMes.length === 0,
+     semMes.length + ' sem mês: ' + semMes.join(' | '));
   ok('nenhuma ficha com erro nas células-chave', comErro.length === 0, comErro.join(' | '));
   ok('ambientes somam o valor de venda', ambDifere.length === 0, ambDifere.join(' | '));
 
@@ -1186,21 +1198,31 @@ function validar() {
 
     const bs = ss.getSheetByName('_base');
     const imp = bs ? bs.getRange('A1').getFormula() : '';
-    const faixaOk = imp.indexOf('A1:AG') > 0;
+    const faixaOk = imp.indexOf('A1:AI') > 0;
     const dado = bs ? conta(bs.getRange('A2:B3').getDisplayValues()) === 0 : false;
     const pa = ss.getSheetByName('Painel');
     const erroPainel = pa ? conta(pa.getRange(5, 2, 26, 6).getDisplayValues()) : 99;
 
     ok(p.nome + ' · colunas conferem com o perfil "' + p.perfil + '"', igual,
        igual ? '' : 'esperado ' + esperado.length + ', achei ' + achado.length);
-    ok(p.nome + ' · IMPORTRANGE vai até AG', faixaOk, imp ? '' : 'sem _base');
+    ok(p.nome + ' · IMPORTRANGE vai até AI', faixaOk, imp ? '' : 'sem _base');
     ok(p.nome + ' · a Base chega sem erro', dado);
     ok(p.nome + ' · Painel sem célula de erro', erroPainel === 0, erroPainel + ' célula(s)');
   });
 
   diz('');
-  diz('════ PAINEL DE GESTÃO ════');
+  diz('════ PAINEL DE COMPETÊNCIA ════');
   const pn = SpreadsheetApp.openById(ID_PAINEL);
+  const pcomp = pgto.getSheetByName('Painel de Competência');
+  ok('Painel de Competência existe', !!pcomp);
+  if (pcomp) {
+    const e = conta(pcomp.getRange(1, 1, Math.min(pcomp.getLastRow(), 120),
+                                   Math.max(1, pcomp.getLastColumn())).getDisplayValues());
+    ok('Painel de Competência sem célula de erro', e === 0, e + ' célula(s)');
+  }
+
+  diz('');
+  diz('════ PAINEL DE GESTÃO ════');
   ['Visão geral', 'Margem por projeto', 'Comissões', 'Equipe', 'Como ler']
     .forEach(function (aba) {
       const sh = pn.getSheetByName(aba);
@@ -1338,6 +1360,12 @@ function atualizarTudo() {
     diz('Painel de Gestão: FALHOU — ' + e.message);
   }
 
+  try {
+    diz('Painel de Competência: ' + abaPainelCompetencia_());
+  } catch (e) {
+    diz('Painel de Competência: FALHOU — ' + e.message);
+  }
+
   diz('── fim: ' + ok + ' atualizada(s)' + (erro ? ', ' + erro + ' com erro' : '') + ' ──');
   return log.join('\n');
 }
@@ -1420,7 +1448,9 @@ function atualizarBase_() {
     'Custo total do projeto', 'Margem de contribuição',
     'Gestor técnico', 'Comissão gestão técnica',
     // sem o nome do vendedor não existe categoria "vendedores" no painel
-    'Vendedor', 'Comissão de venda'];
+    'Vendedor', 'Comissão de venda',
+    // o mês em que o projeto pesa, e como ele está de entrega
+    'Competência', 'Situação da entrega'];
 
   base.clear();
   base.getRange(1, 1, 1, CAB.length).setValues([CAB])
@@ -1490,8 +1520,10 @@ function escreverBlocoBase_(base, i, nomeAba) {
       L.push(cel_(ab, FICHA.comGestao, r, false));
       L.push(cel_(ab, FICHA.vendedorNome, r, true));
       L.push(cel_(ab, FICHA.comVenda, r, false));
+      L.push(cel_(ab, FICHA.competencia, r, true));
+      L.push(cel_(ab, FICHA.entregaSituacao, r, true));
     } else {
-      L.push('', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+      L.push('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
     }
     linhas.push(L);
   }
@@ -1641,7 +1673,7 @@ function atualizarIndividual_(p) {
   const bs = ss.getSheetByName('_base');
   if (bs) {
     const atual = bs.getRange('A1').getFormula();
-    const nova = atual.replace(/!A1:[A-Z]+\d+/, '!A1:AG' + BASE_FIM);
+    const nova = atual.replace(/!A1:[A-Z]+\d+/, '!A1:AI' + BASE_FIM);
     if (nova && nova !== atual) bs.getRange('A1').setFormula(nova);
   }
 
@@ -1992,6 +2024,281 @@ function lerAporte_(ss) {
     }
   });
   return linhas;
+}
+
+
+// ════════════════════════════════════════════════════════════════════════
+//  COMPETÊNCIA MENSAL
+// ════════════════════════════════════════════════════════════════════════
+//
+// Cada projeto escolhe um mês na ficha, e é nesse mês que a receita e o custo
+// INTEIROS dele pesam — não importa em que mês cada compra aconteceu.
+//
+// É decisão de gestão, não de contabilidade. A vantagem é olhar o mês e ver
+// projeto fechado em vez de pedaço: venda, custo e margem do mesmo projeto na
+// mesma linha do tempo. O preço é que um projeto comprado em agosto e entregue
+// em outubro aparece inteiro em outubro, se for esse o mês escolhido.
+
+const MES3 = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+              'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+const COMPETENCIAS = (function () {
+  const l = [];
+  [2026, 2027].forEach(function (a) {
+    MES3.forEach(function (m) { l.push(m + '/' + a); });
+  });
+  return l;
+})();
+
+/** 'Out/2026' → 24315, para ordenar. Texto estranho vai para o fim. */
+function ordemComp_(c) {
+  const p = String(c || '').split('/');
+  const i = MES3.indexOf(p[0]);
+  if (i < 0 || !p[1]) return 999999;
+  return Number(p[1]) * 12 + i;
+}
+
+function compDeHoje_() {
+  const d = new Date();
+  return MES3[d.getMonth()] + '/' + d.getFullYear();
+}
+
+
+/**
+ * Põe o campo de competência na linha 10 de todas as fichas.
+ *
+ * A linha 10 era um espaçador de 8 pixels, vazia. Usar o que já existe em vez
+ * de inserir linha nova foi escolha deliberada: inserir empurraria tudo abaixo
+ * e obrigaria a mexer em dezenas de constantes, na Base e nas individuais.
+ *
+ * NÃO ESCREVE POR CIMA DE NADA. Se a linha 10 de alguma ficha tiver conteúdo
+ * que não seja este campo, a ficha é pulada e o nome aparece no log. Rode
+ * quantas vezes quiser: o mês já escolhido nunca é alterado.
+ */
+function adicionarCompetencia() {
+  const regra = SpreadsheetApp.newDataValidation()
+    .requireValueInList(COMPETENCIAS, true).setAllowInvalid(true)
+    .setHelpText('Mês em que a receita e o custo deste projeto pesam.').build();
+
+  const ss = SpreadsheetApp.openById(ID_CUSTO);
+  const FIXAS = ['Instruções', FICHA.painel, 'Listas', FICHA.base];
+  const ROTULO = 'MÊS DE COMPETÊNCIA';
+  let feitas = 0, refeitas = 0;
+  const ocupadas = [];
+
+  ss.getSheets().forEach(function (sh) {
+    const nome = sh.getName();
+    if (FIXAS.indexOf(nome) >= 0) return;
+    if (sh.getMaxRows() < 20 || sh.getMaxColumns() < 15) return;
+
+    // é mesmo uma ficha?
+    if (String(sh.getRange('A8').getDisplayValue() || '').trim().toUpperCase().indexOf('PROJETO') !== 0) {
+      console.log('  pulei "' + nome + '": não parece ficha.');
+      return;
+    }
+
+    const linha = sh.getRange(10, 1, 1, 15).getDisplayValues()[0]
+                    .map(function (v) { return String(v || '').trim(); });
+    const jaTem = linha[0].indexOf(ROTULO) === 0;
+    const vazia = linha.join('') === '';
+
+    if (!jaTem && !vazia) {
+      ocupadas.push(nome + ' → "' + linha.filter(String).join(' | ') + '"');
+      return;
+    }
+
+    sh.setRowHeight(10, 18);
+    sh.getRange(10, 1, 1, 15).breakApart();
+    sh.getRange(10, 1, 1, 3).merge().setValue(ROTULO)
+      .setFontSize(8).setFontWeight('bold').setFontColor(MUTED)
+      .setHorizontalAlignment('right').setVerticalAlignment('middle')
+      .setBackground('#ffffff');
+    sh.getRange(10, 4, 1, 2).merge()
+      .setFontSize(11).setFontWeight('bold').setFontColor(NAVY)
+      .setHorizontalAlignment('center').setVerticalAlignment('middle')
+      .setBackground('#fff9e3')
+      .setDataValidation(regra);
+    sh.getRange(10, 6, 1, 10).merge().setValue(
+      'o mês em que a receita e o custo deste projeto pesam no painel de competência')
+      .setFontSize(8).setFontStyle('italic').setFontColor(MUTED)
+      .setHorizontalAlignment('left').setVerticalAlignment('middle')
+      .setBackground('#ffffff');
+
+    if (jaTem) { refeitas++; } else { feitas++; }
+  });
+
+  if (ocupadas.length) {
+    console.log('  NÃO MEXI nestas, a linha 10 tinha conteúdo:');
+    ocupadas.forEach(function (t) { console.log('    ' + t); });
+  }
+  SpreadsheetApp.flush();
+  const r = feitas + ' ficha(s) com o campo novo, ' + refeitas + ' já tinha(m)'
+          + (ocupadas.length ? ', ' + ocupadas.length + ' pulada(s)' : '');
+  console.log('Competência: ' + r);
+  return r;
+}
+
+
+/**
+ * Aba "Painel de Competência", na Controle de Pagamentos.
+ *
+ * Um projeto por linha, agrupado pelo mês escolhido na ficha. Projeto sem mês
+ * escolhido vai para um bloco âmbar no fim, e não some: enquanto estiver lá,
+ * ele não entra em mês nenhum e o painel não fecha com o total do ano.
+ */
+function abaPainelCompetencia_() {
+  const cp = SpreadsheetApp.openById(ID_CUSTO);
+  const base = cp.getSheetByName(FICHA.base);
+  if (!base) throw new Error('Base · Comissões não encontrada.');
+  const n = base.getLastRow() - 1;
+  const bv = n > 0 ? base.getRange(2, 1, n, base.getLastColumn()).getValues() : [];
+
+  // um registro por projeto — venda, custo, margem e competência vivem na
+  // primeira linha de cada bloco de doze
+  const vistos = {}, projetos = [];
+  bv.forEach(function (L) {
+    const nome = String(L[0] || '').trim();
+    if (!nome || vistos[nome]) return;
+    const venda = Number(L[21]) || 0;
+    const custo = Number(L[27]) || 0;
+    const margem = Number(L[28]) || 0;
+    if (!venda && !custo) return;
+    vistos[nome] = true;
+    projetos.push({
+      projeto: nome, cliente: String(L[1] || '').trim(),
+      venda: venda, custo: custo, margem: margem,
+      comp: String(L[33] || '').trim(),
+      situacao: String(L[34] || '').trim() || '—',
+    });
+  });
+
+  const W = 9;
+  const ss = SpreadsheetApp.openById(ID_PAG);
+  const sh = abaLimpa_(ss, 'Painel de Competência', W);
+  cabecalhoPainel_(sh, 'PAINEL DE COMPETÊNCIA',
+    'Cada projeto pesa no mês escolhido na ficha   ·   receita e custo inteiros, no mesmo mês   ·   '
+    + 'atualizado em ' + Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'dd/MM/yyyy HH:mm'), W);
+  sh.setColumnWidth(2, 175); sh.setColumnWidth(3, 175);
+  for (let c = 4; c <= W; c++) sh.setColumnWidth(c, 120);
+
+  // ── agrupa ──
+  const meses = {};
+  const semComp = [];
+  projetos.forEach(function (p) {
+    if (!p.comp) { semComp.push(p); return; }
+    if (!meses[p.comp]) meses[p.comp] = [];
+    meses[p.comp].push(p);
+  });
+  const ordem = Object.keys(meses).sort(function (a, b) { return ordemComp_(a) - ordemComp_(b); });
+
+  const soma = function (lista, campo) {
+    return lista.reduce(function (s, p) { return s + p[campo]; }, 0);
+  };
+  const conta = function (lista, sit) {
+    return lista.filter(function (p) { return p.situacao === sit; }).length;
+  };
+
+  // ── resumo do mês corrente ──
+  const hoje = compDeHoje_();
+  const doMes = meses[hoje] || [];
+  let lin = 5;
+  secaoPainel_(sh, lin, 'RESUMO DE ' + hoje.toUpperCase()
+    + (doMes.length ? '' : '   ·   nenhum projeto com esta competência ainda'), W);
+  lin += 2;
+  const vMes = soma(doMes, 'venda'), cMes = soma(doMes, 'custo'), mMes = soma(doMes, 'margem');
+  cartaoPainel_(sh, lin, 2, 'Projetos', doMes.length, NAVY, '0');
+  cartaoPainel_(sh, lin, 4, 'Receita', vMes, NAVY2);
+  cartaoPainel_(sh, lin, 6, 'Custos', cMes, '#b0413f');
+  cartaoPainel_(sh, lin, 8, 'MC final', mMes, '#2f7d4f');
+  lin += 4;
+
+  // ── mês a mês ──
+  secaoPainel_(sh, lin, 'MÊS A MÊS', W); lin += 2;
+  const lMes = ordem.map(function (c) {
+    const g = meses[c], v = soma(g, 'venda');
+    return [c, g.length, v, soma(g, 'custo'), soma(g, 'margem'),
+            v ? soma(g, 'margem') / v : 0,
+            conta(g, 'No prazo'), conta(g, 'Atrasado'), conta(g, 'Em produção')];
+  });
+  if (semComp.length) {
+    const v = soma(semComp, 'venda');
+    lMes.push(['Sem competência', semComp.length, v, soma(semComp, 'custo'),
+               soma(semComp, 'margem'), v ? soma(semComp, 'margem') / v : 0,
+               conta(semComp, 'No prazo'), conta(semComp, 'Atrasado'),
+               conta(semComp, 'Em produção')]);
+  }
+  const l0 = lin;
+  lin = tabelaPainel_(sh, lin, 2,
+    ['Competência', 'Projetos', 'Receita', 'Custos', 'MC final', 'MC %',
+     'No prazo', 'Atrasado', 'Em produção'],
+    lMes, [null, '0', MOEDA, MOEDA, MOEDA, '0.0%', '0', '0', '0']);
+  if (semComp.length) {
+    sh.getRange(l0 + lMes.length, 2, 1, 9)
+      .setBackground(ABERTOBG).setFontColor('#c47d0e').setFontWeight('bold');
+  }
+
+  // ── detalhe, mês por mês ──
+  const CAB = ['Cliente', 'Projeto', 'Valor do projeto', 'Total de custos',
+               'MC final', 'MC %', 'Condição de entrega'];
+  const FMT = [null, null, MOEDA, MOEDA, MOEDA, '0.0%', null];
+  const faixas = [];
+
+  const blocoMes = function (titulo, lista, ambar) {
+    secaoPainel_(sh, lin, titulo, W); lin += 2;
+    const linhas = lista.sort(function (a, b) { return a.venda - b.venda; })
+      .map(function (p) {
+        return [p.cliente || p.projeto, p.projeto, p.venda, p.custo, p.margem,
+                p.venda ? p.margem / p.venda : 0, p.situacao];
+      });
+    const v = soma(lista, 'venda');
+    linhas.push(['Total', '', v, soma(lista, 'custo'), soma(lista, 'margem'),
+                 v ? soma(lista, 'margem') / v : 0, '']);
+    const li = lin;
+    lin = tabelaPainel_(sh, lin, 2, CAB, linhas, FMT);
+    sh.getRange(li + linhas.length, 2, 1, 7)
+      .setBackground(ambar ? ABERTOBG : NAVY)
+      .setFontColor(ambar ? '#c47d0e' : GOLDS).setFontWeight('bold');
+    faixas.push(sh.getRange(li + 1, 7, linhas.length - 1, 1));   // MC %
+    faixas.push(sh.getRange(li + 1, 8, linhas.length - 1, 1));   // condição
+  };
+
+  ordem.forEach(function (c) { blocoMes('COMPETÊNCIA   ·   ' + c, meses[c], false); });
+  if (semComp.length) {
+    blocoMes('SEM COMPETÊNCIA ESCOLHIDA   ·   não entram em mês nenhum', semComp, true);
+  }
+
+  // ── cores: MC por faixa, condição por estado ──
+  const mcs = [], cond = [];
+  for (let i = 0; i < faixas.length; i += 2) { mcs.push(faixas[i]); cond.push(faixas[i + 1]); }
+  const regras = [];
+  if (mcs.length) {
+    regras.push(SpreadsheetApp.newConditionalFormatRule().whenNumberLessThan(0.25)
+      .setBackground('#fbe7e6').setFontColor('#b0413f').setBold(true).setRanges(mcs).build());
+    regras.push(SpreadsheetApp.newConditionalFormatRule().whenNumberBetween(0.25, 0.35)
+      .setBackground('#fbf1dc').setFontColor('#c47d0e').setBold(true).setRanges(mcs).build());
+    regras.push(SpreadsheetApp.newConditionalFormatRule().whenNumberGreaterThan(0.35)
+      .setBackground('#e2f0e7').setFontColor('#2f7d4f').setBold(true).setRanges(mcs).build());
+    regras.push(SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo('Atrasado')
+      .setBackground('#fbe7e6').setFontColor('#b0413f').setBold(true).setRanges(cond).build());
+    regras.push(SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo('Em produção')
+      .setBackground('#fbf1dc').setFontColor('#c47d0e').setBold(true).setRanges(cond).build());
+    regras.push(SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo('No prazo')
+      .setBackground('#e2f0e7').setFontColor('#2f7d4f').setBold(true).setRanges(cond).build());
+    sh.setConditionalFormatRules(regras);
+  }
+
+  sh.getRange(lin, 2, 1, W - 2).merge().setValue(
+    'A competência é escolhida na linha 10 da ficha de cada projeto. Receita e custo entram '
+    + 'inteiros no mês escolhido, mesmo que as compras tenham acontecido antes — é o mês em que '
+    + 'o projeto pesa na gestão, não a data de cada nota. Projeto sem mês escolhido fica no '
+    + 'bloco âmbar e não entra em nenhuma competência.')
+    .setFontColor(MUTED).setFontSize(9).setFontStyle('italic').setWrap(true);
+  sh.setRowHeight(lin, 34);
+
+  SpreadsheetApp.flush();
+  const r = projetos.length + ' projeto(s) em ' + ordem.length + ' competência(s)'
+          + (semComp.length ? ', ' + semComp.length + ' sem mês escolhido' : '');
+  console.log('Painel de Competência: ' + r);
+  return r;
 }
 
 

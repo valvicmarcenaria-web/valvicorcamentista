@@ -47,7 +47,9 @@ const FICHA = {
   gestorTecnico: 'H66',   // o nome mora na própria linha da comissão
   vendedorNome: 'D9',
   comVenda: 'D41',
-  colsBase: 33,           // largura da Base · Comissões
+  competencia: 'D10',     // linha 10 · era espaçador
+  entregaSituacao: 'J9',
+  colsBase: 35,           // largura da Base · Comissões
   painelLinha0: 11,       // Painel Geral · primeira vaga de projeto
   painelLinhaF: 50,
   baseLinha0: 2,          // Base · primeira linha de dados
@@ -278,8 +280,10 @@ function escreverBlocoBase_(destino, i, nomeAba) {
       linha.push(cel_(ab, FICHA.comGestao, r, false));
       linha.push(cel_(ab, FICHA.vendedorNome, r, true));
       linha.push(cel_(ab, FICHA.comVenda, r, false));
+      linha.push(cel_(ab, FICHA.competencia, r, true));
+      linha.push(cel_(ab, FICHA.entregaSituacao, r, true));
     } else {
-      linha.push('', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+      linha.push('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
     }
     linhas.push(linha);
   }

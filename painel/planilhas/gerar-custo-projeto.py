@@ -65,6 +65,13 @@ PCT_GESTAO = 0.005
 PROJETISTAS = ['Lorrane', 'Lucas', 'Externo / avulso']
 GESTORES = ['Bruna']
 VENDEDORES = ['Jonathan', 'Vitor', 'Indicação', 'Arquiteto parceiro', 'Outro']
+
+# Mês de competência: é nele que a receita e o custo INTEIROS do projeto pesam,
+# independentemente de quando cada compra aconteceu. Decisão de gestão, não de
+# contabilidade — serve para olhar o mês e ver projeto fechado, não pedaço.
+_MES3 = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+         'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
+COMPETENCIAS = [f'{m}/{a}' for a in (2026, 2027) for m in _MES3]
 CAUSAS = ['Erro de projeto', 'Erro de medição', 'Erro de produção', 'Erro de montagem',
           'Falha de material', 'Dano no transporte', 'Mudança pedida pelo cliente',
           'Falha de fornecedor', 'Outro']
@@ -253,6 +260,7 @@ R_CO_T, R_CO_H = R_AMB_TOT + 2, R_AMB_TOT + 3
 R_COORD, R_GEST = R_CO_H + 1, R_CO_H + 2
 R_PRODC, R_MONTC = R_CO_H + 3, R_CO_H + 4
 R_PROJC, R_CO_SUB = R_CO_H + 5, R_CO_H + 6
+R_COMP = R_ID4 + 1            # linha 10 · era espaçador, vira o mês de competência
 R_CL_T, R_CL_H, R_CL0 = R_CO_SUB + 2, R_CO_SUB + 3, R_CO_SUB + 4
 R_CLF = R_CL0 + N_COL - 1
 R_CL_TOT = R_CLF + 1
@@ -364,7 +372,16 @@ def montar_ficha(ws):
     ws[f'J{R_ID4}'] = (f'=IF($H${R_ID2}="","",IF($J${R_ID2}="",'
                        f'IF(TODAY()>$H${R_ID2},"Atrasado","Em produção"),'
                        f'IF($H${R_ID4}<=0,"No prazo","Atrasado")))')
-    ws.row_dimensions[R_ID4 + 1].height = 8
+    # ── mês de competência, na linha que era espaçador ──
+    ws.row_dimensions[R_COMP].height = 18
+    bloco(ws, R_COMP, 1, 3, 'MÊS DE COMPETÊNCIA',
+          f=Font(name=F, size=8, bold=True, color=MUTED), bg=WHITE, al=RIGHT)
+    bloco(ws, R_COMP, 4, 2, None,
+          f=Font(name=F, size=11, bold=True, color=NAVY), bg=INPUT, al=CTR)
+    bloco(ws, R_COMP, 6, 5 + PAD,
+          'o mês em que a receita e o custo deste projeto pesam no painel de competência',
+          f=Font(name=F, size=8, italic=True, color=MUTED), bg=WHITE, al=LEFTI)
+    dv(ws, literal(COMPETENCIAS), f'D{R_COMP}:E{R_COMP}')
 
     # ── faixa de resultado + resumo por categoria (no topo)
     titulo_secao(ws, R_TOP, NCOL, 'Resultado do projeto',
@@ -1357,6 +1374,7 @@ COL_AMB = {'ambiente': 'A', 'pct_total': 'B', 'valor': 'C',
            'mont_quem': 'H', 'mont_pct': 'I', 'mont_com': 'J', 'montado_em': 'K',
            'proj_quem': 'L', 'proj_pct': 'M', 'proj_com': 'N', 'total': 'O'}
 MAPA.update({'NCOL': NCOL, 'EQUIPE': EQUIPE, 'PROJETISTAS': PROJETISTAS,
+             'COMPETENCIAS': COMPETENCIAS,
              'GESTORES': GESTORES,
              'PROJETOS_ABAS': PROJETOS_ABAS, 'COL_AMB': COL_AMB,
              'CATEGORIAS_COMPRA': CATEGORIAS_COMPRA, 'LINHAS_OC': LINHAS_OC,

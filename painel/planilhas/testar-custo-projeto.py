@@ -340,7 +340,8 @@ def lit(col, n):
 LISTAS = {'CATEGORIA': lit(4, len(M['CATEGORIAS_COMPRA'])), 'PAGAMENTO': lit(5, 8),
           'STATUS': lit(6, 3), 'EQUIPE': lit(1, N_EQUIPE), 'VENDEDOR': lit(2, 5),
           'CAUSA': lit(3, 9), 'PROJETISTA': lit(8, N_PROJ),
-          'ROSTER': '"' + ','.join(M['EQUIPE'] + M['PROJETISTAS'] + M['GESTORES']) + '"'}
+          'ROSTER': '"' + ','.join(M['EQUIPE'] + M['PROJETISTAS'] + M['GESTORES']) + '"',
+          'COMPETENCIA': '"' + ','.join(M['COMPETENCIAS']) + '"'}
 VAL_ESPERADAS = {
     f'B{R_LAN0}:B{R_LANF}': 'CATEGORIA', f'G{R_LAN0}:G{R_LANF}': 'PAGAMENTO',
     f'I{R_LAN0}:I{R_LANF}': 'STATUS',
@@ -349,6 +350,7 @@ VAL_ESPERADAS = {
     f'{CA["proj_quem"]}{R_AMB0}:{CA["proj_quem"]}{R_AMBF}': 'PROJETISTA',
     f'A{R_CL0}:A{R_CLF}': 'ROSTER',
     f'H{M["R_GEST"]}': 'ROSTER',
+    f'D{M["R_COMP"]}:E{M["R_COMP"]}': 'COMPETENCIA',
     f'B{R_RB0}:B{R_RBF}': 'CAUSA', f'D{R_ID4}:E{R_ID4}': 'VENDEDOR',
     f'F{R_ID4}:G{R_ID4}': 'EQUIPE'}
 for chave, valor in LISTAS.items():
