@@ -2398,8 +2398,13 @@ function abaAnaliseMensal_() {
       if (String(L[0] || '').indexOf('Custo operacional') === 0) custoMes = Number(L[2]) || 0;
     });
   }
+  // Só o mês corrente. O valor é o custo fixo VIGENTE; repetido para trás, ele
+  // inventava um histórico que a planilha não tem — a folha de janeiro não era
+  // esta, e somar dez meses de um número de hoje dava R$ 1,17 mi de custo que
+  // nunca existiu assim.
   const mHoje = new Date().getMonth();
-  for (let i = 0; i <= mHoje; i++) { fixo[i] = custoMes; fixo[13] += custoMes; }
+  fixo[mHoje] = custoMes;
+  fixo[13] = custoMes;
 
   const comPagas = comissoesPagasPorMes_(ano);
   for (let i = 0; i < 14; i++) pago[i] += comPagas[i];
@@ -2536,8 +2541,9 @@ function abaAnaliseMensal_() {
   sh.getRange(lin, 2, 1, W - 2).merge().setValue(
     'Vendido é contrato assinado, pelo mês da venda. Faturado é nota emitida, alocada no mês '
     + 'da entrega. Produzido e montado medem ambiente, não projeto, pela data de cada etapa — '
-    + 'por isso nunca batem com os dois primeiros. Custo fixo é o vigente hoje, repetido nos '
-    + 'meses já corridos. Pago é o que saiu do caixa: comissão com status Pago nas planilhas '
+    + 'por isso nunca batem com os dois primeiros. Custo fixo aparece só no mês corrente: é o '
+    + 'valor vigente hoje, e a planilha não guarda o histórico da folha dos meses anteriores. '
+    + 'Pago é o que saiu do caixa: comissão com status Pago nas planilhas '
     + 'individuais, mais RT com status Pago na ficha.')
     .setFontColor(MUTED).setFontSize(9).setFontStyle('italic').setWrap(true);
   sh.setRowHeight(lin, 44);
