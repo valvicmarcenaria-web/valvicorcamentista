@@ -132,7 +132,7 @@ NCOL = 15
 PAD = NCOL - 10
 LP = {c: get_column_letter(c) for c in range(1, 61)}
 W_FICHA = [28, 9, 14, 16, 7, 13, 13, 16, 7, 13, 13, 15, 7, 13, 14]
-N_AMB, N_COL, N_RETRAB, N_LANC = 12, 18, 12, 60
+N_AMB, N_COL, N_RETRAB, N_LANC = 12, 18, 4, 60
 N_NOTA = 4          # notas fiscais por projeto — o teto que o Jonathan definiu
 
 wb = openpyxl.Workbook()
@@ -357,8 +357,12 @@ def montar_ficha(ws):
     # ── identificação
     IDENT = [((1, 3, 'CLIENTE'), (4, 2, 'Nº DO PROJETO'), (6, 2, 'DATA DE ENTRADA'),
               (8, 2, 'ENTREGA PREVISTA'), (10, 1 + PAD, 'ENTREGA REAL')),
+             # GESTÃO TÉCNICA entra ao lado do COORDENADOR: são as duas
+             # comissões de projeto inteiro, e quem lê a ficha procura as duas
+             # no mesmo lugar. Dias e situação andam para a direita.
              ((1, 3, 'PROJETO'), (4, 2, 'VENDEDOR'), (6, 2, 'COORDENADOR'),
-              (8, 2, 'DIAS DE ATRASO'), (10, 1 + PAD, 'SITUAÇÃO DA ENTREGA'))]
+              (8, 2, 'GESTÃO TÉCNICA'), (10, 2, 'DIAS DE ATRASO'),
+              (12, PAD - 1, 'SITUAÇÃO DA ENTREGA'))]
     for k, linha in enumerate(IDENT):
         rl, rv = R_ID1 + k * 2, R_ID2 + k * 2
         for c0, span, rot in linha:
@@ -370,12 +374,13 @@ def montar_ficha(ws):
         ws.row_dimensions[rl].height = 13
         ws.row_dimensions[rv].height = 21
     for ref, nf in ((f'F{R_ID2}', DATA), (f'H{R_ID2}', DATA), (f'J{R_ID2}', DATA),
-                    (f'H{R_ID4}', DIAS)):
+                    (f'J{R_ID4}', DIAS)):
         ws[ref].number_format = nf
-    ws[f'H{R_ID4}'] = f'=IF(OR($H${R_ID2}="",$J${R_ID2}=""),"",$J${R_ID2}-$H${R_ID2})'
-    ws[f'J{R_ID4}'] = (f'=IF($H${R_ID2}="","",IF($J${R_ID2}="",'
+    ws[f'J{R_ID4}'] = f'=IF(OR($H${R_ID2}="",$J${R_ID2}=""),"",$J${R_ID2}-$H${R_ID2})'
+    ws[f'L{R_ID4}'] = (f'=IF($H${R_ID2}="","",IF($J${R_ID2}="",'
                        f'IF(TODAY()>$H${R_ID2},"Atrasado","Em produção"),'
-                       f'IF($H${R_ID4}<=0,"No prazo","Atrasado")))')
+                       f'IF($J${R_ID4}<=0,"No prazo","Atrasado")))')
+    dv(ws, literal(EQUIPE + PROJETISTAS + GESTORES), f'H{R_ID4}:I{R_ID4}')
     # ── mês de competência, na linha que era espaçador ──
     #
     # NÃO é digitado: sai do mês da ENTREGA REAL. Receita e custo do projeto
@@ -626,7 +631,6 @@ def montar_ficha(ws):
     linha_custo(ws, R_GEST, 'Gestão técnica', 'pct',
                 base_o=f'$C${R_LIQ}', base_r=f'$D${R_LIQ}')
     ws[f'B{R_GEST}'] = PCT_GESTAO
-    dv(ws, literal(EQUIPE + PROJETISTAS + GESTORES), f'H{R_GEST}')   # mesma lista do bloco 5
     for rr, rot, orig, dica in (
             (R_PRODC, 'Comissão de produção', f'$F${R_AMB_TOT}',
              'orçado = % único estimado · realizado = soma dos ambientes'),
@@ -664,7 +668,7 @@ def montar_ficha(ws):
               f=F_CALC, bg=CALC, al=RIGHT, nf=MOEDA)
         bloco(ws, r, 8, 2, f'=IF($A{r}="","",IF($A{r}=$F${R_ID4},'
                            f'IF($D${R_COORD}="",0,$D${R_COORD}),0)'
-                           f'+IF($A{r}=$H${R_GEST},IF($D${R_GEST}="",0,$D${R_GEST}),0))',
+                           f'+IF($A{r}=$H${R_ID4},IF($D${R_GEST}="",0,$D${R_GEST}),0))',
               f=F_CALC, bg=CALC, al=RIGHT, nf=MOEDA)
         bloco(ws, r, 10, 4, f'=IF($A{r}="","",ROUND($B{r}+$D{r}+$F{r}+$H{r},2))',
               f=Font(name=F, size=10, bold=True, color=NAVY), bg=CALC, al=RIGHT, nf=MOEDA)
@@ -800,18 +804,17 @@ def montar_ficha(ws):
             formula=[f'AND({ref}<>"",{ref}>0)'], font=Font(bold=True, color=RED)))
         ws.conditional_formatting.add(rng, FormulaRule(
             formula=[f'AND({ref}<>"",{ref}<0)'], font=Font(bold=True, color=OK)))
-    ws.conditional_formatting.add(f'J{R_ID4}', FormulaRule(
-        formula=[f'$J${R_ID4}="No prazo"'], fill=fill(OKBG), font=Font(bold=True, color=OK),
+    ws.conditional_formatting.add(f'L{R_ID4}', FormulaRule(
+        formula=[f'$L${R_ID4}="No prazo"'], fill=fill(OKBG), font=Font(bold=True, color=OK),
         stopIfTrue=True))
-    ws.conditional_formatting.add(f'J{R_ID4}', FormulaRule(
-        formula=[f'$J${R_ID4}="Atrasado"'], fill=fill(REDBG), font=Font(bold=True, color=RED)))
+    ws.conditional_formatting.add(f'L{R_ID4}', FormulaRule(
+        formula=[f'$L${R_ID4}="Atrasado"'], fill=fill(REDBG), font=Font(bold=True, color=RED)))
     ws.conditional_formatting.add(f'A{R_KPI_V}:J{R_KPI_V}', FormulaRule(
         formula=[f'AND($G${R_KPI_V}<>"",$G${R_KPI_V}<0.25)'], fill=fill(REDBG)))
     # D9:E9 é VENDEDOR. Já esteve em D7, que é Nº do projeto — o campo errado
     # tinha menu e o certo não tinha nenhum.
     dv(ws, literal(VENDEDORES), f'D{R_ID4}:E{R_ID4}')
     dv(ws, literal(EQUIPE), f'F{R_ID4}:G{R_ID4}')
-    ws.freeze_panes = f'A{R_VEN_T}'
     print_cfg(ws, f'A1:{LP[NCOL]}{R_NOTA}')
     return ws
 
@@ -907,7 +910,7 @@ def preencher(ws, d):
         ws[f'H{r}'] = mq; ws[f'I{r}'] = mp
         ws[f'L{r}'] = jq; ws[f'M{r}'] = jp
     ws[f'B{R_COORD}'] = d['coord']
-    ws[f'H{R_GEST}'] = 'Bruna'      # gestão técnica tem dono, igual à coordenação
+    ws[f'H{R_ID4}'] = 'Bruna'       # gestão técnica tem dono, igual à coordenação
     ws[f'B{R_PRODC}'] = d['prod_o']; ws[f'B{R_MONTC}'] = d['mont_o']
     ws[f'B{R_PROJC}'] = d['proj_o']
     for cat, val in d['orcado_cat'].items():
@@ -997,8 +1000,8 @@ def puxa(r, ref):
 
 REFS = [(3, f'A{R_ID2}', None, LEFTI), (4, f'A{R_ID4}', None, LEFTI),
         (5, f'F{R_ID2}', DATA, CTR), (6, f'H{R_ID2}', DATA, CTR),
-        (7, f'J{R_ID2}', DATA, CTR), (8, f'H{R_ID4}', '0', CTR),
-        (9, f'J{R_ID4}', None, CTR), (10, f'A{R_KPI_V}', MOEDA0, RIGHT),
+        (7, f'J{R_ID2}', DATA, CTR), (8, f'J{R_ID4}', '0', CTR),
+        (9, f'L{R_ID4}', None, CTR), (10, f'A{R_KPI_V}', MOEDA0, RIGHT),
         (11, f'C{R_KPI_V}', MOEDA0, RIGHT), (12, f'I{R_ALERTA}', MOEDA0, RIGHT),
         (13, f'E{R_KPI_V}', MOEDA0, RIGHT), (14, f'G{R_KPI_V}', PCT1, CTR)]
 
@@ -1137,7 +1140,6 @@ g2.y_axis.numFmt = 'R$ #,##0'
 g2.series[0].graphicalProperties.solidFill = NAVY2
 g2.width, g2.height = 17, 8
 pg.add_chart(g2, f'T{R_ERR_T}')
-pg.freeze_panes = f'C{P0}'
 print_cfg(pg, f'A1:R{R_FIM_PG}')
 
 
@@ -1178,7 +1180,6 @@ CAB_BASE = [
 bs = wb.create_sheet('Base · Comissões')
 bs.sheet_properties.tabColor = GOLD
 bs.sheet_view.showGridLines = False
-bs.freeze_panes = 'C2'
 for i, (titulo, larg, _) in enumerate(CAB_BASE, start=1):
     c = bs.cell(1, i, titulo)
     c.font = Font(name=F, size=8.5, bold=True, color=WHITE)

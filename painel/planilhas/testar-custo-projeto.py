@@ -254,8 +254,9 @@ alerta = re.sub(r'[.,\s]', '', str(C(EX, f'A{R_ALERTA}')))
 ck('  o alerta cita o valor já comprado a pagar', f'{ap:.0f}' in alerta, True)
 ck('  o alerta cita o custo projetado', 'custoprojetado' in alerta.lower(), True)
 ck('  o alerta cita a MC projetada', 'MCprojetada' in str(C(EX, f'A{R_ALERTA}')).replace(' ', ''), True)
-ck('  dias de atraso', C(EX, 'H9'), 7)
-ck('  situação da entrega', C(EX, 'J9'), 'Atrasado')
+ck('  dias de atraso', C(EX, 'J9'), 7)
+ck('  situação da entrega', C(EX, 'L9'), 'Atrasado')
+ck('  gestão técnica na identificação', C(EX, 'H9'), 'Bruna')
 print(f'  {testes - n0} verificações')
 
 n0 = testes
@@ -265,7 +266,7 @@ for ref in ('A13', 'C13', 'E13', 'G13', f'D{R_CV_SUB}', f'D{R_LIQ}',
             f'D{R_NF_SUB}',
             f'F{R_AMB0}', f'{CA["mont_com"]}{R_AMB0}', f'{CA["proj_com"]}{R_AMB0}',
             f'J{R_CL0}', f'D{R_RES0}', f'D{R_CUSTO_TOT}',
-            f'D{R_MC}', 'H9', 'J9', f'D{_CAT1}', f'G{_CAT1}'):
+            f'D{R_MC}', 'J9', 'L9', f'D{_CAT1}', f'G{_CAT1}'):
     v = C(FM, ref)
     ck(f'  {FM}!{ref} vazia', '' if v in ('', 0, 0.0) else v, '')
 # o controle de orçado saiu em out/2026 — que não volte pela porta dos fundos
@@ -273,6 +274,9 @@ _rot12 = ' '.join(str(wbv[FM].cell(12, c).value or '') for c in range(1, M['NCOL
 # competência saiu do menu e virou fórmula da entrega real
 _c10 = str(wbv[FM].cell(M['R_COMP'], 4).value or '')
 ck('  competência vem da entrega real', _c10.startswith('=IF($J$7='), True)
+# nada congelado, em aba nenhuma
+for _aba in (FM, EX, PG, 'Base · Comissões'):
+    ck(f'  {_aba} sem painel congelado', wbv[_aba].freeze_panes in (None, 'A1'), True)
 ck('  ficha não traz mais MC % ORÇADA', 'ORÇADA' in _rot12.upper(), False)
 ck('  ficha não traz mais DESVIO DE CUSTO', 'DESVIO DE CUSTO' in _rot12.upper(), False)
 print(f'  {testes - n0} verificações')
@@ -281,7 +285,7 @@ n0 = testes
 print('\nTESTE 8 · o Painel aponta para os endereços certos da ficha')
 pg = wbv[PG]
 P0 = next(r for r in range(1, pg.max_row + 1) if pg.cell(r, 2).value == EX)
-ESPERADO = {3: 'A7', 4: 'A9', 5: 'F7', 6: 'H7', 7: 'J7', 8: 'H9', 9: 'J9',
+ESPERADO = {3: 'A7', 4: 'A9', 5: 'F7', 6: 'H7', 7: 'J7', 8: 'J9', 9: 'L9',
             10: 'A13', 11: 'C13', 12: f'I{R_ALERTA}', 13: 'E13', 14: 'G13'}
 ck('  Painel não tem mais coluna de diagnóstico', wbv[PG].cell(P0, 15).value, None)
 for col, ref in ESPERADO.items():
@@ -312,7 +316,7 @@ ck('  fórmulas idênticas', dif, 0)
 ck('  mesmo nº de mesclagens', len(fm.merged_cells.ranges), len(ws.merged_cells.ranges))
 ck('  12 linhas de ambiente', R_AMBF - R_AMB0 + 1, 12)
 ck(f'  {N_COL} linhas de colaborador', R_CLF - R_CL0 + 1, N_COL)
-ck('  12 linhas de retrabalho', R_RBF - R_RB0 + 1, 12)
+ck('  4 linhas de retrabalho', R_RBF - R_RB0 + 1, 4)
 ck('  60 linhas de lançamento', R_LANF - R_LAN0 + 1, 60)
 print(f'  {testes - n0} verificações')
 
@@ -354,7 +358,7 @@ VAL_ESPERADAS = {
     f'{CA["mont_quem"]}{R_AMB0}:{CA["mont_quem"]}{R_AMBF}': 'EQUIPE',
     f'{CA["proj_quem"]}{R_AMB0}:{CA["proj_quem"]}{R_AMBF}': 'PROJETISTA',
     f'A{R_CL0}:A{R_CLF}': 'ROSTER',
-    f'H{M["R_GEST"]}': 'ROSTER',
+    f'H{M["R_ID4"]}:I{M["R_ID4"]}': 'ROSTER',
     f'H{M["R_RTP"]}:I{M["R_RTP"]}': 'STATUS_RT',
     f'B{R_RB0}:B{R_RBF}': 'CAUSA', f'D{R_ID4}:E{R_ID4}': 'VENDEDOR',
     f'F{R_ID4}:G{R_ID4}': 'EQUIPE'}

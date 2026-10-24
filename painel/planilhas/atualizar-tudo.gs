@@ -61,10 +61,10 @@ const FICHA = {
   custoVenda: 'D44', liquido: 'D45', comCoord: 'D65',
   custoTotal: 'D22', margem: 'D23',   // bloco resumo · coluna D = realizado
   comGestao: 'D66',                   // gestão técnica · 0,5% do líquido
-  gestorTecnico: 'H66',               // o nome mora na própria linha da comissão
+  gestorTecnico: 'H9',                // ao lado do coordenador, na identificação
   vendedorNome: 'D9', comVenda: 'D41',
   competencia: 'D10',                 // linha 10 · era espaçador
-  entregaSituacao: 'J9',              // No prazo · Atrasado · Em produção
+  entregaSituacao: 'L9',              // No prazo · Atrasado · Em produção
   faturado: 'D34',                    // total das notas emitidas
   rtValor: 'D43', rtStatus: 'H43',    // RT do parceiro e se já foi pago
   colsBase: 38,
@@ -760,7 +760,6 @@ function escreverTabela_(ss, nome, cab, linhas) {
   sh.getRange(1, 1, 1, cab.length).setValues([cab])
     .setBackground(NAVY2).setFontColor('#ffffff').setFontWeight('bold').setFontSize(9);
   if (linhas.length) sh.getRange(2, 1, linhas.length, cab.length).setValues(linhas);
-  sh.setFrozenRows(1);
   const filtro = sh.getFilter();
   if (filtro) filtro.remove();
   if (linhas.length) sh.getRange(1, 1, linhas.length + 1, cab.length).createFilter();
@@ -1378,9 +1377,12 @@ function atualizarTudo() {
   }
 
   try {
-    diz('Análise mensal: ' + abaAnaliseMensal_());
+    diz('Gestão 2026 · ' + migrarParaGestao2026());
+    diz('Gestão 2026 · Clientes: ' + abaClientes_());
+    diz('Gestão 2026 · Painel Geral: ' + abaPainelGeralG26_());
+    diz('Gestão 2026 · Análise mensal: ' + abaAnaliseMensal_());
   } catch (e) {
-    diz('Análise mensal: FALHOU — ' + e.message);
+    diz('Gestão 2026: FALHOU — ' + e.message);
   }
 
   diz('── fim: ' + ok + ' atualizada(s)' + (erro ? ', ' + erro + ' com erro' : '') + ' ──');
@@ -1475,7 +1477,7 @@ function atualizarBase_() {
   base.getRange(1, 1, 1, CAB.length).setValues([CAB])
       .setBackground(NAVY2).setFontColor('#ffffff').setFontSize(8.5)
       .setFontWeight('bold').setWrap(true).setHorizontalAlignment('center');
-  base.setFrozenRows(1);
+  base.setFrozenRows(0);
 
   // SEM trim: dez abas têm espaço no fim do nome, e getSheetByName é literal.
   // E sem apagar nada do Painel Geral: se o nome não casar, apenas se registra
@@ -1781,7 +1783,7 @@ function atualizarIndividual_(p) {
     .setWrap(true).setHorizontalAlignment('center');
   sh.setRowHeight(3, 30);
   cols.forEach(function (c, i) { sh.setColumnWidth(i + 1, c.w * 7); });
-  sh.setFrozenRows(3);
+  // nada congelado, por decisão: congelamento quebra mesclagem e atrapalha no celular
   // Sem congelar colunas: as linhas 1 e 2 sao mescladas de ponta a ponta, e o
   // Google recusa congelar duas colunas quando isso partiria a celula mesclada
   // ao meio. A aba tem no maximo doze colunas — cabe na tela sem congelamento.
@@ -2380,7 +2382,7 @@ function abaAnaliseMensal_() {
 
   // ── desenho ──
   const W = 17;
-  const sh = abaLimpa_(pgto, 'Análise mensal', W);
+  const sh = abaLimpa_(SpreadsheetApp.openById(ID_G26), 'Análise mensal', W);
   cabecalhoPainel_(sh, 'ANÁLISE MENSAL   ·   ' + ano,
     'Vendido e faturado medem resultado   ·   produzido e montado medem atividade   ·   '
     + 'não batem entre si, e não devem bater', W);
@@ -2516,12 +2518,6 @@ function abaAnaliseMensal_() {
     .setFontColor(MUTED).setFontSize(9).setFontStyle('italic').setWrap(true);
   sh.setRowHeight(lin, 44);
 
-  // as duas abas antigas somem: viraram esta
-  ['Painel de Competência', 'Produção e Entrega'].forEach(function (n) {
-    const velha = pgto.getSheetByName(n);
-    if (velha) pgto.deleteSheet(velha);
-  });
-
   SpreadsheetApp.flush();
   const r = projetos.length + ' projeto(s) · ' + amb.length + ' ambiente(s) · '
           + ordem.length + ' mês(es) com entrega';
@@ -2533,14 +2529,23 @@ function abaAnaliseMensal_() {
 /**
  * Garante a estrutura das fichas antes de qualquer leitura.
  *
- * Roda dentro do atualizarTudo, e não como migração avulsa, porque migração
- * que depende de alguém lembrar de rodar é migração que uma ficha nova nasce
- * sem. Tudo aqui é idempotente e nada apaga preenchimento.
+ * Roda dentro do atualizarTudo, e não como migração avulsa: migração que
+ * depende de alguém lembrar de rodar é migração que uma ficha nova nasce sem.
+ *
+ * Tudo é idempotente e NADA apaga preenchimento. Onde há risco de apagar —
+ * as linhas de retrabalho que sobram — a função confere se estão vazias e,
+ * se não estiverem, deixa como está e avisa no log.
  */
 function garantirEstrutura_() {
   const ss = SpreadsheetApp.openById(ID_CUSTO);
+  calibrar_(ss);
   const FIXAS = ['Instruções', FICHA.painel, 'Listas', FICHA.base];
-  let rt = 0;
+  const ROSTER = EQUIPE_FICHA.concat(PROJETISTAS_FICHA).concat(GESTORES_FICHA);
+  const regraGestor = SpreadsheetApp.newDataValidation()
+    .requireValueInList(ROSTER, true).setAllowInvalid(true)
+    .setHelpText('Quem faz a gestão técnica deste projeto.').build();
+  let ident = 0, rt = 0, retrab = 0;
+  const retrabCheio = [];
 
   ss.getSheets().forEach(function (sh) {
     const nome = sh.getName();
@@ -2548,9 +2553,57 @@ function garantirEstrutura_() {
     if (sh.getMaxRows() < 50 || sh.getMaxColumns() < 15) return;
     if (String(sh.getRange('A8').getDisplayValue() || '').trim().toUpperCase().indexOf('PROJETO') !== 0) return;
 
-    // status de pagamento do RT, ao lado do valor que ele gera
-    const jaTem = sh.getRange(43, 10).getDisplayValue().indexOf('status do pagamento') === 0;
-    if (!jaTem) {
+    sh.setFrozenRows(0);
+    sh.setFrozenColumns(0);
+
+    // ── 1 · GESTÃO TÉCNICA entra na identificação, ao lado do coordenador ──
+    if (String(sh.getRange(8, 8).getDisplayValue() || '').trim() !== 'GESTÃO TÉCNICA') {
+      // o nome que estava na linha da comissão vem junto; nada se perde
+      const antigo = String(sh.getRange(66, 8).getDisplayValue() || '').trim();
+
+      sh.getRange(8, 8, 2, 8).breakApart();
+      [[8, 'GESTÃO TÉCNICA'], [10, 'DIAS DE ATRASO'], [12, 'SITUAÇÃO DA ENTREGA']]
+        .forEach(function (x, k) {
+          const larg = k === 2 ? 4 : 2;
+          sh.getRange(8, x[0], 1, larg).merge().setValue(x[1])
+            .setFontSize(7.5).setFontWeight('bold').setFontColor(MUTED)
+            .setHorizontalAlignment('center').setVerticalAlignment('middle')
+            .setBackground('#ffffff');
+          sh.getRange(9, x[0], 1, larg).merge()
+            .setFontSize(10.5).setFontWeight('bold').setFontColor(NAVY)
+            .setHorizontalAlignment('center').setVerticalAlignment('middle')
+            .setBackground(k === 0 ? '#fff9e3' : CALC);
+        });
+      sh.getRange(9, 8).setDataValidation(regraGestor);
+      if (antigo && ROSTER.indexOf(antigo) >= 0) sh.getRange(9, 8).setValue(antigo);
+
+      posF_(sh.getRange(9, 10), '=IF(OR($H$7="",$J$7=""),"",$J$7-$H$7)');
+      sh.getRange(9, 10).setNumberFormat('0 "dias"');
+      posF_(sh.getRange(9, 12), '=IF($H$7="","",IF($J$7="",'
+        + 'IF(TODAY()>$H$7,"Atrasado","Em produção"),'
+        + 'IF($J$9<=0,"No prazo","Atrasado")))');
+
+      // a linha da comissão de gestão devolve a coluna de observação
+      sh.getRange(66, 8, 1, 8).breakApart();
+      sh.getRange(66, 8, 1, 8).merge().clearDataValidations()
+        .setValue('quem faz a gestão técnica está na identificação, no topo da ficha')
+        .setFontSize(8.5).setFontColor(INK).setHorizontalAlignment('left')
+        .setBackground('#fff9e3');
+      ident++;
+    }
+
+    // ── 2 · bloco 5 passa a olhar o nome novo ──
+    for (let r = 74; r < 100; r++) {
+      const quem = String(sh.getRange(r, 1).getDisplayValue() || '').trim();
+      if (quem === 'TOTAL') break;
+      if (!quem) continue;
+      posF_(sh.getRange(r, 8),
+        '=IF($A' + r + '="","",IF($A' + r + '=$F$9,IF($D$65="",0,$D$65),0)'
+        + '+IF($A' + r + '=$H$9,IF($D$66="",0,$D$66),0))');
+    }
+
+    // ── 3 · RT ganha status de pagamento ──
+    if (String(sh.getRange(43, 10).getDisplayValue() || '').indexOf('status do pagamento') !== 0) {
       sh.getRange(43, 8, 1, 8).breakApart();
       sh.getRange(43, 8, 1, 2).merge().setFontSize(9).setFontWeight('bold')
         .setFontColor(NAVY2).setHorizontalAlignment('center').setBackground('#fff9e3')
@@ -2562,23 +2615,286 @@ function garantirEstrutura_() {
         .setBackground('#fff9e3');
       rt++;
     }
+
+    // ── 4 · retrabalho: quatro linhas bastam, se as outras estiverem vazias ──
+    const rb0 = acharLinha_(sh, 'O que aconteceu', 110, 140);
+    if (rb0) {
+      const prim = rb0 + 1;
+      const sobra = sh.getRange(prim + 4, 1, 8, 5).getDisplayValues();
+      if (sobra.join('').trim() === '') {
+        sh.deleteRows(prim + 4, 8);
+        retrab++;
+      } else {
+        retrabCheio.push(nome.trim());
+      }
+    }
   });
 
-  // o Painel Geral perde a coluna de diagnóstico
+  // o Painel Geral perde a coluna de diagnóstico e o congelamento
   const pg = ss.getSheetByName(FICHA.painel);
+  pg.setFrozenRows(0);
+  pg.setFrozenColumns(0);
   const hd = FICHA.pg0 - 1;
   const n = FICHA.pgf - FICHA.pg0 + 1;
   if (String(pg.getRange(hd, 15).getDisplayValue() || '').trim() === 'Diagnóstico') {
     pg.getRange(hd, 15).clearContent();
     pg.getRange(FICHA.pg0, 15, n, 1).clearContent();
-    const regras = pg.getConditionalFormatRules().filter(function (r) {
+    pg.setConditionalFormatRules(pg.getConditionalFormatRules().filter(function (r) {
       return r.getRanges().every(function (g) { return g.getColumn() !== 15; });
+    }));
+  }
+  const bs = ss.getSheetByName(FICHA.base);
+  if (bs) { bs.setFrozenRows(0); bs.setFrozenColumns(0); }
+
+  if (retrabCheio.length) {
+    console.log('  retrabalho NÃO encurtado, tem lançamento nas linhas que sobrariam: '
+                + retrabCheio.join(' | '));
+  }
+  SpreadsheetApp.flush();
+  return ident + ' ficha(s) com gestão técnica na identificação, ' + rt
+       + ' com status do RT, ' + retrab + ' com retrabalho em 4 linhas';
+}
+
+/** Primeira linha entre ini e fim cuja coluna A começa com o texto. */
+function acharLinha_(sh, texto, ini, fim) {
+  const n = Math.min(fim, sh.getMaxRows()) - ini + 1;
+  if (n < 1) return 0;
+  const v = sh.getRange(ini, 1, n, 1).getDisplayValues();
+  for (let i = 0; i < n; i++) {
+    if (String(v[i][0] || '').trim().indexOf(texto) === 0) return ini + i;
+  }
+  return 0;
+}
+
+
+// ════════════════════════════════════════════════════════════════════════
+//  GESTÃO 2026  ·  o ano inteiro numa planilha só
+// ════════════════════════════════════════════════════════════════════════
+//
+// Reúne o que estava espalhado: a relação de clientes e o histórico de
+// pagamentos (que vivia na Controle de Pagamentos), a Análise mensal e o
+// Painel Geral dos projetos (que vivia na Custo por Projeto).
+//
+// A migração é por CÓPIA. Nada é apagado da origem por este script — conferir
+// primeiro, limpar depois, e a limpeza é decisão de quem confere.
+
+const ID_G26 = '16VkH3jaTp6O1wahE3zXFwUiQQSXm1bGFuLaaQMg3pjs';
+const ANO_G26 = '2026';
+
+
+/**
+ * Copia para a Gestão 2026 as abas que vêm prontas: o ano de pagamentos e as
+ * Listas que alimentam os menus dela.
+ *
+ * copyTo leva fórmula, formato, validação e dado — é a única forma de trazer
+ * a aba de ano "na íntegra", porque ela tem divisória de mês, cabeçalho
+ * mesclado e cinco blocos de pagamento por linha. Reconstruir seria reescrever.
+ *
+ * Idempotente: se a aba já existe no destino, não copia de novo.
+ */
+function migrarParaGestao2026() {
+  const org = SpreadsheetApp.openById(ID_PAG);
+  const dst = SpreadsheetApp.openById(ID_G26);
+  const feitas = [], puladas = [];
+
+  [[ANO_G26, 'Pagamentos ' + ANO_G26], ['Listas', 'Listas']].forEach(function (par) {
+    if (dst.getSheetByName(par[1])) { puladas.push(par[1]); return; }
+    const o = org.getSheetByName(par[0]);
+    if (!o) { console.log('  aviso: aba "' + par[0] + '" não existe na origem.'); return; }
+    const nova = o.copyTo(dst).setName(par[1]);
+    nova.setFrozenRows(0);
+    nova.setFrozenColumns(0);
+    feitas.push(par[1]);
+  });
+
+  const p1 = dst.getSheetByName('Página1') || dst.getSheetByName('Sheet1');
+  if (p1 && dst.getSheets().length > 1) dst.deleteSheet(p1);
+
+  SpreadsheetApp.flush();
+  const r = (feitas.length ? 'copiada(s): ' + feitas.join(', ') : 'nada novo a copiar')
+          + (puladas.length ? ' · já existia(m): ' + puladas.join(', ') : '');
+  console.log('Gestão 2026: ' + r);
+  return r;
+}
+
+
+/**
+ * Aba "Clientes": o cadastro, uma linha por cliente.
+ *
+ * Uma linha e não uma sublinha. Sublinha por cliente obriga a inserir e apagar
+ * linha o tempo todo, quebra fórmula e não se ordena nem se filtra. Uma linha
+ * com as colunas do cadastro faz tudo isso de graça.
+ *
+ * O que já existe não é tocado: telefone, endereço, e-mail e observações são
+ * lidos antes e devolvidos depois, casados pelo nome do cliente.
+ */
+function abaClientes_() {
+  const dst = SpreadsheetApp.openById(ID_G26);
+  const CAB = ['Cliente', 'Projeto', 'Telefone', 'E-mail', 'Endereço',
+               'Observações', 'Ficha aberta?', 'Investimento', 'Recebido',
+               'Saldo a receber', 'Situação'];
+  const MANUAIS = [3, 4, 5, 6];                 // telefone, e-mail, endereço, obs
+
+  let sh = dst.getSheetByName('Clientes');
+  const guardado = {};
+  if (sh && sh.getLastRow() > 1) {
+    const v = sh.getRange(2, 1, sh.getLastRow() - 1, Math.max(6, sh.getLastColumn())).getValues();
+    v.forEach(function (L) {
+      const c = String(L[0] || '').trim();
+      if (!c) return;
+      guardado[c] = MANUAIS.map(function (i) { return L[i - 1]; });
     });
-    pg.setConditionalFormatRules(regras);
+  }
+
+  // quem são os clientes: a aba de pagamentos do ano é a fonte
+  const pg = dst.getSheetByName('Pagamentos ' + ANO_G26);
+  const linhas = [];
+  if (pg) {
+    const fim = pg.getLastRow();
+    const v = pg.getRange(10, 1, Math.max(1, fim - 9), 8).getValues();
+    v.forEach(function (L) {
+      const nome = String(L[0] || '').trim();
+      if (!nome || MESES.indexOf(nome) >= 0) return;
+      const inv = Number(L[2]) || 0;
+      if (!inv) return;
+      const g = guardado[nome] || ['', '', '', ''];
+      linhas.push([nome, String(L[1] || '').trim(), g[0], g[1], g[2], g[3], '',
+                   inv, Number(L[4]) || 0, Number(L[5]) || 0, String(L[7] || '').trim()]);
+    });
+  }
+
+  // quem já tem ficha aberta na Custo por Projeto
+  const cp = SpreadsheetApp.openById(ID_CUSTO);
+  const FIXAS = ['Instruções', FICHA.painel, 'Ficha Modelo', 'Listas', FICHA.base];
+  const fichas = {};
+  cp.getSheets().forEach(function (s) {
+    const n = s.getName();
+    if (FIXAS.indexOf(n) < 0) fichas[n.trim()] = true;
+  });
+  linhas.forEach(function (L) { L[6] = fichas[L[0].trim()] ? 'Sim' : '—'; });
+
+  const W = CAB.length;
+  sh = abaLimpa_(dst, 'Clientes', W + 1);
+  sh.setColumnWidth(1, 190); sh.setColumnWidth(2, 170); sh.setColumnWidth(3, 130);
+  sh.setColumnWidth(4, 190); sh.setColumnWidth(5, 240); sh.setColumnWidth(6, 260);
+  for (let c = 7; c <= W; c++) sh.setColumnWidth(c, 115);
+
+  sh.getRange(1, 1, 1, W).setValues([CAB])
+    .setBackground(NAVY).setFontColor(GOLDS).setFontSize(9).setFontWeight('bold')
+    .setHorizontalAlignment('center').setWrap(true);
+  sh.setRowHeight(1, 26);
+  if (linhas.length) {
+    const rg = sh.getRange(2, 1, linhas.length, W);
+    rg.setValues(linhas).setFontSize(10).setFontColor(INK)
+      .setBorder(true, true, true, true, true, true, '#d6dbe2', SpreadsheetApp.BorderStyle.SOLID);
+    sh.getRange(2, 8, linhas.length, 3).setNumberFormat(MOEDA);
+    MANUAIS.forEach(function (c) {
+      sh.getRange(2, c, linhas.length, 1).setBackground('#fff9e3');
+    });
+    sh.getRange(2, 6, linhas.length, 1).setWrap(true);
+    for (let i = 1; i < linhas.length; i += 2) {
+      sh.getRange(1 + i + 1, 1, 1, W).setBackground(ZEBRA);
+    }
+    sh.setConditionalFormatRules([
+      SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo('—')
+        .setFontColor('#c47d0e').setBold(true)
+        .setRanges([sh.getRange(2, 7, linhas.length, 1)]).build(),
+      SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo('Sim')
+        .setFontColor('#2f7d4f').setBold(true)
+        .setRanges([sh.getRange(2, 7, linhas.length, 1)]).build(),
+    ]);
+  }
+  sh.getRange(linhas.length + 3, 1, 1, W).merge().setValue(
+    'As colunas creme são suas: telefone, e-mail, endereço e observações. O resto vem da aba '
+    + 'de pagamentos e se refaz a cada atualização — o que você digitar nas creme é lido antes '
+    + 'e devolvido depois, casado pelo nome do cliente. "Ficha aberta?" diz se já existe a aba '
+    + 'do cliente na Custo por Projeto.')
+    .setFontColor(MUTED).setFontSize(9).setFontStyle('italic').setWrap(true);
+  sh.setRowHeight(linhas.length + 3, 34);
+
+  SpreadsheetApp.flush();
+  return linhas.length + ' cliente(s)';
+}
+
+
+/**
+ * Painel Geral dos projetos, agora na Gestão 2026 e feito de VALORES.
+ *
+ * Sem "A comprar" e sem "Diagnóstico", como pedido. Na Custo por Projeto ele
+ * era fórmula com INDIRECT, que é volátil e recalcula a planilha inteira a
+ * cada toque; aqui é foto, escrita pelo script.
+ */
+function abaPainelGeralG26_() {
+  const cp = SpreadsheetApp.openById(ID_CUSTO);
+  const base = cp.getSheetByName(FICHA.base);
+  const nb = base.getLastRow() - 1;
+  const bv = nb > 0 ? base.getRange(2, 1, nb, base.getLastColumn()).getValues() : [];
+
+  const vistos = {}, linhas = [];
+  bv.forEach(function (L) {
+    const nome = String(L[0] || '').trim();
+    if (!nome || vistos[nome]) return;
+    vistos[nome] = true;
+    const venda = Number(L[21]) || 0, custo = Number(L[27]) || 0, margem = Number(L[28]) || 0;
+    linhas.push([nome, String(L[1] || '').trim(),
+                 L[17] instanceof Date ? L[17] : '',
+                 String(L[34] || '').trim() || '—',
+                 String(L[33] || '').trim() || '—',
+                 venda, custo, margem, venda ? margem / venda : 0]);
+  });
+  linhas.sort(function (a, b) { return b[5] - a[5]; });
+
+  const CAB = ['Projeto', 'Cliente', 'Data de entrada', 'Entrega', 'Competência',
+               'Venda', 'Custo total', 'MC (R$)', 'MC %'];
+  const FMT = [null, null, 'dd/mm/yyyy', null, null, MOEDA, MOEDA, MOEDA, '0.0%'];
+
+  const W = CAB.length + 1;
+  const dst = SpreadsheetApp.openById(ID_G26);
+  const sh = abaLimpa_(dst, 'Painel Geral', W);
+  cabecalhoPainel_(sh, 'PAINEL GERAL DOS PROJETOS',
+    'Um projeto por linha, do maior para o menor   ·   vem da Custo por Projeto   ·   '
+    + 'atualizado em ' + Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'dd/MM/yyyy HH:mm'), W);
+  sh.setColumnWidth(2, 185); sh.setColumnWidth(3, 185);
+  for (let c = 4; c <= W; c++) sh.setColumnWidth(c, 120);
+
+  let lin = 5;
+  const venda = linhas.reduce(function (s, L) { return s + L[5]; }, 0);
+  const custo = linhas.reduce(function (s, L) { return s + L[6]; }, 0);
+  const margem = linhas.reduce(function (s, L) { return s + L[7]; }, 0);
+  secaoPainel_(sh, lin, 'O CONJUNTO', W); lin += 2;
+  cartaoPainel_(sh, lin, 2, 'Projetos', linhas.length, NAVY, '0');
+  cartaoPainel_(sh, lin, 4, 'Vendido', venda, NAVY2);
+  cartaoPainel_(sh, lin, 6, 'Custo total', custo, '#b0413f');
+  cartaoPainel_(sh, lin, 8, 'MC média', venda ? margem / venda : 0, '#2f7d4f', '0.0%');
+  lin += 4;
+
+  secaoPainel_(sh, lin, 'PROJETO A PROJETO', W); lin += 2;
+  const l0 = lin;
+  const tot = ['Total', '', '', '', '', venda, custo, margem, venda ? margem / venda : 0];
+  lin = tabelaPainel_(sh, lin, 2, CAB, linhas.concat([tot]), FMT);
+  sh.getRange(l0 + linhas.length + 1, 2, 1, CAB.length)
+    .setBackground(NAVY).setFontColor(GOLDS).setFontWeight('bold');
+  if (linhas.length) {
+    const mc = sh.getRange(l0 + 1, 10, linhas.length, 1);
+    const ent = sh.getRange(l0 + 1, 5, linhas.length, 1);
+    sh.setConditionalFormatRules([
+      SpreadsheetApp.newConditionalFormatRule().whenNumberLessThan(0.25)
+        .setBackground('#fcf2f1').setFontColor('#b0413f').setBold(true).setRanges([mc]).build(),
+      SpreadsheetApp.newConditionalFormatRule().whenNumberBetween(0.25, 0.35)
+        .setBackground('#fdf8ee').setFontColor('#c47d0e').setBold(true).setRanges([mc]).build(),
+      SpreadsheetApp.newConditionalFormatRule().whenNumberGreaterThan(0.35)
+        .setBackground('#eff5f1').setFontColor('#2f7d4f').setBold(true).setRanges([mc]).build(),
+      SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo('Atrasado')
+        .setBackground('#fcf2f1').setFontColor('#b0413f').setBold(true).setRanges([ent]).build(),
+      SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo('Em produção')
+        .setBackground('#f0f4f9').setFontColor('#2f5d8c').setBold(true).setRanges([ent]).build(),
+      SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo('No prazo')
+        .setBackground('#eff5f1').setFontColor('#2f7d4f').setBold(true).setRanges([ent]).build(),
+    ]);
   }
 
   SpreadsheetApp.flush();
-  return rt + ' ficha(s) ganharam o status do RT';
+  return linhas.length + ' projeto(s)';
 }
 
 

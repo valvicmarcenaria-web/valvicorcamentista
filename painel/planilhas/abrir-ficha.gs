@@ -44,11 +44,11 @@ const FICHA = {
   custoTotal: 'D22',      // bloco resumo · coluna D = realizado
   margem: 'D23',
   comGestao: 'D66',       // gestão técnica · 0,5% do líquido
-  gestorTecnico: 'H66',   // o nome mora na própria linha da comissão
+  gestorTecnico: 'H9',    // ao lado do coordenador, na identificação
   vendedorNome: 'D9',
   comVenda: 'D41',
   competencia: 'D10',     // linha 10 · era espaçador
-  entregaSituacao: 'J9',
+  entregaSituacao: 'L9',
   faturado: 'D34',
   rtValor: 'D43',
   rtStatus: 'H43',
@@ -158,6 +158,8 @@ function abrirFicha() {
   // 1 · duplica o modelo e nomeia
   const modelo = destino.getSheetByName(FICHA.modelo);
   const nova = modelo.copyTo(destino).setName(cliente);
+  nova.setFrozenRows(0);
+  nova.setFrozenColumns(0);
   destino.setActiveSheet(nova);
   destino.moveActiveSheet(destino.getSheets().length - 1);
 
