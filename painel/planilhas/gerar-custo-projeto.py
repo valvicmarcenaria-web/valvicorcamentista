@@ -307,8 +307,11 @@ AMB_MONT_Q = f'$H${R_AMB0}:$H${R_AMBF}'
 AMB_MONT_V = f'$J${R_AMB0}:$J${R_AMBF}'
 AMB_PROJ_Q = f'$L${R_AMB0}:$L${R_AMBF}'
 AMB_PROJ_V = f'$N${R_AMB0}:$N${R_AMBF}'
-CAB_CUSTO = [(1, 1, 'Item'), (2, 1, '%'), (3, 1, 'Orçado (R$)'), (4, 1, 'Realizado (R$)'),
-             (5, 2, 'Desvio (R$)'), (7, 1, '% da venda'), (8, 3 + PAD, 'Observação')]
+# Orçado e desvio saíram em out/2026: a ficha controla o que de fato aconteceu.
+# O valor fica na coluna D, onde sempre esteve — mover de coluna obrigaria a
+# mexer em dez constantes, na Base e nas catorze planilhas individuais.
+CAB_CUSTO = [(1, 1, 'Item'), (2, 1, '%'), (3, 1, '% da venda'), (4, 1, 'Valor (R$)'),
+             (5, 6 + PAD, 'Observação')]
 
 
 def linha_custo(ws, r, rotulo, tipo, *, base_o=None, base_r=None, dica=''):
@@ -316,33 +319,25 @@ def linha_custo(ws, r, rotulo, tipo, *, base_o=None, base_r=None, dica=''):
     bloco(ws, r, 1, 1, rotulo, f=Font(name=F, size=9.5, color=INK), bg=WHITE, al=LEFTI)
     if tipo == 'pct':
         bloco(ws, r, 2, 1, None, f=F_PCT, bg=INPUT, al=CTR, nf=PCT1)
-        bloco(ws, r, 3, 1, f'=IF($B{r}="","",ROUND($B{r}*{base_o},2))',
-              f=F_CALC, bg=CALC, al=RIGHT, nf=MOEDA)
         bloco(ws, r, 4, 1, f'=IF($B{r}="","",ROUND($B{r}*{base_r},2))',
               f=F_CALC, bg=CALC, al=RIGHT, nf=MOEDA)
     else:
         bloco(ws, r, 2, 1, None, bg=WHITE)
-        bloco(ws, r, 3, 1, None, f=F_ENT, bg=INPUT, al=RIGHT, nf=MOEDA)
         bloco(ws, r, 4, 1, None, f=F_ENT, bg=INPUT, al=RIGHT, nf=MOEDA)
-    bloco(ws, r, 5, 2, f'=IF(OR($C{r}="",$D{r}=""),"",ROUND($D{r}-$C{r},2))',
-          f=F_CALC, bg=CALC, al=RIGHT, nf=MOEDA)
-    bloco(ws, r, 7, 1, f'=IF(OR($D{r}="",{VENDA}="",{VENDA}=0),"",$D{r}/{VENDA})',
+    bloco(ws, r, 3, 1, f'=IF(OR($D{r}="",{VENDA}="",{VENDA}=0),"",$D{r}/{VENDA})',
           f=Font(name=F, size=9, color=MUTED), bg=CALC, al=CTR, nf=PCT1)
-    bloco(ws, r, 8, 3 + PAD, dica or None, f=Font(name=F, size=8.5, color=INK),
+    bloco(ws, r, 5, 6 + PAD, dica or None, f=Font(name=F, size=8.5, color=INK),
           bg=INPUT, al=LEFTI)
 
 
 def subtotal(ws, r, rotulo, ini, fim):
     ws.row_dimensions[r].height = 20
     bloco(ws, r, 1, 2, rotulo, f=F_SUB, bg=NAVY2, al=RIGHT)
-    for col in (3, 4):
-        bloco(ws, r, col, 1, f'=ROUND(SUM({LP[col]}{ini}:{LP[col]}{fim}),2)',
-              f=Font(name=F, size=10, bold=True, color=GOLDS), bg=NAVY2, al=RIGHT, nf=MOEDA)
-    bloco(ws, r, 5, 2, f'=ROUND($D{r}-$C{r},2)',
-          f=Font(name=F, size=10, bold=True, color=GOLDS), bg=NAVY2, al=RIGHT, nf=MOEDA)
-    bloco(ws, r, 7, 1, f'=IF(OR({VENDA}="",{VENDA}=0),"",$D{r}/{VENDA})',
+    bloco(ws, r, 3, 1, f'=IF(OR({VENDA}="",{VENDA}=0),"",$D{r}/{VENDA})',
           f=Font(name=F, size=9.5, bold=True, color=GOLDS), bg=NAVY2, al=CTR, nf=PCT1)
-    bloco(ws, r, 8, 3 + PAD, None, bg=NAVY2)
+    bloco(ws, r, 4, 1, f'=ROUND(SUM($D{ini}:$D{fim}),2)',
+          f=Font(name=F, size=10, bold=True, color=GOLDS), bg=NAVY2, al=RIGHT, nf=MOEDA)
+    bloco(ws, r, 5, 6 + PAD, None, bg=NAVY2)
 
 
 def montar_ficha(ws):
@@ -414,9 +409,8 @@ def montar_ficha(ws):
     ws.row_dimensions[R_KPI_V].height = 30
     ws.row_dimensions[R_KPI_V + 1].height = 8
 
-    cab(ws, R_RES_H, [(1, 2, 'Resumo por categoria'), (3, 1, 'Orçado (R$)'),
-                      (4, 1, 'Realizado (R$)'), (5, 2, 'Desvio (R$)'), (7, 1, 'Desvio (%)'),
-                      (8, 3 + PAD, '% da venda realizada')])
+    cab(ws, R_RES_H, [(1, 2, 'Resumo por categoria'), (3, 1, '% da venda'),
+                      (4, 1, 'Valor (R$)'), (5, 6 + PAD, '')])
     for i, categoria in enumerate(CATEGORIAS):
         r = R_RES0 + i
         orig = SUBLINHAS[categoria]
@@ -434,33 +428,23 @@ def montar_ficha(ws):
               f=Font(name=F, size=9.5, color=MUTED), bg=CALC, al=CTR, nf=PCT1)
     ws.row_dimensions[R_CUSTO_TOT].height = 22
     bloco(ws, R_CUSTO_TOT, 1, 2, '(=) CUSTO TOTAL DO PROJETO', f=F_SUB, bg=NAVY2, al=RIGHT)
-    for col in (3, 4):
-        bloco(ws, R_CUSTO_TOT, col, 1,
-              f'=ROUND(SUM({LP[col]}{R_RES0}:{LP[col]}{R_RESF}),2)',
-              f=Font(name=F, size=11, bold=True, color=GOLDS), bg=NAVY2, al=RIGHT, nf=MOEDA)
-    bloco(ws, R_CUSTO_TOT, 5, 2, f'=ROUND($D${R_CUSTO_TOT}-$C${R_CUSTO_TOT},2)',
-          f=Font(name=F, size=10, bold=True, color=GOLDS), bg=NAVY2, al=RIGHT, nf=MOEDA)
-    bloco(ws, R_CUSTO_TOT, 7, 1,
-          f'=IF(OR($C${R_CUSTO_TOT}="",$C${R_CUSTO_TOT}=0),"",'
-          f'$D${R_CUSTO_TOT}/$C${R_CUSTO_TOT}-1)',
-          f=Font(name=F, size=9.5, bold=True, color=GOLDS), bg=NAVY2, al=CTR, nf='+0%;-0%;0%')
-    bloco(ws, R_CUSTO_TOT, 8, 3 + PAD,
+    bloco(ws, R_CUSTO_TOT, 3, 1,
           f'=IF(OR({VENDA}="",{VENDA}=0),"",$D${R_CUSTO_TOT}/{VENDA})',
           f=Font(name=F, size=9.5, bold=True, color=GOLDS), bg=NAVY2, al=CTR, nf=PCT1)
+    bloco(ws, R_CUSTO_TOT, 4, 1,
+          f'=ROUND(SUM($D${R_RES0}:$D${R_RESF}),2)',
+          f=Font(name=F, size=11, bold=True, color=GOLDS), bg=NAVY2, al=RIGHT, nf=MOEDA)
+    bloco(ws, R_CUSTO_TOT, 5, 6 + PAD, None, bg=NAVY2)
     ws.row_dimensions[R_MC].height = 28
     bloco(ws, R_MC, 1, 2, '(=) MARGEM DE CONTRIBUIÇÃO',
           f=Font(name=F, size=11.5, bold=True, color=WHITE), bg=NAVY, al=RIGHT)
-    bloco(ws, R_MC, 3, 1, f'=ROUND($C${R_VENDA}-$C${R_CUSTO_TOT},2)',
-          f=Font(name=F, size=12, bold=True, color=GOLDS), bg=NAVY, al=RIGHT, nf=MOEDA)
+    bloco(ws, R_MC, 3, 1, f'=IF(OR({VENDA}="",{VENDA}=0),"",$D${R_MC}/{VENDA})',
+          f=Font(name=F, size=10, bold=True, color=GOLDS), bg=NAVY, al=CTR, nf=PCT1)
     bloco(ws, R_MC, 4, 1, f'=ROUND({VENDA}-$D${R_CUSTO_TOT},2)',
           f=Font(name=F, size=12, bold=True, color=GOLDS), bg=NAVY, al=RIGHT, nf=MOEDA)
-    bloco(ws, R_MC, 5, 2, f'=ROUND($D${R_MC}-$C${R_MC},2)',
-          f=Font(name=F, size=10, bold=True, color=GOLDS), bg=NAVY, al=RIGHT, nf=MOEDA)
-    bloco(ws, R_MC, 7, 1,
-          f'=IF(OR($C${R_VENDA}="",$C${R_VENDA}=0),"",$C${R_MC}/$C${R_VENDA})',
-          f=Font(name=F, size=10, bold=True, color=GOLDS), bg=NAVY, al=CTR, nf=PCT1)
-    bloco(ws, R_MC, 8, 3 + PAD, f'=IF(OR({VENDA}="",{VENDA}=0),"",$D${R_MC}/{VENDA})',
-          f=Font(name=F, size=12, bold=True, color=GOLDS), bg=NAVY, al=CTR, nf=PCT1)
+    bloco(ws, R_MC, 5, 6 + PAD,
+          'venda menos TODO o custo do projeto — é o que sobra antes do custo fixo da casa',
+          f=Font(name=F, size=8.5, color=GOLDS, i=True), bg=NAVY, al=LEFTI)
     # alerta do que ainda falta comprar
     AC = f'ROUND(SUMIF({LAN_STA},"A comprar",{LAN_VAL}),2)'
     AP = f'ROUND(SUMIF({LAN_STA},"Comprado (a pagar)",{LAN_VAL}),2)'
@@ -483,13 +467,11 @@ def montar_ficha(ws):
                  'o que foi vendido e o que já virou nota — a diferença é o que falta faturar')
     cab(ws, R_VEN_H, CAB_CUSTO)
     linha_custo(ws, R_VENDA, 'Valor de venda do projeto', 'rs',
-                dica='Orçado = valor da proposta · Realizado = valor fechado')
-    ws[f'G{R_VENDA}'] = None
+                dica='o valor fechado com o cliente — é a base de tudo nesta ficha')
 
     # ── notas fiscais do projeto ──
     cab(ws, R_NF_H, [(1, 1, 'Nota fiscal'), (2, 1, 'Número'), (3, 1, 'Data'),
-                     (4, 1, 'Valor (R$)'), (5, 2, ''), (7, 1, '% da venda'),
-                     (8, 3 + PAD, 'Observação')], alt=22)
+                     (4, 1, 'Valor (R$)'), (5, 6 + PAD, 'Observação')], alt=22)
     for i, r in enumerate(range(R_NF0, R_NFF + 1), start=1):
         ws.row_dimensions[r].height = 17
         bloco(ws, r, 1, 1, f'Nota {i}', f=Font(name=F, size=9.5, color=INK), bg=WHITE, al=LEFTI)
@@ -497,10 +479,7 @@ def montar_ficha(ws):
         bloco(ws, r, 3, 1, None, f=font(9.5), bg=INPUT, al=CTR, nf=DATA)
         bloco(ws, r, 4, 1, None, f=Font(name=F, size=9.5, bold=True, color=NAVY),
               bg=INPUT, al=RIGHT, nf=MOEDA)
-        bloco(ws, r, 5, 2, None, bg=WHITE)
-        bloco(ws, r, 7, 1, f'=IF(OR($D{r}="",{VENDA}="",{VENDA}=0),"",$D{r}/{VENDA})',
-              f=Font(name=F, size=9, color=MUTED), bg=CALC, al=CTR, nf=PCT1)
-        bloco(ws, r, 8, 3 + PAD, None, f=Font(name=F, size=8.5, color=INK), bg=INPUT, al=LEFTI)
+        bloco(ws, r, 5, 6 + PAD, None, f=Font(name=F, size=8.5, color=INK), bg=INPUT, al=LEFTI)
     ws.row_dimensions[R_NF_SUB].height = 20
     bloco(ws, R_NF_SUB, 1, 3, '(=) TOTAL FATURADO  →', f=F_SUB, bg=NAVY2, al=RIGHT)
     bloco(ws, R_NF_SUB, 4, 1, f'=ROUND(SUM($D${R_NF0}:$D${R_NFF}),2)',
@@ -534,25 +513,21 @@ def montar_ficha(ws):
     linha_custo(ws, R_RTP, 'RT do parceiro', 'pct', base_o=BRT_O, base_r=BRT_R)
     # o RT é o único custo de venda que vira pagamento a terceiro com data
     # própria; por isso ganha status aqui, colado no valor que ele gera
-    ws.unmerge_cells(start_row=R_RTP, start_column=8, end_row=R_RTP, end_column=NCOL)
-    bloco(ws, R_RTP, 8, 2, None, f=Font(name=F, size=9, bold=True, color=NAVY2),
+    ws.unmerge_cells(start_row=R_RTP, start_column=5, end_row=R_RTP, end_column=NCOL)
+    bloco(ws, R_RTP, 5, 2, None, f=Font(name=F, size=9, bold=True, color=NAVY2),
           bg=INPUT, al=CTR)
-    bloco(ws, R_RTP, 10, NCOL - 9, 'status do pagamento do RT ao parceiro',
+    bloco(ws, R_RTP, 7, NCOL - 6, 'status do pagamento do RT ao parceiro',
           f=Font(name=F, size=8.5, color=INK), bg=INPUT, al=LEFTI)
-    dv(ws, literal(STATUS_RT), f'H{R_RTP}:I{R_RTP}')
+    dv(ws, literal(STATUS_RT), f'E{R_RTP}:F{R_RTP}')
     subtotal(ws, R_CV_SUB, '(=) SUBTOTAL DOS CUSTOS DE VENDA', R_IMP, R_RTP)
     ws.row_dimensions[R_LIQ].height = 24
     bloco(ws, R_LIQ, 1, 2, '(=) RECEITA LÍQUIDA',
           f=Font(name=F, size=11, bold=True, color=WHITE), bg=NAVY, al=RIGHT)
-    bloco(ws, R_LIQ, 3, 1, f'=ROUND($C${R_VENDA}-$C${R_CV_SUB},2)',
-          f=Font(name=F, size=11.5, bold=True, color=GOLDS), bg=NAVY, al=RIGHT, nf=MOEDA)
+    bloco(ws, R_LIQ, 3, 1, f'=IF(OR({VENDA}="",{VENDA}=0),"",$D${R_LIQ}/{VENDA})',
+          f=Font(name=F, size=9.5, bold=True, color=GOLDS), bg=NAVY, al=CTR, nf=PCT1)
     bloco(ws, R_LIQ, 4, 1, f'=ROUND({VENDA}-$D${R_CV_SUB},2)',
           f=Font(name=F, size=11.5, bold=True, color=GOLDS), bg=NAVY, al=RIGHT, nf=MOEDA)
-    bloco(ws, R_LIQ, 5, 2, f'=ROUND($D${R_LIQ}-$C${R_LIQ},2)',
-          f=Font(name=F, size=10, bold=True, color=GOLDS), bg=NAVY, al=RIGHT, nf=MOEDA)
-    bloco(ws, R_LIQ, 7, 1, f'=IF(OR({VENDA}="",{VENDA}=0),"",$D${R_LIQ}/{VENDA})',
-          f=Font(name=F, size=9.5, bold=True, color=GOLDS), bg=NAVY, al=CTR, nf=PCT1)
-    bloco(ws, R_LIQ, 8, 3 + PAD,
+    bloco(ws, R_LIQ, 5, 6 + PAD,
           'É esta a base das comissões: coordenação, produção, montagem e projetista',
           f=Font(name=F, size=8.5, color=GOLDS, i=True), bg=NAVY, al=LEFTI)
     ws.row_dimensions[R_LIQ + 1].height = 8
@@ -683,8 +658,8 @@ def montar_ficha(ws):
     # ── 6 · orçamento e compras por categoria
     titulo_secao(ws, R_OC_T, NCOL, '6 · Material, terceirizados e logística',
                  'o orçado você digita · o realizado vem sozinho do livro de lançamentos, lá no fim da ficha')
-    cab(ws, R_OC_H, [(1, 1, 'Categoria'), (2, 1, ''), (3, 1, 'Orçado (R$)'),
-                     (4, 1, 'Realizado (R$)'), (5, 2, 'Desvio (R$)'),
+    cab(ws, R_OC_H, [(1, 1, 'Categoria'), (2, 1, ''), (3, 1, ''),
+                     (4, 1, 'Valor (R$)'), (5, 2, ''),
                      (7, 1, 'Ainda a comprar'),
                      (8, 3 + PAD, 'Comprado, ainda a pagar')], alt=30)
     for grupo, cats in GRUPOS:
@@ -782,7 +757,8 @@ def montar_ficha(ws):
           f=Font(name=F, size=9, bold=True, color=GOLDS), bg=NAVY2, al=CTR)
 
     # ── KPIs do topo
-    ws[f'A{R_KPI_V}'] = f'=IF($D${R_VENDA}="",$C${R_VENDA},$D${R_VENDA})'
+    # não há mais orçado a que recorrer: o KPI é o valor fechado, e ponto
+    ws[f'A{R_KPI_V}'] = f'=IF($D${R_VENDA}="",0,$D${R_VENDA})'
     ws[f'C{R_KPI_V}'] = f'=IF($D${R_CUSTO_TOT}=0,"",$D${R_CUSTO_TOT})'
     ws[f'E{R_KPI_V}'] = f'=IF({VENDA}="","",$D${R_MC})'
     ws[f'G{R_KPI_V}'] = f'=IF(OR({VENDA}="",{VENDA}=0),"",$D${R_MC}/{VENDA})'
@@ -898,11 +874,12 @@ def preencher(ws, d):
     ws[f'F{R_ID2}'] = d['entrada']; ws[f'H{R_ID2}'] = d['prevista']; ws[f'J{R_ID2}'] = d['real']
     ws[f'A{R_ID4}'] = d['projeto']; ws[f'D{R_ID4}'] = d['vendedor']
     ws[f'F{R_ID4}'] = d['coordenador']
-    ws[f'C{R_VENDA}'] = d['venda_o']; ws[f'D{R_VENDA}'] = d['venda_r']
+    # a coluna C deixou de ser Orçado: só o valor realizado é lançado
+    ws[f'D{R_VENDA}'] = d['venda_r']
     for r, pct in d['cv'].items():
         ws[f'B{r}'] = pct
     for r, (o, rr) in d['cv_rs'].items():
-        ws[f'C{r}'] = o; ws[f'D{r}'] = rr
+        ws[f'D{r}'] = rr
     for i, (nome, val, pq, pp, mq, mp, jq, jp) in enumerate(d['ambientes']):
         r = R_AMB0 + i
         ws[f'A{r}'] = nome; ws[f'C{r}'] = val

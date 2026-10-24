@@ -152,12 +152,10 @@ mc_o, mc_r = xr(V - custo_o), xr(V - custo_r)
 
 n0 = testes
 print('\nTESTE 1 · cascata de custos de venda e receita líquida')
-for ref, esp in ((f'C{R_IMP}', imp), (f'D{R_IMP}', imp), (f'C{R_MAQ}', maq),
-                 (f'D{R_MAQ}', maq), (f'C{R_TRX}', trx_o), (f'D{R_TRX}', trx_r),
-                 (f'C{R_CVEND}', cvend), (f'D{R_CVEND}', cvend), (f'C{R_PROJ}', proj),
-                 (f'D{R_PROJ}', proj), (f'C{R_RTP}', rt_o), (f'D{R_RTP}', rt_r),
-                 (f'C{R_CV_SUB}', cv_o), (f'D{R_CV_SUB}', cv_r),
-                 (f'C{R_LIQ}', liq_o), (f'D{R_LIQ}', liq_r)):
+# a coluna C deixou de ser Orçado em out/2026 — a ficha só guarda o realizado
+for ref, esp in ((f'D{R_IMP}', imp), (f'D{R_MAQ}', maq), (f'D{R_TRX}', trx_r),
+                 (f'D{R_CVEND}', cvend), (f'D{R_PROJ}', proj), (f'D{R_RTP}', rt_r),
+                 (f'D{R_CV_SUB}', cv_r), (f'D{R_LIQ}', liq_r)):
     ck(f'  {ref}', C(EX, ref), esp)
 print(f'  {testes - n0} verificações')
 
@@ -215,7 +213,6 @@ for grupo, (i0, i1, isub) in OC.items():
         ck(f'  {cat[:28]} · a comprar', C(EX, f'G{r}'), xr(acomprar_cat.get(cat, 0)))
         ck(f'  {cat[:28]} · a pagar', C(EX, f'H{r}'), xr(apagar_cat.get(cat, 0)))
     ck(f'  SUBTOTAL {grupo} · realizado', C(EX, f'D{isub}'), grupo_real[grupo])
-    ck(f'  SUBTOTAL {grupo} · orçado', C(EX, f'C{isub}'), grupo_orc[grupo])
 soma_cat = xr(sum(grupo_real.values()))
 ck('  soma dos 3 grupos = total comprado no livro', soma_cat,
    xr(sum(v for _, v, st in lanc if st in ('Comprado (a pagar)', 'Pago'))))
@@ -223,16 +220,12 @@ print(f'  {testes - n0} verificações')
 
 n0 = testes
 print('\nTESTE 5 · resumo no topo, custo total e margem')
-esperados = [(cv_o, cv_r), (com_o, com_r), (grupo_orc['Material'], grupo_real['Material']),
-             (grupo_orc['Serviços terceirizados'], grupo_real['Serviços terceirizados']),
-             (grupo_orc['Logística'], grupo_real['Logística']), (rb_o, rb_r)]
-for i, (co, cr_) in enumerate(esperados):
+esperados = [cv_r, com_r, grupo_real['Material'],
+             grupo_real['Serviços terceirizados'], grupo_real['Logística'], rb_r]
+for i, cr_ in enumerate(esperados):
     r = R_RES0 + i
-    ck(f'  resumo linha {r} orçado', C(EX, f'C{r}'), co, tol=CENTAVO)
-    ck(f'  resumo linha {r} realizado', C(EX, f'D{r}'), cr_, tol=CENTAVO)
-ck('  custo total orçado', C(EX, f'C{R_CUSTO_TOT}'), custo_o, tol=CENTAVO)
+    ck(f'  resumo linha {r}', C(EX, f'D{r}'), cr_, tol=CENTAVO)
 ck('  custo total realizado', C(EX, f'D{R_CUSTO_TOT}'), custo_r, tol=CENTAVO)
-ck('  MC orçada', C(EX, f'C{R_MC}'), mc_o, tol=CENTAVO)
 ck('  MC realizada', C(EX, f'D{R_MC}'), mc_r, tol=CENTAVO)
 ck('  custo total = soma das 6 categorias', C(EX, f'D{R_CUSTO_TOT}'),
    xr(sum(C(EX, f'D{R_RES0+i}') for i in range(6))), tol=1e-9)
@@ -262,7 +255,7 @@ print(f'  {testes - n0} verificações')
 n0 = testes
 print('\nTESTE 7 · a ficha em branco não pode gerar lixo')
 _CAT1 = M['LINHAS_OC'][M['CATEGORIAS_COMPRA'][0]]      # primeira linha de categoria
-for ref in ('A13', 'C13', 'E13', 'G13', f'D{R_CV_SUB}', f'D{R_LIQ}',
+for ref in ('A13', 'E13', 'G13', f'D{R_CV_SUB}', f'D{R_LIQ}',
             f'D{R_NF_SUB}',
             f'F{R_AMB0}', f'{CA["mont_com"]}{R_AMB0}', f'{CA["proj_com"]}{R_AMB0}',
             f'J{R_CL0}', f'D{R_RES0}', f'D{R_CUSTO_TOT}',
@@ -277,6 +270,8 @@ ck('  competência vem da entrega real', _c10.startswith('=IF($J$7='), True)
 # nada congelado, em aba nenhuma
 for _aba in (FM, EX, PG, 'Base · Comissões'):
     ck(f'  {_aba} sem painel congelado', wbv[_aba].freeze_panes in (None, 'A1'), True)
+ck('  coluna C deixou de ser Orçado', str(wbv[FM].cell(M['R_IMP'], 3).value or '')
+   .startswith('=IF(OR($D'), True)
 ck('  ficha não traz mais MC % ORÇADA', 'ORÇADA' in _rot12.upper(), False)
 ck('  ficha não traz mais DESVIO DE CUSTO', 'DESVIO DE CUSTO' in _rot12.upper(), False)
 print(f'  {testes - n0} verificações')
@@ -359,7 +354,7 @@ VAL_ESPERADAS = {
     f'{CA["proj_quem"]}{R_AMB0}:{CA["proj_quem"]}{R_AMBF}': 'PROJETISTA',
     f'A{R_CL0}:A{R_CLF}': 'ROSTER',
     f'H{M["R_ID4"]}:I{M["R_ID4"]}': 'ROSTER',
-    f'H{M["R_RTP"]}:I{M["R_RTP"]}': 'STATUS_RT',
+    f'E{M["R_RTP"]}:F{M["R_RTP"]}': 'STATUS_RT',
     f'B{R_RB0}:B{R_RBF}': 'CAUSA', f'D{R_ID4}:E{R_ID4}': 'VENDEDOR',
     f'F{R_ID4}:G{R_ID4}': 'EQUIPE'}
 for chave, valor in LISTAS.items():

@@ -66,7 +66,7 @@ const FICHA = {
   competencia: 'D10',                 // linha 10 · era espaçador
   entregaSituacao: 'L9',              // No prazo · Atrasado · Em produção
   faturado: 'D34',                    // total das notas emitidas
-  rtValor: 'D43', rtStatus: 'H43',    // RT do parceiro e se já foi pago
+  rtValor: 'D43', rtStatus: 'E43',    // RT do parceiro e se já foi pago
   colsBase: 38,
 };
 const COLS_AMB = 'ABCDEFGHIJKLMNO'.split('');
@@ -1348,6 +1348,7 @@ function atualizarTudo() {
   diz('── começando ──');
   try {
     diz('Estrutura: ' + garantirEstrutura_());
+    diz('Orçado fora: ' + tirarOrcadoDasFichas());
   } catch (e) {
     diz('Estrutura: FALHOU — ' + e.message);
   }
@@ -2082,6 +2083,129 @@ function lerAporte_(ss) {
 
 
 /**
+ * Tira ORÇADO e DESVIO das fichas vivas. A ficha passa a guardar só o que
+ * de fato aconteceu.
+ *
+ * A coluna C era o orçado; passa a ser "% da venda", calculada do valor.
+ * As colunas E, F e G eram desvio e desvio %; a observação, que vivia em
+ * H..O, passa a ocupar E..O.
+ *
+ * O VALOR CONTINUA NA COLUNA D, onde sempre esteve. Mover de coluna
+ * obrigaria a mexer em dez constantes, na Base e nas catorze individuais —
+ * risco enorme por ganho estético.
+ *
+ * O que estava digitado no orçado é ESCRITO NO LOG antes de sair, com ficha,
+ * linha e valor. Some da planilha, não some do registro.
+ *
+ * Idempotente e retomável: a ficha já convertida é reconhecida pelo
+ * cabeçalho e pulada. Se o Google cortar por tempo, rode de novo.
+ */
+function tirarOrcadoDasFichas() {
+  const ss = SpreadsheetApp.openById(ID_CUSTO);
+  calibrar_(ss);
+  const FIXAS = ['Instruções', FICHA.painel, 'Listas', FICHA.base];
+  const perdidos = [];
+  let feitas = 0, puladas = 0;
+
+  // cabeçalhos e linhas de cada bloco, na estrutura viva de hoje
+  const CAB = [[15, 'Resumo por categoria'], [27, 'Item'], [37, 'Item'], [64, 'Item']];
+  const LINHAS = [16, 17, 18, 19, 20, 21,          // resumo
+                  28,                               // valor de venda
+                  38, 39, 40, 41, 42, 43,           // custos de venda
+                  65, 66, 67, 68, 69];              // comissões
+  const SUBTOTAIS = [22, 23, 34, 44, 45, 70];
+
+  ss.getSheets().forEach(function (sh) {
+    const nome = sh.getName();
+    if (FIXAS.indexOf(nome) >= 0) return;
+    if (sh.getMaxRows() < 70 || sh.getMaxColumns() < 15) return;
+    if (String(sh.getRange('A8').getDisplayValue() || '').trim().toUpperCase().indexOf('PROJETO') !== 0) return;
+
+    if (String(sh.getRange(37, 3).getDisplayValue() || '').trim() === '% da venda') {
+      puladas++;
+      return;
+    }
+
+    // ── o que havia de orçado digitado, antes de sumir ──
+    LINHAS.concat(SUBTOTAIS).forEach(function (r) {
+      const cel = sh.getRange(r, 3);
+      const v = cel.getValue();
+      if (cel.getFormula() || v === '' || v === null || v === 0) return;
+      perdidos.push(nome.trim() + ' linha ' + r + ': ' + cel.getDisplayValue());
+    });
+
+    // ── cabeçalhos ──
+    CAB.forEach(function (x) {
+      const r = x[0];
+      sh.getRange(r, 3, 1, 13).breakApart();
+      sh.getRange(r, 3).setValue('% da venda');
+      sh.getRange(r, 4).setValue('Valor (R$)');
+      sh.getRange(r, 5, 1, 11).merge()
+        .setValue(r === 15 ? '' : 'Observação');
+    });
+    sh.getRange(29, 3, 1, 13).breakApart();            // cabeçalho das notas
+    sh.getRange(29, 5, 1, 11).merge().setValue('Observação');
+
+    // ── linhas ──
+    const pct = function (r) {
+      return '=IF(OR($D' + r + '="",$A$13="",$A$13=0),"",$D' + r + '/$A$13)';
+    };
+    LINHAS.concat([30, 31, 32, 33]).forEach(function (r) {
+      const dica = String(sh.getRange(r, 8).getDisplayValue() || '').trim();
+      sh.getRange(r, 3, 1, 13).breakApart();
+      sh.getRange(r, 3).clearDataValidations();
+      posF_(sh.getRange(r, 3), pct(r));
+      sh.getRange(r, 3).setNumberFormat('0.0%').setHorizontalAlignment('center');
+      sh.getRange(r, 5, 1, 11).merge().setValue(dica)
+        .setHorizontalAlignment('left').setVerticalAlignment('middle');
+    });
+
+    // ── subtotais e totais ──
+    SUBTOTAIS.forEach(function (r) {
+      const dica = String(sh.getRange(r, 8).getDisplayValue() || '').trim();
+      sh.getRange(r, 3, 1, 13).breakApart();
+      posF_(sh.getRange(r, 3), pct(r));
+      sh.getRange(r, 3).setNumberFormat('0.0%').setHorizontalAlignment('center');
+      sh.getRange(r, 5, 1, 11).merge().setValue(dica)
+        .setHorizontalAlignment('left').setVerticalAlignment('middle');
+    });
+
+    // ── bloco 6: o orçado por categoria sai, o resto fica onde está ──
+    sh.getRange(95, 3).breakApart().setValue('');
+    for (let r = 96; r <= 114; r++) {
+      sh.getRange(r, 3).clearContent();
+      sh.getRange(r, 5, 1, 2).breakApart().clearContent();
+    }
+    sh.getRange(95, 5, 1, 2).breakApart().setValue('');
+
+    // ── o status do RT muda de casa junto com a observação ──
+    const antes = String(sh.getRange(43, 8).getDisplayValue() || '').trim();
+    sh.getRange(43, 5, 1, 11).breakApart();
+    sh.getRange(43, 5, 1, 2).merge().setFontSize(9).setFontWeight('bold')
+      .setFontColor(NAVY2).setHorizontalAlignment('center').setBackground('#fff9e3')
+      .setDataValidation(SpreadsheetApp.newDataValidation()
+        .requireValueInList(['Em aberto', 'Pago'], true).setAllowInvalid(true)
+        .setHelpText('O RT já foi pago ao parceiro?').build());
+    if (antes === 'Pago' || antes === 'Em aberto') sh.getRange(43, 5).setValue(antes);
+    sh.getRange(43, 7, 1, 9).merge().setValue('status do pagamento do RT ao parceiro')
+      .setFontSize(8.5).setFontColor(INK).setHorizontalAlignment('left')
+      .setBackground('#fff9e3');
+
+    feitas++;
+  });
+
+  if (perdidos.length) {
+    console.log('  o que estava digitado no ORÇADO, e saiu:');
+    perdidos.forEach(function (t) { console.log('    ' + t); });
+  }
+  SpreadsheetApp.flush();
+  const r = feitas + ' ficha(s) convertida(s), ' + puladas + ' já estava(m)';
+  console.log('Orçado fora: ' + r);
+  return r;
+}
+
+
+/**
  * Tira o controle de ORÇADO × REALIZADO de onde ele aparecia como indicador:
  * MC % orçada, Δ p.p. e Desvio de custo.
  *
@@ -2632,19 +2756,8 @@ function garantirEstrutura_() {
         + '+IF($A' + r + '=$H$9,IF($D$66="",0,$D$66),0))');
     }
 
-    // ── 3 · RT ganha status de pagamento ──
-    if (String(sh.getRange(43, 10).getDisplayValue() || '').indexOf('status do pagamento') !== 0) {
-      sh.getRange(43, 8, 1, 8).breakApart();
-      sh.getRange(43, 8, 1, 2).merge().setFontSize(9).setFontWeight('bold')
-        .setFontColor(NAVY2).setHorizontalAlignment('center').setBackground('#fff9e3')
-        .setDataValidation(SpreadsheetApp.newDataValidation()
-          .requireValueInList(['Em aberto', 'Pago'], true).setAllowInvalid(true)
-          .setHelpText('O RT já foi pago ao parceiro?').build());
-      sh.getRange(43, 10, 1, 6).merge().setValue('status do pagamento do RT ao parceiro')
-        .setFontSize(8.5).setFontColor(INK).setHorizontalAlignment('left')
-        .setBackground('#fff9e3');
-      rt++;
-    }
+    // o status do RT é posto por tirarOrcadoDasFichas, junto com a mudança da
+    // coluna de observação — fazer nos dois lugares brigaria pela mesclagem
 
     // ── 4 · retrabalho: quatro linhas bastam, se as outras estiverem vazias ──
     const rb0 = acharLinha_(sh, 'O que aconteceu', 110, 140);

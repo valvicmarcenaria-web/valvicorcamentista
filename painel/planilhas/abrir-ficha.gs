@@ -52,7 +52,7 @@ const FICHA = {
   entregaSituacao: 'L9',
   faturado: 'D34',
   rtValor: 'D43',
-  rtStatus: 'H43',
+  rtStatus: 'E43',
   colsBase: 38,           // largura da Base · Comissões
   painelLinha0: 11,       // Painel Geral · primeira vaga de projeto
   painelLinhaF: 50,
