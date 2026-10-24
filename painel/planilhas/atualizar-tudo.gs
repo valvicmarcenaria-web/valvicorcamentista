@@ -1075,15 +1075,16 @@ function validar() {
                    .filter(function (x) { return FIXAS.indexOf(x) < 0; });
 
   const pg = cp.getSheetByName(FICHA.painel);
-  const reg = pg.getRange(FICHA.pg0, 2, FICHA.pgf - FICHA.pg0 + 1, 1).getDisplayValues()
+  const reg = !pg ? [] : pg.getRange(FICHA.pg0, 2, FICHA.pgf - FICHA.pg0 + 1, 1).getDisplayValues()
                 .map(function (r) { return String(r[0] || ''); })
                 .filter(function (x) { return x !== ''; });
   // Registro que não casa com aba nenhuma. Costuma ser nome digitado com outra
   // caixa ou espaço — getSheetByName é literal, "luiz" não é "Luiz ". O script
   // nunca apaga registro, então sai pela mão de quem lê este log.
   const orfaos = reg.filter(function (x) { return fichas.indexOf(x) < 0; });
-  ok('Painel Geral registra todas as fichas, e só elas',
-     reg.length === fichas.length && orfaos.length === 0,
+  ok(pg ? 'Painel Geral registra todas as fichas, e só elas'
+        : 'Painel Geral saiu daqui, e a Base não depende dele',
+     !pg || (reg.length === fichas.length && orfaos.length === 0),
      reg.length + ' registro(s) para ' + fichas.length + ' aba(s)'
      + (orfaos.length ? ' · sobrando: ' + orfaos.map(function (x) {
          return '"' + x + '"'; }).join(' | ') + ' — apague essas células do Painel Geral'
@@ -1407,6 +1408,9 @@ function atualizarTudo() {
 function repararPainelGeral_() {
   const ss = SpreadsheetApp.openById(ID_CUSTO);
   const pg = ss.getSheetByName(FICHA.painel);
+  // A Base não depende mais deste registro. Se a aba foi embora para a
+  // Gestão 2026, não há nada a reparar e nada quebra por isso.
+  if (!pg) return 'aba não existe mais aqui — a Base não depende dela';
   const FIXAS = ['Instruções', FICHA.painel, 'Ficha Modelo', 'Listas', FICHA.base];
   const abas = ss.getSheets().map(function (sh) { return sh.getName(); })
                  .filter(function (n) { return FIXAS.indexOf(n) < 0; });
@@ -1453,7 +1457,6 @@ function repararPainelGeral_() {
 function atualizarBase_() {
   const ss = SpreadsheetApp.openById(ID_CUSTO);
   console.log('  separador desta planilha: "' + calibrar_(ss) + '"');
-  const pg = ss.getSheetByName(FICHA.painel);
   const base = ss.getSheetByName(FICHA.base);
 
   const CAB = ['Projeto', 'Cliente', 'Ambiente', '% do total', 'Valor do ambiente',
@@ -1482,19 +1485,21 @@ function atualizarBase_() {
   // SEM trim: dez abas têm espaço no fim do nome, e getSheetByName é literal.
   // E sem apagar nada do Painel Geral: se o nome não casar, apenas se registra
   // no log. Apagar registro foi o que destruiu a lista na primeira tentativa.
-  const nomes = pg.getRange(FICHA.pg0, 2, FICHA.pgf - FICHA.pg0 + 1, 1).getValues();
+  // A Base é escrita a partir das ABAS que existem, não do que está escrito no
+  // Painel Geral. Registro é coisa de quem lê; aba é coisa que existe.
+  const FIXAS = ['Instruções', FICHA.painel, 'Ficha Modelo', 'Listas', FICHA.base];
+  const abas = ss.getSheets().map(function (sh) { return sh.getName(); })
+                 .filter(function (x) { return FIXAS.indexOf(x) < 0; });
   let n = 0;
-  for (let i = 0; i < nomes.length; i++) {
-    const nome = String(nomes[i][0] || '');
-    if (!nome) continue;
-    if (!ss.getSheetByName(nome)) {
-      console.log('  aviso: linha ' + (FICHA.pg0 + i) + ' do Painel Geral diz "'
-                  + nome + '" e não há aba com esse nome. Nada foi apagado.');
-      continue;
+  abas.forEach(function (nome, i) {
+    if (i >= FICHA.pgf - FICHA.pg0 + 1) {
+      console.log('  aviso: "' + nome + '" ficou de fora, a Base comporta '
+                  + (FICHA.pgf - FICHA.pg0 + 1) + ' projetos.');
+      return;
     }
     escreverBlocoBase_(base, i, nome);
     n++;
-  }
+  });
   SpreadsheetApp.flush();
   return n;
 }
@@ -1524,10 +1529,16 @@ function escreverBlocoBase_(base, i, nomeAba) {
     const r = r0 + j, fr = FICHA.amb0 + j;
     // A primeira linha do bloco publica o projeto mesmo sem ambiente lançado:
     // basta haver cliente na ficha. As outras onze continuam presas ao ambiente.
+    //
+    // O nome do projeto é escrito como TEXTO, e o cliente vem da própria ficha.
+    // Antes os dois vinham do Painel Geral, e essa dependência prendia o
+    // Painel Geral dentro da Custo por Projeto: tirá-lo de lá quebrava a Base
+    // inteira. Agora a Base se basta, e o Painel Geral pode morar onde for
+    // mais útil de ler.
     const guarda = j === 0 ? ab + '!$A$7' : '$C' + r;
     const L = [
-      '=IF(' + guarda + '="","",\'' + FICHA.painel + '\'!$B$' + pgL + ')',
-      '=IF(' + guarda + '="","",\'' + FICHA.painel + '\'!$C$' + pgL + ')',
+      '=IF(' + guarda + '="","","' + String(nomeAba).replace(/"/g, '""') + '")',
+      '=IF(' + guarda + '="","",' + ab + '!$A$7)',
     ];
     COLS_AMB.forEach(function (c) {
       L.push('=IF(' + ab + '!$' + c + '$' + fr + '="","",' + ab + '!$' + c + '$' + fr + ')');
@@ -2105,8 +2116,13 @@ function removerControleOrcado() {
     fichas++;
   });
 
-  // ── 2 · a tabela do Painel Geral ──
+  // ── 2 · a tabela do Painel Geral, se ela ainda mora aqui ──
   const pg = ss.getSheetByName(FICHA.painel);
+  if (!pg) {
+    SpreadsheetApp.flush();
+    console.log('Controle de orçado: ' + fichas + ' ficha(s); Painel Geral não está aqui.');
+    return fichas + ' ficha(s)';
+  }
   const hd = FICHA.pg0 - 1;                      // linha de cabeçalho
   const n = FICHA.pgf - FICHA.pg0 + 1;
 
@@ -2632,6 +2648,7 @@ function garantirEstrutura_() {
 
   // o Painel Geral perde a coluna de diagnóstico e o congelamento
   const pg = ss.getSheetByName(FICHA.painel);
+  if (pg) {
   pg.setFrozenRows(0);
   pg.setFrozenColumns(0);
   const hd = FICHA.pg0 - 1;
@@ -2642,6 +2659,7 @@ function garantirEstrutura_() {
     pg.setConditionalFormatRules(pg.getConditionalFormatRules().filter(function (r) {
       return r.getRanges().every(function (g) { return g.getColumn() !== 15; });
     }));
+  }
   }
   const bs = ss.getSheetByName(FICHA.base);
   if (bs) { bs.setFrozenRows(0); bs.setFrozenColumns(0); }
