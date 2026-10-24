@@ -2107,13 +2107,30 @@ function tirarOrcadoDasFichas() {
   const perdidos = [];
   let feitas = 0, puladas = 0;
 
-  // cabeçalhos e linhas de cada bloco, na estrutura viva de hoje
-  const CAB = [[15, 'Resumo por categoria'], [27, 'Item'], [37, 'Item'], [64, 'Item']];
-  const LINHAS = [16, 17, 18, 19, 20, 21,          // resumo
-                  28,                               // valor de venda
-                  38, 39, 40, 41, 42, 43,           // custos de venda
-                  65, 66, 67, 68, 69];              // comissões
-  const SUBTOTAIS = [22, 23, 34, 44, 45, 70];
+  // Blocos na estrutura viva de hoje.
+  //   ITENS    linha de custo: rótulo em A, % em B, valor em D
+  //   NOTAS    nota fiscal: a coluna C é a DATA e não pode virar percentual
+  //   SUBTOT   rótulo mesclado à esquerda — largura varia, A:B ou A:C
+  const CABS = [[15, 'Resumo por categoria', true], [27, 'Item', false],
+                [37, 'Item', false], [64, 'Item', false]];
+  const ITENS = [16, 17, 18, 19, 20, 21, 28, 38, 39, 40, 41, 42, 43,
+                 65, 66, 67, 68, 69];
+  const NOTAS = [30, 31, 32, 33];
+  const SUBTOT = [22, 23, 34, 44, 45, 70];
+
+  // Desmesclar pede o intervalo INTEIRO da mesclagem. Quebrar a linha toda é
+  // o único jeito seguro quando as larguras variam de linha para linha.
+  const limpaLinha = function (sh, r) {
+    sh.getRange(r, 1, 1, 15).breakApart();
+  };
+  const pct = function (r) {
+    return '=IF(OR($D' + r + '="",$A$13="",$A$13=0),"",$D' + r + '/$A$13)';
+  };
+  const observacao = function (sh, r, texto) {
+    sh.getRange(r, 5, 1, 11).merge().setValue(texto)
+      .setHorizontalAlignment('left').setVerticalAlignment('middle')
+      .setWrap(false);
+  };
 
   ss.getSheets().forEach(function (sh) {
     const nome = sh.getName();
@@ -2127,7 +2144,7 @@ function tirarOrcadoDasFichas() {
     }
 
     // ── o que havia de orçado digitado, antes de sumir ──
-    LINHAS.concat(SUBTOTAIS).forEach(function (r) {
+    ITENS.concat(SUBTOT).forEach(function (r) {
       const cel = sh.getRange(r, 3);
       const v = cel.getValue();
       if (cel.getFormula() || v === '' || v === null || v === 0) return;
@@ -2135,50 +2152,62 @@ function tirarOrcadoDasFichas() {
     });
 
     // ── cabeçalhos ──
-    CAB.forEach(function (x) {
+    CABS.forEach(function (x) {
       const r = x[0];
-      sh.getRange(r, 3, 1, 13).breakApart();
+      const rot = String(sh.getRange(r, 1).getDisplayValue() || '').trim() || x[1];
+      limpaLinha(sh, r);
+      if (x[2]) { sh.getRange(r, 1, 1, 2).merge().setValue(rot); }
+      else { sh.getRange(r, 1).setValue(rot); sh.getRange(r, 2).setValue('%'); }
       sh.getRange(r, 3).setValue('% da venda');
       sh.getRange(r, 4).setValue('Valor (R$)');
-      sh.getRange(r, 5, 1, 11).merge()
-        .setValue(r === 15 ? '' : 'Observação');
+      observacao(sh, r, r === 15 ? '' : 'Observação');
     });
-    sh.getRange(29, 3, 1, 13).breakApart();            // cabeçalho das notas
-    sh.getRange(29, 5, 1, 11).merge().setValue('Observação');
+    // cabeçalho das notas: coluna C continua sendo Data
+    const rotNota = String(sh.getRange(29, 1).getDisplayValue() || '').trim();
+    limpaLinha(sh, 29);
+    sh.getRange(29, 1).setValue(rotNota || 'Nota fiscal');
+    sh.getRange(29, 2).setValue('Número');
+    sh.getRange(29, 3).setValue('Data');
+    sh.getRange(29, 4).setValue('Valor (R$)');
+    observacao(sh, 29, 'Observação');
 
-    // ── linhas ──
-    const pct = function (r) {
-      return '=IF(OR($D' + r + '="",$A$13="",$A$13=0),"",$D' + r + '/$A$13)';
-    };
-    LINHAS.concat([30, 31, 32, 33]).forEach(function (r) {
+    // ── linhas de item: C passa a ser o % da venda ──
+    ITENS.forEach(function (r) {
       const dica = String(sh.getRange(r, 8).getDisplayValue() || '').trim();
-      sh.getRange(r, 3, 1, 13).breakApart();
+      limpaLinha(sh, r);
       sh.getRange(r, 3).clearDataValidations();
       posF_(sh.getRange(r, 3), pct(r));
       sh.getRange(r, 3).setNumberFormat('0.0%').setHorizontalAlignment('center');
-      sh.getRange(r, 5, 1, 11).merge().setValue(dica)
-        .setHorizontalAlignment('left').setVerticalAlignment('middle');
+      observacao(sh, r, dica);
     });
 
-    // ── subtotais e totais ──
-    SUBTOTAIS.forEach(function (r) {
+    // ── notas: só a observação muda de casa ──
+    NOTAS.forEach(function (r) {
       const dica = String(sh.getRange(r, 8).getDisplayValue() || '').trim();
-      sh.getRange(r, 3, 1, 13).breakApart();
+      limpaLinha(sh, r);
+      observacao(sh, r, dica);
+    });
+
+    // ── subtotais: o rótulo é remontado em A:B ──
+    SUBTOT.forEach(function (r) {
+      const rot = String(sh.getRange(r, 1).getDisplayValue() || '').trim();
+      const dica = String(sh.getRange(r, 8).getDisplayValue() || '').trim();
+      limpaLinha(sh, r);
+      sh.getRange(r, 1, 1, 2).merge().setValue(rot).setHorizontalAlignment('right');
       posF_(sh.getRange(r, 3), pct(r));
       sh.getRange(r, 3).setNumberFormat('0.0%').setHorizontalAlignment('center');
-      sh.getRange(r, 5, 1, 11).merge().setValue(dica)
-        .setHorizontalAlignment('left').setVerticalAlignment('middle');
+      observacao(sh, r, dica);
     });
 
-    // ── bloco 6: o orçado por categoria sai, o resto fica onde está ──
-    sh.getRange(95, 3).breakApart().setValue('');
+    // ── bloco 6: o orçado sai sem desmanchar nada ──
+    sh.getRange(95, 3).clearContent();
+    sh.getRange(95, 5, 1, 2).clearContent();
     for (let r = 96; r <= 114; r++) {
       sh.getRange(r, 3).clearContent();
-      sh.getRange(r, 5, 1, 2).breakApart().clearContent();
+      sh.getRange(r, 5, 1, 2).clearContent();
     }
-    sh.getRange(95, 5, 1, 2).breakApart().setValue('');
 
-    // ── o status do RT muda de casa junto com a observação ──
+    // ── o status do RT acompanha a observação ──
     const antes = String(sh.getRange(43, 8).getDisplayValue() || '').trim();
     sh.getRange(43, 5, 1, 11).breakApart();
     sh.getRange(43, 5, 1, 2).merge().setFontSize(9).setFontWeight('bold')
