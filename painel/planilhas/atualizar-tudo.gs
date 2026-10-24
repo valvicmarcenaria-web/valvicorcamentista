@@ -1077,8 +1077,16 @@ function validar() {
   const reg = pg.getRange(FICHA.pg0, 2, FICHA.pgf - FICHA.pg0 + 1, 1).getDisplayValues()
                 .map(function (r) { return String(r[0] || ''); })
                 .filter(function (x) { return x !== ''; });
-  ok('Painel Geral registra todas as fichas', reg.length === fichas.length,
-     reg.length + ' registrada(s) para ' + fichas.length + ' aba(s)');
+  // Registro que não casa com aba nenhuma. Costuma ser nome digitado com outra
+  // caixa ou espaço — getSheetByName é literal, "luiz" não é "Luiz ". O script
+  // nunca apaga registro, então sai pela mão de quem lê este log.
+  const orfaos = reg.filter(function (x) { return fichas.indexOf(x) < 0; });
+  ok('Painel Geral registra todas as fichas, e só elas',
+     reg.length === fichas.length && orfaos.length === 0,
+     reg.length + ' registro(s) para ' + fichas.length + ' aba(s)'
+     + (orfaos.length ? ' · sobrando: ' + orfaos.map(function (x) {
+         return '"' + x + '"'; }).join(' | ') + ' — apague essas células do Painel Geral'
+       : ''));
   const faltam = fichas.filter(function (f) { return reg.indexOf(f) < 0; });
   ok('nenhuma ficha fora do Painel Geral', faltam.length === 0, faltam.join(' | '));
 
