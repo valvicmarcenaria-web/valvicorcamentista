@@ -1221,17 +1221,25 @@ function validar() {
   });
 
   diz('');
-  diz('════ ANÁLISE MENSAL ════');
+  diz('════ GESTÃO 2026 ════');
   const pn = SpreadsheetApp.openById(ID_PAINEL);
-  const pam = pgto.getSheetByName('Análise mensal');
-  ok('Análise mensal existe', !!pam);
-  if (pam) {
-    const e = conta(pam.getRange(1, 1, Math.min(pam.getLastRow(), 200),
-                                 Math.max(1, pam.getLastColumn())).getDisplayValues());
-    ok('Análise mensal sem célula de erro', e === 0, e + ' célula(s)');
-  }
-  ok('as duas abas antigas foram embora',
-     !pgto.getSheetByName('Painel de Competência') && !pgto.getSheetByName('Produção e Entrega'));
+  const g26 = SpreadsheetApp.openById(ID_G26);
+  [['Pagamentos ' + ANO_G26, 200], ['Clientes', 200], ['Painel Geral', 120],
+   ['Análise mensal', 200]].forEach(function (x) {
+    const sh = g26.getSheetByName(x[0]);
+    ok('aba ' + x[0] + ' existe', !!sh,
+       sh ? (sh.getLastRow() - 1) + ' linha(s)' : '');
+    if (!sh) return;
+    const e = conta(sh.getRange(1, 1, Math.min(sh.getLastRow(), x[1]),
+                                Math.max(1, sh.getLastColumn())).getDisplayValues());
+    ok('aba ' + x[0] + ' sem célula de erro', e === 0, e + ' célula(s)');
+  });
+
+  // Sobras da arquitetura anterior. Não apago: quem apaga é quem confere.
+  const sobras = ['Painel de Competência', 'Produção e Entrega']
+    .filter(function (n) { return !!pgto.getSheetByName(n); });
+  ok('nada sobrando na Análise anual', sobras.length === 0,
+     sobras.length ? 'pode apagar: ' + sobras.join(' | ') : '');
 
   diz('');
   diz('════ PAINEL DE GESTÃO ════');
