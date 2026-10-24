@@ -1,7 +1,8 @@
 /**
  * Valvic Marcenaria · botão "Abrir ficha do projeto"
  *
- * Onde mora: dentro da planilha CONTROLE DE PAGAMENTOS.
+ * Onde mora: dentro da planilha GESTÃO 2026 — é lá que o cliente novo entra.
+ * (Serve igual na Análise anual, se você preferir abrir ficha de lá.)
  *   Extensões → Apps Script → cole este arquivo inteiro → salve.
  *   Feche e abra a planilha: aparece o menu "Valvic" na barra de cima.
  *
@@ -102,7 +103,7 @@ const COLS_AMB = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M
 function onOpen() {
   SpreadsheetApp.getUi()
     .createMenu('Valvic')
-    .addItem('Abrir ficha do projeto selecionado', 'abrirFicha')
+    .addItem('Abrir ficha do cliente selecionado', 'abrirFicha')
     .addSeparator()
     .addItem('Reconstruir a Base · Comissões', 'reconstruirBase')
     .addToUi();
@@ -114,15 +115,25 @@ function abrirFicha() {
   const aba = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   const linha = aba.getActiveRange().getRow();
 
-  if (!/^20\d\d$/.test(aba.getName())) {
-    ui.alert('Selecione a linha do projeto numa aba de ano (2026, 2025...).');
+  // Funciona em três lugares, porque o cliente novo pode nascer em qualquer um:
+  //   Clientes            — o cadastro da Gestão 2026
+  //   Pagamentos 2026     — a aba de ano depois da migração
+  //   2026, 2025, 2024…   — as abas de ano como ainda estão na Análise anual
+  //
+  // O que muda entre eles é só a coluna do investimento e a da primeira data.
+  const nomeAba = aba.getName();
+  let cInvest = 3, cData = 10;
+  if (nomeAba === 'Clientes') {
+    cInvest = 8; cData = 0;
+  } else if (!/^(Pagamentos )?20\d\d$/.test(nomeAba)) {
+    ui.alert('Selecione a linha do cliente na aba Clientes, ou numa aba de ano.');
     return;
   }
 
   const cliente = String(aba.getRange(linha, 1).getValue() || '').trim();
   const projeto = String(aba.getRange(linha, 2).getValue() || '').trim();
-  const valor = aba.getRange(linha, 3).getValue();
-  const data1 = aba.getRange(linha, 10).getValue();   // data do 1º pagamento
+  const valor = aba.getRange(linha, cInvest).getValue();
+  const data1 = cData ? aba.getRange(linha, cData).getValue() : '';
 
   if (!cliente || !valor) {
     ui.alert('Essa linha não tem cliente e investimento.\n\n' +
