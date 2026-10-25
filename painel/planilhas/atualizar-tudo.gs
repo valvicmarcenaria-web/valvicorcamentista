@@ -29,7 +29,7 @@
  * não por posição é o que permite as colunas mudarem de lugar sem embaralhar.
  */
 
-const ID_CUSTO = '1tTJXG4w7lDvIcnd0dyr219-leOPwuURqrBk6lJIr18I';
+const ID_CUSTO = '1tTJXG4w7lDvIcnd0dyr219-leOPwuURqrBk6lJIr18I';  // N.GESTAO 2 · Custo por Projeto
 
 // ── as catorze, com o perfil de cada uma ────────────────────────────────
 // perfil: 'projetista' · 'coordenacao' · 'operacao'
@@ -182,18 +182,21 @@ const MOEDA = 'R$ #,##0.00', PCT = '0.0%', DATA = 'dd/mm/yyyy';
 // "Quanto a empresa recebeu em 2026" tinha TRÊS respostas no mesmo par de
 // arquivos. Agora são:
 //
-//   CUSTO POR PROJETO   onde o custo nasce. Uma ficha por cliente, o livro de
-//                       compras dentro dela, o retrabalho em linguagem de obra.
-//                       Separada, e não se mexe: é o arquivo com adesão real.
+//   N.GESTAO 1 · GESTÃO             onde a Carla digita e o Jonathan confere. Os
+//                                   pagamentos dos quatro anos, o custo fixo, o
+//                                   aporte, e TRÊS painéis: Conferência (o que
+//                                   falta), O mês (o fluxo) e Projetos (o estado
+//                                   de cada obra).
 //
-//   VALVIC · GESTÃO     onde a Carla digita e o Jonathan confere. Os pagamentos
-//                       dos quatro anos, o custo fixo, o aporte, e TRÊS painéis:
-//                       Conferência (o que falta), O mês (o fluxo), Projetos
-//                       (o estado de cada obra).
+//   N.GESTAO 2 · CUSTO POR PROJETO  onde o custo nasce. Uma ficha por cliente, o
+//                                   livro de compras dentro dela, o retrabalho em
+//                                   linguagem de obra. Separada, e não se mexe:
+//                                   é o arquivo com adesão real.
 //
-//   PAINEL DO WALTON    UMA aba. O mês, o ponto de equilíbrio, o que está preso,
-//                       o aporte e a capacidade. Sem nome de pessoa em lugar
-//                       nenhum, sem salário, sem comissão nominal.
+//   N.GESTAO 3 · PAINEL DO WALTON   UMA aba. O mês, o ponto de equilíbrio, o que
+//                                   está preso, o aporte e a capacidade. Sem nome
+//                                   de pessoa em lugar nenhum, sem salário, sem
+//                                   comissão nominal.
 //
 // A Análise anual sai de cena depois que a migração confere. Ela não é apagada
 // por script — isso é decisão de quem lê o log.
@@ -203,9 +206,14 @@ const MOEDA = 'R$ #,##0.00', PCT = '0.0%', DATA = 'dd/mm/yyyy';
 // comissão por nome. Permissão de leitura no Google é por ARQUIVO, não por aba.
 // Separar não é duplicar: é a única forma de ele ler sem ver a folha.
 
-const ID_GESTAO = '16VkH3jaTp6O1wahE3zXFwUiQQSXm1bGFuLaaQMg3pjs';  // Valvic · Gestão
-const ID_ANUAL  = '1zC1cjkDpMA7FPYSf4_CO7WrqhIjmJ7ciXR_QGQ4XA9A';  // Análise anual · só origem
-const ID_PAINEL = '1-7XUrVso9oVKccQjM2m5Tgd9_-QIk-r1LZ8XZbDnGL0';  // o que o Walton abre
+// O PREFIXO N.GESTAO marca as três planilhas que valem daqui para frente. Quem
+// não tem o prefixo é origem, backup ou coisa morta — e não se digita nela.
+// Renomear arquivo no Drive NÃO muda o ID: estas constantes, o IMPORTRANGE das
+// catorze individuais e o script vinculado continuam apontando para o mesmo
+// arquivo depois de qualquer renomeação.
+const ID_GESTAO = '16VkH3jaTp6O1wahE3zXFwUiQQSXm1bGFuLaaQMg3pjs';  // N.GESTAO 1 · Gestão
+const ID_ANUAL  = '1zC1cjkDpMA7FPYSf4_CO7WrqhIjmJ7ciXR_QGQ4XA9A';  // Analise anual · só origem
+const ID_PAINEL = '1-7XUrVso9oVKccQjM2m5Tgd9_-QIk-r1LZ8XZbDnGL0';  // N.GESTAO 3 · Painel do Walton
 
 const ANOS = ['2026', '2025', '2024', '2023'];
 const C_BLOCOS = [9, 12, 15, 18, 21];   // I, L, O, R, U · valor, data, descrição
@@ -1802,7 +1810,7 @@ function repararPainelGeral_() {
   const ss = SpreadsheetApp.openById(ID_CUSTO);
   const pg = ss.getSheetByName(FICHA.painel);
   // A Base não depende mais deste registro. Se a aba foi embora para a
-  // Gestão 2026, não há nada a reparar e nada quebra por isso.
+  // planilha de Gestão, não há nada a reparar e nada quebra por isso.
   if (!pg) return 'aba não existe mais aqui — a Base não depende dela';
   const FIXAS = ['Instruções', FICHA.painel, 'Ficha Modelo', 'Listas', FICHA.base];
   const abas = ss.getSheets().map(function (sh) { return sh.getName(); })

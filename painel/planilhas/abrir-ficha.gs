@@ -1,8 +1,8 @@
 /**
  * Valvic Marcenaria · botão "Abrir ficha do projeto"
  *
- * Onde mora: dentro da planilha GESTÃO 2026 — é lá que o cliente novo entra.
- * (Serve igual na Análise anual, se você preferir abrir ficha de lá.)
+ * Onde mora: dentro da "N.GESTAO 1 · Gestão" — é lá que o cliente novo entra.
+ * (Funciona em qualquer aba de pagamentos: "Pagamentos 2026" ou "2026".)
  *   Extensões → Apps Script → cole este arquivo inteiro → salve.
  *   Feche e abra a planilha: aparece o menu "Valvic" na barra de cima.
  *
@@ -20,6 +20,7 @@
  * Se a Custo por Projeto for recriada noutro arquivo, troque o ID abaixo.
  */
 
+// N.GESTAO 2 · Custo por Projeto. Renomear no Drive não muda o ID.
 const ID_CUSTO = '1tTJXG4w7lDvIcnd0dyr219-leOPwuURqrBk6lJIr18I';
 
 // ── mapa da ficha. Se a estrutura mudar, é aqui que se acerta ────────────
