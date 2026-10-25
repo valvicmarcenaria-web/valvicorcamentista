@@ -213,6 +213,8 @@ Ver método completo: `referencias/metodo-rodrigo.md`
 | `referencias/auditoria-metodo.md` | Auditoria da meta de MC |
 | `dados/custo-fixo.md` | Números reais — atualizar com DRE jun/2026 |
 | `ferramentas/custo-operacao.html` | App de levantamento de custos operacionais |
+| `referencias/planilhas.md` · `fluxo-de-caixa.md` · `competencia.md` · `auditoria-financeira.md` · `marcenaria-financeira.md` | Controladoria: planilhas, fluxo, competência × caixa, auditoria/conciliação, finanças da marcenaria |
+| `scripts/gerar_planilha_financeira.py` · `scripts/conciliar_extrato.py` | Modelo de planilha financeira (fluxo + DRE + recebíveis) e conciliação bancária |
 | `SKILL.md` | Persona completa do Rodrigo |
 | `../../GUIA-ORCAMENTOS.md` | Guia da Lavinia |
 | `../../MOLESKINE.md` | Notas e tarefas entre sessões |

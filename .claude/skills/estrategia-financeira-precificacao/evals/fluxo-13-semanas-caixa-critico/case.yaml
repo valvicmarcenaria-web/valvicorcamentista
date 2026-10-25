@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: fluxo-13-semanas-caixa-critico
+expected_outcome: |
+  Builds an xlsx with 13 weekly columns starting 26/10/2026, with live formulas for totals and running balance. The base scenario does not count the long-overdue Andre Alphaville and Marcelo e Simony receivables as certain (treats them as separate scenario/collection upside). Includes the two 13th-salary installments. Shows the balance first turns negative in the week of 09/11–15/11/2026 (chapas R$ 22k + aluguel + CNC) and that the lowest point is around late December/early January (≈ -R$ 45k to -R$ 60k before any actions). Gives concrete prioritized actions (collect overdue, renegotiate chapas/supplier terms, entry policy, hold investments, pipeline) with R$ impact.

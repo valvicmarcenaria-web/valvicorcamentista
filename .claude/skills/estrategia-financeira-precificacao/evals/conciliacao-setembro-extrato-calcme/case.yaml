@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: conciliacao-setembro-extrato-calcme
+context:
+  scaffold_script: place-files.sh
+expected_outcome: |
+  Reconciles bank statement against Calcme. Finds: Duratex boleto R$ 9.850 paid twice in the bank (03/09 and 04/09) but recorded once; RT to architect Carla Mendes R$ 3.200 paid twice (12/09 and 15/09) but recorded once; PIX R$ 5.000 to Paulo Valverde (partner) not recorded, to be classified as partner movement not expense; card deposit R$ 4.656 vs R$ 5.000 recorded gross, difference R$ 344 is acquirer fee; three bank fees of R$ 45,90 (R$ 137,70) not recorded; 'Fornecedor diversos' R$ 2.500 in Calcme not in the bank; generic 'Acerto' R$ 10.000 flagged as lacking documentation. Delivers an xlsx with matched/unmatched items and a prioritized summary with corrections.

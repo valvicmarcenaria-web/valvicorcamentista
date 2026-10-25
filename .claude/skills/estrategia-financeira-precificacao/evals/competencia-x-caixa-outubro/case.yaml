@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: competencia-x-caixa-outubro
+context:
+  scaffold_script: place-files.sh
+expected_outcome: |
+  Separates cash (October net about +R$ 9.560) from accrual. By accrual, October revenue is only the Apto Augusto project delivered on 08/10 (R$ 54.000); the 40% deposits from Kênia & Fábio and Closet Mariana are customer advances, not revenue, and their material purchases and the K&F sales commission belong to the delivery month. Fixed costs use October's own payroll (accrued), CNC installment principal and the Paulo repayment are kept outside the P&L. Concludes October was a loss by accrual (around -R$ 15k to -R$ 25k) despite positive cash, explains the bridge, and saves a report/spreadsheet file.
