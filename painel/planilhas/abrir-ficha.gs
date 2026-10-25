@@ -115,25 +115,24 @@ function abrirFicha() {
   const aba = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   const linha = aba.getActiveRange().getRow();
 
-  // Funciona em três lugares, porque o cliente novo pode nascer em qualquer um:
-  //   Clientes            — o cadastro da Gestão 2026
-  //   Pagamentos 2026     — a aba de ano depois da migração
-  //   2026, 2025, 2024…   — as abas de ano como ainda estão na Análise anual
+  // Funciona na aba onde o cliente novo de fato nasce:
+  //   Pagamentos 2026   — a aba de ano depois da migração
+  //   2026, 2025, …     — as abas de ano como ainda estão na Análise anual
   //
-  // O que muda entre eles é só a coluna do investimento e a da primeira data.
+  // A aba "Clientes" saiu: ela era um segundo lugar para digitar o mesmo
+  // cliente, e ficou com as quatro colunas de cadastro vazias nos 47. O
+  // telefone e o número do projeto moram agora na própria linha do pagamento.
   const nomeAba = aba.getName();
-  let cInvest = 3, cData = 10;
-  if (nomeAba === 'Clientes') {
-    cInvest = 8; cData = 0;
-  } else if (!/^(Pagamentos )?20\d\d$/.test(nomeAba)) {
-    ui.alert('Selecione a linha do cliente na aba Clientes, ou numa aba de ano.');
+  if (!/^(Pagamentos )?20\d\d$/.test(nomeAba)) {
+    ui.alert('Selecione a linha do cliente numa aba de pagamentos — '
+             + '"Pagamentos 2026", por exemplo.');
     return;
   }
 
   const cliente = String(aba.getRange(linha, 1).getValue() || '').trim();
   const projeto = String(aba.getRange(linha, 2).getValue() || '').trim();
-  const valor = aba.getRange(linha, cInvest).getValue();
-  const data1 = cData ? aba.getRange(linha, cData).getValue() : '';
+  const valor = aba.getRange(linha, 3).getValue();
+  const data1 = aba.getRange(linha, 10).getValue();
 
   if (!cliente || !valor) {
     ui.alert('Essa linha não tem cliente e investimento.\n\n' +
@@ -150,6 +149,14 @@ function abrirFicha() {
   }
 
   const painel = destino.getSheetByName(FICHA.painel);
+  if (!painel) {
+    // Sem esta guarda o primeiraVaga_ estourava com TypeError cru, e quem
+    // aperta o botão via erro de script em vez de mensagem.
+    ui.alert('Não achei a aba "' + FICHA.painel + '" na Custo por Projeto.\n\n'
+             + 'É dela que sai a próxima vaga de projeto. Confira o nome da aba '
+             + 'antes de abrir ficha nova.');
+    return;
+  }
   const vaga = primeiraVaga_(painel);
   if (vaga < 0) {
     ui.alert('O Painel Geral está com as ' +
@@ -188,8 +195,23 @@ function abrirFicha() {
   painel.getRange(vaga, 2).setValue(cliente);
 
   // 4 · estende a base
+  //
+  // O índice do bloco é a POSIÇÃO DA ABA, não a linha do Painel Geral. O
+  // atualizar-tudo escreve a Base varrendo as abas na ordem em que estão na
+  // planilha; se aqui se usasse a linha do registro, o bloco de doze linhas
+  // deste projeto cairia num slot diferente do que o atualizarTudo vai usar
+  // na próxima rodada — e as catorze individuais, que leem a Base por posição,
+  // mostrariam o número de outro projeto até alguém rodar o script.
   calibrar_(destino);
-  const i = vaga - FICHA.painelLinha0;
+  const FIXAS = ['Instruções', FICHA.painel, FICHA.modelo, 'Listas', FICHA.base];
+  const abas = destino.getSheets().map(function (x) { return x.getName(); })
+                      .filter(function (x) { return FIXAS.indexOf(x) < 0; });
+  const i = abas.indexOf(cliente);
+  if (i < 0 || i > FICHA.painelLinhaF - FICHA.painelLinha0) {
+    ui.alert('A ficha foi criada, mas não consegui estender a base.\n\n'
+             + 'Rode o atualizarTudo no script: ele refaz a Base inteira.');
+    return;
+  }
   escreverBlocoBase_(destino, i, cliente);
 
   SpreadsheetApp.flush();
