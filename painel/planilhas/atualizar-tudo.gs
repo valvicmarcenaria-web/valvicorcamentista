@@ -192,73 +192,254 @@ const MOEDA = 'R$ #,##0.00', PCT = '0.0%', DATA = 'dd/mm/yyyy';
 const ID_PAINEL = '1-7XUrVso9oVKccQjM2m5Tgd9_-QIk-r1LZ8XZbDnGL0';
 
 
-function montarPainelGestao() {
+/**
+ * Três abas, e só três: O mês, Resultado, Operação.
+ *
+ * Eram cinco. "Visão geral" e "Margem por projeto" diziam a mesma coisa que a
+ * Análise mensal da Gestão 2026, e a aba de margem mostrava MC de projeto
+ * ainda em produção — número que sobe sozinho conforme a ficha recebe custo, e
+ * que por isso mentia para cima. "Comissões" e "Equipe" respondiam a mesma
+ * pergunta e viraram a aba Operação. "Como ler" virou o glossário no pé de
+ * O mês: aba de dicionário é aba que ninguém abre.
+ *
+ * Quem lê isto é prático: abre, vê o mês, vê se o mês se pagou, e fecha.
+ */
+function montarPainelGestao(d) {
   const ano = new Date().getFullYear();
-  const d = lerTudoDoPainel_(ano);
+  d = d || lerMedidas_(ano);
   const ss = SpreadsheetApp.openById(ID_PAINEL);
 
-  abaVisaoGeral_(ss, d, ano);
-  abaMargem_(ss, d);
-  abaComissoes_(ss, d, ano);
-  abaEquipe_(ss, d, ano);
-  abaComoLer_(ss, d, ano);
+  abaOMes_(ss, d);
+  abaResultado_(ss, d);
+  abaOperacao_(ss, d);
 
-  // a aba padrão "Página1" só atrapalha
+  // ── as abas que saíram ──
+  //
+  // São abas de VALORES escritos por este script: ninguém digita nada nelas,
+  // então sair não perde preenchimento de ninguém. Mesmo assim só sai o que
+  // tem a cara do painel — se alguém tiver escrito algo ali, a aba fica e o
+  // log avisa.
+  const retiradas = [];
+  ['Visão geral', 'Margem por projeto', 'Comissões', 'Equipe', 'Como ler'].forEach(function (nome) {
+    const velha = ss.getSheetByName(nome);
+    if (!velha) return;
+    if (String(velha.getRange(1, 2).getDisplayValue() || '').indexOf('VALVIC MARCENARIA') < 0) {
+      console.log('  "' + nome + '" não tem a cara do painel. Deixei como está.');
+      return;
+    }
+    ss.deleteSheet(velha);
+    retiradas.push(nome);
+  });
   const p1 = ss.getSheetByName('Página1') || ss.getSheetByName('Sheet1');
   if (p1 && ss.getSheets().length > 1) ss.deleteSheet(p1);
 
+  // ordem de leitura: o mês, depois o resultado, depois a operação
+  ['O mês', 'Resultado', 'Operação'].forEach(function (nome, i) {
+    const sh = ss.getSheetByName(nome);
+    if (sh) { ss.setActiveSheet(sh); ss.moveActiveSheet(i + 1); }
+  });
+
   SpreadsheetApp.flush();
-  const r = d.projetos.length + ' projeto(s) · ' + d.ambientes.length + ' ambiente(s) · '
-          + d.recebimentos.length + ' recebimento(s)';
+  const r = '3 aba(s) · ' + d.projetos.length + ' projeto(s), ' + d.entregues.length
+          + ' entregue(s) · ' + d.ambientes.length + ' ambiente(s)'
+          + (retiradas.length ? ' · aposentada(s): ' + retiradas.join(', ') : '');
   console.log('Painel de Gestão: ' + r);
   return r;
 }
 
 
-/** Lê as quatro bases e devolve tudo já somado. */
-function lerTudoDoPainel_(ano) {
-  const pg = SpreadsheetApp.openById(ID_PAG);
+/**
+ * UMA leitura para as duas telas que falam de mês.
+ *
+ * Antes eram duas somas separadas: lerTudoDoPainel_, para o painel do Walton,
+ * e um bloco dentro da própria abaAnaliseMensal_, para a Gestão 2026. Cada uma
+ * somava do seu jeito, e o mesmo mês podia dar número diferente em cada
+ * arquivo. Agora soma-se uma vez e as duas telas leem daqui — divergir deixou
+ * de ser possível.
+ *
+ * Também é mais barato: comissoesPagasPorMes_ abre catorze planilhas, e antes
+ * isso acontecia duas vezes por atualização.
+ */
+function lerMedidas_(ano) {
   const cp = SpreadsheetApp.openById(ID_CUSTO);
+  const pg = SpreadsheetApp.openById(ID_PAG);
 
-  const pega = function (ss, aba) {
+  const pega = function (ss, aba, obrigatoria) {
     const sh = ss.getSheetByName(aba);
-    if (!sh) throw new Error('aba "' + aba + '" não encontrada — rode montarBasesDoPainel antes.');
+    if (!sh) {
+      if (obrigatoria) {
+        throw new Error('aba "' + aba + '" não encontrada — rode montarBasesDoPainel antes.');
+      }
+      console.log('  aviso: aba "' + aba + '" não encontrada.');
+      return [];
+    }
     const n = sh.getLastRow() - 1;
     if (n < 1) return [];
     return sh.getRange(2, 1, n, sh.getLastColumn()).getValues();
   };
 
-  const projetos = pega(pg, 'Base · Projetos');
-  const recebimentos = pega(pg, 'Base · Recebimentos');
-  const custoFixo = pega(pg, 'Base · Custo Fixo');
+  const base = pega(cp, FICHA.base, true);
+  const baseProj = pega(pg, 'Base · Projetos', true);
+  const baseReceb = pega(pg, 'Base · Recebimentos', true);
+  const custoFixo = pega(pg, 'Base · Custo Fixo', false);
   const aporte = lerAporte_(pg);
-  const base = pega(cp, FICHA.base);
 
-  // ── ambientes: só linha com ambiente preenchido ──
-  const ambientes = base.filter(function (L) { return String(L[2] || '').trim() !== ''; });
-
-  // ── um registro por projeto, com venda, custo e margem ──
-  const porProjeto = {};
+  // ── um registro por projeto e a lista de ambientes ──
+  const vistos = {}, projetos = [], amb = [];
   base.forEach(function (L) {
     const nome = String(L[0] || '').trim();
     if (!nome) return;
-    if (!porProjeto[nome]) {
-      porProjeto[nome] = { projeto: nome, cliente: String(L[1] || '').trim(),
-                           venda: 0, liquido: 0, custo: 0, margem: 0, ambientes: 0, valor: 0 };
+    const ambiente = String(L[2] || '').trim();
+    if (!vistos[nome]) {
+      // Os números do projeto moram só na PRIMEIRA linha do bloco de doze.
+      // Repetidos nas doze, qualquer soma os multiplicaria por doze.
+      vistos[nome] = {
+        projeto: nome, cliente: String(L[1] || '').trim(),
+        entrada: L[17] instanceof Date ? L[17] : '',
+        venda: Number(L[21]) || 0, liquido: Number(L[20]) || 0,
+        custo: Number(L[27]) || 0, margem: Number(L[28]) || 0,
+        comp: String(L[33] || '').trim(),
+        situacao: String(L[34] || '').trim() || '—',
+        faturado: Number(L[35]) || 0, rt: Number(L[36]) || 0,
+        rtPago: String(L[37] || '').trim() === 'Pago',
+        lancado: 0, nAmb: 0,
+      };
+      projetos.push(vistos[nome]);
     }
-    const p = porProjeto[nome];
-    p.venda += Number(L[21]) || 0;      // só a primeira linha do bloco tem valor
-    p.liquido += Number(L[20]) || 0;
-    p.custo += Number(L[27]) || 0;
-    p.margem += Number(L[28]) || 0;
-    if (String(L[2] || '').trim()) { p.ambientes++; p.valor += Number(L[4]) || 0; }
+    if (!ambiente) return;
+    const p = vistos[nome];
+    const valor = Number(L[4]) || 0;
+    p.lancado += valor;
+    p.nAmb++;
+    amb.push({ projeto: nome, cliente: p.cliente, ambiente: ambiente, valor: valor,
+               fab: L[8] instanceof Date ? L[8] : null,
+               mont: L[12] instanceof Date ? L[12] : null });
   });
 
+  // ── as medidas do ano, mês a mês ──
+  const zero = function () { return [0,0,0,0,0,0,0,0,0,0,0,0,0,0]; };
+  const vendido = zero(), recebido = zero(), faturado = zero(), produzido = zero(),
+        montado = zero(), fixo = zero(), pago = zero(), margemE = zero();
+
+  baseProj.forEach(function (L) {
+    if (String(L[0]) !== String(ano)) return;
+    const v = Number(L[4]) || 0;
+    if (!v) return;
+    const i = MESES.indexOf(String(L[1] || '').trim());
+    if (i >= 0) vendido[i] += v; else vendido[12] += v;
+    vendido[13] += v;
+  });
+
+  // Recebimento é do mês em que o dinheiro ENTROU, não do mês do contrato.
+  // Pagamento sem data entra em "Sem data" quando o contrato é deste ano:
+  // dinheiro que entrou e ninguém datou tem de aparecer em algum lugar.
+  baseReceb.forEach(function (L) {
+    const v = Number(L[4]) || 0;
+    if (!v) return;
+    if (String(L[6]) === String(ano)) {
+      const i = MESES.indexOf(String(L[7] || '').trim());
+      if (i >= 0) recebido[i] += v; else recebido[12] += v;
+      recebido[13] += v;
+    } else if (!L[6] && String(L[0]) === String(ano)) {
+      recebido[12] += v;
+      recebido[13] += v;
+    }
+  });
+
+  const noMes = function (alvo, comp, valor) {
+    if (!valor) return;
+    const p = String(comp).split('/');
+    const i = MES3.indexOf(p[0]);
+    if (i >= 0 && Number(p[1]) === ano) alvo[i] += valor; else alvo[12] += valor;
+    alvo[13] += valor;
+  };
+  projetos.forEach(function (p) {
+    noMes(faturado, p.comp, p.faturado);
+    // MARGEM SÓ DE PROJETO ENTREGUE. Projeto em produção não entra em mês
+    // nenhum: a ficha dele ainda está recebendo custo, e a margem de hoje
+    // seria desmentida amanhã.
+    if (p.comp) noMes(margemE, p.comp, p.margem);
+    if (p.rtPago) noMes(pago, p.comp, p.rt);
+  });
+
+  amb.forEach(function (a) {
+    if (a.fab) {
+      const i = a.fab.getFullYear() === ano ? a.fab.getMonth() : 12;
+      produzido[i] += a.valor; produzido[13] += a.valor;
+    }
+    if (a.mont) {
+      const i = a.mont.getFullYear() === ano ? a.mont.getMonth() : 12;
+      montado[i] += a.valor; montado[13] += a.valor;
+    }
+  });
+
+  let custoMes = 0;
+  custoFixo.forEach(function (L) {
+    if (String(L[0] || '').indexOf('Custo operacional') === 0) custoMes = Number(L[2]) || 0;
+  });
+  // Só o mês corrente. O valor é o custo fixo VIGENTE; repetido para trás, ele
+  // inventava um histórico que a planilha não tem — a folha de janeiro não era
+  // esta, e somar dez meses de um número de hoje dava mais de um milhão de
+  // custo que nunca existiu assim.
+  const mHoje = new Date().getMonth();
+  fixo[mHoje] = custoMes;
+  fixo[13] = custoMes;
+
+  const comPagas = comissoesPagasPorMes_(ano);
+  for (let i = 0; i < 14; i++) pago[i] += comPagas[i];
+
+  // ── os dois estados de um projeto ──
+  const entregues = projetos.filter(function (p) { return !!p.comp; });
+  const andamento = projetos.filter(function (p) {
+    return !p.comp && (p.venda > 0 || p.custo > 0);
+  });
+  const prontos = amb.filter(function (a) { return a.fab && !a.mont; });
+  const emProd = amb.filter(function (a) { return !a.fab; });
+
+  // ── higiene de dado, para o log e para a validação ──
+  let semDono = 0, qtdSemDono = 0;
+  base.forEach(function (L) {
+    FRENTES_COM.forEach(function (f) {
+      const v = Number(L[f.val]) || 0;
+      if (v > 0 && !String(L[f.quem] || '').trim()) { semDono += v; qtdSemDono++; }
+    });
+  });
+  const naoFecham = projetos.filter(function (p) {
+    return p.venda > 0 && p.lancado > 0 && Math.abs(p.lancado - p.venda) > 1;
+  });
+
+  const somaV = function (l, c) {
+    return l.reduce(function (s, x) { return s + (Number(x[c]) || 0); }, 0);
+  };
+  const somaA = function (l) {
+    return l.reduce(function (s, a) { return s + a.valor; }, 0);
+  };
+
   return {
-    projetos: projetos, recebimentos: recebimentos, custoFixo: custoFixo,
-    aporte: aporte,
-    base: base, ambientes: ambientes,
-    porProjeto: Object.keys(porProjeto).map(function (k) { return porProjeto[k]; }),
+    ano: ano, mes: mHoje,
+    base: base, rawAmb: base.filter(function (L) { return String(L[2] || '').trim() !== ''; }),
+    projetos: projetos, ambientes: amb,
+    entregues: entregues, andamento: andamento, prontos: prontos, emProd: emProd,
+    custoFixo: custoFixo, custoMes: custoMes, aporte: aporte,
+    medidas: [
+      { nome: 'Vendido', m: vendido, cor: NAVY },
+      { nome: 'Recebido', m: recebido, cor: '#2f7d4f' },
+      { nome: 'Faturado', m: faturado, cor: NAVY2 },
+      { nome: 'Produzido', m: produzido, cor: '#2f5d8c' },
+      { nome: 'Montado', m: montado, cor: '#3f8f6a' },
+      { nome: 'Custo fixo', m: fixo, cor: '#b0413f' },
+      { nome: 'Comissões e RTs pagas', m: pago, cor: '#c47d0e' },
+      { nome: 'Margem entregue', m: margemE, cor: OK },
+    ],
+    margemEntregue: margemE,
+    vendaEntregue: somaV(entregues, 'venda'),
+    custoEntregue: somaV(entregues, 'custo'),
+    margemAno: somaV(entregues, 'margem'),
+    vendaAndamento: somaV(andamento, 'venda'),
+    custoAndamento: somaV(andamento, 'custo'),
+    liquidoTotal: somaV(projetos, 'liquido'),
+    presoPronto: somaA(prontos), presoProd: somaA(emProd),
+    semDono: semDono, qtdSemDono: qtdSemDono, naoFecham: naoFecham,
   };
 }
 
@@ -337,139 +518,228 @@ function cartaoPainel_(sh, lin, col, rotulo, valor, cor, formato) {
 }
 
 
-// ── aba 1 · Visão geral ─────────────────────────────────────────────────
-function abaVisaoGeral_(ss, d, ano) {
-  const W = 9;
-  const sh = abaLimpa_(ss, 'Visão geral', W);
-  cabecalhoPainel_(sh, 'PAINEL DE GESTÃO', 'Ano ' + ano
-    + '   ·   vendido é contrato assinado   ·   recebido é dinheiro que entrou   ·   os dois não batem, e não é erro', W);
-  for (let c = 2; c <= W; c++) sh.setColumnWidth(c, 118);
-
-  // ── do ano corrente ──
-  const doAno = d.projetos.filter(function (L) { return String(L[0]) === String(ano); });
-  const vendido = doAno.reduce(function (s, L) { return s + (Number(L[4]) || 0); }, 0);
-  const aReceber = doAno.reduce(function (s, L) { return s + (Number(L[6]) || 0); }, 0);
-  const recAno = d.recebimentos.filter(function (L) { return String(L[6]) === String(ano); });
-  const recebido = recAno.reduce(function (s, L) { return s + (Number(L[4]) || 0); }, 0);
-
-  let fixo = 0;
-  d.custoFixo.forEach(function (L) {
-    if (String(L[0] || '').indexOf('Custo operacional') === 0) fixo = Number(L[2]) || 0;
-  });
+// ── aba 1 · O mês ───────────────────────────────────────────────────────
+//
+// A primeira tela. Seis números do mês corrente, o ponto de equilíbrio, o que
+// está preso em obra, o mês a mês do ano, o custo fixo vigente e o aporte.
+// Custo fixo e aporte vieram da Análise anual: são números do investidor, e o
+// lugar deles é a planilha dele.
+function abaOMes_(ss, d) {
+  const W = 17;
+  const sh = abaLimpa_(ss, 'O mês', W);
+  cabecalhoPainel_(sh, 'O MÊS',
+    MESES[d.mes] + ' de ' + d.ano + '   ·   vendido é contrato assinado   ·   '
+    + 'recebido é dinheiro que entrou   ·   faturado é nota emitida, no mês da entrega', W);
+  sh.setColumnWidth(2, 185);
+  for (let c = 3; c <= W; c++) sh.setColumnWidth(c, 92);
 
   let lin = 5;
-  secaoPainel_(sh, lin, 'O ANO EM QUATRO NÚMEROS', W); lin += 2;
-  cartaoPainel_(sh, lin, 2, 'Vendido no ano', vendido, NAVY);
-  cartaoPainel_(sh, lin, 4, 'Recebido no ano', recebido, '#2f7d4f');
-  cartaoPainel_(sh, lin, 6, 'A receber', aReceber, '#c47d0e');
-  cartaoPainel_(sh, lin, 8, 'Custo fixo por mês', fixo, '#b0413f');
-  lin += 4;
+  secaoPainel_(sh, lin, MESES[d.mes].toUpperCase() + ' EM SEIS NÚMEROS', W); lin += 2;
+  d.medidas.slice(0, 6).forEach(function (x, i) {
+    cartaoPainel_(sh, lin + Math.floor(i / 3) * 3, 2 + (i % 3) * 2, x.nome, x.m[d.mes], x.cor);
+  });
+  lin += 6;
+
+  // ── ponto de equilíbrio ──
+  //
+  // O número que o investidor veio buscar: o mês se pagou ou não. Margem aqui
+  // é só de projeto ENTREGUE — é a única que não muda depois.
+  const mc = d.vendaEntregue ? d.margemAno / d.vendaEntregue : 0;
+  const margemMes = d.margemEntregue[d.mes];
+  const resultado = margemMes - d.custoMes;
+  secaoPainel_(sh, lin, 'PONTO DE EQUILÍBRIO   ·   o mês se pagou?', W); lin += 2;
+  cartaoPainel_(sh, lin, 2, 'Custo fixo por mês', d.custoMes, '#b0413f');
+  cartaoPainel_(sh, lin, 4, 'Margem entregue no mês', margemMes, NAVY);
+  cartaoPainel_(sh, lin, 6, 'Resultado do mês', resultado, resultado >= 0 ? OK : '#b0413f');
+  cartaoPainel_(sh, lin, 8, 'MC % dos entregues', mc, '#2f5d8c', PCT);
+  cartaoPainel_(sh, lin, 10, 'Entrega necessária / mês', mc ? d.custoMes / mc : 0, ABERTO);
+  lin += 3;
+  sh.getRange(lin, 2, 1, W - 2).merge().setValue(
+    'Margem entregue conta só projeto com entrega real lançada: é a única margem que não muda '
+    + 'depois. Projeto em produção não aparece aqui — a ficha dele ainda está recebendo custo, e '
+    + 'a margem de hoje seria desmentida amanhã. "Entrega necessária" é o custo fixo dividido '
+    + 'pela MC % dos entregues: abaixo disso o mês não se paga.')
+    .setFontColor(MUTED).setFontSize(9).setFontStyle('italic').setWrap(true);
+  sh.setRowHeight(lin, 32);
+  lin += 2;
+
+  // ── o que está preso ──
+  secaoPainel_(sh, lin, 'O QUE ESTÁ PRESO   ·   resultado que existe e ainda não virou mês', W);
+  lin += 2;
+  lin = tabelaPainel_(sh, lin, 2, ['O que', 'Valor', 'Quanto'], [
+    ['Pronto e não entregue', d.presoPronto, d.prontos.length + ' ambiente(s)'],
+    ['Ainda em produção', d.presoProd, d.emProd.length + ' ambiente(s)'],
+    ['Vendido sem entrega real', d.vendaAndamento, d.andamento.length + ' projeto(s)'],
+  ], [null, MOEDA, null]);
 
   // ── mês a mês ──
-  secaoPainel_(sh, lin, 'MÊS A MÊS   ·   ' + ano, W); lin += 2;
-  const linhas = [];
-  for (let m = 0; m < 12; m++) {
-    const vendM = doAno.filter(function (L) { return String(L[1]) === MESES[m]; });
-    const recM = recAno.filter(function (L) { return String(L[7]) === MESES[m]; });
-    linhas.push([
-      MESES[m],
-      vendM.reduce(function (s, L) { return s + (Number(L[4]) || 0); }, 0),
-      recM.reduce(function (s, L) { return s + (Number(L[4]) || 0); }, 0),
-      vendM.length,
-    ]);
-  }
-  linhas.push(['Total do ano',
-    linhas.reduce(function (s, L) { return s + L[1]; }, 0),
-    linhas.reduce(function (s, L) { return s + L[2]; }, 0),
-    linhas.reduce(function (s, L) { return s + L[3]; }, 0)]);
-
+  secaoPainel_(sh, lin, 'MÊS A MÊS   ·   ' + d.ano, W); lin += 2;
   const linTab = lin;
-  lin = tabelaPainel_(sh, lin, 2, ['Mês', 'Vendido', 'Recebido', 'Projetos vendidos'],
-                      linhas, [null, MOEDA, MOEDA, '0']);
-  sh.getRange(linTab + 13, 2, 1, 4).setBackground(NAVY).setFontColor(GOLDS).setFontWeight('bold');
+  const linhas = d.medidas.map(function (x) { return [x.nome].concat(x.m); });
+  lin = tabelaPainel_(sh, lin, 2, cabMeses_('Medida'), linhas, formatosMes_());
+  sh.getRange(linTab + 1, 2, d.medidas.length, 1).setFontWeight('bold').setFontColor(NAVY);
+  sh.getRange(linTab + 6, 2, 1, 15).setBackground('#fcf2f1').setFontColor('#b0413f');
+  sh.getRange(linTab + 7, 2, 1, 15).setBackground(ABERTOBG).setFontColor(ABERTO);
+  sh.getRange(linTab + 8, 2, 1, 15).setBackground('#eff5f1').setFontColor(OK);
 
+  // Vendido e recebido, mês a mês. setTransposeRowsAndColumns porque a tabela
+  // tem medida na linha e mês na coluna, e o gráfico quer o contrário.
   const g = sh.newChart().setChartType(Charts.ChartType.COLUMN)
-    .addRange(sh.getRange(linTab, 2, 13, 3))
-    .setPosition(linTab, 6, 0, 0)
+    .addRange(sh.getRange(linTab, 2, 3, 13))
+    .setTransposeRowsAndColumns(true)
+    .setPosition(lin, 2, 0, 0)
     .setOption('title', 'Vendido e recebido, mês a mês')
     .setOption('colors', [NAVY, '#2f7d4f'])
     .setOption('legend', { position: 'top' })
-    .setOption('width', 500).setOption('height', 300)
+    .setOption('width', 760).setOption('height', 300)
     .build();
   sh.insertChart(g);
+  lin += 16;
 
-  // ── ano a ano ──
-  secaoPainel_(sh, lin, 'ANO A ANO', W); lin += 2;
-  const anos = {};
-  d.projetos.forEach(function (L) {
-    const a = String(L[0]);
-    if (!anos[a]) anos[a] = { n: 0, vend: 0, rec: 0, sal: 0 };
-    anos[a].n++; anos[a].vend += Number(L[4]) || 0;
-    anos[a].rec += Number(L[5]) || 0; anos[a].sal += Number(L[6]) || 0;
-  });
-  const lAnos = Object.keys(anos).sort().reverse().map(function (a) {
-    const x = anos[a];
-    return [a, x.n, x.vend, x.rec, x.sal, x.vend ? x.rec / x.vend : 0, x.n ? x.vend / x.n : 0];
-  });
-  lin = tabelaPainel_(sh, lin, 2,
-    ['Ano', 'Projetos', 'Vendido', 'Recebido', 'A receber', '% recebido', 'Ticket médio'],
-    lAnos, [null, '0', MOEDA, MOEDA, MOEDA, '0.0%', MOEDA]);
-
-  // ── custo fixo ──
-  secaoPainel_(sh, lin, 'CUSTO FIXO DA OPERAÇÃO   ·   por mês', W); lin += 2;
+  // ── custo fixo vigente · veio da Análise anual ──
+  secaoPainel_(sh, lin, 'CUSTO FIXO VIGENTE   ·   por mês, exista venda ou não', W); lin += 2;
   lin = tabelaPainel_(sh, lin, 2, ['Indicador', 'Grupo', 'Valor'],
     d.custoFixo.map(function (L) { return [L[0], L[1], Number(L[2]) || 0]; }),
     [null, null, MOEDA]);
+  sh.getRange(lin - 1, 2, 1, W - 2).merge().setValue(
+    'É o valor vigente hoje, não o histórico: a planilha guarda a folha de agora, e por isso o '
+    + 'custo fixo do mês a mês aparece só no mês corrente. Aqui não há nome nem salário de '
+    + 'ninguém — só os totais.')
+    .setFontColor(MUTED).setFontSize(9).setFontStyle('italic').setWrap(true);
+  sh.setRowHeight(lin - 1, 28);
+  lin += 1;
 
-  // ── aporte do Walton · o dinheiro dele ──
+  // ── aporte · o dinheiro dele ──
   if (d.aporte.length) {
-    secaoPainel_(sh, lin, 'APORTE DO WALTON', W); lin += 2;
+    secaoPainel_(sh, lin, 'APORTE', W); lin += 2;
     lin = tabelaPainel_(sh, lin, 2, ['Movimento', 'Valor'], d.aporte, [null, MOEDA]);
   }
+
+  // ── glossário, no pé: era uma aba, e aba de dicionário ninguém abre ──
+  secaoPainel_(sh, lin, 'O QUE CADA PALAVRA SIGNIFICA', W); lin += 2;
+  const itens = [
+    ['Vendido', 'Contrato assinado no período. Vira obra e vira custo, mas não vira caixa na hora.'],
+    ['Recebido', 'Dinheiro que entrou no período, muitas vezes de contrato de meses atrás. É caixa.'],
+    ['Faturado', 'Nota emitida, alocada no mês da entrega do projeto.'],
+    ['Produzido', 'Ambiente que saiu da fábrica, pela data de fabricação.'],
+    ['Montado', 'Ambiente entregue na casa do cliente, pela data de montagem. Não bate com '
+      + 'produzido no mesmo mês, e a diferença é o que está pronto e ainda não foi entregue.'],
+    ['Margem de contribuição', 'Venda menos todo o custo do projeto: material, terceirizados, '
+      + 'logística, comissões e custos de venda. Não desconta o custo fixo da empresa.'],
+    ['Custo fixo', 'O que a operação custa por mês independentemente de vender: folha e '
+      + 'estrutura. A soma das margens precisa cobrir isso antes de sobrar lucro.'],
+    ['Sem data', 'Lançamento sem data de etapa. Soma no total do ano e não aparece em mês '
+      + 'nenhum — é o que falta datar.'],
+    ['É uma foto', 'Os números são do momento da atualização, que roda sozinha de madrugada. '
+      + 'A data está no alto da aba Operação.'],
+  ];
+  const lg = lin;
+  lin = tabelaPainel_(sh, lin, 2, ['Termo', 'O que é'], itens, [null, null]);
+  sh.getRange(lg, 3, itens.length + 1, 14).mergeAcross();
+  sh.getRange(lg + 1, 3, itens.length, 1).setWrap(true);
+  for (let i = 1; i <= itens.length; i++) sh.setRowHeight(lg + i, 28);
 }
 
 
-// ── aba 2 · Margem por projeto ──────────────────────────────────────────
-function abaMargem_(ss, d) {
-  const W = 8;
-  const sh = abaLimpa_(ss, 'Margem por projeto', W);
-  cabecalhoPainel_(sh, 'MARGEM POR PROJETO',
-    'Margem de contribuição = venda menos todo o custo do projeto   ·   o pior vem primeiro, '
-    + 'porque é esse que precisa de conversa', W);
-  sh.setColumnWidth(2, 190); sh.setColumnWidth(3, 170);
-  for (let c = 4; c <= W; c++) sh.setColumnWidth(c, 125);
+// ── aba 2 · Resultado ───────────────────────────────────────────────────
+//
+// A aba que conserta a mentira do painel antigo. A MC só aparece para projeto
+// ENTREGUE; o que está em produção vem numa tabela separada, sem coluna de
+// margem nenhuma, mostrando custo incorrido e quanto da obra já foi lançada.
+function abaResultado_(ss, d) {
+  const W = 10;
+  const sh = abaLimpa_(ss, 'Resultado', W);
+  cabecalhoPainel_(sh, 'RESULTADO',
+    'Margem só de projeto ENTREGUE   ·   projeto em produção não tem margem fechada: '
+    + 'a ficha dele ainda está recebendo custo', W);
+  sh.setColumnWidth(2, 185); sh.setColumnWidth(3, 170);
+  for (let c = 4; c <= W; c++) sh.setColumnWidth(c, 118);
 
-  const com = d.porProjeto.filter(function (p) { return p.venda > 0; })
-    .map(function (p) {
-      return [p.projeto, p.cliente, p.venda, p.custo, p.margem,
-              p.venda ? p.margem / p.venda : 0, p.ambientes];
-    })
-    .sort(function (a, b) { return a[5] - b[5]; });
-
+  const mc = d.vendaEntregue ? d.margemAno / d.vendaEntregue : 0;
   let lin = 5;
-  secaoPainel_(sh, lin, 'PROJETOS COM VENDA LANÇADA', W); lin += 2;
-  const l0 = lin;
+  secaoPainel_(sh, lin, 'O ANO, SÓ DO QUE FOI ENTREGUE', W); lin += 2;
+  cartaoPainel_(sh, lin, 2, 'Entregue no ano', d.vendaEntregue, NAVY);
+  cartaoPainel_(sh, lin, 4, 'Custo dos entregues', d.custoEntregue, '#b0413f');
+  cartaoPainel_(sh, lin, 6, 'Margem gerada', d.margemAno, OK);
+  cartaoPainel_(sh, lin, 8, 'MC %', mc, '#2f5d8c', PCT);
+  lin += 4;
+
+  // ── mês a mês do entregue ──
+  const porComp = {};
+  d.entregues.forEach(function (p) {
+    if (!porComp[p.comp]) porComp[p.comp] = { n: 0, venda: 0, custo: 0, margem: 0 };
+    const x = porComp[p.comp];
+    x.n++; x.venda += p.venda; x.custo += p.custo; x.margem += p.margem;
+  });
+  const ordem = Object.keys(porComp).sort(function (a, b) { return ordemComp_(a) - ordemComp_(b); });
+  const lMes = ordem.map(function (c) {
+    const x = porComp[c];
+    return [c, x.n, x.venda, x.custo, x.margem, x.venda ? x.margem / x.venda : 0];
+  });
+  lMes.push(['Total', d.entregues.length, d.vendaEntregue, d.custoEntregue, d.margemAno, mc]);
+
+  secaoPainel_(sh, lin, 'MÊS A MÊS DO QUE FOI ENTREGUE', W); lin += 2;
+  const lm = lin;
+  sh.getRange(lin + 1, 2, lMes.length, 1).setNumberFormat('@');
   lin = tabelaPainel_(sh, lin, 2,
-    ['Projeto', 'Cliente', 'Valor de venda', 'Custo total', 'Margem', 'MC %', 'Ambientes'],
-    com, [null, null, MOEDA, MOEDA, MOEDA, '0.0%', '0']);
+    ['Competência', 'Projetos', 'Entregue', 'Custo', 'Margem', 'MC %'],
+    lMes, [null, '0', MOEDA, MOEDA, MOEDA, PCT]);
+  sh.getRange(lm + lMes.length, 2, 1, 6)
+    .setBackground(NAVY).setFontColor(GOLDS).setFontWeight('bold');
+  const faixaMes = sh.getRange(lm + 1, 7, Math.max(1, lMes.length - 1), 1);
 
-  if (com.length) {
-    const faixa = sh.getRange(l0 + 1, 7, com.length, 1);
-    sh.setConditionalFormatRules([
-      SpreadsheetApp.newConditionalFormatRule().whenNumberLessThan(0.25)
-        .setBackground('#fbe7e6').setFontColor('#b0413f').setBold(true).setRanges([faixa]).build(),
-      SpreadsheetApp.newConditionalFormatRule().whenNumberBetween(0.25, 0.35)
-        .setBackground('#fbf1dc').setFontColor('#c47d0e').setBold(true).setRanges([faixa]).build(),
-      SpreadsheetApp.newConditionalFormatRule().whenNumberGreaterThan(0.35)
-        .setBackground('#e2f0e7').setFontColor('#2f7d4f').setBold(true).setRanges([faixa]).build(),
-    ]);
-  }
+  // ── projeto a projeto, entregues ──
+  secaoPainel_(sh, lin, 'PROJETO A PROJETO   ·   entregues, do maior para o menor', W); lin += 2;
+  const lEnt = d.entregues.slice().sort(function (a, b) { return b.venda - a.venda; })
+    .map(function (p) {
+      return [p.cliente || p.projeto, p.comp, p.situacao, p.venda, p.custo, p.margem,
+              p.venda ? p.margem / p.venda : 0];
+    });
+  const le = lin;
+  sh.getRange(lin + 1, 3, Math.max(1, lEnt.length), 1).setNumberFormat('@');
+  lin = tabelaPainel_(sh, lin, 2,
+    ['Cliente', 'Competência', 'Entrega', 'Venda', 'Custo total', 'Margem', 'MC %'],
+    lEnt, [null, null, null, MOEDA, MOEDA, MOEDA, PCT]);
+  const faixaProj = sh.getRange(le + 1, 8, Math.max(1, lEnt.length), 1);
 
-  sh.getRange(lin, 2, 1, W - 1).merge().setValue(
-    'Leia junto com a ficha. Projeto com ambiente ainda não lançado mostra margem alta e falsa — '
-    + 'faltam custos. MC acima de 60% quase sempre é ficha incompleta, não lucro.')
+  // ── em andamento: sem margem, de propósito ──
+  secaoPainel_(sh, lin, 'EM ANDAMENTO   ·   sem margem, porque a obra não terminou', W); lin += 2;
+  const lAnd = d.andamento.slice().sort(function (a, b) { return b.venda - a.venda; })
+    .map(function (p) {
+      return [p.cliente || p.projeto, p.entrada, p.situacao, p.venda, p.custo,
+              p.venda ? p.lancado / p.venda : 0];
+    });
+  lAnd.push(['Total', '', '', d.vendaAndamento, d.custoAndamento, '']);
+  const la = lin;
+  lin = tabelaPainel_(sh, lin, 2,
+    ['Cliente', 'Data de entrada', 'Entrega', 'Venda', 'Custo incorrido', '% da obra lançada'],
+    lAnd, [null, DATA, null, MOEDA, MOEDA, PCT]);
+  sh.getRange(la + lAnd.length, 2, 1, 6)
+    .setBackground(ABERTOBG).setFontColor(ABERTO).setFontWeight('bold');
+
+  const regras = [
+    SpreadsheetApp.newConditionalFormatRule().whenNumberLessThan(0.25)
+      .setBackground('#fcf2f1').setFontColor('#b0413f').setBold(true)
+      .setRanges([faixaMes, faixaProj]).build(),
+    SpreadsheetApp.newConditionalFormatRule().whenNumberBetween(0.25, 0.35)
+      .setBackground('#fdf8ee').setFontColor(ABERTO).setBold(true)
+      .setRanges([faixaMes, faixaProj]).build(),
+    SpreadsheetApp.newConditionalFormatRule().whenNumberGreaterThan(0.35)
+      .setBackground('#eff5f1').setFontColor(OK).setBold(true)
+      .setRanges([faixaMes, faixaProj]).build(),
+  ];
+  sh.setConditionalFormatRules(regras);
+
+  sh.getRange(lin, 2, 1, W - 2).merge().setValue(
+    'Por que a tabela de baixo não tem MC: a ficha de um projeto em produção ainda está '
+    + 'recebendo custo, então a margem dele sobe e desce até a última compra. Mostrar esse '
+    + 'número junto com o dos entregues puxava a média da empresa para cima e dava uma '
+    + 'leitura falsa. "% da obra lançada" diz quanto do valor de venda já virou ambiente na '
+    + 'ficha — perto de 100% é ficha completa, bem abaixo é ficha pela metade. O custo fixo '
+    + 'não aparece mês a mês aqui: a planilha guarda só o valor vigente, e repetir o de hoje '
+    + 'para trás inventaria um histórico que não existe.')
     .setFontColor(MUTED).setFontSize(9).setFontStyle('italic').setWrap(true);
-  sh.setRowHeight(lin, 32);
+  sh.setRowHeight(lin, 46);
 }
 
 
@@ -541,32 +811,54 @@ function formatosMes_() {
 }
 
 
-// ── aba 3 · Comissões ───────────────────────────────────────────────────
-function abaComissoes_(ss, d, ano) {
+// ── aba 3 · Operação ────────────────────────────────────────────────────
+//
+// Junta o que eram duas abas, "Comissões" e "Equipe". As duas respondiam a
+// mesma pergunta — quanto a operação consome e quem carrega a obra — e
+// separadas obrigavam a abrir duas telas para comparar o peso com o volume.
+//
+// Comissão aparece por CATEGORIA PROFISSIONAL e por tipo de trabalho, nunca
+// com o nome de quem recebe. Volume de obra aparece com nome: é medida de
+// produção e de dependência, não de remuneração.
+function abaOperacao_(ss, d) {
   const W = 17;
-  const sh = abaLimpa_(ss, 'Comissões', W);
-  cabecalhoPainel_(sh, 'COMISSÕES   ·   ' + ano,
-    'Produção fecha pela data de fabricação, montagem pela data de montagem   ·   '
-    + 'o resto segue a data de entrada do projeto   ·   sem nome de ninguém', W);
-  sh.setColumnWidth(2, 200);
-  for (let c = 3; c <= W; c++) sh.setColumnWidth(c, 92);
+  const sh = abaLimpa_(ss, 'Operação', W);
+  cabecalhoPainel_(sh, 'OPERAÇÃO',
+    'Quanto a operação consome e quem carrega a obra   ·   atualizado em '
+    + Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "dd/MM/yyyy 'às' HH:mm"), W);
+  sh.setColumnWidth(2, 185); sh.setColumnWidth(3, 150);
+  for (let c = 4; c <= W; c++) sh.setColumnWidth(c, 88);
 
+  // ── comissão: por categoria e por tipo de trabalho ──
   const porCat = novaMatriz_(), porFrente = novaMatriz_();
   d.base.forEach(function (L) {
     FRENTES_COM.forEach(function (f) {
       const v = Number(L[f.val]) || 0;
       if (!v) return;
       const quem = String(L[f.quem] || '').trim();
-      somaNaMatriz_(porCat, quem ? categoriaDe_(quem) : 'Sem dono', L[f.data], v, ano);
-      somaNaMatriz_(porFrente, f.nome, L[f.data], v, ano);
+      somaNaMatriz_(porCat, quem ? categoriaDe_(quem) : 'Sem dono', L[f.data], v, d.ano);
+      somaNaMatriz_(porFrente, f.nome, L[f.data], v, d.ano);
     });
   });
 
   let lin = 5;
-  secaoPainel_(sh, lin, 'POR CATEGORIA PROFISSIONAL', W); lin += 2;
   const lCat = ORDEM_CAT.concat(['Sem dono'])
     .filter(function (c) { return porCat[c]; })
     .map(function (c) { return [c].concat(porCat[c]); });
+  let comTotal = 0;
+  const lFr = FRENTES_COM.map(function (f) { return f.nome; })
+    .filter(function (n) { return porFrente[n]; })
+    .map(function (n) { return [n].concat(porFrente[n]); });
+  lFr.forEach(function (r) { comTotal += r[14]; });
+
+  secaoPainel_(sh, lin, 'PESO DA OPERAÇÃO', W); lin += 2;
+  cartaoPainel_(sh, lin, 2, 'Comissão total', comTotal, NAVY);
+  cartaoPainel_(sh, lin, 4, 'Receita líquida', d.liquidoTotal, '#2f5d8c');
+  cartaoPainel_(sh, lin, 6, 'Comissão ÷ receita',
+                d.liquidoTotal ? comTotal / d.liquidoTotal : 0, ABERTO, PCT);
+  lin += 4;
+
+  secaoPainel_(sh, lin, 'COMISSÃO POR CATEGORIA PROFISSIONAL   ·   ' + d.ano, W); lin += 2;
   const l0 = lin;
   lin = tabelaPainel_(sh, lin, 2, cabMeses_('Categoria'),
                       lCat.concat([linhaTotal_(lCat, 'Total')]), formatosMes_());
@@ -575,141 +867,64 @@ function abaComissoes_(ss, d, ano) {
   const iSemDono = lCat.map(function (r) { return r[0]; }).indexOf('Sem dono');
   if (iSemDono >= 0) {
     sh.getRange(l0 + 1 + iSemDono, 2, 1, 15)
-      .setBackground(ABERTOBG).setFontColor('#c47d0e').setFontWeight('bold');
+      .setBackground(ABERTOBG).setFontColor(ABERTO).setFontWeight('bold');
   }
 
-  secaoPainel_(sh, lin, 'POR TIPO DE TRABALHO', W); lin += 2;
-  const lFr = FRENTES_COM.map(function (f) { return f.nome; })
-    .filter(function (n) { return porFrente[n]; })
-    .map(function (n) { return [n].concat(porFrente[n]); });
+  secaoPainel_(sh, lin, 'COMISSÃO POR TIPO DE TRABALHO', W); lin += 2;
   const l1 = lin;
   lin = tabelaPainel_(sh, lin, 2, cabMeses_('Tipo de trabalho'),
                       lFr.concat([linhaTotal_(lFr, 'Total')]), formatosMes_());
   sh.getRange(l1 + lFr.length + 1, 2, 1, 15)
     .setBackground(NAVY).setFontColor(GOLDS).setFontWeight('bold');
 
-  let liquido = 0, comTotal = 0;
-  d.base.forEach(function (L) { liquido += Number(L[20]) || 0; });
-  lFr.forEach(function (r) { comTotal += r[14]; });
-
-  secaoPainel_(sh, lin, 'PESO DA OPERAÇÃO', W); lin += 2;
-  cartaoPainel_(sh, lin, 2, 'Comissão total', comTotal, NAVY);
-  cartaoPainel_(sh, lin, 4, 'Receita líquida', liquido, '#2f5d8c');
-  cartaoPainel_(sh, lin, 6, 'Comissão ÷ receita', liquido ? comTotal / liquido : 0,
-                '#c47d0e', '0.0%');
-  lin += 4;
-  sh.getRange(lin, 2, 1, W - 2).merge().setValue(
-    'Historicamente esse percentual fica entre 15% e 22%. A coluna "Sem data" é o trabalho '
-    + 'sem data de etapa lançada, e a linha "Sem dono" é comissão calculada com o nome em '
-    + 'branco — as duas somam no total e não aparecem em mês nenhum.')
-    .setFontColor(MUTED).setFontSize(9).setFontStyle('italic').setWrap(true);
-  sh.setRowHeight(lin, 32);
-}
-
-
-// ── aba 4 · Equipe ──────────────────────────────────────────────────────
-function abaEquipe_(ss, d, ano) {
-  const W = 17;
-  const sh = abaLimpa_(ss, 'Equipe', W);
-  cabecalhoPainel_(sh, 'VOLUME DE OBRA POR COLABORADOR   ·   ' + ano,
-    'Quanto de obra, em reais, passou pelas mãos de cada um, mês a mês   ·   '
-    + 'é produção, não é o que a pessoa recebe', W);
-  sh.setColumnWidth(2, 165); sh.setColumnWidth(3, 150);
-  for (let c = 4; c <= W; c++) sh.setColumnWidth(c, 88);
-
-  const matriz = function (iQuem, iData, iValor) {
+  // ── volume de obra por colaborador ──
+  //
+  // Produzido e entregue, só. "Projetado" saiu: ele fecha pela data de entrada
+  // do projeto, que é a mesma data do vendido — era o mesmo mês contado duas
+  // vezes, com outro rótulo.
+  const matriz = function (iQuem, iData) {
     const m = novaMatriz_();
-    d.ambientes.forEach(function (L) {
+    d.rawAmb.forEach(function (L) {
       const quem = String(L[iQuem] || '').trim();
       if (!quem) return;
-      somaNaMatriz_(m, quem, L[iData], Number(L[iValor]) || 0, ano);
+      somaNaMatriz_(m, quem, L[iData], Number(L[4]) || 0, d.ano);
     });
     return Object.keys(m).sort(function (a, b) { return m[b][13] - m[a][13]; })
       .map(function (k) { return [k, categoriaDe_(k)].concat(m[k]); });
   };
-
   const cab = ['Colaborador', 'Categoria'].concat(
     MESES.map(function (x) { return x.substring(0, 3); })).concat(['Sem data', 'Total']);
   const fmt = [null, null].concat(MESES.map(function () { return MOEDA; }))
                           .concat([MOEDA, MOEDA]);
 
-  const bloco = function (lin, titulo, linhas) {
-    secaoPainel_(sh, lin, titulo, W); lin += 2;
-    const l0 = lin;
+  const bloco = function (l, titulo, linhas) {
+    secaoPainel_(sh, l, titulo, W); l += 2;
+    const li = l;
     const tot = ['Total', ''];
     for (let c = 0; c < 14; c++) {
       tot.push(linhas.reduce(function (s, L) { return s + (Number(L[c + 2]) || 0); }, 0));
     }
-    lin = tabelaPainel_(sh, lin, 2, cab, linhas.concat([tot]), fmt);
-    sh.getRange(l0 + linhas.length + 1, 2, 1, 16)
+    l = tabelaPainel_(sh, l, 2, cab, linhas.concat([tot]), fmt);
+    sh.getRange(li + linhas.length + 1, 2, 1, 16)
       .setBackground(NAVY).setFontColor(GOLDS).setFontWeight('bold');
-    return lin;
+    return l;
   };
 
-  let lin = 5;
-  lin = bloco(lin, 'PRODUZIDO   ·   saiu da fábrica, pela data de fabricação',
-              matriz(5, 8, 4));
-  lin = bloco(lin, 'ENTREGUE   ·   montado na casa do cliente, pela data de montagem',
-              matriz(9, 12, 4));
-  lin = bloco(lin, 'PROJETADO   ·   desenhado, pela data de entrada do projeto',
-              matriz(13, 17, 4));
+  lin = bloco(lin, 'VOLUME DE OBRA · PRODUZIDO   ·   saiu da fábrica, pela data de fabricação',
+              matriz(5, 8));
+  lin = bloco(lin, 'VOLUME DE OBRA · ENTREGUE   ·   montado na casa do cliente, pela data de montagem',
+              matriz(9, 12));
 
   sh.getRange(lin, 2, 1, W - 2).merge().setValue(
-    'Produzido e entregue não batem no mesmo mês, e não é erro: um ambiente sai da fábrica '
-    + 'num mês e é montado noutro. A diferença entre os dois é o que está pronto e ainda não '
-    + 'foi entregue. Ambiente sem nome preenchido não aparece aqui e mesmo assim gera comissão.')
+    'Comissão ÷ receita fica historicamente entre 15% e 22%. Produzido e entregue não batem no '
+    + 'mesmo mês, e não é erro: um ambiente sai da fábrica num mês e é montado noutro — a '
+    + 'diferença entre os dois é o que está pronto e esperando montagem, e o valor está na aba '
+    + 'O mês. A coluna "Sem data" é trabalho sem data de etapa lançada, e a linha "Sem dono" é '
+    + 'comissão calculada com o nome em branco: as duas somam no total e não aparecem em mês '
+    + 'nenhum. Volume de obra é em reais de obra que passou pelas mãos da pessoa — é produção, '
+    + 'não é o que ela recebe.')
     .setFontColor(MUTED).setFontSize(9).setFontStyle('italic').setWrap(true);
-  sh.setRowHeight(lin, 32);
-}
-
-
-// ── aba 5 · Como ler ────────────────────────────────────────────────────
-function abaComoLer_(ss, d, ano) {
-  const W = 7;
-  const sh = abaLimpa_(ss, 'Como ler', W);
-  cabecalhoPainel_(sh, 'COMO LER ESTE PAINEL', 'Atualizado em '
-    + Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "dd/MM/yyyy 'às' HH:mm"), W);
-  sh.setColumnWidth(2, 200);
-  for (let c = 3; c <= W; c++) sh.setColumnWidth(c, 110);
-
-  const itens = [
-    ['Vendido', 'Contrato assinado no período. Vira obra e vira custo, mas não vira caixa na hora.'],
-    ['Recebido', 'Dinheiro que entrou no período, muitas vezes de contrato de meses atrás. É caixa.'],
-    ['A receber', 'O que já foi vendido e ainda não entrou. É o saldo dos contratos em aberto.'],
-    ['Margem de contribuição', 'Venda menos todo o custo do projeto: material, terceirizados, logística, '
-      + 'comissões e custos de venda. Não desconta o custo fixo da empresa.'],
-    ['Custo fixo', 'O que a operação custa por mês independentemente de vender: folha e estrutura. '
-      + 'A soma das margens precisa cobrir isso antes de sobrar lucro.'],
-    ['Volume de obra', 'Quanto de obra, em reais, passou pelas mãos de cada pessoa. '
-      + 'É medida de produção e de dependência, não de remuneração.'],
-    ['Produzido', 'O que saiu da fábrica, somado pela data de fabricação do ambiente.'],
-    ['Entregue', 'O que foi montado na casa do cliente, pela data de montagem. Não bate com '
-      + 'produzido no mesmo mês, e a diferença é o que está pronto e ainda não foi entregue.'],
-    ['Sem data', 'Trabalho lançado sem data de etapa. Soma no total do ano e não aparece em '
-      + 'mês nenhum — é o que falta datar.'],
-    ['Sem dono', 'Comissão calculada com o nome em branco. Entra no custo do projeto e '
-      + 'ninguém recebe.'],
-    ['Categoria profissional', 'Vendedores · Projetistas e coordenação · Operação. '
-      + 'As comissões aparecem por categoria, nunca com o nome de quem recebe.'],
-  ];
-
-  let lin = 5;
-  secaoPainel_(sh, lin, 'O QUE CADA PALAVRA SIGNIFICA', W); lin += 2;
-  lin = tabelaPainel_(sh, lin, 2, ['Termo', 'O que é'], itens, [null, null]);
-  sh.getRange(lin - itens.length - 1, 3, itens.length + 1, 1).setWrap(true);
-  sh.setColumnWidth(3, 560);
-
-  secaoPainel_(sh, lin, 'O QUE ESTE PAINEL AINDA NÃO MOSTRA', W); lin += 2;
-  const limites = [
-    ['Ficha pela metade', 'Projeto com ambiente não lançado aparece com margem alta e comissão baixa. '
-      + 'A tabela de margem é o lugar de encontrá-los.'],
-    ['Trabalho sem dono', 'Ambiente com percentual preenchido e nome em branco gera comissão que ninguém '
-      + 'recebe. Não aparece na aba Equipe e continua no custo.'],
-    ['É uma foto', 'Os números são do momento em que o painel foi atualizado, e a data está no '
-      + 'alto desta aba. A atualização roda sozinha de madrugada; fora disso, é manual.'],
-  ];
-  lin = tabelaPainel_(sh, lin, 2, ['Limite', 'Por quê'], limites, [null, null]);
-  sh.getRange(lin - limites.length - 1, 3, limites.length + 1, 1).setWrap(true);
+  sh.setRowHeight(lin, 46);
 }
 
 
@@ -1224,7 +1439,7 @@ function validar() {
   diz('════ GESTÃO 2026 ════');
   const pn = SpreadsheetApp.openById(ID_PAINEL);
   const g26 = SpreadsheetApp.openById(ID_G26);
-  [['Pagamentos ' + ANO_G26, 200], ['Clientes', 200], ['Painel Geral', 120],
+  [['Pagamentos ' + ANO_G26, 200], ['Clientes', 200], ['Projetos', 140],
    ['Análise mensal', 200]].forEach(function (x) {
     const sh = g26.getSheetByName(x[0]);
     ok('aba ' + x[0] + ' existe', !!sh,
@@ -1235,22 +1450,38 @@ function validar() {
     ok('aba ' + x[0] + ' sem célula de erro', e === 0, e + ' célula(s)');
   });
 
-  // Sobras da arquitetura anterior. Não apago: quem apaga é quem confere.
-  const sobras = ['Painel de Competência', 'Produção e Entrega']
-    .filter(function (n) { return !!pgto.getSheetByName(n); });
-  ok('nada sobrando na Análise anual', sobras.length === 0,
-     sobras.length ? 'pode apagar: ' + sobras.join(' | ') : '');
+  // Sobras da arquitetura anterior. Esta função não apaga nada: quem apaga é
+  // o limparSobras, rodado por você de propósito.
+  const sobras = [];
+  [[pgto, 'Painel de Competência'], [pgto, 'Produção e Entrega'],
+   [pn, 'Visão geral'], [pn, 'Margem por projeto'], [pn, 'Comissões'],
+   [pn, 'Equipe'], [pn, 'Como ler'], [g26, 'Painel Geral']].forEach(function (x) {
+    if (x[0].getSheetByName(x[1])) sobras.push(x[1]);
+  });
+  ok('nenhuma aba aposentada sobrando', sobras.length === 0,
+     sobras.length ? 'rode limparSobras: ' + sobras.join(' | ') : '');
 
   diz('');
   diz('════ PAINEL DE GESTÃO ════');
-  ['Visão geral', 'Margem por projeto', 'Comissões', 'Equipe', 'Como ler']
-    .forEach(function (aba) {
-      const sh = pn.getSheetByName(aba);
-      if (!sh) { ok('aba ' + aba, false, 'não existe'); return; }
-      const e = conta(sh.getRange(1, 1, Math.min(sh.getLastRow(), 60),
-                                  Math.max(1, sh.getLastColumn())).getDisplayValues());
-      ok('aba ' + aba + ' sem erro', e === 0, e + ' célula(s)');
-    });
+  ['O mês', 'Resultado', 'Operação'].forEach(function (aba) {
+    const sh = pn.getSheetByName(aba);
+    if (!sh) { ok('aba ' + aba, false, 'não existe'); return; }
+    const e = conta(sh.getRange(1, 1, Math.min(sh.getLastRow(), 140),
+                                Math.max(1, sh.getLastColumn())).getDisplayValues());
+    ok('aba ' + aba + ' sem erro', e === 0, e + ' célula(s)');
+  });
+  ok('o painel do Walton tem três abas, e só três',
+     pn.getSheets().length === 3, pn.getSheets().length + ' aba(s)');
+
+  // O que o Jonathan pediu que fosse transposto da Análise anual para cá.
+  const om = pn.getSheetByName('O mês');
+  if (om) {
+    const secoes = om.getRange(1, 2, om.getLastRow(), 1).getDisplayValues()
+      .map(function (r) { return String(r[0] || ''); }).join('\n');
+    ok('O mês trouxe o custo fixo vigente', secoes.indexOf('CUSTO FIXO VIGENTE') >= 0);
+    ok('O mês trouxe o aporte', secoes.indexOf('APORTE') >= 0);
+    ok('O mês mostra o ponto de equilíbrio', secoes.indexOf('PONTO DE EQUILÍBRIO') >= 0);
+  }
 
   diz('');
   diz('════ ' + n + ' verificações · ' + mau + ' falha(s) ════');
@@ -1380,8 +1611,25 @@ function atualizarTudo() {
     diz('Bases do painel: FALHOU — ' + e.message);
   }
 
+  // Uma leitura para as duas telas que falam de mês. Vem depois das bases
+  // (de onde sai o custo fixo) e depois das individuais (de onde sai a
+  // comissão com status Pago). Se falhar aqui, cada painel ainda sabe ler
+  // sozinho — só fica mais caro.
+  let d = null;
   try {
-    diz('Painel de Gestão: ' + montarPainelGestao());
+    d = lerMedidas_(new Date().getFullYear());
+    diz('Medidas do ano: ' + d.projetos.length + ' projeto(s), ' + d.entregues.length
+      + ' entregue(s), ' + d.ambientes.length + ' ambiente(s)');
+    if (d.qtdSemDono) {
+      diz('  atenção: R$ ' + d.semDono.toFixed(2) + ' de comissão sem dono em '
+        + d.qtdSemDono + ' lançamento(s). Rode validar para ver em qual projeto.');
+    }
+  } catch (e) {
+    diz('Medidas do ano: FALHOU — ' + e.message);
+  }
+
+  try {
+    diz('Painel de Gestão: ' + montarPainelGestao(d));
   } catch (e) {
     diz('Painel de Gestão: FALHOU — ' + e.message);
   }
@@ -1389,8 +1637,9 @@ function atualizarTudo() {
   try {
     diz('Gestão 2026 · ' + migrarParaGestao2026());
     diz('Gestão 2026 · Clientes: ' + abaClientes_());
-    diz('Gestão 2026 · Painel Geral: ' + abaPainelGeralG26_());
-    diz('Gestão 2026 · Análise mensal: ' + abaAnaliseMensal_());
+    diz('Gestão 2026 · Projetos: ' + abaProjetosG26_(d));
+    diz('Gestão 2026 · Análise mensal: ' + abaAnaliseMensal_(d));
+    diz('Gestão 2026 · abas em ordem: ' + ordenarGestao2026_());
   } catch (e) {
     diz('Gestão 2026: FALHOU — ' + e.message);
   }
@@ -2438,20 +2687,22 @@ function adicionarCompetencia() {
 
 
 // ════════════════════════════════════════════════════════════════════════
-//  ANÁLISE MENSAL  ·  competência e produção na mesma tela
+//  ANÁLISE MENSAL  ·  o fluxo do ano, mês a mês
 // ════════════════════════════════════════════════════════════════════════
 //
-// Substitui as abas "Painel de Competência" e "Produção e Entrega". Eram dois
-// recortes do mesmo mês em dois lugares, e separados obrigavam a abrir duas
-// telas para responder uma pergunta só.
+// Oito medidas, na ordem da vida de um projeto:
+//   Vendido     contrato assinado, pelo mês da venda
+//   Recebido    dinheiro que entrou, pelo mês da entrada
+//   Faturado    nota emitida, pelo mês da entrega
+//   Produzido   ambiente que saiu da fábrica, pela data de fabricação
+//   Montado     ambiente entregue, pela data de montagem
+//   Custo fixo  o que a operação custa, exista venda ou não
+//   Pago        comissão e RT que de fato saíram do caixa
+//   Margem      a margem dos projetos ENTREGUES no mês, a única que não muda
 //
-// Seis medidas, no resumo e na tabela, nesta ordem — é a vida de um projeto:
-//   Vendido    contrato assinado, pelo mês da venda
-//   Faturado   nota emitida, pelo mês da entrega
-//   Produzido  ambiente que saiu da fábrica, pela data de fabricação
-//   Montado    ambiente entregue, pela data de montagem
-//   Custo fixo o que a operação custa, exista venda ou não
-//   Pago       comissão e RT que de fato saíram do caixa
+// As oito são somadas em lerMedidas_, uma vez por atualização, e lidas tanto
+// por esta aba quanto pelo painel do Walton. Antes cada tela somava por conta
+// própria, e o mesmo mês podia dar número diferente em cada arquivo.
 
 /** Comissão com status Pago nas catorze individuais, por mês da data combinada. */
 function comissoesPagasPorMes_(ano) {
@@ -2480,89 +2731,22 @@ function comissoesPagasPorMes_(ano) {
 }
 
 
-function abaAnaliseMensal_() {
+/**
+ * Aba "Análise mensal": o FLUXO do ano, mês a mês. Só fluxo.
+ *
+ * O detalhe projeto por projeto saiu daqui e vive na aba Projetos. Era a maior
+ * duplicação da casa: a Análise mensal listava cada projeto por competência e
+ * o Painel Geral listava os mesmos projetos outra vez, com os mesmos números.
+ * Uma pergunta, um lugar — aqui se pergunta "como foi o mês", na aba Projetos
+ * se pergunta "como está este projeto".
+ *
+ * Ficou de lista só o que não existe em lugar nenhum e dá trabalho para
+ * alguém: o ambiente pronto e não entregue. É obra feita, paga, parada.
+ */
+function abaAnaliseMensal_(d) {
   const ano = new Date().getFullYear();
-  const cp = SpreadsheetApp.openById(ID_CUSTO);
-  const pgto = SpreadsheetApp.openById(ID_PAG);
+  d = d || lerMedidas_(ano);
 
-  const base = cp.getSheetByName(FICHA.base);
-  const nb = base.getLastRow() - 1;
-  const bv = nb > 0 ? base.getRange(2, 1, nb, base.getLastColumn()).getValues() : [];
-
-  // ── um registro por projeto, e a lista de ambientes ──
-  const vistos = {}, projetos = [], amb = [];
-  bv.forEach(function (L) {
-    const nome = String(L[0] || '').trim();
-    if (String(L[2] || '').trim()) {
-      amb.push({ projeto: nome, cliente: String(L[1] || '').trim(),
-                 ambiente: String(L[2]).trim(), valor: Number(L[4]) || 0,
-                 fab: L[8] instanceof Date ? L[8] : null,
-                 mont: L[12] instanceof Date ? L[12] : null });
-    }
-    if (!nome || vistos[nome]) return;
-    vistos[nome] = true;
-    projetos.push({
-      projeto: nome, cliente: String(L[1] || '').trim(),
-      venda: Number(L[21]) || 0, custo: Number(L[27]) || 0, margem: Number(L[28]) || 0,
-      comp: String(L[33] || '').trim(), situacao: String(L[34] || '').trim() || '—',
-      faturado: Number(L[35]) || 0, rt: Number(L[36]) || 0,
-      rtPago: String(L[37] || '').trim() === 'Pago',
-    });
-  });
-
-  // ── as seis medidas, mês a mês ──
-  const zero = function () { return [0,0,0,0,0,0,0,0,0,0,0,0,0,0]; };
-  const vendido = zero(), faturado = zero(), produzido = zero(), montado = zero(),
-        fixo = zero(), pago = zero();
-
-  const bp = pgto.getSheetByName('Base · Projetos');
-  if (bp && bp.getLastRow() > 1) {
-    bp.getRange(2, 1, bp.getLastRow() - 1, 10).getValues().forEach(function (L) {
-      if (String(L[0]) !== String(ano)) return;
-      const i = MESES.indexOf(String(L[1] || '').trim());
-      const v = Number(L[4]) || 0;
-      if (i >= 0) vendido[i] += v; else vendido[12] += v;
-      vendido[13] += v;
-    });
-  }
-
-  const noMes = function (alvo, comp, valor) {
-    if (!valor) return;
-    const i = MES3.indexOf(String(comp).split('/')[0]);
-    const a = Number(String(comp).split('/')[1]);
-    if (i >= 0 && a === ano) alvo[i] += valor; else alvo[12] += valor;
-    alvo[13] += valor;
-  };
-  projetos.forEach(function (p) {
-    noMes(faturado, p.comp, p.faturado);
-    if (p.rtPago) noMes(pago, p.comp, p.rt);
-  });
-  amb.forEach(function (a) {
-    if (a.fab) { const i = a.fab.getFullYear() === ano ? a.fab.getMonth() : 12;
-                 produzido[i] += a.valor; produzido[13] += a.valor; }
-    if (a.mont) { const i = a.mont.getFullYear() === ano ? a.mont.getMonth() : 12;
-                  montado[i] += a.valor; montado[13] += a.valor; }
-  });
-
-  let custoMes = 0;
-  const cf = pgto.getSheetByName('Base · Custo Fixo');
-  if (cf && cf.getLastRow() > 1) {
-    cf.getRange(2, 1, cf.getLastRow() - 1, 3).getValues().forEach(function (L) {
-      if (String(L[0] || '').indexOf('Custo operacional') === 0) custoMes = Number(L[2]) || 0;
-    });
-  }
-  // Só o mês corrente. O valor é o custo fixo VIGENTE; repetido para trás, ele
-  // inventava um histórico que a planilha não tem — a folha de janeiro não era
-  // esta, e somar dez meses de um número de hoje dava R$ 1,17 mi de custo que
-  // nunca existiu assim.
-  const mHoje = new Date().getMonth();
-  fixo[mHoje] = custoMes;
-  fixo[13] = custoMes;
-
-  const comPagas = comissoesPagasPorMes_(ano);
-  for (let i = 0; i < 14; i++) pago[i] += comPagas[i];
-
-  // ── desenho ──
   const W = 17;
   const sh = abaLimpa_(SpreadsheetApp.openById(ID_G26), 'Análise mensal', W);
   cabecalhoPainel_(sh, 'ANÁLISE MENSAL   ·   ' + ano,
@@ -2572,138 +2756,72 @@ function abaAnaliseMensal_() {
   for (let c = 3; c <= W; c++) sh.setColumnWidth(c, 92);
 
   let lin = 5;
-  secaoPainel_(sh, lin, 'RESUMO DE ' + MESES[mHoje].toUpperCase() + '   ·   '
+  secaoPainel_(sh, lin, 'RESUMO DE ' + MESES[d.mes].toUpperCase() + '   ·   '
     + 'o mês corrente em seis números', W);
   lin += 2;
-  const medidas = [
-    ['Vendido', vendido, NAVY], ['Faturado', faturado, NAVY2],
-    ['Produzido', produzido, '#2f5d8c'], ['Montado', montado, '#2f7d4f'],
-    ['Custo fixo total', fixo, '#b0413f'], ['Comissões e RTs pagas', pago, '#c47d0e'],
-  ];
-  medidas.forEach(function (m, i) {
-    const col = 2 + (i % 3) * 2;
-    const li = lin + Math.floor(i / 3) * 3;
-    cartaoPainel_(sh, li, col, m[0], m[1][mHoje], m[2]);
+  d.medidas.slice(0, 6).forEach(function (x, i) {
+    cartaoPainel_(sh, lin + Math.floor(i / 3) * 3, 2 + (i % 3) * 2, x.nome, x.m[d.mes], x.cor);
   });
   lin += 6;
 
+  const resultado = d.margemEntregue[d.mes] - d.custoMes;
+  secaoPainel_(sh, lin, 'O MÊS SE PAGOU?', W); lin += 2;
+  cartaoPainel_(sh, lin, 2, 'Margem entregue no mês', d.margemEntregue[d.mes], NAVY);
+  cartaoPainel_(sh, lin, 4, 'Custo fixo do mês', d.custoMes, '#b0413f');
+  cartaoPainel_(sh, lin, 6, 'Resultado do mês', resultado, resultado >= 0 ? OK : '#b0413f');
+  cartaoPainel_(sh, lin, 8, 'Comissões e RTs pagas', d.medidas[6].m[d.mes], ABERTO);
+  lin += 4;
+
   secaoPainel_(sh, lin, 'MÊS A MÊS', W); lin += 2;
   const l0 = lin;
-  const linhas = medidas.map(function (m) { return [m[0]].concat(m[1]); });
-  lin = tabelaPainel_(sh, lin, 2, cabMeses_('Medida'), linhas, formatosMes_());
-  sh.getRange(l0 + 5, 2, 1, 15).setBackground('#fcf2f1').setFontColor('#b0413f');
-  sh.getRange(l0 + 6, 2, 1, 15).setBackground(ABERTOBG).setFontColor('#c47d0e');
-  sh.getRange(l0 + 1, 2, 6, 1).setFontWeight('bold').setFontColor(NAVY);
+  lin = tabelaPainel_(sh, lin, 2, cabMeses_('Medida'),
+    d.medidas.map(function (x) { return [x.nome].concat(x.m); }), formatosMes_());
+  sh.getRange(l0 + 1, 2, d.medidas.length, 1).setFontWeight('bold').setFontColor(NAVY);
+  sh.getRange(l0 + 6, 2, 1, 15).setBackground('#fcf2f1').setFontColor('#b0413f');
+  sh.getRange(l0 + 7, 2, 1, 15).setBackground(ABERTOBG).setFontColor(ABERTO);
+  sh.getRange(l0 + 8, 2, 1, 15).setBackground('#eff5f1').setFontColor(OK);
 
-  // ── competência: o projeto fechado, no mês em que foi entregue ──
-  const meses = {}, semComp = [];
-  projetos.forEach(function (p) {
-    if (!p.venda && !p.custo) return;
-    if (!p.comp) { semComp.push(p); return; }
-    if (!meses[p.comp]) meses[p.comp] = [];
-    meses[p.comp].push(p);
-  });
-  const ordem = Object.keys(meses).sort(function (a, b) { return ordemComp_(a) - ordemComp_(b); });
-  const soma = function (l, c) { return l.reduce(function (s, p) { return s + p[c]; }, 0); };
-
-  const CAB = ['Cliente', 'Projeto', 'Valor do projeto', 'Total de custos',
-               'MC final', 'MC %', 'Condição de entrega'];
-  const FMT = [null, null, MOEDA, MOEDA, MOEDA, '0.0%', null];
-  const faixasMC = [], faixasCond = [];
-
-  const blocoProjetos = function (titulo, lista, ambar) {
-    secaoPainel_(sh, lin, titulo, W); lin += 2;
-    const ls = lista.sort(function (a, b) { return b.venda - a.venda; })
-      .map(function (p) {
-        return [p.cliente || p.projeto, p.projeto, p.venda, p.custo, p.margem,
-                p.venda ? p.margem / p.venda : 0, p.situacao];
-      });
-    const v = soma(lista, 'venda');
-    ls.push(['Total', '', v, soma(lista, 'custo'), soma(lista, 'margem'),
-             v ? soma(lista, 'margem') / v : 0, '']);
+  // ── o que está pronto e parado ──
+  const CAB = ['Cliente', 'Projeto', 'Ambiente', 'Valor', 'Fabricado em'];
+  const FMT = [null, null, null, MOEDA, DATA];
+  secaoPainel_(sh, lin, 'PRONTO E NÃO ENTREGUE   ·   obra feita esperando montagem', W);
+  lin += 2;
+  if (!d.prontos.length) {
+    sh.getRange(lin, 2).setValue('Nada pronto esperando montagem.')
+      .setFontColor(MUTED).setFontStyle('italic');
+    lin += 2;
+  } else {
+    const ls = d.prontos.slice().sort(function (a, b) { return b.valor - a.valor; })
+      .map(function (a) { return [a.cliente, a.projeto, a.ambiente, a.valor, a.fab]; });
+    ls.push(['Total', '', '', d.presoPronto, '']);
     const li = lin;
     lin = tabelaPainel_(sh, lin, 2, CAB, ls, FMT);
-    sh.getRange(li + ls.length, 2, 1, 7)
-      .setBackground(ambar ? ABERTOBG : NAVY)
-      .setFontColor(ambar ? '#c47d0e' : GOLDS).setFontWeight('bold');
-    faixasMC.push(sh.getRange(li + 1, 7, ls.length - 1, 1));
-    faixasCond.push(sh.getRange(li + 1, 8, ls.length - 1, 1));
-  };
-
-  secaoPainel_(sh, lin, 'COMPETÊNCIA   ·   o projeto inteiro pesa no mês da entrega', W);
-  lin += 2;
-  ordem.forEach(function (c) { blocoProjetos('Entregues em ' + c, meses[c], false); });
-  if (semComp.length) {
-    blocoProjetos('Ainda sem entrega real — não entram em mês nenhum', semComp, true);
+    sh.getRange(li + ls.length, 2, 1, CAB.length)
+      .setBackground(ABERTOBG).setFontColor(ABERTO).setFontWeight('bold');
   }
 
-  // ── produção: o ambiente, pela data de cada etapa ──
-  const prontos = amb.filter(function (a) { return a.fab && !a.mont; });
-  const emProd = amb.filter(function (a) { return !a.fab; });
-  const somaA = function (l) { return l.reduce(function (s, a) { return s + a.valor; }, 0); };
-  const CAB2 = ['Cliente', 'Projeto', 'Ambiente', 'Valor', 'Fabricado em', 'Montado em'];
-  const FMT2 = [null, null, null, MOEDA, 'dd/mm/yyyy', 'dd/mm/yyyy'];
-
-  const blocoAmb = function (titulo, lista, ambar) {
-    secaoPainel_(sh, lin, titulo, W); lin += 2;
-    if (!lista.length) {
-      sh.getRange(lin, 2).setValue('Nada aqui.').setFontColor(MUTED).setFontStyle('italic');
-      lin += 2;
-      return;
-    }
-    const ls = lista.sort(function (a, b) { return b.valor - a.valor; })
-      .map(function (a) { return [a.cliente, a.projeto, a.ambiente, a.valor,
-                                  a.fab || '', a.mont || '']; });
-    ls.push(['Total', '', '', somaA(lista), '', '']);
-    const li = lin;
-    lin = tabelaPainel_(sh, lin, 2, CAB2, ls, FMT2);
-    sh.getRange(li + ls.length, 2, 1, 6)
-      .setBackground(ambar ? ABERTOBG : NAVY)
-      .setFontColor(ambar ? '#c47d0e' : GOLDS).setFontWeight('bold');
-  };
-
-  secaoPainel_(sh, lin, 'PRODUÇÃO   ·   o ambiente, pela data de cada etapa', W); lin += 2;
-  blocoAmb('Pronto e não entregue — R$ ' + somaA(prontos).toFixed(2)
-           + ' de obra feita esperando montagem', prontos, true);
-  blocoAmb('Ainda em produção — sem data de fabricação lançada', emProd, false);
-
-  // ── cores de estado: sempre com o rótulo escrito, nunca só a cor ──
-  if (faixasMC.length) {
-    sh.setConditionalFormatRules([
-      SpreadsheetApp.newConditionalFormatRule().whenNumberLessThan(0.25)
-        .setBackground('#fcf2f1').setFontColor('#b0413f').setBold(true)
-        .setRanges(faixasMC).build(),
-      SpreadsheetApp.newConditionalFormatRule().whenNumberBetween(0.25, 0.35)
-        .setBackground('#fdf8ee').setFontColor('#c47d0e').setBold(true)
-        .setRanges(faixasMC).build(),
-      SpreadsheetApp.newConditionalFormatRule().whenNumberGreaterThan(0.35)
-        .setBackground('#eff5f1').setFontColor('#2f7d4f').setBold(true)
-        .setRanges(faixasMC).build(),
-      SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo('Atrasado')
-        .setBackground('#fcf2f1').setFontColor('#b0413f').setBold(true)
-        .setRanges(faixasCond).build(),
-      SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo('Em produção')
-        .setBackground('#f0f4f9').setFontColor('#2f5d8c').setBold(true)
-        .setRanges(faixasCond).build(),
-      SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo('No prazo')
-        .setBackground('#eff5f1').setFontColor('#2f7d4f').setBold(true)
-        .setRanges(faixasCond).build(),
-    ]);
-  }
+  secaoPainel_(sh, lin, 'AINDA EM PRODUÇÃO', W); lin += 2;
+  cartaoPainel_(sh, lin, 2, 'Valor em produção', d.presoProd, '#2f5d8c');
+  cartaoPainel_(sh, lin, 4, 'Ambientes', d.emProd.length, NAVY2, '0');
+  cartaoPainel_(sh, lin, 6, 'Projetos sem entrega real', d.andamento.length, ABERTO, '0');
+  lin += 4;
 
   sh.getRange(lin, 2, 1, W - 2).merge().setValue(
-    'Vendido é contrato assinado, pelo mês da venda. Faturado é nota emitida, alocada no mês '
-    + 'da entrega. Produzido e montado medem ambiente, não projeto, pela data de cada etapa — '
-    + 'por isso nunca batem com os dois primeiros. Custo fixo aparece só no mês corrente: é o '
-    + 'valor vigente hoje, e a planilha não guarda o histórico da folha dos meses anteriores. '
-    + 'Pago é o que saiu do caixa: comissão com status Pago nas planilhas '
+    'Vendido é contrato assinado, pelo mês da venda. Recebido é dinheiro que entrou, pelo mês '
+    + 'da entrada. Faturado é nota emitida, alocada no mês da entrega. Produzido e montado '
+    + 'medem AMBIENTE, não projeto, pela data de cada etapa — por isso nunca batem com os '
+    + 'primeiros. Margem entregue conta só projeto com entrega real lançada: é a única margem '
+    + 'que não muda depois, e o detalhe projeto por projeto está na aba Projetos. Custo fixo '
+    + 'aparece só no mês corrente porque é o valor vigente hoje, e a planilha não guarda o '
+    + 'histórico da folha. Pago é o que saiu do caixa: comissão com status Pago nas planilhas '
     + 'individuais, mais RT com status Pago na ficha.')
     .setFontColor(MUTED).setFontSize(9).setFontStyle('italic').setWrap(true);
-  sh.setRowHeight(lin, 44);
+  sh.setRowHeight(lin, 52);
 
   SpreadsheetApp.flush();
-  const r = projetos.length + ' projeto(s) · ' + amb.length + ' ambiente(s) · '
-          + ordem.length + ' mês(es) com entrega';
+  const r = d.projetos.length + ' projeto(s) · ' + d.ambientes.length + ' ambiente(s) · '
+          + d.entregues.length + ' entregue(s) · R$ ' + d.presoPronto.toFixed(2)
+          + ' pronto e não entregue';
   console.log('Análise mensal: ' + r);
   return r;
 }
@@ -3032,87 +3150,221 @@ function abaClientes_() {
 
 
 /**
- * Painel Geral dos projetos, agora na Gestão 2026 e feito de VALORES.
+ * Aba "Projetos": o estado de cada projeto, um por linha.
  *
- * Sem "A comprar" e sem "Diagnóstico", como pedido. Na Custo por Projeto ele
- * era fórmula com INDIRECT, que é volátil e recalcula a planilha inteira a
- * cada toque; aqui é foto, escrita pelo script.
+ * Substitui o "Painel Geral" que morava aqui. Mudou o nome porque mudou o que
+ * ela faz: era uma lista única com MC para todo mundo, e agora são duas
+ * tabelas separadas pelo único corte que importa —
+ *
+ *   ENTREGUES     têm competência, têm custo fechado, têm MC.
+ *   EM ANDAMENTO  não têm MC nenhuma. Têm custo incorrido e quanto da obra
+ *                 já foi lançada na ficha.
+ *
+ * MC de projeto em produção era o número mais perigoso da casa: começa alto
+ * porque a ficha ainda não recebeu custo, cai conforme as compras entram, e no
+ * meio do caminho puxava a média da empresa para cima. Setenta e nove por
+ * cento de MC média não era lucro, era ficha incompleta.
+ *
+ * É foto, escrita como VALOR. Na Custo por Projeto esse painel era fórmula com
+ * INDIRECT, que é volátil e recalcula a planilha inteira a cada toque.
  */
-function abaPainelGeralG26_() {
-  const cp = SpreadsheetApp.openById(ID_CUSTO);
-  const base = cp.getSheetByName(FICHA.base);
-  const nb = base.getLastRow() - 1;
-  const bv = nb > 0 ? base.getRange(2, 1, nb, base.getLastColumn()).getValues() : [];
-
-  const vistos = {}, linhas = [];
-  bv.forEach(function (L) {
-    const nome = String(L[0] || '').trim();
-    if (!nome || vistos[nome]) return;
-    vistos[nome] = true;
-    const venda = Number(L[21]) || 0, custo = Number(L[27]) || 0, margem = Number(L[28]) || 0;
-    linhas.push([nome, String(L[1] || '').trim(),
-                 L[17] instanceof Date ? L[17] : '',
-                 String(L[34] || '').trim() || '—',
-                 String(L[33] || '').trim() || '—',
-                 venda, custo, margem, venda ? margem / venda : 0]);
-  });
-  linhas.sort(function (a, b) { return b[5] - a[5]; });
-
-  const CAB = ['Projeto', 'Cliente', 'Data de entrada', 'Entrega', 'Competência',
-               'Venda', 'Custo total', 'MC (R$)', 'MC %'];
-  const FMT = [null, null, 'dd/mm/yyyy', null, null, MOEDA, MOEDA, MOEDA, '0.0%'];
-
-  const W = CAB.length + 1;
+function abaProjetosG26_(d) {
+  d = d || lerMedidas_(new Date().getFullYear());
   const dst = SpreadsheetApp.openById(ID_G26);
-  const sh = abaLimpa_(dst, 'Painel Geral', W);
-  cabecalhoPainel_(sh, 'PAINEL GERAL DOS PROJETOS',
-    'Um projeto por linha, do maior para o menor   ·   vem da Custo por Projeto   ·   '
-    + 'atualizado em ' + Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'dd/MM/yyyy HH:mm'), W);
-  sh.setColumnWidth(2, 185); sh.setColumnWidth(3, 185);
-  for (let c = 4; c <= W; c++) sh.setColumnWidth(c, 120);
+  const W = 14;
+  const sh = abaLimpa_(dst, 'Projetos', W);
+  cabecalhoPainel_(sh, 'PROJETOS',
+    'Entregue tem margem fechada   ·   em andamento não tem margem nenhuma, de propósito   ·   '
+    + 'vem da Custo por Projeto, atualizado em '
+    + Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'dd/MM/yyyy HH:mm'), W);
+  sh.setColumnWidth(2, 180); sh.setColumnWidth(3, 180);
+  for (let c = 4; c <= W; c++) sh.setColumnWidth(c, 112);
 
+  const mc = d.vendaEntregue ? d.margemAno / d.vendaEntregue : 0;
   let lin = 5;
-  const venda = linhas.reduce(function (s, L) { return s + L[5]; }, 0);
-  const custo = linhas.reduce(function (s, L) { return s + L[6]; }, 0);
-  const margem = linhas.reduce(function (s, L) { return s + L[7]; }, 0);
   secaoPainel_(sh, lin, 'O CONJUNTO', W); lin += 2;
-  cartaoPainel_(sh, lin, 2, 'Projetos', linhas.length, NAVY, '0');
-  cartaoPainel_(sh, lin, 4, 'Vendido', venda, NAVY2);
-  cartaoPainel_(sh, lin, 6, 'Custo total', custo, '#b0413f');
-  cartaoPainel_(sh, lin, 8, 'MC média', venda ? margem / venda : 0, '#2f7d4f', '0.0%');
+  cartaoPainel_(sh, lin, 2, 'Projetos', d.projetos.length, NAVY, '0');
+  cartaoPainel_(sh, lin, 4, 'Entregues', d.entregues.length, OK, '0');
+  cartaoPainel_(sh, lin, 6, 'Vendido total', d.vendaEntregue + d.vendaAndamento, NAVY2);
+  cartaoPainel_(sh, lin, 8, 'Margem entregue', d.margemAno, OK);
+  cartaoPainel_(sh, lin, 10, 'MC % dos entregues', mc, '#2f5d8c', PCT);
   lin += 4;
 
-  secaoPainel_(sh, lin, 'PROJETO A PROJETO', W); lin += 2;
-  const l0 = lin;
-  const tot = ['Total', '', '', '', '', venda, custo, margem, venda ? margem / venda : 0];
-  // A coluna de competência é TEXTO. Escrita como valor comum, o Google lê
-  // "Out/2026" como data e guarda 01/10/2026 — o mesmo erro que já tinha
-  // acontecido quando o campo era digitado.
-  sh.getRange(lin + 1, 6, linhas.length + 1, 1).setNumberFormat('@');
-  lin = tabelaPainel_(sh, lin, 2, CAB, linhas.concat([tot]), FMT);
-  sh.getRange(l0 + linhas.length + 1, 2, 1, CAB.length)
+  // ── entregues ──
+  const CAB1 = ['Cliente', 'Projeto', 'Competência', 'Entrega', 'Venda', 'Custo total',
+                'Margem', 'MC %', 'Faturado', 'RT do parceiro', 'RT pago', 'Ambientes'];
+  const FMT1 = [null, null, null, null, MOEDA, MOEDA, MOEDA, PCT, MOEDA, MOEDA, null, '0'];
+  const lEnt = d.entregues.slice().sort(function (a, b) {
+    return ordemComp_(b.comp) - ordemComp_(a.comp) || b.venda - a.venda;
+  }).map(function (p) {
+    return [p.cliente || p.projeto, p.projeto, p.comp, p.situacao, p.venda, p.custo, p.margem,
+            p.venda ? p.margem / p.venda : 0, p.faturado, p.rt,
+            p.rt ? (p.rtPago ? 'Pago' : 'Em aberto') : '—', p.nAmb];
+  });
+  lEnt.push(['Total', '', '', '', d.vendaEntregue, d.custoEntregue, d.margemAno, mc,
+             d.entregues.reduce(function (s, p) { return s + p.faturado; }, 0),
+             d.entregues.reduce(function (s, p) { return s + p.rt; }, 0), '', '']);
+
+  secaoPainel_(sh, lin, 'ENTREGUES   ·   do mês mais recente para o mais antigo', W); lin += 2;
+  const le = lin;
+  sh.getRange(lin + 1, 4, lEnt.length, 1).setNumberFormat('@');
+  lin = tabelaPainel_(sh, lin, 2, CAB1, lEnt, FMT1);
+  sh.getRange(le + lEnt.length, 2, 1, CAB1.length)
     .setBackground(NAVY).setFontColor(GOLDS).setFontWeight('bold');
-  if (linhas.length) {
-    const mc = sh.getRange(l0 + 1, 10, linhas.length, 1);
-    const ent = sh.getRange(l0 + 1, 5, linhas.length, 1);
-    sh.setConditionalFormatRules([
-      SpreadsheetApp.newConditionalFormatRule().whenNumberLessThan(0.25)
-        .setBackground('#fcf2f1').setFontColor('#b0413f').setBold(true).setRanges([mc]).build(),
-      SpreadsheetApp.newConditionalFormatRule().whenNumberBetween(0.25, 0.35)
-        .setBackground('#fdf8ee').setFontColor('#c47d0e').setBold(true).setRanges([mc]).build(),
-      SpreadsheetApp.newConditionalFormatRule().whenNumberGreaterThan(0.35)
-        .setBackground('#eff5f1').setFontColor('#2f7d4f').setBold(true).setRanges([mc]).build(),
-      SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo('Atrasado')
-        .setBackground('#fcf2f1').setFontColor('#b0413f').setBold(true).setRanges([ent]).build(),
-      SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo('Em produção')
-        .setBackground('#f0f4f9').setFontColor('#2f5d8c').setBold(true).setRanges([ent]).build(),
-      SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo('No prazo')
-        .setBackground('#eff5f1').setFontColor('#2f7d4f').setBold(true).setRanges([ent]).build(),
-    ]);
+  const faixaMC = sh.getRange(le + 1, 9, Math.max(1, lEnt.length - 1), 1);
+  const faixaRT = sh.getRange(le + 1, 12, Math.max(1, lEnt.length - 1), 1);
+
+  // ── em andamento · sem coluna de margem ──
+  const CAB2 = ['Cliente', 'Projeto', 'Data de entrada', 'Entrega', 'Venda',
+                'Custo incorrido', '% da obra lançada', 'Ambientes'];
+  const FMT2 = [null, null, DATA, null, MOEDA, MOEDA, PCT, '0'];
+  const lAnd = d.andamento.slice().sort(function (a, b) { return b.venda - a.venda; })
+    .map(function (p) {
+      return [p.cliente || p.projeto, p.projeto, p.entrada, p.situacao, p.venda, p.custo,
+              p.venda ? p.lancado / p.venda : 0, p.nAmb];
+    });
+  lAnd.push(['Total', '', '', '', d.vendaAndamento, d.custoAndamento, '', '']);
+
+  secaoPainel_(sh, lin, 'EM ANDAMENTO   ·   sem margem: a obra não terminou', W); lin += 2;
+  const la = lin;
+  lin = tabelaPainel_(sh, lin, 2, CAB2, lAnd, FMT2);
+  sh.getRange(la + lAnd.length, 2, 1, CAB2.length)
+    .setBackground(ABERTOBG).setFontColor(ABERTO).setFontWeight('bold');
+  const faixaObra = sh.getRange(la + 1, 8, Math.max(1, lAnd.length - 1), 1);
+  const faixaSit = sh.getRange(la + 1, 5, Math.max(1, lAnd.length - 1), 1);
+
+  sh.setConditionalFormatRules([
+    SpreadsheetApp.newConditionalFormatRule().whenNumberLessThan(0.25)
+      .setBackground('#fcf2f1').setFontColor('#b0413f').setBold(true)
+      .setRanges([faixaMC]).build(),
+    SpreadsheetApp.newConditionalFormatRule().whenNumberBetween(0.25, 0.35)
+      .setBackground('#fdf8ee').setFontColor(ABERTO).setBold(true)
+      .setRanges([faixaMC]).build(),
+    SpreadsheetApp.newConditionalFormatRule().whenNumberGreaterThan(0.35)
+      .setBackground('#eff5f1').setFontColor(OK).setBold(true)
+      .setRanges([faixaMC]).build(),
+    // obra lançada muito abaixo da venda é ficha pela metade, não projeto barato
+    SpreadsheetApp.newConditionalFormatRule().whenNumberLessThan(0.9)
+      .setBackground('#fdf8ee').setFontColor(ABERTO).setBold(true)
+      .setRanges([faixaObra]).build(),
+    SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo('Em aberto')
+      .setBackground(ABERTOBG).setFontColor(ABERTO).setBold(true)
+      .setRanges([faixaRT]).build(),
+    SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo('Atrasado')
+      .setBackground('#fcf2f1').setFontColor('#b0413f').setBold(true)
+      .setRanges([faixaSit]).build(),
+  ]);
+
+  sh.getRange(lin, 2, 1, W - 2).merge().setValue(
+    'Projeto entra em ENTREGUES quando a ficha tem entrega real lançada — é ela que define a '
+    + 'competência, e é ela que fecha o custo. Até lá o projeto fica em ANDAMENTO e não tem MC '
+    + 'nenhuma: a margem de um projeto em produção sobe e desce até a última compra, e mostrada '
+    + 'junto com a dos entregues puxava a média da empresa para cima. "% da obra lançada" é '
+    + 'quanto do valor de venda já virou ambiente na ficha; abaixo de 90% a ficha está pela '
+    + 'metade e o custo ainda vai crescer.')
+    .setFontColor(MUTED).setFontSize(9).setFontStyle('italic').setWrap(true);
+  sh.setRowHeight(lin, 46);
+
+  // ── o Painel Geral antigo, que esta aba substitui ──
+  const velho = dst.getSheetByName('Painel Geral');
+  if (velho) {
+    if (String(velho.getRange(1, 2).getDisplayValue() || '').indexOf('VALVIC MARCENARIA') < 0) {
+      console.log('  "Painel Geral" da Gestão 2026 não tem a cara do script. Deixei como está.');
+    } else {
+      dst.deleteSheet(velho);
+      console.log('  "Painel Geral" da Gestão 2026 saiu: virou a aba Projetos.');
+    }
   }
 
   SpreadsheetApp.flush();
-  return linhas.length + ' projeto(s)';
+  return d.entregues.length + ' entregue(s) · ' + d.andamento.length + ' em andamento';
+}
+
+
+/**
+ * Põe as abas da Gestão 2026 na ordem em que se trabalha nelas: cadastra o
+ * cliente, lança o pagamento, olha o projeto, fecha o mês.
+ *
+ * As abas de painel são refeitas a cada atualização, e aba refeita nasce onde
+ * o Google quiser. Ordem é navegação: quem abre o arquivo tem de achar a
+ * próxima coisa sem procurar.
+ */
+function ordenarGestao2026_() {
+  const ss = SpreadsheetApp.openById(ID_G26);
+  const ORDEM = ['Clientes', 'Pagamentos ' + ANO_G26, 'Projetos', 'Análise mensal', 'Listas'];
+  const postas = [];
+  let i = 1;
+  ORDEM.forEach(function (nome) {
+    const sh = ss.getSheetByName(nome);
+    if (!sh) return;
+    ss.setActiveSheet(sh);
+    ss.moveActiveSheet(i++);
+    postas.push(nome);
+  });
+  return postas.join(' · ');
+}
+
+
+/**
+ * Apaga as abas de painel que a arquitetura nova aposentou.
+ *
+ * NÃO roda dentro do atualizarTudo, e é de propósito: apagar aba é
+ * irreversível, e quem decide isso é você, numa execução que você mandou.
+ *
+ * Só sai aba de PAINEL — tela de valores escrita por este script, onde
+ * ninguém digita nada. A conferência é a marca "VALVIC MARCENARIA" na célula
+ * B1, que todo painel daqui tem; sem ela, a aba fica e o log avisa.
+ *
+ * O que esta função NUNCA toca:
+ *   · a aba "2026" da Análise anual — tem os pagamentos digitados, e a cópia
+ *     na Gestão 2026 não substitui o original enquanto você não disser;
+ *   · o "Painel Geral" da Custo por Projeto — é o registro que o botão de
+ *     abrir ficha usa para achar a próxima vaga livre. Sai do caminho só
+ *     quando o botão deixar de depender dele.
+ */
+function limparSobras() {
+  const ALVOS = [
+    [ID_PAG, 'Painel de Competência', 'virou a Análise mensal, na Gestão 2026'],
+    [ID_PAG, 'Produção e Entrega', 'virou a Análise mensal, na Gestão 2026'],
+    [ID_PAINEL, 'Visão geral', 'virou a aba O mês'],
+    [ID_PAINEL, 'Margem por projeto', 'virou a aba Resultado'],
+    [ID_PAINEL, 'Comissões', 'virou a aba Operação'],
+    [ID_PAINEL, 'Equipe', 'virou a aba Operação'],
+    [ID_PAINEL, 'Como ler', 'virou o glossário no pé de O mês'],
+    [ID_G26, 'Painel Geral', 'virou a aba Projetos'],
+  ];
+  const fora = [], ficaram = [], nemExistiam = [];
+
+  ALVOS.forEach(function (a) {
+    const ss = SpreadsheetApp.openById(a[0]);
+    const sh = ss.getSheetByName(a[1]);
+    if (!sh) { nemExistiam.push(a[1]); return; }
+    if (ss.getSheets().length <= 1) {
+      ficaram.push(a[1] + ' (é a única aba do arquivo)');
+      return;
+    }
+    if (String(sh.getRange(1, 2).getDisplayValue() || '').indexOf('VALVIC MARCENARIA') < 0) {
+      ficaram.push(a[1] + ' (não tem a cara de painel deste script)');
+      return;
+    }
+    ss.deleteSheet(sh);
+    fora.push(a[1] + ' — ' + a[2]);
+  });
+
+  if (fora.length) {
+    console.log('apagadas:');
+    fora.forEach(function (t) { console.log('  · ' + t); });
+  }
+  if (ficaram.length) {
+    console.log('NÃO MEXI:');
+    ficaram.forEach(function (t) { console.log('  · ' + t); });
+  }
+  SpreadsheetApp.flush();
+  const r = fora.length + ' aba(s) apagada(s)'
+          + (ficaram.length ? ', ' + ficaram.length + ' preservada(s)' : '')
+          + (nemExistiam.length ? ', ' + nemExistiam.length + ' já não existia(m)' : '');
+  console.log('Sobras: ' + r);
+  return r;
 }
 
 

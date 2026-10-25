@@ -262,16 +262,21 @@ function ref_(nome) {
 function escreverBlocoBase_(destino, i, nomeAba) {
   const base = destino.getSheetByName(FICHA.base);
   const r0 = FICHA.baseLinha0 + i * FICHA.ambQtd;
-  const pgLinha = FICHA.painelLinha0 + i;
   const ab = ref_(nomeAba);
   const linhas = [];
 
   for (let j = 0; j < FICHA.ambQtd; j++) {
     const r = r0 + j;
     const fr = FICHA.ambLinha0 + j;
+    // Nome do projeto como TEXTO e cliente lido da própria ficha. Antes os dois
+    // vinham do Painel Geral, e essa dependência prendia o painel dentro da
+    // Custo por Projeto: mover o painel quebrava a Base inteira. Igual ao que
+    // o atualizar-tudo escreve — os dois têm de escrever a MESMA fórmula, ou a
+    // ficha criada pelo botão sai diferente da ficha refeita pelo script.
+    const guarda = j === 0 ? ab + '!$A$7' : '$C' + r;
     const linha = [
-      '=IF(' + (j === 0 ? ab + '!$A$7' : '$C' + r) + '="","",\'' + FICHA.painel + '\'!$B$' + pgLinha + ')',
-      '=IF(' + (j === 0 ? ab + '!$A$7' : '$C' + r) + '="","",\'' + FICHA.painel + '\'!$C$' + pgLinha + ')',
+      '=IF(' + guarda + '="","","' + String(nomeAba).replace(/"/g, '""') + '")',
+      '=IF(' + guarda + '="","",' + ab + '!$A$7)',
     ];
     COLS_AMB.forEach(function (c) {
       linha.push('=IF(' + ab + '!$' + c + '$' + fr + '="","",' + ab + '!$' + c + '$' + fr + ')');
