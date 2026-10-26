@@ -711,43 +711,90 @@ function lerMedidas_(ano) {
 }
 
 
+/** Palavras de um nome que servem para comparar: sem artigo, sem partícula. */
+const STOP_NOME = ['de', 'da', 'do', 'dos', 'das', 'e', 'a', 'o', 'em', 'no', 'na'];
+function palavras_(s) {
+  return chave_(s).split(/[^a-z0-9]+/).filter(function (w) {
+    return w.length >= 3 && STOP_NOME.indexOf(w) < 0;
+  });
+}
+
+
 /**
- * Casa a ficha de custo com o contrato da aba de pagamentos.
+ * Casa as fichas com os contratos do ano, de uma vez.
  *
- * Pelo NÚMERO DO PROJETO quando os dois lados têm número; pelo nome do cliente
- * só quando esse nome é único. Casar por nome é exatamente o que erra nesta
- * casa: há três clientes chamados Luiz, catorze nomes com espaço sobrando no
- * fim e onze abas de ficha na mesma situação. Quando o nome é ambíguo, esta
- * função se recusa a adivinhar e devolve o motivo — que vira uma linha na
- * Conferência pedindo o número.
+ * O NOME É A PIOR CHAVE DESTA CASA, e era a única que eu usava. "Carla" na
+ * aba de pagamentos é "Carla Dresller" na ficha; "Epe Formas /Eliuton" é
+ * "EPE Formas "; "Marcelo e Simony" é "Simony"; "Cristiane Andrade/laminas"
+ * é "Cristiane Chrys Andrade". Por nome exato, nove fichas que existem
+ * apareciam como contrato sem ficha nenhuma.
+ *
+ * A ordem das chaves, da mais forte para a mais fraca:
+ *
+ *   1. NÚMERO DO PROJETO, quando os dois lados têm. É a única definitiva.
+ *   2. VALOR DE VENDA exato, quando só uma ficha tem aquele valor. Casa
+ *      quinze das dezessete, e casa certo: valor de venda é combinado com o
+ *      cliente, não digitado duas vezes de cabeça.
+ *   3. NOME exato.
+ *   4. PALAVRAS em comum, e só quando uma ficha ganha sozinha. Empate não
+ *      vira palpite: vira "não consigo casar".
  */
-function casarContrato_(ficha, d) {
+function casarFichasEContratos_(d) {
   const doAno = d.anos.projetos.filter(function (q) {
-    return q.ano === String(d.ano) && !q.fora;
+    return q.ano === String(d.ano) && !q.fora && q.venda > 0;
+  });
+  const porFicha = {};       // projeto da ficha → contratos
+  const daFicha = {};        // contrato (aba+linha) → ficha
+  const semFicha = [], ambiguos = [];
+
+  doAno.forEach(function (q) {
+    let achada = null, via = '';
+
+    if (q.numero) {
+      const porNum = d.projetos.filter(function (x) {
+        return x.numero && chave_(x.numero) === chave_(q.numero);
+      });
+      if (porNum.length === 1) { achada = porNum[0]; via = 'pelo nº do projeto'; }
+    }
+    if (!achada) {
+      const porVal = d.projetos.filter(function (x) {
+        return x.venda > 0 && Math.abs(x.venda - q.venda) < 1;
+      });
+      if (porVal.length === 1) { achada = porVal[0]; via = 'pelo valor de venda'; }
+    }
+    if (!achada) {
+      const kq = chave_(q.cliente);
+      const ex = d.projetos.filter(function (x) {
+        return chave_(x.rotulo) === kq || chave_(x.cliente) === kq;
+      });
+      if (ex.length === 1) { achada = ex[0]; via = 'pelo nome'; }
+    }
+    if (!achada) {
+      const pq = palavras_(q.cliente);
+      let melhor = [], placar = 0;
+      d.projetos.forEach(function (x) {
+        const pf = palavras_(x.rotulo).concat(palavras_(x.cliente));
+        const n = pq.filter(function (w) { return pf.indexOf(w) >= 0; }).length;
+        if (n > placar) { melhor = [x]; placar = n; }
+        else if (n === placar && n > 0) { melhor.push(x); }
+      });
+      if (placar && melhor.length === 1) {
+        achada = melhor[0];
+        via = 'por ' + placar + ' palavra' + (placar > 1 ? 's' : '') + ' do nome';
+      } else if (melhor.length > 1) {
+        ambiguos.push({ contrato: q, fichas: melhor });
+        return;
+      }
+    }
+
+    if (!achada) { semFicha.push(q); return; }
+    if (!porFicha[achada.projeto]) porFicha[achada.projeto] = [];
+    porFicha[achada.projeto].push(q);
+    daFicha[q.aba + '|' + q.linha] = { ficha: achada, via: via };
   });
 
-  if (ficha.numero) {
-    const porNum = doAno.filter(function (q) {
-      return q.numero && chave_(q.numero) === chave_(ficha.numero);
-    });
-    if (porNum.length === 1) return { contrato: porNum[0], como: 'pelo nº do projeto', motivo: '' };
-    if (porNum.length > 1) {
-      return { contrato: null, como: '', motivo: 'o nº ' + ficha.numero + ' aparece em '
-        + porNum.length + ' linhas da aba de pagamentos' };
-    }
-  }
-
-  const alvo = [chave_(ficha.projeto), chave_(ficha.cliente)].filter(Boolean);
-  const porNome = doAno.filter(function (q) { return alvo.indexOf(chave_(q.cliente)) >= 0; });
-  if (porNome.length === 1) return { contrato: porNome[0], como: 'pelo nome do cliente', motivo: '' };
-  if (porNome.length > 1) {
-    return { contrato: null, como: '', motivo: 'o nome "' + (ficha.cliente || ficha.rotulo)
-      + '" aparece em ' + porNome.length + ' contratos deste ano — preencha o Nº do projeto '
-      + 'na ficha e na aba de pagamentos, e eu caso pelo número' };
-  }
-  // sem par nenhum: pode ser contrato de outro ano. Quem cobra isso é a
-  // verificação inversa, "Contrato sem ficha de custo".
-  return { contrato: null, como: '', motivo: '' };
+  return { porFicha: porFicha, daFicha: daFicha,
+           semFicha: semFicha, ambiguos: ambiguos, doAno: doAno };
 }
 
 
@@ -765,22 +812,25 @@ function verVendasDivergentes() {
   const diz = function (t) { L.push(t); console.log(t); };
 
   diz('════ VENDA DA FICHA × VENDA DO CONTRATO ════');
+  const casam = casarFichasEContratos_(d);
   let n = 0;
   d.projetos.forEach(function (x) {
     if (x.venda <= 0) return;
-    const par = casarContrato_(x, d);
-    if (!par.contrato) {
-      if (par.motivo) diz('  ?  ' + (x.cliente || x.rotulo) + ': ' + par.motivo);
+    const cs = casam.porFicha[x.projeto] || [];
+    if (!cs.length) {
+      diz('  ?  ' + (x.cliente || x.rotulo) + ': não achei contrato deste ano para esta ficha');
       return;
     }
-    const dif = x.venda - par.contrato.venda;
+    const soma = cs.reduce(function (t, q) { return t + q.venda; }, 0);
+    const dif = x.venda - soma;
     if (Math.abs(dif) <= 1) return;
     n++;
     diz('  ≠  ' + (x.cliente || x.rotulo)
       + '\n       ficha "' + x.projeto + '" diz  R$ ' + x.venda.toFixed(2)
-      + '\n       contrato (Pagamentos ' + par.contrato.ano + ', linha ' + par.contrato.linha
-      + ') diz  R$ ' + par.contrato.venda.toFixed(2)
-      + '\n       diferença R$ ' + Math.abs(dif).toFixed(2) + ', casados ' + par.como);
+      + '\n       ' + cs.length + ' contrato(s) somam  R$ ' + soma.toFixed(2)
+      + '  (' + cs.map(function (q) { return q.aba + ' linha ' + q.linha; }).join(', ') + ')'
+      + '\n       diferença R$ ' + Math.abs(dif).toFixed(2)
+      + (cs.length > 1 ? '  ·  mais de um contrato: preencha o Nº do projeto' : ''));
   });
   diz(n ? '\n' + n + ' ficha(s) divergente(s). Para alinhar pelo contrato, rode '
         + 'aplicarVendaDoContrato — ela escreve no bloco 1 da ficha e registra no log o '
@@ -809,10 +859,17 @@ function aplicarVendaDoContrato() {
   const ss = SpreadsheetApp.openById(ID_CUSTO);
   const mudadas = [], pulos = [];
 
+  const casam = casarFichasEContratos_(d);
   d.projetos.forEach(function (x) {
     if (x.venda <= 0) return;
-    const par = casarContrato_(x, d);
-    if (!par.contrato) { if (par.motivo) pulos.push(x.projeto + ': ' + par.motivo); return; }
+    const cs = casam.porFicha[x.projeto] || [];
+    if (cs.length !== 1) {
+      if (cs.length) pulos.push(x.projeto + ': casa com ' + cs.length
+        + ' contratos, não sei qual manda — preencha o Nº do projeto');
+      return;
+    }
+    const par = { contrato: cs[0], como: (casam.daFicha[cs[0].aba + '|' + cs[0].linha]
+      || { via: '' }).via };
     const dif = x.venda - par.contrato.venda;
     if (Math.abs(dif) <= 1) return;
 
@@ -1090,38 +1147,60 @@ function pendencias_(d) {
   });
 
   // ── a venda do contrato não é a venda da ficha ──
+  const casam = casarFichasEContratos_(d);
+  d.cruzamento = casam;
+
   d.projetos.forEach(function (x) {
     if (x.venda <= 0) return;
-    const par = casarContrato_(x, d);
-    if (!par.contrato) {
-      if (par.motivo) {
-        bota('Não consigo casar com o contrato', x.cliente || x.rotulo, par.motivo,
-             0, 'ficha ' + x.projeto + ', célula ' + FICHA.numero);
-      }
-      return;
-    }
-    const dif = x.venda - par.contrato.venda;
+    const cs = casam.porFicha[x.projeto];
+    if (!cs || !cs.length) return;
+
+    // Uma ficha pode cobrir MAIS DE UM contrato: a Maria tem a casa e o painel
+    // do hall, lançados em meses diferentes. Nesse caso a venda da ficha se
+    // compara com a SOMA dos contratos, não com um deles.
+    const soma = cs.reduce(function (t, q) { return t + q.venda; }, 0);
+    const dif = x.venda - soma;
     if (Math.abs(dif) <= 1) return;
-    bota('Venda diferente do contrato', x.cliente || x.rotulo,
-         'a ficha diz R$ ' + x.venda.toFixed(2) + ' e o contrato diz R$ '
-         + par.contrato.venda.toFixed(2) + ' (casados ' + par.como + ')',
-         Math.abs(dif), 'ficha ' + x.projeto + ' e Pagamentos ' + par.contrato.ano
-         + ' linha ' + par.contrato.linha);
+
+    if (cs.length === 1) {
+      bota('Venda diferente do contrato', x.cliente || x.rotulo,
+           'a ficha diz R$ ' + x.venda.toFixed(2) + ' e o contrato diz R$ '
+           + soma.toFixed(2) + ' (casados ' + (casam.daFicha[cs[0].aba + '|' + cs[0].linha]
+           || { via: '' }).via + ')',
+           Math.abs(dif), 'ficha ' + x.projeto + ' e ' + cs[0].aba + ' linha ' + cs[0].linha);
+    } else {
+      bota('Ficha com mais de um contrato', x.cliente || x.rotulo,
+           'casei ' + cs.length + ' contratos com esta ficha (' + cs.map(function (q) {
+             return q.projeto || q.cliente; }).join(', ') + ') e a soma deles, R$ '
+           + soma.toFixed(2) + ', não bate com os R$ ' + x.venda.toFixed(2)
+           + ' da ficha. Preencha o Nº do projeto dos dois lados e eu caso pelo número',
+           Math.abs(dif), 'ficha ' + x.projeto + ', célula ' + FICHA.numero);
+    }
   });
 
-  // ── contrato do ano sem ficha de custo aberta ──
-  const fichas = {};
-  d.projetos.forEach(function (x) {
-    fichas[chave_(x.projeto)] = true;
-    if (x.cliente) fichas[chave_(x.cliente)] = true;
+  casam.ambiguos.forEach(function (a) {
+    bota('Não consigo casar com a ficha', a.contrato.cliente,
+         'o nome bate parcialmente com ' + a.fichas.length + ' fichas ('
+         + a.fichas.map(function (x) { return x.rotulo; }).join(', ')
+         + '). Preencha o Nº do projeto e eu caso pelo número',
+         a.contrato.venda, a.contrato.aba + ' linha ' + a.contrato.linha);
   });
-  d.anos.projetos.forEach(function (q) {
-    if (q.ano !== String(d.ano) || q.fora || q.venda <= 0) return;
-    if (fichas[chave_(q.cliente)]) return;
+
+  // ── contrato sem ficha de custo, só enquanto a obra está viva ──
+  //
+  // A Custo por Projeto nasceu em outubro. Contrato de fevereiro, entregue e
+  // quitado, não vai ganhar ficha retroativa para apurar margem de obra que
+  // acabou — e listá-lo era repetir o erro das parcelas de 2023: vinte e seis
+  // linhas de arquivo morto por cima do que se resolve esta semana.
+  //
+  // Vivo é o que ainda tem saldo a receber. Esse sim precisa de ficha: é obra
+  // que ainda consome material e ainda pode perder margem.
+  casam.semFicha.forEach(function (q) {
+    if (q.saldo <= 0) return;
     bota('Contrato sem ficha de custo', q.cliente,
-         'R$ ' + q.venda.toFixed(2) + ' vendidos e nenhuma ficha aberta — o custo '
-         + 'deste projeto não entra em margem nenhuma',
-         q.venda, 'Pagamentos ' + q.ano + ' linha ' + q.linha);
+         'R$ ' + q.venda.toFixed(2) + ' vendidos, R$ ' + q.saldo.toFixed(2)
+         + ' ainda a receber e nenhuma ficha aberta — o custo desta obra não entra '
+         + 'em margem nenhuma', q.venda, q.aba + ' linha ' + q.linha);
   });
 
   // ── contrato sem nome de cliente ──
