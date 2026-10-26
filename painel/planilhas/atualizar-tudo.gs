@@ -86,6 +86,12 @@ const FICHA = {
   entregaSituacao: 'L9',              // No prazo · Atrasado · Em produção
   diasAtraso: 'J9',                   // ao lado da situação, na identificação
   numero: 'D7',                       // Nº do projeto — a única chave que não é nome
+  prevista: 'H7',                     // entrega prevista, ao lado da data de entrada
+  // Os blocos de baixo, que a Base não carrega e onde mora o preenchimento
+  // que falta. Vêm do gerador da ficha, em gerar-custo-projeto.py.
+  notas0: 30, notasF: 33,             // bloco 1 · notas fiscais
+  retrab0: 118, retrabF: 121,         // bloco 7 · retrabalho
+  lanc0: 126, lancF: 185,             // bloco 8 · livro de compras
   vendaDigitada: 'D28',               // bloco 1 · o valor fechado com o cliente
   faturado: 'D34',                    // total das notas emitidas
   rtValor: 'D43', rtStatus: 'E43',    // RT do parceiro e se já foi pago
@@ -841,6 +847,149 @@ function aplicarVendaDoContrato() {
 
 
 /**
+ * O que falta preencher DENTRO de cada ficha de cliente.
+ *
+ * Os painéis liam só a Base · Comissões, que é o resumo do projeto. Mas o
+ * preenchimento que falta mora nos blocos de baixo — o livro de compras, o
+ * retrabalho, as notas — e esses a Base não carrega. Para achá-los era
+ * preciso abrir ficha por ficha, que é exatamente o trabalho que esta aba
+ * existe para não ter.
+ *
+ * Uma leitura por ficha, de uma vez: rows 1 a 190, quinze colunas. Depois é
+ * só recorte.
+ */
+function pendenciasDasFichas_(bota) {
+  const ss = SpreadsheetApp.openById(ID_CUSTO);
+  const FIXAS = ['Instruções', FICHA.painel, 'Listas', FICHA.base];
+
+  // As categorias válidas saem do menu da própria Ficha Modelo. Ler a lista
+  // de lá em vez de escrevê-la aqui é o que faz esta verificação continuar
+  // certa no dia em que você acrescentar uma categoria.
+  let cats = null;
+  const modelo = ss.getSheetByName('Ficha Modelo');
+  if (modelo) {
+    try {
+      const dv = modelo.getRange(FICHA.lanc0, 2).getDataValidation();
+      if (dv) {
+        const vals = dv.getCriteriaValues();
+        if (vals && vals[0] && vals[0].length) {
+          cats = vals[0].map(function (x) { return chave_(x); });
+        }
+      }
+    } catch (e) { cats = null; }
+  }
+
+  let lidas = 0;
+  ss.getSheets().forEach(function (sh) {
+    const nome = sh.getName();
+    if (FIXAS.indexOf(nome) >= 0 || nome === 'Ficha Modelo') return;
+    if (sh.getMaxRows() < FICHA.lancF || sh.getMaxColumns() < 15) return;
+    if (String(sh.getRange('A8').getDisplayValue() || '').trim().toUpperCase()
+          .indexOf('PROJETO') !== 0) return;
+    lidas++;
+
+    const v = sh.getRange(1, 1, FICHA.lancF + 2, 15).getValues();
+    const d = sh.getRange(1, 1, FICHA.lancF + 2, 15).getDisplayValues();
+    const rot = nome.trim();
+    const cliente = String(v[6][0] || '').trim() || rot;
+    const onde = function (bloco, linha) {
+      return 'ficha ' + nome + ' · ' + bloco + (linha ? ', linha ' + linha : '');
+    };
+    const vazio = function (x) { return String(x === null ? '' : x).trim() === ''; };
+
+    // ── identificação ──
+    if (vazio(v[6][3])) {
+      bota('Ficha sem nº do projeto', cliente,
+           'sem o número, a ficha só casa com o contrato pelo nome — e há três clientes '
+           + 'chamados Luiz', 0, onde('identificação'));
+    }
+    if (vazio(v[6][7])) {
+      bota('Ficha sem entrega prevista', cliente,
+           'sem a data prometida não existe atraso: a situação da entrega fica sem base',
+           0, onde('identificação'));
+    }
+
+    // ── bloco 1 · notas fiscais ──
+    for (let r = FICHA.notas0; r <= FICHA.notasF; r++) {
+      const L = v[r - 1];
+      const valor = Number(L[3]) || 0;
+      if (!valor) continue;
+      const falta = [];
+      if (vazio(L[1])) falta.push('o número');
+      if (vazio(L[2])) falta.push('a data');
+      if (!falta.length) continue;
+      bota('Nota sem ' + falta.join(' e '), cliente,
+           'nota de R$ ' + valor.toFixed(2) + ' lançada sem ' + falta.join(' e '),
+           valor, onde('bloco 1 · notas', r));
+    }
+
+    // ── bloco 7 · retrabalho ──
+    for (let r = FICHA.retrab0; r <= FICHA.retrabF; r++) {
+      const L = v[r - 1];
+      const oQue = String(L[0] || '').trim();
+      const custo = Number(L[4]) || 0;
+      if (!oQue && !custo) continue;
+      if (!custo) {
+        bota('Retrabalho sem custo', cliente,
+             '"' + (oQue || '(sem descrição)') + '" lançado e sem valor — não entra no '
+             + 'custo do projeto', 0, onde('bloco 7 · retrabalho', r));
+      }
+      if (vazio(L[1])) {
+        bota('Retrabalho sem causa', cliente,
+             '"' + (oQue || '(sem descrição)') + '" sem causa lançada — a causa é o que '
+             + 'diz se o problema é de projeto, medição, produção ou fornecedor',
+             custo, onde('bloco 7 · retrabalho', r));
+      }
+    }
+
+    // ── bloco 8 · livro de compras ──
+    for (let r = FICHA.lanc0; r <= FICHA.lancF; r++) {
+      const L = v[r - 1];
+      const desc = String(L[0] || '').trim();
+      const cat = String(L[1] || '').trim();
+      const valor = Number(L[4]) || 0;
+      if (!desc && !cat && !valor) continue;
+
+      if (desc && !valor) {
+        bota('Compra sem valor', cliente,
+             '"' + desc + '" lançada sem valor — não entra no custo do projeto',
+             0, onde('bloco 8 · compras', r));
+      }
+      if (!valor) continue;
+
+      if (!cat) {
+        bota('Compra sem categoria', cliente,
+             'R$ ' + valor.toFixed(2) + ' de "' + desc + '" sem categoria — o valor não '
+             + 'cai em grupo nenhum do bloco 6', valor, onde('bloco 8 · compras', r));
+      } else if (cats && cats.indexOf(chave_(cat)) < 0) {
+        bota('Categoria fora da lista', cliente,
+             'R$ ' + valor.toFixed(2) + ' lançados em "' + cat + '", que não é uma das '
+             + 'categorias do menu — o SUMIFS não casa e o valor some de toda soma',
+             valor, onde('bloco 8 · compras', r));
+      }
+      if (vazio(L[3])) {
+        bota('Compra sem data', cliente,
+             'R$ ' + valor.toFixed(2) + ' de "' + desc + '" sem data de compra',
+             valor, onde('bloco 8 · compras', r));
+      }
+      if (vazio(L[8])) {
+        bota('Compra sem status', cliente,
+             'R$ ' + valor.toFixed(2) + ' de "' + desc + '" sem status — não dá para saber '
+             + 'se já foi paga, se está a pagar ou se ainda é a comprar',
+             valor, onde('bloco 8 · compras', r));
+      }
+      if (vazio(L[6])) {
+        bota('Compra sem forma de pagamento', cliente,
+             'R$ ' + valor.toFixed(2) + ' de "' + desc + '"',
+             valor, onde('bloco 8 · compras', r));
+      }
+    }
+  });
+  return lidas;
+}
+
+
+/**
  * A lista única de conferência.
  *
  * Cada item é {ordem, tipo, cliente, detalhe, valor, onde}. Vai ordenada por
@@ -985,13 +1134,37 @@ function pendencias_(d) {
   });
 
   // ── parcela sem data: entrou dinheiro e ninguém datou ──
+  //
+  // SÓ DO ANO CORRENTE. Os anos fechados têm 231 parcelas sem data, e ninguém
+  // vai voltar a 2023 para datar o pagamento do Otávio. Listadas, elas eram
+  // dois terços da aba e enterravam o que custa dinheiro agora — que é
+  // exatamente o que faz alguém parar de abrir a lista.
   d.anos.parcelas.forEach(function (q) {
-    if (q.data) return;
+    if (q.data || q.anoContrato !== String(d.ano)) return;
     bota('Parcela sem data', q.cliente,
          'R$ ' + q.valor.toFixed(2) + ' na ' + q.ordem + 'ª parcela'
          + (q.desc ? ' (' + q.desc + ')' : '') + ' — não entra em mês nenhum',
          q.valor, q.aba + ' linha ' + q.linha);
   });
+
+  // ── o que falta na linha do contrato, no ano corrente ──
+  d.anos.projetos.forEach(function (q) {
+    if (q.ano !== String(d.ano) || q.fora) return;
+    if (q.venda > 0 && !q.forma) {
+      bota('Contrato sem forma de pagamento', q.cliente,
+           'R$ ' + q.venda.toFixed(2) + ' fechados e nenhuma condição escrita — é a frase '
+           + 'que você combinou com o cliente', q.venda, q.aba + ' linha ' + q.linha);
+    }
+    if (q.saldo > 0 && !q.telefone) {
+      bota('Cliente a cobrar sem telefone', q.cliente,
+           'R$ ' + q.saldo.toFixed(2) + ' a receber e a coluna Telefone em branco — '
+           + 'toda cobrança começa procurando o número no WhatsApp',
+           q.saldo, q.aba + ' linha ' + q.linha + ', coluna AB');
+    }
+  });
+
+  // ── e o que falta dentro de cada ficha de cliente ──
+  pendenciasDasFichas_(bota);
 
   // ── linha de projeto começada e não terminada ──
   d.anos.meias.forEach(function (q) {
@@ -3598,22 +3771,42 @@ function abaConferencia_(d) {
                       lTipos, [null, '0', MOEDA]);
   sh.getRange(lt + 1, 2, lTipos.length, 1).setFontWeight('bold').setFontColor(NAVY);
 
-  // ── a lista ──
-  secaoPainel_(sh, lin, 'UMA A UMA   ·   ' + P.length + ' pendência(s)', W); lin += 2;
-  const lp = lin;
-  lin = tabelaPainel_(sh, lin, 2,
-    ['Cliente', 'Tipo', 'O que falta', 'Valor', 'Onde resolver'],
-    P.map(function (x) {
-      return [x.cliente, x.tipo, x.detalhe, x.valor, x.onde];
-    }), [null, null, null, MOEDA, null]);
-  sh.getRange(lp + 1, 4, P.length, 1).setWrap(true).setFontSize(9);
-  sh.getRange(lp + 1, 6, P.length, 1).setFontSize(9).setFontColor(MUTED);
-  sh.getRange(lp + 1, 2, P.length, 1).setFontWeight('bold');
+  // ── a lista, separada por onde se resolve ──
+  //
+  // São dois lugares e duas pessoas: a aba de pagamentos é da Carla, a ficha
+  // é de quem custeia. Misturadas, cada um lia a lista inteira para achar as
+  // suas linhas.
+  const daFicha = function (x) { return String(x.onde || '').indexOf('ficha ') === 0; };
+  const doPagamento = function (x) {
+    return !daFicha(x) && /Pagamentos |\b20\d\d\b/.test(String(x.onde || ''));
+  };
+  const BLOCOS = [
+    ['NO CONTROLE DE PAGAMENTOS   ·   aba Pagamentos ' + d.ano, P.filter(doPagamento)],
+    ['NAS FICHAS DE CLIENTE   ·   Custo por Projeto',
+     P.filter(function (x) { return daFicha(x); })],
+    ['O RESTO', P.filter(function (x) { return !daFicha(x) && !doPagamento(x); })],
+  ];
+
+  BLOCOS.forEach(function (b) {
+    if (!b[1].length) return;
+    secaoPainel_(sh, lin, b[0] + '   ·   ' + b[1].length + ' pendência(s)', W); lin += 2;
+    const lp = lin;
+    lin = tabelaPainel_(sh, lin, 2,
+      ['Cliente', 'Tipo', 'O que falta', 'Valor', 'Onde resolver'],
+      b[1].map(function (x) {
+        return [x.cliente, x.tipo, x.detalhe, x.valor, x.onde];
+      }), [null, null, null, MOEDA, null]);
+    sh.getRange(lp + 1, 4, b[1].length, 1).setWrap(true).setFontSize(9);
+    sh.getRange(lp + 1, 6, b[1].length, 1).setFontSize(9).setFontColor(MUTED);
+    sh.getRange(lp + 1, 2, b[1].length, 1).setFontWeight('bold');
+  });
 
   sh.getRange(lin, 2, 1, W - 2).merge().setValue(
     'Esta aba é refeita a cada atualização e NÃO guarda marcação: resolvido na origem, o item '
     + 'desaparece daqui sozinho. Não escreva nada nela — o que você escrever será apagado na '
-    + 'próxima rodada. "Onde resolver" diz a aba e, quando faz sentido, a linha.')
+    + 'próxima rodada. "Onde resolver" diz a aba e, quando faz sentido, a linha. Só entra '
+    + 'aqui o que está VIVO: o contrato do ano corrente e as fichas abertas. Parcela sem '
+    + 'data de ano fechado não aparece — ninguém volta a 2023 para datar pagamento.')
     .setFontColor(MUTED).setFontSize(9).setFontStyle('italic').setWrap(true);
   sh.setRowHeight(lin, 30);
 
