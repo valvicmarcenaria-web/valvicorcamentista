@@ -27,9 +27,32 @@ script.
 | **Notas de migração** | 67 datas corrigidas, o −R$ 20.000 do Monte Negro | explicação que não existe em outro lugar |
 | Painel · Produção e Entrega · Painel de Competência · Análise & Sazonalidade · Base · Projetos · Base · Recebimentos · Base · Custo Fixo | **derivadas** | nada digitado, todas se refazem |
 
-**Migram:** Listas, as quatro abas de ano (viram `Pagamentos 2026`…`2023`),
-Custo Fixo, Aporte Walton (vira `Aporte`), Notas de migração.
+**Migram para a `N.GESTAO 1 · Gestão`:** Listas, as quatro abas de ano (viram
+`Pagamentos 2026`…`2023`) e Notas de migração.
+**Migram para a `N.GESTAO 3 · Direção`:** Custo Fixo e Aporte Walton (vira
+`Aporte`) — por segurança, não por arrumação: a Gestão é onde a assistente
+trabalha o dia inteiro, e a folha nominal não pode estar lá.
 **Não migram:** as sete derivadas. Morrem com o arquivo.
+
+---
+
+## 1b · Quem lê o quê, em 26/10/2026
+
+| Arquivo | Acesso |
+|---|---|
+| Pasta "Valvic · Gestão" | dono · `financeirovalvic` (editor) |
+| **Analise anual** | dono · `financeirovalvic` · **`braconstrutora2025` (leitor)** |
+| **N.GESTAO 2 · Custo por Projeto** | dono · `financeirovalvic` · **`braconstrutora2025` (leitor)** |
+| N.GESTAO 1 · Gestão | dono · `financeirovalvic` |
+| N.GESTAO 3 · Direção | dono · `financeirovalvic` |
+
+`braconstrutora2025` é o lado do investidor. São **duas permissões diretas**,
+uma em cada arquivo, e não vêm da pasta. Pela Analise anual ele lê a folha com
+os dezenove salários nominais e o aporte lançamento por lançamento; pela Custo
+por Projeto ele lê as dezessete fichas inteiras — cada compra, cada custo, cada
+comissão com nome e a margem real de cada obra.
+
+Nenhuma delas é removível por script: `share_file` concede, não revoga.
 
 ---
 

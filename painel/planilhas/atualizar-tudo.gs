@@ -199,10 +199,22 @@ const MOEDA = 'R$ #,##0.00', PCT = '0.0%', DATA = 'dd/mm/yyyy';
 //                                   linguagem de obra. Separada, e não se mexe:
 //                                   é o arquivo com adesão real.
 //
-//   N.GESTAO 3 · PAINEL DO WALTON   UMA aba. O mês, o ponto de equilíbrio, o que
-//                                   está preso, o aporte e a capacidade. Sem nome
-//                                   de pessoa em lugar nenhum, sem salário, sem
-//                                   comissão nominal.
+//   N.GESTAO 3 · DIREÇÃO            o arquivo do sócio-gestor, que não se
+//                                   compartilha. Três abas: "O mês", que é a tela
+//                                   do investidor — sem nome de pessoa, sem
+//                                   salário, sem comissão nominal —, mais o
+//                                   "Custo Fixo" com as dezenove pessoas da folha
+//                                   e o "Aporte" lançamento por lançamento.
+//
+// Por que a folha mora no arquivo do sócio e não no da Gestão: dentro de um
+// arquivo do Google não existe esconder. Ocultar aba é cosmético e proteger aba
+// impede editar, não ver — quem abre o arquivo vê tudo. A Gestão é onde a
+// assistente trabalha o dia inteiro; a folha nominal não pode estar lá.
+//
+// E por que a tela do investidor mora no MESMO arquivo que a folha: porque ela
+// é lida na tela, na reunião, ou exportada em PDF. Este arquivo não vai para
+// ninguém. No dia em que o investidor precisar abrir sozinho, a aba "O mês"
+// vira um arquivo próprio — ela é só valor, não depende de nada daqui.
 //
 // A Análise anual sai de cena depois que a migração confere. Ela não é apagada
 // por script — isso é decisão de quem lê o log.
@@ -219,7 +231,7 @@ const MOEDA = 'R$ #,##0.00', PCT = '0.0%', DATA = 'dd/mm/yyyy';
 // arquivo depois de qualquer renomeação.
 const ID_GESTAO = '16VkH3jaTp6O1wahE3zXFwUiQQSXm1bGFuLaaQMg3pjs';  // N.GESTAO 1 · Gestão
 const ID_ANUAL  = '1zC1cjkDpMA7FPYSf4_CO7WrqhIjmJ7ciXR_QGQ4XA9A';  // Analise anual · só origem
-const ID_PAINEL = '1-7XUrVso9oVKccQjM2m5Tgd9_-QIk-r1LZ8XZbDnGL0';  // N.GESTAO 3 · Painel do Walton
+const ID_DIRECAO = '1-7XUrVso9oVKccQjM2m5Tgd9_-QIk-r1LZ8XZbDnGL0';  // N.GESTAO 3 · Direção
 
 const ANOS = ['2026', '2025', '2024', '2023'];
 const C_BLOCOS = [9, 12, 15, 18, 21];   // I, L, O, R, U · valor, data, descrição
@@ -268,9 +280,9 @@ function chave_(s) {
  * original for para a lixeira, nada muda — o openById do arquivo apagado
  * lança exceção, e ela é engolida aqui de propósito.
  */
-function abaFonte_(nomes) {
+function abaFonte_(nomes, onde) {
   const alvos = Array.isArray(nomes) ? nomes : [nomes];
-  const ordem = [[ID_GESTAO, 'Gestão'], [ID_ANUAL, 'Análise anual']];
+  const ordem = (onde || [[ID_GESTAO, 'Gestão']]).concat([[ID_ANUAL, 'Análise anual']]);
   for (let i = 0; i < ordem.length; i++) {
     let ss;
     try { ss = SpreadsheetApp.openById(ordem[i][0]); } catch (e) { continue; }
@@ -383,7 +395,7 @@ function lerAnos_() {
  * ("Base · Custo Fixo"); agora é código, que não se abre por engano.
  */
 function lerCustoFixo_() {
-  const f = abaFonte_('Custo Fixo');
+  const f = abaFonte_('Custo Fixo', [[ID_DIRECAO, 'Direção']]);
   if (!f) {
     console.log('  AVISO: aba "Custo Fixo" não encontrada. O ponto de equilíbrio sai sem custo.');
     return { linhas: [], mes: 0, arquivo: '—' };
@@ -419,7 +431,7 @@ function lerCustoFixo_() {
 
 /** Os totais do aporte: entradas, saídas, investimentos, saldo. */
 function lerAporteCasa_() {
-  const f = abaFonte_(['Aporte', 'Aporte Walton']);
+  const f = abaFonte_(['Aporte', 'Aporte Walton'], [[ID_DIRECAO, 'Direção']]);
   if (!f) return [];
   const sh = f.sh;
   const fim = sh.getLastRow();
@@ -1073,7 +1085,7 @@ function cartaoPainel_(sh, lin, col, rotulo, valor, cor, formato) {
 function montarPainelGestao(d) {
   const ano = new Date().getFullYear();
   d = d || lerMedidas_(ano);
-  const ss = SpreadsheetApp.openById(ID_PAINEL);
+  const ss = SpreadsheetApp.openById(ID_DIRECAO);
 
   abaWalton_(ss, d);
 
@@ -1679,7 +1691,7 @@ function validar() {
   diz('');
   diz('════ VALVIC · GESTÃO ════');
   const ges = SpreadsheetApp.openById(ID_GESTAO);
-  const esperadas = ['Conferência', 'O mês', 'Projetos', 'Custo Fixo', 'Aporte', 'Listas']
+  const esperadas = ['Conferência', 'O mês', 'Projetos', 'Listas']
     .concat(ANOS.map(function (a) { return 'Pagamentos ' + a; }));
   esperadas.forEach(function (nome) {
     const sh = ges.getSheetByName(nome);
@@ -1740,10 +1752,11 @@ function validar() {
   });
 
   diz('');
-  diz('════ PAINEL DO WALTON ════');
-  const pn = SpreadsheetApp.openById(ID_PAINEL);
+  diz('════ N.GESTAO 3 · DIREÇÃO ════');
+  const pn = SpreadsheetApp.openById(ID_DIRECAO);
   const om = pn.getSheetByName('O mês');
-  ok('o painel do Walton tem UMA aba', pn.getSheets().length === 1,
+  ok('a Direção tem as três abas: O mês, Custo Fixo e Aporte',
+     ['O mês', 'Custo Fixo', 'Aporte'].every(function (n) { return !!pn.getSheetByName(n); }),
      pn.getSheets().map(function (x) { return x.getName(); }).join(' | '));
   ok('a aba O mês existe', !!om);
   if (om) {
@@ -1773,7 +1786,10 @@ function validar() {
     const vazou = nomes.filter(function (x) {
       return plano.indexOf('\u0001' + x + '\u0001') >= 0;
     });
-    ok('nenhum nome de colaborador na tela do Walton', vazou.length === 0, vazou.join(' | '));
+    // A tela do investidor é a ABA, não o arquivo: o arquivo tem a folha
+    // nominal ao lado, e é por isso que ele não se compartilha.
+    ok('nenhum nome de colaborador na aba que o investidor lê',
+       vazou.length === 0, vazou.join(' | '));
   }
 
   // Sobras da arquitetura anterior. Esta função não apaga nada: quem apaga é
@@ -1782,9 +1798,9 @@ function validar() {
   [[ID_ANUAL, 'Base · Projetos'], [ID_ANUAL, 'Base · Recebimentos'],
    [ID_ANUAL, 'Base · Custo Fixo'], [ID_ANUAL, 'Painel de Competência'],
    [ID_ANUAL, 'Produção e Entrega'], [ID_GESTAO, 'Análise mensal'],
-   [ID_GESTAO, 'Clientes'], [ID_PAINEL, 'Resultado'], [ID_PAINEL, 'Operação'],
-   [ID_PAINEL, 'Visão geral'], [ID_PAINEL, 'Margem por projeto'],
-   [ID_PAINEL, 'Comissões'], [ID_PAINEL, 'Equipe'], [ID_PAINEL, 'Como ler']]
+   [ID_GESTAO, 'Clientes'], [ID_DIRECAO, 'Resultado'], [ID_DIRECAO, 'Operação'],
+   [ID_DIRECAO, 'Visão geral'], [ID_DIRECAO, 'Margem por projeto'],
+   [ID_DIRECAO, 'Comissões'], [ID_DIRECAO, 'Equipe'], [ID_DIRECAO, 'Como ler']]
     .forEach(function (x) {
       let ss;
       try { ss = SpreadsheetApp.openById(x[0]); } catch (e) { return; }
@@ -3367,27 +3383,33 @@ function acharLinha_(sh, texto, ini, fim) {
  */
 function migrarParaGestao() {
   const org = SpreadsheetApp.openById(ID_ANUAL);
-  const dst = SpreadsheetApp.openById(ID_GESTAO);
   const feitas = [], puladas = [], ausentes = [];
 
-  const PARES = [['Listas', 'Listas']]
-    .concat(ANOS.map(function (a) { return [a, 'Pagamentos ' + a]; }))
-    .concat([['Custo Fixo', 'Custo Fixo'],
-             ['Aporte Walton', 'Aporte'],
-             ['Notas de migração', 'Notas de migração']]);
+  // DOIS destinos, e a separação é de segurança, não de arrumação: o que a
+  // assistente usa todo dia vai para a Gestão; a folha nominal e o aporte vão
+  // para o arquivo do sócio, que não se compartilha com ninguém.
+  const PARES = [[ID_GESTAO, 'Listas', 'Listas']]
+    .concat(ANOS.map(function (a) { return [ID_GESTAO, a, 'Pagamentos ' + a]; }))
+    .concat([[ID_GESTAO, 'Notas de migração', 'Notas de migração'],
+             [ID_DIRECAO, 'Custo Fixo', 'Custo Fixo'],
+             [ID_DIRECAO, 'Aporte Walton', 'Aporte']]);
 
   PARES.forEach(function (par) {
-    if (dst.getSheetByName(par[1])) { puladas.push(par[1]); return; }
-    const o = org.getSheetByName(par[0]);
-    if (!o) { ausentes.push(par[0]); return; }
-    const nova = o.copyTo(dst).setName(par[1]);
+    const dst = SpreadsheetApp.openById(par[0]);
+    if (dst.getSheetByName(par[2])) { puladas.push(par[2]); return; }
+    const o = org.getSheetByName(par[1]);
+    if (!o) { ausentes.push(par[1]); return; }
+    const nova = o.copyTo(dst).setName(par[2]);
     nova.setFrozenRows(0);
     nova.setFrozenColumns(0);
-    feitas.push(par[1]);
+    feitas.push(par[2]);
   });
 
-  const p1 = dst.getSheetByName('Página1') || dst.getSheetByName('Sheet1');
-  if (p1 && dst.getSheets().length > 1) dst.deleteSheet(p1);
+  [ID_GESTAO, ID_DIRECAO].forEach(function (id) {
+    const dst = SpreadsheetApp.openById(id);
+    const p1 = dst.getSheetByName('Página1') || dst.getSheetByName('Sheet1');
+    if (p1 && dst.getSheets().length > 1) dst.deleteSheet(p1);
+  });
 
   if (ausentes.length) console.log('  não achei na origem: ' + ausentes.join(', '));
   SpreadsheetApp.flush();
@@ -3984,8 +4006,7 @@ function abaProjetos_(d) {
  */
 function ordenarGestao_() {
   const ss = SpreadsheetApp.openById(ID_GESTAO);
-  const ORDEM = ['Conferência', 'O mês', 'Projetos', 'Pagamentos ' + ANOS[0],
-                 'Custo Fixo', 'Aporte', 'Listas']
+  const ORDEM = ['Conferência', 'O mês', 'Projetos', 'Pagamentos ' + ANOS[0], 'Listas']
     .concat(ANOS.slice(1).map(function (a) { return 'Pagamentos ' + a; }))
     .concat(['Notas de migração']);
   const postas = [];
@@ -3997,7 +4018,17 @@ function ordenarGestao_() {
     ss.moveActiveSheet(i++);
     postas.push(nome);
   });
-  return postas.length + ' aba(s) em ordem';
+
+  // a tela de leitura primeiro, o dado digitado depois
+  const dir = SpreadsheetApp.openById(ID_DIRECAO);
+  ['O mês', 'Custo Fixo', 'Aporte'].forEach(function (nome, k) {
+    const sh = dir.getSheetByName(nome);
+    if (!sh) return;
+    dir.setActiveSheet(sh);
+    dir.moveActiveSheet(k + 1);
+  });
+
+  return postas.length + ' aba(s) na Gestão, ' + dir.getSheets().length + ' na Direção';
 }
 
 
@@ -4100,13 +4131,13 @@ function limparSobras() {
     [ID_ANUAL, 'Produção e Entrega', painelOk, 'virou a aba Projetos, na Gestão'],
     [ID_GESTAO, 'Análise mensal', painelOk, 'virou a aba O mês'],
     [ID_GESTAO, 'Clientes', clientesOk, 'o cadastro foi para a linha do pagamento'],
-    [ID_PAINEL, 'Visão geral', painelOk, 'virou a aba O mês'],
-    [ID_PAINEL, 'Margem por projeto', painelOk, 'virou a aba O mês'],
-    [ID_PAINEL, 'Resultado', painelOk, 'virou a aba O mês'],
-    [ID_PAINEL, 'Operação', painelOk, 'virou a aba O mês'],
-    [ID_PAINEL, 'Comissões', painelOk, 'virou a aba O mês'],
-    [ID_PAINEL, 'Equipe', painelOk, 'virou a aba O mês'],
-    [ID_PAINEL, 'Como ler', painelOk, 'virou o glossário no pé de O mês'],
+    [ID_DIRECAO, 'Visão geral', painelOk, 'virou a aba O mês'],
+    [ID_DIRECAO, 'Margem por projeto', painelOk, 'virou a aba O mês'],
+    [ID_DIRECAO, 'Resultado', painelOk, 'virou a aba O mês'],
+    [ID_DIRECAO, 'Operação', painelOk, 'virou a aba O mês'],
+    [ID_DIRECAO, 'Comissões', painelOk, 'virou a aba O mês'],
+    [ID_DIRECAO, 'Equipe', painelOk, 'virou a aba O mês'],
+    [ID_DIRECAO, 'Como ler', painelOk, 'virou o glossário no pé de O mês'],
   ];
 
   const fora = [], ficaram = [], nemExistiam = [];
