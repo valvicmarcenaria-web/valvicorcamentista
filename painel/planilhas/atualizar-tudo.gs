@@ -3534,6 +3534,133 @@ function abaOMesCasa_(d) {
 
 
 /**
+ * Volume de obra por pessoa (ou por categoria), já somado e ordenado.
+ *
+ * Uma leitura só, usada pelo ranking e pela tabela mês a mês logo abaixo dele.
+ * Se as duas contassem por conta própria, o primeiro lugar do ranking poderia
+ * não bater com a maior linha da tabela — e seria uma discussão por mês.
+ */
+function volumePorPessoa_(d, porCategoria) {
+  const chaveDe = function (nome) {
+    if (porCategoria) return nome ? categoriaDe_(nome) : 'Sem dono lançado';
+    return nome || '— sem dono —';
+  };
+  const prod = novaMatriz_(), mont = novaMatriz_();
+  d.rawAmb.forEach(function (L) {
+    const v = Number(L[4]) || 0;
+    if (!v) return;
+    somaNaMatriz_(prod, chaveDe(String(L[5] || '').trim()), L[8], v, d.ano);
+    somaNaMatriz_(mont, chaveDe(String(L[9] || '').trim()), L[12], v, d.ano);
+  });
+
+  const zero = function () { return [0,0,0,0,0,0,0,0,0,0,0,0,0,0]; };
+  const chaves = {};
+  Object.keys(prod).forEach(function (k) { chaves[k] = true; });
+  Object.keys(mont).forEach(function (k) { chaves[k] = true; });
+
+  return Object.keys(chaves).map(function (k) {
+    const p = prod[k] || zero(), m = mont[k] || zero();
+    return { k: k, p: p, m: m,
+             t: p.map(function (x, i) { return x + m[i]; }) };
+  }).sort(function (a, b) { return b.t[13] - a.t[13]; });
+}
+
+
+/**
+ * RANKING · quem está entregando mais.
+ *
+ * A tabela mês a mês logo abaixo responde "quanto fulano fez em outubro". Esta
+ * responde outra pergunta, que é a que se faz em voz alta na fábrica: quem
+ * está puxando a produção. São perguntas diferentes e por isso são duas
+ * tabelas, mas saem da MESMA soma — volumePorPessoa_ — então o primeiro lugar
+ * daqui é sempre a maior linha de lá.
+ *
+ * Posição no ano e posição no mês, lado a lado: é a diferença entre quem
+ * carregou o ano e quem está carregando agora. Quem subiu aparece com a
+ * posição do mês menor que a do ano.
+ *
+ * "— sem dono —" fica FORA do ranking e vai para o rodapé: ambiente sem nome
+ * lançado não é desempenho de ninguém, é ficha pela metade.
+ */
+function blocoRanking_(sh, lin, W, d) {
+  const todos = volumePorPessoa_(d, false);
+  const semDono = todos.filter(function (x) { return x.k === '— sem dono —'; });
+  const gente = todos.filter(function (x) { return x.k !== '— sem dono —'; });
+
+  const totalGeral = gente.reduce(function (s, x) { return s + x.t[13]; }, 0);
+  const noMes = gente.slice().sort(function (a, b) { return b.t[d.mes] - a.t[d.mes]; });
+  const posMes = {};
+  noMes.forEach(function (x, i) { posMes[x.k] = x.t[d.mes] > 0 ? i + 1 : ''; });
+
+  secaoPainel_(sh, lin, 'RANKING   ·   quem está entregando mais, produção e montagem somadas', W);
+  lin += 2;
+
+  if (!gente.length) {
+    sh.getRange(lin, 2, 1, W - 2).merge().setValue(
+      'Nenhum ambiente com nome lançado ainda — sem nome não há ranking.')
+      .setFontColor(MUTED).setFontStyle('italic');
+    return lin + 2;
+  }
+
+  const lider = gente[0];
+  const liderMes = noMes[0];
+  sh.getRange(lin, 2, 1, W - 2).merge().setValue(
+    '  No ano: ' + lider.k + ' lidera com R$ ' + lider.t[13].toFixed(2)
+    + (totalGeral ? '  ·  ' + (lider.t[13] / totalGeral * 100).toFixed(0)
+       + '% de toda a obra com dono lançado' : '')
+    + (liderMes && liderMes.t[d.mes] > 0
+       ? '        Em ' + MESES[d.mes] + ': ' + liderMes.k + ' com R$ '
+         + liderMes.t[d.mes].toFixed(2)
+       : '        Em ' + MESES[d.mes] + ': nada lançado ainda'))
+    .setBackground(GOLDBG).setFontColor('#7a5b17').setFontSize(9.5)
+    .setFontWeight('bold').setVerticalAlignment('middle');
+  sh.setRowHeight(lin, 22);
+  lin += 2;
+
+  const linhas = gente.map(function (x, i) {
+    return [i + 1, x.k, categoriaDe_(x.k), x.p[13], x.m[13], x.t[13],
+            totalGeral ? x.t[13] / totalGeral : 0, x.t[d.mes], posMes[x.k]];
+  });
+  linhas.push(['', 'TOTAL', '',
+    gente.reduce(function (s, x) { return s + x.p[13]; }, 0),
+    gente.reduce(function (s, x) { return s + x.m[13]; }, 0),
+    totalGeral, totalGeral ? 1 : 0,
+    gente.reduce(function (s, x) { return s + x.t[d.mes]; }, 0), '']);
+
+  const l0 = lin;
+  lin = tabelaPainel_(sh, lin, 2,
+    ['#', 'Colaborador', 'Categoria', 'Produzido no ano', 'Montado no ano',
+     'Total no ano', '% do total', 'No mês', '# no mês'],
+    linhas, ['0', null, null, MOEDA, MOEDA, MOEDA, PCT, MOEDA, '0']);
+  sh.getRange(l0 + linhas.length, 2, 1, 9)
+    .setBackground(NAVY).setFontColor(GOLDS).setFontWeight('bold');
+  sh.getRange(l0 + 1, 3, gente.length, 1).setFontWeight('bold').setFontColor(NAVY);
+  sh.getRange(l0 + 1, 7, gente.length, 1).setFontWeight('bold');
+
+  // O pódio marcado. Três tons de dourado e nada de medalha: a tabela é de
+  // trabalho, não é campeonato — mas quem está na frente tem de saltar aos
+  // olhos de quem abre a aba.
+  const podio = ['#f1dfae', '#f6edd6', '#faf4e6'];
+  for (let i = 0; i < Math.min(3, gente.length); i++) {
+    sh.getRange(l0 + 1 + i, 2, 1, 9).setBackground(podio[i]);
+    sh.getRange(l0 + 1 + i, 2, 1, 1).setFontWeight('bold').setFontColor('#7a5b17');
+  }
+
+  if (semDono.length && semDono[0].t[13] > 0) {
+    sh.getRange(lin, 2, 1, W - 2).merge().setValue(
+      'Fora do ranking: R$ ' + semDono[0].t[13].toFixed(2) + ' de obra com o campo "quem" em '
+      + 'branco na ficha. Não é desempenho de ninguém — é ficha pela metade, e a lista está '
+      + 'na aba Conferência.')
+      .setBackground('#fcf2f1').setFontColor('#b0413f').setFontSize(9)
+      .setFontStyle('italic').setWrap(true);
+    sh.setRowHeight(lin, 24);
+    lin += 2;
+  }
+  return lin;
+}
+
+
+/**
  * Volume de obra numa tabela só: produção, montagem e o total, mês a mês.
  *
  * Eram duas tabelas de dezesseis colunas, uma embaixo da outra. Para saber
@@ -3550,28 +3677,9 @@ function abaOMesCasa_(d) {
  * painel do investidor usa: ele precisa enxergar capacidade, não gente.
  */
 function blocoVolume_(sh, lin, W, d, porCategoria, titulo) {
-  const chaveDe = function (nome) {
-    if (porCategoria) return nome ? categoriaDe_(nome) : 'Sem dono lançado';
-    return nome || '— sem dono —';
-  };
-  const prod = novaMatriz_(), mont = novaMatriz_();
-  d.rawAmb.forEach(function (L) {
-    const v = Number(L[4]) || 0;
-    if (!v) return;
-    somaNaMatriz_(prod, chaveDe(String(L[5] || '').trim()), L[8], v, d.ano);
-    somaNaMatriz_(mont, chaveDe(String(L[9] || '').trim()), L[12], v, d.ano);
-  });
-
   const zero = function () { return [0,0,0,0,0,0,0,0,0,0,0,0,0,0]; };
   const soma = function (a, b) { return a.map(function (x, i) { return x + b[i]; }); };
-  const chaves = {};
-  Object.keys(prod).forEach(function (k) { chaves[k] = true; });
-  Object.keys(mont).forEach(function (k) { chaves[k] = true; });
-
-  const ordenadas = Object.keys(chaves).map(function (k) {
-    const p = prod[k] || zero(), m = mont[k] || zero();
-    return { k: k, p: p, m: m, t: soma(p, m) };
-  }).sort(function (a, b) { return b.t[13] - a.t[13]; });
+  const ordenadas = volumePorPessoa_(d, porCategoria);
 
   const linhas = [];
   ordenadas.forEach(function (x) {
@@ -3732,9 +3840,10 @@ function abaProjetos_(d) {
   const faixaEstado = sh.getRange(lfb + 1, 8, nF, 1);
   const faixaDono = sh.getRange(lfb + 1, 5, nF, 2);
 
-  // ── volume de obra por colaborador, produção e montagem juntas ──
+  // ── quem está entregando mais, e o detalhe mês a mês logo abaixo ──
+  lin = blocoRanking_(sh, lin, W, d);
   lin = blocoVolume_(sh, lin, W, d, false,
-    'VOLUME DE OBRA POR COLABORADOR   ·   quanto de obra passou pela mão de cada um');
+    'VOLUME DE OBRA POR COLABORADOR   ·   mês a mês, o detalhe do ranking acima');
 
   sh.setConditionalFormatRules([
     SpreadsheetApp.newConditionalFormatRule().whenNumberLessThan(0.25)
