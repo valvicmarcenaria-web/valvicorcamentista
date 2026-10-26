@@ -13,33 +13,50 @@ duas vistas. Essas precisam do PDF vetorial.
 
 ## 01 · LIVING — páginas 012 a 026 · 8 detalhamentos
 
-MDF **Nogueira Caiena** (Duratex).
+MDF **Nogueira Caiena** (Duratex), puxador **cava na própria madeira** em
+todo o ambiente. Pé-direito **300**, confirmado em seis cadeias.
 
-| DET | móvel | o que a prancha dá |
-|---|---|---|
-| 01 | Sapateira com painel | painel 300 de altura · cava usinada · LED na base |
-| 02 | Aparador com gaveta | 185 × 50, altura 45 · uma gaveta, cava |
-| 03 | Prateleira | 135 × 45 · com iluminação |
-| 04 | Divisória em ripas | onze ripas de **7**, vão de 10, prof. 20, altura 300 · total 177 |
-| 05 | Jardineira com banco | conjunto 520 · floreira 500 × 50 · banco 80 × 50, alt. 44, LED inferior |
-| 06 | Divisória com cristaleira | divisória 360 × 300 · cristaleira 100 × 260, portas de giro em **vidro reflecta champagne**, prateleiras iluminadas · rack com gavetas, base recuada com LED |
-| 07 | Estante | 300 × 215, prof. 40 · quatro nichos de 48, fundo ripado · gavetas com cava |
-| 08 | Painel com porta mimetizada | painel 400 × 300 · folha de giro 90 × 210, cava |
+⛔⛔ **A PRIMEIRA LEITURA DESTE AMBIENTE ESTAVA ERRADA, e por um fator de
+três.** Eu havia lido a prancha pelo texto plano, que dá as cotas soltas.
+Com a geometria, cada móvel cresceu:
 
-⭐ A cadeia de cota da divisória fecha: 11 × 7 + 10 × 10 = 177. É o tipo de
-conferência que diz que a leitura está certa.
+| o que eu havia lido | o que a cadeia de cota diz |
+|---|---|
+| onze ripas no brise | **trinta e duas** — são três trechos de ripado, não um |
+| divisória com cristaleira de 360 | **460** |
+| uma porta mimetizada | **duas** |
+| estante de 300 | **255**, mas com quatro colunas e dezesseis nichos |
+| sapateira sem contagem | **três frentes de 34** |
 
-⭐ **Alma de aço**: as onze ripas de 7 cm passam de 30 mm → onze barras.
+⭐⭐ A lição: **só a cadeia de cota fecha o ambiente.** O texto plano diz o
+que existe; a geometria diz quanto.
 
-⚠ A contar: gavetas da cristaleira (DET 06), gavetas da estante (DET 07),
-frentes da sapateira (DET 01), metros de LED, metros de fita.
+| DET | móvel | medida geral | o que a cadeia de cota deu |
+|---|---|---|---|
+| 01 | Sapateira com painel | 82 × 300 | altura 178 (painel) + 105 (sapateira) + 17 (base com LED) = 300 · sapateira 2 + 34 + 34 + 34 + 2 = 105, **três frentes** |
+| 02 | Aparador com gaveta | 185 × 55 × 50 | largura 8 + 34 + 8 + 135 = 185 · altura 5 + 45 + 5 = 55 · gaveta de 135 |
+| 03 | Prateleira | 135 × 45 | com iluminação |
+| 04 | Divisória em ripas | três trechos | trecho de 177 = 11 × 7 + 10 × 10 ⭐ · trecho de 197 = 11 × 7 + 10 × 10 + 20 · o terceiro dentro da cadeia de 387 · profundidade 20 |
+| 05 | Jardineira com banco | 520 | conjunto 10 + 500 + 10 + 80 + 103 · a vista superior fecha **52 × 10 = 520** · floreira suspensa 500 × 50 · banco 80 × 50 com LED |
+| 06 | Divisória com cristaleira | **460** × 300 | largura 100 + 260 + 100 = 460 · coluna A 5+39+5+62+5+65+5+32+5+53+5+20 = 300 · coluna B 5+54+2+53+2+53+2+53+2+54+2+20 = 300 · base recuada de 20 com LED |
+| 07 | Estante | **255** × 300 × 40 | largura 5+75+5+60+5+60+5+40 = 255 · altura 5+48+5+48+5+48+5+48+5+43+35+5 = 300 · **quatro colunas, quatro prateleiras de 48 cada**, gaveteiro de 35 com **três gavetas** · nichos com **fundo ripado** |
+| 08 | Painel com porta mimetizada | 400 × 300 | largura 260 + 80 + 60 = 400 · **duas** portas mimetizadas de giro, 90 × 210, com cava |
+
+⭐⭐ **ALMA DE AÇO: trinta e duas barras, não onze.** As ripas do brise têm
+7 cm e 300 de altura — passam de 30 mm e são as peças mais esbeltas do
+projeto. A 300 cm cada, é uma barra por ripa: **R$ 1.600**, contra os
+R$ 550 da primeira leitura.
+
+⭐ **Fundo ripado** nos nichos da estante (DET 07) e na floreira (DET 05):
+usinagem de ranhura, não ripa solta. Mão de obra que não aparece na chapa.
+
+⛔ **Vidro reflecta champagne** nas portas de giro da cristaleira — a
+cotar com o vidraceiro, segue sem preço desde o projeto da Sandra.
 
 Fora do escopo na prancha: parede com pedra Atacama Branca, porta ripada,
-tinta Decora Efeitos Especiais Velvet, mobiliário solto (sofá Tiffany,
-poltrona Serfa, mesa Cambuí, cadeira Ditta), luminárias, tapete, cortinas e
-espelho redondo de bambu.
-
----
+tinta Decora Efeitos Especiais Velvet, espelho MH 2897 (Uultis), pendente
+de palha 35 × 100 × 35, mobiliário solto (sofá Tiffany, poltrona Serfa,
+mesa Cambuí, cadeira Ditta), luminárias, tapete e cortinas.
 
 ## 02 · COZINHA — páginas 028 a 042 · 5 detalhamentos
 
