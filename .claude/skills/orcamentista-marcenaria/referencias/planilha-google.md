@@ -1,10 +1,57 @@
-# Planilha no Google — como montar sem apanhar
+# Planilhas da casa — a base e o orçamento
 
-Quando o Jonathan pede uma planilha **para o cliente conferir o levantamento**,
-ela vai para o Google Sheets, na pasta `Orçamentos Valvic`, e não para um
-`.xlsx` local. O cliente abre no celular; o Jonathan edita junto; e a projeção
-versus realizado só existe se a planilha for **viva**, com fórmula, não com
-número colado.
+## ⭐⭐ DUAS PLANILHAS, NÃO UMA [Jonathan, 26/10/2026]
+
+> *"quero que você crie uma planilha individual, que vai ser a base de
+> informações... E já na planilha do orçamento do cliente, você vai puxar
+> todas as informações dessa base e vai relacionar só as abas."*
+
+| planilha | o que é | quantas |
+|---|---|---|
+| **Valvic · Base de Custos** | a fonte única de preço da casa | **uma só**, para sempre |
+| **orçamento do cliente** | o levantamento de um projeto | uma por cliente |
+
+⛔ **Preço não se digita dentro do orçamento do cliente.** Se falta um item,
+ele entra na Base. Assim o preço muda num lugar só e todos os orçamentos
+novos acompanham — e some o risco de dois orçamentos usarem preços
+diferentes para a mesma dobradiça.
+
+### A Base — seis abas
+
+`https://docs.google.com/spreadsheets/d/13cZGej-AUTTyWZblqtraTBnc1HUECjT6fy3zy6R5mv4/edit`
+
+| aba | o que guarda |
+|---|---|
+| **Instruções** | como usar, como ligar um orçamento, as regras de ferro |
+| **MDF** | preço da chapa por padrão × espessura, medida, aproveitamento, fita, consumíveis |
+| **Ferragens** | Blum, alma de aço, LED — e os itens **a cotar**, com a linha reservada |
+| **Terceirizados** | provençal, usinagens, laminação, pedra, serralheria |
+| **Vidro** | reflecta champagne, espelho, temperado |
+| **Comissões** | a cascata inteira e a BASE calculada em cada condição |
+
+⭐ Os itens **sem preço** ficam na Base com a linha criada e o valor vazio.
+Assim o orçamento que os usa mostra zero e grita — em vez de esconder o
+buraco.
+
+### O orçamento do cliente
+
+| aba | o que faz |
+|---|---|
+| **Painel** | o resumo geral: custo por ambiente, preço de venda, taxas de transação, comissões, MC |
+| **Base (importada)** | `IMPORTRANGE` da Base, uma vez só; as outras abas fazem PROCV aqui |
+| **uma por ambiente** | os **itens** do ambiente, e dentro de cada item os seus materiais |
+
+⭐⭐ **O ambiente se organiza por ITEM, não por tipo de material.**
+Cada móvel é um bloco fechado com o seu custo; o ambiente soma os blocos.
+É como o Jonathan vende e como a fábrica produz — e conferir "a sapateira
+custa X" é possível, conferir "o ambiente tem 104 m² de chapa" não é.
+
+No fim da aba vai o **resumo de material do ambiente**: a soma de tudo que
+os itens consumiram, consolidada.
+
+⛔ `IMPORTRANGE` pede autorização na primeira vez: abrir a planilha do
+cliente, clicar na célula e em **Permitir acesso**. Sem isso a aba
+importada fica em `#REF!` e o orçamento inteiro zera.
 
 ## ⛔⛔ A ARMADILHA QUE QUEIMOU UMA RODADA INTEIRA — locale pt_BR
 
@@ -118,3 +165,52 @@ sobre a coluna de espessura:
 mesmas peças em Python e soma a área por espessura. Se a planilha e o
 script derem o mesmo número, a leitura da prancha foi transcrita certo —
 a Cozinha fechou em 80,27 m² nos dois caminhos.
+
+## ⭐ O VISUAL — padrão Valvic aplicado à planilha
+
+A paleta é a da marca (`closer-vendas/referencias/identidade-marca.md`), a
+mesma das propostas. Uma planilha que o cliente abre é peça da marca, não
+rascunho interno.
+
+| uso | cor |
+|---|---|
+| faixa de bloco: fundo | **#1A1A1A** quase-preto |
+| faixa de bloco: texto | **#E0A521** dourado da marca |
+| cabeçalho de coluna: fundo | **#FDF6E3** creme |
+| cabeçalho de coluna: texto | #1A1A1A, negrito |
+| linha de total: fundo | **#F6E8C8** creme dourado |
+| título da aba | #1A1A1A, 14 pt, negrito |
+| número de entrada | **#0000CC** azul |
+| número de fórmula | **#00732E** verde |
+| borda de bloco | #D4C9A8 dourado claro, fina |
+
+⭐ **Gridlines desligadas.** O desenho sai das faixas e das bordas, não da
+grade. É o que dá o respiro das propostas.
+
+⭐ **Azul é entrada, verde é fórmula** — a convenção fica escrita na linha 3
+de cada aba, para quem abre pela primeira vez.
+
+⭐ **A faixa de bloco é mesclada** (`mergeCells`) de A até a última coluna.
+Assim o título do bloco atravessa a largura e separa de verdade.
+
+## ⛔⛔ CHAPA EM NÚMERO CHEIO — como a planilha faz
+
+> **Regra de ferro da casa** (`quantitativo.md`): não existe 2,7 chapas.
+
+Cada aba de ambiente tem uma **coluna de padrão de MDF** (F) ao lado da
+espessura (G), e um **bloco de compra** à direita (K:O) com uma linha por
+**padrão × espessura**:
+
+```
+L = área   =SUMIFS($H$21:$H$70;$F$21:$F$70;$K22;$G$21:$G$70;$L22)
+M = chapas =MAX(1;ROUNDUP(L22/('Base de Preços'!$B$57*'Base de Preços'!$B$27);0))
+O = custo  =M22*N22
+```
+
+⭐ O `MAX(1; …)` é o "mínimo de uma chapa por cor": uma peça só de um padrão
+já obriga a comprar a chapa inteira.
+
+⭐ Os totais do ambiente (H71 área · H72 chapas · H73 custo) **somam esse
+bloco**, não a fração. Antes de mudar isso, a Cozinha dava 19,72 chapas num
+total só; com a regra, dá **21 chapas** em três compras separadas — e o custo
+sobe, porque é o que sai do caixa de verdade.

@@ -1,5 +1,39 @@
 # Quantitativo de materiais — metodologia (em revisão)
 
+## ⛔⛔ REGRA DE FERRO — CHAPA SE CONTA EM NÚMERO CHEIO
+
+> **Jonathan, 26/10/2026:** *"sempre quantificar chapas por valores cheios.
+> nao existe 2.7 chapas, sao 3."*
+
+Não existe meia chapa. Não existe 2,7 chapas. **A chapa é a unidade de
+compra**: o fornecedor entrega inteira, a nota vem inteira e o dinheiro sai
+inteiro. Toda contagem **arredonda para cima**.
+
+⭐ E arredonda **por cor × espessura**, não no total. Um ambiente com três
+padrões de MDF em 18 mm faz **três** arredondamentos, não um — cada cor é
+uma compra separada, e cada uma puxa **no mínimo uma chapa** mesmo que leve
+uma peça só.
+
+```
+chapas de um padrão numa espessura
+  = ARREDONDA PARA CIMA( Σ área das peças ÷ (área da chapa × aproveitamento) )
+  e nunca menos de 1
+```
+
+⛔ **Somar a fração e arredondar no fim subestima a compra.** Três cores com
+0,4 · 0,5 · 0,6 chapa não são 2 chapas: são **3**, uma de cada. O erro cresce
+com o número de padrões — e justo os projetos de arquiteta, que misturam cor,
+é onde ele dói.
+
+⚠ **Eu errei isso** na primeira versão da planilha da Jéssica e do Michell:
+deixei a contagem em fração e dividi um total único pelo preço. Numa cozinha
+com Verde Floresta, Jequitibá Rosa e Branco a conta saiu curta.
+
+⭐ A sobra de uma cor com poucas peças é a **chapa de cauda**: rende de 2% a
+35%, contra 85–92% das principais. Ela já está paga — vale olhar se dá para
+puxar outra peça do projeto para dentro dela antes de fechar o plano de corte.
+
+
 > ⚠ **PRELIMINAR — aguardando explicação da Valvic.** Este documento registra
 > os **artefatos reais** lidos (plano de corte e lista de materiais do projeto
 > Maria – Vale dos Cristais). As **interpretações de metodologia** abaixo
