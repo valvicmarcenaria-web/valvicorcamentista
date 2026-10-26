@@ -479,9 +479,17 @@ function lerAporteCasa_() {
   // entradas − saídas − investimentos dá R$ 42.000, e eu ia publicar isso como
   // "saldo pela conta" contra o R$ 0,00 da planilha. O R$ 0,00 está certo — o
   // aporte foi todo consumido.
+  //
+  // O rótulo mora na coluna A, não na B: é título de seção, como ENTRADAS,
+  // SAÍDAS e INVESTIMENTOS, e não um total como "Total · entradas". Eu
+  // procurava só na B e não achava — e a conta publicava uma diferença de
+  // R$ 42.000 que não existe. Procuro nas duas.
+  const secao = sh.getRange(1, 1, fim, 2).getDisplayValues();
   let servicos = 0;
   for (let r = 0; r < fim; r++) {
-    if (String(rot[r][0] || '').trim().toLowerCase().indexOf('saídas walton') !== 0) continue;
+    const marca = (String(secao[r][0] || '') + ' ' + String(secao[r][1] || ''))
+      .trim().toLowerCase();
+    if (marca.indexOf('saídas walton') < 0) continue;
     for (let k = r + 1; k < fim; k++) {
       const rotulo = String(rot[k][0] || '').trim();
       const valor = Number(val[k][0]) || 0;
@@ -1702,8 +1710,12 @@ function validar() {
      semGestao.join(' | '));
   ok('todas as fichas têm o campo de competência', semCampoComp.length === 0,
      semCampoComp.join(' | '));
-  ok('projeto entregue tem competência', semMes.length === 0,
-     semMes.length + ' sem entrega real, logo sem competência: ' + semMes.join(' | '));
+  // Não é falha: obra sem entrega real não TEM competência, e é assim que
+  // tem de ser. Falha é defeito de estrutura; isto é o estado da obra.
+  if (semMes.length) {
+    diz('  ·     ' + semMes.length + ' obra(s) ainda sem entrega real, logo sem '
+      + 'competência: ' + semMes.join(' | '));
+  }
   ok('nenhuma ficha com erro nas células-chave', comErro.length === 0, comErro.join(' | '));
   ok('ambientes somam o valor de venda', ambDifere.length === 0, ambDifere.join(' | '));
 
@@ -1728,10 +1740,11 @@ function validar() {
     diz('  (a Análise anual não está mais acessível — a migração terminou)');
   } else {
     cm.linhas.forEach(function (L) {
-      ok('migração de ' + L.ano + ' bate com a origem', L.ok,
-         L.falta ? L.falta
-                 : 'origem ' + L.origem.n + '/' + L.origem.p + '/R$ ' + L.origem.v.toFixed(2)
-                   + '  ·  cópia ' + L.copia.n + '/' + L.copia.p + '/R$ ' + L.copia.v.toFixed(2));
+      const det = L.falta ? L.falta
+        : 'origem ' + L.origem.n + '/' + L.origem.p + '/R$ ' + L.origem.v.toFixed(2)
+          + '  ·  cópia ' + L.copia.n + '/' + L.copia.p + '/R$ ' + L.copia.v.toFixed(2)
+          + (L.ok && !L.igual ? '  ·  a cópia está À FRENTE, e é ela que vale' : '');
+      ok('a cópia de ' + L.ano + ' não perdeu nada da origem', L.ok, det);
     });
   }
 
@@ -2749,7 +2762,7 @@ function repararFichas() {
   const FRENTES_PCT = [67, 68, 69];
 
   let fichas = 0, rodapes = 0, pcts = 0;
-  const congelados = [], respeitados = [];
+  const congelados = [], respeitados = [], circulares = [];
 
   ss.getSheets().forEach(function (sh) {
     const nome = sh.getName();
@@ -2782,6 +2795,26 @@ function repararFichas() {
       if (def[0] === '=FORMULA') { posF_(rg, F_FATURAR); } else { rg.setValue(alvo); }
       rodapes++;
     });
+
+    // ── o valor de venda não pode depender do "% da venda" ──
+    //
+    // A13 nasceu como =IF($D$28="",$C$28,$D$28): se o valor fechado estivesse
+    // em branco, caía no orçado da coluna C. Só que a conversão do orçado fez
+    // da coluna C o "% da venda", e C28 passou a ser $D$28/$A$13. Virou
+    // circular — A13 precisa de C28, C28 precisa de A13 — e o Google responde
+    // a isso com #REF!.
+    //
+    // Nas fichas com o valor preenchido ele consegue resolver e ninguém viu.
+    // Na FICHA MODELO, que é vazia por definição, o ciclo aparece: A13, o custo
+    // total, a margem, a receita líquida e o bloco 4 inteiro ficam #REF!. E a
+    // Ficha Modelo é o que o botão duplica — toda ficha nova nascia quebrada.
+    const celVenda = sh.getRange(FICHA.venda);
+    const fVenda = celVenda.getFormula();
+    if (fVenda && /\$?C\$?28/.test(fVenda)) {
+      posF_(celVenda, '=IF($D$28="",0,$D$28)');
+      circulares.push(nome.trim());
+      rodapes++;
+    }
 
     // ── o status do RT, que ficou com a dica dentro ──
     //
@@ -2822,6 +2855,10 @@ function repararFichas() {
   if (congelados.length) {
     console.log('  rodapé congelado que voltou a ser fórmula ou texto certo:');
     congelados.forEach(function (t) { console.log('    ' + t); });
+  }
+  if (circulares.length) {
+    console.log('  o valor de venda deixou de depender do "% da venda" em: '
+      + circulares.join(' | '));
   }
   if (respeitados.length) {
     console.log('  percentual digitado à mão, NÃO mexi: ' + respeitados.join(' | '));
@@ -4091,10 +4128,16 @@ function conferirMigracao_() {
   ANOS.forEach(function (ano) {
     const a = conta(org.getSheetByName(ano));
     const b = conta(dst.getSheetByName('Pagamentos ' + ano));
+    // A pergunta é "a cópia perdeu alguma coisa?", não "a cópia é idêntica?".
+    // A aba de ano da Gestão é a VIVA: é nela que a Carla digita desde a
+    // migração. Ela estar à frente da origem — mais uma parcela, um valor
+    // corrigido — é o esperado, não defeito. Só é perda se vier MENOS.
+    const perdeu = !!a && !!b && (b.n < a.n || b.p < a.p);
     linhas.push({
       ano: ano,
       origem: a, copia: b,
-      ok: !!a && !!b && a.n === b.n && Math.abs(a.v - b.v) < 1 && a.p === b.p,
+      ok: !!a && !!b && !perdeu,
+      igual: !!a && !!b && a.n === b.n && a.p === b.p && Math.abs(a.v - b.v) < 1,
       falta: !b ? 'a cópia não existe' : (!a ? 'a origem não existe' : ''),
     });
   });
