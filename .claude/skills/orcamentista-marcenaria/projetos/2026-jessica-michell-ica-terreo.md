@@ -165,3 +165,55 @@ nosso**, e precisa ficar explícito na proposta para não virar expectativa.
 
 **19 ambientes, 86 detalhamentos.** O caminho está aberto e a ferramenta
 está pronta — é volume, não obstáculo.
+
+---
+
+# ESTADO DO LEVANTAMENTO — 26/10/2026
+
+## Onde está
+
+| ambiente | DET | chapa | custo direto | situação |
+|---|--:|--:|--:|---|
+| 01 Living | 8 | 105,7 m² | R$ 20.698 | levantado |
+| 02 Cozinha | 5 | 80,3 m² | R$ 21.728 | levantado |
+| 03 Lavanderia | 6 | 104,0 m² | R$ 21.293 | levantado |
+| 04 Quarto | 6 | 60,5 m² | R$ 12.518 | levantado |
+| **somados** | **25** | **350,5 m²** | **R$ 76.237** | **26,6% dos 94** |
+
+⭐ **Projeção pelo número de detalhamentos: R$ 286.649 de custo direto.**
+Pela base da casa (76,0875%, com RT e sem vendedor) e MC de 40%, dá um
+**preço indicativo de R$ 795 mil**. Não é preço: é ordem de grandeza, e
+serve para o Jonathan decidir o que cotar primeiro.
+
+⚠ **E a projeção não inclui** moldura provençal, puxador Alças Traso,
+pedra, vidro, pistão de tampo, corrediça de carga, cabideiro, usinagem de
+ripado nem puxador passante. Todos sem preço na base.
+
+## ⛔⛔ A lição mais cara deste projeto até agora
+
+A primeira leitura do **Living** errou por um fator de três — R$ 5.672
+contra os R$ 20.698 reais. O motivo: eu lia a prancha pelo **texto**, que
+devolve as cotas soltas, sem saber a que peça cada número pertence.
+
+⭐ A correção foi ler o **PDF vetorial com a posição de cada palavra**
+(`projetos/ica-michell/geo.py`), agrupar as cotas em cadeias e checar se a
+cadeia fecha na cota total. Quando `5 + 48 + 5 + 48 + 5 + 48 + 5 + 48 + 5 +
+43 + 35 + 5 = 300` e a folha traz 300, a leitura está provada.
+
+⭐⭐ **Nenhum ambiente deste projeto se fecha sem a cadeia de cota.** O
+texto diz o que existe; a geometria diz quanto.
+
+## O que falta
+
+Dezesseis ambientes, 69 detalhamentos: Lavabo, Área Gourmet, Banho
+Gourmet, Home Office, Suíte Hóspedes, Banho Hóspedes, Sala de Cinema e
+Ateliê, Suíte Master, Closet Master, Banho Master, Suíte Mariana, Closet
+Mariana, Banho Mariana, Suíte 03, Closet 03 e Banho 03.
+
+## A planilha
+
+`https://docs.google.com/spreadsheets/d/10G12W-0rZUu4c0hAdXmuz-ClgeUluR5vIuTU7pjqLOw/edit`
+
+Na pasta `Orçamentos Valvic`. Uma aba por ambiente, mais `Resumo Geral`,
+`Custos` e `Base de Preços`. Azul é entrada, verde é fórmula. O mapa de
+linhas está em `referencias/planilha-google.md`.
