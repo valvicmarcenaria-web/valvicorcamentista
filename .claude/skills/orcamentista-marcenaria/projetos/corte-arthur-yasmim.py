@@ -329,10 +329,10 @@ if __name__ == '__main__':
            'margem de erro': 'sim, quebra acontece',
            'desgaste de serra': '⛔ NÃO — não passa na serra',
            'manutenção de máquinas': '⛔ NÃO — não usa máquina',
-           'produção · coordenacao': 'sim, alguém compra e confere',
-           'produção · programacao': '⛔ NÃO — não há o que programar',
-           'produção · fabricacao': '⛔ NÃO — não fabricamos',
-           'produção · montagem': 'sim, nós penduramos'}
+           'comissão · coordenacao': 'sim, alguém compra e confere',
+           'comissão · projeto': '⛔ NÃO — não há o que projetar',
+           'comissão · producao': '⛔ NÃO — não fabricamos',
+           'comissão · montagem': 'sim, nós penduramos'}
     for k, v in USA.items():
         if enc_cheio.get(k): print(f'    {k:<26}{enc_cheio[k]*100:>6.2f}%   {v}')
     LIQ = 1 - M.NF

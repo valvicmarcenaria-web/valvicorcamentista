@@ -21,9 +21,23 @@ A CASCATA, sobre o PREÇO DE VENDA (bruto):
        RT ................................. 10% do líquido  (quando aplicável)
        comissão de vendedor ............... 10% do líquido  (quando aplicável)
 
-  3. LÍQUIDO 2 = líquido − RT − comissão de vendedor
-       comissões de produção .............. 7% do líquido 2
-         coordenação 1,0 · programação 1,0 · fabricação 2,5 · montagem 2,5
+  3. LÍQUIDO 2 = líquido − RT
+       comissões internas ................. 7,5% do líquido 2
+         produção 2,5 · montagem 2,5 · projeto 1,0 · coordenação 1,0 ·
+         gestão de projetos 0,5
+
+  ⭐⭐ [Jonathan 26/10/2026] DUAS MUDANÇAS, conferidas contra a aba
+     `Base · Comissões` da planilha **N.GESTÃO 2 · Custo por Projeto**:
+       1. entrou a **gestão de projetos, 0,5%** — a soma vai de 7,0 a 7,5%;
+       2. a base passa a ser *"o valor líquido, descontando RT, descontando
+          taxa de máquina, descontando nota fiscal"*. ⛔ A **comissão de
+          vendedor SAIU da dedução**: antes o líquido 2 descontava RT **e**
+          vendedor; agora desconta só a RT, e a comissão do vendedor corre
+          sobre a mesma base das demais. *"Todas as comissões são de valores
+          líquidos, sobre valores líquidos."*
+     ⚠ A BASE DA CASA MUDA EM TODO PROJETO: 85,35 → 84,88% sem RT, e
+       76,52 → 76,09% com RT. Preço declarado não se mexe (regra de 21/10);
+       o que muda é a MC lida de cada preço, que cai cerca de 0,45 ponto.
 
   BASE = 1 − (soma de tudo acima, como fração do preço)
   PREÇO para uma MC alvo  =  custo_direto / (BASE − MC)
@@ -37,9 +51,11 @@ SERRA     = 0.005     # desgaste de serra e fresa, sobre o bruto
 MANUT     = 0.005     # manutenção de máquinas, sobre o bruto
 RT        = 0.10      # sobre o líquido (bruto − NF − cartão)
 VENDEDOR  = 0.10      # sobre o líquido, mesma base do RT
-PRODUCAO  = dict(coordenacao=0.010, programacao=0.010,
-                 fabricacao=0.025, montagem=0.025)   # sobre o líquido 2
-PROD      = sum(PRODUCAO.values())                   # 7,0%
+# ⭐ Nomes alinhados com a aba `Base · Comissões` da planilha da casa —
+#   é o mesmo vocabulário que a gestão usa para conferir o realizado.
+PRODUCAO  = dict(producao=0.025, montagem=0.025, projeto=0.010,
+                 coordenacao=0.010, gestao=0.005)    # sobre o líquido 2
+PROD      = sum(PRODUCAO.values())                   # 7,5%
 EMBALAGEM = 0.02      # sobre o CUSTO DIRETO do projeto, não sobre o preço
 
 MC_PISO, MC_IDEAL = 0.35, (0.35, 0.40)
@@ -63,12 +79,15 @@ def encargos(parcelas=0, rt=True, vendedor=True):
     liq    = 1 - NF - cartao                   # base do RT e do vendedor
     e_rt   = liq * _taxa(rt, RT)
     e_vend = liq * _taxa(vendedor, VENDEDOR)
-    liq2   = liq - e_rt - e_vend               # base das comissões de produção
+    # ⛔ [Jonathan 26/10] o líquido 2 desconta a RT e SÓ a RT. A comissão
+    #   de vendedor deixou de ser deduzida aqui — ela é uma comissão como
+    #   as outras e corre sobre esta mesma base.
+    liq2   = liq - e_rt                        # base de TODAS as comissões
     d = {'nota fiscal': NF, 'taxa de cartão': cartao, 'margem de erro': ERRO,
          'desgaste de serra': SERRA, 'manutenção de máquinas': MANUT,
          'RT': e_rt, 'comissão de vendedor': e_vend}
     for k, v in PRODUCAO.items():
-        d[f'produção · {k}'] = liq2 * v
+        d[f'comissão · {k}'] = liq2 * v
     return d
 
 
