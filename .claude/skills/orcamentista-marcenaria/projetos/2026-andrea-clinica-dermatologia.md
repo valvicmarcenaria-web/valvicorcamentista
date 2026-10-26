@@ -1,8 +1,10 @@
 # ANDREA — clínica de dermatologia · ADITIVO DE LAMINAÇÃO
 
 **Cliente:** Andrea · **Obra:** clínica de dermatologia
-**Parceira:** Paula (decoradora) — ⛔ **não citada em documento nenhum**
-**Folha:** `projetos/aditivo-andrea-laminacao.pdf` · 1 página · 24/10/2026
+**Parceira:** Paula Galante (decoradora) — ⚠ **a regra mudou em 26/10:**
+ela pediu para APARECER como quem absorve a diferença. Entra na folha pelo
+papel ("a responsável pelo projeto de interiores"), nunca pelo nome.
+**Folha:** `projetos/aditivo-andrea-laminacao.pdf` · 1 página · **v2 · 26/10/2026**
 
 ---
 
@@ -105,6 +107,125 @@ A mão de obra é também a premissa que mais move a resposta:
 
 ---
 
+---
+
+## 26/10/2026 — ⭐⭐ v2: A ESTRUTURA DE SUBSÍDIO TÉCNICO
+
+A Paula respondeu à pergunta que o Jonathan fez às 15:29 — *"sinalizo que
+vc está pagando o valor ou faço somente o abatimento apresentando o novo
+valor?"* — e mandou pronta a estrutura de três linhas:
+
+| | | |
+|---|---|--:|
+| 01 | Execução de marcenaria sob medida | R$ 16.500,00 |
+| 02 | Subsídio técnico | − R$ 10.560,00 |
+| | **Valor líquido a pagar pela contratante** | **R$ 5.940,00** |
+
+O subsídio é **64% do aditivo**; a contratante paga **36%**.
+
+> *"Quero sim que a cliente saiba o quanto lamentei por este inconveniente
+> e que estou arcando com parte do valor (…) caso queira sugerir ou
+> melhorar esta observação, fique à vontade!"* — Paula, 16:05
+
+### ⭐ A RECEITA NÃO MUDA — A GARANTIA MUDA INTEIRA
+
+A Valvic continua recebendo R$ 16.500: R$ 5.940 da contratante e R$ 10.560
+da parceira. MC 35%, contribuição R$ 5.775 — **idêntico ao cenário
+anterior.** O que muda não é quanto entra: é **de quem, e com que
+garantia.**
+
+⛔⛔ Antes, os R$ 16.500 eram devidos por uma contratante dentro de um
+contrato assinado. Depois do subsídio, **R$ 10.560 passam a ser devidos por
+um terceiro que não assina esta folha** — e a folha que a Valvic emite diz,
+por escrito, que a contratante deve R$ 5.940. Se o subsídio não for
+liquidado:
+
+| | |
+|---|--:|
+| recebido (só a contratante) | 5.940 |
+| custo direto do aditivo | −8.229 |
+| **contribuição** | **−3.188** ⛔ |
+
+⭐⭐ **A oscilação é de R$ 8.963** — de +R$ 5.775 para −R$ 3.188 — e depende
+de um combinado que não está no documento.
+
+**O conserto é uma linha de texto, não uma renegociação:** a folha diz quem
+concede o subsídio e que ele é **liquidado diretamente junto à Valvic**.
+Isso o transforma, no papel, em crédito contra terceiro e não em desconto
+concedido. ⭐ E é exatamente o que a Paula pediu — ela QUER que a cliente
+saiba que está arcando. O interesse das duas partes aponta para o mesmo
+texto.
+
+### ⛔ O "SEM VISAR LUCRO" NÃO ENTROU — E POR QUÊ
+
+> *"acho que vc deveria colocar o que você me disse que está colocando
+> apenas o custo sem visar lucro para resolver esta situação!"* — Paula
+
+A R$ 16.500 isso **não é verdade** na faixa provável de área:
+
+| área de face | MC |
+|---|--:|
+| 12,6 m² — topo da faixa ideal | 42,7% |
+| 15,1 m² — piso da casa | 35,0% |
+| 20,0 m² | 19,5% |
+| **27,1 m² — aqui sim, MC zero** | **0,0%** |
+
+⚠ Só vira "apenas o custo" a 27,1 m², quase o dobro da área provável. Posta
+por escrito, é frase que a primeira cotação de concorrente desmonta — e
+vira precedente para a próxima adequação.
+
+⭐⭐ **O QUE É VERDADE E DIZ QUASE O MESMO:** o aditivo foi orçado **sem RT
+e sem comissão de vendedor**, por ser adequação dentro de um contrato que
+já corre. Base **84,88%** contra **67,30%** de serviço avulso — 17,6 pontos
+que a casa deixa na mesa:
+
+| | |
+|---|--:|
+| como serviço avulso, no piso da casa | 25.478 |
+| **como adequação de contrato em curso** | **16.500** |
+| diferença | **−35%** |
+
+Entrou na folha assim: *"Valor praticado em **condição especial de
+adequação**, por se tratar de obra em andamento — sem o acréscimo aplicado
+a serviço avulso."* Verdadeiro, auditável, e vale 35% de abatimento
+declarável.
+
+### ⭐ A REDAÇÃO DA OBSERVAÇÃO — O QUE SAIU E O QUE ENTROU
+
+A Paula escreveu, e autorizou mexer:
+
+> *"Como no orçamento contratado foi considerada a opção do material de
+> menor custo indicado pela designer de ambientes, mas o mesmo não foi
+> atualizado no projeto aprovado pela prefeitura, ela decidiu absorver a
+> diferença…"*
+
+⛔ **Numa folha da Valvic isso é a Valvic registrando, por escrito e no
+documento que a cliente guarda, que a parceira falhou.** Nós não ganhamos
+nada com isso e criamos prova contra a própria parceira. A regra do
+Jonathan — *expor a solução, nunca o erro* — continua valendo; o que mudou
+é que agora o **gesto** aparece. O gesto, não a falha.
+
+| | |
+|---|---|
+| ⛔ saiu | "material de menor custo **indicado pela designer de ambientes**" · "**não foi atualizado** no projeto aprovado pela prefeitura" |
+| ⭐ entrou | "O acabamento especificado no **memorial homologado está acima do previsto** no orçamento contratado. **A responsável pelo projeto de interiores optou por absorver integralmente a diferença**…" |
+
+O memorial **especifica** (fato, não culpa) e a responsável **optou por
+absorver** (gesto). Ninguém errou: o documento está sendo cumprido.
+
+### ⛔⛔ AS DOZE TRAVAS DE LINGUAGEM
+
+`build-andrea-aditivo.py` agora **lê a própria folha renderizada** e falha
+se encontrar: erro · equívoco · falha · engano · divergência · incorreto /
+inadequado / impróprio · **Paula / Galante** · decoradora / designer de
+ambientes · "não foi atualizado" · "sem lucro" / "apenas o custo" ·
+**metragem** · quantitativo. E exige a presença dos três valores, do sinal
+de abatimento, da âncora "homologado" e do gesto "absorver integralmente".
+
+⭐ A folha não depende mais de eu lembrar da regra: o build quebra.
+
+---
+
 ## ★ EM ABERTO
 
 1. **⛔⛔ A ÁREA REAL DOS PAINÉIS E PORTAS.** É o único número que falta e
@@ -125,8 +246,21 @@ A mão de obra é também a premissa que mais move a resposta:
 7. **⚠ Condição de pagamento e validade não vieram no briefing.** Escrevi
    *"conforme o contrato vigente"* e validade de 7 dias úteis, que é o
    padrão da casa. Confirmar.
-8. **⚠ Quem paga.** A folha cobra da cliente a adequação de um acabamento
-   que divergiu do briefing por conta da parceira. É decisão comercial do
-   Jonathan e está registrada aqui — fica o registro de que, se a Andrea
-   perguntar *por quê*, a resposta tem de estar combinada com a Paula
-   antes.
+8. ~~**⚠ Quem paga.**~~ ✅ **RESOLVIDO em 26/10:** a Paula absorve
+   R$ 10.560 (64%) e a cliente paga R$ 5.940. A resposta ao *"por quê"*
+   está combinada — é a própria observação da folha.
+9. **⛔⛔ O SUBSÍDIO PRECISA DE UM COMBINADO POR ESCRITO ENTRE JONATHAN E
+   PAULA.** A folha protege o que dá para proteger ("liquidada diretamente
+   junto à Valvic"), mas quem obriga a parceira a pagar R$ 10.560 hoje é
+   uma conversa de WhatsApp. ⭐ Basta o aceite dela por escrito dizendo
+   **valor, prazo e forma** — e isso tem de sair ANTES de a folha ir para a
+   Andrea, porque depois da folha emitida a Valvic já abateu o valor.
+10. **⚠ Qual órgão homologou.** A Paula escreveu "aprovado pela
+   Prefeitura"; a folha diz só "memorial homologado", que é verdade em
+   qualquer hipótese. Se for para nomear o órgão, confirmar antes se é a
+   Prefeitura ou a Vigilância Sanitária — num consultório costuma ser a
+   segunda.
+11. **⚠ Dois leitores agora.** A folha deixou de ter só a Andrea como
+   leitora: a Paula vai ler cada linha. Toda frase precisa sobreviver às
+   duas leituras — é por isso que a observação credita o gesto sem abrir o
+   motivo.
