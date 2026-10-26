@@ -274,3 +274,38 @@ de 0,39 m²**. CONFERIR o preço de compra.
 > corte, o que sobrava de 18 mm virou meia dúzia de peças puxando uma chapa
 > inteira a 10% de aproveitamento. Frente FIXA não tem dobradiça nem peso
 > pendurado — vai em 15 mm, na chapa que já está aberta.
+
+---
+
+## ⭐⭐ BLUM — a linha de topo da casa  [Jonathan 26/10/2026]
+
+> *"Quantifique ferragens da Blum. Valor de dobradiça R$ 50. Valor de
+> corrediça R$ 250. Valor do HK-XS R$ 250. Pulsador por porta R$ 100."*
+
+| item | R$/un |
+|---|--:|
+| Dobradiça | **50** |
+| Corrediça | **250** |
+| **AVENTOS HK-XS** (báscula) | **250** |
+| Pulsador (por porta) | **100** |
+| Puxador slim para báscula | **35** |
+
+⚠ **É OUTRO PATAMAR, NÃO UM DEGRAU.** Contra a base da casa:
+
+| | nacional | Hettich (Gold) | **Blum** |
+|---|--:|--:|--:|
+| dobradiça com amortecedor | 12 | 35 | **50** |
+| corrediça oculta | 120 | 190 | **250** |
+| báscula / pistão | 60 | 185 | **250** |
+
+A dobradiça é **4×** a nacional e a báscula é **4,2×**. ⛔ Num projeto com
+muitas frentes, a ferragem deixa de ser linha de apoio e vira **a maior
+linha depois da chapa** — contar porta por porta, não por estimativa.
+
+⭐ **HK-XS é Blum**, família **AVENTOS**: báscula compacta para frente
+única, de porta pequena e média. Não confundir com a Hettich.
+
+⚠ **PULSADOR E PUXADOR NÃO SE SOMAM NA MESMA FRENTE.** O pulsador abre por
+toque e dispensa puxador; o puxador slim dispensa o pulsador. Orçar **um
+ou outro**, nunca os dois — e registrar qual, porque são R$ 65 de
+diferença por frente.

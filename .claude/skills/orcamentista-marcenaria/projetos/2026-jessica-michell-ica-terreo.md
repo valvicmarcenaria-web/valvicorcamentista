@@ -110,15 +110,32 @@ cobra prêmio de chapa.**
 cota fecha em **177** de largura, que são **onze ripas**. Cada uma passa
 dos 30 mm, logo **onze almas de aço** só nesse móvel.
 
-### 5 · Ferragens Bloom · básculas HK-XS
+### 5 · ⭐⭐ Ferragem **BLUM** — e isso muda o peso do orçamento
 
-> *"Quantifique ferragens da Bloom, inclusive. As básculas serão com HKXS
-> e pulsadores. Não, sem pulsadores. As básculas terão um puxador slim,
-> com custo unitário de R$ 35."*
+> *"Quantifique ferragens da Blum. (…) As básculas serão com HK-XS e
+> pulsadores. Não, sem pulsadores. As básculas terão um puxador slim, com
+> custo unitário de R$ 35."* · *"Valor de dobradiça R$ 50. Valor de
+> corrediça R$ 250. Valor do HK-XS R$ 250. Pulsador por porta R$ 100."*
 
-- **dobradiças e corrediças: Bloom**
-- **básculas: Hettich HK-XS** ⛔ **sem pulsador**
-- **puxador slim na báscula: R$ 35/un** ⭐ preço dele
+| item | R$/un |
+|---|--:|
+| dobradiça | **50** |
+| corrediça | **250** |
+| **AVENTOS HK-XS** (báscula) | **250** |
+| puxador slim na báscula | **35** |
+| pulsador por porta | 100 — ⛔ **não usar**, decisão dele |
+
+⛔ **As básculas vão com puxador slim, SEM pulsador.** Os dois resolvem a
+mesma coisa e não se somam na mesma frente: são R$ 65 de diferença por
+porta, a favor do slim.
+
+⚠⚠ **A FERRAGEM VIRA A SEGUNDA MAIOR LINHA DO ORÇAMENTO.** A dobradiça
+Blum é **4×** a nacional (R$ 50 contra 12) e a báscula é **4,2×** (R$ 250
+contra 60). Num projeto de 94 detalhamentos isso não se estima — **conta-se
+porta por porta, gaveta por gaveta**.
+
+⭐ Correção: **HK-XS é Blum**, da família AVENTOS — eu havia anotado como
+Hettich.
 
 ---
 

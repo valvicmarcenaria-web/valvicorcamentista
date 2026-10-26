@@ -21,7 +21,7 @@ A CASCATA, sobre o PREÇO DE VENDA (bruto):
        RT ................................. 10% do líquido  (quando aplicável)
        comissão de vendedor ............... 10% do líquido  (quando aplicável)
 
-  3. LÍQUIDO 2 = líquido − RT
+  3. LÍQUIDO 2 = líquido − RT − comissão de vendedor
        comissões internas ................. 7,5% do líquido 2
          produção 2,5 · montagem 2,5 · projeto 1,0 · coordenação 1,0 ·
          gestão de projetos 0,5
@@ -29,15 +29,16 @@ A CASCATA, sobre o PREÇO DE VENDA (bruto):
   ⭐⭐ [Jonathan 26/10/2026] DUAS MUDANÇAS, conferidas contra a aba
      `Base · Comissões` da planilha **N.GESTÃO 2 · Custo por Projeto**:
        1. entrou a **gestão de projetos, 0,5%** — a soma vai de 7,0 a 7,5%;
-       2. a base passa a ser *"o valor líquido, descontando RT, descontando
-          taxa de máquina, descontando nota fiscal"*. ⛔ A **comissão de
-          vendedor SAIU da dedução**: antes o líquido 2 descontava RT **e**
-          vendedor; agora desconta só a RT, e a comissão do vendedor corre
-          sobre a mesma base das demais. *"Todas as comissões são de valores
-          líquidos, sobre valores líquidos."*
-     ⚠ A BASE DA CASA MUDA EM TODO PROJETO: 85,35 → 84,88% sem RT, e
-       76,52 → 76,09% com RT. Preço declarado não se mexe (regra de 21/10);
-       o que muda é a MC lida de cada preço, que cai cerca de 0,45 ponto.
+       2. a base é *"o valor líquido, descontando RT, descontando taxa de
+          máquina, descontando nota fiscal"* — e **a comissão de vendedor
+          continua sendo deduzida também** [Jonathan 26/10, corrigindo a
+          primeira leitura: *"mantém o vendedor também como dedução"*].
+          *"Todas as comissões são de valores líquidos, sobre valores
+          líquidos."*
+     ⚠ A BASE DA CASA MUDA EM TODO PROJETO, pelos 0,5 ponto de comissão
+       nova: 85,35 → 84,88% sem RT, e 76,52 → 76,09% com RT. Preço
+       declarado não se mexe (regra de 21/10); o que muda é a MC lida de
+       cada preço já entregue, que cai cerca de 0,45 ponto.
 
   BASE = 1 − (soma de tudo acima, como fração do preço)
   PREÇO para uma MC alvo  =  custo_direto / (BASE − MC)
@@ -79,10 +80,9 @@ def encargos(parcelas=0, rt=True, vendedor=True):
     liq    = 1 - NF - cartao                   # base do RT e do vendedor
     e_rt   = liq * _taxa(rt, RT)
     e_vend = liq * _taxa(vendedor, VENDEDOR)
-    # ⛔ [Jonathan 26/10] o líquido 2 desconta a RT e SÓ a RT. A comissão
-    #   de vendedor deixou de ser deduzida aqui — ela é uma comissão como
-    #   as outras e corre sobre esta mesma base.
-    liq2   = liq - e_rt                        # base de TODAS as comissões
+    # ⛔ [Jonathan 26/10] o líquido 2 desconta RT **e** comissão de
+    #   vendedor — "mantém o vendedor também como dedução".
+    liq2   = liq - e_rt - e_vend               # base das comissões internas
     d = {'nota fiscal': NF, 'taxa de cartão': cartao, 'margem de erro': ERRO,
          'desgaste de serra': SERRA, 'manutenção de máquinas': MANUT,
          'RT': e_rt, 'comissão de vendedor': e_vend}
