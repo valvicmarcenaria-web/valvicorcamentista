@@ -10,7 +10,23 @@
 | `read_file_content` no PDF inteiro (111 MB) | **string vazia** — o Drive não indexa |
 | `download_file_content` no PDF inteiro | **derruba o servidor MCP** |
 
-⭐⭐ **O QUE FUNCIONA** [Jonathan dividiu o PDF por página em 25/10]:
+## ⭐⭐⭐ O CAMINHO BARATO — descoberto em 26/10/2026
+
+`read_file_content` **numa página solta** devolve o **texto inteiro da
+prancha** em ~1.200 caracteres: título do ambiente, conteúdo da folha,
+chamadas de detalhe ("Ver Det. 06"), especificações de material, nomes de
+móvel solto e **as cotas**. Sem download, sem base64, sem disco.
+
+⚠ **O que ele perde: a POSIÇÃO.** As cotas saem soltas no meio do texto
+(`37Prateleira inferior. Ver Det. 03. 294`), sem saber a que peça cada
+número pertence. Serve para **mapear** o ambiente; não serve para **contar
+gaveta** nem para amarrar cota a peça.
+
+⭐ **A regra prática:** `read_file_content` em TODAS as páginas para montar
+o mapa; `download_file_content` + `extrair.py` **só** nas folhas de
+detalhamento onde é preciso contar frente, gaveta e porta.
+
+⭐⭐ **O CAMINHO CARO, que continua valendo para a geometria** [Jonathan dividiu o PDF por página em 25/10]:
 `download_file_content` numa **página solta** (300–800 KB) estoura o limite
 de tokens, e **o harness salva o resultado em arquivo** em vez de jogar no
 contexto. Daí é só decodificar o base64 — e sai o **PDF real da página,
