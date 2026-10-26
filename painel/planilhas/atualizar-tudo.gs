@@ -65,9 +65,15 @@ const FICHA = {
   vendedorNome: 'D9', comVenda: 'D41',
   competencia: 'D10',                 // linha 10 · era espaçador
   entregaSituacao: 'L9',              // No prazo · Atrasado · Em produção
+  diasAtraso: 'J9',                   // ao lado da situação, na identificação
+  numero: 'D7',                       // Nº do projeto — a única chave que não é nome
+  vendaDigitada: 'D28',               // bloco 1 · o valor fechado com o cliente
   faturado: 'D34',                    // total das notas emitidas
   rtValor: 'D43', rtStatus: 'E43',    // RT do parceiro e se já foi pago
-  colsBase: 38,
+  // A coluna nova entra no FIM da Base, nunca no meio: as catorze individuais
+  // leem por LETRA de coluna dentro do texto do SUMIFS, e uma coluna inserida
+  // no meio desloca todas elas sem dar erro nenhum — só número errado, calado.
+  colsBase: 40,
 };
 const COLS_AMB = 'ABCDEFGHIJKLMNO'.split('');
 
@@ -458,14 +464,18 @@ function lerMedidas_(ano) {
   // ── um registro por projeto, e a lista de ambientes ──
   const vistos = {}, projetos = [], amb = [];
   base.forEach(function (L) {
-    const nome = String(L[0] || '').trim();
-    if (!nome) return;
+    // O nome vai SEM trim, porque ele é o nome da aba e é com ele que se abre
+    // a ficha: onze fichas têm espaço no fim do nome, e getSheetByName é
+    // literal. "Leonardo" não acha a aba "Leonardo ". O trim fica só no
+    // rótulo, que é o que aparece na tela.
+    const nome = String(L[0] || '');
+    if (!nome.trim()) return;
     const ambiente = String(L[2] || '').trim();
     if (!vistos[nome]) {
       // Os números do projeto moram só na PRIMEIRA linha do bloco de doze.
       // Repetidos nas doze, qualquer soma os multiplicaria por doze.
       vistos[nome] = {
-        projeto: nome, cliente: String(L[1] || '').trim(),
+        projeto: nome, rotulo: nome.trim(), cliente: String(L[1] || '').trim(),
         entrada: L[17] instanceof Date ? L[17] : '',
         venda: Number(L[21]) || 0, liquido: Number(L[20]) || 0,
         custo: Number(L[27]) || 0, margem: Number(L[28]) || 0,
@@ -473,6 +483,8 @@ function lerMedidas_(ano) {
         situacao: String(L[34] || '').trim() || '—',
         faturado: Number(L[35]) || 0, rt: Number(L[36]) || 0,
         rtPago: String(L[37] || '').trim() === 'Pago',
+        atraso: Number(L[38]) || 0,
+        numero: String(L[39] || '').trim(),
         coordenador: String(L[18] || '').trim(),
         gestor: String(L[29] || '').trim(),
         vendedor: String(L[31] || '').trim(),
@@ -615,6 +627,141 @@ function lerMedidas_(ano) {
 
 
 /**
+ * Casa a ficha de custo com o contrato da aba de pagamentos.
+ *
+ * Pelo NÚMERO DO PROJETO quando os dois lados têm número; pelo nome do cliente
+ * só quando esse nome é único. Casar por nome é exatamente o que erra nesta
+ * casa: há três clientes chamados Luiz, catorze nomes com espaço sobrando no
+ * fim e onze abas de ficha na mesma situação. Quando o nome é ambíguo, esta
+ * função se recusa a adivinhar e devolve o motivo — que vira uma linha na
+ * Conferência pedindo o número.
+ */
+function casarContrato_(ficha, d) {
+  const doAno = d.anos.projetos.filter(function (q) {
+    return q.ano === String(d.ano) && !q.fora;
+  });
+
+  if (ficha.numero) {
+    const porNum = doAno.filter(function (q) {
+      return q.numero && chave_(q.numero) === chave_(ficha.numero);
+    });
+    if (porNum.length === 1) return { contrato: porNum[0], como: 'pelo nº do projeto', motivo: '' };
+    if (porNum.length > 1) {
+      return { contrato: null, como: '', motivo: 'o nº ' + ficha.numero + ' aparece em '
+        + porNum.length + ' linhas da aba de pagamentos' };
+    }
+  }
+
+  const alvo = [chave_(ficha.projeto), chave_(ficha.cliente)].filter(Boolean);
+  const porNome = doAno.filter(function (q) { return alvo.indexOf(chave_(q.cliente)) >= 0; });
+  if (porNome.length === 1) return { contrato: porNome[0], como: 'pelo nome do cliente', motivo: '' };
+  if (porNome.length > 1) {
+    return { contrato: null, como: '', motivo: 'o nome "' + (ficha.cliente || ficha.rotulo)
+      + '" aparece em ' + porNome.length + ' contratos deste ano — preencha o Nº do projeto '
+      + 'na ficha e na aba de pagamentos, e eu caso pelo número' };
+  }
+  // sem par nenhum: pode ser contrato de outro ano. Quem cobra isso é a
+  // verificação inversa, "Contrato sem ficha de custo".
+  return { contrato: null, como: '', motivo: '' };
+}
+
+
+/**
+ * SÓ LÊ. Mostra onde a ficha e o contrato discordam sobre o valor de venda.
+ *
+ * Rode esta antes de rodar a que escreve. O valor de venda é digitado em dois
+ * lugares — na aba de pagamentos, pela Carla, quando o contrato fecha, e no
+ * bloco 1 da ficha, quando alguém vai custear — e os dois andam separados. Na
+ * ficha da Maria são R$ 117.738 contra R$ 99.978 no contrato.
+ */
+function verVendasDivergentes() {
+  const d = lerMedidas_(new Date().getFullYear());
+  const L = [];
+  const diz = function (t) { L.push(t); console.log(t); };
+
+  diz('════ VENDA DA FICHA × VENDA DO CONTRATO ════');
+  let n = 0;
+  d.projetos.forEach(function (x) {
+    if (x.venda <= 0) return;
+    const par = casarContrato_(x, d);
+    if (!par.contrato) {
+      if (par.motivo) diz('  ?  ' + (x.cliente || x.rotulo) + ': ' + par.motivo);
+      return;
+    }
+    const dif = x.venda - par.contrato.venda;
+    if (Math.abs(dif) <= 1) return;
+    n++;
+    diz('  ≠  ' + (x.cliente || x.rotulo)
+      + '\n       ficha "' + x.projeto + '" diz  R$ ' + x.venda.toFixed(2)
+      + '\n       contrato (Pagamentos ' + par.contrato.ano + ', linha ' + par.contrato.linha
+      + ') diz  R$ ' + par.contrato.venda.toFixed(2)
+      + '\n       diferença R$ ' + Math.abs(dif).toFixed(2) + ', casados ' + par.como);
+  });
+  diz(n ? '\n' + n + ' ficha(s) divergente(s). Para alinhar pelo contrato, rode '
+        + 'aplicarVendaDoContrato — ela escreve no bloco 1 da ficha e registra no log o '
+        + 'valor que estava lá antes.'
+      : '\nNenhuma divergência: toda ficha concorda com o contrato dela.');
+  return L.join('\n');
+}
+
+
+/**
+ * ESCREVE. Alinha o valor de venda da ficha pelo valor do contrato.
+ *
+ * NÃO roda dentro do atualizarTudo, e é de propósito: ela sobrescreve um
+ * número que alguém digitou. Rode a verVendasDivergentes antes, olhe a lista,
+ * e só então mande esta.
+ *
+ * A direção é uma só: o CONTRATO manda na ficha. O contrato é o que foi
+ * assinado com o cliente e é onde a Carla lança quando o valor muda; a ficha é
+ * onde se custeia. Se o certo for o contrário — a ficha certa e o contrato
+ * desatualizado —, corrija na aba de pagamentos e rode de novo.
+ *
+ * Só mexe onde o casamento é inequívoco. Nome ambíguo não é adivinhado.
+ */
+function aplicarVendaDoContrato() {
+  const d = lerMedidas_(new Date().getFullYear());
+  const ss = SpreadsheetApp.openById(ID_CUSTO);
+  const mudadas = [], pulos = [];
+
+  d.projetos.forEach(function (x) {
+    if (x.venda <= 0) return;
+    const par = casarContrato_(x, d);
+    if (!par.contrato) { if (par.motivo) pulos.push(x.projeto + ': ' + par.motivo); return; }
+    const dif = x.venda - par.contrato.venda;
+    if (Math.abs(dif) <= 1) return;
+
+    const sh = ss.getSheetByName(x.projeto);
+    if (!sh) { pulos.push(x.projeto + ': não achei a aba'); return; }
+    const cel = sh.getRange(FICHA.vendaDigitada);
+    const antes = cel.getValue();
+    if (cel.getFormula()) {
+      pulos.push(x.projeto + ': o valor de venda é fórmula, não mexi');
+      return;
+    }
+    cel.setValue(par.contrato.venda);
+    mudadas.push(x.projeto + ': R$ ' + (Number(antes) || 0).toFixed(2) + '  →  R$ '
+      + par.contrato.venda.toFixed(2) + '   (' + par.como + ')');
+  });
+
+  if (mudadas.length) {
+    console.log('valor de venda alinhado pelo contrato:');
+    mudadas.forEach(function (t) { console.log('  ' + t); });
+  }
+  if (pulos.length) {
+    console.log('NÃO mexi:');
+    pulos.forEach(function (t) { console.log('  ' + t); });
+  }
+  SpreadsheetApp.flush();
+  const r = mudadas.length + ' ficha(s) alinhada(s)'
+          + (pulos.length ? ', ' + pulos.length + ' pulada(s)' : '')
+          + '. Rode atualizarTudo para os painéis acompanharem.';
+  console.log(r);
+  return r;
+}
+
+
+/**
  * A lista única de conferência.
  *
  * Cada item é {ordem, tipo, cliente, detalhe, valor, onde}. Vai ordenada por
@@ -649,7 +796,7 @@ function pendencias_(d) {
     if (!(x.venda > 0 && x.lancado > 0)) return;
     const dif = x.lancado - x.venda;
     if (Math.abs(dif) <= 1) return;
-    bota('Ambientes não fecham', x.cliente || x.projeto,
+    bota('Ambientes não fecham', x.cliente || x.rotulo,
          (dif < 0 ? 'faltam ' : 'sobram ') + 'R$ ' + Math.abs(dif).toFixed(2)
          + ' de ambiente para fechar a venda de R$ ' + x.venda.toFixed(2),
          Math.abs(dif), 'ficha ' + x.projeto + ', bloco 3');
@@ -660,7 +807,7 @@ function pendencias_(d) {
     if (x.venda <= 0) return;
     const r = x.custo / x.venda;
     if (r >= 0.1) return;
-    bota('Ficha sem custo lançado', x.cliente || x.projeto,
+    bota('Ficha sem custo lançado', x.cliente || x.rotulo,
          'R$ ' + x.venda.toFixed(2) + ' de venda com R$ ' + x.custo.toFixed(2)
          + ' de custo — a MC dela é ' + (x.venda ? (x.margem / x.venda * 100).toFixed(1) : '0')
          + '% e não é lucro, é ficha incompleta',
@@ -670,7 +817,7 @@ function pendencias_(d) {
   // ── entregue e não faturado ──
   d.entregues.forEach(function (x) {
     if (x.faturado > 0 || x.venda <= 0) return;
-    bota('Sem nota emitida', x.cliente || x.projeto,
+    bota('Sem nota emitida', x.cliente || x.rotulo,
          'entregue em ' + x.comp + ' e sem nota lançada',
          x.venda, 'ficha ' + x.projeto + ', bloco 1');
   });
@@ -678,7 +825,7 @@ function pendencias_(d) {
   // ── RT do parceiro em aberto ──
   d.projetos.forEach(function (x) {
     if (!(x.rt > 0) || x.rtPago) return;
-    bota('RT em aberto', x.cliente || x.projeto, 'RT do parceiro ainda não pago',
+    bota('RT em aberto', x.cliente || x.rotulo, 'RT do parceiro ainda não pago',
          x.rt, 'ficha ' + x.projeto + ', bloco 2');
   });
 
@@ -688,7 +835,7 @@ function pendencias_(d) {
    ['vendedor', 'comVenda', 'vendedor']].forEach(function (c) {
     d.projetos.forEach(function (x) {
       if (x[c[0]] || !(x[c[1]] > 0)) return;
-      bota('Projeto sem ' + c[2], x.cliente || x.projeto,
+      bota('Projeto sem ' + c[2], x.cliente || x.rotulo,
            'a comissão de ' + c[2] + ' está calculada e o nome está em branco',
            x[c[1]], 'ficha ' + x.projeto + ', identificação');
     });
@@ -700,30 +847,29 @@ function pendencias_(d) {
     if (!(x.entrada instanceof Date)) return;
     const a = x.entrada.getFullYear();
     if (a >= agora - 2 && a <= agora + 1) return;
-    bota('Data de entrada improvável', x.cliente || x.projeto,
+    bota('Data de entrada improvável', x.cliente || x.rotulo,
          'entrada lançada em ' + Utilities.formatDate(x.entrada, Session.getScriptTimeZone(), 'dd/MM/yyyy'),
          0, 'ficha ' + x.projeto + ', identificação');
   });
 
   // ── a venda do contrato não é a venda da ficha ──
-  const porCliente = {};
-  d.anos.projetos.forEach(function (q) {
-    if (q.ano !== String(d.ano)) return;
-    const k = chave_(q.cliente);
-    if (!porCliente[k]) porCliente[k] = [];
-    porCliente[k].push(q);
-  });
   d.projetos.forEach(function (x) {
     if (x.venda <= 0) return;
-    const lista = porCliente[chave_(x.projeto)] || porCliente[chave_(x.cliente)];
-    if (!lista || lista.length !== 1) return;
-    const dif = x.venda - lista[0].venda;
+    const par = casarContrato_(x, d);
+    if (!par.contrato) {
+      if (par.motivo) {
+        bota('Não consigo casar com o contrato', x.cliente || x.rotulo, par.motivo,
+             0, 'ficha ' + x.projeto + ', célula ' + FICHA.numero);
+      }
+      return;
+    }
+    const dif = x.venda - par.contrato.venda;
     if (Math.abs(dif) <= 1) return;
-    bota('Venda diferente do contrato', x.cliente || x.projeto,
+    bota('Venda diferente do contrato', x.cliente || x.rotulo,
          'a ficha diz R$ ' + x.venda.toFixed(2) + ' e o contrato diz R$ '
-         + lista[0].venda.toFixed(2),
-         Math.abs(dif), 'ficha ' + x.projeto + ' e Pagamentos ' + d.ano
-         + ' linha ' + lista[0].linha);
+         + par.contrato.venda.toFixed(2) + ' (casados ' + par.como + ')',
+         Math.abs(dif), 'ficha ' + x.projeto + ' e Pagamentos ' + par.contrato.ano
+         + ' linha ' + par.contrato.linha);
   });
 
   // ── contrato do ano sem ficha de custo aberta ──
@@ -903,7 +1049,7 @@ function montarPainelGestao(d) {
 
 
 function abaWalton_(ss, d) {
-  const W = 17;
+  const W = 18;
   const sh = abaLimpa_(ss, 'O mês', W);
   cabecalhoPainel_(sh, 'VALVIC · O MÊS',
     MESES[d.mes] + ' de ' + d.ano + '   ·   vendido é contrato assinado   ·   '
@@ -943,11 +1089,27 @@ function abaWalton_(ss, d) {
   // ── o que está preso ──
   secaoPainel_(sh, lin, 'O QUE ESTÁ PRESO   ·   resultado que existe e ainda não virou mês', W);
   lin += 2;
-  lin = tabelaPainel_(sh, lin, 2, ['O que', 'Valor', 'Quanto'], [
+  const atrasadas = d.entregues.filter(function (p) { return p.atraso > 0; });
+  const mediaAtraso = atrasadas.length
+    ? atrasadas.reduce(function (s, p) { return s + p.atraso; }, 0) / atrasadas.length : 0;
+  const presos = [
     ['Pronto e não entregue', d.presoPronto, d.prontos.length + ' ambiente(s)'],
     ['Ainda em produção', d.presoProd, d.emProd.length + ' ambiente(s)'],
     ['Vendido sem entrega real', d.vendaAndamento, d.andamento.length + ' obra(s)'],
-  ], [null, MOEDA, null]);
+  ];
+  // Atraso é o preço que não aparece em reais, e por isso some de painel. Aqui
+  // ele aparece: quantas obras saíram fora do prazo e quantos dias, em média.
+  if (atrasadas.length) {
+    presos.push(['Entregue com atraso',
+                 atrasadas.reduce(function (s, p) { return s + p.venda; }, 0),
+                 atrasadas.length + ' obra(s), média de ' + mediaAtraso.toFixed(0) + ' dia(s)']);
+  }
+  const lpr = lin;
+  lin = tabelaPainel_(sh, lin, 2, ['O que', 'Valor', 'Quanto'], presos, [null, MOEDA, null]);
+  if (atrasadas.length) {
+    sh.getRange(lpr + presos.length, 2, 1, 3)
+      .setBackground('#fcf2f1').setFontColor('#b0413f').setFontWeight('bold');
+  }
 
   // ── mês a mês ──
   secaoPainel_(sh, lin, 'MÊS A MÊS   ·   ' + d.ano, W); lin += 2;
@@ -1002,31 +1164,13 @@ function abaWalton_(ss, d) {
     .setBackground(NAVY).setFontColor(GOLDS).setFontWeight('bold');
   const faixaMC = sh.getRange(lc + 1, 7, Math.max(1, lComp.length - 1), 1);
 
-  // ── capacidade: por categoria, nunca por nome ──
-  const porCat = function (iQuem, iData) {
-    const m = novaMatriz_();
-    d.rawAmb.forEach(function (L) {
-      const quem = String(L[iQuem] || '').trim();
-      somaNaMatriz_(m, quem ? categoriaDe_(quem) : 'Sem dono lançado',
-                    L[iData], Number(L[4]) || 0, d.ano);
-    });
-    return ORDEM_CAT.concat(['Sem dono lançado'])
-      .filter(function (c) { return m[c]; })
-      .map(function (c) { return [c].concat(m[c]); });
-  };
-  secaoPainel_(sh, lin, 'CAPACIDADE   ·   obra que passou pela fábrica, por categoria', W);
-  lin += 2;
-  [['PRODUZIDO · pela data de fabricação', porCat(5, 8)],
-   ['ENTREGUE · pela data de montagem', porCat(9, 12)]].forEach(function (b) {
-    sh.getRange(lin, 2, 1, W - 2).merge().setValue('  ' + b[0])
-      .setFontColor(NAVY2).setFontSize(9).setFontWeight('bold');
-    lin += 1;
-    const li = lin;
-    lin = tabelaPainel_(sh, lin, 2, cabMeses_('Categoria'),
-      b[1].concat([linhaTotal_(b[1], 'Total')]), formatosMes_());
-    sh.getRange(li + b[1].length + 1, 2, 1, 15)
-      .setBackground(NAVY).setFontColor(GOLDS).setFontWeight('bold');
-  });
+  // ── capacidade: uma tabela só, e por categoria, nunca por nome ──
+  //
+  // A versão anterior tinha duas tabelas, produzido e entregue, e listava sete
+  // colaboradores com reais ao lado — quem lê de fora entende salário. Aqui a
+  // linha é a categoria profissional, que mede capacidade sem expor ninguém.
+  lin = blocoVolume_(sh, lin, W, d, true,
+    'CAPACIDADE   ·   obra que passou pela fábrica, por categoria');
 
   // ── peso da operação ──
   const porFrente = novaMatriz_();
@@ -1525,14 +1669,14 @@ function validar() {
 
     const bs = ss.getSheetByName('_base');
     const imp = bs ? bs.getRange('A1').getFormula() : '';
-    const faixaOk = imp.indexOf('A1:AL') > 0;
+    const faixaOk = imp.indexOf('A1:AN') > 0;
     const dado = bs ? conta(bs.getRange('A2:B3').getDisplayValues()) === 0 : false;
     const pa = ss.getSheetByName('Painel');
     const erroPainel = pa ? conta(pa.getRange(5, 2, 26, 6).getDisplayValues()) : 99;
 
     ok(p.nome + ' · colunas conferem com o perfil "' + p.perfil + '"', igual,
        igual ? '' : 'esperado ' + esperado.length + ', achei ' + achado.length);
-    ok(p.nome + ' · IMPORTRANGE vai até AL', faixaOk, imp ? '' : 'sem _base');
+    ok(p.nome + ' · IMPORTRANGE vai até AN', faixaOk, imp ? '' : 'sem _base');
     ok(p.nome + ' · a Base chega sem erro', dado);
     ok(p.nome + ' · Painel sem célula de erro', erroPainel === 0, erroPainel + ' célula(s)');
   });
@@ -1718,6 +1862,7 @@ function atualizarTudo() {
   try {
     diz('Estrutura: ' + garantirEstrutura_());
     diz('Orçado fora: ' + tirarOrcadoDasFichas());
+    diz('Reparo das fichas: ' + repararFichas());
   } catch (e) {
     diz('Estrutura: FALHOU — ' + e.message);
   }
@@ -1875,7 +2020,13 @@ function atualizarBase_() {
     // o mês em que o projeto pesa, e como ele está de entrega
     'Competência', 'Situação da entrega',
     // nota emitida e o RT do parceiro, com o status do pagamento
-    'Faturado', 'RT do parceiro', 'RT pago'];
+    'Faturado', 'RT do parceiro', 'RT pago',
+    // quantos dias a obra passou do prazo — vive na identificação da ficha
+    'Dias de atraso',
+    // o número do projeto: a única chave que não é o nome do cliente. Casar por
+    // nome é o que erra — há três clientes chamados Luiz e catorze nomes com
+    // espaço sobrando no fim.
+    'Nº do projeto'];
 
   base.clear();
   base.getRange(1, 1, 1, CAB.length).setValues([CAB])
@@ -1968,9 +2119,11 @@ function escreverBlocoBase_(base, i, nomeAba) {
       L.push(cel_(ab, FICHA.faturado, r, false));
       L.push(cel_(ab, FICHA.rtValor, r, false));
       L.push(cel_(ab, FICHA.rtStatus, r, true));
+      L.push(cel_(ab, FICHA.diasAtraso, r, false));
+      L.push(cel_(ab, FICHA.numero, r, true));
     } else {
       L.push('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
-             '', '', '', '');
+             '', '', '', '', '', '');
     }
     linhas.push(L);
   }
@@ -2120,7 +2273,7 @@ function atualizarIndividual_(p) {
   const bs = ss.getSheetByName('_base');
   if (bs) {
     const atual = bs.getRange('A1').getFormula();
-    const nova = atual.replace(/!A1:[A-Z]+\d+/, '!A1:AL' + BASE_FIM);
+    const nova = atual.replace(/!A1:[A-Z]+\d+/, '!A1:AN' + BASE_FIM);
     if (nova && nova !== atual) bs.getRange('A1').setFormula(nova);
   }
 
@@ -2448,6 +2601,122 @@ function colLetra_(n) {
   let s = '';
   while (n > 0) { const m = (n - 1) % 26; s = String.fromCharCode(65 + m) + s; n = (n - 1 - m) / 26; }
   return s;
+}
+
+
+/**
+ * Conserta o que a conversão do orçado estragou, e preenche o que ficava em
+ * branco à toa no bloco 4.
+ *
+ * O ESTRAGO: ao mover a observação da coluna H para a E, a conversão leu a
+ * célula com getDisplayValue(). Onde H guardava TEXTO, isso funcionou. Onde H
+ * guardava FÓRMULA, a fórmula virou o texto que ela estava mostrando naquele
+ * instante — congelado para sempre. A vítima visível é a linha 34: o
+ * "Ainda a faturar" parou no valor do dia em que a conversão rodou. Na ficha
+ * da Maria ele anuncia R$ 117.738 a faturar com R$ 48.174 já faturados.
+ * Nas linhas 22, 23, 44, 45 e 70 o que sobrou foi um percentual solto, que
+ * parece dado e não é.
+ *
+ * O QUE FICAVA EM BRANCO: no bloco 4, as linhas de produção, montagem e
+ * projetista têm o VALOR vindo da soma dos ambientes, e a coluna "%" vazia —
+ * porque não existe um percentual único, cada ambiente tem o seu. A coluna
+ * passa a mostrar o percentual EFETIVO: o que aquela frente custou dividido
+ * pela receita líquida. É o número que responde "quanto a produção me custou
+ * neste projeto, em percentual".
+ *
+ * Idempotente e conservadora: só escreve onde a célula está vazia ou onde ela
+ * tem exatamente a fórmula que esta função coloca. Percentual DIGITADO à mão
+ * nunca é sobrescrito, e o que for removido sai no log.
+ */
+function repararFichas() {
+  const ss = SpreadsheetApp.openById(ID_CUSTO);
+  calibrar_(ss);
+  const FIXAS = ['Instruções', FICHA.painel, 'Listas', FICHA.base];
+
+  // linha → [texto do rodapé, cor de fundo, itálico]
+  const RODAPE = {
+    22: ['', NAVY2, false],
+    23: ['venda menos TODO o custo do projeto — é o que sobra antes do custo fixo da casa',
+         NAVY, true],
+    34: ['=FORMULA', NAVY2, false],
+    44: ['', NAVY2, false],
+    45: ['É esta a base das comissões: coordenação, produção, montagem e projetista',
+         NAVY, true],
+    70: ['', NAVY2, false],
+  };
+  // "Ainda a faturar" de volta, viva: venda menos o que já virou nota.
+  const F_FATURAR =
+    '=IF(OR($A$13="",$A$13=0),"",IF(ROUND($A$13-$D$34,2)<=0,'
+    + '"   Projeto totalmente faturado.",'
+    + '"   Ainda a faturar: "&TEXT($A$13-$D$34,"R$ #,##0.00")))';
+  // percentual efetivo de cada frente sobre a receita líquida
+  const pctEfetivo = function (r) {
+    return '=IF(OR($D' + r + '="",$D$45="",$D$45=0),"",$D' + r + '/$D$45)';
+  };
+  const FRENTES_PCT = [67, 68, 69];
+
+  let fichas = 0, rodapes = 0, pcts = 0;
+  const congelados = [], respeitados = [];
+
+  ss.getSheets().forEach(function (sh) {
+    const nome = sh.getName();
+    if (FIXAS.indexOf(nome) >= 0) return;
+    if (sh.getMaxRows() < 70 || sh.getMaxColumns() < 15) return;
+    if (String(sh.getRange('A8').getDisplayValue() || '').trim().toUpperCase().indexOf('PROJETO') !== 0) return;
+    // só ficha já convertida: na antiga a coluna C ainda é o orçado
+    if (String(sh.getRange(37, 3).getDisplayValue() || '').trim() !== '% da venda') return;
+    fichas++;
+
+    Object.keys(RODAPE).forEach(function (k) {
+      const r = Number(k), def = RODAPE[k];
+      const cel = sh.getRange(r, 5);
+      const temFormula = !!cel.getFormula();
+      const atual = String(cel.getDisplayValue() || '').trim();
+      const alvo = def[0] === '=FORMULA' ? null : def[0];
+
+      // já está certo? não mexe.
+      if (def[0] === '=FORMULA' && temFormula) return;
+      if (alvo !== null && atual === alvo) return;
+
+      if (atual) congelados.push(nome.trim() + ' linha ' + r + ': "' + atual + '"');
+
+      sh.getRange(r, 5, 1, 11).breakApart();
+      const rg = sh.getRange(r, 5, 1, 11).merge()
+        .setBackground(def[1]).setFontColor(GOLDS).setFontSize(8.5)
+        .setFontStyle(def[2] ? 'italic' : 'normal')
+        .setHorizontalAlignment('left').setVerticalAlignment('middle')
+        .setNumberFormat('@');
+      if (def[0] === '=FORMULA') { posF_(rg, F_FATURAR); } else { rg.setValue(alvo); }
+      rodapes++;
+    });
+
+    // ── o percentual efetivo das três frentes do bloco 4 ──
+    FRENTES_PCT.forEach(function (r) {
+      const cel = sh.getRange(r, 2);
+      const f = cel.getFormula();
+      const v = cel.getValue();
+      if (f && f.indexOf('$D$45') < 0) { respeitados.push(nome.trim() + ' B' + r); return; }
+      if (!f && v !== '' && v !== null) { respeitados.push(nome.trim() + ' B' + r); return; }
+      cel.clearDataValidations();
+      posF_(cel, pctEfetivo(r));
+      cel.setNumberFormat('0.0%').setHorizontalAlignment('center')
+         .setBackground(CALC).setFontColor(MUTED).setFontSize(9);
+      pcts++;
+    });
+  });
+
+  if (congelados.length) {
+    console.log('  rodapé congelado que voltou a ser fórmula ou texto certo:');
+    congelados.forEach(function (t) { console.log('    ' + t); });
+  }
+  if (respeitados.length) {
+    console.log('  percentual digitado à mão, NÃO mexi: ' + respeitados.join(' | '));
+  }
+  SpreadsheetApp.flush();
+  const r = fichas + ' ficha(s) · ' + rodapes + ' rodapé(s) refeito(s) · '
+          + pcts + ' percentual(is) efetivo(s)';
+  console.log('Reparo das fichas: ' + r);
+  return r;
 }
 
 
@@ -3264,20 +3533,103 @@ function abaOMesCasa_(d) {
 }
 
 
-/** Aba "Projetos": o estado de cada obra, e a fábrica ambiente a ambiente. */
+/**
+ * Volume de obra numa tabela só: produção, montagem e o total, mês a mês.
+ *
+ * Eram duas tabelas de dezesseis colunas, uma embaixo da outra. Para saber
+ * quanto alguém gerou no mês era preciso achar o nome nas duas e somar de
+ * cabeça — e quem produziu não é sempre quem montou, então os nomes nem
+ * apareciam na mesma ordem. Agora cada um ocupa três linhas: o que saiu da
+ * fábrica pela mão dele, o que ele montou, e o total.
+ *
+ * O total SOMA as duas etapas, e isso é de propósito: são dois trabalhos
+ * diferentes sobre o mesmo ambiente. Quem fabricou e montou o mesmo armário
+ * aparece com o valor dele duas vezes — porque fez as duas coisas.
+ *
+ * porCategoria = true troca o nome pela categoria profissional. É o que o
+ * painel do investidor usa: ele precisa enxergar capacidade, não gente.
+ */
+function blocoVolume_(sh, lin, W, d, porCategoria, titulo) {
+  const chaveDe = function (nome) {
+    if (porCategoria) return nome ? categoriaDe_(nome) : 'Sem dono lançado';
+    return nome || '— sem dono —';
+  };
+  const prod = novaMatriz_(), mont = novaMatriz_();
+  d.rawAmb.forEach(function (L) {
+    const v = Number(L[4]) || 0;
+    if (!v) return;
+    somaNaMatriz_(prod, chaveDe(String(L[5] || '').trim()), L[8], v, d.ano);
+    somaNaMatriz_(mont, chaveDe(String(L[9] || '').trim()), L[12], v, d.ano);
+  });
+
+  const zero = function () { return [0,0,0,0,0,0,0,0,0,0,0,0,0,0]; };
+  const soma = function (a, b) { return a.map(function (x, i) { return x + b[i]; }); };
+  const chaves = {};
+  Object.keys(prod).forEach(function (k) { chaves[k] = true; });
+  Object.keys(mont).forEach(function (k) { chaves[k] = true; });
+
+  const ordenadas = Object.keys(chaves).map(function (k) {
+    const p = prod[k] || zero(), m = mont[k] || zero();
+    return { k: k, p: p, m: m, t: soma(p, m) };
+  }).sort(function (a, b) { return b.t[13] - a.t[13]; });
+
+  const linhas = [];
+  ordenadas.forEach(function (x) {
+    linhas.push([x.k, 'Produção'].concat(x.p));
+    linhas.push([x.k, 'Montagem'].concat(x.m));
+    linhas.push([x.k, 'Total'].concat(x.t));
+  });
+  const gp = zero(), gm = zero();
+  ordenadas.forEach(function (x) {
+    for (let i = 0; i < 14; i++) { gp[i] += x.p[i]; gm[i] += x.m[i]; }
+  });
+  linhas.push(['TOTAL GERAL', 'Produção'].concat(gp));
+  linhas.push(['TOTAL GERAL', 'Montagem'].concat(gm));
+  linhas.push(['TOTAL GERAL', 'Total'].concat(soma(gp, gm)));
+
+  const cab = [porCategoria ? 'Categoria' : 'Colaborador', 'Etapa']
+    .concat(MESES.map(function (x) { return x.substring(0, 3); }))
+    .concat(['Sem data', 'Total']);
+  const fmt = [null, null].concat(MESES.map(function () { return MOEDA; }))
+                          .concat([MOEDA, MOEDA]);
+
+  secaoPainel_(sh, lin, titulo, W); lin += 2;
+  const l0 = lin;
+  lin = tabelaPainel_(sh, lin, 2, cab, linhas, fmt);
+
+  // A linha de Total de cada pessoa é a que se lê de relance; as duas de cima
+  // são a explicação dela. Sem esse contraste a tabela vira um muro de número.
+  for (let i = 0; i < linhas.length; i += 3) {
+    const r = l0 + 1 + i;
+    sh.getRange(r, 2, 2, 16).setFontColor(MUTED).setFontSize(9);
+    sh.getRange(r + 2, 2, 1, 16)
+      .setBackground(i === linhas.length - 3 ? NAVY : '#eef2f7')
+      .setFontColor(i === linhas.length - 3 ? GOLDS : NAVY)
+      .setFontWeight('bold');
+    sh.getRange(r, 2, 3, 1).setFontWeight('bold').setFontColor(NAVY);
+  }
+  return lin;
+}
+
+
+/** Aba "Projetos": o estado de cada obra, a fábrica e o volume por pessoa. */
 function abaProjetos_(d) {
   d = d || lerMedidas_(new Date().getFullYear());
   const dst = SpreadsheetApp.openById(ID_GESTAO);
-  const W = 14;
+  const W = 18;
   const sh = abaLimpa_(dst, 'Projetos', W);
   cabecalhoPainel_(sh, 'PROJETOS',
     'Obra entregue tem margem fechada   ·   obra em produção não tem margem nenhuma, de '
     + 'propósito   ·   vem da Custo por Projeto, atualizado em '
     + Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'dd/MM/yyyy HH:mm'), W);
-  sh.setColumnWidth(2, 180); sh.setColumnWidth(3, 170);
-  for (let c = 4; c <= W; c++) sh.setColumnWidth(c, 112);
+  sh.setColumnWidth(2, 180); sh.setColumnWidth(3, 160);
+  for (let c = 4; c <= W; c++) sh.setColumnWidth(c, 105);
 
   const mc = d.vendaEntregue ? d.margemAno / d.vendaEntregue : 0;
+  const atrasadas = d.entregues.filter(function (p) { return p.atraso > 0; });
+  const mediaAtraso = atrasadas.length
+    ? atrasadas.reduce(function (s, p) { return s + p.atraso; }, 0) / atrasadas.length : 0;
+
   let lin = 5;
   secaoPainel_(sh, lin, 'O CONJUNTO', W); lin += 2;
   cartaoPainel_(sh, lin, 2, 'Obras', d.projetos.length, NAVY, '0');
@@ -3285,20 +3637,36 @@ function abaProjetos_(d) {
   cartaoPainel_(sh, lin, 6, 'Vendido total', d.vendaEntregue + d.vendaAndamento, NAVY2);
   cartaoPainel_(sh, lin, 8, 'Margem entregue', d.margemAno, OK);
   cartaoPainel_(sh, lin, 10, 'MC % dos entregues', mc, '#2f5d8c', PCT);
+  cartaoPainel_(sh, lin, 12, 'Entregues com atraso', atrasadas.length,
+                atrasadas.length ? '#b0413f' : OK, '0');
   lin += 4;
+  if (atrasadas.length) {
+    sh.getRange(lin, 2, 1, W - 2).merge().setValue(
+      '  ' + atrasadas.length + ' obra(s) entregue(s) fora do prazo, média de '
+      + mediaAtraso.toFixed(0) + ' dia(s) de atraso. O pior: '
+      + atrasadas.slice().sort(function (a, b) { return b.atraso - a.atraso; })
+          .slice(0, 3).map(function (p) {
+            return (p.cliente || p.rotulo) + ' (' + p.atraso + 'd)'; }).join(' · '))
+      .setBackground('#fcf2f1').setFontColor('#b0413f').setFontSize(9.5)
+      .setFontWeight('bold').setVerticalAlignment('middle');
+    sh.setRowHeight(lin, 22);
+    lin += 2;
+  }
 
   // ── entregues ──
-  const CAB1 = ['Cliente', 'Ficha', 'Competência', 'Entrega', 'Venda', 'Custo total',
-                'Margem', 'MC %', 'Faturado', 'RT do parceiro', 'RT pago', 'Ambientes'];
-  const FMT1 = [null, null, null, null, MOEDA, MOEDA, MOEDA, PCT, MOEDA, MOEDA, null, '0'];
+  const CAB1 = ['Cliente', 'Ficha', 'Competência', 'Entrega', 'Dias de atraso', 'Venda',
+                'Custo total', 'Margem', 'MC %', 'Faturado', 'RT do parceiro', 'RT pago',
+                'Ambientes'];
+  const FMT1 = [null, null, null, null, '0', MOEDA, MOEDA, MOEDA, PCT, MOEDA, MOEDA,
+                null, '0'];
   const lEnt = d.entregues.slice().sort(function (a, b) {
     return ordemComp_(b.comp) - ordemComp_(a.comp) || b.venda - a.venda;
   }).map(function (p) {
-    return [p.cliente || p.projeto, p.projeto, p.comp, p.situacao, p.venda, p.custo, p.margem,
-            p.venda ? p.margem / p.venda : 0, p.faturado, p.rt,
-            p.rt ? (p.rtPago ? 'Pago' : 'Em aberto') : '—', p.nAmb];
+    return [p.cliente || p.rotulo, p.projeto, p.comp, p.situacao, p.atraso || '',
+            p.venda, p.custo, p.margem, p.venda ? p.margem / p.venda : 0,
+            p.faturado, p.rt, p.rt ? (p.rtPago ? 'Pago' : 'Em aberto') : '—', p.nAmb];
   });
-  lEnt.push(['Total', '', '', '', d.vendaEntregue, d.custoEntregue, d.margemAno, mc,
+  lEnt.push(['Total', '', '', '', '', d.vendaEntregue, d.custoEntregue, d.margemAno, mc,
              d.entregues.reduce(function (s, p) { return s + p.faturado; }, 0),
              d.entregues.reduce(function (s, p) { return s + p.rt; }, 0), '', '']);
 
@@ -3308,27 +3676,31 @@ function abaProjetos_(d) {
   lin = tabelaPainel_(sh, lin, 2, CAB1, lEnt, FMT1);
   sh.getRange(le + lEnt.length, 2, 1, CAB1.length)
     .setBackground(NAVY).setFontColor(GOLDS).setFontWeight('bold');
-  const faixaMC = sh.getRange(le + 1, 9, Math.max(1, lEnt.length - 1), 1);
-  const faixaRT = sh.getRange(le + 1, 12, Math.max(1, lEnt.length - 1), 1);
+  const nE = Math.max(1, lEnt.length - 1);
+  const faixaMC = sh.getRange(le + 1, 10, nE, 1);
+  const faixaRT = sh.getRange(le + 1, 13, nE, 1);
+  const atraso1 = sh.getRange(le + 1, 6, nE, 1);
 
   // ── em andamento · sem coluna de margem ──
-  const CAB2 = ['Cliente', 'Ficha', 'Data de entrada', 'Entrega', 'Venda',
+  const CAB2 = ['Cliente', 'Ficha', 'Data de entrada', 'Entrega', 'Dias de atraso', 'Venda',
                 'Custo incorrido', '% da obra lançada', 'Ambientes'];
-  const FMT2 = [null, null, DATA, null, MOEDA, MOEDA, PCT, '0'];
+  const FMT2 = [null, null, DATA, null, '0', MOEDA, MOEDA, PCT, '0'];
   const lAnd = d.andamento.slice().sort(function (a, b) { return b.venda - a.venda; })
     .map(function (p) {
-      return [p.cliente || p.projeto, p.projeto, p.entrada, p.situacao, p.venda, p.custo,
-              p.venda ? p.lancado / p.venda : 0, p.nAmb];
+      return [p.cliente || p.rotulo, p.projeto, p.entrada, p.situacao, p.atraso || '',
+              p.venda, p.custo, p.venda ? p.lancado / p.venda : 0, p.nAmb];
     });
-  lAnd.push(['Total', '', '', '', d.vendaAndamento, d.custoAndamento, '', '']);
+  lAnd.push(['Total', '', '', '', '', d.vendaAndamento, d.custoAndamento, '', '']);
 
   secaoPainel_(sh, lin, 'EM ANDAMENTO   ·   sem margem: a obra não terminou', W); lin += 2;
   const la = lin;
   lin = tabelaPainel_(sh, lin, 2, CAB2, lAnd, FMT2);
   sh.getRange(la + lAnd.length, 2, 1, CAB2.length)
     .setBackground(ABERTOBG).setFontColor(ABERTO).setFontWeight('bold');
-  const faixaObra = sh.getRange(la + 1, 8, Math.max(1, lAnd.length - 1), 1);
-  const faixaSit = sh.getRange(la + 1, 5, Math.max(1, lAnd.length - 1), 1);
+  const nA = Math.max(1, lAnd.length - 1);
+  const faixaObra = sh.getRange(la + 1, 9, nA, 1);
+  const faixaSit = sh.getRange(la + 1, 5, nA, 1);
+  const atraso2 = sh.getRange(la + 1, 6, nA, 1);
 
   // ── a fábrica, ambiente a ambiente ──
   //
@@ -3356,8 +3728,13 @@ function abaProjetos_(d) {
     fab, [null, null, MOEDA, null, DATA, null, null]);
   sh.getRange(lfb + fab.length, 2, 1, 7)
     .setBackground(NAVY).setFontColor(GOLDS).setFontWeight('bold');
-  const faixaEstado = sh.getRange(lfb + 1, 8, Math.max(1, fab.length - 1), 1);
-  const faixaDono = sh.getRange(lfb + 1, 5, Math.max(1, fab.length - 1), 2);
+  const nF = Math.max(1, fab.length - 1);
+  const faixaEstado = sh.getRange(lfb + 1, 8, nF, 1);
+  const faixaDono = sh.getRange(lfb + 1, 5, nF, 2);
+
+  // ── volume de obra por colaborador, produção e montagem juntas ──
+  lin = blocoVolume_(sh, lin, W, d, false,
+    'VOLUME DE OBRA POR COLABORADOR   ·   quanto de obra passou pela mão de cada um');
 
   sh.setConditionalFormatRules([
     SpreadsheetApp.newConditionalFormatRule().whenNumberLessThan(0.25)
@@ -3373,6 +3750,9 @@ function abaProjetos_(d) {
     SpreadsheetApp.newConditionalFormatRule().whenNumberLessThan(0.9)
       .setBackground('#fdf8ee').setFontColor(ABERTO).setBold(true)
       .setRanges([faixaObra]).build(),
+    SpreadsheetApp.newConditionalFormatRule().whenNumberGreaterThan(0)
+      .setBackground('#fcf2f1').setFontColor('#b0413f').setBold(true)
+      .setRanges([atraso1, atraso2]).build(),
     SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo('Em aberto')
       .setBackground(ABERTOBG).setFontColor(ABERTO).setBold(true)
       .setRanges([faixaRT]).build(),
@@ -3390,17 +3770,20 @@ function abaProjetos_(d) {
   sh.getRange(lin, 2, 1, W - 2).merge().setValue(
     'Obra entra em ENTREGUES quando a ficha tem entrega real lançada — é ela que define a '
     + 'competência e é ela que fecha o custo. Até lá a obra fica em ANDAMENTO e não tem MC '
-    + 'nenhuma: a margem de uma obra em produção sobe e desce até a última compra, e mostrada '
-    + 'junto com a dos entregues puxava a média da empresa para cima. "% da obra lançada" é '
-    + 'quanto do valor de venda já virou ambiente na ficha; abaixo de 90% a ficha está pela '
-    + 'metade e o custo ainda vai crescer. "— sem dono —" é ambiente sem nome lançado: gera '
-    + 'comissão que ninguém recebe, e a lista está na Conferência.')
+    + 'nenhuma: a margem de uma obra em produção sobe e desce até a última compra. "Dias de '
+    + 'atraso" vem da própria ficha, da identificação no topo. "% da obra lançada" é quanto do '
+    + 'valor de venda já virou ambiente; abaixo de 90% a ficha está pela metade. No volume de '
+    + 'obra, o Total soma produção e montagem: são dois trabalhos sobre o mesmo ambiente, e '
+    + 'quem fabricou e montou o mesmo armário aparece com o valor duas vezes, porque fez as '
+    + 'duas coisas. "— sem dono —" é ambiente sem nome lançado: gera comissão que ninguém '
+    + 'recebe, e a lista está na Conferência.')
     .setFontColor(MUTED).setFontSize(9).setFontStyle('italic').setWrap(true);
-  sh.setRowHeight(lin, 46);
+  sh.setRowHeight(lin, 56);
 
   SpreadsheetApp.flush();
   const r = d.entregues.length + ' entregue(s) · ' + d.andamento.length + ' em andamento · '
-          + (fab.length - 1) + ' ambiente(s) na fábrica';
+          + (fab.length - 1) + ' ambiente(s) na fábrica'
+          + (atrasadas.length ? ' · ' + atrasadas.length + ' entregue(s) com atraso' : '');
   console.log('Projetos: ' + r);
   return r;
 }

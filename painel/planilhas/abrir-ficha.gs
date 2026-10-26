@@ -54,7 +54,9 @@ const FICHA = {
   faturado: 'D34',
   rtValor: 'D43',
   rtStatus: 'E43',
-  colsBase: 38,           // largura da Base · Comissões
+  diasAtraso: 'J9',       // ao lado da situação, na identificação
+  numero: 'D7',           // Nº do projeto — a única chave que não é nome
+  colsBase: 40,           // largura da Base · Comissões
   painelLinha0: 11,       // Painel Geral · primeira vaga de projeto
   painelLinhaF: 50,
   baseLinha0: 2,          // Base · primeira linha de dados
@@ -329,9 +331,11 @@ function escreverBlocoBase_(destino, i, nomeAba) {
       linha.push(cel_(ab, FICHA.faturado, r, false));
       linha.push(cel_(ab, FICHA.rtValor, r, false));
       linha.push(cel_(ab, FICHA.rtStatus, r, true));
+      linha.push(cel_(ab, FICHA.diasAtraso, r, false));
+      linha.push(cel_(ab, FICHA.numero, r, true));
     } else {
       linha.push('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
-                 '', '', '', '');
+                 '', '', '', '', '', '');
     }
     linhas.push(linha);
   }
