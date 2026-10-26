@@ -234,6 +234,21 @@ const N_COL_ANO = 30;                    // o quanto se lê de cada linha de ano
 const DIVISORAS = MESES.concat(['Anterior (2022)']);
 
 
+/**
+ * Número de dentro de um texto.
+ *
+ * O campo "dias de atraso" da ficha é digitado à mão e vem escrito como
+ * "13 dias", "2 dias", "15 dias". Number("13 dias") é NaN, e com || 0 isso
+ * vira zero calado: a obra atrasada aparece no prazo. Aqui se extrai o
+ * número e o resto do texto é ignorado.
+ */
+function numeroDe_(v) {
+  if (typeof v === 'number') return v;
+  const m = String(v || '').replace(/\./g, '').replace(',', '.').match(/-?\d+(\.\d+)?/);
+  return m ? Number(m[0]) : 0;
+}
+
+
 /** Nome comparável: sem acento, sem espaço sobrando, sem caixa. */
 function chave_(s) {
   return String(s || '').trim().toLowerCase()
@@ -300,9 +315,8 @@ function lerAnos_() {
     for (let i = 0; i < n; i++) {
       const L = vals[i];
       const a = String(L[0] || '').trim();
-      if (!a) continue;
 
-      if (DIVISORAS.indexOf(a) >= 0) {
+      if (a && DIVISORAS.indexOf(a) >= 0) {
         const im = MESES.indexOf(a);
         if (im >= 0) { mes = a; fora = false; } else { mes = ''; fora = true; }
         continue;
@@ -311,6 +325,13 @@ function lerAnos_() {
       const projeto = String(L[1] || '').trim();
       const venda = Number(L[2]) || 0;
       const recebido = Number(L[4]) || 0;
+
+      // Linha de projeto SEM nome de cliente ainda é um projeto. Dezembro de
+      // 2023 tem uma: "Pergolado Banheiro", R$ 5.500, com a coluna Cliente em
+      // branco. A versão anterior deste leitor exigia o nome e pulava a linha
+      // calada — e era por isso que a base intermediária fechava 2023 com 53
+      // projetos quando o divisor da própria planilha conta 54.
+      if (!a && !projeto && !venda && !recebido) continue;
       if (!venda && !recebido) {
         meias.push({ ano: ano, aba: f.nome, arquivo: f.arquivo, linha: LIN_ITEM0 + i,
                      cliente: a, projeto: projeto,
@@ -404,7 +425,7 @@ function lerAporteCasa_() {
   const fim = sh.getLastRow();
   const val = sh.getRange(1, 1, fim, 1).getValues();
   const rot = sh.getRange(1, 2, fim, 1).getDisplayValues();
-  const ALVOS = [['Total · entradas', 'Entradas'], ['Total · saídas', 'Saídas'],
+  const ALVOS = [['Total · entradas', 'Entradas'], ['Total · saídas', 'Saídas para caixa'],
                  ['Total · investimentos', 'Investimentos'],
                  ['SALDO DO APORTE', 'Saldo do aporte']];
   const linhas = [];
@@ -416,22 +437,41 @@ function lerAporteCasa_() {
       }
     }
   });
-  // A conta que a própria aba deveria fazer. Se o saldo publicado não é
-  // entradas − saídas − investimentos, o número da tela do investidor está
-  // errado — e isso vai para a Conferência, não para o painel dele.
+
+  // O bloco "Saídas Walton", solto no pé da aba e sem linha de total: são os
+  // serviços que a Valvic prestou e que saíram do aporte — hoje a entrada do
+  // Leonardo (R$ 22.000) e o serviço do Luiz (R$ 20.000). São os mesmos
+  // R$ 42.000 que aparecem na aba de pagamentos com "aporte walton" escrito na
+  // descrição: dinheiro que entrou como venda e saiu do aporte.
+  //
+  // Ignorar este bloco foi um erro meu e quase foi para a tela do investidor:
+  // entradas − saídas − investimentos dá R$ 42.000, e eu ia publicar isso como
+  // "saldo pela conta" contra o R$ 0,00 da planilha. O R$ 0,00 está certo — o
+  // aporte foi todo consumido.
+  let servicos = 0;
+  for (let r = 0; r < fim; r++) {
+    if (String(rot[r][0] || '').trim().toLowerCase().indexOf('saídas walton') !== 0) continue;
+    for (let k = r + 1; k < fim; k++) {
+      const rotulo = String(rot[k][0] || '').trim();
+      const valor = Number(val[k][0]) || 0;
+      if (!rotulo && !valor) break;
+      servicos += valor;
+    }
+    break;
+  }
+  if (servicos) linhas.splice(3, 0, ['Serviços tomados do aporte', servicos]);
+
   const v = {};
   linhas.forEach(function (L) { v[L[0]] = L[1]; });
-  const conferido = (v['Entradas'] || 0) - (v['Saídas'] || 0) - (v['Investimentos'] || 0);
+  const conferido = (v['Entradas'] || 0) - (v['Saídas para caixa'] || 0)
+                  - (v['Investimentos'] || 0) - servicos;
   const publicado = v['Saldo do aporte'] || 0;
-  // Quando os dois discordam, o painel do investidor mostra OS DOIS. Esconder
-  // um e publicar o outro seria escolher por ele; publicar só o da planilha
-  // seria mostrar um número que a própria aba desmente. Hoje a aba publica
-  // R$ 0,00 e a conta dá R$ 42.000 — a diferença também entra na Conferência,
-  // para alguém consertar na origem.
-  if (linhas.length === 4 && Math.abs(conferido - publicado) > 1) {
-    linhas.push(['Saldo pela conta · entradas − saídas − investimentos', conferido]);
+  // Se mesmo assim os dois discordarem, o painel mostra OS DOIS: esconder um e
+  // publicar o outro seria escolher pelo investidor.
+  if (Math.abs(conferido - publicado) > 1) {
+    linhas.push(['Saldo pela conta · entradas − saídas − investimentos − serviços', conferido]);
   }
-  return { linhas: linhas, conferido: conferido,
+  return { linhas: linhas, conferido: conferido, servicos: servicos,
            publicado: publicado, arquivo: f.arquivo };
 }
 
@@ -483,7 +523,7 @@ function lerMedidas_(ano) {
         situacao: String(L[34] || '').trim() || '—',
         faturado: Number(L[35]) || 0, rt: Number(L[36]) || 0,
         rtPago: String(L[37] || '').trim() === 'Pago',
-        atraso: Number(L[38]) || 0,
+        atraso: numeroDe_(L[38]),
         numero: String(L[39] || '').trim(),
         coordenador: String(L[18] || '').trim(),
         gestor: String(L[29] || '').trim(),
@@ -814,6 +854,15 @@ function pendencias_(d) {
          x.venda, 'ficha ' + x.projeto + ', blocos 6 a 8');
   });
 
+  // ── ambiente lançado e sem valor: a comissão dele sai zero ──
+  d.ambientes.forEach(function (a) {
+    if (a.valor > 0) return;
+    bota('Ambiente sem valor', a.cliente || a.projeto,
+         'o ambiente "' + a.ambiente + '" está lançado com nome e sem valor — '
+         + 'não entra no total nem gera comissão para quem o fez',
+         0, 'ficha ' + a.projeto + ', bloco 3');
+  });
+
   // ── entregue e não faturado ──
   d.entregues.forEach(function (x) {
     if (x.faturado > 0 || x.venda <= 0) return;
@@ -885,6 +934,15 @@ function pendencias_(d) {
          'R$ ' + q.venda.toFixed(2) + ' vendidos e nenhuma ficha aberta — o custo '
          + 'deste projeto não entra em margem nenhuma',
          q.venda, 'Pagamentos ' + q.ano + ' linha ' + q.linha);
+  });
+
+  // ── contrato sem nome de cliente ──
+  d.anos.projetos.forEach(function (q) {
+    if (q.cliente) return;
+    bota('Contrato sem nome de cliente', q.projeto || '(sem nome)',
+         'R$ ' + q.venda.toFixed(2) + ' lançados com a coluna Cliente em branco — '
+         + 'não casa com ficha nenhuma e some de qualquer busca por nome',
+         q.venda, q.aba + ' linha ' + q.linha);
   });
 
   // ── parcela sem data: entrou dinheiro e ninguém datou ──
@@ -2690,6 +2748,27 @@ function repararFichas() {
       rodapes++;
     });
 
+    // ── o status do RT, que ficou com a dica dentro ──
+    //
+    // Outro estrago da conversão, e pelo mesmo motivo: observacao() escreveu a
+    // dica em E43:O43 e, logo depois, o bloco do RT desmesclou e remesclou
+    // E43:F43 para virar o campo de status. Mesclar PRESERVA o valor da célula
+    // de cima e à esquerda — então a dica "% sobre o líquido: venda menos
+    // impostos, máquina e taxas" ficou morando dentro do campo de status.
+    // Resultado: a Base lê essa frase na coluna "RT pago", o teste
+    // === 'Pago' nunca dá verdadeiro, e RT nenhum consegue ser marcado
+    // como pago.
+    const celRT = sh.getRange(43, 5);
+    const vRT = String(celRT.getDisplayValue() || '').trim();
+    if (vRT && vRT !== 'Pago' && vRT !== 'Em aberto') {
+      congelados.push(nome.trim() + ' status do RT: "' + vRT + '"');
+      celRT.clearContent();
+      rodapes++;
+    }
+    celRT.setDataValidation(SpreadsheetApp.newDataValidation()
+      .requireValueInList(['Em aberto', 'Pago'], true).setAllowInvalid(true)
+      .setHelpText('O RT já foi pago ao parceiro?').build());
+
     // ── o percentual efetivo das três frentes do bloco 4 ──
     FRENTES_PCT.forEach(function (r) {
       const cel = sh.getRange(r, 2);
@@ -3946,9 +4025,11 @@ function conferirMigracao_() {
     let proj = 0, soma = 0, parc = 0;
     v.forEach(function (L) {
       const a = String(L[0] || '').trim();
-      if (!a || DIVISORAS.indexOf(a) >= 0) return;
+      if (a && DIVISORAS.indexOf(a) >= 0) return;
       const venda = Number(L[2]) || 0;
       const rec = Number(L[4]) || 0;
+      // mesma regra do lerAnos_: linha sem nome de cliente, mas com dinheiro,
+      // é projeto. Se as duas contagens divergirem, a conferência mente.
       if (!venda && !rec) return;
       proj++; soma += venda;
       C_BLOCOS.forEach(function (c0) { if (Number(L[c0 - 1])) parc++; });
