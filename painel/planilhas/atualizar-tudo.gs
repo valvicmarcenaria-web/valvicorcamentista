@@ -1,22 +1,41 @@
 /**
- * Valvic Marcenaria · atualização de estrutura, feita de dentro do Drive
+ * Valvic Marcenaria · o script que refaz as planilhas de gestão
  *
- * Onde colar: na planilha CUSTO POR PROJETO.
- *   Extensões → Apps Script → cole este arquivo → salve → Executar `atualizarTudo`.
- *   Na primeira vez o Google pede autorização: ele mexe em outras planilhas.
+ * ONDE COLAR: num projeto AVULSO, em script.google.com → Novo projeto.
+ *   NÃO cole dentro de nenhuma planilha. Ele abre as quatro por ID e escreve
+ *   em todas; vinculado a uma delas, só dá confusão.
  *
- * O que faz, sem você subir arquivo nenhum:
+ *   O arquivo tem de ser o ÚNICO do projeto. Se houver outro .gs ali — o
+ *   abrir-ficha, ou um resto da versão anterior —, os dois declaram ID_CUSTO,
+ *   FICHA, calibrar_ e escreverBlocoBase_, e o Google recusa o projeto inteiro
+ *   com "identificador já declarado". O sintoma é enganoso: o editor some com
+ *   TODAS as funções e responde "Função de script não encontrada" para
+ *   qualquer nome que você mandar rodar, inclusive um que existe.
  *
- *   1. amplia a Base · Comissões de 22 para 27 colunas, trazendo os percentuais
- *      de custo de venda do bloco 2 de cada ficha;
- *   2. reescreve a aba Comissões das catorze planilhas individuais, cada uma no
- *      formato da sua função.
+ *   Para colar: Ctrl+A no editor, Delete, cole este arquivo inteiro, Ctrl+S.
+ *   O seletor de função no topo tem de passar a listar atualizarTudo, validar
+ *   e limparSobras. Se não listar, o projeto não compilou.
  *
- * O que cada um passa a ver:
+ *   O abrir-ficha.gs mora noutro lugar: dentro da N.GESTAO 1 · Gestão,
+ *   em Extensões → Apps Script.
+ *
+ * ORDEM DE EXECUÇÃO
+ *   atualizarTudo   refaz as fichas, a Base, as catorze individuais, migra o
+ *                   que vem da Análise anual e escreve os quatro painéis
+ *   validar         só lê. Confere ano por ano se a migração bate com a origem
+ *   limparSobras    apaga as abas aposentadas. Só depois de ler o validar
+ *
+ *   Na primeira vez o Google pede autorização: o script mexe em outras
+ *   planilhas e em nome da sua conta.
+ *
+ * O QUE CADA UM PASSA A VER NA SUA PLANILHA INDIVIDUAL
  *
  *   PROJETISTA      a conta inteira — venda, imposto, taxa, RT, comissão do
  *   Lorrane         vendedor, custos, líquido e a comissão. É sobre o líquido
- *   Lucas, Bruna    que o percentual dela incide, e ela precisa poder conferir.
+ *   Lucas           que o percentual dela incide, e ela precisa poder conferir.
+ *
+ *   GESTÃO TÉCNICA  receita líquida do projeto e os 0,5% dela.
+ *   Bruna
  *
  *   COORDENAÇÃO     produção, montagem e coordenação. Sem valor de venda e sem
  *   Deivison        receita: a coordenação é dele, o faturamento do cliente não.
