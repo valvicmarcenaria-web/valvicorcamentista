@@ -53,6 +53,64 @@ os itens consumiram, consolidada.
 cliente, clicar na célula e em **Permitir acesso**. Sem isso a aba
 importada fica em `#REF!` e o orçamento inteiro zera.
 
+### ⭐ O LAYOUT ESCOLHIDO — "Prancha" [Jonathan, 26/10/2026]
+
+Três opções foram desenhadas e o Jonathan escolheu a **B · Prancha**:
+branco puro, tipografia leve e grande, réguas finas, dourado em **um**
+acento só. Parece uma prancha de arquitetura — e é o que a planilha deve
+parecer quando a arquiteta do projeto abrir para conferir.
+
+**O que faz o desenho**, e nenhuma dessas coisas é enfeite:
+
+| recurso | para quê |
+|---|---|
+| **gridlines desligadas** | o desenho sai das réguas e do respiro, não da grade |
+| **colunas de 36 px nas pontas** (A e J) | margem — o conteúdo não encosta na borda |
+| **altura de linha variada** | 58 px no nome do ambiente, 46 no número do KPI, 30 na tabela, 10 nos respiros |
+| **células mescladas** | o nome do ambiente atravessa C:G, a área da imagem ocupa B16:I30 |
+| **borda inferior de 2 px preta** | a régua que separa cabeçalho de conteúdo |
+| **borda de 3 px dourada** | só no custo direto do ambiente, e em mais nada |
+| **`REPT("█"; …)`** | a barra de proporção do KPI, feita de caractere: sem gráfico, sem imagem |
+
+⭐ **A área da imagem** é B16:I30 mesclada, fundo #FAFAFA, borda cinza.
+A imagem vai **sobre** as células (Inserir › Imagem › Sobre as células) e
+fica onde for solta.
+
+⭐⭐ **O ambiente se organiza por ITEM.** Cada móvel é um bloco fechado:
+faixa preta com o número e o nome, uma linha de conferência da cadeia de
+cota, a tabela de materiais e o total do item. O ambiente soma os blocos.
+
+⛔ **Formato condicional NÃO aceita tamanho de fonte** — só negrito,
+itálico, tachado e as duas cores. A faixa de bloco e o fundo saem por
+regra (`=ESQUERDA($B56;5)="ITEM "`), mas o corpo 12 de cada título tem
+que ir por `repeatCell`, linha por linha.
+
+⭐ **`repeatCell` replica fórmula ajustando as referências relativas.**
+Noventa e uma fórmulas de custo entraram em **um** request, em vez de
+noventa e uma linhas de JSON — depois só as oito linhas de `SOMA` foram
+reescritas por cima.
+
+⛔ **`update_values` reclama quando o array tem mais linhas que o range.**
+Dimensionar o range pelo tamanho do array, sempre com folga: errei isso
+quatro vezes seguidas e cada erro custou uma chamada.
+
+### A chave de preço
+
+A aba de ambiente **não digita preço**. Cada linha de material carrega uma
+**chave** numa coluna oculta (K), e o `R$ un` é
+`=SEERRO(PROCV($K61;precos;2;FALSO);"")`. `precos` é o intervalo nomeado
+na aba `Base (importada)`, que por sua vez espelha a planilha-base com
+`IMPORTRANGE`.
+
+⭐ São **três camadas**: a Base guarda o preço, a aba importada traduz para
+as chaves que o orçamento usa, e o ambiente consome a chave. Mudar o preço
+de uma dobradiça atravessa as três sem ninguém digitar nada.
+
+⛔⛔ **`IMPORTRANGE` fica em `#REF!` até alguém autorizar**, clicando na
+célula e em **Permitir acesso**. Enquanto isso toda a cadeia dá
+`#DIV/0!` — por isso as fórmulas de custo vão dentro de `SEERRO`, para que
+a planilha fique limpa, e não quebrada, no estado intermediário.
+
 ## ⛔⛔ A ARMADILHA QUE QUEIMOU UMA RODADA INTEIRA — locale pt_BR
 
 As planilhas da casa nascem em **pt_BR**. Nesse locale o separador de
