@@ -48,10 +48,18 @@ rs  = lambda v: ('− ' if v < 0 else '') + 'R$ ' + \
       f'{abs(v):,.2f}'.replace(',', '§').replace('.', ',').replace('§', '.')
 
 CLIENTE, OBRA = 'Andrea', 'Clínica de dermatologia'
-DATA = '26 de outubro de 2026'
+DATA = '27 de outubro de 2026'
 MATERIAL, ACABAMENTO = 'Carvalho Mel', 'Top Matt'
 PRAZO_MAT, PRAZO_EXEC, PRAZO_TOT = '45 a 60 dias', '30 dias', 'cerca de 90 dias'
 VALIDADE = '7 dias úteis'
+# ⭐⭐ [Jonathan 27/10] "vamos deixar o posicionamento da paula explícito na
+#   proposta". A regra INVERTEU: o nome dela era proibido e passou a ser
+#   obrigatório — foi ela quem pediu para aparecer ("Quero sim que a cliente
+#   saiba o quanto lamentei por este inconveniente e que estou arcando com
+#   parte do valor"). ⛔ O que NÃO inverteu: a folha continua sem acusar
+#   ninguém. Ela assume um valor; ela não confessa uma falha.
+PARCEIRA = 'Paula Galante'
+PAPEL    = 'Responsável pelo projeto de interiores'
 NP = 1
 EXECUCAO, SUBSIDIO, LIQUIDO = sub.EXECUCAO, sub.SUBSIDIO, sub.LIQUIDO
 
@@ -114,10 +122,21 @@ LINHAS = [
 #     escrito e no documento que a cliente guarda, que a parceira falhou.
 #   ⭐ o que entrou: o memorial homologado ESPECIFICA este acabamento (fato)
 #     e a responsável pelo projeto OPTOU por absorver a diferença (gesto).
-OBS = ('O acabamento especificado no memorial homologado está acima do '
-       'previsto no orçamento contratado. A responsável pelo projeto de '
-       'interiores optou por <b>absorver integralmente a diferença de custo '
-       'do material</b>, concedida como subsídio técnico nesta proposta.')
+# ⭐ A VOZ MUDA DE DONO. Até aqui a folha falava da parceira em terceira
+#   pessoa — correto quando ela não podia aparecer, frio quando ela quer
+#   aparecer. Agora é ela quem fala, e assina.
+#   ⛔ O lamento é pelo TRANSTORNO da adequação, não por um erro: é o que
+#     ela pediu ("o quanto lamentei por este inconveniente") sem virar
+#     confissão escrita num documento que a cliente guarda.
+#   ⭐⭐ E o valor entra DENTRO da fala dela. Declaração nominal com número
+#     é compromisso; sem número é simpatia.
+DECL = ('Acompanho esta obra desde o projeto e faço questão de me posicionar '
+        'diretamente. O acabamento especificado no memorial homologado está '
+        'acima do previsto no orçamento contratado, e lamento o transtorno '
+        'que esta adequação representa. Por isso optei por <b>assumir '
+        'integralmente a diferença de custo do material, no valor de '
+        f'{rs(SUBSIDIO)}</b>, concedida como subsídio técnico direto nesta '
+        'proposta.')
 
 # ⛔⛔ O "SEM VISAR LUCRO" NÃO ENTRA. A Paula pediu; a conta não permite.
 #   A R$ 16.500 a MC é de 35% a 43% na faixa provável de área — não é custo.
@@ -141,31 +160,31 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
 .serif{font-family:'Cormorant Garamond',Georgia,serif;}
 .page{position:relative;width:210mm;height:297mm;overflow:hidden;
       background:var(--paper);}
-.pad{padding:12mm 16mm 11mm;height:100%;display:flex;flex-direction:column;}
-.foot{margin-top:auto;padding-top:3.4mm;border-top:1px solid var(--line);
+.pad{padding:11mm 16mm 10mm;height:100%;display:flex;flex-direction:column;}
+.foot{margin-top:auto;padding-top:3mm;border-top:1px solid var(--line);
       display:flex;justify-content:space-between;font-size:7pt;
       letter-spacing:.18em;text-transform:uppercase;color:var(--mut);flex:none;}
 
 .hd{display:flex;justify-content:space-between;align-items:baseline;
-  border-bottom:1.6px solid var(--ink);padding-bottom:3mm;flex:none;}
+  border-bottom:1.6px solid var(--ink);padding-bottom:2.6mm;flex:none;}
 .hd .b{font-size:8pt;letter-spacing:.4em;text-transform:uppercase;font-weight:700;}
 .hd .m{font-size:7pt;letter-spacing:.16em;text-transform:uppercase;
   color:var(--mut);font-weight:700;}
 .eye{font-size:7pt;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--mel);font-weight:700;margin-top:3mm;flex:none;}
-.h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:22pt;
+  color:var(--mel);font-weight:700;margin-top:2.6mm;flex:none;}
+.h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:21pt;
   line-height:1.03;font-weight:600;letter-spacing:-.022em;margin-top:1.2mm;
   flex:none;}
 .h1 i{font-style:normal;color:var(--mel);}
-.lead{margin-top:2.4mm;font-size:8.6pt;line-height:1.44;color:var(--soft);
+.lead{margin-top:2.2mm;font-size:8.2pt;line-height:1.42;color:var(--soft);
   max-width:170mm;flex:none;}
 .lead b{color:var(--ink);font-weight:600;}
 
 /* ── a faixa das três imagens: lâmina · colagem · camada ───────────── */
-.band{margin-top:3mm;display:grid;grid-template-columns:repeat(3,1fr);
+.band{margin-top:2.6mm;display:grid;grid-template-columns:repeat(3,1fr);
   gap:4.5mm;flex:none;}
 .q{display:flex;flex-direction:column;}
-.q .ph{height:21mm;border-radius:3px;overflow:hidden;background:#fff;
+.q .ph{height:15mm;border-radius:3px;overflow:hidden;background:#fff;
   border:1px solid var(--line);display:flex;align-items:center;
   justify-content:center;}
 .q .ph img{width:100%;height:100%;display:block;}
@@ -178,20 +197,20 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
 .q .d{margin-top:1.2mm;font-size:7.8pt;line-height:1.4;color:var(--soft);}
 .q .d b{color:var(--ink);font-weight:600;}
 
-.sec{margin-top:2.8mm;font-size:7pt;letter-spacing:.28em;text-transform:uppercase;
+.sec{margin-top:2.4mm;font-size:7pt;letter-spacing:.28em;text-transform:uppercase;
   color:var(--mel);font-weight:700;flex:none;}
 .steps{margin-top:1.6mm;display:grid;grid-template-columns:repeat(2,1fr);
   gap:0 9mm;flex:none;}
 .st{display:grid;grid-template-columns:8mm 1fr;gap:2.6mm;align-items:baseline;
-  padding:.8mm 0;border-top:1px solid var(--line);}
+  padding:.5mm 0;border-top:1px solid var(--line);}
 .st .k{font-family:'Cormorant Garamond',Georgia,serif;font-size:12pt;
   font-weight:700;color:var(--mel);line-height:1;}
 .st .d{font-size:8pt;line-height:1.38;color:var(--soft);}
 .st .d b{color:var(--ink);font-weight:600;}
 
-.two{margin-top:2.8mm;display:grid;grid-template-columns:1fr 1fr;gap:4.5mm;
+.two{margin-top:2.4mm;display:grid;grid-template-columns:1fr 1fr;gap:4.5mm;
   flex:none;}
-.bx{background:var(--clin);border-radius:3px;padding:2.6mm 4.4mm;}
+.bx{background:var(--clin);border-radius:3px;padding:2.4mm 4.4mm;}
 .bx .k{font-size:6.8pt;letter-spacing:.24em;text-transform:uppercase;
   color:var(--mel);font-weight:700;}
 .bx .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:13pt;
@@ -203,7 +222,7 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
 .pz b{color:var(--ink);font-weight:600;white-space:nowrap;}
 
 /* ── ⭐⭐ O BLOCO DE VALOR: duas linhas e o líquido ─────────────────── */
-.inv{margin-top:3.2mm;background:var(--esp);color:#F2F0EB;border-radius:3px;
+.inv{margin-top:2.4mm;background:var(--esp);color:#F2F0EB;border-radius:3px;
   padding:3mm 5.6mm 3.2mm;flex:none;}
 .inv .cap{font-size:6.8pt;letter-spacing:.26em;text-transform:uppercase;
   color:var(--mel-lt);font-weight:700;}
@@ -232,14 +251,22 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
   border-top:1px solid rgba(230,207,164,.22);font-size:7.1pt;line-height:1.38;
   color:#A7B2B4;}
 .cond b{color:#D6DBDB;font-weight:600;}
-.obs{margin-top:2.8mm;flex:none;}
-.ob{background:var(--clin);border-radius:3px;padding:2.6mm 4.6mm;}
+.obs{margin-top:2.2mm;flex:none;}
+.ob{background:var(--clin);border-radius:3px;border-left:2.2px solid var(--mel);
+  padding:2.8mm 5mm 3mm;}
 .ob .k{font-size:6.6pt;letter-spacing:.24em;text-transform:uppercase;
   color:var(--mel);font-weight:700;}
-.ob .d{font-size:7.8pt;line-height:1.44;color:var(--soft);margin-top:1.3mm;}
+.ob .d{font-size:8.1pt;line-height:1.46;color:var(--soft);margin-top:1.3mm;}
 .ob .d b{color:var(--ink);font-weight:600;}
+/* ⭐ a assinatura: quem fala, e de onde fala */
+.sig{margin-top:2.4mm;padding-top:1.8mm;border-top:1px solid #DBE2E3;
+  display:flex;align-items:baseline;gap:3.4mm;}
+.sig .nm{font-family:'Cormorant Garamond',Georgia,serif;font-size:13pt;
+  font-weight:700;line-height:1;color:var(--ink);}
+.sig .pp{font-size:6.8pt;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--mut);font-weight:700;}
 
-.strip{margin-top:2.6mm;padding-top:2.2mm;border-top:1px solid var(--line);
+.strip{margin-top:2.2mm;padding-top:2mm;border-top:1px solid var(--line);
   display:flex;justify-content:space-between;gap:5mm;font-size:8pt;
   color:var(--soft);flex:none;}
 .strip span{white-space:nowrap;}
@@ -291,17 +318,17 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
     <div class="bx"><div class="k">O acabamento</div>
       <div class="t serif">{MATERIAL}, {ACABAMENTO}.</div>
       <div class="d">Laminado de alta pressão no padrão <b>{MATERIAL}</b>,
-      acabamento <b>{ACABAMENTO}</b> — superfície supermatte, de toque seco
-      e baixo brilho, que não marca dedo. <b>Mediante disponibilidade do
-      padrão junto ao fornecedor.</b></div></div>
+      acabamento <b>{ACABAMENTO}</b> — supermatte, de baixo brilho, que não
+      marca dedo. <b>Mediante disponibilidade junto ao fornecedor.</b>
+      </div></div>
     <div class="bx"><div class="k">O prazo</div>
       <div class="t serif">{PRAZO_TOT.capitalize()}.</div>
       <div class="pz">
         <b>{PRAZO_MAT}</b><span>para o fornecedor entregar o material.</span>
         <b>{PRAZO_EXEC}</b><span>de execução, contados do recebimento.</span>
-      </div>
-      <div class="d">Os dois correm <b>em sequência</b>, não em paralelo: a
-      aplicação começa com a lâmina em casa.</div></div>
+        <b>em sequência</b><span>os dois prazos não correm em paralelo: a
+        aplicação começa com a lâmina em casa.</span>
+      </div></div>
   </div>
 
   <div class="inv">
@@ -315,8 +342,10 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
   </div>
 
   <div class="obs">
-    <div class="ob"><div class="k">Observação</div>
-      <div class="d">{OBS}</div></div>
+    <div class="ob"><div class="k">Posicionamento da responsável pelo projeto</div>
+      <div class="d">{DECL}</div>
+      <div class="sig"><div class="nm serif">{PARCEIRA}</div>
+        <div class="pp">{PAPEL}</div></div></div>
   </div>
 
   <div class="strip">
@@ -344,8 +373,7 @@ PROIBIDO = [
  (r'\bengan[oa]s?\b',          'acusa: fala de ENGANO'),
  (r'\bdivergênc|\bdivergiu\b|\bdivergente\b', 'acusa: fala de DIVERGÊNCIA'),
  (r'\bincorret|\binadequad|\bimprópri', 'acusa: diz que o que está lá não serve'),
- (r'\bPaula\b|\bGalante\b',    '⛔ NOMEIA A PARCEIRA'),
- (r'\bdecorador|\bdesigner de ambientes\b', '⛔ IDENTIFICA A PARCEIRA pelo papel'),
+ (r'\bdecorador\w*\b',       'trata a parceira por título informal'),
  (r'não foi atualizad|não atualizad', 'acusa: aponta documento não atualizado'),
  (r'sem lucro|sem visar lucro|apenas o custo|a preço de custo',
   '⛔ PROMETE "SEM LUCRO" — a R$ 16.500 a MC é de 35% a 43%, não é custo'),
@@ -360,7 +388,27 @@ for rot, v in (('execução', EXECUCAO), ('subsídio', SUBSIDIO), ('líquido', L
     assert rs(v).replace('− ', '') in texto, f'⛔ O VALOR DE {rot.upper()} SUMIU DA FOLHA'
 assert '− R$ 10.560,00' in texto, '⛔ O SUBSÍDIO PERDEU O SINAL DE ABATIMENTO'
 assert 'homologad' in texto, '⛔ A ÂNCORA DO MEMORIAL HOMOLOGADO SUMIU'
-assert 'absorver integralmente' in texto, '⛔ O GESTO DA PARCEIRA SUMIU DA FOLHA'
+assert 'assumir\u00a0integralmente'.replace('\u00a0',' ') in texto, \
+    '⛔ O GESTO DA PARCEIRA SUMIU DA FOLHA'
+
+#  ⭐⭐ A TRAVA QUE INVERTEU [Jonathan 27/10]. O nome da parceira era
+#    proibido; agora é obrigatório — mas NUNCA sozinho. Quem assina uma
+#    declaração assume um valor: se o nome está na folha, o compromisso
+#    também está, e com cifra. Declaração sem número é simpatia, não
+#    subsídio.
+#  ⛔⛔ A TRAVA NÃO PODE CONFERIR A VARIÁVEL CONTRA ELA MESMA. `PARCEIRA in
+#    texto` passa sempre — é ela que gera o texto. Aqui o nome vai por
+#    extenso DE PROPÓSITO: a trava é a segunda testemunha, não o eco da
+#    primeira. (O teste negativo pegou isso; a trava anterior não valia nada.)
+assert 'Paula Galante' in texto, '⛔ O NOME DA PARCEIRA SUMIU DA FOLHA'
+assert 'Responsável pelo projeto de interiores' in texto, \
+    '⛔ A PARCEIRA APARECE SEM O PAPEL QUE A AUTORIZA A FALAR'
+assert texto.count(rs(SUBSIDIO).replace('− ', '')) >= 2, \
+    '⛔⛔ O NOME DELA ESTÁ NA FOLHA MAS O VALOR QUE ELA ASSUME NÃO — ' \
+    'declaração sem cifra não é compromisso'
+assert 'lamento' in texto.lower(), '⛔ O LAMENTO QUE ELA PEDIU SUMIU DA FOLHA'
+#  ⛔ e o lamento não pode virar confissão: lamenta-se o TRANSTORNO da
+#    adequação, nunca uma falha — as travas de acusação acima garantem isso.
 
 (P/'aditivo-andrea-laminacao.html').write_text(HTML, encoding='utf-8')
 open('/tmp/in.html', 'w', encoding='utf-8').write(HTML)
@@ -379,8 +427,8 @@ print(f'  ✓ travas de linguagem: {len(PROIBIDO)} regras, nenhuma violada')
 if med:
     import json
     for m in json.loads(med[0][7:]):
-        s, o = m['slack'], m['over']
-        ok = o <= 0.05 and s >= 3.0
-        print(f'  {"✓" if ok else "⛔"} folga vertical  {s:+.1f} mm'
-              + ('' if o <= 0.05 else f'  ⛔ ESTOURO DE {o:.1f} mm')
-              + ('' if s >= 3.0 else '  ⚠ APERTADO: menos de 3 mm de respiro'))
+        f, e = m['folga'], m['estouro']
+        print(f'  {"✓" if e <= .05 and f >= 3 else "⛔"} folga {f:+.1f} mm'
+              + (f'  ⛔ ESTOURA {e:.1f} mm' if e > .05 else
+                 '  ⚠ APERTADO: menos de 3 mm de respiro' if f < 3 else
+                 '  · cabe com respiro'))

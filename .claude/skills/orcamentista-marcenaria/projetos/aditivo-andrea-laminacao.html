@@ -13,31 +13,31 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
 .serif{font-family:'Cormorant Garamond',Georgia,serif;}
 .page{position:relative;width:210mm;height:297mm;overflow:hidden;
       background:var(--paper);}
-.pad{padding:12mm 16mm 11mm;height:100%;display:flex;flex-direction:column;}
-.foot{margin-top:auto;padding-top:3.4mm;border-top:1px solid var(--line);
+.pad{padding:11mm 16mm 10mm;height:100%;display:flex;flex-direction:column;}
+.foot{margin-top:auto;padding-top:3mm;border-top:1px solid var(--line);
       display:flex;justify-content:space-between;font-size:7pt;
       letter-spacing:.18em;text-transform:uppercase;color:var(--mut);flex:none;}
 
 .hd{display:flex;justify-content:space-between;align-items:baseline;
-  border-bottom:1.6px solid var(--ink);padding-bottom:3mm;flex:none;}
+  border-bottom:1.6px solid var(--ink);padding-bottom:2.6mm;flex:none;}
 .hd .b{font-size:8pt;letter-spacing:.4em;text-transform:uppercase;font-weight:700;}
 .hd .m{font-size:7pt;letter-spacing:.16em;text-transform:uppercase;
   color:var(--mut);font-weight:700;}
 .eye{font-size:7pt;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--mel);font-weight:700;margin-top:3mm;flex:none;}
-.h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:22pt;
+  color:var(--mel);font-weight:700;margin-top:2.6mm;flex:none;}
+.h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:21pt;
   line-height:1.03;font-weight:600;letter-spacing:-.022em;margin-top:1.2mm;
   flex:none;}
 .h1 i{font-style:normal;color:var(--mel);}
-.lead{margin-top:2.4mm;font-size:8.6pt;line-height:1.44;color:var(--soft);
+.lead{margin-top:2.2mm;font-size:8.2pt;line-height:1.42;color:var(--soft);
   max-width:170mm;flex:none;}
 .lead b{color:var(--ink);font-weight:600;}
 
 /* ── a faixa das três imagens: lâmina · colagem · camada ───────────── */
-.band{margin-top:3mm;display:grid;grid-template-columns:repeat(3,1fr);
+.band{margin-top:2.6mm;display:grid;grid-template-columns:repeat(3,1fr);
   gap:4.5mm;flex:none;}
 .q{display:flex;flex-direction:column;}
-.q .ph{height:21mm;border-radius:3px;overflow:hidden;background:#fff;
+.q .ph{height:15mm;border-radius:3px;overflow:hidden;background:#fff;
   border:1px solid var(--line);display:flex;align-items:center;
   justify-content:center;}
 .q .ph img{width:100%;height:100%;display:block;}
@@ -50,20 +50,20 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
 .q .d{margin-top:1.2mm;font-size:7.8pt;line-height:1.4;color:var(--soft);}
 .q .d b{color:var(--ink);font-weight:600;}
 
-.sec{margin-top:2.8mm;font-size:7pt;letter-spacing:.28em;text-transform:uppercase;
+.sec{margin-top:2.4mm;font-size:7pt;letter-spacing:.28em;text-transform:uppercase;
   color:var(--mel);font-weight:700;flex:none;}
 .steps{margin-top:1.6mm;display:grid;grid-template-columns:repeat(2,1fr);
   gap:0 9mm;flex:none;}
 .st{display:grid;grid-template-columns:8mm 1fr;gap:2.6mm;align-items:baseline;
-  padding:.8mm 0;border-top:1px solid var(--line);}
+  padding:.5mm 0;border-top:1px solid var(--line);}
 .st .k{font-family:'Cormorant Garamond',Georgia,serif;font-size:12pt;
   font-weight:700;color:var(--mel);line-height:1;}
 .st .d{font-size:8pt;line-height:1.38;color:var(--soft);}
 .st .d b{color:var(--ink);font-weight:600;}
 
-.two{margin-top:2.8mm;display:grid;grid-template-columns:1fr 1fr;gap:4.5mm;
+.two{margin-top:2.4mm;display:grid;grid-template-columns:1fr 1fr;gap:4.5mm;
   flex:none;}
-.bx{background:var(--clin);border-radius:3px;padding:2.6mm 4.4mm;}
+.bx{background:var(--clin);border-radius:3px;padding:2.4mm 4.4mm;}
 .bx .k{font-size:6.8pt;letter-spacing:.24em;text-transform:uppercase;
   color:var(--mel);font-weight:700;}
 .bx .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:13pt;
@@ -75,7 +75,7 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
 .pz b{color:var(--ink);font-weight:600;white-space:nowrap;}
 
 /* ── ⭐⭐ O BLOCO DE VALOR: duas linhas e o líquido ─────────────────── */
-.inv{margin-top:3.2mm;background:var(--esp);color:#F2F0EB;border-radius:3px;
+.inv{margin-top:2.4mm;background:var(--esp);color:#F2F0EB;border-radius:3px;
   padding:3mm 5.6mm 3.2mm;flex:none;}
 .inv .cap{font-size:6.8pt;letter-spacing:.26em;text-transform:uppercase;
   color:var(--mel-lt);font-weight:700;}
@@ -104,14 +104,22 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
   border-top:1px solid rgba(230,207,164,.22);font-size:7.1pt;line-height:1.38;
   color:#A7B2B4;}
 .cond b{color:#D6DBDB;font-weight:600;}
-.obs{margin-top:2.8mm;flex:none;}
-.ob{background:var(--clin);border-radius:3px;padding:2.6mm 4.6mm;}
+.obs{margin-top:2.2mm;flex:none;}
+.ob{background:var(--clin);border-radius:3px;border-left:2.2px solid var(--mel);
+  padding:2.8mm 5mm 3mm;}
 .ob .k{font-size:6.6pt;letter-spacing:.24em;text-transform:uppercase;
   color:var(--mel);font-weight:700;}
-.ob .d{font-size:7.8pt;line-height:1.44;color:var(--soft);margin-top:1.3mm;}
+.ob .d{font-size:8.1pt;line-height:1.46;color:var(--soft);margin-top:1.3mm;}
 .ob .d b{color:var(--ink);font-weight:600;}
+/* ⭐ a assinatura: quem fala, e de onde fala */
+.sig{margin-top:2.4mm;padding-top:1.8mm;border-top:1px solid #DBE2E3;
+  display:flex;align-items:baseline;gap:3.4mm;}
+.sig .nm{font-family:'Cormorant Garamond',Georgia,serif;font-size:13pt;
+  font-weight:700;line-height:1;color:var(--ink);}
+.sig .pp{font-size:6.8pt;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--mut);font-weight:700;}
 
-.strip{margin-top:2.6mm;padding-top:2.2mm;border-top:1px solid var(--line);
+.strip{margin-top:2.2mm;padding-top:2mm;border-top:1px solid var(--line);
   display:flex;justify-content:space-between;gap:5mm;font-size:8pt;
   color:var(--soft);flex:none;}
 .strip span{white-space:nowrap;}
@@ -121,7 +129,7 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
 </style></head><body>
 <div class="page"><div class="pad">
   <div class="hd"><div class="b">Valvic Marcenaria</div>
-    <div class="m">Andrea · 26 de outubro de 2026</div></div>
+    <div class="m">Andrea · 27 de outubro de 2026</div></div>
 
   <div class="eye">Aditivo de orçamento</div>
   <div class="h1 serif">A superfície que<br>a <i>clínica</i> pede.</div>
@@ -144,17 +152,17 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
     <div class="bx"><div class="k">O acabamento</div>
       <div class="t serif">Carvalho Mel, Top Matt.</div>
       <div class="d">Laminado de alta pressão no padrão <b>Carvalho Mel</b>,
-      acabamento <b>Top Matt</b> — superfície supermatte, de toque seco
-      e baixo brilho, que não marca dedo. <b>Mediante disponibilidade do
-      padrão junto ao fornecedor.</b></div></div>
+      acabamento <b>Top Matt</b> — supermatte, de baixo brilho, que não
+      marca dedo. <b>Mediante disponibilidade junto ao fornecedor.</b>
+      </div></div>
     <div class="bx"><div class="k">O prazo</div>
       <div class="t serif">Cerca de 90 dias.</div>
       <div class="pz">
         <b>45 a 60 dias</b><span>para o fornecedor entregar o material.</span>
         <b>30 dias</b><span>de execução, contados do recebimento.</span>
-      </div>
-      <div class="d">Os dois correm <b>em sequência</b>, não em paralelo: a
-      aplicação começa com a lâmina em casa.</div></div>
+        <b>em sequência</b><span>os dois prazos não correm em paralelo: a
+        aplicação começa com a lâmina em casa.</span>
+      </div></div>
   </div>
 
   <div class="inv">
@@ -168,8 +176,10 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
   </div>
 
   <div class="obs">
-    <div class="ob"><div class="k">Observação</div>
-      <div class="d">O acabamento especificado no memorial homologado está acima do previsto no orçamento contratado. A responsável pelo projeto de interiores optou por <b>absorver integralmente a diferença de custo do material</b>, concedida como subsídio técnico nesta proposta.</div></div>
+    <div class="ob"><div class="k">Posicionamento da responsável pelo projeto</div>
+      <div class="d">Acompanho esta obra desde o projeto e faço questão de me posicionar diretamente. O acabamento especificado no memorial homologado está acima do previsto no orçamento contratado, e lamento o transtorno que esta adequação representa. Por isso optei por <b>assumir integralmente a diferença de custo do material, no valor de R$ 10.560,00</b>, concedida como subsídio técnico direto nesta proposta.</div>
+      <div class="sig"><div class="nm serif">Paula Galante</div>
+        <div class="pp">Responsável pelo projeto de interiores</div></div></div>
   </div>
 
   <div class="strip">

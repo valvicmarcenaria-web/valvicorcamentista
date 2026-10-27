@@ -1,10 +1,10 @@
 # ANDREA — clínica de dermatologia · ADITIVO DE LAMINAÇÃO
 
 **Cliente:** Andrea · **Obra:** clínica de dermatologia
-**Parceira:** Paula Galante (decoradora) — ⚠ **a regra mudou em 26/10:**
-ela pediu para APARECER como quem absorve a diferença. Entra na folha pelo
-papel ("a responsável pelo projeto de interiores"), nunca pelo nome.
-**Folha:** `projetos/aditivo-andrea-laminacao.pdf` · 1 página · **v2 · 26/10/2026**
+**Parceira:** Paula Galante — ⚠ **a regra inverteu duas vezes.** Era
+invisível (24/10); apareceu pelo papel (26/10); desde **27/10 assina a
+proposta com nome, papel e valor assumido.**
+**Folha:** `projetos/aditivo-andrea-laminacao.pdf` · 1 página · **v3 · 27/10/2026**
 
 ---
 
@@ -226,6 +226,92 @@ de abatimento, da âncora "homologado" e do gesto "absorver integralmente".
 
 ---
 
+## 27/10/2026 — ⭐⭐ v3: A PARCEIRA ASSINA
+
+> *"vamos deixar o posicionamento da paula explícito na proposta"* — Jonathan
+
+A caixa impessoal de observação virou **declaração em primeira pessoa,
+assinada**. Era o que a Paula pediu literalmente — *"Quero sim que a cliente
+saiba o quanto lamentei por este inconveniente e que estou arcando com parte
+do valor"* — e a v2 entregava só metade: o gesto, sem a voz.
+
+> *"Acompanho esta obra desde o projeto e faço questão de me posicionar
+> diretamente. O acabamento especificado no memorial homologado está acima
+> do previsto no orçamento contratado, e lamento o transtorno que esta
+> adequação representa. Por isso optei por **assumir integralmente a
+> diferença de custo do material, no valor de R$ 10.560,00**, concedida
+> como subsídio técnico direto nesta proposta."*
+> — **Paula Galante** · Responsável pelo projeto de interiores
+
+### ⭐ O LAMENTO É PELO TRANSTORNO, NUNCA POR UMA FALHA
+
+É a linha mais delicada da folha. Ela pediu para lamentar *"este
+inconveniente"* — mas num documento que a cliente guarda, lamentar um
+inconveniente que não se nomeia convida à pergunta, e lamentar um erro é
+confissão escrita. ⭐ Lamenta-se **o transtorno que a adequação representa**:
+verdadeiro (revestir peça pronta atrasa a obra), humano, e não admite culpa
+de ninguém. As travas de acusação continuam ligadas em cima disso.
+
+### ⭐⭐ A DECLARAÇÃO COM CIFRA É O INSTRUMENTO QUE FALTAVA
+
+O item 9 pedia um combinado por escrito, porque a folha abatia R$ 10.560 de
+um compromisso que só existia em WhatsApp. **A declaração nominal com valor
+resolve isso de dentro da própria folha:** quem assina assume. Daí a trava
+nova — se o nome dela está na folha, a cifra também está. *Declaração sem
+número é simpatia; com número é compromisso.*
+
+⭐ **E o aceite vira trivial:** basta o Jonathan mandar esta folha para a
+Paula e ela responder que pode seguir. O "de acordo" dela com esta página é
+o registro — não precisa de termo separado.
+⛔ **Mas precisa acontecer antes de a folha ir para a Andrea.** São palavras
+em primeira pessoa de uma pessoa real, escritas por mim; ela tem de ler e
+aprovar a redação exata, não só a ideia.
+
+### ⛔ A TRAVA QUE INVERTEU DE SINAL
+
+| | até 26/10 | desde 27/10 |
+|---|---|---|
+| nome da parceira | ⛔ proibido | ⭐ **obrigatório** |
+| papel dela | ⛔ proibido | ⭐ **obrigatório** |
+| valor que ela assume | — | ⭐ **obrigatório junto do nome** |
+| o lamento | — | ⭐ **obrigatório** |
+| acusação, "sem lucro", metragem | ⛔ proibido | ⛔ **proibido** |
+
+### ⛔⛔ A TRAVA QUE NÃO VALIA NADA — E O TESTE QUE PEGOU
+
+Escrevi `assert PARCEIRA in texto` e passei adiante. **Passa sempre:** é a
+própria variável que gera o texto, então a trava conferia a fonte contra ela
+mesma. Trocar o nome por qualquer coisa continuava passando.
+
+⭐ Quem pegou foi o teste negativo, e só porque ele testa a regra pela
+*ausência*. Hoje o nome vai **por extenso dentro da trava**, de propósito: a
+trava é a segunda testemunha, não o eco da primeira.
+
+⚠ E o próprio teste tinha o mesmo vício ao contrário: contava **qualquer**
+morte como "trava funcionou". Faltaram as imagens numa execução, o build
+morreu de `FileNotFoundError` e o placar deu 0/11 — se tivesse dado 11/11 por
+esse motivo, eu teria acreditado. Agora só conta morte por `AssertionError`,
+e qualquer outra falha é denunciada como **teste inválido**.
+
+`projetos/teste-travas-andrea.py` · **11/11 violações barradas.**
+
+### ⭐ A FOLHA CABE — E A MEDIDA LEVOU TRÊS TENTATIVAS
+
+Três métricas de folga mentiram, todas do mesmo jeito: devolvendo zero
+tanto para *"cabe folgado"* quanto para *"cabe raspando"*.
+
+| métrica | por que mente |
+|---|---|
+| `scrollHeight − clientHeight` | `scrollHeight` tem piso no `clientHeight` |
+| vão até o rodapé **+ padding dele** | o padding é piso artificial |
+| fim da caixa − fim do rodapé | com `margin-top:auto` o rodapé encosta sempre |
+
+⭐ São **dois** números, complementares: **folga** = o que a margem
+automática abriu (só existe se sobrou) · **estouro** = quanto o rodapé
+passou do fim da caixa (só existe se faltou). Hoje: folga **+3,7 mm**.
+
+---
+
 ## ★ EM ABERTO
 
 1. **⛔⛔ A ÁREA REAL DOS PAINÉIS E PORTAS.** É o único número que falta e
@@ -249,18 +335,17 @@ de abatimento, da âncora "homologado" e do gesto "absorver integralmente".
 8. ~~**⚠ Quem paga.**~~ ✅ **RESOLVIDO em 26/10:** a Paula absorve
    R$ 10.560 (64%) e a cliente paga R$ 5.940. A resposta ao *"por quê"*
    está combinada — é a própria observação da folha.
-9. **⛔⛔ O SUBSÍDIO PRECISA DE UM COMBINADO POR ESCRITO ENTRE JONATHAN E
-   PAULA.** A folha protege o que dá para proteger ("liquidada diretamente
-   junto à Valvic"), mas quem obriga a parceira a pagar R$ 10.560 hoje é
-   uma conversa de WhatsApp. ⭐ Basta o aceite dela por escrito dizendo
-   **valor, prazo e forma** — e isso tem de sair ANTES de a folha ir para a
-   Andrea, porque depois da folha emitida a Valvic já abateu o valor.
+9. **⛔ O ACEITE DA PAULA À REDAÇÃO — ANTES DE A FOLHA IR PARA A ANDREA.**
+   ✅ O instrumento está resolvido: a declaração assinada com a cifra de
+   R$ 10.560,00 é o compromisso, e o "pode seguir" dela por escrito é o
+   registro. ⛔ **O que falta é ela aprovar a redação exata** — são
+   palavras em primeira pessoa dela, escritas por mim. ⚠ Falta ainda
+   combinar **prazo e forma** de liquidação, que a folha não diz.
 10. **⚠ Qual órgão homologou.** A Paula escreveu "aprovado pela
    Prefeitura"; a folha diz só "memorial homologado", que é verdade em
    qualquer hipótese. Se for para nomear o órgão, confirmar antes se é a
    Prefeitura ou a Vigilância Sanitária — num consultório costuma ser a
    segunda.
 11. **⚠ Dois leitores agora.** A folha deixou de ter só a Andrea como
-   leitora: a Paula vai ler cada linha. Toda frase precisa sobreviver às
-   duas leituras — é por isso que a observação credita o gesto sem abrir o
-   motivo.
+   leitora: a Paula vai ler cada linha — e agora assina uma delas. Toda
+   frase precisa sobreviver às duas leituras.
