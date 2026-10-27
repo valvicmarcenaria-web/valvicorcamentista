@@ -179,8 +179,15 @@ FITA_M    = 3.00    # Fita de borda cor 22 mm · + 10% de desperdício
 FITA_PERD = 0.10
 FILETE_M  = 2.50    # Filetagem na coladeira automática 15 e 18 mm
 FITA_CHEIA= 5.50    # ⚠ a Base também traz o "preço cheio da casa" já com aplicação
-CORREDICA = 80.0    # Hardt Invisível P-10 · ⭐ O PADRÃO DA CASA
-DOBRADICA = 15.0    # ★ Bigfer Onix — ⛔ a linha "Padrão" da escada está VAZIA na Base
+# ⭐⭐ A LINHA DE FERRAGEM. O orçamento da Jéssica e do Michell já está
+#   montado na linha BLUM — é a chave que as abas usam. Mantenho o
+#   orçamento na linha em que ele está (coerência entre ambientes vale mais
+#   que a minha preferência) e mostro quanto o Padrão da casa economizaria.
+LINHA = 'Blum'
+CORREDICA = 300.0   # Corrediça Blum, por gaveta [Jonathan 26/10]
+DOBRADICA =  50.0   # Dobradiça Blum [Jonathan 26/10]
+CORREDICA_PAD = 80.0  # Hardt Invisível P-10 · ⭐ o Padrão da casa
+DOBRADICA_PAD = 15.0  # ★ Bigfer Onix — ⛔ a linha "Padrão" da escada está VAZIA na Base
 DOBR_VIDRO= 70.0    # Dobradiça para porta de vidro · A COTAR
 CAVA_M    = 50.0    # Cava usinada, por metro de frente
 LED_M     = 150.0   # LED COB conjunto completo: fita, perfil, usinagem e instalação
@@ -284,17 +291,36 @@ def conta(pecas=LIVING):
     for mov, rot, q in SUPORTES: L(f'Suporte oculto · {rot}', q, 'un', SUPORTE)
     print('  ' + '─'*53)
     print(f"  {'TOTAL':<44}{'':>11}{br(tot):>11}")
+    ng = sum(q for _, _, q, _ in GAVETAS)
+    nd = sum(nq*ndo for _, _, nq, ndo, pr in PORTAS if pr == DOBRADICA)
+    eco = ng*(CORREDICA-CORREDICA_PAD) + nd*(DOBRADICA-DOBRADICA_PAD)
+    print(f'\n  ⚠ LINHA DE FERRAGEM: este orçamento está em {LINHA}, que é a')
+    print(f'    chave que as abas já usam. No Padrão da casa (Hardt P-10 e')
+    print(f'    dobradiça de linha intermediária) o Living cairia {br(eco)}.')
 
     # ── 4 · FECHAMENTO ──────────────────────────────────────────────────
-    mat = cust_chapa + f_mat + tot
-    geral = cust_chapa + f_mat + f_ser + tot
-    print(f'\n{"═"*W}'); print('FECHAMENTO — custo de material e ferragem do Living')
+    # ⭐ A planilha usa o preço cheio da casa para a fita (R$ 5,50/m já com
+    #   aplicação). Adoto o mesmo aqui para que script e aba NUNCA divirjam;
+    #   o desdobramento material + filetagem fica acima, como conferência.
+    f_cheia = fita_c * FITA_CHEIA
+    CONSUM, EMBAL = 0.06, 0.02
+    chapa_fita = cust_chapa + f_cheia
+    cons = chapa_fita * CONSUM
+    sub_ = chapa_fita + tot + cons
+    emb = sub_ * EMBAL
+    print(f'\n{"═"*W}'); print('FECHAMENTO — custo direto do Living')
     print('═'*W)
-    for rot, v in (('chapa', cust_chapa), ('fita, material', f_mat),
-                   ('fita, filetagem', f_ser), ('ferragem, cava e luz', tot)):
+    for rot, v in (('chapa, em número cheio', cust_chapa),
+                   ('fita de borda, preço cheio da casa', f_cheia),
+                   ('ferragem, cava e luz', tot),
+                   (f'consumíveis sobre chapa e fita · {CONSUM:.0%}', cons),
+                   (f'embalagem · {EMBAL:.0%}', emb)):
         print(f'  {rot:<44}{br(v):>20}')
     print('  ' + '─'*66)
-    print(f'  {"TOTAL DO LIVING":<44}{br(geral):>20}')
+    print(f'  {"CUSTO DIRETO DO AMBIENTE":<44}{br(sub_+emb):>20}')
+    print(f'\n  ⚠ a fita pelo desdobramento (material {br(f_mat)} + filetagem '
+          f'{br(f_ser)}) daria {br(f_mat+f_ser)} — {br(f_cheia-f_mat-f_ser)} a '
+          f'{"menos" if f_cheia < f_mat+f_ser else "mais"}.')
     print(f'\n  por móvel (área de chapa):')
     for m, a in sorted(por_movel.items(), key=lambda t: -t[1]):
         print(f'    {m:<38}{a:>7.2f} m²')

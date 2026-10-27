@@ -111,6 +111,74 @@ célula e em **Permitir acesso**. Enquanto isso toda a cadeia dá
 `#DIV/0!` — por isso as fórmulas de custo vão dentro de `SEERRO`, para que
 a planilha fique limpa, e não quebrada, no estado intermediário.
 
+## ⛔⛔ A CHAVE DE PREÇO DESLIZOU DE LINHA — e ninguém via [27/10/2026]
+
+O Jonathan apontou que *"não puxou o custo da corrediça"*. A linha **estava**
+na planilha; o que não estava era o preço. A chave `Corrediça` devolvia
+**vazio**, e a investigação mostrou que não era uma chave só:
+
+| chave | puxava | devia puxar |
+|---|--:|--:|
+| Corrediça | *(vazio)* | **R$ 300** |
+| Dobradiça | R$ 70 | **R$ 50** |
+| Báscula HK-XS | R$ 100 | **R$ 250** |
+| Puxador slim | R$ 6 | **R$ 35** |
+
+⭐⭐ **Cada uma pegou a linha SEGUINTE à certa na Base.** O vazio gritou; os
+outros três mentiram caladinhos, com um número plausível na célula. ⛔ **Um
+preço errado é pior que um preço faltando** — o faltando a gente vê.
+
+⭐ **O conserto é buscar por NOME, não por posição:**
+```
+=SEERRO(PROCV("Corrediça Blum";IMPORTRANGE(id;"Ferragens!A:D");4;FALSO);"")
+```
+Assim inserir uma linha na Base não desloca mais nada. ⚠ Só serve onde o
+nome é único: as chapas de MDF repetem o nome em 6/15/18 mm e continuam
+por posição.
+
+## ⭐⭐ A REGRA DE FERRO PRECISA DE UMA LINHA PRÓPRIA NO FECHAMENTO
+
+O bloco por item **rateia a chapa em fração** — tem de ratear, senão cada
+móvel puxaria uma chapa inteira. Mas a compra é em número cheio. Os dois
+não podem viver na mesma linha.
+
+⭐ A saída: o **RESUMO DE MATERIAL DO AMBIENTE** no fim da aba soma a área
+por cor × espessura, arredonda para cima, e mostra as duas colunas lado a
+lado — `CUSTO CHEIO` e `NOS ITENS`. A diferença vira uma linha explícita no
+fechamento: *"Arredondamento de chapa para número cheio"*. No Living deu
+**R$ 333,49**, e agora dá para ver de onde vem.
+
+## ⛔⛔ O PAINEL MISTURAVA NÚMERO VIVO COM NÚMERO MORTO
+
+Pior que `#REF!`. Três ambientes estavam no formato antigo e devolviam
+`#REF!` em quase tudo — **menos** nas colunas de Ferragem e Terceirizados,
+onde sobraram valores fixos digitados numa rodada anterior. O `TOTAL`
+somava o Living vivo com três mortos e dava **R$ 25.108** de ferragem, que
+não é número de lugar nenhum.
+
+⭐ `#REF!` é honesto: grita. Número velho fixo é o contrário — parece certo.
+Hoje o TOTAL usa `SOMARPRODUTO(SEERRO(faixa;0))` e soma só o que existe,
+com a nota dizendo em voz alta o que ainda não entrou.
+
+## ⚠ TRÊS DETALHES DA API QUE CUSTARAM CHAMADA
+
+1. **Número vai como número.** Mandar `"131.4"` como texto numa planilha
+   pt_BR vira texto ou 1314. O JSON leva `131.4` sem aspas e o Sheets
+   grava número, seja qual for o locale.
+2. **`fields` com vírgula é recusado.** `userEnteredFormat(wrapStrategy,textFormat)`
+   voltou `Invalid field`. Usar `userEnteredFormat` inteiro, ou um campo só.
+3. **Padrão de `TEXT` é sempre em convenção americana.** `TEXT(x;"R$ #.##0")`
+   em pt_BR sai `R$ 19600,0`. O certo é `"R$ #,##0"` — a vírgula é milhar no
+   padrão, e o Sheets traduz para o ponto na tela.
+
+## ⭐ A PLANILHA NÃO SE DIGITA — ELA SAI DO SCRIPT
+
+`projetos/ica-michell/planilha-living.py` lê `living.py` e monta as linhas
+da aba. Quando os dois divergem, é bug — e divergiram: faltava a **fonte de
+LED**, que serve o ambiente e não um item só, e a aba saiu R$ 240 mais
+barata que a conta. ⭐ Os dois números batendo é a única prova de que a aba
+está certa.
+
 ## ⛔⛔ A ARMADILHA QUE QUEIMOU UMA RODADA INTEIRA — locale pt_BR
 
 As planilhas da casa nascem em **pt_BR**. Nesse locale o separador de
