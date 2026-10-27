@@ -16,6 +16,94 @@ duas vistas. Essas precisam do PDF vetorial.
 MDF **Nogueira Caiena** (Duratex), puxador **cava na própria madeira** em
 todo o ambiente. Pé-direito **300**, confirmado em seis cadeias.
 
+## ⭐⭐ 27/10/2026 — A TERCEIRA LEITURA. `living.py` é a fonte agora.
+
+[Jonathan 27/10] apontou quatro furos, e conferir cada um abriu outros três.
+
+| o furo | o que era | o que é |
+|---|---|---|
+| **fita de borda** | ⛔ não existia | **687 m**, declarados aresta a aresta |
+| **corrediça da base** | ⛔ não puxada | **8 pares** Hardt P-10 · 1 + 4 + 3 |
+| **as colunas** | 32 ripas maciças de 7 | **11 caixões** de 70 × 200 mm |
+| **a emenda** | ⛔ ninguém tinha visto | colunas a **273**, sem emenda |
+| a sapateira | 82 de largura | **142 × 42** |
+| o vão da cristaleira | prateleira de 260 | **4 módulos de 65** |
+| a altura máxima | ⛔ regra só das colunas | **8 peças** em 2 móveis |
+
+### ⛔⛔ A COLUNA NÃO É RIPA — É CAIXÃO
+
+> *"são 11 colunas formado por 4 peças 2 de 70mm 2 de 200mm"* — Jonathan
+
+A leitura de 26/10 errou a **natureza** da peça, não só a conta: chamou de
+"ripa de 7 cm" o que é um **caixão de 70 × 200 mm montado com quatro
+peças**. A geometria confirma: a cadeia de largura fecha em
+**11 × 7 + 10 × 10 = 177** e a vertical em **300 + 20 = 320** — os 20 cm de
+profundidade **são** a peça de 200 mm.
+
+⭐ **11 × 4 = 44 peças**, todas de 273. Pela área dão 4 chapas; pela
+geometria do corte em tiras, também 4 — **os dois caminhos batem**, com
+aproveitamento real de **79,7%**. A quarta chapa sai com 26%: é chapa de
+cauda, e vale puxar outra peça do Living para dentro dela.
+
+### ⭐⭐ OS 273 — E O QUE ELES PEGAM ALÉM DAS COLUNAS
+
+> *"a chapa tem 275 (-2cm de acerto de corte), ou seja, teria emenda. Para
+> este cliente em especial, após alinhamento entre as partes, combinamos
+> que as colunas não irão passar de 273."* — Jonathan
+
+⛔⛔ **A regra não para nas colunas.** O Living tem pé-direito de 300 e mais
+de um móvel sobe até lá. Aplicada com coerência, ela rebaixa **oito peças
+em dois móveis**:
+
+| móvel | peça | desenhada |
+|---|---|--:|
+| DET 06 cristaleira | lateral | 280 × 2 |
+| DET 06 cristaleira | montante | 280 × 2 |
+| DET 06 cristaleira | montante interno | 280 × 3 |
+| DET 08 painel | módulo e trecho | 300 × 3 |
+
+⚠ **São decisões de projeto, não de corte.** O `living.py` rebaixa e
+**lista**, para ninguém descobrir isso na fábrica.
+
+⚠ **E sobram 27 cm abertos no topo das colunas.** O topo de cada caixão
+passou a ser **peça vista** — já entrou com fita (5,9 m). Falta dizer se
+entra travessa de arremate nesse vão.
+
+### ⭐ O QUE A GEOMETRIA AINDA CORRIGIU
+
+- **Sapateira.** A página 17 não tem cota de 82: as horizontais são
+  1 · 17 · 33 · 42 · **142**. Largura **142**, profundidade **42**.
+- **Cristaleira.** Eu ia orçar prateleira de **260 de vão livre**, que não
+  se sustenta em MDF. A vista posterior tinha a resposta: a cadeia
+  **65 + 65 + 65 + 65 + 100 = 360** divide o vão central em quatro módulos
+  de 65 — são **três montantes internos** que a cadeia de largura principal
+  (100 + 260 + 100) não mostrava.
+- **Porta mimetizada.** É folha separada: o vão dela **sai** da área do
+  painel. Contar as duas coisas inflava 3,78 m².
+
+### ⚠ O QUE SEGUE EM ABERTO NO LIVING
+
+1. **★ A linha de dobradiça padrão.** A escada da Base tem a linha
+   *"Padrão · 70% dos casos"* com a célula de dobradiça **vazia**. Adotei
+   Bigfer Onix (R$ 15) por ficar entre Silver e Gold — ⛔ precisa de
+   confirmação.
+2. **⛔ Vidro reflecta champagne** das portas da cristaleira — segue sem
+   preço desde o projeto da Sandra.
+3. **⚠ Painel grosso.** O DET 02 desenha tampo e base de **5 cm** e
+   montantes de **8 cm**. A conta está em 18 mm simples; dobrar a chapa
+   acrescenta 2,30 m².
+4. **⚠ As frentes da sapateira** (três de 34) — báscula com pistão ou
+   gaveta com corrediça? Muda ferragem.
+5. **⚠ O LED.** A Base avisa que o instalado vai de R$ 66 a R$ 150/m. Usei
+   o conjunto completo (R$ 150/m, com usinagem e instalação). Em perfil
+   simples o Living cai R$ 950.
+
+---
+
+⛔⛔ **A SEGUNDA LEITURA (26/10) TAMBÉM ESTAVA ERRADA.** Fica o registro de
+como ela estava, porque a lição vale: o texto plano diz o que existe, a
+geometria diz quanto, e **só a conferência peça a peça diz o que custa**.
+
 ⛔⛔ **A PRIMEIRA LEITURA DESTE AMBIENTE ESTAVA ERRADA, e por um fator de
 três.** Eu havia lido a prancha pelo texto plano, que dá as cotas soltas.
 Com a geometria, cada móvel cresceu:
