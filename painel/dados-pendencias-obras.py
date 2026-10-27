@@ -12,14 +12,14 @@ OBRAS = [
    ('27/10', 'Tingimento da peça de madeira', '', ''),
    ('28/10', 'Reinstalação e finalização', '', ''),
  ]),
- ('Ana Carolina', 'Em execução', 'Cronograma alinhado com a cliente conforme comunicado pelo Deivison.', [
+ ('Cristiane', 'Em execução', 'Finalizações da casa. Os três itens e a conferência de medidas foram agendados para a mesma ida, na quinta 29/10.', [
    ('27/10', 'Confirmar se as pendências são de fato apenas estas três',
     'Rodapé de alumínio · prateleiras do quarto do Vitor · led. Qualquer item fora desta lista, avisar antes de seguir.', 'dev'),
-   ('28/10', 'CONFERIR as medidas do gaveteiro — validar se passa no vão da porta do cômodo',
+   ('29/10', 'Led — concluir', '', ''),
+   ('29/10', 'Rodapé de alumínio', '', ''),
+   ('29/10', 'Prateleiras do quarto do Vitor', '', ''),
+   ('29/10', 'CONFERIR as medidas do gaveteiro — validar se passa no vão da porta do cômodo',
     'Marcado como IMPORTANTE pelo Jonathan. Conferir antes de produzir ou de levar a peça.', 'crit'),
-   ('29/10', 'Led — concluir', 'Agendado para conclusão na quinta.', ''),
-   ('—',     'Rodapé de alumínio', '', ''),
-   ('—',     'Prateleiras do quarto do Vitor', '', ''),
    ('—',     'Revestir os gaveteiros atuais e transformar em duas cômodas — SERVIÇO AUTORIZADO',
     'Rodízios industriais ocultos; dois deles com freio, com acesso na parte de trás.', ''),
    ('28/10', 'Devolver ao Jonathan: previsão de entrega das duas cômodas', '', 'dev'),
@@ -37,8 +37,8 @@ OBRAS = [
  ('Rejane', 'Em pintura', 'Previsão de aproximadamente 10 dias para finalizar após a liberação da pintura.', [
    ('28/10', 'Liberar a pintura das peças', '', ''),
    ('07/11', 'Finalização após a pintura', 'Previsão de ~10 dias a contar de 28/10.', ''),
-   ('28/10', 'Devolver ao Jonathan: dá para projetar entrega com a cliente em 15/11?',
-    'Atenção: 15/11/2026 é domingo e feriado nacional. As opções úteis em volta são sexta 13/11 ou segunda 16/11.', 'dev'),
+   ('16/11', 'Entrega com a cliente',
+    'Data definida pelo Jonathan. A proposta inicial era 15/11, mas cai num domingo e é feriado nacional — passou para a segunda.', ''),
  ]),
  ('Juliana', 'Agendada', '', [
    ('04/11', 'Conclusão da obra', 'Alinhado para a quarta-feira.', ''),
@@ -61,18 +61,21 @@ OBRAS = [
  ('Richard', 'Em conclusão', '', [
    ('—', 'Obra em conclusão — confirmar o que falta para fechar', 'Sem data definida.', ''),
  ]),
+ ('Ana Carolina', 'Alinhada',
+  'Cronograma alinhado com a cliente conforme comunicado pelo Deivison. Sem pendência aberta no levantamento de 27/10.', []),
  ('Larissa · Eliuton · Shelf · Daniel', 'Coordenação Bruna',
   'Estas quatro obras seguem sob coordenação da Bruna — não entram na coordenação de produção do Deivison.', []),
 ]
 
 AGENDA = [
  ('Ter 27/10', 'Jairo', 'Fixação do estofado e tingimento da peça'),
- ('Qua 28/10', 'Jairo · Rejane · Ana Carolina', 'Reinstalação e finalização · liberar pintura · conferir medida do gaveteiro'),
- ('Qui 29/10', 'Ana Carolina', 'Concluir o led'),
+ ('Qua 28/10', 'Jairo · Rejane', 'Reinstalação e finalização · liberar a pintura das peças'),
+ ('Qui 29/10', 'Cristiane', 'Concluir led, rodapé e prateleiras · conferir a medida do gaveteiro'),
  ('Sex 30/10', 'Simony · Leonardo', 'Bancada da Duda e batente, 8:30, e medir sapateira · marceneiro finaliza'),
  ('02 a 04/11', 'Leonardo', 'Equipe de pintura na obra'),
  ('Qua 04/11', 'Juliana', 'Conclusão da obra'),
  ('Qui 05/11', 'Graciene · Leonardo', 'Entrega · levar as peças soltas'),
  ('Sáb 07/11', 'Rejane', 'Fim da pintura — previsão de ~10 dias'),
  ('Sex 13/11', 'Andrea', 'Alvo financeiro de entrega, a confirmar'),
+ ('Seg 16/11', 'Rejane', 'Entrega com a cliente'),
 ]

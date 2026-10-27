@@ -66,7 +66,7 @@ table.ag .ob{ color:var(--navy2); font-weight:600; width:150px }
 table.it{ width:100%; border-collapse:collapse; font-size:9px }
 table.it th{ background:var(--navy2); color:var(--goldsoft); font-size:6.5px; font-weight:600;
   letter-spacing:.9px; text-transform:uppercase; padding:3px 8px; text-align:left }
-table.it td{ border-bottom:1px solid var(--linha); padding:5px 8px; vertical-align:top }
+table.it td{ border-bottom:1px solid var(--linha); padding:4px 8px; vertical-align:top }
 table.it tr:nth-child(odd) td{ background:#f7f9fb }
 .cx{ display:inline-block; width:11px; height:11px; border:1.4px solid var(--navy); border-radius:2px }
 .dt{ font-weight:700; color:var(--navy); white-space:nowrap; font-size:8.5px }
@@ -171,17 +171,13 @@ out.append('''
   <div class="faixa">O que o Jonathan precisa de volta</div>
   <table class="it">
     <tr><th style="width:24px">✓</th><th style="width:112px">Obra</th><th>Pergunta</th><th style="width:140px">Resposta</th></tr>
-    <tr class="dev"><td><span class="cx"></span></td><td class="tx">Ana Carolina</td>
+    <tr class="dev"><td><span class="cx"></span></td><td class="tx">Cristiane</td>
       <td><span class="tx">As pendências são mesmo só rodapé, prateleiras e led?</span>
       <span class="de">Qualquer item fora dessa lista muda o cronograma combinado com a cliente.</span></td>
       <td class="pt"><i></i></td></tr>
-    <tr class="dev"><td><span class="cx"></span></td><td class="tx">Ana Carolina</td>
+    <tr class="dev"><td><span class="cx"></span></td><td class="tx">Cristiane</td>
       <td><span class="tx">Previsão de entrega das duas cômodas</span>
       <span class="de">Serviço já autorizado — revestimento, rodízios ocultos e dois com freio.</span></td>
-      <td class="pt"><i></i></td></tr>
-    <tr class="dev"><td><span class="cx"></span></td><td class="tx">Rejane</td>
-      <td><span class="tx">Dá para projetar a entrega com a cliente em 15/11?</span>
-      <span class="de">15/11/2026 é domingo e feriado nacional. Em volta: sexta 13/11 ou segunda 16/11.</span></td>
       <td class="pt"><i></i></td></tr>
     <tr class="dev"><td><span class="cx"></span></td><td class="tx">Andrea</td>
       <td><span class="tx">Projeção de entrega</span>
