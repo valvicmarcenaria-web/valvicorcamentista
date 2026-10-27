@@ -10,7 +10,12 @@ OBRAS = [
  ('Jairo', 'Em execução', '', [
    ('27/10', 'Fixação do estofado na estrutura da cabeceira', '', ''),
    ('27/10', 'Tingimento da peça de madeira', '', ''),
-   ('28/10', 'Reinstalação e finalização', '', ''),
+   ('28/10', 'Reinstalação e finalização — instalar três itens',
+    'Cabeceira industrial com estofado · estrutura de prateleiras da cozinha · mesa de trabalho do quarto.', ''),
+   ('28/10', 'Mesa de centro — não instalar antes da validação do cliente',
+    'Os outros três itens seguem normalmente; este fica retido até o cliente validar.', 'crit'),
+   ('28/10', 'Levantamento com o Jhon — pendências gerais da obra',
+    'O que sair daqui entra no checklist do profissional responsável, que já está impresso com linhas em branco para isso.', ''),
  ]),
  ('Cristiane', 'Em execução', 'Finalizações da casa. Os três itens e a conferência de medidas foram agendados para a mesma ida, na quinta 29/10.', [
    ('27/10', 'Confirmar se as pendências são de fato apenas estas três',

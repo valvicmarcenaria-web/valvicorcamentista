@@ -128,8 +128,38 @@ ag = '\n'.join(
   f'      <tr><td class="dt">{d}</td><td class="ob">{o}</td><td>{t}</td></tr>'
   for d, o, t in AGENDA)
 
-CORTE = 4   # obras na folha 1
-out = ['''<!doctype html>
+FECHO = """
+  <div class="faixa">O que o Jonathan precisa de volta</div>
+  <table class="it">
+    <tr><th style="width:24px">&#10003;</th><th style="width:112px">Obra</th><th>Pergunta</th><th style="width:140px">Resposta</th></tr>
+    <tr class="dev"><td><span class="cx"></span></td><td class="tx">Cristiane</td>
+      <td><span class="tx">As pend&#234;ncias s&#227;o mesmo s&#243; rodap&#233;, prateleiras e led?</span>
+      <span class="de">Qualquer item fora dessa lista muda o cronograma combinado com a cliente.</span></td>
+      <td class="pt"><i></i></td></tr>
+    <tr class="dev"><td><span class="cx"></span></td><td class="tx">Cristiane</td>
+      <td><span class="tx">Previs&#227;o de entrega das duas c&#244;modas</span>
+      <span class="de">Servi&#231;o j&#225; autorizado &#8212; revestimento, rod&#237;zios ocultos e dois com freio.</span></td>
+      <td class="pt"><i></i></td></tr>
+    <tr class="dev"><td><span class="cx"></span></td><td class="tx">Andrea</td>
+      <td><span class="tx">Proje&#231;&#227;o de entrega</span>
+      <span class="de">Ideal financeiro at&#233; 13/11. Se n&#227;o couber, qual &#233; a data real?</span></td>
+      <td class="pt"><i></i></td></tr>
+  </table>
+  <div class="leg">Todos os itens deste relat&#243;rio est&#227;o no Todoist, projeto <b>produ&#231;&#227;o / deivison</b>, uma coluna por obra.</div>
+
+  <div class="assina">
+    <div><div class="n">Jonathan</div><div class="s">Levantamento &#183; 27/10/2026</div></div>
+    <div><div class="n">Paulo</div><div class="s">Recebido em ___/___/______</div></div>
+    <div><div class="n">Deivison</div><div class="s">Recebido em ___/___/______</div></div>
+  </div>
+"""
+
+CORTES = [(0, 3, 'Obras com ação agendada'),
+          (3, 8, 'Obras em andamento e agendadas'),
+          (8, len(OBRAS), 'Obras sem data firme e em espera')]
+NFOLHAS = len(CORTES)
+
+out = ["""<!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -137,11 +167,13 @@ out = ['''<!doctype html>
 __FONTES__
 <style>%s</style>
 </head>
-<body>''' % CSS]
+<body>""" % CSS]
 
-out.append('<div class="sheet">')
-out.append(topo(1, 2))
-out.append(f'''  <div class="kpis">
+for fi, (a, b, titulo) in enumerate(CORTES, 1):
+    out.append('<div class="sheet">')
+    out.append(topo(fi, NFOLHAS))
+    if fi == 1:
+        out.append(f"""  <div class="kpis">
     <div class="kpi"><div class="r">Obras</div><div class="v">{len(OBRAS)}</div><div class="o">no levantamento</div></div>
     <div class="kpi"><div class="r">Itens</div><div class="v">{NITENS}</div><div class="o">a acompanhar</div></div>
     <div class="kpi"><div class="r">Com data firme</div><div class="v">{NDATA}</div><div class="o">já agendados</div></div>
@@ -154,46 +186,15 @@ out.append(f'''  <div class="kpis">
     <tr><th style="width:66px">Quando</th><th style="width:150px">Obra</th><th>O que acontece</th></tr>
 {ag}
   </table>
-
-  <div class="faixa">Obras com ação agendada</div>''')
-for nome, st, nota, itens in OBRAS[:CORTE]:
-    out.append(bloco(nome, st, nota, itens))
-out.append('''  <div class="rodape"><span>Valvic Marcenaria · Vargas Decor Ltda</span>
+""")
+    out.append(f'  <div class="faixa">{titulo}</div>')
+    for nome, st, nota, itens in OBRAS[a:b]:
+        out.append(bloco(nome, st, nota, itens))
+    if fi == NFOLHAS:
+        out.append(FECHO)
+    out.append("""  <div class="rodape"><span>Valvic Marcenaria · Vargas Decor Ltda</span>
     <span>Pendências de obra · 27/10/2026</span></div>
-</div>''')
+</div>""")
 
-out.append('<div class="sheet">')
-out.append(topo(2, 2))
-out.append('  <div class="faixa">Obras sem data firme e em espera</div>')
-for nome, st, nota, itens in OBRAS[CORTE:]:
-    out.append(bloco(nome, st, nota, itens))
-out.append('''
-  <div class="faixa">O que o Jonathan precisa de volta</div>
-  <table class="it">
-    <tr><th style="width:24px">✓</th><th style="width:112px">Obra</th><th>Pergunta</th><th style="width:140px">Resposta</th></tr>
-    <tr class="dev"><td><span class="cx"></span></td><td class="tx">Cristiane</td>
-      <td><span class="tx">As pendências são mesmo só rodapé, prateleiras e led?</span>
-      <span class="de">Qualquer item fora dessa lista muda o cronograma combinado com a cliente.</span></td>
-      <td class="pt"><i></i></td></tr>
-    <tr class="dev"><td><span class="cx"></span></td><td class="tx">Cristiane</td>
-      <td><span class="tx">Previsão de entrega das duas cômodas</span>
-      <span class="de">Serviço já autorizado — revestimento, rodízios ocultos e dois com freio.</span></td>
-      <td class="pt"><i></i></td></tr>
-    <tr class="dev"><td><span class="cx"></span></td><td class="tx">Andrea</td>
-      <td><span class="tx">Projeção de entrega</span>
-      <span class="de">Ideal financeiro até 13/11. Se não couber, qual é a data real?</span></td>
-      <td class="pt"><i></i></td></tr>
-  </table>
-  <div class="leg">Todos os itens desta folha estão no Todoist, projeto <b>produção / deivison</b>, uma coluna por obra.</div>
-
-  <div class="assina">
-    <div><div class="n">Jonathan</div><div class="s">Levantamento · 27/10/2026</div></div>
-    <div><div class="n">Paulo</div><div class="s">Recebido em ___/___/______</div></div>
-    <div><div class="n">Deivison</div><div class="s">Recebido em ___/___/______</div></div>
-  </div>
-
-  <div class="rodape" style="margin-top:12px"><span>Valvic Marcenaria · Vargas Decor Ltda</span>
-    <span>Pendências de obra · 27/10/2026</span></div>
-</div>''')
 out.append('\n</body>\n</html>')
 print('\n'.join(out))
