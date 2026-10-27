@@ -88,13 +88,13 @@ table.ag tr:nth-child(odd) td{ background:#f7f9fb }
 table.ag .dt{ font-weight:700; color:var(--navy); white-space:nowrap; width:66px }
 table.ag .ob{ color:var(--navy2); font-weight:600; width:150px }
 
-.obra{ margin-bottom:6px }
+.obra{ margin-bottom:5px }
 .cab{ background:var(--navy); color:#fff; border-radius:2px 2px 0 0; padding:4px 10px;
   display:flex; justify-content:space-between; align-items:center }
 .cab .n{ font-size:9.5px; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:var(--goldsoft) }
 .cab .st{ font-size:7px; letter-spacing:.8px; text-transform:uppercase; background:rgba(255,255,255,.14);
   padding:1.5px 7px; border-radius:9px; color:#fff }
-.nota{ background:var(--goldbg); font-size:8.5px; color:var(--navy2); padding:4px 10px; line-height:1.4 }
+.nota{ background:var(--goldbg); font-size:8.5px; color:var(--navy2); padding:3px 10px; line-height:1.35 }
 
 table.it{ width:100%; border-collapse:collapse; font-size:9px }
 table.it th{ background:var(--navy2); color:var(--goldsoft); font-size:6.5px; font-weight:600;
@@ -133,8 +133,8 @@ tr.dev td{ background:#f2f6fb !important }
   </div>
   <div class="kpis">
     <div class="kpi"><div class="r">Obras</div><div class="v">13</div><div class="o">no levantamento</div></div>
-    <div class="kpi"><div class="r">Itens</div><div class="v">26</div><div class="o">a acompanhar</div></div>
-    <div class="kpi"><div class="r">Com data firme</div><div class="v">20</div><div class="o">já agendados</div></div>
+    <div class="kpi"><div class="r">Itens</div><div class="v">27</div><div class="o">a acompanhar</div></div>
+    <div class="kpi"><div class="r">Com data firme</div><div class="v">21</div><div class="o">já agendados</div></div>
     <div class="kpi" style="background:var(--blue)"><div class="r">Devolutivas</div><div class="v">3</div>
       <div class="o" style="color:#cfe0f2">respostas que o Jonathan espera</div></div>
   </div>
@@ -143,15 +143,15 @@ tr.dev td{ background:#f2f6fb !important }
   <table class="ag">
     <tr><th style="width:66px">Quando</th><th style="width:150px">Obra</th><th>O que acontece</th></tr>
       <tr><td class="dt">Ter 27/10</td><td class="ob">Jairo</td><td>Fixação do estofado e tingimento da peça</td></tr>
-      <tr><td class="dt">Qua 28/10</td><td class="ob">Jairo · Rejane</td><td>Reinstalação e finalização · liberar a pintura das peças</td></tr>
+      <tr><td class="dt">Qua 28/10</td><td class="ob">Jairo · Rejane</td><td>Reinstalação e finalização · liberar a pintura — depende do financeiro</td></tr>
       <tr><td class="dt">Qui 29/10</td><td class="ob">Cristiane</td><td>Concluir led, rodapé e prateleiras · conferir a medida do gaveteiro</td></tr>
       <tr><td class="dt">Sex 30/10</td><td class="ob">Simony · Leonardo</td><td>Bancada da Duda e batente, 8:30, e medir sapateira · marceneiro finaliza</td></tr>
       <tr><td class="dt">02 a 04/11</td><td class="ob">Leonardo</td><td>Equipe de pintura na obra</td></tr>
       <tr><td class="dt">Qua 04/11</td><td class="ob">Juliana</td><td>Conclusão da obra</td></tr>
       <tr><td class="dt">Qui 05/11</td><td class="ob">Graciene · Leonardo</td><td>Entrega · levar as peças soltas</td></tr>
-      <tr><td class="dt">Sáb 07/11</td><td class="ob">Rejane</td><td>Fim da pintura — previsão de ~10 dias</td></tr>
+      <tr><td class="dt">Sáb 07/11</td><td class="ob">Rejane</td><td>Fim da pintura — ~10 dias contados da liberação</td></tr>
       <tr><td class="dt">Sex 13/11</td><td class="ob">Andrea</td><td>Alvo financeiro de entrega, a confirmar</td></tr>
-      <tr><td class="dt">Seg 16/11</td><td class="ob">Rejane</td><td>Entrega com a cliente</td></tr>
+      <tr><td class="dt">Seg 16/11</td><td class="ob">Rejane</td><td>Entrega com a cliente — condicionada ao financeiro</td></tr>
   </table>
 
   <div class="faixa">Obras com ação agendada</div>
@@ -209,13 +209,14 @@ tr.dev td{ background:#f2f6fb !important }
   </div>
   <div class="faixa">Obras sem data firme e em espera</div>
   <div class="obra">
-    <div class="cab"><span class="n">Rejane</span><span class="st">Em pintura</span></div>
-    <div class="nota">Previsão de aproximadamente 10 dias para finalizar após a liberação da pintura.</div>
+    <div class="cab"><span class="n">Rejane</span><span class="st">Condicionada</span></div>
+    <div class="nota">Toda a obra está travada na liberação do financeiro pelo Jonathan. Enquanto ela não sair, a pintura não começa — e as datas abaixo andam junto, dia a dia.</div>
     <table class="it">
       <tr><th style="width:24px">✓</th><th style="width:52px">Data</th><th>O que fazer</th><th style="width:118px">Feito por / quando</th></tr>
-<tr><td style="width:24px"><span class="cx"></span></td><td style="width:52px" class="dt">28/10</td><td><span class="tx">Liberar a pintura das peças</span></td><td style="width:118px" class="pt"><i></i></td></tr>
-<tr><td style="width:24px"><span class="cx"></span></td><td style="width:52px" class="dt">07/11</td><td><span class="tx">Finalização após a pintura</span><span class="de">Previsão de ~10 dias a contar de 28/10.</span></td><td style="width:118px" class="pt"><i></i></td></tr>
-<tr><td style="width:24px"><span class="cx"></span></td><td style="width:52px" class="dt">16/11</td><td><span class="tx">Entrega com a cliente</span><span class="de">Data definida pelo Jonathan. A proposta inicial era 15/11, mas cai num domingo e é feriado nacional — passou para a segunda.</span></td><td style="width:118px" class="pt"><i></i></td></tr>
+<tr class="crit"><td style="width:24px"><span class="cx"></span></td><td style="width:52px" class="dt">28/10</td><td><span class="tag crit">Importante</span><span class="tx">TRAVA — liberar o financeiro da pintura (Jonathan)</span><span class="de">Destrava toda a obra. Para entregar em 16/11, a liberação precisa sair até 06/11 — sem nenhuma folga. O seguro é até 05/11.</span></td><td style="width:118px" class="pt"><i></i></td></tr>
+<tr><td style="width:24px"><span class="cx"></span></td><td style="width:52px" class="dt">28/10</td><td><span class="tx">Liberar a pintura das peças — só após a liberação do financeiro</span><span class="de">Data válida se o financeiro sair hoje ou amanhã.</span></td><td style="width:118px" class="pt"><i></i></td></tr>
+<tr><td style="width:24px"><span class="cx"></span></td><td style="width:52px" class="dt">07/11</td><td><span class="tx">Finalização após a pintura</span><span class="de">São ~10 dias contados da liberação da pintura, não do calendário.</span></td><td style="width:118px" class="pt"><i></i></td></tr>
+<tr><td style="width:24px"><span class="cx"></span></td><td style="width:52px" class="dt">16/11</td><td><span class="tx">Entrega com a cliente — condicionada</span><span class="de">A proposta inicial era 15/11, mas cai num domingo e é feriado nacional. Não confirmar a data com a cliente antes de a liberação sair.</span></td><td style="width:118px" class="pt"><i></i></td></tr>
     </table>
   </div>
   <div class="obra">

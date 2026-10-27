@@ -34,11 +34,15 @@ OBRAS = [
    ('05/11', 'Levar as peças soltas — mesas, gaveteiros e nichos das plantas',
     'Alinhado com o cliente. Vão na quinta porque a pintura ocupa a obra de 02 a 04/11.', ''),
  ]),
- ('Rejane', 'Em pintura', 'Previsão de aproximadamente 10 dias para finalizar após a liberação da pintura.', [
-   ('28/10', 'Liberar a pintura das peças', '', ''),
-   ('07/11', 'Finalização após a pintura', 'Previsão de ~10 dias a contar de 28/10.', ''),
-   ('16/11', 'Entrega com a cliente',
-    'Data definida pelo Jonathan. A proposta inicial era 15/11, mas cai num domingo e é feriado nacional — passou para a segunda.', ''),
+ ('Rejane', 'Condicionada', 'Toda a obra está travada na liberação do financeiro pelo Jonathan. Enquanto ela não sair, a pintura não começa — e as datas abaixo andam junto, dia a dia.', [
+   ('28/10', 'TRAVA — liberar o financeiro da pintura (Jonathan)',
+    'Destrava toda a obra. Para entregar em 16/11, a liberação precisa sair até 06/11 — sem nenhuma folga. O seguro é até 05/11.', 'crit'),
+   ('28/10', 'Liberar a pintura das peças — só após a liberação do financeiro',
+    'Data válida se o financeiro sair hoje ou amanhã.', ''),
+   ('07/11', 'Finalização após a pintura',
+    'São ~10 dias contados da liberação da pintura, não do calendário.', ''),
+   ('16/11', 'Entrega com a cliente — condicionada',
+    'A proposta inicial era 15/11, mas cai num domingo e é feriado nacional. Não confirmar a data com a cliente antes de a liberação sair.', ''),
  ]),
  ('Juliana', 'Agendada', '', [
    ('04/11', 'Conclusão da obra', 'Alinhado para a quarta-feira.', ''),
@@ -69,13 +73,13 @@ OBRAS = [
 
 AGENDA = [
  ('Ter 27/10', 'Jairo', 'Fixação do estofado e tingimento da peça'),
- ('Qua 28/10', 'Jairo · Rejane', 'Reinstalação e finalização · liberar a pintura das peças'),
+ ('Qua 28/10', 'Jairo · Rejane', 'Reinstalação e finalização · liberar a pintura — depende do financeiro'),
  ('Qui 29/10', 'Cristiane', 'Concluir led, rodapé e prateleiras · conferir a medida do gaveteiro'),
  ('Sex 30/10', 'Simony · Leonardo', 'Bancada da Duda e batente, 8:30, e medir sapateira · marceneiro finaliza'),
  ('02 a 04/11', 'Leonardo', 'Equipe de pintura na obra'),
  ('Qua 04/11', 'Juliana', 'Conclusão da obra'),
  ('Qui 05/11', 'Graciene · Leonardo', 'Entrega · levar as peças soltas'),
- ('Sáb 07/11', 'Rejane', 'Fim da pintura — previsão de ~10 dias'),
+ ('Sáb 07/11', 'Rejane', 'Fim da pintura — ~10 dias contados da liberação'),
  ('Sex 13/11', 'Andrea', 'Alvo financeiro de entrega, a confirmar'),
- ('Seg 16/11', 'Rejane', 'Entrega com a cliente'),
+ ('Seg 16/11', 'Rejane', 'Entrega com a cliente — condicionada ao financeiro'),
 ]

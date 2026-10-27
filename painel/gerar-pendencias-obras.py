@@ -55,13 +55,13 @@ table.ag tr:nth-child(odd) td{ background:#f7f9fb }
 table.ag .dt{ font-weight:700; color:var(--navy); white-space:nowrap; width:66px }
 table.ag .ob{ color:var(--navy2); font-weight:600; width:150px }
 
-.obra{ margin-bottom:6px }
+.obra{ margin-bottom:5px }
 .cab{ background:var(--navy); color:#fff; border-radius:2px 2px 0 0; padding:4px 10px;
   display:flex; justify-content:space-between; align-items:center }
 .cab .n{ font-size:9.5px; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:var(--goldsoft) }
 .cab .st{ font-size:7px; letter-spacing:.8px; text-transform:uppercase; background:rgba(255,255,255,.14);
   padding:1.5px 7px; border-radius:9px; color:#fff }
-.nota{ background:var(--goldbg); font-size:8.5px; color:var(--navy2); padding:4px 10px; line-height:1.4 }
+.nota{ background:var(--goldbg); font-size:8.5px; color:var(--navy2); padding:3px 10px; line-height:1.35 }
 
 table.it{ width:100%; border-collapse:collapse; font-size:9px }
 table.it th{ background:var(--navy2); color:var(--goldsoft); font-size:6.5px; font-weight:600;
