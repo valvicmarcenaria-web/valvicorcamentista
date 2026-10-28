@@ -129,7 +129,11 @@ MOLDURA  = [(I1, 'Frentes da ilha',     7),
             (I2, 'Superior 01 · porta', 1),
             (I3, 'Frentes da bancada',  8)]
 LED     = [(I2, 'Superior 02 · iluminação inferior', 4.00)]
-SUPORTES= [(I2, 'Prateleiras do Superior 01 · 6 × 2', 12)]
+# ⭐ SUPORTE DE PRATELEIRA: não se declara mais. Toda prateleira interna
+#   leva um jogo de 4 suportes, R$ 6,50 [Jonathan, 28/10/2026], e a
+#   conta sai de B.prateleiras(), das peças. Quem não leva diz
+#   'sem suporte' na obs.
+SUPORTES= []
 # ⛔ SEM ALMA DE AÇO: nenhuma peça da Cozinha passa de 30 mm. ⚠ A torre e os
 #   superiores são desenhados com laterais de 3 cm — se a construção for
 #   painel duplo e não caixote, isso vira chapa dobrada E alma. A decidir.
@@ -137,6 +141,15 @@ ALMAS   = []
 VIDRO   = []
 
 # ── o cabeçalho de cada bloco: medida geral e a cadeia que fecha ────────
+OUTRAS  = [
+           (I1, 'Perfil de proteção de piso', 'Ilha de 245', 2.45, 'm',
+            'Perfil de proteção de piso'),
+           (I2, 'Perfil de proteção de piso', 'Torre da geladeira de 110', 1.1, 'm',
+            'Perfil de proteção de piso'),
+           (I3, 'Perfil de proteção de piso', 'Bancada com armário · 343 de marcenaria', 3.43, 'm',
+            'Perfil de proteção de piso'),
+]
+
 CABECA = {
  I1: ('245 × 90 × 110',
       'VISTA FRONTAL 5 + 2+60+2+69+38+2+60+2 + 5 = 245 ⭐ · altura 5 + 85 = 90 · '

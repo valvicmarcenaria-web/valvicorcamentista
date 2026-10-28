@@ -32,11 +32,16 @@ OW18 = 'MDF Off White Suave 18'
 EST, FUN = 'MDF Branco TX 15', 'MDF Branco TX 6'
 PRAT18   = 'MDF Branco TX 18'   # ⭐ só onde o vão passa de 70 cm
 
-I1 = 'DET 01 Painel de cabeceira'
-I2 = 'DET 02 Penteadeira'
-I3 = 'DET 03 Cama bicama de solteiro'
-I4 = 'DET 04 Baú com tampo'
-I5 = 'DET 05 Armário superior com prateleiras'
+# ⭐⭐ DUAS UNIFICAÇÕES [Jonathan, 28/10/2026]: "item 1 e 2 podem ser
+#   unificado · item 3, 4 e 5 tbm". E as duas têm a mesma lógica: o painel
+#   de cabeceira e a penteadeira são a MESMA parede (a penteadeira nasce
+#   do painel); a cama, o baú e o superior são o MESMO conjunto de dormir,
+#   encostados um no outro. ⛔ Cada peça continua carregando o DET de
+#   origem no nome — o que se unifica é o preço, não a leitura.
+I12 = 'DET 01 e 02 Painel de cabeceira com penteadeira'
+I345 = 'DET 03 a 05 Cama, baú e armário superior'
+I1 = I2 = I12
+I3 = I4 = I5 = I345
 I6 = 'DET 06 Guarda-roupa'
 
 QUARTO = [
@@ -44,53 +49,58 @@ QUARTO = [
  #  VISTA FRONTAL 95 + 255 = 350 ⭐ e é essa a divisão que salva a peça:
  #  350 não cabe nos 275 da chapa, 255 e 95 cabem. A faixa de LED corre
  #  sobre os 255.
- P('Painel · folha maior', I1, 255, 100, 1, CM18, (2, 2), '⭐ os 350 da prancha não cabem na chapa de 275 — o desenho já divide em 95 + 255'),
- P('Painel · folha menor', I1,  95, 100, 1, CM18, (2, 2), 'A emenda cai na divisão que a própria cota marca'),
+ P('Painel · folha maior · DET 01', I1, 255, 100, 1, CM18, (2, 2), '⭐ os 350 da prancha não cabem na chapa de 275 — o desenho já divide em 95 + 255'),
+ P('Painel · folha menor · DET 01', I1,  95, 100, 1, CM18, (2, 2), 'A emenda cai na divisão que a própria cota marca'),
 
  # ══ ITEM 02 · PENTEADEIRA — 95 × 50 × 14 ═════════════════════════════
  #  VISTA SUPERIOR 95 × 50 · VISTA FRONTAL 95 de largura e 14 de altura,
  #  sendo 2 de tampo e 12 de gaveta · VISTA LATERAL 50 de profundidade
- P('Tampo',              I2, 95, 50, 1, CM18, (2, 2), 'Suspensa · 14 de altura total, 2 de tampo e 12 de gaveta'),
- P('Lateral',            I2, 50, 12, 2, CM18, (1, 1)),
- P('Travessa de fundo',  I2, 92, 12, 1, EST, (1, 0)),
- P('Frente da gaveta',   I2, 92, 12, 1, CM18, (2, 2), 'Lisa, com cava na própria madeira'),
+ P('Tampo · DET 02', I2, 95, 50, 1, CM18, (2, 2), 'Suspensa · 14 de altura total, 2 de tampo e 12 de gaveta'),
+ P('Lateral · DET 02', I2, 50, 12, 2, CM18, (1, 1)),
+ P('Travessa de fundo · DET 02', I2, 92, 12, 1, EST, (1, 0)),
+ P('Frente da gaveta · DET 02', I2, 92, 12, 1, CM18, (2, 2), 'Lisa, com cava na própria madeira'),
  *gaveta(I2, 92, 45, 10, 1, 'Gaveta da penteadeira'),
 
  # ══ ITEM 03 · CAMA BICAMA DE SOLTEIRO — 195 × 100 × 45 ═══════════════
  #  VISTA SUPERIOR 4 + 187 + 4 = 195 e 4 + 92 + 4 = 100 ⭐ o rebaixo do
  #  colchão tem 10 de profundidade · VISTA FRONTAL e LATERAL 15 + 30 = 45,
  #  e os 30 de baixo são o LEITO INFERIOR que corre
- P('Longarina',          I3, 195, 45, 2, CM18, (2, 2), 'Lateral da cama · 195 cabe na chapa de 275'),
- P('Cabeceira e pé',     I3,  92, 45, 2, CM18, (2, 2)),
- P('Estrado do colchão', I3, 187, 92, 1, EST, (0, 0), 'Rebaixo de 10 para o colchão de solteiro — ⛔ não aparece, sem fita'),
- P('Frente do leito inferior', I3, 195, 30, 1, CM18, (2, 2), 'Lisa, com cava · é a frente da bicama'),
- P('Leito inferior · lateral', I3,  95, 28, 2, EST, (1, 0)),
- P('Leito inferior · costas',  I3, 191, 28, 1, EST, (1, 0)),
- P('Leito inferior · estrado', I3, 191, 95, 1, EST, (0, 0), '⭐ 15 mm, não 6: este estrado carrega uma pessoa — ⛔ sem fita'),
+ P('Longarina · DET 03', I3, 195, 45, 2, CM18, (2, 2), 'Lateral da cama · 195 cabe na chapa de 275'),
+ P('Cabeceira e pé · DET 03', I3,  92, 45, 2, CM18, (2, 2)),
+ # ⛔⛔ O ESTRADO DEIXOU DE SER MDF [Jonathan, 28/10/2026]: "Todas as camas
+ #   teremos a aplicação de estrado em metalom, tanto para a superior
+ #   quanto para a inferior. o custo de cada quadro é de 250,00". Saem os
+ #   dois painéis de 15 mm que estavam aqui e entram dois quadros de
+ #   metalon, que são serralheria — e com eles sai também o sarrafo de
+ #   pinus que os apoiava, que a casa não usa mais.
+ P('Frente do leito inferior · DET 03', I3, 195, 30, 1, CM18, (2, 2), 'Lisa, com cava · é a frente da bicama'),
+ P('Leito inferior · lateral · DET 03', I3,  95, 28, 2, EST, (1, 0)),
+ P('Leito inferior · costas · DET 03', I3, 191, 28, 1, EST, (1, 0)),
+
 
  # ══ ITEM 04 · BAÚ COM TAMPO — 110 × 100 × 60 ═════════════════════════
  #  VISTA FRONTAL 15 + 95 = 110 ⭐ o tampo se divide em FIXO (15) e o que
  #  ABRE (95) · altura 100 · VISTA SUPERIOR profundidade 60, com faixa de
  #  3 de LED no fundo · torre de tomadas sobre o tampo fixo
- P('Lateral',          I4, 100, 60, 2, CM18, (1, 1)),
- P('Costas',           I4, 107, 100, 1, EST, (0, 0), 'Contra a parede — ⛔ sem fita'),
- P('Base',             I4, 107, 60, 1, EST, (1, 0)),
- P('Tampo fixo',       I4,  15, 60, 1, CM18, (2, 2), 'Recebe a torre de tomadas e a faixa de LED'),
- P('Tampo que abre',   I4,  95, 60, 1, CM18, (2, 2), '⭐ tampo de baú: abre e tem de ficar aberto — pede pistão'),
+ P('Lateral · DET 04', I4, 100, 60, 2, CM18, (1, 1)),
+ P('Costas · DET 04', I4, 107, 100, 1, EST, (0, 0), 'Contra a parede — ⛔ sem fita'),
+ P('Base · DET 04', I4, 107, 60, 1, EST, (1, 0)),
+ P('Tampo fixo · DET 04', I4,  15, 60, 1, CM18, (2, 2), 'Recebe a torre de tomadas e a faixa de LED'),
+ P('Tampo que abre · DET 04', I4,  95, 60, 1, CM18, (2, 2), '⭐ tampo de baú: abre e tem de ficar aberto — pede pistão'),
 
  # ══ ITEM 05 · ARMÁRIO SUPERIOR COM PRATELEIRAS — 110 × 200 × 43 ══════
  #  VISTA FRONTAL 55 + 55 = 110 · altura 5 + 69 + 126 = 200, e os 126 se
  #  abrem em 35 + 3 + 35 + 3 + 50 ⭐ duas prateleiras iluminadas sobre um
  #  painel · VISTA LATERAL armário com 43 e prateleira com 38
  #  VISTA FRONTAL INTERNA 31 + 2 + 31 = 64: uma prateleira dentro
- P('Armário · lateral',         I5,  69, 43, 2, EST, (1, 0)),
- P('Armário · base e topo',     I5, 106, 43, 2, EST, (1, 0)),
- P('Armário · fundo',           I5, 110, 69, 1, FUN, (0, 0), 'Encaixe em rasgo'),
- P('Armário · prateleira',      I5, 106, 41, 1, PRAT18, (1, 0), '⭐ vão de 106 passa dos 70: 18 mm contra empeno'),
- P('Fechamento superior',       I5, 110, 43, 1, CM18, (2, 2), 'Aparente, em Carvalho Malva'),
- P('Frente · porta de giro',    I5,  55, 69, 2, CM18, (2, 2), 'Lisa · abre por PUXADOR PASSANTE, o único do projeto'),
- P('Painel das prateleiras',    I5, 110, 126, 1, CM18, (2, 2), 'É nele que as duas prateleiras se fixam · os 50 de baixo são o painel à vista'),
- P('Prateleira iluminada',      I5, 110, 38, 2, CM18, (2, 2), '⚠ desenhada com 3 cm de espessura — orçada em 18 mm, ver dúvida'),
+ P('Armário · lateral · DET 05', I5,  69, 43, 2, EST, (1, 0)),
+ P('Armário · base e topo · DET 05', I5, 106, 43, 2, EST, (1, 0)),
+ P('Armário · fundo · DET 05', I5, 110, 69, 1, FUN, (0, 0), 'Encaixe em rasgo'),
+ P('Armário · prateleira · DET 05', I5, 106, 41, 1, PRAT18, (1, 0), '⭐ vão de 106 passa dos 70: 18 mm contra empeno'),
+ P('Fechamento superior · DET 05', I5, 110, 43, 1, CM18, (2, 2), 'Aparente, em Carvalho Malva'),
+ P('Frente · porta de giro · DET 05', I5,  55, 69, 2, CM18, (2, 2), 'Lisa · abre por PUXADOR PASSANTE, o único do projeto'),
+ P('Painel das prateleiras · DET 05', I5, 110, 126, 1, CM18, (2, 2), 'É nele que as duas prateleiras se fixam · os 50 de baixo são o painel à vista'),
+ P('Prateleira iluminada · DET 05', I5, 110, 38, 2, CM18, (2, 2), '⚠ desenhada com 3 cm de espessura — orçada em 18 mm, ver dúvida'),
 
  # ══ ITEM 06 · GUARDA-ROUPA — 110 × 300 × 63 ══════════════════════════
  #  VISTA FRONTAL 55 + 55 = 110 · altura 5 + 285 + 10 = 300, do piso ao
@@ -132,43 +142,59 @@ OUTRAS  = [(I5, 'Puxador passante', 'Perfil SP7000 · 0,55 m por folha, '
             'suportar o peso de uma pessoa · ⛔ A COTAR, sem preço na Base',
             1, 'par', 'Corrediça de carga'),
            (I4, 'Pistão de tampo de baú', 'Dois por tampo que abre · ⛔ A '
-            'COTAR, sem preço na Base', 2, 'un', 'Pistão de tampo de baú')]
+            'COTAR, sem preço na Base', 2, 'un', 'Pistão de tampo de baú'),
+           # ⭐ ESTRADO EM METALON [Jonathan, 28/10/2026] · R$ 250 o quadro
+           (I3, 'Estrado em metalon', 'Dois quadros: o do colchão de solteiro '
+            'de 187 × 92 e o do leito inferior de 191 × 95 · ⛔ substitui os '
+            'dois painéis de MDF e o sarrafo que os apoiava', 2, 'quadro',
+            'Estrado em metalon'),
+           # ⭐ AS QUATRO RODINHAS [Jonathan, 28/10/2026]: "a cama terá 4
+           #   rodinhas unilaterais". Unilateral = roda fixa, que só anda
+           #   para frente e para trás — é o que a bicama precisa.
+           (I3, 'Rodízio deslizante', 'Quatro rodinhas UNILATERAIS sob o '
+            'leito inferior da bicama · ⛔ SEM PREÇO na Base', 4, 'un',
+            'Rodízio deslizante'),
+           # ⭐ PERFIL DE PROTEÇÃO DE PISO · R$ 15 o metro linear
+           (I6, 'Perfil de proteção de piso', 'O guarda-roupa de 110 é o '
+            'único móvel do quarto que toca o chão: a cabeceira e a '
+            'penteadeira são suspensas, o superior é alto e a cama apoia '
+            'em rodízio', 1.10, 'm', 'Perfil de proteção de piso')]
 LED     = [(I1, 'Topo do painel de cabeceira · sobre os 255', 2.55),
            (I4, 'Faixa de 3 no fundo do tampo',                1.10),
            (I5, 'Sob o armário e sob as duas prateleiras · 3 × 1,10', 3.30)]
 CABIDEIROS = [(I6, 'Guarda-roupa · vão de cabideiro de 129', 1)]
-SARRAFOS= [(I3, 'Apoio do estrado do colchão · duas de 1,87 e duas de 0,92', 5.6)]
-SUPORTES= [(I5, 'Prateleira do armário e as duas iluminadas · 3 × 2', 6),
-           (I6, 'Prateleira sobre as gavetas · 1 × 2',                 2)]
+SARRAFOS= []   # ⛔ pinus PROIBIDO · o estrado virou quadro de metalon
+# ⭐ o suporte de prateleira sai de B.prateleiras(), contado das peças
+SUPORTES= []
 ALMAS   = []
 VIDRO   = []
 SERRALHERIA = []
+# ⭐ o item 3-4-5 é um CONJUNTO de três móveis: a bicama abre por cava, o
+#   baú e o superior por puxador passante. Dois modos no mesmo item é
+#   leitura, não erro — e a exceção fica declarada.
+ABRE_MISTO = [I345]
 
 # ── o cabeçalho de cada bloco ──────────────────────────────────────────
 CABECA = {
- I1: ('350 × 100 × 2',
-      'VISTA FRONTAL 95 + 255 = 350 ⭐ e é essa a divisão que salva a peça: 350 não cabe nos '
-      '275 da chapa, 255 e 95 cabem · a faixa de LED corre sobre os 255 · VISTA LATERAL 2 de '
-      'espessura, VISTA SUPERIOR 350 de corrida'),
- I2: ('95 × 50 × 14',
-      'VISTA SUPERIOR 95 × 50 · VISTA FRONTAL 95 de largura e 14 de altura, sendo 2 de tampo '
-      'e 12 de gaveta · VISTA LATERAL 50 de profundidade · suspensa, com cava na própria madeira'),
- I3: ('195 × 100 × 45',
-      'VISTA SUPERIOR 4 + 187 + 4 = 195 e 4 + 92 + 4 = 100 ⭐ o rebaixo do colchão tem 10 de '
-      'profundidade · VISTA FRONTAL e LATERAL 15 + 30 = 45, e os 30 de baixo são o LEITO '
-      'INFERIOR que corre'),
- I4: ('110 × 100 × 60',
-      'VISTA FRONTAL 15 + 95 = 110 ⭐ o tampo se divide em FIXO (15) e o que ABRE (95) · '
-      'altura 100 · VISTA SUPERIOR profundidade 60, com faixa de 3 de LED no fundo e torre de '
-      'tomadas sobre o tampo fixo'),
- I5: ('110 × 200 × 43',
-      'VISTA FRONTAL 55 + 55 = 110 · altura 5 + 69 + 126 = 200, e os 126 se abrem em '
-      '35 + 3 + 35 + 3 + 50 ⭐ duas prateleiras iluminadas sobre um painel · VISTA LATERAL '
-      'armário com 43 e prateleira com 38 · VISTA FRONTAL INTERNA 31 + 2 + 31: uma prateleira'),
+ I12: ('350 × 100 × 2  +  95 × 50 × 14',
+       'DET 01 painel de cabeceira 350 × 100, em 95 + 255 ⭐ e é essa a '
+       'divisão que salva a peça: 350 não cabe nos 275 da chapa, 255 e 95 '
+       'cabem · a faixa de LED corre sobre os 255 · DET 02 penteadeira '
+       '95 × 50 × 14, sendo 2 de tampo e 12 de gaveta, suspensa e com cava '
+       'na própria madeira · ⭐ item único [Jonathan, 28/10]: a penteadeira '
+       'nasce do painel e as duas são a mesma parede'),
+ I345: ('195 × 100 × 45  +  110 × 100 × 60  +  110 × 200 × 43',
+        'DET 03 cama bicama 195 × 100 × 45, com o leito inferior de 30 que '
+        'corre ⭐ estrado em METALON, dois quadros · DET 04 baú com tampo '
+        '110 × 100 × 60, tampo em 15 fixo + 95 que abre, faixa de 3 de LED '
+        'no fundo · DET 05 armário superior 110 × 200 × 43, com duas '
+        'prateleiras iluminadas sobre um painel · ⭐ item único [Jonathan, '
+        '28/10]: é o conjunto de dormir, encostado um no outro'),
  I6: ('110 × 300 × 63',
-      'VISTA FRONTAL 55 + 55 = 110 · altura 5 + 285 + 10 = 300, do piso ao teto · a cava fica '
-      'a 105 do topo e a 105 do piso, num encaixe de 10 × 10 · VISTA FRONTAL INTERNA '
-      '2 + 106 + 2 = 110 e 5 + 2 + 50 maleiro + 2 + 129 cabideiro + 2 + 20×5 gavetas + 2 + 10'),
+      'VISTA FRONTAL 55 + 55 = 110 · altura 5 + 285 + 10 = 300, do piso ao '
+      'teto · a cava fica a 105 do topo e a 105 do piso, num encaixe de '
+      '10 × 10 · VISTA FRONTAL INTERNA 2 + 106 + 2 = 110 e 5 + 2 + 50 '
+      'maleiro + 2 + 129 cabideiro + 2 + 20×5 gavetas + 2 + 10'),
 }
 
 FOLHA = dict(

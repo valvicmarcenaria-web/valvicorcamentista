@@ -83,17 +83,20 @@ SUITEMARIANA = [
  *ripado(I1, 235, 212, 3, 1, SR15,
          'Ripado da empena · ripa de 3 com vão de 1, como a prancha '
          'escreve · laminada nos dois lados'),
- P('Frente · porta de giro · campo', I1, 61, 174, 4, PI18, (2, 2),
-   '⭐ Palha Indiana Sextavada Natural · ⚠ as quatro são RECORTADAS na '
-   'linha da empena: a medida é a do retângulo de onde saem'),
+ P('Frente · porta de giro · campo', I1, 61, 174, 4, SR15, (0, 0),
+   '⭐⭐ O CAMPO VIRA SUBSTRATO [Jonathan, 28/10/2026]: a palha indiana é '
+   'PALHINHA NATURAL a R$ 650 o m², não chapa melamínica a R$ 137 · a peça '
+   'continua existindo porque a palhinha precisa de fundo em que se fixar, '
+   'mas sai no MDF estrutural · ⛔ sem fita: as arestas morrem sob a moldura'),
+ P('Frente · báscula de 85 · campo', I1, 100, 85, 1, SR15, (0, 0),
+   'Substrato da palhinha · ⛔ sem fita'),
+ P('Frente · báscula de 37 · campo', I1, 100, 37, 1, SR15, (0, 0),
+   'Substrato da palhinha · ⛔ sem fita'),
  P('Frente · porta · moldura · régua longa', I1, 174, 5, 8, SR15, (2, 2),
    '⛔ MOLDURA DE OUTRA COR: Sal Rosa sobre Palha Indiana · peça inteira '
    'cobriria a palha, então aqui régua é régua'),
  P('Frente · porta · moldura · régua curta', I1, 51, 5, 8, SR15, (2, 2),
    'As duas laterais de cada porta · 61 menos as duas réguas de 5'),
- P('Frente · báscula de 85 · campo', I1, 100, 85, 1, PI18, (2, 2),
-   'Palha Indiana Sextavada Natural · é o campo que a moldura emoldura'),
- P('Frente · báscula de 37 · campo', I1, 100, 37, 1, PI18, (2, 2)),
  P('Frente do armário de 100 · moldura · régua longa', I1, 100, 5, 4,
    SR15, (2, 2), '⛔ moldura de OUTRA COR: Sal Rosa sobre Palha Indiana'),
  P('Frente de 85 · moldura · régua curta', I1, 75, 5, 2, SR15, (2, 2)),
@@ -124,12 +127,13 @@ SUITEMARIANA = [
    'Separa a coluna das três gavetas da coluna da porta'),
  P('Base do armário',       I3, 109, 50, 1, PA15, (1, 0)),
  P('Fundo',                 I3, 112, 66, 1, PA6, (0, 0), 'Encaixe em rasgo'),
- P('Frente · gaveta · campo', I3, 53, 20, 3, PI18, (2, 2),
-   'Palha Indiana Sextavada Natural · três gavetas de 20'),
+ P('Frente · gaveta · campo', I3, 53, 20, 3, SR15, (0, 0),
+   'Substrato da palhinha das três gavetas · ⛔ sem fita'),
+ P('Frente · porta · campo', I3, 53, 60, 1, SR15, (0, 0),
+   'Substrato da palhinha da porta · ⛔ sem fita'),
  P('Frente · gaveta · moldura · régua longa', I3, 53, 5, 6, SR15, (2, 2),
    '⛔ moldura de OUTRA COR: régua é régua'),
  P('Frente · gaveta · moldura · régua curta', I3, 10, 5, 6, SR15, (2, 2)),
- P('Frente · porta · campo', I3, 53, 60, 1, PI18, (2, 2)),
  P('Frente · porta · moldura · régua longa', I3, 60, 5, 2, SR15, (2, 2)),
  P('Frente · porta · moldura · régua curta', I3, 43, 5, 2, SR15, (2, 2)),
  *gaveta(I3, 53, 45, 20, 3, 'Gaveta'),
@@ -214,13 +218,10 @@ SUITEMARIANA = [
  #    emoldurada em Sal Rosa, como as frentes do DET 01 e do DET 03
  P('Corpo · lateral',       I11, 207, 30, 2, SR15, (1, 1)),
  P('Corpo · cabeceira e peseira', I11, 104, 30, 2, SR15, (1, 1)),
- P('Estrado do colchão',    I11, 207, 104, 1, SR15, (0, 0),
-   'Peça inteira: 207 × 104 cabe nos 275 × 185 · ⛔ sem fita, fica sob o '
-   'colchão'),
- P('Proteção · lado longo · campo', I11, 88, 27, 1, PI18, (2, 2),
-   'Palha Indiana Sextavada Natural · a VISTA FRONTAL dá 88 e deixa o '
-   'resto aberto, que é por onde a criança sobe'),
- P('Proteção · cabeceira e peseira · campo', I11, 107, 27, 2, PI18, (2, 2)),
+ P('Proteção · lado longo · campo', I11, 88, 27, 1, SR15, (0, 0),
+   'Substrato da palhinha · ⛔ sem fita'),
+ P('Proteção · cabeceira e peseira · campo', I11, 107, 27, 2, SR15, (0, 0),
+   'Substrato da palhinha · ⛔ sem fita'),
  P('Proteção · moldura · régua longa de 88', I11, 88, 5, 2, SR15, (2, 2),
    '⛔ moldura de OUTRA COR: régua é régua'),
  P('Proteção · moldura · régua longa de 107', I11, 107, 5, 4, SR15, (2, 2)),
@@ -229,8 +230,6 @@ SUITEMARIANA = [
  P('Bicama · frente',       I11, 195, 25, 1, SR15, (2, 2)),
  P('Bicama · lateral',      I11, 98, 25, 2, SR15, (1, 0)),
  P('Bicama · costas',       I11, 192, 25, 1, SR15, (1, 0)),
- P('Bicama · estrado',      I11, 192, 98, 1, SR15, (0, 0),
-   '⛔ sem fita, fica sob o colchão da bicama'),
 
  # ══ ITEM 12 · NOME MARIANA — ELEVAÇÃO 04, sem detalhamento ═══════════
  #  "Nome em MDF sal rosa - Arauco com espessura de 3cm"
@@ -257,9 +256,7 @@ LED     = [(I1, 'Embutida acima do ripado, nas duas águas da empena', 2.8),
            (I6, 'Embutida acima, nas águas de 190 e de 198 da casinha', 3.9)]
 CABIDEIROS = []
 # ⭐ o engradado que dá os 3 cm dos dois painéis, sem dobrar a chapa
-SARRAFOS = [(I5, 'Engradado atrás do painel de 105 × 135 · é ele que dá os '
-             '3 cm de espessura', 7.0),
-            (I8, 'Engradado atrás do painel de 330 × 145', 14.3)]
+SARRAFOS = []  # ⛔ pinus PROIBIDO: os dois engradados viraram travessa de MDF
 SUPORTES = []
 ALMAS   = []
 VIDRO   = []
@@ -267,7 +264,33 @@ SERRALHERIA = []
 # ⭐ as frentes emolduradas não têm puxador nenhum desenhado, e cava
 #   cortaria a palha: é o pulsador que sobra, como na Suíte Hóspedes, no
 #   Banho Hóspedes e no Banho Gourmet.
-OUTRAS  = [(I1, 'Pulsador', 'Quatro portas e duas básculas da estante · '
+OUTRAS  = [
+           (I1, 'Perfil de proteção de piso', 'Estante com armário de 350', 3.5, 'm',
+            'Perfil de proteção de piso'),
+           (I3, 'Perfil de proteção de piso', 'Mesa com armário de 235', 2.35, 'm',
+            'Perfil de proteção de piso'),
+           (I6, 'Perfil de proteção de piso', 'Casinha de 350', 3.5, 'm',
+            'Perfil de proteção de piso'),
+           (I11, 'Perfil de proteção de piso', 'Cama montessoriana de 207', 2.07, 'm',
+            'Perfil de proteção de piso'),
+           # ⭐⭐ A PALHA É PALHINHA NATURAL, NÃO CHAPA [Jonathan, 28/10/2026]:
+           #   "a palha indiana (650,00) o metro quadrado". Eu a orçava
+           #   como melamínico, uns R$ 137 o m²; ela custa R$ 650. Os
+           #   campos saem da conta de chapa e entram como tapeceiro,
+           #   trançados dentro das molduras de Sal Rosa.
+           (I1, 'Palhinha natural', 'Campo das quatro portas de 61 × 174 e '
+            'das duas básculas de 100 · 4,25 + 0,85 + 0,37', 5.47, 'm²',
+            'Palhinha natural'),
+           (I3, 'Palhinha natural', 'Campo das três gavetas de 53 × 20 e da '
+            'porta de 53 × 60 da mesa', 0.64, 'm²', 'Palhinha natural'),
+           (I11, 'Palhinha natural', 'Campo da proteção da cama '
+            'montessoriana · lado longo e as duas pontas', 0.82, 'm²',
+            'Palhinha natural'),
+           # ⭐ ESTRADO EM METALON · R$ 250 o quadro [Jonathan, 28/10/2026]
+           (I11, 'Estrado em metalon', 'Dois quadros: o do colchão de '
+            '207 × 104 e o da bicama de 192 × 98 · ⛔ substitui os dois '
+            'painéis de MDF', 2, 'quadro', 'Estrado em metalon'),
+           (I1, 'Pulsador', 'Quatro portas e duas básculas da estante · '
             'abre por toque, sem ferragem à vista', 6, 'un', 'Pulsador'),
            (I2, 'Rodízio deslizante', 'Quatro por caixa, duas caixas · '
             '⛔ sem preço na Base', 8, 'un', 'Rodízio deslizante'),

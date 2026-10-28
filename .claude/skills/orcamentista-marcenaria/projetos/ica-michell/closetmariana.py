@@ -134,7 +134,12 @@ SUPORTES = []
 ALMAS   = []
 VIDRO   = []
 SERRALHERIA = []
-OUTRAS  = [(I2, 'Calceiro deslizante', 'Na coluna de 75 do Armário 02 · '
+OUTRAS  = [
+           (I1, 'Perfil de proteção de piso', 'Armário 01 de 240', 2.4, 'm',
+            'Perfil de proteção de piso'),
+           (I2, 'Perfil de proteção de piso', 'Armário 02 de 310', 3.1, 'm',
+            'Perfil de proteção de piso'),
+           (I2, 'Calceiro deslizante', 'Na coluna de 75 do Armário 02 · '
             '⛔ sem preço na Base', 1, 'un', 'Calceiro deslizante')]
 
 CABECA = {

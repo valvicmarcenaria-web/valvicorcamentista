@@ -43,8 +43,19 @@ BANHOHOSPEDES = [
  P('Travessa de apoio da bancada', I1, 96, 10, 2, EST, (1, 0),
    'Frente e fundo · ⭐ a pedra apoia nelas, não em tampo cheio'),
  P('Fundo',                 I1, 100, 50, 1, FUN, (0, 0), 'Encaixe em rasgo'),
- P('Frente · gaveta · base', I1, 96, 25, 2, PI18, (2, 2),
-   'Palha Indiana Sextavada Natural · é o campo que a moldura emoldura'),
+ # ⭐⭐ A PALHA É PALHINHA NATURAL, NÃO CHAPA [Jonathan, 28/10/2026]: "na
+ #   cabeceira vc nao considerou a palha indiana (650,00) o metro
+ #   quadrado". ⛔ Eu a orçava como melamínico — R$ 700 a chapa, uns R$ 137
+ #   o m² depois do aproveitamento — e ela custa R$ 650 o m². Era cinco
+ #   vezes menos. O campo sai da conta de chapa e entra como material de
+ #   tapeceiro, trançado dentro da moldura: 0,96 × 0,25 × 2 = 0,48 m².
+ #   ⚠ A moldura continua em Oásis e continua sendo régua.
+
+ P('Frente · gaveta · campo', I1, 96, 25, 2, EST, (0, 0),
+   '⭐ Substrato da PALHINHA NATURAL [Jonathan, 28/10/2026]: a palha '
+   'indiana custa R$ 650 o m² e é tapeceiro, não chapa · a peça fica '
+   'porque a palhinha precisa de fundo em que se fixar, mas sai no MDF '
+   'estrutural · ⛔ sem fita: as arestas morrem sob a moldura'),
  P('Frente · moldura · régua longa', I1, 96, 2, 4, OA18, (2, 2),
    '⛔ MOLDURA DE OUTRA COR: duas réguas de 2 em Oásis por frente, em cima '
    'e embaixo · peça inteira cobriria a palha, então aqui régua é régua'),
@@ -80,14 +91,27 @@ CABIDEIROS = []
 SARRAFOS= []
 SUPORTES= []
 ALMAS   = []
-VIDRO   = []
+# ⭐ O ESPELHO ENTRA NA CONTA [Jonathan, 28/10/2026]: "considerar o espelho
+#   e a palinha natural". O oval de 60 × 150 estava em NÃO É MARCENARIA e
+#   não devia estar: quem compra e instala é a casa. 0,90 m² pelo
+#   retângulo que o contém — oval se corta de chapa retangular.
+VIDRO   = [(I1, 'Espelho oval de 60 × 150 da ELEVAÇÃO 04 · medido pelo '
+            'retângulo que o contém, que é como o vidraceiro corta',
+            1, 60, 150, 'Espelho')]
 SERRALHERIA = []
 # ⭐ as duas gavetas não têm puxador nenhum desenhado, e a frente é Palha
 #   Indiana emoldurada: cava cortaria a palha. Mesma leitura do aparador da
 #   Suíte Hóspedes e da porta ripada do Banho Gourmet.
 OUTRAS  = [(I1, 'Pulsador', 'Duas gavetas da bancada · abre por toque, sem '
             'ferragem à vista · ⚠ a prancha não desenha puxador nenhum',
-            2, 'un', 'Pulsador')]
+            2, 'un', 'Pulsador'),
+           # ⭐ PALHINHA NATURAL · R$ 650 o m² [Jonathan, 28/10/2026]
+           (I1, 'Palhinha natural', 'O campo das duas frentes de gaveta, '
+            '96 × 25 cada · trançado dentro da moldura de Oásis · ⛔ é '
+            'tapeceiro, não chapa: saiu da conta de MDF', 0.48, 'm²',
+            'Palhinha natural')]
+# ⭐ nada neste banheiro toca o chão: a bancada é suspensa com 15 de vão e
+#   o nicho começa a 101 do piso — não há perfil de proteção de piso.
 
 CABECA = {
  I1: ('100 × 50 × 50',

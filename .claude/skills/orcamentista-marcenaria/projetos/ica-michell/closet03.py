@@ -152,7 +152,12 @@ SUPORTES= []
 ALMAS   = []
 VIDRO   = []
 SERRALHERIA = []
-OUTRAS  = [(I2, 'Calceiro deslizante', 'O vão de 70 da VISTA FRONTAL · '
+OUTRAS  = [
+           (I1, 'Perfil de proteção de piso', 'Armário 01 de 170', 1.7, 'm',
+            'Perfil de proteção de piso'),
+           (I2, 'Perfil de proteção de piso', 'Armário 02 de 325', 3.25, 'm',
+            'Perfil de proteção de piso'),
+           (I2, 'Calceiro deslizante', 'O vão de 70 da VISTA FRONTAL · '
             '⛔ SEM PREÇO na Base · é o segundo do projeto, depois do '
             'Closet Master', 1, 'un', 'Calceiro deslizante')]
 

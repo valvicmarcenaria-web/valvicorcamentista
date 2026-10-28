@@ -56,9 +56,12 @@ SUITEMASTER = [
    'As duas bordas de 55 que emolduram o colchão'),
  P('Plataforma · faixa do pé',     I2, 190, 25, 1, CB18, (2, 2),
    '225 menos os 200 do rebaixo'),
- P('Estrado do colchão',           I2, 190, 100, 2, EST, (0, 0),
-   '⭐ 15 mm, não 6: colchão king carrega duas pessoas · ⛔ 190 × 200 não '
-   'sai de uma chapa, saem duas de 190 × 100 · sem fita, fica sob o colchão'),
+ # ⛔⛔ O ESTRADO DEIXOU DE SER MDF [Jonathan, 28/10/2026]: "troque o
+ #   sarrafo pela estrutura de serralheria" e "Todas as camas teremos a
+ #   aplicação de estrado em metalom ... o custo de cada quadro é de
+ #   250,00". As duas frases dizem a mesma coisa: o que segura o colchão
+ #   king não é painel de 15 mm sobre sarrafo de pinus, é quadro de
+ #   metalon. Saem os dois painéis e sai o sarrafo; entram dois quadros.
  P('Saia · frente e costas',       I2, 150, 15, 4, CB18, (1, 0),
    'Duas peças em cada: 300 de corrida não sai de uma chapa'),
  P('Saia · lateral',               I2, 255, 15, 2, CB18, (1, 0)),
@@ -109,7 +112,7 @@ SUITEMASTER = [
 ]
 
 # ── ferragem, declarada item a item ─────────────────────────────────────
-GAVETAS = [(I3, 'Rack · cinco gavetas de 67', 5, 400)]
+GAVETAS = [(I3, 'Rack · cinco gavetas de 67 · abrem por toque', 5, 400, 'touch')]
 PORTAS  = []
 BASCULAS= []
 CAVA    = []
@@ -120,18 +123,36 @@ MOLDURA = []
 LED     = [(I1, 'Sob a base superior, de ponta a ponta da cabeceira', 5.00),
            (I3, 'Nas duas laterais do painel · 3 m cada, do chão ao teto', 6.00)]
 CABIDEIROS = []
-SARRAFOS= [(I2, 'Apoio do estrado do colchão king, nos 190 de vão', 6.0)]
+SARRAFOS= []   # ⛔ pinus PROIBIDO · o estrado virou quadro de metalon
 SUPORTES= []
 ALMAS   = []
-VIDRO   = []
+# ⭐ O ESPELHO DO DET 03 ENTRA NA CONTA [Jonathan, 28/10/2026]: "item 3 -
+#   idem situação acima das gavetas, considere o espelho tbm". São os 90
+#   da ponta direita do painel de 400, de piso a teto: 0,90 × 3,00 =
+#   2,70 m², colados no painel de apoio que já estava na conta.
+VIDRO   = [(I3, 'Espelho de 90 × 300 da ponta direita do painel · colado no '
+            'painel de apoio de Carvalho Brun', 1, 90, 300, 'Espelho')]
 SERRALHERIA = []
-# ⛔ duas coisas que a Base não tem: o estofamento da cabeceira e o
-#   pulsador das gavetas do rack, que aqui tem preço.
-OUTRAS  = [(I1, 'Estofamento em linho', 'Seis módulos de 83 × 104 em linho '
-            'bege · ⛔ é estofador, não marcenaria, e NÃO existe na Base',
+# ⭐ nada da Suíte Master toca o chão com painel: a cabeceira é parede, a
+#   cama é plataforma com base recuada e o rack é suspenso. ⚠ A base de
+#   3 cm recuada da plataforma segue como dúvida.
+OUTRAS  = [# ⭐ O ESTOFADO TEM PREÇO [Jonathan, 28/10/2026]: "item 1 -
+           #   considere o metro quadrado do estofado em 600,00". Saiu do
+           #   zero e deixou de ser PISO: 5,18 m² × R$ 600 = R$ 3.108.
+           (I1, 'Estofamento em linho', 'Seis módulos de 83 × 104 em linho '
+            'bege · ⛔ é estofador, não marcenaria · R$ 600 o m²',
             5.18, 'm²', 'Estofamento em linho'),
-           (I3, 'Pulsador', 'Cinco gavetas do rack · a prancha não desenha '
-            'puxador nenhum', 5, 'un', 'Pulsador')]
+           # ⭐ ESTRADO EM METALON · R$ 250 o quadro [Jonathan, 28/10/2026]
+           (I2, 'Estrado em metalon', 'Dois quadros de 190 × 100 sob o '
+            'colchão king · ⛔ substitui os dois painéis de MDF e o sarrafo '
+            'de pinus que os apoiava: é ele a "estrutura de serralheria" '
+            'que o senhor pediu no lugar do sarrafo', 2, 'quadro',
+            'Estrado em metalon')]
+# ⛔⛔ O PULSADOR DO RACK SAIU E ENTROU CORREDIÇA TOUCH [Jonathan,
+#   28/10/2026]: "no caso de corrediças com abertura por toque, considere
+#   a corrediça touch, não precisa de pulsador". As cinco gavetas do rack
+#   não têm puxador desenhado e abrem por toque — quem abre é a corrediça,
+#   R$ 500 o par, e o pulsador por cima seria pagar duas vezes.
 
 CABECA = {
  I1: ('500 × 110 × 5',

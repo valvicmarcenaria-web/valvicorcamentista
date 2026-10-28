@@ -39,9 +39,13 @@ from base import P, ripado, ALT_MAX, CHAPA_C, DOBRADICA
 CB15, CB18 = 'MDF Carvalho Brun 15', 'MDF Carvalho Brun 18'
 EST, EST18, FUN = 'MDF Branco TX 15', 'MDF Branco TX 18', 'MDF Branco TX 6'
 
-I1 = 'DET 01 Ripas'
-I2 = 'DET 02 Armário com bancada'
-I3 = 'DET 03 Nichos'
+# ⭐⭐ ITEM ÚNICO [Jonathan, 28/10/2026]: "considere apenas um item". As
+#   quatro ripas de piso a teto, o armário suspenso que morre nelas e o
+#   nicho de 3 m são a mesma parede do banho master — a fábrica corta a
+#   mesma chapa de Carvalho Brun para os três e o montador sobe os três
+#   juntos. ⛔ Cada peça guarda o DET de origem no nome.
+I = 'DET 01 a 03 Conjunto do banho master'
+I1 = I2 = I3 = I
 
 # ⭐ 21 ripas de 2 com vão de 1 em cada porta de 62 — é o que o desenho em
 #   1/20 mede: dezenove vãos escuros em 58 cm de frente, passo de 3.
@@ -54,10 +58,10 @@ BANHOMASTER = [
  #  ELEVAÇÃO 01            100 + 10 + 80 + 10 + 60 + 10 + 80 + 10 = 360
  #  ⭐ seção 10 × 5 em MDF = U encostado na parede: UMA face de 10 e dois
  #    lados de 3,5 · a parede é o quarto lado, e ela é de azulejo
- P('Face de 10',            I1, 300, 10, 4, CB15, (2, 0),
+ P('Face de 10 · DET 01', I1, 300, 10, 4, CB15, (2, 0),
    '⭐ uma face por ripa, quatro ripas · as duas arestas verticais de cada '
    'face são o canto que aparece, e são 3 m cada · ⛔ 300 de altura'),
- P('Lado de 3,5',           I1, 300, 3.5, 8, CB15, (0, 0),
+ P('Lado de 3,5 · DET 01', I1, 300, 3.5, 8, CB15, (0, 0),
    'Os dois lados de cada U · 5 de profundidade menos a chapa de 15 mm da '
    'face = 3,5 · a aresta de trás morre na parede, sem fita · ⛔ 300'),
 
@@ -67,24 +71,24 @@ BANHOMASTER = [
  #                                altura 19 + 2 + 19, uma prateleira por vão
  #  DET. 02 VISTA LATERAL         60 de profundidade · 5 de pedra · 12 de cuba
  #  ELEVAÇÃO 01                   25 do piso + 50 do móvel com a pedra = 75
- P('Lateral',               I2, 45, 60, 2, CB15, (1, 1),
+ P('Lateral · DET 02', I2, 45, 60, 2, CB15, (1, 1),
    'Aparente: a ponta do armário morre na ripa do DET 01 e ele é SUSPENSO, '
    'com 25 de vão até o piso'),
- P('Divisória central',     I2, 45, 60, 1, EST, (1, 0),
+ P('Divisória central · DET 02', I2, 45, 60, 1, EST, (1, 0),
    'A vertical que parte os 250 em dois vãos de 122'),
- P('Tampo e base',          I2, 247, 60, 2, EST, (1, 0),
+ P('Tampo e base · DET 02', I2, 247, 60, 2, EST, (1, 0),
    '⭐ tampo cheio, não travessa: a pedra de 250 × 60 apoia nele inteiro'),
- P('Prateleira',            I2, 122, 60, 2, EST18, (1, 0),
+ P('Prateleira · DET 02', I2, 122, 60, 2, EST18, (1, 0),
    '⭐ 18 mm porque o vão de 122 passa muito dos 70 da regra · uma em cada '
    'vão, que é o que a VISTA FRONTAL INTERNA desenha com 19 + 2 + 19'),
- P('Fundo',                 I2, 250, 45, 1, FUN, (0, 0), 'Encaixe em rasgo'),
- P('Frente · porta ripada · base', I2, 62, 45, 4, CB15, (2, 2),
+ P('Fundo · DET 02', I2, 250, 45, 1, FUN, (0, 0), 'Encaixe em rasgo'),
+ P('Frente · porta ripada · base · DET 02', I2, 62, 45, 4, CB15, (2, 2),
    '⭐ o painel de base é que aparece no vão de 1 entre as ripas: sai na '
    'cor da frente, não em branco · quatro portas de giro iguais'),
- P('Ripa de 2',             I2, 2, 45, N_RIPA*N_PORTA, CB15, (2, 2),
+ P('Ripa de 2 · DET 02', I2, 2, 45, N_RIPA*N_PORTA, CB15, (2, 2),
    f'Vão de 1 entre as ripas · {N_RIPA} ripas em 62 · quatro portas · '
    'laminada nos dois lados, que é o que o Jonathan fechou em 28/10'),
- P('Ripa de 2 · perda de serra', I2,
+ P('Ripa de 2 · perda de serra · DET 02', I2,
    round(N_RIPA*2*N_PORTA*0.10, 1), 45, 1, CB15, (0, 0),
    '⭐ fator 1,10 da Base · a serra come chapa a cada 2 cm de ripa · ⛔ é '
    'perda, não peça: sem fita'),
@@ -94,15 +98,15 @@ BANHOMASTER = [
  #     altura 75 + 2 + 38 + 2 + 38 + 2 + 38 + 2 + 38 + 2 + 63 = 300 exato
  #     CINCO prateleiras, um LED sob cada uma
  #  DET. 03 VISTA SUPERIOR e LATERAL  10 de profundidade
- P('Painel · faixa alta',   I3, 70, 150, 1, CB15, (2, 2),
+ P('Painel · faixa alta · DET 03', I3, 70, 150, 1, CB15, (2, 2),
    '⛔ 70 × 300 não sai de chapa nenhuma, em orientação nenhuma: duas '
    'faixas de 150, e a emenda fica atrás de uma prateleira'),
- P('Painel · faixa baixa',  I3, 70, 150, 1, CB15, (2, 2), '—'),
- P('Lateral',               I3, 300, 10, 2, CB15, (1, 0),
+ P('Painel · faixa baixa · DET 03', I3, 70, 150, 1, CB15, (2, 2), '—'),
+ P('Lateral · DET 03', I3, 300, 10, 2, CB15, (1, 0),
    'Os dois "2" da VISTA FRONTAL · só a aresta da frente aparece, e ela '
    'tem 3 m · ⛔ 300 de altura'),
- P('Topo e base',           I3, 66, 10, 2, CB15, (1, 0), 'Aparente'),
- P('Prateleira',            I3, 66, 10, 5, CB15, (1, 0),
+ P('Topo e base · DET 03', I3, 66, 10, 2, CB15, (1, 0), 'Aparente'),
+ P('Prateleira · DET 03', I3, 66, 10, 5, CB15, (1, 0),
    '⭐ 15 mm: o vão de 66 não chega aos 70 da regra · cinco prateleiras, '
    'quatro nichos de 38 entre elas e o de 63 embaixo'),
 ]
@@ -123,29 +127,29 @@ SUPORTES= []
 ALMAS   = []
 VIDRO   = []
 SERRALHERIA = []
+ABRE_MISTO = [I]   # conjunto de três móveis num item só
 # ⭐ MESMA LEITURA DO BANHO GOURMET: a porta ripada não tem puxador nenhum
 #   desenhado, e uma face ripada não aceita cava sem cortar a ripa. Quem
 #   sobra é o pulsador.
-OUTRAS  = [(I2, 'Pulsador', 'Quatro portas ripadas · abre por toque, sem '
+OUTRAS  = [(I, 'Perfil de proteção de piso', 'O nicho de 70 apoia no chão '
+            'e as quatro ripas de 10 descem até ele: 70 + 4 × 10 = 110 cm · '
+            'o armário é suspenso a 25 e não entra', 1.10, 'm',
+            'Perfil de proteção de piso'),
+           (I2, 'Pulsador', 'Quatro portas ripadas · abre por toque, sem '
             'ferragem à vista · ⚠ a prancha não desenha puxador nenhum',
             4, 'un', 'Pulsador')]
 
 CABECA = {
- I1: ('10 × 300 × 5  ·  quatro',
-      'DET. 01 VISTA FRONTAL 10 de largura × 300 de altura · PERSPECTIVA '
-      'seção de 10 × 5 · ELEVAÇÃO 01 100 + 10 + 80 + 10 + 60 + 10 + 80 + '
-      '10 = 360, que são QUATRO ripas dividindo a parede · ⭐ seção de 10 × '
-      '5 em MDF encostada na parede é um U: uma face de 10 e dois lados de '
-      '3,5, com o azulejo fazendo de quarto lado'),
- I2: ('250 × 45 × 60',
-      'DET. 02 VISTA FRONTAL 62 + 62 + 62 + 62 ≈ 250, quatro portas de giro '
-      'ripadas de 45 · VISTA FRONTAL INTERNA 2 + 122 + 2 + 122 + 2 = 250, '
-      'altura 19 + 2 + 19 · VISTA LATERAL 60 de profundidade, 5 de pedra e '
-      '12 de cuba · ELEVAÇÃO 01 25 do piso + 50 = 75 na borda da bancada'),
- I3: ('70 × 300 × 10',
-      'DET. 03 VISTA FRONTAL 2 + 66 + 2 = 70 · altura 75 + 2 + 38 + 2 + 38 '
-      '+ 2 + 38 + 2 + 38 + 2 + 63 = 300, que fecha exato · VISTA SUPERIOR e '
-      'LATERAL 10 de profundidade · cinco prateleiras, um LED sob cada uma'),
+ I: ('ripas 10 × 300 × 5, quatro  ·  armário 250 × 45 × 60  ·  nicho '
+     '70 × 300 × 10',
+     'DET 01 quatro ripas de 10 × 5 e 300 de altura, dividindo a parede de '
+     '360 em 100 + 80 + 60 + 80 ⭐ seção de 10 × 5 em MDF encostada na '
+     'parede é um U: uma face de 10 e dois lados de 3,5, com o azulejo '
+     'fazendo de quarto lado · DET 02 armário com bancada 250 × 45 × 60, '
+     'quatro portas ripadas, SUSPENSO a 25 do piso, com pedra de quartzo '
+     'em cima · DET 03 nicho 70 × 300 × 10, cinco prateleiras e um LED sob '
+     'cada uma, fechando exato nos 300 · ⭐ item único [Jonathan, 28/10]: '
+     'é a mesma parede e a mesma chapa'),
 }
 
 FOLHA = dict(

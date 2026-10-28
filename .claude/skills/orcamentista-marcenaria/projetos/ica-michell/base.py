@@ -61,12 +61,13 @@ PRECO = {'MDF cor 18': 700.0, 'MDF cor 15': 550.0, 'MDF cor 6': 350.0,
          'MDF Nazca Velluto 18': 700.0, 'MDF Nazca Velluto 15': 550.0,
          'MDF Beige 18': 700.0, 'MDF Beige 15': 550.0,
          'MDF Beige 6': 350.0,
-         # ⭐ o Closet Master inteiro é BRANCO DIAMANTE - Duratex. É um
-         #   branco TEXTURADO, irmão do Branco TX: entra no preço de
-         #   branco (400/350/250), não no de cor. ⚠ Se for linha
-         #   especial, sobe para 700/550/350 — a dúvida está na aba.
-         'MDF Branco Diamante 18': 400.0, 'MDF Branco Diamante 15': 350.0,
-         'MDF Branco Diamante 6': 250.0,
+         # ⭐⭐ RESPONDIDO [Jonathan, 28/10/2026]: "sao materiais de cor
+         #   (branco diamante tem o mesmo preço de amadeirado)". Era a
+         #   pergunta mais cara do projeto e ela está fechada: Branco
+         #   Diamante custa 700/550/350, como qualquer padrão de cor, e
+         #   não 400/350/250 como o Branco TX. Move os TRÊS closets.
+         'MDF Branco Diamante 18': 700.0, 'MDF Branco Diamante 15': 550.0,
+         'MDF Branco Diamante 6': 350.0,
          # ⭐ os dois padrões que a Suíte Mariana trouxe, e eles mandam no
          #   quarto inteiro: Sal Rosa é ARAUCO, Paris é GUARARAPES. É o
          #   primeiro ambiente do projeto em que os dois fornecedores
@@ -130,13 +131,51 @@ PUXADOR_128 = 110.0 # ⭐ Alças Traso 128 mm [Jonathan, 28/10/2026]
 MOLDURA_MO = 0.0    # ⛔ moldura provençal, por frente — SEM PREÇO na Base
 LED_M      = 150.0  # LED COB: fita, perfil, usinagem e instalação
 ALMA       =  50.0  # barra chata 5 mm, 3 m · toda peça acima de 30 mm
-SUPORTE    =  30.0  # suporte oculto de prateleira · de 40 em 40 cm
+# ⛔⛔ O SUPORTE OCULTO SAIU [Jonathan, 28/10/2026]
+#   > "prateleiras internas dos armarios nao ultilizamos suporte oculto,
+#   >  mas precisamos considerar que toda prateleira interna existe a
+#   >  composição de 4 suportes em um custo total de 6.50"
+#   ⭐ A regra agora é POR PRATELEIRA, não por par de pinos a cada 40 cm:
+#     toda prateleira interna de armário custa R$ 6,50 de suporte além da
+#     peça e da fita. E por ser "toda", ela não se declara — ela se CONTA
+#     das peças, em `prateleiras()`. Declarar à mão é esquecer à mão.
+SUPORTE    =   6.50  # jogo de 4 suportes, por PRATELEIRA interna
+ALMA_VAO   = 120.0   # ⭐ prateleira de vão acima disto pede alma de aço
+                     #   [Jonathan, 28/10] — contra flecha, não contra empeno
+# ⭐ ESTRADO EM METALON [Jonathan, 28/10/2026]
+#   > "Todas as camas teremos a aplicação de estrado em metalom, tanto
+#   >  para a superior quanto para a inferior. o custo de cada quadro é
+#   >  de 250,00"
+#   ⛔ O estrado deixa de ser painel de MDF: é quadro de metalon, e é
+#     serralheria. Um quadro por leito — beliche tem dois, bicama tem dois.
+METALON    = 250.0   # por quadro de estrado
+# ⭐ CORREDIÇA TOUCH [Jonathan, 28/10/2026]
+#   > "no caso de corrediças com abertura por toque, considere a corrediça
+#   >  touch, não precisa de pulsador. a corrediça com toque considere o
+#   >  custo de 500,00"
+#   ⛔ Ela SUBSTITUI o par de corrediça comum E o pulsador — os dois.
+CORREDICA_TOUCH = 500.0
+# ⭐ PERFIL DE PROTEÇÃO DE PISO [Jonathan, 28/10/2026]
+#   > "Todos os paineis que estao em contado direto no piso terá aplicação
+#   >  de aluminio/perfil inox de proteção, calcule a extensao linear, o
+#   >  custo por mt linear é de 15,00"
+PERFIL_PISO = 15.0   # por metro linear de painel que toca o chão
+# ⭐ os dois serviços de corte, por ambiente [Jonathan, 28/10/2026]
+CORTE_CHAPA, CORTE_PECA = 2.00, 2.50
+SUPORTE_OCULTO = 30.0  # ⛔ legado: não se usa mais em prateleira de armário
 CABIDEIRO  = 120.0  # cabideiro em metal preto ou grafite · Base, por unidade
 # ⭐ reforço estrutural interno. A prancha da Lavanderia manda "prever
 #   reforço para suportar lava e seca cheia": o apoio sobe para 18 mm e
 #   recebe sarrafo. Sarrafo é material de estrutura, não aparece e não leva
 #   fita — por isso entra por metro, como o LED, e não como peça de chapa.
-SARRAFO    =   8.0  # sarrafo de pinus · estrutura interna, por metro
+# ⛔⛔ PINUS ESTÁ PROIBIDO [Jonathan, 28/10/2026]
+#   > "Não usamos peças de pinus para nada."
+#   O sarrafo some do vocabulário da casa. Onde ele segurava alguma coisa,
+#   entra uma de três: ENGRADADO DE MDF (travessa tirada da própria chapa,
+#   `engradado()`), ESTRADO EM METALON (cama) ou SERRALHERIA ESTRUTURAL
+#   (quando o que segura é estrutura de verdade). A constante fica aqui
+#   zerada e a chave sai da Base, para que nenhum ambiente a use calado.
+SARRAFO    =   0.0  # ⛔ PROIBIDO — ver auditor, regra 9
 PERDA_RIPA =   1.10 # ⭐ Base, Terceirizados: perda de serra ao tirar ripa
 # ⭐ ferragem de uma vez só, declarada por OUTRAS no ambiente. O preço
 #   mora aqui e no 'precos' da planilha; vazio na Base continua vazio aqui.
@@ -157,7 +196,23 @@ PRECO_OUTRAS = {
  # ⭐ a cabeceira da Suíte Master é ESTOFADA, em linho bege: seis módulos
  #   de 83 × 104. Isso é estofador, não marcenaria, e a Base não tem a
  #   linha. Entra por m² a zero, para aparecer na conta sem mentir.
- 'Estofamento em linho': 0.0,   # ⛔ por m² · SEM PREÇO na Base
+ # ⭐ RESPONDIDO [Jonathan, 28/10/2026]: "considere o metro quadrado do
+ #   estofado em 600,00". Deixa de ser zero e deixa de ser PISO.
+ 'Estofamento em linho': 600.0,  # por m²
+ # ⭐ RESPONDIDO [Jonathan, 28/10/2026]: "na cabeceira vc nao considerou a
+ #   palha indiana (650,00) o metro quadrado". A palhinha natural é
+ #   terceirizado de tapeceiro, por m² de vão — NÃO é a chapa melamínica
+ #   "Palha Indiana Sextavada", que imita o desenho dela em MDF.
+ 'Palhinha natural': 650.0,      # por m²
+ 'Estrado em metalon': METALON,  # por quadro de leito
+ 'Corrediça touch': CORREDICA_TOUCH,   # por gaveta · substitui par + pulsador
+ 'Perfil de proteção de piso': PERFIL_PISO,  # por metro linear
+ 'Suporte de prateleira': SUPORTE,     # jogo de 4, por prateleira interna
+ 'Corte por chapa': CORTE_CHAPA,
+ 'Corte por peça': CORTE_PECA,
+ 'Carreto': 0.0,                 # ⛔ por viagem · a preencher na Base
+ 'Espelho': 0.0,                 # ⛔ por m² · a preencher na Base
+ 'Vidro reflecta': 0.0,          # ⛔ por m² · a cotar, segue sem preço
  # ⭐ o calceiro deslizante do Closet Master é ferragem de closet, não
  #   corrediça de gaveta. A Base não tem a linha.
  'Calceiro deslizante': 0.0,    # ⛔ por unidade · SEM PREÇO na Base
@@ -222,6 +277,63 @@ def gaveta(movel, larg, prof, alt, n=1, rotulo='Caixa de gaveta',
             P(f'{rotulo} · frente e costas', movel, liq, alt, 2*n, cor, (1, 0)),
             P(f'{rotulo} · fundo', movel, liq, prof, n, fundo, (0, 0),
               'Fundo em 6 mm por encaixe em rasgo — ⛔ sem fita')]
+
+def prateleiras(pecas, movel=None):
+    """⭐⭐ Nº de PRATELEIRAS INTERNAS de armário — a conta do suporte.
+
+    [Jonathan, 28/10/2026] "toda prateleira interna de armários tem um
+    custo além da peça e da fita de borda de 6.50 de suporte".
+
+    ⛔ Por ser "toda", ela NÃO se declara: se declarar, esquece. Ela se
+      conta das peças, como a lista de chapas se conta. Quem não leva
+      suporte — prateleira que encaixa em rasgo, prateleira pendurada em
+      haste, prateleira fixa cavilhada — diz `sem suporte` na obs, e aí a
+      exceção fica escrita na linha do orçamento, não na minha cabeça.
+    """
+    n = 0
+    for p in pecas:
+        if movel and p['movel'] != movel: continue
+        nome = p['nome'].lower()
+        if 'moldura' in nome or 'sem suporte' in p['obs'].lower(): continue
+        if any(w in nome for w in ('prateleira', 'sapateira', 'maleiro')):
+            n += p['qtd']
+    return n
+
+def almas_de_prateleira(pecas, movel=None):
+    """⭐ Nº de prateleiras que pedem ALMA DE AÇO, pelo vão.
+
+    [Jonathan, 28/10/2026] "prateleiras acima de 1.20mt vamos considerar
+    alma de aço". ⛔ É contra FLECHA, não contra empeno: 18 mm resolve o
+    empeno e não resolve o vão. Uma barra por prateleira — a barra tem
+    3 m e nenhuma prateleira do projeto passa disso.
+
+    Como o suporte, ela se CONTA das peças. Quem não leva diz `sem alma`
+    na obs, e a exceção fica escrita na linha.
+    """
+    n = 0
+    for p in pecas:
+        if movel and p['movel'] != movel: continue
+        nome = p['nome'].lower()
+        if 'prateleira' not in nome or 'moldura' in nome: continue
+        if 'sem alma' in p['obs'].lower(): continue
+        if max(p['c'], p['l']) > ALMA_VAO: n += p['qtd']
+    return n
+
+def engradado(movel, metros, chave, rot='', larg=5.0):
+    """⭐ O que substitui o sarrafo de pinus, que está PROIBIDO.
+
+    [Jonathan, 28/10/2026] "Não usamos peças de pinus para nada." Onde
+    havia engradado interno, entra TRAVESSA DE MDF tirada da própria
+    chapa — mesma cor, mesma compra, sem fornecedor novo. ⛔ A travessa
+    não aparece e não leva fita.
+    """
+    import math
+    n = max(1, math.ceil(metros*100/ALT_MAX))
+    return [P('Engradado · travessa de MDF', movel, ALT_MAX, larg, n, chave,
+              (0, 0), (rot + ' · ' if rot else '') +
+              f'{metros:g} m de travessa de {larg:g} cm, tirada da chapa · '
+              '⛔ sem fita: é estrutura interna e não aparece · ⛔ substitui '
+              'o sarrafo de pinus, que a casa não usa')]
 
 def ripado(movel, larg_total, alt, larg_ripa, vao, chave, obs=''):
     """Ripa solta com vão. ⭐ Conta a ripa, não o painel."""

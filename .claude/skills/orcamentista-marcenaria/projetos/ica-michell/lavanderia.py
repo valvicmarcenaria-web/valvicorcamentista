@@ -38,12 +38,14 @@ OW15, OW6 = 'MDF Off White Suave 15', 'MDF Off White Suave 6'
 EST, FUN  = 'MDF Branco TX 15', 'MDF Branco TX 6'
 PRAT18    = 'MDF Branco TX 18'   # ⭐ só onde o vão passa de 70 cm
 
-I1 = 'DET 01 Armário da lava e seca'
-I2 = 'DET 02 Bancada com armário'
-I3 = 'DET 03 Armário superior 01'
-I4 = 'DET 04 Armário 02'
-I5 = 'DET 05 Bancada com armário 02'
-I6 = 'DET 06 Armário superior 02'
+# ⭐⭐ ITEM ÚNICO [Jonathan, 28/10/2026]: "A precificação da lavanderia pode
+#   ser unificada." Os seis detalhamentos são UM móvel contínuo que dá a
+#   volta na lavanderia — a fábrica produz junto, o montador monta junto e
+#   o cliente vê um conjunto só. ⛔ O levantamento continua peça a peça e o
+#   DET de origem continua no texto de cada linha: o que se unifica é o
+#   PREÇO, não a leitura.
+I = 'DET 01 a 06 Conjunto da lavanderia'
+I1 = I2 = I3 = I4 = I5 = I6 = I
 
 LAVANDERIA = [
  # ══ ITEM 01 · ARMÁRIO DA LAVA E SECA — 122 × 265 × 67 ════════════════
@@ -52,20 +54,27 @@ LAVANDERIA = [
  #  VISTA FRONTAL INTERNA, coluna de 60
  #                 5 +2+ 30 +2+ 30 +2+ 35 +2+ 34 +2+ 34 +2+ 34 +2+ 35 +2+ 10
  #  VISTA SUPERIOR e LATERAL  profundidade 67 ⭐ coteada
- P('Lateral',              I1, 255, 67, 2, EST, (1, 0), 'Sobre o sóculo de granito de 10, que não é nosso'),
- P('Divisória central',    I1, 255, 67, 1, EST, (1, 0), 'Separa a coluna de 60 da coluna de 62'),
- P('Base e topo',          I1, 119, 67, 2, EST, (1, 0)),
- P('Fundo',                I1, 122, 255, 1, FUN, (0, 0), 'Encaixe em rasgo'),
- P('Fechamento superior',  I1, 122, 67, 1, CM15, (1, 1), '⭐ aparente, em Carvalho Malva · a prancha desenha 5 de testeira'),
- P('Prateleira interna',   I1, 57, 66, 6, EST, (1, 0), 'Coluna de 60 · sete vãos de 30·30·35·34·34·34·35, seis prateleiras'),
- P('Prateleira do nicho aberto', I1, 59, 66, 3, CM15, (1, 1), '⭐ os dois vãos de 27 ficam à vista: prateleira em Carvalho Malva'),
- P('Divisória do módulo basculante', I1, 59, 66, 1, EST, (1, 0), 'Separa as duas frentes basculantes de 32'),
- P('Apoio da lava e seca', I1, 59, 66, 1, PRAT18, (1, 0), '⭐ "prever reforço para suportar lava e seca cheia": 18 mm mais sarrafo'),
- *provencal('Frente · porta de giro alta',  I1, 30,  65, 2, CM15, CM6, 'Provençal · duas folhas de 30 sobre a coluna de 60'),
- *provencal('Frente · porta de giro baixa', I1, 30, 185, 2, CM15, CM6, 'Provençal · duas folhas de 30 · 185 de altura cabe inteira na chapa'),
- *provencal('Frente · báscula',             I1, 62,  32, 2, CM15, CM6, 'Provençal · articulador HK-XS'),
- *provencal('Frente · gaveta baixa',        I1, 62,  10, 1, CM15, CM6, 'Provençal · ⭐ 10 de altura só é possível com a moldura usinada'),
- *provencal('Frente · gavetão',             I1, 62,  30, 1, CM15, CM6, 'Provençal'),
+ P('Lateral · DET 01', I1, 255, 67, 2, EST, (1, 0), 'Sobre o sóculo de granito de 10, que não é nosso'),
+ P('Divisória central · DET 01', I1, 255, 67, 1, EST, (1, 0), 'Separa a coluna de 60 da coluna de 62'),
+ P('Base e topo · DET 01', I1, 119, 67, 2, EST, (1, 0)),
+ # ⛔ PINUS PROIBIDO [Jonathan, 28/10/2026]: o reforço que segura a lava e
+ #   seca cheia era sarrafo e agora é TRAVESSA DE MDF, tirada da própria
+ #   chapa — mesma compra, sem fornecedor novo, e vira peça no plano de
+ #   corte em vez de metro linear invisível.
+ P('Engradado · travessa de MDF · DET 01', I1, 122, 8, 2, EST, (0, 0),
+   'Duas travessas sob o tampo da lava e seca · ⛔ sem fita: é estrutura '
+   'interna e não aparece · ⛔ substitui o sarrafo de pinus'),
+ P('Fundo · DET 01', I1, 122, 255, 1, FUN, (0, 0), 'Encaixe em rasgo'),
+ P('Fechamento superior · DET 01', I1, 122, 67, 1, CM15, (1, 1), '⭐ aparente, em Carvalho Malva · a prancha desenha 5 de testeira'),
+ P('Prateleira interna · DET 01', I1, 57, 66, 6, EST, (1, 0), 'Coluna de 60 · sete vãos de 30·30·35·34·34·34·35, seis prateleiras'),
+ P('Prateleira do nicho aberto · DET 01', I1, 59, 66, 3, CM15, (1, 1), '⭐ os dois vãos de 27 ficam à vista: prateleira em Carvalho Malva'),
+ P('Divisória do módulo basculante · DET 01', I1, 59, 66, 1, EST, (1, 0), 'Separa as duas frentes basculantes de 32'),
+ P('Apoio da lava e seca · DET 01', I1, 59, 66, 1, PRAT18, (1, 0), '⭐ "prever reforço para suportar lava e seca cheia": 18 mm mais sarrafo'),
+ *provencal('Frente · porta de giro alta · DET 01', I1, 30,  65, 2, CM15, CM6, 'Provençal · duas folhas de 30 sobre a coluna de 60'),
+ *provencal('Frente · porta de giro baixa · DET 01', I1, 30, 185, 2, CM15, CM6, 'Provençal · duas folhas de 30 · 185 de altura cabe inteira na chapa'),
+ *provencal('Frente · báscula · DET 01', I1, 62,  32, 2, CM15, CM6, 'Provençal · articulador HK-XS'),
+ *provencal('Frente · gaveta baixa · DET 01', I1, 62,  10, 1, CM15, CM6, 'Provençal · ⭐ 10 de altura só é possível com a moldura usinada'),
+ *provencal('Frente · gavetão · DET 01', I1, 62,  30, 1, CM15, CM6, 'Provençal'),
  *gaveta(I1, 62, 55, 10, 1, 'Gaveta baixa'),
  *gaveta(I1, 62, 55, 30, 1, 'Gavetão'),
 
@@ -73,32 +82,32 @@ LAVANDERIA = [
  #  VISTA FRONTAL 50 + 50 + 50 + 50 = 200 · altura 5 + 80 + 10 = 95
  #  VISTA FRONTAL INTERNA 97 + 2 + 97 = 196 · interno 37 + 2 + 37 = 76
  #  VISTA SUPERIOR profundidade 60 · as duas cubas ficam na metade esquerda
- P('Lateral e divisória', I2, 80, 60, 3, EST, (1, 0), 'Dois vãos de 97'),
- P('Base',                I2, 196, 60, 1, EST, (1, 0)),
- P('Travessa de apoio da bancada', I2, 196, 10, 2, EST, (1, 0), 'Frente e fundo · a pedra apoia nelas, não em tampo cheio'),
- P('Fundo',               I2, 200, 80, 1, FUN, (0, 0), 'Encaixe em rasgo'),
- P('Prateleira',          I2, 97, 58, 2, PRAT18, (1, 0), '⭐ vão de 97 passa dos 70: 18 mm contra empeno · ⚠ a do vão da cuba pode esbarrar no sifão'),
- *provencal('Frente · porta de giro', I2, 50, 80, 4, CM15, CM6, 'Provençal · quatro folhas de 50'),
+ P('Lateral e divisória · DET 02', I2, 80, 60, 3, EST, (1, 0), 'Dois vãos de 97'),
+ P('Base · DET 02', I2, 196, 60, 1, EST, (1, 0)),
+ P('Travessa de apoio da bancada · DET 02', I2, 196, 10, 2, EST, (1, 0), 'Frente e fundo · a pedra apoia nelas, não em tampo cheio'),
+ P('Fundo · DET 02', I2, 200, 80, 1, FUN, (0, 0), 'Encaixe em rasgo'),
+ P('Prateleira · DET 02', I2, 97, 58, 2, PRAT18, (1, 0), '⭐ vão de 97 passa dos 70: 18 mm contra empeno · ⚠ a do vão da cuba pode esbarrar no sifão'),
+ *provencal('Frente · porta de giro · DET 02', I2, 50, 80, 4, CM15, CM6, 'Provençal · quatro folhas de 50'),
 
  # ══ ITEM 03 · ARMÁRIO SUPERIOR 01 — 256 × 170 × 60 ═══════════════════
  #  VISTA FRONTAL largura 75 + 75 + 56 + 50 = 256 ⭐
  #                bloco de 206 com 5 + 65 · coluna de 50 com 5+65+30+71 = 171
  #                o vão de 56 se divide em duas básculas de 33
  #  VISTA LATERAL 5 + 65 + 100 = 170 · profundidade 60
- P('Bloco · lateral e divisória', I3, 65, 60, 3, EST, (1, 0), 'Três vãos: 75 · 75 · 56'),
- P('Bloco · base e topo',         I3, 206, 60, 2, EST, (1, 0)),
- P('Coluna · lateral',            I3, 170, 60, 2, EST, (1, 0), 'A coluna de 50 desce 170, abaixo do bloco'),
- P('Coluna · base e tampos do nicho', I3, 47, 60, 3, OW15, (1, 1), '⭐ o nicho de 30 é aberto: vai na cor'),
- P('Fechamento superior',         I3, 256, 60, 1, OW15, (1, 1), 'Aparente, em Off White Suave'),
- P('Fundo do bloco',              I3, 206, 70, 1, FUN, (0, 0), 'Encaixe em rasgo'),
- P('Fundo da coluna',             I3, 50, 170, 1, FUN, (0, 0), 'Encaixe em rasgo'),
- P('Prateleira do vão de 75',     I3, 72, 58, 2, PRAT18, (1, 0), '⭐ vão de 72 passa dos 70: 18 mm'),
- P('Divisória do vão de 56',       I3, 53, 58, 1, EST, (1, 0), 'Separa as duas frentes basculantes de 33'),
- P('Prateleira da coluna',        I3, 47, 58, 2, EST, (1, 0)),
- *provencal('Frente · báscula de 75', I3, 75, 65, 2, OW15, OW6, 'Provençal · articulador HK-XS'),
- *provencal('Frente · báscula de 56', I3, 56, 33, 2, OW15, OW6, 'Provençal · duas empilhadas no vão de 56'),
- *provencal('Frente · porta da coluna', I3, 50, 65, 1, OW15, OW6, 'De giro · provençal'),
- *provencal('Frente · porta baixa da coluna', I3, 50, 71, 1, OW15, OW6, 'De giro · provençal · abaixo do nicho aberto'),
+ P('Bloco · lateral e divisória · DET 03', I3, 65, 60, 3, EST, (1, 0), 'Três vãos: 75 · 75 · 56'),
+ P('Bloco · base e topo · DET 03', I3, 206, 60, 2, EST, (1, 0)),
+ P('Coluna · lateral · DET 03', I3, 170, 60, 2, EST, (1, 0), 'A coluna de 50 desce 170, abaixo do bloco'),
+ P('Coluna · base e tampos do nicho · DET 03', I3, 47, 60, 3, OW15, (1, 1), '⭐ o nicho de 30 é aberto: vai na cor'),
+ P('Fechamento superior · DET 03', I3, 256, 60, 1, OW15, (1, 1), 'Aparente, em Off White Suave'),
+ P('Fundo do bloco · DET 03', I3, 206, 70, 1, FUN, (0, 0), 'Encaixe em rasgo'),
+ P('Fundo da coluna · DET 03', I3, 50, 170, 1, FUN, (0, 0), 'Encaixe em rasgo'),
+ P('Prateleira do vão de 75 · DET 03', I3, 72, 58, 2, PRAT18, (1, 0), '⭐ vão de 72 passa dos 70: 18 mm'),
+ P('Divisória do vão de 56 · DET 03', I3, 53, 58, 1, EST, (1, 0), 'Separa as duas frentes basculantes de 33'),
+ P('Prateleira da coluna · DET 03', I3, 47, 58, 2, EST, (1, 0)),
+ *provencal('Frente · báscula de 75 · DET 03', I3, 75, 65, 2, OW15, OW6, 'Provençal · articulador HK-XS'),
+ *provencal('Frente · báscula de 56 · DET 03', I3, 56, 33, 2, OW15, OW6, 'Provençal · duas empilhadas no vão de 56'),
+ *provencal('Frente · porta da coluna · DET 03', I3, 50, 65, 1, OW15, OW6, 'De giro · provençal'),
+ *provencal('Frente · porta baixa da coluna · DET 03', I3, 50, 71, 1, OW15, OW6, 'De giro · provençal · abaixo do nicho aberto'),
 
  # ══ ITEM 04 · ARMÁRIO 02 — 130 × 265 × 60 ════════════════════════════
  #  VISTA FRONTAL largura 80 + 50 = 130 · a de 80 se divide em 40 + 40
@@ -110,46 +119,46 @@ LAVANDERIA = [
  #                            e por dentro se divide em 38 + 2 + 38
  #                vão de 47   6 +38+2+ 138 +2+ 55 +2+ 22 = 265
  #  ⭐⭐ O CORPO É CARVALHO MALVA E AS FRENTES SÃO OFF WHITE SUAVE
- P('Lateral e divisória central', I4, 255, 60, 3, EST, (1, 0), 'Vãos de 77 e 47'),
- P('Divisória do vão de 77',      I4, 206, 58, 1, EST, (1, 0), 'Separa a coluna de prateleiras do vão da tábua de passar'),
- P('Base',                        I4, 126, 60, 1, EST, (1, 0)),
- P('Fechamento superior',         I4, 130, 60, 1, CM15, (1, 1), '⭐ aparente, em Carvalho Malva · a frente é que vai em Off White'),
- P('Fundo',                       I4, 130, 265, 1, FUN, (0, 0), 'Encaixe em rasgo · 265 cabe na chapa de 275'),
- P('Prateleira do vão de 38',     I4, 38, 58, 4, EST, (1, 0), 'Cinco vãos de 40·39·40·39·40, quatro prateleiras'),
- P('Prateleira do vão de 77',     I4, 77, 58, 1, PRAT18, (1, 0), '⭐ vão de 77 passa dos 70: 18 mm · fecha o compartimento da báscula'),
- P('Prateleira da coluna de 47',  I4, 47, 58, 3, EST, (1, 0), 'Fecha o vão das vassouras, o armário e o nicho do robô'),
- *provencal('Frente · báscula de 80', I4, 80,  40, 1, OW15, OW6, 'Provençal em Off White · articulador HK-XS'),
- *provencal('Frente · báscula de 50', I4, 50,  40, 1, OW15, OW6, 'Provençal em Off White · articulador HK-XS'),
- *provencal('Frente · porta alta',    I4, 40, 210, 2, OW15, OW6, 'De giro · provençal · ⭐ 210 de altura cabe inteira na chapa de 275'),
- *provencal('Frente · porta de 140',  I4, 50, 140, 1, OW15, OW6, 'De giro · provençal · vão das vassouras e rodos'),
- *provencal('Frente · porta de 55',   I4, 50,  55, 1, OW15, OW6, 'De giro · provençal'),
+ P('Lateral e divisória central · DET 04', I4, 255, 60, 3, EST, (1, 0), 'Vãos de 77 e 47'),
+ P('Divisória do vão de 77 · DET 04', I4, 206, 58, 1, EST, (1, 0), 'Separa a coluna de prateleiras do vão da tábua de passar'),
+ P('Base · DET 04', I4, 126, 60, 1, EST, (1, 0)),
+ P('Fechamento superior · DET 04', I4, 130, 60, 1, CM15, (1, 1), '⭐ aparente, em Carvalho Malva · a frente é que vai em Off White'),
+ P('Fundo · DET 04', I4, 130, 265, 1, FUN, (0, 0), 'Encaixe em rasgo · 265 cabe na chapa de 275'),
+ P('Prateleira do vão de 38 · DET 04', I4, 38, 58, 4, EST, (1, 0), 'Cinco vãos de 40·39·40·39·40, quatro prateleiras'),
+ P('Prateleira do vão de 77 · DET 04', I4, 77, 58, 1, PRAT18, (1, 0), '⭐ vão de 77 passa dos 70: 18 mm · fecha o compartimento da báscula'),
+ P('Prateleira da coluna de 47 · DET 04', I4, 47, 58, 3, EST, (1, 0), 'Fecha o vão das vassouras, o armário e o nicho do robô'),
+ *provencal('Frente · báscula de 80 · DET 04', I4, 80,  40, 1, OW15, OW6, 'Provençal em Off White · articulador HK-XS'),
+ *provencal('Frente · báscula de 50 · DET 04', I4, 50,  40, 1, OW15, OW6, 'Provençal em Off White · articulador HK-XS'),
+ *provencal('Frente · porta alta · DET 04', I4, 40, 210, 2, OW15, OW6, 'De giro · provençal · ⭐ 210 de altura cabe inteira na chapa de 275'),
+ *provencal('Frente · porta de 140 · DET 04', I4, 50, 140, 1, OW15, OW6, 'De giro · provençal · vão das vassouras e rodos'),
+ *provencal('Frente · porta de 55 · DET 04', I4, 50,  55, 1, OW15, OW6, 'De giro · provençal'),
 
  # ══ ITEM 05 · BANCADA COM ARMÁRIO 02 — 230 × 100 × 60 ════════════════
  #  VISTA FRONTAL 58 + 58 + 58 + 58 = 232 ≈ 230 · altura 5 + 85 + 10 = 100
  #  VISTA FRONTAL INTERNA 112 + 2 + 112 = 226 · dois vãos de 40 + 40
  #  VISTA LATERAL e SUPERIOR profundidade 60
- P('Lateral e divisória', I5, 85, 60, 3, EST, (1, 0), 'Dois vãos de 112'),
- P('Base',                I5, 226, 60, 1, EST, (1, 0)),
- P('Travessa de apoio da bancada', I5, 226, 10, 2, EST, (1, 0), 'Frente e fundo · a pedra apoia nelas'),
- P('Fundo',               I5, 230, 85, 1, FUN, (0, 0), 'Encaixe em rasgo'),
- P('Prateleira',          I5, 112, 58, 2, PRAT18, (1, 0), '⭐ vão de 112 passa dos 70: 18 mm contra empeno'),
- *provencal('Frente · porta de giro', I5, 58, 85, 4, CM15, CM6, 'Provençal · quatro folhas de 58'),
+ P('Lateral e divisória · DET 05', I5, 85, 60, 3, EST, (1, 0), 'Dois vãos de 112'),
+ P('Base · DET 05', I5, 226, 60, 1, EST, (1, 0)),
+ P('Travessa de apoio da bancada · DET 05', I5, 226, 10, 2, EST, (1, 0), 'Frente e fundo · a pedra apoia nelas'),
+ P('Fundo · DET 05', I5, 230, 85, 1, FUN, (0, 0), 'Encaixe em rasgo'),
+ P('Prateleira · DET 05', I5, 112, 58, 2, PRAT18, (1, 0), '⭐ vão de 112 passa dos 70: 18 mm contra empeno'),
+ *provencal('Frente · porta de giro · DET 05', I5, 58, 85, 4, CM15, CM6, 'Provençal · quatro folhas de 58'),
 
  # ══ ITEM 06 · ARMÁRIO SUPERIOR 02 — 230 × 165 × 60 ═══════════════════
  #  VISTA FRONTAL largura 86 + 86 + 58 = 230 ⭐
  #                bloco de 172 com 5 + 40 = 45 · LED e cabideiro embaixo
  #                coluna de 58  5 +40+2+ 28 +2+ 27 +2+ 27 +2+ 28 +2 = 165
  #  VISTA LATERAL 45 + 120 = 165 · profundidade 60
- P('Bloco · lateral e divisória', I6, 45, 60, 3, EST, (1, 0), 'Dois vãos de 86'),
- P('Bloco · base e topo',         I6, 172, 60, 2, EST, (1, 0)),
- P('Coluna · lateral',            I6, 165, 60, 2, EST, (1, 0)),
- P('Coluna · base e topo',        I6, 58, 60, 2, OW15, (1, 1), '⭐ a coluna é toda de nicho aberto: vai na cor'),
- P('Prateleira do nicho',         I6, 55, 58, 3, OW15, (1, 1), 'Quatro nichos abertos de 28 · 27 · 27 · 28'),
- P('Fechamento superior',         I6, 230, 60, 1, OW15, (1, 1), 'Aparente, em Off White Suave'),
- P('Fundo do bloco',              I6, 172, 45, 1, FUN, (0, 0), 'Encaixe em rasgo'),
- P('Fundo da coluna',             I6, 58, 165, 1, FUN, (0, 0), 'Encaixe em rasgo'),
- *provencal('Frente · báscula de 86', I6, 86, 40, 2, OW15, OW6, 'Provençal · articulador HK-XS'),
- *provencal('Frente · báscula de 58', I6, 58, 40, 1, OW15, OW6, 'Provençal · topo da coluna de nichos'),
+ P('Bloco · lateral e divisória · DET 06', I6, 45, 60, 3, EST, (1, 0), 'Dois vãos de 86'),
+ P('Bloco · base e topo · DET 06', I6, 172, 60, 2, EST, (1, 0)),
+ P('Coluna · lateral · DET 06', I6, 165, 60, 2, EST, (1, 0)),
+ P('Coluna · base e topo · DET 06', I6, 58, 60, 2, OW15, (1, 1), '⭐ a coluna é toda de nicho aberto: vai na cor'),
+ P('Prateleira do nicho · DET 06', I6, 55, 58, 3, OW15, (1, 1), 'Quatro nichos abertos de 28 · 27 · 27 · 28'),
+ P('Fechamento superior · DET 06', I6, 230, 60, 1, OW15, (1, 1), 'Aparente, em Off White Suave'),
+ P('Fundo do bloco · DET 06', I6, 172, 45, 1, FUN, (0, 0), 'Encaixe em rasgo'),
+ P('Fundo da coluna · DET 06', I6, 58, 165, 1, FUN, (0, 0), 'Encaixe em rasgo'),
+ *provencal('Frente · báscula de 86 · DET 06', I6, 86, 40, 2, OW15, OW6, 'Provençal · articulador HK-XS'),
+ *provencal('Frente · báscula de 58 · DET 06', I6, 58, 40, 1, OW15, OW6, 'Provençal · topo da coluna de nichos'),
 ]
 
 # ── ferragem, declarada item a item ─────────────────────────────────────
@@ -190,43 +199,32 @@ MOLDURA  = [(I1, 'Frentes do armário da lava e seca',  8),
 LED     = [(I6, 'Sob o bloco de 172', 1.72)]
 CABIDEIROS = [(I6, 'Sob o bloco de 172, junto do LED', 1)]
 # ⭐ o reforço que a prancha pede embaixo da lava e seca cheia
-SARRAFOS= [(I1, 'Reforço do apoio da lava e seca · duas travessas', 2.5)]
-SUPORTES= [(I1, 'Prateleiras internas · 6 × 2',        12),
-           (I2, 'Prateleiras dos dois vãos · 2 × 2',    4),
-           (I3, 'Prateleiras do bloco e da coluna · 4 × 2', 8),
-           (I4, 'Prateleiras dos vãos de 38, 77 e 47 · 8 × 2', 16),
-           (I5, 'Prateleiras dos dois vãos · 2 × 2',    4)]
+SARRAFOS= []   # ⛔ pinus PROIBIDO: o reforço virou engradado de MDF
+# ⭐ SUPORTE DE PRATELEIRA: não se declara mais. Toda prateleira interna
+#   leva um jogo de 4 suportes, R$ 6,50 [Jonathan, 28/10/2026], e a conta
+#   sai de B.prateleiras(), das peças.
+SUPORTES= []
 ALMAS   = []
 VIDRO   = []
 SERRALHERIA = []
+# ⭐ PERFIL DE PROTEÇÃO DE PISO [Jonathan, 28/10/2026]: todo painel que toca
+#   o chão leva perfil de alumínio/inox, R$ 15 o metro linear. Tocam o chão
+#   o armário da lava e seca (122), as duas bancadas (200 e 230) e o
+#   armário 02 (130), cujo nicho do robô vai ao piso sem sóculo.
+OUTRAS  = [(I, 'Perfil de proteção de piso', 'Armário da lava e seca 122 + '
+            'bancada 200 + armário 02 130 + bancada 02 230 = 682 cm de '
+            'painel tocando o chão', 6.82, 'm', 'Perfil de proteção de piso')]
 
 # ── o cabeçalho de cada bloco: medida geral e a cadeia que fecha ────────
 CABECA = {
- I1: ('122 × 265 × 67',
-      'VISTA FRONTAL largura 60 + 62 = 122 · altura 5 + 65 + 185 + 10 = 265 · coluna de 62 em '
-      '5 + 32 + 32 + 2 + 27 + 2 + 27 + 2 + 85 + 10 + 30 + 10 · VISTA FRONTAL INTERNA, coluna de 60 '
-      'em 5 + 2 + 30 + 2 + 30 + 2 + 35 + 2 + 34 + 2 + 34 + 2 + 34 + 2 + 35 + 2 + 10 = 263 ⭐ '
-      'profundidade 67 coteada na SUPERIOR e na LATERAL'),
- I2: ('200 × 95 × 60',
-      'VISTA FRONTAL 50 + 50 + 50 + 50 = 200 · altura 5 + 80 + 10 = 95 · '
-      'VISTA FRONTAL INTERNA 97 + 2 + 97 = 196, interno 37 + 2 + 37 = 76 · '
-      'VISTA SUPERIOR profundidade 60, com as duas cubas na metade esquerda'),
- I3: ('256 × 170 × 60',
-      'VISTA FRONTAL 75 + 75 + 56 + 50 = 256 ⭐ · bloco de 206 com 5 + 65 · '
-      'coluna de 50 com 5 + 65 + 30 + 71 = 171 · o vão de 56 se divide em duas básculas de 33 · '
-      'VISTA LATERAL 5 + 65 + 100 = 170, profundidade 60'),
- I4: ('130 × 265 × 60',
-      'VISTA FRONTAL 80 + 50 = 130, e a de 80 se divide em 40 + 40 · coluna de 80 em '
-      '10 + 210 + 40 + 5 = 265 · coluna de 50 em 25 + 55 + 140 + 40 + 5 = 265 ⭐ o nicho do robô '
-      'vai ao CHÃO, sem sóculo · VISTA FRONTAL INTERNA 2 + 77 + 2 + 47 + 2 = 130, vão de 77 em '
-      '6 + 38 + 2 + 40 + 2 + 39 + 2 + 40 + 2 + 39 + 2 + 40 + 10 e por dentro 38 + 2 + 38'),
- I5: ('230 × 100 × 60',
-      'VISTA FRONTAL 58 + 58 + 58 + 58 = 232 ≈ 230 · altura 5 + 85 + 10 = 100 · '
-      'VISTA FRONTAL INTERNA 112 + 2 + 112 = 226, dois vãos de 40 + 40 · profundidade 60'),
- I6: ('230 × 165 × 60',
-      'VISTA FRONTAL 86 + 86 + 58 = 230 ⭐ · bloco de 172 com 5 + 40 = 45, com LED e cabideiro '
-      'embaixo · coluna de 58 em 5 + 40 + 2 + 28 + 2 + 27 + 2 + 27 + 2 + 28 + 2 = 165 · '
-      'VISTA LATERAL 45 + 120 = 165, profundidade 60'),
+ I: ('seis módulos · 122 + 200 + 256 + 130 + 230 + 230 de frente',
+     'DET 01 armário da lava e seca 122 × 265 × 67 · DET 02 bancada com '
+     'armário 200 × 95 × 60 · DET 03 superior 01 256 × 170 × 60 · DET 04 '
+     'armário 02 130 × 265 × 60, com o nicho do robô indo ao CHÃO · DET 05 '
+     'bancada com armário 02 230 × 100 × 60 · DET 06 superior 02 230 × 165 '
+     '× 60, com LED e cabideiro sob o bloco de 172 · ⭐ item único por '
+     'decisão de preço [Jonathan, 28/10]: é um móvel contínuo que dá a '
+     'volta no ambiente, e a fábrica o produz junto'),
 }
 
 # ── a folha: o que é texto da aba, e só dela ────────────────────────────

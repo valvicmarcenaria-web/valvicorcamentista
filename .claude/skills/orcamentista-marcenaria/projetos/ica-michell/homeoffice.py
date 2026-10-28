@@ -34,48 +34,56 @@ PT18 = 'MDF Preto Ultra Premium 18'
 EST, FUN = 'MDF Branco TX 15', 'MDF Branco TX 6'
 PRAT18   = 'MDF Branco TX 18'   # ⭐ só onde o vão passa de 70 cm
 
-I1 = 'DET 01 Armário'
-I2 = 'DET 02 Mesa'
-I3 = 'DET 03 Painel'
-I4 = 'DET 04 Armário superior'
+# ⭐⭐ ITEM ÚNICO [Jonathan, 28/10/2026]: "tbm considere o conjunto apenas
+#   um item". Os quatro detalhamentos são uma parede só de home office —
+#   armário embaixo, mesa, painel atrás e superior em cima, todos na mesma
+#   prumada de 335/350. ⛔ Cada peça guarda o DET de origem no nome.
+I = 'DET 01 a 04 Conjunto do home office'
+I1 = I2 = I3 = I4 = I
 
 HOMEOFFICE = [
  # ══ ITEM 01 · ARMÁRIO — 237 × 68 × 40 ════════════════════════════════
  #  VISTA FRONTAL  4 × 59 = 236 ≈ 237 · altura 4 + 59 + 5 = 68
  #  VISTA FRONTAL INTERNA  115 + 2 + 115 · interno 4 + 27 + 27 + 5
  #  VISTA LATERAL  profundidade 40, com recuo de 30 + 10 embaixo do LED
- P('Lateral',               I1, 59, 40, 2, EST, (1, 0)),
- P('Divisória central',     I1, 59, 40, 1, EST, (1, 0), 'Dois vãos de 115'),
- P('Base',                  I1, 233, 40, 1, EST, (1, 0),
+ P('Lateral · DET 01', I1, 59, 40, 2, EST, (1, 0)),
+ P('Divisória central · DET 01', I1, 59, 40, 1, EST, (1, 0), 'Dois vãos de 115'),
+ P('Base · DET 01', I1, 233, 40, 1, EST, (1, 0),
    '⭐ o recuo de 10 × 5 da VISTA LATERAL é onde corre o LED da iluminação '
    'inferior: a base não vai até a frente'),
- P('Tampo superior',        I1, 237, 40, 1, LF18, (2, 2),
+ P('Tampo superior · DET 01', I1, 237, 40, 1, LF18, (2, 2),
    'Aparente · a prancha desenha 4 de testeira e chama de "tampo superior"'),
- P('Fundo',                 I1, 237, 59, 1, FUN, (0, 0), 'Encaixe em rasgo'),
- P('Prateleira',            I1, 115, 38, 2, PRAT18, (1, 0),
+ P('Fundo · DET 01', I1, 237, 59, 1, FUN, (0, 0), 'Encaixe em rasgo'),
+ P('Prateleira · DET 01', I1, 115, 38, 2, PRAT18, (1, 0),
    '⭐ "armário interno com prateleiras em MDF Branco" — a prancha escreve a '
    'cor · vão de 115 passa dos 70, então 18 mm contra empeno'),
- P('Frente · porta de giro', I1, 59, 59, 4, LF18, (2, 2),
+ P('Frente · porta de giro · DET 01', I1, 59, 59, 4, LF18, (2, 2),
    'Lisa · "puxador cava na própria madeira", como a prancha escreve'),
 
  # ══ ITEM 02 · MESA — 335 × 60 × 7 ════════════════════════════════════
  #  VISTA SUPERIOR  335 × 60 · as duas torres de tomada a 80 e a 50 das pontas
  #  VISTA FRONTAL e LATERAL  espessura 7 ⚠ MDF não existe em 70 mm: caixão
- P('Tampo · face superior', I2, 167.5, 60, 2, LF18, (2, 2),
+ P('Tampo · face superior · DET 02', I2, 167.5, 60, 2, LF18, (2, 2),
    '⛔ 335 de corrida não cabe na chapa: duas peças de 167,5'),
- P('Tampo · face inferior', I2, 167.5, 60, 2, EST, (1, 0),
+ P('Tampo · face inferior · DET 02', I2, 167.5, 60, 2, EST, (1, 0),
    '⚠ em Branco TX: é a face de baixo de um tampo encostado na parede, sob '
    'o painel do DET 03 · se tiver de sair em Lacca Fume, soma chapa'),
- P('Tampo · borda longa',   I2, 167.5, 7, 4, LF18, (2, 2),
+ P('Tampo · borda longa · DET 02', I2, 167.5, 7, 4, LF18, (2, 2),
    'Frente e fundo do caixão, duas peças cada'),
- P('Tampo · borda de topo', I2, 60, 7, 2, LF18, (2, 2), 'As duas pontas'),
- P('Tampo · recorte da torre de tomadas', I2, 10, 10, 2, LF18, (0, 0),
+ P('Tampo · borda de topo · DET 02', I2, 60, 7, 2, LF18, (2, 2), 'As duas pontas'),
+ # ⛔ PINUS PROIBIDO [Jonathan, 28/10/2026]: o quadro interno do caixão do
+ #   tampo era sarrafo de pinus, 11 m, e agora é TRAVESSA DE MDF tirada da
+ #   própria chapa — vira peça no plano de corte em vez de metro invisível.
+ P('Engradado · travessa de MDF · DET 02', I2, 273, 5, 4, EST, (0, 0),
+   'Perímetro do caixão do tampo mais duas travessas · 11 m de travessa de '
+   '5 cm · ⛔ sem fita: é estrutura interna e não aparece'),
+ P('Tampo · recorte da torre de tomadas · DET 02', I2, 10, 10, 2, LF18, (0, 0),
    '⚠ duas torres, a 80 e a 50 das pontas · entra como PERDA de chapa, não '
    'como peça, e perda não leva fita: ⛔ sem fita · o furo sai do tampo e a torre em si não é nossa'),
 
  # ══ ITEM 03 · PAINEL — 350 × 169 × 3 ═════════════════════════════════
  #  VISTA FRONTAL  350 de largura × 169 de altura · espessura 3
- P('Painel',                I3, 175, 169, 2, NC18, (2, 2),
+ P('Painel · DET 03', I3, 175, 169, 2, NC18, (2, 2),
    '⛔ 350 de corrida não cabe na chapa: duas peças de 175 · ⚠ a prancha '
    'desenha 3 cm de espessura e MDF não existe em 30 mm — orçado em 18'),
 
@@ -83,22 +91,22 @@ HOMEOFFICE = [
  #  VISTA FRONTAL  4 × 83 = 332 ≈ 335 · altura 6 + 63 + 63 = 132 ≈ 131
  #  VISTA LATERAL  131 no total, 125 de corpo, 6 de fechamento · fundo 40
  #  ⭐ fileira de cima com báscula PRETA · fileira de baixo em nicho ABERTO
- P('Lateral e divisória · bloco de básculas', I4, 63, 40, 5, EST, (1, 0),
+ P('Lateral e divisória · bloco de básculas · DET 04', I4, 63, 40, 5, EST, (1, 0),
    'Dois laterais e três divisórias, nos quatro vãos de 83'),
- P('Topo', I4, 167.5, 40, 2, EST, (1, 0),
+ P('Topo · DET 04', I4, 167.5, 40, 2, EST, (1, 0),
    '⛔ 335 de corrida não cabe: duas peças, com a emenda na divisória do '
    'segundo vão de 83'),
- P('Fundo · bloco de básculas', I4, 167.5, 63, 2, FUN, (0, 0), 'Encaixe em rasgo'),
- P('Fechamento superior',   I4, 167.5, 6, 2, NC18, (2, 2),
+ P('Fundo · bloco de básculas · DET 04', I4, 167.5, 63, 2, FUN, (0, 0), 'Encaixe em rasgo'),
+ P('Fechamento superior · DET 04', I4, 167.5, 6, 2, NC18, (2, 2),
    'A faixa de 6 de ponta a ponta · aparente, em Nogueira Caiena'),
- P('Prateleira entre os dois blocos', I4, 167.5, 40, 2, NC18, (2, 2),
+ P('Prateleira entre os dois blocos · DET 04', I4, 167.5, 40, 2, NC18, (2, 2),
    '⭐ é o teto dos nichos abertos: vista de baixo, sai em Nogueira Caiena'),
- P('Lateral e divisória · bloco de nichos', I4, 63, 40, 5, NC18, (1, 1),
+ P('Lateral e divisória · bloco de nichos · DET 04', I4, 63, 40, 5, NC18, (1, 1),
    '⭐ nicho ABERTO: o que se vê por dentro sai na cor, não em Branco TX'),
- P('Base dos nichos',       I4, 167.5, 40, 2, NC18, (2, 2), 'Aparente'),
- P('Fundo dos nichos',      I4, 167.5, 63, 2, NC6, (0, 0),
+ P('Base dos nichos · DET 04', I4, 167.5, 40, 2, NC18, (2, 2), 'Aparente'),
+ P('Fundo dos nichos · DET 04', I4, 167.5, 63, 2, NC6, (0, 0),
    '⭐ fundo à vista: em Nogueira Caiena de 6 mm, não em Branco'),
- P('Frente · báscula',      I4, 83, 63, 4, PT18, (2, 2),
+ P('Frente · báscula · DET 04', I4, 83, 63, 4, PT18, (2, 2),
    'Quatro de 83 × 63 · ⭐ a ÚNICA peça Preto Ultra Premium do ambiente · '
    'fecho toque'),
 ]
@@ -115,33 +123,30 @@ LED     = [(I1, 'Iluminação inferior, de ponta a ponta', 2.37),
            (I4, 'Nichos iluminados · duas fileiras de 3,35', 6.70)]
 CABIDEIROS = []
 # ⭐ o tampo de 7 cm é caixão: sem travamento interno ele empena e afunda
-SARRAFOS= [(I2, 'Quadro interno do caixão do tampo · perímetro mais duas travessas', 11.0)]
-SUPORTES= [(I1, 'Duas prateleiras · 2 × 2', 4)]
+SARRAFOS= []   # ⛔ pinus PROIBIDO: o quadro do tampo virou engradado de MDF
+# ⭐ nada do home office toca o chão — o armário é suspenso com recuo de
+#   LED, a mesa é suspensa, o painel é de parede e o superior é alto —
+#   então não há perfil de proteção de piso neste ambiente.
+# ⭐ SUPORTE DE PRATELEIRA: não se declara mais. Toda prateleira interna
+#   leva um jogo de 4 suportes, R$ 6,50 [Jonathan, 28/10/2026], e a
+#   conta sai de B.prateleiras(), das peças. Quem não leva diz
+#   'sem suporte' na obs.
+SUPORTES= []
 ALMAS   = []
 VIDRO   = []
 SERRALHERIA = []
 OUTRAS  = []
 
 CABECA = {
- I1: ('237 × 68 × 40',
-      'VISTA FRONTAL 4 × 59 = 236 ≈ 237 · altura 4 de tampo + 59 de porta + '
-      '5 de recuo do LED = 68 · VISTA FRONTAL INTERNA 115 + 2 + 115, com '
-      'interno em 4 + 27 + 27 + 5 · VISTA LATERAL profundidade 40, com o '
-      'recuo de 30 + 10 embaixo onde corre o LED'),
- I2: ('335 × 60 × 7',
-      'VISTA SUPERIOR 335 × 60, com as duas torres de tomada a 80 e a 50 das '
-      'pontas · VISTA FRONTAL e LATERAL espessura 7 · ⚠ MDF não existe em '
-      '70 mm: orçado como CAIXÃO, duas faces e borda, com quadro de sarrafo '
-      'por dentro'),
- I3: ('350 × 169 × 3',
-      'VISTA FRONTAL 350 de largura × 169 de altura · espessura 3 · ⛔ os 350 '
-      'não cabem na chapa de 275: duas peças de 175 · ⚠ 3 cm de espessura é '
-      'a mesma questão das colunas do Living'),
- I4: ('335 × 131 × 40',
-      'VISTA FRONTAL 4 × 83 = 332 ≈ 335 · altura 6 de fechamento + 63 de '
-      'báscula + 63 de nicho = 132 ≈ 131 · VISTA LATERAL 131 no total, 125 '
-      'de corpo · profundidade 40 · ⭐ a fileira de baixo é NICHO ABERTO e '
-      'iluminado, e o interior dela sai na cor'),
+ I: ('335 de frente · armário 237 × 68 × 40 · mesa 335 × 60 × 7 · painel '
+     '350 × 169 · superior 335 × 131 × 40',
+     'DET 01 armário 237 × 68 × 40, quatro portas de 59 e o recuo de 30 + 10 '
+     'embaixo onde corre o LED · DET 02 mesa 335 × 60 × 7, com as duas '
+     'torres de tomada a 80 e a 50 das pontas ⚠ MDF não existe em 70 mm: '
+     'orçada como CAIXÃO, duas faces e borda, com ENGRADADO DE MDF por '
+     'dentro — o sarrafo de pinus saiu · DET 03 painel 350 × 169 × 3, em '
+     'duas peças de 175 · DET 04 superior 335 × 131 × 40, báscula em cima e '
+     'nicho aberto e iluminado embaixo · ⭐ item único [Jonathan, 28/10]'),
 }
 
 FOLHA = dict(

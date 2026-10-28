@@ -46,9 +46,12 @@ PRAT = 'MDF Branco TX 18'
 
 I1  = 'DET 01 Roupeiro'
 I2  = 'DET 02 Divisória 01'
-I3  = 'DET 03 Painel'
-I4  = 'DET 04 Rack'
-I5  = 'DET 05 Painel'
+# ⭐⭐ ITEM ÚNICO PARA 3, 4 E 5 [Jonathan, 28/10/2026]: "unifique os itens
+#   3, 4 e 5". É a parede da TV inteira — o painel grande de 600, o rack
+#   suspenso que corre nele e o painel estreito de 40 que o fecha na
+#   ponta. Um móvel só, montado junto. ⛔ Cada peça guarda o DET de origem.
+I345 = 'DET 03 a 05 Painel da TV com rack'
+I3 = I4 = I5 = I345
 I6  = 'DET 06 Divisória 02'
 I7  = 'DET 07 Porta de correr'
 I8  = 'DET 08 Armário'
@@ -97,14 +100,28 @@ SALACINEMA = [
  #                 altura 300 · vão do rack 80 de largura × 210 de altura
  #  ⭐ os dois 27 são RIPADO USINADO e os dois 2 são friso: tudo na face do
  #    painel, nada de ripa solta. A divisão em campos cai nos frisos.
- P('Painel · campo esquerdo, faixa alta',  I3, 73, 245, 1, NC18, (1, 1),
-   '⭐ a emenda vertical cai no friso de 2 que o desenho já tem; a '
-   'horizontal, na altura de 245 em que o ripado termina'),
- P('Painel · campo esquerdo, faixa baixa', I3, 73, 55, 1, NC18, (1, 1)),
- P('Painel · campo central, faixa alta',   I3, 173.5, 245, 2, NC18, (1, 1),
-   '⚠ o campo de 345 não cabe em peça inteira e NÃO tem linha de desenho '
-   'onde esconder a emenda do meio'),
- P('Painel · campo central, faixa baixa',  I3, 173.5, 55, 2, NC18, (1, 1)),
+ # ⭐⭐ O PAINEL PASSA A 273 [Jonathan, 28/10/2026]: "considere o painel
+ #   com 273 de altura". É a altura que a chapa dá em peça inteira, e com
+ #   ela MORRE a emenda horizontal que eu não tinha onde esconder — o
+ #   campo central de 345 era a pior delas. Os 27 que faltam para os 300
+ #   do pé-direito resolvem-se na obra, por gesso ou por negativo.
+ P('Painel · campo esquerdo',  I3, 73, 273, 1, NC18, (1, 1),
+   '⭐ peça inteira de 273: a emenda vertical cai no friso de 2 que o '
+   'desenho já tem, e a horizontal deixou de existir'),
+ P('Painel · campo central',   I3, 173.5, 273, 2, NC18, (1, 1),
+   '⭐ as duas metades do campo de 345, agora inteiras na altura'),
+ # ⭐⭐ AS DUAS FAIXAS DE 27 SÃO RIPA, NÃO RANHURA [Jonathan, 28/10/2026]:
+ #   "quantifique as ripas considerando laminação em ambos os lados". Eu
+ #   as tinha lido como usinagem na face do painel — ranhura, como o fundo
+ #   ripado do Living — e o senhor corrigiu: são ripas soltas, e ripa
+ #   solta tem os DOIS lados à vista. ⛔ Quatro arestas por ripa e
+ #   filetagem MANUAL, que é o dobro da automática.
+ P('Ripa de 3 · faixa de 27',  I3, 3, 273, 14, NC18, (2, 2),
+   'Ripa de 3 com vão de 1 nas duas faixas de 27 do DET 03 · sete ripas '
+   'por faixa, duas faixas · laminada nos DOIS lados'),
+ P('Ripa de 3 · perda de serra', I3, 4.2, 273, 1, NC18, (0, 0),
+   '⭐ fator 1,10 da Base · a serra come chapa a cada 3 cm de ripa · ⛔ é '
+   'perda, não peça: sem fita'),
  P('Painel · verga sobre o vão do rack',   I3, 180, 90, 1, NC18, (1, 1)),
  P('Painel · montante entre o ripado e o vão', I3, 70, 210, 1, NC18, (1, 1)),
  P('Painel · montante à direita do vão',   I3, 30, 210, 1, NC18, (2, 2)),
@@ -132,9 +149,9 @@ SALACINEMA = [
 
  # ══ ITEM 05 · PAINEL — 40 × 300 ══════════════════════════════════════
  #  VISTA FRONTAL  40 de largura × 300 de altura · peça única
- P('Painel',                 I5, 300, 40, 1, NC18, (2, 2),
-   '⛔ 300 de altura, e é um painel estreito e solto: emenda horizontal '
-   'num campo de 40 de largura aparece de qualquer ângulo'),
+ P('Painel',                 I5, 273, 40, 1, NC18, (2, 2),
+   '⭐ 273 [Jonathan, 28/10]: peça inteira, sem emenda nenhuma — e num '
+   'painel estreito de 40 era exatamente onde a emenda mais apareceria'),
  P('Base de 3 cm',           I5, 40, 3, 1, NC15, (1, 0),
    'Rodapé de 3 cm em MDF melamínico'),
 
@@ -151,10 +168,11 @@ SALACINEMA = [
  # ══ ITEM 07 · PORTA DE CORRER — 246 × 300, duas folhas de 123 ════════
  #  VISTA FRONTAL  123 + 123 = 246 · altura 300 · esquadria de 7
  #  ⭐ uma folha corre e a outra é fixa · vidro reflecta bronze
- P('Esquadria · montante',   I7, 300, 7, 4, NC18, (1, 1),
-   'Dois por folha · ⛔ 300 de altura num montante de 7 de largura'),
- P('Esquadria · travessa',   I7, 109, 7, 4, NC18, (1, 1),
-   'Topo e base de cada folha · 123 menos os dois montantes de 7'),
+ # ⛔⛔ A PORTA DE CORRER DO DET 07 NÃO É NOSSA [Jonathan, 28/10/2026]:
+ #   "item 7 - não é nosso". Saem as oito peças de esquadria, saem os
+ #   2,22 m² de vidro reflecta bronze e sai o trilho embutido que não
+ #   tinha preço na Base. Era um dos itens em aberto do ambiente.
+
 
  # ══ ITEM 08 · ARMÁRIO — 247 × 75 × 40 ════════════════════════════════
  #  VISTA FRONTAL  2 + 61 + 61 + 61 + 61 + 2 ≈ 247 · altura 2 + 66 + 5 + 2
@@ -208,7 +226,7 @@ SALACINEMA = [
 ]
 
 # ── ferragem, declarada item a item ─────────────────────────────────────
-GAVETAS = [(I4, 'Rack · seis gavetas de 59 e uma de 117', 7, 300),
+GAVETAS = [(I4, 'Rack · seis gavetas de 59 e uma de 117 · fecho toque', 7, 300, 'touch'),
            (I10, 'Mesa · quatro gavetas de 62', 4, 550)]
 PORTAS  = [(I1, 'Roupeiro · duas portas de giro de 290 de altura', 2, 5,
             DOBRADICA),
@@ -227,17 +245,32 @@ LED     = [(I9, 'Sob o bloco de nichos, de ponta a ponta', 2.47)]
 CABIDEIROS = []
 SARRAFOS= []
 SUPORTES= []
-ALMAS   = []
-VIDRO   = [(I7, 'Vidro reflecta bronze · as duas folhas', 2, 109, 286)]
+# ⭐ UMA ALMA POR ALETA [Jonathan, 28/10/2026]: "item 6 - considere uma
+#   alma de aço para cada aleta". A aleta da Divisória 02 tem 3 cm de
+#   seção e 3 m de altura, solta no meio do ambiente: sem alma ela
+#   barriga. São 16 aletas, 16 barras.
+ALMAS   = [(I6, 'As dezesseis aletas da Divisória 02 · 3 × 15 e 300 de '
+            'altura, soltas', 16)]
+VIDRO   = []   # ⛔ o vidro saiu com a porta de correr do DET 07
 SERRALHERIA = []
 # ⛔ duas ferragens que a Base não tem: o trilho da porta de correr e o
 #   pulsador do fecho toque do rack. O pulsador tem preço; o trilho, não.
-OUTRAS  = [(I4, 'Pulsador', 'Sete gavetas do rack · a prancha escreve '
-            '"fecho toque" e não desenha puxador nenhum', 7, 'un', 'Pulsador'),
-           (I7, 'Trilho de porta de correr', 'Uma folha corre e a outra é '
-            'fixa · folha de 123 × 300 em MDF com vidro pesa, e pede trilho '
-            'embutido · ⛔ sem preço na Base', 1, 'jogo',
-            'Trilho de porta de correr'),
+# ⭐⭐ A CORREDIÇA É TOUCH, E O PULSADOR SAI [Jonathan, 28/10/2026]: "no
+#   caso de corrediças com abertura por toque, considere a corrediça
+#   touch, não precisa de pulsador". A prancha escreve "fecho toque" nas
+#   sete gavetas do rack: quem abre é a própria corrediça, R$ 500 o par, e
+#   pagar pulsador por cima seria pagar duas vezes a mesma abertura.
+OUTRAS  = [# ⭐ PERFIL DE PROTEÇÃO DE PISO · R$ 15 o metro linear
+           (I1, 'Perfil de proteção de piso', 'Roupeiro de 145', 1.45, 'm',
+            'Perfil de proteção de piso'),
+           (I2, 'Perfil de proteção de piso', 'Divisória 01 de 398', 3.98,
+            'm', 'Perfil de proteção de piso'),
+           (I3, 'Perfil de proteção de piso', 'Painel de 600 mais o painel '
+            'de 40 do DET 05 · os dois têm base de 3 cm e tocam o chão',
+            6.40, 'm', 'Perfil de proteção de piso'),
+           (I6, 'Perfil de proteção de piso', 'Divisória 02 de 243', 2.43,
+            'm', 'Perfil de proteção de piso'),
+           
            (I10, 'Puxador passante', 'Perfil SP7000 nas quatro frentes de '
             '62 da mesa', 2.48, 'm', 'Puxador passante')]
 
@@ -365,6 +398,10 @@ FOLHA = dict(
   'serralheria, não marcenaria. ⚠ Mas o "apoio em madeira" pode ser nosso. '
   'A prancha não detalha nem cota. Confirmar de quem é.'],
  nao_marcenaria=[
+  '⛔ A PORTA DE CORRER DO DET 07 — 246 × 300, duas folhas de 123 em vidro '
+  'reflecta bronze com esquadria de 7 · [Jonathan, 28/10/2026] "não é '
+  'nosso". Saem com ela as oito peças de esquadria, os 2,22 m² de vidro e '
+  'o trilho embutido que não tinha preço na Base.',
   'Vidro reflecta bronze das duas folhas da porta de correr — vidraceiro '
   '(a esquadria de MDF é nossa)',
   'Corrimão de ferro forjado clássico com apoio em madeira — serralheria',

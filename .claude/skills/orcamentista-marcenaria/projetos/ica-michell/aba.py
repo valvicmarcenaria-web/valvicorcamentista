@@ -84,7 +84,9 @@ ORDEM = ['Fita cor', 'Fita Branco TX', 'Filetagem automática',
 _tem = B.acabamento(PECAS)
 ACAB = [k for k in ORDEM if k in _tem]
 assert len(ACAB) == len(_tem), f'⛔ acabamento fora da ORDEM: {set(_tem)-set(ORDEM)}'
-nmat = len(CHAPAS) + len(ACAB) + 1 + (1 if g('VIDRO') else 0) + 2
+# ⭐ +2 no fim: CORTE POR CHAPA e CORTE POR PEÇA, os dois serviços que
+#   o Jonathan cravou em 28/10 e que são por AMBIENTE, não por item
+nmat = len(CHAPAS) + len(ACAB) + 1 + (1 if g('VIDRO') else 0) + 2 + 2
 nit, nni, nnt = len(MOV), len(F['nao_marcenaria']), len(F['notas'])
 ndv = len(F.get('duvidas', []))
 
@@ -190,7 +192,8 @@ for ch in ACAB:
     r += 1
 L['acab1'] = r - 1
 
-FERR = [('Corrediça', 'corrediça', g('GAVETAS')),
+FERR = [('Corrediça', 'corrediça',
+         [x for x in g('GAVETAS') if not (len(x) > 4 and x[4] == 'touch')]),
         ('Dobradiça', 'dobradiça', g('PORTAS')),
         ('Dobradiça vidro', None, [x for x in g('PORTAS') if x[4] == B.DOBR_VIDRO]),
         ('Báscula HK-XS', 'articulador HK-XS', g('BASCULAS')),
@@ -205,24 +208,28 @@ FERR = [('Corrediça', 'corrediça', g('GAVETAS')),
         ('Cava usinada', 'cava usinada', g('CAVA')),
         ('LED conjunto', 'LED', g('LED')),
         ('Alma de aço', 'alma de aço', g('ALMAS')),
-        ('Suporte oculto', 'suporte oculto', g('SUPORTES')),
+        ('Suporte de prateleira', 'suporte de prateleira',
+         [1] if B.prateleiras(PECAS) else []),
+        ('Corrediça touch', 'corrediça touch',
+         [x for x in g('GAVETAS') if len(x) > 4 and x[4] == 'touch']),
         ('Cabideiro', 'cabideiro', g('CABIDEIROS')),
         *[(ch, nome.lower(), [1]) for ch, nome in
           dict((o[5], o[1]) for o in g('OUTRAS')).items()],
-        ('Sarrafo de pinus', 'sarrafo de reforço', g('SARRAFOS')),
         ('Serralheria estrutural', 'serralheria estrutural', g('SERRALHERIA'))]
 ativos = [(c, rot) for c, rot, lst in FERR if lst]
 # ⛔ cava, LED e moldura se medem em metro ou em frente, não em peça:
 #   não entram na contagem de "peças de ferragem"
 conta  = [c for c, rot in ativos
           if c not in ('Cava usinada', 'LED conjunto', 'Moldura provençal',
-                       'Serralheria estrutural', 'Sarrafo de pinus')]
+                       'Serralheria estrutural', 'Perfil de proteção de piso',
+                       'Palhinha natural', 'Estofamento em linho',
+                       'Usinagem de encaixe de prateleira')]
 rots   = [rot for c, rot in ativos if rot]
 # ⛔ .capitalize() rebaixa o resto da frase, e 'LED' virava 'led'
 frase  = ', '.join(rots[:-1])
 desc   = frase[:1].upper() + frase[1:] + ' e ' + rots[-1]
 L['ferr'] = r
-põe(r, B='Ferragem, puxador e iluminação',
+põe(r, B='Ferragem, terceirizados e iluminação',
     C=f'{desc} · linha {getattr(A, "LINHA", "Blum")} · ⛔ sem fonte: as fitas '
       'da casa são 110 V',
     D='=SUMPRODUCT((' + '+'.join(f'({K}="{c}")' for c in conta) +
@@ -235,18 +242,38 @@ põe(r, B='Ferragem, puxador e iluminação',
               for i in range(len(CHAPAS))) +
       ''.join(f'-SUMIF({K};$B{L["acab0"]+i};$I${a}:$I${b})'
               for i in range(len(ACAB))) +
-      (f'-SUMIF({K};"Vidro reflecta";$I${a}:$I${b})' if g('VIDRO') else ''),
+      (f'-SUMIF({K};"Vidro reflecta";$I${a}:$I${b})'
+       f'-SUMIF({K};"Espelho";$I${a}:$I${b})' if g('VIDRO') else ''),
     G='=VLOOKUP("Frete ferragem";precos;2;FALSE)')
 r += 1
 if g('VIDRO'):
-    põe(r, B='Vidro',
-        C='Reflecta champagne · ⛔ SEM PREÇO na Base: a linha existe vazia de '
+    põe(r, B='Vidro e espelho',
+        C='Vidraçaria · ⛔ SEM PREÇO na Base: a linha existe vazia de '
           'propósito, para gritar',
-        D=f'={M2(chr(34)+"Vidro reflecta"+chr(34))}', E='m²',
-        F=f'=SUMIF({K};"Vidro reflecta";$I${a}:$I${b})',
+        D=f'={M2(chr(34)+"Vidro reflecta"+chr(34))}+{M2(chr(34)+"Espelho"+chr(34))}',
+        E='m²',
+        F=f'=SUMIF({K};"Vidro reflecta";$I${a}:$I${b})'
+          f'+SUMIF({K};"Espelho";$I${a}:$I${b})',
         G='=VLOOKUP("Frete vidro";precos;2;FALSE)')
     r += 1
 L['ult_mat'] = r - 1                        # ⭐ onde acaba o material de fato
+# ⭐⭐ OS DOIS SERVIÇOS DE CORTE [Jonathan, 28/10/2026]: "Em cada ambiente
+#   considere o custo de corte por chapa de 2.00 e corte por peça de 2.50".
+#   ⛔ Entram DEPOIS de `ult_mat` de propósito: são serviço do ambiente, não
+#     material rateado por item, e por isso ficam fora da CONFERÊNCIA — que
+#     compara o rateio dos itens com o painel de material.
+põe(r, B='Corte · por chapa',
+    C='Serviço de corte, por chapa comprada · R$ 2,00',
+    D='=' + '+'.join(f'D{L["mat0"]+i}' for i in range(len(CHAPAS))), E='chapas',
+    F=f'=D{r}*VLOOKUP("Corte por chapa";precos;2;FALSE)')
+L['corte_ch'] = r; r += 1
+põe(r, B='Corte · por peça',
+    C='Serviço de corte, por peça cortada · R$ 2,50 · ⛔ conta a PEÇA, não a '
+      'linha: uma linha de 4 prateleiras são 4 peças',
+    D=f'=SUMPRODUCT(($G${a}:$G${b}="m²")*IF(ISNUMBER($F${a}:$F${b});'
+      f'$F${a}:$F${b};0))', E='peças',
+    F=f'=D{r}*VLOOKUP("Corte por peça";precos;2;FALSE)')
+L['corte_pc'] = r; r += 1
 põe(r, B='Consumíveis',
     C='Cola, lixa, parafuso, cavilha, tapa-furo, fundo e verniz · 6% sobre '
       'chapa, fita e filetagem',

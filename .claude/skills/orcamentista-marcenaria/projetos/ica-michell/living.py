@@ -193,8 +193,11 @@ ALMAS   = [(D4, 'Colunas · caixão de 70 × 200 mm', 11)]
 #   O banco da jardineira é SUSPENSO: não apoia no chão e não se sustenta na
 #   marcenaria. A estrutura é o que o segura, e entra por valor fechado.
 SERRALHERIA = [(D5, 'Banco suspenso da jardineira', 2500.0)]
-SUPORTES= [(D7, 'Prateleiras da estante · 16 × 2', 32),
-           (D6, 'Prateleiras da cristaleira',      10)]
+# ⭐ SUPORTE DE PRATELEIRA: não se declara mais. Toda prateleira interna
+#   leva um jogo de 4 suportes, R$ 6,50 [Jonathan, 28/10/2026], e a
+#   conta sai de B.prateleiras(), das peças. Quem não leva diz
+#   'sem suporte' na obs.
+SUPORTES= []
 
 def conta(pecas=LIVING):
     br = lambda v: f'{v:,.2f}'.replace(',', '§').replace('.', ',').replace('§', '.')
@@ -401,6 +404,21 @@ if __name__ == '__main__':
 #   ⭐ Mesma forma da Cozinha, para que planilha.py e aba.py sirvam os dois
 #     sem um "se for o Living". Era daqui que vinha metade da divergência
 #     de formatação entre as abas.
+OUTRAS  = [
+           (D1, 'Perfil de proteção de piso', 'Sapateira com painel de 142', 1.42, 'm',
+            'Perfil de proteção de piso'),
+           (D5, 'Perfil de proteção de piso', 'Jardineira com banco de 520', 5.2, 'm',
+            'Perfil de proteção de piso'),
+           (D6, 'Perfil de proteção de piso', 'Divisória com cristaleira de 460', 4.6, 'm',
+            'Perfil de proteção de piso'),
+           (D7, 'Perfil de proteção de piso', 'Estante de 255', 2.55, 'm',
+            'Perfil de proteção de piso'),
+           (D8, 'Perfil de proteção de piso', 'Painel com porta mimetizada de 400', 4.0, 'm',
+            'Perfil de proteção de piso'),
+           (D4, 'Perfil de proteção de piso', 'As onze colunas de 7 cm de face', 0.77, 'm',
+            'Perfil de proteção de piso'),
+]
+
 CABECA = {
  D1: ('142 × 300 × 42',
       'Altura 178 do painel + 105 da sapateira + 17 da base = 300 · frentes 2 + 34 + 34 + 34 + 2 = 105'),

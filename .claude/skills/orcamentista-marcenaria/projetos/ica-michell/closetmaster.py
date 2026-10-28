@@ -19,7 +19,7 @@ páginas 153 a 165 · SEIS detalhamentos, seis itens, cinco folhas de detalhe.
 
 ⭐ É O AMBIENTE DE FERRAGEM DO PROJETO: oito sapateiras corrediças, seis
   sapateiras fixas, três cabideiros, dois calceiros deslizantes, um
-  gavetão basculante e catorze gavetas. ⛔ O calceiro deslizante não
+  gavetão de cesto de roupa e vinte gavetas. ⛔ O calceiro deslizante não
   existe na Base e sai ZERO.
 
 ⛔ O pé-direito de 300 volta: lateral, divisória e fundo dos três armários
@@ -70,12 +70,14 @@ CLOSETMASTER = [
    'Quatro, de 22 em 22'),
  P('Prateleira do nicho baixo', I2, 50, 50, 1, BD18, (1, 0)),
  P('Prateleira do nicho baixo · coluna de 53', I2, 53, 50, 1, BD18, (1, 0)),
- P('Frente · gavetão basculante', I2, 50, 82, 1, BD18, (2, 2),
-   '⭐ basculante: tomba para fora, é cesto de roupa · puxador cava'),
+ P('Frente · gavetão do cesto de roupa', I2, 50, 82, 1, BD18, (2, 2),
+   '⛔ NÃO É BASCULANTE [Jonathan, 28/10]: é gaveta de corrediça, como as '
+   'outras · puxador cava'),
  P('Frente · gavetão',   I2, 53, 41, 2, BD18, (2, 2), 'Dois, de 41 cada · puxador cava'),
  P('Fundo',              I2, 140, 273, 1, BD6, (0, 0),
    'Encaixe em rasgo · ⛔ 300 de altura, rebaixado para os 273 da chapa'),
  *gaveta(I2, 53, 45, 41, 2, 'Gavetão', cor=BD15, fundo=BD6),
+ *gaveta(I2, 50, 45, 82, 1, 'Gaveta do cesto de roupa', cor=BD15, fundo=BD6),
 
  # ══ ITEM 03 · ARMÁRIO 02 — 480 × 300 × 60 ════════════════════════════
  #  VISTA FRONTAL  3 + 105 + 3 + 90 + 3 + 97 + 3 + 173 ≈ 480
@@ -128,15 +130,31 @@ CLOSETMASTER = [
  P('Prateleira do nicho · coluna de 80',    I4, 80, 60, 3, BD18, (1, 0),
    'Três: a coluna do meio é toda de nichos, de 24 em 24'),
  P('Prateleira do nicho · coluna de 67',    I4, 67, 60, 1, BD18, (1, 0)),
- P('Sapateira',          I4, 104, 60, 4, BD18, (2, 2),
-   'Quatro sapateiras fixas de 21 em 21, na coluna de 104'),
- P('Frente · gaveta',    I4, 80, 21, 3, BD18, (2, 2), 'Três de 21 · puxador cava'),
- P('Frente · gavetão',   I4, 67, 43, 1, BD18, (2, 2), 'Puxador cava'),
+ P('Sapateira',          I4, 27, 60, 4, BD18, (2, 2),
+   '⭐ RELIDO [Jonathan, 28/10]: a sapateira é a coluna ESTREITA de 27 da '
+   'VISTA FRONTAL, não os 104 inteiros · quatro prateleiras'),
+ # ⭐⭐ SÃO DEZ GAVETAS, NÃO QUATRO [Jonathan, 28/10/2026]: "item 4 - sao 10
+ #   gavetas". Reli a VISTA FRONTAL e ele está certo — a cadeia de baixo é
+ #   27 + 78 + 43 + 39 + 3 + 67 + 3, e eu tinha lido as três colunas de
+ #   gaveta como uma só de 80. São quatro gavetas de 78, quatro de 43, uma
+ #   de 39 e um gavetão de 39 × 64. Dez frentes, dez pares de corrediça e
+ #   dez cavas — eu contava quatro.
+ P('Frente · gaveta · coluna de 78', I4, 78, 21, 4, BD18, (2, 2),
+   'Quatro gavetas de 21 na coluna de 78 · puxador cava'),
+ P('Frente · gaveta · coluna de 43', I4, 43, 21, 4, BD18, (2, 2),
+   'Quatro gavetas de 21 na coluna de 43 · puxador cava'),
+ P('Frente · gaveta · coluna de 39', I4, 39, 21, 1, BD18, (2, 2),
+   'A de cima da coluna de 39 · puxador cava'),
+ P('Frente · gavetão · coluna de 39', I4, 39, 64, 1, BD18, (2, 2),
+   'Os 64 de altura que a VISTA FRONTAL cota embaixo · puxador cava'),
+
  P('Fundo',              I4, 260, 150, 2, BD6, (0, 0),
    '⛔ 260 × 300 não sai de uma chapa: duas peças de 260 × 150 · encaixe '
    'em rasgo, sem fita'),
- *gaveta(I4, 80, 55, 21, 3, 'Gaveta', cor=BD15, fundo=BD6),
- *gaveta(I4, 67, 55, 43, 1, 'Gavetão', cor=BD15, fundo=BD6),
+ *gaveta(I4, 78, 55, 21, 4, 'Gaveta de 78', cor=BD15, fundo=BD6),
+ *gaveta(I4, 43, 55, 21, 4, 'Gaveta de 43', cor=BD15, fundo=BD6),
+ *gaveta(I4, 39, 55, 21, 1, 'Gaveta de 39', cor=BD15, fundo=BD6),
+ *gaveta(I4, 39, 55, 64, 1, 'Gavetão de 39', cor=BD15, fundo=BD6),
 
  # ══ ITEM 05 · PAINEL COM ESPELHO — 160 × 300 ═════════════════════════
  #  VISTA FRONTAL  160 × 300 · painel em MDF com espelho e iluminação
@@ -153,33 +171,57 @@ CLOSETMASTER = [
 ]
 
 # ── ferragem, declarada item a item ─────────────────────────────────────
-GAVETAS = [(I2, 'Armário 01 · dois gavetões de 41', 2, 450),
+GAVETAS = [(I2, 'Armário 01 · dois gavetões de 41 e o cesto de roupa', 3, 450),
            (I3, 'Armário 02 · quatro gavetas de 20 e duas sob o espelho',
             6, 550),
-           (I4, 'Armário 03 · três gavetas de 21 e um gavetão de 43', 4, 550)]
+           (I4, 'Armário 03 · nove gavetas de 21 e um gavetão de 64 · '
+            'DEZ, relidas em 28/10', 10, 550)]
 PORTAS  = []
-#  ⭐ o gavetão basculante tomba para fora: é báscula, não gaveta
-BASCULAS= [(I2, 'Gavetão basculante do Armário 01 · cesto de roupa', 1,
-            'cava')]
+# ⛔⛔ NÃO EXISTE GAVETÃO BASCULANTE [Jonathan, 28/10/2026]: "item 2 - não
+#   existe gaveta basculante, considere apenas a corrediça". Eu tinha lido
+#   o cesto de roupa do Armário 01 como báscula que tomba para fora e
+#   lancei um articulador a gás HK-XS de R$ 250 nele. Não é: é gaveta
+#   comum, e o que ela leva é o par de corrediça que já estava na conta.
+BASCULAS= []
 #  ⭐ puxador cava em toda frente deste ambiente
-CAVA    = [(I2, 'Gavetão basculante e os dois gavetões do Armário 01', 3, 52),
+CAVA    = [(I2, 'O cesto de roupa e os dois gavetões do Armário 01', 3, 52),
            (I3, 'As quatro gavetas de 90 e as duas sob o espelho', 6, 76),
-           (I4, 'As três gavetas de 80 e o gavetão de 67', 4, 77)]
+           (I4, 'Quatro gavetas de 78',                   4, 78),
+           (I4, 'Quatro gavetas de 43',                   4, 43),
+           (I4, 'A gaveta e o gavetão da coluna de 39',   2, 39)]
 PUXADORES= []
 MOLDURA = []
+# ⭐ A ILUMINAÇÃO DO ESPELHO ESTAVA NO ITEM ERRADO [Jonathan, 28/10/2026]:
+#   "item 5 - considere o espelho e iluminação". Ela é do DET 05, o painel
+#   com espelho, e eu a tinha pendurado no DET 03. E o perímetro não é
+#   4,40: o painel tem 160 × 300, logo 2 × (1,60 + 3,00) = 9,20 m de fita.
 LED     = [(I1, 'Um por nicho, nos seis nichos de 80', 4.80),
-           (I3, 'Iluminação frontal do espelho, no perímetro', 4.40)]
+           (I5, 'Iluminação frontal do espelho · perímetro do painel de '
+            '160 × 300', 9.20)]
 CABIDEIROS = [(I2, 'Cabideiro para vestidos, na coluna de 29', 1),
               (I3, 'Cabideiro nas colunas de 105 e de 173', 2),
               (I4, 'Cabideiro na coluna de 67', 1)]
 SARRAFOS= []
 SUPORTES= []
 ALMAS   = []
-VIDRO   = []
+# ⭐ O ESPELHO ENTRA NA CONTA [Jonathan, 28/10/2026]. O DET 05 é "painel em
+#   MDF com espelho, com iluminação frontal" — o espelho é a peça, não o
+#   acessório. 150 × 290 dentro do painel de 160 × 300.
+VIDRO   = [(I5, 'Espelho do painel do DET 05 · 150 × 290 dentro do painel '
+            'de 160 × 300, com o LED correndo no perímetro', 1, 150, 290,
+            'Espelho')]
 SERRALHERIA = []
 # ⛔ duas ferragens de closet que a Base não tem: o calceiro deslizante e o
 #   trilho da porta de correr do DET 06.
-OUTRAS  = [(I3, 'Calceiro deslizante', 'Na coluna de 173 do Armário 02 · '
+OUTRAS  = [(I2, 'Perfil de proteção de piso', 'Armário 01 de 212', 2.12,
+            'm', 'Perfil de proteção de piso'),
+           (I3, 'Perfil de proteção de piso', 'Armário 02 de 281', 2.81,
+            'm', 'Perfil de proteção de piso'),
+           (I4, 'Perfil de proteção de piso', 'Armário 03 de 260', 2.60,
+            'm', 'Perfil de proteção de piso'),
+           (I5, 'Perfil de proteção de piso', 'Painel com espelho de 160',
+            1.60, 'm', 'Perfil de proteção de piso'),
+           (I3, 'Calceiro deslizante', 'Na coluna de 173 do Armário 02 · '
             '⛔ sem preço na Base', 1, 'un', 'Calceiro deslizante'),
            (I4, 'Calceiro deslizante', 'Na coluna de 80 do Armário 03 · '
             '⛔ sem preço na Base', 1, 'un', 'Calceiro deslizante'),
@@ -238,7 +280,7 @@ FOLHA = dict(
       'não existe no desenho — somando-o a cadeia daria 345 contra os 300 '
       'cotados.   ⭐ É O AMBIENTE DE FERRAGEM DO PROJETO: oito sapateiras '
       'corrediças, sete fixas, quatro cabideiros, dois calceiros '
-      'deslizantes, um gavetão basculante e catorze gavetas.',
+      'deslizantes, um gavetão de cesto de roupa e vinte gavetas.',
  duvidas=[
   'BRANCO DIAMANTE É BRANCO OU É COR? Lancei no preço de BRANCO — R$ 400 a '
   'chapa de 18, R$ 350 a de 15, R$ 250 a de 6 — porque Branco Diamante é um '
@@ -296,6 +338,6 @@ FOLHA = dict(
   'divisórias dos três são a mesma peça.',
   '⚠ É O AMBIENTE DE FERRAGEM DO PROJETO. Oito sapateiras corrediças, sete '
   'fixas, quatro cabideiros, dois calceiros deslizantes, um gavetão '
-  'basculante e catorze gavetas. A ferragem pesa mais que a chapa aqui, e '
+  'de cesto de roupa e vinte gavetas. A ferragem pesa mais que a chapa aqui, e '
   'dois itens dela saem ZERO porque a Base não os tem.'],
 )

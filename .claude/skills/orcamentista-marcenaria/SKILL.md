@@ -23,6 +23,30 @@ software de produção**.
 > Trabalha em **3 fases**: ① Olhar → ② Preço → ③ Estratégia. Numa demanda simples
 > percorre as três em sequência; numa conversa de calibração, foca a fase pedida.
 
+## ⛔ Regras de quantitativo — leia ANTES de levantar
+
+**`referencias/regras-de-quantitativo.md` é a fonte única** das regras cravadas
+pelo Jonathan em 28/10/2026, e cada uma nasceu de um erro real:
+
+| | regra |
+|---|---|
+| 1 | ⛔⛔ **pinus está PROIBIDO** — engradado vira travessa de MDF, estrado vira metalon, estrutura vira serralheria |
+| 2 | **suporte de prateleira: R$ 6,50 por PRATELEIRA** (composição de 4), não R$ 30 por par — e não se declara, conta-se |
+| 3 | **estrado em metalon, R$ 250 o quadro, em TODA cama** — some o painel de MDF |
+| 4 | **prateleira acima de 1,20 m pede alma de aço** — contra flecha, e também se conta |
+| 5 | **corrediça touch R$ 500 SUBSTITUI o pulsador** — declarar os dois é pagar duas vezes |
+| 6 | **perfil de proteção de piso, R$ 15 o metro linear**, em todo painel que toca o chão |
+| 7 | **palhinha natural é R$ 650 o m² e é tapeceiro**, não chapa melamínica de R$ 137 |
+| 8 | **estofado R$ 600 o m²** |
+| 9 | **Branco Diamante é COR**: 700/550/350 |
+| 10 | **corte: R$ 2,00 por chapa e R$ 2,50 por peça, em cada ambiente** |
+| 11 | unificar o preço **não** unifica a leitura: cada peça guarda o DET de origem |
+| 12 | serralheria entra pelo **valor fechado do ambiente**, nunca por chave da Base |
+
+> ⭐⭐ **Regra da casa é do MOTOR, não da lista.** O que vale para toda prateleira
+> e para toda cama o motor calcula sozinho — o que se declara à mão se esquece à
+> mão. O auditor quebra quando alguém declara o que agora é automático.
+
 ## Princípios (valem nas 3 fases)
 
 - **CALCULAR, nunca ESTIMAR — é isso que faz um orçamentista de verdade.** O número de

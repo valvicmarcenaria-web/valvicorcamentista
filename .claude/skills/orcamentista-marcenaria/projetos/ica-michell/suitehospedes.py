@@ -55,9 +55,19 @@ SUITEHOSPEDES = [
  #  VISTA FRONTAL  5 + 82 + 5 + 182 + 5 + 86 + 5 = 370
  #                 altura 5 + 65 + 5 + 30 + 5 = 110
  #  ⭐ fundo em Palha Indiana, grade de réguas de 5 em Oásis por cima
- P('Painel de fundo',       I1, 185, 110, 2, PI18, (2, 2),
-   '⛔ 370 de corrida não cabe na chapa: duas peças de 185 · a emenda cai '
-   'sob a régua vertical do meio, que tem 5 de largura'),
+ # ⭐⭐ A PALHA É PALHINHA NATURAL, NÃO CHAPA [Jonathan, 28/10/2026]: "na
+ #   cabeceira vc nao considerou a palha indiana (650,00) o metro
+ #   quadrado". ⛔ Eu a orçava como melamínico — uns R$ 137 o m² depois do
+ #   aproveitamento — e ela custa R$ 650. Era cinco vezes menos, e era o
+ #   fundo inteiro da cabeceira: 3,70 × 1,10 = 4,07 m². Sai da conta de
+ #   chapa e entra como material de tapeceiro, trançado por trás da grade
+ #   de réguas de Oásis.
+
+ P('Painel de fundo', I1, 185, 110, 2, EST, (0, 0),
+   '⭐ Substrato da PALHINHA NATURAL [Jonathan, 28/10/2026]: a palha '
+   'indiana custa R$ 650 o m² e é tapeceiro, não chapa · a peça fica '
+   'porque a palhinha precisa de fundo em que se fixar, mas sai no MDF '
+   'estrutural · ⛔ sem fita: as arestas morrem sob a moldura'),
  P('Régua · travessa de topo e base', I1, 185, 5, 4, OA18, (2, 2),
    'Duas peças em cada, de ponta a ponta'),
  P('Régua · montante',      I1, 110, 5, 4, OA18, (2, 2),
@@ -94,15 +104,17 @@ SUITEHOSPEDES = [
  #  ⭐ "rebaixo para colchão de casal" e um leito inferior corrediço
  P('Caixa · lateral',       I4, 207, 33, 2, OA18, (2, 2), 'Aparente'),
  P('Caixa · cabeceira e pé', I4, 162, 33, 2, OA18, (2, 2), 'Aparente'),
- P('Estrado do colchão de casal', I4, 204, 162, 1, EST, (0, 0),
-   '⭐ 15 mm, não 6: ele carrega duas pessoas · cabe inteiro na chapa, '
-   '204 × 162 contra 275 × 185 · ⛔ sem fita: não aparece, fica sob o colchão'),
+ # ⛔⛔ O ESTRADO DEIXOU DE SER MDF [Jonathan, 28/10/2026]: "Todas as camas
+ #   teremos a aplicação de estrado em metalom, tanto para a superior
+ #   quanto para a inferior. o custo de cada quadro é de 250,00". Saem os
+ #   dois painéis de 15 mm e o sarrafo de pinus que os apoiava; entram
+ #   dois quadros de metalon, que são serralheria.
+
  P('Leito inferior · frente', I4, 207, 20, 1, OA18, (2, 2),
    'Lisa, com cava na própria madeira'),
  P('Leito inferior · lateral', I4, 160, 20, 2, EST, (1, 0)),
  P('Leito inferior · costas', I4, 200, 20, 1, EST, (1, 0)),
- P('Estrado do leito inferior', I4, 200, 160, 1, EST, (0, 0),
-   '⭐ 15 mm · é cama, não gaveta · ⛔ sem fita: fica sob o colchão'),
+
 
  # ══ ITEM 05 · ESPELHO — 100 × 300 ════════════════════════════════════
  #  VISTA FRONTAL  10 + 80 + 10 = 100 · altura 10 + 280 + 10 = 300
@@ -111,6 +123,14 @@ SUITEHOSPEDES = [
    'moldura de um espelho é peça ÚNICA por natureza: emenda num montante '
    'de 10 de largura aparece'),
  P('Moldura · travessa',    I5, 80, 10, 2, OA18, (2, 2), 'Topo e base'),
+ # ⭐ O PAINEL DE 6 MM ATRÁS DO ESPELHO [Jonathan, 28/10/2026]: "item 5 -
+ #   considere o espelho com um painel de 6mm atras". Um espelho de 2,80 m
+ #   não se cola na alvenaria: cola num painel, e o painel é que vai na
+ #   parede. ⛔ 300 de altura não sai inteiro: duas faixas de 150, e a
+ #   emenda fica ATRÁS do espelho, onde ninguém a vê.
+ P('Painel de apoio do espelho · 6 mm', I5, 80, 150, 2, FUN, (0, 0),
+   'É nele que o espelho cola · ⛔ sem fita: fica inteiramente escondido '
+   'atrás do espelho e da moldura'),
 
  # ══ ITEM 06 · APARADOR — 165 × 25 × 52 ═══════════════════════════════
  #  VISTA FRONTAL  3 × 55 = 165 · altura 25 · VISTA LATERAL fundo 52
@@ -120,8 +140,11 @@ SUITEHOSPEDES = [
  P('Base e topo',           I6, 161, 52, 2, OA18, (1, 1), 'Aparente'),
  P('Divisória',             I6, 25, 52, 2, EST, (1, 0), 'Três vãos de 55'),
  P('Fundo',                 I6, 165, 25, 1, FUN, (0, 0), 'Encaixe em rasgo'),
- P('Frente · gaveta · base', I6, 55, 25, 3, PI18, (2, 2),
-   'Palha Indiana Sextavada Natural · é o campo que a moldura emoldura'),
+ # ⭐ idem no aparador: 0,55 × 0,25 × 3 = 0,41 m² de palhinha natural,
+ #   trançada dentro da moldura de 2 em Oásis
+
+ P('Frente · gaveta · campo', I6, 55, 25, 3, EST, (0, 0),
+   'Substrato da palhinha das três gavetas · ⛔ sem fita'),
  P('Frente · moldura · régua longa', I6, 55, 2, 6, OA18, (2, 2),
    '⛔ MOLDURA DE OUTRA COR: duas réguas de 2 em Oásis por frente, em cima '
    'e embaixo · peça inteira cobriria a palha, então aqui régua é régua'),
@@ -167,28 +190,52 @@ PORTAS  = []
 BASCULAS= []
 #  ⭐ a cava corre a largura da frente do leito corrediço
 CAVA    = [(I4, 'Frente do leito inferior da bicama', 1, 207)]
-PUXADORES= []
 MOLDURA = [(I2, 'Os três módulos provençais do painel de cabeceira', 3)]
 LED     = []
 CABIDEIROS = []
-SARRAFOS= [(I4, 'Apoio do estrado do colchão de casal e do leito inferior', 8.0)]
+SARRAFOS= []   # ⛔ pinus PROIBIDO · o estrado virou quadro de metalon
 SUPORTES= []
 ALMAS   = []
-VIDRO   = []
-SERRALHERIA = []
+# ⭐ O ESPELHO ENTRA NA CONTA [Jonathan, 28/10/2026]. Estava em NÃO É
+#   MARCENARIA, como vidraçaria de terceiro, e não devia: quem compra,
+#   mede e instala é a casa. 80 × 280 = 2,24 m².
+VIDRO   = [(I5, 'Espelho de 80 × 280 do DET 05 · colado no painel de 6 mm',
+            1, 80, 280, 'Espelho')]
+# ⭐ A MESA DO DET 08 PEDE SERRALHERIA [Jonathan, 28/10/2026]: "item 8 -
+#   considere uma estrutura de serralheria para estruturar a mesa - custo
+#   de 450". Era uma das dúvidas em aberto do ambiente — o tampo não se
+#   sustentava sozinho — e agora tem resposta e tem preço.
+SERRALHERIA = [(I8, 'Estrutura da mesa do DET 08', 450.0)]
 # ⛔ o puxador de couro não existe na Base, e a corrediça de carga da bicama
 #   existe mas está sem preço. As duas saem ZERO e denunciam.
-OUTRAS  = [(I3, 'Puxador de couro', 'Cor fendi · duas gavetas da mesa de '
+OUTRAS  = [# ⭐ ESTRADO EM METALON · R$ 250 o quadro [Jonathan, 28/10/2026]
+           (I4, 'Estrado em metalon', 'Dois quadros: o do colchão de casal '
+            'de 204 × 162 e o do leito inferior de 200 × 160 · ⛔ substitui '
+            'os dois painéis de MDF e o sarrafo que os apoiava', 2, 'quadro',
+            'Estrado em metalon'),
+           (I3, 'Puxador de couro', 'Cor fendi · duas gavetas da mesa de '
             'cabeceira · ⛔ A COTAR, não existe na Base', 2, 'un',
             'Puxador de couro'),
            (I4, 'Corrediça de carga', 'Leito inferior da bicama de casal · '
             '⛔ sem preço na Base', 1, 'par', 'Corrediça de carga'),
-           # ⭐ as três gavetas do aparador não têm puxador nenhum desenhado,
-           #   e a frente é Palha Indiana emoldurada: cava cortaria a palha.
-           #   Mesma leitura da porta ripada do Banho Gourmet.
-           (I6, 'Pulsador', 'Três gavetas do aparador · abre por toque, sem '
-            'ferragem à vista · ⚠ a prancha não desenha puxador nenhum',
-            3, 'un', 'Pulsador')]
+           # ⭐ PALHINHA NATURAL · R$ 650 o m² [Jonathan, 28/10/2026]
+           (I1, 'Palhinha natural', 'O fundo inteiro da cabeceira, 370 × '
+            '110 · trançada por trás da grade de réguas de 5 em Oásis · ⛔ '
+            'é tapeceiro, não chapa: saiu da conta de MDF', 4.07, 'm²',
+            'Palhinha natural'),
+           (I6, 'Palhinha natural', 'O campo das três frentes de gaveta do '
+            'aparador, 55 × 25 cada · trançada dentro da moldura de 2 em '
+            'Oásis', 0.41, 'm²', 'Palhinha natural')]
+# ⛔⛔ O PULSADOR DO APARADOR SAIU [Jonathan, 28/10/2026]: "item 6 - nao
+#   considerou a palhinha e o projeto nao especifica abertura por toque".
+#   Eu tinha suposto pulsador porque a frente é emoldurada e cava cortaria
+#   a palha — mas supor abertura por toque onde a prancha não a desenha é
+#   inventar ferragem. Entra o puxador que a casa usa quando o desenho não
+#   manda outro, e a pergunta fica na caixa de dúvidas, onde devia estar.
+PUXADORES = [(I6, 'Três gavetas do aparador · ⚠ a prancha não desenha '
+              'puxador e não especifica toque', 3)]
+# ⭐ nada da Suíte Hóspedes toca o chão: a cabeceira e o aparador são
+#   suspensos, a cama apoia em pé recuado e o espelho vai na parede.
 
 CABECA = {
  I1: ('370 × 110',

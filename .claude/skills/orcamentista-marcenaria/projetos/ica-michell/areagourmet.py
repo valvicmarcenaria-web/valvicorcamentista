@@ -144,11 +144,20 @@ MOLDURA  = []
 LED      = [(I3, 'Sob o bloco inferior, de ponta a ponta', 3.19)]
 CABIDEIROS = []
 SARRAFOS = []
-SUPORTES = [(I1, 'Prateleira interna do módulo basculante · 1 × 2', 2)]
+# ⭐ SUPORTE DE PRATELEIRA: não se declara mais. Toda prateleira interna
+#   leva um jogo de 4 suportes, R$ 6,50 [Jonathan, 28/10/2026], e a
+#   conta sai de B.prateleiras(), das peças. Quem não leva diz
+#   'sem suporte' na obs.
+SUPORTES = []
 ALMAS    = []
 VIDRO    = []
 SERRALHERIA = []
-OUTRAS   = []
+OUTRAS  = [
+           (I1, 'Perfil de proteção de piso', 'Armário do freezer de 75', 0.75, 'm',
+            'Perfil de proteção de piso'),
+           (I2, 'Perfil de proteção de piso', 'Bancada com armário de 424', 4.24, 'm',
+            'Perfil de proteção de piso'),
+]
 
 # ── o cabeçalho de cada bloco: medida geral e a cadeia que fecha ────────
 CABECA = {

@@ -29,23 +29,26 @@ from base import P, ripado, acabamento, ALT_MAX, CHAPA_C, DOBRADICA, ALTAS
 JR15 = 'MDF Jequitibá Rosa 15'
 EST, FUN = 'MDF Branco TX 15', 'MDF Branco TX 6'
 
-I1 = 'DET 01 Bancada com armário'
-I2 = 'DET 02 Painel ripado'
+# ⭐⭐ ITEM ÚNICO [Jonathan, 28/10/2026]: "pode considerar um item unico".
+#   A bancada e o painel ripado são a mesma parede do lavabo — o painel
+#   começa onde a bancada acaba, e a fábrica os produz e entrega juntos.
+I = 'DET 01 e 02 Bancada com armário e painel ripado'
+I1 = I2 = I
 
 BANHOGOURMET = [
  # ══ ITEM 01 · BANCADA COM ARMÁRIO — 75 × 53 × 60 ═════════════════════
  #  VISTA FRONTAL  37 + 38 = 75 · altura 20 de granito + 33 de armário = 53
  #  VISTA SUPERIOR e LATERAL  profundidade 60
  #  ⭐ as duas frentes são PORTAS RIPADAS: painel de base mais ripa de 3
- P('Lateral',               I1, 33, 60, 2, EST, (1, 0)),
- P('Base',                  I1, 71, 60, 1, EST, (1, 0)),
- P('Travessa de apoio da bancada', I1, 71, 10, 2, EST, (1, 0),
+ P('Lateral · DET 01', I1, 33, 60, 2, EST, (1, 0)),
+ P('Base · DET 01', I1, 71, 60, 1, EST, (1, 0)),
+ P('Travessa de apoio da bancada · DET 01', I1, 71, 10, 2, EST, (1, 0),
    'Frente e fundo · ⭐ a pedra apoia nelas, não em tampo cheio'),
- P('Fundo',                 I1, 75, 33, 1, FUN, (0, 0), 'Encaixe em rasgo'),
- P('Frente · porta ripada esquerda · base', I1, 37, 33, 1, JR15, (2, 2),
+ P('Fundo · DET 01', I1, 75, 33, 1, FUN, (0, 0), 'Encaixe em rasgo'),
+ P('Frente · porta ripada esquerda · base · DET 01', I1, 37, 33, 1, JR15, (2, 2),
    '⭐ o painel de base é que aparece nos vãos de 3 entre as ripas: sai na '
    'cor da frente, não em branco'),
- P('Frente · porta ripada direita · base',  I1, 38, 33, 1, JR15, (2, 2),
+ P('Frente · porta ripada direita · base · DET 01', I1, 38, 33, 1, JR15, (2, 2),
    '⭐ idem · a prancha dá 37 e 38, não duas folhas iguais'),
  *ripado(I1, 37, 33, 3, 3, JR15, 'Porta esquerda · vão de 3 entre as ripas · '
          'laminada nos dois lados, que é o que o Jonathan fechou em 28/10'),
@@ -55,7 +58,7 @@ BANHOGOURMET = [
  # ══ ITEM 02 · PAINEL RIPADO — 80 × 154 ═══════════════════════════════
  #  DET. 02 PERSPECTIVA  80 de largura × 154 de altura
  #  DET. RIPADO 1/10     3 + 3 + 3 + 3 + 3 + 3 · ripa e vão alternados
- P('Painel de base',        I2, 80, 154, 1, JR15, (2, 2),
+ P('Painel de base · DET 02', I2, 80, 154, 1, JR15, (2, 2),
    '⭐ é ele que aparece nos vãos de 3 · o DET. RIPADO em 1/10 mostra as '
    'ripas correndo sobre um painel contínuo, não chapa ranhurada'),
  *ripado(I2, 80, 154, 3, 3, JR15, 'Painel ripado · 14 ripas de 3 com vão de '
@@ -74,24 +77,29 @@ CABIDEIROS = []
 SARRAFOS = []
 SUPORTES = []
 ALMAS    = []
-VIDRO    = []
 SERRALHERIA = []
+# ⭐ O ESPELHO ENTRA NA CONTA [Jonathan, 28/10/2026]: "considere o espelho".
+#   Até aqui ele estava em NÃO É MARCENARIA, como vidraçaria de terceiro —
+#   e estava errado: quem compra e instala é a casa. 75 × 180 = 1,35 m².
+VIDRO   = [(I, 'Espelho de 75 × 180 da ELEVAÇÃO 01', 1, 75, 180, 'Espelho')]
 # ⭐ A PORTA RIPADA NÃO TEM PUXADOR DESENHADO, e uma face ripada não aceita
 #   cava: quem sobra é o pulsador. A prancha não escreve nenhum dos três, e
 #   a dúvida 03 põe os números das alternativas na mesa.
-OUTRAS   = [(I1, 'Pulsador', 'Duas portas ripadas · abre por toque, sem '
+OUTRAS   = [(I, 'Perfil de proteção de piso', 'O painel ripado de 80 corre '
+             'do piso ao teto e encosta no chão · a bancada é suspensa',
+             0.80, 'm', 'Perfil de proteção de piso'),
+            (I1, 'Pulsador', 'Duas portas ripadas · abre por toque, sem '
              'ferragem à vista · ⚠ a prancha não desenha puxador nenhum',
              2, 'un', 'Pulsador')]
 
 CABECA = {
- I1: ('75 × 53 × 60',
-      'VISTA FRONTAL 37 + 38 = 75 · altura 20 de granito mais 33 de armário '
-      '= 53 · VISTA SUPERIOR e LATERAL profundidade 60 · ⭐ as duas frentes '
-      'são PORTAS RIPADAS: painel de base mais ripa de 3 com vão de 3'),
- I2: ('80 × 154 × 3',
-      'DET. 02 PERSPECTIVA 80 de largura × 154 de altura · DET. RIPADO em '
-      '1/10 mostra 3 + 3 + 3 + 3 + 3 + 3, ripa e vão alternados sobre um '
-      'painel de base contínuo'),
+ I: ('75 × 53 × 60  +  80 × 154 × 3',
+     'DET 01 bancada com armário 75 × 53 × 60, em 37 + 38, com 20 de '
+     'granito sobre 33 de armário ⭐ as duas frentes são PORTAS RIPADAS, '
+     'painel de base mais ripa de 3 com vão de 3 · DET 02 painel ripado '
+     '80 × 154 × 3, com o DET RIPADO em 1/10 mostrando 3 + 3 + 3 alternados '
+     'sobre painel contínuo · ⭐ item único [Jonathan, 28/10]: é a mesma '
+     'parede, e o painel começa onde a bancada acaba'),
 }
 
 FOLHA = dict(

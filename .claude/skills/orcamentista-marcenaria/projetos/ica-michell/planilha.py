@@ -54,9 +54,19 @@ def linhas_do_item(mov):
                          'Filetagem manual': '⛔ Ripa e 6 mm não entram na '
                                              'coladeira · R$ 5,00, o dobro'}[ch],
                     '', '', m, 'm', ch])
-    for mv, rot, q, mm in g('GAVETAS'):
-        if mv == mov: out.append(['Corrediça', f'{rot} · {mm} mm', '', '', q,
-                                  'par', 'Corrediça'])
+    # ⭐ CORREDIÇA TOUCH [Jonathan, 28/10/2026]: "no caso de corrediças com
+    #   abertura por toque, considere a corrediça touch, não precisa de
+    #   pulsador". O quinto elemento da tupla diz qual é; sem ele, vale a
+    #   corrediça comum, que era o único caso até aqui.
+    for gv in g('GAVETAS'):
+        mv, rot, q, mm = gv[:4]
+        touch = len(gv) > 4 and gv[4] == 'touch'
+        if mv == mov:
+            out.append(['Corrediça touch' if touch else 'Corrediça',
+                        f'{rot} · {mm} mm' + (' · ⛔ abre por toque: NÃO leva '
+                        'pulsador, a própria corrediça abre' if touch else ''),
+                        '', '', q, 'par',
+                        'Corrediça touch' if touch else 'Corrediça'])
     for mv, rot, nq, nd, pr in g('PORTAS'):
         if mv == mov:
             ch = 'Dobradiça' if pr == B.DOBRADICA else 'Dobradiça vidro'
@@ -85,10 +95,17 @@ def linhas_do_item(mov):
                                   'relevo na router, peça inteira de 6 mm · '
                                   '⛔ A COTAR, cronometrar uma na fábrica',
                                   '', '', q, 'frente', 'Moldura provençal'])
-    for mv, rot, q, c, l in g('VIDRO'):
-        if mv == mov: out.append(['Vidro reflecta champagne', rot + ' · ⛔ A '
-                                  'COTAR, segue sem preço na Base', c, l, q,
-                                  'm²', 'Vidro reflecta'])
+    # ⭐ VIDRO E ESPELHO são a mesma vidraçaria e moram na mesma linha
+    #   [Jonathan, 28/10/2026 — "considere o espelho" em cinco ambientes].
+    #   O sexto elemento da tupla diz a chave; sem ele, vale o reflecta.
+    for vd in g('VIDRO'):
+        mv, rot, q, c, l = vd[:5]
+        ch = vd[5] if len(vd) > 5 else 'Vidro reflecta'
+        if mv == mov:
+            out.append([{'Vidro reflecta': 'Vidro reflecta champagne',
+                         'Espelho': 'Espelho'}.get(ch, ch),
+                        rot + ' · ⛔ A COTAR, segue sem preço na Base',
+                        c, l, q, 'm²', ch])
     for mv, rot, q, c in g('CAVA'):
         if mv == mov: out.append(['Cava usinada', rot, '', '',
                                   round(q*c/100, 2), 'm', 'Cava usinada'])
@@ -99,9 +116,25 @@ def linhas_do_item(mov):
     for mv, rot, q in g('ALMAS'):
         if mv == mov: out.append(['Alma de aço', rot + ' · contra empeno', '',
                                   '', q, 'barra', 'Alma de aço'])
-    for mv, rot, q in g('SUPORTES'):
-        if mv == mov: out.append(['Suporte oculto', rot + ' · de 40 em 40 cm',
-                                  '', '', q, 'un', 'Suporte oculto'])
+    # ⭐⭐ ALMA DE PRATELEIRA, CONTADA DAS PEÇAS [Jonathan, 28/10/2026]:
+    #   "prateleiras acima de 1.20mt vamos considerar alma de aço". Como o
+    #   suporte, é regra da casa — logo é do motor, não da lista.
+    _na = B.almas_de_prateleira(PECAS, mov)
+    if _na:
+        out.append(['Alma de aço', f'{_na} prateleira(s) de vão acima de '
+                    f'{B.ALMA_VAO:g} cm · ⛔ contra FLECHA, não contra '
+                    'empeno: 18 mm resolve o empeno e não resolve o vão',
+                    '', '', _na, 'barra', 'Alma de aço'])
+    # ⭐⭐ SUPORTE DE PRATELEIRA, CONTADO DAS PEÇAS [Jonathan, 28/10/2026].
+    #   Não há lista de SUPORTES para preencher: toda prateleira interna
+    #   de armário leva um jogo de 4 suportes, R$ 6,50, e a conta sai de
+    #   `B.prateleiras()`. Quem não leva diz "sem suporte" na obs.
+    _np = B.prateleiras(PECAS, mov)
+    if _np:
+        out.append(['Suporte de prateleira',
+                    f'{_np} prateleira(s) interna(s) · composição de 4 '
+                    'suportes por prateleira · ⛔ não é suporte oculto',
+                    '', '', _np, 'jogo', 'Suporte de prateleira'])
     # ⭐⭐ OUTRAS: a ferragem de uma vez só. Cada ambiente traz um item que
     #   a Base tem e o gerador não — passante no Quarto, corrediça de carga
     #   na bicama, pistão de tampo no baú. Criar uma constante e três
@@ -113,19 +146,18 @@ def linhas_do_item(mov):
     for mv, rot, q in g('CABIDEIROS'):
         if mv == mov: out.append(['Cabideiro', rot + ' · metal preto ou '
                                   'grafite', '', '', q, 'un', 'Cabideiro'])
-    # ⭐ sarrafo de pinus: estrutura interna por metro. Não é peça de chapa,
-    #   não leva fita e não aparece — mas segura a lava e seca cheia.
-    for mv, rot, m in g('SARRAFOS'):
-        if mv == mov: out.append(['Sarrafo de pinus', rot + ' · estrutura '
-                                  'interna, não aparente', '', '', m, 'm',
-                                  'Sarrafo de pinus'])
-    # ⭐ serralheria estrutural: valor fechado por móvel, não por metro
+    # ⛔⛔ O SARRAFO DE PINUS SAIU: a casa não usa pinus para nada
+    #   [Jonathan, 28/10/2026]. Onde ele segurava, entra engradado de MDF
+    #   (peça, conta na chapa), estrado em metalon (cama) ou serralheria.
+    # ⭐⭐ SERRALHERIA COM VALOR FECHADO, E ELE ENTRA NA CONTA. Até aqui a
+    #   linha buscava um preço na Base que nunca existiu, e os R$ 2.500 do
+    #   banco do Living saíam ZERO na aba sem ninguém reclamar. Agora o
+    #   valor vem do ambiente e vai direto para a coluna de R$ unitário.
     for mv, rot, v_ in g('SERRALHERIA'):
-        if mv == mov: out.append(['Serralheria estrutural', rot + ' · ⛔ não é '
-                                  'o rodapé de 3 cm, que vai em MDF: aqui o '
-                                  'móvel é SUSPENSO e quem o segura é a '
-                                  'estrutura', '', '', 1, 'conjunto',
-                                  'Serralheria estrutural'])
+        if mv == mov: out.append(['Serralheria estrutural', rot +
+                                  ' · valor fechado do serralheiro', '', '',
+                                  1, 'conjunto', 'Serralheria estrutural',
+                                  float(v_)])
     return out
 
 def montar(inicio):
@@ -141,10 +173,15 @@ def montar(inicio):
         val.append(['MATERIAL', 'ESPECIFICAÇÃO', 'C', 'L', 'QTD', 'UN',
                     'R$ UN', 'CUSTO', '', 'chave na Base'])
         r0 = r + 3
-        for j, (nm, esp, c, l, q, un, ch) in enumerate(ls):
+        for j, linha in enumerate(ls):
+            nm, esp, c, l, q, un, ch = linha[:7]
+            fixo = linha[7] if len(linha) > 7 else None
             lr = r0 + j
             val.append([nm, esp, c, l, q, un, '', '', '', ch])
-            fml.append((lr, f'=SEERRO(PROCV($K{lr};precos;2;FALSO);"")',
+            # ⭐ R$ unitário: ou vem da Base, pela chave, ou vem fechado do
+            #   ambiente (serralheria). O custo é sempre quantidade × R$ un.
+            fml.append((lr, fixo if fixo is not None else
+                        f'=SEERRO(PROCV($K{lr};precos;2;FALSO);"")',
                         f'=SEERRO(SE($G{lr}="m²";$D{lr}*$E{lr}/10000*$F{lr}'
                         f'/({AREA}*{APR})*$H{lr};$F{lr}*$H{lr});"")'))
         rt = r0 + len(ls)

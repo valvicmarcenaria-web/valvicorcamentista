@@ -100,6 +100,10 @@ SUITE03 = [
  P('Painel superior · pele', I2, 185, 121, 2, PA15, (1, 1),
    '⛔ 370 de vão não sai de chapa nenhuma: duas peles de 185, e a emenda '
    'fica no teto, onde ninguém olha · é a face inferior, a que se vê'),
+ P('Engradado · travessa de MDF', I2, 273, 5, 17, PA15, (0, 0),
+   '⛔ PINUS PROIBIDO [Jonathan, 28/10/2026]: os 45 m de engradado das '
+   'três faces do pórtico eram sarrafo e agora são TRAVESSA DE MDF, '
+   'tirada da própria chapa · ⛔ sem fita, é estrutura interna'),
  P('Painel superior · testeira', I2, 185, 3, 2, PA15, (1, 0),
    'A aresta de 3 cm do vão, que é a que aparece de baixo · ⛔ filetagem '
    'manual, régua não entra na coladeira'),
@@ -128,15 +132,11 @@ SUITE03 = [
    '⭐ quatro faces por montante, dois montantes · seção de 4 × 4 e 300 '
    'de altura, com alma de aço dentro: é ele que segura a rede de cordas '
    'de 149 · ⛔ 300 não sai inteiro da chapa'),
- P('Cama alta · estrado',   I3, 194, 121, 1, PA15, (0, 0),
-   'Mora sob o colchão de solteiro — ⛔ sem fita, não aparece'),
  P('Cama alta · guarda-corpo frontal', I3, 202, 12, 1, PA18, (2, 2),
    'Os 12 da VISTA FRONTAL · é o que prende a criança lá em cima, e é a '
    'peça mais solicitada da cama: 18 mm'),
  P('Cama alta · guarda-corpo lateral', I3, 121, 12, 2, PA18, (2, 2),
    'Os dois lados da base alta'),
- P('Cama baixa · estrado',  I3, 194, 121, 1, PA15, (0, 0),
-   'Mora sob o colchão do leito de baixo — ⛔ sem fita'),
  P('Cama baixa · guarda-corpo frontal', I3, 202, 12, 1, PA18, (2, 2),
    'A faixa de 12 logo acima da bicama'),
  P('Cama baixa · guarda-corpo lateral', I3, 121, 12, 2, PA18, (2, 2), '—'),
@@ -151,8 +151,6 @@ SUITE03 = [
    'é a mesma solução da bicama de casal da Suíte Hóspedes'),
  P('Bicama · costas',       I3, 196, 25, 1, AA15, (1, 0), 'Aparente de lado'),
  P('Bicama · lateral',      I3, 118, 25, 2, AA15, (1, 0), 'Aparente'),
- P('Bicama · estrado',      I3, 196, 118, 1, BR15, (0, 0),
-   'Sob o colchão da bicama — ⛔ sem fita'),
 
  # ══ ITEM 04 · ESTANTE — 93 × 50 × 300 ═══════════════════════════════
  #  DET. 04 VISTA FRONTAL  93 = 2 + 44 + 44 + 2 · altura 5 + 6 × 48 + 5
@@ -216,12 +214,12 @@ SUITE03 = [
          'espaçamento de 1cm", escrito no DET 05 · altura média de 95, '
          'porque o frontão é um triângulo: 41 na beirada e 143 na cumeeira '
          '· laminada nos dois lados'),
- P('Frente · porta de giro externa', I5, 68, 155, 2, PI15, (2, 2),
+ P('Frente · porta de giro externa', I5, 68, 155, 2, PA15, (2, 2),
    '⭐ as duas portas das pontas · o fundo delas acompanha a água do '
    'telhado, mas o corte sai de retângulo de 68 × 155'),
- P('Frente · porta de giro interna', I5, 68, 111, 2, PI15, (2, 2),
+ P('Frente · porta de giro interna', I5, 68, 111, 2, PA15, (2, 2),
    'As duas portas que encostam na cumeeira, onde a água já subiu'),
- P('Frente da báscula',     I5, 87, 37, 2, PI15, (2, 2),
+ P('Frente da báscula',     I5, 87, 37, 2, PA15, (2, 2),
    'As duas do módulo direito de 93, uma sobre a outra'),
  P('Moldura · régua vertical externa', I5, 155, 5, 4, AA15, (2, 2),
    '⭐ MOLDURA DE OUTRA COR = QUATRO RÉGUAS, não peça inteira usinada: a '
@@ -256,9 +254,9 @@ SUITE03 = [
  P('Armário · rodapé',      I6, 127, 5, 1, PA15, (1, 0),
    'Os 5 do pé da VISTA FRONTAL'),
  P('Armário · fundo',       I6, 130, 80, 1, PA6, (0, 0), 'Encaixe em rasgo'),
- P('Frente da gaveta',      I6, 62, 24, 3, PI15, (2, 2),
+ P('Frente da gaveta',      I6, 62, 24, 3, PA15, (2, 2),
    'As três gavetas de 24 da coluna esquerda'),
- P('Frente · porta de giro', I6, 62, 72, 1, PI15, (2, 2),
+ P('Frente · porta de giro', I6, 62, 72, 1, PA15, (2, 2),
    'A porta da coluna direita, da altura das três gavetas somadas'),
  P('Moldura da gaveta · régua horizontal', I6, 62, 5, 6, AA15, (2, 2),
    'Topo e base de cada uma das três gavetas · ⛔ filetagem manual'),
@@ -302,15 +300,37 @@ LED     = [(I2, 'Faixa sob o painel superior do pórtico · os 270 cotados', 2.7
            (I4, 'Uma fita em cada uma das três fileiras iluminadas', 2.64),
            (I5, 'As duas águas do telhado, por dentro da moldura',      3.3)]
 CABIDEIROS = []
-SARRAFOS= [(I2, 'Engradado das três faces do pórtico · perímetro mais '
-                'travessa a cada 50 cm', 45.0),
-           (I3, 'Apoio dos dois estrados de solteiro e do da bicama', 10.0)]
+SARRAFOS= []   # ⛔ pinus PROIBIDO · engradado virou MDF, estrado virou metalon
 SUPORTES= []
 ALMAS   = [(I3, 'Montantes da cama · caixão de 40 × 40 mm e 300 de altura', 2),
            (I5, 'Pés da casinha · caixão de 90 × 250 mm e 300 de altura', 2)]
 VIDRO   = []
 SERRALHERIA = []
-OUTRAS  = [(I3, 'Corrediça de carga', 'Bicama de solteiro que corre no '
+OUTRAS  = [# ⭐⭐ A PALHA É PALHINHA NATURAL [Jonathan, 28/10/2026]: R$ 650 o
+           #   m², tapeceiro, não chapa. As frentes passam a ser substrato
+           #   de MDF Paris com a palhinha trançada dentro da moldura.
+           (I5, 'Palhinha natural', 'Campo das quatro portas de giro e das '
+            'duas básculas da casinha · 2,11 + 1,51 + 0,64', 4.26, 'm²',
+            'Palhinha natural'),
+           (I6, 'Palhinha natural', 'Campo das três gavetas e da porta do '
+            'armário da mesa · 0,45 + 0,45', 0.90, 'm²', 'Palhinha natural'),
+           # ⭐ ESTRADO EM METALON · R$ 250 o quadro [Jonathan, 28/10/2026]
+           (I3, 'Estrado em metalon', 'TRÊS quadros: cama alta 194 × 121, '
+            'cama baixa 194 × 121 e bicama 196 × 118 · ⛔ substitui os três '
+            'painéis de MDF e o sarrafo que os apoiava', 3, 'quadro',
+            'Estrado em metalon'),
+           # ⭐ PERFIL DE PROTEÇÃO DE PISO · R$ 15 o metro linear
+           (I1, 'Perfil de proteção de piso', 'Escada de 157 de extensão',
+            1.57, 'm', 'Perfil de proteção de piso'),
+           (I2, 'Perfil de proteção de piso', 'As duas laterais do pórtico, '
+            '121 cada', 2.42, 'm', 'Perfil de proteção de piso'),
+           (I4, 'Perfil de proteção de piso', 'Estante de 93', 0.93, 'm',
+            'Perfil de proteção de piso'),
+           (I5, 'Perfil de proteção de piso', 'Os dois pés de 9 da casinha',
+            0.18, 'm', 'Perfil de proteção de piso'),
+           (I6, 'Perfil de proteção de piso', 'Armário da mesa, 130',
+            1.30, 'm', 'Perfil de proteção de piso'),
+           (I3, 'Corrediça de carga', 'Bicama de solteiro que corre no '
             'chão · ⛔ a Base não tem a linha', 1, 'un', 'Corrediça de carga'),
            (I4, 'Pulsador', 'Três portas lisas de 44 × 48 · a prancha não '
             'desenha puxador nenhum', 3, 'un', 'Pulsador'),
