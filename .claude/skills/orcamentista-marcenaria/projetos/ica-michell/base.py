@@ -82,7 +82,14 @@ PRECO = {'MDF cor 18': 700.0, 'MDF cor 15': 550.0, 'MDF cor 6': 350.0,
          #   Duratex, só nas duas portas provençais da bancada.
          'MDF Timborana Silvestre 18': 700.0,
          'MDF Timborana Silvestre 15': 550.0,
-         'MDF Timborana Silvestre 6': 350.0}
+         'MDF Timborana Silvestre 6': 350.0,
+         # ⭐ o padrão que a Suíte 03 trouxe: Azul Astral, Duratex. É a cor
+         #   do quarto da criança — gaveta da escada, estante inteira do
+         #   DET 04, ripado do DET 05, bicama e TODA moldura de 5 cm.
+         #   ⚠ é a primeira vez no projeto que uma cor só faz as três
+         #     coisas: caixaria aparente, frente e régua de moldura.
+         'MDF Azul Astral 18': 700.0, 'MDF Azul Astral 15': 550.0,
+         'MDF Azul Astral 6': 350.0}
 ESTRUTURA, FUNDO_CH, PORTA_CH = 'MDF Branco TX 15', 'MDF Branco TX 6', 15
 PRAT_VAO = 70.0   # vão acima disto pede 18 mm, contra empeno [Base]
 # ⭐⭐ FITA E FILETAGEM SÃO DUAS COISAS [Jonathan, 28/10/2026]
@@ -163,6 +170,11 @@ PRECO_OUTRAS = {
  # ⭐ as prateleiras do Banho Mariana penduram em HASTE DE METAL fixa na
  #   laje, níquel escovado — é serralheria, não suporte oculto de R$ 30.
  'Haste metálica de prateleira': 0.0,  # ⛔ por haste · SEM PREÇO na Base
+ # ⭐ a escrivaninha da Suíte 03 tem o fundo RASGADO de alto a baixo para a
+ #   prateleira encaixar na altura que a criança quiser. Não é furo de
+ #   suporte oculto e não é ripa: é usinagem corrida de rasgo na router, e
+ #   a Base não tem a linha. Irmã da furação do pegboard do Home Office.
+ 'Usinagem de encaixe de prateleira': 0.0,  # ⛔ por metro · SEM PREÇO
 }
 VIDRO_M2   =   0.0  # ⛔ reflecta champagne SEM PREÇO — a cotar
 # ⭐ SERRALHERIA ESTRUTURAL [Jonathan, 28/10/2026]
