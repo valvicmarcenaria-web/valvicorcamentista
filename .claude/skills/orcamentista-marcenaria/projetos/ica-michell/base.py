@@ -28,7 +28,8 @@ PRECO = {'MDF cor 18': 700.0, 'MDF cor 15': 550.0, 'MDF cor 6': 350.0,
          'MDF Verde Floresta 6': 350.0,
          'MDF Jequitibá Rosa 18': 700.0, 'MDF Jequitibá Rosa 15': 550.0,
          'MDF Jequitibá Rosa 6': 350.0,
-         'MDF Nogueira Caiena 18': 700.0, 'MDF Nogueira Caiena 6': 350.0,
+         'MDF Nogueira Caiena 18': 700.0, 'MDF Nogueira Caiena 15': 550.0,
+         'MDF Nogueira Caiena 6': 350.0,
          # ⭐ padrões que a leitura das pranchas dos outros ambientes trouxe.
          #   Todos são Melamínico Fosco na Base (R$ 700 / 550 / 350), exceto
          #   onde a prancha pede linha mais cara. ⚠ Preto Ultra Premium e
@@ -111,6 +112,9 @@ PRECO_OUTRAS = {
  'Pulsador':              100.0,
  'Corrediça de carga':      0.0,  # ⛔ leito de bicama · SEM PREÇO na Base
  'Pistão de tampo de baú':  0.0,  # ⛔ dois por tampo · SEM PREÇO na Base
+ # ⭐ a porta de correr da Sala de Cinema tem 123 × 300 por folha e pesa:
+ #   trilho embutido, não a corrediça de gaveta. A Base não tem a linha.
+ 'Trilho de porta de correr': 0.0,  # ⛔ por folha · SEM PREÇO na Base
 }
 VIDRO_M2   =   0.0  # ⛔ reflecta champagne SEM PREÇO — a cotar
 # ⭐ SERRALHERIA ESTRUTURAL [Jonathan, 28/10/2026]
