@@ -16,10 +16,13 @@ CASOS = [
   "CAVA     = []",
   "CAVA     = [(I1, 'Frentes da ilha', 7, 55)]",
   'PUXADOR e CAVA'),
- ('frente provençal sem as travessas de 6 mm',
+ # ⭐ o caso trocou de alvo quando o método mudou: não há mais travessa
+ #   para faltar, mas há a RÉGUA para voltar — e é o que esta mutação faz.
+ ('moldura provençal encolhida para régua, em vez de peça inteira',
   "*provencal('Frente · porta',         I1, 69, 85, 1, VF15, VF6, 'De giro · provençal'),",
-  "P('Frente · porta', I1, 69, 85, 1, VF15, (2, 2), 'De giro'),",
-  'travessas deitadas'),
+  "P('Frente · porta', I1, 69, 85, 1, VF15, (2, 2), 'De giro'),\n"
+  " P('Frente · porta · moldura usinada', I1, 69, 7, 1, VF6, (0, 0), 'régua'),",
+  'não régua'),
  ('frente provençal sem a mão de obra de moldura',
   "MOLDURA  = [(I1, 'Frentes da ilha',     7),",
   "MOLDURA  = [(I1, 'Frentes da ilha',     6),",

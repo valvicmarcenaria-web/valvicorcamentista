@@ -30,8 +30,9 @@
   "#,##0.##" é separador de MILHAR, e 110 sai como "110,". Número livre
   (C, L, QTD) vai SEM padrão nenhum.
 
-   uso:  python3 aba.py cozinha 104 37
-         (ambiente · sheetId · linha onde os blocos estão HOJE)
+   uso:  python3 aba.py cozinha 104 47 186 5
+         (ambiente · sheetId · linha dos blocos HOJE · linhas HOJE ·
+          regras condicionais que a aba já tem — 0 se for aba nova)
 """
 import sys, json, importlib.util, pathlib, io, contextlib, subprocess
 P = pathlib.Path(__file__).resolve().parent
@@ -42,6 +43,12 @@ NOME  = sys.argv[1]
 SID   = int(sys.argv[2])
 BLK_HOJE = int(sys.argv[3])
 FIM_HOJE = int(sys.argv[4])   # quantas linhas a aba tem HOJE
+# ⭐⭐ QUANTAS REGRAS CONDICIONAIS A ABA JÁ TEM. Sem isso o gerador não é
+#   idempotente: reaplicar DUPLICA as cinco regras e as mesclagens batem de
+#   frente com as antigas (a API recusa mesclar por cima de mesclagem). E
+#   reaplicar é o caso NORMAL, não a exceção — toda correção de método, como
+#   a moldura usinada, reescreve a aba inteira. Aba nova: 0.
+N_REGRAS = int(sys.argv[5]) if len(sys.argv) > 5 else 0
 
 sp = importlib.util.spec_from_file_location('AMB', P/f'{NOME}.py')
 A = importlib.util.module_from_spec(sp); sys.modules['AMB'] = A
@@ -181,20 +188,25 @@ FERR = [('Corrediça', 'corrediça', g('GAVETAS')),
         ('Báscula HK-XS', 'articulador HK-XS', g('BASCULAS')),
         # ⭐ slim no lugar do pulsador [Jonathan, 28/10] · são R$ 65 por
         #   báscula de diferença, e a Base já avisava que não se somam
-        ('Puxador slim', 'puxador slim', g('BASCULAS')),
+        # ⛔ só as básculas que abrem pelo slim. Na Lavanderia elas abrem
+        #   pelo Alças Traso, e o slim não existe lá.
+        ('Puxador slim', 'puxador slim',
+         [b for b in g('BASCULAS') if (b[3] if len(b) > 3 else 'slim') == 'slim']),
         ('Puxador Alças Traso 128', 'puxador Alças Traso de 128', g('PUXADORES')),
         ('Moldura provençal', 'moldura provençal', g('MOLDURA')),
         ('Cava usinada', 'cava usinada', g('CAVA')),
         ('LED conjunto', 'LED', g('LED')),
         ('Alma de aço', 'alma de aço', g('ALMAS')),
         ('Suporte oculto', 'suporte oculto', g('SUPORTES')),
+        ('Cabideiro', 'cabideiro', g('CABIDEIROS')),
+        ('Sarrafo de pinus', 'sarrafo de reforço', g('SARRAFOS')),
         ('Serralheria estrutural', 'serralheria estrutural', g('SERRALHERIA'))]
 ativos = [(c, rot) for c, rot, lst in FERR if lst]
 # ⛔ cava, LED e moldura se medem em metro ou em frente, não em peça:
 #   não entram na contagem de "peças de ferragem"
 conta  = [c for c, rot in ativos
           if c not in ('Cava usinada', 'LED conjunto', 'Moldura provençal',
-                       'Serralheria estrutural')]
+                       'Serralheria estrutural', 'Sarrafo de pinus')]
 rots   = [rot for c, rot in ativos if rot]
 # ⛔ .capitalize() rebaixa o resto da frase, e 'LED' virava 'led'
 frase  = ', '.join(rots[:-1])
@@ -460,6 +472,17 @@ Q.append({'addConditionalFormatRule': {'index': 0, 'rule': {
                      'green': .922, 'blue': .922}},
                      'textFormat': {'bold': True,
                      'foregroundColorStyle': {'rgbColor': VERM}}}}}}})
+
+# ── 5b · a limpeza, que vem ANTES de tudo ───────────────────────────────
+#   ⛔ a ordem importa: apagar regra por índice 0 N vezes só funciona se
+#     ninguém acrescentou nenhuma no meio, e desmesclar tem de vir antes de
+#     mesclar de novo, senão a API recusa.
+LIMPA = [{'deleteConditionalFormatRule': {'sheetId': SID, 'index': 0}}
+         for _ in range(N_REGRAS)]
+LIMPA.append({'unmergeCells': {'range': {'sheetId': SID, 'startRowIndex': 0,
+              'endRowIndex': max(FIM_HOJE, L['fim']), 'startColumnIndex': 0,
+              'endColumnIndex': 11}}})
+Q[:0] = LIMPA
 
 # ── 6 · saída ──────────────────────────────────────────────────────────
 OUT = dict(sheetId=SID, mapa=MAPA, layout=L, shift=SHIFT, faixas=FAIXAS,

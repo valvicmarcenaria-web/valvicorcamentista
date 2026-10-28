@@ -61,23 +61,30 @@ def linhas_do_item(mov):
         if mv == mov:
             ch = 'Dobradiça' if pr == B.DOBRADICA else 'Dobradiça vidro'
             out.append([ch, f'{rot} · {nd} por folha', '', '', nq*nd, 'un', ch])
-    for mv, rot, q in g('BASCULAS'):
+    # ⭐⭐ A BÁSCULA NEM SEMPRE ABRE PELO SLIM. Na Cozinha abre: o Jonathan
+    #   fechou HK-XS mais slim Rometal. Na Lavanderia a prancha põe o
+    #   Alças Traso em TODA frente, básculas inclusive — e aí o puxador
+    #   sai na linha de PUXADORES, não aqui. O quarto elemento da tupla diz
+    #   qual é; sem ele, vale o slim, que era o único caso até aqui.
+    for b in g('BASCULAS'):
+        mv, rot, q = b[:3]
+        pux = b[3] if len(b) > 3 else 'slim'
         if mv == mov:
             out.append(['Báscula HK-XS', rot + ' · articulador a gás Blum',
                         '', '', q, 'un', 'Báscula HK-XS'])
-            # ⭐ slim no lugar do pulsador [Jonathan, 28/10/2026]
-            out.append(['Puxador slim', 'Rometal · uma por báscula · ⛔ sem '
-                        'pulsador Blum: não se somam na mesma frente', '', '',
-                        q, 'un', 'Puxador slim'])
+            if pux == 'slim':
+                out.append(['Puxador slim', 'Rometal · uma por báscula · ⛔ sem '
+                            'pulsador Blum: não se somam na mesma frente', '',
+                            '', q, 'un', 'Puxador slim'])
     for mv, rot, q in g('PUXADORES'):
         if mv == mov: out.append(['Puxador Alças Traso 128', rot +
                                   ' · Zen Design, 128 mm', '', '', q, 'un',
                                   'Puxador Alças Traso 128'])
     for mv, rot, q in g('MOLDURA'):
-        if mv == mov: out.append(['Moldura provençal', rot + ' · mão de obra '
-                                  'de travessa e almofada · ⛔ A COTAR, '
-                                  'cronometrar uma na fábrica', '', '', q,
-                                  'frente', 'Moldura provençal'])
+        if mv == mov: out.append(['Moldura provençal', rot + ' · usinagem do '
+                                  'relevo na router, peça inteira de 6 mm · '
+                                  '⛔ A COTAR, cronometrar uma na fábrica',
+                                  '', '', q, 'frente', 'Moldura provençal'])
     for mv, rot, q, c, l in g('VIDRO'):
         if mv == mov: out.append(['Vidro reflecta champagne', rot + ' · ⛔ A '
                                   'COTAR, segue sem preço na Base', c, l, q,
@@ -95,6 +102,15 @@ def linhas_do_item(mov):
     for mv, rot, q in g('SUPORTES'):
         if mv == mov: out.append(['Suporte oculto', rot + ' · de 40 em 40 cm',
                                   '', '', q, 'un', 'Suporte oculto'])
+    for mv, rot, q in g('CABIDEIROS'):
+        if mv == mov: out.append(['Cabideiro', rot + ' · metal preto ou '
+                                  'grafite', '', '', q, 'un', 'Cabideiro'])
+    # ⭐ sarrafo de pinus: estrutura interna por metro. Não é peça de chapa,
+    #   não leva fita e não aparece — mas segura a lava e seca cheia.
+    for mv, rot, m in g('SARRAFOS'):
+        if mv == mov: out.append(['Sarrafo de pinus', rot + ' · estrutura '
+                                  'interna, não aparente', '', '', m, 'm',
+                                  'Sarrafo de pinus'])
     # ⭐ serralheria estrutural: valor fechado por móvel, não por metro
     for mv, rot, v_ in g('SERRALHERIA'):
         if mv == mov: out.append(['Serralheria estrutural', rot + ' · ⛔ não é '

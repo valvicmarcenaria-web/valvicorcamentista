@@ -82,8 +82,14 @@ for p in PECAS:
 
 # ── 5 · báscula ↔ articulador ───────────────────────────────────────────
 #   ⭐ báscula não abre com dobradiça: precisa de articulador a gás
-nb = sum(p['qtd'] for p in PECAS if 'báscula' in p['nome'].lower())
-na = sum(q for mv, rot, q in BASCULAS)
+# ⛔ a báscula PROVENÇAL são três peças — a base de 15 e duas travessas de
+#   6 — e todas carregam 'báscula' no nome. Contar as três dá cinco
+#   articuladores por báscula. Na Cozinha as básculas eram lisas e a regra
+#   passava; a Lavanderia é inteira provençal e a regra quebrou. Conta só a
+#   base, que é a frente de verdade.
+nb = sum(p['qtd'] for p in PECAS if 'báscula' in p['nome'].lower()
+         and 'travessa' not in p['nome'].lower())
+na = sum(b[2] for b in BASCULAS)
 if nb != na:
     erro(f'{nb} básculas desenhadas × {na} articuladores orçados — não bate')
 
@@ -99,7 +105,10 @@ for mv, rot, nq, nd, pr in PORTAS:
 #     texto em nunca-orcei.md em vez de quebrar a auditoria. Báscula com
 #     pulsador E slim é o mesmo erro, e a Base já avisava dele.
 abre = {}
-for mv, rot, q in BASCULAS:   abre[mv] = abre.get(mv, set()) | {'báscula slim'}
+for b in BASCULAS:
+    mv = b[0]
+    modo = 'puxador' if (len(b) > 3 and b[3] != 'slim') else 'báscula slim'
+    abre[mv] = abre.get(mv, set()) | {modo}
 for mv, rot, q in PUXADORES:  abre[mv] = abre.get(mv, set()) | {'puxador'}
 for mv, rot, q, c in CAVA:    abre[mv] = abre.get(mv, set()) | {'cava'}
 for mv, modos in abre.items():
@@ -113,17 +122,42 @@ for p in PECAS:
              'abrir declarado')
 
 # ── 6c · provençal ↔ travessa ↔ mão de obra ─────────────────────────────
-#   ⭐ A frente provençal são DUAS chapas e uma mão de obra. Se a base de
-#     15 entrar sem as travessas de 6, ou sem a linha de moldura, o
+#   ⭐ A frente provençal são DUAS PEÇAS INTEIRAS e uma mão de obra. Se a
+#     base de 15 entrar sem a moldura de 6, ou sem a linha de usinagem, o
 #     orçamento sai barato e calado.
-base15 = sum(p['qtd'] for p in PECAS
-             if p['chave'].endswith(' 15') and p['nome'].lower().startswith('frente')
-             or p['chave'].endswith(' 15') and 'porta de giro' in p['nome'].lower())
-trav  = sum(p['qtd'] for p in PECAS if 'travessa deitada' in p['nome'])
+# ⛔ PROVENÇAL É QUEM TEM TRAVESSA, não quem tem nome de frente. A regra
+#   olhava o nome e a espessura, e aí a caixaria em Branco TX 15 e as
+#   frentes LISAS caíam na conta junto. Na Lavanderia há uma frente lisa de
+#   propósito — a gaveta de 10 cm, onde a travessa de 7 não cabe — e ela
+#   quebrava a auditoria sem haver erro nenhum. Agora a pergunta é exata:
+#   esta peça tem uma moldura usinada com o nome dela?
+# ⛔ A CHAVE É (MÓVEL, NOME), não o nome sozinho: "Frente · porta tempero"
+#   existe na ilha E na bancada da Cozinha, em medidas diferentes. Com a
+#   chave curta, a moldura de um móvel era comparada com a frente do outro
+#   e a regra acusava erro onde não havia. ⭐ Peça só é a mesma peça dentro
+#   do mesmo móvel.
+MOLD = {(p['movel'], p['nome'][:-len(' · moldura usinada')]): p for p in PECAS
+        if p['nome'].endswith(' · moldura usinada')}
+base15 = sum(p['qtd'] for p in PECAS if (p['movel'], p['nome']) in MOLD)
+# ⭐⭐ A MOLDURA TEM DE TER A MEDIDA DA FRENTE. É o que distingue o método
+#   da casa — "outra peça de igual tamanho, usinada na router" — de voltar
+#   a montar régua. Se alguém reduzir a moldura a uma tira, a chapa de 6 mm
+#   despenca e o orçamento sai barato sem ninguém perceber: esta regra é o
+#   que não deixa.
+for b in PECAS:
+    m = MOLD.get((b['movel'], b['nome']))
+    if m and (abs(m['c'] - b['c']) > 0.01 or abs(m['l'] - b['l']) > 0.01
+              or m['qtd'] != b['qtd']):
+        erro(f'{b["movel"][:22]} · {b["nome"]}: moldura {m["c"]:g}×{m["l"]:g}'
+             f'×{m["qtd"]} contra frente {b["c"]:g}×{b["l"]:g}×{b["qtd"]} — '
+             'a moldura é peça inteira, de mesma medida, não régua')
+trav  = sum(p['qtd'] for p in PECAS if 'moldura usinada' in p['nome'])
 mo    = sum(q for mv, rot, q in MOLDURA)
-if base15 and trav != 2*base15:
-    erro(f'{base15} frentes provençais × {trav} travessas deitadas — '
-         f'deviam ser {2*base15}, duas por folha')
+# ⛔ UMA moldura por frente, não duas travessas: a moldura é peça inteira
+#   de 6 mm usinada na router [Jonathan, 28/10/2026]
+if base15 and trav != base15:
+    erro(f'{base15} frentes provençais × {trav} molduras usinadas — '
+         'deviam ser uma por folha')
 if base15 != mo:
     erro(f'{base15} frentes provençais × {mo} na linha de mão de obra de '
          'moldura — não bate')
@@ -150,8 +184,12 @@ def custo(mv):
         if x == mv: t += q*B.CORREDICA
     for x, rot, nq, nd, pr in PORTAS:
         if x == mv: t += nq*nd*pr
-    for x, rot, q in BASCULAS:
-        if x == mv: t += q*(B.BASCULA + B.SLIM)   # ⭐ slim, não pulsador
+    for b in BASCULAS:
+        # ⭐ o slim só entra onde a báscula abre por ele. Na Lavanderia ela
+        #   abre pelo Alças Traso, que já vem na linha de PUXADORES.
+        if b[0] == mv:
+            t += b[2]*B.BASCULA
+            if len(b) <= 3 or b[3] == 'slim': t += b[2]*B.SLIM
     for x, rot, q in PUXADORES:
         if x == mv: t += q*B.PUXADOR_128
     for x, rot, q in MOLDURA:
@@ -166,6 +204,10 @@ def custo(mv):
         if x == mv: t += q*B.ALMA
     for x, rot, q in SUPORTES:
         if x == mv: t += q*B.SUPORTE
+    for x, rot, q in g('CABIDEIROS'):
+        if x == mv: t += q*B.CABIDEIRO
+    for x, rot, m in g('SARRAFOS'):
+        if x == mv: t += m*B.SARRAFO
     return t
 
 TOT = {m: custo(m) for m in MOV}

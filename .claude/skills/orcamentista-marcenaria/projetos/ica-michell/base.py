@@ -82,6 +82,12 @@ MOLDURA_MO = 0.0    # ⛔ moldura provençal, por frente — SEM PREÇO na Base
 LED_M      = 150.0  # LED COB: fita, perfil, usinagem e instalação
 ALMA       =  50.0  # barra chata 5 mm, 3 m · toda peça acima de 30 mm
 SUPORTE    =  30.0  # suporte oculto de prateleira · de 40 em 40 cm
+CABIDEIRO  = 120.0  # cabideiro em metal preto ou grafite · Base, por unidade
+# ⭐ reforço estrutural interno. A prancha da Lavanderia manda "prever
+#   reforço para suportar lava e seca cheia": o apoio sobe para 18 mm e
+#   recebe sarrafo. Sarrafo é material de estrutura, não aparece e não leva
+#   fita — por isso entra por metro, como o LED, e não como peça de chapa.
+SARRAFO    =   8.0  # sarrafo de pinus · estrutura interna, por metro
 VIDRO_M2   =   0.0  # ⛔ reflecta champagne SEM PREÇO — a cotar
 # ⭐ SERRALHERIA ESTRUTURAL [Jonathan, 28/10/2026]
 #   > "No banco suspenso do living considere uma estrutura de serralheria
@@ -142,32 +148,46 @@ def ripado(movel, larg_total, alt, larg_ripa, vao, chave, obs=''):
               obs or f'Vão de {vao:g} entre as ripas · {n} ripas em '
                      f'{larg_total:g} · laminada nos dois lados')]
 
-MOLDURA_L = 7.0   # ⚠ largura da travessa — PREMISSA, conferir na prancha
+# ⛔ MOLDURA_L SAIU. Era a largura da travessa, e era premissa minha: a
+#   prancha não a cotava e eu adotei 7 cm. Não existe mais travessa.
 
 def provencal(nome, movel, c, l, qtd, cor15, cor6, obs=''):
-    """⭐⭐ FRENTE PROVENÇAL — duas chapas  [Jonathan, 28/10/2026]
-       > "nas portas provençais considere que a composição de material é
-       >  dupla, uma chapa de 15mm para base e outra de 6mm para a moldura"
+    """⭐⭐ FRENTE PROVENÇAL — DUAS PEÇAS INTEIRAS  [Jonathan, 28/10/2026]
+       > "para as demais frentes provençais nao considere reguas, considere
+       >  outra peça de igual tamanho pois é retirada uma peça inteira e
+       >  feito a usinagem na router"
 
-    É a resposta à pergunta que estava aberta em nunca-orcei.md desde 26/10:
-    se a frente é MONTADA em travessas ou USINADA em relevo. É montada.
+       base ........ 15 mm na cor, medida cheia da frente
+       moldura ..... OUTRA peça inteira de 6 mm, MESMA medida, usinada na
+                     router — não são quatro réguas montadas
 
-       base ........ 15 mm na cor da frente
-       moldura ..... quatro travessas de 6 mm, na mesma cor
+    ⛔⛔ EU ORÇAVA RÉGUA, E RÉGUA NÃO É O QUE SAI DA FÁBRICA. Montava a
+      moldura com quatro travessas de 7 cm coladas em volta. A fábrica tira
+      uma peça inteira e usina o relevo na router: o que vai para o plano de
+      corte é um RETÂNGULO CHEIO de 6 mm, não quatro tiras. Três coisas
+      mudam de uma vez:
 
-    ⛔ Declaro as travessas, não o retângulo da frente: travessa é o que o
-      plano de corte recebe, e é o perímetro dela que dá o metro de
-      filetagem — que em 6 mm vai À MÃO, ao dobro do preço.
-    ⛔ A MÃO DE OBRA de moldura não tem preço na Base: a linha existe
-      ("Moldura provençal na frente", por frente) e está vazia de
-      propósito, a cronometrar na fábrica. Sai como zero e denuncia.
+      1. A CHAPA DE 6 MM SOBE. Quatro réguas de 7 cm numa frente de 60 × 85
+         davam 0,20 m²; a peça inteira dá 0,51 m². É duas vezes e meia mais
+         de chapa de 6 — e chapa se arredonda inteira.
+      2. A FILETAGEM MANUAL SOME. A régua de 6 mm não entrava na coladeira e
+         ia à mão, a R$ 5,00. Agora o 6 é COLADO sobre o 15 e o conjunto vai
+         à coladeira como uma peça só, de 21 mm, no automático. Por isso a
+         peça de 6 entra com fita (0, 0): quem leva o perímetro é a base,
+         uma vez só, pelos dois.
+      3. A PREMISSA DA TRAVESSA MORRE. Não há largura de régua para adivinhar
+         — e com ela morre o limite de tamanho: uma frente de 10 cm, que não
+         comportava duas travessas de 7, agora é provençal como qualquer
+         outra.
+
+    ⛔ A MÃO DE OBRA continua sem preço na Base, mas agora tem nome certo:
+      é USINAGEM NA ROUTER por frente, não montagem de travessa.
     """
-    t = f'Travessa de {MOLDURA_L:g} cm em 6 mm · ⚠ largura a conferir na prancha'
     return [P(nome, movel, c, l, qtd, cor15, (2, 2), obs),
-            P(f'{nome} · travessa deitada', movel, c, MOLDURA_L, 2*qtd, cor6,
-              (2, 2), t),
-            P(f'{nome} · travessa em pé', movel, l - 2*MOLDURA_L, MOLDURA_L,
-              2*qtd, cor6, (2, 2), t + ' · descontada a deitada')]
+            P(f'{nome} · moldura usinada', movel, c, l, qtd, cor6, (0, 0),
+              'Peça inteira de 6 mm, mesma medida da base, relevo usinado na '
+              'router · colada sobre a base: o perímetro vai na fita da base, '
+              '⛔ sem fita própria para não contar o mesmo metro duas vezes')]
 
 def _fita_chave(chave):
     return 'Fita Branco TX' if 'ranco' in chave else 'Fita cor'

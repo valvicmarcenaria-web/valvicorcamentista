@@ -160,3 +160,54 @@ continua no orçamento; o que sai é a palavra.
 Consequência na garantia: onde a linha dizia *"regulagem de porta e de
 prateleira — 2 anos"*, passa a dizer só **regulagem de porta** (e de gaveta,
 onde houver).
+
+## ⭐⭐ FRENTE PROVENÇAL — DUAS PEÇAS INTEIRAS, USINADAS NA ROUTER
+
+> **[Jonathan, 28/10/2026]** *"para as demais frentes provençais nao
+> considere reguas, considere outra peça de igual tamanho pois é retirada
+> uma peça inteira e feito a usinagem na router."*
+
+A frente provençal **não é régua colada em volta**. São **duas peças inteiras,
+de mesma medida, coladas face a face**:
+
+| Peça | Espessura | Medida | Fita |
+|---|---|---|---|
+| **Base** | 15 mm, na cor da frente | medida cheia da frente | **4 lados** |
+| **Moldura** | 6 mm, na mesma cor | **a mesma medida da base** | **nenhuma** |
+
+O relevo é **usinado na router** sobre a peça de 6 mm — o centro é rebaixado e
+sobra a faixa de moldura (nas pranchas do ICA, **3 cm** de largura, no detalhe
+"Det. marcenaria moldura"). O que vai para o plano de corte é um **retângulo
+cheio**, não quatro tiras.
+
+### O que isso muda no orçamento — três coisas de uma vez
+
+1. **A chapa de 6 mm sobe, e muito.** Numa frente de 60 × 85, quatro réguas de
+   7 cm davam 0,20 m²; a peça inteira dá 0,51 m². São 2,5 vezes mais de chapa
+   de 6 — e chapa se arredonda inteira, por cor.
+2. **A filetagem manual some das frentes.** A régua de 6 mm não entrava na
+   coladeira e ia à mão, ao dobro do preço. Agora o 6 mm é **colado sobre o
+   15** e o conjunto, de **21 mm**, entra na coladeira como peça única, no
+   automático. ⛔ Por isso a peça de 6 entra com **fita zero**: quem leva o
+   perímetro é a base, **uma vez só, pelos dois** — contar os dois é cobrar o
+   mesmo metro duas vezes.
+3. **Não há mais largura de travessa para adivinhar** — e com ela morre o
+   limite de tamanho. Uma frente de 10 cm de altura, que não comportava duas
+   travessas de 7, é provençal como qualquer outra.
+
+### A mão de obra
+
+Continua **sem preço na Base** (linha "Moldura provençal na frente", vazia de
+propósito), mas agora tem nome certo: é **tempo de router por frente**, não
+montagem de travessa. É isso que se cronometra na fábrica.
+
+### A regra que guarda isso
+
+O auditor exige que **a moldura tenha a mesma medida e a mesma quantidade que
+a base**. Se alguém encolher a moldura para uma tira, a chapa de 6 mm despenca
+e o orçamento sai barato sem ninguém perceber — a regra é o que não deixa.
+
+> **Custo do aprendizado:** no ICA, trocar régua por peça inteira mexeu na
+> Cozinha de R$ 21.473,93 para R$ 21.090,35 de custo direto. Caiu, apesar de
+> mais chapa, porque a filetagem manual das réguas era maior que a chapa que
+> entrou.

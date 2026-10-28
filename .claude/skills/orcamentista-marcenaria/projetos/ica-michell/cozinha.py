@@ -20,7 +20,7 @@ conjunto só, na mesma parede e no mesmo padrão. Ficam TRÊS itens.
 from base import (P, gaveta, ripado, provencal, acabamento, fita_m, ALT_MAX,
                   CHAPA_C, CHAPA_L, CHAPA_M2, APROV, PRECO, FITA_PERD,
                   CORREDICA, DOBRADICA, BASCULA, SLIM, CAVA_M, PUXADOR_128,
-                  LED_M, SUPORTE, CONSUM, EMBAL, ALTAS, MOLDURA_L)
+                  LED_M, SUPORTE, CONSUM, EMBAL, ALTAS)
 
 # ⭐ a chave carrega a COR **e** a espessura: cada combinação é uma compra
 #   separada e um arredondamento próprio
@@ -52,7 +52,7 @@ COZINHA = [
  P('Fundo',                 I1, 235, 85, 1, FUN, (0, 0), 'Encaixe em rasgo'),
  *provencal('Frente · gavetão',       I1, 60, 38, 2, VF15, VF6, 'Provençal · abre pelo puxador Alças Traso'),
  *provencal('Frente · gavetão alto',  I1, 60, 52, 1, VF15, VF6, 'Provençal'),
- *provencal('Frente · gaveta',        I1, 60, 18, 2, VF15, VF6, 'Provençal · ⚠ 18 de altura: a travessa de 7 deixa 4 de painel, conferir'),
+ *provencal('Frente · gaveta',        I1, 60, 18, 2, VF15, VF6, 'Provençal · ⭐ com a moldura usinada na router a altura de 18 deixou de ser problema: não há travessa para não caber'),
  *provencal('Frente · porta',         I1, 69, 85, 1, VF15, VF6, 'De giro · provençal'),
  *provencal('Frente · porta tempero', I1, 38, 85, 1, VF15, VF6, 'Provençal'),
  *gaveta(I1, 60, 100, 38, 2, 'Gavetão'),
@@ -163,10 +163,10 @@ FOLHA = dict(
  #   compra por eu ter esquecido de acrescentar uma linha aqui.
  chapa_txt={VF:   'Linha Velluto · lateral aparente da ilha',
             VF15: 'Linha Velluto · base das frentes provençais',
-            VF6:  'Linha Velluto · travessas da moldura provençal',
+            VF6:  'Linha Velluto · moldura usinada, peça inteira sobre a base',
             JR:   'Linha Essencial Wood · básculas e ripado',
             JR15: 'Linha Essencial Wood · base da porta de giro',
-            JR6:  'Linha Essencial Wood · travessas da moldura',
+            JR6:  'Linha Essencial Wood · moldura usinada, peça inteira',
             EST:  'Estrutura e caixaria · o padrão da Base para caixaria',
             PRAT18:'Prateleira da torre · vão de 104, 18 mm contra empeno',
             FUN:  'Fundos · encaixe em rasgo, sem fita'},
@@ -175,16 +175,16 @@ FOLHA = dict(
       '⭐⭐ NOVE PADRÕES DE CHAPA, NOVE ARREDONDAMENTOS: cada cor × '
       'espessura é uma compra separada e puxa no mínimo uma chapa, mesmo '
       'que leve uma peça só. A frente provençal criou quatro padrões novos '
-      '(15 mm de base e 6 mm de moldura, em duas cores), e cinco dos nove '
-      'padrões levam uma chapa inteira para menos de 2,2 m² de peça: são '
-      'R$ 2.350 de chapa para 5,5 m² cortados. ⚠ É onde a mistura de cor '
+      '(15 mm de base e 6 mm de moldura, em duas cores), e QUATRO dos nove '
+      'padrões levam uma chapa inteira para menos de 1,9 m² de peça: são '
+      'R$ 2.000 de chapa para 3,66 m² cortados. ⚠ É onde a mistura de cor '
       'fica mais cara que a peça — vale olhar junto com a Lavanderia, que '
       'é inteira provençal e pode dividir a sobra.',
  duvidas=[
   'A TORRE DA GELADEIRA foi desenhada com 300 e a chapa dá 273. Rebaixei '
   'lateral e fundo, e sobram 27 cm abertos no topo. É a mesma decisão que o '
   'senhor fechou para as colunas do Living, mas aqui ela ainda não foi '
-  'tomada. ⚠ Rebaixa, emenda, ou fecha com travessa?',
+  'tomada. ⚠ Rebaixa, emenda, ou fecha com arremate?',
   'A CAVA SAIU quando o puxador entrou, e essa parte eu INFERI. A prancha '
   'pede puxador Alças Traso E cava frontal usinada na mesma frente; frente '
   'não abre de dois modos, então tirei a cava. ⚠ Confirmar — se a cava '
@@ -193,10 +193,9 @@ FOLHA = dict(
   'de R$ 44,92 a R$ 109,22: preto por volta de R$ 54 a 62, dourado R$ 84,54, '
   'níquel velho R$ 109,22. Os R$ 110 que o senhor passou caem no níquel '
   'velho. ⚠ Qual acabamento vai?',
-  'A MÃO DE OBRA DE MOLDURA PROVENÇAL não tem preço na Base e são 16 frentes '
+  'A USINAGEM DA MOLDURA PROVENÇAL não tem preço na Base e são 16 frentes '
   'aqui, mais 31 na Lavanderia. Sai ZERO e o orçamento denuncia. ⛔ Até ela '
-  'existir este custo é um PISO. Meia hora de marceneiro por frente seriam '
-  'R$ 288; uma hora, R$ 576. ⚠ Vale cronometrar uma na fábrica.',
+  'existir este custo é um PISO. ⚠ Agora o que se cronometra é o tempo de ROUTER por frente, não a montagem de travessa.',
   'UMA PORTA CUSTA R$ 900 DE CHAPA. A porta de giro do Superior 01 é a única '
   'peça nos padrões Jequitibá Rosa 15 e 6, e cada um puxa uma chapa inteira: '
   'R$ 550 mais R$ 350 para 0,67 m² de peça. ⚠ Se ela virar lisa como as '
@@ -205,12 +204,6 @@ FOLHA = dict(
   'colam duas chapas, e aí DOBRA a chapa dessas peças e entra laminação de '
   'topo, ou se faz caixão. Orcei como CAIXÃO em 18 mm simples. ⚠ É a decisão '
   'mais cara do projeto e aparece em quase todo ambiente.',
-  'A LARGURA DA TRAVESSA da moldura provençal: adotei 7 cm como premissa, '
-  'porque a prancha não cota a travessa. ⚠ Ela muda a chapa de 6 mm e o metro '
-  'de filetagem manual.',
-  'A FRENTE DE GAVETA DE 18 CM de altura, com travessa de 7, deixa só 4 cm de '
-  'painel no meio. ⚠ Numa gaveta baixa a travessa costuma ser mais estreita, '
-  'ou a frente sai lisa. Confirmar.',
   'NÃO LI AS PÁGINAS 031 a 033 — não estavam no cache de folhas soltas. São '
   'elevações, não detalhamentos, mas convém conferir se trazem algo que o '
   'quantitativo não pegou.'],
@@ -219,6 +212,17 @@ FOLHA = dict(
   'Cuba dupla inox 86 × 44, torneira monocomando e escorredor de calha úmida',
   'Coifa downdraft de bancada, forno elétrico, cooktop de indução, micro-ondas, lava-louças e torre de tomadas'],
  notas=[
+  '⭐⭐ A MOLDURA PROVENÇAL É PEÇA INTEIRA USINADA, NÃO RÉGUA COLADA. '
+  '[Jonathan, 28/10/2026] "nao considere reguas, considere outra peça de '
+  'igual tamanho pois é retirada uma peça inteira e feito a usinagem na '
+  'router". Eu montava a moldura com quatro travessas de 7 cm em volta da '
+  'frente; a fábrica tira um RETÂNGULO CHEIO de 6 mm, do tamanho da frente, '
+  'e usina o relevo. Três coisas mudaram: a chapa de 6 mm subiu (na frente '
+  'de 60 × 85 eram 0,20 m² de régua e agora são 0,51 m² de peça), a '
+  'FILETAGEM MANUAL SUMIU das frentes (o 6 vai colado sobre o 15 e o '
+  'conjunto de 21 mm entra na coladeira no automático) e a premissa da '
+  'largura da travessa deixou de existir. Líquido: a Cozinha caiu de '
+  'R$ 21.473,93 para R$ 21.090,35 de custo direto.',
   '⛔ A TORRE DA GELADEIRA FOI DESENHADA COM 300 e a chapa dá 273: lateral e '
   'fundo foram rebaixados, e sobram 27 cm abertos no topo. É a mesma decisão '
   'que o senhor fechou com o cliente para as colunas do Living — aqui ela '
