@@ -111,6 +111,46 @@ célula e em **Permitir acesso**. Enquanto isso toda a cadeia dá
 `#DIV/0!` — por isso as fórmulas de custo vão dentro de `SEERRO`, para que
 a planilha fique limpa, e não quebrada, no estado intermediário.
 
+## ⭐⭐ O SISTEMA TIPOGRÁFICO DA ABA [Jonathan, 28/10/2026]
+
+> *"as abas do living e da cozinha ainda estao bagunçadas, colunas pequenas,
+> textos em tamanhos diferentes, alinhamentos diferentes na mesma coluna.
+> Seja mais criterioso."*
+
+⛔ **A causa não era gosto, era método.** Eu vinha formatando em pedaços, um
+`repeatCell` por vez, em momentos diferentes — e cada camada nova cobria
+parte da anterior. O resultado é mosaico: a mesma coluna com três
+alinhamentos, o mesmo tipo de linha com dois corpos.
+
+⭐ **A formatação é um sistema e se aplica de baixo para cima, de uma vez:**
+
+| camada | o que faz |
+|---|---|
+| **0 · reset** | `repeatCell` na aba INTEIRA com o formato base (Arial 10, tinta #1A1A1A, fundo branco, meio, CLIP) |
+| **1 · alinhamento por coluna** | a coluna manda, não a linha: B e C à esquerda · D E F à direita · G centro · H e I à direita |
+| **2 · larguras** | A 36 (margem) · B 258 · C 470 · D–F 62 · G 54 · H 104 · I 128 · J 30 · K oculta |
+| **3 · a coluna de apoio** | C inteira em 9 pt cinza, e `OVERFLOW_CELL` na faixa dos blocos, para a especificação longa vazar quando as vizinhas estão vazias |
+| **4 · hierarquia** | título 16 · seção 11 dourada com régua · cabeçalho 8 · corpo 10 · total de item 11 · nota 9 itálica |
+| **5 · números** | moeda e porcentagem, por faixa |
+
+⭐ **Três corpos, e só três:** 16 no título, 11 nas seções e totais, 10 no
+corpo — com 8 nos cabeçalhos e 9 no texto de apoio. Qualquer outro tamanho
+na aba é erro.
+
+## ⛔⛔ REPETI A ARMADILHA QUE EU MESMO TINHA ESCRITO
+
+Apliquei `#,##0.##` nas colunas de medida e o 110 virou **"110,"** — o
+ponto do padrão é separador de MILHAR em pt_BR. Está documentado nesta
+mesma página desde 27/10, e eu repeti no dia seguinte.
+
+⭐ A regra, agora categórica: **em pt_BR, padrão numérico só para moeda e
+porcentagem.** Para número livre — medida, quantidade, contagem — não se
+define padrão nenhum: limpa-se o `numberFormat` e deixa-se o Geral.
+
+```
+repeatCell(range, cell={}, fields="userEnteredFormat.numberFormat")
+```
+
 ## ⭐⭐ A IDENTIDADE N.GESTAO [Jonathan, 28/10/2026]
 
 > *"pode tirar o campo das imagens tbm. e copie a identidade visual das
