@@ -82,7 +82,7 @@ def montar(inicio):
     for i, mov in enumerate(MOV, 1):
         ls = linhas_do_item(mov)
         titulo, cadeia = A.CABECA[mov]
-        val.append([f'ITEM {i:02d}', mov.split(' ', 1)[-1], '', '', '', '', '',
+        val.append([f'ITEM {i:02d}', mov.split(' ', 2)[-1], '', '', '', '', '',
                     titulo])
         val.append(['', cadeia])
         val.append(['MATERIAL', 'ESPECIFICAÇÃO', 'C', 'L', 'QTD', 'UN',
@@ -113,7 +113,7 @@ if __name__ == '__main__':
     faixas.append((a, ant))
     print(f'✓ {len(val)} linhas · blocos de {INI} a {fim-2}')
     for i, mov in enumerate(MOV, 1):
-        print(f'   ITEM {i:02d} {mov.split(" ",1)[-1][:40]:42} total na linha {mapa[i]}')
+        print(f'   ITEM {i:02d} {mov.split(" ",2)[-1][:40]:42} total na linha {mapa[i]}')
     print(f'  faixas de material: {faixas}')
     print(f'  totais: {sorted(mapa.values())}')
     print(f'  padrões de chapa: {sorted({p["chave"] for p in PECAS if p["chave"].startswith("MDF")})}')

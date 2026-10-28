@@ -123,3 +123,43 @@ CABECA = {
       '⭐ VISTA FRONTAL 215 + 62 + 128 = 405, e o 62 é o VÃO DO LAVA-LOUÇAS: de marcenaria '
       'são 343, que fecham em 95 + 35 + 85 + 68 + 60 = 343 · altura 5 + 80 + 5 = 90 · frentes 40 + 40 = 80'),
 }
+
+# ── a folha: o que é texto da aba, e só dela ────────────────────────────
+FOLHA = dict(
+ aba='COZINHA',
+ sub='Jéssica e Michell · Projeto ICA · páginas 028 a 042 · três itens · '
+     'Verde Floresta na ilha e na bancada, Jequitibá Rosa nos armários, '
+     f'Branco no interno · peça inteira até {ALT_MAX:g}, que é a chapa de '
+     f'{CHAPA_C:g} menos o acerto de corte',
+ chapas=[(VF,     'Linha Velluto · ilha e bancada'),
+         (JR,     'Linha Essencial Wood · armários, ripado e básculas'),
+         (BRANCO, 'Divisórias, prateleiras e caixa de gaveta'),
+         (BR6,    'Fundos · encaixe em rasgo, sem fita')],
+ nota='⛔ O FRETE ESTÁ ZERADO DE PROPÓSITO: as quatro linhas de frete da '
+      'Base não têm preço ainda. Preencher lá e elas aparecem aqui sozinhas.'
+      '   ⭐ QUATRO PADRÕES DE CHAPA, QUATRO ARREDONDAMENTOS: cada cor é uma '
+      'compra separada e puxa no mínimo uma chapa, mesmo que leve uma peça '
+      'só. Somar a fração e arredondar no fim subestima a compra — e justo '
+      'os projetos de arquiteta, que misturam cor, é onde isso dói.',
+ nao_marcenaria=[
+  'Tampo da ilha e bancada em Quartzito Bianco Superiore — pedra, e o recorte é nosso mas a pedra não',
+  'Cuba dupla inox 86 × 44, torneira monocomando e escorredor de calha úmida',
+  'Coifa downdraft de bancada, forno elétrico, cooktop de indução, micro-ondas, lava-louças e torre de tomadas'],
+ notas=[
+  '⛔ A TORRE DA GELADEIRA FOI DESENHADA COM 300 e a chapa dá 273: lateral e '
+  'fundo foram rebaixados, e sobram 27 cm abertos no topo. É a mesma decisão '
+  'que o senhor fechou com o cliente para as colunas do Living — aqui ela '
+  'ainda não foi tomada.',
+  '⚠ PUXADOR OU CAVA? A prancha desenha cava frontal usinada em toda frente, '
+  'e foi assim que orçamos. Mas a Base registra "Puxador Alças Traso 416 mm · '
+  'ICA · toda frente da Cozinha e da Lavanderia", a R$ 172,71. São 15 '
+  'frentes: trocar cava por puxador acrescenta R$ 2.590,65 de puxador e tira '
+  'R$ 476,50 de usinagem — líquido de R$ 2.114,15 a mais.',
+  '⚠ LATERAIS DE 3 CM na torre e nos superiores. MDF não existe em 30 mm: ou '
+  'se colam duas chapas, e aí DOBRA a chapa dessas peças e entra laminação de '
+  'topo, ou se faz caixão. Orçado como caixão, em 18 mm simples. É a decisão '
+  'mais cara do projeto e aparece em quase todo ambiente.',
+  '⚠ NÃO LI AS PÁGINAS 031 a 033: não estavam no cache de folhas soltas. São '
+  'elevações, não detalhamentos, mas convém conferir se trazem algo que o '
+  'quantitativo não pegou.'],
+)

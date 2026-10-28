@@ -143,7 +143,7 @@ print('═'*W); print(f'AUDITORIA DO LEVANTAMENTO · {NOME.upper()}'); print('�
 print(f'\n{len(PECAS)} peças · {len(MOV)} itens · '
       f'{len({p["chave"] for p in PECAS if p["chave"].startswith("MDF")})} padrões de chapa\n')
 for i, m in enumerate(MOV, 1):
-    print(f'  ITEM {i:02d}  {m.split(" ",1)[-1][:40]:42}{br(TOT[m]):>12}')
+    print(f'  ITEM {i:02d}  {m.split(" ",2)[-1][:40]:42}{br(TOT[m]):>12}')
 print(f'  {"":48}{"─"*12}')
 print(f'  {"SOMA DOS ITENS":<48}{br(sum(TOT.values())):>12}')
 if ALTAS := B.ALTAS:

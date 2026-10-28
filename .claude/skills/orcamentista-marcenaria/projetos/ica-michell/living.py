@@ -52,7 +52,7 @@ def gaveta(movel, larg, prof, alt, n=1, rotulo='Caixa de gaveta'):
 # ════════════════════════════════════════════════════════════════════════
 D1 = 'DET 01 Sapateira com painel'
 D2 = 'DET 02 Aparador com gaveta'
-D3 = 'DET 03 Prateleira'
+D3 = 'DET 03 Prateleira iluminada'
 D4 = 'DET 04 Divisória em colunas'
 D5 = 'DET 05 Jardineira com banco'
 D6 = 'DET 06 Divisória com cristaleira'
@@ -389,3 +389,62 @@ def colunas():
 if __name__ == '__main__':
     conta()
     colunas()
+
+
+# ── o cabeçalho de cada bloco: medida geral e a cadeia que fecha ────────
+#   ⭐ Mesma forma da Cozinha, para que planilha.py e aba.py sirvam os dois
+#     sem um "se for o Living". Era daqui que vinha metade da divergência
+#     de formatação entre as abas.
+CABECA = {
+ D1: ('142 × 300 × 42',
+      'Altura 178 do painel + 105 da sapateira + 17 da base = 300 · frentes 2 + 34 + 34 + 34 + 2 = 105'),
+ D2: ('185 × 55 × 50',
+      'Largura 8 + 34 + 8 + 135 = 185 · altura 5 + 45 + 5 = 55 · vista superior 50 + 135 = 185'),
+ D3: ('135 × 45 · duplada',
+      'Largura 50 + 135 = 185 na elevação · ⭐ 5 cm de espessura = duas peças'),
+ D4: (f'11 colunas · 70 × 200 mm · {ALT_MAX:g} de altura',
+      'Cadeia 11 × 7 + 10 × 10 = 177 ⭐ · vertical 300 + 20 = 320 — os 20 cm são a peça de 200 mm · ⛔ sem fita de borda'),
+ D5: ('520 × 113 × 50',
+      'VISTA SUPERIOR 10 + 500 + 10 = 520, profundidade 113 em 44 + 25 + 44 · VISTA FRONTAL altura 30 + 10 + 10 = 50 · ⚠ a lateral traz 10 + 80 + 103 = 193, que não fecha com os 113'),
+ D6: ('460 × 300 × 65',
+      'Largura 100 + 260 + 100 = 460 · VISTA SUPERIOR fecha a profundidade em 16 + 2 + 15 + 16 + 16 = 65 · ⛔ o 65 é PROFUNDIDADE, não largura: não há peça de 65 de largura'),
+ D7: ('255 × 300 × 40',
+      'Largura 5+75+5+60+5+60+5+40 = 255 · altura 5+48+5+48+5+48+5+48+5+43+35+5 = 300'),
+ D8: ('400 × 300',
+      'Largura 260 + 80 + 60 = 400 · altura 90 + 210 = 300 · 400 × 273 = 220 de painel cheio + 180 × 63 de travessa + duas portas de 90 × 210'),
+}
+
+# ── a folha: o que é texto da aba, e só dela ────────────────────────────
+FOLHA = dict(
+ aba='LIVING',
+ sub='Jéssica e Michell · Projeto ICA · páginas 012 a 026 · oito itens · '
+     'pé-direito 300 · MDF Nogueira Caiena, Duratex · puxador cava na '
+     f'própria madeira · peça inteira até {ALT_MAX:g}, que é a chapa de '
+     f'{CHAPA_C:g} menos o acerto de corte',
+ chapas=[(NC18, 'Nogueira Caiena · Duratex'),
+         (NC6,  'Fundos · encaixe em rasgo, sem fita')],
+ nota='⛔ O FRETE ESTÁ ZERADO DE PROPÓSITO: as quatro linhas de frete da '
+      'Base (chapa, fita, ferragem e vidro) não têm preço ainda. Preencher '
+      'lá e elas aparecem aqui sozinhas.   ⭐ A chapa entra em NÚMERO CHEIO '
+      'e por cor × espessura — não existe 2,7 chapas, são 3. Os itens lá '
+      'embaixo rateiam a chapa em fração, para que cada móvel tenha custo '
+      'próprio; a diferença entre os dois aparece no fechamento dos itens.',
+ nao_marcenaria=[
+  'Parede com pedra Atacama Branca, revestimentos e pinturas',
+  'Espelho MH 2897 · Uultis e pendente de palha 35 × 100 × 35',
+  'Sofá Tiffany, poltrona Serfa, mesa Cambuí, cadeira Ditta, luminárias, tapete e cortinas',
+  'Porta ripada da elevação 02 · confirmar se entra no nosso escopo'],
+ notas=[
+  '⛔ REGRA DE FERRO: chapa se conta em número cheio, e por cor × espessura. '
+  'Não existe 2,7 chapas — são 3. [Jonathan, 26/10/2026]  ⭐ Os itens rateiam '
+  'a chapa em fração, para que cada móvel tenha custo próprio; a DIFERENÇA é '
+  'o que o arredondamento acrescenta, e entra uma vez só, no fechamento.',
+  '⛔ SEM FONTE DE LED em lugar nenhum: as fitas da casa são 110 V. '
+  '[Jonathan, 28/10/2026]   ⛔ As colunas do item 04 NÃO levam fita de borda.'
+  '   ⛔ O aparador do item 02 NÃO leva alma de aço: móvel de 55 de altura '
+  'não empena.',
+  '⚠ EM ABERTO: peças desenhadas acima de 273 na cristaleira (lateral e '
+  'montante, 280) · vão livre de 260 em MDF no item 06 · vidro reflecta '
+  'champagne sem preço · a vista lateral da jardineira (193) não fecha com a '
+  'superior (113) · largura da sapateira 142 ou 82.'],
+)
