@@ -50,7 +50,17 @@ PRECO = {'MDF cor 18': 700.0, 'MDF cor 15': 550.0, 'MDF cor 6': 350.0,
          'MDF Oásis 18': 700.0, 'MDF Oásis 15': 550.0, 'MDF Oásis 6': 350.0,
          'MDF Palha Indiana Sextavada 18': 700.0,
          'MDF Palha Indiana Sextavada 15': 550.0,
-         'MDF Palha 18': 700.0, 'MDF Palha 15': 550.0}
+         'MDF Palha 18': 700.0, 'MDF Palha 15': 550.0,
+         # ⭐ os três padrões que a Suíte Master trouxe. Carvalho Brun e
+         #   Nazca Linha Velluto são Duratex; Beige é ARAUCO, outro
+         #   fornecedor — e a Base não distingue fornecedor, só espessura.
+         #   ⚠ Nazca Linha Velluto é linha de TOQUE ATERVELUDADO: não é
+         #     melamínico fosco comum e costuma custar mais.
+         'MDF Carvalho Brun 18': 700.0, 'MDF Carvalho Brun 15': 550.0,
+         'MDF Carvalho Brun 6': 350.0,
+         'MDF Nazca Velluto 18': 700.0, 'MDF Nazca Velluto 15': 550.0,
+         'MDF Beige 18': 700.0, 'MDF Beige 15': 550.0,
+         'MDF Beige 6': 350.0}
 ESTRUTURA, FUNDO_CH, PORTA_CH = 'MDF Branco TX 15', 'MDF Branco TX 6', 15
 PRAT_VAO = 70.0   # vão acima disto pede 18 mm, contra empeno [Base]
 # ⭐⭐ FITA E FILETAGEM SÃO DUAS COISAS [Jonathan, 28/10/2026]
@@ -115,6 +125,10 @@ PRECO_OUTRAS = {
  # ⭐ a porta de correr da Sala de Cinema tem 123 × 300 por folha e pesa:
  #   trilho embutido, não a corrediça de gaveta. A Base não tem a linha.
  'Trilho de porta de correr': 0.0,  # ⛔ por folha · SEM PREÇO na Base
+ # ⭐ a cabeceira da Suíte Master é ESTOFADA, em linho bege: seis módulos
+ #   de 83 × 104. Isso é estofador, não marcenaria, e a Base não tem a
+ #   linha. Entra por m² a zero, para aparecer na conta sem mentir.
+ 'Estofamento em linho': 0.0,   # ⛔ por m² · SEM PREÇO na Base
 }
 VIDRO_M2   =   0.0  # ⛔ reflecta champagne SEM PREÇO — a cotar
 # ⭐ SERRALHERIA ESTRUTURAL [Jonathan, 28/10/2026]
