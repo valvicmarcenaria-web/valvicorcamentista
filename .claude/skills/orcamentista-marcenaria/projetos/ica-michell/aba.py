@@ -30,6 +30,14 @@
   "#,##0.##" é separador de MILHAR, e 110 sai como "110,". Número livre
   (C, L, QTD) vai SEM padrão nenhum.
 
+⛔⛔ RODE O AUDITOR ATÉ ELE FICAR LIMPO ANTES DE GERAR A ABA. [28/10/2026]
+  Na Área Gourmet eu gerei a aba, apliquei os 150 requests de formato, e só
+  então vi que a CAVA estava declarada no formato errado — `(frentes,
+  largura)`, não metros. Corrigir mudou UMA linha de levantamento em cinco,
+  a aba cresceu de 139 para 143 linhas, e TODO o formato teve de ser
+  reenviado. ⭐ O formato custa o dobro do que parece: ele é digitado à mão
+  nos argumentos do MCP. Levantamento primeiro, aba depois.
+
    uso:  python3 aba.py cozinha 104 47 186 5
          (ambiente · sheetId · linha dos blocos HOJE · linhas HOJE ·
           regras condicionais que a aba já tem — 0 se for aba nova)
