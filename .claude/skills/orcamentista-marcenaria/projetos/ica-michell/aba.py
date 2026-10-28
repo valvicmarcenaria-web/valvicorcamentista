@@ -422,8 +422,16 @@ for i in range(L['nt0'], L['nt1']+1):
 for i in range(L['dv0'], L['dv1']+1):
     Q.append(alt(i, i, altura(DUVIDAS[i - L['s_dv']][1], 'C', 'I')))
 # ⭐ a aba acaba onde o conteúdo acaba — sobra de linha guarda formato velho
-Q.append({'deleteDimension': {'range': {'sheetId': SID, 'dimension': 'ROWS',
-          'startIndex': L['fim']+1, 'endIndex': FIM_HOJE}}})
+# ⛔⛔ E ELA TAMBÉM PODE CRESCER. O gerador nasceu encolhendo abas (Living e
+#   Cozinha, que já existiam grandes) e emitia deleteDimension sempre. Na
+#   Lavanderia, que entra numa cópia de 173 linhas e precisa de 236, isso
+#   virou um intervalo INVERTIDO — startIndex 237, endIndex 173 — que a API
+#   recusa e derruba o lote inteiro. Agora são três casos, e o terceiro é
+#   não fazer nada.
+if L['fim'] + 1 < FIM_HOJE:
+    Q.append({'deleteDimension': {'range': {'sheetId': SID, 'dimension': 'ROWS',
+              'startIndex': L['fim']+1, 'endIndex': FIM_HOJE}}})
+CRESCER = max(0, L['fim'] - FIM_HOJE)   # ⭐ aplicado LÁ NA FRENTE, ver 5b
 # ── larguras, iguais nas duas abas ─────────────────────────────────────
 for c, px in zip('ABCDEFGHIJK', (36, 258, 500, 62, 62, 62, 54, 104, 128, 24, 150)):
     Q.append({'updateDimensionProperties': {'range': {'sheetId': SID,
@@ -477,8 +485,13 @@ Q.append({'addConditionalFormatRule': {'index': 0, 'rule': {
 #   ⛔ a ordem importa: apagar regra por índice 0 N vezes só funciona se
 #     ninguém acrescentou nenhuma no meio, e desmesclar tem de vir antes de
 #     mesclar de novo, senão a API recusa.
-LIMPA = [{'deleteConditionalFormatRule': {'sheetId': SID, 'index': 0}}
-         for _ in range(N_REGRAS)]
+# ⛔⛔ CRESCER VEM PRIMEIRO, antes de tudo. Formatar, mesclar ou medir uma
+#   linha que ainda não existe é erro de intervalo, e um erro só derruba o
+#   lote inteiro — a aba fica metade nova, metade velha.
+LIMPA = ([{'appendDimension': {'sheetId': SID, 'dimension': 'ROWS',
+           'length': CRESCER}}] if CRESCER else [])
+LIMPA += [{'deleteConditionalFormatRule': {'sheetId': SID, 'index': 0}}
+          for _ in range(N_REGRAS)]
 LIMPA.append({'unmergeCells': {'range': {'sheetId': SID, 'startRowIndex': 0,
               'endRowIndex': max(FIM_HOJE, L['fim']), 'startColumnIndex': 0,
               'endColumnIndex': 11}}})

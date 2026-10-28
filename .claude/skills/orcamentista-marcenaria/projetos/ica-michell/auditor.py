@@ -82,13 +82,20 @@ for p in PECAS:
 
 # ── 5 · báscula ↔ articulador ───────────────────────────────────────────
 #   ⭐ báscula não abre com dobradiça: precisa de articulador a gás
-# ⛔ a báscula PROVENÇAL são três peças — a base de 15 e duas travessas de
-#   6 — e todas carregam 'báscula' no nome. Contar as três dá cinco
-#   articuladores por báscula. Na Cozinha as básculas eram lisas e a regra
-#   passava; a Lavanderia é inteira provençal e a regra quebrou. Conta só a
-#   base, que é a frente de verdade.
-nb = sum(p['qtd'] for p in PECAS if 'báscula' in p['nome'].lower()
-         and 'travessa' not in p['nome'].lower())
+# ⛔⛔ A PALAVRA "BÁSCULA" APARECE EM PEÇA QUE NÃO É BÁSCULA. A frente
+#   provençal traz a moldura com o mesmo nome da base, e a caixaria traz a
+#   "divisória do módulo basculante" — contadas junto, onze básculas viram
+#   vinte e quatro. Articulador é por FRENTE, então a regra tem de saber o
+#   que é frente: não é a moldura, e não é peça de estrutura. ⭐ A lista de
+#   palavras aqui não é chute de acabamento, é o que a peça É: divisória,
+#   prateleira, lateral, base, topo e fundo nunca são frente.
+ESTRUTURAL = ('divisória', 'prateleira', 'lateral', 'base', 'topo', 'fundo',
+              'moldura usinada')
+def frente(p):
+    n = p['nome'].lower()
+    return not any(w in n for w in ESTRUTURAL)
+nb = sum(p['qtd'] for p in PECAS
+         if 'báscula' in p['nome'].lower() and frente(p))
 na = sum(b[2] for b in BASCULAS)
 if nb != na:
     erro(f'{nb} básculas desenhadas × {na} articuladores orçados — não bate')
