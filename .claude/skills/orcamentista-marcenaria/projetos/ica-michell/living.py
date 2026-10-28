@@ -187,6 +187,12 @@ LED     = [(D1, 'Base da sapateira', 1.42), (D3, 'Prateleira',          1.35),
 # ⭐ alma de aço: só nas colunas. ⛔ [Jonathan 28/10] o aparador não leva —
 #   móvel de 55 de altura não empena, por mais grosso que seja o tampo.
 ALMAS   = [(D4, 'Colunas · caixão de 70 × 200 mm', 11)]
+# ⭐ SERRALHERIA ESTRUTURAL [Jonathan, 28/10/2026]
+#   > "No banco suspenso do living considere uma estrutura de serralheria
+#   >  estrutural com um custo de 2.500"
+#   O banco da jardineira é SUSPENSO: não apoia no chão e não se sustenta na
+#   marcenaria. A estrutura é o que o segura, e entra por valor fechado.
+SERRALHERIA = [(D5, 'Banco suspenso da jardineira', 2500.0)]
 SUPORTES= [(D7, 'Prateleiras da estante · 16 × 2', 32),
            (D6, 'Prateleiras da cristaleira',      10)]
 
@@ -429,6 +435,33 @@ FOLHA = dict(
       'e por cor × espessura — não existe 2,7 chapas, são 3. Os itens lá '
       'embaixo rateiam a chapa em fração, para que cada móvel tenha custo '
       'próprio; a diferença entre os dois aparece no fechamento dos itens.',
+ duvidas=[
+  'A LARGURA DA SAPATEIRA é 142 ou 82? A página 17 não traz cota de 82 — as '
+  'horizontais são 1 · 17 · 33 · 42 · 142 —, então adotei 142 de largura e 42 '
+  'de profundidade. A leitura anterior tinha anotado 82. Em 142 a frente de '
+  '34 fecha a cadeia 2+34+34+34+2 = 105 da altura; em 82 não fecharia.',
+  'LATERAL E MONTANTE DA CRISTALEIRA foram desenhados com 280 e a chapa dá '
+  '273. Rebaixei para 273, que é a mesma decisão que o senhor fechou com o '
+  'cliente para as colunas. ⚠ Aqui sobram 7 cm no topo de uma peça que se vê: '
+  'confirmar se fecha com travessa, se emenda, ou se o cliente aceita o vão.',
+  'VÃO LIVRE DE 260 na prateleira central da cristaleira. MDF nessa distância '
+  'flecha com peso de louça. Orcei a prateleira inteira, sem montante. ⚠ A '
+  'prancha pede montante no meio e eu não o vi, ou o vão é mesmo de 260?',
+  'VIDRO REFLECTA CHAMPAGNE das portas da cristaleira segue SEM PREÇO na '
+  'Base: são 5,6 m² em duas folhas de 100 × 280. A linha existe vazia de '
+  'propósito e o orçamento mostra zero. ⛔ Precisa cotar com o vidraceiro, e '
+  'as folhas passam de 273 — conferir se o vidro vem em peça única.',
+  'A JARDINEIRA NÃO FECHA ENTRE AS VISTAS: a superior dá profundidade 113 '
+  '(44 + 25 + 44) e a lateral traz 10 + 80 + 103 = 193. Orcei pelos 113 da '
+  'superior. ⚠ Qual das duas vale?',
+  'A PORTA RIPADA DA ELEVAÇÃO 02 está na prancha e eu a deixei fora da conta, '
+  'em "o que não é marcenaria". ⚠ Ela é nossa?',
+  'DUAS PORTAS MIMETIZADAS no item 08, de 90 × 210 cada, foi o que a cadeia '
+  '260 + 80 + 60 = 400 me deu. ⚠ Confirmar a quantidade e se são de giro '
+  'mesmo, com cinco dobradiças por folha.',
+  'A SERRALHERIA DO BANCO a R$ 2.500: o valor é fechado e entrou como o '
+  'senhor passou. ⚠ Ele inclui a instalação e a pintura, ou são só a '
+  'estrutura e a mão de obra de fábrica?'],
  nao_marcenaria=[
   'Parede com pedra Atacama Branca, revestimentos e pinturas',
   'Espelho MH 2897 · Uultis e pendente de palha 35 × 100 × 35',

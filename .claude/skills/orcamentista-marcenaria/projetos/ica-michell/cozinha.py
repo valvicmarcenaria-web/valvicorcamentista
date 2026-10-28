@@ -180,6 +180,40 @@ FOLHA = dict(
       'R$ 2.350 de chapa para 5,5 m² cortados. ⚠ É onde a mistura de cor '
       'fica mais cara que a peça — vale olhar junto com a Lavanderia, que '
       'é inteira provençal e pode dividir a sobra.',
+ duvidas=[
+  'A TORRE DA GELADEIRA foi desenhada com 300 e a chapa dá 273. Rebaixei '
+  'lateral e fundo, e sobram 27 cm abertos no topo. É a mesma decisão que o '
+  'senhor fechou para as colunas do Living, mas aqui ela ainda não foi '
+  'tomada. ⚠ Rebaixa, emenda, ou fecha com travessa?',
+  'A CAVA SAIU quando o puxador entrou, e essa parte eu INFERI. A prancha '
+  'pede puxador Alças Traso E cava frontal usinada na mesma frente; frente '
+  'não abre de dois modos, então tirei a cava. ⚠ Confirmar — se a cava '
+  'voltar, somam R$ 476,50.',
+  'O ACABAMENTO DO ALÇAS TRASO 128 mm decide R$ 860. A busca de varejo achou '
+  'de R$ 44,92 a R$ 109,22: preto por volta de R$ 54 a 62, dourado R$ 84,54, '
+  'níquel velho R$ 109,22. Os R$ 110 que o senhor passou caem no níquel '
+  'velho. ⚠ Qual acabamento vai?',
+  'A MÃO DE OBRA DE MOLDURA PROVENÇAL não tem preço na Base e são 16 frentes '
+  'aqui, mais 31 na Lavanderia. Sai ZERO e o orçamento denuncia. ⛔ Até ela '
+  'existir este custo é um PISO. Meia hora de marceneiro por frente seriam '
+  'R$ 288; uma hora, R$ 576. ⚠ Vale cronometrar uma na fábrica.',
+  'UMA PORTA CUSTA R$ 900 DE CHAPA. A porta de giro do Superior 01 é a única '
+  'peça nos padrões Jequitibá Rosa 15 e 6, e cada um puxa uma chapa inteira: '
+  'R$ 550 mais R$ 350 para 0,67 m² de peça. ⚠ Se ela virar lisa como as '
+  'básculas ao lado, esses R$ 900 saem. É decisão de desenho.',
+  'LATERAIS DE 3 CM na torre e nos superiores. MDF não existe em 30 mm: ou se '
+  'colam duas chapas, e aí DOBRA a chapa dessas peças e entra laminação de '
+  'topo, ou se faz caixão. Orcei como CAIXÃO em 18 mm simples. ⚠ É a decisão '
+  'mais cara do projeto e aparece em quase todo ambiente.',
+  'A LARGURA DA TRAVESSA da moldura provençal: adotei 7 cm como premissa, '
+  'porque a prancha não cota a travessa. ⚠ Ela muda a chapa de 6 mm e o metro '
+  'de filetagem manual.',
+  'A FRENTE DE GAVETA DE 18 CM de altura, com travessa de 7, deixa só 4 cm de '
+  'painel no meio. ⚠ Numa gaveta baixa a travessa costuma ser mais estreita, '
+  'ou a frente sai lisa. Confirmar.',
+  'NÃO LI AS PÁGINAS 031 a 033 — não estavam no cache de folhas soltas. São '
+  'elevações, não detalhamentos, mas convém conferir se trazem algo que o '
+  'quantitativo não pegou.'],
  nao_marcenaria=[
   'Tampo da ilha e bancada em Quartzito Bianco Superiore — pedra, e o recorte é nosso mas a pedra não',
   'Cuba dupla inox 86 × 44, torneira monocomando e escorredor de calha úmida',

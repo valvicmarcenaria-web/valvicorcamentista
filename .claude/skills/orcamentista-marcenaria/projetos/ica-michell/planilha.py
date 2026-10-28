@@ -95,6 +95,13 @@ def linhas_do_item(mov):
     for mv, rot, q in g('SUPORTES'):
         if mv == mov: out.append(['Suporte oculto', rot + ' · de 40 em 40 cm',
                                   '', '', q, 'un', 'Suporte oculto'])
+    # ⭐ serralheria estrutural: valor fechado por móvel, não por metro
+    for mv, rot, v_ in g('SERRALHERIA'):
+        if mv == mov: out.append(['Serralheria estrutural', rot + ' · ⛔ não é '
+                                  'o rodapé de 3 cm, que vai em MDF: aqui o '
+                                  'móvel é SUSPENSO e quem o segura é a '
+                                  'estrutura', '', '', 1, 'conjunto',
+                                  'Serralheria estrutural'])
     return out
 
 def montar(inicio):

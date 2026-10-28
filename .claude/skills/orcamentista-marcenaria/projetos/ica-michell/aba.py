@@ -71,6 +71,7 @@ ACAB = [k for k in ORDEM if k in _tem]
 assert len(ACAB) == len(_tem), f'⛔ acabamento fora da ORDEM: {set(_tem)-set(ORDEM)}'
 nmat = len(CHAPAS) + len(ACAB) + 1 + (1 if g('VIDRO') else 0) + 2
 nit, nni, nnt = len(MOV), len(F['nao_marcenaria']), len(F['notas'])
+ndv = len(F.get('duvidas', []))
 
 # ── 2 · O LAYOUT CANÔNICO. Toda seção com o mesmo respiro. ──────────────
 L = {}
@@ -103,7 +104,18 @@ L['blk1']  = max(MAPA.values())
 L['s_nt']  = L['blk1'] + 2
 L['nt0']   = L['s_nt'] + 2
 L['nt1']   = L['nt0'] + nnt - 1
-L['fim']   = L['nt1']
+# ⭐⭐ A CAIXA DE DÚVIDAS  [Jonathan, 28/10/2026]
+#   > "Se surgir dúvidas de orçamento. Abra uma caixa de dúvidas na
+#   >  planilha mesmo. Para cada ambiente um espaço de dúvidas e liste
+#   >  todas as dúvidas lá."
+#   ⭐ Instrução de não travar: dúvida não para o orçamento, ela fica
+#     escrita onde o preço está, numerada, para o senhor responder em cima.
+#   ⭐ Vai no FIM de propósito: seção nova no fim não desloca nenhuma linha
+#     acima dela, então acrescentá-la numa aba já montada é barato.
+L['s_dv']  = L['nt1'] + 2
+L['dv0']   = L['s_dv'] + 2
+L['dv1']   = L['dv0'] + max(1, ndv) - 1
+L['fim']   = L['dv1']
 SHIFT = L['blk0'] - BLK_HOJE
 a, b = L['blk0'], L['blk1']          # a faixa de peças, para as fórmulas
 K = f'$K${a}:$K${b}'
@@ -175,12 +187,14 @@ FERR = [('Corrediça', 'corrediça', g('GAVETAS')),
         ('Cava usinada', 'cava usinada', g('CAVA')),
         ('LED conjunto', 'LED', g('LED')),
         ('Alma de aço', 'alma de aço', g('ALMAS')),
-        ('Suporte oculto', 'suporte oculto', g('SUPORTES'))]
+        ('Suporte oculto', 'suporte oculto', g('SUPORTES')),
+        ('Serralheria estrutural', 'serralheria estrutural', g('SERRALHERIA'))]
 ativos = [(c, rot) for c, rot, lst in FERR if lst]
 # ⛔ cava, LED e moldura se medem em metro ou em frente, não em peça:
 #   não entram na contagem de "peças de ferragem"
 conta  = [c for c, rot in ativos
-          if c not in ('Cava usinada', 'LED conjunto', 'Moldura provençal')]
+          if c not in ('Cava usinada', 'LED conjunto', 'Moldura provençal',
+                       'Serralheria estrutural')]
 rots   = [rot for c, rot in ativos if rot]
 # ⛔ .capitalize() rebaixa o resto da frase, e 'LED' virava 'led'
 frase  = ', '.join(rots[:-1])
@@ -253,6 +267,11 @@ põe(L['s_pec'], B='  AS PEÇAS, ITEM POR ITEM   ·   cada linha é uma peça qu
 NOTAS = [linha(B='  NOTAS E PONTOS EM ABERTO   ·   o que ainda precisa de '
                  'decisão antes de virar preço'), linha()] + \
         [linha(C=t) for t in F['notas']]
+DV = F.get('duvidas') or ['— nenhuma dúvida aberta neste ambiente.']
+DUVIDAS = [linha(B='  ⚠ DÚVIDAS DE ORÇAMENTO   ·   numeradas, para o senhor '
+                   'responder em cima · nenhuma delas trava o preço'),
+           linha()] + \
+          [linha(B=f'{i:02d}', C=t) for i, t in enumerate(DV, 1)]
 
 # ── 5 · O FORMATO. Composto em Python, nunca repetido à mão. ────────────
 PRETO  = {'red': .1019608, 'green': .1019608, 'blue': .1019608}
@@ -313,6 +332,11 @@ Q.append(rc(L['sub'], L['sub'], 'B', 'I', fm(9, fg=CINZA, wr='WRAP')))
 for s in ('s_amb', 's_itens', 's_ni', 's_pec'):
     Q.append(rc(L[s], L[s], 'B', 'I', fm(11, True, fg=OURO, bor=RUA)))
 Q.append(rc(L['s_nt'], L['s_nt'], 'B', 'I', fm(11, True, fg=OURO, bor=RUA)))
+# ⭐ a seção de dúvidas é a única em VERMELHO: ela pede resposta, não leitura
+Q.append(rc(L['s_dv'], L['s_dv'], 'B', 'I', fm(11, True, fg=VERM, bor=RUA)))
+Q.append(rc(L['dv0'], L['dv1'], 'B', 'B',
+            fm(10, True, fg=VERM, al='CENTER', bg=F5)))
+Q.append(rc(L['dv0'], L['dv1'], 'C', 'I', fm(10, wr='WRAP')))
 # ── o painel do ambiente ───────────────────────────────────────────────
 Q.append(rc(L['cab_mat'], L['cab_mat'], 'B', 'I', fm(8, True, fg=CINZA, bg=F7)))
 Q.append(rc(L['cab_mat'], L['cab_mat'], 'D', 'D', fm(8, True, fg=CINZA, bg=F7, al='RIGHT')))
@@ -361,10 +385,11 @@ Q.append(rc(a, b, 'K', 'K', fm(8, fg=CLARO)))
 # ── alturas: o respiro é fino, a seção é larga ─────────────────────────
 Q.append(alt(1, L['fim'], 21))
 Q.append(alt(L['tit'], L['tit'], 34))
-for s in ('s_amb', 's_itens', 's_ni', 's_pec', 's_nt'):
+for s in ('s_amb', 's_itens', 's_ni', 's_pec', 's_nt', 's_dv'):
     Q.append(alt(L[s], L[s], 26))
 for z in (3, L['s_amb']+1, L['nota']+1, L['s_itens']+1, L['it1']+1,
-          L['s_ni']+1, L['s_pec']+1, L['f1']+1, L['blk1']+1, L['s_nt']+1):
+          L['s_ni']+1, L['s_pec']+1, L['f1']+1, L['blk1']+1, L['s_nt']+1,
+          L['nt1']+1, L['s_dv']+1):
     Q.append(alt(z, z, 8))
 # ⛔⛔ autoResizeDimensions NÃO enxerga célula mesclada: a linha fica em 21 px
 #   e o texto embrulhado desaparece. Então a altura se CALCULA — e assim ela
@@ -382,6 +407,8 @@ Q.append(alt(L['sub'], L['sub'], altura(TOP[L['sub']-1][0], 'B', 'I')))
 Q.append(alt(L['nota'], L['nota'], altura(TOP[L['nota']-1][1], 'C', 'I')))
 for i in range(L['nt0'], L['nt1']+1):
     Q.append(alt(i, i, altura(NOTAS[i - L['s_nt']][1], 'C', 'I')))
+for i in range(L['dv0'], L['dv1']+1):
+    Q.append(alt(i, i, altura(DUVIDAS[i - L['s_dv']][1], 'C', 'I')))
 # ⭐ a aba acaba onde o conteúdo acaba — sobra de linha guarda formato velho
 Q.append({'deleteDimension': {'range': {'sheetId': SID, 'dimension': 'ROWS',
           'startIndex': L['fim']+1, 'endIndex': FIM_HOJE}}})
@@ -395,13 +422,14 @@ Q.append({'updateSheetProperties': {'properties': {'sheetId': SID,
           'gridProperties': {'frozenRowCount': 2, 'hideGridlines': True}},
           'fields': 'gridProperties.frozenRowCount,gridProperties.hideGridlines'}})
 # ── mesclagens ─────────────────────────────────────────────────────────
-for s in ('tit', 'sub', 's_amb', 's_itens', 's_ni', 's_pec', 's_nt'):
+for s in ('tit', 'sub', 's_amb', 's_itens', 's_ni', 's_pec', 's_nt', 's_dv'):
     Q.append(mesc(L[s], 'B', 'I'))
 Q.append(mesc(L['nota'], 'C', 'I'))
 for i in range(L['it0'], L['it1']+1): Q.append(mesc(i, 'D', 'H'))
 for i in range(f0, L['f1']+1):        Q.append(mesc(i, 'B', 'H'))
 for i in range(L['ni0'], L['ni1']+1): Q.append(mesc(i, 'B', 'H'))
 for i in range(L['nt0'], L['nt1']+1): Q.append(mesc(i, 'C', 'I'))
+for i in range(L['dv0'], L['dv1']+1): Q.append(mesc(i, 'C', 'I'))
 # ── o condicional: o bloco se pinta sozinho ────────────────────────────
 def cond(f, fmt_):
     return {'addConditionalFormatRule': {'index': 0, 'rule': {
@@ -436,14 +464,16 @@ Q.append({'addConditionalFormatRule': {'index': 0, 'rule': {
 # ── 6 · saída ──────────────────────────────────────────────────────────
 OUT = dict(sheetId=SID, mapa=MAPA, layout=L, shift=SHIFT, faixas=FAIXAS,
            top_range=f"B1:K{L['blk0']-1}", top=TOP,
-           notas_range=f"B{L['s_nt']}:K{L['nt1']}", notas=NOTAS, requests=Q)
+           notas_range=f"B{L['s_nt']}:K{L['nt1']}", notas=NOTAS,
+           duvidas_range=f"B{L['s_dv']}:K{L['dv1']}", duvidas=DUVIDAS,
+           requests=Q)
 json.dump(OUT, open(P/f'_aba-{NOME}.json', 'w'), ensure_ascii=False)
 json.dump(Q, open(P/f'_req-{NOME}.json', 'w'), ensure_ascii=False,
           separators=(',', ':'))
 print(f'═══ {NOME.upper()} · sheetId {SID} ═══')
 for k in ('tit','sub','s_amb','cab_mat','mat0','mat1','direto','nota',
           's_itens','cab_it','it0','it1','f0','f1','s_ni','ni0','ni1',
-          's_pec','blk0','blk1','s_nt','nt0','nt1','fim'):
+          's_pec','blk0','blk1','s_nt','nt0','nt1','s_dv','dv0','dv1','fim'):
     print(f'   {k:9} {L[k]}')
 print(f'   SHIFT     {SHIFT:+d}  (blocos hoje em {BLK_HOJE} → {L["blk0"]})')
 print(f'   {len(Q)} requests · {len(TOP)} linhas de topo · {len(NOTAS)} de nota')

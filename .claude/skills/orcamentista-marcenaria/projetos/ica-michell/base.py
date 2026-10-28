@@ -28,7 +28,19 @@ PRECO = {'MDF cor 18': 700.0, 'MDF cor 15': 550.0, 'MDF cor 6': 350.0,
          'MDF Verde Floresta 6': 350.0,
          'MDF Jequitibá Rosa 18': 700.0, 'MDF Jequitibá Rosa 15': 550.0,
          'MDF Jequitibá Rosa 6': 350.0,
-         'MDF Nogueira Caiena 18': 700.0, 'MDF Nogueira Caiena 6': 350.0}
+         'MDF Nogueira Caiena 18': 700.0, 'MDF Nogueira Caiena 6': 350.0,
+         # ⭐ padrões que a leitura das pranchas dos outros ambientes trouxe.
+         #   Todos são Melamínico Fosco na Base (R$ 700 / 550 / 350), exceto
+         #   onde a prancha pede linha mais cara. ⚠ Preto Ultra Premium e
+         #   Lacca Fume não estão nomeados na Base: adoto o Fosco e deixo a
+         #   dúvida na aba do ambiente.
+         'MDF Preto Ultra Premium 18': 700.0, 'MDF Preto Ultra Premium 15': 550.0,
+         'MDF Preto Ultra Premium 6': 350.0,
+         'MDF Lacca Fume 18': 700.0, 'MDF Lacca Fume 15': 550.0,
+         'MDF Carvalho Malva 18': 700.0, 'MDF Carvalho Malva 15': 550.0,
+         'MDF Carvalho Malva 6': 350.0,
+         'MDF Off White Suave 18': 700.0, 'MDF Off White Suave 15': 550.0,
+         'MDF Off White Suave 6': 350.0}
 ESTRUTURA, FUNDO_CH, PORTA_CH = 'MDF Branco TX 15', 'MDF Branco TX 6', 15
 PRAT_VAO = 70.0   # vão acima disto pede 18 mm, contra empeno [Base]
 # ⭐⭐ FITA E FILETAGEM SÃO DUAS COISAS [Jonathan, 28/10/2026]
@@ -71,6 +83,14 @@ LED_M      = 150.0  # LED COB: fita, perfil, usinagem e instalação
 ALMA       =  50.0  # barra chata 5 mm, 3 m · toda peça acima de 30 mm
 SUPORTE    =  30.0  # suporte oculto de prateleira · de 40 em 40 cm
 VIDRO_M2   =   0.0  # ⛔ reflecta champagne SEM PREÇO — a cotar
+# ⭐ SERRALHERIA ESTRUTURAL [Jonathan, 28/10/2026]
+#   > "No banco suspenso do living considere uma estrutura de serralheria
+#   >  estrutural com um custo de 2.500"
+#   ⛔ Não confundir com o rodapé de 3 cm, que a casa faz em MDF melamínico
+#     por decisão do Jonathan de 26/10. Aqui é estrutura de verdade: o banco
+#     é SUSPENSO e o que o segura não é a marcenaria.
+#   ⭐ Entra como VALOR FECHADO por móvel, não por metro: foi assim que o
+#     Jonathan deu, e banco suspenso é projeto, não metro linear.
 CONSUM, EMBAL = 0.06, 0.02
 # ⛔⛔ SEM FONTE DE LED em lugar nenhum: as fitas da casa são 110 V
 #   [Jonathan, 28/10/2026]
