@@ -66,7 +66,18 @@ PRECO = {'MDF cor 18': 700.0, 'MDF cor 15': 550.0, 'MDF cor 6': 350.0,
          #   branco (400/350/250), não no de cor. ⚠ Se for linha
          #   especial, sobe para 700/550/350 — a dúvida está na aba.
          'MDF Branco Diamante 18': 400.0, 'MDF Branco Diamante 15': 350.0,
-         'MDF Branco Diamante 6': 250.0}
+         'MDF Branco Diamante 6': 250.0,
+         # ⭐ os dois padrões que a Suíte Mariana trouxe, e eles mandam no
+         #   quarto inteiro: Sal Rosa é ARAUCO, Paris é GUARARAPES. É o
+         #   primeiro ambiente do projeto em que os dois fornecedores
+         #   grandes aparecem lado a lado na mesma peça — a frente em Palha
+         #   Indiana Duratex, a moldura em Sal Rosa Arauco.
+         #   ⚠ Três fornecedores num quarto só é três pedidos, três fretes
+         #     e três arredondamentos. Vale perguntar se há equivalente.
+         'MDF Sal Rosa 18': 700.0, 'MDF Sal Rosa 15': 550.0,
+         'MDF Sal Rosa 6': 350.0,
+         'MDF Paris 18': 700.0, 'MDF Paris 15': 550.0,
+         'MDF Paris 6': 350.0}
 ESTRUTURA, FUNDO_CH, PORTA_CH = 'MDF Branco TX 15', 'MDF Branco TX 6', 15
 PRAT_VAO = 70.0   # vão acima disto pede 18 mm, contra empeno [Base]
 # ⭐⭐ FITA E FILETAGEM SÃO DUAS COISAS [Jonathan, 28/10/2026]
@@ -138,6 +149,12 @@ PRECO_OUTRAS = {
  # ⭐ o calceiro deslizante do Closet Master é ferragem de closet, não
  #   corrediça de gaveta. A Base não tem a linha.
  'Calceiro deslizante': 0.0,    # ⛔ por unidade · SEM PREÇO na Base
+ # ⭐ a Suíte Mariana trouxe três linhas novas, e nenhuma existe na Base.
+ #   A caixa organizadora e a bicama correm no chão; o nome "Mariana" da
+ #   ELEVAÇÃO 04 é letra usinada em router, em MDF de 3 cm.
+ 'Rodízio deslizante': 0.0,     # ⛔ por unidade · SEM PREÇO na Base
+ 'Usinagem de letra em router': 0.0,  # ⛔ por letra · SEM PREÇO na Base
+ 'Suporte para rolo de papel': 0.0,   # ⛔ por unidade · SEM PREÇO na Base
 }
 VIDRO_M2   =   0.0  # ⛔ reflecta champagne SEM PREÇO — a cotar
 # ⭐ SERRALHERIA ESTRUTURAL [Jonathan, 28/10/2026]

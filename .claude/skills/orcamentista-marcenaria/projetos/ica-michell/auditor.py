@@ -143,7 +143,14 @@ for b in BASCULAS:
     #   quarto elemento só distinguia slim de puxador; o gavetão basculante
     #   do Armário 01 abre por CAVA, como a prancha escreve, e a regra o
     #   acusava de ter puxador e cava na mesma frente.
-    modo = {'slim': 'báscula slim', 'cava': 'cava'}.get(
+    # ⭐ A BÁSCULA TAMBÉM PODE ABRIR POR PULSADOR [Suíte Mariana, 28/10].
+    #   As duas básculas da estante têm frente de Palha Indiana emoldurada
+    #   em Sal Rosa e nenhum puxador desenhado — é o mesmo caso das portas
+    #   ripadas do Banho Gourmet, e a resposta da casa é o pulsador. Sem
+    #   esta linha o modo caía no 'puxador' do default e a regra acusava
+    #   pulsador e puxador na mesma frente.
+    modo = {'slim': 'báscula slim', 'cava': 'cava',
+            'pulsador': 'pulsador'}.get(
         b[3] if len(b) > 3 else 'slim', 'puxador')
     abre[mv] = abre.get(mv, set()) | {modo}
 for mv, rot, q in PUXADORES:  abre[mv] = abre.get(mv, set()) | {'puxador'}
