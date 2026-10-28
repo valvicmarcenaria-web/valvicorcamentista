@@ -91,67 +91,74 @@ LIVING = [
  P('Lateral',            D1, SP_P, 105, 2, 18, (1, 0)),
  P('Base e topo',        D1, SP_C, SP_P, 2, 18, (1, 0)),
  P('Divisória',          D1, SP_C, SP_P, 2, 18, (1, 0), 'Separa as três frentes de 34'),
- P('Frente',             D1, SP_C, 34, 3, 18, (2, 2), 'Cava na própria madeira · ⚠ báscula ou gaveta, a definir'),
+ P('Frente',             D1, SP_C, 34, 3, 18, (2, 2), 'Cava na própria madeira · duas dobradiças cada'),
  P('Base recuada · frente', D1, SP_C, 17, 1, 18, (2, 2), 'Com LED'),
  P('Base recuada · lateral', D1, SP_P, 17, 2, 18, (1, 0)),
  P('Fundo',              D1, SP_C, 105, 1, 6, (0, 0), 'Encaixe em rasgo'),
 
  # ── DET 02 · APARADOR COM GAVETA — 185 × 55 × 50 ─────────────────────
- #   largura 8 + 34 + 8 + 135 = 185 ⭐ · altura 5 + 45 + 5 = 55 ⭐
- #   vista superior 50 + 135 = 185 ⭐ → profundidade 50
+ #   ⭐ [Jonathan 28/10] "a frente da gaveta tem 135X17 (det. 1 vista
+ #     frontal)" — e NÃO leva alma de aço: móvel de 55 de altura não empena.
  P('Tampo e base',       D2, 185, 50, 2, 18, (1, 0), 'Prancha desenha 5 cm: ver linha de painel grosso'),
  P('Lateral',            D2, 50, 45, 2, 18, (1, 0)),
  P('Divisória',          D2, 50, 45, 2, 18, (1, 0), 'Os dois montantes de 8 da cadeia'),
- P('Frente da gaveta',   D2, 135, 45, 1, 18, (2, 2), 'Cava na própria madeira'),
- *gaveta(D2, 135, 50, 45, 1, 'Gaveta'),
+ P('Frente da gaveta',   D2, 135, 17, 1, 18, (2, 2), '⭐ 135 × 17 na vista frontal · cava na própria madeira'),
+ *gaveta(D2, 135, 50, 17, 1, 'Gaveta'),
  P('Fundo',              D2, 185, 45, 1, 6, (0, 0), 'Encaixe em rasgo'),
 
- # ── DET 03 · PRATELEIRA — 135 × 45, com iluminação ───────────────────
- P('Prateleira',         D3, 135, 45, 1, 18, (2, 2), '⚠ vão de 135 em 18 mm flecha — ver se a prancha pede 25 mm'),
+ # ── DET 03 · PRATELEIRA — 135 × 45, duplada ──────────────────────────
+ #   ⭐ [Jonathan 28/10] "a prateleira é duplada, veja que tem 5cm de
+ #     espessura, considere duas peças"
+ P('Prateleira',         D3, 135, 45, 2, 18, (2, 2),
+   '⭐ duplada: a prancha desenha 5 cm de espessura, são duas peças'),
 
  # ══ DET 04 · DIVISÓRIA EM COLUNAS ⭐⭐ ════════════════════════════════
  #   11 colunas · caixão de 70 × 200 mm · 4 peças cada [Jonathan 27/10]
  #   ⛔ projetadas com 300 de altura; a chapa dá 273 → SEM EMENDA a 273
- P('Coluna · face',      D4, ALT_MAX, 7,  22, 18, (2, 1),
-   'Frente e costas do caixão · 2 por coluna × 11'),
- P('Coluna · lateral',   D4, ALT_MAX, 20, 22, 18, (2, 1),
-   'Os dois lados de 20 cm · 2 por coluna × 11'),
- # ⚠ as colunas param em 273 e o pé-direito é 300: sobram 27 cm abertos.
+ #   ⛔ [Jonathan 28/10] "as divisórias não terão fita de borda"
+ P('Coluna · face',      D4, ALT_MAX, 7,  22, 18, (0, 0),
+   'Frente e costas do caixão · 2 por coluna × 11 · ⛔ sem fita de borda'),
+ P('Coluna · lateral',   D4, ALT_MAX, 20, 22, 18, (0, 0),
+   'Os dois lados de 20 cm · 2 por coluna × 11 · ⛔ sem fita de borda'),
 
- # ── DET 05 · JARDINEIRA COM BANCO — 520 ──────────────────────────────
- #   conjunto 10 + 500 + 10 + 80 + 103 · vista superior fecha 52 × 10 = 520
- P('Floreira · fundo',   D5, 250, 50, 2, 18, (1, 1),
-   'Floreira suspensa de 500 em dois módulos de 250 — ⭐ 500 não cabe na chapa'),
- P('Floreira · frente e costas', D5, 250, 30, 4, 18, (2, 1)),
- P('Floreira · lateral e divisória', D5, 50, 30, 3, 18, (1, 1)),
- P('Banco · tampo',      D5, 80, 50, 1, 18, (2, 2), 'Com iluminação embaixo'),
- P('Banco · lateral',    D5, 50, 40, 2, 18, (1, 1)),
- P('Banco · costas',     D5, 80, 40, 1, 18, (1, 1)),
+ # ── DET 05 · JARDINEIRA COM BANCO — 520 × 113 × 50 ───────────────────
+ #   ⭐ relido vista a vista [Jonathan 28/10]:
+ #     VISTA SUPERIOR  larg 10 + 500 + 10 = 520 · interno 480 ·
+ #                     profundidade 113, dividida em 44 + 25 + 44
+ #     VISTA FRONTAL   altura 30 + 10 + 10 = 50
+ #     VISTA LATERAL   80 do banco · 103 · altura 50
+ #   ⚠ a lateral traz 10 + 80 + 103 = 193 que NÃO fecha com os 113 da
+ #     superior — uma das duas precisa de conferência na prancha.
+ P('Floreira · fundo',   D5, 250, 44, 2, 18, (1, 1), 'Os 500 em dois módulos de 250 — 500 não cabe na chapa'),
+ P('Floreira · frente e costas', D5, 250, 50, 4, 18, (2, 1)),
+ P('Floreira · lateral e divisória', D5, 44, 50, 3, 18, (1, 1)),
+ P('Banco · tampo',      D5, 80, 44, 1, 18, (2, 2), 'Com iluminação embaixo'),
+ P('Banco · lateral',    D5, 44, 50, 2, 18, (1, 1)),
+ P('Banco · costas',     D5, 80, 50, 1, 18, (1, 1)),
 
  # ── DET 06 · DIVISÓRIA COM CRISTALEIRA — 460 × 300 × 65 ──────────────
- #   largura 100 + 260 + 100 = 460 ⭐ · vista superior 16+2+15+16+16 = 65 ⭐
- #   coluna A 5+39+5+62+5+65+5+32+5+53+5+20 = 300 ⭐
- #   coluna B 5+54+2+53+2+53+2+53+2+54+2+20 = 300 ⭐
- P('Lateral',            D6, 65, 280, 2, 18, (1, 0)),
- P('Montante',           D6, 65, 280, 2, 18, (1, 0), 'Divide 460 em 100 + 260 + 100'),
- P('Montante interno',   D6, 65, 280, 3, 18, (1, 0),
-   '⭐ a vista posterior fecha 65+65+65+65+100 = 360: o vão de 260 é QUATRO '
-   'módulos de 65, não um vão livre de 260'),
+ #   ⛔⛔ [Jonathan 28/10] "Nao tem nem uma peça de 65cm de largura".
+ #     Eu havia lido "65 + 65 + 65 + 65 + 100 = 360" como quatro módulos de
+ #     65 de LARGURA e inventado três montantes internos. O 65 é a
+ #     PROFUNDIDADE — a vista superior fecha 16 + 2 + 15 + 16 + 16 = 65 — e
+ #     reaparece como VÃO na cadeia vertical (5+39+5+62+5+65+5+32+5+53+5+20).
+ #   ⚠ Sem os montantes inventados, o vão central de 260 volta a ser vão
+ #     livre. Prateleira de 260 em MDF não se sustenta: fica marcado.
+ P('Lateral',            D6, 65, 280, 2, 18, (1, 0), '⛔ desenhada com 280, rebaixada para 273'),
+ P('Montante',           D6, 65, 280, 2, 18, (1, 0), 'Divide 460 em 100 + 260 + 100 · ⛔ desenhado com 280'),
  P('Prateleira · bandas de 100', D6, 100, 65, 10, 18, (1, 0),
    'Cinco por banda · cadeia 39 · 62 · 65 · 32 · 53'),
- P('Prateleira · módulos de 65', D6, 65, 65, 20, 18, (1, 0),
-   'Cinco por módulo · cadeia 54 · 53 · 53 · 53 · 54'),
+ P('Prateleira · vão central de 260', D6, 260, 65, 5, 18, (1, 0),
+   '⚠ 260 de vão livre em MDF flecha — conferir se a prancha pede montante'),
  P('Topo',               D6, 265, 65, 1, 18, (1, 0), 'Dois trechos somando 460'),
  P('Base recuada · frente', D6, 260, 20, 1, 18, (2, 2), 'Recuo de 20 com LED'),
  P('Fundo ripado · ripa', D6, 260, 10, 21, 18, (2, 2),
    'Vista posterior: cadeia 2 + 10 repetida fecha em 255 ≈ 260 · ripa de 10 com vão de 2'),
  P('Rack · frente de gaveta', D6, 65, 55, 4, 18, (2, 2),
-   '⚠ quatro gavetas pela cadeia 65+65+65+65+100 = 360 · cava na própria madeira'),
+   '⚠ quatro gavetas · cava na própria madeira'),
  *gaveta(D6, 65, 60, 55, 4, 'Rack · gaveta'),
 
  # ── DET 07 · ESTANTE — 255 × 300 × 40 ────────────────────────────────
- #   largura 5+75+5+60+5+60+5+40 = 255 ⭐ · vertical 300 + 40 = 340 ⭐
- #   altura 5+48+5+48+5+48+5+48+5+43+35+5 = 300 ⭐
  P('Lateral e montante', D7, 40, 260, 5, 18, (1, 0), 'Quatro colunas: 75 · 60 · 60 · 40'),
  P('Prateleira · coluna de 75', D7, 75, 40, 4, 18, (1, 0), 'Vãos de 48'),
  P('Prateleira · colunas de 60', D7, 60, 40, 8, 18, (1, 0), 'Quatro por coluna'),
@@ -162,11 +169,14 @@ LIVING = [
  *gaveta(D7, 75, 35, 35, 3, 'Gaveteiro · gaveta'),
 
  # ── DET 08 · PAINEL COM PORTA MIMETIZADA — 400 × 300 ─────────────────
- #   largura 260 + 80 + 60 = 400 ⭐ · altura 90 + 210 = 300 ⭐
- P('Painel · módulo',    D8, 130, 300, 2, 18, (2, 2), 'Trecho de 260 em dois módulos'),
- P('Painel · trecho',    D8, 140, 300, 1, 18, (2, 2), 'Trechos de 80 e 60'),
- P('Painel · vão da porta, descontado', D8, 90, 210, -2, 18, (0, 0),
-   '⭐ a porta mimetizada é folha separada: o vão dela sai da área do painel'),
+ #   ⛔ [Jonathan 28/10] "reveja as formulas das colunas e o resultado".
+ #     Eu tinha quatro linhas em que uma SOMAVA e outra SUBTRAÍA a mesma
+ #     área da porta — davam zero juntas e só confundiam. Agora cada linha é
+ #     uma peça que existe, e as três somam a mesma área de antes: 10,92 m².
+ P('Painel · módulo cheio', D8, 110, ALT_MAX, 2, 18, (2, 2),
+   'Os 220 de painel de altura cheia, em dois módulos · ⛔ desenhado com 300'),
+ P('Painel · travessa sobre as portas', D8, 180, 63, 1, 18, (2, 2),
+   'Os 63 que sobram acima das portas de 210'),
  P('Porta mimetizada',   D8, 90, 210, 2, 18, (2, 2), 'De giro, com cava · ⚠ duas portas, a confirmar'),
 ]
 
@@ -192,29 +202,37 @@ DOBR_VIDRO= 70.0    # Dobradiça para porta de vidro · A COTAR
 CAVA_M    = 50.0    # Cava usinada, por metro de frente
 LED_M     = 150.0   # LED COB conjunto completo: fita, perfil, usinagem e instalação
 LED_PERFIL= 65.0    # ⚠ só o perfil com difusor — a Base alerta: fechar o que a linha inclui
-FONTE     = 120.0   # uma a cada 8 a 10 m
+VIDRO_M2  =   0.0   # ⛔ Reflecta champagne SEM PREÇO — a cotar com o vidraceiro
 ALMA      = 50.0    # barra chata 5 mm, 3 m · toda peça acima de 30 mm
 SUPORTE   = 30.0    # suporte oculto de prateleira · de 40 em 40 cm
 
 # ── ferragem, declarada item a item ─────────────────────────────────────
 #  ⭐ [Jonathan 27/10] "não puxou o custo da corrediça da base" — aqui estão
 #    TODAS as gavetas do Living, não só a que faltava.
-GAVETAS = [(D2, 'Aparador · gaveta de 135',       1, 450),   # ⭐ A QUE FALTAVA
+GAVETAS = [(D2, 'Aparador · gaveta de 135 × 17',   1, 450),
            (D6, 'Rack · gavetas de 65',           4, 550),
            (D7, 'Gaveteiro · gavetas de 75',      3, 400)]
-PORTAS  = [(D8, 'Porta mimetizada de giro 90 × 210', 2, 5, DOBRADICA),
-           (D6, 'Porta de cristaleira em vidro reflecta', 4, 3, DOBR_VIDRO)]
+# ⭐ [Jonathan 28/10] item 1: "faltou as dobradiças" — as três frentes da
+#   sapateira. Altura 34, então duas por frente pela régua da casa.
+PORTAS  = [(D1, 'Frente da sapateira 142 × 34',       3, 2, DOBRADICA),
+           (D8, 'Porta mimetizada de giro 90 × 210',  2, 5, DOBRADICA),
+           (D6, 'Porta de cristaleira em vidro reflecta', 2, 5, DOBR_VIDRO)]
+# ⭐ [Jonathan 28/10] item 6: "nao considerou as portas de vidro" — a folha
+#   de vidro em si, não só a dobradiça. ⛔ Reflecta champagne SEGUE SEM
+#   PREÇO: entra com a linha criada e valor zero, para gritar.
+VIDRO   = [(D6, 'Vidro reflecta champagne · portas da cristaleira', 2, 100, 280)]
 CAVA    = [(D1, 'Frentes da sapateira', 3, 142), (D2, 'Frente da gaveta', 1, 135),
            (D6, 'Frentes do rack',      4,  65), (D7, 'Gaveteiro',        3,  75),
            (D8, 'Portas mimetizadas',   2,  90)]
+# ⭐ [Jonathan 28/10] item 5: "so de led teremos 5mt" — os 500 da floreira.
 LED     = [(D1, 'Base da sapateira', 1.42), (D3, 'Prateleira',          1.35),
-           (D5, 'Banco',            0.80), (D6, 'Base recuada',         2.60),
+           (D5, 'Floreira e banco', 5.00), (D6, 'Base recuada',         2.60),
            (D6, 'Prateleiras da cristaleira · 5 × 100', 5.00)]
-# ⭐ a alma de aço: uma barra por peça acima de 30 mm. O Jonathan corrigiu a
-#   CONTAGEM das colunas (32 → 11), não o princípio.
-ALMAS   = [(D4, 'Colunas · caixão de 70 × 200 mm', 11),
-           (D2, 'Tampo e base de 5 cm',             2),
-           (D2, 'Montantes de 8 cm',                2)]
+# ⛔⛔ [Jonathan 28/10] "nao tem fonte de led (todas as nossas leds sao
+#   110v)". A casa NÃO USA FONTE. A linha sai do Living e a chave sai de uso.
+# ⭐ alma de aço: só nas colunas. ⛔ [Jonathan 28/10] o aparador não leva —
+#   móvel de 55 de altura não empena, por mais grosso que seja o tampo.
+ALMAS   = [(D4, 'Colunas · caixão de 70 × 200 mm', 11)]
 SUPORTES= [(D7, 'Prateleiras da estante · 16 × 2', 32),
            (D6, 'Prateleiras da cristaleira',      10)]
 
@@ -282,15 +300,19 @@ def conta(pecas=LIVING):
     print('  ── cava usinada, por metro de frente ──────────────────────')
     cava_m = sum(q*c/100 for _, _, q, c in CAVA)
     L('Cava na própria madeira', cava_m, 'm', CAVA_M)
+    print('  ── vidro ──────────────────────────────────────────────────')
+    for mv, rot, q, c, l in VIDRO:
+        L(rot, q*c*l/10000, 'm²', VIDRO_M2, '⛔ SEM PREÇO — grita de propósito')
     print('  ── iluminação ─────────────────────────────────────────────')
     led_m = sum(m for _, _, m in LED)
     L('LED conjunto completo', led_m, 'm', LED_M, '⚠ ver nota')
-    L('Fonte de LED', max(1, -(-led_m//9)), 'un', FONTE)
+    # ⛔⛔ SEM FONTE DE LED. [Jonathan 28/10] "todas as nossas leds sao 110v".
     print('  ── estrutura ──────────────────────────────────────────────')
     for mov, rot, q in ALMAS: L(f'Alma de aço · {rot}', q, 'barra', ALMA)
     for mov, rot, q in SUPORTES: L(f'Suporte oculto · {rot}', q, 'un', SUPORTE)
     print('  ' + '─'*53)
     print(f"  {'TOTAL':<44}{'':>11}{br(tot):>11}")
+    print(f'\n  ⛔ SEM FONTE DE LED em lugar nenhum: as fitas da casa são 110 V.')
     ng = sum(q for _, _, q, _ in GAVETAS)
     nd = sum(nq*ndo for _, _, nq, ndo, pr in PORTAS if pr == DOBRADICA)
     eco = ng*(CORREDICA-CORREDICA_PAD) + nd*(DOBRADICA-DOBRADICA_PAD)

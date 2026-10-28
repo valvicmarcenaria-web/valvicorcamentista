@@ -111,6 +111,69 @@ célula e em **Permitir acesso**. Enquanto isso toda a cadeia dá
 `#DIV/0!` — por isso as fórmulas de custo vão dentro de `SEERRO`, para que
 a planilha fique limpa, e não quebrada, no estado intermediário.
 
+## ⛔⛔ ENTREGUEI SEM REVISAR, E O JONATHAN ACHOU OITO [28/10/2026]
+
+> *"sempre revise antes de entregar os resultados."*
+
+Oito correções numa rodada só. Quase todas eram coisas que uma conferência
+**mecânica** teria pegado antes de a aba existir: frente sem dobradiça,
+gaveta sem corrediça, peça de largura que não existe, duas linhas em que
+uma somava e a outra subtraía a mesma área.
+
+⭐ A revisão não pode depender de eu lembrar — tem de **quebrar**.
+`projetos/ica-michell/auditor.py` confere o levantamento antes de ele virar
+planilha, e depois confere a planilha contra o levantamento:
+
+| regra | o que pega |
+|---|---|
+| peça cabe na chapa | emenda que ninguém decidiu |
+| quantidade negativa | linha que subtrai área fingindo ser peça |
+| gaveta ↔ corrediça | caixa sem par, par sem caixa |
+| frente com cava ↔ metro de cava | usinagem prometida e não orçada |
+| porta ↔ dobradiça | **o furo do item 1** |
+| dobradiça de vidro ↔ folha de vidro | ferragem sem o que ela segura |
+| alma onde a regra manda | estrutura que some numa reescrita |
+| peça sem fita sem justificativa | esquecimento disfarçado de decisão |
+| chave fora da Base | preço que nunca vai resolver |
+| totais da aba × totais do script | a aba divergindo em silêncio |
+
+⛔ **E o auditor foi testado pela violação, 8/8** — porque auditor que nunca
+falhou não está provado. ⚠ Uma das dez regras nasceu **vazia**: conferia um
+atributo que não existia e passava sempre. Foi o teste negativo que viu.
+
+## ⛔⛔ TRÊS ARMADILHAS DE ESCRITA QUE ENGOLEM EM SILÊNCIO
+
+1. **Merge órfão engole a escrita.** A linha do MDF 6 mm saía vazia, e a API
+   devolvia `updatedCells: 6` toda vez. ⭐ Sobrara um `merge` B:I daquela
+   linha de quando o resumo morava ali. **Mesclagem sobrevive a
+   `batchClear`** — limpar valor não desfaz merge. Antes de reescrever uma
+   faixa, conferir `merges` na estrutura da planilha.
+2. **Nunca escrever valores e fórmulas em faixas sobrepostas na mesma leva
+   paralela.** As duas chamadas não têm ordem garantida: a de valores
+   chegou depois e apagou as fórmulas. Em faixa sobreposta, uma de cada vez.
+3. **Padrão numérico é em convenção americana, mas o ponto não é decimal em
+   pt_BR.** `0.##` renderizou `65` como **"65,"** — o ponto virou separador
+   de milhar. ⭐ Para número livre, **não definir padrão nenhum** e deixar o
+   formato Geral.
+
+## ⭐⭐ LER A PRANCHA POR VISTA, NÃO POR CADEIA
+
+> *"analise todas as visoes, como vista superior e vista frontal"*
+
+O `geo.py` agrupa cotas em cadeias e acha a que fecha — mas joga **todas as
+vistas no mesmo saco**. Quando a folha traz três vistas do mesmo móvel, a
+cota da superior entra na cadeia da frontal e o móvel sai errado.
+
+⛔ Foi assim que inventei **quatro módulos de 65 de largura** na cristaleira.
+O 65 é a **profundidade** — a vista superior fecha `16 + 2 + 15 + 16 + 16 =
+65` — e reaparece como **vão** na cadeia vertical. Não existe peça de 65 de
+largura no móvel, e eu tinha criado três montantes que não existem.
+
+⭐ `projetos/ica-michell/vistas.py` faz cada rótulo de VISTA virar um centro
+e manda cada cota para a vista mais próxima. Daí dá para ler *"o que a
+superior diz"* separado de *"o que a frontal diz"* — que é como um
+marceneiro lê a prancha.
+
 ## ⛔⛔ A CHAVE DE PREÇO DESLIZOU DE LINHA — e ninguém via [27/10/2026]
 
 O Jonathan apontou que *"não puxou o custo da corrediça"*. A linha **estava**
