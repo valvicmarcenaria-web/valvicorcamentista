@@ -111,6 +111,65 @@ célula e em **Permitir acesso**. Enquanto isso toda a cadeia dá
 `#DIV/0!` — por isso as fórmulas de custo vão dentro de `SEERRO`, para que
 a planilha fique limpa, e não quebrada, no estado intermediário.
 
+## ⭐⭐ O TOPO DA ABA: PAINEL DO AMBIENTE [Jonathan, 28/10/2026]
+
+> *"vamos melhorar o topo · de mais destaque para informacoes gerais de
+> gasto de material · um painel geral do ambiente · quantidade e custo de
+> mdf - fitas de borda - ferragens - consumiveis e embalagem - custo total
+> - adicione um frete para cada item"*
+
+Os quatro ladrilhos de KPI saíram. No lugar entrou uma **tabela de
+material** com oito linhas, que é a conta do ambiente inteira e visível:
+
+| | MATERIAL | QUANTIDADE | CUSTO | FRETE | TOTAL | % |
+|---|---|---|---|---|---|---|
+| | MDF por cor × espessura | chapas **inteiras** | | ⭐ por chapa | | |
+| | Fita de borda | metros filetados | | por pedido | | |
+| | Ferragem, cava e luz | peças | | por pedido | | |
+| | Vidro | m² | | por entrega | | |
+| | Consumíveis · 6% | | | | | |
+| | Embalagem · 2% | | | | | |
+| | **CUSTO DIRETO** | | | | | **100%** |
+
+⭐ **A coluna de FRETE é nova e não existia em lugar nenhum da conta** —
+entrava diluída no chute ou simplesmente sumia. São quatro linhas na Base
+(`MDF` → FRETE E ENTREGA), criadas **vazias de propósito**: o painel mostra
+zero e grita, em vez de esconder o buraco. Preencher lá e elas aparecem
+sozinhas em todos os ambientes.
+
+### ⭐⭐ E a aba passou a se auditar sozinha
+
+O painel conta o material **em número cheio**; os itens rateiam a chapa
+**em fração**, porque cada móvel precisa de custo próprio. As duas contas
+têm de fechar no mesmo número, então o fechamento dos itens termina com:
+
+```
+Soma dos itens · chapa rateada em fração           29.840,46
+Arredondamento de chapa para número cheio             343,44
+MATERIAL E FERRAGEM, PELO RATEIO DOS ITENS         30.183,90
+Material e ferragem, pelo painel do ambiente       30.183,90
+⭐ CONFERÊNCIA — as duas contas têm de dar a mesma      0,00
+```
+
+Se alguém mexer numa peça e esquecer de mexer na outra ponta, **essa linha
+deixa de ser zero.** É a revisão dentro da própria planilha.
+
+### ⛔ UMA CÉLULA MUDOU SOZINHA, E SÓ A AUDITORIA VIU
+
+Depois de um `insertDimension`, a largura do fundo ripado do item 07 estava
+**2** onde era **10** — R$ 842 a menos, sem erro, sem aviso, com a fórmula
+intacta. Não tenho o mecanismo. ⭐ Tenho a lição: **toda mexida estrutural
+na aba (inserir linha, mesclar, formatar em massa) exige reescrever os
+dados a partir do script e rodar o auditor depois.** Formato e estrutura
+não são cosméticos — eles tocam no valor.
+
+### ⚠ `fields: "userEnteredFormat"` APAGA O FORMATO NUMÉRICO
+
+Pôr a faixa dourada no CUSTO DIRETO com a máscara cheia zerou o formato da
+célula de porcentagem ao lado, que voltou a mostrar `1` em vez de `100,0%`.
+⭐ Máscara cheia só em célula que vai receber o formato inteiro; para
+mexer numa propriedade, nomear a propriedade.
+
 ## ⛔⛔ ENTREGUEI SEM REVISAR, E O JONATHAN ACHOU OITO [28/10/2026]
 
 > *"sempre revise antes de entregar os resultados."*

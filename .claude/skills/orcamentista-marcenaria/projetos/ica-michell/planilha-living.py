@@ -13,7 +13,7 @@ L = importlib.util.module_from_spec(spec); sys.modules['L'] = L
 spec.loader.exec_module(L)
 
 CHAVE = {18: 'MDF cor 18', 15: 'MDF cor 15', 6: 'MDF cor 6'}
-INICIO = 58                      # primeira linha de bloco, como já está
+INICIO = 61                      # primeira linha de bloco
 
 # ── cada item: rótulo curto, medida geral e a cadeia que fecha ──────────
 ITENS = [
