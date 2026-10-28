@@ -91,8 +91,13 @@ corre_mov = {mv for mv, *_ in GAVETAS} | {o[0] for o in g('OUTRAS')
 for p in PECAS:
     n = p['nome'].lower()
     # ⛔ moldura usinada carrega o nome da frente mas não é folha
+    # ⛔ PORTA DE CORRER NÃO TEM DOBRADIÇA [Closet Master, 28/10]. A folha
+    #   do DET 06 corre em trilho, e a regra a acusou de porta sem
+    #   dobradiça. A porta de correr da Sala de Cinema só escapou porque
+    #   suas peças se chamam "esquadria": era sorte de nome, não regra.
     if ('porta' in n or n.startswith('frente') and 'gavet' not in n) \
        and 'báscula' not in n and 'moldura' not in n and 'leito' not in n \
+       and 'correr' not in n \
        and p['movel'] not in port_mov and p['movel'] not in corre_mov:
         erro(f'{p["movel"][:30]} · {p["nome"]}: porta SEM dobradiça')
 
@@ -110,8 +115,12 @@ ESTRUTURAL = ('divisória', 'prateleira', 'lateral', 'base', 'topo', 'fundo',
 def frente(p):
     n = p['nome'].lower()
     return not any(w in n for w in ESTRUTURAL)
+# ⭐ "GAVETÃO BASCULANTE" É BÁSCULA [Closet Master, 28/10]. A palavra na
+#   prancha vem sem acento e com outra terminação, e a regra contava zero
+#   básculas enquanto o orçamento trazia um articulador. Conta as duas.
 nb = sum(p['qtd'] for p in PECAS
-         if 'báscula' in p['nome'].lower() and frente(p))
+         if ('báscula' in p['nome'].lower()
+             or 'basculante' in p['nome'].lower()) and frente(p))
 na = sum(b[2] for b in BASCULAS)
 if nb != na:
     erro(f'{nb} básculas desenhadas × {na} articuladores orçados — não bate')
@@ -130,7 +139,12 @@ for mv, rot, nq, nd, pr in PORTAS:
 abre = {}
 for b in BASCULAS:
     mv = b[0]
-    modo = 'puxador' if (len(b) > 3 and b[3] != 'slim') else 'báscula slim'
+    # ⭐ A BÁSCULA PODE ABRIR POR CAVA [Closet Master, 28/10]. Até aqui o
+    #   quarto elemento só distinguia slim de puxador; o gavetão basculante
+    #   do Armário 01 abre por CAVA, como a prancha escreve, e a regra o
+    #   acusava de ter puxador e cava na mesma frente.
+    modo = {'slim': 'báscula slim', 'cava': 'cava'}.get(
+        b[3] if len(b) > 3 else 'slim', 'puxador')
     abre[mv] = abre.get(mv, set()) | {modo}
 for mv, rot, q in PUXADORES:  abre[mv] = abre.get(mv, set()) | {'puxador'}
 for mv, rot, q, c in CAVA:    abre[mv] = abre.get(mv, set()) | {'cava'}

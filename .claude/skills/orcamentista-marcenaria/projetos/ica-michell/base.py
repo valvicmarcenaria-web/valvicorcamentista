@@ -60,7 +60,13 @@ PRECO = {'MDF cor 18': 700.0, 'MDF cor 15': 550.0, 'MDF cor 6': 350.0,
          'MDF Carvalho Brun 6': 350.0,
          'MDF Nazca Velluto 18': 700.0, 'MDF Nazca Velluto 15': 550.0,
          'MDF Beige 18': 700.0, 'MDF Beige 15': 550.0,
-         'MDF Beige 6': 350.0}
+         'MDF Beige 6': 350.0,
+         # ⭐ o Closet Master inteiro é BRANCO DIAMANTE - Duratex. É um
+         #   branco TEXTURADO, irmão do Branco TX: entra no preço de
+         #   branco (400/350/250), não no de cor. ⚠ Se for linha
+         #   especial, sobe para 700/550/350 — a dúvida está na aba.
+         'MDF Branco Diamante 18': 400.0, 'MDF Branco Diamante 15': 350.0,
+         'MDF Branco Diamante 6': 250.0}
 ESTRUTURA, FUNDO_CH, PORTA_CH = 'MDF Branco TX 15', 'MDF Branco TX 6', 15
 PRAT_VAO = 70.0   # vão acima disto pede 18 mm, contra empeno [Base]
 # ⭐⭐ FITA E FILETAGEM SÃO DUAS COISAS [Jonathan, 28/10/2026]
@@ -129,6 +135,9 @@ PRECO_OUTRAS = {
  #   de 83 × 104. Isso é estofador, não marcenaria, e a Base não tem a
  #   linha. Entra por m² a zero, para aparecer na conta sem mentir.
  'Estofamento em linho': 0.0,   # ⛔ por m² · SEM PREÇO na Base
+ # ⭐ o calceiro deslizante do Closet Master é ferragem de closet, não
+ #   corrediça de gaveta. A Base não tem a linha.
+ 'Calceiro deslizante': 0.0,    # ⛔ por unidade · SEM PREÇO na Base
 }
 VIDRO_M2   =   0.0  # ⛔ reflecta champagne SEM PREÇO — a cotar
 # ⭐ SERRALHERIA ESTRUTURAL [Jonathan, 28/10/2026]

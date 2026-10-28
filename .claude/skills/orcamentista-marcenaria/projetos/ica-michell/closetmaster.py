@@ -1,0 +1,301 @@
+# -*- coding: utf-8 -*-
+"""ICA · CLOSET MASTER — levantamento peça por peça  [28/10/2026]
+
+páginas 153 a 165 · SEIS detalhamentos, seis itens, cinco folhas de detalhe.
+
+⭐⭐ UMA COR SÓ, E É BRANCA: MDF Branco Diamante - Duratex nos seis itens,
+  do fundo do nicho à porta de correr. Depois da Suíte Master, com três
+  padrões e dois fornecedores, este compra UM material e arredonda UMA vez.
+  ⚠ Lancei no preço de BRANCO (R$ 400 a chapa de 18), não no de cor, porque
+    Branco Diamante é branco texturado como o Branco TX. A dúvida 01 põe a
+    diferença na mesa: se for linha especial, são R$ 300 por chapa.
+
+⭐⭐ A CADEIA VERTICAL DOS TRÊS ARMÁRIOS É A MESMA, e ela fecha:
+      3 de topo + 60 de maleiro + 3 + 30 de nicho + 3 + 193 de corpo = 292
+    e o resto é a base. ⛔ A prancha ainda desenha um "53" solto no pé de
+    cada ladder, que não existe no desenho — somando-o a cadeia daria 345
+    contra os 300 cotados. Ignorei o 53; o 193 fecha sozinho, e no DET 02
+    ele se abre em 22 + 22 + 22 + 22 + 23 + 82, que dá exatamente 193.
+
+⭐ É O AMBIENTE DE FERRAGEM DO PROJETO: oito sapateiras corrediças, seis
+  sapateiras fixas, três cabideiros, dois calceiros deslizantes, um
+  gavetão basculante e catorze gavetas. ⛔ O calceiro deslizante não
+  existe na Base e sai ZERO.
+
+⛔ O pé-direito de 300 volta: lateral, divisória e fundo dos três armários
+  e do nicho passam dos 273 da chapa.
+"""
+from base import P, gaveta, ALT_MAX, CHAPA_C
+
+BD18, BD15, BD6 = ('MDF Branco Diamante 18', 'MDF Branco Diamante 15',
+                   'MDF Branco Diamante 6')
+
+I1 = 'DET 01 Nichos'
+I2 = 'DET 02 Armário 01'
+I3 = 'DET 03 Armário 02'
+I4 = 'DET 04 Armário 03'
+I5 = 'DET 05 Painel com espelho'
+I6 = 'DET 06 Porta de correr'
+
+CLOSETMASTER = [
+ # ══ ITEM 01 · NICHOS — 80 × 300 × 40 ═════════════════════════════════
+ #  VISTA FRONTAL  80 de largura · altura 2 + 43 + 2 + 48 + 2 + 48 + 2 +
+ #                 48 + 2 + 48 + 2 + 48 + 5 = 300 · SEIS nichos com LED
+ #  VISTA SUPERIOR 80 = 30 de curva + 50 · profundidade 40 · canto de 90°
+ P('Lateral',            I1, 300, 40, 2, BD15, (1, 0),
+   'Aparente · ⛔ 300 de altura contra 273 de peça inteira'),
+ P('Tampo e base',       I1, 80, 40, 2, BD15, (1, 0)),
+ P('Prateleira',         I1, 80, 40, 5, BD18, (2, 2),
+   '⭐ 18 mm porque o vão de 80 passa dos 70 da regra · a frente é '
+   'ARREDONDADA, como a VISTA SUPERIOR mostra: é peça de canto'),
+ P('Fundo',              I1, 80, 273, 1, BD6, (0, 0),
+   '⭐ aparece dentro do nicho, por isso sai em Branco Diamante e não em '
+   'branco de caixaria · ⛔ desenhado com 300 de altura'),
+
+ # ══ ITEM 02 · ARMÁRIO 01 — 140 × 300 × 50 ════════════════════════════
+ #  VISTA FRONTAL  3 + 50 + 3 + 53 + 3 + 29 ≈ 140 · três colunas
+ #                 altura 3 + 60 + 3 + 30 + 3 + 193 ≈ 300
+ #                 o corpo de 193 = 22 + 22 + 22 + 22 de sapateira + 23 de
+ #                 nicho + 82 de gavetão
+ P('Lateral',            I2, 300, 50, 2, BD15, (1, 0), '⛔ 300 de altura'),
+ P('Divisória',          I2, 300, 50, 2, BD15, (1, 0),
+   'As duas verticais que fazem as colunas de 50, 53 e 29 · ⛔ 300 de altura'),
+ P('Tampo e base',       I2, 134, 50, 2, BD15, (1, 0)),
+ P('Prateleira do maleiro', I2, 134, 50, 1, BD18, (1, 0),
+   '⭐ 18 mm: o vão corrido de 134 passa dos 70'),
+ P('Prateleira do nicho', I2, 134, 50, 1, BD18, (1, 0)),
+ P('Sapateira corrediça · coluna de 50', I2, 50, 50, 4, BD15, (2, 2),
+   'Quatro, de 22 em 22 · corre para fora, então as quatro arestas aparecem'),
+ P('Sapateira corrediça · coluna de 53', I2, 53, 50, 4, BD15, (2, 2),
+   'Quatro, de 22 em 22'),
+ P('Prateleira do nicho baixo', I2, 50, 50, 1, BD18, (1, 0)),
+ P('Prateleira do nicho baixo · coluna de 53', I2, 53, 50, 1, BD18, (1, 0)),
+ P('Frente · gavetão basculante', I2, 50, 82, 1, BD18, (2, 2),
+   '⭐ basculante: tomba para fora, é cesto de roupa · puxador cava'),
+ P('Frente · gavetão',   I2, 53, 41, 2, BD18, (2, 2), 'Dois, de 41 cada · puxador cava'),
+ P('Fundo',              I2, 140, 273, 1, BD6, (0, 0),
+   'Encaixe em rasgo · ⛔ 300 de altura, rebaixado para os 273 da chapa'),
+ *gaveta(I2, 53, 45, 41, 2, 'Gavetão', cor=BD15, fundo=BD6),
+
+ # ══ ITEM 03 · ARMÁRIO 02 — 480 × 300 × 60 ════════════════════════════
+ #  VISTA FRONTAL  3 + 105 + 3 + 90 + 3 + 97 + 3 + 173 ≈ 480
+ #                 altura 3 + 60 + 3 + 30 + 3 + 193 ≈ 300
+ #  ⭐ a coluna de 97 leva o ESPELHO COM LED FRONTAL
+ P('Lateral',            I3, 300, 60, 2, BD15, (1, 0), '⛔ 300 de altura'),
+ P('Divisória',          I3, 300, 60, 3, BD15, (1, 0),
+   'As três verticais das quatro colunas · ⛔ 300 de altura'),
+ P('Tampo e base',       I3, 237, 60, 4, BD15, (1, 0),
+   'Duas peças em cada: 474 de corrida não sai de uma chapa'),
+ P('Prateleira do maleiro · coluna de 105', I3, 105, 60, 1, BD18, (1, 0)),
+ P('Prateleira do maleiro · coluna de 90',  I3, 90, 60, 1, BD18, (1, 0)),
+ P('Prateleira do maleiro · coluna de 97',  I3, 97, 60, 1, BD18, (1, 0)),
+ P('Prateleira do maleiro · coluna de 173', I3, 173, 60, 1, BD18, (1, 0)),
+ P('Prateleira do nicho · coluna de 105',   I3, 105, 60, 1, BD18, (1, 0)),
+ P('Prateleira do nicho · coluna de 90',    I3, 90, 60, 2, BD18, (1, 0),
+   'Duas: a coluna de 90 tem DOIS níveis de nicho, de 43 cada'),
+ P('Nicho · divisória vertical', I3, 65, 60, 1, BD15, (1, 0),
+   'Parte a coluna de 90 em dois nichos de 43'),
+ P('Prateleira do nicho · coluna de 173',   I3, 173, 60, 1, BD18, (1, 0)),
+ P('Prateleira',         I3, 90, 60, 1, BD18, (1, 0),
+   'A que a VISTA FRONTAL chama de "Prateleira", abaixo dos nichos'),
+ P('Frente · gaveta da coluna de 90', I3, 90, 20, 4, BD18, (2, 2),
+   'Quatro gavetas de 20 · puxador cava'),
+ P('Painel de apoio do espelho', I3, 97, 120, 1, BD18, (2, 2),
+   '⭐ o espelho é do vidraceiro, mas ele cola em alguma coisa · a '
+   'iluminação é frontal, no perímetro'),
+ P('Frente · gaveta sob o espelho', I3, 49, 20, 1, BD18, (2, 2), 'Puxador cava'),
+ P('Frente · gaveta sob o espelho · 48', I3, 48, 20, 1, BD18, (2, 2), 'Puxador cava'),
+ P('Sapateira · coluna de 173', I3, 84, 60, 3, BD18, (2, 2),
+   'Três sapateiras fixas de 84, ao lado do calceiro'),
+ P('Fundo',              I3, 240, 150, 4, BD6, (0, 0),
+   '⛔ 480 × 300 de fundo não sai nem de duas chapas: quatro peças de '
+   '240 × 150 · encaixe em rasgo, sem fita'),
+ *gaveta(I3, 90, 55, 20, 4, 'Gaveta', cor=BD15, fundo=BD6),
+ *gaveta(I3, 49, 55, 20, 2, 'Gaveta do espelho', cor=BD15, fundo=BD6),
+
+ # ══ ITEM 04 · ARMÁRIO 03 — 260 × 300 × 60 ════════════════════════════
+ #  VISTA FRONTAL  104 + 80 + 67 ≈ 260 com as três verticais de 3
+ #                 altura 3 + 60 + 3 + 30 + 3 + 193 ≈ 300
+ #  ⭐ maleiro, nicho, cabideiro, calceiro deslizante, gavetas, gavetão e
+ #    sapateira — o armário mais completo dos três
+ P('Lateral',            I4, 300, 60, 2, BD15, (1, 0), '⛔ 300 de altura'),
+ P('Divisória',          I4, 300, 60, 2, BD15, (1, 0), '⛔ 300 de altura'),
+ P('Tampo e base',       I4, 254, 60, 2, BD15, (1, 0)),
+ P('Prateleira do maleiro · coluna de 104', I4, 104, 60, 1, BD18, (1, 0)),
+ P('Prateleira do maleiro · coluna de 80',  I4, 80, 60, 1, BD18, (1, 0)),
+ P('Prateleira do maleiro · coluna de 67',  I4, 67, 60, 1, BD18, (1, 0)),
+ P('Prateleira do nicho · coluna de 104',   I4, 104, 60, 1, BD18, (1, 0)),
+ P('Prateleira do nicho · coluna de 80',    I4, 80, 60, 3, BD18, (1, 0),
+   'Três: a coluna do meio é toda de nichos, de 24 em 24'),
+ P('Prateleira do nicho · coluna de 67',    I4, 67, 60, 1, BD18, (1, 0)),
+ P('Sapateira',          I4, 104, 60, 4, BD18, (2, 2),
+   'Quatro sapateiras fixas de 21 em 21, na coluna de 104'),
+ P('Frente · gaveta',    I4, 80, 21, 3, BD18, (2, 2), 'Três de 21 · puxador cava'),
+ P('Frente · gavetão',   I4, 67, 43, 1, BD18, (2, 2), 'Puxador cava'),
+ P('Fundo',              I4, 260, 150, 2, BD6, (0, 0),
+   '⛔ 260 × 300 não sai de uma chapa: duas peças de 260 × 150 · encaixe '
+   'em rasgo, sem fita'),
+ *gaveta(I4, 80, 55, 21, 3, 'Gaveta', cor=BD15, fundo=BD6),
+ *gaveta(I4, 67, 55, 43, 1, 'Gavetão', cor=BD15, fundo=BD6),
+
+ # ══ ITEM 05 · PAINEL COM ESPELHO — 160 × 300 ═════════════════════════
+ #  VISTA FRONTAL  160 × 300 · painel em MDF com espelho e iluminação
+ #                 frontal · tem vão para a porta do DET 06 correr
+ P('Painel · faixa alta', I5, 160, 150, 1, BD18, (2, 2),
+   '⛔ 300 de altura não sai de uma chapa: duas peças de 150, e a emenda '
+   'fica atrás do espelho'),
+ P('Painel · faixa baixa', I5, 160, 150, 1, BD18, (2, 2)),
+
+ # ══ ITEM 06 · PORTA DE CORRER — 110 × 220 ════════════════════════════
+ #  VISTA FRONTAL  110 × 220 · corre no vão do painel do DET 05
+ P('Folha da porta de correr', I6, 110, 220, 1, BD18, (2, 2),
+   'Peça inteira: 220 cabe nos 273 da chapa'),
+]
+
+# ── ferragem, declarada item a item ─────────────────────────────────────
+GAVETAS = [(I2, 'Armário 01 · dois gavetões de 41', 2, 450),
+           (I3, 'Armário 02 · quatro gavetas de 20 e duas sob o espelho',
+            6, 550),
+           (I4, 'Armário 03 · três gavetas de 21 e um gavetão de 43', 4, 550)]
+PORTAS  = []
+#  ⭐ o gavetão basculante tomba para fora: é báscula, não gaveta
+BASCULAS= [(I2, 'Gavetão basculante do Armário 01 · cesto de roupa', 1,
+            'cava')]
+#  ⭐ puxador cava em toda frente deste ambiente
+CAVA    = [(I2, 'Gavetão basculante e os dois gavetões do Armário 01', 3, 52),
+           (I3, 'As quatro gavetas de 90 e as duas sob o espelho', 6, 76),
+           (I4, 'As três gavetas de 80 e o gavetão de 67', 4, 77)]
+PUXADORES= []
+MOLDURA = []
+LED     = [(I1, 'Um por nicho, nos seis nichos de 80', 4.80),
+           (I3, 'Iluminação frontal do espelho, no perímetro', 4.40)]
+CABIDEIROS = [(I2, 'Cabideiro para vestidos, na coluna de 29', 1),
+              (I3, 'Cabideiro nas colunas de 105 e de 173', 2),
+              (I4, 'Cabideiro na coluna de 67', 1)]
+SARRAFOS= []
+SUPORTES= []
+ALMAS   = []
+VIDRO   = []
+SERRALHERIA = []
+# ⛔ duas ferragens de closet que a Base não tem: o calceiro deslizante e o
+#   trilho da porta de correr do DET 06.
+OUTRAS  = [(I3, 'Calceiro deslizante', 'Na coluna de 173 do Armário 02 · '
+            '⛔ sem preço na Base', 1, 'un', 'Calceiro deslizante'),
+           (I4, 'Calceiro deslizante', 'Na coluna de 80 do Armário 03 · '
+            '⛔ sem preço na Base', 1, 'un', 'Calceiro deslizante'),
+           (I6, 'Trilho de porta de correr', 'Folha de 110 × 220 em MDF de '
+            '18 · ⛔ sem preço na Base', 1, 'jogo',
+            'Trilho de porta de correr')]
+
+CABECA = {
+ I1: ('80 × 300 × 40',
+      'VISTA FRONTAL 80 de largura · altura 2 + 43 + 2 + 48 + 2 + 48 + 2 + '
+      '48 + 2 + 48 + 2 + 48 + 5 = 300 · SEIS nichos, um LED em cada · '
+      'VISTA SUPERIOR 30 de curva mais 50, profundidade 40, canto de 90°'),
+ I2: ('140 × 300 × 50',
+      'VISTA FRONTAL 3 + 50 + 3 + 53 + 3 + 29 ≈ 140 · altura 3 + 60 de '
+      'maleiro + 3 + 30 de nicho + 3 + 193 de corpo ≈ 300 · o corpo de 193 '
+      'se abre em 22 + 22 + 22 + 22 de sapateira + 23 de nicho + 82 de '
+      'gavetão, que fecha exato'),
+ I3: ('480 × 300 × 60',
+      'VISTA FRONTAL 3 + 105 + 3 + 90 + 3 + 97 + 3 + 173 ≈ 480 · altura 3 '
+      '+ 60 + 3 + 30 + 3 + 193 ≈ 300 · quatro colunas, e a de 97 leva o '
+      'espelho com LED frontal'),
+ I4: ('260 × 300 × 60',
+      'VISTA FRONTAL 104 + 80 + 67 ≈ 260 · altura 3 + 60 + 3 + 30 + 3 + '
+      '193 ≈ 300 · três colunas com maleiro, nicho, cabideiro, calceiro '
+      'deslizante, gavetas, gavetão e sapateira'),
+ I5: ('160 × 300',
+      'VISTA FRONTAL 160 × 300 · painel em MDF com espelho e iluminação '
+      'frontal · tem vão para a porta do DET 06 correr'),
+ I6: ('110 × 220',
+      'VISTA FRONTAL 110 × 220 · corre no vão do painel do DET 05'),
+}
+
+FOLHA = dict(
+ aba='CLOSET MASTER',
+ sub='Jéssica e Michell · Projeto ICA · páginas 153 a 165 · SEIS itens em '
+     'cinco folhas de detalhe · ⭐ UMA COR SÓ e ela é branca: Branco '
+     'Diamante Duratex nos seis itens · ⛔ pé-direito de 300 contra peça '
+     f'inteira de {ALT_MAX:g}, que é a chapa de {CHAPA_C:g} menos o acerto '
+     'de corte',
+ chapa_txt={BD18: 'Branco Diamante · Duratex · prateleiras, frentes, '
+                  'sapateiras e painéis',
+            BD15: 'Branco Diamante · Duratex · laterais, divisórias, '
+                  'sapateiras corrediças e caixas de gaveta',
+            BD6:  'Branco Diamante · Duratex · fundos · ⭐ sai na cor e não '
+                  'em branco de caixaria, porque dentro de closet aberto '
+                  'TUDO aparece'},
+ nota='⛔ O FRETE ESTÁ ZERADO DE PROPÓSITO: as linhas de frete da Base não '
+      'têm preço ainda. Preencher lá e elas aparecem aqui sozinhas.   '
+      '⭐⭐ UMA COR SÓ NO AMBIENTE INTEIRO, e ela é branca. Branco Diamante '
+      'Duratex nos seis itens, inclusive nos fundos — dentro de closet '
+      'aberto não existe peça que não apareça. ⚠ Lancei no preço de BRANCO '
+      '(R$ 400 a chapa de 18), não no de cor; se for linha especial são '
+      'R$ 300 a mais por chapa.   ⭐ A CADEIA VERTICAL DOS TRÊS ARMÁRIOS '
+      'FECHA: 3 + 60 de maleiro + 3 + 30 de nicho + 3 + 193 de corpo = 292, '
+      'e o resto é base. ⛔ O "53" solto no pé de cada ladder da prancha '
+      'não existe no desenho — somando-o a cadeia daria 345 contra os 300 '
+      'cotados.   ⭐ É O AMBIENTE DE FERRAGEM DO PROJETO: oito sapateiras '
+      'corrediças, sete fixas, quatro cabideiros, dois calceiros '
+      'deslizantes, um gavetão basculante e catorze gavetas.',
+ duvidas=[
+  'BRANCO DIAMANTE É BRANCO OU É COR? Lancei no preço de BRANCO — R$ 400 a '
+  'chapa de 18, R$ 350 a de 15, R$ 250 a de 6 — porque Branco Diamante é um '
+  'branco texturado, irmão do Branco TX que a casa já usa em toda a '
+  'caixaria. ⚠ Se a Duratex cobrar como linha decorativa, vai para R$ 700 / '
+  '550 / 350 e o ambiente sobe quase 80%. ⛔ É a pergunta que mais vale '
+  'dinheiro nesta aba, e ela se responde com uma ligação.',
+  'O CALCEIRO DESLIZANTE não existe na Base e sai ZERO. São dois, um no '
+  'Armário 02 e outro no Armário 03. ⚠ Calceiro deslizante de closet custa '
+  'de R$ 150 a R$ 400 a unidade conforme a largura e o acabamento. ⛔ Até '
+  'existir, o custo dos dois armários é um PISO.',
+  'O TRILHO DA PORTA DE CORRER DO DET 06 também não existe na Base. ⚠ A '
+  'folha é pequena — 110 × 220 em MDF de 18 — então é trilho leve, não o de '
+  'carga da Sala de Cinema. Mesmo assim, sem preço.',
+  'A PRANCHA DESENHA UM "53" SOLTO no pé da cadeia vertical dos três '
+  'armários. Somando-o, a cadeia dá 345 contra os 300 que o próprio '
+  'desenho cota. ⭐ Ignorei o 53: sem ele, 3 + 60 + 3 + 30 + 3 + 193 = 292 '
+  'e o 193 do DET 02 se abre em 22 + 22 + 22 + 22 + 23 + 82, que fecha '
+  'exato. ⚠ Confirmar, porque 45 cm de altura em três armários de 300 é '
+  'meia chapa por armário.',
+  'AS SAPATEIRAS CORREDIÇAS DO ARMÁRIO 01 — oito, de 22 em 22 — levam '
+  'corrediça por par, e eu as contei como gaveta sem caixa: a sapateira é '
+  'uma prateleira que corre, não um gavetão. ⚠ Orcei a corrediça de 450 mm '
+  'em cada, mas NÃO orcei caixa nem frente, porque a prancha desenha '
+  'prateleira nua. Confirmar se levam borda de contenção.',
+  'O ESPELHO DA COLUNA DE 97 DO ARMÁRIO 02 é vidraceiro. ⚠ Lancei o painel '
+  'de apoio em Branco Diamante e os 4,4 m de LED do perímetro; o espelho '
+  'em si, não. A prancha não cota o espelho — tirei 97 × 120 do desenho em '
+  '1/20. Confirmar a medida antes de pedir o vidro.',
+  'O GAVETÃO BASCULANTE DO ARMÁRIO 01 é cesto de roupa: tomba para fora. '
+  '⭐ Orcei o articulador HK-XS da Blum, R$ 250, que é a báscula da casa. '
+  '⚠ Para cesto de roupa existe ferragem específica, de tombamento, que '
+  'costuma custar menos. Confirmar.',
+  '⛔ A BASE METÁLICA DE 3 CM não está lançada aqui. Os três armários e o '
+  'nicho tocam o chão. ⚠ Fica para a passada única, junto com os outros '
+  'nove ambientes.'],
+ nao_marcenaria=[
+  'Espelho da coluna de 97 do Armário 02 — vidraceiro (o painel de apoio e '
+  'o LED são nossos)',
+  'Espelho do painel do DET 05 — vidraceiro',
+  'Cabides, caixas organizadoras e tudo que o cliente põe dentro'],
+ notas=[
+  '⭐⭐ UMA COR SÓ, E ELA É BRANCA. Branco Diamante Duratex nos seis itens, '
+  'do fundo do nicho à porta de correr. Depois da Suíte Master, com três '
+  'padrões e dois fornecedores, este ambiente compra um material e '
+  'arredonda uma vez — é o oposto do Banho Hóspedes.',
+  '⭐ O FUNDO SAI NA COR, não em branco de caixaria. Dentro de closet '
+  'aberto não existe peça escondida: o fundo do nicho é a superfície que '
+  'se vê de frente, e em três armários de 300 de altura isso é bastante '
+  'metro quadrado.',
+  '⭐ A CADEIA VERTICAL É A MESMA NOS TRÊS ARMÁRIOS: 3 de topo, 60 de '
+  'maleiro, 3, 30 de nicho, 3, e 193 de corpo. Só o que vai dentro do 193 '
+  'muda — sapateira corrediça e gavetão no 01, gaveta e espelho no 02, '
+  'calceiro e sapateira no 03. Isso facilita o corte: as laterais e as '
+  'divisórias dos três são a mesma peça.',
+  '⚠ É O AMBIENTE DE FERRAGEM DO PROJETO. Oito sapateiras corrediças, sete '
+  'fixas, quatro cabideiros, dois calceiros deslizantes, um gavetão '
+  'basculante e catorze gavetas. A ferragem pesa mais que a chapa aqui, e '
+  'dois itens dela saem ZERO porque a Base não os tem.'],
+)
