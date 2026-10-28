@@ -111,6 +111,47 @@ célula e em **Permitir acesso**. Enquanto isso toda a cadeia dá
 `#DIV/0!` — por isso as fórmulas de custo vão dentro de `SEERRO`, para que
 a planilha fique limpa, e não quebrada, no estado intermediário.
 
+## ⭐⭐ A IDENTIDADE N.GESTAO [Jonathan, 28/10/2026]
+
+> *"pode tirar o campo das imagens tbm. e copie a identidade visual das
+> planilhas de gestao que fizemos."*
+
+As três `N.GESTAO` (Gestão · Custo por Projeto · Direção) têm uma gramática
+própria, e é ela que as abas de orçamento passam a seguir:
+
+| | |
+|---|---|
+| **coluna A** | vazia e estreita, de margem — o conteúdo começa em B |
+| **linha 1** | `"  VALVIC MARCENARIA        <AMBIENTE>"`, numa célula só, faixa preta |
+| **linha 2** | frase corrida, com ` · ` separando as ideias |
+| **seções** | `"  NOME   ·   subtítulo"` em caixa alta, recuo de dois espaços, dourado com régua preta embaixo |
+| **gridlines** | desligadas |
+| **imagem** | ⛔ não existe mais campo de imagem |
+
+⭐ E o tom: o subtítulo da seção explica **a regra**, não o conteúdo —
+*"cada móvel com o seu custo, porque é assim que a fábrica produz e o
+cliente confere"*. É o que a N.GESTAO faz em *"obra entregue tem margem
+fechada · obra em produção não tem margem nenhuma, de propósito"*.
+
+## ⭐⭐ A CHAVE DE CHAPA É POR COR, NÃO POR ESPESSURA
+
+A Cozinha tem **três padrões de MDF** e nenhum é o do Living. Com a chave
+antiga (`MDF cor 18`), Verde Floresta e Jequitibá Rosa caíam no mesmo balde
+e arredondavam juntos — **um arredondamento onde deviam ser dois**.
+
+⭐ Agora cada cor é uma chave: `MDF Verde Floresta 18`, `MDF Jequitibá Rosa
+18`, `MDF Nogueira Caiena 18`. Todas apontam para o mesmo preço na Base,
+mas o `SOMARPRODUTO` por chave **arredonda cada uma separado**, que é a
+regra de ferro. A Cozinha fecha em **quatro arredondamentos**: 4 + 6 + 7 +
+4 = 21 chapas.
+
+## ⭐ `base.py` — o comum dos vinte ambientes
+
+Nasceu quando a Cozinha chegou. A chapa, a peça, a gaveta, o ripado e os
+preços moram lá; o que é prancha mora em `living.py`, `cozinha.py` e nos
+dezoito que faltam. O `auditor.py` e o `planilha.py` passaram a receber o
+nome do ambiente por argumento e servem qualquer um.
+
 ## ⭐⭐ O TOPO DA ABA: PAINEL DO AMBIENTE [Jonathan, 28/10/2026]
 
 > *"vamos melhorar o topo · de mais destaque para informacoes gerais de
