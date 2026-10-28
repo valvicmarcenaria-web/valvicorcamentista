@@ -137,7 +137,10 @@ for mv, rot, q, c in CAVA:    abre[mv] = abre.get(mv, set()) | {'cava'}
 # ⭐ o puxador passante é o terceiro modo, e é o único do projeto — entra
 #   por OUTRAS porque é perfil por metro, não peça por frente
 for o in g('OUTRAS'):
-    if 'assante' in o[5]: abre[o[0]] = abre.get(o[0], set()) | {'puxador'}
+    # ⭐ qualquer PUXADOR declarado por OUTRAS conta como modo de abrir: o
+    #   passante do Quarto é perfil por metro, o de couro da Suíte Hóspedes
+    #   é peça por unidade, e os dois abrem a frente do mesmo jeito.
+    if 'uxador' in o[5]: abre[o[0]] = abre.get(o[0], set()) | {'puxador'}
     # ⭐ o pulsador é o quarto modo: a frente abre pelo toque, sem ferragem
     #   à vista. É o que a porta ripada do Banho Gourmet pede, e a Base já
     #   avisa que ele NÃO SE SOMA ao slim nem a puxador na mesma frente.

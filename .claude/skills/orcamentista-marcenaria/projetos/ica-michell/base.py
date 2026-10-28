@@ -40,7 +40,16 @@ PRECO = {'MDF cor 18': 700.0, 'MDF cor 15': 550.0, 'MDF cor 6': 350.0,
          'MDF Carvalho Malva 18': 700.0, 'MDF Carvalho Malva 15': 550.0,
          'MDF Carvalho Malva 6': 350.0,
          'MDF Off White Suave 18': 700.0, 'MDF Off White Suave 15': 550.0,
-         'MDF Off White Suave 6': 350.0}
+         'MDF Off White Suave 6': 350.0,
+         # ⭐ os quatro padrões que a Suíte Hóspedes trouxe. Todos Duratex,
+         #   todos melamínico fosco pela linha — e nenhum nomeado na Base.
+         #   ⚠ "Palha Indiana Sextavada" e "Palha" são dois padrões
+         #     diferentes na prancha; se forem a mesma chapa, duas compras
+         #     viram uma e o arredondamento cai.
+         'MDF Oásis 18': 700.0, 'MDF Oásis 15': 550.0, 'MDF Oásis 6': 350.0,
+         'MDF Palha Indiana Sextavada 18': 700.0,
+         'MDF Palha Indiana Sextavada 15': 550.0,
+         'MDF Palha 18': 700.0, 'MDF Palha 15': 550.0}
 ESTRUTURA, FUNDO_CH, PORTA_CH = 'MDF Branco TX 15', 'MDF Branco TX 6', 15
 PRAT_VAO = 70.0   # vão acima disto pede 18 mm, contra empeno [Base]
 # ⭐⭐ FITA E FILETAGEM SÃO DUAS COISAS [Jonathan, 28/10/2026]
@@ -93,6 +102,7 @@ PERDA_RIPA =   1.10 # ⭐ Base, Terceirizados: perda de serra ao tirar ripa
 #   mora aqui e no 'precos' da planilha; vazio na Base continua vazio aqui.
 PRECO_OUTRAS = {
  'Puxador passante':      100.0,  # perfil SP7000, por metro de frente
+ 'Puxador de couro':        0.0,  # ⛔ cor fendi · NÃO EXISTE na Base
  # ⭐ O PULSADOR VOLTA, FORA DA COZINHA. [Jonathan, 28/10] tirou o pulsador
  #   das básculas da Cozinha porque lá a frente abre pelo slim, e os dois
  #   não se somam. Mas a porta RIPADA do Banho Gourmet não tem puxador
