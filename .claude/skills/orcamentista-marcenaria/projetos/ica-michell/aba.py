@@ -199,6 +199,8 @@ FERR = [('Corrediça', 'corrediça', g('GAVETAS')),
         ('Alma de aço', 'alma de aço', g('ALMAS')),
         ('Suporte oculto', 'suporte oculto', g('SUPORTES')),
         ('Cabideiro', 'cabideiro', g('CABIDEIROS')),
+        *[(ch, nome.lower(), [1]) for ch, nome in
+          dict((o[5], o[1]) for o in g('OUTRAS')).items()],
         ('Sarrafo de pinus', 'sarrafo de reforço', g('SARRAFOS')),
         ('Serralheria estrutural', 'serralheria estrutural', g('SERRALHERIA'))]
 ativos = [(c, rot) for c, rot, lst in FERR if lst]

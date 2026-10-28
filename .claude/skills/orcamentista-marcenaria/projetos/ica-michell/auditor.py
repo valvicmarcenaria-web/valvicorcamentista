@@ -71,13 +71,19 @@ for p in PECAS:
              'metro de cava declarado')
 
 # ── 4 · porta ↔ dobradiça ───────────────────────────────────────────────
+#   ⛔ NEM TODA FRENTE É PORTA: a do leito inferior da bicama CORRE, em
+#     corrediça de carga, e não tem dobradiça nenhuma. A regra só olhava
+#     GAVETAS para saber se algo corre, e a corrediça de carga entra por
+#     OUTRAS. Agora ela olha os dois.
 port_mov = {mv for mv, *_ in PORTAS}
+corre_mov = {mv for mv, *_ in GAVETAS} | {o[0] for o in g('OUTRAS')
+                                          if 'orrediça' in o[5]}
 for p in PECAS:
     n = p['nome'].lower()
-    # ⛔ travessa de moldura carrega o nome da frente mas não é folha
+    # ⛔ moldura usinada carrega o nome da frente mas não é folha
     if ('porta' in n or n.startswith('frente') and 'gavet' not in n) \
-       and 'báscula' not in n and 'travessa' not in n \
-       and p['movel'] not in port_mov:
+       and 'báscula' not in n and 'moldura' not in n and 'leito' not in n \
+       and p['movel'] not in port_mov and p['movel'] not in corre_mov:
         erro(f'{p["movel"][:30]} · {p["nome"]}: porta SEM dobradiça')
 
 # ── 5 · báscula ↔ articulador ───────────────────────────────────────────
@@ -118,6 +124,10 @@ for b in BASCULAS:
     abre[mv] = abre.get(mv, set()) | {modo}
 for mv, rot, q in PUXADORES:  abre[mv] = abre.get(mv, set()) | {'puxador'}
 for mv, rot, q, c in CAVA:    abre[mv] = abre.get(mv, set()) | {'cava'}
+# ⭐ o puxador passante é o terceiro modo, e é o único do projeto — entra
+#   por OUTRAS porque é perfil por metro, não peça por frente
+for o in g('OUTRAS'):
+    if 'assante' in o[5]: abre[o[0]] = abre.get(o[0], set()) | {'puxador'}
 for mv, modos in abre.items():
     if {'puxador', 'cava'} <= modos:
         erro(f'{mv[:34]}: frente com PUXADOR e CAVA ao mesmo tempo — '
@@ -211,6 +221,10 @@ def custo(mv):
         if x == mv: t += q*B.ALMA
     for x, rot, q in SUPORTES:
         if x == mv: t += q*B.SUPORTE
+    for x, nome, rot, q, un, ch in g('OUTRAS'):
+        # ⛔ .get: item da Base sem preço entra como ZERO e denuncia, que é
+        #   a regra da casa — não quebra a auditoria
+        if x == mv: t += q*B.PRECO.get(ch, 0.0)
     for x, rot, q in g('CABIDEIROS'):
         if x == mv: t += q*B.CABIDEIRO
     for x, rot, m in g('SARRAFOS'):

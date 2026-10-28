@@ -88,6 +88,13 @@ CABIDEIRO  = 120.0  # cabideiro em metal preto ou grafite · Base, por unidade
 #   recebe sarrafo. Sarrafo é material de estrutura, não aparece e não leva
 #   fita — por isso entra por metro, como o LED, e não como peça de chapa.
 SARRAFO    =   8.0  # sarrafo de pinus · estrutura interna, por metro
+# ⭐ ferragem de uma vez só, declarada por OUTRAS no ambiente. O preço
+#   mora aqui e no 'precos' da planilha; vazio na Base continua vazio aqui.
+PRECO_OUTRAS = {
+ 'Puxador passante':      100.0,  # perfil SP7000, por metro de frente
+ 'Corrediça de carga':      0.0,  # ⛔ leito de bicama · SEM PREÇO na Base
+ 'Pistão de tampo de baú':  0.0,  # ⛔ dois por tampo · SEM PREÇO na Base
+}
 VIDRO_M2   =   0.0  # ⛔ reflecta champagne SEM PREÇO — a cotar
 # ⭐ SERRALHERIA ESTRUTURAL [Jonathan, 28/10/2026]
 #   > "No banco suspenso do living considere uma estrutura de serralheria
@@ -97,6 +104,7 @@ VIDRO_M2   =   0.0  # ⛔ reflecta champagne SEM PREÇO — a cotar
 #     é SUSPENSO e o que o segura não é a marcenaria.
 #   ⭐ Entra como VALOR FECHADO por móvel, não por metro: foi assim que o
 #     Jonathan deu, e banco suspenso é projeto, não metro linear.
+PRECO.update(PRECO_OUTRAS)   # ⭐ o custo() do auditor busca tudo em PRECO
 CONSUM, EMBAL = 0.06, 0.02
 # ⛔⛔ SEM FONTE DE LED em lugar nenhum: as fitas da casa são 110 V
 #   [Jonathan, 28/10/2026]

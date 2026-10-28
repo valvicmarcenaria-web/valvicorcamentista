@@ -102,6 +102,14 @@ def linhas_do_item(mov):
     for mv, rot, q in g('SUPORTES'):
         if mv == mov: out.append(['Suporte oculto', rot + ' · de 40 em 40 cm',
                                   '', '', q, 'un', 'Suporte oculto'])
+    # ⭐⭐ OUTRAS: a ferragem de uma vez só. Cada ambiente traz um item que
+    #   a Base tem e o gerador não — passante no Quarto, corrediça de carga
+    #   na bicama, pistão de tampo no baú. Criar uma constante e três
+    #   blocos para cada um é como a lista de chapas era antes de sair das
+    #   peças: digitada, e por isso esquecível. Aqui a linha vem pronta do
+    #   ambiente, com a chave da Base, e o resto do motor não muda.
+    for mv, nome, rot, q, un, ch in g('OUTRAS'):
+        if mv == mov: out.append([nome, rot, '', '', q, un, ch])
     for mv, rot, q in g('CABIDEIROS'):
         if mv == mov: out.append(['Cabideiro', rot + ' · metal preto ou '
                                   'grafite', '', '', q, 'un', 'Cabideiro'])
