@@ -88,10 +88,17 @@ CABIDEIRO  = 120.0  # cabideiro em metal preto ou grafite · Base, por unidade
 #   recebe sarrafo. Sarrafo é material de estrutura, não aparece e não leva
 #   fita — por isso entra por metro, como o LED, e não como peça de chapa.
 SARRAFO    =   8.0  # sarrafo de pinus · estrutura interna, por metro
+PERDA_RIPA =   1.10 # ⭐ Base, Terceirizados: perda de serra ao tirar ripa
 # ⭐ ferragem de uma vez só, declarada por OUTRAS no ambiente. O preço
 #   mora aqui e no 'precos' da planilha; vazio na Base continua vazio aqui.
 PRECO_OUTRAS = {
  'Puxador passante':      100.0,  # perfil SP7000, por metro de frente
+ # ⭐ O PULSADOR VOLTA, FORA DA COZINHA. [Jonathan, 28/10] tirou o pulsador
+ #   das básculas da Cozinha porque lá a frente abre pelo slim, e os dois
+ #   não se somam. Mas a porta RIPADA do Banho Gourmet não tem puxador
+ #   nenhum desenhado, e uma face ripada não aceita cava: é o pulsador que
+ #   sobra. O preço é o da Base.
+ 'Pulsador':              100.0,
  'Corrediça de carga':      0.0,  # ⛔ leito de bicama · SEM PREÇO na Base
  'Pistão de tampo de baú':  0.0,  # ⛔ dois por tampo · SEM PREÇO na Base
 }
@@ -152,9 +159,19 @@ def ripado(movel, larg_total, alt, larg_ripa, vao, chave, obs=''):
     #     QUATRO arestas, e as longas são as que valem metro. Numa ripa de
     #     3 × 103 isso é 1,09 m contra 2,12 m: a conta dobra.
     #   ⛔ E ripa não entra na coladeira: a filetagem é MANUAL, R$ 5,00.
+    #   ⭐⭐ E A SERRA COME CHAPA. A Base traz "Perda de serra ao tirar ripa ·
+    #     fator 1,10" e o motor nunca a aplicou: tirar 3 cm de ripa de uma
+    #     chapa não é cortar um painel, é uma passada de serra a cada 3 cm.
+    #     Entra como LINHA PRÓPRIA, não embutida na ripa, para que o plano
+    #     de corte continue dizendo a verdade sobre quantas ripas existem.
+    area = n * larg_ripa
     return [P(f'Ripa de {larg_ripa:g}', movel, larg_ripa, alt, n, chave, (2, 2),
               obs or f'Vão de {vao:g} entre as ripas · {n} ripas em '
-                     f'{larg_total:g} · laminada nos dois lados')]
+                     f'{larg_total:g} · laminada nos dois lados'),
+            P(f'Ripa de {larg_ripa:g} · perda de serra', movel,
+              round(area * (PERDA_RIPA - 1), 1), alt, 1, chave, (0, 0),
+              f'⭐ fator 1,10 da Base · a serra come chapa a cada '
+              f'{larg_ripa:g} cm de ripa · ⛔ é perda, não peça: sem fita')]
 
 # ⛔ MOLDURA_L SAIU. Era a largura da travessa, e era premissa minha: a
 #   prancha não a cotava e eu adotei 7 cm. Não existe mais travessa.

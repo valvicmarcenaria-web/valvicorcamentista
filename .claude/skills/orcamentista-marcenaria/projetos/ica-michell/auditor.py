@@ -48,6 +48,16 @@ for p in PECAS:
     if p['qtd'] <= 0: erro(f'{r}: quantidade zero ou NEGATIVA — linha que '
                            'subtrai área não é peça')
     if p['chave'] not in CHAVES: erro(f'{r}: chave fora da Base: "{p["chave"]}"')
+
+# ⛔⛔ A MESMA REGRA VALE PARA OUTRAS, e faltava. O custo() busca o preço com
+#   PRECO.get(chave, 0.0): uma chave digitada errado em OUTRAS não quebra
+#   nada — ela sai ZERO e o item fica mais barato EM SILÊNCIO. Foi um teste
+#   negativo que mostrou o buraco, tentando quebrar outra regra.
+#   ⭐ Chave que existe com preço vazio (corrediça de carga, pistão de baú)
+#     continua valendo: o zero ali é da Base, declarado, e aparece na aba.
+for o in g('OUTRAS'):
+    if o[5] not in B.PRECO:
+        erro(f'{o[0][:26]} · {o[1]}: chave de OUTRAS fora da Base: "{o[5]}"')
     maior, menor = max(p['c'], p['l']), min(p['c'], p['l'])
     if maior > B.CHAPA_C or menor > B.CHAPA_L:
         erro(f'{r}: {p["c"]:g}×{p["l"]:g} NÃO CABE na chapa')
@@ -128,10 +138,16 @@ for mv, rot, q, c in CAVA:    abre[mv] = abre.get(mv, set()) | {'cava'}
 #   por OUTRAS porque é perfil por metro, não peça por frente
 for o in g('OUTRAS'):
     if 'assante' in o[5]: abre[o[0]] = abre.get(o[0], set()) | {'puxador'}
+    # ⭐ o pulsador é o quarto modo: a frente abre pelo toque, sem ferragem
+    #   à vista. É o que a porta ripada do Banho Gourmet pede, e a Base já
+    #   avisa que ele NÃO SE SOMA ao slim nem a puxador na mesma frente.
+    if o[5] == 'Pulsador': abre[o[0]] = abre.get(o[0], set()) | {'pulsador'}
 for mv, modos in abre.items():
-    if {'puxador', 'cava'} <= modos:
-        erro(f'{mv[:34]}: frente com PUXADOR e CAVA ao mesmo tempo — '
-             'um dos dois sai')
+    for a_, b_ in (('puxador', 'cava'), ('pulsador', 'puxador'),
+                   ('pulsador', 'cava'), ('pulsador', 'báscula slim')):
+        if {a_, b_} <= modos:
+            erro(f'{mv[:34]}: frente com {a_.upper()} e {b_.upper()} ao '
+                 'mesmo tempo — um dos dois sai')
 for p in PECAS:
     n = p['nome'].lower()
     if n.startswith('frente') and 'travessa' not in n and not abre.get(p['movel']):
