@@ -24,47 +24,27 @@
 ⛔ Toda medida em CENTÍMETROS, como a prancha. Espessura em mm.
 """
 
-# ── a chapa, como a Base de Custos declara ──────────────────────────────
-CHAPA_C, CHAPA_L = 275.0, 185.0          # cm · confirmado em plano de corte
-CHAPA_M2 = CHAPA_C * CHAPA_L / 10000     # 5,0875 m²
-APROV    = 0.80
-SANGRIA  = 2.0                           # cm de acerto de corte [Jonathan]
-ALT_MAX  = CHAPA_C - SANGRIA             # ⭐ 273 — o teto de peça sem emenda
-
+# ⭐ O MOTOR AGORA É COMUM. A chapa, a peça, a gaveta e os preços moram em
+#   base.py, que serve os vinte ambientes. Aqui ficam só o shim de
+#   compatibilidade (o Living nasceu antes, declarando ESPESSURA; a Cozinha
+#   em diante declara CHAVE, que carrega a cor) e os dados da prancha.
+from base import (P as _P, gaveta as _gaveta, fita_m, ALT_MAX, CHAPA_C,
+                  CHAPA_L, CHAPA_M2, APROV, SANGRIA, PRECO, FITA_CHEIA,
+                  FITA_PERD, CAVA_M, LED_M, ALMA, SUPORTE, VIDRO_M2,
+                  CONSUM, EMBAL, ALTAS, DOBR_VIDRO)
+NC18, NC6 = 'MDF cor 18', 'MDF cor 6'   # Nogueira Caiena, a cor do Living
 PD = 300.0                               # pé-direito do Living
-
-ALTAS = []   # ⭐ toda peça que o projeto desenhou acima do que a chapa dá
+CHAPA18, CHAPA6 = PRECO[NC18], PRECO[NC6]
+CORREDICA, DOBRADICA = 300.0, 50.0       # linha Blum
+CORREDICA_PAD, DOBRADICA_PAD = 80.0, 15.0
+LINHA = 'Blum'
+FITA_M, FILETE_M = 3.00, 2.50            # desdobramento, só para conferência
 
 def P(nome, movel, c, l, qtd=1, esp=18, fita=(0, 0), obs=''):
-    """Uma peça. `fita` = (nº de arestas no COMPRIMENTO, nº na LARGURA).
-    ⭐ É isto que faltava: sem declarar aresta por aresta não há metro de
-      fita, e sem metro de fita não há nem material nem filetagem.
-
-    ⛔⛔ E AQUI MORA A SEGUNDA DESCOBERTA DO DIA. O Jonathan cravou 273 para
-      as COLUNAS porque a chapa não dá 300. Mas o Living tem pé-direito de
-      300 e MAIS DE UM móvel sobe até lá — a lateral da cristaleira foi
-      desenhada com 280. A regra dele, aplicada com coerência, rebaixa essa
-      peça também. Então toda peça acima de 273 é ANOTADA e rebaixada, e o
-      relatório mostra a lista: são decisões de projeto, não de corte."""
-    def cabe(a, b): return a <= CHAPA_C and b <= CHAPA_L
-    if not (cabe(c, l) or cabe(l, c)):
-        maior, menor = max(c, l), min(c, l)
-        if menor <= CHAPA_L and maior > ALT_MAX:
-            ALTAS.append((movel, nome, maior, qtd))
-            c, l = (ALT_MAX, l) if c >= l else (c, ALT_MAX)
-        else:
-            raise AssertionError(
-                f'⛔ {nome} ({c}×{l}) NÃO CABE NA CHAPA de nenhum jeito')
-    return dict(nome=nome, movel=movel, c=c, l=l, qtd=qtd, esp=esp,
-                fita=fita, obs=obs)
+    return _P(nome, movel, c, l, qtd, NC18 if esp >= 15 else NC6, fita, obs)
 
 def gaveta(movel, larg, prof, alt, n=1, rotulo='Caixa de gaveta'):
-    """A caixa atrás da frente. ⭐ É o que mais se esquece de contar."""
-    liq = larg - 3.6
-    return [P(f'{rotulo} · lateral', movel, prof, alt, 2*n, 18, (1, 0)),
-            P(f'{rotulo} · frente e costas', movel, liq, alt, 2*n, 18, (1, 0)),
-            P(f'{rotulo} · fundo', movel, liq, prof, n, 6, (0, 0),
-              'Fundo em 6 mm por encaixe em rasgo — ⛔ sem fita')]
+    return _gaveta(movel, larg, prof, alt, n, rotulo, NC18, NC6)
 
 # ════════════════════════════════════════════════════════════════════════
 #  01 · LIVING — páginas 012 a 026 · 8 detalhamentos
@@ -180,33 +160,7 @@ LIVING = [
  P('Porta mimetizada',   D8, 90, 210, 2, 18, (2, 2), 'De giro, com cava · ⚠ duas portas, a confirmar'),
 ]
 
-# ════════════════════════════════════════════════════════════════════════
-#  PREÇOS — todos da Base de Custos (planilha única da casa)
-# ════════════════════════════════════════════════════════════════════════
-CHAPA18   = 700.0   # MDF Melamínico Fosco 18 mm · é a chapa de cor padrão
-CHAPA6    = 350.0   # MDF Melamínico Fosco 6 mm · fundos
-FITA_M    = 3.00    # Fita de borda cor 22 mm · + 10% de desperdício
-FITA_PERD = 0.10
-FILETE_M  = 2.50    # Filetagem na coladeira automática 15 e 18 mm
-FITA_CHEIA= 5.50    # ⚠ a Base também traz o "preço cheio da casa" já com aplicação
-# ⭐⭐ A LINHA DE FERRAGEM. O orçamento da Jéssica e do Michell já está
-#   montado na linha BLUM — é a chave que as abas usam. Mantenho o
-#   orçamento na linha em que ele está (coerência entre ambientes vale mais
-#   que a minha preferência) e mostro quanto o Padrão da casa economizaria.
-LINHA = 'Blum'
-CORREDICA = 300.0   # Corrediça Blum, por gaveta [Jonathan 26/10]
-DOBRADICA =  50.0   # Dobradiça Blum [Jonathan 26/10]
-CORREDICA_PAD = 80.0  # Hardt Invisível P-10 · ⭐ o Padrão da casa
-DOBRADICA_PAD = 15.0  # ★ Bigfer Onix — ⛔ a linha "Padrão" da escada está VAZIA na Base
-DOBR_VIDRO= 70.0    # Dobradiça para porta de vidro · A COTAR
-CAVA_M    = 50.0    # Cava usinada, por metro de frente
-LED_M     = 150.0   # LED COB conjunto completo: fita, perfil, usinagem e instalação
-LED_PERFIL= 65.0    # ⚠ só o perfil com difusor — a Base alerta: fechar o que a linha inclui
-VIDRO_M2  =   0.0   # ⛔ Reflecta champagne SEM PREÇO — a cotar com o vidraceiro
-ALMA      = 50.0    # barra chata 5 mm, 3 m · toda peça acima de 30 mm
-SUPORTE   = 30.0    # suporte oculto de prateleira · de 40 em 40 cm
-
-# ── ferragem, declarada item a item ─────────────────────────────────────
+# ═════════════════════════════════════════════════════════════════════# ── ferragem, declarada item a item ─────────────────────────────────────
 #  ⭐ [Jonathan 27/10] "não puxou o custo da corrediça da base" — aqui estão
 #    TODAS as gavetas do Living, não só a que faltava.
 GAVETAS = [(D2, 'Aparador · gaveta de 135 × 17',   1, 450),
