@@ -443,14 +443,15 @@ FOLHA = dict(
   '[Jonathan, 28/10/2026]   ⛔ As colunas do item 04 NÃO levam fita de borda.'
   '   ⛔ O aparador do item 02 NÃO leva alma de aço: móvel de 55 de altura '
   'não empena.',
-  '⚠ A FITA E A FILETAGEM AINDA ESTÃO SOMADAS NUMA LINHA SÓ nesta aba, ao '
-  'preço cheio de R$ 5,50. A Cozinha já foi separada em R$ 3,00 de fita mais '
-  'R$ 2,50 de filetagem, e a separação muda o Living em −R$ 109,50: os 10% de '
-  'desperdício são da FITA, que é material, e não da filetagem, que é serviço '
-  'cobrado por metro de aresta feita. ⭐ No Living os dois preços somam '
-  'exatamente os R$ 5,50 de hoje, porque toda peça com fita é de cor e de '
-  '15 ou 18 mm — a diferença é só o desperdício cobrado a mais no serviço. '
-  '⛔ A separar quando o senhor autorizar: o gerador já faz, a aba ainda não.',
+  '⭐ FITA E FILETAGEM SEPARADAS, e o custo caiu R$ 118,39. [autorizado '
+  'pelo Jonathan, 28/10/2026] Estavam somadas nos R$ 5,50 da "fita de cor '
+  'com filetagem", que são R$ 3,00 de fita mais R$ 2,50 de filetagem. ⛔ O '
+  'erro não era a soma, era o DESPERDÍCIO: os 10% são da fita, que é '
+  'material, e estavam sendo cobrados também sobre a filetagem, que é '
+  'serviço por metro de aresta feita. São 482,8 m de fita contra 439,0 m de '
+  'filetagem. ⭐ Aqui os dois preços somam exatamente os R$ 5,50 de antes, '
+  'porque toda peça com fita neste ambiente é de cor e de 15 ou 18 mm — a '
+  'Cozinha é que tem fita branca a R$ 2,00 e filetagem manual a R$ 5,00.',
   '⚠ EM ABERTO: peças desenhadas acima de 273 na cristaleira (lateral e '
   'montante, 280) · vão livre de 260 em MDF no item 06 · vidro reflecta '
   'champagne sem preço · a vista lateral da jardineira (193) não fecha com a '
