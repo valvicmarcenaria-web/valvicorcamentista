@@ -38,11 +38,22 @@ def linhas_do_item(mov):
         if p['movel'] != mov: continue
         out.append([p['nome'], p['obs'] or '—', p['c'], p['l'], p['qtd'],
                     'm²', p['chave']])
-    m = B.fita_m(PECAS, mov)
-    if m > 0:
-        out.append(['Fita de borda', 'Filetamento declarado aresta a aresta '
-                    '· mais 10% de desperdício', '', '',
-                    round(m*(1+B.FITA_PERD), 1), 'm', 'Fita'])
+    # ⭐ fita e filetagem, cada uma na sua linha e no seu preço, na ORDEM
+    #   DO PROCESSO — primeiro se fita, depois se fileta. Alfabética punha
+    #   a filetagem antes, e a aba ficava diferente do arquivo.
+    _a = B.acabamento(PECAS, mov)
+    for ch in [k for k in ('Fita cor', 'Fita Branco TX',
+                           'Filetagem automática', 'Filetagem manual')
+               if k in _a]:
+        m = _a[ch]
+        out.append([ch, {'Fita cor': 'Aresta a aresta, mais 10% de desperdício',
+                         'Fita Branco TX': 'Caixaria · R$ 2,00 contra R$ 3,00 '
+                                           'da fita de cor · mais 10%',
+                         'Filetagem automática': 'Coladeira · 15 e 18 mm · '
+                                                 'serviço, sem desperdício',
+                         'Filetagem manual': '⛔ Ripa e 6 mm não entram na '
+                                             'coladeira · R$ 5,00, o dobro'}[ch],
+                    '', '', m, 'm', ch])
     for mv, rot, q, mm in g('GAVETAS'):
         if mv == mov: out.append(['Corrediça', f'{rot} · {mm} mm', '', '', q,
                                   'par', 'Corrediça'])
@@ -52,10 +63,21 @@ def linhas_do_item(mov):
             out.append([ch, f'{rot} · {nd} por folha', '', '', nq*nd, 'un', ch])
     for mv, rot, q in g('BASCULAS'):
         if mv == mov:
-            out.append(['Báscula HK-XS', rot + ' · articulador a gás', '', '',
-                        q, 'un', 'Báscula HK-XS'])
-            out.append(['Pulsador', 'Abertura por toque, uma por báscula', '',
-                        '', q, 'un', 'Pulsador'])
+            out.append(['Báscula HK-XS', rot + ' · articulador a gás Blum',
+                        '', '', q, 'un', 'Báscula HK-XS'])
+            # ⭐ slim no lugar do pulsador [Jonathan, 28/10/2026]
+            out.append(['Puxador slim', 'Rometal · uma por báscula · ⛔ sem '
+                        'pulsador Blum: não se somam na mesma frente', '', '',
+                        q, 'un', 'Puxador slim'])
+    for mv, rot, q in g('PUXADORES'):
+        if mv == mov: out.append(['Puxador Alças Traso 128', rot +
+                                  ' · Zen Design, 128 mm', '', '', q, 'un',
+                                  'Puxador Alças Traso 128'])
+    for mv, rot, q in g('MOLDURA'):
+        if mv == mov: out.append(['Moldura provençal', rot + ' · mão de obra '
+                                  'de travessa e almofada · ⛔ A COTAR, '
+                                  'cronometrar uma na fábrica', '', '', q,
+                                  'frente', 'Moldura provençal'])
     for mv, rot, q, c, l in g('VIDRO'):
         if mv == mov: out.append(['Vidro reflecta champagne', rot + ' · ⛔ A '
                                   'COTAR, segue sem preço na Base', c, l, q,

@@ -13,17 +13,60 @@ SANGRIA  = 2.0                           # cm de acerto de corte [Jonathan]
 ALT_MAX  = CHAPA_C - SANGRIA             # ⭐ 273 — o teto de peça sem emenda
 
 # ── preços, todos da Base de Custos ─────────────────────────────────────
+# ⭐ A Base tem uma tabela de ESPESSURA PADRÃO POR APLICAÇÃO, e eu não a
+#   estava seguindo:  estrutura e caixaria 15 · fundos 6 · porta 15 ·
+#   prateleira 18 acima de 70 cm de vão.  ⛔ Eu vinha lançando caixaria e
+#   porta em 18 mm, que é mais caro e não é o padrão da casa.
 PRECO = {'MDF cor 18': 700.0, 'MDF cor 15': 550.0, 'MDF cor 6': 350.0,
-         'MDF branco 18': 400.0, 'MDF branco 15': 350.0, 'MDF branco 6': 250.0}
-FITA_CHEIA = 5.50   # fita de cor com filetagem · preço cheio da casa
-FITA_PERD  = 0.10
+         'MDF branco 18': 400.0, 'MDF branco 15': 350.0, 'MDF branco 6': 250.0,
+         # ⭐ Branco TX é o nome do produto na Base, e é o que vai na aba
+         'MDF Branco TX 18': 400.0, 'MDF Branco TX 15': 350.0,
+         'MDF Branco TX 6': 250.0,
+         # ⭐ cada cor em TRÊS espessuras agora, porque a frente provençal
+         #   usa 15 na base e 6 na moldura — e cada uma é um arredondamento
+         'MDF Verde Floresta 18': 700.0, 'MDF Verde Floresta 15': 550.0,
+         'MDF Verde Floresta 6': 350.0,
+         'MDF Jequitibá Rosa 18': 700.0, 'MDF Jequitibá Rosa 15': 550.0,
+         'MDF Jequitibá Rosa 6': 350.0,
+         'MDF Nogueira Caiena 18': 700.0, 'MDF Nogueira Caiena 6': 350.0}
+ESTRUTURA, FUNDO_CH, PORTA_CH = 'MDF Branco TX 15', 'MDF Branco TX 6', 15
+PRAT_VAO = 70.0   # vão acima disto pede 18 mm, contra empeno [Base]
+# ⭐⭐ FITA E FILETAGEM SÃO DUAS COISAS [Jonathan, 28/10/2026]
+#   > "nao vi o levamento de filetagem tbm"
+#   Estavam, mas escondidas dentro de um preço só: os R$ 5,50 da "fita de
+#   cor com filetagem" da Base são R$ 3,00 de fita MAIS R$ 2,50 de
+#   filetagem. Juntas num número, nunca se vê que:
+#     · a fita BRANCO TX custa R$ 2,00, não R$ 3,00 — e a caixaria toda é
+#       branca, então metade dos metros estava precificada a mais
+#     · a filetagem de RIPA e de chapa de 6 mm é MANUAL, R$ 5,00 — o dobro
+#       da automática, porque não entra na coladeira
+#   ⛔ Separar não é cosmética: muda o número nos DOIS sentidos.
+FITA_COR, FITA_BRANCO   = 3.00, 2.00   # por metro de aresta
+FILETE_AUTO, FILETE_MAO = 2.50, 5.00   # coladeira automática × à mão
+FITA_CHEIA = 5.50   # ⚠ só para compatibilidade com o Living
+FITA_PERD  = 0.10   # ⭐ 10% de desperdício é da FITA, que é material.
+                    #   A filetagem é SERVIÇO, cobrado por metro de aresta
+                    #   feita: não tem desperdício.
 CORREDICA  = 300.0  # Corrediça Blum, por gaveta
 DOBRADICA  =  50.0  # Dobradiça Blum
 DOBR_VIDRO =  70.0  # porta de vidro · A COTAR
 BASCULA    = 250.0  # Blum AVENTOS HK-XS · ⭐ a báscula da casa
-PULSADOR   = 100.0  # Blum Tip-on ou Servo · abertura por toque
+PULSADOR   = 100.0  # ⛔ FORA DA COZINHA [Jonathan, 28/10/2026]
+SLIM       =  35.0  # ⭐ Puxador slim Rometal · é o que abre a báscula
+#   > "nas básculas da cozinha iremos considerar o articular Hk-xs da blum
+#   >  e puxador slim da rometal (R$ 35,00 und). ou seja, nao teremos o
+#   >  pulsador blum."
+#   ⭐ A própria Base já avisava: "PULSADOR E PUXADOR SLIM NÃO SE SOMAM na
+#     mesma frente. São R$ 65 de diferença por porta." Em 17 básculas,
+#     R$ 1.105.
 CAVA_M     =  50.0  # cava usinada, por metro de frente
-PUXADOR    = 172.71 # Alças Traso 416 mm, Zen Design · ⭐ o puxador do ICA
+PUXADOR    = 172.71 # Alças Traso 416 mm · ⚠ o maior da linha, não é o do ICA
+PUXADOR_128 = 110.0 # ⭐ Alças Traso 128 mm [Jonathan, 28/10/2026]
+#   ⚠ A Base trazia R$ 56,69 para o 128 mm, de "média de três lojas", no
+#     acabamento PRETO. A busca de varejo de hoje achou de R$ 44,92 a
+#     R$ 109,22, e o topo da faixa é o níquel velho — que é onde o R$ 110
+#     do Jonathan cai. ⭐ Não é divergência: é outro acabamento.
+MOLDURA_MO = 0.0    # ⛔ moldura provençal, por frente — SEM PREÇO na Base
 LED_M      = 150.0  # LED COB: fita, perfil, usinagem e instalação
 ALMA       =  50.0  # barra chata 5 mm, 3 m · toda peça acima de 30 mm
 SUPORTE    =  30.0  # suporte oculto de prateleira · de 40 em 40 cm
@@ -57,7 +100,7 @@ def P(nome, movel, c, l, qtd=1, chave='MDF cor 18', fita=(0, 0), obs=''):
                 fita=fita, obs=obs)
 
 def gaveta(movel, larg, prof, alt, n=1, rotulo='Caixa de gaveta',
-           cor='MDF branco 18', fundo='MDF branco 6'):
+           cor=ESTRUTURA, fundo=FUNDO_CH):
     """A caixa atrás da frente. ⭐ É o que mais se esquece de contar."""
     liq = larg - 3.6
     return [P(f'{rotulo} · lateral', movel, prof, alt, 2*n, cor, (1, 0)),
@@ -68,10 +111,96 @@ def gaveta(movel, larg, prof, alt, n=1, rotulo='Caixa de gaveta',
 def ripado(movel, larg_total, alt, larg_ripa, vao, chave, obs=''):
     """Ripa solta com vão. ⭐ Conta a ripa, não o painel."""
     n = int(larg_total // (larg_ripa + vao)) + 1
-    return [P(f'Ripa de {larg_ripa:g}', movel, larg_ripa, alt, n, chave, (2, 1),
-              obs or f'Vão de {vao:g} entre as ripas · {n} ripas em {larg_total:g}')]
+    # ⭐⭐ LAMINAÇÃO NOS DOIS LADOS [Jonathan, 28/10/2026]
+    #   > "nas ripas de 3cm, considere a laminação em ambos os lados"
+    #   ⛔ Eu tinha (2, 1): filetava as duas pontas de 3 cm e UM lado longo.
+    #     Numa ripa solta, com vão, os dois lados longos ficam à vista — são
+    #     QUATRO arestas, e as longas são as que valem metro. Numa ripa de
+    #     3 × 103 isso é 1,09 m contra 2,12 m: a conta dobra.
+    #   ⛔ E ripa não entra na coladeira: a filetagem é MANUAL, R$ 5,00.
+    return [P(f'Ripa de {larg_ripa:g}', movel, larg_ripa, alt, n, chave, (2, 2),
+              obs or f'Vão de {vao:g} entre as ripas · {n} ripas em '
+                     f'{larg_total:g} · laminada nos dois lados')]
+
+MOLDURA_L = 7.0   # ⚠ largura da travessa — PREMISSA, conferir na prancha
+
+def provencal(nome, movel, c, l, qtd, cor15, cor6, obs=''):
+    """⭐⭐ FRENTE PROVENÇAL — duas chapas  [Jonathan, 28/10/2026]
+       > "nas portas provençais considere que a composição de material é
+       >  dupla, uma chapa de 15mm para base e outra de 6mm para a moldura"
+
+    É a resposta à pergunta que estava aberta em nunca-orcei.md desde 26/10:
+    se a frente é MONTADA em travessas ou USINADA em relevo. É montada.
+
+       base ........ 15 mm na cor da frente
+       moldura ..... quatro travessas de 6 mm, na mesma cor
+
+    ⛔ Declaro as travessas, não o retângulo da frente: travessa é o que o
+      plano de corte recebe, e é o perímetro dela que dá o metro de
+      filetagem — que em 6 mm vai À MÃO, ao dobro do preço.
+    ⛔ A MÃO DE OBRA de moldura não tem preço na Base: a linha existe
+      ("Moldura provençal na frente", por frente) e está vazia de
+      propósito, a cronometrar na fábrica. Sai como zero e denuncia.
+    """
+    t = f'Travessa de {MOLDURA_L:g} cm em 6 mm · ⚠ largura a conferir na prancha'
+    return [P(nome, movel, c, l, qtd, cor15, (2, 2), obs),
+            P(f'{nome} · travessa deitada', movel, c, MOLDURA_L, 2*qtd, cor6,
+              (2, 2), t),
+            P(f'{nome} · travessa em pé', movel, l - 2*MOLDURA_L, MOLDURA_L,
+              2*qtd, cor6, (2, 2), t + ' · descontada a deitada')]
+
+def _fita_chave(chave):
+    return 'Fita Branco TX' if 'ranco' in chave else 'Fita cor'
+
+def _filete_chave(chave, nome):
+    """⛔ Ripa e chapa de 6 mm não entram na coladeira: filetagem à mão.
+
+    ⛔ A REGRA É A ESPESSURA, NÃO A PALAVRA. Eu tinha posto 'ravessa' aqui,
+      pensando nas travessas de 6 mm da moldura provençal — e a regra pegou
+      a "travessa sobre as portas" do Living, que é painel de 180 × 63 em
+      18 mm e entra na coladeira sem dificuldade. Cobrava R$ 5,00 onde são
+      R$ 2,50. ⭐ As travessas da moldura já caem aqui pela espessura, que
+      é o critério de verdade: quem não entra na máquina é o 6 mm e a ripa.
+    """
+    return ('Filetagem manual' if chave.endswith(' 6') or 'Ripa' in nome
+            else 'Filetagem automática')
+
+def acabamento(pecas, movel=None):
+    """⭐ Metros por CHAVE de acabamento, que é o levantamento que faltava.
+      A fita leva os 10% de desperdício porque é material; a filetagem não,
+      porque é serviço por metro de aresta feita.
+
+    ⛔⛔ O TOTAL DO AMBIENTE É A SOMA DOS MÓVEIS JÁ ARREDONDADOS, não o
+      arredondamento da soma. Parece preciosismo e não é: a aba soma com
+      SOMASE os valores por móvel, que saem arredondados em 0,1 m, e eu
+      arredondava o total do ambiente. Deu R$ 0,54 de diferença entre o
+      script e a planilha — pequena, mas é exatamente o tipo de divergência
+      que a linha de CONFERÊNCIA existe para não deixar passar. ⭐ E a aba
+      está certa: é por móvel que a fábrica executa.
+    """
+    if movel is None:
+        tot = {}
+        for mv in dict.fromkeys(p['movel'] for p in pecas):
+            for k, v in acabamento(pecas, mv).items():
+                tot[k] = round(tot.get(k, 0.0) + v, 1)
+        return tot
+    out = {}
+    for p in pecas:
+        if p['movel'] != movel: continue
+        nc, nl = p['fita']
+        m = (nc*p['c'] + nl*p['l'])*p['qtd']/100
+        if m <= 0: continue
+        fk = _fita_chave(p['chave'])
+        lk = _filete_chave(p['chave'], p['nome'])
+        out[fk] = out.get(fk, 0.0) + m*(1 + FITA_PERD)
+        out[lk] = out.get(lk, 0.0) + m
+    return {k: round(v, 1) for k, v in out.items() if round(v, 1) > 0}
+
+PRECO_ACAB = {'Fita cor': FITA_COR, 'Fita Branco TX': FITA_BRANCO,
+              'Filetagem automática': FILETE_AUTO, 'Filetagem manual': FILETE_MAO}
 
 def fita_m(pecas, movel=None):
+    """⚠ Só o metro cru, sem desperdício. O Living ainda usa."""
     return sum((nc*p['c'] + nl*p['l'])*p['qtd']/100 for p in pecas
                if movel is None or p['movel'] == movel
                for nc, nl in [p['fita']])

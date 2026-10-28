@@ -52,7 +52,24 @@ g = lambda n: getattr(A, n, [])
 MOV = list(dict.fromkeys(p['movel'] for p in PECAS))
 
 # ── 1 · quantas linhas tem cada bloco de material ───────────────────────
-nmat = len(F['chapas']) + 2 + (1 if g('VIDRO') else 0) + 2   # +fita +ferr +cons +emb
+# ⭐⭐ A LISTA DE CHAPAS SAI DAS PEÇAS, não de uma lista à mão. A frente
+#   provençal criou quatro padrões novos de uma vez; se a lista fosse
+#   digitada, eles sumiam da compra em silêncio — que é exatamente o erro
+#   que a regra de ferro existe para impedir.
+CHAPAS = sorted({p['chave'] for p in PECAS if p['chave'].startswith('MDF')},
+                key=lambda k: (not k.endswith(' 18'), k))
+TXT = F.get('chapa_txt', {})
+for k in CHAPAS:
+    if k not in TXT: print(f'⚠ chapa sem texto na FOLHA: {k}')
+# ⭐ linhas de acabamento: só as que o ambiente tem, e na ORDEM DO PROCESSO
+#   — primeiro se fita, depois se fileta. Alfabética punha a filetagem antes
+#   da fita, que é ler a fábrica de trás para frente.
+ORDEM = ['Fita cor', 'Fita Branco TX', 'Filetagem automática',
+         'Filetagem manual']
+_tem = B.acabamento(PECAS)
+ACAB = [k for k in ORDEM if k in _tem]
+assert len(ACAB) == len(_tem), f'⛔ acabamento fora da ORDEM: {set(_tem)-set(ORDEM)}'
+nmat = len(CHAPAS) + len(ACAB) + 1 + (1 if g('VIDRO') else 0) + 2
 nit, nni, nnt = len(MOV), len(F['nao_marcenaria']), len(F['notas'])
 
 # ── 2 · O LAYOUT CANÔNICO. Toda seção com o mesmo respiro. ──────────────
@@ -113,47 +130,75 @@ põe(L['cab_mat'], B='MATERIAL', C='ESPECIFICAÇÃO', D='QUANTIDADE', E='UN',
     F='CUSTO', G='FRETE', H='TOTAL', I='% DO CUSTO')
 
 r = L['mat0']
-for chave, prefixo in F['chapas']:
+for chave in CHAPAS:
+    prefixo = TXT.get(chave, chave)
     põe(r, B=chave,
         C=f'="{prefixo} · "&ROUND({M2(f"$B{r}")};1)&" m² de peças"',
         D=f'=ROUNDUP({M2(f"$B{r}")}/({AREA}*{APR}))', E='chapas',
         F=f'=D{r}*VLOOKUP($B{r};precos;2;FALSE)',
         G=f'=D{r}*VLOOKUP("Frete MDF";precos;2;FALSE)')
     r += 1
-L['fita'] = r
-põe(r, B='Fita de borda',
-    C='22 mm com filetagem · filetamento declarado aresta a aresta, mais 10% '
-      'de desperdício',
-    D=f'=SUMIF({K};"Fita";$F${a}:$F${b})', E='m',
-    F=f'=D{r}*VLOOKUP("Fita";precos;2;FALSE)',
-    G='=VLOOKUP("Frete fita";precos;2;FALSE)')
-r += 1
+# ⭐⭐ FITA E FILETAGEM, UMA LINHA CADA  [Jonathan, 28/10/2026]
+#   > "nao vi o levamento de filetagem tbm"
+#   Estava dentro da fita, somada num preço cheio. Separadas, aparece que
+#   a fita branca custa R$ 2,00 e a de cor R$ 3,00, e que a filetagem de
+#   ripa e de 6 mm vai à mão, ao dobro.
+EXPLICA = {
+ 'Fita cor': '22 mm na cor da frente · declarada aresta a aresta, mais 10% '
+             'de desperdício',
+ 'Fita Branco TX': '22 mm na caixaria · ⭐ R$ 2,00 contra R$ 3,00 da fita de '
+                   'cor · mais 10% de desperdício',
+ 'Filetagem automática': 'Coladeira · peça de 15 e 18 mm · ⭐ serviço por '
+                         'metro de aresta feita, sem desperdício',
+ 'Filetagem manual': '⛔ Ripa e chapa de 6 mm não entram na coladeira: vai à '
+                     'mão, a R$ 5,00 — o dobro da automática',
+}
+L['acab0'] = r
+for ch in ACAB:
+    põe(r, B=ch, C=EXPLICA[ch],
+        D=f'=SUMIF({K};"{ch}";$F${a}:$F${b})', E='m',
+        F=f'=D{r}*VLOOKUP("{ch}";precos;2;FALSE)',
+        G=('=VLOOKUP("Frete fita";precos;2;FALSE)' if ch.startswith('Fita')
+           else ''))
+    r += 1
+L['acab1'] = r - 1
 
 FERR = [('Corrediça', 'corrediça', g('GAVETAS')),
         ('Dobradiça', 'dobradiça', g('PORTAS')),
         ('Dobradiça vidro', None, [x for x in g('PORTAS') if x[4] == B.DOBR_VIDRO]),
-        ('Báscula HK-XS', 'báscula a gás', g('BASCULAS')),
-        ('Pulsador', 'pulsador', g('BASCULAS')),
+        ('Báscula HK-XS', 'articulador HK-XS', g('BASCULAS')),
+        # ⭐ slim no lugar do pulsador [Jonathan, 28/10] · são R$ 65 por
+        #   báscula de diferença, e a Base já avisava que não se somam
+        ('Puxador slim', 'puxador slim', g('BASCULAS')),
+        ('Puxador Alças Traso 128', 'puxador Alças Traso de 128', g('PUXADORES')),
+        ('Moldura provençal', 'moldura provençal', g('MOLDURA')),
         ('Cava usinada', 'cava usinada', g('CAVA')),
         ('LED conjunto', 'LED', g('LED')),
         ('Alma de aço', 'alma de aço', g('ALMAS')),
         ('Suporte oculto', 'suporte oculto', g('SUPORTES'))]
 ativos = [(c, rot) for c, rot, lst in FERR if lst]
-conta  = [c for c, rot in ativos if c not in ('Cava usinada', 'LED conjunto')]
+# ⛔ cava, LED e moldura se medem em metro ou em frente, não em peça:
+#   não entram na contagem de "peças de ferragem"
+conta  = [c for c, rot in ativos
+          if c not in ('Cava usinada', 'LED conjunto', 'Moldura provençal')]
 rots   = [rot for c, rot in ativos if rot]
 # ⛔ .capitalize() rebaixa o resto da frase, e 'LED' virava 'led'
 frase  = ', '.join(rots[:-1])
 desc   = frase[:1].upper() + frase[1:] + ' e ' + rots[-1]
 L['ferr'] = r
-põe(r, B='Ferragem, cava e iluminação',
+põe(r, B='Ferragem, puxador e iluminação',
     C=f'{desc} · linha {getattr(A, "LINHA", "Blum")} · ⛔ sem fonte: as fitas '
       'da casa são 110 V',
     D='=SUMPRODUCT((' + '+'.join(f'({K}="{c}")' for c in conta) +
       f')*IF(ISNUMBER($F${a}:$F${b});$F${a}:$F${b};0))', E='peças',
+    # ⭐ o custo de ferragem é o RESTO: tudo que tem chave, menos chapa,
+    #   menos acabamento, menos vidro. Assim nenhuma linha nova de ferragem
+    #   pode escapar da conta por eu não a ter listado aqui.
     F=f'=SUMIF({K};"<>";$I${a}:$I${b})' +
       ''.join(f'-SUMIF({K};$B{L["mat0"]+i};$I${a}:$I${b})'
-              for i in range(len(F['chapas']))) +
-      f'-SUMIF({K};"Fita";$I${a}:$I${b})' +
+              for i in range(len(CHAPAS))) +
+      ''.join(f'-SUMIF({K};$B{L["acab0"]+i};$I${a}:$I${b})'
+              for i in range(len(ACAB))) +
       (f'-SUMIF({K};"Vidro reflecta";$I${a}:$I${b})' if g('VIDRO') else ''),
     G='=VLOOKUP("Frete ferragem";precos;2;FALSE)')
 r += 1
@@ -168,8 +213,8 @@ if g('VIDRO'):
 L['ult_mat'] = r - 1                        # ⭐ onde acaba o material de fato
 põe(r, B='Consumíveis',
     C='Cola, lixa, parafuso, cavilha, tapa-furo, fundo e verniz · 6% sobre '
-      'chapa e fita',
-    F=f'=SUM(H{L["mat0"]}:H{L["fita"]})*VLOOKUP("Consumíveis";precos;2;FALSE)')
+      'chapa, fita e filetagem',
+    F=f'=SUM(H{L["mat0"]}:H{L["acab1"]})*VLOOKUP("Consumíveis";precos;2;FALSE)')
 L['cons'] = r; r += 1
 põe(r, B='Embalagem', C='Papelão, filme e cantoneira · 2% sobre o subtotal',
     F=f'=SUM(H{L["mat0"]}:H{L["cons"]})*VLOOKUP("Embalagem";precos;2;FALSE)')
@@ -191,9 +236,9 @@ f0 = L['f0']
 põe(f0,   B='Soma dos itens · chapa rateada em fração',
           I=f'=SUM(I{L["it0"]}:I{L["it1"]})')
 põe(f0+1, B='Arredondamento de chapa para número cheio · ⛔ a regra de ferro',
-          I='=' + '+'.join(f'F{L["mat0"]+i}' for i in range(len(F['chapas']))) +
+          I='=' + '+'.join(f'F{L["mat0"]+i}' for i in range(len(CHAPAS))) +
             ''.join(f'-SUMIF({K};$B{L["mat0"]+i};$I${a}:$I${b})'
-                    for i in range(len(F['chapas']))))
+                    for i in range(len(CHAPAS))))
 põe(f0+2, B='MATERIAL E FERRAGEM, PELO RATEIO DOS ITENS', I=f'=I{f0}+I{f0+1}')
 põe(f0+3, B='Material e ferragem, pelo painel do ambiente',
           I=f'=SUM(F{L["mat0"]}:F{L["ult_mat"]})')

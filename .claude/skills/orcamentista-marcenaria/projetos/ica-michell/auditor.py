@@ -27,16 +27,19 @@ g = lambda n: getattr(A, n, [])
 GAVETAS, PORTAS, CAVA = g('GAVETAS'), g('PORTAS'), g('CAVA')
 LED, ALMAS, SUPORTES = g('LED'), g('ALMAS'), g('SUPORTES')
 VIDRO, BASCULAS = g('VIDRO'), g('BASCULAS')
+PUXADORES, MOLDURA = g('PUXADORES'), g('MOLDURA')
 MOV = list(dict.fromkeys(p['movel'] for p in PECAS))
 
 br = lambda v: f'{v:,.2f}'.replace(',', '§').replace('.', ',').replace('§', '.')
 FALHAS, AVISOS = [], []
 erro, aviso = FALHAS.append, AVISOS.append
 
-CHAVES = set(B.PRECO) | {'MDF Verde Floresta 18', 'MDF Jequitibá Rosa 18',
-    'MDF Nogueira Caiena 18', 'MDF Nogueira Caiena 6', 'Fita', 'Corrediça',
-    'Dobradiça', 'Dobradiça vidro', 'Báscula HK-XS', 'Cava usinada',
-    'LED conjunto', 'Alma de aço', 'Suporte oculto', 'Vidro reflecta'}
+# ⭐ a lista de chaves válidas sai da BASE, não de um rol digitado aqui:
+#   chave inventada no ambiente tem de quebrar, não passar.
+CHAVES = set(B.PRECO) | set(B.PRECO_ACAB) | {'Fita', 'Corrediça', 'Dobradiça',
+    'Dobradiça vidro', 'Báscula HK-XS', 'Puxador slim', 'Cava usinada',
+    'Puxador Alças Traso 128', 'Moldura provençal', 'LED conjunto',
+    'Alma de aço', 'Suporte oculto', 'Vidro reflecta'}
 
 # ── 1 · as peças ────────────────────────────────────────────────────────
 for p in PECAS:
@@ -71,8 +74,10 @@ for p in PECAS:
 port_mov = {mv for mv, *_ in PORTAS}
 for p in PECAS:
     n = p['nome'].lower()
+    # ⛔ travessa de moldura carrega o nome da frente mas não é folha
     if ('porta' in n or n.startswith('frente') and 'gavet' not in n) \
-       and 'báscula' not in n and p['movel'] not in port_mov:
+       and 'báscula' not in n and 'travessa' not in n \
+       and p['movel'] not in port_mov:
         erro(f'{p["movel"][:30]} · {p["nome"]}: porta SEM dobradiça')
 
 # ── 5 · báscula ↔ articulador ───────────────────────────────────────────
@@ -88,6 +93,41 @@ for mv, rot, nq, nd, pr in PORTAS:
     if pr == B.DOBR_VIDRO and mv not in vid_mov:
         erro(f'{mv[:30]}: dobradiça de vidro sem a FOLHA DE VIDRO declarada')
 
+# ── 6b · TODA FRENTE ABRE DE UM MODO SÓ ─────────────────────────────────
+#   ⭐⭐ A regra que faltava. A prancha do ICA pedia puxador Alças Traso E
+#     cava usinada na mesma frente, e isso ficou dois dias como nota de
+#     texto em nunca-orcei.md em vez de quebrar a auditoria. Báscula com
+#     pulsador E slim é o mesmo erro, e a Base já avisava dele.
+abre = {}
+for mv, rot, q in BASCULAS:   abre[mv] = abre.get(mv, set()) | {'báscula slim'}
+for mv, rot, q in PUXADORES:  abre[mv] = abre.get(mv, set()) | {'puxador'}
+for mv, rot, q, c in CAVA:    abre[mv] = abre.get(mv, set()) | {'cava'}
+for mv, modos in abre.items():
+    if {'puxador', 'cava'} <= modos:
+        erro(f'{mv[:34]}: frente com PUXADOR e CAVA ao mesmo tempo — '
+             'um dos dois sai')
+for p in PECAS:
+    n = p['nome'].lower()
+    if n.startswith('frente') and 'travessa' not in n and not abre.get(p['movel']):
+        erro(f'{p["movel"][:30]} · {p["nome"]}: frente sem NENHUM modo de '
+             'abrir declarado')
+
+# ── 6c · provençal ↔ travessa ↔ mão de obra ─────────────────────────────
+#   ⭐ A frente provençal são DUAS chapas e uma mão de obra. Se a base de
+#     15 entrar sem as travessas de 6, ou sem a linha de moldura, o
+#     orçamento sai barato e calado.
+base15 = sum(p['qtd'] for p in PECAS
+             if p['chave'].endswith(' 15') and p['nome'].lower().startswith('frente')
+             or p['chave'].endswith(' 15') and 'porta de giro' in p['nome'].lower())
+trav  = sum(p['qtd'] for p in PECAS if 'travessa deitada' in p['nome'])
+mo    = sum(q for mv, rot, q in MOLDURA)
+if base15 and trav != 2*base15:
+    erro(f'{base15} frentes provençais × {trav} travessas deitadas — '
+         f'deviam ser {2*base15}, duas por folha')
+if base15 != mo:
+    erro(f'{base15} frentes provençais × {mo} na linha de mão de obra de '
+         'moldura — não bate')
+
 # ── 7 · peça sem fita, com justificativa? ───────────────────────────────
 for p in PECAS:
     if p['fita'] == (0, 0) and not p['chave'].endswith(' 6') \
@@ -97,19 +137,25 @@ for p in PECAS:
 
 # ── 8 · o custo de cada item ────────────────────────────────────────────
 def custo(mv):
-    t = sum(p['c']*p['l']*p['qtd']/10000/(B.CHAPA_M2*B.APROV)*B.PRECO[
-            p['chave'].replace('MDF Verde Floresta 18','MDF cor 18')
-                      .replace('MDF Jequitibá Rosa 18','MDF cor 18')
-                      .replace('MDF Nogueira Caiena 18','MDF cor 18')
-                      .replace('MDF Nogueira Caiena 6','MDF cor 6')]
+    # ⭐ toda chave está na Base agora: nada de replace() para achar preço
+    # ⛔ .get e não [ ]: chave inválida já foi acusada na regra 1, e o
+    #   auditor tem de chegar ao RELATÓRIO para dizer isso. Morrer de
+    #   KeyError antes de imprimir esconde a falha em vez de mostrá-la.
+    t = sum(p['c']*p['l']*p['qtd']/10000/(B.CHAPA_M2*B.APROV)
+            * B.PRECO.get(p['chave'], 0.0)
             for p in PECAS if p['movel'] == mv)
-    t += round(B.fita_m(PECAS, mv)*(1+B.FITA_PERD), 1) * B.FITA_CHEIA
+    for ch, m in B.acabamento(PECAS, mv).items():
+        t += m * B.PRECO_ACAB[ch]
     for x, rot, q, mm in GAVETAS:
         if x == mv: t += q*B.CORREDICA
     for x, rot, nq, nd, pr in PORTAS:
         if x == mv: t += nq*nd*pr
     for x, rot, q in BASCULAS:
-        if x == mv: t += q*(B.BASCULA + B.PULSADOR)
+        if x == mv: t += q*(B.BASCULA + B.SLIM)   # ⭐ slim, não pulsador
+    for x, rot, q in PUXADORES:
+        if x == mv: t += q*B.PUXADOR_128
+    for x, rot, q in MOLDURA:
+        if x == mv: t += q*B.MOLDURA_MO           # ⛔ zero: a cotar
     for x, rot, q, c in CAVA:
         if x == mv: t += round(q*c/100, 2)*B.CAVA_M
     for x, rot, q, c, l in VIDRO:

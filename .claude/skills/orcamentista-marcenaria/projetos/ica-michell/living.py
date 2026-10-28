@@ -421,8 +421,8 @@ FOLHA = dict(
      'pé-direito 300 · MDF Nogueira Caiena, Duratex · puxador cava na '
      f'própria madeira · peça inteira até {ALT_MAX:g}, que é a chapa de '
      f'{CHAPA_C:g} menos o acerto de corte',
- chapas=[(NC18, 'Nogueira Caiena · Duratex'),
-         (NC6,  'Fundos · encaixe em rasgo, sem fita')],
+ chapa_txt={NC18: 'Nogueira Caiena · Duratex',
+            NC6:  'Fundos · encaixe em rasgo, sem fita'},
  nota='⛔ O FRETE ESTÁ ZERADO DE PROPÓSITO: as quatro linhas de frete da '
       'Base (chapa, fita, ferragem e vidro) não têm preço ainda. Preencher '
       'lá e elas aparecem aqui sozinhas.   ⭐ A chapa entra em NÚMERO CHEIO '
@@ -443,6 +443,14 @@ FOLHA = dict(
   '[Jonathan, 28/10/2026]   ⛔ As colunas do item 04 NÃO levam fita de borda.'
   '   ⛔ O aparador do item 02 NÃO leva alma de aço: móvel de 55 de altura '
   'não empena.',
+  '⚠ A FITA E A FILETAGEM AINDA ESTÃO SOMADAS NUMA LINHA SÓ nesta aba, ao '
+  'preço cheio de R$ 5,50. A Cozinha já foi separada em R$ 3,00 de fita mais '
+  'R$ 2,50 de filetagem, e a separação muda o Living em −R$ 109,50: os 10% de '
+  'desperdício são da FITA, que é material, e não da filetagem, que é serviço '
+  'cobrado por metro de aresta feita. ⭐ No Living os dois preços somam '
+  'exatamente os R$ 5,50 de hoje, porque toda peça com fita é de cor e de '
+  '15 ou 18 mm — a diferença é só o desperdício cobrado a mais no serviço. '
+  '⛔ A separar quando o senhor autorizar: o gerador já faz, a aba ainda não.',
   '⚠ EM ABERTO: peças desenhadas acima de 273 na cristaleira (lateral e '
   'montante, 280) · vão livre de 260 em MDF no item 06 · vidro reflecta '
   'champagne sem preço · a vista lateral da jardineira (193) não fecha com a '

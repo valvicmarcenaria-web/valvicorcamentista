@@ -2,24 +2,33 @@
 """Confere que as duas abas são a MESMA aba, traduzindo cada mesclagem e
 cada regra condicional para o NOME do seu lugar no layout. ⭐ Comparar
 número de linha não serve: as abas têm tamanhos diferentes de propósito."""
-import json, sys
+import json, sys, re
 COL = 'ABCDEFGHIJK'
 LIV = json.load(open('_aba-living.json'))['layout']
 COZ = json.load(open('_aba-cozinha.json'))['layout']
 
-MERGES = {
- 'living': [(16,1,8),(19,3,7),(38,1,7),(39,1,7),(161,2,8),(162,2,8),(163,2,8),
-   (0,1,8),(1,1,8),(3,1,8),(34,1,8),(41,1,8),(159,1,8),(14,2,8),(20,3,7),
-   (21,3,7),(22,3,7),(23,3,7),(24,3,7),(25,3,7),(26,3,7),(28,1,7),(29,1,7),
-   (30,1,7),(31,1,7),(32,1,7),(36,1,7),(37,1,7)],
- 'cozinha': [(17,1,8),(20,3,7),(21,3,7),(22,3,7),(24,1,7),(25,1,7),(26,1,7),
-   (27,1,7),(30,1,8),(32,1,7),(33,1,7),(34,1,7),(124,2,8),(125,2,8),(126,2,8),
-   (127,2,8),(0,1,8),(1,1,8),(3,1,8),(36,1,8),(122,1,8),(15,2,8),(28,1,7)],
-}
-COND = {   # (fórmula normalizada, primeira linha 1-based da faixa)
- 'living': [('ARRED(I)<>0',33),('ITEM ',44),('MATERIAL',44),('TOTAL',44),('vazio',44)],
- 'cozinha':[('ARRED(I)<>0',29),('ITEM ',39),('MATERIAL',39),('TOTAL',39),('vazio',39)],
-}
+# ⭐⭐ As mesclagens e as regras saem do GERADOR, não de uma lista digitada
+#   aqui. A primeira versão deste arquivo trazia as duas listas à mão, e
+#   isso é o mesmo vício que fez as abas divergirem: duas fontes para a
+#   mesma verdade. Agora, se o gerador mudar, a conferência acompanha.
+def do_req(nome):
+    q = json.load(open(f'_req-{nome}.json'))
+    m, c = [], []
+    for r in q:
+        if 'mergeCells' in r:
+            g = r['mergeCells']['range']
+            m.append((g['startRowIndex'], g['startColumnIndex'],
+                      g['endColumnIndex']-1))
+        elif 'addConditionalFormatRule' in r:
+            ru = r['addConditionalFormatRule']['rule']
+            f = ru['booleanRule']['condition']['values'][0]['userEnteredValue']
+            c.append((f, ru['ranges'][0]['startRowIndex']+1))
+    return m, c
+MERGES, COND = {}, {}
+for _n in ('living', 'cozinha'):
+    MERGES[_n], COND[_n] = do_req(_n)
+
+
 
 def papel(L, r):
     """Que lugar do layout é a linha r (1-based)."""
@@ -66,11 +75,16 @@ for p in sorted(set(a) | set(b)):
 # ── condicionais: mesma regra, ancorada no blk0 de cada aba ─────────────
 for ab, L in (('living', LIV), ('cozinha', COZ)):
     for f, r in COND[ab]:
-        alvo = L['f0']+4 if f.startswith('ARRED') else L['blk0']
+        alvo = L['f0']+4 if 'ROUND' in f else L['blk0']
         if r != alvo:
             print(f'⛔ {ab}: regra "{f}" ancorada em {r}, devia ser {alvo}'); falhas += 1
-if [f for f, _ in COND['living']] != [f for f, _ in COND['cozinha']]:
-    print('⛔ as duas abas não têm o mesmo conjunto de regras'); falhas += 1
+# ⭐ as regras têm de ser as MESMAS nas duas, a menos do número de linha
+anon = lambda ab: sorted(re.sub(r'\$?[A-K]\$?\d+', 'X', f)
+                         for f, _ in COND[ab])
+if anon('living') != anon('cozinha'):
+    print('⛔ as duas abas não têm o mesmo conjunto de regras')
+    print('   Living :', anon('living')); print('   Cozinha:', anon('cozinha'))
+    falhas += 1
 
 W = 72; print('═'*W)
 print('CONFERÊNCIA DE FORMA · as duas abas são a mesma aba?'); print('═'*W)
