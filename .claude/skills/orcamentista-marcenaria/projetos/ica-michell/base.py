@@ -245,18 +245,15 @@ PRECO_OUTRAS = {
  #   banco do Living e a mesa da Suíte Hóspedes: o valor vem da aba do
  #   ambiente, linha por linha, e não de uma chave de preço unitário.
  'Serralheria de base de cama': 0.0,  # ⛔ valor fechado, vem do ambiente
- # ⚠⚠ MDF DE 25 MM [Jonathan, 28/10/2026, Closet Master]: "considere a
- #   estrutura em mdf de 25mm". A Base só tem 6, 15 e 18, e o 25 não está
- #   cotado em lugar nenhum.
- #   ⛔ AQUI EU NÃO DEIXEI ZERO, e é a única vez neste orçamento em que
- #     invento um número. Zero é a regra da casa para o que é de terceiro e
- #     pequeno — espelho, carreto. A ESTRUTURA de um closet de R$ 24 mil não
- #     é pequena: zerá-la não grita, MENTE PARA BAIXO, e um preço de venda
- #     tirado desse zero sai barato de verdade.
- #   ⭐ Então entra um INTERINO declarado: R$ 970, que é o 18 mm da mesma cor
- #     (R$ 700) na proporção da espessura, 25/18. ⚠ É PARA CONFERIR com o
- #     fornecedor — chapa grossa costuma ter ágio acima da proporção.
- 'MDF Branco Diamante 25': 970.0,  # ⚠ INTERINO · 700 × 25/18 · a confirmar
+ # ⭐ MDF DE 25 MM [Jonathan, 28/10/2026, Closet Master]: "considere a
+ #   estrutura em mdf de 25mm", e em 29/10 ele deu o preço: R$ 600.
+ #   ⚠ Fica ABAIXO do 18 mm da mesma cor, que é R$ 700 — incomum para chapa
+ #     mais grossa, e por isso está anotado aqui e na caixa de dúvidas da
+ #     aba. O número é do Jonathan; o espanto é meu.
+ #   ⛔ Antes disto eu havia lançado um interino de R$ 970 (o 18 na proporção
+ #     25/18) em vez de zero, porque zerar a ESTRUTURA de um ambiente de
+ #     R$ 28 mil não grita: mente para baixo. O interino saiu.
+ 'MDF Branco Diamante 25': 600.0,  # [Jonathan, 29/10/2026]
 }
 VIDRO_M2   =   0.0  # ⛔ reflecta champagne SEM PREÇO — a cotar
 # ⭐ SERRALHERIA ESTRUTURAL [Jonathan, 28/10/2026]

@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 """ICA · SALA DE CINEMA E ATELIÊ — levantamento peça por peça  [28/10/2026]
 
-páginas 124 a 140 · DEZ detalhamentos, dez itens, nove folhas de detalhe.
+páginas 124 a 140 · DEZ detalhamentos em SETE itens, nove folhas de
+detalhe — os DET 03, 04 e 05 foram unificados a pedido do Jonathan.
 É o maior ambiente do projeto em área (49,21 m²) e em número de peças.
 
 ⭐⭐ UMA COR SÓ, do chão ao teto: MDF Nogueira Caiena - Duratex em TODOS os
-  dez itens. O branco aparece só onde ninguém vê — prateleira de dentro de
+  sete itens. O branco aparece só onde ninguém vê — prateleira de dentro de
   armário, divisória, fundo. É o ambiente mais simples do projeto em
   material e o mais pesado em quantidade.
 
-⛔⛔ O PÉ-DIREITO É 300 E A CHAPA DÁ 273. Sete dos dez itens têm peça de
-  300 de altura: o roupeiro, as duas divisórias, os dois painéis, a porta
-  de correr. ⚠ Não é detalhe de corte — é a pergunta de projeto deste
+⛔⛔ O PÉ-DIREITO É 300 E A CHAPA DÁ 273. Três dos sete itens têm peça de
+  300 de altura: o roupeiro e as duas divisórias. ⚠ Não é detalhe de corte — é a pergunta de projeto deste
   ambiente, e ela vale para as 24 aletas da Divisória 01 uma por uma.
 
 ⭐⭐ AS DUAS DIVISÓRIAS SÃO ALETAS SOLTAS, não ripado sobre painel. A 01
@@ -315,9 +315,9 @@ CABECA = {
 
 FOLHA = dict(
  aba='SALA DE CINEMA E ATELIÊ',
- sub='Jéssica e Michell · Projeto ICA · páginas 124 a 140 · DEZ itens, o '
-     'maior ambiente do projeto · ⭐ uma cor aparente só, Nogueira Caiena '
-     'Duratex, nos dez itens · caixaria em Branco TX 15 · ⛔ pé-direito de '
+ sub='Jéssica e Michell · Projeto ICA · páginas 124 a 140 · dez '
+     'detalhamentos em SETE itens, o maior ambiente do projeto · ⭐ uma cor aparente só, Nogueira Caiena '
+     'Duratex, nos sete itens · caixaria em Branco TX 15 · ⛔ pé-direito de '
      f'300 contra peça inteira de {ALT_MAX:g}, que é a chapa de {CHAPA_C:g} '
      'menos o acerto de corte',
  chapa_txt={NC18: 'Nogueira Caiena · Duratex · frentes, painéis, nichos e tampos',
@@ -328,10 +328,10 @@ FOLHA = dict(
             FUN:  'Fundos · encaixe em rasgo, sem fita'},
  nota='⛔ O FRETE ESTÁ ZERADO DE PROPÓSITO: as linhas de frete da Base não '
       'têm preço ainda. Preencher lá e elas aparecem aqui sozinhas.   '
-      '⛔⛔ O PÉ-DIREITO É 300 E A CHAPA DÁ 273. Sete dos dez itens têm '
-      'peça de 300: o roupeiro, as duas divisórias, os dois painéis e a '
-      'porta de correr. Todas aparecem marcadas na auditoria e nenhuma tem '
-      'onde esconder a emenda — é decisão de projeto, não de corte.   '
+      '⛔⛔ O PÉ-DIREITO É 300 E A CHAPA DÁ 273. Três dos sete itens têm '
+      'peça de 300: o roupeiro e as duas divisórias. Todas aparecem '
+      'marcadas na auditoria e nenhuma tem onde esconder a emenda — é '
+      'decisão de projeto, não de corte.   '
       '⭐⭐ AS DUAS DIVISÓRIAS SÃO ALETAS SOLTAS: 24 de 7 × 20 na 01 e 16 '
       'de 3 × 15 na 02. Aleta é ARESTA, e só a Divisória 01 pede uns 288 m '
       'de fita — mais que o Banho Hóspedes inteiro.   ⭐ A BASE METÁLICA '
@@ -341,17 +341,18 @@ FOLHA = dict(
   'AS 24 ALETAS DA DIVISÓRIA 01 TÊM 7 × 20 DE SEÇÃO e 300 de altura. ⭐ '
   'Resolvi em CAIXÃO de MDF: duas faces de 20 mais duas testeiras de 4. ⚠ '
   'Isso dá 1,4 m² de chapa POR ALETA e nenhuma peça cabe inteira — são 24 '
-  'emendas horizontais a 273 do chão, todas à vista. ⛔ As alternativas '
-  'mudam o preço de verdade: miolo de pinus revestido sai mais leve, mais '
-  'barato e sem emenda de chapa; chapa de 300 sob encomenda resolve a '
-  'emenda e encarece. É a maior pergunta deste ambiente.',
+  'emendas horizontais a 273 do chão, todas à vista. ⛔ A casa NÃO USA '
+  'PINUS para nada [Jonathan], então a alternativa que muda o preço de '
+  'verdade é uma só: chapa de 300 sob encomenda, que resolve a emenda e '
+  'encarece. É a maior pergunta deste ambiente.',
   'O PÉ-DIREITO É 300 E A PEÇA INTEIRA DÁ 273. Além das aletas, têm 300 de '
-  'altura: as laterais e o fundo do roupeiro, a porta de 290, o painel de '
-  '40 do DET 05, os montantes de 7 da porta de correr e as 16 aletas da '
-  'Divisória 02. ⚠ Em alguns dá para esconder — o fundo do roupeiro fica '
-  'atrás das prateleiras. Em outros não: um montante de 7 de largura com '
-  'emenda a 273 do chão é o primeiro lugar onde o olho vai. ⛔ Confirmar '
-  'se a casa compra chapa de 300 para este ambiente.',
+  'altura: as laterais e o fundo do roupeiro, a porta de 290 e as 16 '
+  'aletas da Divisória 02. ⚠ Em alguns dá para esconder — o fundo do '
+  'roupeiro fica atrás das prateleiras. Em outros não: uma aleta de 3 de '
+  'largura com emenda a 273 do chão é o primeiro lugar onde o olho vai. '
+  '⛔ Confirmar se a casa compra chapa de 300 para este ambiente. ⭐ Os '
+  'painéis do DET 03 e do DET 05 deixaram de ter o problema: saíram em '
+  'peça inteira de 273 a seu pedido, em 28/10.',
   'O "RIPADO" DO DET 03 É USINAGEM, não ripa. O DET. RIPADO desenha o '
   'corte de um painel de 2 cm com frisos de 3 em 1 na face. ⚠ Lancei a '
   'chapa do painel e NÃO lancei o serviço: a Base traz "Painel ripado · R$ '
@@ -362,28 +363,30 @@ FOLHA = dict(
   'Caiena. ⚠ Lancei a chapa; a FURAÇÃO não tem linha na Base e não entrou. '
   'São uns 1.500 furos numa chapa de 18 mm — é hora de CNC, não de '
   'furadeira. Pedir preço de usinagem por m² ao terceirizado.',
-  'O TRILHO DA PORTA DE CORRER DO DET 07 não existe na Base e sai ZERO. ⚠ '
-  'A folha tem 123 × 300 em MDF de 18 mm com vidro reflecta: passa fácil '
-  'de 60 kg. Isso é trilho embutido de carga, não corrediça — costuma '
-  'custar de R$ 400 a R$ 1.200 o jogo. ⛔ Até existir, o custo deste item '
-  'é um PISO.',
-  'O VIDRO REFLECTA BRONZE da porta de correr segue SEM PREÇO na Base, '
-  'como o reflecta champagne do Living. ⚠ São 6,2 m² em duas folhas de '
-  '109 × 286 — e vidro de 2,86 m de altura é peça especial, não é '
-  'prateleira de cristaleira. ⛔ Sai ZERO e denuncia.',
+  '⛔ A PORTA DE CORRER DO DET 07 SAIU DO ORÇAMENTO [Jonathan, 28/10]: '
+  '"não é nosso". Com ela saíram as oito peças de esquadria de 7, os 2,22 '
+  'm² de vidro reflecta bronze e o trilho embutido de carga, que não tinha '
+  'preço na Base e puxava o item para um piso. ⭐ Fica registrado o que '
+  'era: 246 × 300 em duas folhas de 123, folha de uns 60 kg — trilho de '
+  'carga, não corrediça, de R$ 400 a R$ 1.200 o jogo. ⚠ Se ela voltar '
+  'para nós, voltam os três itens e volta a pergunta do montante de 7 de '
+  'largura com 3 m de altura.',
   'O RACK TEM "FECHO TOQUE" NAS SETE GAVETAS e nenhum puxador desenhado. '
-  '⭐ Orcei PULSADOR, R$ 100 cada, R$ 700 pelos sete. ⚠ Não é o caso das '
-  'básculas da Cozinha, onde o senhor tirou o pulsador porque a frente '
-  'abre pelo puxador slim: aqui não há slim nenhum, e gaveta de fecho '
-  'toque abre por pulsador ou por corrediça com push-to-open. Se a '
-  'corrediça já vier com push, os R$ 700 saem da conta.',
+  '⭐ Desde 28/10 elas abrem por CORREDIÇA TOUCH — "nao se usa pulsador em '
+  'gavetas" —, e a touch substitui o par de corrediça E o pulsador, então '
+  'as duas linhas antigas saíram. ⚠ São R$ 3.500 nas sete gavetas, contra '
+  'os R$ 1.750 que eu tinha (R$ 1.050 de corrediça mais R$ 700 de '
+  'pulsador): abrir por toque DOBRA o custo de abrir este rack, e é o que '
+  'o senhor pediu. ⛔ O rack da Suíte Master é o mesmo móvel e levou a '
+  'mesma correção. ⭐ A mesa do DET 10 NÃO entrou nessa regra: ela tem '
+  'puxador passante desenhado, então fica com corrediça comum.',
   'A BASE METÁLICA DE 3 CM ENTROU AQUI, E SÓ AQUI. A prancha escreve "não '
   'instalar os painéis diretamente no chão, considerar base metálica de 3 '
   'cm" nas NOVE folhas de detalhe, e o senhor fechou em 26/10 que a casa '
   'faz esse rodapé em MDF melamínico. Lancei os 14,3 m dos cinco móveis de '
-  'chão. ⚠ Os outros nove ambientes do projeto seguem sem ela — são uns 25 '
-  'm somados, pouco mais de meia chapa. Eu volto e lanço quando o senhor '
-  'mandar.',
+  'chão. ⚠ Os outros dezoito ambientes do projeto seguem sem ela — são uns '
+  '25 m somados, pouco mais de meia chapa. Eu volto e lanço quando o '
+  'senhor mandar.',
   'O CAMPO CENTRAL DO PAINEL DO DET 03 TEM 345 DE LARGURA e não cabe em '
   'peça inteira. ⚠ Os outros campos eu dividi nos frisos de 2 cm que o '
   'próprio desenho tem, e a emenda some. Esse não tem linha nenhuma: '
@@ -409,7 +412,7 @@ FOLHA = dict(
   'Sofá modular, mesa de centro Paola, cadeira Cover, abajur de chão e tapete',
   'Cortina em linho branco com blackout, pedra Atacama Branca e pintura'],
  notas=[
-  '⭐⭐ UMA COR SÓ NO AMBIENTE INTEIRO: Nogueira Caiena Duratex nos dez '
+  '⭐⭐ UMA COR SÓ NO AMBIENTE INTEIRO: Nogueira Caiena Duratex nos sete '
   'itens. O branco só aparece onde ninguém vê — prateleira de dentro de '
   'armário, divisória e fundo. Depois de ambientes com quatro padrões '
   'aparentes, este compra chapa de uma cor e arredonda uma vez.',
@@ -425,9 +428,10 @@ FOLHA = dict(
   'em 1/10 mostrava ripa solta sobre painel de base, em duas camadas. Aqui '
   'o DET. RIPADO mostra friso usinado na face de um painel de 2 cm — é '
   'ranhura, como o fundo ripado do Living. Mesma palavra, outro serviço.',
-  '⚠ A PORTA DE CORRER TEM 300 DE ALTURA E ESQUADRIA DE 7 DE LARGURA. Um '
-  'montante de 7 × 300 em MDF de 18 mm é esbelto para carregar 3 m² de '
-  'vidro: na prática pede alma de aço ou perfil de alumínio embutido. A '
-  'prancha não desenha nenhum dos dois e eu não lancei — está na dúvida 05 '
-  'junto com o trilho.'],
+  '⛔ A PORTA DE CORRER SAIU DO ESCOPO em 28/10: "não é nosso". Era o item '
+  'mais arriscado do ambiente — montante de 7 × 300 em MDF de 18 mm '
+  'carregando 3 m² de vidro, sem alma de aço desenhada e com trilho de '
+  'carga sem preço na Base. ⭐ Com ela saiu o último piso de preço do '
+  'ambiente: hoje a Sala de Cinema fecha com todas as linhas '
+  'precificadas.'],
 )

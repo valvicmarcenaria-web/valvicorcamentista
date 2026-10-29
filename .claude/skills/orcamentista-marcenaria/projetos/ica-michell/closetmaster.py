@@ -6,9 +6,10 @@ páginas 153 a 165 · SEIS detalhamentos, seis itens, cinco folhas de detalhe.
 ⭐⭐ UMA COR SÓ, E É BRANCA: MDF Branco Diamante - Duratex nos seis itens,
   do fundo do nicho à porta de correr. Depois da Suíte Master, com três
   padrões e dois fornecedores, este compra UM material e arredonda UMA vez.
-  ⚠ Lancei no preço de BRANCO (R$ 400 a chapa de 18), não no de cor, porque
-    Branco Diamante é branco texturado como o Branco TX. A dúvida 01 põe a
-    diferença na mesa: se for linha especial, são R$ 300 por chapa.
+  ⚠ Lancei no preço de COR (R$ 700 a chapa de 18, R$ 600 a de 25), que é o
+    lado conservador. Branco Diamante é branco texturado como o Branco TX, e
+    a dúvida 01 põe a diferença na mesa: se for cobrado como branco, são
+    R$ 300 por chapa A MENOS.
 
 ⭐⭐ A CADEIA VERTICAL DOS TRÊS ARMÁRIOS É A MESMA, e ela fecha:
       3 de topo + 60 de maleiro + 3 + 30 de nicho + 3 + 193 de corpo = 292
@@ -218,8 +219,15 @@ ALMAS   = []
 # ⭐ O ESPELHO ENTRA NA CONTA [Jonathan, 28/10/2026]. O DET 05 é "painel em
 #   MDF com espelho, com iluminação frontal" — o espelho é a peça, não o
 #   acessório. 150 × 290 dentro do painel de 160 × 300.
+#   ⭐ E O DA COLUNA DE 97 DO ARMÁRIO 02 ENTRA COM ELE: é a mesma regra, e
+#     deixar um espelho do ambiente fora e o outro dentro seria incoerente.
+#     Está na caixa de dúvidas como decisão minha, para ele desfazer se
+#     quiser.
 VIDRO   = [(I5, 'Espelho do painel do DET 05 · 150 × 290 dentro do painel '
             'de 160 × 300, com o LED correndo no perímetro', 1, 150, 290,
+            'Espelho'),
+           (I3, 'Espelho da coluna de 97 do Armário 02 · 97 × 120, colado '
+            'no painel de apoio de Branco Diamante', 1, 97, 120,
             'Espelho')]
 SERRALHERIA = []
 # ⛔ duas ferragens de closet que a Base não tem: o calceiro deslizante e o
@@ -276,6 +284,9 @@ FOLHA = dict(
                   'sapateiras e painéis',
             BD15: 'Branco Diamante · Duratex · laterais, divisórias, '
                   'sapateiras corrediças e caixas de gaveta',
+            BD25: 'Branco Diamante · Duratex · ⭐ A ESTRUTURA DOS TRÊS '
+                  'ARMÁRIOS [Jonathan, 28/10]: laterais, divisórias, tampos '
+                  'e bases · ⚠ R$ 600 a chapa, ABAIXO do 18 mm',
             BD6:  'Branco Diamante · Duratex · fundos · ⭐ sai na cor e não '
                   'em branco de caixaria, porque dentro de closet aberto '
                   'TUDO aparece'},
@@ -283,9 +294,10 @@ FOLHA = dict(
       'têm preço ainda. Preencher lá e elas aparecem aqui sozinhas.   '
       '⭐⭐ UMA COR SÓ NO AMBIENTE INTEIRO, e ela é branca. Branco Diamante '
       'Duratex nos seis itens, inclusive nos fundos — dentro de closet '
-      'aberto não existe peça que não apareça. ⚠ Lancei no preço de BRANCO '
-      '(R$ 400 a chapa de 18), não no de cor; se for linha especial são '
-      'R$ 300 a mais por chapa.   ⭐ A CADEIA VERTICAL DOS TRÊS ARMÁRIOS '
+      'aberto não existe peça que não apareça. ⚠ Lancei no preço de COR '
+      '(R$ 700 a chapa de 18, R$ 600 a de 25), que é o lado conservador; se '
+      'a Duratex cobrar como branco são R$ 300 a MENOS por chapa.   ⭐ A '
+      'CADEIA VERTICAL DOS TRÊS ARMÁRIOS '
       'FECHA: 3 + 60 de maleiro + 3 + 30 de nicho + 3 + 193 de corpo = 292, '
       'e o resto é base. ⛔ O "53" solto no pé de cada ladder da prancha '
       'não existe no desenho — somando-o a cadeia daria 345 contra os 300 '
@@ -293,12 +305,19 @@ FOLHA = dict(
       'corrediças, sete fixas, quatro cabideiros, dois calceiros '
       'deslizantes, um gavetão de cesto de roupa e vinte gavetas.',
  duvidas=[
-  'BRANCO DIAMANTE É BRANCO OU É COR? Lancei no preço de BRANCO — R$ 400 a '
-  'chapa de 18, R$ 350 a de 15, R$ 250 a de 6 — porque Branco Diamante é um '
-  'branco texturado, irmão do Branco TX que a casa já usa em toda a '
-  'caixaria. ⚠ Se a Duratex cobrar como linha decorativa, vai para R$ 700 / '
-  '550 / 350 e o ambiente sobe quase 80%. ⛔ É a pergunta que mais vale '
-  'dinheiro nesta aba, e ela se responde com uma ligação.',
+  'BRANCO DIAMANTE É BRANCO OU É COR? Lancei no preço de COR — R$ 700 a '
+  'chapa de 18, R$ 550 a de 15, R$ 350 a de 6 e R$ 600 a de 25 —, que é o '
+  'lado conservador. ⚠ Mas Branco Diamante é um branco texturado, irmão do '
+  'Branco TX que a casa já usa em toda a caixaria: se a Duratex cobrar como '
+  'branco (R$ 400 / 350 / 250), este ambiente CAI quase 40%. ⛔ É a '
+  'pergunta que mais vale dinheiro nesta aba, e ela se responde com uma '
+  'ligação.',
+  '⚠ O MDF DE 25 MM CUSTA MENOS QUE O DE 18 NA MESMA COR: R$ 600 contra '
+  'R$ 700, pelo preço que o senhor passou em 29/10. ⭐ Lancei como o senhor '
+  'disse, e a estrutura dos três armários saiu nele, como pedido em 28/10 '
+  '— laterais, divisórias, tampos e bases. ⛔ Chapa mais grossa saindo mais '
+  'barata é incomum; se o fornecedor confirmar, melhor para nós, porque é '
+  'justamente a chapa que mais aparece em metro quadrado aqui.',
   'O CALCEIRO DESLIZANTE não existe na Base e sai ZERO. São dois, um no '
   'Armário 02 e outro no Armário 03. ⚠ Calceiro deslizante de closet custa '
   'de R$ 150 a R$ 400 a unidade conforme a largura e o acabamento. ⛔ Até '
@@ -323,20 +342,24 @@ FOLHA = dict(
   'então ele soma ZERO: o custo deste ambiente é um piso enquanto ela não '
   'tiver valor. ⚠ A prancha não cota o espelho — tirei a medida do desenho '
   'em 1/20, descontando 5 cm de painel aparente em volta.',
-  'O ESPELHO DA COLUNA DE 97 DO ARMÁRIO 02 é vidraceiro. ⚠ Lancei o painel '
-  'de apoio em Branco Diamante e os 4,4 m de LED do perímetro; o espelho '
-  'em si, não. A prancha não cota o espelho — tirei 97 × 120 do desenho em '
-  '1/20. Confirmar a medida antes de pedir o vidro.',
-  'O GAVETÃO BASCULANTE DO ARMÁRIO 01 é cesto de roupa: tomba para fora. '
-  '⭐ Orcei o articulador HK-XS da Blum, R$ 250, que é a báscula da casa. '
-  '⚠ Para cesto de roupa existe ferragem específica, de tombamento, que '
-  'costuma custar menos. Confirmar.',
+  'O ESPELHO DA COLUNA DE 97 DO ARMÁRIO 02 TAMBÉM ENTROU, e essa foi '
+  'decisão minha. ⚠ O senhor nomeou o espelho do DET 05; este é o segundo '
+  'do mesmo ambiente, e deixar um dentro e o outro fora não se sustenta na '
+  'proposta. São 1,16 m² de 97 × 120, colados no painel de apoio em Branco '
+  'Diamante que já estava orçado. ⛔ Como a linha "Espelho" da Base não tem '
+  'preço, ele soma ZERO — entrar ou sair não move o custo de hoje, move '
+  'quando o preço do vidro chegar. A prancha não cota: tirei 97 × 120 do '
+  'desenho em 1/20.',
+  'O CESTO DE ROUPA DO ARMÁRIO 01 DEIXOU DE SER BASCULANTE [Jonathan, '
+  '28/10]: "não tem gaveta basculante". ⭐ Virou gaveta de corrediça de '
+  '450 mm, como as outras duas da coluna, e o articulador HK-XS de R$ 250 '
+  'saiu da conta. ⚠ Fica o registro de que é cesto de roupa: se o cliente '
+  'quiser o cesto removível de aramado, isso é ferragem de terceiro e não '
+  'está em nenhuma linha da Base.',
   '⛔ A BASE METÁLICA DE 3 CM não está lançada aqui. Os três armários e o '
   'nicho tocam o chão. ⚠ Fica para a passada única, junto com os outros '
-  'nove ambientes.'],
+  'dezoito ambientes.'],
  nao_marcenaria=[
-  'Espelho da coluna de 97 do Armário 02 — vidraceiro (o painel de apoio e '
-  'o LED são nossos)',
   'Cabides, caixas organizadoras e tudo que o cliente põe dentro'],
  notas=[
   '⭐⭐ UMA COR SÓ, E ELA É BRANCA. Branco Diamante Duratex nos seis itens, '

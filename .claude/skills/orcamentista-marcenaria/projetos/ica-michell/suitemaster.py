@@ -222,10 +222,14 @@ FOLHA = dict(
   'ateveludado a emenda horizontal aparece mais, não menos. ⛔ Ou o '
   'desenho ganha uma ranhura na altura da emenda, ou a casa compra chapa '
   'de 300 para este painel.',
-  'O RACK DO DET 03 NÃO TEM PUXADOR DESENHADO nas cinco gavetas. ⭐ Orcei '
-  'PULSADOR, R$ 100 cada, R$ 500 pelos cinco — é o mesmo que fiz no rack '
-  'da Sala de Cinema, que tem a mesma solução de tampo de correr. ⚠ Se a '
-  'corrediça já vier com push-to-open, os R$ 500 saem.',
+  'O RACK DO DET 03 NÃO TEM PUXADOR DESENHADO nas cinco gavetas. ⭐ Desde '
+  '28/10 elas abrem por CORREDIÇA TOUCH — "nao se usa pulsador em '
+  'gavetas" —, e a touch substitui o par de corrediça E o pulsador, '
+  'então as duas linhas antigas saíram. ⚠ São R$ 2.500 nas cinco '
+  'gavetas, contra os R$ 1.250 que eu tinha (R$ 750 de corrediça mais '
+  'R$ 500 de pulsador): abrir por toque DOBRA o custo de abrir este '
+  'rack, e é o que o senhor pediu. ⛔ O rack da Sala de Cinema é o mesmo '
+  'móvel e levou a mesma correção.',
   'O "TAMPO SUPERIOR DE CORRER" aparece aqui e na Sala de Cinema, com a '
   'mesma nota e a mesma imagem de referência. ⚠ Lancei a chapa do tampo, '
   'mas a FERRAGEM que o faz correr não está na Base e não entrou. É '
