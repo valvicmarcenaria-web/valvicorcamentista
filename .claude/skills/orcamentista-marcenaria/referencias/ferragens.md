@@ -309,3 +309,84 @@ linha depois da chapa** — contar porta por porta, não por estimativa.
 toque e dispensa puxador; o puxador slim dispensa o pulsador. Orçar **um
 ou outro**, nunca os dois — e registrar qual, porque são R$ 65 de
 diferença por frente.
+
+---
+
+# ⭐⭐ BLUM × HETTICH — o que ficou apurado no ICA [29/10/2026]
+
+## Como se CONTA a ferragem de marca (errei duas vezes antes de acertar)
+
+⛔ **Não conte de cabeça, nem pelo olho na lista.** No ICA eu errei duas vezes
+o mesmo número antes de chegar nele:
+
+| tentativa | erro |
+|---|---|
+| R$ 15.680 | contei **folha de porta** em vez de folha × dobradiça por folha |
+| R$ 33.900 | perdi as **corrediças touch que entram por `OUTRAS`**, não pelo flag de `GAVETAS` |
+| **R$ 61.850** ✅ | conferido por dois caminhos independentes |
+
+⭐ **O caminho certo:** rodar `planilha.linhas_do_item(mv)` para cada móvel e
+somar por chave, com os preços de `base.py`.
+
+⚠ **UM AMBIENTE POR PROCESSO.** `planilha.py` e `auditor.py` gravam o módulo
+em `sys.modules['AMB']`. Há móveis **homônimos** entre ambientes ("DET 01
+Bancada com armário" aparece em três banhos). Agrupar por nome num processo
+só derruba o total — no ICA, de R$ 61.850 para R$ 57.150.
+
+⚠ **A corrediça touch entra por DOIS caminhos**: o flag `x[4] == 'touch'` em
+`GAVETAS` e entradas em `OUTRAS` com a chave `'Corrediça touch'`. No ICA eram
+12 + 8 = 20. Quem olha só o primeiro perde R$ 4.000.
+
+⚠ **`PORTAS` é `(mov, rótulo, nº de folhas, dobradiças POR FOLHA, preço)`.**
+A quantidade é o **produto**, não o terceiro elemento.
+
+## A razão de preço Hettich / Blum no mercado brasileiro
+
+| item | razão Hettich/Blum |
+|---|---|
+| dobradiça (CLIP top BLUMOTION × Sensys) | 0,75 – 0,80 |
+| corrediça oculta, por par (TANDEM × Quadro V6) | 0,62 |
+| **para precificar, use** | **0,70 – 0,72** |
+
+⭐ **Por que o topo da faixa, e não o centro:** os preços comparáveis são de
+varejo. Na compra com CNPJ a Blum dá desconto maior por programa de parceria,
+o que **comprime** a diferença. Uma razão baixa demais superestima a economia
+do cenário Hettich e aperta a margem dele.
+
+⚠ **Metodologia que vale repetir:** mesma loja, mesma especificação, mesmo
+comprimento, **preço Pix contra preço Pix**. Preço de lista é inútil — uma
+loja anunciava a Blum com 33% de desconto no Pix, o que sozinho movia a razão
+de 0,43 para 0,66. E a mesma loja divergia entre três páginas do próprio site.
+
+⚠ **Peça genérica contamina a ponta de baixo** nos dois lados: há anúncio
+"Sensys" com marca BIGFER no selo. Dar peso a loja especializada, não a
+marketplace.
+
+## Os números que a proposta pode imprimir
+
+| | **Blum** | **Hettich** |
+|---|---|---|
+| ciclos de ensaio na dobradiça | **200.000** | **80.000** (Sensys 8639i) |
+| norma | ensaio próprio de durabilidade | DIN EN 15570 / ISO 4769, nível 3 |
+| origem | Áustria, 1952, familiar | Alemanha, 1888, familiar |
+| presença no Brasil | empresa própria em Embu das Artes/SP, com reposição e assistência | ⛔ fábrica **não confirmada** |
+
+⭐ **O número de destaque da página de marca é o ENSAIO, não o prazo.** É
+verificável, é o mesmo tipo de ensaio nos dois lados, e diz mais ao morador
+que um número de anos. 200.000 ciclos são vinte anos abrindo a mesma porta
+mais de vinte vezes por dia.
+
+⛔ **NÃO afirmar:** prazo de garantia **de fabricante** (nem Blum nem Hettich
+publicam um para o Brasil), fábrica Hettich no Brasil, número de fábricas ou
+de países da Hettich, "o mais resistente do mundo". Nada disso se confirma.
+
+## ⛔ Duas correções técnicas que saíram daqui
+
+1. **O articulador AVENTOS é DE MOLAS, não a gás.** Calibrado pelo peso da
+   frente, sem pistão para perder pressão com o tempo. ⚠ `planilha.py`
+   escrevia "articulador a gás Blum" na linha da báscula — corrigido.
+2. **Gaveta não leva pulsador.** Quem abre a gaveta ao toque é a **própria
+   corrediça**, que já vem com essa função (corrediça touch, R$ 500 o par,
+   substitui o par comum **e** o pulsador). Pulsador é de **porta de giro e
+   báscula**. Já era regra da casa na planilha; o texto da proposta tinha
+   derivado dela.

@@ -587,3 +587,116 @@ python3 ferramentas/auditor-proposta.py p.html p.pdf --excecoes 'dez módulos|du
 
 ⛔ A exceção é por documento e por termo, nunca geral. Se o número não veio
 do cliente, ele não entra.
+
+---
+
+# ⭐⭐⭐ A LEI DA VOZ — como dizer que a Valvic articula tudo [29/10/2026]
+
+O Jonathan: *"Quero que o cliente saiba que a Valvic articula todas as
+soluções que envolve o projeto, sendo serralheria, tecido, vidro etc."*
+
+No ICA o texto errou nas **duas pontas**, e as duas foram pegas por revisão
+adversarial antes de o caderno sair:
+
+### ⛔ PONTA FRACA — o verbo de quem não executa
+
+*"sob nossa coordenação"* · *"coordenamos"* · *"acompanhamos a execução"* ·
+*"supervisionamos"* · *"gerenciamos o fornecedor"*
+
+A palavra "parceiro" tinha sido removida com sucesso — e **substituída**, não
+eliminada. "Sob nossa coordenação" apareceu **16 vezes** e diz ao cliente
+exatamente a mesma coisa, num registro mais educado. **Coordenar é o verbo de
+quem não executa.**
+
+### ⛔ PONTA FALSA — a oficina que a casa não tem
+
+*"a nossa serralheria"* · *"sai da nossa serralheria"* · *"nosso vidraceiro"*
+
+A Valvic **não tem** serralheria, vidraçaria nem tapeçaria próprias. Escrever
+isso numa proposta de sete dígitos que vai para a mão de uma arquiteta é
+mentira falsificável com uma pergunta. **Mentira custa a venda.**
+
+### ✅ A FORMULAÇÃO CERTA — escopo, contrato e resposta
+
+Nunca fale de **quem segura a solda**. Fale de **escopo, contrato e
+responsabilidade**:
+
+- "entra no nosso escopo"
+- "sai no mesmo contrato da marcenaria"
+- "a Valvic responde por"
+- "chega na sua casa instalado, no mesmo acerto"
+- "você não contrata mais ninguém"
+- "uma só data, um só contrato, uma só responsabilidade"
+- "a Valvic articula todas as soluções do projeto" *(a frase do Jonathan,
+  pode ir literal)*
+
+⭐ **O TESTE DAS DUAS PERGUNTAS.** Antes de escrever a frase:
+1. Ela continua **verdadeira** se alguém perguntar "vocês têm serralheria
+   própria?"
+2. Ela ainda dá ao cliente a sensação de que **não vai gerenciar fornecedor
+   nenhum**?
+
+Se as duas respostas forem sim, a frase passa.
+
+## ⛔ O REFRÃO É TEMPERO, NÃO BASE [Jonathan, 29/10/2026]
+
+> *"vc esta repetindo o conceito de uma so empresa, uma so responsabilidade
+> etc. em quase todas as caixas dos ambientes, nao precisa disso."*
+
+No ICA o refrão de escopo ia em **18 das 19** notas de ambiente. Uma frase
+forte repetida dezoito vezes **vira ruído e o cliente para de lê-la**.
+
+⭐ **A regra:** no máximo **três** ambientes carregam o refrão — e só os que
+de fato juntam ofícios (no ICA: Suíte hóspedes, Suíte master e Suíte 03).
+Nos outros, o espaço vai para **conteúdo concreto do móvel**: como a peça é
+construída, como ela abre, por que ela é difícil de fazer.
+
+# ⭐⭐ A FOLHA DE AMBIENTE — o que NÃO entra
+
+| ⛔ não entra | por quê |
+|---|---|
+| **medida** (`350 × 300`, `105 cm`, `de 128 mm`) | medida é assunto do executivo, não da proposta — e já era regra da casa |
+| **marca de ferragem** (Blum, Hettich, AVENTOS, Sensys…) | o cliente ainda **não escolheu o cenário** quando chega na folha do ambiente. Escreva o benefício: "corrediça oculta de extração total, com fechamento amortecido" |
+| **preço, custo, percentual** | valor antes de valores |
+| **promessa de item que está a ZERO na planilha** | prometer fornecimento de linha zerada é prometer com o dinheiro do lucro |
+| **campo interno** (`alertas`, `ressalvas`, `mudou`, `pedir_ao_jonathan`) | o build precisa de **whitelist explícita**, não de blocklist |
+
+⭐ **A BRANCA do template de ambiente é `{ambiente, itens, nota, materiais}`.**
+Tudo o que não está nela é meu, não do cliente.
+
+# ⭐ A ORDEM DO CADERNO — valor antes de valores [Jonathan, 29/10/2026]
+
+> *"regra importante. primeiro agregue valor, depois apresente valores."*
+
+Nenhuma folha de conteúdo antecipa preço, desconto ou condição de pagamento —
+**nem a capa**. No ICA a capa trazia "Ferragens: Blum · 30 anos", o que
+entregava o cenário decidido antes das folhas que o explicam e transformava a
+página Hettich em pitch de rebaixamento. Virou "Cenários: Blum · Hettich".
+
+**A sequência que funcionou (35 folhas):**
+
+| | |
+|---|---|
+| 01–06 | capa · o que esta casa pede · a empresa · **o processo** · a arquiteta · índice |
+| 07–25 | uma folha por ambiente, conduzida pelo render |
+| 26–30 | a ferragem · marca A · "o que não entra na escolha" · marca B · a garantia |
+| 31–35 | investimento cenário A · cenário B · **a decisão lado a lado** · condições · encerramento |
+
+⭐ **A folha "a decisão lado a lado"** é a que fecha: uma tabela com garantia,
+ensaio, o que é igual nos dois e o investimento de cada um. O cliente decide
+olhando uma página só.
+
+# ⭐ Mecânica do caderno — o que vale copiar
+
+- **O texto do ambiente encolhe sozinho.** Envolver a coluna num `.fit` e um
+  script que mede e aplica `zoom = altura disponível / altura pedida`. Sem
+  isso, a Suíte Mariana (12 itens) estoura a folha. Roda **também** no HTML de
+  impressão, antes do `page.pdf`.
+- **PDF:** `print/caderno.html` — as folhas sem a moldura de leitura —
+  renderizado com `page.pdf({width:'297mm', height:'210mm', printBackground:true})`.
+  ⚠ `NODE_PATH=/opt/node22/lib/node_modules`, que é onde o playwright mora.
+- **Negrito numa palavra em todo o documento:** `re.sub(r'>([^<]+)<', …)` —
+  troca só em **nó de texto**, nunca dentro de uma tag.
+- ⚠ **Classe de modificador não pode colidir com classe global.** Chamei um
+  bloco de `.selos.dark` e o `.dark` global pintou o fundo de escuro deixando
+  o texto escuro por cima. Renomear para `.selos.realce`.

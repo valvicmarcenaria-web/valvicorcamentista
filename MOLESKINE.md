@@ -250,6 +250,47 @@ algo que a casa entrega; aqui é **colocar na proposta** algo que a casa não
 orçou. Mesma origem — texto e conta escritos em momentos diferentes, sem
 ninguém cruzar os dois no fim.
 
+### [2026-10-29] Orçamento + Caderno de proposta — Jéssica e Michell / ICA — Lavinia
+**Solicitante:** Jonathan · **Projeto:** **IARA CEZAR Arquitetura e Interiores**, Lagoa Santa/MG · **Status:** 🟢 Caderno entregue, com pendências nomeadas
+
+O maior job já orçado pela casa: **executivo de 235 páginas A3 · 20 ambientes · 19 levantados**.
+Entregue em **dois cenários de ferragem**, com caderno A4 deitado de **35 folhas** e PDF.
+
+**Os números.** Custo direto **R$ 311.541,90** (Blum) e **R$ 297.795,90** (Hettich).
+Fechado em **MC 55% Blum → R$ 1.042.818,08** e **MC 52% Hettich → R$ 905.843,04**.
+Lucro do período (90 dias, custo fixo lido ao vivo da Gestão 3): **R$ 223.096,84** e
+**R$ 120.585,28**. A margem Blum paga **147 dias** de empresa com uma obra de 90.
+Pagamento **30 / 20 / 20 / 30** (assinatura, 30, 60 e 90 dias), por transferência.
+
+**O que este projeto ensinou — está registrado, não aqui:**
+- `referencias/ferragens.md` — como **contar** ferragem de marca pelo motor (errei duas
+  vezes antes de acertar), a **razão Hettich/Blum de 0,70–0,72** apurada no mercado, os
+  ciclos de ensaio das duas marcas, e duas correções técnicas: **articulador é de molas,
+  não a gás** e **gaveta não leva pulsador**.
+- `referencias/proposta-comercial.md` — **a LEI DA VOZ**: nem "sob nossa coordenação",
+  que entrega que não executamos, nem "a nossa serralheria", que seria mentira. Mais o
+  **refrão é tempero** (no máximo 3 ambientes), a folha de ambiente **sem medida, sem
+  marca e sem preço**, a ordem **valor antes de valores**, e a mecânica do caderno.
+- `referencias/estrutura-orcamento.md` — ⛔ **PEDRA NÃO É ESCOPO DA VALVIC.**
+- `closer-vendas/referencias/garantia.md` — **Blum 30 anos, Hettich 10**, decisão do
+  Jonathan, com a ressalva de que o termo de 30 anos ainda não existe em papel.
+- `referencias/planilha-google.md` — o **Painel por rótulo**, a auditoria de fórmula
+  morta com `FORMULATEXT`, `IMPORTRANGE` por coluna inteira, e o truque da linha única.
+- `projetos/ica-michell/README.md` — a leitura do executivo de 111 MB, os **renders em
+  1760 × 1328 nas folhas de FOTO**, e as duas rodadas de correção.
+- **Planilha do cliente, Painel, bloco AS REGRAS DA CASA:** entraram as regras **13 a 17**
+  (pedra fora, frete como linha do ambiente, como contar ferragem, articulador de molas,
+  garantia escalonada).
+
+**Arquivos:** `projetos/build-caderno-ica.py` (o caderno) · `build-previa-ica.py` (a prévia) ·
+`projetos/ica-michell/` (motor, 19 módulos, `wf.json` e `wf2.json` com a apuração e o texto) ·
+planilha `10G12W-0rZUu4c0hAdXmuz-ClgeUluR5vIuTU7pjqLOw`.
+
+⚠ **Vale para o Vitor:** o caderno do ICA é, na prática, o **novo layout premium de
+proposta** que está aberto como tarefa desde 16/06. Vale olhar antes de começar do zero.
+
+---
+
 ## Recados rápidos
 
 *(notas passageiras — podem ser apagadas após lidas)*
@@ -272,3 +313,19 @@ Luxemburgo fechou a **MC 37%** (seu piso de exceção do caixa crítico) com **e
 prédio passar de **R$ 80k** (vários pavimentos), sua regra pede **MC mínima 40%**.
 Avaliar subir a margem no fechamento do prédio inteiro ou manter 37% como exceção.
 
+### [2026-10-29] Lavinia → Jonathan · ICA, o que trava a impressão
+Três coisas, em ordem de risco:
+
+1. ⛔ **O termo de garantia de 30 anos não existe em papel.** `garantia.md` registra que
+   só o de 10 anos está desenhado. A folha 30 do caderno promete 30 anos no cenário Blum
+   e a arquiteta vai pedir o documento.
+2. ⛔ **Serralheria, espelho e vidro estão a R$ 0,00** em sete ambientes. O caderno diz
+   que tudo sai no mesmo contrato — a frase é verdadeira, mas o **preço não a cobre**.
+   Ou cotamos, ou esses itens vão nomeados na folha "o que não está nesta proposta".
+   Pela regra dos dois estados: ou é nosso com valor, ou está escrito como fora.
+3. ⚠ **Cozinha e Closet master estão com desenho axonométrico, não render.** As folhas
+   de foto do executivo pesam 6,8 e 7,4 MB e não passam pelo Drive. Duas imagens no chat
+   resolvem em cinco minutos.
+
+⚠ Menor, mas fica: o **Lavabo** é o 20º ambiente do executivo e não foi levantado. O
+caderno foi montado com **19** e o Lavabo está nomeado como escopo à parte.

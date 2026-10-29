@@ -86,7 +86,7 @@ def linhas_do_item(mov):
         mv, rot, q = b[:3]
         pux = b[3] if len(b) > 3 else 'slim'
         if mv == mov:
-            out.append(['Báscula HK-XS', rot + ' · articulador a gás Blum',
+            out.append(['Báscula HK-XS', rot + ' · articulador de molas Blum',
                         '', '', q, 'un', 'Báscula HK-XS'])
             if pux == 'slim':
                 out.append(['Puxador slim', 'Rometal · uma por báscula · ⛔ sem '

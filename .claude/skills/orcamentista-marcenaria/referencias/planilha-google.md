@@ -543,3 +543,80 @@ já obriga a comprar a chapa inteira.
 bloco**, não a fração. Antes de mudar isso, a Cozinha dava 19,72 chapas num
 total só; com a regra, dá **21 chapas** em três compras separadas — e o custo
 sobe, porque é o que sai do caixa de verdade.
+
+---
+
+# ⭐⭐ O PAINEL BUSCA POR RÓTULO, NUNCA POR POSIÇÃO [29/10/2026]
+
+O Painel não é gerado por módulo: ele é escrito à mão e vai buscar os números
+nas abas. Cada regeração de uma aba move as linhas dela — e foi assim que o
+Painel do ICA passou semanas somando errado.
+
+⭐ **A correção de fundo:** toda fórmula do Painel é `SUMIF` sobre a **faixa
+fixa** `B$7:B$26` da aba, casando o **texto** da coluna MATERIAL. Posição
+deixou de importar.
+
+⚠ **A única exceção que sobrou** é a coluna de contagem de itens (`COUNT`
+sobre uma faixa de linhas), e ela **não bate** com a contagem real dos
+módulos em 8 dos 19 ambientes. ⛔ **Não publicar "nº de itens" em peça de
+cliente** antes de reconciliar as duas.
+
+⚠ **Duas armadilhas de `SUMIF` que custaram dinheiro:**
+- **Chapa contada em dobro:** a linha "Corte · por chapa" também carrega a
+  unidade "chapas". O critério tem de exigir **unidade E material**
+  (`SUMIFS` por UN `"chapas"` **e** material `"MDF *"`).
+- **Quadro off-by-one:** um quadro da aba de preço lia a faixa de ambientes
+  começando uma linha abaixo — pulava o primeiro ambiente e contava a linha
+  de TOTAL como se fosse um. Custo direto apareceu como R$ 588.400 contra os
+  R$ 311.542 reais.
+
+# ⭐⭐ A AUDITORIA QUE ACHA FÓRMULA QUE MORREU
+
+Uma célula da cascata de encargos **deixou de ser fórmula** em silêncio. A
+comissão do vendedor mostrava 0,00% com o campo em 5%, e o preço saiu
+**R$ 282.773,71 abaixo** do que devia.
+
+⭐ **A receita:** arrastar isto sobre o bloco inteiro e ver onde aparece texto.
+
+```
+=IFNA(FORMULATEXT('Preço e Comissões'!D15);"⛔ SEM FÓRMULA")
+```
+
+⚠ Vale rodar sempre que um número da cascata parecer "estranhamente redondo".
+
+# ⭐ IMPORTRANGE ENTRE PLANILHAS — importe COLUNA INTEIRA
+
+O custo fixo do mês vem da planilha de gestão por `IMPORTRANGE`. Ele quebrou
+quando a planilha de origem foi **reorganizada** e o bloco desceu de B58 para
+~B107: a faixa fixa passou a devolver outra tabela e o `VLOOKUP` deu `#N/A`.
+
+⭐ **A regra:** importe **colunas inteiras** e busque por rótulo.
+
+```
+=VLOOKUP("Custo operacional*";IMPORTRANGE("<id>";"'O mês'!B:D");3;FALSE)
+```
+
+⚠ Sintaxe pt-BR: nome de aba com espaço vai **entre aspas simples dentro das
+duplas**. E o `IMPORTRANGE` precisa de **autorização única** do usuário na
+primeira vez — até lá a célula mostra `#REF!`, que não é erro de fórmula.
+
+⭐ Pôr ao lado uma célula com `ISERROR` que distinga **"falta autorizar"** de
+**"o rótulo sumiu"**. São problemas diferentes e a mensagem economiza meia
+hora.
+
+⚠⚠ **Privacidade:** o bloco de lucro traz o **custo fixo da empresa** para
+dentro do orçamento, e a fonte é um arquivo marcado "não compartilhar". Se a
+planilha for aberta ao cliente, **esconder essas linhas antes**.
+
+# ⭐⭐ O TRUQUE DA LINHA ÚNICA — quando a mudança cabe em uma linha
+
+Para uma mudança que acrescenta **exatamente uma linha** ao painel de
+material de todas as abas (foi o caso do frete), **não regere as abas**.
+
+`insertDimension` com `inheritFromBefore: true` faz o Sheets ajustar sozinho:
+o bloco, as notas, as dúvidas, os formatos condicionais **e as referências
+cruzadas do Painel**. Só a linha nova e a de CUSTO DIRETO precisam de fórmula
+à mão.
+
+⭐ **Conferência:** regerar os módulos depois e confirmar que o motor reporta
+**SHIFT +0** em todas as abas contra o estado pós-inserção.

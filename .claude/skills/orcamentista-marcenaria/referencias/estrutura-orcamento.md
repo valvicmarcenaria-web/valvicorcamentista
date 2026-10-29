@@ -217,3 +217,29 @@ entrar no CD e ninguém colocar no rateio, o motor quebra na hora.
 > dois rateios dão quase o mesmo número — foi o caso da Giza e Renato, que não
 > se moveu. Isso não é motivo para manter o rateio por área: é só a coincidência
 > de um job homogêneo.
+
+---
+
+## ⛔⛔ PEDRA NÃO É ESCOPO DA VALVIC [Jonathan, 29/10/2026]
+
+> *"pedra não entra no escopo de atuação da Valvic"*
+
+**Granito, quartzito, mármore** e qualquer **bancada, sóculo, frontão ou
+tampo em pedra** ficam **fora** — fora do custo e fora da proposta.
+
+⭐ **O que a proposta diz no lugar:** a pedra entra na lista de **"o que não
+está nesta proposta"**, com letra, nunca por omissão. E a nota do ambiente
+fala da **folga de medição**, que é o que de fato é nosso:
+
+> "A marcenaria é medida depois que as bancadas estão no lugar: a folga de
+> cada módulo sai da nossa medição técnica, não do desenho."
+
+⛔ **A armadilha:** no ICA quatro notas de ambiente prometiam a pedra "no
+mesmo contrato da marcenaria" porque o executivo a desenha junto. Desenhar
+junto não é fornecer. ⚠ Essa é a pergunta mais fácil de uma arquiteta fazer
+e a mais cara de errar.
+
+⭐ **A regra geral, da qual esta é um caso:** antes de escrever que um ofício
+"sai no mesmo contrato", confira se ele tem **linha com valor** no orçamento.
+Pela regra dos dois estados — **ou é nosso com preço, ou está nomeado na
+folha como fora**. Não existe meio-termo.
