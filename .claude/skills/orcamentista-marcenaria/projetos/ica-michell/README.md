@@ -146,3 +146,52 @@ dia aberto para o cliente, esconder ou apagar as linhas 63–72 antes.
 
 ⚠ `Painel!B6:K7` e `B9` são **texto escrito**, não fórmula de aba: o número
 de itens e de chapas aparece em prosa e envelhece. Reescrever junto.
+
+## A cascata de encargos, e a célula que sumiu
+
+A aba **Preço e Comissões** calcula o preço em `③`, mas quem manda é a
+cascata de `②`, em `D15:D26`. Cada linha é uma fórmula, e as quatro
+amarelas de `①` (`D7` MC, `D8` parcelas, `D9` RT, `D10` vendedor) são as
+únicas que se digitam.
+
+| célula | o que é | fórmula |
+|---|---|---|
+| D15 | nota fiscal | `VLOOKUP("Nota fiscal";precos;2;FALSE)` |
+| D16 | cartão | `VLOOKUP("Cartão por parcela";…)*$D$8` |
+| D17–D19 | erro, serra, manutenção | VLOOKUP na Base |
+| D20 | RT | `=(1-$D$15-$D$16)*$D$9` |
+| **D21** | **comissão de vendedor** | **`=(1-$D$15-$D$16)*$D$10`** |
+| D22–D26 | as cinco comissões internas | `=((1-$D$15-$D$16)-$D$20-$D$21)*n/1000` |
+| D27 | SOMA | `=SUM(D15:D26)` |
+
+⛔⛔ **EM 29/10 A `D21` APARECEU SEM FÓRMULA**, como valor vazio. O vendedor
+saía 0,00% e R$ 0,00 mesmo com `D10` em 5%. O estrago não é só a linha dele:
+`D22:D26` usam `-$D$21` para achar o LÍQUIDO 2, então com ela vazia o
+líquido 2 inchava e as cinco comissões internas saíam grandes demais.
+
+Com os valores daquele dia — MC 55%, RT 5%, vendedor 5% — o efeito era:
+
+```
+quebrado    encargos 19,52%   base 80,48%   preço R$ 1.274.692,83
+consertado  encargos 23,91%   base 76,09%   preço R$ 1.557.466,55
+                                            diferença R$ 282.773,71
+```
+
+⚠ O preço saía **R$ 282 mil mais barato**, e a comissão do vendedor sairia
+da margem em vez de estar no preço.
+
+⭐ **COMO ACHAR ISSO DE NOVO:** `FORMULATEXT` devolve `#N/A` para célula que
+não é fórmula. Para auditar a cascata inteira de uma vez, escreva numa
+coluna de rascunho:
+
+```
+=IFNA(FORMULATEXT('Preço e Comissões'!D15);"⛔ SEM FÓRMULA")
+```
+
+e arraste por `D15:E27`. Vale a mesma varredura sempre que um número da
+aba de preço parecer baixo demais.
+
+⚠ A CONFERÊNCIA de `③` tem DUAS colunas e elas não querem dizer a mesma
+coisa: a de R$ é o fechamento do dinheiro e tem de ser `R$ 0,00` sempre; a
+de % é `MC realizada − MC alvo`, e ela é diferente de zero **de propósito**
+quando algum ambiente leva AJUSTE DE MC no quadro `④`. Não é erro.
