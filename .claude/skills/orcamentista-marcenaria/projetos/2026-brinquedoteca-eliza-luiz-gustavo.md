@@ -675,7 +675,31 @@ PR01 e PR02 de abril/2025 revisadas em 19/06/2026.
 | Canto alemão em "C" | **23.000** | coluna **OCULTA** da proposta que já foi ao cliente |
 | Estofado capitonê | **6.500** | mesma proposta |
 | **TOTAL** | **211.120** | |
-| **À vista, −10%** | **190.008** | |
+| Desconto concedido | **−21.132** | **10,01%** |
+| **FECHADO** | **189.988** | |
+
+## A condição de pagamento [Jonathan, 29/10]
+
+> *"arredonde para 190k · entrada em multiplos cheques totalizando 157.988 ·
+> restante pos entrega"* e, em seguida, *"aplique os R$ 12 de desconto e
+> apresente o percentual de desconto tbm"*
+
+| | |
+|---|--:|
+| Entrada, em múltiplos cheques | **157.988** |
+| Saldo, após a entrega | **32.000** |
+| | **189.988** |
+
+⭐ **Os R$ 12 são o arredondamento do SALDO, não do total.** 190.000 menos
+os 157.988 dos cheques dava R$ 32.012 de saldo; os doze reais de desconto
+fazem o saldo fechar em **R$ 32.000 redondos**. O desconto total sai de
+10,00% para **10,01%**, e a folha imprime os dois números — o valor em reais
+e o percentual.
+
+⚠ A proposta anterior oferecia uma escada de cartão (30%+10×, 50%+8× −3%,
+70%+6× −5%, 70%+transferência −7%). **Ela saiu desta folha**, porque a
+condição aqui já está fechada e mostrar alternativas ao lado de um acordo
+reabre a negociação. Se o senhor quiser a escada de volta, é uma linha.
 
 ⚠ Os preços do canto alemão vêm do PDF `Proposta_eliza_e_luiz`, que oferecia
 **telescópica R$ 18.500 (garantia 2 anos)** contra **oculta R$ 23.000
