@@ -127,7 +127,13 @@ CABIDEIROS = []
 SARRAFOS= []
 SUPORTES= []
 ALMAS   = []
-VIDRO   = []
+# ⭐ OS DOIS ESPELHOS DA ELEVAÇÃO 01 ENTRAM NA CONTA. O senhor trouxe o
+#   espelho para dentro do escopo em seis ambientes seguidos (6, 8, 9, 11,
+#   15 e 16); este é o último que ainda estava fora, e deixar um banheiro
+#   do projeto sem o espelho não se sustenta na proposta. ⚠ Decisão minha,
+#   registrada na caixa de dúvidas para ele desfazer se quiser.
+VIDRO   = [(I, 'Dois espelhos de 70 × 187 da ELEVAÇÃO 01 · acima da bancada '
+            'de quartzo, um por cuba', 2, 70, 187, 'Espelho')]
 SERRALHERIA = []
 ABRE_MISTO = [I]   # conjunto de três móveis num item só
 # ⭐ MESMA LEITURA DO BANHO GOURMET: a porta ripada não tem puxador nenhum
@@ -210,7 +216,8 @@ FOLHA = dict(
   'mesma razão: cava cortaria a ripa e puxador aparafusado o desenho '
   'mostraria. ⚠ As alternativas: cava usinada sairia R$ 124 pelas quatro '
   'frentes de 62; Alças Traso 128, R$ 440. Decisão de desenho, e vale '
-  'R$ 276 para baixo ou R$ 40 para cima.',
+  'R$ 276 para baixo ou R$ 40 para cima. ⭐ Aqui o pulsador FICA: a regra '
+  'de 28/10 tirou o pulsador das GAVETAS, e estas são portas de giro.',
   'O ARMÁRIO É SUSPENSO A 25 DO PISO e tem 250 × 60 de bancada de quartzo '
   'em cima — a pedra sozinha pesa uns 90 kg. ⚠ Quem segura isso não é a '
   'marcenaria: pede mão francesa ou cantoneira estrutural chumbada na '
@@ -231,9 +238,17 @@ FOLHA = dict(
   'oeste. ⚠ Com 10 cm de base e 3 m de altura ele não para em pé sozinho: '
   'vai preso na alvenaria. A prancha não diz como. Orcei a caixa, que é a '
   'parte que é nossa.',
-  'OS DOIS ESPELHOS DE 70 × 187 da ELEVAÇÃO 01 são vidraceiro. ⚠ Eles '
-  'ficam entre as ripas do DET 01, encostados nelas — quem os fixa e se '
-  'levam apoio de marcenaria atrás, a prancha não diz.',
+  'OS DOIS ESPELHOS DE 70 × 187 DA ELEVAÇÃO 01 ENTRARAM NA CONTA, e essa '
+  'foi decisão minha. ⚠ O senhor trouxe o espelho para dentro do escopo em '
+  'seis ambientes seguidos — Banho Gourmet, Suíte Hóspedes, Banho '
+  'Hóspedes, Suíte Master, Closet Mariana e Banho Mariana. Este era o '
+  'último banheiro do projeto que ainda tinha o espelho de fora, e não há '
+  'razão de desenho para a diferença. São 2,62 m² nos dois. ⛔ Como a linha '
+  '"Espelho" da Base não tem preço, eles somam ZERO: entrar ou sair não '
+  'move o custo de hoje, move quando o vidro for cotado. ⚠ Eles ficam '
+  'entre as ripas do DET 01, encostados nelas — quem os fixa e se levam '
+  'apoio de marcenaria atrás, a prancha não diz, e esse apoio NÃO está '
+  'orçado.',
   '⛔ A BASE METÁLICA DE 3 CM: aqui ela só caberia no nicho, que é a única '
   'peça que toca o chão — o armário é suspenso e as ripas do DET 01 vão de '
   'piso a teto. ⚠ São 0,7 m de rodapé. Fica para a passada única, junto '
@@ -241,7 +256,6 @@ FOLHA = dict(
  nao_marcenaria=[
   'Bancada em quartzo cinza escovado, 250 × 60 com 5 de espessura aparente',
   'Duas Cubas de Banheiro Concreto Apoio Elipse 55 cm (Lotus Florest) — Bela metais',
-  'Dois espelhos de 70 × 187 da ELEVAÇÃO 01',
   'Porta de correr com vidro canelado do box e a persiana zebrada bege clara',
   'Hidromassagem 180 × 120 a definir, e o revestimento de madeira em volta dela',
   'Bacia Vogue, misturadores, chuveiro, toalheiro térmico e revestimentos',

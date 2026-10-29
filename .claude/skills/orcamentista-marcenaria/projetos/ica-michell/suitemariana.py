@@ -9,20 +9,25 @@ MAIS ITENS do projeto inteiro.
   caixa organizadora com rodinha, prateleira baixa, o nome "Mariana"
   recortado na parede. Nada aqui é um armário.
 
-⭐⭐ TRÊS FORNECEDORES NUMA PEÇA SÓ. A frente é Palha Indiana Sextavada
-  Natural (DURATEX), a moldura de 5 cm é Sal Rosa (ARAUCO) e a estrutura é
-  Paris (GUARARAPES). ⛔ Três pedidos, três fretes e três arredondamentos
-  num quarto de 15 m². É a primeira vez no projeto que isso acontece.
+⛔⛔ "NÃO EXISTE MDF PALHA INDIANA SEXTAVADA" [Jonathan, 28/10]: é a PALHA
+  INDIANA do tapeceiro, R$ 650 o m². O campo de todas as frentes saiu da
+  conta de chapa e entrou como palhinha sobre fundo de MDF estrutural, e
+  com isso o ambiente perdeu um padrão e um arredondamento inteiro.
+
+⭐ DOIS PADRÕES APARENTES: Sal Rosa (ARAUCO) nas molduras, ripados, nichos
+  e na cama; Paris (GUARARAPES) na estrutura de tudo. Dois fornecedores,
+  dois fretes, dois arredondamentos.
 
 ⭐ A MOLDURA DE 5 CM É DE OUTRA COR, então aqui régua continua sendo régua:
-  peça inteira de Sal Rosa por cima da Palha Indiana cobriria a palha. É a
-  mesma leitura do aparador da Suíte Hóspedes e da bancada do Banho
-  Hóspedes — os três únicos lugares do projeto onde não vale a peça inteira
-  usinada na router.
+  peça inteira de Sal Rosa por cima da palhinha cobriria justamente o que
+  se quer ver. É a mesma leitura do aparador da Suíte Hóspedes e da bancada
+  do Banho Hóspedes — os três únicos lugares do projeto onde não vale a
+  peça inteira usinada na router.
 
 ⛔⛔ OS PAINÉIS TÊM 3 CM DE ESPESSURA, e 3 cm em MDF não é chapa: é
-  construção. Lancei painel de 15 mm sobre ENGRADADO DE SARRAFO, que dá os
-  3 cm e custa metade de duas chapas coladas. ⚠ A alternativa — duas
+  construção. Lancei painel de 15 mm sobre ENGRADADO DE MDF — travessa de
+  5 cm tirada da própria chapa —, que dá os 3 cm e custa metade de duas
+  chapas coladas. ⛔ Nada de pinus: a casa não usa. ⚠ A alternativa — duas
   chapas de 15 coladas — dobraria a chapa de Paris do ambiente. A dúvida
   04 põe os dois números lado a lado.
 
@@ -151,7 +156,7 @@ SUITEMARIANA = [
 
  # ══ ITEM 05 · PAINEL 1 — 105 × 135 × 3 ══════════════════════════════
  #  ⭐ 3 cm não é chapa, é construção: painel de 15 sobre engradado de
- #    sarrafo. Duas chapas coladas dariam o mesmo 3 cm pelo dobro.
+ #    travessas de MDF. Duas chapas coladas dariam o mesmo 3 cm pelo dobro.
  P('Painel',                I5, 105, 135, 1, PA15, (2, 2)),
 
  # ══ ITEM 06 · CASINHA — 350 × 219 × 25 ═══════════════════════════════
@@ -408,37 +413,38 @@ CABECA = {
 
 FOLHA = dict(
  aba='SUÍTE MARIANA',
- sub='Jéssica e Michell · Projeto ICA · páginas 177 a 191 · DOZE itens em '
-     'sete folhas de detalhe, o ambiente com mais itens do projeto · ⭐ três '
-     'fornecedores numa peça só: frente em Palha Indiana Sextavada '
-     '(Duratex), moldura de 5 cm em Sal Rosa (Arauco), estrutura em Paris '
-     f'(Guararapes) · peça inteira até {ALT_MAX:g}, que é a chapa de '
-     f'{CHAPA_C:g} menos o acerto de corte',
+ sub='Jéssica e Michell · Projeto ICA · páginas 177 a 191 · OITO itens em '
+     'sete folhas de detalhe, o ambiente com mais itens do projeto · ⛔ a '
+     'palha indiana NÃO é chapa [Jonathan, 28/10]: é tapeceiro, R$ 650 o '
+     'm² · ⭐ dois padrões aparentes, Sal Rosa (Arauco) nas molduras e '
+     'Paris (Guararapes) na estrutura · peça inteira até '
+     f'{ALT_MAX:g}, que é a chapa de {CHAPA_C:g} menos o acerto de corte',
  chapa_txt={PA15: 'Paris · Guararapes · a estrutura de tudo: estante, mesa, '
                   'casinha, painéis, mesa lateral e escrivaninha',
             PA6:  'Paris · fundos de encaixe em rasgo, sem fita',
             SR15: 'Sal Rosa · Arauco · ripado, molduras de 5 cm, nichos, '
                   'caixas organizadoras, prateleira, cama e o nome',
             SR6:  'Sal Rosa · os fundos que APARECEM dentro dos nichos',
-            PI18: 'Palha Indiana Sextavada Natural · Duratex · o campo de '
-                  'todas as frentes e das proteções da cama',
             BR15: 'Branco TX · só a janelinha fake da casinha, que a '
                   'prancha manda fazer em branco para representar vidro',
             BR6:  'Branco TX · o fundo das três caixas de gaveta da mesa, '
                   'que fica escondido dentro da gaveta'},
  nota='⛔ O FRETE ESTÁ ZERADO DE PROPÓSITO: as linhas de frete da Base não '
       'têm preço ainda. Preencher lá e elas aparecem aqui sozinhas.   '
-      '⭐⭐ TRÊS FORNECEDORES NUMA PEÇA SÓ, e isso é novo no projeto: a '
-      'frente é Palha Indiana Sextavada da DURATEX, a moldura de 5 cm é Sal '
-      'Rosa da ARAUCO e a estrutura é Paris da GUARARAPES. São três '
-      'pedidos, três fretes e três arredondamentos num quarto só.   '
-      '⭐ A MOLDURA É DE OUTRA COR, então aqui régua continua sendo régua — '
-      'peça inteira de Sal Rosa cobriria a palha. É o terceiro e último '
-      'lugar do projeto onde isso vale.   ⛔⛔ OS PAINÉIS TÊM 3 CM: lancei '
-      'painel de 15 sobre ENGRADADO DE SARRAFO, não duas chapas coladas. '
-      'A dúvida 04 traz os dois números.   ⚠ O NOME "MARIANA" da ELEVAÇÃO '
-      '04 é marcenaria, está escrito em letra e não tem DET: entrou como '
-      'item 12, com a usinagem em router a zero.',
+      '⛔⛔ A PALHA INDIANA NÃO É CHAPA [Jonathan, 28/10]: é tapeceiro, '
+      'R$ 650 o m². O campo de todas as frentes saiu da conta de MDF e '
+      'entrou como PALHINHA sobre fundo estrutural — o ambiente perdeu um '
+      'padrão e um arredondamento inteiro.   ⭐ DOIS PADRÕES APARENTES: '
+      'Sal Rosa da ARAUCO nas molduras, ripados, nichos e cama, e Paris da '
+      'GUARARAPES na estrutura. Dois pedidos, dois fretes, dois '
+      'arredondamentos.   ⭐ A MOLDURA É DE OUTRA COR, então aqui régua '
+      'continua sendo régua — peça inteira de Sal Rosa cobriria a '
+      'palhinha. É o terceiro e último lugar do projeto onde isso vale.   '
+      '⛔⛔ OS PAINÉIS TÊM 3 CM: lancei painel de 15 sobre ENGRADADO DE '
+      'MDF, não duas chapas coladas. A dúvida 04 traz os dois números.   '
+      '⚠ O NOME "MARIANA" da ELEVAÇÃO 04 é marcenaria, está escrito em '
+      'letra e não tem DET: entrou como item 8, com a usinagem em router '
+      'a zero.',
  duvidas=[
   'A LARGURA DAS QUATRO PORTAS DA ESTANTE eu li como 61 cada, pela cadeia '
   '3 + 61 + 61 + 61 + 61 + 3 + 100 = 350 da VISTA FRONTAL. ⚠ Mas elas são '
@@ -464,7 +470,7 @@ FOLHA = dict(
   'Confirmar, porque é a diferença entre um painel e um painel caro.',
   'O NOME "MARIANA" DA ELEVAÇÃO 04 está em letra e não tem detalhamento: '
   '"Nome em MDF sal rosa - Arauco com espessura de 3cm". ⭐ Lancei como '
-  'item 12, duas chapas de 15 coladas e sete letras. ⚠ A medida — 73 × 20 '
+  'item 8, duas chapas de 15 coladas e sete letras. ⚠ A medida — 73 × 20 '
   '— saiu do desenho em 1/25, que não cota o nome; e a USINAGEM EM ROUTER '
   'não tem preço na Base. Letra recortada em MDF de 3 cm é serviço de CNC '
   'e costuma sair de R$ 40 a R$ 120 por letra.',
@@ -474,9 +480,21 @@ FOLHA = dict(
   'Confirmar se a bicama leva colchão nosso ou do cliente.',
   'AS FRENTES EMOLDURADAS NÃO TÊM PUXADOR DESENHADO — nem as quatro portas '
   'e duas básculas da estante, nem as três gavetas e a porta da mesa. ⭐ '
-  'Orcei PULSADOR em todas as dez, R$ 1.000, pela mesma razão dos outros '
-  'três ambientes: cava cortaria a palha e puxador aparafusado o desenho '
-  'mostraria. ⚠ Alternativa: Alças Traso 128 saem R$ 1.100.',
+  'Nas PORTAS e nas básculas fica o PULSADOR, sete deles, R$ 700: cava '
+  'cortaria a palhinha e puxador aparafusado o desenho mostraria. ⛔ Nas '
+  'três GAVETAS da mesa não: desde 28/10 "nao se usa pulsador em gavetas", '
+  'e elas foram para CORREDIÇA TOUCH, que substitui o par de corrediça E o '
+  'pulsador. ⚠ São R$ 1.500 nas três, contra os R$ 750 que eu tinha (R$ 450 '
+  'de corrediça mais R$ 300 de pulsador). ⚠ Alternativa para as portas: '
+  'Alças Traso 128 saem R$ 770.',
+  '⛔ A SERRALHERIA DA CAMA MONTESSORIANA NÃO TEM VALOR. O senhor pediu em '
+  '28/10 que a base da cama e da bicama fosse ESTRUTURA DE SERRALHEIRO, e '
+  'eu lancei a linha — mas sem preço, porque ninguém deu um. ⚠ No banco '
+  'suspenso do Living o senhor fechou R$ 2.500 por um quadro; aqui são '
+  'DOIS, o de 207 × 104 e o da bicama de 192 × 98, e a bicama ainda corre '
+  'em rodízio, o que pede quadro com batente. ⛔ Enquanto a linha estiver '
+  'a zero, o custo da cama é um PISO: ela aparece na conta por R$ 1.948 e '
+  'não é esse o preço dela.',
   'A CAIXA ORGANIZADORA DO DET 02 tem "rodinhas deslizantes" e eu contei '
   'DUAS caixas, que é o que a ELEVAÇÃO 01 desenha sob a mesa. ⚠ O rodízio '
   'não tem preço na Base — são oito. E a caixa não tem tampo nem puxador '
@@ -505,20 +523,21 @@ FOLHA = dict(
   'Colchão da cama e colchão da bicama',
   'TV 32" da estante do DET 01'],
  notas=[
-  '⭐⭐ É O AMBIENTE COM MAIS ITENS DO PROJETO: doze, contra dez da Sala de '
-  'Cinema e oito do Living. E nenhum deles é um armário — casinha, cama '
+  '⭐⭐ É O AMBIENTE COM MAIS ITENS DO PROJETO: oito depois das '
+  'unificações que o senhor pediu, empatado com o Living e à frente dos '
+  'sete da Sala de Cinema. E nenhum deles é um armário — casinha, cama '
   'montessoriana com bicama, escrivaninha com encaixes, caixa '
   'organizadora com rodinha, prateleira baixa, o nome recortado na parede. '
   'Quarto de criança se orça peça a peça, não módulo a módulo.',
-  '⭐⭐ TRÊS FORNECEDORES NUMA PEÇA SÓ, e isso não tinha acontecido ainda: '
-  'a frente da porta é Palha Indiana Sextavada da DURATEX, a moldura de 5 '
-  'cm que a contorna é Sal Rosa da ARAUCO, e a caixa atrás é Paris da '
-  'GUARARAPES. ⚠ Três pedidos, três fretes e três arredondamentos de chapa '
-  'cheia num quarto de 15 m². Vale perguntar à arquiteta se há equivalente '
-  'de Sal Rosa na Duratex — juntaria duas compras em uma.',
+  '⭐⭐ TRÊS OFÍCIOS NUMA PEÇA SÓ: o campo da frente é PALHINHA, que é '
+  'tapeceiro; a moldura de 5 cm que a contorna é Sal Rosa da ARAUCO; e a '
+  'caixa atrás é Paris da GUARARAPES. ⚠ Dois pedidos de chapa, dois '
+  'fretes, dois arredondamentos, mais um terceirizado que cobra por m². '
+  '⭐ Vale perguntar à arquiteta se há equivalente de Sal Rosa na '
+  'Guararapes — juntaria as duas compras de chapa em uma.',
   '⭐ A MOLDURA DE 5 CM É DE OUTRA COR, e por isso aqui régua continua '
-  'sendo régua. Peça inteira de Sal Rosa por cima da Palha Indiana '
-  'cobriria justamente o que se quer ver. É o terceiro e último lugar do '
+  'sendo régua. Peça inteira de Sal Rosa por cima da palhinha cobriria '
+  'justamente o que se quer ver. É o terceiro e último lugar do '
   'projeto onde a regra da peça inteira usinada na router não vale — os '
   'outros dois são o aparador da Suíte Hóspedes e a bancada do Banho '
   'Hóspedes, e os três têm a mesma frente.',

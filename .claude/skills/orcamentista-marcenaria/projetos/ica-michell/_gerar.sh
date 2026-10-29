@@ -6,7 +6,7 @@ gera () { # nome sid blk0_hoje fim_hoje
   python3 _txt.py $1
   python3 _slim.py $1
   python3 _split.py $1 19000
-  cp _c1.txt _c1-$1.txt; cp _c2.txt _c2-$1.txt 2>/dev/null || true
+  for n in 1 2 3 4; do [ -f _c$n.txt ] && cp _c$n.txt _c$n-$1.txt; done; rm -f _c5-$1.txt
   cp _blk.txt _blk-$1.txt
 }
 gera "$@"
