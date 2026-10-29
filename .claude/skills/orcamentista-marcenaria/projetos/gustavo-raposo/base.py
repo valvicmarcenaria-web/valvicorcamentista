@@ -237,6 +237,13 @@ PRECO_OUTRAS = {
  'Corrediça touch': CORREDICA_TOUCH,
  'Perfil de proteção de piso': PERFIL_PISO,
  'Suporte de prateleira': SUPORTE,
+ # ⭐ O SUPORTE OCULTO VOLTA, E SÓ AQUI. O Jonathan o tirou de
+ #   prateleira de ARMÁRIO em 28/10 — lá vale o jogo de quatro a
+ #   R$ 6,50. Mas a DESPENSA não tem armário: são doze prateleiras de
+ #   parede com "fixação invisível", e aí o que segura é mão-francesa
+ #   oculta ou cavilha embutida, de 40 em 40 cm. ⛔ Não confundir as
+ #   duas: uma é dentro de caixa, a outra é na alvenaria.
+ 'Suporte oculto': SUPORTE_OCULTO,
  'Corte por chapa': CORTE_CHAPA,
  'Corte por peça': CORTE_PECA,
  'Cabideiro': CABIDEIRO,
