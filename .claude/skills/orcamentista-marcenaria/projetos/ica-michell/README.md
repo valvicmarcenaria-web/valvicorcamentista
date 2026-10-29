@@ -98,9 +98,51 @@ Living e contava a linha de TOTAL como ambiente, dobrando o custo direto.
 | 24–43 | os vinte ambientes, **nesta ordem**, com o Lavabo zerado em 28 |
 | 44 | TOTAL DO QUE ESTÁ LEVANTADO |
 | 47–61 | O PREÇO DO PROJETO · resumo da aba ao lado |
-| 64–68 | o que não é marcenaria |
-| 70–76 | o que ainda não tem preço |
-| 78–91 | ⭐ AS REGRAS DA CASA · as doze regras, pedido do Jonathan |
+| 63–72 | ⭐ O LUCRO DO PROJETO · custo fixo da empresa × dias |
+| 76–80 | o que não é marcenaria |
+| 82–88 | o que ainda não tem preço |
+| 90–103 | ⭐ AS REGRAS DA CASA · as doze regras, pedido do Jonathan |
+
+### O LUCRO DO PROJETO, e o IMPORTRANGE da Gestão 3
+
+[Jonathan, 29/10] *"insira no painel uma linha que informe o custo fixo mes
+da empresa, quero que busque esse valor da planilha da gestao 3 de forma
+automatica… e outro campo ao lado onde eu preencho a estimativa de gasto de
+tempo para o projeto em dias e ela me mostrar o resultado em lucro"*
+
+A cadeia, em `Painel!G66:G71`:
+
+```
+G66  margem de contribuição do projeto   = G58  (o quadro de preço acima)
+G67  custo fixo da empresa, por mês      = IMPORTRANGE da N.GESTAO 3
+G68  custo fixo por dia                  = G67/30   (dias de CALENDÁRIO)
+G69  ⭐ DIAS DE PROJETO                   ← amarelo, o Jonathan digita
+G70  custo fixo alocado                  = G68*G69
+G71  ⭐ LUCRO DO PROJETO                  = G66-G70
+```
+
+A fonte é **N.GESTAO 3 · Direção · não compartilhar**,
+`1-7XUrVso9oVKccQjM2m5Tgd9_-QIk-r1LZ8XZbDnGL0`, aba `O mês`, bloco CUSTO
+FIXO VIGENTE em `B58:D62`. A busca é por RÓTULO — `VLOOKUP("Custo
+operacional*")` — e não por célula, para sobreviver a mudança de layout lá.
+⚠ É o custo OPERACIONAL (folha + estrutura, R$ 116.817,70), que é o mesmo
+que o ponto de equilíbrio da Gestão 3 usa. O `Custo total · com
+investimentos` (R$ 125.417,70) está na linha de baixo de lá, se um dia a
+conta tiver de incluir investimento.
+
+⛔⛔ **O IMPORTRANGE MOSTRA `#REF!` ATÉ ALGUÉM AUTORIZAR.** É uma vez só, na
+célula, e é de propósito que **não** há `IFERROR`: com ele o custo fixo
+ficaria em ZERO e o LUCRO apareceria igual à margem inteira — lucro inflado
+e silencioso. `H67` detecta o erro com `ISERROR` e escreve o que fazer.
+
+⚠⚠ **A CONTA ALOCA O CUSTO FIXO INTEIRO A UM PROJETO**, como se ele fosse o
+único na fábrica nos dias digitados. É a leitura conservadora e responde
+"enquanto este projeto está aqui, ele paga a casa?". Com três projetos em
+paralelo o custo fixo se divide e o lucro real é MAIOR — o número é piso.
+
+⚠ **ESTE BLOCO EXPÕE O CUSTO FIXO DA EMPRESA DENTRO DO ORÇAMENTO**, e a
+planilha de origem se chama "não compartilhar". Se este arquivo for algum
+dia aberto para o cliente, esconder ou apagar as linhas 63–72 antes.
 
 ⚠ `Painel!B6:K7` e `B9` são **texto escrito**, não fórmula de aba: o número
 de itens e de chapas aparece em prosa e envelhece. Reescrever junto.
