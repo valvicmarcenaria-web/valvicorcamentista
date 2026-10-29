@@ -735,10 +735,15 @@ conjunto. O item 13, **Cozinha de brinquedo, R$ 12.000, saiu**.
 | 11 Toldo personalizado | 12 Pintura ou papel de parede — aplicação |
 
 ⚠ **Prazo e garantia vieram da proposta da brinquedoteca, não da do estúdio.**
-São **90 dias corridos** (não 60) e **10 anos sobre estrutura, solda e
-ferragens** da brinquedoteca, mais **5 anos** sobre a marcenaria do estúdio.
-Juntar dois escopos num contrato só obriga a reconciliar as duas condições —
-vale o prazo mais longo e a garantia de cada parte.
+São **90 dias corridos**, não 60.
+
+⭐ **A garantia é de 10 ANOS NOS DOIS ESCOPOS** [Jonathan, 29/10] — estrutura,
+solda, ferragens e marcenaria. A proposta antiga do estúdio oferecia 5 anos na
+coluna da corrediça oculta; o Jonathan nivelou os dois por cima.
+
+⛔ **E isso bate com a política da casa:** `closer-vendas/referencias/
+garantia.md` dá **10 anos para a linha Hettich**, que é justamente a corrediça
+oculta do canto alemão. Os 5 anos do PDF antigo é que estavam fora da tabela.
 
 **Arquivo:** `build-eliza-1pg.py` → `proposta-eliza-1pg.pdf`
 **Imagens:** `img-brinquedoteca/capa.jpg` e o render do PR02 do estúdio,

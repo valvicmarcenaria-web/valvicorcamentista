@@ -98,7 +98,7 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
 .sb span{{font-size:6.6pt;letter-spacing:.28em;text-transform:uppercase;
   color:var(--mut);}}
 .sb b{{font-size:12pt;font-weight:400;letter-spacing:-.015em;}}
-.duo{{display:grid;grid-template-columns:1fr 1fr;gap:0;height:29mm;margin:0 -20mm 3mm;}}
+.duo{{display:grid;grid-template-columns:1fr 1fr;gap:0;height:27mm;margin:0 -20mm 2.5mm;}}
 .duo .ph{{height:100%;}}
 .duo .ph span{{position:absolute;left:0;bottom:0;background:var(--verde);
   color:#DCE5DD;font-size:6.2pt;letter-spacing:.26em;text-transform:uppercase;
@@ -149,8 +149,8 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
 
   <div class="gr">
     <div><div class="k">Corrediças</div><div class="v">
-      <b>Ocultas Hettich</b>, com fechamento suave em slowmotion — não aparecem
-      na lateral da gaveta. Garantia de <b>5 anos</b>.</div></div>
+      <b>Ocultas Hettich</b>, com fechamento suave em slowmotion — não
+      aparecem na lateral da gaveta e abrem a gaveta inteira.</div></div>
     <div><div class="k">Estofado</div><div class="v">
       Capitonê conforme projeto, em <b>espuma D33</b> — a densidade de assento
       de uso intenso, que não achata com o tempo.</div></div>
@@ -158,8 +158,8 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
       <b>90 dias corridos</b>, contados da assinatura, da entrada e da
       conferência de medidas no local.</div></div>
     <div><div class="k">Garantia</div><div class="v">
-      <b>10 anos</b> sobre estrutura, solda e ferragens da brinquedoteca ·
-      <b>5 anos</b> sobre a marcenaria do estúdio.</div></div>
+      <b>10 anos nos dois escopos</b>, sobre estrutura, solda, ferragens
+      e marcenaria.</div></div>
   </div>
 
   <div class="obs"><b>Fora desta proposta:</b> a <b>cozinha de brinquedo</b>,
