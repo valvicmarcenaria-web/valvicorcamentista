@@ -652,3 +652,52 @@ piso e revestimentos.
 3. ⚠ **Metalon chapa 16:** a barra ficou no preço já orçado. Se o
    fornecedor cobrar mais pela 16 do que pela 18, falta ~R$ 1.400.
 4. ⚠ **O tecido dos acolchoados não foi definido.**
+
+---
+
+# PROPOSTA DE UMA FOLHA — brinquedoteca + estúdio [29/10/2026]
+
+> *[Jonathan 29/10] "faça uma proposta sintetizando em uma pagina o projeto
+> da brinquedoteca e esse banco considerando as corrediças ocultas da hettich
+> e o estofado. considere um desconto de 10% para pagamento a vista."*
+
+⭐ **É o MESMO cliente do estúdio de música.** O "banco" é o **canto alemão
+em C** da salinha, projeto da mesma arquiteta (Helena Antunes), pranchas
+PR01 e PR02 de abril/2025 revisadas em 19/06/2026.
+
+⛔ **A cozinha de brinquedo SAIU** do escopo, a pedido do cliente.
+
+## Os números — nenhum recalculado
+
+| | | |
+|---|--:|---|
+| Brinquedoteca, 12 itens | **181.620** | `orcamento-brinquedoteca-v2.py` menos a cozinha (R$ 12.000) |
+| Canto alemão em "C" | **23.000** | coluna **OCULTA** da proposta que já foi ao cliente |
+| Estofado capitonê | **6.500** | mesma proposta |
+| **TOTAL** | **211.120** | |
+| **À vista, −10%** | **190.008** | |
+
+⚠ Os preços do canto alemão vêm do PDF `Proposta_eliza_e_luiz`, que oferecia
+**telescópica R$ 18.500 (garantia 2 anos)** contra **oculta R$ 23.000
+(garantia 5 anos)**. O Jonathan fechou na **oculta Hettich**.
+
+## O agrupamento dos 12 itens em 5 conjuntos
+
+Uma folha não aguenta doze linhas com descrição. Agrupei por natureza, e a
+soma bate item a item:
+
+| conjunto | itens da v2 | |
+|---|---|--:|
+| Estrutura e paredes cenográficas | parede tijolinho, casinha paredes, casinha escada, janelas e pórticos | 54.360 |
+| Circulação e proteção em altura | passarela, gradis, plataformas acolchoadas | 71.750 |
+| Brinquedos | escorregador com túnel, piscina de espuma | 33.930 |
+| Mobiliário e arremates | banco extenso, toldo | 9.080 |
+| Pintura e papel de parede | mão de obra | 12.500 |
+
+⭐ O `assert` no build trava os dois subtotais: se alguém mexer num item da
+v2 e esquecer da proposta, o build quebra em vez de imprimir errado.
+
+**Arquivo:** `build-eliza-1pg.py` → `proposta-eliza-1pg.pdf`
+**Imagens:** `img-brinquedoteca/capa.jpg` e o render do PR02 do estúdio,
+extraído com `pdfimages -j -p` (⚠ `pymupdf` e `PIL` não instalam neste
+container; poppler resolve).
