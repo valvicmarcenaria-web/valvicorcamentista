@@ -3,15 +3,41 @@
 Arquiteta **Luiza Pacheco** (CAU A69992-6) · executivo Rev.00, março/2026 · **75 pranchas**.
 ⛔ Pergolado (11–16) e SPA (17–18) **não entram** [Jonathan].
 
-**Planilha:** `1-eA43Ia-rsBIDurTq-Qm04JE-ZqOFaUm3Y68IpX-qXM`
-https://docs.google.com/spreadsheets/d/1-eA43Ia-rsBIDurTq-Qm04JE-ZqOFaUm3Y68IpX-qXM/edit
+**Planilha:** `1HovPv64ISuL-cnRUNyKpxoPdZqvkzMQyiAYBNYiexE8`
+https://docs.google.com/spreadsheets/d/1HovPv64ISuL-cnRUNyKpxoPdZqvkzMQyiAYBNYiexE8/edit
 
-⭐ Ela nasceu de uma **cópia da planilha do ICA**, e isso foi de propósito: o que se
-reaproveita é a infraestrutura que levou semanas para ficar certa — o `precos`
-nomeado, a aba **Preço e Comissões** com a cascata de encargos, a **Base
-(importada)** e o **Painel que busca por RÓTULO e não por posição**.
-⚠ **Enquanto as abas de ambiente não forem trocadas, a planilha ainda mostra os
-números do ICA.** É estado intermediário declarado, não resultado.
+**Planilha BASE da casa, de onde ela saiu:** `1slBElrHqfJDgZ67NrVW1DMLfJ5ioiB4LyMlVXvqoD8E`
+https://docs.google.com/spreadsheets/d/1slBElrHqfJDgZ67NrVW1DMLfJ5ioiB4LyMlVXvqoD8E/edit
+
+⛔⛔ **O QUE DEU ERRADO ANTES, para não se repetir.** A primeira planilha do Gustavo
+foi uma **cópia da planilha do ICA**, e isso estava errado por dois motivos, não um:
+
+1. **Dado de outro cliente.** [Jonathan, 29/10] *"não pode haver informações
+   relacionadas ao orçamento do michell, é outro cliente."* A cópia trazia as
+   dezenove abas da Jéssica e do Michell, com as medidas e os preços deles dentro
+   de um arquivo com o nome do Gustavo. ⛔ Não se copia orçamento de cliente para
+   começar outro. Copia-se **modelo**.
+2. **Erro em cadeia.** Copiar uma planilha com `IMPORTRANGE` **quebra o vínculo**:
+   o Google exige uma autorização nova em toda cópia, e ela só pode ser dada por
+   uma pessoa, clicando. Sem o clique, a `Base (importada)` volta vazia, todo
+   `PROCV` em `precos` não acha nada e a planilha inteira vira `#DIV/0!`. Era o
+   que o Jonathan estava vendo.
+
+⭐ **A planilha BASE resolve os dois.** É um modelo vazio, sem cliente nenhum, com
+a infraestrutura pronta: a `Base (importada)`, a `Preço e Comissões` com a cascata
+de encargos, o `precos` nomeado, o Painel e **uma aba de ambiente para duplicar**.
+
+⛔⛔ **EM TODA CÓPIA NOVA, O PRIMEIRO PASSO É O CLIQUE.** Abrir a aba
+`Base (importada)`, achar o `#REF!` na célula **N1** e clicar em **Permitir acesso**.
+Nenhum script pode dar essa autorização — é trava de segurança do Google, não
+defeito do arquivo. O aviso está escrito no topo do Painel das duas planilhas.
+
+⭐ **A BUSCA DE PREÇO MUDOU, e para melhor.** Na planilha do ICA o preço vinha por
+POSIÇÃO — a célula escrevia `=I19` e torcia para que a linha 19 do bloco importado
+continuasse sendo o Melamínico Fosco de 18 mm; a própria aba avisava *"LINHA NOVA
+VAI NO FIM, NUNCA NO MEIO"*. Aqui o preço vem por **NOME DE PRODUTO** (e pela
+espessura, quando é chapa). Inserir, remover ou reordenar linha na Base de Custos
+deixou de quebrar qualquer coisa.
 
 ## Como se trabalha aqui
 

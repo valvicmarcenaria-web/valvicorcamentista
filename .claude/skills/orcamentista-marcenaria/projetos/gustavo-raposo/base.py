@@ -210,13 +210,20 @@ PRECO_OUTRAS = {
  #   ⚠ A prancha diz "moldura em dourado". Dourado não é padrão melamínico:
  #     ou é laca sobre MDF cru, ou é perfil metálico. Lancei como laca e
  #     deixei a pergunta na caixa de dúvidas.
- # ⚠ SISTEMA DE CORRER SS-150 — a prancha nomeia o modelo em três armários
- #   (suíte 01, duas elevações, e suíte hóspedes): "portas de correr
- #   flutuantes com sistema sem amortecedor SS-150". ⛔ Não é o Dominus da
- #   Base e não tem linha própria. Lançado pelo Dominus de 2 portas como
- #   INTERINO DECLARADO, porque zerar o sistema de um armário de 4 m não
- #   grita: mente para baixo.
- 'Sistema de correr SS-150': 1840.0,  # ⚠ interino: preço do Dominus 2p
+ # ⭐⭐ O SS-150 EXISTE NA BASE, e eu o tinha lançado errado. A prancha nomeia
+ #   o modelo em três armários (suíte 01, duas elevações, e suíte hóspedes):
+ #   "portas de correr flutuantes com sistema sem amortecedor SS-150". Eu
+ #   havia posto R$ 1.840 — o Dominus da biblioteca do motor — como interino
+ #   declarado. ⛔ Era caro E era errado: a aba Ferragens da Base traz
+ #   "SS150, 2 portas · R$ 600,00" e "SS150, 3 portas · R$ 700,00".
+ #   ⚠ O trilho é linha SEPARADA: SS150 2 m R$ 200, 3 m R$ 250.
+ 'Sistema de correr SS-150': 600.0,   # 2 portas · Base, aba Ferragens
+ 'Trilho SS-150': 200.0,              # 2 m · ⚠ 3 m custa 250
+ # ⭐⭐ DESEMPENADOR DE PORTA — a linha que eu não estava contando.
+ #   A Base diz, na própria linha: "anti-empeno · PADRÃO EM TODA PORTA
+ #   DESLIZANTE · porta de 70 cm ou mais leva DOIS". ⛔ Os armários de correr
+ #   desta casa têm folhas bem acima de 70 cm, então são dois por folha.
+ 'Desempenador de porta': 100.0,      # un · Base, aba Ferragens
  'Puxador NEO32 Bronze': 0.0,         # ⛔ por unidade · SEM PREÇO · a cotar
  # ⭐⭐ MUXARABI VAZADO — a usinagem mais pesada da casa. O painel do
  #   Hóspedes/Office tem 444 × 271 e o detalhe 07 define a grelha: furo
