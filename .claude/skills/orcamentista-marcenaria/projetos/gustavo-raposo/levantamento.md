@@ -231,12 +231,31 @@ do Banho Master (3 folhas); **portas de correr em espelho prata** dos armários 
 da Suíte 02 · Filhas.
 
 ### ⚠ A DECIDIR com o Jonathan antes de precificar
-1. **Ferragem mista.** A arquiteta especificou invisível em 10 ambientes e telescópica em 5.
+1. ✅ RESPONDIDO — ver DECIDIDO abaixo. **Ferragem mista.** A arquiteta especificou invisível em 10 ambientes e telescópica em 5.
    Pela regra do elo mais fraco, uma telescópica derruba a garantia da casa inteira para 2 anos.
    Seguimos a prancha, ou subimos tudo para **Hettich (10 anos)** ou **Blum (30 anos)**?
 2. **Laca M048 Sayerlack na cozinha** — pintura é terceirizado ou interno?
 3. **Palhinha** da Suíte 02 (natural ou sintética) — item de compra, definir fornecedor.
 4. **Sistema SS-150** é de portas de correr flutuantes sem amortecedor — manter ou oferecer
    sistema com amortecimento?
-5. **Espelhos de banheiro com moldura dourada** — se não forem fixados em peça de marcenaria,
+5. ✅ RESPONDIDO — ver DECIDIDO abaixo. **Espelhos de banheiro com moldura dourada** — se não forem fixados em peça de marcenaria,
    pela regra dos dois estados precisam ser nomeados como fora.
+
+---
+
+## ✅ DECIDIDO pelo Jonathan [29/10/2026]
+
+1. ⭐⭐ **FERRAGEM: TUDO HETTICH, 10 ANOS NA CASA TODA.**
+   Onde a prancha pede **corrediça invisível** → Hettich oculta (linha Actro/Quadro oculta).
+   Onde a prancha pede **corrediça telescópica** → **sobe para Hettich também**.
+   Não há ferragem de dois níveis nesta casa: a garantia é **uniforme de 10 anos**,
+   e o termo de 10 anos já está desenhado (o de 30 ainda não existe no papel).
+   ⛔ Nenhuma corrediça telescópica comum entra — era ela que derrubava a casa para 2 anos.
+
+2. ⭐ **ESPELHOS DOS BANHEIROS SÃO NOSSOS, COM VALOR.**
+   Os quatro espelhos prata com cantos arredondados e moldura dourada
+   (Banho Suíte 01, Banho Suíte 02, Banho Hóspedes, Banho Social) entram
+   **no custo e na linha do ambiente**: a **moldura é usinada por nós**,
+   o espelho vem da vidraçaria parceira. O cliente não contrata vidraceiro para eles.
+   ⛔ Continuam FORA: as bancadas em Nanoglass, as prateleiras em Nanoglass e os **boxes**
+   (box existe sem o móvel — é do vidraceiro).
