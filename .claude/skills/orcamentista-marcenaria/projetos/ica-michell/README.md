@@ -263,9 +263,21 @@ peça que vai para o cliente antes de reconciliar as duas.
 
 ---
 
-## ⛔⛔ A GARANTIA BLUM DE 30 ANOS NÃO EXISTE [29/10]
+## A GARANTIA: 30 ANOS NA LINHA BLUM — DECISÃO DO JONATHAN [29/10]
 
-Pesquisa para a página de marca: **não há garantia de 30 anos da Blum**. Nem
+⭐⭐ **DECIDIDO:** a proposta imprime **30 anos no cenário Blum** e
+**10 anos no cenário Hettich**, como garantia sobre a marcenaria, com o prazo
+acompanhando a ferragem de movimento. Eu levantei a ressalva abaixo, o
+Jonathan reafirmou os 30 anos, e é isso que vale.
+
+⚠ O que continua pendente de documento: `garantia.md` traz a política
+escalonada (2 / 5 / 10 / vitalícia) e registra que **só o termo de 10 anos
+está desenhado**. O termo de 30 anos precisa existir em papel antes de a
+proposta sair.
+
+### A ressalva que eu levantei (fica registrada)
+
+Pesquisa para a página de marca: **não achei garantia de 30 anos no fabricante**. Nem
 no blum.com, nem em catálogo, nem em material brasileiro. O que a Blum
 publica é garantia limitada **sem prazo em anos**, válida enquanto o primeiro
 comprador for dono do móvel, cobrindo a peça e não a mão de obra — e o texto
@@ -362,3 +374,24 @@ Playwright `page.pdf({width:'297mm', height:'210mm'})`.
 ⚠ **Cozinha e Closet master não têm perspectiva acessível** — as folhas de
 foto pesam 6,8 e 7,4 MB e derrubam o MCP do Drive. Entram pelo desenho
 axonométrico do executivo sobre campo areia, com selo "Desenho de execução".
+
+## As correções de 29/10 (segunda rodada do Jonathan)
+
+| o que ele pediu | o que mudou |
+|---|---|
+| garantia Blum é 30 anos | folhas 27, 30, 31, 33 e 34 · `GARANTIA` no build |
+| local é Lagoa Santa | capa |
+| **pedra não é escopo da Valvic** | saiu das notas da Lavanderia, Área gourmet, Banho gourmet e Banho hóspedes, da abertura e do pilar 01 · entrou em "o que não está nesta proposta" |
+| detalhamento e programação também saem da fábrica | `processo.fechamento` e `empresa.pilares[1]`: três etapas viraram **cinco** |
+| frase dispensável sobre ajuste na fábrica | cortada do pilar 02 |
+| Lavanderia: granito e torneiras não são marcenaria | a nota passou a falar da folga de medição |
+| Home office: "a parede inteira é suspensa" | cortado |
+| **parar de repetir "uma só responsabilidade"** | de 18 notas para **3** — Suíte hóspedes, Suíte master e Suíte 03, as que de fato juntam ofícios. Nas outras virou conteúdo concreto. |
+| não usar "tábuas" | Banho 03 e Lavanderia |
+| **Blum sempre em negrito** | `negrito()` no fim do build: `re.sub(r'>([^<]+)<', …)` — troca só em nó de texto, nunca dentro de tag |
+| **gaveta não abre por pulsador** | é **corrediça com a função de abertura por toque**. Corrigido em 5 itens e no bloco "Blum nos dois cenários" |
+| forma de pagamento | 30% na assinatura · 20% em 30 d · 20% em 60 d · 30% em 90 d · todas por transferência |
+
+⛔ **A REGRA QUE SOBRA DISSO:** o refrão de escopo é tempero, não base. Uma
+frase forte repetida dezoito vezes vira ruído e o cliente para de lê-la.
+Em caderno novo, no máximo três ambientes a carregam.

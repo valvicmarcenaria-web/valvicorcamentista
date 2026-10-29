@@ -54,9 +54,140 @@ for nome, velho, novo in TROCA:
     assert velho in a['nota'], f'⛔ não achei o trecho em {nome}'
     a['nota'] = a['nota'].replace(velho, novo)
 
+
+# ─── correções do Jonathan, 29/10 (segunda rodada) ──────────────────────
+# ⭐ O refrão "um só contrato, uma só responsabilidade" fica em TRÊS
+#   ambientes só — os que de fato juntam ofícios. Nos outros vira conteúdo.
+# ⛔ PEDRA NÃO É ESCOPO DA VALVIC. Sai de toda frase de fornecimento.
+CORR = [
+ ('Living',
+  'A estrutura metálica do banco suspenso entra no nosso escopo e sai no mesmo contrato da marcenaria: uma só data, uma só responsabilidade, e você não contrata mais ninguém.',
+  'A estrutura metálica do banco suspenso é desenhada junto com a marcenaria e chega instalada com ela.'),
+ ('Cozinha',
+  ' Tudo o que está nesta folha sai no mesmo contrato da marcenaria, com uma só data e uma só responsabilidade.', ''),
+ ('Lavanderia',
+  'O sóculo e as bancadas são de granito, e ainda há tanques e torneiras: o que entra no nosso escopo sai no mesmo contrato da marcenaria, na mesma medição e com um só responsável.',
+  'A marcenaria é medida depois que as bancadas estão no lugar: a folga de cada módulo sai da nossa medição técnica, não do desenho.'),
+ ('Quarto',
+  'Os estrados das duas saem em metalon, e a serralheria entra no nosso escopo: sai no mesmo contrato da marcenaria e chega junto com ela, pronta para montar — você não contrata mais ninguém.',
+  'Os estrados das duas saem em metalon, desenhados junto com a marcenaria e instalados com ela.'),
+ ('Área gourmet',
+  'O granito do sóculo, da bancada e do frontão entra no mesmo contrato da marcenaria: uma só medição, uma só instalação, uma só responsabilidade, e você não contrata mais ninguém.',
+  'Os armários são medidos para assentar sob a bancada já instalada, e essa folga sai da nossa medição técnica.'),
+ ('Banho gourmet',
+  'é tudo trabalho nosso, no mesmo contrato da marcenaria, com uma só data e uma só responsabilidade pela parede inteira. O espelho e a pedra do tampo são especificação do projeto e têm o escopo fechado na medição técnica, antes do contrato.',
+  'é trabalho de bancada, peça por peça. O espelho é detalhado junto com o móvel, na medição técnica.'),
+ ('Home office',
+  'A parede inteira é suspensa: nada toca o chão, e a fixação dos armários e do painel é dimensionada e executada por nós.',
+  'A fixação dos armários e do painel é dimensionada e executada por nós.'),
+ ('Home office',
+  'entra no nosso escopo e chega instalada no mesmo contrato da marcenaria, sem você contratar mais ninguém.',
+  'já vem montada dentro do móvel.'),
+ ('Suíte hóspedes',
+  'e sai no mesmo contrato da marcenaria — uma só data, uma só responsabilidade, e você não contrata mais ninguém.',
+  'e sai no mesmo contrato da marcenaria: uma só data e um só responsável.'),
+ ('Banho hóspedes',
+  'A palhinha e a iluminação entram no nosso escopo e saem no mesmo contrato da marcenaria, com uma só data e um só responsável.',
+  'A palhinha é trançada à mão, régua por régua, e a iluminação já vem montada no móvel.'),
+ ('Sala de cinema e ateliê',
+  'a parte metálica entra no nosso escopo e sai no mesmo contrato da marcenaria, e a Valvic responde pela peça aprumada em toda a altura do pé-direito. A luz dos nichos do ateliê já vem montada dentro do móvel: uma só data, um só contrato, uma só responsabilidade.',
+  'a parte metálica é nossa no desenho e na instalação, e a Valvic responde pela peça aprumada em toda a altura do pé-direito. A luz dos nichos do ateliê já vem montada dentro do móvel.'),
+ ('Suíte master',
+  '— e saem no mesmo contrato dela, na mesma data e com o mesmo responsável. Vocês não contratam mais ninguém.',
+  '— e saem no mesmo contrato dela, na mesma data e com o mesmo responsável.'),
+ ('Closet master',
+  'com o LED correndo no perímetro: uma só data, uma só equipe na sua casa, uma só responsabilidade.',
+  'com o LED correndo no perímetro.'),
+ ('Banho Master',
+  'A iluminação do nicho entra no nosso escopo e sai no mesmo contrato da marcenaria, na mesma data e com um só responsável.',
+  'A iluminação do nicho já vem montada no móvel.'),
+ ('Suíte Mariana',
+  'e entra no nosso escopo — sai no mesmo contrato da marcenaria, chega instalada no mesmo acerto, e vocês não contratam mais ninguém.',
+  'e chega instalada junto com o móvel.'),
+ ('Closet Mariana',
+  'A iluminação do perímetro entra no nosso escopo e chega instalada no mesmo acerto da marcenaria, sem mais ninguém para você contratar; o espelho em si fica definido com a arquiteta na medição técnica.',
+  'A iluminação do perímetro já vem montada no móvel; o espelho fica definido com a arquiteta na medição técnica.'),
+ ('Suíte 03',
+  'e as duas entram no nosso escopo — sai tudo no mesmo contrato da marcenaria e você não contrata mais ninguém.',
+  'e as duas saem no mesmo contrato da marcenaria.'),
+ ('Closet 03',
+  'Uma cor só, do rodapé ao topo dos armários, em peças altas que a Valvic usina, monta e instala. O closet sai no mesmo contrato e na mesma data do resto da casa — uma só responsabilidade, e você não contrata mais ninguém.',
+  'Uma cor só, do rodapé ao topo dos armários, em peças altas que a Valvic usina, monta e instala.'),
+ ('Banho 03', 'cada tábua vence o vão presa só pelas pontas',
+             'cada prateleira vence o vão presa só pelas pontas'),
+ ('Banho hóspedes', 'a altura de uso foi fechada junto com a pedra e a cuba',
+                    'a altura de uso foi fechada junto com a cuba'),
+ ('Banho 03',
+  'O armário, as prateleiras e a luz saem no mesmo contrato da marcenaria: uma só data, um só responsável.',
+  'O armário, as prateleiras e a luz saem na mesma entrega.'),
+]
+for nome, velho, novo in CORR:
+    a = AMB[nome]
+    assert velho in a['nota'], f'⛔ nota de {nome}: não achei o trecho'
+    a['nota'] = a['nota'].replace(velho, novo)
+
+# ⭐ GAVETA NÃO LEVA PULSADOR: leva corrediça com abertura por toque
+CORR_IT = [
+ ('Banho hóspedes', 'Bancada do lavatório',
+  'Suspensa; duas gavetas com corrediça de abertura por toque, sem puxador, frente em palhinha emoldurada.'),
+ ('Sala de cinema e ateliê', 'Painel da TV com rack',
+  'Painel ripado com rack suspenso: gavetas com corrediça de abertura por toque e tampo de correr.'),
+ ('Suíte master', 'Rack suspenso',
+  'Em Beige, cinco gavetas com corrediça de abertura por toque, e o tampo corre sobre os aparelhos.'),
+ ('Suíte Mariana', 'Mesa com armário',
+  'Três gavetas com corrediça de abertura por toque e uma porta em palhinha emoldurada, sem puxador.'),
+ ('Suíte 03', 'Mesa de estudo com armário',
+  'O tampo é uma prateleira que encaixa na altura da criança; gavetas com corrediça de abertura por toque.'),
+ ('Banho gourmet', 'Bancada com armário',
+  'Duas portas ripadas em Jequitibá Rosa, abrem ao toque, sem puxador.'),
+ ('Banho 03', 'Prateleiras suspensas',
+  'Três prateleiras em MDF Sal Rosa penduradas em hastes de metal preto, com LED sob cada uma.'),
+ ('Lavanderia', 'Armário das vassouras e do robô',
+  'Portas altas em Off White Suave sobre corpo Carvalho Malva, com vão para passar roupa.'),
+]
+for nome, item, desc in CORR_IT:
+    for it in AMB[nome]['itens']:
+        if it['nome'] == item: it['descricao'] = desc; break
+    else: raise AssertionError(f'⛔ item {item} não existe em {nome}')
+
+# ⛔ a pedra sai das listas de ofício das páginas de conteúdo
+PEDRA = [('empresa', 'abertura_do_caderno', 'texto'), ('empresa', 'abertura', None),
+         ('empresa', 'pilares', None)]
+W['empresa']['abertura_do_caderno']['texto'] = (
+  W['empresa']['abertura_do_caderno']['texto']
+    .replace('espelho, pedra, tecido', 'espelho, tecido'))
+W['empresa']['pilares'][0]['texto'] = (
+  W['empresa']['pilares'][0]['texto']
+    .replace('serralheria, vidro, espelho, pedra, tecido, estofamento, tapeçaria, palhinha e iluminação embutida',
+             'serralheria, vidro, espelho, tecido, estofamento, tapeçaria, palhinha e iluminação embutida')
+    .replace('É nele que a medida do metal, do vidro e da pedra nasce',
+             'É nele que a medida do metal e do vidro nasce'))
+for pl in W['empresa']['pilares']:
+    pl['texto'] = (pl['texto']
+      .replace(' Ajuste feito na fábrica ninguém vê; feito na sua casa, é obra de novo — por isso a conferência é etapa do processo, não boa vontade no fim.',
+               ' A conferência é etapa do processo, não boa vontade no fim.')
+      .replace('Usinagem, beneficiamento, montagem e conferência acontecem dentro da nossa fábrica.',
+               'Detalhamento, programação, usinagem, montagem e conferência acontecem dentro da nossa fábrica.')
+      .replace('É nele que a medida do metal, do vidro e da pedra nasce',
+               'É nele que a medida do metal e do vidro nasce'))
+W['processo']['fechamento'] = W['processo']['fechamento'].replace(
+  'Três das doze etapas acontecem dentro da nossa fábrica: usinagem, montagem e conferência.',
+  'Cinco das doze etapas acontecem dentro da nossa fábrica: detalhamento, programação, '
+  'usinagem, montagem e conferência.')
+W['processo']['arquiteta']['texto'] = W['processo']['arquiteta']['texto'].replace(
+  'serralheria, vidro, tecido, estofamento, tapeçaria, iluminação',
+  'serralheria, vidro, tecido, estofamento, tapeçaria, iluminação')
+
+# ⭐ pulsador é de PORTA e de BÁSCULA; gaveta abre pela corrediça
+W['marcas']['blum_nos_dois']['texto'] = W['marcas']['blum_nos_dois']['texto'].replace(
+  'O pulsador é a abertura por toque: leva a pancada do dedo, do joelho, da gaveta fechada com pressa, dezenas de vezes por dia.',
+  'O pulsador é a abertura por toque da porta e da báscula: leva a pancada do dedo e do joelho, '
+  'dezenas de vezes por dia. Na gaveta, quem abre ao toque é a própria corrediça, que já vem com '
+  'essa função — gaveta não leva pulsador.')
+
 # ─── a garantia é a da casa, escalonada por ferragem [garantia.md] ───────
-GARANTIA = {'Blum': ('Vitalícia', 'de garantia Valvic sobre a marcenaria'),
-            'Hettich': ('10 anos', 'de garantia Valvic sobre a marcenaria')}
+GARANTIA = {'Blum': ('30 anos', 'de garantia · linha Blum'),
+            'Hettich': ('10 anos', 'de garantia · linha Hettich')}
 
 ORDEM = ['Living', 'Cozinha', 'Lavanderia', 'Quarto', 'Área gourmet',
          'Banho gourmet', 'Home office', 'Suíte hóspedes', 'Banho hóspedes',
@@ -98,7 +229,7 @@ folha(f'''<div class="cv">
       do primeiro desenho ao dia da instalação.</div>
   <div class="cv-meta">
    <div><div class="k">Projeto</div><div class="v">Iara Cezar Arquitetura</div></div>
-   <div><div class="k">Local</div><div class="v">Manhumirim · MG</div></div>
+   <div><div class="k">Local</div><div class="v">Lagoa Santa · MG</div></div>
    <div><div class="k">Cenários</div><div class="v">Blum · Hettich</div></div>
    <div><div class="k">Data</div><div class="v">Outubro de 2026</div></div>
   </div>
@@ -279,20 +410,20 @@ folha(f'''<div class="pad">
  <div class="eyebrow">A garantia</div><div class="rule"></div>
  <h1 class="h1" style="margin:0 0 4mm">A garantia que vale aqui é a nossa.</h1>
  <p class="lead" style="max-width:200mm">A Valvic dá garantia sobre a marcenaria, e o prazo
-   acompanha a ferragem de movimento do projeto. Não é garantia de fabricante: é a da casa que
-   desenhou, produziu e instalou o móvel. Vocês não falam com fabricante nenhum — abrem um
+   acompanha a ferragem de movimento do projeto: trinta anos no cenário Blum, dez no cenário
+   Hettich. Quem responde é a casa que desenhou, produziu e instalou o móvel. Vocês não falam com fabricante nenhum — abrem um
    chamado com a Valvic, e a Valvic responde.</p>
  <div class="gar" style="margin-top:7mm">
   <div class="c hi"><div class="selo">O cenário recomendado</div>
-   <div class="anos" style="font-size:40pt">Vitalícia</div>
-   <div class="unid">Cenário Blum</div>
-   <div class="nm">Garantia Valvic sobre a marcenaria</div>
-   <div class="x">Enquanto o móvel for de vocês, contra defeito de fabricação e de montagem.
-     É o prazo mais alto da política da casa, e ele acompanha a ferragem Blum.</div>
+   <div class="anos">30</div>
+   <div class="unid">anos · Cenário Blum</div>
+   <div class="nm">Garantia sobre a marcenaria</div>
+   <div class="x">Trinta anos contra defeito de fabricação e de montagem. É o prazo mais alto da
+     política da casa, e ele acompanha a ferragem Blum.</div>
    <div class="l"><div class="k">Instalação e regulagem</div><div class="v">2 anos</div>
      <div class="k">Atendimento</div><div class="v">Retorno em 24 h · visita em até 3 dias úteis</div></div></div>
   <div class="c"><div class="anos">10</div><div class="unid">anos · Cenário Hettich</div>
-   <div class="nm">Garantia Valvic sobre a marcenaria</div>
+   <div class="nm">Garantia sobre a marcenaria</div>
    <div class="x">Dez anos contra defeito de fabricação e de montagem. A mesma fábrica, a mesma
      equipe e a mesma arquiteta — o prazo acompanha a dobradiça e a corrediça do cenário.</div>
    <div class="l"><div class="k">Instalação e regulagem</div><div class="v">2 anos</div>
@@ -347,7 +478,7 @@ def invest(cen, titulo, eyebrow, campo, total, nota, dest):
  </div></div>'''
 folha(invest('Blum', 'O investimento, ambiente a ambiente.', 'Investimento · cenário Blum',
              'preco_blum', TOT['preco_blum'],
-             'Vitalícia sobre a marcenaria, contra defeito de fabricação e de montagem. '
+             'Trinta anos sobre a marcenaria, contra defeito de fabricação e de montagem. '
              'Instalação e regulagem, 2 anos.', True))
 folha(invest('Hettich', 'O segundo cenário, ambiente a ambiente.', 'Investimento · cenário Hettich',
              'preco_hettich', TOT['preco_hettich'],
@@ -362,8 +493,8 @@ folha(f'''<div class="pad" style="justify-content:center">
   <h1 class="h1" style="margin:0 0 6mm">Os dois cenários, lado a lado.</h1>
   <table class="cmp">
    <tr><th></th><th class="hi">Cenário Blum</th><th>Cenário Hettich</th></tr>
-   <tr><td class="l">Garantia Valvic sobre a marcenaria</td>
-       <td class="hi b">Vitalícia</td><td class="b">10 anos</td></tr>
+   <tr><td class="l">Garantia sobre a marcenaria</td>
+       <td class="hi b">30 anos</td><td class="b">10 anos</td></tr>
    <tr><td class="l">Ciclos de ensaio na dobradiça</td>
        <td class="hi">200.000</td><td>80.000</td></tr>
    <tr><td class="l">Articulador e pulsador</td>
@@ -394,7 +525,7 @@ folha(f'''<div class="pad" style="padding-bottom:20mm">
      <div class="s">Contados da aprovação do detalhamento de execução, não da assinatura.
        A medição técnica entra antes e tem data própria no cronograma.</div></div>
    <div class="term"><div class="k">Garantia</div><div class="v">Conforme o cenário</div>
-     <div class="s">Vitalícia no cenário Blum, dez anos no cenário Hettich, sobre a marcenaria.
+     <div class="s">Trinta anos no cenário Blum, dez anos no cenário Hettich, sobre a marcenaria.
        Instalação e regulagem, dois anos. Termo assinado na entrega.</div></div>
    <div class="term"><div class="k">Projeto executivo de marcenaria</div><div class="v">Incluso</div>
      <div class="s">Aprovado por vocês e pela Iara Cezar antes de qualquer corte.</div></div>
@@ -403,11 +534,13 @@ folha(f'''<div class="pad" style="padding-bottom:20mm">
    <table class="pay" style="width:100%">
     <tr><td colspan="2" style="border:none;padding-bottom:2mm">
       <span class="eyebrow">Formas de pagamento</span></td></tr>
-    <tr><td>Entrada, na assinatura</td><td class="d">a definir</td></tr>
-    <tr><td>Aprovação do detalhamento</td><td class="d">a definir</td></tr>
-    <tr><td>Saída da fábrica</td><td class="d">a definir</td></tr>
-    <tr><td>Entrega final</td><td class="d">a definir</td></tr>
+    <tr><td>Entrada, na assinatura do contrato</td><td class="d">30%</td></tr>
+    <tr><td>30 dias após a assinatura</td><td class="d">20%</td></tr>
+    <tr><td>60 dias após a assinatura</td><td class="d">20%</td></tr>
+    <tr><td>90 dias após a assinatura</td><td class="d">30%</td></tr>
    </table>
+   <div style="font-size:7.4pt;color:var(--mut);margin-top:2.5mm;letter-spacing:.06em">
+     Todas as parcelas por transferência bancária.</div>
    <div class="box" style="margin-top:5mm"><div class="t">Um interlocutor</div>
     <p>Da aprovação à entrega, vocês tratam com a arquiteta responsável pelo projeto.
        Um contrato, uma data, um nome para chamar.</p></div>
@@ -417,6 +550,8 @@ folha(f'''<div class="pad" style="padding-bottom:20mm">
    <ul>
     <li><div class="k">Lavabo</div><div class="v">O executivo traz o ambiente; ele não entra
       nesta proposta e pode ser levantado à parte.</div></li>
+    <li><div class="k">Pedra</div><div class="v">Granito, quartzito e qualquer bancada,
+      sóculo ou tampo em pedra não entram no escopo da Valvic.</div></li>
     <li><div class="k">Eletrodomésticos e metais</div><div class="v">Cooktop, forno, coifa,
       geladeira, lava-louças, cubas, torneiras e metais sanitários.</div></li>
     <li><div class="k">Obra civil e instalações</div><div class="v">Alvenaria, elétrica,
@@ -567,6 +702,13 @@ body.caderno{{background:#2A2622;margin:0;padding:22px 14px 60px}}
   caber(); fit();
 </script>
 '''
+# ⭐ o nome Blum sempre em negrito — só no texto, nunca dentro de uma tag
+def negrito(doc):
+    return re.sub(r'>([^<]+)<',
+                  lambda m: '>' + re.sub(r'\bBlum\b', '<strong>Blum</strong>',
+                                         m.group(1)) + '<', doc)
+PG = negrito(PG)
+
 out = SCR/'caderno-ica.html'
 out.write_text(PG)
 
@@ -580,7 +722,7 @@ PRT.mkdir(exist_ok=True)
   '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
   'family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:opsz,wght@'
   '9..40,400;9..40,500;9..40,600;9..40,700&display=swap">'
-  f'<style>{CSS}{EXTRA}</style></head><body>' + ''.join(S) +
+  f'<style>{CSS}{EXTRA}</style></head><body>' + negrito(''.join(S)) +
   '<script>' + AJUSTE + 'caber();</script></body></html>')
 print(out, f'{len(PG):,} chars · {len(S)} folhas · Blum {br(TOT["preco_blum"])} · '
            f'Hettich {br(TOT["preco_hettich"])}')
