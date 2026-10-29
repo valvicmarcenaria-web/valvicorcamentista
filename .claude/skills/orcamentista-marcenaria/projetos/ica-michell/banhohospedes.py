@@ -4,7 +4,7 @@
 páginas 118 a 123 · dois detalhamentos, dois itens, uma folha só de detalhe.
 
 ⭐ É O BANHEIRO DA SUÍTE HÓSPEDES e usa o mesmo par de padrões: Oásis Linha
-  Essencial Wood na caixa e na moldura, Palha Indiana Sextavada Natural na
+  Essencial Wood na caixa e na moldura, palhinha natural de tapeceiro na
   frente da gaveta. A frente repete, peça por peça, a do aparador do DET 06
   da suíte — moldura de 2 cm em OUTRA COR, e por isso quatro réguas por
   frente e não peça inteira.
@@ -72,14 +72,16 @@ BANHOHOSPEDES = [
    '⭐ embutido na parede: só a aresta da frente aparece, e ela tem 174'),
  P('Topo e base',           I2, 36, 11, 2, OA18, (1, 0), 'Aparente'),
  P('Prateleira',            I2, 36, 11, 3, OA18, (1, 0),
-   'Três divisórias para quatro nichos de 50, 33, 33 e 49'),
+   'Três divisórias para quatro nichos de 50, 33, 33 e 49 · ⛔ é a própria '
+   'caixa da torre embutida, cavilhada entre as laterais de 11 de '
+   'profundidade: sem suporte'),
  P('Fundo',                 I2, 40, 174, 1, OA6, (0, 0),
    '⭐ O FUNDO APARECE: é ele que o LED lava, e por isso sai em Oásis, não '
    'em branco · 6 mm por encaixe em rasgo, sem fita'),
 ]
 
 # ── ferragem, declarada item a item ─────────────────────────────────────
-GAVETAS = [(I1, 'Bancada com armário · duas gavetas de 25', 2, 450)]
+GAVETAS = []  # ⛔ as duas gavetas foram para CORREDIÇA TOUCH, ver OUTRAS
 PORTAS  = []
 BASCULAS= []
 CAVA    = []
@@ -102,9 +104,18 @@ SERRALHERIA = []
 # ⭐ as duas gavetas não têm puxador nenhum desenhado, e a frente é Palha
 #   Indiana emoldurada: cava cortaria a palha. Mesma leitura do aparador da
 #   Suíte Hóspedes e da porta ripada do Banho Gourmet.
-OUTRAS  = [(I1, 'Pulsador', 'Duas gavetas da bancada · abre por toque, sem '
-            'ferragem à vista · ⚠ a prancha não desenha puxador nenhum',
-            2, 'un', 'Pulsador'),
+# ⭐⭐ GAVETA QUE ABRE POR TOQUE USA CORREDIÇA TOUCH, NÃO PULSADOR
+#   [Jonathan, 28/10/2026]: "nao se usa pulsador em gavetas, considere
+#   corrediça touch" — e na rodada anterior, para o Ambiente 10: "a
+#   corrediça com toque considere o custo de 500,00".
+#   ⛔ É REGRA DA CASA, não exceção deste móvel: a touch SUBSTITUI o par
+#     de corrediça MAIS o pulsador, então as duas linhas antigas saem.
+#     Em PORTA e em BÁSCULA o pulsador continua — lá não há corrediça
+#     para ser touch.
+OUTRAS  = [(I1, 'Corrediça touch', 'Duas gavetas da bancada · abre por '
+            'toque, sem ferragem à vista · ⚠ a prancha não desenha puxador '
+            'nenhum · ⛔ substitui o par de corrediça e o pulsador',
+            2, 'par', 'Corrediça touch'),
            # ⭐ PALHINHA NATURAL · R$ 650 o m² [Jonathan, 28/10/2026]
            (I1, 'Palhinha natural', 'O campo das duas frentes de gaveta, '
             '96 × 25 cada · trançado dentro da moldura de Oásis · ⛔ é '
@@ -129,9 +140,9 @@ CABECA = {
 FOLHA = dict(
  aba='BANHO HÓSPEDES',
  sub='Jéssica e Michell · Projeto ICA · páginas 118 a 123 · dois itens, uma '
-     'folha só de detalhe · ⭐ o mesmo par de padrões da suíte ao lado: '
-     'Oásis Linha Essencial Wood na caixa e na moldura, Palha Indiana '
-     'Sextavada na frente · caixaria em Branco TX 15 · peça inteira até '
+     'folha só de detalhe · ⭐ o mesmo par de acabamentos da suíte ao lado: '
+     'Oásis Linha Essencial Wood na caixa e na moldura, palhinha natural '
+     'de tapeceiro na frente · caixaria em Branco TX 15 · peça inteira até '
      f'{ALT_MAX:g}, que é a chapa de {CHAPA_C:g} menos o acerto de corte',
  chapa_txt={OA18: 'Oásis Linha Essencial Wood · Duratex · caixa da bancada, '
                   'moldura das frentes e o nicho inteiro',
@@ -149,18 +160,22 @@ FOLHA = dict(
       '⭐ A ELEVAÇÃO FECHA A ALTURA, o que é raro neste executivo: 15 do '
       'piso + 60 do móvel com a pedra + 15 da cuba de apoio = 90 na borda. '
       'O móvel é SUSPENSO, e por isso aqui não há base metálica a lançar.   '
-      '⭐⭐ CINCO PADRÕES PARA CATORZE PEÇAS: a regra de ferro cobra CINCO '
-      'chapas cheias, R$ 2.350, para 5,7 m² de peça. É o ambiente onde o '
-      'arredondamento mais pesa no projeto inteiro — e QUATRO desses cinco '
-      'padrões são os mesmos da Suíte Hóspedes ao lado.',
+      '⭐⭐ QUATRO PADRÕES PARA CATORZE PEÇAS: a regra de ferro cobra '
+      'QUATRO chapas cheias para pouco mais de 5 m² de peça. É um dos '
+      'ambientes onde o arredondamento mais pesa no projeto — e TRÊS '
+      'desses quatro padrões são os mesmos da Suíte Hóspedes ao lado.   '
+      '⭐ A palha NÃO é chapa: desde 28/10 ela é palhinha natural de '
+      'tapeceiro, R$ 650 o m², trançada sobre um fundo de MDF estrutural.',
  duvidas=[
-  'AS DUAS GAVETAS NÃO TÊM PUXADOR DESENHADO, e a prancha não escreve cava, '
-  'não escreve puxador e não escreve fecho toque. ⭐ Orcei PULSADOR, R$ 100 '
-  'cada, R$ 200 pelos dois — é o mesmo que fiz no aparador da Suíte '
-  'Hóspedes, pela mesma razão: a frente é Palha Indiana emoldurada e cava '
-  'cortaria a palha. ⚠ As alternativas: cava usinada sairia R$ 96 pelas '
-  'duas frentes de 96; Alças Traso 128, R$ 220. Decisão de desenho, e vale '
-  'R$ 104 para baixo ou R$ 20 para cima.',
+  'AS DUAS GAVETAS NÃO TÊM PUXADOR DESENHADO: a prancha não escreve cava, '
+  'não escreve puxador e não escreve fecho toque. ⭐ Desde 28/10 elas abrem '
+  'por CORREDIÇA TOUCH — "nao se usa pulsador em gavetas" — e a touch '
+  'substitui o par de corrediça E o pulsador, então as duas linhas antigas '
+  'saíram. ⚠ São R$ 1.000 nas duas gavetas, contra os R$ 500 que eu tinha '
+  '(R$ 300 de corrediça mais R$ 200 de pulsador): abrir por toque DOBRA o '
+  'custo de abrir este móvel, e é o que o senhor pediu. ⛔ Fica registrado '
+  'por que não é cava: a frente é palhinha emoldurada, e cava cortaria a '
+  'palha.',
   'O FUNDO DO NICHO saiu em Oásis 6 mm, não em branco. ⚠ São quatro nichos '
   'com LED no topo de cada um: o fundo é justamente a superfície que a luz '
   'lava, e é ele que se vê de frente. Se o desenho quiser o fundo em outro '
@@ -176,22 +191,26 @@ FOLHA = dict(
   'a frente não bater na porta de correr do box. A VISTA LATERAL do DET 01 '
   'não cota a profundidade do móvel, só a da pedra. Confirmar antes do '
   'corte: cada 5 cm aqui são 0,3 m² de chapa.',
-  'A FRENTE DA GAVETA É PALHA INDIANA SEXTAVADA NATURAL e a Base ainda não '
-  'tem esse padrão cotado de verdade: lancei R$ 700 a chapa de 18, como '
-  'melamínico fosco. ⚠ É a mesma pergunta da dúvida 05 da Suíte Hóspedes, e '
-  'a resposta vale para os dois ambientes de uma vez.',
-  'O ESPELHO OVAL DE 60 × 150 da ELEVAÇÃO 04 não é nosso: é vidraceiro. ⚠ '
-  'Mas espelho oval costuma pedir moldura ou um sarrafo de apoio, e a '
-  'prancha não desenha nenhum dos dois. Confirmar quem fixa.'],
+  '⛔ "MDF PALHA INDIANA SEXTAVADA" NÃO EXISTE [Jonathan, 28/10]: é a palha '
+  'indiana do tapeceiro, R$ 650 o m². O campo das duas frentes saiu da conta '
+  'de chapa e entrou como PALHINHA NATURAL — 0,48 m², R$ 312 — sobre um '
+  'fundo de MDF estrutural. ⚠ Com isso este banheiro perdeu um padrão de '
+  'chapa e um arredondamento inteiro: são quatro chapas cheias agora, não '
+  'cinco. A mesma correção vale para a Suíte Hóspedes e para a Mariana.',
+  'O ESPELHO OVAL DE 60 × 150 da ELEVAÇÃO 04 É NOSSO desde 28/10 e entrou '
+  'no levantamento — 0,9 m², medidos pelo retângulo que o contém, que é como '
+  'o vidraceiro corta. ⛔ A linha "Espelho" da Base segue SEM PREÇO, então '
+  'ele soma ZERO e o custo deste ambiente é um piso. ⚠ Espelho oval costuma '
+  'pedir moldura ou uma travessa de apoio, e a prancha não desenha nenhum dos '
+  'dois.'],
  nao_marcenaria=[
   'Bancada em Quartzito Bianco Superiore, 100 × 50 com 10 de espessura aparente',
   'Cuba Redonda de Apoio 30 cm Branco Slim e Torneira de Mesa Bica Alta '
   'Corten Unic — Deca',
-  'Espelho oval de 60 × 150 da ELEVAÇÃO 04',
   'Bacia para caixa acoplada, papeleira, box até o teto e revestimentos'],
  notas=[
   '⭐ A FRENTE DAQUI É A MESMA DO APARADOR DA SUÍTE HÓSPEDES, peça por '
-  'peça: campo em Palha Indiana Sextavada e moldura de 2 cm em Oásis. Como '
+  'peça: campo em palhinha natural e moldura de 2 cm em Oásis. Como '
   'a moldura é de OUTRA COR, peça inteira cobriria a palha — então são '
   'quatro réguas por frente, e este é o segundo dos dois únicos lugares do '
   'projeto onde régua continua sendo régua.',
@@ -205,19 +224,19 @@ FOLHA = dict(
   'O que pesa nele é o LED — 1,44 m de fita a R$ 150 o metro.',
   '⚠ NENHUMA PEÇA PASSA DA CHAPA. A maior é a lateral do nicho, de 174 × '
   '11, e o fundo de 174 × 40 — os dois cabem inteiros nos 275 × 185.',
-  '⭐⭐ AQUI O ARREDONDAMENTO É A CONTA. São 5,7 m² de peça e CINCO padrões '
-  'de chapa, um para cada: a regra de ferro cobra cinco chapas cheias, '
-  '20,4 m² úteis comprados para 5,7 m² usados. R$ 2.350 de MDF num móvel '
-  'que tem 1,8 m² de frente. É o pior arredondamento do projeto, e não é '
-  'erro de conta — é o que custa um banheiro pequeno com cinco materiais.',
-  '⭐⭐ E ELE TEM CONSERTO NA PRODUÇÃO: QUATRO dos cinco padrões daqui são '
-  'os mesmos da Suíte Hóspedes ao lado — Oásis 18, Palha Indiana Sextavada '
-  '18, Branco TX 15 e Branco TX 6. Produzidos juntos, as peças deste '
-  'banheiro saem da SOBRA da suíte, e o que resta de compra própria é só a '
-  'chapa de Oásis 6 do fundo do nicho. ⚠ No orçamento cada ambiente fecha '
-  'em chapa cheia, que é o certo para precificar; na fábrica, não. Se o '
-  'senhor quiser, eu fecho um arredondamento CONJUNTO dos dois ambientes '
-  'na versão enxuta da proposta. ⭐ Conferi a conta: os dois juntos dão '
-  'R$ 8.750 de MDF contra R$ 10.750 separados — as quatro chapas comuns '
-  'absorvem o banheiro inteiro sem puxar nenhuma a mais. São R$ 2.000.'],
+  '⭐⭐ AQUI O ARREDONDAMENTO É A CONTA. São pouco mais de 5 m² de peça e '
+  'QUATRO padrões de chapa, um para cada: a regra de ferro cobra quatro '
+  'chapas cheias, mais de 16 m² úteis comprados para 5 m² usados, num '
+  'móvel que tem 1,8 m² de frente. É um dos piores arredondamentos do '
+  'projeto, e não é erro de conta — é o que custa um banheiro pequeno com '
+  'quatro materiais. ⭐ Saiu um padrão desde 28/10: a palha deixou de ser '
+  'chapa e virou tapeceiro.',
+  '⭐⭐ E ELE TEM CONSERTO NA PRODUÇÃO: TRÊS dos quatro padrões daqui são '
+  'os mesmos da Suíte Hóspedes ao lado — Oásis 18, Branco TX 15 e Branco '
+  'TX 6. Produzidos juntos, as peças deste banheiro saem da SOBRA da '
+  'suíte, e o que resta de compra própria é só a chapa de Oásis 6 do fundo '
+  'do nicho. ⚠ No orçamento cada ambiente fecha em chapa cheia, que é o '
+  'certo para precificar; na fábrica, não. ⭐ Se o senhor quiser, eu fecho '
+  'um arredondamento CONJUNTO dos dois ambientes na versão enxuta da '
+  'proposta — é onde este banheiro tem o desconto mais fácil do projeto.'],
 )

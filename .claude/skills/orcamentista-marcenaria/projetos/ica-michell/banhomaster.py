@@ -108,7 +108,9 @@ BANHOMASTER = [
  P('Topo e base · DET 03', I3, 66, 10, 2, CB15, (1, 0), 'Aparente'),
  P('Prateleira · DET 03', I3, 66, 10, 5, CB15, (1, 0),
    '⭐ 15 mm: o vão de 66 não chega aos 70 da regra · cinco prateleiras, '
-   'quatro nichos de 38 entre elas e o de 63 embaixo'),
+   'quatro nichos de 38 entre elas e o de 63 embaixo · ⛔ são as '
+   'horizontais que FAZEM os nichos da torre embutida, cavilhadas em 10 de '
+   'profundidade: sem suporte'),
 ]
 
 # ── ferragem, declarada item a item ─────────────────────────────────────
@@ -231,7 +233,7 @@ FOLHA = dict(
   'parte que é nossa.',
   'OS DOIS ESPELHOS DE 70 × 187 da ELEVAÇÃO 01 são vidraceiro. ⚠ Eles '
   'ficam entre as ripas do DET 01, encostados nelas — quem os fixa e se '
-  'levam sarrafo de apoio atrás, a prancha não diz.',
+  'levam apoio de marcenaria atrás, a prancha não diz.',
   '⛔ A BASE METÁLICA DE 3 CM: aqui ela só caberia no nicho, que é a única '
   'peça que toca o chão — o armário é suspenso e as ripas do DET 01 vão de '
   'piso a teto. ⚠ São 0,7 m de rodapé. Fica para a passada única, junto '

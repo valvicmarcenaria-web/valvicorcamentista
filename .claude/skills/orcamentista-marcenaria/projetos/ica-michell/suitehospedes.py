@@ -328,13 +328,15 @@ FOLHA = dict(
   'O APARADOR DO DET 06 NÃO TEM PUXADOR DESENHADO nas três gavetas, e a '
   'prancha não escreve cava nem puxador. ⚠ Orcei só a corrediça. É a mesma '
   'lacuna da porta ripada do Banho Gourmet.',
-  'O ESPELHO DE 80 × 280 do DET 05 não é nosso: é vidraceiro. ⚠ A moldura '
-  'é, e ela precisa de rebaixo para o espelho encaixar. Confirmar quem mede '
-  'e quem instala — um espelho de 2,80 m não sobe sozinho.',
+  'O ESPELHO DE 80 × 280 do DET 05 É NOSSO desde 28/10 e entrou no '
+  'levantamento — 2,24 m², colado no painel de 6 mm que o senhor pediu '
+  'atrás. ⛔ A linha "Espelho" da Base segue SEM PREÇO, então ele soma ZERO '
+  'e o custo deste ambiente é um piso. ⚠ A moldura precisa de rebaixo para '
+  'o espelho encaixar, e um espelho de 2,80 m não sobe sozinho — confirmar '
+  'quem mede e quem instala.',
   '⛔ A BASE METÁLICA DE 3 CM aparece nas quinze folhas daqui e continua NÃO '
   'LANÇADA em nenhum ambiente — oito ambientes agora.'],
  nao_marcenaria=[
-  'Espelho de 80 × 280 do DET 05 — vidraceiro',
   'Colchão de casal do DET 04 e colchão do leito inferior',
   'Puxador de couro cor fendi — item de ferragem fina, a cotar',
   'Roupa de cama, luminárias e decoração'],

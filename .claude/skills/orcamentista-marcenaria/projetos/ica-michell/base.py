@@ -162,6 +162,13 @@ CORREDICA_TOUCH = 500.0
 PERFIL_PISO = 15.0   # por metro linear de painel que toca o chão
 # ⭐ os dois serviços de corte, por ambiente [Jonathan, 28/10/2026]
 CORTE_CHAPA, CORTE_PECA = 2.00, 2.50
+# ⭐ MALHA DE CORDAS NÁUTICAS [Jonathan, 28/10/2026, Suíte 03 item 3]
+#   > "na base da cama superior, inferior e bicama considere a estrutura de
+#   >  serralheria, considere a malha de cordas naulticas a 250,00 mt²"
+#   ⛔ É o que substitui o estrado nas três bases da Suíte 03: quadro de
+#     serralheria com a malha tecida dentro. Por m² de vão, como a palhinha
+#     e o estofado — não por chapa.
+MALHA_CORDAS = 250.0  # por m² de vão
 SUPORTE_OCULTO = 30.0  # ⛔ legado: não se usa mais em prateleira de armário
 CABIDEIRO  = 120.0  # cabideiro em metal preto ou grafite · Base, por unidade
 # ⭐ reforço estrutural interno. A prancha da Lavanderia manda "prever
@@ -230,6 +237,26 @@ PRECO_OUTRAS = {
  #   suporte oculto e não é ripa: é usinagem corrida de rasgo na router, e
  #   a Base não tem a linha. Irmã da furação do pegboard do Home Office.
  'Usinagem de encaixe de prateleira': 0.0,  # ⛔ por metro · SEM PREÇO
+ # ⭐ RESPONDIDO [Jonathan, 28/10/2026]: a base das três camas da Suíte 03
+ #   não é estrado de metalon nem painel de MDF — é quadro de serralheria
+ #   com MALHA DE CORDAS NÁUTICAS tecida dentro, a R$ 250 o m².
+ 'Malha de cordas náuticas': MALHA_CORDAS,  # por m² de vão
+ # ⛔ A BASE DE CAMA EM SERRALHERIA é orçamento FECHADO por peça, como o
+ #   banco do Living e a mesa da Suíte Hóspedes: o valor vem da aba do
+ #   ambiente, linha por linha, e não de uma chave de preço unitário.
+ 'Serralheria de base de cama': 0.0,  # ⛔ valor fechado, vem do ambiente
+ # ⚠⚠ MDF DE 25 MM [Jonathan, 28/10/2026, Closet Master]: "considere a
+ #   estrutura em mdf de 25mm". A Base só tem 6, 15 e 18, e o 25 não está
+ #   cotado em lugar nenhum.
+ #   ⛔ AQUI EU NÃO DEIXEI ZERO, e é a única vez neste orçamento em que
+ #     invento um número. Zero é a regra da casa para o que é de terceiro e
+ #     pequeno — espelho, carreto. A ESTRUTURA de um closet de R$ 24 mil não
+ #     é pequena: zerá-la não grita, MENTE PARA BAIXO, e um preço de venda
+ #     tirado desse zero sai barato de verdade.
+ #   ⭐ Então entra um INTERINO declarado: R$ 970, que é o 18 mm da mesma cor
+ #     (R$ 700) na proporção da espessura, 25/18. ⚠ É PARA CONFERIR com o
+ #     fornecedor — chapa grossa costuma ter ágio acima da proporção.
+ 'MDF Branco Diamante 25': 970.0,  # ⚠ INTERINO · 700 × 25/18 · a confirmar
 }
 VIDRO_M2   =   0.0  # ⛔ reflecta champagne SEM PREÇO — a cotar
 # ⭐ SERRALHERIA ESTRUTURAL [Jonathan, 28/10/2026]

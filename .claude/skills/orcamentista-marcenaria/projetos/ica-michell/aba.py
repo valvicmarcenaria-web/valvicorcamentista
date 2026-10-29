@@ -42,7 +42,7 @@
          (ambiente · sheetId · linha dos blocos HOJE · linhas HOJE ·
           regras condicionais que a aba já tem — 0 se for aba nova)
 """
-import sys, json, importlib.util, pathlib, io, contextlib, subprocess
+import sys, json, re, importlib.util, pathlib, io, contextlib, subprocess
 P = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(P))
 import base as B
@@ -292,8 +292,14 @@ põe(L['nota'], C=F['nota'])
 põe(L['s_itens'], B='  OS ITENS   ·   cada móvel com o seu custo, porque é '
                     'assim que a fábrica produz e o cliente confere')
 põe(L['cab_it'], B='ITEM', C='MÓVEL', D='MEDIDA GERAL', I='CUSTO')
+# ⛔ o nome do móvel vem com a referência da prancha na frente — "DET 01
+#    Lateral" — e ela sai do nome do ITEM, que já tem a sua numeração. Nos
+#    itens unificados a referência é uma FAIXA, "DET 01 a 06" ou "DET 01 e
+#    02", e um split por espaço cortava no lugar errado: a aba saía com o
+#    móvel chamado "a 06 Conjunto da lavanderia".
+SO_DET = re.compile(r'^(?:DET|ELEVAÇÃO)\s+\d+(?:\s*(?:a|e|,|\+|/)\s*\d+)*\s+')
 for i, mov in enumerate(MOV, 1):
-    põe(L['it0'] + i - 1, B=i, C=mov.split(' ', 2)[-1],
+    põe(L['it0'] + i - 1, B=i, C=SO_DET.sub('', mov),
         D=A.CABECA[mov][0], I=f'=I{MAPA[i]}')
 f0 = L['f0']
 põe(f0,   B='Soma dos itens · chapa rateada em fração',
@@ -323,14 +329,14 @@ DUVIDAS = [linha(B='  ⚠ DÚVIDAS DE ORÇAMENTO   ·   numeradas, para o senhor
           [linha(B=f'{i:02d}', C=t) for i, t in enumerate(DV, 1)]
 
 # ── 5 · O FORMATO. Composto em Python, nunca repetido à mão. ────────────
-PRETO  = {'red': .1019608, 'green': .1019608, 'blue': .1019608}
-CINZA  = {'red': .4196078, 'green': .4196078, 'blue': .4196078}
-CLARO  = {'red': .6745098, 'green': .6745098, 'blue': .6745098}
-OURO   = {'red': .6862745, 'green': .5137255, 'blue': .2313725}
-VERM   = {'red': .7764706, 'green': .1568628, 'blue': .1568628}
+PRETO  = {'red': .102, 'green': .102, 'blue': .102}
+CINZA  = {'red': .42, 'green': .42, 'blue': .42}
+CLARO  = {'red': .675, 'green': .675, 'blue': .675}
+OURO   = {'red': .686, 'green': .514, 'blue': .231}
+VERM   = {'red': .776, 'green': .157, 'blue': .157}
 BRANCO = {'red': 1, 'green': 1, 'blue': 1}
-F7     = {'red': .9686275, 'green': .9686275, 'blue': .9686275}
-F5     = {'red': .9607843, 'green': .9607843, 'blue': .9607843}
+F7     = {'red': .969, 'green': .969, 'blue': .969}
+F5     = {'red': .961, 'green': .961, 'blue': .961}
 MOEDA  = {'type': 'CURRENCY', 'pattern': '"R$" #,##0.00'}
 PCT    = {'type': 'PERCENT',  'pattern': '0.0%'}
 INT    = {'type': 'NUMBER',   'pattern': '0'}
@@ -342,12 +348,12 @@ def fm(sz=10, bd=False, it=False, fg=PRETO, bg=None, al='LEFT',
       só mais curto. ⛔ E é também o que limpa padrão numérico herdado, que
       era o que fazia 110 aparecer como "110,"."""
     t = {'fontFamily': 'Arial', 'fontSize': sz,
-         'foregroundColorStyle': {'rgbColor': fg}}
+         'foregroundColor': fg}
     if bd: t['bold'] = True
     if it: t['italic'] = True
     f = {'textFormat': t, 'horizontalAlignment': al,
          'verticalAlignment': 'MIDDLE', 'wrapStrategy': wr}
-    if bg: f['backgroundColorStyle'] = {'rgbColor': bg}
+    if bg: f['backgroundColor'] = bg
     if num: f['numberFormat'] = num
     if bor: f['borders'] = bor
     return f
@@ -364,8 +370,8 @@ def alt(r0, r1, px):
             'properties': {'pixelSize': px}, 'fields': 'pixelSize'}}
 def mesc(r, c0, c1):
     return {'mergeCells': {'range': rng(r, r, c0, c1), 'mergeType': 'MERGE_ALL'}}
-RUA  = {'bottom': {'style': 'SOLID', 'width': 1, 'colorStyle': {'rgbColor': PRETO}}}
-TETO = {'top': {'style': 'SOLID_THICK', 'width': 3, 'colorStyle': {'rgbColor': OURO}}}
+RUA  = {'bottom': {'style': 'SOLID', 'width': 1, 'color': PRETO}}
+TETO = {'top': {'style': 'SOLID_THICK', 'width': 3, 'color': OURO}}
 
 Q = []
 # a base de tudo: a folha inteira, limpa
@@ -495,28 +501,28 @@ def cond(f, fmt_):
                             'values': [{'userEnteredValue': f}]}, 'format': fmt_}}}}
 Q.append(cond(f'=AND($B{a}="";$C{a}<>"")',
               {'textFormat': {'italic': True,
-               'foregroundColorStyle': {'rgbColor': CLARO}}}))
+               'foregroundColor': CLARO}}))
 Q.append(cond(f'=LEFT($B{a};5)="TOTAL"',
-              {'backgroundColorStyle': {'rgbColor': F5},
+              {'backgroundColor': F5,
                'textFormat': {'bold': True,
-               'foregroundColorStyle': {'rgbColor': PRETO}}}))
+               'foregroundColor': PRETO}}))
 Q.append(cond(f'=$B{a}="MATERIAL"',
-              {'backgroundColorStyle': {'rgbColor': F7},
+              {'backgroundColor': F7,
                'textFormat': {'bold': True,
-               'foregroundColorStyle': {'rgbColor': CINZA}}}))
+               'foregroundColor': CINZA}}))
 Q.append(cond(f'=LEFT($B{a};5)="ITEM "',
-              {'backgroundColorStyle': {'rgbColor': PRETO},
+              {'backgroundColor': PRETO,
                'textFormat': {'bold': True,
-               'foregroundColorStyle': {'rgbColor': BRANCO}}}))
+               'foregroundColor': BRANCO}}))
 # ⭐ a conferência grita quando não fecha
 Q.append({'addConditionalFormatRule': {'index': 0, 'rule': {
           'ranges': [rng(f0+4, f0+4, 'B', 'I')],
           'booleanRule': {'condition': {'type': 'CUSTOM_FORMULA', 'values':
                           [{'userEnteredValue': f'=ROUND($I${f0+4};2)<>0'}]},
-          'format': {'backgroundColorStyle': {'rgbColor': {'red': .996,
-                     'green': .922, 'blue': .922}},
+          'format': {'backgroundColor': {'red': .996,
+                     'green': .922, 'blue': .922},
                      'textFormat': {'bold': True,
-                     'foregroundColorStyle': {'rgbColor': VERM}}}}}}})
+                     'foregroundColor': VERM}}}}}})
 
 # ── 5b · a limpeza, que vem ANTES de tudo ───────────────────────────────
 #   ⛔ a ordem importa: apagar regra por índice 0 N vezes só funciona se

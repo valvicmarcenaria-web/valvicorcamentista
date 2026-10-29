@@ -42,7 +42,7 @@ SUITEMASTER = [
  #                  frente, e a fita de LED entre as duas, virada para cima
  P('Base superior · prateleira do LED', I1, 250, 5, 2, CB18, (1, 0),
    '⭐ é ela que carrega a fita · duas peças de 250 porque 500 de corrida '
-   'não sai de uma chapa'),
+   'não sai de uma chapa · ⛔ é travessa de base de 5 de largura, não prateleira: sem suporte, sem alma'),
  P('Base superior · testeira',          I1, 250, 6, 2, CB18, (2, 2),
    'A faixa de 6 que a VISTA FRONTAL mostra acima dos módulos · esconde a '
    'fita e joga a luz na parede'),
@@ -209,11 +209,13 @@ FOLHA = dict(
   'Valvic fornece ou se o cliente contrata direto — e, se fornecemos, se o '
   'compensado de base é nosso ou do estofador. Hoje a conta tem só a base '
   'superior de Carvalho Brun, que é a parte que é certa.',
-  'O ESPELHO DE 90 × 300 do DET 03 é vidraceiro. ⚠ Mas ele cola em alguma '
-  'coisa: lancei um painel de apoio em Carvalho Brun de 90 × 300, em duas '
-  'peças. ⛔ Se o espelho for colado direto na alvenaria, esse painel sai '
-  'da conta e com ele 0,5 chapa. E espelho de 3 m de altura com LED na '
-  'lateral é peça especial — confirmar quem mede e quem instala.',
+  'O ESPELHO DE 90 × 300 do DET 03 É NOSSO desde 28/10 e entrou no '
+  'levantamento — 2,7 m², mais o painel de apoio em Carvalho Brun de '
+  '90 × 300 em duas peças, onde ele cola. ⛔ A linha "Espelho" da Base segue '
+  'SEM PREÇO, então ele soma ZERO e o custo deste ambiente é um piso. ⚠ Se '
+  'o espelho for colado direto na alvenaria, o painel sai da conta e com ele '
+  '0,5 chapa. E espelho de 3 m de altura com LED na lateral é peça especial '
+  '— confirmar quem mede e quem instala.',
   'O PAINEL CENTRAL DE NAZCA VELLUTO TEM 240 × 300 e não sai de uma chapa: '
   'dividi em duas peças de 240 × 150 e a emenda cai no MEIO de um campo '
   'liso, sem linha de desenho onde se esconder. ⚠ Num acabamento de toque '
@@ -235,7 +237,6 @@ FOLHA = dict(
   'ambientes para uma passada só, quando o senhor mandar.'],
  nao_marcenaria=[
   'Cabeceira com módulos estofados em linho bege — 5,18 m² de estofamento',
-  'Espelho de 90 × 300 do DET 03 — vidraceiro (o painel de apoio é nosso)',
   'Colchão king size 190 × 200',
   'TV, aparelhos e a torre de tomadas escondida no rack'],
  notas=[

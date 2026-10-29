@@ -63,15 +63,22 @@ BANHOMARIANA = [
  # ══ ITEM 02 · ESPELHO — 87 × 193, moldura de 3 em Sal Rosa ═══════════
  #  VISTA FRONTAL  3 + 80 + 3 = 87 · altura 3 + 151 + 35 de arco = 193
  #  ⛔ o espelho é vidraceiro; a MOLDURA é nossa
- P('Moldura · montante',    I2, 151, 3, 2, SR15, (2, 2),
-   'As duas laterais de 3 de largura'),
- P('Moldura · base',        I2, 87, 3, 1, SR15, (2, 2)),
- P('Moldura · arco',        I2, 87, 38, 1, SR15, (2, 2),
-   '⛔ o arco de 35 de flecha NÃO sai de uma régua: a peça vem de um '
-   'retângulo cheio de 87 × 38 e o miolo é perda de usinagem'),
- P('Fundo do espelho',      I2, 87, 193, 1, SR6, (0, 0),
-   '⭐ é nele que o vidraceiro cola o espelho · ⛔ sem fita: a moldura '
-   'cobre o perímetro'),
+ # ⭐⭐ RELIDO [Jonathan, 28/10/2026]: "a base do espelho é uma chapa
+ #   inteira, o arco é outra chapa inteira usinada, processo semelhante ao
+ #   provençal. Considere tbm o espelho."
+ #   ⛔ Eu tinha quebrado a moldura em RÉGUAS — dois montantes de 3, uma
+ #     base de 3 e o arco. Está errado pelo mesmo motivo que a frente
+ #     provençal: numa moldura de MESMA COR, régua emenda e a emenda
+ #     aparece. São DUAS CHAPAS INTEIRAS, uma sobre a outra: a base, lisa,
+ #     e o arco, usinado na router por cima dela.
+ P('Painel do espelho',     I2, 87, 193, 1, SR15, (2, 2),
+   '⭐ a BASE: peça inteira de 87 × 193, não régua · é nela que o espelho '
+   'cola e é ela que leva a fita do perímetro'),
+ P('Painel do espelho · moldura usinada', I2, 87, 193, 1, SR6, (0, 0),
+   '⭐ a SEGUNDA CHAPA INTEIRA, da mesma medida, com o vão do espelho e o '
+   'arco de 35 de flecha abertos na router — é o provençal da casa, em '
+   '6 mm colado sobre a base · ⛔ sem fita própria: o perímetro é o da '
+   'base, e contá-lo de novo cobraria o mesmo metro duas vezes'),
 
  # ══ ITEM 03 · PRATELEIRAS — três de 60 × 20 × 3 ══════════════════════
  #  DET. 03 VISTA FRONTAL 60 de largura · 174 de altura das hastes
@@ -80,7 +87,7 @@ BANHOMARIANA = [
  #    Suíte Mariana · LED embutido sob CADA prateleira
  P('Prateleira · camada',   I3, 60, 20, 6, SR15, (2, 2),
    '⭐ duas chapas de 15 coladas por prateleira, três prateleiras · é '
-   'assim que se faz os 3 cm que a VISTA LATERAL cota'),
+   'assim que se faz os 3 cm que a VISTA LATERAL cota · ⛔ penduradas em haste de metal, sem armário: sem suporte'),
 ]
 
 # ── ferragem, declarada item a item ─────────────────────────────────────
@@ -91,13 +98,21 @@ BASCULAS = []
 CAVA    = []
 PUXADORES = []
 # ⭐ a mão de obra da moldura provençal, por frente · ⛔ zero: a cotar
-MOLDURA = [(I1, 'As duas portas provençais da bancada', 2)]
+MOLDURA = [(I1, 'As duas portas provençais da bancada', 2),
+           # ⭐ o arco do espelho é o MESMO serviço da frente provençal:
+           #   chapa inteira, relevo e vão abertos na router.
+           (I2, 'Arco e vão do espelho do DET 02, usinados em chapa '
+            'inteira de 87 × 193', 1)]
 LED     = [(I3, 'Embutida sob cada uma das três prateleiras de 60', 1.8)]
 CABIDEIROS = []
 SARRAFOS = []
 SUPORTES = []
 ALMAS   = []
-VIDRO   = []
+# ⭐ O ESPELHO ENTRA NA CONTA [Jonathan, 28/10/2026]: "Considere tbm o
+#   espelho". É o vão interno da moldura: 80 de largura por 187 de altura,
+#   descontados os 3 de moldura de cada lado e a flecha do arco.
+VIDRO   = [(I2, 'Espelho do DET 02 · o vão interno da moldura em arco, '
+            '80 × 187 · colado na chapa de base', 1, 80, 187, 'Espelho')]
 SERRALHERIA = []
 # ⭐ as duas portas provençais não têm puxador desenhado — a mesma leitura
 #   da Suíte Hóspedes, do Banho Hóspedes e do Banho Gourmet.

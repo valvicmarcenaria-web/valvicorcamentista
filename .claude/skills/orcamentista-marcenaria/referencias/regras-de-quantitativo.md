@@ -146,3 +146,87 @@ Valor fechado do serralheiro, por móvel — ⛔ **não** se busca preço na Bas
 suspenso do Living saíam **zero** nos dois lados da conferência, que por isso
 fechava sem gritar. É o tipo de erro que só aparece quando se soma à mão o que a
 planilha já somou.
+
+---
+
+## 13 · "m²" TEM DOIS SENTIDOS, E CONFUNDI-LOS ZERA UMA LINHA INTEIRA
+
+Peça de MDF em m² se paga **por CHAPA**: a área entra dividida pela área útil da
+chapa e multiplicada pelo preço da chapa. Palhinha, espelho, vidro, estofado e
+malha de cordas se pagam **POR m²**: a área entra inteira.
+
+⛔ Enquanto o discriminador da planilha foi a UNIDADE, os dois caíram na mesma
+conta — e a palhinha da cabeceira da Suíte Hóspedes somou **ZERO**. Eram
+R$ 2.645,50 numa linha que estava escrita certa, com a quantidade certa e o
+preço certo na Base: a fórmula pedia comprimento e largura, a palhinha não tem,
+e o produto deu zero sem erro nenhum na tela.
+
+⭐ **O discriminador honesto é a CHAVE**: só `MDF …` se paga por chapa.
+
+---
+
+## 14 · MALHA DE CORDAS NÁUTICAS — R$ 250 o m²
+
+> *"na base da cama superior, inferior e bicama considere a estrutura de
+> serralheria, considere a malha de cordas naulticas a 250,00 mt²"*
+
+Na Suíte 03 ela **substitui** o estrado em metalon das três bases: quadro de
+serralheria com a malha tecida dentro. ⛔ Quadro de metalon **mais** malha seria
+cobrar duas bases para o mesmo colchão.
+
+---
+
+## 15 · MOLDURA DE MESMA COR É PROVENÇAL; DE OUTRA COR É RÉGUA
+
+É a mesma regra lida dos dois lados:
+
+- **mesma cor** → duas **chapas inteiras**, a base lisa e a de cima usinada na
+  router. Vale para frente de armário **e** para moldura de espelho em arco: no
+  Banho Mariana a moldura estava quebrada em quatro réguas de 3 cm, e régua
+  emenda — numa moldura de cor única a emenda aparece.
+- **outra cor** → **régua**, porque peça inteira cobriria o material de baixo.
+  É o caso da moldura de Sal Rosa sobre a palha indiana, e do Oásis sobre a
+  palha no aparador da Suíte Hóspedes.
+
+⭐ A auditoria confere o par: a peça usinada tem de ter o **mesmo tamanho e a
+mesma quantidade** da base, e uma linha de mão de obra por folha.
+
+---
+
+## 16 · NICHO COM INTERIOR DE OUTRA COR É MATERIAL DUPLO
+
+> *"observe que são materiais duplos, ou seja, o dobro de material"*
+
+Em melamínico **uma chapa não tem duas cores**. Se a caixa é de uma cor por fora
+e o nicho é de outra por dentro, cada face é **duas peças coladas** — pele
+externa e pele interna. Era o furo da mesa lateral da Suíte Mariana: eu contava
+uma só.
+
+---
+
+## 17 · NÃO EXISTE "MDF PALHA INDIANA SEXTAVADA"
+
+> *"não existe mdf palha indiana sextavada, isso é a palha indiana (650,00 mt²)"*
+
+É a palha do **tapeceiro**, R$ 650 o m². O que a marcenaria faz é o **fundo em
+que ela se fixa** — e esse fundo sai em MDF estrutural, ⛔ sem fita, porque as
+arestas morrem sob a moldura.
+
+---
+
+## 18 · ⛔ NEM TODA PEÇA COM "PRATELEIRA" NO NOME É PRATELEIRA
+
+O motor conta suporte e alma pelo **nome**, e o nome mente. Não levam suporte
+nem alma:
+
+- **painel** que se chama "painel das prateleiras" — é painel;
+- **divisória** vertical, mesmo numa sapateira;
+- **horizontal fixa** cavilhada, que é o teto de um bloco e a base do outro;
+- a **camada de baixo** de uma prateleira duplada — é a MESMA prateleira;
+- prateleira **pendurada em haste** de metal, sem armário;
+- as horizontais que **fazem** os nichos de uma torre embutida;
+- **sapateira corrediça**, que já tem par de corrediça orçado.
+
+⭐ A exceção se escreve na `obs` da peça — `sem suporte`, `sem alma` — e aí fica
+na linha do orçamento, não na memória de quem levantou. Foram **nove** peças
+assim no projeto ICA, e cada uma cobrava um jogo de suportes que não existe.

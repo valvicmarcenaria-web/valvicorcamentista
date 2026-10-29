@@ -150,9 +150,11 @@ FOLHA = dict(
   '⚠ Não está nesta conta: sem medida, sem profundidade e sem saber se é '
   'nicho de alvenaria revestido ou caixa de marcenaria. Se for nosso, é um '
   'terceiro item neste ambiente.',
-  'O ESPELHO DE 75 × 180 da ELEVAÇÃO 01 não é nosso, mas quem o fixa é. ⚠ '
-  'Espelho desse tamanho costuma pedir moldura ou sarrafo de apoio em '
-  'marcenaria. A prancha não desenha nenhum dos dois.',
+  'O ESPELHO DE 75 × 180 da ELEVAÇÃO 01 É NOSSO desde 28/10 e entrou no '
+  'levantamento — 1,35 m² na linha de vidro e espelho. ⛔ Segue SEM PREÇO na '
+  'Base, então ele soma ZERO: o custo deste ambiente é um piso enquanto a '
+  'linha "Espelho" não tiver valor. ⚠ Espelho desse tamanho costuma pedir '
+  'moldura ou apoio em marcenaria, e a prancha não desenha nenhum dos dois.',
   '⛔ A BASE METÁLICA DE 3 CM aparece aqui como em todo o projeto e continua '
   'NÃO LANÇADA em nenhum ambiente. ⚠ São uns 3 m de rodapé por ambiente, e já '
   'são seis ambientes.'],
@@ -160,7 +162,6 @@ FOLHA = dict(
   'Bancada em granito Preto São Gabriel escovado, 75 × 60 com 20 de espessura aparente',
   'Cuba Quadrada de Sobrepor 40 cm Branco Slim - Deca e Torneira Monocomando Alta '
   'Michigan Cromada - Bela Metais',
-  'Espelho de 75 × 180 da ELEVAÇÃO 01',
   'Bacia para Caixa Acoplada Branco Carrara - Deca, chuveiro e registros',
   'Nicho iluminado da ELEVAÇÃO 03 — citado em letra, sem detalhamento'],
  notas=[

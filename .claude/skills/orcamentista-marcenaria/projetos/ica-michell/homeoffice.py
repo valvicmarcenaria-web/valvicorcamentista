@@ -100,7 +100,9 @@ HOMEOFFICE = [
  P('Fechamento superior · DET 04', I4, 167.5, 6, 2, NC18, (2, 2),
    'A faixa de 6 de ponta a ponta · aparente, em Nogueira Caiena'),
  P('Prateleira entre os dois blocos · DET 04', I4, 167.5, 40, 2, NC18, (2, 2),
-   '⭐ é o teto dos nichos abertos: vista de baixo, sai em Nogueira Caiena'),
+   '⭐ é o teto dos nichos abertos: vista de baixo, sai em Nogueira Caiena · '
+   '⛔ é HORIZONTAL FIXA — o teto de um bloco e a base do outro, cavilhada '
+   'nas divisórias: sem suporte, sem alma'),
  P('Lateral e divisória · bloco de nichos · DET 04', I4, 63, 40, 5, NC18, (1, 1),
    '⭐ nicho ABERTO: o que se vê por dentro sai na cor, não em Branco TX'),
  P('Base dos nichos · DET 04', I4, 167.5, 40, 2, NC18, (2, 2), 'Aparente'),
@@ -180,7 +182,7 @@ FOLHA = dict(
   'conta, e muda o item inteiro.',
   'O TAMPO DA MESA TEM 7 CM e MDF não existe em 70 mm. Orcei como CAIXÃO — '
   'face de cima em Lacca Fume, face de baixo em Branco TX, borda de 7 em '
-  'Lacca Fume e quadro de sarrafo por dentro. ⚠ Se a face de baixo tiver de '
+  'Lacca Fume e ENGRADADO DE MDF por dentro. ⚠ Se a face de baixo tiver de '
   'sair em Lacca Fume, são mais 2 m² da chapa cara. É a mesma questão das '
   'colunas do Living e da prateleira do Quarto, agora em 7 cm.',
   'O PAINEL DO DET 03 TEM 350 DE LARGURA e a chapa dá 275. Dividi em duas '

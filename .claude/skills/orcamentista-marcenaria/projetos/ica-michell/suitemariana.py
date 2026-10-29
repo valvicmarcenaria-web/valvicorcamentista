@@ -46,13 +46,16 @@ BR15 = 'MDF Branco TX 15'
 I1  = 'DET 01 Estante com armário'
 I2  = 'DET 02 Caixa organizadora'
 I3  = 'DET 03 Mesa com armário'
-I4  = 'DET 04 Painel com suporte de papel'
-I5  = 'DET 05 Painel 1'
+# ⭐⭐ DUAS UNIFICAÇÕES [Jonathan, 28/10/2026]: "Unifique item 4 e 5" e
+#   "unfique item 7, 8, 9 e 10". Os DETs continuam escritos peça por peça
+#   dentro do item — o que muda é quantas linhas o cliente confere.
+I4  = 'DET 04 e 05 Painel com suporte de papel e painel de 135'
+I5  = I4
 I6  = 'DET 06 Casinha'
-I7  = 'DET 07 Mesa lateral'
-I8  = 'DET 08 Painel 2'
-I9  = 'DET 09 Prateleira'
-I10 = 'DET 10 Escrivaninha montessoriana'
+I7  = 'DET 07 a 10 Mesa lateral, painel de 330, prateleira e escrivaninha'
+I8  = I7
+I9  = I7
+I10 = I7
 I11 = 'DET 11 Cama montessoriana'
 I12 = 'ELEVAÇÃO 04 Nome Mariana'
 
@@ -178,8 +181,19 @@ SUITEMARIANA = [
  #  DET. 07 VISTA FRONTAL 83 de largura · altura 2 + 27 + 2 + 27 + 2 = 60
  #  VISTA SUPERIOR 83 × 50 · LATERAL 50 × 60
  #  ⭐ o NICHO interno é Sal Rosa, a caixa é Paris
- P('Lateral',               I7, 60, 50, 2, PA15, (1, 1)),
- P('Tampo e base',          I7, 80, 50, 2, PA15, (1, 1)),
+ # ⭐⭐ MATERIAL DUPLO [Jonathan, 28/10/2026]: "observe que são materiais
+ #   duplos, ou seja, o dobro de material". A caixa é Paris por fora e o
+ #   nicho é Sal Rosa por dentro, e em melamínico UMA chapa não tem duas
+ #   cores: cada face da caixa é DUAS peças coladas, a de fora em Paris e a
+ #   de dentro em Sal Rosa. Era o furo deste item — eu contava uma só.
+ P('Lateral · pele externa', I7, 60, 50, 2, PA15, (1, 1),
+   'Paris, a cor que se vê de fora'),
+ P('Lateral · pele interna', I7, 60, 50, 2, SR15, (1, 1),
+   '⭐ Sal Rosa, a cor que se vê DENTRO do nicho · é a segunda pele do '
+   'material duplo'),
+ P('Tampo e base · pele externa', I7, 80, 50, 2, PA15, (1, 1), 'Paris'),
+ P('Tampo e base · pele interna', I7, 80, 50, 2, SR15, (1, 1),
+   '⭐ Sal Rosa por dentro · segunda pele'),
  P('Prateleira',            I7, 80, 50, 1, SR15, (1, 0),
    'A divisória dos dois nichos de 27 · em Sal Rosa, como a prancha pede'),
  P('Fundo',                 I7, 83, 60, 1, SR6, (0, 0),
@@ -188,7 +202,7 @@ SUITEMARIANA = [
  # ══ ITEM 08 · PAINEL 2 — 330 × 145 × 3 ══════════════════════════════
  P('Painel',                I8, 165, 145, 2, PA15, (2, 2),
    '⛔ 330 não sai de uma chapa: duas peças de 165 · ⭐ os 3 cm saem do '
-   'engradado de sarrafo atrás, não de duas chapas coladas'),
+   'engradado de MDF atrás, não de duas chapas coladas'),
 
  # ══ ITEM 09 · PRATELEIRA — 114 × 15 × 8 ═════════════════════════════
  #  DET. 09 VISTA SUPERIOR 3 + 109 + 3 = 114, 15 de profundidade
@@ -210,6 +224,16 @@ SUITEMARIANA = [
    '15 mm, não 6: é ele que recebe os encaixes dos nichos'),
  P('Prateleira móvel',      I10, 83, 40, 1, SR15, (2, 2),
    '⭐ Sal Rosa, e ela é MÓVEL: encaixa em qualquer altura da escada'),
+ # ⭐ RIPAS LATERAIS [Jonathan, 28/10/2026]: "item 10: tem as ripas
+ #   laterais". As duas faces externas da escrivaninha são ripadas, como a
+ #   empena do DET 01 — ripa de 3 com vão de 1, laminada nos dois lados.
+ #   ⚠ A medida do vão saiu por leitura: a prancha não cota a ripa aqui.
+ *ripado(I10, 40, 64, 3, 1, SR15,
+         'Ripado da lateral esquerda · ripa de 3 com vão de 1, como na '
+         'empena do DET 01 · laminada nos dois lados'),
+ *ripado(I10, 40, 64, 3, 1, SR15,
+         'Ripado da lateral direita · ripa de 3 com vão de 1 · laminada '
+         'nos dois lados'),
 
  # ══ ITEM 11 · CAMA MONTESSORIANA — 207 × 107 × 57 ════════════════════
  #  DET. 11 VISTA SUPERIOR 207 × 107 · FRONTAL 207, 27 de proteção + 30
@@ -240,9 +264,13 @@ SUITEMARIANA = [
 ]
 
 # ── ferragem, declarada item a item ─────────────────────────────────────
-GAVETAS = [(I3, 'Mesa com armário · três gavetas de 20', 3, 450)]
+GAVETAS = []  # ⛔ as três gavetas foram para CORREDIÇA TOUCH, ver OUTRAS
+# ⭐ DOZE DOBRADIÇAS NA ESTANTE [Jonathan, 28/10/2026]: "são 12 dobradiças
+#   no total". Eu havia posto quatro por folha — 16 — porque a porta tem
+#   até 174 de altura. São TRÊS por folha: 4 × 3 = 12.
 PORTAS  = [(I1, 'Estante · quatro portas de giro recortadas na empena, '
-            'de até 174 de altura', 4, 4, DOBRADICA),
+            'de até 174 de altura · ⭐ três dobradiças por folha', 4, 3,
+            DOBRADICA),
            (I3, 'Mesa com armário · uma porta de giro de 60', 1, 2,
             DOBRADICA)]
 BASCULAS = [(I1, 'Armário de 100 da estante · duas básculas, de 85 e de 37',
@@ -260,7 +288,17 @@ SARRAFOS = []  # ⛔ pinus PROIBIDO: os dois engradados viraram travessa de MDF
 SUPORTES = []
 ALMAS   = []
 VIDRO   = []
-SERRALHERIA = []
+# ⭐ ESTRUTURA DE SERRALHERIA NA CAMA [Jonathan, 28/10/2026]: "item 11:
+#   considere a palha indiana e a estrutura de serralheria". A palha já
+#   estava (0,82 m² de palhinha natural); a serralheria entra agora.
+#   ⛔ SEM PREÇO, e de propósito: serralheria é orçamento FECHADO por peça
+#     e o senhor não deu o valor desta. O banco do Living foi R$ 2.500 e a
+#     mesa da Suíte Hóspedes R$ 450 — não dá para interpolar entre os dois.
+#   ⚠ E fica a pergunta na caixa de dúvidas: esta estrutura SUBSTITUI os
+#     dois quadros de estrado em metalon, ou se somam? Uma cama
+#     montessoriana tem o colchão quase no chão, e pode ser que o quadro
+#     de metalon já seja a estrutura.
+SERRALHERIA = [(I11, 'Estrutura da cama montessoriana e da bicama', 0.0)]
 # ⭐ as frentes emolduradas não têm puxador nenhum desenhado, e cava
 #   cortaria a palha: é o pulsador que sobra, como na Suíte Hóspedes, no
 #   Banho Hóspedes e no Banho Gourmet.
@@ -294,8 +332,12 @@ OUTRAS  = [
             'abre por toque, sem ferragem à vista', 6, 'un', 'Pulsador'),
            (I2, 'Rodízio deslizante', 'Quatro por caixa, duas caixas · '
             '⛔ sem preço na Base', 8, 'un', 'Rodízio deslizante'),
-           (I3, 'Pulsador', 'Três gavetas e uma porta da mesa · abre por '
-            'toque, sem ferragem à vista', 4, 'un', 'Pulsador'),
+           (I3, 'Pulsador', 'A porta de giro de 60 da mesa · abre por '
+            'toque, sem ferragem à vista · ⛔ só a porta: as três gavetas '
+            'foram para corrediça touch', 1, 'un', 'Pulsador'),
+           (I3, 'Corrediça touch', 'Três gavetas de 20 da mesa · abre por '
+            'toque · ⛔ substitui o par de corrediça e o pulsador',
+            3, 'par', 'Corrediça touch'),
            (I4, 'Suporte para rolo de papel', 'Um, na travessa de cima · '
             '⛔ sem preço na Base', 1, 'un', 'Suporte para rolo de papel'),
            (I11, 'Rodízio deslizante', 'Quatro na bicama · ⛔ sem preço na '
@@ -303,6 +345,14 @@ OUTRAS  = [
            (I12, 'Usinagem de letra em router', 'Sete letras de "Mariana" '
             'em chapa dupla de 3 cm · ⛔ sem preço na Base', 7, 'un',
             'Usinagem de letra em router')]
+
+# ⭐ MODO MISTO DENTRO DO MESMO MÓVEL [Jonathan, 28/10/2026]. A regra da
+#   casa é uma abertura por frente, e aqui há DUAS espécies de frente no
+#   mesmo móvel: as GAVETAS, que desde 28/10 abrem por CORREDIÇA TOUCH, e
+#   a PORTA de giro, que não tem corrediça nenhuma e abre por PULSADOR.
+#   ⛔ Não é pagar duas vezes: são frentes diferentes. Fica declarado para
+#     a auditoria não confundir soma de modos com soma de custo.
+ABRE_MISTO = [I3]
 
 CABECA = {
  I1: ('350 × 300 × 30',
@@ -325,7 +375,7 @@ CABECA = {
       'o rolo de papel, a de baixo é o apoio'),
  I5: ('105 × 135 × 3',
       'DET. 05 VISTA FRONTAL 105 × 135, com 3 de espessura · ⭐ 3 cm em MDF '
-      'não é chapa, é construção: painel de 15 sobre engradado de sarrafo'),
+      'não é chapa, é construção: painel de 15 sobre engradado de MDF'),
  I6: ('350 × 219 × 25',
       'DET. 06 VISTA FRONTAL 10 + 40 + 290 + 10 = 350 · altura 219 na '
       'cumeeira e 126 na beirada · águas de 190 e de 198 · VISTA SUPERIOR '
@@ -408,8 +458,8 @@ FOLHA = dict(
   'do corpo, são 38 cm a menos de altura em 59 ripas — quase uma chapa de '
   'Sal Rosa. É a segunda cota mais cara desta aba.',
   'OS PAINÉIS DO DET 05 E DO DET 08 TÊM 3 CM DE ESPESSURA. ⭐ Lancei painel '
-  'de 15 mm sobre ENGRADADO DE SARRAFO: dá os 3 cm, é como se faz, e custa '
-  'R$ 171 de sarrafo. ⚠ A alternativa literal — duas chapas de 15 coladas '
+  'de 15 mm sobre ENGRADADO DE MDF: dá os 3 cm, é como se faz, e a travessa '
+  'sai da própria chapa. ⚠ A alternativa literal — duas chapas de 15 coladas '
   '— acrescentaria 6,2 m² de Paris, que são DUAS chapas e R$ 1.400. ⛔ '
   'Confirmar, porque é a diferença entre um painel e um painel caro.',
   'O NOME "MARIANA" DA ELEVAÇÃO 04 está em letra e não tem detalhamento: '
@@ -477,8 +527,8 @@ FOLHA = dict(
   'metades de 175 na VISTA SUPERIOR. É a primeira vez neste executivo que '
   'o desenho antecipa o plano de corte.',
   '⭐ OS 3 CM DOS PAINÉIS SAEM DO ENGRADADO, não de duas chapas coladas. '
-  'Painel de 15 mm sobre sarrafo de 15 dá a mesma espessura por R$ 171 '
-  'contra R$ 1.400 de chapa a mais. ⛔ A exceção é o nome "Mariana": letra '
+  'Painel de 15 mm sobre travessa de MDF de 5 cm dá a mesma espessura por '
+  'uma fração do que custa a chapa a mais. ⛔ A exceção é o nome "Mariana": letra '
   'recortada não aceita engradado, e ali os 3 cm são mesmo chapa dupla.',
   '⚠ DUAS FITAS DE LED, e as duas a prancha escreve com a mesma frase: '
   '"com fita de led embutido acima". Uma na empena do ripado da estante, '

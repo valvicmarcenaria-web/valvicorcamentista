@@ -29,6 +29,16 @@ from base import P, gaveta, ALT_MAX, CHAPA_C
 
 BD18, BD15, BD6 = ('MDF Branco Diamante 18', 'MDF Branco Diamante 15',
                    'MDF Branco Diamante 6')
+# ⭐⭐ A ESTRUTURA SOBE PARA 25 MM [Jonathan, 28/10/2026]
+#   > "No closet master considere a estrutura em mdf de 25mm"
+#   ⛔ ESTRUTURA é o que SEGURA: lateral, divisória, tampo, base e a
+#     divisória do nicho — as peças de 300 de altura que carregam o closet.
+#     NÃO é a caixa de gaveta, que continua em 15, nem a frente nem a
+#     prateleira, que continuam em 18. Numa coluna de 3 m é a lateral que
+#     empena, e é ela que o senhor está reforçando.
+#   ⚠ O 25 mm não tem preço na Base. Lancei um INTERINO declarado de
+#     R$ 970 — o 18 na proporção 25/18 — e ele está na caixa de dúvidas.
+BD25 = 'MDF Branco Diamante 25'
 
 I1 = 'DET 01 Nichos'
 I2 = 'DET 02 Armário 01'
@@ -42,9 +52,9 @@ CLOSETMASTER = [
  #  VISTA FRONTAL  80 de largura · altura 2 + 43 + 2 + 48 + 2 + 48 + 2 +
  #                 48 + 2 + 48 + 2 + 48 + 5 = 300 · SEIS nichos com LED
  #  VISTA SUPERIOR 80 = 30 de curva + 50 · profundidade 40 · canto de 90°
- P('Lateral',            I1, 300, 40, 2, BD15, (1, 0),
+ P('Lateral',            I1, 300, 40, 2, BD25, (1, 0),
    'Aparente · ⛔ 300 de altura contra 273 de peça inteira'),
- P('Tampo e base',       I1, 80, 40, 2, BD15, (1, 0)),
+ P('Tampo e base',       I1, 80, 40, 2, BD25, (1, 0)),
  P('Prateleira',         I1, 80, 40, 5, BD18, (2, 2),
    '⭐ 18 mm porque o vão de 80 passa dos 70 da regra · a frente é '
    'ARREDONDADA, como a VISTA SUPERIOR mostra: é peça de canto'),
@@ -57,17 +67,18 @@ CLOSETMASTER = [
  #                 altura 3 + 60 + 3 + 30 + 3 + 193 ≈ 300
  #                 o corpo de 193 = 22 + 22 + 22 + 22 de sapateira + 23 de
  #                 nicho + 82 de gavetão
- P('Lateral',            I2, 300, 50, 2, BD15, (1, 0), '⛔ 300 de altura'),
- P('Divisória',          I2, 300, 50, 2, BD15, (1, 0),
+ P('Lateral',            I2, 300, 50, 2, BD25, (1, 0), '⛔ 300 de altura'),
+ P('Divisória',          I2, 300, 50, 2, BD25, (1, 0),
    'As duas verticais que fazem as colunas de 50, 53 e 29 · ⛔ 300 de altura'),
- P('Tampo e base',       I2, 134, 50, 2, BD15, (1, 0)),
+ P('Tampo e base',       I2, 134, 50, 2, BD25, (1, 0)),
  P('Prateleira do maleiro', I2, 134, 50, 1, BD18, (1, 0),
    '⭐ 18 mm: o vão corrido de 134 passa dos 70'),
  P('Prateleira do nicho', I2, 134, 50, 1, BD18, (1, 0)),
  P('Sapateira corrediça · coluna de 50', I2, 50, 50, 4, BD15, (2, 2),
-   'Quatro, de 22 em 22 · corre para fora, então as quatro arestas aparecem'),
+   'Quatro, de 22 em 22 · corre para fora, então as quatro arestas aparecem '
+   '· ⛔ CORRE em par de corrediça, que já está orçado: sem suporte'),
  P('Sapateira corrediça · coluna de 53', I2, 53, 50, 4, BD15, (2, 2),
-   'Quatro, de 22 em 22'),
+   'Quatro, de 22 em 22 · ⛔ corre em corrediça, já orçada: sem suporte'),
  P('Prateleira do nicho baixo', I2, 50, 50, 1, BD18, (1, 0)),
  P('Prateleira do nicho baixo · coluna de 53', I2, 53, 50, 1, BD18, (1, 0)),
  P('Frente · gavetão do cesto de roupa', I2, 50, 82, 1, BD18, (2, 2),
@@ -83,10 +94,10 @@ CLOSETMASTER = [
  #  VISTA FRONTAL  3 + 105 + 3 + 90 + 3 + 97 + 3 + 173 ≈ 480
  #                 altura 3 + 60 + 3 + 30 + 3 + 193 ≈ 300
  #  ⭐ a coluna de 97 leva o ESPELHO COM LED FRONTAL
- P('Lateral',            I3, 300, 60, 2, BD15, (1, 0), '⛔ 300 de altura'),
- P('Divisória',          I3, 300, 60, 3, BD15, (1, 0),
+ P('Lateral',            I3, 300, 60, 2, BD25, (1, 0), '⛔ 300 de altura'),
+ P('Divisória',          I3, 300, 60, 3, BD25, (1, 0),
    'As três verticais das quatro colunas · ⛔ 300 de altura'),
- P('Tampo e base',       I3, 237, 60, 4, BD15, (1, 0),
+ P('Tampo e base',       I3, 237, 60, 4, BD25, (1, 0),
    'Duas peças em cada: 474 de corrida não sai de uma chapa'),
  P('Prateleira do maleiro · coluna de 105', I3, 105, 60, 1, BD18, (1, 0)),
  P('Prateleira do maleiro · coluna de 90',  I3, 90, 60, 1, BD18, (1, 0)),
@@ -95,7 +106,7 @@ CLOSETMASTER = [
  P('Prateleira do nicho · coluna de 105',   I3, 105, 60, 1, BD18, (1, 0)),
  P('Prateleira do nicho · coluna de 90',    I3, 90, 60, 2, BD18, (1, 0),
    'Duas: a coluna de 90 tem DOIS níveis de nicho, de 43 cada'),
- P('Nicho · divisória vertical', I3, 65, 60, 1, BD15, (1, 0),
+ P('Nicho · divisória vertical', I3, 65, 60, 1, BD25, (1, 0),
    'Parte a coluna de 90 em dois nichos de 43'),
  P('Prateleira do nicho · coluna de 173',   I3, 173, 60, 1, BD18, (1, 0)),
  P('Prateleira',         I3, 90, 60, 1, BD18, (1, 0),
@@ -120,9 +131,9 @@ CLOSETMASTER = [
  #                 altura 3 + 60 + 3 + 30 + 3 + 193 ≈ 300
  #  ⭐ maleiro, nicho, cabideiro, calceiro deslizante, gavetas, gavetão e
  #    sapateira — o armário mais completo dos três
- P('Lateral',            I4, 300, 60, 2, BD15, (1, 0), '⛔ 300 de altura'),
- P('Divisória',          I4, 300, 60, 2, BD15, (1, 0), '⛔ 300 de altura'),
- P('Tampo e base',       I4, 254, 60, 2, BD15, (1, 0)),
+ P('Lateral',            I4, 300, 60, 2, BD25, (1, 0), '⛔ 300 de altura'),
+ P('Divisória',          I4, 300, 60, 2, BD25, (1, 0), '⛔ 300 de altura'),
+ P('Tampo e base',       I4, 254, 60, 2, BD25, (1, 0)),
  P('Prateleira do maleiro · coluna de 104', I4, 104, 60, 1, BD18, (1, 0)),
  P('Prateleira do maleiro · coluna de 80',  I4, 80, 60, 1, BD18, (1, 0)),
  P('Prateleira do maleiro · coluna de 67',  I4, 67, 60, 1, BD18, (1, 0)),
@@ -306,6 +317,12 @@ FOLHA = dict(
   'uma prateleira que corre, não um gavetão. ⚠ Orcei a corrediça de 450 mm '
   'em cada, mas NÃO orcei caixa nem frente, porque a prancha desenha '
   'prateleira nua. Confirmar se levam borda de contenção.',
+  'O ESPELHO DO PAINEL DO DET 05 É NOSSO desde 28/10 e entrou no '
+  'levantamento — 4,35 m² de 150 × 290 dentro do painel de 160 × 300, com os '
+  '4,4 m de LED do perímetro. ⛔ A linha "Espelho" da Base segue SEM PREÇO, '
+  'então ele soma ZERO: o custo deste ambiente é um piso enquanto ela não '
+  'tiver valor. ⚠ A prancha não cota o espelho — tirei a medida do desenho '
+  'em 1/20, descontando 5 cm de painel aparente em volta.',
   'O ESPELHO DA COLUNA DE 97 DO ARMÁRIO 02 é vidraceiro. ⚠ Lancei o painel '
   'de apoio em Branco Diamante e os 4,4 m de LED do perímetro; o espelho '
   'em si, não. A prancha não cota o espelho — tirei 97 × 120 do desenho em '
@@ -320,7 +337,6 @@ FOLHA = dict(
  nao_marcenaria=[
   'Espelho da coluna de 97 do Armário 02 — vidraceiro (o painel de apoio e '
   'o LED são nossos)',
-  'Espelho do painel do DET 05 — vidraceiro',
   'Cabides, caixas organizadoras e tudo que o cliente põe dentro'],
  notas=[
   '⭐⭐ UMA COR SÓ, E ELA É BRANCA. Branco Diamante Duratex nos seis itens, '

@@ -94,7 +94,7 @@ SUITE03 = [
  #  DET. 02 VISTA LATERAL   121 × 300 · 161 cheio + recorte da escada de
  #                          3 × 28 por 33 + 22 · sobra 50 de pé embaixo
  #  DET. 02 PERSPECTIVA     vão da porta 71 × 210 · verga de 90 · pé de 50
- #  ⭐ 15 mm sobre engradado de sarrafo dá os 3 cm desenhados — não são
+ #  ⭐ 15 mm sobre ENGRADADO DE MDF dá os 3 cm desenhados — não são
  #    duas chapas coladas. O painel superior morre no teto e leva UMA
  #    pele; as duas laterais têm os dois lados à vista e levam DUAS.
  P('Painel superior · pele', I2, 185, 121, 2, PA15, (1, 1),
@@ -281,8 +281,8 @@ SUITE03 = [
 ]
 
 # ── ferragem, declarada item a item ─────────────────────────────────────
-GAVETAS = [(I1, 'Cinco gavetas dos degraus da escada', 5, 350),
-           (I6, 'Três gavetas do armário da mesa',     3, 450)]
+GAVETAS = [(I1, 'Cinco gavetas dos degraus da escada', 5, 350)]
+# ⛔ as três gavetas do I6 foram para CORREDIÇA TOUCH, ver OUTRAS
 PORTAS  = [(I4, 'Três portas de giro da estante de 300', 3, 2, DOBRADICA),
            (I5, 'Quatro portas de giro da casinha',      4, 2, DOBRADICA),
            (I6, 'Uma porta de giro do armário da mesa',  1, 2, DOBRADICA)]
@@ -305,7 +305,14 @@ SUPORTES= []
 ALMAS   = [(I3, 'Montantes da cama · caixão de 40 × 40 mm e 300 de altura', 2),
            (I5, 'Pés da casinha · caixão de 90 × 250 mm e 300 de altura', 2)]
 VIDRO   = []
-SERRALHERIA = []
+# ⭐ ESTRUTURA DE SERRALHERIA DAS TRÊS BASES [Jonathan, 28/10/2026]. É o
+#   quadro em que a malha de cordas náuticas é tecida — um por leito.
+#   ⛔ SEM PREÇO, de propósito: serralheria é orçamento FECHADO por peça e
+#     o senhor não deu o valor deste. O banco do Living foi R$ 2.500 e a
+#     mesa da Suíte Hóspedes R$ 450; três quadros de cama não se
+#     interpolam entre os dois. Está na caixa de dúvidas.
+SERRALHERIA = [(I3, 'Três quadros de base: cama alta, cama baixa e bicama '
+                '· é neles que a malha de cordas é tecida', 0.0)]
 OUTRAS  = [# ⭐⭐ A PALHA É PALHINHA NATURAL [Jonathan, 28/10/2026]: R$ 650 o
            #   m², tapeceiro, não chapa. As frentes passam a ser substrato
            #   de MDF Paris com a palhinha trançada dentro da moldura.
@@ -314,11 +321,23 @@ OUTRAS  = [# ⭐⭐ A PALHA É PALHINHA NATURAL [Jonathan, 28/10/2026]: R$ 650 o
             'Palhinha natural'),
            (I6, 'Palhinha natural', 'Campo das três gavetas e da porta do '
             'armário da mesa · 0,45 + 0,45', 0.90, 'm²', 'Palhinha natural'),
-           # ⭐ ESTRADO EM METALON · R$ 250 o quadro [Jonathan, 28/10/2026]
-           (I3, 'Estrado em metalon', 'TRÊS quadros: cama alta 194 × 121, '
-            'cama baixa 194 × 121 e bicama 196 × 118 · ⛔ substitui os três '
-            'painéis de MDF e o sarrafo que os apoiava', 3, 'quadro',
-            'Estrado em metalon'),
+           # ⭐⭐ AS TRÊS BASES MUDARAM DE SOLUÇÃO [Jonathan, 28/10/2026]
+           #   > "na base da cama superior, inferior e bicama considere a
+           #   >  estrutura de serralheria, considere a malha de cordas
+           #   >  naulticas a 250,00 mt²"
+           #   ⛔ O ESTRADO EM METALON SAIU DAQUI. Na primeira rodada o
+           #     senhor disse "todas as camas teremos estrado em metalon",
+           #     e eu lancei três quadros. Agora, para ESTA cama, a base é
+           #     outra coisa: quadro de SERRALHERIA com MALHA DE CORDAS
+           #     NÁUTICAS tecida dentro. Quadro de metalon mais malha seria
+           #     cobrar duas bases para o mesmo colchão.
+           #   ⭐ A malha é por m² de vão, como a palhinha: 1,94 × 1,21 nas
+           #     duas camas e 1,96 × 1,18 na bicama = 4,69 + 2,31 = 7,00 m².
+           (I3, 'Malha de cordas náuticas', 'As TRÊS bases: cama alta '
+            '194 × 121, cama baixa 194 × 121 e bicama 196 × 118 · tecida '
+            'dentro do quadro de serralheria · ⛔ substitui os três quadros '
+            'de estrado em metalon', 7.00, 'm²',
+            'Malha de cordas náuticas'),
            # ⭐ PERFIL DE PROTEÇÃO DE PISO · R$ 15 o metro linear
            (I1, 'Perfil de proteção de piso', 'Escada de 157 de extensão',
             1.57, 'm', 'Perfil de proteção de piso'),
@@ -336,12 +355,24 @@ OUTRAS  = [# ⭐⭐ A PALHA É PALHINHA NATURAL [Jonathan, 28/10/2026]: R$ 650 o
             'desenha puxador nenhum', 3, 'un', 'Pulsador'),
            (I5, 'Pulsador', 'Quatro portas de giro e duas básculas, todas '
             'emolduradas e sem puxador desenhado', 6, 'un', 'Pulsador'),
-           (I6, 'Pulsador', 'Três gavetas e uma porta, todas emolduradas e '
-            'sem puxador desenhado', 4, 'un', 'Pulsador'),
+           (I6, 'Pulsador', 'A porta do armário da mesa, emoldurada e sem '
+            'puxador desenhado · ⛔ só a porta: as três gavetas foram para '
+            'corrediça touch', 1, 'un', 'Pulsador'),
+           (I6, 'Corrediça touch', 'Três gavetas do armário da mesa · abre '
+            'por toque · ⛔ substitui o par de corrediça e o pulsador',
+            3, 'par', 'Corrediça touch'),
            (I6, 'Usinagem de encaixe de prateleira', 'Painel de encaixes da '
             'escrivaninha · 129 de largura por 64 de altura de rasgo '
             'corrido · ⛔ SEM PREÇO na Base', 1.29, 'm', 
             'Usinagem de encaixe de prateleira')]
+
+# ⭐ MODO MISTO DENTRO DO MESMO MÓVEL [Jonathan, 28/10/2026]. A regra da
+#   casa é uma abertura por frente, e aqui há DUAS espécies de frente no
+#   mesmo móvel: as GAVETAS, que desde 28/10 abrem por CORREDIÇA TOUCH, e
+#   a PORTA de giro, que não tem corrediça nenhuma e abre por PULSADOR.
+#   ⛔ Não é pagar duas vezes: são frentes diferentes. Fica declarado para
+#     a auditoria não confundir soma de modos com soma de custo.
+ABRE_MISTO = [I6]
 
 CABECA = {
  I1: ('157 × 72 × 139',
@@ -354,7 +385,7 @@ CABECA = {
       'VISTA SUPERIOR 369 × 121 · VISTA LATERAL 121 × 300, 161 cheio mais '
       'o recorte da escada de três degraus de 28 × 33 · PERSPECTIVA vão da '
       'porta de 71 × 210, verga de 90, pé de 50 · ⭐ 15 mm sobre engradado '
-      'de sarrafo, não chapa maciça de 3 cm'),
+      'de MDF, não chapa maciça de 3 cm'),
  I3: ('202 × 125 × 300',
       'DET. 03 VISTA FRONTAL 202 = 4 + 194 + 4 · altura 25 de bicama + 12 '
       '+ 104 + 12 + 149 de rede ≈ 300 · nicho de 178 × 22 com LED · VISTA '
@@ -465,7 +496,7 @@ FOLHA = dict(
   'mesmo. Então aqui o pulsador não é economia, é leitura de desenho.',
   'O PÓRTICO TEM 370 DE VÃO E 121 DE PROFUNDIDADE, e eu o construí como a '
   'casa construiu os painéis de 3 cm da Suíte Mariana: 15 mm sobre '
-  'engradado de sarrafo. ⚠ A diferença é que aqui são DOIS lados à vista '
+  'ENGRADADO DE MDF. ⚠ A diferença é que aqui são DOIS lados à vista '
   'nas laterais, porque se atravessa o vão de passagem de 71 × 210 — '
   'são quatro peles por lateral em vez de duas. ⛔ Se o senhor ler o '
   'desenho como chapa maciça de 3 cm, são mais quatro chapas de Paris, '

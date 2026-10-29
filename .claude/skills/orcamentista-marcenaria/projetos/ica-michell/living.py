@@ -89,8 +89,10 @@ LIVING = [
  # ── DET 03 · PRATELEIRA — 135 × 45, duplada ──────────────────────────
  #   ⭐ [Jonathan 28/10] "a prateleira é duplada, veja que tem 5cm de
  #     espessura, considere duas peças"
- P('Prateleira',         D3, 135, 45, 2, 18, (2, 2),
-   '⭐ duplada: a prancha desenha 5 cm de espessura, são duas peças'),
+ P('Prateleira · camada vista',   D3, 135, 45, 1, 18, (2, 2),
+   '⭐ duplada: a prancha desenha 5 cm de espessura, são duas peças · esta é a de cima, e é ela que leva o jogo de suportes e a alma'),
+ P('Prateleira · camada de baixo', D3, 135, 45, 1, 18, (2, 2),
+   '⛔ a segunda camada da MESMA prateleira: sem suporte, sem alma — quem apoia e quem reforça já está declarado na camada de cima'),
 
  # ══ DET 04 · DIVISÓRIA EM COLUNAS ⭐⭐ ════════════════════════════════
  #   11 colunas · caixão de 70 × 200 mm · 4 peças cada [Jonathan 27/10]

@@ -16,6 +16,12 @@ import sys, json, importlib.util, pathlib, io, contextlib
 P = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(P))
 import base as B
+import re
+
+# ⛔ o nome do móvel traz a referência da prancha na frente, e nos itens
+#   unificados ela é uma FAIXA — "DET 04 e 05", "DET 07 a 10". Um split por
+#   espaço cortava no lugar errado: a auditoria imprimia "e 05 Painel...".
+SO_DET = re.compile(r'^(?:DET|ELEVAÇÃO)\s+\d+(?:\s*(?:a|e|,|\+|/)\s*\d+)*\s+')
 
 NOME = sys.argv[1] if len(sys.argv) > 1 else 'living'
 sp = importlib.util.spec_from_file_location('AMB', P/f'{NOME}.py')
@@ -68,6 +74,13 @@ for p in PECAS:
     if '· fundo' in p['nome'] and ('avet' in p['nome'] or 'aveta' in p['nome']):
         caixas[p['movel']] = caixas.get(p['movel'], 0) + p['qtd']
 for gv in GAVETAS: corr[gv[0]] = corr.get(gv[0], 0) + gv[2]
+# ⭐⭐ A CORREDIÇA TOUCH TAMBÉM É CORREDIÇA [Jonathan, 28/10/2026]: "nao se
+#   usa pulsador em gavetas, considere corrediça touch". Ela entra por
+#   OUTRAS, não pela lista de GAVETAS, e esta regra não a via: a gaveta
+#   ficava acusada de não ter corrediça justamente onde tem a mais cara.
+for o in g('OUTRAS'):
+    if o[5] == 'Corrediça touch':
+        corr[o[0]] = corr.get(o[0], 0) + o[3]
 for mv in set(caixas) | set(corr):
     if caixas.get(mv, 0) != corr.get(mv, 0):
         erro(f'{mv[:34]}: {caixas.get(mv,0)} caixas de gaveta × '
@@ -172,6 +185,12 @@ for o in g('OUTRAS'):
     #   à vista. É o que a porta ripada do Banho Gourmet pede, e a Base já
     #   avisa que ele NÃO SE SOMA ao slim nem a puxador na mesma frente.
     if o[5] == 'Pulsador': abre[o[0]] = abre.get(o[0], set()) | {'pulsador'}
+    # ⭐ e a CORREDIÇA TOUCH declarada por OUTRAS é o quinto modo: a gaveta
+    #   abre pelo toque da própria corrediça. Antes ela só era reconhecida
+    #   quando vinha marcada na lista de GAVETAS; desde 28/10 ela vem por
+    #   OUTRAS, porque substitui o par de corrediça inteiro.
+    if o[5] == 'Corrediça touch':
+        abre[o[0]] = abre.get(o[0], set()) | {'touch'}
 # ⭐⭐ ITEM UNIFICADO PODE TER DOIS MODOS [Jonathan, 28/10/2026]. Quando o
 #   senhor manda unificar o preço de três detalhamentos num item só, o
 #   item passa a conter TRÊS móveis — e a bicama abrir por cava enquanto o
@@ -349,7 +368,7 @@ print('═'*W); print(f'AUDITORIA DO LEVANTAMENTO · {NOME.upper()}'); print('�
 print(f'\n{len(PECAS)} peças · {len(MOV)} itens · '
       f'{len({p["chave"] for p in PECAS if p["chave"].startswith("MDF")})} padrões de chapa\n')
 for i, m in enumerate(MOV, 1):
-    print(f'  ITEM {i:02d}  {m.split(" ",2)[-1][:40]:42}{br(TOT[m]):>12}')
+    print(f'  ITEM {i:02d}  {SO_DET.sub("", m)[:40]:42}{br(TOT[m]):>12}')
 print(f'  {"":48}{"─"*12}')
 print(f'  {"SOMA DOS ITENS":<48}{br(sum(TOT.values())):>12}')
 if ALTAS := B.ALTAS:

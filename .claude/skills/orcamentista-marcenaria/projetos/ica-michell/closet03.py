@@ -67,7 +67,7 @@ CLOSET03 = [
    '⭐ 15 mm: o vão de 69 fica abaixo dos 70 da regra · quatro nichos '
    'empilhados de 25, 35, 34 e 35'),
  P('Divisória da sapateira', I1, 60, 80, 1, BD15, (1, 0),
-   'A vertical baixa que separa os 30 da sapateira dos 65 das gavetas'),
+   'A vertical baixa que separa os 30 da sapateira dos 65 das gavetas · ⛔ é DIVISÓRIA, não sapateira: sem suporte'),
  P('Sapateira',             I1, 30, 60, 4, BD15, (1, 0),
    'Quatro prateleiras na coluna estreita de 30'),
  P('Frente da gaveta',      I1, 65, 18, 4, BD15, (2, 2),

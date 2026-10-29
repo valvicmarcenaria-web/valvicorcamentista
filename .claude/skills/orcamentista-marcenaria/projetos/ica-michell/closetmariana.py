@@ -132,7 +132,13 @@ CABIDEIROS = [(I1, 'Cabideiro na coluna de 89 do Armário 01', 1),
 SARRAFOS = []
 SUPORTES = []
 ALMAS   = []
-VIDRO   = []
+# ⭐ O ESPELHO ENTRA NA CONTA [Jonathan, 28/10/2026]: "Ambiente 15 - closet
+#   mariana: Considerar o espelho". É o da penteadeira do Armário 02,
+#   80 × 110, com os 3,8 m de LED do perímetro que já estavam na conta.
+#   ⚠ A prancha não cota o espelho: a medida saiu da VISTA FRONTAL em 1/20.
+VIDRO   = [(I2, 'Espelho da penteadeira do Armário 02, 80 × 110 · colado '
+            'no painel de apoio, com LED no perímetro', 1, 80, 110,
+            'Espelho')]
 SERRALHERIA = []
 OUTRAS  = [
            (I1, 'Perfil de proteção de piso', 'Armário 01 de 240', 2.4, 'm',
@@ -199,10 +205,11 @@ FOLHA = dict(
   'gaveta na coluna de 80 e nada mais. ⚠ Lancei uma, de 80 × 15. Se forem '
   'duas ou três, cada uma a mais custa uns R$ 180 entre frente, caixa, '
   'corrediça e cava.',
-  'O ESPELHO COM LED FRONTAL da penteadeira não tem medida cotada: tirei '
-  '80 × 110 da VISTA FRONTAL em 1/20. ⚠ O espelho é vidraceiro e não está '
-  'nesta conta; o que é nosso são os 3,8 m de LED do perímetro, R$ 570. '
-  'Confirmar a medida antes de pedir o vidro.',
+  'O ESPELHO COM LED FRONTAL da penteadeira É NOSSO desde 28/10 e entrou '
+  'no levantamento — 0,88 m², mais os 3,8 m de LED do perímetro, R$ 570. '
+  '⛔ A linha "Espelho" da Base segue SEM PREÇO, então o vidro soma ZERO e '
+  'o custo deste ambiente é um piso. ⚠ A prancha NÃO cota o espelho: tirei '
+  '80 × 110 da VISTA FRONTAL em 1/20 — confirmar antes de pedir o vidro.',
   'AS QUATRO SAPATEIRAS DE CADA ARMÁRIO são prateleiras FIXAS, de 19, 18, '
   '18 e 19 — não corrediças. ⚠ É diferente do Armário 01 do Closet Master, '
   'onde oito sapateiras correm para fora e levam corrediça por par. Aqui a '
@@ -217,7 +224,6 @@ FOLHA = dict(
   'de 3. São 5,5 m de rodapé nos dois armários. Fica para a passada única, '
   'junto com os outros ambientes.'],
  nao_marcenaria=[
-  'Espelho de 80 × 110 da penteadeira do Armário 02 — vidraceiro (o LED do perímetro é nosso)',
   'Cadeira ou banqueta da penteadeira',
   'Cabides, caixas organizadoras e tudo que o cliente põe dentro',
   'Revestimentos, forro e iluminação de teto'],

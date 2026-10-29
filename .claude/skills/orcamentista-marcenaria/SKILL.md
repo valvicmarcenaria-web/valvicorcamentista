@@ -34,7 +34,7 @@ pelo Jonathan em 28/10/2026, e cada uma nasceu de um erro real:
 | 2 | **suporte de prateleira: R$ 6,50 por PRATELEIRA** (composição de 4), não R$ 30 por par — e não se declara, conta-se |
 | 3 | **estrado em metalon, R$ 250 o quadro, em TODA cama** — some o painel de MDF |
 | 4 | **prateleira acima de 1,20 m pede alma de aço** — contra flecha, e também se conta |
-| 5 | **corrediça touch R$ 500 SUBSTITUI o pulsador** — declarar os dois é pagar duas vezes |
+| 5 | **corrediça touch R$ 500 SUBSTITUI o par de corrediça E o pulsador** — em GAVETA o pulsador nunca entra; em porta e báscula, que não têm corrediça, ele continua |
 | 6 | **perfil de proteção de piso, R$ 15 o metro linear**, em todo painel que toca o chão |
 | 7 | **palhinha natural é R$ 650 o m² e é tapeceiro**, não chapa melamínica de R$ 137 |
 | 8 | **estofado R$ 600 o m²** |
@@ -42,6 +42,12 @@ pelo Jonathan em 28/10/2026, e cada uma nasceu de um erro real:
 | 10 | **corte: R$ 2,00 por chapa e R$ 2,50 por peça, em cada ambiente** |
 | 11 | unificar o preço **não** unifica a leitura: cada peça guarda o DET de origem |
 | 12 | serralheria entra pelo **valor fechado do ambiente**, nunca por chave da Base |
+| 13 | **"m²" tem dois sentidos e eles não se misturam**: peça de MDF se paga por CHAPA (área ÷ área útil da chapa); palhinha, espelho, vidro, estofado e malha se pagam POR m² (área cheia). O discriminador é a CHAVE: só `MDF …` é chapa |
+| 14 | **malha de cordas náuticas R$ 250 o m²** — nas bases de cama da Suíte 03 ela substitui o estrado de metalon, não se soma |
+| 15 | **moldura de MESMA cor é PROVENÇAL**: duas chapas inteiras, a base lisa e a de cima usinada na router. Vale para frente E para moldura de espelho em arco. **Moldura de OUTRA cor é régua**, porque peça inteira cobriria o material de baixo |
+| 16 | **nicho com interior de outra cor é MATERIAL DUPLO**: em melamínico uma chapa não tem duas cores — cada face é duas peças coladas |
+| 17 | **não existe "MDF palha indiana sextavada"** — é a palha indiana do tapeceiro, R$ 650 o m², e o que a marcenaria faz é o fundo em que ela se fixa |
+| 18 | ⛔ **nem toda peça com "prateleira" no nome é prateleira**: painel, divisória, horizontal fixa cavilhada, camada de baixo de prateleira duplada e sapateira corrediça NÃO levam suporte nem alma. A exceção se escreve na `obs` da peça (`sem suporte`, `sem alma`), não na cabeça |
 
 > ⭐⭐ **Regra da casa é do MOTOR, não da lista.** O que vale para toda prateleira
 > e para toda cama o motor calcula sozinho — o que se declara à mão se esquece à

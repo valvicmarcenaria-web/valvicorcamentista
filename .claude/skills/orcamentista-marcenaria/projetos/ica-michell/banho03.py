@@ -68,7 +68,7 @@ BANHO03 = [
  P('Prateleira',            I2, 60, 20, 3, SR18, (2, 2),
    '⭐ 18 mm: a tábua vence 60 de vão pendurada só pelas pontas, sem '
    'apoio nenhum embaixo · as quatro arestas aparecem, e sob cada uma '
-   'corre a fita de LED embutida'),
+   'corre a fita de LED embutida · ⛔ pendurada em haste, sem armário: sem suporte'),
 ]
 
 # ── ferragem, declarada item a item ─────────────────────────────────────

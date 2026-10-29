@@ -99,8 +99,8 @@ QUARTO = [
  P('Armário · prateleira · DET 05', I5, 106, 41, 1, PRAT18, (1, 0), '⭐ vão de 106 passa dos 70: 18 mm contra empeno'),
  P('Fechamento superior · DET 05', I5, 110, 43, 1, CM18, (2, 2), 'Aparente, em Carvalho Malva'),
  P('Frente · porta de giro · DET 05', I5,  55, 69, 2, CM18, (2, 2), 'Lisa · abre por PUXADOR PASSANTE, o único do projeto'),
- P('Painel das prateleiras · DET 05', I5, 110, 126, 1, CM18, (2, 2), 'É nele que as duas prateleiras se fixam · os 50 de baixo são o painel à vista'),
- P('Prateleira iluminada · DET 05', I5, 110, 38, 2, CM18, (2, 2), '⚠ desenhada com 3 cm de espessura — orçada em 18 mm, ver dúvida'),
+ P('Painel das prateleiras · DET 05', I5, 110, 126, 1, CM18, (2, 2), 'É nele que as duas prateleiras se fixam · os 50 de baixo são o painel à vista · ⛔ é PAINEL, não prateleira: sem suporte, sem alma'),
+ P('Prateleira iluminada · DET 05', I5, 110, 38, 2, CM18, (2, 2), '⚠ desenhada com 3 cm de espessura — orçada em 18 mm, ver dúvida · ⛔ parafusada no painel, não apoiada em armário: sem suporte'),
 
  # ══ ITEM 06 · GUARDA-ROUPA — 110 × 300 × 63 ══════════════════════════
  #  VISTA FRONTAL 55 + 55 = 110 · altura 5 + 285 + 10 = 300, do piso ao

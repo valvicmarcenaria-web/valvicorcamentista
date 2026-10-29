@@ -18,10 +18,16 @@
 
    uso:  python3 planilha.py cozinha
 """
-import sys, json, importlib.util, pathlib, io, contextlib
+import sys, json, re, importlib.util, pathlib, io, contextlib
 P = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(P))
 import base as B
+
+# ⛔ o nome do móvel traz a referência da prancha na frente, e nos itens
+#    unificados ela é uma FAIXA — "DET 01 a 06", "DET 01 e 02". Um split por
+#    espaço cortava no lugar errado e a aba saía com o móvel chamado
+#    "a 06 Conjunto da lavanderia".
+SO_DET = re.compile(r'^(?:DET|ELEVAÇÃO)\s+\d+(?:\s*(?:a|e|,|\+|/)\s*\d+)*\s+')
 
 NOME = sys.argv[1] if len(sys.argv) > 1 else 'cozinha'
 sp = importlib.util.spec_from_file_location('AMB', P/f'{NOME}.py')
@@ -167,7 +173,7 @@ def montar(inicio):
     for i, mov in enumerate(MOV, 1):
         ls = linhas_do_item(mov)
         titulo, cadeia = A.CABECA[mov]
-        val.append([f'ITEM {i:02d}', mov.split(' ', 2)[-1], '', '', '', '', '',
+        val.append([f'ITEM {i:02d}', SO_DET.sub('', mov), '', '', '', '', '',
                     titulo])
         val.append(['', cadeia])
         val.append(['MATERIAL', 'ESPECIFICAÇÃO', 'C', 'L', 'QTD', 'UN',
@@ -180,10 +186,20 @@ def montar(inicio):
             val.append([nm, esp, c, l, q, un, '', '', '', ch])
             # ⭐ R$ unitário: ou vem da Base, pela chave, ou vem fechado do
             #   ambiente (serralheria). O custo é sempre quantidade × R$ un.
+            # ⛔⛔ DOIS SENTIDOS DE "m²", E A ABA CONFUNDIA OS DOIS.
+            #   Peça de MDF em m² se paga por CHAPA: a área entra dividida
+            #   pela área útil da chapa. Palhinha, espelho, vidro e
+            #   estofado se pagam POR m²: a área entra inteira. Enquanto o
+            #   discriminador era a unidade, os dois caíam na mesma conta e
+            #   a palhinha da cabeceira da Suíte Hóspedes somava ZERO —
+            #   R$ 2.645,50 de furo numa linha que estava escrita certa.
+            #   O discriminador honesto é a CHAVE: só "MDF ..." é chapa.
             fml.append((lr, fixo if fixo is not None else
                         f'=SEERRO(PROCV($K{lr};precos;2;FALSO);"")',
-                        f'=SEERRO(SE($G{lr}="m²";$D{lr}*$E{lr}/10000*$F{lr}'
-                        f'/({AREA}*{APR})*$H{lr};$F{lr}*$H{lr});"")'))
+                        f'=SEERRO(SE(ESQUERDA($K{lr};4)="MDF ";'
+                        f'$D{lr}*$E{lr}/10000*$F{lr}/({AREA}*{APR})*$H{lr};'
+                        f'SE($D{lr}="";$F{lr}*$H{lr};'
+                        f'$D{lr}*$E{lr}/10000*$F{lr}*$H{lr}));"")'))
         rt = r0 + len(ls)
         val.append([f'TOTAL DO ITEM {i:02d}', '', '', '', '', '', '', ''])
         fml.append((rt, None, f'=SOMA(I{r0}:I{rt-1})'))
@@ -195,7 +211,14 @@ def montar(inicio):
 if __name__ == '__main__':
     INI = int(sys.argv[2]) if len(sys.argv) > 2 else 37
     val, fml, mapa, fim = montar(INI)
-    mats = sorted(r for r, h, i in fml if h)
+    # ⛔⛔ `if h` ERA UMA ARMADILHA: zero é FALSO em Python. A linha de
+    #   serralheria sem preço — valor fechado que o senhor ainda não deu —
+    #   tem h = 0.0 e caía FORA da faixa de material. Resultado: o
+    #   copyPaste não alcançava a linha, a coluna de custo ficava vazia e a
+    #   peça desaparecia do total do item sem erro na tela. A pergunta certa
+    #   é "esta linha tem R$ unitário?", não "o R$ unitário é diferente de
+    #   zero?" — e só as linhas de TOTAL têm h = None.
+    mats = sorted(r for r, h, i in fml if h is not None)
     faixas, a, ant = [], mats[0], mats[0]
     for x in mats[1:]:
         if x != ant+1: faixas.append((a, ant)); a = x
@@ -203,7 +226,7 @@ if __name__ == '__main__':
     faixas.append((a, ant))
     print(f'✓ {len(val)} linhas · blocos de {INI} a {fim-2}')
     for i, mov in enumerate(MOV, 1):
-        print(f'   ITEM {i:02d} {mov.split(" ",2)[-1][:40]:42} total na linha {mapa[i]}')
+        print(f'   ITEM {i:02d} {SO_DET.sub("", mov)[:40]:42} total na linha {mapa[i]}')
     print(f'  faixas de material: {faixas}')
     print(f'  totais: {sorted(mapa.values())}')
     print(f'  padrões de chapa: {sorted({p["chave"] for p in PECAS if p["chave"].startswith("MDF")})}')

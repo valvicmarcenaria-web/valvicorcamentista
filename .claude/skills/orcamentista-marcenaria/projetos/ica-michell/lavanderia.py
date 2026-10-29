@@ -69,7 +69,8 @@ LAVANDERIA = [
  P('Prateleira interna · DET 01', I1, 57, 66, 6, EST, (1, 0), 'Coluna de 60 · sete vãos de 30·30·35·34·34·34·35, seis prateleiras'),
  P('Prateleira do nicho aberto · DET 01', I1, 59, 66, 3, CM15, (1, 1), '⭐ os dois vãos de 27 ficam à vista: prateleira em Carvalho Malva'),
  P('Divisória do módulo basculante · DET 01', I1, 59, 66, 1, EST, (1, 0), 'Separa as duas frentes basculantes de 32'),
- P('Apoio da lava e seca · DET 01', I1, 59, 66, 1, PRAT18, (1, 0), '⭐ "prever reforço para suportar lava e seca cheia": 18 mm mais sarrafo'),
+ P('Apoio da lava e seca · DET 01', I1, 59, 66, 1, PRAT18, (1, 0), '⭐ "prever reforço para suportar lava e seca cheia": 18 mm mais o '
+   'engradado de MDF por baixo · ⛔ sem pinus'),
  *provencal('Frente · porta de giro alta · DET 01', I1, 30,  65, 2, CM15, CM6, 'Provençal · duas folhas de 30 sobre a coluna de 60'),
  *provencal('Frente · porta de giro baixa · DET 01', I1, 30, 185, 2, CM15, CM6, 'Provençal · duas folhas de 30 · 185 de altura cabe inteira na chapa'),
  *provencal('Frente · báscula · DET 01', I1, 62,  32, 2, CM15, CM6, 'Provençal · articulador HK-XS'),
@@ -278,9 +279,10 @@ FOLHA = dict(
   'Base não tem esse item — o suporte oculto que ela traz é de prateleira, '
   'não de cabo de vassoura. ⚠ O que vai aí: gancho, pinça de mola, barra?',
   'O REFORÇO DA LAVA E SECA: a prancha pede "prever reforço para suportar '
-  'lava e seca cheia". Subi o apoio para 18 mm e lancei 2,5 m de sarrafo de '
-  'pinus por baixo. ⚠ Uma lava e seca cheia passa de 100 kg — confirmar se '
-  'a fábrica quer sarrafo, cantoneira metálica ou painel duplo.',
+  'lava e seca cheia". Subi o apoio para 18 mm e lancei 2,5 m de ENGRADADO '
+  'DE MDF por baixo, tirado da própria chapa. ⚠ Uma lava e seca cheia passa '
+  'de 100 kg — confirmar se o engradado de MDF basta ou se a fábrica quer '
+  'cantoneira metálica ou painel duplo. ⛔ Pinus não entra: a casa não usa.',
   'A BANCADA EM GRANITO e as duas cubas não são nossas: bancada de 200 × 60 '
   'no DET 02 e de 230 × 60 no DET 05, dois tanques Tramontina Hera de 34 L '
   'em inox 50 × 40 e duas torneiras monocomando. ⚠ Só confirmar que o '
