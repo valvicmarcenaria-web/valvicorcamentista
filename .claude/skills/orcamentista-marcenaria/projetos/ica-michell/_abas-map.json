@@ -1,0 +1,154 @@
+{
+ "areagourmet": {
+  "sheetId": 107,
+  "cab": 6,
+  "mat0": 7,
+  "mat1": 19,
+  "direto": 20,
+  "frete": 19
+ },
+ "banho03": {
+  "sheetId": 121,
+  "cab": 6,
+  "mat0": 7,
+  "mat1": 18,
+  "direto": 19,
+  "frete": 18
+ },
+ "banhogourmet": {
+  "sheetId": 108,
+  "cab": 6,
+  "mat0": 7,
+  "mat1": 20,
+  "direto": 21,
+  "frete": 20
+ },
+ "banhohospedes": {
+  "sheetId": 111,
+  "cab": 6,
+  "mat0": 7,
+  "mat1": 20,
+  "direto": 21,
+  "frete": 20
+ },
+ "banhomariana": {
+  "sheetId": 118,
+  "cab": 6,
+  "mat0": 7,
+  "mat1": 22,
+  "direto": 23,
+  "frete": 22
+ },
+ "banhomaster": {
+  "sheetId": 115,
+  "cab": 6,
+  "mat0": 7,
+  "mat1": 21,
+  "direto": 22,
+  "frete": 21
+ },
+ "closet03": {
+  "sheetId": 120,
+  "cab": 6,
+  "mat0": 7,
+  "mat1": 17,
+  "direto": 18,
+  "frete": 17
+ },
+ "closetmariana": {
+  "sheetId": 117,
+  "cab": 6,
+  "mat0": 7,
+  "mat1": 18,
+  "direto": 19,
+  "frete": 18
+ },
+ "closetmaster": {
+  "sheetId": 114,
+  "cab": 6,
+  "mat0": 7,
+  "mat1": 19,
+  "direto": 20,
+  "frete": 19
+ },
+ "cozinha": {
+  "sheetId": 104,
+  "cab": 6,
+  "mat0": 7,
+  "mat1": 25,
+  "direto": 26,
+  "frete": 25
+ },
+ "homeoffice": {
+  "sheetId": 109,
+  "cab": 6,
+  "mat0": 7,
+  "mat1": 22,
+  "direto": 23,
+  "frete": 22
+ },
+ "lavanderia": {
+  "sheetId": 105,
+  "cab": 6,
+  "mat0": 7,
+  "mat1": 22,
+  "direto": 23,
+  "frete": 22
+ },
+ "living": {
+  "sheetId": 103,
+  "cab": 6,
+  "mat0": 7,
+  "mat1": 17,
+  "direto": 18,
+  "frete": 17
+ },
+ "quarto": {
+  "sheetId": 106,
+  "cab": 6,
+  "mat0": 7,
+  "mat1": 20,
+  "direto": 21,
+  "frete": 20
+ },
+ "salacinema": {
+  "sheetId": 112,
+  "cab": 6,
+  "mat0": 7,
+  "mat1": 21,
+  "direto": 22,
+  "frete": 21
+ },
+ "suite03": {
+  "sheetId": 119,
+  "cab": 6,
+  "mat0": 7,
+  "mat1": 23,
+  "direto": 24,
+  "frete": 23
+ },
+ "suitehospedes": {
+  "sheetId": 110,
+  "cab": 6,
+  "mat0": 7,
+  "mat1": 24,
+  "direto": 25,
+  "frete": 24
+ },
+ "suitemariana": {
+  "sheetId": 116,
+  "cab": 6,
+  "mat0": 7,
+  "mat1": 22,
+  "direto": 23,
+  "frete": 22
+ },
+ "suitemaster": {
+  "sheetId": 113,
+  "cab": 6,
+  "mat0": 7,
+  "mat1": 23,
+  "direto": 24,
+  "frete": 23
+ }
+}
