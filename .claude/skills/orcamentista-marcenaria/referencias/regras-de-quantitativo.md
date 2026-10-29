@@ -230,3 +230,27 @@ nem alma:
 ⭐ A exceção se escreve na `obs` da peça — `sem suporte`, `sem alma` — e aí fica
 na linha do orçamento, não na memória de quem levantou. Foram **nove** peças
 assim no projeto ICA, e cada uma cobrava um jogo de suportes que não existe.
+
+---
+
+## ⛔⛔⛔ REGRA 19 — A FRONTEIRA DO ESCOPO [Jonathan, 29/10/2026]
+
+> *"pedra nao é escopo da marcenaria. espelhos, vidros e serralheria que
+> estiverem na marcenaria é nosso."*
+
+**PEDRA NUNCA.** Granito, quartzito, mármore, silestone: bancada, sóculo,
+frontão, tampo, soleira e peitoril ficam fora do custo e fora da proposta.
+Não se lança a linha nem a zero. Vai para "o que não está nesta proposta".
+⚠ O executivo desenhar a pedra junto do armário não a torna nossa.
+
+**ESPELHO, VIDRO E SERRALHERIA, SIM — quando fazem parte do móvel.** Espelho
+de porta de roupeiro, vidro de cristaleira, estrado de cama, alma de aço,
+haste de prateleira, quadro de leito: medimos, fornecemos e instalamos.
+⛔ Box, janela, guarda-corpo, portão, grade, pergolado e escada metálica não.
+
+⭐ **O teste:** sai no mesmo caminhão e é instalado pela mesma equipe? É
+nosso. Existe sem o móvel? Não é.
+
+⛔ **Dois estados, só dois:** ou é nosso COM VALOR na linha, ou está nomeado
+na proposta como fora. Linha a zero com promessa de fornecimento é prometer
+com o dinheiro do lucro.

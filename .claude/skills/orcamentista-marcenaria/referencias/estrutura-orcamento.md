@@ -220,7 +220,15 @@ entrar no CD e ninguém colocar no rateio, o motor quebra na hora.
 
 ---
 
-## ⛔⛔ PEDRA NÃO É ESCOPO DA VALVIC [Jonathan, 29/10/2026]
+## ⛔⛔⛔ A FRONTEIRA DO ESCOPO — DEFINITIVA [Jonathan, 29/10/2026]
+
+> *"pedra nao é escopo da marcenaria. espelhos, vidros e serralheria que
+> estiverem na marcenaria é nosso."*
+
+A regra tem **duas metades** e as duas valem em todo orçamento. A segunda
+está no fim desta seção; a primeira é esta.
+
+### ⛔ PEDRA NÃO É ESCOPO DA VALVIC
 
 > *"pedra não entra no escopo de atuação da Valvic"*
 
@@ -243,3 +251,22 @@ e a mais cara de errar.
 "sai no mesmo contrato", confira se ele tem **linha com valor** no orçamento.
 Pela regra dos dois estados — **ou é nosso com preço, ou está nomeado na
 folha como fora**. Não existe meio-termo.
+
+### ⭐ ESPELHO, VIDRO E SERRALHERIA SÃO NOSSOS — QUANDO ESTÃO NA MARCENARIA
+
+Se a peça **faz parte do móvel**, ela é nossa: medimos, fornecemos e
+instalamos, no mesmo contrato e na mesma data.
+
+| é nosso | não é nosso |
+|---|---|
+| espelho de porta de roupeiro, de frente de armário, de painel com moldura usinada | espelho de parede solto, sem relação com móvel |
+| vidro de porta de cristaleira, de divisória que faz parte do móvel, reflecta de frente | box de banheiro, janela, guarda-corpo de escada |
+| serralheria que estrutura o móvel: estrado de cama, base metálica, alma de aço, quadro de leito, haste de prateleira, aleta com alma | portão, grade, escada metálica, pergolado, estrutura de obra |
+
+⭐ **O teste:** se a peça sai junto com o móvel no mesmo caminhão e é
+instalada pela mesma equipe, é nossa. Se ela existe sem o móvel, não é.
+
+⛔ **E ela precisa ter PREÇO.** Pela regra dos dois estados, o que é nosso
+tem linha com valor. No ICA, serralheria, espelho e vidro ficaram a R$ 0,00
+em sete ambientes enquanto a proposta prometia fornecê-los — é exatamente
+esse o buraco que esta regra fecha.

@@ -48,15 +48,32 @@ faltam folhas intermediárias. Fechar antes de começar o levantamento.
 
 É **outra casa completa**, do porte do ICA: área externa (pergolado, SPA,
 varanda), social (sala, cozinha, despensa, lavanderia), quatro suítes com
-closet e banheiro, home schooling e um anexo. ⚠ Pergolado e SPA sugerem
-**serralheria e área molhada** — conferir escopo com o Jonathan antes de
-orçar, à luz da regra nova: **pedra não é escopo da Valvic**.
+closet e banheiro, home schooling e um anexo. ⛔ Pergolado e SPA **ficaram de fora** por decisão do Jonathan.
+
+## ⭐ O ESCOPO, FECHADO [Jonathan, 29/10/2026]
+
+> *"casa toda · pergolado e spa nao entram"*
+
+✅ **DENTRO:** a casa inteira — varanda, sala de estar, cozinha, despensa,
+lavanderia, as quatro suítes com closet e banheiro, hóspedes office, home
+schooling e o anexo de banheiro social.
+
+⛔ **FORA:** **Pergolado** (folhas 12, 15, 16) e **SPA** (folhas 17, 18).
+Não entram no levantamento nem na proposta. Vão nomeados na folha "o que
+não está nesta proposta".
+
+⛔ **FORA por regra da casa:** toda **pedra** — bancada, sóculo, frontão,
+tampo, soleira e peitoril. Ver a fronteira do escopo na `SKILL.md`.
+
+✅ **DENTRO por regra da casa:** **espelho, vidro e serralheria que fazem
+parte do móvel** — espelho de porta de roupeiro, vidro de cristaleira,
+estrado de cama, alma de aço, haste de prateleira. E com **linha de valor**,
+nunca a zero.
 
 ## Próximos passos
 
 1. Fechar o índice de pranchas (paginar a listagem do Drive até o fim).
 2. Ler as plantas gerais 03 (layout) e 07 (acabamentos) — elas dão o mapa
    dos ambientes e a tabela de materiais da casa inteira.
-3. Confirmar com o Jonathan **o escopo**: a casa toda ou parte; pergolado e
-   SPA entram; quem fornece pedra, vidro e serralheria.
-4. Só então montar a planilha, no mesmo motor do ICA.
+3. Montar a planilha no mesmo motor do ICA, já com a linha de frete na
+   coluna de custo e o seletor de dificuldade por ambiente.

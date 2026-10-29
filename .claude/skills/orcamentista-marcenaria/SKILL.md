@@ -47,11 +47,54 @@ pelo Jonathan em 28/10/2026, e cada uma nasceu de um erro real:
 | 15 | **moldura de MESMA cor é PROVENÇAL**: duas chapas inteiras, a base lisa e a de cima usinada na router. Vale para frente E para moldura de espelho em arco. **Moldura de OUTRA cor é régua**, porque peça inteira cobriria o material de baixo |
 | 16 | **nicho com interior de outra cor é MATERIAL DUPLO**: em melamínico uma chapa não tem duas cores — cada face é duas peças coladas |
 | 17 | **não existe "MDF palha indiana sextavada"** — é a palha indiana do tapeceiro, R$ 650 o m², e o que a marcenaria faz é o fundo em que ela se fixa |
+| 19 | ⛔⛔ **PEDRA NÃO É ESCOPO DA MARCENARIA** · ⭐ **espelho, vidro e serralheria QUE ESTÃO NA MARCENARIA são nossos** — a fronteira inteira está logo abaixo desta tabela |
 | 18 | ⛔ **nem toda peça com "prateleira" no nome é prateleira**: painel, divisória, horizontal fixa cavilhada, camada de baixo de prateleira duplada e sapateira corrediça NÃO levam suporte nem alma. A exceção se escreve na `obs` da peça (`sem suporte`, `sem alma`), não na cabeça |
 
 > ⭐⭐ **Regra da casa é do MOTOR, não da lista.** O que vale para toda prateleira
 > e para toda cama o motor calcula sozinho — o que se declara à mão se esquece à
 > mão. O auditor quebra quando alguém declara o que agora é automático.
+
+## ⛔⛔⛔ A FRONTEIRA DO ESCOPO — DEFINITIVA [Jonathan, 29/10/2026]
+
+> *"grave DEFINITIVAMENTE NA SKILL: pedra nao é escopo da marcenaria.
+> espelhos, vidros e serralheria que estiverem na marcenaria é nosso."*
+
+**São duas metades da mesma regra, e as duas valem em TODO orçamento, sem
+exceção e sem perguntar de novo.**
+
+### ⛔ PEDRA NUNCA É NOSSA
+
+Granito, quartzito, mármore, silestone, porcelanato — **qualquer bancada,
+sóculo, frontão, tampo, soleira ou peitoril em pedra fica FORA.** Fora do
+custo, fora da proposta, fora do contrato.
+
+- Não se lança linha de pedra no orçamento, nem a zero.
+- A pedra entra na lista **"o que não está nesta proposta"**, com letra.
+- A nota do ambiente fala da **folga de medição**, que é o que de fato é
+  nosso: *"a marcenaria é medida depois que a bancada está no lugar"*.
+- ⚠ O executivo desenhar a pedra junto do armário **não a torna nossa**.
+  Desenhar junto não é fornecer.
+
+### ⭐ ESPELHO, VIDRO E SERRALHERIA SÃO NOSSOS — QUANDO ESTÃO NA MARCENARIA
+
+Se a peça **faz parte do móvel**, ela é nossa: medimos, fornecemos e
+instalamos, no mesmo contrato e na mesma data.
+
+| é nosso | não é nosso |
+|---|---|
+| espelho de porta de roupeiro, de frente de armário, de painel de banheiro com moldura usinada | espelho de parede solto, sem relação com móvel |
+| vidro de porta de cristaleira, de divisória que faz parte do móvel, reflecta de frente | box de banheiro, janela, guarda-corpo de escada |
+| serralheria que estrutura o móvel: estrado de cama, base metálica, alma de aço, quadro de leito, haste de prateleira, aleta com alma | portão, grade, escada metálica, pergolado, estrutura de obra |
+
+⭐ **O teste:** se a peça sai junto com o móvel no mesmo caminhão e é
+instalada pela mesma equipe, é nossa. Se ela existe sem o móvel, não é.
+
+⛔⛔ **E vale a REGRA DOS DOIS ESTADOS:** todo ofício que é nosso tem de ter
+**linha COM VALOR** no orçamento. Linha a R$ 0,00 com promessa de
+fornecimento na proposta é prometer com o dinheiro do lucro. Ou se cota
+antes de imprimir, ou o item vai nomeado na folha como fora. Não existe
+meio-termo.
+
 
 ## Princípios (valem nas 3 fases)
 

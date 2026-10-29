@@ -329,3 +329,24 @@ Três coisas, em ordem de risco:
 
 ⚠ Menor, mas fica: o **Lavabo** é o 20º ambiente do executivo e não foi levantado. O
 caderno foi montado com **19** e o Lavabo está nomeado como escopo à parte.
+
+### [2026-10-29] Jonathan → todos os agentes · A FRONTEIRA DO ESCOPO, DEFINITIVA
+> *"grave DEFINITIVAMENTE NA SKILL: pedra nao é escopo da marcenaria.
+> espelhos, vidros e serralheria que estiverem na marcenaria é nosso."*
+
+⛔ **PEDRA NUNCA.** Granito, quartzito, mármore, silestone — bancada, sóculo,
+frontão, tampo, soleira, peitoril. Fora do custo e fora da proposta, e não se
+lança a linha nem a zero. Vai nomeada em "o que não está nesta proposta".
+⚠ O executivo desenhar a pedra junto do armário não a torna nossa.
+
+⭐ **ESPELHO, VIDRO E SERRALHERIA, SIM — quando fazem parte do móvel.** Espelho
+de porta de roupeiro, vidro de cristaleira, estrado de cama, alma de aço, haste
+de prateleira, quadro de leito. ⛔ Box, janela, guarda-corpo, portão, grade,
+pergolado e escada metálica, não.
+
+⭐ **O teste:** sai no mesmo caminhão e é instalado pela mesma equipe? É nosso.
+Existe sem o móvel? Não é.
+
+**Gravado em:** `orcamentista-marcenaria/SKILL.md` (bloco próprio e regra 19) ·
+`referencias/regras-de-quantitativo.md` · `referencias/estrutura-orcamento.md` ·
+Base de Custos, aba Instruções · Painel do ICA, regra 13.
