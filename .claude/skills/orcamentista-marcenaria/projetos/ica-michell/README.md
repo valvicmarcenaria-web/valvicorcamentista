@@ -51,3 +51,56 @@ com a geometria vetorial inteira**. Custo de contexto: a mensagem de erro.
 ⚠ Para listar a pasta, usar **`list_recent_files`** com `pageSize=100`:
 o `search_files` **ignora o pageSize e devolve 5 por chamada** (46 chamadas
 para 235 arquivos).
+
+## O Painel, e por que ele quebrava
+
+O Painel (sheetId 0) **não é gerado por módulo** — ele é escrito à mão e
+busca os números nas 19 abas. Cada regeração de uma aba move as linhas dela,
+e foi assim que o Painel passou semanas somando errado.
+
+⭐⭐ **A CORREÇÃO DE FUNDO [29/10]: o Painel busca por RÓTULO, não por
+posição.** Toda fórmula é `SUMIF` sobre a faixa fixa `B$7:B$26` da aba,
+casando o texto da coluna MATERIAL:
+
+| coluna | o que traz | critério |
+|---|---|---|
+| D | itens | `COUNT` em `B{it0}:B{it1}` — a única que ainda usa posição |
+| E | chapas | `SUMIFS` por UN `"chapas"` **e** material `"MDF *"` |
+| F | MDF | `"MDF *"` sobre F |
+| G | fita e filetagem | `"Fita*"` + `"Filetagem*"` sobre F |
+| H | ferragem | `"Ferragem*"` sobre F |
+| I | vidro e frete | `"Vidro*"` sobre F + `"CUSTO DIRETO*"` sobre G |
+| J | corte, consum. e embal. | `"Corte*"` + `"Consumíveis"` + `"Embalagem"` sobre F |
+| K | custo direto | `"CUSTO DIRETO*"` sobre H |
+
+A faixa `7:26` cobre o painel de material da aba mais longa (Cozinha, cujo
+CUSTO DIRETO cai na linha 25). Nas abas curtas ela invade a tabela de itens,
+onde a coluna B tem **números** — e critério de texto não casa número, então
+não há contaminação.
+
+⛔⛔ **CHAPAS DOBRAVA.** Somar toda linha com UN `"chapas"` conta também a
+linha **"Corte · por chapa"**, cujo D é a soma de todas as chapas. O Living
+marcava 56 onde são 28. Por isso a coluna E exige as DUAS condições.
+
+⛔⛔ **O QUADRO ④ DA ABA DE PREÇO LIGA POR POSIÇÃO** a `Painel!B24:K43` —
+vinte linhas, Living a Banho 03. Ele estava uma linha abaixo: pulava o
+Living e contava a linha de TOTAL como ambiente, dobrando o custo direto.
+⚠ Ao mexer nas linhas do Painel, **conferir `Preço e Comissões!B41:C60`**.
+
+### O mapa de linhas do Painel
+
+| linha | o que é |
+|---|---|
+| 6–7 | o conjunto: ambientes, itens, chapas, custo direto, preço |
+| 9 | a nota do levantamento |
+| 13–19 | ONDE ESTÁ O DINHEIRO · 1 cabeçalho + 5 linhas + total em 19 |
+| 23 | cabeçalho da tabela por ambiente |
+| 24–43 | os vinte ambientes, **nesta ordem**, com o Lavabo zerado em 28 |
+| 44 | TOTAL DO QUE ESTÁ LEVANTADO |
+| 47–61 | O PREÇO DO PROJETO · resumo da aba ao lado |
+| 64–68 | o que não é marcenaria |
+| 70–76 | o que ainda não tem preço |
+| 78–91 | ⭐ AS REGRAS DA CASA · as doze regras, pedido do Jonathan |
+
+⚠ `Painel!B6:K7` e `B9` são **texto escrito**, não fórmula de aba: o número
+de itens e de chapas aparece em prosa e envelhece. Reescrever junto.
