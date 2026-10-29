@@ -201,3 +201,62 @@ aba de preço parecer baixo demais.
 coisa: a de R$ é o fechamento do dinheiro e tem de ser `R$ 0,00` sempre; a
 de % é `MC realizada − MC alvo`, e ela é diferente de zero **de propósito**
 quando algum ambiente leva AJUSTE DE MC no quadro `④`. Não é erro.
+
+---
+
+## ⭐⭐ OS RENDERS ESTÃO NAS FOLHAS DE FOTO — 1760 × 1328 [29/10]
+
+⛔ **O erro que eu cometi:** fui buscar imagem nas folhas de **detalhamento**
+e achei desenho vetorial recortado em pedaços de 253 × 521 px. Daí concluí
+que o executivo não tinha render em resolução de proposta e que era preciso
+pedir os originais para a Iara. **Errado.**
+
+⭐ Cada ambiente tem uma **folha de foto** — a primeira do bloco, listada na
+coluna `fotos` da tabela de `2026-jessica-michell-ica-terreo.md`. Ela carrega
+de uma a quatro **perspectivas fotorrealistas em 1760 × 1328** (o banho
+master em **2400 × 1792**). Sangra página inteira sem esticar um pixel.
+
+```python
+# arquivo = pagina do documento - 1
+import pymupdf
+d = pymupdf.open(f'pgs/p{doc-1:03d}.pdf')
+for xr, *_ in d[0].get_images(full=True):
+    inf = d.extract_image(xr)
+    w, h = inf['width'], inf['height']
+    if w * h > 500_000 and not (w == 2480 and h == 2480):   # ⛔ 2480² é a LOGO
+        open(f'rend/{nome}_{w}x{h}.{inf["ext"]}', 'wb').write(inf['image'])
+```
+
+⚠ **O xref 2480 × 2480 se repete em todas as 235 páginas** — é a marca do
+escritório, não um render. Filtrar sempre.
+
+| folha de foto (documento) | ambiente |
+|--:|---|
+| 009 · 027 · 044 · 061 · 072 | Living · Cozinha · Lavanderia · Quarto · Lavabo |
+| 078 · 089 · 095 · 105 · 119 | Área gourmet · Banho gourmet · Home office · Suíte hóspedes · Banho hóspedes |
+| 125 · 142 · 154 · 167 | Sala de cinema · Suíte master · Closet master · Banho master |
+| 178 · 193 · 202 | Suíte Mariana · Closet Mariana · Banho Mariana |
+| 209 · 223 · 231 | Suíte 03 · Closet 03 · Banho 03 |
+
+## O layout da proposta é o PADRÃO DA CASA, não invenção [29/10]
+
+⛔ Montei uma primeira prévia com tipografia e paleta novas. O Jonathan
+mandou **buscar a referência, como no orçamento do Junior e da Crysthiane**.
+A referência existe e está versionada:
+
+- `projetos/css-apresentacao.css` — A4 **deitado**, Cormorant Garamond +
+  DM Sans, paleta ouro/creme/escuro. O cabeçalho do arquivo diz de onde veio:
+  *"APRESENTAÇÃO — JUNIOR LAGOA SANTA OFICIAL"* (Drive,
+  `19Svekd8Hp_ZB-PLVcPvYPPSNXFateTOF`).
+- `projetos/apresentacao-vinicius.html` e `apresentacao-carla.html` — o padrão
+  já aplicado, com a sequência de folhas (capa → proposta → índice de
+  ambientes → uma abertura por ambiente → coordenação → garantia →
+  investimento → condições).
+- `projetos/build-previa-ica.py` — a prévia do ICA, três folhas.
+
+⭐ **A regra:** proposta premium da casa **não ganha linguagem nova**. A casa
+tem UMA identidade; o que muda de projeto para projeto é a imagem e o número.
+
+⚠ A coluna D do Painel (`COUNT` posicional) **não bate** com a contagem de
+`# ══ ITEM` dos módulos em 8 dos 19 ambientes. Não usar "nº de itens" em
+peça que vai para o cliente antes de reconciliar as duas.
