@@ -390,3 +390,34 @@ de países da Hettich, "o mais resistente do mundo". Nada disso se confirma.
    substitui o par comum **e** o pulsador). Pulsador é de **porta de giro e
    báscula**. Já era regra da casa na planilha; o texto da proposta tinha
    derivado dela.
+
+---
+
+# ⭐ DOBRADIÇA DE PORTA DE VIDRO — GV48 1011 [Jonathan, 29/10/2026]
+
+A casa tinha uma chave `Dobradiça vidro` de R$ 70 herdada do ICA e nenhum modelo
+por trás dela. O Jonathan cravou o modelo na cristaleira do Gustavo Raposo:
+
+> **Dobradiça GV48 · ref. 1011 · 90° · aço inox · alvenaria/vidro**, vendida em
+> kit de 2 unidades (Wood Glass Acessórios).
+
+| | |
+|---|---|
+| aplicação | porta de vidro temperado — cristaleira, box, porta de passagem em vidro |
+| fixação | **alvenaria/vidro**: base chapada no montante fixo, garra no vidro |
+| construção | corpo maciço em inox polido, dupla garra com borracha de proteção |
+| abertura | 90°, com retorno |
+| regulagem | parafusos allen nas duas faces da garra |
+| preço | ⚠ **R$ 95,00/un, estimado** — varejo Pix de R$ 77 a R$ 140, a cotar |
+
+⭐ **Quantidade: 2 por folha até 1,00 m de altura, 3 acima disso.** Vidro temperado
+pesa muito mais que uma folha de MDF da mesma medida, e o terceiro apoio é contra a
+descaída da folha, não contra o empeno.
+
+⛔ **Porta de vidro não aceita dobradiça de caneco.** Não existe furo de 35 mm em
+vidro temperado — depois de temperado o vidro não se fura nem se corta. Quem segura
+a folha é a garra, e é ela que mantém o esquadro.
+
+⭐ **O argumento de venda:** é a mesma ferragem de box de banheiro, dimensionada para
+o peso do vidro. Em inox polido, ela conversa com o puxador redondo aplicado no
+próprio vidro — a arquiteta desenhou assim na cristaleira da varanda.

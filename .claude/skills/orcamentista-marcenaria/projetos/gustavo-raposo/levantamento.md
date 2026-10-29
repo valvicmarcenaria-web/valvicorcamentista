@@ -259,3 +259,34 @@ da Suíte 02 · Filhas.
    o espelho vem da vidraçaria parceira. O cliente não contrata vidraceiro para eles.
    ⛔ Continuam FORA: as bancadas em Nanoglass, as prateleiras em Nanoglass e os **boxes**
    (box existe sem o móvel — é do vidraceiro).
+
+3. ⭐ **DOBRADIÇA DAS PORTAS DE VIDRO DA CRISTALEIRA** [Jonathan, 29/10/2026]
+   Link enviado: Wood Glass · `dobradica-inox-gv48-90o-1011-para-porta-de-vidro-e-box-alvenaria/vidro`.
+
+   **Especificação para a proposta:**
+   > **Dobradiça GV48 · ref. 1011 · 90° · aço inox**, para porta de vidro temperado,
+   > fixação **alvenaria/vidro** (base chapada no montante do móvel, garra no vidro).
+   > Corpo maciço em inox polido, dupla garra com borrachas de proteção do vidro,
+   > regulagem por parafusos allen, abertura a 90° com retorno. É a mesma ferragem
+   > de box de banheiro — dimensionada para o peso do vidro temperado, não para o
+   > peso de uma porta de MDF.
+
+   **Por que ela, e o que isso diz ao cliente:** porta de vidro não aceita dobradiça
+   de caneco. O que segura o vidro é a garra de inox, e é ela que mantém o esquadro
+   da folha. Inox polido conversa com o puxador redondo que a arquiteta desenhou no
+   próprio vidro.
+
+   **Preço** ⚠ A COTAR formalmente — o site `woodglassacessorios.com.br` não resolve
+   nesta sessão (bloqueado pela política de rede do ambiente). O levantamento de
+   varejo de hoje põe a GV48 1011 entre **R$ 77 e R$ 140 a unidade** (Pix, vendida em
+   kit de 2). Lançado a **R$ 95,00 por unidade**, meio da faixa, declarado como
+   estimativa até a cotação.
+   ⛔ Substitui a chave `Dobradiça vidro` de R$ 70 que vinha do ICA.
+
+   **Quantidade:** 2 por folha até 1,00 m de altura, **3 acima disso** — porta de vidro
+   pesa e pede o terceiro apoio.
+
+   ⚠ **Para a proposta:** o Jonathan mandou três fotos do produto (o par em perspectiva,
+   o detalhe da garra e a aplicação no vidro). Elas **não estão em disco** e os hosts
+   de imagem também não resolvem — precisam ser anexadas de novo na hora de gerar a
+   proposta, ou liberado o domínio nas configurações de rede do ambiente.
