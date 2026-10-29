@@ -130,6 +130,12 @@ que o ponto de equilíbrio da Gestão 3 usa. O `Custo total · com
 investimentos` (R$ 125.417,70) está na linha de baixo de lá, se um dia a
 conta tiver de incluir investimento.
 
+⛔⛔ **EM 29/10 A GESTÃO 3 FOI REORGANIZADA** e o bloco CUSTO FIXO VIGENTE
+desceu de `B58` para `~B107`. O `IMPORTRANGE` fixo em `B58:D62` passou a
+trazer a tabela ANO A ANO, e o VLOOKUP devolvia `#N/A`. ⭐ Corrigido para
+importar **colunas inteiras**, `'O mês'!B:D`, de modo que o rótulo é achado
+onde quer que o bloco esteja. Não voltar a cravar linha.
+
 ⛔⛔ **O IMPORTRANGE MOSTRA `#REF!` ATÉ ALGUÉM AUTORIZAR.** É uma vez só, na
 célula, e é de propósito que **não** há `IFERROR`: com ele o custo fixo
 ficaria em ZERO e o LUCRO apareceria igual à margem inteira — lucro inflado
