@@ -1,0 +1,193 @@
+{
+ "ambientes": [
+  {
+   "ambiente": "Living",
+   "custo_blum": 34683.32,
+   "custo_hettich": 33552.32,
+   "troca": 3900.0,
+   "fixo_blum": 0.0,
+   "preco_blum": 116094.79,
+   "preco_hettich": 102060.29
+  },
+  {
+   "ambiente": "Cozinha",
+   "custo_blum": 25790.08,
+   "custo_hettich": 24615.58,
+   "troca": 4050.0,
+   "fixo_blum": 4250.0,
+   "preco_blum": 86326.63,
+   "preco_hettich": 74876.29
+  },
+  {
+   "ambiente": "Lavanderia",
+   "custo_blum": 21899.18,
+   "custo_hettich": 21043.68,
+   "troca": 2950.0,
+   "fixo_blum": 2750.0,
+   "preco_blum": 73302.69,
+   "preco_hettich": 64011.19
+  },
+  {
+   "ambiente": "Quarto",
+   "custo_blum": 12240.1,
+   "custo_hettich": 11486.1,
+   "troca": 2600.0,
+   "fixo_blum": 0.0,
+   "preco_blum": 40971.05,
+   "preco_hettich": 34938.71
+  },
+  {
+   "ambiente": "Área gourmet",
+   "custo_blum": 15791.97,
+   "custo_hettich": 14660.97,
+   "troca": 3900.0,
+   "fixo_blum": 2750.0,
+   "preco_blum": 52860.15,
+   "preco_hettich": 44596.11
+  },
+  {
+   "ambiente": "Banho gourmet",
+   "custo_blum": 2320.35,
+   "custo_hettich": 2262.35,
+   "troca": 200.0,
+   "fixo_blum": 200.0,
+   "preco_blum": 7766.86,
+   "preco_hettich": 6881.67
+  },
+  {
+   "ambiente": "Home office",
+   "custo_blum": 10313.77,
+   "custo_hettich": 10197.77,
+   "troca": 400.0,
+   "fixo_blum": 1000.0,
+   "preco_blum": 34523.08,
+   "preco_hettich": 31019.83
+  },
+  {
+   "ambiente": "Suíte hóspedes",
+   "custo_blum": 14910.01,
+   "custo_hettich": 14475.01,
+   "troca": 1500.0,
+   "fixo_blum": 0.0,
+   "preco_blum": 49907.98,
+   "preco_hettich": 44030.45
+  },
+  {
+   "ambiente": "Banho hóspedes",
+   "custo_blum": 3591.46,
+   "custo_hettich": 3301.46,
+   "troca": 1000.0,
+   "fixo_blum": 0.0,
+   "preco_blum": 12021.62,
+   "preco_hettich": 10042.46
+  },
+  {
+   "ambiente": "Sala de cinema e ateliê",
+   "custo_blum": 30627.78,
+   "custo_hettich": 29003.78,
+   "troca": 5600.0,
+   "fixo_blum": 0.0,
+   "preco_blum": 102519.77,
+   "preco_hettich": 88224.43
+  },
+  {
+   "ambiente": "Suíte master",
+   "custo_blum": 15616.14,
+   "custo_hettich": 14891.14,
+   "troca": 2500.0,
+   "fixo_blum": 0.0,
+   "preco_blum": 52271.6,
+   "preco_hettich": 45296.24
+  },
+  {
+   "ambiente": "Closet master",
+   "custo_blum": 28226.46,
+   "custo_hettich": 26573.46,
+   "troca": 5700.0,
+   "fixo_blum": 0.0,
+   "preco_blum": 94481.87,
+   "preco_hettich": 80831.82
+  },
+  {
+   "ambiente": "Banho master",
+   "custo_blum": 5115.63,
+   "custo_hettich": 4999.63,
+   "troca": 400.0,
+   "fixo_blum": 400.0,
+   "preco_blum": 17123.45,
+   "preco_hettich": 15208.0
+  },
+  {
+   "ambiente": "Suíte Mariana",
+   "custo_blum": 24726.87,
+   "custo_hettich": 24088.87,
+   "troca": 2200.0,
+   "fixo_blum": 1200.0,
+   "preco_blum": 82767.77,
+   "preco_hettich": 73274.13
+  },
+  {
+   "ambiente": "Closet Mariana",
+   "custo_blum": 16428.09,
+   "custo_hettich": 15471.09,
+   "troca": 3300.0,
+   "fixo_blum": 0.0,
+   "preco_blum": 54989.42,
+   "preco_hettich": 47060.35
+  },
+  {
+   "ambiente": "Banho Mariana",
+   "custo_blum": 3493.62,
+   "custo_hettich": 3435.62,
+   "troca": 200.0,
+   "fixo_blum": 200.0,
+   "preco_blum": 11694.13,
+   "preco_hettich": 10450.56
+  },
+  {
+   "ambiente": "Suíte 03",
+   "custo_blum": 29613.03,
+   "custo_hettich": 28511.03,
+   "troca": 3800.0,
+   "fixo_blum": 1500.0,
+   "preco_blum": 99123.11,
+   "preco_hettich": 86725.57
+  },
+  {
+   "ambiente": "Closet 03",
+   "custo_blum": 13320.91,
+   "custo_hettich": 12450.91,
+   "troca": 3000.0,
+   "fixo_blum": 0.0,
+   "preco_blum": 44588.82,
+   "preco_hettich": 37873.49
+  },
+  {
+   "ambiente": "Banho 03",
+   "custo_blum": 2833.13,
+   "custo_hettich": 2775.13,
+   "troca": 200.0,
+   "fixo_blum": 200.0,
+   "preco_blum": 9483.28,
+   "preco_hettich": 8441.46
+  }
+ ],
+ "razao": 0.71,
+ "total": {
+  "custo_blum": 311541.9,
+  "custo_hettich": 297795.9,
+  "ferragem_troca": 47400.0,
+  "ferragem_fixa_blum": 14450.0,
+  "ferragem_hettich": 33654.0,
+  "economia": 13746.0,
+  "preco_blum": 1042818.08,
+  "preco_hettich": 905843.04,
+  "mc_blum": 573549.94,
+  "mc_hettich": 471038.38,
+  "fixo_periodo": 350453.1,
+  "lucro_blum": 223096.84,
+  "lucro_hettich": 120585.28,
+  "mc_pct_blum": 0.55,
+  "mc_pct_hettich": 0.52
+ }
+}

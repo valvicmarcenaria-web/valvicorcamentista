@@ -7,7 +7,7 @@ import pathlib
 CSS = pathlib.Path('/home/user/valvicorcamentista/.claude/skills/'
                    'orcamentista-marcenaria/projetos/css-apresentacao.css').read_text()
 
-BASE, MC, DIAS = 0.84875, 0.57, 90
+BASE, MC, DIAS = 0.84875, 0.60, 90
 
 AMB = [
  ("Living",18,"R$ 34.683,32"),("Cozinha",15,"R$ 25.790,08"),
@@ -105,7 +105,7 @@ body.previa{background:#2A2622;margin:0;padding:26px 16px 60px;}
       <div><div class="k">Projeto</div><div class="v">Iara Cezar Arquitetura</div></div>
       <div><div class="k">Local</div><div class="v">Manhumirim · MG</div></div>
       <div><div class="k">Ambientes</div><div class="v">20</div></div>
-      <div><div class="k">Ferragens</div><div class="v">Blum · 30 anos</div></div>
+      <div><div class="k">Cenários</div><div class="v">Blum · Hettich</div></div>
     </div>
   </div>
   <div class="cv-r"><img src="img/capa.jpg" alt="Living"></div>
@@ -123,9 +123,9 @@ body.previa{background:#2A2622;margin:0;padding:26px 16px 60px;}
     <h2 class="h2" style="margin:1mm 0 4mm">Suíte Mariana</h2>
 __MV__
     <div class="amb-nota"><div class="t">Nota de execução</div>
-      <p>A base da cama é serralheria com malha de cordas, executada por
-         parceiro e instalada por nós. A casinha leva ripado em Nogueira
-         Caiena com fita de LED embutida na testeira.</p></div>
+      <p>A base da cama em serralheria com malha de cordas sai no mesmo
+         contrato da marcenaria: você não contrata mais ninguém. A casinha
+         leva ripado em Nogueira Caiena com LED embutido na testeira.</p></div>
   </div>
 </div>
 <div class="foot r"><span>Valvic&nbsp;·&nbsp;Jéssica e Michell</span><span>15 / 28</span></div>
@@ -146,12 +146,12 @@ __INVB__
    </table>
    <div style="display:flex;flex-direction:column;gap:4mm">
      <div class="box" style="margin-top:0"><div class="t">O que está incluso</div>
-       <p>Projeto executivo de marcenaria, material, usinagem, ferragens Blum,
+       <p>Projeto executivo de marcenaria, material, usinagem, ferragens,
           iluminação embutida, frete, montagem e instalação — com um só
           interlocutor do primeiro desenho à entrega da chave.</p></div>
      <div class="box" style="margin-top:0"><div class="t">Garantia</div>
-       <p>Trinta anos nas ferragens Blum. Cinco anos na marcenaria, contra
-          defeito de fabricação e de montagem.</p></div>
+       <p>Cinco anos de garantia Valvic sobre a marcenaria, contra defeito
+          de fabricação e de montagem.</p></div>
      <div style="margin-top:6mm;border-top:1.5px solid var(--ink);padding-top:3mm">
        <div style="font-size:7.4pt;letter-spacing:.2em;text-transform:uppercase;
                    color:var(--mut);font-weight:600">Total do investimento</div>
@@ -178,7 +178,7 @@ __INVB__
   do executivo não eram pequenas: as folhas de foto de cada ambiente trazem
   renders em <b>1760 × 1328</b> (o banho master em 2400 × 1792). Não é preciso
   pedir nada para a Iara.<br><br>
-  <b>Os valores acima são o cenário Blum a 57 % de MC</b> — total
+  <b>Os valores acima são o cenário Blum a 60 % de MC</b> — total
   <b>__TOT__</b>. Confirme o cenário e eu monto as 28 folhas.
 </div>
 

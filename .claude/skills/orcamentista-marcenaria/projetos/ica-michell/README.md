@@ -260,3 +260,105 @@ tem UMA identidade; o que muda de projeto para projeto é a imagem e o número.
 ⚠ A coluna D do Painel (`COUNT` posicional) **não bate** com a contagem de
 `# ══ ITEM` dos módulos em 8 dos 19 ambientes. Não usar "nº de itens" em
 peça que vai para o cliente antes de reconciliar as duas.
+
+---
+
+## ⛔⛔ A GARANTIA BLUM DE 30 ANOS NÃO EXISTE [29/10]
+
+Pesquisa para a página de marca: **não há garantia de 30 anos da Blum**. Nem
+no blum.com, nem em catálogo, nem em material brasileiro. O que a Blum
+publica é garantia limitada **sem prazo em anos**, válida enquanto o primeiro
+comprador for dono do móvel, cobrindo a peça e não a mão de obra — e o texto
+é da Blum Inc. (EUA). ⚠ Não há termo publicado da Blum do Brasil.
+
+⭐⭐ **De onde vinha o número: da NOSSA política.** `closer-vendas/referencias/
+garantia.md` traz a garantia **Valvic** escalonada por ferragem, decidida pelo
+Jonathan em jun/2026:
+
+| ferragem | garantia Valvic |
+|---|---|
+| Telescópica / dobradiça padrão | 2 anos |
+| Hardt | 5 anos |
+| **Hettich** | **10 anos** |
+| **Blum** | **vitalícia** |
+
+Regra do elo mais fraco: vale o tier mais baixo presente no projeto. No ICA,
+articulador e pulsador são Blum nos dois cenários, mas dobradiça e corrediça
+definem o tier → cenário Blum **vitalícia**, cenário Hettich **10 anos**.
+
+⚠ **Só o termo de 10 anos está desenhado.** O vitalício precisa existir em
+papel antes de a proposta sair.
+
+⭐ **O número de destaque da página de marca é o ENSAIO, não o prazo:**
+Blum **200.000 ciclos** na dobradiça · Hettich Sensys 8639i **80.000 ciclos**
+(DIN EN 15570 / ISO 4769, nível 3). Mesmo tipo de ensaio, comparação justa.
+
+## ⛔ A CONTA DE FERRAGEM DE MARCA — R$ 61.850,00 [29/10]
+
+Conferida por dois caminhos independentes.
+
+| | qtd | unit. | total |
+|---|--:|--:|--:|
+| Corrediça | 95 | 300,00 | 28.500,00 |
+| Corrediça touch | 20 | 500,00 | 10.000,00 |
+| Báscula HK-XS | 47 | 250,00 | 11.750,00 |
+| Dobradiça | 164 | 50,00 | 8.200,00 |
+| Dobradiça vidro | 10 | 70,00 | 700,00 |
+| Pulsador | 27 | 100,00 | 2.700,00 |
+
+⛔ **ERREI DUAS VEZES ANTES DE ACERTAR:** primeiro R$ 15.680 (contei folha em
+vez de folha × dobradiça), depois R$ 33.900 (perdi as corrediças touch que
+entram por `OUTRAS`, não pelo flag `x[4]=='touch'` de `GAVETAS` — são 12 + 8).
+
+⭐ **O caminho certo:** `planilha.linhas_do_item(mv)` para cada móvel, somando
+por chave, com os preços de `base.py`. ⚠ **Um ambiente por processo** —
+`planilha.py` e `auditor.py` gravam em `sys.modules['AMB']`, e há móveis
+homônimos entre módulos: agrupar por nome num processo só derruba o total
+para R$ 57.150.
+
+⛔ `living.py` redefine `CORREDICA` e `DOBRADICA` localmente em vez de
+importar de `base.py`. Hoje coincidem; uma mudança de preço não chegaria lá.
+
+### Os dois cenários
+
+Ficam Blum nos dois: báscula e pulsador (R$ 14.450). Muda de marca: corrediça,
+touch e dobradiça (R$ 47.400). **Razão Hettich/Blum = 0,71**, apurada em loja
+brasileira, mesma especificação, Pix contra Pix (corrediça 0,62 · dobradiça
+0,75–0,80; na compra com CNPJ a Blum dá desconto maior, o que comprime).
+
+→ custo direto Blum **R$ 311.541,90** · Hettich **R$ 297.795,90**.
+
+## O caderno — `build-caderno-ica.py` [29/10]
+
+35 folhas A4 deitado. Ordem: **valor antes de valores** — empresa, processo,
+arquiteta, 19 ambientes, ferragem, as duas marcas, garantia, e só então
+investimento.
+
+⭐⭐ **A LEI DA VOZ.** O Jonathan: *"a Valvic articula todas as soluções"*.
+Duas pontas erradas, as duas pegas por revisor adversarial:
+- **ponta fraca** — "sob nossa coordenação", "acompanhamos a execução".
+  Coordenar é o verbo de quem não executa. ⛔ PROIBIDO.
+- **ponta falsa** — "a nossa serralheria". A casa não tem. ⛔ PROIBIDO.
+
+✅ A formulação certa fala de **escopo, contrato e resposta**: "entra no nosso
+escopo", "sai no mesmo contrato da marcenaria", "você não contrata mais
+ninguém", "uma só data, uma só responsabilidade".
+
+⛔ **Na folha de ambiente não entra:** medida, marca de ferragem (o cliente
+ainda não escolheu o cenário), preço, e promessa de fornecer item que está a
+zero na planilha.
+
+⛔ **Campos internos nunca renderizam:** `alertas`, `ressalvas`, `mudou`,
+`pedir_ao_jonathan`. A branca é `{ambiente, itens, nota, materiais}`.
+
+⭐ **A coluna de texto encolhe sozinha** (`.fit` + `zoom` por JS): a Suíte
+Mariana tem 12 itens e estourava a folha. Roda também no HTML de impressão,
+antes do `page.pdf`.
+
+⭐ **PDF:** `print/caderno.html` (as folhas sem a moldura de leitura) →
+Playwright `page.pdf({width:'297mm', height:'210mm'})`.
+`NODE_PATH=/opt/node22/lib/node_modules`, que é onde o playwright mora.
+
+⚠ **Cozinha e Closet master não têm perspectiva acessível** — as folhas de
+foto pesam 6,8 e 7,4 MB e derrubam o MCP do Drive. Entram pelo desenho
+axonométrico do executivo sobre campo areia, com selo "Desenho de execução".
