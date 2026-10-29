@@ -26,9 +26,11 @@ páginas 201 a 207 · três detalhamentos, três itens, duas folhas de detalhe.
 ⛔ A BANCADA É QUARTZITO BIANCO SUPERIORE, com 5 de espessura aparente —
   a mesma pedra do Banho Hóspedes. Marmoraria. A cuba é redonda de apoio.
 
-⛔ O ESPELHO DO DET 02 É VIDRACEIRO; o que é nosso é a MOLDURA de 3 cm em
-  Sal Rosa, e ela tem o topo em ARCO: a peça de cima sai de um retângulo
-  cheio de 87 × 38 e o miolo é perda.
+⭐ O ESPELHO DO DET 02 ENTRA NA CONTA desde 28/10 — "considere tbm o
+  espelho" —, e com ele a MOLDURA de 3 cm em Sal Rosa, de topo em ARCO:
+  base e arco são duas CHAPAS INTEIRAS usinadas, pelo mesmo processo da
+  frente provençal. ⛔ A linha "Espelho" da Base segue sem preço, então o
+  vidro soma ZERO e o custo deste item é um PISO.
 """
 from base import P, provencal, ALT_MAX, CHAPA_C, DOBRADICA
 
@@ -62,7 +64,7 @@ BANHOMARIANA = [
 
  # ══ ITEM 02 · ESPELHO — 87 × 193, moldura de 3 em Sal Rosa ═══════════
  #  VISTA FRONTAL  3 + 80 + 3 = 87 · altura 3 + 151 + 35 de arco = 193
- #  ⛔ o espelho é vidraceiro; a MOLDURA é nossa
+ #  ⭐ o espelho É NOSSO desde 28/10, e a MOLDURA também
  # ⭐⭐ RELIDO [Jonathan, 28/10/2026]: "a base do espelho é uma chapa
  #   inteira, o arco é outra chapa inteira usinada, processo semelhante ao
  #   provençal. Considere tbm o espelho."
@@ -132,8 +134,9 @@ CABECA = {
       'em Timborana Silvestre, com a moldura da mesma cor'),
  I2: ('87 × 193 × 3',
       'DET. 02 VISTA FRONTAL 3 + 80 + 3 = 87 de largura · altura 3 + 151 + '
-      '35 de arco = 193 · ⛔ o espelho é vidraceiro; o que é nosso é a '
-      'moldura de 3 em Sal Rosa, e o arco sai de peça cheia'),
+      '35 de arco = 193 · ⭐ o espelho é NOSSO desde 28/10, e a moldura de '
+      '3 em Sal Rosa com ele · base e arco são duas chapas inteiras '
+      'usinadas, o processo da frente provençal'),
  I3: ('60 × 20 × 3  ·  três',
       'DET. 03 VISTA FRONTAL 60 de largura, hastes de 174 · cadeia 3 + 27 + '
       '3 + 27 + 3 · VISTA SUPERIOR 60 × 20 · ⭐ 3 cm é duas chapas de 15 '
@@ -172,8 +175,9 @@ FOLHA = dict(
       'PORTAS É DA MESMA COR DA FRENTE, então aqui vale a regra de 28/10: '
       'peça inteira de 6 mm usinada na router, não quatro réguas. É o '
       'oposto da Suíte Mariana ao lado.   ⛔ A BANCADA É QUARTZITO BIANCO '
-      'SUPERIORE, de marmoraria, a mesma pedra do Banho Hóspedes; e o '
-      'ESPELHO do DET 02 é vidraceiro — o que é nosso é a moldura.',
+      'SUPERIORE, de marmoraria, a mesma pedra do Banho Hóspedes.   ⭐ O '
+      'ESPELHO do DET 02 É NOSSO desde 28/10, junto com a moldura — mas a '
+      'linha "Espelho" da Base não tem preço, então ele soma ZERO.',
  duvidas=[
   'A USINAGEM DA MOLDURA PROVENÇAL continua sem preço na Base, e aqui são '
   'DUAS frentes. ⭐ A chapa das duas camadas está lançada — base de 15 e '
@@ -193,11 +197,16 @@ FOLHA = dict(
   'Base. ⛔ Se a marcenaria preferir laminar o arco em tiras, muda a mão de '
   'obra mas não muda a chapa.',
   'O FUNDO DO ESPELHO de 87 × 193 em Sal Rosa 6 é PREMISSA MINHA: a '
-  'prancha desenha a moldura e o espelho, e não diz em que o vidraceiro '
-  'cola. ⚠ Espelho de 80 × 187 sem fundo não para em pé numa moldura de 3 '
-  'cm. Se o vidraceiro entregar com o fundo dele, sai 1,7 m² de Sal Rosa 6 '
-  'desta conta — e como é a única peça de 6 mm em Sal Rosa, sai a chapa '
-  'inteira, R$ 350.',
+  'prancha desenha a moldura e o espelho, e não diz em que o espelho cola. '
+  '⚠ Espelho de 80 × 187 sem fundo não para em pé numa moldura de 3 cm. Se '
+  'o vidraceiro entregar o espelho já com fundo próprio, sai 1,7 m² de Sal '
+  'Rosa 6 desta conta — e como é a única peça de 6 mm em Sal Rosa, sai a '
+  'chapa inteira, R$ 350.',
+  '⭐ O ESPELHO DO DET 02 É NOSSO desde 28/10 e está no levantamento — '
+  '1,50 m² de 80 × 187. ⛔ Mas a linha "Espelho" da Base NÃO TEM PREÇO, '
+  'então ele entra na conta por ZERO e o custo deste item é um PISO. É o '
+  'mesmo furo do Banho Gourmet, do Banho Hóspedes, do Banho Master e dos '
+  'dois closets: um preço de espelho por m² resolve os seis de uma vez.',
   'AS QUATRO HASTES DE 174 que seguram as prateleiras do DET 03 são "em '
   'metal na cor níquel escovado", fixas na laje — serralheria, não '
   'marcenaria de verdade, e não têm preço na Base. ⚠ Haste de 1,74 m em '
@@ -221,7 +230,6 @@ FOLHA = dict(
   'Bancada em Quartzito Bianco Superiore, 120 × 64 com 5 de espessura aparente',
   'Cuba Redonda de Apoio 30 cm Branco Slim — Deca',
   'Torneira monocomando bica alta DocolKaila níquel escovado — Docol',
-  'O espelho do DET 02, de uns 80 × 187 com topo em arco — vidraceiro (a moldura é nossa)',
   'Torre de tomadas da bancada',
   'Revestimentos, bacia, box e metais'],
  notas=[

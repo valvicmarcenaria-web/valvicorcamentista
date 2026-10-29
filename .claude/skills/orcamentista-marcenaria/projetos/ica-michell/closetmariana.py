@@ -185,17 +185,19 @@ FOLHA = dict(
       'chapa pela LARGURA: 304 de corrida não sai dos 275, e ele vira duas '
       'peças de 152.   ⭐ A PENTEADEIRA É O ÚNICO MÓVEL DIFERENTE DO '
       'AMBIENTE: espelho com LED frontal, uma gaveta e 77 de vão livre para '
-      'a cadeira. O espelho é vidraceiro; os 3,8 m de LED do perímetro são '
-      'nossos.   ⚠ O CARIMBO DAS FOLHAS DIZ "SUÍTE MARIANA", mas a capa da '
+      'a cadeira. ⭐ O ESPELHO É NOSSO desde 28/10, e os 3,8 m de LED do '
+      'perímetro também — mas a linha "Espelho" da Base não tem preço, '
+      'então ele soma ZERO.   ⚠ O CARIMBO DAS FOLHAS DIZ "SUÍTE MARIANA", mas a capa da '
       'página 192 diz CLOSET MARIANA. É erro de carimbo, e ele se repete no '
       'Banho Mariana.',
  duvidas=[
-  'BRANCO DIAMANTE É BRANCO OU É COR? Lancei no preço de BRANCO — R$ 400 a '
-  'chapa de 18, R$ 350 a de 15, R$ 250 a de 6 — exatamente como no Closet '
-  'Master, porque é o mesmo padrão. ⚠ Se a Duratex cobrar como linha '
-  'decorativa, vai para R$ 700 / 550 / 350 e os dois ambientes sobem juntos '
-  'quase 80%. ⛔ É a mesma pergunta da dúvida 01 do Closet Master, e a '
-  'resposta vale para os dois de uma vez.',
+  'BRANCO DIAMANTE É BRANCO OU É COR? Lancei no preço de COR — R$ 700 a '
+  'chapa de 18, R$ 550 a de 15 e R$ 350 a de 6 —, exatamente como no '
+  'Closet Master, porque é o mesmo padrão, e é o lado conservador. ⚠ Mas '
+  'Branco Diamante é um branco texturado, irmão do Branco TX da caixaria: '
+  'se a Duratex cobrar como branco (R$ 400 / 350 / 250), os dois ambientes '
+  'CAEM juntos quase 40%. ⛔ É a mesma pergunta da dúvida 01 do Closet '
+  'Master, e a resposta vale para os dois de uma vez.',
   'O CALCEIRO DESLIZANTE da coluna de 75 do Armário 02 não existe na Base e '
   'sai ZERO. ⚠ É o terceiro do projeto — dois no Closet Master, um aqui. '
   'Calceiro deslizante de closet custa de R$ 150 a R$ 400 a unidade. ⛔ Até '

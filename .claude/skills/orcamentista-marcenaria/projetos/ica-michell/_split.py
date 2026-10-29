@@ -12,3 +12,6 @@ for i, c in enumerate(ch, 1):
     s = json.dumps(c, ensure_ascii=False, separators=(',', ':'))
     open(P/f'_c{i}.txt', 'w').write(s)
     print(i, len(c), len(s))
+# limpa pedacos de uma geracao anterior, senao eles entram nesta por engano
+for i in range(len(ch) + 1, 9):
+    (P/f'_c{i}.txt').unlink(missing_ok=True)
