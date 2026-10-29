@@ -174,8 +174,10 @@ FOLHA = dict(
                   'caixas de gaveta',
             BD6:  'Branco Diamante · fundos · ⭐ sai na cor e não em branco '
                   'de caixaria, porque dentro de closet aberto tudo aparece'},
- nota='⛔ O FRETE ESTÁ ZERADO DE PROPÓSITO: as linhas de frete da Base não '
-      'têm preço ainda. Preencher lá e elas aparecem aqui sozinhas.   '
+ nota='⭐ O FRETE É UMA LINHA DO AMBIENTE, R$ 200 a viagem [Jonathan, 29/10]: '
+      'a QUANTIDADE é a célula AMARELA no fim do painel de material, e ela '
+      'sai ZERO. Digite quantas viagens este ambiente leva e o frete '
+      'aparece aqui e no Painel.   '
       '⭐⭐ É O CLOSET MASTER DE NOVO, EM MENOR, e isso é bom para o preço: '
       'mesmo padrão, mesma cadeia vertical, mesma ferragem. Branco Diamante '
       'Duratex nos dois armários, armário ABERTO sem uma porta sequer, e a '

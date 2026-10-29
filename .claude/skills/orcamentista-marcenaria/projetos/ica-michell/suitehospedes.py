@@ -284,8 +284,10 @@ FOLHA = dict(
             VF6:  'Verde Floresta · moldura usinada, peça inteira sobre a base',
             EST:  'Estrutura e caixaria · o padrão da Base para caixaria',
             FUN:  'Fundos · encaixe em rasgo, sem fita'},
- nota='⛔ O FRETE ESTÁ ZERADO DE PROPÓSITO: as linhas de frete da Base não '
-      'têm preço ainda. Preencher lá e elas aparecem aqui sozinhas.   '
+ nota='⭐ O FRETE É UMA LINHA DO AMBIENTE, R$ 200 a viagem [Jonathan, 29/10]: '
+      'a QUANTIDADE é a célula AMARELA no fim do painel de material, e ela '
+      'sai ZERO. Digite quantas viagens este ambiente leva e o frete '
+      'aparece aqui e no Painel.   '
       '⭐⭐ DUAS MOLDURAS, E ELAS NÃO SÃO A MESMA COISA. No DET 02 a moldura '
       'é na MESMA COR e sai como PROVENÇAL — peça inteira de 6 mm usinada '
       'na router sobre a base de 15. Nas gavetas do DET 06 ela é de 2 cm em '

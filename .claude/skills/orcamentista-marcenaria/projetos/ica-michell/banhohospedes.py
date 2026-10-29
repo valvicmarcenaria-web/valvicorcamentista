@@ -150,8 +150,10 @@ FOLHA = dict(
             PI18: 'Palha Indiana Sextavada Natural · o campo das duas frentes',
             EST:  'Estrutura e caixaria · o padrão da Base para caixaria',
             FUN:  'Fundos · encaixe em rasgo, sem fita'},
- nota='⛔ O FRETE ESTÁ ZERADO DE PROPÓSITO: as linhas de frete da Base não '
-      'têm preço ainda. Preencher lá e elas aparecem aqui sozinhas.   '
+ nota='⭐ O FRETE É UMA LINHA DO AMBIENTE, R$ 200 a viagem [Jonathan, 29/10]: '
+      'a QUANTIDADE é a célula AMARELA no fim do painel de material, e ela '
+      'sai ZERO. Digite quantas viagens este ambiente leva e o frete '
+      'aparece aqui e no Painel.   '
       '⛔ A BANCADA É QUARTZITO BIANCO SUPERIORE, com 10 de espessura '
       'aparente: é marmoraria, e o que está nesta conta é só a caixa que a '
       'sustenta.   ⚠ O NICHO DO DET 02 É EMBUTIDO NA PAREDE. O que é nosso '

@@ -432,8 +432,10 @@ FOLHA = dict(
                   'prateleira móvel da escrivaninha',
             BR15: 'Caixaria de gaveta · o padrão da Base, não aparece',
             BR6:  'Fundos de caixa de gaveta · encaixe em rasgo'},
- nota='⛔ O FRETE ESTÁ ZERADO DE PROPÓSITO: as linhas de frete da Base não '
-      'têm preço ainda. Preencher lá e elas aparecem aqui sozinhas.   '
+ nota='⭐ O FRETE É UMA LINHA DO AMBIENTE, R$ 200 a viagem [Jonathan, 29/10]: '
+      'a QUANTIDADE é a célula AMARELA no fim do painel de material, e ela '
+      'sai ZERO. Digite quantas viagens este ambiente leva e o frete '
+      'aparece aqui e no Painel.   '
       '⭐⭐ TODA MOLDURA DESTE AMBIENTE É RÉGUA, NÃO PEÇA INTEIRA. São dez '
       'frentes emolduradas e quarenta réguas de 5 cm, e a regra da casa é '
       'clara nos dois sentidos: moldura da MESMA cor da frente sai em peça '

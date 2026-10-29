@@ -84,9 +84,19 @@ ORDEM = ['Fita cor', 'Fita Branco TX', 'Filetagem automática',
 _tem = B.acabamento(PECAS)
 ACAB = [k for k in ORDEM if k in _tem]
 assert len(ACAB) == len(_tem), f'⛔ acabamento fora da ORDEM: {set(_tem)-set(ORDEM)}'
-# ⭐ +2 no fim: CORTE POR CHAPA e CORTE POR PEÇA, os dois serviços que
-#   o Jonathan cravou em 28/10 e que são por AMBIENTE, não por item
-nmat = len(CHAPAS) + len(ACAB) + 1 + (1 if g('VIDRO') else 0) + 2 + 2
+# ⭐ +2: CORTE POR CHAPA e CORTE POR PEÇA, os dois serviços que o Jonathan
+#   cravou em 28/10 e que são por AMBIENTE, não por item
+# ⭐⭐ +1 no fim: a linha de FRETE [Jonathan, 29/10/2026]
+#   > "eu quero uma linha so para cadastrar o frete do ambiente como se
+#   >  fosse mais um item, considere um custo unitario de 200 para que eu
+#   >  preencha a quantidade"
+#   ⛔ Antes o frete vinha pendurado na coluna FRETE de CADA material —
+#     quatro linhas da Base (Frete MDF, fita, ferragem, vidro), todas
+#     vazias. Agora é UMA linha do ambiente, com QUANTIDADE que o Jonathan
+#     digita. Ela entra DEPOIS da embalagem de propósito: consumível é 6%
+#     sobre chapa e embalagem é 2% sobre o subtotal, e não se cobra
+#     percentual de fábrica sobre o caminhão.
+nmat = len(CHAPAS) + len(ACAB) + 1 + (1 if g('VIDRO') else 0) + 2 + 2 + 1
 nit, nni, nnt = len(MOV), len(F['nao_marcenaria']), len(F['notas'])
 ndv = len(F.get('duvidas', []))
 
@@ -164,8 +174,7 @@ for chave in CHAPAS:
     põe(r, B=chave,
         C=f'="{prefixo} · "&ROUND({M2(f"$B{r}")};1)&" m² de peças"',
         D=f'=ROUNDUP({M2(f"$B{r}")}/({AREA}*{APR}))', E='chapas',
-        F=f'=D{r}*VLOOKUP($B{r};precos;2;FALSE)',
-        G=f'=D{r}*VLOOKUP("Frete MDF";precos;2;FALSE)')
+        F=f'=D{r}*VLOOKUP($B{r};precos;2;FALSE)')
     r += 1
 # ⭐⭐ FITA E FILETAGEM, UMA LINHA CADA  [Jonathan, 28/10/2026]
 #   > "nao vi o levamento de filetagem tbm"
@@ -186,9 +195,7 @@ L['acab0'] = r
 for ch in ACAB:
     põe(r, B=ch, C=EXPLICA[ch],
         D=f'=SUMIF({K};"{ch}";$F${a}:$F${b})', E='m',
-        F=f'=D{r}*VLOOKUP("{ch}";precos;2;FALSE)',
-        G=('=VLOOKUP("Frete fita";precos;2;FALSE)' if ch.startswith('Fita')
-           else ''))
+        F=f'=D{r}*VLOOKUP("{ch}";precos;2;FALSE)')
     r += 1
 L['acab1'] = r - 1
 
@@ -243,8 +250,7 @@ põe(r, B='Ferragem, terceirizados e iluminação',
       ''.join(f'-SUMIF({K};$B{L["acab0"]+i};$I${a}:$I${b})'
               for i in range(len(ACAB))) +
       (f'-SUMIF({K};"Vidro reflecta";$I${a}:$I${b})'
-       f'-SUMIF({K};"Espelho";$I${a}:$I${b})' if g('VIDRO') else ''),
-    G='=VLOOKUP("Frete ferragem";precos;2;FALSE)')
+       f'-SUMIF({K};"Espelho";$I${a}:$I${b})' if g('VIDRO') else ''))
 r += 1
 if g('VIDRO'):
     põe(r, B='Vidro e espelho',
@@ -253,8 +259,7 @@ if g('VIDRO'):
         D=f'={M2(chr(34)+"Vidro reflecta"+chr(34))}+{M2(chr(34)+"Espelho"+chr(34))}',
         E='m²',
         F=f'=SUMIF({K};"Vidro reflecta";$I${a}:$I${b})'
-          f'+SUMIF({K};"Espelho";$I${a}:$I${b})',
-        G='=VLOOKUP("Frete vidro";precos;2;FALSE)')
+          f'+SUMIF({K};"Espelho";$I${a}:$I${b})')
     r += 1
 L['ult_mat'] = r - 1                        # ⭐ onde acaba o material de fato
 # ⭐⭐ OS DOIS SERVIÇOS DE CORTE [Jonathan, 28/10/2026]: "Em cada ambiente
@@ -281,6 +286,19 @@ põe(r, B='Consumíveis',
 L['cons'] = r; r += 1
 põe(r, B='Embalagem', C='Papelão, filme e cantoneira · 2% sobre o subtotal',
     F=f'=SUM(H{L["mat0"]}:H{L["cons"]})*VLOOKUP("Embalagem";precos;2;FALSE)')
+L['embal'] = r; r += 1
+# ⭐⭐ A LINHA DE FRETE DO AMBIENTE [Jonathan, 29/10/2026] · R$ 200 a viagem
+#   ⛔ A QUANTIDADE É DELE: a célula D é a única do painel de material que
+#     não é fórmula, e por isso vai em AMARELO. Sai 0 e espera.
+#   ⭐ O valor vai na coluna FRETE, não na de CUSTO, porque é frete: assim
+#     o total de frete do ambiente continua sendo a soma da coluna G, e o
+#     Painel não precisa saber que a conta mudou de lugar.
+L['frete'] = r
+põe(r, B='Frete', C='⭐ Frete do ambiente · R$ 200 a viagem · ⛔ A QUANTIDADE É '
+                    'SUA: digite quantas viagens este ambiente leva, e o '
+                    'frete aparece aqui e no Painel · sai ZERO e espera',
+    D=0, E='viagem',
+    G=f'=D{r}*VLOOKUP("Frete";precos;2;FALSE)')
 for i in range(L['mat0'], L['mat1'] + 1):
     põe(i, H=f'=F{i}+G{i}', I=f'=IFERROR(H{i}/$H${L["direto"]};"")')
 d = L['direto']
@@ -337,6 +355,9 @@ VERM   = {'red': .776, 'green': .157, 'blue': .157}
 BRANCO = {'red': 1, 'green': 1, 'blue': 1}
 F7     = {'red': .969, 'green': .969, 'blue': .969}
 F5     = {'red': .961, 'green': .961, 'blue': .961}
+# ⭐ o MESMO amarelo das quatro células digitáveis da aba Preço e
+#   Comissões: na planilha inteira, amarelo significa "escreva aqui"
+AMARELO = {'red': 1, 'green': .9490196, 'blue': .8}
 MOEDA  = {'type': 'CURRENCY', 'pattern': '"R$" #,##0.00'}
 PCT    = {'type': 'PERCENT',  'pattern': '0.0%'}
 INT    = {'type': 'NUMBER',   'pattern': '0'}
@@ -406,6 +427,12 @@ Q.append(rc(m0, m1, 'D', 'D', fm(10, al='RIGHT')))
 Q.append(rc(m0, m1, 'E', 'E', fm(9, fg=CINZA, al='CENTER')))
 Q.append(rc(m0, m1, 'F', 'H', fm(10, al='RIGHT', num=MOEDA)))
 Q.append(rc(m0, m1, 'I', 'I', fm(10, fg=CINZA, al='RIGHT', num=PCT)))
+# ⭐⭐ A QUANTIDADE DE VIAGENS DE FRETE É A ÚNICA CÉLULA DIGITÁVEL DO PAINEL
+#   de material — todas as outras são fórmula. Vai em AMARELO, pela mesma
+#   convenção das quatro células da aba Preço e Comissões, para quem abre a
+#   planilha saber de longe onde pode escrever.
+Q.append(rc(L['frete'], L['frete'], 'D', 'D',
+            fm(10, True, al='RIGHT', bg=AMARELO, num=INT)))
 Q.append(rc(d, d, 'B', 'I', fm(11, True, bg=F5, bor=TETO)))
 Q.append(rc(d, d, 'F', 'H', fm(11, True, bg=F5, bor=TETO, al='RIGHT', num=MOEDA)))
 Q.append(rc(d, d, 'I', 'I', fm(11, True, bg=F5, bor=TETO, al='RIGHT', num=PCT)))

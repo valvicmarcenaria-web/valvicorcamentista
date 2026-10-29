@@ -189,8 +189,10 @@ FOLHA = dict(
             BD18: 'Branco Diamante 18 mm · toda prateleira de vão acima de '
                   '70 cm — maleiros, nichos largos e a sob o cabideiro',
             BD6:  'Branco Diamante 6 mm · fundos, encaixe em rasgo'},
- nota='⛔ O FRETE ESTÁ ZERADO DE PROPÓSITO: as linhas de frete da Base não '
-      'têm preço ainda. Preencher lá e elas aparecem aqui sozinhas.   '
+ nota='⭐ O FRETE É UMA LINHA DO AMBIENTE, R$ 200 a viagem [Jonathan, 29/10]: '
+      'a QUANTIDADE é a célula AMARELA no fim do painel de material, e ela '
+      'sai ZERO. Digite quantas viagens este ambiente leva e o frete '
+      'aparece aqui e no Painel.   '
       '⛔⛔ A DÚVIDA DO BRANCO DIAMANTE VALE MAIS AQUI DO QUE EM QUALQUER '
       'LUGAR. Lancei no preço de COR, R$ 700 / 550 / 350 a chapa, que é '
       'como a Base o traz e é o lado conservador. ⚠ Mas Branco Diamante é '

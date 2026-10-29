@@ -290,8 +290,10 @@ FOLHA = dict(
             BD6:  'Branco Diamante · Duratex · fundos · ⭐ sai na cor e não '
                   'em branco de caixaria, porque dentro de closet aberto '
                   'TUDO aparece'},
- nota='⛔ O FRETE ESTÁ ZERADO DE PROPÓSITO: as linhas de frete da Base não '
-      'têm preço ainda. Preencher lá e elas aparecem aqui sozinhas.   '
+ nota='⭐ O FRETE É UMA LINHA DO AMBIENTE, R$ 200 a viagem [Jonathan, 29/10]: '
+      'a QUANTIDADE é a célula AMARELA no fim do painel de material, e ela '
+      'sai ZERO. Digite quantas viagens este ambiente leva e o frete '
+      'aparece aqui e no Painel.   '
       '⭐⭐ UMA COR SÓ NO AMBIENTE INTEIRO, e ela é branca. Branco Diamante '
       'Duratex nos seis itens, inclusive nos fundos — dentro de closet '
       'aberto não existe peça que não apareça. ⚠ Lancei no preço de COR '

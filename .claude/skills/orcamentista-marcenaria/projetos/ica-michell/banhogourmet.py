@@ -112,8 +112,10 @@ FOLHA = dict(
  chapa_txt={JR15: 'Jequitibá Rosa Linha Essencial Wood · ripas, painéis de base e frentes',
             EST:  'Estrutura e caixaria · o padrão da Base para caixaria',
             FUN:  'Fundos · encaixe em rasgo, sem fita'},
- nota='⛔ O FRETE ESTÁ ZERADO DE PROPÓSITO: as linhas de frete da Base não '
-      'têm preço ainda. Preencher lá e elas aparecem aqui sozinhas.   '
+ nota='⭐ O FRETE É UMA LINHA DO AMBIENTE, R$ 200 a viagem [Jonathan, 29/10]: '
+      'a QUANTIDADE é a célula AMARELA no fim do painel de material, e ela '
+      'sai ZERO. Digite quantas viagens este ambiente leva e o frete '
+      'aparece aqui e no Painel.   '
       '⚠⚠ A MÃO DE OBRA DO RIPADO NÃO ESTÁ NESTA CONTA. A Base traz '
       '"Painel ripado · R$ 180/m²" e não diz se esse valor já inclui a '
       'chapa. Lancei a chapa, que é certa, e deixei a mão de obra na caixa '

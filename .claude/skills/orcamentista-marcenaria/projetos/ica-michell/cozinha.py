@@ -183,8 +183,10 @@ FOLHA = dict(
             EST:  'Estrutura e caixaria · o padrão da Base para caixaria',
             PRAT18:'Prateleira da torre · vão de 104, 18 mm contra empeno',
             FUN:  'Fundos · encaixe em rasgo, sem fita'},
- nota='⛔ O FRETE ESTÁ ZERADO DE PROPÓSITO: as linhas de frete da Base não '
-      'têm preço ainda. Preencher lá e elas aparecem aqui sozinhas.   '
+ nota='⭐ O FRETE É UMA LINHA DO AMBIENTE, R$ 200 a viagem [Jonathan, 29/10]: '
+      'a QUANTIDADE é a célula AMARELA no fim do painel de material, e ela '
+      'sai ZERO. Digite quantas viagens este ambiente leva e o frete '
+      'aparece aqui e no Painel.   '
       '⭐⭐ NOVE PADRÕES DE CHAPA, NOVE ARREDONDAMENTOS: cada cor × '
       'espessura é uma compra separada e puxa no mínimo uma chapa, mesmo '
       'que leve uma peça só. A frente provençal criou quatro padrões novos '

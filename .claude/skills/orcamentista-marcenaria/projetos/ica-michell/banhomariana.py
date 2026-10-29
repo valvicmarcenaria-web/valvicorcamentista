@@ -162,8 +162,10 @@ FOLHA = dict(
             EST:  'Estrutura e caixaria · ⭐ "Parte interna do armário em '
                   'MDF branco", como a prancha escreve',
             FUN:  'Fundos · encaixe em rasgo, sem fita'},
- nota='⛔ O FRETE ESTÁ ZERADO DE PROPÓSITO: as linhas de frete da Base não '
-      'têm preço ainda. Preencher lá e elas aparecem aqui sozinhas.   '
+ nota='⭐ O FRETE É UMA LINHA DO AMBIENTE, R$ 200 a viagem [Jonathan, 29/10]: '
+      'a QUANTIDADE é a célula AMARELA no fim do painel de material, e ela '
+      'sai ZERO. Digite quantas viagens este ambiente leva e o frete '
+      'aparece aqui e no Painel.   '
       '⚠⚠ AS FOLHAS DESTE AMBIENTE VÊM CARIMBADAS COMO "BANHO MASTER" e '
       'NÃO são: a capa da página 201 diz BANHO MARIANA. É o mesmo erro de '
       'carimbo do Closet Mariana, cujas folhas vêm como "SUÍTE MARIANA". '

@@ -449,9 +449,11 @@ FOLHA = dict(
      f'{CHAPA_C:g} menos o acerto de corte',
  chapa_txt={NC18: 'Nogueira Caiena · Duratex',
             NC6:  'Fundos · encaixe em rasgo, sem fita'},
- nota='⛔ O FRETE ESTÁ ZERADO DE PROPÓSITO: as quatro linhas de frete da '
-      'Base (chapa, fita, ferragem e vidro) não têm preço ainda. Preencher '
-      'lá e elas aparecem aqui sozinhas.   ⭐ A chapa entra em NÚMERO CHEIO '
+ nota='⭐ O FRETE É UMA LINHA DO AMBIENTE, R$ 200 a viagem [Jonathan, '
+      '29/10]: a QUANTIDADE é a célula AMARELA no fim do painel de '
+      'material, e ela sai ZERO. Digite quantas viagens este ambiente '
+      'leva e o frete aparece aqui e no Painel.   ⭐ A chapa entra em '
+      'NÚMERO CHEIO '
       'e por cor × espessura — não existe 2,7 chapas, são 3. Os itens lá '
       'embaixo rateiam a chapa em fração, para que cada móvel tenha custo '
       'próprio; a diferença entre os dois aparece no fechamento dos itens.',

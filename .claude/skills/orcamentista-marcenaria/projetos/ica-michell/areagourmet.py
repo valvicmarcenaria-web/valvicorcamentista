@@ -192,8 +192,10 @@ FOLHA = dict(
             EST:  'Estrutura e caixaria · o padrão da Base para caixaria',
             PRAT18:'Prateleiras de vão acima de 70 cm · 18 mm contra empeno',
             FUN:  'Fundos · encaixe em rasgo, sem fita'},
- nota='⛔ O FRETE ESTÁ ZERADO DE PROPÓSITO: as linhas de frete da Base não '
-      'têm preço ainda. Preencher lá e elas aparecem aqui sozinhas.   '
+ nota='⭐ O FRETE É UMA LINHA DO AMBIENTE, R$ 200 a viagem [Jonathan, 29/10]: '
+      'a QUANTIDADE é a célula AMARELA no fim do painel de material, e ela '
+      'sai ZERO. Digite quantas viagens este ambiente leva e o frete '
+      'aparece aqui e no Painel.   '
       '⛔⛔ O DET 04 — COIFA CHURRASQUEIRA — NÃO ESTÁ NESTA CONTA. É coifa '
       'em inox preta com friso de 2 cm e vidros nas laterais, e a própria '
       'prancha pede "prever vidro para suportar altas temperaturas". Zero '

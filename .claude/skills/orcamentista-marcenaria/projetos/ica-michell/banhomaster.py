@@ -172,8 +172,10 @@ FOLHA = dict(
             EST:  'Estrutura e caixaria · o padrão da Base para caixaria',
             EST18: 'Prateleiras do armário · 18 mm porque o vão é de 122',
             FUN:  'Fundos · encaixe em rasgo, sem fita'},
- nota='⛔ O FRETE ESTÁ ZERADO DE PROPÓSITO: as linhas de frete da Base não '
-      'têm preço ainda. Preencher lá e elas aparecem aqui sozinhas.   '
+ nota='⭐ O FRETE É UMA LINHA DO AMBIENTE, R$ 200 a viagem [Jonathan, 29/10]: '
+      'a QUANTIDADE é a célula AMARELA no fim do painel de material, e ela '
+      'sai ZERO. Digite quantas viagens este ambiente leva e o frete '
+      'aparece aqui e no Painel.   '
       '⚠⚠ A PAREDE RIPADA DA ELEVAÇÃO 03 NÃO ESTÁ NESTA CONTA. São 360 × '
       '300 de parede inteira ripada, com a porta do box e a porta de '
       'passagem embutidas no mesmo ripado, e ela não tem detalhamento '

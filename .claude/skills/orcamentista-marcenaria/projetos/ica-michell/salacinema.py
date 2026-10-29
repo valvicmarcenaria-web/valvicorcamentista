@@ -326,8 +326,10 @@ FOLHA = dict(
             EST:  'Estrutura e caixaria · o padrão da Base para caixaria',
             PRAT: '⭐ 18 mm por regra: prateleira de vão acima de 70 cm',
             FUN:  'Fundos · encaixe em rasgo, sem fita'},
- nota='⛔ O FRETE ESTÁ ZERADO DE PROPÓSITO: as linhas de frete da Base não '
-      'têm preço ainda. Preencher lá e elas aparecem aqui sozinhas.   '
+ nota='⭐ O FRETE É UMA LINHA DO AMBIENTE, R$ 200 a viagem [Jonathan, 29/10]: '
+      'a QUANTIDADE é a célula AMARELA no fim do painel de material, e ela '
+      'sai ZERO. Digite quantas viagens este ambiente leva e o frete '
+      'aparece aqui e no Painel.   '
       '⛔⛔ O PÉ-DIREITO É 300 E A CHAPA DÁ 273. Três dos sete itens têm '
       'peça de 300: o roupeiro e as duas divisórias. Todas aparecem '
       'marcadas na auditoria e nenhuma tem onde esconder a emenda — é '

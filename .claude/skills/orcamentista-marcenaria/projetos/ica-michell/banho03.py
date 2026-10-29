@@ -124,8 +124,10 @@ FOLHA = dict(
             SR18: 'Sal Rosa 18 mm · as três prateleiras suspensas, que '
                   'vencem 60 de vão penduradas só pelas pontas',
             SR6:  'Sal Rosa 6 mm · o fundo do armário, encaixe em rasgo'},
- nota='⛔ O FRETE ESTÁ ZERADO DE PROPÓSITO: as linhas de frete da Base não '
-      'têm preço ainda. Preencher lá e elas aparecem aqui sozinhas.   '
+ nota='⭐ O FRETE É UMA LINHA DO AMBIENTE, R$ 200 a viagem [Jonathan, 29/10]: '
+      'a QUANTIDADE é a célula AMARELA no fim do painel de material, e ela '
+      'sai ZERO. Digite quantas viagens este ambiente leva e o frete '
+      'aparece aqui e no Painel.   '
       '⭐⭐ QUASE TUDO NESTE BANHEIRO NÃO É MARCENARIA. A bancada é '
       'quartzito Bianco Superiore com 10 de espessura aparente, a cuba é '
       'redonda de apoio de 30, o box vai até o teto em ferragem preta, os '
