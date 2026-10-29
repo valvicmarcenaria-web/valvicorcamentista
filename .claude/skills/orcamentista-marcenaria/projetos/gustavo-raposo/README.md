@@ -9,6 +9,11 @@ https://docs.google.com/spreadsheets/d/1HovPv64ISuL-cnRUNyKpxoPdZqvkzMQyiAYBNYie
 **Planilha BASE da casa, de onde ela saiu:** `1slBElrHqfJDgZ67NrVW1DMLfJ5ioiB4LyMlVXvqoD8E`
 https://docs.google.com/spreadsheets/d/1slBElrHqfJDgZ67NrVW1DMLfJ5ioiB4LyMlVXvqoD8E/edit
 
+⭐ **As duas moram na pasta `Orçamentos Valvic`** (`1liWjdBNktz6C4087YhbJq0gufVwcYSBx`),
+ao lado das outras — é lá que se procura quando se vai começar um orçamento, e é de
+lá que se copia o modelo. ⛔ A planilha do cliente **não** fica na pasta do projeto
+do arquiteto: aquela é a pasta das pranchas, que vêm de fora.
+
 ⛔⛔ **O QUE DEU ERRADO ANTES, para não se repetir.** A primeira planilha do Gustavo
 foi uma **cópia da planilha do ICA**, e isso estava errado por dois motivos, não um:
 
