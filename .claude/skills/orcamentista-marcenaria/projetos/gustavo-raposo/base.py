@@ -218,6 +218,13 @@ PRECO_OUTRAS = {
  #   grita: mente para baixo.
  'Sistema de correr SS-150': 1840.0,  # ⚠ interino: preço do Dominus 2p
  'Puxador NEO32 Bronze': 0.0,         # ⛔ por unidade · SEM PREÇO · a cotar
+ # ⭐⭐ MUXARABI VAZADO — a usinagem mais pesada da casa. O painel do
+ #   Hóspedes/Office tem 444 × 271 e o detalhe 07 define a grelha: furo
+ #   quadrado de 3,8 × 3,9 com ripa de 2 cm entre eles. ⛔ NÃO é ripado:
+ #   ripado é ripa solta com vão, e se conta por ripa. Aqui é painel
+ #   INTEIRO com furo quadrado, e o que custa é o metro de corte na
+ #   router — são milhares de furos.
+ 'Usinagem de muxarabi vazado': 0.0,  # ⛔ por metro de corte · SEM PREÇO
  # ⭐ PALHINHA NATURAL — a Suíte 02 · Filhas pede "frente com moldura em MDF
  #   e palhinha" no armário, na mesa e na mesa de cabeceira.
  #   ⛔ NÃO é a chapa melamínica que imita o desenho: é tapeceiro, por m² de

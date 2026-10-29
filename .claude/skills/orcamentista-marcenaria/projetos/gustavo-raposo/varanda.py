@@ -57,16 +57,18 @@ VARANDA = [
  P('Divisória',            I1, 68, 60, 5, BR15, (1, 0),
    'Cinco verticais: fecham os vãos de 95, 20, 164, o nicho da lava-louças '
    'e o módulo de 117 · interno em MDF Branco, como a prancha manda'),
- P('Base',                 I1, 446, 60, 1, BR15, (1, 0),
-   '⛔ 446 passa dos 275 da chapa: sai em três partes, uma por trecho'),
- P('Travessa de topo',     I1, 446, 10, 2, BR15, (1, 0),
+ P('Base',                 I1, 223, 60, 2, BR15, (1, 0),
+   '⛔ DUAS peças de 223: os 446 do armário passam dos 275 da chapa · a '
+   'emenda cai sobre uma divisória'),
+ P('Travessa de topo',     I1, 223, 10, 4, BR15, (1, 0),
    '⭐ É o que recebe a bancada de granito. A bancada é do marmorista, mas '
    'o que a sustenta é nosso — e sem isto o granito apoia no ar'),
  P('Prateleira projetada', I1, 95, 58, 2, NC18, (2, 2),
    '⭐ 18 mm: o vão de 95 passa dos 70 da regra · as duas "Proj. prateleira" '
    'da elevação'),
- P('Fundo',                I1, 446, 68, 1, BR6, (0, 0),
-   'Encaixe em rasgo · ⛔ sem fita'),
+ P('Fundo',                I1, 223, 68, 2, BR6, (0, 0),
+   'Encaixe em rasgo · ⛔ DUAS peças de 223, pelo mesmo motivo da base · '
+   'sem fita'),
  P('Frente · porta de giro', I1, 47, 68, 8, NC15, (2, 2),
    'Oito folhas, contadas uma a uma na elevação ampliada · puxador tipo '
    'cava usinada na marcenaria'),
@@ -78,9 +80,9 @@ VARANDA = [
  P('Frente · gavetão',     I1, 60, 40, 1, NC15, (2, 2), 'Puxador cava'),
  *gaveta(I1, 60, 55, 14, 2, 'Caixa de gaveta'),
  *gaveta(I1, 60, 55, 36, 1, 'Caixa de gavetão'),
- P('Rodapé',               I1, 446, 20, 1, NC15, (1, 0),
+ P('Rodapé',               I1, 223, 20, 2, NC15, (1, 0),
    '⭐ "Rodapé a definir" na prancha · recuado, em Nogueira Caiena como o '
-   'resto · ⛔ 446 sai em três partes'),
+   'resto · ⛔ DUAS peças de 223'),
 
  # ══ ITEM 02 · GAVETEIRO DA ILHA — 105 × 68 ════════════════════════════
  #  A ilha mede 100 × 180 em planta e é ALVENARIA. A elevação B mostra a

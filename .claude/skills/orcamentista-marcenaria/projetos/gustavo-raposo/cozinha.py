@@ -51,10 +51,13 @@ COZINHA = [
  P('Divisória',            I1, 85, 35, 3, BR15, (1, 0),
    'Três verticais fazem os quatro vãos de 69 · ⛔ interno em MDF BRANCO, '
    'como a prancha manda: só a frente e o que aparece é laca'),
- P('Tampo e base',         I1, 281, 35, 2, CRU15, (1, 1)),
+ P('Tampo e base',         I1, 140.5, 35, 4, CRU15, (1, 1),
+   '⛔ QUATRO peças de 140,5: os 281 do armário passam dos 275 da chapa, '
+   'então tampo e base saem partidos ao meio'),
  P('Prateleira projetada', I1, 69, 33, 4, BR18 := 'MDF branco 18', (2, 2),
    'Uma por vão · 18 mm, e o vão de 69 fica no limite dos 70 da regra'),
- P('Fundo',                I1, 285, 85, 1, BR6, (0, 0), '⛔ sem fita'),
+ P('Fundo',                I1, 142.5, 85, 2, BR6, (0, 0),
+   '⛔ DUAS peças de 142,5 · sem fita'),
  *provencal('Frente · porta de giro', I1, 69, 85, 4, CRU15, CRU6,
             'Quatro folhas · moldura de 5 cm usinada na router · puxador '
             'dourado a definir'),
@@ -75,12 +78,13 @@ COZINHA = [
  P('Lateral',              I3, 78, 60, 2, CRU15, (1, 1)),
  P('Divisória',            I3, 78, 60, 3, BR15, (1, 0),
    'Três verticais: fecham as colunas de 72 e o nicho da lava-louças'),
- P('Base',                 I3, 285, 60, 1, BR15, (1, 0),
-   '⛔ 285 passa dos 275 da chapa: sai em duas partes'),
- P('Travessa de topo',     I3, 285, 10, 2, BR15, (1, 0),
+ P('Base',                 I3, 142.5, 60, 2, BR15, (1, 0),
+   '⛔ DUAS peças de 142,5: os 285 passam dos 275 da chapa'),
+ P('Travessa de topo',     I3, 142.5, 10, 4, BR15, (1, 0),
    '⭐ É o que recebe a bancada de quartzito. A pedra é do marmorista, mas '
    'o que a sustenta é nosso — sem isto ela apoia no ar'),
- P('Fundo',                I3, 285, 78, 1, BR6, (0, 0), '⛔ sem fita'),
+ P('Fundo',                I3, 142.5, 78, 2, BR6, (0, 0),
+   '⛔ DUAS peças de 142,5 · sem fita'),
  *provencal('Frente · gavetão', I3, 72, 39, 4, CRU15, CRU6,
             'Quatro: um na fileira de cima e três na de baixo · moldura de '
             '5 cm na router · puxador dourado'),
