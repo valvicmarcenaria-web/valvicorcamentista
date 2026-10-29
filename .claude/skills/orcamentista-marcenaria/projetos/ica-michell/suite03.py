@@ -15,15 +15,17 @@ tem DET, o que não aconteceu no Banho Master.
   · MDF AZUL ASTRAL — Duratex — é a COR: gavetas da escada, a estante do
     DET 04 inteira, o ripado do telhado, a bicama, a prateleira móvel e
     TODA moldura de 5 cm.
-  ⭐ A terceira é PALHA INDIANA SEXTAVADA — Duratex — e só aparece em
-    frente: as quatro portas e as duas básculas do DET 05 e as três
-    gavetas e a porta do DET 06.
+  ⭐⭐ O TERCEIRO PADRÃO NÃO É CHAPA [Jonathan, 28/10/2026]: é PALHINHA
+    NATURAL, de TAPECEIRO, a R$ 650 o m², aplicada no campo das frentes —
+    as quatro portas e as duas básculas do DET 05, as três gavetas e a
+    porta do DET 06. ⛔ Não existe chapa de Palha Indiana neste orçamento:
+    a frente é MDF com o campo em palhinha e a moldura em régua.
 
 ⭐⭐ TODA MOLDURA DAQUI É RÉGUA, NÃO PEÇA INTEIRA. A regra da casa fecha nos
   dois sentidos: moldura da MESMA cor da frente sai em peça inteira de
   6 mm usinada na router; moldura de OUTRA cor sai em quatro réguas. Aqui
-  a frente é Palha Indiana e a moldura é Azul Astral — é o mesmo caso do
-  aparador da Suíte Hóspedes e da bancada do Banho Mariana. ⛔ São dez
+  o campo da frente é palhinha natural e a moldura é Azul Astral — é o
+  mesmo caso do aparador da Suíte Hóspedes e da bancada do Banho Mariana. ⛔ São dez
   frentes emolduradas e quarenta réguas, com filetagem manual nas de 5 cm.
 
 ⛔⛔ O PÉ-DIREITO DE 300 MORDE QUATRO VEZES: as duas laterais do pórtico
@@ -33,8 +35,9 @@ tem DET, o que não aconteceu no Banho Master.
   são painel largo e a emenda some atrás do degrau; as outras são peça
   estreita e entram na lista de peças ALTAS para o senhor decidir.
 
-⭐ O PÓRTICO NÃO É PAINEL DE 3 CM MACIÇO, é 15 mm sobre engradado de
-  sarrafo, que é o que a casa fechou na Suíte Mariana. ⛔ A diferença aqui
+⭐ O PÓRTICO NÃO É PAINEL DE 3 CM MACIÇO, é 15 mm sobre ENGRADADO DE MDF
+  — travessa de 5 cm tirada da própria chapa —, que é o que a casa fechou
+  na Suíte Mariana. ⛔ Nada de pinus: a casa não usa. ⛔ A diferença aqui
   é que o pórtico tem DOIS lados à vista — você atravessa o vão da porta
   dele — então as duas laterais levam pele dos dois lados, e só o painel
   superior, que morre no teto, leva uma pele só.
@@ -47,7 +50,6 @@ from base import (P, gaveta, ripado, ALT_MAX, CHAPA_C, DOBRADICA)
 
 PA18, PA15, PA6 = 'MDF Paris 18', 'MDF Paris 15', 'MDF Paris 6'
 AA18, AA15, AA6 = 'MDF Azul Astral 18', 'MDF Azul Astral 15', 'MDF Azul Astral 6'
-PI15 = 'MDF Palha Indiana Sextavada 15'
 BR15, BR6 = 'MDF Branco TX 15', 'MDF Branco TX 6'
 
 I1 = 'DET 01 Escada com gavetas'
@@ -222,9 +224,9 @@ SUITE03 = [
  P('Frente da báscula',     I5, 87, 37, 2, PA15, (2, 2),
    'As duas do módulo direito de 93, uma sobre a outra'),
  P('Moldura · régua vertical externa', I5, 155, 5, 4, AA15, (2, 2),
-   '⭐ MOLDURA DE OUTRA COR = QUATRO RÉGUAS, não peça inteira usinada: a '
-   'frente é Palha Indiana e a moldura é Azul Astral · ⛔ filetagem '
-   'manual, régua de 5 não entra na coladeira'),
+   '⭐ MOLDURA DE OUTRA COR = QUATRO RÉGUAS, não peça inteira usinada: o '
+   'campo da frente é palhinha natural e a moldura é Azul Astral · ⛔ '
+   'filetagem manual, régua de 5 não entra na coladeira'),
  P('Moldura · régua vertical interna', I5, 111, 5, 4, AA15, (2, 2),
    'As verticais das duas portas de dentro · ⛔ filetagem manual'),
  P('Moldura · régua horizontal', I5, 68, 5, 4, AA15, (2, 2),
@@ -428,9 +430,6 @@ FOLHA = dict(
                   'TODAS as quarenta réguas de moldura',
             AA18: 'Azul Astral 18 mm · prateleiras da estante de 300 e a '
                   'prateleira móvel da escrivaninha',
-            PI15: 'Palha Indiana Sextavada · Duratex · só frente: as quatro '
-                  'portas e as duas básculas do DET 05, as três gavetas e '
-                  'a porta do DET 06',
             BR15: 'Caixaria de gaveta · o padrão da Base, não aparece',
             BR6:  'Fundos de caixa de gaveta · encaixe em rasgo'},
  nota='⛔ O FRETE ESTÁ ZERADO DE PROPÓSITO: as linhas de frete da Base não '
@@ -439,16 +438,17 @@ FOLHA = dict(
       'frentes emolduradas e quarenta réguas de 5 cm, e a regra da casa é '
       'clara nos dois sentidos: moldura da MESMA cor da frente sai em peça '
       'inteira de 6 mm usinada na router; moldura de OUTRA cor sai em '
-      'quatro réguas. Aqui a frente é Palha Indiana e a moldura é Azul '
-      'Astral. ⛔ Régua não entra na coladeira: a filetagem das quarenta é '
+      'quatro réguas. Aqui o campo da frente é palhinha natural — '
+      'tapeceiro, não chapa — e a moldura é Azul Astral. ⛔ Régua não entra na coladeira: a filetagem das quarenta é '
       'MANUAL, R$ 5,00 o metro.   '
       '⛔⛔ O PÉ-DIREITO DE 300 MORDE QUATRO VEZES: as duas laterais do '
       'pórtico, as duas da estante do DET 04, os dois montantes da cama e '
       'os dois pés da casinha. Só as do pórtico eu emendei de propósito, '
       'porque são painel largo e a emenda some na linha do degrau. As '
       'outras estão na lista de peças ALTAS.   '
-      '⭐ O PÓRTICO É 15 mm SOBRE ENGRADADO DE SARRAFO, que é o que a casa '
-      'fechou na Suíte Mariana — não são duas chapas coladas. A diferença '
+      '⭐ O PÓRTICO É 15 mm SOBRE ENGRADADO DE MDF — travessa de 5 cm '
+      'tirada da própria chapa —, que é o que a casa fechou na Suíte '
+      'Mariana. ⛔ Nada de pinus: a casa não usa. A diferença '
       'aqui é que ele tem dois lados à vista, porque se atravessa o vão de '
       'passagem: as duas laterais levam pele dos dois lados, e só o painel '
       'superior, que morre no teto, leva uma pele só.   '
@@ -489,11 +489,15 @@ FOLHA = dict(
   'perfeitamente e sairia R$ 66 pelas três frentes de 44. É R$ 234 de '
   'diferença, e é só decisão de desenho.',
   'AS DEZ FRENTES EMOLDURADAS DO DET 05 E DO DET 06 TAMBÉM NÃO TÊM '
-  'PUXADOR. ⭐ Orcei PULSADOR nas dez, R$ 1.000 — mesma leitura da estante '
-  'da Suíte Mariana e das portas ripadas do Banho Gourmet: a moldura de 5 '
-  'cm não deixa cava, e puxador aparafusado o desenho mostraria. ⚠ A '
-  'alternativa é Alças Traso 128 a R$ 110, que daria R$ 1.100 — quase o '
-  'mesmo. Então aqui o pulsador não é economia, é leitura de desenho.',
+  'PUXADOR, e desde 28/10 elas se dividem em DUAS soluções. ⭐ As SETE que '
+  'são PORTA ou BÁSCULA levam PULSADOR, R$ 100 cada, R$ 700: mesma leitura '
+  'da estante da Suíte Mariana e das portas ripadas do Banho Gourmet — a '
+  'moldura de 5 cm não deixa cava, e puxador aparafusado o desenho '
+  'mostraria. ⛔ As TRÊS GAVETAS do DET 06 levam CORREDIÇA TOUCH, R$ 500 o '
+  'par, porque "nao se usa pulsador em gavetas" e a touch substitui o par '
+  'de corrediça E o pulsador: são R$ 1.500 contra os R$ 750 de corrediça '
+  'comum mais R$ 300 de pulsador que eu tinha. ⚠ Abrir por toque DOBRA o '
+  'custo de abrir as três gavetas desta mesa, e é o que o senhor pediu.',
   'O PÓRTICO TEM 370 DE VÃO E 121 DE PROFUNDIDADE, e eu o construí como a '
   'casa construiu os painéis de 3 cm da Suíte Mariana: 15 mm sobre '
   'ENGRADADO DE MDF. ⚠ A diferença é que aqui são DOIS lados à vista '
@@ -526,6 +530,17 @@ FOLHA = dict(
   'de cada porta eu lancei com 72 em vez de 68, porque régua diagonal sai '
   'mais comprida que o vão. É pouco, mas é o tipo de coisa que falta '
   'quando chega na bancada.',
+  '⛔⛔ A SERRALHERIA DAS TRÊS BASES DA CAMA NÃO TEM VALOR. O senhor pediu '
+  'em 28/10 que a cama alta, a cama baixa e a bicama fossem QUADRO DE '
+  'SERRALHEIRO com malha de cordas náuticas tecida dentro, e eu lancei as '
+  'duas linhas — a malha com preço, R$ 250 o m² por 7 m², e a serralheria '
+  'SEM NENHUM, porque ninguém deu um. ⚠ São TRÊS quadros: 194 × 121 duas '
+  'vezes e 196 × 118 uma. No banco suspenso do Living o senhor fechou '
+  'R$ 2.500 por um quadro só; se estes três valerem metade disso cada, '
+  'são R$ 3.750 que hoje aparecem como ZERO. ⛔ É a mesma pergunta da cama '
+  'montessoriana da Suíte Mariana, e as duas juntas são a maior conta em '
+  'aberto do projeto. Enquanto a linha estiver a zero, o custo desta cama '
+  'é um PISO.',
   '⛔ A BASE METÁLICA DE 3 CM: aqui ela caberia na estante do DET 04, no '
   'armário da mesa e nos pés do DET 05 e do pórtico — tudo que toca o '
   'chão. São uns 8 m de rodapé. ⚠ Fica para a passada única, junto com '
@@ -543,8 +558,9 @@ FOLHA = dict(
   'dois sentidos. Moldura da MESMA cor da frente sai em peça inteira de '
   '6 mm usinada na router — foi o que o senhor fechou em 28/10. Moldura '
   'de OUTRA cor sai em quatro réguas, porque régua continua sendo régua. '
-  'Aqui a frente é Palha Indiana Sextavada e a moldura é Azul Astral: são '
-  'dez frentes, quarenta réguas de 5 cm, e a filetagem delas é MANUAL.',
+  'Aqui o campo da frente é PALHINHA NATURAL — tapeceiro, R$ 650 o m², '
+  'não chapa — e a moldura é Azul Astral: são dez frentes, quarenta '
+  'réguas de 5 cm, e a filetagem delas é MANUAL.',
   '⭐ O RIPADO DO FRONTÃO É O ÚNICO COTADO DO PROJETO INTEIRO. Em todos os '
   'outros ambientes — Banho Gourmet, Banho Master, Área Gourmet — a '
   'largura da ripa foi medida por mim no desenho em 1/20 e virou dúvida. '
@@ -563,9 +579,10 @@ FOLHA = dict(
   'puxador: a meia-lua da cava, em cada frente. Em todo o resto do quarto '
   'não há puxador nenhum desenhado, e é por isso que há dez pulsadores '
   'nesta conta.',
-  '⚠ OS TRÊS COLCHÕES NÃO SÃO NOSSOS, mas os três estrados são, e os três '
-  'são peça grande: 194 × 121 duas vezes e 196 × 118 uma. Saem em Paris '
-  'os dois de cima, que ficam à vista por baixo, e em Branco TX o da '
-  'bicama, que corre no chão e ninguém vê. São 6,9 m² que não aparecem '
-  'no desenho e que a fábrica tem de cortar.'],
+  '⭐⭐ OS TRÊS ESTRADOS NÃO SÃO MAIS DE MDF [Jonathan, 28/10/2026]: as '
+  'três bases são QUADRO DE SERRALHEIRO com MALHA DE CORDAS NÁUTICAS '
+  'tecida dentro, e com elas saíram os 6,9 m² de chapa que eu tinha '
+  'lançado em estrado. ⚠ Os três colchões seguem não sendo nossos. ⛔ A '
+  'malha tem preço na Base, R$ 250 o m²; a serralheria dos três quadros, '
+  'NÃO — e é a maior conta em aberto deste ambiente.'],
 )
