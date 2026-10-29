@@ -138,7 +138,18 @@ h1,h2,h3,p{margin:0;font-weight:inherit;}
 .gr .k{font-size:6.2pt;letter-spacing:.24em;}
 .obs{margin-top:3.5mm;padding-top:3mm;font-size:6.7pt;line-height:1.46;}
 .pe2{margin-top:4mm;padding-top:4mm;}
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;height:23mm;margin:0 -20mm 2.5mm;}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:0 10mm;}
+.cols.um{grid-template-columns:1fr;}
+.it{display:flex;gap:4mm;align-items:baseline;padding:1.05mm 0;
+  border-bottom:1px solid var(--linha);}
+.it .n{font-size:7.4pt;color:var(--verde-lt);letter-spacing:.06em;}
+.it .t{font-size:9.2pt;letter-spacing:-.005em;}
+.sb{display:flex;justify-content:space-between;align-items:baseline;
+  margin-top:2.5mm;padding-top:2mm;border-top:1.2px solid var(--tinta);}
+.sb span{font-size:6.6pt;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--mut);}
+.sb b{font-size:12pt;font-weight:400;letter-spacing:-.015em;}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;height:29mm;margin:0 -20mm 3mm;}
 .duo .ph{height:100%;}
 .duo .ph span{position:absolute;left:0;bottom:0;background:var(--verde);
   color:#DCE5DD;font-size:6.2pt;letter-spacing:.26em;text-transform:uppercase;
@@ -163,16 +174,12 @@ h1,h2,h3,p{margin:0;font-weight:inherit;}
   </div>
 
   <div class="sub2">Brinquedoteca · projeto Helena Antunes</div>
-  <div class="cj"><div class="n"></div><div><div class="t">Estrutura e paredes cenográficas</div><div class="d">Parede estrutural com efeito tijolinho, paredes da casinha, escada da casinha e as janelas e pórticos moldurados</div></div><div class="v">R$ 54.360</div></div><div class="cj"><div class="n"></div><div><div class="t">Circulação e proteção em altura</div><div class="d">Passarela suspensa, gradis de contenção das redes e plataformas acolchoadas</div></div><div class="v">R$ 71.750</div></div><div class="cj"><div class="n"></div><div><div class="t">Brinquedos</div><div class="d">Escorregador com túnel de teto curvo e a estrutura da piscina de espuma</div></div><div class="v">R$ 33.930</div></div><div class="cj"><div class="n"></div><div><div class="t">Mobiliário e arremates</div><div class="d">Banco extenso e toldo personalizado</div></div><div class="v">R$ 9.080</div></div><div class="cj"><div class="n"></div><div><div class="t">Pintura acrílica e papel de parede</div><div class="d">Mão de obra · ⛔ tinta, massa e papel não estão neste preço</div></div><div class="v">R$ 12.500</div></div>
-  <div class="cj" style="border-top:none"><div class="n"></div>
-    <div><div class="t" style="color:var(--mut)">Subtotal</div></div>
-    <div class="v" style="font-size:9.6pt;color:var(--mut)">R$ 181.620</div></div>
+  <div class="cols"><div class="it"><span class="n">01</span><span class="t">Passarela suspensa</span></div><div class="it"><span class="n">02</span><span class="t">Gradis de contenção</span></div><div class="it"><span class="n">03</span><span class="t">Plataformas acolchoadas</span></div><div class="it"><span class="n">04</span><span class="t">Piscina de espuma</span></div><div class="it"><span class="n">05</span><span class="t">Banco extenso</span></div><div class="it"><span class="n">06</span><span class="t">Parede norte</span></div><div class="it"><span class="n">07</span><span class="t">Casinha — paredes</span></div><div class="it"><span class="n">08</span><span class="t">Casinha — escada</span></div><div class="it"><span class="n">09</span><span class="t">Janelas e pórticos moldurados</span></div><div class="it"><span class="n">10</span><span class="t">Escorregador com túnel curvo</span></div><div class="it"><span class="n">11</span><span class="t">Toldo personalizado</span></div><div class="it"><span class="n">12</span><span class="t">Pintura ou papel de parede — aplicação</span></div></div>
+  <div class="sb"><span>Brinquedoteca</span><b>R$ 181.620</b></div>
 
   <div class="sub2">Estúdio de música · salinha</div>
-  <div class="cj"><div class="n"></div><div><div class="t">Canto alemão em “C”</div><div class="d">Estrutura interna e externa em MDF melamínico amadeirado fosco, detalhes de molduras e puxadores em cava usinada · <b>corrediças ocultas Hettich</b></div></div><div class="v">R$ 23.000</div></div><div class="cj"><div class="n"></div><div><div class="t">Estofado capitonê</div><div class="d">Conforme projeto, espuma D33, espessuras conforme projeto</div></div><div class="v">R$ 6.500</div></div>
-  <div class="cj" style="border-top:none"><div class="n"></div>
-    <div><div class="t" style="color:var(--mut)">Subtotal</div></div>
-    <div class="v" style="font-size:9.6pt;color:var(--mut)">R$ 29.500</div></div>
+  <div class="cols um"><div class="it"><span class="n">01</span><span class="t">Canto alemão em “C” · corrediças ocultas Hettich</span></div><div class="it"><span class="n">02</span><span class="t">Estofado capitonê</span></div></div>
+  <div class="sb"><span>Estúdio</span><b>R$ 29.500</b></div>
 
   <div class="cj tot"><div class="n"></div>
     <div><div class="t">Investimento</div>
@@ -199,11 +206,11 @@ h1,h2,h3,p{margin:0;font-weight:inherit;}
       Capitonê conforme projeto, em <b>espuma D33</b> — a densidade de assento
       de uso intenso, que não achata com o tempo.</div></div>
     <div><div class="k">Entrega</div><div class="v">
-      <b>60 dias</b> para o projeto completo, contados do aceite e da
-      medição técnica.</div></div>
+      <b>90 dias corridos</b>, contados da assinatura, da entrada e da
+      conferência de medidas no local.</div></div>
     <div><div class="k">Garantia</div><div class="v">
-      <b>5 anos</b> sobre as corrediças ocultas Hettich e sobre a marcenaria,
-      contra defeito de fabricação e de montagem.</div></div>
+      <b>10 anos</b> sobre estrutura, solda e ferragens da brinquedoteca ·
+      <b>5 anos</b> sobre a marcenaria do estúdio.</div></div>
   </div>
 
   <div class="obs"><b>Fora desta proposta:</b> a <b>cozinha de brinquedo</b>,

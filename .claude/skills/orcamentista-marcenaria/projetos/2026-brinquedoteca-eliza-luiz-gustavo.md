@@ -705,21 +705,40 @@ reabre a negociação. Se o senhor quiser a escada de volta, é uma linha.
 **telescópica R$ 18.500 (garantia 2 anos)** contra **oculta R$ 23.000
 (garantia 5 anos)**. O Jonathan fechou na **oculta Hettich**.
 
-## O agrupamento dos 12 itens em 5 conjuntos
+## ⛔ A LISTA É A DA PROPOSTA, NÃO UM AGRUPAMENTO MEU [Jonathan, 29/10]
 
-Uma folha não aguenta doze linhas com descrição. Agrupei por natureza, e a
-soma bate item a item:
+> *"ultilize as mesmas descrições dos itens da brinquedoteca, sem mudar as
+> nomenclaturas, não precisa descrever cada item. não precisa colocar o
+> valor de cada item, apenas exclua o item solicitado."*
 
-| conjunto | itens da v2 | |
-|---|---|--:|
-| Estrutura e paredes cenográficas | parede tijolinho, casinha paredes, casinha escada, janelas e pórticos | 54.360 |
-| Circulação e proteção em altura | passarela, gradis, plataformas acolchoadas | 71.750 |
-| Brinquedos | escorregador com túnel, piscina de espuma | 33.930 |
-| Mobiliário e arremates | banco extenso, toldo | 9.080 |
-| Pintura e papel de parede | mão de obra | 12.500 |
+Eu tinha agrupado os doze itens em cinco conjuntos de nome meu — *Estrutura
+e paredes cenográficas*, *Circulação e proteção em altura* — para caber numa
+folha. ⛔ **Errado.** O cliente já recebeu a proposta da brinquedoteca com os
+treze itens nomeados; renomear faz o leitor comparar duas listas que não se
+parecem e desconfiar do preço.
 
-⭐ O `assert` no build trava os dois subtotais: se alguém mexer num item da
-v2 e esquecer da proposta, o build quebra em vez de imprimir errado.
+⭐ **A regra:** quando o cliente já tem um documento na mão, a peça nova
+**repete a nomenclatura dele**, item por item, na mesma ordem e na mesma
+grafia. O que muda é só o que foi pedido.
+
+A folha passou a listar os **doze nomes da `proposta-brinquedoteca.pdf`**,
+sem descrição e sem valor unitário — o preço aparece uma vez, no subtotal do
+conjunto. O item 13, **Cozinha de brinquedo, R$ 12.000, saiu**.
+
+| | |
+|---|---|
+| 01 Passarela suspensa | 02 Gradis de contenção |
+| 03 Plataformas acolchoadas | 04 Piscina de espuma |
+| 05 Banco extenso | 06 Parede norte |
+| 07 Casinha — paredes | 08 Casinha — escada |
+| 09 Janelas e pórticos moldurados | 10 Escorregador com túnel curvo |
+| 11 Toldo personalizado | 12 Pintura ou papel de parede — aplicação |
+
+⚠ **Prazo e garantia vieram da proposta da brinquedoteca, não da do estúdio.**
+São **90 dias corridos** (não 60) e **10 anos sobre estrutura, solda e
+ferragens** da brinquedoteca, mais **5 anos** sobre a marcenaria do estúdio.
+Juntar dois escopos num contrato só obriga a reconciliar as duas condições —
+vale o prazo mais longo e a garantia de cada parte.
 
 **Arquivo:** `build-eliza-1pg.py` → `proposta-eliza-1pg.pdf`
 **Imagens:** `img-brinquedoteca/capa.jpg` e o render do PR02 do estúdio,

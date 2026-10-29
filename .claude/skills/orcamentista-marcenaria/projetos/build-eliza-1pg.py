@@ -25,31 +25,25 @@ BANCO = uri(pathlib.Path('/tmp/elz/sal-001-009.jpg'))
 
 # ⭐ os doze itens da v2 agrupados em cinco conjuntos legíveis — a soma é a
 #   mesma, item a item, e nenhum preço foi recalculado
+# ⭐ [Jonathan 29/10] "ultilize as mesmas descrições dos itens da
+#   brinquedoteca, sem mudar as nomenclaturas, não precisa descrever cada
+#   item · não precisa colocar o valor de cada item, apenas exclua o item
+#   solicitado."
+# ⛔ Os nomes são os da proposta-brinquedoteca.pdf, na ordem e na grafia dela.
+#   O item 13, Cozinha de brinquedo, R$ 12.000, SAIU.
 BRINQ = [
- ('Estrutura e paredes cenográficas',
-  'Parede estrutural com efeito tijolinho, paredes da casinha, escada da '
-  'casinha e as janelas e pórticos moldurados', 15400+8690+4870+25400),
- ('Circulação e proteção em altura',
-  'Passarela suspensa, gradis de contenção das redes e plataformas '
-  'acolchoadas', 8190+53370+10190),
- ('Brinquedos',
-  'Escorregador com túnel de teto curvo e a estrutura da piscina de espuma',
-  18920+15010),
- ('Mobiliário e arremates',
-  'Banco extenso e toldo personalizado', 7680+1400),
- ('Pintura acrílica e papel de parede',
-  'Mão de obra · ⛔ tinta, massa e papel não estão neste preço', 12500),
+ 'Passarela suspensa', 'Gradis de contenção', 'Plataformas acolchoadas',
+ 'Piscina de espuma', 'Banco extenso', 'Parede norte',
+ 'Casinha — paredes', 'Casinha — escada', 'Janelas e pórticos moldurados',
+ 'Escorregador com túnel curvo', 'Toldo personalizado',
+ 'Pintura ou papel de parede — aplicação',
 ]
-ESTUDIO = [
- ('Canto alemão em “C”',
-  'Estrutura interna e externa em MDF melamínico amadeirado fosco, detalhes '
-  'de molduras e puxadores em cava usinada · <b>corrediças ocultas Hettich</b>',
-  23000),
- ('Estofado capitonê',
-  'Conforme projeto, espuma D33, espessuras conforme projeto', 6500),
-]
-T_BRINQ = sum(v for _, _, v in BRINQ)
-T_EST   = sum(v for _, _, v in ESTUDIO)
+T_BRINQ_PROPOSTA = 193_620     # investimento total da proposta original
+COZINHA          = 12_000      # o item 13, retirado
+ESTUDIO = ['Canto alemão em “C” · corrediças ocultas Hettich',
+           'Estofado capitonê']
+T_BRINQ = T_BRINQ_PROPOSTA - COZINHA     # 181.620
+T_EST   = 23_000 + 6_500                 # canto alemão + estofado
 TOTAL   = T_BRINQ + T_EST
 # ⭐ [Jonathan 29/10] "arredonde para 190k · entrada em multiplos cheques
 #   totalizando 157.988 · restante pos entrega"
@@ -68,11 +62,12 @@ PCT      = f'{DESC*100:.2f}'.replace('.', ',') + '%'
 assert T_BRINQ == 181_620, T_BRINQ      # v2 menos a cozinha de brinquedo
 assert T_EST   == 29_500,  T_EST
 
-def bloco(ls):
-    return ''.join(
-      f'<div class="cj"><div class="n"></div><div><div class="t">{t}</div>'
-      f'<div class="d">{d}</div></div><div class="v">R$ {br(v)}</div></div>'
-      for t, d, v in ls)
+def lista(ls, n0=1):
+    """Só o nome, numerado como na proposta de origem. Sem descrição e sem
+       valor — o preço aparece uma vez, no subtotal do conjunto."""
+    return ''.join(f'<div class="it"><span class="n">{i:02d}</span>'
+                   f'<span class="t">{t}</span></div>'
+                   for i, t in enumerate(ls, n0))
 
 HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -92,7 +87,18 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
 .gr .k{{font-size:6.2pt;letter-spacing:.24em;}}
 .obs{{margin-top:3.5mm;padding-top:3mm;font-size:6.7pt;line-height:1.46;}}
 .pe2{{margin-top:4mm;padding-top:4mm;}}
-.duo{{display:grid;grid-template-columns:1fr 1fr;gap:0;height:23mm;margin:0 -20mm 2.5mm;}}
+.cols{{display:grid;grid-template-columns:1fr 1fr;gap:0 10mm;}}
+.cols.um{{grid-template-columns:1fr;}}
+.it{{display:flex;gap:4mm;align-items:baseline;padding:1.05mm 0;
+  border-bottom:1px solid var(--linha);}}
+.it .n{{font-size:7.4pt;color:var(--verde-lt);letter-spacing:.06em;}}
+.it .t{{font-size:9.2pt;letter-spacing:-.005em;}}
+.sb{{display:flex;justify-content:space-between;align-items:baseline;
+  margin-top:2.5mm;padding-top:2mm;border-top:1.2px solid var(--tinta);}}
+.sb span{{font-size:6.6pt;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--mut);}}
+.sb b{{font-size:12pt;font-weight:400;letter-spacing:-.015em;}}
+.duo{{display:grid;grid-template-columns:1fr 1fr;gap:0;height:29mm;margin:0 -20mm 3mm;}}
 .duo .ph{{height:100%;}}
 .duo .ph span{{position:absolute;left:0;bottom:0;background:var(--verde);
   color:#DCE5DD;font-size:6.2pt;letter-spacing:.26em;text-transform:uppercase;
@@ -117,16 +123,12 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
   </div>
 
   <div class="sub2">Brinquedoteca · projeto Helena Antunes</div>
-  {bloco(BRINQ)}
-  <div class="cj" style="border-top:none"><div class="n"></div>
-    <div><div class="t" style="color:var(--mut)">Subtotal</div></div>
-    <div class="v" style="font-size:9.6pt;color:var(--mut)">R$ {br(T_BRINQ)}</div></div>
+  <div class="cols">{lista(BRINQ)}</div>
+  <div class="sb"><span>Brinquedoteca</span><b>R$ {br(T_BRINQ)}</b></div>
 
   <div class="sub2">Estúdio de música · salinha</div>
-  {bloco(ESTUDIO)}
-  <div class="cj" style="border-top:none"><div class="n"></div>
-    <div><div class="t" style="color:var(--mut)">Subtotal</div></div>
-    <div class="v" style="font-size:9.6pt;color:var(--mut)">R$ {br(T_EST)}</div></div>
+  <div class="cols um">{lista(ESTUDIO)}</div>
+  <div class="sb"><span>Estúdio</span><b>R$ {br(T_EST)}</b></div>
 
   <div class="cj tot"><div class="n"></div>
     <div><div class="t">Investimento</div>
@@ -153,11 +155,11 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
       Capitonê conforme projeto, em <b>espuma D33</b> — a densidade de assento
       de uso intenso, que não achata com o tempo.</div></div>
     <div><div class="k">Entrega</div><div class="v">
-      <b>60 dias</b> para o projeto completo, contados do aceite e da
-      medição técnica.</div></div>
+      <b>90 dias corridos</b>, contados da assinatura, da entrada e da
+      conferência de medidas no local.</div></div>
     <div><div class="k">Garantia</div><div class="v">
-      <b>5 anos</b> sobre as corrediças ocultas Hettich e sobre a marcenaria,
-      contra defeito de fabricação e de montagem.</div></div>
+      <b>10 anos</b> sobre estrutura, solda e ferragens da brinquedoteca ·
+      <b>5 anos</b> sobre a marcenaria do estúdio.</div></div>
   </div>
 
   <div class="obs"><b>Fora desta proposta:</b> a <b>cozinha de brinquedo</b>,
@@ -177,10 +179,9 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
 open('/tmp/in.html', 'w', encoding='utf-8').write(HTML)
 subprocess.run(['node', '/tmp/r.js', str(P/'proposta-eliza-1pg.pdf')], check=True,
                env=dict(os.environ, NODE_PATH='/opt/node22/lib/node_modules'))
-print(f'  {"BRINQUEDOTECA":<38}{br(T_BRINQ):>10}')
-for t, _, v in BRINQ: print(f'    {t:<36}{br(v):>10}')
-print(f'  {"ESTÚDIO":<38}{br(T_EST):>10}')
-for t, _, v in ESTUDIO: print(f'    {t:<36}{br(v):>10}')
+print(f'  {"BRINQUEDOTECA · " + str(len(BRINQ)) + " itens":<38}{br(T_BRINQ):>10}')
+print(f'    {"(proposta " + br(T_BRINQ_PROPOSTA) + " menos a cozinha " + br(COZINHA) + ")":<36}')
+print(f'  {"ESTÚDIO · " + str(len(ESTUDIO)) + " itens":<38}{br(T_EST):>10}')
 print(f'  {"TOTAL":<38}{br(TOTAL):>10}')
 print(f'  {"DESCONTO (" + PCT + ")":<38}{"-"+br(DESCONTO):>10}')
 print(f'  {"FECHADO":<38}{br(AVISTA):>10}')
