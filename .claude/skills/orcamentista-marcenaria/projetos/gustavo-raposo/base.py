@@ -291,6 +291,13 @@ PRECO_OUTRAS = {
  #   INTEIRO com furo quadrado, e o que custa é o metro de corte na
  #   router — são milhares de furos.
  'Usinagem de muxarabi vazado': 0.0,  # ⛔ por metro de corte · SEM PREÇO
+ # ⭐⭐ O ENCAIXE MEIA-MADEIRA [Jonathan, 30/10/2026]. O muxarabi não é
+ #   painel furado: são RÉGUAS DE 5 CM entalhadas, que se encaixam umas nas
+ #   outras — as fotos que o senhor mandou mostram o rasgo e o cruzamento.
+ #   ⛔ Fica em ZERO porque é serviço a cotar, e ZERO declarado grita; mas
+ #     agora é o ÚNICO zero do ambiente: a chapa, a fita e a filetagem
+ #     passaram a ter preço de verdade.
+ 'Usinagem de encaixe meia-madeira': 0.0,  # ⛔ por encaixe · A COTAR
  # ⭐ PALHINHA NATURAL — a Suíte 02 · Filhas pede "frente com moldura em MDF
  #   e palhinha" no armário, na mesa e na mesa de cabeceira.
  #   ⛔ NÃO é a chapa melamínica que imita o desenho: é tapeceiro, por m² de
@@ -508,7 +515,11 @@ def _filete_chave(chave, nome):
       R$ 2,50. ⭐ As travessas da moldura já caem aqui pela espessura, que
       é o critério de verdade: quem não entra na máquina é o 6 mm e a ripa.
     """
-    return ('Filetagem manual' if chave.endswith(' 6') or 'Ripa' in nome
+    #   ⭐ E A RÉGUA ENTRA NA MESMA REGRA [Jonathan, 30/10/2026]: "a
+    #     filetagem será manual". Régua de 5 cm de largura não se apoia na
+    #     mesa da coladeira — ela tomba. É o mesmo caso da ripa.
+    return ('Filetagem manual'
+            if chave.endswith(' 6') or 'Ripa' in nome or 'Régua' in nome
             else 'Filetagem automática')
 
 def acabamento(pecas, movel=None):
@@ -589,6 +600,7 @@ CHAVES_BASE = {
   'Puxador passante', 'Puxador slim', 'Rodízio de gaveteiro',
   'Serralheria estrutural', 'Sistema de correr Dominus',
   'Sistema de correr SS-150', 'Suporte de prateleira', 'Suporte oculto',
-  'Usinagem de muxarabi vazado', 'Vidro reflecta',
+  'Usinagem de encaixe meia-madeira',
+ 'Usinagem de muxarabi vazado', 'Vidro reflecta',
   'Vidro temperado incolor', 'Área da chapa',
 }
