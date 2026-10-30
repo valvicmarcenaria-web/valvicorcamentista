@@ -41,9 +41,16 @@ DESPENSA = [
    'de aço contra FLECHA · ⛔ fixação invisível, sem lateral e sem suporte '
    'de armário'),
  # ══ ITEM 02 · PRATELEIRAS DA ELEVAÇÃO B — 176 × 40, seis níveis ═══════
+ # ⛔⛔ "sem suporte" NA OBS, e ela não é enfeite [30/10/2026]: é o que
+ #   tira esta prateleira da conta automática do jogo de quatro suportes de
+ #   armário. Sem a marca, o ITEM 02 saía pagando a fixação DUAS vezes — o
+ #   jogo de armário E o suporte oculto, R$ 39,00 de linha que não existe.
+ #   ⭐ O ambiente inteiro é FIXAÇÃO INVISÍVEL: não há lateral de armário
+ #     onde um suporte de prateleira possa encaixar.
  P('Prateleira', I2, 176, 40, 6, BD18, (2, 2),
    '⭐ 176 de vão livre, sem apoio no meio · ⛔ é a peça mais exigente do '
-   'ambiente: alma de aço obrigatória'),
+   'ambiente: alma de aço obrigatória · ⛔ fixação invisível, sem lateral '
+   'e sem suporte de armário'),
 ]
 
 # ⭐ nada de gaveta, porta, báscula, cava, LED, vidro ou serralheria aqui.

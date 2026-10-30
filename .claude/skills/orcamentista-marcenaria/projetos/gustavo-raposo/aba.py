@@ -237,7 +237,11 @@ POR_METRO = ('Cava usinada', 'LED conjunto', 'Moldura provençal',
              'Palhinha natural', 'Estofamento em linho')
 conta  = [c for c, rot in ativos
           if c not in POR_METRO and not c.startswith('Usinagem')]
-rots   = [rot for c, rot in ativos if rot]
+# ⛔ E O RÓTULO SE REPETE: a Despensa tem 'Suporte de prateleira'
+#   contado das peças e 'Suporte oculto' vindo de OUTRAS, e os dois
+#   se descrevem como "suporte de prateleira" — a especificação saía
+#   "Suporte de prateleira e suporte de prateleira".
+rots   = list(dict.fromkeys(rot for c, rot in ativos if rot))
 # ⛔ .capitalize() rebaixa o resto da frase, e 'LED' virava 'led'
 # ⛔ COM UM RÓTULO SÓ, O "e" SOBRAVA: o Lavabo saiu com a especificação
 #   começando em " e perfil de proteção de piso". Vírgula e "e" só existem
