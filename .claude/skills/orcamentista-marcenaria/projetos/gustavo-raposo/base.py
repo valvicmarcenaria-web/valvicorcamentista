@@ -301,7 +301,10 @@ PRECO_OUTRAS = {
  'Usinagem de encaixe meia-madeira': 0.0,
          # ⭐ friso de 0,5 × 0,5 na face do painel, por METRO de rasgo
          #   [Suíte 01 Filhos, prancha 49] · ⛔ A COTAR
-         'Usinagem de friso': 0.0,  # ⛔ por encaixe · A COTAR
+         'Usinagem de friso': 0.0,
+         # ⭐ onde a prancha diz só "puxador a definir": o modelo vai na
+         #   ESPECIFICAÇÃO, não na chave · ⛔ A COTAR
+         'Puxador a definir': 0.0,  # ⛔ por encaixe · A COTAR
  # ⭐ PALHINHA NATURAL — a Suíte 02 · Filhas pede "frente com moldura em MDF
  #   e palhinha" no armário, na mesa e na mesa de cabeceira.
  #   ⛔ NÃO é a chapa melamínica que imita o desenho: é tapeceiro, por m² de

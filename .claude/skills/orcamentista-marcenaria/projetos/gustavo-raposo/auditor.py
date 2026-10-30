@@ -100,8 +100,15 @@ for mv in set(caixas) | set(corr):
 
 # ── 3 · frente com cava ↔ metro de cava ─────────────────────────────────
 cava_mov = {mv for mv, *_ in CAVA}
+# ⛔ A NEGAÇÃO TAMBÉM CONTÉM A PALAVRA [Suíte 02 Filhas, 30/10]. A frente de
+#   palhinha abre por fecho-toque e a obs dizia, com todas as letras, "não
+#   leva puxador nem cava" — e a regra leu "cava" e acusou. ⭐ Dizer que
+#   NÃO tem é o oposto de declarar que tem: a regra tem de apagar a
+#   negação antes de procurar, como 'sem suporte' e 'sem alma' já fazem.
+_NEGA_CAVA = re.compile(r'\b(?:sem|nem|sem\s+o|n[ãa]o\s+leva)\s+cava\w*')
 for p in PECAS:
-    if 'cava' in p['obs'].lower() and p['movel'] not in cava_mov:
+    _o = _NEGA_CAVA.sub('', p['obs'].lower())
+    if 'cava' in _o and p['movel'] not in cava_mov:
         erro(f'{p["movel"][:30]} · {p["nome"]}: diz "cava" e o móvel não tem '
              'metro de cava declarado')
 
