@@ -22,14 +22,33 @@ uniformes") e em 30/10 mandou a Base mandar no preço. `base.py` traz
 
 **2 · A Base não tem linha de telescópica, e a dobradiça já está no piso.**
 
-| chave na Base | preço | tier de garantia |
-| --- | --: | --- |
-| Corrediça *(Blum)* | R$ 300,00 | 30 anos |
-| Corrediça Hettich | R$ 150,00 | 10 anos |
-| **Corrediça Hardt** | **R$ 80,00** | **5 anos** ← a mais barata que existe |
-| Corrediça touch | R$ 500,00 | — |
-| Dobradiça *(Blum)* | R$ 50,00 | 30 anos |
-| Dobradiça Hettich | R$ 50,00 | 10 anos |
+| chave na Base | preço | unidade | produto, como a Base o chama | garantia |
+| --- | --: | --- | --- | --- |
+| Corrediça *(Blum)* | R$ 300,00 | **por gaveta** | Corrediça Blum | 30 anos |
+| Corrediça Hettich | R$ 150,00 | par | Hettich Quadro V6 500 mm · oculta · 30 kg · 100 mil ciclos | 10 anos |
+| **Corrediça Hardt** | **R$ 80,00** | par | **Hardt Invisível P-10 · ⭐ "o Padrão da casa"** | **5 anos** |
+| Corrediça touch | R$ 500,00 | — | — | — |
+| Dobradiça *(Blum)* | R$ 50,00 | un | Dobradiça Blum | 30 anos |
+| Dobradiça Hettich | R$ 50,00 | un | Hettich Sensys Linha Gold | 10 anos |
+
+**⭐⭐ A HARDT NÃO É TELESCÓPICA — É INVISÍVEL** [30/10/2026, perguntado pelo
+Jonathan]. `base.py` não descreve a linha: ela vem importada da Base de
+Custos e o código só pegou o preço. Lida na Base, ela é a **Hardt Invisível
+P-10**, e a Base a chama de *"o Padrão da casa"*. ⭐ Então **os três cenários
+são de corrediça OCULTA** — o cliente não vê trilho em nenhum deles. O que
+muda é marca, carga, ciclos e garantia, não se o trilho aparece. ⛔ E a
+telescópica, que seria o degrau de 2 anos, **não existe nesta Base**: pedi-la
+é linha nova e cotação nova, para um produto PIOR que a Hardt.
+
+**⚠ A HARDT NÃO TEM CARGA NEM CICLOS DECLARADOS.** A Hettich diz "30 kg ·
+100 mil ciclos"; a P-10 não diz nada. ⛔ E este projeto tem gavetão — tanto
+que a "Corrediça de carga" já está lançada a ZERO em 3 pares, na Suíte 01 e
+na Suíte 02. Pôr R$ 80 debaixo de um gavetão que já pedia corrediça de carga
+é o ponto técnico a cobrir antes de oferecer o cenário 3.
+
+**⚠ A unidade da Blum é "por gaveta", não "par"** — a Base fala duas línguas
+na mesma coluna. Dá no mesmo, porque uma gaveta leva um par, e os 87 × R$ 300
+seguem corretos. Mas é armadilha esperando quem ler rápido.
 
 ⛔ **As duas dobradiças custam o mesmo R$ 50.** "A dobradiça mais barata da
 Base" é a que já está lançada: o cenário 3 não economiza um centavo em
@@ -39,8 +58,8 @@ dobradiça. ⭐ E como o preço é igual, o cenário 3 deve especificar a
 ⛔ **E não existe telescópica na Base.** `base.py` é explícito: *"Nenhuma
 telescópica comum entra: onde a prancha pede telescópica, SOBE para Hettich
 oculta."* Montei o cenário 3 com a **Hardt a R$ 80**, que é a corrediça mais
-barata que a Base tem de verdade — e que entrega **5 anos** de garantia em
-vez dos 2 da telescópica. ⭐ O senhor pediu pior e a Base só tem melhor.
+barata que a Base tem de verdade — **oculta**, e com **5 anos** de garantia
+em vez dos 2 da telescópica. ⭐ O senhor pediu pior e a Base só tem melhor.
 
 ## O que move entre os cenários, e só isso
 
