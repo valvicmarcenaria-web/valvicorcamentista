@@ -482,3 +482,67 @@ cobrando margem sobre um custo que não existe mais.
 telescópica. ⛔ Não dá para o cliente garimpar a combinação que mais tira,
 porque o desconto já está no extremo conservador — e a casa só ganha margem
 se ele subir de linha.
+
+---
+
+# ⭐ A PROPOSTA — `proposta-gustavo-raposo.pdf` [30/10/2026]
+
+> *[Jonathan 30/10] "pode montar a proposta igual do do michel."*
+
+⛔ **"Michel" são dois clientes diferentes nos projetos.** O da proposta é o
+**Michelle e Arlei**, casa completa, `build-michelle-arlei.py`. O outro é a
+**Jéssica Michell do ICA**, cuja planilha é só leitura e **cujo orçamento não
+pode encostar nesta peça**. Copiei o LAYOUT do Michelle; nenhum dado de
+cliente nenhum atravessou.
+
+## O layout é o que o Jonathan cravou em 19/10
+
+> *"NUNCA APRESENTE PREÇO SEM ANTES GERAR VALOR na proposta. Fale um pouco da
+> empresa e dos processos antes de expor valores. Mostre as duas linhas
+> antes, fale das diferenças. (...) Descreva os itens junto com a listagem
+> dos ambientes, só listando item por item mesmo."*
+
+Dezesseis páginas, primeiro preço na **13**:
+
+| | |
+| --- | --- |
+| 1 | capa |
+| 2 | quem faz e como fazemos |
+| 3 | **as três linhas e suas diferenças** — sem um número de dinheiro |
+| 4–12 | os nove blocos de ambiente, com a lista móvel a móvel |
+| 13 | investimento ambiente por ambiente, linha Hettich |
+| 14 | as três linhas com preço |
+| 15 | as duas trocas |
+| 16 | condições |
+
+⭐ **Duas travas herdadas do Michelle, e uma terceira minha:**
+1. `assert len(pg) == NP` — a contagem de páginas bate com o rodapé.
+2. `assert 'R$' not in _antes` — **nenhum preço antes da página 13**. É trava,
+   não boa fé.
+3. ⭐⭐ **`assert` de marcação interna** [novo]. Na primeira rodada saíram um
+   ⭐, um ⛔ e um ⚠ impressos no meio das frases do cliente — e eu tinha
+   APONTADO exatamente esse defeito na folha da Eliza dois pedidos antes, e
+   repeti. Boa fé não bastou duas vezes.
+
+## As imagens
+
+61 pranchas em PDF, 349 imagens embutidas, **76 em tamanho de render**. Olhei
+todas em folha de contato e ficaram **31 renders de verdade**, em
+`img-gustavo-raposo/`. ⛔ **Lavabo, Despensa e Closet Suíte 02 não têm
+render** — o do closet é grade de elevação, não imagem. Eles aparecem na
+proposta pelo texto, dentro de páginas de outros ambientes.
+
+## Nenhum número é digitado
+
+`gustavo-raposo/cenarios.py` é a única fonte, e o build importa de lá. O
+módulo refaz a conta da aba Preço e Comissões (`custo ÷ (BASE − MC)`) e
+confere por assert que o cenário Hettich devolve **R$ 161.808,24**, que é o
+custo direto da planilha de hoje. Se divergir, não compila.
+
+## ⚠ O que falta na peça
+
+- ⛔ **Não há escada de pagamento.** O Michelle traz entrada e parcelas com
+  desconto por condição; o Gustavo não tem condição definida, e eu não
+  invento condição comercial. A página 13 fecha no valor cheio.
+- ⚠ **O preço é PISO**: as quinze linhas sem preço na Base continuam.
+- ⚠ A **dificuldade** dos dezenove segue toda em "Médio".
