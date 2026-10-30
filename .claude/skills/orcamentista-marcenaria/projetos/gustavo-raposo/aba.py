@@ -226,21 +226,41 @@ FERR = [('Corrediça', 'corrediça',
 ativos = [(c, rot) for c, rot, lst in FERR if lst]
 # ⛔ cava, LED e moldura se medem em metro ou em frente, não em peça:
 #   não entram na contagem de "peças de ferragem"
+# ⛔⛔ E USINAGEM NENHUMA ENTRA, por PREFIXO e não por nome [30/10/2026].
+#   A lista nominal pegava "Usinagem de encaixe de prateleira" e deixava
+#   passar "Usinagem de muxarabi vazado": o Office saiu declarando
+#   "531,3 peças" de ferragem, que são os METROS de router do painel. Um
+#   serviço medido em metro, somado numa coluna que conta peça, não dá erro
+#   na tela — dá um número absurdo que ninguém confere.
+POR_METRO = ('Cava usinada', 'LED conjunto', 'Moldura provençal',
+             'Serralheria estrutural', 'Perfil de proteção de piso',
+             'Palhinha natural', 'Estofamento em linho')
 conta  = [c for c, rot in ativos
-          if c not in ('Cava usinada', 'LED conjunto', 'Moldura provençal',
-                       'Serralheria estrutural', 'Perfil de proteção de piso',
-                       'Palhinha natural', 'Estofamento em linho',
-                       'Usinagem de encaixe de prateleira')]
+          if c not in POR_METRO and not c.startswith('Usinagem')]
 rots   = [rot for c, rot in ativos if rot]
 # ⛔ .capitalize() rebaixa o resto da frase, e 'LED' virava 'led'
-frase  = ', '.join(rots[:-1])
-desc   = frase[:1].upper() + frase[1:] + ' e ' + rots[-1]
+# ⛔ COM UM RÓTULO SÓ, O "e" SOBRAVA: o Lavabo saiu com a especificação
+#   começando em " e perfil de proteção de piso". Vírgula e "e" só existem
+#   quando há o que separar.
+if len(rots) > 1:
+    frase = ', '.join(rots[:-1])
+    desc  = frase[:1].upper() + frase[1:] + ' e ' + rots[-1]
+elif rots:
+    desc  = rots[0][:1].upper() + rots[0][1:]
+else:
+    desc  = 'Nenhuma — este ambiente não leva ferragem'
 L['ferr'] = r
 põe(r, B='Ferragem, terceirizados e iluminação',
-    C=f'{desc} · linha {getattr(A, "LINHA", "Blum")} · ⛔ sem fonte: as fitas '
-      'da casa são 110 V',
-    D='=SUMPRODUCT((' + '+'.join(f'({K}="{c}")' for c in conta) +
-      f')*IF(ISNUMBER($F${a}:$F${b});$F${a}:$F${b};0))', E='peças',
+    # ⭐ a linha de ferragem vem da BASE do projeto, não de um padrão fixo
+    C=f'{desc} · linha {getattr(A, "LINHA", getattr(B, "LINHA", "Hettich"))}'
+      ' · ⛔ sem fonte: as fitas da casa são 110 V',
+    # ⛔ E O AMBIENTE PODE NÃO TER NENHUMA PEÇA DE FERRAGEM. O Office é só
+    #   um painel: usinagem e perfil, os dois por metro. Com `conta` vazia o
+    #   join saía "SUMPRODUCT(()*...)", fórmula inválida — e o Sheets a
+    #   aceita como TEXTO, deixando a célula com cara de fórmula e sem
+    #   conta nenhuma. Zero é a resposta honesta: não há peça a contar.
+    D=('=SUMPRODUCT((' + '+'.join(f'({K}="{c}")' for c in conta) +
+       f')*IF(ISNUMBER($F${a}:$F${b});$F${a}:$F${b};0))') if conta else 0, E='peças',
     # ⭐ o custo de ferragem é o RESTO: tudo que tem chave, menos chapa,
     #   menos acabamento, menos vidro. Assim nenhuma linha nova de ferragem
     #   pode escapar da conta por eu não a ter listado aqui.

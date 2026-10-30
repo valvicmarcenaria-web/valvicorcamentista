@@ -67,6 +67,13 @@ PRECO = {'MDF cor 18': 700.0, 'MDF cor 15': 550.0, 'MDF cor 6': 350.0,
          #   cru/fosco em 95/125 = 0,76, e aplico sobre os 700/550/350 de
          #   hoje. Está na caixa de dúvidas.
          'MDF Cru 18': 530.0, 'MDF Cru 15': 410.0, 'MDF Cru 6': 255.0}
+# ⭐⭐ A LINHA DE FERRAGEM DA CASA, declarada UMA vez [30/10/2026].
+#   ⛔ O aba.py escrevia "linha Blum" por padrão, e a casa do Gustavo é
+#     HETTICH inteira — decisão do Jonathan em 29/10, dez anos de
+#     garantia uniformes. Uma aba que diz Blum e cobra Hettich é a
+#     proposta prometendo o que o orçamento não pagou.
+LINHA = 'Hettich'
+
 ESTRUTURA, FUNDO_CH, PORTA_CH = 'MDF Branco TX 15', 'MDF Branco TX 6', 15
 PRAT_VAO = 70.0   # vão acima disto pede 18 mm, contra empeno [Base]
 # ⭐⭐ FITA E FILETAGEM SÃO DUAS COISAS [Jonathan, 28/10/2026]

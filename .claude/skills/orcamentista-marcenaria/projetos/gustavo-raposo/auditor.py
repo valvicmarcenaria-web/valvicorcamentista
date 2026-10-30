@@ -320,10 +320,20 @@ def custo(mv):
     for x, rot, q, c in CAVA:
         if x == mv: t += round(q*c/100, 2)*B.CAVA_M
     # ⭐ vidro e espelho na mesma lista; o 6º elemento diz a chave
+    # ⛔⛔ E A ÁREA NÃO SE ARREDONDA AQUI [30/10/2026]. Havia um
+    #   round(área, 2) nesta linha e a aba não tem nenhum: o espelho do
+    #   Lavabo mede 65,5 × 300 = 1,965 m², que arredondado dá 1,97, e a
+    #   R$ 600 o m² são R$ 3,00 de diferença entre o que o auditor somava e
+    #   o que a planilha mostrava. ⭐ Três reais não quebram orçamento
+    #   nenhum — o que quebra é o auditor e a aba calcularem DIFERENTE: a
+    #   conferência deixa de provar coisa alguma, e o próximo desvio, que
+    #   pode ser de três mil, chega escondido no mesmo ruído.
+    #   ⭐ O arredondamento é de EXIBIÇÃO ("1,97 m²" no texto da linha),
+    #     nunca de conta. A CAVA arredonda nos dois lados, e por isso fecha.
     for vd in VIDRO:
         if vd[0] == mv:
             ch = vd[5] if len(vd) > 5 else 'Vidro reflecta'
-            t += round(vd[2]*vd[3]*vd[4]/10000, 2)*B.PRECO.get(ch, 0.0)
+            t += vd[2]*vd[3]*vd[4]/10000*B.PRECO.get(ch, 0.0)
     for x, rot, m in LED:
         if x == mv: t += m*B.LED_M
     for x, rot, q in ALMAS:
