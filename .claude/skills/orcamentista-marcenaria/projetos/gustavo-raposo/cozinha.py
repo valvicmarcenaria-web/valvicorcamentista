@@ -167,7 +167,20 @@ PORTAS = [
 #     "puxador a definir na cor dourado" em toda frente, básculas inclusive,
 #     e slim mais puxador não se somam na mesma folha.
 BASCULAS = [(I3, 'Duas básculas de 72 × 39, na fileira de cima', 2, 'dourado')]
-PUXADORES  = []
+# ⭐⭐ O PUXADOR É O ALÇAS TRASO DE 128, o mesmo do Michell
+#   [Jonathan, 30/10/2026]: "na cozinha considere o puxador trazo igual ao
+#   do michell". R$ 110 a unidade, uma por frente.
+#   ⛔ ATÉ AQUI ELE NÃO EXISTIA NA CONTA. A prancha diz "puxador a definir
+#     na cor dourado", e eu deixei as CATORZE frentes sem linha nenhuma,
+#     com a dúvida anotada — ou seja, o custo saía R$ 1.540 abaixo do real
+#     e nada na aba gritava, porque linha que não existe não aparece zerada.
+#   ⭐ A lição: "a definir" não é motivo para não lançar. Lança-se o padrão
+#     da casa e escreve-se na linha que o modelo ainda muda.
+PUXADORES = [
+ (I1, 'Uma por porta de giro · quatro folhas de 69 × 85', 4),
+ (I3, 'Uma por gavetão e por báscula · seis frentes de 72 × 39', 6),
+ (I4, 'Uma por gaveta, gavetão e porta de giro · quatro frentes', 4),
+]
 # ⭐ (móvel, rótulo, nº de frentes com moldura usinada)
 #   ⛔ É a MÃO DE OBRA da moldura provençal — a usinagem do relevo na
 #     router, por frente. A chapa de 6 mm já está nas peças; o que falta é
@@ -271,10 +284,12 @@ FOLHA = dict(
   'tem relevo de moldura usinado na router, e relevo pinta mais devagar: '
   'mais demãos, mais lixa entre demãos, mais tempo de cabine. ⭐ Perguntar '
   'ao pintor o acréscimo da frente usinada — pode ser de 20% a 40%.',
-  'O PUXADOR DOURADO não tem modelo na prancha ("a definir na cor dourado") '
-  'nem linha na Base, e os CATORZE saem ZERO. ⛔ Enquanto isso o custo desta '
-  'cozinha é um PISO. ⚠ Puxador dourado de linha boa custa de R$ 80 a '
-  'R$ 250 a unidade: em catorze frentes isso é de R$ 1.100 a R$ 3.500.',
+  '⭐ O PUXADOR É O ALÇAS TRASO DE 128, R$ 110, o mesmo do Michell '
+  '[Jonathan, 30/10/2026] — catorze frentes, R$ 1.540. ⚠ A prancha diz '
+  'apenas "a definir na cor dourado": o Traso de 128 é o padrão da casa e '
+  'entra como tal. ⛔ Se a arquiteta fechar outro modelo, é esta linha que '
+  'muda, e puxador dourado de linha boa vai de R$ 80 a R$ 250 a unidade — '
+  'em catorze frentes, de R$ 1.100 a R$ 3.500.',
   'AS DUAS BÁSCULAS ESTÃO NO ARMÁRIO INFERIOR, na fileira de cima, e isso é '
   'incomum — báscula costuma ser aérea. ⭐ Lancei o AVENTOS HK-XS da Blum, '
   'que é a báscula da casa e é DE MOLAS, não a gás. ⚠ Confirmar se a '
