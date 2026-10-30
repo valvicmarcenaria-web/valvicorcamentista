@@ -182,7 +182,7 @@ fechado enquanto elas existirem.
 
 ---
 
-# ⚠ OS TRÊS CENÁRIOS, VERSÃO 2 — a de cima está SUPERADA [30/10/2026]
+# ⚠ VERSÃO 2 — SUPERADA pela v3 no fim do arquivo [30/10/2026]
 
 > *[Jonathan 30/10] "a linha hardt considere como telescopica: Corrediça
 > telescopica: Custo da corrediça é 40,00 e dobradiça 10,00"* e, em
@@ -266,3 +266,87 @@ diferença entre os cenários é visível para o cliente com a gaveta aberta.
 
 **⚠ As quinze linhas a zero continuam nos três.** Nenhum destes preços é
 fechado.
+
+---
+
+# ⭐ OS TRÊS CENÁRIOS — VERSÃO 3, A VALER [30/10/2026]
+
+> *[Jonathan 30/10] "vamos voltar a blum para 42% · garantias 30 anos blum
+> - 10 anos hettich - 2 anos telescopica"*
+
+⭐ As garantias já eram essas; a mudança é só a **MC da Blum, de 40% para
+42%**. Os custos diretos não se movem — só o preço do cenário 1.
+
+⭐⭐ **E 42% na Blum tem fundamento, não é capricho.** A `garantia.md` diz
+que garantia tem CUSTO DE PROVISÃO e que subir o tier impacta a MC. Trinta
+anos é a maior provisão da tabela da casa: é o tier que mais precisa de
+margem. ⚠ Só note que a própria planilha escreve *"faixa ideal 35 a 40%"*
+ao lado — 42% fica acima da faixa que ela mesma anuncia.
+
+## Resumo
+
+| | **1 · BLUM** | **2 · HETTICH** | **3 · TELESCÓPICA** |
+| --- | --: | --: | --: |
+| Corrediça | R$ 300/par | R$ 150/par | R$ 40/par |
+| Dobradiça | R$ 50 | R$ 50 | R$ 10 |
+| Muxarabi | 170 réguas | painel CNC | painel CNC |
+| **Garantia** | **30 anos** | **10 anos** | **2 anos** |
+| Custo direto | 175.119,24 | 155.734,81 | 142.015,81 |
+| Encargos · 15,125% | 61.776,76 | 47.227,85 | 43.067,45 |
+| MC aplicada | **42%** | **35%** | **35%** |
+| Margem | 171.545,38 | 109.287,59 | 99.660,22 |
+| **PREÇO DE VENDA** | **408.441,38** | **312.250,25** | **284.743,48** |
+
+## Valor de venda, ambiente por ambiente
+
+`*` = o custo muda entre cenários · só Lavabo e Despensa são idênticos
+
+| | **1 · BLUM** | **2 · HETTICH** | **3 · TELESCÓPICA** | 1 → 3 |
+| --- | --: | --: | --: | --: |
+| \* 01 Varanda | 27.505,31 | 21.190,78 | 17.754,99 | −9.750,32 |
+| 02 Lavabo | 2.524,36 | 2.170,07 | 2.170,07 | −354,30 |
+| \* 03 Cozinha | 59.919,37 | 49.362,27 | 46.969,48 | −12.949,89 |
+| 04 Despensa | 9.188,99 | 7.899,31 | 7.899,31 | −1.289,68 |
+| \* 05 Lavanderia | 19.014,44 | 14.811,91 | 13.441,68 | −5.572,75 |
+| \* 06 Rouparia | 13.107,41 | 11.267,77 | 9.631,68 | −3.475,73 |
+| \* 07 Office | 21.756,27 | 6.525,46 | 6.525,46 | −15.230,81 |
+| \* 08 Suíte Master | 26.398,90 | 21.466,73 | 19.912,44 | −6.486,46 |
+| \* 09 Closet Master | 31.456,82 | 23.360,62 | 20.661,07 | −10.795,74 |
+| \* 10 Banho Master | 13.837,95 | 11.282,25 | 10.505,10 | −3.332,84 |
+| \* 11 Suíte 01 Filhos | 53.346,64 | 41.871,42 | 38.946,91 | −14.399,73 |
+| \* 12 Banho Suíte 01 | 6.235,80 | 4.747,07 | 3.969,92 | −2.265,88 |
+| \* 13 Suíte 02 Filhas | 45.893,74 | 35.157,77 | 32.008,30 | −13.885,44 |
+| \* 14 Closet Suíte 02 | 20.666,45 | 16.538,83 | 15.638,98 | −5.027,47 |
+| \* 15 Banho Suíte 02 | 6.251,57 | 4.760,62 | 3.983,48 | −2.268,09 |
+| \* 16 Suíte Hóspedes | 20.323,01 | 15.016,52 | 13.216,82 | −7.106,19 |
+| \* 17 Banho Hóspedes | 3.665,75 | 3.151,26 | 2.824,04 | −841,71 |
+| \* 18 Banho Social | 3.740,94 | 3.215,90 | 2.888,68 | −852,26 |
+| \* 19 Homeschooling | 23.607,67 | 18.453,71 | 15.795,07 | −7.812,61 |
+| **PREÇO DE VENDA** | **408.441,38** | **312.250,25** | **284.743,48** | **−123.697,89** |
+
+## Quanto da queda é custo e quanto é margem
+
+| com os três na mesma MC | 1 · BLUM | 2 · HETTICH | 3 · TELESCÓPICA |
+| --- | --: | --: | --: |
+| a 42% | 408.441,38 | 363.229,88 | 331.232,21 |
+| a 35% | 351.116,27 | 312.250,25 | 284.743,48 |
+
+- **1 → 2:** queda de 96.191,13 = 45.211,49 de custo + **50.979,63 de MC**
+- **1 → 3:** queda de 123.697,89 = **77.209,16 de custo** + 46.488,73 de MC
+
+⛔⛔ **ATENÇÃO À INVERSÃO.** Na v2, com 40/35, eu disse que o custo passara a
+dominar a queda. Com 42/35 o vão de MC subiu de 5 para 7 pontos e o 1 → 2
+VOLTOU a ser mais margem (53%) do que custo (47%). ⭐ No 1 → 3 o custo segue
+mandando, com 62%. **Dois pontos de MC na Blum movem R$ 18.203,52 de preço
+e nenhum centavo de custo.**
+
+## O que segue em aberto
+
+- ⛔ O cenário 3 carrega **R$ 2.750 de ferragem Blum**: 7 articuladores
+  AVENTOS HK-XS a R$ 250 (Cozinha 2, Lavanderia 5) e 10 pulsadores a R$ 100
+  (Suíte 02). Pela regra da casa não sobem o tier — paga caro sem comprar
+  garantia. A garantia do 3 segue 2 anos.
+- ⚠ **No cenário 3 o trilho APARECE** na lateral da gaveta, e não há
+  amortecedor. É a única diferença entre os cenários que o cliente vê com a
+  gaveta aberta, e tem de estar escrita na proposta.
+- ⚠ **As quinze linhas a zero continuam nos três.** Nenhum preço é fechado.
