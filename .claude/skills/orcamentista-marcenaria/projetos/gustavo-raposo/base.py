@@ -298,7 +298,10 @@ PRECO_OUTRAS = {
  #   ⛔ Fica em ZERO porque é serviço a cotar, e ZERO declarado grita; mas
  #     agora é o ÚNICO zero do ambiente: a chapa, a fita e a filetagem
  #     passaram a ter preço de verdade.
- 'Usinagem de encaixe meia-madeira': 0.0,  # ⛔ por encaixe · A COTAR
+ 'Usinagem de encaixe meia-madeira': 0.0,
+         # ⭐ friso de 0,5 × 0,5 na face do painel, por METRO de rasgo
+         #   [Suíte 01 Filhos, prancha 49] · ⛔ A COTAR
+         'Usinagem de friso': 0.0,  # ⛔ por encaixe · A COTAR
  # ⭐ PALHINHA NATURAL — a Suíte 02 · Filhas pede "frente com moldura em MDF
  #   e palhinha" no armário, na mesa e na mesa de cabeceira.
  #   ⛔ NÃO é a chapa melamínica que imita o desenho: é tapeceiro, por m² de
@@ -562,6 +565,36 @@ def fita_m(pecas, movel=None):
     return sum((nc*p['c'] + nl*p['l'])*p['qtd']/100 for p in pecas
                if movel is None or p['movel'] == movel
                for nc, nl in [p['fita']])
+
+# ════ A BASE MANDA — E AGORA ELA CONFERE ══════════════════════════════
+# ⭐⭐ POR QUE ISTO EXISTE [30/10/2026]: a CHAVES_BASE provou que a chave
+#   tem de vir da planilha. O PREÇO tem o mesmo defeito, um passo adiante:
+#   o `PRECO` daqui é escrito à mão, a ABA lê a planilha, e quando os dois
+#   discordam ninguém vê — a conferência da aba compara a aba com ela
+#   mesma. Foi assim que a corrediça derivada discordou em R$ 836 só na
+#   Varanda.
+#   ⭐ Agora o preço da planilha entra aqui: o que o código já tem é
+#     CONFERIDO contra ela e, discordando, QUEBRA; o que falta é
+#     PREENCHIDO por ela. Linha sem preço na Base vira 0.0 — que é o
+#     buraco declarado, e é o que a aba também vai mostrar.
+def _num(v):
+    v = str(v).replace('R$', '').strip()
+    if not v: return 0.0
+    return float(v.replace('.', '').replace(',', '.'))
+
+_SHEET = {}
+for _l in _json.loads((_pathlib.Path(__file__).resolve().parent/'_base-raw.json')
+                      .read_text(encoding='utf-8'))['values']:
+    if not _l or not str(_l[0]).strip() or len(_l) < 2: continue
+    if not any(str(c).strip() for c in _l[1:3]): continue
+    _SHEET[str(_l[0]).strip()] = _num(_l[1])
+
+_div = [(k, PRECO[k], _SHEET[k]) for k in sorted(PRECO)
+        if k in _SHEET and _SHEET[k] and abs(PRECO[k] - _SHEET[k]) > 0.005]
+if _div:
+    raise SystemExit('⛔⛔ CÓDIGO E BASE DISCORDAM DE PREÇO:\n' + '\n'.join(
+        f'   {k}: código R$ {a:,.2f} × Base R$ {b:,.2f}' for k, a, b in _div))
+for _k, _v in _SHEET.items(): PRECO.setdefault(_k, _v)
 
 # ════ AS CHAVES QUE A BASE TEM, uma por uma ═══════════════════════════
 # ⭐⭐ POR QUE ESTA LISTA EXISTE [30/10/2026]: porque chave inventada não
