@@ -186,8 +186,12 @@ CAVA = [
 #   vidraceiro, sem fita e sem cava, porque o puxador é furado no vidro.
 # ⭐ (móvel, rótulo, nº de folhas, comprimento, largura, chave)
 VIDRO = [
+ # ⛔ NÃO escreva "A COTAR" aqui [30/10/2026]. O gerador já põe o aviso,
+ #   e só onde a chave de fato não tem preço na Base — escrever à mão fazia
+ #   a linha dizer a mesma coisa duas vezes. ⭐ Rótulo diz o que a peça É;
+ #   o que falta na Base é o gerador que conta.
  (I3, 'Portas da cristaleira · duas folhas de 78,5 × 159, puxador redondo '
-  'furado no próprio vidro · ⛔ A COTAR com o vidraceiro', 2, 78.5, 159,
+  'furado no próprio vidro', 2, 78.5, 159,
   'Vidro temperado incolor'),
 ]
 # ⭐ (móvel, nome, rótulo, quantidade, unidade, chave)

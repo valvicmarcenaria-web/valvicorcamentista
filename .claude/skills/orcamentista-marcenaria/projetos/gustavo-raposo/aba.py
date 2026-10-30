@@ -340,11 +340,16 @@ põe(r, B='Ferragem, terceirizados e iluminação',
       ''.join(f'-SUMIF({K};"{c}";$I${a}:$I${b})' for c in VIDROS))
 r += 1
 if g('VIDRO'):
+    # ⭐ O aviso nomeia a chave que falta SÓ quando falta uma de várias —
+    #   repetir o nome que já está no começo da frase é ruído.
     _sem = [c for c in VIDROS if not B.PRECO.get(c)]
     põe(r, B='Vidro e espelho',
         C='Vidraçaria · ' + ', '.join(VIDROS) +
-          (' · ⛔ SEM PREÇO na Base: ' + ', '.join(_sem) +
-           ' — a linha fica vazia de propósito, para gritar' if _sem else ''),
+          ('' if not _sem else
+           ' · ⛔ SEM PREÇO na Base, a linha fica vazia de propósito para '
+           'gritar' if _sem == VIDROS else
+           ' · ⛔ SEM PREÇO na Base: ' + ', '.join(_sem) +
+           ' — essa linha fica vazia de propósito, para gritar'),
         D='=' + '+'.join(M2(f'"{c}"') for c in VIDROS), E='m²',
         F='=' + '+'.join(f'SUMIF({K};"{c}";$I${a}:$I${b})' for c in VIDROS))
     r += 1

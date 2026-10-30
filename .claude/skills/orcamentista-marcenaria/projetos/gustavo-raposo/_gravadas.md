@@ -22,7 +22,7 @@ classificador, então não há atalho por script.
 
 | # | aba | sheetId | conferência | custo direto |
 |---|-----|---------|-------------|--------------|
-| 01 | Varanda | 101 | R$ 0,00 | R$ 11.084,61 |
+| 01 | Varanda | 101 | R$ 0,00 | R$ 10.568,90 |
 | 02 | Lavabo | 102 | R$ 0,00 | R$ 1.082,32 |
 | 03 | Cozinha | 103 | R$ 0,00 | R$ 24.619,43 |
 | 04 | Despensa | 104 | R$ 0,00 | R$ 3.939,78 |
@@ -41,7 +41,7 @@ classificador, então não há atalho por script.
 | 17 | Banho Hóspedes | 117 | R$ 0,00 | R$ 1.571,69 |
 | 18 | Banho Social | 118 | R$ 0,00 | R$ 1.603,93 |
 | 19 | Homeschooling | 119 | R$ 0,00 | R$ 9.203,79 |
-| | **CUSTO DIRETO DO PROJETO** | | | **R$ 162.323,95** |
+| | **CUSTO DIRETO DO PROJETO** | | | **R$ 161.808,24** |
 
 ⭐ AS DEZENOVE ABAS ESTÃO GRAVADAS e as dezenove fecham em R$ 0,00.
 
@@ -93,9 +93,28 @@ espelho prata colado custa R$ 600/m². ⭐ Aviso que grita onde não há nada
 errado é aviso que o leitor aprende a não ler, e este é o único aviso que
 a planilha tem para dizer que um total é PISO. Agora só sai se faltar.
 
-## Falta refazer
+## As dezenove estão gravadas e as dezenove conferem
 
-- 01 Varanda (101) — ainda com preço Blum velho e a coluna de frete
+Conferido pela fórmula de uma linha acima, em 30/10/2026: as dezenove
+CONFERÊNCIAS leem **R$ 0,00**. ⭐ É a única prova de que nenhuma chave caiu
+fora da Base — a aba sozinha não denuncia, porque compara ela consigo mesma.
+
+**⛔⛔ DESMESCLE ANTES DE ESCREVER, NÃO DEPOIS.** O gerador manda na ordem
+"grade → conteúdo → formato", e isso está certo para uma aba NOVA. Para uma
+aba que se REESCREVE com layout diferente, as mesclagens VELHAS ainda estão
+de pé quando o conteúdo entra — e escrever dentro de uma mesclagem guarda
+só a célula de cima à esquerda e joga o resto fora, **com a gravação
+devolvendo "success"**. É a gêmea de "cresça a grade antes de escrever
+fórmula": o endereço falha, a escrita não. ⭐⭐ A receita: limpe os VALORES,
+mande o lote de FORMATO (que começa por `unmergeCells`), e só então grave o
+conteúdo. Foi assim que a Varanda entrou sem perder uma célula; o Lavabo,
+gravado na ordem contrária, perdeu três e a CONFERÊNCIA deu −R$ 1.061,10.
+
+**⛔ E O AVISO AINDA DIZIA A MESMA COISA DUAS VEZES.** O rótulo do vidro da
+cristaleira trazia "⛔ A COTAR com o vidraceiro" escrito à mão no
+levantamento, e o gerador acrescentava "⛔ A COTAR, segue sem preço na
+Base". ⭐ A regra: o rótulo diz o que a peça É; o que falta na Base é o
+gerador que conta. Tirei o texto à mão do `varanda.py`.
 
 ## Falta ligar
 
