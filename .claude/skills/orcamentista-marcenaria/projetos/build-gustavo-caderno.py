@@ -72,7 +72,11 @@ IMG = {n.stem: uri(n.name) for n in sorted((P / 'img-gustavo-raposo').iterdir())
 #   marcenaria — entre eles o que eu tinha posto na capa, que era mesa,
 #   cadeira e pedra. Nenhum destes pode voltar à peça; o assert no fim prova.
 CORTADAS = {'varanda-01', 'office-02', 'office-muxarabi', 'banho-master-02',
-            'banho02-02', 'hospedes-01'}
+            'banho02-02', 'hospedes-01',
+            # ⛔ cortado na revisão da peça pronta: parede branca com TV e
+            #   um móvel solto. A folha vende armário de correr flutuante
+            #   e a foto não mostra nenhum.
+            'hospedes-02'}
 
 S, N = [], [0]
 
@@ -109,7 +113,7 @@ folha(f'''<div class="cv">
 ab = TXT['abertura']
 folha(f'''<div class="ambw">
  <div class="band" style="height:104mm"><img src="{IMG['varanda-02']}" alt="">
-   <div class="tag">O que esta casa pede</div></div>
+   <div class="tag">Varanda</div></div>
  <div class="low" style="grid-template-columns:1fr;padding:11mm 18mm 12mm">
   <div><div class="eyebrow">O que esta casa pede</div><div class="rule"></div>
    <h1 class="h1" style="margin:0 0 5mm">{E(ab['titulo'])}</h1>
@@ -226,13 +230,25 @@ folha(f'''<div class="amb">
 #      banhos dividem o Nogueira Thar, e herdar o Off-White da suíte punha
 #      material errado no índice — erro que ninguém vê, porque a linha
 #      continua bonita.
+RUIDO = re.compile(r'^(Linha \w+|Duratex|Guararapes|Sayerlack|sem MDF'
+                   r'|sobre MDF|n[ao] \w+|com .*|e \w+ interno.*)$', re.I)
+
+
+def enxuto(parte):
+    pedacos = [x.strip() for x in parte.split(',')]
+    pedacos = [x for x in pedacos if x and not RUIDO.match(x)]
+    return ', '.join(pedacos).replace(', e ', ' e ')
+
+
 MAT = {}
 for (titulo, _i, tags, acab, _it), (a, b) in zip(amb.PG, amb.MAPA):
     partes = [x.strip() for x in acab.split('·')]
     for k, idx in enumerate(range(a, b)):
-        MAT[idx] = partes[min(k, len(partes) - 1)].split(',')[0].strip()
+        MAT[idx] = enxuto(partes[min(k, len(partes) - 1)])
 assert len(MAT) == 19
 assert MAT[16] == MAT[17] == 'MDF Nogueira Thar e Branco', MAT[16]
+assert MAT[18] == 'MDF Cinza Fóssil e Azul Secreto', MAT[18]
+assert MAT[2] == 'Laca acetinada M048', MAT[2]
 
 
 def coluna(pares):
@@ -263,10 +279,11 @@ for titulo, imgs, tags, acab, itens in amb.PG:
     limpo = titulo.replace('<br>', ' ')
     if len(imgs) == 1:
         # imagem à esquerda, a lista desce na coluna da direita
+        curto = ' curto' if len(itens) <= 2 else ''
         folha(f'''<div class="amb">
          <div class="amb-img"><img src="{IMG[imgs[0]]}" alt="">
            <div class="tag">{E(tag)}</div></div>
-         <div class="amb-txt">
+         <div class="amb-txt{curto}">
           <div class="eyebrow">Ambiente</div><div class="rule"></div>
           <div class="fit"><h2 class="h2" style="margin:1mm 0 4mm">{titulo}</h2>
            {mv}{nota}
@@ -289,7 +306,8 @@ for titulo, imgs, tags, acab, itens in amb.PG:
         #   pela borda e os acabamentos sumiam, sem erro nenhum no build.
         #   A faixa agora cede altura quando a lista é longa, e o que sobrar
         #   encolhe no `.fitw` até caber — a mesma trava do `.amb-txt`.
-        alt = 88 if len(itens) <= 6 else (76 if len(itens) <= 8 else 66)
+        alt = 88 if len(itens) <= 4 else (76 if len(itens) <= 6 else
+              (70 if len(itens) <= 8 else 62))
         folha(f'''<div class="ambw">
          <div class="band" style="height:{alt}mm;display:flex;gap:2mm">{band}
            <div class="tag">{E(tag)}</div></div>
@@ -389,11 +407,11 @@ folha(f'''<div class="pad">
   a furação não cansa. A corrediça e a dobradiça, sim — e é por isso que a escolha
   entre as três linhas <b>vale para a casa toda</b>: a garantia do conjunto segue
   sempre a ferragem de menor linha presente.</p>
- <div class="gar">{ops}</div>
+ <div class="gar justo">{ops}</div>
  <div class="box" style="margin-top:5mm"><div class="t">Como escolher</div>
   <p>Abra uma gaveta de cada linha antes de decidir — <b>em trinta segundos a mão
-   resolve o que a tabela não resolve</b>. Levamos as três amostras à obra na
-   medição, sem compromisso.</p></div>
+   resolve o que a tabela não resolve</b>. Levamos as três amostras até vocês
+   antes do fechamento, sem compromisso.</p></div>
 </div>''')
 
 # ── 18 · a garantia: o termo e como se aciona ───────────────────────────
@@ -403,7 +421,7 @@ PASSOS = [
  ('Vocês nos chamam', 'Por telefone, WhatsApp ou e-mail, direto com a '
   'fábrica. Não há central, não há protocolo e não há intermediário.'),
  ('Respondemos em 24 horas', 'Esse é o nosso compromisso de retorno, '
-  'contado em dias úteis a partir do chamado.'),
+  'contado em horas corridas a partir do chamado.'),
  ('Visita em até três dias úteis', 'Se não resolvermos pelo telefone, a '
   'equipe vai ao local. Dentro do prazo de garantia, a visita e o reparo '
   'não têm custo.'),
@@ -441,11 +459,21 @@ folha(f'''<div class="pad">
    <div class="term"><div class="k">Iluminação em LED</div>
     <div class="s">É componente eletrônico e segue a garantia do fabricante.</div></div>
    <div class="term"><div class="k">Desgaste de uso</div>
-    <div class="s">E o dano por umidade ou infiltração vinda da obra.</div></div>
+    <div class="s">Assim como o dano por umidade ou infiltração vinda
+     da obra.</div></div>
    <div class="term"><div class="k">Alteração por terceiro</div>
     <div class="s">Feita no móvel depois da entrega. O termo traz também as
      obrigações de conservação do contratante.</div></div>
   </div>
+ </div>
+ <div class="mos" style="grid-template-columns:repeat(3,1fr);margin-top:auto;
+      flex:none;height:52mm">
+  <figure><img src="{IMG['suite-master-02']}" alt="">
+    <figcaption>Suíte master</figcaption></figure>
+  <figure><img src="{IMG['closet-master-02']}" alt="">
+    <figcaption>Closet master</figcaption></figure>
+  <figure><img src="{IMG['suite01-03']}" alt="">
+    <figcaption>Suíte 01</figcaption></figure>
  </div>
 </div>''')
 
@@ -457,19 +485,37 @@ folha(f'''<div class="pad">
 #      dobradiça para trocar — mas Hettich e Blum fecham a 42% de margem e
 #      a telescópica a 35%, e por isso o preço da telescópica cai mesmo
 #      ali. A nota da folha afirma só o que a tabela mostra.
-IGUAIS = [i for i, (_n, _c, pares, dobr) in enumerate(cen.AMB)
-          if pares == 0 and dobr == 0]
-assert {cen.AMB[i][0] for i in IGUAIS} == {'02 Lavabo', '04 Despensa', '07 Office'}
-for _i in IGUAIS:
-    assert abs(cen.CEN['Hettich']['pv'][_i] - cen.CEN['Blum']['pv'][_i]) < 0.01
-    assert abs(cen.CEN['Hettich']['pv'][_i] - cen.CEN['Telescópica']['pv'][_i]) > 1.0
+#    ⛔⛔ E O EMPATE SAI DA TABELA, NÃO DE UMA LISTA QUE EU ESCREVO. A nota
+#      é montada a partir dos próprios preços impressos acima dela: se um
+#      ambiente entrar ou sair do empate, a frase muda sozinha.
+IGUAIS = [i for i in range(len(cen.AMB))
+          if abs(cen.CEN['Hettich']['pv'][i] - cen.CEN['Blum']['pv'][i]) < 0.01]
+assert IGUAIS and all(cen.AMB[i][2] == 0 for i in IGUAIS), \
+    '⛔ empatou Hettich com Blum num ambiente que TEM corrediça'
+assert all(abs(cen.CEN['Hettich']['pv'][i] - cen.CEN['Telescópica']['pv'][i]) > 1.0
+           for i in IGUAIS), '⛔ a telescópica não pode empatar: a MC dela é outra'
+NOMES = [cen.AMB[i][0][3:] for i in IGUAIS]
+EMPATE = (', '.join(NOMES[:-1]) + ' e ' + NOMES[-1]) if len(NOMES) > 1 else NOMES[0]
+QUANTOS = {1: 'Um ambiente tem', 2: 'Dois ambientes têm', 3: 'Três ambientes têm',
+           4: 'Quatro ambientes têm', 5: 'Cinco ambientes têm',
+           6: 'Seis ambientes têm', 7: 'Sete ambientes têm'}[len(NOMES)]
+
+
+CEL = {}
+for _n in LIN:
+    _v = [round(x) for x in cen.CEN[_n]['pv']]
+    _resto = round(cen.CEN[_n]['preco']) - sum(_v)
+    _v[max(range(len(_v)), key=lambda i: _v[i])] += _resto
+    assert abs(_resto) <= 3, f'⛔ resíduo grande demais em {_n}: {_resto}'
+    assert sum(_v) == round(cen.CEN[_n]['preco'])
+    CEL[_n] = _v
 
 
 def bloco(faixa):
     return ''.join(
         f'<tr><td class="l">{E(cen.AMB[i][0][3:])}</td>'
         + ''.join(f'<td{" class=hi" if n == "Hettich" else ""}>'
-                  f'{brs(cen.CEN[n]["pv"][i])}</td>' for n in LIN)
+                  f'{brs(CEL[n][i])}</td>' for n in LIN)
         + '</tr>' for i in faixa)
 
 
@@ -492,10 +538,9 @@ folha(f'''<div class="pad">
              f'{brs(cen.CEN[n]["preco"])}</td>' for n in LIN)}</tr></table>
  </div>
  <div class="box" style="margin-top:auto"><p style="font-size:8.4pt">
-  <b>Lavabo, Despensa e Office têm o mesmo valor nas linhas Hettich e Blum.</b>
-  Nenhum dos três leva gaveta nem porta de giro — o lavabo é espelho, a despensa
-  é prateleira e o office é painel —, então não existe corrediça nem dobradiça
-  neles para trocar de uma linha para a outra.</p></div>
+  <b>{QUANTOS} o mesmo valor nas linhas Hettich e Blum:</b> {E(EMPATE)}.
+  Nenhum deles leva gaveta, e <b>entre essas duas linhas o que muda é só a
+  corrediça</b> — a dobradiça é a mesma nas duas.</p></div>
 </div>''')
 
 # ── 20 · a decisão: as três linhas, um valor cada ───────────────────────
@@ -525,12 +570,13 @@ folha(f'''<div class="pad">
  <h1 class="h1" style="margin:0 0 3mm">Dois anos, dez, ou trinta.</h1>
  <p class="lead" style="max-width:215mm">A mesma casa, o mesmo desenho e os mesmos
   padrões. A diferença é a <b>ferragem</b> — e o tempo pelo qual respondemos por ela.</p>
- <div class="gar">{cards}</div>
+ <div class="gar justo">{cards}</div>
  <div class="box" style="margin-top:5mm"><div class="t">O que está incluso</div>
-  <p>Projeto executivo de marcenaria, material, usinagem, ferragem, iluminação
-   embutida, os demais ofícios que a folha de cada ambiente nomeia, transporte,
-   montagem e instalação — num só contrato, com uma só data e uma só arquiteta
-   responsável.</p></div>
+  <p>Projeto executivo de marcenaria, material, usinagem, ferragem e iluminação
+   em LED embutida, mais os ofícios que esta proposta reúne — <b>espelho, vidro
+   temperado, serralheria embutida e palhinha natural</b> —, transporte, montagem
+   e instalação, num só contrato, com uma só data e uma só arquiteta responsável.
+   A pedra é marmoraria e fica fora; a folha de condições nomeia o resto.</p></div>
 </div>''')
 
 # ── 21 · condições ──────────────────────────────────────────────────────
@@ -622,13 +668,14 @@ EXTRA = '''
 .rail{height:1.5px;background:linear-gradient(90deg,var(--gold),var(--gold-lt) 70%,var(--hair));
       margin:0;flex:none}
 .proc{display:grid;grid-template-columns:repeat(4,1fr);gap:0 7mm;flex:1;min-height:0;
-      margin-top:-1px}
+      margin-top:-1px;overflow:hidden;align-content:start}
+.proc .pb{transform-origin:top left}
 .pb{border-left:1px solid var(--hair);padding:5mm 5mm 0 5mm}
 .pb:first-child{border-left:none;padding-left:0}
 .pb-h{font-size:7.4pt;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);
       font-weight:700}
-.pb-s{font-size:7.6pt;color:var(--mut);margin:1mm 0 4mm;min-height:8mm;line-height:1.35}
-.pe{position:relative;padding:0 0 4.6mm 0}
+.pb-s{font-size:7.6pt;color:var(--mut);margin:1mm 0 3.4mm;min-height:6mm;line-height:1.35}
+.pe{position:relative;padding:0 0 3.2mm 0}
 .pe-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:15pt;color:var(--gold-lt);
       line-height:1;float:right;margin-left:3mm}
 .pe-k{font-size:6pt;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
@@ -639,7 +686,9 @@ EXTRA = '''
       border-left:1.5px solid var(--gold-pale);line-height:1.38}
 
 /* ── a coluna de texto do ambiente encolhe até caber na folha ────────── */
-.amb-txt{overflow:hidden;padding-bottom:16mm}
+.amb-txt{overflow:hidden;padding-bottom:19mm}
+.amb-txt.curto{justify-content:center;padding-bottom:22mm}
+.amb-txt.curto .fit{margin-bottom:6mm}
 .amb-txt .fit{transform-origin:top left}
 .ambw .low{flex:1;min-height:0;overflow:hidden}
 .ambw .low .fitw{transform-origin:top left}
@@ -650,6 +699,17 @@ EXTRA = '''
 .ix-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:11pt;color:var(--gold-lt)}
 .ix-t{font-size:9.4pt;font-weight:600}
 .ix-d{font-size:7.4pt;color:var(--mut);text-align:right}
+
+/* ── ajustes do caderno ───────────────────────────────────────────────── */
+/* a calha entre as colunas: sem ela o número encostava na tarja da Hettich */
+.inv td, .inv th{padding-left:3.4mm}
+.inv td.l, .inv th.l{padding-left:0}
+/* a cauda do "3" do algarismo antigo cruzava a linha de baixo, só na Blum */
+.gar .anos{padding-bottom:2.2mm}
+/* cartão na altura do conteúdo: o vazio sai de dentro dele e vai para o pé */
+.gar.justo{flex:none}
+.gar.justo .c{padding-bottom:6mm}
+.gar.justo .l{margin-top:5mm}
 
 /* ── comparativo das três linhas ──────────────────────────────────────── */
 .cmp{width:100%;border-collapse:collapse}

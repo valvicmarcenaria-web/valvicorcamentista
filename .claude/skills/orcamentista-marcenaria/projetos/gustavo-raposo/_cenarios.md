@@ -798,3 +798,53 @@ tudo, a que fecha a conta.
    então virou "para o que está aqui, vocês não contratam mais ninguém".
    As reescritas longas que eles propuseram, recusei: o qualificador cabe
    em três palavras.
+
+## A revisão adversarial da peça pronta
+
+Quatro lentes abriram o caderno em paralelo — os dez pedidos do Jonathan,
+vazamento de outro cliente, as afirmações contra os fatos, e o que se vê —
+e trouxeram **dezessete achados**. A lente do vazamento voltou **limpa**.
+Treze eram reais. Os mais graves:
+
+⛔⛔ **OUTRA VEZ O ASSERT TRAVAVA UMA AFIRMAÇÃO E A PEÇA IMPRIMIA OUTRA.**
+A nota da folha de preços dizia que **três** ambientes têm o mesmo valor em
+Hettich e Blum. A tabela, logo acima dela, mostra **seis**. Hettich e Blum
+usam a **mesma dobradiça** (R$ 50) — só a corrediça muda —, então empata
+todo ambiente com **zero corrediças**, e não só os que também têm zero
+dobradiças. A Rouparia tem vinte dobradiças e empata; o meu predicado
+`pares == 0 and dobr == 0` a deixava de fora. Agora o empate sai da própria
+tabela e a frase se monta sozinha.
+
+⛔ **E A MESMA NOTA ENCOSTAVA NA TERCEIRA COLUNA.** "Não há o que trocar de
+uma linha para a outra" é verdade entre Hettich e Blum e **mentira** contra
+a telescópica, que aparece mais barata ali do lado — porque a MC dela é 35%,
+não 42%. A frase agora se fecha nas duas linhas de que fala.
+
+⛔ **TRÊS FRASES VARRIAM A PEDRA PARA DENTRO DO ESCOPO.** "Tudo o que este
+caderno lista entra no nosso escopo", "você não contrata mais ninguém", "os
+demais ofícios que a folha de cada ambiente nomeia" — e as folhas nomeiam,
+sim, *a bancada de granito* da varanda e *a de quartzito* da cozinha, porque
+a marcenaria encosta nelas. A folha de condições desmentia as três. Agora o
+escopo é **nomeado**, não varrido.
+
+⛔ **A AMOSTRA CHEGAVA DEPOIS DA DECISÃO.** "Abra uma gaveta de cada linha
+antes de decidir — levamos as três amostras à obra **na medição**." Mas a
+folha das doze etapas põe a medição como etapa **03**, depois da aprovação
+(01) e do contrato (02). A peça marcava encontro para depois de fechado.
+
+⛔ **"RESPONDEMOS EM 24 HORAS, CONTADO EM DIAS ÚTEIS"** — duas unidades na
+mesma frase. Um chamado de sexta vence no sábado pelo título e na terça
+pelo texto. A política da casa é 24h de retorno; os dias úteis são da visita.
+
+⛔ **"CADA PEÇA CHEGA INSTALADA E ACESA"** — e a folha de condições tira os
+**drivers** do escopo. Sem driver o perfil não acende.
+
+Mais: o Lavabo não era nomeado no título da folha que o apresenta; o render
+da suíte de hóspedes é parede branca com TV (cortado — nenhum dos dois
+renders daquele ambiente mostra a marcenaria); a décima segunda etapa vazava
+por baixo do fio do rodapé; o índice cortava na primeira vírgula e o
+Homeschooling perdia o **Azul Secreto**, que é o fundo do nicho e a cor do
+ambiente; os números encostavam na tarja da Hettich; a cauda do "3" antigo
+cruzava "ANOS DE GARANTIA" na coluna da Blum; os cartões tinham buraco no
+meio; e **a coluna não fechava com o total** — R$ 1 de arredondamento na
+única folha em que o cliente soma com a calculadora na mão.

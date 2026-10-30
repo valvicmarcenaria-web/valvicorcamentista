@@ -10,7 +10,7 @@ texto é exatamente o defeito que não dá erro.
 Formato: (título, imagens, tags, acabamento, [(móvel, descrição)]).
 """
 PG = [
- ('A varanda.',
+ ('A varanda<br>e o lavabo.',
   ['varanda-02'],
   ['Varanda', 'Lavabo'],
   'MDF Nogueira Caiena e Branco TX, Duratex, na varanda · Espelho prata colado no lavabo, sem MDF',
@@ -81,7 +81,7 @@ PG = [
    ('Módulo de canto em L', 'Resolve o encontro do armário em L e leva os cabideiros contínuos que viram a esquina, com o maleiro seguindo por cima. MDF Off-White Suave.'),
    ('Gabinete suspenso sob a bancada', 'Gavetas e portas de giro com puxador tipo cava usinado nas frentes, e prateleiras internas atrás das portas. O móvel é suspenso, flutuando acima do piso, em MDF Pinole com interno em MDF Branco.')]),
  ('Hóspedes e os<br>banhos sociais.',
-  ['hospedes-02', 'banho-hospedes-01', 'banho-social-01'],
+  ['banho-hospedes-01', 'banho-social-01'],
   ['Suíte hóspedes', 'Banho hóspedes', 'Banho social'],
   'MDF Off-White Suave e Branco, Duratex · MDF Nogueira Thar e Branco, Duratex',
   [('Armário da suíte', 'Folhas de correr flutuantes, maleiro, cabideiro e prateleiras, com gavetas e sapateiras deslizantes embaixo. MDF Off-White Suave, com interno em MDF Branco.'),
