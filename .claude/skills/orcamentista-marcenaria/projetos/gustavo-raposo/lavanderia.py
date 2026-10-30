@@ -4,10 +4,11 @@
 pranchas 32 a 34 · planta de layout, elevação A (vista externa e interna do
 armário) e elevação B.
 
-⭐⭐ É O AMBIENTE DE BÁSCULA DA CASA: SEIS. Quatro no armário superior da
-  elevação A, uma no corpo inferior e uma na elevação B. Cada báscula é um
-  articulador AVENTOS HK-XS da Blum a R$ 250 — e seis delas pesam mais que
-  trinta dobradiças. ⛔ O AVENTOS é DE MOLAS, não a gás; a correção é de
+⭐⭐ É O AMBIENTE DE BÁSCULA DA CASA: CINCO. Quatro no armário superior e
+  uma no corpo inferior, todas na elevação A. Cada báscula é um articulador
+  AVENTOS HK-XS da Blum a R$ 250 — e cinco delas pesam mais que vinte e
+  cinco dobradiças. ⛔ Eram SEIS até 30/10: a sexta estava no "aéreo da
+  elevação B", que é o mesmo aéreo da elevação A visto de lado. ⛔ O AVENTOS é DE MOLAS, não a gás; a correção é de
   28/10 e vale para a proposta inteira.
 
 ⭐ A CADEIA VERTICAL FECHA NOS 375 DE PÉ-DIREITO, por dois caminhos:
@@ -34,7 +35,22 @@ BR15, BR6 = 'MDF Branco TX 15', 'MDF Branco TX 6'
 I1 = 'ELEVAÇÃO A Armário superior'
 I2 = 'ELEVAÇÃO A Armário inferior'
 I3 = 'ELEVAÇÃO A Torre de vassouras'
-I4 = 'ELEVAÇÃO B Armário superior e inferior'
+# ⛔⛔⛔ NÃO EXISTE ITEM 04 [Jonathan, 30/10/2026]:
+#   > "na lavanderia, o item 4 é a mesclagem do item 1, 2 e 3"
+#
+#   ⭐ E a prancha 34 confirma, quando se OLHA em vez de ler cota solta:
+#     o "35" e o "60" da elevação B são as PROFUNDIDADES dos móveis da
+#     elevação A — o aéreo de A tem 35 de fundo, o inferior tem 60. Vistos
+#     da parede B, esses fundos aparecem como LARGURA, e eu os lancei como
+#     móvel novo. ⛔ A lavanderia é um L: as duas elevações desenham A
+#     MESMA marcenaria dobrando a esquina.
+#
+#   ⭐⭐ A REGRA QUE FICA, e vale para a casa inteira:
+#     ELEVAÇÃO NÃO É MÓVEL — ELEVAÇÃO É VISTA.
+#     Dois desenhos de um canto desenham o canto duas vezes, e quem conta
+#     por desenho paga o canto duas vezes. Antes de abrir um item novo, a
+#     pergunta é: este móvel já apareceu em outra vista?
+#     ⛔ Aqui isso valia R$ 1.266,68 — 18% do ambiente.
 
 LAVANDERIA = [
  # ══ ITEM 01 · ARMÁRIO SUPERIOR DA ELEVAÇÃO A — 268 × 50 × 35 ══════════
@@ -81,21 +97,9 @@ LAVANDERIA = [
    '⭐ UMA FOLHA SÓ, de 2,50 m · ⛔ folha desse porte pede TRÊS dobradiças, '
    'não duas · puxador tipo cava usinada'),
 
- # ══ ITEM 04 · ARMÁRIO DA ELEVAÇÃO B — 60 × 78 × 60 e 35 × 50 × 35 ═════
- #  A parede de 214 é 154 das duas máquinas lava e seca mais 60 de armário.
- #  Em cima, um aéreo estreito de 35 com UMA báscula.
- P('Lateral · superior',   I4, 50, 35, 2, BD15, (1, 1)),
- P('Tampo e base · superior', I4, 31, 35, 2, BD15, (1, 1)),
- P('Fundo · superior',     I4, 35, 50, 1, BR6, (0, 0), '⛔ sem fita'),
- P('Frente · báscula',     I4, 35, 50, 1, BD15, (2, 2), 'AVENTOS HK-XS'),
- P('Lateral · inferior',   I4, 78, 60, 2, BD15, (1, 1)),
- P('Base · inferior',      I4, 56, 60, 1, BR15, (1, 0)),
- P('Travessa de topo · inferior', I4, 56, 10, 2, BR15, (1, 0),
-   'Recebe a bancada de granito'),
- P('Fundo · inferior',     I4, 60, 78, 1, BR6, (0, 0), '⛔ sem fita'),
- P('Frente · gavetão',     I4, 60, 39, 2, BD15, (2, 2),
-   'Dois · puxador tipo cava usinada'),
- *gaveta(I4, 60, 55, 36, 2, 'Caixa de gavetão'),
+ # ⛔⛔ AS DEZ PEÇAS DA "ELEVAÇÃO B" SAÍRAM DAQUI, e não foram para lugar
+ #   nenhum: elas já estavam nos itens 01, 02 e 03. O que a elevação B
+ #   desenha é o CANTO dos mesmos móveis, visto da outra parede.
 ]
 
 # ════════════════════════════════════════════════════════════════════════
@@ -105,7 +109,6 @@ from base import DOBRADICA
 #   ⛔ "Gavetões com corrediças invisíveis" — HETTICH OCULTA.
 GAVETAS = [
  (I2, 'Cinco gavetões de 69 × 39', 5, 500),
- (I4, 'Dois gavetões de 60 × 39', 2, 500),
 ]
 # ⭐ (móvel, rótulo, nº de FOLHAS, dobradiças POR FOLHA, preço)
 PORTAS = [
@@ -119,7 +122,6 @@ PORTAS = [
 BASCULAS = [
  (I1, 'Quatro básculas do armário superior', 4, 'cava'),
  (I2, 'A báscula do meio da fileira de cima', 1, 'cava'),
- (I4, 'A báscula do aéreo de 35', 1, 'cava'),
 ]
 PUXADORES = MOLDURA = LED = CABIDEIROS = ALMAS = VIDRO = SERRALHERIA = []
 # ⭐ (móvel, rótulo, nº de frentes, extensão de cava em cm por frente)
@@ -128,7 +130,6 @@ CAVA = [
  (I2, 'Cinco gavetões e uma báscula · ⛔ o painel FIXO não leva cava',
   6, 69),
  (I3, 'A folha da torre', 1, 62),
- (I4, 'Dois gavetões e a báscula do aéreo', 3, 60),
 ]
 # ⭐ (móvel, nome, rótulo, quantidade, unidade, chave)
 OUTRAS = [
@@ -153,16 +154,13 @@ CABECA = {
       'ELEVAÇÃO A · a torre de vassouras, numa folha só de 250 · a vista '
       'interna cota 2 + 46 + 2 + 46 + 2 + 150 + 2 + 10 = 260: duas '
       'prateleiras em cima e o nicho de 150 para vassoura e rodo embaixo'),
- I4: ('214 de parede · armário de 60 × 78 e aéreo de 35 × 50',
-      'ELEVAÇÃO B · 154 das duas máquinas lava e seca mais 60 de armário '
-      'com dois gavetões · em cima, um aéreo estreito de 35 com uma báscula'),
 }
 
 FOLHA = dict(
  aba='LAVANDERIA',
  sub='Gustavo Raposo · executivo Luiza Pacheco, pranchas 32 a 34 · MDF '
      'Branco Diamante, Linha Trama, Duratex · ⭐⭐ o ambiente de BÁSCULA da '
-     'casa: seis articuladores AVENTOS HK-XS, e puxador tipo cava usinada '
+     'casa: cinco articuladores AVENTOS HK-XS, e puxador tipo cava usinada '
      'na marcenaria em toda frente',
  chapa_txt={BD15: 'Branco Diamante · Linha Trama · Duratex · frentes, '
                   'laterais, tampos e bases',
@@ -172,9 +170,16 @@ FOLHA = dict(
             BR6:  'Branco TX · fundos'},
  nota='⭐ O FRETE É UMA LINHA DO AMBIENTE, R$ 200 a viagem: a QUANTIDADE é a '
       'célula AMARELA no fim do painel de material, e ela sai ZERO.   '
-      '⭐⭐ SEIS BÁSCULAS, e elas mandam no custo da ferragem: quatro no '
-      'aéreo da elevação A, uma no corpo inferior e uma na elevação B. Cada '
-      'uma é um articulador AVENTOS HK-XS da Blum a R$ 250 — seis pesam '
+      '⛔⛔⛔ A ELEVAÇÃO B NÃO É UM MÓVEL — É A MESMA MARCENARIA DA ELEVAÇÃO '
+      'A, VISTA DA OUTRA PAREDE [Jonathan, 30/10/2026]. A lavanderia é um L, '
+      'e o "aéreo de 35" e o "armário de 60" que a elevação B desenha são as '
+      'PROFUNDIDADES dos móveis da elevação A: o superior tem 35 de fundo, o '
+      'inferior tem 60. Eu os havia lançado como ITEM 04, e isso somava o '
+      'canto duas vezes — R$ 1.266,68, 18% do ambiente. ⭐ A regra que fica: '
+      'elevação não é móvel, elevação é VISTA.   '
+      '⭐⭐ CINCO BÁSCULAS, e elas mandam no custo da ferragem: quatro no '
+      'aéreo e uma no corpo inferior, todas na elevação A. Cada '
+      'uma é um articulador AVENTOS HK-XS da Blum a R$ 250 — cinco pesam '
       'mais que trinta dobradiças. ⛔ E o AVENTOS é DE MOLAS, não a gás.   '
       '⭐ O PUXADOR É CAVA USINADA em toda frente, básculas inclusive: a '
       'prancha diz "puxador tipo cava NA MARCENARIA". ⛔ Por isso não entra '
@@ -182,6 +187,15 @@ FOLHA = dict(
       'folha.   ⛔ O SÓCULO DE 10 CM NÃO É NOSSO: é alvenaria com frente '
       'revestida de porcelanato travertino.',
  duvidas=[
+  '⚠⚠ A ELEVAÇÃO B SAIU DO ORÇAMENTO COMO ITEM PRÓPRIO [Jonathan, 30/10]: '
+  'ela é a mesma marcenaria da elevação A, vista da outra parede do L. '
+  '⭐ Confere na prancha: o "35" do aéreo e o "60" do armário da elevação B '
+  'são as PROFUNDIDADES dos móveis da elevação A. ⛔ MAS FICA UMA COISA A '
+  'CONFERIR NA MEDIÇÃO: os dois GAVETÕES que a elevação B desenha dentro '
+  'daqueles 60. Se forem frentes que abrem para a parede B — e não a '
+  'lateral do armário de A vista de lado —, são duas frentes, duas '
+  'corrediças e 1,2 m de cava que voltam para a conta. Vale um olhar no '
+  'local antes de cortar.',
   'A FOLHA DA TORRE TEM 2,50 M DE ALTURA e 62 de largura. ⭐ Lancei TRÊS '
   'dobradiças, não duas — folha desse porte descai na segunda. ⚠ Confirmar '
   'com a fábrica se não pede quatro: 2,50 m em MDF de 15 é peça pesada, e a '
@@ -206,7 +220,7 @@ FOLHA = dict(
   'Tanque de embutir em inox 50 × 40 e torneira de parede',
   'As duas máquinas lava e seca'],
  notas=[
-  '⭐⭐ A FERRAGEM PESA MAIS QUE A CHAPA AQUI. Seis básculas, sete gavetões '
+  '⭐⭐ A FERRAGEM PESA MAIS QUE A CHAPA AQUI. Cinco básculas, cinco gavetões '
   'em corrediça oculta Hettich e uma folha de 2,50 m com três dobradiças. '
   'É um ambiente pequeno em metro quadrado e caro em ferragem.',
   '⭐ A TORRE DE VASSOURAS É O MÓVEL MAIS ALTO DA LAVANDERIA e o mais '
