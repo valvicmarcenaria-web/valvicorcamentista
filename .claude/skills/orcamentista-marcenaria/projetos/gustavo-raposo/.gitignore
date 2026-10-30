@@ -1,0 +1,12 @@
+# ⭐ ARTEFATOS GERADOS, não fonte. Saem dos .py a cada execução:
+#   _<amb>-rows.json   o planilha.py · as linhas do bloco de peças
+#   _aba-<amb>.json    o aba.py · layout, textos e requests
+#   _req-<amb>.json    só os requests de formato, para mandar ao Sheets
+#   _grava-<amb>.json  o montar_aba.py · as matrizes prontas para gravar
+# ⛔ Versioná-los é ruído: são dezenas de KB que mudam a cada regeração e
+#   nunca são lidos por uma pessoa. A fonte é o .py; isto é o compilado.
+_*-rows.json
+_aba-*.json
+_req-*.json
+_grava-*.json
+__pycache__/
