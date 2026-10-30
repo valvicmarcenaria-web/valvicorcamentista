@@ -436,3 +436,49 @@ corrediças e as 97 dobradiças somadas.
   e 10 pulsadores) que não compram garantia nenhuma.
 - ⚠ As quinze linhas a zero continuam. Com o Office em usinagem caem para
   catorze, e com a cozinha em melamínico caem mais três (as molduras).
+
+---
+
+# ⭐ VERSÃO 5, A VALER — um desconto ÚNICO por troca [30/10/2026]
+
+> *[Jonathan 30/10] "Retire do preço cheio um valor unico, considere esse
+> para os tres cenarios · −28.343,92 · −12.177,30"*
+
+São os descontos da coluna da **TELESCÓPICA** — os menores dos três.
+
+**⭐⭐ E ESCOLHER O MENOR É A ESCOLHA CONSERVADORA, não a tímida.** O desconto
+foi calibrado na MC de 35%; aplicado sobre um cenário de MC 42%, ele devolve
+ao cliente MENOS do que a economia de custo justificaria ali. Resultado: nas
+duas opções de cima **a margem SOBE** quando o cliente leva uma troca.
+
+| | **1 · BLUM** | **2 · HETTICH** | **3 · TELESCÓPICA** |
+| --- | --: | --: | --: |
+| **Preço cheio** | **408.441,38** · 42,00% | **377.395,31** · 42,00% | **296.920,78** · 35,00% |
+| − Cozinha melamínico · −28.343,92 | 380.097,46 · 42,52% | 349.051,39 · 42,57% | 268.576,86 · 35,00% |
+| − Office usinagem · −12.177,30 | 396.264,08 · 42,22% | 365.218,01 · 42,23% | 284.743,48 · 35,00% |
+| − as duas · −40.521,22 | **367.920,16** · 42,77% | **336.874,09** · 42,84% | **256.399,56** · 35,00% |
+
+*(o segundo número é a MC realizada depois do desconto)*
+
+⭐ **Nenhuma das doze combinações fura o piso de 35%** — conferido por
+assert, não por leitura.
+
+## ⭐ O desconto é 2,01× a economia de custo, e isso está certo
+
+| | economia de CUSTO | desconto de PREÇO | razão |
+| --- | --: | --: | --: |
+| Cozinha → melamínico | 14.136,53 | 28.343,92 | 2,01× |
+| Office → usinagem | 6.073,43 | 12.177,30 | 2,01× |
+
+⛔ **Não é generosidade e não é erro.** Um real de custo que sai leva junto os
+encargos que incidiam sobre ele e a margem que ele sustentava: `1 ÷ (0,84875
+− 0,35) = 2,005`. ⭐ Quem devolve ao cliente só a economia de custo está
+cobrando margem sobre um custo que não existe mais.
+
+## ⭐ E comercialmente isto é o melhor formato
+
+**Um número por troca, igual em qualquer linha de proposta.** O cliente lê
+"melamínico: −R$ 28.343,92" e isso vale escolhendo Blum, Hettich ou
+telescópica. ⛔ Não dá para o cliente garimpar a combinação que mais tira,
+porque o desconto já está no extremo conservador — e a casa só ganha margem
+se ele subir de linha.
