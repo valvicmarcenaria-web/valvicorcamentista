@@ -688,3 +688,113 @@ custar R$ 377.395 em vez dos R$ 405.801 de tabela — e a diferença, R$
 Quanto cabe sem furar o piso de 35%: entrada de 70% → 19×; de 50% → 11×;
 de 30% → 8×. **A linha telescópica não comporta parcela nenhuma**, porque
 está cravada no piso.
+
+---
+
+# Caderno v4 · 30/10 — eu estava lendo o documento errado
+
+> *"Pelo amor de Deus, presta atenção. (...) Pedi para você repetir a mesma
+> forma de pagamento do Michel. É tão difícil repetir uma coisa que já está
+> pronta? Te pedi também para você colocar as mesmas etapas que está na
+> proposta do Michel. E também te pedi para colocar a página da arquiteta."*
+
+## ⛔⛔ A DIVERGÊNCIA QUE NÃO DÁ ERRO, VERSÃO HUMANA
+
+O Jonathan pediu **"a proposta igual à do Michel"**. Eu fui atrás de
+`proposta-michelle-arlei.pdf` — **Michelle e Arlei**, A4 retrato, doze
+páginas — e construí três versões em cima dela. O "Michel" dele é a
+**Jéssica e Michell do ICA**, cujo caderno é `build-caderno-ica.py`: **A4
+paisagem, trinta e cinco folhas.**
+
+Nenhum dos meus asserts podia pegar isso. Eles provam que a peça é coerente
+*consigo mesma* — exatamente como a CONFERÊNCIA da aba, que compara a aba
+com ela mesma e marca R$ 0,00 enquanto a chave caiu fora da Base. **O
+documento de referência era a Base, e eu nunca conferi contra ela.**
+
+E a prova estava a um `pdftotext` de distância o tempo todo:
+
+| O que ele disse | ICA (o certo) | Michelle e Arlei (o que eu li) |
+|---|---|---|
+| "as páginas 3, 4 e 5 são de extrema importância" | a empresa · as doze etapas · a arquiteta | tabela de linhas · ambiente Sala · ambiente Cozinha |
+| "a forma de pagamento, idem" | 30/20/20/30, **todas por transferência** | escada de desconto **com cartão** |
+| "as mesmas etapas" | as **doze** etapas, em quatro blocos | cinco passos |
+| "a página da arquiteta" | folha 05 | **não existe** |
+
+Três rodadas defendendo uma leitura que o próprio pedido contradizia em
+quatro pontos. ⭐ **QUANDO O PEDIDO APONTA PARA UM DOCUMENTO, ABRA O
+DOCUMENTO.** Eu "sabia" qual era o Michel — e saber sem conferir é a mesma
+coisa que o preço derivado: só existe de um lado da conta.
+
+## O caderno novo
+
+`build-gustavo-caderno.py`, 22 folhas, A4 paisagem, sobre
+`css-apresentacao.css` — o CSS da casa, o mesmo do caderno de referência.
+`build-gustavo-raposo.py` foi apagado: dois geradores escrevendo o mesmo
+PDF é armadilha, e o que ele tinha de próprio (as nove folhas de ambiente,
+48 itens) virou `gustavo-raposo/ambientes.py`, lido pelos dois lados.
+
+| | |
+|---|---|
+| 01 | capa |
+| 02 | abertura — o que esta casa pede |
+| 03 | **a empresa**, quatro pilares |
+| 04 | **as doze etapas**, em quatro blocos num trilho |
+| 05 | **a arquiteta responsável** |
+| 06 | índice dos dezenove ambientes |
+| 07–15 | as nove folhas de ambiente, sem preço |
+| 16 | a tabela das três linhas |
+| 17 | as três opções, antes de qualquer valor |
+| 18 | a garantia e o acionamento |
+| 19 | o investimento ambiente a ambiente, nas três linhas |
+| 20 | as três linhas, **um valor cada** |
+| 21 | condições — 120 dias, **30/20/20/30 por transferência** |
+| 22 | encerramento |
+
+## As travas novas
+
+Os asserts antigos provavam coerência interna. Estes provam o que o
+Jonathan pediu:
+
+```python
+for _p in ('cartão', 'cartao', 'parcelamento', 'desconto',
+           'valor cheio', 'valor de tabela'):
+    assert _p.lower() not in _texto.lower()
+for _c in ('Michell', 'Michelle', 'Jéssica', 'Arlei', 'Iara Cezar',
+           'Lagoa Santa'):
+    assert _c not in _texto
+```
+
+⛔ **AS TRAVAS DE TEXTO LEEM O TEXTO, NÃO O HTML.** A primeira versão
+procurava `'ICA'` no HTML inteiro — e cada render entra como base64, onde
+três letras aparecem por acaso em qualquer foto. A trava teria disparado
+sempre, e eu a teria desligado. Agora os `data:` URIs saem antes.
+
+⛔ **E "à vista" É PORTUGUÊS COMUM.** O fundo que fica à vista, o puxador
+dourado à vista, a prateleira sem suporte à vista. A trava global teria
+dado falso positivo em três ambientes; ela vale só na folha de condições,
+onde "à vista" seria escada de desconto.
+
+## O que a taxa de cartão deixou de ser
+
+Os encargos trazem `cartão · 1,2% × 0 parcelas`. Com **todas as parcelas
+por transferência**, isso virou verdade: o preço de R$ 377.395 na linha
+Hettich é exatamente o de MC 42%, sem buraco nenhum. O problema que eu
+levantei na v3 — 8,4% de taxa descoberta em 10x — **sumiu junto com o
+cartão**. A forma de pagamento que o Jonathan mandou repetir é, além de
+tudo, a que fecha a conta.
+
+## Três defeitos achados na peça pronta
+
+1. **O índice punha material errado em dois banhos.** A folha dos hóspedes
+   traz dois acabamentos para três ambientes; quando falta acabamento, o
+   que sobra tem de repetir o **último**, não o primeiro — os dois banhos
+   dividem o Nogueira Thar e estavam herdando o Off-White da suíte. Erro
+   que ninguém vê, porque a linha continua bonita. Travado por assert.
+2. **O cartão de preço tinha meio palmo de branco** entre o nome da linha e
+   o valor. Um vazio ali, na folha que decide, lê como falta de assunto.
+3. **Os revisores quiseram tirar força de duas frases**; aceitei só o que
+   era falso. "Vocês não contratam mais ninguém" é **literalmente mentira**
+   neste projeto — a pedra é marmoraria e o cliente vai contratar alguém —,
+   então virou "para o que está aqui, vocês não contratam mais ninguém".
+   As reescritas longas que eles propuseram, recusei: o qualificador cabe
+   em três palavras.

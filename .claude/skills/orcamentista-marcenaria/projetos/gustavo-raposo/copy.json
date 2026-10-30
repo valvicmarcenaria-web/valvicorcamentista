@@ -1,0 +1,52 @@
+{
+  "_origem": "Escrito por um agente por folha, adaptando o caderno de referência, e revisado por um segundo agente contra as regras duras do projeto. O que eu aceitei e o que recusei dos revisores está em _cenarios.md.",
+
+  "abertura": {
+    "titulo": "Uma casa inteira. Uma empresa só.",
+    "texto": "Dezenove ambientes de uma casa inteira, da varanda ao homeschooling, um só projeto da <b>Luiza Pacheco Arquitetura</b> — marcenaria, serralheria, vidro, espelho, palhinha natural, laca acetinada Sayerlack e iluminação em LED embutida na própria peça — e <b>uma só empresa respondendo por tudo o que está nestas folhas</b>. A alma de aço da prateleira, a cristaleira em vidro temperado, o espelho do lavabo: sai tudo da mesma fábrica, pela mesma equipe. <em>Um contrato, uma data, um nome para chamar.</em>"
+  },
+
+  "empresa": {
+    "titulo": "A Valvic articula todas as soluções do projeto.",
+    "abertura": "Uma casa de dezenove ambientes raramente se perde na marcenaria. Ela se perde na costura entre os ofícios, quando cada um chega com contrato próprio, prazo próprio e medida própria: a serralheria atrasa, o vidro vem com a cota de antes, o espelho aparece depois da instalação — e alguém tem de decidir quem espera quem. Esse alguém costuma ser o dono da casa. Aqui não há essa costura para fazer: os ofícios que esta proposta reúne entram no mesmo escopo, no mesmo contrato e na mesma data. Um interlocutor, uma data, uma responsabilidade.",
+    "pilares": [
+      {
+        "numero": "01",
+        "titulo": "A casa pede mais que marcenaria.",
+        "texto": "O executivo da Luiza Pacheco pede espelho, vidro temperado, serralheria embutida, palhinha natural, laca acetinada e iluminação em LED dentro da peça — e nada disso é marcenaria. Tudo o que este caderno lista entra no nosso escopo e sai no mesmo contrato da marcenaria: uma só especificação, uma só medição, uma só data. <b>Para o que está aqui, vocês não contratam mais ninguém</b> e não têm um segundo prazo para cobrar. Cada peça chega instalada e acesa, no mesmo acerto, e a Valvic responde pelo conjunto. O que fica fora vem nomeado — a pedra, por exemplo, é marmoraria: vocês não descobrem depois."
+      },
+      {
+        "numero": "02",
+        "titulo": "A peça sai daqui conferida.",
+        "texto": "Usinagem, montagem em fábrica e conferência acontecem dentro da nossa fábrica. Cada módulo é montado aqui antes de ser embalado: porta regulada, gaveta corrida, alma de aço já dentro da prateleira, LED ligado para ver a luz, laca vista de perto, com tempo. O que chega na obra chega para ser instalado, não para ser resolvido. Ajuste feito na fábrica ninguém vê; feito na sua casa, é obra de novo — por isso a conferência é <b>etapa do processo</b>, não boa vontade no fim."
+      },
+      {
+        "numero": "03",
+        "titulo": "Uma arquiteta responsável pelo projeto.",
+        "texto": "Do orçamento aprovado à entrega, o projeto tem uma arquiteta nossa como responsável. É ela quem lê o executivo prancha por prancha, leva as decisões técnicas até vocês, está na medição no local e segue as peças pela fábrica até o dia da instalação. Ela não substitui a Luiza Pacheco — conversa com ela, na mesma linguagem técnica. E quando um só móvel junta marcenaria, metalon, espelho e LED, é ela que fecha os quatro: <b>vocês explicam o projeto uma vez, a uma pessoa</b>, e é essa pessoa que responde quando é chamada."
+      },
+      {
+        "numero": "04",
+        "titulo": "O executivo de marcenaria é nosso.",
+        "texto": "Antes de cortar, a Valvic desenha. O projeto de interiores diz o que a casa precisa ser; o nosso executivo de marcenaria diz como cada móvel se constrói — estrutura, ferragem, sentido de abertura, passagem de fiação, folga de instalação. É nele que a medida do metal, do vidro e do espelho nasce travada com a do armário, e é nele que a divergência aparece <em>no papel, antes de virar retrabalho</em>. A cristaleira da varanda é o caso: a planta a desenha curva, a elevação a desenha reta. Isso se resolve no desenho, com vocês e com a Luiza Pacheco — não com o vidro já cortado."
+      }
+    ],
+    "fechamento": "Dezenove ambientes, uma casa inteira, uma só empresa respondendo por tudo o que está nestas folhas. Na próxima folha, o caminho que o projeto percorre — etapa por etapa, até o dia em que a casa está em uso."
+  },
+
+  "arquiteta": {
+    "titulo": "Uma arquiteta responsável, do começo ao fim",
+    "paragrafos": [
+      "Do orçamento aprovado à entrega, o seu projeto tem uma <b>arquiteta responsável</b>. É ela que está na obra no dia da medição, detalha a execução junto com a Luiza Pacheco, confere o móvel montado na fábrica e está na sua casa no dia da instalação.",
+      "Você não explica o seu projeto duas vezes. Fala sempre com a mesma pessoa — e essa pessoa conhece o projeto inteiro, não um pedaço dele.",
+      "Quando o ambiente pede mais de um ofício — serralheria, vidro, espelho, palhinha, laca e iluminação — é com ela que você trata, e só com ela. <b>A Valvic articula todas as soluções do projeto:</b> esses ofícios entram no nosso escopo e saem no mesmo contrato da marcenaria, na mesma data. Chegam na sua casa instalados, no mesmo acerto — você não contrata mais ninguém para o que está neste caderno, e a Valvic responde pelo conjunto."
+    ],
+    "nota_titulo": "A fábrica",
+    "nota_texto": "Três das doze etapas acontecem dentro da nossa fábrica: usinagem, montagem em fábrica e conferência. O móvel só sai do nosso galpão depois de montado, testado e conferido contra o projeto. O que chega na sua obra já funcionou uma vez — aqui. Um contrato, uma arquiteta, uma responsabilidade."
+  },
+
+  "encerramento": {
+    "titulo": "Um contrato.|Uma data.|Um nome|para chamar.",
+    "subtitulo": "Obrigado pela confiança de pôr esta casa na nossa mão. Da varanda ao homeschooling, o desenho da Luiza Pacheco sai da nossa fábrica e chega instalado."
+  }
+}

@@ -1,0 +1,105 @@
+# -*- coding: utf-8 -*-
+"""GUSTAVO RAPOSO — as nove folhas de ambiente, item por item.
+
+Gerado por um agente por ambiente lendo o LEVANTAMENTO, no estilo que o
+Jonathan aprovou: duas frases curtas, sem metragem, sem contagem,
+terminando no nome do material. Virou arquivo para que a proposta e o
+caderno leiam a MESMA lista — a divergência entre duas cópias do mesmo
+texto é exatamente o defeito que não dá erro.
+
+Formato: (título, imagens, tags, acabamento, [(móvel, descrição)]).
+"""
+PG = [
+ ('A varanda.',
+  ['varanda-02'],
+  ['Varanda', 'Lavabo'],
+  'MDF Nogueira Caiena e Branco TX, Duratex, na varanda · Espelho prata colado no lavabo, sem MDF',
+  [('Armário da parede', 'Portas de giro, gavetas e gavetão, com o nicho aberto da lava-louças e a estrutura que recebe a bancada de granito. MDF Nogueira Caiena, com interno em Branco TX.'),
+   ('Gaveteiro da ilha', 'Embutido na ilha de alvenaria, com gavetas, gavetão e as gavetas verticais de temperos ao lado do forno. MDF Nogueira Caiena, com interno em Branco TX.'),
+   ('Cristaleira de vidro temperado', 'Portas de vidro temperado incolor em cima e portas de giro embaixo, com prateleiras para a louça à mostra. MDF Nogueira Caiena, por dentro e por fora.'),
+   ('Espelho da parede', 'Espelho fixo colado na parede, acima e abaixo da bancada, com corte, transporte e instalação por nossa conta. Espelho prata colado.')]),
+ ('A cozinha<br>e a despensa.',
+  ['cozinha-01', 'cozinha-02'],
+  ['Cozinha', 'Despensa'],
+  'Laca acetinada M048, Sayerlack, sobre MDF, com interno em MDF Branco TX, Duratex · MDF Branco Diamante, Linha Trama, Duratex',
+  [('Armário superior', 'Portas de giro com moldura provençal e prateleira em cada vão. MDF laqueado acetinado M048, Sayerlack, com perfil de LED embutido correndo por baixo.'),
+   ('Nicho sobre a geladeira', 'Nicho aberto que aproveita o vão acima da geladeira. Sem portas, ele é lacado por inteiro, até o fundo. MDF laqueado acetinado M048, Sayerlack.'),
+   ('Armário inferior', 'Gavetões e básculas com moldura provençal, além do nicho da lava-louças, com a estrutura já preparada para receber a bancada de quartzito. MDF laqueado acetinado M048, Sayerlack, com interno em MDF branco.'),
+   ('Armário da bancada do cooktop', 'Gaveteiro com gaveta de talheres, nicho de forno compatibilizado com o aparelho de vocês e armário de porta de giro com prateleira. MDF laqueado acetinado M048, Sayerlack, com interno em MDF branco.'),
+   ('Prateleiras da parede menor', 'Prateleiras de parede com fixação invisível, sem suporte à vista, para as conservas e os mantimentos do dia a dia. MDF Branco Diamante, com estrutura de aço embutida entre as duas faces.'),
+   ('Prateleiras da parede maior', 'Seguem a outra perna do L e vencem o vão livre sem apoio no meio, para o peso de verdade da despensa. MDF Branco Diamante.')]),
+ ('A lavanderia<br>e a rouparia.',
+  ['lavanderia-01', 'rouparia-01', 'lavanderia-02'],
+  ['Lavanderia', 'Rouparia'],
+  'MDF Branco Diamante, Linha Trama, e Branco TX, Duratex · MDF Off-White Suave e Nogueira Thar, Duratex, com interno em Branco',
+  [('Armário superior', 'Básculas que abrem para cima, sobre a bancada, com puxador tipo cava usinado na própria frente. MDF Branco Diamante.'),
+   ('Armário inferior', 'Gavetões em corrediça oculta, báscula e o painel fixo que fecha o vão do tanque. MDF Branco Diamante.'),
+   ('Torre de vassouras', 'Porta de giro de piso a teto, com prateleiras no topo e o nicho alto para vassoura e rodo. MDF Branco Diamante.'),
+   ('Armário da rouparia', 'Portas de giro com puxador em cava quadrada, maleiro no alto e prateleiras internas para a roupa de cama e as toalhas. Corpo em MDF Off-White Suave e frentes em MDF Nogueira Thar.')]),
+ ('O office.',
+  ['office-01'],
+  ['Office'],
+  'MDF Nogueira Caiena, Linha Design, Duratex',
+  [('Painel muxarabi em réguas', 'Grade de réguas encaixadas uma a uma em meia-madeira, que filtra a vista e desenha a parede inteira do office. MDF Nogueira Caiena, com filetagem manual.')]),
+ ('A suíte master.',
+  ['suite-master-01', 'closet-master-01', 'banho-master-01'],
+  ['Suíte master', 'Closet', 'Banho master'],
+  'MDF Nogueira Caiena e Off-White Suave, Duratex · MDF Off-White Suave, Linha Sense, Duratex · MDF Nogueira Thar e Branco, Duratex',
+  [('Painel da cabeceira', 'Reveste a parede da cabeceira inteira, com negativo vertical iluminado em LED e a porta do closet mimetizada dentro dele. MDF Nogueira Caiena.'),
+   ('Porta pivotante mimetizada', 'Gira em pivô, sem batente nem marco: fechada, some no veio do painel. MDF Nogueira Caiena do lado da suíte e Off-White Suave do lado do closet.'),
+   ('Armário da suíte', 'Portas de giro, maleiro, prateleiras internas e gavetões com puxador tipo cava. MDF Off-White Suave por dentro, com testeira, rodapé e frentes em Nogueira Caiena.'),
+   ('Armário do closet', 'Armário aberto, com cabideiros, maleiro, prateleiras e, embaixo, as gavetas e sapateiras deslizantes com puxador tipo cava. MDF Off-White Suave.'),
+   ('Armário da parede oposta', 'Cabideiro, maleiro e a coluna de prateleiras para roupa dobrada, com gavetas e sapateiras deslizantes embaixo. MDF Off-White Suave.'),
+   ('Bandeira sobre a porta pivotante', 'Fecha o vão acima da porta pivotante da suíte, pela face voltada para o closet. MDF Off-White Suave.'),
+   ('Armário superior com espelhos', 'Portas de espelho que correm sobre a bancada, com prateleiras internas para frascos e produtos do dia a dia. MDF Nogueira Thar, com perfil de LED embutido por baixo.'),
+   ('Gabinete suspenso sob a bancada', 'Portas de giro nas pontas e gavetas no centro, todas com puxador em cava usinada, e suspenso do piso para a limpeza passar por baixo. MDF Nogueira Thar, com o interno em MDF Branco.')]),
+ ('A suíte dos filhos.',
+  ['suite01-01', 'suite01-02', 'banho01-01'],
+  ['Suíte 01', 'Banho'],
+  'MDF Nogueira Thar e Off-White Suave, Duratex, com internos em MDF Branco · MDF Azul Secreto, Linha Essencial, com interno em Branco, Duratex',
+  [('Painel de cabeceira frisado', 'Painel frisado atrás das camas, com frisos verticais correndo de ponta a ponta. MDF Nogueira Thar, com perfil de LED embutido na peça.'),
+   ('Armário de cabideiros e gavetas', 'Portas de correr flutuantes em MDF e espelho, abrindo para maleiro, cabideiros e gavetas com puxador cava. MDF Off-White Suave, com interno em Branco.'),
+   ('Armário de prateleiras e sapateiras', 'Portas de correr flutuantes em MDF e espelho, com coluna de cabideiros de um lado e prateleiras, gavetas e sapateiras deslizantes do outro. MDF Off-White Suave, com interno em Branco.'),
+   ('Módulo de canto do armário', 'Fecha a esquina do armário em L, com maleiro, prateleira e cabideiros contínuos que dobram o canto. MDF Off-White Suave, com interno em Branco.'),
+   ('Mesa suspensa de estudo', 'Mesa de estudo suspensa, sem pés, fixada na parede e com saia frontal que dá a espessura aparente do tampo. MDF Nogueira Thar.'),
+   ('Gaveteiro com rodízios', 'Gaveteiro solto sobre rodízios, que entra e sai de baixo da mesa, com gavetas de corrediça invisível e puxador cava. MDF Nogueira Thar.'),
+   ('Bases de cama e gavetão', 'Bases de cama em caixa, com estrado em metalon, e gavetão que abre para a cama auxiliar. MDF Nogueira Thar.'),
+   ('Gabinete suspenso sob a bancada', 'Gavetas e portas de giro com prateleira interna, abertas por cava usinada na própria frente, sem puxador aparente. Suspenso, flutua acima do piso e deixa o banheiro mais leve de limpar. MDF Azul Secreto, Linha Essencial.')]),
+ ('A suíte das filhas.',
+  ['suite02-01', 'suite02-02', 'banho02-01'],
+  ['Suíte 02', 'Closet', 'Banho'],
+  'MDF Nogueira Thar e Off-White Suave, Duratex · MDF Off-White Suave, Linha Sense, Duratex · MDF Pinole, com interno em MDF Branco, Duratex',
+  [('Estante e armário de canto', 'Estante rasa com prateleiras iluminadas sobre um armário mais fundo, de gavetas em palhinha que abrem por fecho-toque. MDF Nogueira Thar, com perfil de LED embutido sob cada prateleira.'),
+   ('Painéis de parede', 'Revestem a parede inteira das camas: os trechos atrás das cabeceiras são frisados e lavados por perfil de LED nas arestas, e o restante fica liso. MDF Nogueira Thar frisado e Off-White Suave.'),
+   ('Porta pivotante mimetizada', 'Folha de acesso ao closet, mimetizada no painel liso da parede, com puxador tipo cava e tranca pelo lado de dentro. MDF Off-White Suave.'),
+   ('Penteadeira suspensa', 'Tampo suspenso sobre pés cilíndricos metálicos, com gavetas rasas de frente em palhinha e abertura por fecho-toque. MDF Nogueira Thar com palhinha natural.'),
+   ('Armários de canto arredondado', 'Ficam nas pontas da penteadeira, com gavetas de palhinha e fecho-toque e a faixa cheia que forma o canto arredondado. MDF Nogueira Thar com palhinha natural.'),
+   ('Mesa de cabeceira', 'Fica entre as camas, apoiada na estrutura cilíndrica dourada, com gavetas de palhinha e puxador redondo dourado à vista. MDF Nogueira Thar com palhinha natural.'),
+   ('Bases de cama com gavetão', 'Cada base recebe gavetão de cama auxiliar, com estrado em metalon sob os colchões. MDF Nogueira Thar.'),
+   ('Armário de cabideiros', 'Armário aberto, sem portas, com cabideiro de roupa longa, cabideiro de roupa curta e o maleiro no alto para malas e roupa de cama. MDF Off-White Suave.'),
+   ('Armário de prateleiras e gavetas', 'Coluna de prateleiras com gavetas e sapateiras que deslizam em corrediça oculta, abertas por puxador cava, e a coluna de cabideiros ao lado. MDF Off-White Suave.'),
+   ('Módulo de canto em L', 'Resolve o encontro do armário em L e leva os cabideiros contínuos que viram a esquina, com o maleiro seguindo por cima. MDF Off-White Suave.'),
+   ('Gabinete suspenso sob a bancada', 'Gavetas e portas de giro com puxador tipo cava usinado nas frentes, e prateleiras internas atrás das portas. O móvel é suspenso, flutuando acima do piso, em MDF Pinole com interno em MDF Branco.')]),
+ ('Hóspedes e os<br>banhos sociais.',
+  ['hospedes-02', 'banho-hospedes-01', 'banho-social-01'],
+  ['Suíte hóspedes', 'Banho hóspedes', 'Banho social'],
+  'MDF Off-White Suave e Branco, Duratex · MDF Nogueira Thar e Branco, Duratex',
+  [('Armário da suíte', 'Folhas de correr flutuantes, maleiro, cabideiro e prateleiras, com gavetas e sapateiras deslizantes embaixo. MDF Off-White Suave, com interno em MDF Branco.'),
+   ('Gabinete suspenso sob a bancada', 'Portas de giro com prateleira interna e puxador em cava usinada na própria frente. Fica suspenso do piso, sob a bancada. MDF Nogueira Thar, com interno em MDF Branco.'),
+   ('Gabinete suspenso sob a bancada', 'Portas de giro com puxador tipo cava e prateleiras internas, suspenso para deixar o piso livre embaixo da bancada. MDF Nogueira Thar, com interno em MDF Branco.')]),
+ ('O homeschooling.',
+  ['homeschooling-01', 'homeschooling-02'],
+  ['Homeschooling'],
+  'MDF Cinza Fóssil, Linha Velluto, e Azul Secreto, Duratex',
+  [('Nicho em Azul Secreto', 'Nicho aberto com prateleiras e perfil de LED embutido em cada vão, apoiado sobre o armário inferior. O fundo fica à vista e é ele que traz a cor para o ambiente. MDF Azul Secreto.'),
+   ('Armário inferior', 'Portas de giro com prateleira interna e colunas de gavetas e gavetões, com puxador em cava usinada na própria frente. MDF Cinza Fóssil, Linha Velluto.'),
+   ('Armário de estante', 'Portas de giro altas, com prateleiras internas em toda a largura, para livro e material de estudo. MDF Cinza Fóssil, Linha Velluto.')]),
+]
+
+# ── que ambientes de `cenarios.AMB` caem em cada folha ────────────────
+#   Os rótulos ("Closet", "Banho") repetem entre folhas, então a ligação
+#   é por índice, não por nome — e o assert abaixo prova que as nove
+#   folhas cobrem os dezenove ambientes sem buraco e sem sobreposição.
+MAPA = [(0,2),(2,4),(4,6),(6,7),(7,10),(10,12),(12,15),(15,18),(18,19)]
+assert len(MAPA) == len(PG)
+assert [i for a, b in MAPA for i in range(a, b)] == list(range(19))
