@@ -22,26 +22,45 @@ classificador, então não há atalho por script.
 
 | # | aba | sheetId | conferência | custo direto |
 |---|-----|---------|-------------|--------------|
-| 03 | Cozinha | 103 | R$ 0,00 | — |
-| 04 | Despensa | 104 | R$ 0,00 | — |
-| 05 | Lavanderia | 105 | R$ 0,00 | — |
-| 06 | Rouparia | 106 | R$ 0,00 | — |
-| 07 | Office | 107 | R$ 0,00 | — |
+| 01 | Varanda | 101 | R$ 0,00 | R$ 11.084,61 |
+| 02 | Lavabo | 102 | R$ 0,00 | R$ 1.523,66 |
+| 03 | Cozinha | 103 | R$ 0,00 | R$ 24.619,43 |
+| 04 | Despensa | 104 | R$ 0,00 | R$ 3.939,78 |
+| 05 | Lavanderia | 105 | R$ 0,00 | R$ 7.387,44 |
+| 06 | Rouparia | 106 | R$ 0,00 | R$ 5.619,80 |
+| 07 | Office | 107 | R$ 0,00 | R$ 9.328,00 |
 | 08 | Suíte Master | 108 | R$ 0,00 | R$ 10.706,53 |
-| 09 | Closet Master | 109 | R$ 0,00 | — |
+| 09 | Closet Master | 109 | R$ 0,00 | R$ 11.651,11 |
 | 10 | Banho Master | 110 | R$ 0,00 | R$ 5.627,02 |
 | 11 | Suíte 01 Filhos | 111 | R$ 0,00 | R$ 20.883,37 |
 | 12 | Banho Suíte 01 | 112 | R$ 0,00 | R$ 2.367,60 |
 | 13 | Suíte 02 Filhas | 113 | R$ 0,00 | R$ 17.534,94 |
+| 14 | Closet Suíte 02 | 114 | R$ 0,00 | R$ 8.248,74 |
+| 15 | Banho Suíte 02 | 115 | R$ 0,00 | R$ 2.374,36 |
+| 16 | Suíte Hóspedes | 116 | R$ 0,00 | R$ 7.489,49 |
+| 17 | Banho Hóspedes | 117 | R$ 0,00 | R$ 1.571,69 |
+| 18 | Banho Social | 118 | R$ 0,00 | R$ 1.603,93 |
+| 19 | Homeschooling | 119 | R$ 0,00 | R$ 9.203,79 |
+| | **CUSTO DIRETO DO PROJETO** | | | **R$ 162.765,29** |
 
-## Falta gravar
+⭐ AS DEZENOVE ABAS ESTÃO GRAVADAS e as dezenove fecham em R$ 0,00.
 
-- 14 Closet Suíte 02 (114)
-- 15 Banho Suíte 02 (115)
-- 16 Suíte Hóspedes (116)
-- 17 Banho Hóspedes (117)
-- 18 Banho Social (118)
-- 19 Homeschooling (119)
+## Como conferir as dezenove de uma vez
+
+⭐ Não se confere aba por aba: põe-se UMA fórmula numa célula de rascunho
+(usei `Painel!K110`), lê-se e apaga-se. Ela acha a linha da conferência pelo
+RÓTULO, não pelo endereço — e por isso continua valendo quando a aba muda de
+tamanho:
+
+```
+=TEXTJOIN(" | ";1;
+  "01="&TEXT(INDEX('01 Varanda'!I:I;MATCH("⭐ CONFER*";'01 Varanda'!B:B;0));"0.00");
+  … uma parcela por aba …
+)
+```
+
+Trocando `I:I` por `F:F` e `"⭐ CONFER*"` por `"CUSTO DIRETO*"`, a mesma
+fórmula devolve o custo direto dos dezenove ambientes de uma vez.
 
 ## Falta refazer
 
