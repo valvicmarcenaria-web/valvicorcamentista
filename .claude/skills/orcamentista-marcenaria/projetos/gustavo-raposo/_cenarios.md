@@ -179,3 +179,90 @@ mesmos 40% do 2.
 
 **⚠ As quinze linhas a zero continuam nos três.** Nenhum destes preços é
 fechado enquanto elas existirem.
+
+---
+
+# ⚠ OS TRÊS CENÁRIOS, VERSÃO 2 — a de cima está SUPERADA [30/10/2026]
+
+> *[Jonathan 30/10] "a linha hardt considere como telescopica: Corrediça
+> telescopica: Custo da corrediça é 40,00 e dobradiça 10,00"* e, em
+> seguida, *"a mc da blum sera 40% e dos demais em 35%"*
+
+⭐⭐ **A DOBRADIÇA MOVE PELA PRIMEIRA VEZ.** Entre Blum e Hettich as duas
+custam R$ 50 e o delta era ZERO — por isso Rouparia, Banho Hóspedes e Banho
+Social, que não têm uma corrediça sequer, não mudavam de custo na v1. Com a
+dobradiça a R$ 10 elas passam a mudar: são **97 dobradiças × R$ 40 =
+R$ 3.880** de material, R$ 3.957,60 com a embalagem.
+
+⛔ **E a MC de 35% é o PISO DA CASA.** Os cenários 2 e 3 pousam exatamente
+nele. Abaixo disso não há desconto a dar sem furar a política.
+
+## Resumo
+
+| | **1 · BLUM** | **2 · HETTICH** | **3 · TELESCÓPICA** |
+| --- | --: | --: | --: |
+| Corrediça | R$ 300/par | R$ 150/par | R$ 40/par |
+| Dobradiça | R$ 50 | R$ 50 | **R$ 10** |
+| Muxarabi | 170 réguas | painel CNC | painel CNC |
+| **Garantia** | **30 anos** | **10 anos** | **2 anos** |
+| Custo direto | 175.119,24 | 155.734,81 | 142.015,81 |
+| Encargos · 15,125% | 59.023,48 | 47.227,85 | 43.067,45 |
+| MC aplicada | 40% | 35% | 35% |
+| Margem | 156.095,14 | 109.287,59 | 99.660,22 |
+| **PREÇO DE VENDA** | **390.237,86** | **312.250,25** | **284.743,48** |
+
+## Valor de venda, ambiente por ambiente
+
+`*` = o custo muda entre cenários
+
+| | **1 · BLUM** | **2 · HETTICH** | **3 · TELESCÓPICA** | 1 → 3 |
+| --- | --: | --: | --: | --: |
+| \* 01 Varanda | 26.279,44 | 21.190,78 | 17.754,99 | −8.524,46 |
+| 02 Lavabo | 2.411,86 | 2.170,07 | 2.170,07 | −241,79 |
+| \* 03 Cozinha | 57.248,87 | 49.362,27 | 46.969,48 | −10.279,39 |
+| 04 Despensa | 8.779,45 | 7.899,31 | 7.899,31 | −880,15 |
+| \* 05 Lavanderia | 18.167,00 | 14.811,91 | 13.441,68 | −4.725,31 |
+| \* 06 Rouparia | 12.523,23 | 11.267,77 | 9.631,68 | −2.891,55 |
+| \* 07 Office | 20.786,63 | 6.525,46 | 6.525,46 | −14.261,17 |
+| \* 08 Suíte Master | 25.222,35 | 21.466,73 | 19.912,44 | −5.309,91 |
+| \* 09 Closet Master | 30.054,84 | 23.360,62 | 20.661,07 | −9.393,77 |
+| \* 10 Banho Master | 13.221,21 | 11.282,25 | 10.505,10 | −2.716,11 |
+| \* 11 Suíte 01 Filhos | 50.969,07 | 41.871,42 | 38.946,91 | −12.022,16 |
+| \* 12 Banho Suíte 01 | 5.957,88 | 4.747,07 | 3.969,92 | −1.987,96 |
+| \* 13 Suíte 02 Filhas | 43.848,33 | 35.157,77 | 32.008,30 | −11.840,03 |
+| \* 14 Closet Suíte 02 | 19.745,38 | 16.538,83 | 15.638,98 | −4.106,40 |
+| \* 15 Banho Suíte 02 | 5.972,95 | 4.760,62 | 3.983,48 | −1.989,47 |
+| \* 16 Suíte Hóspedes | 19.417,25 | 15.016,52 | 13.216,82 | −6.200,43 |
+| \* 17 Banho Hóspedes | 3.502,37 | 3.151,26 | 2.824,04 | −678,33 |
+| \* 18 Banho Social | 3.574,22 | 3.215,90 | 2.888,68 | −685,54 |
+| \* 19 Homeschooling | 22.555,52 | 18.453,71 | 15.795,07 | −6.760,45 |
+| **PREÇO DE VENDA** | **390.237,86** | **312.250,25** | **284.743,48** | **−105.494,38** |
+
+## Quanto da queda é custo e quanto é margem
+
+| MC igual para os três | 1 · BLUM | 2 · HETTICH | 3 · TELESCÓPICA |
+| --- | --: | --: | --: |
+| a 40% | 390.237,86 | 347.041,36 | 316.469,78 |
+| a 35% | 351.116,27 | 312.250,25 | 284.743,48 |
+
+- **1 → 2:** queda de 77.987,61 = **43.196,50 de custo** + 34.791,11 de MC
+- **1 → 3:** queda de 105.494,38 = **73.768,08 de custo** + 31.726,29 de MC
+
+⭐ Ao contrário da v1, agora o CUSTO domina: na v1 quase metade do desconto
+era margem abrindo mão; aqui são 70% de custo de verdade.
+
+## ⚠ O que ainda não fecha no cenário 3
+
+**⛔ Ele continua carregando R$ 2.750 de ferragem BLUM.** Varrido da
+planilha: **7 articuladores AVENTOS HK-XS a R$ 250** (Cozinha 2, Lavanderia
+5) e **10 pulsadores a R$ 100** (Suíte 02 Filhas). ⛔ Um articulador Blum de
+R$ 250 ao lado de uma corrediça de R$ 40 é incoerente — e pela regra da casa
+báscula e pulsador **não sobem o tier**, então ele paga caro sem comprar
+garantia nenhuma. A garantia do cenário 3 segue 2 anos.
+
+**⚠ Agora o trilho APARECE.** A v1 usava a Hardt Invisível; telescópica de
+verdade é trilho lateral à vista e sem amortecedor. É a primeira vez que a
+diferença entre os cenários é visível para o cliente com a gaveta aberta.
+
+**⚠ As quinze linhas a zero continuam nos três.** Nenhum destes preços é
+fechado.
