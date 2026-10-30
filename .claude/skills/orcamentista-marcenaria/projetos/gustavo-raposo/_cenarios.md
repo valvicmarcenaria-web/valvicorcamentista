@@ -485,7 +485,7 @@ se ele subir de linha.
 
 ---
 
-# ⭐ A PROPOSTA — `proposta-gustavo-raposo.pdf` [30/10/2026]
+# ⚠ A PROPOSTA, v1 — SUPERADA pela v2 no fim do arquivo [30/10/2026]
 
 > *[Jonathan 30/10] "pode montar a proposta igual do do michel."*
 
@@ -546,3 +546,83 @@ custo direto da planilha de hoje. Se divergir, não compila.
   invento condição comercial. A página 13 fecha no valor cheio.
 - ⚠ **O preço é PISO**: as quinze linhas sem preço na Base continuam.
 - ⚠ A **dificuldade** dos dezenove segue toda em "Médio".
+
+---
+
+# ⭐ A PROPOSTA, VERSÃO 2 — dezessete páginas [30/10/2026]
+
+> *[Jonathan 30/10] "Precisamos de muitas melhorias drasticas"* — dez itens.
+
+| # | o que ele pediu | onde ficou |
+| --- | --- | --- |
+| 1 | o layout voltar a ser o do Michelle | CSS dele verbatim; os cartões voltaram a ter o fôlego que eu tinha espremido |
+| 2 | manter o conteúdo das páginas 3 a 5 dele | pág. 3 inteira (cartões + tabela de diferenças + "o que não muda") e o formato das páginas de ambiente |
+| 3 | só imagem com marcenaria | triagem por agente, **6 cortadas de 31** |
+| 4 | preço de cada ambiente nas três linhas | pág. 14, tabela de 19 × 3 |
+| 5 | uma página sobre as três opções, antes do valor | pág. 4 |
+| 6 | ⛔ não apresentar o downgrade | removido |
+| 7 | prazo de 120 dias corridos | pág. 17 |
+| 8 | o termo de garantia e o acionamento | pág. 16 |
+| 9 | forma de pagamento idem Michelle | pág. 15 |
+| 10 | o puxador Zen da cozinha | pág. 6, em linha própria |
+
+## ⛔⛔ A CONVENÇÃO DE PREÇO TEVE DE VIRAR, e esse foi o achado da rodada
+
+No Michelle o preço a MC alvo é o **valor cheio** e o à vista sai 7% abaixo —
+o desconto come margem. Lá sobrava espaço (alvo 40%, piso 35%). **Aqui a
+linha telescópica está cravada NO piso de 35%**: qualquer desconto a derruba
+para **31,25%**, que é vender a linha de entrada fora da política da casa.
+
+⭐ Decisão do Jonathan: **o preço que a planilha devolve é o preço À VISTA**,
+e a tabela sobe 7% acima dele. É o que a própria conta já dizia — os encargos
+foram calculados com **zero parcelas de cartão**, então o número que sai dela
+é, por construção, o preço de quem não passa no cartão.
+
+| | tabela | à vista −7% | MC à vista |
+| --- | --: | --: | --: |
+| Telescópica | 319.270 | **296.921** | 35,00% |
+| Hettich | 405.801 | **377.395** | 42,00% |
+| Blum | 439.184 | **408.441** | 42,00% |
+
+⭐ Assim **nenhum degrau da escada fura o piso** — ao contrário, todos sobem a
+margem — e o à vista devolve exatamente a MC alvo. Está travado por assert.
+
+## ⛔⛔ E A OBSERVAÇÃO DOS TRÊS AMBIENTES VIROU QUANDO AS MCs MUDARAM
+
+O Jonathan escreveu *"a despensa e o office nao muda de valor nas 3"*. Era
+verdade com as MCs de então (42/35/35). Com as de agora (42/42/35) **o
+preço deles passou a bater entre Hettich e Blum, não entre as três** — o
+custo é que não muda, porque nenhum dos três leva gaveta ou porta de giro.
+⭐ E são TRÊS, não dois: o **Lavabo** entra no grupo.
+
+⛔⛔ **Eu quase imprimi a versão velha da frase.** Pior: eu tinha posto um
+assert — mas ele travava a igualdade de **custo** enquanto a frase afirmava
+igualdade de **preço**. O assert passava e o texto mentia. ⭐⭐ A lição:
+**trave a afirmação que a peça IMPRIME, não um substituto dela.** Agora o
+assert compara os preços de tabela, exige que Hettich e Blum batam e que a
+telescópica difira.
+
+## As quatro travas da peça
+
+1. `assert len(pg) == NP` — a contagem bate com o rodapé.
+2. `assert 'R$' not in _antes` — nenhum preço antes da página 14.
+3. `assert` de marcação interna — ⭐/⛔/⚠ não vão para o cliente.
+4. `assert` de imagem reprovada — nenhuma das seis cortadas pode entrar.
+
+## A triagem das imagens
+
+Um agente ABRIU cada um dos 31 renders e julgou se mostra marcenaria. **Seis
+caíram**, e entre elas **a que eu tinha posto na capa** — a varanda com a
+mesa de jantar, que é mesa, cadeira e pedra, sem um móvel planejado. As
+outras: o office com a escrivaninha solta, o swatch chapado do muxarabi, o
+banho master que só tem box e porcelanato, o banho 02 com uma lasca de
+gabinete no canto e a suíte de hóspedes que vende cama estofada.
+
+## Os textos
+
+Um agente por ambiente leu o **levantamento** e escreveu os 48 itens no
+estilo do Michelle: duas frases curtas, sem metragem, sem contagem,
+terminando no nome do material. ⭐ Foi daí que vieram os padrões reais —
+Nogueira Caiena, Off-White Suave, Nogueira Thar, Azul Secreto, Cinza Fóssil
+Velluto, Branco Diamante Trama, Pinole, palhinha natural — que a minha
+versão à mão não tinha.

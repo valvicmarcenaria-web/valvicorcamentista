@@ -1,15 +1,31 @@
 # -*- coding: utf-8 -*-
 """GUSTAVO RAPOSO — proposta · casa completa  [30/10/2026]
 
-⭐ Mesmo layout do `build-michelle-arlei.py`, que o Jonathan cravou em 19/10:
+⭐ MESMO LAYOUT DO `build-michelle-arlei.py`, que o Jonathan cravou em 19/10:
    > "NUNCA APRESENTE PREÇO SEM ANTES GERAR VALOR na proposta. Fale um pouco
    >  da empresa e dos processos antes de expor valores. Mostre as duas
    >  linhas antes, fale das diferenças. (...) Descreva os itens junto com a
    >  listagem dos ambientes, só listando item por item mesmo."
 
-   Aqui são TRÊS linhas, não duas, e há DUAS TROCAS de ambiente no fim.
+   ⛔ A primeira versão desta peça FUGIU do layout: espremi três cartões no
+     espaço de dois e as descrições não nomeavam o material. O CSS é o do
+     Michelle, sem uma vírgula de diferença — o que muda são só as variações
+     de três colunas, e elas mantêm a mesma generosidade de respiro.
+
+[Jonathan, 30/10, segunda rodada] dez correções, todas aqui dentro:
+   1 · o layout volta a ser o do Michelle
+   2 · o conteúdo das páginas 3 a 5 dele é mantido
+   3 · só imagem que mostra MARCENARIA
+   4 · preço de cada ambiente NAS TRÊS LINHAS
+   5 · uma página sobre as três opções, antes de qualquer valor
+   6 · ⛔ SAI o downgrade da cozinha e do muxarabi — não se apresenta
+   7 · prazo de 120 dias corridos
+   8 · o termo de garantia e como se aciona
+   9 · forma de pagamento, a escada do Michelle
+  10 · o puxador Zen da cozinha
+
 ⛔ Sem metragem e sem contagem em nenhuma descrição.
-⛔⛔ Nenhum número vem digitado: tudo sai de `gustavo-raposo/cenarios.py`.
+⛔⛔ Nenhum número é digitado: tudo sai de `gustavo-raposo/cenarios.py`.
 """
 import pathlib, subprocess, importlib.util, sys, io, contextlib, os, base64
 
@@ -22,161 +38,109 @@ br = lambda v: f'{v:,.0f}'.replace(',', '.')
 CLIENTE, OBRA = 'Gustavo Raposo', 'Condomínio Vale dos Pinhais · Nova Lima'
 ARQ, DATA = 'Luiza Pacheco Arquitetura', '30 de outubro de 2026'
 PRAZO, VALIDADE = '120 dias corridos', '7 dias úteis'
-NP = 16                      # páginas · o assert no fim confere
-N0 = 13                      # ⛔ a primeira página com preço
+NP = 17                      # páginas · o assert no fim confere
+N0 = 14                      # ⛔ a primeira página com preço
 
 def uri(n):
     return ('data:image/jpeg;base64,'
             + base64.b64encode((P/'img-gustavo-raposo'/n).read_bytes()).decode())
 IMG = {n.stem: uri(n.name) for n in sorted((P/'img-gustavo-raposo').iterdir())}
 
-# ── os ambientes: imagens e LISTA ITEM A ITEM ───────────────────────────
+# ⭐⭐ ESTE BLOCO É GERADO, NÃO DIGITADO. Os títulos e as descrições saíram
+#   de um agente por ambiente lendo o LEVANTAMENTO (`gustavo-raposo/*.py`),
+#   no estilo que o Jonathan aprovou no Michelle: duas frases curtas, sem
+#   metragem, sem contagem, terminando no nome do material.
+# ⛔ E as imagens passaram por triagem: um agente ABRIU cada render e cortou
+#   as que não mostram marcenaria. Seis caíram, entre elas a que eu tinha
+#   posto na capa — era mesa, cadeira e pedra, sem um móvel planejado.
 #    (título, imagens, tags, acabamento, [(móvel, descrição)])
 PG = [
- ('A varanda.', ['varanda-01', 'varanda-02'], ['Varanda'],
-  'Nogueira Caiena da linha Design, com interno em branco.',
-  [('Armário da parede',
-    'Corre a parede inteira, com portas de giro e gavetas sob a bancada de '
-    'pedra. A caixaria recebe a travessa que sustenta o granito.'),
-   ('Gaveteiro da ilha',
-    'Embutido na ilha de alvenaria, com gavetas e porta-temperos vertical '
-    'de altura cheia ao lado do forno.'),
-   ('Cristaleira',
-    'Portas de vidro temperado em cima e de madeira embaixo, com prateleiras '
-    'reforçadas por alma de aço e fundo na cor — atrás do vidro não existe '
-    'peça escondida.')]),
-
- ('A cozinha, a despensa<br>e o lavabo.',
-  ['cozinha-01', 'cozinha-02', 'cozinha-03'], ['Cozinha', 'Despensa', 'Lavabo'],
-  'Laca acetinada Sayerlack sobre MDF cru, com interno em branco.',
-  [('Armário superior',
-    'Portas de giro com moldura usinada na própria peça e perfil de luz '
-    'correndo por baixo.'),
-   ('Nicho sobre a geladeira',
-    'Aberto, então sai lacado por dentro também — ali tudo aparece.'),
-   ('Armário inferior',
-    'Gavetões de carga sob a bancada, com frente de moldura provençal.'),
-   ('Armário da bancada do cooktop',
-    'Gaveta de talheres, gavetas e báscula com articulador que sobe sozinho '
-    'e para onde a mão soltar.'),
-   ('Prateleiras da despensa',
-    'As duas paredes da despensa, em prateleiras de vão livre com alma de '
-    'aço onde o vão pede.'),
-   ('Espelho do lavabo',
-    'Espelho prata colado, dividido pela bancada de pedra — a folha de cima '
-    'e a de baixo, cortadas, transportadas e instaladas por nós.')]),
-
- ('A lavanderia<br>e a rouparia.', ['lavanderia-01', 'lavanderia-02', 'rouparia-01'],
+ ('A varanda.',
+  ['varanda-02'],
+  ['Varanda', 'Lavabo'],
+  'MDF Nogueira Caiena e Branco TX, Duratex · Sem MDF neste ambiente: o acabamento é o espelho prata colado',
+  [('Armário da parede', 'Portas de giro, gavetas e gavetão, com o nicho aberto da lava-louças e a estrutura que recebe a bancada de granito. MDF Nogueira Caiena, com interno em Branco TX.'),
+   ('Gaveteiro da ilha', 'Embutido na ilha de alvenaria, com gavetas, gavetão e as gavetas verticais de temperos ao lado do forno. MDF Nogueira Caiena, com interno em Branco TX.'),
+   ('Cristaleira de vidro temperado', 'Portas de vidro temperado incolor em cima e portas de giro embaixo, com prateleiras para a louça à mostra. MDF Nogueira Caiena, por dentro e por fora.'),
+   ('Espelho da parede', 'Espelho fixo colado na parede, acima e abaixo da bancada, com corte, transporte e instalação por nossa conta. Espelho prata colado.')]),
+ ('A cozinha<br>e a despensa.',
+  ['cozinha-01', 'cozinha-02'],
+  ['Cozinha', 'Despensa'],
+  'Laca acetinada M048, Sayerlack, sobre MDF, com interno em MDF Branco TX, Duratex · MDF Branco Diamante, Linha Trama, Duratex',
+  [('Armário superior', 'Portas de giro com moldura provençal e prateleira em cada vão. MDF laqueado acetinado M048, Sayerlack, com perfil de LED embutido correndo por baixo.'),
+   ('Nicho sobre a geladeira', 'Nicho aberto que aproveita o vão acima da geladeira. Sem portas, ele é lacado por inteiro, até o fundo. MDF laqueado acetinado M048, Sayerlack.'),
+   ('Armário inferior', 'Gavetões e básculas com moldura provençal, além do nicho da lava-louças, com a estrutura já preparada para receber a bancada de quartzito. MDF laqueado acetinado M048, Sayerlack, com interno em MDF branco.'),
+   ('Armário da bancada do cooktop', 'Gaveteiro com gaveta de talheres, nicho de forno compatibilizado com o aparelho de vocês e armário de porta de giro com prateleira. MDF laqueado acetinado M048, Sayerlack, com interno em MDF branco.'),
+   ('Prateleiras da parede menor', 'Prateleiras de parede com fixação invisível, sem suporte à vista, para as conservas e os mantimentos do dia a dia. MDF Branco Diamante, com estrutura de aço embutida entre as duas faces.'),
+   ('Prateleiras da parede maior', 'Seguem a outra perna do L e vencem o vão livre sem apoio no meio, para o peso de verdade da despensa. MDF Branco Diamante.')]),
+ ('A lavanderia<br>e a rouparia.',
+  ['lavanderia-01', 'rouparia-01', 'lavanderia-02'],
   ['Lavanderia', 'Rouparia'],
-  'Branco TX na caixaria, com frentes na cor do ambiente.',
-  [('Armário superior da lavanderia',
-    'Fecha a parede acima das máquinas, com básculas que liberam a vista '
-    'inteira do vão quando abrem.'),
-   ('Armário inferior',
-    'Sob a bancada, com gavetões para o que é pesado e porta de giro para '
-    'o resto.'),
-   ('Torre de vassouras',
-    'Altura cheia, para o que não cabe deitado — e é ela que tira o esfregão '
-    'de trás da porta.'),
-   ('Armário da rouparia',
-    'A rouparia inteira da circulação, em portas de giro, com prateleiras '
-    'que vencem o vão sem flecha.')]),
-
- ('O office.', ['office-01', 'office-muxarabi', 'office-02'], ['Office'],
-  'Nogueira Caiena, em grade de réguas encaixadas.',
-  [('Painel muxarabi em grade de réguas',
-    'Não é painel furado: são réguas inteiras cruzando umas nas outras em '
-    'meia-madeira, cada uma perdendo metade da largura no encontro para que '
-    'as duas fiquem niveladas. A espessura da chapa é a ripa que se vê de '
-    'frente, e a largura da régua é a profundidade do painel. É o móvel que '
-    'mais pede mão nesta casa.')]),
-
+  'MDF Branco Diamante, Linha Trama, e Branco TX, Duratex · MDF Off-White Suave e Nogueira Thar, Duratex, com interno em Branco',
+  [('Armário superior', 'Básculas que abrem para cima, sobre a bancada, com puxador tipo cava usinado na própria frente. MDF Branco Diamante.'),
+   ('Armário inferior', 'Gavetões em corrediça oculta, báscula e o painel fixo que fecha o vão do tanque. MDF Branco Diamante.'),
+   ('Torre de vassouras', 'Porta de giro de piso a teto, com prateleiras no topo e o nicho alto para vassoura e rodo. MDF Branco Diamante.'),
+   ('Armário da rouparia', 'Portas de giro com puxador em cava quadrada, maleiro no alto e prateleiras internas para a roupa de cama e as toalhas. Corpo em MDF Off-White Suave e frentes em MDF Nogueira Thar.')]),
+ ('O office.',
+  ['office-01'],
+  ['Office'],
+  'MDF Nogueira Caiena, Linha Design, Duratex',
+  [('Painel muxarabi em réguas', 'Grade de réguas encaixadas uma a uma em meia-madeira, que filtra a vista e desenha a parede inteira do office. MDF Nogueira Caiena, com filetagem manual.')]),
  ('A suíte master.',
   ['suite-master-01', 'closet-master-01', 'banho-master-01'],
-  ['Suíte', 'Closet', 'Banho'],
-  'Nogueira Caiena nas faces, branco no interno do closet.',
-  [('Painel da cabeceira',
-    'Painel ripado atrás da cama, com as mesas de cabeceira nascendo dele.'),
-   ('Porta pivotante mimetizada',
-    'Uma folha com duas caras: do quarto ela some no painel, do closet ela '
-    'é a porta. Pivô de piso e teto, porque a folha pesa.'),
-   ('Armário da suíte',
-    'Portas de giro com puxador cava usinado na própria peça.'),
-   ('Armário do closet',
-    'Os dois lados do closet, com gaveteiro interno, cabideiro em dois '
-    'níveis e sapateira.'),
-   ('Bandeira sobre a porta',
-    'Fecha o vão acima da pivotante até o forro, sem frestas.'),
-   ('Armário do banho com portas de espelho',
-    'Espelho de alumínio correndo sobre a bancada, que é porta e é espelho '
-    'ao mesmo tempo.'),
-   ('Gabinete suspenso',
-    'Sob a bancada de pedra, solto do piso para a limpeza passar por baixo.')]),
-
- ('A suíte dos filhos.', ['suite01-01', 'suite01-02', 'suite01-03'],
+  ['Suíte master', 'Closet', 'Banho master'],
+  'MDF Nogueira Caiena e Off-White Suave, Duratex · MDF Off-White Suave, Linha Sense, Duratex · MDF Nogueira Thar e Branco, Duratex',
+  [('Painel da cabeceira', 'Reveste a parede da cabeceira inteira, com negativo vertical iluminado em LED e a porta do closet mimetizada dentro dele. MDF Nogueira Caiena.'),
+   ('Porta pivotante mimetizada', 'Gira em pivô, sem batente nem marco: fechada, some no veio do painel. MDF Nogueira Caiena do lado da suíte e Off-White Suave do lado do closet.'),
+   ('Armário da suíte', 'Portas de giro, maleiro, prateleiras internas e gavetões com puxador tipo cava. MDF Off-White Suave por dentro, com testeira, rodapé e frentes em Nogueira Caiena.'),
+   ('Armário do closet', 'Armário aberto, com cabideiros, maleiro, prateleiras e, embaixo, as gavetas e sapateiras deslizantes com puxador tipo cava. MDF Off-White Suave.'),
+   ('Armário da parede oposta', 'Cabideiro, maleiro e a coluna de prateleiras para roupa dobrada, com gavetas e sapateiras deslizantes embaixo. MDF Off-White Suave.'),
+   ('Bandeira sobre a porta pivotante', 'Fecha o vão acima da porta pivotante da suíte, pela face voltada para o closet. MDF Off-White Suave.'),
+   ('Armário superior com espelhos', 'Portas de espelho que correm sobre a bancada, com prateleiras internas para frascos e produtos do dia a dia. MDF Nogueira Thar, com perfil de LED embutido por baixo.'),
+   ('Gabinete suspenso sob a bancada', 'Portas de giro nas pontas e gavetas no centro, todas com puxador em cava usinada, e suspenso do piso para a limpeza passar por baixo. MDF Nogueira Thar, com o interno em MDF Branco.')]),
+ ('A suíte dos filhos.',
+  ['suite01-01', 'suite01-02', 'banho01-01'],
   ['Suíte 01', 'Banho'],
-  'Painéis frisados na cor da suíte, com interno em branco.',
-  [('Painel de cabeceira frisado',
-    'Frisos verticais usinados de ponta a ponta, subindo a parede inteira.'),
-   ('Armários do quarto',
-    'Dois armários e o módulo de canto que os une em L — o canto é item '
-    'próprio, para não ser contado duas vezes.'),
-   ('Mesa suspensa',
-    'Corre sob a janela, sem pé, apoiada na estrutura da parede.'),
-   ('Gaveteiro com rodízios',
-    'Solto embaixo da mesa, e são os rodízios que dão o vão até o chão.'),
-   ('Bases de cama',
-    'Duas bases com estrado em metalon, dimensionadas para colchão de '
-    'solteiro.'),
-   ('Gabinete do banho',
-    'Suspenso sob a bancada, com espelho colado na folha de correr.')]),
-
- ('A suíte das filhas.', ['suite02-01', 'suite02-02', 'banho02-01'],
+  'MDF Nogueira Thar e Off-White Suave, Duratex, com internos em MDF Branco · MDF Azul Secreto, Linha Essencial, com interno em Branco, Duratex',
+  [('Painel de cabeceira frisado', 'Painel frisado atrás das camas, com frisos verticais correndo de ponta a ponta. MDF Nogueira Thar, com perfil de LED embutido na peça.'),
+   ('Armário de cabideiros e gavetas', 'Portas de correr flutuantes em MDF e espelho, abrindo para maleiro, cabideiros e gavetas com puxador cava. MDF Off-White Suave, com interno em Branco.'),
+   ('Armário de prateleiras e sapateiras', 'Portas de correr flutuantes em MDF e espelho, com coluna de cabideiros de um lado e prateleiras, gavetas e sapateiras deslizantes do outro. MDF Off-White Suave, com interno em Branco.'),
+   ('Módulo de canto do armário', 'Fecha a esquina do armário em L, com maleiro, prateleira e cabideiros contínuos que dobram o canto. MDF Off-White Suave, com interno em Branco.'),
+   ('Mesa suspensa de estudo', 'Mesa de estudo suspensa, sem pés, fixada na parede e com saia frontal que dá a espessura aparente do tampo. MDF Nogueira Thar.'),
+   ('Gaveteiro com rodízios', 'Gaveteiro solto sobre rodízios, que entra e sai de baixo da mesa, com gavetas de corrediça invisível e puxador cava. MDF Nogueira Thar.'),
+   ('Bases de cama e gavetão', 'Bases de cama em caixa, com estrado em metalon, e gavetão que abre para a cama auxiliar. MDF Nogueira Thar.'),
+   ('Gabinete suspenso sob a bancada', 'Gavetas e portas de giro com prateleira interna, abertas por cava usinada na própria frente, sem puxador aparente. Suspenso, flutua acima do piso e deixa o banheiro mais leve de limpar. MDF Azul Secreto, Linha Essencial.')]),
+ ('A suíte das filhas.',
+  ['suite02-01', 'suite02-02', 'banho02-01'],
   ['Suíte 02', 'Closet', 'Banho'],
-  'Painéis e estante na cor da suíte, com canto arredondado.',
-  [('Estante e armário de canto arredondado',
-    'O canto da estante sai curvo, usinado, não montado em esquadro.'),
-   ('Painéis de parede',
-    'Frisos usinados nos dois painéis que ladeiam as camas.'),
-   ('Porta pivotante mimetizada',
-    'Mesma solução da master: some na parede do quarto e é porta do lado '
-    'do closet.'),
-   ('Penteadeira',
-    'Corre a parede com gavetas, e o tampo recebe o espelho redondo.'),
-   ('Armários do closet',
-    'Os dois lados mais o módulo de canto em L.'),
-   ('Mesa de cabeceira',
-    'Entre as duas camas, nascendo do painel.'),
-   ('Bases de cama',
-    'Duas bases com estrado em metalon.')]),
-
- ('Hóspedes<br>e banho social.',
-  ['hospedes-01', 'hospedes-02', 'banho-social-01'],
+  'MDF Nogueira Thar e Off-White Suave, Duratex · MDF Off-White Suave, Linha Sense, Duratex · MDF Pinole, com interno em MDF Branco, Duratex',
+  [('Estante e armário de canto', 'Estante rasa com prateleiras iluminadas sobre um armário mais fundo, de gavetas em palhinha que abrem por fecho-toque. MDF Nogueira Thar, com perfil de LED embutido sob cada prateleira.'),
+   ('Painéis de parede', 'Revestem a parede inteira das camas: os trechos atrás das cabeceiras são frisados e lavados por perfil de LED nas arestas, e o restante fica liso. MDF Nogueira Thar frisado e Off-White Suave.'),
+   ('Porta pivotante mimetizada', 'Folha de acesso ao closet, mimetizada no painel liso da parede, com puxador tipo cava e tranca pelo lado de dentro. MDF Off-White Suave.'),
+   ('Penteadeira suspensa', 'Tampo suspenso sobre pés cilíndricos metálicos, com gavetas rasas de frente em palhinha e abertura por fecho-toque. MDF Nogueira Thar com palhinha natural.'),
+   ('Armários de canto arredondado', 'Ficam nas pontas da penteadeira, com gavetas de palhinha e fecho-toque e a faixa cheia que forma o canto arredondado. MDF Nogueira Thar com palhinha natural.'),
+   ('Mesa de cabeceira', 'Fica entre as camas, apoiada na estrutura cilíndrica dourada, com gavetas de palhinha e puxador redondo dourado à vista. MDF Nogueira Thar com palhinha natural.'),
+   ('Bases de cama com gavetão', 'Cada base recebe gavetão de cama auxiliar, com estrado em metalon sob os colchões. MDF Nogueira Thar.'),
+   ('Armário de cabideiros', 'Armário aberto, sem portas, com cabideiro de roupa longa, cabideiro de roupa curta e o maleiro no alto para malas e roupa de cama. MDF Off-White Suave.'),
+   ('Armário de prateleiras e gavetas', 'Coluna de prateleiras com gavetas e sapateiras que deslizam em corrediça oculta, abertas por puxador cava, e a coluna de cabideiros ao lado. MDF Off-White Suave.'),
+   ('Módulo de canto em L', 'Resolve o encontro do armário em L e leva os cabideiros contínuos que viram a esquina, com o maleiro seguindo por cima. MDF Off-White Suave.'),
+   ('Gabinete suspenso sob a bancada', 'Gavetas e portas de giro com puxador tipo cava usinado nas frentes, e prateleiras internas atrás das portas. O móvel é suspenso, flutuando acima do piso, em MDF Pinole com interno em MDF Branco.')]),
+ ('Hóspedes e os<br>banhos sociais.',
+  ['hospedes-02', 'banho-hospedes-01', 'banho-social-01'],
   ['Suíte hóspedes', 'Banho hóspedes', 'Banho social'],
-  'Nogueira Caiena nas frentes, branco no interno.',
-  [('Armário da suíte de hóspedes',
-    'Portas de correr com sistema sem amortecedor, como a prancha pede, e '
-    'interno dividido em cabideiro e prateleira.'),
-   ('Gabinete do banho de hóspedes',
-    'Suspenso sob a bancada de pedra.'),
-   ('Gabinete do banho social',
-    'Mesma solução, na cor do ambiente.')]),
-
- ('O homeschooling.', ['homeschooling-01', 'homeschooling-02'], ['Homeschooling'],
-  'Azul Secreto nos nichos, com armários na cor da casa.',
-  [('Nicho em Azul Secreto',
-    'A estante de estudo, com prateleiras de vão livre reforçadas por alma '
-    'de aço — prateleira de vão longo carregada de livro flecha no meio, e '
-    'ali isso se vê de longe.'),
-   ('Armário inferior',
-    'Fecha a base da parede, com gavetões para material.'),
-   ('Armário da outra parede',
-    'Portas de giro de altura cheia, para o que precisa sumir da vista.')]),
+  'MDF Off-White Suave e Branco, Duratex · MDF Nogueira Thar e Branco, Duratex',
+  [('Armário da suíte', 'Folhas de correr flutuantes, maleiro, cabideiro e prateleiras, com gavetas e sapateiras deslizantes embaixo. MDF Off-White Suave, com interno em MDF Branco.'),
+   ('Gabinete suspenso sob a bancada', 'Portas de giro com prateleira interna e puxador em cava usinada na própria frente. Fica suspenso do piso, sob a bancada. MDF Nogueira Thar, com interno em MDF Branco.'),
+   ('Gabinete suspenso sob a bancada', 'Portas de giro com puxador tipo cava e prateleiras internas, suspenso para deixar o piso livre embaixo da bancada. MDF Nogueira Thar, com interno em MDF Branco.')]),
+ ('O homeschooling.',
+  ['homeschooling-01', 'homeschooling-02'],
+  ['Homeschooling'],
+  'MDF Cinza Fóssil, Linha Velluto, e Azul Secreto, Duratex',
+  [('Nicho em Azul Secreto', 'Nicho aberto com prateleiras e perfil de LED embutido em cada vão, apoiado sobre o armário inferior. O fundo fica à vista e é ele que traz a cor para o ambiente. MDF Azul Secreto.'),
+   ('Armário inferior', 'Portas de giro com prateleira interna e colunas de gavetas e gavetões, com puxador em cava usinada na própria frente. MDF Cinza Fóssil, Linha Velluto.'),
+   ('Armário de estante', 'Portas de giro altas, com prateleiras internas em toda a largura, para livro e material de estudo. MDF Cinza Fóssil, Linha Velluto.')]),
 ]
 
-# ⭐ O CSS é o do Michelle e Arlei, sem uma vírgula de diferença — é o layout
-#   que o Jonathan aprovou. O que acrescento são só as variações de TRÊS
-#   colunas, porque aqui são três linhas de ferragem e não duas.
 CSS = """
 :root{
   --ink:#1E1B17; --soft:#5E574E; --mut:#9A9287; --line:#E0D8CB;
@@ -339,28 +303,72 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
 .notes .d b{color:var(--ink);font-weight:600;}
 """
 
+# ⭐ O CSS acima é o do Michelle e Arlei, sem uma vírgula de diferença. O que
+#   vem abaixo são só as variações de TRÊS colunas — e elas guardam a mesma
+#   generosidade de respiro dos cartões dele, que foi o que fugiu na v1.
 EXTRA = """
-/* ── TRÊS linhas em vez de duas ─────────────────────────────────────── */
-.vs.tri{grid-template-columns:repeat(3,1fr);gap:3mm;}
-.vs.tri .c{padding:7mm 6mm 6mm;}
-.vs.tri .n{font-size:15pt;}
-.vs.tri .g{font-size:27pt;margin-top:3mm;}
-.vs.tri .p b{font-size:14pt;}
-.dif.tri .r{grid-template-columns:24mm 1fr 1fr 1fr;gap:4mm;}
-.dif.tri .a,.dif.tri .b2{font-size:8.2pt;}
-.dif.tri .c3{font-size:8.2pt;font-weight:600;}
-/* ── as trocas ──────────────────────────────────────────────────────── */
-.tr{margin-top:6mm;flex:none;}
-.tr .r{display:grid;grid-template-columns:1fr 34mm;gap:6mm;align-items:baseline;
-  padding:4.5mm 0;border-top:1px solid var(--line);}
-.tr .r:first-child{border-top:1.4px solid var(--ink);}
-.tr .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:15pt;
-  font-weight:600;line-height:1.1;}
-.tr .d{color:var(--soft);font-size:8.4pt;line-height:1.42;margin-top:1mm;}
-.tr .v{text-align:right;font-variant-numeric:tabular-nums;font-size:16pt;
-  font-weight:600;color:var(--wood);}
-.rows.two{columns:2;column-gap:9mm;}
-.rows.two .row{break-inside:avoid;}
+/* ── TRÊS linhas em vez de duas, com o mesmo fôlego ─────────────────── */
+.vs.tri{grid-template-columns:repeat(3,1fr);gap:3.5mm;}
+.vs.tri .c{padding:8mm 6.5mm 7mm;}
+.vs.tri .n{font-size:16pt;line-height:1.08;}
+.vs.tri .g{font-size:30pt;margin-top:4mm;}
+.vs.tri .p{margin-top:4.5mm;padding-top:3.5mm;}
+.vs.tri .p b{font-size:15pt;}
+.dif.tri .r{grid-template-columns:23mm 1fr 1fr 1fr;gap:4.5mm;padding:3.8mm 0;}
+.dif.tri .a,.dif.tri .b2,.dif.tri .c3{font-size:8.1pt;line-height:1.4;}
+.dif.tri .c3{font-weight:600;}
+.dif.tri .b2{font-weight:500;color:var(--soft);}
+
+/* ── as três opções, por dentro ─────────────────────────────────────── */
+.op{margin-top:6mm;flex:none;}
+.op .b{display:grid;grid-template-columns:30mm 1fr;gap:7mm;padding:5mm 0;
+  border-top:1px solid var(--line);align-items:start;}
+.op .b:first-child{border-top:1.4px solid var(--ink);}
+.op .k{font-size:6.8pt;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--wood);font-weight:700;}
+.op .nm{font-family:'Cormorant Garamond',Georgia,serif;font-size:17pt;
+  font-weight:600;line-height:1.08;margin-top:1.5mm;}
+.op .gg{font-size:7.4pt;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--mut);font-weight:700;margin-top:1.5mm;}
+.op .d{color:var(--soft);font-size:8.7pt;line-height:1.5;}
+.op .d b{color:var(--ink);font-weight:600;}
+.op .d em{font-style:normal;color:var(--wood);font-weight:600;}
+
+/* ── preço por ambiente nas TRÊS linhas ─────────────────────────────── */
+.t3{margin-top:5mm;flex:none;width:100%;border-collapse:collapse;}
+.t3 th{font-size:6.4pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--wood);font-weight:700;text-align:right;padding:0 0 2.2mm;
+  border-bottom:1.4px solid var(--ink);}
+.t3 th:first-child{text-align:left;}
+.t3 td{font-size:8.6pt;padding:1.9mm 0;border-bottom:1px solid var(--hair);
+  text-align:right;font-variant-numeric:tabular-nums;}
+.t3 td:first-child{text-align:left;color:var(--soft);}
+.t3 td.on{font-weight:600;}
+.t3 tr.tot td{font-size:10.5pt;font-weight:600;padding-top:3mm;
+  border-top:1.4px solid var(--ink);border-bottom:none;}
+.t3 tr.tot td:first-child{color:var(--ink);}
+.nota{margin-top:3.5mm;font-size:7.6pt;line-height:1.45;color:var(--mut);flex:none;}
+.nota b{color:var(--soft);font-weight:600;}
+
+/* ── garantia ───────────────────────────────────────────────────────── */
+.gar{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;margin-top:6mm;flex:none;}
+.gar .c{border:1px solid var(--line);border-radius:3px;padding:7mm 6mm;}
+.gar .c.on{background:var(--dk);border-color:var(--dk);color:#F4EFE6;}
+.gar .k{font-size:6.6pt;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--wood);font-weight:700;}
+.gar .c.on .k{color:var(--wood-lt);}
+.gar .g{font-family:'Cormorant Garamond',Georgia,serif;font-size:28pt;
+  font-weight:700;line-height:1;margin-top:3mm;}
+.gar .d{font-size:8pt;line-height:1.42;color:var(--soft);margin-top:2.5mm;}
+.gar .c.on .d{color:#BDB5A8;}
+.ac{margin-top:6mm;flex:none;}
+.ac .r{display:grid;grid-template-columns:9mm 1fr;gap:4mm;padding:3.4mm 0;
+  border-top:1px solid var(--line);}
+.ac .r:first-child{border-top:1.4px solid var(--ink);}
+.ac .n{font-family:'Cormorant Garamond',Georgia,serif;font-size:19pt;
+  font-weight:700;color:var(--wood-lt);line-height:.9;}
+.ac .t{font-size:10pt;font-weight:600;}
+.ac .d{color:var(--soft);font-size:8.2pt;line-height:1.42;margin-top:.8mm;}
 """
 
 def foot(n):
@@ -370,10 +378,29 @@ def head():
     return (f'<div class="hd"><div class="b">Valvic Marcenaria</div>'
             f'<div class="m">{CLIENTE} · {DATA}</div></div>')
 
+LIN = ('Telescópica', 'Hettich', 'Blum')     # ⭐ sempre da entrada ao topo
+
+# ⭐ ABERTURA de página de ambiente. Só onde faz falta: página de um móvel só
+#   fica com um rodapé de branco, e esse branco é o lugar de contar o que o
+#   móvel tem de difícil — que é o que justifica o preço dele.
+LEAD = {
+ 'O office.':
+   'O muxarabi <b>não é um painel furado</b>. São réguas inteiras cruzando '
+   'umas nas outras em meia-madeira: cada uma perde metade da largura no '
+   'encontro, e as duas ficam niveladas. <b>É o móvel que mais pede mão '
+   'nesta casa</b> — cada cruzamento é um entalhe, e são milhares deles.',
+ 'A varanda.':
+   'A varanda é <b>três móveis que a prancha quase esconde</b>: o armário '
+   'que corre a parede, o gaveteiro embutido na ilha de alvenaria e a '
+   'cristaleira de portas de vidro temperado. <b>O vidro é nosso</b> — sai '
+   'no mesmo caminhão e é instalado pela mesma equipe. A pedra não.',
+}
+# ⭐ e o puxador ganha linha própria onde ele foi especificado
+PUX = {'A cozinha<br>e a despensa.': cen.PUXADOR_COZINHA + ', em todas as frentes'}
 pg = []
 # ── 1 · capa ────────────────────────────────────────────────────────────
 pg.append(f"""<div class="page"><div class="cv">
-  <div class="ph"><img src="{IMG['varanda-01']}" alt=""></div>
+  <div class="ph"><img src="{IMG['cozinha-03']}" alt=""></div>
   <div class="bt">
     <div class="mark">Valvic Marcenaria</div>
     <h1>A casa<br>inteira.</h1>
@@ -386,7 +413,7 @@ ETAPAS = [
  ('Medição', 'Vamos ao local antes de cortar e conferimos cada medida do '
   'projeto executivo. É aí que fecham as alturas do piso ao forro.'),
  ('Detalhamento', 'Compatibilizamos a marcenaria com a elétrica, com os '
-  'eletrodomésticos e com a marmoraria, peça por peça.'),
+  'eletrodomésticos de vocês e com a marmoraria, peça por peça.'),
  ('Corte', 'CNC próprio, com furação oculta — a cavilha só aparece onde '
   'ninguém vê. É o que deixa a face limpa e o móvel no esquadro.'),
  ('Montagem', 'Equipe nossa, não terceirizada. Quem monta responde pelo que '
@@ -408,9 +435,9 @@ pg.append(f"""<div class="page"><div class="pad">
   garantia sem repassar a conversa para outro.</div>
 
   <div class="mos a" style="flex:none;height:84mm;min-height:0;max-height:84mm;">
-    <img src="{IMG['cozinha-01']}" alt="">
-    <div class="st"><img src="{IMG['suite-master-01']}" alt="">
-      <img src="{IMG['office-01']}" alt=""></div>
+    <img src="{IMG['suite-master-01']}" alt="">
+    <div class="st"><img src="{IMG['closet-master-01']}" alt="">
+      <img src="{IMG['rouparia-01']}" alt=""></div>
   </div>
 
   <div class="eye">Como fazemos</div>
@@ -419,15 +446,26 @@ pg.append(f"""<div class="page"><div class="pad">
 </div></div>""")
 
 # ── 3 · as TRÊS linhas, ANTES de qualquer preço ─────────────────────────
+#    ⭐ é a página 3 do Michelle, item por item, com uma coluna a mais
 DIF = [
- ('Corrediça', 'Telescópica, com trilho aparente na lateral da gaveta.',
-  'Oculta alemã: o trilho some por baixo e a gaveta abre inteira.',
-  'Oculta Blum: a referência do mercado em suavidade e em carga.'),
- ('Dobradiça', 'Nacional, com abertura de noventa graus.',
+ ('Corrediça',
+  'Telescópica, com o trilho aparente na lateral da gaveta e sem amortecedor '
+  'de fechamento.',
+  'Oculta alemã: o trilho some por baixo, a gaveta abre inteira e não mostra '
+  'ferragem na lateral.',
+  'Oculta Blum: a mesma discrição da alemã, com o curso mais macio e a maior '
+  'capacidade de carga das três.'),
+ ('Dobradiça',
+  'Nacional, com abertura de noventa graus.',
   'Alemã, com amortecedor e regulagem nos três sentidos.',
   'Blum, com amortecedor e regulagem nos três sentidos.'),
- ('Fechamento', 'Sem amortecedor — a gaveta fecha no impulso.',
-  'Amortecido, em todas as gavetas e portas.',
+ ('Básculas',
+  'Articulador premium de molas, o mesmo nas três linhas: a porta sobe '
+  'sozinha e para onde você soltar.',
+  'O mesmo articulador.', 'O mesmo articulador.'),
+ ('Fechamento',
+  'A gaveta fecha no impulso, sem freio.',
+  'Amortecido em todas as gavetas e portas.',
   'Amortecido, com o toque mais macio das três.'),
  ('Garantia', cen.CEN['Telescópica']['gar'], cen.CEN['Hettich']['gar'],
   cen.CEN['Blum']['gar']),
@@ -439,8 +477,7 @@ cards = ''.join(
   f'<div class="c{" on" if n == "Blum" else ""}"><div class="k">{n}</div>'
   f'<div class="n serif">{cen.CEN[n]["chamada"]}</div>'
   f'<div class="g serif">{cen.CEN[n]["gar"]}</div>'
-  f'<div class="gl">de garantia</div></div>'
-  for n in ('Telescópica', 'Hettich', 'Blum'))
+  f'<div class="gl">de garantia</div></div>' for n in LIN)
 pg.append(f"""<div class="page"><div class="pad">
   {head()}
   <div class="eye">Uma escolha</div>
@@ -458,159 +495,259 @@ pg.append(f"""<div class="page"><div class="pad">
     <div class="d">Os <b>padrões de MDF especificados pela arquiteta</b>, a
     <b>laca acetinada da cozinha</b>, a <b>furação oculta</b>, o <b>puxador
     cava usinado na própria peça</b>, as <b>almas de aço</b> nas prateleiras
-    de vão longo e a <b>equipe própria</b> do corte à montagem.</div>
+    de vão longo, a <b>iluminação entregue instalada</b> e a <b>equipe
+    própria</b> do corte à montagem.</div>
   </div>
   {foot(3)}
 </div></div>""")
 
-# ── 4…12 · os ambientes, SEM preço ──────────────────────────────────────
-for n, (titulo, imgs, ambs, acab, itens) in enumerate(PG, start=4):
+# ── 4 · as três opções, por dentro — ainda SEM preço ────────────────────
+OPC = [
+ ('Telescópica', 'A linha de entrada',
+  'A corrediça telescópica corre sobre esferas e <b>mostra o trilho na '
+  'lateral da gaveta</b> quando ela abre. Não tem amortecedor: a gaveta '
+  'fecha no impulso que você der. É a ferragem que a maior parte do mercado '
+  'entrega como padrão, e ela cumpre o que promete — <em>o que muda é por '
+  'quanto tempo</em>.'),
+ ('Hettich', 'O padrão da casa',
+  'A corrediça oculta alemã corre <b>por baixo da caixa da gaveta</b>: você '
+  'abre e não vê ferragem nenhuma, só a madeira. A gaveta sai inteira, o '
+  'fechamento é amortecido e a regulagem é fina nos três sentidos. '
+  '<em>É a linha que especificamos nesta casa</em> e a que o projeto da '
+  'arquiteta pressupõe.'),
+ ('Blum', 'O topo',
+  'A mesma discrição da alemã, com o <b>curso mais macio e a maior '
+  'capacidade de carga</b> das três — é o que se sente num gavetão cheio, '
+  'que é onde ferragem fraca aparece primeiro. A Blum é a referência do '
+  'mercado, e é por isso que respondemos por ela <em>por trinta anos</em>.'),
+]
+ops = ''.join(
+  f'<div class="b"><div><div class="k">{k}</div>'
+  f'<div class="nm serif">{cen.CEN[k]["chamada"]}</div>'
+  f'<div class="gg">{cen.CEN[k]["gar"]} de garantia</div></div>'
+  f'<div class="d">{d}</div></div>' for k, _, d in OPC)
+pg.append(f"""<div class="page"><div class="pad">
+  {head()}
+  <div class="eye">As três opções</div>
+  <div class="h1 serif">O que vocês<br>vão sentir na mão.</div>
+  <div class="lead">A ferragem é a única peça da marcenaria que <b>se usa
+  todo dia e se desgasta</b>. O MDF não cansa, a pintura não cansa, a
+  furação não cansa. A corrediça e a dobradiça, sim — e é por isso que a
+  escolha entre as três linhas <b>vale para a casa toda</b>: a garantia do
+  conjunto segue sempre a ferragem de menor linha presente.</div>
+
+  <div class="op">{ops}</div>
+
+  <div class="sel" style="margin-top:6mm;">
+    <div class="k">Como escolher</div>
+    <div class="d">Abra uma gaveta de cada linha antes de decidir — <b>em
+    trinta segundos a mão resolve o que a tabela não resolve</b>. Levamos as
+    três amostras à obra na medição, sem compromisso.</div>
+  </div>
+  {foot(4)}
+</div></div>""")
+
+# ── 5…13 · os ambientes, SEM preço ──────────────────────────────────────
+for n, (titulo, imgs, ambs, acab, itens) in enumerate(PG, start=5):
     lado = 'a' if n % 2 == 0 else 'b'          # ⭐ alterna a cada página
-    if len(imgs) == 3:
+    if len(imgs) == 1:
+        mos, cls = f'<img src="{IMG[imgs[0]]}" alt="">', 'solo'
+    elif len(imgs) == 3:
         st = (f'<div class="st"><img src="{IMG[imgs[1]]}" alt="">'
               f'<img src="{IMG[imgs[2]]}" alt=""></div>')
         mos = (f'<img src="{IMG[imgs[0]]}" alt="">{st}' if lado == 'a'
                else f'{st}<img src="{IMG[imgs[0]]}" alt="">')
+        cls = lado
     else:
         mos = ''.join(f'<img src="{IMG[i]}" alt="">'
                       for i in (imgs if lado == 'a' else imgs[::-1]))
+        cls = lado
     lis = ''.join(f'<div class="li"><div class="t">{t}</div>'
                   f'<div class="d">{d}</div></div>' for t, d in itens)
     tags = ''.join(f'<span>{a}</span>' for a in ambs)
+    lead = (f'<div class="lead" style="margin-top:4mm;">{LEAD[titulo]}</div>'
+            if titulo in LEAD else '')
+    pux = (f'<div class="acab" style="margin-top:3mm;padding-top:3mm;">'
+           f'<div class="k">Puxador</div><div class="v">{PUX[titulo]}</div>'
+           f'</div>' if titulo in PUX else '')
     pg.append(f"""<div class="page"><div class="pad">
       {head()}
       <div class="eye">Ambiente</div>
       <div class="h1 serif">{titulo}</div>
       <div class="tags">{tags}</div>
-      <div class="mos {lado}">{mos}</div>
+      {lead}
+      <div class="mos {cls}">{mos}</div>
       <div class="lista">{lis}</div>
       <div class="acab"><div class="k">Acabamentos</div>
         <div class="v">{acab}</div></div>
+      {pux}
       {foot(n)}
     </div></div>""")
 
-# ── 13 · o investimento — a PRIMEIRA página com preço ───────────────────
-REF = 'Hettich'          # ⭐ a linha especificada hoje, e a do meio
-rows = ''.join(f'<div class="row"><span>{nome[3:]}</span>'
-               f'<span class="v">{br(cen.CEN[REF]["pv"][i])}</span></div>'
-               for i, (nome, *_) in enumerate(cen.AMB))
+# ── 14 · o investimento, ambiente por ambiente, NAS TRÊS LINHAS ─────────
+#    ⛔ [Jonathan 30/10] "a apresentação de preços de cada ambiente precisa
+#      ser nas tres linhas (obs, a despensa e o office nao muda de valor nas
+#      3)".
+#    ⛔⛔ A OBSERVAÇÃO VIROU QUANDO AS MCs MUDARAM, e eu quase imprimi a
+#      versão velha dela. O que não muda nesses ambientes é o CUSTO: nenhum
+#      leva gaveta nem porta de giro, então não há corrediça nem dobradiça
+#      para trocar — e o LAVABO entra no grupo junto com os outros dois. Mas
+#      o PREÇO muda, porque a MC da linha telescópica é 35% e a das outras
+#      duas é 42%. Com as MCs antigas (42/35/35) eles batiam entre Hettich e
+#      telescópica; com as de agora (42/42/35) eles batem entre Hettich e
+#      Blum. ⭐ A lição: AFIRME O QUE A PEÇA IMPRIME. Eu tinha travado a
+#      igualdade de CUSTO e escrito igualdade de PREÇO — o assert passava e
+#      a frase mentia.
+IGUAIS = [i for i, (nome, _, pares, dobr) in enumerate(cen.AMB)
+          if pares == 0 and dobr == 0]
+assert {cen.AMB[i][0] for i in IGUAIS} == {'02 Lavabo', '04 Despensa', '07 Office'}, \
+    [cen.AMB[i][0] for i in IGUAIS]
+# ⛔ e agora a trava da AFIRMAÇÃO: o preço desses três tem de bater entre
+#   Hettich e Blum, e tem de DIFERIR da telescópica.
+for _i in IGUAIS:
+    assert abs(cen.CEN['Hettich']['pv_tabela'][_i]
+               - cen.CEN['Blum']['pv_tabela'][_i]) < 0.01, cen.AMB[_i][0]
+    assert abs(cen.CEN['Hettich']['pv_tabela'][_i]
+               - cen.CEN['Telescópica']['pv_tabela'][_i]) > 1.0, cen.AMB[_i][0]
+# ⭐ a coluna da Hettich vai em negrito: é a linha especificada no projeto
+_cls = {n: ' class="on"' if n == 'Hettich' else '' for n in LIN}
+linhas = ''.join(
+  f'<tr><td>{nome[3:]}</td>'
+  + ''.join(f'<td{_cls[n]}>{br(cen.CEN[n]["pv_tabela"][i])}</td>' for n in LIN)
+  + '</tr>' for i, (nome, *_) in enumerate(cen.AMB))
 pg.append(f"""<div class="page"><div class="pad">
   {head()}
-  <div class="eye">Investimento · linha Hettich</div>
-  <div class="h1 serif">Ambiente por ambiente.</div>
-  <div class="lead">Dezenove ambientes, levantados peça por peça do projeto
-  executivo. <b>Cada linha abaixo é um ambiente fechado</b> — nada é rateio
-  nem estimativa por metro quadrado.</div>
-  <div class="rows two">{rows}</div>
-  <div class="mos a" style="max-height:58mm;margin-top:5mm;">
-    <img src="{IMG['cozinha-02']}" alt="">
-    <div class="st"><img src="{IMG['banho02-02']}" alt="">
-      <img src="{IMG['rouparia-01']}" alt=""></div>
-  </div>
-  <div class="vista" style="padding:8mm 9mm;">
-    <div><div class="lab">A casa inteira · linha Hettich</div>
-      <div class="big">R$ {br(cen.CEN[REF]['preco'])}</div>
-      <div class="s">Com <b>{cen.CEN[REF]['gar']} de garantia</b> sobre a
-      marcenaria, a ferragem e a instalação.</div></div>
-  </div>
+  <div class="eye">Investimento · ambiente por ambiente</div>
+  <div class="h1 serif">Dezenove ambientes,<br>nas três linhas.</div>
+  <div class="lead">Cada ambiente foi levantado <b>peça por peça do projeto
+  executivo</b> — nada é rateio nem estimativa por metro quadrado. Os
+  valores abaixo são de tabela; a <b>forma de pagamento está na página
+  seguinte</b>.</div>
+  <table class="t3">
+    <tr><th>Ambiente</th>{''.join(f'<th>{n}</th>' for n in LIN)}</tr>
+    {linhas}
+    <tr class="tot"><td>A casa inteira</td>
+      {''.join(f'<td>{br(cen.CEN[n]["tabela"])}</td>' for n in LIN)}</tr>
+  </table>
+  <div class="nota"><b>Lavabo, Despensa e Office têm o mesmo valor nas
+  linhas Hettich e Blum.</b> Nenhum dos três leva gaveta ou porta de giro —
+  o lavabo é espelho, a despensa é prateleira e o office é painel —, então
+  não existe corrediça nem dobradiça neles para trocar de uma linha para a
+  outra.</div>
   {foot(N0)}
 </div></div>""")
 
-# ── 14 · as três linhas, com preço ──────────────────────────────────────
+# ── 15 · o total e a FORMA DE PAGAMENTO ─────────────────────────────────
 cards2 = ''.join(
-  f'<div class="c{" on" if n == "Blum" else ""}"><div class="k">{n}</div>'
+  f'<div class="c{" on" if n == "Hettich" else ""}"><div class="k">{n}</div>'
   f'<div class="n serif">{cen.CEN[n]["chamada"]}</div>'
   f'<div class="g serif">{cen.CEN[n]["gar"]}</div>'
   f'<div class="gl">de garantia</div>'
-  f'<div class="p">A casa inteira<b>R$ {br(cen.CEN[n]["preco"])}</b></div></div>'
-  for n in ('Telescópica', 'Hettich', 'Blum'))
-dif_b = cen.CEN['Blum']['preco'] - cen.CEN['Telescópica']['preco']
+  f'<div class="p">À vista<b>R$ {br(cen.CEN[n]["vista"])}</b></div></div>'
+  for n in LIN)
+REF = 'Hettich'
+pays = ''.join(
+  f'<div class="r{" on" if v else ""}"><div>{rot}</div>'
+  f'<div class="x">{"− " + format(int(d*100)) + "% · R$ " + br(cen.CEN[REF]["tabela"]*(1-d)) if d else "R$ " + br(cen.CEN[REF]["tabela"])}</div></div>'
+  for rot, d, v in cen.ESCADA)
 pg.append(f"""<div class="page"><div class="pad">
   {head()}
   <div class="eye">Investimento · as três linhas</div>
   <div class="h1 serif">Dois anos, dez, ou trinta.</div>
   <div class="lead">A mesma casa, o mesmo desenho e os mesmos padrões. A
-  diferença é a <b>ferragem</b> — e o tempo pelo qual respondemos por ela.
-  A garantia do conjunto segue sempre <b>a ferragem de menor linha
-  presente</b>: é por isso que a escolha vale para a casa toda, e não móvel
-  a móvel.</div>
+  diferença é a <b>ferragem</b> — e o tempo pelo qual respondemos por ela.</div>
 
   <div class="vs tri">{cards2}</div>
 
-  <div class="mos b" style="max-height:74mm;">
-    <div class="st"><img src="{IMG['closet-master-02']}" alt="">
-      <img src="{IMG['suite02-01']}" alt=""></div>
-    <img src="{IMG['banho-master-01']}" alt="">
+  <div class="vista" style="margin-top:6mm;padding:8mm 9mm;">
+    <div><div class="lab">À vista · linha Hettich · {cen.DESC_VISTA:.0%} de desconto</div>
+      <div class="big">R$ {br(cen.CEN[REF]['vista'])}</div>
+      <div class="s">Entrada e saldo por transferência, sem cartão —
+      devolvemos a taxa que deixamos de pagar.</div></div>
+    <div class="rt"><div class="k">Valor de tabela</div>
+      <div class="v">R$ {br(cen.CEN[REF]['tabela'])}</div></div>
   </div>
 
-  <div class="vista" style="padding:7mm 9mm;">
-    <div><div class="lab">Da telescópica à Blum</div>
-      <div class="big" style="font-size:34pt;">R$ {br(dif_b)}</div>
-      <div class="s">É o que separa os dois extremos — e o que compra
-      <b>vinte e oito anos a mais</b> de garantia.</div></div>
-    <div class="rt"><div class="k">Garantia</div>
-      <div class="v" style="font-size:19pt;color:#fff;">2 → 30 anos</div></div>
-  </div>
+  <div class="eye" style="margin-top:6mm;">Forma de pagamento · linha Hettich</div>
+  <div class="pay" style="margin-top:3mm;">{pays}</div>
+  <div class="nota">A mesma escada vale para as outras duas linhas, sobre o
+  valor de tabela de cada uma. <b>A entrada abre a produção</b> e o saldo
+  vence na entrega.</div>
   {foot(N0+1)}
 </div></div>""")
 
-# ── 15 · as duas trocas ─────────────────────────────────────────────────
-trs = ''.join(f'<div class="r"><div><div class="t">{t}</div>'
-              f'<div class="d">{d}</div></div>'
-              f'<div class="v">− R$ {br(dp)}</div></div>'
-              for t, dp, _, d in cen.TROCA)
-dois = sum(t[1] for t in cen.TROCA)
+# ── 16 · a GARANTIA: o termo e como se aciona ───────────────────────────
+#    ⭐ [Jonathan 30/10] "fale do nosso termo de garantia e formato de
+#      acionamento". Os prazos e o atendimento saem de
+#      `closer-vendas/referencias/garantia.md`, que é a política oficial.
+gars = ''.join(
+  f'<div class="c{" on" if n == "Hettich" else ""}"><div class="k">{n}</div>'
+  f'<div class="g serif">{cen.CEN[n]["gar"]}</div>'
+  f'<div class="d">{d}</div></div>'
+  for n, d in zip(LIN, (
+    'Sobre a marcenaria, a ferragem e a montagem.',
+    'Sobre a marcenaria, a ferragem e a montagem. É a linha especificada '
+    'neste projeto.',
+    'Sobre a marcenaria, a ferragem e a montagem — o maior prazo que a casa '
+    'oferece.')))
+PASSOS = [
+ ('Vocês nos chamam', 'Por telefone, WhatsApp ou e-mail, direto com a '
+  'fábrica. Não há central, não há protocolo e não há intermediário.'),
+ ('Respondemos em 24 horas', 'Esse é o nosso compromisso de retorno, '
+  'contado em dias úteis a partir do chamado.'),
+ ('Visita em até três dias úteis', 'Se não resolvermos pelo telefone, a '
+  'equipe vai ao local. Dentro do prazo de garantia, a visita e o reparo '
+  'não têm custo.'),
+]
+passos = ''.join(f'<div class="r"><div class="n serif">{i:02d}</div>'
+                 f'<div><div class="t">{t}</div><div class="d">{d}</div></div>'
+                 f'</div>' for i, (t, d) in enumerate(PASSOS, 1))
 pg.append(f"""<div class="page"><div class="pad">
   {head()}
-  <div class="eye">Duas alternativas</div>
-  <div class="h1 serif">Dois caminhos para<br>ajustar o investimento.</div>
-  <div class="lead">Se o número precisar ceder, estes são os dois lugares
-  onde ele cede <b>sem tocar na ferragem e sem tocar na garantia</b>. O
-  desconto é o mesmo <b>qualquer que seja a linha escolhida</b>.</div>
+  <div class="eye">Garantia</div>
+  <div class="h1 serif">O termo é assinado<br>na entrega.</div>
+  <div class="lead">A garantia da Valvic <b>é escalonada pela ferragem</b>,
+  e vale para a casa inteira pelo prazo da <b>linha de menor tempo presente
+  no projeto</b>. Não é promessa de proposta: é <b>termo assinado no dia da
+  entrega</b>, junto com o guia de conservação do móvel.</div>
 
-  <div class="tr">{trs}
-    <div class="r"><div><div class="t">As duas juntas</div></div>
-      <div class="v">− R$ {br(dois)}</div></div>
-  </div>
+  <div class="gar">{gars}</div>
 
-  <div class="notes" style="margin-top:7mm;">
-    <div class="bx"><div class="k">A cozinha em melamínico</div>
-      <div class="d">A laca é <b>mais da metade do custo da cozinha</b>, e
-      sai em peça pintada dos dois lados — de um lado só, ela empena. Mas
-      o melamínico <b>não aceita a moldura provençal</b>: ela é usinada na
-      router e o rebaixo expõe o miolo da chapa, que na laca some debaixo da
-      tinta. <b>Melamínico aqui é frente lisa</b> — é outra cozinha, não a
-      mesma mais barata.</div></div>
-    <div class="bx w"><div class="k">O painel do office usinado</div>
-      <div class="d">A grade de réguas encaixadas em meia-madeira vira um
-      <b>painel plano usinado na CNC</b>. O desenho do muxarabi continua; o
-      que muda é que ele passa a ser <b>vazado na chapa</b> em vez de montado
-      régua a régua. Sem as peças filetadas uma a uma, é o item que mais
-      cede em proporção na casa inteira.</div></div>
-  </div>
-  <div class="mos b" style="max-height:62mm;margin-top:6mm;">
-    <div class="st"><img src="{IMG['office-muxarabi']}" alt="">
-      <img src="{IMG['cozinha-03']}" alt=""></div>
-    <img src="{IMG['cozinha-01']}" alt="">
+  <div class="eye" style="margin-top:7mm;">Como se aciona</div>
+  <div class="ac">{passos}</div>
+
+  <div class="notes" style="margin-top:6mm;">
+    <div class="bx"><div class="k">O que o termo cobre</div>
+      <div class="d">A <b>marcenaria</b> — estrutura, painéis, frentes e
+      acabamento. A <b>ferragem de movimento</b>, pelo prazo da linha
+      escolhida. A <b>montagem e a instalação</b>. As <b>instalações e
+      regulagens</b> têm garantia de <b>dois anos</b> em qualquer
+      linha.</div></div>
+    <div class="bx w"><div class="k">O que fica de fora</div>
+      <div class="d">A <b>iluminação em LED</b>, que é componente eletrônico
+      e segue a garantia do fabricante. O <b>desgaste de uso</b>, o dano por
+      <b>umidade ou infiltração</b> vinda da obra, e a alteração feita por
+      terceiro no móvel depois da entrega. O termo traz também as
+      <b>obrigações de conservação</b> do contratante.</div></div>
   </div>
   {foot(N0+2)}
 </div></div>""")
 
-# ── 16 · condições ──────────────────────────────────────────────────────
+# ── 17 · condições ──────────────────────────────────────────────────────
 pg.append(f"""<div class="page"><div class="pad">
   {head()}
   <div class="eye">Condições</div>
   <div class="h1 serif">Como fechamos.</div>
 
   <div class="mos a" style="max-height:72mm;">
-    <img src="{IMG['varanda-02']}" alt="">
+    <img src="{IMG['suite02-01']}" alt="">
     <div class="st"><img src="{IMG['homeschooling-01']}" alt="">
       <img src="{IMG['lavanderia-01']}" alt=""></div>
   </div>
 
   <div class="four">
     <div><div class="k">Prazo</div><div class="v">{PRAZO}</div>
-      <div class="s">Do aceite e da medição no local.</div></div>
+      <div class="s">Do aceite, da entrada e da medição no local.</div></div>
     <div><div class="k">Garantia</div><div class="v">2 · 10 · 30 anos</div>
       <div class="s">Conforme a linha escolhida.</div></div>
     <div><div class="k">Execução</div><div class="v">Equipe própria</div>
@@ -631,9 +768,10 @@ pg.append(f"""<div class="page"><div class="pad">
       <div class="d">A <b>medição no local</b> antes do corte, que é ela que
       fecha a altura dos móveis do piso ao forro. A <b>cristaleira da
       varanda</b>, que a planta desenha curva e a elevação desenha reta — e
-      as duas não podem estar certas ao mesmo tempo. O <b>modelo dos
-      puxadores</b>. E <b>amostra</b> dos padrões de MDF e da cor da laca,
-      aprovadas por vocês e pela arquiteta.</div></div>
+      as duas não podem estar certas ao mesmo tempo. O <b>forno e o
+      micro-ondas</b>, para a torre da cozinha. E <b>amostra</b> dos padrões
+      de MDF e da cor da laca, aprovadas por vocês e pela
+      arquiteta.</div></div>
   </div>
   {foot(NP)}
 </div></div>""")
@@ -643,24 +781,30 @@ HTML = ('<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">'
         'wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" '
         'rel="stylesheet"><style>' + CSS + EXTRA + '</style></head><body>'
         + ''.join(pg) + '</body></html>')
+
 assert len(pg) == NP, f'⛔ {len(pg)} páginas, o rodapé diz {NP}'
-# ⛔⛔ "NUNCA APRESENTE PREÇO SEM ANTES GERAR VALOR" — a trava, não a boa fé:
-#   nenhum "R$" pode aparecer antes da página do investimento.
+# ⛔⛔ "NUNCA APRESENTE PREÇO SEM ANTES GERAR VALOR" — a trava, não a boa fé.
 _antes = ''.join(pg[:N0-1])
 assert 'R$' not in _antes, '⛔⛔ TEM PREÇO ANTES DA PÁGINA DE VALOR'
 # ⛔⛔ MARCAÇÃO INTERNA NÃO VAI PARA O CLIENTE. ⭐/⛔/⚠ são a minha linguagem
-#   de orçamento, não a da peça — impressas, viram emoji vermelho no meio da
-#   frase. Eu já tinha APONTADO esse defeito na folha da Eliza e repeti aqui
-#   na primeira rodada. Boa fé não bastou duas vezes; vai de assert.
+#   de orçamento; impressas, viram emoji vermelho no meio da frase. Aconteceu
+#   na folha da Eliza, eu apontei, e repeti aqui na v1. Vai de assert.
 _marca = [c for c in '⭐⛔⚠' if c in ''.join(pg)]
 assert not _marca, f'⛔⛔ MARCAÇÃO INTERNA NA PEÇA DO CLIENTE: {_marca}'
+# ⛔ E nenhuma imagem reprovada na triagem pode ter entrado.
+_CORTADAS = {'varanda-01', 'office-02', 'office-muxarabi', 'banho-master-02',
+             'banho02-02', 'hospedes-01'}
+for _c in _CORTADAS:
+    assert IMG[_c] not in HTML, f'⛔⛔ IMAGEM REPROVADA NA PEÇA: {_c}'
 
 (P/'proposta-gustavo-raposo.html').write_text(HTML, encoding='utf-8')
 subprocess.run(['node', str(P/'render-pdf.js'), str(P/'proposta-gustavo-raposo.html'),
                 str(P/'proposta-gustavo-raposo.pdf')], check=True,
                env=dict(os.environ, NODE_PATH='/opt/node22/lib/node_modules'))
 print(f'proposta-gustavo-raposo.pdf · {NP} páginas · '
-      f'{(P/"proposta-gustavo-raposo.pdf").stat().st_size//1024} kB')
-print(f'  primeiro preço: página {N0}')
-for n in ('Telescópica', 'Hettich', 'Blum'):
-    print(f'  {n:14s} R$ {br(cen.CEN[n]["preco"]):>10s} · {cen.CEN[n]["gar"]}')
+      f'{(P/"proposta-gustavo-raposo.pdf").stat().st_size//1024} kB · '
+      f'primeiro preço na {N0}')
+for n in LIN:
+    c = cen.CEN[n]
+    print(f'  {n:13s} tabela R$ {br(c["tabela"]):>9s} · à vista R$ {br(c["vista"]):>9s}'
+          f' · {c["gar"]}')

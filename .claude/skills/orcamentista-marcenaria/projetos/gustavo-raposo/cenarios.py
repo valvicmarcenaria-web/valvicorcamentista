@@ -98,3 +98,47 @@ if __name__ == '__main__':
     for n in CEN:
         mc, pr = mc_apos(n, [0, 1])
         print(f'  {n:14s} com as duas trocas: {pr:>12,.2f} · MC {mc*100:.2f}%')
+
+# ════════════════════════════════════════════════════════════════════════
+# A FORMA DE PAGAMENTO  [Jonathan, 30/10/2026]
+# ════════════════════════════════════════════════════════════════════════
+# ⭐ A escada é a do Michelle e Arlei: transferência −7%, 6× −5%, 8× −3%,
+#   10× no valor cheio.
+#
+# ⛔⛔ MAS A CONVENÇÃO TEVE DE MUDAR, E ESTE É O PONTO. No Michelle o preço
+#   a MC alvo é o VALOR CHEIO e o à vista sai 7% abaixo dele — ou seja, o
+#   desconto come margem. Lá sobrava espaço (alvo 40%, piso 35%). Aqui a
+#   linha telescópica está cravada NO piso de 35%: qualquer desconto a
+#   derruba para 31,25%, que é vender a linha de entrada fora da política.
+#
+# ⭐⭐ ENTÃO O PREÇO QUE A PLANILHA DEVOLVE É O PREÇO À VISTA, e a tabela
+#   sobe 7% acima dele [Jonathan, 30/10]. É o que a própria conta já dizia:
+#   os encargos foram calculados com ZERO parcelas de cartão, então o número
+#   que sai dela é, por construção, o preço de quem não passa no cartão.
+#   Assim a MC à vista fica exatamente em 42 / 42 / 35% e nenhum degrau da
+#   escada fura o piso — ao contrário, todos sobem a margem.
+DESC_VISTA = 0.07
+ESCADA = [
+ ('Entrada de 70% e saldo por transferência',          0.07, True),
+ ('Entrada de 70% e saldo em até seis vezes no cartão', 0.05, False),
+ ('Entrada de 50% e saldo em até oito vezes no cartão', 0.03, False),
+ ('Entrada de 30% e saldo em até dez vezes no cartão',  0.00, False),
+]
+for _n, _c in CEN.items():
+    _c['vista'] = _c['preco']                      # ⭐ o preço da planilha
+    _c['tabela'] = _c['preco']/(1 - DESC_VISTA)    # ⭐ e a tabela 7% acima
+    _c['pv_tabela'] = [v/(1 - DESC_VISTA) for v in _c['pv']]
+
+# ⛔ NENHUM DEGRAU PODE FURAR O PISO DE 35%. É assert, não leitura.
+for _n, _c in CEN.items():
+    for _rot, _d, _ in ESCADA:
+        _pr = _c['tabela']*(1 - _d)
+        _mc = BASE - _c['custo']/_pr
+        assert _mc >= 0.35 - 1e-9, (_n, _rot, _mc)
+    # e o à vista tem de devolver EXATAMENTE a MC alvo
+    assert abs((BASE - _c['custo']/(_c['tabela']*(1-DESC_VISTA))) - _c['mc']) < 1e-9
+
+# ⭐ O PUXADOR DA COZINHA [Jonathan, 30/10]: "na cozinha considere o puxador
+#   trazo igual ao do michell". Alças Traso de 128 mm, Zen Design, uma por
+#   frente — catorze frentes.
+PUXADOR_COZINHA = 'Alças Traso de 128 mm, Zen Design'
