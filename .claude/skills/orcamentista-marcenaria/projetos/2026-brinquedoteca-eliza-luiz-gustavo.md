@@ -749,3 +749,99 @@ oculta do canto alemão. Os 5 anos do PDF antigo é que estavam fora da tabela.
 **Imagens:** `img-brinquedoteca/capa.jpg` e o render do PR02 do estúdio,
 extraído com `pdfimages -j -p` (⚠ `pymupdf` e `PIL` não instalam neste
 container; poppler resolve).
+
+---
+
+# A FOLHA PASSA PARA A TELESCÓPICA [30/10/2026]
+
+> *[Jonathan 30/10] "no orcamento da eliza que adicionamos o banco · atualize
+> para a versao com os valores de corrediças telescopicas."*
+
+O canto alemão sai da coluna **OCULTA (R$ 23.000)** e vai para a coluna
+**TELESCÓPICA (R$ 18.500)** do mesmo PDF `Proposta_eliza_e_luiz`. É troca de
+coluna, não de cálculo: **nada foi recalculado**.
+
+| | antes | agora |
+|---|--:|--:|
+| Brinquedoteca, 12 itens | 181.620 | 181.620 |
+| Canto alemão em "C" | 23.000 | **18.500** |
+| Estofado capitonê | 6.500 | 6.500 |
+| **Investimento** | 211.120 | **206.620** |
+| Desconto concedido | −21.132 · 10,01% | **−21.132 · 10,23%** |
+| **FECHADO** | 189.988 | **185.488** |
+| Entrada em cheques | 157.988 | 157.988 |
+| Saldo pós-entrega | 32.000 | **27.500** |
+
+**⭐ O DESCONTO FICA EM REAIS, NÃO EM PERCENTUAL** [Jonathan, 30/10]. Os
+mesmos R$ 21.132 sobre um total R$ 4.500 menor — o percentual sobe sozinho
+de 10,01% para 10,23%, e é ele que a folha imprime. ⭐ O saldo caiu redondo
+sem ajuste: 185.488 − 157.988 = **27.500**. Em 29/10 foi preciso dar R$ 12
+para fechar o saldo em 32.000; desta vez não.
+
+**⛔⛔ E POR ISSO O DESCONTO VIROU O DADO DE ENTRADA DO SCRIPT, E O FECHADO O
+DERIVADO.** Estava ao contrário — fechado cravado, desconto calculado. Com
+ele ao contrário, mexer no preço de um item muda o desconto em silêncio, e o
+número que o cliente lê como concessão passa a depender de um arredondamento.
+
+## ⛔⛔ A TROCA ARRASTA A GARANTIA, e é o que ninguém vê ao mexer no preço
+
+`closer-vendas/referencias/garantia.md` dá **2 anos para telescópica** e **10
+para Hettich**, e manda o conjunto seguir o elo mais fraco. A folha prometia
+*"10 anos nos dois escopos"* — e **era a Hettich do canto alemão que
+sustentava esse tier, a ÚNICA ferragem de 10 anos em toda a proposta.**
+Trocada por telescópica, a justificativa dos 10 anos evapora.
+
+⭐ A saída, decidida pelo Jonathan em 30/10: **garantia ESCALONADA POR
+ESCOPO**, e não um número só para os dois.
+
+| escopo | ferragem | garantia |
+|---|---|---|
+| Brinquedoteca | nenhuma corrediça — é solda, estrutura e espuma | **10 anos** |
+| Canto alemão | corrediça telescópica | **2 anos** |
+
+⛔ **Nivelar por baixo** (2 anos nos dois) rebaixaria a brinquedoteca, que já
+foi prometida em 10 anos ao cliente em 30/09 — num documento que ele tem na
+mão. ⛔ **Nivelar por cima** (10 anos nos dois) prometeria dez anos sobre uma
+ferragem de dois, contra a tabela da casa, e a provisão sairia do lucro —
+justamente onde os R$ 4.500 foram economizados.
+⭐ E os 2 anos do canto alemão **não são novidade para o cliente**: a coluna
+telescópica daquele PDF já oferecia 2 anos.
+
+⚠ **O CONTRATO PRECISA DIZER QUAL GARANTIA COBRE O QUÊ.** A folha vende "os
+dois escopos, num só contrato e numa só data" — com dois prazos de garantia
+dentro, o termo tem de separar. Hoje só o termo de 10 anos está desenhado
+(a mesma pendência que a `garantia.md` já registra).
+
+## O que a folha diz agora das corrediças
+
+Era *"Ocultas Hettich, com fechamento suave em slowmotion — não aparecem na
+lateral da gaveta e abrem a gaveta inteira."*
+Passou a ser *"**Telescópicas de extensão total** — a gaveta abre por
+inteiro. Trilho aparente na lateral, sem amortecedor de fechamento."*
+
+⭐ **O trilho aparente e a falta de amortecedor estão escritos de propósito.**
+O cliente escolheu a opção mais barata; se a folha não disser o que ela é, a
+diferença aparece no dia da entrega, que é o pior lugar para aparecer.
+
+## Duas coisas que o build tinha e que não sobreviveriam
+
+**⛔ A imagem do canto alemão e o renderer moravam em `/tmp`.** Numa sessão
+nova o `/tmp` é outro, e o build morreria em `cannot find module` e em
+arquivo inexistente. ⭐ Os dois estão no repositório agora:
+`img-brinquedoteca/estudio-canto-alemao.jpg` e `render-pdf.js`, este último
+recebendo os caminhos por argumento em vez de cravá-los dentro.
+
+**⛔⛔ A DATA DO RODAPÉ ESTAVA CRAVADA EM "29 de outubro de 2026".** Regerei a
+folha hoje, com o canto alemão R$ 4.500 mais barato, e ela saiu com a data de
+ontem — **duas propostas na mão do cliente, mesma data, preços diferentes, e
+nenhuma delas dizendo qual é a boa.** Virou a constante `DATA`.
+
+## ⚠ Uma coisa que eu não mexi
+
+O parágrafo *"Fora desta proposta"* traz um **⛔ no meio da frase**, que sai
+impresso como emoji vermelho na folha do cliente: *"prontas para pintura; ⛔ a
+garantia não cobre patologia..."*. É marcação interna que vazou para o texto
+aprovado. ⛔ Não tirei porque é copy que o senhor aprovou — é uma linha,
+quando mandar.
+
+**Arquivos:** `build-eliza-1pg.py` → `proposta-eliza-1pg.pdf` e `.html`
