@@ -35,7 +35,15 @@ A = importlib.util.module_from_spec(sp); sys.modules['AMB'] = A
 with contextlib.redirect_stdout(io.StringIO()): sp.loader.exec_module(A)
 PECAS = getattr(A, NOME.upper())
 g = lambda n: getattr(A, n, [])
-MOV = list(dict.fromkeys(p['movel'] for p in PECAS))
+# ⭐⭐ O MÓVEL VEM DAS PEÇAS **E DO CABEÇALHO** [30/10/2026].
+#   ⛔ Derivar o móvel só das peças de MDF faz um ambiente SEM MARCENARIA
+#     desaparecer da aba inteira: o Lavabo é APENAS espelho, e com MOV vazio
+#     não há item, não há cabeçalho, não há conta — o ambiente sai em branco
+#     e ninguém nota. ⭐ O CABECA é onde o ambiente DECLARA seus itens: as
+#     peças dão a ORDEM, o CABECA garante que nenhum item fique de fora por
+#     não ter chapa.
+MOV = list(dict.fromkeys([p['movel'] for p in PECAS]
+                         + list(getattr(A, 'CABECA', {}))))
 
 def linhas_do_item(mov):
     """Materiais, fita e ferragem de um móvel, na ordem da aba."""

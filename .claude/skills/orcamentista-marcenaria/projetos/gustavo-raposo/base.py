@@ -150,6 +150,8 @@ PUXADOR    = 172.71 # Alças Traso 416 mm · ⚠ o maior da linha, não é o do 
 #   ⛔ E POR ISSO A CHAVE É OUTRA. Se o acabamento fosse buscado na chave
 #     'Puxador Alças Traso 128', a aba leria os R$ 56,69 do preto e voltaria
 #     a discordar do levantamento — o mesmo defeito da corrediça, de novo.
+CH_LACA    = 'Laca, por m² de peça'   # ⭐ como a Base a chama
+CH_METALON = 'Estrutura de metalon'   # ⭐ cravado em 30/10, entra na Base
 CH_PUXADOR_128 = 'Puxador Alças Traso 128 níquel velho'
 PUXADOR_128 = 110.0
 MOLDURA_MO = 0.0    # ⛔ moldura provençal, por frente — SEM PREÇO na Base
@@ -235,7 +237,24 @@ PRECO_OUTRAS = {
  #   da Juliana). ⚠ É o preço da peça LISA; a prancha pede moldura de 5 cm
  #   em toda frente, e frente com relevo pinta mais devagar. Fica na caixa
  #   de dúvidas: perguntar o acréscimo da frente usinada.
- 'Laca Sayerlack M048 acetinada': 650.0,   # por m² de peça pintada
+ # ⛔⛔ A CHAVE ERA INVENTADA, e custou R$ 15.600 na cozinha [30/10/2026].
+ #   Eu chamei a linha de 'Laca Sayerlack M048 acetinada'; a Base a chama
+ #   'Laca, por m² de peça'. O PROCV da aba não achou, o SEERRO devolveu
+ #   vazio, e os quatro itens da cozinha saíram R$ 15.600 abaixo do
+ #   auditor — com a CONFERÊNCIA em R$ 0,00, porque ela compara a aba com
+ #   ela mesma e as duas metades liam o mesmo vazio.
+ #   ⭐⭐ A REGRA: o nome do produto na proposta é meu; a CHAVE é da Base.
+ #     Quem descreve é a coluna ESPECIFICAÇÃO, não a chave.
+ CH_LACA: 650.0,              # por m² de peça pintada · ⭐ chave da Base
+ # ⭐ A ESTRUTURA DE METALON DA PRATELEIRA [Jonathan, 30/10/2026]:
+ #   > "na despensa vamos considerar cada prateleira com duas peças
+ #   >  inteiras, duplamente revestindo uma estrutura de metalom no mesmo
+ #   >  formato. considere um custo de 250,00 para estrutura, sera uma em
+ #   >  cada"
+ #   ⛔ Não é o 'Estrado em metalon' da cama, que a Base já tem: aquele é
+ #     um estrado de ripas, este é um QUADRO no formato da prateleira, que
+ #     é ao mesmo tempo a estrutura e a fixação invisível.
+ CH_METALON: 250.0,           # por prateleira · preço cravado pelo Jonathan
  # ⭐⭐ ESPELHO — e ele tem DOIS preços, porque são duas construções
  #   diferentes [ferragens.md, Jonathan 29/08/2026]:
  #     · folha que ABRE ou CORRE → porta pronta terceirizada, perfil de
@@ -531,3 +550,45 @@ def fita_m(pecas, movel=None):
     return sum((nc*p['c'] + nl*p['l'])*p['qtd']/100 for p in pecas
                if movel is None or p['movel'] == movel
                for nc, nl in [p['fita']])
+
+# ════ AS CHAVES QUE A BASE TEM, uma por uma ═══════════════════════════
+# ⭐⭐ POR QUE ESTA LISTA EXISTE [30/10/2026]: porque chave inventada não
+#   dá erro. O PROCV não acha, o SEERRO devolve vazio, a linha custa
+#   ZERO e a CONFERÊNCIA da aba continua em R$ 0,00 — ela compara a aba
+#   com ela mesma, e as duas metades leem o mesmo vazio. Foi assim que a
+#   cozinha saiu R$ 15.600 abaixo do auditor sem um sinal na tela.
+#   ⛔ O auditor recusa qualquer chave que não esteja aqui. Para entrar
+#     aqui, a linha tem de estar NA BASE — primeiro a planilha, depois
+#     o código.
+CHAVES_BASE = {
+  'Alma de aço', 'Aproveitamento', 'Báscula HK-XS', 'Cabideiro',
+  'Carreto', 'Cava usinada', 'Consumíveis', 'Corrediça',
+  'Corrediça Hardt', 'Corrediça Hettich', 'Corrediça de carga',
+  'Corrediça touch', 'Corte por chapa', 'Corte por peça',
+  'Desempenador de porta', 'Dobradiça', 'Dobradiça Hettich',
+  'Dobradiça vidro', 'Embalagem', 'Espelho prata colado',
+  'Estofamento em linho', 'Estrado em metalon', 'Estrutura de metalon',
+  'Filetagem automática', 'Filetagem manual', 'Fita Branco TX',
+  'Fita cor', 'Fonte de LED', 'Frete', 'LED conjunto',
+  'Laca, por m² de peça', 'MDF Azul Secreto 15', 'MDF Azul Secreto 18',
+  'MDF Azul Secreto 6', 'MDF Branco Diamante 15',
+  'MDF Branco Diamante 18', 'MDF Branco Diamante 6', 'MDF Branco TX 15',
+  'MDF Branco TX 18', 'MDF Branco TX 6', 'MDF Cinza Fóssil 15',
+  'MDF Cinza Fóssil 18', 'MDF Cinza Fóssil 6', 'MDF Cru 15',
+  'MDF Cru 18', 'MDF Cru 6', 'MDF Nogueira Caiena 15',
+  'MDF Nogueira Caiena 18', 'MDF Nogueira Caiena 6',
+  'MDF Nogueira Thar 15', 'MDF Nogueira Thar 18', 'MDF Nogueira Thar 6',
+  'MDF Off-White Suave 15', 'MDF Off-White Suave 18',
+  'MDF Off-White Suave 6', 'MDF Pinole 15', 'MDF Pinole 18',
+  'MDF Pinole 6', 'MDF branco 15', 'MDF branco 18', 'MDF branco 6',
+  'MDF cor 15', 'MDF cor 18', 'MDF cor 6', 'Malha de cordas náuticas',
+  'Moldura provençal', 'Palhinha natural', 'Perfil de LED',
+  'Perfil de proteção de piso', 'Pistão de tampo de baú',
+  'Porta de espelho em alumínio', 'Pulsador', 'Puxador Alças Traso 128',
+  'Puxador Alças Traso 128 níquel velho', 'Puxador NEO32 Bronze',
+  'Puxador passante', 'Puxador slim', 'Rodízio de gaveteiro',
+  'Serralheria estrutural', 'Sistema de correr Dominus',
+  'Sistema de correr SS-150', 'Suporte de prateleira', 'Suporte oculto',
+  'Usinagem de muxarabi vazado', 'Vidro reflecta',
+  'Vidro temperado incolor', 'Área da chapa',
+}

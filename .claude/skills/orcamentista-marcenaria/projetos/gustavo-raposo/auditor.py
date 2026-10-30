@@ -28,13 +28,25 @@ sp = importlib.util.spec_from_file_location('AMB', P/f'{NOME}.py')
 A = importlib.util.module_from_spec(sp); sys.modules['AMB'] = A
 with contextlib.redirect_stdout(io.StringIO()): sp.loader.exec_module(A)
 
-PECAS = getattr(A, NOME.upper(), None) or getattr(A, 'PECAS')
+# ⛔⛔ `or` AQUI ERA BUG: lista VAZIA é falsa em Python, e o Lavabo — que
+#   é apenas espelho, sem uma peça de MDF — caía no fallback e morria
+#   com AttributeError. ⭐ Ambiente sem chapa é caso legítimo, não erro.
+_p = getattr(A, NOME.upper(), None)
+PECAS = getattr(A, 'PECAS') if _p is None else _p
 g = lambda n: getattr(A, n, [])
 GAVETAS, PORTAS, CAVA = g('GAVETAS'), g('PORTAS'), g('CAVA')
 LED, ALMAS, SUPORTES = g('LED'), g('ALMAS'), g('SUPORTES')
 VIDRO, BASCULAS = g('VIDRO'), g('BASCULAS')
 PUXADORES, MOLDURA = g('PUXADORES'), g('MOLDURA')
-MOV = list(dict.fromkeys(p['movel'] for p in PECAS))
+# ⭐⭐ O MÓVEL VEM DAS PEÇAS **E DO CABEÇALHO** [30/10/2026].
+#   ⛔ Derivar o móvel só das peças de MDF faz um ambiente SEM MARCENARIA
+#     desaparecer da aba inteira: o Lavabo é APENAS espelho, e com MOV vazio
+#     não há item, não há cabeçalho, não há conta — o ambiente sai em branco
+#     e ninguém nota. ⭐ O CABECA é onde o ambiente DECLARA seus itens: as
+#     peças dão a ORDEM, o CABECA garante que nenhum item fique de fora por
+#     não ter chapa.
+MOV = list(dict.fromkeys([p['movel'] for p in PECAS]
+                         + list(getattr(A, 'CABECA', {}))))
 
 br = lambda v: f'{v:,.2f}'.replace(',', '§').replace('.', ',').replace('§', '.')
 FALHAS, AVISOS = [], []
@@ -388,6 +400,26 @@ if AVISOS:
     print(f'\n⚠ {len(AVISOS)} AVISOS')
     for a in AVISOS: print(f'   · {a}')
 print()
+# ════ A CHAVE TEM DE EXISTIR NA BASE ══════════════════════════════════
+# ⛔⛔ A FALHA QUE NÃO DAVA ERRO [30/10/2026 · a cozinha, R$ 15.600].
+#   Chave inventada não quebra nada: o PROCV da aba não acha, o SEERRO
+#   devolve vazio, a linha custa ZERO — e o AUDITOR, que lê o preço de um
+#   dicionário Python, continua somando o número certo. Os dois lados
+#   divergem em silêncio, e a CONFERÊNCIA da aba não vê, porque ela compara
+#   a aba com ela mesma.
+#   ⭐ Por isso a conferência de chave mora AQUI, no auditor, e não na aba:
+#     é o único lugar que enxerga os dois lados.
+_usadas = {}
+for p_ in PECAS: _usadas.setdefault(p_['chave'], set()).add('peça ' + p_['nome'])
+for t_ in g('OUTRAS'): _usadas.setdefault(t_[5], set()).add('OUTRAS ' + str(t_[1]))
+for t_ in VIDRO:      _usadas.setdefault(t_[5], set()).add('VIDRO')
+for _k in sorted(_usadas):
+    if _k not in B.CHAVES_BASE:
+        erro(f'CHAVE QUE A BASE NÃO TEM: {_k!r} — usada em '
+             f'{", ".join(sorted(_usadas[_k]))} · ⛔ a aba vai ler VAZIO e '
+             f'cobrar ZERO, e a conferência não vai acusar. Primeiro a '
+             f'linha entra na Base, depois a chave entra no código.')
+
 if FALHAS:
     print('⛔⛔ ' + f'{len(FALHAS)} FALHAS — NÃO ENTREGAR')
     for f in FALHAS: print(f'   ⛔ {f}')

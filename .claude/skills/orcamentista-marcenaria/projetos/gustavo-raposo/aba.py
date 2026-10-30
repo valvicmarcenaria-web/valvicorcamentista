@@ -30,6 +30,20 @@
   "#,##0.##" é separador de MILHAR, e 110 sai como "110,". Número livre
   (C, L, QTD) vai SEM padrão nenhum.
 
+⛔⛔⛔ CRESÇA A GRADE ANTES DE ESCREVER FÓRMULA. [30/10/2026 · a Rouparia]
+  A aba tinha 10 linhas. Gravei o painel de material, que aponta para
+  $K$40:$K$57 — linhas que ainda NÃO EXISTIAM. O Sheets não deu erro: ele
+  INSERIU as 29 linhas que faltavam e, como toda inserção, DESLOCOU as
+  referências. O painel saiu lendo $K$69:$K$86, vinte e nove linhas abaixo
+  do bloco de peças, e a aba inteira veio "#VALOR!" e zero.
+  ⭐ O engano é fácil porque a gravação volta "success": o que falhou não
+    foi o write, foi o endereço. E o bloco de peças, gravado depois com a
+    grade já grande, ficou certo — metade da aba boa, metade apontando
+    para o vazio.
+  ⭐⭐ A ORDEM É: 1) rowCount no tamanho final · 2) conteúdo · 3) formato.
+    O `appendDimension` do próprio lote de formato vem TARDE DEMAIS para
+    isso: ele roda depois do conteúdo já estar gravado e deslocado.
+
 ⛔⛔ RODE O AUDITOR ATÉ ELE FICAR LIMPO ANTES DE GERAR A ABA. [28/10/2026]
   Na Área Gourmet eu gerei a aba, apliquei os 150 requests de formato, e só
   então vi que a CAVA estava declarada no formato errado — `(frentes,
@@ -64,7 +78,15 @@ with contextlib.redirect_stdout(io.StringIO()): sp.loader.exec_module(A)
 PECAS = getattr(A, NOME.upper())
 F = A.FOLHA
 g = lambda n: getattr(A, n, [])
-MOV = list(dict.fromkeys(p['movel'] for p in PECAS))
+# ⭐⭐ O MÓVEL VEM DAS PEÇAS **E DO CABEÇALHO** [30/10/2026].
+#   ⛔ Derivar o móvel só das peças de MDF faz um ambiente SEM MARCENARIA
+#     desaparecer da aba inteira: o Lavabo é APENAS espelho, e com MOV vazio
+#     não há item, não há cabeçalho, não há conta — o ambiente sai em branco
+#     e ninguém nota. ⭐ O CABECA é onde o ambiente DECLARA seus itens: as
+#     peças dão a ORDEM, o CABECA garante que nenhum item fique de fora por
+#     não ter chapa.
+MOV = list(dict.fromkeys([p['movel'] for p in PECAS]
+                         + list(getattr(A, 'CABECA', {}))))
 
 # ── 1 · quantas linhas tem cada bloco de material ───────────────────────
 # ⭐⭐ A LISTA DE CHAPAS SAI DAS PEÇAS, não de uma lista à mão. A frente
@@ -179,7 +201,14 @@ põe(L['cab_mat'], B='MATERIAL', C='ESPECIFICAÇÃO', D='QUANTIDADE', E='UN',
 
 r = L['mat0']
 for chave in CHAPAS:
-    prefixo = TXT.get(chave, chave)
+    # ⛔⛔ ASPAS NO TEXTO QUEBRAM A FÓRMULA [30/10/2026 · a Cozinha].
+    #   O texto do Branco TX da cozinha cita a prancha — "Interno em MDF
+    #   Branco" — e essas aspas FECHAVAM a string do Sheets no meio,
+    #   deixando o resto da linha como lixo de sintaxe. ⭐ Dentro de uma
+    #   string do Sheets, aspa se escreve DUPLICADA. É o mesmo cuidado que
+    #   o separador ';' pede: o gerador escreve numa linguagem que não é
+    #   Python, e tem de respeitar a pontuação dela.
+    prefixo = TXT.get(chave, chave).replace('"', '""')
     põe(r, B=chave,
         C=f'="{prefixo} · "&ROUND({M2(f"$B{r}")};1)&" m² de peças"',
         D=f'=ROUNDUP({M2(f"$B{r}")}/({AREA}*{APR}))', E='chapas',
@@ -302,20 +331,36 @@ L['ult_mat'] = r - 1                        # ⭐ onde acaba o material de fato
 #     compara o rateio dos itens com o painel de material.
 põe(r, B='Corte · por chapa',
     C='Serviço de corte, por chapa comprada · R$ 2,00',
-    D='=' + '+'.join(f'D{L["mat0"]+i}' for i in range(len(CHAPAS))), E='chapas',
+    # ⛔⛔ SEM CHAPA, ZERO — e não "=". O Lavabo é apenas espelho: a lista
+    #   de chapas sai vazia, o join devolve string vazia e a célula fica com
+    #   um "=" solto, que é fórmula inválida. ⭐ O Sheets aceita "=" como
+    #   TEXTO e não reclama: a linha fica muda e ninguém vê.
+    D=('=' + '+'.join(f'D{L["mat0"]+i}' for i in range(len(CHAPAS))))
+      if CHAPAS else 0, E='chapas',
     F=f'=D{r}*VLOOKUP("Corte por chapa";precos;2;FALSE)')
 L['corte_ch'] = r; r += 1
 põe(r, B='Corte · por peça',
     C='Serviço de corte, por peça cortada · R$ 2,50 · ⛔ conta a PEÇA, não a '
       'linha: uma linha de 4 prateleiras são 4 peças',
-    D=f'=SUMPRODUCT(($G${a}:$G${b}="m²")*IF(ISNUMBER($F${a}:$F${b});'
+    # ⛔⛔ A CONTA ERA POR UNIDADE ("m²") E PEGAVA O QUE NÃO É NOSSO.
+    #   Espelho, vidro e LACA também saem em m², e nenhum dos três passa
+    #   pela nossa serra: o vidraceiro corta o espelho, a cabine pinta a
+    #   laca. Pior na laca, cuja QUANTIDADE é a ÁREA — 12,5 m² de laca
+    #   entravam nesta linha como "12,5 peças" a R$ 2,50. ⭐ Quem define a
+    #   peça cortada por nós é a CHAVE: só o que começa em "MDF " é chapa
+    #   que entra na seccionadora.
+    D=f'=SUMPRODUCT((LEFT({K};4)="MDF ")*IF(ISNUMBER($F${a}:$F${b});'
       f'$F${a}:$F${b};0))', E='peças',
     F=f'=D{r}*VLOOKUP("Corte por peça";precos;2;FALSE)')
 L['corte_pc'] = r; r += 1
 põe(r, B='Consumíveis',
     C='Cola, lixa, parafuso, cavilha, tapa-furo, fundo e verniz · 6% sobre '
       'chapa, fita e filetagem',
-    F=f'=SUM(F{L["mat0"]}:F{L["acab1"]})*VLOOKUP("Consumíveis";precos;2;FALSE)')
+    # ⛔ FAIXA INVERTIDA quando não há chapa nem fita: acab1 cai abaixo de
+    #   mat0 e saía SUM(F7:F6), que o Sheets lê como erro de referência.
+    #   ⭐ Consumível é 6% de chapa, fita e filetagem — sem as três, é zero.
+    F=(f'=SUM(F{L["mat0"]}:F{L["acab1"]})*VLOOKUP("Consumíveis";precos;2;FALSE)'
+       if L['acab1'] >= L['mat0'] else 0))
 L['cons'] = r; r += 1
 põe(r, B='Embalagem', C='Papelão, filme e cantoneira · 2% sobre o subtotal',
     F=f'=SUM(F{L["mat0"]}:F{L["cons"]})*VLOOKUP("Embalagem";precos;2;FALSE)')
@@ -354,10 +399,11 @@ for i, mov in enumerate(MOV, 1):
 f0 = L['f0']
 põe(f0,   B='Soma dos itens · chapa rateada em fração',
           I=f'=SUM(I{L["it0"]}:I{L["it1"]})')
+# ⛔ outra vez o "=" solto: sem chapa não há arredondamento, e o certo é 0.
 põe(f0+1, B='Arredondamento de chapa para número cheio · ⛔ a regra de ferro',
-          I='=' + '+'.join(f'F{L["mat0"]+i}' for i in range(len(CHAPAS))) +
-            ''.join(f'-SUMIF({K};$B{L["mat0"]+i};$I${a}:$I${b})'
-                    for i in range(len(CHAPAS))))
+          I=('=' + '+'.join(f'F{L["mat0"]+i}' for i in range(len(CHAPAS))) +
+             ''.join(f'-SUMIF({K};$B{L["mat0"]+i};$I${a}:$I${b})'
+                     for i in range(len(CHAPAS)))) if CHAPAS else 0)
 põe(f0+2, B='MATERIAL E FERRAGEM, PELO RATEIO DOS ITENS', I=f'=I{f0}+I{f0+1}')
 põe(f0+3, B='Material e ferragem, pelo painel do ambiente',
           I=f'=SUM(F{L["mat0"]}:F{L["ult_mat"]})')

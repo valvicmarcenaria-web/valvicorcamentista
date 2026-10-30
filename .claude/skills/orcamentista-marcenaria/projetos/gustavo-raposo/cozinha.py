@@ -32,6 +32,7 @@ pranchas 27 a 30 · planta de layout, elevações A e B, corte AA.
   ⭐ O sóculo merece nota: ele aparece na elevação como se fosse do armário,
     e não é. É obra, e a frente de pedra é do marmorista.
 """
+import base as B
 from base import P, gaveta, provencal, ALT_MAX
 
 CRU18, CRU15, CRU6 = 'MDF Cru 18', 'MDF Cru 15', 'MDF Cru 6'
@@ -204,20 +205,22 @@ LED = [(I1, 'Perfil de LED com abas por baixo do armário superior, em toda '
         'a extensão de 285 · detalhe 06 do corte', 2.85)]
 # ⭐ (móvel, nome, rótulo, quantidade, unidade, chave)
 OUTRAS = [
+ # ⛔⛔ A CHAVE É A DA BASE, não o nome do produto [30/10/2026]. Eu usava
+ #   'Laca Sayerlack M048 acetinada', que a Base não tem: o PROCV devolvia
+ #   vazio e os quatro itens saíam R$ 15.600 abaixo do auditor. ⭐ O M048
+ #   continua escrito — na ESPECIFICAÇÃO, que é onde ele informa.
  *[(mv, 'Laca Sayerlack M048 acetinada',
     f'{_laca_m2(COZINHA, mv):g} m² de peça em MDF cru, pintada NAS DUAS '
     'FACES · ⛔ peça lacada de um lado só empena · a moldura de 6 mm não '
     'soma: ela é colada sobre a base e as duas vão à cabine como uma peça '
     'só · ⚠ R$ 650/m² é o preço da peça LISA, e esta tem relevo de router',
-    _laca_m2(COZINHA, mv), 'm²', 'Laca Sayerlack M048 acetinada')
+    _laca_m2(COZINHA, mv), 'm²', B.CH_LACA)
    for mv in MOV_COZ if _laca_m2(COZINHA, mv) > 0],
- (I1, 'Puxador NEO32 Bronze', '⚠ "Puxador a definir na cor DOURADO" nas '
-  'quatro portas do superior · ⛔ a prancha não nomeia modelo e a Base não '
-  'tem a linha: sai ZERO', 4, 'un', 'Puxador NEO32 Bronze'),
- (I3, 'Puxador NEO32 Bronze', 'Seis frentes do inferior, básculas inclusive '
-  '· ⛔ sem modelo e sem preço: sai ZERO', 6, 'un', 'Puxador NEO32 Bronze'),
- (I4, 'Puxador NEO32 Bronze', 'Quatro frentes da bancada do cooktop · ⛔ sem '
-  'modelo e sem preço: sai ZERO', 4, 'un', 'Puxador NEO32 Bronze'),
+ # ⛔⛔ AS TRÊS LINHAS DE 'Puxador NEO32 Bronze' A ZERO SAÍRAM [30/10/2026].
+ #   O Jonathan decidiu o modelo — "na cozinha considere o puxador trazo
+ #   igual ao do michell" — e ele já sai em PUXADORES, no Alças Traso de
+ #   128 a R$ 110. Mantê-las era contar as catorze frentes DUAS vezes e
+ #   deixar na aba um puxador que não vamos comprar.
  (I3, 'Perfil de proteção de piso', '⛔ NÃO ENTRA: o armário inferior não '
   'toca o chão, ele assenta sobre o sóculo de 10 cm, que é ALVENARIA com '
   'frente de quartzito — obra, não marcenaria. Linha a zero para que a '

@@ -117,7 +117,14 @@ FOLHA = dict(
   'casa que não leva barra. ⚠ Mas rouparia carrega toalha e roupa de cama '
   'empilhada, que é peso concentrado. Se a fábrica achar pouco, a alma '
   'custa R$ 50 por prateleira.'],
- nao_marcenaria=[],
+ # ⛔ A SEÇÃO NÃO PODE FICAR VAZIA, e aqui ela quase ficou: lista vazia
+ #   deixava o título "O QUE NÃO É MARCENARIA" pendurado sobre nada, e o
+ #   intervalo de formato saía invertido. ⭐ E o fato é informação: este é o
+ #   único ambiente da casa em que a elevação inteira é nossa.
+ nao_marcenaria=[
+  '⭐ NADA — e é o único ambiente da casa assim. A elevação não traz pedra, '
+  'vidro, serralheria, elétrica nem alvenaria: do rodapé ao topo, os 230 × '
+  '275 são marcenaria, e o que o corredor vê é só a nossa Nogueira Thar.'],
  notas=[
   '⭐ O ARMÁRIO É SÓ PRATELEIRA: dez delas, em duas colunas de cinco, mais '
   'o maleiro de 66 no topo. Não há gaveta, não há cabideiro e não há '

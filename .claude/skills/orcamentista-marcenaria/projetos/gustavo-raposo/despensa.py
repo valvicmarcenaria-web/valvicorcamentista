@@ -36,10 +36,18 @@ I2 = 'ELEVAÇÃO B Prateleiras da parede de 176'
 
 DESPENSA = [
  # ══ ITEM 01 · PRATELEIRAS DA ELEVAÇÃO A — 131 × 40, seis níveis ═══════
- P('Prateleira', I1, 131, 40, 6, BD18, (2, 2),
-   '⭐ 18 mm e ainda assim o vão de 131 passa de 1,20 m: as seis pedem alma '
-   'de aço contra FLECHA · ⛔ fixação invisível, sem lateral e sem suporte '
-   'de armário'),
+ # ⭐⭐ DOZE PEÇAS PARA SEIS PRATELEIRAS [Jonathan, 30/10/2026]:
+ #   > "cada prateleira com duas peças inteiras, duplamente revestindo uma
+ #   >  estrutura de metalom no mesmo formato"
+ #   ⭐ É um SANDUÍCHE: quadro de metalon no formato da prateleira, revestido
+ #     em cima e embaixo por uma peça INTEIRA de 18 mm. Por isso a quantidade
+ #     é 12 e não 6 — e as duas faces aparecem, logo as duas levam fita nas
+ #     quatro arestas.
+ P('Prateleira · revestimento', I1, 131, 40, 12, BD18, (2, 2),
+   '⭐ DUAS peças por prateleira: seis prateleiras, doze peças · revestem o '
+   'quadro de metalon em cima e embaixo · ⛔ sem alma de aço: quem resiste à '
+   'flecha é o metalon, a chapa só reveste · ⛔ fixação invisível, sem '
+   'lateral e sem suporte de armário'),
  # ══ ITEM 02 · PRATELEIRAS DA ELEVAÇÃO B — 176 × 40, seis níveis ═══════
  # ⛔⛔ "sem suporte" NA OBS, e ela não é enfeite [30/10/2026]: é o que
  #   tira esta prateleira da conta automática do jogo de quatro suportes de
@@ -47,10 +55,11 @@ DESPENSA = [
  #   jogo de armário E o suporte oculto, R$ 39,00 de linha que não existe.
  #   ⭐ O ambiente inteiro é FIXAÇÃO INVISÍVEL: não há lateral de armário
  #     onde um suporte de prateleira possa encaixar.
- P('Prateleira', I2, 176, 40, 6, BD18, (2, 2),
-   '⭐ 176 de vão livre, sem apoio no meio · ⛔ é a peça mais exigente do '
-   'ambiente: alma de aço obrigatória · ⛔ fixação invisível, sem lateral '
-   'e sem suporte de armário'),
+ P('Prateleira · revestimento', I2, 176, 40, 12, BD18, (2, 2),
+   '⭐ DUAS peças por prateleira: seis prateleiras, doze peças · 176 de vão '
+   'livre, sem apoio no meio — é o quadro de metalon que vence o vão · '
+   '⛔ sem alma de aço: o metalon faz esse serviço · ⛔ fixação invisível, '
+   'sem lateral e sem suporte de armário'),
 ]
 
 # ⭐ nada de gaveta, porta, báscula, cava, LED, vidro ou serralheria aqui.
@@ -58,12 +67,23 @@ GAVETAS = PORTAS = BASCULAS = PUXADORES = MOLDURA = []
 LED = CABIDEIROS = ALMAS = VIDRO = SERRALHERIA = CAVA = []
 # ⭐ (móvel, nome, rótulo, quantidade, unidade, chave)
 OUTRAS = [
- (I1, 'Suporte de prateleira', '⚠ A prancha pede FIXAÇÃO INVISÍVEL, que não '
-  'é o jogo de quatro suportes de armário: é mão-francesa oculta ou cavilha '
-  'de aço embutida na alvenaria. Lancei o suporte OCULTO da Base, R$ 30 de '
-  '40 em 40 cm — quatro por prateleira de 131', 24, 'un', 'Suporte oculto'),
- (I2, 'Suporte de prateleira', 'Cinco por prateleira de 176, de 40 em 40',
-  30, 'un', 'Suporte oculto'),
+ # ⭐⭐ A ESTRUTURA DE METALON, UMA POR PRATELEIRA [Jonathan, 30/10/2026]:
+ #   > "considere um custo de 250,00 para estrutura, sera uma em cada"
+ #   ⛔⛔ E ELA SUBSTITUI DUAS LINHAS QUE SAÍRAM: o SUPORTE OCULTO de R$ 30
+ #     (54 unidades, R$ 1.620) e a ALMA DE AÇO de R$ 50 por prateleira. O
+ #     quadro de metalon é as duas coisas ao mesmo tempo — ele vence o vão
+ #     E se fixa na alvenaria. Manter as três seria pagar o mesmo serviço
+ #     três vezes, que é o erro que este ambiente já cometeu uma vez.
+ #   ⚠ Está na caixa de dúvidas: se o senhor quiser o metalon SÓ como alma,
+ #     com fixação por mão-francesa à parte, o suporte volta.
+ (I1, 'Estrutura de metalon', '⭐ Uma por prateleira · quadro soldado no '
+  'formato da prateleira de 131 × 40, revestido nas duas faces · ⛔ é ao '
+  'mesmo tempo a ESTRUTURA contra a flecha e a FIXAÇÃO INVISÍVEL que a '
+  'prancha pede · R$ 250 a unidade, cravado pelo Jonathan em 30/10',
+  6, 'un', 'Estrutura de metalon'),
+ (I2, 'Estrutura de metalon', '⭐ Uma por prateleira · quadro de 176 × 40, '
+  'o vão mais exigente do ambiente · ⛔ sem apoio no meio: é o metalon que '
+  'segura os 1,76 m', 6, 'un', 'Estrutura de metalon'),
 ]
 
 CABECA = {
