@@ -116,9 +116,17 @@ def linhas_do_item(mov):
         mv, rot, q, c, l = vd[:5]
         ch = vd[5] if len(vd) > 5 else 'Vidro reflecta'
         if mv == mov:
+            # ⛔⛔ O AVISO DE "A COTAR" SÓ SAI SE FALTAR PREÇO [30/10/2026].
+            #   Ele saía em TODA linha de vidro, inclusive nas que TÊM preço:
+            #   o espelho prata colado custa R$ 600/m² e a aba do Lavabo
+            #   dizia "segue sem preço na Base" embaixo dele. ⭐ Aviso que
+            #   grita onde não há nada errado é aviso que o leitor aprende a
+            #   não ler — e este é o único aviso que a planilha tem para
+            #   dizer que o total é PISO, não preço fechado.
+            cotar = '' if B.PRECO.get(ch) else (' · ⛔ A COTAR, segue sem '
+                                                'preço na Base')
             out.append([{'Vidro reflecta': 'Vidro reflecta champagne',
-                         'Espelho': 'Espelho'}.get(ch, ch),
-                        rot + ' · ⛔ A COTAR, segue sem preço na Base',
+                         'Espelho': 'Espelho'}.get(ch, ch), rot + cotar,
                         c, l, q, 'm²', ch])
     for mv, rot, q, c in g('CAVA'):
         if mv == mov: out.append(['Cava usinada', rot, '', '',

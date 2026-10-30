@@ -88,6 +88,21 @@ g = lambda n: getattr(A, n, [])
 MOV = list(dict.fromkeys([p['movel'] for p in PECAS]
                          + list(getattr(A, 'CABECA', {}))))
 
+# ⛔⛔ A LINHA DE VIDRO LIA DUAS CHAVES FIXAS [30/10/2026 · o Lavabo].
+#   A conta de ferragem é o RESTO — tudo que tem chave, menos chapa, menos
+#   acabamento, menos vidro — e o "menos vidro" subtraía literalmente
+#   "Vidro reflecta" e "Espelho". ⭐ Mas a chave do Lavabo é "Espelho prata
+#   colado", a do Banho Master é "Porta de espelho em alumínio" e a da
+#   Varanda é "Vidro temperado incolor": nenhuma das três era subtraída.
+#   ⛔ O espelho de R$ 1.061 do Lavabo aparecia na linha de FERRAGEM e a
+#     linha "Vidro e espelho" lia ZERO. O total fechava — a ferragem é
+#     resto, e resto não perde dinheiro — mas a CLASSIFICAÇÃO mentia, e é
+#     ela que o Painel soma por ambiente.
+#   ⭐⭐ A regra: chave de vidro é a que o levantamento DECLARA, não uma
+#     lista escrita aqui. Mesmo motivo da lista de chapas sair das peças.
+VIDROS = sorted({(vd[5] if len(vd) > 5 else 'Vidro reflecta')
+                 for vd in getattr(A, 'VIDRO', [])})
+
 # ── 1 · quantas linhas tem cada bloco de material ───────────────────────
 # ⭐⭐ A LISTA DE CHAPAS SAI DAS PEÇAS, não de uma lista à mão. A frente
 #   provençal criou quatro padrões novos de uma vez; se a lista fosse
@@ -322,17 +337,16 @@ põe(r, B='Ferragem, terceirizados e iluminação',
               for i in range(len(CHAPAS))) +
       ''.join(f'-SUMIF({K};$B{L["acab0"]+i};$I${a}:$I${b})'
               for i in range(len(ACAB))) +
-      (f'-SUMIF({K};"Vidro reflecta";$I${a}:$I${b})'
-       f'-SUMIF({K};"Espelho";$I${a}:$I${b})' if g('VIDRO') else ''))
+      ''.join(f'-SUMIF({K};"{c}";$I${a}:$I${b})' for c in VIDROS))
 r += 1
 if g('VIDRO'):
+    _sem = [c for c in VIDROS if not B.PRECO.get(c)]
     põe(r, B='Vidro e espelho',
-        C='Vidraçaria · ⛔ SEM PREÇO na Base: a linha existe vazia de '
-          'propósito, para gritar',
-        D=f'={M2(chr(34)+"Vidro reflecta"+chr(34))}+{M2(chr(34)+"Espelho"+chr(34))}',
-        E='m²',
-        F=f'=SUMIF({K};"Vidro reflecta";$I${a}:$I${b})'
-          f'+SUMIF({K};"Espelho";$I${a}:$I${b})')
+        C='Vidraçaria · ' + ', '.join(VIDROS) +
+          (' · ⛔ SEM PREÇO na Base: ' + ', '.join(_sem) +
+           ' — a linha fica vazia de propósito, para gritar' if _sem else ''),
+        D='=' + '+'.join(M2(f'"{c}"') for c in VIDROS), E='m²',
+        F='=' + '+'.join(f'SUMIF({K};"{c}";$I${a}:$I${b})' for c in VIDROS))
     r += 1
 L['ult_mat'] = r - 1                        # ⭐ onde acaba o material de fato
 # ⭐⭐ OS DOIS SERVIÇOS DE CORTE [Jonathan, 28/10/2026]: "Em cada ambiente

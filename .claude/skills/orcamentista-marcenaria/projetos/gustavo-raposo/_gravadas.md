@@ -23,7 +23,7 @@ classificador, então não há atalho por script.
 | # | aba | sheetId | conferência | custo direto |
 |---|-----|---------|-------------|--------------|
 | 01 | Varanda | 101 | R$ 0,00 | R$ 11.084,61 |
-| 02 | Lavabo | 102 | R$ 0,00 | R$ 1.523,66 |
+| 02 | Lavabo | 102 | R$ 0,00 | R$ 1.082,32 |
 | 03 | Cozinha | 103 | R$ 0,00 | R$ 24.619,43 |
 | 04 | Despensa | 104 | R$ 0,00 | R$ 3.939,78 |
 | 05 | Lavanderia | 105 | R$ 0,00 | R$ 7.387,44 |
@@ -41,7 +41,7 @@ classificador, então não há atalho por script.
 | 17 | Banho Hóspedes | 117 | R$ 0,00 | R$ 1.571,69 |
 | 18 | Banho Social | 118 | R$ 0,00 | R$ 1.603,93 |
 | 19 | Homeschooling | 119 | R$ 0,00 | R$ 9.203,79 |
-| | **CUSTO DIRETO DO PROJETO** | | | **R$ 162.765,29** |
+| | **CUSTO DIRETO DO PROJETO** | | | **R$ 162.323,95** |
 
 ⭐ AS DEZENOVE ABAS ESTÃO GRAVADAS e as dezenove fecham em R$ 0,00.
 
@@ -62,9 +62,39 @@ tamanho:
 Trocando `I:I` por `F:F` e `"⭐ CONFER*"` por `"CUSTO DIRETO*"`, a mesma
 fórmula devolve o custo direto dos dezenove ambientes de uma vez.
 
+## ⛔ DUAS ARMADILHAS QUE A REGRAVAÇÃO DO LAVABO ENSINOU [30/10]
+
+**1 · DESMESCLE ANTES DE ESCREVER, não depois.** A ordem do `aba.py` é
+"grade → conteúdo → formato", e ela está certa para aba NOVA. ⛔ Para aba
+que se REESCREVE com outro layout, falta um passo: as MESCLAGENS ANTIGAS
+ainda estão de pé na hora do conteúdo, e escrever dentro de uma mesclagem
+grava só a célula do canto — o resto é descartado em silêncio, com o write
+voltando "success". No Lavabo a linha do item caiu dentro da mesclagem
+B:I de uma seção do layout velho: o "1" entrou, o nome do móvel, a medida
+e o custo não, e a CONFERÊNCIA deu −R$ 1.061,10. ⭐ É a irmã gêmea do
+"cresça a grade antes de escrever fórmula": o endereço falha, o write não.
+⭐⭐ A receita: limpe os VALORES, mande o lote de FORMATO (que começa por
+`unmergeCells`), e só então grave o conteúdo. Ou grave o conteúdo duas
+vezes — a segunda já cai na grade nova.
+
+**2 · A LINHA DE VIDRO LIA DUAS CHAVES FIXAS.** A ferragem é o RESTO —
+tudo que tem chave, menos chapa, menos acabamento, menos vidro — e o
+"menos vidro" subtraía literalmente `Vidro reflecta` e `Espelho`. ⛔ Mas a
+chave do Lavabo é `Espelho prata colado`, a do Banho Master é `Porta de
+espelho em alumínio` e a da Varanda é `Vidro temperado incolor`. Nenhuma
+era subtraída: o espelho aparecia na linha de FERRAGEM e a linha "Vidro e
+espelho" lia ZERO. ⭐ O total fechava — resto não perde dinheiro — mas a
+CLASSIFICAÇÃO mentia, e é ela que o Painel soma por ambiente. Corrigido
+no `aba.py`: a chave de vidro é a que o levantamento DECLARA.
+
+**3 · E O AVISO QUE GRITAVA SEM MOTIVO.** Toda linha de vidro saía com
+"⛔ A COTAR, segue sem preço na Base", inclusive as que TÊM preço — o
+espelho prata colado custa R$ 600/m². ⭐ Aviso que grita onde não há nada
+errado é aviso que o leitor aprende a não ler, e este é o único aviso que
+a planilha tem para dizer que um total é PISO. Agora só sai se faltar.
+
 ## Falta refazer
 
-- 02 Lavabo (102) — só o espelho mudou; `lavabo.py` já está pronto
 - 01 Varanda (101) — ainda com preço Blum velho e a coluna de frete
 
 ## Falta ligar
