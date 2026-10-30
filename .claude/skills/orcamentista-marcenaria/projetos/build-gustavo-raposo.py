@@ -58,7 +58,7 @@ PG = [
  ('A varanda.',
   ['varanda-02'],
   ['Varanda', 'Lavabo'],
-  'MDF Nogueira Caiena e Branco TX, Duratex · Sem MDF neste ambiente: o acabamento é o espelho prata colado',
+  'MDF Nogueira Caiena e Branco TX, Duratex, na varanda · Espelho prata colado no lavabo, sem MDF',
   [('Armário da parede', 'Portas de giro, gavetas e gavetão, com o nicho aberto da lava-louças e a estrutura que recebe a bancada de granito. MDF Nogueira Caiena, com interno em Branco TX.'),
    ('Gaveteiro da ilha', 'Embutido na ilha de alvenaria, com gavetas, gavetão e as gavetas verticais de temperos ao lado do forno. MDF Nogueira Caiena, com interno em Branco TX.'),
    ('Cristaleira de vidro temperado', 'Portas de vidro temperado incolor em cima e portas de giro embaixo, com prateleiras para a louça à mostra. MDF Nogueira Caiena, por dentro e por fora.'),
@@ -191,7 +191,8 @@ body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);
 .mos.a{grid-template-columns:118mm 1fr;}
 .mos.b{grid-template-columns:1fr 118mm;}
 .mos .st{display:grid;grid-template-rows:1fr 1fr;gap:2mm;}
-.mos.solo{grid-template-columns:1fr;}
+.mos.solo{grid-template-columns:1fr;min-height:112mm;}
+.mos.tall{max-height:none;min-height:150mm;}
 
 /* ── lista item a item ──────────────────────────────────────────────── */
 .lista{margin-top:7mm;columns:2;column-gap:10mm;flex:none;}
@@ -380,22 +381,7 @@ def head():
 
 LIN = ('Telescópica', 'Hettich', 'Blum')     # ⭐ sempre da entrada ao topo
 
-# ⭐ ABERTURA de página de ambiente. Só onde faz falta: página de um móvel só
-#   fica com um rodapé de branco, e esse branco é o lugar de contar o que o
-#   móvel tem de difícil — que é o que justifica o preço dele.
-LEAD = {
- 'O office.':
-   'O muxarabi <b>não é um painel furado</b>. São réguas inteiras cruzando '
-   'umas nas outras em meia-madeira: cada uma perde metade da largura no '
-   'encontro, e as duas ficam niveladas. <b>É o móvel que mais pede mão '
-   'nesta casa</b> — cada cruzamento é um entalhe, e são milhares deles.',
- 'A varanda.':
-   'A varanda é <b>três móveis que a prancha quase esconde</b>: o armário '
-   'que corre a parede, o gaveteiro embutido na ilha de alvenaria e a '
-   'cristaleira de portas de vidro temperado. <b>O vidro é nosso</b> — sai '
-   'no mesmo caminhão e é instalado pela mesma equipe. A pedra não.',
-}
-# ⭐ e o puxador ganha linha própria onde ele foi especificado
+# ⭐ o puxador ganha linha própria onde ele foi especificado
 PUX = {'A cozinha<br>e a despensa.': cen.PUXADOR_COZINHA + ', em todas as frentes'}
 pg = []
 # ── 1 · capa ────────────────────────────────────────────────────────────
@@ -460,13 +446,13 @@ DIF = [
   'Alemã, com amortecedor e regulagem nos três sentidos.',
   'Blum, com amortecedor e regulagem nos três sentidos.'),
  ('Básculas',
-  'Articulador premium de molas, o mesmo nas três linhas: a porta sobe '
-  'sozinha e para onde você soltar.',
-  'O mesmo articulador.', 'O mesmo articulador.'),
- ('Fechamento',
-  'A gaveta fecha no impulso, sem freio.',
-  'Amortecido em todas as gavetas e portas.',
-  'Amortecido, com o toque mais macio das três.'),
+  'Articulador premium de molas: a porta sobe sozinha e para onde você '
+  'soltar. O mesmo nas três linhas.',
+  'O mesmo articulador premium.', 'O mesmo articulador premium.'),
+ ('Iluminação',
+  'Perfil de LED embutido na própria peça, com difusor sem pontos e cor '
+  'estável no tempo. O mesmo nas três linhas.',
+  'O mesmo perfil, entregue instalado.', 'O mesmo perfil, entregue instalado.'),
  ('Garantia', cen.CEN['Telescópica']['gar'], cen.CEN['Hettich']['gar'],
   cen.CEN['Blum']['gar']),
 ]
@@ -552,6 +538,8 @@ for n, (titulo, imgs, ambs, acab, itens) in enumerate(PG, start=5):
     lado = 'a' if n % 2 == 0 else 'b'          # ⭐ alterna a cada página
     if len(imgs) == 1:
         mos, cls = f'<img src="{IMG[imgs[0]]}" alt="">', 'solo'
+        if len(itens) <= 2:         # ⭐ ambiente de peça única
+            cls = 'solo tall'
     elif len(imgs) == 3:
         st = (f'<div class="st"><img src="{IMG[imgs[1]]}" alt="">'
               f'<img src="{IMG[imgs[2]]}" alt=""></div>')
@@ -565,8 +553,6 @@ for n, (titulo, imgs, ambs, acab, itens) in enumerate(PG, start=5):
     lis = ''.join(f'<div class="li"><div class="t">{t}</div>'
                   f'<div class="d">{d}</div></div>' for t, d in itens)
     tags = ''.join(f'<span>{a}</span>' for a in ambs)
-    lead = (f'<div class="lead" style="margin-top:4mm;">{LEAD[titulo]}</div>'
-            if titulo in LEAD else '')
     pux = (f'<div class="acab" style="margin-top:3mm;padding-top:3mm;">'
            f'<div class="k">Puxador</div><div class="v">{PUX[titulo]}</div>'
            f'</div>' if titulo in PUX else '')
@@ -575,7 +561,6 @@ for n, (titulo, imgs, ambs, acab, itens) in enumerate(PG, start=5):
       <div class="eye">Ambiente</div>
       <div class="h1 serif">{titulo}</div>
       <div class="tags">{tags}</div>
-      {lead}
       <div class="mos {cls}">{mos}</div>
       <div class="lista">{lis}</div>
       <div class="acab"><div class="k">Acabamentos</div>
@@ -605,29 +590,28 @@ assert {cen.AMB[i][0] for i in IGUAIS} == {'02 Lavabo', '04 Despensa', '07 Offic
 # ⛔ e agora a trava da AFIRMAÇÃO: o preço desses três tem de bater entre
 #   Hettich e Blum, e tem de DIFERIR da telescópica.
 for _i in IGUAIS:
-    assert abs(cen.CEN['Hettich']['pv_tabela'][_i]
-               - cen.CEN['Blum']['pv_tabela'][_i]) < 0.01, cen.AMB[_i][0]
-    assert abs(cen.CEN['Hettich']['pv_tabela'][_i]
-               - cen.CEN['Telescópica']['pv_tabela'][_i]) > 1.0, cen.AMB[_i][0]
+    assert abs(cen.CEN['Hettich']['pv'][_i]
+               - cen.CEN['Blum']['pv'][_i]) < 0.01, cen.AMB[_i][0]
+    assert abs(cen.CEN['Hettich']['pv'][_i]
+               - cen.CEN['Telescópica']['pv'][_i]) > 1.0, cen.AMB[_i][0]
 # ⭐ a coluna da Hettich vai em negrito: é a linha especificada no projeto
 _cls = {n: ' class="on"' if n == 'Hettich' else '' for n in LIN}
 linhas = ''.join(
   f'<tr><td>{nome[3:]}</td>'
-  + ''.join(f'<td{_cls[n]}>{br(cen.CEN[n]["pv_tabela"][i])}</td>' for n in LIN)
+  + ''.join(f'<td{_cls[n]}>{br(cen.CEN[n]["pv"][i])}</td>' for n in LIN)
   + '</tr>' for i, (nome, *_) in enumerate(cen.AMB))
 pg.append(f"""<div class="page"><div class="pad">
   {head()}
   <div class="eye">Investimento · ambiente por ambiente</div>
   <div class="h1 serif">Dezenove ambientes,<br>nas três linhas.</div>
   <div class="lead">Cada ambiente foi levantado <b>peça por peça do projeto
-  executivo</b> — nada é rateio nem estimativa por metro quadrado. Os
-  valores abaixo são de tabela; a <b>forma de pagamento está na página
-  seguinte</b>.</div>
+  executivo</b> — nada é rateio nem estimativa por metro quadrado. A
+  <b>forma de pagamento está na página seguinte</b>.</div>
   <table class="t3">
     <tr><th>Ambiente</th>{''.join(f'<th>{n}</th>' for n in LIN)}</tr>
     {linhas}
     <tr class="tot"><td>A casa inteira</td>
-      {''.join(f'<td>{br(cen.CEN[n]["tabela"])}</td>' for n in LIN)}</tr>
+      {''.join(f'<td>{br(cen.CEN[n]["preco"])}</td>' for n in LIN)}</tr>
   </table>
   <div class="nota"><b>Lavabo, Despensa e Office têm o mesmo valor nas
   linhas Hettich e Blum.</b> Nenhum dos três leva gaveta ou porta de giro —
@@ -638,18 +622,19 @@ pg.append(f"""<div class="page"><div class="pad">
 </div></div>""")
 
 # ── 15 · o total e a FORMA DE PAGAMENTO ─────────────────────────────────
+_on2 = {n: ' on' if n == 'Hettich' else '' for n in LIN}
 cards2 = ''.join(
-  f'<div class="c{" on" if n == "Hettich" else ""}"><div class="k">{n}</div>'
+  f'<div class="c{_on2[n]}"><div class="k">{n}</div>'
   f'<div class="n serif">{cen.CEN[n]["chamada"]}</div>'
   f'<div class="g serif">{cen.CEN[n]["gar"]}</div>'
   f'<div class="gl">de garantia</div>'
-  f'<div class="p">À vista<b>R$ {br(cen.CEN[n]["vista"])}</b></div></div>'
+  f'<div class="p">A casa inteira<b>R$ {br(cen.CEN[n]["preco"])}</b></div></div>'
   for n in LIN)
 REF = 'Hettich'
-pays = ''.join(
-  f'<div class="r{" on" if v else ""}"><div>{rot}</div>'
-  f'<div class="x">{"− " + format(int(d*100)) + "% · R$ " + br(cen.CEN[REF]["tabela"]*(1-d)) if d else "R$ " + br(cen.CEN[REF]["tabela"])}</div></div>'
-  for rot, d, v in cen.ESCADA)
+# ⛔ SEM PERCENTUAL E SEM SEGUNDO VALOR: só a forma, como o Jonathan mandou.
+FORMAS = [rot for rot, _, _ in cen.ESCADA]
+pays = ''.join(f'<div class="r{" on" if i == 0 else ""}"><div>{rot}</div>'
+               f'</div>' for i, rot in enumerate(FORMAS))
 pg.append(f"""<div class="page"><div class="pad">
   {head()}
   <div class="eye">Investimento · as três linhas</div>
@@ -660,19 +645,18 @@ pg.append(f"""<div class="page"><div class="pad">
   <div class="vs tri">{cards2}</div>
 
   <div class="vista" style="margin-top:6mm;padding:8mm 9mm;">
-    <div><div class="lab">À vista · linha Hettich · {cen.DESC_VISTA:.0%} de desconto</div>
-      <div class="big">R$ {br(cen.CEN[REF]['vista'])}</div>
-      <div class="s">Entrada e saldo por transferência, sem cartão —
-      devolvemos a taxa que deixamos de pagar.</div></div>
-    <div class="rt"><div class="k">Valor de tabela</div>
-      <div class="v">R$ {br(cen.CEN[REF]['tabela'])}</div></div>
+    <div><div class="lab">A casa inteira · linha Hettich</div>
+      <div class="big">R$ {br(cen.CEN[REF]['preco'])}</div>
+      <div class="s">Dezenove ambientes, da varanda ao homeschooling, com
+      projeto, corte, montagem e instalação por equipe própria.</div></div>
+    <div class="rt"><div class="k">Garantia</div>
+      <div class="v" style="font-size:19pt;color:#fff;">{cen.CEN[REF]['gar']}</div></div>
   </div>
 
-  <div class="eye" style="margin-top:6mm;">Forma de pagamento · linha Hettich</div>
+  <div class="eye" style="margin-top:6mm;">Forma de pagamento</div>
   <div class="pay" style="margin-top:3mm;">{pays}</div>
-  <div class="nota">A mesma escada vale para as outras duas linhas, sobre o
-  valor de tabela de cada uma. <b>A entrada abre a produção</b> e o saldo
-  vence na entrega.</div>
+  <div class="nota"><b>A entrada abre a produção</b> e o saldo vence na
+  entrega, depois da montagem e da regulagem de cada porta e cada gaveta.</div>
   {foot(N0+1)}
 </div></div>""")
 

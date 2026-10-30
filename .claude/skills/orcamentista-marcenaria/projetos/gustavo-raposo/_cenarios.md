@@ -626,3 +626,65 @@ terminando no nome do material. ⭐ Foi daí que vieram os padrões reais —
 Nogueira Caiena, Off-White Suave, Nogueira Thar, Azul Secreto, Cinza Fóssil
 Velluto, Branco Diamante Trama, Pinole, palhinha natural — que a minha
 versão à mão não tinha.
+
+---
+
+# Proposta v3 · 30/10 — tirar o desconto da peça
+
+> *"Os descontos não é para ser exposto na proposta. Eu pedi para colocar um
+> único valor sem escala de desconto, apenas apresentando a forma de
+> pagamento, exatamente como foi no Michel."*
+
+## O que eu tinha lido errado na v2
+
+| Pedido | O que eu fiz na v2 | O que o Michelle faz |
+|---|---|---|
+| "páginas 3, 4 e 5 mantidas" | troquei a linha **ILUMINAÇÃO** da tabela por uma de "Fechamento" | as linhas dele são CORREDIÇA · DOBRADIÇA · BÁSCULAS · **ILUMINAÇÃO** · GARANTIA |
+| "layout igual" | pus parágrafo de abertura nas páginas de ambiente | as páginas de ambiente dele **não têm** parágrafo |
+| "forma de pagamento idem" | copiei a **escala de desconto** junto | a escala era o que ele tinha; o pedido é só a forma |
+
+⛔⛔ **"IDEM" NÃO É "TUDO".** Eu copiei o bloco inteiro do Michelle porque o
+pedido dizia "idem michell", quando o que ele pedia era a *lista de formas*.
+Copiar demais é tão infiel quanto copiar de menos — e aqui o excesso
+imprimia na peça exatamente o que o cliente não pode ver.
+
+## O que a v3 imprime
+
+- **Um valor só**, o da MC-alvo: R$ 377.395 na linha Hettich.
+- As **quatro formas** do Michelle, palavra por palavra, sem percentual e
+  sem segundo valor ao lado.
+- A tabela de ambientes nas três linhas com `pv`, não com `pv_tabela`.
+
+## Três defeitos que só a leitura da peça pronta achou
+
+1. **"Os forma de pagamento está na página seguinte"** — sobra de uma frase
+   que eu reescrevi. O assert conta página e conta "R$"; não lê português.
+2. **O acabamento da varanda se desmentia:** `MDF Nogueira Caiena e Branco
+   TX · Sem MDF neste ambiente`. Os dois lados do "·" são dois ambientes,
+   mas só o primeiro se identificava. Agora cada lado diz de quem é.
+3. **O office deixava meia página em branco** — uma foto e um card só, com
+   `.mos` travado em `max-height:128mm`. Nasceu a classe `.mos.tall`, que
+   tira o teto quando o ambiente é de peça única.
+
+## ⚠ A TAXA DE CARTÃO FICOU DESCOBERTA
+
+Os encargos da planilha trazem **`0.00  # cartão · 1,2% × 0 parcelas`**. O
+preço impresso é, por construção, o preço de quem **não** passa no cartão —
+e a peça agora oferece até 10× por esse mesmo valor.
+
+| Forma | Taxa sobre o bruto | Em R$ (Hettich) | MC Hettich | MC Telescópica |
+|---|---:|---:|---:|---:|
+| 70% + transferência | 0,00% | — | **42,00%** | **35,00%** |
+| 70% + 6× no cartão | 2,16% | 8.152 | 39,84% | 32,84% ⚠ |
+| 50% + 8× no cartão | 4,80% | 18.115 | 37,20% | 30,20% ⚠ |
+| 30% + 10× no cartão | 8,40% | 31.701 | **33,60%** ⚠ | **26,60%** ⚠ |
+
+⭐ **A ESCALA DE DESCONTO ERA A TAXA DO CARTÃO, EXPOSTA.** No Michelle o
+*valor cheio* (R$ 114.800) é o que o comprador de 10× paga, e o de à vista
+leva 7%. Tirando a escala e imprimindo o preço de à vista, os 10× passam a
+custar R$ 377.395 em vez dos R$ 405.801 de tabela — e a diferença, R$
+28.406, é quase exatamente os R$ 31.701 de taxa.
+
+Quanto cabe sem furar o piso de 35%: entrada de 70% → 19×; de 50% → 11×;
+de 30% → 8×. **A linha telescópica não comporta parcela nenhuma**, porque
+está cravada no piso.
