@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import json as _json, pathlib as _pathlib
 """O comum de todo ambiente do GUSTAVO RAPOSO: a chapa, a peça, a gaveta e
 os preços. Casa inteira no Condomínio Vale dos Pinhais, Nova Lima (MG),
 executivo da arquiteta Luiza Pacheco, Rev.00 de março de 2026.
@@ -571,36 +572,14 @@ def fita_m(pecas, movel=None):
 #   ⛔ O auditor recusa qualquer chave que não esteja aqui. Para entrar
 #     aqui, a linha tem de estar NA BASE — primeiro a planilha, depois
 #     o código.
-CHAVES_BASE = {
-  'Alma de aço', 'Aproveitamento', 'Báscula HK-XS', 'Cabideiro',
-  'Carreto', 'Cava usinada', 'Consumíveis', 'Corrediça',
-  'Corrediça Hardt', 'Corrediça Hettich', 'Corrediça de carga',
-  'Corrediça touch', 'Corte por chapa', 'Corte por peça',
-  'Desempenador de porta', 'Dobradiça', 'Dobradiça Hettich',
-  'Dobradiça vidro', 'Embalagem', 'Espelho prata colado',
-  'Estofamento em linho', 'Estrado em metalon', 'Estrutura de metalon',
-  'Filetagem automática', 'Filetagem manual', 'Fita Branco TX',
-  'Fita cor', 'Fonte de LED', 'Frete', 'LED conjunto',
-  'Laca, por m² de peça', 'MDF Azul Secreto 15', 'MDF Azul Secreto 18',
-  'MDF Azul Secreto 6', 'MDF Branco Diamante 15',
-  'MDF Branco Diamante 18', 'MDF Branco Diamante 6', 'MDF Branco TX 15',
-  'MDF Branco TX 18', 'MDF Branco TX 6', 'MDF Cinza Fóssil 15',
-  'MDF Cinza Fóssil 18', 'MDF Cinza Fóssil 6', 'MDF Cru 15',
-  'MDF Cru 18', 'MDF Cru 6', 'MDF Nogueira Caiena 15',
-  'MDF Nogueira Caiena 18', 'MDF Nogueira Caiena 6',
-  'MDF Nogueira Thar 15', 'MDF Nogueira Thar 18', 'MDF Nogueira Thar 6',
-  'MDF Off-White Suave 15', 'MDF Off-White Suave 18',
-  'MDF Off-White Suave 6', 'MDF Pinole 15', 'MDF Pinole 18',
-  'MDF Pinole 6', 'MDF branco 15', 'MDF branco 18', 'MDF branco 6',
-  'MDF cor 15', 'MDF cor 18', 'MDF cor 6', 'Malha de cordas náuticas',
-  'Moldura provençal', 'Palhinha natural', 'Perfil de LED',
-  'Perfil de proteção de piso', 'Pistão de tampo de baú',
-  'Porta de espelho em alumínio', 'Pulsador', 'Puxador Alças Traso 128',
-  'Puxador Alças Traso 128 níquel velho', 'Puxador NEO32 Bronze',
-  'Puxador passante', 'Puxador slim', 'Rodízio de gaveteiro',
-  'Serralheria estrutural', 'Sistema de correr Dominus',
-  'Sistema de correr SS-150', 'Suporte de prateleira', 'Suporte oculto',
-  'Usinagem de encaixe meia-madeira',
- 'Usinagem de muxarabi vazado', 'Vidro reflecta',
-  'Vidro temperado incolor', 'Área da chapa',
-}
+# ⛔⛔ E ELA NÃO SE ESCREVE À MÃO [30/10/2026]. Eu tinha digitado esta lista
+#   de cabeça, e ela MENTIA: declarava `MDF Cinza Fóssil 15` e `6`, que a
+#   Base não tinha. O Home Schooling é todo em Cinza Fóssil — passaria no
+#   auditor e sairia ZERO na aba. ⭐ Guarda escrita de memória é a mesma
+#   memória, só com cara de código. Agora ela VEM DA PLANILHA, por
+#   `chaves.py`, e o arquivo é o que o Sheets devolveu.
+_CH = _pathlib.Path(__file__).resolve().parent/'_chaves-base.json'
+if not _CH.exists():
+    raise SystemExit('⛔ falta _chaves-base.json — rode chaves.py depois de '
+                     "ler 'Base (importada)'!A6:C200 para _base-raw.json")
+CHAVES_BASE = set(_json.loads(_CH.read_text(encoding='utf-8')))
