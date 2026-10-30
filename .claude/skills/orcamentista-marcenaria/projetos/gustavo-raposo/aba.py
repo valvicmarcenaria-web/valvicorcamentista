@@ -165,8 +165,17 @@ põe(L['tit'], B=f"  VALVIC MARCENARIA        {F['aba']}")
 põe(L['sub'], B='  ' + F['sub'])
 põe(L['s_amb'], B='  O AMBIENTE   ·   chapa 275 × 185 com 80% de aproveitamento '
                   '· e ela se conta em número cheio, por cor × espessura')
+# ⛔⛔ A COLUNA DE FRETE SAIU [Jonathan, 30/10/2026]: "vc manteve a coluna
+#   de frete. pode remover." Ela era de quando o frete vinha pendurado em
+#   CADA material — quatro linhas da Base, todas vazias. Desde 29/10 o
+#   frete é uma LINHA do ambiente, com quantidade que o senhor digita, e a
+#   coluna só carregava valor nessa única linha: quinze células vazias para
+#   servir uma.
+#   ⭐ E o TOTAL saiu junto, porque TOTAL era CUSTO + FRETE: sem a coluna de
+#     frete ele repetia o CUSTO, e coluna que repete a vizinha não informa,
+#     só ocupa largura que falta na ESPECIFICAÇÃO.
 põe(L['cab_mat'], B='MATERIAL', C='ESPECIFICAÇÃO', D='QUANTIDADE', E='UN',
-    F='CUSTO', G='FRETE', H='TOTAL', I='% DO CUSTO')
+    F='CUSTO', G='% DO CUSTO')
 
 r = L['mat0']
 for chave in CHAPAS:
@@ -199,10 +208,10 @@ for ch in ACAB:
     r += 1
 L['acab1'] = r - 1
 
-FERR = [('Corrediça', 'corrediça',
+FERR = [(B.CH_CORREDICA, 'corrediça',
          [x for x in g('GAVETAS') if not (len(x) > 4 and x[4] == 'touch')]),
-        ('Dobradiça', 'dobradiça', g('PORTAS')),
-        ('Dobradiça vidro', None, [x for x in g('PORTAS') if x[4] == B.DOBR_VIDRO]),
+        (B.CH_DOBRADICA, 'dobradiça', g('PORTAS')),
+        (B.CH_DOBR_VIDRO, None, [x for x in g('PORTAS') if x[4] == B.DOBR_VIDRO]),
         ('Báscula HK-XS', 'articulador HK-XS', g('BASCULAS')),
         # ⭐ slim no lugar do pulsador [Jonathan, 28/10] · são R$ 65 por
         #   báscula de diferença, e a Base já avisava que não se somam
@@ -210,7 +219,7 @@ FERR = [('Corrediça', 'corrediça',
         #   pelo Alças Traso, e o slim não existe lá.
         ('Puxador slim', 'puxador slim',
          [b for b in g('BASCULAS') if (b[3] if len(b) > 3 else 'slim') == 'slim']),
-        ('Puxador Alças Traso 128', 'puxador Alças Traso de 128', g('PUXADORES')),
+        (B.CH_PUXADOR_128, 'puxador Alças Traso de 128', g('PUXADORES')),
         ('Moldura provençal', 'moldura provençal', g('MOLDURA')),
         ('Cava usinada', 'cava usinada', g('CAVA')),
         ('LED conjunto', 'LED', g('LED')),
@@ -306,29 +315,28 @@ L['corte_pc'] = r; r += 1
 põe(r, B='Consumíveis',
     C='Cola, lixa, parafuso, cavilha, tapa-furo, fundo e verniz · 6% sobre '
       'chapa, fita e filetagem',
-    F=f'=SUM(H{L["mat0"]}:H{L["acab1"]})*VLOOKUP("Consumíveis";precos;2;FALSE)')
+    F=f'=SUM(F{L["mat0"]}:F{L["acab1"]})*VLOOKUP("Consumíveis";precos;2;FALSE)')
 L['cons'] = r; r += 1
 põe(r, B='Embalagem', C='Papelão, filme e cantoneira · 2% sobre o subtotal',
-    F=f'=SUM(H{L["mat0"]}:H{L["cons"]})*VLOOKUP("Embalagem";precos;2;FALSE)')
+    F=f'=SUM(F{L["mat0"]}:F{L["cons"]})*VLOOKUP("Embalagem";precos;2;FALSE)')
 L['embal'] = r; r += 1
 # ⭐⭐ A LINHA DE FRETE DO AMBIENTE [Jonathan, 29/10/2026] · R$ 200 a viagem
 #   ⛔ A QUANTIDADE É DELE: a célula D é a única do painel de material que
 #     não é fórmula, e por isso vai em AMARELO. Sai 0 e espera.
-#   ⭐ O valor vai na coluna FRETE, não na de CUSTO, porque é frete: assim
-#     o total de frete do ambiente continua sendo a soma da coluna G, e o
-#     Painel não precisa saber que a conta mudou de lugar.
+#   ⭐ O valor vai na coluna de CUSTO como o de todo mundo. O Painel acha o
+#     frete do ambiente pelo RÓTULO da linha, não por coluna — e rótulo não
+#     se desloca quando uma coluna some.
 L['frete'] = r
 põe(r, B='Frete', C='⭐ Frete do ambiente · R$ 200 a viagem · ⛔ A QUANTIDADE É '
                     'SUA: digite quantas viagens este ambiente leva, e o '
                     'frete aparece aqui e no Painel · sai ZERO e espera',
     D=0, E='viagem',
-    G=f'=D{r}*VLOOKUP("Frete";precos;2;FALSE)')
+    F=f'=D{r}*VLOOKUP("Frete";precos;2;FALSE)')
 for i in range(L['mat0'], L['mat1'] + 1):
-    põe(i, H=f'=F{i}+G{i}', I=f'=IFERROR(H{i}/$H${L["direto"]};"")')
+    põe(i, G=f'=IFERROR(F{i}/$F${L["direto"]};"")')
 d = L['direto']
 põe(d, B='CUSTO DIRETO DO AMBIENTE', F=f'=SUM(F{L["mat0"]}:F{L["mat1"]})',
-    G=f'=SUM(G{L["mat0"]}:G{L["mat1"]})', H=f'=SUM(H{L["mat0"]}:H{L["mat1"]})',
-    I=f'=IFERROR(H{d}/$H${d};"")')
+    G=f'=IFERROR(F{d}/$F${d};"")')
 põe(L['nota'], C=F['nota'])
 
 põe(L['s_itens'], B='  OS ITENS   ·   cada móvel com o seu custo, porque é '
@@ -438,10 +446,10 @@ Q.append(rc(L['dv0'], L['dv1'], 'B', 'B',
             fm(10, True, fg=VERM, al='CENTER', bg=F5)))
 Q.append(rc(L['dv0'], L['dv1'], 'C', 'I', fm(10, wr='WRAP')))
 # ── o painel do ambiente ───────────────────────────────────────────────
-Q.append(rc(L['cab_mat'], L['cab_mat'], 'B', 'I', fm(8, True, fg=CINZA, bg=F7)))
+Q.append(rc(L['cab_mat'], L['cab_mat'], 'B', 'G', fm(8, True, fg=CINZA, bg=F7)))
 Q.append(rc(L['cab_mat'], L['cab_mat'], 'D', 'D', fm(8, True, fg=CINZA, bg=F7, al='RIGHT')))
 Q.append(rc(L['cab_mat'], L['cab_mat'], 'E', 'E', fm(8, True, fg=CINZA, bg=F7, al='CENTER')))
-Q.append(rc(L['cab_mat'], L['cab_mat'], 'F', 'I', fm(8, True, fg=CINZA, bg=F7, al='RIGHT')))
+Q.append(rc(L['cab_mat'], L['cab_mat'], 'F', 'G', fm(8, True, fg=CINZA, bg=F7, al='RIGHT')))
 m0, m1 = L['mat0'], L['mat1']
 Q.append(rc(m0, m1, 'C', 'C', fm(9, fg=CINZA)))
 # ⛔ SEM padrão: a coluna mistura chapa (26), metro de fita (482,8) e m²
@@ -449,17 +457,21 @@ Q.append(rc(m0, m1, 'C', 'C', fm(9, fg=CINZA)))
 #   26 chapas aparecer como '26,0'.
 Q.append(rc(m0, m1, 'D', 'D', fm(10, al='RIGHT')))
 Q.append(rc(m0, m1, 'E', 'E', fm(9, fg=CINZA, al='CENTER')))
-Q.append(rc(m0, m1, 'F', 'H', fm(10, al='RIGHT', num=MOEDA)))
-Q.append(rc(m0, m1, 'I', 'I', fm(10, fg=CINZA, al='RIGHT', num=PCT)))
+Q.append(rc(m0, m1, 'F', 'F', fm(10, al='RIGHT', num=MOEDA)))
+Q.append(rc(m0, m1, 'G', 'G', fm(10, fg=CINZA, al='RIGHT', num=PCT)))
+# ⛔ H e I ficam LIMPAS no painel de material: sem elas a especificação da
+#   coluna C respira, e o que sobrava ali eram duas colunas de repetição.
+Q.append(rc(m0, m1, 'H', 'I', fm(10)))
 # ⭐⭐ A QUANTIDADE DE VIAGENS DE FRETE É A ÚNICA CÉLULA DIGITÁVEL DO PAINEL
 #   de material — todas as outras são fórmula. Vai em AMARELO, pela mesma
 #   convenção das quatro células da aba Preço e Comissões, para quem abre a
 #   planilha saber de longe onde pode escrever.
 Q.append(rc(L['frete'], L['frete'], 'D', 'D',
             fm(10, True, al='RIGHT', bg=AMARELO, num=INT)))
-Q.append(rc(d, d, 'B', 'I', fm(11, True, bg=F5, bor=TETO)))
-Q.append(rc(d, d, 'F', 'H', fm(11, True, bg=F5, bor=TETO, al='RIGHT', num=MOEDA)))
-Q.append(rc(d, d, 'I', 'I', fm(11, True, bg=F5, bor=TETO, al='RIGHT', num=PCT)))
+Q.append(rc(d, d, 'B', 'G', fm(11, True, bg=F5, bor=TETO)))
+Q.append(rc(d, d, 'F', 'F', fm(11, True, bg=F5, bor=TETO, al='RIGHT', num=MOEDA)))
+Q.append(rc(d, d, 'G', 'G', fm(11, True, bg=F5, bor=TETO, al='RIGHT', num=PCT)))
+Q.append(rc(d, d, 'H', 'I', fm(11, True)))
 Q.append(rc(L['nota'], L['nota'], 'C', 'I', fm(9, it=True, fg=CINZA, wr='WRAP')))
 # ── a tabela dos itens ─────────────────────────────────────────────────
 ci = L['cab_it']

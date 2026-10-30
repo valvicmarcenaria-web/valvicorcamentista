@@ -68,14 +68,14 @@ def linhas_do_item(mov):
         mv, rot, q, mm = gv[:4]
         touch = len(gv) > 4 and gv[4] == 'touch'
         if mv == mov:
-            out.append(['Corrediça touch' if touch else 'Corrediça',
+            out.append(['Corrediça touch' if touch else B.CH_CORREDICA,
                         f'{rot} · {mm} mm' + (' · ⛔ abre por toque: NÃO leva '
                         'pulsador, a própria corrediça abre' if touch else ''),
                         '', '', q, 'par',
-                        'Corrediça touch' if touch else 'Corrediça'])
+                        'Corrediça touch' if touch else B.CH_CORREDICA])
     for mv, rot, nq, nd, pr in g('PORTAS'):
         if mv == mov:
-            ch = 'Dobradiça' if pr == B.DOBRADICA else 'Dobradiça vidro'
+            ch = B.CH_DOBRADICA if pr == B.DOBRADICA else B.CH_DOBR_VIDRO
             out.append([ch, f'{rot} · {nd} por folha', '', '', nq*nd, 'un', ch])
     # ⭐⭐ A BÁSCULA NEM SEMPRE ABRE PELO SLIM. Na Cozinha abre: o Jonathan
     #   fechou HK-XS mais slim Rometal. Na Lavanderia a prancha põe o
@@ -93,9 +93,9 @@ def linhas_do_item(mov):
                             'pulsador Blum: não se somam na mesma frente', '',
                             '', q, 'un', 'Puxador slim'])
     for mv, rot, q in g('PUXADORES'):
-        if mv == mov: out.append(['Puxador Alças Traso 128', rot +
+        if mv == mov: out.append([B.CH_PUXADOR_128, rot +
                                   ' · Zen Design, 128 mm', '', '', q, 'un',
-                                  'Puxador Alças Traso 128'])
+                                  B.CH_PUXADOR_128])
     for mv, rot, q in g('MOLDURA'):
         if mv == mov: out.append(['Moldura provençal', rot + ' · usinagem do '
                                   'relevo na router, peça inteira de 6 mm · '

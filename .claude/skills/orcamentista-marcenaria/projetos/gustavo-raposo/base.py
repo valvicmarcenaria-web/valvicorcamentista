@@ -100,22 +100,36 @@ FITA_PERD  = 0.10   # ⭐ 10% de desperdício é da FITA, que é material.
 #   ⛔ Nenhuma telescópica comum entra: onde a prancha pede telescópica, SOBE
 #     para Hettich oculta. A garantia é UNIFORME de 10 anos, e o termo de 10
 #     anos é o único que existe desenhado.
-# ⭐ O PREÇO SAI DA RAZÃO APURADA NO ICA, não de chute: 0,71 sobre a Blum.
-#   ferragens.md fixou a faixa em 0,70–0,72 e mandou usar o TOPO, porque na
-#   compra com CNPJ a Blum dá desconto maior e uma razão baixa demais
-#   superestima a economia do cenário Hettich. Conferido contra o
-#   cenarios.json do ICA: 1174,50 de diferença sobre 4050 de troca = 0,71.
-RAZAO_HETT = 0.71
-CORREDICA  = round(300.0 * RAZAO_HETT, 2)   # 213,00 · Hettich oculta, por gaveta
-DOBRADICA  = round( 50.0 * RAZAO_HETT, 2)   #  35,50 · Hettich Sensys
+# ⛔⛔ A RAZÃO 0,71 CAIU [Jonathan, 30/10/2026]: "a Base manda".
+#   Eu vinha DERIVANDO o preço Hettich da Blum por uma razão apurada no ICA
+#   — 0,71 — quando a Base de Custos já traz as duas linhas Hettich com
+#   preço de verdade, lidas hoje:
+#       Corrediça Hettich  R$ 150,00 o par · Quadro V6 500 mm, oculta, 30 kg
+#       Dobradiça Hettich  R$  50,00 a un  · Sensys, Linha Gold, 100 mil ciclos
+#   ⭐ E a razão real não é 0,71: a corrediça Hettich é METADE da Blum, não
+#     71% dela. Derivar deu R$ 63 a mais por par.
+#   ⛔⛔ O QUE ISSO ESCONDIA, e é o defeito de verdade: a ABA lê a Base pela
+#     chave e o AUDITOR lia o meu número. Os dois discordavam em R$ 836 só
+#     na Varanda, e a CONFERÊNCIA da aba não via nada — ela compara a aba
+#     com ela mesma, nunca com o levantamento. ⭐ Preço derivado é preço que
+#     só existe de um lado da conta.
+#   ⭐ A CHAVE PASSA A SER A HETTICH, não a genérica: a linha 'Corrediça' da
+#     Base é a BLUM, e era ela que a aba estava cobrando numa casa que o
+#     senhor cravou como Hettich inteira em 29/10.
+CH_CORREDICA  = 'Corrediça Hettich'
+CH_DOBRADICA  = 'Dobradiça Hettich'
+CH_DOBR_VIDRO = 'Dobradiça vidro'
+CORREDICA  = 150.0  # ⭐ da Base · Hettich Quadro V6 500 mm, oculta, por par
+DOBRADICA  =  50.0  # ⭐ da Base · Hettich Sensys, Linha Gold
 # ⭐ DOBRADIÇA DE PORTA DE VIDRO — modelo cravado [Jonathan, 29/10/2026]
 #   GV48 ref. 1011, 90°, aço inox, fixação alvenaria/vidro, kit de 2.
 #   ⛔ Porta de vidro temperado NÃO aceita dobradiça de caneco: depois de
 #     temperado o vidro não se fura. Quem segura a folha é a garra de inox.
-#   ⚠ R$ 95,00 é ESTIMATIVA declarada — o site do fornecedor não resolve na
-#     sessão e o varejo Pix de hoje vai de R$ 77 a R$ 140. A cotar.
+#   ⭐ R$ 70,00 é o que a Base traz ("a cotar, faixa observada de 30 a 85").
+#     Eu tinha estimado R$ 95 porque o site do fornecedor não resolve na
+#     sessão — e a Base, que eu não li, já tinha a linha.
 #   ⭐ Duas por folha até 1,00 m de altura, TRÊS acima disso.
-DOBR_VIDRO =  95.0  # ⚠ GV48 1011 · a cotar
+DOBR_VIDRO =  70.0  # ⭐ da Base · GV48 1011
 BASCULA    = 250.0  # Blum AVENTOS HK-XS · ⭐ a báscula da casa
 PULSADOR   = 100.0  # ⛔ FORA DA COZINHA [Jonathan, 28/10/2026]
 SLIM       =  35.0  # ⭐ Puxador slim Rometal · é o que abre a báscula
@@ -127,11 +141,17 @@ SLIM       =  35.0  # ⭐ Puxador slim Rometal · é o que abre a báscula
 #     R$ 1.105.
 CAVA_M     =  50.0  # cava usinada, por metro de frente
 PUXADOR    = 172.71 # Alças Traso 416 mm · ⚠ o maior da linha, não é o do ICA
-PUXADOR_128 = 110.0 # ⭐ Alças Traso 128 mm [Jonathan, 28/10/2026]
-#   ⚠ A Base trazia R$ 56,69 para o 128 mm, de "média de três lojas", no
-#     acabamento PRETO. A busca de varejo de hoje achou de R$ 44,92 a
-#     R$ 109,22, e o topo da faixa é o níquel velho — que é onde o R$ 110
-#     do Jonathan cai. ⭐ Não é divergência: é outro acabamento.
+# ⭐⭐ O TRASO DE 128 É O NÍQUEL VELHO, R$ 110 [Jonathan, 28 e 30/10/2026]
+#   > "na cozinha considere o puxador trazo igual ao do michell"
+#   ⚠ A Base traz R$ 56,69 para o Traso 128, mas no acabamento PRETO, de
+#     média de três lojas. O varejo de hoje vai de R$ 44,92 a R$ 109,22, e o
+#     topo da faixa é justamente o níquel velho — onde o R$ 110 do Jonathan
+#     cai. ⭐ Não é divergência de preço: é outro acabamento.
+#   ⛔ E POR ISSO A CHAVE É OUTRA. Se o acabamento fosse buscado na chave
+#     'Puxador Alças Traso 128', a aba leria os R$ 56,69 do preto e voltaria
+#     a discordar do levantamento — o mesmo defeito da corrediça, de novo.
+CH_PUXADOR_128 = 'Puxador Alças Traso 128 níquel velho'
+PUXADOR_128 = 110.0
 MOLDURA_MO = 0.0    # ⛔ moldura provençal, por frente — SEM PREÇO na Base
 LED_M      = 150.0  # LED COB: fita, perfil, usinagem e instalação
 ALMA       =  50.0  # barra chata 5 mm, 3 m · toda peça acima de 30 mm
@@ -195,6 +215,19 @@ PERDA_RIPA =   1.10 # ⭐ Base, Terceirizados: perda de serra ao tirar ripa
 #     não item esquecido. O item existe, a unidade está definida, e o preço
 #     falta — o orçamento mostra zero e denuncia.
 PRECO_OUTRAS = {
+ # ⭐⭐ AS CHAVES DE FERRAGEM, que passaram a ser as da Base [30/10/2026].
+ #   ⛔ Antes a chapa buscava 'Corrediça' e 'Dobradiça', que na Base são as
+ #     linhas BLUM — numa casa que o senhor cravou como Hettich inteira. A
+ #     aba cobrava Blum e o auditor somava o meu derivado: R$ 836 de
+ #     diferença só na Varanda, e a CONFERÊNCIA não via, porque ela compara
+ #     a aba com ela mesma.
+ CH_CORREDICA:  CORREDICA,    # R$ 150,00 o par · Hettich Quadro V6 500 mm
+ CH_DOBRADICA:  DOBRADICA,    # R$  50,00 a un · Hettich Sensys Linha Gold
+ CH_DOBR_VIDRO: DOBR_VIDRO,   # R$  70,00 a un · GV48 1011, a cotar
+ # ⭐ O Traso de 128 em NÍQUEL VELHO [Jonathan, 30/10/2026]. A Base traz o
+ #   PRETO a R$ 56,69; o níquel velho é o topo da faixa de varejo e é o que
+ #   o senhor usa. ⛔ Chave própria, senão a aba lê o preto.
+ CH_PUXADOR_128: PUXADOR_128, # R$ 110,00 a un · Alças Traso 128 níquel velho
  # ══ O QUE O EXECUTIVO DO GUSTAVO RAPOSO TROUXE DE NOVO ═════════════════
  # ⭐⭐ LACA SAYERLACK M048 ACETINADA — a cozinha inteira.
  #   Laca é MDF cru MAIS pintura em cabine, e a pintura é por m² de peça.
