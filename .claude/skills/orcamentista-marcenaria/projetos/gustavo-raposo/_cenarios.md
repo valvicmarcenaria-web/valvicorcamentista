@@ -269,7 +269,7 @@ fechado.
 
 ---
 
-# ⭐ OS TRÊS CENÁRIOS — VERSÃO 3, A VALER [30/10/2026]
+# ⚠ VERSÃO 3 — SUPERADA pela v4 no fim do arquivo [30/10/2026]
 
 > *[Jonathan 30/10] "vamos voltar a blum para 42% · garantias 30 anos blum
 > - 10 anos hettich - 2 anos telescopica"*
@@ -350,3 +350,89 @@ e nenhum centavo de custo.**
   amortecedor. É a única diferença entre os cenários que o cliente vê com a
   gaveta aberta, e tem de estar escrita na proposta.
 - ⚠ **As quinze linhas a zero continuam nos três.** Nenhum preço é fechado.
+
+---
+
+# ⭐ VERSÃO 4, A VALER — e com duas TROCAS de ambiente [30/10/2026]
+
+> *[Jonathan 30/10] "vamos trabalhar com blum e hettich em 42% e
+> telescopica em 35%. e vamos criar dois novos cenarios em dois ambientes
+> peculiares. cozinha esta em laca, vamos apresentar o valor com ela em
+> melaminico tbm · o office que tem o painel de muxarabi vamos apresentar
+> outro cenario com ele em usinagem, ou seja, sera as chapas com usinagem,
+> nao vai ter as peças filetadas."*
+
+⛔⛔ **RESTRUTUREI, E É PRECISO SABER DISSO.** Nas v2 e v3 o painel plano do
+Office estava EMBUTIDO nos cenários 2 e 3. Agora que ele virou troca
+independente, os três cenários passam a carregar a configuração ATUAL —
+**Cozinha em laca e Office em réguas** — e as duas trocas se aplicam por
+cima de qualquer um deles. ⭐ A prova de que a base está certa: o cenário 2
+devolve exatamente R$ 161.808,24, que é o custo direto da planilha de hoje.
+
+## Os três cenários, na configuração atual
+
+| | **1 · BLUM** | **2 · HETTICH** | **3 · TELESCÓPICA** |
+| --- | --: | --: | --: |
+| Corrediça / dobradiça | R$ 300 / R$ 50 | R$ 150 / R$ 50 | R$ 40 / R$ 10 |
+| **Garantia** | **30 anos** | **10 anos** | **2 anos** |
+| MC aplicada | 42% | 42% | 35% |
+| Custo direto | 175.119,24 | 161.808,24 | 148.089,24 |
+| **PREÇO DE VENDA** | **408.441,38** | **377.395,31** | **296.920,78** |
+
+## ⭐⭐ 57% DA COZINHA É TINTA
+
+A laca são **21,67 m² × R$ 650 = R$ 14.085,50** num ambiente de
+R$ 24.619,43. ⭐ E ela se conta das peças, nas DUAS FACES, porque peça
+lacada de um lado só empena.
+
+| Cozinha | custo direto | economia |
+| --- | --: | --: |
+| em laca, como está | 24.619,43 | — |
+| em melamínico Diamante/Caiena | 10.482,90 | −14.136,53 |
+| em melamínico Branco TX | 9.726,06 | −14.893,37 |
+
+⭐ A escolha do melamínico quase não muda o resultado — R$ 757 entre o mais
+caro e o mais barato, contra R$ 14.085 de laca. **A tinta é que manda.**
+
+**⛔⛔ E O MELAMÍNICO MATA A MOLDURA PROVENÇAL.** São 14 frentes. A moldura
+é peça INTEIRA de 6 mm usinada na router e colada sobre a base de 15: em
+laca pinta-se o conjunto e a junta some; em melamínico o rebaixo da router
+**expõe o miolo cru de MDF** e não há como acabar. ⭐ Melamínico aqui não é
+a mesma cozinha mais barata — é **frente lisa**, e a prancha cota os 5 cm de
+moldura em cada folha. É decisão de projeto, não de orçamento.
+⭐ Por isso a conta já tira as 14 molduras: 2 chapas de cru 6 viram 1 (só o
+fundo do nicho, que não é moldura), somem 14 peças de corte, 1,58 m de fita
+e a filetagem manual. Reconstruí o painel inteiro e **conferi contra os
+R$ 24.619,43 da planilha antes de confiar nele na variante**.
+
+## O Office em usinagem
+
+De R$ 9.328,00 em réguas para R$ 3.254,57 em painel plano usinado — **−6.073,43**. Somem a fita (474,8 m), a
+filetagem manual (431,6 m), o corte de 170 peças e três chapas. ⭐ E some o
+maior buraco do projeto: os 7.144 encaixes de meia-madeira que saíam ZERO.
+
+## As duas trocas, em PREÇO, por cenário
+
+| | Cozinha → melamínico | Office → usinagem | as duas | PREÇO final |
+| --- | --: | --: | --: | --: |
+| **1 · BLUM** | −32.971,50 | −14.165,43 | −47.136,93 | **361.304,44** |
+| **2 · HETTICH** | −32.971,50 | −14.165,43 | −47.136,93 | **330.258,38** |
+| **3 · TELESCÓPICA** | −28.343,92 | −12.177,30 | −40.521,22 | **256.399,56** |
+
+⭐⭐ **A LACA TIRA MAIS DO PREÇO DO QUE A FERRAGEM INTEIRA.** Trocar a
+cozinha para melamínico vale **R$ 32.971,50** de preço; trocar a casa toda
+de Blum para Hettich vale **R$ 31.046,07**. Um ambiente pesa mais que as 87
+corrediças e as 97 dobradiças somadas.
+
+## ⚠ Segue em aberto
+
+- ⛔ **A moldura provençal.** Melamínico = frente lisa. Decisão de projeto.
+- ⚠ **Qual melamínico**, se for. Diamante/Caiena a R$ 550 ou Branco TX a
+  R$ 350 — são R$ 757 de diferença no ambiente inteiro.
+- ⚠ O preço da chapa de **MDF Cru é DERIVADO**, não lido: a própria aba diz
+  *"derivado da razão cru/fosco de 0,76 da Base antiga, não lido"*. É o
+  mesmo defeito que a corrediça Hettich tinha. Vale ler na Base.
+- ⛔ O cenário 3 ainda carrega **R$ 2.750 de ferragem Blum** (7 articuladores
+  e 10 pulsadores) que não compram garantia nenhuma.
+- ⚠ As quinze linhas a zero continuam. Com o Office em usinagem caem para
+  catorze, e com a cozinha em melamínico caem mais três (as molduras).
