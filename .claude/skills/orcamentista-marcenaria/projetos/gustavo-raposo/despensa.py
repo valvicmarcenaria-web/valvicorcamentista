@@ -107,40 +107,64 @@ FOLHA = dict(
                   'regra em todas elas'},
  nota='⭐ O FRETE É UMA LINHA DO AMBIENTE, R$ 200 a viagem: a QUANTIDADE é a '
       'célula AMARELA no fim do painel de material, e ela sai ZERO.   '
-      '⭐⭐ O AMBIENTE MAIS SIMPLES DA CASA É O QUE MAIS ENGANA. Não há '
-      'armário, porta nem gaveta: são doze prateleiras de parede em L. O '
-      'que elas custam não é chapa — é a FIXAÇÃO INVISÍVEL que a prancha '
-      'pede e a ALMA DE AÇO que o vão exige. Doze prateleiras de 131 e 176 '
-      'sem apoio no meio flecham sozinhas, e prateleira de despensa carrega '
-      'peso de verdade.   ⭐ AS DUAS CADEIAS FECHAM: a vertical em 141 + 6 × '
-      '(35 + 4) = 375, que é o pé-direito; a horizontal em 91 + 40 + 40 + '
-      '136 = 307, que bate com 131 + 176 das elevações.',
+      '⭐⭐⭐ CADA PRATELEIRA É UM SANDUÍCHE, e é a decisão do Jonathan de '
+      '30/10: um QUADRO DE METALON no formato exato da prateleira, revestido '
+      'em cima e embaixo por uma peça INTEIRA de 18 mm. Por isso são DOZE '
+      'peças de chapa para seis prateleiras em cada elevação, e vinte e '
+      'quatro no ambiente.   '
+      '⭐⭐ E O METALON FAZ O TRABALHO DE DUAS LINHAS QUE SAÍRAM. Ele é a '
+      'ESTRUTURA — quem vence o vão de 1,76 m sem apoio no meio — e é a '
+      'FIXAÇÃO INVISÍVEL que a prancha pede nas três chamadas. Saíram, '
+      'portanto, os 54 suportes ocultos de R$ 30 e a alma de aço de R$ 50 '
+      'por prateleira: as três coisas faziam o mesmo serviço, e pagar as '
+      'três seria pagar a fixação três vezes.   '
+      '⭐ R$ 250 A UNIDADE, doze unidades, R$ 3.000 — metade do custo do '
+      'ambiente. É serralheria, não marcenaria, e a chapa aqui é '
+      'REVESTIMENTO: ela fecha o quadro e dá a cara, não sustenta nada.   '
+      '⭐ AS DUAS CADEIAS FECHAM: a vertical em 141 + 6 × (35 + 4) = 375, '
+      'que é o pé-direito; a horizontal em 91 + 40 + 40 + 136 = 307, que '
+      'bate com 131 + 176 das elevações.',
  duvidas=[
-  '⚠⚠ O QUE É "FIXAÇÃO INVISÍVEL" AQUI? Pode ser mão-francesa oculta '
-  'parafusada na alvenaria, cavilha de aço embutida, ou perfil contínuo. '
-  'Lancei o SUPORTE OCULTO da Base — R$ 30, de 40 em 40 cm —, que é a linha '
-  'legada que o Jonathan tirou de prateleira de ARMÁRIO em 28/10 mas que '
-  'aqui é exatamente o que a prancha pede. ⛔ É o maior item deste ambiente: '
-  '54 suportes. Se for perfil contínuo ou mão-francesa de chapa, o número '
-  'muda inteiro.',
-  'A ALMA DE AÇO NÃO ESTÁ LANÇADA À MÃO porque o motor a conta sozinho: '
-  'toda prateleira de vão acima de 1,20 m leva barra, e as doze passam. ⚠ '
-  'Mas prateleira PENDURADA é caso diferente de prateleira apoiada em '
-  'lateral: se a fixação invisível já for um perfil estrutural, a alma pode '
-  'ser redundante. Confirmar com a fábrica.',
-  '⚠ A PROFUNDIDADE DE 40 saiu da planta, onde o 40 aparece como a perna do '
-  'canto. Se os 40 forem a profundidade da prateleira e não o trecho de '
+  '⚠⚠ O QUADRO DE METALON É A FIXAÇÃO, OU SÓ A ESTRUTURA? Eu entendi as '
+  'duas coisas: o quadro se chumba na alvenaria e some entre as duas chapas '
+  '— é isso que faz a "fixação invisível" da prancha. ⛔ Se o quadro for '
+  'apenas alma, e a fixação na parede for mão-francesa à parte, volta uma '
+  'linha de fixação e o ambiente sobe. Confirmar com a serralheria.',
+  '⚠ R$ 250 É O MESMO PREÇO PARA 131 E PARA 176? Lancei igual, como o '
+  'senhor passou. ⛔ O quadro de 176 tem um terço mais de perímetro e vence '
+  'um vão bem maior — se a serralheria cobrar por metro linear, a elevação '
+  'B fica mais cara que a A. Vale uma cotação das duas medidas.',
+  '⭐ A CHAPA AGORA É REVESTIMENTO, e isso muda o que ela precisa ser. Em '
+  '18 mm as doze prateleiras pesam 24 peças e quase cinco chapas. ⚠ Se o '
+  'metalon é quem estrutura, 15 mm bastaria para revestir e economizaria '
+  'cerca de uma chapa e meia — mas a aresta de 15 + metalon + 15 fica mais '
+  'fina e o desenho da prateleira muda. Decisão de aparência, não de '
+  'resistência.',
+  '⚠ A FITA VAI NAS DUAS PEÇAS, as quatro arestas de cada uma: 102 m de '
+  'fita no ambiente. ⛔ Entre as duas chapas sobra a espessura do metalon '
+  'aparente na aresta — se ele não for pintado da cor da chapa, aparece '
+  'uma linha escura em volta de toda prateleira. Perguntar se a '
+  'serralheria entrega pintado.',
+  '⚠ A PROFUNDIDADE DE 40 saiu da planta, onde o 40 aparece como a perna '
+  'do canto. Se os 40 forem a profundidade da prateleira e não o trecho de '
   'parede, as paredes passam a medir 91 e 136 — e o ambiente perde dois '
   'metros lineares de prateleira. ⭐ Mas aí as duas cadeias não fechariam '
   'em 307, e elas fecham. Fica o registro.'],
  nao_marcenaria=[
-  'Revestimento Branco Retificado Acetinado 30 × 60 das paredes'],
+  'Revestimento Branco Retificado Acetinado 30 × 60 das paredes',
+  '⚠ OS DOZE QUADROS DE METALON são SERRALHERIA, e estão na conta porque '
+  'são nossos de entregar — mas não saem da nossa fábrica. R$ 250 cada, '
+  'preço cravado pelo Jonathan em 30/10'],
  notas=[
-  '⭐ UM MATERIAL SÓ E UMA ESPESSURA SÓ: Branco Diamante Linha Trama em '
-  '18 mm, nas doze peças. É o ambiente que menos pesa no corte e o que '
-  'melhor aproveita chapa — uma prateleira de 176 × 40 e outra de 131 × 40 '
-  'saem da mesma tira.',
+  '⭐⭐ METADE DO CUSTO DESTE AMBIENTE É AÇO, NÃO MADEIRA: R$ 3.000 de '
+  'metalon contra menos de R$ 3.000 de chapa, fita e corte. É o único '
+  'ambiente da casa em que a marcenaria é o acabamento e não a estrutura.',
+  '⭐ UM MATERIAL SÓ E UMA ESPESSURA SÓ na madeira: Branco Diamante Linha '
+  'Trama em 18 mm, nas vinte e quatro peças. Uma de 176 × 40 e outra de '
+  '131 × 40 saem da mesma tira, e isso faz deste o ambiente que melhor '
+  'aproveita chapa.',
   '⚠ PRATELEIRA DE DESPENSA CARREGA PESO DE VERDADE: conserva, garrafa, '
-  'saco de arroz. É por isso que o vão manda aqui mais do que em qualquer '
-  'outro ambiente da casa, e por isso a alma de aço não é preciosismo.'],
+  'saco de arroz. É por isso que o quadro de metalon não é luxo — é o que '
+  'permite 1,76 m de vão livre sem apoio no meio e sem flecha.'],
+
 )

@@ -294,8 +294,19 @@ else:
 L['ferr'] = r
 põe(r, B='Ferragem, terceirizados e iluminação',
     # ⭐ a linha de ferragem vem da BASE do projeto, não de um padrão fixo
-    C=f'{desc} · linha {getattr(A, "LINHA", getattr(B, "LINHA", "Hettich"))}'
-      ' · ⛔ sem fonte: as fitas da casa são 110 V',
+    # ⛔⛔ E SÓ SE DIZ O QUE EXISTE [30/10/2026 · a Despensa]. A frase vinha
+    #   fixa — "linha Hettich · ⛔ sem fonte: as fitas da casa são 110 V" —
+    #   em TODO ambiente. Na Despensa, que só tem quadro de metalon, saía
+    #   "Estrutura de metalon · linha Hettich", citando uma marca de
+    #   ferragem de movimento que não existe lá, e avisando de uma fonte de
+    #   LED que ninguém pediu. ⭐ Frase que fala do que não está na aba é
+    #   pior que frase nenhuma: ela faz o leitor procurar o que não existe.
+    C=desc
+      + (f' · linha {getattr(A, "LINHA", getattr(B, "LINHA", "Hettich"))}'
+         if any(c in (B.CH_CORREDICA, B.CH_DOBRADICA, 'Corrediça touch')
+                for c, _ in ativos) else '')
+      + (' · ⛔ sem fonte: as fitas da casa são 110 V'
+         if any(c == 'LED conjunto' for c, _ in ativos) else ''),
     # ⛔ E O AMBIENTE PODE NÃO TER NENHUMA PEÇA DE FERRAGEM. O Office é só
     #   um painel: usinagem e perfil, os dois por metro. Com `conta` vazia o
     #   join saía "SUMPRODUCT(()*...)", fórmula inválida — e o Sheets a
