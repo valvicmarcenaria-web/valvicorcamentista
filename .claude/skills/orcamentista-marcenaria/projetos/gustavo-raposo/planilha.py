@@ -33,7 +33,7 @@ NOME = sys.argv[1] if len(sys.argv) > 1 else 'cozinha'
 sp = importlib.util.spec_from_file_location('AMB', P/f'{NOME}.py')
 A = importlib.util.module_from_spec(sp); sys.modules['AMB'] = A
 with contextlib.redirect_stdout(io.StringIO()): sp.loader.exec_module(A)
-PECAS = getattr(A, NOME.upper())
+PECAS = getattr(A, NOME.upper().replace('-', '_'))
 g = lambda n: getattr(A, n, [])
 # ⭐⭐ O MÓVEL VEM DAS PEÇAS **E DO CABEÇALHO** [30/10/2026].
 #   ⛔ Derivar o móvel só das peças de MDF faz um ambiente SEM MARCENARIA

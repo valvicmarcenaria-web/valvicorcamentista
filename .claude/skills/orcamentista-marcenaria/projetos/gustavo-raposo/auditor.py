@@ -31,7 +31,7 @@ with contextlib.redirect_stdout(io.StringIO()): sp.loader.exec_module(A)
 # ⛔⛔ `or` AQUI ERA BUG: lista VAZIA é falsa em Python, e o Lavabo — que
 #   é apenas espelho, sem uma peça de MDF — caía no fallback e morria
 #   com AttributeError. ⭐ Ambiente sem chapa é caso legítimo, não erro.
-_p = getattr(A, NOME.upper(), None)
+_p = getattr(A, NOME.upper().replace('-', '_'), None)
 PECAS = getattr(A, 'PECAS') if _p is None else _p
 g = lambda n: getattr(A, n, [])
 GAVETAS, PORTAS, CAVA = g('GAVETAS'), g('PORTAS'), g('CAVA')
@@ -120,9 +120,19 @@ for p in PECAS:
     #   do DET 06 corre em trilho, e a regra a acusou de porta sem
     #   dobradiça. A porta de correr da Sala de Cinema só escapou porque
     #   suas peças se chamam "esquadria": era sorte de nome, não regra.
+    # ⛔ PORTA PIVOTANTE TAMBÉM NÃO TEM [Suíte Master, 30/10]. A folha de
+    #   75 × 210 gira em PIVÔ de piso e teto, não em caneco. E eu quase a
+    #   escapei pelo mesmo acidente: chamá-la de "folha" em vez de "porta"
+    #   fazia a regra não vê-la. ⭐ A peça se chama pelo que ela é, e a
+    #   exceção fica na REGRA — nunca no nome.
+    # ⛔ BANDEIRA NÃO É FOLHA [Closet Master, 30/10]. A peça fixa que fecha
+    #   o vão ACIMA de uma porta carrega a palavra "porta" no nome e não
+    #   abre: é painel. Sem esta linha, o único jeito de calar a regra
+    #   seria mentir no nome da peça.
     if ('porta' in n or n.startswith('frente') and 'gavet' not in n) \
        and 'báscula' not in n and 'moldura' not in n and 'leito' not in n \
-       and 'correr' not in n \
+       and 'correr' not in n and 'pivotante' not in n \
+       and 'bandeira' not in n \
        and p['movel'] not in port_mov and p['movel'] not in corre_mov:
         erro(f'{p["movel"][:30]} · {p["nome"]}: porta SEM dobradiça')
 
