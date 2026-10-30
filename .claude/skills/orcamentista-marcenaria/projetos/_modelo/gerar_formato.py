@@ -5,39 +5,18 @@ sys.path.insert(0, '.')
 from formatar import *
 
 def painel(sid=0):
-    rng, rc, alt, mesc, larg = mk(sid)
-    Q = cabeca(rc, alt, mesc, 60)
-    Q += [larg('A', 28), larg('B', 300), larg('C', 120)]
-    # os quatro blocos de seção
-    for r in (4, 8, 12, 17, 27):
-        Q += secao(rc, mesc, r)
-    # os dois parágrafos de instrução
-    Q += texto(rc, alt, mesc, 6, px=74)
-    Q += texto(rc, alt, mesc, 10, px=74)
-    # ⭐ O CONJUNTO — cinco indicadores, em pares de colunas
-    Q += cabtab(rc, 14)
-    Q += [rc(15, 15, 'B', 'K', fm(18, True, al='LEFT')), alt(15, 15, 34)]
-    # ONDE ESTÁ O DINHEIRO
-    Q += cabtab(rc, 19)
-    Q += [rc(20, 24, 'B', 'F', fm(10)),
-          rc(20, 25, 'G', 'G', fm(10, al='RIGHT', num=MOEDA)),
-          rc(20, 25, 'H', 'H', fm(10, fg=CINZA, al='RIGHT', num=PCT)),
-          rc(20, 25, 'I', 'K', fm(9, fg=CINZA, al='RIGHT')),
-          rc(25, 25, 'B', 'K', fm(11, True, bor=TETO)),
-          rc(25, 25, 'G', 'G', fm(11, True, al='RIGHT', num=MOEDA, bor=TETO))]
-    # POR AMBIENTE
-    Q += cabtab(rc, 28)
-    Q += texto(rc, alt, mesc, 29, px=30, sz=9)
-    Q += [rc(30, 30, 'B', 'K', fm(11, True, bor=TETO))]
-    Q += [alt(4, 4, 26), alt(8, 8, 26), alt(12, 12, 26), alt(17, 17, 26),
-          alt(27, 27, 26)]
-    return Q
+    """⛔⛔ O LAYOUT DO PAINEL MORA NO fmt_painel.py, não aqui [30/10/2026].
+    O que havia nesta função era o painel de TRÊS blocos que fez o Jonathan
+    dizer "esta muuuuuito diferente". Apagado de propósito: duas fontes de
+    layout dão dois layouts."""
+    import fmt_painel
+    return fmt_painel.requests(sid)
 
 def preco(sid=201):
     rng, rc, alt, mesc, larg = mk(sid)
     Q = cabeca(rc, alt, mesc, 80, c1='I')
     Q += [larg('A', 28), larg('B', 300), larg('C', 430), larg('D', 110)]
-    for r in (4, 12, 29, 38, 64):
+    for r in (4, 12, 29, 38, 64, 72):
         Q += secao(rc, mesc, r, c1='I')
     # ① a condição da venda
     Q += [rc(6, 6, 'B', 'D', fm(8, True, fg=CINZA, bg=F7)),
@@ -88,8 +67,14 @@ def preco(sid=201):
           rc(67, 69, 'C', 'C', fm(9, fg=CINZA, wr='WRAP')),
           rc(67, 69, 'D', 'D', fm(11, True, al='CENTER', num=PCT)),
           alt(67, 69, 32)]
+    # ⛔ a nota de piso do ⑤ · vermelha, porque corrige quem leria "zero"
+    Q += [rc(70, 70, 'B', 'I', fm(9, True, fg=VERM, wr='WRAP')),
+          mesc(70, 'B', 'I'), alt(70, 70, 30)]
+    # ⑥ o que esta aba NÃO faz · cinco parágrafos corridos
+    Q += [rc(74, 78, 'C', 'I', fm(9, fg=CINZA, wr='WRAP')), alt(74, 78, 64)]
+    for r in range(74, 79): Q.append(mesc(r, 'C', 'I'))
     Q += [alt(4, 4, 26), alt(12, 12, 26), alt(29, 29, 26), alt(38, 38, 26),
-          alt(64, 64, 26)]
+          alt(64, 64, 26), alt(72, 72, 26)]
     return Q
 
 def base(sid=200, fim=100):

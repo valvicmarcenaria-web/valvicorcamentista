@@ -6,8 +6,8 @@ Arquiteta **Luiza Pacheco** (CAU A69992-6) · executivo Rev.00, março/2026 · *
 **Planilha:** `1HovPv64ISuL-cnRUNyKpxoPdZqvkzMQyiAYBNYiexE8`
 https://docs.google.com/spreadsheets/d/1HovPv64ISuL-cnRUNyKpxoPdZqvkzMQyiAYBNYiexE8/edit
 
-**Planilha BASE da casa, de onde ela saiu:** `1Wl5j1HgBiakn6HiRm0WFRFakDq_jtmAFSjKK2YNjpkc`
-https://docs.google.com/spreadsheets/d/1Wl5j1HgBiakn6HiRm0WFRFakDq_jtmAFSjKK2YNjpkc/edit
+**Planilha BASE da casa, de onde ela saiu:** `11IgmtI5Xd8pshHvYpYvejzas0OemHbyw9Jqwd5SPN38`
+https://docs.google.com/spreadsheets/d/11IgmtI5Xd8pshHvYpYvejzas0OemHbyw9Jqwd5SPN38/edit
 
 ⭐ **As duas moram na pasta `Orçamentos Valvic`** (`1liWjdBNktz6C4087YhbJq0gufVwcYSBx`),
 ao lado das outras — é lá que se procura quando se vai começar um orçamento, e é de

@@ -1,7 +1,7 @@
 # A PLANILHA BASE DA VALVIC — o modelo de onde todo orçamento sai
 
-**Modelo:** `1Wl5j1HgBiakn6HiRm0WFRFakDq_jtmAFSjKK2YNjpkc`
-https://docs.google.com/spreadsheets/d/1Wl5j1HgBiakn6HiRm0WFRFakDq_jtmAFSjKK2YNjpkc/edit
+**Modelo:** `11IgmtI5Xd8pshHvYpYvejzas0OemHbyw9Jqwd5SPN38`
+https://docs.google.com/spreadsheets/d/11IgmtI5Xd8pshHvYpYvejzas0OemHbyw9Jqwd5SPN38/edit
 Mora em **Orçamentos Valvic**, ao lado dos orçamentos.
 
 ## ⛔⛔ Por que ela existe
@@ -57,7 +57,11 @@ branco. São 7,6 pontos de encargo que não entraram naquela conta.
 |---|---|
 | `base_importada.py` | a tabela de 70 chaves e as fórmulas de busca por nome |
 | `formatar.py` | ⭐ a paleta e os helpers da identidade visual, copiados do `aba.py` |
-| `gerar_formato.py` | emite o lote de requests de formato das quatro abas fixas |
+| `painel.py` | ⭐ o CONTEÚDO do Painel, os oito blocos, linha por linha |
+| `regras.py` | as dezessete regras da casa, que fecham o Painel |
+| `preco.py` | a nota de piso do ⑤ e o bloco ⑥ da aba Preço e Comissões |
+| `fmt_painel.py` | ⭐ o FORMATO do Painel · 129 requests · é ele que manda, não o `gerar_formato.py` |
+| `gerar_formato.py` | emite o formato das outras três abas fixas |
 
 ⛔ **A aba não se formata, ela se GERA.** A regra é a mesma que o `aba.py` aprendeu
 em 28/10, quando o Living e a Cozinha saíram diferentes em quinze pontos: duas mãos,
@@ -65,3 +69,39 @@ dois resultados.
 
 ⚠ **`fontSize` da API é INTEIRO.** Um 9,5 derruba o lote inteiro com "Internal
 error", e o erro não diz qual request falhou.
+
+## ⛔⛔ LAYOUT NÃO É COR — a lição de 30/10/2026
+
+Jonathan pediu *"quero a planilha com a mesma formatação e layout que fizemos com a
+do michell"*. Eu copiei a **paleta** do `aba.py` — o preto do título, o cinza do
+subtítulo, a régua, o teto dourado — e **inventei o layout**. A resposta veio em uma
+linha:
+
+> *"esta muuuuuito diferente"*
+
+Estava. O Painel do Michell tem **OITO blocos** e o meu tinha **três**. Faltavam a
+tabela por ambiente de dez colunas, o resumo de preço, **o quadro de lucro contra o
+custo fixo dos dias**, o que não é marcenaria, o que ainda não tem preço e as
+dezessete regras da casa. A aba Preço tem **SEIS** blocos e a minha tinha cinco:
+faltava o ⑥, que declara o que a aba **não** faz.
+
+⭐ **O conserto não foi estético, foi de método:** exportei o Painel do ICA em CSV
+(`download_file_content` devolve `text/csv` da primeira aba), leio as linhas e
+reproduzo o mapa. O layout agora é **lido de uma referência**, não lembrado.
+
+⭐ **O mapa de linhas do Painel**, para quem for mexer:
+
+| linha | bloco |
+|---|---|
+| 1–2 | título e subtítulo do projeto |
+| 4–9 | ① O CONJUNTO · cinco indicadores + a nota do primeiro clique |
+| 11–19 | ② ONDE ESTÁ O DINHEIRO · cinco linhas de custo e as barras █ |
+| 23–44 | ③ a tabela por ambiente, dez colunas, vinte linhas reservadas |
+| 48–59 | ④ O PREÇO DO PROJETO · o resumo do que a aba ao lado calcula |
+| 61–70 | ⑤ O LUCRO DO PROJETO · ⚠ custo fixo da empresa · **esconder do cliente** |
+| 74–79 | ⑥ O QUE NÃO É MARCENARIA |
+| 81–82 | ⑦ O QUE AINDA NÃO TEM PREÇO |
+| 85–103 | ⑧ AS REGRAS DA CASA, as dezessete |
+
+⚠ **O bloco 61–70 traz o custo fixo mensal da empresa.** Antes de abrir a planilha a
+um cliente ou a um parceiro, **esconder essas linhas**.
