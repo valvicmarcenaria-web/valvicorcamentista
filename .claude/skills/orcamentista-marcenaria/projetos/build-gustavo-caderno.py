@@ -53,7 +53,7 @@ OBRA, CIDADE = 'Condomínio Vale dos Pinhais', 'Nova Lima · MG'
 ARQ, DATA = 'Luiza Pacheco Arquitetura', 'Outubro de 2026'
 PRAZO, VALIDADE = '120 dias corridos', '7 dias úteis'
 LIN = ('Telescópica', 'Hettich', 'Blum')     # ⭐ sempre da entrada ao topo
-NF = 22                                      # folhas · o assert confere
+NF = 23                                      # folhas · o assert confere
 N0 = 19                                      # ⛔ a primeira folha com preço
 
 br = lambda v: 'R$ ' + f'{v:,.2f}'.replace(',', '@').replace('.', ',').replace('@', '.')
@@ -579,7 +579,80 @@ folha(f'''<div class="pad">
    A pedra é marmoraria e fica fora; a folha de condições nomeia o resto.</p></div>
 </div>''')
 
-# ── 21 · condições ──────────────────────────────────────────────────────
+# ── 21 · os dois ajustes possíveis ──────────────────────────────────────
+#    ⭐ [Jonathan 31/10] "Acrescente apenas a versão diferente da cozinha e
+#      do painel de muxarabi." Ele tinha mandado tirar na rodada anterior
+#      ("não apresentamos o downgrade"); agora entram, numa folha só,
+#      DEPOIS do preço cheio — porque continuam sendo alternativa, não
+#      proposta.
+#    ⛔⛔ E A COZINHA EM MELAMÍNICO NÃO É A MESMA COZINHA MAIS BARATA. A
+#      moldura provençal é peça de 6 mm usinada na router e colada sobre a
+#      frente: em laca a pintura fecha a junta e ela some; em melamínico o
+#      rebaixo da fresa EXPÕE O MIOLO CRU DO MDF e não há como acabar. São
+#      catorze frentes. A conta já tirou as molduras — então a folha tem de
+#      dizer que a frente fica LISA. É decisão de projeto, não de orçamento,
+#      e esconder isso seria vender uma cozinha que não existe.
+AJUSTES = [
+ ('A cozinha, em melamínico', cen.TROCA[0][1],
+  'A laca acetinada sai e entra o <b>MDF melamínico</b>, no padrão que vocês '
+  'escolherem com a arquiteta. É a troca que mais pesa no total da casa — '
+  'mais do que trocar a ferragem inteira de linha.',
+  'A moldura provençal não sobrevive à troca',
+  'Ela é uma peça usinada e colada sobre a frente. Na laca, a pintura fecha '
+  'a junta e a moldura vira parte do desenho; no melamínico, o rebaixo da '
+  'fresa expõe o miolo do MDF e não há acabamento que resolva. A cozinha '
+  'passa a ter <b>frente lisa</b>, nas catorze portas e gavetões. É uma '
+  'decisão de projeto, não de orçamento — e é por isso que ela está aqui, '
+  'e não embutida no preço.'),
+ ('O painel do office, usinado', cen.TROCA[1][1],
+  'A grade de réguas encaixadas uma a uma em meia-madeira vira um <b>painel '
+  'plano, usinado na CNC</b> em chapa inteira. A parede continua vazada e '
+  'continua em MDF Nogueira Caiena, de ponta a ponta.',
+  'O que sai é a mão de obra, não o desenho',
+  'Somem a montagem régua por régua, a fita de cada peça e a filetagem '
+  'manual que acabava os topos. O que fica é o mesmo desenho, resolvido '
+  'pela máquina em vez da bancada: o relevo é <b>usinado na própria chapa</b> '
+  'e não montado peça a peça.'),
+]
+cards = ''.join(
+    f'''<div class="aj"><div class="k">{E(t)}</div>
+     <div class="vv">− {br(v)}</div>
+     <div class="dd">{d}</div>
+     <div class="box" style="margin-top:4mm"><div class="t">{E(av)}</div>
+       <p>{ad}</p></div></div>''' for t, v, d, av, ad in AJUSTES)
+
+ESTADOS = [('Como está no projeto', []),
+           ('Com a cozinha em melamínico', [0]),
+           ('Com o painel do office usinado', [1]),
+           ('Com os dois ajustes', [0, 1])]
+#    ⛔ O preço de cada combinação sai de `mc_apos`, que é a mesma conta da
+#      planilha — e o assert de `cenarios.py` já provou que nenhuma das doze
+#      combinações fura o piso de 35%.
+linhas_aj = ''.join(
+    f'<tr{" class=tot" if not c else ""}><td class="l">{E(rot)}</td>'
+    + ''.join(f'<td{" class=hi" if n == "Hettich" else ""}>'
+              f'{brs(cen.mc_apos(n, c)[1])}</td>' for n in LIN)
+    + '</tr>' for rot, c in ESTADOS)
+for _n in LIN:
+    for _c in ([], [0], [1], [0, 1]):
+        assert cen.mc_apos(_n, _c)[0] >= 0.35 - 1e-9, (_n, _c)
+
+folha(f'''<div class="pad apertada"><div class="fitp">
+ <div class="eyebrow">Investimento · dois ajustes possíveis</div><div class="rule"></div>
+ <h1 class="h1" style="margin:0 0 3mm">Dois lugares onde a casa<br>aceita uma execução mais curta.</h1>
+ <p class="lead" style="max-width:215mm">Os valores das folhas anteriores são o
+  <b>projeto como a arquiteta desenhou</b>. Há dois pontos — e só dois — em que
+  a execução admite uma versão mais simples sem mexer em mais nada da casa. Um
+  deles <b>muda o desenho</b>, e isso está dito abaixo.</p>
+ <div class="ajs">{cards}</div>
+ <table class="inv" style="margin-top:6mm">
+  <tr><th class="l">A casa inteira</th>
+   {''.join(f'<th{" class=hi" if n == "Hettich" else ""}>{E(n)}</th>' for n in LIN)}</tr>
+  {linhas_aj}
+ </table>
+</div></div>''')
+
+# ── 22 · condições ──────────────────────────────────────────────────────
 #    ⭐⭐ [Jonathan 30/10, três vezes] "não coloque parcelamento, nada de
 #      cartão. Repita a mesma forma de pagamento do Michel." É esta, e ela
 #      é a do caderno do ICA: quatro parcelas por transferência bancária.
@@ -714,6 +787,18 @@ EXTRA = '''
 .gar.justo .c{padding-bottom:6mm}
 .gar.justo .l{margin-top:5mm}
 
+/* ── os dois ajustes: dois blocos lado a lado ─────────────────────────── */
+.pad.apertada{overflow:hidden}
+.pad.apertada .fitp{transform-origin:top left;width:100%}
+.ajs{display:grid;grid-template-columns:1fr 1fr;gap:9mm;margin-top:6mm}
+.aj{border-top:1.5px solid var(--gold);padding-top:4mm}
+.aj .k{font-family:'Cormorant Garamond',Georgia,serif;font-size:17pt;
+       line-height:1.1;font-weight:500}
+.aj .vv{font-family:'Cormorant Garamond',Georgia,serif;font-size:21pt;
+        color:var(--gold);line-height:1;margin-top:2mm}
+.aj .dd{color:var(--soft);font-size:8.4pt;margin-top:2.5mm;line-height:1.5}
+.aj .box{margin-top:4mm}
+
 /* ── comparativo das três linhas ──────────────────────────────────────── */
 .cmp{width:100%;border-collapse:collapse}
 .cmp th{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);
@@ -789,6 +874,7 @@ AJUSTE = '''
         pr.style.zoom = Math.max(.85, pr.clientHeight / pr.scrollHeight);
     });
     document.querySelectorAll('.amb-txt').forEach(c => encolhe(c, '.fit', .62));
+    document.querySelectorAll('.pad.apertada').forEach(c => encolhe(c, '.fitp', .80));
     document.querySelectorAll('.ambw').forEach(caberBanda);
   };
 '''
@@ -825,7 +911,7 @@ for _p in ('cartão', 'cartao', 'parcelamento', 'desconto', 'valor cheio',
 # ⛔ "à vista" e "vezes" são português comum nas descrições de móvel — o
 #   fundo que fica à vista, o puxador à vista. Só são proibidos na folha
 #   de condições, onde seriam escada de desconto.
-_cond = re.sub(r'<[^>]+>', ' ', S[20])
+_cond = re.sub(r'<[^>]+>', ' ', S[NF - 2])
 for _p in ('à vista', 'vezes', '%'):
     assert _p not in _cond.replace('30%', '').replace('20%', ''), \
         f'⛔⛔ ESCADA DE DESCONTO NA FOLHA DE CONDIÇÕES: "{_p}"'

@@ -892,3 +892,54 @@ pé mesmo onde a coluna acabava na metade (`align-items:start`), e o quarto
 cartão dos pilares tem enchimento desigual — este eu **não** corrigi: quatro
 textos de comprimento diferente em cartões de altura igual é o padrão certo,
 e emparelhar exigiria escrever enchimento.
+
+---
+
+# Folha 21 · os dois ajustes [31/10/2026]
+
+> *"Ficou perfeito. Sem editar o arquivo inteiro. Acrescente apenas a versão
+> diferente da cozinha e do painel de muxarabi."*
+
+Na rodada dos dez pontos ele tinha mandado **tirar** ("não apresentamos o
+downgrade da cozinha e do muxarabi"). Agora voltam — mas **depois** do preço
+cheio, na folha 21, porque continuam sendo alternativa e não proposta. O
+caderno foi de 22 para 23 folhas; nada mais mudou.
+
+| | Telescópica | Hettich | Blum |
+| --- | --: | --: | --: |
+| Como está no projeto | 296.921 · 35,0% | **377.395 · 42,0%** | 408.441 · 42,0% |
+| Com a cozinha em melamínico | 268.577 · 35,0% | 349.051 · 42,6% | 380.097 · 42,5% |
+| Com o painel do office usinado | 284.743 · 35,0% | 365.218 · 42,2% | 396.264 · 42,2% |
+| Com os dois ajustes | 256.400 · 35,0% | 336.874 · 42,8% | 367.920 · 42,8% |
+
+⭐ **A MARGEM SOBE QUANDO O CLIENTE LEVA UMA TROCA** nas duas linhas de cima.
+O desconto é único para os três cenários e foi calibrado na MC de 35% da
+telescópica; aplicado sobre uma linha de 42%, devolve menos do que a
+economia de custo justificaria ali. Nenhuma das doze combinações fura o
+piso — e isso já era assert em `cenarios.py`.
+
+## ⛔⛔ E A FOLHA TEM DE DIZER QUE A COZINHA MUDA DE DESENHO
+
+Melamínico **não é a mesma cozinha mais barata**. A moldura provençal é peça
+usinada na router e colada sobre a frente: na laca a pintura fecha a junta e
+ela vira parte do desenho; no melamínico o rebaixo da fresa **expõe o miolo
+cru do MDF** e não há acabamento que resolva. São **catorze frentes**, e a
+conta já tirou as molduras — o preço de R$ 28.343,92 a menos só existe
+porque elas saíram.
+
+Então a folha diz, com todas as letras, que a cozinha passa a ter **frente
+lisa**, e que isso é **decisão de projeto, não de orçamento**. Imprimir só o
+número seria vender uma cozinha que não existe — é o mesmo defeito da nota
+dos três ambientes, que afirmava o que a tabela desmentia.
+
+O painel do office é o contrário: **o desenho não muda**, sai a mão de obra.
+A parede continua vazada e continua em Nogueira Caiena; o relevo passa a ser
+usinado na própria chapa em vez de montado régua por régua, e com ele somem
+a fita de cada peça e a filetagem manual dos topos.
+
+## ⛔ A folha nova estourou, e a trava virou geral
+
+A última linha da tabela encostava no rodapé. Em vez de catar milímetro em
+`font-size`, a folha inteira entrou na mesma trava de encolher das folhas de
+ambiente (`.pad.apertada > .fitp`, piso de 80%) — e a varredura numérica das
+caixas por baixo do fio voltou a dar **NENHUM** nas 23 folhas.
