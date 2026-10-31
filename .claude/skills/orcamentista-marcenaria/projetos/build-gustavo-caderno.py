@@ -196,7 +196,7 @@ cols = '\n'.join(
     f'''<div class="pb"><div class="pb-h">{E(nome)}</div>
       <div class="pb-s">{E(sub)}</div>{''.join(etapa(*e) for e in ets)}</div>'''
     for nome, sub, ets in BLOCOS)
-folha(f'''<div class="pad" style="padding:13mm 15mm 11mm">
+folha(f'''<div class="pad" style="padding:13mm 15mm 20mm">
  <div class="eyebrow">O caminho do seu projeto</div><div class="rule"></div>
  <div style="display:flex;align-items:baseline;gap:9mm;margin-bottom:5mm">
   <h1 class="h1" style="margin:0">Doze etapas,<br>um só responsável</h1>
@@ -213,7 +213,7 @@ pars = ''.join(f'<p style="margin:0 0 3mm">{x}</p>' for x in aq['paragrafos'])
 folha(f'''<div class="amb">
  <div class="amb-img"><img src="{IMG['suite-master-01']}" alt="">
    <div class="tag">Suíte master</div></div>
- <div class="amb-txt" style="padding:15mm 15mm 12mm 12mm">
+ <div class="amb-txt" style="padding:15mm 15mm 21mm 12mm">
   <div class="eyebrow">Quem responde</div><div class="rule"></div>
   <h2 class="h2" style="margin:1mm 0 5mm">{E(aq['titulo'])}</h2>
   <div style="color:var(--soft);font-size:9pt">{pars}</div>
@@ -668,7 +668,7 @@ EXTRA = '''
 .rail{height:1.5px;background:linear-gradient(90deg,var(--gold),var(--gold-lt) 70%,var(--hair));
       margin:0;flex:none}
 .proc{display:grid;grid-template-columns:repeat(4,1fr);gap:0 7mm;flex:1;min-height:0;
-      margin-top:-1px;overflow:hidden;align-content:start}
+      margin-top:-1px;overflow:hidden;align-content:start;align-items:start}
 .proc .pb{transform-origin:top left}
 .pb{border-left:1px solid var(--hair);padding:5mm 5mm 0 5mm}
 .pb:first-child{border-left:none;padding-left:0}
@@ -701,6 +701,9 @@ EXTRA = '''
 .ix-d{font-size:7.4pt;color:var(--mut);text-align:right}
 
 /* ── ajustes do caderno ───────────────────────────────────────────────── */
+/* o .foot é absoluto e o fio dele cai a 13,9mm do pé; o padding de 12mm do
+   css da casa deixava a caixa de conteúdo passar por baixo do fio. */
+.pad{padding-bottom:20mm}
 /* a calha entre as colunas: sem ela o número encostava na tarja da Hettich */
 .inv td, .inv th{padding-left:3.4mm}
 .inv td.l, .inv th.l{padding-left:0}
@@ -736,9 +739,57 @@ AJUSTE = '''
     const pede = f.scrollHeight;
     if (pede > alt) f.style.zoom = Math.max(piso, alt / pede);
   };
+  const MM = 96 / 25.4;
+  const sobra = (low, f) => {
+    const cs = getComputedStyle(low);
+    return low.clientHeight - parseFloat(cs.paddingTop)
+                            - parseFloat(cs.paddingBottom) - f.scrollHeight;
+  };
+  // ⭐ quem cede é a FOTO, não o corpo do texto: o caderno tem de ter um
+  //   tamanho de letra só, e a faixa é que desce até a lista caber.
+  const caberBanda = (w) => {
+    const band = w.querySelector('.band'), low = w.querySelector('.low'),
+          f = low && low.querySelector('.fitw');
+    if (!band || !f) return;
+    f.style.zoom = 1;
+    const piso = 62 * MM;
+    for (let i = 0; i < 30; i++) {
+      const s = sobra(low, f);
+      if (s >= 0) break;
+      const h = band.getBoundingClientRect().height;
+      if (h <= piso) break;
+      band.style.height = Math.max(piso, h + s - 1) + 'px';
+    }
+    // ⛔ E SE NEM COM OS DOIS COUBER, A FAIXA CEDE O RESTO. Sem este
+    //   terceiro passo o bloco estourava o padding e o `overflow:hidden`
+    //   o cortava só na borda da folha — a barrinha do bloco de
+    //   acabamentos saía por baixo do fio do rodapé, 1,6 mm de sujeira
+    //   que só aparece com lupa e que eu já tinha dado por resolvida uma
+    //   vez sem medir.
+    let s = sobra(low, f);
+    if (s < 0) {
+      f.style.zoom = Math.max(.90, (low.clientHeight + s) / low.clientHeight);
+      const chao = 48 * MM;
+      for (let i = 0; i < 30; i++) {
+        s = sobra(low, f);
+        if (s >= 0) break;
+        const h = band.getBoundingClientRect().height;
+        if (h <= chao) break;
+        band.style.height = Math.max(chao, h + s - 1) + 'px';
+      }
+    }
+  };
   const caber = () => {
+    // ⛔ a coluna ENTREGA leva quatro etapas e transbordava a caixa: o
+    //   `overflow:hidden` não resolvia, só cortava o fio divisor na borda
+    //   da folha, 1,9mm por baixo do rodapé. Encolhe na origem.
+    document.querySelectorAll('.proc').forEach(pr => {
+      pr.style.zoom = 1;
+      if (pr.scrollHeight > pr.clientHeight)
+        pr.style.zoom = Math.max(.85, pr.clientHeight / pr.scrollHeight);
+    });
     document.querySelectorAll('.amb-txt').forEach(c => encolhe(c, '.fit', .62));
-    document.querySelectorAll('.ambw .low').forEach(c => encolhe(c, '.fitw', .70));
+    document.querySelectorAll('.ambw').forEach(caberBanda);
   };
 '''
 

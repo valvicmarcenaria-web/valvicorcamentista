@@ -848,3 +848,47 @@ ambiente; os números encostavam na tarja da Hettich; a cauda do "3" antigo
 cruzava "ANOS DE GARANTIA" na coluna da Blum; os cartões tinham buraco no
 meio; e **a coluna não fechava com o total** — R$ 1 de arredondamento na
 única folha em que o cliente soma com a calculadora na mão.
+
+## O que os verificadores derrubaram — e os cinco que sobraram
+
+Trinta achados brutos, **cinco confirmados**: vinte e cinco caíram no passo
+adversarial, em que um segundo agente abre a folha e tenta derrubar o
+primeiro. A lente de vazamento de outro cliente voltou limpa nas duas voltas.
+
+⛔⛔ **EU DECLAREI UMA CORREÇÃO QUE NÃO TINHA PEGADO.** Disse ao Jonathan que
+a caixa "A fábrica" tinha parado de ser cortada pelo rodapé. Eu havia subido
+o `padding-bottom` na **classe** `.amb-txt` — e a folha da arquiteta traz
+`padding` **inline**, que sobrepõe a classe. Conferi com um recorte a 150 dpi
+e "vi" limpo. O verificador mediu a 250 dpi e achou **1,6 mm** de caixa por
+baixo do fio. ⭐ **UM DEFEITO DE 1,6 MM NÃO SE CONFERE A OLHO: MEDE-SE.**
+Agora a trava é numérica e varre as 22 folhas:
+
+```python
+mal = [... for dr in p.get_drawings()
+       if dr['fill'] is not None and 1 < H - dr['rect'].y1 < FIO]
+assert not mal
+```
+
+A mesma armadilha estava na folha das doze etapas, com `padding` inline de
+11 mm. E o override do `.pad` foi para o **EXTRA deste caderno**, não para
+`css-apresentacao.css`: aquele arquivo é da casa e serve outras propostas —
+mexer nele moveria o rodapé delas sem ninguém ver.
+
+⛔ **ESTAVA ENCOLHENDO A COISA ERRADA.** Duas folhas saíam com corpo menor
+que as outras sete: a cozinha a 6,59 pt e a suíte das filhas a 6,52 pt,
+contra 7,80–7,99 pt. Era o `.fitw` apertando o **texto** para caber sob uma
+faixa de foto de altura fixa. Num caderno, o corpo do texto é o que tem de
+ser igual em toda folha — **quem cede é a foto**. A cascata agora é: a faixa
+desce até 62 mm · o texto aceita até 90% · a faixa desce até 48 mm.
+
+E a primeira versão dessa cascata **trocou um defeito por outro**: com piso
+de 44 mm a cozinha virou uma tira com o armário cortado fora da foto. Num
+caderno que vende marcenaria pela imagem, isso é pior que meio ponto de
+corpo. Ficou 08 = 7,48 pt e 13 = 7,01 pt, contra 7,80 das outras — a folha
+13 carrega **onze móveis**, o dobro da média, e é a única que ainda cede.
+
+Os outros dois: os fios que separam as colunas das doze etapas desciam até o
+pé mesmo onde a coluna acabava na metade (`align-items:start`), e o quarto
+cartão dos pilares tem enchimento desigual — este eu **não** corrigi: quatro
+textos de comprimento diferente em cartões de altura igual é o padrão certo,
+e emparelhar exigiria escrever enchimento.
