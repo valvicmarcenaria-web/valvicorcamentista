@@ -51,6 +51,12 @@ FITA_BRANCA = 2.00       # R$/m, 22 mm
 FITA_PERDA = 1.10        # ⭐ os 10% de desperdício, da própria Base
 FILETE_MAQ = 2.50        # R$/m · coladeira automática, 15 e 18 mm
 FILETE_MAO = 5.00        # R$/m · ripa e o que não entra na máquina
+CORTE_CHAPA = 2.00       # ⭐ [Jonathan, 28/10/2026] por chapa COMPRADA
+CORTE_PECA = 2.50        # ⭐ [Jonathan, 28/10/2026] por PEÇA cortada
+#   ⛔⛔ E ESTES DOIS FALTAVAM NO MOTOR. Os últimos orçamentos todos os
+#     trazem — a aba de ambiente tem as duas linhas e a Base tem as duas
+#     chaves — e o Attos tinha nascido sem. Não é centavo: são 43 chapas e
+#     algumas centenas de peças, serviço que a fábrica paga de verdade.
 CONSUMIVEIS = 0.06       # 6% sobre chapa e fita
 EMBALAGEM = 0.02         # 2% sobre o custo direto
 
@@ -59,10 +65,41 @@ EMBALAGEM = 0.02         # 2% sobre o custo direto
 #     "⛔ A DEFINIR — fica entre Bigfer Inox Click (R$ 10) e Bigfer Onix
 #     (R$ 15)". Uso o TOPO da faixa, que é a escolha conservadora: se vier
 #     mais barata, a margem sobe; ao contrário, ela evapora sem avisar.
-DOBRADICA = 15.0                  # Bigfer Onix · ⚠ confirmar com o Jonathan
+#   ⛔⛔ E ERA AQUI QUE MORAVA UMA DIVERGÊNCIA QUE NÃO DAVA ERRO.
+#     Este arquivo guardava a ferragem do nível Hardt/Bigfer (dobradiça R$ 15,
+#     corrediça R$ 80) e o `cenarios.py` sobrescrevia por linha (R$ 50 e
+#     R$ 150). Resultado: `levantamento.custo()` dizia R$ 67.590 e o cenário
+#     Hettich dizia R$ 69.303 — R$ 1.713 de diferença para a MESMA casa, e
+#     nenhum dos dois acusava nada.
+#   ⭐ ESTE PROJETO NÃO OFERECE O NÍVEL PADRÃO: as duas linhas são Hettich e
+#     Blum, e o Jonathan cravou dobradiça R$ 50 nas duas. Então o PADRÃO
+#     deste arquivo passa a ser a linha HETTICH, e o cenário Hettich deixa de
+#     sobrescrever coisa alguma. Um número só, e a trava no fim do cenarios.py
+#     prova que os dois motores fecham no centavo.
+DOBRADICA = 50.0                  # ⭐ Hettich e Blum, cravado [Jonathan, 03/11/2026]
 DOBRADICA_VIDRO = 70.0            # ⚠ A COTAR na Base · faixa observada 30 a 85
-CORREDICA_PAR = 80.0              # Hardt Invisível P-10 · ⭐ o padrão da casa
-SUPORTE_PRAT = 30.0               # suporte oculto · ⭐ de 40 em 40 cm
+CORREDICA_PAR = 150.0             # ⭐ Hettich Quadro V6 · a linha-base deste projeto
+#   ⚠ O Hardt Invisível P-10 de R$ 80 é o padrão da CASA, e segue na Base —
+#     mas não é uma das duas linhas que o Attos recebe, então não entra aqui.
+SISTEMA_CORRER = 600.0            # ⭐ Rometal, a linha Hettich · Blum usa 900
+# ⛔⛔ SÃO DOIS PRODUTOS DIFERENTES E EU USEI O ERRADO.
+#   A Base (importada) separa, com todas as letras:
+#     "Suporte oculto"        R$ 30,00/un  · ⭐ de 40 em 40 cm ·
+#        ⛔ "é o de prateleira de PAREDE, não o jogo de quatro de armário"
+#     "Suporte de prateleira" R$  6,50/jogo · ⭐ [Jonathan, 28/10] toda
+#        prateleira INTERNA de armário leva composição de 4
+#   A regra está na skill, item 2, e eu li e usei o de R$ 30 assim mesmo.
+#   Prateleira de cristaleira é INTERNA: vai de jogo.
+SUPORTE_JOGO = 6.50               # ⭐ por PRATELEIRA interna, composição de 4
+SUPORTE_OCULTO = 30.0             # só prateleira de PAREDE, sem armário em volta
+BASCULA_HK = 250.0                # Blum AVENTOS HK-XS · ⭐ a báscula da casa
+DESEMPENADOR = 100.0              # ⭐⭐ padrão em TODA porta deslizante, e
+                                  #   folha de 70 cm ou mais leva DOIS
+SISTEMA_PIVO = 120.0              # só o sistema, sem a folha
+#   ⛔ ESTES TRÊS ESTAVAM DIGITADOS DENTRO DO LEVANTAMENTO, soltos. Um preço
+#     que mora no meio do quantitativo não aparece quando se confere a
+#     tabela de preços — e foi exatamente assim que a dobradiça a R$ 15
+#     sobreviveu meia sessão. Preço mora aqui, e só aqui.
 ALMA_BARRA = 50.0                 # barra chata 5 mm, 3 m
 PULSADOR = 100.0                  # Blum Tip-on
 FECHO_TOQUE_VIDRO = 45.0          # aba Vidro
@@ -101,9 +138,44 @@ VIDRO_M2_REF = 660.0     # referência de obra: cristaleira 2,00 × 0,36, Kenia
 
 # ── a cascata de encargos · aba Comissões ───────────────────────────────
 #   ⛔ A BASE MUDA CONFORME TENHA RT E VENDEDOR, e são quase 9 pontos cada.
-BASE_SEM_RT = 0.8488     # sem RT e sem vendedor, 0 parcelas
-BASE_COM_UM = 0.7609     # com RT OU com vendedor · "o caso mais comum da casa"
-BASE_COM_DOIS = 0.6730   # com RT E com vendedor
+#   ⛔⛔ E ESTES TRÊS NÚMEROS ERAM ARREDONDADOS. A Base de Custos PUBLICA
+#     84,88% / 76,09% / 67,30%, mas o que ela CALCULA é 0,84875 / 0,760875 /
+#     0,673. Usar o publicado custou R$ 10 de diferença entre o meu preço e
+#     o da planilha — e R$ 10 que ninguém explica é pior que R$ 10.
+#   ⭐ Então a BASE deixa de ser constante e passa a ser a CASCATA, a mesma
+#     que a aba Preço e Comissões monta. E a prova de que a fórmula é a
+#     certa está no assert abaixo: ela reproduz os TRÊS números publicados.
+ENCARGO_BRUTO = 0.05 + 0.02 + 0.005 + 0.005   # NF, margem de erro, serra, manutenção
+NOTA_FISCAL = 0.05
+CARTAO_PARCELA = 0.012   # ⛔ ACUMULA: 10× são 12%, não 1,2%
+COMISSOES_INTERNAS = 0.075   # produção, montagem, projeto, coordenação e gestão,
+                             # todas sobre o LÍQUIDO 2
+
+
+def cascata(parcelas=0, rt=0.0, vendedor=0.0):
+    """A BASE — o que sobra do preço para o custo direto e para a margem.
+
+    ⭐ Três degraus, e cada um incide sobre o que sobrou do anterior:
+       1) sobre o BRUTO: nota fiscal, cartão, margem de erro, serra, manutenção
+       2) sobre o LÍQUIDO (bruto menos NF e cartão): RT e vendedor
+       3) sobre o LÍQUIDO 2 (líquido menos RT e vendedor): as cinco comissões
+    """
+    cartao = CARTAO_PARCELA * parcelas
+    bruto = ENCARGO_BRUTO + cartao
+    liquido = 1 - NOTA_FISCAL - cartao
+    sobre_liquido = (rt + vendedor) * liquido
+    liquido2 = liquido - sobre_liquido
+    return 1 - bruto - sobre_liquido - liquido2 * COMISSOES_INTERNAS
+
+
+BASE_SEM_RT = cascata()                       # 0,84875 · publicado 84,88%
+BASE_COM_UM = cascata(vendedor=0.10)          # 0,760875 · publicado 76,09%
+BASE_COM_DOIS = cascata(rt=0.10, vendedor=0.10)   # 0,673 · publicado 67,30%
+#   ⭐⭐ A PROVA: a cascata reproduz os três números que a Base PUBLICA.
+#     Se ela errasse a mecânica, não bateria em três pontos diferentes.
+assert abs(BASE_SEM_RT - 0.8488) < 0.0001, BASE_SEM_RT
+assert abs(BASE_COM_UM - 0.7609) < 0.0001, BASE_COM_UM
+assert abs(BASE_COM_DOIS - 0.6730) < 0.0001, BASE_COM_DOIS
 #   ⭐ [Jonathan, 03/11/2026] "tem comissão do vendedor (10%)" — resolvido.
 #     A BASE sai de 84,88% e vai para **76,09%**, que é a linha "com RT OU com
 #     vendedor" da aba Comissões.

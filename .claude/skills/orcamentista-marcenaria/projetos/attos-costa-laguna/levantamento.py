@@ -24,6 +24,12 @@ b_ = b
 
 COR, BR = 'MDF cor', 'MDF Branco TX'
 
+# ⭐⭐ OS ÍNDICES DA TUPLA DE PEÇA, COM NOME. A tupla já cresceu duas vezes
+#   nesta sessão (ganhou a fita e depois o `mao`), e cada vez que ela cresce
+#   TODO desempacotamento por posição escorrega uma casa — em silêncio, sem
+#   erro, devolvendo outro número. Quem lê a peça lê por estes nomes.
+I_NOME, I_L, I_A, I_ESP, I_MAT, I_QTD, I_FITA, I_OBS, I_MAO = range(9)
+
 
 class Movel:
     def __init__(self, amb, nome, nota=''):
@@ -31,10 +37,24 @@ class Movel:
         self.pecas, self.fita, self.ferr, self.terc, self.vidro = [], 0.0, [], [], []
         self.fita_ripa = 0.0      # ⭐ a da ripa é MANUAL; o resto é máquina
 
-    def p(self, nome, L, A, esp, mat=COR, qtd=1, fita_m=0.0):
-        """Uma peça: L × A em cm, espessura em mm, material e quantas."""
-        self.pecas.append((nome, L, A, esp, mat, qtd))
+    def p(self, nome, L, A, esp, mat=COR, qtd=1, fita_m=0.0, obs='',
+          mao=False):
+        """Uma peça: L × A em cm, espessura em mm, material e quantas.
+
+        ⭐ A FITA DESCE PARA A PEÇA. Antes ela só existia somada no móvel, e
+          por isso o plano de corte não sabia dizer quantos metros de fita
+          cada peça leva — que é a pergunta da coladeira. `fita_m` é por
+          UNIDADE; quem multiplica pela quantidade é quem lê.
+        """
+        self.pecas.append((nome, L, A, esp, mat, qtd, fita_m, obs, mao))
         self.fita += fita_m * qtd
+        #   ⭐⭐ E A FITA DE MÃO TAMBÉM DESCE PARA A PEÇA. Antes a fita da
+        #     ripa era somada no móvel por fora, e por isso o bloco de peças
+        #     da planilha não sabia dizer de QUAL peça vinham os 2.595 m de
+        #     filetagem manual — 92% de toda a fita do projeto num número
+        #     órfão. Agora ela mora na peça que a consome.
+        if mao:
+            self.fita_ripa += fita_m * qtd
         return self
 
     def f(self, nome, qtd, unit):
@@ -49,7 +69,7 @@ class Movel:
     def areas(self):
         """m² por (material, espessura)."""
         d = {}
-        for _n, L, A, esp, mat, q in self.pecas:
+        for _n, L, A, esp, mat, q, *_ in self.pecas:
             d[(mat, esp)] = d.get((mat, esp), 0.0) + L * A * q / 10000
         return d
 
@@ -92,17 +112,21 @@ def painel_ripado(m, largura, altura, atras=True):
     area_rip = n * (RIPA_L / 100) * (altura / 100)
     if atras:
         m.p('base contínua do painel', largura, altura, BASE_ESP)
-    m.p(f'{n} ripas de {RIPA_L:g} × {altura:g}', RIPA_L * n * b.RIPA_PERDA,
-        altura, 18)
-    #   ⭐ a perda de serra entra na LARGURA da peça equivalente, que é onde
-    #     ela acontece de verdade: cada corte come lâmina.
-    m.t('Painel ripado, mão de obra', round(largura * altura / 10000, 2), b.RIPADO_M2)
     #   ⛔ A FITA DA RIPA É O MAIOR METRO DO PROJETO: cada ripa leva fita nas
     #     duas arestas que ficam à vista, e é filetagem MANUAL, porque ripa
     #     de 2 cm não entra na coladeira.
-    m.fita += n * altura / 100 * 2
-    m.fita_ripa += n * altura / 100 * 2
-    m.t('Filetagem manual de ripa', round(n * altura / 100 * 2, 1), b.FILETE_MAO)
+    m.p(f'{n} ripas de {RIPA_L:g} × {altura:g}', RIPA_L * n * b.RIPA_PERDA,
+        altura, 18, fita_m=n * altura / 100 * 2, mao=True,
+        obs=f'ripa de {RIPA_L:g} cm, vão de {VAO:g}, passo de {PASSO:g} · '
+            f'fita nas DUAS arestas à vista, {n} × 2 × {altura:g} cm')
+    #   ⭐ a perda de serra entra na LARGURA da peça equivalente, que é onde
+    #     ela acontece de verdade: cada corte come lâmina.
+    m.t('Painel ripado, mão de obra', largura * altura / 10000, b.RIPADO_M2)
+    m.t('Filetagem manual de ripa', n * altura / 100 * 2, b.FILETE_MAO)
+    #   ⛔ E SEM `round()` AQUI. Arredondar no LANÇAMENTO criava um segundo
+    #     número: o `custo()` cobrava a metragem arredondada e o
+    #     `custo_por_ambiente()` a cheia, e os dois motores passaram a
+    #     divergir em 71 centavos. Quem arredonda é a TELA, nunca a conta.
     return n
 
 
@@ -139,7 +163,7 @@ m.p('gaveta interna · fundo', 60, 31, 6)
 #     embaixo e vértice no topo é báscula; o escritório, na MESMA família de
 #     pranchas, marca giro com X e com "<". Três articuladores a R$ 250 são
 #     R$ 750 onde a dobradiça seriam R$ 90.
-m.f('Articulador Blum AVENTOS HK-XS', 3, 250.0)
+m.f('Articulador Blum AVENTOS HK-XS', 3, b.BASCULA_HK)
 m.f('Corrediça da gaveta interna', 1, b.CORREDICA_PAR)
 m.t('Cava usinada nas 3 frentes', 3.08, b.CAVA_M)
 
@@ -178,14 +202,16 @@ m.p('fundo', 94, 71, 6)
 m.p('prateleira', 94, 25, 18, fita_m=94 / 100)
 m.v('Porta de vidro reflecta 47 × 71', 2)
 m.f('Dobradiça de porta de vidro', 2 * b.dobradicas(71), b.DOBRADICA_VIDRO)
-m.f('Suporte oculto de prateleira', 2, b.SUPORTE_PRAT)
+m.f('Suporte de prateleira', 1, b.SUPORTE_JOGO)   # 1 prateleira interna
 
 m = mv('Cozinha', 'Painel ripado do corredor',
-       '626 × 272 × 3 · o maior item do projeto')
+       '452 × 272 × 3 — o trecho FIXO. A parede tem 626; os dois vãos de '
+       '87 são as portas, lançadas em separado logo abaixo')
 N_RIP_COZ = painel_ripado(m, 626 - 2 * 87, 272)      # o painel fixo, sem as portas
 
 for amb, qual in (('Vestiário', 'vestiário'), ('Despensa', 'despensa')):
-    m = mv('Cozinha', f'Porta de correr ripada · {qual}', '87 × 272 · 29 passos exatos')
+    m = mv('Cozinha', f'Porta de correr ripada · {qual}',
+       '87 × 272 · 29 passos exatos · faz parte dos 626 da parede')
     painel_ripado(m, 87, 272, atras=True)
     #   ⭐ [Jonathan 03/11] o sistema agora é por LINHA: Rometal de 600 na
     #     Hettich e SI Forma de 900 na Blum. O preço entra aqui como o da
@@ -193,8 +219,8 @@ for amb, qual in (('Vestiário', 'vestiário'), ('Despensa', 'despensa')):
     #     projeto, além da corrediça, que muda entre os dois cenários.
     #   ⚠ UM CONJUNTO POR PORTA: vestiário e despensa são vãos separados, cada
     #     um com o seu trilho. Não é um kit de duas folhas dividindo trilho.
-    m.f('Sistema de correr', 1, 600.0)
-    m.f('Desempenador de porta', 2, 100.0)
+    m.f('Sistema de correr', 1, b.SISTEMA_CORRER)
+    m.f('Desempenador de porta', 2, b.DESEMPENADOR)
 
 m = mv('Cozinha', 'Cristaleira', '147 × 275 × 54 · fundo RIPADO · 2 portas de VIDRO')
 m.p('laterais', 54, 269, 15, qtd=2, fita_m=269 / 100)
@@ -208,7 +234,7 @@ m.p('caixa da base · fundo e tampo', 100, 39, 15, qtd=2)
 painel_ripado(m, 147, 269)                    # ⭐ o fundo inteiro é ripado
 m.v('Porta de vidro reflecta 70 × 269', 2)
 m.f('Dobradiça de porta de vidro', 2 * b.dobradicas(269), b.DOBRADICA_VIDRO)
-m.f('Suporte oculto de prateleira', 5 * 4, b.SUPORTE_PRAT)
+m.f('Suporte de prateleira', 5, b.SUPORTE_JOGO)   # 5 prateleiras internas
 #   ⭐ prateleira de 140 de vão pede alma de aço: a regra da casa é acima de
 #     120 cm, e a Base manda uma barra por peça.
 m.f('Alma de aço, barra de 3 m', 5, b.ALMA_BARRA)
@@ -226,10 +252,10 @@ m = mv('Escritório', 'Painel ripado de fundo',
 m.p('base contínua do painel', 316, 272, BASE_ESP)
 for larg, alt in ((60, 272), (46, 204), (190, 60), (20, 272)):
     n = ripas_em(larg)
-    m.p(f'{n} ripas de {RIPA_L:g} × {alt:g}', RIPA_L * n * b.RIPA_PERDA, alt, 18)
-    m.fita += n * alt / 100 * 2
-    m.fita_ripa += n * alt / 100 * 2
-    m.t('Filetagem manual de ripa', round(n * alt / 100 * 2, 1), b.FILETE_MAO)
+    m.p(f'{n} ripas de {RIPA_L:g} × {alt:g}', RIPA_L * n * b.RIPA_PERDA, alt,
+        18, fita_m=n * alt / 100 * 2, mao=True,
+        obs=f'faixa de {larg:g} cm · passo de {PASSO:g} · fita {n} × 2 × {alt:g} cm')
+    m.t('Filetagem manual de ripa', n * alt / 100 * 2, b.FILETE_MAO)
 m.t('Painel ripado, mão de obra', 4.25, b.RIPADO_M2)
 
 m = mv('Escritório', 'Armário superior', '190 × 80 × 32, suspenso a 135 · 4 portas')
@@ -281,12 +307,12 @@ m = mv('Sala de TV', 'Painel ripado',
 m.p('base contínua do painel', 353.5, 272, BASE_ESP)
 for larg, alt in ((253.5, 272), (50, 202), (50, 62)):
     n = ripas_em(larg)
-    m.p(f'{n} ripas de {RIPA_L:g} × {alt:g}', RIPA_L * n * b.RIPA_PERDA, alt, 18)
-    m.fita += n * alt / 100 * 2
-    m.fita_ripa += n * alt / 100 * 2
-    m.t('Filetagem manual de ripa', round(n * alt / 100 * 2, 1), b.FILETE_MAO)
+    m.p(f'{n} ripas de {RIPA_L:g} × {alt:g}', RIPA_L * n * b.RIPA_PERDA, alt,
+        18, fita_m=n * alt / 100 * 2, mao=True,
+        obs=f'faixa de {larg:g} cm · passo de {PASSO:g} · fita {n} × 2 × {alt:g} cm')
+    m.t('Filetagem manual de ripa', n * alt / 100 * 2, b.FILETE_MAO)
 m.t('Painel ripado, mão de obra',
-    round((253.5 * 272 + 50 * 202 + 50 * 62) / 10000, 2), b.RIPADO_M2)
+    (253.5 * 272 + 50 * 202 + 50 * 62) / 10000, b.RIPADO_M2)
 
 m = mv('Sala de TV', 'Painel liso', '300 × 272 × 2 · com recorte para a pedra')
 m.p('painel liso', 300, 272, 15, fita_m=(300 + 272) * 2 / 100)
@@ -327,7 +353,7 @@ m.f('Alma de aço, barra de 3 m', 1, b.ALMA_BARRA)
 m.p('folha da porta de giro', 80, 207, 15, fita_m=(80 + 207) * 2 / 100)
 m.p('folha da porta pivotante', 100, 207, 15, fita_m=(100 + 207) * 2 / 100)
 m.f('Dobradiça da porta de giro', b.dobradicas(207), b.DOBRADICA)
-m.f('Sistema pivô', 1, 120.0)
+m.f('Sistema pivô', 1, b.SISTEMA_PIVO)
 m.t('Cava usinada nas duas folhas', 1.80, b.CAVA_M)
 
 # ⭐ RESOLVIDO em 03/11: as duas portas da suíte SÃO nossas e já estão
@@ -367,13 +393,50 @@ def custo():
     fita_maq = fita - fita_ripa
     terc += fita_maq * b.FILETE_MAQ
     cons = (c_chapa + c_fita) * b.CONSUMIVEIS
-    direto = c_chapa + c_fita + cons + ferr + terc + vidro
+    #   ⭐⭐ OS DOIS SERVIÇOS DE CORTE, que o Jonathan cravou por AMBIENTE.
+    #     ⛔ `n_pecas` conta a PEÇA, não a linha: uma linha de 4 prateleiras
+    #       são 4 peças na serra, e a serra cobra por peça.
+    n_chapas = sum(n for _a, n in chapas.values())
+    n_pecas = sum(q for m in M for _n, _L, _A, _e, _m2, q, *_ in m.pecas)
+    corte = n_chapas * b.CORTE_CHAPA + n_pecas * b.CORTE_PECA
+    direto = c_chapa + c_fita + cons + ferr + terc + vidro + corte
     emb = direto * b.EMBALAGEM
     return dict(area=area, chapas=chapas, c_chapa=c_chapa, fita=fita,
+                corte=corte, n_chapas=n_chapas, n_pecas=n_pecas,
                 fita_ripa=fita_ripa, fita_maq=fita_maq,
                 c_fita=c_fita, cons=cons, ferr=ferr, terc=terc, vidro=vidro,
                 emb=emb, direto=direto + emb)
 
+
+# ⭐⭐ A TRAVA DO RIPADO: a soma do que foi lançado tem de bater com a
+#   parede desenhada, centímetro a centímetro. Sem ela, "o painel e as
+#   portas" vira 800 cm de ripado numa parede de 626 e ninguém vê.
+_RIP_LANCADO = sum(q for _m in M for _n, q, _u in _m.terc
+                   if _n.startswith('Painel ripado'))
+_RIP_DESENHO = ((626 * 272)                 # corredor da cozinha, com as portas
+                + (147 * 269)               # fundo da cristaleira
+                + (253.5 * 272 + 50 * 202 + 50 * 62)   # sala, em três faixas
+                + (200 * 272)) / 10000 + 4.25          # suíte · escritório aparente
+assert abs(_RIP_LANCADO - _RIP_DESENHO) < 0.02, \
+    f'⛔⛔ RIPADO LANÇADO {_RIP_LANCADO:.2f} m² ≠ DESENHADO {_RIP_DESENHO:.2f} m²'
+
+# ⭐⭐ E A TRAVA QUE FECHA A PORTA PARA SEMPRE: o atributo `fita_ripa` de
+#   cada móvel tem de ser EXATAMENTE a metragem que ele lançou como
+#   filetagem manual. São dois registros do mesmo metro — um que o
+#   `custo_por_ambiente` lê e um que o `custo()` lê — e eles divergiram em
+#   10 cm porque TRÊS lugares diferentes lançam ripa e só um tinha sido
+#   corrigido. ⛔ Código duplicado não se confere no olho: varre-se.
+for _m in M:
+    _lc = sum(q for _n, q, _u in _m.terc if 'Filetagem' in _n)
+    assert abs(_m.fita_ripa - _lc) < 1e-9, (
+        f'⛔⛔ {_m.amb} · {_m.nome}: fita_ripa {_m.fita_ripa:.4f} m ≠ '
+        f'filetagem lançada {_lc:.4f} m')
+
+_RIPAS_COZ = sum(int(_n.split()[0]) for _m in M if _m.amb == 'Cozinha'
+                 for _n, *_ in _m.pecas if 'ripas de' in _n
+                 and 'cristaleira' not in _m.nome.lower())
+assert _RIPAS_COZ == ripas_em(626), \
+    f'⛔⛔ {_RIPAS_COZ} ripas no corredor, e 626 cm pedem {ripas_em(626)}'
 
 PREMISSAS = [
  'Passo da ripa 3 cm — o detalhe 1:5 cotado, não a hachura da elevação (5 cm).',
@@ -382,14 +445,18 @@ PREMISSAS = [
  'Base do ripado em MDF 15 mm — a prancha cota 1 cm, que não é espessura comercial.',
  'Profundidade do armário gourmet: 25 cm, lida da cadeia do existente. Não é cotada.',
  'Tampo da mesa em duas chapas de 18 coladas (36 mm) — a espessura não é\n cotada e a Base não tem chapa de cor em 25 mm.',
- 'Sistema de correr RO65 (R$ 100) nas duas portas ripadas. A prancha não '
- 'especifica; na Base vai até R$ 800 o Dominus.',
+ 'Sistema de correr das duas portas ripadas: a prancha não especifica, e o '
+ 'Jonathan cravou por LINHA — Rometal R$ 600 na Hettich e SI Forma R$ 900 na '
+ 'Blum. ⚠ A Base diz "SS-150, 2 portas" por R$ 600: se UM kit servir as duas '
+ 'folhas, esta linha cai pela metade.',
  'Vidro reflecta PRATA com perfil — o executivo pede "cristal", que não '
  'existe na Base de Custos.',
  'Dobradiça Bigfer Onix a R$ 15 — a Base nunca cravou a do nível Padrão.',
  'Aparador com 3 BÁSCULAS (articulador Blum), não portas de giro: o símbolo '
  'é triângulo, e o escritório usa X e "<" para giro na mesma família.',
- 'Sem RT de arquiteta e sem vendedor — BASE de 84,88%.',
+ '⛔ NÃO É MAIS PREMISSA: há comissão de VENDEDOR de 10% [Jonathan, '
+ '03/11/2026], então a BASE é a linha "com RT OU com vendedor" da aba '
+ 'Comissões — 76,09%, e não os 84,88% que eu tinha assumido.',
  'Sem iluminação: não há uma única indicação de LED em nenhuma das 11 pranchas.',
  'Frete não entra: a Base deixou as quatro linhas de frete vazias de propósito.',
 ]
@@ -429,7 +496,7 @@ if __name__ == '__main__':
     print('═' * 72)
     amb = {}
     for m in M:
-        ar = sum(L * A * q / 10000 for _n, L, A, _e, _m, q in m.pecas)
+        ar = sum(L * A * q / 10000 for _n, L, A, _e, _m, q, *_ in m.pecas)
         cf = (m.fita * b_.FITA_COR * b_.FITA_PERDA
               + m.fita_ripa * b_.FILETE_MAO
               + (m.fita - m.fita_ripa) * b_.FILETE_MAQ)
