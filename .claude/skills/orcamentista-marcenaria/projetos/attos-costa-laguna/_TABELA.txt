@@ -1,23 +1,26 @@
 ══════════════════════════════════════════════════════════════════════════
-ATTOS · COSTA LAGUNA — PREÇO POR AMBIENTE · MC 42% · BASE 84.88%
+ATTOS · COSTA LAGUNA — PREÇO POR AMBIENTE · MC 42% · BASE 76.09%
 ══════════════════════════════════════════════════════════════════════════
 ambiente       móveis   peça m²        HETTICH           BLUM
-Cozinha             6     62.33         75,157         75,514
-Sala de TV          3     38.25         33,431         34,858
-Escritório          4     31.06         23,023         24,093
-Suíte               2     19.45         17,339         17,339
-Jantar              1      6.77          5,371          5,728
-Gourmet             1      1.77          3,509          3,509
-Hall                2      6.19          2,823          2,823
+Cozinha             6     62.33         97,124         99,368
+Sala de TV          3     37.21         38,516         40,311
+Escritório          4     31.06         29,056         30,402
+Suíte               2     23.18         25,168         25,168
+Jantar              1      6.77          6,777          7,226
+Gourmet             1      1.77          4,420          4,420
+Hall                2      6.19          4,093          4,093
 ──────────────────────────────────────────────────────────────────────────
-A CASA             19    165.83        160,653        163,864
+A CASA             19    168.50        205,153        210,988
 
-  a diferença entre as duas linhas: R$ 3,211.29  (2.0%)
-  ⭐ E ela vem INTEIRA de 9 pares de corrediça — 20 dobradiças não mudam,
-    porque Hettich e Blum custam o MESMO na dobradiça (R$ 50).
+  a diferença entre as duas linhas: R$ 5,834.56  (2.8%)
+  ⭐ E ela vem de dois lugares só:
+      9 pares de corrediça  · R$ 1,350.00 de custo
+      2 sistemas de correr  · R$   600.00 de custo
+    As 30 dobradiças comuns NÃO mudam: Hettich e Blum custam o mesmo (R$ 50).
+    E as 26 de porta de VIDRO são outro produto (R$ 70), fora da escada.
 
   outras margens, sobre o total Hettich:
-    MC 35%  →  R$   138,107.39
-    MC 38%  →  R$   146,945.32
-    MC 40%  →  R$   153,493.69
-    MC 45%  →  R$   172,738.13
+    MC 35%  →  R$   170,203.89
+    MC 38%  →  R$   183,609.29
+    MC 40%  →  R$   193,784.37
+    MC 45%  →  R$   224,949.43

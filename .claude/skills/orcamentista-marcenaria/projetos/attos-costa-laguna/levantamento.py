@@ -187,11 +187,13 @@ N_RIP_COZ = painel_ripado(m, 626 - 2 * 87, 272)      # o painel fixo, sem as por
 for amb, qual in (('Vestiário', 'vestiário'), ('Despensa', 'despensa')):
     m = mv('Cozinha', f'Porta de correr ripada · {qual}', '87 × 272 · 29 passos exatos')
     painel_ripado(m, 87, 272, atras=True)
-    #   ⚠⚠ A PRANCHA NÃO ESPECIFICA O SISTEMA DE CORRER, e na Base ele vai de
-    #     R$ 100 (RO65) a R$ 800 (Dominus). Lanço o RO65 de uma porta, que é o
-    #     piso — e registro que o Dominus multiplica por oito.
-    m.f('Sistema de correr RO65, 1 porta', 1, 100.0)
-    m.f('Trilho RO65 de 2 m', 1, 100.0)
+    #   ⭐ [Jonathan 03/11] o sistema agora é por LINHA: Rometal de 600 na
+    #     Hettich e SI Forma de 900 na Blum. O preço entra aqui como o da
+    #     Hettich e `cenarios.py` troca por linha — é a ÚNICA ferragem deste
+    #     projeto, além da corrediça, que muda entre os dois cenários.
+    #   ⚠ UM CONJUNTO POR PORTA: vestiário e despensa são vãos separados, cada
+    #     um com o seu trilho. Não é um kit de duas folhas dividindo trilho.
+    m.f('Sistema de correr', 1, 600.0)
     m.f('Desempenador de porta', 2, 100.0)
 
 m = mv('Cozinha', 'Cristaleira', '147 × 275 × 54 · fundo RIPADO · 2 portas de VIDRO')
@@ -269,8 +271,22 @@ m.t('Cava usinada', 2.28, b.CAVA_M)
 # ════════════════════════════════════════════════════════════════════════
 # SALA DE TV
 # ════════════════════════════════════════════════════════════════════════
-m = mv('Sala de TV', 'Painel ripado', '353,5 × 272 × 3')
-painel_ripado(m, 353.5, 272)
+m = mv('Sala de TV', 'Painel ripado',
+       '353,5 × 272 × 3 · a ripa para onde o rack e a pedra cobrem')
+#   ⭐ [Jonathan 03/11] o ripado não corre atrás do que o cobre. Aqui são
+#     três faixas, porque o que cobre está em alturas diferentes:
+#       0 → 253,5   livre, ripa inteira de 272
+#       253,5 → 303,5  o rack toma os 70 de baixo → ripa de 202
+#       303,5 → 353,5  rack (70) e travertino (70 a 210) → ripa de 62
+m.p('base contínua do painel', 353.5, 272, BASE_ESP)
+for larg, alt in ((253.5, 272), (50, 202), (50, 62)):
+    n = ripas_em(larg)
+    m.p(f'{n} ripas de {RIPA_L:g} × {alt:g}', RIPA_L * n * b.RIPA_PERDA, alt, 18)
+    m.fita += n * alt / 100 * 2
+    m.fita_ripa += n * alt / 100 * 2
+    m.t('Filetagem manual de ripa', round(n * alt / 100 * 2, 1), b.FILETE_MAO)
+m.t('Painel ripado, mão de obra',
+    round((253.5 * 272 + 50 * 202 + 50 * 62) / 10000, 2), b.RIPADO_M2)
 
 m = mv('Sala de TV', 'Painel liso', '300 × 272 × 2 · com recorte para a pedra')
 m.p('painel liso', 300, 272, 15, fita_m=(300 + 272) * 2 / 100)
@@ -308,8 +324,16 @@ m.p('prateleira de 198 · duas chapas coladas', 198, 28, 15, qtd=2,
     fita_m=(198 + 28) * 2 / 100)
 m.f('Alma de aço, barra de 3 m', 1, b.ALMA_BARRA)
 #   ⭐ 198 de vão passa de longe dos 120 da regra da casa.
+m.p('folha da porta de giro', 80, 207, 15, fita_m=(80 + 207) * 2 / 100)
+m.p('folha da porta pivotante', 100, 207, 15, fita_m=(100 + 207) * 2 / 100)
+m.f('Dobradiça da porta de giro', b.dobradicas(207), b.DOBRADICA)
+m.f('Sistema pivô', 1, 120.0)
+m.t('Cava usinada nas duas folhas', 1.80, b.CAVA_M)
 
-# ⚠⚠ AS DUAS PORTAS DE PASSAGEM DA SUÍTE FICAM DE FORA ATÉ O JONATHAN DIZER.
+# ⭐ RESOLVIDO em 03/11: as duas portas da suíte SÃO nossas e já estão
+#   lançadas acima, como folha de MDF mais ferragem. O bloco abaixo fica só
+#   como registro do que era a dúvida.
+# ⚠⚠ ERA A PENDÊNCIA:
 #   Estão hachuradas como MDF, o que pela legenda as faz nossas, e pelo teste
 #   da casa (sai no mesmo caminhão?) também. Mas são porta de PASSAGEM, e a
 #   obra pode já tê-las comprado. A Base tem o preço pronto: giro de 80 a
@@ -390,7 +414,10 @@ if __name__ == '__main__':
     print(f'  embalagem, 2%                         R$ {c["emb"]:>9,.2f}')
     print(f'  {"─"*54}')
     print(f'  CUSTO DIRETO                          R$ {c["direto"]:>9,.2f}')
-    print(f'\n  BASE {b.BASE:.2%} · sem RT e sem vendedor')
+    _cond = {b.BASE_SEM_RT: 'sem RT e sem vendedor',
+             b.BASE_COM_UM: 'com RT OU com vendedor',
+             b.BASE_COM_DOIS: 'com RT E com vendedor'}[b.BASE]
+    print(f'\n  BASE {b.BASE:.2%} · {_cond}')
     for mc in (0.35, 0.38, 0.40):
         print(f'    MC {mc:.0%}  →  PREÇO  R$ {b.preco(c["direto"], mc):>12,.2f}')
     print(f'\n  ⚠ fora da conta, à espera de decisão:')

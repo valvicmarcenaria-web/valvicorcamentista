@@ -104,11 +104,13 @@ VIDRO_M2_REF = 660.0     # referência de obra: cristaleira 2,00 × 0,36, Kenia
 BASE_SEM_RT = 0.8488     # sem RT e sem vendedor, 0 parcelas
 BASE_COM_UM = 0.7609     # com RT OU com vendedor · "o caso mais comum da casa"
 BASE_COM_DOIS = 0.6730   # com RT E com vendedor
-#   ⚠⚠ QUAL VALE NO ATTOS É PERGUNTA ABERTA. O projeto vem de executivo de
-#     arquiteto, o que normalmente puxa RT; mas no Gustavo Raposo, que também
-#     veio de arquiteta, a casa fechou SEM RT. Calculo em SEM RT e registro
-#     que, havendo RT, o preço sobe ~11,6% para manter a mesma MC.
-BASE = BASE_SEM_RT
+#   ⭐ [Jonathan, 03/11/2026] "tem comissão do vendedor (10%)" — resolvido.
+#     A BASE sai de 84,88% e vai para **76,09%**, que é a linha "com RT OU com
+#     vendedor" da aba Comissões.
+#   ⛔⛔ E ISSO NÃO É UM AJUSTE PEQUENO: são 8,79 pontos de BASE. Para manter
+#     a MESMA MC o preço sobe 1/(0,7609−mc) ÷ 1/(0,8488−mc) — na MC de 42%,
+#     **+25,8%**. Comissão de vendedor não sai da margem: sai do preço.
+BASE = BASE_COM_UM
 
 MC_PISO = 0.35           # piso da casa
 MC_FAIXA = (0.35, 0.40)  # faixa ideal

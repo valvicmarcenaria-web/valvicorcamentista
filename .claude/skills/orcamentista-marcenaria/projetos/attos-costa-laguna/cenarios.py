@@ -37,9 +37,14 @@ b = _mod('b', 'base.py')
 lv = _mod('lv', 'levantamento.py')
 
 # ── as duas linhas ──────────────────────────────────────────────────────
+#   ⭐ [Jonathan, 03/11/2026] "versão hettich vamos usar Rometal de 600 e na
+#     BLUM Siforma de 900" — o sistema de correr das duas portas ripadas
+#     também muda de linha, e é a SEGUNDA (e última) ferragem que muda.
 LINHAS = {
-    'Hettich': dict(corr=150.0, dobr=50.0, gar='10 anos'),
-    'Blum':    dict(corr=300.0, dobr=50.0, gar='30 anos'),
+    'Hettich': dict(corr=150.0, dobr=50.0, corre=600.0, gar='10 anos',
+                    sist='Rometal'),
+    'Blum':    dict(corr=300.0, dobr=50.0, corre=900.0, gar='30 anos',
+                    sist='SI Forma'),
 }
 #   ⛔ a dobradiça de PORTA DE VIDRO não entra na escada: é outro produto
 #     (R$ 70 na Base, e ainda A COTAR). Não muda entre as linhas.
@@ -64,8 +69,11 @@ def custo_por_ambiente(linha):
             # ⭐ a troca de linha mexe SÓ na corrediça e na dobradiça comum
             if nome.startswith('Corrediça'):
                 u = f['corr']
-            elif nome == 'Dobradiça':
+            elif nome.startswith('Dobradiça') and 'vidro' not in nome:
                 u = f['dobr']
+            #   ⛔ a de VIDRO fica fora: é outro produto, não é a escada.
+            elif nome == 'Sistema de correr':
+                u = f['corre']
             d['ferr'] += q * u
 
     # ── a chapa, comprada UMA vez para o projeto todo ───────────────────
@@ -123,10 +131,19 @@ if __name__ == '__main__':
           f'R$ {tot["Blum"] - tot["Hettich"]:,.2f}  '
           f'({(tot["Blum"]/tot["Hettich"]-1)*100:.1f}%)')
     ncorr = sum(q for m in lv.M for n, q, u in m.ferr if n.startswith('Corrediça'))
-    ndobr = sum(q for m in lv.M for n, q, u in m.ferr if n == 'Dobradiça')
-    print(f'  ⭐ E ela vem INTEIRA de {ncorr:.0f} pares de corrediça — '
-          f'{ndobr:.0f} dobradiças não mudam,')
-    print(f'    porque Hettich e Blum custam o MESMO na dobradiça (R$ 50).')
+    ndobr = sum(q for m in lv.M for n, q, u in m.ferr
+                if n.startswith('Dobradiça') and 'vidro' not in n)
+    nvid = sum(q for m in lv.M for n, q, u in m.ferr if 'vidro' in n)
+    nsis = sum(q for m in lv.M for n, q, u in m.ferr if n == 'Sistema de correr')
+    d_corr = ncorr * (LINHAS['Blum']['corr'] - LINHAS['Hettich']['corr'])
+    d_sis = nsis * (LINHAS['Blum']['corre'] - LINHAS['Hettich']['corre'])
+    print(f'  ⭐ E ela vem de dois lugares só:')
+    print(f'      {ncorr:.0f} pares de corrediça  · R$ {d_corr:>8,.2f} de custo')
+    print(f'      {nsis:.0f} sistemas de correr  · R$ {d_sis:>8,.2f} de custo')
+    print(f'    As {ndobr:.0f} dobradiças comuns NÃO mudam: Hettich e Blum '
+          f'custam o mesmo (R$ 50).')
+    print(f'    E as {nvid:.0f} de porta de VIDRO são outro produto (R$ 70), '
+          f'fora da escada.')
 
     print(f'\n  outras margens, sobre o total Hettich:')
     for m_ in (0.35, 0.38, 0.40, 0.45):
