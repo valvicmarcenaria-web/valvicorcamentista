@@ -72,10 +72,17 @@ for n in CEN:                                            # ⛔ piso da casa
 #   para os tres cenarios" — os descontos da coluna da telescópica, que são
 #   os MENORES. Aplicados sobre as linhas de MC 42% eles devolvem ao cliente
 #   MENOS do que a economia justificaria ali, e a margem sobe.
+# ⭐ [Jonathan, 03/11/2026] "mudando o custo a ser subtraído laca da cozinha
+#   para 18k e o painel muxarabi em 9k" — ele cortou as duas reduções: a da
+#   cozinha de 28.343,92 para 18.000 e a do painel de 12.177,30 para 9.000.
+#   ⛔ O QUE MUDOU FOI O QUE SE DEVOLVE AO CLIENTE, NÃO O QUE SE ECONOMIZA.
+#     A economia de custo é medida na planilha (14.136,53 e 6.073,43) e não é
+#     escolha de ninguém; o desconto é. Devolvendo menos pela mesma economia,
+#     a MC das duas trocas SOBE — é o oposto de um desconto que corrói margem.
 TROCA = [
- ('Cozinha em melamínico', 28343.92, 14136.53,
+ ('Cozinha em melamínico', 18000.00, 14136.53,
   'A cozinha sai da laca e vai para o melamínico, em frente lisa'),
- ('Painel do office usinado', 12177.30, 6073.43,
+ ('Painel do office usinado', 9000.00, 6073.43,
   'A grade de réguas vira painel plano usinado na CNC'),
 ]
 def mc_apos(linha, descontos):

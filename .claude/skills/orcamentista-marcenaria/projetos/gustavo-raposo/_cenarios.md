@@ -943,3 +943,50 @@ A última linha da tabela encostava no rodapé. Em vez de catar milímetro em
 `font-size`, a folha inteira entrou na mesma trava de encolher das folhas de
 ambiente (`.pad.apertada > .fitp`, piso de 80%) — e a varredura numérica das
 caixas por baixo do fio voltou a dar **NENHUM** nas 23 folhas.
+
+---
+
+# Folha 21 · as reduções cortadas [03/11/2026]
+
+> *"mudando o custo a ser subtraído laca da cozinha para 18k e o painel
+> muxarabi em 9k"*
+
+| | antes | agora |
+|---|---:|---:|
+| Cozinha em melamínico | −28.343,92 | **−18.000,00** |
+| Painel do office usinado | −12.177,30 | **−9.000,00** |
+
+⛔ **O QUE MUDOU FOI O QUE SE DEVOLVE, NÃO O QUE SE ECONOMIZA.** A economia
+de custo continua medida na planilha — 14.136,53 na cozinha e 6.073,43 no
+painel — e não é escolha de ninguém. O desconto é. Devolvendo menos pela
+mesma economia, **a MC das duas trocas sobe**: é o oposto de um desconto que
+corrói margem.
+
+| | Telescópica | Hettich | Blum |
+| --- | --: | --: | --: |
+| Como está no projeto | 296.921 · 35,0% | **377.395 · 42,0%** | 408.441 · 42,0% |
+| Com a cozinha em melamínico | 278.921 · 36,8% | 359.395 · **43,8%** | 390.441 · 43,6% |
+| Com o painel usinado | 287.921 · 35,6% | 368.395 · 42,6% | 399.441 · 42,6% |
+| Com os dois ajustes | 269.921 · 37,5% | **350.395 · 44,5%** | 381.441 · 44,3% |
+
+⭐ Antes, as duas trocas levavam a Hettich de 42,0% a 42,8%. Agora levam a
+**44,5%** — dois pontos e meio a mais de margem no cenário em que o cliente
+leva os dois ajustes.
+
+## ⛔⛔ E O NÚMERO MUDOU SEM LEVAR A FRASE JUNTO
+
+A folha dizia, sobre a cozinha: *"É a troca que mais pesa no total da casa —
+mais do que trocar a ferragem inteira de linha."* Com −28.343,92 isso era
+**verdade**: trocar a casa toda de Blum para Hettich vale 31.046,06, e a
+cozinha pesava quase isso. Com **−18.000 virou mentira**, e a peça ia
+imprimir assim.
+
+⭐ **É A MESMA ARMADILHA DA NOTA DOS AMBIENTES EMPATADOS**, pela terceira vez
+neste projeto: eu travo o NÚMERO com assert e deixo a FRASE que depende dele
+solta. A frase agora é *"É a maior das duas reduções desta folha"* — que é o
+que a própria folha mostra — e ganhou trava:
+
+```python
+assert cen.TROCA[0][1] > cen.TROCA[1][1], \
+    '⛔⛔ A FOLHA DIZ QUE A COZINHA É A MAIOR DAS DUAS REDUÇÕES'
+```

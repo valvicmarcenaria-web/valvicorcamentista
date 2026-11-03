@@ -595,8 +595,7 @@ folha(f'''<div class="pad">
 AJUSTES = [
  ('A cozinha, em melamínico', cen.TROCA[0][1],
   'A laca acetinada sai e entra o <b>MDF melamínico</b>, no padrão que vocês '
-  'escolherem com a arquiteta. É a troca que mais pesa no total da casa — '
-  'mais do que trocar a ferragem inteira de linha.',
+  'escolherem com a arquiteta. É a maior das duas reduções desta folha.',
   'A moldura provençal não sobrevive à troca',
   'Ela é uma peça usinada e colada sobre a frente. Na laca, a pintura fecha '
   'a junta e a moldura vira parte do desenho; no melamínico, o rebaixo da '
@@ -621,6 +620,8 @@ cards = ''.join(
      <div class="box" style="margin-top:4mm"><div class="t">{E(av)}</div>
        <p>{ad}</p></div></div>''' for t, v, d, av, ad in AJUSTES)
 
+assert cen.TROCA[0][1] > cen.TROCA[1][1], \
+    '⛔⛔ A FOLHA DIZ QUE A COZINHA É A MAIOR DAS DUAS REDUÇÕES'
 ESTADOS = [('Como está no projeto', []),
            ('Com a cozinha em melamínico', [0]),
            ('Com o painel do office usinado', [1]),
