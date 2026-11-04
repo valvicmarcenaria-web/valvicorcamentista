@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """RAFAEL · Cozinha — duas versões e a escala de desconto padrão da casa.
 
-  V1 · Telescópica (Silver, 2 anos) ........ MC 38%
-  V2 · Oculta Hettich (Gold, 10 anos) ...... MC 42%
+  V1 · Telescópica (Silver, 2 anos) ........ MC 33%  ⛔ abaixo do piso de 35%, decisão declarada [Jonathan, 04/11/2026]
+  V2 · Oculta Hettich (Gold, 10 anos) ...... MC 38%  [Jonathan, 04/11/2026]
 Sem RT, sem vendedor [Jonathan, 04/11/2026].
 
 Escala padrão (proposta-comercial.md):
@@ -52,5 +52,5 @@ def versao(nome, linha, alvo):
     return C, cheio, linhas
 
 if __name__ == '__main__':
-    v1 = versao('V1 · TELESCÓPICA (Silver · 2 anos)', 'silver', 0.38)
-    v2 = versao('V2 · OCULTA HETTICH (Gold · 10 anos)', 'gold', 0.42)
+    v1 = versao('V1 · TELESCÓPICA (Silver · 2 anos)', 'silver', 0.33)
+    v2 = versao('V2 · OCULTA HETTICH (Gold · 10 anos)', 'gold', 0.38)
