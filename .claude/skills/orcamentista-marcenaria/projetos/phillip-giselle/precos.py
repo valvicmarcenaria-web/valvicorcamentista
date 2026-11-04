@@ -3,7 +3,7 @@
 
 Decisões [Jonathan, 04/11/2026]:
   · SEM RT e SEM VENDEDOR [Jonathan, 04/11/2026: "tire o percentual de vendedor"]
-  · MC Telescópica 35% · Hettich 38% · Blum 42%
+  · MC Telescópica 35% · Hettich 38% · Blum 45%
   · ⛔ SEM CARTÃO e SEM ESCALA DE DESCONTO: "não considere o cartão de crédito
     nesse cliente · parcelamentos igual à proposta do Michel e do Gustavo" →
     30% na assinatura, 20% em 30 dias, 20% em 60, 30% em 90, transferência.
@@ -19,7 +19,7 @@ from resumo import AVULSO
 import motor as M
 
 LIN = {'telescopica': ('Telescópica', 0.35), 'hettich': ('Hettich', 0.38),
-       'blum': ('Blum', 0.42)}
+       'blum': ('Blum', 0.45)}   # ⭐ 45% [Jonathan, 04/11/2026]
 PROJETO = 2000.0
 PAGTO = [('Entrada, na assinatura do contrato', 0.30),
          ('30 dias após a assinatura', 0.20),
