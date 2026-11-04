@@ -812,9 +812,53 @@ m.t('Pé metálico · um jogo de 4 por mesa', len(MESAS), b.PE_METALICO_JOGO,
 #     manda fazer com o que não se sabe: ou está dentro com número, ou está
 #     fora com nome. Nunca dentro com zero.
 SEM_PRANCHA = [
-    ('Suíte 01', 'cabeceira estofada + mesas de cabeceira + painel de fundo'),
+    ('Suíte 01', 'o painel de fundo, o nicho suspenso e as mesas de cabeceira '
+                 '— só a CABECEIRA entrou, pela regra do Jonathan'),
     ('Suíte 02', 'tudo — não há nem render detalhado nem prancha'),
 ]
+
+
+# ════════════════════════════════════════════════════════════════════════
+# SUÍTE 01 — ⛔ SEM PRANCHA · o preço vem de REGRA, não de medida
+# ════════════════════════════════════════════════════════════════════════
+#   ⭐⭐ [Jonathan, 04/11/2026] "20 a menos que a cabeceira da suite de
+#     casal" — a cabeceira da suíte 01 sai por 20% abaixo da master.
+#   ⛔⛔ E ISTO INVERTE O MÉTODO DA CASA, de propósito e com o dono sabendo:
+#     no projeto inteiro a medida vem primeiro e o preço depois. Aqui NÃO HÁ
+#     DESENHO para medir — as onze pranchas não cobrem a suíte 01 —, então o
+#     dono deu o PREÇO e eu derivo a medida dele. É estimativa comercial
+#     declarada, e tem de estar escrito assim em todo lugar onde ela aparece.
+#   ⭐ 192 × 120 é o que fecha os 20% EXATOS a 120 de altura: o custo da
+#     cabeceira é quase todo linear na largura (rateio de MDF + estofado por
+#     m²), então 0,80 da largura dá 0,80 do custo. 192 × 120 = R$ 1.735,26
+#     contra R$ 2.169,08 da master — 0,8000, não 0,7917 nem 0,8333.
+#   ⚠ 192 NÃO É MEDIDA DE PROJETO. Se a suíte 01 tiver cama de 1,38 em vez
+#     de 1,80, a cabeceira proporcional seria 198 — e aí os 20% deixam de
+#     fechar. Com uma prancha, isto vira medida; sem ela, é regra.
+CAB_S01 = 192.0
+m = mv('Suíte 01', 'Cabeceira estofada',
+       f'{CAB_S01:g} × {CAB_ALT:g} × 5 · ⚠ medida DERIVADA do preço, não do '
+       f'desenho')
+m.p('base da cabeceira · MDF sob a espuma', CAB_S01, CAB_ALT, b.CAB_SUB_ESP,
+    obs='⚠⚠ ESTIMATIVA COMERCIAL, NÃO MEDIDA. Não há prancha da suíte 01 — '
+        'o executivo cobre cozinha (3), escritório (2), hall (3), sala/TV '
+        '(1) e suíte MASTER (2), e só. ⭐ [Jonathan, 04/11/2026] "20 a menos '
+        'que a cabeceira da suite de casal": os 192 de largura são o que faz '
+        'o custo cair exatamente 20% em relação aos 240 da master, a 120 de '
+        'altura. ⛔ Com uma prancha da suíte 01 isto vira medida; hoje é '
+        'regra de preço vestida de peça.')
+m.p('sarrafo de fixação · parede e painel', CAB_S01, 8, 15, qtd=2,
+    obs='francesa (rabo de andorinha), como na master')
+m.t('Estofamento da cabeceira', round(CAB_S01 * CAB_ALT / 10000, 4),
+    b.ESTOFADO_M2, obs=ESTOFADO_OBS)
+#   ⚠⚠ E O AMBIENTE NOVO COMPRA CHAPA INTEIRA. São 2,61 m² de MDF 15 num
+#     ambiente que só tem este móvel: pela regra da casa (`chapas()`), isso
+#     é UMA chapa de R$ 550 contra R$ 352,86 de rateio. ⛔ Então o ITEM cai
+#     os 20% pedidos, mas o AMBIENTE não — a diferença aparece na linha
+#     "Arredondamento de chapa", como em toda aba.
+#   ⭐ E ela SOME assim que o resto da suíte 01 entrar: o painel de fundo e
+#     o nicho suspenso que o 3D mostra usam a mesma chapa de 15.
+
 
 
 # ════════════════════════════════════════════════════════════════════════

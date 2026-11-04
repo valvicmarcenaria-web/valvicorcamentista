@@ -43,7 +43,7 @@ PCT = {'type': 'PERCENT', 'pattern': '0.0%'}
 NUM2 = {'type': 'NUMBER', 'pattern': '#,##0.00'}
 COL = 'ABCDEFGHIJK'
 SIDS = {'01': 101, '02': 102, '03': 103, '04': 104, '05': 105, '06': 106,
-        '07': 107}
+        '07': 107, '08': 108}
 #   ⭐ a largura da coluna é o que decide a LEITURA, e ela segue o papel que
 #     a coluna tem no layout da casa — não um número redondo qualquer.
 LARG = [('A', 'A', 18), ('B', 'B', 250), ('C', 'C', 330), ('D', 'D', 78),

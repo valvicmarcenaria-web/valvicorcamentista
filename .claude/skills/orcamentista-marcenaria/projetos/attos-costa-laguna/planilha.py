@@ -55,9 +55,10 @@ cen = _mod('cen', 'cenarios.py')
 
 ABAS = [('Hall', '01 Hall'), ('Jantar', '02 Jantar'), ('Cozinha', '03 Cozinha'),
         ('Gourmet', '04 Gourmet'), ('Escritório', '05 Escritório'),
-        ('Sala de TV', '06 Sala de TV'), ('Suíte', '07 Suíte')]
+        ('Sala de TV', '06 Sala de TV'), ('Suíte', '07 Suíte'),
+        ('Suíte 01', '08 Suíte 01')]
 SIDS = {'01': 101, '02': 102, '03': 103, '04': 104, '05': 105, '06': 106,
-        '07': 107}
+        '07': 107, '08': 108}
 
 W, COLS = 10, 'BCDEFGHIJK'
 PR = 'precos;2;FALSE'                    # ⭐ coluna B — o padrão da casa
@@ -151,14 +152,21 @@ DUVIDAS_CABECEIRA = [
  'A DEFINIR" e "RIPADO EM MDF AMADEIRADO A DEFINIR" — quem disse que a '
  'cabeceira é estofada foi o 3D, e o tecido segue sem definição.',
 
- '⛔⛔ DUAS SUÍTES INTEIRAS APARECEM NO 3D E NÃO TÊM UMA LINHA DE PRANCHA. '
- 'O executivo tem ONZE pranchas: cozinha (3), escritório (2), hall (3), '
- 'sala/TV (1) e suíte MASTER (2). O PDF dos 3Ds mostra SUÍTE 01, SUÍTE 02 '
- 'e SUÍTE PRINCIPAL. ⛔ A segunda cabeceira que o senhor pediu é da SUÍTE '
- '01 e NÃO está orçada, porque não existe desenho dela para medir — e '
- 'fazer "por analogia" seria pôr número inventado dentro de um orçamento '
- 'que é todo medido. ⚠ E a pergunta maior é essa: se as suítes 01 e 02 têm '
- 'marcenaria, faltam AMBIENTES nesta conta, não uma cabeceira.',
+ '⭐ RESPONDIDO EM PARTE [Jonathan, 04/11/2026]: "20 a menos que a '
+ 'cabeceira da suite de casal". A cabeceira da SUÍTE 01 entrou, na aba 08, '
+ 'por R$ 1.735,26 de rateio — exatamente 80% dos R$ 2.169,08 da master. '
+ '⛔ E ISSO INVERTE O MÉTODO DA CASA, com o dono sabendo: no resto do '
+ 'projeto a medida vem primeiro e o preço depois; ali o preço veio '
+ 'primeiro e os 192 × 120 são DERIVADOS dele. É estimativa comercial '
+ 'declarada, não cota.   ⚠ O AMBIENTE NOVO COMPRA CHAPA INTEIRA: 2,61 m² '
+ 'de MDF 15 num ambiente de um móvel só são UMA chapa de R$ 550 contra '
+ 'R$ 352,86 de rateio, e por isso o ITEM cai os 20% mas o AMBIENTE sai em '
+ 'R$ 2.014. ⭐ Essa diferença some quando o resto da suíte 01 entrar.   '
+ '⛔⛔ E O QUE CONTINUA FALTANDO É MAIOR QUE UMA CABECEIRA: o executivo '
+ 'tem ONZE pranchas — cozinha (3), escritório (2), hall (3), sala/TV (1) e '
+ 'suíte MASTER (2) — e o PDF dos 3Ds mostra SUÍTE 01, SUÍTE 02 e '
+ 'PRINCIPAL. Da suíte 01 faltam o painel de fundo, o nicho suspenso e as '
+ 'mesas de cabeceira; da suíte 02, tudo.',
 ]
 DUVIDAS_DO_AMBIENTE = {
  'Sala de TV': [
@@ -190,6 +198,8 @@ ESPEC = {
  'Filetagem manual': '⛔ O que NÃO entra na coladeira · hoje NADA neste '
                      'orçamento · a Base ainda cita chapa de 6 mm',
 }
+#   ⛔ as abas cujo ambiente não tem uma linha de desenho executivo
+SEM_DESENHO = {'08 Suíte 01'}
 ROTULO = {
  'Dobradiça': 'dobradiça', 'Dobradiça vidro': 'dobradiça de porta de vidro',
  'Corrediça Hettich': 'corrediça', 'Báscula HK-XS': 'articulador HK-XS',
@@ -310,11 +320,21 @@ def monta(amb, aba):
     SOMA_F = lambda alvo: f'SUMIF($K${a}:$K${z};{alvo};$F${a}:$F${z})'
 
     põe(L['tit'], B=f'  VALVIC MARCENARIA        {aba[3:].upper()}')
-    põe(L['sub'], B=f'  Attos · Costa Laguna · executivo vetorizado, 11 '
-                    f'pranchas A3 · {len(moveis)} '
-                    f'{"item" if len(moveis) == 1 else "itens"} de móvel · '
-                    f'⛔ nenhuma cota saiu por texto: tudo foi lido ampliando '
-                    f'a prancha')
+    #   ⛔⛔ ESTA LINHA MENTIA NA ABA DA SUÍTE 01. Ela dizia "executivo
+    #     vetorizado, 11 pranchas A3 · nenhuma cota saiu por texto" numa aba
+    #     cujo ambiente NÃO TEM PRANCHA NENHUMA — o subtítulo é gerado igual
+    #     para todas e eu não tinha previsto um ambiente sem desenho. ⭐ Agora
+    #     ele pergunta ao PRANCHAS do painel.py antes de afirmar.
+    _n = f'{len(moveis)} {"item" if len(moveis) == 1 else "itens"} de móvel'
+    _sem = aba in SEM_DESENHO
+    põe(L['sub'], B=(f'  Attos · Costa Laguna · ⛔⛔ AMBIENTE SEM PRANCHA · '
+                     f'{_n} · o preço desta aba vem de REGRA do Jonathan, '
+                     f'não de medida: não há desenho executivo da suíte 01 '
+                     f'em lugar nenhum'
+                     if _sem else
+                     f'  Attos · Costa Laguna · executivo vetorizado, 11 '
+                     f'pranchas A3 · {_n} · ⛔ nenhuma cota saiu por texto: '
+                     f'tudo foi lido ampliando a prancha'))
     põe(L['s_amb'], B='  O AMBIENTE   ·   chapa 275 × 185 com 80% de '
                       'aproveitamento · e ela se conta em número cheio, por '
                       'cor × espessura')

@@ -152,11 +152,40 @@ pagamento do `proposta-comercial.md` é **toda baseada em cartão**, de 6× a
 
 **Preço no Painel: R$ 305.114 → R$ 261.133** (MC 50%, com frete).
 
-**⚠ E UMA PERGUNTA QUE FICOU PELO MEIO:** a mensagem *"3 - 20 a menos que a
-cabeceira da suite de casal"* foi interrompida, e ela tem duas leituras que
-dão trabalhos completamente diferentes — ou a cabeceira da SUÍTE 01 custa
-20% menos que a da master (e aí a segunda cabeceira destrava), ou é a
-resposta ao "−20% de quê". Perguntado, não adivinhado.
+**⭐⭐ E A SEGUNDA CABECEIRA DESTRAVOU — por regra, não por desenho.**
+*"20 a menos que a cabeceira da suite de casal"*: a da SUÍTE 01 sai por 80%
+da master. Perguntei em vez de adivinhar, porque a frase tinha três leituras
+e uma delas era remover ripado de um projeto de cliente.
+
+⛔⛔ **E ISSO INVERTE O MÉTODO DA CASA, com o dono sabendo.** No projeto
+inteiro a medida vem primeiro e o preço depois. Ali não há desenho para
+medir, então o dono deu o PREÇO e eu derivei a medida: **192 × 120** é o que
+faz o custo cair exatamente 20% (R$ 1.735,26 contra R$ 2.169,08) a 120 de
+altura, porque o custo da cabeceira é quase todo linear na largura.
+⭐ Está escrito assim em toda linha onde aparece: **estimativa comercial
+declarada, não cota.**
+
+⚠ **E O AMBIENTE NOVO COMPRA CHAPA INTEIRA:** 2,61 m² de MDF 15 num ambiente
+de um móvel só são UMA chapa de R$ 550 contra R$ 352,86 de rateio. Então o
+**ITEM** cai os 20% pedidos, mas o **AMBIENTE** sai em R$ 2.014. A diferença
+some assim que o resto da suíte 01 entrar.
+
+**Nasceu a aba 08 Suíte 01**, e com ela a primeira aba do projeto cujo
+ambiente não tem prancha — o subtítulo gerado dizia "executivo vetorizado,
+11 pranchas A3" ali também, e agora ele pergunta antes de afirmar.
+
+**Projeto: 8 ambientes · 23 itens · 60 chapas · custo direto R$ 81.611,05 ·
+preço R$ 267.741,81** (MC 50%, com frete). Conferências: material R$ 0,00 ·
+8 internas R$ 0,00 · contra o motor −R$ 0,06 · Preço e Comissões R$ 0,00 ·
+linhas a preço zero **0**.
+
+**⚠ E O `economia.py` NASCEU DE UM MAL-ENTENDIDO MEU.** Eu li "20% a menos"
+como desconto no PROJETO, montei a análise inteira e perguntei "de quê" —
+quando ele falava da cabeceira. ⭐ O arquivo fica, porque o que ele mede
+segue valendo: quanto cada alavanca de preço realmente devolve, com o motor
+rodando em cada cenário. ⛔ A lição está escrita no topo dele: "20% a menos"
+sem sujeito tem pelo menos três leituras, e eu escolhi a mais trabalhosa
+antes de perguntar.
 
 **Gravado em:** `referencias/quantitativo.md` (MEDIR O VETOR DA PRANCHA) ·
 `referencias/laminacao-e-construcao.md` (a cabeceira e a mesa, camada a

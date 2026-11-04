@@ -1,12 +1,23 @@
 # -*- coding: utf-8 -*-
-"""ATTOS · Costa Laguna — ONDE ESTÃO OS 20%.
+"""ATTOS · Costa Laguna — AS ALAVANCAS DE PREÇO, MEDIDAS.
 
-⭐⭐ [Jonathan, 04/11/2026] "considere um investimento no orcamento 20% a
-  menos". ⛔ E 20% a menos NÃO é uma célula que se digita: é produto que sai
-  do projeto, ou margem que sai da casa. Este arquivo mede cada alavanca
-  pelo que ela REALMENTE devolve, para a escolha ser de quem pode escolher.
+⚠⚠ ESTE ARQUIVO NASCEU DE UM MAL-ENTENDIDO MEU, e fica por valer o que ele
+  mede. Eu li "considere um investimento no orcamento 20% a menos" como um
+  desconto no PROJETO, montei esta análise inteira e perguntei "20% de quê".
+  ⭐ A resposta [Jonathan, 04/11/2026] foi outra: "20 a menos que a cabeceira
+  da suite de casal" — ele falava da CABECEIRA DA SUÍTE 01, que agora está
+  na aba 08 por 80% do custo da master. Não havia desconto de projeto
+  nenhum na mesa.
+⛔ A lição fica escrita aqui porque ela é cara: "20% a menos" sem sujeito
+  tem pelo menos três leituras, e eu escolhi a mais trabalhosa das três sem
+  perguntar antes de calcular.
+
+⭐ O QUE O ARQUIVO SEGUE VALENDO: ele mede, com o motor inteiro rodando em
+  cada cenário, quanto cada alavanca de preço REALMENTE devolve. No dia em
+  que houver negociação, a conta está pronta e não é chute.
 
 ⛔⛔ A ALAVANCA QUE NÃO EXISTE: baixar a MC até o preço cair 20%.
+
   Preço = custo ÷ (BASE − MC). Para o preço cair 20% com o mesmo custo, o
   denominador tem de SUBIR 25% — e a MC teria de ir de 35% para 24,7%.
   O piso da casa é 35%. Essa porta está fechada, e fica medida aqui para
@@ -75,7 +86,7 @@ def main():
     #     dá uma conta completamente diferente — uma se resolve mexendo numa
     #     célula, a outra exige tirar produto do projeto.
     print('\n' + '─' * 78)
-    print('⛔⛔ 20% A MENOS DE QUÊ? SÃO DUAS CONTAS DIFERENTES')
+    print('⚠ SE UM DIA HOUVER −20% DE PROJETO: SÃO DUAS CONTAS DIFERENTES')
     print('─' * 78)
     p50 = preco(CUSTO, mc=MC_PLANILHA)
     alvo50 = p50 * 0.8

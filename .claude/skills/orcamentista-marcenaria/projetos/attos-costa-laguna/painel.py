@@ -33,6 +33,11 @@ PRANCHAS = {
     '05 Escritório': 'escritorio-01 e 02',
     '06 Sala de TV': 'sala-tv-01',
     '07 Suíte': 'suite-01 e 02',
+    #   ⛔⛔ O ÚNICO AMBIENTE SEM PRANCHA. A cabeceira da suíte 01 entrou
+    #     por REGRA DE PREÇO do Jonathan ("20 a menos que a cabeceira da
+    #     suite de casal"), não por medida — e esta célula é o lugar onde
+    #     isso fica à vista de quem lê o Painel.
+    '08 Suíte 01': '⛔ NENHUMA · preço por regra',
 }
 #   as linhas do Painel que este arquivo escreve
 R_TAB = 23          # cabeçalho da tabela de ambientes
