@@ -62,29 +62,14 @@ MC_COMUM = 0.42
 #   entre os itens (closets e painel do quarto da Ana)". Os R$ 2.000 entram
 #   na PARTE COMUM desses quatro, na proporção do custo de cada um — que não
 #   depende da linha, então o rateio é o mesmo nas três.
-def _painel_ana():
-    import importlib, os
-    os.environ['LINHA'] = 'hettich'
-    import motor as MM
-    from resumo import AMBS
-    for a_ in AMBS: importlib.import_module(a_)
-    R_ = MM.calcula(600.0)
-    m2 = {k_: R_['chapas'][k_] * MM.preco_chapa(k_) / R_['area'][k_] for k_ in R_['area']}
-    v = sum(p_['c'] * p_['l'] / 1e4 * p_['qtd'] * m2[p_['chapa']] for p_ in MM.pecas
-            if p_['movel'] == 'Painel com 3 portas mimetizadas')
-    v += sum(o_['qtd'] * o_['pu'] for o_ in MM.outras
-             if o_['movel'] == 'Painel com 3 portas mimetizadas')
-    return v
-PESO_PAINEL_ANA = _painel_ana()
-DILUI = ['Closet casal', 'Closet Ana', 'Closet Mateus', 'Suíte Ana']
+DILUI = ['Closet casal', 'Closet Ana', 'Closet Mateus', 'Suíte Ana · painel com 3 portas']
 
 TAB = {}
 B = base(0, 0)
 for k, (nome, mc) in LIN.items():
     amb, ferr = custos(k); CD = sum(amb.values())
     pv, com = {}, {}
-    pesos = {a: (amb[a] - ferr.get(a, 0)) for a in DILUI[:3]}
-    pesos['Suíte Ana'] = PESO_PAINEL_ANA
+    pesos = {a: (amb[a] - ferr.get(a, 0)) for a in DILUI}
     soma = sum(pesos.values())
     for a, c in amb.items():
         f = ferr.get(a, 0.0); com[a] = c - f + PROJETO * pesos.get(a, 0) / soma

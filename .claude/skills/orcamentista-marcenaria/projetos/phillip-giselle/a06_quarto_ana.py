@@ -45,6 +45,7 @@ for i in range(2):
 #   Parede: 15 + 80 + 86 + 70 + 211 = 462 × 270 (o resto é o nicho).
 #   Portas de 80 e 70 cotadas; ⚠ a terceira não existe no desenho: 70.
 import math
+ambiente('Suíte Ana · painel com 3 portas')   # ⭐ item próprio [Jonathan 04/11]
 m = 'Painel com 3 portas mimetizadas'
 PORTAS = [80, 70, 70]
 L_liq = 462 - sum(PORTAS)
