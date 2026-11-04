@@ -71,11 +71,11 @@ def prateleiras(movel, n, vao, Pf, ch=None, suporte=True):
     if suporte: O(movel, 'Suporte de prateleira (jogo de 4)', n, 'prat.', 6.5)
     if vao > 120: O(movel, 'Alma de aço barra chata 5 mm', n, 'barra', 50)
 
-def portas(movel, n, L, A, cor, giro=True):
+def portas(movel, n, L, A, cor, giro=True, dobr=None):
     P(movel, 'Porta', A, L, n, f'{cor} 18', 2 * (L + A) / 100)
     if giro:
         d = 2 if A <= 90 else 3 if A <= 160 else 4 if A <= 200 else 5
-        O(movel, 'Dobradiça c/ amortecimento', n * d, 'un', DOBR)
+        O(movel, 'Dobradiça c/ amortecimento' + (' (fixa)' if dobr else ''), n * d, 'un', dobr or DOBR)
 
 def gavetas(movel, n, L, A, Pf, cor, frente=True):
     if frente:

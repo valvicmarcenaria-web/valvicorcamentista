@@ -1,6 +1,14 @@
 # -*- coding: utf-8 -*-
 """Phillip e Giselle · CUSTO × VENDA por ambiente, nas três linhas.
 
+⛔⛔ O QUE NÃO MUDA DE FERRAGEM NÃO MUDA DE PREÇO [Jonathan, 04/11/2026]
+  "os itens que não mudam as ferragens, em cada versão o preço de venda tem
+  de ser o mesmo · o painel da circulação com as 4 portas tem que ser os
+  30.420 em todas as versões · revise esse conceito em todo o orçamento".
+  ⭐ O preço de cada ambiente = PARTE COMUM a MC 42% (igual nas três) +
+    FERRAGEM DE MOVIMENTO (corrediça e dobradiça) na MC da linha:
+    Telescópica 35 · Hettich 38 · Blum 45.
+
 Decisões [Jonathan, 04/11/2026]:
   · SEM RT e SEM VENDEDOR [Jonathan, 04/11/2026: "tire o percentual de vendedor"]
   · MC Telescópica 35% · Hettich 38% · Blum 45%
@@ -44,18 +52,28 @@ def custos(linha):
     amb = json.loads(r.stdout)['amb']
     amb['Closet Mateus'] = amb['Closet Ana']          # ⭐ custo igual
     amb['Projeto executivo de marcenaria'] = PROJETO
-    return amb
+    ferr = json.loads(r.stdout)['ferr']
+    ferr['Closet Mateus'] = ferr.get('Closet Ana', 0)
+    return amb, ferr
+
+MC_COMUM = 0.42
 
 TAB = {}
+B = base(0, 0)
 for k, (nome, mc) in LIN.items():
-    amb = custos(k); CD = sum(amb.values())
-    cheio = max(CD / ((base(e, n) - mc) * (1 - d)) for _, e, n, d in ESCALA)
-    cheio = math.ceil(cheio / 100) * 100
-    pv = {a: round(cheio * c / CD, -1) for a, c in amb.items()}
-    maior = max(pv, key=pv.get); pv[maior] += cheio - sum(pv.values())
-    esc = [(lab, d, cheio * (1 - d), base(e, n) - CD / (cheio * (1 - d)))
-           for lab, e, n, d in ESCALA]
-    TAB[k] = dict(nome=nome, mc=mc, amb=amb, CD=CD, cheio=cheio, pv=pv, esc=esc)
+    amb, ferr = custos(k); CD = sum(amb.values())
+    pv, com = {}, {}
+    for a, c in amb.items():
+        f = ferr.get(a, 0.0); com[a] = c - f
+        pv[a] = round(com[a] / (B - MC_COMUM), -1) + round(f / (B - mc), -1)
+    cheio = sum(pv.values())
+    esc = [('Transferência, 30/20/20/30', 0.0, cheio, B - CD / cheio)]
+    TAB[k] = dict(nome=nome, mc=mc, amb=amb, CD=CD, cheio=cheio, pv=pv, esc=esc,
+                  com=com, ferr=ferr)
+# ⛔ a trava: parte comum IGUAL nas três linhas, ambiente por ambiente
+for a in TAB['hettich']['com']:
+    v = [round(TAB[k]['com'][a], 2) for k in TAB]
+    assert max(v) - min(v) < 0.05, (a, v)
 
 if __name__ == '__main__':
     t0 = TAB['hettich']
@@ -66,7 +84,7 @@ if __name__ == '__main__':
     for t in TAB.values():
         print(f"\n{t['nome']} · MC {t['mc']*100:.0f}%")
         for lab, d, p, mc in t['esc']:
-            print(f"   {lab}: {M.brl(p)} · MC {mc*100:.1f}% · base {base(0,0)*100:.2f}%")
+            print(f"   {lab}: {M.brl(p)} · MC efetiva {mc*100:.1f}% · base {B*100:.2f}%")
         for lab, f in PAGTO:
             print(f"      {lab:36s} {f*100:3.0f}%  {M.brl(t['cheio']*f)}")
     for dsc, v, obs in AVULSO: print(f'\nAVULSO {M.brl(v)} (venda) · {obs}')

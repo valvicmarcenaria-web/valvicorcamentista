@@ -17,6 +17,13 @@ if os.environ.get('LINHA') and __name__ == '__main__':
     for a in AMBS: importlib.import_module(a)
     R = M.calcula(FRETE)
     R['amb'] = M.custo_por_ambiente(R)
+    # ⭐ a FERRAGEM DE MOVIMENTO por ambiente — a única parte que muda entre
+    #   as linhas (corrediça e dobradiça da linha; a fixa não conta).
+    k = R['CD'] / (R['CD'] - R['emb'])          # a embalagem vai junto
+    R['ferr'] = {}
+    for o in M.outras:
+        if o['item'] in ('Corrediça', 'Dobradiça c/ amortecimento'):
+            R['ferr'][o['amb']] = R['ferr'].get(o['amb'], 0) + o['qtd'] * o['pu'] * k
     print(json.dumps({k: v for k, v in R.items() if k not in ('area', 'fita')}))
 elif __name__ == '__main__':
     import motor as M
