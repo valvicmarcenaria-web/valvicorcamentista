@@ -153,9 +153,24 @@ SERRALHEIRO_MIN = 300.0  # mínimo por serviço
 #     A COTAR desde o projeto da Sandra. Cristal é o tom claro, então o
 #     vizinho é a PRATA. Entra como prata com perfil preto e fica marcado:
 #     é premissa, não cotação.
-VIDRO_FOLHA = 420.0      # reflecta prata com perfil preto · ⚠ PREMISSA
-VIDRO_M2_REF = 660.0     # referência de obra: cristaleira 2,00 × 0,36, Kenia
-                         # e Fábio · serve de prova de sanidade da folha
+#   ⛔⛔ E OS R$ 420 SÃO POR METRO QUADRADO, NÃO POR FOLHA.
+#     ⭐ [Jonathan, 04/11/2026] "a portas de vidro como por exemplo a da
+#     cristaleira do item 3 é calculada pelo mt² ou seja, é 420 o mt quadrado".
+#   ⛔ Eu havia lido a linha da Base como PREÇO DE FOLHA, e o erro não era de
+#     conta: era de UNIDADE. Unidade errada não dá erro — dá um número.
+#     E ele erra nos DOIS sentidos, o que é o que o torna invisível:
+#       · a porta da cristaleira tem 70 × 269 = 1,883 m² → R$ 791, não R$ 420
+#       · a porta do gourmet tem 47 × 71 = 0,334 m² → R$ 140, não R$ 420
+#     Folha grande saía BARATA e folha pequena saía CARA, e o total do projeto
+#     ficou só R$ 368 fora — perto o bastante para não chamar atenção.
+#   ⚠ A prova de sanidade que eu usei para justificar o "por folha" era esta:
+#     uma folha de 2,00 × 0,36 (0,72 m²) a R$ 660/m² dá R$ 475, parecido com
+#     420. ⛔ O "parecido" foi o que me convenceu — e o parecido não é prova.
+VIDRO_M2 = 420.0         # R$/m² · reflecta prata com perfil preto · ⚠ PREMISSA
+VIDRO_M2_REF = 660.0     # ⚠ referência de obra (cristaleira da Kenia e do
+                         # Fábio), também por m². A Base está 36% ABAIXO dela:
+                         # ou é outro vidro, ou aquela obra levou margem na
+                         # linha. Fica registrado, não corrigido.
 
 # ── a cascata de encargos · aba Comissões ───────────────────────────────
 #   ⛔ A BASE MUDA CONFORME TENHA RT E VENDEDOR, e são quase 9 pontos cada.

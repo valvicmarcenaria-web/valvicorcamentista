@@ -242,9 +242,11 @@ def monta(amb, aba):
     L['acab1'] = r - 1
     if vid:
         põe(r, B='Vidro e espelho',
-            C='Vidraçaria · reflecta prata com perfil preto · ⚠ PREMISSA: o '
-              'executivo pede REFLECTA CRISTAL, que não existe na Base',
-            D=f'={SOMA_F(chr(34)+vid[0]+chr(34))}', E='folhas',
+            C='Vidraçaria · reflecta prata com perfil preto · ⭐ R$ 420 POR '
+              'METRO QUADRADO [Jonathan, 04/11/2026], não por folha · '
+              '⚠ PREMISSA: o executivo pede REFLECTA CRISTAL, que não existe '
+              'na Base',
+            D=f'={SOMA_F(chr(34)+vid[0]+chr(34))}', E='m²',
             F=f'={SOMA_I(chr(34)+vid[0]+chr(34))}')
         r += 1
     rots = [ROTULO.get(k, k.lower()) for k in cf]

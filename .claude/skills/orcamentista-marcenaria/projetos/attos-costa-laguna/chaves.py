@@ -63,7 +63,7 @@ MOTOR = {
     'Suporte de prateleira':           (b.SUPORTE_JOGO, 'jogo',  True),
     'Cava usinada':                    (b.CAVA_M,    'm',        False),
     'Painel ripado':                   (b.RIPADO_M2, 'm²',       True),
-    'Vidro reflecta prata com perfil': (b.VIDRO_FOLHA, 'folha',  True),
+    'Vidro reflecta prata com perfil': (b.VIDRO_M2,   'm²',     True),
     'Corte por chapa':                 (b.CORTE_CHAPA, 'chapa',  True),
     'Corte por peça':                  (b.CORTE_PECA, 'peça',    True),
     'Frete':                           (200.0,       'viagem',   True),

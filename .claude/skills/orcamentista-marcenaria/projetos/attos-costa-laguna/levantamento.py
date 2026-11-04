@@ -125,8 +125,16 @@ class Movel:
         if obs: self.espec[nome] = obs
         return self
 
-    def v(self, nome, folhas, unit=None):
-        self.vidro.append((nome, folhas, unit or b.VIDRO_FOLHA)); return self
+    def v(self, nome, folhas, L, A, unit=None):
+        """Vidro, por METRO QUADRADO — e as medidas da folha são OBRIGATÓRIAS.
+
+        ⭐ [Jonathan, 04/11/2026] "é 420 o mt quadrado". Antes a assinatura
+          era v(nome, folhas) e o preço era por folha: dava para lançar vidro
+          sem dizer o tamanho dele, e foi exatamente por isso que o erro de
+          unidade passou. ⛔ Agora NÃO DÁ: sem L e A a chamada nem roda.
+        """
+        a_m2 = round(folhas * L * A / 10000, 4)
+        self.vidro.append((nome, a_m2, unit or b.VIDRO_M2)); return self
 
     def areas(self):
         """m² por (material, espessura)."""
@@ -287,7 +295,7 @@ m.p('faixa inferior de 21 · metades com junta em 141,5', 141.5, 21, 15, qtd=2,
     fita_m=(141.5 + 21) * 2 / 100)
 m.p('tampo e fundo da faixa · metades com junta em 141,5', 141.5, 35, 15,
     qtd=4, fita_m=141.5 / 100)
-m.v('Porta de vidro reflecta 70,8 × 95', 4)
+m.v('Porta de vidro reflecta 70,8 × 95 · 4 folhas', 4, 70.8, 95)
 m.f('Dobradiça das 4 portas de vidro com perfil', 4 * b.dobradicas(95),
     b.DOBRADICA, obs=DOBR_NORMAL)
 
@@ -309,7 +317,7 @@ m.p('base', 102, 25, 15, fita_m=102 / 100)
 m.p('laterais', 25, 71, 15, qtd=2, fita_m=71 / 100)
 m.p('fundo', 94, 71, 6)
 m.p('prateleira', 94, 25, 18, fita_m=94 / 100)
-m.v('Porta de vidro reflecta 47 × 71', 2)
+m.v('Porta de vidro reflecta 47 × 71 · 2 folhas', 2, 47, 71)
 m.f('Dobradiça das 2 portas de vidro com perfil', 2 * b.dobradicas(71),
     b.DOBRADICA, obs=DOBR_NORMAL)
 m.f('Suporte de prateleira', 1, b.SUPORTE_JOGO)   # 1 prateleira interna
@@ -342,7 +350,7 @@ m.p('caixa da base · frente', 100, 30, 15, fita_m=(100 + 30) * 2 / 100)
 m.p('caixa da base · laterais', 39, 30, 15, qtd=2)
 m.p('caixa da base · fundo e tampo', 100, 39, 15, qtd=2)
 painel_ripado(m, 147, 269)                    # ⭐ o fundo inteiro é ripado
-m.v('Porta de vidro reflecta 70 × 269', 2)
+m.v('Porta de vidro reflecta 70 × 269 · 2 folhas', 2, 70, 269)
 m.f('Dobradiça das 2 portas de vidro com perfil', 2 * b.dobradicas(269),
     b.DOBRADICA, obs=DOBR_NORMAL)
 m.f('Suporte de prateleira', 5, b.SUPORTE_JOGO)   # 5 prateleiras internas
