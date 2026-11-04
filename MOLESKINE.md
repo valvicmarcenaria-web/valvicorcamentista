@@ -8,7 +8,7 @@ pode ler e escrever aqui. Formato livre — marcar data e agente responsável.
 ## Tarefas abertas
 
 ### [2026-11-04] Attos · Costa Laguna — A CABECEIRA ESTOFADA, MEDIDA NO VETOR — Lavinia
-**Solicitante:** Jonathan · **Agente:** Lavinia · **Status:** 🟡 Suíte master orçada · suíte 01 BLOQUEADA por falta de prancha
+**Solicitante:** Jonathan · **Agente:** Lavinia · **Status:** ✅ PROPOSTA FECHADA nas três linhas (04/11) · ⚠ suíte 01 por medida DERIVADA do preço, sem prancha
 
 > *"olhe as duas cabeceiras estofadas no pdf dos 3ds e faça o orcamento das
 > cabeceiras e mesas de cabeceiras tbm"* · depois, com dois prints:
@@ -225,9 +225,10 @@ escritório menos o ripado · unificar o hall · subir a Blum para 230k.
 de corte. **O levantamento mede; a linha negocia.** Tudo mora em
 `linhas.py`, nomeado e datado, e a trava passou a somar motor + ajustes.
 
-| | BÁSICA 35% | HETTICH 38% | BLUM 43% |
+| | BÁSICA 35% | HETTICH 38% | BLUM 45,5% |
 |---|--:|--:|--:|
-| **A CASA** | **176.891** | **184.184** | **201.263** |
+| **A CASA** | **176.891** | **184.184** | **230.000** |
+| da anterior | — | +4,1% | +24,9% |
 
 **⛔⛔ TRÊS COISAS QUE EU PRECISO DIZER, e todas são número, não opinião:**
 
@@ -241,19 +242,51 @@ de corte. **O levantamento mede; a linha negocia.** Tudo mora em
    par de Blum para QUALQUER gaveta**, e a da mesa de cabeceira tem 45 de
    profundidade e 14 de altura. Separar a corrediça por tamanho derrubaria
    esses 41% sozinho.
-3. **⛔⛔ OS 230k DA BLUM BRIGAM COM A REGRA DELE PRÓPRIO.** "Os demais pode
+3. **⛔⛔ OS 230k DA BLUM BRIGAVAM COM A REGRA DELE PRÓPRIO.** "Os demais pode
    manter a MC de 38% fixo" faz 12 itens terem preço IDÊNTICO nas três
-   linhas. Diluir +R$ 28.737 sobre todos quebra isso E mexe nos dois preços
-   que ele acabou de cravar. Medi os três caminhos:
-   · ① sobre tudo (×1,1428) — quebra os 12 e move os cravados
-   · ② só sobre os 6 que levam ferragem (**+27,5%** cada) — preserva tudo
-   · ③ MC única de **46,1%** na Blum — o jeito da casa, quebra os 12
-   **Não escolhi por ele.**
+   linhas. Um alvo de projeto pega o projeto TODO. As duas não cabem juntas.
+   ⭐ **"Pode manter" é permissão; "suba a blum para 230k" é ordem** — a ordem
+   ganhou, e a permissão fica registrada como derrubada, não esquecida.
+
+**⭐⭐ E ELE FECHOU:** *"pode fechar a proposta"*. Escolhi o **③**, e os dois
+caminhos descartados ficam impressos no relatório para quem abrir depois:
+
+| caminho até os 230k | por que não |
+|---|---|
+| ① diluir sobre tudo (×1,1428) | ⛔ a parede da TV, cravada em 15.500 com MC 57,6%, **CAÍA para 10.303** na Blum |
+| ② só nos 6 com ferragem (+27,5%) | ⛔ pedia **MC 49,7%** nesses seis com doze em 38% — preço sem resposta |
+| **③ MC única de 45,5% na Blum** | ⭐ **é UM número, e ele se explica:** outra ferragem, outra garantia, outra linha |
+
+⭐ **Dois itens ficaram FORA da diluição, por decisão:** a parede da TV (preço
+cravado) e as mesas de cabeceira (MC travada em 38%).
+⚠ A Blum roda **acima da faixa ideal da casa** (35% a 40%). É escolha do dono.
+
+**⛔⛔ E DUAS COISAS QUEBRARAM ANTES DE EU VER A TABELA FECHADA** — as duas do
+mesmo feitio de sempre: *dois números para a mesma coisa, e nenhum reclamando.*
+
+- **A ESCADA DESCIA.** A parede da TV cravada em 15.500 virou **10.303 na Blum**
+  — item mais barato na linha premium que na intermediária. A causa: a MC única
+  da Blum (46,1%) era MENOR que a MC realizada do item (57,6%), então "diluir"
+  nele era BAIXAR o preço. ⭐ Virou **trava ③: nenhum item pode ser mais barato
+  numa linha superior**, e ela roda a cada execução.
+- **A TRAVA DAS MESAS CAIU SOZINHA.** O fechamento pelo alvo reescreveu a MC de
+  todos os itens e levou embora o 38% travado das mesas — elas voltaram aos
+  **+70%** que o Jonathan tinha acabado de mandar corrigir. ⭐ Corrigido
+  isentando da diluição também o que tem **MC travada**, não só o preço cravado.
+
+⚠ **E a trava ② disparou** quando a Blum passou a fechar por alvo: "item sem
+ferragem tem o mesmo preço" deixa de valer na linha que fecha por alvo. **Não
+enfraqueci a trava — estreitei o que ela cobre** (só as linhas sem alvo) e
+escrevi o porquê ao lado, para ninguém "consertar" de volta.
 
 **Gravado em:** `referencias/quantitativo.md` (MEDIR O VETOR DA PRANCHA) ·
 `referencias/laminacao-e-construcao.md` (a cabeceira e a mesa, camada a
 camada) · `referencias/base-de-custos.md` (as duas chaves novas) · Base
-(importada) linhas 94 e 95 · aba 07 Suíte, itens 03 a 05.
+(importada) linhas 94 e 95 · aba 07 Suíte, itens 03 a 05 · aba 08 Suíte 01 ·
+**aba Preço e Comissões, bloco ⑨ (linhas 87 a 111)** — a tabela fechada item a
+item, com o registro do que a ordem derrubou · `attos-costa-laguna/linhas.py`
+(o motor das três linhas, as decisões comerciais nomeadas e datadas, e as três
+travas).
 
 ### [2026-11-04] Attos · Costa Laguna — o MÉTODO DA PORTA DE PASSAGEM — Lavinia
 **Solicitante:** Jonathan · **Agente:** Lavinia · **Status:** 🟡 Aplicado, com 3 perguntas abertas

@@ -43,8 +43,23 @@ CORR_HETTICH, CORRE_HETTICH = b.CORREDICA_PAR, b.SISTEMA_CORRER
 LINHAS = {
     'Básica':  dict(corr=80.0,  corre=600.0, mc=0.35, marca='Hardt'),
     'Hettich': dict(corr=150.0, corre=600.0, mc=0.38, marca='Quadro V6'),
-    'Blum':    dict(corr=300.0, corre=900.0, mc=0.43, marca='Movento'),
+    'Blum':    dict(corr=300.0, corre=900.0, mc=0.43, marca='Movento',
+                    alvo=230_000.0),
 }
+#   ⭐⭐ A BLUM FECHOU PELO ALVO, NÃO PELA MC [Jonathan, 04/11/2026]: "no
+#     preço geral suba a blum para 230k. e diluar coerentemente entre os
+#     itens". Então a MC dela deixa de ser escolha e passa a ser RESULTADO:
+#     a linha inteira roda na MC que faz o total dar 230k.
+#   ⛔⛔ E ISSO SUSPENDE, SÓ NA BLUM, A REGRA DOS 38% FIXOS. Ele a deu com
+#     "PODE manter", que é permissão, e depois mandou a Blum a 230k, que é
+#     ordem — e as duas não cabem juntas. Escolhi a ordem, e registro a
+#     permissão que ela derruba.
+#   ⭐ POR QUE ASSIM E NÃO CONCENTRANDO NOS 6 ITENS COM FERRAGEM: aquele
+#     caminho pedia MC de 49,7% nesses seis enquanto os outros doze ficavam
+#     em 38%. Um painel a 38% e um armário a 49,7% no mesmo projeto não é
+#     uma escada de produto — é um preço sem explicação na hora em que o
+#     cliente perguntar. A MC única de 46,1% é UM número, e ele se explica:
+#     a Blum é outra linha, com outra ferragem e outra garantia.
 MC_FIXA = 0.38   # ⭐ a MC dos itens que NÃO mudam de linha
 ALVO_BLUM = 230_000.0   # ⭐ [Jonathan, 04/11/2026] "suba a blum para 230k"
 
@@ -234,6 +249,50 @@ def monta():
                 d[k + '_pv'] = d[k] / (b.BASE - mc)
         if trava:
             d['trava'] = trava
+
+    #   ── a linha que tem ALVO fecha pelo alvo, e a MC vira resultado ────
+    for k, f in LINHAS.items():
+        if not f.get('alvo'):
+            continue
+        #   ⛔⛔ O PREÇO CRAVADO DE UM ITEM QUE NÃO MUDA DE FERRAGEM É
+        #     INTOCÁVEL, E A PRIMEIRA VERSÃO DISTO ERRAVA FEIO. Diluindo o
+        #     alvo sobre TUDO, a parede da TV — cravada em R$ 15.500, MC
+        #     realizada de 57,6% — caía para R$ 10.303 na Blum, porque a MC
+        #     única de 46,1% é MENOR que a dela. ⛔ A linha premium ficava
+        #     com um item MAIS BARATO que a intermediária, e isso não se
+        #     explica para cliente nenhum.
+        #   ⭐ Então o cravado sai da diluição e o alvo se faz no resto.
+        #   ⛔⛔ E A MC TRAVADA TAMBÉM SOBREVIVE AO ALVO. A primeira versão
+        #     disto derrubou a trava das mesas de cabeceira: a Blum passou a
+        #     rodar numa MC única e elas voltaram a +70% da básica, que é
+        #     EXATAMENTE o que o dono mandou consertar. ⭐ Trava é trava —
+        #     ela sai da diluição, como o preço cravado.
+        fora = [d for d in SAIDA
+                if (d.get('grupo', {}).get('cravado') and not d['muda'])
+                or d.get('trava')]
+        resto = [d for d in SAIDA if d not in fora]
+        pv_fora = 0.0
+        for d in fora:
+            if d.get('trava'):
+                d[k + '_mc'] = d['trava'][0]
+                d[k + '_pv'] = d[k] / (b.BASE - d['trava'][0])
+            else:
+                d[k + '_mc'] = d['mc_ref']
+                d[k + '_pv'] = d['grupo']['cravado']
+            pv_fora += d[k + '_pv']
+        sobra = f['alvo'] - pv_fora
+        custo = sum(d[k] for d in resto)
+        mc = b.BASE - custo / sobra
+        f['mc_realizada'] = mc
+        f['fora_da_diluicao'] = [d['nome'] for d in fora]
+        for d in resto:
+            d[k + '_mc'] = mc
+            d[k + '_pv'] = d[k] / (b.BASE - mc)
+        #   ⭐ a prova: a soma tem de dar o alvo ao centavo
+        soma = sum(d[k + '_pv'] for d in SAIDA)
+        assert abs(soma - f['alvo']) < 0.01, (
+            f'⛔⛔ a linha {k} deveria fechar em R$ {f["alvo"]:,.2f} e deu '
+            f'R$ {soma:,.2f}')
     return SAIDA
 
 
@@ -249,14 +308,33 @@ def _trava(I):
         f'⛔⛔ a soma dos itens na linha Hettich dá R$ {soma:,.2f} e o motor '
         f'mais os ajustes dá R$ {alvo:,.2f} — diferença de '
         f'R$ {soma - alvo:,.2f}')
-    #   ② ITEM SEM A FERRAGEM QUE MUDA TEM DE TER O MESMO PREÇO NAS TRÊS
+    #   ② ITEM SEM A FERRAGEM QUE MUDA TEM DE TER O MESMO PREÇO —
+    #     ⛔⛔ MAS SÓ NAS LINHAS QUE NÃO FECHAM POR ALVO. Esta trava disparou
+    #       no instante em que a Blum passou a fechar em 230k, e estava
+    #       CERTA: fechar uma linha por alvo suspende a regra dos 38% fixos
+    #       nela, porque o alvo pega todo o projeto. ⭐ Em vez de afrouxar a
+    #       trava, estreitei o que ela cobre — e deixei escrito por quê, para
+    #       que ninguém a "conserte" de volta sem saber o que está desfazendo.
+    #   ③ ⭐⭐ A ESCADA NÃO PODE DESCER. Nenhum item pode ficar mais
+    #     barato numa linha superior — foi exatamente isso que aconteceu
+    #     com a parede da TV quando a Blum passou a fechar por alvo, e é o
+    #     tipo de coisa que ninguém vê numa tabela de 18 linhas.
+    ordem = list(LINHAS)
+    for d in I:
+        for a, c in zip(ordem, ordem[1:]):
+            assert d[c + '_pv'] >= d[a + '_pv'] - 0.01, (
+                f'⛔⛔ A ESCADA DESCE em "{d["amb"]} · {d["nome"]}": '
+                f'{a} R$ {d[a + "_pv"]:,.2f} → {c} R$ {d[c + "_pv"]:,.2f}. '
+                f'Linha superior com item mais barato não se explica.')
+    livres = [k for k, f in LINHAS.items() if not f.get('alvo')]
     for d in I:
         if d['muda']:
             continue
-        pv = [round(d[k + '_pv'], 2) for k in LINHAS]
+        pv = [round(d[k + '_pv'], 2) for k in livres]
         assert len(set(pv)) == 1, (
             f'⛔⛔ "{d["amb"]} · {d["nome"]}" NÃO leva corrediça nem sistema '
-            f'de correr e mesmo assim muda de preço entre as linhas: '
+            f'de correr e mesmo assim muda de preço entre as linhas '
+            + ', '.join(livres) + ': '
             + ' · '.join(f'R$ {p:,.2f}' for p in pv))
 
 
@@ -265,11 +343,15 @@ def main():
     print('═' * 96)
     print('ATTOS · COSTA LAGUNA — AS TRÊS LINHAS, ITEM A ITEM')
     print('═' * 96)
+    mcb = LINHAS['Blum'].get('mc_realizada')
     print(f'  BASE {b.BASE:.2%} (vendedor {b.VENDEDOR:.0%}, sem cartão) · '
-          f'MC {MC_FIXA:.0%} fixa nos itens que não mudam de ferragem')
+          f'MC {MC_FIXA:.0%} fixa nos itens sem ferragem, nas linhas '
+          f'básica e Hettich')
+    print(f'  ⭐ A BLUM FECHA PELO ALVO DE R$ {LINHAS["Blum"]["alvo"]:,.0f}: '
+          f'MC única de {mcb:.1%} em TODOS os itens dela')
     print(f'  {"":<44}{"BÁSICA":>15}{"HETTICH":>15}{"BLUM":>15}')
     print(f'  {"":<44}{"telescópica":>15}{"Quadro V6":>15}{"Movento":>15}')
-    print(f'  {"":<44}{"MC 35%":>15}{"MC 38%":>15}{"MC 43%":>15}')
+    print(f'  {"":<44}{"MC 35%":>15}{"MC 38%":>15}{"MC " + format(LINHAS["Blum"]["mc_realizada"], ".1%"):>15}')
     print('─' * 96)
     tot = {k: 0.0 for k in LINHAS}
     for amb in sorted({d['amb'] for d in I},
@@ -288,7 +370,8 @@ def main():
           f'só estes mudam de preço entre as linhas')
     muda = [d for d in I if d['muda']]
     print(f'  {len(muda)} itens de {len(I)} mudam · os outros {len(I) - len(muda)} '
-          f'têm PREÇO IDÊNTICO nas três colunas, e o motor trava se não tiverem')
+          f'têm PREÇO IDÊNTICO na básica e na Hettich, e o motor trava se '
+          f'não tiverem')
     print(f'\n  da BÁSICA para a HETTICH: R$ {tot["Hettich"] - tot["Básica"]:>10,.2f}'
           f'   ({tot["Hettich"] / tot["Básica"] - 1:+.1%})')
     print(f'  da HETTICH para a BLUM:   R$ {tot["Blum"] - tot["Hettich"]:>10,.2f}'
@@ -302,8 +385,11 @@ def main():
     for k in LINHAS:
         c = ncorr * LINHAS[k]['corr'] + nsis * LINHAS[k]['corre']
         print(f'        {k:<10} R$ {c:>9,.2f} de custo')
-    print(f'     a MARGEM   · 35% · 38% · 43% — e ela só pega nos '
-          f'{len(muda)} itens com ferragem')
+    print(f'     a MARGEM   · básica {LINHAS["Básica"]["mc"]:.0%} · Hettich '
+          f'{LINHAS["Hettich"]["mc"]:.0%} · Blum '
+          f'{LINHAS["Blum"]["mc_realizada"]:.1%} (pelo alvo)')
+    print(f'        ⭐ fora da diluição da Blum, por decisão: '
+          + ' · '.join(LINHAS['Blum']['fora_da_diluicao']))
 
     # ════════════════════════════════════════════════════════════════════
     #   ⛔⛔ OS 230k DA BLUM — E A CONTRADIÇÃO QUE ELES ABREM
@@ -348,66 +434,29 @@ def main():
               '+41% cairiam sozinhos.')
 
     print('\n' + '═' * 96)
-    print(f'OS R$ {ALVO_BLUM:,.0f} DA BLUM — TRÊS CAMINHOS, E O QUE CADA UM QUEBRA')
+    print('COMO A BLUM CHEGOU AOS 230k — e os dois caminhos que eu descartei')
     print('═' * 96)
-    falta = ALVO_BLUM - tot['Blum']
-    print(f'  Blum hoje R$ {tot["Blum"]:,.2f} · alvo R$ {ALVO_BLUM:,.2f} · '
-          f'faltam R$ {falta:,.2f}  ({falta / tot["Blum"]:+.1%})')
-
-    fix = [d for d in I if not d['muda']]
-    mud = [d for d in I if d['muda']]
-    s_fix = sum(d['Blum_pv'] for d in fix)
-    s_mud = sum(d['Blum_pv'] for d in mud)
-
-    print(f'\n  ① SOBRE TUDO, proporcional ao preço de cada item '
-          f'(×{ALVO_BLUM / tot["Blum"]:.4f})')
-    print(f'     ⛔ QUEBRA a regra dos {len(fix)} itens de preço idêntico: '
-          f'eles sobem {ALVO_BLUM / tot["Blum"] - 1:+.1%} só na Blum')
-    print(f'     ⛔ E MEXE NOS DOIS PREÇOS QUE O SENHOR ACABOU DE CRAVAR: '
-          f'o grupo da cozinha\n        vai a R$ '
-          f'{[d for d in I if d.get("grupo", {}).get("cravado")][0]["Blum_pv"] * ALVO_BLUM / tot["Blum"]:,.0f} '
-          f'e a parede da TV a R$ {15500 * ALVO_BLUM / tot["Blum"]:,.0f}')
-
-    f2 = (ALVO_BLUM - s_fix) / s_mud
-    print(f'\n  ② SÓ SOBRE OS {len(mud)} QUE LEVAM FERRAGEM (×{f2:.4f})')
-    print(f'     ⭐ PRESERVA os {len(fix)} itens de preço idêntico nas três '
-          f'linhas')
-    print(f'     ⚠ mas eles levam o aumento inteiro: {f2 - 1:+.1%} cada')
-    for d in mud:
-        print(f'        {d["nome"][:46]:<46} R$ {d["Blum_pv"]:>9,.0f} → '
-              f'R$ {d["Blum_pv"] * f2:>9,.0f}')
-
-    #   ③ pela MC: qual MC única na Blum dá o alvo
-    c_blum = sum(d['Blum'] for d in I)
-    mc3 = b.BASE - c_blum / ALVO_BLUM
-    print(f'\n  ③ PELA MARGEM: uma MC única de {mc3:.1%} na linha Blum')
-    print(f'     ⭐ é o jeito da casa — a MC É a diluição, e ela já incide '
-          f'sobre o custo de cada item')
-    print(f'     ⛔ quebra a mesma regra do ①, e empurra a MC da Blum de 43% '
-          f'para {mc3:.1%}')
-    print(f'\n  ⚠⚠ E OS DOIS PREÇOS CRAVADOS SÃO SAGRADOS OU NÃO? Se forem, '
-          f'o ① e o ③ estão\n     fora e sobra o ②. Se o senhor disser qual, '
-          f'eu fecho em um minuto.')
-    #   ⚠⚠ E AQUI MORA UM CASO QUE VALE O SENHOR OLHAR: itens cujo CUSTO é
-    #     idêntico entre duas linhas e cujo PREÇO não é, porque só a MC
-    #     mudou. Acontece com o sistema de correr, que custa R$ 600 na
-    #     básica e na Hettich — a Base não tem um mais barato.
-    so_mc = [d for d in I if d['muda']
-             and abs(d['Básica'] - d['Hettich']) < 0.01]
-    if so_mc:
-        print(f'\n  ⚠⚠ {len(so_mc)} ITEM(NS) COM O MESMO CUSTO NA BÁSICA E NA '
-              f'HETTICH, E PREÇO DIFERENTE:')
-        for d in so_mc:
-            dif = d['Hettich_pv'] - d['Básica_pv']
-            print(f'       {d["amb"]} · {d["nome"][:38]:<38} '
-                  f'R$ {d["Básica_pv"]:>9,.0f} → R$ {d["Hettich_pv"]:>9,.0f}'
-                  f'   (+R$ {dif:,.0f}, só MC)')
-        print('     ⛔ Eles levam SISTEMA DE CORRER e não levam corrediça — e o '
-              'sistema custa\n       R$ 600 nas duas linhas, porque a Base não '
-              'tem um mais barato. O cliente\n       paga 3 pontos de MC a mais '
-              'sem levar ferragem diferente nenhuma.\n     ⚠ Ou a básica leva um '
-              'sistema mais simples (e aí falta o preço dele na\n       Base), ou '
-              'estes itens ficam na MC de 35% também. É decisão sua.')
+    print('  ⛔⛔ OS 230k BRIGAVAM COM A REGRA DO PRÓPRIO DONO, dada minutos')
+    print('     antes: "os demais pode manter a mc de 38% fixo", que faz os')
+    print('     itens sem ferragem terem preço IGUAL nas três linhas. Um alvo')
+    print('     de projeto pega TODO o projeto. As duas não cabem juntas.')
+    print('  ⭐ "Pode manter" é permissão; "suba a blum para 230k" é ordem.')
+    print('     A ordem ganhou, e a permissão fica registrada como derrubada.')
+    print('\n  ① diluir sobre TUDO, proporcional ao preço')
+    print('     ⛔ descartado: a parede da TV, cravada em R$ 15.500 com MC de')
+    print('       57,6%, CAÍA para R$ 10.303 na Blum — linha premium com item')
+    print('       mais barato que a intermediária não se explica.')
+    print('  ② concentrar nos itens com ferragem')
+    print('     ⛔ descartado: pedia MC de 49,7% nesses seis enquanto os outros')
+    print('       doze ficavam em 38%. Um painel a 38% e um armário a 49,7% no')
+    print('       mesmo projeto não é escada de produto, é preço sem resposta.')
+    print(f'  ⭐ ③ ESCOLHIDO: MC única de '
+          f'{LINHAS["Blum"]["mc_realizada"]:.1%} na Blum, com o preço cravado')
+    print('       e a MC travada FORA da diluição. É UM número, e ele se')
+    print('       explica: a Blum é outra linha, com outra ferragem e outra')
+    print('       garantia.')
+    print(f'\n  ⚠ E ELA RODA ACIMA DA FAIXA IDEAL DA CASA ({b.MC_FAIXA[0]:.0%} '
+          f'a {b.MC_FAIXA[1]:.0%}). É escolha do dono, não descoberta minha.')
 
 
 if __name__ == '__main__':
