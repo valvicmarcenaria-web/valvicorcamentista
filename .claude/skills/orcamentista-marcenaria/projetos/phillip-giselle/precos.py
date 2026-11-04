@@ -62,6 +62,12 @@ MC_COMUM = 0.42
 #   entre os itens (closets e painel do quarto da Ana)". Os R$ 2.000 entram
 #   na PARTE COMUM desses quatro, na proporção do custo de cada um — que não
 #   depende da linha, então o rateio é o mesmo nas três.
+# ⭐ PREÇO FIXO, IGUAL EM QUALQUER LINHA [Jonathan, 04/11/2026]: "na suíte da
+#   Ana considere apenas o móvel na janela a um preço de 9.800 e o painel com
+#   as 3 portas a 15.600 · em qualquer linha será o mesmo preço".
+PRECO_FIXO = {'Suíte Ana': 9800.0, 'Suíte Ana · painel com 3 portas': 15600.0,
+              # ⭐ "o painel da circulação com as 4 portas tem que ser os 30.420"
+              'Circulação': 30420.0}
 DILUI = ['Closet casal', 'Closet Ana', 'Closet Mateus', 'Suíte Ana · painel com 3 portas']
 
 TAB = {}
@@ -75,6 +81,7 @@ for k, (nome, mc) in LIN.items():
         f = ferr.get(a, 0.0); com[a] = c - f + PROJETO * pesos.get(a, 0) / soma
         amb[a] = c + PROJETO * pesos.get(a, 0) / soma
         pv[a] = round(com[a] / (B - MC_COMUM), -1) + round(f / (B - mc), -1)
+        if a in PRECO_FIXO: pv[a] = PRECO_FIXO[a]
     CD = sum(amb.values())                      # ⭐ já com o projeto diluído
     cheio = sum(pv.values())
     esc = [('Transferência, 30/20/20/30', 0.0, cheio, B - CD / cheio)]
@@ -90,6 +97,8 @@ if __name__ == '__main__':
     print(f"{'Ambiente':33s}" + ''.join(f"{'custo ' + t['nome'][:5]:>13s}{'venda':>13s}" for t in TAB.values()))
     for a in t0['amb']:
         print(f"{a:33s}" + ''.join(f"{M.brl(t['amb'][a]):>13s}{M.brl(t['pv'][a]):>13s}" for t in TAB.values()))
+    for a, v in PRECO_FIXO.items():
+        print(f"   preço fixo · {a}: MC " + ' / '.join(f"{(B - t['amb'][a] / v)*100:.1f}%" for t in TAB.values()))
     print(f"{'TOTAL':33s}" + ''.join(f"{M.brl(t['CD']):>13s}{M.brl(t['cheio']):>13s}" for t in TAB.values()))
     for t in TAB.values():
         print(f"\n{t['nome']} · MC {t['mc']*100:.0f}%")

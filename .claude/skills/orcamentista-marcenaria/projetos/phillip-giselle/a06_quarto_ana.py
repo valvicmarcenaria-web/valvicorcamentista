@@ -23,20 +23,8 @@ gavetas(m, 3, 76.7, 55, 50, 'Branco TX')
 O(m, 'Puxador (a definir)', 5, 'un', 50, '⚠ render mostra barra; usei preço de cava')
 O(m, 'Perfil de proteção de piso', 3.30, 'm', 15)
 
-# ── 2 · Mesa de estudo, marcenaria branca lisa · 150 × 80 × 60 ──────────
-#   ⚠ render mostra pés em U metálicos; a prancha diz marcenaria: pés em MDF.
-m = 'Mesa de estudo'
-P(m, 'Tampo', 150, 60, 1, 'Branco TX 18', 2 * (150 + 60) / 100)
-P(m, 'Pé lateral (painel)', 65, 60, 2, 'Branco TX 18', 2 * (65 + 60) / 100)
-P(m, 'Caixa do gaveteiro · base', 146, 55, 1, 'Branco TX 15', 1.46)
-P(m, 'Caixa do gaveteiro · fundo', 146, 15, 1, 'Branco TX 15', 0)
-gavetas(m, 2, 73, 13, 50, 'Branco TX')
-
-# ── 3 · Mesinhas de cabeceira, 2 un · 50 × 50 × 40, 2 gavetas + nicho ───
-m = 'Mesinhas de cabeceira (2)'
-for i in range(2):
-    caixa(m, 50, 50, 38, 'Branco TX', interno='Branco TX 15', lat_vistas=2)
-    gavetas(m, 2, 48, 15, 36, 'Branco TX')
+# ⛔ MESA DE ESTUDO E MESINHAS FORA [Jonathan, 04/11/2026]: "na suíte da Ana
+#   considere apenas o móvel na janela".
 
 # ── 4 · Painel em toda a parede da vista A com 3 portas pivotantes ──────
 #   ⭐ [Jonathan, 04/11/2026] "teremos um painel em toda extensão da parede
