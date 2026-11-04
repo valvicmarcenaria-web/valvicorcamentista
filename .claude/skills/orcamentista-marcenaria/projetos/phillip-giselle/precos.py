@@ -51,21 +51,46 @@ def custos(linha):
                        cwd=pathlib.Path(__file__).parent)
     amb = json.loads(r.stdout)['amb']
     amb['Closet Mateus'] = amb['Closet Ana']          # ⭐ custo igual
-    amb['Projeto executivo de marcenaria'] = PROJETO
     ferr = json.loads(r.stdout)['ferr']
     ferr['Closet Mateus'] = ferr.get('Closet Ana', 0)
     return amb, ferr
 
 MC_COMUM = 0.42
 
+# ⭐⭐ O PROJETO NÃO É LINHA DA PROPOSTA [Jonathan, 04/11/2026]: "projeto
+#   executivo não deve constar na descrição dos itens, dilua o custo dele
+#   entre os itens (closets e painel do quarto da Ana)". Os R$ 2.000 entram
+#   na PARTE COMUM desses quatro, na proporção do custo de cada um — que não
+#   depende da linha, então o rateio é o mesmo nas três.
+def _painel_ana():
+    import importlib, os
+    os.environ['LINHA'] = 'hettich'
+    import motor as MM
+    from resumo import AMBS
+    for a_ in AMBS: importlib.import_module(a_)
+    R_ = MM.calcula(600.0)
+    m2 = {k_: R_['chapas'][k_] * MM.preco_chapa(k_) / R_['area'][k_] for k_ in R_['area']}
+    v = sum(p_['c'] * p_['l'] / 1e4 * p_['qtd'] * m2[p_['chapa']] for p_ in MM.pecas
+            if p_['movel'] == 'Painel com 3 portas mimetizadas')
+    v += sum(o_['qtd'] * o_['pu'] for o_ in MM.outras
+             if o_['movel'] == 'Painel com 3 portas mimetizadas')
+    return v
+PESO_PAINEL_ANA = _painel_ana()
+DILUI = ['Closet casal', 'Closet Ana', 'Closet Mateus', 'Suíte Ana']
+
 TAB = {}
 B = base(0, 0)
 for k, (nome, mc) in LIN.items():
     amb, ferr = custos(k); CD = sum(amb.values())
     pv, com = {}, {}
+    pesos = {a: (amb[a] - ferr.get(a, 0)) for a in DILUI[:3]}
+    pesos['Suíte Ana'] = PESO_PAINEL_ANA
+    soma = sum(pesos.values())
     for a, c in amb.items():
-        f = ferr.get(a, 0.0); com[a] = c - f
+        f = ferr.get(a, 0.0); com[a] = c - f + PROJETO * pesos.get(a, 0) / soma
+        amb[a] = c + PROJETO * pesos.get(a, 0) / soma
         pv[a] = round(com[a] / (B - MC_COMUM), -1) + round(f / (B - mc), -1)
+    CD = sum(amb.values())                      # ⭐ já com o projeto diluído
     cheio = sum(pv.values())
     esc = [('Transferência, 30/20/20/30', 0.0, cheio, B - CD / cheio)]
     TAB[k] = dict(nome=nome, mc=mc, amb=amb, CD=CD, cheio=cheio, pv=pv, esc=esc,
