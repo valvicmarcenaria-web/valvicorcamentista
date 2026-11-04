@@ -53,7 +53,8 @@ def caixa(movel, L, A, Pf, cor_ext=None, interno='Branco TX 15', fundo=True,
     P(movel, 'Base', L - 3, Pf, 1, ext if base_vista else interno, (L - 3) / 100)
     P(movel, 'Teto', L - 3, Pf, 1, ext if teto_visto else interno, (L - 3) / 100)
     if fundo:
-        P(movel, 'Fundo', L - 3, A - 3, 1, 'Branco TX 6')
+        ch = fundo if isinstance(fundo, str) else 'Branco TX 6'
+        P(movel, 'Fundo', L - 3, A - 3, 1, ch)
 
 def divisorias(movel, n, A, Pf, ch='Branco TX 15'):
     if n: P(movel, 'Divisória', A, Pf - 2, n, ch, A / 100)
@@ -82,6 +83,15 @@ def gavetas(movel, n, L, A, Pf, cor, frente=True):
 
 def cabideiro(movel, vao):
     O(movel, 'Cabideiro (tubo oval)', 1, 'un', 120.0, f'vão {vao} cm')
+
+def correr(movel, folhas, A, cor, trilho_m=2):
+    """Portas de correr: folha em 18 mm, sistema SS150 (Base), trilho e
+    desempenador (1 por folha; 2 se a folha tem 70 cm ou mais)."""
+    for L in folhas:
+        P(movel, 'Porta de correr', A, L, 1, f'{cor} 18', 2 * (L + A) / 100)
+        O(movel, 'Desempenador de porta', 2 if L >= 70 else 1, 'un', 100)
+    O(movel, 'Sistema de correr SS150, 2 portas', 1, 'cj', 600)
+    O(movel, f'Trilho SS150 {trilho_m} m', 1, 'un', 200 if trilho_m <= 2 else 250)
 
 def led(movel, m, obs=''):
     O(movel, 'LED COB conjunto (fita, perfil, usinagem, instalação)', m, 'm', 150, obs)
