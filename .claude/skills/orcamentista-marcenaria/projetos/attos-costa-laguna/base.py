@@ -50,7 +50,17 @@ FITA_COR = 3.00          # R$/m, 22 mm · somar 10% de desperdício
 FITA_BRANCA = 2.00       # R$/m, 22 mm
 FITA_PERDA = 1.10        # ⭐ os 10% de desperdício, da própria Base
 FILETE_MAQ = 2.50        # R$/m · coladeira automática, 15 e 18 mm
-FILETE_MAO = 5.00        # R$/m · ripa e o que não entra na máquina
+FILETE_MAO = 5.00        # R$/m · o que NÃO entra na máquina
+#   ⭐⭐ E A RIPA ENTRA. [Jonathan, 04/11/2026] "a filetagem das reguas pode
+#     considerar automatica" e, perguntado o alcance, "todo o ripado do
+#     projeto". ⛔ Eu havia escrito o contrário em três lugares — "ripa de 2 cm
+#     não entra na coladeira" — e a própria Base diz isso na linha "Filetagem
+#     manual": aquela nota também está velha.
+#   ⛔ E NÃO ERA POUCO: são 2.595,5 m dos 2.862 m de fita do projeto, 91% dela.
+#     A R$ 5,00 davam R$ 12.977,30; a R$ 2,50 dão R$ 6.488,65.
+#   ⭐ O preço mora AQUI, numa constante só dele, e não espalhado pelas três
+#     chamadas de painel ripado. Para voltar atrás é esta linha, e só ela.
+FILETE_RIPA = FILETE_MAQ  # ⭐ a filetagem da ripa · hoje = a automática
 CORTE_CHAPA = 2.00       # ⭐ [Jonathan, 28/10/2026] por chapa COMPRADA
 CORTE_PECA = 2.50        # ⭐ [Jonathan, 28/10/2026] por PEÇA cortada
 #   ⛔⛔ E ESTES DOIS FALTAVAM NO MOTOR. Os últimos orçamentos todos os
@@ -77,10 +87,31 @@ EMBALAGEM = 0.02         # 2% sobre o custo direto
 #     sobrescrever coisa alguma. Um número só, e a trava no fim do cenarios.py
 #     prova que os dois motores fecham no centavo.
 DOBRADICA = 50.0                  # ⭐ Hettich e Blum, cravado [Jonathan, 03/11/2026]
-DOBRADICA_VIDRO = 70.0            # ⚠ A COTAR na Base · faixa observada 30 a 85
+DOBRADICA_VIDRO = 70.0
+#   ⛔⛔ NÃO É USADA NESTE PROJETO, e a linha fica só para não perder o saber.
+#     ⭐ [Jonathan, 04/11/2026] "as dobradiças do item 3, sao normais" — o item 3
+#     é o ambiente 03, a Cozinha, e era o único lugar do projeto com dobradiça
+#     de porta de vidro: 22 das 26 peças. Respondeu a pendência que eu havia
+#     deixado aberta ("A COTAR na Base, faixa de 30 a 85").
+#   ⭐ E BATE COM O QUE A PRÓPRIA PRANCHA DIZ: o vidro é "reflecta prata COM
+#     PERFIL preto". Folha EMOLDURADA — a dobradiça parafusa no perfil, não no
+#     vidro. Dobradiça de vidro é para folha SEM moldura, que este projeto não
+#     tem. A premissa errada era minha, não da Base.
+#   ⛔ Se algum dia entrar folha de vidro sem perfil, é esta constante que
+#     volta — e ela volta A COTAR, com faixa de 30 a 85.
 CORREDICA_PAR = 150.0             # ⭐ Hettich Quadro V6 · a linha-base deste projeto
 #   ⚠ O Hardt Invisível P-10 de R$ 80 é o padrão da CASA, e segue na Base —
 #     mas não é uma das duas linhas que o Attos recebe, então não entra aqui.
+#   ⛔⛔ AQUI A BASE E O JONATHAN DISCORDAM, E SÃO R$ 408 NO PROJETO.
+#     A Base de Custos importa R$ 800,00 para o "Dominus Rometal, 2 portas";
+#     o Jonathan cravou 600 em 03/11/2026, respondendo à minha pergunta:
+#     "versão hettich vamos usar Rometal de 600 e na BLUM Siforma de 900".
+#     ⭐ A palavra dele é mais nova e é específica DESTE projeto, então vale
+#     600 — e o travamento está na linha 49 da aba "Base (importada)" da
+#     planilha, com o motivo impresso na própria linha, para ser desfeito
+#     numa célula. ⚠ Repare que a Base tem OUTRO sistema a R$ 600, o SS-150,
+#     também de 2 portas: é possível que o 600 dele seja esse. Não escolhi
+#     por ele — registrei a divergência e segui com o número que ele disse.
 SISTEMA_CORRER = 600.0            # ⭐ Rometal, a linha Hettich · Blum usa 900
 # ⛔⛔ SÃO DOIS PRODUTOS DIFERENTES E EU USEI O ERRADO.
 #   A Base (importada) separa, com todas as letras:
@@ -132,9 +163,73 @@ SERRALHEIRO_MIN = 300.0  # mínimo por serviço
 #     A COTAR desde o projeto da Sandra. Cristal é o tom claro, então o
 #     vizinho é a PRATA. Entra como prata com perfil preto e fica marcado:
 #     é premissa, não cotação.
-VIDRO_FOLHA = 420.0      # reflecta prata com perfil preto · ⚠ PREMISSA
-VIDRO_M2_REF = 660.0     # referência de obra: cristaleira 2,00 × 0,36, Kenia
-                         # e Fábio · serve de prova de sanidade da folha
+#   ⛔⛔ E OS R$ 420 SÃO POR METRO QUADRADO, NÃO POR FOLHA.
+#     ⭐ [Jonathan, 04/11/2026] "a portas de vidro como por exemplo a da
+#     cristaleira do item 3 é calculada pelo mt² ou seja, é 420 o mt quadrado".
+#   ⛔ Eu havia lido a linha da Base como PREÇO DE FOLHA, e o erro não era de
+#     conta: era de UNIDADE. Unidade errada não dá erro — dá um número.
+#     E ele erra nos DOIS sentidos, o que é o que o torna invisível:
+#       · a porta da cristaleira tem 70 × 269 = 1,883 m² → R$ 791, não R$ 420
+#       · a porta do gourmet tem 47 × 71 = 0,334 m² → R$ 140, não R$ 420
+#     Folha grande saía BARATA e folha pequena saía CARA, e o total do projeto
+#     ficou só R$ 368 fora — perto o bastante para não chamar atenção.
+#   ⚠ A prova de sanidade que eu usei para justificar o "por folha" era esta:
+#     uma folha de 2,00 × 0,36 (0,72 m²) a R$ 660/m² dá R$ 475, parecido com
+#     420. ⛔ O "parecido" foi o que me convenceu — e o parecido não é prova.
+#   ⭐ [Jonathan, 04/11/2026] "atualize o preço da porta em reflecta para 650
+#     o mt²". ⛔ Era 420 — o número que eu havia tirado da linha "420 preto"
+#     da Base. ⭐ E os 650 confirmam a referência de obra que estava aqui
+#     embaixo marcada com ⚠: a cristaleira da Kenia e do Fábio saiu a R$ 660/m²,
+#     e eu tinha escrito que "a Base está 36% abaixo dela". Estava mesmo — a
+#     referência de obra é que valia, e a diferença de 10 reais entre 650 e 660
+#     é o que se espera de duas obras.
+#   ⚠ TRAVADO AQUI, como o sistema de correr: a Base de Custos segue com 420
+#     na linha "Reflecta prata, perfil preto". A aba Base (importada) imprime
+#     o valor importado e o modo de desfazer, na própria linha.
+VIDRO_M2 = 650.0         # R$/m² · reflecta prata com perfil preto · ⚠ PREMISSA
+VIDRO_M2_REF = 660.0     # ⚠ referência de obra (cristaleira da Kenia e do
+                         # Fábio), também por m². A Base está 36% ABAIXO dela:
+                         # ou é outro vidro, ou aquela obra levou margem na
+                         # linha. Fica registrado, não corrigido.
+
+# ── PORTA DE PASSAGEM · a folha é FEITA, não comprada ───────────────────
+#   ⭐⭐ [Jonathan, 04/11/2026] O MÉTODO, nas palavras dele:
+#     "para fazer as portas fazemos um sanduiche com duas chapas de 6mm de
+#      acabamento na cor especificada com um miolo de chapa Gdoor ... e nos
+#      usamos reguas de 15cm em torno da extençao da porta (horizontal e
+#      vertical). nas portas ripadas adicionais dois perfis de metalom para
+#      evitar empenos ... ja o ripado segue o calculo padrão ... Adicionamos
+#      isso mais o custo de cava e o sistema da porta, pivo ou deslizante."
+#
+#   ⛔ E ISSO MATA A LINHA "PORTA PRONTA". Eu tinha duas portas paradas no
+#     orçamento "à espera de decisão" — porta de giro pronta a R$ 530 e porta
+#     pivô pronta a R$ 840 — porque não sabia se a casa compra ou fabrica.
+#     Fabrica. A dúvida morreu.
+#
+#   ⭐ G-DOOR, da pesquisa que o Jonathan mandou fazer: é da Guararapes, MDF
+#     de BAIXÍSSIMA densidade (360 kg/m³), feito para ENCHIMENTO de porta
+#     interna e tamburato — substitui colmeia de papelão e sarrafeado.
+#   ⛔ E A CHAPA DELE NÃO É A NOSSA: 275 × 205,5, não 275 × 185. Reaproveitar
+#     CHAPA_M2 daria rateio errado, por isso a área tem constante própria.
+GDOOR_CHAPA = 600.0               # ⭐ R$/chapa, cravado pelo Jonathan
+GDOOR_C, GDOOR_L = 275.0, 205.5   # cm · ficha Guararapes, 2750 × 2055
+GDOOR_ESP = 29.2                  # mm · a espessura do miolo
+GDOOR_CHAPA_M2 = GDOOR_C * GDOOR_L / 10000          # 5,65125 m²
+GDOOR_M2 = GDOOR_CHAPA / (GDOOR_CHAPA_M2 * APROV)   # R$/m² de régua
+#   ⚠ O 80% É CONSERVADOR AQUI, e de propósito: tira em régua é o corte mais
+#     eficiente que existe. Da chapa saem 13 réguas de 15 × 275 (205,5 ÷ 15),
+#     e uma porta de 90 × 260 pede 2,5 delas — 5,2 portas por chapa, R$ 115,38.
+#     O rateio de 80% cobra R$ 132,71/m², que dá R$ 127,41. ⛔ É escolha, e é
+#     do Jonathan: está registrado para o dia em que ele quiser o corte real.
+REGUA_GDOOR = 15.0                # ⭐ "reguas de 15cm em torno da extençao"
+PELE_PORTA = 6                    # mm · "duas chapas de 6mm de acabamento"
+ESP_PORTA = GDOOR_ESP + 2 * PELE_PORTA              # 41,2 mm de folha
+METALON_BARRA = 100.0             # ⭐ "a barra de 3mt do perfil custa 100,00"
+METALON_BARRA_M = 3.0
+METALON_N = 2                     # ⭐ "adicionais dois perfis de metalom"
+#   ⚠ COBRADO POR BARRA, como a alma de aço — não por metro. Dois perfis de
+#     2,60 m são 5,20 m e levam DUAS barras; por metro dariam R$ 173,33 em vez
+#     de R$ 200. Perguntado ao Jonathan, sem resposta ainda: fica o conservador.
 
 # ── a cascata de encargos · aba Comissões ───────────────────────────────
 #   ⛔ A BASE MUDA CONFORME TENHA RT E VENDEDOR, e são quase 9 pontos cada.

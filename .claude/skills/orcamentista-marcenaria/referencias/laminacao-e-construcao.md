@@ -211,3 +211,75 @@ e o orçamento sai barato sem ninguém perceber — a regra é o que não deixa.
 > Cozinha de R$ 21.473,93 para R$ 21.090,35 de custo direto. Caiu, apesar de
 > mais chapa, porque a filetagem manual das réguas era maior que a chapa que
 > entrou.
+
+---
+
+# ⭐⭐ PORTA DE PASSAGEM — A FOLHA É FEITA, NÃO COMPRADA
+
+> **[Jonathan, 04/11/2026]** *"para fazer as portas fazemos um sanduiche com
+> duas chapas de 6mm de acabamento na cor especificada com um miolo de chapa
+> Gdoor ... e nos usamos reguas de 15cm em torno da extençao da porta
+> (horizontal e vertical). nas portas ripadas adicionais dois perfis de
+> metalom para evitar empenos ... ja o ripado segue o calculo padrão ...
+> Adicionamos isso mais o custo de cava e o sistema da porta, pivo ou
+> deslizante."*
+
+⛔ **ISTO MATA A LINHA "PORTA PRONTA".** Antes desta conversa eu tinha duas
+portas paradas num orçamento "à espera de decisão" — porta de giro pronta a
+R$ 530 e porta pivô pronta a R$ 840 — porque não sabia se a casa compra ou
+fabrica. **Fabrica.** Procurar preço de porta pronta na Base é procurar a
+coisa errada.
+
+## A receita
+
+| # | camada | como se lança |
+|---|---|---|
+| ① | **duas peles de 6 mm** na cor especificada | duas peças do tamanho CHEIO da folha, uma por face · a **fita vai UMA vez**, no perímetro do sanduíche |
+| ② | **miolo de G-Door em réguas de 15 cm** | 2 verticais na altura cheia + 2 horizontais entre elas · por m² de régua |
+| ③ | *só na ripada:* **2 perfis de metalon** | contra empeno · barra de 3 m, cobrada **por barra** |
+| ④ | *só na ripada:* **o ripado pelo cálculo padrão** | réguas + fita de borda + laminação · ⛔ **SEM base atrás**: a base é o sanduíche |
+| ⑤ | **cava** e **sistema** (pivô ou deslizante) | são do VÃO, não da folha — cada porta lança o seu |
+
+## O G-Door
+
+Da **Guararapes**. MDF de **baixíssima densidade (360 kg/m³)**, feito para
+**enchimento de porta interna e tamburato** — substitui colmeia de papelão e
+sarrafeado de madeira. Chapa crua **2.750 × 2.055 × 29,2 mm**, R$ 600.
+
+⛔ **A CHAPA DELE NÃO É A NOSSA: 275 × 205,5, não 275 × 185.** Reaproveitar a
+área da chapa de acabamento dá rateio errado. A área tem de ser dele.
+
+⭐ **Não entra na contagem de chapas do ambiente.** A casa conta "chapas" para
+comprar MDF colorido; misturar um miolo de outra bitola corrompe o número que
+o Jonathan usa para comprar. Entra como linha de material por m².
+
+## A espessura que isso produz
+
+29,2 + 6 + 6 = **41,2 mm** de folha lisa. Com ripado de 18 numa face,
+**59,2 mm**.
+
+⛔⛔ **E AÍ MORA O ÚNICO NÚMERO QUE EU SEI ESTAR ERRADO NO ATTOS:** a fita da
+Base é de **22 mm**. Uma aresta de 41,2 pede fita de **45**, que não existe na
+Base; uma de 59,2 pede **60**. Lancei com a de 22 para não subestimar o resto
+e gritei na aba. **Ou entra o preço da fita de 45/60, ou a aresta fecha com
+sarrafo — e isso é outra conta.**
+
+## As perguntas que ficaram abertas
+
+1. **As réguas de 15: só o perímetro, ou há travessa no meio?** Li "em torno
+   da extensão" como moldura de perímetro. Numa folha de 80 × 207 isso deixa
+   um vão de 50 × 177 entre duas peles de 6 mm. Travessa e bloco de fechadura
+   custam ~R$ 12 cada.
+2. **O metalon por barra ou por metro?** Dois perfis de 2,72 m são 5,44 m e
+   levam DUAS barras (R$ 200). Por metro dariam R$ 181,33. Está no
+   conservador, como a alma de aço.
+3. **O rateio do miolo.** Tira em régua é o corte mais eficiente que existe:
+   da chapa saem 13 réguas de 15 × 275 e uma folha de 90 × 260 pede 2,5 delas
+   — R$ 115,38 por folha contra R$ 127,41 pelos 80% da casa. Os 80% cobram
+   R$ 12 a mais por porta, e é escolha do dono do método.
+
+## ⚠ E a Base diz R$ 60 no desempenador, mas o número vivo é R$ 100
+
+Este arquivo e o `ferragens.md` citavam **"Desempenador anti-empeno R$ 60"**.
+A Base de Custos viva traz **R$ 100**, e é o que o Attos usa. A tabela antiga
+ficou — mas com o aviso ao lado.

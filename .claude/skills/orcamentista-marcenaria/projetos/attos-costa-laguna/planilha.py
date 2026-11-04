@@ -1,25 +1,42 @@
 # -*- coding: utf-8 -*-
-"""ATTOS · Costa Laguna — GERA a aba de um ambiente. Layout, texto e fórmula.
+"""ATTOS · Costa Laguna — GERA a aba de um ambiente, NO LAYOUT DA CASA.
 
-⭐⭐ A ABA NÃO SE FORMATA, ELA SE GERA. São sete ambientes, e o sétimo tem de
-  sair igual ao primeiro sem eu lembrar de nada. Foi formatar à mão, duas
-  vezes, que deixou a cozinha e o living do ICA diferentes em quinze pontos.
+⛔⛔ ESTE ARQUIVO FOI REESCRITO DEPOIS DE UM ERRO MEU, e o erro foi de
+  método, não de conta. [Jonathan, 04/11/2026]
+    > "a planilha do orcamento esta com configuracoes diferentes das demais"
+    > "veja como é o layout das abas dos ambientes"
+  Eu tinha inventado um layout. Funcionava, fechava no centavo — e era
+  diferente de TODAS as outras planilhas da casa. ⭐ A lição não é "siga o
+  padrão": é QUANDO O PEDIDO APONTA PARA UM DOCUMENTO, ABRA O DOCUMENTO.
+  Bastava ter aberto uma aba do Gustavo Raposo antes de escrever a primeira
+  linha. Em vez disso li o esqueleto da aba-modelo, que está incompleto, e
+  completei de cabeça.
 
-⛔ locale pt_BR: o separador de argumento é ';'. Nome de função vai em
-  INGLÊS — a API normaliza. ⛔⛔ E NUNCA UM DECIMAL DENTRO DE FÓRMULA: em
-  pt_BR o literal é 0,01 e a API recusa "0.01". `ROUND(x;2)<>0` diz o mesmo
-  sem depender de locale.
+⭐ O QUE A CASA FAZ, lido célula a célula no orçamento do Gustavo Raposo:
 
-⭐ O R$/m² JÁ VEM ARREDONDADO. O intervalo `chapa_m2`, no Painel, traz por padrão
-  de chapa o R$/m² que sai da compra INTEIRA (29 chapas de MDF cor 15, não
-  28,26). Assim cada peça custa a sua área × esse R$/m², e a soma das peças
-  fecha EXATAMENTE com a chapa comprada — sem linha de "arredondamento"
-  pendurada em lugar nenhum.
+  · PAINEL DE MATERIAL em SEIS colunas — B MATERIAL · C ESPECIFICAÇÃO ·
+    D QUANTIDADE · E UN · F CUSTO · G % DO CUSTO. Sem coluna de FRETE e sem
+    coluna de TOTAL: o frete é uma LINHA, e o valor dele vai em CUSTO.
+  · A CHAPA SE CONTA INTEIRA EM CADA ABA, por cor × espessura. A sobra entre
+    o rateio das peças (em fração) e a compra (em número cheio) aparece na
+    linha "Arredondamento de chapa para número cheio".
+  · A FERRAGEM É UMA LINHA SÓ — "Ferragem, terceirizados e iluminação" — e o
+    custo dela é o RESTO: tudo que tem chave, menos chapa, menos acabamento,
+    menos vidro. Assim nenhuma família nova escapa por eu não a ter listado.
+  · CONSUMÍVEIS são 6% sobre chapa, fita E FILETAGEM.
+  · O BLOCO DE PEÇAS É POR ITEM: faixa "ITEM nn", a descrição, o cabeçalho
+    próprio, as peças, e "TOTAL DO ITEM nn". A chave da Base fica na coluna
+    K, fora da tabela, e a coluna H mostra o R$ UN que veio da Base.
+  · A FITA E A FILETAGEM SÃO LINHAS DE PEÇA dentro do item, com a metragem.
+  · As DÚVIDAS são NUMERADAS: o número em B, o texto em C.
+
+⛔ locale pt_BR: separador ';'. Nome de função em INGLÊS — a API normaliza.
+⛔⛔ NUNCA UM DECIMAL DENTRO DE FÓRMULA: em pt_BR o literal é 0,01.
 
    uso:  python3 -I planilha.py Hall
          python3 -I planilha.py --todos
 """
-import importlib.util, sys, pathlib, contextlib, io, json, math
+import importlib.util, sys, pathlib, contextlib, io, json, re
 
 P = pathlib.Path(__file__).resolve().parent
 
@@ -39,28 +56,27 @@ cen = _mod('cen', 'cenarios.py')
 ABAS = [('Hall', '01 Hall'), ('Jantar', '02 Jantar'), ('Cozinha', '03 Cozinha'),
         ('Gourmet', '04 Gourmet'), ('Escritório', '05 Escritório'),
         ('Sala de TV', '06 Sala de TV'), ('Suíte', '07 Suíte')]
+SIDS = {'01': 101, '02': 102, '03': 103, '04': 104, '05': 105, '06': 106,
+        '07': 107}
 
-CLIENTE = 'Attos · Costa Laguna · 11 pranchas A3 do executivo'
-W = 10                                   # B..K
-COLS = 'BCDEFGHIJK'
-PRECO = 'precos;8;FALSE'                 # ⭐ coluna H: o PREÇO EFETIVO
-NOTA_FIM = ('⛔ Enquanto houver linha a R$ 0,00 no painel de material acima, '
-            'o custo deste ambiente é um PISO, nunca um preço fechado.')
+W, COLS = 10, 'BCDEFGHIJK'
+PR = 'precos;2;FALSE'                    # ⭐ coluna B — o padrão da casa
+ACAB = ['Fita cor', 'Filetagem automática', 'Filetagem de ripa',
+        'Filetagem manual']
+VIDRO = ['Vidro reflecta prata com perfil']
 
 NAO_MARCENARIA = [
  '⛔ PEDRA NUNCA É NOSSA. Neste projeto são 21 m² de TRAVERTINO ROMANO '
  'ESCOVADO: o painel da sala de jantar de 367 × 585, os 300 × 140 atrás da '
- 'TV, os 190 × 64 atrás da bancada do escritório e o apoio da mesa. Fora do '
- 'custo E fora da proposta.',
+ 'TV, os 190 × 64 atrás da bancada do escritório e o apoio da mesa.',
  '⛔ Também fora: louça, metal, eletrodoméstico, luminária, revestimento, '
  'móvel solto e box — box existe sem o móvel.',
- '⭐ MAS O VIDRO REFLECTA É NOSSO: são 8 folhas de porta de cristaleira e de '
+ '⭐ MAS O VIDRO REFLECTA É NOSSO: 8 folhas de porta de cristaleira e de '
  'armário, dentro da marcenaria, no mesmo caminhão e na mesma equipe.',
  '⛔ REGRA DOS DOIS ESTADOS: ou o item é nosso COM VALOR na linha, ou está '
  'NOMEADO aqui como fora. Não existe terceiro estado.',
 ]
-
-DUVIDAS_GERAIS = [
+DUVIDAS = [
  '⛔⛔ NÃO HÁ UMA ÚNICA INDICAÇÃO DE LED NAS ONZE PRANCHAS — nem na '
  'cristaleira, nem no painel da TV, nem sob o armário da cozinha. '
  'Cristaleira sem luz é incomum. Ou o projeto não previu, ou vem por fora.',
@@ -68,13 +84,79 @@ DUVIDAS_GERAIS = [
  'DEFINIR". Está orçado como Melamínico Fosco de cor, a chapa padrão da '
  'casa. Lâmina natural DOBRA a chapa.',
 ]
+#   ⭐ AS DÚVIDAS QUE SÃO DE UM AMBIENTE SÓ. As de cima valem em toda aba; as
+#     daqui aparecem só onde existem, e todas as três nasceram do apontamento
+#     do Jonathan em 04/11/2026 sobre a emenda de peça grande.
+#   ⭐ as dúvidas que SÓ existem onde há porta de passagem · [Jonathan,
+#     04/11/2026] mandou implementar o método sem responder as seis perguntas,
+#     então elas entram na aba, numeradas, em vez de ficarem num chat.
+DUVIDAS_PORTA = [
+ '⛔⛔ A FITA DA ARESTA DA PORTA ESTÁ ERRADA E EU SEI. A folha tem 41,2 mm '
+ '(29,2 de G-Door mais duas peles de 6) e a fita da Base é de 22 mm — a de '
+ '45 não existe lá. Na porta RIPADA são 59,2 mm e pediria fita de 60. '
+ '⭐ Lançado com a de 22 para não subestimar o resto, mas o número desta '
+ 'linha é o único do orçamento que eu sei estar errado. ⛔ Ou entra o preço '
+ 'da fita de 45/60, ou a aresta fecha com sarrafo — e isso é outra conta.',
+ '⚠ AS RÉGUAS DE 15 DO MIOLO: li "em torno da extensão da porta" como '
+ 'MOLDURA DE PERÍMETRO — 2 verticais na altura cheia e 2 horizontais entre '
+ 'elas. Numa folha de 80 × 207 isso deixa um vão de 50 × 177 entre duas '
+ 'peles de 6 mm. Se a fábrica põe travessa no meio, ou um bloco onde entra '
+ 'a fechadura, é lançar mais régua: cada travessa custa cerca de R$ 12.',
+ '⚠ A ESPESSURA DA FOLHA fica em 41,2 mm (29,2 + 6 + 6), e na ripada em '
+ '59,2 com a ripa de 18. Se o G-Door vem em outra bitola, o número muda — '
+ '59 mm é muito para uma folha pivotante.',
+ '⚠ O METALON está cobrado por BARRA, como a alma de aço: dois perfis de '
+ '2,72 m são 5,44 m e levam DUAS barras de 3 m, R$ 200. Se sai de sobra e '
+ 'se cobra por metro, seriam R$ 181,33.',
+ '⚠ O MIOLO DE G-DOOR está rateado pelos 80% de aproveitamento da casa, '
+ 'que dão R$ 132,71/m² de régua. ⛔ Tira em régua é o corte mais eficiente '
+ 'que existe: da chapa saem 13 réguas de 15 × 275 e uma folha de 90 × 260 '
+ 'pede 2,5 delas, o que daria R$ 115,38 por folha contra R$ 127,41. Os 80% '
+ 'cobram R$ 12 a mais por porta. É conservador, e é escolha sua.',
+]
+DUVIDAS_DO_AMBIENTE = {
+ 'Sala de TV': [
+  '⛔⛔ O PAINEL LISO DE 300 × 272 TEM EMENDA À VISTA, E A POSIÇÃO DELA É SUA. '
+  '300 não sai de chapa de 275, então a junta EXISTE — e aqui não há ripa '
+  'para esconder, como no painel ripado ao lado. Lancei 150 + 150, que põe a '
+  'junta no MEIO e fica simétrica. ⭐ As outras duas opções: alinhada com a '
+  'borda da pedra de 300 × 140, que some no encontro dos materiais; ou atrás '
+  'da TV, que a esconde no uso. ⛔ Nenhuma muda o preço: são as mesmas duas '
+  'chapas — é só onde a linha aparece.'],
+ 'Cozinha': [
+  '⚠ A LATERAL DE PISO A TETO TEM 275, E A CHAPA TEM 275. A regra da casa diz '
+  'peça inteira até 273, que é a chapa menos o acerto de corte — estas duas '
+  'laterais saem no comprimento CHEIO, sem refilo nas pontas. Ou a produção '
+  'aceita isso, ou 2 cm vão para rodapé e sanca. ⛔ É decisão de obra.'],
+ 'Suíte': [
+  '⚠ AS DUAS TESTEIRAS TÊM 275, igual à chapa, e valem a mesma observação da '
+  'cozinha: saem sem acerto de corte, ou 2 cm vão para a sanca.'],
+}
+ESPEC = {
+ 'Fita cor': 'Aresta a aresta, mais 10% de desperdício',
+ 'Filetagem automática': 'Coladeira · 15 e 18 mm · serviço, sem desperdício',
+ 'Filetagem de ripa': '⭐ [Jonathan, 04/11/2026] A RIPA ENTRA NA COLADEIRA: '
+                      'R$ 2,50 o metro, igual ao resto. Esta linha dizia '
+                      '"Filetagem manual · R$ 5,00, o dobro da automática" — '
+                      'e eram 2.595,5 m, 91% da fita do projeto. ⛔ Fica em '
+                      'linha separada porque é o maior metro do orçamento: '
+                      'dentro da automática ele desapareceria',
+ 'Filetagem manual': '⛔ O que NÃO entra na coladeira · hoje NADA neste '
+                     'orçamento · a Base ainda cita chapa de 6 mm',
+}
+ROTULO = {
+ 'Dobradiça': 'dobradiça', 'Dobradiça vidro': 'dobradiça de porta de vidro',
+ 'Corrediça Hettich': 'corrediça', 'Báscula HK-XS': 'articulador HK-XS',
+ 'Desempenador de porta': 'desempenador de porta',
+ 'Sistema de correr Dominus': 'sistema de correr',
+ 'Sistema pivô': 'sistema pivô', 'Alma de aço': 'alma de aço',
+ 'Suporte de prateleira': 'suporte de prateleira',
+ 'Cava usinada': 'cava usinada', 'Painel ripado': 'painel ripado',
+ 'Miolo G-Door em régua': 'miolo de porta em G-Door',
+ 'Perfil de metalon': 'perfil de metalon anti-empeno',
+}
 
 
-def fmt(v):
-    return v
-
-
-# ════════════════════════════════════════════════════════════════════════
 def monta(amb, aba):
     moveis = [m for m in lv.M if m.amb == amb]
     assert moveis, f'⛔ ambiente sem móvel: {amb}'
@@ -87,19 +169,22 @@ def monta(amb, aba):
         for attr in ('ferr', 'terc', 'vidro'):
             for nome, q, _u in getattr(m, attr):
                 k = ch.chave(nome)
-                if k in ('Filetagem manual',):      # já tem linha própria
+                if k in ACAB:
                     continue
                 ferr[k] = ferr.get(k, 0.0) + q
-    chaves_chapa = sorted(chapas, key=lambda k: -int(k.split()[-1]))
+    cc = sorted(chapas, key=lambda k: -int(k.split()[-1]))
+    #   ⭐ [Jonathan, 04/11/2026] a ripa vai à coladeira · a linha segue
+    #     existindo e segue separada, só mudou de nome e de preço.
+    #   ⛔ Filetagem MANUAL de verdade não existe mais neste orçamento (a
+    #     Base ainda cita chapa de 6 mm): a linha dela não é escrita.
     tem_mao = any(m.fita_ripa > 0 for m in moveis)
-    # ⭐ ordem de PESO: a linha que manda no custo aparece primeiro
-    chaves_ferr = sorted(ferr, key=lambda k: -ferr[k] * ch.MOTOR[k][0])
+    vid = [k for k in VIDRO if k in ferr]
+    cf = sorted([k for k in ferr if k not in VIDRO],
+                key=lambda k: -ferr[k] * ch.MOTOR[k][0])
 
-    # ── 1 · O LAYOUT, calculado antes de uma única fórmula ──────────────
-    nmat = (len(chaves_chapa) + 2 + (1 if tem_mao else 0) + len(chaves_ferr)
-            + 2 + 2 + 1)                 # +corte(2) +cons/emb(2) +frete(1)
-    L = {'tit': 1, 'sub': 2, 's_amb': 4, 'cab_mat': 6}
-    L['mat0'] = 7
+    # ── 1 · O LAYOUT, antes de uma única fórmula ────────────────────────
+    nmat = len(cc) + 2 + (1 if tem_mao else 0) + (1 if vid else 0) + 1 + 2 + 2 + 1
+    L = {'tit': 1, 'sub': 2, 's_amb': 4, 'cab_mat': 6, 'mat0': 7}
     L['mat1'] = L['mat0'] + nmat - 1
     L['direto'] = L['mat1'] + 1
     L['nota'] = L['direto'] + 1
@@ -107,42 +192,56 @@ def monta(amb, aba):
     L['cab_it'] = L['s_it'] + 2
     L['it0'] = L['cab_it'] + 1
     L['it1'] = L['it0'] + len(moveis) - 1
-    L['f0'] = L['it1'] + 2
+    L['f0'] = L['it1'] + 2                      # as cinco linhas da casa
     L['s_ni'] = L['f0'] + 5 + 1
     L['ni0'] = L['s_ni'] + 2
     L['ni1'] = L['ni0'] + len(NAO_MARCENARIA) - 1
     L['s_pec'] = L['ni1'] + 2
-    L['cab_pec'] = L['s_pec'] + 2
-    L['blk0'] = L['cab_pec'] + 1
+    L['blk0'] = L['s_pec'] + 2
 
-    # ── 2 · o bloco de peças, para saber onde ele acaba ─────────────────
+    # ── 2 · os blocos de item ───────────────────────────────────────────
     blocos, r = [], L['blk0']
     for i, m in enumerate(moveis, 1):
-        hdr = r; r += 1
+        faixa, desc, cab = r, r + 1, r + 2
+        r += 3
         p0 = r
         linhas = []
         for pc in m.pecas:
             linhas.append(('peca', pc)); r += 1
+        if m.fita:
+            linhas.append(('acab', ('Fita cor', m.fita * b.FITA_PERDA, 'm')))
+            r += 1
+        #   ⭐ [Jonathan, 04/11/2026] duas linhas ainda, e de propósito: a
+        #     da caixa e a da RIPA. As duas custam R$ 2,50 agora, mas a de
+        #     ripa é 91% do metro do projeto — fundi-las esconderia isso.
+        if m.fita - m.fita_ripa > 1e-9:
+            linhas.append(('acab', ('Filetagem automática',
+                                    m.fita - m.fita_ripa, 'm'))); r += 1
+        if m.fita_ripa > 1e-9:
+            linhas.append(('acab', ('Filetagem de ripa', m.fita_ripa, 'm')))
+            r += 1
         for attr in ('ferr', 'terc', 'vidro'):
             for item in getattr(m, attr):
-                if ch.chave(item[0]) == 'Filetagem manual':
-                    continue             # ⭐ a linha própria de filetagem já cobra
+                if ch.chave(item[0]) in ACAB:
+                    continue
                 linhas.append((attr, item)); r += 1
-        blocos.append(dict(i=i, m=m, hdr=hdr, p0=p0, p1=r - 1, linhas=linhas))
-    L['blk1'] = r - 1
+        blocos.append(dict(i=i, m=m, faixa=faixa, desc=desc, cab=cab,
+                           p0=p0, p1=r - 1, tot=r, linhas=linhas))
+        r += 2                                   # TOTAL DO ITEM + respiro
+    L['blk1'] = r - 2
     a, z = L['blk0'], L['blk1']
     L['s_nt'] = L['blk1'] + 2
     L['nt0'] = L['s_nt'] + 2
-
-    notas = [m.nota for m in moveis if m.nota]
     NOTAS = [f'⭐ {m.nome} — {m.nota}' for m in moveis if m.nota]
     L['nt1'] = L['nt0'] + len(NOTAS) - 1
     L['s_dv'] = L['nt1'] + 2
     L['dv0'] = L['s_dv'] + 2
-    DUV = list(DUVIDAS_GERAIS)
-    for k in chaves_chapa + chaves_ferr:
-        if k in ch.A_COTAR:
-            DUV.append(f'⚠ {k} — {ch.A_COTAR[k]}')
+    #   ⭐ só a aba que TEM porta de passagem recebe as dúvidas dela
+    tem_porta = any('Miolo G-Door' in n for m in moveis for n, *_ in m.terc)
+    DUV = (list(DUVIDAS) + DUVIDAS_DO_AMBIENTE.get(amb, [])
+           + (DUVIDAS_PORTA if tem_porta else [])
+           + [f'⚠ {k} — {ch.A_COTAR[k]}' for k in cc + vid + cf
+              if k in ch.A_COTAR])
     L['dv1'] = L['dv0'] + len(DUV) - 1
     L['fim'] = L['dv1']
 
@@ -153,197 +252,179 @@ def monta(amb, aba):
         for c, v in kw.items():
             G[row - 1][COLS.index(c)] = v
 
-    M2 = (lambda alvo: f'SUMPRODUCT(($H${a}:$H${z}={alvo})*IF(ISNUMBER('
+    AREA = f'VLOOKUP("Área da chapa";{PR})*VLOOKUP("Aproveitamento";{PR})'
+    M2 = (lambda alvo: f'SUMPRODUCT(($K${a}:$K${z}={alvo})*IF(ISNUMBER('
                        f'$D${a}:$D${z});$D${a}:$D${z}*$E${a}:$E${z}*'
                        f'$F${a}:$F${z};0))/10000')
+    SOMA_I = lambda alvo: f'SUMIF($K${a}:$K${z};{alvo};$I${a}:$I${z})'
+    SOMA_F = lambda alvo: f'SUMIF($K${a}:$K${z};{alvo};$F${a}:$F${z})'
 
     põe(L['tit'], B=f'  VALVIC MARCENARIA        {aba[3:].upper()}')
-    põe(L['sub'], B=f'  {CLIENTE} · {len(moveis)} '
-                    f'{"móvel" if len(moveis) == 1 else "móveis"} · '
-                    f'{sum(len(x["linhas"]) for x in blocos)} linhas de peça e '
-                    f'ferragem · ⛔ o executivo está TODO vetorizado: nenhuma '
-                    f'cota saiu por texto, tudo foi lido ampliando a prancha')
+    põe(L['sub'], B=f'  Attos · Costa Laguna · executivo vetorizado, 11 '
+                    f'pranchas A3 · {len(moveis)} '
+                    f'{"item" if len(moveis) == 1 else "itens"} de móvel · '
+                    f'⛔ nenhuma cota saiu por texto: tudo foi lido ampliando '
+                    f'a prancha')
     põe(L['s_amb'], B='  O AMBIENTE   ·   chapa 275 × 185 com 80% de '
-                      'aproveitamento · ⭐ o R$/m² já vem do Painel com a '
-                      'chapa arredondada para número cheio')
+                      'aproveitamento · e ela se conta em número cheio, por '
+                      'cor × espessura')
     põe(L['cab_mat'], B='MATERIAL', C='ESPECIFICAÇÃO', D='QUANTIDADE', E='UN',
-        F='CUSTO', G='FRETE', H='TOTAL', I='% DO CUSTO')
+        F='CUSTO', G='% DO CUSTO')
 
-    r = L['mat0']
-    chapa_rows = {}
-    for k in chaves_chapa:
+    r, chapa_rows = L['mat0'], {}
+    for k in cc:
         chapa_rows[k] = r
         põe(r, B=k,
-            C=f'="Melamínico Fosco de cor · "&ROUND(D{r}*VLOOKUP($B{r};chapa_m2;3;'
-              f'FALSE);2)&" chapas, em fração da compra do projeto"',
-            D=f'={M2(f"$B{r}")}', E='m² de peças',
-            F=f'=D{r}*VLOOKUP($B{r};chapa_m2;2;FALSE)')
+            C=f'="Melamínico Fosco de cor · "&ROUND({M2(f"$B{r}")};1)&'
+              f'" m² de peças"',
+            D=f'=ROUNDUP({M2(f"$B{r}")}/({AREA}))', E='chapas',
+            F=f'=D{r}*VLOOKUP($B{r};{PR})')
         r += 1
-    L['fita'] = r
-    põe(r, B='Fita cor',
-        C='22 mm na cor da frente · declarada aresta a aresta na peça, mais os '
-          '10% de desperdício que a própria Base manda somar',
-        D=f'=(SUM($J${a}:$J${z})+SUM($K${a}:$K${z}))*VLOOKUP('
-          f'"Desperdício de fita";{PRECO})', E='m',
-        F=f'=D{r}*VLOOKUP($B{r};{PRECO})')
-    r += 1
-    põe(r, B='Filetagem automática',
-        C='Coladeira · peça de 15 e 18 mm · ⭐ serviço por metro de aresta '
-          'feita, sem desperdício',
-        D=f'=SUM($J${a}:$J${z})', E='m',
-        F=f'=D{r}*VLOOKUP($B{r};{PRECO})')
-    r += 1
-    if tem_mao:
-        põe(r, B='Filetagem manual',
-            C='⛔ RIPA NÃO ENTRA NA COLADEIRA: vai à mão, a R$ 5,00 — o dobro '
-              'da automática. ⭐ E é o maior metro deste projeto',
-            D=f'=SUM($K${a}:$K${z})', E='m',
-            F=f'=D{r}*VLOOKUP($B{r};{PRECO})')
+    L['acab0'] = r
+    for k in ACAB[:2] + (['Filetagem de ripa'] if tem_mao else []):
+        põe(r, B=k, C=ESPEC[k], D=f'={SOMA_F(chr(34)+k+chr(34))}', E='m',
+            F=f'=D{r}*VLOOKUP($B{r};{PR})')
         r += 1
-    for k in chaves_ferr:
-        v, un, _imp = ch.MOTOR[k]
-        põe(r, B=k, C=ESPEC.get(k, ''),
-            D=f'=SUMIF($H${a}:$H${z};$B{r};$F${a}:$F${z})', E=un,
-            F=f'=D{r}*VLOOKUP($B{r};{PRECO})')
+    L['acab1'] = r - 1
+    if vid:
+        põe(r, B='Vidro e espelho',
+            C='Vidraçaria · reflecta prata com perfil preto · ⭐ R$ 420 POR '
+              'METRO QUADRADO [Jonathan, 04/11/2026], não por folha · '
+              '⚠ PREMISSA: o executivo pede REFLECTA CRISTAL, que não existe '
+              'na Base',
+            D=f'={SOMA_F(chr(34)+vid[0]+chr(34))}', E='m²',
+            F=f'={SOMA_I(chr(34)+vid[0]+chr(34))}')
         r += 1
-    L['ult_mat'] = r - 1
-    põe(r, B='Corte por chapa',
-        C='Serviço de corte, por chapa COMPRADA · ⭐ a chapa deste ambiente é '
-          'a sua fração da compra do projeto, nunca um arredondamento próprio',
-        D='=' + '+'.join(f'D{cr}*VLOOKUP($B{cr};chapa_m2;3;FALSE)'
-                         for cr in chapa_rows.values()), E='chapas',
-        F=f'=D{r}*VLOOKUP($B{r};{PRECO})')
+    rots = [ROTULO.get(k, k.lower()) for k in cf]
+    frase = ', '.join(rots[:-1]) + (' e ' + rots[-1] if len(rots) > 1 else
+                                    (rots[0] if rots else ''))
+    põe(r, B='Ferragem, terceirizados e iluminação',
+        C=(frase[:1].upper() + frase[1:] if frase else 'Nenhuma') +
+          ' · linha Hettich · ⛔ sem iluminação: não há uma única indicação '
+          'de LED nas onze pranchas',
+        D='=' + ('+'.join(SOMA_F(f'"{k}"') for k in cf) if cf else '0'),
+        E='peças',
+        #   ⭐ o custo da ferragem é O RESTO: tudo que tem chave, menos
+        #     chapa, menos acabamento, menos vidro. Família nova não escapa.
+        F=f'={SOMA_I(chr(34)+"<>"+chr(34))}'
+          + ''.join(f'-{SOMA_I(f"$B{chapa_rows[k]}")}' for k in cc)
+          + ''.join('-' + SOMA_I(f'$B{rr}')
+                    for rr in range(L['acab0'], L['acab1'] + 1))
+          + (f'-{SOMA_I(chr(34)+vid[0]+chr(34))}' if vid else ''))
+    L['ferr'] = r; r += 1
+    põe(r, B='Corte · por chapa',
+        C='Serviço de corte, por chapa comprada · R$ 2,00',
+        D='=' + '+'.join(f'D{cr}' for cr in chapa_rows.values()), E='chapas',
+        F=f'=D{r}*VLOOKUP("Corte por chapa";{PR})')
     r += 1
-    põe(r, B='Corte por peça',
-        C='⛔ Conta a PEÇA, não a linha: uma linha de 4 prateleiras são 4 '
-          'peças na serra, e a serra cobra por peça',
-        D=f'=SUMPRODUCT((LEFT($H${a}:$H${z};4)="MDF ")*IF(ISNUMBER('
+    põe(r, B='Corte · por peça',
+        C='Serviço de corte, por peça cortada · R$ 2,50 · ⛔ conta a PEÇA, '
+          'não a linha: uma linha de 4 prateleiras são 4 peças',
+        D=f'=SUMPRODUCT((LEFT($K${a}:$K${z};4)="MDF ")*IF(ISNUMBER('
           f'$F${a}:$F${z});$F${a}:$F${z};0))', E='peças',
-        F=f'=D{r}*VLOOKUP($B{r};{PRECO})')
+        F=f'=D{r}*VLOOKUP("Corte por peça";{PR})')
     r += 1
     põe(r, B='Consumíveis',
-        C='Cola, lixa, parafuso, cavilha, tapa-furo, fundo e verniz · 6% sobre '
-          'CHAPA E FITA · ⛔ a filetagem fica FORA: é serviço de coladeira, '
-          'não material, e cola não se gasta por metro de aresta',
-        #   ⛔⛔ E ESTA FÓRMULA JÁ ESTEVE ERRADA: somava até a linha de
-        #     filetagem, enquanto o motor em Python somava só chapa e fita.
-        #     A Base diz, com todas as letras, "6% sobre chapa e fita".
-        F=f'=SUM(H{L["mat0"]}:H{L["fita"]})*VLOOKUP($B{r};{PRECO})')
+        C='Cola, lixa, parafuso, cavilha, tapa-furo, fundo e verniz · 6% '
+          'sobre chapa, fita e filetagem',
+        F=f'=SUM(F{L["mat0"]}:F{L["acab1"]})*VLOOKUP($B{r};{PR})')
     L['cons'] = r; r += 1
     põe(r, B='Embalagem', C='Papelão, filme e cantoneira · 2% sobre o subtotal',
-        F=f'=SUM(H{L["mat0"]}:H{L["cons"]})*VLOOKUP($B{r};{PRECO})')
+        F=f'=SUM(F{L["mat0"]}:F{L["cons"]})*VLOOKUP($B{r};{PR})')
     r += 1
     põe(r, B='Frete',
-        C='⭐ R$ 200 a viagem · ⛔ A QUANTIDADE É SUA: digite quantas viagens '
-          'este ambiente leva e o frete aparece aqui e no Painel · a única '
-          'célula amarela da aba, e ela sai ZERO e espera',
-        D=0, E='viagem', G=f'=D{r}*VLOOKUP($B{r};{PRECO})')
+        C='⭐ Frete do ambiente · R$ 200 a viagem · ⛔ A QUANTIDADE É SUA: '
+          'digite quantas viagens este ambiente leva, e o frete aparece aqui '
+          'e no Painel · sai ZERO e espera',
+        D=0, E='viagem', F=f'=D{r}*VLOOKUP($B{r};{PR})')
     L['frete'] = r
-    assert r == L['mat1'], f'⛔ layout: material acabou em {r}, previsto {L["mat1"]}'
+    assert r == L['mat1'], f'⛔ layout: material em {r}, previsto {L["mat1"]}'
 
-    for i in range(L['mat0'], L['mat1'] + 1):
-        põe(i, H=f'=F{i}+G{i}', I=f'=IFERROR(H{i}/$H${L["direto"]};"")')
     d = L['direto']
+    for i in range(L['mat0'], L['mat1'] + 1):
+        põe(i, G=f'=IFERROR(F{i}/$F${d};"")')
     põe(d, B='CUSTO DIRETO DO AMBIENTE',
-        F=f'=SUM(F{L["mat0"]}:F{L["mat1"]})',
-        G=f'=SUM(G{L["mat0"]}:G{L["mat1"]})',
-        H=f'=SUM(H{L["mat0"]}:H{L["mat1"]})', I=f'=IFERROR(H{d}/$H${d};"")')
-    põe(L['nota'], C=NOTA_FIM)
+        F=f'=SUM(F{L["mat0"]}:F{L["mat1"]})', G=f'=IFERROR(F{d}/$F${d};"")')
+    põe(L['nota'], C='⭐ O FRETE É UMA LINHA DO AMBIENTE, R$ 200 a viagem: a '
+                     'QUANTIDADE é a célula AMARELA no fim do painel de '
+                     'material, e ela sai ZERO.   ⛔ Enquanto houver linha a '
+                     'R$ 0,00 por falta de preço na Base, o custo deste '
+                     'ambiente é um PISO, nunca um preço fechado.')
 
     # ── OS ITENS ────────────────────────────────────────────────────────
-    põe(L['s_it'], B='  OS ITENS   ·   cada item é um móvel, e é assim que '
-                     'ele vai para a proposta')
+    põe(L['s_it'], B='  OS ITENS   ·   cada móvel com o seu custo, porque é '
+                     'assim que a fábrica produz e o cliente confere')
     põe(L['cab_it'], B='ITEM', C='MÓVEL', D='MEDIDA GERAL', I='CUSTO')
     for x in blocos:
         põe(L['it0'] + x['i'] - 1, B=x['i'], C=x['m'].nome, D=x['m'].nota,
-            I=f'=I{x["hdr"]}')
+            I=f'=I{x["tot"]}')
     f0 = L['f0']
-    põe(f0, B='Soma dos itens', I=f'=SUM(I{L["it0"]}:I{L["it1"]})')
-    põe(f0 + 1, B='Material e ferragem, pelo painel do ambiente',
-        I=f'=SUM(F{L["mat0"]}:F{L["ult_mat"]})')
-    põe(f0 + 2, B='⭐ CONFERÊNCIA INTERNA — as duas contas acima têm de dar a '
-                  'mesma coisa', I=f'=I{f0}-I{f0+1}')
-    põe(f0 + 3, B='⭐⭐ O QUE O MOTOR EM PYTHON CALCULOU para este ambiente '
-                  '(custo direto, linha Hettich)', I=None)   # preenchido fora
-    põe(f0 + 4, B='⭐⭐ CONFERÊNCIA CONTRA O MOTOR — ⛔ esta é a que importa: a '
-                  'de cima compara a aba com ela mesma, e uma chave que a '
-                  'Base não tem passa por ela sem acusar nada',
-        I=f'=H{d}-I{f0+3}')
+    põe(f0, B='Soma dos itens · chapa rateada em fração',
+        I=f'=SUM(I{L["it0"]}:I{L["it1"]})')
+    põe(f0 + 1, B='Arredondamento de chapa para número cheio · ⛔ a regra de '
+                  'ferro',
+        I='=' + '+'.join(f'F{cr}' for cr in chapa_rows.values())
+          + ''.join(f'-{SOMA_I(f"$B{cr}")}' for cr in chapa_rows.values()))
+    põe(f0 + 2, B='MATERIAL E FERRAGEM, PELO RATEIO DOS ITENS',
+        I=f'=I{f0}+I{f0+1}')
+    põe(f0 + 3, B='Material e ferragem, pelo painel do ambiente',
+        I=f'=SUM(F{L["mat0"]}:F{L["ferr"]})')
+    põe(f0 + 4, B='⭐ CONFERÊNCIA — as duas contas têm de dar a mesma coisa',
+        I=f'=I{f0+2}-I{f0+3}')
 
     põe(L['s_ni'], B='  O QUE NÃO É MARCENARIA   ·   está na prancha, não '
                      'está nesta conta')
     for i, t in enumerate(NAO_MARCENARIA):
         põe(L['ni0'] + i, B=t)
 
-    # ── AS PEÇAS ────────────────────────────────────────────────────────
+    # ── AS PEÇAS, ITEM POR ITEM ─────────────────────────────────────────
     põe(L['s_pec'], B='  AS PEÇAS, ITEM POR ITEM   ·   cada linha é uma peça '
                       'que vai para o plano de corte')
-    põe(L['cab_pec'], B='PEÇA', C='OBSERVAÇÃO', D='C (cm)', E='L (cm)',
-        F='QTD', G='UN', H='CHAVE DA BASE', I='CUSTO', J='FITA MÁQ (m)',
-        K='FITA MÃO (m)')
     for x in blocos:
-        p0, p1 = x['p0'], x['p1']
-        fita = (f'(SUM(J{p0}:J{p1})+SUM(K{p0}:K{p1}))*VLOOKUP('
-                f'"Desperdício de fita";{PRECO})*VLOOKUP("Fita cor";{PRECO})'
-                f'+SUM(J{p0}:J{p1})*VLOOKUP("Filetagem automática";{PRECO})'
-                f'+SUM(K{p0}:K{p1})*VLOOKUP("Filetagem manual";{PRECO})')
-        põe(x['hdr'], B=f'{x["i"]}. {x["m"].nome}', C=x['m'].nota,
-            I=f'=SUM(I{p0}:I{p1})+{fita}')
-        rr = p0
+        #   ⭐ a MEDIDA GERAL é o primeiro segmento da nota; o resto é a
+        #     descrição. Antes eu punha a nota inteira nos DOIS lugares, e a
+        #     faixa do item repetia palavra por palavra a linha de baixo.
+        med = re.split(r'\s+·\s+|,\s+|\s+—\s+', x['m'].nota or '—', 1)
+        põe(x['faixa'], B=f'ITEM {x["i"]:02d}', C=x['m'].nome, I=med[0])
+        põe(x['desc'], C=x['m'].nota or '—')
+        põe(x['cab'], B='MATERIAL', C='ESPECIFICAÇÃO', D='C', E='L', F='QTD',
+            G='UN', H='R$ UN', I='CUSTO', K='chave na Base')
+        rr = x['p0']
         for tipo, item in x['linhas']:
             if tipo == 'peca':
                 nome, Lc, Ac, esp, mat, qtd, fita_m, obs, mao = item
                 k = f'{mat} {esp}'
-                #   ⭐ a largura da ripa sai de 2 × n × 1,10 e traz ruído de
-                #     ponto flutuante — 332,20000000000005. Arredondar aqui é
-                #     a TELA arredondando, que é onde se arredonda.
-                põe(rr, B=nome, C=obs, D=round(Lc, 2), E=round(Ac, 2),
-                    F=qtd, G='m²', H=k,
-                    I=f'=D{rr}*E{rr}*F{rr}/10000*VLOOKUP($H{rr};chapa_m2;2;FALSE)',
-                    **{('K' if mao else 'J'): round(fita_m * qtd, 4)} if fita_m else {})
+                põe(rr, B=nome, C=obs or '—', D=round(Lc, 2), E=round(Ac, 2),
+                    F=qtd, G='m²', H=f'=IFERROR(VLOOKUP($K{rr};{PR});"")',
+                    I=f'=D{rr}*E{rr}*F{rr}/10000*H{rr}/({AREA})', K=k)
+            elif tipo == 'acab':
+                k, q, un = item
+                põe(rr, B=k, C=ESPEC[k], F=round(q, 2), G=un,
+                    H=f'=IFERROR(VLOOKUP($K{rr};{PR});"")',
+                    I=f'=F{rr}*H{rr}', K=k)
             else:
                 nome, q, _u = item
                 k = ch.chave(nome)
-                põe(rr, B=nome, F=round(q, 4), G=ch.MOTOR[k][1], H=k,
-                    I=f'=F{rr}*VLOOKUP($H{rr};{PRECO})')
+                põe(rr, B=nome, C=x['m'].espec.get(nome, '—'),
+                    F=round(q, 4), G=ch.MOTOR[k][1],
+                    H=f'=IFERROR(VLOOKUP($K{rr};{PR});"")',
+                    I=f'=F{rr}*H{rr}', K=k)
             rr += 1
-        assert rr == p1 + 1
+        assert rr == x['p1'] + 1
+        põe(x['tot'], B=f'TOTAL DO ITEM {x["i"]:02d}',
+            I=f'=SUM(I{x["p0"]}:I{x["p1"]})')
 
-    põe(L['s_nt'], B='  AS NOTAS   ·   o que a leitura da prancha ensinou, e '
-                     'que a próxima pessoa precisa saber')
+    põe(L['s_nt'], B='  NOTAS E PONTOS EM ABERTO   ·   o que ainda precisa de '
+                     'decisão antes de virar preço')
     for i, t in enumerate(NOTAS):
-        põe(L['nt0'] + i, B=t)
-    põe(L['s_dv'], B='  AS DÚVIDAS   ·   ⛔ cada uma é dinheiro parado')
+        põe(L['nt0'] + i, C=t)
+    põe(L['s_dv'], B='  ⚠ DÚVIDAS DE ORÇAMENTO   ·   numeradas, para o senhor '
+                     'responder em cima · nenhuma delas trava o preço')
     for i, t in enumerate(DUV):
-        põe(L['dv0'] + i, B=t)
+        põe(L['dv0'] + i, B=i + 1, C=t)
 
-    return G, L, blocos, chapa_rows, chaves_chapa, chaves_ferr
+    return G, L, blocos, chapa_rows, cc, cf
 
-
-ESPEC = {
- 'Dobradiça': '⭐ Hettich e Blum custam o MESMO, R$ 50 · a dobradiça não é o '
-              'que separa as duas linhas',
- 'Dobradiça vidro': '⚠ A COTAR na Base, faixa de 30 a 85 · ⛔ é outro produto, '
-                    'fora da escada de linha',
- 'Corrediça Hettich': '⭐ Quadro V6, oculta, 30 kg · ⛔ É A ÚNICA FERRAGEM DE '
-                      'GAVETA QUE MUDA DE LINHA: na Blum são R$ 300',
- 'Báscula HK-XS': '⭐ Blum AVENTOS HK-XS, de molas · ⛔ não é a gás',
- 'Desempenador de porta': '⭐⭐ Padrão em TODA porta deslizante · folha de 70 cm '
-                          'ou mais leva DOIS',
- 'Sistema de correr Dominus': '⭐ [Jonathan] Rometal R$ 600 na Hettich, SI Forma '
-                              'R$ 900 na Blum · ⚠ a Base diz "2 portas"',
- 'Sistema pivô': 'Só o sistema, sem a folha',
- 'Alma de aço': '⭐ Prateleira de vão acima de 1,20 m · contra FLECHA, não '
-                'contra empeno',
- 'Suporte de prateleira': '⭐ [Jonathan] Toda prateleira INTERNA leva composição '
-                          'de 4 · ⛔ NÃO é o suporte oculto de R$ 30',
- 'Cava usinada': 'Por metro de frente · ⚠ a Base briga consigo: R$ 50/m em '
-                 'Ferragens e R$ 25/m em Terceirizados',
- 'Painel ripado': '⭐ O ITEM DESTE PROJETO · ripa de 2 cm, vão de 1, passo de 3 '
-                  '· ⚠ R$ 180/m² numa faixa de 70 a 420',
- 'Vidro reflecta prata com perfil': '⚠ PREMISSA: o executivo pede REFLECTA '
-                                    'CRISTAL e esse padrão não existe na Base',
-}
 
 if __name__ == '__main__':
     alvos = [x for x in ABAS if sys.argv[1:] in ([], ['--todos'])
@@ -352,13 +433,11 @@ if __name__ == '__main__':
     tot = 0.0
     for amb, aba in alvos:
         G, L, blocos, cr, cc, cf = monta(amb, aba)
-        # ⭐ o número do motor entra na linha de conferência
-        G[L['f0'] + 2][COLS.index('I')] = round(linhas[amb]['direto'], 2)
+        (P / f'_aba-{aba.split()[0]}.json').write_text(
+            json.dumps(G, ensure_ascii=False))
         tot += linhas[amb]['direto']
-        out = P / f'_aba-{aba.split()[0]}.json'
-        out.write_text(json.dumps(G, ensure_ascii=False))
-        print(f'{aba:<16} {L["fim"]:>4} linhas · {len(blocos)} móveis · '
+        print(f'{aba:<16} {L["fim"]:>4} linhas · {len(blocos)} itens · '
               f'peças {L["blk0"]}–{L["blk1"]} · motor R$ '
-              f'{linhas[amb]["direto"]:>11,.2f} · {len(json.dumps(G)) // 1024} KB')
-    print(f'{"TOTAL":<16} {"":>4}          {"":>9}              '
-          f'       R$ {tot:>11,.2f}')
+              f'{linhas[amb]["direto"]:>11,.2f} · '
+              f'{len(json.dumps(G)) // 1024} KB')
+    print(f'{"TOTAL":<16} {"":>34} R$ {tot:>11,.2f}')

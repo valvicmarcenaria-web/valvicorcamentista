@@ -50,6 +50,14 @@ MOTOR = {
     'Fita cor':                        (b.FITA_COR,  'm',        True),
     'Filetagem automática':            (b.FILETE_MAQ, 'm',       True),
     'Filetagem manual':                (b.FILETE_MAO, 'm',       True),
+    #   ⭐ [Jonathan, 04/11/2026] a ripa vai à coladeira, e ganha CHAVE
+    #     PRÓPRIA em vez de cair dentro da 'Filetagem automática'. Os
+    #     2.595,5 m de ripa são 91% da fita do projeto: fundir as duas
+    #     esconderia o maior metro do orçamento dentro de outra linha.
+    'Filetagem de ripa':               (b.FILETE_RIPA, 'm',      True),
+    #   ⭐ [Jonathan, 04/11/2026] a porta de passagem é FEITA na casa
+    'Miolo G-Door em régua':           (b.GDOOR_M2,  'm²',      True),
+    'Perfil de metalon':               (b.METALON_BARRA, 'barra', True),
     'Dobradiça':                       (b.DOBRADICA, 'un',       False),
     'Dobradiça vidro':                 (b.DOBRADICA_VIDRO, 'un', False),
     'Corrediça Hettich':               (b.CORREDICA_PAR, 'par',  False),
@@ -63,7 +71,7 @@ MOTOR = {
     'Suporte de prateleira':           (b.SUPORTE_JOGO, 'jogo',  True),
     'Cava usinada':                    (b.CAVA_M,    'm',        False),
     'Painel ripado':                   (b.RIPADO_M2, 'm²',       True),
-    'Vidro reflecta prata com perfil': (b.VIDRO_FOLHA, 'folha',  True),
+    'Vidro reflecta prata com perfil': (b.VIDRO_M2,   'm²',     True),
     'Corte por chapa':                 (b.CORTE_CHAPA, 'chapa',  True),
     'Corte por peça':                  (b.CORTE_PECA, 'peça',    True),
     'Frete':                           (200.0,       'viagem',   True),
@@ -74,9 +82,6 @@ MOTOR = {
 
 # ⚠⚠ PENDÊNCIAS DE PREÇO, e cada uma é dinheiro em aberto ─────────────────
 A_COTAR = {
-    'Dobradiça vidro': 'A Base diz A COTAR, faixa de 30 a 85. São 26 peças: '
-                       'de R$ 70 para R$ 85 o projeto sobe R$ 390 de custo, '
-                       'e para R$ 30 cai R$ 1.040.',
     'Cava usinada': 'A Base briga consigo mesma: R$ 50/m em Ferragens e '
                     'R$ 25/m em Terceirizados. Uso 50, o conservador. São '
                     '14,1 m — R$ 353 de diferença.',
@@ -84,9 +89,15 @@ A_COTAR = {
                      'da ripa e do vão". A nossa é passo de 3 cm, que é FINO.',
     'Vidro reflecta prata com perfil': 'O executivo pede REFLECTA CRISTAL e '
                                        'esse padrão não existe na Base.',
-    'Sistema de correr Dominus': 'A Base diz "Dominus Rometal, 2 PORTAS" por '
-                                 'R$ 600. Lancei um conjunto por porta. Se um '
-                                 'kit servir as duas folhas, cai R$ 600.',
+    'Sistema de correr Dominus':
+        '⛔⛔ DUAS DÚVIDAS NA MESMA LINHA. (1) PREÇO: a Base de Custos importa '
+        'R$ 800 para o "Dominus Rometal, 2 portas" e o Jonathan cravou R$ 600 '
+        'em 03/11/2026 — travado em 600 na linha 49 da aba Base (importada), '
+        'com o motivo impresso na própria linha. São 2 sistemas na cozinha e '
+        'R$ 408 no projeto. ⚠ A Base tem OUTRO sistema de 2 portas a R$ 600, '
+        'o SS-150: é possível que o 600 dele seja esse. (2) QUANTIDADE: o '
+        'conjunto é vendido como "2 PORTAS" e eu lancei UM POR FOLHA; se um '
+        'kit servir as duas folhas, cai outros R$ 600.',
 }
 
 # ════════════════════════════════════════════════════════════════════════
@@ -104,6 +115,11 @@ REGRAS = [
     ('^', 'Alma de aço',                    'Alma de aço'),
     ('=', 'Suporte de prateleira',          'Suporte de prateleira'),
     ('^', 'Cava usinada',                   'Cava usinada'),
+    #   ⭐ [Jonathan, 04/11/2026] a ripa vai à coladeira · a linha mudou
+    #     de nome junto com o preço, para o rótulo não mentir
+    ('^', 'Filetagem de ripa',              'Filetagem de ripa'),
+    ('^', 'Miolo G-Door',                   'Miolo G-Door em régua'),
+    ('^', 'Perfil de metalon',              'Perfil de metalon'),
     ('^', 'Filetagem manual',               'Filetagem manual'),
     ('^', 'Painel ripado',                  'Painel ripado'),
     ('^', 'Porta de vidro reflecta',        'Vidro reflecta prata com perfil'),
@@ -142,14 +158,33 @@ def confere():
     return vistos
 
 
+#   ⛔⛔ ONDE A BASE E O JONATHAN DISCORDAM, item por item.
+#     Em 04/11/2026 o IMPORTRANGE foi autorizado e eu pude, pela primeira
+#     vez, comparar os ONZE preços que nasceram no socorro do motor com o
+#     que a Base importa de verdade. DEZ batem ao centavo. Um não.
+#     ⭐ E esta tabela existe para que o próximo que abrir o arquivo não
+#     precise descobrir isso de novo: o número da Base fica ESCRITO ao lado
+#     do nosso, e quem quiser o da Base troca uma célula.
+DIVERGE = {
+    'Sistema de correr Dominus': (800.0, 'Jonathan, 03/11/2026 · "versão '
+                                 'hettich vamos usar Rometal de 600"'),
+}
+
 VISTOS = confere()
 
 if __name__ == '__main__':
     print(f'✓ {len(VISTOS)} chaves em uso, todas com preço igual ao lançado')
     for k in sorted(VISTOS):
         v, un, imp = MOTOR[k]
-        marca = {True: '', False: '  ⚠ socorro do motor (IMPORTRANGE parado)',
-                 None: '  ⭐ chave acrescentada por mim'}[imp]
+        if k in DIVERGE:
+            base, quem = DIVERGE[k]
+            marca = (f'  ⛔ a Base importa R$ {base:,.2f} · TRAVADO em '
+                     f'{v:,.0f} [{quem.split(" · ")[0]}]')
+        else:
+            marca = {True: '',
+                     False: '  ⭐ nasceu no socorro do motor · hoje conferida '
+                            'contra a Base, bate',
+                     None: '  ⭐ chave acrescentada por mim'}[imp]
         print(f'  {k:<34} R$ {v:>9,.2f} / {un:<9}{marca}')
     print(f'\n⚠ {len(A_COTAR)} chaves com preço em aberto:')
     for k in A_COTAR: print(f'  · {k}')

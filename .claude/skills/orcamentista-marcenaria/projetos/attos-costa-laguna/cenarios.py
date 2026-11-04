@@ -114,32 +114,27 @@ def custo_por_ambiente(linha):
     CHAPAS_ABA = sum(b.chapas(ar) for d in area_amb.values() for ar in d.values())
     CHAPAS_PROJ = sum(n for _a, n in c['chapas'].values())
 
-    # ⭐⭐ O RATEIO DA CHAPA É POR PADRÃO, NÃO PELA ÁREA GLOBAL.
-    #   Antes eu rateava o custo TOTAL de chapa pela fração de área total —
-    #   o que faz um ambiente todo de 15 mm pagar pela chapa de 18 do
-    #   vizinho. Agora cada padrão se rateia dentro de si: este ambiente usa
-    #   18,3 dos 115,04 m² de MDF cor 15 que o projeto compra em 29 chapas,
-    #   logo paga 29 × 18,3/115,04 = 4,61 chapas. A soma fecha igual, e cada
-    #   ambiente passa a pagar o que de fato consome.
-    #   ⭐ E é ASSIM que a planilha faz, pelo R$/m² por padrão do Painel —
-    #     os dois lados contam a mesma história.
-    rm2 = {}
-    for k, (ar_proj, n_ch) in c['chapas'].items():
-        rm2[k] = n_ch * b.PRECO[f'{k[0]} {k[1]}'] / ar_proj
-    ch_proj = {k: n for k, (_a, n) in c['chapas'].items()}
-
+    # ⭐⭐ A CHAPA SE CONTA INTEIRA EM CADA ABA — É O MÉTODO DA CASA.
+    #   ⛔⛔ E EU TINHA FEITO DIFERENTE. Contei a chapa pelo PROJETO (43) e
+    #     ratei por padrão, para não fazer o Gourmet de 1,77 m² pagar três
+    #     chapas inteiras sozinho. A conta é defensável — e NÃO é a da casa.
+    #     O orçamento do Gustavo Raposo arredonda em CADA aba (a cozinha dele
+    #     tem 13 chapas) e explica a sobra na linha "Arredondamento de chapa
+    #     para número cheio". Uma planilha que conta diferente das outras é
+    #     uma planilha que ninguém consegue comparar com as outras.
+    #   ⚠ O preço sobe: 51 chapas no lugar de 43, R$ 4.100 de custo.
+    #     Fica registrado, e a decisão de voltar atrás é do Jonathan.
     out = {}
     for nome, d in amb.items():
         fr = d['area'] / total_area
-        chapa = sum(ar * rm2[k] for k, ar in area_amb[nome].items())
-        #   a fração de chapa deste ambiente, por padrão — serve ao corte
-        n_ch = sum(ch_proj[k] * ar / c['chapas'][k][0]
-                   for k, ar in area_amb[nome].items())
+        chapa = sum(b.chapas(ar) * b.PRECO[f'{k[0]} {k[1]}']
+                    for k, ar in area_amb[nome].items())
+        n_ch = sum(b.chapas(ar) for ar in area_amb[nome].values())
         d['chapas'] = sum(b.chapas(ar) for ar in area_amb[nome].values())
         fita = d['fita'] * b.FITA_COR * b.FITA_PERDA
-        filete = d['fita_ripa'] * b.FILETE_MAO \
+        filete = d['fita_ripa'] * b.FILETE_RIPA \
             + (d['fita'] - d['fita_ripa']) * b.FILETE_MAQ
-        cons = (chapa + fita) * b.CONSUMIVEIS
+        cons = (chapa + fita + filete) * b.CONSUMIVEIS
         #   ⭐ O CORTE É DO AMBIENTE, e as duas unidades não se misturam:
         #     a PEÇA entra inteira, porque peça não se parte; a CHAPA entra
         #     rateada pela mesma fração que rateia a chapa em si.
@@ -207,9 +202,15 @@ if __name__ == '__main__':
           f'R$ {tot["Blum"] - tot["Hettich"]:,.2f}  '
           f'({(tot["Blum"]/tot["Hettich"]-1)*100:.1f}%)')
     ncorr = sum(q for m in lv.M for n, q, u in m.ferr if n.startswith('Corrediça'))
+    #   ⛔ ANTES ISTO CONTAVA PELO NOME, e o nome mentiu na primeira troca:
+    #     "Dobradiça das 4 portas de vidro com perfil" leva a palavra "vidro"
+    #     e custa R$ 50. O contador jogou as 26 na coluna errada e o relatório
+    #     saiu dizendo "26 a R$ 70" com R$ 50 na conta.
+    #   ⭐ Conta pelo PREÇO, que é o que distingue os dois produtos.
     ndobr = sum(q for m in lv.M for n, q, u in m.ferr
-                if n.startswith('Dobradiça') and 'vidro' not in n)
-    nvid = sum(q for m in lv.M for n, q, u in m.ferr if 'vidro' in n)
+                if n.startswith('Dobradiça') and u == b.DOBRADICA)
+    nvid = sum(q for m in lv.M for n, q, u in m.ferr
+               if n.startswith('Dobradiça') and u == b.DOBRADICA_VIDRO)
     nsis = sum(q for m in lv.M for n, q, u in m.ferr if n == 'Sistema de correr')
     d_corr = ncorr * (LINHAS['Blum']['corr'] - LINHAS['Hettich']['corr'])
     d_sis = nsis * (LINHAS['Blum']['corre'] - LINHAS['Hettich']['corre'])
@@ -230,8 +231,13 @@ if __name__ == '__main__':
     print(f'         os cinco pontos de MC entre 35% e 40%')
     print(f'    As {ndobr:.0f} dobradiças comuns NÃO mudam: Hettich e Blum '
           f'custam o mesmo (R$ 50).')
-    print(f'    E as {nvid:.0f} de porta de VIDRO são outro produto (R$ 70), '
-          f'fora da escada.')
+    #   ⭐ [Jonathan, 04/11/2026] "as dobradiças do item 3, sao normais".
+    #     As 26 que eu havia lançado como DOBRADIÇA DE VIDRO a R$ 70 viraram
+    #     comuns a R$ 50 — a folha é vidro COM PERFIL, e a dobradiça parafusa
+    #     no perfil. ⛔ Esta linha dizia "e as 26 de porta de VIDRO são outro
+    #     produto, fora da escada" e passou a ser mentira no mesmo instante.
+    assert nvid == 0, (f'⛔ voltaram {nvid:.0f} dobradiças de VIDRO ao projeto '
+                       '· se é folha sem perfil, o texto acima precisa voltar')
 
     print(f'\n  a MESMA casa, nas duas pontas da faixa:')
     for k in ('Hettich', 'Blum'):
