@@ -5,7 +5,8 @@ Executivo Clara Dobscha Arquitetura, pranchas 09 a 14/14, 15/10/2025.
 Levantamento peça a peça (cm). Preços: Valvic · Base de Custos, lida em 04/11/2026.
 ⛔ Fora do escopo: bancadas em granilite (01, 02, serviço), sóculos de cimento/
    porcelanato, cuba, tanque, canto alemão em alvenaria, mesa e cadeiras, varanda.
-⚠ Gaveteiro abaixo da escada (det. p. 8) NÃO veio neste PDF — fica pendente.
+⛔ Gaveteiro abaixo da escada (det. p. 8): FORA [Jonathan, 04/11/2026].
+⭐ SEM RT e sem vendedor [Jonathan, 04/11/2026] → BASE 84,88% à vista.
 """
 import math, sys, pathlib
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
