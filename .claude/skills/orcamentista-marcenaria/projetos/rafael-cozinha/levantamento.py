@@ -24,6 +24,18 @@ FITA = {'cor': (3.00, 2.50), 'branco': (2.00, 2.50),
         'cor30': (7.00, 5.00)}   # borda de 50 mm cortada p/ 30 mm, curva → manual
 FITA_PERD = 0.10
 
+import os
+# ⭐ LINHA DE FERRAGEM — duas versões [Jonathan, 04/11/2026]
+#   silver: Bigfer Telescópica 500 mm R$ 15/par + Bigfer Slow Click R$ 4 · 2 anos
+#   gold:   Hettich Quadro V6 oculta R$ 150/par + Hettich Sensys R$ 50 · 10 anos
+LINHA = os.environ.get('LINHA', 'gold')
+DOBR, CORR = {'silver': (4.0, 15.0), 'padrao': (10.0, 80.0),
+              'gold': (50.0, 150.0)}[LINHA]
+DOBR_NOME = {'silver': 'Bigfer Slow Click', 'padrao': 'Bigfer Inox Click',
+             'gold': 'Hettich Sensys'}[LINHA]
+CORR_NOME = {'silver': 'Bigfer Telescópica 500 mm', 'padrao': 'Hardt Invisível P-10',
+             'gold': 'Hettich Quadro V6 oculta'}[LINHA]
+
 pecas = []   # (movel, nome, c, l, qtd, chapa, fita_m_por_peca, tipo_fita)
 def P(movel, nome, c, l, qtd, chapa, fita_m=0.0, tf='cor'):
     pecas.append(dict(movel=movel, nome=nome, c=c, l=l, qtd=qtd,
@@ -81,8 +93,8 @@ P(m, 'Frente de gavetão tempero 25 × 35', 35, 25, 2, 'Azul Secreto 18', 1.20)
 gaveta(m, 58, 50, 12, n=4)
 gaveta(m, 25, 45, 28, n=2)
 prat30(m, 'Prateleira semicírculo r=40 (ponta)', 80, 43, 'Azul Secreto', math.pi*40/100, qtd=2)
-O(m, 'Dobradiça c/ amortecimento', 4, 'un', 10, 'Bigfer Inox Click · cozinha')
-O(m, 'Corrediça oculta c/ amortecimento', 6, 'par', 80, 'Hardt P-10 · padrão da casa')
+O(m, 'Dobradiça c/ amortecimento', 4, 'un', DOBR, DOBR_NOME)
+O(m, 'Corrediça', 6, 'par', CORR, CORR_NOME)
 O(m, 'Cava 45° usinada', 8, 'frente', 50)
 O(m, 'Suporte de prateleira (jogo de 4)', 1, 'prat.', 6.5)
 
@@ -96,7 +108,7 @@ P(m, 'Travessa superior', 116, 10, 2, 'Branco TX 15', 1.16, 'branco')
 P(m, 'Fundo', 60, 66, 1, 'Branco TX 6')
 P(m, 'Prateleira 15 mm', 57, 55, 1, 'Branco TX 15', 0.57, 'branco')
 P(m, 'Porta de giro 30 × 66', 66, 30, 2, 'Azul Secreto 18', 1.92)
-O(m, 'Dobradiça c/ amortecimento', 4, 'un', 10)
+O(m, 'Dobradiça c/ amortecimento', 4, 'un', DOBR, DOBR_NOME)
 O(m, 'Cava 45° usinada', 2, 'frente', 50)
 O(m, 'Suporte de prateleira (jogo de 4)', 1, 'prat.', 6.5)
 
@@ -107,7 +119,7 @@ P(m, 'Base e teto', 196, 40, 2, 'Branco TX 15', 1.96, 'branco')
 P(m, 'Divisória', 38, 38, 1, 'Branco TX 15', 0.38, 'branco')
 P(m, 'Fundo', 196, 41, 1, 'Branco TX 6')
 P(m, 'Porta de giro 48 × 39', 48, 39, 4, 'Azul Secreto 18', 1.74)
-O(m, 'Dobradiça c/ amortecimento', 8, 'un', 10)
+O(m, 'Dobradiça c/ amortecimento', 8, 'un', DOBR, DOBR_NOME)
 O(m, 'Cava 45° usinada (puxador inferior)', 4, 'frente', 50)
 
 # ═══ 6 · ARMÁRIO SUPERIOR MENOR (p.12) — tauari, 2 basculantes, LED ═══
@@ -142,8 +154,8 @@ gaveta(m, 63, 26, 40, n=1)
 P(m, 'Gavetão · quadro da frente ripada', 63, 6, 2, 'Tauari 18', 0.63)
 P(m, 'Gavetão · ripa 3 cm vazada (×1,10 perda)', 47, 3*1.10, 16, 'Tauari 18', 1.00)
 prat30(m, 'Prateleira 273 × 32 sobre armário e janela', 273, 32, 'Tauari', (273+32+32)/100)
-O(m, 'Dobradiça c/ amortecimento (porta 179 → 4)', 8, 'un', 10)
-O(m, 'Corrediça oculta c/ amortecimento', 1, 'par', 80)
+O(m, 'Dobradiça c/ amortecimento (porta 179 → 4)', 8, 'un', DOBR, DOBR_NOME)
+O(m, 'Corrediça', 1, 'par', CORR, CORR_NOME)
 O(m, 'Cava redonda ø7 usinada', 2, 'frente', 50, '⚠ preço de cava 45°, confirmar')
 O(m, 'Suporte de prateleira (jogo de 4)', 6, 'prat.', 6.5)
 O(m, 'Suporte oculto (trecho sobre a janela)', 5, 'un', 30)
