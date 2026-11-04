@@ -155,7 +155,17 @@ def mv(amb, nome, nota=''):
 # ════════════════════════════════════════════════════════════════════════
 # O RIPADO — o item do projeto, e o que mais depende de premissa
 # ════════════════════════════════════════════════════════════════════════
-RIPA_L, VAO, PASSO = 2.0, 1.0, 3.0        # cm · DETALHE 1:5, que é cotado
+#   ⭐⭐ O PASSO DO RIPADO É A MAIOR ALAVANCA DE PREÇO DO PROJETO, e por
+#     isso ele sai por variável de ambiente: dá para rodar o orçamento
+#     inteiro com outra ripa sem editar uma linha.
+#         RIPA_L=4 VAO=2 python3 levantamento.py
+#     ⛔ O padrão é o do DETALHE 1:5 da prancha, que é o que está cotado:
+#     ripa de 2, vão de 1, passo de 3. Mudar isto MUDA O PRODUTO — é
+#     decisão de projeto, não de produção.
+import os as _os
+RIPA_L = float(_os.environ.get('RIPA_L', 2.0))
+VAO = float(_os.environ.get('VAO', 1.0))
+PASSO = RIPA_L + VAO                      # cm · DETALHE 1:5, que é cotado
 #   ⚠ A hachura da elevação do escritório desenha passo de 5,0 cm. O detalhe
 #     cotado governa sobre a hachura, que é simbólica — mas de 3 para 5 o
 #     metro de ripa cai 40%, então fica registrado como pendência.
@@ -535,6 +545,34 @@ m.t('Cava usinada nos 4 gavetões', 4.00, b.CAVA_M)
 m = mv('Suíte', 'Painel ripado da cabeceira', '200 × 272 × 3')
 painel_ripado(m, 200, 272)
 
+#   ⭐⭐ [Jonathan, 04/11/2026] "considere tbm o painel de mdf que esta atras".
+#     ⛔ ELE ESTAVA FALTANDO, e a planta já dizia isso em letras garrafais: a
+#     parede da cabeceira é cotada **200 + 267 = 467**. Os 200 são o ripado,
+#     que eu orcei. Ninguém cota 267 de NADA — os 267 são o outro painel, o
+#     liso, e eu li a cota como "o resto da parede" em vez de como um item.
+#   ⭐ E a cabeceira de 240 prova a leitura: ela começa a 113,5 cm do canto e
+#     vai até 353,5, ou seja, pisa 86,5 cm de ripado e 153,5 cm do painel
+#     liso. Uma cabeceira atravessando a junta entre dois acabamentos só faz
+#     sentido se os DOIS forem acabamento.
+#   ⚠ ALTURA 272, a mesma do ripado da ELEV.01 — as duas cotas saem da MESMA
+#     linha de cota, então é a mesma faixa de parede. Não há elevação do
+#     trecho liso para confirmar.
+m = mv('Suíte', 'Painel liso da cabeceira',
+       '267 × 272 × 2 · o resto da parede, ao lado do ripado')
+#   ⭐⭐ E AQUI A JUNTA SE RESOLVE SOZINHA, que é raro num painel liso.
+#     267 não sai de chapa de 185, então são 2 faixas de 133,5 — e a emenda
+#     cai a 133,5 cm do ripado. ⭐ A CABECEIRA COBRE DE 0 A 153,5 DESTE
+#     PAINEL. A junta fica DEBAIXO DELA, com 20 cm de folga.
+#     ⛔ Compare com o painel liso da sala de TV, onde a emenda é à vista e
+#     virou dúvida numerada. Aqui não é dúvida: é sorte do desenho, e está
+#     escrita para ninguém mover a junta sem saber o que perde.
+for _i, _w in enumerate(faixas(267), 1):
+    m.p(f'painel liso · faixa {_i} de 2', _w, 272, 15,
+        fita_m=(_w + 272) * 2 / 100,
+        obs='⭐ emenda a 133,5 cm do ripado, DEBAIXO da cabeceira estofada '
+            '(que cobre de 0 a 153,5 deste painel) · ⚠ mover a junta a põe '
+            'à vista')
+
 m = mv('Suíte', 'Parede painelada da TV', '467 × 275 × 2 · bandeira contínua de 65')
 m.p('testeira esquerda', 9, 275, 15, fita_m=275 / 100)
 m.p('testeira direita', 18, 275, 15, fita_m=275 / 100)
@@ -665,7 +703,7 @@ def _pt(x):
     return f'{x:g}'.replace('.', ',')
 
 
-def mesa_de_cabeceira(m, largura, gavetas=2):
+def mesa_de_cabeceira(m, largura, lado, gavetas=2):
     """As peças de UMA mesa, lançadas num móvel que já existe.
 
     ⭐⭐ [Jonathan, 04/11/2026] "as mesas de cabeceira pode ser um item unico
@@ -680,7 +718,11 @@ def mesa_de_cabeceira(m, largura, gavetas=2):
     ⭐ Devolve os metros de cava desta mesa, que o bloco soma.
     """
     e, prof, alt = 1.5, MESA_PROF, MESA_CORPO
-    q = f' · mesa de {largura:g}'         # ⭐ a peça diz de qual mesa é
+    #   ⭐ A PEÇA DIZ DE QUAL MESA É — e pelo LADO, não pela largura.
+    #     [Jonathan, 04/11/2026] "pode considerar ambas de 90cm": com as duas
+    #     iguais, rotular por largura daria dezoito peças chamadas "mesa de
+    #     90" e ninguém saberia qual vai para qual parede.
+    q = f' · mesa {lado}'
     m.p('tampo' + q, largura, prof, 15, fita_m=(largura + prof) * 2 / 100,
         obs=f'⭐ {largura:g} × {prof:g} medidos na planta · fita nos 4 lados, '
             f'a mesa é solta e se vê por todos os lados')
@@ -730,11 +772,18 @@ m.t('Estofamento da cabeceira', round(240 * CAB_ALT / 10000, 4),
 #     mesma parede e não existe comprar uma só. ⛔ O CUSTO NÃO MUDOU UM
 #     CENTAVO — mudou a apresentação. As peças continuam todas lançadas, cada
 #     uma dizendo de qual mesa é, e o plano de corte lê igual.
-MESAS = (80, 90)
+#   ⭐⭐ [Jonathan, 04/11/2026] "pode considerar ambas de 90cm". A planta
+#     desenha 80 à esquerda e 90 à direita — e eu medi as duas, não chutei.
+#     ⛔ Mas MEDIR não é DECIDIR: a planta é desenho, o Jonathan é o dono do
+#     projeto, e ele fechou as duas em 90. A assimetria medida fica aqui
+#     registrada, para que ninguém a redescubra daqui a um mês e ache que o
+#     orçamento está errado.
+#   ⚠ Custa R$ 47 a mais que o par de 80 + 90, e é a resposta à dúvida 10.
+MESAS = (('esquerda', 90), ('direita', 90))
 m = mv('Suíte', 'Mesas de cabeceira',
-       f'o par · {MESAS[0]:g} e {MESAS[1]:g} × {MESA_PROF:g} × '
+       f'o par · {MESAS[0][1]:g} e {MESAS[1][1]:g} × {MESA_PROF:g} × '
        f'{MESA_CORPO + MESA_PE:g} · 2 gavetas cada, sobre pés')
-cava_mesas = sum(mesa_de_cabeceira(m, L) for L in MESAS)
+cava_mesas = sum(mesa_de_cabeceira(m, L, lado) for lado, L in MESAS)
 #   ⛔ A FERRAGEM DO PAR, EM UMA LINHA SÓ POR FAMÍLIA. Duas linhas de mesmo
 #     nome dentro do mesmo móvel é pedir para alguém somar uma e esquecer a
 #     outra.
@@ -878,11 +927,16 @@ for _m in M:
 _RIPAS_COZ = sum(int(_n.split()[0]) for _m in M if _m.amb == 'Cozinha'
                  for _n, *_ in _m.pecas if 'ripas de' in _n
                  and 'cristaleira' not in _m.nome.lower())
-assert _RIPAS_COZ == ripas_em(626), \
-    f'⛔⛔ {_RIPAS_COZ} ripas no corredor, e 626 cm pedem {ripas_em(626)}'
+#   ⛔ SÓ VALE NO PASSO PADRÃO. Com outra ripa, a soma dos ceil de cada
+#     trecho deixa de bater com o ceil do total — é arredondamento, não erro,
+#     e travar o motor por causa dele impediria rodar o cenário de economia.
+if (RIPA_L, VAO) == (2.0, 1.0):
+    assert _RIPAS_COZ == ripas_em(626), \
+        f'⛔⛔ {_RIPAS_COZ} ripas no corredor, e 626 cm pedem {ripas_em(626)}'
 
 PREMISSAS = [
- 'Passo da ripa 3 cm — o detalhe 1:5 cotado, não a hachura da elevação (5 cm).',
+ f'Passo da ripa {PASSO:g} cm (ripa {RIPA_L:g}, vão {VAO:g}) — o detalhe '
+ f'1:5 cotado, não a hachura da elevação (5 cm).',
  'Ripado do escritório orçado pela área APARENTE (4,25 m²), com base contínua '
  'atrás. Se correr atrás dos armários, são 8,60 m².',
  'Base do ripado em MDF 15 mm — a prancha cota 1 cm, que não é espessura comercial.',

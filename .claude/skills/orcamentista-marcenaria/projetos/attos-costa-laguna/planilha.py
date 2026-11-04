@@ -117,24 +117,39 @@ DUVIDAS_PORTA = [
 #   ⭐ só a aba que TEM cabeceira estofada recebe estas — e as duas
 #     primeiras são as que mudam o plano de corte.
 DUVIDAS_CABECEIRA = [
- '⚠⚠ A ALTURA DA CABECEIRA É PREMISSA MINHA, 120 cm — e é o ÚNICO número '
- 'dela que não saiu do desenho. ⭐ A largura de 240, a espessura de 5 e as '
- 'profundidades de 50 das mesas eu MEDI no vetor da planta, com a escala '
- 'tirada da cota de 467 e conferida em oito outras cotas. ⛔ Mas não há '
- 'ELEVAÇÃO da parede da cabeceira em prancha nenhuma: a ELEV.01 desenha o '
- 'painel ripado (200 × 272) e a ELEV.02 a parede da TV (467 × 275). A '
- 'cabeceira e as duas mesas só existem em PLANTA e no 3D — sem altura, sem '
- 'seção. ⭐ Cada 10 cm a mais de cabeceira custam R$ 144 de estofado mais '
- 'a chapa. Diga a altura e o número fecha.',
+ '⭐ RESPONDIDO [Jonathan, 04/11/2026]: "120 esta otimo". A cabeceira fica '
+ '240 × 120. ⛔ FICA REGISTRADO QUE ISTO É ESCOLHA, NÃO COTA: a largura de '
+ '240, a espessura de 5 e as profundidades de 50 das mesas eu MEDI no vetor '
+ 'da planta, com a escala tirada da cota de 467 e conferida em oito outras '
+ 'cotas. A ALTURA não existe em desenho nenhum — a ELEV.01 da suíte desenha '
+ 'o painel ripado (200 × 272) e a ELEV.02 a parede da TV (467 × 275), e não '
+ 'há elevação da parede da cabeceira. ⚠ Quem abrir este orçamento daqui a '
+ 'seis meses precisa saber qual número veio do desenho e qual veio do dono '
+ 'do projeto.',
 
- '⚠⚠ AS DUAS MESAS DE CABECEIRA SÃO DIFERENTES NA PLANTA: 80 cm à esquerda '
- 'e 90 à direita. ⭐ Não é erro de leitura — medem 90,7 e 102,0 pt, e os '
+ '⭐ RESPONDIDO [Jonathan, 04/11/2026]: "pode considerar ambas de 90cm". As '
+ 'duas mesas ficam 90 × 50 × 55. ⛔ E FICA REGISTRADO O QUE A PLANTA '
+ 'DESENHAVA: 80 à esquerda e 90 à direita, medidos em 90,7 e 102,0 pt — e os '
  '90,7 pt são exatamente o que mede a porta de 80 da ELEV.02 na mesma '
- 'prancha. ⭐ A planta explica a assimetria: sobram 53,7 cm de parede livre '
- 'à esquerda da mesa esquerda e só 18,4 cm à direita da direita. ⚠ Se for '
- 'intenção do projeto, está certo como está; se o desenho foi feito no '
- 'olho e as duas são iguais, é trocar um número — e a de 90 custa R$ 47 a '
- 'mais que a de 80.',
+ 'prancha, então não foi erro de leitura. A planta ainda explicava a '
+ 'assimetria (sobram 53,7 cm de parede à esquerda e só 18,4 à direita). '
+ '⚠ Custa R$ 47 a mais que o par desenhado, e é decisão do projeto.',
+
+ '⚠⚠ O PAINEL LISO DE 267 É LEITURA MINHA DA COTA, e vale conferir. '
+ '[Jonathan, 04/11/2026] "considere tbm o painel de mdf que esta atras" — e '
+ 'eu li "o painel atrás" como O RESTO DA PAREDE, porque a planta cota a '
+ 'parede da cabeceira como 200 + 267 = 467: os 200 são o ripado e ninguém '
+ 'cota 267 de nada. ⭐ A cabeceira de 240 reforça: ela começa a 113,5 cm do '
+ 'canto e pisa 86,5 cm de ripado e 153,5 cm do liso — atravessar a junta '
+ 'entre dois acabamentos só faz sentido se os dois forem acabamento. '
+ '⚠ SE FOR SÓ ATRÁS DA CABECEIRA (240 em vez de 267), o item cai de '
+ 'R$ 1.075 para cerca de R$ 970 — e o PROJETO, de R$ 1.268 para R$ 1.140, '
+ 'porque o rateio do item e a chapa comprada inteira são dois números '
+ 'diferentes para a mesma peça. ⛔ E a altura de 272 também é leitura: '
+ 'não há elevação do trecho liso. ⚠ Some-se a isto que o ESTOFADO não '
+ 'aparece na LEGENDA DE ACABAMENTOS da prancha, que tem só "MDF AMADEIRADO '
+ 'A DEFINIR" e "RIPADO EM MDF AMADEIRADO A DEFINIR" — quem disse que a '
+ 'cabeceira é estofada foi o 3D, e o tecido segue sem definição.',
 
  '⛔⛔ DUAS SUÍTES INTEIRAS APARECEM NO 3D E NÃO TÊM UMA LINHA DE PRANCHA. '
  'O executivo tem ONZE pranchas: cozinha (3), escritório (2), hall (3), '
@@ -144,14 +159,6 @@ DUVIDAS_CABECEIRA = [
  'fazer "por analogia" seria pôr número inventado dentro de um orçamento '
  'que é todo medido. ⚠ E a pergunta maior é essa: se as suítes 01 e 02 têm '
  'marcenaria, faltam AMBIENTES nesta conta, não uma cabeceira.',
-
- '⚠ O ESTOFADO NÃO ESTÁ NA LEGENDA DA PRANCHA. A LEGENDA DE ACABAMENTOS da '
- 'suíte tem duas entradas, "MDF AMADEIRADO A DEFINIR" e "RIPADO EM MDF '
- 'AMADEIRADO A DEFINIR" — estofado não aparece. Quem disse que a cabeceira '
- 'é estofada foi o 3D. ⭐ E a planta concorda sozinha: a peça está '
- 'desenhada com 5,0 cm de espessura, que é 15 mm de MDF + 30 mm de espuma '
- '+ tecido. ⚠ Mas o TECIDO segue sem definição, e tecido caro muda esta '
- 'linha inteira.',
 ]
 DUVIDAS_DO_AMBIENTE = {
  'Sala de TV': [

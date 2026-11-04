@@ -87,6 +87,46 @@ que eu NÃO toquei porque são células dele:
 - **01 Hall com 2 viagens de frete**, R$ 400. O frete do projeto passou de
   R$ 2.200 para R$ 2.600.
 
+**⭐⭐ E AS TRÊS RESPOSTAS DO JONATHAN, no mesmo dia:**
+
+1. *"120 esta otimo"* — a altura da cabeceira está fechada.
+2. *"considere tbm o painel de mdf que esta atras"* — ⛔⛔ **ELE ESTAVA
+   FALTANDO, E A PLANTA JÁ DIZIA.** A parede da cabeceira é cotada
+   **200 + 267 = 467**. Os 200 são o ripado, que eu orcei. **Ninguém cota 267
+   de nada** — os 267 são o outro painel, o liso, e eu li a cota como "o
+   resto da parede" em vez de como um ITEM. ⭐ A cabeceira de 240 prova a
+   leitura: ela pisa 86,5 cm de ripado e 153,5 cm do liso, e atravessar a
+   junta entre dois acabamentos só faz sentido se os dois forem acabamento.
+   ⭐⭐ E a emenda se resolve sozinha: 267 pede 2 faixas de 133,5, e a junta
+   cai **debaixo da cabeceira**, com 20 cm de folga. +R$ 1.268 no projeto.
+3. *"pode considerar ambas de 90cm"* — a planta desenhava 80 e 90; medir não
+   é decidir, e ele decidiu. +R$ 47.
+
+**Custo direto R$ 75.681,91 → R$ 76.996,72** · 22 itens · 59 chapas ·
+conferência **R$ 0,00** · linhas a preço zero **0**.
+
+**⚠ E O PEDIDO QUE NÃO TEM UMA RESPOSTA SÓ:** *"considere um investimento no
+orcamento 20% a menos"*. ⛔⛔ **20% A MENOS DE QUÊ?** A planilha não está nos
+35% combinados — a célula da MC alvo está em **50%**, posta à mão. São duas
+contas completamente diferentes, e isso está medido em `economia.py`:
+
+| leitura | preço hoje | −20% | como se chega |
+|---|---|---|---|
+| ① da planilha, MC 50% | R$ 305.114 | **R$ 244.091** | ⭐ a MC vai de 50% para **43,5%** · zero mudança de produto, e 8,5 pontos acima do piso |
+| ② do combinado, MC 35% | R$ 193.724 | **R$ 154.979** | ⛔ por margem NÃO DÁ (pediria MC 24,7%) · tem de sair produto |
+
+⭐ **E a alavanca que não toca no projeto: SEM VENDEDOR.** BASE sobe de
+76,09% para 84,88% e o preço cai **17,6%** com a mesma MC e o mesmo móvel.
+Com ripa de 3 em vez de 2 (passo 4,5), chega a **−23,5%**.
+⛔ A ripa é a maior alavanca de produto do orçamento, e agora sai por
+variável de ambiente: `RIPA_L=3 VAO=1.5 python3 levantamento.py`.
+
+**⛔ E UM ERRO MEU, DE FERRAMENTA, NÃO DE CONTA:** pus um `git stash` dentro
+de um script de diagnóstico "por segurança" e ele engoliu TODAS as alterações
+não commitadas no meio da cirurgia da planilha. Recuperado com `git stash
+pop`, nada se perdeu. ⭐ A lição: **script de leitura não escreve.** Comando
+que muda estado não entra em ferramenta de diagnóstico, nem com boa intenção.
+
 **Gravado em:** `referencias/quantitativo.md` (MEDIR O VETOR DA PRANCHA) ·
 `referencias/laminacao-e-construcao.md` (a cabeceira e a mesa, camada a
 camada) · `referencias/base-de-custos.md` (as duas chaves novas) · Base
