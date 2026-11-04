@@ -192,6 +192,45 @@ VIDRO_M2_REF = 660.0     # ⚠ referência de obra (cristaleira da Kenia e do
                          # ou é outro vidro, ou aquela obra levou margem na
                          # linha. Fica registrado, não corrigido.
 
+# ── PORTA DE PASSAGEM · a folha é FEITA, não comprada ───────────────────
+#   ⭐⭐ [Jonathan, 04/11/2026] O MÉTODO, nas palavras dele:
+#     "para fazer as portas fazemos um sanduiche com duas chapas de 6mm de
+#      acabamento na cor especificada com um miolo de chapa Gdoor ... e nos
+#      usamos reguas de 15cm em torno da extençao da porta (horizontal e
+#      vertical). nas portas ripadas adicionais dois perfis de metalom para
+#      evitar empenos ... ja o ripado segue o calculo padrão ... Adicionamos
+#      isso mais o custo de cava e o sistema da porta, pivo ou deslizante."
+#
+#   ⛔ E ISSO MATA A LINHA "PORTA PRONTA". Eu tinha duas portas paradas no
+#     orçamento "à espera de decisão" — porta de giro pronta a R$ 530 e porta
+#     pivô pronta a R$ 840 — porque não sabia se a casa compra ou fabrica.
+#     Fabrica. A dúvida morreu.
+#
+#   ⭐ G-DOOR, da pesquisa que o Jonathan mandou fazer: é da Guararapes, MDF
+#     de BAIXÍSSIMA densidade (360 kg/m³), feito para ENCHIMENTO de porta
+#     interna e tamburato — substitui colmeia de papelão e sarrafeado.
+#   ⛔ E A CHAPA DELE NÃO É A NOSSA: 275 × 205,5, não 275 × 185. Reaproveitar
+#     CHAPA_M2 daria rateio errado, por isso a área tem constante própria.
+GDOOR_CHAPA = 600.0               # ⭐ R$/chapa, cravado pelo Jonathan
+GDOOR_C, GDOOR_L = 275.0, 205.5   # cm · ficha Guararapes, 2750 × 2055
+GDOOR_ESP = 29.2                  # mm · a espessura do miolo
+GDOOR_CHAPA_M2 = GDOOR_C * GDOOR_L / 10000          # 5,65125 m²
+GDOOR_M2 = GDOOR_CHAPA / (GDOOR_CHAPA_M2 * APROV)   # R$/m² de régua
+#   ⚠ O 80% É CONSERVADOR AQUI, e de propósito: tira em régua é o corte mais
+#     eficiente que existe. Da chapa saem 13 réguas de 15 × 275 (205,5 ÷ 15),
+#     e uma porta de 90 × 260 pede 2,5 delas — 5,2 portas por chapa, R$ 115,38.
+#     O rateio de 80% cobra R$ 132,71/m², que dá R$ 127,41. ⛔ É escolha, e é
+#     do Jonathan: está registrado para o dia em que ele quiser o corte real.
+REGUA_GDOOR = 15.0                # ⭐ "reguas de 15cm em torno da extençao"
+PELE_PORTA = 6                    # mm · "duas chapas de 6mm de acabamento"
+ESP_PORTA = GDOOR_ESP + 2 * PELE_PORTA              # 41,2 mm de folha
+METALON_BARRA = 100.0             # ⭐ "a barra de 3mt do perfil custa 100,00"
+METALON_BARRA_M = 3.0
+METALON_N = 2                     # ⭐ "adicionais dois perfis de metalom"
+#   ⚠ COBRADO POR BARRA, como a alma de aço — não por metro. Dois perfis de
+#     2,60 m são 5,20 m e levam DUAS barras; por metro dariam R$ 173,33 em vez
+#     de R$ 200. Perguntado ao Jonathan, sem resposta ainda: fica o conservador.
+
 # ── a cascata de encargos · aba Comissões ───────────────────────────────
 #   ⛔ A BASE MUDA CONFORME TENHA RT E VENDEDOR, e são quase 9 pontos cada.
 #   ⛔⛔ E ESTES TRÊS NÚMEROS ERAM ARREDONDADOS. A Base de Custos PUBLICA

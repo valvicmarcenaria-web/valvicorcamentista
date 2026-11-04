@@ -7,6 +7,48 @@ pode ler e escrever aqui. Formato livre — marcar data e agente responsável.
 
 ## Tarefas abertas
 
+### [2026-11-04] Attos · Costa Laguna — o MÉTODO DA PORTA DE PASSAGEM — Lavinia
+**Solicitante:** Jonathan · **Agente:** Lavinia · **Status:** 🟡 Aplicado, com 3 perguntas abertas
+
+**O que o Jonathan cravou nesta sessão** (cada uma virou regra de casa, não
+só número do Attos):
+
+| decisão | palavras dele | onde foi parar |
+|---|---|---|
+| **A folha da porta é FEITA** | *"sanduiche com duas chapas de 6mm ... com um miolo de chapa Gdoor ... reguas de 15cm em torno da extençao"* | `referencias/laminacao-e-construcao.md`, seção PORTA DE PASSAGEM |
+| **Metalon na ripada** | *"adicionais dois perfis de metalom ... a barra de 3mt custa 100,00"* | idem + `base-de-custos.md` |
+| **A ripa vai à coladeira** | *"a filetagem das reguas pode considerar automatica"* + *"todo o ripado do projeto"* | `base-de-custos.md` · R$ 5,00 → R$ 2,50 |
+| **Dobradiça de porta de vidro é comum** | *"as dobradiças do item 3, sao normais"* | a folha é vidro COM PERFIL: parafusa no perfil |
+| **Reflecta é por m², a R$ 650** | *"é 420 o mt quadrado"* → *"atualize ... para 650 o mt²"* | `base-de-custos.md` · era lido como preço de FOLHA |
+
+**⛔ O QUE ISSO DESFEZ:** a linha "porta pronta" não existe. Eu tinha duas
+portas paradas num orçamento à espera de decisão (R$ 530 e R$ 840) porque não
+sabia se a casa compra ou fabrica. Fabrica.
+
+**⚠ TRÊS PERGUNTAS SEGUEM ABERTAS, e a primeira é a que me incomoda:**
+1. ⛔⛔ **A FITA DA ARESTA DA PORTA ESTÁ ERRADA E EU SEI.** A folha fica com
+   41,2 mm (29,2 de G-Door + 2 × 6) e a fita da Base é de 22. A de 45 não
+   existe lá; na ripada seriam 59,2 mm e pediria 60. Lancei com a de 22 e
+   gritei na aba. **Ou entra o preço da fita de 45/60, ou a aresta fecha com
+   sarrafo — e isso é outra conta.**
+2. As réguas de 15 do miolo: só o perímetro, ou há travessa no meio e bloco
+   de fechadura? (~R$ 12 cada)
+3. O metalon por barra (R$ 200) ou por metro (R$ 181,33)?
+
+**⛔ E UMA COISA QUE EU NÃO CONSEGUI FAZER:** o Jonathan pediu o orçamento das
+**duas cabeceiras estofadas e das mesas de cabeceira**, que estão no
+*"Anteprojeto - Attos 2.pdf"* do Drive. **O arquivo tem 7,96 MB e não passa
+pelo conector do Drive** — a leitura devolve só os rótulos das 24 páginas, sem
+uma cota. ⚠ E ele revelou uma coisa maior: os 3Ds têm **SUÍTE 01, SUÍTE 02 e
+SUÍTE PRINCIPAL**, e o executivo de 11 pranchas só cobre a PRINCIPAL. As duas
+outras suítes não têm prancha executiva nenhuma.
+
+**Arquivos:** `projetos/attos-costa-laguna/` (base.py, levantamento.py,
+chaves.py, planilha.py, _portas.py) · planilha
+`1eNEzHVhPF2HvKJ7MYGRZSkw9l-0aMMfij1ZXHMEcg0c`
+
+---
+
 ### [2026-06-16] Novo layout de proposta — Vitor
 **Solicitante:** Jonathan  
 **Agente:** Vitor  

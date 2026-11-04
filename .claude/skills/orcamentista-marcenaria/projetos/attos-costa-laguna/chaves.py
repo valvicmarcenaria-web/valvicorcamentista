@@ -55,6 +55,9 @@ MOTOR = {
     #     2.595,5 m de ripa são 91% da fita do projeto: fundir as duas
     #     esconderia o maior metro do orçamento dentro de outra linha.
     'Filetagem de ripa':               (b.FILETE_RIPA, 'm',      True),
+    #   ⭐ [Jonathan, 04/11/2026] a porta de passagem é FEITA na casa
+    'Miolo G-Door em régua':           (b.GDOOR_M2,  'm²',      True),
+    'Perfil de metalon':               (b.METALON_BARRA, 'barra', True),
     'Dobradiça':                       (b.DOBRADICA, 'un',       False),
     'Dobradiça vidro':                 (b.DOBRADICA_VIDRO, 'un', False),
     'Corrediça Hettich':               (b.CORREDICA_PAR, 'par',  False),
@@ -115,6 +118,8 @@ REGRAS = [
     #   ⭐ [Jonathan, 04/11/2026] a ripa vai à coladeira · a linha mudou
     #     de nome junto com o preço, para o rótulo não mentir
     ('^', 'Filetagem de ripa',              'Filetagem de ripa'),
+    ('^', 'Miolo G-Door',                   'Miolo G-Door em régua'),
+    ('^', 'Perfil de metalon',              'Perfil de metalon'),
     ('^', 'Filetagem manual',               'Filetagem manual'),
     ('^', 'Painel ripado',                  'Painel ripado'),
     ('^', 'Porta de vidro reflecta',        'Vidro reflecta prata com perfil'),

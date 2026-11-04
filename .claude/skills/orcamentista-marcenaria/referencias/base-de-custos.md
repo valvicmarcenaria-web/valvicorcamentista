@@ -111,3 +111,43 @@ orçamento fechar errado sem ninguém ver.
 Hoje são **quinze linhas vazias**, e cada uma tem o nome de quem coteja:
 Zen Designer, marmoraria, vidraceiro, e a própria fábrica para a moldura
 provençal.
+
+---
+
+## ⭐ LINHAS NOVAS — porta de passagem feita na casa [04/11/2026]
+
+| chave | preço | un | de onde vem |
+|---|--:|---|---|
+| **Miolo G-Door** | R$ 600,00 | chapa | ⭐ [Jonathan, 04/11/2026] · Guararapes, MDF de baixíssima densidade (360 kg/m³) para enchimento de porta · chapa **2.750 × 2.055 × 29,2 mm** |
+| **Miolo G-Door em régua** | R$ 132,71 | m² | derivado: R$ 600 ÷ (5,65125 m² × 80%) · ⛔ a área é a DELE, não os 275 × 185 da casa |
+| **Perfil de metalon** | R$ 100,00 | barra de 3 m | ⭐ [Jonathan, 04/11/2026] · 2 por folha RIPADA, contra empeno |
+| **Filetagem de ripa** | R$ 2,50 | m | ⭐ [Jonathan, 04/11/2026] "a filetagem das reguas pode considerar automatica ... todo o ripado do projeto" |
+
+⛔⛔ **A FILETAGEM DE RIPA MUDOU DE PREÇO, E NÃO ERA POUCO.** Este arquivo e o
+`laminacao-e-construcao.md` diziam *"ripa de 2 cm não entra na coladeira: vai
+à mão, a R$ 5,00"*, e a própria Base repete isso na linha "Filetagem manual".
+**Entra.** No Attos eram 2.595,5 m — **91% da fita do projeto** —, de
+R$ 12.977,30 para R$ 6.488,65.
+
+⚠ **A parte da chapa de 6 mm daquela nota NÃO foi perguntada** e segue
+valendo: o que mudou foi a ripa.
+
+⭐ E a linha ganhou **chave própria** em vez de cair dentro da "Filetagem
+automática". As duas custam R$ 2,50 hoje, mas o metro de ripa é o maior metro
+de qualquer orçamento com painel ripado: dentro da outra linha ele some.
+
+## ⭐ VIDRO REFLECTA É POR METRO QUADRADO [Jonathan, 04/11/2026]
+
+> *"a portas de vidro como por exemplo a da cristaleira do item 3 é calculada
+> pelo mt² ou seja, é 420 o mt quadrado"* — e depois: *"atualize o preço da
+> porta em reflecta para **650 o mt²**"*.
+
+⛔ **O erro não era de conta, era de UNIDADE** — e unidade errada não dá erro,
+dá um número. Lido como preço de FOLHA, ele errava nos DOIS sentidos: folha
+grande saía barata, folha pequena saía cara, e o total ficava perto o
+bastante para não chamar atenção.
+
+⭐ **A trava contra a reincidência é de ASSINATURA, não de comentário:** o
+lançamento de vidro passou a EXIGIR as medidas da folha. Antes dava para
+lançar vidro sem dizer o tamanho dele — e foi por isso que a unidade errada
+passou.

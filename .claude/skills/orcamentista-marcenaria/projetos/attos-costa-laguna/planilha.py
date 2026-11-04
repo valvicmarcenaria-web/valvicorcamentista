@@ -87,6 +87,33 @@ DUVIDAS = [
 #   ⭐ AS DÚVIDAS QUE SÃO DE UM AMBIENTE SÓ. As de cima valem em toda aba; as
 #     daqui aparecem só onde existem, e todas as três nasceram do apontamento
 #     do Jonathan em 04/11/2026 sobre a emenda de peça grande.
+#   ⭐ as dúvidas que SÓ existem onde há porta de passagem · [Jonathan,
+#     04/11/2026] mandou implementar o método sem responder as seis perguntas,
+#     então elas entram na aba, numeradas, em vez de ficarem num chat.
+DUVIDAS_PORTA = [
+ '⛔⛔ A FITA DA ARESTA DA PORTA ESTÁ ERRADA E EU SEI. A folha tem 41,2 mm '
+ '(29,2 de G-Door mais duas peles de 6) e a fita da Base é de 22 mm — a de '
+ '45 não existe lá. Na porta RIPADA são 59,2 mm e pediria fita de 60. '
+ '⭐ Lançado com a de 22 para não subestimar o resto, mas o número desta '
+ 'linha é o único do orçamento que eu sei estar errado. ⛔ Ou entra o preço '
+ 'da fita de 45/60, ou a aresta fecha com sarrafo — e isso é outra conta.',
+ '⚠ AS RÉGUAS DE 15 DO MIOLO: li "em torno da extensão da porta" como '
+ 'MOLDURA DE PERÍMETRO — 2 verticais na altura cheia e 2 horizontais entre '
+ 'elas. Numa folha de 80 × 207 isso deixa um vão de 50 × 177 entre duas '
+ 'peles de 6 mm. Se a fábrica põe travessa no meio, ou um bloco onde entra '
+ 'a fechadura, é lançar mais régua: cada travessa custa cerca de R$ 12.',
+ '⚠ A ESPESSURA DA FOLHA fica em 41,2 mm (29,2 + 6 + 6), e na ripada em '
+ '59,2 com a ripa de 18. Se o G-Door vem em outra bitola, o número muda — '
+ '59 mm é muito para uma folha pivotante.',
+ '⚠ O METALON está cobrado por BARRA, como a alma de aço: dois perfis de '
+ '2,72 m são 5,44 m e levam DUAS barras de 3 m, R$ 200. Se sai de sobra e '
+ 'se cobra por metro, seriam R$ 181,33.',
+ '⚠ O MIOLO DE G-DOOR está rateado pelos 80% de aproveitamento da casa, '
+ 'que dão R$ 132,71/m² de régua. ⛔ Tira em régua é o corte mais eficiente '
+ 'que existe: da chapa saem 13 réguas de 15 × 275 e uma folha de 90 × 260 '
+ 'pede 2,5 delas, o que daria R$ 115,38 por folha contra R$ 127,41. Os 80% '
+ 'cobram R$ 12 a mais por porta. É conservador, e é escolha sua.',
+]
 DUVIDAS_DO_AMBIENTE = {
  'Sala de TV': [
   '⛔⛔ O PAINEL LISO DE 300 × 272 TEM EMENDA À VISTA, E A POSIÇÃO DELA É SUA. '
@@ -125,6 +152,8 @@ ROTULO = {
  'Sistema pivô': 'sistema pivô', 'Alma de aço': 'alma de aço',
  'Suporte de prateleira': 'suporte de prateleira',
  'Cava usinada': 'cava usinada', 'Painel ripado': 'painel ripado',
+ 'Miolo G-Door em régua': 'miolo de porta em G-Door',
+ 'Perfil de metalon': 'perfil de metalon anti-empeno',
 }
 
 
@@ -207,7 +236,10 @@ def monta(amb, aba):
     L['nt1'] = L['nt0'] + len(NOTAS) - 1
     L['s_dv'] = L['nt1'] + 2
     L['dv0'] = L['s_dv'] + 2
+    #   ⭐ só a aba que TEM porta de passagem recebe as dúvidas dela
+    tem_porta = any('Miolo G-Door' in n for m in moveis for n, *_ in m.terc)
     DUV = (list(DUVIDAS) + DUVIDAS_DO_AMBIENTE.get(amb, [])
+           + (DUVIDAS_PORTA if tem_porta else [])
            + [f'⚠ {k} — {ch.A_COTAR[k]}' for k in cc + vid + cf
               if k in ch.A_COTAR])
     L['dv1'] = L['dv0'] + len(DUV) - 1

@@ -219,6 +219,59 @@ def painel_ripado(m, largura, altura, atras=True):
     return n
 
 
+
+# ── A PORTA DE PASSAGEM · o método que o Jonathan descreveu ─────────────
+PELE_OBS = ('⭐ [Jonathan, 04/11/2026] PELE DO SANDUÍCHE · "duas chapas de 6mm '
+            'de acabamento na cor especificada" · a folha inteira em 6, uma '
+            'por face, sobre o miolo de G-Door')
+MIOLO_OBS = ('⭐ [Jonathan, 04/11/2026] "um miolo de chapa Gdoor ... reguas de '
+             '15cm em torno da extençao da porta (horizontal e vertical)" · '
+             'G-Door é MDF de baixíssima densidade (360 kg/m³) da Guararapes, '
+             'feito para enchimento de porta · chapa de 275 × 205,5 a R$ 600, '
+             'rateada a R$ 132,71/m² de régua com 80% de aproveitamento · '
+             '⚠ LIDO COMO MOLDURA DE PERÍMETRO: 2 verticais na altura cheia e '
+             '2 horizontais entre elas. Se houver travessa no meio, é lançar '
+             'mais régua — e a pergunta está em aberto')
+METALON_OBS = ('⭐ [Jonathan, 04/11/2026] "nas portas ripadas adicionais dois '
+               'perfis de metalom para evitar empenos ... a barra de 3mt do '
+               'perfil custa 100,00" · ⚠ cobrado por BARRA, como a alma de '
+               'aço, não por metro')
+
+
+def porta_de_passagem(m, largura, altura, ripada=False):
+    """A folha FEITA na fábrica, não comprada pronta.
+
+    ⭐⭐ [Jonathan, 04/11/2026] sanduíche de duas peles de 6 mm na cor sobre
+      um miolo de G-Door em réguas de 15 no perímetro; a ripada leva ainda
+      dois perfis de metalon contra empeno e o ripado pelo cálculo padrão.
+    ⛔ A CAVA E O SISTEMA (pivô ou deslizante) NÃO ENTRAM AQUI: são do vão,
+      não da folha, e cada porta lança o seu — foi assim que o Jonathan
+      descreveu ("Adicionamos isso mais o custo de cava e o sistema").
+    """
+    per = 2 * (largura + altura) / 100
+    #   ① as duas peles · a fita vai UMA vez, no perímetro do sanduíche
+    #   ⛔⛔ E A FITA ESTÁ ERRADA E EU SEI: a aresta tem 41,2 mm e a fita da
+    #     Base é de 22. Pede fita de 45 — que não existe na Base — ou a
+    #     aresta fecha com sarrafo. Perguntado ao Jonathan, sem resposta:
+    #     lanço com a de 22 e grito aqui e na aba.
+    m.p('pele da porta · face A', largura, altura, b.PELE_PORTA,
+        fita_m=per, obs=PELE_OBS)
+    m.p('pele da porta · face B', largura, altura, b.PELE_PORTA, obs=PELE_OBS)
+    #   ② o miolo, em réguas de 15 no perímetro
+    h = largura - 2 * b.REGUA_GDOOR
+    a_gd = (2 * b.REGUA_GDOOR * altura + 2 * b.REGUA_GDOOR * h) / 10000
+    m.t(f'Miolo G-Door · 2 réguas de {b.REGUA_GDOOR:g} × {altura:g} e 2 de '
+        f'{b.REGUA_GDOOR:g} × {h:g}', round(a_gd, 4), b.GDOOR_M2,
+        obs=MIOLO_OBS)
+    if ripada:
+        #   ③ o ripado sobre a pele · ⛔ SEM base atrás: a base é o sanduíche
+        painel_ripado(m, largura, altura, atras=False)
+        nb = math.ceil(altura / 100 / b.METALON_BARRA_M) * b.METALON_N
+        m.t(f'Perfil de metalon anti-empeno · {b.METALON_N} na folha', nb,
+            b.METALON_BARRA, obs=METALON_OBS)
+    return per
+
+
 # ════════════════════════════════════════════════════════════════════════
 # HALL E JANTAR
 # ════════════════════════════════════════════════════════════════════════
@@ -226,7 +279,9 @@ m = mv('Hall', 'Painel do hall com porta de lavanderia',
        '206 × 272 × 2, a 3 cm do piso')
 m.p('painel fixo esquerdo', 31, 272, 15, fita_m=(31 + 272) * 2 / 100)
 m.p('painel fixo direito', 93, 272, 15, fita_m=(93 + 272) * 2 / 100)
-m.p('folha da porta mimetizada', 80, 210, 15, fita_m=(80 + 210) * 2 / 100)
+#   ⭐ [Jonathan, 04/11/2026] A FOLHA É SANDUÍCHE, não uma chapa de 15.
+#     Era `m.p('folha da porta mimetizada', 80, 210, 15, ...)`.
+porta_de_passagem(m, 80, 210)
 m.p('bandeira sobre a porta', 80, 64, 15, fita_m=(80 + 64) * 2 / 100)
 m.f('Dobradiça da porta mimetizada', b.dobradicas(210), b.DOBRADICA)
 m.t('Cava usinada de 10 cm', 0.10, b.CAVA_M)
@@ -333,7 +388,10 @@ N_RIP_COZ = painel_ripado(m, 626 - 2 * 87, 272)      # o painel fixo, sem as por
 for amb, qual in (('Vestiário', 'vestiário'), ('Despensa', 'despensa')):
     m = mv('Cozinha', f'Porta de correr ripada · {qual}',
        '87 × 272 · 29 passos exatos · faz parte dos 626 da parede')
-    painel_ripado(m, 87, 272, atras=True)
+    #   ⭐ [Jonathan, 04/11/2026] FOLHA DE PORTA, não painel de parede: o
+    #     que vai atrás do ripado é o SANDUÍCHE, não uma base de 15. Era
+    #     `painel_ripado(m, 87, 272, atras=True)`.
+    porta_de_passagem(m, 87, 272, ripada=True)
     #   ⭐ [Jonathan 03/11] o sistema agora é por LINHA: Rometal de 600 na
     #     Hettich e SI Forma de 900 na Blum. O preço entra aqui como o da
     #     Hettich e `cenarios.py` troca por linha — é a ÚNICA ferragem deste
@@ -497,8 +555,11 @@ m.p('prateleira de 198 · duas chapas coladas', 198, 28, 15, qtd=2,
     fita_m=(198 + 28) * 2 / 100)
 m.f('Alma de aço, barra de 3 m', 1, b.ALMA_BARRA)
 #   ⭐ 198 de vão passa de longe dos 120 da regra da casa.
-m.p('folha da porta de giro', 80, 207, 15, fita_m=(80 + 207) * 2 / 100)
-m.p('folha da porta pivotante', 100, 207, 15, fita_m=(100 + 207) * 2 / 100)
+#   ⭐⭐ [Jonathan, 04/11/2026] "o custos das portas do item 07 suite, nao
+#     foi devidamente orcado". Estavam como UMA chapa de 15 cada — a folha
+#     é sanduíche de duas peles de 6 sobre miolo de G-Door.
+porta_de_passagem(m, 80, 207)
+porta_de_passagem(m, 100, 207)
 m.f('Dobradiça da porta de giro', b.dobradicas(207), b.DOBRADICA)
 m.f('Sistema pivô', 1, b.SISTEMA_PIVO)
 m.t('Cava usinada nas duas folhas', 1.80, b.CAVA_M)
@@ -512,9 +573,17 @@ m.t('Cava usinada nas duas folhas', 1.80, b.CAVA_M)
 #   obra pode já tê-las comprado. A Base tem o preço pronto: giro de 80 a
 #   R$ 530 e pivô — o maior da tabela é 90 a R$ 840. Em vez de lançar a zero,
 #   que é o que a REGRA DOS DOIS ESTADOS proíbe, ficam nomeadas na pendência.
-PORTAS_SUITE = [('Porta de giro pronta, 80 cm', 1, 530.0),
-                ('Porta pivô pronta, 90 cm (⚠ a folha é 100)', 1, 840.0),
-                ('Sistema pivô', 1, 120.0)]
+#   ⭐⭐ ESTA LISTA ERA "O QUE ESTÁ FORA DA CONTA, À ESPERA DE DECISÃO", e a
+#     decisão chegou: [Jonathan, 04/11/2026] a casa FABRICA a folha, não
+#     compra pronta. As duas portas prontas (R$ 530 e R$ 840) deixaram de
+#     existir — `porta_de_passagem()` as substitui.
+#   ⛔ E A TERCEIRA NUNCA DEVERIA TER ESTADO AQUI: o "Sistema pivô, R$ 120"
+#     JÁ ESTAVA LANÇADO na suíte, em `m.f('Sistema pivô', 1, b.SISTEMA_PIVO)`.
+#     A tela imprimia "fora da conta, à espera de decisão: Sistema pivô,
+#     R$ 120" ao lado dos mesmos R$ 120 DENTRO da conta. Não houve soma em
+#     dobro — a lista só era impressa —, mas o relatório mentia, e mentir
+#     sobre o que está dentro ou fora é como se decide errado.
+PORTAS_SUITE = []
 
 
 # ════════════════════════════════════════════════════════════════════════
@@ -679,9 +748,10 @@ if __name__ == '__main__':
     print(f'\n  BASE {b.BASE:.2%} · {_cond}')
     for mc in (0.35, 0.38, 0.40):
         print(f'    MC {mc:.0%}  →  PREÇO  R$ {b.preco(c["direto"], mc):>12,.2f}')
-    print(f'\n  ⚠ fora da conta, à espera de decisão:')
-    for n, q, u in PORTAS_SUITE:
-        print(f'      {n:<42} {q} × R$ {u:,.2f}')
+    if PORTAS_SUITE:
+        print(f'\n  ⚠ fora da conta, à espera de decisão:')
+        for n, q, u in PORTAS_SUITE:
+            print(f'      {n:<42} {q} × R$ {u:,.2f}')
     # ── por ambiente, para saber onde está o dinheiro ────────────────
     print('\n' + '═' * 72)
     print('ONDE ESTÁ O CUSTO')

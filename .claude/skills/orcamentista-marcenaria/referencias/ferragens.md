@@ -232,8 +232,13 @@ roupeiro. **Tem, sim** — a categoria é `Sistemas de porta de passagem`:
 |---|--:|
 | Sistema deslizante **RO82** | R$ 200 |
 | Sistema deslizante **RO82 Top** (amortecimento) | R$ 400 |
-| Desempenador anti-empeno | R$ 60 — **2 por porta** com 70 cm ou mais |
+| Desempenador anti-empeno | ⚠ **R$ 100** na Base viva (este arquivo dizia R$ 60) — **2 por porta** com 70 cm ou mais |
 | Sistema deslizante SI Forma | R$ 1.200 (raro) |
+
+⛔⛔ **E O SISTEMA NÃO É A PORTA.** Esta seção fala só do que PENDURA a
+folha. A FOLHA EM SI a casa fabrica — sanduíche de duas peles de 6 mm sobre
+miolo de G-Door —, e a receita está em `laminacao-e-construcao.md`, seção
+PORTA DE PASSAGEM. Procurar "porta pronta" na Base é procurar a coisa errada.
 
 E este arquivo já nomeava o **RO82 (Rometal)** como o deslizante de porta de
 passagem da casa. Antes de adotar preço ★, **procurar a categoria pelo nome do
