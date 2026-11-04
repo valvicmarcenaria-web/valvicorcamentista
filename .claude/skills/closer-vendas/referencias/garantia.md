@@ -74,3 +74,32 @@ lado, como promessa da casa.
 garantia do fabricante da fita** (nota técnica) e **instalação e regulagem
 têm prazo próprio, 2 anos**. Quem imprime a exclusão é quem não tem medo do
 termo.
+
+---
+
+## ⚠ EXCEÇÃO DE PROPOSTA — Costa Laguna, básica a 1 ANO [Jonathan, 04/11/2026]
+
+> *"so vamos fazer uma coisa aqui em especial nessa proposta: colocar a
+> garantia da linha basica em 1 ano."*
+
+⛔ **A TABELA DA CASA NÃO MUDOU.** Telescópica continua **2 anos** em todo o
+resto. O "em especial nessa proposta" é literal: vale para o caderno do
+Costa Laguna e para mais nada. Quem copiar este número para outro cliente
+está copiando uma exceção, não a política.
+
+⭐ **O que ela faz pela venda, e é por isso que é defensável:** a escada de
+garantia do Costa Laguna vira **1 → 10 → 30**. Com a telescópica em 2, o
+primeiro degrau era 2 → 10, e a distância entre a básica e a Hettich parecia
+menor do que o preço dela sugere. Em 1 → 10 a escada fica honesta com o que
+a ferragem realmente entrega.
+
+⚠⚠ **E A PENDÊNCIA DE PAPEL CRESCEU.** Só o termo de **10 anos** está
+desenhado. O caderno do Costa Laguna promete **1, 10 e 30** — são **dois**
+termos a emitir antes de a proposta virar contrato, não um. O de 1 ano é o
+mais fácil (muda o prazo) e o mais urgente, porque é o da linha mais barata,
+que é a que o cliente pede para ver primeiro.
+
+⭐ **O que não muda na básica, e a proposta imprime:** instalação e regulagem
+seguem com **2 anos em qualquer linha** — inclusive nela. A folha de garantia
+diz isso com todas as letras, para o 1 ano não ser lido como "um ano de
+tudo".

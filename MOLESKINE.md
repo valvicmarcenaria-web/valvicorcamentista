@@ -7,6 +7,70 @@ pode ler e escrever aqui. Formato livre — marcar data e agente responsável.
 
 ## Tarefas abertas
 
+### [2026-11-04] Attos · Costa Laguna — O CADERNO EM PDF, 19 FOLHAS — Lavinia + Vitor
+**Solicitante:** Jonathan · **Agente:** Lavinia (orçamento) → Vitor (proposta) ·
+**Status:** ✅ PDF gerado · ⚠ falta o nome do cliente e dois termos de garantia
+
+> *"agora pode criar o pdf. so vamos fazer uma coisa aqui em especial nessa
+> proposta: colocar a garantia da linha basica em 1 ano."* · e, no meio:
+> *"prazo de entrega 70 dias corridos pos medição, com entrega do escritorio
+> ate 10 de dezembro"*
+
+**`proposta-costa-laguna.pdf` · 19 folhas A4 paisagem · 3,2 MB.**
+
+⭐⭐ **A REGRA QUE O `caderno.py` INSTITUI: A PROPOSTA LÊ O MOTOR.** Nenhum
+valor é digitado nela — todos saem de `linhas.monta()` na hora de gerar. Não
+existe mais o caso de a planilha dizer um número e a folha do cliente dizer
+outro, que é o jeito mais caro de errar que esta casa conhece. ⛔ E o QA do
+closer virou `assert`: o build **recusa sair** se aparecer nome de outro
+cliente, se faltar um total, um ambiente, o prazo ou a razão social.
+
+⭐⭐ **AS IMAGENS SÃO O PRÓPRIO EXECUTIVO** (`desenhos.py`, novo). Não há
+render deste projeto em lugar nenhum — o Anteprojeto 3D tem 7,9 MB e não
+passa pelo MCP do Drive. Então o caderno mostra **as elevações vetoriais da
+prancha, cotadas**, recortadas vista a vista: marco numa grade grossa onde há
+traço, engordo a marca, acho as ilhas — cada ilha é uma vista, porque o
+desenhista deixa corredor branco entre elas.
+⛔ **Tentei entregá-las LIMPAS e desisti com motivo:** neste plot a LINHA de
+cota é vermelha mas o NÚMERO dela é traço preto igual ao do móvel (o CAD
+plota texto como polilinha). Filtrar o vermelho tira a seta e **deixa o
+número solto no branco** — pior que a cota inteira. ⭐ E cota na proposta não
+é defeito: a folha 03 promete que o executivo de marcenaria é nosso, e a
+elevação cotada é a prova disso na mão do cliente.
+
+**Três defeitos que só apareceram porque eu OLHEI o PDF:**
+1. ⛔ **O rodapé subia por cima do total** na folha de investimento: 19 linhas
+   não cabiam e o piso de .80 do script da casa não dava conta. Passe próprio
+   com piso .60 + calha mais apertada.
+2. ⛔ **"1 ano" saía como "I ano".** A Cormorant Garamond usa algarismo de
+   TEXTO: o 1 sai na altura de x e lê como I maiúsculo, o 10 como IO. Numa
+   folha em que o número É a promessa, isso é ambiguidade. `lining-nums`.
+3. ⛔ **A capa entregava "CORRE" solto** e "RIPADO 1:25" cortado. O campo
+   limpo de ripa é estreito — as duas portas ficam entre 20,7% e 34,6% da
+   elevação —, então a capa é **render novo a 400 dpi** do trecho de 129,5 cm
+   antes da primeira porta, não recorte do PNG.
+⭐ E um quarto, de dentro: a trava de QA acusou **"nan" na proposta**. Estava
+no base64 do PNG. Trava que grita por acaso é trava que ninguém respeita —
+passou a ler só o que o cliente lê.
+
+**⛔⛔ O QUE FALTA, E O JONATHAN PRECISA RESOLVER:**
+1. **NÃO EXISTE NOME DE CLIENTE.** O executivo é assinado pela ATTOS e a
+   pasta do Drive só diz "Costa Laguna". A capa identifica o **projeto**, e o
+   campo CLIENTE ficou vazio de propósito — a regra do QA é não inventar
+   nome. Preencher `CLIENTE` no topo do `caderno.py` e rodar de novo põe o
+   nome na capa, no rodapé das 19 folhas e na linha de assinatura.
+2. **DOIS TERMOS DE GARANTIA A EMITIR.** O caderno promete 1, 10 e 30 anos e
+   só o de **10** está desenhado. O de 1 ano é o mais urgente: é o da linha
+   mais barata, que é a que o cliente pede para ver primeiro.
+3. ⚠ **A básica a 1 ano é EXCEÇÃO DESTA PROPOSTA.** A tabela da casa segue
+   com telescópica em 2 anos. Gravado em `closer-vendas/referencias/garantia.md`.
+
+**Gravado em:** `attos-costa-laguna/caderno.py` (o caderno) · `desenhos.py`
+(as vistas) · `img/` (11 elevações + a capa) · `projetos/css-caderno.css` e
+`js-caderno.js` (a identidade, agora compartilhada e sem nome de cliente
+dentro) · `closer-vendas/referencias/garantia.md`.
+
+
 ### [2026-11-04] Attos · Costa Laguna — A CABECEIRA ESTOFADA, MEDIDA NO VETOR — Lavinia
 **Solicitante:** Jonathan · **Agente:** Lavinia · **Status:** ✅ PROPOSTA FECHADA nas três linhas (04/11) · ⚠ suíte 01 por medida DERIVADA do preço, sem prancha
 
