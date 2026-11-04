@@ -127,6 +127,37 @@ não commitadas no meio da cirurgia da planilha. Recuperado com `git stash
 pop`, nada se perdeu. ⭐ A lição: **script de leitura não escreve.** Comando
 que muda estado não entra em ferramenta de diagnóstico, nem com boa intenção.
 
+**⭐⭐ E DEPOIS, A CONDIÇÃO COMERCIAL** [Jonathan, 04/11/2026]: *"nao
+considere cartao de credito, considere custo de comissao de vendedor de 5%.
+parcelamento sero o mesmo proposto para o michel e o gustavo"*.
+
+**⛔⛔ E A COMISSÃO DE 5% CORRIGE UMA CORREÇÃO MINHA.** A célula NASCEU em 5%
+e eu a troquei para 10% em 03/11, apoiada na frase daquele dia — *"tem
+comissão do vendedor (10%)"* — tratando os 5% como erro do modelo. **Não
+eram.** As duas frases ficam registradas na planilha, com data: apagar a de
+03/11 faria o próximo leitor achar que a de hoje sempre esteve ali.
+⭐ **BASE 76,09% → 80,48%**, e na MC de 35% o preço cai **9,7%**, de
+R$ 187.397 para **R$ 169.293**. Comissão de vendedor não sai da margem: sai
+do preço, nos dois sentidos.
+
+**⭐ O PARCELAMENTO: fui ler a PROPOSTA ENTREGUE, não o orçamento.** O que se
+copia de outro cliente é a CONDIÇÃO COMERCIAL da casa, nunca o número dele.
+A proposta do Gustavo Raposo traz **30% na assinatura · 20% em 30 dias · 20%
+em 60 dias · 30% em 90 dias, todas por transferência bancária**, e a do
+Michel traz a mesma regra de fundo, "entrada e saldo por transferência, sem
+cartão".
+⛔ E isso expôs uma divergência na própria skill: a tabela de formas de
+pagamento do `proposta-comercial.md` é **toda baseada em cartão**, de 6× a
+10× — nenhuma das quatro linhas serve. A escada real foi gravada lá.
+
+**Preço no Painel: R$ 305.114 → R$ 261.133** (MC 50%, com frete).
+
+**⚠ E UMA PERGUNTA QUE FICOU PELO MEIO:** a mensagem *"3 - 20 a menos que a
+cabeceira da suite de casal"* foi interrompida, e ela tem duas leituras que
+dão trabalhos completamente diferentes — ou a cabeceira da SUÍTE 01 custa
+20% menos que a da master (e aí a segunda cabeceira destrava), ou é a
+resposta ao "−20% de quê". Perguntado, não adivinhado.
+
 **Gravado em:** `referencias/quantitativo.md` (MEDIR O VETOR DA PRANCHA) ·
 `referencias/laminacao-e-construcao.md` (a cabeceira e a mesa, camada a
 camada) · `referencias/base-de-custos.md` (as duas chaves novas) · Base

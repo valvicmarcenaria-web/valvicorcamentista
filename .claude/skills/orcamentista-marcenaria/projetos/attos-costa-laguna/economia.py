@@ -33,7 +33,7 @@ CUSTO = lv.custo()['direto']
 MC = b.MC_PISO
 
 
-def preco(custo, base=b.BASE_COM_UM, mc=MC):
+def preco(custo, base=b.BASE, mc=MC):
     return custo / (base - mc)
 
 
@@ -55,7 +55,7 @@ def rodar(**env):
     return float(m.group(1).replace(',', ''))
 
 
-def linha(nome, custo, base=b.BASE_COM_UM, mc=MC, nota=''):
+def linha(nome, custo, base=b.BASE, mc=MC, nota=''):
     pr = preco(custo, base, mc)
     d = pr / ATUAL - 1
     return (nome, custo, pr, d, nota)
@@ -65,8 +65,8 @@ def main():
     print('═' * 78)
     print('ATTOS · COSTA LAGUNA — ONDE ESTÃO OS 20%')
     print('═' * 78)
-    print(f'  hoje: custo direto R$ {CUSTO:,.2f} · BASE {b.BASE_COM_UM:.4%} · '
-          f'MC {MC:.0%}')
+    print(f'  hoje: custo direto R$ {CUSTO:,.2f} · BASE {b.BASE:.4%} '
+          f'(vendedor {b.VENDEDOR:.0%}, sem cartão) · MC {MC:.0%}')
     print(f'        PREÇO  R$ {ATUAL:,.2f}')
 
     #   ⛔⛔ E A PRIMEIRA PERGUNTA É "20% A MENOS DE QUÊ?". A planilha hoje
@@ -79,7 +79,7 @@ def main():
     print('─' * 78)
     p50 = preco(CUSTO, mc=MC_PLANILHA)
     alvo50 = p50 * 0.8
-    mc50 = b.BASE_COM_UM - CUSTO / alvo50
+    mc50 = b.BASE - CUSTO / alvo50
     print(f'  ① do que a PLANILHA mostra hoje, com a MC em '
           f'{MC_PLANILHA:.0%}: R$ {p50:,.2f}')
     print(f'     −20% = R$ {alvo50:,.2f}  →  basta a MC ir de '
@@ -95,8 +95,10 @@ def main():
     #   ⭐ A ALAVANCA QUE NÃO TOCA NO PROJETO
     L.append(linha('A · SEM VENDEDOR — a casa vende direto', CUSTO,
                    base=b.BASE_SEM_RT,
-                   nota='o produto é EXATAMENTE o mesmo · a MC da casa não '
-                        'muda um ponto · só não entra a comissão de 10%'))
+                   nota=f'o produto é EXATAMENTE o mesmo · a MC da casa não '
+                        f'muda um ponto · só não entra a comissão de '
+                        f'{b.VENDEDOR:.0%} · ⚠ esta alavanca ENCOLHEU: com '
+                        f'vendedor a 10% ela valia −17,6%'))
     #   ⭐ A ALAVANCA DO PRODUTO: a ripa
     for rl, vao in ((3, 1.5), (4, 2), (5, 2.5)):
         c = rodar(RIPA_L=rl, VAO=vao)
@@ -104,7 +106,7 @@ def main():
                        c, nota='mesmo desenho, ripa mais larga · menos ripas, '
                                'menos fita, menos filetagem, menos chapa de 18'))
     #   ⛔ A ALAVANCA FECHADA
-    mc20 = b.BASE_COM_UM - (b.BASE_COM_UM - MC) / 0.8
+    mc20 = b.BASE - (b.BASE - MC) / 0.8
     L.append(linha(f'C · MC EM {mc20:.1%} — ⛔ ABAIXO DO PISO DE 35%', CUSTO,
                    mc=mc20, nota='⛔ a casa trabalharia de graça 10 pontos '
                                  'abaixo do piso · medido só para fechar a porta'))

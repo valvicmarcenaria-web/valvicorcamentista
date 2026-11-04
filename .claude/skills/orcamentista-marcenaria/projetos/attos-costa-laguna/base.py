@@ -302,7 +302,37 @@ assert abs(BASE_COM_DOIS - 0.6730) < 0.0001, BASE_COM_DOIS
 #   ⛔⛔ E ISSO NÃO É UM AJUSTE PEQUENO: são 8,79 pontos de BASE. Para manter
 #     a MESMA MC o preço sobe 1/(0,7609−mc) ÷ 1/(0,8488−mc) — na MC de 42%,
 #     **+25,8%**. Comissão de vendedor não sai da margem: sai do preço.
-BASE = BASE_COM_UM
+#   ⭐⭐ [Jonathan, 04/11/2026] "nao considere cartao de credito, considere
+#     custo de comissao de vendedor de 5%".
+#   ⛔⛔ E ISTO CONTRADIZ O QUE ESTÁ ESCRITO LOGO ACIMA, de 03/11. A citação
+#     daquele dia é "tem comissão do vendedor (10%)" e foi com ela que eu
+#     TROQUEI esta célula de 5% para 10% — a planilha tinha nascido com 5% e
+#     eu tratei isso como erro do modelo. ⭐ Não era: 5% é o deste job.
+#     ⛔ As duas frases ficam, com data, porque apagar a de 03/11 faria o
+#     próximo leitor achar que a de hoje sempre esteve aqui — e a diferença
+#     entre elas são 4,39 pontos de BASE, que é PREÇO, não margem.
+VENDEDOR = 0.05
+PARCELAS_CARTAO = 0      # ⛔ [Jonathan, 04/11/2026] SEM CARTÃO neste job
+BASE_COM_VENDEDOR_5 = cascata(parcelas=PARCELAS_CARTAO, vendedor=VENDEDOR)
+BASE = BASE_COM_VENDEDOR_5                    # 0,8048125 · 80,48%
+assert abs(BASE - 0.804813) < 1e-5, BASE
+
+# ── o parcelamento · o mesmo proposto ao Gustavo e ao Michel ────────────
+#   ⭐⭐ [Jonathan, 04/11/2026] "parcelamento sero o mesmo proposto para o
+#     michel e o gustavo". ⛔ Fui ler a PROPOSTA ENTREGUE, não o orçamento:
+#     o que se copia é a CONDIÇÃO COMERCIAL da casa, nunca o número de outro
+#     cliente. A proposta do Gustavo traz a escada abaixo, e a do Michel traz
+#     a mesma regra de fundo — "entrada e saldo por transferência, sem
+#     cartão".
+#   ⭐ E ela casa com o "não considere cartão de crédito": a tabela genérica
+#     da casa (`proposta-comercial.md`) é toda baseada em cartão, de 6× a
+#     10×, e NENHUMA das quatro linhas dela serve aqui.
+PARCELAS = [('na assinatura do contrato', 0.30),
+            ('30 dias após a assinatura', 0.20),
+            ('60 dias após a assinatura', 0.20),
+            ('90 dias após a assinatura', 0.30)]
+PARCELAS_NOTA = 'Todas as parcelas por transferência bancária.'
+assert abs(sum(p for _d, p in PARCELAS) - 1) < 1e-9
 
 MC_PISO = 0.35           # piso da casa
 MC_FAIXA = (0.35, 0.40)  # faixa ideal

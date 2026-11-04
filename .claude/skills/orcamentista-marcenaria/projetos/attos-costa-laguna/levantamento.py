@@ -978,9 +978,14 @@ if __name__ == '__main__':
     print(f'  embalagem, 2%                         R$ {c["emb"]:>9,.2f}')
     print(f'  {"─"*54}')
     print(f'  CUSTO DIRETO                          R$ {c["direto"]:>9,.2f}')
+    #   ⛔ ERA UM DICIONÁRIO COM TRÊS CHAVES E UM `[b.BASE]` NO FIM: no dia
+    #     em que a BASE deixou de ser uma das três, o motor quebrou com
+    #     KeyError em vez de dizer o que mudou. Agora ele DESCREVE a cascata.
     _cond = {b.BASE_SEM_RT: 'sem RT e sem vendedor',
-             b.BASE_COM_UM: 'com RT OU com vendedor',
-             b.BASE_COM_DOIS: 'com RT E com vendedor'}[b.BASE]
+             b.BASE_COM_UM: 'com RT OU com vendedor de 10%',
+             b.BASE_COM_DOIS: 'com RT E com vendedor'}.get(
+        b.BASE, f'vendedor {b.VENDEDOR:.0%} · '
+                f'{"sem cartão" if not b.PARCELAS_CARTAO else str(b.PARCELAS_CARTAO) + "× no cartão"}')
     print(f'\n  BASE {b.BASE:.2%} · {_cond}')
     for mc in (0.35, 0.38, 0.40):
         print(f'    MC {mc:.0%}  →  PREÇO  R$ {b.preco(c["direto"], mc):>12,.2f}')
