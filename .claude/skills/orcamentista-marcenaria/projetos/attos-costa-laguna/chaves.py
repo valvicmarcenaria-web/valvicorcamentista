@@ -74,9 +74,6 @@ MOTOR = {
 
 # ⚠⚠ PENDÊNCIAS DE PREÇO, e cada uma é dinheiro em aberto ─────────────────
 A_COTAR = {
-    'Dobradiça vidro': 'A Base diz A COTAR, faixa de 30 a 85. São 26 peças: '
-                       'de R$ 70 para R$ 85 o projeto sobe R$ 390 de custo, '
-                       'e para R$ 30 cai R$ 1.040.',
     'Cava usinada': 'A Base briga consigo mesma: R$ 50/m em Ferragens e '
                     'R$ 25/m em Terceirizados. Uso 50, o conservador. São '
                     '14,1 m — R$ 353 de diferença.',

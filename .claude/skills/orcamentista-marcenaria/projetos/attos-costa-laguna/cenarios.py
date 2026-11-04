@@ -202,9 +202,15 @@ if __name__ == '__main__':
           f'R$ {tot["Blum"] - tot["Hettich"]:,.2f}  '
           f'({(tot["Blum"]/tot["Hettich"]-1)*100:.1f}%)')
     ncorr = sum(q for m in lv.M for n, q, u in m.ferr if n.startswith('Corrediça'))
+    #   ⛔ ANTES ISTO CONTAVA PELO NOME, e o nome mentiu na primeira troca:
+    #     "Dobradiça das 4 portas de vidro com perfil" leva a palavra "vidro"
+    #     e custa R$ 50. O contador jogou as 26 na coluna errada e o relatório
+    #     saiu dizendo "26 a R$ 70" com R$ 50 na conta.
+    #   ⭐ Conta pelo PREÇO, que é o que distingue os dois produtos.
     ndobr = sum(q for m in lv.M for n, q, u in m.ferr
-                if n.startswith('Dobradiça') and 'vidro' not in n)
-    nvid = sum(q for m in lv.M for n, q, u in m.ferr if 'vidro' in n)
+                if n.startswith('Dobradiça') and u == b.DOBRADICA)
+    nvid = sum(q for m in lv.M for n, q, u in m.ferr
+               if n.startswith('Dobradiça') and u == b.DOBRADICA_VIDRO)
     nsis = sum(q for m in lv.M for n, q, u in m.ferr if n == 'Sistema de correr')
     d_corr = ncorr * (LINHAS['Blum']['corr'] - LINHAS['Hettich']['corr'])
     d_sis = nsis * (LINHAS['Blum']['corre'] - LINHAS['Hettich']['corre'])
@@ -225,8 +231,13 @@ if __name__ == '__main__':
     print(f'         os cinco pontos de MC entre 35% e 40%')
     print(f'    As {ndobr:.0f} dobradiças comuns NÃO mudam: Hettich e Blum '
           f'custam o mesmo (R$ 50).')
-    print(f'    E as {nvid:.0f} de porta de VIDRO são outro produto (R$ 70), '
-          f'fora da escada.')
+    #   ⭐ [Jonathan, 04/11/2026] "as dobradiças do item 3, sao normais".
+    #     As 26 que eu havia lançado como DOBRADIÇA DE VIDRO a R$ 70 viraram
+    #     comuns a R$ 50 — a folha é vidro COM PERFIL, e a dobradiça parafusa
+    #     no perfil. ⛔ Esta linha dizia "e as 26 de porta de VIDRO são outro
+    #     produto, fora da escada" e passou a ser mentira no mesmo instante.
+    assert nvid == 0, (f'⛔ voltaram {nvid:.0f} dobradiças de VIDRO ao projeto '
+                       '· se é folha sem perfil, o texto acima precisa voltar')
 
     print(f'\n  a MESMA casa, nas duas pontas da faixa:')
     for k in ('Hettich', 'Blum'):

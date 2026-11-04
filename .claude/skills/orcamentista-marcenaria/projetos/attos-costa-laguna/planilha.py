@@ -83,6 +83,27 @@ DUVIDAS = [
  'DEFINIR". Está orçado como Melamínico Fosco de cor, a chapa padrão da '
  'casa. Lâmina natural DOBRA a chapa.',
 ]
+#   ⭐ AS DÚVIDAS QUE SÃO DE UM AMBIENTE SÓ. As de cima valem em toda aba; as
+#     daqui aparecem só onde existem, e todas as três nasceram do apontamento
+#     do Jonathan em 04/11/2026 sobre a emenda de peça grande.
+DUVIDAS_DO_AMBIENTE = {
+ 'Sala de TV': [
+  '⛔⛔ O PAINEL LISO DE 300 × 272 TEM EMENDA À VISTA, E A POSIÇÃO DELA É SUA. '
+  '300 não sai de chapa de 275, então a junta EXISTE — e aqui não há ripa '
+  'para esconder, como no painel ripado ao lado. Lancei 150 + 150, que põe a '
+  'junta no MEIO e fica simétrica. ⭐ As outras duas opções: alinhada com a '
+  'borda da pedra de 300 × 140, que some no encontro dos materiais; ou atrás '
+  'da TV, que a esconde no uso. ⛔ Nenhuma muda o preço: são as mesmas duas '
+  'chapas — é só onde a linha aparece.'],
+ 'Cozinha': [
+  '⚠ A LATERAL DE PISO A TETO TEM 275, E A CHAPA TEM 275. A regra da casa diz '
+  'peça inteira até 273, que é a chapa menos o acerto de corte — estas duas '
+  'laterais saem no comprimento CHEIO, sem refilo nas pontas. Ou a produção '
+  'aceita isso, ou 2 cm vão para rodapé e sanca. ⛔ É decisão de obra.'],
+ 'Suíte': [
+  '⚠ AS DUAS TESTEIRAS TÊM 275, igual à chapa, e valem a mesma observação da '
+  'cozinha: saem sem acerto de corte, ou 2 cm vão para a sanca.'],
+}
 ESPEC = {
  'Fita cor': 'Aresta a aresta, mais 10% de desperdício',
  'Filetagem automática': 'Coladeira · 15 e 18 mm · serviço, sem desperdício',
@@ -172,8 +193,9 @@ def monta(amb, aba):
     L['nt1'] = L['nt0'] + len(NOTAS) - 1
     L['s_dv'] = L['nt1'] + 2
     L['dv0'] = L['s_dv'] + 2
-    DUV = list(DUVIDAS) + [f'⚠ {k} — {ch.A_COTAR[k]}' for k in cc + vid + cf
-                           if k in ch.A_COTAR]
+    DUV = (list(DUVIDAS) + DUVIDAS_DO_AMBIENTE.get(amb, [])
+           + [f'⚠ {k} — {ch.A_COTAR[k]}' for k in cc + vid + cf
+              if k in ch.A_COTAR])
     L['dv1'] = L['dv0'] + len(DUV) - 1
     L['fim'] = L['dv1']
 
@@ -335,7 +357,8 @@ def monta(amb, aba):
             else:
                 nome, q, _u = item
                 k = ch.chave(nome)
-                põe(rr, B=nome, C='—', F=round(q, 4), G=ch.MOTOR[k][1],
+                põe(rr, B=nome, C=x['m'].espec.get(nome, '—'),
+                    F=round(q, 4), G=ch.MOTOR[k][1],
                     H=f'=IFERROR(VLOOKUP($K{rr};{PR});"")',
                     I=f'=F{rr}*H{rr}', K=k)
             rr += 1

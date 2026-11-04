@@ -77,7 +77,18 @@ EMBALAGEM = 0.02         # 2% sobre o custo direto
 #     sobrescrever coisa alguma. Um número só, e a trava no fim do cenarios.py
 #     prova que os dois motores fecham no centavo.
 DOBRADICA = 50.0                  # ⭐ Hettich e Blum, cravado [Jonathan, 03/11/2026]
-DOBRADICA_VIDRO = 70.0            # ⚠ A COTAR na Base · faixa observada 30 a 85
+DOBRADICA_VIDRO = 70.0
+#   ⛔⛔ NÃO É USADA NESTE PROJETO, e a linha fica só para não perder o saber.
+#     ⭐ [Jonathan, 04/11/2026] "as dobradiças do item 3, sao normais" — o item 3
+#     é o ambiente 03, a Cozinha, e era o único lugar do projeto com dobradiça
+#     de porta de vidro: 22 das 26 peças. Respondeu a pendência que eu havia
+#     deixado aberta ("A COTAR na Base, faixa de 30 a 85").
+#   ⭐ E BATE COM O QUE A PRÓPRIA PRANCHA DIZ: o vidro é "reflecta prata COM
+#     PERFIL preto". Folha EMOLDURADA — a dobradiça parafusa no perfil, não no
+#     vidro. Dobradiça de vidro é para folha SEM moldura, que este projeto não
+#     tem. A premissa errada era minha, não da Base.
+#   ⛔ Se algum dia entrar folha de vidro sem perfil, é esta constante que
+#     volta — e ela volta A COTAR, com faixa de 30 a 85.
 CORREDICA_PAR = 150.0             # ⭐ Hettich Quadro V6 · a linha-base deste projeto
 #   ⚠ O Hardt Invisível P-10 de R$ 80 é o padrão da CASA, e segue na Base —
 #     mas não é uma das duas linhas que o Attos recebe, então não entra aqui.
