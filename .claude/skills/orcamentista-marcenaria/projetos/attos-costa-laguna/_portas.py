@@ -85,9 +85,21 @@ def porta(largura, altura, ripada=False, nome=''):
         L.append(('fita das ripas', f'{n} × 2 × {altura:g} cm = {f_rip:.0f} m '
                   f'+ 10% = {f_rip * b.FITA_PERDA:.1f} m',
                   f_rip * b.FITA_PERDA * b.FITA_COR))
-        L.append(('filetagem MANUAL das ripas',
-                  f'{f_rip:.0f} m a R$ {b.FILETE_MAO:,.2f} · ⛔ ripa de 2 cm '
-                  'não entra na coladeira', f_rip * b.FILETE_MAO))
+        #   ⭐ [Jonathan, 04/11/2026] "a filetagem das reguas pode considerar
+        #     automatica". Era MANUAL a R$ 5,00 aqui, pela regra que eu havia
+        #     escrito no projeto: "ripa de 2 cm não entra na coladeira".
+        #   ⛔⛔ E ISTO ABRE UMA DIVERGÊNCIA QUE AINDA NÃO ESTÁ RESOLVIDA: o
+        #     projeto inteiro tem 2.595,5 m de fita de ripa lançados a R$ 5,00
+        #     — o painel ripado do corredor da cozinha, o da cabeceira, o da
+        #     sala. Se a coladeira pega a ripa de 2 cm numa PORTA, pega num
+        #     PAINEL. Enquanto o Jonathan não disser, a porta vai a R$ 2,50 e
+        #     o painel segue a R$ 5,00: mesma ripa, dois preços, e as duas
+        #     portas de correr da cozinha ficam na MESMA PAREDE do painel que
+        #     as contradiz. Está registrado para não passar calado.
+        L.append(('filetagem das ripas · AUTOMÁTICA',
+                  f'{f_rip:.0f} m a R$ {b.FILETE_MAQ:,.2f} · ⭐ [Jonathan, '
+                  '04/11/2026] "pode considerar automatica"',
+                  f_rip * b.FILETE_MAQ))
         L.append(('laminação do ripado',
                   f'{a_porta:.3f} m² a R$ {b.RIPADO_M2:,.0f}',
                   a_porta * b.RIPADO_M2))
