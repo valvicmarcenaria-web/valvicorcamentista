@@ -7,7 +7,7 @@ L = ['telescopica', 'hettich', 'blum']
 o = ['# Phillip e Giselle · tabela revisada (custo × venda)', '',
      'Valores em R$. Sem RT, sem vendedor, sem cartão · pagamento 30/20/20/30 por transferência.',
      'Parte comum a MC 42% (igual nas três linhas) + ferragem de movimento na MC da linha '
-     '(Telescópica 35% · Hettich 38% · Blum 45%). Projeto executivo diluído nos closets e no painel da Suíte Ana.',
+     '(Telescópica 35% · Hettich 43% · Blum 55%; itens com ferragem de linha sobem inteiros: Hettich 47%, Blum 52%). Projeto executivo diluído nos closets e no painel da Suíte Ana.',
      'Preços fixos e ajustes pedidos pelo Jonathan em 04/11/2026 estão marcados na linha do item.', '',
      '| Ambiente / item | Telescópica | Hettich | Blum |', '|---|--:|--:|--:|']
 for a in ORDEM:

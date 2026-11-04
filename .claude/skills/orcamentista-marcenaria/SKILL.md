@@ -243,7 +243,10 @@ FASE 3 — ESTRATÉGIA (margem, otimização, proposta)
   (MDF, fita, LED, portas, sistemas de correr, espelho, corte…) numa **MC
   única, igual nas três**, **mais a ferragem de movimento** (corrediça e
   dobradiça) na MC de cada linha. Ambiente sem gaveta nem dobradiça da linha
-  sai com o MESMO valor nas três. Implementado em
+  sai com o MESMO valor nas três. ⭐ Para abrir distância entre as linhas, o
+  que sobe é o ITEM QUE TEM ferragem da linha, inteiro (no Phillip e Giselle:
+  parte comum a 42 / 47 / 52 e ferragem a 35 / 43 / 55) — nunca o item sem
+  ferragem. Implementado em
   `projetos/phillip-giselle/precos.py`, com trava de igualdade.
 - **Situação de caixa — perguntar em TODA demanda.** Define a MC mínima aceitável:
   crítico ≤25% · ruim ≤30% · normal 30–37% · bom 37–45% · ótimo >45%

@@ -21,8 +21,12 @@ from resumo import AVULSO
 from motor import brl
 
 AQUI = pathlib.Path(__file__).parent
-LIN = {'telescopica': ('Telescópica', 0.35), 'hettich': ('Hettich', 0.38),
-       'blum': ('Blum', 0.45)}
+# (nome, MC da ferragem de movimento, MC da parte comum dos ITENS QUE TÊM
+#  ferragem da linha). ⭐ [Jonathan, 04/11/2026] "vamos puxar a Hettich em 5%
+#  de MC acima e a Blum em 10" → os itens com gaveta/dobradiça da linha sobem
+#  INTEIROS; os sem ferragem de linha continuam a 42%, iguais nas três.
+LIN = {'telescopica': ('Telescópica', 0.35, 0.42), 'hettich': ('Hettich', 0.43, 0.47),
+       'blum': ('Blum', 0.55, 0.52)}
 MC_COMUM = 0.42
 PROJETO = 2000.0
 B = MC.base(0, rt=False, vendedor=False)                      # 84,875%
@@ -57,14 +61,15 @@ def linha(k):
     return cus, mov
 
 TAB = {}
-for k, (nome, mc) in LIN.items():
+for k, (nome, mc, mc_item) in LIN.items():
     cus, mov = linha(k)
     com = {x: cus[x] - mov[x] for x in cus}
     # projeto diluído na parte comum (que não muda de linha → mesmo rateio)
     alvo = {x: com[x] for x in com if DILUI(*x)}
     for x, v in alvo.items():
         com[x] += PROJETO * v / sum(alvo.values()); cus[x] += PROJETO * v / sum(alvo.values())
-    pv = {x: round(com[x] / (B - MC_COMUM), -1) + round(mov[x] / (B - mc), -1) for x in cus}
+    pv = {x: round(com[x] / (B - (mc_item if mov[x] > 0 else MC_COMUM)), -1)
+             + round(mov[x] / (B - mc), -1) for x in cus}
     for x, v in FIXO_ITEM.items(): pv[x] = v
     for a, v in FIXO_AMB.items():
         it = [x for x in pv if x[0] == a]; tot = sum(pv[x] for x in it)
