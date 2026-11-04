@@ -50,7 +50,17 @@ FITA_COR = 3.00          # R$/m, 22 mm · somar 10% de desperdício
 FITA_BRANCA = 2.00       # R$/m, 22 mm
 FITA_PERDA = 1.10        # ⭐ os 10% de desperdício, da própria Base
 FILETE_MAQ = 2.50        # R$/m · coladeira automática, 15 e 18 mm
-FILETE_MAO = 5.00        # R$/m · ripa e o que não entra na máquina
+FILETE_MAO = 5.00        # R$/m · o que NÃO entra na máquina
+#   ⭐⭐ E A RIPA ENTRA. [Jonathan, 04/11/2026] "a filetagem das reguas pode
+#     considerar automatica" e, perguntado o alcance, "todo o ripado do
+#     projeto". ⛔ Eu havia escrito o contrário em três lugares — "ripa de 2 cm
+#     não entra na coladeira" — e a própria Base diz isso na linha "Filetagem
+#     manual": aquela nota também está velha.
+#   ⛔ E NÃO ERA POUCO: são 2.595,5 m dos 2.862 m de fita do projeto, 91% dela.
+#     A R$ 5,00 davam R$ 12.977,30; a R$ 2,50 dão R$ 6.488,65.
+#   ⭐ O preço mora AQUI, numa constante só dele, e não espalhado pelas três
+#     chamadas de painel ripado. Para voltar atrás é esta linha, e só ela.
+FILETE_RIPA = FILETE_MAQ  # ⭐ a filetagem da ripa · hoje = a automática
 CORTE_CHAPA = 2.00       # ⭐ [Jonathan, 28/10/2026] por chapa COMPRADA
 CORTE_PECA = 2.50        # ⭐ [Jonathan, 28/10/2026] por PEÇA cortada
 #   ⛔⛔ E ESTES DOIS FALTAVAM NO MOTOR. Os últimos orçamentos todos os
@@ -166,7 +176,17 @@ SERRALHEIRO_MIN = 300.0  # mínimo por serviço
 #   ⚠ A prova de sanidade que eu usei para justificar o "por folha" era esta:
 #     uma folha de 2,00 × 0,36 (0,72 m²) a R$ 660/m² dá R$ 475, parecido com
 #     420. ⛔ O "parecido" foi o que me convenceu — e o parecido não é prova.
-VIDRO_M2 = 420.0         # R$/m² · reflecta prata com perfil preto · ⚠ PREMISSA
+#   ⭐ [Jonathan, 04/11/2026] "atualize o preço da porta em reflecta para 650
+#     o mt²". ⛔ Era 420 — o número que eu havia tirado da linha "420 preto"
+#     da Base. ⭐ E os 650 confirmam a referência de obra que estava aqui
+#     embaixo marcada com ⚠: a cristaleira da Kenia e do Fábio saiu a R$ 660/m²,
+#     e eu tinha escrito que "a Base está 36% abaixo dela". Estava mesmo — a
+#     referência de obra é que valia, e a diferença de 10 reais entre 650 e 660
+#     é o que se espera de duas obras.
+#   ⚠ TRAVADO AQUI, como o sistema de correr: a Base de Custos segue com 420
+#     na linha "Reflecta prata, perfil preto". A aba Base (importada) imprime
+#     o valor importado e o modo de desfazer, na própria linha.
+VIDRO_M2 = 650.0         # R$/m² · reflecta prata com perfil preto · ⚠ PREMISSA
 VIDRO_M2_REF = 660.0     # ⚠ referência de obra (cristaleira da Kenia e do
                          # Fábio), também por m². A Base está 36% ABAIXO dela:
                          # ou é outro vidro, ou aquela obra levou margem na

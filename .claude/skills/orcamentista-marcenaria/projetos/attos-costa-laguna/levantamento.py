@@ -88,7 +88,8 @@ class Movel:
     def __init__(self, amb, nome, nota=''):
         self.amb, self.nome, self.nota = amb, nome, nota
         self.pecas, self.fita, self.ferr, self.terc, self.vidro = [], 0.0, [], [], []
-        self.fita_ripa = 0.0      # ⭐ a da ripa é MANUAL; o resto é máquina
+        self.fita_ripa = 0.0      # ⭐ quanta fita é de RIPA · não é mais
+                                  #   "a manual": a ripa vai à máquina
         self.espec = {}           # ⭐ ESPECIFICAÇÃO por linha de ferragem
 
     def p(self, nome, L, A, esp, mat=COR, qtd=1, fita_m=0.0, obs='',
@@ -197,8 +198,10 @@ def painel_ripado(m, largura, altura, atras=True):
     if atras:
         base_em_faixas(m, largura, altura)
     #   ⛔ A FITA DA RIPA É O MAIOR METRO DO PROJETO: cada ripa leva fita nas
-    #     duas arestas que ficam à vista, e é filetagem MANUAL, porque ripa
-    #     de 2 cm não entra na coladeira.
+    #     duas arestas que ficam à vista — 2.595,5 m dos 2.862 do orçamento.
+    #   ⭐ [Jonathan, 04/11/2026] E ELA VAI À MÁQUINA. Este comentário dizia
+    #     "é filetagem MANUAL, porque ripa de 2 cm não entra na coladeira", e
+    #     estava errado. O preço mora em b.FILETE_RIPA.
     m.p(f'{n} ripas de {RIPA_L:g} × {altura:g}', RIPA_L * n * b.RIPA_PERDA,
         altura, 18, fita_m=n * altura / 100 * 2, mao=True,
         obs=f'{AREA} · ripa de {RIPA_L:g} cm, vão de {VAO:g}, passo de '
@@ -208,7 +211,7 @@ def painel_ripado(m, largura, altura, atras=True):
     #   ⭐ a perda de serra entra na LARGURA da peça equivalente, que é onde
     #     ela acontece de verdade: cada corte come lâmina.
     m.t('Painel ripado, mão de obra', largura * altura / 10000, b.RIPADO_M2)
-    m.t('Filetagem manual de ripa', n * altura / 100 * 2, b.FILETE_MAO)
+    m.t('Filetagem de ripa', n * altura / 100 * 2, b.FILETE_RIPA)
     #   ⛔ E SEM `round()` AQUI. Arredondar no LANÇAMENTO criava um segundo
     #     número: o `custo()` cobrava a metragem arredondada e o
     #     `custo_por_ambiente()` a cheia, e os dois motores passaram a
@@ -374,7 +377,7 @@ for larg, alt in ((60, 272), (46, 204), (190, 60), (20, 272)):
     m.p(f'{n} ripas de {RIPA_L:g} × {alt:g}', RIPA_L * n * b.RIPA_PERDA, alt,
         18, fita_m=n * alt / 100 * 2, mao=True,
         obs=f'faixa de {larg:g} cm · passo de {PASSO:g} · fita {n} × 2 × {alt:g} cm')
-    m.t('Filetagem manual de ripa', n * alt / 100 * 2, b.FILETE_MAO)
+    m.t('Filetagem de ripa', n * alt / 100 * 2, b.FILETE_RIPA)
 m.t('Painel ripado, mão de obra', 4.25, b.RIPADO_M2)
 
 m = mv('Escritório', 'Armário superior', '190 × 80 × 32, suspenso a 135 · 4 portas')
@@ -429,7 +432,7 @@ for larg, alt in ((253.5, 272), (50, 202), (50, 62)):
     m.p(f'{n} ripas de {RIPA_L:g} × {alt:g}', RIPA_L * n * b.RIPA_PERDA, alt,
         18, fita_m=n * alt / 100 * 2, mao=True,
         obs=f'faixa de {larg:g} cm · passo de {PASSO:g} · fita {n} × 2 × {alt:g} cm')
-    m.t('Filetagem manual de ripa', n * alt / 100 * 2, b.FILETE_MAO)
+    m.t('Filetagem de ripa', n * alt / 100 * 2, b.FILETE_RIPA)
 m.t('Painel ripado, mão de obra',
     (253.5 * 272 + 50 * 202 + 50 * 62) / 10000, b.RIPADO_M2)
 
@@ -552,7 +555,7 @@ def custo():
     #     prática: na cozinha dele, 6% de (4.290 + 284,90) dá R$ 274,49 e a
     #     célula mostra R$ 290,06, que é 6% de (4.290 + 284,90 + 259,50).
     #     A filetagem entra. Quem manda é o que as outras planilhas fazem.
-    c_filete = fita_maq * b.FILETE_MAQ + fita_ripa * b.FILETE_MAO
+    c_filete = fita_maq * b.FILETE_MAQ + fita_ripa * b.FILETE_RIPA
     cons = (c_chapa + c_fita + c_filete) * b.CONSUMIVEIS
     #   ⭐⭐ OS DOIS SERVIÇOS DE CORTE, que o Jonathan cravou por AMBIENTE.
     #     ⛔ `n_pecas` conta a PEÇA, não a linha: uma linha de 4 prateleiras
@@ -660,7 +663,7 @@ if __name__ == '__main__':
               f'R$ {n * b.PRECO[f"{mat} {esp}"]:>9,.2f}')
     print(f'\n  fita de borda           {c["fita"]:7.1f} m   '
           f'R$ {c["c_fita"]:>9,.2f}   (com os 10% de desperdício)')
-    print(f'    da qual, ripa (manual) {c["fita_ripa"]:7.1f} m'
+    print(f'    da qual, de ripa       {c["fita_ripa"]:7.1f} m'
           f'   · caixa (máquina) {c["fita_maq"]:7.1f} m')
     print(f'  chapa                                 R$ {c["c_chapa"]:>9,.2f}')
     print(f'  consumíveis, 6%                       R$ {c["cons"]:>9,.2f}')
@@ -687,7 +690,7 @@ if __name__ == '__main__':
     for m in M:
         ar = sum(L * A * q / 10000 for _n, L, A, _e, _m, q, *_ in m.pecas)
         cf = (m.fita * b_.FITA_COR * b_.FITA_PERDA
-              + m.fita_ripa * b_.FILETE_MAO
+              + m.fita_ripa * b_.FILETE_RIPA
               + (m.fita - m.fita_ripa) * b_.FILETE_MAQ)
         cu = (sum(q * u for _n, q, u in m.ferr)
               + sum(q * u for _n, q, u in m.terc if 'Filetagem' not in _n)
@@ -702,19 +705,38 @@ if __name__ == '__main__':
     #   de job. Estimar é CONFERÊNCIA do cálculo, nunca o número entregue.
     m2_rip = sum(q for m in M for _n, q, u in m.terc
                  if _n.startswith('Painel ripado'))
-    decomp = m2_rip * b_.RIPADO_M2 + c['fita_ripa'] * b_.FILETE_MAO
+    decomp = m2_rip * b_.RIPADO_M2 + c['fita_ripa'] * b_.FILETE_RIPA
     print('\n' + '═' * 72)
     print('PROVA DE SANIDADE DO RIPADO')
     print('═' * 72)
     print(f'  {m2_rip:.2f} m² de painel ripado · {c["fita_ripa"]:.0f} m de fita de ripa')
     print(f'  calculado, peça a peça:  R$ {decomp:>10,.2f}  '
-          f'= {m2_rip:.1f} m² × 180 + {c["fita_ripa"]:.0f} m × 5')
+          f'= {m2_rip:.1f} m² × 180 + {c["fita_ripa"]:.0f} m × '
+          f'{b_.FILETE_RIPA:.2f}')
     print(f'  preço de job no topo da faixa da Base (420/m²): '
           f'R$ {m2_rip * 420:>10,.2f}')
     print(f'  → por m² de painel, o calculado dá R$ {decomp / m2_rip:,.2f}')
-    print('  ⭐ A Base avisa que a faixa vai de 70 a 420 e "depende da largura')
-    print('    da ripa e do vão". Com ripa de 2 e vão de 1 — passo de 3 — a')
-    print('    conta decomposta cai no TOPO da faixa, não no meio. É a prova')
-    print('    de que o R$ 180/m² sozinho subestimaria este painel.')
+    #   ⛔⛔ ESTE PARÁGRAFO ERA ESCRITO À MÃO, e envelheceu no mesmo minuto
+    #     em que a filetagem da ripa caiu de R$ 5,00 para R$ 2,50: ele seguia
+    #     dizendo "cai no TOPO da faixa" com o número já em 83% dela.
+    #     ⭐ Agora ele se CALCULA. Texto conferido à mão é a divergência que
+    #     não dá erro com outro nome.
+    por_m2 = decomp / m2_rip
+    pos = (por_m2 - 70) / (420 - 70)
+    print(f'  ⭐ A Base avisa que a faixa vai de 70 a 420 e "depende da largura')
+    print(f'    da ripa e do vão". A nossa é ripa de 2 com vão de 1 — passo de')
+    print(f'    3, que é FINO, logo a conta tem de cair na parte ALTA da faixa.')
+    print(f'    → R$ {por_m2:,.2f}/m² é {pos:.0%} do caminho de 70 até 420.')
+    if pos < 0.5:
+        print('    ⛔ E ISSO ESTÁ BAIXO para um passo de 3 cm: ou a mão de obra')
+        print('      de R$ 180/m² subestima, ou o preço de job de 420 é para')
+        print('      outro tipo de ripado. Vale perguntar ao Jonathan.')
+    elif pos > 1.0:
+        print('    ⛔ E ISSO PASSA DO TETO da faixa: o R$ 180/m² sozinho')
+        print('      subestimaria este painel.')
+    else:
+        print('    ⭐ Cai na parte alta sem furar o teto, que é exatamente o')
+        print('      que um passo de 3 cm deve dar. A decomposta e o preço de')
+        print('      job concordam.')
 
     print(f'\n  {len(M)} móveis · {sum(len(m.pecas) for m in M)} linhas de peça')

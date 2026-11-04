@@ -132,7 +132,7 @@ def custo_por_ambiente(linha):
         n_ch = sum(b.chapas(ar) for ar in area_amb[nome].values())
         d['chapas'] = sum(b.chapas(ar) for ar in area_amb[nome].values())
         fita = d['fita'] * b.FITA_COR * b.FITA_PERDA
-        filete = d['fita_ripa'] * b.FILETE_MAO \
+        filete = d['fita_ripa'] * b.FILETE_RIPA \
             + (d['fita'] - d['fita_ripa']) * b.FILETE_MAQ
         cons = (chapa + fita + filete) * b.CONSUMIVEIS
         #   ⭐ O CORTE É DO AMBIENTE, e as duas unidades não se misturam:

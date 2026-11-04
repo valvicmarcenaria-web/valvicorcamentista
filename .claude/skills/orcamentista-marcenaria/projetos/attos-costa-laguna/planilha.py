@@ -61,7 +61,8 @@ SIDS = {'01': 101, '02': 102, '03': 103, '04': 104, '05': 105, '06': 106,
 
 W, COLS = 10, 'BCDEFGHIJK'
 PR = 'precos;2;FALSE'                    # ⭐ coluna B — o padrão da casa
-ACAB = ['Fita cor', 'Filetagem automática', 'Filetagem manual']
+ACAB = ['Fita cor', 'Filetagem automática', 'Filetagem de ripa',
+        'Filetagem manual']
 VIDRO = ['Vidro reflecta prata com perfil']
 
 NAO_MARCENARIA = [
@@ -107,8 +108,14 @@ DUVIDAS_DO_AMBIENTE = {
 ESPEC = {
  'Fita cor': 'Aresta a aresta, mais 10% de desperdício',
  'Filetagem automática': 'Coladeira · 15 e 18 mm · serviço, sem desperdício',
- 'Filetagem manual': '⛔ Ripa de 2 cm não entra na coladeira: vai à mão, a '
-                     'R$ 5,00 — o dobro da automática',
+ 'Filetagem de ripa': '⭐ [Jonathan, 04/11/2026] A RIPA ENTRA NA COLADEIRA: '
+                      'R$ 2,50 o metro, igual ao resto. Esta linha dizia '
+                      '"Filetagem manual · R$ 5,00, o dobro da automática" — '
+                      'e eram 2.595,5 m, 91% da fita do projeto. ⛔ Fica em '
+                      'linha separada porque é o maior metro do orçamento: '
+                      'dentro da automática ele desapareceria',
+ 'Filetagem manual': '⛔ O que NÃO entra na coladeira · hoje NADA neste '
+                     'orçamento · a Base ainda cita chapa de 6 mm',
 }
 ROTULO = {
  'Dobradiça': 'dobradiça', 'Dobradiça vidro': 'dobradiça de porta de vidro',
@@ -137,6 +144,10 @@ def monta(amb, aba):
                     continue
                 ferr[k] = ferr.get(k, 0.0) + q
     cc = sorted(chapas, key=lambda k: -int(k.split()[-1]))
+    #   ⭐ [Jonathan, 04/11/2026] a ripa vai à coladeira · a linha segue
+    #     existindo e segue separada, só mudou de nome e de preço.
+    #   ⛔ Filetagem MANUAL de verdade não existe mais neste orçamento (a
+    #     Base ainda cita chapa de 6 mm): a linha dela não é escrita.
     tem_mao = any(m.fita_ripa > 0 for m in moveis)
     vid = [k for k in VIDRO if k in ferr]
     cf = sorted([k for k in ferr if k not in VIDRO],
@@ -171,11 +182,14 @@ def monta(amb, aba):
         if m.fita:
             linhas.append(('acab', ('Fita cor', m.fita * b.FITA_PERDA, 'm')))
             r += 1
+        #   ⭐ [Jonathan, 04/11/2026] duas linhas ainda, e de propósito: a
+        #     da caixa e a da RIPA. As duas custam R$ 2,50 agora, mas a de
+        #     ripa é 91% do metro do projeto — fundi-las esconderia isso.
         if m.fita - m.fita_ripa > 1e-9:
             linhas.append(('acab', ('Filetagem automática',
                                     m.fita - m.fita_ripa, 'm'))); r += 1
         if m.fita_ripa > 1e-9:
-            linhas.append(('acab', ('Filetagem manual', m.fita_ripa, 'm')))
+            linhas.append(('acab', ('Filetagem de ripa', m.fita_ripa, 'm')))
             r += 1
         for attr in ('ferr', 'terc', 'vidro'):
             for item in getattr(m, attr):
@@ -235,7 +249,7 @@ def monta(amb, aba):
             F=f'=D{r}*VLOOKUP($B{r};{PR})')
         r += 1
     L['acab0'] = r
-    for k in ACAB[:2] + (['Filetagem manual'] if tem_mao else []):
+    for k in ACAB[:2] + (['Filetagem de ripa'] if tem_mao else []):
         põe(r, B=k, C=ESPEC[k], D=f'={SOMA_F(chr(34)+k+chr(34))}', E='m',
             F=f'=D{r}*VLOOKUP($B{r};{PR})')
         r += 1
