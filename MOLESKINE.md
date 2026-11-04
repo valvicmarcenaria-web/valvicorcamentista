@@ -187,6 +187,34 @@ rodando em cada cenário. ⛔ A lição está escrita no topo dele: "20% a menos
 sem sujeito tem pelo menos três leituras, e eu escolhi a mais trabalhosa
 antes de perguntar.
 
+**⭐⭐ E A ESCADA DE TRÊS LINHAS** [Jonathan, 04/11/2026]: *"35 telescopica
+(basica) 38 hettich e 43 blum — lembrando que so tem alteração de valores os
+itens que levam as respectivas ferragens. os demais pode manter a mc de 38%
+fixo."*
+
+⛔⛔ **A SEGUNDA FRASE É MAIS IMPORTANTE QUE A PRIMEIRA.** A MC da linha não
+é a MC do projeto: vale só para os itens que carregam a ferragem que muda.
+⭐ É a regra que ele mesmo cravou em 09/09/2026 — *"a cabeceira estofada deve
+custar o mesmo valor para o cliente em ambos os contextos"* — e agora ela
+virou **aritmética com trava**: `linhas.py` explode se um item sem corrediça
+e sem sistema de correr mudar de preço entre as colunas.
+
+| | **BÁSICA** 35% | **HETTICH** 38% | **BLUM** 43% |
+|---|--:|--:|--:|
+| **A CASA** | **179.785** | **185.991** | **201.353** |
+| da anterior | — | +3,5% | +8,3% |
+
+**7 itens de 23 mudam.** Os outros **16 têm preço idêntico nas três colunas**.
+⭐ A básica usa a **Corrediça Hardt, R$ 80/par**, que já estava na Base — não
+inventei tier nenhum.
+
+⚠⚠ **E UM ACHADO QUE VALE DECISÃO:** as duas portas de correr ripadas têm
+**custo idêntico na básica e na Hettich** (o sistema de correr custa R$ 600
+nas duas, porque a Base não tem um mais barato) e mesmo assim o preço sobe
+**R$ 539 cada** — três pontos de MC sem ferragem diferente nenhuma. Ou a
+básica leva um sistema mais simples (e falta o preço dele na Base), ou esses
+dois itens ficam em 35% também.
+
 **Gravado em:** `referencias/quantitativo.md` (MEDIR O VETOR DA PRANCHA) ·
 `referencias/laminacao-e-construcao.md` (a cabeceira e a mesa, camada a
 camada) · `referencias/base-de-custos.md` (as duas chaves novas) · Base
