@@ -46,6 +46,70 @@ LINHAS = {
     'Blum':    dict(corr=300.0, corre=900.0, mc=0.43, marca='Movento'),
 }
 MC_FIXA = 0.38   # ⭐ a MC dos itens que NÃO mudam de linha
+ALVO_BLUM = 230_000.0   # ⭐ [Jonathan, 04/11/2026] "suba a blum para 230k"
+
+# ════════════════════════════════════════════════════════════════════════
+# AS DECISÕES COMERCIAIS — ⛔ AQUI, NUNCA NO LEVANTAMENTO
+# ════════════════════════════════════════════════════════════════════════
+#   ⭐⭐ O LEVANTAMENTO MEDE, A LINHA NEGOCIA. Um "ajuste de R$ 2.500" ou um
+#     "preço final de 39.700" não têm peça, não têm chapa e não vão para o
+#     plano de corte — se entrassem em `levantamento.py`, o quantitativo
+#     passaria a carregar decisão de venda e o plano de corte mentiria.
+#     Ficam aqui, nomeados, datados e com o efeito impresso.
+#   ⛔ E CADA UM INVERTE O MODELO DA CASA: onde há preço cravado, a MC
+#     deixa de ser escolha e passa a ser RESULTADO. O relatório imprime a
+#     MC realizada de cada um, porque é ela que diz se o negócio fecha.
+DECISOES = '[Jonathan, 04/11/2026]'
+
+GRUPOS = [
+    dict(amb='Cozinha', nome='Painel ripado do corredor com as duas portas '
+                             'de correr',
+         itens=['Painel ripado do corredor',
+                'Porta de correr ripada · vestiário',
+                'Porta de correr ripada · despensa'],
+         cravado=39700.0,
+         por=f'{DECISOES} "na cozinha vamos agrupar as duas portas de correr '
+             f'com o painel ripado a um preço final de 39.700"'),
+    dict(amb='Suíte', nome='Parede painelada da TV, com as duas portas',
+         itens=['Parede painelada da TV'],
+         cravado=15500.0,
+         por=f'{DECISOES} "parede painel da tv com as duas portas a 15.500" · '
+             f'⭐ este item NÃO leva corrediça nem sistema de correr, então '
+             f'os 15.500 valem nas TRÊS linhas, pela regra do próprio dono'),
+    dict(amb='Escritório', nome='Armário superior, bancada e armário inferior',
+         itens=['Armário superior', 'Bancada e mesa', 'Armário inferior'],
+         por=f'{DECISOES} "No escritorio, separe apenas o custo do painel '
+             f'ripado, os demais pode mesclar"'),
+    dict(amb='Hall', nome='Painel do hall, com porta de lavanderia e bit de '
+                          'canto',
+         itens=['Painel do hall com porta de lavanderia',
+                'Bit de canto do painel'],
+         por=f'{DECISOES} "hall, unifique os itens"'),
+]
+
+#   ⚠⚠ AJUSTE DE CUSTO CRAVADO. Não há peça a remover da cristaleira: o
+#     levantamento dela está medido na prancha. Isto é o dono dizendo que o
+#     custo dela é outro, e entra como linha DECLARADA, não como peça que
+#     some do plano de corte.
+AJUSTE_CUSTO = {
+    ('Cozinha', 'Cristaleira'):
+        (-2500.0, f'{DECISOES} "a cristaleira, subtraia 2.500 de custo em '
+                  f'cada linha" · ⛔ o QUANTITATIVO não mudou — nenhuma peça '
+                  f'saiu da prancha. Mudou o custo cravado pelo dono'),
+}
+
+#   ⭐⭐ MC TRAVADA: item pequeno cuja MC não pode subir com a linha.
+MC_TRAVADA = {
+    ('Suíte', 'Mesas de cabeceira'):
+        (MC_FIXA, f'{DECISOES} "mesas de cabeceira nao pode dobrar o preço '
+                  f'so em funçao das corrediças, reveja isso" · ⛔ ELE ESTÁ '
+                  f'CERTO E A CAUSA NÃO ERA A CORREDIÇA: 4 pares a mais '
+                  f'custam R$ 880, mas a MC de 35% para 43% move o DIVISOR '
+                  f'de 0,4548 para 0,3748, e sozinha isso é +21%. Num item '
+                  f'de R$ 2 mil a alavanca da margem pesa mais que a peça. '
+                  f'⭐ A MC fica em 38% nas três e só o custo da ferragem '
+                  f'varia — que é o que o senhor quis dizer'),
+}
 
 
 def item(m):
@@ -91,7 +155,7 @@ def custo_item(d, linha, arred=0.0, corte_chapa=0.0):
 
 
 def monta():
-    """Todos os itens, com o arredondamento de chapa rateado no ambiente."""
+    """Os itens, agrupados e com as decisões comerciais aplicadas."""
     I = [item(m) for m in lv.M]
     #   ── o arredondamento e o corte por chapa são do AMBIENTE ───────────
     #     ⭐ rateados pela ÁREA de cada material, que é o que os causa —
@@ -104,9 +168,8 @@ def monta():
                 area[k] = area.get(k, 0.0) + a
         for k, a in area.items():
             preco = b.PRECO[f'{k[0]} {k[1]}']
-            cheia = b.chapas(a) * preco
+            cheia, n = b.chapas(a) * preco, b.chapas(a)
             frac = a / (b.CHAPA_M2 * b.APROV) * preco
-            n = b.chapas(a)
             for m, d in da:
                 parte = m.areas().get(k, 0.0) / a if a else 0.0
                 d['arred'] = d.get('arred', 0.0) + (cheia - frac) * parte
@@ -116,23 +179,76 @@ def monta():
         d.setdefault('arred', 0.0); d.setdefault('corte_chapa', 0.0)
         for k in LINHAS:
             d[k] = custo_item(d, k, d['arred'], d['corte_chapa'])
-            mc = LINHAS[k]['mc'] if d['muda'] else MC_FIXA
-            d[k + '_mc'] = mc
-            d[k + '_pv'] = d[k] / (b.BASE - mc)
-    return I
+        #   ⚠ o ajuste de custo cravado entra DEPOIS do motor, nas 3 linhas
+        aj = AJUSTE_CUSTO.get((d['amb'], d['nome']))
+        if aj:
+            for k in LINHAS:
+                d[k] += aj[0]
+            d['ajuste'] = aj
+
+    # ── OS GRUPOS: vários itens viram UM, por decisão comercial ──────────
+    G, usados = [], set()
+    for g in GRUPOS:
+        membros = [d for d in I
+                   if d['amb'] == g['amb'] and d['nome'] in g['itens']]
+        falta = set(g['itens']) - {d['nome'] for d in membros}
+        assert not falta, (f'⛔⛔ grupo "{g["nome"]}" pede itens que não '
+                           f'existem no levantamento: {sorted(falta)}')
+        for d in membros:
+            usados.add((d['amb'], d['nome']))
+        novo = dict(amb=g['amb'], nome=g['nome'], grupo=g,
+                    membros=[d['nome'] for d in membros],
+                    muda=any(d['muda'] for d in membros),
+                    corr=sum(d['corr'] for d in membros),
+                    corre=sum(d['corre'] for d in membros))
+        for k in LINHAS:
+            novo[k] = sum(d[k] for d in membros)
+        G.append(novo)
+    SAIDA = [d for d in I if (d['amb'], d['nome']) not in usados] + G
+    #   ⭐ a ordem do levantamento, com cada grupo onde o 1º membro estava
+    ordem = {(d['amb'], d['nome']): i for i, d in enumerate(I)}
+    SAIDA.sort(key=lambda d: ordem.get(
+        (d['amb'], d.get('membros', [d['nome']])[0]), 999))
+
+    # ── O PREÇO: cravado quando há, calculado quando não há ─────────────
+    for d in SAIDA:
+        g = d.get('grupo') or {}
+        cravado = g.get('cravado')
+        trava = MC_TRAVADA.get((d['amb'], d['nome']))
+        if cravado:
+            #   ⭐⭐ O CRAVADO É DA LINHA HETTICH, a de referência, e dele
+            #     sai a MC REALIZADA. As outras duas linhas andam os MESMOS
+            #     pontos que o senhor pediu (−3 e +5), sobre ela.
+            mc_h = b.BASE - d['Hettich'] / cravado
+            d['mc_ref'] = mc_h
+            for k in LINHAS:
+                mc = mc_h + (LINHAS[k]['mc'] - LINHAS['Hettich']['mc']) \
+                    if d['muda'] else mc_h
+                d[k + '_mc'] = mc
+                d[k + '_pv'] = d[k] / (b.BASE - mc)
+        else:
+            for k in LINHAS:
+                mc = (trava[0] if trava else
+                      (LINHAS[k]['mc'] if d['muda'] else MC_FIXA))
+                d[k + '_mc'] = mc
+                d[k + '_pv'] = d[k] / (b.BASE - mc)
+        if trava:
+            d['trava'] = trava
+    return SAIDA
 
 
 def _trava(I):
     """⭐⭐ AS DUAS PROVAS, e elas são o motivo de este arquivo existir."""
-    #   ① a soma dos itens tem de dar o custo direto do projeto
-    alvo = lv.custo()['direto']
-    for k in LINHAS:
-        if k != 'Hettich':
-            continue
-        soma = sum(d[k] for d in I)
-        assert abs(soma - alvo) < 0.02, (
-            f'⛔⛔ a soma dos itens na linha {k} dá R$ {soma:,.2f} e o motor '
-            f'diz R$ {alvo:,.2f} — diferença de R$ {soma - alvo:,.2f}')
+    #   ① a soma dos itens tem de dar o custo do motor MAIS os ajustes
+    #     ⭐ e os ajustes entram EXPLÍCITOS na conta da trava: se um dia
+    #       alguém acrescentar um ajuste e esquecer daqui, ela acusa.
+    ajuste = sum(v[0] for v in AJUSTE_CUSTO.values())
+    alvo = lv.custo()['direto'] + ajuste
+    soma = sum(d['Hettich'] for d in I)
+    assert abs(soma - alvo) < 0.02, (
+        f'⛔⛔ a soma dos itens na linha Hettich dá R$ {soma:,.2f} e o motor '
+        f'mais os ajustes dá R$ {alvo:,.2f} — diferença de '
+        f'R$ {soma - alvo:,.2f}')
     #   ② ITEM SEM A FERRAGEM QUE MUDA TEM DE TER O MESMO PREÇO NAS TRÊS
     for d in I:
         if d['muda']:
@@ -188,6 +304,90 @@ def main():
         print(f'        {k:<10} R$ {c:>9,.2f} de custo')
     print(f'     a MARGEM   · 35% · 38% · 43% — e ela só pega nos '
           f'{len(muda)} itens com ferragem')
+
+    # ════════════════════════════════════════════════════════════════════
+    #   ⛔⛔ OS 230k DA BLUM — E A CONTRADIÇÃO QUE ELES ABREM
+    # ════════════════════════════════════════════════════════════════════
+    #   ⭐⭐ [Jonathan, 04/11/2026] "no preço geral suba a blum para 230k. e
+    #     diluar coerentemente entre os itens."
+    #   ⛔ ISSO BRIGA COM A REGRA DELE PRÓPRIO, dada minutos antes: "os
+    #     demais pode manter a mc de 38% fixo" — que faz 12 itens terem
+    #     PREÇO IDÊNTICO nas três linhas. Se os 230k forem diluídos sobre
+    #     TODOS, esses 12 deixam de ser iguais. Se forem diluídos só sobre
+    #     os que levam ferragem, eles levam o aumento inteiro.
+    #   ⭐ Não escolho por ele. Meço as três saídas e mostro o que cada uma
+    #     quebra, com nome e número.
+    # ── onde a MC deixou de ser escolha e virou resultado ───────────────
+    crav = [d for d in I if d.get('grupo', {}).get('cravado')]
+    if crav:
+        print('\n  ⭐⭐ ONDE O PREÇO FOI CRAVADO, A MC É RESULTADO — e é ela '
+              'que diz se fecha:')
+        for d in crav:
+            g = d['grupo']
+            print(f'     {d["nome"][:50]:<50} R$ {g["cravado"]:>9,.0f}  '
+                  f'→ MC REALIZADA {d["mc_ref"]:>5.1%}')
+            print(f'        custo R$ {d["Hettich"]:,.2f} · '
+                  f'{"ACIMA" if d["mc_ref"] >= b.MC_PISO else "⛔ ABAIXO"} '
+                  f'do piso da casa ({b.MC_PISO:.0%})'
+                  + (f' · os itens somavam R$ '
+                     f'{sum(x for x in [0]):,.0f}' if False else ''))
+    trav = [d for d in I if d.get('trava')]
+    if trav:
+        print('\n  ⭐ ONDE A MC FOI TRAVADA:')
+        for d in trav:
+            dif = d['Blum_pv'] / d['Básica_pv'] - 1
+            print(f'     {d["nome"][:50]:<50} MC {d["trava"][0]:.0%} nas três '
+                  f'· básica → blum {dif:+.0%}')
+        print('     ⭐ ERA +70% e caiu para +41%: o que sobrou é SÓ a '
+              'corrediça, R$ 880 de custo\n        em 4 pares.')
+        print('     ⚠⚠ E AÍ MORA OUTRA COISA QUE VALE OLHAR: a Base cobra '
+              'R$ 300 o par de Blum\n        para QUALQUER gaveta. A gaveta '
+              'da mesa de cabeceira tem 45 cm de profundidade\n        e '
+              '14 cm de altura — leva uma corrediça MENOR, e mais barata, que '
+              'a de\n        cozinha. Se a Base separasse por tamanho, estes '
+              '+41% cairiam sozinhos.')
+
+    print('\n' + '═' * 96)
+    print(f'OS R$ {ALVO_BLUM:,.0f} DA BLUM — TRÊS CAMINHOS, E O QUE CADA UM QUEBRA')
+    print('═' * 96)
+    falta = ALVO_BLUM - tot['Blum']
+    print(f'  Blum hoje R$ {tot["Blum"]:,.2f} · alvo R$ {ALVO_BLUM:,.2f} · '
+          f'faltam R$ {falta:,.2f}  ({falta / tot["Blum"]:+.1%})')
+
+    fix = [d for d in I if not d['muda']]
+    mud = [d for d in I if d['muda']]
+    s_fix = sum(d['Blum_pv'] for d in fix)
+    s_mud = sum(d['Blum_pv'] for d in mud)
+
+    print(f'\n  ① SOBRE TUDO, proporcional ao preço de cada item '
+          f'(×{ALVO_BLUM / tot["Blum"]:.4f})')
+    print(f'     ⛔ QUEBRA a regra dos {len(fix)} itens de preço idêntico: '
+          f'eles sobem {ALVO_BLUM / tot["Blum"] - 1:+.1%} só na Blum')
+    print(f'     ⛔ E MEXE NOS DOIS PREÇOS QUE O SENHOR ACABOU DE CRAVAR: '
+          f'o grupo da cozinha\n        vai a R$ '
+          f'{[d for d in I if d.get("grupo", {}).get("cravado")][0]["Blum_pv"] * ALVO_BLUM / tot["Blum"]:,.0f} '
+          f'e a parede da TV a R$ {15500 * ALVO_BLUM / tot["Blum"]:,.0f}')
+
+    f2 = (ALVO_BLUM - s_fix) / s_mud
+    print(f'\n  ② SÓ SOBRE OS {len(mud)} QUE LEVAM FERRAGEM (×{f2:.4f})')
+    print(f'     ⭐ PRESERVA os {len(fix)} itens de preço idêntico nas três '
+          f'linhas')
+    print(f'     ⚠ mas eles levam o aumento inteiro: {f2 - 1:+.1%} cada')
+    for d in mud:
+        print(f'        {d["nome"][:46]:<46} R$ {d["Blum_pv"]:>9,.0f} → '
+              f'R$ {d["Blum_pv"] * f2:>9,.0f}')
+
+    #   ③ pela MC: qual MC única na Blum dá o alvo
+    c_blum = sum(d['Blum'] for d in I)
+    mc3 = b.BASE - c_blum / ALVO_BLUM
+    print(f'\n  ③ PELA MARGEM: uma MC única de {mc3:.1%} na linha Blum')
+    print(f'     ⭐ é o jeito da casa — a MC É a diluição, e ela já incide '
+          f'sobre o custo de cada item')
+    print(f'     ⛔ quebra a mesma regra do ①, e empurra a MC da Blum de 43% '
+          f'para {mc3:.1%}')
+    print(f'\n  ⚠⚠ E OS DOIS PREÇOS CRAVADOS SÃO SAGRADOS OU NÃO? Se forem, '
+          f'o ① e o ③ estão\n     fora e sobra o ②. Se o senhor disser qual, '
+          f'eu fecho em um minuto.')
     #   ⚠⚠ E AQUI MORA UM CASO QUE VALE O SENHOR OLHAR: itens cujo CUSTO é
     #     idêntico entre duas linhas e cujo PREÇO não é, porque só a MC
     #     mudou. Acontece com o sistema de correr, que custa R$ 600 na

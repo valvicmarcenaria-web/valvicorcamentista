@@ -215,6 +215,41 @@ nas duas, porque a Base não tem um mais barato) e mesmo assim o preço sobe
 básica leva um sistema mais simples (e falta o preço dele na Base), ou esses
 dois itens ficam em 35% também.
 
+**⭐⭐ E AS SETE DECISÕES COMERCIAIS** [Jonathan, 04/11/2026]: agrupar na
+cozinha a R$ 39.700 · tirar R$ 2.500 de custo da cristaleira · parede da TV
+com as portas a R$ 15.500 · rever as mesas de cabeceira · mesclar o
+escritório menos o ripado · unificar o hall · subir a Blum para 230k.
+
+⛔⛔ **E ELAS NÃO FORAM PARA O LEVANTAMENTO.** Um "ajuste de R$ 2.500" ou um
+"preço final de 39.700" não têm peça, não têm chapa e não vão para o plano
+de corte. **O levantamento mede; a linha negocia.** Tudo mora em
+`linhas.py`, nomeado e datado, e a trava passou a somar motor + ajustes.
+
+| | BÁSICA 35% | HETTICH 38% | BLUM 43% |
+|---|--:|--:|--:|
+| **A CASA** | **176.891** | **184.184** | **201.263** |
+
+**⛔⛔ TRÊS COISAS QUE EU PRECISO DIZER, e todas são número, não opinião:**
+
+1. **O grupo da cozinha a R$ 39.700 dá MC realizada de 34,7% — ABAIXO do
+   piso de 35% da casa.** Onde o preço é cravado, a MC deixa de ser escolha
+   e vira resultado; o relatório imprime a dos dois cravados. A parede da TV
+   a R$ 15.500 dá **57,6%**.
+2. **As mesas de cabeceira:** era +70% da básica para a Blum e caiu para
+   **+41%** com a MC travada em 38%. ⭐ O que sobrou é SÓ a corrediça —
+   R$ 880 em 4 pares. ⚠ E a causa de fundo é da Base: ela cobra **R$ 300 o
+   par de Blum para QUALQUER gaveta**, e a da mesa de cabeceira tem 45 de
+   profundidade e 14 de altura. Separar a corrediça por tamanho derrubaria
+   esses 41% sozinho.
+3. **⛔⛔ OS 230k DA BLUM BRIGAM COM A REGRA DELE PRÓPRIO.** "Os demais pode
+   manter a MC de 38% fixo" faz 12 itens terem preço IDÊNTICO nas três
+   linhas. Diluir +R$ 28.737 sobre todos quebra isso E mexe nos dois preços
+   que ele acabou de cravar. Medi os três caminhos:
+   · ① sobre tudo (×1,1428) — quebra os 12 e move os cravados
+   · ② só sobre os 6 que levam ferragem (**+27,5%** cada) — preserva tudo
+   · ③ MC única de **46,1%** na Blum — o jeito da casa, quebra os 12
+   **Não escolhi por ele.**
+
 **Gravado em:** `referencias/quantitativo.md` (MEDIR O VETOR DA PRANCHA) ·
 `referencias/laminacao-e-construcao.md` (a cabeceira e a mesa, camada a
 camada) · `referencias/base-de-custos.md` (as duas chaves novas) · Base
