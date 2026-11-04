@@ -12,10 +12,11 @@ ambiente('Quarto casal')
 m = 'Porta do closet (ripada, de correr)'
 porta_passagem(m, 66, 215, 'Amadeirado', 'Areia', ripada='Amadeirado', sistema='correr')
 
-#   a segunda porta: a do banho, em MDF Areia com cava 45° (folha 11/12).
-#   ⭐ [Jonathan, 04/11/2026] os banheiros saem, mas a porta fica.
-m = 'Porta do banho (Areia, pivô)'
-porta_passagem(m, 72, 212, 'Areia', sistema='pivo')
+#   a segunda porta: a do banho. ⭐ [Jonathan, 04/11/2026] os banheiros
+#   saem, a porta fica, e ela é RIPADA igual à do closet: face do quarto em
+#   amadeirado ripado, face do banho em Areia, pivô.
+m = 'Porta do banho (ripada, pivô)'
+porta_passagem(m, 72, 212, 'Amadeirado', 'Areia', ripada='Amadeirado', sistema='pivo')
 
 # ── 2 · Mesa rack em MDF areia (vista D) ─────────────────────────────────
 #   78 + 78 + 78 + 80 = 314 × 20 de altura × 30 de profundidade, suspensa.
