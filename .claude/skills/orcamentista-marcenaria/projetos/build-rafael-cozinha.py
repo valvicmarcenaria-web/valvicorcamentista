@@ -368,33 +368,7 @@ folha(f'''<div class="pad">
  </div></div>''')
 N0 = N[0] + 1   # ⛔ a primeira folha com preço
 
-# ── 12 · investimento, ambiente a ambiente, nas duas linhas ─────────────
-rows = ''.join(
-    f'<tr><td class="l">{E(g)}</td>'
-    + ''.join(f'<td{" class=hi" if n == "Hettich" else ""}>{brs(CEN[n]["amb"][i])}</td>'
-              for n in LIN) + '</tr>' for i, (g, _p) in enumerate(GRUPOS))
-folha(f'''<div class="pad">
- <div class="eyebrow">Investimento · ambiente a ambiente</div><div class="rule"></div>
- <h1 class="h1" style="margin:0 0 3mm">O projeto, nas duas linhas.</h1>
- <p class="lead" style="max-width:215mm">Cada móvel foi levantado <b>peça por peça do
-  projeto executivo</b> — nada é rateio nem estimativa por metro quadrado.</p>
- <div style="display:grid;grid-template-columns:1.25fr 1fr;gap:0 12mm;margin-top:6mm;flex:1;min-height:0">
-  <table class="inv" style="align-self:start">
-   <tr><th class="l">Ambiente</th>
-    {''.join(f'<th{" class=hi" if n == "Hettich" else ""}>{E(n)}</th>' for n in LIN)}</tr>
-   {rows}
-   <tr class="tot"><td class="l">O projeto completo</td>
-    {''.join(f'<td{" class=hi" if n == "Hettich" else ""}>{brs(CEN[n]["cheio"])}</td>' for n in LIN)}</tr>
-  </table>
-  <div class="amb-img" style="background:#fff;border:1px solid var(--hair)">
-   <img src="{IMG['vista8']}" alt=""><div class="tag">Serviço</div></div>
- </div>
- <div class="box" style="margin-top:5mm"><p style="font-size:8.4pt">Valores de tabela,
-  com entrada e saldo parcelado no cartão. <b>A folha de condições traz os descontos
-  da casa para cada forma de pagamento.</b></p></div>
-</div>''')
-
-# ── 13 · a decisão ──────────────────────────────────────────────────────
+# ── 12 · a decisão (antes do detalhe por ambiente) [Jonathan 04/11] ──────────────────────────────────────────────────────
 RESUMO = {'Telescópica': 'Trilho aparente na lateral da gaveta e fechamento sem amortecedor. A versão econômica do projeto.',
           'Hettich': 'Trilho oculto, gaveta que sai inteira e fechamento amortecido em portas e gavetas. <em>É a linha que cumpre a especificação do projeto.</em>'}
 # ⭐ [Jonathan 04/11] a folha da decisão mostra ENTRADA + PARCELA MENSAL no
@@ -427,6 +401,32 @@ folha(f'''<div class="pad">
    instalação — num só contrato, com uma só data e uma só arquiteta responsável.
    A diferença entre as duas linhas está inteira na corrediça e na dobradiça.
    As demais formas de pagamento estão na folha de condições.</p></div>
+</div>''')
+
+# ── 13 · investimento, ambiente a ambiente, nas duas linhas ─────────────
+rows = ''.join(
+    f'<tr><td class="l">{E(g)}</td>'
+    + ''.join(f'<td{" class=hi" if n == "Hettich" else ""}>{brs(CEN[n]["amb"][i])}</td>'
+              for n in LIN) + '</tr>' for i, (g, _p) in enumerate(GRUPOS))
+folha(f'''<div class="pad">
+ <div class="eyebrow">Investimento · ambiente a ambiente</div><div class="rule"></div>
+ <h1 class="h1" style="margin:0 0 3mm">O projeto, nas duas linhas.</h1>
+ <p class="lead" style="max-width:215mm">Cada móvel foi levantado <b>peça por peça do
+  projeto executivo</b> — nada é rateio nem estimativa por metro quadrado.</p>
+ <div style="display:grid;grid-template-columns:1.25fr 1fr;gap:0 12mm;margin-top:6mm;flex:1;min-height:0">
+  <table class="inv" style="align-self:start">
+   <tr><th class="l">Ambiente</th>
+    {''.join(f'<th{" class=hi" if n == "Hettich" else ""}>{E(n)}</th>' for n in LIN)}</tr>
+   {rows}
+   <tr class="tot"><td class="l">O projeto completo</td>
+    {''.join(f'<td{" class=hi" if n == "Hettich" else ""}>{brs(CEN[n]["cheio"])}</td>' for n in LIN)}</tr>
+  </table>
+  <div class="amb-img" style="background:#fff;border:1px solid var(--hair)">
+   <img src="{IMG['vista8']}" alt=""><div class="tag">Serviço</div></div>
+ </div>
+ <div class="box" style="margin-top:5mm"><p style="font-size:8.4pt">Valores de tabela,
+  com entrada e saldo parcelado no cartão. <b>A folha de condições traz os descontos
+  da casa para cada forma de pagamento.</b></p></div>
 </div>''')
 
 # ── 14 · condições, com a escala de desconto padrão ─────────────────────
