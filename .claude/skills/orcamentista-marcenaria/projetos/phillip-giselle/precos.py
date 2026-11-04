@@ -2,9 +2,12 @@
 """Phillip e Giselle · CUSTO × VENDA por ambiente, nas três linhas.
 
 Decisões [Jonathan, 04/11/2026]:
-  · SEM RT, COM VENDEDOR (10% do líquido)
-  · MC Telescópica 35% · Hettich 38% · Blum 42%, cravada no PIOR degrau da
-    escala de desconto padrão (30% + 10× no cartão), como no Rafael
+  · SEM RT e SEM VENDEDOR [Jonathan, 04/11/2026: "tire o percentual de vendedor"]
+  · MC Telescópica 35% · Hettich 38% · Blum 42%
+  · ⛔ SEM CARTÃO e SEM ESCALA DE DESCONTO: "não considere o cartão de crédito
+    nesse cliente · parcelamentos igual à proposta do Michel e do Gustavo" →
+    30% na assinatura, 20% em 30 dias, 20% em 60, 30% em 90, transferência.
+    Um valor só por linha.
   · Closet Mateus com o MESMO custo do Closet Ana ("considere custo igual")
   · Projeto executivo: custo de R$ 2.000, precificado como os ambientes
   · Serviço avulso do rodapé: R$ 1.900 de VENDA, fora da MC
@@ -18,17 +21,19 @@ import motor as M
 LIN = {'telescopica': ('Telescópica', 0.35), 'hettich': ('Hettich', 0.38),
        'blum': ('Blum', 0.42)}
 PROJETO = 2000.0
-ESCALA = [('Entrada 30% + saldo em até 10× no cartão', 0.30, 10, 0.00),
-          ('Entrada 50% + saldo em até 8× no cartão',  0.50,  8, 0.03),
-          ('Entrada 70% + saldo em até 6× no cartão',  0.70,  6, 0.05),
-          ('Entrada 70% + saldo por transferência',    0.70,  0, 0.07)]
+PAGTO = [('Entrada, na assinatura do contrato', 0.30),
+         ('30 dias após a assinatura', 0.20),
+         ('60 dias após a assinatura', 0.20),
+         ('90 dias após a assinatura', 0.30)]
+assert abs(sum(p for _, p in PAGTO) - 1) < 1e-9
+ESCALA = [('Transferência, 30/20/20/30', 0.0, 0, 0.00)]   # sem cartão
 
 def base(entrada, parc):
-    """Cascata da casa com cartão só sobre o saldo, sem RT, com vendedor."""
+    """Cascata da casa com cartão só sobre o saldo, sem RT e sem vendedor."""
     cartao = MC.CARTAO_PP * parc * (1 - entrada)
     bruto = MC.NF + cartao + MC.ERRO + MC.SERRA + MC.MANUT
     liq = 1 - MC.NF - cartao
-    vend = MC.VENDEDOR * liq
+    vend = 0.0                                       # ⛔ sem vendedor
     liq2 = liq - vend
     return 1 - bruto - vend - MC.PROD * liq2
 
@@ -61,5 +66,7 @@ if __name__ == '__main__':
     for t in TAB.values():
         print(f"\n{t['nome']} · MC {t['mc']*100:.0f}%")
         for lab, d, p, mc in t['esc']:
-            print(f"   {lab:44s} {'—' if not d else f'−{d*100:.0f}%':>4s} {M.brl(p):>14s}  MC {mc*100:5.1f}%")
+            print(f"   {lab}: {M.brl(p)} · MC {mc*100:.1f}% · base {base(0,0)*100:.2f}%")
+        for lab, f in PAGTO:
+            print(f"      {lab:36s} {f*100:3.0f}%  {M.brl(t['cheio']*f)}")
     for dsc, v, obs in AVULSO: print(f'\nAVULSO {M.brl(v)} (venda) · {obs}')
