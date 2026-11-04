@@ -26,7 +26,7 @@ CSS = (P / 'css-apresentacao.css').read_text(encoding='utf-8')
 CLIENTE = 'Phillip e Giselle'
 ARQ, ARQ_CURTO = 'Janaina Pacheco Arquitetura & Interiores', 'Janaina Pacheco'
 OBRA, DATA = 'Residência unifamiliar · pavimento íntimo', 'Novembro de 2026'
-PRAZO, VALIDADE = '45 a 60 dias úteis', '7 dias úteis'
+PRAZO, VALIDADE = '70 dias corridos', '7 dias úteis'   # ⭐ prazo [Jonathan, 04/11/2026]
 LIN = ('telescopica', 'hettich', 'blum')
 NOME = {'telescopica': 'Telescópica', 'hettich': 'Hettich', 'blum': 'Blum'}
 GAR = {'telescopica': '2', 'hettich': '10', 'blum': '30'}
@@ -388,8 +388,8 @@ folha(f'''<div class="pad" style="padding-bottom:20mm">
    <div class="term"><div class="k">Validade desta proposta</div><div class="v">{E(VALIDADE)}</div>
      <div class="s">A partir desta data.</div></div>
    <div class="term"><div class="k">Prazo de execução</div><div class="v">{E(PRAZO)}</div>
-     <div class="s">Contados da aprovação do detalhamento de execução, não da assinatura. A
-       medição técnica entra antes e tem data própria no cronograma.</div></div>
+     <div class="s">Contados a partir da medição técnica no local, não da assinatura. A
+       medição tem data própria no cronograma.</div></div>
    <div class="term"><div class="k">Garantia</div><div class="v">Conforme a linha</div>
      <div class="s">Trinta anos na Blum, dez na Hettich e dois na Telescópica. Instalação e
        regulagem, dois anos. Termo assinado na entrega.</div></div>
