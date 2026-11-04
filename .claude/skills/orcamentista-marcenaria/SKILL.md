@@ -237,6 +237,14 @@ FASE 3 — ESTRATÉGIA (margem, otimização, proposta)
 > garantia e preço ficam. Antes de entregar, rodar o regex de cota no PDF —
 > qualquer ocorrência é erro. Regra completa em `proposta-comercial.md`.
 
+- ⛔⛔ **O QUE NÃO MUDA DE FERRAGEM NÃO MUDA DE PREÇO ENTRE AS LINHAS.**
+  [Jonathan, 04/11/2026, Phillip e Giselle] Em proposta com linhas
+  (Telescópica / Hettich / Blum), o preço de cada ambiente é a **parte comum**
+  (MDF, fita, LED, portas, sistemas de correr, espelho, corte…) numa **MC
+  única, igual nas três**, **mais a ferragem de movimento** (corrediça e
+  dobradiça) na MC de cada linha. Ambiente sem gaveta nem dobradiça da linha
+  sai com o MESMO valor nas três. Implementado em
+  `projetos/phillip-giselle/precos.py`, com trava de igualdade.
 - **Situação de caixa — perguntar em TODA demanda.** Define a MC mínima aceitável:
   crítico ≤25% · ruim ≤30% · normal 30–37% · bom 37–45% · ótimo >45%
   (`validacao-orcamento.md`). Caixa baixo → aceita MC menor por fluxo.
