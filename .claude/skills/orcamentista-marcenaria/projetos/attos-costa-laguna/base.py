@@ -156,6 +156,31 @@ RIPA_PERDA = 1.10        # "Perda de serra ao tirar ripa", fator da Base
 VIDRACEIRO_MIN = 200.0   # mínimo por serviço
 SERRALHEIRO_MIN = 300.0  # mínimo por serviço
 
+# ── ESTOFADO · a cabeceira da suíte ─────────────────────────────────────
+#   ⭐ [Jonathan] "considere o metro quadrado do estofado em 600,00" — está
+#     cravado na regra 8 do quantitativo da casa. É ESTOFADOR, terceirizado,
+#     por m² de FACE estofada: conta a cara que recebe espuma e tecido, não
+#     os dois lados do painel.
+ESTOFADO_M2 = 600.0
+ESPUMA_ESP = 30          # mm de espuma sobre a base
+#   ⭐⭐ E A PLANTA CONFIRMA A RECEITA SOZINHA. A cabeceira está desenhada
+#     com 5,0 cm de espessura — e 15 mm de MDF + 30 mm de espuma + tecido dão
+#     46 a 48 mm. O desenho não diz "estofado" em lugar nenhum (a legenda da
+#     prancha só tem "MDF AMADEIRADO" e "RIPADO EM MDF AMADEIRADO"), mas a
+#     espessura dele só fecha com estofamento. Foi o 3D que disse o que é; a
+#     planta disse QUANTO, e as duas contam a mesma história.
+CAB_SUB_ESP = 15         # mm de MDF de substrato, sob a espuma
+
+# ── MESA DE CABECEIRA · o pé é serralheria ──────────────────────────────
+#   ⚠ PREMISSA. O 3D mostra as mesas sobre pés metálicos finos; o executivo
+#     não desenha mesa de cabeceira em lugar nenhum, então não há seção, nem
+#     perfil, nem acabamento cotado. Entra como UM serviço de serralheria por
+#     mesa, no mínimo da casa.
+#   ⚠ E ISSO É CONSERVADOR DE PROPÓSITO: se o serralheiro fizer os dois jogos
+#     na mesma ida — que é o provável —, é um serviço só e cai pela metade.
+#     Fica caro e marcado, nunca barato e escondido.
+PE_METALICO_JOGO = SERRALHEIRO_MIN
+
 # ── vidro · aba Vidro ───────────────────────────────────────────────────
 #   ⛔⛔ O EXECUTIVO PEDE "VIDRO REFLECTA CRISTAL" E A BASE NÃO TEM ESSE
 #     PADRÃO. Tem reflecta prata (340 sem perfil, 410 champanhe, 420 preto),

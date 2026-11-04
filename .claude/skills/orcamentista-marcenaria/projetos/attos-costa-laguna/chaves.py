@@ -58,6 +58,9 @@ MOTOR = {
     #   ⭐ [Jonathan, 04/11/2026] a porta de passagem é FEITA na casa
     'Miolo G-Door em régua':           (b.GDOOR_M2,  'm²',      True),
     'Perfil de metalon':               (b.METALON_BARRA, 'barra', True),
+    #   ⭐ [Jonathan, 04/11/2026] a cabeceira estofada e as mesas de cabeceira
+    'Estofado':                        (b.ESTOFADO_M2, 'm²',     None),
+    'Pé metálico':                     (b.PE_METALICO_JOGO, 'jogo', None),
     'Dobradiça':                       (b.DOBRADICA, 'un',       False),
     'Dobradiça vidro':                 (b.DOBRADICA_VIDRO, 'un', False),
     'Corrediça Hettich':               (b.CORREDICA_PAR, 'par',  False),
@@ -120,6 +123,8 @@ REGRAS = [
     ('^', 'Filetagem de ripa',              'Filetagem de ripa'),
     ('^', 'Miolo G-Door',                   'Miolo G-Door em régua'),
     ('^', 'Perfil de metalon',              'Perfil de metalon'),
+    ('^', 'Estofamento',                    'Estofado'),
+    ('^', 'Pé metálico',                    'Pé metálico'),
     ('^', 'Filetagem manual',               'Filetagem manual'),
     ('^', 'Painel ripado',                  'Painel ripado'),
     ('^', 'Porta de vidro reflecta',        'Vidro reflecta prata com perfil'),

@@ -114,6 +114,45 @@ DUVIDAS_PORTA = [
  'pede 2,5 delas, o que daria R$ 115,38 por folha contra R$ 127,41. Os 80% '
  'cobram R$ 12 a mais por porta. É conservador, e é escolha sua.',
 ]
+#   ⭐ só a aba que TEM cabeceira estofada recebe estas — e as duas
+#     primeiras são as que mudam o plano de corte.
+DUVIDAS_CABECEIRA = [
+ '⚠⚠ A ALTURA DA CABECEIRA É PREMISSA MINHA, 120 cm — e é o ÚNICO número '
+ 'dela que não saiu do desenho. ⭐ A largura de 240, a espessura de 5 e as '
+ 'profundidades de 50 das mesas eu MEDI no vetor da planta, com a escala '
+ 'tirada da cota de 467 e conferida em oito outras cotas. ⛔ Mas não há '
+ 'ELEVAÇÃO da parede da cabeceira em prancha nenhuma: a ELEV.01 desenha o '
+ 'painel ripado (200 × 272) e a ELEV.02 a parede da TV (467 × 275). A '
+ 'cabeceira e as duas mesas só existem em PLANTA e no 3D — sem altura, sem '
+ 'seção. ⭐ Cada 10 cm a mais de cabeceira custam R$ 144 de estofado mais '
+ 'a chapa. Diga a altura e o número fecha.',
+
+ '⚠⚠ AS DUAS MESAS DE CABECEIRA SÃO DIFERENTES NA PLANTA: 80 cm à esquerda '
+ 'e 90 à direita. ⭐ Não é erro de leitura — medem 90,7 e 102,0 pt, e os '
+ '90,7 pt são exatamente o que mede a porta de 80 da ELEV.02 na mesma '
+ 'prancha. ⭐ A planta explica a assimetria: sobram 53,7 cm de parede livre '
+ 'à esquerda da mesa esquerda e só 18,4 cm à direita da direita. ⚠ Se for '
+ 'intenção do projeto, está certo como está; se o desenho foi feito no '
+ 'olho e as duas são iguais, é trocar um número — e a de 90 custa R$ 47 a '
+ 'mais que a de 80.',
+
+ '⛔⛔ DUAS SUÍTES INTEIRAS APARECEM NO 3D E NÃO TÊM UMA LINHA DE PRANCHA. '
+ 'O executivo tem ONZE pranchas: cozinha (3), escritório (2), hall (3), '
+ 'sala/TV (1) e suíte MASTER (2). O PDF dos 3Ds mostra SUÍTE 01, SUÍTE 02 '
+ 'e SUÍTE PRINCIPAL. ⛔ A segunda cabeceira que o senhor pediu é da SUÍTE '
+ '01 e NÃO está orçada, porque não existe desenho dela para medir — e '
+ 'fazer "por analogia" seria pôr número inventado dentro de um orçamento '
+ 'que é todo medido. ⚠ E a pergunta maior é essa: se as suítes 01 e 02 têm '
+ 'marcenaria, faltam AMBIENTES nesta conta, não uma cabeceira.',
+
+ '⚠ O ESTOFADO NÃO ESTÁ NA LEGENDA DA PRANCHA. A LEGENDA DE ACABAMENTOS da '
+ 'suíte tem duas entradas, "MDF AMADEIRADO A DEFINIR" e "RIPADO EM MDF '
+ 'AMADEIRADO A DEFINIR" — estofado não aparece. Quem disse que a cabeceira '
+ 'é estofada foi o 3D. ⭐ E a planta concorda sozinha: a peça está '
+ 'desenhada com 5,0 cm de espessura, que é 15 mm de MDF + 30 mm de espuma '
+ '+ tecido. ⚠ Mas o TECIDO segue sem definição, e tecido caro muda esta '
+ 'linha inteira.',
+]
 DUVIDAS_DO_AMBIENTE = {
  'Sala de TV': [
   '⛔⛔ O PAINEL LISO DE 300 × 272 TEM EMENDA À VISTA, E A POSIÇÃO DELA É SUA. '
@@ -154,6 +193,8 @@ ROTULO = {
  'Cava usinada': 'cava usinada', 'Painel ripado': 'painel ripado',
  'Miolo G-Door em régua': 'miolo de porta em G-Door',
  'Perfil de metalon': 'perfil de metalon anti-empeno',
+ 'Estofado': 'estofamento da cabeceira',
+ 'Pé metálico': 'pé metálico da mesa de cabeceira',
 }
 
 
@@ -238,8 +279,10 @@ def monta(amb, aba):
     L['dv0'] = L['s_dv'] + 2
     #   ⭐ só a aba que TEM porta de passagem recebe as dúvidas dela
     tem_porta = any('Miolo G-Door' in n for m in moveis for n, *_ in m.terc)
+    tem_cab = any('Estofamento' in n for m in moveis for n, *_ in m.terc)
     DUV = (list(DUVIDAS) + DUVIDAS_DO_AMBIENTE.get(amb, [])
            + (DUVIDAS_PORTA if tem_porta else [])
+           + (DUVIDAS_CABECEIRA if tem_cab else [])
            + [f'⚠ {k} — {ch.A_COTAR[k]}' for k in cc + vid + cf
               if k in ch.A_COTAR])
     L['dv1'] = L['dv0'] + len(DUV) - 1

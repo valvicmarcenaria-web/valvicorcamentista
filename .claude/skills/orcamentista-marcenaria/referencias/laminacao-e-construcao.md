@@ -283,3 +283,58 @@ sarrafo — e isso é outra conta.**
 Este arquivo e o `ferragens.md` citavam **"Desempenador anti-empeno R$ 60"**.
 A Base de Custos viva traz **R$ 100**, e é o que o Attos usa. A tabela antiga
 ficou — mas com o aviso ao lado.
+
+---
+
+# ⭐ A CABECEIRA ESTOFADA E A MESA DE CABECEIRA
+
+*Attos · Costa Laguna, 04/11/2026 · medidas tiradas do vetor da prancha.*
+
+## A cabeceira — 5 camadas, e a planta conta quatro delas
+
+| camada | o que é | quem faz |
+|---|---|---|
+| sarrafo de fixação | 2 réguas de MDF 15, uma na parede e uma no painel · francesa | marcenaria |
+| base | **MDF 15**, a peça inteira · ⛔ **SEM FITA**, a aresta some sob o tecido | marcenaria |
+| espuma | **30 mm** | estofador |
+| tecido | a definir · linho, bouclé, veludo | estofador |
+| | **15 + 30 ≈ 46-48 mm = os 5,0 cm do desenho** | |
+
+⭐ **O estofado é por m² de FACE ESTOFADA, R$ 600** (regra 8 do quantitativo,
+cravada pelo Jonathan). Conta só a cara que recebe espuma e tecido — não os
+dois lados do painel, não o m² de chapa. Uma cabeceira de 2,40 × 1,20 dá
+**2,88 m² = R$ 1.728,00** de estofador.
+
+⛔ **E ELA NÃO LEVA UMA FERRAGEM SEQUER.** Isso é regra, não esquecimento: item
+sem ferragem tem de ter CUSTO e PREÇO idênticos em todos os cenários de
+ferragem, e o motor confere isso com assert.
+
+⭐ **Cabe numa peça só até 240 de largura** (273 é o teto da chapa com sangria),
+então não há emenda e não há divisória para escondê-la.
+
+⚠ **A base fica 100% invisível** — poderia sair em Branco TX a R$ 350 em vez de
+cor a R$ 550. ⛔ Mas `chapas()` compra no mínimo UMA chapa inteira por padrão ×
+espessura em CADA ambiente: trocar o padrão de uma peça só compra uma chapa
+nova de outro padrão e sai mais caro. **Fica em cor, e a alternativa fica
+escrita na linha.**
+
+## A mesa de cabeceira — caixa sobre pés
+
+Modelo da casa, 80 ou 90 × 50 de profundidade × 55 de altura (40 de corpo +
+15 de pé):
+
+```
+tampo         L × 50 × 15      fita no PERÍMETRO — a mesa é solta, vê-se por todos os lados
+lateral  ×2   50 × 38,5 × 15   fita só na frente · 38,5 = 40 menos o tampo
+base          (L-3) × 50 × 15  fita na frente
+costas        (L-3) × 38,5 × 6
+frente   ×2   (L-3,4) × 18,2 × 15   fita no perímetro · puxador CAVA
+caixa    ×2   lateral 45 × 14,2 · traseira (L-8,6) × 14,2 · fundo (L-8,6) × 45 em 6
+corrediça ×2 pares · cava usinada nas 2 frentes · 1 jogo de pé metálico
+```
+
+⚠ **O PÉ METÁLICO É SERRALHERIA, não ferragem de catálogo.** Entra como **um
+serviço no mínimo da casa (R$ 300)**, porque não há seção, perfil nem
+acabamento cotado em prancha nenhuma. ⚠ Conservador de propósito: se o
+serralheiro fizer os dois jogos na mesma ida — o provável —, é um serviço só e
+cai pela metade. **Caro e marcado, nunca barato e escondido.**

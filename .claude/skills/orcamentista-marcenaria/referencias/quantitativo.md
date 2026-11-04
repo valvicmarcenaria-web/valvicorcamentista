@@ -397,3 +397,82 @@ ver o desenho.
 
 > Fluxo: ler pelo conector para **mapear o escopo e as especificações**, e pedir
 > o arquivo só das pranchas que vão virar corte.
+
+---
+
+# ⭐⭐ MEDIR O VETOR DA PRANCHA — quando a peça está desenhada e NÃO cotada
+
+> **Attos · Costa Laguna, 04/11/2026.** [Jonathan] *"tenhos esses prints, pelas
+> plantas vc consegue ter uma projeção de medidas"*
+
+A resposta foi **sim**, e não por semelhança: por medição.
+
+## O caso
+
+A cabeceira estofada e as duas mesas de cabeceira da suíte master aparecem
+**desenhadas na planta e renderizadas no 3D, e sem uma única cota.** O jeito
+preguiçoso é estimar pela proporção da imagem. O jeito certo é medir o arquivo.
+
+## Por que dá certo
+
+Uma prancha de executivo exportada de CAD é **vetor**: as linhas têm
+coordenadas exatas. Os TEXTOS das cotas costumam vir em curva (no Attos só a
+palavra "A3" saiu como texto de verdade), mas **a geometria não se perde na
+exportação**. Então:
+
+1. Abrir o PDF com PyMuPDF (`import pymupdf`) e puxar `page.get_drawings()`.
+2. ⛔ **Aplicar `page.rotation_matrix`**: numa prancha A3 deitada
+   (`rotation: 270`) as coordenadas vêm na página NÃO girada, com x até 842 e
+   y até 1191. Sem a matriz você procura a parede num lugar onde ela não está.
+3. ⭐ **Tirar a escala de UMA cota que existe** e conferir em TODAS as outras.
+   No Attos: a cota de 467 mede 529,68 pt → **0,88166 cm/pt**, e com ela o 200
+   deu 199,96 · o 267 deu 267,05 · o 258 deu 257,95 · o 198 deu 198,06 · o 100
+   deu 99,98 · o 80 deu 79,98 · o 30 deu 29,94 · o 19 deu 19,04.
+   **Oito confirmações antes de medir qualquer coisa não cotada.**
+4. Só então medir o que não tem cota.
+
+## ⭐⭐ E A GEOMETRIA SE PROVA SOZINHA
+
+É isto que separa MEDIDA de chute, e é a parte que não se pode pular:
+
+| o que a planta deu | por que não é acaso |
+|---|---|
+| cabeceira **240,0** | centro em 642,0 · centro da cama em 642,15 → **centrada** |
+| mesas a **10,0 cm** da cama, dos dois lados | dois números redondos iguais |
+| cabeceira passa **20,2 e 19,8 cm** por trás das mesas | o 3D mostra o painel correndo atrás |
+| mesa esquerda **80,0** | 90,7 pt — **o mesmo** que a porta de 80 da ELEV.02 |
+
+Quatro coincidências em números redondos não saem de desenho feito no olho.
+⛔ **Se as coincidências NÃO aparecerem, o desenho é ilustrativo e a medida não
+vale** — aí é perguntar, não medir.
+
+## ⛔⛔ O QUE A PLANTA NUNCA DÁ: A ALTURA
+
+Planta é vista de cima. **Largura e profundidade saem exatas; altura não sai.**
+No Attos a suíte tem duas elevações — ELEV.01 (o painel ripado, 200 × 272) e
+ELEV.02 (a parede da TV, 467 × 275) — e **nenhuma delas é a parede da
+cabeceira**. Então a altura é PREMISSA DECLARADA, numa constante só, com o
+custo de mexer nela escrito ao lado ("cada 10 cm a mais custam R$ 144 de
+estofado mais a chapa"). ⛔ Nunca enterrada no meio de uma fórmula.
+
+## ⛔ E A ESPESSURA DESENHADA CONFIRMA A RECEITA
+
+A cabeceira está desenhada com **5,0 cm**. Isso é 15 mm de MDF + 30 mm de
+espuma + tecido — a receita do estofado, exata. ⭐ O desenho não escreve
+"estofado" em lugar nenhum (a LEGENDA DE ACABAMENTOS da prancha tinha só "MDF
+AMADEIRADO A DEFINIR" e "RIPADO EM MDF AMADEIRADO A DEFINIR"); quem disse o
+que era foi o 3D. **O 3D disse O QUE É, a planta disse QUANTO, e as duas
+contam a mesma história.** Quando as duas batem assim, a medida está firme.
+
+## ⛔⛔ O QUE NÃO SE FAZ: ORÇAR AMBIENTE QUE NÃO TEM PRANCHA
+
+No mesmo pedido o Jonathan pediu **duas** cabeceiras. A segunda é da SUÍTE 01,
+que aparece no PDF dos 3Ds e **não tem uma linha de desenho executivo** — as
+onze pranchas cobrem cozinha (3), escritório (2), hall (3), sala/TV (1) e
+suíte MASTER (2). Fazer "por analogia" teria posto número inventado dentro de
+um orçamento inteiro medido, e — pior — teria escondido a pergunta grande
+atrás de uma linha pequena: **se a suíte 01 tem marcenaria, faltam AMBIENTES,
+não uma cabeceira.**
+
+⭐ Pela REGRA DOS DOIS ESTADOS: ou dentro com número, ou fora com nome.
+Nunca dentro com zero, e nunca dentro com chute.

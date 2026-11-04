@@ -7,6 +7,72 @@ pode ler e escrever aqui. Formato livre — marcar data e agente responsável.
 
 ## Tarefas abertas
 
+### [2026-11-04] Attos · Costa Laguna — A CABECEIRA ESTOFADA, MEDIDA NO VETOR — Lavinia
+**Solicitante:** Jonathan · **Agente:** Lavinia · **Status:** 🟡 Suíte master orçada · suíte 01 BLOQUEADA por falta de prancha
+
+> *"olhe as duas cabeceiras estofadas no pdf dos 3ds e faça o orcamento das
+> cabeceiras e mesas de cabeceiras tbm"* · depois, com dois prints:
+> *"tenhos esses prints, pelas plantas vc consegue ter uma projeção de medidas"*
+
+**A resposta foi SIM — e por MEDIÇÃO, não por semelhança.** A prancha da suíte é
+export vetorial de CAD: as cotas estão em curva (só "A3" é texto de verdade),
+mas a geometria é exata. Tirei a escala da cota de 467 (529,68 pt →
+**0,88166 cm/pt**) e ela fecha em oito outras cotas da prancha antes de eu medir
+qualquer coisa não cotada.
+
+| peça | medida | como sei que não é chute |
+|---|---|---|
+| **cabeceira estofada** | **240 × 5** | centro em 642,0 · centro da cama em 642,15 → **centrada** |
+| **mesa de cabeceira esq.** | **80 × 50** | fica **10,0 cm** da cama |
+| **mesa de cabeceira dir.** | **90 × 50** | fica **10,0 cm** da cama |
+| (a cabeceira passa **20,2 e 19,8 cm** por trás das mesas — o que o 3D mostra) | | |
+
+⭐ **A espessura desenhada confirma a receita sozinha:** 5,0 cm é 15 mm de MDF +
+30 mm de espuma + tecido. O 3D disse O QUE É; a planta disse QUANTO.
+
+**O que entrou:** cabeceira R$ 2.169,08 · mesa de 80 R$ 1.061,10 · mesa de 90
+R$ 1.108,48. Custo direto do projeto **R$ 70.767,00 → R$ 75.681,91**; preço
+Hettich MC 35% **R$ 189.551,29** com frete. Duas chaves novas na Base:
+**Estofado R$ 600/m²** (de face estofada) e **Pé metálico R$ 300/jogo**
+(serralheria, mínimo por serviço).
+
+**⚠ TRÊS PERGUNTAS PARA O JONATHAN** (dúvidas 9, 10 e 11 da aba 07 Suíte):
+
+1. ⚠⚠ **A ALTURA DA CABECEIRA É PREMISSA MINHA, 120 cm** — o único número dela
+   que não saiu do desenho. ⛔ **Não há elevação da parede da cabeceira em
+   prancha nenhuma:** a ELEV.01 é o ripado (200 × 272) e a ELEV.02 é a parede da
+   TV (467 × 275). Cada 10 cm a mais custam R$ 144 de estofado mais a chapa.
+2. ⚠⚠ **As duas mesas são DIFERENTES na planta, 80 e 90.** Não é erro de
+   leitura — e a planta explica (sobram 53,7 cm de parede à esquerda e só 18,4 à
+   direita). Se foi desenho no olho, é trocar um número; a de 90 custa R$ 47 a
+   mais.
+3. ⛔⛔ **DUAS SUÍTES INTEIRAS APARECEM NO 3D E NÃO TÊM PRANCHA.** O executivo
+   tem onze: cozinha (3), escritório (2), hall (3), sala/TV (1), suíte MASTER
+   (2). O 3D mostra SUÍTE 01, SUÍTE 02 e PRINCIPAL. **A segunda cabeceira que o
+   senhor pediu é da suíte 01 e NÃO foi orçada** — não há desenho para medir, e
+   fazer por analogia seria pôr número inventado num orçamento todo medido.
+   ⚠ A pergunta maior: **faltam AMBIENTES nesta conta, não uma cabeceira?**
+
+**⛔ E A DIVERGÊNCIA QUE NÃO DEU ERRO, DE NOVO — DUAS, NO PAINEL:**
+Quando a aba 07 cresceu de 94 para 148 linhas, a conferência do Painel
+continuou apontando para o endereço VELHO: `'07 Suíte'!$I$32` passou a ler o
+*arredondamento de chapa* (R$ 481,21) em vez do zero da conferência. E a linha
+"A PLANILHA CONTRA O MOTOR" seguia com **R$ 70.767,00 digitado à mão** na
+fórmula e na frase, acusando R$ 4.914,89 de erro onde não havia erro nenhum.
+⭐ **Corrigido na raiz:** a fórmula agora **PROCURA a linha pelo rótulo**
+(`INDEX/MATCH("⭐ CONFERÊNCIA*")`) em vez de apontar para endereço fixo — e o
+`painel.py` passou a IMPRIMIR, a cada rodada, o número que precisa ir à mão
+para a G37. ⛔ Endereço fixo e número digitado envelhecem calados; os dois já
+me pegaram hoje.
+
+**Hoje:** conferência interna das 7 abas **R$ 0,00** · planilha contra o motor
+**−R$ 0,02** · linhas a preço zero **0** · 22 itens · 57 chapas.
+
+**Gravado em:** `referencias/quantitativo.md` (MEDIR O VETOR DA PRANCHA) ·
+`referencias/laminacao-e-construcao.md` (a cabeceira e a mesa, camada a
+camada) · `referencias/base-de-custos.md` (as duas chaves novas) · Base
+(importada) linhas 94 e 95 · aba 07 Suíte, itens 03 a 05.
+
 ### [2026-11-04] Attos · Costa Laguna — o MÉTODO DA PORTA DE PASSAGEM — Lavinia
 **Solicitante:** Jonathan · **Agente:** Lavinia · **Status:** 🟡 Aplicado, com 3 perguntas abertas
 

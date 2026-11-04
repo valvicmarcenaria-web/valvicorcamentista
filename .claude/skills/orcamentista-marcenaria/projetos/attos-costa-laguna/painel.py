@@ -139,6 +139,17 @@ def monta():
 
 if __name__ == '__main__':
     T, D, K, L, tot = monta()
+    #   ⛔⛔ O NÚMERO DO MOTOR MORA NA PAINEL!G37 E É DIGITADO À MÃO.
+    #     Em 04/11/2026 ele envelheceu: dizia R$ 70.767,00 e o motor já
+    #     estava em R$ 75.681,91, então a conferência acusava R$ 4.914,89
+    #     de erro onde não havia erro nenhum. ⭐ Enquanto esta linha não
+    #     for gerada, o print abaixo existe para que quem rodar o arquivo
+    #     VEJA o número que precisa ir para lá.
+    print(f'\n⛔ Painel!G37 (digitado à mão) tem de dizer: '
+          f'=K31-I31-{round(pl.lv.custo()["direto"] * 100):d}/100')
+    _n = f'{pl.lv.custo()["direto"]:,.2f}'.replace(',', '§') \
+        .replace('.', ',').replace('§', '.')
+    print(f'   e a frase do B37, "R$ {_n}"')
     print(f'tabela {L["tab"][0]}–{L["tab"][1]} · TOTAL na {tot}')
     for nome, M, r in (('tab', T, R_TAB), ('din', D, R_DIN0), ('kpi', K, R_KPI)):
         (P / f'_pn-{nome}.json').write_text(json.dumps(M, ensure_ascii=False))
