@@ -2,17 +2,23 @@
 """Phillip e Giselle · CUSTO DE MATERIAL por ambiente, nas três linhas.
 ⛔ Sem preço final [Jonathan, 04/11/2026]: só o custo direto levantado."""
 import importlib, sys, os, subprocess, json
-AMBS = ['a01_quarto_casal', 'a02_closet_casal', 'a03_banho_casal', 'a04_rouparia',
-        'a05_quarto_mateus', 'a06_quarto_ana', 'a07_banho_ana',
+# ⭐ [Jonathan, 04/11/2026] "não precisa ter os banheiros": a03 e a07 saem
+#   (os arquivos ficam no repositório) e o banho do Mateus sai do a08.
+AMBS = ['a01_quarto_casal', 'a02_closet_casal', 'a04_rouparia',
+        'a05_quarto_mateus', 'a06_quarto_ana',
         'a08_closet_banho_mateus', 'a09_closet_ana', 'a10_circulacao']
+# ⭐ SERVIÇO AVULSO — valor de VENDA fixo, fora do custo direto e da MC.
+AVULSO = [('Usinagem do painel existente da sala do térreo, para tentar recuperar '
+           'o rodapé com perfil de aço inox escovado', 1900.0,
+           'sem garantia de efetividade')]
 FRETE = 3 * 200.0
-if os.environ.get('LINHA'):
+if os.environ.get('LINHA') and __name__ == '__main__':
     import motor as M
     for a in AMBS: importlib.import_module(a)
     R = M.calcula(FRETE)
     R['amb'] = M.custo_por_ambiente(R)
     print(json.dumps({k: v for k, v in R.items() if k not in ('area', 'fita')}))
-else:
+elif __name__ == '__main__':
     import motor as M
     out = {}
     for L in ('telescopica', 'hettich', 'blum'):
@@ -28,4 +34,5 @@ else:
                    ('consum', 'Consumíveis 6%'), ('frete', 'Frete'), ('emb', 'Embalagem 2%'),
                    ('CD', 'CUSTO DIRETO')):
         print(f"{lab:26s}" + ''.join(f"{M.brl(out[L][k]):>15s}" for L in out))
-    print('chapas:', t['chapas'], '· peças:', t['npecas'])
+    print('chapas:', sum(t['chapas'].values()), '· peças:', t['npecas'])
+    for d, v, obs in AVULSO: print(f'AVULSO (venda) {M.brl(v)} · {d} · {obs}')
