@@ -11,15 +11,19 @@ CHAPA_M2, APROV = 5.0875, 0.80
 COR = {18: 700.0, 15: 550.0, 6: 350.0}           # Melamínico Fosco (cor e amadeirado)
 BRANCO = {18: 400.0, 15: 350.0, 6: 250.0}         # Branco TX
 FITA = {'cor': (3.00, 2.50), 'branco': (2.00, 2.50),
-        'ripa': (3.00, 5.00),                    # ripa: filetagem MANUAL
+        'ripa': (3.00, 2.50),                    # ⭐ ripa vai à coladeira [Jonathan 04/11]
         'cor30': (7.00, 5.00)}
 FITA_PERD = 0.10
 CORTE_CHAPA, CORTE_PECA = 2.00, 2.50
 CONSUM, EMBAL = 0.06, 0.02
 
 LINHA = os.environ.get('LINHA', 'gold')
-DOBR, CORR = {'silver': (4.0, 15.0), 'padrao': (10.0, 80.0),
-              'gold': (50.0, 150.0)}[LINHA]
+#   telescópica: Bigfer Telescópica R$ 15/par + Bigfer Slow Click R$ 4
+#   hettich:     Quadro V6 oculta R$ 150/par + Sensys R$ 50
+#   blum:        Corrediça Blum R$ 300/gaveta + Dobradiça Blum R$ 50
+DOBR, CORR = {'telescopica': (4.0, 15.0), 'silver': (4.0, 15.0),
+              'padrao': (10.0, 80.0), 'hettich': (50.0, 150.0),
+              'gold': (50.0, 150.0), 'blum': (50.0, 300.0)}[LINHA]
 
 pecas, outras = [], []
 AMB = [None]          # ambiente corrente
@@ -96,14 +100,43 @@ def correr(movel, folhas, A, cor, trilho_m=2):
 def led(movel, m, obs=''):
     O(movel, 'LED COB conjunto (fita, perfil, usinagem, instalação)', m, 'm', 150, obs)
 
-def ripado(movel, L, A, cor, passo=4.0, larg=2.0, base=True):
-    """Ripas de 2 cm tiradas da chapa de 18 mm; fita nas DUAS faces laterais,
-    filetagem manual. Base: painel de 15 mm na mesma cor, inteiro."""
-    n = math.ceil(L / passo)
+RIPADO_M2 = 180.0     # laminação do ripado, R$/m² (Base · Terceirizados)
+def ripado(movel, L, A, cor, passo=3.0, larg=2.0, base=True):
+    """Cálculo padrão da casa: ripa de 2 com vão de 1 (passo 3), tirada da
+    chapa de 18 com perda de serra ×1,10; fita nas DUAS arestas à vista,
+    filetagem na coladeira; laminação do ripado por m². Base: painel de 15 mm
+    na mesma cor — na PORTA não há base, a base é o sanduíche."""
+    n = math.floor((L + 1) / passo)
     if base:
         P(movel, 'Painel base do ripado', A, L, 1, f'{cor} 15', 0)
     P(movel, 'Ripa 2 × 2 (×1,10 perda)', A, larg * 1.10, n, f'{cor} 18',
       2 * A / 100, 'ripa')
+    O(movel, 'Laminação do ripado', L * A / 1e4, 'm²', RIPADO_M2)
+
+# ── PORTA DE PASSAGEM: a folha é FEITA [Jonathan, 04/11/2026] ───────────
+#   laminacao-e-construcao.md, seção PORTA DE PASSAGEM:
+#   ① duas peles de 6 mm na cor · ② miolo G-Door em réguas de 15 no
+#   perímetro · ③ ripada: 2 metalons · ④ ripada: ripado padrão SEM base ·
+#   ⑤ cava e sistema (pivô ou deslizante).
+GDOOR_M2 = 600.0 / (2.75 * 2.055 * 0.80)    # R$ 132,71 o m² de régua
+SISTEMA = {'pivo': ('Sistema pivô', 120.0),
+           'correr': ('Sistema deslizante RO82 Top c/ amortecimento', 600.0)}
+def porta_passagem(movel, L, A, cor_a, cor_b=None, ripada=None, sistema='pivo',
+                   cava=True, extra=()):
+    cor_b = cor_b or cor_a
+    P(movel, 'Porta · pele 6 mm face A', A, L, 1, f'{cor_a} 6', 2 * (L + A) / 100)
+    P(movel, 'Porta · pele 6 mm face B', A, L, 1, f'{cor_b} 6', 0)
+    a_gd = (2 * 15 * A + 2 * 15 * (L - 30)) / 1e4
+    O(movel, 'Miolo G-Door em réguas de 15', a_gd, 'm²', GDOOR_M2,
+      '⚠ fita de 22 numa aresta de 41 mm: fita de 45 sem preço na Base')
+    if ripada:
+        ripado(movel, L, A, ripada, base=False)
+        O(movel, 'Perfil de metalon contra empeno (barra 3 m)',
+          2 * math.ceil(A / 300), 'barra', 100)
+    nome, pu = SISTEMA[sistema]
+    O(movel, nome, 1, 'cj', pu)
+    if cava: O(movel, 'Cava 45° usinada', 1, 'frente', 50)
+    for item, q, un, v in extra: O(movel, item, q, un, v)
 
 # ── cálculo ─────────────────────────────────────────────────────────────
 def calcula(frete=0.0):
@@ -127,15 +160,19 @@ def calcula(frete=0.0):
 
 def custo_por_ambiente(R):
     """Rateio: chapa pelo custo médio do m² da chave, fita pela peça,
-    ferragem pelo item; o resto em proporção. Soma = custo direto."""
+    ferragem pelo item. Corte, consumíveis e frete seguem a CHAPA+FITA do
+    ambiente; a embalagem (2%) segue o custo de cada um. Soma = custo direto."""
     m2 = {k: R['chapas'][k] * preco_chapa(k) / R['area'][k] for k in R['area']}
-    c = {}
+    mdf, fer = {}, {}
     for p in pecas:
         a = p['c'] * p['l'] / 1e4 * p['qtd']; f = p['fita'] * p['qtd']
         v = a * m2[p['chapa']] + f * (1 + FITA_PERD) * FITA[p['tf']][0] + f * FITA[p['tf']][1]
-        c[p['amb']] = c.get(p['amb'], 0) + v
+        mdf[p['amb']] = mdf.get(p['amb'], 0) + v
     for o in outras:
-        c[o['amb']] = c.get(o['amb'], 0) + o['qtd'] * o['pu']
+        fer[o['amb']] = fer.get(o['amb'], 0) + o['qtd'] * o['pu']
+    ambs = list(dict.fromkeys([p['amb'] for p in pecas] + [o['amb'] for o in outras]))
+    tm = sum(mdf.values()); rateio = R['corte'] + R['consum'] + R['frete']
+    c = {a: mdf.get(a, 0) * (1 + rateio / tm) + fer.get(a, 0) for a in ambs}
     k = R['CD'] / sum(c.values())
     return {a: v * k for a, v in c.items()}
 

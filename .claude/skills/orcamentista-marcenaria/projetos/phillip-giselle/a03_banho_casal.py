@@ -23,9 +23,6 @@ O(m, 'Espelho prata colado na porta', 4 * 0.455 * 0.60, 'm²', 600)
 led(m, 1.82 + 3 * 0.60, 'sob o armário 1,82 m + 3 frestas verticais ⚠ tabela só traz 1,82')
 
 # ── 3 · Porta de giro de entrada em MDF Areia, cava 45° · 72 × 212 ──────
-#   ⚠ Base não tem porta revestida: porta pronta de 80 cm (folha, batente,
-#   dobradiça e fechadura) + revestimento em Areia 6 mm nas duas faces.
-m = 'Porta de entrada em MDF Areia'
-O(m, 'Porta de giro pronta 80 cm (Base)', 1, 'un', 530)
-P(m, 'Revestimento da folha', 212, 72, 2, 'Areia 6', 2 * (212 + 72) / 100)
-O(m, 'Cava 45° usinada', 1, 'frente', 50)
+#   ⭐ folha feita na casa (método da porta de passagem), sistema pivô.
+m = 'Porta do banho em MDF Areia'
+porta_passagem(m, 72, 212, 'Areia', sistema='pivo')

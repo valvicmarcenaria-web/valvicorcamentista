@@ -38,7 +38,6 @@ m = 'Painel com porta oculta'
 P(m, 'Painel inferior', 215, 89.5, 4, f'{G} 18', 2 * 2.15)
 P(m, 'Faixa superior (55)', 207.5, 55, 2, f'{G} 18', 2.075)
 P(m, 'Travessa de estrutura', 207.5, 10, 6, 'Branco TX 15', 0)
-O(m, 'Porta de giro pronta 80 cm (Base)', 1, 'un', 530)
-P(m, 'Revestimento da folha', 212, 58, 2, f'{G} 6', 2 * (212 + 58) / 100)
+porta_passagem(m, 58, 212, G, sistema='pivo')
 O(m, 'Perfil de proteção de piso', 4.15, 'm', 15)
 # ⛔ estante em metal preto (96 × 270, 6 prateleiras): pergunta, fora do total.

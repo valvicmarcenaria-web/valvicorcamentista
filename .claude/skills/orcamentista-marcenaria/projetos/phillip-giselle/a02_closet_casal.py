@@ -32,10 +32,8 @@ O(m, 'Cava 45° usinada', 2, 'frente', 50)
 
 # ── Porta de giro camuflada em Areia, cava 45° · 70 × 210 + bandeira ────
 m = 'Porta camuflada de passagem'
-O(m, 'Porta de giro pronta 80 cm (Base)', 1, 'un', 530)
-P(m, 'Revestimento da folha', 210, 70, 2, 'Areia 6', 2 * (210 + 70) / 100)
+porta_passagem(m, 70, 210, 'Areia', sistema='pivo')
 P(m, 'Bandeira acima da porta', 60, 70, 1, 'Areia 18', 2 * (60 + 70) / 100)
-O(m, 'Cava 45° usinada', 1, 'frente', 50)
 
 # ── Sapateira parede C · 136 × 270 × 43 · portas de correr com espelho ──
 m = 'Sapateira com espelho'
@@ -51,7 +49,6 @@ O(m, 'Espelho prata colado na porta', (0.66 + 0.70) * 2.68, 'm²', 600)
 m = 'Painel da porta de correr'
 P(m, 'Painel', 270, 135, 1, 'Areia 15', 2.70 * 2)
 P(m, 'Travessa de estrutura', 135, 10, 3, 'Branco TX 15', 0)
-P(m, 'Face Areia da folha', 215, 66, 1, 'Areia 6', 0)
 
 # ── Fechamento superior em Areia (faixa de 10 no perímetro) ──────────────
 m = 'Fechamento superior'

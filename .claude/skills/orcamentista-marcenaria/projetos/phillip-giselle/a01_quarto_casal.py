@@ -4,17 +4,13 @@ from motor import *
 
 ambiente('Quarto casal')
 
-# ── 1 · Painel ripado amadeirado, parede do closet (vista C) ────────────
-#   271 + 56 (vão do closet) + 112 = 439 × 270 (58 + 212). Ripa 2 × 2,
-#   passo de 4 cm lido no desenho (⚠ conferir espaçamento com a arquiteta).
-m = 'Painel ripado com porta oculta'
-ripado(m, 383, 270, 'Amadeirado')              # parede cheia, fora o vão
-ripado(m, 56, 58, 'Amadeirado')                # bandeira acima da porta
-P(m, 'Folha da porta (base)', 215, 66, 1, 'Amadeirado 18', 2 * (66 + 215) / 100)
-ripado(m, 66, 215, 'Amadeirado', base=False)   # ripas na face do quarto
-O(m, 'Sistema de porta de correr c/ amortecimento (RO82 Top)', 1, 'cj', 600,
-  '⚠ planta diz GIRO, vista diz CORRER')
-O(m, 'Perfil de proteção de piso', 4.39, 'm', 15)
+# ── 1 · Porta do closet no painel ripado (vista C) ──────────────────────
+#   ⭐ [Jonathan, 04/11/2026] "o painel ripado já existe, faremos apenas as
+#   duas portas": esta (closet) e a do banho, lançada no Banho casal.
+#   Folha feita na casa: face do quarto em amadeirado RIPADO, face do closet
+#   em Areia. ⚠ planta diz giro, vista diz correr: lançada de correr.
+m = 'Porta do closet (ripada, de correr)'
+porta_passagem(m, 66, 215, 'Amadeirado', 'Areia', ripada='Amadeirado', sistema='correr')
 
 # ── 2 · Mesa rack em MDF areia (vista D) ─────────────────────────────────
 #   78 + 78 + 78 + 80 = 314 × 20 de altura × 30 de profundidade, suspensa.
