@@ -1,0 +1,1 @@
+{"copia": [{"copyPaste": {"source": {"sheetId": 102, "startRowIndex": 41, "endRowIndex": 42, "startColumnIndex": 7, "endColumnIndex": 9}, "destination": {"sheetId": 102, "startRowIndex": 42, "endRowIndex": 43, "startColumnIndex": 7, "endColumnIndex": 9}, "pasteType": "PASTE_FORMULA"}}], "totais": [[44, "=SOMA(I42:I43)"]]}

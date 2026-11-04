@@ -1,0 +1,397 @@
+# ICA · Jéssica e Michell — ferramenta de leitura do executivo
+
+⛔⛔ **O PROBLEMA QUE ISTO RESOLVE.** O executivo tem **235 páginas A3** e
+**111 MB**. Nada disso funciona:
+
+| caminho | resultado |
+|---|---|
+| `curl` em `drive.google.com` | **403** — bloqueado por política no proxy |
+| `read_file_content` no PDF inteiro (6,5 MB) | corta em **107 mil caracteres**, na página 80 |
+| `read_file_content` no PDF inteiro (111 MB) | **string vazia** — o Drive não indexa |
+| `download_file_content` no PDF inteiro | **derruba o servidor MCP** |
+
+## ⭐⭐⭐ O CAMINHO BARATO — descoberto em 26/10/2026
+
+`read_file_content` **numa página solta** devolve o **texto inteiro da
+prancha** em ~1.200 caracteres: título do ambiente, conteúdo da folha,
+chamadas de detalhe ("Ver Det. 06"), especificações de material, nomes de
+móvel solto e **as cotas**. Sem download, sem base64, sem disco.
+
+⚠ **O que ele perde: a POSIÇÃO.** As cotas saem soltas no meio do texto
+(`37Prateleira inferior. Ver Det. 03. 294`), sem saber a que peça cada
+número pertence. Serve para **mapear** o ambiente; não serve para **contar
+gaveta** nem para amarrar cota a peça.
+
+⭐ **A regra prática:** `read_file_content` em TODAS as páginas para montar
+o mapa; `download_file_content` + `extrair.py` **só** nas folhas de
+detalhamento onde é preciso contar frente, gaveta e porta.
+
+⭐⭐ **O CAMINHO CARO, que continua valendo para a geometria** [Jonathan dividiu o PDF por página em 25/10]:
+`download_file_content` numa **página solta** (300–800 KB) estoura o limite
+de tokens, e **o harness salva o resultado em arquivo** em vez de jogar no
+contexto. Daí é só decodificar o base64 — e sai o **PDF real da página,
+com a geometria vetorial inteira**. Custo de contexto: a mensagem de erro.
+
+## Como usar
+
+1. **IDs** — `paginas.json` mapeia `nº do arquivo → fileId` das 235 páginas.
+   ⚠⚠ **O ARQUIVO N É A PÁGINA N+1 DO DOCUMENTO.** `páginas-157` traz
+   "158 PÁGINA" no carimbo. Para a página P do documento, baixe o arquivo
+   P−1.
+   ⚠ Os títulos vêm com acento **decomposto** (NFD): `re.search` com `á`
+   literal não casa. Normalizar com `unicodedata.normalize('NFC', …)`.
+2. **Baixar** — `download_file_content` com o fileId, **várias por bloco**
+   (testado com 10 em paralelo).
+3. **Colher** — `python3 -I colher.py` decodifica tudo que está em
+   `tool-results/` para `pgs/pNNN.pdf` e **apaga o .txt** (cada um pesa
+   ~1 MB; 235 páginas encheriam o disco).
+4. **Ler** — `python3 -I extrair.py [nº …]` resume ambiente, conteúdo,
+   linhas de especificação e cotas de cada página.
+
+⚠ Para listar a pasta, usar **`list_recent_files`** com `pageSize=100`:
+o `search_files` **ignora o pageSize e devolve 5 por chamada** (46 chamadas
+para 235 arquivos).
+
+## O Painel, e por que ele quebrava
+
+O Painel (sheetId 0) **não é gerado por módulo** — ele é escrito à mão e
+busca os números nas 19 abas. Cada regeração de uma aba move as linhas dela,
+e foi assim que o Painel passou semanas somando errado.
+
+⭐⭐ **A CORREÇÃO DE FUNDO [29/10]: o Painel busca por RÓTULO, não por
+posição.** Toda fórmula é `SUMIF` sobre a faixa fixa `B$7:B$26` da aba,
+casando o texto da coluna MATERIAL:
+
+| coluna | o que traz | critério |
+|---|---|---|
+| D | itens | `COUNT` em `B{it0}:B{it1}` — a única que ainda usa posição |
+| E | chapas | `SUMIFS` por UN `"chapas"` **e** material `"MDF *"` |
+| F | MDF | `"MDF *"` sobre F |
+| G | fita e filetagem | `"Fita*"` + `"Filetagem*"` sobre F |
+| H | ferragem | `"Ferragem*"` sobre F |
+| I | vidro e frete | `"Vidro*"` sobre F + `"CUSTO DIRETO*"` sobre G |
+| J | corte, consum. e embal. | `"Corte*"` + `"Consumíveis"` + `"Embalagem"` sobre F |
+| K | custo direto | `"CUSTO DIRETO*"` sobre H |
+
+A faixa `7:26` cobre o painel de material da aba mais longa (Cozinha, cujo
+CUSTO DIRETO cai na linha 25). Nas abas curtas ela invade a tabela de itens,
+onde a coluna B tem **números** — e critério de texto não casa número, então
+não há contaminação.
+
+⛔⛔ **CHAPAS DOBRAVA.** Somar toda linha com UN `"chapas"` conta também a
+linha **"Corte · por chapa"**, cujo D é a soma de todas as chapas. O Living
+marcava 56 onde são 28. Por isso a coluna E exige as DUAS condições.
+
+⛔⛔ **O QUADRO ④ DA ABA DE PREÇO LIGA POR POSIÇÃO** a `Painel!B24:K43` —
+vinte linhas, Living a Banho 03. Ele estava uma linha abaixo: pulava o
+Living e contava a linha de TOTAL como ambiente, dobrando o custo direto.
+⚠ Ao mexer nas linhas do Painel, **conferir `Preço e Comissões!B41:C60`**.
+
+### O mapa de linhas do Painel
+
+| linha | o que é |
+|---|---|
+| 6–7 | o conjunto: ambientes, itens, chapas, custo direto, preço |
+| 9 | a nota do levantamento |
+| 13–19 | ONDE ESTÁ O DINHEIRO · 1 cabeçalho + 5 linhas + total em 19 |
+| 23 | cabeçalho da tabela por ambiente |
+| 24–43 | os vinte ambientes, **nesta ordem**, com o Lavabo zerado em 28 |
+| 44 | TOTAL DO QUE ESTÁ LEVANTADO |
+| 47–61 | O PREÇO DO PROJETO · resumo da aba ao lado |
+| 63–72 | ⭐ O LUCRO DO PROJETO · custo fixo da empresa × dias |
+| 76–80 | o que não é marcenaria |
+| 82–88 | o que ainda não tem preço |
+| 90–103 | ⭐ AS REGRAS DA CASA · as doze regras, pedido do Jonathan |
+
+### O LUCRO DO PROJETO, e o IMPORTRANGE da Gestão 3
+
+[Jonathan, 29/10] *"insira no painel uma linha que informe o custo fixo mes
+da empresa, quero que busque esse valor da planilha da gestao 3 de forma
+automatica… e outro campo ao lado onde eu preencho a estimativa de gasto de
+tempo para o projeto em dias e ela me mostrar o resultado em lucro"*
+
+A cadeia, em `Painel!G66:G71`:
+
+```
+G66  margem de contribuição do projeto   = G58  (o quadro de preço acima)
+G67  custo fixo da empresa, por mês      = IMPORTRANGE da N.GESTAO 3
+G68  custo fixo por dia                  = G67/30   (dias de CALENDÁRIO)
+G69  ⭐ DIAS DE PROJETO                   ← amarelo, o Jonathan digita
+G70  custo fixo alocado                  = G68*G69
+G71  ⭐ LUCRO DO PROJETO                  = G66-G70
+```
+
+A fonte é **N.GESTAO 3 · Direção · não compartilhar**,
+`1-7XUrVso9oVKccQjM2m5Tgd9_-QIk-r1LZ8XZbDnGL0`, aba `O mês`, bloco CUSTO
+FIXO VIGENTE em `B58:D62`. A busca é por RÓTULO — `VLOOKUP("Custo
+operacional*")` — e não por célula, para sobreviver a mudança de layout lá.
+⚠ É o custo OPERACIONAL (folha + estrutura, R$ 116.817,70), que é o mesmo
+que o ponto de equilíbrio da Gestão 3 usa. O `Custo total · com
+investimentos` (R$ 125.417,70) está na linha de baixo de lá, se um dia a
+conta tiver de incluir investimento.
+
+⛔⛔ **EM 29/10 A GESTÃO 3 FOI REORGANIZADA** e o bloco CUSTO FIXO VIGENTE
+desceu de `B58` para `~B107`. O `IMPORTRANGE` fixo em `B58:D62` passou a
+trazer a tabela ANO A ANO, e o VLOOKUP devolvia `#N/A`. ⭐ Corrigido para
+importar **colunas inteiras**, `'O mês'!B:D`, de modo que o rótulo é achado
+onde quer que o bloco esteja. Não voltar a cravar linha.
+
+⛔⛔ **O IMPORTRANGE MOSTRA `#REF!` ATÉ ALGUÉM AUTORIZAR.** É uma vez só, na
+célula, e é de propósito que **não** há `IFERROR`: com ele o custo fixo
+ficaria em ZERO e o LUCRO apareceria igual à margem inteira — lucro inflado
+e silencioso. `H67` detecta o erro com `ISERROR` e escreve o que fazer.
+
+⚠⚠ **A CONTA ALOCA O CUSTO FIXO INTEIRO A UM PROJETO**, como se ele fosse o
+único na fábrica nos dias digitados. É a leitura conservadora e responde
+"enquanto este projeto está aqui, ele paga a casa?". Com três projetos em
+paralelo o custo fixo se divide e o lucro real é MAIOR — o número é piso.
+
+⚠ **ESTE BLOCO EXPÕE O CUSTO FIXO DA EMPRESA DENTRO DO ORÇAMENTO**, e a
+planilha de origem se chama "não compartilhar". Se este arquivo for algum
+dia aberto para o cliente, esconder ou apagar as linhas 63–72 antes.
+
+⚠ `Painel!B6:K7` e `B9` são **texto escrito**, não fórmula de aba: o número
+de itens e de chapas aparece em prosa e envelhece. Reescrever junto.
+
+## A cascata de encargos, e a célula que sumiu
+
+A aba **Preço e Comissões** calcula o preço em `③`, mas quem manda é a
+cascata de `②`, em `D15:D26`. Cada linha é uma fórmula, e as quatro
+amarelas de `①` (`D7` MC, `D8` parcelas, `D9` RT, `D10` vendedor) são as
+únicas que se digitam.
+
+| célula | o que é | fórmula |
+|---|---|---|
+| D15 | nota fiscal | `VLOOKUP("Nota fiscal";precos;2;FALSE)` |
+| D16 | cartão | `VLOOKUP("Cartão por parcela";…)*$D$8` |
+| D17–D19 | erro, serra, manutenção | VLOOKUP na Base |
+| D20 | RT | `=(1-$D$15-$D$16)*$D$9` |
+| **D21** | **comissão de vendedor** | **`=(1-$D$15-$D$16)*$D$10`** |
+| D22–D26 | as cinco comissões internas | `=((1-$D$15-$D$16)-$D$20-$D$21)*n/1000` |
+| D27 | SOMA | `=SUM(D15:D26)` |
+
+⛔⛔ **EM 29/10 A `D21` APARECEU SEM FÓRMULA**, como valor vazio. O vendedor
+saía 0,00% e R$ 0,00 mesmo com `D10` em 5%. O estrago não é só a linha dele:
+`D22:D26` usam `-$D$21` para achar o LÍQUIDO 2, então com ela vazia o
+líquido 2 inchava e as cinco comissões internas saíam grandes demais.
+
+Com os valores daquele dia — MC 55%, RT 5%, vendedor 5% — o efeito era:
+
+```
+quebrado    encargos 19,52%   base 80,48%   preço R$ 1.274.692,83
+consertado  encargos 23,91%   base 76,09%   preço R$ 1.557.466,55
+                                            diferença R$ 282.773,71
+```
+
+⚠ O preço saía **R$ 282 mil mais barato**, e a comissão do vendedor sairia
+da margem em vez de estar no preço.
+
+⭐ **COMO ACHAR ISSO DE NOVO:** `FORMULATEXT` devolve `#N/A` para célula que
+não é fórmula. Para auditar a cascata inteira de uma vez, escreva numa
+coluna de rascunho:
+
+```
+=IFNA(FORMULATEXT('Preço e Comissões'!D15);"⛔ SEM FÓRMULA")
+```
+
+e arraste por `D15:E27`. Vale a mesma varredura sempre que um número da
+aba de preço parecer baixo demais.
+
+⚠ A CONFERÊNCIA de `③` tem DUAS colunas e elas não querem dizer a mesma
+coisa: a de R$ é o fechamento do dinheiro e tem de ser `R$ 0,00` sempre; a
+de % é `MC realizada − MC alvo`, e ela é diferente de zero **de propósito**
+quando algum ambiente leva AJUSTE DE MC no quadro `④`. Não é erro.
+
+---
+
+## ⭐⭐ OS RENDERS ESTÃO NAS FOLHAS DE FOTO — 1760 × 1328 [29/10]
+
+⛔ **O erro que eu cometi:** fui buscar imagem nas folhas de **detalhamento**
+e achei desenho vetorial recortado em pedaços de 253 × 521 px. Daí concluí
+que o executivo não tinha render em resolução de proposta e que era preciso
+pedir os originais para a Iara. **Errado.**
+
+⭐ Cada ambiente tem uma **folha de foto** — a primeira do bloco, listada na
+coluna `fotos` da tabela de `2026-jessica-michell-ica-terreo.md`. Ela carrega
+de uma a quatro **perspectivas fotorrealistas em 1760 × 1328** (o banho
+master em **2400 × 1792**). Sangra página inteira sem esticar um pixel.
+
+```python
+# arquivo = pagina do documento - 1
+import pymupdf
+d = pymupdf.open(f'pgs/p{doc-1:03d}.pdf')
+for xr, *_ in d[0].get_images(full=True):
+    inf = d.extract_image(xr)
+    w, h = inf['width'], inf['height']
+    if w * h > 500_000 and not (w == 2480 and h == 2480):   # ⛔ 2480² é a LOGO
+        open(f'rend/{nome}_{w}x{h}.{inf["ext"]}', 'wb').write(inf['image'])
+```
+
+⚠ **O xref 2480 × 2480 se repete em todas as 235 páginas** — é a marca do
+escritório, não um render. Filtrar sempre.
+
+| folha de foto (documento) | ambiente |
+|--:|---|
+| 009 · 027 · 044 · 061 · 072 | Living · Cozinha · Lavanderia · Quarto · Lavabo |
+| 078 · 089 · 095 · 105 · 119 | Área gourmet · Banho gourmet · Home office · Suíte hóspedes · Banho hóspedes |
+| 125 · 142 · 154 · 167 | Sala de cinema · Suíte master · Closet master · Banho master |
+| 178 · 193 · 202 | Suíte Mariana · Closet Mariana · Banho Mariana |
+| 209 · 223 · 231 | Suíte 03 · Closet 03 · Banho 03 |
+
+## O layout da proposta é o PADRÃO DA CASA, não invenção [29/10]
+
+⛔ Montei uma primeira prévia com tipografia e paleta novas. O Jonathan
+mandou **buscar a referência, como no orçamento do Junior e da Crysthiane**.
+A referência existe e está versionada:
+
+- `projetos/css-apresentacao.css` — A4 **deitado**, Cormorant Garamond +
+  DM Sans, paleta ouro/creme/escuro. O cabeçalho do arquivo diz de onde veio:
+  *"APRESENTAÇÃO — JUNIOR LAGOA SANTA OFICIAL"* (Drive,
+  `19Svekd8Hp_ZB-PLVcPvYPPSNXFateTOF`).
+- `projetos/apresentacao-vinicius.html` e `apresentacao-carla.html` — o padrão
+  já aplicado, com a sequência de folhas (capa → proposta → índice de
+  ambientes → uma abertura por ambiente → coordenação → garantia →
+  investimento → condições).
+- `projetos/build-previa-ica.py` — a prévia do ICA, três folhas.
+
+⭐ **A regra:** proposta premium da casa **não ganha linguagem nova**. A casa
+tem UMA identidade; o que muda de projeto para projeto é a imagem e o número.
+
+⚠ A coluna D do Painel (`COUNT` posicional) **não bate** com a contagem de
+`# ══ ITEM` dos módulos em 8 dos 19 ambientes. Não usar "nº de itens" em
+peça que vai para o cliente antes de reconciliar as duas.
+
+---
+
+## A GARANTIA: 30 ANOS NA LINHA BLUM — DECISÃO DO JONATHAN [29/10]
+
+⭐⭐ **DECIDIDO:** a proposta imprime **30 anos no cenário Blum** e
+**10 anos no cenário Hettich**, como garantia sobre a marcenaria, com o prazo
+acompanhando a ferragem de movimento. Eu levantei a ressalva abaixo, o
+Jonathan reafirmou os 30 anos, e é isso que vale.
+
+⚠ O que continua pendente de documento: `garantia.md` traz a política
+escalonada (2 / 5 / 10 / vitalícia) e registra que **só o termo de 10 anos
+está desenhado**. O termo de 30 anos precisa existir em papel antes de a
+proposta sair.
+
+### A ressalva que eu levantei (fica registrada)
+
+Pesquisa para a página de marca: **não achei garantia de 30 anos no fabricante**. Nem
+no blum.com, nem em catálogo, nem em material brasileiro. O que a Blum
+publica é garantia limitada **sem prazo em anos**, válida enquanto o primeiro
+comprador for dono do móvel, cobrindo a peça e não a mão de obra — e o texto
+é da Blum Inc. (EUA). ⚠ Não há termo publicado da Blum do Brasil.
+
+⭐⭐ **De onde vinha o número: da NOSSA política.** `closer-vendas/referencias/
+garantia.md` traz a garantia **Valvic** escalonada por ferragem, decidida pelo
+Jonathan em jun/2026:
+
+| ferragem | garantia Valvic |
+|---|---|
+| Telescópica / dobradiça padrão | 2 anos |
+| Hardt | 5 anos |
+| **Hettich** | **10 anos** |
+| **Blum** | **vitalícia** |
+
+Regra do elo mais fraco: vale o tier mais baixo presente no projeto. No ICA,
+articulador e pulsador são Blum nos dois cenários, mas dobradiça e corrediça
+definem o tier → cenário Blum **vitalícia**, cenário Hettich **10 anos**.
+
+⚠ **Só o termo de 10 anos está desenhado.** O vitalício precisa existir em
+papel antes de a proposta sair.
+
+⭐ **O número de destaque da página de marca é o ENSAIO, não o prazo:**
+Blum **200.000 ciclos** na dobradiça · Hettich Sensys 8639i **80.000 ciclos**
+(DIN EN 15570 / ISO 4769, nível 3). Mesmo tipo de ensaio, comparação justa.
+
+## ⛔ A CONTA DE FERRAGEM DE MARCA — R$ 61.850,00 [29/10]
+
+Conferida por dois caminhos independentes.
+
+| | qtd | unit. | total |
+|---|--:|--:|--:|
+| Corrediça | 95 | 300,00 | 28.500,00 |
+| Corrediça touch | 20 | 500,00 | 10.000,00 |
+| Báscula HK-XS | 47 | 250,00 | 11.750,00 |
+| Dobradiça | 164 | 50,00 | 8.200,00 |
+| Dobradiça vidro | 10 | 70,00 | 700,00 |
+| Pulsador | 27 | 100,00 | 2.700,00 |
+
+⛔ **ERREI DUAS VEZES ANTES DE ACERTAR:** primeiro R$ 15.680 (contei folha em
+vez de folha × dobradiça), depois R$ 33.900 (perdi as corrediças touch que
+entram por `OUTRAS`, não pelo flag `x[4]=='touch'` de `GAVETAS` — são 12 + 8).
+
+⭐ **O caminho certo:** `planilha.linhas_do_item(mv)` para cada móvel, somando
+por chave, com os preços de `base.py`. ⚠ **Um ambiente por processo** —
+`planilha.py` e `auditor.py` gravam em `sys.modules['AMB']`, e há móveis
+homônimos entre módulos: agrupar por nome num processo só derruba o total
+para R$ 57.150.
+
+⛔ `living.py` redefine `CORREDICA` e `DOBRADICA` localmente em vez de
+importar de `base.py`. Hoje coincidem; uma mudança de preço não chegaria lá.
+
+### Os dois cenários
+
+Ficam Blum nos dois: báscula e pulsador (R$ 14.450). Muda de marca: corrediça,
+touch e dobradiça (R$ 47.400). **Razão Hettich/Blum = 0,71**, apurada em loja
+brasileira, mesma especificação, Pix contra Pix (corrediça 0,62 · dobradiça
+0,75–0,80; na compra com CNPJ a Blum dá desconto maior, o que comprime).
+
+→ custo direto Blum **R$ 311.541,90** · Hettich **R$ 297.795,90**.
+
+## O caderno — `build-caderno-ica.py` [29/10]
+
+35 folhas A4 deitado. Ordem: **valor antes de valores** — empresa, processo,
+arquiteta, 19 ambientes, ferragem, as duas marcas, garantia, e só então
+investimento.
+
+⭐⭐ **A LEI DA VOZ.** O Jonathan: *"a Valvic articula todas as soluções"*.
+Duas pontas erradas, as duas pegas por revisor adversarial:
+- **ponta fraca** — "sob nossa coordenação", "acompanhamos a execução".
+  Coordenar é o verbo de quem não executa. ⛔ PROIBIDO.
+- **ponta falsa** — "a nossa serralheria". A casa não tem. ⛔ PROIBIDO.
+
+✅ A formulação certa fala de **escopo, contrato e resposta**: "entra no nosso
+escopo", "sai no mesmo contrato da marcenaria", "você não contrata mais
+ninguém", "uma só data, uma só responsabilidade".
+
+⛔ **Na folha de ambiente não entra:** medida, marca de ferragem (o cliente
+ainda não escolheu o cenário), preço, e promessa de fornecer item que está a
+zero na planilha.
+
+⛔ **Campos internos nunca renderizam:** `alertas`, `ressalvas`, `mudou`,
+`pedir_ao_jonathan`. A branca é `{ambiente, itens, nota, materiais}`.
+
+⭐ **A coluna de texto encolhe sozinha** (`.fit` + `zoom` por JS): a Suíte
+Mariana tem 12 itens e estourava a folha. Roda também no HTML de impressão,
+antes do `page.pdf`.
+
+⭐ **PDF:** `print/caderno.html` (as folhas sem a moldura de leitura) →
+Playwright `page.pdf({width:'297mm', height:'210mm'})`.
+`NODE_PATH=/opt/node22/lib/node_modules`, que é onde o playwright mora.
+
+⚠ **Cozinha e Closet master não têm perspectiva acessível** — as folhas de
+foto pesam 6,8 e 7,4 MB e derrubam o MCP do Drive. Entram pelo desenho
+axonométrico do executivo sobre campo areia, com selo "Desenho de execução".
+
+## As correções de 29/10 (segunda rodada do Jonathan)
+
+| o que ele pediu | o que mudou |
+|---|---|
+| garantia Blum é 30 anos | folhas 27, 30, 31, 33 e 34 · `GARANTIA` no build |
+| local é Lagoa Santa | capa |
+| **pedra não é escopo da Valvic** | saiu das notas da Lavanderia, Área gourmet, Banho gourmet e Banho hóspedes, da abertura e do pilar 01 · entrou em "o que não está nesta proposta" |
+| detalhamento e programação também saem da fábrica | `processo.fechamento` e `empresa.pilares[1]`: três etapas viraram **cinco** |
+| frase dispensável sobre ajuste na fábrica | cortada do pilar 02 |
+| Lavanderia: granito e torneiras não são marcenaria | a nota passou a falar da folga de medição |
+| Home office: "a parede inteira é suspensa" | cortado |
+| **parar de repetir "uma só responsabilidade"** | de 18 notas para **3** — Suíte hóspedes, Suíte master e Suíte 03, as que de fato juntam ofícios. Nas outras virou conteúdo concreto. |
+| não usar "tábuas" | Banho 03 e Lavanderia |
+| **Blum sempre em negrito** | `negrito()` no fim do build: `re.sub(r'>([^<]+)<', …)` — troca só em nó de texto, nunca dentro de tag |
+| **gaveta não abre por pulsador** | é **corrediça com a função de abertura por toque**. Corrigido em 5 itens e no bloco "Blum nos dois cenários" |
+| forma de pagamento | 30% na assinatura · 20% em 30 d · 20% em 60 d · 30% em 90 d · todas por transferência |
+
+⛔ **A REGRA QUE SOBRA DISSO:** o refrão de escopo é tempero, não base. Uma
+frase forte repetida dezoito vezes vira ruído e o cliente para de lê-la.
+Em caderno novo, no máximo três ambientes a carregam.

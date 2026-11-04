@@ -5,6 +5,130 @@ Como a Valvic apresenta o orçamento ao cliente (referência:
 (planilha) vira uma proposta institucional com preço **por ambiente** em
 **duas linhas: Gold e Silver**.
 
+## ⛔⛔⛔ VALOR SÓ MUDA SE FOR EXPRESSAMENTE PEDIDO
+[Jonathan 21/10/2026] — *"Na página de valores, você mudou valores da
+proposta original. Adicione uma regra da skill para alterar valores apenas
+se expressamente solicitado."*
+
+**Uma vez que um valor foi ao cliente, ele é um compromisso.** Refazer a
+conta e deixar o número andar sozinho é erro, mesmo que a conta nova esteja
+mais certa: o cliente recebe uma folha diferente sem ter pedido nada, e
+perde a confiança nas duas.
+
+| Situação | O que fazer |
+|---|---|
+| Mudou a **descrição** de um item | o valor **não se mexe** |
+| Mudou um **custo** interno | o valor **não se mexe**; a margem muda, e isso é assunto nosso |
+| Entrou um **item novo** | **só** o item novo tem valor; o resto fica |
+| Jonathan deu um **número** para um item | **esse** item muda, só ele |
+| Jonathan pediu MC nova, ou linha nova (Essencial/Premium) | aí sim a tabela inteira se refaz |
+
+⛔ **O perigo é mecânico, não de distração.** Motor que rateia um alvo pelo
+custo — como o da brinquedoteca — faz a tabela inteira andar a cada custo
+novo em qualquer canto. Onde houver rateio assim, **congelar os preços numa
+tabela declarada** assim que a proposta for ao cliente, e mudar item a item
+a partir dali. Ver `projetos/orcamento-brinquedoteca-v2.py`, `PV_DECLARADO`.
+
+⭐ **Como reportar:** quando um custo mudar e o valor ficar parado, **dizer
+qual margem aquilo passou a entregar**. O número que não mudou na folha do
+cliente tem de mudar no relatório interno.
+
+---
+
+## ⛔ REGRAS DO QUE **NÃO** VAI NA PROPOSTA
+
+Três coisas que o Jonathan já teve de pedir mais de uma vez. Se aparecerem numa
+proposta, é erro — não é questão de gosto.
+
+> ### ⚠️ ESCOPO DESTAS REGRAS: SÓ O TEXTO DA PROPOSTA
+> [Jonathan 24/08]
+>
+> As três valem **exclusivamente para o que é escrito no documento que vai ao
+> cliente**. Elas **não** tocam no método de trabalho.
+>
+> **O LEVANTAMENTO DE CUSTO CONTINUA COTADO AO MILÍMETRO.** Ler cada prancha,
+> transcrever cada cota, lançar peça a peça, conferir se cabe na chapa, rodar o
+> nesting por cor × espessura — nada disso muda. É de lá que sai o número.
+>
+> Se algum dia a leitura destas regras deixar o **levantamento** menos preciso,
+> a regra foi mal lida. O que se esconde é a **cota na descrição de venda**,
+> não a cota no motor.
+>
+> | Onde | Medida |
+> |---|---|
+> | `corte-*.py`, plano de corte, quadro de peças | **obrigatória, exata** |
+> | dossiê do projeto (`projetos/*.md`) | **obrigatória** — é o registro técnico |
+> | memorial de produção, ordem de corte, contrato | **obrigatória** |
+> | **descrição de item na proposta ao cliente** | **⛔ nunca** |
+
+### 1 · NUNCA cotar medida de móvel **na descrição da proposta**
+[Jonathan 21/08 e 24/08 — pedido **duas vezes**]
+
+Nada de `2,60 m`, `340 × 90`, `920 × 400 × 2450`, `prof. 65`, `altura 2,45 m`.
+Nem no título do item, nem na descrição, nem entre parênteses.
+
+**Isto é uma regra de REDAÇÃO.** O levantamento que gerou o preço usou todas
+essas cotas, uma a uma — e tem de continuar usando. O que muda é só a forma de
+**contar ao cliente** o que ele vai receber.
+
+**Por quê.** Medida na proposta convida o cliente a conferir régua na parede
+antes de a gente medir — e a prancha quase sempre manda "conferir em obra". Cota
+divergente vira objeção antes da venda e discussão depois dela. Medida é
+documento **técnico**, de produção, não de venda.
+
+| Em vez de | Escreva |
+|---|---|
+| "Buffet suspenso 443,5 × 80 × 45 prof — seis gavetões" | "Buffet suspenso com seis gavetões" |
+| "Armário de 2,60 m com quatro portas" | "Armário com quatro portas e gaveteiro central" |
+| "Nicho contínuo de 1,77 m em MDF de 25 mm" | "Nicho contínuo, sem divisória, em MDF encorpado" |
+| "Painel de 6,57 m sobre estrutura niveladora" | "Painel do piso ao forro sobre estrutura niveladora" |
+
+O que **pode** ficar: o **material**, a **ferragem**, o **acabamento**, a
+**função** e o **diferencial construtivo**. Onde a dimensão for o próprio
+argumento de venda ("do piso ao forro", "parede inteira", "sem emenda
+aparente"), diga isso **em palavras**, não em número.
+
+Onde as medidas VÃO, e onde são obrigatórias: **motor de levantamento**
+(`corte-*.py`), **plano de corte**, **quadro de peças**, **dossiê do projeto**,
+**memorial de produção**, **ordem de corte** e **contrato de execução**.
+
+### 2 · NUNCA explicar a formação do preço
+[Jonathan 24/08]
+
+Nada de nesting, aproveitamento de chapa, "acrescenta duas chapas ao plano de
+corte", "cor nenhuma divide chapa com outra", custo de material, MC ou rateio.
+
+**Por quê.** Explicar por que algo custa o que custa é abrir a planilha para
+negociação. O cliente não compra chapa: compra o móvel pronto. Justificar preço
+por dentro convida a discutir por dentro — e transforma um diferencial em
+"então dá para tirar isso e baixar".
+
+**Fale só de BENEFÍCIO.** O que ele ganha, vê, sente e usa.
+
+| Em vez de | Escreva |
+|---|---|
+| "São duas chapas a mais no plano de corte" | "O armário fica inteiro na mesma cor, por dentro e por fora" |
+| "O interior deixa de dividir chapa branca" | "Abrir a porta deixa de mostrar branco" |
+| "Cor nenhuma divide chapa com outra" | *(nada — apagar a frase)* |
+
+### 3 · Imagens do projeto entram na composição
+[Jonathan 21/08 e 24/08]
+
+Sempre que a pasta do cliente tiver perspectiva, render ou apresentação, as
+imagens **do projeto dele** entram no layout. Proposta premium é conduzida por
+imagem (ver `projetos/build-vinicius-premium.py` e o padrão do caderno do
+Junior/Lagoa Santa).
+
+⚠ **Imagem de referência estética fornecida pelo cliente** (as que as pranchas
+rotulam assim) **não** serve: é inspiração de terceiro, não é o projeto dele, e
+usar na nossa proposta é risco de direito de imagem. Só render ou perspectiva do
+projeto em questão.
+
+Se a pasta não tiver render acessível, **peça** — não entregue proposta premium
+sem imagem alegando que não deu.
+
+---
+
 ## Estrutura da proposta
 
 1. **Capa** — "Proposta especial para [Cliente]".
@@ -82,3 +206,497 @@ custo zero ao cliente dentro do prazo. Marcas: Hardt, Häfele, Hettich, Rometal.
 
 > Na planilha, "RT" aparece como ~7–8% do investimento (= 10% do líquido após
 > deduções) e zero quando não há parceiro indicando o projeto.
+
+---
+
+## ⛔ GARANTIA — números corrigidos pelo Jonathan [07/08/2026]
+
+A tabela "Linha Gold vs Linha Silver" acima traz **10 anos / 10 anos com 2 nas
+corrediças**. **Não é o que a Valvic pratica.** Os números reais, por linha de
+corrediça:
+
+| Corrediça | Garantia |
+|---|---|
+| **Telescópica** | **2 anos**, geral |
+| **Oculta Hardt** | **5 anos** |
+
+> **E não abrir por componente na proposta.** O Jonathan pediu o número, não a
+> composição: *"não precisa entrar em detalhes da garantia"*. Escrever a abertura
+> (estrutura X, ferragem Y, corrediça Z) cria compromissos que a gente não emite —
+> o mesmo motivo pelo qual a garantia vitalícia da Sensys saiu das propostas
+> (ver `ferragens.md`).
+
+Aplicado em `build-cozinha-elena-v4.py`. As propostas anteriores que imprimiram
+**10 anos** estão desatualizadas nesse ponto.
+
+
+---
+
+## ⛔⛔ Se está no TEXTO, tem de estar na CONTA [Jonathan 02/09/2026]
+
+Regra completa em `validacao-orcamento.md`, seção **FALHA GRAVÍSSIMA**. O
+resumo, porque é aqui que o erro nasce:
+
+> A proposta da Juliana descreveu *"cômoda em **laca vermelha**"* e o orçamento
+> pagou **melamínico vermelho**, com `laq = R$ 0`. A proposta é o contrato:
+> assinada, a casa deve a laca e não tem o dinheiro dela na conta.
+
+**Antes de fechar qualquer proposta**, ler a descrição de cada item **palavra
+por palavra** contra a lista de materiais do motor — não contra a memória do
+levantamento. Palavras que obrigam linha no orçamento: **laca · espelho · vidro
+· estofado · marca de ferragem · LED · inox/dourado · serralheria · pedra ·
+ripado · cava usinada**.
+
+
+---
+
+# ⛔⛔ NUNCA PÔR METRAGEM NEM QUANTITATIVO NA PROPOSTA
+
+**[Jonathan 12/09/2026]** *"Não precisa ficar colocando metragem de nada na
+proposta. Eu já pedi isso pra você várias vezes, mas você está esquecendo.
+Então grave essa regra na skill."*
+
+Ele pediu no SPE Nova Lima (10/09) — *"não fale sobre quantitativo de material
+nem metragem de nada"* — e eu tratei como decisão daquele job. **Não era.
+É regra da casa, vale para toda proposta.**
+
+## A regra
+
+> **A proposta descreve o MÓVEL e o BENEFÍCIO. Nunca a medida, nunca a
+> quantidade.** Sai tudo: cota em metro e centímetro, m², contagem de portas,
+> gavetas, prateleiras, ripas, chapas, metros de fita, metros de LED, número de
+> dobradiças, corrediças ou pistões.
+
+| ⛔ Não escrever | ✅ Escrever |
+|---|---|
+| "Cabeceira estofada de 3,10 × 1,10 m" | "Cabeceira estofada em tecido Bouclé" |
+| "Painel de 3,975 × 1,00 m" | "Painel de TV com iluminação nas bordas" |
+| "vassoureiro de 2,50 m com três prateleiras" | "vassoureiro do piso ao teto, com vassoureiro deslizante" |
+| "armário inferior de 4,30 m com quatro gavetas" | "armário inferior com gavetões, gavetas e porta de temperos" |
+| "roupeiro de 1,54 m com duas portas de correr" | "roupeiro com portas de correr espelhadas" |
+| "6 m de LED com sensor" | "iluminação em LED embutida, com sensor" |
+| "28 ripas em perfil metálico" | "pérgola em perfil metálico revestido em MDF" |
+
+## Por quê
+
+1. **Medida é levantamento, não venda.** O cliente não compra metro quadrado,
+   compra o móvel pronto. Cota na proposta convida a comparar preço por metro
+   com quem orça por metro — e a casa não orça assim.
+2. **Cota vira contrato.** "3,10 m" escrito numa proposta é uma medida que a
+   obra pode desmentir. A proposta já diz que a medida é conferida no local
+   antes do corte; escrever a cota briga com a própria cláusula.
+3. **Quantitativo expõe a conta.** Número de dobradiças e metros de fita é
+   informação de custo, não de benefício — e abre flanco para negociar item.
+
+## O que PODE ficar
+
+- O **material e o acabamento**: MDF Carvalho, Grafito Chess, Branco TX no
+  interno, vidro temperado, espelho prata, Bouclé.
+- A **ferragem por marca e linha**: Hettich Sensys, corrediça telescópica,
+  Dominus, RO65.
+- A **função**: gavetão, báscula, porta de temperos, nicho ventilado, cava
+  usinada, meia esquadria, LED embutido.
+- **Prazo, garantia, condição de pagamento e o preço.**
+- Especificação técnica de durabilidade (ciclos de uma dobradiça, norma) — não
+  é metragem do móvel.
+
+> **O auditor de proposta passa a rodar isto:** regex atrás de
+> `\d+[.,]?\d*\s*(m|cm|mm|m²)` e de contagem de peça no PDF final.
+> **Qualquer ocorrência é erro.**
+
+---
+
+## ⛔⛔ O AUDITOR DE TRANSBORDO NÃO VÊ O QUE FOI CORTADO [30/09/2026]
+
+No Marcelo Tolentino a **escada de pagamento inteira sumiu da proposta** e o
+auditor de transbordo disse **"ok"**. A página tinha estourado, o
+`overflow:hidden` da `.page` cortou o bloco, e o auditor — que mede a posição
+do último bloco **que renderizou** — não tinha o que medir.
+
+**Medir o que saiu não prova que saiu tudo.** O auditor de posição só pega
+conteúdo que vazou *visivelmente* para cima do rodapé. Conteúdo que a página
+engoliu é invisível para ele.
+
+### O auditor certo compara HTML → PDF
+
+```python
+def norm(t):
+    t = unicodedata.normalize('NFKD', t)
+    return re.sub(r'[^0-9a-zA-Z%]', '', t).lower()   # tira espaço e acento
+
+pdf = norm(texto_extraido_do_pdf)
+txt = html.unescape(re.sub(r'<[^>]+>', ' ', html_do_corpo))
+perdidos = [f for f in re.split(r'[.·—\n]', txt)
+            if len(f.strip()) >= 25 and norm(f) not in pdf]
+assert not perdidos
+```
+
+⚠ **A normalização tem de tirar o espaço todo**, não só colapsar. O PDF quebra
+linha no meio da frase e insere `\n` onde o HTML não tem nada — comparar com
+`\s+ → ' '` dá dezenas de falsos positivos.
+
+**Os três auditores rodam juntos em toda proposta, nesta ordem:**
+
+| | o que pega |
+|---|---|
+| 1 · conteúdo perdido (HTML → PDF) | bloco que a página engoliu |
+| 2 · transbordo (posição **e rodapé ausente**) | bloco que invadiu o rodapé |
+| 3 · metragem e quantitativo | o que não pode estar escrito |
+
+### ⛔⛔ A causa raiz, achada em 30/09: `flex-shrink` + `overflow:hidden`
+
+`.pad` é **coluna flex**. Uma caixa filha com `overflow:hidden` e
+`flex-shrink` no padrão (1) **encolhe** quando a coluna estoura — e o
+conteúdo que sobra é cortado **sem empurrar nada para baixo**. O rodapé fica
+no lugar, o auditor de posição mede "folga 27 pt" e responde ok.
+
+> **Toda caixa de conteúdo fechado — escada de pagamento, tabela de
+> condições, cartões de linha — leva `flex:none`.** Assim o estouro vira
+> transbordo visível, que o auditor 2 pega, em vez de sumiço silencioso.
+
+```css
+.escP{ ...; overflow:hidden; flex:none; }
+```
+
+Sem isso a escada de pagamento sumiu **quatro vezes** na mesma proposta.
+
+### ⛔ Numeração de item NÃO é contagem de peça [01/10/2026]
+
+O auditor 3 usava `\s*` entre o número e o substantivo, e `\s` come a quebra
+de linha. No United SP a numeração de item ("03" numa linha, "Prateleiras
+suspensas" na seguinte) virou `03 prateleiras` no texto extraído e foi
+acusada como quantitativo.
+
+> O número e o substantivo têm de estar **na mesma linha**: `[\t ]*`, nunca
+> `\s*`. E, já que se mexe nele, a lista de substantivos cresce — faltavam
+> `painel`, `fechamento` e `suporte`. **Estreitar o falso positivo é motivo
+> para apertar o regex, nunca para afrouxá-lo.**
+
+```python
+(r'\b\d{1,2}[\t ]*(portas?|gavetas?|prateleiras?|nichos?|módulos?|'
+ r'ripas?|dobradiças?|corrediças?|folhas?|peças?|chapas?|pulsadores?|'
+ r'painéis|paineis|painel|fechamentos?|suportes?)\b', 'contagem'),
+```
+
+### ⛔ E rodapé ausente É transbordo
+
+O auditor 2 usava o rodapé como régua e caía em `pg.rect.y1` quando não o
+achava. Só que **o rodapé some justamente quando a página estoura** — foi o
+que aconteceu na página do estande do Marcelo Tolentino, com duas linhas de
+texto escritas por cima de onde o rodapé deveria estar, e o auditor
+respondendo "folga 28 pt".
+
+```python
+fb = [b for b in bl if 'valvicmarcenaria' in norm(b[4])]
+if not fb and pagina > 1:            # a capa não tem rodapé
+    print('⛔ RODAPÉ PERDIDO — a página estourou')
+foot_y = max([b[1] for b in fb] or [pg.rect.y1])   # ⛔ max, nunca min
+ult    = max(b[3] for b in bl if b[1] < foot_y - 1)
+```
+
+#### ⛔ E `min()` pega o CABEÇALHO, não o rodapé
+
+Na folha única do Douglas a marca aparece **duas vezes**: no cabeçalho
+(y = 51,7) e no rodapé (y = 820,7). O `min()` escolheu o cabeçalho e o
+auditor anunciou *"último bloco 0.0 · rodapé 51.7 · folga 51.7 pt"* — um
+número sem significado, numa página que naquele momento **estava mesmo
+estourando** e só foi pega pelo passe 1.
+
+A régua é a ocorrência **mais baixa** da marca, e o conteúdo é só o que está
+acima dela. Enquanto todo layout tinha a marca apenas no rodapé, `min()` e
+`max()` davam o mesmo resultado e o erro ficou latente — apareceu no dia em
+que um layout novo pôs a marca no topo.
+
+⭐ A lição não é sobre `min`: **toda régua que se procura por conteúdo pode
+achar o pedaço errado.** Quando o passe 2 der um número estranho, é o passe 2
+que está errado, não a página.
+
+#### ⛔⛔ E `i > 1` NUNCA dispara em documento de UMA página
+
+No mesmo dia, a folha do pórtico **perdeu o rodapé inteiro** e os três passes
+disseram "tudo ok". Duas falhas somadas:
+
+* O passe 2 só avisava `if not fb and i > 1`, porque a **capa** não tem
+  rodapé. Só que numa folha única `i` é sempre 1 — justamente o caso em que
+  a página 1 **tem** rodapé. O guarda calava o único alarme que importava.
+* O passe 1 não pegou porque procurava **presença**, e "Valvic Marcenaria"
+  sobreviveu no cabeçalho.
+
+Os dois consertos são o mesmo conserto: **contar, não procurar.**
+
+```python
+quer_foot = html.count('class="foot"')    # quantos o HTML manda imprimir
+tem_foot  = 0
+for i, pg in enumerate(doc, 1):
+    fb = [b for b in bl if 'valvicmarcenaria' in norm(b[4])
+          and b[1] > pg.rect.y1*0.80]     # só o terço de baixo é rodapé
+    tem_foot += 1 if fb else 0
+if tem_foot < quer_foot:
+    print('⛔ RODAPÉ PERDIDO — alguma página estourou')
+```
+
+E no passe 1, `Counter` em vez de `in`:
+
+```python
+quer = Counter(norm(f) for f in frags)
+if npdf.count(n) < quer[n]:               # 2× no HTML e 1× no PDF = perdeu
+    perdidos.append(f)
+```
+
+⭐ **Presença não é contagem.** Todo trecho que o layout repete — marca,
+data, nome do cliente — some sem alarme enquanto o auditor só perguntar
+"está aí?".
+
+⭐ O auditor **saiu do `/tmp`**: mora em `ferramentas/auditor-proposta.py`.
+Três vezes ele foi reescrito de memória depois que o container reiniciou.
+
+#### ⛔⛔ E o rodapé pode ESCORREGAR sem sumir
+
+Terceira falha do mesmo passe, no mesmo dia. Quando a coluna flex estoura, o
+rodapé nem sempre desaparece: ele **desce para dentro da margem inferior**.
+A "folga até o rodapé" continua ok — porque a régua desceu junto com o que
+ela mede. Na United, depois de entrar a segunda divisória, o rodapé da
+página 2 foi parar a **2,1 mm da borda** da folha, contra 14,5 mm na página
+3, e os três passes disseram "tudo ok".
+
+A margem até a **borda da folha** é fixa e não desce com nada:
+
+```python
+MM, MARGEM_MIN = 72/25.4, 12*72/25.4      # padrão da casa: 12 mm
+if fb:
+    margem = pg.rect.y1 - max(b[3] for b in fb)
+    if margem < MARGEM_MIN:
+        print(f'⛔ RODAPÉ A {margem/MM:.1f} mm DA BORDA')
+```
+
+⭐ O teste, assim que entrou, pegou a **folha única do Douglas** com o rodapé
+a 5,0 mm da borda — um documento que já tinha passado limpo três vezes.
+
+⭐ As três falhas do passe 2 são a mesma falha: **ele mediu tudo em relação
+ao rodapé, e o rodapé é justamente o que se move quando a página estoura.**
+Uma régua só serve se estiver presa em algo que não se mexe. Aqui, a folha.
+
+---
+
+## ⛔⛔ OS TRÊS PASSES NÃO CONFEREM ARITMÉTICA
+
+Em 09/10 a proposta da Raquel Oliveira saiu com a **tabela sem a linha das
+prateleiras** — as colunas somavam R$ 18.780 e o total dizia R$ 26.120. Os
+três passes responderam **TUDO OK**, porque conteúdo, transbordo e
+metragem estavam todos corretos. O que estava errado era a **conta**.
+
+A trava vai no BUILD, não no auditor — é lá que a lista e o total existem:
+
+```python
+for _v, _i in ((LACA, 2), (MEL, 3)):
+    _soma = sum(it[_i] for it in ITENS)
+    assert abs(_soma - TOT[_v]) < 0.5, (
+        f'⛔ A TABELA NÃO FECHA em {_v}: as linhas somam {_soma:,.0f} e o '
+        f'total diz {TOT[_v]:,.0f}. Falta ou sobra item na lista.')
+```
+
+⭐ **Instalada nos builds, ela achou um segundo erro no mesmo dia**, já
+entregue: a proposta da Raquel Franco tinha R$ 200 de diferença entre as
+linhas e o total. Causa: o total vinha do motor, que usa os preços do
+**cenário laqueado** para todos os itens, enquanto a tabela imprime os
+preços do **melamínico** nas linhas que não mudam — e o rateio da sobra de
+chapa faz cada item variar um pouco entre cenários.
+
+⭐ **O total impresso passa a ser a SOMA DO QUE ESTÁ IMPRESSO.** É a única
+versão que o cliente consegue conferir com uma calculadora na mão — e é
+ele quem vai conferir.
+
+### Exceções autorizadas à regra de metragem
+
+| medida | quando | por quê |
+|---|---|---|
+| `15 mm` · `18 mm` | 30/09 | espessura de chapa — separa as duas linhas |
+| `2,73 m` | 01/10 | altura do pano ripado do hall (United) |
+| `50 mm` | 07/10 | largura da régua do ripado (pórtico) |
+| `40 mm` | 07/10 | espessura da faixa de MDF da divisória (United) |
+| `10 mm` | 07/10 | espessura do vidro temperado da divisória (United) |
+| `30 mm` | 07/10 | espessura do painel da cama (Jairo) |
+| `30 × 20` | 07/10 | **perfil** de metalon — nome comercial do tubo, não cota |
+
+⛔ **ESPESSURA é especificação; ALTURA é metragem.** Os 300 mm de cada faixa
+da divisória da United **não entraram** na proposta — ela diz apenas *"as
+duas em alturas iguais"*, que dá o escopo sem dar a cota. A espessura do
+vidro, ao contrário, tem de constar: é ela que separa um temperado de 10 de
+um de 8, e é nela que nasce a discussão se ficar implícita.
+
+⭐ O critério não é o tamanho do número: é **especificação × quantitativo**.
+O passo do ripado — régua de 50, vão de 15 — **é o produto**: sem ele o
+cliente não sabe o que está comprando, do mesmo jeito que não saberia sem a
+espessura. Já "quantos metros de ripado" é quantitativo e continua proibido.
+
+---
+
+## ⛔ COLISÃO DE CLASSE COM O `css-proposta.css` — a segunda vez
+
+`css-proposta.css` já define `.inv`, `.pay`, `.esc` e `.cnd`, e o `.inv td`
+dele força `text-align:right`. Redefinir essas classes no build **não
+sobrescreve** — o navegador soma as duas regras e a última vence por
+especificidade, não por ordem de arquivo.
+
+Sintoma: na Luiza e Raphael (12/09) os nomes dos itens saíram alinhados à
+direita; no Marcelo Tolentino (30/09) aconteceu **de novo**, e junto a escada
+de pagamento sumiu.
+
+> **Toda classe nova de um build leva sufixo do job ou um `P`:**
+> `.invA`, `.escP`, `.cndP`. Nunca reutilizar um nome que já está no CSS base.
+> Antes de estilizar, `grep -n "^\.nome" css-proposta*.css`.
+
+---
+
+## ⭐ Documento de COMPRA é a exceção da metragem  [14/10/2026]
+
+A proibição de metragem e quantitativo vale para o que vai ao **cliente**.
+Num documento de **compra** — relação de peças para cotar com fornecedor —
+a medida é o assunto: sem cota ele não cota, e sem quantidade não há preço
+unitário.
+
+O auditor passou a aceitar `--compra`, que **pula só o passe 3**:
+
+```
+python3 ferramentas/auditor-proposta.py doc.html doc.pdf --compra
+```
+
+Os passes 1 (conteúdo perdido) e 2 (transbordo) continuam valendo — um
+pedido de cotação com o rodapé comido ou com um bloco perdido na conversão
+é tão ruim quanto uma proposta.
+
+⛔ `--compra` é para documento que vai ao FORNECEDOR. Se o papel vai ao
+cliente, ele audita inteiro, sem exceção.
+
+## ⭐ O briefing do cliente volta ao cliente  [14/10/2026]
+
+A proibição de **quantitativo** existe para a proposta não entregar a
+nossa lista de peças. Ela **não vale para o número que o próprio cliente
+usou para definir o pedido**.
+
+Na Arthur & Yasmim a cliente escreveu *"5 portas no reflecta bronze, 11 no
+fendi"* e pediu três orçamentos a partir disso. Sem os números, a versão 1
+não se entende. Isso é briefing dela voltando para ela.
+
+O auditor aceita `--excecoes "termo|termo|termo"`, que libera só os termos
+listados no passe 3:
+
+```
+python3 ferramentas/auditor-proposta.py p.html p.pdf --excecoes 'dez módulos|duas folhas'
+```
+
+⛔ A exceção é por documento e por termo, nunca geral. Se o número não veio
+do cliente, ele não entra.
+
+---
+
+# ⭐⭐⭐ A LEI DA VOZ — como dizer que a Valvic articula tudo [29/10/2026]
+
+O Jonathan: *"Quero que o cliente saiba que a Valvic articula todas as
+soluções que envolve o projeto, sendo serralheria, tecido, vidro etc."*
+
+No ICA o texto errou nas **duas pontas**, e as duas foram pegas por revisão
+adversarial antes de o caderno sair:
+
+### ⛔ PONTA FRACA — o verbo de quem não executa
+
+*"sob nossa coordenação"* · *"coordenamos"* · *"acompanhamos a execução"* ·
+*"supervisionamos"* · *"gerenciamos o fornecedor"*
+
+A palavra "parceiro" tinha sido removida com sucesso — e **substituída**, não
+eliminada. "Sob nossa coordenação" apareceu **16 vezes** e diz ao cliente
+exatamente a mesma coisa, num registro mais educado. **Coordenar é o verbo de
+quem não executa.**
+
+### ⛔ PONTA FALSA — a oficina que a casa não tem
+
+*"a nossa serralheria"* · *"sai da nossa serralheria"* · *"nosso vidraceiro"*
+
+A Valvic **não tem** serralheria, vidraçaria nem tapeçaria próprias. Escrever
+isso numa proposta de sete dígitos que vai para a mão de uma arquiteta é
+mentira falsificável com uma pergunta. **Mentira custa a venda.**
+
+### ✅ A FORMULAÇÃO CERTA — escopo, contrato e resposta
+
+Nunca fale de **quem segura a solda**. Fale de **escopo, contrato e
+responsabilidade**:
+
+- "entra no nosso escopo"
+- "sai no mesmo contrato da marcenaria"
+- "a Valvic responde por"
+- "chega na sua casa instalado, no mesmo acerto"
+- "você não contrata mais ninguém"
+- "uma só data, um só contrato, uma só responsabilidade"
+- "a Valvic articula todas as soluções do projeto" *(a frase do Jonathan,
+  pode ir literal)*
+
+⭐ **O TESTE DAS DUAS PERGUNTAS.** Antes de escrever a frase:
+1. Ela continua **verdadeira** se alguém perguntar "vocês têm serralheria
+   própria?"
+2. Ela ainda dá ao cliente a sensação de que **não vai gerenciar fornecedor
+   nenhum**?
+
+Se as duas respostas forem sim, a frase passa.
+
+## ⛔ O REFRÃO É TEMPERO, NÃO BASE [Jonathan, 29/10/2026]
+
+> *"vc esta repetindo o conceito de uma so empresa, uma so responsabilidade
+> etc. em quase todas as caixas dos ambientes, nao precisa disso."*
+
+No ICA o refrão de escopo ia em **18 das 19** notas de ambiente. Uma frase
+forte repetida dezoito vezes **vira ruído e o cliente para de lê-la**.
+
+⭐ **A regra:** no máximo **três** ambientes carregam o refrão — e só os que
+de fato juntam ofícios (no ICA: Suíte hóspedes, Suíte master e Suíte 03).
+Nos outros, o espaço vai para **conteúdo concreto do móvel**: como a peça é
+construída, como ela abre, por que ela é difícil de fazer.
+
+# ⭐⭐ A FOLHA DE AMBIENTE — o que NÃO entra
+
+| ⛔ não entra | por quê |
+|---|---|
+| **medida** (`350 × 300`, `105 cm`, `de 128 mm`) | medida é assunto do executivo, não da proposta — e já era regra da casa |
+| **marca de ferragem** (Blum, Hettich, AVENTOS, Sensys…) | o cliente ainda **não escolheu o cenário** quando chega na folha do ambiente. Escreva o benefício: "corrediça oculta de extração total, com fechamento amortecido" |
+| **preço, custo, percentual** | valor antes de valores |
+| **promessa de item que está a ZERO na planilha** | prometer fornecimento de linha zerada é prometer com o dinheiro do lucro |
+| **campo interno** (`alertas`, `ressalvas`, `mudou`, `pedir_ao_jonathan`) | o build precisa de **whitelist explícita**, não de blocklist |
+
+⭐ **A BRANCA do template de ambiente é `{ambiente, itens, nota, materiais}`.**
+Tudo o que não está nela é meu, não do cliente.
+
+# ⭐ A ORDEM DO CADERNO — valor antes de valores [Jonathan, 29/10/2026]
+
+> *"regra importante. primeiro agregue valor, depois apresente valores."*
+
+Nenhuma folha de conteúdo antecipa preço, desconto ou condição de pagamento —
+**nem a capa**. No ICA a capa trazia "Ferragens: Blum · 30 anos", o que
+entregava o cenário decidido antes das folhas que o explicam e transformava a
+página Hettich em pitch de rebaixamento. Virou "Cenários: Blum · Hettich".
+
+**A sequência que funcionou (35 folhas):**
+
+| | |
+|---|---|
+| 01–06 | capa · o que esta casa pede · a empresa · **o processo** · a arquiteta · índice |
+| 07–25 | uma folha por ambiente, conduzida pelo render |
+| 26–30 | a ferragem · marca A · "o que não entra na escolha" · marca B · a garantia |
+| 31–35 | investimento cenário A · cenário B · **a decisão lado a lado** · condições · encerramento |
+
+⭐ **A folha "a decisão lado a lado"** é a que fecha: uma tabela com garantia,
+ensaio, o que é igual nos dois e o investimento de cada um. O cliente decide
+olhando uma página só.
+
+# ⭐ Mecânica do caderno — o que vale copiar
+
+- **O texto do ambiente encolhe sozinho.** Envolver a coluna num `.fit` e um
+  script que mede e aplica `zoom = altura disponível / altura pedida`. Sem
+  isso, a Suíte Mariana (12 itens) estoura a folha. Roda **também** no HTML de
+  impressão, antes do `page.pdf`.
+- **PDF:** `print/caderno.html` — as folhas sem a moldura de leitura —
+  renderizado com `page.pdf({width:'297mm', height:'210mm', printBackground:true})`.
+  ⚠ `NODE_PATH=/opt/node22/lib/node_modules`, que é onde o playwright mora.
+- **Negrito numa palavra em todo o documento:** `re.sub(r'>([^<]+)<', …)` —
+  troca só em **nó de texto**, nunca dentro de uma tag.
+- ⚠ **Classe de modificador não pode colidir com classe global.** Chamei um
+  bloco de `.selos.dark` e o `.dark` global pintou o fundo de escuro deixando
+  o texto escuro por cima. Renomear para `.selos.realce`.

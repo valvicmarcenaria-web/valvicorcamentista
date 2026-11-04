@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560.0" height="452.0" font-family="DejaVu Sans, sans-serif">
+<rect width="100%" height="100%" fill="#fff"/>
+<rect x="70" y="50" width="360.0" height="251.99999999999997" fill="#F3EADA" stroke="#C9A96A" stroke-width="1.5"/>
+<rect x="66.0" y="50" width="8" height="251.99999999999997" fill="#5C564C"/>
+<rect x="117.42857142857143" y="50" width="8" height="251.99999999999997" fill="#5C564C"/>
+<rect x="168.85714285714286" y="50" width="8" height="251.99999999999997" fill="#5C564C"/>
+<rect x="220.28571428571428" y="50" width="8" height="251.99999999999997" fill="#5C564C"/>
+<rect x="271.7142857142857" y="50" width="8" height="251.99999999999997" fill="#5C564C"/>
+<rect x="323.14285714285717" y="50" width="8" height="251.99999999999997" fill="#5C564C"/>
+<rect x="374.57142857142856" y="50" width="8" height="251.99999999999997" fill="#5C564C"/>
+<rect x="426.0" y="50" width="8" height="251.99999999999997" fill="#5C564C"/>
+<rect x="70" y="46.0" width="360.0" height="8" fill="#8A8377"/>
+<rect x="70" y="130.0" width="360.0" height="8" fill="#8A8377"/>
+<rect x="70" y="213.99999999999997" width="360.0" height="8" fill="#8A8377"/>
+<rect x="70" y="297.99999999999994" width="360.0" height="8" fill="#8A8377"/>
+<line x1="70" y1="330.0" x2="430.0" y2="330.0" stroke="#9C7A3C" stroke-width="1"/>
+<text x="250.0" y="324.0" text-anchor="middle" font-size="13" fill="#9C7A3C">4.00 m</text>
+<text x="56" y="176.0" text-anchor="middle" font-size="13" fill="#9C7A3C" transform="rotate(-90 56 176.0)">2.80 m</text>
+<line x1="70" y1="32" x2="121.42857142857143" y2="32" stroke="#9C7A3C"/>
+<text x="95.71428571428572" y="26" text-anchor="middle" font-size="11" fill="#9C7A3C">57</text>
+<rect x="70" y="354.0" width="14" height="10" fill="#5C564C"/>
+<text x="92" y="363.0" font-size="12" fill="#333">8 montantes · metalon 50×30×1,2 · 22.4 m</text>
+<rect x="70" y="374.0" width="14" height="10" fill="#8A8377"/>
+<text x="92" y="383.0" font-size="12" fill="#333">4 travessas · metalon 50×30×1,2 · 16.0 m</text>
+<rect x="70" y="394.0" width="14" height="10" fill="#C9A96A"/>
+<text x="92" y="403.0" font-size="12" fill="#333">MDF ultra premium 18 mm · 2.6 chapa(s)</text>
+</svg>

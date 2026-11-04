@@ -14,7 +14,16 @@ MC R$                   = Investimento − Custo total
 MC %                    = MC / Investimento                → IDEAL 35–40%
 ```
 
-## Percentuais REAIS desta versão da planilha
+## ⛔ SUPERADO por `modelo-de-custo.md` [Jonathan 12/09/2026]
+
+> A tabela e a fórmula abaixo são de **uma versão da planilha**, não do método.
+> Foram elas que geraram os coeficientes `a = 0,162 · liqF = 0,88 · b = 0,043`
+> que todos os motores copiaram — e que erram a nota fiscal, a taxa de cartão,
+> a comissão de vendedor, a de produção e a base do degrau 3. **Para precificar,
+> usar `referencias/modelo-de-custo.md` e `projetos/motor_mc.py`.** O que segue
+> é histórico.
+
+## Percentuais desta versão da planilha (HISTÓRICO)
 
 | Encargo                 | %        | Base            | Obs |
 |-------------------------|----------|-----------------|-----|

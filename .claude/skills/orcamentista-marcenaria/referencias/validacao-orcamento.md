@@ -38,7 +38,17 @@ A planilha valida o orçamento **de trás para frente**: dado um Investimento
 
 **5. Margem de erro** — contingência.
 
-## Percentuais reais (sobre o Investimento) — inferidos de 11 projetos
+## ⛔ SUPERADO — os percentuais válidos estão em `modelo-de-custo.md`
+
+> **[Jonathan 12/09/2026]** A cascata de encargos foi cravada e passou a morar
+> em **`referencias/modelo-de-custo.md`**, implementada em
+> `projetos/motor_mc.py`. A tabela abaixo é **histórica** — foi inferida de 11
+> projetos e erra em quatro linhas: nota fiscal (é 5%, não 7%), taxa de cartão
+> (é 1,2% POR PARCELA, não 7% fixo), comissão de vendedor (é 10%, não 5%) e
+> comissão de produção (é 7% aberta em quatro, não 5%). Fica registrada para
+> leitura de orçamento antigo. **Não usar para precificar.**
+
+## Percentuais históricos (sobre o Investimento) — inferidos de 11 projetos
 
 | Encargo                  | % do Investimento        | Observação                         |
 |--------------------------|--------------------------|------------------------------------|
@@ -171,3 +181,203 @@ Etiqueta **20** · Impressão externa **1,5** · Impressão interna **1,0**.
 > (a coluna Quant) é justamente a metodologia que vamos destilar com os
 > projetos resolvidos: como se chega ao nº de chapas e às quantidades de
 > ferragem a partir das peças.
+
+---
+
+## Unidades: quatro linhas em que a casa cobra numa unidade e eu cobrei noutra
+### [Eliuton 17/08/2026 — depois de "os valores ficaram altos demais"]
+
+> **Antes de multiplicar, olhar a UNIDADE da linha.** `materiais.json` e
+> `chapas.md` não usam sempre a mesma, e há linhas com duas origens e dois
+> preços. Quando houver conflito, vale a que já foi usada num job real.
+
+| Item | Errado | Certo | Por quê |
+|---|---|---|---|
+| **Cava usinada** | R$ 50 **por peça** (`materiais.json`) | **R$ 25 por metro** linear (Honda 07/08) | A CNC cobra tempo de percurso, e percurso é metro. Uma frente de 20 cm e uma de 1,45 m não custam o mesmo. |
+| **Espelho e vidro** | R$ 600/m² (`materiais.json`) | **R$ 285 por folha** com perfil (`chapas.md`) | Já estava escrito como armadilha e caí nela mesmo assim. |
+| **LED** | R$ 150/m ("LED COB fita + perfil") | **R$ 66/m** = fita 28 + perfil de alumínio 38 (`chapas.md`) | A decomposta é rastreável; a agregada não diz que perfil é. |
+| **Sistema de correr** | SS150 R$ 500–600 + trilho | **RO65 Rometal R$ 60/porta + trilho R$ 60** | SS150 é sistema de **roupeiro**: folha pesada, 65 cm de profundidade. Porta de espelho num armário de banheiro de **15 cm** não é o mesmo produto. |
+
+Somadas, essas quatro linhas valiam **R$ 4.237 de custo** e ~R$ 9.850 de preço
+num job de R$ 118.800 — 8% do orçamento em erro de unidade.
+
+---
+
+## ⛔ MONTAGEM NÃO ENTRA NA PROPOSTA [Jonathan 17/08/2026]
+
+> **"Nunca consideramos montagem na proposta."** — Jonathan, 17/08.
+> Já estava escrito nesta mesma página, na lista de custos fixos. Eu lancei
+> assim mesmo, duas vezes: 22 dias de dupla e depois 13. **A linha não existe.**
+
+**Por quê.** Montador e marceneiro são **salário fixo** — a estrutura da Valvic
+tem 7 profissionais que recebem todo mês, com ou sem obra. A produção é fixa,
+não por demanda. O que é variável e entra no orçamento é a **comissão**, e a
+comissão **já está dentro do motor**, nas comissões de produção do degrau 3 de
+`modelo-de-custo.md` — fabricação 2,5% e montagem 2,5% do líquido 2.
+*(Até 11/09 isso vivia nos coeficientes `a = 0,162` e `liqF·b = 0,0378`, que
+foram substituídos.)*
+
+Lançar dia de montador como custo direto conta a mesma mão de obra **duas
+vezes**: uma no salário que a empresa paga de qualquer jeito, outra na comissão
+que o divisor já cobra. E ainda infla o preço, porque o custo direto passa pelo
+divisor.
+
+### O que fica na logística
+| Entra | Não entra |
+|---|---|
+| **Carreto** (frete do móvel até a obra) | Dia de montador |
+| **Visita técnica** (~R$ 250 cada) | Dia de marceneiro |
+| Embalagem | Qualquer "instalação" em dias |
+| Terceirizado de verdade: serralheiro, vidraceiro, marmorista, laqueador | |
+
+No Eliuton isso derrubou R$ 13.200 de custo direto — de R$ 17.200 de "logística
+e instalação" sobraram **R$ 3.150** de 4 carretos e 3 visitas.
+
+### ⚠ Rever a Honda
+`corte-honda-minas-motos.py` tem `INSTAL = 1800.0` ("3 dias de dupla") dentro do
+custo direto. Pela regra, não deveria estar lá. Consequência para um job **já
+entregue a R$ 19.100**: o custo direto real é R$ 6.799, não R$ 8.599, e a
+**MC foi 44,4%, não os 35% que a proposta declarou**. O job é mais lucrativo do
+que está registrado. Não mexi no arquivo entregue — fica a nota para o Jonathan
+decidir se corrige o histórico.
+
+### O teste
+Se uma linha do custo direto tem a palavra **dia**, **hora**, **equipe**,
+**montagem** ou **instalação** e o serviço é feito por gente da casa, ela está
+errada. Só entra o que a Valvic **compra de terceiro** ou **paga por evento**.
+
+### ⚠ Não confundir CUSTO com ESCOPO [Jonathan 17/08]
+Montagem **não entra no custo** — e **entra no escopo**. São duas coisas
+diferentes e é fácil derrubar a segunda junto com a primeira.
+
+| | Custo (planilha) | Escopo (proposta) |
+|---|---|---|
+| Instalação e montagem | **não entra** — equipe é salário fixo | **entra, e é diferencial**: "instalação e montagem por equipe própria da Valvic; não terceirizamos a montagem" |
+
+A Valvic **não terceiriza a montagem**, e isso é argumento de venda: quem
+instala é quem produziu. Toda proposta tem de dizer isso na lista do que está
+dentro do valor. Tirar a linha da planilha e esquecer de escrever no papel é
+entregar de graça um diferencial que a concorrência não tem.
+
+---
+
+# ⛔⛔ FALHA GRAVÍSSIMA — DESCREVER NA PROPOSTA O QUE NÃO FOI ORÇADO
+
+**[Jonathan 02/09/2026, sobre o orçamento da Juliana]**
+
+> *"Ponto crítico: você não orçou a laca da cômoda mas descreveu na proposta.
+> Registre esse erro como falha gravíssima. Nunca mais podemos errar isso.
+> O custo desse erro é gigante."*
+
+## O que aconteceu
+
+A proposta v2 da Juliana descreve, com todas as letras:
+
+> *"cômoda em **laca vermelha** com tampo de vidro"*
+
+E o orçamento lançou:
+
+| O que a proposta promete | O que o orçamento pagou |
+|---|---|
+| Cômoda em **laca vermelha** | **MDF Vermelho melamínico** — 2 chapas de 15 mm + 1 de 6 mm = R$ 1.300 |
+| — | `terc.laq` = **R$ 0** em **todos** os 8 ambientes, nas **duas** linhas |
+
+**Laca e melamínico não são o mesmo produto.** Laca é MDF **cru** + pintura em
+cabine, a R$ 650/m² de peça lisa na base da casa. Melamínico já vem revestido de
+fábrica. A conta correta da cômoda troca a chapa (cor → cru) e **soma a laca**.
+
+## Por que o custo do erro é gigante
+
+O erro não é a diferença de preço. É que **a proposta é o contrato**. Assinada,
+a Valvic deve uma cômoda lacada e tem no orçamento uma cômoda melamínica. As
+saídas são todas ruins:
+
+1. **Executar laca e comer o prejuízo** — sai do bolso, e numa cômoda de porte
+   médio é da ordem de **R$ 1.500 a 2.000** só nesta peça.
+2. **Executar melamínico** — entrega diferente do que foi escrito. É quebra de
+   contrato e destrói a confiança, que custa muito mais que a laca.
+3. **Renegociar depois de assinado** — a pior das três: o cliente já decidiu com
+   base num número, e a casa aparece pedindo mais.
+
+E é um erro que **escala silenciosamente**: se acontecer numa casa inteira com
+laca em vários ambientes, são dezenas de milhares.
+
+## ⛔ A REGRA — o auditor de TODA proposta passa a checar isso
+
+> **Toda palavra de acabamento, ferragem ou material escrita na proposta tem de
+> ter uma linha correspondente no orçamento. Se está no texto, tem de estar na
+> conta. Se não está na conta, não pode estar no texto.**
+
+Palavras que **obrigam** linha no orçamento — nunca escrever sem conferir:
+
+| Palavra na proposta | Linha que TEM de existir |
+|---|---|
+| **laca**, lacado, pintado, laqueado | `Laca / Pintura` R$ 650/m² **e** chapa em **MDF cru**, não melamínico |
+| **espelho**, espelhado | `Espelho prata/bronze` por m² |
+| **vidro**, cristaleira, reflecta | `Vidro`/`Porta de vidro` por m² ou folha |
+| **estofado**, capitonê | `Estofado (terceiro)` |
+| marca de ferragem (**Blum**, Hettich, Hardt, Rometal, Häfele) | a linha daquela marca, não a genérica |
+| **LED**, iluminação, fita | `LED fita + perfil` por metro **e** driver/sensor |
+| **inox**, alumínio, latão, dourado | o perfil ou o puxador daquele acabamento |
+| **serralheria**, estrutura metálica | `Estrutura de serralheria` |
+| **mármore**, granito, pedra | ou está fora do escopo **e a proposta diz isso** |
+| **ripado**, cava usinada, meia esquadria | usinagem por metro |
+
+### Como conferir, na prática
+
+O caminho que pegou este erro é o certo e passa a ser obrigatório:
+**ler a descrição da proposta palavra por palavra contra a lista de materiais do
+orçamento** — não contra a memória do que foi levantado. O auditor de cada
+`build-*.py` tem de falhar quando uma dessas palavras aparecer no PDF sem a
+linha correspondente no motor.
+
+> Este é o gêmeo da regra de 17/08 sobre montagem: lá o risco era **tirar da
+> proposta** algo que a casa entrega. Aqui é **colocar na proposta** algo que a
+> casa não orçou. Os dois erros nascem do mesmo lugar — texto e conta escritos
+> em momentos diferentes, sem ninguém cruzar os dois no fim.
+
+---
+
+# ⛔ A EXTENSÃO DA REGRA — O RENDER TAMBÉM PROMETE
+
+**[Eliuton 2ª fase, 07/09/2026]** A regra de 02/09 fala de **palavras**. Mas uma
+proposta ilustrada promete também pela **imagem**, e imagem promete mais forte
+que texto: o cliente decide olhando o render, não lendo o descritivo.
+
+Dois casos apareceram no mesmo job:
+
+| O que o render mostra | O que o orçamento paga |
+|---|---|
+| **Painel do espelho orgânico** no quarto master | **Nada** — saiu do escopo a pedido do Jonathan |
+| **Interno dos roupeiros amadeirado** em todos os ambientes | **MDF Branco TX** — o interno branco é o padrão orçado |
+
+Nenhum dos dois é erro de conta. Os dois viram **expectativa de graça** se a
+proposta usar o render e ficar calada.
+
+## ⛔ A REGRA
+
+> **Se está na IMAGEM, ou está na CONTA, ou está DITO que não está.**
+> Todo render que entra numa proposta é lido item a item contra o orçamento.
+> O que aparece na foto e não está na conta tem de aparecer escrito como
+> exclusão, na mesma página, com o mesmo destaque.
+
+As duas saídas legítimas, quando o render mostra o que não vendemos:
+
+1. **Recortar a imagem** para o item não aparecer — foi o que fiz com o rack
+   suspenso do master, cortando o painel do espelho fora do enquadramento.
+2. **Dizer, na mesma página:** *"O painel do espelho orgânico não está nesta
+   proposta. Ele aparece nos renders do quarto master."*
+
+E quando o render mostra um **acabamento melhor** do que o orçado, isso não é só
+risco — **é o argumento do upgrade**. Na 2ª fase do Eliuton virou a frase de
+venda da página do Gianduia Trama: *"Os renders deste projeto mostram o interno
+amadeirado — é o upgrade que entrega exatamente aquilo."*
+
+## O terceiro cuidado: a legenda
+
+Legenda de foto é texto de proposta e vale contrato. Escrevi
+*"Closet master · a 1ª fase fechou em 20/08 e está em produção"* sob um render
+do closet da **2ª fase** — a frase é verdadeira sobre a 1ª fase e falsa sobre a
+foto. Corrigido para *"render do projeto desta 2ª fase"*.
+
+> **Legenda descreve a foto que está em cima dela, não o contexto ao redor.**

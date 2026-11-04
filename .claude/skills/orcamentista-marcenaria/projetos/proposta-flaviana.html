@@ -1,0 +1,289 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"><style>
+:root{
+  --ink:#1A1714; --soft:#5C564C; --mut:#918A7C; --line:#E3DDD1; --hair:#F0EBE1;
+  --paper:#fff; --cream:#FAF7F1; --sand:#F1EBDF;
+  --gold:#9C7A3C; --gold-lt:#C6A567; --gold-pale:#F5EEDF; --deep:#241F1B;
+}
+@page{size:A4;margin:0;}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;
+     color:var(--ink);font-size:9.6pt;line-height:1.62;}
+.serif{font-family:'Cormorant Garamond','Liberation Serif',Georgia,serif;}
+.page{position:relative;width:210mm;height:297mm;overflow:hidden;
+      background:var(--paper);page-break-after:always;}
+.page:last-of-type{page-break-after:avoid;}
+.pad{padding:17mm 19mm 14mm;height:100%;display:flex;flex-direction:column;}
+h1,h2,h3{margin:0;font-weight:600;}
+p{margin:0;}
+.eyebrow{font-size:7.2pt;letter-spacing:.30em;text-transform:uppercase;
+         color:var(--gold);font-weight:700;}
+.rule{height:1.5px;width:40px;background:var(--gold);margin:7px 0 13px;}
+.h-sec{font-family:'Cormorant Garamond',Georgia,serif;font-size:23pt;
+       line-height:1.12;font-weight:600;letter-spacing:-.01em;}
+.lead{color:var(--soft);font-size:9.9pt;max-width:150mm;}
+.foot{margin-top:auto;padding-top:8mm;border-top:1px solid var(--hair);
+      display:flex;justify-content:space-between;font-size:7.2pt;
+      letter-spacing:.16em;text-transform:uppercase;color:var(--mut);}
+
+/* capa */
+.cover{background:var(--deep);color:#F6F1E7;}
+.cover .pad{padding:24mm 19mm 16mm;}
+.cover .eyebrow{color:var(--gold-lt);}
+.cover .rule{background:var(--gold-lt);width:56px;height:2px;}
+.cv-t{font-family:'Cormorant Garamond',Georgia,serif;font-size:38pt;
+      line-height:1.05;font-weight:600;letter-spacing:-.015em;margin-top:3mm;max-width:150mm;}
+.cv-nome{font-family:'Cormorant Garamond',Georgia,serif;font-size:74pt;
+         line-height:.98;font-weight:600;letter-spacing:-.025em;margin-top:4mm;
+         color:#F7F2E8;}
+.cv-s{font-size:13pt;color:#CFC6B4;margin-top:7mm;font-weight:300;
+      line-height:1.45;}
+.cv-meta{margin-top:13mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6mm;
+         border-top:1px solid rgba(255,255,255,.16);padding-top:7mm;}
+.cv-meta .k{font-size:6.9pt;letter-spacing:.2em;text-transform:uppercase;
+            color:var(--gold-lt);font-weight:700;}
+.cv-meta .v{font-size:10.4pt;color:#EDE6D9;margin-top:2mm;}
+.cv-brand{font-size:8.6pt;letter-spacing:.42em;text-transform:uppercase;
+          color:#E8DFCB;font-weight:700;}
+.cv-num{position:absolute;right:19mm;top:22mm;font-family:'Cormorant Garamond',Georgia,serif;
+        font-size:110pt;line-height:1;color:rgba(198,165,103,.13);font-weight:600;}
+
+/* itens */
+.it{padding:3.1mm 0;border-bottom:1px solid var(--hair);display:flex;gap:6mm;}
+.it:last-child{border-bottom:none;}
+.it-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:14.5pt;color:var(--gold-lt);
+      font-weight:600;min-width:9mm;line-height:1.1;}
+.it-t{font-size:10.4pt;font-weight:600;letter-spacing:-.005em;}
+.it-d{color:var(--soft);font-size:8.4pt;margin-top:1mm;line-height:1.5;}
+
+/* cenários */
+.cen{border:1px solid var(--line);border-radius:2px;padding:4.6mm 5.6mm;
+     margin-bottom:3.4mm;background:var(--cream);}
+.cen.hi{background:var(--gold-pale);border-color:var(--gold-lt);}
+.cen-h{display:flex;align-items:baseline;gap:4mm;}
+.cen-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:20pt;
+       color:var(--gold);font-weight:600;line-height:1;}
+.cen-t{font-size:12.5pt;font-weight:600;}
+.cen-g{margin-left:auto;font-size:7.6pt;letter-spacing:.16em;text-transform:uppercase;
+       color:#fff;background:var(--gold);padding:2.2mm 3.4mm;border-radius:2px;
+       font-weight:700;white-space:nowrap;}
+.cen-x{color:var(--soft);font-size:8.7pt;margin-top:2mm;}
+.cen-l{margin-top:2.8mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm;
+       border-top:1px solid var(--line);padding-top:3.2mm;}
+.cen-l .k{font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;
+          color:var(--mut);font-weight:700;}
+.cen-l .v{font-size:8.7pt;margin-top:1mm;line-height:1.4;}
+
+/* tabela de investimento */
+table{width:100%;border-collapse:collapse;}
+.inv th{font-size:6.9pt;letter-spacing:.16em;text-transform:uppercase;
+        color:var(--mut);font-weight:700;text-align:right;padding:0 0 3mm;
+        border-bottom:1.5px solid var(--gold);}
+.inv th.l{text-align:left;}
+.inv td{padding:2.4mm 0;border-bottom:1px solid var(--hair);text-align:right;
+        font-variant-numeric:tabular-nums;font-size:9.6pt;}
+.inv td.l{text-align:left;font-size:9.5pt;}
+.inv td.hi{background:var(--gold-pale);font-weight:600;
+           padding-right:2.6mm;padding-left:2.6mm;}
+.inv th.hi{background:var(--gold-pale);padding-right:2.6mm;padding-left:2.6mm;
+           color:var(--gold);}
+.inv tr.tot td{border-bottom:none;border-top:1.5px solid var(--ink);
+               padding-top:3mm;font-size:13.5pt;font-weight:600;
+               font-family:'Cormorant Garamond',Georgia,serif;}
+.inv tr.tot td.l{font-family:inherit;font-size:8pt;letter-spacing:.18em;
+                 text-transform:uppercase;font-weight:700;}
+
+.box{background:var(--cream);border-left:2.5px solid var(--gold);
+     padding:4mm 5.2mm;margin-top:4mm;}
+.box .t{font-size:7.4pt;letter-spacing:.18em;text-transform:uppercase;
+        color:var(--gold);font-weight:700;}
+.box p{color:var(--soft);font-size:9pt;margin-top:2mm;}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:9mm;}
+.term{padding:3.4mm 0;border-bottom:1px solid var(--hair);}
+.term:last-child{border-bottom:none;}
+.term .k{font-size:6.9pt;letter-spacing:.18em;text-transform:uppercase;
+         color:var(--gold);font-weight:700;}
+.term .v{font-size:9.5pt;margin-top:1.2mm;}
+.term .s{color:var(--soft);font-size:8.5pt;margin-top:.8mm;}
+.pay td{padding:2.6mm 0;border-bottom:1px solid var(--hair);font-size:9pt;}
+.pay td.d{text-align:right;font-weight:600;color:var(--gold);
+          font-variant-numeric:tabular-nums;}
+.fora .k{font-size:9.3pt;font-weight:600;}
+.fora .v{color:var(--soft);font-size:8.6pt;margin-top:.8mm;}
+.fora li{margin-bottom:3.2mm;list-style:none;}
+.fora ul{margin:0;padding:0;}
+.sig{margin-top:auto;padding-top:9mm;display:grid;grid-template-columns:1fr 1fr;gap:14mm;}
+.sig .ln{border-top:1px solid var(--ink);padding-top:2.4mm;font-size:8.4pt;
+         color:var(--soft);}
+
+/* ── PAINÉIS DE IMAGEM ────────────────────────────────────────────────────
+   As vistas do projeto executivo saem do modelo 3D com FUNDO PRETO. Em vez
+   de recortar (o preto não é só borda — entra nos cantos do corte isométrico),
+   o painel é preto de propósito: a imagem encosta no fundo sem emenda e a
+   página ganha uma banda escura que conversa com a capa.
+   `.z` dá um zoom leve para comer a moldura preta fina das elevações.        */
+.ph{background:#000;overflow:hidden;position:relative;}
+.ph img{display:block;width:100%;height:100%;object-fit:cover;}
+.ph.ct img{object-fit:contain;}
+.ph img.z{transform:scale(1.09);}
+.ph img.z2{transform:scale(1.16);}
+.ph .cap{position:absolute;left:0;right:0;bottom:0;padding:6mm 4mm 2.8mm;
+  font-size:6.6pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-lt);font-weight:700;
+  background:linear-gradient(transparent,rgba(0,0,0,.9));}
+
+/* capa partida: texto à esquerda, vista do projeto à direita */
+.cv2{display:grid;grid-template-columns:1.06fr 1fr;height:100%;}
+.cv2 .txt{padding:24mm 13mm 16mm 19mm;display:flex;flex-direction:column;
+  min-width:0;}
+.cv2 .ph{border-left:1px solid rgba(198,165,103,.30);}
+.cv2 .cv-t{font-size:31pt;}
+.cv2 .cv-s{font-size:11.4pt;margin-top:6mm;}
+.cv2 .cv-meta{grid-template-columns:1fr;gap:4mm;margin-top:10mm;padding-top:6mm;}
+.cv2 .cv-meta>div{display:grid;grid-template-columns:34mm 1fr;align-items:baseline;}
+.cv2 .cv-meta .v{margin-top:0;font-size:9.8pt;}
+
+/* capa com render fotográfico de topo */
+.cvfoto{display:grid;grid-template-rows:auto 146mm 1fr;height:100%;}
+.cvfoto .top{padding:13mm 19mm 8mm;}
+.cvfoto .txt{padding:11mm 19mm 14mm;display:flex;flex-direction:column;}
+.cvfoto .cv-t{font-size:33pt;}
+
+/* dupla de vistas lado a lado */
+.dupla{display:grid;grid-template-columns:1fr 1fr;gap:6mm;}
+.dupla .ph{height:58mm;}
+.dupla .t{font-size:10.6pt;font-weight:600;margin-top:3.6mm;}
+.dupla .d{color:var(--soft);font-size:8.5pt;margin-top:1.4mm;line-height:1.52;}
+
+/* banda de largura total, sangrando nas laterais da página */
+.banda{margin:0 -19mm;height:74mm;}
+.dupla.sangra{margin:0 -19mm;gap:0;}
+.dupla.sangra .ph{height:172mm;}
+.dupla.sangra.baixa .ph{height:106mm;}
+.dupla.sangra .ph+.ph{border-left:1px solid rgba(198,165,103,.22);}
+
+/* página partida: vista alta à esquerda, texto à direita */
+.split{display:grid;grid-template-columns:74mm 1fr;gap:9mm;flex:1;
+  min-height:0;margin-top:2mm;}
+.split .ph{height:100%;}
+
+/* garantia — bloco técnico, uma linha por componente */
+.gar{border:1px solid var(--line);border-radius:2px;padding:5mm 5.5mm;
+  background:var(--cream);}
+.gar-h{display:flex;align-items:baseline;gap:4mm;
+  border-bottom:1px solid var(--line);padding-bottom:3mm;}
+.gar-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:30pt;
+  color:var(--gold);font-weight:600;line-height:.9;}
+.gar-u{font-size:7pt;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--mut);font-weight:700;}
+.gar-x{margin-left:auto;color:var(--soft);font-size:8.4pt;text-align:right;
+  max-width:78mm;line-height:1.45;}
+.gar-l{display:flex;justify-content:space-between;gap:5mm;
+  padding:2.3mm 0;border-bottom:1px solid var(--hair);font-size:8.8pt;}
+.gar-l:last-child{border-bottom:none;}
+.gar-l .k{color:var(--soft);}
+.gar-l .v{font-weight:700;white-space:nowrap;}
+
+.esp{padding:2.6mm 0;border-bottom:1px solid var(--hair);display:grid;
+  grid-template-columns:26mm 1fr;gap:4mm;}
+.esp:last-child{border-bottom:none;}
+.esp .k{font-size:7pt;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;padding-top:.7mm;}
+.esp .v{color:var(--soft);font-size:8.6pt;line-height:1.5;}
+.cj{padding:3.6mm 0;border-bottom:1px solid var(--hair);}
+.cj:last-child{border-bottom:none;}
+.cj-h{display:flex;align-items:baseline;gap:4mm;}
+.cj-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:15pt;
+  color:var(--gold-lt);font-weight:600;line-height:1;min-width:8mm;}
+.cj-t{font-size:10.8pt;font-weight:700;letter-spacing:-.005em;}
+.cj-q{margin-left:auto;font-size:9.8pt;font-weight:700;white-space:nowrap;}
+.cj-d{color:var(--soft);font-size:8.7pt;margin:1.4mm 0 0 12mm;line-height:1.55;}
+</style></head><body><div class="page cover"><div class="cvfoto">
+  <div class="top"><div class="cv-brand">Valvic Marcenaria</div></div>
+  <div class="ph"><img src="img-flaviana/render-bancada.jpeg"
+    style="object-position:20% center" alt=""></div>
+  <div class="txt">
+    <div class="eyebrow">Proposta de marcenaria planejada</div>
+    <div class="rule"></div>
+    <div class="cv-t">Flaviana e Igor</div>
+    <div class="cv-s">Marcenaria do banheiro da suíte · sobre o projeto executivo de arq. Dani Rosaria</div>
+    <div class="cv-meta">
+      <div><div class="k">Escopo</div><div class="v">3 itens de marcenaria</div></div>
+      <div><div class="k">Prazo de entrega</div><div class="v">60 dias corridos</div></div>
+      <div><div class="k">Validade</div><div class="v">7 dias corridos</div></div>
+    </div>
+  </div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Escopo</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">Três itens de marcenaria.</h2>
+  <p class="lead" style="margin-top:4mm">O levantamento foi feito sobre as oito
+  pranchas executivas — planta, elevações internas e externas, vistas e
+  detalhes. O que está descrito abaixo é o que será executado.</p>
+  <div style="margin-top:6mm"><div class="cj"><div class="cj-h"><div class="cj-n">01</div><div class="cj-t">Armário aéreo sobre a bancada</div><div class="cj-q">R$ 7.500</div></div><div class="cj-d">Três folhas de abrir, cada uma em perfil de alumínio com espelho prata e película de segurança, sobre dobradiça com amortecimento; uma frente fixa fecha o vão. Corpo em amadeirado por fora e branco por dentro, com prateleiras fixas e passagem fitada para o secador. Dois rasgos verticais de LED entre as folhas, em perfil de alumínio — e é dentro deste armário que ficam alojados os drivers de toda a iluminação do banheiro.</div></div><div class="cj"><div class="cj-h"><div class="cj-n">02</div><div class="cj-t">Armário inferior sob a bancada</div><div class="cj-q">R$ 7.700</div></div><div class="cj-d">Gabinete em amadeirado sob a bancada de mármore: nichos abertos na ponta, portas em dobradiça com amortecimento, um gavetão de roupa suja e uma coluna de quatro gavetas — todas as cinco em corrediça oculta Hardt Invisível com amortecimento, nenhuma telescópica. Puxador em cava usinada com pega, na própria frente.</div></div><div class="cj"><div class="cj-h"><div class="cj-n">03</div><div class="cj-t">Porta de correr em MDF</div><div class="cj-q">R$ 3.500</div></div><div class="cj-d">Folha de passagem em MDF branco da linha ultra premium, montada em sistema deslizante Rometal RO82 Top, com amortecimento no fim de curso. Puxador tipo concha embutido.</div></div></div>
+  <div class="dupla sangra baixa" style="margin-top:8mm">
+    <div class="ph ct"><img src="img-flaviana/armarios-externa.jpeg" alt="">
+      <div class="cap">Elevação · tudo fechado</div></div>
+    <div class="ph ct"><img src="img-flaviana/armarios-interna.jpeg" alt="">
+      <div class="cap">Elevação · tudo aberto</div></div>
+  </div>
+  <div class="foot"><span>Valvic Marcenaria · Flaviana e Igor</span><span>Marcenaria do banheiro da suíte</span><span>2 / 5</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Especificação técnica</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">Como cada peça é feita.</h2>
+  <div style="margin-top:5mm"><div class="esp"><div class="k">Chapa</div><div class="v">MDF amadeirado nas faces externas; todo o branco — interior, fundos e a folha da porta de correr — na linha <strong>ultra premium</strong>, chapa de área úmida, mais resistente à umidade que o MDF branco comum</div></div><div class="esp"><div class="k">Borda</div><div class="v">Fita de borda extra fina de 0,4 mm, aplicada em coladeira automática</div></div><div class="esp"><div class="k">Portas</div><div class="v">As folhas que abrem são <strong>portas de espelho com estrutura de perfil de alumínio</strong>. O espelho é pesado, e o perfil é o que sustenta a folha, mantém o esquadro e evita que a frente empene ou descaia com o uso</div></div><div class="esp"><div class="k">Espelho</div><div class="v">Prata com película de segurança nas folhas de abrir; colado na frente fixa</div></div><div class="esp"><div class="k">Iluminação</div><div class="v">Fita LED IP65 24 V · 3000 K em perfil de alumínio Usina Design com difusor — drivers slim alojados no armário aéreo</div></div><div class="esp"><div class="k">Ferragem</div><div class="v">Dobradiça com amortecimento e corrediça oculta Hardt Invisível P-10 com amortecimento nas cinco gavetas — a corrediça não aparece na lateral e a gaveta sai inteira</div></div><div class="esp"><div class="k">Puxador</div><div class="v">Cava usinada com pega, na própria frente — sem peça aplicada</div></div><div class="esp"><div class="k">Porta</div><div class="v">Sistema deslizante Rometal RO82 Top com amortecimento, trilho embutido no dente da parede e guia de piso</div></div><div class="esp"><div class="k">Prateleiras</div><div class="v">Fixas, sobre suportes</div></div><div class="esp"><div class="k">Produção</div><div class="v">Corte e usinagem em CNC própria, laminação de borda em coladeira automática, instalação e montagem por equipe própria da Valvic</div></div></div>
+  <div class="ph banda" style="margin-top:9mm;height:110mm">
+    <img src="img-flaviana/render-porta.jpeg" alt="">
+    <div class="cap">Porta de correr · projeto executivo</div></div>
+  <div class="foot"><span>Valvic Marcenaria · Flaviana e Igor</span><span>Marcenaria do banheiro da suíte</span><span>3 / 5</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Investimento</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">Investimento e garantia.</h2>
+  <table class="inv" style="margin-top:6mm">
+    <tr><th class="l">Item</th><th class="hi">Investimento</th></tr>
+    <tr><td class="l">Armário aéreo sobre a bancada</td><td class="hi">R$ 7.500</td></tr><tr><td class="l">Armário inferior sob a bancada</td><td class="hi">R$ 7.700</td></tr><tr><td class="l">Porta de correr em MDF</td><td class="hi">R$ 3.500</td></tr>
+    <tr class="tot"><td class="l">Total</td>
+      <td class="hi">R$ 18.700</td></tr>
+  </table>
+  <div class="box"><div class="t">O que está dentro do valor</div>
+  <p>Fornecimento de material, produção em CNC e coladeira automática próprias, espelho, iluminação em LED com perfil e drivers, ferragem, sistema deslizante, transporte, entrega na obra e <strong>instalação e montagem por equipe própria da Valvic</strong>.</p></div>
+  <div class="eyebrow" style="margin-top:7mm">Garantia</div>
+  <div class="rule"></div>
+  <div class="gar"><div class="gar-h"><div><div class="gar-n">10</div><div class="gar-u">anos de garantia</div></div><div class="gar-x">Garantia da <strong>Valvic</strong>, não do fabricante: quem projeta, corta, monta e atende é a mesma equipe, sem triangulação. Cobertura por componente, documentada e assinada na entrega.</div></div><div class="gar-l"><div class="k">Estrutura, corpo, fundo e prateleiras</div><div class="v">10 anos</div></div><div class="gar-l"><div class="k">Dobradiça com amortecimento</div><div class="v">10 anos</div></div><div class="gar-l"><div class="k">Corrediça oculta Hardt Invisível, em <strong>todas</strong> as gavetas — a Valvic não trabalha com telescópica</div><div class="v">5 anos</div></div><div class="gar-l"><div class="k">Sistema deslizante da porta de correr</div><div class="v">10 anos</div></div><div class="gar-l"><div class="k">Regulagem de porta e de gaveta</div><div class="v">2 anos</div></div><div class="gar-l"><div class="k">Retorno do chamado</div><div class="v">24 horas</div></div><div class="gar-l"><div class="k">Visita técnica, sem custo dentro do prazo</div><div class="v">até 3 dias úteis</div></div></div>
+  <div class="foot"><span>Valvic Marcenaria · Flaviana e Igor</span><span>Marcenaria do banheiro da suíte</span><span>4 / 5</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Condições</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">Prazo, pagamento e limites.</h2>
+  <div class="two" style="margin-top:7mm">
+    <div>
+      <div class="term" style="margin-top:0"><div class="k">Pagamento</div>
+        <div class="v">Entrada de 30% + saldo na entrega</div>
+        <div class="s">Entrada de <strong>R$ 5.600</strong> na
+        assinatura e <strong>R$ 13.100</strong> na entrega.</div></div>
+      <div class="term"><div class="k">Prazo de entrega</div>
+        <div class="v">60 dias corridos</div>
+        <div class="s">Contados da aprovação e da medição em obra.</div></div>
+      <div class="term"><div class="k">Conferência de medidas</div>
+        <div class="v">Visita técnica antes do corte</div>
+        <div class="s">Nada vai para a CNC antes da nossa medição no local.</div></div>
+      <div class="term"><div class="k">Validade da proposta</div>
+        <div class="v">7 dias corridos</div></div>
+    </div>
+    <div class="fora">
+      <div class="eyebrow">Não incluso nesta proposta</div>
+      <div class="rule"></div>
+      <ul><li><div class="k">Bancada esculpida em mármore</div><div class="v">é serviço de marmoraria.</div></li><li><div class="k">Dente na parede para embutir o trilho</div><div class="v">a prancha manda fazer o dente — é serviço da obra. O sistema deslizante é nosso.</div></li><li><div class="k">Box de vidro, nicho em porcelanato, porcelanato e paginação</div></li><li><div class="k">Forro de gesso e sanca</div></li><li><div class="k">Louças, metais, cubas e aquecimento</div></li><li><div class="k">Pontos elétricos e hidráulicos</div><div class="v">a iluminação embutida NA marcenaria é nossa; os pontos são da obra.</div></li></ul>
+    </div>
+  </div>
+  <div class="ph banda" style="margin-top:auto;height:68mm">
+    <img class="ct" src="img-flaviana/armarios-perspectiva.jpeg" alt="">
+    <div class="cap">O banheiro inteiro · projeto executivo</div></div>
+  <div class="sig" style="margin-top:9mm">
+    <div class="ln">Valvic Marcenaria</div>
+    <div class="ln">Flaviana e Igor</div>
+  </div>
+  <div class="foot"><span>Valvic Marcenaria · Flaviana e Igor</span><span>Marcenaria do banheiro da suíte</span><span>5 / 5</span></div>
+</div></div></body></html>

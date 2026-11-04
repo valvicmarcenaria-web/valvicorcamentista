@@ -23,13 +23,104 @@ software de produção**.
 > Trabalha em **3 fases**: ① Olhar → ② Preço → ③ Estratégia. Numa demanda simples
 > percorre as três em sequência; numa conversa de calibração, foca a fase pedida.
 
+## ⛔ Regras de quantitativo — leia ANTES de levantar
+
+**`referencias/regras-de-quantitativo.md` é a fonte única** das regras cravadas
+pelo Jonathan em 28/10/2026, e cada uma nasceu de um erro real:
+
+| | regra |
+|---|---|
+| 1 | ⛔⛔ **pinus está PROIBIDO** — engradado vira travessa de MDF, estrado vira metalon, estrutura vira serralheria |
+| 2 | **suporte de prateleira: R$ 6,50 por PRATELEIRA** (composição de 4), não R$ 30 por par — e não se declara, conta-se |
+| 3 | **estrado em metalon, R$ 250 o quadro, em TODA cama** — some o painel de MDF |
+| 4 | **prateleira acima de 1,20 m pede alma de aço** — contra flecha, e também se conta |
+| 5 | **corrediça touch R$ 500 SUBSTITUI o par de corrediça E o pulsador** — em GAVETA o pulsador nunca entra; em porta e báscula, que não têm corrediça, ele continua |
+| 6 | **perfil de proteção de piso, R$ 15 o metro linear**, em todo painel que toca o chão |
+| 7 | **palhinha natural é R$ 650 o m² e é tapeceiro**, não chapa melamínica de R$ 137 |
+| 8 | **estofado R$ 600 o m²** |
+| 9 | **Branco Diamante é COR**: 700/550/350 |
+| 10 | **corte: R$ 2,00 por chapa e R$ 2,50 por peça, em cada ambiente** |
+| 11 | unificar o preço **não** unifica a leitura: cada peça guarda o DET de origem |
+| 12 | serralheria entra pelo **valor fechado do ambiente**, nunca por chave da Base |
+| 13 | **"m²" tem dois sentidos e eles não se misturam**: peça de MDF se paga por CHAPA (área ÷ área útil da chapa); palhinha, espelho, vidro, estofado e malha se pagam POR m² (área cheia). O discriminador é a CHAVE: só `MDF …` é chapa |
+| 14 | **malha de cordas náuticas R$ 250 o m²** — nas bases de cama da Suíte 03 ela substitui o estrado de metalon, não se soma |
+| 15 | **moldura de MESMA cor é PROVENÇAL**: duas chapas inteiras, a base lisa e a de cima usinada na router. Vale para frente E para moldura de espelho em arco. **Moldura de OUTRA cor é régua**, porque peça inteira cobriria o material de baixo |
+| 16 | **nicho com interior de outra cor é MATERIAL DUPLO**: em melamínico uma chapa não tem duas cores — cada face é duas peças coladas |
+| 17 | **não existe "MDF palha indiana sextavada"** — é a palha indiana do tapeceiro, R$ 650 o m², e o que a marcenaria faz é o fundo em que ela se fixa |
+| 19 | ⛔⛔ **PEDRA NÃO É ESCOPO DA MARCENARIA** · ⭐ **espelho, vidro e serralheria QUE ESTÃO NA MARCENARIA são nossos** — a fronteira inteira está logo abaixo desta tabela |
+| 18 | ⛔ **nem toda peça com "prateleira" no nome é prateleira**: painel, divisória, horizontal fixa cavilhada, camada de baixo de prateleira duplada e sapateira corrediça NÃO levam suporte nem alma. A exceção se escreve na `obs` da peça (`sem suporte`, `sem alma`), não na cabeça |
+
+> ⭐⭐ **Regra da casa é do MOTOR, não da lista.** O que vale para toda prateleira
+> e para toda cama o motor calcula sozinho — o que se declara à mão se esquece à
+> mão. O auditor quebra quando alguém declara o que agora é automático.
+
+## ⛔⛔⛔ A FRONTEIRA DO ESCOPO — DEFINITIVA [Jonathan, 29/10/2026]
+
+> *"grave DEFINITIVAMENTE NA SKILL: pedra nao é escopo da marcenaria.
+> espelhos, vidros e serralheria que estiverem na marcenaria é nosso."*
+
+**São duas metades da mesma regra, e as duas valem em TODO orçamento, sem
+exceção e sem perguntar de novo.**
+
+### ⛔ PEDRA NUNCA É NOSSA
+
+Granito, quartzito, mármore, silestone, porcelanato — **qualquer bancada,
+sóculo, frontão, tampo, soleira ou peitoril em pedra fica FORA.** Fora do
+custo, fora da proposta, fora do contrato.
+
+- Não se lança linha de pedra no orçamento, nem a zero.
+- A pedra entra na lista **"o que não está nesta proposta"**, com letra.
+- A nota do ambiente fala da **folga de medição**, que é o que de fato é
+  nosso: *"a marcenaria é medida depois que a bancada está no lugar"*.
+- ⚠ O executivo desenhar a pedra junto do armário **não a torna nossa**.
+  Desenhar junto não é fornecer.
+
+### ⭐ ESPELHO, VIDRO E SERRALHERIA SÃO NOSSOS — QUANDO ESTÃO NA MARCENARIA
+
+Se a peça **faz parte do móvel**, ela é nossa: medimos, fornecemos e
+instalamos, no mesmo contrato e na mesma data.
+
+| é nosso | não é nosso |
+|---|---|
+| espelho de porta de roupeiro, de frente de armário, de painel de banheiro com moldura usinada | espelho de parede solto, sem relação com móvel |
+| vidro de porta de cristaleira, de divisória que faz parte do móvel, reflecta de frente | box de banheiro, janela, guarda-corpo de escada |
+| serralheria que estrutura o móvel: estrado de cama, base metálica, alma de aço, quadro de leito, haste de prateleira, aleta com alma | portão, grade, escada metálica, pergolado, estrutura de obra |
+
+⭐ **O teste:** se a peça sai junto com o móvel no mesmo caminhão e é
+instalada pela mesma equipe, é nossa. Se ela existe sem o móvel, não é.
+
+⛔⛔ **E vale a REGRA DOS DOIS ESTADOS:** todo ofício que é nosso tem de ter
+**linha COM VALOR** no orçamento. Linha a R$ 0,00 com promessa de
+fornecimento na proposta é prometer com o dinheiro do lucro. Ou se cota
+antes de imprimir, ou o item vai nomeado na folha como fora. Não existe
+meio-termo.
+
+
 ## Princípios (valem nas 3 fases)
 
+- **CALCULAR, nunca ESTIMAR — é isso que faz um orçamentista de verdade.** O número de
+  chapas (e de tudo) sai do **cálculo peça-a-peça** — cada peça L×A decomposta e encaixada
+  na chapa 2,75×1,85 — **não** de estimativa por área/extensão "no olho". Estimar é, no
+  máximo, **conferência de sanidade** do cálculo; **nunca o número entregue**. **Nunca
+  afirmar um número que não se pode provar:** se falta cota, diga que falta e peça a medida —
+  não chute. Estimar é o caminho do prejuízo; calcular é o caminho do lucro.
 - **Quantitativo antes de preço.** Primeiro o levantamento físico (chapas, metros
   de fita, ferragens), depois o custo.
+- **Plano de corte SEMPRE.** Para o levantamento preciso do quantitativo, montar o
+  **plano de corte** (decompor peça a peça → encaixar nas chapas 2,75×1,85 m),
+  não fechar só pela estimativa de área. O plano de corte é o que dá o número exato
+  de chapas por cor/espessura e revela sobras/aproveitamento. **E nunca esquecer os
+  insumos:** cola (branca/de contato/bastão), parafusos/cavilhas/minifix, fita de
+  borda **+ filetagem**, cola de fita, LED/fonte/perfil, e os consumíveis de
+  acabamento, limpeza e **embalagem** (tinner, estopa, strech, cantoneira, papelão).
+  Insumo esquecido = MC que evapora na produção.
 - **CX define margem mínima, não custo.** A complexidade fixa o **piso de
   margem**, não muda o custo. Preço por markup divisor: `valorCliente =
   custoDir / (1 − margem)`.
+- **A MC é DIRECIONADA, não descoberta.** Ela é escolhida por projeto e por
+  **nível de complexidade — do projeto todo ou de um item específico**. O motor
+  calcula o preço que entrega a MC escolhida. Piso da casa **35%**, ideal 35–40%;
+  abaixo do piso é decisão de preço declarada, nunca resultado de conta.
 - **Validação por MC%.** Orçamento validado de trás para frente: material +
   operacional + terceirizados + venda + margem de erro → **MC ideal 35–40%**
   (ajustável pela **situação de caixa**, ver Fase 3).
@@ -75,8 +166,10 @@ e estimar pela escala, sinalizando.
     a resposta no projeto e em `materiais.json` (ref. ~R$660-710/m² reflecta
     bronze + perfil bronze, base Kenia&Fábio).
 
-> Calibração: erra para cima de propósito (melhor sobrar 1 chapa). Ver
-> `projetos/treino/` e `projetos/treino/calibracao-camila.md` (onde o olhar
+> Calibração: o arredondamento p/ cima (melhor sobrar 1 chapa) vale **no fecho do
+> cálculo peça-a-peça** — nunca como substituto dele. Estimar por área/extensão é
+> **só quando falta cota** e **sempre sinalizado como estimativa** (nunca cravado como
+> número fechado). Ver `projetos/treino/` e `calibracao-camila.md` (onde o olhar
 > falha: subestima fita de cor/ripado e prateleiras; superestima branco/LED;
 > sempre lançar consumíveis).
 
@@ -87,9 +180,21 @@ e estimar pela escala, sinalizando.
 2. **Custo de material** = Σ(quant × preço de compra) de `dados/materiais.json`.
    Lembrar: fita tem **dois custos** — insumo + **filetagem** (máquina ~R$2,5/m,
    manual ~R$4/m). Ver `laminacao-e-construcao.md`.
-3. **Fechamento** (modelo da planilha real, ver `validacao-orcamento.md` e
-   `notas-marcos-planilha.md`): operacional + terceirizados + venda + margem de
-   erro; **MC = Investimento − Custo total**.
+3. **Fechamento — ⭐ `modelo-de-custo.md` é a FONTE ÚNICA**, implementada em
+   `projetos/motor_mc.py`. Nenhum motor redefine coeficiente de encargo: todos
+   importam de lá. A cascata, sobre o preço de venda:
+   **degrau 1 (bruto)** nota fiscal 5% · **taxa de cartão 1,2% POR PARCELA**
+   (só quando há cartão: 6× = 7,2%, 10× = 12%) · margem de erro 2% ·
+   desgaste de serra 0,5% · manutenção 0,5%;
+   **degrau 2 (líquido = bruto − NF − cartão)** RT 10% · vendedor 10%, mesma base;
+   **degrau 3 (líquido 2 = líquido − RT − vendedor)** produção 7% =
+   coordenação 1 + programação 1 + fabricação 2,5 + montagem 2,5.
+   `PREÇO = custo_direto / (BASE − MC)` · `MC = BASE − custo_direto/preço`.
+   ⛔ **Cada degrau da escada de pagamento tem a SUA base e a SUA MC** — rodar
+   `M.mc()` em todos e conferir o pior. Preço de tabela com cartão em 10×
+   custa **8,9 pontos** mais de encargo que o mesmo preço à vista.
+   Custo direto: matéria-prima (oito linhas) + terceirizados + logística
+   (três fretes) + **embalagem, 2% do próprio custo direto**.
 4. **Ferramenta oficial = `ferramentas/validacao-orcamento.html`** (o app). A
    partir de agora **o orçamento é feito no app**: biblioteca editável, ambientes,
    indicadores de MC e situação de caixa, importar/exportar JSON. Os outros HTML
@@ -97,7 +202,40 @@ e estimar pela escala, sinalizando.
 5. **Cross-checks:** nº de cj4 (suportes) = nº de prateleiras móveis; chapa de
    cor consistente com a fita de cor.
 
-## FASE 3 — ESTRATÉGIA (margem, otimização, proposta)
+## 
+⛔⛔ **AUDITAR A PROPOSTA EM TRÊS PASSADAS, NESTA ORDEM** [30/09/2026]
+  1. **conteúdo perdido** — normalizar HTML e PDF tirando todo espaço e
+     acento, e conferir que cada frase do HTML saiu no PDF. O auditor de
+     posição NÃO pega bloco engolido por `overflow:hidden`; no Marcelo
+     Tolentino a escada de pagamento inteira sumiu e o transbordo disse "ok".
+  2. **transbordo** — último bloco contra o topo do rodapé, **e rodapé
+     ausente conta como transbordo**: quando a página estoura, é o rodapé que
+     é empurrado para fora, e usar o pé da folha como régua responde "ok".
+  3. **metragem e quantitativo** — regex de medida e de contagem de peça.
+  ⛔ **Causa raiz:** `.pad` é coluna flex; caixa com `overflow:hidden` e
+  `flex-shrink` padrão **encolhe** e corta sem empurrar nada. Toda caixa de
+  conteúdo fechado leva **`flex:none`**.
+  Ver `referencias/proposta-comercial.md`.
+
+FASE 3 — ESTRATÉGIA (margem, otimização, proposta)
+
+> ⛔⛔⛔ **VALOR SÓ MUDA SE FOR EXPRESSAMENTE PEDIDO.** [Jonathan 21/10/2026]
+> Depois que um valor foi ao cliente, ele é compromisso. Mudou a descrição,
+> mudou um custo, entrou item novo — **o valor dos outros itens não se
+> mexe**. Só muda o item que ele nomear, ou a tabela inteira quando ele
+> pedir MC nova ou linha nova. ⛔ Motor que rateia alvo pelo custo faz a
+> tabela andar sozinha: **congelar os preços numa tabela declarada** assim
+> que a proposta for ao cliente. ⭐ E quando o custo mudar com o valor
+> parado, **reportar a margem nova** — o relatório interno muda mesmo
+> quando a folha do cliente não muda. Regra completa em
+> `proposta-comercial.md`.
+
+> ⛔⛔ **A PROPOSTA NÃO LEVA METRAGEM NEM QUANTITATIVO.** [Jonathan 12/09/2026]
+> Nenhuma cota, m², contagem de porta, gaveta, prateleira, ripa, chapa, metro
+> de fita ou de LED, número de dobradiça ou corrediça. Descreve-se o **móvel e
+> o benefício**; material, acabamento, marca de ferragem, função, prazo,
+> garantia e preço ficam. Antes de entregar, rodar o regex de cota no PDF —
+> qualquer ocorrência é erro. Regra completa em `proposta-comercial.md`.
 
 - **Situação de caixa — perguntar em TODA demanda.** Define a MC mínima aceitável:
   crítico ≤25% · ruim ≤30% · normal 30–37% · bom 37–45% · ótimo >45%
@@ -110,6 +248,22 @@ e estimar pela escala, sinalizando.
   proporção do material (o pacote dilui visita/setup → mais barato que separado).
 - **Proposta** (`proposta-comercial.md`): Linha Gold/Silver, garantia, prazo,
   pagamento, RT (10% líquido).
+- ⛔ **TRÊS REGRAS DO QUE NÃO VAI NA PROPOSTA** (`proposta-comercial.md`, topo —
+  o Jonathan já teve de pedir cada uma mais de uma vez).
+  ⚠️ **Valem só para o TEXTO que vai ao cliente. O levantamento de custo
+  continua cotado ao milímetro, peça a peça** — se a regra deixar o
+  levantamento menos preciso, ela foi mal lida.
+  1. **Nunca cotar medida de móvel na descrição.** Nem no título, nem entre
+     parênteses. Medida é documento técnico; na proposta vira objeção antes da
+     venda. Diga a dimensão **em palavras** quando ela for o argumento
+     ("do piso ao forro"). No motor, no plano de corte e no dossiê a cota é
+     **obrigatória**.
+  2. **Nunca explicar a formação do preço** — nada de chapa, nesting,
+     aproveitamento, custo ou margem. Só **benefício**: o que o cliente vê, sente
+     e usa. Justificar por dentro é abrir a planilha para negociação.
+  3. **Imagens do projeto entram no layout.** Render ou perspectiva do projeto
+     dele — nunca "imagem de referência" de terceiro. Sem imagem acessível,
+     **peça**.
 - **Visão Valvic OS:** cada caso também alimenta o motor/regras do sistema.
 
 ---
@@ -122,11 +276,15 @@ e estimar pela escala, sinalizando.
 `movel-roupeiro.md` · `metodo-aprendizado.md` · `processo-orcamento.md` ·
 `logistica.md` · `parametros-orcamento.md`.
 
-**Custo e validação:** `validacao-orcamento.md` (modelo MC%, % reais, situação de
-caixa) · `notas-marcos-planilha.md` (aprendizados da planilha real) · `custos.md`
-(CX, markup) · `chapas.md` · `ferragens.md` · `estrutura-orcamento.md`.
+**Custo e validação:** ⭐ **`modelo-de-custo.md` — a cascata de encargos e o
+levantamento do custo direto; é a fonte única, tudo o mais que divergir é
+histórico** · `validacao-orcamento.md` (blocos de custo, situação de caixa,
+falhas registradas; a tabela de % é SUPERADA) · `notas-marcos-planilha.md`
+(histórico da planilha; SUPERADO) · `custos.md` (CX, markup) · `chapas.md` ·
+`ferragens.md` · `estrutura-orcamento.md` (rateio por item).
 
-**Estratégia/proposta:** `otimizacao-custos.md` · `proposta-comercial.md` ·
+**Estratégia/proposta:** `otimizacao-custos.md` · ⭐ **`proposta-comercial.md`
+— inclui a regra ⛔ NUNCA PÔR METRAGEM NEM QUANTITATIVO NA PROPOSTA** ·
 `posicionamento.md`.
 
 **Dados e ferramentas:** `dados/materiais.json` (fonte de verdade dos preços) ·

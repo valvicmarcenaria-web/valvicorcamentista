@@ -1,0 +1,57 @@
+{
+  "cliente": "Graça",
+  "projeto": "Marcenaria — Despensa + Lavanderia + Armário-tanque",
+  "arquiteta": "Lais Teles",
+  "autor_prancha": "Marcus Juan",
+  "data": "2026-07-16",
+  "revisao": "2 — projeto 100% Azul, tampo pedra, MC 32% + nesting unificado",
+  "validade_dias": 15,
+  "caderno_paginas": 25,
+  "acabamento": "MDF Azul Petróleo Guararapes — projeto 100% Azul (aparente + caixaria + fundos), sem Branco TX",
+  "metodo": "peça-a-peça (corte-graca.py) — calcular, não estimar; nesting unificado (uma cor)",
+  "material": {
+    "chapas_total": 9,
+    "chapas_custo": 4000,
+    "detalhe_chapas": {"Azul_15": 5, "Azul_18": 1, "Azul_6": 3},
+    "nota_otimizacao": "era 11 chapas (caixaria branca + tampo MDF); unificar cor -1 chapa, tampo em pedra -1 chapa -> 9",
+    "insumos": {"fita": 675, "cola_parafuso_minifix_cavilha": 540, "usinagem": 450, "led_3000k": 300, "acessorios_pistoes_cestos": 370},
+    "visitas": 500,
+    "logistica": 300
+  },
+  "ferragens": {
+    "pares_corredica": 7,
+    "dobradicas": 18,
+    "Telescopica": {"custo": 388, "garantia_anos": 2, "desc": "corrediça telescópica R$40/par + dobradiça padrão R$6"},
+    "Hardt": {"custo": 634, "garantia_anos": 5, "desc": "corrediça oculta alemã R$70/par + dobradiça Hardt R$8"}
+  },
+  "motor": {
+    "com_cartao": true,
+    "a": 0.18, "liqF": 0.88, "b": 0.143, "rt_liquido": 0.10,
+    "denominador": "0.69416 - mc",
+    "nota_caixa": "Essencial a 32% fica abaixo do piso do Rodrigo (exceção 37%, ideal 43%+) — decisão do Jonathan"
+  },
+  "linhas": [
+    {"nome": "Essencial", "ferragem": "Telescópica", "garantia_anos": 2, "mc": 0.32, "fixedR": 7523, "calculado": 20106, "cravado": 20100},
+    {"nome": "Essencial Prime", "ferragem": "Hardt (oculta alemã)", "garantia_anos": 5, "mc": 0.37, "fixedR": 7769, "calculado": 23967, "cravado": 24000}
+  ],
+  "alocacao_ambiente": {
+    "Despensa": {"pct": 0.644, "essencial": 12900, "prime": 15400},
+    "Lavanderia": {"pct": 0.291, "essencial": 5900, "prime": 7000},
+    "Armário-tanque": {"pct": 0.065, "essencial": 1300, "prime": 1600}
+  },
+  "pagamento": [
+    "30% entrada + saldo em até 10x no cartão",
+    "50% entrada + saldo em até 8x — 3% desconto",
+    "70% entrada + saldo em até 6x — 5% desconto",
+    "70% entrada + saldo por transferência — 7% desconto"
+  ],
+  "prazo": "60 a 90 dias corridos",
+  "nao_inclusos": ["tampos de pedra e cuba/inox (bancada da despensa + armário-tanque, marmorista)", "máquina de lavar (cliente)", "pontos hidráulicos/elétricos"],
+  "flags": [
+    "nº de folhas do armário superior da despensa (existente a revestir)",
+    "largura bancada despensa 136 vs 154 (adotado 154)",
+    "cestos vs nichos com perfil metálico (coluna dir. despensa)",
+    "modelo de puxador despensa/tanque"
+  ],
+  "status": "entregue"
+}

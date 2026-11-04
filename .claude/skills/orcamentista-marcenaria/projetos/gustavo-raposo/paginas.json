@@ -1,0 +1,377 @@
+{
+  "01": {
+    "titulo": "Planta Arquitetônica",
+    "id": "1AZwun0Chl9WCYcPbD5ea3r7Jek9mRlUz",
+    "kb": 626
+  },
+  "02": {
+    "titulo": "Planta Cobertura",
+    "id": "1866P-RAnJrq2WYrqLwE7HBQ78fV91DvF",
+    "kb": 137
+  },
+  "03": {
+    "titulo": "Planta Layout",
+    "id": "1QhOtjmqk-xamdabM0IqTYwGDQkRFBiVP",
+    "kb": 629
+  },
+  "04": {
+    "titulo": "Planta Demolir e Construir",
+    "id": "1NN1RJDLubDQHcU9aVVCeMprltUg5kI8K",
+    "kb": 196
+  },
+  "05": {
+    "titulo": "Planta Construir Cobertura",
+    "id": "1GavrJcMZYpxAjcAUwBW2xQ4DMuLkevsO",
+    "kb": 137
+  },
+  "06": {
+    "titulo": "Planta Eixos Hidráulicos",
+    "id": "1Z5oEVDL8zFfbD4O4-uQ96wlotzC0nj4I",
+    "kb": 382
+  },
+  "07": {
+    "titulo": "Planta de Acabamentos",
+    "id": "1AFHgVjeHANKwyle699bJ-pEW7r7nDY6C",
+    "kb": 370
+  },
+  "08": {
+    "titulo": "Planta Elétrica",
+    "id": "10hvXzf_qDfLr47CaEK-JR1eH_sgGVzqK",
+    "kb": 464
+  },
+  "09": {
+    "titulo": "Planta Forro",
+    "id": "1p5Cd6QZklvJCALACL2iqRz_IQPtNX8ac",
+    "kb": 712
+  },
+  "10": {
+    "titulo": "Planta Luminotécnica",
+    "id": "1K9q68Y8xCVy4soh2MRhNagIedjKKnOmO",
+    "kb": 874
+  },
+  "11": {
+    "titulo": "Pergolado",
+    "id": "1wd8DnD3F_i-C3RihpdsBBNPQprs1US7J",
+    "kb": 796
+  },
+  "12": {
+    "titulo": "Pergolado",
+    "id": "1ZF0LmNdOx_uI2-Y8rMj89zOlHqtFUJAu",
+    "kb": 148
+  },
+  "13": {
+    "titulo": "Pergolado",
+    "id": "191neLbMMRwWNf-byBjWC3ElPMFNyEVc1",
+    "kb": 453
+  },
+  "14": {
+    "titulo": "Pergolado",
+    "id": "1b936j9FwFpaCZbT8A7NcWJVgGhv47TfY",
+    "kb": 126
+  },
+  "15": {
+    "titulo": "Pergolado",
+    "id": "1UzT0aRTO9-xbXc09J6sw4uorKIOb64jd",
+    "kb": 354
+  },
+  "16": {
+    "titulo": "Pergolado",
+    "id": "1j_-8TLJDdMxP8O7bRE-rWVfwUHQITJsT",
+    "kb": 890
+  },
+  "17": {
+    "titulo": "SPA",
+    "id": "1VzkOZLphV3wjEG3R7WrQU32ywhRuLpC2",
+    "kb": 172
+  },
+  "18": {
+    "titulo": "SPA",
+    "id": "1sfHnMAMc5AlZfr9kAybLyGQSYqOoliQV",
+    "kb": 155
+  },
+  "19": {
+    "titulo": "Varanda",
+    "id": "137G7pdM8Ry2UJFZUVhQDCs70Sf7qSmCi",
+    "kb": 163
+  },
+  "20": {
+    "titulo": "Varanda",
+    "id": "17whgL-XopX0hQD5RtTpO16Ylaf64Zoo3",
+    "kb": 682
+  },
+  "21": {
+    "titulo": "Varanda",
+    "id": "16-CXq4QGVvxIWG6jWiD1lEK9dDfQdNM5",
+    "kb": 132
+  },
+  "22": {
+    "titulo": "Varanda",
+    "id": "1RF9mV7DA5BbBpXKkFfb5cp0c8h6Z7Z2_",
+    "kb": 123
+  },
+  "23": {
+    "titulo": "Sala Estar",
+    "id": "1bbbQPF5t8iEiW_05Hp2Aj0Nu0IhIzNGI",
+    "kb": 197
+  },
+  "24": {
+    "titulo": "Sala Estar",
+    "id": "1ssNOaEYu4OY6rOTnsehOQDlPL98q_OhD",
+    "kb": 287
+  },
+  "25": {
+    "titulo": "Lavabo",
+    "id": "1xbDIX6UhKeqnvZUMMtf7RTtFtVODVKFU",
+    "kb": 204
+  },
+  "26": {
+    "titulo": "Lavabo",
+    "id": "1ItknF9lq8B_OeBo3HrncMU91i1zjshU5",
+    "kb": 117
+  },
+  "27": {
+    "titulo": "Cozinha",
+    "id": "13YTSx9ZQZpZrAiHlKJWCIhH9kJV3xogw",
+    "kb": 159
+  },
+  "28": {
+    "titulo": "Cozinha",
+    "id": "1s_GOZrYaIKugBS3MhLobJz5nKeM4wvWw",
+    "kb": 183
+  },
+  "29": {
+    "titulo": "Cozinha",
+    "id": "16dzIouf3iEP4lFx0hnx_liRvBj6fYEg4",
+    "kb": 355
+  },
+  "30": {
+    "titulo": "Cozinha",
+    "id": "1vvGJz8JBa2gCbvO5zfqIRZg3D2bp4tBL",
+    "kb": 139
+  },
+  "31": {
+    "titulo": "Despensa",
+    "id": "1hmhqdtQbs2mpjy1-exeF2yK2KJqZHCY2",
+    "kb": 158
+  },
+  "32": {
+    "titulo": "Lavanderia",
+    "id": "1gNW6yhRmudDv9KsT439WAKveXsJPDvhV",
+    "kb": 143
+  },
+  "33": {
+    "titulo": "Lavanderia",
+    "id": "1z-iHIpKUH62JiovKITL8_PaGruru0Kzd",
+    "kb": 133
+  },
+  "34": {
+    "titulo": "Lavanderia",
+    "id": "1DFpfoCNLy9OyQ1mvhf5tpatU9X8TSUSa",
+    "kb": 355
+  },
+  "35": {
+    "titulo": "Circulação Rouparia",
+    "id": "1Lzelvf2MvT7LkaAJW_Zj_YPaijf4Eeeo",
+    "kb": 113
+  },
+  "36": {
+    "titulo": "Circulação Rouparia",
+    "id": "1QsPJSJis0pFXT-5AOfpg-OPj0DJbfxNx",
+    "kb": 235
+  },
+  "37": {
+    "titulo": "Hóspedes Office",
+    "id": "1mbo-ktwr0aukLXKLwXgZSqzMgQHNFoO-",
+    "kb": 148
+  },
+  "38": {
+    "titulo": "Hóspedes Office",
+    "id": "1s26v-60rk4lj0Xr8N6wYRhAD0jxYtRBI",
+    "kb": 952
+  },
+  "39": {
+    "titulo": "Suíte Master",
+    "id": "1vjYq2kekwLCN3bkI0tswR8_UkMnIM2kT",
+    "kb": 129
+  },
+  "40": {
+    "titulo": "Suíte Master",
+    "id": "14DeYauEcnm6Ns-ARI9ZLQTFXxxg9f-oG",
+    "kb": 274
+  },
+  "41": {
+    "titulo": "Suíte Master",
+    "id": "16mnYmJyP0NXnxLo839ssvYNkjUNj2k-4",
+    "kb": 242
+  },
+  "42": {
+    "titulo": "Closet Suíte Master",
+    "id": "1Ob5DB3CsYemHVSVmjRGvY3yd9wCN9giG",
+    "kb": 113
+  },
+  "43": {
+    "titulo": "Closet Suíte Master",
+    "id": "1kbZPAisaGFoB5gKUC2UtNFBp8XHVgtxk",
+    "kb": 225
+  },
+  "44": {
+    "titulo": "Closet Suíte Master",
+    "id": "1zKXyFiGx8QntYN1fjlZSardQS0QOWFP3",
+    "kb": 209
+  },
+  "45": {
+    "titulo": "Banheiro Suíte Master",
+    "id": "1e37za7SVAeUUMJR6EZ5_NRsAsQ0_Fz3V",
+    "kb": 120
+  },
+  "46": {
+    "titulo": "Banheiro Suíte Master",
+    "id": "1EZ8AShU69JmNchnNBES3fyjtU9z6oU2w",
+    "kb": 258
+  },
+  "47": {
+    "titulo": "Banheiro Suíte Master",
+    "id": "1H4ImsOSu-j1nuGFC30MKzCi1k6VITuUr",
+    "kb": 260
+  },
+  "48": {
+    "titulo": "Suíte 01 Filhos",
+    "id": "12YQojrzxKtDekGEXYn7HVFXUl3fT15Rd",
+    "kb": 134
+  },
+  "49": {
+    "titulo": "Suíte 01 Filhos",
+    "id": "11_F0LpmnrTdAiuDS04huKkS8cvv40X6m",
+    "kb": 300
+  },
+  "50": {
+    "titulo": "Suíte 01 Filhos",
+    "id": "1g_SZTeXI-KtB87FHyTGaLtaAAQl9yrdZ",
+    "kb": 379
+  },
+  "51": {
+    "titulo": "Suíte 01 Filhos",
+    "id": "18UTcN2rMPSndOnxXM0hlhQpJ7xnOXUT1",
+    "kb": 129
+  },
+  "52": {
+    "titulo": "Suíte 01 Filhos",
+    "id": "1z2Z8qGKRmwesLtGCOoOBFyukmLfAl6zo",
+    "kb": 116
+  },
+  "53": {
+    "titulo": "Suíte 01 Filhos",
+    "id": "1tatXoXOQuBGN4XGXKuIt96g_a1Siwn5U",
+    "kb": 129
+  },
+  "54": {
+    "titulo": "Banheiro Suíte 01 Filhos",
+    "id": "1192pe2wnkx_hcxJGUpuq17y5zWa7ek9M",
+    "kb": 120
+  },
+  "55": {
+    "titulo": "Banheiro Suíte 01 Filhos",
+    "id": "1Qs1EcVAB_98Slo6VEFFbqY9NV1L2iqln",
+    "kb": 440
+  },
+  "56": {
+    "titulo": "Banheiro Suíte 01 Filhos",
+    "id": "1I5oHQF_ur8ceE8yTXmAlDLzmNwSzppWu",
+    "kb": 123
+  },
+  "57": {
+    "titulo": "Suíte 02 Filhas",
+    "id": "1yIRPtHRELE5ldF_Ectp3ur54KnV-O5i8",
+    "kb": 146
+  },
+  "58": {
+    "titulo": "Suíte 02 Filhas",
+    "id": "1W6nCopJYshpsY4EUVhueQzqJMJDsZexH",
+    "kb": 424
+  },
+  "59": {
+    "titulo": "Suíte 02 Filhas",
+    "id": "1phxkc4jTgJHiYoREbRd_L1Ry2jRv-_D9",
+    "kb": 259
+  },
+  "60": {
+    "titulo": "Suíte 02 Filhas",
+    "id": "1Os-Ar-PN7U3kZ08i-SxShTZPyKYHyHIa",
+    "kb": 129
+  },
+  "61": {
+    "titulo": "Closet Suíte 02 Filhas",
+    "id": "10i4N4y5jFyAK4cJDRMy4SsAoYaYAiZy2",
+    "kb": 125
+  },
+  "62": {
+    "titulo": "Closet Suíte 02 Filhas",
+    "id": "1BY1wzRhgcn0_dQSztb8CMDlk3t1SA4Ad",
+    "kb": 217
+  },
+  "63": {
+    "titulo": "Banheiro Suíte 02 Filhas",
+    "id": "1XepEHUHbjpG4N5N5CgHUFdA5yaYOBwb5",
+    "kb": 120
+  },
+  "64": {
+    "titulo": "Banheiro Suíte 02 Filhas",
+    "id": "1U3zW80qPjI72Co8Hc_7pBi8zMTplKXkx",
+    "kb": 382
+  },
+  "65": {
+    "titulo": "Banheiro Suíte 02 Filhas",
+    "id": "11MrZvWl608kvnvzBNxBH4qgVRVottpZ1",
+    "kb": 124
+  },
+  "66": {
+    "titulo": "Suíte Hóspedes",
+    "id": "1kq3bTEPOF_YrYWLZq2Ye-yu2dPgsNUOm",
+    "kb": 128
+  },
+  "67": {
+    "titulo": "Suíte Hóspedes",
+    "id": "1qUdsigjzDJOl4WFTGF1jHH-nPGR3hZN1",
+    "kb": 498
+  },
+  "68": {
+    "titulo": "Suíte Hóspedes",
+    "id": "1zUhmwbsL3xPT1UD2kHR5w1mp0rr_nqti",
+    "kb": 114
+  },
+  "69": {
+    "titulo": "Anexo Banheiro Suíte Hóspedes",
+    "id": "1OW-ShXnPvIzDvE3BQKjRbmEvN1bdFcJa",
+    "kb": 377
+  },
+  "70": {
+    "titulo": "Anexo Banheiro Suíte Hóspedes",
+    "id": "1rSdCG-ntZObQiuTy5c1wCL4PSbTp8J-9",
+    "kb": 124
+  },
+  "71": {
+    "titulo": "Anexo Banheiro Social",
+    "id": "1yn6ewshMp0K2-s2Axekhw_gXYsKoZPqf",
+    "kb": 263
+  },
+  "72": {
+    "titulo": "Home Schooling",
+    "id": "1ehO2sP49M0HPBD6mTSshVk_0QZ7uV6Wb",
+    "kb": 123
+  },
+  "73": {
+    "titulo": "Home Schooling",
+    "id": "1bPb1uT-KLD5WTxZOSdIh0FkxDHbO2u_v",
+    "kb": 427
+  },
+  "74": {
+    "titulo": "Home Schooling",
+    "id": "1yh8fa17oNEoht4VwSohdbSNbE504Ihsd",
+    "kb": 121
+  },
+  "75": {
+    "titulo": "Home Schooling",
+    "id": "134J-JRzWxlSzybab8aPo_ZqvoWIlFey2",
+    "kb": 120
+  }
+}

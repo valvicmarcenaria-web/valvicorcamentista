@@ -1,0 +1,992 @@
+# TRÊS CENÁRIOS DE FERRAGEM — Gustavo Raposo [30/10/2026]
+
+> *[Jonathan 30/10] "salve a planilha vamos trabalhar um novo cenario de
+> orcamento. Partindo do pressuposto que esse primeiro orcamos em Blum. O
+> segundo faremos em Hettich com a MC de 40% e vamos mudar o painel
+> muxarabi, em vez das ripas, faremos uma peça plana usinada na CNC sem
+> acabamento interno, ou seja, será o custo das chapas e de 500,00 de
+> usinagem. e teremos uma terceira opção com corrediças telescopicas e as
+> dobradiças mais baratas da base."*
+
+**Planilha congelada antes de mexer:** `Gustavo Raposo · CENÁRIO 1 —
+congelado em 30/10/2026`, id `1aF9D-prk4Ytqc4TUeS1NpMT1Olmume43rIs8tAysErY`.
+
+## ⛔ DUAS PREMISSAS QUE NÃO SE SUSTENTAM, E AS DUAS SÃO DE DINHEIRO
+
+**1 · O primeiro orçamento NÃO está em Blum — está em Hettich.** O Jonathan
+cravou isso em 29/10 ("a casa inteira é Hettich, dez anos de garantia
+uniformes") e em 30/10 mandou a Base mandar no preço. `base.py` traz
+`CH_CORREDICA = 'Corrediça Hettich'` a R$ 150 o par e `CH_DOBRADICA =
+'Dobradiça Hettich'` a R$ 50. ⭐ A linha genérica `Corrediça` da Base é que
+é a BLUM, a R$ 300 — o dobro.
+
+**2 · A Base não tem linha de telescópica, e a dobradiça já está no piso.**
+
+| chave na Base | preço | unidade | produto, como a Base o chama | garantia |
+| --- | --: | --- | --- | --- |
+| Corrediça *(Blum)* | R$ 300,00 | **por gaveta** | Corrediça Blum | 30 anos |
+| Corrediça Hettich | R$ 150,00 | par | Hettich Quadro V6 500 mm · oculta · 30 kg · 100 mil ciclos | 10 anos |
+| **Corrediça Hardt** | **R$ 80,00** | par | **Hardt Invisível P-10 · ⭐ "o Padrão da casa"** | **5 anos** |
+| Corrediça touch | R$ 500,00 | — | — | — |
+| Dobradiça *(Blum)* | R$ 50,00 | un | Dobradiça Blum | 30 anos |
+| Dobradiça Hettich | R$ 50,00 | un | Hettich Sensys Linha Gold | 10 anos |
+
+**⭐⭐ A HARDT NÃO É TELESCÓPICA — É INVISÍVEL** [30/10/2026, perguntado pelo
+Jonathan]. `base.py` não descreve a linha: ela vem importada da Base de
+Custos e o código só pegou o preço. Lida na Base, ela é a **Hardt Invisível
+P-10**, e a Base a chama de *"o Padrão da casa"*. ⭐ Então **os três cenários
+são de corrediça OCULTA** — o cliente não vê trilho em nenhum deles. O que
+muda é marca, carga, ciclos e garantia, não se o trilho aparece. ⛔ E a
+telescópica, que seria o degrau de 2 anos, **não existe nesta Base**: pedi-la
+é linha nova e cotação nova, para um produto PIOR que a Hardt.
+
+**⚠ A HARDT NÃO TEM CARGA NEM CICLOS DECLARADOS.** A Hettich diz "30 kg ·
+100 mil ciclos"; a P-10 não diz nada. ⛔ E este projeto tem gavetão — tanto
+que a "Corrediça de carga" já está lançada a ZERO em 3 pares, na Suíte 01 e
+na Suíte 02. Pôr R$ 80 debaixo de um gavetão que já pedia corrediça de carga
+é o ponto técnico a cobrir antes de oferecer o cenário 3.
+
+**⚠ A unidade da Blum é "por gaveta", não "par"** — a Base fala duas línguas
+na mesma coluna. Dá no mesmo, porque uma gaveta leva um par, e os 87 × R$ 300
+seguem corretos. Mas é armadilha esperando quem ler rápido.
+
+⛔ **As duas dobradiças custam o mesmo R$ 50.** "A dobradiça mais barata da
+Base" é a que já está lançada: o cenário 3 não economiza um centavo em
+dobradiça. ⭐ E como o preço é igual, o cenário 3 deve especificar a
+**Hettich** — não há razão para descer de linha de graça.
+
+⛔ **E não existe telescópica na Base.** `base.py` é explícito: *"Nenhuma
+telescópica comum entra: onde a prancha pede telescópica, SOBE para Hettich
+oculta."* Montei o cenário 3 com a **Hardt a R$ 80**, que é a corrediça mais
+barata que a Base tem de verdade — **oculta**, e com **5 anos** de garantia
+em vez dos 2 da telescópica. ⭐ O senhor pediu pior e a Base só tem melhor.
+
+## O que move entre os cenários, e só isso
+
+Varrido da planilha gravada, não do meu modelo dela:
+
+- **87 pares de corrediça** no projeto · **zero corrediça touch**
+- **97 dobradiças** — que não movem, porque Blum e Hettich custam igual
+- O **Office**, que troca o muxarabi inteiro nos cenários 2 e 3
+
+⭐ **A ferragem só arrasta a EMBALAGEM.** Os consumíveis são 6% sobre
+chapa + fita + filetagem, onde ferragem não entra; a embalagem é 2% sobre um
+subtotal que inclui a ferragem. Então o delta de cada ambiente é
+`pares × Δpreço × 1,02`, e o 1,02 foi conferido contra a Varanda: embalagem
+de R$ 207,23 sobre um subtotal de R$ 10.361,67. Exato.
+
+## O Office com o painel plano
+
+O muxarabi de hoje são **170 réguas** de 5 cm entalhadas em meia-madeira:
+6 chapas, 474,8 m de fita, 431,6 m de filetagem MANUAL e 7.144 encaixes que
+saem ZERO. Custo direto **R$ 9.328,00**.
+
+O painel plano, pelo custo que o Jonathan definiu (chapa + R$ 500):
+
+| | |
+| --- | --: |
+| 3 chapas NC18 · 12,0324 m² de painel cheio | 2.100,00 |
+| Usinagem CNC | 500,00 |
+| Perfil de proteção de piso · 4,44 m | 66,60 |
+| Corte por chapa | 6,00 |
+| Consumíveis · 6% | 126,00 |
+| Embalagem · 2% | 55,97 |
+| Frete · 2 viagens | 400,00 |
+| **CUSTO DIRETO** | **3.254,57** |
+
+**Delta: −R$ 6.073,43.** Somem a fita, a filetagem manual, o corte por peça
+de 170 peças e três chapas.
+
+⚠ **E o painel plano tem emenda à vista.** 444 × 271 não cabe em chapa de
+275 × 185 de jeito nenhum. Em 3 chapas são **6 peças e 5 juntas**; em 4
+chapas são 4 peças e 3 juntas. ⛔ Na grade de réguas a emenda caía DENTRO de
+um encaixe e não aparecia — num painel plano ela aparece. A conta acima usa
+3 chapas, que é o que a fórmula da planilha devolve.
+
+## OS TRÊS CENÁRIOS
+
+`preço = custo ÷ (BASE − MC)`, BASE = 84,875% (encargos de 15,125%) — a
+mesma fórmula da aba Preço e Comissões, não uma paralela.
+
+| | **1 · BLUM** | **2 · HETTICH** | **3 · HARDT** |
+| --- | --: | --: | --: |
+| Corrediça | R$ 300/par | R$ 150/par | R$ 80/par |
+| Dobradiça | R$ 50 | R$ 50 | R$ 50 |
+| Muxarabi | 170 réguas | painel CNC | painel CNC |
+| **Garantia** | **30 anos** | **10 anos** | **5 anos** |
+| Linhas a zero na Base | 16 | 15 | 15 |
+| **CUSTO DIRETO** | **175.119,24** | **155.734,81** | **149.523,01** |
+| MC aplicada | 45% | 40% | 40% |
+| **PREÇO** | **439.170,51** | **347.041,36** | **333.198,91** |
+| Margem em R$ | 197.626,73 | 138.816,55 | 133.279,57 |
+
+### ⭐ Quase metade do desconto do 1 para o 2 é margem, não custo
+
+A mesma tabela com os três na MESMA MC separa as duas coisas:
+
+| MC | 1 · Blum | 2 · Hettich | 3 · Hardt |
+| --- | --: | --: | --: |
+| a 45% | 439.170,51 | 390.557,52 | 374.979,34 |
+| a 40% | 390.237,86 | 347.041,36 | 333.198,91 |
+
+Do 1 para o 2 o preço cai **R$ 92.129,15**, e ele se parte em dois:
+**R$ 48.613 de ferragem e muxarabi** · **R$ 43.516 de MC**, que é margem
+abrindo mão. ⛔ São 47% do desconto saindo do lucro, não do custo.
+
+## Custo direto, ambiente por ambiente
+
+`*` = o ambiente muda entre os cenários.
+
+| | pares | 1 · Blum | 2 · Hettich | 3 · Hardt |
+| --- | --: | --: | --: | --: |
+| \* 01 Varanda | 8 | 11.792,90 | 10.568,90 | 9.997,70 |
+| 02 Lavabo | 0 | 1.082,32 | 1.082,32 | 1.082,32 |
+| \* 03 Cozinha | 7 | 25.690,43 | 24.619,43 | 24.119,63 |
+| 04 Despensa | 0 | 3.939,78 | 3.939,78 | 3.939,78 |
+| \* 05 Lavanderia | 5 | 8.152,44 | 7.387,44 | 7.030,44 |
+| 06 Rouparia | 0 | 5.619,80 | 5.619,80 | 5.619,80 |
+| \* 07 Office | 0 | 9.328,00 | 3.254,57 | 3.254,57 |
+| \* 08 Suíte Master | 4 | 11.318,53 | 10.706,53 | 10.420,93 |
+| \* 09 Closet Master | 12 | 13.487,11 | 11.651,11 | 10.794,31 |
+| \* 10 Banho Master | 2 | 5.933,02 | 5.627,02 | 5.484,22 |
+| \* 11 Suíte 01 Filhos | 13 | 22.872,37 | 20.883,37 | 19.955,17 |
+| \* 12 Banho Suíte 01 | 2 | 2.673,60 | 2.367,60 | 2.224,80 |
+| \* 13 Suíte 02 Filhas | 14 | 19.676,94 | 17.534,94 | 16.535,34 |
+| \* 14 Closet Suíte 02 | 4 | 8.860,74 | 8.248,74 | 7.963,14 |
+| \* 15 Banho Suíte 02 | 2 | 2.680,36 | 2.374,36 | 2.231,56 |
+| \* 16 Suíte Hóspedes | 8 | 8.713,49 | 7.489,49 | 6.918,29 |
+| 17 Banho Hóspedes | 0 | 1.571,69 | 1.571,69 | 1.571,69 |
+| 18 Banho Social | 0 | 1.603,93 | 1.603,93 | 1.603,93 |
+| \* 19 Homeschooling | 6 | 10.121,79 | 9.203,79 | 8.775,39 |
+| **TOTAL** | **87** | **175.119,24** | **155.734,81** | **149.523,01** |
+
+## ⚠ O que a tabela não mostra e o leitor precisa saber
+
+**⛔ O cenário 1 é o único que ainda carrega os 7.144 encaixes a ZERO.** Os
+cenários 2 e 3 trocaram o muxarabi por um painel com usinagem precificada,
+então o maior buraco do projeto se fecha neles. ⭐ Isso significa que **o
+R$ 175.119,24 do cenário 1 está subestimado** e a comparação favorece ele.
+
+**⛔ A usinagem CNC de R$ 500 não está na Base.** Entrou como valor declarado
+pelo Jonathan. Enquanto não virar linha, o próximo projeto repete o buraco.
+
+**⚠ A "Corrediça de carga" segue a zero (3 pares, Suíte 01 e Suíte 02).** No
+cenário 3, com corrediça mais fraca, o gavetão precisa dela ainda mais.
+
+**⚠ A MC do cenário 1 e do 3 é suposição minha.** O Jonathan só cravou os
+40% do cenário 2. Pus o 1 nos 45% em que a planilha está hoje e o 3 nos
+mesmos 40% do 2.
+
+**⚠ As quinze linhas a zero continuam nos três.** Nenhum destes preços é
+fechado enquanto elas existirem.
+
+---
+
+# ⚠ VERSÃO 2 — SUPERADA pela v3 no fim do arquivo [30/10/2026]
+
+> *[Jonathan 30/10] "a linha hardt considere como telescopica: Corrediça
+> telescopica: Custo da corrediça é 40,00 e dobradiça 10,00"* e, em
+> seguida, *"a mc da blum sera 40% e dos demais em 35%"*
+
+⭐⭐ **A DOBRADIÇA MOVE PELA PRIMEIRA VEZ.** Entre Blum e Hettich as duas
+custam R$ 50 e o delta era ZERO — por isso Rouparia, Banho Hóspedes e Banho
+Social, que não têm uma corrediça sequer, não mudavam de custo na v1. Com a
+dobradiça a R$ 10 elas passam a mudar: são **97 dobradiças × R$ 40 =
+R$ 3.880** de material, R$ 3.957,60 com a embalagem.
+
+⛔ **E a MC de 35% é o PISO DA CASA.** Os cenários 2 e 3 pousam exatamente
+nele. Abaixo disso não há desconto a dar sem furar a política.
+
+## Resumo
+
+| | **1 · BLUM** | **2 · HETTICH** | **3 · TELESCÓPICA** |
+| --- | --: | --: | --: |
+| Corrediça | R$ 300/par | R$ 150/par | R$ 40/par |
+| Dobradiça | R$ 50 | R$ 50 | **R$ 10** |
+| Muxarabi | 170 réguas | painel CNC | painel CNC |
+| **Garantia** | **30 anos** | **10 anos** | **2 anos** |
+| Custo direto | 175.119,24 | 155.734,81 | 142.015,81 |
+| Encargos · 15,125% | 59.023,48 | 47.227,85 | 43.067,45 |
+| MC aplicada | 40% | 35% | 35% |
+| Margem | 156.095,14 | 109.287,59 | 99.660,22 |
+| **PREÇO DE VENDA** | **390.237,86** | **312.250,25** | **284.743,48** |
+
+## Valor de venda, ambiente por ambiente
+
+`*` = o custo muda entre cenários
+
+| | **1 · BLUM** | **2 · HETTICH** | **3 · TELESCÓPICA** | 1 → 3 |
+| --- | --: | --: | --: | --: |
+| \* 01 Varanda | 26.279,44 | 21.190,78 | 17.754,99 | −8.524,46 |
+| 02 Lavabo | 2.411,86 | 2.170,07 | 2.170,07 | −241,79 |
+| \* 03 Cozinha | 57.248,87 | 49.362,27 | 46.969,48 | −10.279,39 |
+| 04 Despensa | 8.779,45 | 7.899,31 | 7.899,31 | −880,15 |
+| \* 05 Lavanderia | 18.167,00 | 14.811,91 | 13.441,68 | −4.725,31 |
+| \* 06 Rouparia | 12.523,23 | 11.267,77 | 9.631,68 | −2.891,55 |
+| \* 07 Office | 20.786,63 | 6.525,46 | 6.525,46 | −14.261,17 |
+| \* 08 Suíte Master | 25.222,35 | 21.466,73 | 19.912,44 | −5.309,91 |
+| \* 09 Closet Master | 30.054,84 | 23.360,62 | 20.661,07 | −9.393,77 |
+| \* 10 Banho Master | 13.221,21 | 11.282,25 | 10.505,10 | −2.716,11 |
+| \* 11 Suíte 01 Filhos | 50.969,07 | 41.871,42 | 38.946,91 | −12.022,16 |
+| \* 12 Banho Suíte 01 | 5.957,88 | 4.747,07 | 3.969,92 | −1.987,96 |
+| \* 13 Suíte 02 Filhas | 43.848,33 | 35.157,77 | 32.008,30 | −11.840,03 |
+| \* 14 Closet Suíte 02 | 19.745,38 | 16.538,83 | 15.638,98 | −4.106,40 |
+| \* 15 Banho Suíte 02 | 5.972,95 | 4.760,62 | 3.983,48 | −1.989,47 |
+| \* 16 Suíte Hóspedes | 19.417,25 | 15.016,52 | 13.216,82 | −6.200,43 |
+| \* 17 Banho Hóspedes | 3.502,37 | 3.151,26 | 2.824,04 | −678,33 |
+| \* 18 Banho Social | 3.574,22 | 3.215,90 | 2.888,68 | −685,54 |
+| \* 19 Homeschooling | 22.555,52 | 18.453,71 | 15.795,07 | −6.760,45 |
+| **PREÇO DE VENDA** | **390.237,86** | **312.250,25** | **284.743,48** | **−105.494,38** |
+
+## Quanto da queda é custo e quanto é margem
+
+| MC igual para os três | 1 · BLUM | 2 · HETTICH | 3 · TELESCÓPICA |
+| --- | --: | --: | --: |
+| a 40% | 390.237,86 | 347.041,36 | 316.469,78 |
+| a 35% | 351.116,27 | 312.250,25 | 284.743,48 |
+
+- **1 → 2:** queda de 77.987,61 = **43.196,50 de custo** + 34.791,11 de MC
+- **1 → 3:** queda de 105.494,38 = **73.768,08 de custo** + 31.726,29 de MC
+
+⭐ Ao contrário da v1, agora o CUSTO domina: na v1 quase metade do desconto
+era margem abrindo mão; aqui são 70% de custo de verdade.
+
+## ⚠ O que ainda não fecha no cenário 3
+
+**⛔ Ele continua carregando R$ 2.750 de ferragem BLUM.** Varrido da
+planilha: **7 articuladores AVENTOS HK-XS a R$ 250** (Cozinha 2, Lavanderia
+5) e **10 pulsadores a R$ 100** (Suíte 02 Filhas). ⛔ Um articulador Blum de
+R$ 250 ao lado de uma corrediça de R$ 40 é incoerente — e pela regra da casa
+báscula e pulsador **não sobem o tier**, então ele paga caro sem comprar
+garantia nenhuma. A garantia do cenário 3 segue 2 anos.
+
+**⚠ Agora o trilho APARECE.** A v1 usava a Hardt Invisível; telescópica de
+verdade é trilho lateral à vista e sem amortecedor. É a primeira vez que a
+diferença entre os cenários é visível para o cliente com a gaveta aberta.
+
+**⚠ As quinze linhas a zero continuam nos três.** Nenhum destes preços é
+fechado.
+
+---
+
+# ⚠ VERSÃO 3 — SUPERADA pela v4 no fim do arquivo [30/10/2026]
+
+> *[Jonathan 30/10] "vamos voltar a blum para 42% · garantias 30 anos blum
+> - 10 anos hettich - 2 anos telescopica"*
+
+⭐ As garantias já eram essas; a mudança é só a **MC da Blum, de 40% para
+42%**. Os custos diretos não se movem — só o preço do cenário 1.
+
+⭐⭐ **E 42% na Blum tem fundamento, não é capricho.** A `garantia.md` diz
+que garantia tem CUSTO DE PROVISÃO e que subir o tier impacta a MC. Trinta
+anos é a maior provisão da tabela da casa: é o tier que mais precisa de
+margem. ⚠ Só note que a própria planilha escreve *"faixa ideal 35 a 40%"*
+ao lado — 42% fica acima da faixa que ela mesma anuncia.
+
+## Resumo
+
+| | **1 · BLUM** | **2 · HETTICH** | **3 · TELESCÓPICA** |
+| --- | --: | --: | --: |
+| Corrediça | R$ 300/par | R$ 150/par | R$ 40/par |
+| Dobradiça | R$ 50 | R$ 50 | R$ 10 |
+| Muxarabi | 170 réguas | painel CNC | painel CNC |
+| **Garantia** | **30 anos** | **10 anos** | **2 anos** |
+| Custo direto | 175.119,24 | 155.734,81 | 142.015,81 |
+| Encargos · 15,125% | 61.776,76 | 47.227,85 | 43.067,45 |
+| MC aplicada | **42%** | **35%** | **35%** |
+| Margem | 171.545,38 | 109.287,59 | 99.660,22 |
+| **PREÇO DE VENDA** | **408.441,38** | **312.250,25** | **284.743,48** |
+
+## Valor de venda, ambiente por ambiente
+
+`*` = o custo muda entre cenários · só Lavabo e Despensa são idênticos
+
+| | **1 · BLUM** | **2 · HETTICH** | **3 · TELESCÓPICA** | 1 → 3 |
+| --- | --: | --: | --: | --: |
+| \* 01 Varanda | 27.505,31 | 21.190,78 | 17.754,99 | −9.750,32 |
+| 02 Lavabo | 2.524,36 | 2.170,07 | 2.170,07 | −354,30 |
+| \* 03 Cozinha | 59.919,37 | 49.362,27 | 46.969,48 | −12.949,89 |
+| 04 Despensa | 9.188,99 | 7.899,31 | 7.899,31 | −1.289,68 |
+| \* 05 Lavanderia | 19.014,44 | 14.811,91 | 13.441,68 | −5.572,75 |
+| \* 06 Rouparia | 13.107,41 | 11.267,77 | 9.631,68 | −3.475,73 |
+| \* 07 Office | 21.756,27 | 6.525,46 | 6.525,46 | −15.230,81 |
+| \* 08 Suíte Master | 26.398,90 | 21.466,73 | 19.912,44 | −6.486,46 |
+| \* 09 Closet Master | 31.456,82 | 23.360,62 | 20.661,07 | −10.795,74 |
+| \* 10 Banho Master | 13.837,95 | 11.282,25 | 10.505,10 | −3.332,84 |
+| \* 11 Suíte 01 Filhos | 53.346,64 | 41.871,42 | 38.946,91 | −14.399,73 |
+| \* 12 Banho Suíte 01 | 6.235,80 | 4.747,07 | 3.969,92 | −2.265,88 |
+| \* 13 Suíte 02 Filhas | 45.893,74 | 35.157,77 | 32.008,30 | −13.885,44 |
+| \* 14 Closet Suíte 02 | 20.666,45 | 16.538,83 | 15.638,98 | −5.027,47 |
+| \* 15 Banho Suíte 02 | 6.251,57 | 4.760,62 | 3.983,48 | −2.268,09 |
+| \* 16 Suíte Hóspedes | 20.323,01 | 15.016,52 | 13.216,82 | −7.106,19 |
+| \* 17 Banho Hóspedes | 3.665,75 | 3.151,26 | 2.824,04 | −841,71 |
+| \* 18 Banho Social | 3.740,94 | 3.215,90 | 2.888,68 | −852,26 |
+| \* 19 Homeschooling | 23.607,67 | 18.453,71 | 15.795,07 | −7.812,61 |
+| **PREÇO DE VENDA** | **408.441,38** | **312.250,25** | **284.743,48** | **−123.697,89** |
+
+## Quanto da queda é custo e quanto é margem
+
+| com os três na mesma MC | 1 · BLUM | 2 · HETTICH | 3 · TELESCÓPICA |
+| --- | --: | --: | --: |
+| a 42% | 408.441,38 | 363.229,88 | 331.232,21 |
+| a 35% | 351.116,27 | 312.250,25 | 284.743,48 |
+
+- **1 → 2:** queda de 96.191,13 = 45.211,49 de custo + **50.979,63 de MC**
+- **1 → 3:** queda de 123.697,89 = **77.209,16 de custo** + 46.488,73 de MC
+
+⛔⛔ **ATENÇÃO À INVERSÃO.** Na v2, com 40/35, eu disse que o custo passara a
+dominar a queda. Com 42/35 o vão de MC subiu de 5 para 7 pontos e o 1 → 2
+VOLTOU a ser mais margem (53%) do que custo (47%). ⭐ No 1 → 3 o custo segue
+mandando, com 62%. **Dois pontos de MC na Blum movem R$ 18.203,52 de preço
+e nenhum centavo de custo.**
+
+## O que segue em aberto
+
+- ⛔ O cenário 3 carrega **R$ 2.750 de ferragem Blum**: 7 articuladores
+  AVENTOS HK-XS a R$ 250 (Cozinha 2, Lavanderia 5) e 10 pulsadores a R$ 100
+  (Suíte 02). Pela regra da casa não sobem o tier — paga caro sem comprar
+  garantia. A garantia do 3 segue 2 anos.
+- ⚠ **No cenário 3 o trilho APARECE** na lateral da gaveta, e não há
+  amortecedor. É a única diferença entre os cenários que o cliente vê com a
+  gaveta aberta, e tem de estar escrita na proposta.
+- ⚠ **As quinze linhas a zero continuam nos três.** Nenhum preço é fechado.
+
+---
+
+# ⭐ VERSÃO 4, A VALER — e com duas TROCAS de ambiente [30/10/2026]
+
+> *[Jonathan 30/10] "vamos trabalhar com blum e hettich em 42% e
+> telescopica em 35%. e vamos criar dois novos cenarios em dois ambientes
+> peculiares. cozinha esta em laca, vamos apresentar o valor com ela em
+> melaminico tbm · o office que tem o painel de muxarabi vamos apresentar
+> outro cenario com ele em usinagem, ou seja, sera as chapas com usinagem,
+> nao vai ter as peças filetadas."*
+
+⛔⛔ **RESTRUTUREI, E É PRECISO SABER DISSO.** Nas v2 e v3 o painel plano do
+Office estava EMBUTIDO nos cenários 2 e 3. Agora que ele virou troca
+independente, os três cenários passam a carregar a configuração ATUAL —
+**Cozinha em laca e Office em réguas** — e as duas trocas se aplicam por
+cima de qualquer um deles. ⭐ A prova de que a base está certa: o cenário 2
+devolve exatamente R$ 161.808,24, que é o custo direto da planilha de hoje.
+
+## Os três cenários, na configuração atual
+
+| | **1 · BLUM** | **2 · HETTICH** | **3 · TELESCÓPICA** |
+| --- | --: | --: | --: |
+| Corrediça / dobradiça | R$ 300 / R$ 50 | R$ 150 / R$ 50 | R$ 40 / R$ 10 |
+| **Garantia** | **30 anos** | **10 anos** | **2 anos** |
+| MC aplicada | 42% | 42% | 35% |
+| Custo direto | 175.119,24 | 161.808,24 | 148.089,24 |
+| **PREÇO DE VENDA** | **408.441,38** | **377.395,31** | **296.920,78** |
+
+## ⭐⭐ 57% DA COZINHA É TINTA
+
+A laca são **21,67 m² × R$ 650 = R$ 14.085,50** num ambiente de
+R$ 24.619,43. ⭐ E ela se conta das peças, nas DUAS FACES, porque peça
+lacada de um lado só empena.
+
+| Cozinha | custo direto | economia |
+| --- | --: | --: |
+| em laca, como está | 24.619,43 | — |
+| em melamínico Diamante/Caiena | 10.482,90 | −14.136,53 |
+| em melamínico Branco TX | 9.726,06 | −14.893,37 |
+
+⭐ A escolha do melamínico quase não muda o resultado — R$ 757 entre o mais
+caro e o mais barato, contra R$ 14.085 de laca. **A tinta é que manda.**
+
+**⛔⛔ E O MELAMÍNICO MATA A MOLDURA PROVENÇAL.** São 14 frentes. A moldura
+é peça INTEIRA de 6 mm usinada na router e colada sobre a base de 15: em
+laca pinta-se o conjunto e a junta some; em melamínico o rebaixo da router
+**expõe o miolo cru de MDF** e não há como acabar. ⭐ Melamínico aqui não é
+a mesma cozinha mais barata — é **frente lisa**, e a prancha cota os 5 cm de
+moldura em cada folha. É decisão de projeto, não de orçamento.
+⭐ Por isso a conta já tira as 14 molduras: 2 chapas de cru 6 viram 1 (só o
+fundo do nicho, que não é moldura), somem 14 peças de corte, 1,58 m de fita
+e a filetagem manual. Reconstruí o painel inteiro e **conferi contra os
+R$ 24.619,43 da planilha antes de confiar nele na variante**.
+
+## O Office em usinagem
+
+De R$ 9.328,00 em réguas para R$ 3.254,57 em painel plano usinado — **−6.073,43**. Somem a fita (474,8 m), a
+filetagem manual (431,6 m), o corte de 170 peças e três chapas. ⭐ E some o
+maior buraco do projeto: os 7.144 encaixes de meia-madeira que saíam ZERO.
+
+## As duas trocas, em PREÇO, por cenário
+
+| | Cozinha → melamínico | Office → usinagem | as duas | PREÇO final |
+| --- | --: | --: | --: | --: |
+| **1 · BLUM** | −32.971,50 | −14.165,43 | −47.136,93 | **361.304,44** |
+| **2 · HETTICH** | −32.971,50 | −14.165,43 | −47.136,93 | **330.258,38** |
+| **3 · TELESCÓPICA** | −28.343,92 | −12.177,30 | −40.521,22 | **256.399,56** |
+
+⭐⭐ **A LACA TIRA MAIS DO PREÇO DO QUE A FERRAGEM INTEIRA.** Trocar a
+cozinha para melamínico vale **R$ 32.971,50** de preço; trocar a casa toda
+de Blum para Hettich vale **R$ 31.046,07**. Um ambiente pesa mais que as 87
+corrediças e as 97 dobradiças somadas.
+
+## ⚠ Segue em aberto
+
+- ⛔ **A moldura provençal.** Melamínico = frente lisa. Decisão de projeto.
+- ⚠ **Qual melamínico**, se for. Diamante/Caiena a R$ 550 ou Branco TX a
+  R$ 350 — são R$ 757 de diferença no ambiente inteiro.
+- ⚠ O preço da chapa de **MDF Cru é DERIVADO**, não lido: a própria aba diz
+  *"derivado da razão cru/fosco de 0,76 da Base antiga, não lido"*. É o
+  mesmo defeito que a corrediça Hettich tinha. Vale ler na Base.
+- ⛔ O cenário 3 ainda carrega **R$ 2.750 de ferragem Blum** (7 articuladores
+  e 10 pulsadores) que não compram garantia nenhuma.
+- ⚠ As quinze linhas a zero continuam. Com o Office em usinagem caem para
+  catorze, e com a cozinha em melamínico caem mais três (as molduras).
+
+---
+
+# ⭐ VERSÃO 5, A VALER — um desconto ÚNICO por troca [30/10/2026]
+
+> *[Jonathan 30/10] "Retire do preço cheio um valor unico, considere esse
+> para os tres cenarios · −28.343,92 · −12.177,30"*
+
+São os descontos da coluna da **TELESCÓPICA** — os menores dos três.
+
+**⭐⭐ E ESCOLHER O MENOR É A ESCOLHA CONSERVADORA, não a tímida.** O desconto
+foi calibrado na MC de 35%; aplicado sobre um cenário de MC 42%, ele devolve
+ao cliente MENOS do que a economia de custo justificaria ali. Resultado: nas
+duas opções de cima **a margem SOBE** quando o cliente leva uma troca.
+
+| | **1 · BLUM** | **2 · HETTICH** | **3 · TELESCÓPICA** |
+| --- | --: | --: | --: |
+| **Preço cheio** | **408.441,38** · 42,00% | **377.395,31** · 42,00% | **296.920,78** · 35,00% |
+| − Cozinha melamínico · −28.343,92 | 380.097,46 · 42,52% | 349.051,39 · 42,57% | 268.576,86 · 35,00% |
+| − Office usinagem · −12.177,30 | 396.264,08 · 42,22% | 365.218,01 · 42,23% | 284.743,48 · 35,00% |
+| − as duas · −40.521,22 | **367.920,16** · 42,77% | **336.874,09** · 42,84% | **256.399,56** · 35,00% |
+
+*(o segundo número é a MC realizada depois do desconto)*
+
+⭐ **Nenhuma das doze combinações fura o piso de 35%** — conferido por
+assert, não por leitura.
+
+## ⭐ O desconto é 2,01× a economia de custo, e isso está certo
+
+| | economia de CUSTO | desconto de PREÇO | razão |
+| --- | --: | --: | --: |
+| Cozinha → melamínico | 14.136,53 | 28.343,92 | 2,01× |
+| Office → usinagem | 6.073,43 | 12.177,30 | 2,01× |
+
+⛔ **Não é generosidade e não é erro.** Um real de custo que sai leva junto os
+encargos que incidiam sobre ele e a margem que ele sustentava: `1 ÷ (0,84875
+− 0,35) = 2,005`. ⭐ Quem devolve ao cliente só a economia de custo está
+cobrando margem sobre um custo que não existe mais.
+
+## ⭐ E comercialmente isto é o melhor formato
+
+**Um número por troca, igual em qualquer linha de proposta.** O cliente lê
+"melamínico: −R$ 28.343,92" e isso vale escolhendo Blum, Hettich ou
+telescópica. ⛔ Não dá para o cliente garimpar a combinação que mais tira,
+porque o desconto já está no extremo conservador — e a casa só ganha margem
+se ele subir de linha.
+
+---
+
+# ⚠ A PROPOSTA, v1 — SUPERADA pela v2 no fim do arquivo [30/10/2026]
+
+> *[Jonathan 30/10] "pode montar a proposta igual do do michel."*
+
+⛔ **"Michel" são dois clientes diferentes nos projetos.** O da proposta é o
+**Michelle e Arlei**, casa completa, `build-michelle-arlei.py`. O outro é a
+**Jéssica Michell do ICA**, cuja planilha é só leitura e **cujo orçamento não
+pode encostar nesta peça**. Copiei o LAYOUT do Michelle; nenhum dado de
+cliente nenhum atravessou.
+
+## O layout é o que o Jonathan cravou em 19/10
+
+> *"NUNCA APRESENTE PREÇO SEM ANTES GERAR VALOR na proposta. Fale um pouco da
+> empresa e dos processos antes de expor valores. Mostre as duas linhas
+> antes, fale das diferenças. (...) Descreva os itens junto com a listagem
+> dos ambientes, só listando item por item mesmo."*
+
+Dezesseis páginas, primeiro preço na **13**:
+
+| | |
+| --- | --- |
+| 1 | capa |
+| 2 | quem faz e como fazemos |
+| 3 | **as três linhas e suas diferenças** — sem um número de dinheiro |
+| 4–12 | os nove blocos de ambiente, com a lista móvel a móvel |
+| 13 | investimento ambiente por ambiente, linha Hettich |
+| 14 | as três linhas com preço |
+| 15 | as duas trocas |
+| 16 | condições |
+
+⭐ **Duas travas herdadas do Michelle, e uma terceira minha:**
+1. `assert len(pg) == NP` — a contagem de páginas bate com o rodapé.
+2. `assert 'R$' not in _antes` — **nenhum preço antes da página 13**. É trava,
+   não boa fé.
+3. ⭐⭐ **`assert` de marcação interna** [novo]. Na primeira rodada saíram um
+   ⭐, um ⛔ e um ⚠ impressos no meio das frases do cliente — e eu tinha
+   APONTADO exatamente esse defeito na folha da Eliza dois pedidos antes, e
+   repeti. Boa fé não bastou duas vezes.
+
+## As imagens
+
+61 pranchas em PDF, 349 imagens embutidas, **76 em tamanho de render**. Olhei
+todas em folha de contato e ficaram **31 renders de verdade**, em
+`img-gustavo-raposo/`. ⛔ **Lavabo, Despensa e Closet Suíte 02 não têm
+render** — o do closet é grade de elevação, não imagem. Eles aparecem na
+proposta pelo texto, dentro de páginas de outros ambientes.
+
+## Nenhum número é digitado
+
+`gustavo-raposo/cenarios.py` é a única fonte, e o build importa de lá. O
+módulo refaz a conta da aba Preço e Comissões (`custo ÷ (BASE − MC)`) e
+confere por assert que o cenário Hettich devolve **R$ 161.808,24**, que é o
+custo direto da planilha de hoje. Se divergir, não compila.
+
+## ⚠ O que falta na peça
+
+- ⛔ **Não há escada de pagamento.** O Michelle traz entrada e parcelas com
+  desconto por condição; o Gustavo não tem condição definida, e eu não
+  invento condição comercial. A página 13 fecha no valor cheio.
+- ⚠ **O preço é PISO**: as quinze linhas sem preço na Base continuam.
+- ⚠ A **dificuldade** dos dezenove segue toda em "Médio".
+
+---
+
+# ⭐ A PROPOSTA, VERSÃO 2 — dezessete páginas [30/10/2026]
+
+> *[Jonathan 30/10] "Precisamos de muitas melhorias drasticas"* — dez itens.
+
+| # | o que ele pediu | onde ficou |
+| --- | --- | --- |
+| 1 | o layout voltar a ser o do Michelle | CSS dele verbatim; os cartões voltaram a ter o fôlego que eu tinha espremido |
+| 2 | manter o conteúdo das páginas 3 a 5 dele | pág. 3 inteira (cartões + tabela de diferenças + "o que não muda") e o formato das páginas de ambiente |
+| 3 | só imagem com marcenaria | triagem por agente, **6 cortadas de 31** |
+| 4 | preço de cada ambiente nas três linhas | pág. 14, tabela de 19 × 3 |
+| 5 | uma página sobre as três opções, antes do valor | pág. 4 |
+| 6 | ⛔ não apresentar o downgrade | removido |
+| 7 | prazo de 120 dias corridos | pág. 17 |
+| 8 | o termo de garantia e o acionamento | pág. 16 |
+| 9 | forma de pagamento idem Michelle | pág. 15 |
+| 10 | o puxador Zen da cozinha | pág. 6, em linha própria |
+
+## ⛔⛔ A CONVENÇÃO DE PREÇO TEVE DE VIRAR, e esse foi o achado da rodada
+
+No Michelle o preço a MC alvo é o **valor cheio** e o à vista sai 7% abaixo —
+o desconto come margem. Lá sobrava espaço (alvo 40%, piso 35%). **Aqui a
+linha telescópica está cravada NO piso de 35%**: qualquer desconto a derruba
+para **31,25%**, que é vender a linha de entrada fora da política da casa.
+
+⭐ Decisão do Jonathan: **o preço que a planilha devolve é o preço À VISTA**,
+e a tabela sobe 7% acima dele. É o que a própria conta já dizia — os encargos
+foram calculados com **zero parcelas de cartão**, então o número que sai dela
+é, por construção, o preço de quem não passa no cartão.
+
+| | tabela | à vista −7% | MC à vista |
+| --- | --: | --: | --: |
+| Telescópica | 319.270 | **296.921** | 35,00% |
+| Hettich | 405.801 | **377.395** | 42,00% |
+| Blum | 439.184 | **408.441** | 42,00% |
+
+⭐ Assim **nenhum degrau da escada fura o piso** — ao contrário, todos sobem a
+margem — e o à vista devolve exatamente a MC alvo. Está travado por assert.
+
+## ⛔⛔ E A OBSERVAÇÃO DOS TRÊS AMBIENTES VIROU QUANDO AS MCs MUDARAM
+
+O Jonathan escreveu *"a despensa e o office nao muda de valor nas 3"*. Era
+verdade com as MCs de então (42/35/35). Com as de agora (42/42/35) **o
+preço deles passou a bater entre Hettich e Blum, não entre as três** — o
+custo é que não muda, porque nenhum dos três leva gaveta ou porta de giro.
+⭐ E são TRÊS, não dois: o **Lavabo** entra no grupo.
+
+⛔⛔ **Eu quase imprimi a versão velha da frase.** Pior: eu tinha posto um
+assert — mas ele travava a igualdade de **custo** enquanto a frase afirmava
+igualdade de **preço**. O assert passava e o texto mentia. ⭐⭐ A lição:
+**trave a afirmação que a peça IMPRIME, não um substituto dela.** Agora o
+assert compara os preços de tabela, exige que Hettich e Blum batam e que a
+telescópica difira.
+
+## As quatro travas da peça
+
+1. `assert len(pg) == NP` — a contagem bate com o rodapé.
+2. `assert 'R$' not in _antes` — nenhum preço antes da página 14.
+3. `assert` de marcação interna — ⭐/⛔/⚠ não vão para o cliente.
+4. `assert` de imagem reprovada — nenhuma das seis cortadas pode entrar.
+
+## A triagem das imagens
+
+Um agente ABRIU cada um dos 31 renders e julgou se mostra marcenaria. **Seis
+caíram**, e entre elas **a que eu tinha posto na capa** — a varanda com a
+mesa de jantar, que é mesa, cadeira e pedra, sem um móvel planejado. As
+outras: o office com a escrivaninha solta, o swatch chapado do muxarabi, o
+banho master que só tem box e porcelanato, o banho 02 com uma lasca de
+gabinete no canto e a suíte de hóspedes que vende cama estofada.
+
+## Os textos
+
+Um agente por ambiente leu o **levantamento** e escreveu os 48 itens no
+estilo do Michelle: duas frases curtas, sem metragem, sem contagem,
+terminando no nome do material. ⭐ Foi daí que vieram os padrões reais —
+Nogueira Caiena, Off-White Suave, Nogueira Thar, Azul Secreto, Cinza Fóssil
+Velluto, Branco Diamante Trama, Pinole, palhinha natural — que a minha
+versão à mão não tinha.
+
+---
+
+# Proposta v3 · 30/10 — tirar o desconto da peça
+
+> *"Os descontos não é para ser exposto na proposta. Eu pedi para colocar um
+> único valor sem escala de desconto, apenas apresentando a forma de
+> pagamento, exatamente como foi no Michel."*
+
+## O que eu tinha lido errado na v2
+
+| Pedido | O que eu fiz na v2 | O que o Michelle faz |
+|---|---|---|
+| "páginas 3, 4 e 5 mantidas" | troquei a linha **ILUMINAÇÃO** da tabela por uma de "Fechamento" | as linhas dele são CORREDIÇA · DOBRADIÇA · BÁSCULAS · **ILUMINAÇÃO** · GARANTIA |
+| "layout igual" | pus parágrafo de abertura nas páginas de ambiente | as páginas de ambiente dele **não têm** parágrafo |
+| "forma de pagamento idem" | copiei a **escala de desconto** junto | a escala era o que ele tinha; o pedido é só a forma |
+
+⛔⛔ **"IDEM" NÃO É "TUDO".** Eu copiei o bloco inteiro do Michelle porque o
+pedido dizia "idem michell", quando o que ele pedia era a *lista de formas*.
+Copiar demais é tão infiel quanto copiar de menos — e aqui o excesso
+imprimia na peça exatamente o que o cliente não pode ver.
+
+## O que a v3 imprime
+
+- **Um valor só**, o da MC-alvo: R$ 377.395 na linha Hettich.
+- As **quatro formas** do Michelle, palavra por palavra, sem percentual e
+  sem segundo valor ao lado.
+- A tabela de ambientes nas três linhas com `pv`, não com `pv_tabela`.
+
+## Três defeitos que só a leitura da peça pronta achou
+
+1. **"Os forma de pagamento está na página seguinte"** — sobra de uma frase
+   que eu reescrevi. O assert conta página e conta "R$"; não lê português.
+2. **O acabamento da varanda se desmentia:** `MDF Nogueira Caiena e Branco
+   TX · Sem MDF neste ambiente`. Os dois lados do "·" são dois ambientes,
+   mas só o primeiro se identificava. Agora cada lado diz de quem é.
+3. **O office deixava meia página em branco** — uma foto e um card só, com
+   `.mos` travado em `max-height:128mm`. Nasceu a classe `.mos.tall`, que
+   tira o teto quando o ambiente é de peça única.
+
+## ⚠ A TAXA DE CARTÃO FICOU DESCOBERTA
+
+Os encargos da planilha trazem **`0.00  # cartão · 1,2% × 0 parcelas`**. O
+preço impresso é, por construção, o preço de quem **não** passa no cartão —
+e a peça agora oferece até 10× por esse mesmo valor.
+
+| Forma | Taxa sobre o bruto | Em R$ (Hettich) | MC Hettich | MC Telescópica |
+|---|---:|---:|---:|---:|
+| 70% + transferência | 0,00% | — | **42,00%** | **35,00%** |
+| 70% + 6× no cartão | 2,16% | 8.152 | 39,84% | 32,84% ⚠ |
+| 50% + 8× no cartão | 4,80% | 18.115 | 37,20% | 30,20% ⚠ |
+| 30% + 10× no cartão | 8,40% | 31.701 | **33,60%** ⚠ | **26,60%** ⚠ |
+
+⭐ **A ESCALA DE DESCONTO ERA A TAXA DO CARTÃO, EXPOSTA.** No Michelle o
+*valor cheio* (R$ 114.800) é o que o comprador de 10× paga, e o de à vista
+leva 7%. Tirando a escala e imprimindo o preço de à vista, os 10× passam a
+custar R$ 377.395 em vez dos R$ 405.801 de tabela — e a diferença, R$
+28.406, é quase exatamente os R$ 31.701 de taxa.
+
+Quanto cabe sem furar o piso de 35%: entrada de 70% → 19×; de 50% → 11×;
+de 30% → 8×. **A linha telescópica não comporta parcela nenhuma**, porque
+está cravada no piso.
+
+---
+
+# Caderno v4 · 30/10 — eu estava lendo o documento errado
+
+> *"Pelo amor de Deus, presta atenção. (...) Pedi para você repetir a mesma
+> forma de pagamento do Michel. É tão difícil repetir uma coisa que já está
+> pronta? Te pedi também para você colocar as mesmas etapas que está na
+> proposta do Michel. E também te pedi para colocar a página da arquiteta."*
+
+## ⛔⛔ A DIVERGÊNCIA QUE NÃO DÁ ERRO, VERSÃO HUMANA
+
+O Jonathan pediu **"a proposta igual à do Michel"**. Eu fui atrás de
+`proposta-michelle-arlei.pdf` — **Michelle e Arlei**, A4 retrato, doze
+páginas — e construí três versões em cima dela. O "Michel" dele é a
+**Jéssica e Michell do ICA**, cujo caderno é `build-caderno-ica.py`: **A4
+paisagem, trinta e cinco folhas.**
+
+Nenhum dos meus asserts podia pegar isso. Eles provam que a peça é coerente
+*consigo mesma* — exatamente como a CONFERÊNCIA da aba, que compara a aba
+com ela mesma e marca R$ 0,00 enquanto a chave caiu fora da Base. **O
+documento de referência era a Base, e eu nunca conferi contra ela.**
+
+E a prova estava a um `pdftotext` de distância o tempo todo:
+
+| O que ele disse | ICA (o certo) | Michelle e Arlei (o que eu li) |
+|---|---|---|
+| "as páginas 3, 4 e 5 são de extrema importância" | a empresa · as doze etapas · a arquiteta | tabela de linhas · ambiente Sala · ambiente Cozinha |
+| "a forma de pagamento, idem" | 30/20/20/30, **todas por transferência** | escada de desconto **com cartão** |
+| "as mesmas etapas" | as **doze** etapas, em quatro blocos | cinco passos |
+| "a página da arquiteta" | folha 05 | **não existe** |
+
+Três rodadas defendendo uma leitura que o próprio pedido contradizia em
+quatro pontos. ⭐ **QUANDO O PEDIDO APONTA PARA UM DOCUMENTO, ABRA O
+DOCUMENTO.** Eu "sabia" qual era o Michel — e saber sem conferir é a mesma
+coisa que o preço derivado: só existe de um lado da conta.
+
+## O caderno novo
+
+`build-gustavo-caderno.py`, 22 folhas, A4 paisagem, sobre
+`css-apresentacao.css` — o CSS da casa, o mesmo do caderno de referência.
+`build-gustavo-raposo.py` foi apagado: dois geradores escrevendo o mesmo
+PDF é armadilha, e o que ele tinha de próprio (as nove folhas de ambiente,
+48 itens) virou `gustavo-raposo/ambientes.py`, lido pelos dois lados.
+
+| | |
+|---|---|
+| 01 | capa |
+| 02 | abertura — o que esta casa pede |
+| 03 | **a empresa**, quatro pilares |
+| 04 | **as doze etapas**, em quatro blocos num trilho |
+| 05 | **a arquiteta responsável** |
+| 06 | índice dos dezenove ambientes |
+| 07–15 | as nove folhas de ambiente, sem preço |
+| 16 | a tabela das três linhas |
+| 17 | as três opções, antes de qualquer valor |
+| 18 | a garantia e o acionamento |
+| 19 | o investimento ambiente a ambiente, nas três linhas |
+| 20 | as três linhas, **um valor cada** |
+| 21 | condições — 120 dias, **30/20/20/30 por transferência** |
+| 22 | encerramento |
+
+## As travas novas
+
+Os asserts antigos provavam coerência interna. Estes provam o que o
+Jonathan pediu:
+
+```python
+for _p in ('cartão', 'cartao', 'parcelamento', 'desconto',
+           'valor cheio', 'valor de tabela'):
+    assert _p.lower() not in _texto.lower()
+for _c in ('Michell', 'Michelle', 'Jéssica', 'Arlei', 'Iara Cezar',
+           'Lagoa Santa'):
+    assert _c not in _texto
+```
+
+⛔ **AS TRAVAS DE TEXTO LEEM O TEXTO, NÃO O HTML.** A primeira versão
+procurava `'ICA'` no HTML inteiro — e cada render entra como base64, onde
+três letras aparecem por acaso em qualquer foto. A trava teria disparado
+sempre, e eu a teria desligado. Agora os `data:` URIs saem antes.
+
+⛔ **E "à vista" É PORTUGUÊS COMUM.** O fundo que fica à vista, o puxador
+dourado à vista, a prateleira sem suporte à vista. A trava global teria
+dado falso positivo em três ambientes; ela vale só na folha de condições,
+onde "à vista" seria escada de desconto.
+
+## O que a taxa de cartão deixou de ser
+
+Os encargos trazem `cartão · 1,2% × 0 parcelas`. Com **todas as parcelas
+por transferência**, isso virou verdade: o preço de R$ 377.395 na linha
+Hettich é exatamente o de MC 42%, sem buraco nenhum. O problema que eu
+levantei na v3 — 8,4% de taxa descoberta em 10x — **sumiu junto com o
+cartão**. A forma de pagamento que o Jonathan mandou repetir é, além de
+tudo, a que fecha a conta.
+
+## Três defeitos achados na peça pronta
+
+1. **O índice punha material errado em dois banhos.** A folha dos hóspedes
+   traz dois acabamentos para três ambientes; quando falta acabamento, o
+   que sobra tem de repetir o **último**, não o primeiro — os dois banhos
+   dividem o Nogueira Thar e estavam herdando o Off-White da suíte. Erro
+   que ninguém vê, porque a linha continua bonita. Travado por assert.
+2. **O cartão de preço tinha meio palmo de branco** entre o nome da linha e
+   o valor. Um vazio ali, na folha que decide, lê como falta de assunto.
+3. **Os revisores quiseram tirar força de duas frases**; aceitei só o que
+   era falso. "Vocês não contratam mais ninguém" é **literalmente mentira**
+   neste projeto — a pedra é marmoraria e o cliente vai contratar alguém —,
+   então virou "para o que está aqui, vocês não contratam mais ninguém".
+   As reescritas longas que eles propuseram, recusei: o qualificador cabe
+   em três palavras.
+
+## A revisão adversarial da peça pronta
+
+Quatro lentes abriram o caderno em paralelo — os dez pedidos do Jonathan,
+vazamento de outro cliente, as afirmações contra os fatos, e o que se vê —
+e trouxeram **dezessete achados**. A lente do vazamento voltou **limpa**.
+Treze eram reais. Os mais graves:
+
+⛔⛔ **OUTRA VEZ O ASSERT TRAVAVA UMA AFIRMAÇÃO E A PEÇA IMPRIMIA OUTRA.**
+A nota da folha de preços dizia que **três** ambientes têm o mesmo valor em
+Hettich e Blum. A tabela, logo acima dela, mostra **seis**. Hettich e Blum
+usam a **mesma dobradiça** (R$ 50) — só a corrediça muda —, então empata
+todo ambiente com **zero corrediças**, e não só os que também têm zero
+dobradiças. A Rouparia tem vinte dobradiças e empata; o meu predicado
+`pares == 0 and dobr == 0` a deixava de fora. Agora o empate sai da própria
+tabela e a frase se monta sozinha.
+
+⛔ **E A MESMA NOTA ENCOSTAVA NA TERCEIRA COLUNA.** "Não há o que trocar de
+uma linha para a outra" é verdade entre Hettich e Blum e **mentira** contra
+a telescópica, que aparece mais barata ali do lado — porque a MC dela é 35%,
+não 42%. A frase agora se fecha nas duas linhas de que fala.
+
+⛔ **TRÊS FRASES VARRIAM A PEDRA PARA DENTRO DO ESCOPO.** "Tudo o que este
+caderno lista entra no nosso escopo", "você não contrata mais ninguém", "os
+demais ofícios que a folha de cada ambiente nomeia" — e as folhas nomeiam,
+sim, *a bancada de granito* da varanda e *a de quartzito* da cozinha, porque
+a marcenaria encosta nelas. A folha de condições desmentia as três. Agora o
+escopo é **nomeado**, não varrido.
+
+⛔ **A AMOSTRA CHEGAVA DEPOIS DA DECISÃO.** "Abra uma gaveta de cada linha
+antes de decidir — levamos as três amostras à obra **na medição**." Mas a
+folha das doze etapas põe a medição como etapa **03**, depois da aprovação
+(01) e do contrato (02). A peça marcava encontro para depois de fechado.
+
+⛔ **"RESPONDEMOS EM 24 HORAS, CONTADO EM DIAS ÚTEIS"** — duas unidades na
+mesma frase. Um chamado de sexta vence no sábado pelo título e na terça
+pelo texto. A política da casa é 24h de retorno; os dias úteis são da visita.
+
+⛔ **"CADA PEÇA CHEGA INSTALADA E ACESA"** — e a folha de condições tira os
+**drivers** do escopo. Sem driver o perfil não acende.
+
+Mais: o Lavabo não era nomeado no título da folha que o apresenta; o render
+da suíte de hóspedes é parede branca com TV (cortado — nenhum dos dois
+renders daquele ambiente mostra a marcenaria); a décima segunda etapa vazava
+por baixo do fio do rodapé; o índice cortava na primeira vírgula e o
+Homeschooling perdia o **Azul Secreto**, que é o fundo do nicho e a cor do
+ambiente; os números encostavam na tarja da Hettich; a cauda do "3" antigo
+cruzava "ANOS DE GARANTIA" na coluna da Blum; os cartões tinham buraco no
+meio; e **a coluna não fechava com o total** — R$ 1 de arredondamento na
+única folha em que o cliente soma com a calculadora na mão.
+
+## O que os verificadores derrubaram — e os cinco que sobraram
+
+Trinta achados brutos, **cinco confirmados**: vinte e cinco caíram no passo
+adversarial, em que um segundo agente abre a folha e tenta derrubar o
+primeiro. A lente de vazamento de outro cliente voltou limpa nas duas voltas.
+
+⛔⛔ **EU DECLAREI UMA CORREÇÃO QUE NÃO TINHA PEGADO.** Disse ao Jonathan que
+a caixa "A fábrica" tinha parado de ser cortada pelo rodapé. Eu havia subido
+o `padding-bottom` na **classe** `.amb-txt` — e a folha da arquiteta traz
+`padding` **inline**, que sobrepõe a classe. Conferi com um recorte a 150 dpi
+e "vi" limpo. O verificador mediu a 250 dpi e achou **1,6 mm** de caixa por
+baixo do fio. ⭐ **UM DEFEITO DE 1,6 MM NÃO SE CONFERE A OLHO: MEDE-SE.**
+Agora a trava é numérica e varre as 22 folhas:
+
+```python
+mal = [... for dr in p.get_drawings()
+       if dr['fill'] is not None and 1 < H - dr['rect'].y1 < FIO]
+assert not mal
+```
+
+A mesma armadilha estava na folha das doze etapas, com `padding` inline de
+11 mm. E o override do `.pad` foi para o **EXTRA deste caderno**, não para
+`css-apresentacao.css`: aquele arquivo é da casa e serve outras propostas —
+mexer nele moveria o rodapé delas sem ninguém ver.
+
+⛔ **ESTAVA ENCOLHENDO A COISA ERRADA.** Duas folhas saíam com corpo menor
+que as outras sete: a cozinha a 6,59 pt e a suíte das filhas a 6,52 pt,
+contra 7,80–7,99 pt. Era o `.fitw` apertando o **texto** para caber sob uma
+faixa de foto de altura fixa. Num caderno, o corpo do texto é o que tem de
+ser igual em toda folha — **quem cede é a foto**. A cascata agora é: a faixa
+desce até 62 mm · o texto aceita até 90% · a faixa desce até 48 mm.
+
+E a primeira versão dessa cascata **trocou um defeito por outro**: com piso
+de 44 mm a cozinha virou uma tira com o armário cortado fora da foto. Num
+caderno que vende marcenaria pela imagem, isso é pior que meio ponto de
+corpo. Ficou 08 = 7,48 pt e 13 = 7,01 pt, contra 7,80 das outras — a folha
+13 carrega **onze móveis**, o dobro da média, e é a única que ainda cede.
+
+Os outros dois: os fios que separam as colunas das doze etapas desciam até o
+pé mesmo onde a coluna acabava na metade (`align-items:start`), e o quarto
+cartão dos pilares tem enchimento desigual — este eu **não** corrigi: quatro
+textos de comprimento diferente em cartões de altura igual é o padrão certo,
+e emparelhar exigiria escrever enchimento.
+
+---
+
+# Folha 21 · os dois ajustes [31/10/2026]
+
+> *"Ficou perfeito. Sem editar o arquivo inteiro. Acrescente apenas a versão
+> diferente da cozinha e do painel de muxarabi."*
+
+Na rodada dos dez pontos ele tinha mandado **tirar** ("não apresentamos o
+downgrade da cozinha e do muxarabi"). Agora voltam — mas **depois** do preço
+cheio, na folha 21, porque continuam sendo alternativa e não proposta. O
+caderno foi de 22 para 23 folhas; nada mais mudou.
+
+| | Telescópica | Hettich | Blum |
+| --- | --: | --: | --: |
+| Como está no projeto | 296.921 · 35,0% | **377.395 · 42,0%** | 408.441 · 42,0% |
+| Com a cozinha em melamínico | 268.577 · 35,0% | 349.051 · 42,6% | 380.097 · 42,5% |
+| Com o painel do office usinado | 284.743 · 35,0% | 365.218 · 42,2% | 396.264 · 42,2% |
+| Com os dois ajustes | 256.400 · 35,0% | 336.874 · 42,8% | 367.920 · 42,8% |
+
+⭐ **A MARGEM SOBE QUANDO O CLIENTE LEVA UMA TROCA** nas duas linhas de cima.
+O desconto é único para os três cenários e foi calibrado na MC de 35% da
+telescópica; aplicado sobre uma linha de 42%, devolve menos do que a
+economia de custo justificaria ali. Nenhuma das doze combinações fura o
+piso — e isso já era assert em `cenarios.py`.
+
+## ⛔⛔ E A FOLHA TEM DE DIZER QUE A COZINHA MUDA DE DESENHO
+
+Melamínico **não é a mesma cozinha mais barata**. A moldura provençal é peça
+usinada na router e colada sobre a frente: na laca a pintura fecha a junta e
+ela vira parte do desenho; no melamínico o rebaixo da fresa **expõe o miolo
+cru do MDF** e não há acabamento que resolva. São **catorze frentes**, e a
+conta já tirou as molduras — o preço de R$ 28.343,92 a menos só existe
+porque elas saíram.
+
+Então a folha diz, com todas as letras, que a cozinha passa a ter **frente
+lisa**, e que isso é **decisão de projeto, não de orçamento**. Imprimir só o
+número seria vender uma cozinha que não existe — é o mesmo defeito da nota
+dos três ambientes, que afirmava o que a tabela desmentia.
+
+O painel do office é o contrário: **o desenho não muda**, sai a mão de obra.
+A parede continua vazada e continua em Nogueira Caiena; o relevo passa a ser
+usinado na própria chapa em vez de montado régua por régua, e com ele somem
+a fita de cada peça e a filetagem manual dos topos.
+
+## ⛔ A folha nova estourou, e a trava virou geral
+
+A última linha da tabela encostava no rodapé. Em vez de catar milímetro em
+`font-size`, a folha inteira entrou na mesma trava de encolher das folhas de
+ambiente (`.pad.apertada > .fitp`, piso de 80%) — e a varredura numérica das
+caixas por baixo do fio voltou a dar **NENHUM** nas 23 folhas.
+
+---
+
+# Folha 21 · as reduções cortadas [03/11/2026]
+
+> *"mudando o custo a ser subtraído laca da cozinha para 18k e o painel
+> muxarabi em 9k"*
+
+| | antes | agora |
+|---|---:|---:|
+| Cozinha em melamínico | −28.343,92 | **−18.000,00** |
+| Painel do office usinado | −12.177,30 | **−9.000,00** |
+
+⛔ **O QUE MUDOU FOI O QUE SE DEVOLVE, NÃO O QUE SE ECONOMIZA.** A economia
+de custo continua medida na planilha — 14.136,53 na cozinha e 6.073,43 no
+painel — e não é escolha de ninguém. O desconto é. Devolvendo menos pela
+mesma economia, **a MC das duas trocas sobe**: é o oposto de um desconto que
+corrói margem.
+
+| | Telescópica | Hettich | Blum |
+| --- | --: | --: | --: |
+| Como está no projeto | 296.921 · 35,0% | **377.395 · 42,0%** | 408.441 · 42,0% |
+| Com a cozinha em melamínico | 278.921 · 36,8% | 359.395 · **43,8%** | 390.441 · 43,6% |
+| Com o painel usinado | 287.921 · 35,6% | 368.395 · 42,6% | 399.441 · 42,6% |
+| Com os dois ajustes | 269.921 · 37,5% | **350.395 · 44,5%** | 381.441 · 44,3% |
+
+⭐ Antes, as duas trocas levavam a Hettich de 42,0% a 42,8%. Agora levam a
+**44,5%** — dois pontos e meio a mais de margem no cenário em que o cliente
+leva os dois ajustes.
+
+## ⛔⛔ E O NÚMERO MUDOU SEM LEVAR A FRASE JUNTO
+
+A folha dizia, sobre a cozinha: *"É a troca que mais pesa no total da casa —
+mais do que trocar a ferragem inteira de linha."* Com −28.343,92 isso era
+**verdade**: trocar a casa toda de Blum para Hettich vale 31.046,06, e a
+cozinha pesava quase isso. Com **−18.000 virou mentira**, e a peça ia
+imprimir assim.
+
+⭐ **É A MESMA ARMADILHA DA NOTA DOS AMBIENTES EMPATADOS**, pela terceira vez
+neste projeto: eu travo o NÚMERO com assert e deixo a FRASE que depende dele
+solta. A frase agora é *"É a maior das duas reduções desta folha"* — que é o
+que a própria folha mostra — e ganhou trava:
+
+```python
+assert cen.TROCA[0][1] > cen.TROCA[1][1], \
+    '⛔⛔ A FOLHA DIZ QUE A COZINHA É A MAIOR DAS DUAS REDUÇÕES'
+```

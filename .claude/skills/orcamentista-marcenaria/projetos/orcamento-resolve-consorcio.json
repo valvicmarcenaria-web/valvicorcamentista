@@ -1,0 +1,72 @@
+{
+  "cliente": "Resolve Consorcio",
+  "tipo": "comercial (escritorio corporativo)",
+  "decoradora": "Jessica Sollero",
+  "engenharia": "Corsino Soares",
+  "caderno": "54 pranchas, 11/06/2026",
+  "escopo_regra": "orcar somente o que esta descrito",
+  "status": "v3 CHAPAS CALCULADAS peca-a-peca (corte-resolve-consorcio.py, 257 pecas)",
+  "metodo": "levantamento peca-a-peca; area por cor/espessura / (5.0875 * aprov 0.82 [15-18] / 0.55 [6mm])",
+  "historico_chapas": "v1 estimativa 106 (alta) | v2 estimativa 49 (baixa) | v3 CALCULO 79 (real)",
+  "ambientes": ["Recepcao","Sala Reuniao","Convivencia","Coffe Point","Descompressao","Refeitorio","Juridico(Gestao)","Compliance","Circulacao(63 lockers)","Comercial","Sala Reuniao Colab","Sala CEO","CALL","Cabines CALL(7 acusticas)"],
+  "ripado_eucatex": {
+    "produto": "Painel Ripado Eucatex RU Freijo Brasil",
+    "caixa": "6 barras de encaixe, 55x2700x12mm",
+    "rendimento_m2_por_caixa": 0.75,
+    "preco_caixa_ref": 166.50,
+    "fonte": "estilohomecenter.com.br / leomadeiras.com.br / eucatex.com.br",
+    "area_ripado_m2_estimada": 34,
+    "caixas": 46,
+    "custo_ripado": 7660,
+    "perfil_L": 600,
+    "custo_total": 8300,
+    "obs": "produto pronto pre-acabado, sem chapa de fundo nem fita; larguras Compliance/Comercial a confirmar"
+  },
+  "chapas_calculado": {
+    "grafito_15": 17, "grafito_18": 3, "branco_tx_15": 21, "branco_tx_6": 19, "freijo_liso_15": 8,
+    "azul_petroleo_18": 3, "azul_austral_18": 2, "azul_secreto_18": 2, "carvalho_15_18": 2, "similar_15_18": 2,
+    "total": 79, "custo": 29770,
+    "obs": "6mm usa aprov 0.55 (skill, conservador); com nesting apertado ~13 chapas (-6)"
+  },
+  "fita_filetagem": 5000,
+  "ferragens": {
+    "dobradicas_qtd": 176, "corredicas_pares": 30,
+    "hardt_variavel": 3500, "hettich_variavel": 9760,
+    "pistoes": 120, "usinagem_cava_e_alca": 2000
+  },
+  "fechaduras_digitais": {"status": "NAO INCLUSAS - fornecimento a parte", "ref_mercado": "63x Papaiz M1602 ~R$196,90 = ~R$12.400 se quiserem incluir"},
+  "led": 2700,
+  "insumos": 4000,
+  "custo_material_valvic": {"base_hardt": 56700, "base_hettich": 62600, "obs": "SEM fechaduras; chapas+ripado calculados, fita/LED/insumos a fechar por perimetro"},
+  "ferragens_contadas": {"portas": 87, "gavetoes": 23, "dobradicas": 176, "corredicas_pares": 23},
+  "terceirizados_a_parte": {
+    "blindex_7_cabines": 7000, "estofado_7_bancos": 2100, "pes_mesa_tubo_metal_7": 1000, "escorredor_refeitorio": 200,
+    "cabine_acustica_caixa_carpete_espuma": "ESPECIALIDADE - cotar a parte (so banco+mesa entraram na marcenaria)"
+  },
+  "preco_final": {
+    "motor": "inv = fixedR/(1 - 0.10 - 0.96*0.143 - MC); sem cartao (parc=0); RT 10%",
+    "essencial_hardt_mc35": 147800, "essencial_prime_hettich_mc38": 174800,
+    "fixedR_hardt": 60994, "fixedR_hettich": 66896,
+    "rt_jessica": {"essencial": 14200, "prime": 16800},
+    "pagamento": "40% entrada + 40% inicio montagem + 20% entrega final (transferencia, sem cartao)",
+    "prazo": "90-100 dias corridos",
+    "terceirizados_inclusos": "estofado 7 bancos + pes metalicos 7 mesas + escorredor cromado",
+    "fora": "blindex, espuma acustica, cabine acustica (caixa), fechaduras digitais",
+    "obs_rodrigo": "MC 35/38% abaixo do piso 40% p/ projeto >R$80k - decisao do Jonathan"
+  },
+  "alocacao_ambiente": {
+    "Circulacao_lockers": [25000,29500], "Juridico": [16300,19300], "Coffe_Point": [14400,17000],
+    "Convivencia": [12700,15000], "Comercial": [12600,14900], "Sala_Reuniao_Colab": [12400,14700],
+    "CALL": [11300,13400], "Recepcao": [10500,12400], "Refeitorio": [10400,12300], "Compliance": [6800,8000],
+    "Sala_de_Reuniao": [5000,5900], "Sala_CEO": [4000,4800], "Descompressao": [3600,4300], "Cabines_CALL": [2800,3300]
+  },
+  "flags": [
+    "Ripado larguras Compliance/Comercial a confirmar (pode subir caixas)",
+    "Cabine acustica (caixa+carpete+espuma) = especialidade fora do material",
+    "63 fechaduras digitais = R$12.400, confirmar se digital em todos",
+    "Bancadas/tampos nao especificados = fora; jardineiras so caixa MDF",
+    "Frigobares = eletrodomestico fora",
+    "Material conflitante jardineira Descompressao; Juridico vs Gestao",
+    "Precos de ripado e fechadura sao varejo web (Valvic pode ter preco melhor)"
+  ]
+}

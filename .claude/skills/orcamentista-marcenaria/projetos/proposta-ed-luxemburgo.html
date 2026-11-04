@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;700&display=swap');
+
+:root{
+  --gold:#C8901E; --gold-soft:#D9B25A; --gold-deep:#9C6B12;
+  --ink:#1A1A1A; --ink-soft:#4a463f; --cream:#FDF6E3; --cream-2:#F6ECD3;
+  --wood-a:#B68B4E; --wood-b:#8C6736; --wood-c:#6f5128; --line:#E4D8B8;
+}
+@page{ size:A4; margin:0; }
+*{ box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body{ margin:0; font-family:'DM Sans','Liberation Sans',Arial,sans-serif; color:var(--ink); font-size:10.5pt; line-height:1.62; }
+.serif{ font-family:'Cormorant Garamond','Georgia',serif; }
+.page{ position:relative; width:210mm; min-height:297mm; padding:16mm 18mm; page-break-after:always; overflow:hidden; background:#fff; }
+.page:last-child{ page-break-after:auto; }
+h1,h2,h3{ margin:0; font-weight:600; }
+p{ margin:8px 0; }
+.eyebrow{ font-family:'DM Sans',sans-serif; letter-spacing:.32em; text-transform:uppercase; font-size:8pt; font-weight:700; color:var(--gold-deep); }
+.spark{ color:var(--gold); }
+.rule{ height:2px; width:54px; background:var(--gold); border:0; margin:14px 0; }
+
+/* ---------- COVER ---------- */
+.cover{ padding:0; background:var(--cream); }
+.cover .frame{ position:absolute; inset:9mm; border:1px solid var(--gold-soft); }
+.cover .inner{ position:relative; padding:22mm 20mm; height:297mm; display:flex; flex-direction:column; }
+.brand{ font-family:'Cormorant Garamond',serif; font-size:30pt; font-weight:700; letter-spacing:.18em; color:var(--ink); }
+.brand .dot{ color:var(--gold); }
+.brand-sub{ letter-spacing:.5em; font-size:8pt; font-weight:700; color:var(--gold-deep); margin-top:2px; }
+.cover .hero{ margin:13mm 0 11mm; height:86mm; border-radius:3px; position:relative;
+  background:#7d5a2b; box-shadow:0 10px 28px rgba(80,55,20,.30); overflow:hidden; }
+.cover .slats{ position:absolute; inset:0; display:flex; }
+.cover .slats i{ flex:1; border-right:.45mm solid rgba(36,22,5,.55); }
+.cover .slats i:nth-child(odd){ background:#b88f51; }
+.cover .slats i:nth-child(even){ background:#a17b41; }
+.cover .hero .led{ position:absolute; left:0; right:0; top:13mm; height:2.4mm;
+  background:linear-gradient(90deg, rgba(255,240,200,0), #FFF4D6 18%, #FFF4D6 82%, rgba(255,240,200,0));
+  box-shadow:0 0 10mm 2mm rgba(255,236,180,.6); }
+.cover .hero .plate{ position:absolute; right:12mm; top:25mm; width:29mm; height:44mm;
+  border:1.2mm solid rgba(255,255,255,.22); background:rgba(255,255,255,.08); }
+.cover .hero .shade{ position:absolute; left:0; right:0; bottom:0; height:19mm; background:rgba(22,13,3,.42); }
+.cover .hero .cap{ position:absolute; left:9mm; bottom:6mm; color:#fff; font-size:8pt; letter-spacing:.26em; text-transform:uppercase; opacity:.92; }
+.cover .for{ letter-spacing:.34em; text-transform:uppercase; font-size:9pt; font-weight:700; color:var(--gold-deep); }
+.cover .client{ font-family:'Cormorant Garamond',serif; font-size:33pt; font-weight:700; line-height:1.05; margin:5px 0 4px; color:var(--ink); }
+.cover .proj{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15pt; color:var(--ink-soft); }
+.cover .foot{ margin-top:auto; display:flex; justify-content:space-between; align-items:flex-end; font-size:8.5pt; color:var(--ink-soft); letter-spacing:.06em; }
+.sparkles{ font-size:13pt; color:var(--gold); letter-spacing:.4em; }
+
+/* ---------- SECTIONS ---------- */
+.section-h{ font-family:'Cormorant Garamond',serif; font-size:23pt; font-weight:700; color:var(--ink); line-height:1.1; margin-top:4px; }
+.lead{ font-family:'Cormorant Garamond',serif; font-size:13.5pt; font-style:italic; color:var(--ink-soft); line-height:1.5; }
+.band{ background:var(--ink); color:var(--cream); border-radius:4px; padding:7mm 9mm; margin:8mm 0; }
+.band .serif{ color:#fff; }
+
+/* cards */
+.cards{ display:flex; flex-wrap:wrap; gap:6mm; margin-top:7mm; }
+.card{ width:calc(50% - 3mm); background:var(--cream); border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:3px; padding:5mm 5.5mm; }
+.card .k{ font-family:'Cormorant Garamond',serif; font-size:13.5pt; font-weight:600; color:var(--ink); }
+.card .v{ font-size:9.3pt; color:var(--ink-soft); margin-top:3px; }
+
+/* table */
+table{ width:100%; border-collapse:collapse; margin:6mm 0; font-size:10pt; }
+th,td{ padding:2.7mm 4mm; text-align:left; border-bottom:1px solid var(--line); }
+thead th{ background:var(--ink); color:var(--cream); font-size:8pt; letter-spacing:.16em; text-transform:uppercase; font-weight:700; border:0; }
+td.r,th.r{ text-align:right; }
+.amb-name{ font-family:'Cormorant Garamond',serif; font-size:12.5pt; font-weight:600; }
+.note-row td{ color:var(--ink-soft); font-size:8.6pt; border:0; padding-top:0; }
+.sub td{ background:var(--cream-2); font-weight:700; }
+.grand td{ background:var(--gold); color:#1a1a1a; font-weight:700; font-size:12pt; border:0; }
+.grand .serif{ font-size:14pt; }
+.apart td{ font-size:9.4pt; color:var(--ink-soft); }
+
+/* conditions strip */
+.terms{ display:flex; gap:5mm; margin-top:6mm; flex-wrap:wrap; }
+.term{ flex:1; min-width:38mm; background:var(--cream); border:1px solid var(--line); border-radius:3px; padding:4.5mm; text-align:center; }
+.term .t{ font-size:7.6pt; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-deep); font-weight:700; }
+.term .b{ font-family:'Cormorant Garamond',serif; font-size:15pt; font-weight:700; margin-top:3px; }
+.seal{ display:inline-flex; align-items:center; gap:3mm; background:var(--ink); color:var(--cream); border-radius:40px; padding:3mm 7mm; font-weight:700; letter-spacing:.04em; }
+.seal .yrs{ font-family:'Cormorant Garamond',serif; font-size:17pt; color:var(--gold-soft); }
+
+.pay li{ margin:3mm 0; }
+.scope{ display:flex; gap:6mm; margin-top:5mm; }
+.scope > div{ flex:1; }
+.scope h3{ font-size:8pt; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:3mm; }
+.scope ul{ margin:0; padding-left:5mm; font-size:9.2pt; color:var(--ink-soft); }
+.scope li{ margin:2mm 0; }
+.aviso{ background:var(--cream-2); border:1px solid var(--gold-soft); border-radius:4px; padding:4.5mm 5.5mm; font-size:9.2pt; margin-top:6mm; }
+
+.desc h3{ font-family:'Cormorant Garamond',serif; font-size:14pt; color:var(--ink); margin:6mm 0 1mm; }
+.desc ul{ margin:0; padding-left:5mm; }
+.desc li{ margin:1.6mm 0; font-size:9.6pt; color:var(--ink-soft); }
+.tag{ display:inline-block; font-size:7.5pt; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-deep); border:1px solid var(--gold-soft); border-radius:30px; padding:1mm 3mm; margin-left:2mm; vertical-align:middle; }
+
+.close{ background:var(--ink); color:var(--cream); border-radius:5px; padding:9mm; margin-top:8mm; }
+.close .serif{ color:#fff; font-size:16pt; }
+.close p{ color:#e9e1cd; }
+.pfoot{ position:absolute; left:18mm; right:18mm; bottom:11mm; display:flex; justify-content:space-between; font-size:7.6pt; color:#9a9080; letter-spacing:.12em; border-top:1px solid var(--line); padding-top:3mm; }
+.brandline{ font-family:'Cormorant Garamond',serif; font-weight:700; letter-spacing:.12em; }
+.brandline .dot{ color:var(--gold); }
+</style></head>
+<body>
+
+<!-- ============ PAGE 1 — CAPA ============ -->
+<div class="page cover">
+  <div class="frame"></div>
+  <div class="inner">
+    <div>
+      <div class="brand">valvic<span class="dot">.</span></div>
+      <div class="brand-sub">MARCENARIA</div>
+    </div>
+
+    <div class="hero">
+      <div class="slats"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="plate"></div>
+      <div class="led"></div>
+      <div class="shade"></div>
+      <div class="cap">Painel amadeirado · frisos · LED embutido</div>
+    </div>
+
+    <div class="sparkles">✦ ✦ ✦</div>
+    <div class="for">Proposta especial para</div>
+    <div class="client serif">Condomínio<br>Edifício Luxemburgo</div>
+    <div class="proj serif">Reforma dos Halls — Revestimento em MDF Amadeirado</div>
+
+    <div class="foot">
+      <div>Projeto arquitetônico: <b>Arq. Rosana Miraglia</b><br>Junho de 2026</div>
+      <div style="text-align:right">Proposta nº LUX-2026-001<br>Validade: 7 dias</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 2 — CONEXÃO ============ -->
+<div class="page">
+  <div class="eyebrow">A chegada que define o edifício</div>
+  <h1 class="section-h">O primeiro gesto de quem mora<br>e de quem visita.</h1>
+  <hr class="rule">
+  <p class="lead">Os halls são o instante em que o padrão do edifício se anuncia — antes da porta,
+  antes do apartamento. É ali que o Luxemburgo diz quem é.</p>
+
+  <p>O projeto da arquiteta <b>Rosana Miraglia</b> desenha essa atmosfera: paredes revestidas em
+  MDF amadeirado contínuo, frisos verticais ritmando o corredor, iluminação indireta na sanca e
+  espelhos que ampliam a luz do hall social. A <b>Valvic</b> existe para <b>executar esse desenho com
+  a precisão que ele exige</b> — porque um revestimento amadeirado só impressiona quando a modulação
+  fecha porta a porta, quando os frisos correm retos do piso ao teto e quando a porta do quadro de
+  energia simplesmente <i>desaparece</i> no painel.</p>
+
+  <div class="band">
+    <div class="eyebrow" style="color:var(--gold-soft)">O que estamos propondo</div>
+    <h2 class="serif" style="font-size:19pt; margin-top:3px;">Não vendemos o projeto. Vendemos a sua execução impecável.</h2>
+    <p style="color:#e9e1cd; margin-top:6px;">Revestimento dos halls dos pavimentos-tipo (2 e 4 apartamentos) e do hall social
+    dos Blocos A e B, em painéis de MDF amadeirado com frisos usinados, iluminação LED embutida,
+    portas de acesso técnico mimetizadas e molduras de espelho — instalados por equipe própria,
+    com acabamento de obra fina.</p>
+  </div>
+
+  <p>Cada pavimento se repete com o <b>mesmo rigor de fábrica</b>: peças usinadas em CNC, coladeira
+  automática nas bordas e montagem conferida. É o que garante que o 1º e o último andar tenham
+  exatamente o mesmo padrão de chegada.</p>
+
+  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Condomínio Edifício Luxemburgo · 2026</span></div>
+</div>
+
+<!-- ============ PAGE 3 — CONFIGURAÇÃO TÉCNICA ============ -->
+<div class="page">
+  <div class="eyebrow">Configuração técnica</div>
+  <h1 class="section-h">A competência por trás<br>de cada painel.</h1>
+  <hr class="rule">
+  <p>Cada item abaixo é uma decisão de execução — não de catálogo. É o que separa um revestimento
+  que dura e alinha de um que estufa, descola e desalinha em poucos meses.</p>
+
+  <div class="cards">
+    <div class="card"><div class="k">Painéis em MDF amadeirado</div>
+      <div class="v">Revestimento contínuo, modulação calculada para fechar alinhada entre portas, elevadores e quinas — sem emendas improvisadas em obra.</div></div>
+    <div class="card"><div class="k">Frisos usinados em CNC</div>
+      <div class="v">Ranhuras verticais retas e simétricas, cortadas com precisão de máquina e repetidas idênticas em todos os pavimentos.</div></div>
+    <div class="card"><div class="k">Iluminação LED embutida</div>
+      <div class="v">Recuo usinado no próprio painel para a fita de LED — luz indireta na sanca, sem perfil aparente. Banho de luz uniforme no corredor.</div></div>
+    <div class="card"><div class="k">Acesso aos quadros por toque</div>
+      <div class="v">Portas de giro mimetizadas no painel, com imã de toque (push) — o quadro de energia some no revestimento e abre sem puxador.</div></div>
+    <div class="card"><div class="k">Ferragem Hardt</div>
+      <div class="v">Acionamento suave e durabilidade testada nas portas de acesso — a base da nossa garantia de 5 anos.</div></div>
+    <div class="card"><div class="k">Molduras de espelho</div>
+      <div class="v">Espelho cristal prata assentado sobre MDF e emoldurado em amadeirado — esquadro perfeito, sem rejunte de obra à vista.</div></div>
+  </div>
+
+  <div class="aviso"><b>Bordas e estrutura.</b> Todas as faces aparentes recebem fita de borda na cor
+  do amadeirado, aplicada em coladeira automática. A estrutura de fixação é dimensionada para
+  parede de alvenaria, com peças de MDF que mantêm o painel plano e estável ao longo do tempo.</div>
+
+  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Condomínio Edifício Luxemburgo · 2026</span></div>
+</div>
+
+<!-- ============ PAGE 4 — INVESTIMENTO ============ -->
+<div class="page">
+  <div class="eyebrow">Investimento</div>
+  <h1 class="section-h">Proposta de investimento.</h1>
+  <hr class="rule">
+  <p>Versão única, com ferragem <b>Hardt</b> e acabamento amadeirado. Valores por hall — os halls dos
+  pavimentos-tipo se repetem a cada andar; o hall social é único (Blocos A + B).</p>
+
+  <table>
+    <thead><tr><th>Item</th><th>Escopo</th><th class="r">Investimento</th></tr></thead>
+    <tbody>
+      <tr><td class="amb-name">Hall · 2 apartamentos<br><span style="font-size:8pt;color:#8a8170;font-family:'DM Sans',sans-serif;font-weight:400">valor por pavimento-tipo</span></td>
+          <td>Painel amadeirado da parede dos elevadores e da parede técnica, frisos, LED embutido e 2 portas de acesso a quadros</td>
+          <td class="r"><b>R$ 9.070</b></td></tr>
+
+      <tr><td class="amb-name">Hall · 4 apartamentos<br><span style="font-size:8pt;color:#8a8170;font-family:'DM Sans',sans-serif;font-weight:400">valor por pavimento-tipo</span></td>
+          <td>Painel amadeirado contínuo (elevadores + paredes técnicas), frisos, LED embutido e 3 portas de acesso a quadros</td>
+          <td class="r"><b>R$ 12.710</b></td></tr>
+
+      <tr><td class="amb-name">Hall social · Blocos A + B</td>
+          <td>Molduras dos espelhos em amadeirado e painéis de fundo (espelho assentado em MDF)</td>
+          <td class="r"><b>R$ 4.780</b></td></tr>
+
+      <tr class="sub"><td colspan="2">Subtotal marcenaria</td><td class="r">R$ 26.560</td></tr>
+
+      <tr><td class="amb-name">Espelhos cristal prata <span class="tag">à parte</span></td>
+          <td>Espelhos do hall social (≈ 6 m²) — fornecimento e instalação</td>
+          <td class="r"><b>R$ 8.730</b></td></tr>
+
+      <tr class="grand"><td colspan="2"><span class="serif">Investimento total</span> (1 hall de cada + espelhos)</td><td class="r"><span class="serif">R$ 35.295</span></td></tr>
+    </tbody>
+  </table>
+
+  <div style="text-align:center; margin:7mm 0 3mm;">
+    <span class="seal">GARANTIA <span class="yrs">5 anos</span> ferragens Hardt</span>
+  </div>
+
+  <div class="terms">
+    <div class="term"><div class="t">Prazo de entrega</div><div class="b">100–120<br><span style="font-size:9pt">dias úteis</span></div></div>
+    <div class="term"><div class="t">Validade</div><div class="b">7 dias</div></div>
+    <div class="term"><div class="t">Garantia</div><div class="b">5 anos</div></div>
+  </div>
+
+  <h2 class="serif" style="font-size:14pt; margin-top:6mm;">Condições de pagamento</h2>
+  <ul class="pay">
+    <li><b>40%</b> de entrada (assinatura do contrato)</li>
+    <li><b>30%</b> na entrega</li>
+    <li><b>30%</b> em boleto para 30 dias após a entrega</li>
+  </ul>
+
+  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Condomínio Edifício Luxemburgo · 2026</span></div>
+</div>
+
+<!-- ============ PAGE 5 — ESCOPO + DESCRITIVO + FECHAMENTO ============ -->
+<div class="page">
+  <div class="eyebrow">Escopo</div>
+  <h1 class="section-h">O que está incluído.</h1>
+  <hr class="rule">
+
+  <div class="scope">
+    <div>
+      <h3>✦ Marcenaria Valvic (incluso)</h3>
+      <ul>
+        <li>Painéis de revestimento em MDF amadeirado</li>
+        <li>Frisos verticais usinados em CNC</li>
+        <li>Recuo + fita de LED embutida no painel</li>
+        <li>Portas de acesso a quadros com imã de toque</li>
+        <li>Molduras de espelho em amadeirado + MDF de fundo</li>
+        <li>Fita de borda na cor e instalação por equipe própria</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Não contemplado (outros fornecedores)</h3>
+      <ul>
+        <li>Granito (pórtico, molduras e rodapés de pedra)</li>
+        <li>Portas prontas pintadas, porta blindex</li>
+        <li>Papel de parede, pintura, porcelanato</li>
+        <li>Rodapé de poliestireno, forro de gesso/sanca</li>
+        <li>Arandelas e ponto de energia do LED (eletricista)</li>
+        <li>Banco e aparador em madeira de demolição</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="desc">
+    <h3>Hall dos pavimentos-tipo (2 e 4 apartamentos)</h3>
+    <ul>
+      <li>Revestimento amadeirado da parede dos elevadores, contornando as portas com modulação alinhada.</li>
+      <li>Parede técnica com portas de giro mimetizadas para acesso aos quadros, abertura por toque (sem puxador).</li>
+      <li>Frisos verticais e iluminação LED embutida na sanca do painel.</li>
+    </ul>
+    <h3>Hall social — Blocos A e B</h3>
+    <ul>
+      <li>Espelhos cristal prata assentados em MDF, emoldurados em amadeirado.</li>
+      <li>Acabamento de esquadro fino, integrando as molduras ao conjunto do hall.</li>
+    </ul>
+  </div>
+
+  <div class="close">
+    <div class="eyebrow" style="color:var(--gold-soft)">Por que a Valvic</div>
+    <p class="serif">Galpão próprio, CNC, coladeira automática e equipe especializada — estrutura para entregar pavimento após pavimento com o mesmo padrão.</p>
+    <p>Será uma honra executar a chegada do Edifício Luxemburgo. Ficamos à disposição para apresentar
+    a proposta pessoalmente e detalhar cada etapa com a administração e a arquiteta.</p>
+    <p style="margin-top:6mm;"><span class="brandline" style="color:#fff; font-size:13pt;">valvic<span class="dot">.</span> marcenaria</span></p>
+  </div>
+
+  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Proposta nº LUX-2026-001 · validade 7 dias</span></div>
+</div>
+
+</body></html>

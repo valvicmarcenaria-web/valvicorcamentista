@@ -1,0 +1,262 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"><style>
+:root{
+  --ink:#1A1714; --soft:#5C564C; --mut:#918A7C; --line:#E3DDD1; --hair:#F0EBE1;
+  --paper:#fff; --cream:#FAF7F1; --sand:#F1EBDF;
+  --gold:#9C7A3C; --gold-lt:#C6A567; --gold-pale:#F5EEDF; --deep:#241F1B;
+}
+@page{size:A4;margin:0;}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;
+     color:var(--ink);font-size:9.6pt;line-height:1.62;}
+.serif{font-family:'Cormorant Garamond','Liberation Serif',Georgia,serif;}
+.page{position:relative;width:210mm;height:297mm;overflow:hidden;
+      background:var(--paper);page-break-after:always;}
+.page:last-of-type{page-break-after:avoid;}
+.pad{padding:17mm 19mm 14mm;height:100%;display:flex;flex-direction:column;}
+h1,h2,h3{margin:0;font-weight:600;}
+p{margin:0;}
+.eyebrow{font-size:7.2pt;letter-spacing:.30em;text-transform:uppercase;
+         color:var(--gold);font-weight:700;}
+.rule{height:1.5px;width:40px;background:var(--gold);margin:7px 0 13px;}
+.h-sec{font-family:'Cormorant Garamond',Georgia,serif;font-size:23pt;
+       line-height:1.12;font-weight:600;letter-spacing:-.01em;}
+.lead{color:var(--soft);font-size:9.9pt;max-width:150mm;}
+.foot{margin-top:auto;padding-top:8mm;border-top:1px solid var(--hair);
+      display:flex;justify-content:space-between;font-size:7.2pt;
+      letter-spacing:.16em;text-transform:uppercase;color:var(--mut);}
+
+/* capa */
+.cover{background:var(--deep);color:#F6F1E7;}
+.cover .pad{padding:24mm 19mm 16mm;}
+.cover .eyebrow{color:var(--gold-lt);}
+.cover .rule{background:var(--gold-lt);width:56px;height:2px;}
+.cv-t{font-family:'Cormorant Garamond',Georgia,serif;font-size:38pt;
+      line-height:1.05;font-weight:600;letter-spacing:-.015em;margin-top:3mm;max-width:150mm;}
+.cv-nome{font-family:'Cormorant Garamond',Georgia,serif;font-size:74pt;
+         line-height:.98;font-weight:600;letter-spacing:-.025em;margin-top:4mm;
+         color:#F7F2E8;}
+.cv-s{font-size:13pt;color:#CFC6B4;margin-top:7mm;font-weight:300;
+      line-height:1.45;}
+.cv-meta{margin-top:13mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6mm;
+         border-top:1px solid rgba(255,255,255,.16);padding-top:7mm;}
+.cv-meta .k{font-size:6.9pt;letter-spacing:.2em;text-transform:uppercase;
+            color:var(--gold-lt);font-weight:700;}
+.cv-meta .v{font-size:10.4pt;color:#EDE6D9;margin-top:2mm;}
+.cv-brand{font-size:8.6pt;letter-spacing:.42em;text-transform:uppercase;
+          color:#E8DFCB;font-weight:700;}
+.cv-num{position:absolute;right:19mm;top:22mm;font-family:'Cormorant Garamond',Georgia,serif;
+        font-size:110pt;line-height:1;color:rgba(198,165,103,.13);font-weight:600;}
+
+/* itens */
+.it{padding:3.1mm 0;border-bottom:1px solid var(--hair);display:flex;gap:6mm;}
+.it:last-child{border-bottom:none;}
+.it-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:14.5pt;color:var(--gold-lt);
+      font-weight:600;min-width:9mm;line-height:1.1;}
+.it-t{font-size:10.4pt;font-weight:600;letter-spacing:-.005em;}
+.it-d{color:var(--soft);font-size:8.4pt;margin-top:1mm;line-height:1.5;}
+
+/* cenários */
+.cen{border:1px solid var(--line);border-radius:2px;padding:4.6mm 5.6mm;
+     margin-bottom:3.4mm;background:var(--cream);}
+.cen.hi{background:var(--gold-pale);border-color:var(--gold-lt);}
+.cen-h{display:flex;align-items:baseline;gap:4mm;}
+.cen-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:20pt;
+       color:var(--gold);font-weight:600;line-height:1;}
+.cen-t{font-size:12.5pt;font-weight:600;}
+.cen-g{margin-left:auto;font-size:7.6pt;letter-spacing:.16em;text-transform:uppercase;
+       color:#fff;background:var(--gold);padding:2.2mm 3.4mm;border-radius:2px;
+       font-weight:700;white-space:nowrap;}
+.cen-x{color:var(--soft);font-size:8.7pt;margin-top:2mm;}
+.cen-l{margin-top:2.8mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm;
+       border-top:1px solid var(--line);padding-top:3.2mm;}
+.cen-l .k{font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;
+          color:var(--mut);font-weight:700;}
+.cen-l .v{font-size:8.7pt;margin-top:1mm;line-height:1.4;}
+
+/* tabela de investimento */
+table{width:100%;border-collapse:collapse;}
+.inv th{font-size:6.9pt;letter-spacing:.16em;text-transform:uppercase;
+        color:var(--mut);font-weight:700;text-align:right;padding:0 0 3mm;
+        border-bottom:1.5px solid var(--gold);}
+.inv th.l{text-align:left;}
+.inv td{padding:2.4mm 0;border-bottom:1px solid var(--hair);text-align:right;
+        font-variant-numeric:tabular-nums;font-size:9.6pt;}
+.inv td.l{text-align:left;font-size:9.5pt;}
+.inv td.hi{background:var(--gold-pale);font-weight:600;
+           padding-right:2.6mm;padding-left:2.6mm;}
+.inv th.hi{background:var(--gold-pale);padding-right:2.6mm;padding-left:2.6mm;
+           color:var(--gold);}
+.inv tr.tot td{border-bottom:none;border-top:1.5px solid var(--ink);
+               padding-top:3mm;font-size:13.5pt;font-weight:600;
+               font-family:'Cormorant Garamond',Georgia,serif;}
+.inv tr.tot td.l{font-family:inherit;font-size:8pt;letter-spacing:.18em;
+                 text-transform:uppercase;font-weight:700;}
+
+.box{background:var(--cream);border-left:2.5px solid var(--gold);
+     padding:4mm 5.2mm;margin-top:4mm;}
+.box .t{font-size:7.4pt;letter-spacing:.18em;text-transform:uppercase;
+        color:var(--gold);font-weight:700;}
+.box p{color:var(--soft);font-size:9pt;margin-top:2mm;}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:9mm;}
+.term{padding:3.4mm 0;border-bottom:1px solid var(--hair);}
+.term:last-child{border-bottom:none;}
+.term .k{font-size:6.9pt;letter-spacing:.18em;text-transform:uppercase;
+         color:var(--gold);font-weight:700;}
+.term .v{font-size:9.5pt;margin-top:1.2mm;}
+.term .s{color:var(--soft);font-size:8.5pt;margin-top:.8mm;}
+.pay td{padding:2.6mm 0;border-bottom:1px solid var(--hair);font-size:9pt;}
+.pay td.d{text-align:right;font-weight:600;color:var(--gold);
+          font-variant-numeric:tabular-nums;}
+.fora .k{font-size:9.3pt;font-weight:600;}
+.fora .v{color:var(--soft);font-size:8.6pt;margin-top:.8mm;}
+.fora li{margin-bottom:3.2mm;list-style:none;}
+.fora ul{margin:0;padding:0;}
+.sig{margin-top:auto;padding-top:9mm;display:grid;grid-template-columns:1fr 1fr;gap:14mm;}
+.sig .ln{border-top:1px solid var(--ink);padding-top:2.4mm;font-size:8.4pt;
+         color:var(--soft);}
+
+</style></head><body><div class="page cover"><div class="pad">
+  <div class="cv-brand">Valvic Marcenaria</div>
+  <div style="margin-top:auto">
+    <div class="eyebrow">Proposta de marcenaria planejada para</div>
+    <div class="rule"></div>
+    <div class="cv-nome" style="font-size:62pt">Carol e Vinícius</div>
+    <div class="cv-s">Nove ambientes, do lavabo ao mezanino,<br>
+    sobre o caderno de Jéssica Sollero</div>
+  </div>
+  <div class="cv-meta">
+    <div><div class="k">Prazo de entrega</div><div class="v">Até 90 dias corridos</div></div>
+    <div><div class="k">Data</div><div class="v">18 de agosto de 2026</div></div>
+    <div><div class="k">Validade</div><div class="v">7 dias corridos</div></div>
+  </div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">O que está sendo proposto</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">Quarenta e nove pranchas,<br>lidas uma a uma.</h2>
+  <p class="lead" style="margin-top:4mm">O levantamento foi feito sobre o
+  caderno de marcenaria completo — planta, elevação, corte e detalhe de cada
+  ambiente. São <strong>214 m² de chapa</strong> em MDF Areal e MDF Frapê da
+  Arauco, com interior em MDF Branco TX e o nicho da sala de jantar em MDF
+  Trevi, como pede o projeto.</p>
+  <div style="margin-top:6mm"><div class="eyebrow">Lavabo &nbsp;·&nbsp; painel de 1,26 m</div><div class="rule" style="margin:5px 0 3mm"></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Painel ripado com espelho</span><span class="it-d" style="display:inline;margin-left:5px">126 × 148 em MDF Areal — ripas de 3 × 2 cm com espaçamento de 3 cm, espelho prata colado no miolo e fita de LED 4000 K em cima e embaixo. O ripado e o espelho são a mesma peça: o espelho nasce dentro do desenho, não colado sobre ele.</span></div></div></div>
+  <div style="margin-top:5.5mm"><div class="eyebrow">Sala de jantar &nbsp;·&nbsp; parede de 2,30 m · pé-direito 2,62 m</div><div class="rule" style="margin:5px 0 3mm"></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Cristaleira</span><span class="it-d" style="display:inline;margin-left:5px">230 × 114,5 × 35,5 prof em MDF Frapê — quatro portas de vidro reflecta bronze com perfil de alumínio bronze e puxador Sotille, quatro prateleiras de vidro incolor temperado e LED 3000 K por trás.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Nicho em MDF Trevi</span><span class="it-d" style="display:inline;margin-left:5px">230 × 66 × 35,5 prof — o único módulo do projeto nesse acabamento, com LED na parte superior.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Armário inferior</span><span class="it-d" style="display:inline;margin-left:5px">230 × 82 × 50 prof — quatro gavetas e quatro portas, com puxador em mármore travertino 6 × 6 nas gavetas.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Painel e porta de giro</span><span class="it-d" style="display:inline;margin-left:5px">120 × 262,5 em MDF Frapê, com porta de giro de 76 × 210, puxador cava e perfil de alumínio na base.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Marco do vão</span><span class="it-d" style="display:inline;margin-left:5px">140 × 150 em MDF Areal, acabamento em meia-esquadria — o arremate que faz o vão virar moldura.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Painel e porta de correr</span><span class="it-d" style="display:inline;margin-left:5px">140 × 262,5 com porta de correr de 140 × 242,5, trilho embutido no gesso. De fora, o painel é contínuo: a porta some nele.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Painel e porta de correr — elevação C</span><span class="it-d" style="display:inline;margin-left:5px">120 × 262,5 com porta de correr de 72 × 230, também com trilho embutido.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Sapateira</span><span class="it-d" style="display:inline;margin-left:5px">52,5 × 105 × 25 prof em MDF Areal — quatro prateleiras inclinadas, acabamento em meia-esquadria.</span></div></div></div>
+  <div class="foot"><span>Valvic Marcenaria · Carol e Vinícius</span><span>Caderno de marcenaria · Jéssica Sollero</span><span>2 / 8</span></div>
+</div></div><div class="page"><div class="pad">
+  <div style="margin-top:0"><div class="eyebrow">Sala de estar &nbsp;·&nbsp; parede de 4,43 m · painel de 2,28 m</div><div class="rule" style="margin:5px 0 3mm"></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Buffet suspenso</span><span class="it-d" style="display:inline;margin-left:5px">443,5 × 80 × 45 prof em MDF Frapê — seis gavetões de 70 cm, LED 3000 K em cima e embaixo, puxador em mármore travertino 6 × 6 em cada gavetão. Solto do chão, o móvel devolve a linha da parede.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Painel de TV ripado</span><span class="it-d" style="display:inline;margin-left:5px">228 × 262,5 em MDF Areal — o painel inteiro é ripado, inclusive as seis portas do armário superior: 3 × 2 cm de ripa com 3 cm de vão, do rodapé ao forro, sem interrupção. Interior em MDF Branco TX.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Prateleiras laterais</span><span class="it-d" style="display:inline;margin-left:5px">oito peças de 34 × 30 prof, nas duas colunas abertas que ladeiam a TV.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Rack</span><span class="it-d" style="display:inline;margin-left:5px">228 × 50 × 61 prof em MDF Frapê — três gavetões de 76 cm com puxador em travertino, ventilação e passagem de cabo previstas.</span></div></div></div>
+  <div style="margin-top:5.5mm"><div class="eyebrow">Varanda &nbsp;·&nbsp; bancada de 3,00 m</div><div class="rule" style="margin:5px 0 3mm"></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Armário superior sem fundo</span><span class="it-d" style="display:inline;margin-left:5px">73 × 168 × 22 prof em MDF Areal — três prateleiras de vidro incolor temperado e acabamento em tubinho champagne. Sem fundo: a parede aparece através dele.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Armário inferior</span><span class="it-d" style="display:inline;margin-left:5px">90 × 80 × 50 prof em MDF Frapê — nicho aberto de 30 × 68 para a adega e porta de 56, com puxador em travertino.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Bancada curva</span><span class="it-d" style="display:inline;margin-left:5px">300 × 40, cinco centímetros de espessura em MDF Areal — bordas arredondadas, fixação invisível na parede e pés chumbados em tubo champagne. A curva é desenhada, não é um retângulo com canto quebrado.</span></div></div></div>
+  <div class="box" style="margin-top:6mm"><div class="t">Sobre o ripado</div>
+  <p>O projeto crava a régua: <strong>3 × 2 cm com 3 cm de espaçamento</strong>.
+  Não é uma textura comprada pronta — é régua cortada, fitada e colada uma a
+  uma sobre o painel de fundo. No painel de TV da sala de estar são mais de
+  cento e cinquenta réguas, e o desenho só fecha se o passo não variar.</p></div>
+  <div class="foot"><span>Valvic Marcenaria · Carol e Vinícius</span><span>Caderno de marcenaria · Jéssica Sollero</span><span>3 / 8</span></div>
+</div></div><div class="page"><div class="pad">
+  <div style="margin-top:0"><div class="eyebrow">Quarto Rafael e Miguel &nbsp;·&nbsp; mezanino · pé-direito 2,80 m</div><div class="rule" style="margin:5px 0 3mm"></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Cama suspensa com mezanino</span><span class="it-d" style="display:inline;margin-left:5px">estrado de 203 × 150 em MDF Areal sobre estrutura de metalon, vão com porta de acesso, guarda-corpo de corda e LED 4000 K na face inferior. A estrutura metálica é dimensionada para carga de uso, não para o desenho.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Escada</span><span class="it-d" style="display:inline;margin-left:5px">nove degraus de 17 cm em MDF Areal, altura total 170 — degrau e espelho no mesmo material do mezanino.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Cama inferior</span><span class="it-d" style="display:inline;margin-left:5px">203 × 105 com dois gavetões de 93,5 em MDF Frapê.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Cabeceiras e nichos</span><span class="it-d" style="display:inline;margin-left:5px">duas cabeceiras de 146 × 35 com LED 3000 K e dois nichos de 146 × 23 com suporte em MDF Frapê e luz de leitura.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Bancada de estudo</span><span class="it-d" style="display:inline;margin-left:5px">113 × 46 prof em MDF Frapê — duas gavetas, puxador chanfrado, borda arredondada.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Armário</span><span class="it-d" style="display:inline;margin-left:5px">104,5 × 170 × 40 prof em MDF Frapê — quatro portas, duas gavetas e prateleiras, interior em MDF Branco TX.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Envelopamento do armário existente</span><span class="it-d" style="display:inline;margin-left:5px">204 × 280 em MDF Frapê — três portas novas com espelho prata colado. O corpo que já está lá some dentro do acabamento novo.</span></div></div></div>
+  <div style="margin-top:5.5mm"><div class="eyebrow">Quarto Maria Luísa &nbsp;·&nbsp; parede de 3,18 m · pé-direito 2,80 m</div><div class="rule" style="margin:5px 0 3mm"></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Fechamento de cortineiro</span><span class="it-d" style="display:inline;margin-left:5px">318,5 e 214,5 em MDF Frapê, com LED 3000 K inferior — em duas paredes, com vão para a persiana.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Painel e teto em MDF Areal</span><span class="it-d" style="display:inline;margin-left:5px">60 × 266 e 169,5 × 60, acabamento em meia-esquadria — a madeira desce da parede e vira forro sobre a bancada.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Prateleiras de desenho orgânico</span><span class="it-d" style="display:inline;margin-left:5px">três peças de 170, 170 e 125 com retorno de canto, cinco centímetros de espessura, fixação invisível e LED inferior. A curva é usinada em duas lâminas laminadas, não recortada em chapa única.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Cabeceira estofada em gomos</span><span class="it-d" style="display:inline;margin-left:5px">4,14 m em duas paredes, tecido facto branco, com vão posterior para persiana e LED 3000 K superior. A marcenaria executa o quadro; o revestimento é do estofador e está no valor.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Bancada e penteadeira em L</span><span class="it-d" style="display:inline;margin-left:5px">172 + 167,5 × 50 prof em MDF Frapê — dois gavetões, duas gavetas, báscula a gás, báscula com espelho prata colado, divisória interna em acrílico e LED 4000 K no espelho.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Banco-armário com assento estofado</span><span class="it-d" style="display:inline;margin-left:5px">50 × 80 × 50 prof — gaveta interna e assento em tecido facto branco.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Envelopamento do armário existente</span><span class="it-d" style="display:inline;margin-left:5px">188,5 × 266 em MDF Frapê, três portas com espelho prata colado.</span></div></div></div>
+  <div class="foot"><span>Valvic Marcenaria · Carol e Vinícius</span><span>Caderno de marcenaria · Jéssica Sollero</span><span>4 / 8</span></div>
+</div></div><div class="page"><div class="pad">
+  <div style="margin-top:0"><div class="eyebrow">Banho social</div><div class="rule" style="margin:5px 0 3mm"></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Armário superior</span><span class="it-d" style="display:inline;margin-left:5px">140 × 120,5 × 15 prof em MDF Frapê — três portas de correr em espelho prata e doze prateleiras internas em MDF Branco TX.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Armário inferior</span><span class="it-d" style="display:inline;margin-left:5px">140 × 91 × 35 prof — báscula com pistão a gás, dois gavetões tulha e um gavetão, puxador chanfrado.</span></div></div></div>
+  <div style="margin-top:5.5mm"><div class="eyebrow">Quarto casal &nbsp;·&nbsp; painel de 2,72 m</div><div class="rule" style="margin:5px 0 3mm"></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Painel da cabeceira</span><span class="it-d" style="display:inline;margin-left:5px">272,5 × 256 em MDF Areal, acabamento em meia-esquadria, instalado acima do rodapé.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Cabeceira estofada</span><span class="it-d" style="display:inline;margin-left:5px">177,5 em Tecido Bouclé Elba Cor Branco Bruma — quadro de marcenaria e revestimento do estofador, dentro do valor.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Penteadeira</span><span class="it-d" style="display:inline;margin-left:5px">52 × 50 prof em MDF Frapê — báscula a gás, báscula com espelho prata colado, divisória interna em acrílico e LED 4000 K.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Mesa de cabeceira</span><span class="it-d" style="display:inline;margin-left:5px">45 × 50 prof em MDF Frapê — uma gaveta com puxador em mármore travertino.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Cristaleira</span><span class="it-d" style="display:inline;margin-left:5px">100,5 × 181 × 30 prof em MDF Areal — duas portas de vidro reflecta bronze com puxador Sotille, quatro prateleiras de vidro e LED 3000 K por trás.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Armário inferior da cristaleira</span><span class="it-d" style="display:inline;margin-left:5px">100,5 × 85 × 30 prof em MDF Frapê — oito gavetas em duas colunas.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Duas portas em MDF Areal</span><span class="it-d" style="display:inline;margin-left:5px">uma de giro de 97,5 × 242 e uma de correr de 59 × 242, puxador cava e perfil de alumínio na base.</span></div></div></div>
+  <div style="margin-top:5.5mm"><div class="eyebrow">Banho casal</div><div class="rule" style="margin:5px 0 3mm"></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Armário superior</span><span class="it-d" style="display:inline;margin-left:5px">112 × 120,5 × 15 prof em MDF Frapê — duas portas de correr em espelho prata, quatro prateleiras e iluminação frontal em LED 4000 K nos montantes fixos.</span></div></div><div class="it" style="padding:2.0mm 0"><div><span class="it-t" style="font-size:9.6pt">Armário inferior</span><span class="it-d" style="display:inline;margin-left:5px">112 × 91 × 51,5 prof — báscula com pistão a gás, gavetão tulha e gavetão, puxador chanfrado.</span></div></div></div>
+  <div class="box" style="margin-top:6mm"><div class="t">O que atravessa o projeto inteiro</div>
+  <p><strong>Cinquenta metros de LED</strong> em perfil de alumínio embutido na
+  marcenaria, entre 3000 K e 4000 K conforme a prancha. <strong>Quinze
+  puxadores em mármore travertino 6 × 6</strong>, no buffet, no rack, no armário
+  da sala de jantar, na varanda e na mesa de cabeceira do casal. E o
+  <strong>veio</strong>: a nota que se repete em todas as folhas manda seguir o
+  desenho da madeira nos encontros. Isso trava a rotação das peças no plano de
+  corte e é a razão de o aproveitamento de chapa ser menor aqui do que num
+  projeto em cor lisa. Está considerado no valor.</p></div>
+  <div class="foot"><span>Valvic Marcenaria · Carol e Vinícius</span><span>Caderno de marcenaria · Jéssica Sollero</span><span>5 / 8</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Três configurações</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">O que muda entre elas<br>é o movimento.</h2>
+  <p class="lead" style="margin-top:4mm">O desenho, a chapa, o acabamento e o
+  esquadro são <strong>os mesmos nas três</strong>. O que separa uma da outra é
+  a ferragem — e ferragem se mede em ciclo de abertura, amortecimento e
+  regulagem. São <strong>76 dobradiças, 39 gavetas e 6 básculas</strong> neste
+  projeto: é muita coisa abrindo e fechando todo dia.</p>
+  <div style="margin-top:5mm"><div class="cen"><div class="cen-h"><div class="cen-n">I</div><div class="cen-t">Intermediária</div><div class="cen-g">Garantia 5 anos</div></div><div class="cen-x">A gaveta passa a correr por baixo, escondida: some o trilho lateral e o vão útil cresce. Nos seis gavetões de 70 cm do buffet da sala de estar, é o degrau que mais se sente.</div><div class="cen-l"><div><div class="k">Dobradiça</div><div class="v">Dobradiça Hardt com amortecimento</div></div><div><div class="k">Corrediça</div><div class="v">Corrediça oculta Hardt, fechamento suave</div></div><div><div class="k">Báscula</div><div class="v">Articulador Blum HK-xs</div></div></div></div><div class="cen hi"><div class="cen-h"><div class="cen-n">II</div><div class="cen-t">Superior</div><div class="cen-g">Garantia 10 anos</div></div><div class="cen-x">A corrediça Quadro tem curso mais longo, carga maior, retorno mais macio e ciclo de teste muito acima do uso doméstico. Dobra a garantia outra vez.</div><div class="cen-l"><div><div class="k">Dobradiça</div><div class="v">Dobradiça Hettich Novisys</div></div><div><div class="k">Corrediça</div><div class="v">Corrediça oculta Hettich Quadro</div></div><div><div class="k">Báscula</div><div class="v">Articulador Blum HK-xs</div></div></div></div></div>
+  <div class="box"><div class="t">Uma observação honesta</div>
+  <p>A garantia acima é <strong>garantia Valvic</strong> — nossa, escrita e
+  assinada na entrega. Não é a garantia do fabricante da ferragem, que não faz
+  parte do que a gente vende.</p></div>
+  <div class="foot"><span>Valvic Marcenaria · Carol e Vinícius</span><span>Caderno de marcenaria · Jéssica Sollero</span><span>6 / 8</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Investimento</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">Ambiente a ambiente,<br>nas duas linhas.</h2>
+  <table class="inv" style="margin-top:4mm">
+    <tr><th class="l">Ambiente</th><th>I · 5 anos</th>
+        <th class="hi">II · 10 anos</th></tr>
+    <tr><td class="l">Lavabo</td><td>1.900</td><td class="hi">2.200</td></tr><tr><td class="l">Sala de jantar</td><td>31.800</td><td class="hi">35.800</td></tr><tr><td class="l">Sala de estar</td><td>34.800</td><td class="hi">39.100</td></tr><tr><td class="l">Varanda</td><td>5.800</td><td class="hi">6.500</td></tr><tr><td class="l">Quarto Rafael e Miguel</td><td>30.500</td><td class="hi">34.400</td></tr><tr><td class="l">Quarto Maria Luísa</td><td>27.200</td><td class="hi">30.700</td></tr><tr><td class="l">Banho social</td><td>9.100</td><td class="hi">10.200</td></tr><tr><td class="l">Quarto casal</td><td>20.600</td><td class="hi">23.200</td></tr><tr><td class="l">Banho casal</td><td>8.500</td><td class="hi">9.600</td></tr>
+    <tr class="tot"><td class="l">Investimento</td>
+      <td>170.200</td><td class="hi">191.700</td></tr>
+    <tr><td class="l" style="padding-top:2.5mm;color:var(--gold);font-weight:600">
+      + Upgrade · interior na cor da estrutura externa</td>
+      <td style="padding-top:2.5mm">14.800</td>
+      <td class="hi" style="padding-top:2.5mm">14.800</td></tr>
+    <tr class="tot"><td class="l">Com o upgrade</td>
+      <td>185.000</td><td class="hi">206.500</td></tr>
+  </table>
+  <div class="box"><div class="t">O que está dentro do valor</div>
+  <p>Projeto executivo, material, produção em CNC e coladeira automática
+  próprias, e as oito frentes coordenadas — espelhos, portas de vidro,
+  prateleiras temperadas, estofamento das cabeceiras, serralheria do mezanino,
+  tubo champagne, puxadores de travertino e iluminação em LED. Mais transporte,
+  entrega na obra e <strong>instalação e montagem por equipe própria da
+  Valvic</strong>. O acompanhamento de Jéssica Sollero Design de Interiores está
+  contemplado no valor, nas duas linhas.</p></div>
+  <div class="box" style="border-left-color:var(--mut)">
+  <div class="t" style="color:var(--mut)">Uma definição ainda em aberto</div>
+  <p>A <strong>linha da chapa</strong>. O caderno nomeia MDF Areal e MDF Frapê
+  da Arauco, e este valor considera as duas na faixa de cor padrão. Se a linha
+  específica for de acabamento especial, o conjunto é recotado antes de
+  fechar — a chapa é o maior item isolado deste orçamento.</p></div>
+  <div class="foot"><span>Valvic Marcenaria · Carol e Vinícius</span><span>Caderno de marcenaria · Jéssica Sollero</span><span>7 / 8</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Condições</div>
+  <div class="rule"></div>
+  <h2 class="h-sec">Prazo, pagamento<br>e fronteiras.</h2>
+  <div class="two" style="margin-top:7mm">
+    <div>
+      <div class="term"><div class="k">Prazo de entrega</div>
+        <div class="v">Até 90 dias corridos</div>
+        <div class="s">Contados da aprovação do projeto executivo e da
+        definição da chapa. Nove ambientes entregues por frentes, não todos de
+        uma vez.</div></div>
+      <div class="term"><div class="k">Conferência de medidas</div>
+        <div class="v">Visita técnica antes do corte</div>
+        <div class="s">O caderno carimba "conferir medidas no local" em todas
+        as folhas, e concordamos: nada vai para a CNC antes da nossa medição na
+        obra.</div></div>
+      <div class="term"><div class="k">Validade da proposta</div>
+        <div class="v">7 dias corridos</div></div>
+      <div class="term"><div class="k">Produção e montagem</div>
+        <div class="v">Fábrica e equipe próprias, do corte à instalação</div>
+        <div class="s">Corte, usinagem da cava e laminação de borda na nossa CNC
+        e coladeira automática; instalação e montagem pela nossa equipe. Não
+        terceirizamos nem o que define o acabamento, nem quem entrega.</div></div>
+      <table class="pay" style="margin-top:4mm">
+        <tr><td colspan="2" style="border:none;padding-bottom:1mm">
+          <span class="eyebrow">Formas de pagamento</span></td></tr>
+        <tr><td>Entrada de 30% + saldo em até 10× no cartão</td><td class="d">—</td></tr><tr><td>Entrada de 50% + saldo em até 8× no cartão</td><td class="d">3%</td></tr><tr><td>Entrada de 70% + saldo em até 6× no cartão</td><td class="d">5%</td></tr><tr><td>Entrada de 70% + saldo por transferência</td><td class="d">7%</td></tr>
+      </table>
+      <p style="color:var(--mut);font-size:7.9pt;margin-top:2.5mm">
+      O desconto por transferência devolve ao cliente a taxa de máquina que
+      deixamos de pagar.</p>
+    </div>
+    <div class="fora">
+      <div class="eyebrow">Não incluso nesta proposta</div>
+      <div class="rule"></div>
+      <ul><li><div class="k">Pedras e marmoraria</div><div class="v">As bancadas do lavabo e dos dois banheiros são fornecimento de marmoraria. Os quinze puxadores de travertino 6 × 6, esses sim, estão no valor.</div></li><li><div class="k">Eletrodomésticos, louças e metais</div><div class="v">Adega da varanda, TV, cubas e torneiras. Prevemos o vão e a usinagem; o aparelho é do cliente — precisamos das medidas de fábrica antes do corte.</div></li><li><div class="k">Persianas e cortinas</div><div class="v">Há vão previsto para persiana nas cabeceiras dos quartos Maria Luísa e nos cortineiros; a persiana em si não está aqui.</div></li><li><div class="k">Alvenaria, gesso, revestimento e pintura</div><div class="v">Inclusive o rasgo no forro para os trilhos embutidos das portas de correr, que é obra de gesseiro.</div></li><li><div class="k">Elétrica e hidráulica</div><div class="v">A iluminação embutida NA marcenaria é nossa; os pontos de energia e de água são da obra.</div></li><li><div class="k">Móveis soltos e decoração</div><div class="v">Camas, poltronas, mesas, tapetes e o papel de parede do quarto Maria Luísa.</div></li></ul>
+    </div>
+  </div>
+  <div class="sig">
+    <div class="ln">Valvic Marcenaria</div>
+    <div class="ln">Carol e Vinícius</div>
+  </div>
+  <div class="foot"><span>Valvic Marcenaria · Carol e Vinícius</span><span>Caderno de marcenaria · Jéssica Sollero</span><span>8 / 8</span></div>
+</div></div></body></html>

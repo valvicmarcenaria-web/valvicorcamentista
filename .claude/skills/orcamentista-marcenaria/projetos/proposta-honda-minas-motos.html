@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+:root{--gold:#B8901E;--gold-soft:#D9B25A;--gold-deep:#9A6E12;--ink:#211a12;--ink-soft:#5c5344;--mut:#8b8172;
+--cream:#FCF8F0;--line:#EAE0CB;--line-soft:#F0E9D9;--paper:#fff;--petrol:#2C4A5A;--petrol-tint:#F5F8F8;--petrol-line:#CBD7DB;}
+@page{size:A4;margin:0;}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;color:var(--ink);font-size:10.5pt;line-height:1.6;}
+.serif{font-family:'Cormorant Garamond','Georgia',serif;}
+.page{position:relative;width:210mm;height:297mm;padding:15mm 18mm 14mm;page-break-after:always;overflow:hidden;background:var(--paper);}
+.page:last-child{page-break-after:auto;}
+h1,h2,h3{margin:0;font-weight:600;}
+p{margin:8px 0;}
+.eyebrow{letter-spacing:.34em;text-transform:uppercase;font-size:8pt;font-weight:700;color:var(--gold-deep);}
+.rule{height:1.5px;width:46px;background:var(--gold-soft);border:0;margin:11px 0 13px;}
+.section-h{font-family:'Cormorant Garamond','Georgia',serif;font-size:23pt;font-weight:700;color:var(--ink);line-height:1.1;}
+.lead{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;font-style:italic;color:var(--ink-soft);line-height:1.5;max-width:160mm;}
+.pfoot{position:absolute;left:18mm;right:18mm;bottom:12mm;display:flex;justify-content:space-between;font-size:7.4pt;color:var(--mut);letter-spacing:.13em;border-top:1px solid var(--line-soft);padding-top:3mm;}
+.brandline{font-family:'Cormorant Garamond','Georgia',serif;font-weight:700;letter-spacing:.12em;}.brandline .dot{color:var(--gold);}
+
+/* CAPA */
+.cover{padding:0;background:var(--cream);}
+.cover .frame{position:absolute;inset:10mm;border:1px solid var(--gold-soft);pointer-events:none;}
+.cover .inner{position:relative;padding:28mm 20mm 16mm;height:297mm;}
+.brand{font-family:'Cormorant Garamond','Georgia',serif;font-size:30pt;font-weight:700;letter-spacing:.2em;color:var(--ink);}
+.brand .dot{color:var(--gold);}
+.brand-sub{letter-spacing:.52em;font-size:7.6pt;font-weight:700;color:var(--gold-deep);margin-top:3px;}
+.cover .kicker{margin-top:74mm;letter-spacing:.34em;text-transform:uppercase;font-size:8.6pt;font-weight:700;color:var(--gold-deep);}
+.cover .client{font-family:'Cormorant Garamond','Georgia',serif;font-size:40pt;font-weight:700;line-height:1.02;margin:5px 0 4px;color:var(--ink);}
+.cover .proj{font-family:'Cormorant Garamond','Georgia',serif;font-style:italic;font-size:15pt;color:var(--ink-soft);}
+.cover .meta{margin-top:9mm;display:flex;gap:7mm;flex-wrap:wrap;}
+.cover .meta .m{border-left:2px solid var(--gold-soft);padding-left:4mm;}
+.cover .meta .t{font-size:7pt;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;}
+.cover .meta .v{font-family:'Cormorant Garamond','Georgia',serif;font-size:13pt;font-weight:700;color:var(--ink);}
+.cover .foot{position:absolute;left:20mm;right:20mm;bottom:16mm;display:flex;justify-content:space-between;align-items:flex-end;font-size:8.4pt;color:var(--ink-soft);}
+.sparkles{font-size:11pt;color:var(--gold-soft);letter-spacing:.45em;margin-bottom:3mm;}
+
+/* ESCOPO */
+.block{margin-top:6mm;padding-left:5mm;border-left:2px solid var(--gold-soft);}
+.block .nm{font-family:'Cormorant Garamond','Georgia',serif;font-size:16.5pt;font-weight:700;color:var(--ink);}
+.block .sub{font-size:8pt;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;margin-top:1mm;}
+.block ul{margin:2.5mm 0 0;padding-left:4.6mm;font-size:9.3pt;color:var(--ink-soft);}
+.block li{margin:1.6mm 0;}
+.block b{color:var(--ink);}
+.highlights{display:flex;gap:6mm;margin-top:8mm;}
+.hl{flex:1;border-radius:6px;padding:4.5mm 5mm;}
+.hl.perg{background:var(--petrol-tint);border:1px solid var(--petrol-line);}
+.hl.port{background:#FBF3E1;border:1px solid var(--line);}
+.hl .t{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;font-weight:700;line-height:1.1;}
+.hl.perg .t{color:var(--petrol);}
+.hl.port .t{color:var(--gold-deep);}
+.hl ul{margin:2.5mm 0 0;padding-left:4.4mm;font-size:8.5pt;color:var(--ink-soft);line-height:1.45;}
+.hl li{margin:1.4mm 0;}
+.hl b{color:var(--ink);}
+
+/* INVESTIMENTO */
+.hero{margin-top:6mm;border:1px solid var(--line);border-radius:8px;padding:7mm 8mm;position:relative;background:var(--paper);}
+.hero::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold-soft);border-radius:8px 0 0 8px;}
+.hero .t{letter-spacing:.2em;text-transform:uppercase;font-size:8pt;font-weight:700;color:var(--gold-deep);}
+.hero .big{font-family:'Cormorant Garamond','Georgia',serif;font-size:34pt;font-weight:700;color:var(--ink);line-height:1;margin:3mm 0 1mm;}
+.hero .cap{font-size:9pt;color:var(--ink-soft);}
+table{width:100%;border-collapse:collapse;margin:7mm 0 2mm;font-size:9.8pt;}
+thead th{background:transparent;color:var(--ink-soft);font-size:7.4pt;letter-spacing:.16em;text-transform:uppercase;font-weight:700;border:0;border-bottom:1.5px solid var(--ink);padding:0 4mm 2.2mm;text-align:left;}
+td{padding:2.4mm 4mm;border-bottom:1px solid var(--line-soft);}
+td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
+.nmc{font-weight:600;color:var(--ink);}
+.grand td{border:0;border-top:1.5px solid var(--gold);color:var(--ink);font-weight:700;font-size:11.5pt;padding-top:3mm;}
+.grand .serif{font-size:14pt;}
+.split{display:flex;gap:9mm;margin-top:6mm;}.split>div{flex:1;}
+h3.blk{font-family:'Cormorant Garamond','Georgia',serif;font-size:13.5pt;color:var(--ink);margin-bottom:1mm;}
+.hrule{height:1px;background:var(--line);margin:2.5mm 0 3mm;}
+.pay{margin:2mm 0 0;padding-left:4.6mm;}.pay li{margin:1.6mm 0;font-size:9.3pt;color:var(--ink-soft);}.pay b{color:var(--ink);}
+.terms{display:flex;gap:5mm;margin-top:3mm;}
+.term{flex:1;border:1px solid var(--line);border-radius:4px;padding:3.4mm 3mm;text-align:center;}
+.term .t{font-size:7pt;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;}
+.term .b{font-family:'Cormorant Garamond','Georgia',serif;font-size:13pt;font-weight:700;margin-top:3px;line-height:1.12;color:var(--ink);}
+.note{margin-top:7mm;padding-left:5mm;border-left:2px solid var(--gold-soft);font-size:8.5pt;color:var(--ink-soft);line-height:1.55;}
+.note b{color:var(--ink);}
+.note .h{font-size:7.4pt;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;margin-bottom:2mm;}
+</style></head>
+<body>
+
+<!-- CAPA -->
+<div class="page cover">
+  <div class="frame"></div>
+  <div class="inner">
+    <div><div class="brand">valvic<span class="dot">.</span></div><div class="brand-sub">MARCENARIA</div></div>
+    <div class="kicker">Proposta comercial</div>
+    <div class="client">Minas Motos · Santa Efigênia</div>
+    <div class="proj">Marcenaria do showroom — projeto executivo Mímesis Arquitetura, prancha AR-18 R07</div>
+    <div class="meta">
+      <div class="m"><div class="t">Escopo</div><div class="v">MA-01 Armário superior · MA-02 Armário inferior</div></div>
+      <div class="m"><div class="t">Acabamentos</div><div class="v">MDF Duratex Amêndola Rústica · Palha · metalon preto</div></div>
+    </div>
+    <div class="foot">
+      <div><span class="sparkles">&#10022; &#10022; &#10022;</span><br>Do executivo ao encaixe, medido no milímetro.</div>
+      <div style="text-align:right">7 de agosto de 2026<br>validade 15 dias</div>
+    </div>
+  </div>
+</div>
+
+<!-- ESCOPO -->
+<div class="page">
+  <div class="eyebrow">O que será executado</div>
+  <div class="section-h serif">Duas peças, lidas cota a cota</div>
+  <hr class="rule">
+  <p class="lead">A prancha AR-18 separa <b>mobiliário</b> (MB01 a MB40, padrão Honda e fornecedores
+  indicados) de <b>marcenaria</b> (MA-01 e MA-02). Esta proposta cobre exatamente a segunda tabela —
+  nada a mais, nada a menos. O levantamento saiu das cotas do executivo, elevação por elevação,
+  e não de estimativa por metro quadrado.</p>
+
+  <div class="block">
+    <div class="nm">MA-01 · Armário superior</div>
+    <div class="sub">Showroom · 3,15 m × 30 cm de profundidade · topo a 2,24 m do piso acabado</div>
+    <ul>
+      <li>Corpo em <b>MDF Duratex Amêndola Rústica</b>, com a <b>base inteira na cor</b> — a
+      2,24 m do piso, é a face que se enxerga de baixo.</li>
+      <li><b>3 portas basculantes</b> de 69,5 / 70 / 70 cm, em pistão a gás <b>com amortecimento</b>.</li>
+      <li><b>Nicho aberto de 88 × 36 cm</b> com o interior integralmente na cor, inclusive o fundo.</li>
+      <li><b>3 prateleiras</b> — uma de 2,13 m e duas de 92 cm — apoiadas nas prumadas de metalon.</li>
+      <li>Puxador em <b>cava embutida</b> usinada na própria frente, conforme o DT-01 da prancha.</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <div class="nm">MA-02 · Armário inferior em “L”</div>
+    <div class="sub">Showroom · 2,34 m + 2,02 m · altura 84 cm (sóculo 10 + corpo 74)</div>
+    <ul>
+      <li>Corpo em <b>MDF Duratex Palha</b>, com <b>tampo do móvel</b> no mesmo acabamento.</li>
+      <li><b>6 portas de giro</b> — 39 / 39 / 39 cm numa perna e 46 / 46 / 45,5 cm na outra —
+      todas em <b>dobradiça com amortecimento</b>.</li>
+      <li><b>Gaveteiro de 55 cm com 4 gavetas</b> de 16,5 cm em <b>corrediça oculta</b>.</li>
+      <li>Sóculo recuado de 10 cm correndo todo o desenvolvimento.</li>
+      <li>Puxador em <b>cava embutida superior</b> contra o tampo, conforme o DT-02 da prancha.</li>
+    </ul>
+  </div>
+
+  <div class="highlights">
+    <div class="hl perg">
+      <div class="t">Metalon preto — estrutura, não enfeite</div>
+      <ul>
+        <li><b>3 prumadas em metalon 20×20</b> com <b>pintura eletrostática preta</b>, que carregam
+        as prateleiras abertas do MA-01.</li>
+        <li>Travessa sob a prateleira de 2,13 m — em vão livre desse tamanho, o apoio é o que
+        mantém a linha reta ao longo do tempo.</li>
+      </ul>
+    </div>
+    <div class="hl port">
+      <div class="t">Fixação invisível</div>
+      <ul>
+        <li>O MA-01 sobe <b>sem nenhum suporte aparente</b>, conforme a nota 3 da prancha.</li>
+        <li>3,15 m em balanço exigem ancoragem dimensionada — <b>a parede de fixação será
+        conferida na obra</b> antes da produção, como pede a nota 2.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Minas Motos Santa Efigênia · Projeto Mímesis Arquitetura</span></div>
+</div>
+
+<!-- INVESTIMENTO -->
+<div class="page">
+  <div class="eyebrow">Investimento</div>
+  <div class="section-h serif">Do desenho ao encaixe</div>
+  <hr class="rule">
+
+  <div class="hero" style="margin-top:4mm;">
+    <div class="t">Investimento total</div>
+    <div class="big serif">R$ 19.100</div>
+    <div class="cap">Marcenaria MA-01 e MA-02 do showroom — fornecimento, serralheria coordenada
+    e instalação por equipe própria Valvic.</div>
+  </div>
+
+  <table>
+    <thead><tr><th>Frente</th><th class="r">Valor</th></tr></thead>
+    <tbody>
+      <tr><td class="nmc">MA-01 — Armário superior · 3,15 m em MDF Amêndola Rústica, básculas, nicho e prateleiras sobre metalon</td><td class="r" style="white-space:nowrap">R$ 6.300</td></tr><tr><td class="nmc">MA-02 — Armário inferior em “L” · 4,36 m de desenvolvimento em MDF Palha, 6 portas de giro e gaveteiro de 4 gavetas</td><td class="r" style="white-space:nowrap">R$ 12.800</td></tr>
+    </tbody>
+    <tfoot><tr class="grand"><td class="serif">Total</td><td class="r serif" style="white-space:nowrap">R$ 19.100</td></tr></tfoot>
+  </table>
+
+  <div class="split" style="margin-top:5mm;">
+    <div>
+      <h3 class="blk">Condições de pagamento</h3>
+      <div class="hrule"></div>
+      <ul class="pay">
+        <li><b>50%</b> de entrada (assinatura)</li>
+        <li><b>50%</b> na entrega</li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="blk">Prazo &amp; garantia</h3>
+      <div class="hrule"></div>
+      <div class="terms">
+        <div class="term"><div class="t">Entrega</div><div class="b">30 a 40<br>dias úteis</div></div>
+        <div class="term"><div class="t">Garantia</div><div class="b">5 anos</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top:5mm;">
+    <div class="h">Premissas &amp; não inclusos</div>
+    <b>Acabamentos:</b> MDF Duratex Amêndola Rústica no MA-01 e MDF Duratex Palha no MA-02;
+    caixaria interna em branco, exceto o nicho aberto do MA-01, que vai integralmente na cor.
+    Metalon 20×20 com pintura eletrostática preta — item de serralheria, fornecido por parceiro e
+    <b>coordenado e instalado pela Valvic</b> (incluso).
+    <b>Adições técnicas já contempladas:</b> duas divisórias internas no caixote das básculas
+    (o desenho traz 2,09 m de vão sem apoio) e uma prateleira por módulo de porta no MA-02.
+    <b>Não inclusos:</b> os itens de mobiliário MB01 a MB40 (padrão Honda, Home Office, Leroy
+    Merlin, Madeira Madeira), a bancada BG07, a cervejeira e a adega, pontos elétricos e
+    hidráulicos, gesso, pintura e obra civil. Medidas a conferir no local e parede de fixação a
+    verificar antes da produção, conforme as notas da prancha AR-18.
+  </div>
+
+  <div class="pfoot"><span class="brandline">valvic<span class="dot">.</span> marcenaria</span><span>Minas Motos Santa Efigênia · Prancha AR-18 R07 · 07/08/2026</span></div>
+</div>
+
+</body></html>

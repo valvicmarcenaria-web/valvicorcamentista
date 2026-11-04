@@ -1,0 +1,1444 @@
+
+══════════════════════════════════════════════════════════════════════════════
+19-varanda.pdf  ·  1191 × 842 pt  ·  21 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   292,   643)  PLANTA DE LAYOUT
+   (   867,   799)  VARANDA - PLANTA DE LAYOUT
+FRENTES:
+CADEIAS HORIZONTAIS:
+   eixo  615.7 · soma   546.0 · 100 + 331 + 20 + 95
+   eixo  360.2 · soma   100.0 · 30 + 10 + 60
+   eixo  225.2 · soma   163.0 · 163
+   eixo  350.0 · soma   100.0 · 100
+   eixo  484.5 · soma   304.0 · 304
+   eixo  627.4 · soma   546.0 · 546
+CADEIAS VERTICAIS:
+   eixo  496.1 · soma   120.0 · 60 + 60
+   eixo 1031.0 · soma   240.0 · 200 + 40
+   eixo  326.9 · soma   180.0 · 180
+   eixo 1042.8 · soma   240.0 · 240
+
+══════════════════════════════════════════════════════════════════════════════
+20-varanda.pdf  ·  1191 × 842 pt  ·  16 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   318,   418)  ELEVAÇÃO A
+   (   867,   801)  VARANDA - ELEVAÇÃO
+FRENTES:
+   (   758,   290)  Gaveta Talheres
+   (  1024,   295)  Gavetas com corrediças
+   (   743,   309)  Gaveta
+   (   811,   334)  Gaveta
+   (   826,   344)  Porta-temperos
+   (   299,   348)  Giro
+   (   352,   348)  Giro
+   (   371,   348)  Giro
+   (   406,   348)  Fixo
+   (   429,   348)  Giro
+   (   513,   348)  Giro Giro
+   (   596,   348)  Giro
+   (   736,   348)  Giro Gavetão
+CADEIAS HORIZONTAIS:
+   eixo  380.1 · soma   546.0 · 95 + 20 + 164 + 50 + 117 + 60 + 10 + 30
+   eixo  390.7 · soma   546.0 · 446 + 100
+CADEIAS VERTICAIS:
+   eixo  277.9 · soma   104.0 · 16 + 68 + 20
+
+══════════════════════════════════════════════════════════════════════════════
+21-varanda.pdf  ·  1191 × 842 pt  ·  30 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   423,   585)  ELEVAÇÃO B
+   (   867,   801)  VARANDA - ELEVAÇÃO
+FRENTES:
+   (   780,   290)  Prateleira
+   (   780,   335)  Prateleira
+   (   780,   381)  Prateleira
+   (   780,   427)  Prateleira
+   (   430,   444)  Gaveta Talheres
+   (   414,   463)  Gaveta
+   (   780,   474)  Prateleira
+   (   484,   481)  Porta-temperos
+   (   474,   496)  Gaveta
+   (   593,   496)  Gaveta
+   (   417,   499)  Gavetão
+   (   296,   501)  corrediças invisíveis. Puxador
+   (   788,   519)  portas de giro
+CADEIAS HORIZONTAIS:
+   eixo  539.1 · soma   375.0 · 60 + 23.5 + 73 + 21.5 + 142 + 55
+   eixo  558.0 · soma   182.0 · 60 + 120 + 2
+CADEIAS VERTICAIS:
+   eixo  829.4 · soma   321.1 · 84 + 38.2 + 38.3 + 38.3 + 38.3 + 39.5 + 39.5 + 5
+   eixo  842.5 · soma    15.0 · 3 + 2 + 2 + 2 + 2 + 2 + 2
+   eixo  384.1 · soma   104.0 · 16 + 68 + 20
+   eixo  853.1 · soma   252.0 · 252
+
+══════════════════════════════════════════════════════════════════════════════
+22-varanda.pdf  ·  1191 × 842 pt  ·  9 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   534,   585)  ELEVAÇÃO C
+   (   867,   801)  VARANDA - CRISTALEIRA ELEVAÇÃO
+FRENTES:
+   (   811,   325)  Portas em vidro temperado
+   (   540,   424)  Giro
+   (   698,   424)  Giro
+   (   540,   521)  Giro
+   (   698,   521)  Giro
+CADEIAS HORIZONTAIS:
+   eixo  550.4 · soma     6.0 · 3 + 3
+   eixo  537.3 · soma   157.0 · 157
+   eixo  556.5 · soma   163.0 · 163
+CADEIAS VERTICAIS:
+   eixo  490.0 · soma   252.0 · 3 + 159 + 85 + 5
+   eixo  479.8 · soma   252.0 · 252
+
+══════════════════════════════════════════════════════════════════════════════
+23-sala-estar.pdf  ·  1191 × 842 pt  ·  12 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   195,   607)  PLANTA DE LAYOUT
+   (   867,   801)  SALA DE ESTAR/CONVERSAÇÃO - PLANTA DE LAYOUT
+FRENTES:
+CADEIAS HORIZONTAIS:
+   eixo  179.5 · soma   136.0 · 68 + 68
+   eixo  292.4 · soma   136.0 · 68 + 68
+   eixo  221.6 · soma   430.0 · 430
+   eixo  375.2 · soma   157.0 · 157
+   eixo  532.5 · soma   260.0 · 260
+CADEIAS VERTICAIS:
+   eixo 1027.8 · soma   357.9 · 357.9
+
+══════════════════════════════════════════════════════════════════════════════
+24-sala-estar.pdf  ·  1191 × 842 pt  ·  8 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   124,   481)  Ver detalhe 04
+   (   988,   593)  DETALHE 04
+   (   277,   607)  ELEVAÇÃO A
+   (   867,   801)  SALA DE ESTAR/CONVERSAÇÃO - ELEVAÇÃO
+FRENTES:
+CADEIAS HORIZONTAIS:
+   eixo  571.4 · soma   357.9 · 357.9
+CADEIAS VERTICAIS:
+   eixo  238.3 · soma   375.0 · 305 + 30 + 40
+   eixo  217.8 · soma   375.0 · 375
+
+══════════════════════════════════════════════════════════════════════════════
+25-lavabo.pdf  ·  1191 × 842 pt  ·  16 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   305,   336)  PLANTA DE LAYOUT
+   (   832,   539)  ELEVAÇÃO A
+   (   867,   801)  LAVABO - PLANTA DE LAYOUT E ELEVAÇÃO
+FRENTES:
+   (   914,   154)  Espelho
+   (  1033,   208)  Espelho prata colado em
+CADEIAS HORIZONTAIS:
+   eixo  493.8 · soma   131.0 · 65.5 + 65.5
+   eixo   58.4 · soma   131.0 · 131
+   eixo  505.4 · soma   131.0 · 131
+CADEIAS VERTICAIS:
+   eixo  790.6 · soma   375.0 · 75 + 210 + 30 + 60
+   eixo  244.4 · soma   152.0 · 4 + 44 + 104
+   eixo  780.8 · soma   375.0 · 75 + 210 + 90
+   eixo  236.2 · soma   152.0 · 152
+   eixo  963.7 · soma   375.0 · 375
+
+══════════════════════════════════════════════════════════════════════════════
+26-lavabo.pdf  ·  1191 × 842 pt  ·  22 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   185,   378)  DETALHE 04 - BANCADA
+   (   163,   403)  PLANTA BAIXA
+   (   686,   615)  DETALHE 04 - BANCADA
+   (   654,   640)  CORTE AA
+   (   867,   799)  LAVABO - DETALHE BANCADA
+FRENTES:
+CADEIAS HORIZONTAIS:
+   eixo  178.3 · soma   127.0 · 63.5 + 50.5 + 13
+   eixo  304.9 · soma   127.0 · 63.5 + 50.5 + 13
+   eixo  169.3 · soma     4.0 · 2 + 2
+   eixo  155.8 · soma   131.0 · 131
+CADEIAS VERTICAIS:
+   eixo  114.8 · soma    46.0 · 6 + 40
+   eixo  606.8 · soma     4.0 · 2 + 2
+   eixo  617.1 · soma    86.0 · 26 + 60
+
+══════════════════════════════════════════════════════════════════════════════
+27-cozinha.pdf  ·  1191 × 842 pt  ·  24 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   376,   634)  PLANTA DE LAYOUT
+   (   867,   799)  COZINHA - PLANTA DE LAYOUT
+FRENTES:
+CADEIAS HORIZONTAIS:
+   eixo  128.0 · soma   471.0 · 82 + 76 + 144 + 65 + 104
+   eixo  116.2 · soma   471.0 · 82 + 285 + 104
+   eixo  240.4 · soma   389.0 · 148 + 104 + 137
+   eixo  567.1 · soma   331.0 · 61 + 200 + 70
+   eixo  388.4 · soma   200.0 · 100 + 100
+CADEIAS VERTICAIS:
+   eixo  575.8 · soma   110.0 · 60 + 10 + 40
+   eixo  561.7 · soma   260.0 · 150 + 110
+
+══════════════════════════════════════════════════════════════════════════════
+28-cozinha.pdf  ·  1191 × 842 pt  ·  30 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   255,   308)  Sayerlack. Frente com detalhe
+   (   263,   502)  Sayerlack. Frente com detalhe em
+   (   379,   635)  ELEVAÇÃO A
+   (   867,   801)  COZINHA - ELEVAÇÃO
+FRENTES:
+   (   987,   308)  Nicho em MDF laqueado
+   (   779,   341)  Nicho
+   (   457,   388)  Giro
+   (   589,   388)  Giro
+   (   619,   388)  Giro
+   (   751,   388)  Giro
+   (   466,   509)  Gavetão
+   (   546,   509)  Báscula
+   (   628,   509)  Báscula
+   (   257,   525)  corrediças invisíveis. Puxador a
+   (   466,   553)  Gavetão
+   (   548,   553)  Gavetão
+   (   630,   553)  Gavetão
+CADEIAS HORIZONTAIS:
+   eixo  582.2 · soma   467.0 · 82 + 216 + 65 + 104
+   eixo  601.8 · soma   471.0 · 82 + 285 + 104
+   eixo  595.2 · soma     4.0 · 2 + 2
+CADEIAS VERTICAIS:
+   eixo  433.2 · soma   240.0 · 85 + 65 + 2 + 39 + 39 + 10
+   eixo  485.2 · soma    20.0 · 5 + 5 + 5 + 5
+   eixo  904.9 · soma   244.0 · 2 + 40 + 2 + 200
+   eixo  416.2 · soma   240.0 · 85 + 65 + 90
+   eixo  892.0 · soma   236.0 · 36 + 200
+   eixo  332.2 · soma   375.0 · 375
+
+══════════════════════════════════════════════════════════════════════════════
+29-cozinha.pdf  ·  1191 × 842 pt  ·  18 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   646,   512)  Sayerlack. Frente com detalhe
+   (   271,   638)  ELEVAÇÃO B
+   (   867,   801)  COZINHA - ELEVAÇÃO
+FRENTES:
+   (   358,   487)  Gaveta Talheres
+   (   343,   509)  Gaveta
+   (   156,   533)  Gavetas com corrediças
+   (   345,   553)  Gavetão
+   (   533,   553)  Giro
+CADEIAS HORIZONTAIS:
+   eixo  582.1 · soma   266.0 · 70 + 60.5 + 75 + 60.5
+   eixo  595.2 · soma     4.0 · 2 + 2
+   eixo  604.0 · soma   270.0 · 70 + 200
+CADEIAS VERTICAIS:
+   eixo  367.0 · soma    15.0 · 5 + 5 + 5
+   eixo  523.1 · soma    10.0 · 5 + 5
+   eixo  556.6 · soma    88.0 · 78 + 10
+   eixo  569.5 · soma    92.0 · 2 + 90
+   eixo  226.9 · soma   375.0 · 375
+
+══════════════════════════════════════════════════════════════════════════════
+30-cozinha.pdf  ·  1191 × 842 pt  ·  25 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   286,   291)  Sayerlack. Frente com detalhe
+   (  1003,   322)  DETALHE 06
+   (   255,   389)  Ver detalhe 06
+   (   907,   501)  com detalhe em moldura de 5cm.
+   (   420,   636)  CORTE AA
+   (   867,   799)  COZINHA - CORTE
+FRENTES:
+   (   439,   345)  Prateleira
+   (   439,   381)  portas de
+   (   430,   390)  giro
+   (   691,   488)  Gaveta Talheres
+   (   676,   510)  Gaveta
+   (   908,   513)  Gavetas com corrediças invisíveis.
+   (   678,   552)  Gavetão
+CADEIAS HORIZONTAIS:
+   eixo  592.9 · soma   320.0 · 60 + 150 + 60 + 10 + 40
+   eixo  602.6 · soma   320.0 · 60 + 150 + 110
+CADEIAS VERTICAIS:
+   eixo  387.6 · soma   375.0 · 135 + 85 + 65 + 2 + 88
+   eixo  638.6 · soma    90.0 · 2 + 78 + 10
+   eixo  801.2 · soma    92.0 · 2 + 90
+   eixo  361.4 · soma   375.0 · 375
+
+══════════════════════════════════════════════════════════════════════════════
+31-despensa.pdf  ·  1191 × 842 pt  ·  39 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   170,   374)  PLANTA DE LAYOUT
+   (   591,   550)  ELEVAÇÃO A
+   (   861,   550)  ELEVAÇÃO B
+   (   867,   801)  DESPENSA - PLANTA DE LAYOUT E ELEVAÇÕES
+FRENTES:
+   (   412,   150)  Prateleiras em MDF Branco
+   (   691,   226)  Prateleira
+   (   850,   226)  Prateleira
+   (   691,   270)  Prateleira
+   (   850,   270)  Prateleira
+   (  1099,   294)  Prateleiras em MDF Branco
+   (   691,   314)  Prateleira
+   (   850,   314)  Prateleira
+   (   479,   338)  Prateleiras em MDF Branco
+   (   691,   359)  Prateleira
+   (   850,   359)  Prateleira
+   (   691,   403)  Prateleira
+   (   850,   403)  Prateleira
+   (   691,   447)  Prateleira
+   (   850,   447)  Prateleira
+CADEIAS HORIZONTAIS:
+   eixo  505.4 · soma   307.0 · 91 + 40 + 40 + 136
+   eixo   62.7 · soma   131.0 · 91 + 40
+   eixo  515.5 · soma   307.0 · 131 + 176
+   eixo   52.0 · soma   131.0 · 131
+CADEIAS VERTICAIS:
+   eixo  823.7 · soma   375.0 · 141 + 4 + 35 + 4 + 35 + 39 + 4 + 35 + 4 + 35 + 4 + 35
+   eixo  720.1 · soma   351.0 · 141 + 35 + 35 + 35 + 35 + 35 + 35
+   eixo  732.8 · soma    24.0 · 4 + 4 + 4 + 4 + 4 + 4
+   eixo  331.3 · soma   176.0 · 40 + 136
+   eixo  344.5 · soma   176.0 · 176
+   eixo  546.0 · soma   375.0 · 375
+   eixo  802.9 · soma   375.0 · 375
+
+══════════════════════════════════════════════════════════════════════════════
+32-lavanderia.pdf  ·  1191 × 842 pt  ·  17 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   494,   635)  PLANTA DE LAYOUT
+   (   867,   799)  LAVANDERIA - PLANTA DE LAYOUT
+FRENTES:
+CADEIAS HORIZONTAIS:
+   eixo  151.8 · soma   214.0 · 154 + 60
+   eixo  328.5 · soma   112.0 · 42 + 70
+   eixo  591.3 · soma   214.0 · 154 + 60
+   eixo  142.5 · soma   214.0 · 214
+   eixo  601.6 · soma   214.0 · 214
+CADEIAS VERTICAIS:
+   eixo  754.1 · soma   330.0 · 60 + 139 + 69 + 62
+   eixo  765.8 · soma   330.0 · 268 + 62
+   eixo  633.8 · soma   166.0 · 166
+   eixo  778.8 · soma   330.0 · 330
+
+══════════════════════════════════════════════════════════════════════════════
+33-lavanderia.pdf  ·  1191 × 842 pt  ·  33 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   271,   612)  ELEVAÇÃO A
+   (   949,   612)  ELEVAÇÃO A
+   (   302,   626)  VISTA EXTERNA ARMÁRIO
+   (   978,   626)  VISTA INTERNA ARMÁRIO
+   (   867,   801)  LAVANDERIA - ELEVAÇÃO
+FRENTES:
+   (   950,   302)  Prateleira
+   (   950,   357)  Prateleira
+   (   257,   364)  Báscula
+   (   333,   364)  Báscula
+   (   409,   364)  Báscula
+   (   485,   364)  Báscula
+   (   327,   486)  Gavetão
+   (   404,   486)  Báscula
+   (   484,   486)  Gavetão
+   (   953,   519)  Nicho para
+   (   251,   530)  Fixo
+   (   327,   530)  Gavetão
+   (   406,   530)  Gavetão
+   (   484,   530)  Gavetão
+   (   609,   531)  Giro
+CADEIAS HORIZONTAIS:
+   eixo  553.9 · soma   392.0 · 60 + 208 + 62 + 62
+   eixo  564.7 · soma   330.0 · 268 + 62
+   eixo  577.2 · soma   330.0 · 330
+CADEIAS VERTICAIS:
+   eixo  232.7 · soma   375.0 · 170 + 50 + 55 + 10 + 2 + 78 + 10
+   eixo 1010.5 · soma   367.0 · 115 + 46 + 46 + 150 + 10
+   eixo  217.4 · soma   375.0 · 170 + 50 + 65 + 90
+   eixo 1023.5 · soma     8.0 · 2 + 2 + 2 + 2
+   eixo  628.3 · soma   375.0 · 115 + 250 + 10
+   eixo 1042.7 · soma   375.0 · 115 + 260
+   eixo  641.8 · soma   375.0 · 375
+
+══════════════════════════════════════════════════════════════════════════════
+34-lavanderia.pdf  ·  1191 × 842 pt  ·  15 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   223,   599)  ELEVAÇÃO B
+   (   867,   801)  LAVANDERIA - ELEVAÇÃO
+FRENTES:
+   (   415,   364)  Báscula
+   (   388,   481)  Gavetão
+   (   388,   524)  Gavetão
+CADEIAS HORIZONTAIS:
+   eixo  553.2 · soma   214.0 · 154 + 60
+   eixo  564.1 · soma   214.0 · 214
+CADEIAS VERTICAIS:
+   eixo  445.9 · soma   373.0 · 170 + 50 + 55 + 10 + 78 + 10
+   eixo  463.9 · soma   377.0 · 170 + 50 + 65 + 2 + 90
+
+══════════════════════════════════════════════════════════════════════════════
+35-circulação-rouparia.pdf  ·  1191 × 842 pt  ·  3 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   513,   543)  PLANTA DE LAYOUT
+   (   867,   801)  CIRCULAÇÃO/ROUPARIA - PLANTA DE LAYOUT
+FRENTES:
+   (   846,   456)  Portas de giro em MDF
+CADEIAS HORIZONTAIS:
+   eixo  499.4 · soma   230.0 · 230
+CADEIAS VERTICAIS:
+   eixo  451.9 · soma   164.0 · 114 + 50
+
+══════════════════════════════════════════════════════════════════════════════
+36-circulação-rouparia.pdf  ·  1191 × 842 pt  ·  28 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   229,   430)  ELEVAÇÃO A
+   (   797,   430)  ELEVAÇÃO A
+   (   259,   445)  VISTA EXTERNA ARMÁRIO
+   (   827,   445)  VISTA INTERNA ARMÁRIO
+   (   867,   801)  CIRCULAÇÃO/ROUPARIA - ELEVAÇÃO
+FRENTES:
+   (   794,   142)  Prateleira
+   (   923,   142)  Prateleira
+   (   794,   184)  Prateleira
+   (   923,   184)  Prateleira
+   (   794,   225)  Prateleira
+   (   923,   225)  Prateleira
+   (   568,   235)  Portas de giro em MDF Nogueira
+   (   794,   267)  Prateleira
+   (   923,   267)  Prateleira
+   (   794,   309)  Prateleira
+   (   923,   309)  Prateleira
+   (   218,   356)  Giro
+   (   326,   356)  Giro
+   (   347,   356)  Giro
+   (   454,   356)  Giro
+CADEIAS HORIZONTAIS:
+   eixo  239.5 · soma    15.0 · 10 + 5
+   eixo  384.1 · soma   460.0 · 230 + 230
+CADEIAS VERTICAIS:
+   eixo 1045.7 · soma   261.0 · 5 + 66 + 35 + 35 + 35 + 35 + 40 + 10
+   eixo 1058.6 · soma    14.0 · 2 + 2 + 2 + 2 + 2 + 2 + 2
+   eixo  474.8 · soma   271.0 · 5 + 256 + 10
+   eixo  243.7 · soma   110.0 · 10 + 100
+   eixo  487.8 · soma     4.0 · 2 + 2
+   eixo  494.2 · soma   275.0 · 275
+   eixo 1072.8 · soma   275.0 · 275
+
+══════════════════════════════════════════════════════════════════════════════
+37-hóspedes-office.pdf  ·  1191 × 842 pt  ·  11 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   392,   599)  PLANTA DE LAYOUT
+   (   867,   801)  HÓSPEDES/OFFICE - PLANTA DE LAYOUT
+FRENTES:
+CADEIAS HORIZONTAIS:
+   eixo  242.7 · soma    72.0 · 36 + 36
+   eixo  175.4 · soma   444.0 · 444
+   eixo  297.2 · soma   225.0 · 225
+   eixo  465.1 · soma   140.0 · 140
+CADEIAS VERTICAIS:
+   eixo  335.4 · soma   271.0 · 271
+   eixo  406.1 · soma   138.0 · 138
+
+══════════════════════════════════════════════════════════════════════════════
+38-hóspedes-office.pdf  ·  1191 × 842 pt  ·  12 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   984,   189)  Ver detalhe 07
+   (  1022,   411)  DETALHE 07 - MUXARABI
+   (   393,   427)  ELEVAÇÃO A
+   (   867,   801)  HÓSPEDES/OFFICE - ELEVAÇÃO
+FRENTES:
+CADEIAS HORIZONTAIS:
+   eixo  337.3 · soma     5.9 · 2 + 3.9
+   eixo  387.0 · soma   307.0 · 275 + 32
+   eixo  401.1 · soma   444.0 · 444
+CADEIAS VERTICAIS:
+   eixo  979.9 · soma     9.6 · 3.8 + 2 + 3.8
+   eixo  892.2 · soma   275.0 · 275
+
+══════════════════════════════════════════════════════════════════════════════
+39-suíte-master.pdf  ·  1191 × 842 pt  ·  13 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   325,   666)  PLANTA DE LAYOUT
+   (   867,   801)  SUÍTE MASTER - PLANTA DE LAYOUT
+FRENTES:
+   (   990,    93)  Porta pivotante mimetizada
+   (   264,   539)  Espelho a ser adquirido,
+CADEIAS HORIZONTAIS:
+   eixo  117.9 · soma   504.0 · 60 + 369 + 75
+   eixo  167.2 · soma   120.0 · 60 + 60
+   eixo  107.7 · soma   444.0 · 444
+   eixo  552.7 · soma   151.0 · 151
+CADEIAS VERTICAIS:
+   eixo  270.0 · soma   135.0 · 135
+
+══════════════════════════════════════════════════════════════════════════════
+40-suíte-master.pdf  ·  1191 × 842 pt  ·  38 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   354,   454)  ELEVAÇÃO A
+   (   867,   801)  SUÍTE MASTER - ELEVAÇÃO
+FRENTES:
+   (   341,   174)  Maleiro
+   (   996,   214)  Porta pivotante mimetizada
+   (   344,   216)  Prateleira
+   (   344,   258)  Prateleira
+   (   344,   300)  Prateleira
+   (   342,   321)  Gaveta
+   (   342,   343)  Gaveta
+   (   342,   366)  Gaveta
+   (   342,   389)  Gaveta
+   (   859,   401)  Porta Pivotante
+CADEIAS HORIZONTAIS:
+   eixo  411.9 · soma   504.0 · 60 + 128 + 22 + 219 + 75
+   eixo  269.5 · soma    15.0 · 5 + 10
+   eixo  303.4 · soma   149.0 · 93 + 56
+   eixo  422.5 · soma   504.0 · 60 + 444
+CADEIAS VERTICAIS:
+   eixo  317.2 · soma   473.0 · 5 + 2 + 68 + 2 + 35 + 2 + 35 + 2 + 35 + 2 + 20 + 20 + 20 + 220 + 5
+   eixo  905.5 · soma   292.0 · 17 + 65 + 210
+   eixo  835.0 · soma   110.0 · 10 + 100
+   eixo  301.6 · soma   275.0 · 275
+   eixo  916.9 · soma   275.0 · 275
+
+══════════════════════════════════════════════════════════════════════════════
+41-suíte-master.pdf  ·  1191 × 842 pt  ·  32 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   392,   435)  ELEVAÇÃO B - VISTA EXTERNA ARMÁRIO
+   (   821,   435)  ELEVAÇÃO B - VISTA INTERNA ARMÁRIO
+   (   867,   801)  SUÍTE MASTER - ELEVAÇÃO
+FRENTES:
+   (   794,   155)  Maleiro
+   (   797,   197)  Prateleira
+   (   797,   239)  Prateleira
+   (   797,   281)  Prateleira
+   (  1056,   299)  Gavetas com corrediças
+   (   793,   306)  Gaveta
+   (   793,   329)  Gaveta
+   (   793,   351)  Gaveta
+   (   793,   374)  Gaveta
+   (   357,   376)  Giro
+   (   486,   376)  Giro
+CADEIAS HORIZONTAIS:
+   eixo  250.3 · soma    30.0 · 10 + 5 + 5 + 10
+   eixo  394.3 · soma   262.0 · 131 + 131
+   eixo  407.1 · soma     8.0 · 4 + 4
+CADEIAS VERTICAIS:
+   eixo  938.6 · soma   263.0 · 5 + 68 + 35 + 35 + 35 + 20 + 20 + 20 + 20 + 5
+   eixo  951.6 · soma    12.0 · 2 + 2 + 2 + 2 + 2 + 2
+   eixo  506.9 · soma   275.0 · 5 + 265 + 5
+   eixo  445.0 · soma   110.0 · 10 + 100
+   eixo  517.7 · soma   275.0 · 275
+   eixo  971.3 · soma   275.0 · 275
+
+══════════════════════════════════════════════════════════════════════════════
+42-closet-suíte-master.pdf  ·  1191 × 842 pt  ·  8 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   465,   531)  PLANTA DE LAYOUT
+   (   867,   801)  CLOSET SUÍTE MASTER - PLANTA DE LAYOUT
+FRENTES:
+   (   886,   451)  Porta pivotante mimetizada
+CADEIAS HORIZONTAIS:
+   eixo  494.6 · soma   286.0 · 211 + 75
+   eixo  209.1 · soma   286.0 · 286
+CADEIAS VERTICAIS:
+   eixo  404.9 · soma   195.0 · 55 + 85 + 55
+   eixo  389.2 · soma   199.0 · 195 + 4
+
+══════════════════════════════════════════════════════════════════════════════
+43-closet-suíte-master.pdf  ·  1191 × 842 pt  ·  28 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   483,   429)  ELEVAÇÃO A
+   (   867,   801)  CLOSET SUÍTE MASTER - ELEVAÇÃO
+FRENTES:
+   (   471,   146)  Maleiro
+   (   578,   146)  Maleiro
+   (   686,   146)  Maleiro
+   (   582,   167)  Cabideiro
+   (   690,   167)  Cabideiro
+   (   474,   188)  Prateleira
+   (   474,   230)  Prateleira
+   (   474,   272)  Prateleira
+   (   333,   280)  Gavetas com corrediças
+   (   582,   293)  Cabideiro
+   (   470,   297)  Gaveta
+   (   470,   320)  Gaveta
+   (   492,   335)  Sapateira deslizante
+   (   492,   358)  Sapateira deslizante
+CADEIAS HORIZONTAIS:
+   eixo  162.2 · soma    90.6 · 45.3 + 45.3
+   eixo  391.2 · soma   286.0 · 286
+CADEIAS VERTICAIS:
+   eixo  444.2 · soma   275.0 · 10 + 62 + 2 + 35 + 2 + 35 + 2 + 35 + 2 + 20 + 20 + 20 + 20 + 10
+   eixo  633.2 · soma   203.0 · 2 + 109 + 2 + 80 + 10
+   eixo  790.1 · soma   273.0 · 10 + 62 + 191 + 10
+   eixo  803.0 · soma   277.0 · 2 + 275
+
+══════════════════════════════════════════════════════════════════════════════
+44-closet-suíte-master.pdf  ·  1191 × 842 pt  ·  35 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   482,   429)  ELEVAÇÃO B
+   (   867,   801)  CLOSET SUÍTE MASTER - ELEVAÇÃO
+FRENTES:
+   (   556,   146)  Maleiro
+   (   674,   146)  Maleiro
+   (   560,   167)  Cabideiro
+   (   678,   188)  Prateleira
+   (   341,   192)  Porta pivotante mimetizada
+   (   678,   230)  Prateleira
+   (   678,   272)  Prateleira
+   (   900,   281)  Gavetas com corrediças
+   (   555,   297)  Gaveta
+   (   674,   297)  Gaveta
+   (   555,   320)  Gaveta
+   (   674,   320)  Gaveta
+   (   577,   335)  Sapateira deslizante
+   (   696,   335)  Sapateira deslizante
+   (   577,   358)  Sapateira deslizante
+   (   696,   358)  Sapateira deslizante
+   (   492,   376)  Porta Pivotante
+CADEIAS HORIZONTAIS:
+   eixo  167.6 · soma   100.6 · 50.3 + 50.3
+   eixo  249.9 · soma    15.0 · 10 + 5
+   eixo  391.2 · soma   286.0 · 75 + 211
+CADEIAS VERTICAIS:
+   eixo  787.8 · soma   267.0 · 10 + 62 + 35 + 35 + 35 + 20 + 20 + 20 + 20 + 10
+   eixo  631.7 · soma   261.0 · 62 + 109 + 20 + 20 + 20 + 20 + 10
+   eixo  800.8 · soma     8.0 · 2 + 2 + 2 + 2
+   eixo  444.5 · soma   275.0 · 65 + 210
+   eixo  513.8 · soma   110.0 · 10 + 100
+   eixo  644.6 · soma     4.0 · 2 + 2
+   eixo  433.3 · soma   275.0 · 275
+   eixo  814.3 · soma   275.0 · 275
+
+══════════════════════════════════════════════════════════════════════════════
+45-banheiro-suíte-master.pdf  ·  1191 × 842 pt  ·  13 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   471,   558)  PLANTA DE LAYOUT
+   (   867,   801)  BANHEIRO SUÍTE MASTER - PLANTA DE LAYOUT
+FRENTES:
+CADEIAS HORIZONTAIS:
+   eixo  228.2 · soma   260.0 · 95 + 2 + 163
+   eixo  498.1 · soma   213.0 · 45.5 + 45.5 + 122
+   eixo  330.7 · soma    81.0 · 40.5 + 40.5
+   eixo  211.8 · soma   260.0 · 260
+CADEIAS VERTICAIS:
+   eixo  781.3 · soma   180.0 · 50 + 130
+   eixo  411.5 · soma   180.0 · 180
+
+══════════════════════════════════════════════════════════════════════════════
+46-banheiro-suíte-master.pdf  ·  1191 × 842 pt  ·  26 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   271,   431)  ELEVAÇÃO A
+   (   941,   431)  ELEVAÇÃO B
+FRENTES:
+   (   408,   111)  Espelho
+   (   468,   111)  Espelho
+   (   528,   111)  Espelho
+   (   660,   147)  correr em espelho prata.
+   (   808,   232)  Nicho revestido em
+   (   133,   235)  Nicho revestido em
+   (   405,   242)  Corre
+   (   468,   242)  Corre
+   (   530,   242)  Corre
+   (   942,   261)  Nicho Shampoo
+   (   117,   282)  nicho: 10cm
+   (   451,   324)  Gaveta
+   (   385,   354)  Giro
+   (   451,   354)  Gaveta
+   (   549,   354)  Giro
+   (   660,   369)  Gavetas com corrediças
+CADEIAS HORIZONTAIS:
+   eixo  384.9 · soma   438.0 · 95 + 163 + 180
+   eixo  398.0 · soma   262.0 · 2 + 260
+CADEIAS VERTICAIS:
+   eixo  568.0 · soma   275.0 · 30 + 130 + 38 + 5 + 52 + 20
+   eixo  232.7 · soma   275.0 · 140 + 35 + 100
+   eixo  902.6 · soma   275.0 · 140 + 35 + 100
+   eixo  414.1 · soma     8.0 · 3 + 5
+   eixo  221.3 · soma   275.0 · 275
+   eixo  891.0 · soma   275.0 · 275
+
+══════════════════════════════════════════════════════════════════════════════
+47-banheiro-suíte-master.pdf  ·  1191 × 842 pt  ·  25 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   790,   247)  Ver detalhe 08
+   (   271,   431)  ELEVAÇÃO C
+   (   941,   431)  ELEVAÇÃO D
+   (   939,   621)  DETALHE 08
+FRENTES:
+   (   923,   135)  Prat.
+   (   811,   147)  correr em espelho prata.
+   (   923,   171)  Prat.
+   (   923,   207)  Prat.
+   (   673,   232)  Nicho revestido em
+   (   932,   323)  Prateleira
+   (   940,   349)  portas de giro
+CADEIAS HORIZONTAIS:
+   eixo  386.0 · soma   440.0 · 165 + 95 + 50 + 130
+   eixo  395.6 · soma   440.0 · 260 + 180
+   eixo  465.4 · soma     6.0 · 4 + 2
+CADEIAS VERTICAIS:
+   eixo  902.9 · soma   275.0 · 30 + 130 + 38 + 5 + 52 + 20
+   eixo  568.2 · soma   275.0 · 140 + 35 + 100
+   eixo  228.7 · soma   275.0 · 275
+   eixo  500.5 · soma   110.0 · 110
+   eixo  580.7 · soma   275.0 · 275
+
+══════════════════════════════════════════════════════════════════════════════
+48-suíte-01-filhos.pdf  ·  1191 × 842 pt  ·  28 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   365,   626)  PLANTA DE LAYOUT
+   (   867,   801)  SUÍTE 01 FILHOS - PLANTA DE LAYOUT
+FRENTES:
+   (   227,   255)  Portas de correr flutuantes,
+   (   228,   279)  espelho prata, com sistema
+CADEIAS HORIZONTAIS:
+   eixo  142.6 · soma   483.0 · 60 + 130 + 293
+   eixo  338.2 · soma   193.0 · 96 + 1 + 96
+   eixo  132.8 · soma   483.0 · 190 + 293
+   eixo  267.1 · soma     4.0 · 2 + 2
+   eixo  586.0 · soma   483.0 · 88 + 395
+   eixo  596.1 · soma   483.0 · 483
+CADEIAS VERTICAIS:
+   eixo  310.2 · soma   330.0 · 60 + 180 + 90
+   eixo  919.9 · soma   330.0 · 60 + 265 + 5
+   eixo  299.4 · soma   330.0 · 240 + 90
+   eixo  478.9 · soma   196.0 · 196
+   eixo  689.9 · soma   196.0 · 196
+   eixo  931.2 · soma   330.0 · 330
+
+══════════════════════════════════════════════════════════════════════════════
+49-suíte-01-filhos.pdf  ·  1191 × 842 pt  ·  25 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   220,   252)  Ver detalhe 09
+   (  1059,   415)  DETALHE 09
+   (   371,   431)  ELEVAÇÃO A
+   (   867,   801)  SUÍTE 01 FILHOS - ELEVAÇÃO
+FRENTES:
+CADEIAS HORIZONTAIS:
+   eixo  237.4 · soma   374.8 · 50.8 + 162 + 162
+   eixo  416.8 · soma    14.0 · 1 + 4 + 9
+   eixo  388.8 · soma   483.0 · 395 + 88
+   eixo  434.1 · soma     5.0 · 3 + 2
+   eixo  397.8 · soma   483.0 · 483
+CADEIAS VERTICAIS:
+   eixo  332.0 · soma   275.0 · 165 + 110
+   eixo  320.4 · soma   275.0 · 275
+
+══════════════════════════════════════════════════════════════════════════════
+50-suíte-01-filhos.pdf  ·  1191 × 842 pt  ·  35 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   371,   431)  ELEVAÇÃO B
+   (   378,   443)  VISTA EXTERNA
+   (   867,   801)  SUÍTE 01 FILHOS - ELEVAÇÃO
+FRENTES:
+   (   448,    88)  Espelho
+   (   358,   146)  Maleiro
+   (   388,   169)  Cabideiro
+   (   232,   218)  Portas de correr flutuantes,
+   (   233,   242)  espelho prata, com sistema
+   (   362,   272)  Prateleira
+   (   388,   295)  Cabideiro
+   (   698,   317)  Gaveta
+   (   698,   333)  Gaveta
+   (   698,   349)  Gaveta
+   (   445,   360)  Corre
+   (   524,   360)  Corre
+   (   698,   365)  Gaveta
+CADEIAS HORIZONTAIS:
+   eixo  385.9 · soma   483.0 · 60 + 130 + 109 + 75 + 109
+   eixo  230.0 · soma     4.0 · 2 + 2
+   eixo  395.2 · soma   483.0 · 190 + 293
+CADEIAS VERTICAIS:
+   eixo  333.4 · soma   275.0 · 10 + 62 + 2 + 109 + 2 + 80 + 10
+   eixo  671.5 · soma    64.0 · 14 + 14 + 14 + 14 + 8
+   eixo  316.9 · soma   275.0 · 10 + 255 + 10
+   eixo  901.3 · soma   275.0 · 200 + 5 + 70
+   eixo  661.4 · soma     4.0 · 2 + 2
+   eixo  924.1 · soma   275.0 · 275
+
+══════════════════════════════════════════════════════════════════════════════
+51-suíte-01-filhos.pdf  ·  1191 × 842 pt  ·  35 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   371,   555)  ELEVAÇÃO B
+   (   377,   568)  VISTA INTERNA
+   (   867,   801)  SUÍTE 01 FILHOS - PLANTA DE LAYOUT
+FRENTES:
+   (   358,   271)  Maleiro
+   (   427,   271)  Maleiro
+   (   500,   271)  Maleiro
+   (   431,   293)  Cabideiro
+   (   504,   293)  Cabideiro
+   (   388,   294)  Cabideiro
+   (   362,   397)  Prateleira
+   (   430,   397)  Prateleira
+   (   503,   397)  Prateleira
+   (   431,   418)  Cabideiro
+   (   388,   420)  Cabideiro
+   (   499,   422)  Gaveta
+   (   499,   444)  Gaveta
+   (   246,   452)  Gavetas com corrediças
+   (   499,   467)  Gaveta
+   (   499,   490)  Gaveta
+CADEIAS HORIZONTAIS:
+   eixo  510.6 · soma   483.0 · 60 + 130 + 109 + 75 + 109
+   eixo  519.9 · soma   483.0 · 190 + 293
+CADEIAS VERTICAIS:
+   eixo  539.2 · soma   271.0 · 10 + 62 + 109 + 20 + 20 + 20 + 20 + 10
+   eixo  333.4 · soma   275.0 · 10 + 62 + 2 + 109 + 2 + 80 + 10
+   eixo  316.9 · soma   275.0 · 10 + 255 + 10
+   eixo  901.3 · soma   275.0 · 200 + 5 + 70
+   eixo  552.1 · soma     4.0 · 2 + 2
+   eixo  924.1 · soma   275.0 · 275
+
+══════════════════════════════════════════════════════════════════════════════
+52-suíte-01-filhos.pdf  ·  1191 × 842 pt  ·  44 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   167,   555)  ELEVAÇÃO C
+   (   748,   555)  ELEVAÇÃO C
+   (   174,   568)  VISTA EXTERNA
+   (   754,   568)  VISTA INTERNA
+   (   867,   801)  SUÍTE 01 FILHOS - PLANTA DE LAYOUT
+FRENTES:
+   (   293,   212)  Espelho
+   (   497,   271)  Maleiro
+   (   839,   271)  Maleiro
+   (   939,   271)  Maleiro
+   (  1078,   271)  Maleiro
+   (   943,   293)  Cabideiro
+   (   490,   294)  Cabideiro
+   (  1071,   294)  Cabideiro
+   (   842,   313)  Prateleira
+   (   607,   343)  Portas de correr flutuantes,
+   (   842,   355)  Prateleira
+   (   606,   366)  espelho prata, com sistema
+   (   493,   397)  Prateleira
+   (   842,   397)  Prateleira
+   (   943,   397)  Prateleira
+   (  1074,   397)  Prateleira
+   (   943,   418)  Cabideiro
+   (   490,   420)  Cabideiro
+   (  1071,   420)  Cabideiro
+   (   838,   422)  Gaveta
+   (   650,   426)  Gavetas com corrediças
+   (   838,   444)  Gaveta
+   (   860,   460)  Sapateira deslizante
+   (   860,   482)  Sapateira deslizante
+   (   292,   484)  Corre
+   (   394,   484)  Corre
+CADEIAS HORIZONTAIS:
+   eixo  510.4 · soma   660.0 · 90 + 180 + 60 + 90 + 180 + 60
+   eixo  520.0 · soma   660.0 · 90 + 240 + 90 + 240
+   eixo  354.7 · soma     4.0 · 2 + 2
+   eixo  541.4 · soma     2.0 · 1 + 1
+CADEIAS VERTICAIS:
+   eixo  812.9 · soma   275.0 · 10 + 62 + 2 + 35 + 2 + 35 + 2 + 35 + 2 + 20 + 20 + 20 + 20 + 10
+   eixo  521.4 · soma   271.0 · 10 + 62 + 109 + 80 + 10
+   eixo 1102.4 · soma   271.0 · 10 + 62 + 109 + 80 + 10
+   eixo  534.5 · soma     3.0 · 1 + 2
+   eixo 1115.5 · soma     4.0 · 2 + 2
+   eixo  127.9 · soma   275.0 · 275
+
+══════════════════════════════════════════════════════════════════════════════
+53-suíte-01-filhos.pdf  ·  1191 × 842 pt  ·  11 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   957,   387)  PLANTA BAIXA
+   (   942,   657)  VISTA A
+   (   867,   801)  SUÍTE 01 FILHOS - PLANTA DE LAYOUT
+FRENTES:
+   (   252,   623)  Gavetão para cama auxiliar
+   (   388,   671)  Gaveta cama auxiliar
+CADEIAS HORIZONTAIS:
+   eixo  109.9 · soma     4.0 · 2 + 2
+   eixo   96.2 · soma   196.0 · 196
+   eixo  120.2 · soma   192.0 · 192
+   eixo  689.1 · soma   196.0 · 196
+CADEIAS VERTICAIS:
+   eixo  312.3 · soma     4.0 · 2 + 2
+   eixo  322.7 · soma   137.0 · 92 + 45
+
+══════════════════════════════════════════════════════════════════════════════
+54-banheiro-suíte-01-filhos.pdf  ·  1191 × 842 pt  ·  19 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   537,   636)  PLANTA DE LAYOUT
+   (   867,   801)  BANHO SUÍTE 01 FILHOS - PLANTA DE LAYOUT
+FRENTES:
+   (   361,   175)  Nicho revestido em Porcelanato Incesa
+   (   370,   199)  nicho: 10cm. Prever iluminação por perfi
+CADEIAS HORIZONTAIS:
+   eixo  147.9 · soma   120.0 · 20 + 100
+   eixo  593.1 · soma   175.0 · 120 + 55
+   eixo  134.4 · soma   120.0 · 120
+   eixo  603.9 · soma   175.0 · 175
+CADEIAS VERTICAIS:
+   eixo  593.9 · soma   116.0 · 58 + 58
+   eixo  633.5 · soma   135.0 · 67.5 + 67.5
+   eixo  694.1 · soma   195.0 · 120 + 75
+   eixo  478.6 · soma   330.0 · 330
+   eixo  751.6 · soma   135.0 · 135
+
+══════════════════════════════════════════════════════════════════════════════
+55-banheiro-suíte-01-filhos.pdf  ·  1191 × 842 pt  ·  36 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   271,   431)  ELEVAÇÃO A
+   (  1009,   431)  ELEVAÇÃO B
+FRENTES:
+   (   714,   136)  Espelho prata com cantos
+   (   541,   139)  Espelho
+   (   871,   160)  Nicho revestido em
+   (   990,   190)  Prat.
+   (   990,   239)  Prat.
+   (   883,   287)  Prateleiras em Nanoglass.
+   (   990,   288)  Prat.
+   (   478,   324)  Gaveta
+   (   992,   337)  Nicho
+   (   478,   354)  Gaveta
+   (   525,   354)  Giro
+   (   608,   354)  Giro
+   (   717,   364)  Gavetas com corrediças
+CADEIAS HORIZONTAIS:
+   eixo  388.5 · soma   450.0 · 120 + 75 + 135 + 20 + 100
+   eixo  401.2 · soma   450.0 · 330 + 120
+   eixo  416.8 · soma     2.0 · 1 + 1
+CADEIAS VERTICAIS:
+   eixo  970.8 · soma   275.0 · 70 + 41 + 2 + 41 + 2 + 41 + 2 + 41 + 35
+   eixo  625.3 · soma   275.0 · 198 + 5 + 52 + 20
+   eixo  956.4 · soma   275.0 · 70 + 170 + 35
+   eixo  508.6 · soma   220.0 · 110 + 110
+   eixo  543.2 · soma     8.0 · 3 + 5
+   eixo  225.8 · soma   275.0 · 275
+   eixo  333.6 · soma   110.0 · 110
+
+══════════════════════════════════════════════════════════════════════════════
+56-banheiro-suíte-01-filhos.pdf  ·  1191 × 842 pt  ·  29 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   256,   560)  ELEVAÇÃO C
+   (   970,   560)  ELEVAÇÃO D
+FRENTES:
+   (   744,   289)  Nicho revestido em
+   (   605,   320)  Prat.
+   (   605,   369)  Prat.
+   (   732,   417)  Prateleiras em Nanoglass.
+   (   605,   417)  Prat.
+   (   961,   452)  Prateleira
+   (   969,   479)  portas de giro
+CADEIAS HORIZONTAIS:
+   eixo  518.0 · soma   505.0 · 210 + 120 + 55 + 120
+   eixo  546.1 · soma     6.0 · 1 + 4 + 1
+   eixo  529.3 · soma   505.0 · 330 + 175
+CADEIAS VERTICAIS:
+   eixo  632.2 · soma   269.0 · 70 + 41 + 41 + 41 + 41 + 35
+   eixo  931.3 · soma   275.0 · 198 + 5 + 52 + 20
+   eixo  645.2 · soma     6.0 · 2 + 2 + 2
+   eixo  655.8 · soma   275.0 · 70 + 170 + 35
+   eixo  217.1 · soma   275.0 · 275
+
+══════════════════════════════════════════════════════════════════════════════
+57-suíte-02-filhas.pdf  ·  1191 × 842 pt  ·  26 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (  1021,   159)  DETALHE 10
+   (   217,   556)  Ver detalhe 10
+   (   936,   684)  PLANTA DE LAYOUT
+   (   867,   801)  SUÍTE 02 FILHAS - PLANTA DE LAYOUT
+FRENTES:
+   (   243,   128)  Porta pivotante mimetizada
+   (   938,   323)  Espelho a ser adquirido, L 60cm x A 170c
+   (   230,   400)  corrediças invisíveis e
+   (   985,   633)  corrediças invisíveis
+   (   247,   665)  prateleiras. Prever iluminação
+CADEIAS HORIZONTAIS:
+   eixo  705.4 · soma   385.0 · 25 + 28 + 279 + 53
+   eixo  718.3 · soma   393.0 · 4 + 389
+   eixo   61.4 · soma   303.0 · 303
+CADEIAS VERTICAIS:
+   eixo  360.7 · soma   509.0 · 5 + 72 + 17 + 96 + 94 + 96 + 79 + 50
+   eixo  867.5 · soma   164.0 · 114 + 50
+   eixo  349.7 · soma   509.0 · 509
+   eixo  878.2 · soma   164.0 · 164
+
+══════════════════════════════════════════════════════════════════════════════
+58-suíte-02-filhas.pdf  ·  1191 × 842 pt  ·  62 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   356,   432)  ELEVAÇÃO A
+   (   642,   708)  PLANTA BAIXA
+   (   832,   708)  VISTA A
+   (   867,   801)  SUÍTE 02 FILHAS - ELEVAÇÃO
+FRENTES:
+   (   348,   115)  Prateleira
+   (   234,   161)  prateleiras. Prever iluminação
+   (   348,   166)  Prateleira
+   (  1002,   182)  Porta pivotante mimetizada
+   (   348,   216)  Prateleira
+   (   348,   267)  Prateleira
+   (   348,   317)  Prateleira
+   (   346,   333)  Gaveta
+   (   346,   364)  Gaveta
+   (   862,   376)  Porta Pivotante
+   (   214,   420)  corrediças invisíveis
+   (   838,   543)  Gaveta
+   (  1109,   558)  corrediças invisíveis e
+   (   838,   585)  Gaveta
+CADEIAS HORIZONTAIS:
+   eixo   76.8 · soma   192.0 · 16 + 16 + 16 + 16 + 16 + 16 + 16 + 16 + 16 + 16 + 16 + 16
+   eixo  386.8 · soma   509.0 · 50 + 79 + 96 + 94 + 96 + 17 + 72 + 5
+   eixo  417.5 · soma     8.0 · 2 + 4 + 2
+   eixo  492.3 · soma    76.0 · 10 + 10 + 56
+   eixo  247.2 · soma    15.0 · 5 + 10
+   eixo  398.2 · soma   509.0 · 509
+CADEIAS VERTICAIS:
+   eixo  313.9 · soma   275.0 · 2 + 42.6 + 2 + 42.6 + 2 + 42.6 + 2 + 42.6 + 2 + 42.6 + 2 + 45 + 5
+   eixo  872.7 · soma    15.0 · 3 + 9 + 3
+   eixo 1001.5 · soma    60.0 · 15 + 15 + 30
+   eixo  305.0 · soma   275.0 · 225 + 50
+   eixo  841.1 · soma   110.0 · 10 + 100
+   eixo  911.8 · soma   275.0 · 65 + 210
+   eixo  924.0 · soma   275.0 · 275
+
+══════════════════════════════════════════════════════════════════════════════
+59-suíte-02-filhas.pdf  ·  1191 × 842 pt  ·  29 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   424,   432)  ELEVAÇÃO B
+   (   867,   801)  SUÍTE 02 FILHAS - ELEVAÇÃO
+FRENTES:
+   (   538,   204)  Espelho
+   (   690,   204)  Espelho
+   (   942,   207)  prateleiras. Prever iluminação
+   (   281,   229)  Espelho redondo modelo a
+   (   476,   303)  Gaveta
+   (   552,   303)  Gaveta
+   (   628,   303)  Gaveta
+   (   705,   303)  Gaveta
+   (   435,   334)  Gaveta
+   (   771,   334)  Gaveta
+   (   266,   338)  corrediças invisíveis
+   (   435,   365)  Gaveta
+   (   771,   365)  Gaveta
+   (   963,   423)  corrediças invisíveis
+   (   266,   441)  corrediças invisíveis
+CADEIAS HORIZONTAIS:
+   eixo  387.9 · soma   389.0 · 18 + 52 + 245 + 52 + 18 + 4
+   eixo  397.9 · soma   144.0 · 70 + 70 + 4
+   eixo  285.9 · soma   279.0 · 279
+CADEIAS VERTICAIS:
+   eixo  381.1 · soma    50.0 · 2 + 14 + 27 + 2 + 5
+   eixo  858.5 · soma   279.0 · 225 + 2 + 50 + 2
+   eixo  842.3 · soma    46.0 · 14 + 27 + 5
+   eixo  447.4 · soma    25.0 · 12 + 13
+
+══════════════════════════════════════════════════════════════════════════════
+60-suíte-02-filhas.pdf  ·  1191 × 842 pt  ·  11 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   957,   387)  PLANTA BAIXA
+   (   942,   657)  VISTA A
+   (   867,   801)  SUÍTE 02 FILHAS - DETALHE BASE CAMA
+FRENTES:
+   (   252,   623)  Gavetão para cama auxiliar
+   (   388,   671)  Gaveta cama auxiliar
+CADEIAS HORIZONTAIS:
+   eixo  109.9 · soma     4.0 · 2 + 2
+   eixo   96.2 · soma   196.0 · 196
+   eixo  120.2 · soma   192.0 · 192
+   eixo  689.1 · soma   196.0 · 196
+CADEIAS VERTICAIS:
+   eixo  312.3 · soma     4.0 · 2 + 2
+   eixo  322.7 · soma   137.0 · 92 + 45
+
+══════════════════════════════════════════════════════════════════════════════
+61-closet-suíte-02-filhas.pdf  ·  1191 × 842 pt  ·  29 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   269,   534)  PLANTA DE LAYOUT
+   (   798,   585)  ELEVAÇÃO A
+   (   867,   801)  CLOSET SUÍTE 02 FILHAS - PLANTA DE LAYOUT E ELEVAÇÃO
+FRENTES:
+   (   785,   284)  Maleiro
+   (   938,   284)  Maleiro
+   (   912,   306)  Cabideiro
+   (   594,   306)  Porta pivotante mimetizada
+   (   793,   308)  Cabideiro
+   (   793,   434)  Cabideiro
+CADEIAS HORIZONTAIS:
+   eixo  522.1 · soma   162.0 · 2 + 55 + 52.5 + 52.5
+   eixo  487.4 · soma   214.0 · 55 + 159
+   eixo  538.5 · soma     4.0 · 2 + 2
+   eixo  547.2 · soma   164.0 · 55 + 109
+   eixo  498.3 · soma   214.0 · 214
+CADEIAS VERTICAIS:
+   eixo  760.0 · soma   275.0 · 10 + 62 + 2 + 109 + 2 + 80 + 10
+   eixo  965.9 · soma   273.0 · 10 + 62 + 191 + 10
+   eixo  212.9 · soma   164.0 · 109 + 55
+   eixo  978.8 · soma   277.0 · 2 + 275
+   eixo  202.6 · soma   164.0 · 164
+
+══════════════════════════════════════════════════════════════════════════════
+62-closet-suíte-02-filhas.pdf  ·  1191 × 842 pt  ·  35 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   523,   447)  ELEVAÇÃO B
+   (   867,   801)  CLOSET SUÍTE 02 FILHAS - ELEVAÇÃO
+FRENTES:
+   (   512,   146)  Maleiro
+   (   721,   146)  Maleiro
+   (   714,   169)  Cabideiro
+   (   515,   188)  Prateleira
+   (   515,   230)  Prateleira
+   (   515,   272)  Prateleira
+   (   388,   278)  Gavetas com corrediças
+   (   714,   295)  Cabideiro
+   (   511,   297)  Gaveta
+   (   511,   320)  Gaveta
+   (   533,   335)  Sapateira deslizante
+   (   533,   358)  Sapateira deslizante
+CADEIAS HORIZONTAIS:
+   eixo  399.9 · soma   218.0 · 2 + 159 + 2 + 55
+   eixo  387.0 · soma   210.0 · 105 + 50 + 55
+   eixo  247.6 · soma   103.0 · 51.5 + 51.5
+CADEIAS VERTICAIS:
+   eixo  487.0 · soma   275.0 · 10 + 62 + 2 + 35 + 2 + 35 + 2 + 35 + 2 + 20 + 20 + 20 + 20 + 10
+   eixo  747.0 · soma   271.0 · 10 + 62 + 109 + 80 + 10
+   eixo  569.5 · soma    10.0 · 5 + 5
+   eixo  760.0 · soma     4.0 · 2 + 2
+   eixo  466.3 · soma   275.0 · 275
+
+══════════════════════════════════════════════════════════════════════════════
+63-banheiro-suíte-02-filhas.pdf  ·  1191 × 842 pt  ·  19 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   515,   612)  PLANTA DE LAYOUT
+   (   867,   801)  BANHO SUÍTE 02 FILHAS - PLANTA DE LAYOUT
+FRENTES:
+   (   339,   152)  Nicho revestido em Porcelanato Ceusa
+   (   349,   175)  nicho: 10cm. Prever iluminação por perfi
+CADEIAS HORIZONTAIS:
+   eixo  124.2 · soma   145.0 · 20 + 125
+   eixo  569.4 · soma   145.0 · 90 + 55
+   eixo  110.6 · soma   145.0 · 145
+   eixo  579.2 · soma   145.0 · 145
+CADEIAS VERTICAIS:
+   eixo  580.7 · soma   190.0 · 40 + 75 + 75
+   eixo  689.0 · soma   330.0 · 100 + 80 + 150
+   eixo  589.8 · soma    96.0 · 48 + 48
+   eixo  458.3 · soma   330.0 · 330
+
+══════════════════════════════════════════════════════════════════════════════
+64-banheiro-suíte-02-filhas.pdf  ·  1191 × 842 pt  ·  36 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   271,   431)  ELEVAÇÃO A
+   (   980,   431)  ELEVAÇÃO B
+FRENTES:
+   (   714,   136)  Espelho prata com cantos
+   (   532,   139)  Espelho
+   (   842,   160)  Nicho revestido em
+   (   962,   190)  Prat.
+   (   962,   239)  Prat.
+   (   855,   287)  Prateleiras em Nanoglass.
+   (   962,   288)  Prat.
+   (   461,   324)  Gaveta
+   (   963,   337)  Nicho
+   (   461,   354)  Gaveta
+   (   513,   354)  Giro
+   (   607,   354)  Giro
+   (   717,   364)  Gavetas com corrediças
+CADEIAS HORIZONTAIS:
+   eixo  387.0 · soma   475.0 · 100 + 80 + 150 + 20 + 125
+   eixo  399.4 · soma   475.0 · 330 + 145
+   eixo  416.8 · soma     4.0 · 2 + 2
+CADEIAS VERTICAIS:
+   eixo  942.5 · soma   275.0 · 70 + 41 + 2 + 41 + 2 + 41 + 2 + 41 + 35
+   eixo  624.0 · soma   275.0 · 198 + 5 + 52 + 20
+   eixo  928.1 · soma   275.0 · 70 + 170 + 35
+   eixo  537.4 · soma     8.0 · 3 + 5
+   eixo  229.9 · soma   275.0 · 275
+   eixo  322.3 · soma   110.0 · 110
+   eixo  493.0 · soma   110.0 · 110
+   eixo  500.0 · soma   110.0 · 110
+
+══════════════════════════════════════════════════════════════════════════════
+65-banheiro-suíte-02-filhas.pdf  ·  1191 × 842 pt  ·  41 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   256,   560)  ELEVAÇÃO C
+   (   987,   560)  ELEVAÇÃO D
+FRENTES:
+   (   744,   289)  Nicho revestido em
+   (   605,   320)  Prat.
+   (   605,   369)  Prat.
+   (   732,   417)  Prateleiras em Nanoglass.
+   (   605,   417)  Prat.
+   (   978,   452)  Prateleira
+   (   986,   479)  portas de giro
+CADEIAS HORIZONTAIS:
+   eixo  518.0 · soma   475.0 · 210 + 120 + 55 + 90
+   eixo  546.1 · soma     8.0 · 2 + 4 + 2
+   eixo  529.3 · soma   475.0 · 330 + 145
+CADEIAS VERTICAIS:
+   eixo  632.2 · soma   538.0 · 70 + 70 + 41 + 41 + 41 + 41 + 41 + 41 + 41 + 41 + 35 + 35
+   eixo  645.2 · soma    12.0 · 2 + 2 + 2 + 2 + 2 + 2
+   eixo  655.8 · soma   550.0 · 70 + 70 + 170 + 170 + 35 + 35
+   eixo  948.2 · soma   275.0 · 198 + 5 + 52 + 20
+   eixo  217.1 · soma   275.0 · 275
+
+══════════════════════════════════════════════════════════════════════════════
+66-suíte-hóspedes.pdf  ·  1191 × 842 pt  ·  8 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   395,   610)  PLANTA DE LAYOUT
+   (   867,   801)  ANEXO SUÍTE HÓSPEDES - PLANTA DE LAYOUT
+FRENTES:
+CADEIAS HORIZONTAIS:
+   eixo  568.8 · soma   478.0 · 418 + 60
+   eixo  134.8 · soma   359.0 · 359
+   eixo  475.4 · soma   180.0 · 180
+   eixo  579.0 · soma   478.0 · 478
+CADEIAS VERTICAIS:
+   eixo  335.5 · soma   311.0 · 311
+   eixo  955.2 · soma   166.0 · 166
+
+══════════════════════════════════════════════════════════════════════════════
+68-suíte-hóspedes.pdf  ·  1191 × 842 pt  ·  31 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   366,   539)  ELEVAÇÃO B
+   (   827,   539)  ELEVAÇÃO B
+   (   397,   554)  VISTA EXTERNA ARMÁRIO
+   (   857,   554)  VISTA INTERNA ARMÁRIO
+FRENTES:
+   (   816,   260)  Maleiro
+   (   909,   260)  Maleiro
+   (   913,   282)  Cabideiro
+   (   819,   302)  Prateleira
+   (   819,   344)  Prateleira
+   (   819,   386)  Prateleira
+   (   912,   386)  Prateleira
+   (   708,   391)  Gavetas com corrediças
+   (   815,   411)  Gaveta
+   (   908,   411)  Gaveta
+   (   815,   434)  Gaveta
+   (   908,   434)  Gaveta
+   (   837,   449)  Sapateira deslizante
+   (   930,   449)  Sapateira deslizante
+   (   837,   472)  Sapateira deslizante
+   (   930,   472)  Sapateira deslizante
+   (   386,   475)  Corre
+   (   479,   475)  Corre
+CADEIAS HORIZONTAIS:
+   eixo  503.2 · soma   332.0 · 166 + 166
+CADEIAS VERTICAIS:
+   eixo  790.9 · soma   260.0 · 10 + 47 + 2 + 35 + 2 + 35 + 2 + 35 + 2 + 20 + 20 + 20 + 20 + 10
+   eixo  994.1 · soma   256.0 · 10 + 47 + 109 + 20 + 20 + 20 + 20 + 10
+   eixo  329.4 · soma   260.0 · 10 + 240 + 10
+   eixo 1007.0 · soma     4.0 · 2 + 2
+   eixo  318.4 · soma   260.0 · 260
+   eixo  770.9 · soma   260.0 · 260
+
+══════════════════════════════════════════════════════════════════════════════
+69-anexo-banheiro-suíte-hóspedes.pdf  ·  1191 × 842 pt  ·  15 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   220,   569)  PLANTA DE LAYOUT
+   (   867,   801)  ANEXO BANHEIRO HÓSPEDES - PLANTA DE LAYOUT
+FRENTES:
+   (   565,   157)  Nicho revestido em Porcelanato
+   (   579,   280)  giro em vidro temperado
+CADEIAS HORIZONTAIS:
+   eixo  355.6 · soma   104.0 · 22 + 52 + 30
+   eixo  229.0 · soma   223.0 · 104 + 119
+   eixo  446.8 · soma   104.0 · 44 + 60
+   eixo  218.4 · soma   223.0 · 223
+   eixo  460.6 · soma   104.0 · 104
+CADEIAS VERTICAIS:
+   eixo  164.0 · soma   130.0 · 90 + 40
+   eixo  403.1 · soma    68.0 · 34 + 34
+   eixo  152.5 · soma   130.0 · 130
+
+══════════════════════════════════════════════════════════════════════════════
+70-anexo-banheiro-suíte-hóspedes.pdf  ·  1191 × 842 pt  ·  26 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   271,   545)  ELEVAÇÃO A
+   (   758,   545)  ELEVAÇÃO B
+   (   867,   801)  ANEXO BANHEIRO HÓSPEDES - PLANTA DE LAYOUT
+FRENTES:
+   (   470,   277)  Espelho
+   (   592,   285)  Espelho prata com cantos
+   (   144,   297)  giro em vidro temperado
+   (  1080,   313)  giro em vidro temperado
+   (  1092,   365)  Nicho revestido em
+   (   890,   371)  Nicho Shampoo
+   (   454,   464)  Giro
+   (   486,   464)  Giro
+CADEIAS HORIZONTAIS:
+   eixo  496.3 · soma   446.0 · 119 + 60 + 44 + 104 + 119
+   eixo  505.3 · soma   446.0 · 119 + 104 + 223
+   eixo  358.2 · soma   107.0 · 107
+CADEIAS VERTICAIS:
+   eixo  502.9 · soma   260.0 · 183 + 5 + 52 + 20
+   eixo  989.0 · soma   260.0 · 125 + 35 + 100
+   eixo  447.0 · soma     8.0 · 3 + 5
+   eixo  226.1 · soma   260.0 · 260
+   eixo  424.8 · soma   110.0 · 110
+   eixo 1000.9 · soma   260.0 · 260
+
+══════════════════════════════════════════════════════════════════════════════
+71-anexo-banheiro-social.pdf  ·  1191 × 842 pt  ·  34 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   206,   433)  PLANTA DE LAYOUT
+   (   744,   435)  ELEVAÇÃO A
+   (   867,   801)  ANEXO BANHEIRO SOCIAL - PLANTA DE LAYOUT E ELEVAÇÃO
+FRENTES:
+   (   440,    48)  Nicho revestido em Porcelanato
+   (   765,   129)  Espelho
+   (   619,   147)  Espelho prata com cantos
+   (  1088,   167)  giro em vidro temperado
+   (  1100,   247)  Nicho revestido em
+   (   724,   344)  Giro
+   (   805,   344)  Giro
+CADEIAS HORIZONTAIS:
+   eixo  380.2 · soma   228.0 · 88 + 60 + 80
+   eixo  391.6 · soma   332.0 · 35 + 69 + 228
+   eixo   63.1 · soma   104.0 · 104
+   eixo  402.3 · soma   104.0 · 104
+CADEIAS VERTICAIS:
+   eixo  149.3 · soma   228.0 · 40 + 70 + 30 + 44 + 44
+   eixo  706.1 · soma   260.0 · 174 + 15 + 51 + 20
+   eixo  103.1 · soma   228.0 · 80 + 60 + 88
+   eixo  998.6 · soma   260.0 · 125 + 35 + 100
+   eixo  742.9 · soma     8.0 · 3 + 5
+   eixo  781.1 · soma   200.0 · 110 + 90
+   eixo   90.6 · soma   228.0 · 228
+   eixo  819.5 · soma   110.0 · 110
+   eixo 1011.6 · soma   260.0 · 260
+
+══════════════════════════════════════════════════════════════════════════════
+72-home-schooling.pdf  ·  1191 × 842 pt  ·  17 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   255,   631)  PLANTA DE LAYOUT
+   (   867,   799)  ANEXO HOMESCHOOLING - PLANTA DE LAYOUT
+FRENTES:
+CADEIAS HORIZONTAIS:
+   eixo  159.3 · soma   677.0 · 267 + 210 + 200
+   eixo  589.3 · soma   677.0 · 246 + 431
+   eixo  149.0 · soma   677.0 · 677
+   eixo  237.4 · soma   100.0 · 100
+   eixo  485.7 · soma   160.0 · 160
+   eixo  600.7 · soma   677.0 · 677
+CADEIAS VERTICAIS:
+   eixo  198.2 · soma   311.0 · 256 + 55
+   eixo  184.4 · soma   311.0 · 311
+   eixo  250.4 · soma   180.0 · 180
+   eixo  814.9 · soma   210.0 · 210
+
+══════════════════════════════════════════════════════════════════════════════
+73-home-schooling.pdf  ·  1191 × 842 pt  ·  33 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   123,   163)  Ver detalhe 11
+   (   261,   416)  ELEVAÇÃO A
+   (   211,   554)  DETALHE 11
+   (   867,   801)  ANEXO HOMESCHOOLING - ELEVAÇÃO
+FRENTES:
+   (   557,   167)  Prateleira
+   (   152,   181)  Nicho em MDF Azul Secreto,
+   (   557,   210)  Prateleira
+   (   551,   253)  Nicho
+   (   668,   279)  Gaveta
+   (   727,   279)  Gaveta
+   (   668,   301)  Gaveta
+   (   727,   301)  Gaveta
+   (  1079,   315)  Gavetas com corrediças
+   (   547,   346)  Giro
+   (   659,   346)  Giro Gaveta
+   (   727,   346)  Gaveta
+   (   237,   496)  Prat.
+CADEIAS HORIZONTAIS:
+   eixo  372.8 · soma   677.0 · 267 + 210 + 200
+   eixo  275.7 · soma    58.0 · 53 + 5
+   eixo  174.3 · soma   120.0 · 120
+   eixo  189.7 · soma   202.0 · 202
+CADEIAS VERTICAIS:
+   eixo  504.2 · soma   210.0 · 2 + 2 + 36 + 2 + 36 + 2 + 36 + 2 + 2 + 78 + 2 + 10
+   eixo  753.5 · soma    78.0 · 19.5 + 19.5 + 39
+   eixo  581.3 · soma     8.0 · 3 + 5
+   eixo  669.0 · soma     8.0 · 3 + 5
+   eixo  221.4 · soma   260.0 · 260
+   eixo  492.0 · soma   210.0 · 210
+   eixo  607.7 · soma   100.0 · 100
+   eixo  843.5 · soma   180.0 · 180
+
+══════════════════════════════════════════════════════════════════════════════
+74-home-schooling.pdf  ·  1191 × 842 pt  ·  14 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   261,   416)  ELEVAÇÃO B
+   (   291,   431)  VISTA EXTERNA ARMÁRIO
+   (   867,   801)  ANEXO HOMESCHOOLING - ELEVAÇÃO
+FRENTES:
+   (   733,   346)  Giro
+   (   853,   346)  Giro
+   (   870,   346)  Giro
+   (   990,   346)  Giro
+CADEIAS HORIZONTAIS:
+   eixo  228.3 · soma    15.0 · 10 + 5
+   eixo  369.6 · soma   677.0 · 431 + 246
+CADEIAS VERTICAIS:
+   eixo 1009.0 · soma   256.0 · 50 + 196 + 10
+   eixo  763.2 · soma   110.0 · 10 + 100
+   eixo 1021.9 · soma     4.0 · 2 + 2
+   eixo 1028.4 · soma   260.0 · 50 + 210
+   eixo  219.0 · soma   260.0 · 260
+
+══════════════════════════════════════════════════════════════════════════════
+75-home-schooling.pdf  ·  1191 × 842 pt  ·  18 cotas
+══════════════════════════════════════════════════════════════════════════════
+VISTAS:
+   (   261,   416)  ELEVAÇÃO B
+   (   291,   431)  VISTA INTERNA ARMÁRIO
+   (   867,   801)  ANEXO HOMESCHOOLING - ELEVAÇÃO
+FRENTES:
+   (   741,   178)  Prateleira
+   (   879,   178)  Prateleira
+   (   741,   220)  Prateleira
+   (   879,   220)  Prateleira
+   (   741,   262)  Prateleira
+   (   879,   262)  Prateleira
+   (   741,   304)  Prateleira
+   (   879,   304)  Prateleira
+CADEIAS HORIZONTAIS:
+   eixo  369.6 · soma   677.0 · 431 + 246
+CADEIAS VERTICAIS:
+   eixo 1008.5 · soma   248.0 · 50 + 48 + 35 + 35 + 35 + 35 + 10
+   eixo 1021.4 · soma    12.0 · 2 + 2 + 2 + 2 + 2 + 2
+   eixo 1034.6 · soma   260.0 · 50 + 210
+   eixo  219.0 · soma   260.0 · 260

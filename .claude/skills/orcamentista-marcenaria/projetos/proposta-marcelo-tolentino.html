@@ -1,0 +1,386 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"><style>
+:root{
+  --ink:#1A1714; --soft:#5C564C; --mut:#918A7C; --line:#E3DDD1; --hair:#F0EBE1;
+  --paper:#fff; --cream:#FAF7F1; --sand:#F1EBDF;
+  --gold:#9C7A3C; --gold-lt:#C6A567; --gold-pale:#F5EEDF; --deep:#241F1B;
+}
+@page{size:A4;margin:0;}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{margin:0;font-family:'DM Sans','Liberation Sans',Arial,sans-serif;
+     color:var(--ink);font-size:9.6pt;line-height:1.62;}
+.serif{font-family:'Cormorant Garamond','Liberation Serif',Georgia,serif;}
+.page{position:relative;width:210mm;height:297mm;overflow:hidden;
+      background:var(--paper);page-break-after:always;}
+.page:last-of-type{page-break-after:avoid;}
+.pad{padding:17mm 19mm 14mm;height:100%;display:flex;flex-direction:column;}
+h1,h2,h3{margin:0;font-weight:600;}
+p{margin:0;}
+.eyebrow{font-size:7.2pt;letter-spacing:.30em;text-transform:uppercase;
+         color:var(--gold);font-weight:700;}
+.rule{height:1.5px;width:40px;background:var(--gold);margin:7px 0 13px;}
+.h-sec{font-family:'Cormorant Garamond',Georgia,serif;font-size:23pt;
+       line-height:1.12;font-weight:600;letter-spacing:-.01em;}
+.lead{color:var(--soft);font-size:9.9pt;max-width:150mm;}
+.foot{margin-top:auto;padding-top:8mm;border-top:1px solid var(--hair);
+      display:flex;justify-content:space-between;font-size:7.2pt;
+      letter-spacing:.16em;text-transform:uppercase;color:var(--mut);}
+
+/* capa */
+.cover{background:var(--deep);color:#F6F1E7;}
+.cover .pad{padding:24mm 19mm 16mm;}
+.cover .eyebrow{color:var(--gold-lt);}
+.cover .rule{background:var(--gold-lt);width:56px;height:2px;}
+.cv-t{font-family:'Cormorant Garamond',Georgia,serif;font-size:38pt;
+      line-height:1.05;font-weight:600;letter-spacing:-.015em;margin-top:3mm;max-width:150mm;}
+.cv-nome{font-family:'Cormorant Garamond',Georgia,serif;font-size:74pt;
+         line-height:.98;font-weight:600;letter-spacing:-.025em;margin-top:4mm;
+         color:#F7F2E8;}
+.cv-s{font-size:13pt;color:#CFC6B4;margin-top:7mm;font-weight:300;
+      line-height:1.45;}
+.cv-meta{margin-top:13mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6mm;
+         border-top:1px solid rgba(255,255,255,.16);padding-top:7mm;}
+.cv-meta .k{font-size:6.9pt;letter-spacing:.2em;text-transform:uppercase;
+            color:var(--gold-lt);font-weight:700;}
+.cv-meta .v{font-size:10.4pt;color:#EDE6D9;margin-top:2mm;}
+.cv-brand{font-size:8.6pt;letter-spacing:.42em;text-transform:uppercase;
+          color:#E8DFCB;font-weight:700;}
+.cv-num{position:absolute;right:19mm;top:22mm;font-family:'Cormorant Garamond',Georgia,serif;
+        font-size:110pt;line-height:1;color:rgba(198,165,103,.13);font-weight:600;}
+
+/* itens */
+.it{padding:3.1mm 0;border-bottom:1px solid var(--hair);display:flex;gap:6mm;}
+.it:last-child{border-bottom:none;}
+.it-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:14.5pt;color:var(--gold-lt);
+      font-weight:600;min-width:9mm;line-height:1.1;}
+.it-t{font-size:10.4pt;font-weight:600;letter-spacing:-.005em;}
+.it-d{color:var(--soft);font-size:8.4pt;margin-top:1mm;line-height:1.5;}
+
+/* cenários */
+.cen{border:1px solid var(--line);border-radius:2px;padding:4.6mm 5.6mm;
+     margin-bottom:3.4mm;background:var(--cream);}
+.cen.hi{background:var(--gold-pale);border-color:var(--gold-lt);}
+.cen-h{display:flex;align-items:baseline;gap:4mm;}
+.cen-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:20pt;
+       color:var(--gold);font-weight:600;line-height:1;}
+.cen-t{font-size:12.5pt;font-weight:600;}
+.cen-g{margin-left:auto;font-size:7.6pt;letter-spacing:.16em;text-transform:uppercase;
+       color:#fff;background:var(--gold);padding:2.2mm 3.4mm;border-radius:2px;
+       font-weight:700;white-space:nowrap;}
+.cen-x{color:var(--soft);font-size:8.7pt;margin-top:2mm;}
+.cen-l{margin-top:2.8mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm;
+       border-top:1px solid var(--line);padding-top:3.2mm;}
+.cen-l .k{font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;
+          color:var(--mut);font-weight:700;}
+.cen-l .v{font-size:8.7pt;margin-top:1mm;line-height:1.4;}
+
+/* tabela de investimento */
+table{width:100%;border-collapse:collapse;}
+.inv th{font-size:6.9pt;letter-spacing:.16em;text-transform:uppercase;
+        color:var(--mut);font-weight:700;text-align:right;padding:0 0 3mm;
+        border-bottom:1.5px solid var(--gold);}
+.inv th.l{text-align:left;}
+.inv td{padding:2.4mm 0;border-bottom:1px solid var(--hair);text-align:right;
+        font-variant-numeric:tabular-nums;font-size:9.6pt;}
+.inv td.l{text-align:left;font-size:9.5pt;}
+.inv td.hi{background:var(--gold-pale);font-weight:600;
+           padding-right:2.6mm;padding-left:2.6mm;}
+.inv th.hi{background:var(--gold-pale);padding-right:2.6mm;padding-left:2.6mm;
+           color:var(--gold);}
+.inv tr.tot td{border-bottom:none;border-top:1.5px solid var(--ink);
+               padding-top:3mm;font-size:13.5pt;font-weight:600;
+               font-family:'Cormorant Garamond',Georgia,serif;}
+.inv tr.tot td.l{font-family:inherit;font-size:8pt;letter-spacing:.18em;
+                 text-transform:uppercase;font-weight:700;}
+
+.box{background:var(--cream);border-left:2.5px solid var(--gold);
+     padding:4mm 5.2mm;margin-top:4mm;}
+.box .t{font-size:7.4pt;letter-spacing:.18em;text-transform:uppercase;
+        color:var(--gold);font-weight:700;}
+.box p{color:var(--soft);font-size:9pt;margin-top:2mm;}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:9mm;}
+.term{padding:3.4mm 0;border-bottom:1px solid var(--hair);}
+.term:last-child{border-bottom:none;}
+.term .k{font-size:6.9pt;letter-spacing:.18em;text-transform:uppercase;
+         color:var(--gold);font-weight:700;}
+.term .v{font-size:9.5pt;margin-top:1.2mm;}
+.term .s{color:var(--soft);font-size:8.5pt;margin-top:.8mm;}
+.pay td{padding:2.6mm 0;border-bottom:1px solid var(--hair);font-size:9pt;}
+.pay td.d{text-align:right;font-weight:600;color:var(--gold);
+          font-variant-numeric:tabular-nums;}
+.fora .k{font-size:9.3pt;font-weight:600;}
+.fora .v{color:var(--soft);font-size:8.6pt;margin-top:.8mm;}
+.fora li{margin-bottom:3.2mm;list-style:none;}
+.fora ul{margin:0;padding:0;}
+.sig{margin-top:auto;padding-top:9mm;display:grid;grid-template-columns:1fr 1fr;gap:14mm;}
+.sig .ln{border-top:1px solid var(--ink);padding-top:2.4mm;font-size:8.4pt;
+         color:var(--soft);}
+
+/* ── PAINÉIS DE IMAGEM ────────────────────────────────────────────────────
+   As vistas do projeto executivo saem do modelo 3D com FUNDO PRETO. Em vez
+   de recortar (o preto não é só borda — entra nos cantos do corte isométrico),
+   o painel é preto de propósito: a imagem encosta no fundo sem emenda e a
+   página ganha uma banda escura que conversa com a capa.
+   `.z` dá um zoom leve para comer a moldura preta fina das elevações.        */
+.ph{background:#000;overflow:hidden;position:relative;}
+.ph img{display:block;width:100%;height:100%;object-fit:cover;}
+.ph.ct img{object-fit:contain;}
+.ph img.z{transform:scale(1.09);}
+.ph img.z2{transform:scale(1.16);}
+.ph .cap{position:absolute;left:0;right:0;bottom:0;padding:6mm 4mm 2.8mm;
+  font-size:6.6pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-lt);font-weight:700;
+  background:linear-gradient(transparent,rgba(0,0,0,.9));}
+
+/* capa partida: texto à esquerda, vista do projeto à direita */
+.cv2{display:grid;grid-template-columns:1.06fr 1fr;height:100%;}
+.cv2 .txt{padding:24mm 13mm 16mm 19mm;display:flex;flex-direction:column;
+  min-width:0;}
+.cv2 .ph{border-left:1px solid rgba(198,165,103,.30);}
+.cv2 .cv-t{font-size:31pt;}
+.cv2 .cv-s{font-size:11.4pt;margin-top:6mm;}
+.cv2 .cv-meta{grid-template-columns:1fr;gap:4mm;margin-top:10mm;padding-top:6mm;}
+.cv2 .cv-meta>div{display:grid;grid-template-columns:34mm 1fr;align-items:baseline;}
+.cv2 .cv-meta .v{margin-top:0;font-size:9.8pt;}
+
+/* capa com render fotográfico de topo */
+.cvfoto{display:grid;grid-template-rows:auto 146mm 1fr;height:100%;}
+.cvfoto .top{padding:13mm 19mm 8mm;}
+.cvfoto .txt{padding:11mm 19mm 14mm;display:flex;flex-direction:column;}
+.cvfoto .cv-t{font-size:33pt;}
+
+/* dupla de vistas lado a lado */
+.dupla{display:grid;grid-template-columns:1fr 1fr;gap:6mm;}
+.dupla .ph{height:58mm;}
+.dupla .t{font-size:10.6pt;font-weight:600;margin-top:3.6mm;}
+.dupla .d{color:var(--soft);font-size:8.5pt;margin-top:1.4mm;line-height:1.52;}
+
+/* banda de largura total, sangrando nas laterais da página */
+.banda{margin:0 -19mm;height:74mm;}
+.dupla.sangra{margin:0 -19mm;gap:0;}
+.dupla.sangra .ph{height:172mm;}
+.dupla.sangra.baixa .ph{height:106mm;}
+.dupla.sangra .ph+.ph{border-left:1px solid rgba(198,165,103,.22);}
+
+/* página partida: vista alta à esquerda, texto à direita */
+.split{display:grid;grid-template-columns:74mm 1fr;gap:9mm;flex:1;
+  min-height:0;margin-top:2mm;}
+.split .ph{height:100%;}
+
+/* garantia — bloco técnico, uma linha por componente */
+.gar{border:1px solid var(--line);border-radius:2px;padding:5mm 5.5mm;
+  background:var(--cream);}
+.gar-h{display:flex;align-items:baseline;gap:4mm;
+  border-bottom:1px solid var(--line);padding-bottom:3mm;}
+.gar-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:30pt;
+  color:var(--gold);font-weight:600;line-height:.9;}
+.gar-u{font-size:7pt;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--mut);font-weight:700;}
+.gar-x{margin-left:auto;color:var(--soft);font-size:8.4pt;text-align:right;
+  max-width:78mm;line-height:1.45;}
+.gar-l{display:flex;justify-content:space-between;gap:5mm;
+  padding:2.3mm 0;border-bottom:1px solid var(--hair);font-size:8.8pt;}
+.gar-l:last-child{border-bottom:none;}
+.gar-l .k{color:var(--soft);}
+.gar-l .v{font-weight:700;white-space:nowrap;}
+
+/* ── proposta Marcelo Tolentino ───────────────────────────────────────── */
+.amb{margin-top:4.5mm;}
+.amb .num{font-family:'Cormorant Garamond',Georgia,serif;font-size:14pt;
+  color:var(--gold-lt);font-weight:600;line-height:1;}
+.amb .t{font-size:11.8pt;font-weight:700;letter-spacing:-.01em;margin-top:.6mm;}
+.amb .d{color:var(--soft);font-size:8.8pt;line-height:1.66;margin-top:2mm;}
+.amb .d b{color:var(--ink);font-weight:600;}
+.par{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin:0 -19mm;}
+.par .ph{height:42mm;}
+.solo{margin:0 -19mm;height:80mm;}
+.banda{margin:0 -19mm;height:52mm;}
+
+.lin2{display:grid;grid-template-columns:1fr 1fr;gap:6mm;margin-top:6mm;}
+.lin2.um{grid-template-columns:1fr;}
+.lin2.um > div{display:grid;grid-template-columns:auto 1fr;gap:0 9mm;
+  align-items:start;}
+.lin2.um .cod{grid-row:1;}
+.lin2.um .nm{grid-row:2;grid-column:1;}
+.lin2.um ul{grid-row:1/4;grid-column:2;margin-top:1mm;columns:2;
+  column-gap:8mm;}
+.lin2.um li{break-inside:avoid;}
+.lin2.um .gar{grid-row:3;grid-column:1;align-self:end;}
+.lin2 > div{border:1.5px solid var(--line);border-radius:6px;padding:9mm 8mm;}
+.lin2 > div.g{border-color:var(--gold);background:rgba(201,169,106,.07);}
+.lin2 .cod{font-family:'Cormorant Garamond',Georgia,serif;font-size:26pt;
+  color:var(--gold-lt);font-weight:600;line-height:1;}
+.lin2 .nm{font-family:'Cormorant Garamond',Georgia,serif;font-size:23pt;
+  font-weight:700;color:var(--ink);line-height:1.05;margin-top:1mm;}
+.lin2 ul{margin:5mm 0 0;padding-left:4.2mm;color:var(--soft);font-size:8.6pt;
+  line-height:1.72;}
+.lin2 li{margin-bottom:1.6mm;}
+.lin2 b{color:var(--ink);}
+.lin2 .gar{margin-top:5mm;padding:3.4mm 4mm;background:var(--cream);
+  border-radius:4px;font-size:8.4pt;color:var(--soft);}
+.lin2 .gar b{font-size:12.5pt;color:var(--ink);}
+
+.mesmo{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6mm;margin-top:7mm;
+  padding-top:5mm;border-top:1px solid var(--hair);}
+.mesmo .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.mesmo .d{color:var(--soft);font-size:8.3pt;line-height:1.5;margin-top:1.4mm;}
+.mesmo .d b{color:var(--ink);}
+
+table.invA{width:100%;border-collapse:collapse;margin-top:4mm;font-size:8.6pt;}
+table.invA th{font-size:6.9pt;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--mut);font-weight:700;padding:0 0 2.4mm;text-align:left;}
+table.invA th.r,table.invA td.r{text-align:right;}
+table.invA th.alt{color:var(--gold);}
+table.invA td{padding:1.65mm 0;border-top:1px solid var(--hair);vertical-align:top;}
+table.invA td.a{font-size:6.9pt;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold-lt);font-weight:700;padding-right:4mm;width:26mm;}
+table.invA td.i{font-weight:600;}
+table.invA td.alt{background:rgba(201,169,106,.07);padding-right:2.5mm;}
+table.invA th.alt{padding-right:2.5mm;}
+table.invA tr.tot td{border-top:1.6px solid var(--ink);padding-top:2.4mm;
+  font-family:'Cormorant Garamond',Georgia,serif;font-size:17pt;font-weight:700;}
+table.invA tr.tot td.a,table.invA tr.tot td.i{font-family:inherit;font-size:9.4pt;}
+
+.cndP{display:grid;grid-template-columns:1fr 1fr;gap:3.6mm 7mm;margin-top:4.5mm;}
+.cndP .k{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;}
+.cndP .d{color:var(--soft);font-size:8.3pt;margin-top:1mm;line-height:1.46;}
+.cndP .d b{color:var(--ink);}
+.escP{margin-top:4mm;border:1px solid var(--line);border-radius:5px;
+  overflow:hidden;flex:none;}  /* flex:none — sem isto o flex encolhe a
+     caixa e o overflow:hidden come a última parcela em silêncio */
+.escP .l{display:flex;justify-content:space-between;align-items:baseline;
+  padding:2.1mm 5mm;border-bottom:1px solid var(--hair);font-size:8.8pt;}
+.escP .l:last-child{border-bottom:none;}
+.escP .l .p{font-weight:700;font-size:10.5pt;color:var(--gold);min-width:14mm;}
+.escP .l .q{color:var(--soft);flex:1;padding-left:4mm;}
+.nota{margin-top:4mm;padding-left:4mm;border-left:2.5px solid var(--gold-lt);
+  font-size:8pt;color:var(--soft);line-height:1.48;}
+.nota b{color:var(--ink);}
+</style></head><body><div class="page cover"><div class="pad">
+  <div class="eyebrow">Proposta comercial</div>
+  <div class="cv-t serif">Marcenaria sob medida.</div>
+  <div class="cv-nome serif">Marcelo Tolentino</div>
+  <div class="cv-s">Estande de vendas e apartamento decorado —
+  projeto Zilda Santiago e Anamaria Diniz.</div>
+  <div class="cv-meta">
+    <div><div class="k">Cliente</div><div class="v">Marcelo Tolentino</div></div>
+    <div><div class="k">Obra</div><div class="v">BRZ · Nova Lima</div></div>
+    <div><div class="k">Data</div><div class="v">30 de setembro de 2026</div></div>
+  </div>
+  <div class="ph banda" style="margin:auto -19mm -16mm;height:86mm;">
+    <img src="img-marcelo-tolentino/capa-sala.jpg" alt=""></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Estande de vendas</div>
+  <div class="h-sec serif">A marcenaria<br>do estande.</div>
+  <div class="rule"></div>
+
+  <div class="par" style="margin-top:6mm;">
+    <div class="ph"><img src="img-marcelo-tolentino/lounge.jpg" alt=""></div>
+    <div class="ph"><img src="img-marcelo-tolentino/ativos.jpg" alt=""></div>
+  </div>
+
+  <div class="amb"><div class="num serif">01</div><div class="t">Salão principal</div><div class="d">A parede do salão inteira em <b>armário ripado de MDF Tauari Guararapes</b>, do piso ao teto e <b>sem puxador</b>: as portas abrem ao toque, com <b>fecho toque da Blum</b>. Na entrada, armário liso com a porta rente à parede e painel do piso ao teto no mesmo Tauari. O pilar do hidrante desaparece dentro de um revestimento em <b>MDF Preto Absoluto Duratex</b> com <b>bite usinado entre as folhas</b>, e a recepção recebe <b>bancada em Tauari com frente inclinada</b>.</div></div>
+  <div class="amb"><div class="num serif">02</div><div class="t">Lounge</div><div class="d">As paredes do lounge inteiras em marcenaria: a <b>faixa alta em MDF Carvalho Munique Duratex</b> e, abaixo dela, <b>painel em MDF Tauari Guararapes no lugar da pedra</b> — a parede lê madeira do piso ao teto, sem a quebra do granito. Mais o painel em Tauari com <b>porta de passagem embutida e puxador cava</b>: fechada, a porta desaparece no painel.</div></div>
+  <div class="amb"><div class="num serif">03</div><div class="t">Sala de ativos</div><div class="d">Bancadas de trabalho em <b>MDF Carvalho Munique Guararapes</b> com <b>canaleta de fiação usinada sob o tampo</b>. Divisórias entre estações em <b>MDF Cinza Pixel Guararapes</b> e aparador no mesmo carvalho.</div></div>
+  <div class="amb"><div class="num serif">04</div><div class="t">Sala de reunião</div><div class="d">Aparador para cafeteira em <b>MDF Cerrado Bold Arauco</b>, com frentes em <b>fecho toque</b> e nicho preparado para o porcelanato.</div></div>
+  <div class="amb"><div class="num serif">05</div><div class="t">Bancada gourmet</div><div class="d">Painéis lisos e <b>forro</b> em <b>MDF Tauari Guararapes</b> — teto e parede no mesmo desenho. Sob a bancada de granito, armários em Tauari com nicho para os frigobares.</div></div>
+  <div class="amb"><div class="num serif">06</div><div class="t">Copa</div><div class="d">Painel do piso ao teto em <b>Tauari</b> com porta embutida e puxador cava, armário inferior em <b>fórmica branca</b> e ilha central.</div></div>
+  <div class="foot"><span>Valvic Marcenaria</span><span>Marcelo Tolentino · BRZ · Nova Lima</span><span>2 / 5</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Apartamento decorado</div>
+  <div class="h-sec serif">A marcenaria<br>do decorado.</div>
+  <div class="rule"></div>
+
+  <div class="par" style="margin-top:6mm;">
+    <div class="ph"><img src="img-marcelo-tolentino/cozinha.jpg" alt=""></div>
+    <div class="ph"><img src="img-marcelo-tolentino/quarto-casal.jpg" alt=""></div>
+  </div>
+
+  <div class="amb"><div class="num serif">07</div><div class="t">Cozinha e área de serviço</div><div class="d">Base em <b>MDF Tauari Guararapes</b>. Superiores em <b>fecho toque</b> com <b>LED embutido</b>; torre de eletros com <b>porta escamoteável</b>; inferiores da bancada principal em <b>laca fosca verde com puxador cava</b>, com a <b>caixa interna em melamínico de cor próxima à da laca</b>. Cristaleira e divisória de correr em <b>perfil de alumínio preto fosco com vidro canelado</b>.</div></div>
+  <div class="amb"><div class="num serif">08</div><div class="t">Sala e varanda</div><div class="d">Estante do piso ao teto em <b>Tauari</b>, com <b>nichos em Carvalho Munique Duratex avançando do plano</b> e <b>LED sob eles</b>. Painel liso com <b>bite usinado</b> entre as folhas e mesa de jantar em Tauari com <b>chanfro usinado no tampo</b>.</div></div>
+  <div class="amb"><div class="num serif">09</div><div class="t">Quarto casal</div><div class="d">Guarda-roupa em Tauari com <b>portas de correr em vidro e perfil de alumínio bronze</b>. Cabeceira e peseira baú <b>estofadas em linho</b> sobre estrutura de marcenaria, e prateleiras suspensas em <b>tubo de alumínio preto</b>.</div></div>
+  <div class="amb"><div class="num serif">10</div><div class="t">Quarto solteiro</div><div class="d">Guarda-roupa em Tauari com <b>portas de correr em vidro bronze e perfil bronze</b>. Escrivaninha, nicho na cabeceira e prateleiras suspensas com <b>nichos em Cinza Essencial Duratex</b>.</div></div>
+  <div class="amb"><div class="num serif">11</div><div class="t">Banheiros</div><div class="d">No casal, gabinete em Tauari com puxador cava, <b>espelho com moldura em Tauari</b> e torre de prateleiras com <b>fundo em muxarabi</b> usinado. No social, gabinete em Tauari, espelho prata colado sobre chapa e prateleiras com <b>LED embutido na lateral</b>. <b>Em frente ao banheiro, painel liso no mesmo Tauari</b>, a detalhar em projeto.</div></div>
+  <div class="foot"><span>Valvic Marcenaria</span><span>Marcelo Tolentino · BRZ · Nova Lima</span><span>3 / 5</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">A especificação</div>
+  <div class="h-sec serif">O que entra<br><em>em cada peça.</em></div>
+  <div class="rule"></div>
+  <p class="lead">A ferragem, a chapa e a construção que entram em cada peça
+  desta proposta.</p>
+
+  <div class="lin2 um"><div class="">
+      <div class="nm serif">Linha<br>Standard</div>
+
+      <ul><li>Dobradiça <b>Hettich Novisys</b></li><li>Corrediça <b>telescópica</b></li><li>Roupeiro em <b>sistema de correr RO65 Prime, da Rometal</b></li><li>Estrutura, portas e prateleiras em <b>MDF de&nbsp;15&nbsp;mm</b></li></ul>
+      <div class="gar">Garantia Valvic de <b>2 anos</b> sobre
+        estrutura e ferragens</div>
+    </div></div>
+
+  <div class="mesmo">
+    <div><div class="k">Modulação</div><div class="d">A mesma em todo o
+      conjunto, do estande ao decorado — <b>distribuição interna desenhada
+      peça a peça</b>, não adaptada de módulo pronto.</div></div>
+    <div><div class="k">Acabamento</div><div class="d"><b>Tauari, Carvalho
+      Munique, Preto Absoluto, Cinza Pixel, Cerrado Bold e Cinza Essencial</b>,
+      mais a laca verde, os vidros e os espelhos.</div></div>
+    <div><div class="k">Quem faz</div><div class="d"><b>Equipe própria</b> do
+      corte à instalação, com a medida conferida no local antes de
+      cortar.</div></div>
+  </div>
+
+  <div class="nota"><b>Onde há laca, a caixa acompanha.</b> Nos armários da
+  cozinha com frente em <b>laca fosca verde</b>, a estrutura interna sai em
+  <b>MDF melamínico de cor próxima à da laca</b>, não em branco. É o que
+  impede a caixa branca de aparecer na fresta entre as frentes e no vão da
+  porta aberta — a peça lê a mesma cor por fora e por dentro.</div>
+
+  <div class="nota">A garantia é <b>termo da Valvic
+  sobre o conjunto que fornecemos e instalamos</b>, não repasse de garantia de
+  fabricante, e cobre <b>estrutura e ferragens</b>.</div>
+  <div class="foot"><span>Valvic Marcenaria</span><span>Marcelo Tolentino · BRZ · Nova Lima</span><span>4 / 5</span></div>
+</div></div><div class="page"><div class="pad">
+  <div class="eyebrow">Investimento</div>
+  <div class="h-sec serif">Ambiente a ambiente.</div>
+  <div class="rule"></div>
+
+  <table class="invA">
+    <thead><tr><th></th><th></th>
+      <th class="r">Investimento<br><span style="font-weight:400;text-transform:none;letter-spacing:0;">linha Standard · 2 anos de garantia</span></th></tr></thead>
+    <tbody><tr><td class="a">Estande</td><td class="i">Salão principal</td><td class="r">R$ 45.420</td></tr><tr><td class="a"></td><td class="i">Copa</td><td class="r">R$ 7.830</td></tr><tr><td class="a"></td><td class="i">Sala de reunião</td><td class="r">R$ 4.290</td></tr><tr><td class="a"></td><td class="i">Sala de ativos</td><td class="r">R$ 12.870</td></tr><tr><td class="a"></td><td class="i">Lounge</td><td class="r">R$ 13.220</td></tr><tr><td class="a"></td><td class="i">Bancada gourmet</td><td class="r">R$ 14.400</td></tr><tr><td class="a">Decorado</td><td class="i">Cozinha e área de serviço</td><td class="r">R$ 39.860</td></tr><tr><td class="a"></td><td class="i">Sala e varanda</td><td class="r">R$ 16.380</td></tr><tr><td class="a"></td><td class="i">Quarto casal</td><td class="r">R$ 18.660</td></tr><tr><td class="a"></td><td class="i">Quarto solteiro</td><td class="r">R$ 15.620</td></tr><tr><td class="a"></td><td class="i">Banheiro social</td><td class="r">R$ 1.430</td></tr><tr><td class="a"></td><td class="i">Banheiro casal</td><td class="r">R$ 3.330</td></tr><tr><td class="a">Terceiros</td><td class="i">Espelhos</td><td class="r">R$ 3.690</td></tr>
+      <tr class="tot"><td class="a"></td><td class="i">Investimento total</td>
+        <td class="r">R$ 197.000</td></tr>
+    </tbody>
+  </table>
+
+  <div class="escP">
+    <div class="l"><span class="p">50%</span><span class="q">de entrada, na assinatura</span></div>
+    <div class="l"><span class="p">20%</span><span class="q">no início da montagem</span></div>
+    <div class="l"><span class="p">15%</span><span class="q">na entrega</span></div>
+    <div class="l"><span class="p">15%</span><span class="q">30 dias após a entrega</span></div>
+  </div>
+
+  <div class="cndP">
+    <div><div class="k">Prazo de entrega</div><div class="d">
+      <b>Até 15 de novembro de 2026</b>, contado da assinatura, da entrada e da medição
+      final no local.</div></div>
+    <div><div class="k">Escopo Valvic</div><div class="d">
+      Do corte à instalação com <b>equipe própria</b>, e os terceiros de pedra,
+      vidro, laca, espelho e estofado <b>entregues instalados</b>.</div></div>
+    <div><div class="k">Validade da proposta</div><div class="d">
+      <b>Até 2 de outubro de 2026</b>.</div></div>
+    <div><div class="k">Garantia</div><div class="d">
+      <b>2 anos</b> sobre estrutura e ferragens, na linha
+      desta proposta.</div></div>
+  </div>
+
+  <div class="nota"><b>Não inclusos:</b> pedras e bancadas, alvenaria de apoio,
+  rodapé, bancada e sóculo existentes da copa, louças, metais,
+  eletrodomésticos, esquadrias em vidro e alumínio, box, gesso, pintura,
+  revestimentos, comunicação visual, elétrica, hidráulica e o mobiliário
+  solto.</div>
+
+  <div class="foot"><span>Valvic Marcenaria</span><span>Marcelo Tolentino · BRZ · Nova Lima</span><span>5 / 5</span></div>
+</div></div></body></html>

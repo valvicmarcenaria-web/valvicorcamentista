@@ -1,0 +1,790 @@
+# -*- coding: utf-8 -*-
+"""LUIZA E RAPHAEL — quarto casal, espaço gourmet e sala da cobertura.
+
+FONTE: `CADERNO_MARCENARIA_LUIZA_E_RAPHAEL` · 14 folhas A4 paisagem, escala
+1/25, arq./decoradora **Jéssica Sollero**, 31/08/2026. É caderno de verdade:
+planta, elevações A e B, cortes AA/BB/CC e renders, com cota peça a peça e
+memorial de acabamento em cada móvel. Base FORTE — nada aqui é leitura de
+render, só o que a folha cota.
+"CONFERIR MEDIDAS NO LOCAL" está carimbado em todas as folhas.
+
+[Jonathan 09/09/2026]
+  · com RT              · prazo 70 dias corridos
+  · formas de pagamento padrão
+  · DUAS versões: Telescópica MC 32% · Hettich MC 40%
+  · "na penteadeira tem dois divisores de acrílico. Apresente os valores deles
+    separados desses divisores, será um custo de 800,00."
+  · "se atente para não esquecer de considerar nada (metragem de fitas,
+    insumos, ferragens etc)"
+
+⛔ FORA DO ESCOPO (não é marcenaria): bancada e rodabanca em pedra do gourmet
+   (marmoraria), eletrodomésticos (geladeira, lava-louças, máquina de lavar,
+   cooktop, forno, coifa), TV, cuba, torneira, gesso, elétrica e pintura.
+"""
+from collections import defaultdict
+import math
+import motor_mc as M          # ⭐ fonte única dos encargos — modelo-de-custo.md
+
+W = 100
+CH_C, CH_L = 275.0, 185.0
+CH_AREA = 2.75*1.85
+
+# [Jonathan 12/09] "pode tirar o custo do vendedor". Com RT, SEM vendedor —
+# a venda vem pela decoradora. Base sobe de 67,68% para 76,52%.
+RT_ON, VEND_ON = True, False
+BASE = M.base(parcelas=0, rt=RT_ON, vendedor=VEND_ON)      # à vista
+def div(mc): return BASE - mc
+def mc_conferida(p, c): return BASE - c/p
+
+def _pack_faixa(pcs):
+    ch = 0; y = x = f = 0.0
+    for c, l in pcs:
+        if c > CH_C and l <= CH_C: c, l = l, c
+        if c > CH_C or l > CH_L: ch += 1; continue
+        if x + c > CH_C: y += f; x = 0.0; f = 0.0
+        if y + l > CH_L: ch += 1; y = x = f = 0.0
+        x += c; f = max(f, l)
+    return ch + 1
+def _pack_bf(pcs):
+    ch = []
+    for c, l in pcs:
+        if c > CH_C and l <= CH_C: c, l = l, c
+        if c > CH_C or l > CH_L: ch.append([CH_L, []]); continue
+        best = None
+        for s in ch:
+            for fx in s[1]:
+                if fx[0] >= l and fx[1] >= c and (best is None or fx[1] < best[1]): best = fx
+        if best is not None: best[1] -= c; continue
+        for s in ch:
+            if s[0] + l <= CH_L:
+                s[0] += l; s[1].append([l, CH_C - c]); break
+        else: ch.append([l, [[l, CH_C - c]]])
+    return len(ch)
+def nest(items):
+    if not items: return 0
+    b = [(max(c, l), min(c, l)) for c, l in items]
+    ords = [lambda q: -q[1], lambda q: (-q[1], -q[0]), lambda q: -q[0], lambda q: -q[0]*q[1]]
+    ch = min(pk(sorted(b, key=k)) for pk in (_pack_faixa, _pack_bf) for k in ords)
+    ar = sum(c*l for c, l in items)/10000
+    return max(ch, -(-int(ar/(CH_AREA*0.80)*1000)//1000) or 1)
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PREÇOS — dados/materiais.json + referencias/chapas.md (11/06/2026)
+# ═══════════════════════════════════════════════════════════════════════════
+PRC_COR = {6: 300.0, 15: 500.0, 18: 600.0, 25: 900.0}   # melamínico fosco/cor
+PRC_BRA = {6: 190.0, 15: 260.0, 18: 330.0, 25: 420.0}   # Branco TX
+# Quatro cores diferentes = quatro grupos de nesting. Cada uma puxa chapa
+# inteira mesmo com pouca área — é o que encarece um job de cores múltiplas.
+NOME_MAT = {'CV': 'MDF Carvalho (Arauco)',
+            'GF': 'MDF Grafito Chess (Arauco)',
+            'JQ': 'MDF Jequitibá (Arauco)',
+            'GR': 'MDF Griss Chess (Arauco)',
+            'BR': 'MDF Branco TX'}
+def prc(m, e): return (PRC_BRA if m == 'BR' else PRC_COR)[e]
+
+FITA_COR, FITA_BRA, FILET_M, DESPERD = 3.00, 2.00, 2.50, 1.10
+CHANF_M  = 15.0   # ★ PUXADOR CHANFRADO — chanfro a 45° usinado na borda da
+                  #   frente. Mesma operação da meia esquadria (R$ 15/m), não
+                  #   a cava de pega (R$ 25/m): é um passe só, sem rebaixo.
+ESQ_M    = 15.0   # meia esquadria (encontros a 45°)
+CURVA_M  = 60.0   # ★ canto/topo CURVO: CNC + fita a quente + lixamento
+LED_M    = 66.0   # fita 28 + perfil de alumínio 38 — LED comum, não COB
+DRIVER_UN= 90.0
+SUP_PRAT = 8.0    # ★ suporte de prateleira
+
+# ── terceirizados e acessórios ────────────────────────────────────────────
+ESPELHO_COL   = 220.0   # espelho prata COLADO, por folha (chapas.md)
+VIDRO_TEMP_M2 = 250.0   # vidro incolor temperado 8 mm, por m²
+BASC_VIDRO    = 280.0   # porta basculante reflecta bronze + perfil bronze +
+                        # puxador sotille + furos — referência CONFIRMADA
+                        # (Kenia & Fábio 12/06/2026, 4 un = R$ 1.120)
+ESTOFADO_M2   = 650.0   # ★ proxy da linha Laca/Pintura R$ 650/m²
+# ⛔ [Jonathan 09/09] "o custo do acrílico informado já seria o custo de venda
+#    ao cliente. Considere R$ 1.200." Então R$ 1.200 é PREÇO DE VENDA fechado,
+#    não custo. O custo de COMPRA dos dois divisores não foi informado.
+ACRILICO_PV   = 1200.0  # preço de venda CRAVADO, igual nas duas versões
+ACRILICO      = 450.0   # ★ custo de compra ADOTADO — dois organizadores de
+                        #   acrílico sob medida. SEM referência na base.
+DOBR_CAMARAO  = 180.0   # ★ conjunto de dobradiça camarão (porta que dobra)
+VASSOUREIRO   = 350.0   # ★ vassoureiro deslizante, acessório pronto
+GANCHOS       = 60.0    # ★ jogo de ganchos de vassoura/rodo
+ESCORREDOR    = 280.0   # ★ escorredor metálico interno de báscula
+GIRO_TV       = 450.0   # ★ suporte/dobradiça de 90° para rotação da TV
+
+# ═══════════════════════════════════════════════════════════════════════════
+# [Jonathan 09/09/2026] DUAS VERSÕES
+# ═══════════════════════════════════════════════════════════════════════════
+CENARIOS = [
+    ('1 · Telescópica', 'Hardt · corrediça telescópica · pistão normal', 0.32,
+     dict(dobr=8.0,  corr=40.0,  pist=20.0), '2 anos'),
+    ('2 · Hettich', 'Hettich Sensys · oculta Quadro · pistão com amortecimento',
+     0.40, dict(dobr=35.0, corr=120.0, pist=30.0), '10 anos'),
+]
+
+# ── coleta ────────────────────────────────────────────────────────────────
+P, FITA, TERC, LED, CHANF, ESQ, CURVA, DUV = [], [], [], [], [], [], [], []
+FER = defaultdict(lambda: [0, 0, 0])       # dobradiças · corrediças · pistões
+IT, ROUP, ORD_IT = ['—'], {}, []
+def item(nome): IT[0] = nome
+def _k(a):
+    k = (a, IT[0])
+    if k not in ROUP: ROUP[k] = True; ORD_IT.append(k)
+    return k
+def add(mat, esp, amb, desc, c, l, q=1):
+    P.append((mat, esp, amb, IT[0], desc, c, l, q)); _k(amb)
+def fer(a, dobr=0, corr=0, pist=0):
+    k = _k(a); FER[k][0] += dobr; FER[k][1] += corr; FER[k][2] += pist
+def fita(a, d, m, cor=True): FITA.append((_k(a), d, m, cor))
+def terc(a, d, v, est=False): TERC.append((_k(a), d, v, est))
+def led(a, d, m): LED.append((_k(a), d, m))
+def chanf(a, m): CHANF.append((_k(a), m))
+def esq(a, m): ESQ.append((_k(a), m))
+def curva(a, m): CURVA.append((_k(a), m))
+def duv(a, t): DUV.append((a, t))
+
+LIM_C, LIM_L = 270.0, 180.0
+def _partir(c, l):
+    if c < l: c, l = l, c
+    nc = max(1, math.ceil(c/LIM_C)); nl = max(1, math.ceil(l/LIM_L))
+    return [(c/nc, l/nl)]*(nc*nl)
+def painel(mat, esp, amb, desc, c, l, q=1):
+    for cc, ll in _partir(c, l): add(mat, esp, amb, desc, cc, ll, q)
+def gaveta(amb, nome, L, Pf, alt, q=1):
+    """Caixa de gaveta em Branco TX — laterais/frente/costas 15, fundo 6."""
+    add('BR', 15, amb, f'{nome} · caixa lateral',       Pf-10, alt, 2*q)
+    add('BR', 15, amb, f'{nome} · caixa frente/costas', L-6,   alt, 2*q)
+    add('BR', 6,  amb, f'{nome} · fundo de gaveta',     L-6,   Pf-10, q)
+
+# ═══════════════════════════════════════════════════════════════════════════
+# GEOMETRIA — tudo em cm, LIDO das folhas cotadas 1/25
+# ═══════════════════════════════════════════════════════════════════════════
+
+# ───────────────────────────────────────────────────────────────────────────
+# 1 · QUARTO CASAL — folhas 1 e 2
+# ───────────────────────────────────────────────────────────────────────────
+A = 'Quarto casal'
+
+item('Cabeceira estofada em Bouclé · 3,10 × 1,10 m')
+painel('BR', 15, A, 'cabeceira · painel de fundo 3100 × 1100', 310, 110)
+painel('BR', 15, A, 'cabeceira · moldura de 10 (topo e base)', 310, 10, 2)
+add('BR', 15, A, 'cabeceira · moldura de 10 (laterais)',    110, 10, 2)
+terc(A, 'Estofamento em tecido Bouclé (3,41 m² × R$ 650)', 3.10*1.10*ESTOFADO_M2, est=True)
+esq(A, 2*(3.10+1.10))
+curva(A, 2*math.pi*0.20/2)                 # R20 nos dois cantos superiores
+fita(A, 'cabeceira · bordas da moldura', 2*(3.10+1.10), cor=False)
+duv(A, 'a cabeceira é ESTOFADA em Bouclé sobre estrutura de MDF. ★ Adotei '
+       'R$ 650/m² usando a linha Laca/Pintura da base como proxy do tapeceiro '
+       '— R$ 2.217 nos 3,41 m². CONFERIR com o estofador: pode vir bem '
+       'diferente, e é o maior terceirizado do quarto.')
+
+item('Penteadeira completa · bancada, gaveteiro e espelho iluminado')
+add('CV', 15, A, 'penteadeira · tampo 1300 × 400',        130, 40)
+add('CV', 15, A, 'penteadeira · lateral da caixa',         40, 10, 2)
+add('CV', 15, A, 'penteadeira · travessa de fundo',       130, 10)
+add('BR', 15, A, 'penteadeira · fundo de fixação',        130, 10)
+add('CV', 18, A, 'penteadeira · frente de gaveta 550×100', 55, 10, 2)
+gaveta(A, 'penteadeira', 55.0, 40.0, 7.0, 2)
+fer(A, corr=2)
+terc(A, 'Espelho prata colado 1,30 × 1,00 m (R40) — 1 folha', ESPELHO_COL)
+# [Jonathan 09/09] "a penteadeira você considerou o espelho com iluminação?"
+# Não tinha — o caderno não escreve LED no quarto, mas o render da folha 3
+# mostra o espelho com LED de contorno acendendo por trás. ENTROU.
+led(A, 'LED de contorno do espelho (60 + arco R40 + 90 + 100)', 3.15)
+terc(A, 'Driver da iluminação do espelho', DRIVER_UN)
+terc(A, 'Tampo em vidro incolor temperado 8 mm (0,52 m²)', 1.30*0.40*VIDRO_TEMP_M2)
+chanf(A, 2*0.55)
+curva(A, math.pi*0.40/2 + math.pi*0.20/2)  # R40 do espelho + R20 da quina
+esq(A, 2*(1.30+0.40))
+fita(A, 'penteadeira · tampo, frentes e bordas',
+     2*(1.30+0.40) + 2*2*(0.55+0.10) + 2*(0.40+0.10)*2)
+fita(A, 'penteadeira · caixas de gaveta', 2*2*(0.55+0.40), cor=False)
+duv(A, 'o ESPELHO de 1,30 × 1,00 entrou como UMA FOLHA colada a R$ 220 '
+       '(`chapas.md`, a fonte que a regra de unidades manda usar). Se a '
+       'espelharia cobrar por m² a R$ 600, sobe para R$ 780 — R$ 560 de '
+       'diferença. ★ CONFERIR, ainda mais por causa do canto R40.')
+duv(A, 'a gaveta da penteadeira tem 10 cm de FRENTE (80 − 70 da elevação B), '
+       'ou seja ~7 cm úteis. É gaveta rasa de organização — coerente com os '
+       'divisores de acrílico. CONFERIR se é isso mesmo.')
+
+# [Jonathan 09/09] o gaveteiro auxiliar está só no render. ★ 45 × 72 × 40 com
+# 3 gavetas. [Jonathan 12/09] entra DENTRO da penteadeira — um item só, junto
+# com a bancada e o espelho iluminado, por R$ 8.500 de venda.
+add('CV', 15, A, 'gaveteiro aux. · lateral', 72, 40, 2)
+add('CV', 15, A, 'gaveteiro aux. · base', 45, 40, 1)
+add('BR', 6,  A, 'gaveteiro aux. · fundo', 45, 72, 1)
+add('CV', 18, A, 'gaveteiro aux. · frente de gaveta 450 × 240', 45, 24, 3)
+gaveta(A, 'gaveteiro aux.', 45.0, 40.0, 20.0, 3)
+fer(A, corr=3)
+chanf(A, 3*0.45)
+fita(A, 'gaveteiro aux. · frentes e bordas', 3*2*(0.45+0.24) + 2*(0.45+0.72))
+fita(A, 'gaveteiro aux. · caixas de gaveta', 3*2*(0.45+0.40), cor=False)
+duv(A, '[Jonathan 09/09] o GAVETEIRO AUXILIAR não está no projeto técnico, só '
+       'no render da folha 3. ★ Adotei 45 × 72 × 40 com 3 gavetas, lido da '
+       'imagem. CONFERIR largura e número de gavetas com a Jéssica.')
+
+item('Divisórias internas em acrílico da penteadeira')
+terc(A, 'Dois divisores de acrílico sob medida (★ custo de compra)', ACRILICO, est=True)
+duv(A, 'a folha 1 detalha os divisores: dois blocos de 13+13+13+12 na largura '
+       'e 14/11/11 na profundidade, um por gaveta. [Jonathan 09/09] o PREÇO DE '
+       'VENDA é CRAVADO em R$ 1.200, igual nas duas versões. ★ O CUSTO DE '
+       'COMPRA não foi informado — adotei R$ 450 pelos dois. É o único número '
+       'deste orçamento que eu inventei inteiro: CONFERIR com o acrilista, '
+       'porque ele é quem define a MC desta linha.')
+
+# ───────────────────────────────────────────────────────────────────────────
+# 2 · ESPAÇO GOURMET — folhas 1 a 5. Corrida única: 133+37+429,5 = 599,5
+# ───────────────────────────────────────────────────────────────────────────
+A = 'Espaço gourmet'
+
+item('Conjunto do espaço gourmet')
+add('GF', 18, A, 'porta da lavanderia 450 × 2615', 45, 261.5, 2)
+add('GF', 18, A, 'porta da lavanderia 430 × 2615', 43, 261.5, 1)
+fer(A, dobr=15)                                    # 5 por folha de 2,615
+terc(A, 'Conjunto de dobradiça camarão (folhas que dobram)', DOBR_CAMARAO, est=True)
+chanf(A, 3*2.615)
+fita(A, 'portas da lavanderia · perímetro das 3 folhas',
+     2*2*(0.45+2.615) + 2*(0.43+2.615))
+duv(A, 'as 3 folhas de 2,615 m fecham o nicho da lavanderia e a folha diz '
+       '"dobradiça camarão". ★ Adotei R$ 180 pelo conjunto do mecanismo, sem '
+       'linha na base. CONFERIR quantas folhas realmente dobram.')
+
+# item('Armário superior da lavanderia · 1,33 × 1,075 m')
+add('GF', 15, A, 'sup. lavanderia · lateral', 107.5, 35, 2)
+add('GF', 15, A, 'sup. lavanderia · tampo e base', 130, 35, 2)
+add('GF', 15, A, 'sup. lavanderia · divisória', 104.5, 35, 1)
+add('BR', 6,  A, 'sup. lavanderia · fundo', 130, 104.5, 1)
+add('BR', 15, A, 'sup. lavanderia · prateleira do módulo 87', 87, 34, 2)
+add('BR', 15, A, 'sup. lavanderia · prateleira do módulo 40', 40, 34, 2)
+add('GF', 18, A, 'sup. lavanderia · porta 435 × 1075', 43.5, 107.5, 2)
+add('GF', 18, A, 'sup. lavanderia · porta 400 × 1075', 40, 107.5, 1)
+fer(A, dobr=9)
+terc(A, 'Suportes das 4 prateleiras (16 un)', 16*SUP_PRAT)
+chanf(A, 3*1.075)
+fita(A, 'sup. lavanderia · portas e bordas',
+     2*2*(0.435+1.075) + 2*(0.40+1.075) + 2*(1.30+0.35))
+fita(A, 'sup. lavanderia · frente das prateleiras', 2*0.87 + 2*0.40, cor=False)
+
+# item('Armário inferior da lavanderia · 0,68 m')
+add('GF', 15, A, 'inf. lavanderia · lateral', 72, 70, 2)
+add('GF', 15, A, 'inf. lavanderia · base', 68, 70, 1)
+add('BR', 6,  A, 'inf. lavanderia · fundo', 68, 72, 1)
+add('GF', 18, A, 'inf. lavanderia · frente da báscula', 68, 36, 1)
+add('GF', 18, A, 'inf. lavanderia · frente do gavetão', 68, 36, 1)
+gaveta(A, 'inf. lavanderia · gavetão', 68.0, 70.0, 32.0, 1)
+add('GF', 15, A, 'inf. lavanderia · sóculo', 68, 15, 1)
+fer(A, dobr=2, corr=1, pist=2)
+chanf(A, 2*0.68)
+fita(A, 'inf. lavanderia · frentes e bordas',
+     2*2*(0.68+0.36) + 2*(0.68+0.70) + 0.68)
+fita(A, 'inf. lavanderia · caixa do gavetão', 2*(0.68+0.70), cor=False)
+
+# item('Vassoureiro · 0,37 × 2,495 m')
+add('GF', 15, A, 'vassoureiro · lateral', 249.5, 72, 2)
+add('GF', 15, A, 'vassoureiro · tampo e base', 37, 72, 2)
+add('BR', 6,  A, 'vassoureiro · fundo', 37, 246.5, 1)
+add('BR', 15, A, 'vassoureiro · prateleira', 37, 71, 3)
+add('GF', 18, A, 'vassoureiro · porta 370 × 2465', 37, 246.5, 1)
+add('GF', 15, A, 'vassoureiro · sóculo', 37, 15, 1)
+fer(A, dobr=5)
+terc(A, 'Vassoureiro deslizante (acessório pronto)', VASSOUREIRO, est=True)
+terc(A, 'Jogo de ganchos de vassoura e rodo', GANCHOS, est=True)
+terc(A, 'Suportes das 3 prateleiras (12 un)', 12*SUP_PRAT)
+chanf(A, 2.465)
+fita(A, 'vassoureiro · porta e bordas', 2*(0.37+2.465) + 2*(0.37+2.495))
+fita(A, 'vassoureiro · frente das prateleiras', 3*0.37, cor=False)
+
+# item('Armário superior do gourmet · 2,30 × 0,725 m')
+add('GF', 15, A, 'sup. gourmet · lateral', 72.5, 35, 2)
+add('GF', 15, A, 'sup. gourmet · tampo e base', 230, 35, 2)
+add('GF', 15, A, 'sup. gourmet · divisória', 69.5, 35, 2)
+add('BR', 6,  A, 'sup. gourmet · fundo', 230, 69.5, 1)
+add('BR', 15, A, 'sup. gourmet · prateleira do módulo 77', 77, 34, 2)
+add('BR', 15, A, 'sup. gourmet · prateleira do módulo 68', 68, 34, 1)
+add('GF', 18, A, 'sup. gourmet · porta 400 × 725', 40, 72.5, 4)
+add('GF', 18, A, 'sup. gourmet · porta 350 × 725', 35, 72.5, 2)
+fer(A, dobr=12)
+terc(A, 'Suportes das 3 prateleiras (12 un)', 12*SUP_PRAT)
+chanf(A, 6*0.725)
+fita(A, 'sup. gourmet · portas e bordas',
+     4*2*(0.40+0.725) + 2*2*(0.35+0.725) + 2*(2.30+0.35))
+fita(A, 'sup. gourmet · frente das prateleiras', 2*0.77 + 0.68, cor=False)
+
+# item('Básculas em MDF Jequitibá · 1,50 × 0,35 m')
+add('JQ', 15, A, 'básculas · lateral', 35, 35, 2)
+add('JQ', 15, A, 'básculas · tampo e base', 150, 35, 2)
+add('JQ', 15, A, 'básculas · divisória', 35, 35, 1)
+add('BR', 6,  A, 'básculas · fundo', 150, 35, 1)
+add('JQ', 18, A, 'báscula do escorredor · frente 800 × 350', 80, 35, 1)
+terc(A, 'Porta basculante em vidro reflecta bronze, perfil e puxador sotille '
+        'bronze (0,70 × 0,35)', BASC_VIDRO)
+terc(A, 'Escorredor metálico interno da báscula', ESCORREDOR, est=True)
+fer(A, dobr=4, pist=4)
+led(A, 'LED 4000K sob as básculas', 1.50)
+terc(A, 'Driver da iluminação das básculas', DRIVER_UN)
+chanf(A, 0.80)
+fita(A, 'básculas · frente e bordas', 2*(0.80+0.35) + 2*(1.50+0.35))
+duv(A, 'a báscula de VIDRO entrou pela referência CONFIRMADA da base '
+       '(Kenia & Fábio 12/06: porta reflecta bronze + perfil bronze + puxador '
+       'sotille + furos = R$ 280 a folha de 0,96 × 0,41). A nossa é 0,70 × '
+       '0,35, MENOR — o preço é conservador.')
+
+# item('Armário inferior do gourmet · 4,295 m')
+add('GF', 15, A, 'inf. gourmet · lateral e divisória', 72, 70, 7)
+painel('GF', 15, A, 'inf. gourmet · base', 429.5, 70, 1)
+painel('BR', 6,  A, 'inf. gourmet · fundo', 429.5, 72, 1)
+painel('GF', 15, A, 'inf. gourmet · sóculo', 429.5, 15, 1)
+# módulo 65 · báscula + gavetão (sob a cuba)
+add('GF', 18, A, 'inf. gourmet · báscula 650 × 360', 65, 36, 1)
+add('GF', 18, A, 'inf. gourmet · gavetão 650 × 360', 65, 36, 1)
+gaveta(A, 'inf. gourmet · gavetão 65', 65.0, 70.0, 32.0, 1)
+# módulo 35 · quatro gavetas de 18
+add('GF', 18, A, 'inf. gourmet · gaveta 350 × 180', 35, 18, 4)
+gaveta(A, 'inf. gourmet · gaveta 35', 35.0, 70.0, 14.0, 4)
+# módulo 70 · nicho do forno
+add('BR', 15, A, 'inf. gourmet · travessa de apoio do forno', 70, 70, 1)
+# módulo 30 · porta de temperos
+add('GF', 18, A, 'inf. gourmet · porta de temperos 300 × 720', 30, 72, 1)
+add('BR', 15, A, 'inf. gourmet · prateleira de temperos', 30, 68, 2)
+# módulo 85 · báscula + gavetão
+add('GF', 18, A, 'inf. gourmet · báscula 850 × 360', 85, 36, 1)
+add('GF', 18, A, 'inf. gourmet · gavetão 850 × 360', 85, 36, 1)
+gaveta(A, 'inf. gourmet · gavetão 85', 85.0, 70.0, 32.0, 1)
+fer(A, dobr=6, corr=6, pist=4)
+terc(A, 'Suportes das 2 prateleiras de temperos (8 un)', 8*SUP_PRAT)
+chanf(A, 0.65 + 0.65 + 4*0.35 + 0.30 + 0.85 + 0.85)
+fita(A, 'inf. gourmet · frentes',
+     2*2*(0.65+0.36) + 4*2*(0.35+0.18) + 2*(0.30+0.72) + 2*2*(0.85+0.36))
+fita(A, 'inf. gourmet · bordas do corpo e sóculo', 4.295*2 + 7*0.72)
+fita(A, 'inf. gourmet · caixas de gaveta e prateleiras',
+     2*(0.65+0.70) + 4*2*(0.35+0.70) + 2*(0.85+0.70) + 2*0.30, cor=False)
+duv(A, 'o trecho de 144,5 do armário inferior é VÃO DE ELETRODOMÉSTICO — a '
+       'folha 3 mostra a lava-louças Electrolux embutida e o espaço da '
+       'geladeira. Orcei laterais e sóculo, SEM frentes. CONFERIR se entra '
+       'porta de painel na lava-louças (aí sobe uma frente de 60 × 72).')
+duv(A, 'o módulo de 30 ao lado do forno está cotado como "porta temp." — li '
+       'como PORTA DE TEMPEROS, com duas prateleiras internas. CONFERIR.')
+duv(A, '⛔ BANCADA E RODABANCA SÃO PEDRA (marmoraria) e estão FORA. Os renders '
+       'mostram granito preto na bancada e pedra clara na rodabanca. A '
+       'marcenaria entrega o corpo, o recorte da cuba e o encosto.')
+
+# ───────────────────────────────────────────────────────────────────────────
+# 3 · SALA COBERTURA — folhas 1 a 3
+# ───────────────────────────────────────────────────────────────────────────
+A = 'Sala cobertura'
+
+item('Painel de TV em MDF Griss Chess · 3,975 × 1,00 m')
+painel('GR', 15, A, 'painel · face 3975 × 1000', 397.5, 100)
+add('GR', 15, A, 'painel · moldura de 6 (topo e base)', 397.5/2, 6, 4)
+add('GR', 15, A, 'painel · moldura de 6 (laterais)', 100, 6, 2)
+add('BR', 15, A, 'painel · travessa interna de fixação', 100, 6, 6)
+esq(A, 2*(3.975+1.00))
+led(A, 'LED 3000K superior do painel', 3.975)
+led(A, 'LED 3000K inferior do painel', 3.975)
+terc(A, 'Driver da iluminação do painel', DRIVER_UN)
+terc(A, 'Dobradiça/suporte de 90° para rotação da TV', GIRO_TV, est=True)
+fita(A, 'painel · perímetro e moldura', 2*(3.975+1.00) + 2*(3.975+1.00))
+duv(A, 'o painel tem 6 cm de espessura (corte AA) e é CAIXA, não chapa lisa: '
+       'face em Griss Chess, moldura de 6 e travessas internas de fixação. É '
+       'assim que ele recebe o LED nas duas bordas sem aparecer perfil.')
+duv(A, '⚠ O RENDER da folha 4 mostra o painel com CANTOS BEM ARREDONDADOS e o '
+       'LED contornando a curva. A ELEVAÇÃO A e o corte AA desenham o painel '
+       'RETANGULAR. Segui a elevação. Se forem curvos, entram ~2,2 m de curva '
+       '(~R$ 132 de custo) e o LED tem de ser flexível.')
+duv(A, '⚠ O render mostra a PAREDE INTEIRA revestida em madeira atrás do '
+       'painel. O caderno não descreve esse revestimento em lugar nenhum e '
+       'ele NÃO está neste orçamento. Se for marcenaria, é item novo e '
+       'grande. CONFERIR com a Jéssica.')
+
+item('Rack em MDF Griss Chess · 2,00 × 0,47 m')
+add('GR', 15, A, 'rack · tampo e base', 200, 55, 2)
+add('GR', 15, A, 'rack · lateral e divisória', 47, 55, 4)
+add('BR', 6,  A, 'rack · fundo', 200, 47, 1)
+add('GR', 18, A, 'rack · frente do gavetão 800 × 440', 80, 44, 2)
+gaveta(A, 'rack · gavetão', 80.0, 50.0, 40.0, 2)
+add('GR', 15, A, 'rack · rodapé recuado', 200, 3, 1)
+fer(A, corr=2)
+chanf(A, 2*0.80)
+curva(A, 2.5)                              # cantos arredondados R20, 2 pontas
+fita(A, 'rack · frentes e bordas', 2*2*(0.80+0.44) + 2*(2.00+0.55) + 2.00)
+fita(A, 'rack · caixas de gaveta', 2*2*(0.80+0.50), cor=False)
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CÁLCULO — rateio POR CUSTO, item a item (regra da casa, 29/08)
+# ═══════════════════════════════════════════════════════════════════════════
+N_CARRETO, R_CARRETO = 2, 600.0     # 3 ambientes num apartamento só
+N_VISITA,  R_VISITA  = 2, 250.0
+LOG = N_CARRETO*R_CARRETO + N_VISITA*R_VISITA
+
+def brl(v, n=2):
+    return f'{v:,.{n}f}'.replace(',', '§').replace('.', ',').replace('§', '.')
+
+por, area_ch, area_it, area_amb = (defaultdict(list), defaultdict(float),
+                                   defaultdict(float), defaultdict(float))
+for m, e, a, it, d, c, l, q in P:
+    for _ in range(q): por[(m, e)].append((c, l))
+    ar = c*l*q/10000
+    area_ch[(m, e)] += ar; area_it[(a, it)] += ar; area_amb[a] += ar
+CH = {k: nest(v) for k, v in por.items()}
+custo_chapa = sum(n*prc(k[0], k[1]) for k, n in CH.items())
+area_tot, tot_ch = sum(area_ch.values()), sum(CH.values())
+
+# ── FITA: explícita por item, com o piso de 2,6 m/m² como guarda ──────────
+m_fita_cor = sum(m for _, _, m, cor in FITA if cor)
+m_fita_bra = sum(m for _, _, m, cor in FITA if not cor)
+m_fita_expl = m_fita_cor + m_fita_bra
+m_fita_piso = area_tot*2.6
+USOU_PISO = m_fita_piso > m_fita_expl
+if USOU_PISO:                       # rateia o acréscimo na proporção declarada
+    _f = m_fita_piso/m_fita_expl
+    m_fita_cor *= _f; m_fita_bra *= _f
+m_fita = m_fita_cor + m_fita_bra
+custo_fita  = (m_fita_cor*FITA_COR + m_fita_bra*FITA_BRA)*DESPERD
+custo_filet = m_fita*FILET_M
+
+m_chanf = sum(m for _, m in CHANF); custo_chanf = m_chanf*CHANF_M
+m_esq   = sum(m for _, m in ESQ);   custo_esq   = m_esq*ESQ_M
+m_cur   = sum(m for _, m in CURVA); custo_curva = m_cur*CURVA_M
+m_led   = sum(m for _, _, m in LED); custo_led  = m_led*LED_M
+custo_terc = sum(v for _, _, v, _ in TERC)
+consum = (custo_chapa + custo_fita)*0.06        # parafuso, cavilha, cola, fita
+# [Jonathan 12/09] EMBALAGEM = 2% do custo direto, SOMA ao consumível.
+# Caixa e plástico para transportar; o consumível é o que vai NO móvel.
+
+def custo_ferr(cen):
+    f = CENARIOS[cen][3]
+    return sum(v[0]*f['dobr'] + v[1]*f['corr'] + v[2]*f['pist']
+               for v in FER.values())
+def _cd_sem_emb(cen):
+    return (custo_chapa + custo_fita + custo_filet + custo_chanf + custo_esq
+            + custo_curva + custo_led + custo_terc + consum + custo_ferr(cen)
+            + LOG)
+def CD(cen):
+    return M.com_embalagem(_cd_sem_emb(cen))
+def embalagem(cen):
+    return _cd_sem_emb(cen)*M.EMBALAGEM
+
+def cd_por_item(cen):
+    cdi = defaultdict(float)
+    _ar = defaultdict(float)
+    for m, e, a, it, d, c, l, q in P: _ar[(m, e, a, it)] += c*l*q/10000
+    for (m, e, a, it), ar in _ar.items():
+        cdi[(a, it)] += CH[(m, e)]*prc(m, e) * ar/area_ch[(m, e)]
+    _fc = (custo_fita + custo_filet)/m_fita
+    _mult = m_fita/m_fita_expl
+    for k, _, mm, _c in FITA: cdi[k] += mm*_mult*_fc
+    for k, mm in CHANF: cdi[k] += mm*CHANF_M
+    for k, mm in ESQ:   cdi[k] += mm*ESQ_M
+    for k, mm in CURVA: cdi[k] += mm*CURVA_M
+    for k, _, mm in LED: cdi[k] += mm*LED_M
+    for k, _, v, _e in TERC: cdi[k] += v
+    # ⛔ [Jonathan 09/09] CONSUMÍVEL E LOGÍSTICA SE RATEIAM ANTES DA FERRAGEM.
+    #    Eu rateava os dois sobre o custo bruto JÁ COM a ferragem dentro. O
+    #    efeito: quando a ferragem encarece, os itens que TÊM ferragem puxam
+    #    uma fatia maior do bolo, e os que NÃO TÊM — cabeceira, divisórias de
+    #    acrílico, painel de TV — ficavam mais BARATOS de uma versão para a
+    #    outra. Não faz sentido: nada neles muda. E consumível é 6% de chapa
+    #    + fita, não tem relação nenhuma com ferragem.
+    #    A base do rateio agora é a parte do custo que NÃO depende do cenário.
+    base_fixa = sum(cdi.values())
+    for k in list(cdi): cdi[k] += (consum + LOG)*cdi[k]/base_fixa
+    f = CENARIOS[cen][3]
+    for k, v in FER.items():
+        cdi[k] += v[0]*f['dobr'] + v[1]*f['corr'] + v[2]*f['pist']
+    # EMBALAGEM: 2% do custo DO PRÓPRIO ITEM, aplicada por último. Assim item
+    # sem ferragem segue idêntico entre cenários (regra do Jonathan de 09/09).
+    for k in list(cdi): cdi[k] *= 1 + M.EMBALAGEM
+    assert abs(sum(cdi.values()) - CD(cen)) < 0.05, (sum(cdi.values()), CD(cen))
+    return dict(cdi)
+
+ORD_AMB = list(dict.fromkeys(a for a, _ in ORD_IT))
+
+_fora = [(m, e, a, d, c, l) for m, e, a, it, d, c, l, q in P
+         if max(c, l) > CH_C or min(c, l) > CH_L]
+if _fora:
+    print('\n' + '!'*W + '\nPEÇAS QUE NÃO CABEM NA CHAPA')
+    for m, e, a, d, c, l in _fora:
+        print(f'  {NOME_MAT[m]} {e} · {a} · {d}: {c:.0f} × {l:.0f}')
+    print('!'*W + '\n')
+
+print('═'*W)
+print('LUIZA E RAPHAEL — QUARTO CASAL · ESPAÇO GOURMET · SALA DA COBERTURA')
+print('═'*W)
+print('Caderno de marcenaria 1/25 da decoradora Jéssica Sollero · 31/08/2026 ·')
+print('14 folhas com planta, elevações, cortes e memorial de acabamento.')
+
+print('\nESCOPO')
+for a in ORD_AMB:
+    print(f'  {a}')
+    for k in [k for k in ORD_IT if k[0] == a]:
+        d, c, p_ = FER[k]
+        ex = ' · '.join(x for x in (f'{d} dobr.' if d else '',
+                                    f'{c} corr.' if c else '',
+                                    f'{p_} pistões' if p_ else '') if x)
+        print(f'     {k[1]:<48}{area_it[k]:>6.2f} m²   {ex}')
+    print(f'     {"— subtotal do ambiente":<48}{area_amb[a]:>6.2f} m²')
+print(f'  {"TOTAL":<53}{area_tot:>6.2f} m²')
+
+print('\n' + '─'*W)
+print('PLANO DE CORTE — quatro cores diferentes, quatro nestings separados')
+print('─'*W)
+for k, n in sorted(CH.items(), key=lambda x: (-x[1], x[0])):
+    print(f'  {NOME_MAT[k[0]]+" "+str(k[1])+" mm":<32}{area_ch[k]:>7.2f} m²  →  '
+          f'{n:>2} ch. × R$ {prc(*k):>6.2f} = R$ {brl(n*prc(*k)):>9}   aprov. '
+          f'{area_ch[k]/(n*CH_AREA)*100:>3.0f}%')
+print(f'  {"TOTAL":<32}{area_tot:>7.2f} m²  →  {tot_ch:>2} chapas'
+      f'{"":>13}R$ {brl(custo_chapa):>9}   médio '
+      f'{area_tot/(tot_ch*CH_AREA)*100:.0f}%')
+
+print('\n' + '─'*W)
+print('INSUMOS, USINAGEM E ILUMINAÇÃO')
+print('─'*W)
+print(f'  Fita de borda COR 22 mm       {m_fita_cor:>7.1f} m × R$ {brl(FITA_COR)} '
+      f'× 1,10 desperdício')
+print(f'  Fita de borda BRANCA 22 mm    {m_fita_bra:>7.1f} m × R$ {brl(FITA_BRA)} '
+      f'× 1,10 desperdício')
+print(f'  {"— fita, total":<30}{m_fita:>7.1f} m{"":>21}R$ {brl(custo_fita):>9}')
+print(f'  Filetagem (coladeira)         {m_fita:>7.1f} m × R$ {brl(FILET_M)}'
+      f'{"":>13}R$ {brl(custo_filet):>9}')
+print(f'  ★ Puxador chanfrado           {m_chanf:>7.1f} m × R$ {brl(CHANF_M)}'
+      f'{"":>13}R$ {brl(custo_chanf):>9}')
+print(f'  Meia esquadria                {m_esq:>7.1f} m × R$ {brl(ESQ_M)}'
+      f'{"":>13}R$ {brl(custo_esq):>9}')
+print(f'  ★ Canto curvo (R20/R40)       {m_cur:>7.1f} m × R$ {brl(CURVA_M)}'
+      f'{"":>13}R$ {brl(custo_curva):>9}')
+print(f'  Iluminação em LED             {m_led:>7.1f} m × R$ {brl(LED_M)}'
+      f'{"":>13}R$ {brl(custo_led):>9}')
+print(f'  Consumíveis (6% de chapa+fita){"":>26}R$ {brl(consum):>9}')
+print(f'  Logística ({N_CARRETO} carretos + {N_VISITA} visitas){"":>20}'
+      f'R$ {brl(LOG):>9}')
+_conf = 'declarada peça a peça' if not USOU_PISO else \
+        f'PISO de 2,6 m/m² aplicado (declarei {m_fita_expl:.1f} m)'
+print(f'  ↳ metragem de fita: {_conf}')
+
+print('\n' + '─'*W)
+print('TERCEIRIZADOS E ACESSÓRIOS   (★ = sem preço fechado na base)')
+print('─'*W)
+for (a, it), d, v, est in TERC:
+    print(f'  {"★" if est else " "} {a[:14]:<15}{d[:56]:<57}R$ {brl(v):>9}')
+print(f'  {"":<17}{"TOTAL":<57}R$ {brl(custo_terc):>9}')
+
+print('\n' + '═'*W)
+print('FERRAGENS — as duas versões')
+print('═'*W)
+TD = sum(v[0] for v in FER.values())
+TC = sum(v[1] for v in FER.values())
+TP = sum(v[2] for v in FER.values())
+print(f'  {TD} dobradiças · {TC} pares de corrediça · {TP} pistões a gás')
+for i, (nome, ferr, mc, f, gar) in enumerate(CENARIOS):
+    print(f'  {nome:<18}dobr. R$ {f["dobr"]:>3.0f} · corr. R$ {f["corr"]:>3.0f} · '
+          f'pist. R$ {f["pist"]:>3.0f}  →  R$ {brl(custo_ferr(i)):>9}   {ferr}')
+
+print('\n' + '═'*W)
+print('ENCARGOS — modelo-de-custo.md · cascata em três degraus')
+print('═'*W)
+for n, v in M.encargos(parcelas=0, rt=RT_ON, vendedor=VEND_ON).items():
+    if v: print(f'  {n:<30}{v*100:>7.2f}% do preço')
+print(f'  {"— TOTAL DE ENCARGOS":<30}'
+      f'{(1-BASE)*100:>7.2f}%     (à vista · com RT e vendedor)')
+print(f'  {"BASE (custo direto + MC)":<30}{BASE*100:>7.2f}%')
+
+print('\n' + '═'*W)
+print('PREÇO — duas versões, o mesmo desenho · COM RT · pagamento à vista')
+print('═'*W)
+print(f'  {"Versão":<18}{"Custo direto":>14}{"MC alvo":>9}{"Investimento":>15}'
+      f'{"MC conferida":>14}   Garantia')
+
+MC_BASE = CENARIOS[0][2]
+CDI = [cd_por_item(i) for i in range(len(CENARIOS))]
+SEM_FER = [k for k in ORD_IT if FER.get(k, [0, 0, 0]) == [0, 0, 0]]
+
+# ═══ PREÇOS CRAVADOS PELO JONATHAN ═══════════════════════════════════════
+# [12/09] "a área gourmet está muito superfaturada, ela não passa de 30 mil o
+#   preço de venda em ferragens Hettich. Precifique ela como um único item."
+# [12/09] "pode considerar a penteadeira toda, tirando apenas os acrílicos, com
+#   um custo de venda final de 8.500 com o gaveteiro, bancada e espelho
+#   iluminado."
+# [09/09] os divisores de acrílico: R$ 1.200 de venda.
+# (None = calcular pela MC do cenário)
+PENT_K  = ('Quarto casal', 'Penteadeira completa · bancada, gaveteiro e espelho iluminado')
+ACRIL_K = ('Quarto casal', 'Divisórias internas em acrílico da penteadeira')
+GOUR_K  = ('Espaço gourmet', 'Conjunto do espaço gourmet')
+PRECO_FIXO = {PENT_K:  (8500, 8500),
+              ACRIL_K: (int(ACRILICO_PV), int(ACRILICO_PV)),
+              GOUR_K:  (None, 30000)}
+for k in PRECO_FIXO: assert k in ORD_IT, k
+
+LIVRES = [k for k in ORD_IT if k not in PRECO_FIXO]
+# dos livres, os que não mudam entre versões têm preço único (regra de 09/09)
+LIVRE_FIXO = {k: round(CDI[0][k]/div(MC_BASE)/100)*100
+              for k in LIVRES if k in SEM_FER}
+LIVRE_VAR  = [k for k in LIVRES if k not in SEM_FER]
+
+PRECOS, PV = [], {}
+for i, (nome, ferr, mc, f, gar) in enumerate(CENARIOS):
+    v = dict(LIVRE_FIXO)
+    for k, pr in PRECO_FIXO.items():
+        if pr[i] is not None: v[k] = pr[i]
+    pend = [k for k in ORD_IT if k not in v]          # calcular pela MC alvo
+    if pend:
+        cd_p = sum(CDI[i][k] for k in pend)
+        pv_p = round(cd_p/div(mc)/100)*100
+        for k in pend: v[k] = round(pv_p*CDI[i][k]/cd_p/100)*100
+        v[max(pend, key=lambda k: CDI[i][k])] += pv_p - sum(v[k] for k in pend)
+    PV[i] = (CDI[i], v)
+    pv = sum(v.values())
+    PRECOS.append(pv)
+    print(f'  {nome:<18}{"R$ "+brl(CD(i),0):>14}{mc*100:>8.0f}%'
+          f'{"R$ "+brl(pv,0):>15}{mc_conferida(pv, CD(i))*100:>13.1f}%   {gar}')
+for k in SEM_FER:
+    assert PV[0][1][k] == PV[1][1][k], (k, PV[0][1][k], PV[1][1][k])
+print('\n  PREÇOS CRAVADOS por você (iguais nas duas versões salvo indicado):')
+for k, pr in PRECO_FIXO.items():
+    q = f'R$ {brl(pr[1],0)} só na Hettich · calculado na Telescópica' \
+        if pr[0] is None else f'R$ {brl(pr[0],0)} nas duas'
+    print(f'     {(k[0]+" · "+k[1])[:56]:<58}{q}')
+PV_SF = sum(PV[0][1][k] for k in SEM_FER)
+print(f'  Itens que NÃO mudam entre as versões: R$ {brl(PV_SF,0)}')
+print(f'  Diferença entre as versões: R$ {brl(PRECOS[1]-PRECOS[0],0)} '
+      f'— ferragem R$ {brl(custo_ferr(1)-custo_ferr(0),0)} de custo, o resto é margem')
+print(f'  Embalagem (2% do custo direto): R$ {brl(embalagem(0),0)} · '
+      f'R$ {brl(embalagem(1),0)}')
+print(f'  R$/m² de chapa: {PRECOS[0]/area_tot:.0f} · {PRECOS[1]/area_tot:.0f}'
+      f'   (faixa da casa 626–834)')
+
+print('\n' + '─'*W)
+print('⚠ A ESCADA DE PAGAMENTO — cada degrau tem a SUA base e a SUA MC')
+print('─'*W)
+ESCADA = [('Entrada 70% + saldo via transferência', 0, 0.00),
+          ('Entrada 70% + saldo em até 6× no cartão', 6, 0.00),
+          ('Entrada 50% + saldo em até 8× no cartão', 8, 0.00),
+          ('Entrada 30% + saldo em até 10× no cartão', 10, 0.00)]
+print(f'  {"condição":<42}{"base":>8}' +
+      ''.join(f'{"MC "+c[0][:3]:>12}' for c in CENARIOS))
+for rot, parc, _d in ESCADA:
+    b = M.base(parcelas=parc, rt=RT_ON, vendedor=VEND_ON)
+    mcs = ''.join(f'{(b - CD(i)/PRECOS[i])*100:>11.1f}%' for i in range(len(CENARIOS)))
+    print(f'  {rot:<42}{b*100:>7.2f}%{mcs}')
+print('\n  ⛔ Com o MESMO preço, o cartão em 10× come '
+      f'{(BASE-M.base(parcelas=10, rt=RT_ON, vendedor=VEND_ON))*100:.1f} pontos de MC.')
+print('     Se o cartão for oferecido SEM acréscimo, o preço tem de nascer na')
+print('     base dele — ou o acréscimo vai para o cliente, como na Lídia (+10%).')
+print(f'\n  Preço que entrega a MC alvo JÁ NA BASE DO CARTÃO 10×:')
+for i, (nome, _f, mc, _g, _x) in enumerate(CENARIOS):
+    try:
+        p10 = M.preco(CD(i), mc, parcelas=10, rt=RT_ON, vendedor=VEND_ON)
+        print(f'     {nome:<18}R$ {brl(p10,0):>9}   '
+              f'(+{(p10/PRECOS[i]-1)*100:.0f}% sobre o preço à vista)')
+    except ValueError as e:
+        print(f'     {nome:<18}IMPOSSÍVEL — {e}')
+print(f'\n  Acréscimo necessário no preço à vista para bancar o cartão:')
+for parc in (6, 8, 10):
+    b = M.base(parcelas=parc, rt=RT_ON, vendedor=VEND_ON)
+    acr = (BASE - CENARIOS[0][2])/(b - CENARIOS[0][2]) - 1
+    print(f'     até {parc:>2}× .......... +{acr*100:.1f}%')
+
+print('\n' + '─'*W)
+print('CUSTO E VENDA, ITEM A ITEM')
+print('─'*W)
+for k in SEM_FER:
+    assert abs(CDI[0][k] - CDI[1][k]) < 0.01, (k, CDI[0][k], CDI[1][k])
+def _lin(rot, c0, v0, c1, v1, pt=''):
+    m0 = mc_conferida(v0, c0)*100 if v0 else 0
+    m1 = mc_conferida(v1, c1)*100 if v1 else 0
+    print(f'  {pt}{rot[:46]:<47}{"R$ "+brl(c0,0):>9}{"R$ "+brl(v0,0):>10}'
+          f'{m0:>7.1f}%{"R$ "+brl(c1,0):>10}{"R$ "+brl(v1,0):>10}{m1:>7.1f}%')
+print(f'  {"":47}{"── TELESCÓPICA · MC 32% ──":>26}{"── HETTICH · MC 40% ──":>27}')
+print(f'  {"item":<47}{"custo":>9}{"venda":>10}{"MC":>8}{"custo":>10}{"venda":>10}{"MC":>8}')
+print('  ' + '-'*(47+9+10+8+10+10+8))
+for a in ORD_AMB:
+    ks = [k for k in ORD_IT if k[0] == a]
+    print(f'  {a}')
+    for k in ks:
+        _lin(k[1], PV[0][0][k], PV[0][1][k], PV[1][0][k], PV[1][1][k], pt='  ')
+    if len(ks) > 1:
+        _lin('— subtotal do ambiente',
+             sum(PV[0][0][k] for k in ks), sum(PV[0][1][k] for k in ks),
+             sum(PV[1][0][k] for k in ks), sum(PV[1][1][k] for k in ks), pt='  ')
+print('  ' + '-'*(47+9+10+8+10+10+8))
+_lin('TOTAL DO PROJETO', CD(0), PRECOS[0], CD(1), PRECOS[1])
+# ── alertas de margem ────────────────────────────────────────────────────
+print(f'\n  ⚠ LEITURA DE MARGEM')
+_ab = [k for k in ORD_IT if min(mc_conferida(PV[i][1][k], PV[i][0][k])
+                                for i in range(len(CENARIOS))) < M.MC_PISO]
+if _ab:
+    print(f'     Abaixo do piso de {M.MC_PISO:.0%} da casa em alguma versão:')
+    for k in _ab:
+        print(f'       {(k[0]+" · "+k[1])[:52]:<54}'
+              f'T {mc_conferida(PV[0][1][k], PV[0][0][k])*100:>5.1f}%   '
+              f'H {mc_conferida(PV[1][1][k], PV[1][0][k])*100:>5.1f}%')
+_mc0 = mc_conferida(PRECOS[0], CD(0))
+_mc1 = mc_conferida(PRECOS[1], CD(1))
+if _mc1 < _mc0:
+    print(f'\n  ⛔⛔ A VERSÃO HETTICH FICOU MENOS RENTÁVEL QUE A TELESCÓPICA:')
+    print(f'       Telescópica {_mc0*100:.1f}%  ·  Hettich {_mc1*100:.1f}%  '
+          f'— {(_mc0-_mc1)*100:.1f} pontos A MENOS na versão premium.')
+    print(f'       Causa: o teto de R$ {brl(PRECO_FIXO[GOUR_K][1],0)} no gourmet '
+          f'entrega {mc_conferida(PRECO_FIXO[GOUR_K][1], CDI[1][GOUR_K])*100:.1f}% '
+          f'na Hettich,')
+    print(f'       contra os {CENARIOS[1][2]*100:.0f}% de alvo. O gourmet é '
+          f'{CDI[1][GOUR_K]/CD(1)*100:.0f}% do custo do job — quando ele cede,')
+    print(f'       a versão inteira cede com ele.')
+    _g40 = M.preco(CDI[1][GOUR_K], CENARIOS[1][2], rt=RT_ON, vendedor=VEND_ON)
+    print(f'       Para o gourmet Hettich chegar aos 40%: R$ {brl(_g40,0)}.')
+    print(f'       Para a Hettich empatar a MC da Telescópica: gourmet a R$ '
+          f'{brl(M.preco(CDI[1][GOUR_K], _mc0, rt=RT_ON, vendedor=VEND_ON),0)}.')
+print(f'\n     A Telescópica tem ALVO de 32%, abaixo do piso de {M.MC_PISO:.0%} '
+      f'— decisão sua de 09/09.')
+
+print('\n' + '─'*W)
+print('OS ITENS QUE NÃO MUDAM ENTRE AS VERSÕES')
+print('─'*W)
+print('  Não levam uma dobradiça, corrediça ou pistão sequer — são o MESMO')
+print('  móvel nas duas propostas, com o mesmo custo e o MESMO PREÇO:')
+print(f'     {"":<58}{"custo":>10}{"venda":>11}')
+for k in SEM_FER:
+    print(f'     {(k[0]+" · "+k[1])[:56]:<58}{"R$ "+brl(CDI[0][k],0):>10}'
+          f'{"R$ "+brl(PV[0][1][k],0):>11}')
+print(f'     {"— somados":.<58}{"R$ "+brl(sum(CDI[0][k] for k in SEM_FER),0):>10}'
+      f'{"R$ "+brl(PV_SF,0):>11}')
+print(f'  {PV_SF/PRECOS[0]*100:.0f}% da proposta telescópica e '
+      f'{PV_SF/PRECOS[1]*100:.0f}% da Hettich saem por este preço fixo.')
+
+print('\n' + '─'*W)
+print('⚠ O QUE AS QUATRO CORES CUSTAM')
+print('─'*W)
+_peq = {('CV', 18), ('JQ', 18), ('GR', 18)}
+_gasto = sum(CH[k]*prc(*k) for k in _peq if k in CH)
+_area  = sum(area_ch[k] for k in _peq if k in CH)
+print(f'  Três lotes de FRENTE PEQUENA em 18 mm puxam chapa inteira só para si:')
+for k in sorted(_peq):
+    if k in CH:
+        print(f'     {NOME_MAT[k[0]]+" 18 mm":<34}{area_ch[k]:>5.2f} m² em '
+              f'{CH[k]} chapa  →  R$ {brl(CH[k]*prc(*k),0):>5}   '
+              f'aprov. {area_ch[k]/(CH[k]*CH_AREA)*100:.0f}%')
+print(f'     {"— total":<34}{_area:>5.2f} m²{"":>10}R$ {brl(_gasto,0):>5}')
+print(f'  Passar essas frentes para 15 mm — a mesma chapa da cor que JÁ está')
+print(f'  sendo comprada — economiza até R$ {brl(_gasto,0)} de chapa. São frentes')
+print(f'  pequenas (gaveta de 10, báscula de 35, gavetão de 44): 15 mm não')
+print(f'  empena. ⚠ DECISÃO DE ESPECIFICAÇÃO, não minha — orcei em 18 mm, que')
+print(f'  é o padrão da casa para frente.')
+
+print('\n' + '─'*W)
+print(f'DÚVIDAS E CONFERÊNCIAS — {len(DUV)} itens')
+print('─'*W)
+for i, (a, t) in enumerate(DUV, 1):
+    print(f'  {i:>2}. [{a}]\n      {t}')
+print('\n  ★ Preços adotados, SEM linha fechada na base:')
+for n, v in (('puxador chanfrado (chanfro 45° na CNC)', f'R$ {brl(CHANF_M,0)}/m'),
+             ('canto curvo R20/R40', f'R$ {brl(CURVA_M,0)}/m'),
+             ('estofamento em Bouclé (proxy da laca)', f'R$ {brl(ESTOFADO_M2,0)}/m²'),
+             ('conjunto de dobradiça camarão', f'R$ {brl(DOBR_CAMARAO,0)}'),
+             ('vassoureiro deslizante', f'R$ {brl(VASSOUREIRO,0)}'),
+             ('escorredor metálico de báscula', f'R$ {brl(ESCORREDOR,0)}'),
+             ('ganchos de vassoura e rodo', f'R$ {brl(GANCHOS,0)}'),
+             ('dobradiça/suporte de 90° da TV', f'R$ {brl(GIRO_TV,0)}'),
+             ('divisores de acrílico', f'R$ {brl(ACRILICO,0)} — CRAVADO pelo Jonathan')):
+    print(f'     · {n:<48}{v}')
+print('\n⛔ FORA DO ESCOPO: bancada e rodabanca em pedra do gourmet (marmoraria),')
+print('   revestimento de madeira da parede da sala (não descrito no caderno),')
+print('   eletrodomésticos, cuba, torneira, TV, gesso, elétrica e pintura.')
+print('═'*W)

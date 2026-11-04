@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+@page{ size:A4; margin:0; }
+*{ box-sizing:border-box; margin:0; padding:0; }
+body{ font-family:'Liberation Sans',Helvetica,Arial,sans-serif; color:#2A211A; }
+.serif{ font-family:'Liberation Serif',Georgia,'Times New Roman',serif; }
+.page{ width:210mm; height:297mm; position:relative; overflow:hidden; page-break-after:always; }
+.page:last-child{ page-break-after:auto; }
+.eyebrow{ letter-spacing:.34em; text-transform:uppercase; font-size:8.5pt; color:#A6843E; font-weight:bold; }
+.gold{ color:#A6843E; } .cream{ color:#F3ECDE; }
+.pfoot{ position:absolute; bottom:9mm; left:20mm; right:20mm; display:flex; justify-content:space-between;
+        font-size:8pt; color:#9A8E7C; border-top:1px solid #E0D5C0; padding-top:3mm; }
+.pfoot .bl{ font-weight:bold; color:#6E655A; } .pfoot .bl .d{ color:#C2A052; }
+
+/* CAPA */
+.cover{ background:#F3ECDE; padding:26mm 22mm 0; }
+.wordmark{ font-weight:bold; font-size:30pt; letter-spacing:.01em; color:#241D16; }
+.cov-hl{ font-size:44pt; line-height:1.05; color:#2A211A; margin-top:16mm; }
+.cov-sub{ font-style:italic; font-size:15pt; color:#6E655A; margin-top:6mm; }
+.meta{ display:flex; gap:11mm; border-top:1px solid #D9CDB6; margin-top:20mm; padding-top:5mm; }
+.meta .lbl{ letter-spacing:.26em; font-size:7pt; color:#9A8E7C; text-transform:uppercase; }
+.meta .val{ font-size:12pt; color:#2A211A; margin-top:2mm; }
+.cband{ position:absolute; left:0; right:0; bottom:0; height:46mm; background:#1C1813; color:#F3ECDE;
+        display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.cband .gl{ width:30px; height:2px; background:#C2A052; margin-bottom:6mm; }
+.cband .bl{ font-weight:bold; letter-spacing:.04em; font-size:12.5pt; } .cband .bl .d{ color:#C2A052; }
+.cband .loc{ letter-spacing:.26em; text-transform:uppercase; font-size:7pt; color:#9A8E7C; margin-top:3mm; }
+
+/* PÁGINAS CLARAS */
+.sheet{ background:#fff; padding:17mm 20mm 0; height:297mm; }
+.h1{ font-size:26pt; line-height:1.05; color:#1C1813; margin-top:3mm; }
+.rule{ height:2px; width:46px; background:#C8901E; border:0; margin:8mm 0 7mm; }
+.lead{ font-size:11.5pt; line-height:1.6; color:#2A211A; }
+.p{ font-size:10.5pt; line-height:1.65; color:#4a463f; margin-top:4mm; }
+.p b{ color:#1C1813; }
+.band{ background:#1C1813; color:#F3ECDE; border-radius:5px; padding:8mm 9mm; margin-top:7mm; }
+.band .p{ color:#e9e1cd; }
+.amb{ display:flex; flex-wrap:wrap; gap:3mm; margin-top:6mm; }
+.amb span{ font-size:9pt; border:1px solid #D9CDB6; border-radius:20px; padding:2mm 4mm; color:#6E655A; }
+
+/* TIMELINE processo */
+.step{ display:flex; gap:6mm; margin-top:6mm; }
+.step .n{ flex:0 0 12mm; height:12mm; border-radius:50%; background:#1C1813; color:#C2A052;
+          font-family:'Liberation Serif',serif; font-size:15pt; display:flex; align-items:center; justify-content:center; }
+.step .tx .t{ font-size:12.5pt; color:#1C1813; font-weight:bold; }
+.step .tx .d{ font-size:10pt; color:#4a463f; margin-top:1mm; line-height:1.5; }
+.hl-num{ font-family:'Liberation Serif',serif; font-size:34pt; color:#A6843E; }
+
+/* colunas processo execução/logística */
+.cols{ display:flex; gap:8mm; margin-top:6mm; }
+.col{ flex:1; } .col .k{ font-size:12pt; color:#1C1813; font-weight:bold; }
+.col .v{ font-size:9.5pt; color:#4a463f; margin-top:2mm; line-height:1.55; }
+.col .ic{ font-size:16pt; color:#A6843E; }
+
+/* INVESTIMENTO */
+.ver{ border:1px solid #E0D5C0; border-radius:6px; padding:6mm 7mm; margin-top:5mm; display:flex; justify-content:space-between; align-items:flex-start; }
+.ver.top{ background:#1C1813; border:0; color:#F3ECDE; }
+.ver .nm{ font-size:16pt; } .ver.top .nm{ color:#F3ECDE; }
+.ver .tag{ font-size:9pt; color:#8a8074; margin-top:1.5mm; } .ver.top .tag{ color:#C2A052; }
+.ver .war{ font-size:8.5pt; color:#9A7B36; margin-top:2mm; }
+.ver .pr{ font-size:20pt; white-space:nowrap; } .ver.top .pr{ color:#F3ECDE; }
+.incl{ background:#F6ECD3; border:1px solid #D9B25A; border-radius:4px; padding:5mm 6mm; font-size:9.5pt; color:#4a463f; margin-top:6mm; }
+.terms{ display:flex; gap:6mm; margin-top:6mm; }
+.term{ flex:1; border-left:2px solid #E0CB95; padding-left:4mm; }
+.term .t{ letter-spacing:.2em; text-transform:uppercase; font-size:7pt; color:#9A8E7C; }
+.term .b{ font-size:12.5pt; color:#2A211A; margin-top:1.5mm; }
+.cond{ width:100%; border-collapse:collapse; margin-top:5mm; }
+.cond td{ font-size:10pt; padding:3mm 0; border-bottom:1px solid #EEE6D6; }
+.cond td.r{ text-align:right; color:#9A7B36; }
+
+/* fechamento */
+.close{ background:#1C1813; color:#F3ECDE; border-radius:6px; padding:10mm; margin-top:2mm; }
+.close .serif{ font-size:16pt; line-height:1.4; } .close .p{ color:#cfc6b4; }
+</style></head>
+<body>
+
+<!-- CAPA -->
+<div class="page cover">
+  <div class="wordmark">Valvic</div>
+  <div class="eyebrow" style="margin-top:19mm;">Proposta exclusiva</div>
+  <h1 class="serif cov-hl">Marcenaria<br>sob medida</h1>
+  <div class="serif cov-sub">Apartamento completo · projeto de Jéssica Sollero</div>
+  <div class="meta">
+    <div><div class="lbl">Para</div><div class="serif val">Lilian Lee</div></div>
+    <div><div class="lbl">Projeto</div><div class="serif val">Jéssica Sollero</div></div>
+    <div><div class="lbl">Ano</div><div class="serif val">2026</div></div>
+  </div>
+  <div class="cband">
+    <div class="gl"></div>
+    <div class="bl serif">Valvic<span class="d"> ·</span> marcenaria sob medida</div>
+    <div class="loc">Portas emolduradas · execução de obra fina</div>
+  </div>
+</div>
+
+<!-- PÁGINA 2 — O PROJETO + EXECUÇÃO -->
+<div class="page sheet">
+  <div class="eyebrow">O projeto</div>
+  <h1 class="serif h1">O que a Jéssica desenhou<br>merece uma execução à altura.</h1>
+  <hr class="rule">
+  <p class="lead">O projeto da Jéssica Sollero é um apartamento inteiro sob medida — com um partido marcante de <b>portas emolduradas</b> que atravessa a casa e pede mãos que dominem obra fina.</p>
+  <div class="amb">
+    <span>Cozinha · Frevo Matt</span><span>Sala · painel Louro Frejó + rack</span>
+    <span>Quarto Hóspede · closet Kashmir + cabeceira ripada</span><span>Quarto Suíte · closet + cabeceira ripada</span>
+    <span>Banho Suíte</span><span>Banho Social</span><span>Varanda · moldura + vidro reflecta</span>
+  </div>
+  <p class="p">Acabamentos Arauco em <b>Frevo Matt, Kashmir, Louro Frejó e Frejó Matt</b>, interior em Branco TX, cabeceiras <b>ripadas</b>, iluminação em LED e os puxadores autorais <b>Jador Decore</b> — concha do mar, tartaruga e caranguejo, em latão dourado — que dão a assinatura náutica do projeto.</p>
+  <div class="band">
+    <div class="eyebrow" style="color:#C2A052">O que estamos propondo</div>
+    <div class="serif" style="font-size:18pt;margin-top:3px;">Não vendemos o projeto. Vendemos a execução impecável dele.</div>
+    <p class="p">O projeto é da Jéssica — e é lindo. A pergunta que fica é <b>quem</b> consegue executá-lo com a precisão que ele exige: portas emolduradas que alinham, ferragens que não falham, e a entrega feita, instalada e garantida. A resposta é a Valvic — e as próximas páginas mostram por quê.</p>
+  </div>
+  <div class="pfoot"><span class="bl serif">Valvic<span class="d"> ·</span> marcenaria sob medida</span><span>Lilian Lee · Proposta 2026</span></div>
+</div>
+
+<!-- PÁGINA 3 — PROCESSO DA MOLDURA -->
+<div class="page sheet">
+  <div class="eyebrow">O processo · portas emolduradas</div>
+  <h1 class="serif h1">Uma porta emoldurada<br>não é uma porta. São cinco etapas.</h1>
+  <hr class="rule">
+  <p class="lead">O que dá o ar clássico e sofisticado ao projeto é a <b>moldura sobreposta</b> de cada porta. Ela não vem pronta: é construída, uma a uma, no nosso galpão.</p>
+  <div class="step"><div class="n serif">1</div><div class="tx"><div class="t">Recorte da moldura na CNC</div><div class="d">A moldura é usinada em chapa de 6 mm com precisão de máquina — o desenho exato do projeto, sem variação de uma porta para a outra.</div></div></div>
+  <div class="step"><div class="n serif">2</div><div class="tx"><div class="t">Filetagem manual da borda interna</div><div class="d">A borda interna do vão é filetada e colada <b>à mão</b> — o acabamento que a máquina não alcança nos cantos internos.</div></div></div>
+  <div class="step"><div class="n serif">3</div><div class="tx"><div class="t">Colagem manual da moldura sobre a porta</div><div class="d">A moldura de 6 mm é colada e prensada sobre a porta de 15 mm, com alinhamento conferido peça a peça. É a etapa de <b>mão de mestre</b> — a que define se a leitura fica perfeita.</div></div></div>
+  <div class="step"><div class="n serif">4</div><div class="tx"><div class="t">Laminação externa na coladeira automática</div><div class="d">A borda externa recebe fita na coladeira automática — vedação e durabilidade de padrão industrial.</div></div></div>
+  <div class="step"><div class="n serif">5</div><div class="tx"><div class="t">Acabamento e conferência final</div><div class="d">Limpeza, regulagem e inspeção de cada folha antes de liberar para montagem.</div></div></div>
+  <p class="p" style="margin-top:7mm;"><span class="hl-num">49</span> &nbsp;portas passam por essas mãos, uma a uma. É isso que separa <b>obra fina sob medida</b> de um móvel de catálogo.</p>
+  <div class="pfoot"><span class="bl serif">Valvic<span class="d"> ·</span> marcenaria sob medida</span><span>Lilian Lee · Proposta 2026</span></div>
+</div>
+
+<!-- PÁGINA 4 — EXECUÇÃO + LOGÍSTICA + GARANTIA -->
+<div class="page sheet">
+  <div class="eyebrow">Execução · logística · garantia</div>
+  <h1 class="serif h1">Não paramos na fábrica.</h1>
+  <hr class="rule">
+  <p class="lead">Fabricar é metade. A outra metade é <b>levar, instalar e responder</b> pela obra ao longo dos anos — inclusive atravessando estados.</p>
+  <div class="cols">
+    <div class="col"><div class="ic">✦</div><div class="k">Galpão próprio</div><div class="v">~500 m², centro de CNC, coladeira automática e equipe própria especializada. Tolerâncias mínimas, montagem conferida.</div></div>
+    <div class="col"><div class="ic">✦</div><div class="k">Transporte interestadual</div><div class="v">Os módulos saem <b>montados</b> de Belo Horizonte, embalados e protegidos, e viajam com segurança até <b>Vila Velha/ES</b>. Cuidamos da carga como se fosse a última etapa da fábrica — porque é.</div></div>
+    <div class="col"><div class="ic">✦</div><div class="k">Instalação + garantia</div><div class="v">Instalação por equipe própria no destino e <b>garantia de 2, 5 ou 10 anos</b> conforme a linha de ferragem — a Valvic responde pelo conjunto.</div></div>
+  </div>
+  <div class="band">
+    <div class="eyebrow" style="color:#C2A052">Do desenho à sua casa, com um interlocutor só</div>
+    <p class="p">Fabricação, transporte interestadual, instalação e garantia — <b>tudo pela Valvic</b>. Você não coordena três fornecedores nem torce para a carga chegar inteira: a responsabilidade do começo ao fim é nossa.</p>
+  </div>
+  <div class="pfoot"><span class="bl serif">Valvic<span class="d"> ·</span> marcenaria sob medida</span><span>Lilian Lee · Proposta 2026</span></div>
+</div>
+
+<!-- PÁGINA 5 — INVESTIMENTO -->
+<div class="page sheet">
+  <div class="eyebrow">Investimento</div>
+  <h1 class="serif h1">Três linhas — a mesma<br>marcenaria, a ferragem que muda.</h1>
+  <hr class="rule">
+  <p class="p">O projeto, os acabamentos, as portas emolduradas e a logística são os mesmos nas três. O que muda é a <b>linha de ferragem</b> — e, com ela, o conforto de abertura e a <b>garantia</b>.</p>
+
+  <div class="ver top">
+    <div><div class="serif nm">Premium</div><div class="tag">Hettich Sensys (oculta + dobradiça) · soft-close</div><div class="war" style="color:#C2A052">Garantia 10 anos</div></div>
+    <div class="serif pr">R$ 180.500</div>
+  </div>
+  <div class="ver">
+    <div><div class="serif nm">Conforto</div><div class="tag">Hardt (oculta + dobradiça) · soft-close</div><div class="war">Garantia 5 anos</div></div>
+    <div class="serif pr">R$ 137.000</div>
+  </div>
+  <div class="ver">
+    <div><div class="serif nm">Essencial</div><div class="tag">Corrediça telescópica + dobradiça padrão · soft-close</div><div class="war">Garantia 2 anos</div></div>
+    <div class="serif pr">R$ 127.000</div>
+  </div>
+
+  <div class="incl"><b>Incluído em todas as linhas:</b> todo o projeto da Jéssica executado (cozinha, sala, 2 quartos com closet e cabeceiras ripadas, 2 banhos e varanda), <b>portas emolduradas</b>, puxadores Jador Decore, iluminação LED, <b>transporte interestadual BH → Vila Velha</b>, <b>instalação</b> por equipe própria e <b>garantia</b> conforme a linha.</div>
+
+  <div class="terms">
+    <div class="term"><div class="t">Prazo de entrega</div><div class="serif b">100 a 120<br><span style="font-size:9pt">dias úteis</span></div></div>
+    <div class="term"><div class="t">Validade</div><div class="serif b">7 dias</div></div>
+    <div class="term"><div class="t">Garantia</div><div class="serif b">2 · 5 · 10 anos</div></div>
+  </div>
+  <div class="pfoot"><span class="bl serif">Valvic<span class="d"> ·</span> marcenaria sob medida</span><span>Lilian Lee · Proposta 2026</span></div>
+</div>
+
+<!-- PÁGINA 6 — CONDIÇÕES + FECHAMENTO -->
+<div class="page sheet">
+  <div class="eyebrow">Condições</div>
+  <h1 class="serif h1">Como seguimos.</h1>
+  <hr class="rule">
+  <table class="cond">
+    <tbody>
+      <tr><td>40% de entrada (reserva a produção) + saldo na entrega</td><td class="r">—</td></tr>
+      <tr><td>50% de entrada + saldo na entrega</td><td class="r">3% de desconto</td></tr>
+      <tr><td>100% à vista (transferência)</td><td class="r">6% de desconto</td></tr>
+    </tbody>
+  </table>
+  <p class="p">A entrada de 40% <b>reserva sua vaga na agenda de produção</b> e libera a medição final no local. Parcelamento do saldo no cartão sob consulta.</p>
+
+  <div class="close">
+    <div class="eyebrow" style="color:#C2A052">Por que a Valvic</div>
+    <p class="serif" style="margin-top:3mm;">Galpão próprio, CNC, coladeira automática e equipe especializada — a estrutura para executar as portas emolduradas com perfeição, atravessar o estado com a carga segura, instalar e garantir por anos.</p>
+    <p class="p">Será uma honra executar o projeto da Jéssica para você, Lilian. Ficamos à disposição para apresentar a proposta pessoalmente e detalhar cada etapa.</p>
+    <p style="margin-top:6mm;"><span class="serif" style="color:#fff;font-size:13pt;">Valvic<span style="color:#C2A052"> ·</span> marcenaria sob medida</span></p>
+  </div>
+  <div class="pfoot"><span class="bl serif">Valvic<span class="d"> ·</span> marcenaria sob medida</span><span>Proposta 2026 · validade 7 dias</span></div>
+</div>
+
+</body></html>
