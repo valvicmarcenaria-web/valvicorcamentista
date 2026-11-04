@@ -12,7 +12,8 @@ COR = {18: 700.0, 15: 550.0, 6: 350.0}           # Melamínico Fosco (cor e amad
 BRANCO = {18: 400.0, 15: 350.0, 6: 250.0}         # Branco TX
 FITA = {'cor': (3.00, 2.50), 'branco': (2.00, 2.50),
         'ripa': (3.00, 2.50),                    # ⭐ ripa vai à coladeira [Jonathan 04/11]
-        'cor30': (7.00, 5.00)}
+        'cor30': (7.00, 5.00),
+        'porta60': (8.00, 2.50)}                 # ⭐ fita de 60 da porta, R$ 8 [Jonathan 04/11]
 FITA_PERD = 0.10
 CORTE_CHAPA, CORTE_PECA = 2.00, 2.50
 CONSUM, EMBAL = 0.06, 0.02
@@ -124,11 +125,10 @@ SISTEMA = {'pivo': ('Sistema pivô', 120.0),
 def porta_passagem(movel, L, A, cor_a, cor_b=None, ripada=None, sistema='pivo',
                    cava=True, extra=()):
     cor_b = cor_b or cor_a
-    P(movel, 'Porta · pele 6 mm face A', A, L, 1, f'{cor_a} 6', 2 * (L + A) / 100)
+    P(movel, 'Porta · pele 6 mm face A', A, L, 1, f'{cor_a} 6', 2 * (L + A) / 100, 'porta60')
     P(movel, 'Porta · pele 6 mm face B', A, L, 1, f'{cor_b} 6', 0)
     a_gd = (2 * 15 * A + 2 * 15 * (L - 30)) / 1e4
-    O(movel, 'Miolo G-Door em réguas de 15', a_gd, 'm²', GDOOR_M2,
-      '⚠ fita de 22 numa aresta de 41 mm: fita de 45 sem preço na Base')
+    O(movel, 'Miolo G-Door em réguas de 15', a_gd, 'm²', GDOOR_M2)
     if ripada:
         ripado(movel, L, A, ripada, base=False)
         O(movel, 'Perfil de metalon contra empeno (barra 3 m)',

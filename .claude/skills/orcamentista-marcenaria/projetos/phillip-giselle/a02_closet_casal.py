@@ -46,9 +46,8 @@ O(m, 'Espelho prata colado na porta', (0.66 + 0.70) * 2.68, 'm²', 600)
 # ── Parede A · painel em Areia onde corre a porta do quarto ─────────────
 #   ⭐ a porta é a MESMA do painel ripado do quarto (já contada lá): aqui
 #   entra só o painel do lado do closet e a face Areia da folha.
-m = 'Painel da porta de correr'
-P(m, 'Painel', 270, 135, 1, 'Areia 15', 2.70 * 2)
-P(m, 'Travessa de estrutura', 135, 10, 3, 'Branco TX 15', 0)
+#   ⭐ [Jonathan, 04/11/2026] "faremos ambas as portas": só as folhas; o
+#   painel do lado do closet não entra (a porta já está no Quarto casal).
 
 # ── Fechamento superior em Areia (faixa de 10 no perímetro) ──────────────
 m = 'Fechamento superior'

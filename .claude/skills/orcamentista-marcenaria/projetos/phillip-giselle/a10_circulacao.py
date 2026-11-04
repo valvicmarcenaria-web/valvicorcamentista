@@ -26,9 +26,9 @@ led(m, 4.40, 'tabela: LED em marcenaria 4,40 m')
 #   portas pivotantes mimetizadas" (folha 24, vistas A e B · folha 25, C).
 #   Paredes: B 953 + A 247 + C 142 (fora o bar) = 1342 × 250 de altura,
 #   menos 4 vãos de 80; bandeira de 38 sobre cada porta.
-#   ⚠ cor do painel não especificada: lançado em Branco TX.
+#   ⭐ [Jonathan, 04/11/2026] "considere material de cor".
 m = 'Painel com 4 portas mimetizadas'
-PAN = 'Branco TX'
+PAN = 'Cor'
 L_liq = 1342 - 4 * 80
 n = math.ceil(L_liq / 120)
 P(m, 'Painel de parede', 250, L_liq / n, n, f'{PAN} 18', 2 * 2.50)
