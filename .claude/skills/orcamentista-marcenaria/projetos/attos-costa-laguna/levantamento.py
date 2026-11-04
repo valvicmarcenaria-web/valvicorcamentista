@@ -666,32 +666,42 @@ def _pt(x):
 
 
 def mesa_de_cabeceira(m, largura, gavetas=2):
-    """Caixa de duas gavetas sobre pés metálicos. ⭐ 80 ou 90 × 50 × 55."""
+    """As peças de UMA mesa, lançadas num móvel que já existe.
+
+    ⭐⭐ [Jonathan, 04/11/2026] "as mesas de cabeceira pode ser um item unico
+      no orcamento". Então esta função deixou de CRIAR o móvel e passou a
+      LANÇAR nele: as duas mesas moram no mesmo item, e cada peça diz de
+      qual delas é.
+    ⛔ A FERRAGEM NÃO ENTRA AQUI, e isso é de propósito. Se cada chamada
+      lançasse a sua corrediça, o item ficaria com DUAS linhas chamadas
+      "Corrediça" — duas linhas de mesmo nome dentro do mesmo móvel são a
+      forma mais fácil de alguém somar uma e esquecer a outra. Quem lança a
+      ferragem é o bloco do item, UMA vez, com a quantidade do par.
+    ⭐ Devolve os metros de cava desta mesa, que o bloco soma.
+    """
     e, prof, alt = 1.5, MESA_PROF, MESA_CORPO
-    m.p('tampo', largura, prof, 15, fita_m=(largura + prof) * 2 / 100,
+    q = f' · mesa de {largura:g}'         # ⭐ a peça diz de qual mesa é
+    m.p('tampo' + q, largura, prof, 15, fita_m=(largura + prof) * 2 / 100,
         obs=f'⭐ {largura:g} × {prof:g} medidos na planta · fita nos 4 lados, '
             f'a mesa é solta e se vê por todos os lados')
     a_lat = alt - e                       # o tampo cobre a lateral
-    m.p('lateral', prof, a_lat, 15, qtd=2, fita_m=a_lat / 100)
+    m.p('lateral' + q, prof, a_lat, 15, qtd=2, fita_m=a_lat / 100)
     li = largura - 2 * e                  # vão interno
-    m.p('base', li, prof, 15, fita_m=li / 100)
-    m.p('costas', li, a_lat, 6)
+    m.p('base' + q, li, prof, 15, fita_m=li / 100)
+    m.p('costas' + q, li, a_lat, 6)
     vao = a_lat - e                       # o que sobra entre tampo e base
     hf = round((vao - 0.6) / gavetas, 1)  # 0,6 de folga no conjunto
     lf = round(li - 0.4, 1)
-    m.p('frente de gaveta', lf, hf, 15, qtd=gavetas,
+    m.p('frente de gaveta' + q, lf, hf, 15, qtd=gavetas,
         fita_m=(lf + hf) * 2 / 100,
         obs=f'⭐ {gavetas} gavetas no vão de {_pt(vao)} · frente de '
             f'{_pt(lf)} × {_pt(hf)} · puxador CAVA, como em todo o projeto')
     hc, pc = hf - 4, prof - 5
     lc = li - 2.6                         # folga da corrediça, 13 mm por lado
-    m.p('caixa da gaveta · lateral', pc, hc, 15, qtd=2 * gavetas)
-    m.p('caixa da gaveta · traseira', lc - 3, hc, 15, qtd=gavetas)
-    m.p('caixa da gaveta · fundo', lc - 3, pc, 6, qtd=gavetas)
-    m.f('Corrediça', gavetas, b.CORREDICA_PAR,
-        obs=f'{gavetas} pares · Hettich Quadro V6, a linha-base do projeto')
-    m.t(f'Cava usinada nas {gavetas} frentes', gavetas * lf / 100, b.CAVA_M)
-    m.t('Pé metálico · jogo de 4', 1, b.PE_METALICO_JOGO, obs=PE_OBS)
+    m.p('caixa da gaveta · lateral' + q, pc, hc, 15, qtd=2 * gavetas)
+    m.p('caixa da gaveta · traseira' + q, lc - 3, hc, 15, qtd=gavetas)
+    m.p('caixa da gaveta · fundo' + q, lc - 3, pc, 6, qtd=gavetas)
+    return gavetas * lf / 100             # metros de cava desta mesa
 
 
 m = mv('Suíte', 'Cabeceira estofada',
@@ -714,13 +724,31 @@ m.t('Estofamento da cabeceira', round(240 * CAB_ALT / 10000, 4),
 #     (estrutura-orcamento.md). Item sem ferragem tem de ter CUSTO e PREÇO
 #     idênticos em todos os cenários, e a trava do motor confere isso.
 
-m = mv('Suíte', 'Mesa de cabeceira esquerda',
-       f'80 × {MESA_PROF:g} × {MESA_CORPO + MESA_PE:g} · 2 gavetas sobre pés')
-mesa_de_cabeceira(m, 80)
-
-m = mv('Suíte', 'Mesa de cabeceira direita',
-       f'90 × {MESA_PROF:g} × {MESA_CORPO + MESA_PE:g} · 2 gavetas sobre pés')
-mesa_de_cabeceira(m, 90)
+#   ⭐⭐ [Jonathan, 04/11/2026] "as mesas de cabeceira pode ser um item unico
+#     no orcamento". Eram dois itens, 04 e 05. Agora são UM.
+#   ⭐ E faz sentido no que elas são: saem da fábrica juntas, vão montadas na
+#     mesma parede e não existe comprar uma só. ⛔ O CUSTO NÃO MUDOU UM
+#     CENTAVO — mudou a apresentação. As peças continuam todas lançadas, cada
+#     uma dizendo de qual mesa é, e o plano de corte lê igual.
+MESAS = (80, 90)
+m = mv('Suíte', 'Mesas de cabeceira',
+       f'o par · {MESAS[0]:g} e {MESAS[1]:g} × {MESA_PROF:g} × '
+       f'{MESA_CORPO + MESA_PE:g} · 2 gavetas cada, sobre pés')
+cava_mesas = sum(mesa_de_cabeceira(m, L) for L in MESAS)
+#   ⛔ A FERRAGEM DO PAR, EM UMA LINHA SÓ POR FAMÍLIA. Duas linhas de mesmo
+#     nome dentro do mesmo móvel é pedir para alguém somar uma e esquecer a
+#     outra.
+m.f('Corrediça', 2 * len(MESAS), b.CORREDICA_PAR,
+    obs=f'{2 * len(MESAS)} pares · 2 por mesa · Hettich Quadro V6, a '
+        f'linha-base do projeto')
+m.t(f'Cava usinada nas {2 * len(MESAS)} frentes', cava_mesas, b.CAVA_M)
+#   ⚠ E AQUI A PERGUNTA FICA DE PÉ, mesmo com o item único: são DOIS jogos de
+#     4 pés, 8 pés no total, e cada jogo entra no mínimo de serralheria da
+#     casa. ⛔ Juntar os dois numa linha de orçamento NÃO é o mesmo que o
+#     serralheiro fazer os dois numa ida só — a primeira coisa é
+#     apresentação, a segunda é preço. Enquanto ele não disser, ficam dois.
+m.t('Pé metálico · um jogo de 4 por mesa', len(MESAS), b.PE_METALICO_JOGO,
+    obs=PE_OBS)
 
 #   ⛔⛔ E A SEGUNDA CABECEIRA NÃO ENTRA, por um motivo que vale mais que ela:
 #     NÃO EXISTE PRANCHA DA SUÍTE 01. O executivo tem ONZE pranchas — cozinha

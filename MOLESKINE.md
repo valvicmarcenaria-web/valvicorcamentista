@@ -65,8 +65,27 @@ fórmula e na frase, acusando R$ 4.914,89 de erro onde não havia erro nenhum.
 para a G37. ⛔ Endereço fixo e número digitado envelhecem calados; os dois já
 me pegaram hoje.
 
+**⭐ E DEPOIS, NO MESMO DIA:** *"as mesas de cabeceira pode ser um item unico
+no orcamento"*. Eram os itens 04 e 05; viraram **UM**, com cada peça dizendo
+de qual mesa é e uma linha só por família de ferragem. ⛔ **O custo não mudou
+um centavo** — R$ 75.681,91 antes e depois. Mudou a apresentação: 22 itens →
+**21**, e a Suíte de 5 para **4**.
+⚠ E a pergunta do pé metálico fica de pé: **juntar numa linha de orçamento não
+é o mesmo que o serralheiro fazer os dois jogos numa ida só.** A primeira
+coisa é apresentação; a segunda é preço. Seguem dois jogos, R$ 600.
+
 **Hoje:** conferência interna das 7 abas **R$ 0,00** · planilha contra o motor
-**−R$ 0,02** · linhas a preço zero **0** · 22 itens · 57 chapas.
+**−R$ 0,06** · linhas a preço zero **0** · 21 itens · 57 chapas.
+
+**⚠ E DOIS NÚMEROS QUE O JONATHAN MEXEU NA PLANILHA ENQUANTO EU TRABALHAVA**,
+que eu NÃO toquei porque são células dele:
+- **MC alvo do projeto está em 50%**, não nos 35% combinados. O preço no
+  Painel saiu **R$ 300.074,19** em vez dos R$ 189.551 de 35%. ⚠ E a nota ao
+  lado da célula segue contando a história dos 35% — **o rótulo voltou a
+  divergir do valor**, que é exatamente o que aquela nota foi escrita para
+  denunciar.
+- **01 Hall com 2 viagens de frete**, R$ 400. O frete do projeto passou de
+  R$ 2.200 para R$ 2.600.
 
 **Gravado em:** `referencias/quantitativo.md` (MEDIR O VETOR DA PRANCHA) ·
 `referencias/laminacao-e-construcao.md` (a cabeceira e a mesa, camada a
