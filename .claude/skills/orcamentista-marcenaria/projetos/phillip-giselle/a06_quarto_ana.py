@@ -7,7 +7,7 @@ ambiente('Suíte Ana')
 # ── 1 · Nichos de prateleiras + banco de janela com gavetões (vista B) ──
 #   330 de parede a parede = torre 50 + banco 230 + torre 50; 270 de altura;
 #   57 de profundidade. Gavetões 55 de altura, prof. 53.
-m = 'Nichos e banco de janela'
+m = 'Móvel da janela (nichos, banco e gavetões)'
 for i in range(2):
     caixa(m, 50, 205, 57)                      # torre acima do banco
     prateleiras(m, 4, 46, 57)
@@ -33,8 +33,7 @@ O(m, 'Perfil de proteção de piso', 3.30, 'm', 15)
 #   Parede: 15 + 80 + 86 + 70 + 211 = 462 × 270 (o resto é o nicho).
 #   Portas de 80 e 70 cotadas; ⚠ a terceira não existe no desenho: 70.
 import math
-ambiente('Suíte Ana · painel com 3 portas')   # ⭐ item próprio [Jonathan 04/11]
-m = 'Painel com 3 portas mimetizadas'
+m = 'Painel com 3 portas mimetizadas'   # ⭐ item próprio [Jonathan 04/11]
 PORTAS = [80, 70, 70]
 L_liq = 462 - sum(PORTAS)
 n = math.ceil(L_liq / 120)
@@ -43,6 +42,5 @@ for L in PORTAS:
     P(m, 'Bandeira sobre a porta', 58, L, 1, 'Cor 18', 2 * (58 + L) / 100)
 P(m, 'Travessa de estrutura', 154, 10, 9, 'Branco TX 15', 0)
 for L in PORTAS:
-    porta_passagem(m, L, 212, 'Cor', sistema='pivo',
-                   extra=[('Fecho rolete para porta pivotante', 1, 'un', 75)])
+    porta_passagem(m, L, 212, 'Cor', sistema='pivo')
 O(m, 'Perfil de proteção de piso', L_liq / 100, 'm', 15)

@@ -35,6 +35,5 @@ P(m, 'Painel de parede', 250, L_liq / n, n, f'{PAN} 18', 2 * 2.50)
 P(m, 'Bandeira sobre a porta', 38, 80, 4, f'{PAN} 18', 2 * (38 + 80) / 100)
 P(m, 'Travessa de estrutura', 1342 / 6, 10, 18, 'Branco TX 15', 0)
 for i in range(4):
-    porta_passagem(m, 80, 212, PAN, sistema='pivo',
-                   extra=[('Fecho rolete para porta pivotante', 1, 'un', 75)])
+    porta_passagem(m, 80, 212, PAN, sistema='pivo')
 O(m, 'Perfil de proteção de piso', L_liq / 100, 'm', 15)

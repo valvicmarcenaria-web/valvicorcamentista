@@ -4,7 +4,7 @@ from motor import *
 
 ambiente('Rouparia')
 
-m = 'Armário parede A · 174 × 270 × 45'
+m = 'Armário parede A (174 × 270 × 45)'
 caixa(m, 174, 270, 45, 'Branco TX', lat_vistas=1)
 prateleiras(m, 5, 171, 45, 'Branco TX 18')     # corridas, com alma de aço
 correr(m, [59, 57, 57][:2], 268, 'Branco TX')
@@ -13,7 +13,7 @@ O(m, 'Desempenador de porta', 1, 'un', 100)
 O(m, 'Acréscimo SS150 de 2 para 3 portas', 1, 'cj', 100)
 O(m, 'Cava 45° usinada', 3, 'frente', 50, '⚠ puxador não especificado')
 
-m = 'Armário parede B · 121 × 270 × 70'
+m = 'Armário parede B (121 × 270 × 70)'
 caixa(m, 121, 270, 70, 'Branco TX', lat_vistas=1)
 divisorias(m, 1, 267, 70)
 prateleiras(m, 5, 76, 70, 'Branco TX 18')

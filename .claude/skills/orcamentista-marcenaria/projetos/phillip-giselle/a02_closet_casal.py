@@ -30,10 +30,12 @@ gavetas(m, 4, 68, 20, 50, 'Areia')
 correr(m, [72, 72], 268, 'Areia')
 O(m, 'Cava 45° usinada', 2, 'frente', 50)
 
-# ── Porta de giro camuflada em Areia, cava 45° · 70 × 210 + bandeira ────
-m = 'Porta camuflada de passagem'
-porta_passagem(m, 70, 210, 'Areia', sistema='pivo')
-P(m, 'Bandeira acima da porta', 60, 70, 1, 'Areia 18', 2 * (60 + 70) / 100)
+# ── A porta entre o closet e o banho ─────────────────────────────────────
+#   ⛔⛔ DUPLICATA REMOVIDA na revisão de 04/11/2026: a "porta de giro em MDF
+#   Areia com cava 45°" da parede B do closet (70 × 210) é a MESMA porta da
+#   vista D do banho (72 × 212) — o banho do casal só tem essa entrada, pela
+#   planta geral. Ela é a "porta do banho" lançada no Quarto casal (ripada,
+#   pivô, por decisão do Jonathan). Aqui fica só a bandeira acima dela.
 
 # ── Sapateira parede C · 136 × 270 × 43 · portas de correr com espelho ──
 m = 'Sapateira com espelho'
@@ -52,4 +54,5 @@ O(m, 'Espelho prata colado na porta', (0.66 + 0.70) * 2.68, 'm²', 600)
 # ── Fechamento superior em Areia (faixa de 10 no perímetro) ──────────────
 m = 'Fechamento superior'
 P(m, 'Faixa de fechamento', 157, 10, 4, 'Areia 18', 1.57)
+P(m, 'Bandeira acima da porta do banho', 60, 70, 1, 'Areia 18', 2 * (60 + 70) / 100)
 O(m, 'Perfil de proteção de piso', 6.30, 'm', 15)

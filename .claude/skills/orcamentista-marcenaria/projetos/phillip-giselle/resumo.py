@@ -11,19 +11,15 @@ AMBS = ['a01_quarto_casal', 'a02_closet_casal', 'a04_rouparia',
 AVULSO = [('Usinagem do painel existente da sala do térreo, para tentar recuperar '
            'o rodapé com perfil de aço inox escovado', 1900.0,
            'sem garantia de efetividade')]
-FRETE = 3 * 200.0
+FRETE = 5 * 200.0     # ⭐ revisão 04/11: ~20 chapas por viagem (régua do Gustavo)
 if os.environ.get('LINHA') and __name__ == '__main__':
     import motor as M
     for a in AMBS: importlib.import_module(a)
     R = M.calcula(FRETE)
     R['amb'] = M.custo_por_ambiente(R)
-    # ⭐ a FERRAGEM DE MOVIMENTO por ambiente — a única parte que muda entre
-    #   as linhas (corrediça e dobradiça da linha; a fixa não conta).
-    k = R['CD'] / (R['CD'] - R['emb'])          # a embalagem vai junto
-    R['ferr'] = {}
-    for o in M.outras:
-        if o['item'] in ('Corrediça', 'Dobradiça c/ amortecimento'):
-            R['ferr'][o['amb']] = R['ferr'].get(o['amb'], 0) + o['qtd'] * o['pu'] * k
+    cm, fm = M.custo_por_movel(R)
+    R['movel'] = {f'{a}||{m}': v for (a, m), v in cm.items()}
+    R['mov'] = {f'{a}||{m}': v for (a, m), v in fm.items()}
     print(json.dumps({k: v for k, v in R.items() if k not in ('area', 'fita')}))
 elif __name__ == '__main__':
     import motor as M

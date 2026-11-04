@@ -135,6 +135,8 @@ def porta_passagem(movel, L, A, cor_a, cor_b=None, ripada=None, sistema='pivo',
           2 * math.ceil(A / 300), 'barra', 100)
     nome, pu = SISTEMA[sistema]
     O(movel, nome, 1, 'cj', pu)
+    if sistema == 'pivo':   # ⭐ revisão 04/11: toda porta pivô leva o fecho
+        O(movel, 'Fecho rolete para porta pivotante', 1, 'un', 75)
     if cava: O(movel, 'Cava 45° usinada', 1, 'frente', 50)
     for item, q, un, v in extra: O(movel, item, q, un, v)
 
@@ -175,5 +177,26 @@ def custo_por_ambiente(R):
     c = {a: mdf.get(a, 0) * (1 + rateio / tm) + fer.get(a, 0) for a in ambs}
     k = R['CD'] / sum(c.values())
     return {a: v * k for a, v in c.items()}
+
+def custo_por_movel(R):
+    """O mesmo rateio do custo_por_ambiente, na chave (ambiente, móvel), e a
+    ferragem de MOVIMENTO da linha separada (corrediça e dobradiça da linha;
+    a 'fixa' não conta). Soma = custo direto."""
+    m2 = {k: R['chapas'][k] * preco_chapa(k) / R['area'][k] for k in R['area']}
+    mdf, fer, mov = {}, {}, {}
+    for p in pecas:
+        a = p['c'] * p['l'] / 1e4 * p['qtd']; f = p['fita'] * p['qtd']
+        v = a * m2[p['chapa']] + f * (1 + FITA_PERD) * FITA[p['tf']][0] + f * FITA[p['tf']][1]
+        k_ = (p['amb'], p['movel']); mdf[k_] = mdf.get(k_, 0) + v
+    for o in outras:
+        k_ = (o['amb'], o['movel']); fer[k_] = fer.get(k_, 0) + o['qtd'] * o['pu']
+        if o['item'] in ('Corrediça', 'Dobradiça c/ amortecimento'):
+            mov[k_] = mov.get(k_, 0) + o['qtd'] * o['pu']
+    chaves = list(dict.fromkeys([(p['amb'], p['movel']) for p in pecas] +
+                                [(o['amb'], o['movel']) for o in outras]))
+    tm = sum(mdf.values()); rateio = R['corte'] + R['consum'] + R['frete']
+    c = {k_: mdf.get(k_, 0) * (1 + rateio / tm) + fer.get(k_, 0) for k_ in chaves}
+    k = R['CD'] / sum(c.values())
+    return ({k_: v * k for k_, v in c.items()}, {k_: mov.get(k_, 0) * k for k_ in chaves})
 
 def brl(v): return f'R$ {v:,.2f}'.replace(',', '§').replace('.', ',').replace('§', '.')
