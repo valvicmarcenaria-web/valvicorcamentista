@@ -114,32 +114,27 @@ def custo_por_ambiente(linha):
     CHAPAS_ABA = sum(b.chapas(ar) for d in area_amb.values() for ar in d.values())
     CHAPAS_PROJ = sum(n for _a, n in c['chapas'].values())
 
-    # ⭐⭐ O RATEIO DA CHAPA É POR PADRÃO, NÃO PELA ÁREA GLOBAL.
-    #   Antes eu rateava o custo TOTAL de chapa pela fração de área total —
-    #   o que faz um ambiente todo de 15 mm pagar pela chapa de 18 do
-    #   vizinho. Agora cada padrão se rateia dentro de si: este ambiente usa
-    #   18,3 dos 115,04 m² de MDF cor 15 que o projeto compra em 29 chapas,
-    #   logo paga 29 × 18,3/115,04 = 4,61 chapas. A soma fecha igual, e cada
-    #   ambiente passa a pagar o que de fato consome.
-    #   ⭐ E é ASSIM que a planilha faz, pelo R$/m² por padrão do Painel —
-    #     os dois lados contam a mesma história.
-    rm2 = {}
-    for k, (ar_proj, n_ch) in c['chapas'].items():
-        rm2[k] = n_ch * b.PRECO[f'{k[0]} {k[1]}'] / ar_proj
-    ch_proj = {k: n for k, (_a, n) in c['chapas'].items()}
-
+    # ⭐⭐ A CHAPA SE CONTA INTEIRA EM CADA ABA — É O MÉTODO DA CASA.
+    #   ⛔⛔ E EU TINHA FEITO DIFERENTE. Contei a chapa pelo PROJETO (43) e
+    #     ratei por padrão, para não fazer o Gourmet de 1,77 m² pagar três
+    #     chapas inteiras sozinho. A conta é defensável — e NÃO é a da casa.
+    #     O orçamento do Gustavo Raposo arredonda em CADA aba (a cozinha dele
+    #     tem 13 chapas) e explica a sobra na linha "Arredondamento de chapa
+    #     para número cheio". Uma planilha que conta diferente das outras é
+    #     uma planilha que ninguém consegue comparar com as outras.
+    #   ⚠ O preço sobe: 51 chapas no lugar de 43, R$ 4.100 de custo.
+    #     Fica registrado, e a decisão de voltar atrás é do Jonathan.
     out = {}
     for nome, d in amb.items():
         fr = d['area'] / total_area
-        chapa = sum(ar * rm2[k] for k, ar in area_amb[nome].items())
-        #   a fração de chapa deste ambiente, por padrão — serve ao corte
-        n_ch = sum(ch_proj[k] * ar / c['chapas'][k][0]
-                   for k, ar in area_amb[nome].items())
+        chapa = sum(b.chapas(ar) * b.PRECO[f'{k[0]} {k[1]}']
+                    for k, ar in area_amb[nome].items())
+        n_ch = sum(b.chapas(ar) for ar in area_amb[nome].values())
         d['chapas'] = sum(b.chapas(ar) for ar in area_amb[nome].values())
         fita = d['fita'] * b.FITA_COR * b.FITA_PERDA
         filete = d['fita_ripa'] * b.FILETE_MAO \
             + (d['fita'] - d['fita_ripa']) * b.FILETE_MAQ
-        cons = (chapa + fita) * b.CONSUMIVEIS
+        cons = (chapa + fita + filete) * b.CONSUMIVEIS
         #   ⭐ O CORTE É DO AMBIENTE, e as duas unidades não se misturam:
         #     a PEÇA entra inteira, porque peça não se parte; a CHAPA entra
         #     rateada pela mesma fração que rateia a chapa em si.

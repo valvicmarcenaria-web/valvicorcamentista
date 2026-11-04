@@ -81,6 +81,16 @@ DOBRADICA_VIDRO = 70.0            # ⚠ A COTAR na Base · faixa observada 30 a 
 CORREDICA_PAR = 150.0             # ⭐ Hettich Quadro V6 · a linha-base deste projeto
 #   ⚠ O Hardt Invisível P-10 de R$ 80 é o padrão da CASA, e segue na Base —
 #     mas não é uma das duas linhas que o Attos recebe, então não entra aqui.
+#   ⛔⛔ AQUI A BASE E O JONATHAN DISCORDAM, E SÃO R$ 408 NO PROJETO.
+#     A Base de Custos importa R$ 800,00 para o "Dominus Rometal, 2 portas";
+#     o Jonathan cravou 600 em 03/11/2026, respondendo à minha pergunta:
+#     "versão hettich vamos usar Rometal de 600 e na BLUM Siforma de 900".
+#     ⭐ A palavra dele é mais nova e é específica DESTE projeto, então vale
+#     600 — e o travamento está na linha 49 da aba "Base (importada)" da
+#     planilha, com o motivo impresso na própria linha, para ser desfeito
+#     numa célula. ⚠ Repare que a Base tem OUTRO sistema a R$ 600, o SS-150,
+#     também de 2 portas: é possível que o 600 dele seja esse. Não escolhi
+#     por ele — registrei a divergência e segui com o número que ele disse.
 SISTEMA_CORRER = 600.0            # ⭐ Rometal, a linha Hettich · Blum usa 900
 # ⛔⛔ SÃO DOIS PRODUTOS DIFERENTES E EU USEI O ERRADO.
 #   A Base (importada) separa, com todas as letras:

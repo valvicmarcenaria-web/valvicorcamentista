@@ -383,16 +383,33 @@ def custo():
         ferr += sum(q * u for _n, q, u in m.ferr)
         terc += sum(q * u for _n, q, u in m.terc)
         vidro += sum(q * u for _n, q, u in m.vidro)
+    #   ⛔⛔ A CHAPA SE CONTA POR AMBIENTE, NÃO PELO PROJETO. Contar o
+    #     projeto inteiro de uma vez dá 43 chapas; contar ambiente a ambiente
+    #     dá 51, porque a sobra de um raramente serve o vizinho — e é assim
+    #     que a casa compra e que as outras planilhas mostram. Dois métodos
+    #     para a mesma chapa é a divergência que não dá erro.
+    area_amb = {}
+    for m in M:
+        d = area_amb.setdefault(m.amb, {})
+        for k, v in m.areas().items():
+            d[k] = d.get(k, 0.0) + v
     chapas, c_chapa = {}, 0.0
     for (mat, esp), a in sorted(area.items()):
-        n = b.chapas(a)
+        n = sum(b.chapas(d[(mat, esp)]) for d in area_amb.values()
+                if (mat, esp) in d)
         chapas[(mat, esp)] = (a, n)
         c_chapa += n * b.PRECO[f'{mat} {esp}']
     c_fita = fita * b.FITA_COR * b.FITA_PERDA
     #   ⭐ a filetagem de máquina cobre tudo o que NÃO é ripa
     fita_maq = fita - fita_ripa
     terc += fita_maq * b.FILETE_MAQ
-    cons = (c_chapa + c_fita) * b.CONSUMIVEIS
+    #   ⛔ 6% SOBRE CHAPA, FITA E FILETAGEM. A Base escreve "sobre chapa e
+    #     fita", e eu segui a letra — mas o orçamento do Gustavo prova a
+    #     prática: na cozinha dele, 6% de (4.290 + 284,90) dá R$ 274,49 e a
+    #     célula mostra R$ 290,06, que é 6% de (4.290 + 284,90 + 259,50).
+    #     A filetagem entra. Quem manda é o que as outras planilhas fazem.
+    c_filete = fita_maq * b.FILETE_MAQ + fita_ripa * b.FILETE_MAO
+    cons = (c_chapa + c_fita + c_filete) * b.CONSUMIVEIS
     #   ⭐⭐ OS DOIS SERVIÇOS DE CORTE, que o Jonathan cravou por AMBIENTE.
     #     ⛔ `n_pecas` conta a PEÇA, não a linha: uma linha de 4 prateleiras
     #       são 4 peças na serra, e a serra cobra por peça.
