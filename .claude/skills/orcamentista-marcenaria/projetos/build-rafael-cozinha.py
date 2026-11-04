@@ -397,16 +397,24 @@ folha(f'''<div class="pad">
 # ── 13 · a decisão ──────────────────────────────────────────────────────
 RESUMO = {'Telescópica': 'Trilho aparente na lateral da gaveta e fechamento sem amortecedor. A versão econômica do projeto.',
           'Hettich': 'Trilho oculto, gaveta que sai inteira e fechamento amortecido em portas e gavetas. <em>É a linha que cumpre a especificação do projeto.</em>'}
+# ⭐ [Jonathan 04/11] a folha da decisão mostra ENTRADA + PARCELA MENSAL no
+#   cartão, não o montante. Sai do degrau de valor cheio da escala: 30% + 10×.
+_lab, _d, _p, _mc = CEN['Telescópica']['escada'][0]
+assert _d == 0 and '30%' in _lab and '10×' in _lab
+PARC_N = 10
+ENTR = {k: round(CEN[k]['cheio'] * 0.30, 2) for k in LIN}
+PARC = {k: round((CEN[k]['cheio'] - ENTR[k]) / PARC_N, 2) for k in LIN}
+for k in LIN:
+    assert abs(ENTR[k] + PARC_N * PARC[k] - CEN[k]['cheio']) < 0.05
 cards = ''.join(f'''<div class="c{" hi" if k == "Hettich" else ""}">
      <div class="anos">{E(CEN[k]['gar'].split()[0])}</div>
      <div class="unid">anos de garantia</div>
      <div class="nm">{E(CEN[k]['chamada'])}{' · a recomendação da casa' if k == 'Hettich' else ''}</div>
      <div class="x">{RESUMO[k]}</div>
-     <div class="l"><div class="k">O projeto completo</div>
-      <div class="v" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:21pt">{br(CEN[k]['cheio'])}</div>
-      <div class="k" style="margin-top:2mm">Com entrada e transferência</div>
-      <div class="v">{br(CEN[k]['escada'][-1][2])}</div></div></div>''' for k in LIN)
-dif = CEN['Hettich']['cheio'] - CEN['Telescópica']['cheio']
+     <div class="l"><div class="k">Entrada, na assinatura</div>
+      <div class="v" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:21pt">{br(ENTR[k])}</div>
+      <div class="k" style="margin-top:2.5mm">Mais {PARC_N} parcelas mensais no cartão de crédito</div>
+      <div class="v" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:21pt">{PARC_N}× de {br(PARC[k])}</div></div></div>''' for k in LIN)
 folha(f'''<div class="pad">
  <div class="eyebrow">Investimento · as duas linhas</div><div class="rule"></div>
  <h1 class="h1" style="margin:0 0 3mm">Dois anos, ou dez.</h1>
@@ -417,8 +425,8 @@ folha(f'''<div class="pad">
   <p>Projeto executivo de marcenaria, material, usinagem, ferragem, a estrutura em metal
    preto das prateleiras e a iluminação em LED embutida, transporte, montagem e
    instalação — num só contrato, com uma só data e uma só arquiteta responsável.
-   A diferença entre as duas linhas, {br(dif)}, está inteira na corrediça e na
-   dobradiça.</p></div>
+   A diferença entre as duas linhas está inteira na corrediça e na dobradiça.
+   As demais formas de pagamento estão na folha de condições.</p></div>
 </div>''')
 
 # ── 14 · condições, com a escala de desconto padrão ─────────────────────
