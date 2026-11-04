@@ -31,8 +31,17 @@ PAGTO = [('Entrada, na assinatura do contrato', 0.30), ('30 dias após a assinat
 ORDEM = ['Quarto casal', 'Closet casal', 'Suíte Ana', 'Closet Ana', 'Quarto Mateus',
          'Closet Mateus', 'Rouparia', 'Circulação']
 FIXO_ITEM = {('Suíte Ana', 'Móvel da janela (nichos, banco e gavetões)'): 9800.0,
-             ('Suíte Ana', 'Painel com 3 portas mimetizadas'): 15600.0}
-FIXO_AMB = {'Circulação': 30420.0}
+             ('Suíte Ana', 'Painel com 3 portas mimetizadas'): 15600.0,
+             # ⭐ "ambas as portas ripadas são de correr, preço final de ambas 8.500"
+             ('Quarto casal', 'Portas ripadas de correr (closet e banho)'): 8500.0}
+# ⭐ "Rouparia, valor total de venda 9.300" (os dois armários na proporção)
+FIXO_AMB = {'Rouparia': 9300.0}
+# ⭐ MESCLA num item só [Jonathan, 04/11/2026]: o fator é o desconto do total
+#   "Closet casal pode diminuir 10% do valor total e apresente um item único"
+#   "Closet Ana, mescle o valor de cada item · idem Closet Mateus"
+MESCLA = {'Closet casal': ('Closet completo: armários, sapateira com espelho e fechamento', 0.90),
+          'Closet Ana': ('Armário em L do piso ao forro', 1.00),
+          'Closet Mateus': ('Armário em L do piso ao forro', 1.00)}
 DILUI = lambda a, m: a.startswith('Closet') or m == 'Painel com 3 portas mimetizadas'
 
 def linha(k):
@@ -61,6 +70,11 @@ for k, (nome, mc) in LIN.items():
         it = [x for x in pv if x[0] == a]; tot = sum(pv[x] for x in it)
         for x in it: pv[x] = round(v * pv[x] / tot, -1)
         pv[max(it, key=pv.get)] += v - sum(pv[x] for x in it)
+    for a, (nm, fat) in MESCLA.items():
+        it = [x for x in pv if x[0] == a]
+        v = round(sum(pv[x] for x in it) * fat, -1); c = sum(cus[x] for x in it)
+        for x in it: del pv[x]; del cus[x]
+        pv[(a, nm)] = v; cus[(a, nm)] = c
     TAB[k] = dict(nome=nome, mc=mc, cus=cus, pv=pv, CD=sum(cus.values()),
                   venda=sum(pv.values()))
 
@@ -89,4 +103,7 @@ if __name__ == '__main__':
         print(f"{lab:50s}" + ''.join(f"{brl(T[k]['venda'] * f):>15s}" for k in T))
     for x, v in FIXO_ITEM.items():
         print('MC do fixo', x[1], ' / '.join(f"{(B - T[k]['cus'][x] / v)*100:.1f}%" for k in T))
+    for a in list(FIXO_AMB) + list(MESCLA):
+        it = [x for x in T['hettich']['pv'] if x[0] == a]
+        print('MC', a, ' / '.join(f"{(B - sum(T[k]['cus'][y] for y in it) / sum(T[k]['pv'][y] for y in it))*100:.1f}%" for k in T))
     for d, v, obs in AVULSO: print(f'AVULSO {brl(v)} · {obs}')

@@ -6,20 +6,8 @@ from motor import *
 import math
 
 ambiente('Circulação')
-M_ = 'Marrom'
 
-m = 'Bar embutido'
-P(m, 'Forro lateral do nicho', 250, 58, 2, f'{M_} 15', 2.50)
-P(m, 'Forro do topo', 116, 58, 1, f'{M_} 15', 1.16)
-caixa(m, 116, 82, 45, M_, interno='Branco TX 15', lat_vistas=0)
-divisorias(m, 1, 79, 45)
-prateleiras(m, 2, 56, 45)
-portas(m, 4, 57, 41, M_, dobr=50.0)   # ⭐ fixa: a circulação não muda entre linhas [Jonathan 04/11]
-O(m, 'Cava 45° usinada', 4, 'frente', 50, '⚠ 4 portas ou 2 gavetas + 2 portas?')
-P(m, 'Prateleira do nicho', 116, 45, 3, f'{M_} 18', 1.16)
-O(m, 'Suporte oculto de prateleira', 9, 'un', 30)
-led(m, 4.40, 'tabela: LED em marcenaria 4,40 m')
-
+# ⛔ BAR FORA [Jonathan, 04/11/2026]: "Circulação, sem o bar".
 
 # ── Painel em toda a extensão com 4 portas pivotantes mimetizadas ───────
 #   ⭐ [Jonathan, 04/11/2026] "teremos um painel em toda extensão com as 4
