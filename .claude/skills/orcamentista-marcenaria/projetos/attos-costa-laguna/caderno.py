@@ -68,7 +68,13 @@ def brl(v, centavos=True):
 
 
 def capa_do_ripado():
-    """⭐ A CAPA PEDE CAMPO, NÃO FOLHA DE DESENHO.
+    """⭐ A CAPA DE DESENHO — guardada, e não é mais a que vai.
+
+    ⚠ [Jonathan, 05/11/2026] chegou o anteprojeto 3D e a capa passou a ser
+      o render da suíte principal. Esta função fica porque a lição dela não
+      envelhece, e porque um caderno sem render volta a precisar dela.
+
+    ⭐ A CAPA PEDE CAMPO, NÃO FOLHA DE DESENHO.
 
     ⛔ A elevação inteira na capa entrega o título e a cota pela metade —
       'RIPADO 1:25' cortado no pé e um 'CORRE' solto no meio. ⭐ O que
@@ -99,8 +105,15 @@ def capa_do_ripado():
 
 
 def b64(nome):
-    d = (AQUI / 'img' / (nome + '.png')).read_bytes()
-    return 'data:image/png;base64,' + base64.b64encode(d).decode()
+    """⭐ PNG para desenho, JPEG para render — e o nome não diz qual.
+    O traço vetorial em JPEG ganha chuvisco em volta da linha; o render em
+    PNG pesa cinco vezes mais sem ganhar nada. Cada um no seu formato, e a
+    folha não precisa saber."""
+    f = AQUI / 'img' / (nome + '.png')
+    if not f.exists():
+        f = AQUI / 'img' / (nome + '.jpg')
+    tipo = 'png' if f.suffix == '.png' else 'jpeg'
+    return f'data:image/{tipo};base64,' + base64.b64encode(f.read_bytes()).decode()
 
 
 def esc(t):
@@ -134,44 +147,43 @@ folha(f'''<div class="cv">
    <div><div class="k">Data</div><div class="v">{DATA}</div></div>
   </div>
  </div>
- <div class="cv-r"><img src="{b64(capa_do_ripado())}" alt=""></div>
+ <div class="cv-r"><img src="{b64('r-suite-cabeceira')}" alt=""></div>
 </div>''', escura=True, rodape=False)
 
 # ═══ 02 · O QUE ESTA CASA PEDE ══════════════════════════════════════════
-folha(f'''<div class="amb">
- <div class="amb-img fit"><img src="{b64('sala-tv')}" alt="">
-   <div class="tag">Sala de televisão · elevação do executivo</div></div>
- <div class="amb-txt">
-  <div class="fit">
+folha(f'''<div class="ambw">
+ <div class="band solo"><img class="r" src="{b64('r-sala-tv-amb')}" alt="">
+   <div class="tag">Sala de estar · render do anteprojeto</div></div>
+ <div class="low"><div class="fitw">
    <div class="eyebrow">O projeto</div><div class="rule"></div>
    <div class="h2">O que esta casa pede.</div>
-   <div class="lead" style="margin:4mm 0 6mm">Esta não é uma casa de armário.
-     É uma casa de <b>painel</b> — e painel é a peça que não perdoa: ela é
-     grande, é contínua, fica à altura dos olhos e qualquer desaprumo aparece
-     de uma ponta à outra.</div>
+   <div class="lead" style="margin:3mm 0 4mm;max-width:none">Esta não é uma
+     casa de armário. É uma casa de <b>painel</b> — e painel é a peça que não
+     perdoa: ela é grande, é contínua, fica à altura dos olhos e qualquer
+     desaprumo aparece de uma ponta à outra.</div>
    <div class="mv"><span class="b"></span><span><span class="t">Vinte e quatro metros quadrados de ripado</span>
-     <span class="d"> — 626 cm no corredor da cozinha, 353,5 na sala de televisão,
-     316 no escritório e 200 na cabeceira da suíte. Ripa de 2 cm com vão de 1,
-     passo de 3: mais de seiscentas ripas, todas fitadas.</span></span></div>
+     <span class="d"> — 626 cm no corredor da cozinha, 353,5 na sala, 316 no
+     escritório e 200 na cabeceira da suíte. Ripa de 2 cm com vão de 1, passo
+     de 3: mais de seiscentas ripas, todas fitadas.</span></span></div>
    <div class="mv"><span class="b"></span><span><span class="t">Duas portas que somem dentro do painel</span>
      <span class="d"> — vestiário e despensa, 87 cm cada, ripadas na mesma
      cadência da parede. Fechadas, não existem; é o alinhamento da ripa que
      entrega, ou não, o trabalho.</span></span></div>
    <div class="mv"><span class="b"></span><span><span class="t">Duas cabeceiras estofadas</span>
-     <span class="d"> — 240 cm na suíte master e 192 na suíte 01, em MDF,
-     espuma e revestimento, com as mesas de cabeceira sobre pé metálico.</span></span></div>
+     <span class="d"> — 240 cm na suíte principal e 192 na suíte 01, em MDF,
+     espuma e revestimento, com as mesas sobre pé metálico.</span></span></div>
    <div class="mv"><span class="b"></span><span><span class="t">Vidro reflecta cristal</span>
      <span class="d"> — na cristaleira de 147 × 275 e nas portas dos armários
      da cozinha e do gourmet. O vidro é nosso: sai no mesmo contrato.</span></span></div>
-   <div class="amb-nota"><div class="t">O que fica de fora, dito agora</div>
-     <p>O painel do jantar, de 367 × 585, é <b>travertino romano escovado</b> —
-     revestimento de pedra, portanto marmoraria, e não entra nesta proposta.
-     A legenda do executivo o separa do MDF por hachura, e nós o separamos
-     aqui, antes de qualquer conversa de preço.</p></div>
   </div>
-  <div class="foot r"><span>Valvic&nbsp;·&nbsp;{PROJETO}</span><span>02</span></div>
+  <div><div class="amb-nota"><div class="t">Sobre as imagens deste caderno</div>
+    <p>As perspectivas são <b>do anteprojeto da arquitetura</b> e mostram a
+      casa inteira — mobiliário solto, pedra, eletrodomésticos e decoração
+      aparecem nelas e <b>não estão nesta proposta</b>. Ao lado de cada
+      render vai a <b>elevação cotada do executivo</b>: é ela que diz,
+      milímetro a milímetro, o que sai da nossa fábrica.</p></div></div>
  </div>
-</div>''', rodape=False)
+</div>''')
 
 # ═══ 03 · A EMPRESA ═════════════════════════════════════════════════════
 folha(f'''<div class="pad">
@@ -284,6 +296,16 @@ SUPLEMENTO = '''
                 background:#fff;padding:3mm;box-shadow:0 1mm 4mm rgba(26,23,20,.10)}
 .amb-img.fit img{max-width:92%;max-height:86%;background:#fff;padding:4mm}
 .ambw .band .tag{z-index:2}
+/* ⭐ quando a faixa tem RENDER e ELEVAÇÃO lado a lado, o render puxa mais
+   largura: é ele que vende, e o desenho ao lado é que prova. */
+.ambw .band img.r{flex:1.55}
+.ambw .band img.d{flex:1}
+/* ⛔ FAIXA DE UMA IMAGEM SÓ: contida, um render 16:9 fica ilhado no meio de
+   doze centímetros de areia de cada lado — parece engano de montagem. Foto
+   pode ser cortada; desenho, não. Então a faixa solo de RENDER sangra. */
+.ambw .band.solo{padding:0;gap:0}
+.ambw .band.solo img.r{object-fit:cover;width:100%;height:100%;padding:0;
+                       box-shadow:none}
 /* ⛔ O ALGARISMO DA GARANTIA. A Cormorant Garamond vem com algarismo de
    TEXTO: o "1" sai da altura de x e lê como "I" maiúsculo, o "10" como
    "IO". Numa folha onde o número é a promessa, isso não é estilo, é
@@ -307,10 +329,21 @@ document.querySelectorAll('.pad.apertada').forEach(c => {
   const pede = f.scrollHeight;
   if (pede > alt) f.style.zoom = Math.max(.60, (alt / pede) - .012);
 });
+/* ⛔ E A FOLHA DE AMBIENTE TAMBÉM. O script da casa faz a FAIXA ceder até
+   62 mm para a lista caber — mas quando a faixa é render sangrado ela não
+   deve encolher, senão a foto vira tira. Aqui quem cede é o texto. */
+document.querySelectorAll('.ambw .low').forEach(low => {
+  const f = low.querySelector('.fitw'); if (!f) return;
+  const cs = getComputedStyle(low);
+  const alt = low.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+  const pede = f.scrollHeight;
+  if (pede > alt) f.style.zoom = Math.max(.70, (alt / pede) - .02);
+});
 '''
 
 AMBIENTES = [
- dict(img=['ripado-corredor'], tag='Cozinha · elevação do painel ripado, 626 × 272',
+ dict(img=['r-cozinha-corredor', 'ripado-corredor'],
+      tag='Cozinha · o corredor no render do anteprojeto e na elevação do executivo',
       eyebrow='Cozinha · o corredor', h2='Seis metros de ripado, e duas portas dentro dele.',
       lead='A parede inteira do corredor de serviço vira uma só peça — e as '
            'portas do vestiário e da despensa desaparecem nela.',
@@ -326,8 +359,8 @@ AMBIENTES = [
             'Ele carrega sozinho mais fita e mais filetagem que todo o resto do '
             'projeto somado. Não é a área de chapa que o faz caro: é a quantidade '
             'de peças pequenas que precisam sair idênticas.')),
- dict(img=['cristaleira', 'cozinha-armarios'],
-      tag='Cozinha e gourmet · cristaleira e armários complementares',
+ dict(img=['r-cozinha-armarios', 'cristaleira'],
+      tag='Cozinha · o armário de portas de vidro no render · a cristaleira na elevação',
       eyebrow='Cozinha e gourmet', h2='O vidro é nosso, e sai no mesmo contrato.',
       lead='Quatro peças em volta da bancada existente — e em três delas o '
            'vidro reflecta cristal é parte do móvel, não acessório.',
@@ -344,7 +377,8 @@ AMBIENTES = [
       nota=('O que a medição confirma',
             'A bancada e a alvenaria da cozinha são existentes. A altura livre '
             'sob o armário superior fecha na medição no local, antes do corte.')),
- dict(img=['escritorio'], tag='Escritório · elevações frontal e lateral',
+ dict(img=['r-escritorio', 'escritorio'],
+      tag='Escritório · render do anteprojeto e elevações do executivo',
       eyebrow='Escritório', h2='A mesa que avança dois metros e não balança.',
       lead='A bancada corre 2,36 m sobre o armário e avança 2,19 m em mesa — '
            'é a peça que mais exige estrutura em toda a casa.',
@@ -361,7 +395,8 @@ AMBIENTES = [
       nota=('O revestimento atrás da bancada não é nosso',
             'A parede atrás é travertino romano escovado — pedra. Nosso é o '
             'ripado, os armários e a bancada.')),
- dict(img=['sala-tv'], tag='Sala de televisão · planta e elevação',
+ dict(img=['r-sala-tv', 'sala-tv'],
+      tag='Sala de televisão · render do anteprojeto e elevação do executivo',
       eyebrow='Sala de televisão', h2='Seis metros e meio de parede, dois acabamentos.',
       lead='O ripado entra pela esquerda, o liso recebe a televisão, e o rack '
            'suspenso atravessa a junção dos dois sem mostrar onde ela está.',
@@ -372,7 +407,8 @@ AMBIENTES = [
            'corrediça aparece</b>: gavetão de um metro cheio é onde ferragem '
            'fraca entrega primeiro.')],
       nota=None),
- dict(img=['suite-parede-tv'], tag='Suíte master · elevação 02, a parede da televisão',
+ dict(img=['r-suite-tv', 'suite-parede-tv'],
+      tag='Suíte principal · a parede da televisão, no render e na elevação 02',
       eyebrow='Suíte master · a parede da TV', h2='Uma parede, duas portas e nenhuma emenda à vista.',
       lead='A parede de frente para a cama é painelada de ponta a ponta, com '
            'duas portas embutidas no próprio painel.',
@@ -384,8 +420,8 @@ AMBIENTES = [
             'Ela não leva corrediça nem sistema de correr, e a escolha de '
             'ferragem não a atravessa. Vocês verão o mesmo número nas três '
             'colunas da folha de investimento — isso é proposital.')),
- dict(img=['suite-planta', 'suite-ripado'],
-      tag='Suíte master · planta e elevação 01 · as cabeceiras',
+ dict(img=['r-suite01', 'suite-planta'],
+      tag='Suíte 01 no render · suíte principal na planta, com a cabeceira centrada na cama',
       eyebrow='Suíte master e suíte 01', h2='As duas cabeceiras.',
       lead='A cabeceira da master tem 2,40 m e fica centrada na cama — a planta '
            'mostra, e nós medimos: ela passa 20 cm por trás de cada mesa de '
@@ -406,7 +442,7 @@ AMBIENTES = [
             '192 × 120 é a nossa estimativa e está orçada como tal; ela é '
             'confirmada na medição no local, antes de qualquer corte.')),
  dict(img=['hall-painel', 'aparador-jantar'],
-      tag='Hall e jantar · painel do hall e aparador',
+      tag='Hall e jantar · elevações do executivo · o anteprojeto não traz estes dois',
       eyebrow='Hall e jantar', h2='A porta da lavanderia, que não parece porta.',
       lead='Duas peças de entrada da casa — e as duas vivem de alinhamento, '
            'não de ferragem.',
@@ -423,7 +459,9 @@ AMBIENTES = [
 ]
 
 for _a in AMBIENTES:
-    _imgs = ''.join(f'<img src="{b64(n)}" alt="">' for n in _a['img'])
+    _imgs = ''.join(
+        f'<img class="{"r" if n.startswith("r-") else "d"}" src="{b64(n)}" alt="">'
+        for n in _a['img'])
     _mv = ''.join(f'<div class="mv"><span class="b"></span><span>'
                   f'<span class="t">{t}</span><span class="d"> — {d}</span>'
                   f'</span></div>' for t, d in _a['mv'])
@@ -431,8 +469,9 @@ for _a in AMBIENTES:
     if _a['nota']:
         _nt = (f'<div class="amb-nota"><div class="t">{_a["nota"][0]}</div>'
                f'<p>{_a["nota"][1]}</p></div>')
+    _solo = ' solo' if len(_a['img']) == 1 and _a['img'][0].startswith('r-') else ''
     folha(f'''<div class="ambw">
-  <div class="band">{_imgs}<div class="tag">{_a['tag']}</div></div>
+  <div class="band{_solo}">{_imgs}<div class="tag">{_a['tag']}</div></div>
   <div class="low"><div class="fitw">
     <div class="eyebrow">{_a['eyebrow']}</div><div class="rule"></div>
     <div class="h2">{_a['h2']}</div>
@@ -483,48 +522,7 @@ folha(f'''<div class="pad apertada"><div class="fitp">
       própria do corte à montagem.</p></div>
 </div></div>''')
 
-# ═══ 14 · AS TRÊS OPÇÕES ════════════════════════════════════════════════
-OPC = [
- ('Básica', 'Corrediça telescópica',
-  'A corrediça telescópica corre sobre esferas e <b>mostra o trilho na lateral '
-  'da gaveta</b> quando ela abre. Não tem amortecedor: a gaveta fecha no '
-  'impulso que você der. É o que a maior parte do mercado entrega como padrão, '
-  'e ela cumpre o que promete — <b>o que muda é por quanto tempo</b>.'),
- ('Hettich', 'Corrediça oculta Hettich Quadro V6',
-  'A corrediça oculta alemã corre <b>por baixo da caixa da gaveta</b>: você '
-  'abre e não vê ferragem nenhuma, só a madeira. A gaveta sai inteira, o '
-  'fechamento é amortecido e a regulagem é fina nos três sentidos. '
-  '<b>É a linha de referência desta proposta.</b>'),
- ('Blum', 'Corrediça e dobradiça Blum Movento',
-  'A mesma discrição da alemã, com o <b>curso mais macio e a maior capacidade '
-  'de carga</b> das três — é o que se sente num gavetão de um metro cheio, que '
-  'é exatamente o que o rack da sala de televisão tem quatro vezes.'),
-]
-_cards = ''
-for _k, _nm, _tx in OPC:
-    _a, _u = GARANTIA[_k]
-    _hi = ' hi' if _k == 'Hettich' else ''
-    _cards += (f'<div class="c{_hi}"><div class="anos">{_a}</div>'
-               f'<div class="unid">{_u} de garantia</div>'
-               f'<div class="nm">{_nm}</div><div class="x">{_tx}</div>'
-               f'<div class="l"><div class="k">A casa inteira</div>'
-               f'<div class="v" style="font-size:12pt;font-weight:700">{brl(TOTAL[_k], False)}</div></div></div>')
-folha(f'''<div class="pad">
-  <div class="eyebrow">As três opções</div><div class="rule"></div>
-  <div class="h1">O que vocês vão sentir na mão.</div>
-  <div class="lead" style="margin:3mm 0 0">A ferragem é a única peça da
-    marcenaria que <b>se usa todo dia e se desgasta</b>. O MDF não cansa, a
-    pintura não cansa, o ripado não cansa. A corrediça e a dobradiça, sim — e
-    por isso a escolha <b>vale para a casa toda</b>: a garantia do conjunto
-    segue sempre a ferragem de menor linha presente.</div>
-  <div class="gar">{_cards}</div>
-  <div class="box"><div class="t">Como escolher</div>
-   <p>Abra uma gaveta de cada linha antes de decidir — <b>em trinta segundos a
-      mão resolve o que a tabela não resolve</b>. Levamos as três amostras até
-      vocês antes do fechamento, sem compromisso.</p></div>
-</div>''')
-
-# ═══ 15 · GARANTIA ══════════════════════════════════════════════════════
+# ═══ 14 · GARANTIA ══════════════════════════════════════════════════════
 folha(f'''<div class="pad apertada"><div class="fitp">
   <div class="eyebrow">Garantia</div><div class="rule"></div>
   <div class="h1">O termo é assinado na entrega.</div>
@@ -568,6 +566,51 @@ folha(f'''<div class="pad apertada"><div class="fitp">
 </div></div>''')
 
 
+# ═══ 15 · INVESTIMENTO · AS TRÊS LINHAS ═════════════════════════════════
+_cards = ''
+for _k, _nm, _d in [
+   ('Básica', 'Corrediça telescópica',
+    'Corre sobre esferas e <b>mostra o trilho na lateral da gaveta</b> quando '
+    'ela abre. Não tem amortecedor: a gaveta fecha no impulso que você der. '
+    'É o que a maior parte do mercado entrega como padrão, e ela cumpre o que '
+    'promete — <b>o que muda é por quanto tempo</b>.'),
+   ('Hettich', 'Corrediça oculta Hettich Quadro V6',
+    'A oculta alemã corre <b>por baixo da caixa da gaveta</b>: você abre e não '
+    'vê ferragem nenhuma, só a madeira. A gaveta sai inteira, o fechamento é '
+    'amortecido e a regulagem é fina nos três sentidos. <b>É a linha de '
+    'referência desta proposta.</b>'),
+   ('Blum', 'Corrediça e dobradiça Blum Movento',
+    'A mesma discrição da alemã, com o <b>curso mais macio e a maior '
+    'capacidade de carga</b> das três — é o que se sente num gavetão de um '
+    'metro cheio, que é o que o rack da sala tem quatro vezes.')]:
+    _a, _u = GARANTIA[_k]
+    _hi = ' hi' if _k == 'Hettich' else ''
+    _cards += (f'<div class="c{_hi}"><div class="anos">{_a}</div>'
+               f'<div class="unid">{_u} de garantia</div><div class="nm">{_nm}</div>'
+               f'<div class="x">{_d}</div><div class="l">'
+               f'<div class="k">A casa inteira</div>'
+               f'<div class="v" style="font-size:15pt;font-weight:700">{brl(TOTAL[_k])}</div>'
+               f'</div></div>')
+folha(f'''<div class="pad apertada"><div class="fitp">
+  <div class="eyebrow">Investimento · as três linhas</div><div class="rule"></div>
+  <div class="h1">Um ano, dez, ou trinta.</div>
+  <div class="lead" style="margin:3mm 0 0">O mesmo escopo, o mesmo desenho e os
+    mesmos padrões. A diferença é a <b>ferragem</b> — a única peça da
+    marcenaria que se usa todo dia e se desgasta — e o tempo pelo qual
+    respondemos por ela. ⭐ <b>Abra uma gaveta de cada linha antes de
+    decidir:</b> levamos as três amostras até vocês, sem compromisso, porque
+    em trinta segundos a mão resolve o que a tabela não resolve.</div>
+  <div class="gar justo">{_cards}</div>
+  <div class="box"><div class="t">O que está incluso</div>
+   <p>Projeto executivo de marcenaria, material, usinagem, ferragem e
+      iluminação em LED embutida, mais os ofícios que esta proposta reúne —
+      <b>vidro reflecta cristal, estofado das duas cabeceiras e o pé metálico
+      das mesas</b> —, transporte, montagem e instalação, num só contrato, com
+      uma só data e uma só arquiteta responsável. O travertino do jantar e as
+      bancadas de pedra são marmoraria e ficam fora; a folha de condições
+      nomeia o resto.</p></div>
+</div></div>''')
+
 # ═══ 16 · INVESTIMENTO · ITEM A ITEM ════════════════════════════════════
 #   ⭐ A ordem do cliente é a do índice, não a do motor. ⛔ E a soma tem de
 #     continuar a mesma depois de reordenar — a trava abaixo é o que prova.
@@ -602,43 +645,7 @@ folha(f'''<div class="pad apertada"><div class="fitp">
   </table>
 </div></div>''')
 
-# ═══ 17 · INVESTIMENTO · AS TRÊS LINHAS ═════════════════════════════════
-_cards = ''
-for _k, _nm, _d in [
-   ('Básica', 'Corrediça telescópica',
-    'Trilho aparente na lateral da gaveta e fechamento sem amortecedor.'),
-   ('Hettich', 'Corrediça oculta Hettich',
-    'Trilho oculto por baixo, gaveta que sai inteira e fechamento amortecido. '
-    '<b>É a linha de referência desta proposta.</b>'),
-   ('Blum', 'Corrediça e dobradiça Blum',
-    'O curso mais macio e a maior capacidade de carga das três — é o que se '
-    'sente num gavetão cheio.')]:
-    _a, _u = GARANTIA[_k]
-    _hi = ' hi' if _k == 'Hettich' else ''
-    _cards += (f'<div class="c{_hi}"><div class="anos">{_a}</div>'
-               f'<div class="unid">{_u} de garantia</div><div class="nm">{_nm}</div>'
-               f'<div class="x">{_d}</div><div class="l">'
-               f'<div class="k">A casa inteira</div>'
-               f'<div class="v" style="font-size:15pt;font-weight:700">{brl(TOTAL[_k])}</div>'
-               f'</div></div>')
-folha(f'''<div class="pad">
-  <div class="eyebrow">Investimento · as três linhas</div><div class="rule"></div>
-  <div class="h1">Um ano, dez, ou trinta.</div>
-  <div class="lead" style="margin:3mm 0 0">O mesmo escopo, o mesmo desenho e os
-    mesmos padrões. A diferença é a <b>ferragem</b> — e o tempo pelo qual
-    respondemos por ela.</div>
-  <div class="gar justo">{_cards}</div>
-  <div class="box"><div class="t">O que está incluso</div>
-   <p>Projeto executivo de marcenaria, material, usinagem, ferragem e
-      iluminação em LED embutida, mais os ofícios que esta proposta reúne —
-      <b>vidro reflecta cristal, estofado das duas cabeceiras e o pé metálico
-      das mesas</b> —, transporte, montagem e instalação, num só contrato, com
-      uma só data e uma só arquiteta responsável. O travertino do jantar e as
-      bancadas de pedra são marmoraria e ficam fora; a folha de condições
-      nomeia o resto.</p></div>
-</div>''')
-
-# ═══ 18 · CONDIÇÕES ═════════════════════════════════════════════════════
+# ═══ 17 · CONDIÇÕES ═════════════════════════════════════════════════════
 _pay = ''.join(f'<tr><td>{_d}</td><td class="d">{_p:.0%}</td></tr>'
                for _d, _p in b.PARCELAS)
 folha(f'''<div class="pad apertada"><div class="fitp">
@@ -701,7 +708,7 @@ folha(f'''<div class="pad apertada"><div class="fitp">
   </div>
 </div></div>''')
 
-# ═══ 19 · FECHAMENTO ════════════════════════════════════════════════════
+# ═══ 18 · FECHAMENTO ════════════════════════════════════════════════════
 folha(f'''<div class="pad" style="justify-content:center">
   <div class="cv-brand" style="color:var(--gold-lt)">Valvic Marcenaria</div>
   <div class="h1" style="font-size:40pt;margin-top:6mm">Um contrato.<br>Uma data.<br>
@@ -772,6 +779,19 @@ def _qa():
     assert PRAZO in t and ENTREGA_ANTECIPADA[1] in t, '⛔ QA: prazo não impresso'
     assert '>1<' in t and '>10<' in t and '>30<' in t, '⛔ QA: garantia não impressa'
     assert 'travertino' in t.lower(), '⛔ QA: a pedra não foi nomeada como fora'
+    #   ⭐⭐ A ORDEM DAS FOLHAS É DECISÃO COMERCIAL, NÃO DIAGRAMAÇÃO.
+    #     [Jonathan, 05/11/2026] "fale da garantia antes de apresentar
+    #     valores". Quem lê o prazo de garantia antes do número lê o número
+    #     como consequência; quem lê depois, lê como desculpa. A trava
+    #     existe para que uma reordenação futura não desfaça isso em
+    #     silêncio.
+    assert t.index('O termo é assinado na entrega') < t.index('Um ano, dez, ou trinta'), \
+        '⛔⛔ QA: a garantia voltou para DEPOIS do preço'
+    #   ⛔ E a folha dos três cartões é UMA SÓ. Havia duas, quase iguais,
+    #     e o cliente lia a mesma coisa duas vezes. Três cartões mais a
+    #     linha do total da tabela = quatro "A casa inteira", nunca sete.
+    assert t.count('A casa inteira') == 4, \
+        f'⛔⛔ QA: {t.count("A casa inteira")} vezes "A casa inteira" — a folha redundante voltou'
     return True
 
 

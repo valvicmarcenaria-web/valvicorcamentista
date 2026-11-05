@@ -16,7 +16,50 @@ pode ler e escrever aqui. Formato livre — marcar data e agente responsável.
 > *"prazo de entrega 70 dias corridos pos medição, com entrega do escritorio
 > ate 10 de dezembro"*
 
-**`proposta-costa-laguna.pdf` · 19 folhas A4 paisagem · 3,2 MB.**
+**`proposta-costa-laguna.pdf` · 18 folhas A4 paisagem · 4,6 MB.**
+
+⭐⭐ **SEGUNDA RODADA [Jonathan, 05/11/2026], três pedidos e os três feitos:**
+
+1. *"a pagina 17 e a 14 ficaram redundantes"* — **e estavam.** Duas folhas de
+   três cartões, quase iguais: uma vendia a sensação, a outra o preço. Agora
+   é **uma só**, e a prosa tátil da que saiu foi para os cartões que levam o
+   número. ⛔ Virou trava: três cartões + o total da tabela dão **quatro**
+   "A casa inteira" no HTML, nunca sete.
+2. *"fale da garantia antes de apresentar valores"* — ⭐⭐ **e isso não é
+   diagramação, é decisão comercial.** Quem lê o prazo de garantia ANTES do
+   número lê o número como consequência; quem lê depois, lê como desculpa.
+   A ordem virou `assert` no QA, para uma reordenação futura não desfazer em
+   silêncio.
+3. *"pegue as imagens do projeto nesse arquivo"* — **o anteprojeto 3D, agora
+   compactado em 2,7 MB.** ⛔⛔ E a parte que custou: **o container não
+   alcança o `drive.google.com`** (a política de rede devolve 403 no CONNECT)
+   e o MCP do Drive devolve o arquivo em base64 **dentro do contexto** — 3,6
+   milhões de caracteres que eu não teria como escrever de volta em disco.
+   ⭐ O caminho que funcionou: o harness **persiste o resultado grande do MCP
+   num arquivo** em `tool-results/`, e daí é só decodificar. Está escrito
+   aqui porque vou precisar de novo.
+
+**O que as imagens mudaram, e o que elas me obrigaram a dizer:**
+⭐ Oito renders entraram, e cada folha de ambiente passou a ter **render +
+elevação cotada lado a lado** — o que se vê e o que se executa.
+⛔⛔ **MAS O ANTEPROJETO MOSTRA A CASA INTEIRA, E NÓS NÃO VENDEMOS A CASA
+INTEIRA.** A cozinha do render tem ilha, bancada de pedra e eletro; nosso é
+o armário de portas de vidro e a coluna. Deixar isso implícito seria mentira
+de escopo. A folha 02 passou a trazer um quadro próprio: *"as perspectivas
+são do anteprojeto da arquitetura e mostram a casa inteira — mobiliário
+solto, pedra, eletrodomésticos e decoração aparecem nelas e não estão nesta
+proposta."*
+⚠ E três ambientes **não têm render que sirva**: hall, jantar e gourmet. O
+anteprojeto não os mostra, ou mostra o que não é nosso. Essas folhas seguem
+só com elevação, e a tarja diz isso.
+
+⛔ **Mais três defeitos de montagem, todos vistos só porque eu abri o PDF:**
+a tarja vertical do anteprojeto entrava cortada no meio da palavra
+("E ESTAR") quando a faixa sangrava — recorte passou a começar em 7,5% da
+largura; a faixa de uma imagem só deixava o render ilhado em doze
+centímetros de areia de cada lado — faixa `solo` sangra; e o quadro "o que
+está incluso" subia por cima do rodapé — a folha entrou no passe de
+encolhimento.
 
 ⭐⭐ **A REGRA QUE O `caderno.py` INSTITUI: A PROPOSTA LÊ O MOTOR.** Nenhum
 valor é digitado nela — todos saem de `linhas.monta()` na hora de gerar. Não
