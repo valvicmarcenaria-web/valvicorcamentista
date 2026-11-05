@@ -7,6 +7,59 @@ pode ler e escrever aqui. Formato livre — marcar data e agente responsável.
 
 ## Tarefas abertas
 
+### [2026-11-05] Fluxo de caixa de novembro — A CONCILIAÇÃO DE 01 A 05/11 — Lavinia
+**Solicitante:** Jonathan · **Agente:** Lavinia · **Status:** ✅ planilha batendo com os dois bancos ao centavo
+
+> *"faça a leitura dos extratos e faça o cruzamento com a planilha
+> corrigindo e complementando o meu preenchimento. aproveite para fazer o
+> agrupamento dos preenchimentos de cada dia."*
+
+⛔⛔ **PRIMEIRO, UMA COISA QUE EU NÃO PODIA FAZER E NÃO FIZ:** tentei gravar
+a transcrição dos extratos num arquivo do repositório e o classificador
+barrou, por **procedência sensível**. ⭐ E estava certo: extrato traz CPF de
+terceiro, e repositório vai para o GitHub. A conferência inteira rodou **em
+memória**, e o resultado foi escrito só na planilha, que é do dono. Fica a
+regra: **extrato não entra em repositório.**
+
+⭐⭐ **A PROVA VEM ANTES DA COMPARAÇÃO.** Antes de cruzar qualquer coisa eu
+provei a transcrição: saldo anterior + movimento do dia = saldo do dia, nos
+dois bancos, nos três dias. Fechou nos seis. Se essa conta não fecha, eu li
+errado e nada do que vem depois vale.
+
+**As diferenças eram três, e uma explicava as outras duas:**
+
+1. ⭐⭐ **OS R$ 0,82.** A transferência entre as contas foi lançada por um
+   valor e saiu por outro: o PIX levou junto os 82 centavos que estavam
+   parados na conta de origem, e zerou ela. O mesmo 0,82 aparecia no ajuste
+   do saldo negativo do mês anterior. **Dois lugares, o mesmo centavo
+   faltando** — e nenhum dos dois reclamava.
+2. ⭐⭐ **OS JUROS ESTAVAM NO DIA ERRADO.** Uma linha de "juros e iof" de
+   R$ 517,00 no dia 04 era, na verdade, **R$ 442,80 de juros do dia 03** mais
+   **R$ 74,20 de IOF do dia 04**. Por isso o dia 03 sobrava R$ 440,28 e o dia
+   04 faltava R$ 441,65 — as duas pontas se explicavam uma à outra, e a
+   diferença entre elas era um terceiro erro pequeno.
+3. ⚠ **E FALTAVA UMA PERNA DA TRANSFERÊNCIA.** A entrada no banco de destino
+   estava lançada; a saída do banco de origem, não. No dia 05 ele fez o par
+   completo — então o jeito certo já estava na própria planilha, três dias
+   depois.
+
+⭐ **O QUE PARECIA ERRO E NÃO ERA:** uma linha de R$ 62,00 sem correspondente
+no extrato. São **três PIX pequenos somados** (17 + 30 + 15), e a coluna
+"Lançamento" dela já dizia **Agrupado**. Não apaguei: nomeei os três na
+observação, para a próxima pessoa não refazer a investigação.
+
+**Corrigido também:** um boleto lançado por R$ 499,00 que saiu por R$ 500,15,
+e o **saldo do extrato do dia 05 digitado como R$ 2.194,99** quando o banco
+fechou em **R$ 1.856,99** — diferença exata de um PIX de R$ 338,00 que já
+estava lançado. ⭐ Preenchi as cinco linhas de "saldo no extrato" das duas
+contas, e a coluna **diferença zerou nos cinco dias**.
+
+⭐ **E O AGRUPAMENTO:** três grupos na aba LANCAMENTOS, um por dia, todos
+recolhidos — o "+" na margem esquerda. ⛔ Detalhe que eu só aprendi
+apanhando: **grupos colados viram um só**. Por isso a **primeira linha de
+cada dia fica FORA do grupo** — ela é o separador, e é o que você vê quando
+o dia está fechado.
+
 ### [2026-11-05] BAR CARIOCANDO · Savassi BH — balcão da cozinha, prancha #104 R02 — Lavinia
 **Solicitante:** Jonathan · **Agente:** Lavinia · **Status:** ✅ orçado em uma linha · ⚠ três perguntas antes de enviar
 
