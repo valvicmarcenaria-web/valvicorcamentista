@@ -73,3 +73,25 @@ Entrada/banhos: **L** 183,90 · 18,00 · **F** 171,50 · 139,30 · 108,15 ·
 
 ⚠ Tudo isso é **pegada em planta**. Nenhuma dessas cotas vira peça de corte
 sem a elevação correspondente.
+
+## As 14 imagens da pasta são RENDERS, não fotos de obra
+
+Abri duas. São renders de alta qualidade, e mostram o que o executivo não
+diz em planta:
+
+- **Suíte:** parede inteira em painel amadeirado, com **nicho retroiluminado
+  em mármore**, bancada/penteadeira suspensa com gavetas e portas, e uma
+  **divisória ripada vertical com LED** separando o closet. ⭐ O painel sobe
+  do piso ao forro e engole a porta — é peça grande e contínua.
+- **Banho:** painel amadeirado de parede inteira (nosso), espelheira com LED
+  e todo o resto em mármore **Grigio Carnico**, inclusive a cuba esculpida e
+  o rodabanca — marmoraria, fora.
+
+⭐ Elas valem para a proposta e para entender cada item. ⛔ Não valem para
+medir: medida sai da elevação cotada, e a elevação está nas 15 a 25.
+
+## A decisão comercial, já cravada [Jonathan, 05/11/2026]
+
+**Ferragem Blum em tudo** · **RT de 10%** → BASE **76,09%** · **MC 43%**, a
+mesma que a linha Blum levou no Costa Laguna. Está em `base.py`, com as
+travas que provam a cascata.
