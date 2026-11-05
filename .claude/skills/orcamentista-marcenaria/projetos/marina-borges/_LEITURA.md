@@ -74,21 +74,38 @@ Entrada/banhos: **L** 183,90 · 18,00 · **F** 171,50 · 139,30 · 108,15 ·
 ⚠ Tudo isso é **pegada em planta**. Nenhuma dessas cotas vira peça de corte
 sem a elevação correspondente.
 
-## As 14 imagens da pasta são RENDERS, não fotos de obra
+## As 14 imagens da pasta são RENDERS — e estão todas lidas
 
-Abri duas. São renders de alta qualidade, e mostram o que o executivo não
-diz em planta:
+Baixei e olhei as catorze (`fotos/`). ⭐⭐ **E elas mudam o tamanho que eu
+imaginava para este job.** A planta sugeria painéis de parede; o render
+mostra um apartamento de marcenaria pesada, com muita gaveta — que é
+exatamente onde a ferragem Blum pesa no custo.
 
-- **Suíte:** parede inteira em painel amadeirado, com **nicho retroiluminado
-  em mármore**, bancada/penteadeira suspensa com gavetas e portas, e uma
-  **divisória ripada vertical com LED** separando o closet. ⭐ O painel sobe
-  do piso ao forro e engole a porta — é peça grande e contínua.
-- **Banho:** painel amadeirado de parede inteira (nosso), espelheira com LED
-  e todo o resto em mármore **Grigio Carnico**, inclusive a cuba esculpida e
-  o rodabanca — marmoraria, fora.
+| render | ambiente | o que é NOSSO ali |
+|---|---|---|
+| 01 · f00 | Suíte | painel amadeirado de parede inteira · bancada/penteadeira suspensa com gavetas · **divisória ripada vertical com LED** |
+| 02 · f01 | Banho suíte | painel amadeirado de parede inteira · espelheira |
+| 03 · r-39-02 | Banho | nicho e marcenaria de apoio · pouca coisa à vista |
+| 04 · r-39-03 | Banho social | bancada suspensa **com gavetas** · espelheira grande · nichos iluminados |
+| 05 · r-39-04 | **Closet** | ⭐⭐ closet inteiro em **perfil de alumínio e vidro**, com gaveteiros, sapateiras e araras iluminadas |
+| 06 · r-39-05 | Closet | o mesmo, do corredor, com a passagem para a suíte |
+| 07 · r-39-06 | Quarto | cabeceira estofada corrida · bancada sob a janela **com armários** |
+| 08 · r-39-07 | Quarto / home office | armário de parede inteira · estante de nichos iluminados · bancada de trabalho **com gavetas** |
+| 09 · r-39-08 | Jantar | **cristaleira iluminada** com portas de vidro e perfil · painel amadeirado |
+| 10 · r-40-00 | Sala · painel de TV | painel com nichos · **adega/garrafeira** · rack inferior com gavetas |
+| 11 · r-40-01 | Sala e cozinha | painéis amadeirados · **porta ripada** · marcenaria da bancada |
+| 12 · r-40-02 | Jantar / bar | **cristaleira grande iluminada dos dois lados** · adega sob a bancada |
+| 13 · r-40-03 | Cozinha / bar | adega · nichos · marcenaria da ilha |
+| 14 · r-40-04 | Suíte, outro ângulo | painel de TV · **cabeceira estofada com ripado** · closet ao fundo · bancada |
 
-⭐ Elas valem para a proposta e para entender cada item. ⛔ Não valem para
-medir: medida sai da elevação cotada, e a elevação está nas 15 a 25.
+⭐ **O que já dá para dizer do custo, sem medir:** gaveta aparece em pelo
+menos seis peças (penteadeira, duas bancadas de banho, bancada do quarto,
+rack da TV, gaveteiros do closet) e **vidro com perfil** em duas cristaleiras
+e no closet inteiro. É um projeto de ferragem cara — e a linha pedida é a
+Blum, a mais cara das três.
+
+⛔ **Mas render não mede.** Nenhuma dessas peças vira peça de corte sem a
+elevação cotada, e as elevações estão nas pranchas 15 a 25.
 
 ## A decisão comercial, já cravada [Jonathan, 05/11/2026]
 
