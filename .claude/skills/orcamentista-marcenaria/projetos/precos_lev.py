@@ -48,6 +48,14 @@ def tabela(pasta, frete=400.0, rt=0.10, vend=0.03):
         cus, mov, ch = custos(pasta, k, frete)
         pv = {x: round((cus[x] - mov[x]) / (B - (mci if mov[x] > 0 else MC_COMUM)), -1)
                  + round(mov[x] / (B - mcf), -1) for x in cus}
+        # ⭐ PREÇO FIXO por ambiente, decisão do dono: <pasta>/fixos.json
+        #   {"Ambiente": {"preco": 15600, "item": "nome do item único"}}
+        fx = pathlib.Path(pasta) / 'fixos.json'
+        for a, d in (json.loads(fx.read_text(encoding='utf-8')).items() if fx.exists() else []):
+            it = [x for x in pv if x[0] == a]
+            c, f = sum(cus[x] for x in it), sum(mov[x] for x in it)
+            for x in it: del pv[x], cus[x], mov[x]
+            pv[(a, d['item'])], cus[(a, d['item'])], mov[(a, d['item'])] = d['preco'], c, f
         T[k] = dict(nome=nome, cus=cus, mov=mov, pv=pv, CD=sum(cus.values()),
                     venda=sum(pv.values()), chapas=ch)
     return B, T
@@ -63,5 +71,8 @@ if __name__ == '__main__':
         print(f'  {x[0]:12s} {x[1]:48s}' + ''.join(
             f"{brl(T[k]['cus'][x]):>13s}{brl(T[k]['pv'][x]):>14s}" for k in T))
     print(f"  {'TOTAL':61s}" + ''.join(f"{brl(T[k]['CD']):>13s}{brl(T[k]['venda']):>14s}" for k in T))
+    for x in T['hettich']['pv']:
+        mc_x = B - T['hettich']['cus'][x] / T['hettich']['pv'][x]
+        if mc_x < 0.35: print(f'  ⚠ {x[0]} · {x[1]}: MC {mc_x*100:.1f}% (abaixo do piso de 35%)')
     print('  MC efetiva', ' / '.join(f"{(B - T[k]['CD'] / T[k]['venda'])*100:.1f}%" for k in T),
           '· chapas', T['hettich']['chapas'])
