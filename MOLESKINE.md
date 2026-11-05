@@ -7,6 +7,64 @@ pode ler e escrever aqui. Formato livre — marcar data e agente responsável.
 
 ## Tarefas abertas
 
+### [2026-11-05] BAR CARIOCANDO · Savassi BH — balcão da cozinha, prancha #104 R02 — Lavinia
+**Solicitante:** Jonathan · **Agente:** Lavinia · **Status:** ✅ orçado em uma linha · ⚠ três perguntas antes de enviar
+
+> *"novo orcamento. faça apenas em uma linha hettich"* — com a prancha
+> `104_DET.COZINHA - BANCADA R02`, de Chico Albano + Biri Arquitetura.
+
+**R$ 15.979,54** · linha Hettich · MC 38% · BASE 84,88% · custo direto
+R$ 7.490,41 · 9 chapas · 27 dobradiças Sensys · 21 prateleiras.
+
+| item | preço |
+|---|--:|
+| Balcão da cozinha · armário com frentes ripadas, 308,5 × 36 | 11.309,71 |
+| Fechamento frontal ripado · face do salão, 182 × 70 | 2.910,54 |
+| Revestimento ripado da porta de acesso, 70 × 115 | 1.759,29 |
+
+⭐⭐ **O PRIMEIRO TRABALHO FOI SEPARAR O QUE É NOSSO.** A folha desenha um
+balcão de bar inteiro: alvenaria de 9, revestimento Eliane, **granito cinza
+andorinha** em bancada, balcão de apoio, sóculo e rodabanca, metalon 3×3,
+balcão refrigerado de chopp e porta de enrolar. ⛔ Pedra nunca; obra civil
+nunca. Sobraram **três peças de marcenaria**, e é só elas que o preço cobre.
+
+⭐⭐ **E AQUI A COTA ERA TEXTO DE VERDADE** — ao contrário do executivo do
+Attos, todo vetorizado. Li as cotas direto do arquivo. O único número que
+faltava, a **profundidade de 36**, saiu da planta; e a escala se provou
+sozinha no corte AA: 1:25 dá 1 pt = 0,88194 cm, e os vãos de prateleira
+mediram **29,6 / 29,7 / 29,8** contra a cota de 29,5, com o sóculo em 10,0.
+
+**⛔⛔ TRÊS COISAS ANTES DE ISSO VIRAR PROPOSTA:**
+1. ⭐⭐ **A PRANCHA PEDE DUAS RIPAS DIFERENTES, E ISSO TEM PREÇO.** As notas
+   da VISTA A e das plantas dizem **4 × 3 cm**; as da VISTA C e do detalhe
+   da porta dizem **4 × 2 cm**. Não é acabamento: 3 cm pede **duas chapas de
+   15 coladas**, 2 cm pede uma de 18. **Unificar tudo em 4 × 3 derruba o
+   preço para R$ 13.554,39 — R$ 2.425 a menos**, porque some a chapa de cor
+   18 comprada inteira para 0,92 m² e a de 6 comprada para 0,81 m². ⭐ Rodar
+   `RIPA_UNICA=1 python3 orcamento.py` mostra a conta.
+2. ⚠ **RT E VENDEDOR NÃO FORAM DITOS.** Usei a BASE publicada **sem os dois**
+   (84,88%), que é a que não esconde custo. Com vendedor de 10% ela cai para
+   76,09% e o preço sobe quase 18%. São **dois escritórios** assinando a
+   prancha e um cliente comercial — a pergunta não é retórica.
+3. ⚠ **O METALON 3×3.** Ele carrega as bancadas de granito e recebe o nosso
+   revestimento. Pela regra da casa (*existe sem o móvel? não é nosso*) é da
+   serralheria e ficou fora. ⛔ Mas a **porta de acesso é metalon revestido
+   por nós**: se a folha vier por nossa conta, entra custo que não está aqui.
+
+⚠ Menores, e ficam: **puxador não está especificado** em lugar nenhum da
+folha; a **prateleira metálica** diz "ver detalhe específico", que é outra
+prancha que eu não tenho; e a **hachura do ripado no desenho tem passo de
+~3,8 cm**, não os 6 que a nota manda — grafismo, não especificação, mas
+alguém vai contar ripa no desenho um dia.
+
+**Gravado em:** `projetos/bar-cariocando/base.py` (a base de custos da casa,
+sem nada do Attos dentro) · `orcamento.py` (o levantamento e o preço).
+⭐ E a trava do fim do `orcamento.py` pegou um defeito real: cada item
+arredondava as próprias chapas e a soma dos três (R$ 17.252) estourava o
+preço do projeto (R$ 15.980) em R$ 1.273. **Quem compra chapa é o projeto** —
+o item leva a fração e rateia a sobra pela área.
+
+
 ### [2026-11-04] Attos · Costa Laguna — O CADERNO EM PDF, 19 FOLHAS — Lavinia + Vitor
 **Solicitante:** Jonathan · **Agente:** Lavinia (orçamento) → Vitor (proposta) ·
 **Status:** ✅ PDF gerado · ⚠ falta o nome do cliente e dois termos de garantia
