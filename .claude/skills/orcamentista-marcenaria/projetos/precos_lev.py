@@ -15,6 +15,10 @@ from motor_lev import brl
 LIN = {'telescopica': ('Telescópica', 0.35, 0.42), 'hettich': ('Hettich', 0.43, 0.47),
        'blum': ('Blum', 0.55, 0.52)}
 MC_COMUM = 0.42
+# ⭐ Linhas apresentadas: LINHAS=hettich só a Hettich [Jonathan, 05/11/2026,
+#   Tereza Sá e Júnia Portugal: "vamos trabalhar apenas com a linha Hettich"]
+if os.environ.get('LINHAS'):
+    LIN = {k: v for k, v in LIN.items() if k in os.environ['LINHAS'].split(',')}
 
 def base(rt, vend):
     """Cascata sem cartão: NF, erro, serra, manutenção sobre o bruto; RT e
