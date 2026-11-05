@@ -82,12 +82,30 @@ assert abs(BASE_SEM_RT - 0.8488) < 1e-4
 assert abs(BASE_COM_UM - 0.7609) < 1e-4
 assert abs(BASE_COM_DOIS - 0.6730) < 1e-4
 
-#   ⛔⛔ AQUI MORA A MAIOR ALAVANCA COMERCIAL DESTE ORÇAMENTO, e ela é uma
-#     PERGUNTA, não uma conta: este job tem RT de arquiteto? tem vendedor?
-#     São dois escritórios assinando a prancha (Chico Albano e Biri) e um
-#     cliente comercial. Entre a base sem ninguém e a base com os dois vão
-#     quase 18 pontos de preço.
-#   ⭐ Enquanto ninguém responde, vale a publicada SEM RT E SEM VENDEDOR —
-#     a mais barata das três, que é a escolha que NÃO esconde custo.
-BASE = BASE_SEM_RT
-MC = 0.38                # ⭐ a MC de referência da casa, linha Hettich
+#   ⭐ [Jonathan, 05/11/2026] "adicione a RT e mc de 45%". Respondida a
+#     pergunta que este arquivo fazia: o job TEM RT de arquiteto, 10%, e
+#     NÃO tem vendedor. A BASE sai de 84,88% e vai para 76,09%.
+#   ⛔ E os 10% da RT não saem da margem: eles entram na cascata, antes
+#     dela. Quem paga a RT é o preço, não a MC.
+RT = 0.10
+VENDEDOR = 0.0
+BASE = cascata(rt=RT, vendedor=VENDEDOR)
+assert abs(BASE - BASE_COM_UM) < 1e-9, BASE      # 0,760875 · publicado 76,09%
+MC = 0.45                # ⭐ [Jonathan, 05/11/2026] cravada, acima da faixa
+                         #   ideal da casa (35 a 40) — é job comercial, de
+                         #   prazo curto e cliente novo.
+
+# ── as condições comerciais ─────────────────────────────────────────────
+#   ⭐ [Jonathan, 05/11/2026] todas cravadas por ele, nenhuma calculada.
+VALIDADE = 'hoje'                       # ⚠ proposta de validade imediata
+PRAZO = '30 de novembro de 2026'
+GARANTIA_ANOS = 5
+#   ⚠⚠ E A GARANTIA DE 5 ANOS NÃO É A DA TABELA DESTE NÍVEL DE FERRAGEM.
+#     A política da casa põe Hettich em 10 anos e reserva os 5 para a linha
+#     Hardt. Aqui a ferragem é Sensys e a garantia vai a 5. ⭐ Prometer menos
+#     do que a tabela não cria risco — cria pergunta, e a pergunta é: por
+#     quê? Job comercial de bar, uso pesado e porta aberta o dia inteiro é
+#     uma resposta boa. Fica registrado como decisão do dono, não como erro.
+PARCELAS = [('Entrada, na assinatura do contrato', 0.60),
+            ('Na entrega, em 30 de novembro de 2026', 0.40)]
+assert abs(sum(x for _d, x in PARCELAS) - 1) < 1e-9

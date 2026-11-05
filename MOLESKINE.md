@@ -13,14 +13,44 @@ pode ler e escrever aqui. Formato livre — marcar data e agente responsável.
 > *"novo orcamento. faça apenas em uma linha hettich"* — com a prancha
 > `104_DET.COZINHA - BANCADA R02`, de Chico Albano + Biri Arquitetura.
 
-**R$ 15.979,54** · linha Hettich · MC 38% · BASE 84,88% · custo direto
-R$ 7.490,41 · 9 chapas · 27 dobradiças Sensys · 21 prateleiras.
+⭐⭐ **FECHADO EM R$ 24.094,60** [Jonathan, 05/11/2026]: *"adicione a RT e
+mc de 45%"*. A pergunta que eu tinha deixado em aberto no `base.py` foi
+respondida — **tem RT de 10%, não tem vendedor** —, e a BASE saiu de 84,88%
+para **76,09%**. Com a MC em **45%** (acima da faixa ideal da casa, 35 a 40),
+o preço subiu de R$ 15.979,54 para R$ 24.094,60. ⛔ O custo direto não mudou
+um centavo: R$ 7.490,41. **RT e MC são preço, não custo.**
 
-| item | preço |
-|---|--:|
-| Balcão da cozinha · armário com frentes ripadas, 308,5 × 36 | 11.309,71 |
-| Fechamento frontal ripado · face do salão, 182 × 70 | 2.910,54 |
-| Revestimento ripado da porta de acesso, 70 × 115 | 1.759,29 |
+| item | MC 38% sem RT | **MC 45% com RT** |
+|---|--:|--:|
+| Balcão da cozinha · 308,5 × 36 | 11.309,71 | **17.053,24** |
+| Fechamento frontal do salão · 182 × 70 | 2.910,54 | **4.388,63** |
+| Revestimento ripado da porta · 70 × 115 | 1.759,29 | **2.652,73** |
+| **total** | 15.979,54 | **24.094,60** |
+
+**A proposta saiu em DUAS folhas** (`proposta-bar-cariocando.pdf`), porque
+foi o que ele pediu — e duas folhas é outro gênero, não o caderno encurtado:
+na folha 1 o preço vem primeiro, na folha 2 mora o contrato em miniatura.
+⛔ O que não coube não virou letra miúda: virou linha nomeada em "o que não
+está nesta proposta".
+
+**As condições, todas cravadas por ele:** prazo **30 de novembro de 2026** ·
+garantia **5 anos** · validade **hoje** · pagamento **60% de entrada e 40%
+na entrega** (R$ 14.456,76 + R$ 9.637,84).
+
+⚠⚠ **E TRÊS DELAS MERECEM REGISTRO, não discussão:**
+1. **A garantia de 5 anos está ABAIXO da tabela da casa.** A política põe
+   Hettich em 10 anos e reserva os 5 para a linha Hardt — e a ferragem aqui
+   é Sensys. ⭐ Prometer menos não cria risco, cria pergunta; para bar, de
+   uso pesado, a resposta é boa. ⚠ Mas o termo de 5 anos **também não existe
+   desenhado**: só o de 10.
+2. **MC de 45% está acima da faixa ideal** (35 a 40). Job comercial, prazo
+   curto e cliente novo justificam; fica como decisão do dono.
+3. **O prazo de 30/11 são 25 dias corridos e dependem de terceiros** — a
+   marcenaria é a última a entrar, depois da alvenaria, do granito e do
+   metalon. ⭐ Isso está ESCRITO na folha de condições, não subentendido.
+
+⚠ E a divergência da ripa segue de pé, agora com outro valor: unificar as
+três faces em 4 × 3 leva o preço de R$ 24.094,60 para **R$ 20.437,86**.
 
 ⭐⭐ **O PRIMEIRO TRABALHO FOI SEPARAR O QUE É NOSSO.** A folha desenha um
 balcão de bar inteiro: alvenaria de 9, revestimento Eliane, **granito cinza

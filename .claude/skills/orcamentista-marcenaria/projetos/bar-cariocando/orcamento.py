@@ -213,7 +213,16 @@ if __name__ == '__main__':
     print('═' * L)
     print('BAR CARIOCANDO · COZINHA / BANCADA — prancha #104 R02 · LINHA HETTICH')
     print('═' * L)
-    print(f'  BASE {b.BASE:.2%} (sem RT e sem vendedor) · MC {b.MC:.0%}'
+    #   ⛔ O RÓTULO SE CALCULA. Quando a RT entrou, este cabeçalho continuou
+    #     dizendo "sem RT e sem vendedor" ao lado de uma BASE de 76,09%, e o
+    #     rodapé continuou dizendo "MC 38%" embaixo de uma MC de 45. Texto
+    #     digitado ao lado de número calculado envelhece sem avisar.
+    _cond = ' e '.join(
+        [t for t, v in (('RT de %.0f%%' % (b.RT * 100), b.RT),
+                        ('vendedor de %.0f%%' % (b.VENDEDOR * 100), b.VENDEDOR)) if v]
+    ) or 'sem RT e sem vendedor'
+    print(f'  BASE {b.BASE:.2%} (com {_cond})' if (b.RT or b.VENDEDOR)
+          else f'  BASE {b.BASE:.2%} ({_cond})'
           + ('  ·  ⭐ RIPA UNIFICADA em 4 × 3' if RIPA_UNICA else '') + '\n')
     T = custo(M)
     tot_pv = 0.0
@@ -249,6 +258,6 @@ if __name__ == '__main__':
     print('─' * L)
     pv = T['direto'] / (b.BASE - b.MC)
     assert abs(pv - tot_pv) < 0.01, '⛔ a soma dos itens não bate com o motor'
-    print('  %-40s %14s' % ('PREÇO · LINHA HETTICH, MC 38%', brl(pv)))
+    print('  %-40s %14s' % (f'PREÇO · LINHA HETTICH, MC {b.MC:.0%}', brl(pv)))
     print('  %-40s %14s' % ('  MC realizada', f'{b.BASE - T["direto"]/pv:.1%}'))
     print('═' * L)
