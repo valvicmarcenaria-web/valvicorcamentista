@@ -60,19 +60,27 @@ def b64(nome):
 
 
 SUP = '''
-.band2{height:54mm;background:var(--sand);display:flex;padding:4mm 6mm;margin:5mm 0 0}
-.band2 img{width:100%;height:100%;object-fit:contain;background:#fff;padding:3mm;
+/* ⛔ O CAMPO DE AREIA TEM DE ABRAÇAR O DESENHO, NÃO A FOLHA. A elevação é
+   três vezes e meia mais larga que alta; num campo de 26 cm de largura ela
+   fica contida pela ALTURA e sobram cinco centímetros de areia vazia de
+   cada lado — que o olho lê como erro de montagem, não como respiro.
+   ⭐ Então a areia é a moldura da IMAGEM: ela cresce com o desenho e para
+   onde ele para. */
+.band2{display:flex;justify-content:center;margin:5mm 0 0;height:58mm}
+.band2 img{height:100%;width:auto;max-width:100%;object-fit:contain;
+           background:var(--sand);padding:4mm 5mm;
            box-shadow:0 1mm 4mm rgba(26,23,20,.10)}
 .cab{display:flex;justify-content:space-between;align-items:flex-end;
      border-bottom:1px solid var(--line);padding-bottom:3.5mm}
 .cab .marca{font-size:8pt;letter-spacing:.44em;text-transform:uppercase;
             color:var(--gold);font-weight:600}
 .cab .quem{text-align:right;font-size:7.6pt;color:var(--soft);line-height:1.45}
-.inv td.l{font-size:9.4pt;font-weight:600}
-.inv td .sub{display:block;color:var(--soft);font-size:7.9pt;font-weight:400;
-             margin-top:.8mm;line-height:1.45;max-width:170mm}
-.inv td .med{color:var(--gold);font-weight:600;font-size:7.4pt;letter-spacing:.14em;
-             text-transform:uppercase}
+.mv{padding:3.2mm 0;align-items:baseline}
+.mv .t{font-size:10.4pt}
+.mv .med{color:var(--gold);font-weight:600;font-size:7.4pt;letter-spacing:.14em;
+         text-transform:uppercase}
+.mv .d{display:block;color:var(--soft);font-size:8.4pt;margin-top:1.2mm;
+       line-height:1.5;max-width:215mm}
 .tot2{display:flex;justify-content:space-between;align-items:baseline;
       border-top:1.5px solid var(--ink);margin-top:3mm;padding-top:3.5mm}
 .tot2 .k{font-size:7.4pt;letter-spacing:.2em;text-transform:uppercase;
@@ -84,12 +92,19 @@ SUP = '''
 CSS = (CASA / 'css-caderno.css').read_text(encoding='utf-8') + SUP
 JS = (CASA / 'js-caderno.js').read_text(encoding='utf-8')
 
+#   ⛔⛔ [Jonathan, 05/11/2026] "nao separe os valores pelos itens". E a
+#     folha muda de natureza, não só de coluna: sem preço ao lado, a lista
+#     deixa de ser orçamento e vira ESCOPO — o que entra no contrato. ⭐ Um
+#     preço por peça convida a cortar uma peça; um preço só convida a
+#     decidir o conjunto, que é o que esta proposta vende.
+#   ⭐ E o preço do item não some do mundo: ele continua no `orcamento.py`,
+#     que é onde a fábrica e a margem olham. Sai da folha do cliente.
 _rows = ''
-for (nome, med, txt), pv in zip(DESC, PV):
-    _rows += (f'<tr><td class="l">{nome}<span class="med"> · {med}</span>'
-              f'<span class="sub">{txt}</span></td>'
-              f'<td style="vertical-align:top;font-size:11pt;font-weight:700">'
-              f'{brl(pv)}</td></tr>')
+for nome, med, txt in DESC:
+    _rows += (f'<div class="mv"><span class="b"></span><span>'
+              f'<span class="t">{nome}</span>'
+              f'<span class="med"> · {med}</span>'
+              f'<span class="d"><br>{txt}</span></span></div>')
 
 _pay = ''.join(f'<tr><td>{d}</td><td class="d">{p:.0%}</td>'
                f'<td class="d" style="color:var(--ink);font-weight:600">'
@@ -111,7 +126,7 @@ F1 = f'''<div class="pad apertada"><div class="fitp">
     estrutura metálica estão nomeados na folha seguinte, fora do nosso
     escopo.</div></div>
  <div class="band2"><img src="{b64('balcao')}" alt=""></div>
- <table class="inv" style="margin-top:6mm">{_rows}</table>
+ <div style="margin-top:6mm">{_rows}</div>
  <div class="tot2"><div class="k">Investimento total</div>
    <div class="v">{brl(TOTAL)}</div></div>
 </div></div>'''
@@ -209,6 +224,13 @@ def _qa():
     for p in ('Attos', 'Costa Laguna', 'Gustavo', 'Michel', 'Raposo', 'R$ 0,00'):
         assert p not in t, f'⛔⛔ QA: "{p}" apareceu na proposta'
     assert brl(TOTAL) in t, '⛔ QA: o total não está impresso'
+    #   ⛔⛔ E A FOLHA TEM UM PREÇO SÓ. A trava não confia na minha memória
+    #     de ter tirado a coluna: ela procura cada preço de item no texto e
+    #     se achar um, não sai.
+    for nome, pv in zip([d[0] for d in DESC], PV):
+        assert brl(pv) not in t, f'⛔⛔ QA: o preço de "{nome}" vazou para a folha'
+    assert t.count('R$') == 1 + len(b.PARCELAS), \
+        f'⛔⛔ QA: {t.count("R$")} valores na proposta — devia ser o total e as parcelas'
     assert b.PRAZO in t and str(b.GARANTIA_ANOS) in t, '⛔ QA: prazo ou garantia fora'
     #   ⛔ a soma das parcelas tem de dar o total, na FOLHA e não só no código
     soma = sum(TOTAL * p for _d, p in b.PARCELAS)

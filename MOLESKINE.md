@@ -27,6 +27,16 @@ um centavo: R$ 7.490,41. **RT e MC são preço, não custo.**
 | Revestimento ripado da porta · 70 × 115 | 1.759,29 | **2.652,73** |
 | **total** | 15.979,54 | **24.094,60** |
 
+⛔⛔ **E O PREÇO NÃO SE SEPARA POR ITEM** [Jonathan, 05/11/2026]: *"nao
+separe os valores pelos itens"*. ⭐ A folha muda de natureza, não só de
+coluna: sem preço ao lado, a lista deixa de ser orçamento e vira **escopo** —
+o que entra no contrato. Um preço por peça convida a cortar uma peça; um
+preço só convida a decidir o conjunto, que é o que esta proposta vende.
+⭐ O preço do item não sumiu do mundo: ele segue no `orcamento.py`, que é
+onde a fábrica e a margem olham. Saiu da folha do cliente. E a trava não
+confia na minha memória de ter tirado a coluna — ela **procura cada preço de
+item no texto da folha** e se achar um, o build não sai.
+
 **A proposta saiu em DUAS folhas** (`proposta-bar-cariocando.pdf`), porque
 foi o que ele pediu — e duas folhas é outro gênero, não o caderno encurtado:
 na folha 1 o preço vem primeiro, na folha 2 mora o contrato em miniatura.
