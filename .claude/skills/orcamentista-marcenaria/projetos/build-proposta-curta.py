@@ -41,7 +41,8 @@ CLIENTES = {
        ('Armário baixo', 'Portas de correr e gavetões, por fora e por dentro no acabamento '
         'escolhido com a arquiteta, sobre rodapé recuado que deixa o móvel leve na parede.')]),
      ('Banho suíte', [
-       ('Armário superior de espelho', 'Portas de correr inteiras em espelho, com trilho oculto, '
+       ('Armário superior de espelho', 'Portas de correr em espelho, em esquadria de alumínio '
+        'de perfil extra fino — borda infinita —, com sistema deslizante oculto Siforma, '
         'puxador passante e luz embutida sob o armário, que ilumina a bancada.'),
        ('Gabinete suspenso', 'Portas de abrir e gavetões sob a bancada, com corrediça oculta '
         'Hettich de fechamento amortecido.')])],

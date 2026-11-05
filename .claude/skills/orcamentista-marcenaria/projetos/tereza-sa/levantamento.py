@@ -35,12 +35,14 @@ ambiente('Banho suíte')
 m = 'Armário superior com portas de espelho'
 caixa(m, 165, 133, 15, C, interno=f'{C} 15', fundo=f'{C} 6', lat_vistas=2, base_vista=True)
 prateleiras(m, 3, 160, 13, f'{C} 18')
-for L in (82.5, 82.5):
-    P(m, 'Porta de correr (base do espelho)', 133, L, 1, f'{C} 15', 2 * (L + 133) / 100)
-    O(m, 'Desempenador de porta', 2, 'un', 100)
-O(m, 'Espelho prata colado na porta', 2 * 0.825 * 1.33, 'm²', 600)
-O(m, 'Sistema de correr Multi Rometal (suspenso, trilho oculto)', 1, 'cj', 500,
-  '⚠ a confirmar na Base')
+#   ⭐ [Jonathan, 05/11/2026] as portas são ESQUADRIA DE ALUMÍNIO em perfil
+#   extra fino (borda infinita), com espelho, e sistema deslizante OCULTO
+#   da SIFORMA. A folha não é MDF: é porta pronta terceirizada — perfil de
+#   alumínio + espelho, por m² (Base, "Porta de espelho em alumínio"), sem
+#   chapa, sem fita e sem desempenador.
+O(m, 'Porta de espelho em esquadria de alumínio, perfil extra fino (borda infinita)',
+  2 * 0.825 * 1.33, 'm²', 700, 'Base: porta de espelho em alumínio · ⚠ confirmar o perfil extra fino')
+O(m, 'Sistema deslizante oculto SI Forma (Siforma)', 1, 'cj', 1200, 'Base: sistema deslizante SI Forma')
 led(m, 1.65, 'perfil de LED embutido sob o armário')
 O(m, 'Perfil puxador passante', 2 * 1.33, 'm', 100)
 
