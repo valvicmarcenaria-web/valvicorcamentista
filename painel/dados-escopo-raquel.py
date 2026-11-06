@@ -37,7 +37,7 @@ MATERIAIS = ('MDF Noce Amêndoa Duratex · MDF Cancún Sudati · MDF Lume Guarar
              'MDF Sal Rosa Arauco (filete) · laca fosca Sayerlack J029 · tecido do estofado (a definir)')
 
 FERRAGENS = ('Puxador passante (aéreos e espelho) · rodízio de silicone com trava (gaveteiro) · '
-             'corrediças e dobradiças de linha')
+             '<b>corrediças ocultas Hettich</b> · <b>dobradiças Hettich</b>')
 
 FORA = 'Puxador de porcelana Nanda Devi 151 — Meu Puxador, 12 un — fornecimento do cliente'
 
@@ -49,6 +49,8 @@ DEFINIR = [
   'Os itens 24, 25 e 26 trazem <b>MDF Lume Guararapes</b>, mas a prancha 11 anota "usar MDF Verde/Ultra para armários". Divergência dentro do próprio projeto.'),
  ('Tecido do estofado da cabeceira',
   'A cama e a cabeceira são execução nossa. Definir o tecido com a cliente antes de comprar.'),
+ ('Corrediça oculta Hettich',
+  'Validar com a Rubia o <b>espaço disponível na bancada</b> para a corrediça oculta. Não cabendo, trocar por telescópica.'),
  ('Conferência de medidas no local',
   'Exigida em todas as pranchas. Há fotos de medição de 05/11 na pasta do cliente — confirmar se cobrem todos os ambientes.'),
  ('Vão da persiana',
