@@ -39,7 +39,7 @@ ITENS = [
  ('Cozinha', 'Coluna de eletrodoméstico', 'De piso a teto, com vão de forno e micro-ondas'),
  ('Escritório', 'Painel ripado de fundo', 'Parede inteira do fundo, na mesma cadência da casa'),
  ('Escritório', 'Armário superior, bancada e armário inferior', 'Bancada corre sobre o armário e avança em mesa, com apoio metálico na ponta · armário inferior com gaveteiro'),
- ('Sala de TV', 'Painel ripado com duas portas de manutenção', 'Acesso ao quadro de energia e à rede hidráulica · portas mimetizadas na ripa, abertas por toque'),
+ ('Sala de TV', 'Painel ripado com duas portas de manutenção', 'Acesso ao quadro de energia e à rede hidráulica · portas mimetizadas na ripa · pulsador apenas se necessário'),
  ('Sala de TV', 'Painel liso', 'Recebe a televisão, em continuidade com o ripado, sem fio aparente entre eles'),
  ('Sala de TV', 'Rack de TV suspenso', 'Gavetões sobre corrediça oculta, atravessando a junção dos dois painéis'),
  ('Suíte', 'Parede painelada da TV', 'Painel de ponta a ponta com as duas portas mimetizadas · puxador em cava usinada na própria peça'),
@@ -52,7 +52,7 @@ ITENS = [
 
 FERRAGENS = ('Corrediça oculta Hettich com Silent System e extração total, até 30 kg por gaveta · '
              'dobradiça Hettich Sensys com amortecimento integrado e regulagem nos três sentidos · '
-             'sistema pivotante nas portas do corredor · pulsador Blum TIP-ON nas portas de manutenção da sala de TV · '
+             'sistema pivotante nas portas do corredor · pulsador Blum TIP-ON nas portas de manutenção da sala de TV <b>apenas se necessário</b> · '
              'puxador em cava usinada na suíte e no hall')
 
 ESTRUTURA = ('MDF em padrões a definir entre as partes · caixaria 15 mm, fundos 6 mm, portas, frentes e prateleiras '
@@ -70,11 +70,11 @@ DEFINIR = [
  ('Portas pivotantes da cozinha',
   'Alinhar o <b>modelo de fechadura</b> e estruturar o <b>puxador na própria ripa</b>, de preferência sem avançar para a frente da peça.'),
  ('Portas de manutenção da sala de TV',
-  'São <b>duas portas simples</b>, não estrutura de porta de passagem, para acesso ao quadro de energia e à hidráulica. <b>Esconder o transpasse da porta entre as ripas.</b>'),
+  'São <b>duas portas simples</b>, não estrutura de porta de passagem, para acesso ao quadro de energia e à hidráulica. <b>Esconder o transpasse da porta entre as ripas.</b> Pulsador <b>apenas se necessário</b>.'),
  ('Ponto de alimentação do LED da cozinha',
   '<b>Salientar com o cliente</b> a necessidade de dispor do ponto de alimentação. Sem ele, não há iluminação na entrega.'),
  ('Dobradiça e vidro da cozinha',
-  'Aéreo da cozinha: <b>dobradiça black Bigfer</b> e <b>vidro Reflecta fumê</b>. Diverge do contrato, que traz Hettich Sensys em todas as portas de giro e vidro reflecta cristal — <b>registrar a alteração por escrito com o cliente</b>.'),
+  'Aéreo da cozinha: <b>dobradiça black Bigfer</b> e <b>vidro Reflecta fumê</b>.'),
  ('Painel de TV da suíte',
   'Ficou alinhado com o cliente que a <b>porta abre para o lado direito</b>. Projetar isso para o cliente validar, e <b>validar também a largura da porta</b>.'),
  ('Medidas que fecham na medição',
