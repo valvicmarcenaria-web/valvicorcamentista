@@ -6,38 +6,38 @@ Duas linhas: **Hettich** e **Blum**. Parte comum a MC 42% + ferragem de moviment
 
 | Ambiente / item | Hettich | Blum | em 04/11 (H · B) |
 |---|--:|--:|--:|
-| **Quarto casal** | | | |
+| **Quarto casal** · ajuste de -2.500 no ambiente | | | |
 | Portas ripadas pivotantes (closet e banho) · preço fixo | 8.500 | 8.500 | = |
-| Mesa rack suspensa · como em 04/11 | 4.250 | 7.310 | = |
-| Torre de nichos · como em 04/11 | 2.490 | 2.490 | = |
-| Espelho com LED · como em 04/11 | 5.000 | 5.000 | = |
-| Cabeceira · como em 04/11 | 4.290 | 4.290 | = |
-| Mesinhas de cabeceira (2) · como em 04/11 | 2.820 | 4.460 | = |
+| Mesa rack suspensa | 3.690 | 6.750 | 4.250 · 7.310 |
+| Torre de nichos | 2.160 | 2.160 | 2.490 · 2.490 |
+| Espelho com LED | 4.330 | 4.330 | 5.000 · 5.000 |
+| Cabeceira | 3.720 | 3.720 | 4.290 · 4.290 |
+| Mesinhas de cabeceira (2) | 2.450 | 4.090 | 2.820 · 4.460 |
 | *custo direto Quarto casal* | 12.789 | 13.708 | |
-| **Closet casal** | | | |
-| Closet completo, sem portas: armários, sapateira e fechamento · já com −10% | 23.540 | 32.330 | 45.030 · 55.720 |
+| **Closet casal** · ajuste de +8.000 no ambiente | | | |
+| Closet completo, sem portas: armários, sapateira e fechamento · já com −10% | 31.540 | 40.330 | 45.030 · 55.720 |
 | *custo direto Closet casal* | 10.345 | 12.029 | |
 | **Suíte Ana** | | | |
 | Móvel da janela (nichos, banco e gavetões) · preço fixo | 9.800 | 9.800 | = |
 | Painel com 3 portas mimetizadas · preço fixo | 15.600 | 15.600 | = |
 | *custo direto Suíte Ana* | 8.785 | 9.551 | |
-| **Closet Ana** | | | |
-| Armário em L do piso ao forro | 17.600 | 22.160 | 28.460 · 33.880 |
+| **Closet Ana** · ajuste de +4.000 no ambiente | | | |
+| Armário em L do piso ao forro | 21.600 | 26.160 | 28.460 · 33.880 |
 | *custo direto Closet Ana* | 7.108 | 7.873 | |
-| **Closet Mateus** | | | |
-| Armário em L do piso ao forro | 17.600 | 22.160 | 28.460 · 33.880 |
+| **Closet Mateus** · ajuste de +4.000 no ambiente | | | |
+| Armário em L do piso ao forro | 21.600 | 26.160 | 28.460 · 33.880 |
 | *custo direto Closet Mateus* | 7.108 | 7.873 | |
-| **Rouparia** | | | |
-| Armário parede A (174 × 270 × 45) · como em 04/11 | 5.030 | 5.030 | = |
-| Armário parede B (121 × 270 × 70) · como em 04/11 | 4.270 | 4.270 | = |
+| **Rouparia** · ajuste de -500 no ambiente | | | |
+| Armário parede A (174 × 270 × 45) | 4.760 | 4.760 | 5.030 · 5.030 |
+| Armário parede B (121 × 270 × 70) | 4.040 | 4.040 | 4.270 · 4.270 |
 | *custo direto Rouparia* | 6.555 | 6.555 | |
 | **Circulação** | | | |
 | Painel com 4 portas mimetizadas · como em 04/11 | 22.430 | 22.430 | = |
 | *custo direto Circulação* | 9.671 | 9.671 | |
 | **Quarto Mateus** · ⛔ saiu inteiro | — | — | 17.550 · 19.850 |
-| **TOTAL DO CONJUNTO** | **143.220** | **165.830** | 203.980 · 232.510 |
+| **TOTAL DO CONJUNTO** | **156.220** | **178.830** | 203.980 · 232.510 |
 | Custo direto | 62.362 | 67.260 | |
-| MC efetiva | 41.3% | 44.3% | |
+| MC efetiva | 45.0% | 47.3% | |
 
 **Opcional, em linha própria, fora do total:**
 
@@ -46,13 +46,13 @@ Duas linhas: **Hettich** e **Blum**. Parte comum a MC 42% + ferragem de moviment
 | Portas de correr com espelho na sapateira (closet de casal) | 4.500 | 4.500 |
 | *MC do opcional* | -11.6% | -11.6% |
 | *custo direto do opcional* | 4.340 | 4.340 |
-| *conjunto + opcional* | 147.720 | 170.330 |
+| *conjunto + opcional* | 160.720 | 183.330 |
 
 | Parcela (do conjunto) | Hettich | Blum |
 |---|--:|--:|
-| Entrada, na assinatura do contrato (30%) | 42.966 | 49.749 |
-| 30 dias após a assinatura (20%) | 28.644 | 33.166 |
-| 60 dias após a assinatura (20%) | 28.644 | 33.166 |
-| 90 dias após a assinatura (30%) | 42.966 | 49.749 |
+| Entrada, na assinatura do contrato (30%) | 46.866 | 53.649 |
+| 30 dias após a assinatura (20%) | 31.244 | 35.766 |
+| 60 dias após a assinatura (20%) | 31.244 | 35.766 |
+| 90 dias após a assinatura (30%) | 46.866 | 53.649 |
 
 Serviço avulso (venda, fora da MC): R$ 1.900 · Usinagem do painel existente da sala do térreo, para tentar recuperar o rodapé com perfil de aço inox escovado · sem garantia de efetividade.

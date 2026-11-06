@@ -3,7 +3,7 @@
 ⭐ [06/11/2026] duas linhas (Hettich e Blum), o opcional das portas de espelho
    em linha própria, fora do total, e o "antes" de 04/11 ao lado do que mudou."""
 import pathlib
-from precos import TAB, ORDEM, B, PAGTO, FIXO_ITEM, FIXO_AMB, AVULSO, MESCLA, VISTO, ANTES, TOTAL_ANTES, OPCIONAL
+from precos import TAB, ORDEM, B, PAGTO, FIXO_ITEM, FIXO_AMB, AVULSO, MESCLA, VISTO, ANTES, TOTAL_ANTES, OPCIONAL, AJUSTE_AMB
 f = lambda v: f'{v:,.0f}'.replace(',', '.')
 L = list(TAB)
 o = ['# Phillip e Giselle · tabela revisada (custo × venda) · revisão de escopo de 06/11/2026', '',
@@ -15,14 +15,16 @@ o = ['# Phillip e Giselle · tabela revisada (custo × venda) · revisão de esc
 for a in ORDEM:
     if a in OPCIONAL: continue
     it = [x for x in TAB['hettich']['pv'] if x[0] == a]
-    o.append(f'| **{a}** | | | |')
+    aj = f' · ajuste de {AJUSTE_AMB[a]:+,} no ambiente'.replace(',', '.') if a in AJUSTE_AMB else ''
+    o.append(f'| **{a}**{aj} | | | |')
     for x in it:
         nota = ''
         if x in FIXO_ITEM: nota = ' · preço fixo'
-        if x in VISTO: nota = ' · como em 04/11'
+        if x in VISTO and a not in AJUSTE_AMB: nota = ' · como em 04/11'
         if a in MESCLA and MESCLA[a][1] < 1: nota = f' · já com −{(1 - MESCLA[a][1]) * 100:.0f}%'
         antes = next((v for y, v in ANTES.items() if y[0] == a), None)
-        ant = f'{f(antes[0])} · {f(antes[1])}' if antes else '='
+        ant = (f'{f(antes[0])} · {f(antes[1])}' if antes else
+               f'{f(VISTO[x][0])} · {f(VISTO[x][1])}' if x in VISTO and a in AJUSTE_AMB else '=')
         o.append(f'| {x[1]}{nota} | ' + ' | '.join(f(TAB[k]['pv'][x]) for k in L) + f' | {ant} |')
     o.append(f'| *custo direto {a}* | ' + ' | '.join(f(sum(TAB[k]['cus'][y] for y in it)) for k in L) + ' | |')
 o.append('| **Quarto Mateus** · ⛔ saiu inteiro | — | — | ' + f"{f(ANTES[('Quarto Mateus', '(cinco itens)')][0])} · {f(ANTES[('Quarto Mateus', '(cinco itens)')][1])} |")

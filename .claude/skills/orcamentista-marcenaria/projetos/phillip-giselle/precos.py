@@ -84,6 +84,15 @@ TOTAL_ANTES = {'hettich': 203980, 'blum': 232510}
 # ⭐ [Jonathan, 06/11/2026] "linha própria, não embutida no conjunto": o
 #   opcional NÃO soma no total do projeto, aparece ao lado dele.
 OPCIONAL = {'Closet casal · portas de espelho'}
+# ⭐ [Jonathan, 06/11/2026] ajuste por AMBIENTE, em reais: "Quarto casal pode
+#   cair 2.500 · closet casal pode subir 8.000 · closet ana e mateus vamos
+#   subir 4.000 · rouparia pode cair 500". ⚠ Lido como o MESMO R$ nas duas
+#   linhas e 4.000 em CADA closet (Ana e Mateus são gêmeos de preço).
+#   Dentro do ambiente o R$ se reparte pelos itens SEM preço fixo, na
+#   proporção da Hettich, e cada item leva o MESMO R$ nas duas linhas —
+#   assim item sem ferragem de linha segue com preço igual na Hettich e na Blum.
+AJUSTE_AMB = {'Quarto casal': -2500, 'Closet casal': 8000, 'Closet Ana': 4000,
+              'Closet Mateus': 4000, 'Rouparia': -500}
 
 def linha(k):
     r = subprocess.run([sys.executable, 'resumo.py'], env=dict(os.environ, LINHA=k),
@@ -125,13 +134,24 @@ for k, (nome, mc, mc_item) in LIN.items():
                   opc={x: pv[x] for x in pv if x[0] in OPCIONAL},
                   opc_cus={x: cus[x] for x in pv if x[0] in OPCIONAL})
 
+for a, d in AJUSTE_AMB.items():
+    it = [x for x in TAB['hettich']['pv'] if x[0] == a and x not in FIXO_ITEM]
+    ref = {x: TAB['hettich']['pv'][x] for x in it}
+    parte = {x: round(d * v / sum(ref.values()), -1) for x, v in ref.items()}
+    parte[max(it, key=ref.get)] += d - sum(parte.values())
+    for k in TAB:
+        for x in it: TAB[k]['pv'][x] += parte[x]
+for k, t in TAB.items():
+    t['venda'] = sum(v for x, v in t['pv'].items() if x[0] not in OPCIONAL)
+    t['opc'] = {x: v for x, v in t['pv'].items() if x[0] in OPCIONAL}
+
 # ⛔ as travas
 for x in TAB['hettich']['pv']:
     if not TAB['blum']['cus'][x] - TAB['hettich']['cus'][x]:   # sem ferragem de linha
         v = {TAB[k]['pv'][x] for k in TAB}
         assert len(v) == 1, ('⛔ item sem ferragem de linha com preços diferentes', x, v)
 for a, v in FIXO_AMB.items():
-    for k in TAB: assert sum(p for x, p in TAB[k]['pv'].items() if x[0] == a) == v
+    for k in TAB: assert sum(p for x, p in TAB[k]['pv'].items() if x[0] == a) == v + AJUSTE_AMB.get(a, 0)
 assert set(a for a, _ in TAB['hettich']['pv']) == set(ORDEM), set(a for a, _ in TAB['hettich']['pv'])
 
 if __name__ == '__main__':
