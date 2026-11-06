@@ -3,8 +3,39 @@
 Projeto de **Luiza Pacheco Arquitetura**, a mesma arquiteta do Gustavo Raposo. Rev.00,
 de outubro de 2026. Rua Jatobás, 125, Residencial Árvores, Alphaville, Nova Lima/MG.
 
-⏸ **Em pausa** [Jonathan, 06/11/2026]: o orçamento parou no levantamento, a pedido
-dele. Falta escrever o `levantamento.py`, montar a planilha e calcular os preços.
+**Planilha:** `1m5Hq9Yd_KxXJy9lEe5CUHbrQNHdDTDo6gFQbNKxg8NE`
+https://docs.google.com/spreadsheets/d/1m5Hq9Yd_KxXJy9lEe5CUHbrQNHdDTDo6gFQbNKxg8NE/edit
+Copiada da BASE da casa (`11IgmtI5…`), na pasta `Orçamentos Valvic`.
+
+⛔ **O IMPORTRANGE precisa ser autorizado:** na aba "Base (importada)", clique no
+`#REF!` da célula D3 e depois em PERMITIR ACESSO. Até lá, o MDF e parte da
+ferragem saem a zero.
+
+⭐ Na cópia, antes de gravar, foram corrigidos os três defeitos da BASE:
+- as células mescladas da aba-modelo foram desmescladas;
+- as linhas E14 a E27, D34 e E35 da "Preço e Comissões" passaram a ler a coluna E;
+- o quadro ④ passou a procurar a dificuldade em `$B$67:$D$69`.
+
+## Os arquivos
+
+- `levantamento.py` · as peças, item por item, com a chave da Base.
+- `planilha.py` · monta as abas no layout da casa, com a formatação, e grava `_abas.json`.
+- `precos.py` · a cascata e o preço a MC 35, 38 e 40.
+
+## O custo e o preço · 06/11/2026
+
+Cascata com nota 5%, margem de erro 2%, RT 10% (⚠ a confirmar), sem vendedor e sem
+cartão. A base fica em **76,09%**.
+
+| Ambiente | Custo direto | MC 35% | MC 38% | MC 40% |
+|---|---:|---:|---:|---:|
+| Cozinha | 15.212 | 37.024 | 39.940 | 42.153 |
+| Gourmet | 13.143 | 31.989 | 34.509 | 36.421 |
+| **Total** | **28.356** | **69.013** | **74.448** | **78.574** |
+
+32 chapas: 18 na cozinha e 14 no gourmet. A sobra de chapa pesa R$ 3.395
+(R$ 1.538 na cozinha e R$ 1.858 no gourmet), porque cada cor e espessura compra
+chapa cheia por ambiente.
 
 ## As pranchas (`pranchas/`)
 
