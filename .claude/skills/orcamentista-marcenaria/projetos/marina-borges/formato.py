@@ -38,8 +38,15 @@ PCT = {'type': 'PERCENT', 'pattern': '0.0%'}
 N0 = {'type': 'NUMBER', 'pattern': '0'}
 N2 = {'type': 'NUMBER', 'pattern': '0.00'}
 N3 = {'type': 'NUMBER', 'pattern': '0.000'}
-BORDA = {'style': 'SOLID', 'width': 1,
-         'colorStyle': {'rgbColor': {'red': 0.8, 'green': 0.8, 'blue': 0.8}}}
+# ⭐ LIDAS CÉLULA A CÉLULA DA ABA-MODELO DA CASA, 06/11/2026 · não são escolha
+# minha: a SEÇÃO leva um fio PRETO embaixo, e o TOTAL uma barra DOURADA GROSSA
+# em cima. Eu havia posto fio cinza nos dois, e as nove abas saíram diferentes
+# do Painel e da aba Preço e Comissões, que já seguiam o modelo.
+DOURADO = {'red': 0.68235296, 'green': 0.5137255, 'blue': 0.22745098}
+BORDA = {'bottom': {'style': 'SOLID', 'width': 1,
+                    'colorStyle': {'rgbColor': dict(TINTA)}},
+         'top': {'style': 'SOLID_THICK', 'width': 3,
+                 'colorStyle': {'rgbColor': DOURADO}}}
 
 
 def fmt(**k):
@@ -55,7 +62,7 @@ def fmt(**k):
     if 'nf' in k:
         f['numberFormat'] = k['nf']
     if 'borda' in k:
-        f['borders'] = {k['borda']: BORDA}
+        f['borders'] = {k['borda']: BORDA[k['borda']]}
     return f
 
 
@@ -94,7 +101,7 @@ def estilo(sid, r0, r1, c0, c1, fs=None, b=None, fg=None, bg=None,
         f['backgroundColorStyle'] = {'rgbColor': bg}
         campos.append('userEnteredFormat.backgroundColorStyle')
     if lado is not None:
-        f['borders'] = {lado: BORDA}
+        f['borders'] = {lado: BORDA[lado]}
         campos.append('userEnteredFormat.borders')
     if w is not None:
         f['wrapStrategy'] = w
