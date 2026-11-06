@@ -931,3 +931,66 @@ Existe sem o móvel? Não é.
 **Gravado em:** `orcamentista-marcenaria/SKILL.md` (bloco próprio e regra 19) ·
 `referencias/regras-de-quantitativo.md` · `referencias/estrutura-orcamento.md` ·
 Base de Custos, aba Instruções · Painel do ICA, regra 13.
+
+---
+
+## 06/11 · CHARBEL CHELALA · a planilha preenchida, e dois defeitos no modelo
+
+As onze pranchas de detalhe viraram **nove abas, 38 itens, 496 peças, 86
+chapas em sete materiais**. Custo direto **R$ 119.306,13**, preço
+**R$ 360.577,65** com Blum, RT de 10% e MC realizada de 43%.
+`Charbel Chelala · Levantamento de Quantitativo`, na pasta Orçamentos Valvic.
+
+### ⭐⭐ A PREMISSA QUE A CASA JÁ RESPONDEU NÃO É PREMISSA, É DESLEIXO
+
+Escrevi onze premissas de mercado na base deste job porque "a Base não tem".
+Abri a Base de Custos e **nove delas estavam lá** — várias pela metade do
+que eu havia chutado: espelho a 600 e não 450, fonte de LED a 120 e não
+250, botton a 50 e não 90, cabideiro **por unidade** e não por metro,
+sarrafo de pinus a 8 o metro no lugar de chapa branca de 15. E a porta de
+vidro em perfil, que eu tinha posto a R$ 1.400 o **m²**, a casa tem a
+R$ 1.400 a **folha**, com referência de obra medida (Kenia e Fábio,
+12/06/2026). ⛔ **Antes de inventar preço, abrir a Base inteira — todas as
+seis abas, não a que eu lembro.**
+
+### ⭐ DUAS REGRAS DA CASA QUE O DESENHO CONTRADIZ, E AS DUAS TÊM PREÇO
+
+- **"RODAPÉ E BASE DE 3 CM NÃO É SERRALHERIA"** [Jonathan, 26/10]: a prancha
+  pede rodapé INOX h = 2 em cinco folhas. Orcei o inox, que a Base tem a
+  R$ 85/m, e registrei que a regra devolve **R$ 2.720**.
+- **"CHAPA — COR E ACABAMENTO ESPECIAL · R$ 1.000"**: Caribe Dual Syncro,
+  Fontana Magma e Cacao Matt são exatamente isso. Vale **R$ 23.177**, e é
+  uma ligação para o fornecedor. Roda com `ESPECIAL=1`.
+
+### ⛔⛔ O __pycache__ VALIDA POR (MTIME, TAMANHO) — E ISSO NÃO DÁ ERRO
+
+A primeira tabela de sensibilidade dizia que **UMA** mesa de cabeceira custa
+**mais caro** que **DUAS**. O motivo: `sensibilidade.py` troca uma linha do
+fonte, mede, e devolve o arquivo. `MC = 0.43` → `MC = 0.40` **tem o mesmo
+comprimento**, e a troca mais a volta cabem no mesmo segundo — o Python
+serviu bytecode velho com o fonte certo no disco. ⭐ **Medição que mexe no
+fonte apaga o cache e roda com `-B`.** E o que denunciou foi o SINAL: menos
+peça não pode custar mais. **Trava de sinal pega o que trava de valor não
+pega.**
+
+### ⛔⛔ O MODELO DA CASA TEM DOIS DEFEITOS, E OS DOIS SAEM CALADOS
+
+Na aba `Preço e Comissões` do **modelo vazio**:
+
+1. **A cascata de encargos aponta para `$D$33`, e o preço mora em `$E$33`.**
+   São 16 fórmulas (E14:E25, E27, D34, E35). Resultado: a coluna EM R$ do
+   quadro ② sai inteira a **R$ 0,00**, a MC média realizada sai **0,0%** e a
+   CONFERÊNCIA — que devia dar zero — sai **menos o preço inteiro**. ⭐ Numa
+   cópia nova ninguém percebe, porque tudo é zero mesmo até a primeira aba
+   entrar. Corrigido na cópia do Charbel; **o MODELO continua com o defeito**.
+2. **Linha de texto dentro de `B24:B43` vira ambiente.** `COUNTA` conta
+   qualquer coisa, inclusive string vazia — limpar com `""` não resolve, tem
+   de apagar a célula. O painel dizia "10 ambiente(s)" para 9 abas.
+
+### ⚠ E UMA DIVERGÊNCIA DE MODELO QUE EU QUASE DEIXEI PASSAR
+
+O quadro ⑤ diz **"Médio é o PISO, não o zero: todo ambiente custa ao menos
+cinco pontos acima da MC alvo"**. Logo a MC de D7 **não é a realizada**.
+Jonathan cravou 43% querendo 43% embolsados, então D7 = **38%** e a
+realizada dá 43. ⛔ Pôr 43 em D7 dá 48% realizados e **R$ 424.765,93** —
+outro preço, não o mesmo preço escrito de outro jeito.

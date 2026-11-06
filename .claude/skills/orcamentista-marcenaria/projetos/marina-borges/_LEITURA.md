@@ -265,3 +265,59 @@ nossos.** A frase está em cinco folhas e engana nos dois sentidos.
 R$ 550 (15 mm). **Dual Syncro e Magma são linhas texturizadas de topo e não
 custam isso.** O orçamento sai com o preço da Base e com a sensibilidade
 medida — mas **a cotação real dessas cinco é a primeira coisa a fazer.**
+
+---
+
+# A PLANILHA, E O QUE ELA DIZ [06/11/2026]
+
+**`Charbel Chelala · Levantamento de Quantitativo`** — pasta Orçamentos Valvic
+https://docs.google.com/spreadsheets/d/13CrhXzM6Vs4wgF7y66ESQVCu5LpNd7VJAahujn1nnjA/edit
+
+| | |
+|---|---|
+| ambientes | **9** (abas 01 a 09) |
+| itens de móvel | **38** |
+| peças de corte | **496** |
+| chapas | **86 inteiras** · 79,83 de equivalente |
+| custo direto | **R$ 119.306,13** |
+| **PREÇO** | **R$ 360.577,65** |
+| MC realizada | **43,0%** · conferência R$ 0,00 |
+
+## ⛔ O PRIMEIRO PASSO É DELE, NÃO MEU
+
+Abrir a aba `Base (importada)`, clicar no **#REF! da célula D3** e depois em
+**PERMITIR ACESSO**. O Google pede isso uma vez em cada cópia nova e
+**nenhum script dá essa autorização**. Por isso toda coluna de custo das
+nove abas foi gravada como **VALOR**, não fórmula — e a coluna
+**CHAVE DA BASE** de cada peça fica preenchida, que é o que permite religar
+depois sem refazer nada.
+
+## ⭐ A ORDEM DO DINHEIRO
+
+| ambiente | preço | % |
+|---|---|---|
+| 06 Closet | R$ 97.676,52 | **27,1%** |
+| 05 Suíte | R$ 76.013,85 | 21,1% |
+| 09 Quarto | R$ 37.305,15 | 10,3% |
+| 01 Cozinha | R$ 35.223,90 | 9,8% |
+| 03 Estar e TV | R$ 34.752,13 | 9,6% |
+| 04 Acessos e Corredor | R$ 29.462,74 | 8,2% |
+| 02 Hall e Jantar | R$ 20.842,90 | 5,8% |
+| 07 Banho da Suíte | R$ 15.435,54 | 4,3% |
+| 08 Banheiro Social | R$ 13.864,97 | 3,8% |
+
+⭐ **Ferragem, terceirizado e iluminação são 52,5% do custo direto** e a
+chapa só 37,5%. Num job Blum com nove portas de perfil e 70 m de LED, o
+MDF deixa de ser o que manda no preço.
+
+## ⚠ AS SEIS PERGUNTAS QUE AINDA MOVEM O PREÇO
+
+| vale | pergunta |
+|---|---|
+| **+R$ 23.177** | Caribe Dual Syncro, Fontana Magma e Cacao Matt são a linha "cor e acabamento especial" de R$ 1.000 a chapa? |
+| **+R$ 16.647** | Quanto custa a folha de closet de **2,57 m** em perfil de alumínio com vidro? Usei R$ 1.400, que é porta de ~2,10 m na Base |
+| **−R$ 9.521** | A dobradiça de vidro está contada duas vezes? 45 un a R$ 70 — a folha é "posta na obra", e porta posta costuma vir ferrada |
+| **−R$ 4.083** | Uma mesa de cabeceira ou duas? A folha 20 desenha uma, a cama tem dois lados |
+| **−R$ 2.720** | Rodapé: inox como a prancha pede, ou MDF como a regra da casa manda? |
+| **±R$ 2.423** | O forro da suíte, que **não tem cota na folha 19** |
+| **−R$ 1.058** | O fundo de nicho em Fontana 6 mm: 0,20 m² compram uma chapa inteira |
