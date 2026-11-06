@@ -15,7 +15,7 @@ OBRA = dict(
 PECAS = [
  ('14', 'Escrivaninha', 'MDF Noce Amêndoa Duratex', '7',
   'Quatro gavetas · caixa de tomadas embutida · nicho na marcenaria'),
- ('15', 'Prateleira', 'MDF Cancún Sudati', '8', 'Laca fosca Sayerlack J029'),
+ ('15', 'Prateleira', 'MDF Cancún Sudati', '8', '<b>Sem laca</b> — acabamento no próprio MDF'),
  ('16', 'Armário aéreo maior', 'MDF Lume Guararapes', '8', 'Puxador passante'),
  ('17', 'Armário aéreo menor · 2 un', 'MDF Lume Guararapes', '8', 'Puxador passante'),
  ('18', 'Painel da persiana', 'MDF Lume Guararapes', '6 e 9',
@@ -34,7 +34,9 @@ PECAS = [
 ]
 
 MATERIAIS = ('MDF Noce Amêndoa Duratex · MDF Cancún Sudati · MDF Lume Guararapes · '
-             'MDF Sal Rosa Arauco (filete) · laca fosca Sayerlack J029 · tecido do estofado (a definir)')
+             'MDF Sal Rosa Arauco (filete) · tecido do estofado (a definir).<br>'
+             '<b>Não haverá laca.</b> A laca fosca Sayerlack J029 indicada no projeto não entra no escopo — '
+             'nenhuma peça será laqueada.')
 
 FERRAGENS = ('Puxador passante (aéreos e espelho) · rodízio de silicone com trava (gaveteiro) · '
              '<b>corrediças ocultas Hettich</b> · <b>dobradiças Hettich</b>')
