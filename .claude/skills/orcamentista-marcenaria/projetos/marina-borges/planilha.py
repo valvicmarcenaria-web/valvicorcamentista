@@ -162,8 +162,8 @@ def linhas_ambiente(nome, d, T):
         parte = d['area'][k] / T['area'][k]
         c = d['area'][k] / rend * preco + sobra * parte
         custo_mat += c
-        L.append([f'{k[0]} {k[1]} mm', f'{d["area"][k]:.2f} m² deste ambiente · '
-                  f'{T["area"][k]:.2f} m² e {T["chapas"][k]} chapa(s) no projeto '
+        L.append([f'{k[0]} {k[1]} mm', f'{dec(d["area"][k])} m² deste ambiente · '
+                  f'{dec(T["area"][k])} m² e {T["chapas"][k]} chapa(s) no projeto '
                   f'inteiro · {lv.brl(preco)} a chapa',
                   round(d['area'][k] / rend, 2), 'chapa', round(c, 2), 0])
     for rot, m, p in (('Fita de borda de cor', d['fita_cor'], b.FITA_COR),
@@ -249,7 +249,7 @@ def monta(nome, d, T):
         R.append([f'{i:02d}', it.nome, it.obs, '', '', '', '',
                   round(lv.preco_item(dire), 2), round(dire, 2)])
     R.append(['⭐ CONFERÊNCIA', 'a soma dos itens contra o custo direto da '
-              'seção ①', f'diferença de R$ {soma - d["direto"]:.2f}', '', '',
+              'seção ①', f'diferença de {lv.brl(soma - d["direto"])}', '', '',
               '', '', round(lv.preco_item(d['direto']), 2), round(soma, 2)])
     R += [[], ['  O QUE NÃO É MARCENARIA   ·   está na prancha, não está '
                'nesta conta'], []]
@@ -336,6 +336,35 @@ DUVIDAS = {
    '[Jonathan, 26/10/2026] diz: "a prancha pede base metálica; nós fazemos em MDF '
    'melamínico". Se valer a regra, devolve R$ 2.720.'],
 }
+
+
+#   ⛔⛔ O pasteData FALA A LÍNGUA DA PLANILHA, NÃO A MINHA.
+#     Esta planilha é pt_BR. Mandei "0.0651" e o Google leu o ponto como
+#     separador de MILHAR: virou 651, e o percentual apareceu como
+#     65100,0%. Mandei "759.2" e ele desistiu de converter: virou TEXTO
+#     alinhado à esquerda, que nenhuma soma enxerga.
+#   ⭐ E O QUE DENUNCIOU FOI O FORMATO, não a conta: o Painel continuou
+#     certo porque lá eu escrevi com `updateCells` e numberValue, que não
+#     passa por parser nenhum. A mesma informação, por dois caminhos, com
+#     dois resultados — e só um dos dois reclamava.
+def dec(v, casas=2):
+    """⭐ número DENTRO DE FRASE, com vírgula — a planilha é brasileira e a
+    prosa dela também. "12.21 m²" numa célula de texto não quebra conta
+    nenhuma, e é exatamente o tipo de detalhe que ele vê antes de mim."""
+    return ('%%.%df' % casas) % v if False else ('{:.%df}' % casas).format(v).replace('.', ',')
+
+
+def ptbr(x):
+    """número com vírgula decimal, que é como esta planilha lê"""
+    if isinstance(x, bool) or not isinstance(x, (int, float)):
+        return '' if x is None else str(x)
+    if isinstance(x, int):
+        return str(x)
+    return repr(x).replace('.', ',')
+
+
+def tsv(linhas):
+    return '\n'.join('\t'.join(ptbr(c) for c in r) for r in linhas)
 
 
 if __name__ == '__main__':

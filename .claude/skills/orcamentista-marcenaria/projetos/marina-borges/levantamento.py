@@ -343,8 +343,9 @@ ambiente('05 Suíte')
 #     sem nenhuma dimensão. 9,0 m² é LEITURA DO MAPA pela proporção com o
 #     painel da cabeceira (357,5), não cota. Tem de ser medido.
 FORRO_SUITE_M2 = 9.0
+_forro = ('%.1f' % FORRO_SUITE_M2).replace('.', ',')
 it = novo('Suíte · forro em MDF Cipres', 19,
-          f'⚠ {FORRO_SUITE_M2:.1f} m² lidos do mapa-chave — A FOLHA NÃO COTA ESTE FORRO')
+          f'⚠ {_forro} m² lidos do mapa-chave — A FOLHA NÃO COTA ESTE FORRO')
 it.p('réguas do forro da suíte', FORRO_SUITE_M2 * 10000 / 60, 60, 18, CIPRES, 1,
      FORRO_SUITE_M2 * 4)
 it.t('Sarrafo de pinus para fixação do forro', 8 * 3.0, b.SARRAFO_PINUS_M, 'm')
