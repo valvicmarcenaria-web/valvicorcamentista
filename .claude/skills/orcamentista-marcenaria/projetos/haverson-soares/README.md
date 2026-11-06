@@ -22,20 +22,32 @@ ferragem saem a zero.
 - `planilha.py` · monta as abas no layout da casa, com a formatação, e grava `_abas.json`.
 - `precos.py` · a cascata e o preço a MC 35, 38 e 40.
 
-## O custo e o preço · 06/11/2026
+## As três linhas · 06/11/2026
 
-Cascata com nota 5%, margem de erro 2%, RT 10% (⚠ a confirmar), sem vendedor e sem
-cartão. A base fica em **76,09%**.
+⭐ [Jonathan] "vamos trabalhar com as nossas três linhas": Telescópica, Hettich e
+Blum no lugar da Häfele da prancha. A planilha mostra a **Hettich**, a de referência;
+`precos.py` calcula as três.
 
-| Ambiente | Custo direto | MC 35% | MC 38% | MC 40% |
-|---|---:|---:|---:|---:|
-| Cozinha | 15.212 | 37.024 | 39.940 | 42.153 |
-| Gourmet | 13.143 | 31.989 | 34.509 | 36.421 |
-| **Total** | **28.356** | **69.013** | **74.448** | **78.574** |
+A cascata usa nota 5%, margem de erro 2%, RT 10% (⚠ a confirmar), sem vendedor e sem
+cartão. A base fica em **76,09%**, a mesma do Attos.
+- **Item sem corrediça nem dobradiça da linha:** MC **38%** nas três linhas, com o
+  mesmo preço em todas.
+- **Item com ferragem de linha:** a escada do Attos, com **35 / 38 / 43**.
+- **O que muda de uma linha para outra:**
+  - Telescópica: corrediça R$ 15 e dobradiça R$ 4.
+  - Hettich: corrediça R$ 150 e dobradiça R$ 50.
+  - Blum: corrediça R$ 300 e dobradiça R$ 50.
 
-32 chapas: 18 na cozinha e 14 no gourmet. A sobra de chapa pesa R$ 3.395
-(R$ 1.538 na cozinha e R$ 1.858 no gourmet), porque cada cor e espessura compra
-chapa cheia por ambiente.
+| Ambiente | Telescópica | Hettich | Blum |
+|---|---:|---:|---:|
+| Cozinha | 29.005 | 39.940 | 52.727 |
+| Gourmet | 28.153 | 34.509 | 42.755 |
+| **Total** | **57.158** | **74.448** | **95.482** |
+| Custo direto | 22.949 | 28.356 | 32.487 |
+| MC efetiva | 35,9% | 38,0% | 42,1% |
+
+**Chapas e sobra:** são 32 chapas, 18 na cozinha e 14 no gourmet. A sobra pesa
+R$ 3.395, porque cada cor e espessura compra chapa cheia por ambiente.
 
 ## As pranchas (`pranchas/`)
 

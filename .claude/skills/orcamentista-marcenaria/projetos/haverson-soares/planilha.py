@@ -20,8 +20,8 @@ import motor_mc as MC
 PRECO = {'MDF Azul 18': 700, 'MDF Azul 15': 550, 'MDF Freijó 18': 700, 'MDF Freijó 15': 550,
          'MDF Freijó 6': 350, 'MDF Branco TX 18': 400, 'MDF Branco TX 15': 350, 'MDF Branco TX 6': 250,
          'Fita cor': 3, 'Fita Branco TX': 2, 'Filetagem automática': 2.5,
-         # ⚠ Häfele não está na Base: preço da linha Gold da casa, a cotar
-         'Dobradiça Häfele': 50, 'Corrediça Häfele': 150,
+         # ⭐ as três linhas da casa [Jonathan, 06/11/2026]: a aba mostra a HETTICH
+         'Dobradiça Hettich': 50, 'Corrediça Hettich': 150,
          'Báscula HK-XS': 250, 'Pistão com amortecimento': 30, 'Cava usinada': 50,
          'Suporte de prateleira': 6.5, 'Perfil de proteção de piso': 15,
          'LED conjunto': 150, 'Fonte de LED': 120, 'Dobradiça vidro': 70,
@@ -35,8 +35,8 @@ VIAGENS = {'Cozinha': 1, 'Gourmet': 1}
 ABAS = [('Cozinha', '01 Cozinha', 102, 'Folhas 01 a 04 · planta e elevações A, B, C e D'),
         ('Gourmet', '02 Gourmet', 103, 'Folhas 05 a 07 · planta e elevações A e B')]
 SUB = {
- 'Cozinha': 'armários inferiores sob a bancada existente, torre quente, superiores, bancada em MDF com nicho da adega, armário e máscara da geladeira, painel do piso ao teto e colmeia de vinhos na ilha · MDF Azul a definir por fora, Branco por dentro · ferragem Häfele',
- 'Gourmet': 'cristaleira de vidro reflecta bronze, torre quente, nicho e superior com básculas em Freijó Puro · inferiores em Azul sob a bancada existente · ferragem Häfele',
+ 'Cozinha': 'armários inferiores sob a bancada existente, torre quente, superiores, bancada em MDF com nicho da adega, armário e máscara da geladeira, painel do piso ao teto e colmeia de vinhos na ilha · MDF Azul a definir por fora, Branco por dentro · três linhas de ferragem: a aba mostra a Hettich',
+ 'Gourmet': 'cristaleira de vidro reflecta bronze, torre quente, nicho e superior com básculas em Freijó Puro · inferiores em Azul sob a bancada existente · três linhas de ferragem: a aba mostra a Hettich',
 }
 FORA = {
  'Cozinha': ['⛔ PEDRA: a bancada existente, o complemento de bancada, a ilha e a FRENTE dos sóculos ("no mesmo material da bancada")',
@@ -49,7 +49,7 @@ FORA = {
 COMUNS = [
  '⭐ PRANCHAS COTADAS: o executivo da Luiza Pacheco cota larguras e alturas; o que não está cotado (profundidade dos superiores, da colmeia) vai como dúvida.',
  '⚠ MDF AZUL A DEFINIR: orçado como Melamínico Fosco de cor (550 a de 15, 700 a de 18). Freijó Puro, Essencial Wood da Duratex, é a mesma linha de preço.',
- '⚠ FERRAGEM HÄFELE NÃO ESTÁ NA BASE DE CUSTOS: dobradiça a R$ 50 e corrediça a R$ 150, os preços da linha Gold da casa (Hettich). ⛔ Cotar com o distribuidor Häfele antes de fechar.',
+ '⭐ AS TRÊS LINHAS DA CASA [Jonathan, 06/11/2026]: Telescópica, Hettich e Blum. Esta aba mostra a HETTICH (Sensys R$ 50, Quadro V6 R$ 150 o par), a de referência; a Telescópica e a Blum saem do precos.py, e só a corrediça e a dobradiça mudam.',
  '⭐ CAVA NA MARCENARIA: R$ 50 o metro, pela largura de cada frente.',
 ]
 GIRO = ''
@@ -58,9 +58,9 @@ DUV = {
              '⚠ OS GAVETÕES SOB AS CUBAS pedem recorte para o sifão: a caixa sai em U, sem custo extra de chapa.',
              '⚠ OS SUPERIORES SOBRE A BANCADA têm 60 de profundidade, lidos do corte B. Se forem de 35, a chapa cai.',
              '⚠ COLMEIA DE VINHOS: a ilha tem 44 de profundidade e a prancha não cota a colmeia; lançada com 40. A meia-madeira das divisórias é usinagem de CNC sem preço na Base. ⚠ A regra dos 80% compra DUAS chapas de Freijó 18 só para ela, mas o plano de corte mostra que cabe em UMA: quatro tiras de 40, três horizontais ou quatro verticais em cada. Se a produção confirmar, saem R$ 700 e o corte de uma chapa.',
-             '⚠ PORTA-TEMPEROS: lançado como gaveta estreita de MDF com três bandejas. Se for aramado Häfele, é outro preço.'],
+             '⚠ PORTA-TEMPEROS: lançado como gaveta estreita de MDF com três bandejas. Se for aramado, é outro preço.'],
  'Gourmet': ['⚠ PORTA DE VIDRO REFLECTA BRONZE com perfil bronze: R$ 660 o m², a referência confirmada em obra (Kenia e Fábio). ⛔ Cotar com o vidraceiro, com o puxador bronze a definir.',
-             '⚠ AS BÁSCULAS DO SUPERIOR ABREM PARA CIMA: articulador da casa (AVENTOS HK-XS, R$ 250). O equivalente Häfele vai a cotar.',
+             '⚠ AS BÁSCULAS DO SUPERIOR ABREM PARA CIMA: articulador da casa (AVENTOS HK-XS, R$ 250). O mesmo nas três linhas.',
              '⚠ AS BÁSCULAS DA PIA ABREM PARA BAIXO, como na cozinha.',
              '⚠ LED DA CRISTALEIRA: perfil com abas sob o teto e sob as três prateleiras, conjunto completo a R$ 150 o metro, mais uma fonte. As prateleiras saem FIXAS para o fio passar.'],
 }
@@ -143,7 +143,7 @@ def monta(amb, aba, sid, prancha):
         else:
             put(rr, k, 'Coladeira · 15 e 18 mm · serviço por metro de aresta feita, sem desperdício',
                 f'=SUMIF({K};"{k}";{F_})', 'm', f'=D{rr}*VLOOKUP("{k}";precos;2;FALSE)', f'=IFERROR(F{rr}/$F${rcd};"")')
-    put(rf, 'Ferragem, terceirizados e iluminação', 'Ferragem HÄFELE · corrediça, dobradiça, báscula, pistão, suporte, cava, perfil de piso, LED e a porta de vidro · o resto de tudo que tem chave',
+    put(rf, 'Ferragem, terceirizados e iluminação', 'Linha HETTICH, a de referência · corrediça, dobradiça, báscula, pistão, suporte, cava, perfil de piso, LED e a porta de vidro · o resto de tudo que tem chave',
         f'=SUMPRODUCT((LEFT({K};4)<>"MDF ")*(LEFT({K};4)<>"Fita")*(LEFT({K};9)<>"Filetagem")*({K}<>"")*IF(ISNUMBER({F_});{F_};0))', 'peças',
         f'=SUMIF({K};"<>";{I_})-SUMIF({K};"MDF *";{I_})-SUMIF({K};"Fita*";{I_})-SUMIF({K};"Filetagem*";{I_})', f'=IFERROR(F{rf}/$F${rcd};"")')
     mdf_rows = [rows_mat[k] for k in chaves_mdf]

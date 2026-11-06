@@ -11,15 +11,18 @@ Especificação da prancha:
     linha Essencial Wood, Duratex; a colmeia de vinhos da ilha também;
   · interno em MDF BRANCO · puxador CAVA NA MARCENARIA;
   · ferragens HÄFELE, gavetas com corrediça oculta.
+⭐⭐ [Jonathan, 06/11/2026] "vamos trabalhar com as nossas três linhas": no lugar
+  da Häfele, a escada da casa — TELESCÓPICA, HETTICH e BLUM. O levantamento
+  lança a HETTICH, a de referência (Sensys R$ 50 · Quadro V6 R$ 150 o par), e o
+  precos.py troca só a corrediça e a dobradiça por linha.
 
 Premissas minhas (cada uma vai como dúvida numerada na planilha):
-  · ⚠ HÄFELE NÃO ESTÁ NA BASE DE CUSTOS: dobradiça e corrediça entram pelo
-    preço da linha Gold da casa (Hettich Sensys R$ 50 e Quadro V6 R$ 150), a
-    cotar com o distribuidor Häfele;
+  · as três linhas no lugar da Häfele (acima): o articulador das básculas, os
+    pistões e a dobradiça da porta de vidro NÃO mudam de linha;
   · as básculas da PIA abrem PARA BAIXO (o vértice do símbolo aponta o lado da
     pega e a pedra está logo acima): duas dobradiças e dois pistões com
     amortecimento cada · as do SUPERIOR do gourmet abrem PARA CIMA: articulador
-    de báscula da casa (AVENTOS HK-XS, R$ 250), equivalente Häfele a cotar;
+    de báscula da casa (AVENTOS HK-XS, R$ 250), o mesmo nas três linhas;
   · cava usinada pela largura de cada frente (R$ 50/m);
   · os superiores da cozinha têm 60 de profundidade, lidos do corte B;
   · o sóculo "em marcenaria com frente no material da bancada" é estrutura
@@ -73,23 +76,23 @@ def gavetas(it, n, larg, alt, prof, frente=AZ15, rotulo='Gaveta'):
     P(it, f'{rotulo} · lateral da caixa', '', prof - 5, alt - 5, 2 * n, BR15, (prof - 5) / 100)
     P(it, f'{rotulo} · frente e traseira da caixa', '', li, alt - 5, 2 * n, BR15, li / 100)
     P(it, f'{rotulo} · fundo da caixa', 'encaixe em rasgo, sem fita', li + 1, prof - 6, n, BR6)
-    F(it, 'Corrediça Häfele', f'oculta, com amortecimento · uma por {rotulo.lower()}', n, 'gaveta',
-      'Corrediça Häfele')
+    F(it, 'Corrediça Hettich', f'oculta, com amortecimento · uma por {rotulo.lower()}', n, 'gaveta',
+      'Corrediça Hettich')
     cava(it, [larg] * n)
 
 
 def giro(it, n, larg, alt, frente=AZ15, obs='15 mm · puxador em cava'):
     nd = dobradicas(alt)
     P(it, 'Porta de giro', obs, alt, larg, n, frente, 2 * (alt + larg) / 100)
-    F(it, 'Dobradiça Häfele', f'{nd} por folha de ' + f'{alt:g}'.replace('.', ',') + ' de altura',
-      nd * n, 'un', 'Dobradiça Häfele')
+    F(it, 'Dobradiça Hettich', f'{nd} por folha de ' + f'{alt:g}'.replace('.', ',') + ' de altura',
+      nd * n, 'un', 'Dobradiça Hettich')
     cava(it, [larg] * n)
 
 
 def bascula_baixo(it, n, larg, alt, frente=AZ15):
     """Báscula da pia, que abre PARA BAIXO: duas dobradiças e dois pistões."""
     P(it, 'Báscula', 'abre para baixo · 15 mm', larg, alt, n, frente, 2 * (larg + alt) / 100)
-    F(it, 'Dobradiça Häfele', 'duas por báscula, na aresta de baixo', 2 * n, 'un', 'Dobradiça Häfele')
+    F(it, 'Dobradiça Hettich', 'duas por báscula, na aresta de baixo', 2 * n, 'un', 'Dobradiça Hettich')
     F(it, 'Pistão com amortecimento', 'dois por báscula, segura a frente aberta', 2 * n, 'un',
       'Pistão com amortecimento')
     cava(it, [larg] * n)
@@ -139,8 +142,8 @@ P(it, 'Porta-temperos · frente', 'módulo de 25, frente inteira de 68', 24.6, 6
   2 * (24.6 + 67.6) / 100)
 P(it, 'Porta-temperos · lateral', 'caixa do porta-temperos', 60, 48, 2, BR15, 0.60)
 P(it, 'Porta-temperos · bandeja', 'três níveis', 18, 48, 3, BR15, 0.18)
-F(it, 'Corrediça Häfele', 'porta-temperos · ⚠ pede corrediça de carga lateral', 1, 'gaveta',
-  'Corrediça Häfele')
+F(it, 'Corrediça Hettich', 'porta-temperos · ⚠ pede corrediça de carga lateral', 1, 'gaveta',
+  'Corrediça Hettich')
 cava(it, [25])
 gavetas(it, 2, 76.6, 33.6, 50, rotulo='Gavetão')                         # módulo 4 · cooktop
 bascula_baixo(it, 3, 68.9, 33.6)                                         # módulos 5 a 7 · pia
@@ -267,7 +270,7 @@ P(it, 'Armário · teto', '', 128.4, 30, 1, BR15, 1.284)
 P(it, 'Armário · divisória', '', 85.4, 28, 1, BR15, 0.854)
 P(it, 'Armário · fundo', 'encaixe em rasgo', 128.4, 85.4, 1, BR6)
 P(it, 'Báscula', 'abre para cima · Freijó 15', 65.8, 41.3, 4, FR15, 2 * (65.8 + 41.3) / 100)
-F(it, 'Articulador de báscula', 'um por frente · equivalente Häfele a cotar', 4, 'un',
+F(it, 'Articulador de báscula', 'um por frente · o mesmo nas três linhas', 4, 'un',
   'Báscula HK-XS')
 cava(it, [65.8] * 4)
 P(it, 'Acabamento superior', 'faixa de 5 até o forro', 192, 5, 1, FR15, 1.92)
