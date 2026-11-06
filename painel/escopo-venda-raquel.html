@@ -101,6 +101,9 @@ table.tb tr:nth-child(odd) td{ background:#f7f9fb }
 .bloco h3{ margin:0 0 3px; font-size:9px; color:var(--navy); font-weight:700;
   letter-spacing:1.1px; text-transform:uppercase }
 .bloco b{ color:var(--navy) }
+.bloco.alerta{ border-left-color:var(--red); background:#fdf6f5 }
+.bloco .ff{ color:var(--red) }
+.bloco .ff b{ color:var(--red) }
 
 .duas{ display:grid; grid-template-columns:1fr 1fr; gap:8px }
 .cx2{ display:flex; gap:6px; align-items:flex-start; font-size:8.5px; line-height:1.4;
@@ -109,11 +112,11 @@ table.tb tr:nth-child(odd) td{ background:#f7f9fb }
   border-radius:2px; flex:0 0 auto; margin-top:1px }
 .foraescopo .cx2{ color:var(--red) }
 
-.assina{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px; margin-top:16px; padding-top:10px }
+.assina{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px; margin-top:auto; padding-top:10px }
 .assina > div{ border-top:1px solid var(--ink); padding-top:3px; text-align:center }
 .assina .n{ font-size:8.5px; font-weight:700; color:var(--navy) }
 .assina .s{ font-size:7.5px; color:var(--muted) }
-.rodape{ margin-top:auto; border-top:1px solid var(--linha); padding-top:4px;
+.rodape{ margin-top:10px; border-top:1px solid var(--linha); padding-top:4px;
   display:flex; justify-content:space-between; font-size:7px; color:var(--muted);
   letter-spacing:.5px; text-transform:uppercase }
 </style>
@@ -124,8 +127,9 @@ table.tb tr:nth-child(odd) td{ background:#f7f9fb }
   <div class="topo">
     <div class="marca">valvic<small>Marcenaria</small></div>
     <div class="doc"><h1>Escopo de Venda</h1>
-      <div class="m">Raquel Franco · Quarto e banheiro · folha 1 de 3</div></div>
+      <div class="m">Raquel Franco · Quarto e banheiro</div></div>
   </div>
+
   <div class="ident">
     <div class="c"><div class="r">Cliente</div><div class="v">Raquel Franco</div></div>
     <div class="c"><div class="r">Ambientes</div><div class="v">Quarto e banheiro</div></div>
@@ -133,101 +137,54 @@ table.tb tr:nth-child(odd) td{ background:#f7f9fb }
     <div class="c"><div class="r">Designer</div><div class="v" style="font-size:8px">Rubia Nascimento · (31) 98318-7675</div></div>
   </div>
 
-  <div class="aviso"><b>Como usar.</b> Este é o escopo da venda traduzido em especificação técnica, montado a partir
-  do <b>projeto executivo</b> e do registro comercial. Leia-o cruzando com as pranchas: onde esta lista divergir do
-  projeto, <b>não libere a produção</b> — registre e devolva ao comercial.<br>
-  <b>Origem.</b> A proposta comercial e o contrato assinado <b>não foram localizados no Drive</b>; o escopo abaixo
-  reflete o projeto executivo. A conferência contra o contrato continua pendente.<br>
-  <b>Nota do projeto, em todas as pranchas:</b> em caso de dúvida não execute, ligue para a designer; todas as medidas
-  devem ser rigorosamente conferidas no local.</div>
+  <div class="aviso"><b>Como usar.</b> Escopo da venda em especificação técnica, montado a partir do contrato e do
+  projeto executivo. Leia cruzando com as pranchas — medidas, cortes e detalhamento estão lá. Onde esta lista
+  divergir do projeto, <b>não libere a produção</b>: registre e devolva ao comercial.<br>
+  <b>Nota do projeto, em todas as pranchas:</b> em caso de dúvida não execute, ligue para a designer; todas as
+  medidas devem ser rigorosamente conferidas no local.</div>
 
-  <div class="faixa">1 · Marcenaria do quarto</div>
+  <div class="faixa">1 · Peças contratadas</div>
   <table class="tb">
-    <tr><th style="width:22px">Nº</th><th style="width:150px">Peça e detalhamento</th>
-        <th style="width:118px">Material</th><th style="width:96px">Medidas (cm)</th>
-        <th style="width:34px">Prancha</th><th style="width:24px">OK</th></tr>
-    <tr><td style="width:22px" class="nn">14</td><td style="width:150px"><span class="tt">Escrivaninha</span><span class="dd">Quatro gavetas · caixa de tomadas embutida · nicho na marcenaria</span></td><td style="width:118px" class="md">MDF Noce Amêndoa Duratex</td><td style="width:96px" class="md">220 de comprimento · 72 h</td><td style="width:34px" class="md">7</td><td style="width:24px"><span class="cx"></span></td></tr>
-    <tr><td style="width:22px" class="nn">15</td><td style="width:150px"><span class="tt">Prateleira</span><span class="dd"></span></td><td style="width:118px" class="md">MDF Cancún Sudati</td><td style="width:96px" class="md">140 × 25 × 2 h</td><td style="width:34px" class="md">8</td><td style="width:24px"><span class="cx"></span></td></tr>
-    <tr><td style="width:22px" class="nn">16</td><td style="width:150px"><span class="tt">Armário aéreo maior</span><span class="dd">Puxador passante</span></td><td style="width:118px" class="md">MDF Lume Guararapes</td><td style="width:96px" class="md">100 × 25 × 35 h</td><td style="width:34px" class="md">8</td><td style="width:24px"><span class="cx"></span></td></tr>
-    <tr><td style="width:22px" class="nn">17</td><td style="width:150px"><span class="tt">Armário aéreo menor</span><span class="dd">Puxador passante</span></td><td style="width:118px" class="md">MDF Lume Guararapes</td><td style="width:96px" class="md">65 × 25 × 35 h · 2 un</td><td style="width:34px" class="md">8</td><td style="width:24px"><span class="cx"></span></td></tr>
-    <tr><td style="width:22px" class="nn">18</td><td style="width:150px"><span class="tt">Painel da persiana</span><span class="dd">Vão recuado para a persiana descer — conferir com o fornecedor da persiana antes de fabricar</span></td><td style="width:118px" class="md">MDF Lume Guararapes</td><td style="width:96px" class="md">conforme prancha</td><td style="width:34px" class="md">6 e 9</td><td style="width:24px"><span class="cx"></span></td></tr>
-    <tr><td style="width:22px" class="nn">19</td><td style="width:150px"><span class="tt">Gaveteiro</span><span class="dd">Quatro gavetas · rodízio de silicone com trava</span></td><td style="width:118px" class="md">MDF Cancún Sudati</td><td style="width:96px" class="md">50 × 45 × 55 h</td><td style="width:34px" class="md">5</td><td style="width:24px"><span class="cx"></span></td></tr>
-    <tr><td style="width:22px" class="nn">20</td><td style="width:150px"><span class="tt">Mesa de cabeceira</span><span class="dd">Uma gaveta · interruptor com tomada</span></td><td style="width:118px" class="md">MDF Cancún Sudati</td><td style="width:96px" class="md">40 × 30 × 8 h</td><td style="width:34px" class="md">3</td><td style="width:24px"><span class="cx"></span></td></tr>
-    <tr><td style="width:22px" class="nn">21</td><td style="width:150px"><span class="tt">Cabideiro</span><span class="dd"></span></td><td style="width:118px" class="md">MDF Lume Guararapes</td><td style="width:96px" class="md">10 cm · 4 un</td><td style="width:34px" class="md">5</td><td style="width:24px"><span class="cx"></span></td></tr>
-    <tr><td style="width:22px" class="nn">22</td><td style="width:150px"><span class="tt">Cama com cabeceira estofada</span><span class="dd">EXECUÇÃO NOSSA · cama e cabeceira · tecido do estofado a definir</span></td><td style="width:118px" class="md">MDF + estofado</td><td style="width:96px" class="md">conforme prancha</td><td style="width:34px" class="md">4</td><td style="width:24px"><span class="cx"></span></td></tr>
-    <tr><td style="width:22px" class="nn">23</td><td style="width:150px"><span class="tt">Painel de meia parede</span><span class="dd">Filete em MDF Sal Rosa Arauco · sem perfil metálico</span></td><td style="width:118px" class="md">MDF Cancún Sudati</td><td style="width:96px" class="md">336 de comprimento · 87 h</td><td style="width:34px" class="md">9</td><td style="width:24px"><span class="cx"></span></td></tr>
-  </table>
-  <div class="rodape"><span>Valvic Marcenaria · Vargas Decor Ltda</span><span>Escopo de venda · Raquel Franco</span></div>
-</div>
-
-<div class="sheet">
-  <div class="topo">
-    <div class="marca">valvic<small>Marcenaria</small></div>
-    <div class="doc"><h1>Escopo de Venda</h1>
-      <div class="m">Raquel Franco · Quarto e banheiro · folha 2 de 3</div></div>
-  </div>
-  <div class="faixa">2 · Marcenaria do banheiro</div>
-  <table class="tb">
-    <tr><th style="width:22px">Nº</th><th style="width:150px">Peça e detalhamento</th>
-        <th style="width:118px">Material</th><th style="width:96px">Medidas (cm)</th>
-        <th style="width:34px">Prancha</th><th style="width:24px">OK</th></tr>
-    <tr><td style="width:22px" class="nn">24</td><td style="width:150px"><span class="tt">Nicho do banheiro</span><span class="dd"></span></td><td style="width:118px" class="md">MDF Lume Guararapes</td><td style="width:96px" class="md">27 × 12 × 165 h</td><td style="width:34px" class="md">11</td><td style="width:24px"><span class="cx"></span></td></tr>
-    <tr><td style="width:22px" class="nn">25</td><td style="width:150px"><span class="tt">Gabinete do banheiro</span><span class="dd">Cinco prateleiras internas</span></td><td style="width:118px" class="md">MDF Lume Guararapes</td><td style="width:96px" class="md">89 × 27 × 60 h</td><td style="width:34px" class="md">11</td><td style="width:24px"><span class="cx"></span></td></tr>
-    <tr><td style="width:22px" class="nn">26</td><td style="width:150px"><span class="tt">Acabamento do espelho</span><span class="dd">Puxador passante · toalheiro de mão</span></td><td style="width:118px" class="md">MDF Lume Guararapes</td><td style="width:96px" class="md">76 cm · 2 un</td><td style="width:34px" class="md">11</td><td style="width:24px"><span class="cx"></span></td></tr>
+    <tr><th style="width:22px">Nº</th><th style="width:168px">Peça</th><th style="width:150px">Material</th>
+        <th>Detalhamento</th><th style="width:38px">Prancha</th><th style="width:24px">OK</th></tr>
+    <tr><td style="width:22px" class="nn">14</td><td style="width:168px"><span class="tt">Escrivaninha</span></td><td style="width:150px" class="md">MDF Noce Amêndoa Duratex</td><td><span class="dd">Quatro gavetas · caixa de tomadas embutida · nicho na marcenaria</span></td><td style="width:38px" class="md">7</td><td style="width:24px"><span class="cx"></span></td></tr>
+    <tr><td style="width:22px" class="nn">15</td><td style="width:168px"><span class="tt">Prateleira</span></td><td style="width:150px" class="md">MDF Cancún Sudati</td><td><span class="dd">Laca fosca Sayerlack J029</span></td><td style="width:38px" class="md">8</td><td style="width:24px"><span class="cx"></span></td></tr>
+    <tr><td style="width:22px" class="nn">16</td><td style="width:168px"><span class="tt">Armário aéreo maior</span></td><td style="width:150px" class="md">MDF Lume Guararapes</td><td><span class="dd">Puxador passante</span></td><td style="width:38px" class="md">8</td><td style="width:24px"><span class="cx"></span></td></tr>
+    <tr><td style="width:22px" class="nn">17</td><td style="width:168px"><span class="tt">Armário aéreo menor · 2 un</span></td><td style="width:150px" class="md">MDF Lume Guararapes</td><td><span class="dd">Puxador passante</span></td><td style="width:38px" class="md">8</td><td style="width:24px"><span class="cx"></span></td></tr>
+    <tr><td style="width:22px" class="nn">18</td><td style="width:168px"><span class="tt">Painel da persiana</span></td><td style="width:150px" class="md">MDF Lume Guararapes</td><td><span class="dd">Vão recuado para a persiana descer — conferir a medida com a Luiza Valentina antes de fabricar</span></td><td style="width:38px" class="md">6 e 9</td><td style="width:24px"><span class="cx"></span></td></tr>
+    <tr><td style="width:22px" class="nn">19</td><td style="width:168px"><span class="tt">Gaveteiro</span></td><td style="width:150px" class="md">MDF Cancún Sudati</td><td><span class="dd">Quatro gavetas · rodízio de silicone com trava</span></td><td style="width:38px" class="md">5</td><td style="width:24px"><span class="cx"></span></td></tr>
+    <tr><td style="width:22px" class="nn">20</td><td style="width:168px"><span class="tt">Mesa de cabeceira</span></td><td style="width:150px" class="md">MDF Cancún Sudati</td><td><span class="dd">Uma gaveta · interruptor com tomada</span></td><td style="width:38px" class="md">3</td><td style="width:24px"><span class="cx"></span></td></tr>
+    <tr><td style="width:22px" class="nn">21</td><td style="width:168px"><span class="tt">Cabideiro · 4 un</span></td><td style="width:150px" class="md">MDF Lume Guararapes</td><td><span class="dd"></span></td><td style="width:38px" class="md">5</td><td style="width:24px"><span class="cx"></span></td></tr>
+    <tr><td style="width:22px" class="nn">22</td><td style="width:168px"><span class="tt">Cama com cabeceira estofada</span></td><td style="width:150px" class="md">MDF + estofado</td><td><span class="dd">Execução nossa · <b>tecido do estofado a definir</b></span></td><td style="width:38px" class="md">4</td><td style="width:24px"><span class="cx"></span></td></tr>
+    <tr><td style="width:22px" class="nn">23</td><td style="width:168px"><span class="tt">Painel de meia parede</span></td><td style="width:150px" class="md">MDF Cancún Sudati</td><td><span class="dd">Filete em MDF Sal Rosa Arauco · <b>sem perfil metálico</b></span></td><td style="width:38px" class="md">9</td><td style="width:24px"><span class="cx"></span></td></tr>
+    <tr><td style="width:22px" class="nn">24</td><td style="width:168px"><span class="tt">Nicho do banheiro</span></td><td style="width:150px" class="md">MDF Lume Guararapes</td><td><span class="dd"></span></td><td style="width:38px" class="md">11</td><td style="width:24px"><span class="cx"></span></td></tr>
+    <tr><td style="width:22px" class="nn">25</td><td style="width:168px"><span class="tt">Gabinete do banheiro</span></td><td style="width:150px" class="md">MDF Lume Guararapes</td><td><span class="dd">Cinco prateleiras internas</span></td><td style="width:38px" class="md">11</td><td style="width:24px"><span class="cx"></span></td></tr>
+    <tr><td style="width:22px" class="nn">26</td><td style="width:168px"><span class="tt">Acabamento do espelho · 2 un</span></td><td style="width:150px" class="md">MDF Lume Guararapes</td><td><span class="dd">Puxador passante · toalheiro de mão</span></td><td style="width:38px" class="md">11</td><td style="width:24px"><span class="cx"></span></td></tr>
   </table>
 
-  <div class="faixa">3 · Roupeiro — prancha 10</div>
-  <div class="bloco"><h3>Reaproveitamento · 267 × 152 · 60 cm de profundidade interna</h3><b>Reaproveitamento, não móvel novo.</b> Preservar a estrutura existente em madeira — base e laterais — <b>mediante conferência do estado de conservação e da estabilidade</b>. Reaproveitar as portas, com preparação da superfície e aplicação de <b>laca fosca Sayerlack J029</b>. Executar a nova organização interna em <b>MDF branco TX</b>: prateleiras, divisórias, gavetas e sapateira deslizante. Cabideiro oval. Vão como puxador. <b>Conferir as medidas internas e a compatibilidade das peças com a abertura das portas antes da fabricação.</b></div>
+  <div class="faixa">2 · Materiais, ferragens e o que fica fora</div>
+  <div class="bloco"><b>Materiais e acabamentos.</b> MDF Noce Amêndoa Duratex · MDF Cancún Sudati · MDF Lume Guararapes · MDF Sal Rosa Arauco (filete) · laca fosca Sayerlack J029 · tecido do estofado (a definir)<br>
+  <b>Ferragens.</b> Puxador passante (aéreos e espelho) · rodízio de silicone com trava (gaveteiro) · corrediças e dobradiças de linha<br>
+  <span class="ff"><b>Fora do escopo.</b> Puxador de porcelana Nanda Devi 151 — Meu Puxador, 12 un — fornecimento do cliente</span></div>
+  <div class="bloco alerta"><b>Roupeiro.</b> O roupeiro da prancha 10 <b>não está incluso</b> — excluído do escopo em contrato. Não fabricar, não orçar e não comprar material para ele.</div>
 
-  <div class="faixa">4 · Materiais e acabamentos</div>
-  <table class="tb">
-    <tr><th style="width:170px">Material</th><th>Onde entra</th></tr>
-    <tr><td style="width:170px"><span class="tt">MDF Noce Amêndoa Duratex</span></td><td><span class="dd">Escrivaninha</span></td></tr>
-    <tr><td style="width:170px"><span class="tt">MDF Cancún Sudati</span></td><td><span class="dd">Prateleira · gaveteiro · mesa de cabeceira · painel de meia parede</span></td></tr>
-    <tr><td style="width:170px"><span class="tt">MDF Lume Guararapes</span></td><td><span class="dd">Armários aéreos · painel da persiana · cabideiro · peças do banheiro</span></td></tr>
-    <tr><td style="width:170px"><span class="tt">MDF Sal Rosa Arauco</span></td><td><span class="dd">Filete do painel de meia parede</span></td></tr>
-    <tr><td style="width:170px"><span class="tt">MDF branco TX</span></td><td><span class="dd">Organização interna do roupeiro</span></td></tr>
-    <tr><td style="width:170px"><span class="tt">Laca fosca Sayerlack J029</span></td><td><span class="dd">Portas do roupeiro · prateleira</span></td></tr>
-    <tr><td style="width:170px"><span class="tt">Tecido do estofado</span></td><td><span class="dd">Cabeceira da cama — A DEFINIR</span></td></tr>
-  </table>
-
-  <div class="faixa">5 · Ferragens e componentes</div>
-  <div class="duas"><div><div class="cx2"><span class="b"></span><span>Puxador passante — armários aéreos e espelho do banheiro</span></div><div class="cx2"><span class="b"></span><span>Rodízio de silicone com trava — gaveteiro</span></div></div><div><div class="cx2"><span class="b"></span><span>Cabideiro oval — roupeiro</span></div><div class="cx2"><span class="b"></span><span>Sapateira deslizante — roupeiro</span></div></div></div>
-  <div class="rodape"><span>Valvic Marcenaria · Vargas Decor Ltda</span><span>Escopo de venda · Raquel Franco</span></div>
-</div>
-
-<div class="sheet">
-  <div class="topo">
-    <div class="marca">valvic<small>Marcenaria</small></div>
-    <div class="doc"><h1>Escopo de Venda</h1>
-      <div class="m">Raquel Franco · Quarto e banheiro · folha 3 de 3</div></div>
-  </div>
-  <div class="faixa">6 · Fora do escopo da marcenaria</div>
-  <div class="duas foraescopo"><div><div class="cx2"><span class="b"></span><span>Puxador de porcelana Nanda Devi 151 — Meu Puxador, 12 un — fornecimento do cliente</span></div><div class="cx2"><span class="b"></span><span>Papel de parede — Uau Bobinex, 12 rolos</span></div><div class="cx2"><span class="b"></span><span>Pintura do quarto e do banheiro — Suvinil, acrílica e epóxi</span></div><div class="cx2"><span class="b"></span><span>Persiana rolô blackout — Luiza Valentina, tecido a definir</span></div></div><div><div class="cx2"><span class="b"></span><span>Espelho, tapetes, cadeira e peças de decoração</span></div><div class="cx2"><span class="b"></span><span>Iluminação — lustre, luminárias e arandelas</span></div><div class="cx2"><span class="b"></span><span>Pontos elétricos novos</span></div><div class="cx2"><span class="b"></span><span>Roupa de cama personalizada</span></div></div></div>
-
-  <div class="faixa">7 · A definir antes de liberar a produção</div>
+  <div class="faixa">3 · A definir antes de liberar a produção</div>
   <table class="tb">
     <tr><th style="width:22px">&#10003;</th><th style="width:160px">O que</th>
         <th>Condição</th><th style="width:95px">Definido em</th></tr>
-    <tr><td style="width:22px"><span class="cx"></span></td><td style="width:160px"><span class="tt">Material dos armários do banheiro</span></td><td><span class="dd">Os itens 24, 25 e 26 trazem <b>MDF Lume Guararapes</b>, mas a prancha 11 anota "usar MDF Verde/Ultra para armários". <b>Divergência dentro do próprio projeto.</b></span></td><td style="width:95px" class="pt"><i></i></td></tr>
-    <tr><td style="width:22px"><span class="cx"></span></td><td style="width:160px"><span class="tt">O roupeiro está vendido?</span></td><td><span class="dd">A prancha 10 não aparece na legenda de marcenaria do layout. Confirmar se o reaproveitamento foi contratado.</span></td><td style="width:95px" class="pt"><i></i></td></tr>
-    <tr><td style="width:22px"><span class="cx"></span></td><td style="width:160px"><span class="tt">Tecido do estofado da cabeceira</span></td><td><span class="dd">A cama e a cabeceira são <b>execução nossa</b>. Falta definir o tecido com a cliente antes de comprar.</span></td><td style="width:95px" class="pt"><i></i></td></tr>
-    <tr><td style="width:22px"><span class="cx"></span></td><td style="width:160px"><span class="tt">Estado do roupeiro existente</span></td><td><span class="dd">A execução depende da conferência da conservação e da estabilidade da estrutura. Se não passar, o escopo muda.</span></td><td style="width:95px" class="pt"><i></i></td></tr>
+    <tr><td style="width:22px"><span class="cx"></span></td><td style="width:160px"><span class="tt">Material dos armários do banheiro</span></td><td><span class="dd">Os itens 24, 25 e 26 trazem <b>MDF Lume Guararapes</b>, mas a prancha 11 anota "usar MDF Verde/Ultra para armários". Divergência dentro do próprio projeto.</span></td><td style="width:95px" class="pt"><i></i></td></tr>
+    <tr><td style="width:22px"><span class="cx"></span></td><td style="width:160px"><span class="tt">Tecido do estofado da cabeceira</span></td><td><span class="dd">A cama e a cabeceira são execução nossa. Definir o tecido com a cliente antes de comprar.</span></td><td style="width:95px" class="pt"><i></i></td></tr>
     <tr><td style="width:22px"><span class="cx"></span></td><td style="width:160px"><span class="tt">Conferência de medidas no local</span></td><td><span class="dd">Exigida em todas as pranchas. Há fotos de medição de 05/11 na pasta do cliente — confirmar se cobrem todos os ambientes.</span></td><td style="width:95px" class="pt"><i></i></td></tr>
-    <tr><td style="width:22px"><span class="cx"></span></td><td style="width:160px"><span class="tt">Vão da persiana</span></td><td><span class="dd">O painel tem recuo para a persiana descer. Alinhar a medida com a Luiza Valentina antes de fabricar o painel.</span></td><td style="width:95px" class="pt"><i></i></td></tr>
+    <tr><td style="width:22px"><span class="cx"></span></td><td style="width:160px"><span class="tt">Vão da persiana</span></td><td><span class="dd">O painel tem recuo para a persiana descer. Alinhar a medida com a Luiza Valentina antes de fabricar.</span></td><td style="width:95px" class="pt"><i></i></td></tr>
   </table>
-
-  <div class="faixa">8 · Registro comercial</div>
-  <div class="bloco"><h3>Venda</h3>Valor contratado <b>R$ 22.600,00</b> · situação <b>Quitado</b>,
-  conforme a planilha de gestão. <b>Sem proposta e sem contrato localizados</b> para conferência de condições,
-  prazo e memorial descritivo.</div>
 
   <div class="assina">
     <div><div class="n">Comercial</div><div class="s">Repassado em ___/___/______</div></div>
     <div><div class="n">Gestão</div><div class="s">Recebido e conferido em ___/___/______</div></div>
     <div><div class="n">Produção</div><div class="s">Liberado em ___/___/______</div></div>
   </div>
-  <div class="rodape"><span>Valvic Marcenaria · Vargas Decor Ltda</span><span>Escopo de venda · Raquel Franco</span></div>
+  <div class="rodape"><span>Valvic Marcenaria · Vargas Decor Ltda</span>
+    <span>Escopo de venda · Raquel Franco</span></div>
 </div>
 
 </body>
