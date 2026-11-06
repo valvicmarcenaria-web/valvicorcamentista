@@ -13,6 +13,17 @@ Decisões [Jonathan, 04/11/2026]:
     painel com 3 portas 15.600 · Circulação (bar + painel) 30.420
   · Closet Mateus com o MESMO custo do Closet Ana
   · Serviço avulso do rodapé: R$ 1.900 de VENDA, fora da MC
+
+Revisão de escopo [Jonathan, 06/11/2026] — seis mudanças:
+  ① só DUAS linhas: Hettich e Blum (a Telescópica sai da proposta)
+  ② o QUARTO DO MATEUS sai inteiro (o closet dele fica)
+  ③ as portas ripadas viram PIVOTANTES (preço fixo de 8.500 mantido)
+  ④ o CLOSET DE CASAL perde todas as portas
+  ⑤ as portas de ESPELHO do closet de casal em LINHA PRÓPRIA
+  ⑥ os CLOSETS ANA E MATEUS perdem as portas
+  ⛔ VALOR SÓ MUDA SE PEDIDO: o que não foi tocado fica no preço que o
+    cliente viu em 04/11, na tabela VISTO abaixo. Só os três closets e a
+    linha nova saem do motor.
 """
 import sys, os, json, subprocess, pathlib
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
@@ -25,28 +36,50 @@ AQUI = pathlib.Path(__file__).parent
 #  ferragem da linha). ⭐ [Jonathan, 04/11/2026] "vamos puxar a Hettich em 5%
 #  de MC acima e a Blum em 10" → os itens com gaveta/dobradiça da linha sobem
 #  INTEIROS; os sem ferragem de linha continuam a 42%, iguais nas três.
-LIN = {'telescopica': ('Telescópica', 0.35, 0.42), 'hettich': ('Hettich', 0.43, 0.47),
-       'blum': ('Blum', 0.55, 0.52)}
+#   ⛔ [Jonathan, 06/11/2026] "duas linhas de ferragem: HETTICH e BLUM"
+LIN = {'hettich': ('Hettich', 0.43, 0.47), 'blum': ('Blum', 0.55, 0.52)}
 MC_COMUM = 0.42
 PROJETO = 2000.0
 B = MC.base(0, rt=False, vendedor=False)                      # 84,875%
 PAGTO = [('Entrada, na assinatura do contrato', 0.30), ('30 dias após a assinatura', 0.20),
          ('60 dias após a assinatura', 0.20), ('90 dias após a assinatura', 0.30)]
-ORDEM = ['Quarto casal', 'Closet casal', 'Suíte Ana', 'Closet Ana', 'Quarto Mateus',
-         'Closet Mateus', 'Rouparia', 'Circulação']
+ORDEM = ['Quarto casal', 'Closet casal', 'Closet casal · portas de espelho', 'Suíte Ana',
+         'Closet Ana', 'Closet Mateus', 'Rouparia', 'Circulação']
 FIXO_ITEM = {('Suíte Ana', 'Móvel da janela (nichos, banco e gavetões)'): 9800.0,
              ('Suíte Ana', 'Painel com 3 portas mimetizadas'): 15600.0,
              # ⭐ "ambas as portas ripadas são de correr, preço final de ambas 8.500"
-             ('Quarto casal', 'Portas ripadas de correr (closet e banho)'): 8500.0}
+             ('Quarto casal', 'Portas ripadas pivotantes (closet e banho)'): 8500.0}
 # ⭐ "Rouparia, valor total de venda 9.300" (os dois armários na proporção)
 FIXO_AMB = {'Rouparia': 9300.0}
 # ⭐ MESCLA num item só [Jonathan, 04/11/2026]: o fator é o desconto do total
 #   "Closet casal pode diminuir 10% do valor total e apresente um item único"
 #   "Closet Ana, mescle o valor de cada item · idem Closet Mateus"
-MESCLA = {'Closet casal': ('Closet completo: armários, sapateira com espelho e fechamento', 0.90),
+MESCLA = {'Closet casal': ('Closet completo, sem portas: armários, sapateira e fechamento', 0.90),
           'Closet Ana': ('Armário em L do piso ao forro', 1.00),
           'Closet Mateus': ('Armário em L do piso ao forro', 1.00)}
-DILUI = lambda a, m: a.startswith('Closet') or m == 'Painel com 3 portas mimetizadas'
+DILUI = lambda a, m: ((a.startswith('Closet') and 'espelho' not in a)
+                      or m == 'Painel com 3 portas mimetizadas')
+# ⛔⛔ A TABELA DECLARADA: o preço que o cliente viu em 04/11/2026, nos itens
+#   que a revisão de 06/11 NÃO tocou (Hettich, Blum). Sem isto, tirar o
+#   quarto do Mateus e as portas mexeria no rateio da chapa e do frete e
+#   andaria com o preço de quem ninguém pediu para mudar.
+VISTO = {('Quarto casal', 'Mesa rack suspensa'): (4250, 7310),
+         ('Quarto casal', 'Torre de nichos'): (2490, 2490),
+         ('Quarto casal', 'Espelho com LED'): (5000, 5000),
+         ('Quarto casal', 'Cabeceira'): (4290, 4290),
+         ('Quarto casal', 'Mesinhas de cabeceira (2)'): (2820, 4460),
+         ('Rouparia', 'Armário parede A (174 × 270 × 45)'): (5030, 5030),
+         ('Rouparia', 'Armário parede B (121 × 270 × 70)'): (4270, 4270),
+         ('Circulação', 'Painel com 4 portas mimetizadas'): (22430, 22430)}
+# ⭐ o que o cliente viu nos três closets em 04/11, para a tabela comparar
+ANTES = {('Closet casal', 'Closet completo: armários, sapateira com espelho e fechamento'): (45030, 55720),
+         ('Closet Ana', 'Armário em L do piso ao forro'): (28460, 33880),
+         ('Closet Mateus', 'Armário em L do piso ao forro'): (28460, 33880),
+         ('Quarto Mateus', '(cinco itens)'): (17550, 19850)}
+TOTAL_ANTES = {'hettich': 203980, 'blum': 232510}
+# ⭐ [Jonathan, 06/11/2026] "linha própria, não embutida no conjunto": o
+#   opcional NÃO soma no total do projeto, aparece ao lado dele.
+OPCIONAL = {'Closet casal · portas de espelho'}
 
 def linha(k):
     r = subprocess.run([sys.executable, 'resumo.py'], env=dict(os.environ, LINHA=k),
@@ -80,12 +113,17 @@ for k, (nome, mc, mc_item) in LIN.items():
         v = round(sum(pv[x] for x in it) * fat, -1); c = sum(cus[x] for x in it)
         for x in it: del pv[x]; del cus[x]
         pv[(a, nm)] = v; cus[(a, nm)] = c
-    TAB[k] = dict(nome=nome, mc=mc, cus=cus, pv=pv, CD=sum(cus.values()),
-                  venda=sum(pv.values()))
+    for x, vs in VISTO.items():
+        pv[x] = float(vs[list(LIN).index(k)])
+    conj = [x for x in pv if x[0] not in OPCIONAL]
+    TAB[k] = dict(nome=nome, mc=mc, cus=cus, pv=pv,
+                  CD=sum(cus[x] for x in conj), venda=sum(pv[x] for x in conj),
+                  opc={x: pv[x] for x in pv if x[0] in OPCIONAL},
+                  opc_cus={x: cus[x] for x in pv if x[0] in OPCIONAL})
 
 # ⛔ as travas
 for x in TAB['hettich']['pv']:
-    if not TAB['hettich']['cus'][x] - TAB['telescopica']['cus'][x]:   # sem ferragem de linha
+    if not TAB['blum']['cus'][x] - TAB['hettich']['cus'][x]:   # sem ferragem de linha
         v = {TAB[k]['pv'][x] for k in TAB}
         assert len(v) == 1, ('⛔ item sem ferragem de linha com preços diferentes', x, v)
 for a, v in FIXO_AMB.items():
@@ -101,7 +139,8 @@ if __name__ == '__main__':
             print(f"  {x[1]:48s}" + ''.join(f"{brl(T[k]['pv'][x]):>15s}" for k in T))
         print(f"  {'subtotal':48s}" + ''.join(f"{brl(sum(T[k]['pv'][y] for y in it)):>15s}" for k in T))
         print(f"  {'custo':48s}" + ''.join(f"{brl(sum(T[k]['cus'][y] for y in it)):>15s}" for k in T))
-    print(f"\n{'TOTAL':50s}" + ''.join(f"{brl(T[k]['venda']):>15s}" for k in T))
+    print(f"\n{'TOTAL DO CONJUNTO (sem o opcional)':50s}" + ''.join(f"{brl(T[k]['venda']):>15s}" for k in T))
+    print(f"{'OPCIONAL · portas de espelho':50s}" + ''.join(f"{brl(sum(T[k]['opc'].values())):>15s}" for k in T))
     print(f"{'CUSTO DIRETO':50s}" + ''.join(f"{brl(T[k]['CD']):>15s}" for k in T))
     print(f"{'MC efetiva':50s}" + ''.join(f"{(B - T[k]['CD'] / T[k]['venda'])*100:14.1f}%" for k in T))
     for lab, f in PAGTO:

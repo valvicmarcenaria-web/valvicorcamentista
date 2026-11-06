@@ -13,12 +13,9 @@ divisorias(m, 2, 267, 54, A)
 prateleiras(m, 6, 69, 54, A)                   # 3 maleiros + 3 prateleiras
 cabideiro(m, 69); cabideiro(m, 69)
 gavetas(m, 7, 67, 18, 50, 'Areia')             # gavetas internas, módulo central
-for L in (71, 71, 71):
-    P(m, 'Porta de correr', 268, L, 1, 'Areia 18', 2 * (L + 268) / 100)
-    O(m, 'Desempenador de porta', 2, 'un', 100)
-O(m, 'Sistema de correr SS150, 3 portas', 1, 'cj', 700)
-O(m, 'Trilho SS150 3 m', 1, 'un', 250)
-O(m, 'Cava 45° usinada', 3, 'frente', 50)
+#   ⛔ [Jonathan, 06/11/2026] "CLOSET DE CASAL: tire todas as portas" — saem
+#     as 3 folhas de correr de 71, o SS150 de 3 portas, o trilho de 3 m, os
+#     6 desempenadores e as 3 cavas.
 
 # ── Armário parede B · 144 × 270 × 54 · 2 módulos de 72 ─────────────────
 m = 'Armário parede B'
@@ -27,8 +24,8 @@ divisorias(m, 1, 267, 54, A)
 prateleiras(m, 4, 70, 54, A)                   # 2 maleiros + 2 prateleiras
 cabideiro(m, 70); cabideiro(m, 70)
 gavetas(m, 4, 68, 20, 50, 'Areia')
-correr(m, [72, 72], 268, 'Areia')
-O(m, 'Cava 45° usinada', 2, 'frente', 50)
+#   ⛔ [Jonathan, 06/11/2026] sem portas: saem as 2 folhas de 72, o SS150,
+#     o trilho, os desempenadores e as 2 cavas.
 
 # ── A porta entre o closet e o banho ─────────────────────────────────────
 #   ⛔⛔ DUPLICATA REMOVIDA na revisão de 04/11/2026: a "porta de giro em MDF
@@ -42,8 +39,8 @@ m = 'Sapateira com espelho'
 caixa(m, 136, 270, 41, 'Areia', interno=A, fundo='Areia 6')
 divisorias(m, 1, 267, 41, A)
 prateleiras(m, 12, 66, 41, A)
-correr(m, [66, 70], 268, 'Areia')
-O(m, 'Espelho prata colado na porta', (0.66 + 0.70) * 2.68, 'm²', 600)
+#   ⛔ [Jonathan, 06/11/2026] as duas portas de espelho SAEM daqui e vão para
+#     uma linha própria, no fim deste arquivo.
 
 # ── Parede A · painel em Areia onde corre a porta do quarto ─────────────
 #   ⭐ a porta é a MESMA do painel ripado do quarto (já contada lá): aqui
@@ -56,3 +53,13 @@ m = 'Fechamento superior'
 P(m, 'Faixa de fechamento', 157, 10, 4, 'Areia 18', 1.57)
 P(m, 'Bandeira acima da porta do banho', 60, 70, 1, 'Areia 18', 2 * (60 + 70) / 100)
 O(m, 'Perfil de proteção de piso', 6.30, 'm', 15)
+
+# ── ⭐ LINHA PRÓPRIA: só as portas de espelho [Jonathan, 06/11/2026] ─────
+#   "apresente SEPARADO o investimento para colocar só as portas de espelho
+#   no closet de casal — linha própria, não embutida no conjunto". São as
+#   duas folhas de correr da sapateira (66 e 70 × 268), em Areia 18 com
+#   espelho prata colado, no SS150 de 2 portas com trilho e desempenador.
+ambiente('Closet casal · portas de espelho')
+m = 'Portas de correr com espelho na sapateira'
+correr(m, [66, 70], 268, 'Areia')
+O(m, 'Espelho prata colado na porta', (0.66 + 0.70) * 2.68, 'm²', 600)

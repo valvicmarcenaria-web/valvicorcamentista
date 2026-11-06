@@ -13,9 +13,10 @@ def closet_L(amb, COR):
     divisorias(m, 2, 267, 54, T)
     prateleiras(m, 8, 55, 54, f'{COR} 15')        # 2 × (maleiro + 3)
     cabideiro(m, 55); cabideiro(m, 55)
-    correr(m, [55, 53], 268, COR)
+    #   ⛔ [Jonathan, 06/11/2026] "CLOSET ANA E MATEUS: tire as portas também"
+    #     — saem as folhas de correr, o SS150, o trilho, os desempenadores e o
+    #     perfil puxador. ⚠ O painel fixo de canto FICA: fecha o canto morto.
     P(m, 'Painel fixo de canto', 268, 52, 1, f'{COR} 18', 2 * (268 + 52) / 100)
-    O(m, 'Perfil puxador vertical', 2 * 1.50, 'm', 100, 'SP7000 · ⚠ sem especificação')
 
     # ── Ala A · 151 × 270 × 50 · módulos 54 (canto) | 48 | 48 ────────────────
     m = 'Armário em L · ala A'
@@ -24,9 +25,8 @@ def closet_L(amb, COR):
     prateleiras(m, 6, 48, 50, f'{COR} 15')        # maleiro + 4 · maleiro do cabide
     cabideiro(m, 48)
     gavetas(m, 5, 48, 18, 45, COR)           # gavetas internas
-    correr(m, [46, 48], 268, COR)
+    #   ⛔ [Jonathan, 06/11/2026] sem portas, como na ala D
     P(m, 'Painel fixo de canto', 268, 56, 1, f'{COR} 18', 2 * (268 + 56) / 100)
-    O(m, 'Perfil puxador vertical', 2 * 1.50, 'm', 100, 'SP7000 · ⚠ sem especificação')
     O(m, 'Perfil de proteção de piso', 3.10, 'm', 15)
 
     # ⛔ PERFUMARIA / CRISTALEIRA DE VIDRO (50 × 29 × 267): vidraçaria, sem preço

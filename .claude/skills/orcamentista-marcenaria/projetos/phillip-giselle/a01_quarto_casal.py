@@ -11,13 +11,17 @@ ambiente('Quarto casal')
 #   em Areia. ⚠ planta diz giro, vista diz correr: lançada de correr.
 #   ⭐ [Jonathan, 04/11/2026] "ambas as portas ripadas são de correr, preço
 #   final de ambas 8.500" → um item só, preço fixo nas três linhas.
-m = 'Portas ripadas de correr (closet e banho)'
-porta_passagem(m, 66, 215, 'Amadeirado', 'Areia', ripada='Amadeirado', sistema='correr')
+#   ⭐⭐ [Jonathan, 06/11/2026] "as portas ripadas do closet passam a ser
+#   PIVOTANTES, não deslizantes": as DUAS folhas do item (closet e banho)
+#   trocam o RO82 Top de correr pelo pivô, com o fecho rolete de toda pivô.
+#   O preço fixo de 8.500 NÃO mudou: não foi pedido.
+m = 'Portas ripadas pivotantes (closet e banho)'
+porta_passagem(m, 66, 215, 'Amadeirado', 'Areia', ripada='Amadeirado', sistema='pivo')
 
 #   a segunda porta: a do banho. ⭐ [Jonathan, 04/11/2026] os banheiros
 #   saem, a porta fica, e ela é RIPADA igual à do closet: face do quarto em
 #   amadeirado ripado, face do banho em Areia, pivô.
-porta_passagem(m, 72, 212, 'Amadeirado', 'Areia', ripada='Amadeirado', sistema='correr')
+porta_passagem(m, 72, 212, 'Amadeirado', 'Areia', ripada='Amadeirado', sistema='pivo')
 
 # ── 2 · Mesa rack em MDF areia (vista D) ─────────────────────────────────
 #   78 + 78 + 78 + 80 = 314 × 20 de altura × 30 de profundidade, suspensa.
