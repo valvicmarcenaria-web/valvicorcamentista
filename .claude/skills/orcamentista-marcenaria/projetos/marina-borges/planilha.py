@@ -109,6 +109,9 @@ NOTAS = {
    '⭐⭐ QUATRO PADRÕES DE MDF NO MESMO AMBIENTE: Cipres, Fontana Linha Magma, Cacao '
    'Matt e o Branco TX do interior. Cada padrão arredonda a sua própria chapa, e é '
    'por isso que a suíte compra mais chapa do que a área dela sugere.',
+   '⭐⭐ E O CASO EXTREMO ESTÁ AQUI: o fundo de nicho de 52 × 39 é a ÚNICA peça do '
+   'projeto em Fontana 6 mm. 0,20 m² compram UMA CHAPA INTEIRA de R$ 350. Trocar por '
+   'Cipres 6 ou tirar de sobra de Fontana 18 devolve cerca de R$ 1.058 de preço.',
    '⭐ As duas divisórias levam RIPADO VAZADO de 4 × 240 × 4,20 — vazado, não aplicado: '
    'a ripa atravessa e se vê dos dois lados.',
    '⭐ A prateleira do painel da vista 11 tem 225,5 de vão livre. Acima de 1,20 m a '
@@ -129,12 +132,16 @@ NOTAS = {
    '⭐ MDF Cinza Sagrado Duratex, padrão único do ambiente.',
    '⭐ As 4 folhas do superior são ESPELHADAS: espelho prata colado sobre a estrutura '
    'de MDF, 600 o m², mais a chapa por baixo. A fita de LED corre no eixo h = 90, '
-   'dentro da faixa de espelho demarcada.'],
+   'dentro da faixa de espelho demarcada.',
+   '⚠ ÁREA ÚMIDA. A Base tem MDF Branco Ártico Ultra, que resiste melhor à umidade que o Branco TX comum, a R$ 450 contra R$ 350 na chapa de 15. Orcei em Branco TX. Se o banho pede Ártico, a caixaria dos dois banhos sobe cerca de R$ 300 de custo direto.',
+ ],
  '08 Banheiro Social': [
    '⭐ O ARMÁRIO G tem o puxador CAVA USINADO NA PRÓPRIA ESTRUTURA DO ESPELHO — a '
    'folha chama isso de "porta infinita". É usinagem, não puxador comprado.',
    '⭐ São três peças de espelho no ambiente: a folha do G, o espelho de 140 × 140 da '
-   'vista 16, e a moldura.'],
+   'vista 16, e a moldura.',
+   '⚠ ÁREA ÚMIDA, mesma observação do banho da suíte: a Base tem Branco Ártico Ultra a R$ 450 contra R$ 350 do Branco TX de 15. Orcei em Branco TX.',
+ ],
  '09 Quarto': [
    '⭐ Duas folhas de correr de 97,5 × 251 em Cacao Matt. Toda porta deslizante leva '
    'desempenador, e folha de 70 cm ou mais leva DOIS: são 4.',
@@ -148,6 +155,35 @@ NOTAS = {
 def _esp(it, q):
     """a abertura de material de um item, para a seção O AMBIENTE"""
     pass
+
+
+#   ⭐ O QUE EU ESCREVI NA MÃO NA PLANILHA TEM DE VIVER AQUI. Ao regerar as
+#     abas eu quase apaguei as próprias observações que tinha acrescentado
+#     célula a célula — nota que mora só na planilha morre na próxima
+#     geração.
+OBS_MATERIAL = {
+ ('05 Suíte', 'MDF Fontana 6 mm'):
+   ' · ⛔ UMA CHAPA INTEIRA PARA UM FUNDO DE NICHO',
+ ('06 Closet', 'Dobradiça Blum para porta de vidro'):
+   ' · ⚠ PODE ESTAR CONTADA DUAS VEZES — ver as dúvidas',
+ ('09 Quarto', 'Sistema de porta retrátil'):
+   ' · ⚠ preço emprestado do sistema de correr',
+}
+OBS_PECA = {
+ 'fundo dos nichos em Fontana Magma':
+   '⛔ É A ÚNICA PEÇA DO PROJETO EM FONTANA 6: 0,20 m² compram UMA CHAPA de '
+   'R$ 350. Trocar por Cipres 6 ou por sobra de Fontana 18 devolve R$ 350 de '
+   'custo direto, cerca de R$ 1.058 de preço.',
+ 'prateleira do painel': '225,5 de vão livre: leva alma de aço, contra flecha',
+ 'maleiro': '150 de vão livre: leva alma de aço, contra flecha',
+ 'prateleiras inclinadas':
+   '8 × 22,50 = 180 por coluna · encaixe usinado em ângulo',
+ 'estrutura das 4 folhas espelhadas': 'espelho prata colado por cima, 1,67 m²',
+ 'estrutura da folha espelhada':
+   'espelho prata colado por cima · puxador cava na própria estrutura',
+ 'folhas de correr em Cacao Matt':
+   'folha de 70 cm ou mais leva DOIS desempenadores',
+}
 
 
 def linhas_ambiente(nome, d, T):
@@ -164,7 +200,8 @@ def linhas_ambiente(nome, d, T):
         custo_mat += c
         L.append([f'{k[0]} {k[1]} mm', f'{dec(d["area"][k])} m² deste ambiente · '
                   f'{dec(T["area"][k])} m² e {T["chapas"][k]} chapa(s) no projeto '
-                  f'inteiro · {lv.brl(preco)} a chapa',
+                  f'inteiro · {lv.brl(preco)} a chapa'
+                  + OBS_MATERIAL.get((nome, f'{k[0]} {k[1]} mm'), ''),
                   round(d['area'][k] / rend, 2), 'chapa', round(c, 2), 0])
     for rot, m, p in (('Fita de borda de cor', d['fita_cor'], b.FITA_COR),
                       ('Fita de borda Branco TX', d['fita_br'], b.FITA_BRANCA)):
@@ -187,7 +224,7 @@ def linhas_ambiente(nome, d, T):
                 a[0] += q; a[1] += q * u
         for (n, u, un), (q, c) in sorted(agr.items()):
             custo_mat += c
-            L.append([n, f'{lv.brl(u)} o {un}',
+            L.append([n, f'{lv.brl(u)} o {un}' + OBS_MATERIAL.get((nome, n), ''),
                       round(q, 2), un, round(c, 2), 0])
     #   corte, frete, consumíveis e embalagem
     corte = (T['n_chapas'] * b.CORTE_CHAPA * (d['pecas'] / T['pecas'])
@@ -259,10 +296,15 @@ def monta(nome, d, T):
           ['PEÇA', 'OBSERVAÇÃO', 'C', 'L', 'QTD', 'UN', 'CHAVE DA BASE',
            'ÁREA m²', 'CUSTO DE MATERIAL']]
     for it, _dir in d['itens']:
-        R.append([f'■ {it.nome}', it.obs])
+        cab = it.obs
+        if not it.pecas:
+            cab = (cab + ' · ' if cab else '') + (
+                '⭐ NENHUMA PEÇA DE MDF NESTE ITEM: o que ele consome está '
+                'na seção ①')
+        R.append([f'■ {it.nome}', cab])
         for p in it.pecas:
             a, c = peca_custo(p, T)
-            obs = p['obs']
+            obs = p['obs'] or OBS_PECA.get(p['nome'], '')
             if max(p['L'], p['A']) > b.ALT_MAX:
                 obs = (obs + ' · ' if obs else '') + (
                     f'⛔ {max(p["L"], p["A"]):.0f} cm NÃO CABE na chapa de 275: '
@@ -308,6 +350,8 @@ DUVIDAS = {
    '⚠ R$ 4.083 · DUAS MESAS DE CABECEIRA OU UMA? A folha 20 desenha uma e a chama no '
    'singular (vistas 12C e 12D são duas vistas da MESMA peça). A cama tem dois lados. '
    'Orcei duas.',
+   '⚠ R$ 1.058 · O FUNDO DE NICHO EM FONTANA 6 compra uma chapa inteira sozinho. '
+   'Decidir se vale manter o padrão nessa peça.',
    '⚠ A fita metálica em latão dourado da mesa de cabeceira saiu como "friso em perfil '
    'laqueado", R$ 160 o metro — o mais perto que a Base tem. Latão de verdade é outro '
    'fornecedor.'],
@@ -317,16 +361,25 @@ DUVIDAS = {
    'de 1.400 posto na obra" da Base. Mas aquela é de ~2,10 m e leva espelho; estas são '
    'nove folhas de 2,57 m com vidro e perfil dourado. A R$ 2.000 a folha, o projeto '
    'sobe R$ 16.647.',
+   '⚠ R$ 9.521 · A DOBRADIÇA DE VIDRO PODE ESTAR CONTADA DUAS VEZES. São 45 unidades a '
+   'R$ 70 = R$ 3.150 de custo direto, cerca de R$ 9.521 de preço. A Base tem a linha '
+   '"Dobradiça para porta de vidro · porta de alumínio e vidro · R$ 70" separada, e por '
+   'isso lancei. ⚠ Mas o R$ 1.400 da folha é "POSTO NA OBRA", e porta posta costuma vir '
+   'ferrada. Perguntar ao fornecedor o que o preço da folha inclui.',
    '⚠ A metragem de LED do closet (24 m nas três vistas) saiu do render, que mostra '
    'fita em cada prateleira e em cada arara. A folha 21 não desenha a iluminação.'],
  '07 Banho da Suíte': [
    '⚠ A "bancada nova" de 80 da folha 22 não tem material declarado. Deixei FORA, '
    'porque bancada de banho neste projeto tem sido sempre pedra. Se for marcenaria, '
-   'entra.'],
+   'entra.',
+   '⚠ Caixaria de área úmida em Branco TX ou em Branco Ártico Ultra? Ver a nota acima.',
+ ],
  '08 Banheiro Social': [
    '⚠ O espelho de 140 × 140 da vista 16 está escrito "fixado na PAREDE", não na '
    'marcenaria. Incluí, porque é espelho de banheiro e sai no mesmo caminhão — mas a '
-   'regra dos dois estados manda deixar isso escrito.'],
+   'regra dos dois estados manda deixar isso escrito.',
+   '⚠ Caixaria de área úmida em Branco TX ou em Branco Ártico Ultra? Ver a nota acima.',
+ ],
  '09 Quarto': [
    '⚠ O "sistema de porta retrátil" do baú saiu a R$ 900, o mesmo do sistema de correr '
    'Blum. Porta retrátil de verdade (que entra na lateral) é outro ferragem e é mais '
