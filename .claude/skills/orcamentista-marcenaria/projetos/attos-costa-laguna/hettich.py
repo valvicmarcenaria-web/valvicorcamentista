@@ -29,8 +29,16 @@
      painel liso e do rack (+R$ 295 num, −R$ 224 no outro). Eles ficam no
      preço que o cliente viu, e a diferença vai para o ripado — o total da
      Sala de TV continua sendo o do motor, ao centavo.
+⭐⭐ [Jonathan, 06/11/2026] "reformule a proposta tirando o painel da
+   rouparia, mantendo o painel de cortesia e valor de venda final de
+   164.000 na linha hettich".
+   ⭐ O ALVO SE FAZ COMO NA BLUM: os preços CRAVADOS pelo dono (corredor
+     39.700, parede da TV 15.500) e a cortesia ficam fora da diluição, e o
+     resto cai na MESMA PROPORÇÃO sobre o valor que o cliente já viu. A
+     sobra do arredondamento ao real vai para o maior item diluído, e o
+     total fecha em 164.000 exato.
 ⚠ O que NÃO tem custo levantado, e por isso não tem MC calculada:
-   · a ROUPARIA — preço cravado pelo dono (R$ 9.700), sem prancha;
+   · ⛔ a ROUPARIA saiu em 06/11/2026 (era R$ 9.700 cravado, sem prancha);
    · o PAINEL DE CORTESIA do quarto de hóspedes — sai a R$ 0 para o
      cliente, mas tem custo, e a medida dele fecha na medição.
 """
@@ -53,13 +61,14 @@ RETIRADOS = {('Gourmet', 'Armário complementar com portas de vidro'),
              ('Suíte', 'Cabeceira estofada'),
              ('Suíte', 'Mesas de cabeceira')}
 NOVOS = [
-    dict(amb='Rouparia', nome='Painel com portas de substituição, abertura por toque',
-         pv=9700.0, por='[Jonathan, 06/11/2026] MDF melamínico amadeirado, pulsadores Blum, R$ 9.700'),
+    #   ⛔ [Jonathan, 06/11/2026] "tirando o painel da rouparia": era R$ 9.700,
+    #     MDF melamínico amadeirado com pulsadores Blum, sem prancha.
     dict(amb='Quarto de hóspedes', nome='Painel liso · cortesia',
          pv=0.0, por='[Jonathan, 06/11/2026] "painel liso de brinde no quarto de hospede"'),
 ]
 ORDEM_AMB = ['Cozinha', 'Escritório', 'Sala de TV', 'Suíte', 'Suíte 01', 'Hall', 'Jantar',
-             'Rouparia', 'Quarto de hóspedes']
+             'Quarto de hóspedes']
+ALVO = 164000          # ⭐ [Jonathan, 06/11/2026] o valor de venda final, na Hettich
 
 _todos = ln.monta()
 #   ⭐ 184.184,35 no caderno de três linhas · 188.973,24 depois das duas
@@ -83,13 +92,26 @@ _fora = [(d['amb'], d['nome']) for d in _todos if (d['amb'], d['nome']) in RETIR
 assert set(_fora) == RETIRADOS, ('⛔ item a retirar não achado', RETIRADOS - set(_fora))
 
 ITENS = [dict(amb=d['amb'], nome=d['nome'], pv_motor=d[f'{LINHA}_pv'], custo=d[LINHA],
-              mc=d[f'{LINHA}_mc'])
+              mc=d[f'{LINHA}_mc'], cravado=bool(d.get('grupo', {}).get('cravado')))
          for d in _todos if (d['amb'], d['nome']) not in RETIRADOS]
-ITENS += [dict(amb=n['amb'], nome=n['nome'], pv_motor=n['pv'], custo=None, mc=None) for n in NOVOS]
+ITENS += [dict(amb=n['amb'], nome=n['nome'], pv_motor=n['pv'], custo=None, mc=None, cravado=True)
+          for n in NOVOS]
 for it in ITENS:
-    it['pv'] = int(it['pv_motor'] + 0.5)          # ⭐ ao real, sem centavo
+    it['pv_antes'] = int(it['pv_motor'] + 0.5)    # ⭐ ao real: o que o cliente já viu
+#   ── o alvo de 164.000: cravado e cortesia parados, o resto na mesma proporção
+_fixos = [it for it in ITENS if it['cravado']]
+_resto = [it for it in ITENS if not it['cravado']]
+FATOR = (ALVO - sum(it['pv_antes'] for it in _fixos)) / sum(it['pv_antes'] for it in _resto)
+for it in ITENS:
+    it['pv'] = it['pv_antes'] if it['cravado'] else int(it['pv_antes'] * FATOR + 0.5)
+max(_resto, key=lambda it: it['pv'])['pv'] += ALVO - sum(it['pv'] for it in ITENS)
+for it in _resto:
+    it['mc'] = ln.b.BASE - it['custo'] / it['pv']
 ITENS.sort(key=lambda it: ORDEM_AMB.index(it['amb']))
 TOTAL = sum(it['pv'] for it in ITENS)
+assert TOTAL == ALVO, TOTAL
+#   ⭐ a MC do projeto, sobre o que tem custo levantado (a cortesia não tem)
+MC_PROJETO = ln.b.BASE - sum(it['custo'] for it in ITENS if it['custo']) / TOTAL
 PAGTO = [('Entrada, na assinatura do contrato', 0.30), ('30 dias após a assinatura', 0.20),
          ('60 dias após a assinatura', 0.20), ('90 dias após a assinatura', 0.30)]
 #   ⭐ [Jonathan, 06/11/2026] "vamos colocar o valor de R$ ao lado das
@@ -106,8 +128,9 @@ if __name__ == '__main__':
         if it['amb'] != amb:
             amb = it['amb']; print(amb)
         mc = f"MC {it['mc']*100:4.1f}%" if it['mc'] is not None else 'sem custo levantado'
-        print(f"   {it['nome'][:58]:58s} {it['pv']:>8,} · motor {it['pv_motor']:>10,.2f} · {mc}")
+        print(f"   {it['nome'][:58]:58s} {it['pv']:>8,} · antes {it['pv_antes']:>8,} · {mc}")
     ret = sum(d[f'{LINHA}_pv'] for d in _todos if (d['amb'], d['nome']) in RETIRADOS)
-    print(f'TOTAL {TOTAL:,} · retirado {ret:,.2f}')
+    print(f'TOTAL {TOTAL:,} · fator {FATOR:.4f} ({(1 - FATOR) * 100:.2f}% nos itens diluídos) · '
+          f'MC do projeto {MC_PROJETO * 100:.1f}% · retirado {ret:,.2f}')
     for (r, p), v in zip(PAGTO, PARCELAS):
         print(f'   {p*100:3.0f}%  R$ {v:>8,}  {r}')

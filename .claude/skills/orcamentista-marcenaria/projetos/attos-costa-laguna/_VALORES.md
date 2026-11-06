@@ -135,3 +135,29 @@ Pagamento em real cheio, com a última parcela absorvendo o arredondamento:
   conferir se ele aguenta uma folha ripada de 272.
 - **Abertura das portas pivotantes:** nada foi lançado (cava, puxador ou toque). A versão
   de correr também não tinha.
+
+### ⭐ Sem a rouparia, fechada em R$ 164.000 · 06/11/2026
+
+[Jonathan] "reformule a proposta tirando o painel da rouparia, mantendo o painel de
+cortesia e valor de venda final de 164.000 na linha hettich".
+
+- **Saiu a rouparia** (R$ 9.700). Ela entra na folha de condições, em "Retirados nesta
+  versão". **A cortesia do quarto de hóspedes fica.**
+- **O alvo se fez como na Blum:**
+  - os dois preços cravados pelo dono ficam parados: corredor **39.700** e parede da TV
+    **15.500**;
+  - a cortesia também fica parada;
+  - os outros doze itens caem na mesma proporção (**−4,41%**) sobre o valor que o
+    cliente já viu;
+  - a sobra do arredondamento ao real vai para o maior item diluído, e o total fecha
+    em **164.000** exato.
+- **MC:** os itens diluídos ficam em **36,0%**, acima do piso de 35%. O projeto inteiro
+  fica em **38,6%**, puxado pela parede da TV (57,6%).
+  - ⚠ O painel liso da Sala de TV fica em 32,0%: ele carrega o rateio da sobra de chapa
+    das portas de manutenção.
+  - ⚠ A cortesia tem custo e não tem levantamento, então a MC real é um pouco menor.
+- **Pagamento 30/20/20/30:** 49.200 · 32.800 · 32.800 · 49.200.
+
+⭐ Na linha Telescópica, com o mesmo escopo de antes desta mudança (com a rouparia), o
+total seria R$ 172.104, com o corredor no valor que o cliente viu (37.258). Seria
+R$ 174.546 com o corredor a 39.700.

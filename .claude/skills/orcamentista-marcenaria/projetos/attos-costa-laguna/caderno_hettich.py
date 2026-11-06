@@ -171,7 +171,7 @@ AMB = [
       'dois painéis.')])],
   f'O {ANTECIPADA[0].lower()} sai à frente do cronograma: entregue instalado até {ANTECIPADA[1]}.'),
  (['c-suite-tv', 'c-suite01'], 'Suítes · render do anteprojeto',
-  'As suítes, o hall, o jantar e a rouparia.', 'Painéis que escondem a porta, e a rouparia que abre com um toque.',
+  'As suítes, o hall e o jantar.', 'Painéis que escondem a porta, e uma cortesia para o quarto de hóspedes.',
   [('Suíte', [
      ('Parede painelada da TV', 'Painel de ponta a ponta com as duas portas mimetizadas e puxador '
       'em cava usinada na própria peça: nenhuma ferragem aparente na parede.'),
@@ -180,11 +180,11 @@ AMB = [
      ('Cabeceira estofada da suíte 01', 'Base de MDF, espuma e revestimento.'),
      ('Painel do hall', 'Com a porta da lavanderia mimetizada no painel e a faixa de canto.'),
      ('Aparador suspenso do jantar', 'Portas de giro e gaveta interna, suspenso do piso.')]),
-   ('Rouparia · quarto de hóspedes', [
-     ('Painel da rouparia', 'Novo painel em MDF melamínico amadeirado, com portas que substituem '
-      'as atuais e abertura por toque com pulsador Blum: sem puxador, a frente fica lisa.'),
-     ('Painel liso do quarto de hóspedes', 'Uma <b>cortesia da Valvic</b> para a casa.')])],
-  'A cabeceira da suíte 01 e os painéis da rouparia e do quarto de hóspedes fecham a medida na medição técnica.'),
+   #   ⛔ [Jonathan, 06/11/2026] "tirando o painel da rouparia"
+   ('Quarto de hóspedes', [
+     ('Painel liso', 'Uma <b>cortesia da Valvic</b> para a casa, no mesmo padrão dos painéis '
+      'da casa.')])],
+  'A cabeceira da suíte 01 e o painel do quarto de hóspedes fecham a medida na medição técnica.'),
 ]
 AMB_I = N[0] + 1
 for imgs, tag, titulo, sub, blocos, nota in AMB:
@@ -216,7 +216,7 @@ FER = [
    'A mesma dobradiça em todas as portas de giro da casa.']),
  ('Pivô e toque', 'Sistema pivotante · Blum TIP-ON', ['c-cozinha-corredor'], [
    'As portas do corredor giram sobre <b>pivô</b>, dentro do próprio painel ripado: fechadas, viram parede.',
-   'Na rouparia e nas portas de manutenção da sala de TV, o pulsador <b>Blum TIP-ON</b>: a porta '
+   'Nas portas de manutenção da sala de TV, o pulsador <b>Blum TIP-ON</b>: a porta '
    'abre com um toque e dispensa o puxador.',
    'Na suíte e no hall, a cava usinada na própria folha esconde a porta no painel.']),
 ]
@@ -272,7 +272,7 @@ folha(f'''<div class="pad">
       <div class="k" style="margin-top:2.4mm">Garantia</div><div class="v">{H.GARANTIA} anos</div></div></div></div>
    <div class="box" style="margin-top:5mm"><div class="t">O que está incluso</div>
     <p>Projeto executivo de marcenaria, material, usinagem, ferragem Hettich, os pulsadores
-     Blum da rouparia e da sala de TV, a iluminação em LED embutida, o vidro reflecta cristal e o estofado da
+     Blum da sala de TV, a iluminação em LED embutida, o vidro reflecta cristal e o estofado da
      cabeceira, transporte, montagem e instalação.</p></div>
   </div>
  </div>
@@ -316,9 +316,9 @@ folha(f'''<div class="pad" style="padding-bottom:20mm">
     <li><div class="k">Eletrodomésticos, metais e obra</div><div class="v">Cooktop, forno,
       coifa, cubas e torneiras; alvenaria, elétrica, forro, piso e pintura.</div></li>
     <li><div class="k">Retirados nesta versão</div><div class="v">O armário do gourmet, o painel
-      liso e a cabeceira estofada da suíte e as mesas de cabeceira.</div></li>
-    <li><div class="k">A confirmar antes da produção</div><div class="v">O padrão do MDF
-      amadeirado, os pontos de iluminação, a posição das portas de manutenção da sala de TV e as
+      liso e a cabeceira estofada da suíte, as mesas de cabeceira e o painel da rouparia.</div></li>
+    <li><div class="k">A confirmar antes da produção</div><div class="v">Os pontos de
+      iluminação, a posição das portas de manutenção da sala de TV e as
       medidas que fecham na medição.</div></li>
    </ul>
   </div>
@@ -397,7 +397,7 @@ for _c in ('Ana Carolina', 'André', 'Phillip', 'Giselle', 'Michell', 'Gustavo',
 _amb = re.sub(r'<[^>]+>', ' ', re.sub(r'data:[^"]+', '', ''.join(S[AMB_I - 1:AMB_F])))
 assert not re.search(r'\d+\s*(cm|mm|m²|m\b)', _amb), '⛔ medida na descrição'
 assert ',' not in ''.join(brs(it['pv']) for it in H.ITENS), '⛔ centavo num item'
-assert H.TOTAL == 178725, H.TOTAL
+assert H.TOTAL == 164000, H.TOTAL
 
 OUT = AQUI / 'proposta-costa-laguna-hettich.html'
 OUT.write_text(HTML, encoding='utf-8')
