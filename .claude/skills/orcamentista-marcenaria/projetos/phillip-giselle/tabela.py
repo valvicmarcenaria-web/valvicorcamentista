@@ -28,18 +28,20 @@ for a in ORDEM:
         o.append(f'| {x[1]}{nota} | ' + ' | '.join(f(TAB[k]['pv'][x]) for k in L) + f' | {ant} |')
     o.append(f'| *custo direto {a}* | ' + ' | '.join(f(sum(TAB[k]['cus'][y] for y in it)) for k in L) + ' | |')
 o.append('| **Quarto Mateus** · ⛔ saiu inteiro | — | — | ' + f"{f(ANTES[('Quarto Mateus', '(cinco itens)')][0])} · {f(ANTES[('Quarto Mateus', '(cinco itens)')][1])} |")
-o += [f'| **TOTAL DO CONJUNTO** | ' + ' | '.join(f"**{f(TAB[k]['venda'])}**" for k in L) + f" | {f(TOTAL_ANTES['hettich'])} · {f(TOTAL_ANTES['blum'])} |",
+o += [f'| Marcenaria | ' + ' | '.join(f(TAB[k]['venda']) for k in L) + ' | |',
+      f'| Manutenção do painel da sala (serviço, fora da MC) | ' + ' | '.join(f(TAB[k]['servico']) for k in L) + ' | avulso, fora do total |',
+      f'| **TOTAL DA PROPOSTA** | ' + ' | '.join(f"**{f(TAB[k]['total'])}**" for k in L) + f" | {f(TOTAL_ANTES['hettich'])} · {f(TOTAL_ANTES['blum'])} |",
       f'| Custo direto | ' + ' | '.join(f(TAB[k]['CD']) for k in L) + ' | |',
-      f'| MC efetiva | ' + ' | '.join(f"{(B - TAB[k]['CD'] / TAB[k]['venda']) * 100:.1f}%" for k in L) + ' | |']
+      f'| MC efetiva da marcenaria | ' + ' | '.join(f"{(B - TAB[k]['CD'] / TAB[k]['venda']) * 100:.1f}%" for k in L) + ' | |']
 o += ['', '**Opcional, em linha própria, fora do total:**', '', '| Opcional | Hettich | Blum |', '|---|--:|--:|']
 for k0 in TAB['hettich']['opc']:
     o.append(f'| {k0[1]} (closet de casal) | ' + ' | '.join(f(TAB[k]['opc'][k0]) for k in L) + ' |')
 o.append('| *MC do opcional* | ' + ' | '.join(
     f"{(B - sum(TAB[k]['opc_cus'].values()) / sum(TAB[k]['opc'].values())) * 100:.1f}%" for k in L) + ' |')
 o.append('| *custo direto do opcional* | ' + ' | '.join(f(sum(TAB[k]['opc_cus'].values())) for k in L) + ' |')
-o.append('| *conjunto + opcional* | ' + ' | '.join(f(TAB[k]['venda'] + sum(TAB[k]['opc'].values())) for k in L) + ' |')
-o += ['', '| Parcela (do conjunto) | Hettich | Blum |', '|---|--:|--:|']
-o += [f'| {lab} ({p*100:.0f}%) | ' + ' | '.join(f(TAB[k]['venda'] * p) for k in L) + ' |' for lab, p in PAGTO]
-o += ['', *[f'Serviço avulso (venda, fora da MC): R$ {f(v)} · {d} · {obs}.' for d, v, obs in AVULSO]]
+o.append('| *total + opcional* | ' + ' | '.join(f(TAB[k]['total'] + sum(TAB[k]['opc'].values())) for k in L) + ' |')
+o += ['', '| Parcela (do total da proposta) | Hettich | Blum |', '|---|--:|--:|']
+o += [f'| {lab} ({p*100:.0f}%) | ' + ' | '.join(f(TAB[k]['total'] * p) for k in L) + ' |' for lab, p in PAGTO]
+o += ['', *[f'Manutenção do painel da sala, incluída no total (venda, fora da MC): R$ {f(v)} · {d} · {obs}.' for d, v, obs in AVULSO]]
 (pathlib.Path(__file__).parent / 'TABELA-REVISADA.md').write_text('\n'.join(o) + '\n', encoding='utf-8')
 print('\n'.join(o))

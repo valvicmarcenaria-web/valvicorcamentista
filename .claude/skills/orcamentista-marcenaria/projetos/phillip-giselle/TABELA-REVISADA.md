@@ -35,9 +35,11 @@ Duas linhas: **Hettich** e **Blum**. Parte comum a MC 42% + ferragem de moviment
 | Painel com 4 portas mimetizadas · como em 04/11 | 22.430 | 22.430 | = |
 | *custo direto Circulação* | 9.671 | 9.671 | |
 | **Quarto Mateus** · ⛔ saiu inteiro | — | — | 17.550 · 19.850 |
-| **TOTAL DO CONJUNTO** | **156.220** | **178.830** | 203.980 · 232.510 |
+| Marcenaria | 156.220 | 178.830 | |
+| Manutenção do painel da sala (serviço, fora da MC) | 1.900 | 1.900 | avulso, fora do total |
+| **TOTAL DA PROPOSTA** | **158.120** | **180.730** | 203.980 · 232.510 |
 | Custo direto | 62.362 | 67.260 | |
-| MC efetiva | 45.0% | 47.3% | |
+| MC efetiva da marcenaria | 45.0% | 47.3% | |
 
 **Opcional, em linha própria, fora do total:**
 
@@ -46,13 +48,13 @@ Duas linhas: **Hettich** e **Blum**. Parte comum a MC 42% + ferragem de moviment
 | Portas de correr com espelho na sapateira (closet de casal) | 4.500 | 4.500 |
 | *MC do opcional* | -11.6% | -11.6% |
 | *custo direto do opcional* | 4.340 | 4.340 |
-| *conjunto + opcional* | 160.720 | 183.330 |
+| *total + opcional* | 162.620 | 185.230 |
 
-| Parcela (do conjunto) | Hettich | Blum |
+| Parcela (do total da proposta) | Hettich | Blum |
 |---|--:|--:|
-| Entrada, na assinatura do contrato (30%) | 46.866 | 53.649 |
-| 30 dias após a assinatura (20%) | 31.244 | 35.766 |
-| 60 dias após a assinatura (20%) | 31.244 | 35.766 |
-| 90 dias após a assinatura (30%) | 46.866 | 53.649 |
+| Entrada, na assinatura do contrato (30%) | 47.436 | 54.219 |
+| 30 dias após a assinatura (20%) | 31.624 | 36.146 |
+| 60 dias após a assinatura (20%) | 31.624 | 36.146 |
+| 90 dias após a assinatura (30%) | 47.436 | 54.219 |
 
-Serviço avulso (venda, fora da MC): R$ 1.900 · Usinagem do painel existente da sala do térreo, para tentar recuperar o rodapé com perfil de aço inox escovado · sem garantia de efetividade.
+Manutenção do painel da sala, incluída no total (venda, fora da MC): R$ 1.900 · Usinagem do painel existente da sala do térreo, para tentar recuperar o rodapé com perfil de aço inox escovado · sem garantia de efetividade.

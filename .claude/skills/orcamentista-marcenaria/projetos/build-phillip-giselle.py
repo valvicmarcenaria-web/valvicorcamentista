@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
-"""PHILLIP E GISELLE — caderno de proposta  [04/11/2026]
+"""PHILLIP E GISELLE — caderno de proposta  [04/11/2026 · revisão de escopo 06/11/2026]
+
+⭐⭐ [Jonathan, 06/11/2026] REVISÃO DE ESCOPO: duas linhas (Hettich e Blum),
+  sem o quarto do Mateus, portas ripadas pivotantes, closets do casal, da Ana
+  e do Mateus SEM portas, as portas de espelho do closet do casal como
+  OPCIONAL em linha própria (fora do total), ajustes por ambiente, e a
+  manutenção do painel da sala DENTRO do total.
 
 ⭐ Layout do caderno do MICHELL (ICA) na versão revisada do GUSTAVO RAPOSO:
   A4 paisagem · capa · abertura · a empresa · as doze etapas · a arquiteta ·
@@ -27,11 +33,13 @@ CLIENTE = 'Phillip e Giselle'
 ARQ, ARQ_CURTO = 'Janaina Pacheco Arquitetura & Interiores', 'Janaina Pacheco'
 OBRA, DATA = 'Residência unifamiliar · pavimento íntimo', 'Novembro de 2026'
 PRAZO, VALIDADE = '70 dias corridos', '7 dias úteis'   # ⭐ prazo [Jonathan, 04/11/2026]
-LIN = ('telescopica', 'hettich', 'blum')
-NOME = {'telescopica': 'Telescópica', 'hettich': 'Hettich', 'blum': 'Blum'}
-GAR = {'telescopica': '2', 'hettich': '10', 'blum': '30'}
-CHAMADA = {'telescopica': 'Linha Telescópica', 'hettich': 'Linha Hettich · oculta alemã',
-           'blum': 'Linha Blum'}
+LIN = ('hettich', 'blum')                 # ⭐ [Jonathan, 06/11/2026] duas linhas
+NOME = {'hettich': 'Hettich', 'blum': 'Blum'}
+GAR = {'hettich': '10', 'blum': '30'}
+CHAMADA = {'hettich': 'Linha Hettich · oculta alemã', 'blum': 'Linha Blum'}
+AMBS = [a for a in PR.ORDEM if a not in PR.OPCIONAL]      # o opcional não é ambiente
+OPC = list(PR.TAB['hettich']['opc'])                       # as portas de espelho
+brr = lambda v: 'R$ ' + brs(v)
 DESTAQUE = 'hettich'
 
 br = lambda v: 'R$ ' + f'{v:,.2f}'.replace(',', '@').replace('.', ',').replace('@', '.')
@@ -64,7 +72,7 @@ folha(f'''<div class="cv">
   <div class="cv-meta">
    <div><div class="k">Projeto</div><div class="v">{E(ARQ_CURTO)}</div></div>
    <div><div class="k">Obra</div><div class="v">{E(OBRA)}</div></div>
-   <div><div class="k">Linhas</div><div class="v">Telescópica · Hettich · Blum</div></div>
+   <div><div class="k">Linhas</div><div class="v">Hettich · Blum</div></div>
    <div><div class="k">Data</div><div class="v">{E(DATA)}</div></div>
   </div>
  </div>
@@ -80,8 +88,8 @@ folha(f'''<div class="ambw">
  <div class="low" style="grid-template-columns:1fr;padding:11mm 18mm 12mm">
   <div><div class="eyebrow">O que esta casa pede</div><div class="rule"></div>
    <h1 class="h1" style="margin:0 0 5mm">Um pavimento inteiro. Uma empresa só.</h1>
-   <p class="lead" style="max-width:none;font-size:10.4pt">A suíte do casal, os quartos da
-    Ana e do Mateus, os closets, a rouparia e a circulação que os une — um só projeto da
+   <p class="lead" style="max-width:none;font-size:10.4pt">A suíte do casal, a suíte da Ana,
+    os closets, a rouparia e a circulação que os une — um só projeto da
     <b>{E(ARQ)}</b>, com painéis que escondem as portas, ripado de madeira, espelho com luz
     embutida e armários do piso ao forro. <b>Uma só empresa responde por tudo o que está
     nestas folhas</b>, da medição à instalação. <em>Um contrato, uma data, um nome para
@@ -91,8 +99,8 @@ folha(f'''<div class="ambw">
 # ── 03 · a empresa e a infraestrutura ───────────────────────────────────
 PIL = [
  ('01', 'O projeto pede mais que marcenaria.',
-  'Painel que esconde porta, ripado com metalon contra empeno, espelho com luz embutida, '
-  'sistema de correr com amortecimento. Tudo isso entra no nosso escopo, no mesmo contrato '
+  'Painel que esconde porta, porta ripada com metalon contra empeno, espelho com luz embutida, '
+  'porta pivotante rente ao painel. Tudo isso entra no nosso escopo, no mesmo contrato '
   'e na mesma data. <b>Vocês não contratam mais ninguém</b> para a marcenaria e para o que '
   'faz parte dela. O que fica fora vem nomeado — a pedra, por exemplo, é marmoraria.'),
  ('02', 'A peça sai daqui conferida.',
@@ -171,49 +179,41 @@ MAT = {'Quarto casal': 'Ripado amadeirado, MDF Areia, espelho',
        'Closet casal': 'MDF Areia, espelho prata',
        'Suíte Ana': 'MDF branco liso, painel em cor',
        'Closet Ana': 'MDF Tartufo',
-       'Quarto Mateus': 'MDF Grafite',
        'Closet Mateus': 'MDF Grafite',
        'Rouparia': 'MDF branco liso',
        'Circulação': 'Painel em cor, portas mimetizadas'}
-assert list(MAT) == PR.ORDEM
+assert list(MAT) == AMBS
 ix = ''.join(f'<div class="ix"><span class="ix-n">{i:02d}</span><span class="ix-t">{E(a)}</span>'
-             f'<span class="ix-d">{E(MAT[a])}</span></div>' for i, a in enumerate(PR.ORDEM, 1))
+             f'<span class="ix-d">{E(MAT[a])}</span></div>' for i, a in enumerate(AMBS, 1))
 folha(f'''<div class="pad">
  <div class="eyebrow">Os ambientes</div><div class="rule"></div>
- <h1 class="h1" style="margin:0 0 2mm">Oito ambientes,<br>um pavimento inteiro.</h1>
+ <h1 class="h1" style="margin:0 0 2mm">Sete ambientes,<br>um pavimento inteiro.</h1>
  <p class="lead" style="margin-bottom:5mm">Uma folha para cada conjunto, com o que a Valvic
     executa ali e em que material cada peça sai.</p>
  <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:0 12mm;flex:1;min-height:0">
   <div>{ix}</div>
-  <div class="amb-img"><img src="{IMG['mateus-02']}" alt=""><div class="tag">Quarto Mateus</div></div>
+  <div class="amb-img"><img src="{IMG['casal-02']}" alt=""><div class="tag">Quarto casal</div></div>
  </div></div>''')
 
 # ── 07… · as folhas de ambiente, SEM preço ──────────────────────────────
 PG = [
  ('A suíte<br>do casal.', ['casal-01', 'casal-02'], 'Quarto casal',
   'Ripado amadeirado · MDF Areia · espelho prata · LED 3000K',
-  [('Portas ripadas de correr', 'As portas do closet e do banho, em ripado amadeirado do lado do quarto e Areia do lado de dentro, correm com amortecimento rente ao painel ripado.'),
+  [('Portas ripadas pivotantes', 'As portas do closet e do banho, em ripado amadeirado do lado do quarto e Areia do lado de dentro, giram sobre pivô rente ao painel ripado: fechadas, viram parede.'),
    ('Mesa rack suspensa', 'Em Areia, atravessa a parede do espelho até os nichos, com gavetas sob o tampo.'),
    ('Torre de nichos', 'Em amadeirado, do piso ao forro no canto da parede, para livros e objetos.'),
    ('Espelho com luz', 'Espelho prata do piso ao forro, com luz quente embutida nas laterais.'),
    ('Cabeceira', 'Em Areia, de parede a parede, com luz quente no topo que lava a parede.'),
    ('Mesinhas de cabeceira', 'Em Areia, com gaveta, sobre base marmorizada.')]),
  ('O closet<br>do casal.', ['closet-casal'], 'Closet casal',
-  'MDF Areia por dentro e por fora · espelho prata',
-  [('Armários do piso ao forro', 'Em Areia, com portas de correr e puxador cava usinado na própria frente: maleiros, cabideiros, prateleiras e gavetas internas.'),
-   ('Sapateira com espelho', 'Portas de correr inteiras em espelho prata, que ampliam o closet e servem de espelho de corpo.'),
+  'MDF Areia por dentro e por fora · portas de espelho como opcional',
+  [('Armários do piso ao forro', 'Em Areia por dentro e por fora, abertos: maleiros, cabideiros, prateleiras e gavetas internas à vista, organizados como uma vitrine.'),
+   ('Sapateira', 'Prateleiras em Areia do piso ao forro. As portas de correr em espelho prata, que ampliam o closet e servem de espelho de corpo, são opcionais e têm valor próprio na folha de investimento.'),
    ('Fechamento superior', 'Faixa em Areia no encontro com o forro, em todo o perímetro, que fecha o closet como uma peça só.')]),
  ('A suíte<br>da Ana.', ['ana-janela'], 'Suíte Ana',
   'MDF branco liso · painel em material de cor',
   [('Móvel da janela', 'Nichos com prateleiras dos dois lados da janela e um banco sob ela, com gavetões que guardam o que o quarto precisa esconder.'),
    ('Painel com portas mimetizadas', 'Painel de parede inteira em que as portas pivotantes desaparecem: fechadas, a parede fica lisa.')]),
- ('O quarto<br>do Mateus.', ['mateus-01', 'mateus-02'], 'Quarto Mateus',
-  'MDF Grafite · LED 3000K',
-  [('Mesa do computador', 'Em Grafite, com gaveteiro sob o tampo.'),
-   ('Prateleiras suspensas', 'Sobre a mesa, com alma de aço por dentro contra a flecha das prateleiras longas.'),
-   ('Cabeceira', 'Em Grafite, de parede a parede, com luz quente no topo.'),
-   ('Mesas de cabeceira', 'Em Grafite, nos dois lados da cama.'),
-   ('Painel com porta oculta', 'Painel em Grafite na parede da TV, com a porta do closet escondida no mesmo material.')]),
 ]
 for titulo, imgs, tag, acab, itens in PG:
     if len(imgs) == 1:
@@ -245,15 +245,15 @@ folha(f'''<div class="pad">
  <div class="eyebrow">Ambiente</div><div class="rule"></div>
  <h1 class="h1" style="margin:0 0 3mm">Os closets da Ana e do Mateus.</h1>
  <p class="lead" style="max-width:215mm">Dois closets irmãos, com o mesmo desenho e a mesma
-  construção — cada um na cor do seu quarto. Armário em L do piso ao forro, que aproveita as
+  construção — cada um na sua cor. Armário em L do piso ao forro, aberto, que aproveita as
   duas paredes e deixa o centro livre.</p>
  <div class="three" style="grid-template-columns:1fr 1fr;margin-top:7mm">
   <div><div class="eyebrow" style="margin-bottom:3mm">Closet Ana · MDF Tartufo</div>
-   {mv([('Armário em L', 'Portas de correr com puxador perfil, maleiros no alto, cabideiros, prateleiras e gavetas internas.'),
-        ('Por dentro e por fora', 'O mesmo Tartufo nas frentes, na caixa e no interno: abrir a porta é ver o mesmo móvel.')])}</div>
+   {mv([('Armário em L', 'Aberto, sem portas: maleiros no alto, cabideiros, prateleiras e gavetas internas à vista.'),
+        ('Por dentro e por fora', 'O mesmo Tartufo na caixa, nas prateleiras e nas frentes das gavetas: o interno é a própria fachada.')])}</div>
   <div><div class="eyebrow" style="margin-bottom:3mm">Closet Mateus · MDF Grafite</div>
-   {mv([('Armário em L', 'A mesma composição do closet da Ana, no Grafite do quarto do Mateus.'),
-        ('Por dentro e por fora', 'Grafite nas frentes, na caixa e no interno.')])}</div>
+   {mv([('Armário em L', 'A mesma composição do closet da Ana, aberto, em Grafite.'),
+        ('Por dentro e por fora', 'Grafite na caixa, nas prateleiras e nas frentes das gavetas.')])}</div>
  </div>
  <div class="box" style="margin-top:auto"><div class="t">O canto do L</div>
   <p>O encontro das duas alas é resolvido no nosso executivo, na medição: é ali que se decide
@@ -274,23 +274,22 @@ folha(f'''<div class="amb">
 
 # ── a escolha: três linhas, a diferença está na ferragem ────────────────
 DIF = [
- ('Corrediça', 'Telescópica, com o trilho aparente na lateral da gaveta e sem amortecedor.',
-  'Oculta alemã: o trilho some por baixo, a gaveta abre inteira e fecha amortecida.',
-  'Oculta Blum: a mesma discrição, com o curso mais macio e a maior capacidade de carga das três.'),
- ('Dobradiça', 'Nacional, com amortecimento.', 'Alemã, com amortecedor e regulagem nos três sentidos.',
+ ('Corrediça', 'Oculta alemã: o trilho some por baixo, a gaveta abre inteira e fecha amortecida.',
+  'Oculta Blum: a mesma discrição, com o curso mais macio e a maior capacidade de carga.'),
+ ('Dobradiça', 'Alemã, com amortecedor e regulagem nos três sentidos.',
   'Blum, com amortecedor e regulagem nos três sentidos.'),
- ('Portas de correr e pivotantes', 'Os mesmos sistemas nas três linhas.', 'Os mesmos sistemas.', 'Os mesmos sistemas.'),
- ('Iluminação', 'LED quente embutido na peça, entregue instalado. O mesmo nas três.', 'O mesmo LED.', 'O mesmo LED.'),
- ('Garantia', f"{GAR['telescopica']} anos", f"{GAR['hettich']} anos", f"{GAR['blum']} anos"),
+ ('Portas de correr e pivotantes', 'Os mesmos sistemas nas duas linhas.', 'Os mesmos sistemas.'),
+ ('Iluminação', 'LED quente embutido na peça, entregue instalado. O mesmo nas duas.', 'O mesmo LED.'),
+ ('Garantia', f"{GAR['hettich']} anos", f"{GAR['blum']} anos"),
 ]
 linhas = ''.join(f'<tr><td class="l">{E(k)}</td>' + ''.join(
     f'<td{" class=hi" if L == DESTAQUE else ""} style="text-align:left;font-size:8.3pt">{E(v)}</td>'
     for L, v in zip(LIN, vs)) + '</tr>' for k, *vs in DIF)
 folha(f'''<div class="pad">
  <div class="eyebrow">Uma escolha</div><div class="rule"></div>
- <h1 class="h1" style="margin:0 0 3mm">Três linhas. A diferença está na ferragem.</h1>
+ <h1 class="h1" style="margin:0 0 3mm">Duas linhas. A diferença está na ferragem.</h1>
  <p class="lead" style="max-width:215mm">O desenho, os padrões de MDF, os painéis, as portas e
-   a luz são <b>os mesmos nas três</b>. O que muda é a peça que vocês tocam todo dia — a
+   a luz são <b>os mesmos nas duas</b>. O que muda é a peça que vocês tocam todo dia — a
    corrediça e a dobradiça — e é ela que decide quanto tempo o móvel continua fechando bem.</p>
  <table class="cmp" style="margin-top:6mm">
   <tr><th class="l" style="text-align:left"></th>
@@ -299,7 +298,7 @@ folha(f'''<div class="pad">
  <div class="box" style="margin-top:auto"><div class="t">O que não muda</div>
   <p>Os padrões especificados pela arquiteta, os painéis com portas mimetizadas, o ripado, os
    sistemas de correr, o espelho, a iluminação entregue instalada e a equipe própria do corte
-   à montagem. <b>Os ambientes sem gaveta nem dobradiça têm o mesmo valor nas três linhas.</b></p></div>
+   à montagem. <b>Os ambientes sem gaveta nem dobradiça têm o mesmo valor nas duas linhas.</b></p></div>
 </div>''')
 
 # ── a garantia ──────────────────────────────────────────────────────────
@@ -316,7 +315,7 @@ folha(f'''<div class="pad">
  <p class="lead" style="max-width:215mm">A garantia da Valvic <b>é escalonada pela ferragem</b>
   e vale para o projeto inteiro pelo prazo da linha escolhida. Não é promessa de proposta: é
   <b>termo assinado no dia da entrega</b>, junto com o guia de conservação do móvel.</p>
- <div class="gar justo" style="margin-top:5mm">{cards}</div>
+ <div class="gar justo" style="margin-top:5mm;grid-template-columns:1fr 1fr">{cards}</div>
  <div class="three" style="margin-top:6mm">
   <div><div class="eyebrow" style="margin-bottom:3mm">Como se aciona</div>{passos}</div>
   <div><div class="eyebrow" style="margin-bottom:3mm">O que o termo cobre</div>
@@ -333,48 +332,60 @@ folha(f'''<div class="pad">
 N0 = N[0] + 1   # ⛔ a primeira folha com preço
 
 # ── a decisão: as três linhas ───────────────────────────────────────────
-RESUMO = {'telescopica': 'Trilho aparente na gaveta e fechamento sem amortecedor. A versão econômica do projeto.',
-          'hettich': 'Trilho oculto, gaveta que sai inteira e fechamento amortecido. <em>A recomendação da casa.</em>',
+RESUMO = {'hettich': 'Trilho oculto, gaveta que sai inteira e fechamento amortecido. <em>A recomendação da casa.</em>',
           'blum': 'O curso mais macio e a maior capacidade de carga — o topo da ferragem, com trinta anos de garantia.'}
 cards = ''.join(f'''<div class="c{" hi" if L == DESTAQUE else ""}"><div class="anos">{GAR[L]}</div>
   <div class="unid">anos de garantia</div><div class="nm">{E(CHAMADA[L])}</div>
   <div class="x">{RESUMO[L]}</div>
   <div class="l"><div class="k">O projeto completo</div>
-   <div class="v" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:20pt">{br(TAB[L]['venda'])}</div>
+   <div class="v" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:20pt">{brr(TAB[L]['total'])}</div>
    <div class="k" style="margin-top:2mm">Entrada, na assinatura</div>
-   <div class="v">{br(TAB[L]['venda'] * PR.PAGTO[0][1])}</div></div></div>''' for L in LIN)
+   <div class="v">{brr(TAB[L]['total'] * PR.PAGTO[0][1])}</div></div></div>''' for L in LIN)
 folha(f'''<div class="pad">
- <div class="eyebrow">Investimento · as três linhas</div><div class="rule"></div>
- <h1 class="h1" style="margin:0 0 3mm">Dois anos, dez, ou trinta.</h1>
+ <div class="eyebrow">Investimento · as duas linhas</div><div class="rule"></div>
+ <h1 class="h1" style="margin:0 0 3mm">Dez anos, ou trinta.</h1>
  <p class="lead" style="max-width:215mm">O mesmo projeto, o mesmo desenho e os mesmos padrões.
   A diferença é a <b>ferragem</b> — e o tempo pelo qual respondemos por ela.</p>
- <div class="gar justo">{cards}</div>
+ <div class="gar justo" style="grid-template-columns:1fr 1fr">{cards}</div>
  <div class="box" style="margin-top:5mm"><div class="t">O que está incluso</div>
   <p>Projeto executivo de marcenaria, material, usinagem, ferragem, a estrutura metálica do
-   ripado, o espelho, a iluminação em LED embutida, transporte, montagem e instalação — num só
-   contrato, com uma só data e uma só arquiteta responsável.</p></div>
+   ripado, o espelho com luz do quarto, a iluminação em LED embutida, a manutenção do painel da
+   sala, transporte, montagem e instalação — num só contrato, com uma só data e uma só
+   arquiteta responsável.</p></div>
 </div>''')
 
 # ── investimento, ambiente a ambiente, nas três linhas ──────────────────
 rows = ''.join(f'<tr><td class="l">{E(a)}</td>' + ''.join(
     f'<td{" class=hi" if L == DESTAQUE else ""}>{brs(amb_total(L, a))}</td>' for L in LIN) + '</tr>'
-    for a in PR.ORDEM)
-IGUAIS = [a for a in PR.ORDEM if len({amb_total(L, a) for L in LIN}) == 1]
+    for a in AMBS)
+#   ⭐ [Jonathan, 06/11/2026] a manutenção do painel da sala DENTRO dos valores
+rows += ('<tr><td class="l">Sala · manutenção do painel existente</td>' + ''.join(
+    f'<td{" class=hi" if L == DESTAQUE else ""}>{brs(TAB[L]["servico"])}</td>' for L in LIN) + '</tr>')
+IGUAIS = [a for a in AMBS if len({amb_total(L, a) for L in LIN}) == 1]
+opc_rows = ''.join(f'<tr><td class="l">{E(x[1].replace("na sapateira", "do closet do casal"))}</td>' + ''.join(
+    f'<td{" class=hi" if L == DESTAQUE else ""}>{brs(TAB[L]["opc"][x])}</td>' for L in LIN) + '</tr>' for x in OPC)
 folha(f'''<div class="pad">
  <div class="eyebrow">Investimento · ambiente a ambiente</div><div class="rule"></div>
- <h1 class="h1" style="margin:0 0 3mm">O pavimento, nas três linhas.</h1>
+ <h1 class="h1" style="margin:0 0 3mm">O pavimento, nas duas linhas.</h1>
  <p class="lead" style="max-width:215mm">Cada móvel foi levantado <b>peça por peça do projeto
   executivo</b> — nada é rateio nem estimativa por metro quadrado. Valores em reais.</p>
- <table class="inv" style="margin-top:5mm">
+ <table class="inv" style="margin-top:4mm;table-layout:fixed"><colgroup><col style="width:56%"><col style="width:22%"><col style="width:22%"></colgroup>
   <tr><th class="l">Ambiente</th>
    {''.join(f'<th{" class=hi" if L == DESTAQUE else ""}>{E(NOME[L])}</th>' for L in LIN)}</tr>
   {rows}
   <tr class="tot"><td class="l">O projeto completo</td>
-   {''.join(f'<td{" class=hi" if L == DESTAQUE else ""}>{brs(TAB[L]["venda"])}</td>' for L in LIN)}</tr>
+   {''.join(f'<td{" class=hi" if L == DESTAQUE else ""}>{brs(TAB[L]["total"])}</td>' for L in LIN)}</tr>
+ </table>
+ <table class="inv" style="margin-top:6mm;table-layout:fixed"><colgroup><col style="width:56%"><col style="width:22%"><col style="width:22%"></colgroup>
+  <tr><th class="l">Opcional · fora do projeto completo</th>
+   {''.join(f'<th{" class=hi" if L == DESTAQUE else ""}>{E(NOME[L])}</th>' for L in LIN)}</tr>
+  {opc_rows}
+  <tr class="tot"><td class="l">O projeto completo, com o opcional</td>
+   {''.join(f'<td{" class=hi" if L == DESTAQUE else ""}>{brs(TAB[L]["total"] + sum(TAB[L]["opc"].values()))}</td>' for L in LIN)}</tr>
  </table>
  <div class="box" style="margin-top:auto"><p style="font-size:8.4pt"><b>{E(', '.join(IGUAIS[:-1]))}
-  e {E(IGUAIS[-1])}</b> têm o mesmo valor nas três linhas: neles não há corrediça nem dobradiça
-  que mude de linha.</p></div>
+  e {E(IGUAIS[-1])}</b> têm o mesmo valor nas duas linhas: neles não há corrediça nem dobradiça
+  que mude de linha. As portas de espelho também.</p></div>
 </div>''')
 
 # ── condições ───────────────────────────────────────────────────────────
@@ -391,8 +402,8 @@ folha(f'''<div class="pad" style="padding-bottom:20mm">
      <div class="s">Contados a partir da medição técnica no local, não da assinatura. A
        medição tem data própria no cronograma.</div></div>
    <div class="term"><div class="k">Garantia</div><div class="v">Conforme a linha</div>
-     <div class="s">Trinta anos na Blum, dez na Hettich e dois na Telescópica. Instalação e
-       regulagem, dois anos. Termo assinado na entrega.</div></div>
+     <div class="s">Trinta anos na Blum e dez na Hettich. Instalação e regulagem, dois anos.
+       Termo assinado na entrega.</div></div>
    <div class="term"><div class="k">Projeto executivo de marcenaria</div><div class="v">Incluso</div>
      <div class="s">Aprovado por vocês e pela {E(ARQ_CURTO)} antes de qualquer corte.</div></div>
   </div>
@@ -402,17 +413,20 @@ folha(f'''<div class="pad" style="padding-bottom:20mm">
     {pay}</table>
    <div style="font-size:7.4pt;color:var(--mut);margin-top:2.5mm;letter-spacing:.06em">
      Todas as parcelas por transferência bancária.</div>
-   <div class="box" style="margin-top:5mm"><div class="t">Serviço avulso · {br(avv)}</div>
-    <p>{E(avd)}. <b>{E(avo.capitalize())}</b>: a recuperação depende do estado do painel
-     existente.</p></div>
+   <div class="box" style="margin-top:5mm"><div class="t">Manutenção do painel da sala · incluída</div>
+    <p>{E(avd)}. Já está no valor do projeto completo. <b>{E(avo.capitalize())}</b>: a
+     recuperação depende do estado do painel existente.</p></div>
   </div>
   <div class="fora">
    <div class="eyebrow" style="margin-bottom:3mm">O que não está nesta proposta</div>
    <ul>
     <li><div class="k">Banheiros</div><div class="v">Gabinetes, armários de espelho e
       cristaleiras dos banhos não entram nesta proposta.</div></li>
+    <li><div class="k">Retirados nesta versão</div><div class="v">Os móveis do quarto do
+      Mateus e as portas dos closets do casal, da Ana e do Mateus. As portas de espelho do
+      closet do casal seguem como opcional.</div></li>
     <li><div class="k">Pedra e vidro avulso</div><div class="v">Bancadas, revestimentos em
-      mármore, as cristaleiras de vidro e a estante de metal do quarto do Mateus.</div></li>
+      mármore e as cristaleiras de vidro.</div></li>
     <li><div class="k">Outros pavimentos</div><div class="v">Academia, rooftop e fachada, e o
       bar da circulação.</div></li>
     <li><div class="k">Obra, luminárias e eletros</div><div class="v">Alvenaria, elétrica,
@@ -469,7 +483,9 @@ for _p in ('cartão', 'cartao', 'desconto', 'valor cheio'):
 _amb = re.sub(r'<[^>]+>', ' ', re.sub(r'data:[^"]+', '', ''.join(S[6:N0 - 3])))
 assert not re.search(r'\d+\s*(cm|mm|m²|m\b)', _amb), '⛔ medida na descrição'
 assert not re.search(r'\b(\d+|duas|dois|três|quatro|cinco|seis)\s+(portas?|gavet\w+|prateleiras?)', _amb, re.I), '⛔ contagem'
-assert sum(amb_total('hettich', a) for a in PR.ORDEM) == TAB['hettich']['venda']
+assert sum(amb_total('hettich', a) for a in AMBS) == TAB['hettich']['venda']
+assert TAB['hettich']['total'] == TAB['hettich']['venda'] + TAB['hettich']['servico']
+assert 'elescóp' not in _t and 'Quarto Mateus' not in _t, '⛔ resto da versão de 04/11'
 
 OUT = R / 'proposta-phillip-giselle.html'
 OUT.write_text(HTML, encoding='utf-8')
@@ -477,4 +493,4 @@ PDF = R / 'proposta-phillip-giselle.pdf'
 subprocess.run(['node', str(P / 'render-pdf.js'), str(OUT), str(PDF)], check=True,
                env=dict(os.environ, NODE_PATH='/opt/node22/lib/node_modules'))
 print(f'{PDF.name} · {NF} folhas · {PDF.stat().st_size // 1024} kB · primeiro preço na folha {N0}')
-for L in LIN: print(f'  {NOME[L]:12s} {br(TAB[L]["venda"])}')
+for L in LIN: print(f'  {NOME[L]:12s} {br(TAB[L]["total"])} · com o opcional {br(TAB[L]["total"] + sum(TAB[L]["opc"].values()))}')

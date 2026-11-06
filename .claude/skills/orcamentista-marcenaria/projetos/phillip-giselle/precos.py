@@ -145,6 +145,14 @@ for k, t in TAB.items():
     t['venda'] = sum(v for x, v in t['pv'].items() if x[0] not in OPCIONAL)
     t['opc'] = {x: v for x, v in t['pv'].items() if x[0] in OPCIONAL}
 
+# ⭐ [Jonathan, 06/11/2026] "inclua nos valores a manutenção do painel da sala
+#   que já estava na proposta anterior": o serviço avulso de R$ 1.900 entra
+#   no TOTAL da proposta, em linha própria. ⛔ Continua fora da MC: é valor de
+#   venda de serviço, sem custo levantado.
+for k, t in TAB.items():
+    t['servico'] = sum(v for _d, v, _o in AVULSO)
+    t['total'] = t['venda'] + t['servico']
+
 # ⛔ as travas
 for x in TAB['hettich']['pv']:
     if not TAB['blum']['cus'][x] - TAB['hettich']['cus'][x]:   # sem ferragem de linha
