@@ -10,6 +10,12 @@ três sapateiras no módulo A da E2.
 https://docs.google.com/spreadsheets/d/1GT83X1kSwGQ83xXuHJfQ-NvUJAC41WBaP350l06oZT4/edit
 Copiada da BASE da casa (`11IgmtI5…`), na pasta `Orçamentos Valvic`.
 
+**Pasta das pranchas:** `Orçamentos Valvic / Ana Carolina e André - [35] Apto Funcionários`
+(`1ZBIwyOh_Bv8DtudizomUfXwfAEEdqlJN`) · https://drive.google.com/drive/folders/1ZBIwyOh_Bv8DtudizomUfXwfAEEdqlJN
+⚠ Os PDFs (35_.1 SUITE MASTER, QUARTO GABRIEL, CLOSET ISABELLA) entram nela à mão:
+o conector do Drive só sobe arquivo com o conteúdo inteiro dentro do comando, e
+1,5 MB de PDF vetorial não cabe [06/11/2026].
+
 ⛔ **Primeiro passo:** aba `Base (importada)`, clicar no `#REF!` da D3 e escolher
 **Permitir acesso**. Sem o clique, MDF e ferragem Blum saem a zero.
 
