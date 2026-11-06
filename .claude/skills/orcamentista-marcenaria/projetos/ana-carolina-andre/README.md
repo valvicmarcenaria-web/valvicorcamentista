@@ -8,9 +8,10 @@ closet da Isabella. **Ferragem Blum · RT 10% · sem vendedor** [Jonathan, 05/11
 - roupeiro do Gabriel com **duas portas de correr no SI Forma, uma de espelho prata**.
   A folha de espelho é a "porta de espelho em alumínio" da Base (R$ 700/m²);
 - "os demais serão **portas de giro com puxador em cava**": os dois closets;
-- "todos os MDFs serão no padrão **Nude Vel Guararapes**": nem o miolo fica em Branco TX.
-  As chaves `MDF Nude Velluto 18/15/6` estão no fim da Base (importada), com o preço
-  da linha Melamínico Fosco;
+- "todos os MDFs serão no padrão Nude Vel Guararapes", e no mesmo dia: "será o
+  **PALHA DA DURATEX**". Nem o miolo fica em Branco TX. As chaves `MDF Palha 18/15/6`
+  estão no fim da Base (importada), com o preço da linha Melamínico Fosco.
+  ⚠ Confirmar o preço do Palha Duratex;
 - **três viagens de frete** no closet da suíte, digitadas por ele na célula amarela.
 
 ⭐ Closet da suíte master com **dez gavetas e sapateiras**: três sapateiras no módulo 1
@@ -58,9 +59,12 @@ A proposta mostra cada ambiente em real cheio, e o total é a soma do que se lê
 - **só a linha Blum**, com uma folha "Por que Blum" e uma folha dedicada às ferragens;
 - **ferragens:** CLIP top BLUMOTION, TANDEM com BLUMOTION e o SI Ocean 80 da Siforma,
   com as imagens que o Jonathan mandou;
-- **Nude Vel:** uma folha só para o padrão, por fora e por dentro;
+- **Palha:** uma folha só para o padrão, por fora e por dentro, com a foto de closet
+  e a amostra que o Jonathan mandou. Saiu o bloco do closet aberto: os closets têm porta;
+- **as dez gavetas da suíte** escritas por extenso (quatro gavetas e seis sapateiras):
+  é a exceção pedida à regra de não contar na descrição;
 - **sem render no projeto:** as folhas de ambiente usam as elevações do executivo,
-  recortadas sem cota e multiplicadas sobre o campo Nude.
+  recortadas sem cota e multiplicadas sobre o campo Palha.
 
 ⚠ O texto da Blum e da Siforma veio das páginas indexadas na busca, porque o acesso
 direto a blum.com e a siforma.com.br está bloqueado na rede da sessão.

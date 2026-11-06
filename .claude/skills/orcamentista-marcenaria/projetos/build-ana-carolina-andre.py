@@ -2,7 +2,7 @@
 """ANA CAROLINA E ANDRÉ — caderno de proposta  [06/11/2026]
 
 ⭐ Layout do caderno do MICHELL na versão do GUSTAVO, como o do Phillip:
-  A4 paisagem · capa · abertura · a empresa · as doze etapas · o Nude Vel ·
+  A4 paisagem · capa · abertura · a empresa · as doze etapas · o Palha ·
   folhas de ambiente SEM preço · por que Blum · as ferragens · garantia ·
   investimento · condições · encerramento.
 ⭐ Pedido do Jonathan [06/11/2026]:
@@ -11,11 +11,15 @@
   · corrediça Blum TANDEM com BLUMOTION e dobradiça Blum CLIP top BLUMOTION;
   · porta de correr no SI Ocean 80, da Siforma;
   · uma folha DEDICADA às ferragens, com as imagens que ele mandou;
-  · ênfase no glamour do móvel inteiro em Nude Vel — nada branco aparecendo.
+  · ênfase no glamour do móvel inteiro num padrão só — nada branco aparecendo.
+⭐ Correções [Jonathan, 06/11/2026]: o padrão é o PALHA, DA DURATEX (não o Nude Vel);
+  sai o bloco do closet aberto, porque os closets têm porta; a folha do padrão
+  usa a imagem de closet que ele mandou; e o closet da suíte diz EXPLÍCITO que são
+  dez gavetas (quatro gavetas e seis sapateiras) — exceção pedida à regra da contagem.
 ⛔ Nenhum número digitado: tudo sai de `ana-carolina-andre/precos.py`.
 ⛔ Sem metragem e sem contagem nas descrições dos ambientes.
 ⛔ O projeto não tem render: as folhas de ambiente usam as ELEVAÇÕES do
-   executivo, recortadas sem cota, multiplicadas sobre o campo Nude.
+   executivo, recortadas sem cota, multiplicadas sobre o campo Palha.
 """
 import pathlib, subprocess, os, sys, base64, html, re, io, contextlib
 
@@ -52,13 +56,13 @@ def mv(itens):
     return ''.join(f'''<div class="mv"><span class="b"></span><span>
       <span class="t">{E(t)}</span> <span class="d">{d}</span></span></div>''' for t, d in itens)
 
-def nude(*imgs, op=.9, tag=None, legenda=None, row=False):
-    """O campo Nude com o desenho do executivo multiplicado por cima: o branco
+def campo(*imgs, op=.9, tag=None, legenda=None, row=False):
+    """O campo Palha com o desenho do executivo multiplicado por cima: o branco
     do papel some e fica só o traço — nada branco aparece."""
     figs = ''.join(f'<img src="{IMG[i]}" alt="">' for i in imgs)
     t = f'<div class="tag">{E(tag)}</div>' if tag else ''
     lg = f'<div class="leg">{E(legenda)}</div>' if legenda else ''
-    return f'<div class="nude n{len(imgs)}{" row" if row else ""}" style="--op:{op}">{figs}{lg}{t}</div>'
+    return f'<div class="campo n{len(imgs)}{" row" if row else ""}" style="--op:{op}">{figs}{lg}{t}</div>'
 
 # ── 01 · capa ───────────────────────────────────────────────────────────
 folha(f'''<div class="cv">
@@ -66,7 +70,7 @@ folha(f'''<div class="cv">
   <div class="cv-brand">Valvic Marcenaria</div>
   <div class="cv-nome">Ana Carolina<br>e André</div>
   <div class="cv-s">Os closets e o roupeiro do apartamento,<br>
-     inteiros em Nude Vel, com ferragem Blum.</div>
+     inteiros no Palha da Duratex, com ferragem Blum.</div>
   <div class="cv-meta">
    <div><div class="k">Projeto</div><div class="v">Arquiteta {E(ARQ)}</div></div>
    <div><div class="k">Obra</div><div class="v">{E(OBRA)}</div></div>
@@ -74,16 +78,16 @@ folha(f'''<div class="cv">
    <div><div class="k">Data</div><div class="v">{E(DATA)}</div></div>
   </div>
  </div>
- <div class="cv-r">{nude('des-closet-suite-e1', op=.55)}
-  <div class="cv-selo"><div class="k">Padrão</div><div class="v">Nude Vel</div>
-   <div class="s">Guararapes · por dentro e por fora</div></div></div>
+ <div class="cv-r">{campo('des-closet-suite-e1', op=.55)}
+  <div class="cv-selo"><div class="k">Padrão</div><div class="v">Palha</div>
+   <div class="s">Duratex · por dentro e por fora</div></div></div>
 </div>
 <div class="foot" style="right:auto;width:92mm;border-top-color:rgba(255,255,255,.13)">
  <span>Proposta de marcenaria</span><span>Valvic · Vargas Decor</span></div>''', dark=True, rodape=False)
 
 # ── 02 · abertura ───────────────────────────────────────────────────────
 folha(f'''<div class="ambw">
- <div class="band" style="height:96mm">{nude('des-closet-suite-e1', 'des-gabriel-e1', 'des-isabella-e2', op=.6, row=True)}
+ <div class="band" style="height:96mm">{campo('des-closet-suite-e1', 'des-gabriel-e1', 'des-isabella-e2', op=.6, row=True)}
    <div class="tag">O apartamento</div></div>
  <div class="low" style="grid-template-columns:1fr;padding:11mm 18mm 12mm">
   <div><div class="eyebrow">O que este apartamento pede</div><div class="rule"></div>
@@ -91,7 +95,7 @@ folha(f'''<div class="ambw">
    <p class="lead" style="max-width:none;font-size:10.4pt">O closet da suíte, o roupeiro do
     Gabriel e o closet da Isabella — um só projeto da arquiteta <b>{E(ARQ)}</b>, com portas
     de giro de cava usinada, portas de correr com espelho e gavetas que fecham sozinhas.
-    <b>Tudo em Nude Vel, por fora e por dentro</b>, sobre ferragem Blum. <b>Uma só empresa
+    <b>Tudo no MDF Palha, da Duratex, por fora e por dentro</b>, sobre ferragem Blum. <b>Uma só empresa
     responde por tudo o que está nestas folhas</b>, da medição à instalação. <em>Um
     contrato, uma data, um nome para chamar.</em></p></div>
  </div></div>''')
@@ -153,31 +157,32 @@ folha(f'''<div class="pad" style="padding:13mm 15mm 20mm">
  <div class="rail"></div><div class="proc">{cols}</div>
 </div>''')
 
-# ── 05 · o Nude Vel, por inteiro ────────────────────────────────────────
-NUDE = [
+# ── 05 · o Palha, por inteiro ───────────────────────────────────────────
+PALHA = [
  ('Nenhuma chapa branca', 'Caixa, divisória, prateleira, fundo e a caixa de cada gaveta saem '
-  'no mesmo Nude Vel das portas. <b>Abrir o armário é ver o mesmo móvel</b> — não um miolo '
+  'no mesmo Palha das portas. <b>Abrir o armário é ver o mesmo móvel</b> — não um miolo '
   'branco atrás de uma frente bonita.'),
- ('A borda na mesma cor', 'Toda aresta à vista recebe fita no tom do Nude Vel. A peça parece '
+ ('A borda na mesma cor', 'Toda aresta à vista recebe fita no tom do Palha. A peça parece '
   'maciça de cor, de qualquer ângulo.'),
  ('A ferragem não interrompe', 'A corrediça Blum TANDEM corre escondida por baixo da gaveta e a '
-  'dobradiça fica dentro do armário: a lateral da gaveta é Nude Vel, não trilho de metal.'),
- ('Um closet se vive aberto', 'Num closet, o interior é visto tanto quanto a frente. É por isso '
-  'que o padrão vai até o fundo — é ali que o projeto mostra o seu cuidado.'),
+  'dobradiça fica dentro do armário: a lateral da gaveta é Palha, não trilho de metal.'),
 ]
-folha(f'''<div class="amb">
- <div class="amb-img"><div class="nude n0 velvet"></div>
-  <div class="amostra"><div class="k">Nude Vel</div><div class="s">Guararapes</div>
-   <div class="o">Tom ilustrativo · a amostra física é apresentada na aprovação do projeto</div></div></div>
- <div class="amb-txt">
+folha(f'''<div class="ambw">
+ <div class="band" style="height:104mm"><img src="{IMG['closet-palha']}" alt="" style="object-position:50% 40%">
+  <div class="tag">Referência de ambiente</div>
+  <div class="amostra"><img src="{IMG['palha']}" alt=""><div><div class="k">Palha</div>
+   <div class="s">Duratex</div><div class="o">Imagens ilustrativas · a amostra física é
+   apresentada na aprovação do projeto</div></div></div></div>
+ <div class="low" style="display:block;padding:7mm 18mm 17mm"><div class="fitw">
   <div class="eyebrow">O padrão</div><div class="rule"></div>
-  <div class="fit"><h2 class="h2" style="margin:1mm 0 4mm">Nude Vel por inteiro.<br>Por fora e por dentro.</h2>
-   {mv(NUDE)}
-   <div class="amb-nota" style="background:none;border-left-color:var(--nude-dk)">
-     <div class="t">O que isso pede da fábrica</div><p>Chapa de cor em todo o móvel, fita de
-     cor em toda borda e ferragem que se esconde. É mais caro que o miolo branco — e é o que
-     faz o armário parecer uma peça só.</p></div></div>
- </div></div>''', foot_r=True)
+  <h2 class="h2" style="margin:1mm 0 3mm">Palha por inteiro. Por fora e por dentro.</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 9mm">
+   <div>{mv(PALHA[:1])}</div><div>{mv(PALHA[1:2])}</div><div>{mv(PALHA[2:])}</div></div>
+  <div class="amb-nota" style="background:none;border-left-color:var(--gold);margin-top:4mm">
+    <div class="t">O que isso pede da fábrica</div><p>Chapa de cor em todo o móvel, fita de
+    cor em toda borda e ferragem que se esconde. É mais caro que o miolo branco — e é o que
+    faz o armário parecer uma peça só.</p></div></div>
+ </div></div>''')
 
 # ── 06… · as folhas de ambiente, SEM preço ──────────────────────────────
 TANDEM = ('Gavetas e sapateiras', 'Sobre corrediça <b>Blum TANDEM com BLUMOTION</b>: a gaveta sai '
@@ -186,23 +191,26 @@ CLIP = ('Portas de giro', 'Com dobradiça <b>Blum CLIP top BLUMOTION</b> e puxad
         'usinado na própria folha: a porta fecha amortecida, sem bater.')
 AMB = [
  ('O closet<br>da suíte.', ['des-closet-suite-e1', 'des-closet-suite-e2'], 'Closet suíte master',
-  'Nude Vel · Guararapes, por dentro e por fora · ferragem Blum',
+  'MDF Palha · Duratex, por dentro e por fora · ferragem Blum',
   [('Armário da parede longa', 'Do piso ao forro, fechado por portas de giro. Por trás delas, '
     'maleiros no alto, cabideiros longos, prateleiras e uma coluna de gavetas e sapateiras.'),
    ('Armários da parede da porta', 'Os dois blocos que ladeiam a entrada do closet, com a '
     'mesma porta e a mesma cava: prateleiras, cabideiro e sapateiras.'),
-   CLIP, TANDEM]),
+   CLIP,
+   ('Dez gavetas', 'O closet contempla <b>dez gavetas</b>: quatro gavetas e seis sapateiras, '
+    'todas sobre corrediça <b>Blum TANDEM com BLUMOTION</b> — a gaveta sai inteira e fecha '
+    'sozinha, em silêncio.')]),
  ('O roupeiro<br>do Gabriel.', ['des-gabriel-e1'], 'Quarto Gabriel',
-  'Nude Vel · Guararapes · espelho prata em alumínio · SI Ocean 80 · Blum',
+  'MDF Palha · Duratex · espelho prata em alumínio · SI Ocean 80 · Blum',
   [('Portas de correr', 'Correm no sistema <b>SI Ocean 80</b>, da Siforma, com amortecimento '
-    'ao abrir e ao fechar: uma folha em Nude Vel com cava usinada, a outra em espelho prata '
+    'ao abrir e ao fechar: uma folha em Palha com cava usinada, a outra em espelho prata '
     'emoldurado em alumínio.'),
    ('O espelho do quarto', 'A folha de espelho é o espelho de corpo inteiro do Gabriel, sem '
     'ocupar parede.'),
    ('Por dentro', 'Maleiro no alto, cabideiros e, embaixo, gavetas e sapateiros.'),
    TANDEM]),
  ('O closet<br>da Isabella.', ['des-isabella-e01', 'des-isabella-e2'], 'Closet Isabella',
-  'Nude Vel · Guararapes, por dentro e por fora · ferragem Blum',
+  'MDF Palha · Duratex, por dentro e por fora · ferragem Blum',
   [('Armário da parede da porta', 'Maleiros no alto e cabideiros longos, com sapateiros '
     'embaixo, atrás de portas de giro.'),
    ('Armário da parede longa', 'Prateleiras, maleiros, cabideiros e as colunas de gavetas e '
@@ -211,7 +219,7 @@ AMB = [
 ]
 for titulo, imgs, tag, acab, itens in AMB:
     folha(f'''<div class="amb">
-     <div class="amb-img">{nude(*imgs, op=.92, tag=tag, legenda='Composição interna · desenho do projeto')}</div>
+     <div class="amb-img">{campo(*imgs, op=.92, tag=tag, legenda='Composição interna · desenho do projeto')}</div>
      <div class="amb-txt">
       <div class="eyebrow">Ambiente</div><div class="rule"></div>
       <div class="fit"><h2 class="h2" style="margin:1mm 0 4mm">{titulo}</h2>{mv(itens)}
@@ -256,7 +264,7 @@ FER = [
    'Regulagem em altura, lateral e profundidade: a porta se realinha em minutos.',
    'Testada em <b>200 mil</b> aberturas e fechamentos.']),
  ('Corrediça', 'Blum TANDEM com BLUMOTION', ['tandem', 'gaveta'], [
-   'Oculta sob a gaveta: a lateral fica em Nude Vel, sem trilho de metal à vista.',
+   'Oculta sob a gaveta: a lateral fica em Palha, sem trilho de metal à vista.',
    'Extração total: a gaveta sai inteira e mostra o fundo.',
    '<b>BLUMOTION</b> integrado: no fim do curso, a gaveta se recolhe sozinha e fecha sem ruído.',
    'Carga de até <b>30 kg</b> por gaveta.']),
@@ -264,7 +272,7 @@ FER = [
    'Para roupeiros de portas de correr, com folhas de até <b>80 kg</b>.',
    'Amortecimento nos dois sentidos: a folha desacelera ao abrir e ao fechar.',
    'Certificado em <b>100 mil</b> ciclos de uso.',
-   'Recebe a folha de Nude Vel e a de espelho prata do roupeiro do Gabriel.']),
+   'Recebe a folha em Palha e a de espelho prata do roupeiro do Gabriel.']),
 ]
 def fcard(k, nome, imgs, pts):
     principal = f'<div class="fi"><img src="{IMG[imgs[0]]}" alt=""></div>'
@@ -315,7 +323,7 @@ N0 = N[0] + 1   # ⛔ a primeira folha com preço
 # ── investimento ────────────────────────────────────────────────────────
 NOME_AMB = {'Closet suíte master': 'Closet da suíte', 'Quarto Gabriel': 'Roupeiro do Gabriel',
             'Closet Isabella': 'Closet da Isabella'}
-DESC_AMB = {'Closet suíte master': 'Armários com portas de giro, gavetas e sapateiras',
+DESC_AMB = {'Closet suíte master': 'Portas de giro e dez gavetas: quatro gavetas e seis sapateiras',
             'Quarto Gabriel': 'Portas de correr SI Ocean 80, uma em espelho prata',
             'Closet Isabella': 'Armários com portas de giro, gavetas e sapateiros'}
 rows = ''.join(f'<tr><td class="l">{E(NOME_AMB[a])}<div class="sub">{E(DESC_AMB[a])}</div></td>'
@@ -336,13 +344,13 @@ folha(f'''<div class="pad">
   <div class="gar justo" style="grid-template-columns:1fr;margin-top:0">
    <div class="c hi"><div class="unid" style="margin-top:0">O projeto completo</div>
     <div class="tv">{br(PR.TOTAL)}</div>
-    <div class="x">Nude Vel por dentro e por fora, ferragem Blum, sistema SI Ocean 80 e
+    <div class="x">MDF Palha por dentro e por fora, ferragem Blum, sistema SI Ocean 80 e
      {GAR} anos de garantia.</div>
     <div class="l"><div class="k">Entrada, na assinatura</div>
      <div class="v">{br(PR.TOTAL * PR.PAGTO[0][1])}</div></div></div></div>
  </div>
  <div class="box" style="margin-top:auto"><div class="t">O que está incluso</div>
-  <p>Projeto executivo de marcenaria, chapa Nude Vel em todo o móvel, usinagem, ferragens Blum,
+  <p>Projeto executivo de marcenaria, chapa Palha em todo o móvel, usinagem, ferragens Blum,
    o sistema de correr SI Ocean 80, a folha de espelho em alumínio, transporte, montagem e
    instalação — num só contrato, com uma só data e uma só arquiteta responsável.</p></div>
 </div>''')
@@ -371,7 +379,7 @@ folha(f'''<div class="pad" style="padding-bottom:20mm">
    <div style="font-size:7.4pt;color:var(--mut);margin-top:2.5mm;letter-spacing:.06em">
      Todas as parcelas por transferência bancária.</div>
    <div class="box" style="margin-top:5mm"><div class="t">A amostra do padrão</div>
-    <p>O Nude Vel é apresentado em amostra física na aprovação do projeto executivo, antes
+    <p>O Palha é apresentado em amostra física na aprovação do projeto executivo, antes
      da compra da chapa.</p></div>
   </div>
   <div class="fora">
@@ -412,39 +420,38 @@ folha(f'''<div class="cv">
 EXTRA = re.search(r"EXTRA = '''(.*?)'''", src, re.S).group(1)
 AJUSTE = re.search(r"AJUSTE = '''(.*?)'''", src, re.S).group(1)
 EXTRA += '''
-/* ── a paleta deste caderno: papel quente e o Nude ─────────────────── */
-:root{--paper:#FCF9F5;--nude:#CDB3A0;--nude-lt:#E2D2C4;--nude-dk:#A98974}
+/* ── a paleta deste caderno: papel quente e o Palha ────────────────── */
+:root{--paper:#FCFAF5;--palha:#EAE6D5}
 .slide{background:var(--paper)}
 .slide.dark{background:var(--deep)}
-/* o campo Nude com o desenho multiplicado: o branco do papel desaparece */
-.nude{position:absolute;inset:0;display:flex;flex-direction:column;gap:6mm;
-      justify-content:center;align-items:center;padding:14mm 12mm 18mm;
-      background:radial-gradient(120% 95% at 28% 22%,#E3D1C2 0%,#CDB3A0 48%,#B4977F 100%)}
-.slide .nude img{mix-blend-mode:multiply;opacity:var(--op);min-height:0;min-width:0;
+/* o campo Palha com o desenho multiplicado: o branco do papel desaparece */
+.campo{position:absolute;inset:0;display:flex;flex-direction:column;gap:6mm;
+       justify-content:center;align-items:center;padding:14mm 12mm 18mm;
+       background:radial-gradient(120% 95% at 28% 22%,#F4F1E7 0%,#E8E3D1 50%,#D6CDB3 100%)}
+.slide .campo img{mix-blend-mode:multiply;opacity:var(--op);min-height:0;min-width:0;
           object-fit:contain;flex:1 1 0;width:100%;height:auto}
-.slide .nude.row{flex-direction:row;gap:12mm}
-.slide .nude.row img{height:100%;width:auto}
-.nude .leg{position:absolute;top:7mm;left:9mm;font-size:6.2pt;letter-spacing:.26em;
-           text-transform:uppercase;color:#6E5646;font-weight:600}
-.nude .tag{position:absolute;left:0;bottom:0;background:var(--deep);color:var(--gold-lt);
+.slide .campo.row{flex-direction:row;gap:12mm}
+.slide .campo.row img{height:100%;width:auto}
+.campo .leg{position:absolute;top:7mm;left:9mm;font-size:6.2pt;letter-spacing:.26em;
+           text-transform:uppercase;color:#7A6F55;font-weight:600}
+.campo .tag{position:absolute;left:0;bottom:0;background:var(--deep);color:var(--gold-lt);
   font-size:6.4pt;letter-spacing:.28em;text-transform:uppercase;padding:3mm 6mm;font-weight:600}
-.cv-r .nude{padding:16mm 14mm}
+.cv-r .campo{padding:16mm 14mm}
 .cv-selo{position:absolute;right:12mm;bottom:12mm;background:rgba(36,31,27,.86);
          padding:4.5mm 6mm;color:#F6F1E7;min-width:58mm}
 .cv-selo .k{font-size:6.2pt;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-lt);font-weight:600}
 .cv-selo .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:24pt;line-height:1.05;margin-top:1mm}
 .cv-selo .s{font-size:7.4pt;color:#CFC6B4;margin-top:1mm}
-.band .nude{padding:9mm 30mm}
-/* a folha do padrão: só o campo, sem desenho, e a ficha da amostra */
-.nude.velvet{background:radial-gradient(110% 90% at 30% 20%,#E6D6C9 0%,#D2B9A6 40%,#BB9E88 78%,#A88A74 100%)}
-.nude.velvet::after{content:"";position:absolute;inset:0;
-  background:repeating-linear-gradient(115deg,rgba(255,255,255,.035) 0 2px,rgba(0,0,0,.025) 2px 5px)}
-.amostra{position:absolute;left:14mm;bottom:16mm;background:var(--paper);padding:5mm 7mm 4.5mm;
-         box-shadow:0 3mm 10mm rgba(26,23,20,.18);max-width:82mm}
-.amostra .k{font-family:'Cormorant Garamond',Georgia,serif;font-size:26pt;line-height:1}
+.band .campo{padding:9mm 30mm}
+/* a ficha da amostra, sobre a foto de referência */
+.amostra{position:absolute;right:12mm;bottom:9mm;background:var(--paper);padding:3.4mm;
+         display:flex;gap:4mm;align-items:center;box-shadow:0 3mm 10mm rgba(26,23,20,.22);
+         max-width:96mm}
+.ambw .band .amostra img{width:30mm;height:30mm;flex:none;object-fit:cover}
+.amostra .k{font-family:'Cormorant Garamond',Georgia,serif;font-size:24pt;line-height:1}
 .amostra .s{font-size:7pt;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);
-            font-weight:600;margin-top:1.4mm}
-.amostra .o{font-size:6.6pt;color:var(--mut);margin-top:2.4mm;line-height:1.4}
+            font-weight:600;margin-top:1.2mm}
+.amostra .o{font-size:6.4pt;color:var(--mut);margin-top:2mm;line-height:1.4}
 /* por que Blum: quatro números */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6mm;margin-top:10mm}
 .st{border-top:1.5px solid var(--gold-lt);padding-top:4mm}
@@ -507,9 +514,14 @@ for _c in ('Michell', 'Michelle', 'Jéssica', 'Jessica', 'Arlei', 'Gustavo', 'Lu
 assert not [c for c in '⭐⛔⚠' if c in ''.join(S)], '⛔ marcação interna'
 for _p in ('cartão', 'cartao', 'desconto', 'valor cheio', 'telescópica', 'hettich'):
     assert _p not in _t.lower(), f'⛔ a peça fala em "{_p}"'
-_amb = re.sub(r'<[^>]+>', ' ', re.sub(r'data:[^"]+', '', ''.join(S[N_AMB[0] - 1:N_AMB[1]])))
+_txt = lambda fs: re.sub(r'<[^>]+>', ' ', re.sub(r'data:[^"]+', '', ''.join(fs)))
+_amb = _txt(S[N_AMB[0] - 1:N_AMB[1]])
+_suite = _txt([f for f in S[N_AMB[0] - 1:N_AMB[1]] if 'Closet suíte master' in f])
+assert 'dez gavetas' in _suite and 'quatro gavetas e seis sapateiras' in _suite, '⛔ as dez gavetas da suíte'
+_sem_suite = _txt([f for f in S[N_AMB[0] - 1:N_AMB[1]] if 'Closet suíte master' not in f])
 assert not re.search(r'\d+\s*(cm|mm|m²|m\b)', _amb), '⛔ medida na descrição'
-assert not re.search(r'\b(\d+|duas|dois|três|quatro|cinco|seis|dez|treze|doze)\s+(portas?|folhas?|gavet\w+|sapat\w+|prateleiras?)', _amb, re.I), '⛔ contagem'
+assert not re.search(r'\b(\d+|duas|dois|três|quatro|cinco|seis|dez|treze|doze)\s+(portas?|folhas?|gavet\w+|sapat\w+|prateleiras?)', _sem_suite, re.I), '⛔ contagem'
+assert 'Nude' not in _t and 'Guararapes' not in _t, '⛔ o padrão é o Palha da Duratex'
 assert PR.TOTAL == sum(PR.PV_R.values())
 
 OUT = R / 'proposta-ana-carolina-andre.html'

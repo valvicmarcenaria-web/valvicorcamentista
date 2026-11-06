@@ -23,8 +23,8 @@ PRECO = {'MDF cor 18': 700, 'MDF cor 15': 550, 'MDF cor 6': 350, 'MDF Branco TX 
          'Cabideiro': 120, 'Sistema de correr Dominus': 800, 'Trilho Dominus 2 m': 350,
          'Desempenador de porta': 100, 'Perfil de proteção de piso': 15, 'Cava usinada': 50,
          'Corte por chapa': 2, 'Corte por peça': 2.5, 'Frete': 200,
-         # [06/11/2026] Nude Vel Guararapes = linha Melamínico Fosco da Base · porta de giro e SI Forma
-         'MDF Nude Velluto 18': 700, 'MDF Nude Velluto 15': 550, 'MDF Nude Velluto 6': 350,
+         # [06/11/2026] Palha Duratex = linha Melamínico Fosco da Base · porta de giro e SI Forma
+         'MDF Palha 18': 700, 'MDF Palha 15': 550, 'MDF Palha 6': 350,
          'Dobradiça': 50, 'Sistema deslizante SI Forma': 1200, 'Porta de espelho em alumínio': 700}
 AREA, APROV, CONS, EMB = 5.0875, 0.80, 0.06, 0.02
 # ⭐ frete é a célula AMARELA, digitada pelo Jonathan na planilha [06/11/2026]
@@ -47,7 +47,7 @@ FORA = {
 }
 COMUNS = [
  '⛔ AS ELEVAÇÕES NÃO TÊM COTA NEM NOTA DE MATERIAL (só a do Quarto Gabriel é cotada). Largura e profundidade vêm da planta; ALTURAS E DIVISÕES foram MEDIDAS NA ESCALA 1:25. Conferir na medição.',
- '⭐ TODO O MDF NO PADRÃO NUDE VEL, GUARARAPES [Jonathan, 06/11/2026]: portas, caixaria, prateleiras, fundos e caixas de gaveta, com a fita de cor. Preço da linha MELAMÍNICO FOSCO da Base, onde o Velluto está (550 a de 15, 700 a de 18, 350 a de 6). ⚠ Confirmar com o fornecedor que o Nude Vel não tem sobrepreço.',
+ '⭐ TODO O MDF NO PADRÃO PALHA, DA DURATEX [Jonathan, 06/11/2026, no lugar do Nude Vel da Guararapes]: portas, caixaria, prateleiras, fundos e caixas de gaveta, com a fita de cor. Preço da linha MELAMÍNICO FOSCO da Base (550 a de 15, 700 a de 18, 350 a de 6). ⚠ Confirmar com o fornecedor o preço do Palha Duratex nas três espessuras.',
 ]
 GIRO = ('⭐ PORTAS DE GIRO COM PUXADOR EM CAVA [Jonathan, 06/11/2026]: 15 mm, a espessura de porta da Base · módulo acima de 60 leva DUAS folhas · '
         'cinco dobradiças Blum por folha (passa de 200 de altura) · cava usinada de 1 m por folha.')
@@ -133,11 +133,11 @@ def monta(amb, aba, sid, prancha):
     for k, rr in rows_mat.items():
         if k.startswith('MDF'):
             area = sum(x[3] * x[4] * x[5] for _, lin in blocos for x in lin if x[0] == 'peca' and x[7] == k) / 1e4
-            put(rr, k, f'{area:.1f} m² de peças · Nude Vel Guararapes · comprada inteira, por cor × espessura'.replace('.', ','),
+            put(rr, k, f'{area:.1f} m² de peças · Palha Duratex · comprada inteira, por cor × espessura'.replace('.', ','),
                 f'=ROUNDUP(SUMPRODUCT(({K}=$B{rr})*IF(ISNUMBER({D_});{D_}*{E_}*{F_};0))/10000/({CH}))',
                 'chapas', f'=D{rr}*VLOOKUP($B{rr};precos;2;FALSE)', f'=IFERROR(F{rr}/$F${rcd};"")')
         elif k.startswith('Fita'):
-            put(rr, k, ('22 mm na caixaria · R$ 2,00 o metro' if 'Branco' in k else '22 mm Nude Vel · R$ 3,00 o metro') + ' · mais 10% de desperdício',
+            put(rr, k, ('22 mm na caixaria · R$ 2,00 o metro' if 'Branco' in k else '22 mm Palha · R$ 3,00 o metro') + ' · mais 10% de desperdício',
                 f'=SUMIF({K};"{k}";{F_})', 'm', f'=D{rr}*VLOOKUP("{k}";precos;2;FALSE)', f'=IFERROR(F{rr}/$F${rcd};"")')
         else:
             put(rr, k, 'Coladeira · 15 e 18 mm · serviço por metro de aresta feita, sem desperdício',

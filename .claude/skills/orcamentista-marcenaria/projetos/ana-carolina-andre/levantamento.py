@@ -19,7 +19,7 @@ BLUMOTION · dobradiça Blum CLIP top BLUMOTION · sistema de correr SI Ocean 80
 da Siforma (o preço segue o "Sistema deslizante SI Forma" da Base, R$ 1.200).
 
 Premissas minhas (vão como dúvida numerada na planilha):
-  · TODO o MDF em Nude Vel Guararapes [Jonathan, 06/11/2026] — nem o miolo
+  · TODO o MDF no Palha da Duratex [Jonathan, 06/11/2026] — nem o miolo
     fica em Branco TX; a fita é a de cor (R$ 3,00);
   · porta de giro em 15 mm (a espessura de porta da Base); módulo acima de 60
     leva DUAS folhas (roupeiros.md §8: módulo de 86 = 2 × 43); dobradiça Blum
@@ -40,7 +40,7 @@ def item(amb, movel, medida, cadeia):
     ITENS.append(d); return d
 
 def P(it, nome, obs, c, l, qtd, chave, fita=0.0, tipo=None):
-    tipo = tipo or ('Fita Branco TX' if 'Branco' in chave else 'Fita cor')   # Nude Vel → fita de cor
+    tipo = tipo or ('Fita Branco TX' if 'Branco' in chave else 'Fita cor')   # Palha → fita de cor
     it['pecas'].append((nome, obs, c, l, qtd, chave, fita, tipo))
 
 def F(it, nome, obs, qtd, un, chave):
@@ -50,12 +50,13 @@ def T(it, nome, obs, c, l, qtd, chave):
     """Terceirizado por m² (folha pronta): não entra no plano de corte."""
     it['terc'].append((nome, obs, c, l, qtd, 'm²', chave))
 
-# ⭐ "TODOS OS MDFs SERÃO NO PADRÃO NUDE VEL GUARARAPES" [Jonathan, 06/11/2026]:
-#   portas, caixaria, prateleiras, fundos e caixas de gaveta. Chave própria do
-#   projeto na Base (importada), preço da linha Melamínico Fosco (Velluto).
-NUDE15, NUDE18, NUDE6 = 'MDF Nude Velluto 15', 'MDF Nude Velluto 18', 'MDF Nude Velluto 6'
-COR15, COR18, COR6 = NUDE15, NUDE18, NUDE6
-BR15, BR18, BR6 = NUDE15, NUDE18, NUDE6      # o miolo também é Nude Vel
+# ⭐ "TODOS OS MDFs SERÃO NO PADRÃO NUDE VEL GUARARAPES" [Jonathan, 06/11/2026],
+#   e no mesmo dia: "será o PALHA DA DURATEX". Portas, caixaria, prateleiras,
+#   fundos e caixas de gaveta. Chave própria do projeto na Base (importada),
+#   preço da linha Melamínico Fosco — ⚠ confirmar o preço do Palha Duratex.
+PALHA15, PALHA18, PALHA6 = 'MDF Palha 15', 'MDF Palha 18', 'MDF Palha 6'
+COR15, COR18, COR6 = PALHA15, PALHA18, PALHA6
+BR15, BR18, BR6 = PALHA15, PALHA18, PALHA6   # o miolo também é Palha
 
 def gavetas(it, n, larg, alt, prof, frente=COR15, rotulo='Gaveta'):
     li = larg - 6.6
