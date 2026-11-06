@@ -26,8 +26,10 @@ PV = {a: CD[a] / (BASE - MC) for a in ORDEM}
 # ⭐ na proposta, cada ambiente em real cheio; o total é a soma do que se lê
 PV_R = {a: round(PV[a]) for a in ORDEM}
 TOTAL = sum(PV_R.values())
-PAGTO = [('Entrada, na assinatura do contrato', 0.30), ('30 dias após a assinatura', 0.20),
-         ('60 dias após a assinatura', 0.20), ('90 dias após a assinatura', 0.30)]
+# ⭐ "40% - 30% em 30 dias + 30% em 60 dias" [Jonathan, 06/11/2026]
+PAGTO = [('Entrada, na assinatura do contrato', 0.40), ('30 dias após a assinatura', 0.30),
+         ('60 dias após a assinatura', 0.30)]
+assert abs(sum(p for _, p in PAGTO) - 1) < 1e-9
 
 # ⛔ o que a planilha mostrava em 06/11/2026, depois das mudanças do Jonathan
 PLANILHA = {'Closet suíte master': 53021.98, 'Quarto Gabriel': 29848.40, 'Closet Isabella': 49332.25}

@@ -13,6 +13,7 @@ closet da Isabella. **Ferragem Blum · RT 10% · sem vendedor** [Jonathan, 05/11
   estão no fim da Base (importada), com o preço da linha Melamínico Fosco.
   ⚠ Confirmar o preço do Palha Duratex;
 - **três viagens de frete** no closet da suíte, digitadas por ele na célula amarela.
+- **pagamento 40% na assinatura, 30% em 30 dias e 30% em 60 dias**, por transferência.
 
 ⭐ Closet da suíte master com **dez gavetas e sapateiras**: três sapateiras no módulo 1
 da E1, quatro gavetas no módulo 3 e três sapateiras no módulo A da E2.
