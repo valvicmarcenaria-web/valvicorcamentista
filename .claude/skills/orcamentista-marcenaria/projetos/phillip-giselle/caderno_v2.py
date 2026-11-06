@@ -47,8 +47,13 @@ NOME = {('Quarto casal', 'Portas ripadas pivotantes (closet e banho)'): 'Portas 
         ('Circulação', 'Painel com 4 portas mimetizadas'): 'Painel com portas mimetizadas'}
 assert set(NOME) == set(V.V2)
 ITENS = [(a, NOME[(a, m)], int(PV[(a, m)])) for a, m in V.V2]
+#   ⭐ [Jonathan, 06/11/2026] "adicione os 1.900 do reparo do painel": a
+#     manutenção do painel da sala entra no total, em linha própria, como na
+#     proposta completa · fora da MC (é serviço, sem custo levantado)
+AVD, AVV, AVO = PR.AVULSO[0]
+ITENS.append(('Sala', 'Manutenção do painel existente', int(AVV)))
 TOTAL = sum(v for *_, v in ITENS)
-assert TOTAL == 73550, TOTAL
+assert TOTAL == 73550 + 1900, TOTAL
 PAGTO = PR.PAGTO
 PARCELAS = [int(TOTAL * p + 0.5) for _r, p in PAGTO[:-1]]
 PARCELAS.append(TOTAL - sum(PARCELAS))
@@ -217,7 +222,7 @@ folha(f'''<div class="pad">
    <div class="box" style="margin-top:5mm"><div class="t">O que está incluso</div>
     <p>Projeto executivo de marcenaria, material, usinagem, ferragem com amortecimento, os
      sistemas pivotantes com fecho, a estrutura metálica das portas ripadas, a luz embutida na
-     cabeceira, transporte, montagem e instalação.</p></div>
+     cabeceira, a manutenção do painel da sala, transporte, montagem e instalação.</p></div>
   </div>
  </div>
 </div>''')
@@ -247,9 +252,9 @@ folha(f'''<div class="pad" style="padding-bottom:20mm">
     {pay}</table>
    <div style="font-size:7.4pt;color:var(--mut);margin-top:2.5mm;letter-spacing:.06em">
      Todas as parcelas por transferência bancária.</div>
-   <div class="box" style="margin-top:5mm"><div class="t">Um interlocutor</div>
-    <p>Da aprovação à entrega, vocês tratam com a arquiteta responsável pelo projeto. Um
-     contrato, uma data, um nome para chamar.</p></div>
+   <div class="box" style="margin-top:5mm"><div class="t">Manutenção do painel da sala · incluída</div>
+    <p>{E(AVD)}. Já está no valor do projeto completo. <b>{E(AVO.capitalize())}</b>: a
+     recuperação depende do estado do painel existente.</p></div>
   </div>
   <div class="fora">
    <div class="eyebrow" style="margin-bottom:3mm">O que não está nesta proposta</div>
