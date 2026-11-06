@@ -55,9 +55,10 @@ cen = _mod('cen', 'cenarios.py')
 
 ABAS = [('Hall', '01 Hall'), ('Jantar', '02 Jantar'), ('Cozinha', '03 Cozinha'),
         ('Gourmet', '04 Gourmet'), ('Escritório', '05 Escritório'),
-        ('Sala de TV', '06 Sala de TV'), ('Suíte', '07 Suíte')]
+        ('Sala de TV', '06 Sala de TV'), ('Suíte', '07 Suíte'),
+        ('Suíte 01', '08 Suíte 01')]
 SIDS = {'01': 101, '02': 102, '03': 103, '04': 104, '05': 105, '06': 106,
-        '07': 107}
+        '07': 107, '08': 108}
 
 W, COLS = 10, 'BCDEFGHIJK'
 PR = 'precos;2;FALSE'                    # ⭐ coluna B — o padrão da casa
@@ -114,6 +115,59 @@ DUVIDAS_PORTA = [
  'pede 2,5 delas, o que daria R$ 115,38 por folha contra R$ 127,41. Os 80% '
  'cobram R$ 12 a mais por porta. É conservador, e é escolha sua.',
 ]
+#   ⭐ só a aba que TEM cabeceira estofada recebe estas — e as duas
+#     primeiras são as que mudam o plano de corte.
+DUVIDAS_CABECEIRA = [
+ '⭐ RESPONDIDO [Jonathan, 04/11/2026]: "120 esta otimo". A cabeceira fica '
+ '240 × 120. ⛔ FICA REGISTRADO QUE ISTO É ESCOLHA, NÃO COTA: a largura de '
+ '240, a espessura de 5 e as profundidades de 50 das mesas eu MEDI no vetor '
+ 'da planta, com a escala tirada da cota de 467 e conferida em oito outras '
+ 'cotas. A ALTURA não existe em desenho nenhum — a ELEV.01 da suíte desenha '
+ 'o painel ripado (200 × 272) e a ELEV.02 a parede da TV (467 × 275), e não '
+ 'há elevação da parede da cabeceira. ⚠ Quem abrir este orçamento daqui a '
+ 'seis meses precisa saber qual número veio do desenho e qual veio do dono '
+ 'do projeto.',
+
+ '⭐ RESPONDIDO [Jonathan, 04/11/2026]: "pode considerar ambas de 90cm". As '
+ 'duas mesas ficam 90 × 50 × 55. ⛔ E FICA REGISTRADO O QUE A PLANTA '
+ 'DESENHAVA: 80 à esquerda e 90 à direita, medidos em 90,7 e 102,0 pt — e os '
+ '90,7 pt são exatamente o que mede a porta de 80 da ELEV.02 na mesma '
+ 'prancha, então não foi erro de leitura. A planta ainda explicava a '
+ 'assimetria (sobram 53,7 cm de parede à esquerda e só 18,4 à direita). '
+ '⚠ Custa R$ 47 a mais que o par desenhado, e é decisão do projeto.',
+
+ '⚠⚠ O PAINEL LISO DE 267 É LEITURA MINHA DA COTA, e vale conferir. '
+ '[Jonathan, 04/11/2026] "considere tbm o painel de mdf que esta atras" — e '
+ 'eu li "o painel atrás" como O RESTO DA PAREDE, porque a planta cota a '
+ 'parede da cabeceira como 200 + 267 = 467: os 200 são o ripado e ninguém '
+ 'cota 267 de nada. ⭐ A cabeceira de 240 reforça: ela começa a 113,5 cm do '
+ 'canto e pisa 86,5 cm de ripado e 153,5 cm do liso — atravessar a junta '
+ 'entre dois acabamentos só faz sentido se os dois forem acabamento. '
+ '⚠ SE FOR SÓ ATRÁS DA CABECEIRA (240 em vez de 267), o item cai de '
+ 'R$ 1.075 para cerca de R$ 970 — e o PROJETO, de R$ 1.268 para R$ 1.140, '
+ 'porque o rateio do item e a chapa comprada inteira são dois números '
+ 'diferentes para a mesma peça. ⛔ E a altura de 272 também é leitura: '
+ 'não há elevação do trecho liso. ⚠ Some-se a isto que o ESTOFADO não '
+ 'aparece na LEGENDA DE ACABAMENTOS da prancha, que tem só "MDF AMADEIRADO '
+ 'A DEFINIR" e "RIPADO EM MDF AMADEIRADO A DEFINIR" — quem disse que a '
+ 'cabeceira é estofada foi o 3D, e o tecido segue sem definição.',
+
+ '⭐ RESPONDIDO EM PARTE [Jonathan, 04/11/2026]: "20 a menos que a '
+ 'cabeceira da suite de casal". A cabeceira da SUÍTE 01 entrou, na aba 08, '
+ 'por R$ 1.735,26 de rateio — exatamente 80% dos R$ 2.169,08 da master. '
+ '⛔ E ISSO INVERTE O MÉTODO DA CASA, com o dono sabendo: no resto do '
+ 'projeto a medida vem primeiro e o preço depois; ali o preço veio '
+ 'primeiro e os 192 × 120 são DERIVADOS dele. É estimativa comercial '
+ 'declarada, não cota.   ⚠ O AMBIENTE NOVO COMPRA CHAPA INTEIRA: 2,61 m² '
+ 'de MDF 15 num ambiente de um móvel só são UMA chapa de R$ 550 contra '
+ 'R$ 352,86 de rateio, e por isso o ITEM cai os 20% mas o AMBIENTE sai em '
+ 'R$ 2.014. ⭐ Essa diferença some quando o resto da suíte 01 entrar.   '
+ '⛔⛔ E O QUE CONTINUA FALTANDO É MAIOR QUE UMA CABECEIRA: o executivo '
+ 'tem ONZE pranchas — cozinha (3), escritório (2), hall (3), sala/TV (1) e '
+ 'suíte MASTER (2) — e o PDF dos 3Ds mostra SUÍTE 01, SUÍTE 02 e '
+ 'PRINCIPAL. Da suíte 01 faltam o painel de fundo, o nicho suspenso e as '
+ 'mesas de cabeceira; da suíte 02, tudo.',
+]
 DUVIDAS_DO_AMBIENTE = {
  'Sala de TV': [
   '⛔⛔ O PAINEL LISO DE 300 × 272 TEM EMENDA À VISTA, E A POSIÇÃO DELA É SUA. '
@@ -144,6 +198,8 @@ ESPEC = {
  'Filetagem manual': '⛔ O que NÃO entra na coladeira · hoje NADA neste '
                      'orçamento · a Base ainda cita chapa de 6 mm',
 }
+#   ⛔ as abas cujo ambiente não tem uma linha de desenho executivo
+SEM_DESENHO = {'08 Suíte 01'}
 ROTULO = {
  'Dobradiça': 'dobradiça', 'Dobradiça vidro': 'dobradiça de porta de vidro',
  'Corrediça Hettich': 'corrediça', 'Báscula HK-XS': 'articulador HK-XS',
@@ -154,6 +210,8 @@ ROTULO = {
  'Cava usinada': 'cava usinada', 'Painel ripado': 'painel ripado',
  'Miolo G-Door em régua': 'miolo de porta em G-Door',
  'Perfil de metalon': 'perfil de metalon anti-empeno',
+ 'Estofado': 'estofamento da cabeceira',
+ 'Pé metálico': 'pé metálico da mesa de cabeceira',
 }
 
 
@@ -238,8 +296,10 @@ def monta(amb, aba):
     L['dv0'] = L['s_dv'] + 2
     #   ⭐ só a aba que TEM porta de passagem recebe as dúvidas dela
     tem_porta = any('Miolo G-Door' in n for m in moveis for n, *_ in m.terc)
+    tem_cab = any('Estofamento' in n for m in moveis for n, *_ in m.terc)
     DUV = (list(DUVIDAS) + DUVIDAS_DO_AMBIENTE.get(amb, [])
            + (DUVIDAS_PORTA if tem_porta else [])
+           + (DUVIDAS_CABECEIRA if tem_cab else [])
            + [f'⚠ {k} — {ch.A_COTAR[k]}' for k in cc + vid + cf
               if k in ch.A_COTAR])
     L['dv1'] = L['dv0'] + len(DUV) - 1
@@ -260,11 +320,21 @@ def monta(amb, aba):
     SOMA_F = lambda alvo: f'SUMIF($K${a}:$K${z};{alvo};$F${a}:$F${z})'
 
     põe(L['tit'], B=f'  VALVIC MARCENARIA        {aba[3:].upper()}')
-    põe(L['sub'], B=f'  Attos · Costa Laguna · executivo vetorizado, 11 '
-                    f'pranchas A3 · {len(moveis)} '
-                    f'{"item" if len(moveis) == 1 else "itens"} de móvel · '
-                    f'⛔ nenhuma cota saiu por texto: tudo foi lido ampliando '
-                    f'a prancha')
+    #   ⛔⛔ ESTA LINHA MENTIA NA ABA DA SUÍTE 01. Ela dizia "executivo
+    #     vetorizado, 11 pranchas A3 · nenhuma cota saiu por texto" numa aba
+    #     cujo ambiente NÃO TEM PRANCHA NENHUMA — o subtítulo é gerado igual
+    #     para todas e eu não tinha previsto um ambiente sem desenho. ⭐ Agora
+    #     ele pergunta ao PRANCHAS do painel.py antes de afirmar.
+    _n = f'{len(moveis)} {"item" if len(moveis) == 1 else "itens"} de móvel'
+    _sem = aba in SEM_DESENHO
+    põe(L['sub'], B=(f'  Attos · Costa Laguna · ⛔⛔ AMBIENTE SEM PRANCHA · '
+                     f'{_n} · o preço desta aba vem de REGRA do Jonathan, '
+                     f'não de medida: não há desenho executivo da suíte 01 '
+                     f'em lugar nenhum'
+                     if _sem else
+                     f'  Attos · Costa Laguna · executivo vetorizado, 11 '
+                     f'pranchas A3 · {_n} · ⛔ nenhuma cota saiu por texto: '
+                     f'tudo foi lido ampliando a prancha'))
     põe(L['s_amb'], B='  O AMBIENTE   ·   chapa 275 × 185 com 80% de '
                       'aproveitamento · e ela se conta em número cheio, por '
                       'cor × espessura')

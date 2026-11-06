@@ -33,6 +33,11 @@ PRANCHAS = {
     '05 Escritório': 'escritorio-01 e 02',
     '06 Sala de TV': 'sala-tv-01',
     '07 Suíte': 'suite-01 e 02',
+    #   ⛔⛔ O ÚNICO AMBIENTE SEM PRANCHA. A cabeceira da suíte 01 entrou
+    #     por REGRA DE PREÇO do Jonathan ("20 a menos que a cabeceira da
+    #     suite de casal"), não por medida — e esta célula é o lugar onde
+    #     isso fica à vista de quem lê o Painel.
+    '08 Suíte 01': '⛔ NENHUMA · preço por regra',
 }
 #   as linhas do Painel que este arquivo escreve
 R_TAB = 23          # cabeçalho da tabela de ambientes
@@ -139,6 +144,17 @@ def monta():
 
 if __name__ == '__main__':
     T, D, K, L, tot = monta()
+    #   ⛔⛔ O NÚMERO DO MOTOR MORA NA PAINEL!G37 E É DIGITADO À MÃO.
+    #     Em 04/11/2026 ele envelheceu: dizia R$ 70.767,00 e o motor já
+    #     estava em R$ 75.681,91, então a conferência acusava R$ 4.914,89
+    #     de erro onde não havia erro nenhum. ⭐ Enquanto esta linha não
+    #     for gerada, o print abaixo existe para que quem rodar o arquivo
+    #     VEJA o número que precisa ir para lá.
+    print(f'\n⛔ Painel!G37 (digitado à mão) tem de dizer: '
+          f'=K31-I31-{round(pl.lv.custo()["direto"] * 100):d}/100')
+    _n = f'{pl.lv.custo()["direto"]:,.2f}'.replace(',', '§') \
+        .replace('.', ',').replace('§', '.')
+    print(f'   e a frase do B37, "R$ {_n}"')
     print(f'tabela {L["tab"][0]}–{L["tab"][1]} · TOTAL na {tot}')
     for nome, M, r in (('tab', T, R_TAB), ('din', D, R_DIN0), ('kpi', K, R_KPI)):
         (P / f'_pn-{nome}.json').write_text(json.dumps(M, ensure_ascii=False))

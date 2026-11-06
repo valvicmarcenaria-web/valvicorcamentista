@@ -190,6 +190,31 @@ custo zero ao cliente dentro do prazo. Marcas: Hardt, Häfele, Hettich, Rometal.
 > da planilha de validação — por isso o pagamento via transferência ganha 7%
 > de desconto (a Valvic devolve a taxa que economiza).
 
+### ⛔⛔ MAS ESTA TABELA NÃO É O QUE A CASA VEM PROPONDO
+
+As quatro linhas acima são **todas baseadas em cartão**, de 6× a 10×. ⭐ As
+propostas ENTREGUES em 2026 — Gustavo Raposo e Michel — usam outra coisa, e
+é esta a escada que o Jonathan manda repetir [04/11/2026]:
+
+| momento | % |
+|---|---|
+| na assinatura do contrato | **30%** |
+| 30 dias após a assinatura | **20%** |
+| 60 dias após a assinatura | **20%** |
+| 90 dias após a assinatura | **30%** |
+
+> **Todas as parcelas por transferência bancária.**
+
+⭐ **E ISSO MUDA A CASCATA, não só a proposta:** sem cartão, a linha "Taxa de
+máquina" sai ZERO em vez de 1,2% × 10 = 12% do bruto. ⛔ Quem orçar com a
+tabela de cima e entregar com a escada de baixo põe 12 pontos de encargo
+numa conta que não os tem.
+
+⚠ **A entrada de 30% tem de cobrir o custo direto de compra**, que é a prova
+de caixa de todo job da casa. Com 30% na assinatura e 20% em 30 dias, a
+metade do dinheiro entra antes de a fábrica terminar — conferir isso é
+trabalho do Rodrigo, não do orçamento.
+
 ## Parceria com arquitetos/decoradores — RT
 
 `fontes/valvic_parceria_rt_arquitetos.pdf` — Programa de Parceria Profissional

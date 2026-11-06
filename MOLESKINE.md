@@ -7,6 +7,545 @@ pode ler e escrever aqui. Formato livre — marcar data e agente responsável.
 
 ## Tarefas abertas
 
+### [2026-11-05] Fluxo de caixa de novembro — A CONCILIAÇÃO DE 01 A 05/11 — Lavinia
+**Solicitante:** Jonathan · **Agente:** Lavinia · **Status:** ✅ planilha batendo com os dois bancos ao centavo
+
+> *"faça a leitura dos extratos e faça o cruzamento com a planilha
+> corrigindo e complementando o meu preenchimento. aproveite para fazer o
+> agrupamento dos preenchimentos de cada dia."*
+
+⛔⛔ **PRIMEIRO, UMA COISA QUE EU NÃO PODIA FAZER E NÃO FIZ:** tentei gravar
+a transcrição dos extratos num arquivo do repositório e o classificador
+barrou, por **procedência sensível**. ⭐ E estava certo: extrato traz CPF de
+terceiro, e repositório vai para o GitHub. A conferência inteira rodou **em
+memória**, e o resultado foi escrito só na planilha, que é do dono. Fica a
+regra: **extrato não entra em repositório.**
+
+⭐⭐ **A PROVA VEM ANTES DA COMPARAÇÃO.** Antes de cruzar qualquer coisa eu
+provei a transcrição: saldo anterior + movimento do dia = saldo do dia, nos
+dois bancos, nos três dias. Fechou nos seis. Se essa conta não fecha, eu li
+errado e nada do que vem depois vale.
+
+**As diferenças eram três, e uma explicava as outras duas:**
+
+1. ⭐⭐ **OS R$ 0,82.** A transferência entre as contas foi lançada por um
+   valor e saiu por outro: o PIX levou junto os 82 centavos que estavam
+   parados na conta de origem, e zerou ela. O mesmo 0,82 aparecia no ajuste
+   do saldo negativo do mês anterior. **Dois lugares, o mesmo centavo
+   faltando** — e nenhum dos dois reclamava.
+2. ⭐⭐ **OS JUROS ESTAVAM NO DIA ERRADO.** Uma linha de "juros e iof" de
+   R$ 517,00 no dia 04 era, na verdade, **R$ 442,80 de juros do dia 03** mais
+   **R$ 74,20 de IOF do dia 04**. Por isso o dia 03 sobrava R$ 440,28 e o dia
+   04 faltava R$ 441,65 — as duas pontas se explicavam uma à outra, e a
+   diferença entre elas era um terceiro erro pequeno.
+3. ⚠ **E FALTAVA UMA PERNA DA TRANSFERÊNCIA.** A entrada no banco de destino
+   estava lançada; a saída do banco de origem, não. No dia 05 ele fez o par
+   completo — então o jeito certo já estava na própria planilha, três dias
+   depois.
+
+⭐ **O QUE PARECIA ERRO E NÃO ERA:** uma linha de R$ 62,00 sem correspondente
+no extrato. São **três PIX pequenos somados** (17 + 30 + 15), e a coluna
+"Lançamento" dela já dizia **Agrupado**. Não apaguei: nomeei os três na
+observação, para a próxima pessoa não refazer a investigação.
+
+**Corrigido também:** um boleto lançado por R$ 499,00 que saiu por R$ 500,15,
+e o **saldo do extrato do dia 05 digitado como R$ 2.194,99** quando o banco
+fechou em **R$ 1.856,99** — diferença exata de um PIX de R$ 338,00 que já
+estava lançado. ⭐ Preenchi as cinco linhas de "saldo no extrato" das duas
+contas, e a coluna **diferença zerou nos cinco dias**.
+
+⭐ **E O AGRUPAMENTO:** três grupos na aba LANCAMENTOS, um por dia, todos
+recolhidos — o "+" na margem esquerda. ⛔ Detalhe que eu só aprendi
+apanhando: **grupos colados viram um só**. Por isso a **primeira linha de
+cada dia fica FORA do grupo** — ela é o separador, e é o que você vê quando
+o dia está fechado.
+
+### [2026-11-05] BAR CARIOCANDO · Savassi BH — balcão da cozinha, prancha #104 R02 — Lavinia
+**Solicitante:** Jonathan · **Agente:** Lavinia · **Status:** ✅ orçado em uma linha · ⚠ três perguntas antes de enviar
+
+> *"novo orcamento. faça apenas em uma linha hettich"* — com a prancha
+> `104_DET.COZINHA - BANCADA R02`, de Chico Albano + Biri Arquitetura.
+
+⭐⭐ **FECHADO EM R$ 24.094,60** [Jonathan, 05/11/2026]: *"adicione a RT e
+mc de 45%"*. A pergunta que eu tinha deixado em aberto no `base.py` foi
+respondida — **tem RT de 10%, não tem vendedor** —, e a BASE saiu de 84,88%
+para **76,09%**. Com a MC em **45%** (acima da faixa ideal da casa, 35 a 40),
+o preço subiu de R$ 15.979,54 para R$ 24.094,60. ⛔ O custo direto não mudou
+um centavo: R$ 7.490,41. **RT e MC são preço, não custo.**
+
+| item | MC 38% sem RT | **MC 45% com RT** |
+|---|--:|--:|
+| Balcão da cozinha · 308,5 × 36 | 11.309,71 | **17.053,24** |
+| Fechamento frontal do salão · 182 × 70 | 2.910,54 | **4.388,63** |
+| Revestimento ripado da porta · 70 × 115 | 1.759,29 | **2.652,73** |
+| **total** | 15.979,54 | **24.094,60** |
+
+⛔⛔ **E O PREÇO NÃO SE SEPARA POR ITEM** [Jonathan, 05/11/2026]: *"nao
+separe os valores pelos itens"*. ⭐ A folha muda de natureza, não só de
+coluna: sem preço ao lado, a lista deixa de ser orçamento e vira **escopo** —
+o que entra no contrato. Um preço por peça convida a cortar uma peça; um
+preço só convida a decidir o conjunto, que é o que esta proposta vende.
+⭐ O preço do item não sumiu do mundo: ele segue no `orcamento.py`, que é
+onde a fábrica e a margem olham. Saiu da folha do cliente. E a trava não
+confia na minha memória de ter tirado a coluna — ela **procura cada preço de
+item no texto da folha** e se achar um, o build não sai.
+
+**A proposta saiu em DUAS folhas** (`proposta-bar-cariocando.pdf`), porque
+foi o que ele pediu — e duas folhas é outro gênero, não o caderno encurtado:
+na folha 1 o preço vem primeiro, na folha 2 mora o contrato em miniatura.
+⛔ O que não coube não virou letra miúda: virou linha nomeada em "o que não
+está nesta proposta".
+
+**As condições, todas cravadas por ele:** prazo **30 de novembro de 2026** ·
+garantia **5 anos** · validade **hoje** · pagamento **60% de entrada e 40%
+na entrega** (R$ 14.456,76 + R$ 9.637,84).
+
+⚠⚠ **E TRÊS DELAS MERECEM REGISTRO, não discussão:**
+1. **A garantia de 5 anos está ABAIXO da tabela da casa.** A política põe
+   Hettich em 10 anos e reserva os 5 para a linha Hardt — e a ferragem aqui
+   é Sensys. ⭐ Prometer menos não cria risco, cria pergunta; para bar, de
+   uso pesado, a resposta é boa. ⚠ Mas o termo de 5 anos **também não existe
+   desenhado**: só o de 10.
+2. **MC de 45% está acima da faixa ideal** (35 a 40). Job comercial, prazo
+   curto e cliente novo justificam; fica como decisão do dono.
+3. **O prazo de 30/11 são 25 dias corridos e dependem de terceiros** — a
+   marcenaria é a última a entrar, depois da alvenaria, do granito e do
+   metalon. ⭐ Isso está ESCRITO na folha de condições, não subentendido.
+
+⚠ E a divergência da ripa segue de pé, agora com outro valor: unificar as
+três faces em 4 × 3 leva o preço de R$ 24.094,60 para **R$ 20.437,86**.
+
+⭐⭐ **O PRIMEIRO TRABALHO FOI SEPARAR O QUE É NOSSO.** A folha desenha um
+balcão de bar inteiro: alvenaria de 9, revestimento Eliane, **granito cinza
+andorinha** em bancada, balcão de apoio, sóculo e rodabanca, metalon 3×3,
+balcão refrigerado de chopp e porta de enrolar. ⛔ Pedra nunca; obra civil
+nunca. Sobraram **três peças de marcenaria**, e é só elas que o preço cobre.
+
+⭐⭐ **E AQUI A COTA ERA TEXTO DE VERDADE** — ao contrário do executivo do
+Attos, todo vetorizado. Li as cotas direto do arquivo. O único número que
+faltava, a **profundidade de 36**, saiu da planta; e a escala se provou
+sozinha no corte AA: 1:25 dá 1 pt = 0,88194 cm, e os vãos de prateleira
+mediram **29,6 / 29,7 / 29,8** contra a cota de 29,5, com o sóculo em 10,0.
+
+**⛔⛔ TRÊS COISAS ANTES DE ISSO VIRAR PROPOSTA:**
+1. ⭐⭐ **A PRANCHA PEDE DUAS RIPAS DIFERENTES, E ISSO TEM PREÇO.** As notas
+   da VISTA A e das plantas dizem **4 × 3 cm**; as da VISTA C e do detalhe
+   da porta dizem **4 × 2 cm**. Não é acabamento: 3 cm pede **duas chapas de
+   15 coladas**, 2 cm pede uma de 18. **Unificar tudo em 4 × 3 derruba o
+   preço para R$ 13.554,39 — R$ 2.425 a menos**, porque some a chapa de cor
+   18 comprada inteira para 0,92 m² e a de 6 comprada para 0,81 m². ⭐ Rodar
+   `RIPA_UNICA=1 python3 orcamento.py` mostra a conta.
+2. ⚠ **RT E VENDEDOR NÃO FORAM DITOS.** Usei a BASE publicada **sem os dois**
+   (84,88%), que é a que não esconde custo. Com vendedor de 10% ela cai para
+   76,09% e o preço sobe quase 18%. São **dois escritórios** assinando a
+   prancha e um cliente comercial — a pergunta não é retórica.
+3. ⚠ **O METALON 3×3.** Ele carrega as bancadas de granito e recebe o nosso
+   revestimento. Pela regra da casa (*existe sem o móvel? não é nosso*) é da
+   serralheria e ficou fora. ⛔ Mas a **porta de acesso é metalon revestido
+   por nós**: se a folha vier por nossa conta, entra custo que não está aqui.
+
+⚠ Menores, e ficam: **puxador não está especificado** em lugar nenhum da
+folha; a **prateleira metálica** diz "ver detalhe específico", que é outra
+prancha que eu não tenho; e a **hachura do ripado no desenho tem passo de
+~3,8 cm**, não os 6 que a nota manda — grafismo, não especificação, mas
+alguém vai contar ripa no desenho um dia.
+
+**Gravado em:** `projetos/bar-cariocando/base.py` (a base de custos da casa,
+sem nada do Attos dentro) · `orcamento.py` (o levantamento e o preço).
+⭐ E a trava do fim do `orcamento.py` pegou um defeito real: cada item
+arredondava as próprias chapas e a soma dos três (R$ 17.252) estourava o
+preço do projeto (R$ 15.980) em R$ 1.273. **Quem compra chapa é o projeto** —
+o item leva a fração e rateia a sobra pela área.
+
+
+### [2026-11-04] Attos · Costa Laguna — O CADERNO EM PDF, 19 FOLHAS — Lavinia + Vitor
+**Solicitante:** Jonathan · **Agente:** Lavinia (orçamento) → Vitor (proposta) ·
+**Status:** ✅ PDF gerado · ⚠ falta o nome do cliente e dois termos de garantia
+
+> *"agora pode criar o pdf. so vamos fazer uma coisa aqui em especial nessa
+> proposta: colocar a garantia da linha basica em 1 ano."* · e, no meio:
+> *"prazo de entrega 70 dias corridos pos medição, com entrega do escritorio
+> ate 10 de dezembro"*
+
+**`proposta-costa-laguna.pdf` · 18 folhas A4 paisagem · 4,6 MB.**
+
+⭐⭐ **SEGUNDA RODADA [Jonathan, 05/11/2026], três pedidos e os três feitos:**
+
+1. *"a pagina 17 e a 14 ficaram redundantes"* — **e estavam.** Duas folhas de
+   três cartões, quase iguais: uma vendia a sensação, a outra o preço. Agora
+   é **uma só**, e a prosa tátil da que saiu foi para os cartões que levam o
+   número. ⛔ Virou trava: três cartões + o total da tabela dão **quatro**
+   "A casa inteira" no HTML, nunca sete.
+2. *"fale da garantia antes de apresentar valores"* — ⭐⭐ **e isso não é
+   diagramação, é decisão comercial.** Quem lê o prazo de garantia ANTES do
+   número lê o número como consequência; quem lê depois, lê como desculpa.
+   A ordem virou `assert` no QA, para uma reordenação futura não desfazer em
+   silêncio.
+3. *"pegue as imagens do projeto nesse arquivo"* — **o anteprojeto 3D, agora
+   compactado em 2,7 MB.** ⛔⛔ E a parte que custou: **o container não
+   alcança o `drive.google.com`** (a política de rede devolve 403 no CONNECT)
+   e o MCP do Drive devolve o arquivo em base64 **dentro do contexto** — 3,6
+   milhões de caracteres que eu não teria como escrever de volta em disco.
+   ⭐ O caminho que funcionou: o harness **persiste o resultado grande do MCP
+   num arquivo** em `tool-results/`, e daí é só decodificar. Está escrito
+   aqui porque vou precisar de novo.
+
+**O que as imagens mudaram, e o que elas me obrigaram a dizer:**
+⭐ Oito renders entraram, e cada folha de ambiente passou a ter **render +
+elevação cotada lado a lado** — o que se vê e o que se executa.
+⛔⛔ **MAS O ANTEPROJETO MOSTRA A CASA INTEIRA, E NÓS NÃO VENDEMOS A CASA
+INTEIRA.** A cozinha do render tem ilha, bancada de pedra e eletro; nosso é
+o armário de portas de vidro e a coluna. Deixar isso implícito seria mentira
+de escopo. A folha 02 passou a trazer um quadro próprio: *"as perspectivas
+são do anteprojeto da arquitetura e mostram a casa inteira — mobiliário
+solto, pedra, eletrodomésticos e decoração aparecem nelas e não estão nesta
+proposta."*
+⚠ E três ambientes **não têm render que sirva**: hall, jantar e gourmet. O
+anteprojeto não os mostra, ou mostra o que não é nosso. Essas folhas seguem
+só com elevação, e a tarja diz isso.
+
+⛔ **Mais três defeitos de montagem, todos vistos só porque eu abri o PDF:**
+a tarja vertical do anteprojeto entrava cortada no meio da palavra
+("E ESTAR") quando a faixa sangrava — recorte passou a começar em 7,5% da
+largura; a faixa de uma imagem só deixava o render ilhado em doze
+centímetros de areia de cada lado — faixa `solo` sangra; e o quadro "o que
+está incluso" subia por cima do rodapé — a folha entrou no passe de
+encolhimento.
+
+⭐⭐ **A REGRA QUE O `caderno.py` INSTITUI: A PROPOSTA LÊ O MOTOR.** Nenhum
+valor é digitado nela — todos saem de `linhas.monta()` na hora de gerar. Não
+existe mais o caso de a planilha dizer um número e a folha do cliente dizer
+outro, que é o jeito mais caro de errar que esta casa conhece. ⛔ E o QA do
+closer virou `assert`: o build **recusa sair** se aparecer nome de outro
+cliente, se faltar um total, um ambiente, o prazo ou a razão social.
+
+⭐⭐ **AS IMAGENS SÃO O PRÓPRIO EXECUTIVO** (`desenhos.py`, novo). Não há
+render deste projeto em lugar nenhum — o Anteprojeto 3D tem 7,9 MB e não
+passa pelo MCP do Drive. Então o caderno mostra **as elevações vetoriais da
+prancha, cotadas**, recortadas vista a vista: marco numa grade grossa onde há
+traço, engordo a marca, acho as ilhas — cada ilha é uma vista, porque o
+desenhista deixa corredor branco entre elas.
+⛔ **Tentei entregá-las LIMPAS e desisti com motivo:** neste plot a LINHA de
+cota é vermelha mas o NÚMERO dela é traço preto igual ao do móvel (o CAD
+plota texto como polilinha). Filtrar o vermelho tira a seta e **deixa o
+número solto no branco** — pior que a cota inteira. ⭐ E cota na proposta não
+é defeito: a folha 03 promete que o executivo de marcenaria é nosso, e a
+elevação cotada é a prova disso na mão do cliente.
+
+**Três defeitos que só apareceram porque eu OLHEI o PDF:**
+1. ⛔ **O rodapé subia por cima do total** na folha de investimento: 19 linhas
+   não cabiam e o piso de .80 do script da casa não dava conta. Passe próprio
+   com piso .60 + calha mais apertada.
+2. ⛔ **"1 ano" saía como "I ano".** A Cormorant Garamond usa algarismo de
+   TEXTO: o 1 sai na altura de x e lê como I maiúsculo, o 10 como IO. Numa
+   folha em que o número É a promessa, isso é ambiguidade. `lining-nums`.
+3. ⛔ **A capa entregava "CORRE" solto** e "RIPADO 1:25" cortado. O campo
+   limpo de ripa é estreito — as duas portas ficam entre 20,7% e 34,6% da
+   elevação —, então a capa é **render novo a 400 dpi** do trecho de 129,5 cm
+   antes da primeira porta, não recorte do PNG.
+⭐ E um quarto, de dentro: a trava de QA acusou **"nan" na proposta**. Estava
+no base64 do PNG. Trava que grita por acaso é trava que ninguém respeita —
+passou a ler só o que o cliente lê.
+
+**⛔⛔ O QUE FALTA, E O JONATHAN PRECISA RESOLVER:**
+1. **NÃO EXISTE NOME DE CLIENTE.** O executivo é assinado pela ATTOS e a
+   pasta do Drive só diz "Costa Laguna". A capa identifica o **projeto**, e o
+   campo CLIENTE ficou vazio de propósito — a regra do QA é não inventar
+   nome. Preencher `CLIENTE` no topo do `caderno.py` e rodar de novo põe o
+   nome na capa, no rodapé das 19 folhas e na linha de assinatura.
+2. **DOIS TERMOS DE GARANTIA A EMITIR.** O caderno promete 1, 10 e 30 anos e
+   só o de **10** está desenhado. O de 1 ano é o mais urgente: é o da linha
+   mais barata, que é a que o cliente pede para ver primeiro.
+3. ⚠ **A básica a 1 ano é EXCEÇÃO DESTA PROPOSTA.** A tabela da casa segue
+   com telescópica em 2 anos. Gravado em `closer-vendas/referencias/garantia.md`.
+
+**Gravado em:** `attos-costa-laguna/caderno.py` (o caderno) · `desenhos.py`
+(as vistas) · `img/` (11 elevações + a capa) · `projetos/css-caderno.css` e
+`js-caderno.js` (a identidade, agora compartilhada e sem nome de cliente
+dentro) · `closer-vendas/referencias/garantia.md`.
+
+
+### [2026-11-04] Attos · Costa Laguna — A CABECEIRA ESTOFADA, MEDIDA NO VETOR — Lavinia
+**Solicitante:** Jonathan · **Agente:** Lavinia · **Status:** ✅ PROPOSTA FECHADA nas três linhas (04/11) · ⚠ suíte 01 por medida DERIVADA do preço, sem prancha
+
+> *"olhe as duas cabeceiras estofadas no pdf dos 3ds e faça o orcamento das
+> cabeceiras e mesas de cabeceiras tbm"* · depois, com dois prints:
+> *"tenhos esses prints, pelas plantas vc consegue ter uma projeção de medidas"*
+
+**A resposta foi SIM — e por MEDIÇÃO, não por semelhança.** A prancha da suíte é
+export vetorial de CAD: as cotas estão em curva (só "A3" é texto de verdade),
+mas a geometria é exata. Tirei a escala da cota de 467 (529,68 pt →
+**0,88166 cm/pt**) e ela fecha em oito outras cotas da prancha antes de eu medir
+qualquer coisa não cotada.
+
+| peça | medida | como sei que não é chute |
+|---|---|---|
+| **cabeceira estofada** | **240 × 5** | centro em 642,0 · centro da cama em 642,15 → **centrada** |
+| **mesa de cabeceira esq.** | **80 × 50** | fica **10,0 cm** da cama |
+| **mesa de cabeceira dir.** | **90 × 50** | fica **10,0 cm** da cama |
+| (a cabeceira passa **20,2 e 19,8 cm** por trás das mesas — o que o 3D mostra) | | |
+
+⭐ **A espessura desenhada confirma a receita sozinha:** 5,0 cm é 15 mm de MDF +
+30 mm de espuma + tecido. O 3D disse O QUE É; a planta disse QUANTO.
+
+**O que entrou:** cabeceira R$ 2.169,08 · mesa de 80 R$ 1.061,10 · mesa de 90
+R$ 1.108,48. Custo direto do projeto **R$ 70.767,00 → R$ 75.681,91**; preço
+Hettich MC 35% **R$ 189.551,29** com frete. Duas chaves novas na Base:
+**Estofado R$ 600/m²** (de face estofada) e **Pé metálico R$ 300/jogo**
+(serralheria, mínimo por serviço).
+
+**⚠ TRÊS PERGUNTAS PARA O JONATHAN** (dúvidas 9, 10 e 11 da aba 07 Suíte):
+
+1. ⚠⚠ **A ALTURA DA CABECEIRA É PREMISSA MINHA, 120 cm** — o único número dela
+   que não saiu do desenho. ⛔ **Não há elevação da parede da cabeceira em
+   prancha nenhuma:** a ELEV.01 é o ripado (200 × 272) e a ELEV.02 é a parede da
+   TV (467 × 275). Cada 10 cm a mais custam R$ 144 de estofado mais a chapa.
+2. ⚠⚠ **As duas mesas são DIFERENTES na planta, 80 e 90.** Não é erro de
+   leitura — e a planta explica (sobram 53,7 cm de parede à esquerda e só 18,4 à
+   direita). Se foi desenho no olho, é trocar um número; a de 90 custa R$ 47 a
+   mais.
+3. ⛔⛔ **DUAS SUÍTES INTEIRAS APARECEM NO 3D E NÃO TÊM PRANCHA.** O executivo
+   tem onze: cozinha (3), escritório (2), hall (3), sala/TV (1), suíte MASTER
+   (2). O 3D mostra SUÍTE 01, SUÍTE 02 e PRINCIPAL. **A segunda cabeceira que o
+   senhor pediu é da suíte 01 e NÃO foi orçada** — não há desenho para medir, e
+   fazer por analogia seria pôr número inventado num orçamento todo medido.
+   ⚠ A pergunta maior: **faltam AMBIENTES nesta conta, não uma cabeceira?**
+
+**⛔ E A DIVERGÊNCIA QUE NÃO DEU ERRO, DE NOVO — DUAS, NO PAINEL:**
+Quando a aba 07 cresceu de 94 para 148 linhas, a conferência do Painel
+continuou apontando para o endereço VELHO: `'07 Suíte'!$I$32` passou a ler o
+*arredondamento de chapa* (R$ 481,21) em vez do zero da conferência. E a linha
+"A PLANILHA CONTRA O MOTOR" seguia com **R$ 70.767,00 digitado à mão** na
+fórmula e na frase, acusando R$ 4.914,89 de erro onde não havia erro nenhum.
+⭐ **Corrigido na raiz:** a fórmula agora **PROCURA a linha pelo rótulo**
+(`INDEX/MATCH("⭐ CONFERÊNCIA*")`) em vez de apontar para endereço fixo — e o
+`painel.py` passou a IMPRIMIR, a cada rodada, o número que precisa ir à mão
+para a G37. ⛔ Endereço fixo e número digitado envelhecem calados; os dois já
+me pegaram hoje.
+
+**⭐ E DEPOIS, NO MESMO DIA:** *"as mesas de cabeceira pode ser um item unico
+no orcamento"*. Eram os itens 04 e 05; viraram **UM**, com cada peça dizendo
+de qual mesa é e uma linha só por família de ferragem. ⛔ **O custo não mudou
+um centavo** — R$ 75.681,91 antes e depois. Mudou a apresentação: 22 itens →
+**21**, e a Suíte de 5 para **4**.
+⚠ E a pergunta do pé metálico fica de pé: **juntar numa linha de orçamento não
+é o mesmo que o serralheiro fazer os dois jogos numa ida só.** A primeira
+coisa é apresentação; a segunda é preço. Seguem dois jogos, R$ 600.
+
+**Hoje:** conferência interna das 7 abas **R$ 0,00** · planilha contra o motor
+**−R$ 0,06** · linhas a preço zero **0** · 21 itens · 57 chapas.
+
+**⚠ E DOIS NÚMEROS QUE O JONATHAN MEXEU NA PLANILHA ENQUANTO EU TRABALHAVA**,
+que eu NÃO toquei porque são células dele:
+- **MC alvo do projeto está em 50%**, não nos 35% combinados. O preço no
+  Painel saiu **R$ 300.074,19** em vez dos R$ 189.551 de 35%. ⚠ E a nota ao
+  lado da célula segue contando a história dos 35% — **o rótulo voltou a
+  divergir do valor**, que é exatamente o que aquela nota foi escrita para
+  denunciar.
+- **01 Hall com 2 viagens de frete**, R$ 400. O frete do projeto passou de
+  R$ 2.200 para R$ 2.600.
+
+**⭐⭐ E AS TRÊS RESPOSTAS DO JONATHAN, no mesmo dia:**
+
+1. *"120 esta otimo"* — a altura da cabeceira está fechada.
+2. *"considere tbm o painel de mdf que esta atras"* — ⛔⛔ **ELE ESTAVA
+   FALTANDO, E A PLANTA JÁ DIZIA.** A parede da cabeceira é cotada
+   **200 + 267 = 467**. Os 200 são o ripado, que eu orcei. **Ninguém cota 267
+   de nada** — os 267 são o outro painel, o liso, e eu li a cota como "o
+   resto da parede" em vez de como um ITEM. ⭐ A cabeceira de 240 prova a
+   leitura: ela pisa 86,5 cm de ripado e 153,5 cm do liso, e atravessar a
+   junta entre dois acabamentos só faz sentido se os dois forem acabamento.
+   ⭐⭐ E a emenda se resolve sozinha: 267 pede 2 faixas de 133,5, e a junta
+   cai **debaixo da cabeceira**, com 20 cm de folga. +R$ 1.268 no projeto.
+3. *"pode considerar ambas de 90cm"* — a planta desenhava 80 e 90; medir não
+   é decidir, e ele decidiu. +R$ 47.
+
+**Custo direto R$ 75.681,91 → R$ 76.996,72** · 22 itens · 59 chapas ·
+conferência **R$ 0,00** · linhas a preço zero **0**.
+
+**⚠ E O PEDIDO QUE NÃO TEM UMA RESPOSTA SÓ:** *"considere um investimento no
+orcamento 20% a menos"*. ⛔⛔ **20% A MENOS DE QUÊ?** A planilha não está nos
+35% combinados — a célula da MC alvo está em **50%**, posta à mão. São duas
+contas completamente diferentes, e isso está medido em `economia.py`:
+
+| leitura | preço hoje | −20% | como se chega |
+|---|---|---|---|
+| ① da planilha, MC 50% | R$ 305.114 | **R$ 244.091** | ⭐ a MC vai de 50% para **43,5%** · zero mudança de produto, e 8,5 pontos acima do piso |
+| ② do combinado, MC 35% | R$ 193.724 | **R$ 154.979** | ⛔ por margem NÃO DÁ (pediria MC 24,7%) · tem de sair produto |
+
+⭐ **E a alavanca que não toca no projeto: SEM VENDEDOR.** BASE sobe de
+76,09% para 84,88% e o preço cai **17,6%** com a mesma MC e o mesmo móvel.
+Com ripa de 3 em vez de 2 (passo 4,5), chega a **−23,5%**.
+⛔ A ripa é a maior alavanca de produto do orçamento, e agora sai por
+variável de ambiente: `RIPA_L=3 VAO=1.5 python3 levantamento.py`.
+
+**⛔ E UM ERRO MEU, DE FERRAMENTA, NÃO DE CONTA:** pus um `git stash` dentro
+de um script de diagnóstico "por segurança" e ele engoliu TODAS as alterações
+não commitadas no meio da cirurgia da planilha. Recuperado com `git stash
+pop`, nada se perdeu. ⭐ A lição: **script de leitura não escreve.** Comando
+que muda estado não entra em ferramenta de diagnóstico, nem com boa intenção.
+
+**⭐⭐ E DEPOIS, A CONDIÇÃO COMERCIAL** [Jonathan, 04/11/2026]: *"nao
+considere cartao de credito, considere custo de comissao de vendedor de 5%.
+parcelamento sero o mesmo proposto para o michel e o gustavo"*.
+
+**⛔⛔ E A COMISSÃO DE 5% CORRIGE UMA CORREÇÃO MINHA.** A célula NASCEU em 5%
+e eu a troquei para 10% em 03/11, apoiada na frase daquele dia — *"tem
+comissão do vendedor (10%)"* — tratando os 5% como erro do modelo. **Não
+eram.** As duas frases ficam registradas na planilha, com data: apagar a de
+03/11 faria o próximo leitor achar que a de hoje sempre esteve ali.
+⭐ **BASE 76,09% → 80,48%**, e na MC de 35% o preço cai **9,7%**, de
+R$ 187.397 para **R$ 169.293**. Comissão de vendedor não sai da margem: sai
+do preço, nos dois sentidos.
+
+**⭐ O PARCELAMENTO: fui ler a PROPOSTA ENTREGUE, não o orçamento.** O que se
+copia de outro cliente é a CONDIÇÃO COMERCIAL da casa, nunca o número dele.
+A proposta do Gustavo Raposo traz **30% na assinatura · 20% em 30 dias · 20%
+em 60 dias · 30% em 90 dias, todas por transferência bancária**, e a do
+Michel traz a mesma regra de fundo, "entrada e saldo por transferência, sem
+cartão".
+⛔ E isso expôs uma divergência na própria skill: a tabela de formas de
+pagamento do `proposta-comercial.md` é **toda baseada em cartão**, de 6× a
+10× — nenhuma das quatro linhas serve. A escada real foi gravada lá.
+
+**Preço no Painel: R$ 305.114 → R$ 261.133** (MC 50%, com frete).
+
+**⭐⭐ E A SEGUNDA CABECEIRA DESTRAVOU — por regra, não por desenho.**
+*"20 a menos que a cabeceira da suite de casal"*: a da SUÍTE 01 sai por 80%
+da master. Perguntei em vez de adivinhar, porque a frase tinha três leituras
+e uma delas era remover ripado de um projeto de cliente.
+
+⛔⛔ **E ISSO INVERTE O MÉTODO DA CASA, com o dono sabendo.** No projeto
+inteiro a medida vem primeiro e o preço depois. Ali não há desenho para
+medir, então o dono deu o PREÇO e eu derivei a medida: **192 × 120** é o que
+faz o custo cair exatamente 20% (R$ 1.735,26 contra R$ 2.169,08) a 120 de
+altura, porque o custo da cabeceira é quase todo linear na largura.
+⭐ Está escrito assim em toda linha onde aparece: **estimativa comercial
+declarada, não cota.**
+
+⚠ **E O AMBIENTE NOVO COMPRA CHAPA INTEIRA:** 2,61 m² de MDF 15 num ambiente
+de um móvel só são UMA chapa de R$ 550 contra R$ 352,86 de rateio. Então o
+**ITEM** cai os 20% pedidos, mas o **AMBIENTE** sai em R$ 2.014. A diferença
+some assim que o resto da suíte 01 entrar.
+
+**Nasceu a aba 08 Suíte 01**, e com ela a primeira aba do projeto cujo
+ambiente não tem prancha — o subtítulo gerado dizia "executivo vetorizado,
+11 pranchas A3" ali também, e agora ele pergunta antes de afirmar.
+
+**Projeto: 8 ambientes · 23 itens · 60 chapas · custo direto R$ 81.611,05 ·
+preço R$ 267.741,81** (MC 50%, com frete). Conferências: material R$ 0,00 ·
+8 internas R$ 0,00 · contra o motor −R$ 0,06 · Preço e Comissões R$ 0,00 ·
+linhas a preço zero **0**.
+
+**⚠ E O `economia.py` NASCEU DE UM MAL-ENTENDIDO MEU.** Eu li "20% a menos"
+como desconto no PROJETO, montei a análise inteira e perguntei "de quê" —
+quando ele falava da cabeceira. ⭐ O arquivo fica, porque o que ele mede
+segue valendo: quanto cada alavanca de preço realmente devolve, com o motor
+rodando em cada cenário. ⛔ A lição está escrita no topo dele: "20% a menos"
+sem sujeito tem pelo menos três leituras, e eu escolhi a mais trabalhosa
+antes de perguntar.
+
+**⭐⭐ E A ESCADA DE TRÊS LINHAS** [Jonathan, 04/11/2026]: *"35 telescopica
+(basica) 38 hettich e 43 blum — lembrando que so tem alteração de valores os
+itens que levam as respectivas ferragens. os demais pode manter a mc de 38%
+fixo."*
+
+⛔⛔ **A SEGUNDA FRASE É MAIS IMPORTANTE QUE A PRIMEIRA.** A MC da linha não
+é a MC do projeto: vale só para os itens que carregam a ferragem que muda.
+⭐ É a regra que ele mesmo cravou em 09/09/2026 — *"a cabeceira estofada deve
+custar o mesmo valor para o cliente em ambos os contextos"* — e agora ela
+virou **aritmética com trava**: `linhas.py` explode se um item sem corrediça
+e sem sistema de correr mudar de preço entre as colunas.
+
+| | **BÁSICA** 35% | **HETTICH** 38% | **BLUM** 43% |
+|---|--:|--:|--:|
+| **A CASA** | **179.785** | **185.991** | **201.353** |
+| da anterior | — | +3,5% | +8,3% |
+
+**7 itens de 23 mudam.** Os outros **16 têm preço idêntico nas três colunas**.
+⭐ A básica usa a **Corrediça Hardt, R$ 80/par**, que já estava na Base — não
+inventei tier nenhum.
+
+⚠⚠ **E UM ACHADO QUE VALE DECISÃO:** as duas portas de correr ripadas têm
+**custo idêntico na básica e na Hettich** (o sistema de correr custa R$ 600
+nas duas, porque a Base não tem um mais barato) e mesmo assim o preço sobe
+**R$ 539 cada** — três pontos de MC sem ferragem diferente nenhuma. Ou a
+básica leva um sistema mais simples (e falta o preço dele na Base), ou esses
+dois itens ficam em 35% também.
+
+**⭐⭐ E AS SETE DECISÕES COMERCIAIS** [Jonathan, 04/11/2026]: agrupar na
+cozinha a R$ 39.700 · tirar R$ 2.500 de custo da cristaleira · parede da TV
+com as portas a R$ 15.500 · rever as mesas de cabeceira · mesclar o
+escritório menos o ripado · unificar o hall · subir a Blum para 230k.
+
+⛔⛔ **E ELAS NÃO FORAM PARA O LEVANTAMENTO.** Um "ajuste de R$ 2.500" ou um
+"preço final de 39.700" não têm peça, não têm chapa e não vão para o plano
+de corte. **O levantamento mede; a linha negocia.** Tudo mora em
+`linhas.py`, nomeado e datado, e a trava passou a somar motor + ajustes.
+
+| | BÁSICA 35% | HETTICH 38% | BLUM 45,5% |
+|---|--:|--:|--:|
+| **A CASA** | **176.891** | **184.184** | **230.000** |
+| da anterior | — | +4,1% | +24,9% |
+
+**⛔⛔ TRÊS COISAS QUE EU PRECISO DIZER, e todas são número, não opinião:**
+
+1. **O grupo da cozinha a R$ 39.700 dá MC realizada de 34,7% — ABAIXO do
+   piso de 35% da casa.** Onde o preço é cravado, a MC deixa de ser escolha
+   e vira resultado; o relatório imprime a dos dois cravados. A parede da TV
+   a R$ 15.500 dá **57,6%**.
+2. **As mesas de cabeceira:** era +70% da básica para a Blum e caiu para
+   **+41%** com a MC travada em 38%. ⭐ O que sobrou é SÓ a corrediça —
+   R$ 880 em 4 pares. ⚠ E a causa de fundo é da Base: ela cobra **R$ 300 o
+   par de Blum para QUALQUER gaveta**, e a da mesa de cabeceira tem 45 de
+   profundidade e 14 de altura. Separar a corrediça por tamanho derrubaria
+   esses 41% sozinho.
+3. **⛔⛔ OS 230k DA BLUM BRIGAVAM COM A REGRA DELE PRÓPRIO.** "Os demais pode
+   manter a MC de 38% fixo" faz 12 itens terem preço IDÊNTICO nas três
+   linhas. Um alvo de projeto pega o projeto TODO. As duas não cabem juntas.
+   ⭐ **"Pode manter" é permissão; "suba a blum para 230k" é ordem** — a ordem
+   ganhou, e a permissão fica registrada como derrubada, não esquecida.
+
+**⭐⭐ E ELE FECHOU:** *"pode fechar a proposta"*. Escolhi o **③**, e os dois
+caminhos descartados ficam impressos no relatório para quem abrir depois:
+
+| caminho até os 230k | por que não |
+|---|---|
+| ① diluir sobre tudo (×1,1428) | ⛔ a parede da TV, cravada em 15.500 com MC 57,6%, **CAÍA para 10.303** na Blum |
+| ② só nos 6 com ferragem (+27,5%) | ⛔ pedia **MC 49,7%** nesses seis com doze em 38% — preço sem resposta |
+| **③ MC única de 45,5% na Blum** | ⭐ **é UM número, e ele se explica:** outra ferragem, outra garantia, outra linha |
+
+⭐ **Dois itens ficaram FORA da diluição, por decisão:** a parede da TV (preço
+cravado) e as mesas de cabeceira (MC travada em 38%).
+⚠ A Blum roda **acima da faixa ideal da casa** (35% a 40%). É escolha do dono.
+
+**⛔⛔ E DUAS COISAS QUEBRARAM ANTES DE EU VER A TABELA FECHADA** — as duas do
+mesmo feitio de sempre: *dois números para a mesma coisa, e nenhum reclamando.*
+
+- **A ESCADA DESCIA.** A parede da TV cravada em 15.500 virou **10.303 na Blum**
+  — item mais barato na linha premium que na intermediária. A causa: a MC única
+  da Blum (46,1%) era MENOR que a MC realizada do item (57,6%), então "diluir"
+  nele era BAIXAR o preço. ⭐ Virou **trava ③: nenhum item pode ser mais barato
+  numa linha superior**, e ela roda a cada execução.
+- **A TRAVA DAS MESAS CAIU SOZINHA.** O fechamento pelo alvo reescreveu a MC de
+  todos os itens e levou embora o 38% travado das mesas — elas voltaram aos
+  **+70%** que o Jonathan tinha acabado de mandar corrigir. ⭐ Corrigido
+  isentando da diluição também o que tem **MC travada**, não só o preço cravado.
+
+⚠ **E a trava ② disparou** quando a Blum passou a fechar por alvo: "item sem
+ferragem tem o mesmo preço" deixa de valer na linha que fecha por alvo. **Não
+enfraqueci a trava — estreitei o que ela cobre** (só as linhas sem alvo) e
+escrevi o porquê ao lado, para ninguém "consertar" de volta.
+
+**Gravado em:** `referencias/quantitativo.md` (MEDIR O VETOR DA PRANCHA) ·
+`referencias/laminacao-e-construcao.md` (a cabeceira e a mesa, camada a
+camada) · `referencias/base-de-custos.md` (as duas chaves novas) · Base
+(importada) linhas 94 e 95 · aba 07 Suíte, itens 03 a 05 · aba 08 Suíte 01 ·
+**aba Preço e Comissões, bloco ⑨ (linhas 87 a 111)** — a tabela fechada item a
+item, com o registro do que a ordem derrubou · `attos-costa-laguna/linhas.py`
+(o motor das três linhas, as decisões comerciais nomeadas e datadas, e as três
+travas).
+
 ### [2026-11-04] Attos · Costa Laguna — o MÉTODO DA PORTA DE PASSAGEM — Lavinia
 **Solicitante:** Jonathan · **Agente:** Lavinia · **Status:** 🟡 Aplicado, com 3 perguntas abertas
 
@@ -407,3 +946,66 @@ Existe sem o móvel? Não é.
 **Gravado em:** `orcamentista-marcenaria/SKILL.md` (bloco próprio e regra 19) ·
 `referencias/regras-de-quantitativo.md` · `referencias/estrutura-orcamento.md` ·
 Base de Custos, aba Instruções · Painel do ICA, regra 13.
+
+---
+
+## 06/11 · CHARBEL CHELALA · a planilha preenchida, e dois defeitos no modelo
+
+As onze pranchas de detalhe viraram **nove abas, 38 itens, 496 peças, 86
+chapas em sete materiais**. Custo direto **R$ 119.306,13**, preço
+**R$ 360.577,65** com Blum, RT de 10% e MC realizada de 43%.
+`Charbel Chelala · Levantamento de Quantitativo`, na pasta Orçamentos Valvic.
+
+### ⭐⭐ A PREMISSA QUE A CASA JÁ RESPONDEU NÃO É PREMISSA, É DESLEIXO
+
+Escrevi onze premissas de mercado na base deste job porque "a Base não tem".
+Abri a Base de Custos e **nove delas estavam lá** — várias pela metade do
+que eu havia chutado: espelho a 600 e não 450, fonte de LED a 120 e não
+250, botton a 50 e não 90, cabideiro **por unidade** e não por metro,
+sarrafo de pinus a 8 o metro no lugar de chapa branca de 15. E a porta de
+vidro em perfil, que eu tinha posto a R$ 1.400 o **m²**, a casa tem a
+R$ 1.400 a **folha**, com referência de obra medida (Kenia e Fábio,
+12/06/2026). ⛔ **Antes de inventar preço, abrir a Base inteira — todas as
+seis abas, não a que eu lembro.**
+
+### ⭐ DUAS REGRAS DA CASA QUE O DESENHO CONTRADIZ, E AS DUAS TÊM PREÇO
+
+- **"RODAPÉ E BASE DE 3 CM NÃO É SERRALHERIA"** [Jonathan, 26/10]: a prancha
+  pede rodapé INOX h = 2 em cinco folhas. Orcei o inox, que a Base tem a
+  R$ 85/m, e registrei que a regra devolve **R$ 2.720**.
+- **"CHAPA — COR E ACABAMENTO ESPECIAL · R$ 1.000"**: Caribe Dual Syncro,
+  Fontana Magma e Cacao Matt são exatamente isso. Vale **R$ 23.177**, e é
+  uma ligação para o fornecedor. Roda com `ESPECIAL=1`.
+
+### ⛔⛔ O __pycache__ VALIDA POR (MTIME, TAMANHO) — E ISSO NÃO DÁ ERRO
+
+A primeira tabela de sensibilidade dizia que **UMA** mesa de cabeceira custa
+**mais caro** que **DUAS**. O motivo: `sensibilidade.py` troca uma linha do
+fonte, mede, e devolve o arquivo. `MC = 0.43` → `MC = 0.40` **tem o mesmo
+comprimento**, e a troca mais a volta cabem no mesmo segundo — o Python
+serviu bytecode velho com o fonte certo no disco. ⭐ **Medição que mexe no
+fonte apaga o cache e roda com `-B`.** E o que denunciou foi o SINAL: menos
+peça não pode custar mais. **Trava de sinal pega o que trava de valor não
+pega.**
+
+### ⛔⛔ O MODELO DA CASA TEM DOIS DEFEITOS, E OS DOIS SAEM CALADOS
+
+Na aba `Preço e Comissões` do **modelo vazio**:
+
+1. **A cascata de encargos aponta para `$D$33`, e o preço mora em `$E$33`.**
+   São 16 fórmulas (E14:E25, E27, D34, E35). Resultado: a coluna EM R$ do
+   quadro ② sai inteira a **R$ 0,00**, a MC média realizada sai **0,0%** e a
+   CONFERÊNCIA — que devia dar zero — sai **menos o preço inteiro**. ⭐ Numa
+   cópia nova ninguém percebe, porque tudo é zero mesmo até a primeira aba
+   entrar. Corrigido na cópia do Charbel; **o MODELO continua com o defeito**.
+2. **Linha de texto dentro de `B24:B43` vira ambiente.** `COUNTA` conta
+   qualquer coisa, inclusive string vazia — limpar com `""` não resolve, tem
+   de apagar a célula. O painel dizia "10 ambiente(s)" para 9 abas.
+
+### ⚠ E UMA DIVERGÊNCIA DE MODELO QUE EU QUASE DEIXEI PASSAR
+
+O quadro ⑤ diz **"Médio é o PISO, não o zero: todo ambiente custa ao menos
+cinco pontos acima da MC alvo"**. Logo a MC de D7 **não é a realizada**.
+Jonathan cravou 43% querendo 43% embolsados, então D7 = **38%** e a
+realizada dá 43. ⛔ Pôr 43 em D7 dá 48% realizados e **R$ 424.765,93** —
+outro preço, não o mesmo preço escrito de outro jeito.

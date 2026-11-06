@@ -155,7 +155,17 @@ def mv(amb, nome, nota=''):
 # ════════════════════════════════════════════════════════════════════════
 # O RIPADO — o item do projeto, e o que mais depende de premissa
 # ════════════════════════════════════════════════════════════════════════
-RIPA_L, VAO, PASSO = 2.0, 1.0, 3.0        # cm · DETALHE 1:5, que é cotado
+#   ⭐⭐ O PASSO DO RIPADO É A MAIOR ALAVANCA DE PREÇO DO PROJETO, e por
+#     isso ele sai por variável de ambiente: dá para rodar o orçamento
+#     inteiro com outra ripa sem editar uma linha.
+#         RIPA_L=4 VAO=2 python3 levantamento.py
+#     ⛔ O padrão é o do DETALHE 1:5 da prancha, que é o que está cotado:
+#     ripa de 2, vão de 1, passo de 3. Mudar isto MUDA O PRODUTO — é
+#     decisão de projeto, não de produção.
+import os as _os
+RIPA_L = float(_os.environ.get('RIPA_L', 2.0))
+VAO = float(_os.environ.get('VAO', 1.0))
+PASSO = RIPA_L + VAO                      # cm · DETALHE 1:5, que é cotado
 #   ⚠ A hachura da elevação do escritório desenha passo de 5,0 cm. O detalhe
 #     cotado governa sobre a hachura, que é simbólica — mas de 3 para 5 o
 #     metro de ripa cai 40%, então fica registrado como pendência.
@@ -535,6 +545,34 @@ m.t('Cava usinada nos 4 gavetões', 4.00, b.CAVA_M)
 m = mv('Suíte', 'Painel ripado da cabeceira', '200 × 272 × 3')
 painel_ripado(m, 200, 272)
 
+#   ⭐⭐ [Jonathan, 04/11/2026] "considere tbm o painel de mdf que esta atras".
+#     ⛔ ELE ESTAVA FALTANDO, e a planta já dizia isso em letras garrafais: a
+#     parede da cabeceira é cotada **200 + 267 = 467**. Os 200 são o ripado,
+#     que eu orcei. Ninguém cota 267 de NADA — os 267 são o outro painel, o
+#     liso, e eu li a cota como "o resto da parede" em vez de como um item.
+#   ⭐ E a cabeceira de 240 prova a leitura: ela começa a 113,5 cm do canto e
+#     vai até 353,5, ou seja, pisa 86,5 cm de ripado e 153,5 cm do painel
+#     liso. Uma cabeceira atravessando a junta entre dois acabamentos só faz
+#     sentido se os DOIS forem acabamento.
+#   ⚠ ALTURA 272, a mesma do ripado da ELEV.01 — as duas cotas saem da MESMA
+#     linha de cota, então é a mesma faixa de parede. Não há elevação do
+#     trecho liso para confirmar.
+m = mv('Suíte', 'Painel liso da cabeceira',
+       '267 × 272 × 2 · o resto da parede, ao lado do ripado')
+#   ⭐⭐ E AQUI A JUNTA SE RESOLVE SOZINHA, que é raro num painel liso.
+#     267 não sai de chapa de 185, então são 2 faixas de 133,5 — e a emenda
+#     cai a 133,5 cm do ripado. ⭐ A CABECEIRA COBRE DE 0 A 153,5 DESTE
+#     PAINEL. A junta fica DEBAIXO DELA, com 20 cm de folga.
+#     ⛔ Compare com o painel liso da sala de TV, onde a emenda é à vista e
+#     virou dúvida numerada. Aqui não é dúvida: é sorte do desenho, e está
+#     escrita para ninguém mover a junta sem saber o que perde.
+for _i, _w in enumerate(faixas(267), 1):
+    m.p(f'painel liso · faixa {_i} de 2', _w, 272, 15,
+        fita_m=(_w + 272) * 2 / 100,
+        obs='⭐ emenda a 133,5 cm do ripado, DEBAIXO da cabeceira estofada '
+            '(que cobre de 0 a 153,5 deste painel) · ⚠ mover a junta a põe '
+            'à vista')
+
 m = mv('Suíte', 'Parede painelada da TV', '467 × 275 × 2 · bandeira contínua de 65')
 m.p('testeira esquerda', 9, 275, 15, fita_m=275 / 100)
 m.p('testeira direita', 18, 275, 15, fita_m=275 / 100)
@@ -584,6 +622,243 @@ m.t('Cava usinada nas duas folhas', 1.80, b.CAVA_M)
 #     dobro — a lista só era impressa —, mas o relatório mentia, e mentir
 #     sobre o que está dentro ou fora é como se decide errado.
 PORTAS_SUITE = []
+
+
+# ════════════════════════════════════════════════════════════════════════
+# A CABECEIRA E AS MESAS · ⭐ MEDIDAS TIRADAS DA PLANTA, NÃO ESTIMADAS
+# ════════════════════════════════════════════════════════════════════════
+#   ⭐⭐ [Jonathan, 04/11/2026] "olhe as duas cabeceiras estofadas no pdf dos
+#     3ds e faça o orcamento das cabeceiras e mesas de cabeceiras tbm" e
+#     depois "tenhos esses prints, pelas plantas vc consegue ter uma projeção
+#     de medidas".
+#
+#   ⭐ A RESPOSTA É SIM, E NÃO POR SEMELHANÇA: a prancha da suíte é export
+#     VETORIAL de CAD. As cotas estão em curva (só "A3" é texto de verdade),
+#     mas a GEOMETRIA é exata. Tirei a escala da cota de 467, que mede
+#     529,68 pt → 0,88166 cm/pt, e ela fecha em TODAS as outras cotas da
+#     prancha: 200 → 199,96 · 267 → 267,05 · 258 → 257,95 · 198 → 198,06 ·
+#     100 → 99,98 · 80 → 79,98 · 30 → 29,94 · 19 → 19,04. Oito confirmações
+#     independentes antes de medir qualquer coisa que NÃO tem cota.
+#
+#   ⭐ E AS TRÊS PEÇAS NÃO TÊM COTA NENHUMA. Estão desenhadas e não cotadas,
+#     que é o caso em que medir o vetor é a única saída honesta:
+#       · cabeceira       x 505,9 → 778,1 ·  240,0 cm · espessura 5,0
+#       · mesa esquerda   x 438,1 → 528,8 ·   80,0 × 49,9
+#       · mesa direita    x 755,6 → 857,6 ·   89,9 × 50,0
+#       · cama (base)     x 540,1 → 744,2 ·  180,0
+#
+#   ⭐⭐ E A GEOMETRIA SE PROVA SOZINHA, que é o que separa medida de chute:
+#       · centro da cabeceira 642,0 · centro da cama 642,15 → CENTRADA
+#       · folga da cama para a mesa esquerda 10,0 cm · para a direita 10,0 cm
+#       · a cabeceira passa 20,2 cm por trás da mesa esquerda e 19,8 da
+#         direita — que é o que o 3D mostra, o painel correndo ATRÁS das duas
+#     Quatro coincidências de 10 e 20 cm redondos não saem de um desenho
+#     feito no olho. ⭐ As medidas são de projeto.
+#
+#   ⚠⚠ AS DUAS MESAS SÃO MESMO DIFERENTES: 80 e 90, não é erro de leitura
+#     (90,7 pt e 102,0 pt — e 90,7 pt é exatamente o que mede a porta de 80
+#     da ELEV.02, o que confirma a escala uma nona vez). A assimetria tem
+#     explicação na planta: sobram 53,7 cm de parede à esquerda da mesa
+#     esquerda e só 18,4 cm à direita da direita. ⚠ CONFIRMAR com o Jonathan
+#     se é intenção do projeto ou desenho no olho — se forem iguais, é trocar
+#     um número aqui.
+#
+#   ⛔⛔ O QUE A PRANCHA NÃO DÁ, E É O ÚNICO NÚMERO QUE FALTA: A ALTURA.
+#     As ELEV.01 e ELEV.02 da suíte desenham o painel ripado (200 × 272) e a
+#     parede da TV (467 × 275). ⛔ NÃO HÁ ELEVAÇÃO DA PAREDE DA CABECEIRA.
+#     A cabeceira e as duas mesas aparecem SÓ em planta e SÓ no 3D — sem
+#     altura, sem seção, sem acabamento cotado (a LEGENDA DE ACABAMENTOS da
+#     prancha tem duas entradas, "MDF AMADEIRADO A DEFINIR" e "RIPADO EM MDF
+#     AMADEIRADO A DEFINIR", e estofado NÃO está nela).
+#     ⚠ Então a altura é PREMISSA declarada, e está em duas constantes aqui
+#     embaixo. Trocar o número é trocar uma linha.
+CAB_ALT = 120.0          # ⚠ PREMISSA · altura da cabeceira estofada
+MESA_CORPO = 40.0        # ⚠ PREMISSA · altura do corpo da mesa
+MESA_PE = 15.0           # ⚠ PREMISSA · altura do pé metálico → 55 no total
+MESA_PROF = 50.0         # ⭐ ESTA É MEDIDA: 49,9 e 50,0 na planta
+
+CAB_OBS = (
+    '⭐ MEDIDA NA PLANTA (export vetorial de CAD, escala 0,88166 cm/pt '
+    'conferida em 8 cotas): 240,0 cm de largura, centrada na cama de 180, '
+    'passando ~20 cm por trás de cada mesa · espessura desenhada 5,0 cm, '
+    'que é exatamente 15 mm de MDF + 30 mm de espuma + tecido — o desenho '
+    'confirma a receita sozinho · ⚠ A ALTURA É PREMISSA: não há elevação '
+    'da parede da cabeceira em prancha nenhuma')
+ESTOFADO_OBS = (
+    '⭐ [Jonathan] "considere o metro quadrado do estofado em 600,00" · '
+    'estofador, terceirizado, por m² de FACE estofada — só a cara que recebe '
+    'espuma e tecido, não os dois lados · ⚠ tecido A DEFINIR: o 3D lê como '
+    'linho/bouclé claro e a legenda da prancha não traz estofado')
+PE_OBS = (
+    '⚠ PREMISSA · o 3D mostra pé metálico fino; o executivo não desenha mesa '
+    'de cabeceira em lugar nenhum, então não há seção nem acabamento cotado '
+    '· entra como UM serviço de serralheria por mesa, no mínimo da casa '
+    '(R$ 300) · ⚠ conservador de propósito: se o serralheiro fizer os dois '
+    'jogos na mesma ida, é um serviço só e cai pela metade')
+
+
+def _pt(x):
+    """⛔ NÚMERO QUE VAI PARA A TELA SAI EM pt_BR. O f-string do Python
+      escreve 76.6 e a planilha é brasileira: 76,6."""
+    return f'{x:g}'.replace('.', ',')
+
+
+def mesa_de_cabeceira(m, largura, lado, gavetas=2):
+    """As peças de UMA mesa, lançadas num móvel que já existe.
+
+    ⭐⭐ [Jonathan, 04/11/2026] "as mesas de cabeceira pode ser um item unico
+      no orcamento". Então esta função deixou de CRIAR o móvel e passou a
+      LANÇAR nele: as duas mesas moram no mesmo item, e cada peça diz de
+      qual delas é.
+    ⛔ A FERRAGEM NÃO ENTRA AQUI, e isso é de propósito. Se cada chamada
+      lançasse a sua corrediça, o item ficaria com DUAS linhas chamadas
+      "Corrediça" — duas linhas de mesmo nome dentro do mesmo móvel são a
+      forma mais fácil de alguém somar uma e esquecer a outra. Quem lança a
+      ferragem é o bloco do item, UMA vez, com a quantidade do par.
+    ⭐ Devolve os metros de cava desta mesa, que o bloco soma.
+    """
+    e, prof, alt = 1.5, MESA_PROF, MESA_CORPO
+    #   ⭐ A PEÇA DIZ DE QUAL MESA É — e pelo LADO, não pela largura.
+    #     [Jonathan, 04/11/2026] "pode considerar ambas de 90cm": com as duas
+    #     iguais, rotular por largura daria dezoito peças chamadas "mesa de
+    #     90" e ninguém saberia qual vai para qual parede.
+    q = f' · mesa {lado}'
+    m.p('tampo' + q, largura, prof, 15, fita_m=(largura + prof) * 2 / 100,
+        obs=f'⭐ {largura:g} × {prof:g} medidos na planta · fita nos 4 lados, '
+            f'a mesa é solta e se vê por todos os lados')
+    a_lat = alt - e                       # o tampo cobre a lateral
+    m.p('lateral' + q, prof, a_lat, 15, qtd=2, fita_m=a_lat / 100)
+    li = largura - 2 * e                  # vão interno
+    m.p('base' + q, li, prof, 15, fita_m=li / 100)
+    m.p('costas' + q, li, a_lat, 6)
+    vao = a_lat - e                       # o que sobra entre tampo e base
+    hf = round((vao - 0.6) / gavetas, 1)  # 0,6 de folga no conjunto
+    lf = round(li - 0.4, 1)
+    m.p('frente de gaveta' + q, lf, hf, 15, qtd=gavetas,
+        fita_m=(lf + hf) * 2 / 100,
+        obs=f'⭐ {gavetas} gavetas no vão de {_pt(vao)} · frente de '
+            f'{_pt(lf)} × {_pt(hf)} · puxador CAVA, como em todo o projeto')
+    hc, pc = hf - 4, prof - 5
+    lc = li - 2.6                         # folga da corrediça, 13 mm por lado
+    m.p('caixa da gaveta · lateral' + q, pc, hc, 15, qtd=2 * gavetas)
+    m.p('caixa da gaveta · traseira' + q, lc - 3, hc, 15, qtd=gavetas)
+    m.p('caixa da gaveta · fundo' + q, lc - 3, pc, 6, qtd=gavetas)
+    return gavetas * lf / 100             # metros de cava desta mesa
+
+
+m = mv('Suíte', 'Cabeceira estofada',
+       f'240 × {CAB_ALT:g} × 5 · estofado sobre MDF')
+#   ⭐ 240 CABE NUMA PEÇA SÓ: 240 < 273 e 120 < 185. Não há emenda, e por
+#     isso não há divisória atrás para esconder emenda nenhuma.
+#   ⛔ E NÃO LEVA FITA: a aresta some debaixo do tecido. Lançar fita aqui
+#     seria cobrar acabamento que ninguém vai ver.
+m.p('base da cabeceira · MDF sob a espuma', 240, CAB_ALT, b.CAB_SUB_ESP,
+    obs=CAB_OBS + ' · ⚠ fica 100% debaixo do tecido: pode sair em Branco TX '
+                  'em vez de cor, mas o projeto inteiro é de uma cor só e '
+                  'trocar aqui compra uma chapa inteira de outro padrão')
+m.p('sarrafo de fixação · parede e painel', 240, 8, 15, qtd=2,
+    obs='francesa (rabo de andorinha): um sarrafo na parede e o par no '
+        'painel · a cabeceira é pendurada, não apoiada na cama')
+m.t('Estofamento da cabeceira', round(240 * CAB_ALT / 10000, 4),
+    b.ESTOFADO_M2, obs=ESTOFADO_OBS)
+#   ⛔ SEM UMA FERRAGEM SEQUER, e isso é regra da casa, não descuido:
+#     "a cabeceira estofada da Luiza — que não leva uma dobradiça sequer"
+#     (estrutura-orcamento.md). Item sem ferragem tem de ter CUSTO e PREÇO
+#     idênticos em todos os cenários, e a trava do motor confere isso.
+
+#   ⭐⭐ [Jonathan, 04/11/2026] "as mesas de cabeceira pode ser um item unico
+#     no orcamento". Eram dois itens, 04 e 05. Agora são UM.
+#   ⭐ E faz sentido no que elas são: saem da fábrica juntas, vão montadas na
+#     mesma parede e não existe comprar uma só. ⛔ O CUSTO NÃO MUDOU UM
+#     CENTAVO — mudou a apresentação. As peças continuam todas lançadas, cada
+#     uma dizendo de qual mesa é, e o plano de corte lê igual.
+#   ⭐⭐ [Jonathan, 04/11/2026] "pode considerar ambas de 90cm". A planta
+#     desenha 80 à esquerda e 90 à direita — e eu medi as duas, não chutei.
+#     ⛔ Mas MEDIR não é DECIDIR: a planta é desenho, o Jonathan é o dono do
+#     projeto, e ele fechou as duas em 90. A assimetria medida fica aqui
+#     registrada, para que ninguém a redescubra daqui a um mês e ache que o
+#     orçamento está errado.
+#   ⚠ Custa R$ 47 a mais que o par de 80 + 90, e é a resposta à dúvida 10.
+MESAS = (('esquerda', 90), ('direita', 90))
+m = mv('Suíte', 'Mesas de cabeceira',
+       f'o par · {MESAS[0][1]:g} e {MESAS[1][1]:g} × {MESA_PROF:g} × '
+       f'{MESA_CORPO + MESA_PE:g} · 2 gavetas cada, sobre pés')
+cava_mesas = sum(mesa_de_cabeceira(m, L, lado) for lado, L in MESAS)
+#   ⛔ A FERRAGEM DO PAR, EM UMA LINHA SÓ POR FAMÍLIA. Duas linhas de mesmo
+#     nome dentro do mesmo móvel é pedir para alguém somar uma e esquecer a
+#     outra.
+m.f('Corrediça', 2 * len(MESAS), b.CORREDICA_PAR,
+    obs=f'{2 * len(MESAS)} pares · 2 por mesa · Hettich Quadro V6, a '
+        f'linha-base do projeto')
+m.t(f'Cava usinada nas {2 * len(MESAS)} frentes', cava_mesas, b.CAVA_M)
+#   ⚠ E AQUI A PERGUNTA FICA DE PÉ, mesmo com o item único: são DOIS jogos de
+#     4 pés, 8 pés no total, e cada jogo entra no mínimo de serralheria da
+#     casa. ⛔ Juntar os dois numa linha de orçamento NÃO é o mesmo que o
+#     serralheiro fazer os dois numa ida só — a primeira coisa é
+#     apresentação, a segunda é preço. Enquanto ele não disser, ficam dois.
+m.t('Pé metálico · um jogo de 4 por mesa', len(MESAS), b.PE_METALICO_JOGO,
+    obs=PE_OBS)
+
+#   ⛔⛔ E A SEGUNDA CABECEIRA NÃO ENTRA, por um motivo que vale mais que ela:
+#     NÃO EXISTE PRANCHA DA SUÍTE 01. O executivo tem ONZE pranchas — cozinha
+#     (3), escritório (2), hall (3), sala/TV (1) e suíte MASTER (2). O PDF dos
+#     3Ds mostra SUÍTE 01, SUÍTE 02 e SUÍTE PRINCIPAL. ⚠ Duas suítes inteiras
+#     aparecem renderizadas e não têm uma linha de desenho executivo.
+#     ⛔ Fazer a cabeceira da suíte 01 "por analogia" seria pôr número
+#     inventado dentro de um orçamento que até aqui é todo MEDIDO — e, pior,
+#     esconderia a pergunta grande atrás de uma linha pequena: se a suíte 01
+#     tem marcenaria, faltam AMBIENTES, não uma cabeceira.
+#     ⭐ Fica como pendência nomeada, que é o que a REGRA DOS DOIS ESTADOS
+#     manda fazer com o que não se sabe: ou está dentro com número, ou está
+#     fora com nome. Nunca dentro com zero.
+SEM_PRANCHA = [
+    ('Suíte 01', 'o painel de fundo, o nicho suspenso e as mesas de cabeceira '
+                 '— só a CABECEIRA entrou, pela regra do Jonathan'),
+    ('Suíte 02', 'tudo — não há nem render detalhado nem prancha'),
+]
+
+
+# ════════════════════════════════════════════════════════════════════════
+# SUÍTE 01 — ⛔ SEM PRANCHA · o preço vem de REGRA, não de medida
+# ════════════════════════════════════════════════════════════════════════
+#   ⭐⭐ [Jonathan, 04/11/2026] "20 a menos que a cabeceira da suite de
+#     casal" — a cabeceira da suíte 01 sai por 20% abaixo da master.
+#   ⛔⛔ E ISTO INVERTE O MÉTODO DA CASA, de propósito e com o dono sabendo:
+#     no projeto inteiro a medida vem primeiro e o preço depois. Aqui NÃO HÁ
+#     DESENHO para medir — as onze pranchas não cobrem a suíte 01 —, então o
+#     dono deu o PREÇO e eu derivo a medida dele. É estimativa comercial
+#     declarada, e tem de estar escrito assim em todo lugar onde ela aparece.
+#   ⭐ 192 × 120 é o que fecha os 20% EXATOS a 120 de altura: o custo da
+#     cabeceira é quase todo linear na largura (rateio de MDF + estofado por
+#     m²), então 0,80 da largura dá 0,80 do custo. 192 × 120 = R$ 1.735,26
+#     contra R$ 2.169,08 da master — 0,8000, não 0,7917 nem 0,8333.
+#   ⚠ 192 NÃO É MEDIDA DE PROJETO. Se a suíte 01 tiver cama de 1,38 em vez
+#     de 1,80, a cabeceira proporcional seria 198 — e aí os 20% deixam de
+#     fechar. Com uma prancha, isto vira medida; sem ela, é regra.
+CAB_S01 = 192.0
+m = mv('Suíte 01', 'Cabeceira estofada',
+       f'{CAB_S01:g} × {CAB_ALT:g} × 5 · ⚠ medida DERIVADA do preço, não do '
+       f'desenho')
+m.p('base da cabeceira · MDF sob a espuma', CAB_S01, CAB_ALT, b.CAB_SUB_ESP,
+    obs='⚠⚠ ESTIMATIVA COMERCIAL, NÃO MEDIDA. Não há prancha da suíte 01 — '
+        'o executivo cobre cozinha (3), escritório (2), hall (3), sala/TV '
+        '(1) e suíte MASTER (2), e só. ⭐ [Jonathan, 04/11/2026] "20 a menos '
+        'que a cabeceira da suite de casal": os 192 de largura são o que faz '
+        'o custo cair exatamente 20% em relação aos 240 da master, a 120 de '
+        'altura. ⛔ Com uma prancha da suíte 01 isto vira medida; hoje é '
+        'regra de preço vestida de peça.')
+m.p('sarrafo de fixação · parede e painel', CAB_S01, 8, 15, qtd=2,
+    obs='francesa (rabo de andorinha), como na master')
+m.t('Estofamento da cabeceira', round(CAB_S01 * CAB_ALT / 10000, 4),
+    b.ESTOFADO_M2, obs=ESTOFADO_OBS)
+#   ⚠⚠ E O AMBIENTE NOVO COMPRA CHAPA INTEIRA. São 2,61 m² de MDF 15 num
+#     ambiente que só tem este móvel: pela regra da casa (`chapas()`), isso
+#     é UMA chapa de R$ 550 contra R$ 352,86 de rateio. ⛔ Então o ITEM cai
+#     os 20% pedidos, mas o AMBIENTE não — a diferença aparece na linha
+#     "Arredondamento de chapa", como em toda aba.
+#   ⭐ E ela SOME assim que o resto da suíte 01 entrar: o painel de fundo e
+#     o nicho suspenso que o 3D mostra usam a mesma chapa de 15.
+
 
 
 # ════════════════════════════════════════════════════════════════════════
@@ -696,11 +971,16 @@ for _m in M:
 _RIPAS_COZ = sum(int(_n.split()[0]) for _m in M if _m.amb == 'Cozinha'
                  for _n, *_ in _m.pecas if 'ripas de' in _n
                  and 'cristaleira' not in _m.nome.lower())
-assert _RIPAS_COZ == ripas_em(626), \
-    f'⛔⛔ {_RIPAS_COZ} ripas no corredor, e 626 cm pedem {ripas_em(626)}'
+#   ⛔ SÓ VALE NO PASSO PADRÃO. Com outra ripa, a soma dos ceil de cada
+#     trecho deixa de bater com o ceil do total — é arredondamento, não erro,
+#     e travar o motor por causa dele impediria rodar o cenário de economia.
+if (RIPA_L, VAO) == (2.0, 1.0):
+    assert _RIPAS_COZ == ripas_em(626), \
+        f'⛔⛔ {_RIPAS_COZ} ripas no corredor, e 626 cm pedem {ripas_em(626)}'
 
 PREMISSAS = [
- 'Passo da ripa 3 cm — o detalhe 1:5 cotado, não a hachura da elevação (5 cm).',
+ f'Passo da ripa {PASSO:g} cm (ripa {RIPA_L:g}, vão {VAO:g}) — o detalhe '
+ f'1:5 cotado, não a hachura da elevação (5 cm).',
  'Ripado do escritório orçado pela área APARENTE (4,25 m²), com base contínua '
  'atrás. Se correr atrás dos armários, são 8,60 m².',
  'Base do ripado em MDF 15 mm — a prancha cota 1 cm, que não é espessura comercial.',
@@ -742,9 +1022,14 @@ if __name__ == '__main__':
     print(f'  embalagem, 2%                         R$ {c["emb"]:>9,.2f}')
     print(f'  {"─"*54}')
     print(f'  CUSTO DIRETO                          R$ {c["direto"]:>9,.2f}')
+    #   ⛔ ERA UM DICIONÁRIO COM TRÊS CHAVES E UM `[b.BASE]` NO FIM: no dia
+    #     em que a BASE deixou de ser uma das três, o motor quebrou com
+    #     KeyError em vez de dizer o que mudou. Agora ele DESCREVE a cascata.
     _cond = {b.BASE_SEM_RT: 'sem RT e sem vendedor',
-             b.BASE_COM_UM: 'com RT OU com vendedor',
-             b.BASE_COM_DOIS: 'com RT E com vendedor'}[b.BASE]
+             b.BASE_COM_UM: 'com RT OU com vendedor de 10%',
+             b.BASE_COM_DOIS: 'com RT E com vendedor'}.get(
+        b.BASE, f'vendedor {b.VENDEDOR:.0%} · '
+                f'{"sem cartão" if not b.PARCELAS_CARTAO else str(b.PARCELAS_CARTAO) + "× no cartão"}')
     print(f'\n  BASE {b.BASE:.2%} · {_cond}')
     for mc in (0.35, 0.38, 0.40):
         print(f'    MC {mc:.0%}  →  PREÇO  R$ {b.preco(c["direto"], mc):>12,.2f}')
@@ -752,6 +1037,16 @@ if __name__ == '__main__':
         print(f'\n  ⚠ fora da conta, à espera de decisão:')
         for n, q, u in PORTAS_SUITE:
             print(f'      {n:<42} {q} × R$ {u:,.2f}')
+    #   ⛔⛔ E O QUE NÃO TEM DESENHO TEM DE APARECER NA TELA. Uma pendência
+    #     que só mora num comentário do código não é pendência: é esquecimento
+    #     com data marcada.
+    if SEM_PRANCHA:
+        print('\n  ⛔⛔ AMBIENTES QUE APARECEM NO 3D E NÃO TÊM PRANCHA — '
+              'FORA DESTA CONTA:')
+        for a_, o_ in SEM_PRANCHA:
+            print(f'      {a_:<12} {o_}')
+        print('      ⚠ a pergunta não é o preço de uma cabeceira; é se '
+              'faltam AMBIENTES neste orçamento.')
     # ── por ambiente, para saber onde está o dinheiro ────────────────
     print('\n' + '═' * 72)
     print('ONDE ESTÁ O CUSTO')

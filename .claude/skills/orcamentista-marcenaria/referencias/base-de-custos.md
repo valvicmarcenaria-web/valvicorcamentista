@@ -151,3 +151,23 @@ bastante para não chamar atenção.
 lançamento de vidro passou a EXIGIR as medidas da folha. Antes dava para
 lançar vidro sem dizer o tamanho dele — e foi por isso que a unidade errada
 passou.
+
+---
+
+## ⭐ ESTOFADO e PÉ METÁLICO — duas chaves novas [04/11/2026]
+
+| chave | valor | unidade | de onde vem |
+|---|---|---|---|
+| **Estofado** | R$ 600,00 | **m²** | ⭐ [Jonathan] *"considere o metro quadrado do estofado em 600,00"* — regra 8 do quantitativo, não premissa deste projeto |
+| **Pé metálico** | R$ 300,00 | **jogo** | ⚠ PREMISSA · é o "Serralheiro, mínimo por serviço" da Base, aplicado por mesa |
+
+⛔ **O ESTOFADO É POR m² DE FACE ESTOFADA**, não por m² de painel: conta só a
+cara que recebe espuma e tecido. A diferença é de 2× num painel estofado dos
+dois lados — e esse é exatamente o tipo de erro de UNIDADE que não dá erro,
+como o vidro reflecta que eu li por folha quando era por m².
+
+⚠ **O PÉ METÁLICO É A LINHA MAIS FRÁGIL DA SUÍTE.** O 3D mostra pé metálico
+fino; o executivo não desenha mesa de cabeceira em lugar nenhum. Sem seção, sem
+perfil, sem acabamento. O mínimo de serralheria é a régua mais honesta que
+existe para isso — e, por ser mínimo, é **conservador**: dois jogos na mesma ida
+são um serviço só.

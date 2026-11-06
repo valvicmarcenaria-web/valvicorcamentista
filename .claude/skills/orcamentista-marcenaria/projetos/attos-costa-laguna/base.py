@@ -156,6 +156,31 @@ RIPA_PERDA = 1.10        # "Perda de serra ao tirar ripa", fator da Base
 VIDRACEIRO_MIN = 200.0   # mínimo por serviço
 SERRALHEIRO_MIN = 300.0  # mínimo por serviço
 
+# ── ESTOFADO · a cabeceira da suíte ─────────────────────────────────────
+#   ⭐ [Jonathan] "considere o metro quadrado do estofado em 600,00" — está
+#     cravado na regra 8 do quantitativo da casa. É ESTOFADOR, terceirizado,
+#     por m² de FACE estofada: conta a cara que recebe espuma e tecido, não
+#     os dois lados do painel.
+ESTOFADO_M2 = 600.0
+ESPUMA_ESP = 30          # mm de espuma sobre a base
+#   ⭐⭐ E A PLANTA CONFIRMA A RECEITA SOZINHA. A cabeceira está desenhada
+#     com 5,0 cm de espessura — e 15 mm de MDF + 30 mm de espuma + tecido dão
+#     46 a 48 mm. O desenho não diz "estofado" em lugar nenhum (a legenda da
+#     prancha só tem "MDF AMADEIRADO" e "RIPADO EM MDF AMADEIRADO"), mas a
+#     espessura dele só fecha com estofamento. Foi o 3D que disse o que é; a
+#     planta disse QUANTO, e as duas contam a mesma história.
+CAB_SUB_ESP = 15         # mm de MDF de substrato, sob a espuma
+
+# ── MESA DE CABECEIRA · o pé é serralheria ──────────────────────────────
+#   ⚠ PREMISSA. O 3D mostra as mesas sobre pés metálicos finos; o executivo
+#     não desenha mesa de cabeceira em lugar nenhum, então não há seção, nem
+#     perfil, nem acabamento cotado. Entra como UM serviço de serralheria por
+#     mesa, no mínimo da casa.
+#   ⚠ E ISSO É CONSERVADOR DE PROPÓSITO: se o serralheiro fizer os dois jogos
+#     na mesma ida — que é o provável —, é um serviço só e cai pela metade.
+#     Fica caro e marcado, nunca barato e escondido.
+PE_METALICO_JOGO = SERRALHEIRO_MIN
+
 # ── vidro · aba Vidro ───────────────────────────────────────────────────
 #   ⛔⛔ O EXECUTIVO PEDE "VIDRO REFLECTA CRISTAL" E A BASE NÃO TEM ESSE
 #     PADRÃO. Tem reflecta prata (340 sem perfil, 410 champanhe, 420 preto),
@@ -277,7 +302,37 @@ assert abs(BASE_COM_DOIS - 0.6730) < 0.0001, BASE_COM_DOIS
 #   ⛔⛔ E ISSO NÃO É UM AJUSTE PEQUENO: são 8,79 pontos de BASE. Para manter
 #     a MESMA MC o preço sobe 1/(0,7609−mc) ÷ 1/(0,8488−mc) — na MC de 42%,
 #     **+25,8%**. Comissão de vendedor não sai da margem: sai do preço.
-BASE = BASE_COM_UM
+#   ⭐⭐ [Jonathan, 04/11/2026] "nao considere cartao de credito, considere
+#     custo de comissao de vendedor de 5%".
+#   ⛔⛔ E ISTO CONTRADIZ O QUE ESTÁ ESCRITO LOGO ACIMA, de 03/11. A citação
+#     daquele dia é "tem comissão do vendedor (10%)" e foi com ela que eu
+#     TROQUEI esta célula de 5% para 10% — a planilha tinha nascido com 5% e
+#     eu tratei isso como erro do modelo. ⭐ Não era: 5% é o deste job.
+#     ⛔ As duas frases ficam, com data, porque apagar a de 03/11 faria o
+#     próximo leitor achar que a de hoje sempre esteve aqui — e a diferença
+#     entre elas são 4,39 pontos de BASE, que é PREÇO, não margem.
+VENDEDOR = 0.05
+PARCELAS_CARTAO = 0      # ⛔ [Jonathan, 04/11/2026] SEM CARTÃO neste job
+BASE_COM_VENDEDOR_5 = cascata(parcelas=PARCELAS_CARTAO, vendedor=VENDEDOR)
+BASE = BASE_COM_VENDEDOR_5                    # 0,8048125 · 80,48%
+assert abs(BASE - 0.804813) < 1e-5, BASE
+
+# ── o parcelamento · o mesmo proposto ao Gustavo e ao Michel ────────────
+#   ⭐⭐ [Jonathan, 04/11/2026] "parcelamento sero o mesmo proposto para o
+#     michel e o gustavo". ⛔ Fui ler a PROPOSTA ENTREGUE, não o orçamento:
+#     o que se copia é a CONDIÇÃO COMERCIAL da casa, nunca o número de outro
+#     cliente. A proposta do Gustavo traz a escada abaixo, e a do Michel traz
+#     a mesma regra de fundo — "entrada e saldo por transferência, sem
+#     cartão".
+#   ⭐ E ela casa com o "não considere cartão de crédito": a tabela genérica
+#     da casa (`proposta-comercial.md`) é toda baseada em cartão, de 6× a
+#     10×, e NENHUMA das quatro linhas dela serve aqui.
+PARCELAS = [('na assinatura do contrato', 0.30),
+            ('30 dias após a assinatura', 0.20),
+            ('60 dias após a assinatura', 0.20),
+            ('90 dias após a assinatura', 0.30)]
+PARCELAS_NOTA = 'Todas as parcelas por transferência bancária.'
+assert abs(sum(p for _d, p in PARCELAS) - 1) < 1e-9
 
 MC_PISO = 0.35           # piso da casa
 MC_FAIXA = (0.35, 0.40)  # faixa ideal
