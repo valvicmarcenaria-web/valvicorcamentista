@@ -59,7 +59,13 @@ O(m, 'Perfil de proteção de piso', 6.30, 'm', 15)
 #   no closet de casal — linha própria, não embutida no conjunto". São as
 #   duas folhas de correr da sapateira (66 e 70 × 268), em Areia 18 com
 #   espelho prata colado, no SS150 de 2 portas com trilho e desempenador.
+#   ⭐⭐ [Jonathan, 06/11/2026] "as portas de espelho do closet serão de GIRO
+#   (com dobradiça)": saem o SS150, o trilho e os desempenadores. As duas
+#   folhas dividem o vão de 136 (67,8 cada), em Areia 18 com espelho prata
+#   colado, cinco dobradiças por folha (passa de 200 de altura) e cava
+#   usinada na borda. ⚠ A cava é minha: a prancha não desenha puxador.
 ambiente('Closet casal · portas de espelho')
-m = 'Portas de correr com espelho na sapateira'
-correr(m, [66, 70], 268, 'Areia')
-O(m, 'Espelho prata colado na porta', (0.66 + 0.70) * 2.68, 'm²', 600)
+m = 'Portas de giro com espelho na sapateira'
+portas(m, 2, 67.8, 268, 'Areia')
+O(m, 'Espelho prata colado na porta', 2 * 0.678 * 2.68, 'm²', 600)
+O(m, 'Cava 45° usinada', 2, 'frente', 50)

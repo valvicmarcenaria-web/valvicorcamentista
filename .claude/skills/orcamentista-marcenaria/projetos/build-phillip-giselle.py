@@ -208,7 +208,7 @@ PG = [
  ('O closet<br>do casal.', ['closet-casal'], 'Closet casal',
   'MDF Areia por dentro e por fora · portas de espelho como opcional',
   [('Armários do piso ao forro', 'Em Areia por dentro e por fora, abertos: maleiros, cabideiros, prateleiras e gavetas internas à vista, organizados como uma vitrine.'),
-   ('Sapateira', 'Prateleiras em Areia do piso ao forro. As portas de correr em espelho prata, que ampliam o closet e servem de espelho de corpo, são opcionais e têm valor próprio na folha de investimento.'),
+   ('Sapateira', 'Prateleiras em Areia do piso ao forro. As portas de giro em espelho prata, que ampliam o closet e servem de espelho de corpo, são opcionais e têm valor próprio na folha de investimento.'),
    ('Fechamento superior', 'Faixa em Areia no encontro com o forro, em todo o perímetro, que fecha o closet como uma peça só.')]),
  ('A suíte<br>da Ana.', ['ana-janela'], 'Suíte Ana',
   'MDF branco liso · painel em material de cor',
@@ -385,7 +385,7 @@ folha(f'''<div class="pad">
  </table>
  <div class="box" style="margin-top:auto"><p style="font-size:8.4pt"><b>{E(', '.join(IGUAIS[:-1]))}
   e {E(IGUAIS[-1])}</b> têm o mesmo valor nas duas linhas: neles não há corrediça nem dobradiça
-  que mude de linha. As portas de espelho também.</p></div>
+  que mude de linha. As portas de espelho têm o mesmo valor nas duas.</p></div>
 </div>''')
 
 # ── condições ───────────────────────────────────────────────────────────

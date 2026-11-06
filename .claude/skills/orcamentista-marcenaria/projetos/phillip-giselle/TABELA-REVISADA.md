@@ -13,10 +13,10 @@ Duas linhas: **Hettich** e **Blum**. Parte comum a MC 42% + ferragem de moviment
 | Espelho com LED | 4.330 | 4.330 | 5.000 · 5.000 |
 | Cabeceira | 3.720 | 3.720 | 4.290 · 4.290 |
 | Mesinhas de cabeceira (2) | 2.450 | 4.090 | 2.820 · 4.460 |
-| *custo direto Quarto casal* | 12.789 | 13.708 | |
+| *custo direto Quarto casal* | 12.791 | 13.709 | |
 | **Closet casal** · ajuste de +8.000 no ambiente | | | |
 | Closet completo, sem portas: armários, sapateira e fechamento · já com −10% | 31.540 | 40.330 | 45.030 · 55.720 |
-| *custo direto Closet casal* | 10.345 | 12.029 | |
+| *custo direto Closet casal* | 10.346 | 12.029 | |
 | **Suíte Ana** | | | |
 | Móvel da janela (nichos, banco e gavetões) · preço fixo | 9.800 | 9.800 | = |
 | Painel com 3 portas mimetizadas · preço fixo | 15.600 | 15.600 | = |
@@ -38,16 +38,16 @@ Duas linhas: **Hettich** e **Blum**. Parte comum a MC 42% + ferragem de moviment
 | Marcenaria | 156.220 | 178.830 | |
 | Manutenção do painel da sala (serviço, fora da MC) | 1.900 | 1.900 | avulso, fora do total |
 | **TOTAL DA PROPOSTA** | **158.120** | **180.730** | 203.980 · 232.510 |
-| Custo direto | 62.362 | 67.260 | |
+| Custo direto | 62.364 | 67.262 | |
 | MC efetiva da marcenaria | 45.0% | 47.3% | |
 
 **Opcional, em linha própria, fora do total:**
 
 | Opcional | Hettich | Blum |
 |---|--:|--:|
-| Portas de correr com espelho na sapateira (closet de casal) | 4.500 | 4.500 |
-| *MC do opcional* | -11.6% | -11.6% |
-| *custo direto do opcional* | 4.340 | 4.340 |
+| Portas de giro com espelho na sapateira (closet de casal) | 4.500 | 4.500 |
+| *MC do opcional* | -0.0% | -0.0% |
+| *custo direto do opcional* | 3.821 | 3.821 |
 | *total + opcional* | 162.620 | 185.230 |
 
 | Parcela (do total da proposta) | Hettich | Blum |

@@ -52,7 +52,7 @@ FIXO_ITEM = {('Suíte Ana', 'Móvel da janela (nichos, banco e gavetões)'): 980
              # ⭐ [Jonathan, 06/11/2026] "as portas de espelho do closet vamos
              #   vender por 4.500" · ⛔ ABAIXO DO CUSTO: decisão de preço
              #   declarada, e a MC negativa sai impressa na tabela
-             ('Closet casal · portas de espelho', 'Portas de correr com espelho na sapateira'): 4500.0}
+             ('Closet casal · portas de espelho', 'Portas de giro com espelho na sapateira'): 4500.0}
 # ⭐ "Rouparia, valor total de venda 9.300" (os dois armários na proporção)
 FIXO_AMB = {'Rouparia': 9300.0}
 # ⭐ MESCLA num item só [Jonathan, 04/11/2026]: o fator é o desconto do total
@@ -141,6 +141,16 @@ for a, d in AJUSTE_AMB.items():
     parte[max(it, key=ref.get)] += d - sum(parte.values())
     for k in TAB:
         for x in it: TAB[k]['pv'][x] += parte[x]
+# ⛔⛔ APRESENTADO EM 06/11 [proposta de duas linhas, enviada]: os closets já
+#   ajustados ficam travados. Trocar as portas de espelho de correr para giro
+#   mexeu no rateio da chapa e andava R$ 10 no closet do casal na Blum — e
+#   valor que o cliente já viu só muda se for pedido.
+APRESENTADO = {('Closet casal', 'Closet completo, sem portas: armários, sapateira e fechamento'): (31540, 40330),
+               ('Closet Ana', 'Armário em L do piso ao forro'): (21600, 26160),
+               ('Closet Mateus', 'Armário em L do piso ao forro'): (21600, 26160)}
+for x, vs in APRESENTADO.items():
+    for i, k in enumerate(TAB):
+        TAB[k]['pv'][x] = float(vs[i])
 for k, t in TAB.items():
     t['venda'] = sum(v for x, v in t['pv'].items() if x[0] not in OPCIONAL)
     t['opc'] = {x: v for x, v in t['pv'].items() if x[0] in OPCIONAL}
@@ -152,6 +162,7 @@ for k, t in TAB.items():
 for k, t in TAB.items():
     t['servico'] = sum(v for _d, v, _o in AVULSO)
     t['total'] = t['venda'] + t['servico']
+assert (TAB['hettich']['total'], TAB['blum']['total']) == (158120, 180730), '⛔ o total apresentado andou'
 
 # ⛔ as travas
 for x in TAB['hettich']['pv']:
