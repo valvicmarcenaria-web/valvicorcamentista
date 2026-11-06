@@ -48,7 +48,11 @@ ORDEM = ['Quarto casal', 'Closet casal', 'Closet casal · portas de espelho', 'S
 FIXO_ITEM = {('Suíte Ana', 'Móvel da janela (nichos, banco e gavetões)'): 9800.0,
              ('Suíte Ana', 'Painel com 3 portas mimetizadas'): 15600.0,
              # ⭐ "ambas as portas ripadas são de correr, preço final de ambas 8.500"
-             ('Quarto casal', 'Portas ripadas pivotantes (closet e banho)'): 8500.0}
+             ('Quarto casal', 'Portas ripadas pivotantes (closet e banho)'): 8500.0,
+             # ⭐ [Jonathan, 06/11/2026] "as portas de espelho do closet vamos
+             #   vender por 4.500" · ⛔ ABAIXO DO CUSTO: decisão de preço
+             #   declarada, e a MC negativa sai impressa na tabela
+             ('Closet casal · portas de espelho', 'Portas de correr com espelho na sapateira'): 4500.0}
 # ⭐ "Rouparia, valor total de venda 9.300" (os dois armários na proporção)
 FIXO_AMB = {'Rouparia': 9300.0}
 # ⭐ MESCLA num item só [Jonathan, 04/11/2026]: o fator é o desconto do total

@@ -32,6 +32,9 @@ o += [f'| **TOTAL DO CONJUNTO** | ' + ' | '.join(f"**{f(TAB[k]['venda'])}**" for
 o += ['', '**Opcional, em linha própria, fora do total:**', '', '| Opcional | Hettich | Blum |', '|---|--:|--:|']
 for k0 in TAB['hettich']['opc']:
     o.append(f'| {k0[1]} (closet de casal) | ' + ' | '.join(f(TAB[k]['opc'][k0]) for k in L) + ' |')
+o.append('| *MC do opcional* | ' + ' | '.join(
+    f"{(B - sum(TAB[k]['opc_cus'].values()) / sum(TAB[k]['opc'].values())) * 100:.1f}%" for k in L) + ' |')
+o.append('| *custo direto do opcional* | ' + ' | '.join(f(sum(TAB[k]['opc_cus'].values())) for k in L) + ' |')
 o.append('| *conjunto + opcional* | ' + ' | '.join(f(TAB[k]['venda'] + sum(TAB[k]['opc'].values())) for k in L) + ' |')
 o += ['', '| Parcela (do conjunto) | Hettich | Blum |', '|---|--:|--:|']
 o += [f'| {lab} ({p*100:.0f}%) | ' + ' | '.join(f(TAB[k]['venda'] * p) for k in L) + ' |' for lab, p in PAGTO]

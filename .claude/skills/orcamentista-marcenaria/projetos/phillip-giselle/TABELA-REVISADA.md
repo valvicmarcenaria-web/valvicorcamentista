@@ -43,8 +43,10 @@ Duas linhas: **Hettich** e **Blum**. Parte comum a MC 42% + ferragem de moviment
 
 | Opcional | Hettich | Blum |
 |---|--:|--:|
-| Portas de correr com espelho na sapateira (closet de casal) | 10.120 | 10.120 |
-| *conjunto + opcional* | 153.340 | 175.950 |
+| Portas de correr com espelho na sapateira (closet de casal) | 4.500 | 4.500 |
+| *MC do opcional* | -11.6% | -11.6% |
+| *custo direto do opcional* | 4.340 | 4.340 |
+| *conjunto + opcional* | 147.720 | 170.330 |
 
 | Parcela (do conjunto) | Hettich | Blum |
 |---|--:|--:|
