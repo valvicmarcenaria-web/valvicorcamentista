@@ -14,6 +14,9 @@ Decisões [Jonathan, 06/11/2026]: "não tem roupeiro na suíte master, apenas o
 closet" · roupeiro do Gabriel com DUAS PORTAS DE CORRER, uma delas de ESPELHO
 PRATA, sistema deslizante SI FORMA · "os demais serão PORTAS DE GIRO com
 puxador em cava" (closet da suíte master e closet da Isabella).
+Decisões [Jonathan, 06/11/2026, na proposta]: corrediça Blum TANDEM com
+BLUMOTION · dobradiça Blum CLIP top BLUMOTION · sistema de correr SI Ocean 80
+da Siforma (o preço segue o "Sistema deslizante SI Forma" da Base, R$ 1.200).
 
 Premissas minhas (vão como dúvida numerada na planilha):
   · TODO o MDF em Nude Vel Guararapes [Jonathan, 06/11/2026] — nem o miolo
@@ -60,7 +63,7 @@ def gavetas(it, n, larg, alt, prof, frente=COR15, rotulo='Gaveta'):
     P(it, f'{rotulo} · lateral da caixa', '', prof - 5, alt - 5, 2 * n, BR15, (prof - 5) / 100)
     P(it, f'{rotulo} · frente e traseira da caixa', '', li, alt - 5, 2 * n, BR15, li / 100)
     P(it, f'{rotulo} · fundo da caixa', 'encaixe em rasgo, sem fita', li + 1, prof - 6, n, BR6)
-    F(it, 'Corrediça Blum', f'uma por {rotulo.lower()}', n, 'gaveta', 'Corrediça')
+    F(it, 'Corrediça Blum TANDEM', f'oculta, com BLUMOTION · uma por {rotulo.lower()}', n, 'gaveta', 'Corrediça')
 
 def prateleiras(it, n, vao, prof, chave, obs=''):
     P(it, 'Prateleira', obs or f'vão de {vao}', vao - 0.4, prof - 3, n, chave, vao / 100)
@@ -81,7 +84,7 @@ def giro(it, n, larg, alt, obs, chave=COR15):
     """Porta de giro com puxador em cava [Jonathan, 06/11/2026]."""
     nd = dobradicas(alt)
     P(it, 'Porta de giro', obs, alt, larg, n, chave, 2 * (alt + larg) / 100)
-    F(it, 'Dobradiça Blum', f'{nd} por folha de ' + f'{alt:g}'.replace('.', ',') + ' de altura', nd * n, 'un', 'Dobradiça')
+    F(it, 'Dobradiça Blum CLIP top BLUMOTION', f'{nd} por folha de ' + f'{alt:g}'.replace('.', ',') + ' de altura', nd * n, 'un', 'Dobradiça')
     F(it, 'Cava usinada', 'puxador cava na própria folha, 1 m por folha', n, 'm', 'Cava usinada')
 
 def correr_siforma(it, larg_vao, alt):
@@ -90,7 +93,7 @@ def correr_siforma(it, larg_vao, alt):
     P(it, 'Porta de correr', '18 mm · a folha de MDF, com transpasse', alt, folha, 1, COR18, 2 * (alt + folha) / 100)
     T(it, 'Porta de correr de espelho prata', 'folha pronta: esquadria de alumínio + espelho prata · sem chapa e sem fita',
       alt, folha, 1, 'Porta de espelho em alumínio')
-    F(it, 'Sistema deslizante SI Forma', 'oculto · um conjunto para as duas folhas', 1, 'cj', 'Sistema deslizante SI Forma')
+    F(it, 'Sistema deslizante SI Ocean 80', 'Siforma · amortecimento nos dois sentidos · um conjunto para as duas folhas', 1, 'cj', 'Sistema deslizante SI Forma')
     F(it, 'Desempenador de porta', 'só na folha de MDF · dois por folha de 70 cm ou mais', 2 if folha >= 70 else 1, 'un',
       'Desempenador de porta')
     F(it, 'Cava usinada', 'puxador cava vertical na folha de MDF, 1 m', 1, 'm', 'Cava usinada')

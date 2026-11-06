@@ -27,8 +27,8 @@ PRECO = {'MDF cor 18': 700, 'MDF cor 15': 550, 'MDF cor 6': 350, 'MDF Branco TX 
          'MDF Nude Velluto 18': 700, 'MDF Nude Velluto 15': 550, 'MDF Nude Velluto 6': 350,
          'Dobradiça': 50, 'Sistema deslizante SI Forma': 1200, 'Porta de espelho em alumínio': 700}
 AREA, APROV, CONS, EMB = 5.0875, 0.80, 0.06, 0.02
-# ⭐ frete é a célula AMARELA, digitada: três viagens no closet da suíte [Jonathan, 06/11/2026, na planilha]
-VIAGENS = {'Closet suíte master': 3}
+# ⭐ frete é a célula AMARELA, digitada pelo Jonathan na planilha [06/11/2026]
+VIAGENS = {'Closet suíte master': 3, 'Quarto Gabriel': 2, 'Closet Isabella': 3}
 ABAS = [('Closet suíte master', '01 Closet suíte master', 102, 'CLOSET SUITE MASTER_E1 e E2'),
         ('Quarto Gabriel', '02 Quarto Gabriel', 103, 'QUARTO GABRIEL · ELEVAÇÃO E1'),
         ('Closet Isabella', '03 Closet Isabella', 104, 'CLOSET ISABELLA · ELEVAÇÃO E01 e E2')]
@@ -224,12 +224,13 @@ def monta(amb, aba, sid, prancha):
 if __name__ == '__main__':
     out = [monta(*a) for a in ABAS]
     (P / '_abas.json').write_text(json.dumps(out, ensure_ascii=False), encoding='utf-8')
-    B = MC.base(0, rt=True, vendedor=False); MCA = 0.45
+    # ⭐ a cascata como o Jonathan deixou na planilha: margem de erro 1%, RT 10%, MC 40% [06/11/2026]
+    B = 1 - (0.05 + 0.01 + 0.005 + 0.005 + 0.095 + 0.075 * (1 - 0.05 - 0.095)); MCA = 0.40
     tot_cd = tot_pv = 0
     for o in out:
         pv = o['cd'] / (B - MCA); tot_cd += o['cd']; tot_pv += pv
         print(f"{o['aba']:24s} {o['nlin']:3d} linhas · chapas {o['chapas']} · gavetas {o['gavetas']}")
-        print(f"   custo direto R$ {o['cd']:,.2f} · preço a MC 45% (base {B*100:.2f}%) R$ {pv:,.2f} · partes {{{', '.join(f'{k}: {v:,.0f}' for k, v in o['partes'].items())}}}")
+        print(f"   custo direto R$ {o['cd']:,.2f} · preço a MC 40% (base {B*100:.2f}%) R$ {pv:,.2f} · partes {{{', '.join(f'{k}: {v:,.0f}' for k, v in o['partes'].items())}}}")
         for m, c in o['itens']: print(f"      {m:40s} R$ {c:,.2f}")
         print(f"      arredondamento de chapa R$ {o['arred']:,.2f}")
     print(f'TOTAL custo R$ {tot_cd:,.2f} · preço R$ {tot_pv:,.2f}')

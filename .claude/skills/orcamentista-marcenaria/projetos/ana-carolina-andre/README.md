@@ -35,18 +35,40 @@ o conector do Drive só sobe arquivo com o conteúdo inteiro dentro do comando, 
   calcula o que a planilha **tem de mostrar** depois do clique.
 - `_abas.json` · as linhas exatamente como foram gravadas, aba por aba.
 
-## O que a planilha mostra (MC 45% = 40% + Médio) · versão de 06/11/2026
+## O que a planilha mostra · versão de 06/11/2026, a da proposta
 
-| Ambiente | Folhas | Gavetas | Custo direto | Preço (base 76,09%) |
-|---|---:|---:|---:|---:|
-| 01 Closet suíte master | 13 de giro | 10 | R$ 19.664,53 | R$ 63.255,42 |
-| 02 Quarto Gabriel | 2 de correr (1 espelho) | 8 | R$ 10.870,03 | R$ 34.965,91 |
-| 03 Closet Isabella | 12 de giro | 14 | R$ 17.896,10 | R$ 57.566,86 |
-| **Total** | | | **R$ 48.430,65** | **R$ 155.788,19** |
+O Jonathan mexeu na planilha em 06/11/2026, e vale o que ele deixou:
+- **margem de erro de 1%** em vez dos 2% da casa: BASE 77,09%;
+- **sem acréscimo de dificuldade**, com MC 40% direto na D7;
+- **frete de 3, 2 e 3 viagens**.
 
-✅ Conferido em 06/11/2026, já com a Base autorizada. Painel, item a item e o total
-batem centavo a centavo com o `planilha.py`. As três conferências internas e a do
-Painel dão zero, e nenhuma linha fica sem preço.
+| Ambiente | Custo direto | Preço a MC 40% | Na proposta |
+|---|---:|---:|---:|
+| 01 Closet suíte master | R$ 19.664,53 | R$ 53.021,98 | 53.022 |
+| 02 Quarto Gabriel | R$ 11.070,03 | R$ 29.848,40 | 29.848 |
+| 03 Closet Isabella | R$ 18.296,10 | R$ 49.332,25 | 49.332 |
+| **Total** | **R$ 49.030,65** | **R$ 132.202,64** | **132.202** |
+
+`precos.py` refaz a cascata e trava o build se a conta deixar de bater com a planilha.
+A proposta mostra cada ambiente em real cheio, e o total é a soma do que se lê.
+
+## A proposta · `proposta-ana-carolina-andre.pdf` (14 folhas)
+
+`build-ana-carolina-andre.py` monta o caderno do Michell e do Gustavo:
+- **só a linha Blum**, com uma folha "Por que Blum" e uma folha dedicada às ferragens;
+- **ferragens:** CLIP top BLUMOTION, TANDEM com BLUMOTION e o SI Ocean 80 da Siforma,
+  com as imagens que o Jonathan mandou;
+- **Nude Vel:** uma folha só para o padrão, por fora e por dentro;
+- **sem render no projeto:** as folhas de ambiente usam as elevações do executivo,
+  recortadas sem cota e multiplicadas sobre o campo Nude.
+
+⚠ O texto da Blum e da Siforma veio das páginas indexadas na busca, porque o acesso
+direto a blum.com e a siforma.com.br está bloqueado na rede da sessão.
+⚠ Para confirmar:
+- o preço do kit **SI Ocean 80**, orçado pelo "Sistema deslizante SI Forma" da Base
+  (R$ 1.200);
+- se ele recebe a folha de espelho em alumínio;
+- o prazo de **60 dias** corridos.
 
 ## ⛔ Dois defeitos da planilha BASE, achados aqui (corrigidos SÓ nesta cópia)
 
