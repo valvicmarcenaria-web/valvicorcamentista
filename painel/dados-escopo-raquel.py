@@ -17,26 +17,26 @@ OBRA = dict(
 
 MARCENARIA = [
  ('14', 'Escrivaninha', 'MDF Noce Amêndoa Duratex', '220 de comprimento · 72 h',
-  '7', 'Quatro gavetas · caixa de tomadas embutida · puxador de porcelana · nicho na marcenaria'),
+  '7', 'Quatro gavetas · caixa de tomadas embutida · nicho na marcenaria'),
  ('15', 'Prateleira', 'MDF Cancún Sudati', '140 × 25 × 2 h', '8', ''),
  ('16', 'Armário aéreo maior', 'MDF Lume Guararapes', '100 × 25 × 35 h', '8', 'Puxador passante'),
  ('17', 'Armário aéreo menor', 'MDF Lume Guararapes', '65 × 25 × 35 h · 2 un', '8', 'Puxador passante'),
  ('18', 'Painel da persiana', 'MDF Lume Guararapes', 'conforme prancha', '6 e 9',
   'Vão recuado para a persiana descer — conferir com o fornecedor da persiana antes de fabricar'),
  ('19', 'Gaveteiro', 'MDF Cancún Sudati', '50 × 45 × 55 h', '5',
-  'Quatro gavetas · rodízio de silicone com trava · puxador de porcelana'),
+  'Quatro gavetas · rodízio de silicone com trava'),
  ('20', 'Mesa de cabeceira', 'MDF Cancún Sudati', '40 × 30 × 8 h', '3', 'Uma gaveta · interruptor com tomada'),
  ('21', 'Cabideiro', 'MDF Lume Guararapes', '10 cm · 4 un', '5', ''),
- ('22', 'Cama com cabeceira estofada', 'a definir', 'conforme prancha', '4',
-  'ENVOLVE ESTOFARIA — confirmar se é execução nossa ou de terceiro'),
+ ('22', 'Cama com cabeceira estofada', 'MDF + estofado', 'conforme prancha', '4',
+  'EXECUÇÃO NOSSA · cama e cabeceira · tecido do estofado a definir'),
  ('23', 'Painel de meia parede', 'MDF Cancún Sudati', '336 de comprimento · 87 h', '9',
-  'Filete em MDF Sal Rosa Arauco · perfil metálico com laca Sayerlack fosca J029'),
+  'Filete em MDF Sal Rosa Arauco · sem perfil metálico'),
 ]
 
 BANHEIRO = [
  ('24', 'Nicho do banheiro', 'MDF Lume Guararapes', '27 × 12 × 165 h', '11', ''),
  ('25', 'Gabinete do banheiro', 'MDF Lume Guararapes', '89 × 27 × 60 h', '11',
-  'Puxador de porcelana · cinco prateleiras internas'),
+  'Cinco prateleiras internas'),
  ('26', 'Acabamento do espelho', 'MDF Lume Guararapes', '76 cm · 2 un', '11',
   'Puxador passante · toalheiro de mão'),
 ]
@@ -55,11 +55,11 @@ MATERIAIS = [
  ('MDF Lume Guararapes', 'Armários aéreos · painel da persiana · cabideiro · peças do banheiro'),
  ('MDF Sal Rosa Arauco', 'Filete do painel de meia parede'),
  ('MDF branco TX', 'Organização interna do roupeiro'),
- ('Laca fosca Sayerlack J029', 'Portas do roupeiro · prateleira · perfil metálico'),
+ ('Laca fosca Sayerlack J029', 'Portas do roupeiro · prateleira'),
+ ('Tecido do estofado', 'Cabeceira da cama — A DEFINIR'),
 ]
 
 FERRAGENS = [
- 'Puxador de porcelana Nanda Devi 151 — Meu Puxador — 12 un',
  'Puxador passante — armários aéreos e espelho do banheiro',
  'Rodízio de silicone com trava — gaveteiro',
  'Cabideiro oval — roupeiro',
@@ -67,6 +67,7 @@ FERRAGENS = [
 ]
 
 FORA = [
+ 'Puxador de porcelana Nanda Devi 151 — Meu Puxador, 12 un — fornecimento do cliente',
  'Papel de parede — Uau Bobinex, 12 rolos',
  'Pintura do quarto e do banheiro — Suvinil, acrílica e epóxi',
  'Persiana rolô blackout — Luiza Valentina, tecido a definir',
@@ -81,8 +82,8 @@ DEFINIR = [
   'Os itens 24, 25 e 26 trazem <b>MDF Lume Guararapes</b>, mas a prancha 11 anota "usar MDF Verde/Ultra para armários". <b>Divergência dentro do próprio projeto.</b>'),
  ('O roupeiro está vendido?',
   'A prancha 10 não aparece na legenda de marcenaria do layout. Confirmar se o reaproveitamento foi contratado.'),
- ('Cama com cabeceira estofada',
-  'Envolve estofaria. Confirmar se é execução nossa, de terceiro, ou se está fora do contrato.'),
+ ('Tecido do estofado da cabeceira',
+  'A cama e a cabeceira são <b>execução nossa</b>. Falta definir o tecido com a cliente antes de comprar.'),
  ('Estado do roupeiro existente',
   'A execução depende da conferência da conservação e da estabilidade da estrutura. Se não passar, o escopo muda.'),
  ('Conferência de medidas no local',
