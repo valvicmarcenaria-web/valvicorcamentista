@@ -396,20 +396,25 @@ m = mv('Cozinha', 'Painel ripado do corredor',
 N_RIP_COZ = painel_ripado(m, 626 - 2 * 87, 272)      # o painel fixo, sem as portas
 
 for amb, qual in (('Vestiário', 'vestiário'), ('Despensa', 'despensa')):
-    m = mv('Cozinha', f'Porta de correr ripada · {qual}',
+    m = mv('Cozinha', f'Porta pivotante ripada · {qual}',
        '87 × 272 · 29 passos exatos · faz parte dos 626 da parede')
     #   ⭐ [Jonathan, 04/11/2026] FOLHA DE PORTA, não painel de parede: o
     #     que vai atrás do ripado é o SANDUÍCHE, não uma base de 15. Era
     #     `painel_ripado(m, 87, 272, atras=True)`.
     porta_de_passagem(m, 87, 272, ripada=True)
-    #   ⭐ [Jonathan 03/11] o sistema agora é por LINHA: Rometal de 600 na
-    #     Hettich e SI Forma de 900 na Blum. O preço entra aqui como o da
-    #     Hettich e `cenarios.py` troca por linha — é a ÚNICA ferragem deste
-    #     projeto, além da corrediça, que muda entre os dois cenários.
-    #   ⚠ UM CONJUNTO POR PORTA: vestiário e despensa são vãos separados, cada
-    #     um com o seu trilho. Não é um kit de duas folhas dividindo trilho.
-    m.f('Sistema de correr', 1, b.SISTEMA_CORRER)
-    m.f('Desempenador de porta', 2, b.DESEMPENADOR)
+    #   ⭐⭐ [Jonathan, 06/11/2026] "as portas do corredor mudam de
+    #     deslizantes para pivotantes". SAÍRAM o sistema de correr (Rometal
+    #     R$ 600 na Hettich, SI Forma R$ 900 na Blum) e os dois
+    #     desempenadores de cada folha; ENTRA o pivô, o mesmo da suíte.
+    #     ⭐ E com isso a cozinha deixa de ter a ferragem que muda entre as
+    #       linhas: o grupo do corredor passa a valer o MESMO cravado nas três.
+    #   ⚠ UM PIVÔ POR FOLHA: vestiário e despensa são vãos separados.
+    #   ⚠⚠ CONFERIR: o "Sistema pivô" da Base (R$ 120) é o da suíte, folha de
+    #     100 × 207 lisa. Aqui a folha tem 272 de altura, ripa por cima e
+    #     metalon dentro — se o pivô de 120 não aguentar o peso, é outro
+    #     produto. E a ABERTURA da folha (cava, puxador ou toque) não foi
+    #     lançada, como já não estava na versão de correr.
+    m.f('Sistema pivô', 1, b.SISTEMA_PIVO)
 
 m = mv('Cozinha', 'Cristaleira', '147 × 275 × 54 · fundo RIPADO · 2 portas de VIDRO')
 m.p('laterais', 54, 269, 15, qtd=2, fita_m=269 / 100)
@@ -487,22 +492,47 @@ m.t('Cava usinada', 2.28, b.CAVA_M)
 # ════════════════════════════════════════════════════════════════════════
 # SALA DE TV
 # ════════════════════════════════════════════════════════════════════════
-m = mv('Sala de TV', 'Painel ripado',
-       '353,5 × 272 × 3 · a ripa para onde o rack e a pedra cobrem')
+#   ⭐⭐ [Jonathan, 06/11/2026] "o painel ripado da sala de tv ganha duas
+#     portas compridas para acesso de manutenções a quadro de energia e rede
+#     hidráulica". As duas folhas saem do trecho LIVRE, o único em que a ripa
+#     desce inteira de 272: a porta tem de ir do piso ao teto para sumir no
+#     ripado. ⚠ A LARGURA É MINHA: 45 cm cada, 15 passos exatos de ripa — a
+#     prancha não tem as portas, e quadro de energia pede vão de 40 a 50.
+PORTA_MANUT_L, PORTA_MANUT_N = 45, 2
+_LIVRE_TV = 253.5 - PORTA_MANUT_N * PORTA_MANUT_L    # o livre que sobra fixo
+m = mv('Sala de TV', 'Painel ripado com duas portas de manutenção',
+       '353,5 × 272 × 3 · a ripa para onde o rack e a pedra cobrem · duas '
+       'portas de 45 × 272 no trecho livre, para o quadro de energia e a '
+       'rede hidráulica')
 #   ⭐ [Jonathan 03/11] o ripado não corre atrás do que o cobre. Aqui são
 #     três faixas, porque o que cobre está em alturas diferentes:
-#       0 → 253,5   livre, ripa inteira de 272
+#       0 → 253,5   livre, ripa inteira de 272 (⭐ 06/11: com as duas portas)
 #       253,5 → 303,5  o rack toma os 70 de baixo → ripa de 202
 #       303,5 → 353,5  rack (70) e travertino (70 a 210) → ripa de 62
-base_em_faixas(m, 353.5, 272)
-for larg, alt in ((253.5, 272), (50, 202), (50, 62)):
+#   ⛔ A BASE DE 15 NÃO CORRE ATRÁS DA PORTA: atrás do ripado da folha vai o
+#     sanduíche, como no corredor. A base encolhe o que as portas tomam.
+base_em_faixas(m, 353.5 - PORTA_MANUT_N * PORTA_MANUT_L, 272)
+for larg, alt in ((_LIVRE_TV, 272), (50, 202), (50, 62)):
     n = ripas_em(larg)
     m.p(f'{n} ripas de {RIPA_L:g} × {alt:g}', RIPA_L * n * b.RIPA_PERDA, alt,
         18, fita_m=n * alt / 100 * 2, mao=True,
         obs=f'faixa de {larg:g} cm · passo de {PASSO:g} · fita {n} × 2 × {alt:g} cm')
     m.t('Filetagem de ripa', n * alt / 100 * 2, b.FILETE_RIPA)
 m.t('Painel ripado, mão de obra',
-    (253.5 * 272 + 50 * 202 + 50 * 62) / 10000, b.RIPADO_M2)
+    (_LIVRE_TV * 272 + 50 * 202 + 50 * 62) / 10000, b.RIPADO_M2)
+#   ⭐ AS DUAS FOLHAS, pelo método da casa para porta ripada: sanduíche de
+#     duas peles de 6 sobre G-Door, metalon contra empeno e o ripado por cima
+#     (a mão de obra do ripado da folha entra dentro de `porta_de_passagem`).
+for _ in range(PORTA_MANUT_N):
+    porta_de_passagem(m, PORTA_MANUT_L, 272, ripada=True)
+#   ⭐ GIRO, não pivô: porta de manutenção abre para o lado e fica aberta
+#     enquanto se mexe no quadro. 272 de altura → 5 dobradiças pela tabela.
+m.f('Dobradiça da porta de manutenção', PORTA_MANUT_N * b.dobradicas(272),
+    b.DOBRADICA)
+#   ⭐ SEM PUXADOR, POR TOQUE: a porta tem de sumir no ripado. É o pulsador
+#     Blum TIP-ON, o mesmo da rouparia. ⚠ DOIS POR FOLHA, um alto e um baixo:
+#     numa folha de 272, um só no meio deixa as pontas abrirem tortas.
+m.f('Pulsador Blum TIP-ON', PORTA_MANUT_N * 2, b.PULSADOR)
 
 m = mv('Sala de TV', 'Painel liso', '300 × 272 × 2 · com recorte para a pedra')
 #   ⛔⛔ E ESTE É O CASO QUE EU NÃO RESOLVO SOZINHA. 300 não sai de chapa de
@@ -986,10 +1016,12 @@ PREMISSAS = [
  'Base do ripado em MDF 15 mm — a prancha cota 1 cm, que não é espessura comercial.',
  'Profundidade do armário gourmet: 25 cm, lida da cadeia do existente. Não é cotada.',
  'Tampo da mesa em duas chapas de 18 coladas (36 mm) — a espessura não é\n cotada e a Base não tem chapa de cor em 25 mm.',
- 'Sistema de correr das duas portas ripadas: a prancha não especifica, e o '
- 'Jonathan cravou por LINHA — Rometal R$ 600 na Hettich e SI Forma R$ 900 na '
- 'Blum. ⚠ A Base diz "SS-150, 2 portas" por R$ 600: se UM kit servir as duas '
- 'folhas, esta linha cai pela metade.',
+ '⭐ [Jonathan, 06/11/2026] As duas portas ripadas do corredor são '
+ 'PIVOTANTES, não mais de correr: um "Sistema pivô" de R$ 120 por folha, o '
+ 'mesmo da suíte. ⚠ Conferir se ele aguenta folha ripada de 272.',
+ '⭐ [Jonathan, 06/11/2026] O ripado da Sala de TV ganhou duas portas de '
+ 'manutenção, para o quadro de energia e a rede hidráulica. ⚠ Largura de 45 '
+ 'cada, minha; giro com 5 dobradiças e dois pulsadores TIP-ON por folha.',
  'Vidro reflecta PRATA com perfil — o executivo pede "cristal", que não '
  'existe na Base de Custos.',
  'Dobradiça Bigfer Onix a R$ 15 — a Base nunca cravou a do nível Padrão.',

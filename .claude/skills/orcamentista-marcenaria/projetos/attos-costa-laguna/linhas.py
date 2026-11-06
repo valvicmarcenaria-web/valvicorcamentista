@@ -78,13 +78,17 @@ DECISOES = '[Jonathan, 04/11/2026]'
 
 GRUPOS = [
     dict(amb='Cozinha', nome='Painel ripado do corredor com as duas portas '
-                             'de correr',
+                             'pivotantes',
          itens=['Painel ripado do corredor',
-                'Porta de correr ripada · vestiário',
-                'Porta de correr ripada · despensa'],
+                'Porta pivotante ripada · vestiário',
+                'Porta pivotante ripada · despensa'],
          cravado=39700.0,
          por=f'{DECISOES} "na cozinha vamos agrupar as duas portas de correr '
-             f'com o painel ripado a um preço final de 39.700"'),
+             f'com o painel ripado a um preço final de 39.700" · ⭐ '
+             f'[Jonathan, 06/11/2026] "as portas do corredor mudam de '
+             f'deslizantes para pivotantes" · o preço cravado NÃO mudou, '
+             f'porque não foi pedido: muda o custo, e a MC realizada é '
+             f'resultado'),
     dict(amb='Suíte', nome='Parede painelada da TV, com as duas portas',
          itens=['Parede painelada da TV'],
          cravado=15500.0,

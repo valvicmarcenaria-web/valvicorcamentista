@@ -107,3 +107,31 @@ Garantia de 10 anos.
 ⭐ A folha das ferragens leva as três imagens que o Jonathan mandou: a gaveta Hettich com
 o selo de 80 mil ciclos, a corrediça oculta e a dobradiça Sensys. O texto não cita número
 de ciclos, para não brigar com o selo.
+
+### ⭐ Duas correções e o R$ nas parcelas · 06/11/2026
+
+O Jonathan pediu: "as portas do corredor mudam de deslizantes para pivotantes", "o painel
+ripado da sala de tv ganha duas portas compridas para acesso de manutenções a quadro de
+energia e rede hidraulica" e "vamos colocar o valor de R$ ao lado das porcentagens tbm".
+
+| mudança | efeito no preço |
+|---|---:|
+| **Corredor:** saem o sistema de correr Rometal e os dois desempenadores de cada folha, entra um sistema pivô (R$ 120) por folha. O custo cai R$ 1.360 antes da embalagem | 0 · segue **39.700** cravado, e a MC realizada sobe de 34,7% para **38,2%** |
+| **Sala de TV:** duas portas ripadas de 45 × 272 no trecho livre do ripado, em sanduíche, com metalon, 5 dobradiças e 2 pulsadores TIP-ON por folha | 18.719 → **23.508** |
+| **A casa inteira, Hettich** | 173.936 → **178.725** |
+
+⛔ O painel liso e o rack da Sala de TV **não mudam de preço** (3.228 e 7.734). As peles de 6
+das portas mexem no rateio da sobra de chapa do ambiente, e o motor sozinho daria +295
+num e −224 no outro. `hettich.py` trava os dois no preço que o cliente viu e passa a
+diferença para o ripado. O total da Sala de TV é o do motor, ao centavo, a MC 38%.
+
+Pagamento em real cheio, com a última parcela absorvendo o arredondamento:
+30% **53.618** · 20% **35.745** · 20% **35.745** · 30% **53.617**.
+
+⚠ Premissas minhas, a confirmar:
+- **Largura das portas de manutenção:** 45 cm cada. A prancha não tem essas portas.
+- **Abertura das portas de manutenção:** por toque, com dois pulsadores por folha.
+- **Pivô do corredor:** o da Base (R$ 120) é o da suíte, para folha lisa de 207 cm. Falta
+  conferir se ele aguenta uma folha ripada de 272.
+- **Abertura das portas pivotantes:** nada foi lançado (cava, puxador ou toque). A versão
+  de correr também não tinha.

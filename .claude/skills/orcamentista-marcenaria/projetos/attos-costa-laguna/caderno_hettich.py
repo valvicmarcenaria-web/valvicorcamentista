@@ -148,7 +148,7 @@ AMB = [
   'A cozinha.', 'Seis metros de ripado com as portas dentro, e o vidro que é nosso.',
   [('Cozinha', [
      ('Painel ripado do corredor', 'A parede inteira do corredor de serviço vira uma só peça, e '
-      'as portas de correr do vestiário e da despensa desaparecem nela, embutidas.'),
+      'as portas pivotantes do vestiário e da despensa giram dentro dela: fechadas, viram ripa.'),
      ('Cristaleira', 'Portas de vidro reflecta cristal com perfil, prateleiras e nicho inferior: '
       'a peça de vitrine do ambiente.')]),
    ('', [
@@ -164,7 +164,9 @@ AMB = [
       'gaveteiro.')]),
    ('Sala de TV', [
      ('Painel ripado e painel liso', 'O ripado entra pela esquerda e o liso recebe a televisão, '
-      'em continuidade, sem fio aparente entre eles.'),
+      'em continuidade, sem fio aparente entre eles. No ripado, duas portas compridas, '
+      'mimetizadas na ripa e abertas por toque, dão acesso ao quadro de energia e à rede '
+      'hidráulica.'),
      ('Rack de TV suspenso', 'Gavetões sobre corrediça oculta Hettich, atravessando a junção dos '
       'dois painéis.')])],
   f'O {ANTECIPADA[0].lower()} sai à frente do cronograma: entregue instalado até {ANTECIPADA[1]}.'),
@@ -212,9 +214,10 @@ FER = [
    'Amortecimento <b>integrado à dobradiça</b>: a porta fecha suave e em silêncio, sem bater.',
    'Regulagem nos três sentidos: a porta se realinha em minutos, na obra ou anos depois.',
    'A mesma dobradiça em todas as portas de giro da casa.']),
- ('Correr e toque', 'Sistema embutido · Blum TIP-ON', ['c-cozinha-corredor'], [
-   'As portas do corredor correm <b>embutidas no painel ripado</b>, com amortecimento.',
-   'Na rouparia, o pulsador <b>Blum TIP-ON</b>: a porta abre com um toque e dispensa o puxador.',
+ ('Pivô e toque', 'Sistema pivotante · Blum TIP-ON', ['c-cozinha-corredor'], [
+   'As portas do corredor giram sobre <b>pivô</b>, dentro do próprio painel ripado: fechadas, viram parede.',
+   'Na rouparia e nas portas de manutenção da sala de TV, o pulsador <b>Blum TIP-ON</b>: a porta '
+   'abre com um toque e dispensa o puxador.',
    'Na suíte e no hall, a cava usinada na própria folha esconde a porta no painel.']),
 ]
 
@@ -261,22 +264,25 @@ folha(f'''<div class="pad">
   <div>
    <div class="gar justo" style="grid-template-columns:1fr;margin-top:0">
     <div class="c hi"><div class="unid" style="margin-top:0">A casa inteira · linha Hettich</div>
-     <div class="tv">{br(H.TOTAL)}</div>
+     <div class="tv">R$ {brs(H.TOTAL)}</div>
      <div class="x">Valores em reais. Cada item foi levantado peça por peça do executivo — nada
       é rateio nem estimativa por metro quadrado.</div>
      <div class="l"><div class="k">Entrada, na assinatura</div>
-      <div class="v">{br(H.TOTAL * H.PAGTO[0][1])}</div>
+      <div class="v">R$ {brs(H.PARCELAS[0])}</div>
       <div class="k" style="margin-top:2.4mm">Garantia</div><div class="v">{H.GARANTIA} anos</div></div></div></div>
    <div class="box" style="margin-top:5mm"><div class="t">O que está incluso</div>
     <p>Projeto executivo de marcenaria, material, usinagem, ferragem Hettich, os pulsadores
-     Blum da rouparia, a iluminação em LED embutida, o vidro reflecta cristal e o estofado da
+     Blum da rouparia e da sala de TV, a iluminação em LED embutida, o vidro reflecta cristal e o estofado da
      cabeceira, transporte, montagem e instalação.</p></div>
   </div>
  </div>
 </div>''')
 
 # ── 09 · condições ──────────────────────────────────────────────────────
-pay = ''.join(f'<tr><td>{E(r)}</td><td class="d">{p*100:.0f}%</td></tr>' for r, p in H.PAGTO)
+#   ⭐ [Jonathan, 06/11/2026] "vamos colocar o valor de R$ ao lado das porcentagens tbm"
+pay = ''.join(f'<tr><td>{E(r)}</td><td class="d" style="width:11mm">{p*100:.0f}%</td>'
+              f'<td class="d" style="width:27mm;color:var(--ink)">R$ {brs(v)}</td></tr>'
+              for (r, p), v in zip(H.PAGTO, H.PARCELAS))
 folha(f'''<div class="pad" style="padding-bottom:20mm">
  <div class="eyebrow">Condições</div><div class="rule"></div>
  <h1 class="h1" style="margin:0 0 3mm">Prazo, pagamento e fronteiras.</h1>
@@ -294,7 +300,7 @@ folha(f'''<div class="pad" style="padding-bottom:20mm">
   </div>
   <div>
    <table class="pay" style="width:100%">
-    <tr><td colspan="2" style="border:none;padding-bottom:2mm"><span class="eyebrow">Formas de pagamento</span></td></tr>
+    <tr><td colspan="3" style="border:none;padding-bottom:2mm"><span class="eyebrow">Formas de pagamento</span></td></tr>
     {pay}</table>
    <div style="font-size:7.4pt;color:var(--mut);margin-top:2.5mm;letter-spacing:.06em">
      Todas as parcelas por transferência bancária.</div>
@@ -312,7 +318,8 @@ folha(f'''<div class="pad" style="padding-bottom:20mm">
     <li><div class="k">Retirados nesta versão</div><div class="v">O armário do gourmet, o painel
       liso e a cabeceira estofada da suíte e as mesas de cabeceira.</div></li>
     <li><div class="k">A confirmar antes da produção</div><div class="v">O padrão do MDF
-      amadeirado, os pontos de iluminação e as medidas que fecham na medição.</div></li>
+      amadeirado, os pontos de iluminação, a posição das portas de manutenção da sala de TV e as
+      medidas que fecham na medição.</div></li>
    </ul>
   </div>
  </div>
@@ -390,7 +397,7 @@ for _c in ('Ana Carolina', 'André', 'Phillip', 'Giselle', 'Michell', 'Gustavo',
 _amb = re.sub(r'<[^>]+>', ' ', re.sub(r'data:[^"]+', '', ''.join(S[AMB_I - 1:AMB_F])))
 assert not re.search(r'\d+\s*(cm|mm|m²|m\b)', _amb), '⛔ medida na descrição'
 assert ',' not in ''.join(brs(it['pv']) for it in H.ITENS), '⛔ centavo num item'
-assert H.TOTAL == 173936, H.TOTAL
+assert H.TOTAL == 178725, H.TOTAL
 
 OUT = AQUI / 'proposta-costa-laguna-hettich.html'
 OUT.write_text(HTML, encoding='utf-8')
@@ -398,4 +405,4 @@ PDF = AQUI / 'proposta-costa-laguna-hettich.pdf'
 subprocess.run(['node', str(CASA / 'render-pdf.js'), str(OUT), str(PDF)], check=True,
                env=dict(os.environ, NODE_PATH='/opt/node22/lib/node_modules'))
 print(f'{PDF.name} · {len(S)} folhas · {PDF.stat().st_size // 1024} kB · primeiro preço na folha {N0}')
-print(f'  Hettich {br(H.TOTAL)} · entrada {br(H.TOTAL * H.PAGTO[0][1])}')
+print(f'  Hettich {br(H.TOTAL)} · parcelas ' + ' · '.join(brs(v) for v in H.PARCELAS))

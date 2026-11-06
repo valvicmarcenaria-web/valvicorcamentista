@@ -70,6 +70,9 @@ MOTOR = {
     'Sistema de correr Dominus':       (b.SISTEMA_CORRER, 'conjunto', False),
     'Sistema de correr SI Forma':      (900.0,       'conjunto', True),
     'Sistema pivô':                    (b.SISTEMA_PIVO, 'conjunto', True),
+    #   ⭐ [Jonathan, 06/11/2026] as portas de manutenção da Sala de TV abrem
+    #     por toque · a Base tem a chave 'Pulsador' (Blum Tip-on ou Servo)
+    'Pulsador':                        (b.PULSADOR,  'un',       True),
     'Alma de aço':                     (b.ALMA_BARRA, 'barra',   False),
     'Suporte de prateleira':           (b.SUPORTE_JOGO, 'jogo',  True),
     'Cava usinada':                    (b.CAVA_M,    'm',        False),
@@ -92,15 +95,10 @@ A_COTAR = {
                      'da ripa e do vão". A nossa é passo de 3 cm, que é FINO.',
     'Vidro reflecta prata com perfil': 'O executivo pede REFLECTA CRISTAL e '
                                        'esse padrão não existe na Base.',
-    'Sistema de correr Dominus':
-        '⛔⛔ DUAS DÚVIDAS NA MESMA LINHA. (1) PREÇO: a Base de Custos importa '
-        'R$ 800 para o "Dominus Rometal, 2 portas" e o Jonathan cravou R$ 600 '
-        'em 03/11/2026 — travado em 600 na linha 49 da aba Base (importada), '
-        'com o motivo impresso na própria linha. São 2 sistemas na cozinha e '
-        'R$ 408 no projeto. ⚠ A Base tem OUTRO sistema de 2 portas a R$ 600, '
-        'o SS-150: é possível que o 600 dele seja esse. (2) QUANTIDADE: o '
-        'conjunto é vendido como "2 PORTAS" e eu lancei UM POR FOLHA; se um '
-        'kit servir as duas folhas, cai outros R$ 600.',
+    #   ⭐ [Jonathan, 06/11/2026] SAIU DAQUI o 'Sistema de correr Dominus': as
+    #     portas do corredor viraram PIVOTANTES e o Dominus deixou o projeto.
+    #     A dúvida dele (R$ 800 na Base contra R$ 600 cravado, e um kit por
+    #     folha ou por par) só volta se a porta voltar a correr.
 }
 
 # ════════════════════════════════════════════════════════════════════════
@@ -115,6 +113,7 @@ REGRAS = [
     ('=', 'Desempenador de porta',          'Desempenador de porta'),
     ('=', 'Sistema de correr',              'Sistema de correr Dominus'),
     ('=', 'Sistema pivô',                   'Sistema pivô'),
+    ('^', 'Pulsador',                       'Pulsador'),
     ('^', 'Alma de aço',                    'Alma de aço'),
     ('=', 'Suporte de prateleira',          'Suporte de prateleira'),
     ('^', 'Cava usinada',                   'Cava usinada'),
