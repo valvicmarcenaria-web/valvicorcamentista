@@ -10,33 +10,49 @@ foram MEDIDAS NA ESCALA 1:25 (3,15 px/cm no PNG de 200 dpi).
 
 Decisões [Jonathan, 05/11/2026]: ferragem BLUM · RT 10% · "no closet da suíte
 master, considere até 10 gavetas/sapateiras".
+Decisões [Jonathan, 06/11/2026]: "não tem roupeiro na suíte master, apenas o
+closet" · roupeiro do Gabriel com DUAS PORTAS DE CORRER, uma delas de ESPELHO
+PRATA, sistema deslizante SI FORMA · "os demais serão PORTAS DE GIRO com
+puxador em cava" (closet da suíte master e closet da Isabella).
 
 Premissas minhas (vão como dúvida numerada na planilha):
-  · acabamento sem nota → Melamínico de cor (chave "MDF cor") no que se vê;
-    Branco TX dentro dos roupeiros com porta;
-  · roupeiros de 65 de profundidade (suíte e Gabriel) → PORTAS DE CORRER
-    (Dominus, o sistema da casa); closets (suíte master e Isabella) → ABERTOS;
+  · TODO o MDF em Nude Vel Guararapes [Jonathan, 06/11/2026] — nem o miolo
+    fica em Branco TX; a fita é a de cor (R$ 3,00);
+  · porta de giro em 15 mm (a espessura de porta da Base); módulo acima de 60
+    leva DUAS folhas (roupeiros.md §8: módulo de 86 = 2 × 43); dobradiça Blum
+    pela altura — acima de 200, cinco por folha; cava usinada de 1 m por folha;
+  · folha de espelho que corre = "Porta de espelho em alumínio" da Base (folha
+    pronta, sem chapa, sem fita, sem desempenador), como na Tereza Sá;
   · "sapateiro"/"sapateira" = gaveta baixa com corrediça (uma corrediça cada);
   · rodapé de 10 recuado em MDF de cor + perfil de proteção de piso.
 
 Cada peça: (peça, observação, C, L, QTD, chave da Base, fita em m por peça, tipo
-de fita) · ferragem: (peça, observação, QTD, UN, chave).
+de fita) · ferragem: (peça, observação, QTD, UN, chave) · terceirizado por m²,
+sem chapa: (peça, observação, C, L, QTD, UN, chave).
 """
 ITENS = []      # (amb, nn, móvel, medida, cadeia, pecas, ferragens)
 
 def item(amb, movel, medida, cadeia):
-    d = dict(amb=amb, movel=movel, medida=medida, cadeia=cadeia, pecas=[], ferr=[])
+    d = dict(amb=amb, movel=movel, medida=medida, cadeia=cadeia, pecas=[], ferr=[], terc=[])
     ITENS.append(d); return d
 
 def P(it, nome, obs, c, l, qtd, chave, fita=0.0, tipo=None):
-    tipo = tipo or ('Fita Branco TX' if 'Branco' in chave else 'Fita cor')
+    tipo = tipo or ('Fita Branco TX' if 'Branco' in chave else 'Fita cor')   # Nude Vel → fita de cor
     it['pecas'].append((nome, obs, c, l, qtd, chave, fita, tipo))
 
 def F(it, nome, obs, qtd, un, chave):
     it['ferr'].append((nome, obs, qtd, un, chave))
 
-COR15, COR18, COR6 = 'MDF cor 15', 'MDF cor 18', 'MDF cor 6'
-BR15, BR6 = 'MDF Branco TX 15', 'MDF Branco TX 6'
+def T(it, nome, obs, c, l, qtd, chave):
+    """Terceirizado por m² (folha pronta): não entra no plano de corte."""
+    it['terc'].append((nome, obs, c, l, qtd, 'm²', chave))
+
+# ⭐ "TODOS OS MDFs SERÃO NO PADRÃO NUDE VEL GUARARAPES" [Jonathan, 06/11/2026]:
+#   portas, caixaria, prateleiras, fundos e caixas de gaveta. Chave própria do
+#   projeto na Base (importada), preço da linha Melamínico Fosco (Velluto).
+NUDE15, NUDE18, NUDE6 = 'MDF Nude Velluto 15', 'MDF Nude Velluto 18', 'MDF Nude Velluto 6'
+COR15, COR18, COR6 = NUDE15, NUDE18, NUDE6
+BR15, BR18, BR6 = NUDE15, NUDE18, NUDE6      # o miolo também é Nude Vel
 
 def gavetas(it, n, larg, alt, prof, frente=COR15, rotulo='Gaveta'):
     li = larg - 6.6
@@ -58,112 +74,119 @@ def rodape(it, L, chave=COR15):
     F(it, 'Perfil de proteção de piso', 'no rodapé que toca o chão', round(L / 100, 2), 'm',
       'Perfil de proteção de piso')
 
-def correr2(it, larg_vao, alt, cor=COR18):
+def dobradicas(alt):
+    return 2 if alt <= 90 else 3 if alt <= 160 else 4 if alt <= 200 else 5
+
+def giro(it, n, larg, alt, obs, chave=COR15):
+    """Porta de giro com puxador em cava [Jonathan, 06/11/2026]."""
+    nd = dobradicas(alt)
+    P(it, 'Porta de giro', obs, alt, larg, n, chave, 2 * (alt + larg) / 100)
+    F(it, 'Dobradiça Blum', f'{nd} por folha de ' + f'{alt:g}'.replace('.', ',') + ' de altura', nd * n, 'un', 'Dobradiça')
+    F(it, 'Cava usinada', 'puxador cava na própria folha, 1 m por folha', n, 'm', 'Cava usinada')
+
+def correr_siforma(it, larg_vao, alt):
+    """Duas portas de correr no SI Forma, uma de MDF e uma de espelho prata [Jonathan, 06/11/2026]."""
     folha = round(larg_vao / 2 + 3, 1)
-    P(it, 'Porta de correr', '18 mm · duas folhas com transpasse', alt, folha, 2, cor, 2 * (alt + folha) / 100)
-    F(it, 'Sistema de correr Dominus', 'flutuante, trilho oculto, duplo amortecimento · duas portas', 1, 'cj',
-      'Sistema de correr Dominus')
-    F(it, 'Trilho Dominus 2 m', 'superior e inferior do sistema', 1, 'un', 'Trilho Dominus 2 m')
-    F(it, 'Desempenador de porta', 'dois por folha de 70 cm ou mais', 4 if folha >= 70 else 2, 'un',
+    P(it, 'Porta de correr', '18 mm · a folha de MDF, com transpasse', alt, folha, 1, COR18, 2 * (alt + folha) / 100)
+    T(it, 'Porta de correr de espelho prata', 'folha pronta: esquadria de alumínio + espelho prata · sem chapa e sem fita',
+      alt, folha, 1, 'Porta de espelho em alumínio')
+    F(it, 'Sistema deslizante SI Forma', 'oculto · um conjunto para as duas folhas', 1, 'cj', 'Sistema deslizante SI Forma')
+    F(it, 'Desempenador de porta', 'só na folha de MDF · dois por folha de 70 cm ou mais', 2 if folha >= 70 else 1, 'un',
       'Desempenador de porta')
-    F(it, 'Cava usinada', 'puxador cava vertical na própria folha, 1 m por folha', 2, 'm', 'Cava usinada')
+    F(it, 'Cava usinada', 'puxador cava vertical na folha de MDF, 1 m', 1, 'm', 'Cava usinada')
 
-# ═══ 01 · SUÍTE MASTER · roupeiro da parede esquerda (SUITE MASTER_E1) ═════
-#   planta: 200 × 65 · elevação: 270 do piso (260 de caixa + 10 de rodapé),
-#   dois módulos de 95: cabideiro longo com gaveta baixa · sete nichos.
-it = item('Suíte master', 'Roupeiro com portas de correr', '200 × 270 × 65',
-          'planta 200 × 65 · altura medida na E1: 260 de caixa + 10 de rodapé · módulos 95 + 95')
-P(it, 'Lateral aparente', 'a que fica para o quarto', 260, 55, 1, COR15, 2.60 + 0.55)
-P(it, 'Lateral de parede', '', 260, 55, 1, BR15, 2.60)
-P(it, 'Base e teto', '', 197, 55, 2, BR15, 1.97)
-P(it, 'Divisória', 'entre os dois módulos', 257, 53, 1, BR15, 2.57)
-P(it, 'Fundo', 'encaixe em rasgo, sem fita', 197, 257, 1, BR6)
-prateleiras(it, 6, 95, 55, 'MDF Branco TX 18', 'vão de 95 · módulo dos nichos · 18 mm: passa dos 70')
-P(it, 'Prateleira sobre a gaveta', 'fecha o cabideiro longo · 18 mm', 94.6, 52, 1, 'MDF Branco TX 18', 0.95)
-F(it, 'Cabideiro', 'cabideiro longo', 1, 'un', 'Cabideiro')
-gavetas(it, 1, 95, 15, 50, frente=BR15, rotulo='Gaveta baixa')
-correr2(it, 200, 258)
-rodape(it, 200)
+# ⛔ SUÍTE MASTER: "não tem roupeiro na suíte master, apenas o closet"
+#   [Jonathan, 06/11/2026] — o roupeiro de 200 da E1 saiu do orçamento.
 
-# ═══ 02 · CLOSET SUÍTE MASTER · parede longa (CLOSET SUITE MASTER_E1) ══════
-#   planta: 331 × 61 · quatro módulos de 80 · 265 do piso (255 + 10) · aberto.
+# ═══ 01 · CLOSET SUÍTE MASTER · parede longa (CLOSET SUITE MASTER_E1) ══════
+#   planta: 331 × 61 · quatro módulos de 80 · 265 do piso (255 + 10).
 #   ⭐ "até 10 gavetas/sapateiras": 3 sapateiras no módulo 1, 4 gavetas no
 #   módulo 3 (a prancha desenha 3) e 3 sapateiras no módulo A da E2 = 10.
-it = item('Closet suíte master', 'Armário aberto da parede longa', '331 × 265 × 61',
-          'planta 331 × 61 · quatro módulos de 80 medidos na E1 · 255 de caixa + 10 de rodapé')
-P(it, 'Lateral', 'as duas pontas', 255, 61, 2, COR15, 2.55 + 0.61)
-P(it, 'Divisória', 'entre os módulos', 252, 59, 3, COR15, 2.52)
-P(it, 'Base e teto', 'emenda sobre a divisória do meio · 331 não sai de chapa', 164, 61, 4, COR15, 1.64)
-P(it, 'Fundo', 'à vista: closet aberto · encaixe em rasgo', 165, 252, 2, COR6)
-prateleiras(it, 4, 80, 61, COR18, 'módulo 1 · 18 mm: vão de 80 passa dos 70')
-gavetas(it, 3, 80, 18, 55, rotulo='Sapateira')
-P(it, 'Prateleira baixa do cabideiro', 'módulo 2', 79.6, 58, 1, COR18, 0.80)
+#   ⭐ portas de giro: duas folhas por módulo de 80 = oito folhas de 41.
+it = item('Closet suíte master', 'Armário da parede longa, portas de giro', '331 × 265 × 61',
+          'planta 331 × 61 · quatro módulos de 80 medidos na E1 · 255 de caixa + 10 de rodapé · duas folhas por módulo')
+P(it, 'Lateral de ponta', 'as duas pontas, para fora', 255, 61, 2, COR15, 2.55 + 0.61)
+P(it, 'Divisória', 'entre os módulos', 252, 59, 3, BR15, 2.52)
+P(it, 'Base e teto', 'emenda sobre a divisória do meio · 331 não sai de chapa', 164, 61, 4, BR15, 1.64)
+P(it, 'Fundo', 'encaixe em rasgo, sem fita', 165, 252, 2, BR6)
+prateleiras(it, 4, 80, 61, BR18, 'módulo 1 · 18 mm: vão de 80 passa dos 70')
+gavetas(it, 3, 80, 18, 55, frente=BR15, rotulo='Sapateira')
+P(it, 'Prateleira baixa do cabideiro', 'módulo 2 · 18 mm', 79.6, 58, 1, BR18, 0.80)
 F(it, 'Cabideiro', 'módulos 2 e 4, cabideiro longo', 2, 'un', 'Cabideiro')
-prateleiras(it, 5, 80, 61, COR18, 'módulo 3, acima das gavetas')
-gavetas(it, 4, 80, 18, 55)
+prateleiras(it, 5, 80, 61, BR18, 'módulo 3, acima das gavetas · 18 mm')
+gavetas(it, 4, 80, 18, 55, frente=BR15)
+giro(it, 8, 41.1, 254.5, '15 mm · duas folhas por módulo de 80 · puxador em cava')
 rodape(it, 331)
 
-# ═══ 03 · CLOSET SUÍTE MASTER · parede da porta (CLOSET SUITE MASTER_E2) ═══
-#   planta: 185 (dois módulos de 89) + porta + 55 · prof. 60 · aberto.
-it = item('Closet suíte master', 'Armários abertos da parede da porta', '185 + 55 × 265 × 60',
-          'planta 55 + 91 (porta) + 185 = 331 · prof. 60 · módulos de 89 medidos na E2')
-P(it, 'Lateral', 'bloco de 185, as duas pontas', 255, 60, 2, COR15, 2.55 + 0.60)
-P(it, 'Divisória', 'bloco de 185', 252, 58, 1, COR15, 2.52)
-P(it, 'Base e teto', 'bloco de 185', 182, 60, 2, COR15, 1.82)
-P(it, 'Fundo', 'bloco de 185 · à vista', 182, 252, 1, COR6)
-prateleiras(it, 4, 89, 60, COR18, 'módulo A · 18 mm')
-gavetas(it, 3, 89, 18, 55, rotulo='Sapateira')
-P(it, 'Prateleira baixa do cabideiro', 'módulo B', 88.6, 57, 1, COR18, 0.89)
+# ═══ 01 · CLOSET SUÍTE MASTER · parede da porta (CLOSET SUITE MASTER_E2) ═══
+#   planta: 185 (dois módulos de 89) + porta + 55 · prof. 60.
+#   ⭐ portas de giro: duas folhas por módulo de 89, uma no módulo de 55.
+it = item('Closet suíte master', 'Armários da parede da porta, portas de giro', '185 + 55 × 265 × 60',
+          'planta 55 + 91 (porta) + 185 = 331 · prof. 60 · módulos de 89 medidos na E2 · cinco folhas')
+P(it, 'Lateral de ponta', 'bloco de 185, as duas pontas', 255, 60, 2, COR15, 2.55 + 0.60)
+P(it, 'Divisória', 'bloco de 185', 252, 58, 1, BR15, 2.52)
+P(it, 'Base e teto', 'bloco de 185', 182, 60, 2, BR15, 1.82)
+P(it, 'Fundo', 'bloco de 185 · encaixe em rasgo', 182, 252, 1, BR6)
+prateleiras(it, 4, 89, 60, BR18, 'módulo A · 18 mm')
+gavetas(it, 3, 89, 18, 55, frente=BR15, rotulo='Sapateira')
+P(it, 'Prateleira baixa do cabideiro', 'módulo B · 18 mm', 88.6, 57, 1, BR18, 0.89)
 F(it, 'Cabideiro', 'módulo B, cabideiro longo', 1, 'un', 'Cabideiro')
-P(it, 'Lateral', 'módulo de 55, as duas pontas', 255, 60, 2, COR15, 2.55 + 0.60)
-P(it, 'Base e teto', 'módulo de 55', 52, 60, 2, COR15, 0.52)
-P(it, 'Fundo', 'módulo de 55 · à vista', 52, 252, 1, COR6)
-prateleiras(it, 6, 52, 60, COR15, 'módulo de 55')
+P(it, 'Lateral de ponta', 'módulo de 55, as duas pontas', 255, 60, 2, COR15, 2.55 + 0.60)
+P(it, 'Base e teto', 'módulo de 55', 52, 60, 2, BR15, 0.52)
+P(it, 'Fundo', 'módulo de 55 · encaixe em rasgo', 52, 252, 1, BR6)
+prateleiras(it, 6, 52, 60, BR15, 'módulo de 55')
+giro(it, 4, 46.0, 254.5, '15 mm · bloco de 185, duas folhas por módulo de 89 · puxador em cava')
+giro(it, 1, 54.7, 254.5, '15 mm · módulo de 55, uma folha · puxador em cava')
 rodape(it, 185); rodape(it, 55)
 
-# ═══ 04 · QUARTO GABRIEL · roupeiro (ELEVAÇÃO E1, cotada) ═════════════════
+# ═══ 02 · QUARTO GABRIEL · roupeiro (ELEVAÇÃO E1, cotada) ═════════════════
 #   195 × 270 × 65: 5 de folga + 65 maleiro + 100 cabideiro + 90 gavetas + 10.
 #   Duas colunas: 3 gavetas + 1 sapateiro · 1 gaveta + 3 sapateiros.
-it = item('Quarto Gabriel', 'Roupeiro com portas de correr', '195 × 265 × 65',
+#   ⭐ duas portas de correr no SI FORMA, uma de espelho prata [Jonathan, 06/11].
+it = item('Quarto Gabriel', 'Roupeiro com portas de correr, uma de espelho', '195 × 265 × 65',
           'E1 cotada: 5 + 65 + 100 + 90 + 10 = 270 · 195 de largura · planta 65 de profundidade')
 P(it, 'Lateral aparente', 'a que fica para o quarto', 255, 55, 1, COR15, 2.55 + 0.55)
 P(it, 'Lateral de parede', '', 255, 55, 1, BR15, 2.55)
 P(it, 'Base e teto', '', 192, 55, 2, BR15, 1.92)
 P(it, 'Divisória', 'entre as duas colunas', 252, 53, 1, BR15, 2.52)
 P(it, 'Fundo', 'encaixe em rasgo, sem fita', 192, 252, 1, BR6)
-prateleiras(it, 4, 94, 55, 'MDF Branco TX 18', 'maleiro e topo das gavetas, duas por coluna · 18 mm: vão de 94')
+prateleiras(it, 4, 94, 55, BR18, 'maleiro e topo das gavetas, duas por coluna · 18 mm: vão de 94')
 F(it, 'Cabideiro', 'um por coluna', 2, 'un', 'Cabideiro')
 gavetas(it, 4, 94, 22, 50, frente=BR15)
 gavetas(it, 4, 94, 22, 50, frente=BR15, rotulo='Sapateiro')
-correr2(it, 195, 253)
+correr_siforma(it, 195, 253)
 rodape(it, 195)
 
-# ═══ 05 · CLOSET ISABELLA · armário da porta (ELEVAÇÃO E01) ═══════════════
+# ═══ 03 · CLOSET ISABELLA · armário da porta (ELEVAÇÃO E01) ═══════════════
 #   planta 135 × 55 · duas colunas: maleiro 65, cabideiro longo, sapateiro.
-it = item('Closet Isabella', 'Armário aberto da parede da porta', '135 × 268 × 55',
-          'planta 135 × 55 · E01: 2 + 65 + 202,5 · duas colunas')
-P(it, 'Lateral', 'as duas pontas', 258, 55, 2, COR15, 2.58 + 0.55)
-P(it, 'Divisória', '', 255, 53, 1, COR15, 2.55)
-P(it, 'Base e teto', '', 132, 55, 2, COR15, 1.32)
-P(it, 'Fundo', 'à vista: closet aberto', 132, 255, 1, COR6)
-prateleiras(it, 2, 65, 55, COR15, 'maleiro, um por coluna')
+#   ⭐ portas de giro: coluna de 65 passa dos 60 → duas folhas por coluna.
+it = item('Closet Isabella', 'Armário da parede da porta, portas de giro', '135 × 268 × 55',
+          'planta 135 × 55 · E01: 2 + 65 + 202,5 · duas colunas · quatro folhas')
+P(it, 'Lateral de ponta', 'as duas pontas', 258, 55, 2, COR15, 2.58 + 0.55)
+P(it, 'Divisória', '', 255, 53, 1, BR15, 2.55)
+P(it, 'Base e teto', '', 132, 55, 2, BR15, 1.32)
+P(it, 'Fundo', 'encaixe em rasgo, sem fita', 132, 255, 1, BR6)
+prateleiras(it, 2, 65, 55, BR15, 'maleiro, um por coluna')
 F(it, 'Cabideiro', 'cabideiro longo, um por coluna', 2, 'un', 'Cabideiro')
-gavetas(it, 2, 65, 20, 45, rotulo='Sapateiro')
+gavetas(it, 2, 65, 20, 45, frente=BR15, rotulo='Sapateiro')
+giro(it, 4, 33.4, 257.5, '15 mm · duas folhas por coluna de 65 · puxador em cava')
 rodape(it, 135)
 
-# ═══ 06 · CLOSET ISABELLA · parede longa (ELEVAÇÃO E2) ════════════════════
+# ═══ 03 · CLOSET ISABELLA · parede longa (ELEVAÇÃO E2) ════════════════════
 #   planta 281 × 55 · quatro colunas de 70 · 255 + 10 · prateleiras, maleiros,
 #   cabideiros e 12 gavetas e sapateiros (2+2 · 2+2 · 3+1 · nenhum).
-it = item('Closet Isabella', 'Armário aberto da parede longa', '281 × 265 × 55',
-          'planta 281 × 55 · E2: 170 + 100 = 270 · quatro colunas de 70 medidas na escala')
-P(it, 'Lateral', 'as duas pontas', 255, 55, 2, COR15, 2.55 + 0.55)
-P(it, 'Divisória', 'entre as colunas', 252, 53, 3, COR15, 2.52)
-P(it, 'Base e teto', 'emenda sobre a divisória do meio · 281 não sai de chapa', 139, 55, 4, COR15, 1.39)
-P(it, 'Fundo', 'à vista · duas peças', 139, 252, 2, COR6)
-prateleiras(it, 10, 70, 55, COR15, 'coluna 1: três e o topo das gavetas · colunas 2 a 4: maleiro e meio')
+#   ⭐ portas de giro: duas folhas por coluna de 70 = oito folhas de 35.
+it = item('Closet Isabella', 'Armário da parede longa, portas de giro', '281 × 265 × 55',
+          'planta 281 × 55 · E2: 170 + 100 = 270 · quatro colunas de 70 medidas na escala · oito folhas')
+P(it, 'Lateral de ponta', 'as duas pontas', 255, 55, 2, COR15, 2.55 + 0.55)
+P(it, 'Divisória', 'entre as colunas', 252, 53, 3, BR15, 2.52)
+P(it, 'Base e teto', 'emenda sobre a divisória do meio · 281 não sai de chapa', 139, 55, 4, BR15, 1.39)
+P(it, 'Fundo', 'duas peças · encaixe em rasgo', 139, 252, 2, BR6)
+prateleiras(it, 10, 70, 55, BR15, 'coluna 1: três e o topo das gavetas · colunas 2 a 4: maleiro e meio')
 F(it, 'Cabideiro', 'colunas 2 e 3, e dois na coluna 4', 4, 'un', 'Cabideiro')
-gavetas(it, 7, 70, 22, 45)
-gavetas(it, 5, 70, 22, 45, rotulo='Sapateiro')
+gavetas(it, 7, 70, 22, 45, frente=BR15)
+gavetas(it, 5, 70, 22, 45, frente=BR15, rotulo='Sapateiro')
+giro(it, 8, 34.8, 254.5, '15 mm · duas folhas por coluna de 70 · puxador em cava')
 rodape(it, 281)
 
-AMBIENTES = ['Suíte master', 'Closet suíte master', 'Quarto Gabriel', 'Closet Isabella']
+AMBIENTES = ['Closet suíte master', 'Quarto Gabriel', 'Closet Isabella']

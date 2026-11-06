@@ -1,10 +1,20 @@
 # Ana Carolina e André · projeto [35] de Ana Maria
 
-Quatro ambientes com marcenaria: roupeiro da Suíte master, closet da Suíte master,
-roupeiro do Quarto Gabriel e closet da Isabella. **Ferragem Blum · RT 10% · sem
-vendedor** [Jonathan, 05/11/2026]. ⭐ Closet da suíte master com **até dez gavetas e
-sapateiras**: são três sapateiras no módulo 1 da E1, quatro gavetas no módulo 3 e
-três sapateiras no módulo A da E2.
+Três ambientes com marcenaria: closet da Suíte master, roupeiro do Quarto Gabriel e
+closet da Isabella. **Ferragem Blum · RT 10% · sem vendedor** [Jonathan, 05/11/2026].
+
+**Decisões [Jonathan, 06/11/2026]:**
+- "não tem roupeiro na suíte master, apenas o closet": a aba saiu;
+- roupeiro do Gabriel com **duas portas de correr no SI Forma, uma de espelho prata**.
+  A folha de espelho é a "porta de espelho em alumínio" da Base (R$ 700/m²);
+- "os demais serão **portas de giro com puxador em cava**": os dois closets;
+- "todos os MDFs serão no padrão **Nude Vel Guararapes**": nem o miolo fica em Branco TX.
+  As chaves `MDF Nude Velluto 18/15/6` estão no fim da Base (importada), com o preço
+  da linha Melamínico Fosco;
+- **três viagens de frete** no closet da suíte, digitadas por ele na célula amarela.
+
+⭐ Closet da suíte master com **dez gavetas e sapateiras**: três sapateiras no módulo 1
+da E1, quatro gavetas no módulo 3 e três sapateiras no módulo A da E2.
 
 **Planilha:** `1GT83X1kSwGQ83xXuHJfQ-NvUJAC41WBaP350l06oZT4`
 https://docs.google.com/spreadsheets/d/1GT83X1kSwGQ83xXuHJfQ-NvUJAC41WBaP350l06oZT4/edit
@@ -16,8 +26,7 @@ Copiada da BASE da casa (`11IgmtI5…`), na pasta `Orçamentos Valvic`.
 o conector do Drive só sobe arquivo com o conteúdo inteiro dentro do comando, e
 1,5 MB de PDF vetorial não cabe [06/11/2026].
 
-⛔ **Primeiro passo:** aba `Base (importada)`, clicar no `#REF!` da D3 e escolher
-**Permitir acesso**. Sem o clique, MDF e ferragem Blum saem a zero.
+✅ IMPORTRANGE autorizado pelo Jonathan em 06/11/2026: a Base chega inteira.
 
 ## Os arquivos
 
@@ -26,23 +35,18 @@ o conector do Drive só sobe arquivo com o conteúdo inteiro dentro do comando, 
   calcula o que a planilha **tem de mostrar** depois do clique.
 - `_abas.json` · as linhas exatamente como foram gravadas, aba por aba.
 
-## O que a planilha tem de mostrar depois do clique (MC 45% = 40% + Médio)
+## O que a planilha mostra (MC 45% = 40% + Médio) · versão de 06/11/2026
 
-| Ambiente | Custo direto | Preço (base 76,09%) |
-|---|---:|---:|
-| 01 Suíte master | R$ 6.519,94 | R$ 20.972,88 |
-| 02 Closet suíte master | R$ 12.622,54 | R$ 40.603,26 |
-| 03 Quarto Gabriel | R$ 9.409,49 | R$ 30.267,76 |
-| 04 Closet Isabella | R$ 11.988,74 | R$ 38.564,52 |
-| **Total** | **R$ 40.540,72** | **R$ 130.408,41** |
+| Ambiente | Folhas | Gavetas | Custo direto | Preço (base 76,09%) |
+|---|---:|---:|---:|---:|
+| 01 Closet suíte master | 13 de giro | 10 | R$ 19.664,53 | R$ 63.255,42 |
+| 02 Quarto Gabriel | 2 de correr (1 espelho) | 8 | R$ 10.870,03 | R$ 34.965,91 |
+| 03 Closet Isabella | 12 de giro | 14 | R$ 17.896,10 | R$ 57.566,86 |
+| **Total** | | | **R$ 48.430,65** | **R$ 155.788,19** |
 
-✅ Conferido em 05/11/2026, antes do clique e só com os preços locais (fita,
-filetagem, suporte, perfil de piso, corte, frete, consumíveis e embalagem). Painel
-e Python bateram centavo a centavo nas quatro abas: R$ 570,28 · 1.356,64 · 817,01 ·
-1.239,98. Os preços que chegam pelo IMPORTRANGE (Fosco 350/550/700, Branco TX
-250/350/400, Corrediça Blum 300, Dominus 800, Trilho 350, Desempenador 100,
-Cabideiro 120, Cava 50) foram lidos direto na Base de Custos: são os mesmos do
-`planilha.py`.
+✅ Conferido em 06/11/2026, já com a Base autorizada. Painel, item a item e o total
+batem centavo a centavo com o `planilha.py`. As três conferências internas e a do
+Painel dão zero, e nenhuma linha fica sem preço.
 
 ## ⛔ Dois defeitos da planilha BASE, achados aqui (corrigidos SÓ nesta cópia)
 
@@ -50,6 +54,7 @@ Cabideiro 120, Cava 50) foram lidos direto na Base de Custos: são os mesmos do
    37 e 41. Tudo que se grava em C:K de uma linha mesclada **some sem erro**. Aqui
    isso apagou a linha de Ferragem, a de Corte por chapa e o Arredondamento de
    chapa. ⭐ Na cópia, primeiro desmesclar de 5 a 160 e só depois gravar.
+   ⭐ E texto longo pede `OVERFLOW_CELL`: com `CLIP` ele é cortado na borda da coluna B.
 2. **`Preço e Comissões` aponta para a célula vazia.** E14:E27 multiplicam por
    `$D$33` e D34/E35 leem `$D$31`/`$D$33`, mas o custo e o preço moram na coluna
    **E**, em E31 e E33. Na Planilha do Gustavo já está `$E$33`. E o quadro ④ procura

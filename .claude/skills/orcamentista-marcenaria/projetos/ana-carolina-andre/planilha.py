@@ -22,41 +22,45 @@ PRECO = {'MDF cor 18': 700, 'MDF cor 15': 550, 'MDF cor 6': 350, 'MDF Branco TX 
          'Filetagem automática': 2.5, 'Corrediça': 300, 'Suporte de prateleira': 6.5,
          'Cabideiro': 120, 'Sistema de correr Dominus': 800, 'Trilho Dominus 2 m': 350,
          'Desempenador de porta': 100, 'Perfil de proteção de piso': 15, 'Cava usinada': 50,
-         'Corte por chapa': 2, 'Corte por peça': 2.5, 'Frete': 200}
+         'Corte por chapa': 2, 'Corte por peça': 2.5, 'Frete': 200,
+         # [06/11/2026] Nude Vel Guararapes = linha Melamínico Fosco da Base · porta de giro e SI Forma
+         'MDF Nude Velluto 18': 700, 'MDF Nude Velluto 15': 550, 'MDF Nude Velluto 6': 350,
+         'Dobradiça': 50, 'Sistema deslizante SI Forma': 1200, 'Porta de espelho em alumínio': 700}
 AREA, APROV, CONS, EMB = 5.0875, 0.80, 0.06, 0.02
-ABAS = [('Suíte master', '01 Suíte master', 101, 'SUITE MASTER_E1'),
-        ('Closet suíte master', '02 Closet suíte master', 102, 'CLOSET SUITE MASTER_E1 e E2'),
-        ('Quarto Gabriel', '03 Quarto Gabriel', 103, 'QUARTO GABRIEL · ELEVAÇÃO E1'),
-        ('Closet Isabella', '04 Closet Isabella', 104, 'CLOSET ISABELLA · ELEVAÇÃO E01 e E2')]
+# ⭐ frete é a célula AMARELA, digitada: três viagens no closet da suíte [Jonathan, 06/11/2026, na planilha]
+VIAGENS = {'Closet suíte master': 3}
+ABAS = [('Closet suíte master', '01 Closet suíte master', 102, 'CLOSET SUITE MASTER_E1 e E2'),
+        ('Quarto Gabriel', '02 Quarto Gabriel', 103, 'QUARTO GABRIEL · ELEVAÇÃO E1'),
+        ('Closet Isabella', '03 Closet Isabella', 104, 'CLOSET ISABELLA · ELEVAÇÃO E01 e E2')]
 SUB = {
- 'Suíte master': 'roupeiro de 200 na parede da entrada, dois módulos — cabideiro longo e sete nichos — atrás de portas de correr',
- 'Closet suíte master': 'closet aberto em duas paredes, do piso a 265 · ⭐ dez gavetas e sapateiras, o teto que o Jonathan deu',
- 'Quarto Gabriel': 'a única prancha COTADA do projeto · roupeiro de 195 com maleiro, cabideiro e oito gavetas e sapateiros, atrás de portas de correr',
- 'Closet Isabella': 'closet aberto em duas paredes · seis colunas, quatorze gavetas e sapateiros',
+ 'Closet suíte master': 'closet em duas paredes, do piso a 265, com portas de giro e puxador em cava · ⭐ dez gavetas e sapateiras, o teto que o Jonathan deu',
+ 'Quarto Gabriel': 'a única prancha COTADA do projeto · roupeiro de 195 com maleiro, cabideiro e oito gavetas e sapateiros · duas portas de correr no SI Forma, uma de espelho prata',
+ 'Closet Isabella': 'closet em duas paredes com portas de giro e puxador em cava · seis colunas, quatorze gavetas e sapateiros',
 }
 FORA = {
- 'Suíte master': ['A bancada de 386 × 30 sob a janela, as duas mesinhas de 60 × 50 e o painel de cabeceira APARECEM SÓ NA PLANTA, sem elevação: estão fora desta conta e entraram nas dúvidas',
-                  'Banho da suíte: bancada, cubas, box, louças e metais — pedra e louça nunca são nossas',
-                  'Cama, poltrona e cadeira'],
- 'Closet suíte master': ['Portas de passagem do closet (60 × 210)', 'Iluminação de forro'],
+ 'Closet suíte master': ['O ROUPEIRO DA SUÍTE MASTER: não existe, só o closet [Jonathan, 06/11/2026]',
+                         'Bancada, mesinhas e painel de cabeceira da suíte: só na planta, sem elevação',
+                         'Portas de passagem do closet (60 × 210)', 'Iluminação de forro'],
  'Quarto Gabriel': ['Berço, poltrona, cômoda e cama EXISTENTES', 'Porta de passagem e ar-condicionado'],
  'Closet Isabella': ['O QUARTO da Isabella — cama montessori, cômoda, estante, nicho de livros, quadro de desenho e puff — está na planta mas não tem elevação: fora desta conta',
                      'Banho: bancada, cuba, box, louças e metais'],
 }
 COMUNS = [
  '⛔ AS ELEVAÇÕES NÃO TÊM COTA NEM NOTA DE MATERIAL (só a do Quarto Gabriel é cotada). Largura e profundidade vêm da planta; ALTURAS E DIVISÕES foram MEDIDAS NA ESCALA 1:25. Conferir na medição.',
- '⚠ ACABAMENTO SEM ESPECIFICAÇÃO: orçado como MELAMÍNICO DE COR (chave MDF cor) em tudo que se vê, e Branco TX dentro dos roupeiros com porta. Lâmina natural dobra a chapa.',
+ '⭐ TODO O MDF NO PADRÃO NUDE VEL, GUARARAPES [Jonathan, 06/11/2026]: portas, caixaria, prateleiras, fundos e caixas de gaveta, com a fita de cor. Preço da linha MELAMÍNICO FOSCO da Base, onde o Velluto está (550 a de 15, 700 a de 18, 350 a de 6). ⚠ Confirmar com o fornecedor que o Nude Vel não tem sobrepreço.',
 ]
+GIRO = ('⭐ PORTAS DE GIRO COM PUXADOR EM CAVA [Jonathan, 06/11/2026]: 15 mm, a espessura de porta da Base · módulo acima de 60 leva DUAS folhas · '
+        'cinco dobradiças Blum por folha (passa de 200 de altura) · cava usinada de 1 m por folha.')
 DUV = {
- 'Suíte master': ['⚠ A FRENTE DO ROUPEIRO NÃO ESTÁ DESENHADA. Pelos 65 de profundidade, orçado com DUAS PORTAS DE CORRER no sistema Dominus. Se forem portas de giro, troca o sistema por dobradiças Blum.',
-                  '⛔ BANCADA, MESINHAS E CABECEIRA da planta não têm elevação nem nota. Se entram, preciso das vistas.',
-                  '⚠ O MÓDULO DA DIREITA tem sete compartimentos com frente desenhada por dentro — lidos como NICHOS COM PRATELEIRA. Se forem gavetas, são seis corrediças Blum a mais.'],
  'Closet suíte master': ['⭐ DEZ GAVETAS E SAPATEIRAS [Jonathan, 05/11/2026]: a E1 desenha três gavetas; distribuí dez — três sapateiras no módulo 1, quatro gavetas no módulo 3 e três sapateiras no módulo A da E2. Cada uma leva corrediça Blum.',
-                         '⚠ CLOSET ABERTO, SEM PORTAS: a prancha não desenha frente. Se tiver porta, entra sistema e folha.',
+                         GIRO + ' Aqui são TREZE folhas: oito de 41 na E1, quatro de 46 e uma de 55 na E2.',
+                         '⚠ FOLHA DE GIRO DE 254 DE ALTURA EM 15 MM: é a regra da Base, mas folha alta e estreita empena mais. Em 18 mm sobe a chapa de 15 para a de 18.',
                          '⚠ BASE E TETO DE 331 NÃO SAEM DE CHAPA: emenda sobre a divisória do meio.'],
- 'Quarto Gabriel': ['⚠ A FRENTE DO ROUPEIRO NÃO ESTÁ DESENHADA. Pelos 65 de profundidade, orçado com DUAS PORTAS DE CORRER Dominus.',
+ 'Quarto Gabriel': ['⭐ DUAS PORTAS DE CORRER NO SISTEMA DESLIZANTE SI FORMA [Jonathan, 06/11/2026]: uma folha de MDF de 18 mm com cava e uma de ESPELHO PRATA em esquadria de alumínio (Base: porta de espelho em alumínio, R$ 700 o m²) — folha pronta, sem chapa, sem fita e sem desempenador.',
+                    '⚠ UM CONJUNTO SI FORMA para as duas folhas, como na Tereza Sá. Se o kit for por folha, entra mais um. ⚠ Se o espelho for COLADO sobre folha de MDF, troca pelo espelho colado (R$ 600 o m²) mais a chapa.',
                     '⚠ SAPATEIRO lido como GAVETA BAIXA com corrediça Blum, igual à gaveta. Se for prateleira inclinada fixa, saem quatro corrediças.'],
- 'Closet Isabella': ['⚠ AS COLUNAS 3 E 4 DA E2 estão desenhadas com CONTORNO PRETO, diferente das outras. Se forem portas, entra frente e dobradiça Blum.',
+ 'Closet Isabella': [GIRO + ' Aqui são DOZE folhas: quatro de 33 na E01 (colunas de 65) e oito de 35 na E2 (colunas de 70).',
+                     '⚠ Se a arquiteta preferir UMA FOLHA POR COLUNA (65 a 70 cm), saem seis folhas e trinta dobradiças Blum.',
                      '⚠ BASE E TETO DE 281 NÃO SAEM DE CHAPA: emenda sobre a divisória do meio.'],
 }
 
@@ -75,6 +79,8 @@ def monta(amb, aba, sid, prancha):
         for nome, obs, c, l, q, k, fm, tipo in i['pecas']:
             lin.append(('peca', nome, obs, c, l, q, 'm²', k))
             if fm: fita[tipo] = fita.get(tipo, 0) + fm * q
+        for nome, obs, c, l, q, un, k in i.get('terc', []):
+            lin.append(('terc', nome, obs, c, l, q, un, k))
         for tipo, m in fita.items():
             lin.append(('fita', tipo, '22 mm · aresta a aresta, mais 10% de desperdício', '', '', round(m * 1.1, 1), 'm', tipo))
         tot = sum(fita.values())
@@ -127,16 +133,16 @@ def monta(amb, aba, sid, prancha):
     for k, rr in rows_mat.items():
         if k.startswith('MDF'):
             area = sum(x[3] * x[4] * x[5] for _, lin in blocos for x in lin if x[0] == 'peca' and x[7] == k) / 1e4
-            put(rr, k, f'{area:.1f} m² de peças · comprada inteira, por cor × espessura'.replace('.', ','),
+            put(rr, k, f'{area:.1f} m² de peças · Nude Vel Guararapes · comprada inteira, por cor × espessura'.replace('.', ','),
                 f'=ROUNDUP(SUMPRODUCT(({K}=$B{rr})*IF(ISNUMBER({D_});{D_}*{E_}*{F_};0))/10000/({CH}))',
                 'chapas', f'=D{rr}*VLOOKUP($B{rr};precos;2;FALSE)', f'=IFERROR(F{rr}/$F${rcd};"")')
         elif k.startswith('Fita'):
-            put(rr, k, ('22 mm na caixaria · R$ 2,00 o metro' if 'Branco' in k else '22 mm nas peças de cor · R$ 3,00 o metro') + ' · mais 10% de desperdício',
+            put(rr, k, ('22 mm na caixaria · R$ 2,00 o metro' if 'Branco' in k else '22 mm Nude Vel · R$ 3,00 o metro') + ' · mais 10% de desperdício',
                 f'=SUMIF({K};"{k}";{F_})', 'm', f'=D{rr}*VLOOKUP("{k}";precos;2;FALSE)', f'=IFERROR(F{rr}/$F${rcd};"")')
         else:
             put(rr, k, 'Coladeira · 15 e 18 mm · serviço por metro de aresta feita, sem desperdício',
                 f'=SUMIF({K};"{k}";{F_})', 'm', f'=D{rr}*VLOOKUP("{k}";precos;2;FALSE)', f'=IFERROR(F{rr}/$F${rcd};"")')
-    put(rf, 'Ferragem, terceirizados e iluminação', 'Linha BLUM · corrediça, sistema de correr, desempenador, cabideiro, suporte, cava e perfil de piso · o resto de tudo que tem chave',
+    put(rf, 'Ferragem, terceirizados e iluminação', 'Linha BLUM · corrediça, dobradiça, SI Forma, desempenador, cabideiro, suporte, cava, perfil de piso e folha de espelho · o resto de tudo que tem chave',
         f'=SUMPRODUCT((LEFT({K};4)<>"MDF ")*(LEFT({K};4)<>"Fita")*(LEFT({K};9)<>"Filetagem")*({K}<>"")*IF(ISNUMBER({F_});{F_};0))', 'peças',
         f'=SUMIF({K};"<>";{I_})-SUMIF({K};"MDF *";{I_})-SUMIF({K};"Fita*";{I_})-SUMIF({K};"Filetagem*";{I_})', f'=IFERROR(F{rf}/$F${rcd};"")')
     mdf_rows = [rows_mat[k] for k in chaves_mdf]
@@ -149,7 +155,7 @@ def monta(amb, aba, sid, prancha):
         f'=SUM(F7:F{rf - 1})*VLOOKUP("Consumíveis";precos;2;FALSE)', f'=IFERROR(F{rcons}/$F${rcd};"")')
     put(remb, 'Embalagem', 'Papelão, filme e cantoneira · 2% sobre o subtotal', '', '',
         f'=SUM(F7:F{rcons})*VLOOKUP("Embalagem";precos;2;FALSE)', f'=IFERROR(F{remb}/$F${rcd};"")')
-    put(rfr, 'Frete', '⭐ R$ 200 a viagem · a QUANTIDADE é digitada: uma viagem por ambiente', 1, 'viagem',
+    put(rfr, 'Frete', '⭐ R$ 200 a viagem · a QUANTIDADE é digitada: uma viagem por ambiente', VIAGENS.get(amb, 1), 'viagem',
         f'=D{rfr}*VLOOKUP("Frete";precos;2;FALSE)', f'=IFERROR(F{rfr}/$F${rcd};"")')
     put(rcd, 'CUSTO DIRETO DO AMBIENTE', '', '', '', f'=SUM(F7:F{rfr})', f'=IFERROR(F{rcd}/$F${rcd};"")')
     put(rnota, '', '⭐ Preço por NOME: a coluna K de cada peça é a chave da aba "Base (importada)", e o R$ UN vem dela. ⛔ Enquanto o #REF! da Base não for autorizado (célula D3 de lá), tudo aqui sai vazio.')
@@ -186,6 +192,8 @@ def monta(amb, aba, sid, prancha):
                 area[k] += c * l * q / 1e4; npc += q; c_it += chapa_custo(c, l, q, k)
             elif t == 'fita':
                 ftot[k] = ftot.get(k, 0) + q; c_it += q * PRECO[k]
+            elif t == 'terc':
+                v = c * l / 1e4 * q * PRECO[k]; ferr += v; c_it += v
             else:
                 ferr += q * PRECO[k]; c_it += q * PRECO[k]
         it_custo.append(c_it)
@@ -194,8 +202,10 @@ def monta(amb, aba, sid, prancha):
     corte = sum(nch.values()) * 2 + npc * 2.5
     cons = (c_ch + c_ft) * CONS
     emb = (c_ch + c_ft + ferr + corte + cons) * EMB
-    cd = c_ch + c_ft + ferr + corte + cons + emb + 200
+    cd = c_ch + c_ft + ferr + corte + cons + emb + 200 * VIAGENS.get(amb, 1)
     linhas = [[R.get(x, [''] * 10)[j] for j in range(10)] for x in range(1, r + 1)]
+    for row in linhas:                       # sem célula vazia no fim da linha
+        while row and row[-1] == '': row.pop()
     pblocos = [(rl[0], rl[-1]) for *_, rl, rt in pos]
     FH = '=IFERROR(VLOOKUP($K{r};precos;2;FALSE);"")'
     FI = ('=IFERROR(IF(LEFT($K{r};4)="MDF ";$D{r}*$E{r}/10000*$F{r}/(' + CH + ')*$H{r};'
@@ -205,7 +215,7 @@ def monta(amb, aba, sid, prancha):
              'tot': [rcd, rconf] + [p[7] for p in pos],
              'item': [p[3] for p in pos], 'frete': [rfr], 'nlin': r}
     return dict(amb=amb, aba=aba, sid=sid, linhas=linhas, nlin=r, pblocos=pblocos, FH=FH, FI=FI, kinds=kinds, chapas=nch, cd=cd,
-                partes=dict(chapa=c_ch, fita=c_ft, ferr=ferr, corte=corte, cons=cons, emb=emb, frete=200),
+                partes=dict(chapa=c_ch, fita=c_ft, ferr=ferr, corte=corte, cons=cons, emb=emb, frete=200 * VIAGENS.get(amb, 1)),
                 itens=[(i['movel'], c) for (n, i, *_), c in zip(pos, it_custo)],
                 arred=c_ch - sum(chapa_custo(x[3], x[4], x[5], x[7]) for _, lin in blocos for x in lin if x[0] == 'peca'),
                 gavetas=sum(f[2] for i in itens for f in i['ferr'] if f[4] == 'Corrediça'))
