@@ -27,7 +27,7 @@ for a in ORDEM:
                f'{f(VISTO[x][0])} · {f(VISTO[x][1])}' if x in VISTO and a in AJUSTE_AMB else '=')
         o.append(f'| {x[1]}{nota} | ' + ' | '.join(f(TAB[k]['pv'][x]) for k in L) + f' | {ant} |')
     o.append(f'| *custo direto {a}* | ' + ' | '.join(f(sum(TAB[k]['cus'][y] for y in it)) for k in L) + ' | |')
-o.append('| **Quarto Mateus** · ⛔ saiu inteiro | — | — | ' + f"{f(ANTES[('Quarto Mateus', '(cinco itens)')][0])} · {f(ANTES[('Quarto Mateus', '(cinco itens)')][1])} |")
+o.append('| *Quarto Mateus · mesa, prateleiras, cabeceira e mesas de cabeceira* · ⛔ saíram | — | — | 10.230 · 12.530 |')
 o += [f'| Marcenaria | ' + ' | '.join(f(TAB[k]['venda']) for k in L) + ' | |',
       f'| Manutenção do painel da sala (serviço, fora da MC) | ' + ' | '.join(f(TAB[k]['servico']) for k in L) + ' | avulso, fora do total |',
       f'| **TOTAL DA PROPOSTA** | ' + ' | '.join(f"**{f(TAB[k]['total'])}**" for k in L) + f" | {f(TOTAL_ANTES['hettich'])} · {f(TOTAL_ANTES['blum'])} |",

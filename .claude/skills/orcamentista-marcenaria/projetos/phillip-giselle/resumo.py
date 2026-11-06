@@ -6,8 +6,9 @@ import importlib, sys, os, subprocess, json
 #   (os arquivos ficam no repositório) e o banho do Mateus sai do a08.
 #   ⛔ [Jonathan, 06/11/2026] "tire todos os itens do QUARTO DO MATEUS": o
 #     a05 sai (o arquivo fica no repositório). O CLOSET do Mateus fica.
+#   ⭐ e VOLTOU, só com o painel da porta oculta [Jonathan, 06/11/2026]
 AMBS = ['a01_quarto_casal', 'a02_closet_casal', 'a04_rouparia',
-        'a06_quarto_ana',
+        'a05_quarto_mateus', 'a06_quarto_ana',
         'a08_closet_banho_mateus', 'a09_closet_ana', 'a10_circulacao']
 # ⭐ SERVIÇO AVULSO — valor de VENDA fixo, fora do custo direto e da MC.
 AVULSO = [('Usinagem do painel existente da sala do térreo, para tentar recuperar '

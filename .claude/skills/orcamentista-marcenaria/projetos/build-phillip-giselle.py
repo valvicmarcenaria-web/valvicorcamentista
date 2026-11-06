@@ -88,8 +88,8 @@ folha(f'''<div class="ambw">
  <div class="low" style="grid-template-columns:1fr;padding:11mm 18mm 12mm">
   <div><div class="eyebrow">O que esta casa pede</div><div class="rule"></div>
    <h1 class="h1" style="margin:0 0 5mm">Um pavimento inteiro. Uma empresa só.</h1>
-   <p class="lead" style="max-width:none;font-size:10.4pt">A suíte do casal, a suíte da Ana,
-    os closets, a rouparia e a circulação que os une — um só projeto da
+   <p class="lead" style="max-width:none;font-size:10.4pt">A suíte do casal, a suíte da Ana, o
+    quarto do Mateus, os closets, a rouparia e a circulação que os une — um só projeto da
     <b>{E(ARQ)}</b>, com painéis que escondem as portas, ripado de madeira, espelho com luz
     embutida e armários do piso ao forro. <b>Uma só empresa responde por tudo o que está
     nestas folhas</b>, da medição à instalação. <em>Um contrato, uma data, um nome para
@@ -179,6 +179,7 @@ MAT = {'Quarto casal': 'Ripado amadeirado, MDF Areia, espelho',
        'Closet casal': 'MDF Areia, espelho prata',
        'Suíte Ana': 'MDF branco liso, painel em cor',
        'Closet Ana': 'MDF Tartufo',
+       'Quarto Mateus': 'Painel em MDF Grafite',
        'Closet Mateus': 'MDF Grafite',
        'Rouparia': 'MDF branco liso',
        'Circulação': 'Painel em cor, portas mimetizadas'}
@@ -187,7 +188,7 @@ ix = ''.join(f'<div class="ix"><span class="ix-n">{i:02d}</span><span class="ix-
              f'<span class="ix-d">{E(MAT[a])}</span></div>' for i, a in enumerate(AMBS, 1))
 folha(f'''<div class="pad">
  <div class="eyebrow">Os ambientes</div><div class="rule"></div>
- <h1 class="h1" style="margin:0 0 2mm">Sete ambientes,<br>um pavimento inteiro.</h1>
+ <h1 class="h1" style="margin:0 0 2mm">Oito ambientes,<br>um pavimento inteiro.</h1>
  <p class="lead" style="margin-bottom:5mm">Uma folha para cada conjunto, com o que a Valvic
     executa ali e em que material cada peça sai.</p>
  <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:0 12mm;flex:1;min-height:0">
@@ -214,6 +215,10 @@ PG = [
   'MDF branco liso · painel em material de cor',
   [('Móvel da janela', 'Nichos com prateleiras dos dois lados da janela e um banco sob ela, com gavetões que guardam o que o quarto precisa esconder.'),
    ('Painel com portas mimetizadas', 'Painel de parede inteira em que as portas pivotantes desaparecem: fechadas, a parede fica lisa.')]),
+ # ⭐ [Jonathan, 06/11/2026] do quarto do Mateus volta SÓ o painel
+ ('O quarto<br>do Mateus.', ['mateus-01'], 'Quarto Mateus',
+  'MDF Grafite',
+  [('Painel com porta oculta', 'Painel em Grafite na parede da TV, com a porta do closet escondida no mesmo material: fechada, a parede fica inteira.')]),
 ]
 for titulo, imgs, tag, acab, itens in PG:
     if len(imgs) == 1:
@@ -369,14 +374,14 @@ folha(f'''<div class="pad">
  <h1 class="h1" style="margin:0 0 3mm">O pavimento, nas duas linhas.</h1>
  <p class="lead" style="max-width:215mm">Cada móvel foi levantado <b>peça por peça do projeto
   executivo</b> — nada é rateio nem estimativa por metro quadrado. Valores em reais.</p>
- <table class="inv" style="margin-top:4mm;table-layout:fixed"><colgroup><col style="width:56%"><col style="width:22%"><col style="width:22%"></colgroup>
+ <table class="inv apertada" style="margin-top:3mm;table-layout:fixed"><colgroup><col style="width:56%"><col style="width:22%"><col style="width:22%"></colgroup>
   <tr><th class="l">Ambiente</th>
    {''.join(f'<th{" class=hi" if L == DESTAQUE else ""}>{E(NOME[L])}</th>' for L in LIN)}</tr>
   {rows}
   <tr class="tot"><td class="l">O projeto completo</td>
    {''.join(f'<td{" class=hi" if L == DESTAQUE else ""}>{brs(TAB[L]["total"])}</td>' for L in LIN)}</tr>
  </table>
- <table class="inv" style="margin-top:6mm;table-layout:fixed"><colgroup><col style="width:56%"><col style="width:22%"><col style="width:22%"></colgroup>
+ <table class="inv apertada" style="margin-top:4mm;table-layout:fixed"><colgroup><col style="width:56%"><col style="width:22%"><col style="width:22%"></colgroup>
   <tr><th class="l">Opcional · fora do projeto completo</th>
    {''.join(f'<th{" class=hi" if L == DESTAQUE else ""}>{E(NOME[L])}</th>' for L in LIN)}</tr>
   {opc_rows}
@@ -422,9 +427,9 @@ folha(f'''<div class="pad" style="padding-bottom:20mm">
    <ul>
     <li><div class="k">Banheiros</div><div class="v">Gabinetes, armários de espelho e
       cristaleiras dos banhos não entram nesta proposta.</div></li>
-    <li><div class="k">Retirados nesta versão</div><div class="v">Os móveis do quarto do
-      Mateus e as portas dos closets do casal, da Ana e do Mateus. As portas de espelho do
-      closet do casal seguem como opcional.</div></li>
+    <li><div class="k">Retirados nesta versão</div><div class="v">No quarto do Mateus, a mesa,
+      as prateleiras, a cabeceira e as mesas de cabeceira; e as portas dos closets do casal, da
+      Ana e do Mateus. As portas de espelho do closet do casal seguem como opcional.</div></li>
     <li><div class="k">Pedra e vidro avulso</div><div class="v">Bancadas, revestimentos em
       mármore e as cristaleiras de vidro.</div></li>
     <li><div class="k">Outros pavimentos</div><div class="v">Academia, rooftop e fachada, e o
@@ -459,6 +464,8 @@ folha(f'''<div class="cv">
 EXTRA = re.search(r"EXTRA = '''(.*?)'''", src, re.S).group(1)
 AJUSTE = re.search(r"AJUSTE = '''(.*?)'''", src, re.S).group(1)
 EXTRA += '''
+.inv.apertada td,.inv.apertada th{padding-top:1.3mm;padding-bottom:1.3mm}
+.inv.apertada tr.tot td{padding-top:2mm;padding-bottom:2mm}
 .gar .c .selo{margin-bottom:2mm}
 .cmp td.l{width:30mm}
 '''
@@ -485,7 +492,7 @@ assert not re.search(r'\d+\s*(cm|mm|m²|m\b)', _amb), '⛔ medida na descrição
 assert not re.search(r'\b(\d+|duas|dois|três|quatro|cinco|seis)\s+(portas?|gavet\w+|prateleiras?)', _amb, re.I), '⛔ contagem'
 assert sum(amb_total('hettich', a) for a in AMBS) == TAB['hettich']['venda']
 assert TAB['hettich']['total'] == TAB['hettich']['venda'] + TAB['hettich']['servico']
-assert 'elescóp' not in _t and 'Quarto Mateus' not in _t, '⛔ resto da versão de 04/11'
+assert 'elescóp' not in _t, '⛔ resto da versão de 04/11'
 
 OUT = R / 'proposta-phillip-giselle.html'
 OUT.write_text(HTML, encoding='utf-8')

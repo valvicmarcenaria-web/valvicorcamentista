@@ -44,7 +44,7 @@ B = MC.base(0, rt=False, vendedor=False)                      # 84,875%
 PAGTO = [('Entrada, na assinatura do contrato', 0.30), ('30 dias após a assinatura', 0.20),
          ('60 dias após a assinatura', 0.20), ('90 dias após a assinatura', 0.30)]
 ORDEM = ['Quarto casal', 'Closet casal', 'Closet casal · portas de espelho', 'Suíte Ana',
-         'Closet Ana', 'Closet Mateus', 'Rouparia', 'Circulação']
+         'Closet Ana', 'Quarto Mateus', 'Closet Mateus', 'Rouparia', 'Circulação']
 FIXO_ITEM = {('Suíte Ana', 'Móvel da janela (nichos, banco e gavetões)'): 9800.0,
              ('Suíte Ana', 'Painel com 3 portas mimetizadas'): 15600.0,
              # ⭐ "ambas as portas ripadas são de correr, preço final de ambas 8.500"
@@ -52,7 +52,11 @@ FIXO_ITEM = {('Suíte Ana', 'Móvel da janela (nichos, banco e gavetões)'): 980
              # ⭐ [Jonathan, 06/11/2026] "as portas de espelho do closet vamos
              #   vender por 4.500" · ⛔ ABAIXO DO CUSTO: decisão de preço
              #   declarada, e a MC negativa sai impressa na tabela
-             ('Closet casal · portas de espelho', 'Portas de giro com espelho na sapateira'): 4500.0}
+             ('Closet casal · portas de espelho', 'Portas de giro com espelho na sapateira'): 4500.0,
+             # ⭐ [Jonathan, 06/11/2026] "volte o Painel com porta oculta ... será
+             #   o mesmo custo do painel com as portas da suíte da Ana" (15.600),
+             #   "na verdade 2.100 a menos" → 13.500, igual nas duas linhas
+             ('Quarto Mateus', 'Painel com porta oculta'): 13500.0}
 # ⭐ "Rouparia, valor total de venda 9.300" (os dois armários na proporção)
 FIXO_AMB = {'Rouparia': 9300.0}
 # ⭐ MESCLA num item só [Jonathan, 04/11/2026]: o fator é o desconto do total
@@ -79,7 +83,7 @@ VISTO = {('Quarto casal', 'Mesa rack suspensa'): (4250, 7310),
 ANTES = {('Closet casal', 'Closet completo: armários, sapateira com espelho e fechamento'): (45030, 55720),
          ('Closet Ana', 'Armário em L do piso ao forro'): (28460, 33880),
          ('Closet Mateus', 'Armário em L do piso ao forro'): (28460, 33880),
-         ('Quarto Mateus', '(cinco itens)'): (17550, 19850)}
+         ('Quarto Mateus', 'Painel com porta oculta'): (7320, 7320)}
 TOTAL_ANTES = {'hettich': 203980, 'blum': 232510}
 # ⭐ [Jonathan, 06/11/2026] "linha própria, não embutida no conjunto": o
 #   opcional NÃO soma no total do projeto, aparece ao lado dele.
@@ -162,7 +166,8 @@ for k, t in TAB.items():
 for k, t in TAB.items():
     t['servico'] = sum(v for _d, v, _o in AVULSO)
     t['total'] = t['venda'] + t['servico']
-assert (TAB['hettich']['total'], TAB['blum']['total']) == (158120, 180730), '⛔ o total apresentado andou'
+assert (TAB['hettich']['total'], TAB['blum']['total']) == (158120 + 13500, 180730 + 13500), \
+    '⛔ o total andou além do painel do Mateus'
 
 # ⛔ as travas
 for x in TAB['hettich']['pv']:
