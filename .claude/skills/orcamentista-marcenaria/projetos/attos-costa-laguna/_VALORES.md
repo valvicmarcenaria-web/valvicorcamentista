@@ -79,3 +79,31 @@ nem sistema de correr.
 - **Dobradiça de porta de vidro a R$ 70** continua marcada *a cotar* na
   própria Base, e são 26 delas.
 - **Frete**: as quatro linhas da Base seguem vazias de propósito.
+
+## ⭐ A VERSÃO FECHADA NA HETTICH · 06/11/2026
+
+O cliente escolheu a linha **Hettich**, e o Jonathan pediu um caderno mais curto:
+- `hettich.py` lê `linhas.monta()` e confere que o motor ainda dá R$ 184.184,35.
+- `caderno_hettich.py` gera `proposta-costa-laguna-hettich.pdf`, com **9 folhas** em
+  vez de 18.
+
+| mudança | efeito |
+|---|---:|
+| sai o Gourmet, o painel liso e a cabeceira estofada da suíte e as mesas de cabeceira | − 19.948,04 |
+| entra o painel da rouparia: MDF melamínico amadeirado, portas de substituição e pulsadores Blum (preço cravado) | + 9.700 |
+| entra o painel liso do quarto de hóspedes, **cortesia** | 0 |
+| cada item arredondado ao real, e o total é a soma do que se lê | |
+| **A casa inteira, Hettich** | **173.936** |
+
+O pagamento continua 30/20/20/30 por transferência: a entrada é de R$ 52.180,80.
+Prazo de 70 dias corridos após a medição, com o escritório entregue até 10/12/2026.
+Garantia de 10 anos.
+
+⚠ Sem custo levantado, e por isso sem MC calculada:
+- a **rouparia**: o preço foi cravado em R$ 9.700, e falta prancha e medida;
+- o **painel de cortesia**: sai a R$ 0 para o cliente, mas tem custo. Falta confirmar
+  qual é o quarto de hóspedes (a suíte 01? a suíte 02?) e a medida.
+
+⭐ A folha das ferragens leva as três imagens que o Jonathan mandou: a gaveta Hettich com
+o selo de 80 mil ciclos, a corrediça oculta e a dobradiça Sensys. O texto não cita número
+de ciclos, para não brigar com o selo.
