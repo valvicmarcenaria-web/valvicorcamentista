@@ -11,19 +11,18 @@ O **cliente é CHARBEL CHELALA**, e é esse nome que vai no orçamento.
 |---|---|---|
 | `2_Layout FL 2` | planta de layout 1:50, com os pés-direitos | ✅ |
 | `12 A 14 · EXE Plantas` | 12 layout · 13 marmoraria · 14 marcenaria | ✅ |
-| `15 A 25 · EXE Plantas` | **os detalhes de cada móvel** | ⛔ **NÃO** |
+| `15 A 25 · EXE Plantas` | **os detalhes de cada móvel** | ✅ |
 
-⛔⛔ **E É O QUE FALTA QUE DECIDE O ORÇAMENTO.** Todo item de marcenaria da
-lista diz **"(Ver det.)"**, e o detalhe mora nas pranchas 15 a 25. Sem elas
-eu tenho pegada em planta, não tenho altura, divisão interna, porta, gaveta
-nem prateleira — e "ferragem Blum" se conta na elevação, não na planta.
+⭐⭐ **AS ONZE CHEGARAM EM 06/11 E ESTÃO LIDAS.** Era o que faltava: todo
+item de marcenaria da prancha 12 dizia **"(Ver det.)"**, e o detalhe mora
+nas 15 a 25. Agora tenho altura, divisão interna, porta, gaveta e
+prateleira — que é onde a ferragem Blum se conta.
 
-⚠ **Por que não baixei:** o arquivo tem **24 MB** e o conector do Drive
-recusa acima de **10 MB**. Liberei `drive.google.com` na rede do ambiente e
-tentei direto: o Drive devolve a **página de login**, porque o arquivo não
-está compartilhado por link. Resolve-se de dois jeitos, os dois do dono:
-compactar como ele fez com o anteprojeto do Attos, ou pôr o arquivo como
-"qualquer pessoa com o link".
+⛔ **E A PRANCHA 15 QUASE ME ENGANOU.** O texto dela só nomeia Quartzito
+Verde Guatemala, e eu a tinha arquivado como marmoraria. ⭐ **É a cozinha
+inteira** — superior de 383 cm, inferior com quatro gavetas e o painel do
+forno. **O que decide se a folha é nossa não é o material que ela nomeia, é
+o que ela desenha.**
 
 ## Os sete ambientes e os pés-direitos (planta de layout)
 
@@ -112,3 +111,157 @@ elevação cotada, e as elevações estão nas pranchas 15 a 25.
 **Ferragem Blum em tudo** · **RT de 10%** → BASE **76,09%** · **MC 43%**, a
 mesma que a linha Blum levou no Costa Laguna. Está em `base.py`, com as
 travas que provam a cascata.
+
+---
+
+# O CATÁLOGO · o que é nosso, prancha por prancha
+
+⭐ = marcenaria Valvic · ⛔ = marmoraria, obra, eletro ou outro fornecedor
+
+## 15 · COZINHA — VISTA 01 (parede do forno, 383 × 247)
+
+| ⭐ | peça | medida |
+|---|---|---|
+| ⭐ | Armário superior · MDF Caribe, portas de abrir | 383,00 × 87,00 |
+| ⭐ | Varal retrátil **estilo gaveta** · MDF Caribe | 75,00 × 12,00 |
+| ⭐ | Armários inferiores · 40 + 40 + 72 (forno) + 22 + 83,76 | 383,00 × 76/90 |
+| ⭐ | **4 gavetas** marcadas "Gav." no inferior | — |
+| ⭐ | Painel fixo para encaixe do forno | 72,00 × 76,00 |
+| ⭐ | Puxador **cava no próprio material** da porta/gaveta | toda a cozinha |
+| ⛔ | Bancadas A (287 × 65), B (72 × 41), C (126 × 52) e nicho 203 × 70 × 32 | Quartzito |
+| ⛔ | Forno a gás de embutir, bojos | eletro |
+
+## 16 · COZINHA VISTA 02 · HALL · JANTAR
+
+| ⭐ | peça | medida |
+|---|---|---|
+| ⭐ | Superiores vista 02 · 65 + 57 + 25 + 72 | 219,00 × 98,00 |
+| ⭐ | **Torre central com o QDC embutido** · 88 + 53 + 31 + 30,5 | 170,00 h |
+| ⭐ | Armário inferior sob a bancada + módulo de 72 | 121,00 × 84,00 |
+| ⭐ | Armário lateral MDF Caribe · 139 + 36 + 72 | 247,00 h |
+| ⭐ | **VISTA 04 · divisória do hall**, moldura curva r = 10, 2 gavetas de 51,50 | 109,00 × 237,00 × 7,00 |
+| ⭐ | **VISTA 03 · cristaleira** — superior envidraçada 139 h, 4 prateleiras 51 + 51; aparador 107 × 36; base 2 portas de 50; acabamento curvo **ripado** | 109,00 × 247,00 |
+| ⭐ | **Forro do hall em madeira** (desenvolvimento 141,37) | 108,00 × 109,00 |
+| ⭐ | Rodapé inox · bottons de acionamento | — |
+| ⛔ | Painel de ônix 103 × 175 e mármore do hall 93 × 178 | marmoraria |
+| ⛔ | "Painel fixo em **alvenaria**" e revestimento existente | obra |
+
+## 17 · ESTAR & TV — VISTA 05 (249,00 de altura)
+
+| ⭐ | peça | medida |
+|---|---|---|
+| ⭐ | Painel fixo MDF Caribe · 124 à esquerda + 30 à direita | 255,00 h |
+| ⭐ | **Adega com suporte metálico** para garrafas | 35,00 × 141,50 |
+| ⭐ | **Portas em vidro reflecta bronze** · 2 × 43,75 | 88,00 × 141,00 |
+| ⭐ | Porta de abrir **em MDF ripado** Caribe | 35,00 |
+| ⭐ | Porta de correr **em MDF ripado** Caribe | 2 × 25,00 |
+| ⭐ | Nichos (45,00) · rodapé inox · acabamento curvo ripado | — |
+| ⭐ | **Pé 01 da mesa de jantar** · ovalado, entalhamento diagonal | 22,00 × 40,00 h |
+| ⭐ | **Pé 02 da mesa de jantar** · Ø 28,00 (r = 14), entalhado | 28,00 × 40,00 h |
+| ⛔ | Pedra vertical da TV 193 × 147 × 4 · rack 367 × 47 · tampo 150 × 77 | Quartzito |
+| ⛔ | Frigobar 40 L + adega 14 garrafas Elettromec inox | eletro |
+
+## 18 · ACESSOS & CORREDOR
+
+| ⭐ | peça | medida |
+|---|---|---|
+| ⭐ | Painel fixo MDF Caribe · 137 + 74 + 30,53 + 105 | 346,53 × 255,00 |
+| ⭐ | **Porta de acesso à suíte embutida no painel** | 104,00 × 208,00 |
+| ⭐ | **Porta de acesso ao quarto embutida no painel** | 105,00 × 208,00 |
+| ⭐ | VISTA 08 · painel | 74,00 × 260,00 × 14,20 |
+| ⭐ | VISTA 07 · painel com **espelho fixado na marcenaria** 75 × 220 | 260,00 h |
+| ⭐ | **ARMÁRIO F** · acabamento curvo ripado | 90,40 × 250,00 × 37,05 |
+| ⛔ | Faixa de quartzito 105,49 atravessando o armário F | marmoraria |
+
+## 19 · SUÍTE
+
+| ⭐ | peça | medida |
+|---|---|---|
+| ⭐ | **Forro em MDF Cipres** (mapa-chave do forro da suíte) | ver planta |
+| ⭐ | **Divisória MDF vista 12** · ripado vazado 4 × 240 × 4,20 na faixa de 45 | 190,00 × 260,00 × 7,00 |
+| ⭐ | **Divisória MDF vista 13** · idem + **espelho 83 × 235** | 190,00 × 260,00 × 7,00 |
+| ⭐ | Armário & nichos · gaveta de 79; **4 fitas LED** | 138,00 × 140,00 |
+| ⭐ | **Painel da cabeceira** · Cipres + Fontana Magma · 2 fitas LED · bits 0,5 e 1,5 | 357,50 × 278,00 |
+| ⭐ | Sapateira (90,00) e nicho (55,00) da vista 10 | — |
+| ⛔ | Forro em pintura branco neve | pintor |
+
+## 20 · SUÍTE (painel da vista 11, bancada, cabeceira, sapateira)
+
+| ⭐ | peça | medida |
+|---|---|---|
+| ⭐ | **Painel vista 11** · Cacao Matt + Fontana Magma + Cipres · fita LED · rodapé inox h = 2 | 288,00 × 258,00 |
+| ⭐ | Prateleira do painel · Cacao Matt | 225,50 × 28,00 |
+| ⭐ | **Bancada · 4 gavetas de 39,00** · Cacao Matt · curvo r = 20 | 178,00 × 40,00 × 75,00 |
+| ⭐ | **Mesa de cabeceira · 3 gavetas de 49 × 14** · fita metálica em latão dourado · r = 8 | 65,00 × 40,00 × 50,00 |
+| ⭐ | Sapateira · puxador cilíndrico/botão h = 110 | 23,50 × 44,00 × 248,00 |
+
+## 21 · SUÍTE · O CLOSET ⭐⭐ (a maior peça do apartamento)
+
+| ⭐ | peça | medida |
+|---|---|---|
+| ⭐ | **Vista 9A** · 2 maleiros, 3 cabides, 4 prateleiras, **3 gavetas**, 3 nichos | 418,50 × 257,00 |
+| ⭐ | **Vista 9B** · maleiro, 2 cabides, 3 prateleiras | 150,00 × 257,00 |
+| ⭐ | **Vista 9C** · **8 prateleiras inclinadas** (8 × 22,50 = 180) | 90,00 × 257,00 |
+| — | planta 416,00 × 329,00 · acabamento curvo r = 8 · Cipres + Cacao Matt | — |
+
+## 22 · BANHO SUÍTE (MDF Cinza Sagrado Duratex)
+
+| ⭐ | peça | medida |
+|---|---|---|
+| ⭐ | **Armário superior / espelheira** · portas espelhadas · fita LED no eixo h = 90 | 183,00 × 110,00 × 17,00 |
+| ⭐ | **Armário inferior** · 2 portas de 32,50 + **3 gavetas de 34,00** | 103,00 × 55,00 × 40,00 |
+| ⚠ | "Bancada nova" de 80,00 sobre a existente — **marcenaria ou pedra?** | a confirmar |
+| ⛔ | Nicho do box 54 × 243 com **moldura em mármore branco** | marmoraria |
+
+## 23 · BANHEIRO SOCIAL (MDF Cinza Sagrado Duratex)
+
+| ⭐ | peça | medida |
+|---|---|---|
+| ⭐ | **ARMÁRIO H** · 2 portas de 38,25 · nicho de 27 na base | 77,00 × 168,00 |
+| ⭐ | **ARMÁRIO G** · porta espelhada · **puxador cava na estrutura do espelho** | 70,00 × 140,00 × 19,00 |
+| ⭐ | Espelho de 140 × 140 (a prancha diz "fixado na parede") | 140,00 × 140,00 |
+| ⛔ | Bancada em granito Grigio Carnico · cuba esculpida · rodaparede 160 × 110 · prateleiras em mármore | marmoraria |
+
+## 24 · QUARTO
+
+| ⭐ | peça | medida |
+|---|---|---|
+| ⭐ | **Armário** · 2 portas de correr de 97,50 (h 178 / 251) · Cacao Matt + Cipres | 305,00 × 255,00 × 64,00 |
+| ⭐ | Retorno em L · 69 + 36 | 105,00 h |
+| ⭐ | **Móvel baú · porta retrátil** em Cacao Matt · 118 + 91 | 209,00 × 36,00 |
+| ⭐ | Bancada do armário e prateleira em MDF Cipres | — |
+
+## 25 · QUARTO (parede da cabeceira)
+
+| ⭐ | peça | medida |
+|---|---|---|
+| ⭐ | Painel fixo MDF Cipres · 227 + 106 | 333,00 × 255,00 × 13,00 |
+| ⭐ | **Espelho fixado na marcenaria** | 75,00 × 220,00 |
+| ⭐ | **Revestimento por baixo da viga** | 333,00 × 23,00 |
+| ⛔ | Papel de parede · ar-condicionado | outros |
+
+## O que se repete em TODAS as folhas, e por isso é fácil esquecer
+
+**Fita LED embutida** · **bottons de acionamento instalados na marcenaria** ·
+**puxador tipo cilíndrico / botão h = 110** · **puxador cava** usinado no
+próprio material · **rodapé inox h = 2** · bits de 0,5 e 1,5 cm ·
+acabamentos curvos r = 8 / 10 / 15 / 20.
+
+⛔ *"Toda a iluminação da marcenaria será disponibilizada por rede elétrica
+através do forro"* — **a rede é do eletricista, a fita e o botton são
+nossos.** A frase está em cinco folhas e engana nos dois sentidos.
+
+## ⚠⚠ OS CINCO PADRÕES DE MDF — e a Base só conhece "MDF cor"
+
+| padrão | onde | linha |
+|---|---|---|
+| **MDF Caribe Linha Dual Syncro** · Guararapes | cozinha, hall, jantar, estar/TV, acessos | ⚠ premium |
+| **MDF Cipres** · Guararapes | suíte, closet, quarto | padrão |
+| **MDF Fontana Linha Magma** · Guararapes | painéis da suíte | ⚠ premium |
+| **MDF Cacao Matt** · Arauco | bancada e prateleira da suíte, closet, quarto | ⚠ matt |
+| **MDF Cinza Sagrado** · Duratex | os dois banhos | padrão |
+
+⛔ A nossa Base tem **um** preço genérico de "MDF cor": R$ 700 (18 mm) e
+R$ 550 (15 mm). **Dual Syncro e Magma são linhas texturizadas de topo e não
+custam isso.** O orçamento sai com o preço da Base e com a sensibilidade
+medida — mas **a cotação real dessas cinco é a primeira coisa a fazer.**
