@@ -51,7 +51,16 @@ def paginas_do_pdf(caminho):
 
 NODE = '/opt/node22/bin/node'
 NODE_PATH = '/opt/node22/lib/node_modules'
-CHROMIUM = '/opt/pw-browsers/chromium-1194/chrome-linux/chrome'
+import glob as _glob
+def _chromium():
+    for c in ['/opt/pw-browsers/chromium/chrome-linux/chrome',
+              '/opt/pw-browsers/chromium']:
+        if os.path.exists(c) and not os.path.isdir(c): return c
+    cands = sorted(_glob.glob('/opt/pw-browsers/chromium-*/chrome-linux/chrome'))
+    if cands: return cands[-1]
+    cands = sorted(_glob.glob('/opt/pw-browsers/chromium*/chrome-linux*/*chrome*'))
+    return cands[-1] if cands else '/opt/pw-browsers/chromium'
+CHROMIUM = _chromium()
 
 JS = r"""
 const {chromium} = require('playwright');
