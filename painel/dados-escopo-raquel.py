@@ -19,7 +19,7 @@ PECAS = [
  ('16', 'Armário aéreo maior', 'MDF Lume Guararapes', '8', 'Puxador passante'),
  ('17', 'Armário aéreo menor · 2 un', 'MDF Lume Guararapes', '8', 'Puxador passante'),
  ('18', 'Painel da persiana', 'MDF Lume Guararapes', '6 e 9',
-  'Vão recuado para a persiana descer — conferir a medida com a Luiza Valentina antes de fabricar'),
+  'Vão recuado para a persiana descer — <b>medida a alinhar com a arquiteta</b> antes de fabricar'),
  ('19', 'Gaveteiro', 'MDF Cancún Sudati', '5', 'Quatro gavetas · rodízio de silicone com trava'),
  ('20', 'Mesa de cabeceira', 'MDF Cancún Sudati', '3', 'Uma gaveta · interruptor com tomada'),
  ('21', 'Cabideiro · 4 un', 'MDF Lume Guararapes', '5', ''),
@@ -52,5 +52,5 @@ DEFINIR = [
  ('Conferência de medidas no local',
   'Exigida em todas as pranchas. Há fotos de medição de 05/11 na pasta do cliente — confirmar se cobrem todos os ambientes.'),
  ('Vão da persiana',
-  'O painel tem recuo para a persiana descer. Alinhar a medida com a Luiza Valentina antes de fabricar.'),
+  'O painel tem recuo para a persiana descer. <b>Alinhar a medida com a arquiteta</b> antes de fabricar.'),
 ]
