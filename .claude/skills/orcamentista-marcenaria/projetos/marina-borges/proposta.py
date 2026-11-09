@@ -12,10 +12,11 @@
   dessa proposta"]. O que muda é o projeto: lá eram cinco armários num
   padrão só; aqui são nove ambientes em cinco padrões de MDF.
 
-⚠ O FECHAMENTO É R$ 625.000,00 e o modelo dá R$ 625.048,57. A tabela da
-  folha de investimento é RATEADA para fechar no redondo, centavo a
-  centavo, e a sobra do arredondamento cai na maior linha. Uma tabela de
-  proposta que não soma o total é um erro que o cliente encontra.
+⚠ O FECHAMENTO É R$ 625.000,00 e o modelo, depois que o Branco TX saiu do
+  interior, dá R$ 645.096,69. A tabela da folha de investimento é RATEADA
+  para fechar no redondo, centavo a centavo. ⛔ Isso NÃO é arredondamento:
+  são R$ 20 mil absorvidos na margem, que cai de 57,0% para 56,4%. Uma
+  tabela de proposta que não soma o total é um erro que o cliente encontra.
 """
 import io, json, os, subprocess, sys
 
@@ -24,7 +25,7 @@ sys.path.insert(0, AQUI)
 import base as b
 
 FOTOS = os.path.join(AQUI, 'fotos')
-FONTES = '/tmp/claude-0/-home-user-valvicorcamentista/7882701a-ab48-5bc5-bc38-040da97b2b38/scratchpad/prop/f'
+FONTES = os.path.join(AQUI, 'pr')          # cormorant.css + os .woff2 moram junto da saída
 
 
 # ── o dinheiro ──────────────────────────────────────────────────────────
@@ -67,129 +68,137 @@ def le():
 #     saber de chapa, quer saber o que vai usar todo dia.
 AMB = {
  '01 Cozinha': dict(
-  foto='d-cozinha.jpg', desenho=True, tarja='COZINHA', titulo='A cozinha.',
+  foto='c-cozinha.jpg', tarja='COZINHA', titulo='A cozinha.',
   bullets=[
-   ('Os dois armários da vista 01', 'O superior tem <b>383 cm de frente e sete folhas de abrir</b>; o inferior, de 76 a 90 de altura, leva duas portas de 40, quatro gavetas e o <b>painel do forno</b>. A frente é contínua: o móvel fechado é uma peça só.'),
-   ('O puxador não é comprado', 'São <b>11,53 m de cava usinada no próprio material</b>. Sem peça aplicada, sem metal à vista, sem o que soltar com os anos.'),
-   ('A torre central esconde o quadro', 'Os 72 × 247 × 60 da torre absorvem o <b>QDC do apartamento</b> atrás de uma tampa que abre. O quadro deixa de ser um retângulo na parede.'),
-   ('O varal corre como gaveta', 'E por isso leva <b>par de corrediça Blum Movento</b>, não trilho de varal: sai inteiro e volta sozinho.'),
+   ('A frente é uma peça só', 'Os armários superior e inferior correm a parede inteira sem interrupção de desenho, e o painel do forno entra na mesma linha da frente.'),
+   ('O puxador não é comprado', 'É <b>cava usinada no próprio material</b> da porta e da gaveta. Sem peça aplicada, sem metal à vista, sem o que soltar com os anos.'),
+   ('A torre central esconde o quadro', 'O quadro de distribuição do apartamento fica atrás de uma tampa que abre. Deixa de ser um retângulo na parede.'),
+   ('O varal corre como gaveta', 'Por isso sai sobre <b>corrediça Blum</b>, não sobre trilho de varal: sai inteiro e volta sozinho.'),
   ],
-  acab='MDF Caribe Linha Dual Syncro, da Guararapes · interior em Branco TX · puxador cava usinado · rodapé inox · ferragem Blum'),
+  acab='MDF Caribe Linha Dual Syncro, da Guararapes · interior no mesmo padrão · puxador cava usinado · rodapé inox · ferragem Blum'),
 
  '02 Hall e Jantar': dict(
   foto='r-40-02.jpg', tarja='HALL E JANTAR', titulo='O hall<br>e o jantar.',
   bullets=[
-   ('A cristaleira de 247', 'Dois metros e meio de altura, com a <b>vitrine de 139 fechada por porta de perfil e vidro</b> e o aparador embaixo. É a peça que se vê da entrada.'),
-   ('A divisória da vista 04', 'Tem <b>moldura curva de raio 10 usinada na própria folha</b> e duas gavetas de 51,5 na base — a curva é usinagem, não perfil colado.'),
-   ('O forro em madeira', 'Os 108 × 109 do hall viram <b>141,37 cm de desenvolvimento</b> pelo detalhe da prancha: o forro acompanha o recorte, não o retângulo.'),
-   ('A porta de vidro', 'Sobre <b>dobradiça Blum para porta de vidro</b>, com fita de LED e fonte própria dentro da vitrine.'),
+   ('A cristaleira é a peça da entrada', 'Vai do chão ao teto, com a vitrine fechada por <b>porta de vidro em esquadria de alumínio</b> e o aparador embaixo.'),
+   ('A esquadria é slim, de 25 mm', 'Perfil fino, que dá <b>leveza à moldura e personalidade ao desenho</b>: o que se vê é o vidro e o que está atrás dele, não o perfil.'),
+   ('A divisória tem moldura curva', 'Usinada na própria folha, não perfil colado por cima.'),
+   ('O forro em madeira acompanha o recorte', 'Não o retângulo: o desenho do teto segue a planta do hall.'),
   ],
-  acab='MDF Caribe Linha Dual Syncro · porta de cristaleira em perfil com vidro · fita de LED com perfil de embutir · ferragem Blum'),
+  acab='MDF Caribe Linha Dual Syncro · porta de vidro em esquadria slim de 25 mm · fita de LED com perfil de embutir · ferragem Blum'),
 
  '03 Estar e TV': dict(
   foto='r-40-00.jpg', tarja='ESTAR E TV', titulo='O estar<br>e a TV.',
   bullets=[
-   ('A base do rack tem 367 cm', 'Uma porta de abrir e <b>duas de correr, todas em MDF ripado Caribe</b>, sobre o sistema <b>Blum SI Forma</b> — a folha ripada corre amortecida nos dois sentidos.'),
-   ('A adega fecha em reflecta bronze', 'Duas folhas de 43,75 em <b>vidro reflecta bronze com perfil champanhe</b>, sobre dobradiça Blum de vidro, com estrutura metálica de suporte das garrafas por dentro.'),
-   ('Os dois pés da mesa de jantar', 'Pé 01 ovalado de 22 × 40 em planta, Pé 02 de Ø 28, ambos com <b>entalhamento diagonal usinado em CNC</b>. São peça de marcenaria, não base comprada.'),
-   ('O painel fixo da vista 05', '255 cm de altura, com 47,6 m de filetagem de ripa e sarrafo de pinus estruturando por trás.'),
+   ('A base do rack corre a parede', 'Uma porta de abrir e duas de correr, todas em <b>MDF ripado Caribe</b>, sobre sistema de correr <b>Siforma</b> com amortecimento nos dois sentidos.'),
+   ('A adega fecha em reflecta bronze', 'Vidro reflecta bronze em <b>esquadria slim de 25 mm com perfil champanhe</b>, sobre dobradiça Blum de vidro, com estrutura metálica de suporte das garrafas por dentro.'),
+   ('Os dois pés da mesa de jantar são nossos', 'Com <b>entalhamento diagonal usinado em CNC</b>. São peça de marcenaria, não base comprada.'),
+   ('O painel fixo é ripado', 'Com filetagem nas duas faces de cada ripa, sobre estrutura de sarrafo por trás.'),
   ],
-  acab='MDF Caribe Linha Dual Syncro · ripado com filetagem · vidro reflecta bronze com perfil champanhe · Blum SI Forma · ferragem Blum'),
+  acab='MDF Caribe Linha Dual Syncro · ripado com filetagem · vidro reflecta bronze em esquadria slim de 25 mm, perfil champanhe · Siforma · ferragem Blum'),
 
  '04 Acessos e Corredor': dict(
-  foto='r-40-01.jpg', tarja='ACESSOS E CORREDOR', titulo='Os acessos<br>e o corredor.',
+  foto='c-corredor.jpg', tarja='ACESSOS E CORREDOR', titulo='Os acessos<br>e o corredor.',
   bullets=[
-   ('As portas somem no painel', 'O painel de <b>346,53 × 255</b> recebe a porta da suíte e a do quarto. Fechadas, elas não se leem como porta: a folha continua o ripado do painel, sobre <b>sistema pivô e fecho rolete de porta embutida</b>.'),
-   ('Setenta e cinco metros de ripa', 'É a maior metragem de filetagem do apartamento — e ela corre do hall ao corredor sem interrupção de desenho.'),
-   ('O espelho da vista 07', '75 × 220 <b>fixado na marcenaria</b>, não na parede: sai no mesmo caminhão e é instalado pela mesma equipe.'),
-   ('O ARMÁRIO F', '90,40 × 250 × 37,05, quatro folhas, com <b>acabamento curvo ripado</b> na lateral à vista.'),
+   ('As portas somem no painel', 'Fechadas, a porta da suíte e a do quarto não se leem como porta: a folha <b>continua o ripado do painel</b>, sobre sistema pivô e fecho rolete de porta embutida.'),
+   ('O ripado corre do hall ao corredor', 'Sem interrupção de desenho — é a maior metragem de filetagem do apartamento.'),
+   ('O espelho é fixado na marcenaria', 'Não na parede: sai no mesmo caminhão e é instalado pela mesma equipe.'),
+   ('O armário tem acabamento curvo ripado', 'Na lateral à vista, a ripa <b>vira a quina</b> em vez de topar nela.'),
   ],
   acab='MDF Caribe Linha Dual Syncro e Cipres · ripado com filetagem · espelho fixado na marcenaria · sistema pivô embutido · ferragem Blum'),
 
  '05 Suíte': dict(
   foto='f00.jpg', tarja='SUÍTE', titulo='A suíte.',
   bullets=[
-   ('Quatro padrões de MDF no mesmo quarto', '<b>Cipres, Fontana Linha Magma, Cacao Matt</b> e o Branco TX do interior. O painel da vista 11 usa três deles empilhados: Cacao em cima, Fontana no meio, Cipres embaixo.'),
-   ('O ripado das divisórias é VAZADO', 'Sete ripas de 4 × 240 que <b>atravessam a divisória e se veem dos dois lados</b>. Não é ripado aplicado numa face: é estrutura.'),
-   ('O painel da cabeceira tem 3,58 m', 'Cipres na faixa de cima, <b>Fontana Magma</b> embaixo, com <b>bits de 0,5 e de 1,5</b> usinados e duas fitas de LED. Mais largo que a chapa, sai emendado por projeto — e a emenda é decidida no desenho, não na serra.'),
-   ('A prateleira de 225,5 de vão livre', 'Acima de 1,20 m a regra da casa manda <b>alma de aço</b> por dentro. É contra flecha, e é o que mantém a prateleira reta daqui a dez anos.'),
+   ('Três padrões de MDF no mesmo quarto', '<b>Cipres, Fontana Linha Magma e Cacao Matt</b> — e o painel da cabeceira usa os três empilhados: Cacao em cima, Fontana no meio, Cipres embaixo.'),
+   ('O ripado das divisórias é VAZADO', 'A ripa <b>atravessa a divisória e se vê dos dois lados</b>. Não é ripado aplicado numa face: é estrutura.'),
+   ('O painel da cabeceira é mais largo que a chapa', 'Sai emendado <b>por projeto</b>, e a emenda é decidida no desenho, não na serra.'),
+   ('A prateleira do painel leva alma de aço', 'É o que trabalha contra a flecha, e o que a mantém reta daqui a dez anos.'),
   ],
-  acab='MDF Cipres, Fontana Linha Magma e Cacao Matt · interior em Branco TX · espelho fixado na marcenaria · 11 pares de corrediça Blum Movento · ferragem Blum'),
+  acab='MDF Cipres, Fontana Linha Magma e Cacao Matt · interior no mesmo padrão · espelho fixado na marcenaria · ferragem Blum'),
 
  '06 Closet': dict(
-  foto='r-39-04.jpg', tarja='CLOSET', titulo='O closet.',
+  foto='r-39-04.jpg', tarja='CLOSET', titulo='O closet.', inteira=True,
   bullets=[
-   ('Nove folhas em perfil de alumínio com vidro', 'De <b>piso a teto, 2,57 m de altura</b>, nas três vistas. É o que decide a cara do ambiente e é a razão de o closet ser a maior linha do apartamento.'),
-   ('Com porta de vidro, o interior é fachada', 'Por isso o miolo sai em <b>MDF Cipres</b> e não no Branco TX de interior: tudo o que está atrás do vidro é visto.'),
-   ('A sapateira da 9C é inclinada', 'Oito prateleiras de 22,50 por coluna, duas colunas — <b>dezesseis prateleiras com encaixe usinado em ângulo</b>. O sapato fica de frente, não de lado.'),
-   ('Vinte e quatro metros de LED', 'Fita com perfil de embutir e difusor em cada prateleira e em cada arara, com quatro fontes próprias.'),
-   ('Quarenta e cinco dobradiças de vidro', 'Todas Blum. É o item de ferragem mais repetido do projeto inteiro.'),
+   ('Nove folhas em esquadria de alumínio com vidro', 'De <b>piso a teto</b>, nas três vistas. É o que decide a cara do ambiente, e é a razão de o closet ser a maior linha do apartamento.'),
+   ('A esquadria é slim, de 25 mm', 'Perfil fino, que confere <b>mais leveza e personalidade</b>: a moldura quase desaparece e o que se vê é o vidro e o que está guardado atrás dele.'),
+   ('Com porta de vidro, o interior é fachada', 'Por isso o miolo sai em <b>MDF Cipres</b>, no mesmo padrão da frente: tudo o que está atrás do vidro é visto.'),
+   ('A sapateira é de prateleira inclinada', 'Com <b>encaixe usinado em ângulo</b> na lateral. O sapato fica de frente, não de lado.'),
+   ('A luz corre em cada prateleira e em cada arara', 'Fita de LED com perfil de embutir e difusor, acionada por <b>botton na própria marcenaria</b> — não há interruptor na parede.'),
   ],
-  acab='MDF Cipres · nove folhas em perfil de alumínio com vidro · 24 m de fita de LED · cabideiro em metal · ferragem Blum'),
+  acab='MDF Cipres · nove folhas em esquadria de alumínio slim de 25 mm com vidro · fita de LED com perfil de embutir · cabideiro em metal · ferragem Blum'),
 
  '07 Banho da Suíte': dict(
   foto='f01.jpg', tarja='BANHO DA SUÍTE', titulo='O banho<br>da suíte.',
   bullets=[
-   ('As quatro folhas são espelhadas', 'Espelho prata <b>colado sobre a estrutura de MDF</b> — a folha é espelho inteiro, sem moldura e sem quadro aparente.'),
-   ('O LED corre no eixo h = 90', 'Dentro da faixa de espelho demarcada na prancha, com perfil de embutir e difusor: a luz sai do espelho, não do teto.'),
-   ('O armário inferior', '103 × 55 × 40, duas portas de 32,5 e três gavetas de 34 sobre <b>corrediça Blum Movento</b>.'),
-   ('Padrão único', 'Todo o ambiente em <b>MDF Cinza Sagrado, da Duratex</b> — o único dos cinco padrões que aparece só aqui e no banheiro social.'),
+   ('As folhas são espelhadas', 'Espelho prata <b>colado sobre a estrutura de MDF</b> — a folha é espelho inteiro, sem moldura e sem quadro aparente.'),
+   ('A luz sai do espelho', 'A fita de LED corre dentro de uma faixa demarcada no desenho, com perfil de embutir e difusor. Não vem do teto.'),
+   ('Padrão único', 'Todo o ambiente em <b>MDF Cinza Sagrado, da Duratex</b>, por fora e por dentro.'),
   ],
-  acab='MDF Cinza Sagrado, da Duratex · interior em Branco TX · espelho prata colado na folha · puxador cava usinado · ferragem Blum'),
+  acab='MDF Cinza Sagrado, da Duratex · interior no mesmo padrão · espelho prata colado na folha · puxador cava usinado · ferragem Blum'),
 
  '08 Banheiro Social': dict(
   foto='r-39-03.jpg', tarja='BANHEIRO SOCIAL', titulo='O banheiro<br>social.',
   bullets=[
-   ('A porta infinita do ARMÁRIO G', 'O puxador é <b>cava usinada na própria estrutura do espelho</b>. A prancha chama de porta infinita: não há onde a mão apareça, e não há peça aplicada sobre o espelho.'),
-   ('O ARMÁRIO H', '77 × 168, duas portas de 38,25 × 138 e um <b>nicho aberto de 27 na base</b>, sobre dobradiça Blum.'),
-   ('São três peças de espelho', 'A folha do G, o espelho de <b>140 × 140</b> da vista 16 e a moldura — todas nossas, todas no mesmo caminhão.'),
+   ('A porta infinita', 'O puxador é <b>cava usinada na própria estrutura do espelho</b>. Chamamos assim porque não há onde a mão apareça, e não há peça aplicada sobre o espelho.'),
+   ('São três peças de espelho', 'A folha do armário, o espelho fixado e a moldura — todas nossas, todas no mesmo caminhão.'),
+   ('O nicho aberto na base', 'Quebra a frente cheia e dá onde apoiar, sem porta.'),
   ],
-  acab='MDF Cinza Sagrado, da Duratex · interior em Branco TX · três peças de espelho prata · puxador cava usinado · ferragem Blum'),
+  acab='MDF Cinza Sagrado, da Duratex · interior no mesmo padrão · três peças de espelho prata · puxador cava usinado · ferragem Blum'),
 
  '09 Quarto': dict(
   foto='r-39-07.jpg', tarja='QUARTO', titulo='O quarto.',
   bullets=[
-   ('Duas folhas de correr de 97,5', 'Em <b>Cacao Matt</b>, sobre o sistema <b>Blum SI Forma</b>. Folha de 70 cm ou mais leva <b>dois desempenadores</b> — são quatro no armário, e é o que impede a folha de descer com o tempo.'),
-   ('O armário tem 3,05 m e dobra em L', 'Nichos abertos em Cipres, bancada, prateleira e <b>retorno em L de 105</b> na volta da parede.'),
-   ('O móvel baú abre retrátil', 'A frente de 91 em Cacao Matt <b>entra para dentro</b> em vez de girar para fora — a prancha desenha a projeção de abertura.'),
-   ('O painel da cabeceira tem 13 cm', 'E abraça um <b>espelho de 75 × 220</b> dentro de moldura de 106 × 248, com pulsador Blum Tip-on no acionamento.'),
+   ('Duas folhas de correr em Cacao Matt', 'Sobre sistema de correr <b>Siforma</b>. Folha larga leva <b>dois desempenadores</b>, e é o que a impede de descer com o tempo.'),
+   ('O armário dobra em L', 'Nichos abertos em Cipres, bancada e prateleira, e o retorno acompanha a volta da parede.'),
+   ('O móvel baú abre retrátil', 'A frente em Cacao Matt <b>entra para dentro</b> em vez de girar para fora.'),
+   ('O painel da cabeceira abraça o espelho', 'Dentro de moldura, com <b>pulsador Blum Tip-on</b> no acionamento da luz.'),
   ],
-  acab='MDF Cacao Matt, da Arauco, e Cipres · interior em Branco TX · espelho fixado na marcenaria · Blum SI Forma · ferragem Blum'),
+  acab='MDF Cacao Matt, da Arauco, e Cipres · interior no mesmo padrão · espelho fixado na marcenaria · Siforma · ferragem Blum'),
 }
 
+#   ⭐ DOIS AMBIENTES POR FOLHA [Jonathan, 09/11/2026]. O closet fica
+#     sozinho: é a maior linha do apartamento e a imagem que vende o job.
+PARES = [('01 Cozinha', '02 Hall e Jantar'),
+         ('03 Estar e TV', '04 Acessos e Corredor'),
+         ('05 Suíte', '09 Quarto'),
+         ('06 Closet', None),
+         ('07 Banho da Suíte', '08 Banheiro Social')]
 ORDEM = ['01 Cozinha', '02 Hall e Jantar', '03 Estar e TV', '04 Acessos e Corredor',
          '05 Suíte', '06 Closet', '07 Banho da Suíte', '08 Banheiro Social', '09 Quarto']
 
+#   ⛔ SEM CONTAGEM DE CHAPA [Jonathan: "é dispensavel apresentar
+#     quantitativo de insumos"]. E sem Branco TX, que não existe neste
+#     projeto: o interior sai no padrão do próprio ambiente.
 PADROES = [
- ('Caribe', 'Linha Dual Syncro · Guararapes', 'Cozinha, hall, jantar, estar e corredor', 18),
- ('Cipres', 'Guararapes', 'Suíte, closet, quarto e corredor', 35),
- ('Fontana', 'Linha Magma · Guararapes', 'Cabeceira, painéis e tampos da suíte', 5),
- ('Cacao', 'Matt · Arauco', 'Bancada da suíte e portas de correr do quarto', 3),
- ('Cinza Sagrado', 'Duratex', 'Banho da suíte e banheiro social', 2),
- ('Branco TX', 'por dentro', 'Caixaria, gavetas e fundos de todo o apartamento', 23),
+ ('Caribe', 'Linha Dual Syncro · Guararapes', 'Cozinha, hall, jantar, estar e corredor'),
+ ('Cipres', 'Guararapes', 'Suíte, closet, quarto e corredor'),
+ ('Fontana', 'Linha Magma · Guararapes', 'Cabeceira, painéis e tampos da suíte'),
+ ('Cacao', 'Matt · Arauco', 'Bancada da suíte e portas de correr do quarto'),
+ ('Cinza Sagrado', 'Duratex', 'Banho da suíte e banheiro social'),
 ]
 
+#   ⭐⭐ BLUM E SIFORMA SÃO EMPRESAS DIFERENTES [Jonathan, 09/11/2026], e eu
+#     as tinha misturado numa linha só, "Blum SI Forma". A Blum é austríaca
+#     e faz dobradiça, corrediça e pulsador. O sistema de correr SI Ocean 80
+#     é da SIFORMA. Escrever as duas juntas é erro de ficha técnica, e numa
+#     proposta de 625 mil ficha técnica errada é o que o cliente confere.
 FERRAGEM = [
- ('104', 'DOBRADIÇAS BLUM', 'Blum CLIP top BLUMOTION',
+ ('DOBRADIÇA', 'Blum CLIP top BLUMOTION', 'img-000.png', None,
   ['Amortecimento <b>BLUMOTION</b> embutido no caneco: a porta fecha suave e em silêncio.',
    'Encaixe <b>CLIP</b>: a porta se monta e se retira sem ferramenta, para limpeza ou ajuste.',
    'Regulagem em altura, lateral e profundidade: a porta se realinha em minutos.',
-   'Testada em <b>200 mil</b> aberturas e fechamentos.']),
- ('57', 'DOBRADIÇAS DE VIDRO', 'Blum para porta de vidro',
-  ['As nove folhas do closet e as portas de cristaleira e adega correm sobre ela.',
-   'Mesmo amortecimento e mesma regulagem das de madeira.',
-   'Fixa no vidro sem furo à vista na face frontal.',
-   'É o item de ferragem mais repetido do apartamento.']),
- ('27', 'PARES DE CORREDIÇA', 'Blum MOVENTO com BLUMOTION',
-  ['Oculta sob a gaveta: a lateral fica limpa, sem trilho de metal à vista.',
+   'Testada em <b>200 mil</b> aberturas e fechamentos antes de sair da fábrica.']),
+ ('CORREDIÇA', 'Blum MOVENTO com BLUMOTION', 'img-001.png', 'img-002.png',
+  ['Oculta sob a gaveta: a lateral fica limpa, <b>sem trilho de metal à vista</b>.',
    'Extração total: a gaveta sai inteira e mostra o fundo.',
-   '<b>BLUMOTION</b> integrado: no fim do curso a gaveta se recolhe sozinha.',
+   '<b>BLUMOTION</b> integrado: no fim do curso a gaveta se recolhe sozinha e fecha sem ruído.',
    'Movimento sincronizado nos dois lados, mesmo com carga desigual.']),
- ('2', 'SISTEMAS DE CORRER', 'Blum SI Forma',
-  ['Recebe as folhas ripadas do rack do estar e as duas folhas de 97,5 do quarto.',
+ ('SISTEMA DE CORRER', 'SI Ocean 80 · Siforma', 'img-003.png', 'img-004.png',
+  ['⭐ <b>Outra fabricante</b>: a Siforma faz o sistema de correr; a Blum, a dobradiça e a corrediça.',
+   'Para roupeiros de portas de correr, com folhas de peso alto.',
    'Amortecimento nos dois sentidos: a folha desacelera ao abrir e ao fechar.',
-   '<b>Oito desempenadores</b> no projeto — folha de 70 cm ou mais leva dois.',
-   'O trilho some na estrutura: não há perfil aparente no piso.']),
+   'O trilho some na estrutura — não há perfil aparente no piso.']),
 ]
 
 ETAPAS = [
@@ -263,14 +272,14 @@ def html():
    Mariana Borges</b>, com portas de giro de cava usinada, folhas de correr amortecidas, nove
    folhas em perfil de alumínio com vidro e gavetas que fecham sozinhas.
    <b>Cinco padrões de MDF por fora — Caribe, Cipres, Fontana Magma, Cacao Matt e Cinza
-   Sagrado — e o Branco TX por dentro</b>, sobre ferragem Blum.
+   Sagrado — e o interior no mesmo padrão da face</b>, sobre ferragem Blum e sistema de correr Siforma.
    <b>Uma só empresa responde por tudo o que está nestas folhas</b>, da medição à instalação.
    <i>Um contrato, uma data, um nome para chamar.</i></p>
   <div class="numeros">
    <div><b>9</b><span>AMBIENTES</span></div>
    <div><b>38</b><span>ITENS DE MÓVEL</span></div>
-   <div><b>496</b><span>PEÇAS LEVANTADAS</span></div>
-   <div><b>86</b><span>CHAPAS DE MDF</span></div>
+   <div><b>5</b><span>PADRÕES DE MDF</span></div>
+   <div><b>1</b><span>CONTRATO, UMA DATA</span></div>
   </div>
  </div>
  {rod(2)}
@@ -335,8 +344,8 @@ def html():
     # ── 05 · o padrão ───────────────────────────────────────────────────
     pads = ''.join(
      f'<div class="pad"><div class="pad-n">{n}</div><div class="pad-f">{f}</div>'
-     f'<div class="pad-o">{o}</div><div class="pad-c">{c} chapas</div></div>'
-     for n, f, o, c in PADROES)
+     f'<div class="pad-o">{o}</div></div>'
+     for n, f, o in PADROES)
     P.append(f'''<section class="pg">
  <div class="hero" style="background-image:url('{F('r-39-04.jpg')}')">
   <div class="tarja">REFERÊNCIA DE AMBIENTE</div>
@@ -349,22 +358,35 @@ def html():
   <div class="pads">{pads}</div>
   <div class="nota">
    <b>O QUE ISSO PEDE DA FÁBRICA</b><br>
-   Cada peça é cortada na cor do lado em que vai ficar — o padrão no que se vê, o Branco TX no que se usa — e
-   recebe fita no tom do próprio lado. A troca de cor acontece onde a porta fecha, nunca à vista. Cinco padrões
-   significam <b>cinco planos de corte independentes</b>: nenhum deles aproveita a sobra do outro, e é por isso
-   que o apartamento compra 86 chapas inteiras para 79,83 de área.
+   Neste apartamento <b>não há interior branco</b>: caixa, gaveta e fundo saem no padrão da própria face, e a fita
+   acompanha. É mais caro e é o que a prancha pede — com porta de vidro no closet e na cristaleira, o interior
+   é fachada. Cinco padrões significam <b>cinco planos de corte independentes</b>: nenhum deles aproveita a sobra
+   do outro, e cada um arredonda a sua própria chapa.
   </div>
  </div>
  {rod(5)}
 </section>''')
 
-    # ── 06 a 14 · os nove ambientes ─────────────────────────────────────
-    for i, aba in enumerate(ORDEM):
+    # ── 06 a 10 · os nove ambientes, dois por folha ────────────────────
+    def meio(aba):
         a = AMB[aba]
-        bs = ''.join(f'<li><b>{t}</b> {d}</li>' for t, d in a['bullets'])
-        P.append(f'''<section class="pg amb">
- <div class="amb-img{' desenho' if a.get('desenho') else ''}" style="background-image:url('{F(a['foto'])}')">
-  <div class="amb-cap">COMPOSIÇÃO DO PROJETO · {a['tarja']}</div>
+        bs = ''.join(f'<li><b>{x}</b> {d}</li>' for x, d in a['bullets'])
+        return f'''<div class="meio">
+   <div class="meio-img" style="background-image:url('{F(a['foto'])}')">
+    <div class="tarja baixo">{a['tarja']}</div></div>
+   <div class="meio-txt">
+    <h3>{a['titulo']}</h3>
+    <ul class="bul">{bs}</ul>
+    <div class="acab"><span>ACABAMENTOS</span>{a['acab']}</div>
+   </div>
+  </div>'''
+
+    for i, (e, d) in enumerate(PARES):
+        if d is None:                       # o closet ocupa a folha inteira
+            a = AMB[e]
+            bs = ''.join(f'<li><b>{x}</b> {y}</li>' for x, y in a['bullets'])
+            P.append(f'''<section class="pg amb">
+ <div class="amb-img" style="background-image:url('{F(a['foto'])}')">
   <div class="tarja baixo">{a['tarja']}</div>
  </div>
  <div class="amb-txt">
@@ -375,6 +397,12 @@ def html():
  </div>
  {rod(6 + i)}
 </section>''')
+        else:
+            P.append(f'''<section class="pg dois">
+ {meio(e)}
+ {meio(d)}
+ {rod(6 + i)}
+</section>''')
 
     # ── 15 · por que blum ───────────────────────────────────────────────
     P.append(f'''<section class="pg escuro">
@@ -382,45 +410,51 @@ def html():
   <div class="eyebrow ouro">POR QUE BLUM</div>
   <h2 class="claro">A ferragem é a única parte<br>do móvel que trabalha todo dia.</h2>
   <p class="texto claro curto">É ela que decide se, daqui a muitos anos, a porta ainda fecha alinhada e a gaveta
-   ainda corre macia. Por isso este projeto sai só na linha Blum, uma das referências mundiais em ferragem de
-   movimento para móveis.</p>
+   ainda corre macia. Por isso a ferragem de movimento deste projeto sai na linha <b>Blum</b>, uma das referências
+   mundiais do ramo — e as folhas de correr, no sistema <b>SI Ocean 80, da Siforma</b>.</p>
   <div class="big4">
    <div><b>200 mil</b><span>ABERTURAS E FECHAMENTOS</span><p>É o ensaio a que a Blum submete as suas dobradiças antes de elas saírem da fábrica.</p></div>
-   <div><b>30 anos</b><span>DE GARANTIA VALVIC</span><p>No projeto inteiro, quando a ferragem é Blum — termo assinado no dia da entrega.</p></div>
+   <div><b>30 anos</b><span>DE GARANTIA VALVIC</span><p>No projeto inteiro: marcenaria e ferragem de movimento, com termo assinado no dia da entrega.</p></div>
    <div><b>Áustria</b><span>EMPRESA FAMILIAR</span><p>A Blum desenha e fabrica as próprias ferragens, com controle de qualidade em cada etapa.</p></div>
-   <div><b>191</b><span>PEÇAS BLUM NESTE PROJETO</span><p>104 dobradiças, 57 dobradiças de vidro, 27 pares de corrediça, 2 sistemas de correr e 1 pulsador.</p></div>
+   <div><b>BLUMOTION</b><span>O FECHAMENTO AMORTECIDO</span><p>Porta e gaveta fecham suave e silenciosamente, toda vez — sem a batida que, com os anos, é o que desgasta o móvel.</p></div>
   </div>
-  <p class="frase">Neste apartamento, toda porta de giro, toda gaveta e toda folha de correr se movem
-   sobre Blum — <i>sem exceção</i>.</p>
+  <p class="frase">Neste apartamento, toda porta de giro e toda gaveta se movem sobre Blum —
+   <i>sem exceção</i>.</p>
   <div class="nota escura"><b>TESTADA ANTES DE CHEGAR AQUI</b><br>
    Na fábrica da Blum, as ferragens passam por ensaios de movimento, de carga e de corrosão — com calor, água e
    sal — que reproduzem em laboratório o desgaste de anos de uso. O que chega à nossa bancada já provou que dura.</div>
  </div>
- {rod(15, True)}
+ {rod(11, True)}
 </section>''')
 
-    # ── 16 · as ferragens deste projeto ─────────────────────────────────
-    fs = ''.join(
-     f'<div class="fer"><div class="fer-q"><b>{q}</b><span>{r}</span></div>'
-     f'<h4>{n}</h4><ul>{"".join(f"<li>{x}</li>" for x in xs)}</ul></div>'
-     for q, r, n, xs in FERRAGEM)
+    # ── 12 · as ferragens deste projeto, com imagem ────────────────────
+    fs = ''
+    for rot, nome, im1, im2, xs in FERRAGEM:
+        duas = (f'<div class="fer-im"><div style="background-image:url(\'{F(im1)}\')"></div>'
+                f'<div style="background-image:url(\'{F(im2)}\')"></div></div>') if im2 else \
+               (f'<div class="fer-im"><div style="background-image:url(\'{F(im1)}\')"></div></div>')
+        fs += (f'<div class="fer">{duas}<div class="kicker">{rot}</div>'
+               f'<h4>{nome}</h4><ul>{"".join(f"<li>{x}</li>" for x in xs)}</ul></div>')
     P.append(f'''<section class="pg">
  <div class="corpo alto">
   <div class="eyebrow">AS FERRAGENS DESTE PROJETO</div>
   <div class="etapa-head">
    <h2 class="duas">O que vocês tocam<br>todo dia.</h2>
    <p class="texto curto">Cada porta, cada gaveta e cada folha de correr deste apartamento se move sobre uma
-    destas quatro peças. As quantidades saem do levantamento, peça por peça, não de estimativa.</p>
+    destas três peças — e elas vêm de <b>duas fabricantes diferentes</b>.</p>
   </div>
-  <div class="fers">{fs}</div>
-  <div class="nota">O <b>Blum SI Forma</b> é o sistema de correr que recebe as folhas ripadas do rack do estar e
-   as duas folhas de 97,5 do quarto. As <b>nove folhas do closet</b>, por serem em perfil de alumínio com vidro de
-   piso a teto, correm em perfil próprio do sistema de vidro, com dobradiça Blum.</div>
+  <div class="fers tres">{fs}</div>
+  <div class="nota">As <b>nove folhas do closet</b> e as portas de cristaleira e de adega se fecham em
+   <b>esquadria de alumínio com perfil slim de 25 mm</b>, sobre dobradiça Blum de vidro. O perfil fino é
+   escolha de desenho: confere mais leveza à moldura e personalidade ao conjunto, e deixa o vidro — e o que
+   está guardado atrás dele — como o que se vê. <i>Imagens ilustrativas das fabricantes.</i></div>
  </div>
- {rod(16)}
+ {rod(12)}
 </section>''')
 
     # ── 17 · garantia ───────────────────────────────────────────────────
+    fx13 = ''.join(f'<div style="background-image:url(\'{F(x)}\')"></div>'
+                   for x in ('r-39-06.jpg', 'r-40-01.jpg', 'r-40-03.jpg'))
     P.append(f'''<section class="pg">
  <div class="corpo alto">
   <div class="eyebrow">GARANTIA</div>
@@ -451,8 +485,9 @@ def html():
      <p>Dano vindo da obra ou mudança feita no móvel depois da entrega.</p></div>
    </div>
   </div>
+  <div class="faixa fim">{fx13}<div class="tarja">O APARTAMENTO PRONTO</div></div>
  </div>
- {rod(17)}
+ {rod(13)}
 </section>''')
 
     # ── 18 · investimento ───────────────────────────────────────────────
@@ -470,8 +505,8 @@ def html():
   <h2>O apartamento, ambiente por ambiente.</h2>
   <div class="inv">
    <div class="inv-t">
-    <p class="texto curto">Cada móvel foi levantado <b>peça por peça do projeto executivo</b> — são 496 peças em
-     38 itens. Nada é rateio nem estimativa por metro quadrado. Valores em reais.</p>
+    <p class="texto curto">Cada móvel foi levantado <b>peça por peça do projeto executivo</b>, ambiente por
+     ambiente. Nada é rateio nem estimativa por metro quadrado. Valores em reais.</p>
     <table>
      <thead><tr><th>AMBIENTE</th><th class="v">LINHA<br>BLUM</th></tr></thead>
      <tbody>{linhas}</tbody>
@@ -481,20 +516,20 @@ def html():
    <div class="inv-card">
     <div class="eyebrow ouro">O PROJETO COMPLETO</div>
     <div class="preco">R$ {brl(b.PRECO_FECHADO)}</div>
-    <p>Nove ambientes em cinco padrões de MDF, interior em Branco TX, ferragem Blum, as nove folhas do
-     closet em perfil de alumínio com vidro e 30 anos de garantia.</p>
+    <p>Nove ambientes em cinco padrões de MDF, interior no mesmo padrão da face, ferragem Blum, sistema de
+     correr Siforma, as nove folhas do closet em esquadria slim de 25 mm com vidro e 30 anos de garantia.</p>
     <div class="hr"></div>
     <div class="eyebrow ouro">ENTRADA, NA ASSINATURA</div>
     <div class="entrada">R$ {brl(entrada)}</div>
    </div>
   </div>
   <div class="nota"><b>O QUE ESTÁ INCLUSO</b><br>
-   Projeto executivo de marcenaria, os cinco padrões de MDF por fora e o Branco TX por dentro, usinagem,
-   ferragens Blum, o sistema de correr Blum SI Forma, as nove folhas de closet em perfil de alumínio com vidro,
-   as portas de cristaleira e de adega em vidro, os espelhos, a iluminação em fita de LED com perfil e fonte,
-   o transporte, a montagem e a instalação — num só contrato, com uma só data e uma só responsável.</div>
+   Projeto executivo de marcenaria, os cinco padrões de MDF por fora e por dentro, usinagem, ferragens Blum,
+   o sistema de correr Siforma, as nove folhas de closet e as portas de cristaleira e de adega em esquadria
+   de alumínio slim de 25 mm com vidro, os espelhos, a iluminação em fita de LED com perfil e fonte, o
+   transporte, a montagem e a instalação — num só contrato, com uma só data e uma só responsável.</div>
  </div>
- {rod(18)}
+ {rod(14)}
 </section>''')
 
     # ── 19 · condições ──────────────────────────────────────────────────
@@ -529,8 +564,8 @@ def html():
     <p class="mini">Todas as parcelas por transferência bancária. Os dias contam a partir da assinatura do contrato.</p>
     <div class="nota pequena"><b>A AMOSTRA DO PADRÃO</b><br>
      Os cinco padrões de MDF são apresentados em amostra física na aprovação do projeto executivo, antes da
-     compra da chapa. É nesse momento que se confirma o Caribe Linha Dual Syncro, que é sincronizado e tem
-     preço de chapa especial.</div>
+     compra da chapa. É nesse momento que vocês confirmam cor e desenho de cada um — e só depois disso a
+     chapa entra em corte. O valor desta proposta já contempla os cinco.</div>
    </div>
    <div>
     <div class="eyebrow">O QUE NÃO ESTÁ NESTA PROPOSTA</div>
@@ -539,7 +574,7 @@ def html():
   </div>
   <div class="assina"><div>Charbel Chelala</div><div>Valvic Marcenaria · Vargas Decor LTDA</div></div>
  </div>
- {rod(19)}
+ {rod(15)}
 </section>''')
 
     # ── 20 · contracapa ─────────────────────────────────────────────────
@@ -629,6 +664,7 @@ h5{font-size:9.5pt;font-weight:600}
 
 /* faixa de imagens */
 .faixa{height:74mm;display:flex;gap:0;position:relative;background:var(--creme2)}
+.faixa.fim{height:60mm;margin-top:auto;margin-bottom:15mm}
 .faixa>div{flex:1;background-size:cover;background-position:center}
 .tarja{position:absolute;left:0;bottom:0;background:var(--escuro);color:var(--ouro-claro);
    font-size:6.1pt;letter-spacing:.22em;padding:3mm 7mm}
@@ -675,14 +711,27 @@ h5{font-size:9.5pt;font-weight:600}
 .hero-badge b{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:19pt;display:block;line-height:1}
 .hero-badge span{display:block;font-size:5.9pt;letter-spacing:.2em;color:var(--ouro);margin-top:2mm}
 .hero-badge i{display:block;font-style:normal;font-size:6pt;color:#8C8475;margin-top:2.5mm;line-height:1.4}
-.pads{display:grid;grid-template-columns:repeat(6,1fr);gap:4mm;margin:6mm 0}
+.pads{display:grid;grid-template-columns:repeat(5,1fr);gap:5mm;margin:6mm 0}
 .pad{border-top:1px solid var(--ouro);padding-top:3mm}
 .pad-n{font-family:'Cormorant Garamond',serif;font-size:14pt;line-height:1.05}
 .pad-f{font-size:5.9pt;letter-spacing:.14em;color:var(--ouro);margin:1.5mm 0 2.5mm}
-.pad-o{font-size:6.8pt;line-height:1.45;color:var(--corpo);min-height:14mm}
-.pad-c{font-size:6.6pt;font-weight:600;color:var(--tinta)}
+.pad-o{font-size:7pt;line-height:1.45;color:var(--corpo)}
 
-/* ambiente */
+/* dois ambientes por folha */
+.dois{flex-direction:row}
+.meio{flex:1;display:flex;flex-direction:column;min-width:0}
+.meio+.meio{border-left:1px solid var(--fino)}
+.meio-img{height:88mm;background-size:cover;background-position:center;position:relative;
+   background-color:var(--creme2)}
+.meio-img:after{content:'';position:absolute;top:0;left:0;right:0;height:18mm;
+   background:linear-gradient(to bottom,rgba(20,15,10,.3),rgba(20,15,10,0))}
+.meio-txt{padding:9mm 11mm 0;flex:1;display:flex;flex-direction:column}
+.meio-txt h3{font-size:22pt;margin-bottom:5mm}
+.meio-txt .bul li{font-size:7.2pt;line-height:1.52;padding-bottom:3.2mm}
+.meio-txt .acab{margin-bottom:14mm;font-size:6.8pt}
+.dois .rodape{left:11mm;right:11mm}
+
+/* ambiente, folha inteira */
 .amb{flex-direction:row}
 .amb-img{width:55%;background-size:cover;background-position:center;position:relative;background-color:var(--creme2)}
 .amb-img:after{content:'';position:absolute;top:0;left:0;right:0;height:26mm;
@@ -708,7 +757,7 @@ h5{font-size:9.5pt;font-weight:600}
 .texto.claro{color:#B8AF9C}.texto.claro b{color:var(--creme)}
 .big4{display:grid;grid-template-columns:repeat(4,1fr);gap:7mm;margin:9mm 0 0}
 .big4>div{border-top:1px solid rgba(201,169,106,.4);padding-top:4mm}
-.big4 b{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:30pt;color:var(--ouro-claro);
+.big4 b{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:26pt;color:var(--ouro-claro);
    display:block;line-height:1}
 .big4 span{display:block;font-size:5.8pt;letter-spacing:.2em;color:#9A8F7B;margin:2.5mm 0 3mm}
 .big4 p{font-size:7pt;line-height:1.5;color:#B8AF9C}
@@ -717,6 +766,12 @@ h5{font-size:9.5pt;font-weight:600}
 
 /* ferragens */
 .fers{display:grid;grid-template-columns:repeat(4,1fr);gap:6mm;margin-top:2mm}
+.fers.tres{grid-template-columns:repeat(3,1fr);gap:8mm}
+.fer-im{display:flex;gap:2mm;height:52mm;margin-bottom:4mm}
+.fer-im>div{flex:1;background-size:cover;background-position:center;background-color:var(--creme2)}
+.fers.tres .kicker{margin-bottom:1.5mm}
+.fers.tres h4{font-size:12pt;margin-bottom:3.5mm}
+.fers.tres li{font-size:7.2pt;padding-bottom:2.8mm}
 .fer-q{border-top:1px solid var(--ouro);padding-top:3mm;margin-bottom:3mm}
 .fer-q b{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:26pt;color:var(--ouro);
    display:block;line-height:1}
@@ -796,3 +851,22 @@ if __name__ == '__main__':
                                                   brl(sum(fechado.values()))))
     print('─' * 72)
     print('  html:', saida)
+
+    # ── e o PDF, pela mesma mão: sem passo manual que alguém esquece ───
+    pdf = os.path.join(AQUI, 'pr', 'Charbel Chelala · Proposta Valvic · Linha Blum.pdf')
+    js = '''const {chromium} = require('playwright');
+(async () => {
+  const nav = await chromium.launch();
+  const pg  = await nav.newPage();
+  await pg.goto('file://' + process.argv[1], {waitUntil: 'networkidle'});
+  await pg.emulateMedia({media: 'print'});
+  await pg.pdf({path: process.argv[2], width: '297mm', height: '210mm',
+                printBackground: true,
+                margin: {top: '0', right: '0', bottom: '0', left: '0'}});
+  await nav.close();
+})();'''
+    r = subprocess.run(['node', '-e', js, saida, pdf], capture_output=True, text=True)
+    if r.returncode == 0 and os.path.exists(pdf):
+        print('   pdf:', pdf)
+    else:
+        print('   ⚠ pdf não saiu:', (r.stderr or r.stdout).strip()[:300])

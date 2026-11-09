@@ -69,7 +69,11 @@ EMBALAGEM = 0.02
 #   ⭐ Os mesmos preços que a casa cravou para a linha Blum em 03 e 04/11.
 DOBRADICA = 50.0                  # Blum
 CORREDICA_PAR = 300.0             # Blum Movento
-SISTEMA_CORRER = 900.0            # Blum SI Forma · "na BLUM Siforma de 900"
+#   ⛔ SIFORMA NÃO É BLUM [Jonathan, 09/11/2026]. A Blum é austríaca e faz
+#     dobradiça, corrediça e pulsador; o sistema de correr SI Ocean 80 é da
+#     SIFORMA. Eu tinha escrito "Blum SI Forma", que é duas empresas numa
+#     linha só — e ficha técnica errada é o que o cliente confere.
+SISTEMA_CORRER = 900.0            # Siforma SI Ocean 80
 BASCULA_HK = 250.0                # Blum AVENTOS HK-XS
 PULSADOR = 100.0                  # Blum Tip-on
 SUPORTE_JOGO = 6.50               # por prateleira INTERNA, jogo de 4
@@ -177,8 +181,12 @@ MC = 0.57
 
 #   ── o fechamento ─────────────────────────────────────────────────────
 #   ⭐ [Jonathan, 09/11/2026], ditado inteiro. O modelo dá R$ 625.048,49 e
-#     o fechado é o número redondo: a diferença de R$ 48,49 é arredondamento
-#     comercial, não desconto.
+#   ⚠ E A DIFERENÇA DEIXOU DE SER ARREDONDAMENTO. Quando ele fechou, o
+#     custo direto era R$ 119.306 e o modelo dava R$ 625.048 — R$ 48 de
+#     sobra. Tirar o Branco TX do interior levou o custo a R$ 123.133, e a
+#     MC de 57% agora pediria R$ 645.097. Manter os 625 mil é absorver
+#     R$ 20 mil na margem, que cai de 57,0% para 56,4%. É decisão dele, e
+#     fica escrita aqui para ninguém chamar de arredondamento.
 PRECO_FECHADO = 625000.00
 PRAZO_DIAS = 120                 # dias CORRIDOS, da assinatura à entrega
 VALIDADE_DIAS = 7                # validade da proposta

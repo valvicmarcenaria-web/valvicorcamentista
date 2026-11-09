@@ -73,8 +73,9 @@ NOTAS = {
    '⭐ A FOLHA 15 QUASE FICOU DE FORA. O texto dela só nomeia Quartzito Verde '
    'Guatemala, e por isso ela estava arquivada como marmoraria. É a cozinha inteira. '
    'O que decide se a folha é nossa não é o material que ela nomeia, é o que ela desenha.',
-   '⭐ Um padrão só de MDF: Caribe Linha Dual Syncro Guararapes, em 18 e em 15. '
-   'O interior fecha em Branco TX, porque toda porta daqui é cheia.',
+   '⭐ Um padrão só de MDF: Caribe Linha Dual Syncro Guararapes, em 18, 15 e 6 — '
+   'por fora E por dentro. ⛔ Neste projeto não existe interior branco: a prancha '
+   'não escreve Branco TX em folha nenhuma [Jonathan, 09/11/2026].',
    '⭐ As 7 folhas da vista 02 saem das cotas de topo da própria prancha: '
    '31,5 · 31,5 · 27,5 · 27,5 · 23 · 35 · 35. Não foram divididas por conta.',
    '⭐ O QDC mora dentro da torre central e leva tampa de inspeção — é marcenaria, '
@@ -106,9 +107,9 @@ NOTAS = {
    'declarada em partes e a emenda é projeto, não improviso.',
    '⭐ Perfil de proteção de piso em todo painel que toca o chão [Jonathan, 28/10].'],
  '05 Suíte': [
-   '⭐⭐ QUATRO PADRÕES DE MDF NO MESMO AMBIENTE: Cipres, Fontana Linha Magma, Cacao '
-   'Matt e o Branco TX do interior. Cada padrão arredonda a sua própria chapa, e é '
-   'por isso que a suíte compra mais chapa do que a área dela sugere.',
+   '⭐⭐ TRÊS PADRÕES DE MDF NO MESMO AMBIENTE: Cipres, Fontana Linha Magma e Cacao '
+   'Matt, e o interior sai no padrão da face. Cada padrão arredonda a sua própria '
+   'chapa, e é por isso que a suíte compra mais chapa do que a área dela sugere.',
    '⭐⭐ E O CASO EXTREMO ESTÁ AQUI: o fundo de nicho de 52 × 39 é a ÚNICA peça do '
    'projeto em Fontana 6 mm. 0,20 m² compram UMA CHAPA INTEIRA de R$ 350. Trocar por '
    'Cipres 6 ou tirar de sobra de Fontana 18 devolve R$ 350 de margem.',
@@ -122,8 +123,9 @@ NOTAS = {
    '⭐⭐ O CLOSET É 27% DO PROJETO, e o motivo o desenho esconde e o render grita: '
    'AS NOVE FOLHAS NÃO SÃO DE MDF. São perfil de alumínio dourado com vidro, de piso '
    'a teto, nas três vistas.',
-   '⭐ Por isso o interior sai em Cipres e não em Branco TX: com porta de vidro, o '
-   'interior é fachada.',
+   '⭐ Por isso o interior sai em Cipres: com porta de vidro, o interior é fachada. '
+   '⭐ As nove folhas correm em esquadria de alumínio com PERFIL SLIM DE 25 mm '
+   '[Jonathan, 09/11/2026] — leveza na moldura e o vidro como o que se vê.',
    '⭐ A vista 9C é sapateira de PRATELEIRA INCLINADA: 8 × 22,50 = 180 por coluna, '
    'duas colunas, 16 prateleiras com encaixe usinado em ângulo.',
    '⚠ As folhas têm 2,57 m de altura. O R$ 1.400 da Base é de porta de espelho de '
@@ -133,14 +135,18 @@ NOTAS = {
    '⭐ As 4 folhas do superior são ESPELHADAS: espelho prata colado sobre a estrutura '
    'de MDF, 600 o m², mais a chapa por baixo. A fita de LED corre no eixo h = 90, '
    'dentro da faixa de espelho demarcada.',
-   '⚠ ÁREA ÚMIDA. A Base tem MDF Branco Ártico Ultra, que resiste melhor à umidade que o Branco TX comum, a R$ 450 contra R$ 350 na chapa de 15. Orcei em Branco TX. Se o banho pede Ártico, a caixaria dos dois banhos sobe cerca de R$ 300 de custo direto.',
+   '⚠ ÁREA ÚMIDA, e o interior aqui é Cinza Sagrado como a face. A Base tem MDF '
+   'Branco Ártico Ultra, que resiste melhor à umidade, mas ele é BRANCO e este '
+   'projeto não tem interior branco. Se a umidade do banho pedir um miolo técnico, '
+   'é decisão de projeto e muda o padrão de dentro.',
  ],
  '08 Banheiro Social': [
    '⭐ O ARMÁRIO G tem o puxador CAVA USINADO NA PRÓPRIA ESTRUTURA DO ESPELHO — a '
    'folha chama isso de "porta infinita". É usinagem, não puxador comprado.',
    '⭐ São três peças de espelho no ambiente: a folha do G, o espelho de 140 × 140 da '
    'vista 16, e a moldura.',
-   '⚠ ÁREA ÚMIDA, mesma observação do banho da suíte: a Base tem Branco Ártico Ultra a R$ 450 contra R$ 350 do Branco TX de 15. Orcei em Branco TX.',
+   '⚠ ÁREA ÚMIDA, mesma observação do banho da suíte: o interior sai em Cinza '
+   'Sagrado, como a face.',
  ],
  '09 Quarto': [
    '⭐ Duas folhas de correr de 97,5 × 251 em Cacao Matt. Toda porta deslizante leva '
@@ -203,8 +209,8 @@ def linhas_ambiente(nome, d, T):
                   f'inteiro · {lv.brl(preco)} a chapa'
                   + OBS_MATERIAL.get((nome, f'{k[0]} {k[1]} mm'), ''),
                   round(d['area'][k] / rend, 2), 'chapa', round(c, 2), 0])
-    for rot, m, p in (('Fita de borda de cor', d['fita_cor'], b.FITA_COR),
-                      ('Fita de borda Branco TX', d['fita_br'], b.FITA_BRANCA)):
+    #   ⛔ a linha de fita branca morreu com o Branco TX: toda a fita é de cor
+    for rot, m, p in (('Fita de borda', d['fita_cor'], b.FITA_COR),):
         if m:
             c = m * p * b.FITA_PERDA
             custo_mat += c
@@ -260,8 +266,7 @@ def peca_custo(p, T):
     preco = T['preco'][k]
     sobra = T['chapas'][k] * preco - T['area'][k] / rend * preco
     c = a / rend * preco + sobra * (a / T['area'][k])
-    fita = p['fita'] * p['qtd'] * (b.FITA_BRANCA if p['mat'] == 'MDF Branco TX'
-                                   else b.FITA_COR) * b.FITA_PERDA
+    fita = p['fita'] * p['qtd'] * b.FITA_COR * b.FITA_PERDA
     return a, c + fita
 
 
@@ -372,13 +377,13 @@ DUVIDAS = {
    '⚠ A "bancada nova" de 80 da folha 22 não tem material declarado. Deixei FORA, '
    'porque bancada de banho neste projeto tem sido sempre pedra. Se for marcenaria, '
    'entra.',
-   '⚠ Caixaria de área úmida em Branco TX ou em Branco Ártico Ultra? Ver a nota acima.',
+   '⚠ Área úmida: o interior sai em Cinza Sagrado, como a face. Ver a nota acima.',
  ],
  '08 Banheiro Social': [
    '⚠ O espelho de 140 × 140 da vista 16 está escrito "fixado na PAREDE", não na '
    'marcenaria. Incluí, porque é espelho de banheiro e sai no mesmo caminhão — mas a '
    'regra dos dois estados manda deixar isso escrito.',
-   '⚠ Caixaria de área úmida em Branco TX ou em Branco Ártico Ultra? Ver a nota acima.',
+   '⚠ Área úmida: o interior sai em Cinza Sagrado, como a face. Ver a nota acima.',
  ],
  '09 Quarto': [
    '⚠ O "sistema de porta retrátil" do baú saiu a R$ 900, o mesmo do sistema de correr '

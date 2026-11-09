@@ -160,6 +160,7 @@ h5{font-size:9.5pt;font-weight:600}
 
 /* faixa de imagens */
 .faixa{height:74mm;display:flex;gap:0;position:relative;background:var(--creme2)}
+.faixa.fim{height:60mm;margin-top:auto;margin-bottom:15mm}
 .faixa>div{flex:1;background-size:cover;background-position:center}
 .tarja{position:absolute;left:0;bottom:0;background:var(--escuro);color:var(--ouro-claro);
    font-size:6.1pt;letter-spacing:.22em;padding:3mm 7mm}
@@ -206,14 +207,27 @@ h5{font-size:9.5pt;font-weight:600}
 .hero-badge b{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:19pt;display:block;line-height:1}
 .hero-badge span{display:block;font-size:5.9pt;letter-spacing:.2em;color:var(--ouro);margin-top:2mm}
 .hero-badge i{display:block;font-style:normal;font-size:6pt;color:#8C8475;margin-top:2.5mm;line-height:1.4}
-.pads{display:grid;grid-template-columns:repeat(6,1fr);gap:4mm;margin:6mm 0}
+.pads{display:grid;grid-template-columns:repeat(5,1fr);gap:5mm;margin:6mm 0}
 .pad{border-top:1px solid var(--ouro);padding-top:3mm}
 .pad-n{font-family:'Cormorant Garamond',serif;font-size:14pt;line-height:1.05}
 .pad-f{font-size:5.9pt;letter-spacing:.14em;color:var(--ouro);margin:1.5mm 0 2.5mm}
-.pad-o{font-size:6.8pt;line-height:1.45;color:var(--corpo);min-height:14mm}
-.pad-c{font-size:6.6pt;font-weight:600;color:var(--tinta)}
+.pad-o{font-size:7pt;line-height:1.45;color:var(--corpo)}
 
-/* ambiente */
+/* dois ambientes por folha */
+.dois{flex-direction:row}
+.meio{flex:1;display:flex;flex-direction:column;min-width:0}
+.meio+.meio{border-left:1px solid var(--fino)}
+.meio-img{height:88mm;background-size:cover;background-position:center;position:relative;
+   background-color:var(--creme2)}
+.meio-img:after{content:'';position:absolute;top:0;left:0;right:0;height:18mm;
+   background:linear-gradient(to bottom,rgba(20,15,10,.3),rgba(20,15,10,0))}
+.meio-txt{padding:9mm 11mm 0;flex:1;display:flex;flex-direction:column}
+.meio-txt h3{font-size:22pt;margin-bottom:5mm}
+.meio-txt .bul li{font-size:7.2pt;line-height:1.52;padding-bottom:3.2mm}
+.meio-txt .acab{margin-bottom:14mm;font-size:6.8pt}
+.dois .rodape{left:11mm;right:11mm}
+
+/* ambiente, folha inteira */
 .amb{flex-direction:row}
 .amb-img{width:55%;background-size:cover;background-position:center;position:relative;background-color:var(--creme2)}
 .amb-img:after{content:'';position:absolute;top:0;left:0;right:0;height:26mm;
@@ -239,7 +253,7 @@ h5{font-size:9.5pt;font-weight:600}
 .texto.claro{color:#B8AF9C}.texto.claro b{color:var(--creme)}
 .big4{display:grid;grid-template-columns:repeat(4,1fr);gap:7mm;margin:9mm 0 0}
 .big4>div{border-top:1px solid rgba(201,169,106,.4);padding-top:4mm}
-.big4 b{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:30pt;color:var(--ouro-claro);
+.big4 b{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:26pt;color:var(--ouro-claro);
    display:block;line-height:1}
 .big4 span{display:block;font-size:5.8pt;letter-spacing:.2em;color:#9A8F7B;margin:2.5mm 0 3mm}
 .big4 p{font-size:7pt;line-height:1.5;color:#B8AF9C}
@@ -248,6 +262,12 @@ h5{font-size:9.5pt;font-weight:600}
 
 /* ferragens */
 .fers{display:grid;grid-template-columns:repeat(4,1fr);gap:6mm;margin-top:2mm}
+.fers.tres{grid-template-columns:repeat(3,1fr);gap:8mm}
+.fer-im{display:flex;gap:2mm;height:52mm;margin-bottom:4mm}
+.fer-im>div{flex:1;background-size:cover;background-position:center;background-color:var(--creme2)}
+.fers.tres .kicker{margin-bottom:1.5mm}
+.fers.tres h4{font-size:12pt;margin-bottom:3.5mm}
+.fers.tres li{font-size:7.2pt;padding-bottom:2.8mm}
 .fer-q{border-top:1px solid var(--ouro);padding-top:3mm;margin-bottom:3mm}
 .fer-q b{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:26pt;color:var(--ouro);
    display:block;line-height:1}
@@ -340,14 +360,14 @@ tfoot td.v{font-family:'Cormorant Garamond',serif;font-size:19pt;letter-spacing:
    Mariana Borges</b>, com portas de giro de cava usinada, folhas de correr amortecidas, nove
    folhas em perfil de alumínio com vidro e gavetas que fecham sozinhas.
    <b>Cinco padrões de MDF por fora — Caribe, Cipres, Fontana Magma, Cacao Matt e Cinza
-   Sagrado — e o Branco TX por dentro</b>, sobre ferragem Blum.
+   Sagrado — e o interior no mesmo padrão da face</b>, sobre ferragem Blum e sistema de correr Siforma.
    <b>Uma só empresa responde por tudo o que está nestas folhas</b>, da medição à instalação.
    <i>Um contrato, uma data, um nome para chamar.</i></p>
   <div class="numeros">
    <div><b>9</b><span>AMBIENTES</span></div>
    <div><b>38</b><span>ITENS DE MÓVEL</span></div>
-   <div><b>496</b><span>PEÇAS LEVANTADAS</span></div>
-   <div><b>86</b><span>CHAPAS DE MDF</span></div>
+   <div><b>5</b><span>PADRÕES DE MDF</span></div>
+   <div><b>1</b><span>CONTRATO, UMA DATA</span></div>
   </div>
  </div>
  <div class="rodape"><span>VALVIC · CHARBEL CHELALA</span><span>02</span></div>
@@ -384,154 +404,133 @@ tfoot td.v{font-family:'Cormorant Garamond',serif;font-size:19pt;letter-spacing:
  <div class="corpo">
   <div class="eyebrow">O PADRÃO</div>
   <h2>Cinco padrões. Cada um arredonda a sua própria chapa.</h2>
-  <div class="pads"><div class="pad"><div class="pad-n">Caribe</div><div class="pad-f">Linha Dual Syncro · Guararapes</div><div class="pad-o">Cozinha, hall, jantar, estar e corredor</div><div class="pad-c">18 chapas</div></div><div class="pad"><div class="pad-n">Cipres</div><div class="pad-f">Guararapes</div><div class="pad-o">Suíte, closet, quarto e corredor</div><div class="pad-c">35 chapas</div></div><div class="pad"><div class="pad-n">Fontana</div><div class="pad-f">Linha Magma · Guararapes</div><div class="pad-o">Cabeceira, painéis e tampos da suíte</div><div class="pad-c">5 chapas</div></div><div class="pad"><div class="pad-n">Cacao</div><div class="pad-f">Matt · Arauco</div><div class="pad-o">Bancada da suíte e portas de correr do quarto</div><div class="pad-c">3 chapas</div></div><div class="pad"><div class="pad-n">Cinza Sagrado</div><div class="pad-f">Duratex</div><div class="pad-o">Banho da suíte e banheiro social</div><div class="pad-c">2 chapas</div></div><div class="pad"><div class="pad-n">Branco TX</div><div class="pad-f">por dentro</div><div class="pad-o">Caixaria, gavetas e fundos de todo o apartamento</div><div class="pad-c">23 chapas</div></div></div>
+  <div class="pads"><div class="pad"><div class="pad-n">Caribe</div><div class="pad-f">Linha Dual Syncro · Guararapes</div><div class="pad-o">Cozinha, hall, jantar, estar e corredor</div></div><div class="pad"><div class="pad-n">Cipres</div><div class="pad-f">Guararapes</div><div class="pad-o">Suíte, closet, quarto e corredor</div></div><div class="pad"><div class="pad-n">Fontana</div><div class="pad-f">Linha Magma · Guararapes</div><div class="pad-o">Cabeceira, painéis e tampos da suíte</div></div><div class="pad"><div class="pad-n">Cacao</div><div class="pad-f">Matt · Arauco</div><div class="pad-o">Bancada da suíte e portas de correr do quarto</div></div><div class="pad"><div class="pad-n">Cinza Sagrado</div><div class="pad-f">Duratex</div><div class="pad-o">Banho da suíte e banheiro social</div></div></div>
   <div class="nota">
    <b>O QUE ISSO PEDE DA FÁBRICA</b><br>
-   Cada peça é cortada na cor do lado em que vai ficar — o padrão no que se vê, o Branco TX no que se usa — e
-   recebe fita no tom do próprio lado. A troca de cor acontece onde a porta fecha, nunca à vista. Cinco padrões
-   significam <b>cinco planos de corte independentes</b>: nenhum deles aproveita a sobra do outro, e é por isso
-   que o apartamento compra 86 chapas inteiras para 79,83 de área.
+   Neste apartamento <b>não há interior branco</b>: caixa, gaveta e fundo saem no padrão da própria face, e a fita
+   acompanha. É mais caro e é o que a prancha pede — com porta de vidro no closet e na cristaleira, o interior
+   é fachada. Cinco padrões significam <b>cinco planos de corte independentes</b>: nenhum deles aproveita a sobra
+   do outro, e cada um arredonda a sua própria chapa.
   </div>
  </div>
  <div class="rodape"><span>VALVIC · CHARBEL CHELALA</span><span>05</span></div>
 </section>
-<section class="pg amb">
- <div class="amb-img desenho" style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/d-cozinha.jpg')">
-  <div class="amb-cap">COMPOSIÇÃO DO PROJETO · COZINHA</div>
-  <div class="tarja baixo">COZINHA</div>
- </div>
- <div class="amb-txt">
-  <div class="eyebrow">AMBIENTE</div>
-  <h3>A cozinha.</h3>
-  <ul class="bul"><li><b>Os dois armários da vista 01</b> O superior tem <b>383 cm de frente e sete folhas de abrir</b>; o inferior, de 76 a 90 de altura, leva duas portas de 40, quatro gavetas e o <b>painel do forno</b>. A frente é contínua: o móvel fechado é uma peça só.</li><li><b>O puxador não é comprado</b> São <b>11,53 m de cava usinada no próprio material</b>. Sem peça aplicada, sem metal à vista, sem o que soltar com os anos.</li><li><b>A torre central esconde o quadro</b> Os 72 × 247 × 60 da torre absorvem o <b>QDC do apartamento</b> atrás de uma tampa que abre. O quadro deixa de ser um retângulo na parede.</li><li><b>O varal corre como gaveta</b> E por isso leva <b>par de corrediça Blum Movento</b>, não trilho de varal: sai inteiro e volta sozinho.</li></ul>
-  <div class="acab"><span>ACABAMENTOS</span>MDF Caribe Linha Dual Syncro, da Guararapes · interior em Branco TX · puxador cava usinado · rodapé inox · ferragem Blum</div>
- </div>
+<section class="pg dois">
+ <div class="meio">
+   <div class="meio-img" style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/c-cozinha.jpg')">
+    <div class="tarja baixo">COZINHA</div></div>
+   <div class="meio-txt">
+    <h3>A cozinha.</h3>
+    <ul class="bul"><li><b>A frente é uma peça só</b> Os armários superior e inferior correm a parede inteira sem interrupção de desenho, e o painel do forno entra na mesma linha da frente.</li><li><b>O puxador não é comprado</b> É <b>cava usinada no próprio material</b> da porta e da gaveta. Sem peça aplicada, sem metal à vista, sem o que soltar com os anos.</li><li><b>A torre central esconde o quadro</b> O quadro de distribuição do apartamento fica atrás de uma tampa que abre. Deixa de ser um retângulo na parede.</li><li><b>O varal corre como gaveta</b> Por isso sai sobre <b>corrediça Blum</b>, não sobre trilho de varal: sai inteiro e volta sozinho.</li></ul>
+    <div class="acab"><span>ACABAMENTOS</span>MDF Caribe Linha Dual Syncro, da Guararapes · interior no mesmo padrão · puxador cava usinado · rodapé inox · ferragem Blum</div>
+   </div>
+  </div>
+ <div class="meio">
+   <div class="meio-img" style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/r-40-02.jpg')">
+    <div class="tarja baixo">HALL E JANTAR</div></div>
+   <div class="meio-txt">
+    <h3>O hall<br>e o jantar.</h3>
+    <ul class="bul"><li><b>A cristaleira é a peça da entrada</b> Vai do chão ao teto, com a vitrine fechada por <b>porta de vidro em esquadria de alumínio</b> e o aparador embaixo.</li><li><b>A esquadria é slim, de 25 mm</b> Perfil fino, que dá <b>leveza à moldura e personalidade ao desenho</b>: o que se vê é o vidro e o que está atrás dele, não o perfil.</li><li><b>A divisória tem moldura curva</b> Usinada na própria folha, não perfil colado por cima.</li><li><b>O forro em madeira acompanha o recorte</b> Não o retângulo: o desenho do teto segue a planta do hall.</li></ul>
+    <div class="acab"><span>ACABAMENTOS</span>MDF Caribe Linha Dual Syncro · porta de vidro em esquadria slim de 25 mm · fita de LED com perfil de embutir · ferragem Blum</div>
+   </div>
+  </div>
  <div class="rodape"><span>VALVIC · CHARBEL CHELALA</span><span>06</span></div>
 </section>
-<section class="pg amb">
- <div class="amb-img" style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/r-40-02.jpg')">
-  <div class="amb-cap">COMPOSIÇÃO DO PROJETO · HALL E JANTAR</div>
-  <div class="tarja baixo">HALL E JANTAR</div>
- </div>
- <div class="amb-txt">
-  <div class="eyebrow">AMBIENTE</div>
-  <h3>O hall<br>e o jantar.</h3>
-  <ul class="bul"><li><b>A cristaleira de 247</b> Dois metros e meio de altura, com a <b>vitrine de 139 fechada por porta de perfil e vidro</b> e o aparador embaixo. É a peça que se vê da entrada.</li><li><b>A divisória da vista 04</b> Tem <b>moldura curva de raio 10 usinada na própria folha</b> e duas gavetas de 51,5 na base — a curva é usinagem, não perfil colado.</li><li><b>O forro em madeira</b> Os 108 × 109 do hall viram <b>141,37 cm de desenvolvimento</b> pelo detalhe da prancha: o forro acompanha o recorte, não o retângulo.</li><li><b>A porta de vidro</b> Sobre <b>dobradiça Blum para porta de vidro</b>, com fita de LED e fonte própria dentro da vitrine.</li></ul>
-  <div class="acab"><span>ACABAMENTOS</span>MDF Caribe Linha Dual Syncro · porta de cristaleira em perfil com vidro · fita de LED com perfil de embutir · ferragem Blum</div>
- </div>
+<section class="pg dois">
+ <div class="meio">
+   <div class="meio-img" style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/r-40-00.jpg')">
+    <div class="tarja baixo">ESTAR E TV</div></div>
+   <div class="meio-txt">
+    <h3>O estar<br>e a TV.</h3>
+    <ul class="bul"><li><b>A base do rack corre a parede</b> Uma porta de abrir e duas de correr, todas em <b>MDF ripado Caribe</b>, sobre sistema de correr <b>Siforma</b> com amortecimento nos dois sentidos.</li><li><b>A adega fecha em reflecta bronze</b> Vidro reflecta bronze em <b>esquadria slim de 25 mm com perfil champanhe</b>, sobre dobradiça Blum de vidro, com estrutura metálica de suporte das garrafas por dentro.</li><li><b>Os dois pés da mesa de jantar são nossos</b> Com <b>entalhamento diagonal usinado em CNC</b>. São peça de marcenaria, não base comprada.</li><li><b>O painel fixo é ripado</b> Com filetagem nas duas faces de cada ripa, sobre estrutura de sarrafo por trás.</li></ul>
+    <div class="acab"><span>ACABAMENTOS</span>MDF Caribe Linha Dual Syncro · ripado com filetagem · vidro reflecta bronze em esquadria slim de 25 mm, perfil champanhe · Siforma · ferragem Blum</div>
+   </div>
+  </div>
+ <div class="meio">
+   <div class="meio-img" style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/c-corredor.jpg')">
+    <div class="tarja baixo">ACESSOS E CORREDOR</div></div>
+   <div class="meio-txt">
+    <h3>Os acessos<br>e o corredor.</h3>
+    <ul class="bul"><li><b>As portas somem no painel</b> Fechadas, a porta da suíte e a do quarto não se leem como porta: a folha <b>continua o ripado do painel</b>, sobre sistema pivô e fecho rolete de porta embutida.</li><li><b>O ripado corre do hall ao corredor</b> Sem interrupção de desenho — é a maior metragem de filetagem do apartamento.</li><li><b>O espelho é fixado na marcenaria</b> Não na parede: sai no mesmo caminhão e é instalado pela mesma equipe.</li><li><b>O armário tem acabamento curvo ripado</b> Na lateral à vista, a ripa <b>vira a quina</b> em vez de topar nela.</li></ul>
+    <div class="acab"><span>ACABAMENTOS</span>MDF Caribe Linha Dual Syncro e Cipres · ripado com filetagem · espelho fixado na marcenaria · sistema pivô embutido · ferragem Blum</div>
+   </div>
+  </div>
  <div class="rodape"><span>VALVIC · CHARBEL CHELALA</span><span>07</span></div>
 </section>
-<section class="pg amb">
- <div class="amb-img" style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/r-40-00.jpg')">
-  <div class="amb-cap">COMPOSIÇÃO DO PROJETO · ESTAR E TV</div>
-  <div class="tarja baixo">ESTAR E TV</div>
- </div>
- <div class="amb-txt">
-  <div class="eyebrow">AMBIENTE</div>
-  <h3>O estar<br>e a TV.</h3>
-  <ul class="bul"><li><b>A base do rack tem 367 cm</b> Uma porta de abrir e <b>duas de correr, todas em MDF ripado Caribe</b>, sobre o sistema <b>Blum SI Forma</b> — a folha ripada corre amortecida nos dois sentidos.</li><li><b>A adega fecha em reflecta bronze</b> Duas folhas de 43,75 em <b>vidro reflecta bronze com perfil champanhe</b>, sobre dobradiça Blum de vidro, com estrutura metálica de suporte das garrafas por dentro.</li><li><b>Os dois pés da mesa de jantar</b> Pé 01 ovalado de 22 × 40 em planta, Pé 02 de Ø 28, ambos com <b>entalhamento diagonal usinado em CNC</b>. São peça de marcenaria, não base comprada.</li><li><b>O painel fixo da vista 05</b> 255 cm de altura, com 47,6 m de filetagem de ripa e sarrafo de pinus estruturando por trás.</li></ul>
-  <div class="acab"><span>ACABAMENTOS</span>MDF Caribe Linha Dual Syncro · ripado com filetagem · vidro reflecta bronze com perfil champanhe · Blum SI Forma · ferragem Blum</div>
- </div>
+<section class="pg dois">
+ <div class="meio">
+   <div class="meio-img" style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/f00.jpg')">
+    <div class="tarja baixo">SUÍTE</div></div>
+   <div class="meio-txt">
+    <h3>A suíte.</h3>
+    <ul class="bul"><li><b>Três padrões de MDF no mesmo quarto</b> <b>Cipres, Fontana Linha Magma e Cacao Matt</b> — e o painel da cabeceira usa os três empilhados: Cacao em cima, Fontana no meio, Cipres embaixo.</li><li><b>O ripado das divisórias é VAZADO</b> A ripa <b>atravessa a divisória e se vê dos dois lados</b>. Não é ripado aplicado numa face: é estrutura.</li><li><b>O painel da cabeceira é mais largo que a chapa</b> Sai emendado <b>por projeto</b>, e a emenda é decidida no desenho, não na serra.</li><li><b>A prateleira do painel leva alma de aço</b> É o que trabalha contra a flecha, e o que a mantém reta daqui a dez anos.</li></ul>
+    <div class="acab"><span>ACABAMENTOS</span>MDF Cipres, Fontana Linha Magma e Cacao Matt · interior no mesmo padrão · espelho fixado na marcenaria · ferragem Blum</div>
+   </div>
+  </div>
+ <div class="meio">
+   <div class="meio-img" style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/r-39-07.jpg')">
+    <div class="tarja baixo">QUARTO</div></div>
+   <div class="meio-txt">
+    <h3>O quarto.</h3>
+    <ul class="bul"><li><b>Duas folhas de correr em Cacao Matt</b> Sobre sistema de correr <b>Siforma</b>. Folha larga leva <b>dois desempenadores</b>, e é o que a impede de descer com o tempo.</li><li><b>O armário dobra em L</b> Nichos abertos em Cipres, bancada e prateleira, e o retorno acompanha a volta da parede.</li><li><b>O móvel baú abre retrátil</b> A frente em Cacao Matt <b>entra para dentro</b> em vez de girar para fora.</li><li><b>O painel da cabeceira abraça o espelho</b> Dentro de moldura, com <b>pulsador Blum Tip-on</b> no acionamento da luz.</li></ul>
+    <div class="acab"><span>ACABAMENTOS</span>MDF Cacao Matt, da Arauco, e Cipres · interior no mesmo padrão · espelho fixado na marcenaria · Siforma · ferragem Blum</div>
+   </div>
+  </div>
  <div class="rodape"><span>VALVIC · CHARBEL CHELALA</span><span>08</span></div>
 </section>
 <section class="pg amb">
- <div class="amb-img" style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/r-40-01.jpg')">
-  <div class="amb-cap">COMPOSIÇÃO DO PROJETO · ACESSOS E CORREDOR</div>
-  <div class="tarja baixo">ACESSOS E CORREDOR</div>
- </div>
- <div class="amb-txt">
-  <div class="eyebrow">AMBIENTE</div>
-  <h3>Os acessos<br>e o corredor.</h3>
-  <ul class="bul"><li><b>As portas somem no painel</b> O painel de <b>346,53 × 255</b> recebe a porta da suíte e a do quarto. Fechadas, elas não se leem como porta: a folha continua o ripado do painel, sobre <b>sistema pivô e fecho rolete de porta embutida</b>.</li><li><b>Setenta e cinco metros de ripa</b> É a maior metragem de filetagem do apartamento — e ela corre do hall ao corredor sem interrupção de desenho.</li><li><b>O espelho da vista 07</b> 75 × 220 <b>fixado na marcenaria</b>, não na parede: sai no mesmo caminhão e é instalado pela mesma equipe.</li><li><b>O ARMÁRIO F</b> 90,40 × 250 × 37,05, quatro folhas, com <b>acabamento curvo ripado</b> na lateral à vista.</li></ul>
-  <div class="acab"><span>ACABAMENTOS</span>MDF Caribe Linha Dual Syncro e Cipres · ripado com filetagem · espelho fixado na marcenaria · sistema pivô embutido · ferragem Blum</div>
- </div>
- <div class="rodape"><span>VALVIC · CHARBEL CHELALA</span><span>09</span></div>
-</section>
-<section class="pg amb">
- <div class="amb-img" style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/f00.jpg')">
-  <div class="amb-cap">COMPOSIÇÃO DO PROJETO · SUÍTE</div>
-  <div class="tarja baixo">SUÍTE</div>
- </div>
- <div class="amb-txt">
-  <div class="eyebrow">AMBIENTE</div>
-  <h3>A suíte.</h3>
-  <ul class="bul"><li><b>Quatro padrões de MDF no mesmo quarto</b> <b>Cipres, Fontana Linha Magma, Cacao Matt</b> e o Branco TX do interior. O painel da vista 11 usa três deles empilhados: Cacao em cima, Fontana no meio, Cipres embaixo.</li><li><b>O ripado das divisórias é VAZADO</b> Sete ripas de 4 × 240 que <b>atravessam a divisória e se veem dos dois lados</b>. Não é ripado aplicado numa face: é estrutura.</li><li><b>O painel da cabeceira tem 3,58 m</b> Cipres na faixa de cima, <b>Fontana Magma</b> embaixo, com <b>bits de 0,5 e de 1,5</b> usinados e duas fitas de LED. Mais largo que a chapa, sai emendado por projeto — e a emenda é decidida no desenho, não na serra.</li><li><b>A prateleira de 225,5 de vão livre</b> Acima de 1,20 m a regra da casa manda <b>alma de aço</b> por dentro. É contra flecha, e é o que mantém a prateleira reta daqui a dez anos.</li></ul>
-  <div class="acab"><span>ACABAMENTOS</span>MDF Cipres, Fontana Linha Magma e Cacao Matt · interior em Branco TX · espelho fixado na marcenaria · 11 pares de corrediça Blum Movento · ferragem Blum</div>
- </div>
- <div class="rodape"><span>VALVIC · CHARBEL CHELALA</span><span>10</span></div>
-</section>
-<section class="pg amb">
  <div class="amb-img" style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/r-39-04.jpg')">
-  <div class="amb-cap">COMPOSIÇÃO DO PROJETO · CLOSET</div>
   <div class="tarja baixo">CLOSET</div>
  </div>
  <div class="amb-txt">
   <div class="eyebrow">AMBIENTE</div>
   <h3>O closet.</h3>
-  <ul class="bul"><li><b>Nove folhas em perfil de alumínio com vidro</b> De <b>piso a teto, 2,57 m de altura</b>, nas três vistas. É o que decide a cara do ambiente e é a razão de o closet ser a maior linha do apartamento.</li><li><b>Com porta de vidro, o interior é fachada</b> Por isso o miolo sai em <b>MDF Cipres</b> e não no Branco TX de interior: tudo o que está atrás do vidro é visto.</li><li><b>A sapateira da 9C é inclinada</b> Oito prateleiras de 22,50 por coluna, duas colunas — <b>dezesseis prateleiras com encaixe usinado em ângulo</b>. O sapato fica de frente, não de lado.</li><li><b>Vinte e quatro metros de LED</b> Fita com perfil de embutir e difusor em cada prateleira e em cada arara, com quatro fontes próprias.</li><li><b>Quarenta e cinco dobradiças de vidro</b> Todas Blum. É o item de ferragem mais repetido do projeto inteiro.</li></ul>
-  <div class="acab"><span>ACABAMENTOS</span>MDF Cipres · nove folhas em perfil de alumínio com vidro · 24 m de fita de LED · cabideiro em metal · ferragem Blum</div>
+  <ul class="bul"><li><b>Nove folhas em esquadria de alumínio com vidro</b> De <b>piso a teto</b>, nas três vistas. É o que decide a cara do ambiente, e é a razão de o closet ser a maior linha do apartamento.</li><li><b>A esquadria é slim, de 25 mm</b> Perfil fino, que confere <b>mais leveza e personalidade</b>: a moldura quase desaparece e o que se vê é o vidro e o que está guardado atrás dele.</li><li><b>Com porta de vidro, o interior é fachada</b> Por isso o miolo sai em <b>MDF Cipres</b>, no mesmo padrão da frente: tudo o que está atrás do vidro é visto.</li><li><b>A sapateira é de prateleira inclinada</b> Com <b>encaixe usinado em ângulo</b> na lateral. O sapato fica de frente, não de lado.</li><li><b>A luz corre em cada prateleira e em cada arara</b> Fita de LED com perfil de embutir e difusor, acionada por <b>botton na própria marcenaria</b> — não há interruptor na parede.</li></ul>
+  <div class="acab"><span>ACABAMENTOS</span>MDF Cipres · nove folhas em esquadria de alumínio slim de 25 mm com vidro · fita de LED com perfil de embutir · cabideiro em metal · ferragem Blum</div>
  </div>
- <div class="rodape"><span>VALVIC · CHARBEL CHELALA</span><span>11</span></div>
+ <div class="rodape"><span>VALVIC · CHARBEL CHELALA</span><span>09</span></div>
 </section>
-<section class="pg amb">
- <div class="amb-img" style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/f01.jpg')">
-  <div class="amb-cap">COMPOSIÇÃO DO PROJETO · BANHO DA SUÍTE</div>
-  <div class="tarja baixo">BANHO DA SUÍTE</div>
- </div>
- <div class="amb-txt">
-  <div class="eyebrow">AMBIENTE</div>
-  <h3>O banho<br>da suíte.</h3>
-  <ul class="bul"><li><b>As quatro folhas são espelhadas</b> Espelho prata <b>colado sobre a estrutura de MDF</b> — a folha é espelho inteiro, sem moldura e sem quadro aparente.</li><li><b>O LED corre no eixo h = 90</b> Dentro da faixa de espelho demarcada na prancha, com perfil de embutir e difusor: a luz sai do espelho, não do teto.</li><li><b>O armário inferior</b> 103 × 55 × 40, duas portas de 32,5 e três gavetas de 34 sobre <b>corrediça Blum Movento</b>.</li><li><b>Padrão único</b> Todo o ambiente em <b>MDF Cinza Sagrado, da Duratex</b> — o único dos cinco padrões que aparece só aqui e no banheiro social.</li></ul>
-  <div class="acab"><span>ACABAMENTOS</span>MDF Cinza Sagrado, da Duratex · interior em Branco TX · espelho prata colado na folha · puxador cava usinado · ferragem Blum</div>
- </div>
- <div class="rodape"><span>VALVIC · CHARBEL CHELALA</span><span>12</span></div>
-</section>
-<section class="pg amb">
- <div class="amb-img" style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/r-39-03.jpg')">
-  <div class="amb-cap">COMPOSIÇÃO DO PROJETO · BANHEIRO SOCIAL</div>
-  <div class="tarja baixo">BANHEIRO SOCIAL</div>
- </div>
- <div class="amb-txt">
-  <div class="eyebrow">AMBIENTE</div>
-  <h3>O banheiro<br>social.</h3>
-  <ul class="bul"><li><b>A porta infinita do ARMÁRIO G</b> O puxador é <b>cava usinada na própria estrutura do espelho</b>. A prancha chama de porta infinita: não há onde a mão apareça, e não há peça aplicada sobre o espelho.</li><li><b>O ARMÁRIO H</b> 77 × 168, duas portas de 38,25 × 138 e um <b>nicho aberto de 27 na base</b>, sobre dobradiça Blum.</li><li><b>São três peças de espelho</b> A folha do G, o espelho de <b>140 × 140</b> da vista 16 e a moldura — todas nossas, todas no mesmo caminhão.</li></ul>
-  <div class="acab"><span>ACABAMENTOS</span>MDF Cinza Sagrado, da Duratex · interior em Branco TX · três peças de espelho prata · puxador cava usinado · ferragem Blum</div>
- </div>
- <div class="rodape"><span>VALVIC · CHARBEL CHELALA</span><span>13</span></div>
-</section>
-<section class="pg amb">
- <div class="amb-img" style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/r-39-07.jpg')">
-  <div class="amb-cap">COMPOSIÇÃO DO PROJETO · QUARTO</div>
-  <div class="tarja baixo">QUARTO</div>
- </div>
- <div class="amb-txt">
-  <div class="eyebrow">AMBIENTE</div>
-  <h3>O quarto.</h3>
-  <ul class="bul"><li><b>Duas folhas de correr de 97,5</b> Em <b>Cacao Matt</b>, sobre o sistema <b>Blum SI Forma</b>. Folha de 70 cm ou mais leva <b>dois desempenadores</b> — são quatro no armário, e é o que impede a folha de descer com o tempo.</li><li><b>O armário tem 3,05 m e dobra em L</b> Nichos abertos em Cipres, bancada, prateleira e <b>retorno em L de 105</b> na volta da parede.</li><li><b>O móvel baú abre retrátil</b> A frente de 91 em Cacao Matt <b>entra para dentro</b> em vez de girar para fora — a prancha desenha a projeção de abertura.</li><li><b>O painel da cabeceira tem 13 cm</b> E abraça um <b>espelho de 75 × 220</b> dentro de moldura de 106 × 248, com pulsador Blum Tip-on no acionamento.</li></ul>
-  <div class="acab"><span>ACABAMENTOS</span>MDF Cacao Matt, da Arauco, e Cipres · interior em Branco TX · espelho fixado na marcenaria · Blum SI Forma · ferragem Blum</div>
- </div>
- <div class="rodape"><span>VALVIC · CHARBEL CHELALA</span><span>14</span></div>
+<section class="pg dois">
+ <div class="meio">
+   <div class="meio-img" style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/f01.jpg')">
+    <div class="tarja baixo">BANHO DA SUÍTE</div></div>
+   <div class="meio-txt">
+    <h3>O banho<br>da suíte.</h3>
+    <ul class="bul"><li><b>As folhas são espelhadas</b> Espelho prata <b>colado sobre a estrutura de MDF</b> — a folha é espelho inteiro, sem moldura e sem quadro aparente.</li><li><b>A luz sai do espelho</b> A fita de LED corre dentro de uma faixa demarcada no desenho, com perfil de embutir e difusor. Não vem do teto.</li><li><b>Padrão único</b> Todo o ambiente em <b>MDF Cinza Sagrado, da Duratex</b>, por fora e por dentro.</li></ul>
+    <div class="acab"><span>ACABAMENTOS</span>MDF Cinza Sagrado, da Duratex · interior no mesmo padrão · espelho prata colado na folha · puxador cava usinado · ferragem Blum</div>
+   </div>
+  </div>
+ <div class="meio">
+   <div class="meio-img" style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/r-39-03.jpg')">
+    <div class="tarja baixo">BANHEIRO SOCIAL</div></div>
+   <div class="meio-txt">
+    <h3>O banheiro<br>social.</h3>
+    <ul class="bul"><li><b>A porta infinita</b> O puxador é <b>cava usinada na própria estrutura do espelho</b>. Chamamos assim porque não há onde a mão apareça, e não há peça aplicada sobre o espelho.</li><li><b>São três peças de espelho</b> A folha do armário, o espelho fixado e a moldura — todas nossas, todas no mesmo caminhão.</li><li><b>O nicho aberto na base</b> Quebra a frente cheia e dá onde apoiar, sem porta.</li></ul>
+    <div class="acab"><span>ACABAMENTOS</span>MDF Cinza Sagrado, da Duratex · interior no mesmo padrão · três peças de espelho prata · puxador cava usinado · ferragem Blum</div>
+   </div>
+  </div>
+ <div class="rodape"><span>VALVIC · CHARBEL CHELALA</span><span>10</span></div>
 </section>
 <section class="pg escuro">
  <div class="corpo alto">
   <div class="eyebrow ouro">POR QUE BLUM</div>
   <h2 class="claro">A ferragem é a única parte<br>do móvel que trabalha todo dia.</h2>
   <p class="texto claro curto">É ela que decide se, daqui a muitos anos, a porta ainda fecha alinhada e a gaveta
-   ainda corre macia. Por isso este projeto sai só na linha Blum, uma das referências mundiais em ferragem de
-   movimento para móveis.</p>
+   ainda corre macia. Por isso a ferragem de movimento deste projeto sai na linha <b>Blum</b>, uma das referências
+   mundiais do ramo — e as folhas de correr, no sistema <b>SI Ocean 80, da Siforma</b>.</p>
   <div class="big4">
    <div><b>200 mil</b><span>ABERTURAS E FECHAMENTOS</span><p>É o ensaio a que a Blum submete as suas dobradiças antes de elas saírem da fábrica.</p></div>
-   <div><b>30 anos</b><span>DE GARANTIA VALVIC</span><p>No projeto inteiro, quando a ferragem é Blum — termo assinado no dia da entrega.</p></div>
+   <div><b>30 anos</b><span>DE GARANTIA VALVIC</span><p>No projeto inteiro: marcenaria e ferragem de movimento, com termo assinado no dia da entrega.</p></div>
    <div><b>Áustria</b><span>EMPRESA FAMILIAR</span><p>A Blum desenha e fabrica as próprias ferragens, com controle de qualidade em cada etapa.</p></div>
-   <div><b>191</b><span>PEÇAS BLUM NESTE PROJETO</span><p>104 dobradiças, 57 dobradiças de vidro, 27 pares de corrediça, 2 sistemas de correr e 1 pulsador.</p></div>
+   <div><b>BLUMOTION</b><span>O FECHAMENTO AMORTECIDO</span><p>Porta e gaveta fecham suave e silenciosamente, toda vez — sem a batida que, com os anos, é o que desgasta o móvel.</p></div>
   </div>
-  <p class="frase">Neste apartamento, toda porta de giro, toda gaveta e toda folha de correr se movem
-   sobre Blum — <i>sem exceção</i>.</p>
+  <p class="frase">Neste apartamento, toda porta de giro e toda gaveta se movem sobre Blum —
+   <i>sem exceção</i>.</p>
   <div class="nota escura"><b>TESTADA ANTES DE CHEGAR AQUI</b><br>
    Na fábrica da Blum, as ferragens passam por ensaios de movimento, de carga e de corrosão — com calor, água e
    sal — que reproduzem em laboratório o desgaste de anos de uso. O que chega à nossa bancada já provou que dura.</div>
  </div>
- <div class="rodape claro"><span>VALVIC · CHARBEL CHELALA</span><span>15</span></div>
+ <div class="rodape claro"><span>VALVIC · CHARBEL CHELALA</span><span>11</span></div>
 </section>
 <section class="pg">
  <div class="corpo alto">
@@ -539,14 +538,15 @@ tfoot td.v{font-family:'Cormorant Garamond',serif;font-size:19pt;letter-spacing:
   <div class="etapa-head">
    <h2 class="duas">O que vocês tocam<br>todo dia.</h2>
    <p class="texto curto">Cada porta, cada gaveta e cada folha de correr deste apartamento se move sobre uma
-    destas quatro peças. As quantidades saem do levantamento, peça por peça, não de estimativa.</p>
+    destas três peças — e elas vêm de <b>duas fabricantes diferentes</b>.</p>
   </div>
-  <div class="fers"><div class="fer"><div class="fer-q"><b>104</b><span>DOBRADIÇAS BLUM</span></div><h4>Blum CLIP top BLUMOTION</h4><ul><li>Amortecimento <b>BLUMOTION</b> embutido no caneco: a porta fecha suave e em silêncio.</li><li>Encaixe <b>CLIP</b>: a porta se monta e se retira sem ferramenta, para limpeza ou ajuste.</li><li>Regulagem em altura, lateral e profundidade: a porta se realinha em minutos.</li><li>Testada em <b>200 mil</b> aberturas e fechamentos.</li></ul></div><div class="fer"><div class="fer-q"><b>57</b><span>DOBRADIÇAS DE VIDRO</span></div><h4>Blum para porta de vidro</h4><ul><li>As nove folhas do closet e as portas de cristaleira e adega correm sobre ela.</li><li>Mesmo amortecimento e mesma regulagem das de madeira.</li><li>Fixa no vidro sem furo à vista na face frontal.</li><li>É o item de ferragem mais repetido do apartamento.</li></ul></div><div class="fer"><div class="fer-q"><b>27</b><span>PARES DE CORREDIÇA</span></div><h4>Blum MOVENTO com BLUMOTION</h4><ul><li>Oculta sob a gaveta: a lateral fica limpa, sem trilho de metal à vista.</li><li>Extração total: a gaveta sai inteira e mostra o fundo.</li><li><b>BLUMOTION</b> integrado: no fim do curso a gaveta se recolhe sozinha.</li><li>Movimento sincronizado nos dois lados, mesmo com carga desigual.</li></ul></div><div class="fer"><div class="fer-q"><b>2</b><span>SISTEMAS DE CORRER</span></div><h4>Blum SI Forma</h4><ul><li>Recebe as folhas ripadas do rack do estar e as duas folhas de 97,5 do quarto.</li><li>Amortecimento nos dois sentidos: a folha desacelera ao abrir e ao fechar.</li><li><b>Oito desempenadores</b> no projeto — folha de 70 cm ou mais leva dois.</li><li>O trilho some na estrutura: não há perfil aparente no piso.</li></ul></div></div>
-  <div class="nota">O <b>Blum SI Forma</b> é o sistema de correr que recebe as folhas ripadas do rack do estar e
-   as duas folhas de 97,5 do quarto. As <b>nove folhas do closet</b>, por serem em perfil de alumínio com vidro de
-   piso a teto, correm em perfil próprio do sistema de vidro, com dobradiça Blum.</div>
+  <div class="fers tres"><div class="fer"><div class="fer-im"><div style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/img-000.png')"></div></div><div class="kicker">DOBRADIÇA</div><h4>Blum CLIP top BLUMOTION</h4><ul><li>Amortecimento <b>BLUMOTION</b> embutido no caneco: a porta fecha suave e em silêncio.</li><li>Encaixe <b>CLIP</b>: a porta se monta e se retira sem ferramenta, para limpeza ou ajuste.</li><li>Regulagem em altura, lateral e profundidade: a porta se realinha em minutos.</li><li>Testada em <b>200 mil</b> aberturas e fechamentos antes de sair da fábrica.</li></ul></div><div class="fer"><div class="fer-im"><div style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/img-001.png')"></div><div style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/img-002.png')"></div></div><div class="kicker">CORREDIÇA</div><h4>Blum MOVENTO com BLUMOTION</h4><ul><li>Oculta sob a gaveta: a lateral fica limpa, <b>sem trilho de metal à vista</b>.</li><li>Extração total: a gaveta sai inteira e mostra o fundo.</li><li><b>BLUMOTION</b> integrado: no fim do curso a gaveta se recolhe sozinha e fecha sem ruído.</li><li>Movimento sincronizado nos dois lados, mesmo com carga desigual.</li></ul></div><div class="fer"><div class="fer-im"><div style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/img-003.png')"></div><div style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/img-004.png')"></div></div><div class="kicker">SISTEMA DE CORRER</div><h4>SI Ocean 80 · Siforma</h4><ul><li>⭐ <b>Outra fabricante</b>: a Siforma faz o sistema de correr; a Blum, a dobradiça e a corrediça.</li><li>Para roupeiros de portas de correr, com folhas de peso alto.</li><li>Amortecimento nos dois sentidos: a folha desacelera ao abrir e ao fechar.</li><li>O trilho some na estrutura — não há perfil aparente no piso.</li></ul></div></div>
+  <div class="nota">As <b>nove folhas do closet</b> e as portas de cristaleira e de adega se fecham em
+   <b>esquadria de alumínio com perfil slim de 25 mm</b>, sobre dobradiça Blum de vidro. O perfil fino é
+   escolha de desenho: confere mais leveza à moldura e personalidade ao conjunto, e deixa o vidro — e o que
+   está guardado atrás dele — como o que se vê. <i>Imagens ilustrativas das fabricantes.</i></div>
  </div>
- <div class="rodape"><span>VALVIC · CHARBEL CHELALA</span><span>16</span></div>
+ <div class="rodape"><span>VALVIC · CHARBEL CHELALA</span><span>12</span></div>
 </section>
 <section class="pg">
  <div class="corpo alto">
@@ -578,8 +578,9 @@ tfoot td.v{font-family:'Cormorant Garamond',serif;font-size:19pt;letter-spacing:
      <p>Dano vindo da obra ou mudança feita no móvel depois da entrega.</p></div>
    </div>
   </div>
+  <div class="faixa fim"><div style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/r-39-06.jpg')"></div><div style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/r-40-01.jpg')"></div><div style="background-image:url('file:///home/user/valvicorcamentista/.claude/skills/orcamentista-marcenaria/projetos/marina-borges/fotos/r-40-03.jpg')"></div><div class="tarja">O APARTAMENTO PRONTO</div></div>
  </div>
- <div class="rodape"><span>VALVIC · CHARBEL CHELALA</span><span>17</span></div>
+ <div class="rodape"><span>VALVIC · CHARBEL CHELALA</span><span>13</span></div>
 </section>
 <section class="pg">
  <div class="corpo alto">
@@ -587,31 +588,31 @@ tfoot td.v{font-family:'Cormorant Garamond',serif;font-size:19pt;letter-spacing:
   <h2>O apartamento, ambiente por ambiente.</h2>
   <div class="inv">
    <div class="inv-t">
-    <p class="texto curto">Cada móvel foi levantado <b>peça por peça do projeto executivo</b> — são 496 peças em
-     38 itens. Nada é rateio nem estimativa por metro quadrado. Valores em reais.</p>
+    <p class="texto curto">Cada móvel foi levantado <b>peça por peça do projeto executivo</b>, ambiente por
+     ambiente. Nada é rateio nem estimativa por metro quadrado. Valores em reais.</p>
     <table>
      <thead><tr><th>AMBIENTE</th><th class="v">LINHA<br>BLUM</th></tr></thead>
-     <tbody><tr><td><b>Cozinha</b><span>6 itens · MDF Caribe Linha Dual Syncro, da Guararapes</span></td><td class="v">61.055</td></tr><tr><td><b>Hall e Jantar</b><span>3 itens · MDF Caribe Linha Dual Syncro</span></td><td class="v">36.128</td></tr><tr><td><b>Estar e TV</b><span>4 itens · MDF Caribe Linha Dual Syncro</span></td><td class="v">60.237</td></tr><tr><td><b>Acessos e Corredor</b><span>4 itens · MDF Caribe Linha Dual Syncro e Cipres</span></td><td class="v">51.069</td></tr><tr><td><b>Suíte</b><span>9 itens · MDF Cipres, Fontana Linha Magma e Cacao Matt</span></td><td class="v">131.757</td></tr><tr><td><b>Closet</b><span>3 itens · MDF Cipres</span></td><td class="v">169.306</td></tr><tr><td><b>Banho da Suíte</b><span>2 itens · MDF Cinza Sagrado, da Duratex</span></td><td class="v">26.755</td></tr><tr><td><b>Banheiro Social</b><span>3 itens · MDF Cinza Sagrado, da Duratex</span></td><td class="v">24.033</td></tr><tr><td><b>Quarto</b><span>4 itens · MDF Cacao Matt, da Arauco, e Cipres</span></td><td class="v">64.662</td></tr></tbody>
+     <tbody><tr><td><b>Cozinha</b><span>6 itens · MDF Caribe Linha Dual Syncro, da Guararapes</span></td><td class="v">69.983</td></tr><tr><td><b>Hall e Jantar</b><span>3 itens · MDF Caribe Linha Dual Syncro</span></td><td class="v">34.096</td></tr><tr><td><b>Estar e TV</b><span>4 itens · MDF Caribe Linha Dual Syncro</span></td><td class="v">59.334</td></tr><tr><td><b>Acessos e Corredor</b><span>4 itens · MDF Caribe Linha Dual Syncro e Cipres</span></td><td class="v">52.204</td></tr><tr><td><b>Suíte</b><span>9 itens · MDF Cipres, Fontana Linha Magma e Cacao Matt</span></td><td class="v">129.022</td></tr><tr><td><b>Closet</b><span>3 itens · MDF Cipres</span></td><td class="v">163.561</td></tr><tr><td><b>Banho da Suíte</b><span>2 itens · MDF Cinza Sagrado, da Duratex</span></td><td class="v">28.504</td></tr><tr><td><b>Banheiro Social</b><span>3 itens · MDF Cinza Sagrado, da Duratex</span></td><td class="v">25.292</td></tr><tr><td><b>Quarto</b><span>4 itens · MDF Cacao Matt, da Arauco, e Cipres</span></td><td class="v">63.004</td></tr></tbody>
      <tfoot><tr><td>O PROJETO COMPLETO</td><td class="v">625.000</td></tr></tfoot>
     </table>
    </div>
    <div class="inv-card">
     <div class="eyebrow ouro">O PROJETO COMPLETO</div>
     <div class="preco">R$ 625.000,00</div>
-    <p>Nove ambientes em cinco padrões de MDF, interior em Branco TX, ferragem Blum, as nove folhas do
-     closet em perfil de alumínio com vidro e 30 anos de garantia.</p>
+    <p>Nove ambientes em cinco padrões de MDF, interior no mesmo padrão da face, ferragem Blum, sistema de
+     correr Siforma, as nove folhas do closet em esquadria slim de 25 mm com vidro e 30 anos de garantia.</p>
     <div class="hr"></div>
     <div class="eyebrow ouro">ENTRADA, NA ASSINATURA</div>
     <div class="entrada">R$ 250.000,00</div>
    </div>
   </div>
   <div class="nota"><b>O QUE ESTÁ INCLUSO</b><br>
-   Projeto executivo de marcenaria, os cinco padrões de MDF por fora e o Branco TX por dentro, usinagem,
-   ferragens Blum, o sistema de correr Blum SI Forma, as nove folhas de closet em perfil de alumínio com vidro,
-   as portas de cristaleira e de adega em vidro, os espelhos, a iluminação em fita de LED com perfil e fonte,
-   o transporte, a montagem e a instalação — num só contrato, com uma só data e uma só responsável.</div>
+   Projeto executivo de marcenaria, os cinco padrões de MDF por fora e por dentro, usinagem, ferragens Blum,
+   o sistema de correr Siforma, as nove folhas de closet e as portas de cristaleira e de adega em esquadria
+   de alumínio slim de 25 mm com vidro, os espelhos, a iluminação em fita de LED com perfil e fonte, o
+   transporte, a montagem e a instalação — num só contrato, com uma só data e uma só responsável.</div>
  </div>
- <div class="rodape"><span>VALVIC · CHARBEL CHELALA</span><span>18</span></div>
+ <div class="rodape"><span>VALVIC · CHARBEL CHELALA</span><span>14</span></div>
 </section>
 <section class="pg">
  <div class="corpo alto">
@@ -639,8 +640,8 @@ tfoot td.v{font-family:'Cormorant Garamond',serif;font-size:19pt;letter-spacing:
     <p class="mini">Todas as parcelas por transferência bancária. Os dias contam a partir da assinatura do contrato.</p>
     <div class="nota pequena"><b>A AMOSTRA DO PADRÃO</b><br>
      Os cinco padrões de MDF são apresentados em amostra física na aprovação do projeto executivo, antes da
-     compra da chapa. É nesse momento que se confirma o Caribe Linha Dual Syncro, que é sincronizado e tem
-     preço de chapa especial.</div>
+     compra da chapa. É nesse momento que vocês confirmam cor e desenho de cada um — e só depois disso a
+     chapa entra em corte. O valor desta proposta já contempla os cinco.</div>
    </div>
    <div>
     <div class="eyebrow">O QUE NÃO ESTÁ NESTA PROPOSTA</div>
@@ -649,7 +650,7 @@ tfoot td.v{font-family:'Cormorant Garamond',serif;font-size:19pt;letter-spacing:
   </div>
   <div class="assina"><div>Charbel Chelala</div><div>Valvic Marcenaria · Vargas Decor LTDA</div></div>
  </div>
- <div class="rodape"><span>VALVIC · CHARBEL CHELALA</span><span>19</span></div>
+ <div class="rodape"><span>VALVIC · CHARBEL CHELALA</span><span>15</span></div>
 </section>
 <section class="pg capa fim">
  <div class="capa-txt">

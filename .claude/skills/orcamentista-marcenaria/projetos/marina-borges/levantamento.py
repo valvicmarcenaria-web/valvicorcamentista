@@ -30,13 +30,21 @@ CIPRES = 'MDF Cipres'            # Guararapes
 FONTANA = 'MDF Fontana'          # Linha Magma · Guararapes
 CACAO = 'MDF Cacao'              # Matt · Arauco
 CINZA = 'MDF Cinza Sagrado'      # Duratex
-BRANCO = 'MDF Branco TX'         # ⭐ só interior FECHADO — ver a nota abaixo
-
-#   ⭐ A REGRA DO INTERIOR, e ela tem preço. Interior que se vê vai no
-#     padrão; interior que não se vê vai em branco texturizado. O closet
-#     tem porta de VIDRO: o interior dele é fachada, e sai em Cipres. A
-#     cristaleira idem. Já o inferior da cozinha e os armários de banho
-#     fecham em porta cheia, e lá dentro branco serve.
+#   ⛔⛔ O BRANCO TX SAIU DAQUI EM 09/11/2026. [Jonathan: "não tem nada de
+#     branco tx no projeto"] — e ele está certo: a prancha 21 nomeia só
+#     MDF Cipres Guararapes e MDF Cacao Matt Arauco, e nenhuma das onze
+#     folhas escreve Branco TX em lugar nenhum. O branco no interior era
+#     PADRÃO DA CASA que eu apliquei por hábito, não leitura da prancha.
+#   ⭐ A REGRA NOVA É MAIS SIMPLES E MAIS CARA: o interior sai no padrão do
+#     próprio ambiente. Caixa, gaveta e fundo acompanham a face.
+#   ⚠ ISSO MEXE NO CUSTO: eram 23 chapas de Branco TX a R$ 350 e R$ 250.
+#     Agora elas entram no padrão, que custa R$ 550 e R$ 350 — e, em troca,
+#     deixam de arredondar uma chapa própria, porque se somam à área que o
+#     ambiente já comprava.
+INTERNO = {'01 Cozinha': CARIBE, '02 Hall e Jantar': CARIBE,
+           '03 Estar e TV': CARIBE, '04 Acessos e Corredor': CARIBE,
+           '05 Suíte': CIPRES, '06 Closet': CIPRES, '07 Banho da Suíte': CINZA,
+           '08 Banheiro Social': CINZA, '09 Quarto': CIPRES}
 
 RIPA_L, RIPA_VAO = 4.0, 2.0
 PASSO = RIPA_L + RIPA_VAO
@@ -46,6 +54,7 @@ class Item:
     def __init__(self, nome, folha, obs='', ambiente=''):
         self.nome, self.folha, self.obs = nome, folha, obs
         self.ambiente = ambiente
+        self.interno = INTERNO.get(ambiente, CIPRES)
         self.pecas, self.terc, self.fer = [], [], []
 
     def p(self, nome, L, A, esp, mat, qtd=1, fita=0.0, obs=''):
@@ -92,10 +101,11 @@ class Item:
     def gaveta(self, larg, alt, prof, n, mat, esp=18, cava=False, botao=False):
         self.p(f'{n} × frente de gaveta {larg:.0f} × {alt:.0f}', larg, alt, esp,
                mat, n, (larg + alt) * 2 / 100)
-        #   a caixa da gaveta é branca e some do olho — mas não da chapa
-        self.p(f'{n} × caixa de gaveta', (larg + prof) * 2, 13, 15, BRANCO, n,
-               (larg + prof) * 2 / 100)
-        self.p(f'{n} × fundo de gaveta', larg, prof, 6, BRANCO, n)
+        #   ⭐ a caixa da gaveta some do olho, mas sai no padrão do ambiente:
+        #     neste projeto não há interior branco em lugar nenhum
+        self.p(f'{n} × caixa de gaveta', (larg + prof) * 2, 13, 15,
+               self.interno, n, (larg + prof) * 2 / 100)
+        self.p(f'{n} × fundo de gaveta', larg, prof, 6, self.interno, n)
         self.f('Corrediça Blum Movento, par', n, b.CORREDICA_PAR)
         if cava:
             self.t('Puxador cava usinado', n * larg / 100, b.CAVA_M, 'm')
@@ -146,7 +156,7 @@ ambiente('01 Cozinha')
 # ─── 01 ─────────────────────────────────────────────────────────────────
 it = novo('Cozinha · armário superior da vista 01', 15,
           '383,00 × 87,00 · 7 folhas de abrir · puxador cava no próprio material')
-it.caixa(383, 87, 35, BRANCO, div=5, prat=6)
+it.caixa(383, 87, 35, it.interno, div=5, prat=6)
 it.porta(383 / 7, 87, 7, CARIBE, cava=True)
 it.p('nicho aberto · fundo e laterais', 45, 30.24, 15, CARIBE, 3, .45)
 
@@ -154,13 +164,13 @@ it.p('nicho aberto · fundo e laterais', 45, 30.24, 15, CARIBE, 3, .45)
 it = novo('Cozinha · varal retrátil estilo gaveta', 15,
           '75,00 × 12,00 · corre como gaveta, logo leva par de corrediça')
 it.p('frente do varal', 75, 12, 18, CARIBE, 1, (75 + 12) * 2 / 100)
-it.p('estrutura do varal', 75, 55, 15, BRANCO, 2, .75)
+it.p('estrutura do varal', 75, 55, 15, it.interno, 2, .75)
 it.f('Corrediça Blum Movento, par', 1, b.CORREDICA_PAR)
 
 # ─── 03 ─────────────────────────────────────────────────────────────────
 it = novo('Cozinha · armário inferior da vista 01', 15,
           '383,00 × 76/90 × 65 · 2 portas de 40, 4 gavetas e o painel do forno')
-it.caixa(383, 85, 60, BRANCO, div=4, prat=3)
+it.caixa(383, 85, 60, it.interno, div=4, prat=3)
 it.porta(40, 90, 2, CARIBE, cava=True)
 it.gaveta(83.76, 38, 55, 2, CARIBE, cava=True)
 it.gaveta(40, 38, 55, 1, CARIBE, cava=True)
@@ -172,7 +182,7 @@ it.t('Rodapé inox h = 2', 3.83, b.RODAPE_INOX_M, 'm')
 # ─── 04 ─────────────────────────────────────────────────────────────────
 it = novo('Cozinha · armário superior da vista 02', 16,
           '219,00 × 98,00 · 7 folhas: 31,5 · 31,5 · 27,5 · 27,5 · 23 · 35 · 35')
-it.caixa(219, 98, 35, BRANCO, div=3, prat=4)
+it.caixa(219, 98, 35, it.interno, div=3, prat=4)
 it.porta(31.5, 98, 2, CARIBE, cava=True)
 it.porta(27.5, 65, 2, CARIBE, cava=True)
 it.porta(23, 98, 1, CARIBE, cava=True)
@@ -182,7 +192,7 @@ it.p('módulos de 33 sob os superiores', 57, 33, 18, CARIBE, 2, (57 + 33) * 2 / 
 # ─── 05 ─────────────────────────────────────────────────────────────────
 it = novo('Cozinha · torre central com o QDC embutido', 16,
           '72 × 247 × 60 · a porta de 170, o módulo de 88 + 53 e a tampa do quadro')
-it.caixa(72, 247, 60, BRANCO, div=2, prat=4)
+it.caixa(72, 247, 60, it.interno, div=2, prat=4)
 it.porta(45, 170, 1, CARIBE, cava=True)
 it.porta(72, 88, 1, CARIBE, cava=True)
 it.porta(72, 53, 1, CARIBE, cava=True)
@@ -196,7 +206,7 @@ it.p('módulo de 30,5 sob o QDC', 72, 30.5, 18, CARIBE, 1, (72 + 30.5) * 2 / 100
 #     a frente. Está em `_LEITURA.md` como pergunta para a arquiteta.
 it = novo('Cozinha · armário baixo de apoio da vista 02', 16,
           '60 × 72 × 35 · o único volume da vista 02 que a folha chama de MDF Caribe')
-it.caixa(60, 72, 35, BRANCO, div=0, prat=2)
+it.caixa(60, 72, 35, it.interno, div=0, prat=2)
 it.porta(60, 72, 1, CARIBE, cava=True)
 
 ambiente('02 Hall e Jantar')
@@ -262,14 +272,14 @@ it.led(2 * 1.41, fontes=1, bottons=1)
 # ─── 12 ─────────────────────────────────────────────────────────────────
 it = novo('Estar · base do rack · portas ripadas e nichos', 17,
           '367 × 68 · 1 porta de abrir e 2 de correr, todas em MDF ripado Caribe')
-it.caixa(367, 68, 50, BRANCO, div=4, prat=2)
+it.caixa(367, 68, 50, it.interno, div=4, prat=2)
 it.p('substrato da porta de abrir ripada', 35, 68, 15, CARIBE, 1,
      (35 + 68) * 2 / 100)
 it.ripado(35, 68, 3.0, CARIBE, 'porta de abrir ripada')
 it.p('substrato das portas de correr ripadas', 90, 68, 15, CARIBE, 2,
      (90 + 68) * 2 / 100)
 it.ripado(180, 68, 3.0, CARIBE, 'portas de correr ripadas')
-it.f('Sistema de correr Blum SI Forma', 1, b.SISTEMA_CORRER)
+it.f('Sistema de correr Siforma SI Ocean 80', 1, b.SISTEMA_CORRER)
 it.f('Desempenador de porta deslizante', 4, b.DESEMPENADOR)
 it.p('nichos abertos do rack', 45, 68, 15, CARIBE, 4, .68)
 it.t('Rodapé inox h = 2', 3.67, b.RODAPE_INOX_M, 'm')
@@ -302,7 +312,7 @@ it.t('Sarrafo de pinus para estrutura do painel', 8 * 346.53 / 100, b.SARRAFO_PI
 it.t('Perfil de proteção de piso', 3.4653, b.PERFIL_PISO_M, 'm')
 it.p('folha da porta da suíte', 104, 208, 18, CARIBE, 1, (104 + 208) * 2 / 100)
 it.p('folha da porta do quarto', 105, 208, 18, CARIBE, 1, (105 + 208) * 2 / 100)
-it.p('miolo sarrafeado das duas folhas', 104, 208, 15, BRANCO, 2)
+it.p('miolo sarrafeado das duas folhas', 104, 208, 15, it.interno, 2)
 it.f('Dobradiça Blum', 2 * b.dobradicas(208), b.DOBRADICA)
 it.f('Sistema pivô e fecho rolete de porta embutida', 2,
      b.FERRAGEM_PORTA_OCULTA)
@@ -325,7 +335,7 @@ it.t('Espelho fixado na marcenaria', .75 * 2.20, b.ESPELHO_M2)
 # ─── 17 ─────────────────────────────────────────────────────────────────
 it = novo('Corredor · ARMÁRIO F', 18,
           '90,40 × 250,00 × 37,05 · acabamento curvo ripado · 4 folhas')
-it.caixa(90.4, 250, 37.05, BRANCO, div=1, prat=4)
+it.caixa(90.4, 250, 37.05, it.interno, div=1, prat=4)
 it.porta(45, 144, 2, CARIBE, botao=True)
 it.porta(45, 68.36, 2, CARIBE, botao=True)
 it.ripado(90.4, 250, 2.0, CARIBE, 'acabamento curvo ripado do armário F')
@@ -418,7 +428,7 @@ it.led(2.255, fontes=1, bottons=1)
 # ─── 25 ─────────────────────────────────────────────────────────────────
 it = novo('Suíte · bancada com 4 gavetas', 20,
           '178,00 × 40,00 × 75,00 · Cacao Matt · acabamento curvo r = 20')
-it.caixa(178, 60, 40, BRANCO, div=3, prat=0, fundo=6)
+it.caixa(178, 60, 40, it.interno, div=3, prat=0, fundo=6)
 it.p('tampo da bancada', 178, 40, 18, CACAO, 1, (178 + 40) * 2 / 100)
 it.gaveta(39, 58.5, 38, 4, CACAO, botao=True)
 it.p('saia e remate de 10', 178, 10, 18, CACAO, 1, (178 + 10) * 2 / 100)
@@ -501,7 +511,7 @@ ambiente('07 Banho da Suíte')
 # ─── 30 ─────────────────────────────────────────────────────────────────
 it = novo('Banho da suíte · espelheira superior', 22,
           '183,00 × 110,00 × 17,00 · 4 folhas espelhadas · LED no eixo h = 90')
-it.caixa(183, 110, 17, BRANCO, div=3, prat=4)
+it.caixa(183, 110, 17, it.interno, div=3, prat=4)
 it.p('estrutura das 4 folhas espelhadas', 40.44, 110, 18, CINZA, 4,
      (40.44 + 110) * 2 / 100)
 it.t('Espelho colado na folha', 1.52 * 1.10, b.ESPELHO_M2)
@@ -511,7 +521,7 @@ it.led(1.83, fontes=1, bottons=1)
 # ─── 31 ─────────────────────────────────────────────────────────────────
 it = novo('Banho da suíte · armário inferior', 22,
           '103,00 × 55,00 × 40,00 · 2 portas de 32,5 e 3 gavetas de 34')
-it.caixa(103, 55, 40, BRANCO, div=2, prat=1)
+it.caixa(103, 55, 40, it.interno, div=2, prat=1)
 it.porta(32.5, 55, 2, CINZA, cava=True)
 it.gaveta(34, 17, 36, 3, CINZA, cava=True)
 #   ⚠ a "bancada nova" de 80 da mesma folha não entra: a folha não diz o
@@ -521,7 +531,7 @@ ambiente('08 Banheiro Social')
 # ─── 32 ─────────────────────────────────────────────────────────────────
 it = novo('Banheiro social · ARMÁRIO H', 23,
           '77,00 × 168,00 · 2 portas de 38,25 × 138 · nicho de 27 na base')
-it.caixa(77, 168, 33, BRANCO, div=0, prat=3)
+it.caixa(77, 168, 33, it.interno, div=0, prat=3)
 it.porta(38.25, 138, 2, CINZA, cava=True)
 it.p('nicho aberto da base', 77, 27, 18, CINZA, 2, (77 + 27) * 2 / 100)
 
@@ -529,7 +539,7 @@ it.p('nicho aberto da base', 77, 27, 18, CINZA, 2, (77 + 27) * 2 / 100)
 it = novo('Banheiro social · ARMÁRIO G', 23,
           '70,00 × 140,00 × 19,00 · porta espelhada · puxador cava na própria '
           'estrutura do espelho')
-it.caixa(70, 140, 19, BRANCO, div=0, prat=2)
+it.caixa(70, 140, 19, it.interno, div=0, prat=2)
 it.p('estrutura da folha espelhada', 60, 138, 18, CINZA, 1, (60 + 138) * 2 / 100)
 it.t('Espelho colado na folha', .60 * 1.38, b.ESPELHO_M2)
 it.f('Dobradiça Blum', b.dobradicas(138), b.DOBRADICA)
@@ -554,7 +564,7 @@ it = novo('Quarto · armário com portas de correr', 24,
 it.caixa(305, 255, 64, CIPRES, div=3, prat=6)
 it.p('folhas de correr em Cacao Matt', 97.5, 251, 18, CACAO, 2,
      (97.5 + 251) * 2 / 100)
-it.f('Sistema de correr Blum SI Forma', 1, b.SISTEMA_CORRER)
+it.f('Sistema de correr Siforma SI Ocean 80', 1, b.SISTEMA_CORRER)
 it.f('Desempenador de porta deslizante', 4, b.DESEMPENADOR)
 it.p('puxador da porta em MDF Cipres', 10, 251, 18, CIPRES, 2, 2.51)
 it.p('bancada e prateleira do armário', 118, 36, 18, CIPRES, 2, (118 + 36) * 2 / 100)
@@ -564,7 +574,7 @@ it.led(3.05, fontes=1, bottons=1)
 # ─── 36 ─────────────────────────────────────────────────────────────────
 it = novo('Quarto · móvel baú com porta retrátil', 24,
           '209,00 × 36,00 · 118 + 91 · porta retrátil em Cacao Matt')
-it.caixa(209, 36, 64, BRANCO, div=1, prat=0)
+it.caixa(209, 36, 64, it.interno, div=1, prat=0)
 it.p('frente retrátil em Cacao Matt', 91, 36, 18, CACAO, 1, (91 + 36) * 2 / 100)
 it.p('frente fixa de 118 em Cacao Matt', 118, 36, 18, CACAO, 1,
      (118 + 36) * 2 / 100)
@@ -597,10 +607,10 @@ def _levanta(it):
         k = (p['mat'], p['esp'])
         area[k] = area.get(k, 0.0) + p['L'] * p['A'] / 10000 * p['qtd']
         pecas += p['qtd']
-        if p['mat'] == BRANCO:
-            fita_br += p['fita'] * p['qtd']
-        else:
-            fita_cor += p['fita'] * p['qtd']
+        #   ⛔ SEM BRANCO TX, TODA A FITA É DE COR. A fita branca a R$ 2,00
+        #     existia só porque o interior era branco; agora o interior é o
+        #     padrão do ambiente e a fita acompanha a face, a R$ 3,00.
+        fita_cor += p['fita'] * p['qtd']
     return dict(area=area, fita_cor=fita_cor, fita_br=fita_br, pecas=pecas,
                 c_terc=sum(q * u for _n, q, u, _un in it.terc),
                 c_fer=sum(q * u for _n, q, u in it.fer))
